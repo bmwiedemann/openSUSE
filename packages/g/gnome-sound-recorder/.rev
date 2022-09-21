@@ -257,4 +257,12 @@
     <comment>GNOME 42 - ready for impact</comment>
     <requestid>963599</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>8c24f7d6a1ea6d8a95bcfa3be18418f5</srcmd5>
+    <version>43.beta</version>
+    <time>1663764119</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 43.rc - let's get this into Staging to see what we break (e.g meson:test seems to be an issue already) (forwarded request 1002651 from dimstar)</comment>
+    <requestid>1003179</requestid>
+  </revision>
 </revisionlist>

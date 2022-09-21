@@ -18,13 +18,13 @@
 
 
 Name:           gnome-sound-recorder
-Version:        42.0
+Version:        43.beta
 Release:        0
 Summary:        Sound Recorder
 License:        BSD-3-Clause AND LGPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://wiki.gnome.org/Design/Apps/SoundRecorder
-Source0:        https://download.gnome.org/sources/gnome-sound-recorder/42/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-sound-recorder/43/%{name}-%{version}.tar.xz
 
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
