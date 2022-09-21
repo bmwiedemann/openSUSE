@@ -19,14 +19,15 @@
 %bcond_with lua51
 %bcond_without python3
 Name:           libpeas
-Version:        1.32.0
+Version:        1.34.0
 Release:        0
 Summary:        GObject-based Plugin Engine
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/Libpeas
-Source0:        https://download.gnome.org/sources/libpeas/1.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/libpeas/1.34/%{name}-%{version}.tar.xz
 
+BuildRequires:  fdupes
 BuildRequires:  gettext
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
@@ -125,6 +126,7 @@ Group:          Development/Tools/GUI Builders
 Requires:       glade
 Requires:       libpeas-gtk-1_0-0 = %{version}
 Supplements:    (glade and %{name}-devel)
+BuildArch:      noarch
 
 %description -n glade-catalog-libpeas
 libpeas is a gobject-based plugin engine, and is targetted at giving
@@ -166,6 +168,7 @@ every application the chance to assume its own extensibility.
 %install
 %meson_install
 %find_lang %{name}-1.0 %{?no_lang_C}
+%fdupes -s %{buildroot}%{_datadir}/doc/
 
 %ldconfig_scriptlets -n libpeas-1_0-0
 %ldconfig_scriptlets -n libpeas-gtk-1_0-0
