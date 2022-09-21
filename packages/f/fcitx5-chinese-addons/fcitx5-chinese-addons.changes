@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep 20 13:22:25 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- update to 5.0.15
+  * table: Add prediction support for table
+  * pinyin: Add support for disabling a set of character in extb and beyond
+- switch source to _dict variant.
+- drop
+  * fcitx5-chinese-addons-no-download.patch
+  * py_table-20121124.tar.gz
+  * py_stroke-20121124.tar.gz  
+
+-------------------------------------------------------------------
 Tue Jul  5 11:29:27 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
 
 - Update to 5.0.14
