@@ -17,19 +17,20 @@
 
 
 Name:           gnome-sudoku
-Version:        42.0
+Version:        43.0
 Release:        0
 Summary:        Sudoku Game for GNOME
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/Logic
 URL:            https://wiki.gnome.org/Apps/Sudoku
-Source0:        https://download.gnome.org/sources/gnome-sudoku/42/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-sudoku/43/%{name}-%{version}.tar.xz
 
+BuildRequires:  appstream-glib
+BuildRequires:  c++_compiler
+BuildRequires:  c_compiler
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
-# Needed for typelib() requires generator.
-BuildRequires:  gobject-introspection
-BuildRequires:  meson
+BuildRequires:  meson >= 0.59
 BuildRequires:  pkgconfig
 BuildRequires:  vala >= 0.35.7.24
 BuildRequires:  yelp-tools
@@ -56,12 +57,15 @@ with the correct digits.
 %install
 %meson_install
 %find_lang %{name} %{?no_lang_C}
-%fdupes -s %{buildroot}/%{_datadir}
+%fdupes -s %{buildroot}%{_datadir}
+
+%check
+%meson_test
 
 %files
 %license COPYING
 %doc NEWS
-%doc %{_datadir}/help/C/%{name}/
+%{_datadir}/help/C/%{name}/
 %{_datadir}/applications/org.gnome.Sudoku.desktop
 %{_datadir}/dbus-1/services/org.gnome.Sudoku.service
 %{_datadir}/glib-2.0/schemas/org.gnome.Sudoku.gschema.xml

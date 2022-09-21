@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Thu Sep 15 16:13:22 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.0:
+  + Updated application screenshot.
+  + Updated translations.
+- Add desktop-file-utils BuildRequires: New dependency.
+- Following the above new BuildRequires, add optional
+  appstream-glib BuildRequires and a check section and
+  verify desktop file and metadata during build.
+- Stop packaging help files as documentation.
+- Replace gcc-c++ with generic c++_compiler and c_compiler
+  BuildRequires.
+- Drop gobject-introspection BuildRequires: Package does not do
+  introspection any more.
+
+-------------------------------------------------------------------
+Mon Aug  8 10:53:05 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.beta:
+  + Warnings now flag when solution to puzzle is violated.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jul  8 18:28:37 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.alpha:
+  + Add setting to initialize earmarks.
+  + Fix redundant undo stack entries for earmarks.
+
+-------------------------------------------------------------------
 Fri Mar 18 04:51:19 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
 
 - Update to version 42.0:
