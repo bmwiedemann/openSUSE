@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sat Sep 17 11:47:16 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.6.0:
+  + Re-release of 1.5.2 as stable version. No functional changes.
+
+-------------------------------------------------------------------
+Sat Aug 27 18:43:35 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.5.2:
+  + Enable global scope v6 addresses.
+  + Expose Client:address as proper property.
+  + Clean-up client properties, make some construct-only.
+  + Add new convenience constructors for client.
+- Changes from version 1.5.1:
+  + Clean-up debug output.
+  + Allow interface indexes up to MAXINT.
+- Disable meson_test macro for now, fails currently, but that is ok
+  as we are on the unstable branch.
+- Replace python3-gi-docgen with pkgconfig(gi-docgen)
+  BuildRequires, align with what meson checks for.
+- Drop unneeded and unused gtk-doc BuildRequires.
+- Package docs in default docdir ref openSUSE standard and split it
+  out in a doc subpackage.
+- Use ldconfig_scriptlets macro for post(un) handling.
+
+-------------------------------------------------------------------
+Fri Apr 29 19:51:27 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
+
+- Update to version 1.5.0:
+  + Switch to libsoup3.
+  + Bump API and ABI.
+  + Deprecate Client:msearch-port property for Client:port.
+- Bump soname and sover following upstream changes, also in
+  baselibs.conf
+- Replace pkgconfig(libsoup-2.4) with pkgconfig(libsoup-3.0)
+  BuildRequires following upstreams port.
+
+-------------------------------------------------------------------
 Mon Sep 27 16:34:54 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Pass -Dsniffer=false to meson: Disable build of sniffer. Allows

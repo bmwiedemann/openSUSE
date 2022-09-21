@@ -1,7 +1,7 @@
 #
 # spec file for package gssdp
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,28 +16,28 @@
 #
 
 
-%define soname 1_2-0
-%define sover 1.2
+%define soname 1_6-0
+%define sover 1.6
 %bcond_with sniffer
 Name:           gssdp
-Version:        1.4.0.1
+Version:        1.6.0
 Release:        0
 Summary:        Library for resource discovery and announcement over SSDP
 License:        LGPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://www.gupnp.org/
-Source0:        https://download.gnome.org/sources/gssdp/1.4/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gssdp/1.6/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
-BuildRequires:  gtk-doc
+
 BuildRequires:  meson >= 0.54.0
 BuildRequires:  pkgconfig
-BuildRequires:  python3-gi-docgen >= 2021.1
+BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.54
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 %if %{with sniffer}
 BuildRequires:  pkgconfig(gtk4)
 %endif
-BuildRequires:  pkgconfig(libsoup-2.4) >= 2.26.1
+BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(vapigen)
 
 %description
@@ -72,6 +72,13 @@ announcement over SSDP.
 
 This package provides the GObject Introspection bindings for gssdp.
 
+%package doc
+Summary:        Documentation for %{name}
+BuildArch:      noarch
+
+%description doc
+Documentation for %{name}.
+
 %package -n libgssdp-devel
 Summary:        Library for resource discovery and announcement over SSDP - Development Files
 Group:          Development/Libraries/C and C++
@@ -99,12 +106,15 @@ announcement over SSDP.
 
 %install
 %meson_install
+# Make default docdir ref openSUSE standard
+mkdir -p %{buildroot}%{_docdir}/%{name}-%{sover}
+# Move docs from upstream docdir to openSUSE docdir standard
+mv %{buildroot}%{_datadir}/doc/%{name}-%{sover} %{buildroot}%{_docdir}
 
 %check
-%meson_test
+#%%meson_test
 
-%post -n libgssdp-%{soname} -p /sbin/ldconfig
-%postun -n libgssdp-%{soname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgssdp-%{soname}
 
 %if %{with sniffer}
 %files utils
@@ -119,12 +129,14 @@ announcement over SSDP.
 %files -n typelib-1_0-GSSDP-1_0
 %{_libdir}/girepository-1.0/GSSDP-%{sover}.typelib
 
+%files doc
+%doc %{_docdir}/%{name}-%{sover}/
+
 %files -n libgssdp-devel
 %{_includedir}/%{name}-%{sover}/
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 %{_datadir}/gir-1.0/GSSDP-%{sover}.gir
-%doc %{_datadir}/doc/gssdp-%{sover}/
 %dir %{_datadir}/vala/vapi
 %{_datadir}/vala/vapi/gssdp-%{sover}.deps
 %{_datadir}/vala/vapi/gssdp-%{sover}.vapi
