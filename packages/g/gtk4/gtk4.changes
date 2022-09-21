@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Sep 16 16:52:20 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.8.1:
+  + Input:
+    - Fix problems with input method interactions that caused dead
+      keys not to work.
+    - Accept single-key compose sequences (these are used with some
+      keyboard layouts).
+  + GtkColumnView: Flip column order in right-to-left context.
+  + GtkGridView: Fix problems with rubberbanding.
+  + GtkFileChooser:
+    - Fix positioning of popovers in the places view.
+    - Make ~ and . keyboard shortcuts work again.
+  + gsk: Make glyph upload more similar to icons.
+  + Make file transfer via portals work, this fixes file copy/paste
+    and dnd in flatpaks.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Sep  6 21:53:47 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 4.8.0:
