@@ -123,4 +123,12 @@
   + Updated translations. (forwarded request 875407 from dimstar)</comment>
     <requestid>880094</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f5d20bbccae228425e3f8bd73e172e79</srcmd5>
+    <version>0.3.9</version>
+    <time>1663763966</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 43.rc - let's get this into Staging to see what we break (e.g meson:test seems to be an issue already) (forwarded request 1002673 from dimstar)</comment>
+    <requestid>1003198</requestid>
+  </revision>
 </revisionlist>

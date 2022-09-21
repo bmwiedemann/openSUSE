@@ -1,7 +1,7 @@
 #
 # spec file for package libgovirt
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libgovirt
-Version:        0.3.8
+Version:        0.3.9
 Release:        0
 Summary:        GObject based oVirt bindings
 License:        LGPL-2.1-or-later
@@ -27,11 +27,12 @@ Source0:        https://download.gnome.org/sources/libgovirt/0.3/%{name}-%{versi
 
 BuildRequires:  gobject-introspection-devel >= 1.30.0
 BuildRequires:  intltool
+BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(gio-2.0) >= 2.26.0
-BuildRequires:  pkgconfig(gobject-2.0)
-BuildRequires:  pkgconfig(gthread-2.0) >= 2.26.0
-BuildRequires:  pkgconfig(rest-0.7) >= 0.7.92
+BuildRequires:  pkgconfig(gio-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(gthread-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(rest-1.0) >= 0.9
 
 %description
 GoVirt is a GObject wrapper for the oVirt REST API [1]. It will
@@ -79,18 +80,15 @@ bindings.
 %autosetup -p1
 
 %build
-%configure \
-	--disable-static \
+%meson \
 	%{nil}
-%make_build
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
-%find_lang %{name} %{?no_lang_C}
+%meson_install
+%find_lang govirt-1.0 %{?no_lang_C}
 
-%post -n libgovirt2 -p /sbin/ldconfig
-%postun -n libgovirt2 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgovirt2
 
 %files -n libgovirt2
 %license COPYING
@@ -106,6 +104,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libgovirt.so
 %{_libdir}/pkgconfig/govirt-1.0.pc
 
-%files lang -f %{name}.lang
+%files lang -f govirt-1.0.lang
 
 %changelog
