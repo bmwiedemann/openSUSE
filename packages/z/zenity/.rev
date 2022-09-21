@@ -496,4 +496,17 @@
     <comment>Scripted push from GNOME:Next (forwarded request 973164 from dimstar)</comment>
     <requestid>973169</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>6286ae4a1847e248a88d28861b0ed7e1</srcmd5>
+    <version>3.43.0</version>
+    <time>1663763976</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.43.0:
+  + Documentation updates.
+  + Bump WebkitGTK dependency to API 4.1, for GNOME 43.
+  + Updated translations.
+- Add pkgconfig(webkit2gtk-4.1) BuildRequires: enable webkit
+  support. (forwarded request 1002748 from iznogood)</comment>
+    <requestid>1003222</requestid>
+  </revision>
 </revisionlist>

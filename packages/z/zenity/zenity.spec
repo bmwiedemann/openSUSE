@@ -17,13 +17,13 @@
 
 
 Name:           zenity
-Version:        3.42.1
+Version:        3.43.0
 Release:        0
 Summary:        GNOME Command Line Dialog Utility
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/Zenity
-Source0:        https://download.gnome.org/sources/zenity/3.42/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/zenity/3.43/%{name}-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  meson
 BuildRequires:  pkgconfig
@@ -31,6 +31,7 @@ BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.0.0
 BuildRequires:  pkgconfig(libnotify) >= 0.6.1
+BuildRequires:  pkgconfig(webkit2gtk-4.1)
 
 %description
 Zenity is a basic rewrite of gdialog, without the pain involved of
@@ -58,7 +59,7 @@ Zenity is especially useful in scripts.
 %fdupes %{buildroot}%{_datadir}
 
 %files
-%doc AUTHORS ChangeLog NEWS README THANKS TODO
+%doc AUTHORS ChangeLog NEWS README.md THANKS TODO
 %license COPYING
 %doc %{_datadir}/help/C/%{name}/
 %{_bindir}/gdialog

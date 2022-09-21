@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul  7 12:22:22 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.43.0:
+  + Documentation updates.
+  + Bump WebkitGTK dependency to API 4.1, for GNOME 43.
+  + Updated translations.
+- Add pkgconfig(webkit2gtk-4.1) BuildRequires: enable webkit
+  support.
+
+-------------------------------------------------------------------
 Wed Apr 27 11:21:37 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.42.1:
