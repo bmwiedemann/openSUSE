@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 15 11:09:31 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 105.patch: Port to libnautilus-extension-4.
+- Following the above, add pkgconfig(gtk4) and
+  pkgconfig(libnautilus-extension-4) BuildRequires and drop
+  pkgconfig(libnautilus-extension) and nautilus-dropbox-gtk4.patch
+  and change nautilus_extdir global to check for
+  libnautilus-extension-4 and not libnautilus-extension.
+
+-------------------------------------------------------------------
 Wed Jan 12 16:38:08 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add nautilus-dropbox-gtk4.patch: Fix build against Nautils/GTK4.

@@ -17,7 +17,7 @@
 #
 
 
-%global nautilus_extdir %( pkg-config libnautilus-extension --variable extensiondir )
+%global nautilus_extdir %( pkg-config libnautilus-extension-4 --variable extensiondir )
 Name:           nautilus-dropbox
 Version:        2020.03.04
 Release:        0
@@ -28,13 +28,15 @@ URL:            https://www.dropbox.com
 Source:         https://www.dropbox.com/download?dl=packages/%{name}-%{version}.tar.bz2
 # PATCH-FIX-OPENSUSE 98.patch dimstar@opensuse.org -- Hack together something to accept GNOME 40 version schemes
 Patch0:         https://patch-diff.githubusercontent.com/raw/dropbox/nautilus-dropbox/pull/98.patch
-Patch1:         nautilus-dropbox-gtk4.patch
+# PATCH-FIX-UPSTREAM 105.patch -- Port to libnautilus-extension-4
+Patch1:         https://patch-diff.githubusercontent.com/raw/dropbox/nautilus-dropbox/pull/105.patch
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  gobject-introspection
 BuildRequires:  python3-docutils
 BuildRequires:  python3-gobject
-BuildRequires:  pkgconfig(libnautilus-extension) >= 2.16.0
+BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(libnautilus-extension-4) >= 43.rc
 
 %description
 Dropbox is a free service that lets you bring your photos, docs, and videos anywhere
