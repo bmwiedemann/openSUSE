@@ -41,6 +41,8 @@ Patch4:         0001-Enforce-poppler-version-0.86.0.patch
 Patch5:         0001-16764-Better-patch-avoid-a-memory-leak.patch
 # PATCH-FIX-UPSTREAM
 Patch6:         0001-Fix-build-with-poppler-22.04.0.patch
+# PATCH-FIX-UPSTREAM
+Patch7:         scribus-1.5.8-poppler-22.09.0.patch
 BuildRequires:  cmake >= 3.14.0
 BuildRequires:  cups-devel
 BuildRequires:  dos2unix

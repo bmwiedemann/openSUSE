@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 20 10:46:04 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add poppler 22.09 compatibility patch:
+  * scribus-1.5.8-poppler-22.09.0.patch
+
+-------------------------------------------------------------------
 Fri Apr 22 08:33:17 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add patch to fix build with poppler 22.04:
