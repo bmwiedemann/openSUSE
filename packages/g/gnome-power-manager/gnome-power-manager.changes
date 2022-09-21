@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 16 14:33:54 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.0:
+  + Use theme color for axes label text.
+  + Set the number of x-axis ticks depending on the time range
+    chosen.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Sep 29 16:18:51 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.32.0+58:
