@@ -17,13 +17,13 @@
 
 
 Name:           gnome-characters
-Version:        42.0
+Version:        43.0
 Release:        0
 Summary:        Character Map
 License:        GPL-3.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Design/Apps/CharacterMap
-Source0:        https://download.gnome.org/sources/gnome-characters/42/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-characters/43/%{name}-%{version}.tar.xz
 
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
@@ -49,6 +49,7 @@ Summary:        GNOME Characters -- Search Provider for GNOME Shell
 Group:          System/GUI/GNOME
 Requires:       %{name} = %{version}
 Supplements:    (gnome-shell and %{name})
+BuildArch:      noarch
 
 %description -n gnome-shell-search-provider-gnome-characters
 This package contains a search provider to enable GNOME Shell to get
