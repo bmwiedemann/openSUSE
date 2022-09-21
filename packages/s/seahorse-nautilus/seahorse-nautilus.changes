@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Sep 15 12:42:19 UTC 2022 - bjorn.lie@gmail.com
+
+- Update to version 3.11.92+95:
+  * libnautilus-extension: Prefer libnautilus-extension-4
+  * nautilus extension: Port to libnautilus-extension-4
+  * Add gpg version 2.3 so seahorse-nautilus will build
+  * Stop including deprecated nautilus extension headers.
+  * Fix UI files usage
+- Switch to source service git checkout.
+- Changes in BuildRequires:
+  + Dropped: intltool, update-desktop-files,
+    pkgconfig(libnautilus-extension) and
+    glib2_gsettings_schema_requires macro.
+  + Added: meson and pkgconfig(libnautilus-extension-4).
+- Switched to meson macros and dropped sed call adding supported
+  versions of gpg and drop post(un) handling since we now rely on
+  filetriggers as well as suse_update_desktop_file macro calls.
+- Update Supplements to current standard.
+
+-------------------------------------------------------------------
 Wed Sep 29 13:21:53 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 2.3 to the list of accepted GPG versions.
