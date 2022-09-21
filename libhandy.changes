@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Sep 15 14:31:13 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.8.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug  5 17:48:44 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.7.90:
+  + Remove unnecessary cast in HdyPreferencesGroup.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Jul 17 19:05:29 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.7.0:
+  + HdyDeck: Remove a non-existent property mention.
+  + HdyStyleManager:
+    - Correctly reset the theme if we're not overriding it. Fixes
+      switching away from HighContrast.
+    - Fix a typo in docs.
+    - Remove a leftover debug message.
+  + Add environment variables to control styles from Builder.
+
+-------------------------------------------------------------------
 Sun Jul 10 15:30:14 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.6.3:
