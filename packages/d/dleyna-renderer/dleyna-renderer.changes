@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Sep 19 11:51:53 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add db06bfa322.patch: add one more commit from upstream:
+  [renderer] Fix pkgconfig dependency to GUPnP 1.2
+
+-------------------------------------------------------------------
+Sun Aug 28 12:39:33 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add port-to-gupnp1_6.patch: Fix build with gupnp 1.6. Following
+  this, replace pkgconfig(gssdp-1.2), pkgconfig(gupnp-1.2) and
+  pkgconfig(libsoup-2.4) with pkgconfig(gssdp-1.6),
+  pkgconfig(gupnp-1.6) and pkgconfig(libsoup-3.0) BuildRequires.
+
+-------------------------------------------------------------------
 Sat Jan  8 12:32:20 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.7.2:

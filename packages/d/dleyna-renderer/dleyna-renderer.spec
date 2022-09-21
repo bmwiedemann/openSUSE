@@ -24,6 +24,9 @@ License:        LGPL-2.1-only
 Group:          System/Libraries
 URL:            https://github.com/phako/dleyna-renderer
 Source:         %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM port-to-gupnp1_6.patch -- Fix build with gupnp 1.6
+Patch0:         port-to-gupnp1_6.patch
+Patch1:         https://gitlab.gnome.org/World/dLeyna/-/commit/db06bfa322.patch
 
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  libxslt-tools
@@ -32,11 +35,11 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dleyna-core-1.0) >= 0.6.0
 BuildRequires:  pkgconfig(gio-2.0) >= 2.28
 BuildRequires:  pkgconfig(glib-2.0) >= 2.28
-BuildRequires:  pkgconfig(gssdp-1.2)
-BuildRequires:  pkgconfig(gupnp-1.2)
+BuildRequires:  pkgconfig(gssdp-1.6)
+BuildRequires:  pkgconfig(gupnp-1.6)
 BuildRequires:  pkgconfig(gupnp-av-1.0) >= 0.12.9
 BuildRequires:  pkgconfig(gupnp-dlna-2.0) >= 0.9.4
-BuildRequires:  pkgconfig(libsoup-2.4) >= 2.28.2
+BuildRequires:  pkgconfig(libsoup-3.0)
 Provides:       dbus(dleyna-renderer-service) = %{version}
 Requires:       dleyna-connector(dbus)
 
