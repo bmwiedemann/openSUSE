@@ -26,13 +26,14 @@
 %endif
 
 Name:           gnome-control-center
-Version:        42.3
+Version:        43.0
 Release:        0
 Summary:        The GNOME Control Center
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
-URL:            https://www.gnome.org
-Source0:        https://download.gnome.org/sources/gnome-control-center/42/%{name}-%{version}.tar.xz
+URL:            https://apps.gnome.org/app/org.gnome.Settings
+Source0:        https://download.gnome.org/sources/gnome-control-center/43/%{name}-%{version}.tar.xz
+Source99:       %{name}-rpmlintrc
 
 # PATCH-NEEDS-REBASE gnome-control-center-disable-error-message-for-NM.patch bsc#989801 sckang@suse.com -- network: Improve the check for whether NM or wicked is running Was:PATCH-FIX-OPENSUSE
 Patch0:         gnome-control-center-disable-error-message-for-NM.patch
@@ -51,7 +52,7 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  krb5-devel
-BuildRequires:  meson >= 0.53.0
+BuildRequires:  meson >= 0.57.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3-dbusmock
 BuildRequires:  xsltproc
@@ -60,7 +61,7 @@ BuildRequires:  pkgconfig(cairo-gobject)
 BuildRequires:  pkgconfig(colord) >= 0.1.34
 BuildRequires:  pkgconfig(colord-gtk4)
 BuildRequires:  pkgconfig(fontconfig)
-BuildRequires:  pkgconfig(gcr-3)
+BuildRequires:  pkgconfig(gcr-base-3)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.23.0
 BuildRequires:  pkgconfig(gdk-wayland-3.0)
 BuildRequires:  pkgconfig(gio-2.0)
@@ -80,14 +81,13 @@ BuildRequires:  pkgconfig(gsound)
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(gudev-1.0)
-BuildRequires:  pkgconfig(libadwaita-1)
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.2.alpha
 BuildRequires:  pkgconfig(libgtop-2.0)
 BuildRequires:  pkgconfig(libnm) >= 1.24.0
 BuildRequires:  pkgconfig(libnma-gtk4)
 BuildRequires:  pkgconfig(libpulse) >= 2.0
 BuildRequires:  pkgconfig(libpulse-mainloop-glib)
 BuildRequires:  pkgconfig(libsecret-1)
-BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(malcontent-0) => 0.7.0
 BuildRequires:  pkgconfig(mm-glib) >= 0.7
@@ -135,6 +135,7 @@ various aspects of your desktop.
 %package user-faces
 Summary:        Login manager user avatars
 Group:          System/GUI/GNOME
+BuildArch:      noarch
 
 %description user-faces
 This package provides user avatars to be used by display managers
@@ -143,6 +144,7 @@ This package provides user avatars to be used by display managers
 Summary:        Header files for the GNOME Control Center
 Group:          Development/Libraries/GNOME
 Requires:       %{name} = %{version}
+BuildArch:      noarch
 
 %description devel
 The control center is GNOME's main interface for configuration of
@@ -157,6 +159,7 @@ Requires:       colord
 # The color panel interacts with binaries from gnome-color-manager
 Requires:       gnome-color-manager
 Supplements:    %{name}
+BuildArch:      noarch
 
 %description color
 This package provides the color management configuration panel for
@@ -169,6 +172,7 @@ Requires:       %{name} = %{version}
 # The online accounts panel interacts with binaries and icons from gnome-online-accounts
 Requires:       gnome-online-accounts
 Supplements:    (%{name} and gnome-online-accounts)
+BuildArch:      noarch
 
 %description goa
 This package provides the online accounts onfiguration panel for

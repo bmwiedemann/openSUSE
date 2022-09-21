@@ -1,9 +1,80 @@
 -------------------------------------------------------------------
+Thu Sep 15 15:30:32 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep  4 09:30:30 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 43.rc:
+  + Fix AM/PM labeling issue;
+  + Remove no longer used icon;
+  + Select panel only if non-folded when search is canceled;
+  + Several UI improvements regarding device security;
+  + Fix primary monitor selection.
+  + Allow backgrounds to use any image format;
+  + Improve dark theme support;
+  + Keyboard: Fix activation of input source toggle button and
+    improve handling of Shift shortcuts.
+  + Power: Fix blank screen and power button behavior settings;
+  + Printers: Show empty state after removing last printer;
+  + Fix Move Up and Move Down actions when searching;
+  + Fix sound alert selection;
+  + Improve support to Wacom Express Key Remote;
+  + Updated translations.
+- Update URL tag to https://apps.gnome.org/app/org.gnome.Settings/,
+  the new upstream web page dedicated to Settings (this package).
+- Bump meson build requirement from 0.53.0 to 0.57.0.
+- Add noarch as BuildArch for color, goa, user-faces, and devel
+  subpackages as they do not contain any native code/binaries.
+- Add rpmlintrc to filter false-positives about
+  desktopfile-without-binary warnings for color, goa and user-faces
+  subpackages since they call "gnome-control-center color/goa/etc"
+  rather than a binary of their own. Also filter the
+  file-not-in-%lang warning because we strip the English language
+  from the lang subpackage and package it in the main package.
+
+-------------------------------------------------------------------
+Mon Aug 22 22:50:51 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace pkgconfig(gcr-3) with pkgconfig(gcr-base-3)
+  BuildRequires: Align with what meson checks for.
+- Drop explicit pkgconfig(libsoup-2.4) BuildRequires: No longer
+  needed, as color sub-module was ported away from it. See
+  https://gitlab.gnome.org/GNOME/gnome-control-center/-/commit/a9c398e5d9d45fb4638b38d6bb3f677a2b12b249
+
+-------------------------------------------------------------------
+Fri Aug 12 07:09:52 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 43.beta:
+  + Cellular: Add WWAN 5G connection support.
+  + Device Security:
+    - Polish failure messages.
+    - Various style updates.
+  + Display: Support privacy screens.
+  + Info: Show build id in a separate row.
+  + Network: Fix VPN empty state.
+  + Sound: Update default sounds.
+  + User Accounts: Fix back button not appearing sometimes.
+  + Updated translations. 
+
+-------------------------------------------------------------------
+Sun Jul 17 18:33:03 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.alpha:
+  + Improved accessibility in various panels.
+  + New Device Security panel.
+  + Date & Time: Update visual style of the timezone map.
+  + Display: Various visual improvements.
+  + Sound: Remove dog barking sounds.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Jul  3 19:20:25 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
 
 - Update to version 42.3:
-  + Display:
-    - Use virtual clone modes when mirroring.
+  + Display: Use virtual clone modes when mirroring.
   + Network:
     - Prevent crash bi disconnecting device.
     - Fix Wi-fi network with "&" in name not appearing.
