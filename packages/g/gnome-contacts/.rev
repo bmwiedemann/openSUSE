@@ -521,4 +521,32 @@
     <comment></comment>
     <requestid>964270</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>a38e38c2624ee182cb63308a71bad4fd</srcmd5>
+    <version>43.rc</version>
+    <time>1663763984</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 43.rc:
+  + Updated screenshots for GNOME 43.
+  + A rewrite of the core internals fixes several issues when
+    editing or adding a contact.
+  + Several performance optimizations when searching for contacts
+    in the app.
+  + Some strings for importing and exporting contacts were not
+    marked as translatable yet.
+  + Updated translations.
+- Update to version 43.beta:
+  + Contacts can now import and export your contacts in the vCard
+    format (aka VCF) to or from a file on the system.
+  + The app will now warn you if your system has a configuration
+    issue of your primary address book.
+  + Updated translations.
+- Drop all traces of telepathy support, now dropped upstream
+  (remove pkgconfig(folks-telepathy) and pkgconfig(telepathy-glib)
+  disabled BuildRequires and stop passing telepathy=false to
+  meson).
+- Add pkgconfig(libportal) and pkgconfig(libportal-gtk4)
+  BuildRequires: New dependencies. (forwarded request 1002910 from iznogood)</comment>
+    <requestid>1003231</requestid>
+  </revision>
 </revisionlist>

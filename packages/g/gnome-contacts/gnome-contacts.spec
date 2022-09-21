@@ -17,13 +17,13 @@
 
 
 Name:           gnome-contacts
-Version:        42.0
+Version:        43.rc
 Release:        0
 Summary:        Contacts Manager for GNOME
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://wiki.gnome.org/Apps/Contacts
-Source0:        https://download.gnome.org/sources/gnome-contacts/42/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-contacts/43/%{name}-%{version}.tar.xz
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  docbook-xsl-stylesheets
@@ -35,9 +35,6 @@ BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(clutter-gtk-1.0)
 BuildRequires:  pkgconfig(folks) >= 0.14
 BuildRequires:  pkgconfig(folks-eds) >= 0.11.4
-BuildRequires:  pkgconfig(libportal)
-# Disable telepathy by default
-#BuildRequires:  pkgconfig(folks-telepathy) >= 0.11.4
 BuildRequires:  pkgconfig(gee-0.8)
 BuildRequires:  pkgconfig(geocode-glib-1.0) >= 3.15.3
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.44.0
@@ -50,8 +47,8 @@ BuildRequires:  pkgconfig(gtk4) >= 4.6
 BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(libebook-1.2) >= 3.13.90
 BuildRequires:  pkgconfig(libedataserver-1.2) >= 3.30
-# Disable telepathy by default, following upstream, NOTE pass -Dtelepathy=true to meson if you reenable this.
-#BuildRequires:  pkgconfig(telepathy-glib) >= 0.22.0
+BuildRequires:  pkgconfig(libportal)
+BuildRequires:  pkgconfig(libportal-gtk4)
 
 %description
 The integraded address book for GNOME.
@@ -90,7 +87,6 @@ search results from contacts.
 
 %build
 %meson \
-	-Dtelepathy=false \
 	-Dmanpage=true \
 	%{nil}
 %meson_build
@@ -113,6 +109,8 @@ search results from contacts.
 %{_datadir}/dbus-1/services/org.gnome.Contacts.service
 %{_datadir}/glib-2.0/schemas/org.gnome.Contacts.gschema.xml
 %{_datadir}/icons/hicolor/*/*/org.gnome.Contacts*
+%dir %{_libexecdir}/gnome-contacts
+%{_libexecdir}/gnome-contacts/gnome-contacts-parser
 
 %files -n gnome-shell-search-provider-contacts
 %{_datadir}/dbus-1/services/org.gnome.Contacts.SearchProvider.service
