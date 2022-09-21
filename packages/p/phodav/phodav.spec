@@ -1,7 +1,7 @@
 #
 # spec file for package phodav
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,16 @@
 #
 
 
-%define shlib libphodav-2_0-0
+%define shlib libphodav-3_0-0
 Name:           phodav
-Version:        2.5
+Version:        3.0
 Release:        0
 Summary:        A WebDAV server using libsoup
 License:        LGPL-2.0-or-later
-Group:          Productivity/Networking/File-Sharing 
+Group:          Productivity/Networking/File-Sharing
 URL:            https://wiki.gnome.org/phodav
 Source0:        https://download.gnome.org/sources/%{name}/%{version}/%{name}-%{version}.tar.xz
-Patch0:	harden_spice-webdavd.service.patch
+Patch0:         harden_spice-webdavd.service.patch
 
 BuildRequires:  asciidoc
 BuildRequires:  gtk-doc
@@ -37,7 +37,7 @@ BuildRequires:  pkgconfig(avahi-client)
 BuildRequires:  pkgconfig(avahi-gobject)
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.44
 BuildRequires:  pkgconfig(glib-2.0) >= 2.44
-BuildRequires:  pkgconfig(libsoup-2.4) >= 2.48.0
+BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
@@ -93,7 +93,7 @@ the Spice virtio channel.
 %install
 %meson_install
 
-%find_lang phodav-2.0 --with-gnome
+%find_lang phodav-3.0 --with-gnome
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcspice-webdavd
 
 %post -n %{shlib} -p /sbin/ldconfig
@@ -111,16 +111,16 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcspice-webdavd
 %postun -n spice-webdavd
 %service_del_postun spice-webdavd.service
 
-%files -n %{shlib} -f %{name}-2.0.lang
-%{_libdir}/libphodav-2.0.so.0*
+%files -n %{shlib} -f %{name}-3.0.lang
+%{_libdir}/libphodav-3.0.so.0*
 
 %files devel
 %license COPYING
-%dir %{_includedir}/libphodav-2.0/
-%{_includedir}/libphodav-2.0/*
-%{_libdir}/libphodav-2.0.so
-%{_libdir}/pkgconfig/libphodav-2.0.pc
-%{_datadir}/gtk-doc/html/phodav-2.0/
+%dir %{_includedir}/libphodav-3.0/
+%{_includedir}/libphodav-3.0/*
+%{_libdir}/libphodav-3.0.so
+%{_libdir}/pkgconfig/libphodav-3.0.pc
+%{_datadir}/gtk-doc/html/phodav-3.0/
 
 %files -n chezdav
 %{_bindir}/chezdav

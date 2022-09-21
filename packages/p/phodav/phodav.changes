@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jul  4 13:36:56 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
+
+- Updated to version 3.0:
+  + Port to libsoup3.
+  + Forbid PUT method on read-only shared folder.
+  + Add chezdav --realm runtime flag.
+  + Add chezdav --nomdns runtime flag.
+  + Build on OSX/Darwin.
+  + Allow specifying systemd/udev directories.
+  + Man page updates.
+  + CI, testing and build fixes.
+  + Translation updates.
+- Updated libsoup version to 3.0 in BuildRequires,
+  shlib package name to 3.x.
+
+-------------------------------------------------------------------
 Tue Oct 19 05:59:24 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
