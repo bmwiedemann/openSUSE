@@ -152,8 +152,8 @@ The OpenSCAP C Library for easy integration with SCAP.
 Summary:        Openscap utilities
 Group:          System/Monitoring
 Requires:       %{name} = %{version}-%{release}
-# FIXME: use proper Requires(pre/post/preun/...)
-PreReq:         %fillup_prereq
+Requires:       libopenscap%{sover} >= %{version}-%{release}
+Requires(pre):  %fillup_prereq
 %systemd_requires
 
 %description    utils
@@ -163,6 +163,7 @@ The %{name}-utils package contains various utilities based on %{name} library.
 Summary:        SCAP content
 Group:          System/Monitoring
 Requires:       %{name} = %{version}-%{release}
+Requires:       libopenscap%{sover} >= %{version}-%{release}
 
 %description    content
 SCAP content for Fedora delivered by Open-SCAP project.
