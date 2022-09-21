@@ -2016,4 +2016,41 @@ WANTED for 13.1 (forwarded request 202421 from RBrownCCB)</comment>
     <comment></comment>
     <requestid>999786</requestid>
   </revision>
+  <revision rev="256" vrev="1">
+    <srcmd5>e318b8f849fb037c4b3156c5ae0b56f9</srcmd5>
+    <version>2.74.0</version>
+    <time>1663764005</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.74.0:
+  + Use EPOLL_CLOEXEC by default
+  + Fixed various regression on GRegex as per the PCRE2 porting
+  + Fixed various memory leaks
+  + Bugs fixed: glgo#GNOME/gtksourceview#278,
+    glgo#GNOME/gtksourceview#283, glgo#GNOME/GLib#2688,
+    glgo#GNOME/GLib#2713, glgo#GNOME/GLib#2719,
+    glgo#GNOME/GLib#2729, glgo#GNOME/GLib#2733,
+    glgo#GNOME/GLib#2737, glgo#GNOME/GLib#2741,
+    glgo#GNOME/gtk#4400, glgo#GNOME/GLib!2820,
+    glgo#GNOME/GLib!2855, glgo#GNOME/GLib!2861,
+    glgo#GNOME/GLib!2868, glgo#GNOME/GLib!2873,
+    glgo#GNOME/GLib!2874, glgo#GNOME/GLib!2875,
+    glgo#GNOME/GLib!2876, glgo#GNOME/GLib!2879,
+    glgo#GNOME/GLib!2881, glgo#GNOME/GLib!2882,
+    glgo#GNOME/GLib!2883, glgo#GNOME/GLib!2900.
+  + Updated translations.
+
+- Replace pkgconfig(libpcre) with pkgconfig(libpcre2-8)
+  BuildRequires. No longer used by glib (replaced by pcre2
+  in 2.73.2).
+
+- Drop 99783e0408f8ae9628d2c7a30eb99806087da711.patch for 2.73.x
+  branch, fixed upstream already.
+
+- Update to version 2.73.3:
+  + Revitalize G_REGEX_OPTIMIZE flag and use it to enable PCRE JIT
+    compiler.
+  + Fix some regressions due to the PCRE2 port.
+  + Fix a pidfd leak that was introduced in the previous release.</comment>
+    <requestid>1004760</requestid>
+  </revision>
 </revisionlist>

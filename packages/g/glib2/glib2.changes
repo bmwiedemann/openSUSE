@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sun Sep 18 06:56:01 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.74.0:
+  + Use EPOLL_CLOEXEC by default
+  + Fixed various regression on GRegex as per the PCRE2 porting
+  + Fixed various memory leaks
+  + Bugs fixed: glgo#GNOME/gtksourceview#278,
+    glgo#GNOME/gtksourceview#283, glgo#GNOME/GLib#2688,
+    glgo#GNOME/GLib#2713, glgo#GNOME/GLib#2719,
+    glgo#GNOME/GLib#2729, glgo#GNOME/GLib#2733,
+    glgo#GNOME/GLib#2737, glgo#GNOME/GLib#2741,
+    glgo#GNOME/gtk#4400, glgo#GNOME/GLib!2820,
+    glgo#GNOME/GLib!2855, glgo#GNOME/GLib!2861,
+    glgo#GNOME/GLib!2868, glgo#GNOME/GLib!2873,
+    glgo#GNOME/GLib!2874, glgo#GNOME/GLib!2875,
+    glgo#GNOME/GLib!2876, glgo#GNOME/GLib!2879,
+    glgo#GNOME/GLib!2881, glgo#GNOME/GLib!2882,
+    glgo#GNOME/GLib!2883, glgo#GNOME/GLib!2900.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep  8 13:17:30 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+- Replace pkgconfig(libpcre) with pkgconfig(libpcre2-8)
+  BuildRequires. No longer used by glib (replaced by pcre2
+  in 2.73.2).
+
+-------------------------------------------------------------------
+Mon Aug 29 06:43:05 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop 99783e0408f8ae9628d2c7a30eb99806087da711.patch for 2.73.x
+  branch, fixed upstream already.
+
+-------------------------------------------------------------------
 Thu Aug 25 11:24:35 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 99783e0408f8ae9628d2c7a30eb99806087da711.patch:
@@ -10,6 +44,110 @@ Thu Aug 25 11:24:35 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
   the code assumed it was.
   Fix the problem by keeping a strong ref to that `GCancellable`
   around until the `ConnectionAttempt` is finished being destroyed.
+
+-------------------------------------------------------------------
+Sat Aug  6 11:20:24 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.73.3:
+  + Revitalize G_REGEX_OPTIMIZE flag and use it to enable PCRE JIT
+    compiler.
+  + Fix some regressions due to the PCRE2 port.
+  + Fix a pidfd leak that was introduced in the previous release.
+  + Support compilation without a C++ toolchain.
+  + GDBus: Use namespace-friendly protocol for Linux message buses,
+    and optionally other connections.
+  + Fix potential races in multi-threaded signal connections
+    handling.
+  + Add back gio-launch-desktop to redirect stdout/stderr of
+    launched GDesktopAppInfo's to the journal with proper parent
+  + Executables that are invoked when installing other software,
+    typically from packaging system triggers, can now be installed
+    into architecture-dependent locations. Unix OS distributors who
+    install GLib for more than one architecture in parallel
+    (multiarch or multilib installations) should consider building
+    with -Dmultiarch=true, installing the bin/glib-compile-schemas
+    and bin/gio-querymodules symbolic links in packages for the
+    primary architecture, and omitting those symlinks from packages
+    for secondary architectures.
+  + Some enumerators introduced in previous releases have been
+    changed, for better introspection results:
+    - G_MARKUP_PARSE_FLAGS_NONE renamed to G_MARKUP_DEFAULT_FLAGS
+    - G_TLS_CERTIFICATE_FLAGS_NONE renamed to
+      G_TLS_CERTIFICATE_NO_FLAGS
+    - G_APPLICATION_FLAGS_NONE was deprecated, use
+      G_APPLICATION_DEFAULT_FLAGS now.
+  + gfileinfo: Implement xattr attribute removal.
+  + Add support to --delete option to gio set, to unset a file
+    attribute.
+  + Improve default value of glib_debug option: G_ENABLE_DEBUG will
+    be defined only if using `--buildtype=debug` or enabled via
+    `-Dglib_debug`, but it won't ever be set if an optimized build
+    is requested (specifically if the optimization level is not `0`
+    or `g`) as it may be the case when using
+    `--buildtype=debugoptimized`.
+  + Probably the first revision of any GNOME module ever released
+    from Cuba :)
+  + Bugs fixed: glgo#GNOME/Glib#566, glgo#GNOME/Glib#1187,
+    glgo#GNOME/Glib#2509, glgo#GNOME/Glib#2542,
+    glgo#GNOME/Glib#2588, glgo#GNOME/Glib#2682,
+    glgo#GNOME/Glib#2692, glgo#GNOME/Glib#2694,
+    glgo#GNOME/Glib#2699, glgo#GNOME/Glib#2700,
+    glgo#GNOME/Glib#2703, glgo#GNOME/Glib#2705,
+    glgo#GNOME/Glib#2708, glgo#GNOME/Glib!2299,
+    glgo#GNOME/Glib!2759, glgo#GNOME/Glib!2812,
+    glgo#GNOME/Glib!2813, glgo#GNOME/Glib!2814,
+    glgo#GNOME/Glib!2815, glgo#GNOME/Glib!2818,
+    glgo#GNOME/Glib!2822, glgo#GNOME/Glib!2823,
+    glgo#GNOME/Glib!2825, glgo#GNOME/Glib!2826,
+    glgo#GNOME/Glib!2827, glgo#GNOME/Glib!2829,
+    glgo#GNOME/Glib!2830, glgo#GNOME/Glib!2832,
+    glgo#GNOME/Glib!2833, glgo#GNOME/Glib!2835,
+    glgo#GNOME/Glib!2836, glgo#GNOME/Glib!2851,
+    glgo#GNOME/Glib!2853, glgo#GNOME/Glib!2854.
++ Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug  3 09:13:30 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.73.2:
+  + Replace PCRE1 with PCRE2.
+  + Preserve destruction order in gdataset, fixing various crashes
+    during objects disposal.
+  + Require C99 __VA_ARGS__.
+  + Add NONE or DEFAULT members to most flags types.
+  + GFile: Add some missing async APIs.
+  + Improve internal and process documentation.
+  + Add atomic compare-and-exchange APIs returning previous value.
+  + Add G_DEFINE_ENUM_TYPE and G_DEFINE_ENUM_VALUE macros.
+  + Add platform-independent G_ALWAYS_INLINE and G_NO_INLINE.
+  + Use waitid() on pidfds rather than a global SIGCHLD handler.
+
+-------------------------------------------------------------------
+Thu Jul  7 11:59:36 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.73.1:
+  + Remove the `-Diconv` configure option, as GLib now uses Meson’s
+    built-in logic for finding which iconv implementation to use.
+  + Move gvdb to a Meson subproject and git submodule to avoid
+    duplicating its source.
+  + Add `add_test_setup()` in Meson to allow GLib tests to be run
+    under valgrind with correct settings easily, using
+    `meson test --setup=valgrind`.
+  + Fix deadlocks when disposing non-cancelled inotify
+    `GFileMonitor`s.
+  + Fix `file://` requests in webkit2gtk due to incorrect xdgmime
+    update.
+  + Fix build errors on macOS ≤10.7 for `LOCAL_PEERPID`.
+  + Add new `g_atomic_int_exchange()` and
+   `g_atomic_pointer_exchange()` APIs.
+  + Add new `GListStore:n-items` property to allow easy binding in
+    UIs.
+  + Performance improvements for GObject construction and
+    destruction.
+  + Use a numeric space (U+2007) for padding with some
+    `g_date_time_format()` placeholders.
+  + Fix a slow memory leak in `GSocketClient` when using long-lived
+    `GCancellable`s. 
 
 -------------------------------------------------------------------
 Sun Jul  3 23:43:59 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
