@@ -43,6 +43,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module SecretStorage = %{version}}
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module jeepney >= 0.6}
+BuildRequires:  dbus-1-daemon
 BuildRequires:  gnome-keyring
 %endif
 %python_subpackages
