@@ -60,6 +60,8 @@ Patch4:         udav-help-path.patch
 Patch5:         mathgl-texmf-dir.patch
 # PATCH-FIX-OPENSUSE mathgl-no-default-qt.patch -- do not set a default qt
 Patch7:         mathgl-no-default-qt.patch
+# PATCH-FIX-UPSTREAM mathgl-libharu2_4-compat.patch badshah400@gmail.com -- Fix compilation against libharu 2.4.x [https://sourceforge.net/p/mathgl/bugs/48/]
+Patch8:         mathgl-libharu2_4-compat.patch
 BuildRequires:  cmake >= 2.8.12
 BuildRequires:  desktop-file-utils
 BuildRequires:  fltk-devel
@@ -81,7 +83,7 @@ BuildRequires:  sz2-devel
 BuildRequires:  texinfo
 BuildRequires:  texlive-filesystem
 BuildRequires:  texlive-latex
-BuildRequires:  wxWidgets-devel >= 3
+BuildRequires:  wxGTK3-devel
 %if %{with python}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
@@ -338,6 +340,7 @@ execute MGL scripts, set up, rotate graphics, and so on.
 %patch4 -p1
 %patch5 -p1
 %patch7 -p1
+%patch8 -p1
 
 # Correct octave-mathgl version
 sed -i 's/2.0/%{oct_version}/' lang/DESCRIPTION
