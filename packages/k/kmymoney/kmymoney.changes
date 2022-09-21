@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 21 07:10:48 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Disable build for archs not having QtWebEngine
+
+-------------------------------------------------------------------
 Mon Aug  1 11:47:12 UTC 2022 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update to 5.1.3

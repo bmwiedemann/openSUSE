@@ -17,12 +17,6 @@
 
 
 %bcond_without lang
-# Only include WebEngine for platforms that support it
-%ifarch %{ix86} x86_64 %{arm} aarch64 mips mips64
-%bcond_without qtwebengine
-%else
-%bcond_with qtwebengine
-%endif
 Name:           kmymoney
 Version:        5.1.3
 Release:        0
@@ -72,22 +66,21 @@ BuildRequires:  cmake(Qt5QuickWidgets) >= 5.6.0
 BuildRequires:  cmake(Qt5Sql) >= 5.6.0
 BuildRequires:  cmake(Qt5Svg) >= 5.6.0
 BuildRequires:  cmake(Qt5Test) >= 5.6.0
+BuildRequires:  cmake(Qt5WebEngine) >= 5.8.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.6.0
 BuildRequires:  cmake(Qt5Xml) >= 5.6.0
 BuildRequires:  cmake(aqbanking) >= 6.0.1
 BuildRequires:  pkgconfig(libical)
 BuildRequires:  pkgconfig(sqlcipher)
 BuildRequires:  pkgconfig(sqlite3)
-Recommends:     %{name}-lang = %{version}
 # For users of KDE:Unstable:Extra
 Provides:       kmymoney5 = %{version}
 Obsoletes:      kmymoney5 < %{version}
 Provides:       kmymoney-doc = %{version}
 Obsoletes:      kmymoney-doc < %{version}
-%if %{with qtwebengine}
-BuildRequires:  cmake(Qt5WebEngine) >= 5.8.0
-%else
-BuildRequires:  cmake(KF5WebKit)
+# QtWebEngine is needed
+%ifnarch %{ix86} x86_64 %{arm} aarch64
+ExclusiveArch:  do_not_build
 %endif
 
 %description
@@ -110,11 +103,8 @@ Development files and headers need to build software using KMyMoney.
 %autosetup -p1
 
 %build
-%if %{with qtwebengine}
 %cmake_kf5 -d build -- -DENABLE_WEBENGINE=ON
-%else
-%cmake_kf5 -d build
-%endif
+
 %cmake_build
 
 %install
@@ -127,7 +117,6 @@ Development files and headers need to build software using KMyMoney.
 %endif
 
 %post -p /sbin/ldconfig
-
 %postun -p /sbin/ldconfig
 
 %files

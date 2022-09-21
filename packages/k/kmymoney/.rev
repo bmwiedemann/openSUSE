@@ -620,4 +620,12 @@
     <comment></comment>
     <requestid>992027</requestid>
   </revision>
+  <revision rev="78" vrev="2">
+    <srcmd5>fa45d91d56ce8589fa3bce2268521c7e</srcmd5>
+    <version>5.1.3</version>
+    <time>1663764176</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable build for archs not having QtWebEngine</comment>
+    <requestid>1005113</requestid>
+  </revision>
 </revisionlist>
