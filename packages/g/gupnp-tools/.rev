@@ -324,4 +324,12 @@
     <comment>Update to 0.10.3 (forwarded request 978753 from dimstar)</comment>
     <requestid>978923</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>29715f63f5f9baaf2b1a0d1d408269d2</srcmd5>
+    <version>0.10.3+16</version>
+    <time>1663764122</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 43.rc - let's get this into Staging to see what we break (e.g meson:test seems to be an issue already) (forwarded request 1002668 from dimstar)</comment>
+    <requestid>1003194</requestid>
+  </revision>
 </revisionlist>

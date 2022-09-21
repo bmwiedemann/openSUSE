@@ -17,27 +17,28 @@
 
 
 Name:           gupnp-tools
-Version:        0.10.3
+Version:        0.10.3+16
 Release:        0
 Summary:        UPnP tools to test and debug UPnP devices and control points
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
 URL:            http://www.gupnp.org/
-Source0:        https://download.gnome.org/sources/gupnp-tools/0.10/%{name}-%{version}.tar.xz
+# Disabled for now, using source service
+#Source0:        https://download.gnome.org/sources/gupnp-tools/0.10/%%{name}-%%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gio-2.0) >= 2.24
 BuildRequires:  pkgconfig(glib-2.0) >= 2.24
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.24
-BuildRequires:  pkgconfig(gssdp-1.2) >= 1.1
+BuildRequires:  pkgconfig(gssdp-1.6)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.10
 BuildRequires:  pkgconfig(gtksourceview-4)
-BuildRequires:  pkgconfig(gupnp-1.2) >= 1.4.0
+BuildRequires:  pkgconfig(gupnp-1.6)
 BuildRequires:  pkgconfig(gupnp-av-1.0) >= 0.5.5
-BuildRequires:  pkgconfig(libsoup-2.4) >= 2.42
+BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.0
 BuildRequires:  pkgconfig(uuid)
 
@@ -77,9 +78,6 @@ one to easily test and debug one's UPnP devices and control points:
 
 %install
 %meson_install
-%suse_update_desktop_file -r gupnp-av-cp GTK Network System Monitor
-%suse_update_desktop_file -r gupnp-network-light GTK Network System Monitor
-%suse_update_desktop_file -r gupnp-universal-cp GTK Network System Monitor
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}/%{_datadir}
 
