@@ -24,13 +24,13 @@
 %define _name glibmm
 
 Name:           glibmm2
-Version:        2.72.1
+Version:        2.74.0
 Release:        0
 Summary:        C++ Interface for Glib
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.gtkmm.org/
-Source0:        https://download.gnome.org/sources/glibmm/2.72/%{_name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/glibmm/2.74/%{_name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
 BuildRequires:  c++_compiler
@@ -39,7 +39,7 @@ BuildRequires:  m4
 BuildRequires:  meson >= 0.55.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.71.2
+BuildRequires:  pkgconfig(glib-2.0) >= 2.73.2
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(sigc++-3.0) >= 2.99.5
@@ -83,20 +83,23 @@ C++ and makes it possible for gtkmm to wrap GObject-based APIs.
 %prep
 %autosetup -p1 -n %{_name}-%{version}
 chmod -x NEWS
+chmod -x glib/glibmm/environ.h
 
 %build
 %meson \
 	%{nil}
 %meson_build
 
+%check
+# Temp disable test, currently needs internet during tests, disable until we figure out how to disable those
+#%%meson_test
+
 %install
 %meson_install
-%fdupes %{buildroot}/%{_prefix}
+%fdupes %{buildroot}%{_prefix}
 
-%post -n libglibmm%{so_ver} -p /sbin/ldconfig
-%postun -n libglibmm%{so_ver} -p /sbin/ldconfig
-%post -n libgiomm%{so_ver} -p /sbin/ldconfig
-%postun -n libgiomm%{so_ver} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libglibmm%{so_ver}
+%ldconfig_scriptlets -n libgiomm%{so_ver}
 
 %files -n libglibmm%{so_ver}
 %license COPYING
@@ -107,7 +110,7 @@ chmod -x NEWS
 %{_libdir}/libgiomm-%{base_ver}.so.*
 
 %files devel
-%doc AUTHORS ChangeLog NEWS README
+%doc AUTHORS ChangeLog NEWS README.md
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 %{_includedir}/*
