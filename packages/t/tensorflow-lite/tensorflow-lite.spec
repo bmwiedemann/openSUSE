@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package tensorflow-lite
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -21,7 +21,7 @@
 %define pythons python3
 
 Name:           tensorflow-lite
-Version:        2.9.1
+Version:        2.10.0
 Release:        0
 Summary:        A framework used for deep learning for mobile and embedded devices
 License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND MPL-2.0
@@ -44,18 +44,16 @@ Source13:       https://gitlab.com/libeigen/eigen/-/archive/7792b1e909a98703181a
 Source14:       https://github.com/intel/ARM_NEON_2_x86_SSE/archive/1200fe90bb174a6224a525ee60148671a786a71f.tar.gz#/arm_neon_2_x86_sse.tar.gz
 # Deps sources for Tensorflow-Lite (use same eigen, gemmlowp and abseil_cpp packages as non lite version)
 # License15: Apache-2.0
-Source15:       https://github.com/google/flatbuffers/archive/v1.12.0.tar.gz#/flatbuffers.tar.gz
+Source15:       https://github.com/google/flatbuffers/archive/v2.0.6.tar.gz#/flatbuffers.tar.gz
 # License16: BSD like
 Source16:       https://storage.googleapis.com/mirror.tensorflow.org/github.com/petewarden/OouraFFT/archive/v1.0.tar.gz#/fft2d.tgz
 # Source17: Apache-2.0
-Source17:       https://github.com/google/ruy/archive/e6c1b8dc8a8b00ee74e7268aac8b18d7260ab1ce.zip#/ruy.zip
+Source17:       https://github.com/google/ruy/archive/841ea4172ba904fe3536789497f9565f2ef64129.zip#/ruy.zip
 # License18: BSD-3-Clause
-Source18:       https://github.com/google/XNNPACK/archive/11b2812d64e49bab9b6c489f79067fc94e69db9f.tar.gz#/xnnpack.zip
+Source18:       https://github.com/google/XNNPACK/archive/6b409ac0a3090ebe74d0cdfb494c4cd91485ad39.zip#/xnnpack.zip
 # transitive tensorflow-lite dependencies for xnnpack
-# License20: BSD 2-Clause
-Source20:       https://github.com/pytorch/cpuinfo/archive/d5e37adf1406cf899d7d9ec1d317c47506ccb970.tar.gz#/clog.tar.gz
 # License21: BSD 2-Clause
-Source21:       https://storage.googleapis.com/mirror.tensorflow.org/github.com/pytorch/cpuinfo/archive/5916273f79a21551890fd3d56fc5375a78d1598d.zip#/cpuinfo.zip
+Source21:       https://github.com/pytorch/cpuinfo/archive/5e63739504f0f8e18e941bd63b2d6d42536c7d90.tar.gz#/cpuinfo.tar.gz
 # NOTE: the github url is non-deterministic for the following zipfile archives (!?) Content is the same, but the hashes of the zipfiles differ.
 # License30: MIT
 # Source30:       https://github.com/Maratyszcza/FP16/archive/4dfe081cf6bcd15db339cf2680b9281b8451eeb3.zip #/FP16.zip
@@ -79,9 +77,9 @@ BuildRequires:  git
 # We use some macros here but not singlespec
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-devel >= 3.7
-BuildRequires:  python3-setuptools
 BuildRequires:  python3-numpy-devel >= 1.19.2
 BuildRequires:  python3-pybind11-devel
+BuildRequires:  python3-setuptools
 BuildRequires:  unzip
 Provides:       python3-tflite-runtime = %{version}-%{release}
 Provides:       python3-tflite_runtime = %{version}-%{release}
@@ -129,9 +127,6 @@ Python interpreter.
 sed -i '1{/env python/d}' tensorflow/lite/tools/visualize.py
 
 # prepare third-party sources, transitive dependencies of FP16
-# cpuinfo and clog required both as overridable fetch content as well as FP16 transitive sources
-tar -x -f %{SOURCE20} -C third_party/clog
-unzip %{SOURCE21} -d third_party/cpuinfo
 unzip %{SOURCE30} -d third_party/FP16
 unzip %{SOURCE31} -d third_party/FP16
 unzip %{SOURCE32} -d third_party/FP16
@@ -156,6 +151,8 @@ popd
 
 %build
 # --- Build tensorflow-lite as part of the minimal executable ---
+# -Werror=return-type fails in xnnpack
+%global optflags %(echo %{optflags} | sed s/-Werror=return-type//)
 pushd tflite-build
 %cmake ../../tensorflow/lite/examples/minimal \
   -DBUILD_STATIC_LIBS:BOOL=ON \
@@ -170,10 +167,8 @@ pushd tflite-build
   -DOVERRIDABLE_FETCH_CONTENT_fft2d_URL=%{SOURCE16} \
   -DOVERRIDABLE_FETCH_CONTENT_ruy_URL=%{SOURCE17} \
   -DOVERRIDABLE_FETCH_CONTENT_xnnpack_URL=%{SOURCE18} \
-  -DOVERRIDABLE_FETCH_CONTENT_clog_URL=%{SOURCE20} \
+  -DOVERRIDABLE_FETCH_CONTENT_clog_URL=%{SOURCE21} \
   -DOVERRIDABLE_FETCH_CONTENT_cpuinfo_URL=%{SOURCE21} \
-  -DCLOG_SOURCE_DIR:PATH=$(realpath ../../third_party/clog/cpuinfo-*) \
-  -DCPUINFO_SOURCE_DIR:PATH=$(realpath ../../third_party/cpuinfo/cpuinfo-*) \
   -DFP16_SOURCE_DIR:PATH=$(realpath ../../third_party/FP16/FP16-*) \
   -DFXDIV_SOURCE_DIR:PATH=$(realpath ../../third_party/FP16/FXdiv-*) \
   -DPTHREADPOOL_SOURCE_DIR:PATH=$(realpath ../../third_party/FP16/pthreadpool-*) \
@@ -231,7 +226,7 @@ rmdir build/lib/pkgconfig
 export PROJECT_NAME=tflite_runtime
 export PACKAGE_VERSION=%{version}
 %python3_install --install-lib=%{python3_sitearch}
-%fdupes %{buildroot}%{python3_siterarch}
+%fdupes %{buildroot}%{python3_sitearch}
 popd
 
 %check
