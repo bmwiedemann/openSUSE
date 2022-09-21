@@ -109,4 +109,12 @@
   + AdwTabView: Fix set_menu_model() input check. (forwarded request 1001141 from iznogood)</comment>
     <requestid>1001367</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>dc60fcbc9e8d090030420c5ef73fddc4</srcmd5>
+    <version>1.2.0</version>
+    <time>1663764050</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1004817</requestid>
+  </revision>
 </revisionlist>

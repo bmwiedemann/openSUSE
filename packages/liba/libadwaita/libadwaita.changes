@@ -1,4 +1,109 @@
 -------------------------------------------------------------------
+Thu Sep 15 14:33:50 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.2.0:
+  + Docs:
+    - Fix @card_shade_color description.
+    - Fix a typo in AdwTabView docs.
+    - Fix AdwMessageDialog example.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep  6 21:26:19 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.2.rc:
+  + Ensure setter documentation is consistent with their properties
+  + Demo: Fix a critical when toggling tab indicators
+  + AdwCarousel: Fix a crash when removing a child while it's
+    animating
+  + AdwMessageDialog: Use maximum width when no parent is set,
+    instead of minimum
+  + AdwSqueezer: Sizing fixes
+  + AdwTabBar
+    - Fix long press handling
+    - Fix a crash when clicking empty space while a tab is
+      animating
+  + AdwTabView: Fix set_menu_model() input check
+  + AdwWindow: Clarify docs around child/content properties
+  + Stylesheet
+    - Fix AdwSplitButton disabled state
+    - Fix focus transitions
+    - Fix GtkColorScale slider
+    - Fix AdwViewSwitcher needs-attention dot color
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep  6 11:05:17 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.2.beta:
+  + Fix deprecations with newer GLib
+  + Fix strict aliasing warnings
+  + Fix GLSL shader compile errors on certain systems
+  + AdwAboutWindow:
+    - Fix a random crash when closing
+    - Rework the flat header bar layout
+    - Properly mark as final class
+  + AdwAvatar: Fix draw_to_texture() with rectangular avatars
+  + AdwEntryRow:
+    - Add entry-activated signal
+    - Add attributes property
+    - Add activates-default property
+    - Don't select text when clicking the row
+  + AdwMessageDialog: Fix crash when destroying the parent before
+    the dialog
+  + AdwShadowHelper: Fix warnings when drawing vertical shadow
+  + AdwSplitButton: Add dropdown-tooltip property
+  + AdwSwipeTracker:
+    - Fix swipe speed on GTK 4.7.x
+    - Fix criticals with GTK 4.7.x
+  + AdwTabBar:
+    - Remove tab background when there's only one tab
+    - Add a tooltip for close buttons
+    - Fix squished or clipped text with gtk-hint-font-metrics=0
+    - Fix scrolling to a tab with disabled animations
+    - Fix assorted tab reordering issues
+  + AdwTabView:
+    - Add shortcut management API
+    - Add AdwTabPage:indicator-tooltip property
+    - Handle shortcuts on CAPTURE phase
+    - Shortcut propagation and bell fixes
+  + AdwToast: Add button-clicked signal
+  + AdwViewStack: Add adw_view_stack_add_titled_with_icon()
+  + Demo:
+    - Prefer properties over <child> in UI files
+    - Don't explicilty add GtkViewport to GtkScrolledWindow
+    - Stop using .inline-toolbar
+    - Fix build on Windows
+  + Stylesheet:
+    - Unify @view_fg_color with other foreground colors
+    - Improve contrast of @success_color and @warning_color
+    - Fix infobar margins and spacing
+    - Partially support .navigation-sidebar with GtkTreeView
+    - Move GtkScale focus onto its slider
+    - Ensure consistant GtkScale size when using marks
+    - Remove unnecessary transitions
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  5 20:03:30 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.2.alpha:
+  + Introduce AdwAboutWindow.
+  + Introduce AdwEntryRow and AdwPasswordEntryRow.
+  + Introduce AdwMessageDialog.
+  + Introduce AdwPropertyAnimationTarget.
+  + AdwAnimation: Add adw_animation_set_target().
+  + AdwCallbackAnimationTarget: Fix callback annotations.
+  + AdwActionRow:
+    - Set a11y relations for the activatable widget.
+    - Tweak spacing to match toolbars and AdwEntryRow.
+  + AdwAvatar: Fix initials not updating after setting
+    custom-image.
+  + AdwComboRow: Add an example to docs.
+  + AdwExpanderRow: Change arrow orientation to make it look less
+    similar to action rows that open subpages.
+
+-------------------------------------------------------------------
 Sun Sep  4 17:54:44 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.1.5:
