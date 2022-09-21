@@ -30,6 +30,11 @@ Group:          Development/Libraries/GNOME
 URL:            http://git.gnome.org/browse/librest/
 Source0:        http://download.gnome.org/sources/rest/0.9/%{_name}-%{version}.tar.xz
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM 0001-rest_proxy_call_sync-bail-out-if-no-payload.patch -- rest_proxy_call_sync: bail out if no payload
+Patch0:         0001-rest_proxy_call_sync-bail-out-if-no-payload.patch
+# PATCH-FIX-UPSTREAM 0002-Handle-some-potential-problems-in-parsing-oauth2-acc.patch -- Handle some potential problems in parsing oauth2 access tokens
+Patch1:         0002-Handle-some-potential-problems-in-parsing-oauth2-acc.patch
+
 
 BuildRequires:  gtk-doc
 BuildRequires:  meson
@@ -40,6 +45,7 @@ BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(vapigen)
 
 %description
 This library was designed to make it easier to access web services that
@@ -104,9 +110,10 @@ can then be called on.
 #	-D ca_certificates=true \
 #	-D ca_certificates_path=%%{_sysconfdir}/ssl/ca-bundle.pem \
 %meson \
+	-D ca_certificates=true \
+	-D ca_certificates_path=%{_sysconfdir}/ssl/ca-bundle.pem \
 	-D examples=false \
-	-D soup2=false \
-	-D tests=false \
+	-D vapi=true \
 	%{nil}
 %meson_build
 
@@ -135,5 +142,11 @@ can then be called on.
 %{_datadir}/gir-1.0/*.gir
 %{_includedir}/rest-%{abi}/
 %doc %{_datadir}/doc/librest-%{abi}/
+%dir %{_datadir}/vala
+%dir %{_datadir}/vala/vapi
+%{_datadir}/vala/vapi/rest-1.0.deps
+%{_datadir}/vala/vapi/rest-1.0.vapi
+%{_datadir}/vala/vapi/rest-extras-1.0.deps
+%{_datadir}/vala/vapi/rest-extras-1.0.vapi
 
 %changelog
