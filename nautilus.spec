@@ -17,13 +17,13 @@
 
 
 Name:           nautilus
-Version:        42.2
+Version:        43.0
 Release:        0
 Summary:        File Manager for the GNOME Desktop
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/File utilities
 URL:            https://wiki.gnome.org/Apps/Nautilus
-Source0:        https://download.gnome.org/sources/nautilus/42/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/nautilus/43/%{name}-%{version}.tar.xz
 # fate#308344 bgo#602147
 Source1:        mount-archive.desktop
 Source2:        set_trusted.desktop
@@ -33,26 +33,26 @@ BuildRequires:  dbus-1
 BuildRequires:  fdupes
 BuildRequires:  gettext
 BuildRequires:  gobject-introspection-devel
-BuildRequires:  gtk-doc
-BuildRequires:  meson >= 0.49.0
+BuildRequires:  meson >= 0.59.0
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  (python3-dataclasses if python3-base < 3.7)
+BuildRequires:  pkgconfig(cloudproviders)
 BuildRequires:  pkgconfig(gail-3.0)
 BuildRequires:  pkgconfig(gexiv2) >= 0.14.0
+BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.67.1
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.67.1
 BuildRequires:  pkgconfig(glib-2.0) >= 2.67.1
 BuildRequires:  pkgconfig(gmodule-no-export-2.0) >= 2.67.1
 BuildRequires:  pkgconfig(gnome-autoar-0) >= 0.3.0
-BuildRequires:  pkgconfig(gnome-desktop-3.0) >= 3.0.0
-#BuildRequires:  pkgconfig(gnome-desktop-4) >= 1.0.0
+BuildRequires:  pkgconfig(gnome-desktop-4) >= 1.0.0
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 42
 BuildRequires:  pkgconfig(gstreamer-tag-1.0)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.6
-BuildRequires:  pkgconfig(libhandy-1) >= 1.1.90
-#BuildRequires:  pkgconfig(gtk4) >= 4.6
-#BuildRequires:  pkgconfig(libadwaita-1) >= 1.0
+BuildRequires:  pkgconfig(gtk4) >= 4.7.2
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.2.beta
+BuildRequires:  pkgconfig(libportal)
+BuildRequires:  pkgconfig(libportal-gtk4)
 BuildRequires:  pkgconfig(libseccomp)
 BuildRequires:  pkgconfig(libselinux)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.7.8
@@ -68,21 +68,21 @@ BuildRequires:  tracker-miner-files >= 2.99
 %description
 Nautilus is the file manager for the GNOME desktop.
 
-%package -n libnautilus-extension1
+%package -n libnautilus-extension4
 Summary:        File Manager for the GNOME Desktop -- Extension Library
 Group:          System/Libraries
 Conflicts:      nautilus-totem < 3.31.91
 
-%description  -n libnautilus-extension1
+%description  -n libnautilus-extension4
 Nautilus is the file manager for the GNOME desktop.
 
 This package contains the library used by nautilus extensions.
 
-%package -n typelib-1_0-Nautilus-3_0
+%package -n typelib-1_0-Nautilus-4_0
 Summary:        File Manager for the GNOME Desktop -- Introspection bindings
 Group:          System/Libraries
 
-%description -n typelib-1_0-Nautilus-3_0
+%description -n typelib-1_0-Nautilus-4_0
 Nautilus is the file manager for the GNOME desktop.
 
 This package provides the GObject Introspection bindings for the library
@@ -91,6 +91,7 @@ used by nautilus extensions.
 %package -n gnome-shell-search-provider-nautilus
 Summary:        File Manager for the GNOME Desktop -- Search Provider for GNOME Shell
 Group:          Productivity/File utilities
+BuildArch:      noarch
 Requires:       %{name} = %{version}
 Requires:       gnome-shell
 Supplements:    (%{name} and gnome-shell)
@@ -105,8 +106,8 @@ search results from Files (nautilus)
 Summary:        File Manager for the GNOME Desktop -- Development Files
 Group:          Development/Libraries/GNOME
 Requires:       %{name} = %{version}
-Requires:       libnautilus-extension1 = %{version}
-Requires:       typelib-1_0-Nautilus-3_0 = %{version}
+Requires:       libnautilus-extension4 = %{version}
+Requires:       typelib-1_0-Nautilus-4_0 = %{version}
 
 %description devel
 Nautilus is the file manager for the GNOME desktop.
@@ -121,7 +122,6 @@ This package contains development files for nautilus.
 %build
 %meson \
 	-D docs=true \
-	-D libportal=false \
 	-D tests=headless \
 	%{nil}
 %meson_build
@@ -135,7 +135,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 test ! -e %{buildroot}%{_datadir}/applications/mount-archive.desktop
 install -m0644 %{SOURCE1} %{buildroot}%{_datadir}/applications/mount-archive.desktop
 %suse_update_desktop_file mount-archive
-mkdir -p %{buildroot}/%{_libdir}/nautilus/extensions-3.0
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_prefix}
 %if 0%{?sle_version}
@@ -148,7 +147,7 @@ install -m0755 %{SOURCE3} %{buildroot}%{_bindir}/set_trusted.sh
 %check
 %meson_test
 
-%ldconfig_scriptlets -n libnautilus-extension1
+%ldconfig_scriptlets -n libnautilus-extension4
 
 %files
 %license LICENSE
@@ -172,14 +171,14 @@ install -m0755 %{SOURCE3} %{buildroot}%{_bindir}/set_trusted.sh
 %{_bindir}/set_trusted.sh
 %endif
 
-%files -n libnautilus-extension1
-%{_libdir}/libnautilus-extension.so.1*
+%files -n libnautilus-extension4
+%{_libdir}/libnautilus-extension.so.4*
 %dir %{_libdir}/nautilus
-%dir %{_libdir}/nautilus/extensions-3.0
-%{_libdir}/nautilus/extensions-3.0/*.so
+%dir %{_libdir}/nautilus/extensions-4
+%{_libdir}/nautilus/extensions-4/*.so
 
-%files -n typelib-1_0-Nautilus-3_0
-%{_libdir}/girepository-1.0/Nautilus-3.0.typelib
+%files -n typelib-1_0-Nautilus-4_0
+%{_libdir}/girepository-1.0/Nautilus-4.0.typelib
 
 %files -n gnome-shell-search-provider-nautilus
 %dir %{_datadir}/gnome-shell
@@ -191,9 +190,7 @@ install -m0755 %{SOURCE3} %{buildroot}%{_bindir}/set_trusted.sh
 %{_includedir}/*
 %{_libdir}/pkgconfig/*.pc
 %{_datadir}/gir-1.0/*.gir
-%dir %{_datadir}/gtk-doc
-%dir %{_datadir}/gtk-doc/html
-%{_datadir}/gtk-doc/html/*
+%{_datadir}/doc/%{name}/
 
 %files lang -f %{name}.lang
 

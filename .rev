@@ -1476,4 +1476,12 @@ Hence, recommended to be added to 12.3</comment>
     <comment>GNOME 42.2 (forwarded request 979902 from dimstar)</comment>
     <requestid>980038</requestid>
   </revision>
+  <revision rev="197" vrev="1">
+    <srcmd5>4092dbf1b26cc3da46c09e44e3bca067</srcmd5>
+    <version>43.0</version>
+    <time>1663764062</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1004827</requestid>
+  </revision>
 </revisionlist>
