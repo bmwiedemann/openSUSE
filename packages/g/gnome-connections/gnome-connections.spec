@@ -17,12 +17,12 @@
 
 
 Name:           gnome-connections
-Version:        42.1.2
+Version:        43.0
 Release:        0
 Summary:        A remote desktop client for GNOME
 License:        GPL-3.0-or-later
 URL:            https://wiki.gnome.org/Apps/Connections
-Source:         https://download.gnome.org/sources/gnome-connections/42/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/gnome-connections/43/%{name}-%{version}.tar.xz
 
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
@@ -35,7 +35,7 @@ BuildRequires:  pkgconfig(gio-2.0) >= 2.50
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
 BuildRequires:  pkgconfig(gtk-vnc-2.0) > 0.4.4
-BuildRequires:  pkgconfig(libhandy-1)
+BuildRequires:  pkgconfig(libhandy-1) >= 1.6.0
 BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.7.8
 BuildRequires:  pkgconfig(winpr2) >= 2.0.0
