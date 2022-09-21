@@ -16,16 +16,18 @@
 #
 
 
-%define _sover -2_91-0
-%define _apiver 2.91
-%define _binver 2.91
-%define _gtkver 3.0
-%define _name   vte
+%define _sover   -2_91-0
+%define _apiver  2.91
+%define _binver  2_91
+%define _apiver4 3.91
+%define _binver4 3_91
+%define _name    vte
 
-%bcond_with     gtk4_support
+%bcond_without  gtk4_support
+%bcond_with     glade_support
 
 Name:           vte
-Version:        0.68.0
+Version:        0.70.0
 Release:        0
 Summary:        Terminal Emulator Library
 License:        CC-BY-4.0 AND LGPL-3.0-or-later AND GPL-3.0-or-later AND MIT
@@ -39,15 +41,17 @@ Patch100:       vte-revert-back-to-c++17.patch
 
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
+%if %{with glade_support}
 BuildRequires:  glade
+%endif
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gperf
-BuildRequires:  gtk-doc
 BuildRequires:  intltool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  (python3-dataclasses if python3-base < 3.7)
 BuildRequires:  pkgconfig(fribidi) >= 1.0.0
+BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.40.0
@@ -107,12 +111,12 @@ emulation settings.
 This package provides tools using VTE.
 
 %if %{with gtk4_support}
-%package -n typelib-1_0-Vte-%{?_binver}-gtk4
+%package -n typelib-1_0-Vte-%{?_binver4}
 Summary:        Introspection bindings for the VTE terminal emulator library
 License:        LGPL-2.0-only
 Group:          System/Libraries
 
-%description -n typelib-1_0-Vte-%{?_binver}-gtk4
+%description -n typelib-1_0-Vte-%{?_binver4}
 VTE is a terminal emulator library that provides a terminal widget for
 use with GTK+ as well as handling of child process and terminal
 emulation settings.
@@ -139,7 +143,7 @@ Group:          Development/Libraries/GNOME
 Requires:       libvte%{_sover} = %{version}
 Requires:       typelib-1_0-Vte-%{?_binver} = %{version}
 %if %{with gtk4_support}
-Requires:       typelib-1_0-Vte-%{?_binver}-gtk4 = %{version}
+Requires:       typelib-1_0-Vte-%{?_binver4} = %{version}
 %endif
 Provides:       vte-doc = %{version}
 Obsoletes:      vte-doc < %{version}
@@ -152,6 +156,7 @@ emulation settings.
 This package contains the files needed for building applications using
 VTE.
 
+%if %{with glade_support}
 %package -n glade-catalog-vte
 Summary:        Glade catalog for vte
 License:        CC-BY-4.0 AND LGPL-3.0-or-later AND GPL-3.0-or-later AND MIT
@@ -159,10 +164,12 @@ Group:          Development/Tools/GUI Builders
 Requires:       %{name} = %{version}
 Requires:       glade
 Supplements:    (glade and %{name}-devel)
+BuildArch:      noarch
 
 %description -n glade-catalog-vte
 This package provides a catalog for Glade, to allow the use the vte
 widgets in Glade.
+%endif
 
 %lang_package
 
@@ -179,6 +186,11 @@ widgets in Glade.
 %if %{with gtk4_support}
 	-Dgtk4=true \
 %endif
+%if %{with glade_support}
+	-Dglade=true \
+%else
+	-Dglade=false \
+%endif
 	%{nil}
 %meson_build
 
@@ -187,6 +199,17 @@ widgets in Glade.
 
 %find_lang vte-%{_apiver}
 %fdupes %{buildroot}%{_prefix}
+
+# Make default docdir ref openSUSE standard
+mkdir -p %{buildroot}%{_docdir}/vte-%{_apiver}
+%if %{with gtk4_support}
+mkdir -p %{buildroot}%{_docdir}/vte-%{_apiver}-gtk4
+%endif
+# Move docs from upstream docdir to openSUSE docdir standard
+mv %{buildroot}%{_datadir}/doc/vte-%{_apiver} %{buildroot}%{_docdir}
+%if %{with gtk4_support}
+mv %{buildroot}%{_datadir}/doc/vte-%{_apiver}-gtk4 %{buildroot}%{_docdir}
+%endif
 
 %ldconfig_scriptlets -n libvte%{_sover}
 
@@ -203,36 +226,40 @@ widgets in Glade.
 %{_libdir}/girepository-1.0/Vte-%{_apiver}.typelib
 
 %files tools
-%{_bindir}/vte-%{?_binver}
+%{_bindir}/vte-%{?_apiver}
 
 %if %{with gtk4_support}
-%files -n typelib-1_0-Vte-%{?_binver}-gtk4
-%{_libdir}/girepository-1.0/Vte-4-%{_apiver}.typelib
+%files -n typelib-1_0-Vte-%{?_binver4}
+%{_libdir}/girepository-1.0/Vte-%{_apiver4}.typelib
 
 %files tools-gtk4
-%{_bindir}/vte-%{?_binver}-gtk4
+%{_bindir}/vte-%{?_apiver}-gtk4
 %endif
 
 %files devel
 %doc AUTHORS
+%doc %{_docdir}/vte-%{_apiver}/
 %{_libdir}/pkgconfig/*.pc
 %{_libdir}/*.so
 %{_includedir}/vte-%{_apiver}/
 %{_datadir}/gir-1.0/*.gir
-%{_datadir}/gtk-doc/html/vte-gtk3-%{_apiver}/
 %dir %{_datadir}/vala/vapi
-%{_datadir}/vala/vapi/vte-2.91.vapi
-%{_datadir}/vala/vapi/vte-2.91.deps
+%{_datadir}/vala/vapi/vte-%{_apiver}.vapi
+%{_datadir}/vala/vapi/vte-%{_apiver}.deps
 
 %if %{with gtk4_support}
 %{_includedir}/vte-%{_apiver}-gtk4/
-%{_datadir}/gtk-doc/html/vte-gtk4-%{_apiver}/
+%doc %{_docdir}/vte-%{_apiver}-gtk4/
+%{_datadir}/vala/vapi/vte-%{_apiver}-gtk4.deps
+%{_datadir}/vala/vapi/vte-%{_apiver}-gtk4.vapi
 %endif
 
+%if %{with glade_support}
 %files -n glade-catalog-vte
-%{_datadir}/glade/catalogs/vte-2.91.xml
+%{_datadir}/glade/catalogs/vte-%{_apiver}.xml
 %{_datadir}/glade/pixmaps/hicolor/16x16/actions/widget-vte-terminal.png
 %{_datadir}/glade/pixmaps/hicolor/22x22/actions/widget-vte-terminal.png
+%endif
 
 %files lang -f vte-%{_apiver}.lang
 

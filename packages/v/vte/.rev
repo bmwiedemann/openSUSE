@@ -1088,4 +1088,12 @@ https://gitlab.gnome.org/GNOME/vte/commit/7566ad673a12d26293b0a74dd3cb3e5f3d22ed
     <comment></comment>
     <requestid>965349</requestid>
   </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>14f52f926611cf65b058e7c5858f4e78</srcmd5>
+    <version>0.70.0</version>
+    <time>1663764068</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1004835</requestid>
+  </revision>
 </revisionlist>
