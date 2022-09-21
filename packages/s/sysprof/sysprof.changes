@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Sun Sep 18 10:51:47 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.46.0:
+  + sysprof-cli is now statically linked.
+  + sysprof-agent now has a --decode option to decode symbols at
+    the end of a capture, similar to what sysprof-cli can do.
+  + A crash in the Elf symbol resolver has been fixed.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Aug 11 13:18:20 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.45.1:
+  + Addition of sysprof-agent to aid in cross-container profiling
+    and instrumentation. (Use -Dagent=(true|false) to control.
+  + Additional porting to libadwaita.
+  + Remove unused settings schemas.
+  + Nightly Flatpak builds now use org.gnome.Sysprof.Devel as the
+    application-id.
+  + The application now uses org.gnome.Sysprof as the
+    application-id instead of org.gnome.Sysprof3.
+  + Icon updates.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Aug 11 11:25:47 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.45.0:
+  + Initial port to GTK 4.
+  + A number of build configuration options where simplified and
+    will need changing by distributions to match the new, more
+    consistent, naming.
+  + Libadwaita has been added as a dependency.
+  + The profiler assistant has received styling changes.
+  + libsysprof-ui had it's ABI bumped to libsysprof-ui-5 which
+    targets GTK 4.
+- Updates for GTK4 port in UI flavor:
+  + Replace pkgconfig(gtk+-3.0) BuildRequires with pkgconfig(gtk4).
+  + Add pkgconfig(libadwaita-1) BuildRequires.
+  + Introduce ui_sover, set to 5: the UI libraries are no longer in
+    sync with the soversion of the main libraries.
+- Updated meson paramteres passed, aligning with upstreams rename
+  of the options:
+  + -Denable_gtk=%{enable_gtk} => -Dgtk=%{enable_gtk} 
+  + -Denable_tests=false => -Dtests=false
+
+-------------------------------------------------------------------
 Sun Mar 20 09:12:44 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.44.0:

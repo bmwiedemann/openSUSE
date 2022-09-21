@@ -27,26 +27,27 @@
 %endif
 
 %define sover 4
+%define ui_sover 5
 
 Name:           sysprof%{_name_suffix}
-Version:        3.44.0
+Version:        3.46.0
 Release:        0
 Summary:        A system-wide Linux profiler
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Tools/Debuggers
 URL:            https://wiki.gnome.org/Apps/Sysprof
-Source0:        https://download.gnome.org/sources/sysprof/3.44/sysprof-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/sysprof/3.46/sysprof-%{version}.tar.xz
 Patch0:         harden_sysprof2.service.patch
 Patch1:         harden_sysprof3.service.patch
 
 BuildRequires:  c++_compiler
 BuildRequires:  itstool
-BuildRequires:  meson >= 0.51.0
+BuildRequires:  meson >= 0.59.0
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gio-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.50.0
-BuildRequires:  pkgconfig(glib-2.0) >= 2.67.4
+BuildRequires:  pkgconfig(glib-2.0) >= 2.73.0
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libsystemd) >= 222
 BuildRequires:  pkgconfig(libunwind-generic)
@@ -56,7 +57,8 @@ BuildRequires:  pkgconfig(systemd)
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  sysprof-capture-devel-static
 BuildRequires:  sysprof-devel
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
+BuildRequires:  pkgconfig(gtk4) >= 4.6
+BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(libdazzle-1.0) >= 3.30.0
 Requires:       hicolor-icon-theme
 %endif
@@ -91,13 +93,13 @@ syspref's capture format.
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-%meson -Denable_gtk=%{enable_gtk} -Denable_tests=false
+%meson -Dgtk=%{enable_gtk} -Dtests=false
 %meson_build
 
 %install
 %meson_install
 %if "%{flavor}" == "UI"
-%suse_update_desktop_file org.gnome.Sysprof3 Profiling
+%suse_update_desktop_file org.gnome.Sysprof Profiling
 for file in $(rpm -qla "*sysprof*"); do
   [ -f %{buildroot}${file} ] && rm %{buildroot}${file}
 done
@@ -139,13 +141,14 @@ rm -rf %{buildroot}%{_datadir}/locale/*/LC_MESSAGES/sysprof.mo %{buildroot}/%{_d
 %if "%{flavor}" == "UI"
 %{_bindir}/sysprof
 %{_datadir}/applications/*.desktop
-%{_datadir}/glib-2.0/schemas/org.gnome.sysprof3.gschema.xml
 %{_datadir}/icons/hicolor/*/*/*
-%{_datadir}/metainfo/org.gnome.Sysprof3.appdata.xml
+%{_datadir}/metainfo/org.gnome.Sysprof.appdata.xml
 %{_datadir}/mime/packages/sysprof-mime.xml
-%{_libdir}/libsysprof-ui-%{sover}.so
+%{_libdir}/libsysprof-ui-%{ui_sover}.so
 %else
+%{_bindir}/sysprof-agent
 %{_bindir}/sysprof-cli
+%{_datadir}/dbus-1/interfaces/org.gnome.Sysprof.Agent.xml
 %{_datadir}/dbus-1/interfaces/org.gnome.Sysprof2.xml
 %{_datadir}/dbus-1/interfaces/org.gnome.Sysprof3.Profiler.xml
 %{_datadir}/dbus-1/interfaces/org.gnome.Sysprof3.Service.xml
@@ -167,10 +170,11 @@ rm -rf %{buildroot}%{_datadir}/locale/*/LC_MESSAGES/sysprof.mo %{buildroot}/%{_d
 
 %files devel
 %doc AUTHORS
-%{_includedir}/sysprof-%{sover}/
 %if "%{flavor}" == "UI"
-%{_libdir}/pkgconfig/sysprof-ui-%{sover}.pc
+%{_includedir}/sysprof-ui-%{ui_sover}/
+%{_libdir}/pkgconfig/sysprof-ui-%{ui_sover}.pc
 %else
+%{_includedir}/sysprof-%{sover}/
 %{_libdir}/pkgconfig/sysprof-%{sover}.pc
 
 %files capture-devel-static
