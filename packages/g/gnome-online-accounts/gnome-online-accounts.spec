@@ -17,16 +17,19 @@
 
 
 Name:           gnome-online-accounts
-Version:        3.44.0
+Version:        3.46.0
 Release:        0
 Summary:        GNOME service to access online accounts
 License:        LGPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GnomeOnlineAccounts
-Source0:        https://download.gnome.org/sources/gnome-online-accounts/3.44/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-online-accounts/3.46/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
+# PATCH-FEATURE-OPENSUSE 0001-google-Remove-Photos-support.patch -- google: Remove Photos support
+Patch0:         0001-google-Remove-Photos-support.patch
 
 BuildRequires:  docbook-xsl-stylesheets
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gcr-3)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.52
@@ -35,14 +38,15 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.52
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.6.2
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.19.12
 BuildRequires:  pkgconfig(gtk-doc)
+BuildRequires:  pkgconfig(javascriptcoregtk-4.1)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(libsecret-1)
-BuildRequires:  pkgconfig(libsoup-2.4) >= 2.42
+BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libxml-2.0)
-BuildRequires:  pkgconfig(rest-0.7)
+BuildRequires:  pkgconfig(rest-1.0)
 BuildRequires:  pkgconfig(vapigen)
-BuildRequires:  pkgconfig(webkit2gtk-4.0) >= 2.26.0
+BuildRequires:  pkgconfig(webkit2gtk-4.1)
 # p11-kit is not 'strictly' seen a requirement, but without it none of the SSL/TLS
 # Certificates are considered valid, which results in a really bad experience.
 Requires:       p11-kit >= 0.16
@@ -97,32 +101,26 @@ libraries in GNOME can access the user's online accounts.
 %autosetup -p1
 
 %build
-%configure \
-        --disable-static \
-        --enable-documentation \
-        --enable-gtk-doc \
-        --enable-exchange \
-        --enable-facebook \
-        --enable-flickr \
-        --enable-foursquare \
-        --enable-google \
-        --enable-imap-smtp \
-        --enable-kerberos \
-        --disable-media-server \
-        --enable-owncloud \
-        --enable-windows-live \
-        %{nil}
-%make_build
+%meson \
+	-D gtk_doc=true \
+	-D exchange=true \
+	-D google=true \
+	-D imap_smtp=true \
+	-D kerberos=true \
+	-D media_server=false \
+	-D owncloud=true \
+	-D windows_live=true \
+	-D fedora=false \
+	-D man=true \
+	%{nil}
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+%meson_install
 %find_lang %{name} %{?no_lang_C}
 
-%post -n libgoa-1_0-0 -p /sbin/ldconfig
-%postun -n libgoa-1_0-0 -p /sbin/ldconfig
-%post -n libgoa-backend-1_0-1 -p /sbin/ldconfig
-%postun -n libgoa-backend-1_0-1 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgoa-1_0-0
+%ldconfig_scriptlets -n libgoa-backend-1_0-1
 
 %files
 %license COPYING

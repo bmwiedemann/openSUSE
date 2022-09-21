@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Sun Sep 18 08:23:55 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.46.0:
+  + Build system fixes with recent Meson.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep 11 12:32:36 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 0001-google-Remove-Photos-support.patch: google: Remove
+  Photos support. In theory, support for photos is still desired.
+  However, right now the implementation of the Google PicasaWeb API
+  in libgdata no longer works. Until that's fixed, there's no point
+  in advertising support for photos. See
+  https://gitlab.gnome.org/GNOME/gnome-online-accounts/-/issues/63
+
+-------------------------------------------------------------------
+Tue Aug  9 15:36:05 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.45.2:
+  + Use debugging messages instead of warnings.
+  + Fix documentation build.
+  + Updated translations.
+- Enable build of documentation again.
+
+-------------------------------------------------------------------
+Sun Aug  7 11:30:54 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.45.1:
+  + Removed providers:
+    - Foursquare
+    - Facebook
+    - Flickr
+  + Port to libsoup3
+  + Port to librest-1.0
+  + Drop the Autotools build
+  + Update the Google OAuth2 provider
+- Add meson BuildRequires and macros, switch to meson buildsystem.
+- Use ldconfig_scriptlets macro for post(un) handling.
+- Replace BuildRequires following upstream changes:
+  + Drop pkgconfig(libsoup-2.4), pkgconfig(rest-0.7) and
+    pkgconfig(webkit2gtk-4.0).
+  + Add pkgconfig(javascriptcoregtk-4.1), pkgconfig(libsoup-3.0),
+    pkgconfig(rest-1.0) and pkgconfig(webkit2gtk-4.1).
+- Do not build gtk-docs as it is currently broken.
+
+-------------------------------------------------------------------
 Thu Mar 31 11:53:44 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.44.0:
