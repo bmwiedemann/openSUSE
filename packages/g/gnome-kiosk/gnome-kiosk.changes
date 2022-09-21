@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Sep 20 17:52:44 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.0:
+  + Meson build fixes.
+  + Require mutter 43.
+  + Clean up code format.
+
+-------------------------------------------------------------------
+Sat Sep 10 13:37:57 UTC 2022 - bjorn.lie@gmail.com
+
+- Update to version 42.0+12:
+  * compositor:
+    - Delete g_autoptr blank lines
+    - Run entire codebase through uncrustify
+  * scripts:
+    - Don't force newline after variable declarations
+    - Add uncrustify config
+  * ci: Enforce coding style in CI
+  * Bump mutter library requirements to 11 (mutter 43)
+  * Drop unused positional argument to i18n.merge_file
+- Switch to git checkout via source service, following this, bump
+  mutter_api to 11 following upstream changes.
+- Drop gnome-kiosk-fix-meson-061.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Tue Mar 22 08:10:07 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 42.0:

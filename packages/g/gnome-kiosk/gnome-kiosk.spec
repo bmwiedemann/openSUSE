@@ -16,17 +16,15 @@
 #
 
 
-%define mutter_api 10
+%define mutter_api 11
 
 Name:           gnome-kiosk
-Version:        42.0
+Version:        43.0
 Release:        0
 Summary:        Mutter based compositor for kiosks
 License:        GPL-2.0-or-later
 URL:            https://gitlab.gnome.org/GNOME/gnome-kiosk
-Source0:        https://download.gnome.org/sources/gnome-kiosk/42/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM gnome-kiosk-fix-meson-061.patch bjorn.lie@gmail.com -- Fix build with meson 0.61 and newer
-Patch0:         gnome-kiosk-fix-meson-061.patch
+Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  meson
