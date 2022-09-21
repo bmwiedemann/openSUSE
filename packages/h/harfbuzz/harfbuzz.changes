@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Sep 20 17:21:33 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 5.2.0:
+  + Fix regressions in hb-ft font functions for FT_Faces with
+    transformation matrix.
+  + The experimental hb-repacker API now supports splitting several
+    GPOS subtable types when needed.
+  + The HarfBuzz extensions to OpenType font format are now opt-in
+    behind build-time flags.
+  + The experimental hb-subset variable fonts instantiation API can
+    now instantiate more font tables and arbitrary axis locations.
+  + Unicode 15 support.
+  + Various documentation improvements.
+  + The hb-view command line tool now detects WezTerm inline images
+    support.
+  + Fix FreeType and ICU dependency lookup with meson.
+  + New API:
+    - +HB_SCRIPT_KAWI
+    - +HB_SCRIPT_NAG_MUNDARI
+- Drop patch fixed upstream:
+  + harfbuzz-5.1.0-repacker-fix-signedness-of-char-in-tests.patch
+
+-------------------------------------------------------------------
 Wed Aug  3 07:45:27 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - harfbuzz 5.1.0:

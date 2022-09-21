@@ -17,14 +17,14 @@
 
 
 Name:           harfbuzz
-Version:        5.1.0
+Version:        5.2.0
 Release:        0
 Summary:        An OpenType text shaping engine
 License:        MIT
 URL:            https://www.freedesktop.org/wiki/Software/HarfBuzz
 Source0:        https://github.com/harfbuzz/harfbuzz/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
-Patch0:         harfbuzz-5.1.0-repacker-fix-signedness-of-char-in-tests.patch
+
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
 BuildRequires:  meson
