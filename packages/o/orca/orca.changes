@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Aug 29 11:22:11 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.beta:
+  + Web:
+    - Fix issue causing Orca to remain silent with autofocused
+      inputs.
+    - Prevent structural navigation exiting current modal dialog.
+    - Make cell ancestor presentation optional.
+  + General:
+    - Fix issue causing the description to not be presented.
+    - Fix several popup menu-related issues.
+    - Fix issue causing certain static text in dialogs to not be
+      presented.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jul  9 11:04:07 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.alpha:
+  + Web:
+    - Improve presentation of articles in feeds.
+    - Improve presentation of unknown setsize and row/column count.
+    - Fix several "chattiness" issues related to ARIA widgets.
+    - Improve performance in large rich-text editors.
+    - Include focusable elements with clickancestor action in the
+      list of "clickables".
+  + WebKitGtk: Fix issue causing WebKitGtk 2.36 content to not be
+    handled by Orca's webkit support.
+  + General:
+    - Add more event-flood handling to improve performance in
+      general, but especially for gnome-shell.
+    - Fix bug related to which script responded to a mouse-button
+      event.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Jul  1 19:51:00 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 42.2:

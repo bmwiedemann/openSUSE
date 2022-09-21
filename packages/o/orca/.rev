@@ -1252,4 +1252,12 @@
     <comment>New stable release (forwarded request 986293 from iznogood)</comment>
     <requestid>986576</requestid>
   </revision>
+  <revision rev="163" vrev="1">
+    <srcmd5>a7f85375ea4186ad9bd061a6dfbe608a</srcmd5>
+    <version>43.beta</version>
+    <time>1663763969</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 43.rc - let's get this into Staging to see what we break (e.g meson:test seems to be an issue already) (forwarded request 1002681 from dimstar)</comment>
+    <requestid>1003209</requestid>
+  </revision>
 </revisionlist>
