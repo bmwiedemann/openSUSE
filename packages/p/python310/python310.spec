@@ -169,6 +169,8 @@ Patch36:        support-expat-CVE-2022-25236-patched.patch
 # PATCH-FIX-UPSTREAM CVE-2015-20107-mailcap-unsafe-filenames.patch bsc#1198511 mcepl@suse.com
 # avoid the command injection in the mailcap module.
 Patch37:        CVE-2015-20107-mailcap-unsafe-filenames.patch
+# PATCH-FIX-UPSTREAM gh-96710: Make the test timing more lenient for the int/str DoS regression test. (#96717)
+Patch38:        test-int-timing.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -438,6 +440,7 @@ other applications.
 %patch35 -p1
 %patch36 -p1
 %patch37 -p1
+%patch38 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac

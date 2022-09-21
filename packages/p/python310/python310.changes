@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep 18 08:48:51 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- test-int-timing.patch: gh-96710: Make the test timing more lenient for
+  the int/str DoS regression test. (#96717)
+
+-------------------------------------------------------------------
 Sun Sep 11 08:32:53 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.10.7:
