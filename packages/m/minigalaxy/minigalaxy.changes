@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Wed Sep 21 10:24:38 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.2.1:
+  * Fix downloads failing when content length is not returned by the server
+  * Allow different types of downloads to happen at the same time
+  * Fix metadata file having releases in wrong order
+
+-------------------------------------------------------------------
+Wed Sep 21 10:23:18 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.2.0:
+  * Split game information and properties into different windows
+  * Add list view
+  * Allow DLC to be queued up for downloading
+  * Fix changing library to a directory with special characters in the name
+  * Fix signing in with Facebook
+  * Always use cached DLC icons and thumbnails
+  * Cache information covers
+  * Fix installers not being cleaned up like expected
+  * Fix error when opening game properties window when wine is not installed
+  * Fix freeze for games generating a lot of output
+  * Fix extracting rar based games with innoextract
+  * Allow setting wine executable per game
+  * Add GameMode support
+  * Add MangoHud support
+  * Add option to use Winetricks
+  * Fix updates not always being detected directly after opening Minigalaxy
+  * Fix desktop files generated not always being able to launch
+  * Show percentage when hovering over download progress bar
+  * Add option to disable update check per game
+  * Add forum, GOG Database and PCGamingWiki URLs to game information
+  * List genre as unknown in game information when none is found
+  * Fix changing installation path causing crashes in rare cases
+  * Fall back to English when locale cannot be determined
+  * Add gettext to build dependencies
+  * Improve error handling upon API errors
+  * Fix several issues with launching Windows games from Minigalaxy
+  * Fix some games getting stuck on in queue
+  * Fix Windows game installation not caring about preferred language
+  * Add Greek translation
+  * Add Spanish (Spain) translation
+  * Add Romanian (Romania) translation
+  * Update Norwegian Bokmål translation
+  * Update Czech translation
+
+-------------------------------------------------------------------
 Wed Nov 17 16:03:58 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.1.0:
