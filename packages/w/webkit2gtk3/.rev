@@ -1324,4 +1324,12 @@
     <comment></comment>
     <requestid>999535</requestid>
   </revision>
+  <revision rev="152" vrev="1">
+    <srcmd5>f315f8e0bb1822d960ed75d943052ebd</srcmd5>
+    <version>2.38.0</version>
+    <time>1663764010</time>
+    <user>dimstar_suse</user>
+    <comment>New stable</comment>
+    <requestid>1004770</requestid>
+  </revision>
 </revisionlist>

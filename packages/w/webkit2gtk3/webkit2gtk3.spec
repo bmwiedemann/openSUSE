@@ -70,7 +70,7 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           webkit2%{_gtknamesuffix}
-Version:        2.36.7
+Version:        2.38.0
 Release:        0
 Summary:        Library for rendering web content, GTK+ Port
 License:        BSD-3-Clause AND LGPL-2.0-or-later
@@ -144,7 +144,6 @@ BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(harfbuzz) >= 0.9.18
 BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libavif) >= 0.9.0
-BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libseccomp)
 BuildRequires:  pkgconfig(libsecret-1)
@@ -355,6 +354,7 @@ export PYTHON=%{_bindir}/python3
 %cmake \
   -GNinja \
   -DCMAKE_BUILD_TYPE=Release \
+  -DENABLE_DOCUMENTATION=OFF \
 %if %usegcc10
   -DCMAKE_C_COMPILER=gcc-10 \
   -DCMAKE_CXX_COMPILER=g++-10 \
