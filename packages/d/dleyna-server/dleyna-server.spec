@@ -25,17 +25,19 @@ License:        LGPL-2.1-only
 Group:          Productivity/Multimedia/Other
 URL:            https://github.com/phako/dleyna-server
 Source:         %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM port-to-gupnp1_6.patch -- Fix build with new gupnp
+Patch:          port-to-gupnp1_6.patch
 
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dleyna-core-1.0) >= 0.6.0
 BuildRequires:  pkgconfig(gio-2.0) >= 2.36
 BuildRequires:  pkgconfig(glib-2.0) >= 2.36
-BuildRequires:  pkgconfig(gssdp-1.2) >= 0.13.2
-BuildRequires:  pkgconfig(gupnp-1.2) >= 0.20.3
+BuildRequires:  pkgconfig(gssdp-1.6)
+BuildRequires:  pkgconfig(gupnp-1.6)
 BuildRequires:  pkgconfig(gupnp-av-1.0) >= 0.12.9
 BuildRequires:  pkgconfig(gupnp-dlna-2.0) >= 0.9.4
-BuildRequires:  pkgconfig(libsoup-2.4) >= 2.28.2
+BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 # As dleyna-server publishes itself on DBus, it needs access to the DBus connector
 Requires:       dleyna-connector-dbus
