@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 30 20:12:53 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add bijiben-switch-to-soup3.patch: Backport upstream switch to
+  soup3. Following this, replace pkgconfig(webkit2gtk-4.0) with
+  pkgconfig(webkit2gtk-4.1) BuildRequires.
+
+-------------------------------------------------------------------
 Fri Apr 15 11:01:36 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Call find_lang before fdupes: find_lang potentially deletes some

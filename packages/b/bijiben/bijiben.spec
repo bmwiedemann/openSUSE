@@ -26,6 +26,8 @@ URL:            https://wiki.gnome.org/Apps/Bijiben
 Source0:        https://download.gnome.org/sources/bijiben/40/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM 158.patch -- Fix build with meson 0.61.0 and newer
 Patch0:         https://gitlab.gnome.org/GNOME/gnome-notes/-/merge_requests/158.patch
+# PATCH-FIX-UPSTREAM bijiben-switch-to-soup3.patch -- Backport upstream switch to soup3
+Patch1:         bijiben-switch-to-soup3.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gettext
@@ -45,7 +47,7 @@ BuildRequires:  pkgconfig(libhandy-1) >= 1.0.0
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(tracker-sparql-3.0)
 BuildRequires:  pkgconfig(uuid)
-BuildRequires:  pkgconfig(webkit2gtk-4.0) >= 2.26.0
+BuildRequires:  pkgconfig(webkit2gtk-4.1) >= 2.26.0
 
 %description
 Bijiben is a note editor designed to remain simple to use.

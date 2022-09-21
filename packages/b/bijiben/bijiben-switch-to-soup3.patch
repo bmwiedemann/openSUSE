@@ -1,0 +1,11 @@
+--- orig-bijiben-40.1/meson.build	2021-04-30 13:59:10.302303300 +0200
++++ bijiben-40.1/meson.build	2022-08-30 22:11:07.619192939 +0200
+@@ -126,7 +126,7 @@
+   dependency('libxml-2.0'),
+   dependency('libcurl'),
+   dependency('uuid'),
+-  dependency('webkit2gtk-4.0', version: '>= 2.26'),
++  dependency('webkit2gtk-4.1', version: '>= 2.26'),
+   cc.find_library('m')
+ ]
+ 
