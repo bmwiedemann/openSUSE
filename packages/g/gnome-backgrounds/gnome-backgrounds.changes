@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Sep 20 17:46:58 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Updated to version 43:
+  + No changes, stable bump only.
+
+-------------------------------------------------------------------
+Tue Sep  6 15:55:55 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 43.rc:
+  + Minor janitory.
+
+-------------------------------------------------------------------
+Mon Aug 29 21:41:08 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add rich Requires to pull in svg and webp pixbuf loaders.
+  (gdk-pixbuf-loader-rsvg if libgdk_pixbuf-2_0) and
+  (webp-pixbuf-loader if libgdk_pixbuf-2_0).
+
+-------------------------------------------------------------------
+Fri Aug  5 07:26:36 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.beta:
+  + All new 43 set of default and supplemental wallpapers.
+  + SVG and WebM formats for better compression and resolution.
+  + 4k square format targeting both widescreen, 4:3 and portrait
+    displays.
+
+-------------------------------------------------------------------
 Mon Mar 21 19:26:34 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 42.0:

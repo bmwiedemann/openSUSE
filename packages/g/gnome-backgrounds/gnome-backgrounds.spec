@@ -17,16 +17,20 @@
 
 
 Name:           gnome-backgrounds
-Version:        42.0
+Version:        43
 Release:        0
 Summary:        GNOME Backgrounds
 License:        CC-BY-SA-3.0
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/gnome-backgrounds
-Source0:        https://download.gnome.org/sources/gnome-backgrounds/42/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-backgrounds/43/%{name}-%{version}.tar.xz
 
 BuildRequires:  meson
 BuildRequires:  pkgconfig
+# svg pixbuf loader
+Requires:       (gdk-pixbuf-loader-rsvg if libgdk_pixbuf-2_0)
+# webp pixbuf loader
+Requires:       (webp-pixbuf-loader if libgdk_pixbuf-2_0)
 BuildArch:      noarch
 Obsoletes:      %{name}-lang < %{version}
 
