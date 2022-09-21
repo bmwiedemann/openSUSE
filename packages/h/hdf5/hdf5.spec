@@ -775,6 +775,14 @@ export MPICXX=mpicxx
   --with-pthread \
   %{nil}
 
+# Remove timestamp/buildhost/kernel version
+export SDE_DATE=$(date -d @${SOURCE_DATE_EPOCH} -u)
+export UNAME_M_O=$(uname -m -o)
+sed -i -e "s/\(Configured on: \).*/\1 $SDE_DATE/" \
+       -e "s#\(Uname information: \).*#\1 $UNAME_M_O#" \
+       -e "s/\(Configured by: \).*/\1 abuild@OBS/" \
+       src/libhdf5.settings
+
 make V=1 %{?_smp_mflags}
 
 %install

@@ -779,4 +779,12 @@ fixed baselibs.conf compared to previous version</comment>
 - Drop upstreamed patch: hdf5-1.10.8-pr1494-fix-release-check-version.patch.</comment>
     <requestid>995074</requestid>
   </revision>
+  <revision rev="79" vrev="2">
+    <srcmd5>d0ede62fe1363304a45af1d3c6e3a9b1</srcmd5>
+    <version>1.12.2</version>
+    <time>1663764184</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1005137</requestid>
+  </revision>
 </revisionlist>
