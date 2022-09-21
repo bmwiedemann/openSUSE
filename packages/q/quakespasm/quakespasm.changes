@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 15 19:19:21 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.95.0
+  * Add support for lit water.
+  * Add model scale support -- requires protocol 999.
+  * Add sv_cheats cvar for 2021 rerelease.
+  * Clear the startdemo list on game change.
+  * Try light trace from entity origin first.
+
+-------------------------------------------------------------------
 Mon Jul 25 14:56:09 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.94.7
