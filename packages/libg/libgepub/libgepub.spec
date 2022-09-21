@@ -1,7 +1,7 @@
 #
 # spec file for package libgepub
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define basever 0.6
-%define soname 0_6
+%define basever 0.7
+%define soname 0_7
 %global sover   0
 
 Name:           libgepub
-Version:        0.6.0
+Version:        0.7.0
 Release:        0
 Summary:        EPUB document reader and render library
 License:        LGPL-2.1-or-later
 Group:          Development/Languages/C and C++
-URL:            https://git.gnome.org/browse/libgepub
+URL:            https://gitlab.gnome.org/GNOME/libgepub
 Source0:        https://download.gnome.org/sources/%{name}/%{basever}/%{name}-%{version}.tar.xz
 
 BuildRequires:  meson
@@ -37,9 +37,9 @@ BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.30.0
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libarchive)
-BuildRequires:  pkgconfig(libsoup-2.4)
+BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libxml-2.0)
-BuildRequires:  pkgconfig(webkit2gtk-4.0)
+BuildRequires:  pkgconfig(webkit2gtk-4.1)
 
 %description
 A GObject-based library for handling and rendering EPUB documents.
@@ -79,8 +79,7 @@ A GObject-based library for handling and rendering EPUB documents.
 %install
 %meson_install
 
-%post   -n %{name}-%{soname}-%{sover} -p /sbin/ldconfig
-%postun -n %{name}-%{soname}-%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{name}-%{soname}-%{sover}
 
 %files -n %{name}-%{soname}-%{sover}
 %license COPYING

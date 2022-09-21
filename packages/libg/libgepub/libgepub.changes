@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Sep  1 06:35:49 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.7.0:
+  + Make gepub-widget configurable with "-Dwidget=false"
+  + Use libsoup 3.0
+  + Fix memory leak
+  + Remove absolute external resources from gepub
+  + widget
+    - Disable a number of "Web" features
+    - Fix ePubs not rendering after the first one
+  + Stop chapter number updates breaking navigation to anchor links
+  + Update the chapter number when the page changes
+  + Work with file paths, not URI substrings, in custom URI scheme
+  + Do not rewrite page-relative anchor links
+  + Use new JavaScriptCore GLib API instead of DOM API
+  + Use compiler.has_link_argument() for linker flags
+  + Unscape paths before get from the archive
+  + Add TOC parse to GepubDoc
+- Replace pkgconfig(libsoup-2.4) and pkgconfig(webkit2gtk-4.0) with
+  pkgconfig(libsoup-3.0) and pkgconfig(webkit2gtk-4.1)
+  BuildRequires following uptream changes.
+- Bump soname following upstreams bump in soname.
+- Use ldconfig_scriptlets macro for post(un) handling.
+
+-------------------------------------------------------------------
 Thu Mar 15 12:23:09 UTC 2018 - bjorn.lie@gmail.com
 
 - Update to version 0.6.0:

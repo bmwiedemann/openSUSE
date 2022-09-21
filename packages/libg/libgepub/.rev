@@ -55,4 +55,12 @@
   namechange. (forwarded request 588138 from iznogood)</comment>
     <requestid>589161</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ae276bc0b2b2c1d5b078498beb90454d</srcmd5>
+    <version>0.7.0</version>
+    <time>1663764124</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 43.rc - let's get this into Staging to see what we break (e.g meson:test seems to be an issue already) (forwarded request 1002672 from dimstar)</comment>
+    <requestid>1003197</requestid>
+  </revision>
 </revisionlist>
