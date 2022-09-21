@@ -17,12 +17,12 @@
 
 
 Name:           gnome-radio
-Version:        16.0.43
+Version:        45.1
 Release:        0
 Summary:        Live Internet radio broadcaster discovery program
 License:        GPL-3.0-or-later
 URL:            http://www.gnomeradio.org
-Source:         https://download.gnome.org/sources/gnome-radio/16.0/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/gnome-radio/45/%{name}-%{version}.tar.xz
 BuildRequires:  intltool
 BuildRequires:  itstool
 BuildRequires:  pkgconfig
@@ -37,7 +37,7 @@ BuildRequires:  pkgconfig(gstreamer-plugins-bad-1.0)
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
 BuildRequires:  pkgconfig(gstreamer-tag-1.0)
 BuildRequires:  pkgconfig(gstreamer-video-1.0)
-BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(gtk4) >= 4.2.0
 BuildRequires:  pkgconfig(libgeoclue-2.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(pangoft2)
@@ -71,6 +71,7 @@ for playback.  Enjoy Free Internet Radio.
 %doc ChangeLog README
 %{_bindir}/gnome-internet-radio-locator
 %{_bindir}/gnome-radio
+%{_bindir}/org.gnome.Radio
 %{_mandir}/man1/gnome-radio.1%{?ext_man}
 %{_datadir}/metainfo/gnome-radio.appdata.xml
 %{_datadir}/%{name}/

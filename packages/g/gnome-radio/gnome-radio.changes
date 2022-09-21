@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Aug 30 08:31:43 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 45.1:
+  + Stations: add RTI and Radio Free Asia.
+- Changes from version 45.0:
+  + Build system changes only.
+- Changes from version 44.1:
+  + BBC World Service profile
+- Changes from version 44.0:
+  + Initial port to GTK4.
+  + Include meson build system.
+- Replace pkgconfig(gtk+-3.0) BuildRequires with pkgconfig(gtk4):
+  follow upstreams port to GTK4.
+
+-------------------------------------------------------------------
 Mon May 30 12:16:31 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 16.0.43:
