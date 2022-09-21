@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 20 19:32:41 UTC 2022 - dmueller@suse.com
+
+- Update to version 0.27:
+  * Convert all egrep/fgrep calls to grep -E/-F, respectively.
+- use zstd for tarball compression
+- spec file cleanups
+
+-------------------------------------------------------------------
 Thu Aug 11 11:48:16 UTC 2022 - ro@suse.de
 
 - Update to version 0.26:

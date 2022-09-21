@@ -17,28 +17,29 @@
 
 
 Name:           obs-service-source_validator
+Version:        0.27
+Release:        0
 Summary:        An OBS source service: running all the osc source-validator checks
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Building
 URL:            https://github.com/openSUSE/obs-service-source_validator
-Version:        0.26
-Release:        0
 # use osc service dr to update
-Source:         %{name}-%{version}.tar.bz2
+Source:         %{name}-%{version}.tar.zst
+BuildRequires:  build
+BuildRequires:  zstd
+Requires:       %{_bindir}/xmllint
+Requires:       build
+Requires:       patch
+Requires:       perl-TimeDate
+Provides:       osc-source_validator = %{version}
+Obsoletes:      osc-source_validator <= 0.1
+BuildArch:      noarch
 %if 0%{?suse_version}
 Requires:       gpg2
 %else
 # Fedora
 Requires:       gnupg2
 %endif
-BuildArch:      noarch
-BuildRequires:  build
-Requires:       /usr/bin/xmllint
-Requires:       build
-Requires:       patch
-Requires:       perl-TimeDate
-Provides:       osc-source_validator = %version
-Obsoletes:      osc-source_validator <= 0.1
 %if 0%{?suse_version} > 1210 || 0%{?centos_version} > 500
 Requires:       rpm-build
 %endif
@@ -58,18 +59,17 @@ used via project wide defined services.
 
 %install
 mkdir -p %{buildroot}%{_datadir}/licenses
-%makeinstall
+%make_install
 
 %check
-make test
+%make_build test
 
 %files
-%defattr(-,root,root)
 %license COPYING
 %if 0%{?suse_version} <= 1320
 %dir %{_datadir}/licenses
 %endif
-%dir /usr/lib/obs
-/usr/lib/obs/service
+%dir %{_prefix}/lib/obs
+%{_prefix}/lib/obs/service
 
 %changelog

@@ -544,4 +544,15 @@ last submission had wrong tar ball for unknown reason</comment>
   * cleanup: make variable name a valid english word</comment>
     <requestid>994519</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>ae6319c1b078249046d163e569cfba80</srcmd5>
+    <version>0.27</version>
+    <time>1663764111</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.27:
+  * Convert all egrep/fgrep calls to grep -E/-F, respectively.
+- use zstd for tarball compression
+- spec file cleanups</comment>
+    <requestid>1005059</requestid>
+  </revision>
 </revisionlist>
