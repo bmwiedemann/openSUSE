@@ -1,7 +1,7 @@
 #
 # spec file for package diffutils
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,6 +50,8 @@ make source code patches, for instance.
 echo exit 77 > gnulib-tests/test-c-stack.sh
 echo 'int main() { return 77; }' > gnulib-tests/test-sigsegv-catch-stackoverflow1.c
 echo 'int main() { return 77; }' > gnulib-tests/test-sigsegv-catch-stackoverflow2.c
+# This triggers a bug in qemu (bsc#1202260)
+echo 'int main() { return 77; }' > gnulib-tests/test-free.c
 %endif
 %make_build check
 
