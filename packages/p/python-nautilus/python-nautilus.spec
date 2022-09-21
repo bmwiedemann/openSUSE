@@ -1,7 +1,7 @@
 #
 # spec file for package python-nautilus
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,22 +22,21 @@
 %define skip_python2 1
 
 Name:           python-nautilus
-Version:        1.2.3
+Version:        4.0
 Release:        0
 Summary:        Python bindings for Nautilus
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/Python
 URL:            https://wiki.gnome.org/Projects/NautilusPython
-Source:         http://download.gnome.org/sources/nautilus-python/1.2/%{_name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM python-nautilus-gcc10-buildfix.patch -- Fix build with gcc 10
-Patch0:         python-nautilus-gcc10-buildfix.patch
+Source:         https://download.gnome.org/sources/nautilus-python/4.0/%{_name}-%{version}.tar.xz
 
 BuildRequires:  %{python_module devel}
 BuildRequires:  gtk-doc
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(libnautilus-extension)
-BuildRequires:  pkgconfig(pygobject-3.0)
+BuildRequires:  pkgconfig(libnautilus-extension-4) >= 43.beta
+BuildRequires:  pkgconfig(pygobject-3.0) >= 3.0.0
 
 Requires:       %{name}-common-files = %{version}
 Requires:       python-gobject
@@ -83,24 +82,20 @@ python-nautilus in both Python2 and Python3.
 %autosetup -p1 -n %{_name}-%{version}
 
 %build
-%define _configure ../configure
-%{python_expand mkdir build_%{$python_bin_suffix}
-pushd build_%{$python_bin_suffix}
-export PYTHON=$python
-%configure \
-	--disable-static \
-	--docdir=%{_docdir}/$python-nautilus \
-	--enable-gtk-doc \
-	%{nil}
-%make_build
-popd
+%{python_expand export PYTHON=$python
+%define _vpath_builddir build_%{$python_bin_suffix}
+sed -i "s|docdir =.*|docdir = '%{_docdir}/$python-nautilus'|g" meson.build
+%meson
+%meson_build
 }
 
 %install
-%{python_expand pushd build_%{$python_bin_suffix}
-%make_install
-popd
+%{python_expand export PYTHON=$python
+%define _vpath_builddir build_%{$python_bin_suffix}
+sed -i "s|docdir =.*|docdir = '%{_docdir}/$python-nautilus'|g" meson.build
+%meson_install
 }
+
 # New dir where python extensions get installed. It's not created by make
 # install (bgo#638890).
 test ! -d %{buildroot}%{_datadir}/nautilus-python/extensions
@@ -110,19 +105,19 @@ find %{buildroot} -size 0 -delete
 
 %files %{python_files}
 %license COPYING
-%doc NEWS
-%doc %{_docdir}/%{python_flavor}-nautilus
+%doc %{_docdir}/%{python_flavor}-nautilus/
 
 %files -n %{name}-common-files
-%{_libdir}/nautilus/extensions-3.0/libnautilus-python.so
+%doc NEWS.md
+%{_libdir}/nautilus/extensions-4/libnautilus-python.so
 %dir %{_datadir}/nautilus-python
 %dir %{_datadir}/nautilus-python/extensions
 
 %files %{python_files devel}
-%doc AUTHORS ChangeLog
+%doc AUTHORS
 
 %files -n %{name}-common-devel
 %doc %{_datadir}/gtk-doc/html/nautilus-python
-%{_libdir}/pkgconfig/nautilus-python.pc
+%{_datadir}/pkgconfig/nautilus-python.pc
 
 %changelog

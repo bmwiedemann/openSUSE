@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Sep 18 08:53:05 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.0:
+  + Updated migration docs and rewrote overview.
+
+-------------------------------------------------------------------
+Tue Aug 16 13:30:03 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 4.0.alpha:
+  + The extension was ported to Nautilus 43: Notably, this removes
+    any direct access to GTK widgets from the API. Most scripts
+    will need to be modified. Please check the migration guide in
+    the docs on how to update your scripts.
+  + Switched to Meson build system.
+  + Removed support for Python 2.
+  + Fixed build with -fno-common.
+  + Added missing parent constructor calls to examples.
+  + Decorated the examples with typehints.
+  + Fixed several memory leaks.
+- Drop python-nautilus-gcc10-buildfix.patch: fixed upstream.
+- Add meson BuildRequires and replace configur/make/make_install
+  macros with relevant meon/meson_build/meson_install variants.
+
+-------------------------------------------------------------------
 Thu Jun  4 19:31:20 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add python-nautilus-gcc10-buildfix.patch: Fix build with gcc 10.
