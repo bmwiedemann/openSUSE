@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Sep 15 22:01:11 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.6.0.2
+  * Adjusted gimmicks: Water Bubbles, Spikes.
+  * Made tweaks to the level design, to the title screen and to
+    the build script.
+  * Changed the parser used on the stage select.
+  * Added support for loading quests via developer mode.
+  * Removed the quest selection screen.
+- Update to version 0.6.0.1
+  * Updated the default mapping for gamepads.
+  * Adjusted the "Walk on Water" gimmick.
+  * Optimized the creation and the rendering of brick particles.
+  * Made tweaks to the level design.
+- Update to version 0.6.0
+  * Renamed the game to Surge the Rabbit.
+  * Improved the pixel art style of the game.
+  * Created a new Waterworks Zone.
+  * New gimmicks: Conveyor Belts, Walk on Water, Power Pluggy.
+  * New title screen and new title card animation.
+  * New translations: Italian, Esperanto.
+  * Introduced language extensions (languages/extends/ folder).
+  * Introduced support for transitions between animations.
+  * Introduced the concepts of action spot and sprite anchor.
+  * Improvements to the SurgeScript API.
+  * Improved several core scripts.
+  * Added support for compound ${EXPRESSIONS} when evaluating text.
+  * Changed the physics.
+  * Added support for D-pad input on Xbox controllers.
+  * Removed legacy Allegro 4 code.
+  * Bugfixes and general improvements.
+
+-------------------------------------------------------------------
 Sat May  1 11:59:20 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 0.5.2.1:

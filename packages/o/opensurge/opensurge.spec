@@ -1,7 +1,7 @@
 #
 # spec file for package opensurge
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           opensurge
-Version:        0.5.2.1
+Version:        0.6.0.2
 Release:        0
 Summary:        Game based on Sonic the Hedgehog Universe
 License:        Apache-2.0 AND GPL-3.0-or-later AND LGPL-2.1-or-later AND CC-BY-3.0 AND OFL-1.1 AND MIT
@@ -39,7 +39,7 @@ BuildRequires:  pkgconfig(allegro_image-5)
 BuildRequires:  pkgconfig(allegro_memfile-5)
 BuildRequires:  pkgconfig(allegro_primitives-5)
 BuildRequires:  pkgconfig(allegro_ttf-5)
-BuildRequires:  pkgconfig(surgescript)
+BuildRequires:  pkgconfig(surgescript) >= 0.5.6
 
 %description
 Open Surge is a retro-style 2D sidescroller inspired by old-school
