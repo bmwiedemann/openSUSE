@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep  6 15:49:48 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Use append so if a pre file already exists it isn't overridden
+
+-------------------------------------------------------------------
 Tue Feb  1 12:58:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - invoke bash for bash scripts (bsc#1195391) 
