@@ -26,4 +26,12 @@
   * libime-no-download.patch</comment>
     <requestid>991010</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c8f36b330a592a5d243788c39d79bbf3</srcmd5>
+    <version>1.0.14</version>
+    <time>1663764179</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1005118</requestid>
+  </revision>
 </revisionlist>

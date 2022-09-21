@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep 20 12:35:09 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- update version 1.0.14
+  * Update language model data and dictionary
+  * Add support for libime_history to compile text to binary data
+- drop libime-1.0.13-return-0.0-for-other-platforms-in-usage.patch,
+  upstreamed
+
+-------------------------------------------------------------------
 Mon Jul 25 11:30:42 UTC 2022 - Takashi Iwai <tiwai@suse.com>
 
 - Remove yet another stale file, table.tar.gz

@@ -17,15 +17,13 @@
 
 
 Name:           libime
-Version:        1.0.13
+Version:        1.0.14
 Release:        0
 Summary:        Generic input method implementation
 License:        LGPL-2.1-or-later
 Group:          System/I18n/Chinese
 URL:            https://github.com/fcitx/libime
 Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}_dict.tar.xz
-# PATCH-FIX-UPSTREAM gh#kpu/kenlm#391
-Patch0:         libime-1.0.13-return-0.0-for-other-platforms-in-usage.patch
 BuildRequires:  boost-devel
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
@@ -88,7 +86,7 @@ Group:          System/I18n/Chinese
 This package provides dictionary files for libime.
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
 export LANG=en_US.UTF-8
