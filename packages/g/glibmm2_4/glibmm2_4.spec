@@ -20,7 +20,7 @@
 %define so_ver -2_4-1
 %define _name glibmm
 Name:           glibmm2_4
-Version:        2.66.4
+Version:        2.66.5
 Release:        0
 Summary:        C++ Interface for Glib
 License:        LGPL-2.1-or-later
@@ -104,10 +104,8 @@ chmod -x NEWS
 %meson_install
 %fdupes %{buildroot}/{_prefix}
 
-%post -n libglibmm%{so_ver} -p /sbin/ldconfig
-%postun -n libglibmm%{so_ver} -p /sbin/ldconfig
-%post -n libgiomm%{so_ver} -p /sbin/ldconfig
-%postun -n libgiomm%{so_ver} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libglibmm%{so_ver}
+%ldconfig_scriptlets -n libgiomm%{so_ver}
 
 %files -n libglibmm%{so_ver}
 %license COPYING
@@ -118,7 +116,7 @@ chmod -x NEWS
 %{_libdir}/libgiomm-2.4.so.*
 
 %files devel
-%doc AUTHORS ChangeLog NEWS README
+%doc AUTHORS ChangeLog NEWS README.md
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 %{_includedir}/*
