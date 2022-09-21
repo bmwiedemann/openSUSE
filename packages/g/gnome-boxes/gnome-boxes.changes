@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Fri Sep 16 10:00:24 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep  6 06:30:18 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.rc:
+  + Ensure disk creation for cloned virtual machines.
+  + Filter search results in the model (GListModel).
+  + Use meson's GNOME module post_install function.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug  9 15:19:12 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.beta:
+  + Fetch recommended download operating systems from remote
+    address.
+  + Revert change that made Boxes honor default system
+    color-scheme.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug  8 12:17:15 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.alpha:
+  + Save screenshots into ~/Pictures/Screenshots
+  + Rename default development branch to "main"
+  + Rename Devel Flatpak manifest to match Devel app_id
+  + Use our custom logic to draw thumbnails
+  + Honor the default system color-scheme
+  + Update Boxes homepage links to gnomeboxes.org
+  + Drop build option that made possible building without SPICE
+  + Disable network test before download starts
+  + Port to libsoup3
+  + Updated translations.
+- Change BuildRequires following upstream changes:
+  + Drop update-desktop-files, pkgconfig(freerdp2),
+    pkgconfig(gtk-vnc-2.0), pkgconfig(libsoup-2.4) and
+    pkgconfig(webkit2gtk-4.0)
+  + Add desktop-file-utils, pkgconfig(libsoup-3.0) and
+    pkgconfig(webkit2gtk-4.1).
+- Following the above: Drop bcond_without conditions, gtk-frdp and
+  gtk-vnc support is no longer available. Run manual check of
+  .desktop file in check section and drop suse_update_desktop_file
+  macro.
+
+-------------------------------------------------------------------
 Thu Jul  7 11:54:29 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 42.3:

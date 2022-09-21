@@ -17,45 +17,35 @@
 #
 
 
-%bcond_without rdp
-%if %{with rdp}
-%define gfrdp_libver 0_1
-%define gfrdp_sover 0.1
-%endif
-
 %define govf_libver 0_1
 %define govf_sover 0.1
 Name:           gnome-boxes
-Version:        42.3
+Version:        43.0
 Release:        0
 Summary:        A GNOME 3 application to access remote or virtual systems
 License:        LGPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Design/Apps/Boxes
-Source0:        https://download.gnome.org/sources/gnome-boxes/42/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-boxes/43/%{name}-%{version}.tar.xz
 
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  vala >= 0.36.0
 BuildRequires:  yelp-tools
-%if %{with rdp}
-BuildRequires:  pkgconfig(freerdp2)
-%endif
 BuildRequires:  pkgconfig(gio-2.0) >= 2.50
 BuildRequires:  pkgconfig(glib-2.0) >= 2.44.0
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.44.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.9.6
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.20
-BuildRequires:  pkgconfig(gtk-vnc-2.0) >= 0.4.4
 BuildRequires:  pkgconfig(gtksourceview-4)
 BuildRequires:  pkgconfig(gudev-1.0) >= 165
 BuildRequires:  pkgconfig(libarchive) >= 3.0.0
 BuildRequires:  pkgconfig(libhandy-1)
-BuildRequires:  pkgconfig(libosinfo-1.0) >= 1.7
+BuildRequires:  pkgconfig(libosinfo-1.0) >= 1.10.0
 BuildRequires:  pkgconfig(libsecret-1)
-BuildRequires:  pkgconfig(libsoup-2.4) >= 2.38
+BuildRequires:  pkgconfig(libsoup-3.0) >= 3.0.0
 BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.9
 BuildRequires:  pkgconfig(libvirt-gconfig-1.0) >= 4.0.0
 BuildRequires:  pkgconfig(libvirt-gobject-1.0) >= 3.0.0
@@ -63,7 +53,7 @@ BuildRequires:  pkgconfig(libxml-2.0) >= 2.7.8
 BuildRequires:  pkgconfig(spice-client-gtk-3.0) >= 0.32
 BuildRequires:  pkgconfig(tracker-sparql-3.0)
 BuildRequires:  pkgconfig(vte-2.91)
-BuildRequires:  pkgconfig(webkit2gtk-4.0)
+BuildRequires:  pkgconfig(webkit2gtk-4.1)
 # Needed for unattended installations
 Requires:       fuseiso
 # Need libvirtd and an hypervisor
@@ -76,11 +66,10 @@ Requires:       tracker
 Recommends:     libvirt-client
 # Eliminate sub-packages with libraries in private space (no provides, nothing was supposed to use the pkgname)
 Obsoletes:      libgovf-0_1 <= 40.2
-%if %{with rdp}
-Obsoletes:      libgtk-frdp-0_1 <= 40.2
-Obsoletes:      typelib-1_0-GtkFrdp-0_1 <= 40.2
-%endif
+Obsoletes:      gtk-frdp-devel <= 42.3
+Obsoletes:      libgtk-frdp-0_1 <= 42.3
 Obsoletes:      typelib-1_0-Govf-0_1 <= 40.2
+Obsoletes:      typelib-1_0-GtkFrdp-0_1 <= 42.3
 
 %description
 Boxes is an application to create, setup, access, and use: remote
@@ -99,17 +88,6 @@ in the Open Virtualization Format.
 
 This package provides all the necessary files for development with
 libovf-glib.
-
-%package -n gtk-frdp-devel
-Summary:        Development Files for gtk-frdp, an RDP Viewer Widget for Gtk+
-License:        GPL-3.0-or-later
-Group:          Development/Languages/C and C++
-Requires:       %{name} = %{version}
-
-%description -n gtk-frdp-devel
-gtk-frdp is an RDP viewer widget for the GNOME Desktop Environment.
-
-This package provides all the necessary files for development with libgtk-frdp.
 
 %package -n gnome-shell-search-provider-boxes
 Summary:        Shell search provider for GNOME Boxes
@@ -134,25 +112,21 @@ search results from Boxes.
 
 %build
 %meson \
-%if %{with rdp}
-  -Drdp=true
-%else
-  -Drdp=false
-%endif
+	%{nil}
 %meson_build
-
-%check
-%meson_test
 
 %install
 %meson_install
-%suse_update_desktop_file -r org.gnome.Boxes %{name} GNOME GTK System Emulator
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_datadir}
 
+%check
+desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Boxes.desktop
+%meson_test
+
 %files
 %license COPYING
-%doc NEWS README.md README.logos
+%doc NEWS README.md
 %doc %{_datadir}/help/C/gnome-boxes
 %{_bindir}/gnome-boxes
 %dir %{_datadir}/metainfo
@@ -169,10 +143,6 @@ search results from Boxes.
 %dir %{_libdir}/gnome-boxes/
 %dir %{_libdir}/gnome-boxes/girepository-1.0
 %{_libdir}/gnome-boxes/girepository-1.0/Govf-%{govf_sover}.typelib
-%if %{with rdp}
-%{_libdir}/gnome-boxes/girepository-1.0/GtkFrdp-%{gfrdp_sover}.typelib
-%{_libdir}/gnome-boxes/libgtk-frdp-%{gfrdp_sover}.so
-%endif
 %{_libdir}/gnome-boxes/libgovf-%{govf_sover}.so
 
 %files -n libovf-glib-devel
@@ -189,24 +159,6 @@ search results from Boxes.
 %{_includedir}/gnome-boxes/govf/govf-disk.h
 %{_includedir}/gnome-boxes/govf/govf-package.h
 %{_includedir}/gnome-boxes/govf/govf.h
-
-%if %{with rdp}
-%files -n gtk-frdp-devel
-%dir %{_datadir}/gnome-boxes/
-%dir %{_datadir}/gnome-boxes/gir-1.0/
-%dir %{_datadir}/gnome-boxes/vapi/
-%dir %{_includedir}/gnome-boxes/
-%dir %{_includedir}/gnome-boxes/gtk-frdp/
-%dir %{_libdir}/gnome-boxes/pkgconfig/
-%{_libdir}/gnome-boxes/pkgconfig/gtk-frdp-%{gfrdp_sover}.pc
-%{_datadir}/gnome-boxes/vapi/gtk-frdp-%{gfrdp_sover}.deps
-%{_datadir}/gnome-boxes/vapi/gtk-frdp-%{gfrdp_sover}.vapi
-%{_datadir}/gnome-boxes/gir-1.0/GtkFrdp-%{gfrdp_sover}.gir
-%{_includedir}/gnome-boxes/gtk-frdp/frdp-display.h
-%{_includedir}/gnome-boxes/gtk-frdp/frdp-session.h
-%{_includedir}/gnome-boxes/gtk-frdp/gtk-frdp.h
-%{_includedir}/gnome-boxes/gtk-frdp/gtk-frdp-version.h
-%endif
 
 %files -n gnome-shell-search-provider-boxes
 %{_datadir}/dbus-1/services/org.gnome.Boxes.SearchProvider.service
