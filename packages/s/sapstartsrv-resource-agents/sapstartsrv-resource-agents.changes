@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Sep 14 09:37:25 UTC 2022 - abriel@suse.com
+
+- Version bump to 0.9.1
+- man page updates based on customer feedback on conferences
+- remove 'BuildRequire python3-mock' as this is no longer needed
+  for the tests
+
+-------------------------------------------------------------------
+Fri Feb 25 11:18:02 UTC 2022 - abriel@suse.com
+
+- Add systemd support for the resource agent to interact with the
+  new SAP unit files for sapstartsrv.
+  As the new version of the SAP Startup Framework will use systemd
+  unit files to control the sapstartsrv process instead of the
+  previous used SysV init script, we need to adapt the handling of
+  sapstartsrv inside the resource agents to support both ways.
+  (bsc#1189529)
+- prevent false posivite with pgrep in function '_get_status' 
+ (bsc#1193568)
+
+-------------------------------------------------------------------
 Thu Apr 22 13:05:47 UTC 2021 - abriel@suse.com
 
 - remove deprecated option "syslog" from the sapping.service and

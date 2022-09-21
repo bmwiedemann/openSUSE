@@ -1,7 +1,7 @@
 #
 # spec file for package sapstartsrv-resource-agents
 #
-# Copyright (c) 2020-2021 SUSE LLC.
+# Copyright (c) 2020-2022 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ Name:           sapstartsrv-resource-agents
 License:        GPL-2.0
 Group:          Productivity/Clustering/HA
 Summary:        Resource agent for SAP instance specific sapstartsrv service
-Version:        0.9.0+git.1619681975.ad20a04
+Version:        0.9.1+git.1663751963.e0ef8a2
 Release:        0
 URL:            https://github.com/SUSE/SAPStartSrv-resourceAgent
 Source0:        %{name}-%{version}.tar.gz
@@ -34,7 +34,6 @@ Requires:       resource-agents
 Requires:       pacemaker > 1.1.1
 Requires:       python3
 %if %{with test}
-BuildRequires:  python3-mock
 BuildRequires:  python3-pytest
 %endif
 
