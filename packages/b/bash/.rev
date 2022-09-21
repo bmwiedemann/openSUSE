@@ -1753,4 +1753,21 @@ Upstream declares the bash license to be GPL-3.0+ - not GPL-2.0+ (forwarded requ
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>975257</requestid>
   </revision>
+  <revision rev="179" vrev="9">
+    <srcmd5>db0e5cd18bf494cd66eec3956b5db863</srcmd5>
+    <version>5.1.MACRO</version>
+    <time>1663763937</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable parallel builds by slpitting clean and all at make time
+  (Thanks to Christopher Yeleighton)
+- Do not copy more than 1 byte for \(aq becoming a &quot;'&quot; in
+  quotes-man2html.patch
+
+- Small change in quotes-man2html.patch
+  * Use a simple &quot;'&quot; aka quote instead of &quot;&amp;prime;&quot; for &quot;\(aq&quot;
+
+- Add patch quotes-man2html.patch
+  * Fix boo#1203091 -- BASH(1) Manual Page: Unprocessed macro aq</comment>
+    <requestid>1004899</requestid>
+  </revision>
 </revisionlist>

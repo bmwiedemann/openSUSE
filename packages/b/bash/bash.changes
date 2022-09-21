@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Sep 20 06:59:04 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Enable parallel builds by slpitting clean and all at make time
+  (Thanks to Christopher Yeleighton)
+- Do not copy more than 1 byte for \(aq becoming a "'" in
+  quotes-man2html.patch
+
+-------------------------------------------------------------------
+Mon Sep 19 13:11:05 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Small change in quotes-man2html.patch
+  * Use a simple "'" aka quote instead of "&prime;" for "\(aq"
+
+-------------------------------------------------------------------
+Thu Sep 15 13:09:24 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch quotes-man2html.patch
+  * Fix boo#1203091 -- BASH(1) Manual Page: Unprocessed macro aq 
+
+-------------------------------------------------------------------
 Thu Apr 28 19:00:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - use https:// for source urls 

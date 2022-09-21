@@ -82,6 +82,8 @@ Patch47:        bash-4.3-perl522.patch
 Patch48:        bash-4.3-extra-import-func.patch
 # PATCH-EXTEND-SUSE Allow root to clean file system if filled up
 Patch49:        bash-4.3-pathtemp.patch
+# PATCH-FIX-SUSE
+Patch50:        quotes-man2html.patch
 BuildRequires:  autoconf
 BuildRequires:  bison
 BuildRequires:  fdupes
@@ -222,13 +224,12 @@ Legacy usrmove helper files for the build system. Do not install.
 
 %prep
 %if %{with sjis}
-echo -e '\033[1m\033[31mWarning: Shift JIS support is enabled\033[m'
+%{warn:Shift JIS support is enabled}
 %else
-echo -e '\033[1m\032[31mShift JIS support disabled\033[m'
+%{echo:Shift JIS support disabled}
 %endif
 %setup -q -n bash-%{bversion}%{bextend} -b1
 typeset -i level
-set +x
 for patch in ../bash-%{bversion}-patches/*-*[0-9]; do
     test -e $patch || break
 
@@ -243,7 +244,6 @@ for patch in ../bash-%{bversion}-patches/*-*[0-9]; do
     echo Patch $patch
     patch -s -p$level < $patch
 done
-set -x
 %patch1   -b .manual
 %patch3   -b .2.4.4
 %patch4   -b .evalexp
@@ -267,6 +267,7 @@ set -x
 %patch48 -b .eif
 %endif
 %patch49  -b .pthtmp
+%patch50  -b .qd
 %patch0   -b .0
 
 # This has to be always the same version as included in the bash its self
@@ -449,23 +450,23 @@ test ${rl1[2]} = ${rl2[2]} || exit 1
   profilecflags=CFLAGS="$CFLAGS %{cflags_profile_generate}"
 %endif
   makeopts="Machine=${HOSTTYPE} OS=${OSTYPE} VENDOR=${VENDOR} MACHTYPE=${MACHTYPE}"
-  make $makeopts "$profilecflags" \
+  %make_build $makeopts "$profilecflags" \
 	all printenv recho zecho xcase
   TMPDIR=$(mktemp -d /tmp/bash.XXXXXXXXXX) || exit 1
   > $SCREENLOG
   tail -q -s 0.5 -f $SCREENLOG & pid=$!
   env -i HOME=$PWD TERM=$TERM LD_LIBRARY_PATH=$LD_RUN_PATH TMPDIR=$TMPDIR \
 	SCREENRC=$SCREENRC SCREENDIR=$SCREENDIR \
-	screen -D -m make TESTSCRIPT=%{SOURCE4} check
+	screen -D -m %make_build TESTSCRIPT=%{SOURCE4} check
   kill -TERM $pid
 %if 0%{?do_profiling}
   rm -f jobs.gcda
   profilecflags=CFLAGS="$CFLAGS %{cflags_profile_feedback} -fprofile-correction"
-  clean=clean
+  %make_build $makeopts "$profilecflags" clean
 %endif
-  make $makeopts "$profilecflags" $clean all
-  make $makeopts -C examples/loadables/
-  make $makeopts documentation
+  %make_build $makeopts "$profilecflags" all
+  %make_build $makeopts -C examples/loadables/
+  %make_build $makeopts documentation
 
 %install
   %make_install
