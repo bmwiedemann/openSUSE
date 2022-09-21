@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 21 17:38:31 UTC 2022 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Remove tumbler and pragha from xfce medium for now: fails to build.
+
+-------------------------------------------------------------------
 Fri Aug 19 07:30:34 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - list-gnome: Ignore yelp, needed especially on Leap

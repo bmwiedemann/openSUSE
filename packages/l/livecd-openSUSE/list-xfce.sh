@@ -15,6 +15,10 @@ buildignore awesfx
 buildignore sbl
 buildignore gnome-online-accounts
 
+#temp disabled - until build fuxed
+buildignore pragha
+buildignore tumbler
+
 # Packages for the installer
 source "$PWD/list-installer.sh"
 

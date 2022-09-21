@@ -1537,4 +1537,18 @@
     <time>1661364491</time>
     <user>dimstar_suse</user>
   </revision>
+  <revision rev="192" vrev="192">
+    <srcmd5>f7d5c185086a11a96cd83908391b56d3</srcmd5>
+    <version>unknown</version>
+    <time>1663781975</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove tumbler from xfce medium for now: fails to build.</comment>
+  </revision>
+  <revision rev="193" vrev="193">
+    <srcmd5>dc53ed2501f0624e30fdb1d9ce1a589e</srcmd5>
+    <version>unknown</version>
+    <time>1663782498</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove tumbler and pragha from xfce medium for now: fails to build.</comment>
+  </revision>
 </revisionlist>
