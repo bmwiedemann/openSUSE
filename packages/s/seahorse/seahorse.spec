@@ -24,6 +24,9 @@ License:        GFDL-1.1-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Security
 URL:            https://wiki.gnome.org/Apps/Seahorse
 Source0:        https://download.gnome.org/sources/seahorse/42/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM ab2f253c.patch -- Port to soup3
+Patch0:         https://gitlab.gnome.org/GNOME/seahorse/-/commit/ab2f253c.patch
+
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
 BuildRequires:  gpg2 >= 2.2.0
@@ -48,7 +51,7 @@ BuildRequires:  pkgconfig(gpgme) >= 1.14.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(libhandy-1) >= 1.5.0
 BuildRequires:  pkgconfig(libsecret-1) >= 0.16
-BuildRequires:  pkgconfig(libsoup-2.4) >= 2.33.92
+BuildRequires:  pkgconfig(libsoup-3.0) >= 2.33.92
 BuildRequires:  pkgconfig(pwquality)
 Obsoletes:      %{name}-devel < %{version}
 
@@ -59,6 +62,7 @@ Seahorse is a GNOME interface for gnupg. It uses gpgme as the backend.
 Summary:        GNOME interface for gnupg -- Search Provider for GNOME Shell
 Group:          Productivity/Security
 Supplements:    (%{name} and gnome-shell)
+BuildArch:      noarch
 
 %description -n gnome-shell-search-provider-seahorse
 Seahorse is a GNOME interface for gnupg. It uses gpgme as the backend.

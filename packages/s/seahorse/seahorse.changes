@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep  1 13:49:50 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add ab2f253c.patch: Port to soup3. Following this, replace
+  pkgconfig(libsoup-2.4) with pkgconfig(libsoup-3.0) BuildRequires.
+- Build sub-package gnome-shell-search-provider-seahorse as noarch.
+
+-------------------------------------------------------------------
 Mon May 23 14:34:16 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 42.0:

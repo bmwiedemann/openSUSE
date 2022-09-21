@@ -878,4 +878,12 @@ A couple of patches for this are competing for upstream approval at bgo#659834 -
     <comment>Update to 42.0 (forwarded request 978743 from dimstar)</comment>
     <requestid>978921</requestid>
   </revision>
+  <revision rev="119" vrev="2">
+    <srcmd5>a314a0f6c14cc3d0eaf2ea174119ee9a</srcmd5>
+    <version>42.0</version>
+    <time>1663763972</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 43.rc - let's get this into Staging to see what we break (e.g meson:test seems to be an issue already) (forwarded request 1002686 from dimstar)</comment>
+    <requestid>1003213</requestid>
+  </revision>
 </revisionlist>
