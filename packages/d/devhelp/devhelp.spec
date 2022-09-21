@@ -20,13 +20,13 @@
 %define vim_plugin_dir %{_datadir}/vim/vimfiles/plugin/
 
 Name:           devhelp
-Version:        41.3
+Version:        43.0
 Release:        0
 Summary:        Developer's Help Program for GNOME
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Other
 URL:            https://wiki.gnome.org/Apps/Devhelp
-Source0:        https://download.gnome.org/sources/devhelp/41/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/devhelp/43/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel >= 1.30.0
@@ -38,7 +38,7 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gio-2.0) >= 2.64
 BuildRequires:  pkgconfig(gsettings-desktop-schemas)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
-BuildRequires:  pkgconfig(webkit2gtk-4.0) >= 2.26
+BuildRequires:  pkgconfig(webkit2gtk-4.1)
 
 Suggests:       emacs-plugin-devhelp
 Suggests:       gedit-plugin-devhelp
