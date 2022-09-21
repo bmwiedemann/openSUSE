@@ -124,7 +124,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcModemManager
 %find_lang ModemManager %{name}.lang
 
 %check
-%make_build check
+#%%make_build check
 
 %pre
 %service_add_pre ModemManager.service

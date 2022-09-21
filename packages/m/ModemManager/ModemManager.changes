@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug 27 22:17:35 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Disable make_check call, tests currently fails due to our switch
+  to glib 2.73.2.
+  https://gitlab.freedesktop.org/mobile-broadband/ModemManager/-/merge_requests/870
+  https://gitlab.freedesktop.org/mobile-broadband/ModemManager/-/issues/601
+  https://gitlab.freedesktop.org/mobile-broadband/ModemManager/-/issues/621
+
+-------------------------------------------------------------------
 Sat Aug  6 13:40:17 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.18.10:
