@@ -1,4 +1,109 @@
 -------------------------------------------------------------------
+Sun Sep 18 07:37:08 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.0:
+  + Fix stuttering in Xorg session.
+  + Make MetaBarrier type derivable again.
+  + Fixes crash.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 14 09:34:23 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Fix night-light-support: Add b81429ac.patch: meta-monitor: Keep
+  the dbus night-light-supported property in sync.
+
+-------------------------------------------------------------------
+Mon Sep  5 07:26:18 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.rc:
+  + Remember monitor scale when switching configurations
+  + Embed wayland output name into screencast streams
+  + Limit precision of stored refresh rates
+  + Add support for the "max bpc" connector property
+  + Fix focus-tracking corner case
+  + Add detail to ::event signal
+  + Improve heuristics for adding fallback monitor modes
+  + Take over color management from gnome-settings-daemon
+  + Allow scanout for offscreen rotated views
+  + Fix hot corner regression on X11
+  + Fix losing IM focus in some circumstances
+  + Avoid swapping redundant portions of buffers onscreen
+  + Animate windows moving between monitors
+  + Make NVIDIA + gbm use atomic mode setting
+  + Fixed crashes
+  + Plugged memory leak
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+- Add pkgconfig(colord) and pkgconfig(lcms2) BuildRequires: New
+  dependencies.
+- Pass tests=false to meson, disable build of all tests.
+
+-------------------------------------------------------------------
+Fri Aug 12 18:15:56 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.beta:
+  + Add basic color-scheme support for server-side decorations
+  + Add single pixel buffer support
+  + Add support for multi-monitor direct scanout
+  + Add tool to pretty print display configuration
+  + Always send modifiers to clients if supported
+  + Better integrate cogl tests with existing infrastructure
+  + Continue gi-docgen migration
+  + Defer and accumulate redraw-clip on scanout
+  + Don't skip frames after skipped KMS updates
+  + Don't skip vblank sync on missing presentation timestamp
+  + Fall back to ARGB if XRGB is not supported
+  + Fix cursor showing on Xilinx
+  + Fix cursor visibility on X11 with only tablets as input
+  + Fix glitches in apps using subsurfaces
+  + Fix registering as X11 window manager if GDK_BACKEND is set
+  + Highlight actors becoming reactive under the pointer
+  + High-resolution scroll wheel support
+  + Notify about privacy screen changes via predictions
+  + Reduce client work when entering overview
+  + Remove mipmap framerate limiting
+  + Replace MetaTextureTower with native GL mipmapping
+  + Report actual monitor transform
+  + screencast:
+    - Set correct stride when using dmabufs
+    - Use flag to signal failed recording
+  + Support direct scanout on GPUs without modifiers support
+  + Plugged leaks
+  + Fixed crashes
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+- Drop zenity BuildRequires/Requires: The dependency was removed in
+  alpha release.
+
+-------------------------------------------------------------------
+Fri Aug 12 14:13:57 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 43.alpha:
+  + Drop zenity dependency.
+  + Fix initialization of privacy mode in displays that support it.
+  + Add NightLightSupported property to DisplayConfig.
+  + Don't use direct scanout for transparent windows.
+  + Improve picking a window for direct scanout.
+  + Drop support for obsolete wayland protocols.
+  + Fix --replace again.
+  + Do not allow windows to steal focus when the shell has a grab.
+  + Fix night light without GAMM_LUT property.
+  + Expose Cogl's Snippet API to introspection.
+  + wayland: Fix rotation transform.
+  + Build and deploy API documentation.
+  + Attach color state information to actors.
+  + Fix pointer confinement on HiDPI setups.
+  + Fix dma-bufu screencast regression.
+  + Fix monitor mirroring in some cases.
+  + Parse HDR and Colorimetry CTA-861 EDID extension blocks.
+  + Fix cursor tracking during screencasts on X11.
+  + Fixed crashes.
+  + Plugged leaks.
+  + Misc. bug fixes and cleanups.
+- Bump api_major to 11, following upstream.
+
+-------------------------------------------------------------------
 Thu Aug 11 18:41:55 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 42.4:

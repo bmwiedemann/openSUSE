@@ -18,11 +18,11 @@
 
 %bcond_without profiler
 
-%define api_major 10
+%define api_major 11
 %define api_minor 0
 %define libmutter libmutter-%{api_major}-%{api_minor}
 Name:           mutter
-Version:        42.4
+Version:        43.0
 Release:        0
 Summary:        Window and compositing manager based on Clutter
 License:        GPL-2.0-or-later
@@ -40,6 +40,8 @@ Patch1:         mutter-disable-cvt-s390x.patch
 Patch2:         mutter-window-actor-Special-case-shaped-Java-windows.patch
 # PATCH-FIX-UPSTREAM mutter-crash-meta_context_terminate.patch bsc#1199382 glgo#GNOME/mutter#2267 xwang@suse.com -- Fix SIGSEGV in meta_context_terminate
 Patch3:         mutter-crash-meta_context_terminate.patch
+# PATCH-FIX-UPSTREAM b81429ac.patch -- meta-monitor: Keep the dbus night-light-supported property in sync
+Patch4:         https://gitlab.gnome.org/GNOME/mutter/-/commit/b81429ac.patch
 
 ## SLE-only patches start at 1000
 # PATCH-FEATURE-SLE mutter-SLE-bell.patch FATE#316042 bnc#889218 idonmez@suse.com -- make audible bell work out of the box.
@@ -58,8 +60,8 @@ BuildRequires:  meson >= 0.53.0
 BuildRequires:  pkgconfig
 BuildRequires:  xorg-x11-server
 BuildRequires:  xvfb-run
-BuildRequires:  zenity
 BuildRequires:  pkgconfig(cairo) >= 1.10.0
+BuildRequires:  pkgconfig(colord) >= 1.4.5
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(fribidi) >= 1.0.0
 BuildRequires:  pkgconfig(gbm) >= 17.3
@@ -74,6 +76,7 @@ BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.37.2
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.19.8
 BuildRequires:  pkgconfig(gudev-1.0) >= 232
 BuildRequires:  pkgconfig(json-glib-1.0) >= 0.12.0
+BuildRequires:  pkgconfig(lcms2) >= 2.6
 BuildRequires:  pkgconfig(libcanberra-gtk3) >= 0.26
 BuildRequires:  pkgconfig(libdrm) >= 2.4.83
 BuildRequires:  pkgconfig(libinput) >= 1.15.0
@@ -113,7 +116,6 @@ BuildRequires:  pkgconfig(xrender)
 BuildRequires:  pkgconfig(xtst)
 BuildRequires:  pkgconfig(xwayland)
 Requires:       gnome-settings-daemon
-Requires:       zenity
 Provides:       windowmanager
 # Obsolete the now private typelib.
 Obsoletes:      typelib-1_0-Meta-3_0
@@ -148,6 +150,7 @@ applications that want to make use of the mutter library.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 # SLE-only patches and translations.
 %if 0%{?sle_version}
@@ -162,7 +165,7 @@ applications that want to make use of the mutter library.
 	-Dwayland_eglstream=true \
 	-Dcogl_tests=false \
 	-Dclutter_tests=false \
-	-Dtests=true \
+	-Dtests=false \
 	-Dinstalled_tests=false \
 	-Dxwayland_initfd=auto \
 %if %{with profiler}
@@ -206,7 +209,6 @@ applications that want to make use of the mutter library.
 %{_libdir}/mutter-%{api_major}/Meta-%{api_major}.typelib
 
 %{_libdir}/libmutter-%{api_major}.so.*
-%{_libdir}/libmutter-test-%%{api_major}.so
 %dir %{_libdir}/mutter-%{api_major}/
 # users of libmutter need this directory
 %dir %{_libdir}/mutter-%{api_major}/plugins/
@@ -234,7 +236,6 @@ applications that want to make use of the mutter library.
 %{_libdir}/mutter-%{api_major}/libmutter-cogl-%{api_major}.so
 %{_libdir}/libmutter-%{api_major}.so
 %{_libdir}/pkgconfig/libmutter-%{api_major}.pc
-%{_libdir}/pkgconfig/libmutter-test-%%{api_major}.pc
 %{_libdir}/pkgconfig/mutter-clutter-%{api_major}.pc
 %{_libdir}/pkgconfig/mutter-cogl-%{api_major}.pc
 %{_libdir}/pkgconfig/mutter-cogl-pango-%{api_major}.pc
