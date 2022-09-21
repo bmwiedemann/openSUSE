@@ -47,8 +47,8 @@ Patch6:         signed-char.patch
 Patch7:         big-endian.patch
 # bsc#1144255 disable jpeg2k support due to removal of jasper
 Patch8:         netpbm-disable-jasper.patch
-# PATCH-FIX-UPSTREAM fix ppmforge test to avoid float overflow
-Patch9:         ppmforge-test.patch
+# PATCH-FIX-UPSTREAM fix arithmetic overflow in ppmforge (https://sourceforge.net/p/netpbm/code/4428/)
+Patch9:         ppmforge-fix-overflow.patch
 BuildRequires:  flex
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel

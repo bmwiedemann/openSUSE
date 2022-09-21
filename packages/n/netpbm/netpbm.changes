@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep 18 09:15:29 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- ppmforge-fix-overflow.patch: Fix arithmetic overflow in ppmforge
+- ppmforge-test.patch: removed
+
+-------------------------------------------------------------------
 Wed Sep 14 13:15:23 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - ppmforge-test.patch: fix ppmforge test to avoid float overflow
