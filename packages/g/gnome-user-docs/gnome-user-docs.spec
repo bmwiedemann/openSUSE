@@ -17,13 +17,13 @@
 
 
 Name:           gnome-user-docs
-Version:        42.0
+Version:        43.0
 Release:        0
 Summary:        GNOME Desktop Documentation
 License:        CC-BY-3.0
 Group:          Documentation/Other
 URL:            https://www.gnome.org
-Source0:        https://download.gnome.org/sources/gnome-user-docs/42/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-user-docs/43/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  yelp-tools
@@ -51,7 +51,7 @@ This package contains documents that are targeted for GNOME end-users.
 
 %files
 %license COPYING
-%doc NEWS README
+%doc NEWS README.md
 %doc %{_datadir}/help/C/gnome-help/
 %doc %{_datadir}/help/C/system-admin-guide/
 

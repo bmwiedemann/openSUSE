@@ -719,4 +719,12 @@
     <comment>GNOME 42 - ready for impact</comment>
     <requestid>963607</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>b15c91938872ecb4f9281fe608586341</srcmd5>
+    <version>43.0</version>
+    <time>1663764041</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1004808</requestid>
+  </revision>
 </revisionlist>
