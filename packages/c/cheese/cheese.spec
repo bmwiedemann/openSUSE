@@ -1,7 +1,7 @@
 #
 # spec file for package cheese
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,13 +22,13 @@
 %define typelib_minor 0
 
 Name:           cheese
-Version:        41.1
+Version:        43.alpha
 Release:        0
 Summary:        Webcam Booth for GNOME
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://wiki.gnome.org/Apps/Cheese
-Source0:        https://download.gnome.org/sources/cheese/41/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/cheese/43/%{name}-%{version}.tar.xz
 
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes

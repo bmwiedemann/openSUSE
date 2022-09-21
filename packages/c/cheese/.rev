@@ -864,4 +864,12 @@
 - Stop packaging help files as docs, silence rpmlint. (forwarded request 931591 from iznogood)</comment>
     <requestid>931782</requestid>
   </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>ec0c2c191b6cd8b7fbc487486f7e2a73</srcmd5>
+    <version>43.alpha</version>
+    <time>1663763958</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 43.rc - let's get this into Staging to see what we break (e.g meson:test seems to be an issue already) (forwarded request 1002606 from dimstar)</comment>
+    <requestid>1003138</requestid>
+  </revision>
 </revisionlist>
