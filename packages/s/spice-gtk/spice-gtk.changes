@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug  8 12:30:51 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace pkgconfig(libphodav-2.0) and pkgconfig(libsoup-2.4) with
+  pkgconfig(libphodav-3.0) and pkgconfig(libsoup-3.0)
+  BuildRequires.
+
+-------------------------------------------------------------------
 Tue Jul 12 05:33:53 MDT 2022 - carnold@suse.com
 
 - Update to version 0.41. Features and Issues addressed:

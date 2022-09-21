@@ -59,9 +59,9 @@ BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(libcap-ng)
 BuildRequires:  pkgconfig(libdrm)
-BuildRequires:  pkgconfig(libphodav-2.0)
+BuildRequires:  pkgconfig(libphodav-3.0)
 BuildRequires:  pkgconfig(libpulse-mainloop-glib)
-BuildRequires:  pkgconfig(libsoup-2.4) >= 2.49.91
+BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.23
 BuildRequires:  pkgconfig(libusbredirhost) >= 0.7.1
 BuildRequires:  pkgconfig(libusbredirparser-0.5) >= 0.4
