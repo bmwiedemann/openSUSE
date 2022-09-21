@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 13 11:39:30 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add d1c0835d.patch: flickr: remove GOA support. GNOME Online
+  accounts removed flicker backend so we need to remove it here
+  too.
+
+-------------------------------------------------------------------
 Mon Aug 29 18:04:42 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add back pkgconfig(libsoup-2.4) and disable
