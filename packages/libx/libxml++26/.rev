@@ -23,4 +23,39 @@
     <comment> (forwarded request 857770 from iznogood)</comment>
     <requestid>857830</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7e07a1fdfff2d978736534532532c961</srcmd5>
+    <version>2.42.2</version>
+    <time>1663764115</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.42.2:
+  + Document, Node: Recognize HTML documents
+  + Build:
+    - Meson build: When mm-common &gt;= 1.0.4 is used, Perl is not required
+    - Win32: Don't include afxres.h in resources
+    - Support Visual Studio 2022
+    - Meson build:
+      . Require meson &gt;= 0.55.0
+      . Specify 'check' option in run_command(). Will be necessary
+        with future versions of Meson.
+      . Avoid configuration warnings
+    - docs/manual: Sort example file lists. See
+      glgo/GNOME/gtkmm-documentation/!15
+    - NMake Makefiles: Make things more configurable
+  + Documentation:
+    - docs/manual: Upgrade from DocBook 4.1 to DocBook 5.0
+    - MSVC_NMake/README: Document dependency placement
+- Changes from version 2.42.1:
+  + Build:
+    - libxml++config.h.*: Don't dllimport on MinGW
+    - Meson build:
+      . Make it possible to use libxml++ as a subproject
+      . No implicit_include_directories
+    - MSVC build: Export classes selectively
+  + Documentation: Let links point to libxml++-2.6 versions instead
+    of latest versions.
+- Drop erroneous executable bit from docs and headerfiles.
+- Use ldconfig_scriptlets macro for post(un) handling. (forwarded request 1002499 from iznogood)</comment>
+    <requestid>1003130</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package libxml++26
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define _name   libxml++
 Name:           libxml++26
 
-Version:        2.42.0
+Version:        2.42.2
 Release:        0
 Summary:        C++ Interface for XML Files
 License:        LGPL-2.1-or-later
@@ -30,7 +30,7 @@ Source1:        baselibs.conf
 
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
-BuildRequires:  meson
+BuildRequires:  meson >= 0.55.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glibmm-2.4) >= 2.32.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.7.7
@@ -58,6 +58,7 @@ to develop applications that require these.
 
 %prep
 %autosetup -p1 -n %{_name}-%{version}
+chmod -x NEWS libxml++config.h.in libxml++config.h.meson
 
 %build
 %meson \
@@ -66,10 +67,9 @@ to develop applications that require these.
 
 %install
 %meson_install
-%fdupes %{buildroot}/%{_prefix}
+%fdupes %{buildroot}%{_prefix}
 
-%post -n libxml++-2_6-2 -p /sbin/ldconfig
-%postun -n libxml++-2_6-2 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libxml++-2_6-2
 
 %files -n libxml++-2_6-2
 %license COPYING
