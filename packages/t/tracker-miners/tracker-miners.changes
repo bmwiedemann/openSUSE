@@ -1,9 +1,50 @@
 -------------------------------------------------------------------
+Sun Sep 18 08:36:55 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.4.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  5 13:57:13 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.4.0.rc:
+  + Fixes to libav/ffmpeg extractor.
+  + Remove text/plain files from ignored-files, there are more
+    specific setting to control indexed text content.
+  + Fix build on MacOS.
+  + Fix compiler/build warnings.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug 10 06:55:07 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.4.0.beta:
+  + Add --list and --delete options to RSS miner.
+  + Text extraction fixes on ODS and ODG file formats.
+  + Improve logging of filesystem miner elapsed time information.
+  + Improve performance of filesystem move operations.
+  + Do not show duplicate results in "tracker3 search" CLI tool.
+  + Updated translations.
+- Drop 401.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Mon Aug  8 09:19:56 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 401.patch: Specify graphs in "tracker3 search" queries;
   resolves tracker search listing files multiple times
   (boo#1200403 glgo#GNOME/tracker-miners#229).
+
+-------------------------------------------------------------------
+Sun Jul 17 19:31:46 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.4.0.alpha:
+  + Fix fallback from fanotify to inotify.
+  + Improvements to "tracker3 status" CLI.
+  + Check field type on IPTC data embedded in TIFFs.
+  + Avoid non-existent ontology in libav extractor.
+  + Fix some file updates being missed through fanotify.
+  + Fix possible tracker-miner-fs-3 crashes on shutdown.
+  + Updated translations.
 
 -------------------------------------------------------------------
 Wed Jun  1 09:01:24 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
