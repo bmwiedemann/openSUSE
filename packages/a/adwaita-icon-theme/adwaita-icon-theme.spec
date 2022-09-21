@@ -17,13 +17,13 @@
 
 
 Name:           adwaita-icon-theme
-Version:        42.0
+Version:        43
 Release:        0
 Summary:        GNOME Icon Theme
 License:        CC-BY-SA-3.0 OR LGPL-3.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/adwaita-icon-theme
-Source0:        https://download.gnome.org/sources/adwaita-icon-theme/42/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/adwaita-icon-theme/43/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  gdk-pixbuf-loader-rsvg
@@ -59,7 +59,7 @@ mkdir -p %{buildroot}%{_datadir}/icons/Adwaita/scalable/mimetypes
 mkdir -p %{buildroot}%{_datadir}/icons/Adwaita/scalable/places
 mkdir -p %{buildroot}%{_datadir}/icons/Adwaita/scalable/status
 mkdir -p %{buildroot}%{_datadir}/icons/Adwaita/scalable/stock/generic
-# Add internet-web-browser symling (to web-browser) to adwaita-icon-theme (bnc#767437)
+# Add internet-web-browser symlink (to web-browser) to adwaita-icon-theme (bnc#767437)
 for folder in %{buildroot}%{_datadir}/icons/Adwaita/*x[0-9]*; do
  ln ${folder}/apps/web-browser.png ${folder}/apps/internet-web-browser.png || :
 done
