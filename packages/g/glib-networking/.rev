@@ -638,4 +638,29 @@ a newer version not fitting</comment>
     <comment>New stable release (forwarded request 993762 from iznogood)</comment>
     <requestid>993953</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>fd19daf1442ad6cf5125cf47d446d1ca</srcmd5>
+    <version>2.74.0</version>
+    <time>1663764021</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.74.0:
+  + Updated translations.
+- Update to version 2.74.rc:
+  + Support PKCS #12 encrypted certificates.
+  + Various improvements to Meson build system.
+  + Multiple fixes for proxy tests.
+- Update to version 2.74.beta:
+  + Drop environment proxy resolver to lowest priority.
+- Update to version 2.74.alpha:
+  + Add build option for toggling debug logging.
+  + Move gettext() usage out of hot paths.
+  + Fix tests build when using openssl.
+  + Properly free libproxy lookup results and require libproxy
+    0.4.16.
+  + Add additional validation for proxy lookup results.
+  + Allow using static libraries via meson subprojects.
+  + Updated translations.
+</comment>
+    <requestid>1004784</requestid>
+  </revision>
 </revisionlist>
