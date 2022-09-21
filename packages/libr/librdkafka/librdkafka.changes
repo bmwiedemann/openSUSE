@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Mon Sep 12 19:42:28 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.2:
+  * Added KIP-768 OUATHBEARER OIDC support (by @jliunyu, #3560)
+  * Added KIP-140 Admin API ACL support (by @emasab, #2676)
+  * Consumer:
+    `rd_kafka_offsets_store()` (et.al) will now return an error for any
+    partition that is not currently assigned (through `rd_kafka_*assign()`).
+    This prevents a race condition where an application would store offsets
+    after the assigned partitions had been revoked (which resets the stored
+    offset), that could cause these old stored offsets to be committed later
+    when the same partitions were assigned to this consumer again - effectively
+    overwriting any committed offsets by any consumers that were assigned the
+    same partitions previously. This would typically result in the offsets
+    rewinding and messages to be reprocessed.
+    As an extra effort to avoid this situation the stored offset is now
+    also reset when partitions are assigned (through `rd_kafka_*assign()`).
+    Applications that explicitly call `..offset*_store()` will now need
+    to handle the case where `RD_KAFKA_RESP_ERR__STATE` is returned
+    in the per-partition `.err` field - meaning the partition is no longer
+    assigned to this consumer and the offset could not be stored for commit.
+  * Improved producer queue scheduling. Fixes the performance regression
+    introduced in v1.7.0 for some produce patterns. (#3538, #2912)
+  * Windows: Added native Win32 IO/Queue scheduling. This removes the
+    internal TCP loopback connections that were previously used for timely
+    queue wakeups.
+  * Added `socket.connection.setup.timeout.ms` (default 30s).
+    The maximum time allowed for broker connection setups (TCP connection as
+    well as SSL and SASL handshakes) is now limited to this value.
+    This fixes the issue with stalled broker connections in the case of network
+    or load balancer problems.
+    The Java clients has an exponential backoff to this timeout which is
+    limited by `socket.connection.setup.timeout.max.ms` - this was not
+    implemented in librdkafka due to differences in connection handling and
+    `ERR__ALL_BROKERS_DOWN` error reporting. Having a lower initial connection
+    setup timeout and then increase the timeout for the next attempt would
+    yield possibly false-positive `ERR__ALL_BROKERS_DOWN` too early.
+  * SASL OAUTHBEARER refresh callbacks can now be scheduled for execution
+    on librdkafka's background thread. This solves the problem where an
+    application has a custom SASL OAUTHBEARER refresh callback and thus needs to
+    call `rd_kafka_poll()` (et.al.) at least once to trigger the
+    refresh callback before being able to connect to brokers.
+    With the new `rd_kafka_conf_enable_sasl_queue()` configuration API and
+    `rd_kafka_sasl_background_callbacks_enable()` the refresh callbacks
+    can now be triggered automatically on the librdkafka background thread.
+  * `rd_kafka_queue_get_background()` now creates the background thread
+    if not already created.
+  * Added `rd_kafka_consumer_close_queue()` and `rd_kafka_consumer_closed()`.
+    This allow applications and language bindings to implement asynchronous
+    consumer close.
+  * Bundled zlib upgraded to version 1.2.12.
+  * Bundled OpenSSL upgraded to 1.1.1n.
+  * Added `test.mock.broker.rtt` to simulate RTT/latency for mock brokers.
+- enable libcurl integration
+- enable RapidJSON integration
+
+-------------------------------------------------------------------
 Tue Jan  4 22:51:56 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.8.2:

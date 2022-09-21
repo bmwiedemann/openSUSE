@@ -23,7 +23,7 @@
 %define _lto_cflags %{nil}
 %endif
 Name:           librdkafka
-Version:        1.8.2
+Version:        1.9.2
 Release:        0
 Summary:        The Apache Kafka C/C++ library
 License:        BSD-2-Clause
@@ -35,6 +35,8 @@ BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(RapidJSON)
+BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(zlib)
@@ -67,8 +69,9 @@ This package contains development headers and examples.
 
 %build
 %configure \
+	--enable-curl \
 	--enable-gssapi \
-        --enable-lz4 --enable-lz4-ext \
+        --enable-lz4-ext \
 	--enable-regex-ext \
         --enable-sasl \
 	--enable-ssl \
