@@ -723,4 +723,12 @@
     <comment>New stable release (forwarded request 983500 from iznogood)</comment>
     <requestid>983865</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>7b3b4b2bf1547597ee4b0ee8d6f5e645</srcmd5>
+    <version>0.42.0</version>
+    <time>1663764135</time>
+    <user>dimstar_suse</user>
+    <comment>Rygel stable + patch</comment>
+    <requestid>1004746</requestid>
+  </revision>
 </revisionlist>

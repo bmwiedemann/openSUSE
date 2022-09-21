@@ -16,14 +16,20 @@
 #
 
 
+%define sover      2_8-0
+%define apiver     2.8
+%define typelibver 2_8
+
 Name:           rygel
-Version:        0.40.4
+Version:        0.42.0
 Release:        0
 Summary:        UPnP/DLNA home media server for GNOME
 License:        LGPL-2.0-or-later
 Group:          Productivity/Multimedia/Other
 URL:            http://live.gnome.org/Rygel
-Source0:        https://download.gnome.org/sources/rygel/0.40/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/rygel/0.42/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM rygel-fix-rygel-pcfiles.patch -- Fix requires and linking in .pc files
+Patch0:         rygel-fix-rygel-pcfiles.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel >= 1.33.4
@@ -31,7 +37,6 @@ BuildRequires:  libunistring-devel
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
 BuildRequires:  suse-xsl-stylesheets
-BuildRequires:  update-desktop-files
 BuildRequires:  vala >= 0.36.0
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gee-0.8) >= 0.8.0
@@ -39,21 +44,20 @@ BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.56.0
 BuildRequires:  pkgconfig(gmodule-2.0)
-BuildRequires:  pkgconfig(gssdp-1.2) >= 1.1
+BuildRequires:  pkgconfig(gssdp-1.6)
 BuildRequires:  pkgconfig(gst-editing-services-1.0)
 BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.0
 BuildRequires:  pkgconfig(gstreamer-app-1.0) >= 1.0
 BuildRequires:  pkgconfig(gstreamer-audio-1.0) >= 1.0
 BuildRequires:  pkgconfig(gstreamer-pbutils-1.0) >= 1.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.0
-BuildRequires:  pkgconfig(gupnp-1.2) >= 1.1
+BuildRequires:  pkgconfig(gupnp-1.6) >= 1.1
 BuildRequires:  pkgconfig(gupnp-av-1.0) >= 0.12.8
 BuildRequires:  pkgconfig(gupnp-dlna-2.0) >= 0.9.4
 BuildRequires:  pkgconfig(gupnp-dlna-2.0) >= 0.9.4
 BuildRequires:  pkgconfig(gupnp-dlna-gst-2.0) >= 0.9.4
 BuildRequires:  pkgconfig(libmediaart-2.0) >= 1.9.0
-BuildRequires:  pkgconfig(libsoup-2.4) >= 2.44.0
-BuildRequires:  pkgconfig(libsoup-2.4) >= 2.44.0
+BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.7
 BuildRequires:  pkgconfig(sqlite3) >= 3.5
 BuildRequires:  pkgconfig(systemd)
@@ -72,95 +76,95 @@ implemented through a plug-in mechanism. It conforms to DLNA and does
 on-the-fly conversion of media to format that client devices are
 capable of handling.
 
-%package -n librygel-core-2_6-2
+%package -n librygel-core-%{sover}
 Summary:        Core library for the Rygel UPnP/DLNA media server
 Group:          System/Libraries
 
-%description -n librygel-core-2_6-2
+%description -n librygel-core-%{sover}
 Rygel is a home media server that allows sharing audio, video,
 pictures, and control of media player on your home network.
 
 This package provides the core library of rygel.
 
-%package -n librygel-db-2_6-2
+%package -n librygel-db-%{sover}
 Summary:        Database library for the Rygel UPnP/DLNA media server
 Group:          System/Libraries
 
-%description -n librygel-db-2_6-2
+%description -n librygel-db-%{sover}
 Rygel is a home media server that allows sharing audio, video,
 pictures, and control of media player on your home network.
 
 This package provides the database library of rygel.
 
-%package -n librygel-renderer-2_6-2
+%package -n librygel-renderer-%{sover}
 Summary:        Render library for the Rygel UPnP/DLNA media server
 Group:          System/Libraries
 
-%description -n librygel-renderer-2_6-2
+%description -n librygel-renderer-%{sover}
 Rygel is a home media server that allows sharing audio, video,
 pictures, and control of media player on your home network.
 
 This package provides the renderer library of rygel.
 
-%package -n librygel-renderer-gst-2_6-2
+%package -n librygel-renderer-gst-%{sover}
 Summary:        Gstreamer render library for the Rygel UPnP/DLNA media server
 Group:          System/Libraries
 
-%description -n librygel-renderer-gst-2_6-2
+%description -n librygel-renderer-gst-%{sover}
 Rygel is a home media server that allows sharing audio, video,
 pictures, and control of media player on your home network.
 
 This package provides the renderer library of rygel.
 
-%package -n librygel-ruih-2_0-1
+%package -n librygel-ruih-%{sover}
 Summary:        Remote User Interface handling library for the Rygel UPnP/DLNA media server
 Group:          System/Libraries
 
-%description -n librygel-ruih-2_0-1
+%description -n librygel-ruih-%{sover}
 Rygel is a home media server that allows sharing audio, video,
 pictures, and control of media player on your home network.
 
 This package provides the ruih library of rygel.
 
-%package -n librygel-server-2_6-2
+%package -n librygel-server-%{sover}
 Summary:        Server library for the Rygel UPnP/DLNA media server
 Group:          System/Libraries
 
-%description -n librygel-server-2_6-2
+%description -n librygel-server-%{sover}
 Rygel is a home media server that allows sharing audio, video,
 pictures, and control of media player on your home network.
 
 This package provides the server library of rygel.
 
-%package -n typelib-1_0-RygelCore-2_6
+%package -n typelib-1_0-RygelCore-%{typelibver}
 Summary:        GObject introspection files for the Rygel core library
 Group:          System/Libraries
 
-%description -n typelib-1_0-RygelCore-2_6
+%description -n typelib-1_0-RygelCore-%{typelibver}
 Rygel is a home media server that allows sharing audio, video,
 pictures, and control of media player on your home network.
 
-%package -n typelib-1_0-RygelRenderer-2_6
+%package -n typelib-1_0-RygelRenderer-%{typelibver}
 Summary:        GObject introspection files for the Rygel renderer library
 Group:          System/Libraries
 
-%description -n typelib-1_0-RygelRenderer-2_6
+%description -n typelib-1_0-RygelRenderer-%{typelibver}
 Rygel is a home media server that allows sharing audio, video,
 pictures, and control of media player on your home network.
 
-%package -n typelib-1_0-RygelRendererGst-2_6
+%package -n typelib-1_0-RygelRendererGst-%{typelibver}
 Summary:        GObject introspection files for the Rygel RendererGst library
 Group:          System/Libraries
 
-%description -n typelib-1_0-RygelRendererGst-2_6
+%description -n typelib-1_0-RygelRendererGst-%{typelibver}
 Rygel is a home media server that allows sharing audio, video,
 pictures, and control of media player on your home network.
 
-%package -n typelib-1_0-RygelServer-2_6
+%package -n typelib-1_0-RygelServer-%{typelibver}
 Summary:        GObject introspection files for the Rygel server library
 Group:          System/Libraries
 
-%description -n typelib-1_0-RygelServer-2_6
+%description -n typelib-1_0-RygelServer-%{typelibver}
 Rygel is a home media server that allows sharing audio, video,
 pictures, and control of media player on your home network.
 
@@ -168,16 +172,16 @@ pictures, and control of media player on your home network.
 Summary:        Development files for the Rygel UPnP/DLNA media server
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
-Requires:       librygel-core-2_6-2 = %{version}
-Requires:       librygel-db-2_6-2 = %{version}
-Requires:       librygel-renderer-2_6-2 = %{version}
-Requires:       librygel-renderer-gst-2_6-2 = %{version}
-Requires:       librygel-ruih-2_0-1 = %{version}
-Requires:       librygel-server-2_6-2 = %{version}
-Requires:       typelib-1_0-RygelCore-2_6 = %{version}
-Requires:       typelib-1_0-RygelRenderer-2_6 = %{version}
-Requires:       typelib-1_0-RygelRendererGst-2_6 = %{version}
-Requires:       typelib-1_0-RygelServer-2_6 = %{version}
+Requires:       librygel-core-%{sover} = %{version}
+Requires:       librygel-db-%{sover} = %{version}
+Requires:       librygel-renderer-%{sover} = %{version}
+Requires:       librygel-renderer-gst-%{sover} = %{version}
+Requires:       librygel-ruih-%{sover} = %{version}
+Requires:       librygel-server-%{sover} = %{version}
+Requires:       typelib-1_0-RygelCore-%{typelibver} = %{version}
+Requires:       typelib-1_0-RygelRenderer-%{typelibver} = %{version}
+Requires:       typelib-1_0-RygelRendererGst-%{typelibver} = %{version}
+Requires:       typelib-1_0-RygelServer-%{typelibver} = %{version}
 
 %description devel
 Rygel is a home media server that allows sharing audio, video,
@@ -202,9 +206,7 @@ Summary:        Tracker plugin for the Rygel UPnP/DLNA media server
 Group:          Productivity/Multimedia/Other
 Requires:       %{name} = %{version}
 Requires:       tracker
-Supplements:    %{name}
-Supplements:    and
-Supplements:    tracker
+Supplements:    (%{name} and tracker)
 
 %description plugin-tracker
 Rygel is a home media server that allows sharing audio, video,
@@ -234,26 +236,18 @@ the local machine.
 %meson_install
 
 %fdupes %{buildroot}%{_datadir}
-%suse_update_desktop_file rygel
-%suse_update_desktop_file rygel-preferences X-SuSE-ControlCenter-Personal
 %find_lang %{name} %{?no_lang_C}
 
-%post -n librygel-core-2_6-2 -p /sbin/ldconfig
-%postun -n librygel-core-2_6-2 -p /sbin/ldconfig
-%post -n librygel-db-2_6-2 -p /sbin/ldconfig
-%postun -n librygel-db-2_6-2 -p /sbin/ldconfig
-%post -n librygel-renderer-2_6-2 -p /sbin/ldconfig
-%postun -n librygel-renderer-2_6-2 -p /sbin/ldconfig
-%post -n librygel-renderer-gst-2_6-2 -p /sbin/ldconfig
-%postun -n librygel-renderer-gst-2_6-2 -p /sbin/ldconfig
-%post -n librygel-ruih-2_0-1 -p /sbin/ldconfig
-%postun -n librygel-ruih-2_0-1 -p /sbin/ldconfig
-%post -n librygel-server-2_6-2 -p /sbin/ldconfig
-%postun -n librygel-server-2_6-2 -p /sbin/ldconfig
+%ldconfig_scriptlets -n librygel-core-%{sover}
+%ldconfig_scriptlets -n librygel-db-%{sover}
+%ldconfig_scriptlets -n librygel-renderer-%{sover}
+%ldconfig_scriptlets -n librygel-renderer-gst-%{sover}
+%ldconfig_scriptlets -n librygel-ruih-%{sover}
+%ldconfig_scriptlets -n librygel-server-%{sover}
 
 %files
 %license COPYING
-%doc AUTHORS TODO NEWS
+%doc AUTHORS NEWS
 %config(noreplace) %{_sysconfdir}/rygel.conf
 %{_userunitdir}/rygel.service
 %{_bindir}/rygel
@@ -268,99 +262,99 @@ the local machine.
 %{_mandir}/*/*
 # Plugins that we ship by default because they don't have a dependency and can
 # be useful to most people
-%dir %{_libdir}/rygel-2.6/
-%dir %{_libdir}/rygel-2.6/engines/
-%dir %{_libdir}/rygel-2.6/plugins/
-%{_libdir}/rygel-2.6/engines/librygel-media-engine-gst.so
-%{_libdir}/rygel-2.6/engines/librygel-media-engine-simple.so
-%{_libdir}/rygel-2.6/engines/media-engine-gst.plugin
-%{_libdir}/rygel-2.6/engines/media-engine-simple.plugin
+%dir %{_libdir}/rygel-%{apiver}/
+%dir %{_libdir}/rygel-%{apiver}/engines/
+%dir %{_libdir}/rygel-%{apiver}/plugins/
+%{_libdir}/rygel-%{apiver}/engines/librygel-media-engine-gst.so
+%{_libdir}/rygel-%{apiver}/engines/librygel-media-engine-simple.so
+%{_libdir}/rygel-%{apiver}/engines/media-engine-gst.plugin
+%{_libdir}/rygel-%{apiver}/engines/media-engine-simple.plugin
 # external applications implementing D-Bus MediaServer spec
-%{_libdir}/rygel-2.6/plugins/librygel-external.so
-%{_libdir}/rygel-2.6/plugins/external.plugin
+%{_libdir}/rygel-%{apiver}/plugins/librygel-external.so
+%{_libdir}/rygel-%{apiver}/plugins/external.plugin
 # GStreamer pipelines in the config
-%{_libdir}/rygel-2.6/plugins/librygel-gst-launch.so
-%{_libdir}/rygel-2.6/plugins/gst-launch.plugin
+%{_libdir}/rygel-%{apiver}/plugins/librygel-gst-launch.so
+%{_libdir}/rygel-%{apiver}/plugins/gst-launch.plugin
 # LightweightMediaScanner
-%{_libdir}/rygel-2.6/plugins/librygel-lms.so
-%{_libdir}/rygel-2.6/plugins/lms.plugin
+%{_libdir}/rygel-%{apiver}/plugins/librygel-lms.so
+%{_libdir}/rygel-%{apiver}/plugins/lms.plugin
 # folders and files in the config
-%{_libdir}/rygel-2.6/plugins/librygel-media-export.so
-%{_libdir}/rygel-2.6/plugins/media-export.plugin
+%{_libdir}/rygel-%{apiver}/plugins/librygel-media-export.so
+%{_libdir}/rygel-%{apiver}/plugins/media-export.plugin
 # media players implementing MPRIS2 D-Bus interface
-%{_libdir}/rygel-2.6/plugins/librygel-mpris.so
-%{_libdir}/rygel-2.6/plugins/mpris.plugin
+%{_libdir}/rygel-%{apiver}/plugins/librygel-mpris.so
+%{_libdir}/rygel-%{apiver}/plugins/mpris.plugin
 # ruih plugin
-%{_libdir}/rygel-2.6/plugins/librygel-ruih.so
-%{_libdir}/rygel-2.6/plugins/ruih.plugin
+%{_libdir}/rygel-%{apiver}/plugins/librygel-ruih.so
+%{_libdir}/rygel-%{apiver}/plugins/ruih.plugin
 
-%files -n librygel-core-2_6-2
-%{_libdir}/librygel-core-2.6.so.*
+%files -n librygel-core-%{sover}
+%{_libdir}/librygel-core-%{apiver}.so.*
 
-%files -n librygel-db-2_6-2
-%{_libdir}/librygel-db-2.6.so.*
+%files -n librygel-db-%{sover}
+%{_libdir}/librygel-db-%{apiver}.so.*
 
-%files -n librygel-renderer-2_6-2
-%{_libdir}/librygel-renderer-2.6.so.*
+%files -n librygel-renderer-%{sover}
+%{_libdir}/librygel-renderer-%{apiver}.so.*
 
-%files -n librygel-renderer-gst-2_6-2
-%{_libdir}/librygel-renderer-gst-2.6.so.*
+%files -n librygel-renderer-gst-%{sover}
+%{_libdir}/librygel-renderer-gst-%{apiver}.so.*
 
-%files -n librygel-ruih-2_0-1
-%{_libdir}/librygel-ruih-2.0.so.*
+%files -n librygel-ruih-%{sover}
+%{_libdir}/librygel-ruih-%{apiver}.so.*
 
-%files -n librygel-server-2_6-2
-%{_libdir}/librygel-server-2.6.so.*
+%files -n librygel-server-%{sover}
+%{_libdir}/librygel-server-%{apiver}.so.*
 
-%files -n typelib-1_0-RygelCore-2_6
-%{_libdir}/girepository-1.0/RygelCore-2.6.typelib
+%files -n typelib-1_0-RygelCore-%{typelibver}
+%{_libdir}/girepository-1.0/RygelCore-%{apiver}.typelib
 
-%files -n typelib-1_0-RygelRenderer-2_6
-%{_libdir}/girepository-1.0/RygelRenderer-2.6.typelib
+%files -n typelib-1_0-RygelRenderer-%{typelibver}
+%{_libdir}/girepository-1.0/RygelRenderer-%{apiver}.typelib
 
-%files -n typelib-1_0-RygelRendererGst-2_6
-%{_libdir}/girepository-1.0/RygelRendererGst-2.6.typelib
+%files -n typelib-1_0-RygelRendererGst-%{typelibver}
+%{_libdir}/girepository-1.0/RygelRendererGst-%{apiver}.typelib
 
-%files -n typelib-1_0-RygelServer-2_6
-%{_libdir}/girepository-1.0/RygelServer-2.6.typelib
+%files -n typelib-1_0-RygelServer-%{typelibver}
+%{_libdir}/girepository-1.0/RygelServer-%{apiver}.typelib
 
 %files devel
-%{_includedir}/rygel-2.6/
-%{_libdir}/librygel-core-2.6.so
-%{_libdir}/librygel-db-2.6.so
-%{_libdir}/librygel-renderer-2.6.so
-%{_libdir}/librygel-renderer-gst-2.6.so
-%{_libdir}/librygel-server-2.6.so
-%{_libdir}/librygel-ruih-2.0.so
-%{_libdir}/pkgconfig/rygel-core-2.6.pc
-%{_libdir}/pkgconfig/rygel-renderer-2.6.pc
-%{_libdir}/pkgconfig/rygel-renderer-gst-2.6.pc
-%{_libdir}/pkgconfig/rygel-ruih-2.0.pc
-%{_libdir}/pkgconfig/rygel-server-2.6.pc
-%{_datadir}/gir-1.0/RygelCore-2.6.gir
-%{_datadir}/gir-1.0/RygelRenderer-2.6.gir
-%{_datadir}/gir-1.0/RygelRendererGst-2.6.gir
-%{_datadir}/gir-1.0/RygelServer-2.6.gir
-%{_datadir}/vala/vapi/rygel-core-2.6.deps
-%{_datadir}/vala/vapi/rygel-core-2.6.vapi
-%{_datadir}/vala/vapi/rygel-db-2.6.deps
-%{_datadir}/vala/vapi/rygel-db-2.6.vapi
-%{_datadir}/vala/vapi/rygel-renderer-2.6.deps
-%{_datadir}/vala/vapi/rygel-renderer-2.6.vapi
-%{_datadir}/vala/vapi/rygel-renderer-gst-2.6.deps
-%{_datadir}/vala/vapi/rygel-renderer-gst-2.6.vapi
-%{_datadir}/vala/vapi/rygel-ruih-2.0.deps
-%{_datadir}/vala/vapi/rygel-ruih-2.0.vapi
-%{_datadir}/vala/vapi/rygel-server-2.6.deps
-%{_datadir}/vala/vapi/rygel-server-2.6.vapi
+%{_includedir}/rygel-%{apiver}/
+%{_libdir}/librygel-core-%{apiver}.so
+%{_libdir}/librygel-db-%{apiver}.so
+%{_libdir}/librygel-renderer-%{apiver}.so
+%{_libdir}/librygel-renderer-gst-%{apiver}.so
+%{_libdir}/librygel-server-%{apiver}.so
+%{_libdir}/librygel-ruih-%{apiver}.so
+%{_libdir}/pkgconfig/rygel-core-%{apiver}.pc
+%{_libdir}/pkgconfig/rygel-renderer-%{apiver}.pc
+%{_libdir}/pkgconfig/rygel-renderer-gst-%{apiver}.pc
+%{_libdir}/pkgconfig/rygel-ruih-%{apiver}.pc
+%{_libdir}/pkgconfig/rygel-server-%{apiver}.pc
+%{_datadir}/gir-1.0/RygelCore-%{apiver}.gir
+%{_datadir}/gir-1.0/RygelRenderer-%{apiver}.gir
+%{_datadir}/gir-1.0/RygelRendererGst-%{apiver}.gir
+%{_datadir}/gir-1.0/RygelServer-%{apiver}.gir
+%{_datadir}/vala/vapi/rygel-core-%{apiver}.deps
+%{_datadir}/vala/vapi/rygel-core-%{apiver}.vapi
+%{_datadir}/vala/vapi/rygel-db-%{apiver}.deps
+%{_datadir}/vala/vapi/rygel-db-%{apiver}.vapi
+%{_datadir}/vala/vapi/rygel-renderer-%{apiver}.deps
+%{_datadir}/vala/vapi/rygel-renderer-%{apiver}.vapi
+%{_datadir}/vala/vapi/rygel-renderer-gst-%{apiver}.deps
+%{_datadir}/vala/vapi/rygel-renderer-gst-%{apiver}.vapi
+%{_datadir}/vala/vapi/rygel-ruih-%{apiver}.deps
+%{_datadir}/vala/vapi/rygel-ruih-%{apiver}.vapi
+%{_datadir}/vala/vapi/rygel-server-%{apiver}.deps
+%{_datadir}/vala/vapi/rygel-server-%{apiver}.vapi
 
 %files plugin-gstreamer-renderer
-%{_libdir}/rygel-2.6/plugins/librygel-playbin.so
-%{_libdir}/rygel-2.6/plugins/playbin.plugin
+%{_libdir}/rygel-%{apiver}/plugins/librygel-playbin.so
+%{_libdir}/rygel-%{apiver}/plugins/playbin.plugin
 
 %files plugin-tracker
-%{_libdir}/rygel-2.6/plugins/librygel-tracker3.so
-%{_libdir}/rygel-2.6/plugins/tracker3.plugin
+%{_libdir}/rygel-%{apiver}/plugins/librygel-tracker3.so
+%{_libdir}/rygel-%{apiver}/plugins/tracker3.plugin
 
 %files lang -f %{name}.lang
 

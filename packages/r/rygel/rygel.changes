@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Mon Sep 19 13:35:06 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add rygel-fix-rygel-pcfiles.patch: Fix requires and linking
+  in .pc files.
+- Fix broken Supplements in sub-package.
+
+-------------------------------------------------------------------
+Sat Sep 17 11:50:01 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.42.0:
+  + Remove obsolete .desktop entries.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Aug 27 20:26:57 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.41.2:
+  + Port to GLib's UUID function.
+  + Temporarily disable the Since check during build.
+  + Updated translations.
+- Changes from version 0.41.1:
+  + Fix deprecations in meson files.
+  + Adapt to VAPI changes in GUPnP.
+  + Updated translations.
+- Changes from version 0.41.0:
+  + Overall:
+    - Use GUPnP 1.6 API
+    - Use Libsoup 3 API
+    - API bump to 2.8
+    - ABI reset
+  + Confirmation UI: Do not install ui file if preferences are not
+    built
+  + Documentation:
+    - Fix gtk-doc generation and installation
+    - Add option "man_pages" to disable man pages
+  + Config: Fix Tracker3 configuration
+  + Presets:
+    - Add presets for more encoders
+    - Fix mp4 muxing
+    - Support VA-API MPEG2 encoding
+    - Support VA-API H.264 encoding
+  + Rygel: Port to GApplication instead of using our own single
+    instance mechanism
+  + Core: Make plugin loader more predictable
+  + Server: Add albumArtURI to VideoItem for devices that use that
+    for the thumbnail
+  + Renderer: Fix a critical if there is no mime_type
+  + MediaExport:
+    - Strip XML extensions (for DIDL_S playlists)
+    - Support ".nomedia" to skip indexing folders
+    - If database upgrade failed, do not activate plugin
+    - Treat parallel Tracker3 module similar to original Tracker
+      plugin
+    - Drop deperecated ValueArray
+    - Fix disabling meta-data extraction
+  + LMS: Drop deprecated ValueArray
+  + Tracker (old): Disable by default
+  + Tracker3:
+    - Fix Video graph
+    - Fix deadlock on start
+    - Do not kill whole rygel if service is not activatable
+  + GStreamer Media Engine:
+    - Adapt to deprecations
+    - Fix pipeline blocking issue when transcoding from video-only
+      files
+  + Bugs fixed: glgo#GNOME/rygel#151, glgo#GNOME/rygel#160,
+    glgo#GNOME/rygel#166, glgo#GNOME/rygel#173,
+    glgo#GNOME/rygel#183, glgo#GNOME/rygel#187,
+    glgo#GNOME/rygel#190, glgo#GNOME/rygel#192,
+    glgo#GNOME/rygel#192, glgo#GNOME/rygel#196,
+    glgo#GNOME/rygel#208.
+- Replace pkgconfig(gssdp-1.2), pkgconfig(gupnp-1.2) and
+  pkgconfig(libsoup-2.4) with pkgconfig(gssdp-1.6),
+  pkgconfig(gupnp-1.6) and pkgconfig(libsoup-3.0) BuildRequires
+  following upstream changes.
+- Use ldconfig_scriptlets macro for post(un) handling.
+- Add sover, apiver and typelibver defines, make future
+  soname/ABI/API updates less of a chore to do.
+- Drop update-desktop-files BuildRequires and macrocalls, no longer
+  needed.
+
+-------------------------------------------------------------------
 Fri Jun 17 20:54:42 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.40.4:
