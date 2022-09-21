@@ -26,6 +26,11 @@ URL:            https://www.kdab.com/clazy-video/
 Source0:        https://download.kde.org/stable/%{name}/%{version}/src/%{name}-%{version}.tar.xz
 Source1:        https://download.kde.org/stable/%{name}/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        clazy.keyring
+# Upstream changes on top of clazy 1.11
+Patch0:         0001-Limit-the-clang-AST-crash-workaround-to-clang-7.0.patch
+Patch1:         0001-Fix-crash-when-Q_PROPERTY-contents-is-empty.patch
+Patch2:         0001-Allow-passing-no-check-in-plugin-arg-clazy-commandli.patch
+Patch3:         0001-Build-fixes-for-LLVM-Clang-15.0.0.patch
 BuildRequires:  clang
 BuildRequires:  clang-devel >= 8.0
 BuildRequires:  cmake >= 3.7

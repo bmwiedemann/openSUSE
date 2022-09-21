@@ -163,4 +163,12 @@
     <comment></comment>
     <requestid>949315</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>4b5d9d49237322a01c00538038231671</srcmd5>
+    <version>1.11</version>
+    <time>1663764162</time>
+    <user>dimstar_suse</user>
+    <comment>Add upstream changes, including clang 15 build fix.</comment>
+    <requestid>1005060</requestid>
+  </revision>
 </revisionlist>

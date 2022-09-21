@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep 20 19:36:06 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream changes:
+  * 0001-Limit-the-clang-AST-crash-workaround-to-clang-7.0.patch
+  * 0001-Fix-crash-when-Q_PROPERTY-contents-is-empty.patch
+  * 0001-Allow-passing-no-check-in-plugin-arg-clazy-commandli.patch
+  * 0001-Build-fixes-for-LLVM-Clang-15.0.0.patch
+
+-------------------------------------------------------------------
 Wed Jan 26 15:02:14 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 1.11
