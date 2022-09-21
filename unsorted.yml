@@ -917,7 +917,6 @@ unsorted:
   - asymptote 
   - at-spi-sharp 
   - at-spi-sharp-devel 
-  - at-spi2-atk-devel 
   - at-spi2-core-devel 
   - at-spi2-core-devel-32bit: [x86_64] 
   - atheme 
@@ -926,9 +925,6 @@ unsorted:
   - atinject-javadoc 
   - atinject-tck 
   - atinout 
-  - atk-devel 
-  - atk-devel-32bit: [x86_64] 
-  - atk-doc 
   - atkmm-devel 
   - atkmm-devel-32bit: [x86_64] 
   - atkmm-doc 
@@ -1777,6 +1773,9 @@ unsorted:
   - calligra-stage 
   - calligra-tools 
   - calligra-words 
+  - calls 
+  - calls-lang 
+  - calls-ofono 
   - caml-mode 
   - camsource 
   - camsource-devel 
@@ -3740,6 +3739,7 @@ unsorted:
   - ffmpeg-5-libswresample-devel 
   - ffmpeg-5-libswscale-devel 
   - ffmpeg-5-private-devel 
+  - ffmpegthumbnailer 
   - ffmsindex 
   - ffnvcodec-devel 
   - ffsb 
@@ -4228,6 +4228,8 @@ unsorted:
   - gcompris-qt-voices 
   - gcovr 
   - gcovr-doc 
+  - gcr-doc 
+  - gcr3-viewer 
   - gcstar 
   - gd-devel 
   - gd-devel-32bit: [x86_64] 
@@ -5790,7 +5792,6 @@ unsorted:
   - glade-catalog-libhandy 
   - glade-catalog-libpeas 
   - glade-catalog-v3270 
-  - glade-catalog-vte 
   - glade-docs 
   - glade-lang 
   - glade-sharp2 
@@ -5940,7 +5941,6 @@ unsorted:
   - gnome-builder 
   - gnome-builder-doc 
   - gnome-builder-lang 
-  - gnome-builder-plugin-jhbuild 
   - gnome-calculator-devel 
   - gnome-calendar 
   - gnome-calendar-lang 
@@ -6505,6 +6505,7 @@ unsorted:
   - gsound-devel 
   - gspell 
   - gspell-devel 
+  - gssdp-doc 
   - gssntlmssp 
   - gssntlmssp-devel 
   - gssproxy 
@@ -6558,7 +6559,6 @@ unsorted:
   - gtk-doc-manual 
   - gtk-doc-manual-lang 
   - gtk-doc-mkpdf 
-  - gtk-frdp-devel 
   - gtk-key-theme-ctrluftw 
   - gtk-layer-shell-devel 
   - gtk-sharp-beans 
@@ -6755,6 +6755,7 @@ unsorted:
   - gummi-lang 
   - gup 
   - gupnp-dlna-tools 
+  - gupnp-doc 
   - gupnp-tools 
   - gupnp-tools-lang 
   - gutenprint 
@@ -6769,6 +6770,7 @@ unsorted:
   - gvfs-32bit: [x86_64] 
   - gvfs-devel 
   - gvim: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
+  - gweather-data 
   - gwenhywfar 
   - gwenhywfar-devel 
   - gwenhywfar-gwenbuild 
@@ -7079,6 +7081,7 @@ unsorted:
   - hyperfine-bash-completion 
   - hyperfine-fish-completion 
   - hyperfine-zsh-completion 
+  - hyperlink-app-client 
   - hyperscan-devel 
   - hyphen 
   - hyphen-devel 
@@ -7619,9 +7622,6 @@ unsorted:
   - java-18-openjdk-javadoc 
   - java-18-openjdk-jmods 
   - java-18-openjdk-src 
-  - java-1_7_0-bootstrap 
-  - java-1_7_0-bootstrap-devel 
-  - java-1_7_0-bootstrap-headless 
   - java-1_8_0-openj9: [x86_64] 
   - java-1_8_0-openj9-accessibility: [x86_64] 
   - java-1_8_0-openj9-demo: [x86_64] 
@@ -10291,6 +10291,7 @@ unsorted:
   - libcglm0: [x86_64] 
   - libcgns4_3 
   - libchafa0 
+  - libchamplain-0_12-0 
   - libchamplain-devel 
   - libchardet-devel 
   - libchardet1 
@@ -10344,6 +10345,7 @@ unsorted:
   - libclang12 
   - libclang12-32bit: [x86_64] 
   - libclastfm-devel 
+  - libclastfm0 
   - libclaw-devel 
   - libclaw-doc 
   - libclaw1 
@@ -10746,6 +10748,7 @@ unsorted:
   - libecpint1 
   - libecryptfs1 
   - libecryptfs1-32bit: [x86_64] 
+  - libedataserverui4-1_0-0 
   - libedit-devel 
   - libedit0-32bit: [x86_64] 
   - libeditorconfig-devel 
@@ -10888,6 +10891,7 @@ unsorted:
   - libffi-devel 
   - libffi-devel-32bit: [x86_64] 
   - libffmpegthumbnailer-devel 
+  - libffmpegthumbnailer4 
   - libffms2-4 
   - libffms2-4-32bit: [x86_64] 
   - libffms2-devel 
@@ -11115,11 +11119,15 @@ unsorted:
   - libgci-1-0_0_0 
   - libgcin-im-client1-32bit: [x86_64] 
   - libgck-1-0-32bit: [x86_64] 
+  - libgck-2-0_0_0-32bit: [x86_64] 
   - libgck-devel 
   - libgck-devel-32bit: [x86_64] 
+  - libgck1-devel 
   - libgcr-3-1-32bit: [x86_64] 
+  - libgcr-4-0_0_0-32bit: [x86_64] 
   - libgcr-devel 
   - libgcr-devel-32bit: [x86_64] 
+  - libgcr3-devel 
   - libgcrypt-cavs 
   - libgcrypt-devel 
   - libgcrypt-devel-32bit: [x86_64] 
@@ -11169,17 +11177,19 @@ unsorted:
   - libgeners0 
   - libgensio0 
   - libgensiocpp2 
-  - libgeocode-glib-2-0 
   - libgeocode-glib0-32bit: [x86_64] 
   - libgeos3_11_0 
   - libgeos_c1 
   - libgeotiff5 
+  - libgepub-0_7-0 
   - libgepub-devel 
   - libgerbv1 
+  - libges-1_0-0 
   - libgexiv2-2-32bit: [x86_64] 
   - libgexiv2-devel 
   - libgf2x3 
   - libgfapi0 
+  - libgfbgraph-0_2-0 
   - libgfchangelog0 
   - libgflags2_2 
   - libgfortran4 
@@ -11241,6 +11251,7 @@ unsorted:
   - libglut3-32bit: [x86_64] 
   - libglvnd-devel 
   - libglvnd-devel-32bit: [x86_64] 
+  - libglyr1 
   - libglyr1-32bit: [x86_64] 
   - libgme-devel 
   - libgme0-32bit: [x86_64] 
@@ -11350,7 +11361,7 @@ unsorted:
   - libgsmsd8 
   - libgsoap-2_8_122 
   - libgssapi3 
-  - libgssdp-1_2-0-32bit: [x86_64] 
+  - libgssdp-1_6-0-32bit: [x86_64] 
   - libgssdp-devel 
   - libgstadaptivedemux-1_0-0-32bit: [x86_64] 
   - libgstallocators-1_0-0-32bit: [x86_64] 
@@ -11385,6 +11396,7 @@ unsorted:
   - libgsttranscoder-1_0-0 
   - libgsturidownloader-1_0-0-32bit: [x86_64] 
   - libgstva-1_0-0-32bit: [x86_64] 
+  - libgstvalidate-1_0-0 
   - libgstvideo-1_0-0-32bit: [x86_64] 
   - libgstvulkan-1_0-0-32bit: [x86_64] 
   - libgstwayland-1_0-0-32bit: [x86_64] 
@@ -11399,7 +11411,7 @@ unsorted:
   - libgtkdsv-3-0 
   - libgtkglext-x11-1_0-0 
   - libgtkglext-x11-1_0-0-32bit: [x86_64] 
-  - libgtkhex-4-0 
+  - libgtkhex-4-1 
   - libgtkhotkey-devel 
   - libgtkhotkey1 
   - libgtkhtml-4_0-0 
@@ -11454,7 +11466,7 @@ unsorted:
   - libguilereadline-v-17-17 
   - libgumbo-devel 
   - libgumbo1 
-  - libgupnp-1_2-1-32bit: [x86_64] 
+  - libgupnp-1_6-0-32bit: [x86_64] 
   - libgupnp-av-devel 
   - libgupnp-devel 
   - libgupnp-dlna-devel 
@@ -11469,8 +11481,10 @@ unsorted:
   - libgviewv4l2core-lang 
   - libgvncpulse-1_0-0 
   - libgvpr2 
+  - libgweather-3-16 
   - libgweather-3-16-32bit: [x86_64] 
   - libgweather-devel 
+  - libgweather-lang 
   - libgweather4-devel 
   - libgwengui-cpp79 
   - libgwengui-fox16-79 
@@ -12402,8 +12416,8 @@ unsorted:
   - libmovit8 
   - libmowgli-2-0 
   - libmowgli2-devel 
-  - libmozjs-102-0 
   - libmozjs-78-0 
+  - libmozjs-91-0 
   - libmp3lame-devel 
   - libmp3lame0-32bit: [x86_64] 
   - libmpc3-32bit: [x86_64] 
@@ -13015,6 +13029,9 @@ unsorted:
   - libpamtest-devel 
   - libpamtest-devel-doc 
   - libpamtest0 
+  - libpanel-devel 
+  - libpanel-lang 
+  - libpanel1-1 
   - libpangomm-1_4-1-32bit: [x86_64] 
   - libpangomm-2_48-1 
   - libpano-devel 
@@ -13064,6 +13081,7 @@ unsorted:
   - libpcp_mmv1 
   - libpcp_trace2 
   - libpcp_web1 
+  - libpcre1-32bit: [x86_64] 
   - libpcre16-0 
   - libpcre16-0-32bit: [x86_64] 
   - libpcre2-16-0-32bit: [x86_64] 
@@ -13209,9 +13227,7 @@ unsorted:
   - libpoppler-qt6-devel 
   - libpoppler123-32bit: [x86_64] 
   - libportal-devel 
-  - libportal-gtk3-1 
   - libportal-gtk3-devel 
-  - libportal-gtk4-1 
   - libportal-gtk4-devel 
   - libportal-qt5-1 
   - libportal-qt5-devel 
@@ -13766,7 +13782,6 @@ unsorted:
   - libressl-devel-32bit: [x86_64] 
   - libressl-devel-doc 
   - librest-0_7-0-32bit: [x86_64] 
-  - librest-1_0-0 
   - librest-1_0-0-32bit: [x86_64] 
   - librest-devel 
   - librest0_7-devel 
@@ -13817,7 +13832,12 @@ unsorted:
   - librvngabw-devel 
   - librvngabw-devel-doc 
   - librxtx2 
-  - librygel-renderer-gst-2_6-2 
+  - librygel-core-2_8-0 
+  - librygel-db-2_8-0 
+  - librygel-renderer-2_8-0 
+  - librygel-renderer-gst-2_8-0 
+  - librygel-ruih-2_8-0 
+  - librygel-server-2_8-0 
   - libryml0_4_1 
   - libs3-4 
   - libs3-devel 
@@ -13955,9 +13975,7 @@ unsorted:
   - libshout3-32bit: [x86_64] 
   - libshp-devel 
   - libshp2 
-  - libshumate-1_0-1 
   - libshumate-devel 
-  - libshumate-lang 
   - libsidplayfp-devel 
   - libsidplayfp6 
   - libsigc++2-devel 
@@ -14473,7 +14491,6 @@ unsorted:
   - libtss2-tcti-swtpm0 
   - libtss2-tcti-swtpm0-32bit: [x86_64] 
   - libtss2-tcti-tabrmd0: [i586] 
-  - libtss2-tctildr0: [i586] 
   - libtss2-tctildr0-32bit: [x86_64] 
   - libtstl1 
   - libttf2 
@@ -14482,6 +14499,7 @@ unsorted:
   - libtty-devel 
   - libtty1 
   - libtukit-devel 
+  - libtumbler-1-0 
   - libtun6-0 
   - libturbojpeg0-32bit: [x86_64] 
   - libturris-spectator-devel 
@@ -17268,7 +17286,6 @@ unsorted:
   - native-platform-javadoc 
   - nautilus-devel 
   - nautilus-eiciel 
-  - nautilus-extension-console 
   - nautilus-extension-dropbox 
   - nautilus-extension-folder-color 
   - nautilus-extension-nextcloud 
@@ -17279,7 +17296,6 @@ unsorted:
   - nautilus-font-manager 
   - nautilus-image-converter 
   - nautilus-image-converter-lang 
-  - nautilus-plugin-easytag 
   - nautilus-terminal 
   - nauty 
   - nauty-devel 
@@ -18348,6 +18364,7 @@ unsorted:
   - openSUSE-release-tools-metrics-access: [x86_64] 
   - openSUSE-release-tools-origin-manager: [x86_64] 
   - openSUSE-release-tools-pkglistgen: [x86_64] 
+  - openSUSE-release-tools-publish-distro: [x86_64] 
   - openSUSE-release-tools-repo-checker: [x86_64] 
   - openSUSE-release-tools-staging-bot: [x86_64] 
   - openSUSE-release-usb-gnome 
@@ -21254,6 +21271,7 @@ unsorted:
   - pqiv-wand 
   - pqiv-webp 
   - praat 
+  - pragha-plugins 
   - pragha-plugins-devel 
   - prboom-plus 
   - prelude-correlator 
@@ -21984,7 +22002,6 @@ unsorted:
   - python3-vtk-openmpi3 
   - python3-vtk-openmpi4 
   - python3-xcb-proto-devel 
-  - python3-xrootd 
   - python3-yaql 
   - python3-yui 
   - python3-z3 
@@ -25128,6 +25145,7 @@ unsorted:
   - python310-xmlschema 
   - python310-xmltodict 
   - python310-xpybutil 
+  - python310-xrootd 
   - python310-xsge_gui 
   - python310-xsge_lighting 
   - python310-xsge_particle 
@@ -28466,6 +28484,7 @@ unsorted:
   - python38-xmlsec 
   - python38-xmltodict 
   - python38-xpybutil 
+  - python38-xrootd 
   - python38-xsge_gui 
   - python38-xsge_lighting 
   - python38-xsge_particle 
@@ -31791,6 +31810,7 @@ unsorted:
   - python39-xmlsec 
   - python39-xmltodict 
   - python39-xpybutil 
+  - python39-xrootd 
   - python39-xsge_gui 
   - python39-xsge_lighting 
   - python39-xsge_particle 
@@ -32876,8 +32896,11 @@ unsorted:
   - rxtx-java 
   - rxtx-java-javadoc 
   - rxvt-unicode 
+  - rygel 
   - rygel-devel 
+  - rygel-lang 
   - rygel-plugin-gstreamer-renderer 
+  - rygel-plugin-tracker 
   - rypper 
   - s-tui 
   - s3backer 
@@ -42838,8 +42861,12 @@ unsorted:
   - tuigreet 
   - tuimoji 
   - tuladha-jejeg-fonts 
+  - tumbler 
   - tumbler-devel 
   - tumbler-doc 
+  - tumbler-folder-thumbnailer 
+  - tumbler-lang 
+  - tumbler-webp-thumbnailer 
   - tumbleweed-cli 
   - tunctl 
   - tuned-gtk 
@@ -42926,6 +42953,7 @@ unsorted:
   - typelib-1_0-Caja-2_0 
   - typelib-1_0-Camel-1_2 
   - typelib-1_0-Caribou-1_0 
+  - typelib-1_0-Champlain-0_12 
   - typelib-1_0-CinnamonDesktop-3_0 
   - typelib-1_0-CjsPrivate-1_0 
   - typelib-1_0-CloudProviders-0_3_0 
@@ -42950,6 +42978,7 @@ unsorted:
   - typelib-1_0-EDataCal-2_0 
   - typelib-1_0-EDataServer-1_2 
   - typelib-1_0-EDataServerUI-1_2 
+  - typelib-1_0-EDataServerUI4-1_0 
   - typelib-1_0-Eek-0_90 
   - typelib-1_0-Entangle-0_1 
   - typelib-1_0-Eom-1_0 
@@ -42964,6 +42993,7 @@ unsorted:
   - typelib-1_0-FwupdPlugin-1_0 
   - typelib-1_0-GCab-1_0 
   - typelib-1_0-GData-0_0 
+  - typelib-1_0-GES-1_0 
   - typelib-1_0-GExiv2-0_10 
   - typelib-1_0-GFBGraph-0_2 
   - typelib-1_0-GMime-3_0 
@@ -42984,6 +43014,8 @@ unsorted:
   - typelib-1_0-GVncPulse-1_0 
   - typelib-1_0-GWeather-3_0 
   - typelib-1_0-GXPS-0_1 
+  - typelib-1_0-Gck-1 
+  - typelib-1_0-Gcr-3 
   - typelib-1_0-GcrUi-3 
   - typelib-1_0-Gda-6_0 
   - typelib-1_0-Gdaui-6_0 
@@ -42992,8 +43024,7 @@ unsorted:
   - typelib-1_0-Gee-0_8 
   - typelib-1_0-Gee-1_0 
   - typelib-1_0-Gegl-0_4 
-  - typelib-1_0-GeocodeGlib-2_0 
-  - typelib-1_0-Gepub-0_6 
+  - typelib-1_0-Gepub-0_7 
   - typelib-1_0-Ggit-1_0 
   - typelib-1_0-Gitg-1_0 
   - typelib-1_0-GitgExt-1_0 
@@ -43046,7 +43077,8 @@ unsorted:
   - typelib-1_0-ICal-3_0 
   - typelib-1_0-ICalGLib-3_0 
   - typelib-1_0-Ido3-0_1 
-  - typelib-1_0-JavaScriptCore-5_0: [i586] 
+  - typelib-1_0-JavaScriptCore-4_0 
+  - typelib-1_0-JavaScriptCore-5_0 
   - typelib-1_0-Jcat-1_0 
   - typelib-1_0-Jsonrpc-1_0 
   - typelib-1_0-Keybinder-0_0 
@@ -43073,22 +43105,22 @@ unsorted:
   - typelib-1_0-Modulemd-2_0 
   - typelib-1_0-Muffin-0_0 
   - typelib-1_0-NMA4-1_0 
-  - typelib-1_0-Nautilus-3_0 
+  - typelib-1_0-Nautilus-4_0 
   - typelib-1_0-Nemo-3_0 
   - typelib-1_0-Nice-0_1 
   - typelib-1_0-OSTree-1_0 
   - typelib-1_0-OsmGpsMap-1_0 
+  - typelib-1_0-Panel-1 
   - typelib-1_0-Playerctl-2_0 
   - typelib-1_0-Pluma-1_0 
   - typelib-1_0-Poppler-0_18 
   - typelib-1_0-Qrtr-1_0 
-  - typelib-1_0-Rest-1_0 
+  - typelib-1_0-Rest-0_7 
   - typelib-1_0-Retro-1-0 
-  - typelib-1_0-RygelCore-2_6 
-  - typelib-1_0-RygelRenderer-2_6 
-  - typelib-1_0-RygelRendererGst-2_6 
-  - typelib-1_0-RygelServer-2_6 
-  - typelib-1_0-Shumate-1_0 
+  - typelib-1_0-RygelCore-2_8 
+  - typelib-1_0-RygelRenderer-2_8 
+  - typelib-1_0-RygelRendererGst-2_8 
+  - typelib-1_0-RygelServer-2_8 
   - typelib-1_0-Signon-2_0 
   - typelib-1_0-Skk-1_0 
   - typelib-1_0-TelepathyFarstream-0_6 
@@ -43101,7 +43133,9 @@ unsorted:
   - typelib-1_0-Uhm-0_0 
   - typelib-1_0-Urfkill-0_0 
   - typelib-1_0-Vips-8_13 
-  - typelib-1_0-WebKit2-5_0: [i586] 
+  - typelib-1_0-Vte-3_91 
+  - typelib-1_0-WebKit2-4_0 
+  - typelib-1_0-WebKit2-5_0 
   - typelib-1_0-WebKit2WebExtension-4_0 
   - typelib-1_0-WebKit2WebExtension-4_1 
   - typelib-1_0-WebKit2WebExtension-5_0 
@@ -43578,6 +43612,7 @@ unsorted:
   - vtcl 
   - vte-devel 
   - vte-tools 
+  - vte-tools-gtk4 
   - vtk-devel 
   - vtk-java 
   - vtk-java-devel 
