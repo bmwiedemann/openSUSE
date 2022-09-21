@@ -387,4 +387,20 @@
     <comment>GNOME 42 - ready for impact</comment>
     <requestid>963556</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>290e5f2e269db583f9a4728bfa5859bf</srcmd5>
+    <version>43.0</version>
+    <time>1663764007</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 43.0:
+  + Updated translations.
+- Update to version 43.rc:
+  + Updated translations.
+- Update to version 43.beta:
+  + Updated translations.
+- Update to version 43.alpha:
+  + Updated translations.
+</comment>
+    <requestid>1004767</requestid>
+  </revision>
 </revisionlist>
