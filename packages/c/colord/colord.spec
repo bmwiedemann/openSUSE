@@ -33,6 +33,8 @@ Patch0:         harden_colord.service.patch
 Source3:        usr.lib.colord
 Source4:        colord.sysusers
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM colord-CVE-2021-42523.patch boo#1202802 mgorse@suse.com -- fix a small memory leak on db open failure.
+Patch1:         colord-CVE-2021-42523.patch
 
 BuildRequires:  argyllcms
 BuildRequires:  docbook5-xsl-stylesheets

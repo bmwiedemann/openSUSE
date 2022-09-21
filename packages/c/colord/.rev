@@ -714,4 +714,14 @@ Note: This was reported for Leap, therefore please consider to backport this pro
     <comment></comment>
     <requestid>964927</requestid>
   </revision>
+  <revision rev="87" vrev="2">
+    <srcmd5>a53dae107352e722063d7ef1c1eb865e</srcmd5>
+    <version>1.4.6</version>
+    <time>1663764006</time>
+    <user>dimstar_suse</user>
+    <comment>- Add colord-CVE-2021-42523.patch: fix a small memory leak on db
+  open failure (boo#1202802 CVE-2021-42523).
+</comment>
+    <requestid>1004766</requestid>
+  </revision>
 </revisionlist>

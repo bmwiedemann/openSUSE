@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 16 15:20:32 UTC 2022 - Michael Gorse <mgorse@suse.com>
+
+- Add colord-CVE-2021-42523.patch: fix a small memory leak on db
+  open failure (boo#1202802 CVE-2021-42523).
+
+-------------------------------------------------------------------
 Fri Mar 25 14:07:33 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.4.6:
