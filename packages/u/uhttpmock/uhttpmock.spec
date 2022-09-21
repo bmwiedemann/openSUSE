@@ -1,7 +1,7 @@
 #
 # spec file for package uhttpmock
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2013 Dominique Leuenberger, Amsterdam, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,17 +18,20 @@
 
 
 Name:           uhttpmock
-Version:        0.5.3
+Version:        0.5.5
 Release:        0
 Summary:        HTTP web service mocking library
 License:        LGPL-2.1-or-later
 Group:          Development/Tools/Other
-URL:            https://gitlab.com/uhttpmock/uhttpmock
-Source0:        https://tecnocode.co.uk/downloads/uhttpmock/%{name}-%{version}.tar.xz
+URL:            https://gitlab.freedesktop.org/pwithnall/uhttpmock
+Source0:        %{url}/-/archive/%{version}/%{name}-%{version}.tar.bz2
+
 BuildRequires:  gobject-introspection-devel
+BuildRequires:  gtk-doc
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0) >= 2.36.0
-BuildRequires:  pkgconfig(glib-2.0) >= 2.31.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.38.0
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.47.3
 BuildRequires:  pkgconfig(vapigen)
@@ -67,19 +70,20 @@ This package contains libraries, header files and documentation for
 developing applications that use %{name}.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-%configure \
-    --disable-static
-make %{?_smp_mflags}
+%meson \
+	-Dgtk_doc=true \
+	-Dintrospection=true \
+	-Dvapi=enabled \
+	%{nil}
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+%meson_install
 
-%post -n libuhttpmock-0_0-0 -p /sbin/ldconfig
-%postun -n libuhttpmock-0_0-0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libuhttpmock-0_0-0
 
 %files -n libuhttpmock-0_0-0
 %license COPYING

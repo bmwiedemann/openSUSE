@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep  5 09:42:34 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.5.5:
+  + This release fixes the gtk-doc directory containing the version
+    number twice.
+- Changes from version 0.5.4:
+  + This new release drops support for autotools, by using the
+    meson build system, and older versions of libsoup 2.x.
+- Add gtk-doc and meson BuildRequires and macros.
+- Use ldconfig_scriptlets for post(un) handling.
+- Update URL and Source to new home.
+
+-------------------------------------------------------------------
 Thu Feb 25 05:32:45 UTC 2021 - Wang Jun <jgwang@suse.com>
 
 - Update to version 0.5.3
