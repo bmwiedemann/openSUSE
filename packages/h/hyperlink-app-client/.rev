@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4e9d29fc29c6c2397eae29cb6fff2f7e</srcmd5>
+    <version>0.0~git5.211516e</version>
+    <time>1663764164</time>
+    <user>dimstar_suse</user>
+    <comment>It's a program which handles app:// (and maybe later appsocket://) hyperlinks inside terminal emulators.
+
+It's only used by GNU poke for now, see https://jemarch.net/pokology-20200202.html.</comment>
+    <requestid>1005061</requestid>
+  </revision>
+</revisionlist>

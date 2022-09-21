@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Hyperlink App Client
+Categories=System;ConsoleOnly
+Comment=Client for the app:// protocol
+NoDisplay=true
+Exec=app-client %u
+MimeType=x-scheme-handler/app
