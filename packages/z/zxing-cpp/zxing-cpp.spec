@@ -30,6 +30,8 @@ Source99:       baselibs.conf
 Patch0:         cmake-check-system-first.patch
 # PATCH-FIX-UPSTREAM 269.patch -- Update stb_image/stb_image_write
 Patch1:         269.patch
+# PATCH-FIX-UPSTREAM 0001-test-update-to-libfmt-v9.0.0.patch -- fmt 9 compatibility
+Patch2:         0001-test-update-to-libfmt-v9.0.0.patch
 BuildRequires:  pkgconfig
 # Use cmake3 package on SLE12 because cmake is too old (version 3.5)
 %if !0%{?is_opensuse} && 0%{?sle_version} < 150000
@@ -83,9 +85,9 @@ other applications.
     -DCMAKE_CXX_COMPILER=/usr/bin/g++-11 \
 %endif
 %if 0%{?suse_version} < 1550
-    -DBUILD_BLACKBOX_TESTS=OFF \
+    -DBUILD_BLACKBOX_TESTS=OFF
 %endif
- ;
+
 %cmake_build
 
 %install

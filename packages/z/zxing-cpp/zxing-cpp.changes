@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 20 07:10:22 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add fmt 9.0 compatibility patch (boo#1202273):
+  * 0001-test-update-to-libfmt-v9.0.0.patch
+
+-------------------------------------------------------------------
 Mon Dec 13 14:14:53 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update stb_image/stb_image_write to include the fixes for

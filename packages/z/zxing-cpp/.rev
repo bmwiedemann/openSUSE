@@ -86,4 +86,12 @@ zxing-cpp toprocess and parse barcodes from PDFs.</comment>
     <comment></comment>
     <requestid>940520</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>e7b6e8204bccb0dfadcdc1bf5ffe419c</srcmd5>
+    <version>1.2.0</version>
+    <time>1663764100</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1004902</requestid>
+  </revision>
 </revisionlist>
