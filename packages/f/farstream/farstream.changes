@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 29 09:16:02 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Build farstream without gupnp support. Following this, drop
+  pkgconfig(gupnp-1.2) and pkgconfig(gupnp-igd-1.0) and pass
+  --disable-gupnp to configure.
+
+-------------------------------------------------------------------
 Fri Feb 11 18:57:00 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.2.9+5:

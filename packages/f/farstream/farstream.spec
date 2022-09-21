@@ -47,8 +47,6 @@ BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.40
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0) >= 1.4
-BuildRequires:  pkgconfig(gupnp-1.2)
-BuildRequires:  pkgconfig(gupnp-igd-1.0) >= 0.2
 BuildRequires:  pkgconfig(nice) >= 0.1.8
 
 %description
@@ -129,7 +127,7 @@ NOCONFIGURE=1 ./autogen.sh
 	--disable-static \
 	--enable-gtk-doc \
 	--enable-introspection \
-	--enable-gupnp \
+	--disable-gupnp \
 	%{nil}
 %make_build
 
