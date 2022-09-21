@@ -17,7 +17,7 @@
 
 
 Name:           nautilus-terminal
-Version:        4.0.4
+Version:        4.0.6
 Release:        0
 Summary:        A terminal embedded in Nautilus, the GNOME's file browser
 License:        GPL-3.0-only

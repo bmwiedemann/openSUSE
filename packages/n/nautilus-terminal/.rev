@@ -150,4 +150,12 @@
   * Fix a typo in the GSettings schema (forwarded request 972246 from susnux)</comment>
     <requestid>972514</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e412cf299e9fb5c74ddd7407a0d2010d</srcmd5>
+    <version>4.0.6</version>
+    <time>1663764131</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1003788</requestid>
+  </revision>
 </revisionlist>
