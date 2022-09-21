@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Sep 15 16:16:35 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.0:
+  + Updated application screenshot.
+  + Updated translations.
+- Add desktop-file-utils BuildRequires: New dependency.
+- Following the above new BuildRequires, add a check section and
+  verify desktop file during build.
+
+-------------------------------------------------------------------
+Thu Sep  1 20:20:50 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.rc:
+  + New preferences dialog and new game screen.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Aug 10 06:44:44 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 42.1:

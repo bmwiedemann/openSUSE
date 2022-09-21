@@ -17,14 +17,15 @@
 
 
 Name:           gnome-chess
-Version:        42.1
+Version:        43.0
 Release:        0
 Summary:        Chess Game for GNOME
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/Board/Chess
 URL:            https://wiki.gnome.org/Apps/Chess
-Source0:        https://download.gnome.org/sources/gnome-chess/42/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-chess/43/%{name}-%{version}.tar.xz
 
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 # ITS Tool is needed because there are some XML formats that Gettext does not handle, at least not now (42.alpha).
 BuildRequires:  itstool
@@ -59,6 +60,9 @@ in a window.
 %meson_install
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_datadir}
+
+%check
+desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
 
 %files
 %license COPYING
