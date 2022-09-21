@@ -1,7 +1,7 @@
 #
 # spec file for package dconf
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ Group:          System/Libraries
 URL:            https://live.gnome.org/dconf
 Source0:        https://download.gnome.org/sources/dconf/0.40/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM 0001-gvdb-Restore-permissions-on-changed-files.patch bsc#971074 bgo#758066 bsc#1203344 fezhang@suse.com -- Restore permissions on files changed by dconf update.
+Patch0:         0001-gvdb-Restore-permissions-on-changed-files.patch
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gtk-doc
 BuildRequires:  meson

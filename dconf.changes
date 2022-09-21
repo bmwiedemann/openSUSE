@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 13 06:33:51 UTC 2022 - Yifan Jiang <yfjiang@suse.com>
+
+- Bring back 0001-gvdb-Restore-permissions-on-changed-files.patch
+  since the useful fix was never merged to upstream (bsc#971074
+  bgo#758066 bsc#1203344).
+
+-------------------------------------------------------------------
 Thu Mar 18 14:20:52 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.40.0:
