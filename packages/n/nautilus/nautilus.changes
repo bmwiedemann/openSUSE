@@ -1,4 +1,175 @@
 -------------------------------------------------------------------
+Sun Sep 18 07:42:05 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.0:
+  + Bugs fixed:
+    - Open first search result with Enter, as before.
+    - Don't freeze when opening media storage.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  5 09:19:59 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 43.rc:
+  + Resolving regressions from the GTK 3 to 4 switch:
+    - Restore accessible labels for view items/.
+    - HiDPI icons and thumbnails.
+    - Restore transient location entry behavior.
+    - Restore spacebar shortcut to trigger sushi file previewer.
+    - Restore ability to create new file from dropped text.
+    - Restore ability to duplicate via DND + Ctrl.
+  + Drag-and-drop enhancements:
+    - Allow dropping files into Starred to star them.
+    - Prevent "open on hover" while moving pointer.
+  + Menu enhancements:
+    - Add menu item to remove files from Starred list.
+    - Don't activate menu button when clicking folder name.
+    - Don't offer "Properties" and "Add to Bookmarks" actions when
+      they don't make sense.
+  + Properties enhancements:
+    - Wrap long filename words in Properties.
+    - Refine properties for root directory.
+    - Show error state for extensions properties.
+  + General enhancements:
+    - Redesign trash infobar.
+    - Add tooltips to every headerbar control.
+    - Update and modernize libnautilus-extension documentation.
+    - Update appdata screenshots.
+  + Bugfixes:
+    - Fix various app chooser issues.
+    - Fix various batch rename dialog issues.
+    - Fix Highcontrast styles.
+    - Fix focus misbehaviours in the new views.
+    - Don't show URI escape codes in tooltips.
+    - Show sharing infobar in gnome-user-share's fallback location.
+    - Fix icon size in file conflict dialog.
+    - Fix operations indicator animation.
+    - Mark missing translatable strings.
+    - Fix various memory leaks.
+    - Fix compilation errors.
+  + Updated translations.
+- Replace gtk-doc BuildRequires for pkgconfig(gi-docgen): follow
+  upstreams move to gi-docgen.
+- Mark gnome-shell-search-provider-nautilus noarch.
+
+-------------------------------------------------------------------
+Mon Aug  8 10:22:30 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.beta.1:
+  + Restore view options tooltip
+  + Mark new files for translation
+  + Look for extensions in their new installation directory
+- Stop creating 3.0 extensions directory, and bump soversion on
+  what we currently support and build.
+
+-------------------------------------------------------------------
+Sun Aug  7 10:32:40 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.beta:
+  + Adapting main window elements to smaller sizes;
+    - Make sidebar foldable.
+    - Split toolbar contorls into top and bottom toolbars at small
+      sizes.
+  + Restoring Disks integration:
+    - Open storage unit in Disks from Properties.
+    - Format with Disks from the sidebar context menu.
+  + Absorbing features from core plug-ins:
+    - Provide infobar for Public folder, instead of
+      gnome-user-share.
+    - Provide context menu action to open folders in Console.
+    - Replace nautilus-send-to extension with Email portal.
+  + Remodeling plug-ins
+    - List installed extensions plug-ins in About.
+    - Implement new Properties API and port Image and Audio/Video.
+    - Remove GTK-dependent API from libnautilus-extension.
+    - Bump libnautilus-extension versions.
+  + Improving search UI design
+    - Use modern design patterns for type filter chooser.
+    - Elaborate FTS snippets and place them in a container.
+  + Modernizing Properties window
+    - Implement new "pages and rows" design.
+    - Move ability to set default app into Open With dialog.
+  + Reorganizing context menus.
+  + Refining view visual styles
+    - Saturate selection colors.
+    - Add icon shadows.
+    - Refine layout of column editor dialog.
+  + Using more modern widgetry:
+    - Use AdwTabBar for detatchable tabs.
+    - Use AdwEmptyState for empty folder views.
+    - Use AdwMessageDialog instead of GtkMessage.
+  + Resolving regressions from the GTK 3 to 4 switch:
+    - Restore Accessibility relations.
+    - Restore location entry suggestions.
+    - Restore libcloudproviders integration.
+  + Opening new tab with middle click on next and forward buttons.
+  + Miscellaneous bugfixes.
+  + Leftover known regressions in 43.beta:
+    - Lacks HiDPI icons.
+    - Lacks attention-grabbing animation on operations button.
+  + Updated translations.
+- Add pkgconfig(cloudproviders) BuildRequires: New dependency.
+- Rename libnautilus-extension2 to libnautilus-extension4 following
+  upstreams soname changes.
+
+-------------------------------------------------------------------
+Sat Aug  6 14:31:02 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.alpha:
+  + Resolving regressions from the GTK 3 to 4 switch:
+    - Reintroduce clipboard with GTK 4
+    - Reintroduce Drag’n’Drop with GTK 4
+    - Reintroduce emblems independently of file icon
+    - Reintroduce filter search tags with GTK 4
+    - Port audio-video-properties extension to GTK 4
+    - Restore sidebar features from GTK 3
+    - Fix other regressions from the GTK 3 to 4 switch
+  + Modernizing view widgets:
+    - Port files grid view mode to GtkGridView
+    - Reimplement files list view mode with GtkColumnView
+    - Add checkerboard background for thumbnails with transparency
+  + Enhancing menus:
+    - New menu item to open current folder in another application
+    - Add menu item to copy current path to clipboard
+    - Redesign zoom controls as icon size controls
+    - Context menu bugfixes
+    - Add context menu item to show Properties in Other Locations
+    - Improve support for context menus on touchscreens
+    - Show extensions in templates names
+    - Show sort menu options in list virw mode
+    - Allow sorting in recent and search
+  + Other enhancements:
+    - Use better in-app notifications with AdwToast
+    - Modernize "About" with AdwAboutWindow
+    - Refine pathbar appearance
+    - Label '/' with the OS name
+    - Keyboard shortcuts overlay updates
+  + Miscellaneous bugfixes:
+    - Search engine bugfixes
+    - Floating satus bar bugfixes
+    - Fix popover crashes
+    - Allow copying to a ramfs
+    - Stop computing remote folders item count when disabled
+    - Fix batch rename for files with the same name in search
+      results
+    - Don't trigger keyboard shortcuts ouside their intended scope
+  + Maintenance work
+    - Adapt to thumbnails API changes
+    - Depend on libportal and drop wallpaper fallback setting
+    - Modernize build with new meson features
+    - Bump extensions library version
+- Changes in BuildRequires following upstreams port to gtk4:
+  + Drop pkgconfig(gnome-desktop-3.0), pkgconfig(gtk+-3.0) and
+    pkgconfig(libhandy-1) and stop passing libportal=false to meson
+    as it is now mandatory to support libportal.
+  + Add pkgconfig(gnome-desktop-4), pkgconfig(gtk4),
+    pkgconfig(libadwaita-1), pkgconfig(libportal) and
+    pkgconfig(libportal-gtk4).
+- Rename libnautilus-extension1 to libnautilus-extension2 and
+  typelib-1_0-Nautilus-3_0 to typelib-1_0-Nautilus-4_0 following
+  upstream soname bump.
+
+-------------------------------------------------------------------
 Mon May 30 11:30:58 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 42.2:
