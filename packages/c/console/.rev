@@ -25,4 +25,12 @@
 </comment>
     <requestid>989133</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5a4d43a709b6b66b79beaf958d5c475b</srcmd5>
+    <version>43.rc</version>
+    <time>1663764117</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 43.rc - let's get this into Staging to see what we break (e.g meson:test seems to be an issue already) (forwarded request 1002607 from dimstar)</comment>
+    <requestid>1003139</requestid>
+  </revision>
 </revisionlist>
