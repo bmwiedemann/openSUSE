@@ -23,7 +23,8 @@ Summary:        GNOME Shell integration for Chrome Extension compatible browsers
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Web/Browsers
 URL:            https://wiki.gnome.org/action/show/Projects/GnomeShellIntegration
-Source:         https://gitlab.gnome.org/GNOME/gnome-browser-connector/-/archive/v%{version}/%{name}-v%{version}.tar.bz2
+Source:         https://download.gnome.org/sources/%{name}/42/%{name}-%{version}.tar.xz
+
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
 BuildRequires:  python3-gobject
@@ -42,7 +43,7 @@ host messaging connector that provides integration with GNOME Shell and the
 corresponding extensions repository https://extensions.gnome.org.
 
 %prep
-%setup -q -n %{name}-v%{version}
+%autosetup -p1
 
 %build
 %meson
