@@ -42,7 +42,6 @@ BuildArch:      noarch
 BuildRequires:  %{python_module Pympler}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module zope.interface}
 %endif
 %python_subpackages
