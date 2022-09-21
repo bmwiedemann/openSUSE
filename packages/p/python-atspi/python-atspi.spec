@@ -1,5 +1,5 @@
 #
-# spec file for package python-atspi
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -34,13 +34,13 @@ BuildArch:      noarch
 %define skip_python2 1
 %define _name   pyatspi
 Name:           python-atspi%{psuffix}
-Version:        2.38.2
+Version:        2.45.90
 Release:        0
 Summary:        Python bindings for the Assistive Technology Service Provider Interface
 License:        LGPL-2.0-only
 Group:          Development/Libraries/Python
 URL:            https://gitlab.gnome.org/GNOME/pyatspi2
-Source0:        https://download.gnome.org/sources/pyatspi/2.38/%{_name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/pyatspi/2.45/%{_name}-%{version}.tar.xz
 BuildRequires:  %{python_module dbus-python}
 BuildRequires:  %{python_module gobject >= 2.90.1}
 BuildRequires:  %{python_module gobject-devel >= 2.90.1}
@@ -51,11 +51,11 @@ BuildRequires:  gobject-introspection
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(gtk+-3.0)
 %if %{with test}
-BuildRequires:  at-spi2-atk-gtk2
 BuildRequires:  at-spi2-core
-BuildRequires:  atk-devel
 BuildRequires:  glib2-devel
 BuildRequires:  libxml2-devel
+BuildRequires:  (at-spi2-atk-gtk2 if at-spi2-core < 2.45)
+BuildRequires:  (atk-devel if at-spi2-core-devel < 2.45)
 %endif
 Requires:       python-dbus-python
 Requires:       python-gobject >= 2.90.1

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Aug 29 09:18:03 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Only BuildRequire at-spi2-atk-gtk2 and atk-devel if
+  at-spi2-core < 2.45. In newer versions, at-spi2-atk was merged
+  into -core and obsoleted.
+
+-------------------------------------------------------------------
+Mon Aug  8 12:10:20 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.45.90:
+  + Add object:announcement to the list of events.
+  + Add support for ATSPI_ROLE_PUSH_BUTTON_MENU.
+
+-------------------------------------------------------------------
 Tue Mar 29 11:05:05 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - link testsuite with -z lazy to avoid breaking the build.
