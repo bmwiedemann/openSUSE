@@ -1,4 +1,119 @@
 -------------------------------------------------------------------
+Sat Sep 17 11:48:47 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.6.0:
+  + Re-release of 1.5.4, no functional change.
+
+-------------------------------------------------------------------
+Sat Sep  3 13:34:03 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.5.4:
+  + Fix build against libsoup 3.1.2 or later
+  + Do not rely on a log message from libsoup in tests
+  + Use Docbook 4.5 for manpage
+  + Do not use env in binding generator
+  + Add missing libxml2 dependency for test
+- Drop 1296d10eda308792d2924f141d72b8b6818878bd.patch: Fixed
+  upstream.
+
+-------------------------------------------------------------------
+Sat Aug 27 18:55:45 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.5.3:
+  + Linux context manager: Do not filter out v6 global addresses
+  + Context: Add new convenience constructors
+  + Examples: Fix browse.js for new API
+  + NetworkManager: Create v4 and v6 contexts if no family is
+    specified
+  + Connman: Create v4 and v6 contexts if no family is specified
+- Changes from version 1.5.2:
+  + Minor doc improvements
+  + Minor example fixes
+  + Fix pkg-config dependencies
+  + Fix issues found by coverity
+  + Deprecate internal UUID generator function
+  + Set log domains everywhere
+  + Support IPv6 in all context managers (Windows still broken)
+  + ServiceProxy:
+    - Fix error handling in sync call
+    - Fix a memory leak in subscribe()
+    - Change subscribtion timeout handling
+  + ServiceInfo: Remove deprecated callback
+  + ContextFilter:
+    - Fix it
+    - Notify only if content changes
+  + DeviceInfo: Set task names
+  + ContextManager:
+    - Add tests for filtering
+    - Fix behaviour of filter. Now the filter acts as if the
+      context is appearing/disappearing
+  + Vala: Fix ownership of XML doc
+  + Bugs fixed: glgo#GNOME#gupnp#10, glgo#GNOME#gupnp#10,
+    glgo#GNOME#gupnp#10, glgo#GNOME#gupnp#36, glgo#GNOME#gupnp#37,
+    glgo#GNOME#gupnp#70.
+- Changes from version 1.5.1:
+  + Minor doc fixes
+  + Remove left-overs from WhiteList renaming
+  + Make tests a little friendlier if there is no ipv6
+  + Fix a couple of issues from scan-build
+  + DeviceInfo:
+    - Make DeviceInfo:document accessible
+    - Offer convenience function DeviceInfo:get_icon_async to
+      combine icon lookup and icon download
+  + ServiceAction:
+    - Potential fix for running g_clear_pointer on an uninitialized
+      value
+    - Fix getting parameters from action
+  + ServiceInfo:
+    - Do not free an error that was propagated
+    - Fix introspection on IPv6 devices
+  + Service: Fix critical if Soup error other than
+    G_IO_ERROR_CANCELLED occured
+- Changes from version 1.5.0:
+  + Port to libsoup3
+  + API bump (1.6)
+  + Improved test coverage
+  + All _valist functions have been removed
+  + The documentation is now provided by gi-docgen
+  + All API that was marked as deprecated up until 1.4 has been
+    removed
+  + ServiceIntrospection: is now a GInitable
+  + Context:
+    - Uses GSSDP.Client:port
+    - Fix reference leak when using ACL
+  + DeviceInfo: The get_device() and get_service() virtual
+    functions have been renamed
+  + ServiceAction:
+    - ServiceAction::return() was renamed to
+      ServiceAction::return_success() to avoid issues with
+      languages such as python.
+  + ServiceInfo: Non-gio style introspection functions are now
+    deprecated
+  + Service: Returns a proper error instead of calling g_error when
+    autoconnect fails
+  + ServiceProxy:
+    - Fixes an issue with M-POST fall-back if POST calls failed
+    - There is no need anymore to call ServiceProxyAction::get() to
+      get SOAP transport errors; those will now be already
+      presented by the ServiceProxy::call_action_finish() call.
+  + Bugs fixed: glgo#GNOME#gupnp#58, glgo#GNOME#gupnp#42,
+    glgo#GNOME#gupnp#52, glgo#GNOME#gupnp#53, glgo#GNOME#gupnp#54,
+    glgo#GNOME#gupnp#58, glgo#GNOME#gupnp#60, glgo#GNOME#gupnp#61,
+    glgo#GNOME#gupnp#63.
+- Replace gtk-doc, pkgconfig(gssdp-1.2) and pkgconfig(libsoup-2.4)
+  with docbook-xsl-stylesheets, xsltproc, pkgconfig(gi-docgen),
+  pkgconfig(gssdp-1.6) and pkgconfig(libsoup-3.0) BuildRequires
+  following upstream changes.
+- Bump soname and sover following upstream changes, also in
+  baselibs.conf.
+- Use ldconfig_scriptlets macro for post(un) handling.
+- Drop gupnp-build-man-pages.patch: Fixed upstream.
+- Add 1296d10eda308792d2924f141d72b8b6818878bd.patch: Fix build
+  against Soup 3.1.2 and later
+- Package docs in default docdir ref openSUSE standard and split it
+  out in a doc subpackage.
+
+-------------------------------------------------------------------
 Fri Jan 14 17:40:58 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.4.3:

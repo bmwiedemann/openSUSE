@@ -17,31 +17,31 @@
 
 
 # When bumping soname, do not forget to bump in baselibs.conf too.
-%define soname 1_2-1
-%define sover 1.2
+%define soname 1_6-0
+%define sover 1.6
 
 Name:           gupnp
-Version:        1.4.3
+Version:        1.6.0
 Release:        0
 Summary:        Implementation of the UPnP specification
 License:        LGPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://www.gupnp.org/
-Source0:        https://download.gnome.org/sources/gupnp/1.4/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gupnp/1.6/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
-# PATCH-FIX-UPSTREAM gupnp-build-man-pages.patch -- Build and install the manpage
-Patch0:         gupnp-build-man-pages.patch
 
-BuildRequires:  gtk-doc
+BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  meson >= 0.54.0
 BuildRequires:  pkgconfig
+BuildRequires:  xsltproc
+BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.66
 BuildRequires:  pkgconfig(glib-2.0) >= 2.66
 BuildRequires:  pkgconfig(gmodule-2.0) >= 2.66
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.66
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.6.4
-BuildRequires:  pkgconfig(gssdp-1.2) >= 1.3.0
-BuildRequires:  pkgconfig(libsoup-2.4) >= 2.48.0
+BuildRequires:  pkgconfig(gssdp-1.6)
+BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(vapigen)
@@ -82,6 +82,13 @@ libraries utilizing the GUPnP framework.
 
 This package provides the GObject Introspection bindings for GUPnP.
 
+%package doc
+Summary:        Documentation for %{name}
+BuildArch:      noarch
+
+%description doc
+Documentation for GUPnP.
+
 %package -n libgupnp-devel
 Summary:        Implementation of the UPnP specification - Development Files
 Group:          Development/Libraries/C and C++
@@ -98,7 +105,7 @@ libraries utilizing the GUPnP framework.
 
 %prep
 %autosetup -p1
-sed -i 's|env python3|python3|' tools/gupnp-binding-tool-1.2
+sed -i 's|env python3|python3|' tools/gupnp-binding-tool
 
 %build
 %meson \
@@ -112,9 +119,12 @@ sed -i 's|env python3|python3|' tools/gupnp-binding-tool-1.2
 
 %install
 %meson_install
+# Make default docdir ref openSUSE standard
+mkdir -p %{buildroot}%{_docdir}/%{name}-%{sover}
+# Move docs from upstream docdir to openSUSE docdir standard
+mv %{buildroot}%{_datadir}/doc/%{name}-%{sover} %{buildroot}%{_docdir}
 
-%post -n libgupnp-%{soname} -p /sbin/ldconfig
-%postun -n libgupnp-%{soname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgupnp-%{soname}
 
 %files -n libgupnp-%{soname}
 %license COPYING
@@ -124,16 +134,16 @@ sed -i 's|env python3|python3|' tools/gupnp-binding-tool-1.2
 %files -n typelib-1_0-GUPnP-1_0
 %{_libdir}/girepository-1.0/GUPnP-%{sover}.typelib
 
+%files doc
+%doc %{_docdir}/%{name}-%{sover}
+
 %files -n libgupnp-devel
-%{_mandir}/man1/gupnp-binding-tool-1.2.1%{?ext_man}
+%{_mandir}/man1/gupnp-binding-tool-1.6.1%{?ext_man}
 %{_bindir}/gupnp-binding-tool-%{sover}
 %{_includedir}/%{name}-%{sover}
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 %{_datadir}/gir-1.0/GUPnP-%{sover}.gir
-%dir %{_datadir}/gtk-doc
-%dir %{_datadir}/gtk-doc/html
-%{_datadir}/gtk-doc/html/%{name}
 %{_datadir}/vala/vapi/gupnp-%{sover}.deps
 %{_datadir}/vala/vapi/gupnp-%{sover}.vapi
 
