@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Sun Sep 18 09:27:52 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.0:
+  + The --version command line option now includes copyright and
+    additional version information.
+  + Performance improvements to the Open popover list along with
+    tooltips to display the full filename.
+  + The window title now contains an appropriate tooltip.
+  + Path expanding/collapsing is ignored on Windows.
+  + Do not do document portal checks.
+  + Text Editor will always restore session state when enabled,
+    fixing some unexpected behavior in previous releases.
+  + Reload documents after using "Open as Administrator" using
+    admin:// GVFS protocol.
+  + Appdata updates.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug 12 11:27:20 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 43.alpha1:
+  + Many performance improvements during loading of documents.
+  + libeditorconfig (editorconfig-core-c) is now required instead
+    of the in-tree copy. This ensures that only PCRE2 is needed.
+  + Avoid editable/focusable pages while loading document so that
+    a11y peers are not spammed with updates.
+  + UI recoloring improvements.
+  + Fix horizontal two-finger non-kinetic scrolling.
+  + Desktop integration improvements.
+  + Updated translations.
+- Add pkgconfig(editorconfig) BuildRequires: new depdency.
+- Drop pkgconfig(libpcre) BuildRequires: No longer needed.
+
+-------------------------------------------------------------------
+Mon Jul 18 08:11:31 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.alpha:
+  + Text Editor has been updated to use new dialogs from libadwaita
+    such as the message about dialogs.
+  + Translation improvements.
+  + Support for opening local and remove STDIN streams.
+  + Suggest new filenames based on current syntax language.
+  + Maximized window state is now persisted across sessions.
+  + Spellchecking improvements.
+  + The modified bit is dropped from draft-only documents when
+    discarding to prevent re-opening on next launch.
+  + Text Editor now knows if the previous session crashed.
+  + A new --version command line argument.
+  + Improvements to --new-window command line argument.
+  + Window title is fixed when last document is closed.
+- Add explict pkgconfig(libpcre) BuildRequires: Needed after GLibs
+  port to libpcre2.
+
+-------------------------------------------------------------------
 Mon Jun 13 11:30:24 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 42.2:
