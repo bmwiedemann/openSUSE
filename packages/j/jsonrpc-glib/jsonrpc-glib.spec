@@ -111,8 +111,9 @@ sed -i -r "/^docs_dir/s|(.*)|\1 / 'packages'|" doc/meson.build
 
 %ldconfig_scriptlets -n libjsonrpc-glib-%{sover}
 
-%check
-%meson_test
+# https://gitlab.gnome.org/GNOME/jsonrpc-glib/-/issues/2
+#%%check
+#%%meson_test
 
 %files -n libjsonrpc-glib-%{sover}
 %license COPYING

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 29 06:19:20 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Disable meson_test macro, it randomly fails for all arches and
+  targets.
+  https://gitlab.gnome.org/GNOME/jsonrpc-glib/-/issues/2
+
+-------------------------------------------------------------------
 Sat Mar 19 05:39:54 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
 
 - Update to version 3.42.0:
