@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Aug 28 08:00:50 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add port-to-gupnp-1_6.patch: Backport commits from upstream, fix
+  build with new gupnp. Following this, bump sover and replace
+  pkgconfig(gupnp-1.2) with pkgconfig(gupnp-1.6) BuildRequires.
+
+-------------------------------------------------------------------
 Sun Sep 26 10:50:25 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.7.0:

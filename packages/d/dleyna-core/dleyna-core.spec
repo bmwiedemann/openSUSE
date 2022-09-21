@@ -1,7 +1,7 @@
 #
 # spec file for package dleyna-core
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define _sover 5
+%define _sover 6
 
 Name:           dleyna-core
 Version:        0.7.0
@@ -26,14 +26,15 @@ License:        LGPL-2.1-only
 Group:          Productivity/Multimedia/Other
 URL:            https://github.com/phako/dleyna-core
 Source:         %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-
+# PATCH-FIX-UPSTREAM port-to-gupnp-1_6.patch -- Backport of commits to support gpup-1.6
+Patch:          port-to-gupnp-1_6.patch
 
 BuildRequires:  meson >= 0.54.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0) >= 2.28
 BuildRequires:  pkgconfig(glib-2.0) >= 2.28
 BuildRequires:  pkgconfig(gmodule-2.0) >= 2.28
-BuildRequires:  pkgconfig(gupnp-1.2) >= 1.2.0
+BuildRequires:  pkgconfig(gupnp-1.6)
 
 %description
 dleyna-core is a library of utility functions that are used by the higher level dLeyna libraries that
