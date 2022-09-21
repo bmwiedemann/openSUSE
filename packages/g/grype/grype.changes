@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 21 08:31:07 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.50.2:
+  * Update Syft to v0.57.0 (#930)
+  * Correct falsely copied app-name 'syft' in example (#922)
+  * Bump github.com/sigstore/cosign from 1.11.1 to 1.12.0 (#927)
+  * Update grype bootstrap tools to latest versions. (#925)
+
+-------------------------------------------------------------------
 Wed Sep 14 05:40:23 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.50.1:
