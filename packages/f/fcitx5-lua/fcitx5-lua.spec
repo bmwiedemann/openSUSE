@@ -17,7 +17,7 @@
 
 
 Name:           fcitx5-lua
-Version:        5.0.7
+Version:        5.0.10
 Release:        0
 Summary:        Lua support for fcitx
 License:        LGPL-2.1-or-later
