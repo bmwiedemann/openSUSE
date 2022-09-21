@@ -51,6 +51,7 @@ BuildRequires:  pkgconfig(harfbuzz) >= 0.9.9
 BuildRequires:  pkgconfig(webkit2gtk-4.1)
 Supplements:    nautilus
 Requires:       (typelib(LOKDocView) if libreoffice)
+Requires:       typelib(WebKit2) = 4.1
 
 %description
 Sushi is a quick previewer for Nautilus, the GNOME desktop file manager.
