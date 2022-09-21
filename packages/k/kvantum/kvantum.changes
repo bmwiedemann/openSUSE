@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed Sep 21 01:57:47 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Version 1.0.5
+
+  - Added a workaround for a new bug in Krita 5.1.0 (which could
+    make Krita freeze if a Kvantum theme requested a progress-bar
+    height greater than that of Fusion).
+  - Also, added safeguards against two kinds of wrong app codes.
+  - Added a condition for window dragging under Wayland, especially
+    for dragging from buttons.
+  - Simplified finding of Qt modules with cmake. 
+
+-------------------------------------------------------------------
+Mon Aug  8 01:56:07 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Verion 1.0.4
+
+  - Added a workaround for Qt6's double click problem with window dragging.
+  - Added a workaround for Qt6's window dragging when the cursor
+    is outside the widget after the drag is finished (previously, 
+    its hover state would persist).
+  - Don't start window dragging if a popup menu is shown and 
+    closed quickly (may happen very rarely).
+  - Added 1px to button arrow margin.
+  - Considered more details in drawing menu arrows of buttons 
+    (especially when QToolButton is null).
+  - Removed button contents shift (it was useless and inconsistent).
+  - Added a pushbutton with menu to kvantumpreview.
+  - To find the sunken button that has triggered a menu, check whether
+    that menu really belongs to it.
+  - Improved the workaround for Qt's hover bug in buttons.
+  - Made menu shortcuts a little paler than menu texts.
+  - Added a workaround for LibreOffice's header view.
+  - Removed the old HDPI workaround.
+
+-------------------------------------------------------------------
 Thu Jul  7 05:40:07 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Version 1.0.3
