@@ -16,15 +16,15 @@
 #
 
 
-%define _name org.gnome.Weather
+%define full_name org.gnome.Weather
 Name:           gnome-weather
-Version:        42.0
+Version:        43.0
 Release:        0
 Summary:        Weather App for GNOME
 License:        GPL-2.0-or-later
 Group:          Productivity/Other
 URL:            https://apps.gnome.org/app/org.gnome.Weather
-Source0:        https://download.gnome.org/sources/gnome-weather/42/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-weather/43/%{name}-%{version}.tar.xz
 
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
@@ -75,7 +75,7 @@ search results from GNOME Weather.
 
 %install
 %meson_install
-%find_lang %{_name} %{?no_lang_C} %{name}.lang
+%find_lang %{full_name} %{?no_lang_C} %{name}.lang
 
 %check
 %meson_test
@@ -86,11 +86,11 @@ search results from GNOME Weather.
 %{_bindir}/%{name}
 %{_datadir}/metainfo/org.gnome.Weather.appdata.xml
 %{_datadir}/applications/org.gnome.Weather.desktop
-%{_datadir}/%{_name}/
+%{_datadir}/%{full_name}/
 %{_datadir}/dbus-1/services/org.gnome.Weather.service
 %{_datadir}/dbus-1/services/org.gnome.Weather.BackgroundService.service
 %{_datadir}/glib-2.0/schemas/org.gnome.Weather.gschema.xml
-%{_datadir}/icons/hicolor/*/apps/%{_name}*
+%{_datadir}/icons/hicolor/*/apps/%{full_name}*
 %{_datadir}/icons/hicolor/scalable/status/*
 
 %files -n gnome-shell-search-provider-gnome-weather
