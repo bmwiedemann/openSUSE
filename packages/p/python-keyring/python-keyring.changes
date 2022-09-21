@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 20 16:18:23 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 23.9.3 (changes since 23.9.1):
+  * Fix wrong name in compatibility logic for properties
+    (masked by the compatibility fallback).
+  * Add workaround for devpi_client hook with wrapped
+    implementation.
+- Add the missing python-jaraco.classes dependency.
+
+-------------------------------------------------------------------
 Sat Sep 17 08:34:37 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 23.9.1:

@@ -27,7 +27,7 @@
 %bcond_with test
 %endif
 Name:           python-keyring%{psuffix}
-Version:        23.9.1
+Version:        23.9.3
 Release:        0
 Summary:        System keyring service access from Python
 License:        MIT AND Python-2.0
@@ -41,6 +41,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-SecretStorage >= 3
 Requires:       python-entrypoints
 Requires:       python-importlib-metadata
+Requires:       python-jaraco.classes
 Requires:       python-jeepney >= 0.4.2
 Requires:       python-setuptools
 Requires(post): update-alternatives
@@ -50,6 +51,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module SecretStorage >= 3}
 BuildRequires:  %{python_module entrypoints}
 BuildRequires:  %{python_module importlib-metadata}
+BuildRequires:  %{python_module jaraco.classes}
 BuildRequires:  %{python_module keyring = %{version}}
 BuildRequires:  %{python_module pytest >= 3.5}
 BuildRequires:  %{python_module toml}
