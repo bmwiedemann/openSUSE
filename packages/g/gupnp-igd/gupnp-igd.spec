@@ -1,7 +1,7 @@
 #
 # spec file for package gupnp-igd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ Group:          Development/Libraries/C and C++
 URL:            https://wiki.gnome.org/Projects/GUPnP
 Source:         http://download.gnome.org/sources/gupnp-igd/1.2/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
+# PATCH-FIX-UPSTREAM 79a1e4cf8c256132978a1d8ab718c8ad132386de.patch -- Port to GUPnP 1.6 API
+Patch0:         79a1e4cf8c256132978a1d8ab718c8ad132386de.patch
 
 BuildRequires:  gtk-doc
 BuildRequires:  meson
@@ -32,10 +34,10 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0) >= 2.26
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.26
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gssdp-1.2)
+BuildRequires:  pkgconfig(gssdp-1.6)
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk-doc)
-BuildRequires:  pkgconfig(gupnp-1.2)
+BuildRequires:  pkgconfig(gupnp-1.6)
 
 %description
 GUPnP-IGD is a library to handle UPnP IGD port mapping. It is supposed
@@ -86,8 +88,7 @@ to have a very simple API.
 %check
 %meson_test
 
-%post -n libgupnp-igd-1_0-4 -p /sbin/ldconfig
-%postun -n libgupnp-igd-1_0-4 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgupnp-igd-1_0-4
 
 %files -n libgupnp-igd-1_0-4
 %license COPYING
