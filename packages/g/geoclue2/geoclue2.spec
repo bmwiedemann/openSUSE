@@ -28,6 +28,9 @@ URL:            https://gitlab.freedesktop.org/geoclue/geoclue
 Source0:        %{url}/-/archive/%{version}/geoclue-%{version}.tar.bz2
 Source1:        srvGeoClue.conf
 Source99:       geoclue2-rpmlintrc
+# PATCH-FIX-UPSTREAM 129.patch -- Port to use soup3
+Patch0:         https://gitlab.freedesktop.org/geoclue/geoclue/-/merge_requests/129.patch
+
 BuildRequires:  intltool >= 0.40.0
 BuildRequires:  meson >= 0.47.2
 BuildRequires:  pkgconfig
@@ -43,7 +46,7 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.44.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(json-glib-1.0) >= 0.14
 BuildRequires:  pkgconfig(libnotify)
-BuildRequires:  pkgconfig(libsoup-2.4) >= 2.42
+BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(mm-glib) >= 1.6
 BuildRequires:  pkgconfig(systemd)
 # This daemon runs as srvGeoClue
