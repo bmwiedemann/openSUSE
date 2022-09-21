@@ -20,13 +20,13 @@
 %define pluginAPI 4
 
 Name:           evince
-Version:        42.3
+Version:        43.0
 Release:        0
 Summary:        GNOME Document Viewer
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://wiki.gnome.org/Apps/Evince
-Source0:        https://download.gnome.org/sources/evince/42/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/evince/43/%{name}-%{version}.tar.xz
 # PATCH-FIX-SLE alarrosa@suse.com - Reverse upstream bump of synctex required version to build with texlive 2017
 Patch0:         0001-reversed-synctex-Annotate-more-functions-that-wraps-formatting-strings.patch
 Patch1:         0002-reversed-synctex-Sync-against-upstream-synctex.patch
@@ -64,7 +64,6 @@ BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(libarchive) >= 3.6.0
 BuildRequires:  pkgconfig(libgxps) >= 0.2.1
 BuildRequires:  pkgconfig(libhandy-1)
-BuildRequires:  pkgconfig(libnautilus-extension) >= 3.28
 BuildRequires:  pkgconfig(libsecret-1) >= 0.5
 BuildRequires:  pkgconfig(libspectre) >= 0.2.0
 BuildRequires:  pkgconfig(libtiff-4)
@@ -77,6 +76,7 @@ BuildRequires:  pkgconfig(zlib)
 # Disable the browser plugin and package, and make main package provide-obsolete plugin package for upgrade; see bgo#738270
 Provides:       evince-browser-plugin = %{version}
 Obsoletes:      evince-browser-plugin < 41.2
+Obsoletes:      nautilus-evince < 44.0
 
 %description
 Evince is a document viewer capable of displaying single-page and multi-page
@@ -131,20 +131,6 @@ Evince is a document viewer capable of displaying single-page and multi-page
 document formats like PDF and PostScript.
 
 This package contains the header files for building additional plugins.
-
-%package -n nautilus-evince
-Summary:        Evince Plugin for Nautilus
-Group:          Productivity/Office/Other
-Requires:       %{name} = %{version}
-# For "send to" action; the action will be hidden if nautilus-sendto is not available
-Recommends:     nautilus-sendto
-Supplements:    (evince and nautilus)
-
-%description -n nautilus-evince
-Evince is a document viewer capable of displaying multiple and
-singlepage document formats like PDF and PostScript.
-
-This package contains a plugin to integrate Evince into Nautilus.
 
 %package -n evince-plugin-comicsdocument
 Summary:        Comics document support for Evince
@@ -227,7 +213,8 @@ A plugin for Evince to read XPS documents.
 %build
 %meson \
 	--libexecdir=%{_libexecdir}/%{name} \
-	-Dps=enabled \
+	-D ps=enabled \
+	-D nautilus=false \
 	%{nil}
 %meson_build
 
@@ -281,9 +268,6 @@ A plugin for Evince to read XPS documents.
 %{_datadir}/gir-1.0/*.gir
 %{_datadir}/doc/libevview/
 %{_datadir}/doc/libevdocument/
-
-%files -n nautilus-evince
-%{_libdir}/nautilus/extensions-*/*.so
 
 %files -n evince-plugin-comicsdocument
 %{_datadir}/metainfo/evince-comicsdocument.metainfo.xml

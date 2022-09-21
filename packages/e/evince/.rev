@@ -1264,4 +1264,39 @@
     <comment>Update to 42.3 (forwarded request 978737 from dimstar)</comment>
     <requestid>978920</requestid>
   </revision>
+  <revision rev="167" vrev="1">
+    <srcmd5>216855171cbf0316222bb592142c4df9</srcmd5>
+    <version>43.0</version>
+    <time>1663764013</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 43.0:
+  + build:
+    - Narrow the version to enable nautilus plugin
+    - Update flatpak dependencies
+    - Use GNOME module post_install()
+    - Add new job to generate the docker image
+    - Update versions for gitlab-ci's Docker image
+  + help:
+    - Add Italian localized image
+    - Remove unused screenshots
+    - Update application screenshot to version 43 UI
+  + Updated translations.
+- Update to version 43.alpha:
+  + backends:
+    - Handle labels as optional on markup annotations.
+    - Use default color when annotation has no color.
+  + build:
+    - Add deprecation guards to now old find text related
+      functions.
+    - Always enable the pdf backend.
+    - Bump poppler's version to latest stable.
+    - Bump version after release.
+    - Let flatpak build fail.
+  + ci: Remove unused path when building flatpak.
+- Pass nautilus=false to meson, disable build of nautilus-evince.
+  Following this, drop pkgconfig(libnautilus-extension)
+  BuildRequires, no longer needed, and nautilus-evince sub-package.
+</comment>
+    <requestid>1004772</requestid>
+  </revision>
 </revisionlist>
