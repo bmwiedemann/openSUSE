@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Mon Sep 19 08:50:36 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 8927f9a7.patch: icons: Make document-modified-symbolic a
+  resource.
+
+-------------------------------------------------------------------
+Fri Aug  5 08:26:11 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add ghex_abi and so_ver_ext define and set to 4 and 0 following
+  upstream changes and set so_ver define to 1. Further, add a
+  soname define, and set it to libgtkhex-%%{ghex_abi}-%%{so_ver},
+  ease future updates.
+- Move gtkhex-*/*.so to main package, and obsolete older versions
+  of libgtkhex-* from the same. These private so files (plugins)
+  should never have been packaged in the shared library package, so
+  now we have to clean up our previous sins.
+
+-------------------------------------------------------------------
+Thu Jul  7 13:30:03 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 43.alpha:
+  + Port to libadwaita, and fix UI papercuts that stood out more
+    thereafter.
+  + Introduce custom statusbar with monospace support
+  + HexWidget:
+    - Add API to show/hide specific columns.
+    - Disallow keyboard shortcuts to activate hidden panes.
+    - Support PRIMARY selection.
+  + Find and Replace improvements:
+    - Support options for case-sensitivity, regex.
+    - Choose visibility of hex/ascii/both in find/replace dialogs.
+    - Show number of replacements with Replace All.
+  + New backend: HexBufferDirect, and support for reading/writing
+    block devices.
+  + Load default backend plugins more intelligently.
+  + docs: document slight change in hex_buffer_util_new behaviour
+    when a non-existent plugin is requested (return NULL instead of
+    falling back to malloc).
+  + chartable: ESC should close dialog.
+  + Animate opening and closing of find/replace and conversions
+    panes.
+  + paste-special: Move space-delim hex pairs to UTF8 list.
+  + build: Fix incorrect soname numbering; split resources between
+    app and library.
+  + docs: document expanded HexDocument and HexWidget APIs.
+  + Error handling improvements and code cleanups.
+
+-------------------------------------------------------------------
 Wed Jun 15 11:22:07 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 42.3:

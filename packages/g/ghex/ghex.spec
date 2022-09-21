@@ -16,16 +16,21 @@
 #
 
 
-%define so_ver 4
+%define ghex_abi   4
+%define so_ver     1
+%define so_ver_ext 0
+%define soname libgtkhex-%{ghex_abi}-%{so_ver}
 
 Name:           ghex
-Version:        42.3
+Version:        43.alpha
 Release:        0
 Summary:        GNOME Binary Editor
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            https://wiki.gnome.org/Apps/Ghex
-Source:         https://download.gnome.org/sources/ghex/42/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/ghex/43/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM 8927f9a7.patch -- icons: Make document-modified-symbolic a resource
+Patch:          https://gitlab.gnome.org/GNOME/ghex/-/commit/8927f9a7.patch
 
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.50.0
@@ -38,17 +43,20 @@ BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.31.10
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(libadwaita-1)
+# Obsoletes libgtkhex-4-0 can be dropped when SLED/Leap 15.5 is out of support
+Obsoletes:      libgtkhex-4-0 < %{version}
 
 %description
 GHex allows the user to load data from any file and to view and edit it
 in either hex or ASCII. It is a must for anyone playing games that use
 a non-ASCII format for saving.
 
-%package -n libgtkhex-%{so_ver}-0
+%package -n %{soname}
 Summary:        GNOME Binary Editor -- Library
 Group:          System/Libraries
 
-%description -n libgtkhex-%{so_ver}-0
+%description -n %{soname}
 GHex allows the user to load data from any file and to view and edit it
 in either hex or ASCII. It is a must for anyone playing games that use
 a non-ASCII format for saving.
@@ -56,18 +64,18 @@ a non-ASCII format for saving.
 %package devel
 Summary:        GNOME Binary Editor -- Development Files
 Group:          Development/Libraries/GNOME
-Requires:       libgtkhex-%{so_ver}-0 = %{version}
+Requires:       %{soname} = %{version}
 
 %description devel
 GHex allows the user to load data from any file and to view and edit it
 in either hex or ASCII. It is a must for anyone playing games that use
 a non-ASCII format for saving.
 
-%package -n typelib-1_0-Hex-%{so_ver}
+%package -n typelib-1_0-Hex-%{ghex_abi}
 Summary:        Introspection bindings for ghex
 Group:          System/Libraries
 
-%description -n typelib-1_0-Hex-%{so_ver}
+%description -n typelib-1_0-Hex-%{ghex_abi}
 This package provides introspection bindings for ghex.
 
 %lang_package
@@ -83,10 +91,10 @@ This package provides introspection bindings for ghex.
 %meson_install
 
 %suse_update_desktop_file -r org.gnome.GHex GNOME Utility Editor
-%find_lang %{name} ghex-%{so_ver}.0.lang %{?no_lang_C}
+%find_lang %{name} ghex-%{ghex_abi}-%{so_ver}.%{so_ver_ext}.lang %{?no_lang_C}
 %fdupes -s %{buildroot}%{_datadir}
 
-%ldconfig_scriptlets -n libgtkhex-%{so_ver}-0
+%ldconfig_scriptlets -n %{soname}
 
 %files
 %license COPYING
@@ -97,21 +105,22 @@ This package provides introspection bindings for ghex.
 %{_datadir}/applications/org.gnome.GHex.desktop
 %{_datadir}/glib-2.0/schemas/org.gnome.GHex.gschema.xml
 %{_datadir}/icons/hicolor/*/apps/org.gnome.GHex*
+# Not split out as they are private to ghex
+%dir %{_libdir}/gtkhex-%{ghex_abi}.%{so_ver_ext}
+%{_libdir}/gtkhex-%{ghex_abi}.%{so_ver_ext}/*.so
 
-%files -n libgtkhex-%{so_ver}-0
-%dir %{_libdir}/gtkhex-4.0
-%{_libdir}/libgtkhex-%{so_ver}.so.*
-%{_libdir}/gtkhex-4.0/*.so
+%files -n %{soname}
+%{_libdir}/libgtkhex-%{ghex_abi}.so.*
 
-%files -n typelib-1_0-Hex-%{so_ver}
-%{_libdir}/girepository-1.0/Hex-%{so_ver}.typelib
+%files -n typelib-1_0-Hex-%{ghex_abi}
+%{_libdir}/girepository-1.0/Hex-%{ghex_abi}.typelib
 
 %files devel
-%{_includedir}/gtkhex-%{so_ver}/
-%{_libdir}/libgtkhex-%{so_ver}.so
-%{_libdir}/pkgconfig/gtkhex-%{so_ver}.pc
-%{_datadir}/gir-1.0/Hex-%{so_ver}.gir
+%{_includedir}/gtkhex-%{ghex_abi}/
+%{_libdir}/libgtkhex-%{ghex_abi}.so
+%{_libdir}/pkgconfig/gtkhex-%{ghex_abi}.pc
+%{_datadir}/gir-1.0/Hex-%{ghex_abi}.gir
 
-%files lang -f %{name}-%{so_ver}.0.lang
+%files lang -f %{name}-%{ghex_abi}-%{so_ver}.%{so_ver_ext}.lang
 
 %changelog
