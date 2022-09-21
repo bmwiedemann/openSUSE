@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep 21 08:27:42 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.57.0:
+  * feat: catalog python files for installed-files.txt file metadata (#1217)
+  * Stabilize SPDX JSON output sorting (#1216)
+  * bug: remove chance for panic; provide default attestation path (#1214)
+  * refactor: update Makefile organization; update DEVELOPING.md instructions (#1212)
+  * refactor: replace ioutil=>io; update linter (#1211)
+  * Update bootstrap tools to latest versions. (#1204)
+  * Add gosimports (#1205)
+  * refactor: move formats from internal into syft module (#1172)
+
+-------------------------------------------------------------------
 Tue Sep 13 12:42:32 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.56.0:
