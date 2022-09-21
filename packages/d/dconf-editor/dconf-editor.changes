@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Sep 17 15:31:16 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.0:
+  + Updated screenshots
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug  5 07:29:46 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.beta:
+  + New beta release! Adds support for the dark color-scheme.
+- Add pkgconfig(libhandy-1) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
+Fri Jul 22 09:41:05 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.alpha:
+  + This release contains a new app icon, various fixes to build
+    with newer vala, support for building with meson 0.61, and many
+    translation updates.
+- Drop 21.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Tue Feb  1 18:50:22 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 21.patch: Fix build with meson 0.61.0 and newer.
