@@ -30,9 +30,9 @@ Index: cockpit/pkg/lib/cockpit-components-password.jsx
      });
  }
  
-@@ -53,13 +56,12 @@ export const PasswordFormFields = ({
+@@ -54,13 +57,12 @@ export const PasswordFormFields = ({
  }) => {
-     const [password, setPassword] = useState(undefined);
+     const [password, setPassword] = useState(initial_password);
      const [passwordConfirm, setConfirmPassword] = useState(undefined);
 -    const [passwordStrength, setPasswordStrength] = useState("");
 -    const [passwordMessage, setPasswordMessage] = useState("");
@@ -44,8 +44,8 @@ Index: cockpit/pkg/lib/cockpit-components-password.jsx
 +        /*
          if (value) {
              password_quality(value)
-                     .catch(ex => {
-@@ -73,7 +75,9 @@ export const PasswordFormFields = ({
+                     .catch(() => {
+@@ -74,7 +76,9 @@ export const PasswordFormFields = ({
              setPasswordStrength("");
              setPasswordMessage("");
          }
@@ -55,7 +55,7 @@ Index: cockpit/pkg/lib/cockpit-components-password.jsx
  
      let variant;
      if (passwordStrength === "")
-@@ -84,6 +88,7 @@ export const PasswordFormFields = ({
+@@ -85,6 +89,7 @@ export const PasswordFormFields = ({
          variant = "warning";
      else
          variant = "danger";
@@ -63,7 +63,7 @@ Index: cockpit/pkg/lib/cockpit-components-password.jsx
  
      return (
          <>
-@@ -101,16 +106,6 @@ export const PasswordFormFields = ({
+@@ -103,16 +108,6 @@ export const PasswordFormFields = ({
                         fieldId={idPrefix + "-pw1"}>
                  <TextInput className="check-passwords" type="password" id={idPrefix + "-pw1"}
                             autocomplete="new-password" value={password} onChange={onPasswordChanged} />

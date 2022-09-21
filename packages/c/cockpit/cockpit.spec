@@ -25,9 +25,9 @@
 # Check first cockpit-devel@lists.fedorahosted.org
 #
 
-# earliest base that the subpackages work on; the instances of this get computed/updated
-# by tools/gen-spec-dependencies during "make dist", but keep a hardcoded fallback
-%define required_base 122
+# earliest base that the subpackages work on; this is still required as long as
+# we maintain the basic/optional split, then it can be replaced with just %{version}.
+%define required_base 266
 
 # we generally want CentOS packages to be like RHEL; special cases need to check %{centos} explicitly
 %if 0%{?centos}
@@ -50,7 +50,7 @@ Summary:        Web Console for Linux servers
 License:        LGPL-2.1-or-later
 URL:            https://cockpit-project.org/
 
-Version:        271
+Version:        276.1
 Release:        0
 Source0:        cockpit-%{version}.tar
 Source1:        cockpit.pam
@@ -65,20 +65,17 @@ Patch2:         hide-docs.patch
 Patch3:         suse-microos-branding.patch
 Patch4:         css-overrides.patch
 Patch5:         storage-btrfs.patch
-Patch6:         kdump-close.patch
-Patch7:         kdump-refactor.patch
-Patch8:         kdump-suse.patch
 # SLE Micro specific patches
 Patch100:       remove-pwscore.patch
 Patch101:       hide-pcp.patch
 
 # in RHEL 8 the source package is duplicated: cockpit (building basic packages like cockpit-{bridge,system})
 # and cockpit-appstream (building optional packages like cockpit-{pcp})
-# This split does not apply to EPEL/COPR.
+# This split does not apply to EPEL/COPR nor packit c8s builds, only to our own
+# image-prepare rhel-8-Y builds (which will disable build_all).
 # In Fedora ELN/RHEL 9+ there is just one source package, which ships rpms in both BaseOS and AppStream
-# We also provide an override mechanism if you want to build all packages.
-%define build_all 0
-%if 0%{?rhel} == 8 && 0%{?epel} == 0 && !%{build_all}
+%define build_all 1
+%if 0%{?rhel} == 8 && 0%{?epel} == 0 && !0%{?build_all}
 
 %if "%{name}" == "cockpit"
 %define build_basic 1
@@ -189,9 +186,6 @@ Requires: subscription-manager-cockpit
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
 
 %if 0%{?sle_version}
 %patch100 -p1
@@ -244,23 +238,10 @@ cp src/fonts.css %{buildroot}%{_datadir}/cockpit/branding/suse
 cp -a src/fonts %{buildroot}%{_datadir}/cockpit/branding/suse
 popd
 
-# only ship deprecated PatternFly API for stable releases
-%if 0%{?rhel} == 8
-    if [ -f %{buildroot}/%{_datadir}/cockpit/base1/cockpit.css.gz ]; then
-        ln -s cockpit.css.gz %{buildroot}/%{_datadir}/cockpit/base1/patternfly.css.gz
-    elif [ -f %{buildroot}/%{_datadir}/cockpit/base1/cockpit.css ]; then
-        ln -s cockpit.css %{buildroot}/%{_datadir}/cockpit/base1/patternfly.css
-    else
-        echo >&2 Neither cockpit.css.gz nor cockpit.css exists.
-        exit 1
-    fi
-%endif
-
 # Build the package lists for resource packages
 # cockpit-bridge is the basic dependency for all cockpit-* packages, so centrally own the page directory
 echo '%dir %{_datadir}/cockpit' > base.list
 echo '%dir %{_datadir}/cockpit/base1' >> base.list
-echo '%dir %{_datadir}/cockpit/base1/fonts' >> base.list
 find %{buildroot}%{_datadir}/cockpit/base1 -type f -o -type l >> base.list
 echo '%{_sysconfdir}/cockpit/machines.d' >> base.list
 echo %{buildroot}%{_datadir}/polkit-1/actions/org.cockpit-project.cockpit-bridge.policy >> base.list
@@ -479,8 +460,6 @@ Provides: cockpit-sosreport = %{version}-%{release}
 %if 0%{?fedora}
 Recommends: (reportd if abrt)
 %endif
-# NPM modules which are also available as packages
-Provides: bundled(xstatic-patternfly-common) = 3.59.5
 
 %description system
 This package contains the Cockpit shell and system configuration interfaces.
@@ -629,8 +608,8 @@ fi
 
 %package kdump
 Summary: Cockpit user interface for kernel crash dumping
-Requires: cockpit-bridge >= 130
-Requires: cockpit-shell >= 130
+Requires: cockpit-bridge >= %{required_base}
+Requires: cockpit-shell >= %{required_base}
 Requires: kexec-tools
 BuildArch: noarch
 
@@ -643,8 +622,8 @@ The Cockpit component for configuring kernel crash dumping.
 %if !0%{?suse_version}
 %package sosreport
 Summary: Cockpit user interface for diagnostic reports
-Requires: cockpit-bridge >= 122
-Requires: cockpit-shell >= 122
+Requires: cockpit-bridge >= %{required_base}
+Requires: cockpit-shell >= %{required_base}
 Requires: sos
 BuildArch: noarch
 
@@ -659,8 +638,8 @@ sosreport tool.
 
 %package networkmanager
 Summary: Cockpit user interface for networking, using NetworkManager
-Requires: cockpit-bridge >= 186
-Requires: cockpit-shell >= 186
+Requires: cockpit-bridge >= %{required_base}
+Requires: cockpit-shell >= %{required_base}
 Requires: NetworkManager >= 1.6
 Conflicts: cockpit-wicked
 # Optional components
@@ -678,8 +657,8 @@ The Cockpit component for managing networking.  This package uses NetworkManager
 
 %package selinux
 Summary: Cockpit SELinux package
-Requires: cockpit-bridge >= 122
-Requires: cockpit-shell >= 122
+Requires: cockpit-bridge >= %{required_base}
+Requires: cockpit-shell >= %{required_base}
 Requires: setroubleshoot-server >= 3.3.3
 BuildArch: noarch
 
@@ -709,7 +688,7 @@ Dummy package from building optional packages only; never install or publish me.
 
 %package -n cockpit-storaged
 Summary: Cockpit user interface for storage, using udisks
-Requires: cockpit-shell >= 266
+Requires: cockpit-shell >= %{required_base}
 Requires: udisks2 >= 2.9
 Requires: %{__python3}
 %if 0%{?suse_version}
@@ -757,7 +736,7 @@ This package contains files used to develop cockpit modules
 
 %package -n cockpit-pcp
 Summary: Cockpit PCP integration
-Requires: cockpit-bridge >= 238.1.1
+Requires: cockpit-bridge >= %{required_base}
 Requires: pcp
 
 %description -n cockpit-pcp
@@ -773,7 +752,7 @@ systemctl reload-or-try-restart pmlogger
 %package -n cockpit-packagekit
 Summary: Cockpit user interface for packages
 BuildArch: noarch
-Requires: cockpit-bridge >= 186
+Requires: cockpit-bridge >= %{required_base}
 Requires: PackageKit
 Recommends: python3-tracer
 # HACK: https://bugzilla.redhat.com/show_bug.cgi?id=1800468

@@ -20,7 +20,7 @@ Index: cockpit/pkg/kdump/manifest.json
 @@ -6,7 +6,7 @@
      "tools": {
          "index": {
-             "label": "Kernel Dump",
+             "label": "Kernel dump",
 -            "docs": [
 +            "docs-rh": [
                  {
@@ -46,7 +46,7 @@ Index: cockpit/pkg/packagekit/manifest.json
 @@ -8,7 +8,7 @@
      "tools": {
          "index": {
-             "label": "Software Updates",
+             "label": "Software updates",
 -            "docs": [
 +            "docs-rh": [
                  {
@@ -113,7 +113,7 @@ Index: cockpit/pkg/shell/topnav.jsx
 ===================================================================
 --- cockpit.orig/pkg/shell/topnav.jsx
 +++ cockpit/pkg/shell/topnav.jsx
-@@ -121,9 +121,9 @@ export class TopNav extends React.Compon
+@@ -119,9 +119,9 @@ export class TopNav extends React.Compon
                  {cockpit.format(_("$0 documentation"), this.state.osRelease.NAME)}
              </DropdownItem>);
  
