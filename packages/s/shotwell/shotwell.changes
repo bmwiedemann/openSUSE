@@ -1,4 +1,130 @@
 -------------------------------------------------------------------
+Wed Sep  7 17:50:08 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.31.5:
+  + Port to libsoup3
+  + Updated translations.
+- Changes from version 0.31.4:
+  + Move video meta-data reading into external process
+  + Fix memory leak while importing from camera
+  + Speed up raw meta-data reading
+  + Improve Welcome Dialog wording
+  + Improve google photos upload for > 50 photos
+  + Support CR3 files
+  + Use mail portal instead of nautilus-sendto
+  + Support AVIF files
+  + Fix import from SONY A7C
+  + Remove Map widget
+- Changes from version 0.31.3:
+  + Store publishing secrets using libsecret
+  + Fix rotation keybinding for viewer
+  + Fix a missing menu item
+- Changes from version 0.31.2:
+  + Documentation updates and clean-up
+  + Drop obsolete settings
+  + Add WEBP and GIF to viewer's desktop file
+  + Use new mapbox tiles for the map view
+  + Flickr: Upload description and title
+  + General OAuth1 clean-up and simplifications
+  + Flickr: Show the new quotas (images uploaded)
+  + Make face detection and recognition compatible with OpenCV 4
+  + Fix shortcuts for previous/next photo in menus
+  + Migrate GSettings from org.yorba to org.gnome
+  + Fix initialization of the theme being too late
+  + Bring some consistency into the settings summaries and
+    descriptions
+  + Google Photos: Fix a critical when target album is not
+    available
+  + YouTube: Remove an obsolete label from the publishing dialog
+  + Authenticator: Make links in the shown web page open in
+    external browser
+  + Google Photos/YouTube: Update explanatory texts before log in.
+  + Flickr: Fix the log in
+- Changes from version 0.31.1:
+  + Fix an issue when pressing the down key in a slideshow
+  + Face recognition: Properly fall back to face detection when
+    there is no DNN file
+  + GPS: Export GPS meta-data
+  + GPS: Changed GPS will trigger meta-data export
+  + Piwigo: Fix crash when the certificate information is broken
+  + Add profiles
+  + Fix an issue with git annex due to not properly recognizing
+    symlinks
+  + Doc: Update the manpage
+  + Google Photos: Do not crash if title is missing
+  + Authenticator: Do not crash if service connection fails
+  + Doc: Various syntax fixes in help files
+  + Fix Camera detection and unmounting
+  + Speed up browsing directories of large files
+  + Fix localization of month in the DateTime dialog
+  + Tumblr: Fix upload
+  + Respect rotation information of videos
+  + Piwigo: Enable uploading of rating
+  + Port thumbnailer spawning to GLib.Subprocess
+  + Remove a couple of deprecated TimeVal uses
+  + Fix a couple of "potential null access" warnings during
+    compilation
+  + Some code clean-ups
+- Changes from version 0.31.0:
+  + Reorganize source tree
+  + Visually clean-up saved search editing dialog
+  + Use org.freedesktop.FileManager1 instead of calling nautilus
+    directly.
+  + Fix some deprecated calls in faces code
+  + Fix icon fall-back
+  + Add support for reading WEBP
+  + Some appdata fixes
+  + Skip hidden folders such as .thumbnails
+  + Fix missing icons in sidebar
+  + Use Gtk.FileChooserNative for nicer portal integration
+  + flatpak: several updates of dependencies
+  + flatpak: strip-down OpenCV
+  + Fix another "unknown source-id" warning
+  + Stop spinning the event loop when changing window cursors
+  + Several fixes to scroll events
+  + Fix tooltips on overview pages
+  + Fix issue with ImageHeight and ImageWidth mix-up
+  + Strip diacritics from events and tags for better searching
+  + Support gexiv2 0.12
+  + Add -p/--show-metadata option to Shotwell for dumping meta-data
+  + Increase comment limit to 4k chars
+  + Fix deprecations in Piwigo builder files
+  + Do not make Cancel the default action in the authenication
+    panel
+  + Clean-up in several places in the publishers
+  + Split-up some of the publishing panel code and move to
+    GtkBuilder
+  + Simplify the login landing page for publishing
+  + Remove non-functional Facebook publisher code
+  + Split-up CheckerBoardLayout.vala file
+  + Use nicer messages on empty filters etc.
+  + Merge face recognition code
+  + Fix fall-back icon for cameras
+  + Fix CSS and icon theme initialization code
+  + Fix an issue with chaining up the constructors for the main
+    window classes
+  + Fix issue with ACDSEE tags parser attaching all known tags to
+    all imported images
+  + Mege Map support
+  + Use my mapbox API token for map support
+  + Minor refactor of Page.vala eliminating duplicated code
+  + Drop conditionals for old Vala
+  + Several fixes with recent Vala versions
+  + Page.vala code split-up
+  + Various typo fixes
+  + Fix issue with artist containing an email address
+  + Add optional private DBus communication for faces recognition
+    binary
+- Use ldconfig_scriptlets macro for post(un) handling.
+- Update options passed to meson following upstream changes.
+- Changes in BuildRequires:
+  + Dropped: pkgconfig(libgdata), pkgconfig(libsoup-2.4) and
+    pkgconfig(webkit2gtk-4.0)
+  + Added: pkgconfig(libsecret-1), pkgconfig(libsoup-3.0),
+    pkgconfig(libwebpdemux), pkgconfig(libwebp) and
+    pkgconfig(webkit2gtk-4.1)
+
+-------------------------------------------------------------------
 Fri May 20 18:11:12 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.30.16:
