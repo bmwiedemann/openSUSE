@@ -1102,4 +1102,12 @@
   + Numerous improvments to HTTP/2 reliability. (forwarded request 1000961 from iznogood)</comment>
     <requestid>1001365</requestid>
   </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>1f7172e4bc815bc39f6d8f68bd751d79</srcmd5>
+    <version>3.2.0</version>
+    <time>1663764056</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1004823</requestid>
+  </revision>
 </revisionlist>

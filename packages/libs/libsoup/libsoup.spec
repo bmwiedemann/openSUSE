@@ -18,23 +18,24 @@
 
 %define api_version 3.0
 Name:           libsoup
-Version:        3.0.8
+Version:        3.2.0
 Release:        0
 Summary:        HTTP client/server library for GNOME
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/libsoup
-Source0:        https://download.gnome.org/sources/libsoup/3.0/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/libsoup/3.2/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
+
 BuildRequires:  glib-networking
 BuildRequires:  meson >= 0.53
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.69.1
 BuildRequires:  pkgconfig(glib-2.0) >= 2.69.1
 BuildRequires:  pkgconfig(gnutls) >= 3.6.0
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.69.1
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.9.5
-BuildRequires:  pkgconfig(gtk-doc) >= 1.20
 BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(libbrotlidec)
 BuildRequires:  pkgconfig(libnghttp2)
@@ -118,28 +119,30 @@ Features:
 
 %build
 %meson \
-    -Dgssapi=enabled \
-    -Dkrb5_config="$(which krb5-config)" \
-    -Dvapi=enabled \
-    -Dgtk_doc=true \
-    -Dntlm=disabled \
-    -Dsysprof=disabled \
-    -Dautobahn=disabled \
-    -Dhttp2_tests=disabled \
-    %{nil}
+	-D gssapi=enabled \
+	-D krb5_config="$(which krb5-config)" \
+	-D vapi=enabled \
+	-D docs=enabled \
+	-D ntlm=disabled \
+	-D sysprof=disabled \
+	-D autobahn=disabled \
+	%{nil}
 %meson_build
 
 %install
 %meson_install
 %find_lang %{name}-3.0 %{?no_lang_C}
+# Make default docdir ref openSUSE standard
+mkdir -p %{buildroot}%{_docdir}/%{name}-%{api_version}
+# Move docs from upstream docdir to openSUSE docdir standard
+mv %{buildroot}%{_datadir}/doc/%{name}-%{api_version} %{buildroot}%{_docdir}
 
 %check
 # Run the regression tests using GnuTLS NORMAL priority
 export G_TLS_GNUTLS_PRIORITY=NORMAL
 %meson_test
 
-%post 3_0-0 -p /sbin/ldconfig
-%postun 3_0-0 -p /sbin/ldconfig
+%ldconfig_scriptlets 3_0-0
 
 %files 3_0-0
 %license COPYING
@@ -151,10 +154,10 @@ export G_TLS_GNUTLS_PRIORITY=NORMAL
 
 %files devel
 %doc AUTHORS README
+%doc %{_docdir}/%{name}-%{api_version}
 %{_includedir}/libsoup-%{api_version}
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
-%doc %{_datadir}/gtk-doc/html/libsoup-%{api_version}
 %{_datadir}/gir-1.0/Soup-%{api_version}.gir
 %dir %{_datadir}/vala/vapi/
 %{_datadir}/vala/vapi/libsoup-%{api_version}.vapi
