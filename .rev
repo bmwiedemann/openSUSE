@@ -222,4 +222,28 @@
     <comment></comment>
     <requestid>811858</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>89339a914307e0d3a1cd308bd63f7dd4</srcmd5>
+    <version>4.0</version>
+    <time>1663764138</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0:
+  + Updated migration docs and rewrote overview.
+- Update to version 4.0.alpha:
+  + The extension was ported to Nautilus 43: Notably, this removes
+    any direct access to GTK widgets from the API. Most scripts
+    will need to be modified. Please check the migration guide in
+    the docs on how to update your scripts.
+  + Switched to Meson build system.
+  + Removed support for Python 2.
+  + Fixed build with -fno-common.
+  + Added missing parent constructor calls to examples.
+  + Decorated the examples with typehints.
+  + Fixed several memory leaks.
+- Drop python-nautilus-gcc10-buildfix.patch: fixed upstream.
+- Add meson BuildRequires and replace configur/make/make_install
+  macros with relevant meon/meson_build/meson_install variants.
+</comment>
+    <requestid>1004748</requestid>
+  </revision>
 </revisionlist>
