@@ -1,7 +1,7 @@
 #
 # spec file for package anjuta
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -52,7 +52,7 @@ BuildRequires:  pkgconfig(gladeui-2.0) >= 3.12.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.34.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.6.0
 BuildRequires:  pkgconfig(gtksourceview-3.0) >= 3.0.0
-BuildRequires:  pkgconfig(libdevhelp-3.0) >= 3.7.5
+#BuildRequires:  pkgconfig(libdevhelp-3.0) >= 3.7.5
 BuildRequires:  pkgconfig(libgda-6.0) >= 6.0.0
 BuildRequires:  pkgconfig(libgvc)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.4.23
@@ -135,8 +135,9 @@ autoreconf -fiv
 %configure\
         --disable-static \
         --enable-glade-catalog \
+        --disable-plugin-devhelp \
         %{nil}
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
