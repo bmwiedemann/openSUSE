@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep 20 17:49:13 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.0:
+  + Drop vestigial code.
+  + Fixes in GPU detection.
+  + Use _GNU_SOURCE again to avoid compile warning.
+  + Updated translations.
+- Drop patches fixed upstream:
+  + gdm-Fix-type-of-signal-connection-id.patch
+  + gdm-Stop-listening-to-udev-events.patch
+- Rebase patches with quilt.
+
+-------------------------------------------------------------------
 Tue Aug  2 01:52:26 UTC 2022 - Yifan Jiang <yfjiang@suse.com>
 
 - Fix specfile: Adapt macros %_pam_moduledir (boo#1191033).

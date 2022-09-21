@@ -1,7 +1,7 @@
-Index: gdm-40.1/daemon/gdm-session.c
+Index: gdm-43.0/daemon/gdm-session.c
 ===================================================================
---- gdm-40.1.orig/daemon/gdm-session.c
-+++ gdm-40.1/daemon/gdm-session.c
+--- gdm-43.0.orig/daemon/gdm-session.c
++++ gdm-43.0/daemon/gdm-session.c
 @@ -43,6 +43,8 @@
  #include <glib-object.h>
  #include <gio/gio.h>
@@ -11,7 +11,7 @@ Index: gdm-40.1/daemon/gdm-session.c
  #include "gdm-session.h"
  #include "gdm-session-glue.h"
  #include "gdm-dbus-util.h"
-@@ -578,6 +580,14 @@ get_fallback_session_name (GdmSession *s
+@@ -589,6 +591,14 @@ get_fallback_session_name (GdmSession *s
                  }
          }
  

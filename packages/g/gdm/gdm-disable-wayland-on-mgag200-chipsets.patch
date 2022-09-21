@@ -1,10 +1,10 @@
-Index: gdm-41.3/data/61-gdm.rules.in
+Index: gdm-43.0/data/61-gdm.rules.in
 ===================================================================
---- gdm-41.3.orig/data/61-gdm.rules.in
-+++ gdm-41.3/data/61-gdm.rules.in
-@@ -1,6 +1,16 @@
- # disable Wayland on Hi1710 chipsets
- ATTR{vendor}=="0x19e5", ATTR{device}=="0x1711", GOTO="gdm_disable_wayland"
+--- gdm-43.0.orig/data/61-gdm.rules.in
++++ gdm-43.0/data/61-gdm.rules.in
+@@ -34,6 +34,16 @@ ATTR{vendor}=="0x1a03", ATTR{device}=="0
+ 
+ LABEL="gdm_pci_device_end"
  
 +# disable Wayland on Matrox Electronics Systems Ltd. MGA G200 server engines
 +ATTR{vendor}=="0x102b", ATTR{device}=="0x0522", GOTO="gdm_disable_wayland"

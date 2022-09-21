@@ -1885,4 +1885,12 @@
     <comment>- Fix specfile: Adapt macros %_pam_moduledir (boo#1191033). (forwarded request 992174 from yfjiang)</comment>
     <requestid>992700</requestid>
   </revision>
+  <revision rev="246" vrev="1">
+    <srcmd5>b9926d0f9e5e000f1c0f74bff2a0c1f0</srcmd5>
+    <version>43.0</version>
+    <time>1663764096</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1005058</requestid>
+  </revision>
 </revisionlist>

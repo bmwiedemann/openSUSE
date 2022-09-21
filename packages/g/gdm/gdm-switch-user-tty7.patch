@@ -8,11 +8,11 @@ Closes #532
  daemon/gdm-session-worker.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: gdm-3.36.2/daemon/gdm-session-worker.c
+Index: gdm-43.0/daemon/gdm-session-worker.c
 ===================================================================
---- gdm-3.36.2.orig/daemon/gdm-session-worker.c
-+++ gdm-3.36.2/daemon/gdm-session-worker.c
-@@ -2209,7 +2209,7 @@ set_up_for_new_vt (GdmSessionWorker *wor
+--- gdm-43.0.orig/daemon/gdm-session-worker.c
++++ gdm-43.0/daemon/gdm-session-worker.c
+@@ -2208,7 +2208,7 @@ set_up_for_new_vt (GdmSessionWorker *wor
                  return FALSE;
          }
  

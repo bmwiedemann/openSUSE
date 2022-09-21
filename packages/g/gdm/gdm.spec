@@ -28,14 +28,14 @@
 %endif
 
 Name:           gdm
-Version:        42.0
+Version:        43.0
 Release:        0
 Summary:        The GNOME Display Manager
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GDM
 
-Source0:        https://download.gnome.org/sources/gdm/42/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gdm/43/%{name}-%{version}.tar.xz
 Source1:        gdm.pamd
 Source2:        gdm-autologin.pamd
 Source3:        gdm-launch-environment.pamd
@@ -70,10 +70,6 @@ Patch13:        gdm-s390-not-require-g-s-d_wacom.patch
 Patch14:        gdm-switch-user-tty7.patch
 # PATCH-FIX-UPSTREAM gdm-disable-wayland-on-mgag200-chipsets.patch bsc#1162888 glgo#GNOME/mutter#57 qkzhu@suse.com -- Disable Wayland on mgag200 chipsets
 Patch15:        gdm-disable-wayland-on-mgag200-chipsets.patch
-# PATCH-FIX-UPSTREAM gdm-Fix-type-of-signal-connection-id.patch bsc#1197521 xwang@suse.com -- Fix the type of signal connection id
-Patch16:        gdm-Fix-type-of-signal-connection-id.patch
-# PATCH-FIX-UPSTREAM gdm-Stop-listening-to-udev-events.patch bsc#1197521 xwang@suse.com -- Stop listening to udev events
-Patch17:        gdm-Stop-listening-to-udev-events.patch
 
 ### NOTE: Keep please SLE-only patches at bottom (starting on 1000).
 # PATCH-FIX-SLE gdm-disable-gnome-initial-setup.patch bnc#1067976 qzhao@suse.com -- Disable gnome-initial-setup runs before gdm, g-i-s will only serve for CJK people to choose the input-method after login.
@@ -247,8 +243,6 @@ running display manager.
 %endif
 %patch14 -p1
 %patch15 -p1
-%patch16 -p1
-%patch17 -p1
 
 # SLE and Leap only patches start at 1000
 %if 0%{?sle_version}
