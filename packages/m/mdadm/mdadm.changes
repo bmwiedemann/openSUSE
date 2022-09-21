@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 19 14:18:41 CST 2022 - Coly Li <colyli@suse.com>
+
+- mdadm.spec: add EXTRAVERSION string to make command line
+  (jsc#SLE-24761, bsc#1193566)
+
+-------------------------------------------------------------------
 Thu Aug 11 11:41:37 UTC 2022 - Coly Li <colyli@suse.com>
 
 - imsm: support for third Sata controller (bsc#1201297)

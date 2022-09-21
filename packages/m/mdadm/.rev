@@ -1416,4 +1416,13 @@ which haven't landed upstream yet
   1005-mdadm-enable-Intel-Alderlake-RSTe-configuration.patch (forwarded request 994528 from colyli)</comment>
     <requestid>994643</requestid>
   </revision>
+  <revision rev="135" vrev="20">
+    <srcmd5>ffb1442a30c0689bd1f2ec1c0bd275b1</srcmd5>
+    <version>4.1</version>
+    <time>1663764099</time>
+    <user>dimstar_suse</user>
+    <comment>- mdadm.spec: add EXTRAVERSION string to make command line
+  (jsc#SLE-24761, bsc#1193566) (forwarded request 1004742 from colyli)</comment>
+    <requestid>1004871</requestid>
+  </revision>
 </revisionlist>
