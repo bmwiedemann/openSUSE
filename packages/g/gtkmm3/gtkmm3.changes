@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Sep 12 15:35:33 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.24.7:
+  + Gtk:
+    - Don't derive gtkmm__GtkXxx GTypes from final types
+    - TextView::get_tabs(): Fix a memory leak
+  + Documentation: Widget: Improve the class documentation
+  + Demos: Dialog demo: Add a non-modal dialog
+  + Build:
+    - Meson build: Avoid configuration warnings
+    - MSVC build: Disable more warnings
+    - Fix build with -Dbuild-deprecated-api=false
+- Add gtkmm3-docs-without-timestamp.patch: We do not want
+  __DATE__ and __TIME__ in our packages.
+
+-------------------------------------------------------------------
 Tue May  3 13:01:18 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
 
 - Update to version 3.24.6:

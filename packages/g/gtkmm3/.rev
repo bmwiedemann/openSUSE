@@ -404,4 +404,12 @@
     <comment>GNOME 42.2 (forwarded request 979899 from dimstar)</comment>
     <requestid>980035</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>edd9ea055663ace46c3bc0ee73e455ac</srcmd5>
+    <version>3.24.7</version>
+    <time>1663763985</time>
+    <user>dimstar_suse</user>
+    <comment>New upstream release (forwarded request 1003017 from iznogood)</comment>
+    <requestid>1003232</requestid>
+  </revision>
 </revisionlist>
