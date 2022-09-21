@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 16 14:41:29 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.0:
+  + WnckHandle is now public and should be used for all the
+    operations. Usage of all the older entry-point getters is now
+    deprecated.
+
+-------------------------------------------------------------------
 Thu Feb 17 13:43:03 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 40.1:

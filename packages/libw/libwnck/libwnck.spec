@@ -17,13 +17,13 @@
 
 
 Name:           libwnck
-Version:        40.1
+Version:        43.0
 Release:        0
 Summary:        Window Navigator Construction Kit (Library Package)
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://git.gnome.org/browse/libwnck
-Source0:        https://download.gnome.org/sources/libwnck/40/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/libwnck/43/%{name}-%{version}.tar.xz
 Source98:       baselibs.conf
 
 BuildRequires:  fdupes
