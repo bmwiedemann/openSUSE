@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Sep 16 08:58:41 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Aug  6 18:27:22 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.alpha:
+  + Remove Nautilus extension.
+  + Fix build with meson 0.61 and newer.
+  + Updated translations.
+- Drop gnome-user-share-fix-meson-0_61_0.patch fixed upstream.
+- Drop pkgconfig(libnautilus-extension) and pkgconfig(gtk+-3.0)
+  BuildRequires: No longer needed as nautilus extension was removed
+  upstream.
+- Drop obsolete glib2_gsettings_schema_requires macro.
+
+-------------------------------------------------------------------
 Tue Feb  1 21:30:03 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.34.0+25:

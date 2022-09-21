@@ -17,7 +17,7 @@
 
 
 Name:           gnome-user-share
-Version:        3.34.0+25
+Version:        43.0
 Release:        0
 Summary:        GNOME user file sharing
 License:        GPL-2.0-or-later
@@ -26,23 +26,18 @@ URL:            http://www.gnome.org/
 # Disable Source URL, use git checkout via service
 # Source0:        https://download.gnome.org/sources/gnome-user-share/3.34/%%{name}-%%{version}.tar.xz
 Source0:        %{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM gnome-user-share-fix-meson-0_61_0.patch bjorn.lie@gmail.com -- Fix build with meson 0.61.0 and newer
-Patch0:         gnome-user-share-fix-meson-0_61_0.patch
 
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(glib-2.0) >= 2.58
-BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libcanberra-gtk3)
-BuildRequires:  pkgconfig(libnautilus-extension) >= 3.27.90
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(systemd)
 Suggests:       apache2-mod_dnssd
 Suggests:       apache2-prefork
 Suggests:       apache2-worker
-%glib2_gsettings_schema_requires
 
 %description
 gnome-user-share is a small package that binds together various free
@@ -83,7 +78,8 @@ up in the Network location in GNOME.
 %{_libexecdir}/gnome-user-share
 %{_datadir}/gnome-user-share
 %{_datadir}/applications/gnome-user-share-webdav.desktop
-%{_libdir}/nautilus/extensions-3.0/libnautilus-share-extension.so
+%dir %{_datadir}/GConf
+%dir %{_datadir}/GConf/gsettings
 %{_datadir}/GConf/gsettings/gnome-user-share.convert
 %{_datadir}/glib-2.0/schemas/org.gnome.desktop.file-sharing.gschema.xml
 %{_userunitdir}/gnome-user-share-webdav.service
