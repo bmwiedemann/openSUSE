@@ -1,4 +1,4 @@
-# ---
+---
 # Since vagrant-spec has no release yet, there is no gem on rubygems.org. Thus
 # the gem must be rebuild manually on each update.
 #
@@ -6,27 +6,11 @@
 # $ git clone https://github.com/dcermak/vagrant-spec
 # $ git checkout opensuse_package
 #
-# apply the following patche:
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.patch}
-# diff --git a/vagrant-spec.gemspec b/vagrant-spec.gemspec
-# index 33a2d86..d7bc46f 100644
-# --- a/vagrant-spec.gemspec
-# +++ b/vagrant-spec.gemspec
-# @@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
-#    spec.add_dependency "childprocess", "~> 0.6.0"
-#    spec.add_dependency "log4r", "~> 1.1.9"
-#    spec.add_dependency "rspec", "~> 3.5.0"
-# -  spec.add_dependency "thor", "~> 0.18.1"
-# +  spec.add_dependency "thor", "~> 0.18"
-#
-#    spec.add_development_dependency "rake"
-#  end
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#
 # and build the gem:
 # $ gem build vagrant-spec.gemspec
 #
-# Then copy the gem into the project folder and optionally recreate the spec file:
+# Then copy the gem into the project folder and optionally recreate the spec
+# file:
 # $ gem2rpm --config gem2rpm.yml vagrant-spec-0.0.1.*.gem > rubygem-vagrant-spec.spec
 #
 # If you recreated the spec file, then you **must** also override the Source

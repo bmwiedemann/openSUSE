@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-vagrant-spec
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 # of those fields
 #
 Name:           rubygem-vagrant-spec
-Version:        0.0.1.1627911869.200ed21.git
+Version:        0.0.1.1663083445.c177981.git
 Release:        0
 Summary:        Tool and library for testing Vagrant plugins
 License:        MPL-2.0
@@ -67,6 +67,7 @@ entire tool is geared very heavily towards RSpec.
 find %{buildroot}/%{_libdir}/ruby/gems \( -name .gitignore -o -name .travis.yml -o -name .ci -o -name .github \) | xargs rm -rf
 %fdupes %{buildroot}/%{_libdir}/ruby/gems
 # /MANUAL
+
 
 %gem_packages
 
