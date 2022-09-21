@@ -18,13 +18,14 @@
 
 
 Name:           gnome-logs
-Version:        42.0
+Version:        43.beta
 Release:        0
 Summary:        GNOME System Log Viewer
 License:        GPL-3.0-or-later
 Group:          System/X11/Utilities
 URL:            https://wiki.gnome.org/Apps/Logs
-Source0:        https://download.gnome.org/sources/gnome-logs/42/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-logs/43/%{name}-%{version}.tar.xz
+
 
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
@@ -34,10 +35,9 @@ BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  xsltproc
 BuildRequires:  yelp-tools
-BuildRequires:  pkgconfig(gio-2.0) >= 2.43.90
-BuildRequires:  pkgconfig(glib-2.0) >= 2.43.90
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
-BuildRequires:  pkgconfig(libhandy-1) >= 1.5.0
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.43.90
+BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.0.0
 BuildRequires:  pkgconfig(libsystemd)
 
 Requires:       gsettings-desktop-schemas
@@ -61,6 +61,9 @@ A utility for viewing detailed event logs for the system.
 %find_lang %{name} %{?no_lang_C}
 %suse_update_desktop_file -r org.gnome.Logs GTK GNOME System Monitor
 %fdupes %{buildroot}%{_datadir}
+
+%check
+%meson_test
 
 %files
 %license COPYING
