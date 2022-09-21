@@ -1,7 +1,7 @@
 #
 # spec file for package cairo
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,33 +19,29 @@
 %define build_xcb_backend 1
 %define build_gl_backend 1
 Name:           cairo
-Version:        1.16.0
+Version:        1.17.6
 Release:        0
 Summary:        Vector Graphics Library with Cross-Device Output Support
 License:        LGPL-2.1-or-later OR MPL-1.1
 Group:          Development/Libraries/C and C++
 URL:            https://cairographics.org/
-Source0:        https://cairographics.org/releases/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/cairo/1.17/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
+
 # PATCH-FIX-UPSTREAM cairo-xlib-endianness.patch fdo#63461 bnc#882951 fcrozat@suse.com -- Fix crash when client and server have different endianness
 Patch0:         cairo-xlib-endianness.patch
 # PATCH-FIX-UPSTREAM cairo-get_bitmap_surface-bsc1036789-CVE-2017-7475.diff alarrosa@suse.com -- Fix segfault in get_bitmap_surface
 Patch1:         cairo-get_bitmap_surface-bsc1036789-CVE-2017-7475.diff
-# PATCH-FIX-UPSTREAM cairo-Use-FT_Done_MM_Var-instead-of-free-when-available.patch -- ft: Use FT_Done_MM_Var instead of free when available in cairo_ft_apply_variations
-Patch2:         cairo-Use-FT_Done_MM_Var-instead-of-free-when-available.patch
-# PATCH-FIX-UPSTREAM cairo-composite_color_glyphs.patch -- Fix a thinko in composite_color_glyphs
-Patch3:         cairo-composite_color_glyphs.patch
-# PATCH-FIX-UPSTREAM cairo-pdf-add-missing-flush.patch - fix pdf generation (upstream issue #342)
-Patch4:         cairo-pdf-add-missing-flush.patch
-# PATCH-FIX-UPSTREAM cairo-do-not-override-explicitly-requested-grayscale-aa.patch -- Fix font antialiasing requested by applications
-Patch5:         cairo-do-not-override-explicitly-requested-grayscale-aa.patch
+# PATCH-FIX-UPSTREAM 0001-Set-default-LCD-filter-to-FreeType-s-default.patch -- Set default LCD filter to FreeType's default
+Patch2:         0001-Set-default-LCD-filter-to-FreeType-s-default.patch
+
 BuildRequires:  gtk-doc
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(libpng)
-BuildRequires:  pkgconfig(pixman-1) >= 0.30.0
+BuildRequires:  pkgconfig(pixman-1) >= 0.36.0
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xrender)
@@ -165,18 +161,15 @@ cairo.
     --enable-xlib \
     --enable-gtk-doc \
     --disable-static
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n libcairo2 -p /sbin/ldconfig
-%postun -n libcairo2 -p /sbin/ldconfig
-%post -n libcairo-gobject2 -p /sbin/ldconfig
-%postun -n libcairo-gobject2 -p /sbin/ldconfig
-%post -n libcairo-script-interpreter2 -p /sbin/ldconfig
-%postun -n libcairo-script-interpreter2 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libcairo2
+%ldconfig_scriptlets -n libcairo-gobject2
+%ldconfig_scriptlets -n libcairo-script-interpreter2
 
 %files -n libcairo2
 %license COPYING COPYING-LGPL-2.1 COPYING-MPL-1.1

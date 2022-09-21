@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Aug 31 18:23:24 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.17.6:
+  + This snapshot sees the removal of the following backends and
+    platform support: Qt4, BeOS, OS/2, DirectFB, DRM, Cogl, OpenVG.
+  + Thanks to all past contributors for their work on them. If you
+    were using any of these backends then you will need to stick to
+    Cairo 1.16.
+  + This snapshot is going to be the **last** release of Cairo with
+    the Autotools build system. The Meson build has seen many
+    improvements and it is considerably easier to maintain and
+    faster to build.
+- Changes from version 1.17.4:
+  + A particularly noteworthy improvement in this release is the
+    addition of the meson build system as an alternative to
+    autotools.
+  + The cogl Cairo backend underwent significant development this
+    cycle.
+  + Subpixel positioning support allows improved glyph outlines
+    with the Freetype font backend.
+  + For a complete log of changes, please see
+    https://cairographics.org/releases/ChangeLog.1.17.4
+- Changes from version 1.17.2:
+  + This snapshot provides the new support for writing floating
+    point formats as 16 bpc PNGs, with support for RGBA128F and
+    RGB96F formats. This new feature increases Cairo's pixman
+    version requirement to 0.36.0.
+  + Beyond this are a range of bugfixes.
+    For a complete log of changes, please see
+    https://cairographics.org/releases/ChangeLog.1.17.2
+- Drop patches fixed upstream:
+  + cairo-Use-FT_Done_MM_Var-instead-of-free-when-available.patch
+  + cairo-composite_color_glyphs.patch
+  + cairo-pdf-add-missing-flush.patch
+  + cairo-do-not-override-explicitly-requested-grayscale-aa.patch
+- Rebase remaining patches with quilt.
+- Add 0001-Set-default-LCD-filter-to-FreeType-s-default.patch: Set
+  default LCD filter to FreeType's default (patch merged upstream).
+- Use ldconfig_scriptlets macro for post(un) handling.
+
+-------------------------------------------------------------------
 Fri Oct 22 09:24:48 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Add upstream patch
