@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Fri Sep 16 07:01:21 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.46.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep  2 07:29:33 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.45.3:
+  + build: Correct use of manual NSS/NSPR build flags
+  + libedataserverui: Add a widget to show certificate information
+  + Replace GcrCertificateWidget with libedataserverui's
+    ECertificateWidget
+  + Bugs fixed:
+    - Camel: VACUUM cannot run from within a transaction
+    - e-cal-component.c: typo VTOTO -> VTODO
+- Drop unused pkgconfig(gcr-4-gtk3) BuildRequires.
+
+-------------------------------------------------------------------
+Tue Aug  9 11:33:10 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.45.2:
+  + Bump libsoup minimum version requirement to 3.1.1
+  + CamelDataWrapper: Add function to construct it from data
+  + ESourceMailAccount: Add 'builtin' property
+  + Add functions to manipulate Google Task API
+  + e_soup_session_util_normalize_uri_path: Normalize path only
+    when not encoded
+  + Replace libgdata dependency with built-in functions
+  + Add camel_folder_get_full_display_name()
+  + CamelFolderSummary: Hide empty email address in user visible
+    strings
+  + Calendar: Correct handling of a "not modified" On The Web
+    calendar
+  + ESoupSession: Extract common auth failure code into a utility
+    function
+  + ESoupAuthBearer: Check for token expiration in
+    e_soup_auth_bearer_is_authenticated()
+  + EOAuth2Service: Correct free function for GBytes structure
+  + ESoupSession: Allow NULL source internally
+  + Check for non-zero value passed to g_flags_get_first_value()
+  + alarm-notify: Use themed icon instead of file icon for
+    notifications
+  + ESoupSession: Avoid downgrade of Bearer (OAuth2) auth for
+    authentication
+  + Bugs fixed:
+    - LDAP: Conditionally use displayName for file-as
+    - IMAPx: Unsubscribed folders in personal namespace hidden in
+      offline
+    - ESoupSession: Remember server fail response for detailed error
+    - ECalClient: Remove libical errors from components on write
+    - IMAPx: Unsubscribed folder always removed from the UI
+    - reminders-widget: Sort snooze times by duration
+- Drop libdata dependency following upstream changes.
+
+-------------------------------------------------------------------
+Mon Aug  8 14:17:05 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.45.1:
+  + The Evolution-Data-Server had been ported to libsoup3, which
+    means anything what uses it, and all of its dependencies,
+    should be libsoup3 too.
+  + Change how OAuth2 credentials are stored in the code.
+  + ESoupAuthBearer: Implement two more SoupAuth virtual methods.
+  + ERemindersWidget: Allow width shrink for small screens.
+  + e-module: Add debug prints about module loading.
+  + Fix few memory leaks discovered by Coverity scan.
+  + goa-ews: Handle certificate errors during autodiscover.
+  + GOA module: Prevent ESource removal on D-Bus reconnect or
+    registry reload.
+  + EExtensible: Introduce e_extensible_reload_extensions().
+  + EDataFactory: Reload extensions on factory start.
+  + book/cal-meta-backend: Claim error on refresh call in Power
+    Saver mode.
+  + Calendar: Add functions to handle LANGUAGE parameter on
+    properties.
+  + e-cal-component: Fix a logic flaw in the foreach_property().
+  + alarm-notify: Use localized summary/description properties,
+    if available.
+  + build: Look for WebKitGTK only when GTK/GTK4 is enabled.
+  + Correct libedataserverui4 main header file.
+  + ECredentialsPrompterImplPassword: Dialog not closed on
+    OK/Cancel click in gtk3.
+  + ESoupSession: Change handling of credentials.
+
+-------------------------------------------------------------------
 Fri Aug  5 09:00:24 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.44.4:

@@ -19,25 +19,26 @@
 %global with_docs 0
 
 # Shared Library soNUMs, to make it easier for updates
-%define so_camel 63
-%define so_ebackend 10
-%define so_edataserver 26
-%define so_edataserverui 3
-%define so_ebook 20
-%define so_ebook_contacts 3
-%define so_edata_book 26
-%define so_ecal 1
-%define so_edata_cal 1
+%define so_camel 64
+%define so_ebackend 11
+%define so_edataserver 27
+%define so_edataserverui 4
+%define so_edataserverui4 0
+%define so_ebook 21
+%define so_ebook_contacts 4
+%define so_edata_book 27
+%define so_ecal 2
+%define so_edata_cal 2
 %bcond_without introspection
 
 Name:           evolution-data-server
-Version:        3.44.4
+Version:        3.46.0
 Release:        0
 Summary:        Evolution Data Server
 License:        LGPL-2.0-only
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Apps/Evolution
-Source0:        https://download.gnome.org/sources/evolution-data-server/3.44/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/evolution-data-server/3.46/%{name}-%{version}.tar.xz
 
 BuildRequires:  cmake
 BuildRequires:  db-devel
@@ -61,20 +62,19 @@ BuildRequires:  libboost_thread-devel
 BuildRequires:  libphonenumber-devel
 BuildRequires:  sqlite3-devel >= 3.7.17
 BuildRequires:  vala >= 0.22.0
-BuildRequires:  pkgconfig(gcr-base-3) >= 3.4
 BuildRequires:  pkgconfig(goa-1.0) >= 3.8
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.16
-BuildRequires:  pkgconfig(gweather-3.0) >= 3.10
+BuildRequires:  pkgconfig(gweather4) >= 3.91
 BuildRequires:  pkgconfig(icu-i18n)
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.0.4
 BuildRequires:  pkgconfig(libcanberra-gtk3) >= 0.25
-BuildRequires:  pkgconfig(libgdata) >= 0.15.1
 BuildRequires:  pkgconfig(libnotify) >= 0.7
 BuildRequires:  pkgconfig(libsecret-unstable) >= 0.5
-BuildRequires:  pkgconfig(libsoup-2.4) >= 2.58
+BuildRequires:  pkgconfig(libsoup-3.0) >= 2.58
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(protobuf) >= 2.4
-BuildRequires:  pkgconfig(webkit2gtk-4.0) >= 2.11.91
+BuildRequires:  pkgconfig(webkit2gtk-4.1) >= 2.34.0
+BuildRequires:  pkgconfig(webkit2gtk-5.0) >= 2.36.0
 Requires:       mozilla-nss
 # typelib-1_0-ECalendar-1_2 was dropped with e-d-s 3.7.3 due to libical not being introspecatble.
 Obsoletes:      typelib-1_0-ECalendar-1_2 <= %{version}
@@ -207,6 +207,16 @@ and calendar in the GNOME Desktop.
 
 This package contains a shared system library.
 
+%package -n libedataserverui4-1_0-%{so_edataserverui4}
+Summary:        Evolution Data Server's Utilities Library
+Group:          System/Libraries
+
+%description -n libedataserverui4-1_0-%{so_edataserverui4}
+Evolution Data Server provides a central location for your address book
+and calendar in the GNOME Desktop.
+
+This package contains a shared system library.
+
 %package -n typelib-1_0-EBackend-1_2
 Summary:        Introspection bindings for Evolution Data Server's Utilities Library
 Group:          System/Libraries
@@ -261,6 +271,17 @@ and calendar in the GNOME Desktop.
 This package provides the GObject Introspection bindings for the
 libedataserver library.
 
+%package -n typelib-1_0-EDataServerUI4-1_0
+Summary:        Introspection bindings for Evolution Data Server's Utilities Library
+Group:          System/Libraries
+
+%description -n typelib-1_0-EDataServerUI4-1_0
+Evolution Data Server provides a central location for your address book
+and calendar in the GNOME Desktop.
+
+This package provides the GObject Introspection bindings for the
+libedataserver library.
+
 %package devel
 Summary:        Development files for Evolution Data Server
 Group:          Development/Libraries/GNOME
@@ -274,14 +295,15 @@ Requires:       libedata-book-1_2-%{so_edata_book} = %{version}
 Requires:       libedata-cal-2_0-%{so_edata_cal} = %{version}
 Requires:       libedataserver-1_2-%{so_edataserver} = %{version}
 Requires:       libedataserverui-1_2-%{so_edataserverui} = %{version}
+Requires:       libedataserverui4-1_0-%{so_edataserverui4} = %{version}
 Requires:       openldap2-devel
 %if %{?with_introspection}
-Requires:       libgdata-devel
 Requires:       typelib-1_0-Camel-1_2 = %{version}
 Requires:       typelib-1_0-EBook-1_2 = %{version}
 Requires:       typelib-1_0-EBookContacts-1_2 = %{version}
 Requires:       typelib-1_0-EDataServer-1_2 = %{version}
 Requires:       typelib-1_0-EDataServerUI-1_2 = %{version}
+Requires:       typelib-1_0-EDataServerUI4-1_0 = %{version}
 %endif
 
 %description devel
@@ -346,6 +368,7 @@ This package contains developer documentation.
 %ldconfig_scriptlets -n libedata-cal-2_0-%{so_edata_cal}
 %ldconfig_scriptlets -n libedataserver-1_2-%{so_edataserver}
 %ldconfig_scriptlets -n libedataserverui-1_2-%{so_edataserverui}
+%ldconfig_scriptlets -n libedataserverui4-1_0-%{so_edataserverui4}
 
 %files
 %license COPYING
@@ -417,6 +440,10 @@ This package contains developer documentation.
 
 %files -n typelib-1_0-EDataServerUI-1_2
 %{_libdir}/girepository-1.0/EDataServerUI-1.2.typelib
+
+%files -n typelib-1_0-EDataServerUI4-1_0
+%{_libdir}/girepository-1.0/EDataServerUI4-1.0.typelib
+
 %endif
 
 %files -n libedata-cal-2_0-%{so_edata_cal}
@@ -427,6 +454,9 @@ This package contains developer documentation.
 
 %files -n libedataserverui-1_2-%{so_edataserverui}
 %{_libdir}/libedataserverui-1.2.so.%{so_edataserverui}*
+
+%files -n libedataserverui4-1_0-%{so_edataserverui4}
+%{_libdir}/libedataserverui4-1.0.so.%{so_edataserverui4}*
 
 %files devel
 %doc ChangeLog MAINTAINERS
