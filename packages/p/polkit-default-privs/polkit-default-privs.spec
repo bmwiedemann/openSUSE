@@ -23,7 +23,7 @@
 %endif
 
 Name:           polkit-default-privs
-Version:        1550+20220727.3ce2e2f
+Version:        1550+20220919.3b55a1f
 Release:        0
 Summary:        SUSE PolicyKit default permissions
 License:        GPL-2.0-or-later
@@ -57,7 +57,7 @@ mkdir -p $RPM_BUILD_ROOT/etc/polkit-1/rules.d/
 
 %post
 %{fillup_only -ns security polkit_default_privs}
-/sbin/set_polkit_default_privs >/dev/null
+/usr/sbin/set_polkit_default_privs >/dev/null
 
 %files
 %define basedir %{_distconfdir}/polkit-default-privs
@@ -71,8 +71,8 @@ mkdir -p $RPM_BUILD_ROOT/etc/polkit-1/rules.d/
 %{profiledir}/standard
 %{profiledir}/restrictive
 %{basedir}/local.template
-/sbin/chkstat-polkit
-/sbin/set_polkit_default_privs
+/usr/sbin/chkstat-polkit
+/usr/sbin/set_polkit_default_privs
 %_mandir/man*/*
 %{_fillupdir}/sysconfig.security-polkit_default_privs
 

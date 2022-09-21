@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 19 10:41:14 UTC 2022 - matthias.gerstner@suse.com
+
+- adjust spec file to deal with /sbin -> /usr/sbin path change
+- Update to version 1550+20220919.3b55a1f:
+  * kdiskmark: adjust to new major version action renaming (bsc#1202725)
+  * Use /usr/sbin nowadays (boo#1191090)
+
+-------------------------------------------------------------------
 Tue Aug 02 08:10:20 UTC 2022 - matthias.gerstner@suse.com
 
 - Update to version 1550+20220727.3ce2e2f:
