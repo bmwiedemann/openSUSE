@@ -17,18 +17,18 @@
 
 
 Name:           gnome-font-viewer
-Version:        42.0
+Version:        43.0
 Release:        0
 Summary:        A font viewer utility for GNOME
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/gnome-font-viewer
-Source0:        https://download.gnome.org/sources/gnome-font-viewer/42/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-font-viewer/43/%{name}-%{version}.tar.xz
 
 BuildRequires:  appstream-glib
+BuildRequires:  desktop-file-utils
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.56.0
@@ -53,10 +53,11 @@ A utility to let you see the installed fonts at a glance.
 
 %install
 %meson_install
-%suse_update_desktop_file org.gnome.font-viewer Settings Utility
 %find_lang %{name}
 
 %check
+desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.font-viewer.desktop
+appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/org.gnome.font-viewer.appdata.xml
 %meson_test
 
 %files
