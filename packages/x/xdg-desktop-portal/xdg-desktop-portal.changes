@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Aug 12 06:46:03 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.15.0:
+  + Add Meson build files. For now, both Autotools and Meson are
+    available in the source tree.
+  + Make the Screenshot portal request permission to take
+    screenshots. Frontends that implement the version 2 of
+    org.freedesktop.portal.impl.Screenshot portal can now be aware
+    that the screenshot permission was granted through the new
+    'permission_store_checked' option, and skip any kind of dialog
+    when that is the case.
+  + Stop sending the app id quoted in the Background portal.
+  + Fix a bug in cgroup name parsing.
+  + Various fixes to the Realtime portal.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Aug  4 17:07:11 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.14.6:
