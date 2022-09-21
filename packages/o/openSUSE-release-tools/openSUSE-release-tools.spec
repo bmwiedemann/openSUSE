@@ -20,7 +20,7 @@
 %define source_dir openSUSE-release-tools
 %define announcer_filename factory-package-news
 Name:           openSUSE-release-tools
-Version:        20220811.ed451591
+Version:        20220914.8eb34c45
 Release:        0
 Summary:        Tools to aid in staging and release work for openSUSE/SUSE
 License:        GPL-2.0-or-later AND MIT
@@ -186,6 +186,17 @@ BuildArch:      noarch
 
 %description origin-manager
 Tools for managing the origin of package sources and keeping them in sync.
+
+%package publish-distro
+Summary:        Tool for publishing ftp-stage to ftp-prod
+Group:          Development/Tools/Other
+Requires:       rsync
+Requires(pre):  shadow
+BuildArch:      noarch
+
+%description publish-distro
+publish_distro tool and related configuration in publish_distro to rsync
+content from OBS to ftp-stage/ftp-prod on pontifex host.
 
 %package repo-checker
 Summary:        Repository checker service
@@ -411,6 +422,7 @@ exit 0
 %exclude %{_datadir}/%{source_dir}/osc-origin.py
 %exclude %{_datadir}/%{source_dir}/osc-pcheck.py
 %exclude %{_datadir}/%{source_dir}/osc-staging.py
+%exclude %{_datadir}/%{source_dir}/publish_distro
 %exclude %{_datadir}/%{source_dir}/findfileconflicts
 %exclude %{_datadir}/%{source_dir}/write_repo_susetags_file.pl
 %dir %{_sysconfdir}/openSUSE-release-tools
@@ -474,6 +486,10 @@ exit 0
 %files origin-manager
 %{_bindir}/osrt-origin-manager
 %{_datadir}/%{source_dir}/origin-manager.py
+
+%files publish-distro
+%{_bindir}/osrt-publish_distro
+%{_datadir}/%{source_dir}/publish_distro
 
 %files repo-checker
 %{_bindir}/osrt-project-installcheck

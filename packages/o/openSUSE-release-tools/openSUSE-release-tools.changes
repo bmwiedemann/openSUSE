@@ -1,4 +1,95 @@
 -------------------------------------------------------------------
+Wed Sep 14 11:42:11 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220914.8eb34c45:
+  * Remove publish_distro dependency on python-mb
+
+-------------------------------------------------------------------
+Wed Sep 14 11:00:17 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220914.7abe1a52:
+  * skippkg-finder: remove installation-images from the forbidden list
+
+-------------------------------------------------------------------
+Fri Sep 02 07:52:25 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220902.9ea68a61:
+  * TTM: Do not save SeenIssues if they didn't change
+  * TTM: Add log message for changing status
+
+-------------------------------------------------------------------
+Thu Sep 01 12:53:49 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220901.e6d11c4d:
+  * dashboard: Remove Leap Micro 5.2
+  * dashboard: add Leap 15.5
+  * check_source: expand check_source be able to handle Leap/Backports submission
+  * Ignore starting white space in bugowner lines
+
+-------------------------------------------------------------------
+Mon Aug 29 18:39:19 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220829.5a8f3dbe:
+  * Add test for group in bugowner line
+
+-------------------------------------------------------------------
+Mon Aug 29 14:04:22 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220829.fc36daa0:
+  * gocd: Increase the timeout for Legal.Import pipeline
+  * Set timeout on the suse checkers
+
+-------------------------------------------------------------------
+Mon Aug 29 10:18:14 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220829.a5ef99ba:
+  * Fix E275: missing whitespace around keywords
+  * Setup for SLE15 SP4 Quarterly Update
+
+-------------------------------------------------------------------
+Mon Aug 29 10:05:23 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220829.80f24611:
+  * Use HTTP GET for /search/request/id API endpoint
+
+-------------------------------------------------------------------
+Fri Aug 26 12:59:53 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220826.f861a750:
+  * Trigger aarch64 updates jobs
+
+-------------------------------------------------------------------
+Fri Aug 26 12:56:57 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220826.79f900e7:
+  * publish_distro: Provide missing link target in %files
+
+-------------------------------------------------------------------
+Tue Aug 23 11:58:44 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220823.34659a46:
+  * install and link publish_dist
+
+-------------------------------------------------------------------
+Thu Aug 11 15:56:22 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220811.b3ea77e9:
+  * project-installcheck: Don't record unresolvables/fails during building
+
+-------------------------------------------------------------------
+Thu Aug 11 09:54:56 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220811.a79aecee:
+  * MirrorCache does not require mb makehashes
+  * Add publish-distro subpackage to spec
+  * Add basic README for publish_distro
+  * Correct publish_distro_conf path in CONTENTS.md
+  * Copy of publish_distro configuration 817e024
+  * Add basic docs to the script
+  * Add short summary to publish_distro
+  * Move publish_distro 817e024 into openSUSE-release-tools
+
+-------------------------------------------------------------------
 Thu Aug 11 06:40:12 UTC 2022 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20220811.ed451591:
