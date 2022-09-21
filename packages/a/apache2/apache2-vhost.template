@@ -3,7 +3,7 @@
 # Note: to use the template, rename it to /etc/apache2/vhost.d/yourvhost.conf. 
 # Files must have the .conf suffix to be loaded.
 #
-# See /usr/share/doc/packages/apache2/README.QUICKSTART for further hints 
+# See https://en.opensuse.org/SDB:Apache_installation for further hints 
 # about virtual hosts.
 #
 # Almost any Apache directive may go into a VirtualHost container.

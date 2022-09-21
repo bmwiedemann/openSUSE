@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 20 15:01:58 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Remove references to README.QUICKSTART and point them to 
+  https://en.opensuse.org/SDB:Apache_installation (bsc#1203573)
+
+-------------------------------------------------------------------
 Thu Sep  1 06:31:31 UTC 2022 - Stefan Schubert <schubi@suse.com>
 
 - Migration to /usr/etc: Saving user changed configuration files
