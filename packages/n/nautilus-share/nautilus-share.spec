@@ -1,7 +1,7 @@
 #
 # spec file for package nautilus-share
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,23 @@
 #
 
 
-%define         nautilusextdir %(pkg-config --variable=extensiondir libnautilus-extension)
+%define         nautilus_extdir %(pkg-config --variable=extensiondir libnautilus-extension-4)
 Name:           nautilus-share
-Version:        0.7.3
+Version:        0.7.5
 Release:        0
 Summary:        Nautilus plugin for sharing directories over SMB
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Samba
 URL:            https://git.gnome.org/nautilus-share
-Source:         http://download.gnome.org/sources/nautilus-share/0.7/%{name}-%{version}.tar.bz2
-BuildRequires:  intltool
-BuildRequires:  libtool
-BuildRequires:  nautilus-devel
+Source:         %{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM nautilus-share-lang-fix.patch -- Add LINGUAS file to po dir
+Patch:          nautilus-share-lang-fix.patch
+
+BuildRequires:  meson
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(glib-2.0) >= 2.4.0
+BuildRequires:  pkgconfig(gtk4) >= 4.6.0
+BuildRequires:  pkgconfig(libnautilus-extension-4) >= 43.rc
 Requires:       samba-client >= 3.0.23
 
 %description
@@ -54,23 +59,23 @@ Features:
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-autoreconf -f -i
-%configure --disable-static
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+%meson_install
 %find_lang %{name}
 
 %files
 %license COPYING
 %doc AUTHORS README
-%{_datadir}/nautilus-share/
-%{nautilusextdir}/*.so
+%{nautilus_extdir}/libnautilus-share.so
+%dir %{_datadir}/interfaces
+%{_datadir}/interfaces/share-dialog-gtk4.ui
+%{_datadir}/interfaces/share-dialog.ui
 
 %files lang -f %{name}.lang
 
