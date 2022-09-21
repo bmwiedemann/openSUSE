@@ -16,10 +16,10 @@
 #
 
 
-%define basever 42
+%define basever 43
 
 Name:           gnome-session
-Version:        42.0
+Version:        43.0
 Release:        0
 Summary:        Session Tools for the GNOME Desktop
 License:        GPL-2.0-or-later
@@ -185,7 +185,6 @@ ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_
 %license COPYING
 %doc AUTHORS ChangeLog NEWS README
 %{_bindir}/gnome-session
-%{_bindir}/gnome-session-custom-session
 %{_bindir}/gnome-session-inhibit
 %{_bindir}/gnome-session-quit
 %{_datadir}/GConf/gsettings/gnome-session.convert
