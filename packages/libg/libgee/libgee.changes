@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Sep 17 15:32:25 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.20.6:
+  + Fixes for newer valac.
+  + Keep the original exception in Future.map/flat_map.
+
+-------------------------------------------------------------------
 Thu Feb 10 09:20:23 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.20.5:
