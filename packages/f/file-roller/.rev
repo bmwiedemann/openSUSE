@@ -1198,4 +1198,53 @@ Fixed macro (as commented) (forwarded request 885296 from susnux)</comment>
     <comment>GNOME 42 - ready for impact</comment>
     <requestid>963565</requestid>
   </revision>
+  <revision rev="159" vrev="1">
+    <srcmd5>0650b3d2721b2ea0bbef81cae4fa261d</srcmd5>
+    <version>43.0</version>
+    <time>1663764020</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 43.0:
+  + New features and user visible changes: Add read-only support
+    for Apple’s `dmg` image format through 7-zip.
+  + Bugs fixed: Prevent libarchive backend from writing endless
+    padding when extracting RAR archives.
+  + Other changes: Various source code clean-ups.
+  + Updated translations.
+- Update to version 43.alpha:
+  + New features and user visible changes:
+    - Support `7zz` and `7zzs` programs from the official 7-Zip
+      project. Distros will want to adjust the
+      `data/packages.match` file.
+    - Add a mnemonic to Extract button.
+    - Make password field reveal icon consistent with other GNOME
+      apps.
+    - Nautilus extension now supports extracting multiple archives
+      simultaneously with “Archive to…”.
+    - Add context menu item to navigate to a file from search.
+  + Bugs fixed:
+    - Fix RAR decompression support in 7-Zip backend.
+    - Fix opening RAR archives with encrypted headers.
+  + Other changes:
+    - Port Nautilus extension to Nautilus 43.
+    - Various code clean-ups.
+    - Slightly modernized Meson code.
+    - Use portal-based APIs for opening files, adding dependency on
+      libportal and libportal-gtk3.
+    - Add support for building internal API docs using gi-docgen.
+    - Do not hide File-Roller icon in the KDE app laucher.
+    - Remove dependency on libnotify.
+  + Updated translations.
+- Switch back to upstream tarball, drop service.
+- Drop pkgconfig(libnotify) BuildRequires: No longer needed.
+- Replace pkgconfig(libnautilus-extension) with
+  pkgconfig(libnautilus-extension-4) BuildRequires following
+  upstream changes.
+- Add desktop-file-utils, pkgconfig(libportal),
+  pkgconfig(libportal-gtk3) and pkgconfig(gtk4) BuildRequires, new
+  dependencies.
+- Rebase patches with quilt.
+- Add back lhasa and arj Suggests.
+</comment>
+    <requestid>1004780</requestid>
+  </revision>
 </revisionlist>

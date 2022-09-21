@@ -1,8 +1,8 @@
-Index: file-roller-3.32.0/src/fr-command-rar.c
+Index: file-roller-43.alpha/src/fr-command-rar.c
 ===================================================================
---- file-roller-3.32.0.orig/src/fr-command-rar.c	2019-03-11 23:00:45.000000000 +0100
-+++ file-roller-3.32.0/src/fr-command-rar.c	2019-03-14 20:21:40.103871799 +0100
-@@ -775,6 +775,39 @@ fr_command_rar_get_mime_types (FrArchive
+--- file-roller-43.alpha.orig/src/fr-command-rar.c
++++ file-roller-43.alpha/src/fr-command-rar.c
+@@ -766,6 +766,39 @@ fr_command_rar_get_mime_types (FrArchive
  	return rar_mime_type;
  }
  
@@ -40,9 +40,9 @@ Index: file-roller-3.32.0/src/fr-command-rar.c
 +  return ret;
 +}
  
- static FrArchiveCap
+ static FrArchiveCaps
  fr_command_rar_get_capabilities (FrArchive  *archive,
-@@ -786,7 +819,7 @@ fr_command_rar_get_capabilities (FrArchi
+@@ -777,7 +810,7 @@ fr_command_rar_get_capabilities (FrArchi
  	capabilities = FR_ARCHIVE_CAN_STORE_MANY_FILES | FR_ARCHIVE_CAN_ENCRYPT | FR_ARCHIVE_CAN_ENCRYPT_HEADER;
  	if (_g_program_is_available ("rar", check_command))
  		capabilities |= FR_ARCHIVE_CAN_READ_WRITE | FR_ARCHIVE_CAN_CREATE_VOLUMES;

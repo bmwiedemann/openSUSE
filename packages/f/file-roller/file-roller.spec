@@ -17,15 +17,13 @@
 
 
 Name:           file-roller
-Version:        3.42.0
+Version:        43.0
 Release:        0
 Summary:        An Archive Manager for GNOME
 License:        GPL-2.0-or-later
 Group:          Productivity/Archiving/Compression
 URL:            https://wiki.gnome.org/Apps/FileRoller
-# Disabled as we are using a git checkout via source service
-#Source0:        https://download.gnome.org/sources/file-roller/3.40/%%{name}-%%{version}.tar.xz
-Source0:        %{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/file-roller/43/%{name}-%{version}.tar.xz
 
 # PATCH-FIX-OPENSUSE file-roller-3.4-change-archiver-priority.patch bnc#767386 gankov@opensuse.org -- Give unzip a higher priority than 7z when unpackging zip files. Gives better results for non-latin charsets.
 Patch0:         file-roller-3.4-change-archiver-priority.patch
@@ -33,9 +31,10 @@ Patch0:         file-roller-3.4-change-archiver-priority.patch
 Patch1:         file-roller-pkg-match.patch
 # PATCH-FIX-OPENSUSE file-roller-ignore-unrar-if-wrapper.patch bsc#1072118 mgorse@suse.com -- if unrar is a wrapper script for unar, then ignore it, and use unar instead.
 Patch2:         file-roller-ignore-unrar-if-wrapper.patch
-# Needed for directory ownership
 
+# Needed for directory ownership
 BuildRequires:  dbus-1
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  file-devel
 BuildRequires:  meson >= 0.50
@@ -47,8 +46,9 @@ BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(json-glib-1.0) >= 0.14.0
 BuildRequires:  pkgconfig(libarchive) >= 3.0.0
 BuildRequires:  pkgconfig(libhandy-1) >= 1.5
-BuildRequires:  pkgconfig(libnautilus-extension)
-BuildRequires:  pkgconfig(libnotify) >= 0.4.3
+BuildRequires:  pkgconfig(libnautilus-extension-4)
+BuildRequires:  pkgconfig(libportal)
+BuildRequires:  pkgconfig(libportal-gtk3)
 # Formats that we likely want to support by default
 Recommends:     bzip2
 Recommends:     7zip
@@ -64,11 +64,11 @@ Suggests:       lzip
 Suggests:       lzop
 Suggests:       rzip
 Suggests:       zoo
+Suggests:       lhasa
+Suggests:       arj
 # FIXME: Formats for which we don't have packages. Some are free software that
 # we could package.
-#Suggests:       lha
 #Suggests:       lrzip
-#Suggests:       arj
 #Suggests:       ncompress
 #Suggests:       rar
 #Suggests:       theunarchiver
@@ -85,6 +85,7 @@ contained in the archive, and extract files from the archive.
 %package -n nautilus-file-roller
 Summary:        File-roller extension for Nautilus
 Group:          Productivity/Archiving/Compression
+BuildRequires:  pkgconfig(gtk4)
 Requires:       %{name} = %{version}
 Requires:       nautilus
 
@@ -126,7 +127,7 @@ contained in the archive, and extract files from the archive.
 %{_datadir}/glib-2.0/schemas/org.gnome.FileRoller.gschema.xml
 
 %files -n nautilus-file-roller
-%{_libdir}/nautilus/extensions-3.0/libnautilus-fileroller.so
+%{_libdir}/nautilus/extensions-4/libnautilus-fileroller.so
 
 %files lang -f %{name}.lang
 
