@@ -1,5 +1,5 @@
 #
-# spec file for package libgweather
+# spec file for package libgweather4
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -17,13 +17,13 @@
 
 
 Name:           libgweather4
-Version:        4.0.0
+Version:        4.2.0
 Release:        0
 Summary:        Library to get online weather information
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/LibGWeather
-Source0:        https://download.gnome.org/sources/libgweather/4.0/libgweather-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/libgweather/4.2/libgweather-%{version}.tar.xz
 
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  intltool
@@ -31,9 +31,10 @@ BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3-gi-docgen
 BuildRequires:  python3-gobject
-BuildRequires:  pkgconfig(geocode-glib-1.0)
+BuildRequires:  pkgconfig(geocode-glib-2.0)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.68.0
-BuildRequires:  pkgconfig(libsoup-2.4) >= 2.44.0
+BuildRequires:  pkgconfig(json-glib-1.0)
+BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.6.0
 BuildRequires:  pkgconfig(vapigen)
 
@@ -87,7 +88,7 @@ libgweather library.
 %meson \
 	-D enable_vala=true \
 	-D gtk_doc=true \
-	-D soup2=true \
+	-D soup2=false \
 	%{nil}
 %meson_build
 
