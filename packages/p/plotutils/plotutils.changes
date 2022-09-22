@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 21 11:53:33 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Go from http to https 
+- Split doc package off
+- Some modern rpm macros
+- Skip obsolete rpm macros
+- Extend patch plotutils-autoreconf.patch
+  * More changes to autobuild toolset files
+
+-------------------------------------------------------------------
 Mon Apr 16 18:16:31 UTC 2018 - astieger@suse.com
 
 - remove dependendy on gpg-offline, this is now part of the

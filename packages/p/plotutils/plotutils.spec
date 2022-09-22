@@ -1,7 +1,7 @@
 #
 # spec file for package plotutils
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,11 +20,11 @@ Name:           plotutils
 Version:        2.6
 Release:        0
 Summary:        GNU Plotting Utilities
-License:        GPL-2.0+ and GPL-3.0+
+License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          Productivity/Graphics/Visualization/Graph
-Url:            http://www.gnu.org/software/plotutils/plotutils.html
-Source:         http://ftp.gnu.org/gnu/plotutils/%{name}-%{version}.tar.gz
-Source1:        http://ftp.gnu.org/gnu/plotutils/plotutils-2.6.tar.gz.sig
+URL:            https://www.gnu.org/software/plotutils/plotutils.html
+Source:         https://ftp.gnu.org/gnu/plotutils/%{name}-%{version}.tar.gz
+Source1:        https://ftp.gnu.org/gnu/plotutils/plotutils-2.6.tar.gz.sig
 Source2:        plotutils.keyring
 Patch0:         plotutils-man.patch
 Patch1:         plotutils-uninitialized.patch
@@ -45,16 +45,11 @@ BuildRequires:  gcc-c++
 BuildRequires:  libpng-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-%if %suse_version < 1220
-BuildRequires:  xorg-x11-devel
-%else
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xaw7)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xt)
-%endif
-Requires(pre):  %install_info_prereq
-Requires(pre):  %suseconfig_fonts_prereq
+%{?reconfigure_fonts_prereq: %reconfigure_fonts_prereq}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -70,13 +65,39 @@ graphics animations under the X Window System.
 Summary:        GNU Plotting Utilities
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
+Requires:       bison
+Requires:       flex
+Requires:       fontpackages-devel
+Requires:       gcc-c++
 Requires:       libplot2 = %{version}
 Requires:       libplotter2 = %{version}
+Requires:       libpng-devel
 Requires:       libstdc++-devel
+Requires:       libtool
 Requires:       libxmi0 = %{version}
-Requires:       xorg-x11-libX11-devel
+Requires:       pkgconfig
+Requires:       pkgconfig(x11)
+Requires:       pkgconfig(xaw7)
+Requires:       pkgconfig(xext)
+Requires:       pkgconfig(xt)
 
 %description devel
+The GNU plotting utilities consist of seven command line programs: the
+graphics programs `graph', `plot', `tek2plot', and `plotfont', and the
+mathematical programs `spline', `ode', and `double'.  GNU `libplot' is
+distributed with these programs; it is the library on which the
+graphics programs are based. `Libplot' is a function library for
+device-independent two-dimensional vector graphics, including vector
+graphics animations under the X Window System.
+
+%package doc
+Summary:        GNU Plotting Utilities
+Group:          Development/Libraries/C and C++
+Requires:       %{name} = %{version}
+Provides:       %{name}:%{_docdir}/%{name}/README
+BuildArch:      noarch
+
+%description doc
 The GNU plotting utilities consist of seven command line programs: the
 graphics programs `graph', `plot', `tek2plot', and `plotfont', and the
 mathematical programs `spline', `ode', and `double'.  GNU `libplot' is
@@ -130,7 +151,7 @@ graphics animations under the X Window System.
 %patch0 -p0
 %patch1 -p0
 %patch2 -p0
-%patch3 -p0
+%patch3 -p0 -b .p3
 %patch4 -p1
 %patch5 -p0
 %patch6 -p0
@@ -146,19 +167,17 @@ autoreconf -f -i
 	--disable-static\
 	--enable-libplotter\
 	--enable-libxmi
-# FIXME: lex/bison update break parallel build:
-#make %{?jobs:-j%jobs}
-make
+%make_build
 
 %install
-%makeinstall\
+%make_install\
 	libplotdatadir=%{_docdir}/%{name}/libplot\
 	odedatadir=%{_docdir}/%{name}/ode\
 	tek2plotdatadir=%{_docdir}/%{name}/tek2plot\
 	pic2plotdatadir=%{_docdir}/%{name}/pic2plot
 #
 install -m 0644\
-	AUTHORS COMPAT COPYING INSTALL.fonts KNOWN_BUGS PROBLEMS README THANKS\
+	AUTHORS COMPAT INSTALL.fonts KNOWN_BUGS PROBLEMS README THANKS\
 	TODO %{buildroot}%{_defaultdocdir}/%{name}
 #
 install -d %{buildroot}%{_miscfontsdir}
@@ -172,21 +191,13 @@ ln -s plotutils.1.gz %{buildroot}%{_mandir}/man1/pic2plot.1.gz
 rm -f %{buildroot}%{_libdir}/*.la
 
 %post
-%install_info --info-dir=%{_infodir} %{_infodir}/plotutils.info.gz
 %reconfigure_fonts_post
 
 %postun
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/plotutils.info.gz
 %reconfigure_fonts_postun
 
 %posttrans
 %reconfigure_fonts_posttrans
-
-%post devel
-%install_info --info-dir=%{_infodir} %{_infodir}/libxmi.info.gz
-
-%postun devel
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/libxmi.info.gz
 
 %post -n libplot2 -p /sbin/ldconfig
 
@@ -203,11 +214,14 @@ rm -f %{buildroot}%{_libdir}/*.la
 %files
 %defattr(-,root,root)
 %license COPYING
-%doc %{_docdir}/%{name}
 %{_bindir}/*
 %doc %{_infodir}/plotutils*.info*
 %doc %{_mandir}/man?/*.*
 %{_miscfontsdir}
+
+%files doc
+%defattr(-,root,root)
+%doc %{_docdir}/%{name}
 
 %files devel
 %defattr(-,root,root)
