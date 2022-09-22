@@ -20,14 +20,14 @@
 %define libname  lib%{name}-2_48-1
 
 Name:           pangomm
-Version:        2.50.0
+Version:        2.50.1
 Release:        0
 Summary:        C++ interface for pango
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-only
 Group:          Development/Libraries/C and C++
 URL:            https://www.gtkmm.org
 # Source0 disabled, we are using source service
-#Source0:        https://download.gnome.org/sources/%%{name}/%%{base_ver}/%%{name}-%%{version}.tar.xz
+#Source0:        https://download.gnome.org/sources/%%{name}/2.50/%%{name}-%%{version}.tar.xz
 Source0:        %{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM pangomm-docs-without-timestamp.patch -- Do not add timestamp to generated doc files.
 Patch0:         pangomm-docs-without-timestamp.patch
@@ -36,18 +36,18 @@ BuildRequires:  c++_compiler
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  graphviz
-BuildRequires:  meson
 # m4, mm-common and perl(XML::Parser) only needed due to git-checkout
 BuildRequires:  m4
 BuildRequires:  mm-common
+BuildRequires:  perl(XML::Parser)
+#
+BuildRequires:  meson >= 0.55.0
 BuildRequires:  pkgconfig
 BuildRequires:  xsltproc
-BuildRequires:  perl(XML::Parser)
 BuildRequires:  pkgconfig(cairomm-1.16) >= 1.2.2
 BuildRequires:  pkgconfig(giomm-2.68)
 BuildRequires:  pkgconfig(glibmm-2.68)
 BuildRequires:  pkgconfig(pangocairo) >= 1.31.0
-Recommends:     %{name}-doc = %{version}
 
 %description
 pangomm provides a C++ interface to the pango library.
@@ -65,6 +65,7 @@ Summary:        Development files for pangomm, a C++ API for Pango
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %{libname} >= %{version}
+Recommends:     %{name}-doc = %{version}
 
 %description devel
 pangomm provides a C++ interface to the pango library.
@@ -73,6 +74,7 @@ pangomm provides a C++ interface to the pango library.
 Summary:        Developer documentation for pangomm, a C++ interface for Pango
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Documentation/HTML
+BuildArch:      noarch
 
 %description doc
 pangomm provides a C++ interface to the pango library.
@@ -91,10 +93,9 @@ chmod -x NEWS
 
 %install
 %meson_install
-%fdupes %{buildroot}/%{_prefix}
+%fdupes %{buildroot}%{_prefix}
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %files -n %{libname}
 %license COPYING
@@ -109,7 +110,7 @@ chmod -x NEWS
 %{_libdir}/pangomm-%{base_ver}
 
 %files doc
-%doc AUTHORS README
+%doc AUTHORS README.md
 %{_datadir}/devhelp/books/pangomm-%{base_ver}/
 %{_datadir}/doc/pangomm-%{base_ver}/
 # Avoid BuildRequires on devhelp

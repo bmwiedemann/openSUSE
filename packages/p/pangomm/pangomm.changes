@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Sep 21 15:14:25 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.50.1:
+  + Context::get_font_map(): Fix reference count.
+  + Build:
+    - Require Meson >= 0.55.0
+    - Meson build:
+      . Specify 'check' option in run_command(). Will be necessary
+        with future versions of Meson.
+      . Check if Perl is required for building documentation.
+      . Avoid unnecessary configuration warnings.
+      . Re-organize warning-related compiler flags for MSVC
+- Package -docs as noarch.
+- Move pangomm-doc Recommends from main package to -devel
+  sub-package.
+- Use ldconfig_scriptlets for post(un) handling.
+
+-------------------------------------------------------------------
 Wed Feb  9 20:38:02 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.50.0:
