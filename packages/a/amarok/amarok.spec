@@ -80,7 +80,9 @@ BuildRequires:  cmake(Qt5Sql)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5UiTools)
+%ifarch %{ix86} x86_64 %{arm} aarch64
 BuildRequires:  cmake(Qt5WebEngine)
+%endif
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  pkgconfig(fftw3)

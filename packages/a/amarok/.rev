@@ -1196,4 +1196,12 @@ https://git.reviewboard.kde.org/r/104878/ (forwarded request 116659 from StefanB
   * Add DBus service file to actually make it activatable (boo#1200767)</comment>
     <requestid>984663</requestid>
   </revision>
+  <revision rev="132" vrev="2">
+    <srcmd5>4554d14e70a752ab640bd09401442283</srcmd5>
+    <version>2.9.75git.20220614T014846~dc55a00143</version>
+    <time>1663850957</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't require QtWebEngine unconditionally</comment>
+    <requestid>1005168</requestid>
+  </revision>
 </revisionlist>

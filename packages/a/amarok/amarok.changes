@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 21 10:19:15 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Don't require QtWebEngine unconditionally
+
+-------------------------------------------------------------------
 Thu Jun 23 06:20:27 UTC 2022 - christophe@krop.fr
 
 - Update to version 2.9.75git.20220614T014846~dc55a00143:
