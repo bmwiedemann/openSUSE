@@ -27,10 +27,10 @@
 %ifnarch s390 s390x
 %define netsnmp_with_sensors 1
 %endif
-%define libname libsnmp39
+%define libname libsnmp40
 %bcond_without python2
 Name:           net-snmp
-Version:        5.9.2
+Version:        5.9.3
 Release:        0
 Summary:        SNMP Daemon
 License:        BSD-3-Clause AND MIT
@@ -320,6 +320,20 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %pre
 %service_add_pre snmpd.service snmptrapd.service
+%if 0%{?suse_version} > 1500
+# Prepare for migration to /usr/etc; save any old .rpmsave
+for i in logrotate.d/net-snmp ; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+%endif
+
+%if 0%{?suse_version} > 1500
+%posttrans
+# Migration to /usr/etc, restore just created .rpmsave
+for i in logrotate.d/net-snmp ; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+%endif
 
 %post
 %fillup_only -n snmpd

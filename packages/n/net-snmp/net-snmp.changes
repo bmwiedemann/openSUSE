@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep 21 14:44:13 UTC 2022 - Alexander Bergmann <abergmann@suse.com>
+
+- update to 5.9.3:
+  - Fixed library versioning bug found in 5.9.2.
+  - Library version change to libsnmp40.
+
+-------------------------------------------------------------------
+Thu Sep  1 07:27:27 UTC 2022 - Stefan Schubert <schubi@suse.com>
+
+- Migration to /usr/etc: Saving user changed configuration files
+  in /etc and restoring them while an RPM update.
+
+-------------------------------------------------------------------
 Tue Jul 12 14:18:13 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Rename libsnmp40 subpackage to libsnmp39: the libraries are all
