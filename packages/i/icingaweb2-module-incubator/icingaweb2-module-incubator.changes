@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 21 11:23:08 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.18.0
+  - cosmetic changes for Icinga Web
+  - Settings can now be compared
+  - fix some zfdb exceptions on 8.1
+
+-------------------------------------------------------------------
 Thu Jul  7 12:22:54 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 0.17.0
