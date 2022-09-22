@@ -24,7 +24,7 @@
 %define lvm2_version              2.03.16
 %define device_mapper_version     1.02.185
 %define thin_provisioning_version 0.7.0
-%define _supportsanlock 0
+%define _supportsanlock 1
 %define dlm_version     4.0.9
 # from lvm2 version 2.03, suse obsoleted clvm, cmirrord, liblvm2app & liblvm2cmd.
 # so the obseletes version is 2.03

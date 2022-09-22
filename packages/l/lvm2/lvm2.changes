@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 21 00:50:00 UTC 2022 - Heming Zhao <heming.zhao@suse.com>
+
+- lvmlockd is not supporting sanlock (bsc#1203482)
+  - set 1 for _supportsanlock in lvm2.spec for enabling sanlock.
+
+-------------------------------------------------------------------
 Thu Sep  1 02:50:00 UTC 2022 - Heming Zhao <heming.zhao@suse.com>
 
 - Update lvm2 from LVM2.2.03.15 to LVM2.2.03.16

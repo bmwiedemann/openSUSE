@@ -1246,4 +1246,12 @@
     <comment>for updating lvm2 to 2.03.16</comment>
     <requestid>1001168</requestid>
   </revision>
+  <revision rev="155" vrev="2">
+    <srcmd5>cf08c6d1f8896fe42c62c73549433a3c</srcmd5>
+    <version>2.03.16</version>
+    <time>1663850951</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1005078</requestid>
+  </revision>
 </revisionlist>
