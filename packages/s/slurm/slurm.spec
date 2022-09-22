@@ -605,6 +605,7 @@ Requires:       pdsh
 Requires:       perl-%{name} = %version
 Requires:       sudo
 Requires:       tar
+Requires:       config(pam)
 BuildRequires:  sudo
 
 %description testsuite
@@ -836,7 +837,7 @@ EOF
 # Install testsuite
 %if 0%{?slurm_testsuite}
 # bug in testsuite
-ln -sf /usr/lib64/libslurm.so %{buildroot}/usr/lib64/slurm/libslurm.so
+ln -sf %{_libdir}/libslurm.so %{buildroot}%{_libdir}/slurm/libslurm.so
 
 mkdir -p %{buildroot}/srv/slurm-testsuite
 cd testsuite/expect
@@ -877,8 +878,11 @@ find -type f -name "*.[ao]" -print | while read f; do
   # drop non-deterministic lto bits from .o files
   strip -p --discard-locals -R .gnu.lto_* -R .gnu.debuglto_* -N __gnu_lto_v1 $f
 done
+%if 0%{?suse_version} >= 1500
+%define tar_sort --sort=name
+%endif
 tar --group=%slurm_g --owner=%slurm_u \
-  --sort=name --mtime="@${SOURCE_DATE_EPOCH:-`date +%%s`}" --pax-option=exthdr.name=%d/PaxHeaders/%f,delete=atime,delete=ctime \
+  %{?tar_sort} --mtime="@${SOURCE_DATE_EPOCH:-`date +%%s`}" --pax-option=exthdr.name=%d/PaxHeaders/%f,delete=atime,delete=ctime \
   -cjf /tmp/slurmtest.tar.bz2 *
 cd -
 rm -rf %{buildroot}/srv/slurm-testsuite
@@ -908,6 +912,9 @@ sed -i -e '/ExecStart/aExecStartPre=/bin/bash -c "for i in 0 1 2 3; do test -e /
 tar -xzf %{S:20}
 mkdir -p %{buildroot}%{_pam_secconfdir}/limits.d
 mv test_setup/slurm.conf.limits %{buildroot}%_pam_secconfdir/limits.d/slurm.conf
+%if 0%{?sle_version} < 150200
+sed -i -e '/hard[[:space:]]*nofile/s@unlimited@1048576@' %{buildroot}%_pam_secconfdir/limits.d/slurm.conf
+%endif
 
 mkdir -p %{buildroot}/root
 mv test_setup/setup-testsuite.sh %{buildroot}/root
@@ -1043,7 +1050,7 @@ exit 0
 
 %post testsuite
 rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite /srv/slurm-testsuite/config.h
-sudo -u %slurm_u /usr/bin/tar --same-owner -C /srv/slurm-testsuite -xjf %{_datadir}/%{name}/slurmtest.tar.bz2
+runuser -u %slurm_u -- tar --same-owner -C /srv/slurm-testsuite -xjf %{_datadir}/%{name}/slurmtest.tar.bz2
 
 %preun testsuite
 rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite /srv/slurm-testsuite/config.h

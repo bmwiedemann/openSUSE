@@ -930,4 +930,12 @@
 - Patch NOFILE Limit in the slurmd.service copy for the testsuite. (forwarded request 992353 from eeich)</comment>
     <requestid>992362</requestid>
   </revision>
+  <revision rev="77" vrev="4">
+    <srcmd5>34b3fbe43a8f091434ae54dd169b39bc</srcmd5>
+    <version>22.05.2</version>
+    <time>1663850995</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build for older product version. (forwarded request 1005246 from eeich)</comment>
+    <requestid>1005247</requestid>
+  </revision>
 </revisionlist>

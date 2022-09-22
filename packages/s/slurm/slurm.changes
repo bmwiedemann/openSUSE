@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 20 21:12:19 UTC 2022 - Egbert Eich <eich@suse.com>
+
+- Fix build for older product version.
+
+-------------------------------------------------------------------
 Tue Aug  2 12:43:39 UTC 2022 - Egbert Eich <eich@suse.com>
 
 - Fix a potential security vulnerability in the test package
