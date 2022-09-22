@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Sep 21 20:04:23 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.rc:
+  + appwin:
+    - Properly call gettext on string marked for translation
+    - Support dragging tabs to new window
+  + build: Added option to generate VALA vapi
+  + hex-doc:
+    - Add sanity checks to _get_buffer and _get_file in public API
+    - Fix assertion check in hex_document_write_to_file_async
+    - Fix replacing bytes over a gap
+  + icons: Make document-modified-symbolic a resource
+  + Minor cleanups
+  + preferences:
+    - Vertically center font buttons
+    - Vertically center spin button
+  + widget: Don't drop additional reference on menu model
+  + Updated translations.
+- Drop 8927f9a7.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Mon Sep 19 08:50:36 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 8927f9a7.patch: icons: Make document-modified-symbolic a

@@ -468,4 +468,12 @@ Proposed for 12.3, as having a patch addressing the same fix as was done in anot
     <comment>Now with patch</comment>
     <requestid>1004680</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>3c24a72d1942b1555017ca43672375f4</srcmd5>
+    <version>43.rc</version>
+    <time>1663851015</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1005354</requestid>
+  </revision>
 </revisionlist>
