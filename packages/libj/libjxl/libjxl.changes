@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Sep 22 07:03:57 UTC 2022 - Enrico Belleri <idesmi@protonmail.com>
+
+- Update to 0.7.0:
+  * new functions for retrieving associated alpha channel with
+    premultiplied or unpremultiplied colors, for blending
+    information for extra channels in the non-coalesced case, for
+    getting the intended downsampling ratio of progressive steps,
+    for disabling rendering of spot colors.
+  * Added ability to add metadata boxes, to set several encoder
+    options, to check required codestream compatibility level,
+    for force-emitting the box-based container format, to store
+    JPEG metadata for lossless reconstruction, to encode
+    arbitrary extra channels.
+
+-------------------------------------------------------------------
 Sat Jul 23 14:33:36 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Initial package (version 0.7~779.f5d6e29) build.opensuse.org

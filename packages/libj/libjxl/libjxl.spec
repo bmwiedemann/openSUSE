@@ -18,23 +18,21 @@
 
 Name:           libjxl
 %define lname   libjxl0_7
-Version:        0.7~779.f5d6e29
+Version:        0.7.0
 Release:        0
 Summary:        JPEG XL reference implementation
 License:        BSD-3-Clause
 URL:            https://jpegxl.info/
-
 #Git-Clone:     https://github.com/libjxl/libjxl
-#Source:         https://github.com/libjxl/libjxl/archive/refs/tags/v%version.tar.gz
-Source:         %name-%version.tar.xz
+Source:         https://github.com/libjxl/libjxl/archive/refs/tags/v%version.tar.gz
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libhwy)
+BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libbrotlicommon)
 BuildRequires:  pkgconfig(libbrotlidec)
 BuildRequires:  pkgconfig(libbrotlienc)
-BuildRequires:  pkgconfig(lcms2)
+BuildRequires:  pkgconfig(libhwy) >= 1.0
 
 %description
 JPEG XL is a raster-graphics file format that supports both lossy and
