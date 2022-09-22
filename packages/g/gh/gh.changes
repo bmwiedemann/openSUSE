@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 07 13:52:22 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.14.2:
+  * Remove accidental caching from `repo list` and other commands
+  * strip whitespace when adding topics
+  * Set blank headers so they are not automatically resolved by go-gh (#5935)
+  * Post go-gh integration cleanup (#5933)
+
+-------------------------------------------------------------------
 Wed Jul 13 08:19:26 UTC 2022 - chris@computersalat.de
 
 - Update to 2.14.1
