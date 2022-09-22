@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 22 13:32:40 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- update version 1.0.3
+  * fix boo#1200229, LC_CTYPE is not idential to directory name
+    in xim.d
+
+-------------------------------------------------------------------
 Sun Mar  6 04:22:55 UTC 2022 - Marguerite Su <i@marguerite.su>
 
 - update version 1.0.2
