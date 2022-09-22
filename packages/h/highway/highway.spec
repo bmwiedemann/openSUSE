@@ -17,10 +17,10 @@
 
 
 %bcond_without tests
-%define lname libhwy0
+%define lname libhwy1
 
 Name:           highway
-Version:        0.17.0
+Version:        1.0.1
 Release:        0
 Summary:        C++ library providing SIMD/vector intrinsics
 License:        Apache-2.0
@@ -84,8 +84,8 @@ export CXX=g++-11
 %endif
 
 %cmake \
-	-DCMAKE_SKIP_RPATH=OFF		\
-	-DCMAKE_SKIP_INSTALL_RPATH=ON	\
+	-DCMAKE_SKIP_RPATH=OFF        \
+	-DCMAKE_SKIP_INSTALL_RPATH=ON \
 	-DHWY_SYSTEM_GTEST=ON
 %cmake_build
 

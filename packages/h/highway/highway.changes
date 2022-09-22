@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Sep 22 09:20:14 UTC 2022 - Enrico Belleri <idesmi@protonmail.com>
+
+- Update to 1.0.1:
+  * Add Eq128, i64 Mul, unsigned->float ConvertTo
+  * Faster sort for few unique keys, more robust pivot selection
+  * Fix: floating-point generator for sort tests, Min/MaxOfLanes for i16
+  * Fix: avoid always_inline in debug, link atomic
+  * GCC warnings: string.h, maybe-uninitialized, ignored-attributes
+  * GCC warnings: preprocessor int overflow, spurious use-after-free/overflow
+  * Doc: <=HWY_AVX3, Full32/64/128, how to use generic-inl
+  * ABI change: 64-bit target values, more room for expansion
+  * Add CompressBlocksNot, CompressNot, Lt128Upper, Min/Max128Upper, TruncateTo
+  * Add HWY_SVE2_128 target
+  * Sort speedups especially for 128-bit
+  * Documentation clarifications
+  * Faster NEON CountTrue/FindFirstTrue/AllFalse/AllTrue
+  * Improved SVE codegen
+  * Fix u16x8 ConcatEven/Odd, SSSE3 i64 Lt
+  * MSVC 2017 workarounds
+  * Support for runtime dispatch on Arm/GCC/Linux
+
+-------------------------------------------------------------------
 Wed Jul 13 10:09:10 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Use GCC11 instead of default GCC12 to build on aarch64 Tumbleweed
