@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 16 01:04:51 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Add mandatory runtime dep python-certifi, and remove not
+  required dependency python-numpy
+- Remove BD python-testsuite, and reduce tests skipped
+
+-------------------------------------------------------------------
 Sun Sep 11 18:53:24 UTC 2022 - Libor Pechacek <lpechacek@gmx.com>
 
 - Update to 3.4.0

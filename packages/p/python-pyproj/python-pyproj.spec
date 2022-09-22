@@ -28,24 +28,21 @@ Group:          Development/Languages/Python
 URL:            https://github.com/pyproj4/pyproj
 Source:         https://files.pythonhosted.org/packages/source/p/pyproj/pyproj-%{version}.tar.gz
 BuildRequires:  %{python_module Cython >= 0.28.4}
-BuildRequires:  %{python_module Shapely}
-BuildRequires:  %{python_module aenum}
 BuildRequires:  %{python_module devel >= 3.8}
-BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  proj
 BuildRequires:  proj-devel >= 8
 BuildRequires:  python-rpm-macros
-Requires:       python-aenum
-Requires:       python-numpy
+Requires:       python-certifi
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 # SECTION test requirements
 BuildRequires:  %{python_module certifi}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module testsuite}
+BuildRequires:  %{python_module Shapely}
 BuildRequires:  %{python_module xarray}
 # /SECTION
 %python_subpackages
@@ -92,7 +89,7 @@ $python -c "import pyproj; pyproj.Proj(init='epsg:4269')"
 }
 # Reset to remove wrong flavor path from loop above
 export PYTHONPATH=""
-%pytest_arch -m "not network and not cli and not grid"
+%pytest_arch -rs -k "not (network or test_transformer_group__get_transform_crs)"
 mv pyproj_temp pyproj
 
 %post
