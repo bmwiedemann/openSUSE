@@ -409,4 +409,12 @@ put together with abseil-cpp</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1001886</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>c131eaf7cab94fdd6db94fd23a930b38</srcmd5>
+    <version>1.49.1</version>
+    <time>1663858764</time>
+    <user>dimstar_suse</user>
+    <comment>Update to release 1.49.1 (forwarded request 1005384 from stroeder)</comment>
+    <requestid>1005401</requestid>
+  </revision>
 </revisionlist>

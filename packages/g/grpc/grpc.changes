@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Sep 22 08:43:56 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to release 1.49.1
+  * All
+    - Update protobuf to v21.6 on 1.49.x. (#31028)
+  * Ruby
+    - Backport "Fix ruby windows ucrt build #31051" to 1.49.x. (#31053)
+- Update to release 1.49.0
+  * Core
+    - Backport: "stabilize the C2P resolver URI scheme" to v1.49.x. (#30654)
+    - Bump core version. (#30588)
+    - Update OpenCensus to HEAD. (#30567)
+    - Update protobuf submodule to 3.21.5. (#30548)
+    - Update third_party/protobuf to 3.21.4. (#30377)
+    - [core] Remove GRPC_INITIAL_METADATA_CORKED flag. (#30443)
+    - HTTP2: Fix keepalive time throttling. (#30164)
+    - Use AnyInvocable in EventEngine APIs. (#30220)
+  Python
+    - Support Python 3.11 (#30818). (#30944)
+    - Add type stub generation support to grpcio-tools. (#30498)
+  Ruby
+    - Backport "Drop support for ruby 2.5 (#30699)" to v1.49.x. (#30762)
+
+-------------------------------------------------------------------
 Thu Sep  1 08:08:28 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.48.1
