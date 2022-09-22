@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Sep 21 18:14:40 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 1.4.287:
+  - Client
+    * Fixed: Broken link targets with percent signs
+    * Fixed: Don’t allow manual toggling of minimal view note
+    * Fixed: Fallback path for themes
+    * Fixed: Fix versions being transmitted incorrectly
+      (with patch numbers > 255)
+    * Fixed: Icon scale being way too small
+    * Fixed: Make hiding UI elements (in custom layout) persistent
+      again
+    * Fixed: Resolve log text scaling issues
+  - Server
+    * Fixed: Fix versions being transmitted incorrectly
+      (with patch numbers > 255)
+- Add BuildRequires pcre2-devel for openSUSE Leap, fixes building
+- Run spec-cleaner
+
+-------------------------------------------------------------------
 Thu Sep  1 09:11:05 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Add fix-64bit-only-plugins.patch to fix build on i586

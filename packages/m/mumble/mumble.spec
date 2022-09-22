@@ -28,7 +28,7 @@
 # versions.
 %bcond_with     system_celt
 Name:           mumble
-Version:        1.4.274
+Version:        1.4.287
 Release:        0
 Summary:        Voice Communication Client for Gamers
 # For Legal: the bundled opus and speex subdirectories are not built.
@@ -47,26 +47,13 @@ Source6:        baselibs.conf
 Patch0:         fix-64bit-only-plugins.patch
 BuildRequires:  cmake >= 3.15
 BuildRequires:  gcc-c++
+BuildRequires:  libboost_headers-devel
 BuildRequires:  libcap-devel
 BuildRequires:  libogg-devel
 BuildRequires:  libsndfile-devel
 BuildRequires:  libspeechd-devel
-BuildRequires:  protobuf-devel
-Requires:       lsb-release
-BuildRequires:  libboost_headers-devel
-BuildRequires:  pkgconfig(avahi-compat-libdns_sd)
-%if %{with system_celt}
-BuildRequires:  libcelt-devel
-Requires:       libcelt0 > 0.7.0
-%endif
-%if %{with system_opus}
-BuildRequires:  pkgconfig(opus)
-%endif
-%if %{with system_speex}
-BuildRequires:  pkgconfig(speex)
-BuildRequires:  pkgconfig(speexdsp)
-%endif
 BuildRequires:  pkgconfig
+BuildRequires:  protobuf-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(PocoZip)
 BuildRequires:  cmake(Qt5LinguistTools)
@@ -80,9 +67,25 @@ BuildRequires:  pkgconfig(Qt5TextToSpeech)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(alsa)
+BuildRequires:  pkgconfig(avahi-compat-libdns_sd)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(libopenssl)
 BuildRequires:  pkgconfig(xi)
+Requires:       lsb-release
+%if 0%{?sle_version} >= 150300 && 0%{?is_opensuse}
+BuildRequires:  pcre2-devel
+%endif
+%if %{with system_celt}
+BuildRequires:  libcelt-devel
+Requires:       libcelt0 > 0.7.0
+%endif
+%if %{with system_opus}
+BuildRequires:  pkgconfig(opus)
+%endif
+%if %{with system_speex}
+BuildRequires:  pkgconfig(speex)
+BuildRequires:  pkgconfig(speexdsp)
+%endif
 %if %{with ice}
 BuildRequires:  pkgconfig(ice)
 %endif
@@ -122,11 +125,11 @@ Requires(pre):  %{_sbindir}/useradd
 Recommends:     libQt5Sql5-mysql
 Recommends:     libQt5Sql5-postgresql
 Recommends:     libQt5Sql5-sqlite
+%{?systemd_requires}
 %if 0%{?snapshot:1}
 Conflicts:      mumble-server < %{version}
 Provides:       mumble-server = %{version}
 %endif
-%{?systemd_requires}
 
 %description server
 Low-latency, high-quality voice communication for gamers. Includes game
@@ -135,7 +138,7 @@ characters, and has echo cancellation so the sound from your loudspeakers
 won't be audible to other players.
 
 %prep
-%autosetup -p1 -n %{name}-src
+%autosetup -p1 -n %{name}-%{version}.src
 
 %build
 %cmake \
