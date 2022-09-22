@@ -37,6 +37,10 @@ Summary:        Intel Math Kernel Library for Deep Neural Networks
 License:        Apache-2.0
 URL:            https://01.org/onednn
 Source0:        https://github.com/oneapi-src/oneDNN/archive/v%{version}/oneDNN-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM - deps for Patch2
+Patch1:         fa93750.patch
+# PATCH-FIX-UPSTREAM - Fix build with latest ACL - https://github.com/oneapi-src/oneDNN/pull/1428
+Patch2:         1428.patch
 BuildRequires:  chrpath
 BuildRequires:  cmake
 BuildRequires:  doxygen

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 20 08:26:43 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch to fix build with latest Arm Compute Library:
+  * 1428.patch
+  * fa93750.patch (dep for 1428.patch)
+
+-------------------------------------------------------------------
 Tue Sep 13 05:22:52 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.6.2:
