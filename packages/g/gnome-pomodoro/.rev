@@ -283,4 +283,13 @@ doesn't work anyway. (forwarded request 796279 from develop7)</comment>
   * Fixed break overlay geting stuck at 0:01 on GNOME 42 (forwarded request 974332 from jubalh)</comment>
     <requestid>974363</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>9370c4ab197e1da0df762add46ad484b</srcmd5>
+    <version>0.21.1</version>
+    <time>1663851016</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 6f14b9ce.patch: Mark as compatible with GNOME 43.
+</comment>
+    <requestid>1005397</requestid>
+  </revision>
 </revisionlist>

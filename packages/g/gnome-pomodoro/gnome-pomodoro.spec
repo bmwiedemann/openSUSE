@@ -26,11 +26,14 @@ Group:          Productivity/Office/Other
 URL:            https://gnomepomodoro.org
 Source:         https://github.com/codito/%{name}/archive/%{version}.tar.gz
 Source99:       gnome-pomodoro-rpmlintrc
+# PATCH-FIX-UPSTREAM 6f14b9ce.patch -- Mark as compatible with GNOME 43
+Patch0:         https://github.com/gnome-pomodoro/gnome-pomodoro/commit/6f14b9ce.patch
+
 BuildRequires:  desktop-file-utils
 BuildRequires:  docbook-utils
 BuildRequires:  gettext >= 0.19.6
 BuildRequires:  gnome-common
-BuildRequires:  gnome-shell < 43
+BuildRequires:  gnome-shell < 44
 BuildRequires:  gnome-shell >= 3.36.0
 BuildRequires:  meson
 BuildRequires:  pkgconfig
@@ -48,7 +51,7 @@ BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libcanberra) >= 0.30
 BuildRequires:  pkgconfig(libpeas-1.0) >= 1.5.0
 BuildRequires:  pkgconfig(sqlite3)
-Requires:       gnome-shell < 43
+Requires:       gnome-shell < 44
 Requires:       gnome-shell >= 3.36.0
 Requires:       gstreamer
 Requires:       gtk3 >= 3.20.0
@@ -82,6 +85,7 @@ desktop-file-validate %{buildroot}/%{_datadir}/applications/org.gnome.Pomodoro.d
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
+
 %posttrans
 gtk-update-icon-cache %{_datadir}/icons/hicolor &> /dev/null || :
 glib-compile-schemas %{_datadir}/glib-2.0/schemas &> /dev/null || :
