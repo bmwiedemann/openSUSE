@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sun Sep 18 09:57:02 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.12
+  Added
+  * Support Nuked OPL3 emulator.
+  * Option to control OPL3 emulator type (snd_opl3_type).
+  * [README] "Known issues" section.
+  Fixed
+  * Cancel strafe movement if both keys are pressed.
+  * Clear damage effects after loading the game, etc.
+  * Fix GOG / Steam content detection.
+  * Fix checking if the level is official.
+  * Fix crash after changing audio driver via the menu.
+  * Match audio attenuation to vanilla as close as possible.
+  * Option vid_renderer now works in command-line.
+  * Render 3D scene behind "You are jamming" cheat message box.
+  * Use SDL 2.0.5+ functions only if available.
+  * [AOG] Conditions to complete the episode.
+  * [AOG] Fix "N/A" font size and color in the floor input panel.
+  * [AOG] Interact with elevator controls on east-west side only.
+  * [AOG] Match transporting behavior between floors to original.
+  * [AOG] Render ouch frame only on damage for Plasma Sphere.
+  * [AOG] Reverse textures for charge packs.
+  * [HWR] Render enter-only door size without lock as unlocked.
+  * [OAL] List only available extensions.
+  * [OAL] Load AL symbols within context.
+  * [SDL] Error "Renderer already associated with window".
+  * [SDL] Reduce CPU usage for digitized low-pass filtering.
+  Changed
+  * Limit stream I/O to 32 bit.
+  * [OAL] List devices with ALC_ENUMERATE_ALL_EXT if available.
+  * [VIDEO] Rename vid_windowed_height to vid_height.
+  * [VIDEO] Rename vid_windowed_width to vid_width.
+  * [VIDEO] Rename vid_windowed_x to vid_x.
+  * [VIDEO] Rename vid_windowed_y to vid_y.
+  Removed
+  * Exclusive fullscreen mode.
+  * Option vid_is_windowed.
+  * Resampling low-pass filter and it's options
+    (snd_resampling_interpolation, snd_resampling_lpf).
+
+-------------------------------------------------------------------
 Sat Jan 29 12:20:22 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Fix license tags (statically linked libraries)
