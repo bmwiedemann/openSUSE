@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 21 13:11:34 UTC 2022 - Roger Zhou <zzhou@suse.com>
+
+- drbd-utils.spec force _localstatedir to use /var/lib in runtime (bsc#1203220) 
+
+-------------------------------------------------------------------
 Fri Sep 16 07:30:59 UTC 2022 - Roger Zhou <zzhou@suse.com>
 
 - restore drbd scripts back to /usr/lib/drbd from /lib/drbd (bsc#1203220) 

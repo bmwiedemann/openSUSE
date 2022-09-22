@@ -112,15 +112,12 @@ PATH=/sbin:$PATH ./configure \
     --with-initscripttype=systemd \
     --with-systemdunitdir=%{_prefix}/lib/systemd/system \
 %if !0%{?usrmerged}
-    --prefix=/usr \
     --sbindir=/sbin \
 %else
-    --prefix=%{_prefix} \
     --sbindir=%{_sbindir} \
 %endif
-%if 0%{?is_opensuse}
+    --prefix=%{_prefix} \
     --localstatedir=%{_localstatedir} \
-%endif
     --mandir=%{_mandir} \
     --sysconfdir=%{_sysconfdir} \
     --datarootdir=%{_datadir} \
@@ -135,10 +132,6 @@ PATH=/sbin:$PATH ./configure \
 
 %install
 %make_install
-
-%if !0%{?usrmerged}
-mkdir -p %{buildroot}%{_localstatedir}/lib/drbd
-%endif
 
 %ifnarch %{ix86} x86_64
 rm -rf %{buildroot}%{_sysconfdir}/xen
