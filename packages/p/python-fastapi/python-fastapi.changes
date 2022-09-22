@@ -1,7 +1,60 @@
 -------------------------------------------------------------------
+Thu Sep 15 14:24:19 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- added new build dependencies
+  * python-hatchling
+  * python-orjson
+- Update to 0.85.0
+  * Upgrade version required of Starlette from 0.19.1 to 0.20.4. Initial PR #4820 by @Kludex.
+  * Upgrade Uvicorn max version in public extras: all. From >=0.12.0,<0.18.0 to >=0.12.0,<0.19.0. PR #5401 by @tiangolo.
+- Update to 0.84.0
+  * dropped support for Python 3.6
+- Update to 0.83.0
+  * Features
+    - Add support in jsonable_encoder for include and exclude with dataclasses. PR #4923 by @DCsunset.
+  * Fixes
+    - Fix RuntimeError raised when HTTPException has a status code with no content. PR #5365 by @iudeen.
+    - Fix empty reponse body when default status_code is empty but the a Response parameter with response.status_code is set. PR #5360 by @tmeckel.
+  * Docs
+    - Update SECURITY.md. PR #5377 
+
+-------------------------------------------------------------------
 Thu Sep  8 07:30:26 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Use email-validator package instead of email_validator. 
+
+-------------------------------------------------------------------
+Sun Sep  4 20:34:02 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to 0.82.0
+  * Features
+    - Export WebSocketState in fastapi.websockets. PR #4376
+    - Support Python internal description on Pydantic model's docstring. PR #3032
+    - Update ORJSONResponse to support non str keys and serializing Numpy arrays. PR #3892
+  * Fixes
+    - Allow exit code for dependencies with yield to always execute, by
+      removing capacity limiter for them, to e.g. allow closing
+      DB connections without deadlocks. PR #5122
+    - Fix FastAPI People GitHub Action: set HTTPX timeout for
+      GraphQL query request. PR #5222
+    - Make sure a parameter defined as required is kept required in OpenAPI
+      even if defined as optional in another dependency. PR #4319
+    - Fix support for path parameters in WebSockets. PR #3879
+  * Docs
+    - Update Hypercorn link, now pointing to GitHub. PR #5346
+    - Tweak wording in docs/en/docs/advanced/dataclasses.md. PR #3698
+    - Add note about Python 3.10 X | Y operator in explanation about 
+      Response Models. PR #5307
+    - Add link to New Relic article: "How to monitor FastAPI application
+      performance using Python agent". PR #5260
+    - Update docs for ORJSONResponse with details about improving performance. PR #2615
+    - Add docs for creating a custom Response class. PR #5331
+    - Add tip about using alias for form data fields. PR #5329
+  * Translations
+    - Add Russian translation for docs/ru/docs/features.md. PR #5315
+    - Update Chinese translation for docs/zh/docs/tutorial/request-files.md. PR #4529
+    - Add Chinese translation for docs/zh/docs/tutorial/encoder.md. PR #4969
+    - Fix MkDocs file line for Portuguese translation of background-task.md. PR #5242
 
 -------------------------------------------------------------------
 Fri Aug 26 21:20:08 UTC 2022 - Michael Ströder <michael@stroeder.com>

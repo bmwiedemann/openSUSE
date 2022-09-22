@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-fastapi
-Version:        0.81.0
+Version:        0.85.0
 Release:        0
 Summary:        FastAPI framework
 License:        MIT
@@ -40,7 +40,9 @@ BuildRequires:  %{python_module aiosqlite}
 BuildRequires:  %{python_module anyio >= 3.2.1}
 BuildRequires:  %{python_module databases}
 BuildRequires:  %{python_module email-validator >= 1.1.1}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module httpx >= 0.14.0}
+BuildRequires:  %{python_module orjson}
 BuildRequires:  %{python_module passlib}
 BuildRequires:  %{python_module peewee >= 3.13.0}
 BuildRequires:  %{python_module pydantic >= 1.0.0}
@@ -48,7 +50,7 @@ BuildRequires:  %{python_module pytest >= 5.4.3}
 BuildRequires:  %{python_module python-jose}
 BuildRequires:  %{python_module python-multipart >= 0.0.5}
 BuildRequires:  %{python_module requests >= 2.24.0}
-BuildRequires:  %{python_module starlette >= 0.13.6}
+BuildRequires:  %{python_module starlette >= 0.20.4}
 BuildRequires:  %{python_module trio}
 # /SECTION
 %python_subpackages
