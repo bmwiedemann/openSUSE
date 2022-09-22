@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Wed Sep 21 11:49:07 UTC 2022 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to bind release 9.18.7
+  Security Fixes:
+  * Previously, there was no limit to the number of database lookups
+    performed while processing large delegations, which could be
+    abused to severely impact the performance of named running as a
+    recursive resolver. This has been fixed. (CVE-2022-2795)
+  * When an HTTP connection was reused to request statistics from the
+    stats channel, the content length of successive responses could
+    grow in size past the end of the allocated buffer.
+    This has been fixed. (CVE-2022-2881)
+  * Memory leaks in code handling Diffie-Hellman (DH) keys were fixed
+    that could be externally triggered, when using TKEY records in DH
+    mode with OpenSSL 3.0.0 and later versions. (CVE-2022-2906)
+  * named running as a resolver with the stale-answer-client-timeout
+    option set to 0 could crash with an assertion failure, when there
+    was a stale CNAME in the cache for the incoming query.
+    This has been fixed. (CVE-2022-3080)
+  * Memory leaks were fixed that could be externally triggered in the
+    DNSSEC verification code for the EdDSA algorithm. (CVE-2022-38178)
+
+  Feature Changes:
+  * Response Rate Limiting (RRL) code now treats all QNAMEs that are
+    subject to wildcard processing within a given zone as the same
+    name, to prevent circumventing the limits enforced by RRL.
+  * Zones using dnssec-policy now require dynamic DNS or
+    inline-signing to be configured explicitly.
+  * When reconfiguring dnssec-policy from using NSEC with an NSEC-only
+    DNSKEY algorithm (e.g. RSASHA1) to a policy that uses NSEC3,
+    BIND 9 no longer fails to sign the zone; instead, it keeps using
+    NSEC until the offending DNSKEY records have been removed from the
+    zone, then switches to using NSEC3.
+  * A backward-compatible approach was implemented for encoding
+    internationalized domain names (IDN) in dig and converting the
+    domain to IDNA2008 form; if that fails, BIND tries an IDNA2003
+    conversion.
+
+  Bug Fixes:
+  * A serve-stale bug was fixed, where BIND would try to return stale
+    data from cache for lookups that received duplicate queries or
+    queries that would be dropped. This bug resulted in premature
+    SERVFAIL responses, and has now been resolved.
+
+  This obsoletes the following patch:
+  * bind-fix-mysql-bindings.patch
+  [bsc#1203614, bsc#1203615, bsc#1203616, bsc#1203618, bsc#1203620]
+
+-------------------------------------------------------------------
 Thu Aug 18 14:57:33 UTC 2022 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Fix typo in contrib/dlz/modules/{mysql,mysqldyn} that references
