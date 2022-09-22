@@ -6099,4 +6099,21 @@ handle manual pages that consist only of a .so directive such as
   for a long time.</comment>
     <requestid>1002990</requestid>
   </revision>
+  <revision rev="364" vrev="3">
+    <srcmd5>974a326eedd86c0318da0af1299323aa</srcmd5>
+    <version>251.4</version>
+    <time>1663850956</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop the old band aid used during the breakage introduced by the switch of
+  /tmp to tmpfs
+  This was done to address the regression reported in boo#1175779 but shouldn't
+  be necessary anymore since the (few) affected users should have updated
+  systemd during the last 2 years.
+
+- Move nss-systemd and nss-myhostname NSS modules into the main package
+
+- Give the instructions to create a home directory with systemd-homed in the
+  description of the systemd-experimental sub-package</comment>
+    <requestid>1005162</requestid>
+  </revision>
 </revisionlist>

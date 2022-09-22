@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Sep 21 09:18:34 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Drop the old band aid used during the breakage introduced by the switch of
+  /tmp to tmpfs
+
+  This was done to address the regression reported in boo#1175779 but shouldn't
+  be necessary anymore since the (few) affected users should have updated
+  systemd during the last 2 years.
+
+-------------------------------------------------------------------
+Wed Sep 21 07:48:58 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Move nss-systemd and nss-myhostname NSS modules into the main package
+
+-------------------------------------------------------------------
+Tue Sep 20 15:07:58 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Give the instructions to create a home directory with systemd-homed in the
+  description of the systemd-experimental sub-package
+
+-------------------------------------------------------------------
 Mon Sep  5 06:56:51 UTC 2022 - Franck Bui <fbui@suse.com>
 
 - rc-local.service.8 belongs to the systemd-sysvcompat sub-package (bsc#1203053)

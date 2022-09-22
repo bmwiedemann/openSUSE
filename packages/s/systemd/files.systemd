@@ -221,6 +221,8 @@
 %{_journalcatalogdir}/systemd.zh_CN.catalog
 %{_journalcatalogdir}/systemd.zh_TW.catalog
 %if %{without bootstrap}
+%{_libdir}/libnss_myhostname.so.2
+%{_libdir}/libnss_systemd.so.2
 %{_mandir}/man1/busctl.1.gz
 %{_mandir}/man1/hostnamectl.1.gz
 %{_mandir}/man1/init.1.gz
@@ -328,6 +330,10 @@
 %{_mandir}/man7/systemd.time.7.gz
 %{_mandir}/man8/30-systemd-environment-d-generator.8.gz
 %{_mandir}/man8/halt.8.gz
+%{_mandir}/man8/libnss_myhostname.so.2.8.gz
+%{_mandir}/man8/libnss_systemd.so.2.8.gz
+%{_mandir}/man8/nss-myhostname.8.gz
+%{_mandir}/man8/nss-systemd.8.gz
 %{_mandir}/man8/pam_systemd.8.gz
 %{_mandir}/man8/poweroff.8.gz
 %{_mandir}/man8/reboot.8.gz
