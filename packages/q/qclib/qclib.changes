@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Sep 20 18:29:40 UTC 2022 - Mark Post <mpost@suse.com>
+
+- Upgraded to version 2.3.2 (jsc#PED-585, jsc#PED-626)
+  * __v2.3.2 (2022-09-19)__
+    _Changes_:
+    - Recognize IBM LinuxONE Emperor 4
+  * __v2.3.1 (2022-04-05)__
+    _Changes_:
+    - Recognize IBM z16
+- Removed the following obsolete patches:
+  * qclib-sles15sp4-doc-fix-installing-README.patch.
+  * qclib-sles15sp4-Fix-version-info.patch
+- Updated spec file to eliminate rpmlint warnings about 
+  self-obsoleting.
+- Updated rpmlintrc file to suppress an inaccurate warning about
+  qclib-devel not depending on the correct package(s).
+
+-------------------------------------------------------------------
 Tue Sep 21 15:44:51 UTC 2021 - Mark Post <mpost@suse.com>
 
 - Upgraded to version 2.3.0 (jsc#SLE-18327)

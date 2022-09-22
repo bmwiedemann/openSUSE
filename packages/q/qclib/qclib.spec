@@ -1,7 +1,7 @@
 #
 # spec file for package qclib
 #
-# Copyright (c) 2017-2021 SUSE LLC
+# Copyright (c) 2017-2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           qclib
-Version:        2.3.0
+Version:        2.3.2
 Release:        0
 Summary:        Query Capacity library
 License:        BSD-3-Clause
@@ -25,8 +25,6 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/ibm-s390-linux/%{name}/archive/refs/tags/%{version}.tar.gz
 Source:         %{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
-Patch1:         qclib-sles15sp4-doc-fix-installing-README.patch
-Patch2:         qclib-sles15sp4-Fix-version-info.patch
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 ExclusiveArch:  s390 s390x
@@ -69,8 +67,8 @@ by:
 %package -n libqc2
 Summary:        Query Capacity Library shared library
 Group:          System/Libraries
-Obsoletes:      libqc1
-Provides:       libqc1
+Obsoletes:      libqc1 <= 1.0.0
+Provides:       libqc1 >= 2.0.0
 
 %description -n libqc2
 qclib provides a C API for extraction of system information for Linux on z
