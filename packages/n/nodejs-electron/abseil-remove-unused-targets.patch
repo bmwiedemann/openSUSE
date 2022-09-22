@@ -18,7 +18,7 @@ Make test targets invisible to GN to enable building with system abseil
  
  config("absl_include_config") {
    include_dirs = [ "." ]
-@@ -174,62 +165,3 @@
+@@ -174,63 +165,3 @@
    }
  }
  
@@ -32,6 +32,7 @@ Make test targets invisible to GN to enable building with system abseil
 -        "absl/algorithm:algorithm_test",
 -        "absl/algorithm:container_test",
 -        "absl/base:config_test",
+-        "absl/base:prefetch_test",
 -        "absl/cleanup:cleanup_test",
 -        "absl/container:inlined_vector_test",
 -        "absl/container:node_slot_policy_test",

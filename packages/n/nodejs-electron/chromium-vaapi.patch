@@ -44,9 +44,9 @@ Index: electron-17.1.0/chrome/browser/flag_descriptions.cc
 +
 +#if BUILDFLAG(IS_CHROMEOS_ASH)
 +
- const char kAllowDisableTouchpadHapticFeedbackName[] =
-     "Allow disabling touchpad haptic feedback";
- const char kAllowDisableTouchpadHapticFeedbackDescription[] =
+ const char kAdaptiveChargingForTestingName[] =
+     "Show adaptive charging notifications for testing";
+ const char kAdaptiveChargingForTestingDescription[] =
 Index: electron-17.1.0/chrome/browser/flag_descriptions.h
 ===================================================================
 --- electron-17.1.0.orig/chrome/browser/flag_descriptions.h	2022-03-07 17:20:30.960813654 +0100
@@ -70,6 +70,6 @@ Index: electron-17.1.0/chrome/browser/flag_descriptions.h
 +
 +// Chrome OS ------------------------------------------------------------------
 +
- extern const char kAllowDisableTouchpadHapticFeedbackName[];
- extern const char kAllowDisableTouchpadHapticFeedbackDescription[];
+ extern const char kAdaptiveChargingName[];
+ extern const char kAdaptiveChargingDescription[];
  

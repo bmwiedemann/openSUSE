@@ -3,7 +3,7 @@ This font is already available in opensuse and can be installed systemwide
 --- a/ui/webui/resources/BUILD.gn	2022-06-15 15:58:23.822426713 +0200
 +++ b/ui/webui/resources/BUILD.gn	2022-06-21 15:51:23.647223308 +0200
 @@ -36,17 +36,6 @@
-     "$root_gen_dir/third_party/jstemplate/resources.grdp",
+     "$root_gen_dir/ui/webui/resources/cr_components/color_change_listener/resources.grdp",
    ]
  
 -  if (!is_chromeos_ash && !is_android) {
@@ -19,7 +19,7 @@ This font is already available in opensuse and can be installed systemwide
 -  }
  
    if (include_polymer) {
-     deps += [
+     public_deps += [
 'roboto.css' -> 'roboto.css.new'
 --- a/ui/webui/resources/css/roboto.css	2022-06-15 15:58:23.846426661 +0200
 +++ b/ui/webui/resources/css/roboto.css	2022-06-21 15:53:08.931243442 +0200
@@ -27,7 +27,7 @@ This font is already available in opensuse and can be installed systemwide
   * Use of this source code is governed by a BSD-style license that can be
   * found in the LICENSE file. */
  
--<if expr="not chromeos and not is_android">
+-<if expr="not chromeos_ash and not is_android">
 -@font-face {
 -  font-family: 'Roboto';
 -  font-style: normal;

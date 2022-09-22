@@ -7,6 +7,6 @@ Do not try to configure electron's node against vendored ICU headers
    configure = os.path.join(NODE_DIR, 'configure.py')
    args = ['--dest-cpu', target_cpu]
 +  args+= ['--with-intl=system-icu']
-   # Enabled in Chromium's V8.
-   if target_cpu in ('arm64', 'x64'):
-     args += ['--experimental-enable-pointer-compression']
+   # Enabled in Chromium's V8, will be disabled on 32bit via
+   # common.gypi rules
+   args += ['--experimental-enable-pointer-compression']

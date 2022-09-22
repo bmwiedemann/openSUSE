@@ -136,7 +136,7 @@ rm -v src/third_party/node/node_modules.tar.gz
 
 echo ">>>>>> Get node modules for electron"
 pushd src/electron || cleanup_and_exit 1
-yarn install --frozen-lockfile --ignore-engines --ignore-scripts
+yarn install --frozen-lockfile --ignore-engines --ignore-scripts --link-duplicates
 if [ $? -ne 0 ]; then
     echo "ERROR: yarn install failed"
     cleanup_and_exit 1
@@ -284,7 +284,7 @@ keeplibs=(
     third_party/swiftshader/third_party/astc-encoder #not in rawhide or factory. Debian has it (astc-encoder)
     third_party/swiftshader/third_party/llvm-subzero #heavily forked version of libLLVM for use in subzero
     third_party/swiftshader/third_party/marl #not on any distro
-    third_party/swiftshader/third_party/SPIRV-Headers/include/spirv/unified1 #FC36 too old
+    third_party/swiftshader/third_party/SPIRV-Headers #FC36 too old
     third_party/swiftshader/third_party/SPIRV-Tools #FC36 too old
     third_party/swiftshader/third_party/subzero #integral part of swiftshader
     #third_party/tflite #Not used by electron, but chrome needs it.
@@ -333,6 +333,7 @@ fi
 rm -rf third_party/electron_node/deps/{googletest/{include,src},icu-small} #292MB and vendored
 find third_party/electron_node/deps/brotli -type f ! -name "*.gn" -a ! -name "*.gni" -a ! -name "*.gyp" -a ! -name "*.gypi" -delete
 find third_party/electron_node/deps/cares -type f ! -name "*.gn" -a ! -name "*.gni" -a ! -name "*.gyp" -a ! -name "*.gypi" -delete
+find third_party/electron_node/deps/nghttp2 -type f ! -name "*.gn" -a ! -name "*.gni" -a ! -name "*.gyp" -a ! -name "*.gypi" -delete
 find third_party/electron_node/deps/openssl -type f ! -name "*.gn" -a ! -name "*.gni" -a ! -name "*.gyp" -a ! -name "*.gypi" -delete
 find third_party/electron_node/deps/v8 -type f ! -name "*.gn" -a ! -name "*.gni" -a ! -name "*.gyp" -a ! -name "*.gypi" -delete
 find third_party/electron_node/deps/zlib -type f ! -name "*.gn" -a ! -name "*.gni" -a ! -name "*.gyp" -a ! -name "*.gypi" -delete
@@ -379,8 +380,13 @@ find -type f | sponge | xargs -P$(nproc) -- sh -c 'file "$@" | grep -v '\'' .*sc
 
 
 # Remove empty directories
+echo ">>>>>> Remove empty directories"
 find . -type d -empty -print -delete
 popd || cleanup_and_exit 1
+
+echo ">>>>>> Hardlink duplicate files to reduce extraction time"
+
+fdupes -Sr src
 
 echo ">>>>>> Create tarball"
 #I would like to use zst, as it decompresses MUCH faster, but unfortunately it is not supported by OBS diff view yet

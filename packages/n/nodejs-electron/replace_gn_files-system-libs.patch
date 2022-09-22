@@ -1,6 +1,6 @@
 --- chromium-79.0.3945.29/build/linux/unbundle/replace_gn_files.py.system-dav1d	2019-11-09 14:30:17.297016975 +0100
 +++ chromium-79.0.3945.29/build/linux/unbundle/replace_gn_files.py	2019-11-10 09:40:19.694662891 +0100
-@@ -17,12 +17,40 @@ import sys
+@@ -17,12 +17,41 @@ import sys
  
  
  REPLACEMENTS = {
@@ -21,6 +21,7 @@
 +  'absl_synchronization': 'third_party/abseil-cpp/absl/synchronization/BUILD.gn',
 +  'absl_time': 'third_party/abseil-cpp/absl/time/BUILD.gn',
 +  'absl_types': 'third_party/abseil-cpp/absl/types/BUILD.gn',
++  'absl_utility': 'third_party/abseil-cpp/absl/utility/BUILD.gn',
 +  'brotli': 'third_party/brotli/BUILD.gn',
 +  'crc32c': 'third_party/crc32c/BUILD.gn',
 +  'dav1d': 'third_party/dav1d/BUILD.gn',
@@ -41,7 +42,7 @@
    'libdrm': 'third_party/libdrm/BUILD.gn',
    'libevent': 'base/third_party/libevent/BUILD.gn',
    'libjpeg': 'third_party/libjpeg.gni',
-@@ -33,6 +64,11 @@
+@@ -33,6 +65,11 @@
    'opus': 'third_party/opus/BUILD.gn',
    're2': 'third_party/re2/BUILD.gn',
    'snappy': 'third_party/snappy/BUILD.gn',

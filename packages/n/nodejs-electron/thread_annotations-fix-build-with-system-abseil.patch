@@ -1,7 +1,7 @@
 --- a/base/thread_annotations.h	2022-06-21 21:52:33.363987695 +0200
 +++ b/base/thread_annotations.h	2022-06-24 16:18:54.238568316 +0200
 @@ -40,6 +40,8 @@
- #include "base/check_op.h"
+ #include "base/dcheck_is_on.h"
  #include "build/build_config.h"
  
 +#include <absl/base/internal/thread_annotations.h>

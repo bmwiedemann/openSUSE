@@ -110,12 +110,12 @@ index d40843b..b92f03b 100644
    # paths to the tools it invokes. We don't want this because we don't
    # really need it and it can mess up the goma cache entries.
 @@ -1538,15 +1473,6 @@
-         cflags += [ "-Wno-deprecated-non-prototype" ]
+         cflags += [ "-Wno-unqualified-std-cast-call" ]
        }
  
 -      if (!is_nacl && !(is_chromeos ||
 -                        default_toolchain == "//build/toolchain/cros:target")) {
--        # TODO(https://crbug.com/1316298): Re-enable once test failure is figured out
+-        # TODO(https://crbug.com/1322823): Remove flags once potential miscompile is investigated.
 -        cflags += [
 -          "-Xclang",
 -          "-no-opaque-pointers",

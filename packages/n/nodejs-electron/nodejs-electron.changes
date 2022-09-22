@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Sep 20 05:37:32 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+- Update to 20.1.4
+  * ABI break: NODE_MODULE_VERSION is now 107. Native modules may need recompiling
+  * Removed the skip-taskbar feature on Linux.
+  * Renderers are now sandboxed by default unless nodeIntegration: true or sandbox: false is specified.
+  * Update Chromium to 104.0.5112.114
+  * Update Node to 16.15.0
+- Use ffmpeg-5 on Tumbleweed. Drop ffmpeg-new-channel-layout.patch on Tumbleweed and Rawhide.
+- Add NumberFormat-icu71-incrementExact.patch on systems with old icu (Leap and F36).
+- Use subzero also on ix86 now that it builds correctly.
+- Drop patches applied upstream:
+  * byteswap-constexpr.patch
+  * chromium-101-libxml-unbundle.patch
+  * chromium-102-fenced_frame_utils-include.patch
+  * electron-16-fix-swiftshader-template.patch
+- Add backported patches:
+  * common.gypi-cpp-version.patch
+  * content_renderer_client-invalid-application-of-sizeof-to-incomplete-type-cast_streaming-ResourceProvider.patch
+  * extract_first_nonzero_index-neon64.patch
+- Add upstreamable patches:
+  * absl_utility.gn
+  * aggregatable_attribution_utils-do-not-assume-abseil-ABI.patch
+  * attribution_response_parsing-do-not-assume-abseil-ABI.patch
+  * content_language_parser-missing-string.patch
+  * electron_serial_delegate-ambiguous-Observer.patch
+- Fix build error on armv6hl
+- Add %electron_req macro to make it easier to guard against ABI breaks.
+
+-------------------------------------------------------------------
 Wed Sep 14 20:08:49 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
 - New upstream release 19.0.17
   * Fixed issue with history.back() in sandboxed iframes affecting parent browsing context

@@ -106,8 +106,8 @@ Index: electron-17.1.0/electron/shell/browser/api/electron_api_app.cc
 -                           const std::vector<const uint8_t> additional_data) {
 +                           const std::vector<uint8_t> additional_data) {
    v8::Isolate* isolate = JavascriptEnvironment::GetIsolate();
-   v8::Locker locker(isolate);
    v8::HandleScope handle_scope(isolate);
+   v8::Local<v8::Value> data_value =
 Index: electron-17.1.0/electron/shell/browser/api/electron_api_app.h
 ===================================================================
 --- electron-17.1.0.orig/electron/shell/browser/api/electron_api_app.h	2022-03-07 16:07:24.343397858 +0100
