@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Sep 22 11:03:11 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.12.1:
+  * Expression register for command-line prompts (Ctrl-R =)
+  * Selection handling improvements
+  * An arbitrary editor can now be fully integrated via Lua
+  * TUI improvements
+  * Lua API additions (still experimental)
+  * Bulk retargetting of links, optional implicit :cd on command line,
+    macros that expand to non-empty selection, supporting more <keys>,
+    completion for fish shell.
+  * Escaping of arguments and slashes in paths will now hopefully
+    work better on Windows, which is generally an issue there. Yori
+    shell is now also handled on Windows.
+  * New %N macro can be used to fix image preview in Kitty terminal.
+  * For details see https://vifm.info/news/2022-09-21.shtml
+
+-------------------------------------------------------------------
 Thu Sep 30 11:12:30 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.12:

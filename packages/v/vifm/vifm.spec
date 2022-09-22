@@ -1,7 +1,7 @@
 #
 # spec file for package vifm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           vifm
-Version:        0.12
+Version:        0.12.1
 Release:        0
 Summary:        Ncurses based file manager with vi like keybindings
 License:        GPL-2.0-or-later
@@ -91,6 +91,9 @@ rm -rf %{buildroot}%{_datadir}/vifm/vim-doc/doc/vifm-app.txt
 %dir %{_datadir}/zsh/
 %dir %{_datadir}/zsh/site-functions/
 %{_datadir}/zsh/site-functions/_vifm
+%dir %{_datadir}/fish/
+%dir %{_datadir}/fish/vendor_completions.d/
+%{_datadir}/fish/vendor_completions.d/vifm.fish
 %{_sysconfdir}/vifm/
 %{_sysconfdir}/vifm/colors/
 
