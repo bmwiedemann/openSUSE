@@ -1,0 +1,5 @@
+#!/usr/bin/sh
+versions=$(grep '^Version:' *.spec | sed 's:.* ::')
+for version in $versions; do 
+  wget -O pgaudit-$version.tar.gz https://github.com/pgaudit/pgaudit/archive/refs/tags/$version.tar.gz; 
+done
