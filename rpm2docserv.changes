@@ -1,0 +1,112 @@
+-------------------------------------------------------------------
+Wed Sep 21 14:58:24 UTC 2022 - kukuk@suse.com
+
+- Update to version 20220921.1b436b1:
+  * Add config for apache RewriteMap
+  * Add more documentation
+  * Add rewrite rules
+  * Create container using MicroOS config
+  * Add self signed certificate
+  * Add example config for Tumbleweed
+  * Add apache2 configs
+  * Add tool to create apache rewrite map
+  * Fix cleanup of bin directory
+
+-------------------------------------------------------------------
+Thu Sep 08 13:31:01 UTC 2022 - kukuk@suse.com
+
+- Update to version 20220908.b6c57bc:
+  * Fix GENERATED_bundled.go
+
+-------------------------------------------------------------------
+Thu Sep 08 13:20:24 UTC 2022 - kukuk@suse.com
+
+- Update to version 20220908.043e053:
+  * Make the templates more configureable (e.g. Tumbleweed vs MicroOS)
+  * Cleanup TODO list
+  * Use rpm version struct, sort according suite/binarypkg/version
+  * Sort package list to have higher versions first
+
+-------------------------------------------------------------------
+Thu Sep 08 06:37:36 UTC 2022 - kukuk@suse.com
+
+- Update to version 20220908.347af2c:
+  * Disable dhparam.pem generation, slowdowns start of container too much
+
+-------------------------------------------------------------------
+Thu Sep 08 06:03:51 UTC 2022 - kukuk@suse.com
+
+- Update to version 20220908.919f918:
+  * Update go.mod and go.sum
+
+-------------------------------------------------------------------
+Thu Sep 08 05:58:02 UTC 2022 - kukuk@suse.com
+
+- Update to version 20220908.24fb5ea:
+  * Provide https support with self signed certificates
+  * Support multiple products and multiple caches per product
+  * Adjust docu
+
+-------------------------------------------------------------------
+Tue Sep 06 15:54:25 UTC 2022 - kukuk@suse.com
+
+- Update to version 20220906.ca795b9:
+  * Fix wrong error check
+
+-------------------------------------------------------------------
+Tue Sep 06 13:54:28 UTC 2022 - kukuk@suse.com
+
+- Update to version 20220906.3bbe357:
+  * Read informations from RPM if we cannot split RPM name
+  * Add script to build container with correct args
+
+-------------------------------------------------------------------
+Tue Sep 06 09:48:04 UTC 2022 - kukuk@suse.com
+
+- Update to version 20220906.2b1b6c3:
+  * Fix some typos and grant capability to get network port
+
+-------------------------------------------------------------------
+Tue Sep 06 09:18:58 UTC 2022 - kukuk@suse.com
+
+- Update to version 20220906.16db3f7:
+  * Add sysusers templates for systemd services
+
+-------------------------------------------------------------------
+Tue Sep  6 08:10:07 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Create docserv-config-nginx
+
+-------------------------------------------------------------------
+Tue Sep 06 07:15:53 UTC 2022 - kukuk@suse.com
+
+- Update to version 20220906.54b1d83:
+  * Regenerate bundled templates
+
+-------------------------------------------------------------------
+Mon Sep 05 09:41:54 UTC 2022 - kukuk@suse.com
+
+- Update to version 20220905.e06bf4f:
+  * Fist CSS changes from Alexandre Vicenzi
+  * Separate manpages by binary and source package in index
+
+-------------------------------------------------------------------
+Fri Sep 02 10:03:10 UTC 2022 - kukuk@suse.com
+
+- Update to version 20220902.ec7c5b0:
+  * Add systemd service files
+
+-------------------------------------------------------------------
+Thu Sep 01 13:37:46 UTC 2022 - kukuk@suse.com
+
+- Update to version 20220901.e5c886b:
+  * Update TODO List
+  * Correct check of return value of getUpdateAlternatives
+  * Relax in a second search round strict Section match
+  * Follow symlinks alredy when unpacking RPMs, code optimization
+  * Try to find missing manpages with xref index
+  * Make sure binary search does not go outside range
+  * Handle .gz in .so references
+  * Update Makefile and go.* files
+  * Rewrite unpacking and renaming of manpages
+  * Store full source rpm name, too
