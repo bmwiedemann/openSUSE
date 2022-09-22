@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Sep 21 14:07:51 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.10
+  * Lower cmake minimum version requirement
+- drop fcitx5-libthai-cmake-3.10.patch, upstreamed
+
+-------------------------------------------------------------------
+Tue Jul  5 11:29:23 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 5.0.9
+- Refresh patches:
+  * fcitx5-libthai-cmake-3.10.patch
+
+-------------------------------------------------------------------
 Wed Mar 16 11:41:12 UTC 2022 - Marguerite Su <i@marguerite.su>
 
 - update version 5.0.7
