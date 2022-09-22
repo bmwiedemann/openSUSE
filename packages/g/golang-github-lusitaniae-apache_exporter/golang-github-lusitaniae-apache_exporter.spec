@@ -49,6 +49,7 @@ Requires(pre):  shadow-utils
 BuildRequires:  golang(API) = 1.15
 Requires(pre):  shadow
 %endif
+ExcludeArch:    s390
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_requires}
 
