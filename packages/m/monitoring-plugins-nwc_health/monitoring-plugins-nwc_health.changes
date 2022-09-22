@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep 18 11:02:37 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 10.3
+  * add mode check-rtt (cisco-rttmon-mib slas)
+
+-------------------------------------------------------------------
 Mon Jul 25 06:29:36 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 10.2.1
