@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 21 13:57:15 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.18
+  * Fix the order of add_subdirectory, subdirectory need to be added
+    after set required variables
+  * Hide non public function
+- change in 5.0.17
+  * Add an option for build only im module
+
+-------------------------------------------------------------------
 Mon Jul  4 13:07:24 UTC 2022 - Haochuan Chen <yjcoshc@mail.nankai.edu.cn>
 
 - Update to version 5.0.16
