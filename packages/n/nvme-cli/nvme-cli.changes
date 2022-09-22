@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 21 08:32:38 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Support auto discovery, add %systemd_ordering to spec file (bsc#1186399)
+- Mark no binaries rpms as noarch
+
+-------------------------------------------------------------------
 Wed Aug 17 19:26:17 UTC 2022 - dmueller@suse.com
 
 - Update to version 2.1.2:

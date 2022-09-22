@@ -41,6 +41,8 @@ BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(libudev)
 
+%systemd_ordering
+
 %description
 NVM Express (NVMe) is a direct attached storage interface. The
 nvme-cli package contains core management tools with minimal
@@ -50,6 +52,7 @@ dependencies.
 Summary:        A small script to test the nvme binary for regressions
 Group:          Hardware/Other
 Requires:       nvme-cli
+BuildArch:      noarch
 
 %description -n nvme-cli-regress-script
 A small shell script to test the nvme binary for regressions. It requires an
@@ -61,6 +64,7 @@ Group:          System/Shells
 Requires:       %{name} = %{version}
 Requires:       bash-completion
 Supplements:    (nvme-cli and bash-completion)
+BuildArch:      noarch
 
 %description bash-completion
 Optional dependency offering bash completion for NVM Express user space tools
@@ -71,6 +75,7 @@ Group:          System/Shells
 Requires:       %{name} = %{version}
 Requires:       zsh
 Supplements:    (nvme-cli and zsh)
+BuildArch:      noarch
 
 %description zsh-completion
 Optional dependency offering zsh completion for NVM Express user space tools
