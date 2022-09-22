@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep 22 11:09:46 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.6.1:
+  * Fix shadow effect of edge label when edge is selected
+  * Fix edge label not deleted together with the edge
+  * Fix edge context menu not opening when edge text edit right-clicked
+  * constants.hpp: added to QVector so that the compiler wouldn't throw an error
+
+-------------------------------------------------------------------
 Mon Aug 29 07:14:43 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 3.6.0:

@@ -64,4 +64,16 @@
     + Stack edge text edits on top of nodes</comment>
     <requestid>999857</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>214da32101b9bca715206bafa7ff8dfc</srcmd5>
+    <version>3.6.1</version>
+    <time>1663858759</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.6.1:
+  * Fix shadow effect of edge label when edge is selected
+  * Fix edge label not deleted together with the edge
+  * Fix edge context menu not opening when edge text edit right-clicked
+  * constants.hpp: added to QVector so that the compiler wouldn't throw an error</comment>
+    <requestid>1005391</requestid>
+  </revision>
 </revisionlist>
