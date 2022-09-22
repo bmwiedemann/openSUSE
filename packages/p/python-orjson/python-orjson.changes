@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Wed Sep 21 12:11:03 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.8.0:
+  - Support serializing numpy.int16 and numpy.uint16.
+  - Fix datetime regression tests with tzinfo 2022b.
+
+-------------------------------------------------------------------
+Wed Sep 21 00:35:02 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Activate test suite
+- Tidy spec
+
+-------------------------------------------------------------------
+Wed Jul 13 07:52:11 UTC 2022 - Adrian Schröter <adrian@suse.de>
+
+- initial package of version 3.7.7
+
