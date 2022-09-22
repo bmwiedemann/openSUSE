@@ -1,7 +1,7 @@
 #
 # spec file for package dragonbox
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,11 +36,6 @@ BuildRequires:  gcc11-c++
 %else
 BuildRequires:  cmake >= 3.14
 BuildRequires:  gcc-c++
-%endif
-# only TW has fmt
-%if 0%{?suse_version} > 1500
-# For blackbox tests
-BuildRequires:  cmake(fmt) >= 7.1.2
 %endif
 
 %description
@@ -78,12 +73,6 @@ This package contains the headers.
 
 %install
 %cmake_install
-
-%check
-%if 0%{?sle_version}
-export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
-%endif
-%ctest
 
 %files devel
 %doc README.md
