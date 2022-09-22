@@ -1,6 +1,0 @@
-<servicedata>
-<service name="tar_scm">
-            <param name="url">https://git.gnome.org/browse/evolution-rss</param>
-          <param name="changesrevision">696f57c5451ccf425dcca57e796feded788417dc</param></service><service name="tar_scm">
-                <param name="url">https://gitlab.gnome.org/GNOME/evolution-rss.git/</param>
-              <param name="changesrevision">696f57c5451ccf425dcca57e796feded788417dc</param></service></servicedata>

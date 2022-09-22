@@ -1,6 +1,0 @@
-<package name="evolution-rss" project="openSUSE:Factory">
-  <title>Evolution Plugin for RSS Feeds Support</title>
-  <description>This plugin for Evolution adds RSS Feeds support and enables the use of
-Evolution as a RSS Reader.</description>
-  <devel project="GNOME:Factory" package="evolution-rss"/>
-</package>
