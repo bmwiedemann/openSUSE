@@ -1,0 +1,10 @@
+<package name="endeavour" project="openSUSE:Factory">
+  <title>Personal task manager for GNOME</title>
+  <description>A intuitive and powerful application to manage your personal tasks.
+It uses GNOME technologies and has complete integration with the
+GNOME desktop environment.
+
+</description>
+  <devel project="GNOME:Apps" package="endeavour"/>
+  <url>https://gitlab.gnome.org/World/Endeavour</url>
+</package>
