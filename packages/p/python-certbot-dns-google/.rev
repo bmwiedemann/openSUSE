@@ -302,4 +302,12 @@
     of PKCS#10 meant that CSRs that were generated as version 3 were rejected</comment>
     <requestid>988440</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>e966e05db9c93f955bb0cf28b4cb390d</srcmd5>
+    <version>1.30.0</version>
+    <time>1663851005</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>1005270</requestid>
+  </revision>
 </revisionlist>
