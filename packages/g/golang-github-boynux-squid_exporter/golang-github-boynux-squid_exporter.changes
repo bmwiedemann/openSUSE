@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 20 12:16:07 UTC 2022 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Exclude s390 architecture (gh#SUSE/spacewalk#19050)
+
+-------------------------------------------------------------------
 Sat Jan 22 10:49:07 UTC 2022 - Stefan Bluhm <stefan.bluhm@clacee.eu>
 
 - Enhanced to build on Enterprise Linux 8.

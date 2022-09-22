@@ -1,7 +1,7 @@
 #
 # spec file for package golang-github-boynux-squid_exporter
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2019 João Cavalheiro <jcavalheiro@suse.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -56,6 +56,7 @@ Requires(pre):  shadow-utils
 %else
 Requires(pre):  shadow
 %endif
+ExcludeArch:    s390
 
 %description
 Exports squid metrics in Prometheus format
@@ -114,7 +115,7 @@ getent passwd %{serviceuser} >/dev/null || %{_sbindir}/useradd -r -g %{serviceus
 
 %files
 %defattr(-,root,root,-)
-%doc README.md 
+%doc README.md
 %license LICENSE
 %{_bindir}/%{targetname}
 %{_unitdir}/%{targetname}.service
