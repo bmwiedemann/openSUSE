@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Sep 21 12:34:50 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Revert changes that cause problems with the libreoffice window
+  in KDE, bsc#1203502
+  * bsc1203502.patch
+
+-------------------------------------------------------------------
+Fri Sep 16 13:39:02 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 7.4.1.2:
+  https://wiki.documentfoundation.org/Releases/7.4.1/RC2
+- Fix build on SLE-15-SP3
+
+-------------------------------------------------------------------
+Thu Sep 15 10:20:54 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Fix build with poppler 22.09 on TW
+  * poppler-22.09.0.patch
+
+-------------------------------------------------------------------
 Wed Aug 31 07:45:42 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 7.4.1.1:

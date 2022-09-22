@@ -49,7 +49,7 @@
 %endif
 %bcond_with firebird
 Name:           libreoffice
-Version:        7.4.1.1
+Version:        7.4.1.2
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -107,6 +107,10 @@ Patch3:         mediawiki-no-broken-help.diff
 Patch6:         gcc11-fix-error.patch
 Patch9:         fix_math_desktop_file.patch
 Patch10:        fix_gtk_popover_on_3.20.patch
+Patch11:        poppler-22.09.0.patch
+# PATCH-FIX-UPSTREAM revert changes that cause problems with the libreoffice window
+# in KDE, bsc#1203502
+Patch12:        bsc1203502.patch
 # Build with java 8
 Patch101:       0001-Revert-java-9-changes.patch
 # try to save space by using hardlinks
@@ -124,6 +128,7 @@ BuildRequires:  commons-logging
 BuildRequires:  cups-devel
 BuildRequires:  fixmath-devel
 BuildRequires:  libwebp-devel
+BuildRequires:  zlib-devel
 %if %{with system_curl}
 BuildRequires:  curl-devel >= 7.68.0
 %else
@@ -140,6 +145,7 @@ BuildRequires:  glm-devel
 # Needed for tests
 BuildRequires:  google-carlito-fonts
 BuildRequires:  abseil-cpp-devel
+BuildRequires:  dragonbox-devel
 BuildRequires:  gperf >= 3.1
 BuildRequires:  graphviz
 BuildRequires:  hyphen-devel
@@ -173,7 +179,6 @@ BuildRequires:  update-desktop-files
 BuildRequires:  xml-commons-apis
 BuildRequires:  xz
 BuildRequires:  zip
-BuildRequires:  cmake(dragonbox)
 BuildRequires:  perl(Archive::Zip)
 BuildRequires:  perl(Digest::MD5)
 BuildRequires:  pkgconfig(apr-util-1)
@@ -217,6 +222,7 @@ BuildRequires:  pkgconfig(libqxp-0.0)
 BuildRequires:  pkgconfig(librevenge-0.0) >= 0.0.1
 BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(libstaroffice-0.0) >= 0.0.7
+BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(libvisio-0.1) >= 0.1
 BuildRequires:  pkgconfig(libwpd-0.10) >= 0.10
 BuildRequires:  pkgconfig(libwpg-0.3)
@@ -283,8 +289,6 @@ BuildRequires:  pkgconfig(poppler-cpp)
 # Too old icu on the system
 Source2021:     %{external_url}/icu4c-71_1-src.tgz
 Source2022:     %{external_url}/icu4c-71_1-data.zip
-BuildRequires:  gcc7
-BuildRequires:  gcc7-c++
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  libBox2D-devel
 BuildRequires:  libmysqlclient-devel
@@ -297,8 +301,6 @@ BuildConflicts: java-headless >= 9
 Requires(post): update-desktop-files
 Requires(postun):update-desktop-files
 %else
-BuildRequires:  gcc >= 7
-BuildRequires:  gcc-c++ >= 7
 # genbrk binary is required
 BuildRequires:  icu
 BuildRequires:  java-devel >= 9
@@ -309,6 +311,14 @@ BuildConflicts: java < 9
 BuildConflicts: java-devel < 9
 BuildConflicts: java-headless < 9
 BuildRequires:  pkgconfig(libopenjp2)
+%endif
+# Dragonbox requires gcc11
+%if 0%{?suse_version} > 1550
+BuildRequires:  gcc >= 11
+BuildRequires:  gcc-c++ >= 11
+%else
+BuildRequires:  gcc11
+BuildRequires:  gcc11-c++
 %endif
 %if 0%{?suse_version}
 # needed by python3_sitelib
@@ -1020,6 +1030,10 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch10 -p1
 %patch101 -p1
 %endif
+%if 0%{?suse_version} > 1550
+%patch11 -p1
+%endif
+%patch12 -p1
 %patch990 -p1
 %patch991 -p1
 
@@ -1074,9 +1088,9 @@ CFLAGS="$ARCH_FLAGS"
 CXXFLAGS="$ARCH_FLAGS"
 export ARCH_FLAGS CFLAGS CXXFLAGS
 
-%if 0%{?suse_version} < 1500
-export CC=gcc-7
-export CXX=g++-7
+%if 0%{?suse_version} < 1550
+export CC=gcc-11
+export CXX=g++-11
 %endif
 
 # Fake the epoch stuff in generated zip files
@@ -1112,6 +1126,8 @@ export NOCONFIGURE=yes
         --with-system-ucpp \
         --with-system-dicts \
         --with-system-libpng \
+        --with-system-dragonbox \
+        --with-system-libfixmath \
         --without-system-libcmis \
         --with-vendor=SUSE \
         --with-tls=nss \
