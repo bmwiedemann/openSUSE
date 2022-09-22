@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Sep 21 17:49:37 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.30.0
+  * acme.client.ClientBase, acme.messages.Authorization.resolved_combinations, 
+    acme.messages.Authorization.combinations, acme.mixins, acme.fields.resource 
+    and acme.fields.Resource are deprecated and will be removed in a future release.
+  * acme.messages.OLD_ERROR_PREFIX (urn:acme:error:) is deprecated and support 
+    for the old ACME error prefix in Certbot will be removed in the next major 
+    release of Certbot.
+  * acme.messages.Directory.register is deprecated and will be removed in the 
+    next major release of Certbot. Furthermore, .Directory will only support 
+    lookups by the exact resource name string in the ACME directory (e.g. 
+    directory['newOrder']).
+  * The source_address argument for acme.client.ClientNetwork is deprecated and 
+    support for it will be removed in the next major release.
+
+-------------------------------------------------------------------
 Mon Jul 11 13:07:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.29.0:

@@ -671,4 +671,24 @@
     of PKCS#10 meant that CSRs that were generated as version 3 were rejected</comment>
     <requestid>988382</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>39e04fb29a1a076e91d633eb0c936283</srcmd5>
+    <version>1.30.0</version>
+    <time>1663850999</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.30.0
+  * acme.client.ClientBase, acme.messages.Authorization.resolved_combinations, 
+    acme.messages.Authorization.combinations, acme.mixins, acme.fields.resource 
+    and acme.fields.Resource are deprecated and will be removed in a future release.
+  * acme.messages.OLD_ERROR_PREFIX (urn:acme:error:) is deprecated and support 
+    for the old ACME error prefix in Certbot will be removed in the next major 
+    release of Certbot.
+  * acme.messages.Directory.register is deprecated and will be removed in the 
+    next major release of Certbot. Furthermore, .Directory will only support 
+    lookups by the exact resource name string in the ACME directory (e.g. 
+    directory['newOrder']).
+  * The source_address argument for acme.client.ClientNetwork is deprecated and 
+    support for it will be removed in the next major release.</comment>
+    <requestid>1005262</requestid>
+  </revision>
 </revisionlist>
