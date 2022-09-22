@@ -1,7 +1,7 @@
 #
 # spec file for package freecell-solver
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%bcond_with tests
 %define soversion 0
 %define libname libfreecell-solver
+%bcond_with tests
 Name:           freecell-solver
 Version:        6.6.0
 Release:        0
@@ -26,7 +26,7 @@ Summary:        A Freecell Solver
 License:        MIT
 Group:          Amusements/Games/Other
 URL:            https://fc-solve.shlomifish.org
-Source0:        http://fc-solve.shlomifish.org/downloads/fc-solve/%{name}-%{version}.tar.xz
+Source0:        https://fc-solve.shlomifish.org/downloads/fc-solve/%{name}-%{version}.tar.xz
 BuildRequires:  cmake >= 3.5
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -34,14 +34,17 @@ BuildRequires:  gmp-devel
 BuildRequires:  gperf
 BuildRequires:  perl-Template-Toolkit
 BuildRequires:  pkgconfig
+BuildRequires:  cmake(Rinutils)
+BuildRequires:  perl(Moo)
+BuildRequires:  perl(Path::Tiny)
+Requires:       python3-pysol-cards
+Requires:       python3-random2
+Requires:       python3-six
+%if %{with tests}
 BuildRequires:  python3-cffi
 BuildRequires:  python3-pysol-cards
 BuildRequires:  python3-random2
 BuildRequires:  python3-six
-BuildRequires:  cmake(Rinutils)
-BuildRequires:  perl(Moo)
-BuildRequires:  perl(Path::Tiny)
-%if %{with tests}
 BuildRequires:  perl(Task::FreecellSolver::Testing)
 %endif
 
@@ -81,7 +84,7 @@ Development package for the libfreecell-solver library
 %build
 %cmake -DBUILD_STATIC_LIBRARY=OFF \
 %if %{without tests}
-       -DFCS_WITH_TEST_SUITE=OFF \
+       -DFCS_WITH_TEST_SUITE=OFF -D_PYTHON3="_PYTHON3-NOTFOUND" \
 %endif
        -DFCS_AVOID_TCMALLOC=ON
 %cmake_build
