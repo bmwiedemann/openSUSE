@@ -3,7 +3,7 @@ unsorted:
   - 0ad-data 
   - 2048-cli 
   - 2ping 
-  - 389-ds-devel: [x86_64] # devel package of dvd:lib389 
+  - 389-ds-devel: [x86_64] # devel package of dvd:libsvrcore0 
   - 389-ds-snmp: [x86_64] 
   - 3omns 
   - 4pane 
@@ -3054,6 +3054,10 @@ unsorted:
   - docker-zsh-completion 
   - docker_auth 
   - docparser-devel 
+  - docserv-auxserver 
+  - docserv-config-apache2 
+  - docserv-config-nginx 
+  - docserv-minisrv 
   - doctest-devel 
   - dog: [x86_64] 
   - dogtail 
@@ -3351,6 +3355,9 @@ unsorted:
   - enchant-devel 
   - enchant-tools 
   - enchive 
+  - endeavour 
+  - endeavour-devel 
+  - endeavour-lang 
   - endless-sky 
   - enet-devel 
   - engauge-digitizer 
@@ -3493,8 +3500,6 @@ unsorted:
   - evolution-devel 
   - evolution-plugin-bogofilter 
   - evolution-plugin-pst-import 
-  - evolution-plugin-rss 
-  - evolution-plugin-rss-lang 
   - evolution-plugin-text-highlight 
   - evtest 
   - exa: [x86_64] 
@@ -11341,9 +11346,9 @@ unsorted:
   - libgraphene-devel 
   - libgravatar-devel 
   - libgromacs6 
-  - libgrpc++1_48 
-  - libgrpc26 
-  - libgrpc_plugin_support1_48 
+  - libgrpc++1_49 
+  - libgrpc27 
+  - libgrpc_plugin_support1_49 
   - libgsasl-devel 
   - libgsequencer0 
   - libgsettings-qt1 
@@ -11717,7 +11722,7 @@ unsorted:
   - libhugetlbfs-tests 
   - libhunspell-1_7-0-32bit: [x86_64] 
   - libhwloc15 
-  - libhwy0 
+  - libhwy1 
   - libhx509-5 
   - libhydrogen-core-1_1_1 
   - libhydrogen-core-devel 
@@ -12417,7 +12422,6 @@ unsorted:
   - libmowgli-2-0 
   - libmowgli2-devel 
   - libmozjs-78-0 
-  - libmozjs-91-0 
   - libmp3lame-devel 
   - libmp3lame0-32bit: [x86_64] 
   - libmpc3-32bit: [x86_64] 
@@ -14043,7 +14047,7 @@ unsorted:
   - libsndfile-progs 
   - libsndfile1-32bit: [x86_64] 
   - libsndio7_1 
-  - libsnmp39-32bit: [x86_64] 
+  - libsnmp40-32bit: [x86_64] 
   - libsoc-common 
   - libsoc-devel 
   - libsoc2 
@@ -14576,7 +14580,7 @@ unsorted:
   - libunwind-setjmp0 
   - libunwind-setjmp0-32bit: [x86_64] 
   - libunwind8-32bit: [x86_64] 
-  - libupb26 
+  - libupb27 
   - libupm1 
   - libupnp-devel 
   - libupnp17-32bit: [x86_64] 
@@ -15174,8 +15178,6 @@ unsorted:
   - libyajl-devel-32bit: [x86_64] 
   - libyajl-devel-static 
   - libyajl2-32bit: [x86_64] 
-  - libyami-devel 
-  - libyami1 
   - libyaml-0-2-32bit: [x86_64] 
   - libyaml-devel 
   - libyang-devel 
@@ -16738,8 +16740,6 @@ unsorted:
   - mozjs102-devel 
   - mozjs78 
   - mozjs78-devel 
-  - mozjs91 
-  - mozjs91-devel 
   - mozldap-devel: [x86_64] 
   - mozldap-libs: [x86_64] 
   - mozldap-tools: [x86_64] 
@@ -17844,12 +17844,9 @@ unsorted:
   - nsd 
   - nsjail: [x86_64] 
   - nsnake 
-  - nss-myhostname 
-  - nss-myhostname-32bit: [x86_64] 
   - nss-pam-ldapd 
   - nss-pam-ldapd-32bit: [x86_64] 
   - nss-shared-helper-devel 
-  - nss-systemd 
   - nss_synth 
   - nss_wrapper 
   - ntfsprogs-extra 
@@ -20947,6 +20944,7 @@ unsorted:
   - plistutil 
   - plotutils 
   - plotutils-devel 
+  - plotutils-doc 
   - plowshare 
   - plplay 
   - plplot-common 
@@ -21147,6 +21145,7 @@ unsorted:
   - postgresql11-llvmjit-devel 
   - postgresql11-pg_cron 
   - postgresql11-pgagent 
+  - postgresql11-pgaudit 
   - postgresql11-pgsql-ogr-fdw 
   - postgresql11-pgsql-ogr-fdw-llvmjit 
   - postgresql11-plperl 
@@ -21167,6 +21166,7 @@ unsorted:
   - postgresql12-llvmjit-devel 
   - postgresql12-pg_cron 
   - postgresql12-pgagent 
+  - postgresql12-pgaudit 
   - postgresql12-pgsql-ogr-fdw 
   - postgresql12-pgsql-ogr-fdw-llvmjit 
   - postgresql12-plperl 
@@ -21188,6 +21188,7 @@ unsorted:
   - postgresql13-llvmjit-devel 
   - postgresql13-pg_cron 
   - postgresql13-pgagent 
+  - postgresql13-pgaudit 
   - postgresql13-plperl 
   - postgresql13-plpython 
   - postgresql13-plr 
@@ -21205,6 +21206,7 @@ unsorted:
   - postgresql14-llvmjit-devel 
   - postgresql14-pg_cron 
   - postgresql14-pgagent 
+  - postgresql14-pgaudit 
   - postgresql14-plperl 
   - postgresql14-plpython 
   - postgresql14-pltcl 
@@ -23943,6 +23945,7 @@ unsorted:
   - python310-ordered-namespace 
   - python310-ordered-set 
   - python310-orderedmultidict 
+  - python310-orjson 
   - python310-osc-tiny 
   - python310-oscrypto 
   - python310-osmviz 
@@ -27228,6 +27231,7 @@ unsorted:
   - python38-ordered-namespace 
   - python38-ordered-set 
   - python38-orderedmultidict 
+  - python38-orjson 
   - python38-osc-tiny 
   - python38-oscrypto 
   - python38-osmviz 
@@ -30557,6 +30561,7 @@ unsorted:
   - python39-ordered-namespace 
   - python39-ordered-set 
   - python39-orderedmultidict 
+  - python39-orjson 
   - python39-osc-tiny 
   - python39-oscrypto 
   - python39-osmviz 
@@ -32770,6 +32775,7 @@ unsorted:
   - rpm-devel 
   - rpm-repo-keys-openSUSE 
   - rpm-repos-openSUSE-Tumbleweed 
+  - rpm2docserv 
   - rpma-devel: [x86_64] 
   - rpmconf 
   - rpmdevtools 
