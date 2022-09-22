@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 21 17:47:20 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.30.0
+  * The certbot-dns-cloudxns plugin is now deprecated and will be 
+    removed in the next major release of Certbot.
+  * Lots of deprecations in the acme module.
+  * Add UI text suggesting users create certs for multiple domains, 
+    when possible.
+
+-------------------------------------------------------------------
 Mon Jul 11 13:07:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.29.0:
