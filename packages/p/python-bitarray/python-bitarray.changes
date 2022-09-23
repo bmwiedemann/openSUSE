@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Sep 23 02:36:48 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 2.6.0:
+  * add data descriptions: `.nbytes`, `.padbits`, `.readonly`
+  * allow optional `endian` argument to be `None` when creating bitarrays
+  * fix type annotation for `canonical_decode()`, #178
+  * frozenbitarray's padbits are now guaranteed to be zero
+  * add tests
+
+- Update to 2.5.1:
+  * optimize `.reverse()`, see #177
+  * allow negative (byte) indices in `.bytereverse()`
+
+- Update to 2.5.0:
+  * add calculating of canonical Huffman codes `util.canonical_huffman()`
+    and decoding thereof `util.canonical_decode()`, see #173
+  * allow creating "Huffman codes" from frequency maps with a single symbol
+    in `util.huffman_code()` and `util.canonical_huffman()`, see #172
+  * allow bytes-like argument in `.frombytes()` and `.pack()` - previously,
+    the arguments were limited to the `bytes` object, see #174
+  * allow bytes-like arguments in `util.deserialize()`
+  * add official [pyodide](https://pyodide.org/) support
+  * add [DEFLATE decompression](../examples/puff/) example
+  * optimize `.bytereverse()`
+  * optimize `delslice()` for cases like `del a[1:17:2]` when `a` is large
+  * fix `examples/huffman/compress.py` to handle files with 0 or 1 characters,
+    see also #172
+  * add `skipIF` decorator for skipping tests
+  * add tests
+
+- Update to 2.4.1:
+  * improve `resize()`, see #167
+  * optimize `copy_n()` by avoiding loops, #171
+  * `.bytereverse()` no longer sets unused pad bits to zero 
+
+-------------------------------------------------------------------
 Sun Mar 27 14:18:57 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.0:
