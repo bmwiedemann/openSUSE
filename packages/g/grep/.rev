@@ -725,4 +725,12 @@ also requires -fno-profile-values to avoid ~3 differing bits (forwarded request 
 - doc: fix man page syntax errors (bsc#1201001) (forwarded request 1001672 from Andreas_Schwab)</comment>
     <requestid>1001674</requestid>
   </revision>
+  <revision rev="85" vrev="2">
+    <srcmd5>ea912492ca31db1ceb59b80d16a3e38e</srcmd5>
+    <version>3.8</version>
+    <time>1663935255</time>
+    <user>dimstar_suse</user>
+    <comment>- efgrep-warning.patch: remove warning from [ef]grep (forwarded request 1004919 from Andreas_Schwab)</comment>
+    <requestid>1004920</requestid>
+  </revision>
 </revisionlist>

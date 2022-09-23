@@ -29,6 +29,7 @@ Source2:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz.sig
 Source3:        %{name}.keyring
 Source4:        profile.sh
 Source5:        %{name}-rpmlintrc
+Patch0:         efgrep-warning.patch
 BuildRequires:  fdupes
 BuildRequires:  glibc-locale
 BuildRequires:  makeinfo

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 20 08:29:41 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- efgrep-warning.patch: remove warning from [ef]grep
+
+-------------------------------------------------------------------
 Sun Sep  4 10:13:04 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU grep 3.8:
