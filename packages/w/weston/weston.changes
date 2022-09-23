@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Sep 22 21:48:51 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11
+  * Breaking changes:
+  * The cms-static and cms-colord plugins are now deprecated.
+  * A number of features have been removed from desktop-shell:
+    multiple workspaces, zoom, exposay.
+  * wl_shell support has been removed (superseded by xdg-shell).
+  * The fbdev backend has been removed (superseded by KMS).
+  * weston-launch and launcher-direct have been removed
+    (superseded by libseat).
+  * The weston-info and weston-gears clients have been removed
+    (weston-info is superseded by wayland-info).
+  * The KMS max-bpc property is now set by default. If you
+    experience black screens with (faulty) monitors, try lowering
+    it in weston.ini.
+  * Weston will now abort when running out of memory. Weston is
+    not suitable for memory constrained environments.
+
+-------------------------------------------------------------------
 Tue Aug  9 20:21:35 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 10.0.2:

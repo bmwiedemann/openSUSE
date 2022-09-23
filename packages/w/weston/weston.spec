@@ -18,9 +18,9 @@
 
 Name:           weston
 %define lname	libweston0
-%define major   10
-%define realver	10.0.2
-Version:        10.0.2
+%define major   11
+%define realver	11.0.0
+Version:        11
 Release:        0
 Summary:        Wayland Reference Compositor
 License:        CC-BY-SA-3.0 AND MIT
@@ -54,9 +54,10 @@ BuildRequires:  pkgconfig(freerdp2)
 BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(lcms2)
-BuildRequires:  pkgconfig(libdrm) >= 2.4.95
+BuildRequires:  pkgconfig(libdrm) >= 2.4.108
 BuildRequires:  pkgconfig(libevdev)
 BuildRequires:  pkgconfig(libinput) >= 0.8.0
+BuildRequires:  pkgconfig(libseat)
 BuildRequires:  pkgconfig(libsystemd) >= 209
 BuildRequires:  pkgconfig(libudev) >= 136
 BuildRequires:  pkgconfig(libva)
@@ -108,22 +109,10 @@ The libweston library is intended for use by other compositor efforts
 functionalities. Weston's own reference compositor also makes use of
 this.
 
-%package -n libweston-desktop-%major-0
-Summary:        The Weston compositor as a shared library
-Group:          System/Libraries
-
-%description -n libweston-desktop-%major-0
-libweston-desktop provides an additional level of functionality of
-relevance to compositors implementing a desktop metaphor style of
-graphical interface. This library API is designed around xdg_shell
-functionality, providing for handling of popups, window state, and
-interfacing with Xwayland.
-
 %package devel
 Summary:        Development files for Weston plugins
 Group:          Development/Libraries/C and C++
 Requires:       libweston-%major-0 = %version
-Requires:       libweston-desktop-%major-0 = %version
 
 %description devel
 Weston is the reference implementation of a Wayland compositor, and a
@@ -164,8 +153,6 @@ popd
 
 %post   -n libweston-%major-0 -p /sbin/ldconfig
 %postun -n libweston-%major-0 -p /sbin/ldconfig
-%post   -n libweston-desktop-%major-0 -p /sbin/ldconfig
-%postun -n libweston-desktop-%major-0 -p /sbin/ldconfig
 
 %files
 %license COPYING
@@ -182,9 +169,6 @@ popd
 
 %files -n libweston-%major
 %_libdir/libweston-%major/
-
-%files -n libweston-desktop-%major-0
-%_libdir/libweston-desktop-%major.so.0*
 
 %files devel
 %_includedir/%name/
