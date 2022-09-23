@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Sep 22 19:05:23 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to v14.2.1
+  * Fix misspelled first name in da_DK locale. Thanks @filson1.
+- Update to 14.2.0
+  * Add support for prefix and suffix to pystr provider.Thanks @stefan6419846.
+- Update to 14.1.2
+  * Fix uk_UA postcode generation. Thanks @ajinkyac03.
+- Update to 14.1.1
+  * Relax minimum version of typing-extensions. Thanks @stefan6419846.
+- Update to 14.1.0
+  * Add providers for bn_BD: address, automotive, bank, color, company, currency, date_time, geo, internet, job, person, phone_number and ssn. Thanks @saanpritom.
+- Update to 14.0.0
+  * Fix Provider._parse_date_time to support timestamps. Thanks @mochi-moshi.
+- Update to 13.16.0
+  * automotive: add de_CH license plates. Thanks @gsilvan. 
+
+-------------------------------------------------------------------
 Tue Aug  2 13:48:56 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Update to v13.15.1:
