@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Sun Sep 11 10:21:41 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0
+  * Handle stale unix socket file
+  * Add visual or audible alert support on connect/disconnect
+  * Add experimental RS-485 support
+  * Add line response feature
+  * Fix potential sscanf() overflow
+  * Only print version on '--version'
+  * Remove duplicate show config entry of DTR pulse duration
+- Update to version 1.47
+  * Enable log feature when using --log-filename
+  * Enable line buffering of log
+  * Avoid invalid hex character messages when switching hex mode
+  * Force flushing of log writes
+  * Renamed tty_flush() to tty_sync()
+  * Fix sync output to serial port
+  * Clean up tty_flush()
+  * Force frequent sync on tty_flush()
+  * Update example tiorc
+  * Quit from non-interactive mode using ctrl-c
+  * Make sure we flush output buffer to tty when piping to tio
+  * Do not return false read error when piping to tio
+  * Show error message when reading port settings fail
+- Update to version 1.46
+  * Rework toggle and pulse feature to support all lines
+  * Add example configuration file
+- Update to version 1.45
+  * Introduce bold color option
+  * Change 'ctrl-t T' to 'ctrl-t t' for timestamp toggle
+  * Add support for remapping prefix key
+  * Add plaintext man page
+- Update to version 1.44
+  * Simplify arbitrary baudrate code
+  * Cleanup error printing routines
+  * Clean up man page
+  * Add support for space parity
+  * Rename EOL delay to Output line delay
+  * Replace -U,--upcase with mapping flag OLTU
+  * Simplify tty_write()
+  * Additional commands: EOL delay, lower to upper translation,
+    added mark parity
+  * Added ability to set mark parity.
+- Update to version 1.43
+  * Add '24hour-delta' timestamp option
+  * Improve description of socket option
+  * Add Pulse DTR command
+
+-------------------------------------------------------------------
 Tue Jul  5 05:35:29 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.42

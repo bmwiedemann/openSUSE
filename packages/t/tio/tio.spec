@@ -17,7 +17,7 @@
 
 
 Name:           tio
-Version:        1.42
+Version:        2.0
 Release:        0
 Summary:        Simple TTY terminal I/O application
 License:        GPL-2.0-or-later
@@ -54,7 +54,7 @@ Bash completion script for %{name}.
 
 %files
 %license LICENSE
-%doc AUTHORS ChangeLog README.md
+%doc AUTHORS NEWS README.md
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
 
