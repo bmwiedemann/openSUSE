@@ -402,4 +402,12 @@
   * Update ``modified_iterating`` checker to fix a crash with ``for`` loops on empty list.</comment>
     <requestid>1003053</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>7eefd0029ad9758881a52cf2972ece68</srcmd5>
+    <version>2.15.3</version>
+    <time>1663935317</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1005486</requestid>
+  </revision>
 </revisionlist>

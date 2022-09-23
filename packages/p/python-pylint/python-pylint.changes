@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Sep 22 12:45:04 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- update to 2.15.3
+  * Fixed a crash in the unhashable-member checker when using a lambda as a dict key. 7453
+  * Fix a crash in the modified-iterating-dict checker involving
+    instance attributes. #7461
+  * invalid-class-object does not crash anymore when __class__ is assigned
+    alongside another variable. #7467
+  * Fix false positive for global-variable-not-assigned when a global
+    variable is re-assigned via an ImportFrom node. #4809
+  * Fix false positive for undefined-loop-variable in for-else loops that 
+    use a function having a return type annotation of NoReturn or Never. #7311
+  * --help-msg now accepts a comma-separated list of message IDs again. #7471
+
+-------------------------------------------------------------------
 Mon Sep 12 20:22:59 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.15.2:
