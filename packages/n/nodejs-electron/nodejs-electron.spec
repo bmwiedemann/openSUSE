@@ -41,9 +41,6 @@ BuildArch:      i686
 %{expand:%%global optflags %(echo "%optflags") -march=pentium4 -mtune=generic}
 %endif
 
-#Electron built with LTO crashes on selecting any text.
-#See https://gist.github.com/brjsp/80620a5a0be9efbee6b9154cb127879d for the stack trace.
-%bcond_with lto
 
 %bcond_without pipewire
 
@@ -92,7 +89,14 @@ BuildArch:      i686
 #Mold succeeds on ix86 but seems to produce corrupt binaries (no build-id)
 %bcond_with mold
 
-
+%if %{without lld}
+#Electron built with LTO crashes on selecting any text.
+#See https://gist.github.com/brjsp/80620a5a0be9efbee6b9154cb127879d for the stack trace.
+#%%bcond_without lto
+%bcond_with lto
+%else
+%bcond_with lto
+%endif
 
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400 || 0%{?fedora}
 %bcond_without system_harfbuzz
@@ -188,7 +192,7 @@ BuildArch:      i686
 
 
 Name:           nodejs-electron
-Version:        20.1.4
+Version:        20.2.0
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
 License:        AFL-2.0 AND Apache-2.0 AND blessing AND BSD-2-Clause AND BSD-3-Clause AND BSD-Protection AND BSD-Source-Code AND bzip2-1.0.6 AND IJG AND ISC AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND MIT-CMU AND MIT-open-group AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later) AND MPL-2.0 AND OpenSSL AND SGI-B-2.0 AND SUSE-Public-Domain AND X11
@@ -345,7 +349,6 @@ Patch3067:      reproducible-config.gypi.patch
 Patch3068:      content_language_parser-missing-string.patch
 Patch3069:      aggregatable_attribution_utils-do-not-assume-abseil-ABI.patch
 Patch3070:      content_renderer_client-invalid-application-of-sizeof-to-incomplete-type-cast_streaming-ResourceProvider.patch
-Patch3071:      electron_serial_delegate-ambiguous-Observer.patch
 Patch3072:      attribution_response_parsing-do-not-assume-abseil-ABI.patch
 Patch3073:      common.gypi-cpp-version.patch
 Patch3074:      extract_first_nonzero_index-neon64.patch
@@ -761,6 +764,13 @@ export LDFLAGS="${LDFLAGS} -Wl,--as-needed -fuse-ld=mold"
 %limit_build -m 1200
 %else
 %limit_build -m 2600
+%endif
+
+%if %{with lto} && %{without clang}
+# reduce the threads for linking even more due to LTO eating ton of memory
+_link_threads=$(((%{jobs} - 2)))
+test "$_link_threads" -le 0 && _link_threads=1
+export LDFLAGS="-flto=$_link_threads --param lto-max-streaming-parallelism=1"
 %endif
 
 gn_system_libraries=(

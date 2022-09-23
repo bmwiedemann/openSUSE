@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 22 20:58:12 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+- New upstream release 20.2.0
+  * Add webFrameMain.origin API
+  * Update Chromium to 104.0.5112.124  
+- Drop electron_serial_delegate-ambiguous-Observer.patch applied upstream
+
+-------------------------------------------------------------------
 Tue Sep 20 05:37:32 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
 - Update to 20.1.4
   * ABI break: NODE_MODULE_VERSION is now 107. Native modules may need recompiling
