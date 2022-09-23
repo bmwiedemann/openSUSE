@@ -63,4 +63,43 @@
     <comment></comment>
     <requestid>946135</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d8171ecc0314ccbd5081a77ffc4d0635</srcmd5>
+    <version>7.4.2</version>
+    <time>1663935302</time>
+    <user>dimstar_suse</user>
+    <comment>- Removed pyface-pr958-qt5deprecation.patch because it's not needed anymore
+  with the new version
+- Add fix-wx-tests.patch to be able to run all wx tests
+- Update to 7.4.2
+ * fixes for Qt workbench backend (#1149)
+ * fix ConsoleWidget PySide6 issues (#1146, #1147)
+ * fix default AboutDialog image (#1142)
+ * remove reference cycle for actions on clean-up (#1143)
+ * status bar manager not cleaned up properly (#1141)
+ * expose QOpenGLWidget in a consistent place in pyface.qt (#1138)
+ * map popup menu coordinates to global (#1137)
+ * fix issues with last window close on Qt6 (#1136)
+ * font size and stretch are ints at the toolkit level (#1118)
+- Release 7.4.1
+ * fix segfaults and memory corruption from dropped QImage references (#1108)
+- Release 7.4.0
+ * adding intermediate interfaces and classes to collect common roles and
+   behaviours.
+ * adding hooks to control widget sizing behaviour within layouts/sizers.
+   deprecating behavior where a class creates the underlying toolkit widget in
+   the __init__ method. This was done by a small minority of Widget classes,
+   now all widgets are able to use two-step creation (first the
+   instance, then the toolkit object via the create() method).
+ * creating Qt versions of some widgets, and filling in some gaps in widget
+   types (particularly for Fields)
+ * providing image classes that wrap PIL images and NumPy arrays that allow
+   dynamic images and icons in addition to the resource-based versions.
+ * providing a toolkit-independent Font class and corresponding trait that
+   supports similar use-cases to the existing TraitsUI Font trait.
+ * extracting the menu and toolbar Schema system from Tasks and making it more
+   generally useable.
+</comment>
+    <requestid>1005441</requestid>
+  </revision>
 </revisionlist>

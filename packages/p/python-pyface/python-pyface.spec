@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pyface
-Version:        7.3.0
+Version:        7.4.2
 Release:        0
 Summary:        Traits-capable windowing framework
 # Source code is under BSD but images are under different licenses
@@ -28,11 +28,13 @@ License:        BSD-3-Clause AND EPL-1.0 AND LGPL-2.1-only AND LGPL-3.0-only AND
 Group:          Development/Libraries/Python
 URL:            https://github.com/enthought/pyface
 Source:         https://files.pythonhosted.org/packages/source/p/pyface/pyface-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM pyface-pr958-qt5deprecation.patch -- gh#/enthought/pyface#958
-Patch0:         https://github.com/enthought/pyface/pull/958.patch#/pyface-pr958-qt5deprecation.patch
+# PATCH-FIX-OPENSUSE fix-wx-tests.patch
+Patch0:         fix-wx-tests.patch
+BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module Pygments}
 BuildRequires:  %{python_module importlib-metadata}
 BuildRequires:  %{python_module importlib-resources >= 1.1.0}
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module qt5}
 BuildRequires:  %{python_module qtwebengine-qt5}
 BuildRequires:  %{python_module setuptools}
