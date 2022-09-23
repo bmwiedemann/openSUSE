@@ -1,5 +1,5 @@
 #
-# spec file for package python-Nuitka
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -130,7 +130,7 @@ ExclusiveArch:  do-not-build
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Nuitka%{?psuffix}
-Version:        1.0.1
+Version:        1.0.6
 Release:        0
 Summary:        Python compiler with full language support and CPython compatibility
 License:        Apache-2.0
