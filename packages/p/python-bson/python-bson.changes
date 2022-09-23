@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 23 02:48:27 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version v0.5.10 
+  * Merge pull request #110 from yangroro/master
+  * Add python 3.9, 3.10-dev for testing
+
+-------------------------------------------------------------------
 Mon Aug 30 10:39:53 UTC 2021 - pgajdos@suse.com
 
 - %check: use %pyunittest rpm macro

@@ -1,7 +1,7 @@
 #
 # spec file for package python-bson
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-bson
-Version:        0.5.8
+Version:        0.5.10
 Release:        0
 Summary:        BSON codec for Python
 License:        Apache-2.0 AND BSD-3-Clause
