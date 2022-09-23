@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 23 02:33:16 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 2.11.0 
+  * Add support for Rocky Linux and Manjaro to Bindep.
+
+-------------------------------------------------------------------
 Tue Jan 11 20:56:10 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add python-rpm-macros dependency 

@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global pythons python3
 Name:           python-bindep
-Version:        2.10.1
+Version:        2.11.0
 Release:        0
 Summary:        Binary dependency utility
 License:        Apache-2.0
