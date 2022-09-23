@@ -197,4 +197,12 @@ Please use same ADI as https://build.opensuse.org/request/show/918731
 - Fixes for CVE-2022-36059 and CVE-2022-36060</comment>
     <requestid>1000623</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>91a9d8d44a80e15b222d05eda8adc91e</srcmd5>
+    <version>1.11.5</version>
+    <time>1663935333</time>
+    <user>dimstar_suse</user>
+    <comment>Version update</comment>
+    <requestid>1005574</requestid>
+  </revision>
 </revisionlist>

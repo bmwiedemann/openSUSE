@@ -17,7 +17,7 @@
 
 
 Name:           element-desktop
-Version:        1.11.4
+Version:        1.11.5
 Release:        0
 Summary:        A glossy Matrix collaboration client - desktop
 License:        Apache-2.0
@@ -65,6 +65,7 @@ tar xf %{SOURCE2}
 ls ./npm-packages-offline-cache | head
 
 export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
 
 yarn install --offline --pure-lockfile
 
