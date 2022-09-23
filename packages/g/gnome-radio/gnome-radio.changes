@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 22 15:00:37 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 46.0:
+  + Minor UI changes.
+  + Added radio stations.
+  + Revert back to GTK3 (no reason given).
+- Replace pkgconfig(gtk4) BuildRequires with pkgconfig(gtk+-3.0),
+  following upstream.
+
+-------------------------------------------------------------------
 Tue Aug 30 08:31:43 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 45.1:
