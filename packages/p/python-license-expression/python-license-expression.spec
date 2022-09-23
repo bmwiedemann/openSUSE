@@ -25,13 +25,13 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/nexB/license-expression
 Source:         https://files.pythonhosted.org/packages/source/l/license-expression/license-expression-%{version}.tar.gz
-BuildRequires:  %{python_module boolean.py >= 3.6}
+BuildRequires:  %{python_module boolean.py >= 4.0}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-boolean.py >= 3.6
+Requires:       python-boolean.py >= 4.0
 BuildArch:      noarch
 %python_subpackages
 
