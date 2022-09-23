@@ -237,7 +237,7 @@ Preinstall: aaa_base filesystem attr bash bash-sh coreutils diffutils
 Preinstall: fillup glibc grep pam permissions rpm rpm-config-SUSE sed tar
 Preinstall: libbz2-1 libgcc_s1 libncurses6 libreadline8 libz1 libselinux1
 Preinstall: libgcrypt20 libgpg-error0 liblzma5 libcap2 libacl1 libattr1
-Preinstall: libpopt0 libelf1 libpcre1 libzstd1 libpcre2-8-0
+Preinstall: libpopt0 libelf1 libzstd1 libpcre2-8-0
 
 #Runscripts: aaa_base
 
