@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Thu Sep 22 19:52:14 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- install LICENSE
+- use cmake macros for building
+- enable debuginfo subpackages
+- reformat spec file 
+
+-------------------------------------------------------------------
+Tue Jun 28 05:30:56 UTC 2022 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- Created package level-zero version 1.8.5
+  * Remove RTLD_DEEPBIND from driver dlopen calls
+  * Add loader code generation scripts
+  * Update to spec 1.4.8 which includes fixes to zes_power_limit_ext_desc_t
+
