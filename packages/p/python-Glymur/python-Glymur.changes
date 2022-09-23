@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Sep 22 19:12:41 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to v0.11.7
+  * Error out early when writing 1x1 tile-by-tile
+
+- Update to v0.11.6
+  * Do not install test, test.data packages
+  * Fix Changelog regarding v0.11.6
+  * Fix reads where COD segment not at index[2]
+  * This fix not included in 0.11.5
+
+- Update to v0.11.5
+  * Fix reads where COD segment not at index[2]
+
+- Update to v0.11.4
+  * Fix ResolutionBox with tiff2jp2 
+
+- Update to v0.11.3
+  * Fix placement of Resolutionbox
+
+- Update to v0.11.2
+  * Relax ResolutionBox requirement on child boxes.
+
+- Update to v0.11.1
+  * Improve efficiency of striped TIFF to tiled JP2 conversion.
+
+- Update to v0.11.0
+  * Add options for supporting ResolutionBoxes.
+  * Fix ctypes interface to C library on windows.
+  * Add option to convert XMLPacket into UUID box.
+  * Add option for excluding tags from Exif UUID box.  
+
+-------------------------------------------------------------------
 Tue Aug 16 16:32:55 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to v0.10.2
