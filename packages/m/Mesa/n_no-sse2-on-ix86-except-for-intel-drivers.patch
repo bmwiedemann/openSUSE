@@ -1,11 +1,12 @@
-diff -u -r mesa-21.3.3.orig/meson.build mesa-21.3.3/meson.build
---- mesa-21.3.3.orig/meson.build	2022-01-06 19:34:26.332485000 +0100
-+++ mesa-21.3.3/meson.build	2022-01-06 19:32:11.286680000 +0100
-@@ -1231,35 +1231,8 @@
+Index: mesa-22.2.0/meson.build
+===================================================================
+--- mesa-22.2.0.orig/meson.build
++++ mesa-22.2.0/meson.build
+@@ -1275,35 +1275,8 @@ if host_machine.system() == 'windows'
    endif
  endif
  
--if host_machine.cpu_family().startswith('x86') and cc.get_id() != 'msvc'
+-if host_machine.cpu_family().startswith('x86') and cc.get_argument_syntax() != 'msvc'
 -  pre_args += '-DUSE_SSE41'
 -  with_sse41 = true
 -  sse41_args = ['-msse4.1']

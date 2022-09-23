@@ -33,7 +33,7 @@
 
 %define glamor 1
 %define _name_archive mesa
-%define _version 22.1.7
+%define _version 22.2.0
 %define with_opencl 0
 %define with_vulkan 0
 %define with_llvm 0
@@ -106,7 +106,7 @@
 %endif
 
 Name:           Mesa%{psuffix}
-Version:        22.1.7
+Version:        22.2.0
 Release:        0
 Summary:        System for rendering 3-D graphics
 License:        MIT
@@ -129,7 +129,6 @@ Patch200:       u_fix-build-on-ppc64le.patch
 Patch300:       n_buildfix-21.3.0.patch
 Patch400:       n_no-sse2-on-ix86-except-for-intel-drivers.patch
 Patch500:       n_stop-iris-flicker.patch
-Patch1500:      llvm15.patch
 %ifarch %{ix86} x86_64
 BuildRequires:  DirectX-Headers
 %endif
@@ -753,7 +752,6 @@ rm -rf docs/README.{VMS,WIN32,OS2}
 %patch400 -p1
 %endif
 %patch500 -p1
-%patch1500 -p1
 
 # Remove requires to vulkan libs from baselibs.conf on platforms
 # where vulkan build is disabled; ugly ...

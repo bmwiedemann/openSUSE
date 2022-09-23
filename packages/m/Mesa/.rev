@@ -4980,4 +4980,17 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
     <comment></comment>
     <requestid>1003585</requestid>
   </revision>
+  <revision rev="451" vrev="323">
+    <srcmd5>043ba65c9b61186c45bd044308bf7ad0</srcmd5>
+    <version>unknown</version>
+    <time>1663935289</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 22.2.0
+  * AMD RDNA3 Prep, Intel Arc Graphics, Many Vulkan Improvements;
+    more details on Phoronix:
+    https://www.phoronix.com/news/Mesa-22.2-Released
+- supersedes llvm15.patch
+- refreshed n_no-sse2-on-ix86-except-for-intel-drivers.patch</comment>
+    <requestid>1005404</requestid>
+  </revision>
 </revisionlist>
