@@ -1,7 +1,7 @@
 #
 # spec file for package python-spyder-terminal
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 # But we need the python3-spyder-terminal name, provided by the python_subpackages rewrite
 %define pythons python3
 Name:           python-spyder-terminal
-Version:        1.1.0
+Version:        1.2.2
 Release:        0
 Summary:        Operating system virtual terminal plugin for the Spyder IDE
 License:        MIT
@@ -34,14 +34,16 @@ Source0:        https://files.pythonhosted.org/packages/source/s/spyder-terminal
 Source1:        https://github.com/spyder-ide/spyder-terminal/archive/v%{version}.tar.gz#/%{name}-%{version}-gh.tar.gz
 # The bundled nodejs stuff has a few files tripping rpmlint
 Source2:        %{name}-rpmlintrc
+# PATCH-FIX-OPENSUSE fix-test-terminal-closing.patch
+Patch0:         fix-test-terminal-closing.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-setuptools
 Requires:       python-coloredlogs
 Requires:       python-requests
-Requires:       python-terminado >= 0.10.0
+Requires:       python-terminado >= 0.13.1
 Requires:       python-tornado
-Requires:       spyder >= 5.1.1
+Requires:       spyder >= 5.2.1
 # SECTION test requirements
 BuildRequires:  python3-coloredlogs
 BuildRequires:  python3-flaky
@@ -50,9 +52,9 @@ BuildRequires:  python3-pytest-qt
 BuildRequires:  python3-pytest-timeout
 BuildRequires:  python3-pytest-xvfb
 BuildRequires:  python3-requests
-BuildRequires:  python3-terminado >= 0.10.0
+BuildRequires:  python3-terminado >= 0.13.1
 BuildRequires:  python3-tornado
-BuildRequires:  spyder >= 5.1.1
+BuildRequires:  spyder >= 5.2.1
 BuildRequires:  xdpyinfo
 # /SECTION
 BuildArch:      noarch
@@ -76,6 +78,7 @@ tar --strip-components=1 -xzf %{SOURCE1} \
     spyder-terminal-%{version}/conftest.py \
     spyder-terminal-%{version}/spyder_terminal/tests \
     spyder-terminal-%{version}/spyder_terminal/server/tests
+%autopatch -p1
 
 # fix rpmlint non-executable-script
 sed -i -e '/^#!\//, 1d' spyder_terminal/server/__main__.py

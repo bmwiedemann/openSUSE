@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Sep 22 14:50:26 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to v1.2.2 
+  * Upgrade to pywinpty 2.0.5
+  * Maintenance of the CIs
+  * Prevent showing an error when closing the plugin
+- v1.2.1
+  * Fix double zoom level for new terminals
+  * Upgrade to pywinpty 2.0.1
+  * Fix Spyder requirement
+  * Maintenance of the CIs
+- v1.2.0
+  * Migration to Spyder's 5.2.x new API
+  * Update to xtermjs 4.15
+  * Improve new terminals when a project is available
+
+- Add fix-test-terminal-closing.patch to fix the test_terminal_closing that
+  expects an AttributeError instead of a WebSocketClosedError
+
+-------------------------------------------------------------------
 Sun Oct 10 20:01:28 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to v1.1.0
