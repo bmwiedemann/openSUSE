@@ -1,7 +1,7 @@
 #
 # spec file for package python-boolean.py
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-boolean.py
-Version:        3.7
+Version:        4.0
 Release:        0
 Summary:        Module to define boolean algebras and create/parse boolean expressions
 License:        BSD-2-Clause
@@ -56,7 +57,7 @@ rm -rf html/.{doctrees,buildinfo}
 
 %files %{python_files}
 %license LICENSE.txt
-%doc README.md CHANGELOG.rst html/
+%doc README.rst CHANGELOG.rst html/
 %{python_sitelib}/*
 
 %changelog

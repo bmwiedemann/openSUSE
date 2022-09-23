@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Sep 22 11:24:15 UTC 2022 - Matthias Fehring <buschmann23@opensuse.org>
+
+- update to 4.0
+  * API changes
+    + Drop support for Python 2.
+    + Test on Python 3.10
+    + Make Expression.sort_order an instance attributes and not a
+      class attribute
+  * Misc.
+    + Correct licensing documentation
+    + Improve docstringf and apply minor refactorings
+    + Adopt black code style and isort for imports
+
+-------------------------------------------------------------------
 Mon Sep  6 08:50:56 UTC 2021 - pgajdos@suse.com
 
 - %check: use %pyunittest rpm macro
