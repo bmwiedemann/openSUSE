@@ -18,9 +18,9 @@
 
 %define WTSRVDIR /srv/wt
 %define WTRUNDIR %{WTSRVDIR}/run
-%define so_version 4_6_1
+%define so_version 4_8_1
 Name:           wt
-Version:        4.6.1
+Version:        4.8.1
 Release:        0
 Summary:        Web Toolkit
 License:        GPL-2.0-only

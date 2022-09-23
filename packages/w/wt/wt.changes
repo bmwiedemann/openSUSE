@@ -1,7 +1,21 @@
 -------------------------------------------------------------------
+Thu Sep 22 04:55:30 UTC 2022 - Dmitriy Perlow <dap.darkness@gmail.com>
+
+- Update to 4.8.1
+  * Fixed compatibility with recent libharu;
+  * WDateEdit: fix updating of calendar when validator is changed;
+  * Made the validatorChanged() function virtual in WFormWidget so
+    it can be overridden in WDateEdit, to update its WCalendar;
+  * Added regression tests in WDateEditTest;
+  * Added internal documentation for validatorChanged() and
+    WValidator::repaint(). Doxygen will only look at this
+    documentation if INTERNAL_DOCS is set to YES in Doxyfile;
+  * https://www.webtoolkit.eu/wt/doc/reference/html/Releasenotes.html
+
+-------------------------------------------------------------------
 Tue Feb  8 19:01:06 UTC 2022 - Loren Burkholder <computersemiexpert@outlook.com>
 
-- Upate to 4.6.1. (4.6.0 was skipped by openSUSE packagers)
+- Update to 4.6.1. (4.6.0 was skipped by openSUSE packagers)
   * A potential null pointer dereference would crash the Wt site or widget gallery every few days.
 
 -------------------------------------------------------------------
