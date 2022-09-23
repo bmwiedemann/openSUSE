@@ -270,11 +270,11 @@
       <package name="MozillaThunderbird-translations-common"/>
       <package name="MozillaThunderbird-translations-other"/>
       <package name="libmozjs-78-0"/>
-      <package name="libmozjs-91-0"/>
+      <package name="libmozjs-102-0"/>
       <package name="mozjs78"/>
-      <package name="mozjs91"/>
+      <package name="mozjs102"/>
       <package name="mozjs78-devel"/>
-      <package name="mozjs91-devel"/>
+      <package name="mozjs102-devel"/>
       <package name="nodejs-electron"/>
       <package name="nodejs-electron-devel"/>
     </packagelist>

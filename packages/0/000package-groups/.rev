@@ -1453,4 +1453,11 @@ is not needed.
     <user>dimstar_suse</user>
     <comment>Fix typo</comment>
   </revision>
+  <revision rev="203" vrev="201">
+    <srcmd5>8870dfc03a7bb939f1a3cb2230d055db</srcmd5>
+    <version>unknown</version>
+    <time>1663911061</time>
+    <user>dimstar_suse</user>
+    <comment>mozjs91 is gone, add 102 to i686 list</comment>
+  </revision>
 </revisionlist>
