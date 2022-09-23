@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 15 17:41:00 UTC 2022 - lars@linux-schulserver.de - 1.9.0
+
+- disable enforcement of AVX support in the CPU: let john handle this 
+  during runtime automatically (bsc#1202318)
+
+-------------------------------------------------------------------
 Tue Oct 12 15:55:35 UTC 2021 - Sarah Kriesch <sarah.kriesch@opensuse.org>
 
 - Upstream patch for Big Endians in s390x-upstream.patch

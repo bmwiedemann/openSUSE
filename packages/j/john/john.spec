@@ -1,7 +1,7 @@
 #
 # spec file for package john
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -80,13 +80,13 @@ pushd src
 %configure --with-systemwide \
            --disable-openmp \
            --enable-fuzz \
-	   --enable-ztex=yes \
+           --enable-ztex=yes \
            --enable-experimental-code \
            --enable-pkg-config \
-%ifarch x86_64
-            --enable-simd=avx \
-%endif
            --disable-native-tests
+#ifarch x86_64
+#            --enable-simd=avx \
+#endif
 %make_build -s clean
 %make_build
 popd
