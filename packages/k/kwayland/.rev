@@ -862,4 +862,13 @@
     <comment>KDE Frameworks 5.98.0 (forwarded request 1001655 from cgiboudeaux)</comment>
     <requestid>1002859</requestid>
   </revision>
+  <revision rev="104" vrev="2">
+    <srcmd5>db59e2362b1aca2b1abbe2dd296e7d17</srcmd5>
+    <version>5.98.0</version>
+    <time>1663935293</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream fix (kde#459188)
+  * 0001-client-plasmashell-add-fallback-for-applet-popups.patch</comment>
+    <requestid>1005433</requestid>
+  </revision>
 </revisionlist>

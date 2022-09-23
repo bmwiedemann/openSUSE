@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 22 14:35:55 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream fix (kde#459188)
+  * 0001-client-plasmashell-add-fallback-for-applet-popups.patch
+
+-------------------------------------------------------------------
 Tue Sep  6 07:17:22 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.98.0
