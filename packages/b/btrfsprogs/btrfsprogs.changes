@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Sep 17 16:16:37 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.19.1:
+  * fix memory leaks (extent buffer, path)
+  * check: verify block device size vs item
+  * rescue fix-device-size: allow to shrink device item
+  * receive: fix crash on wrong pinter free()
+  * other:
+    * experimental: support for block-group-tree
+    * documentation updates
+    * new tests
+
+-------------------------------------------------------------------
 Thu Sep  1 00:00:00 CEST 2022 - dsterba@suse.cz
 
 - update to 5.19:

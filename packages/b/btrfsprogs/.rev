@@ -1169,4 +1169,12 @@ This set of changes is not suitable for direct copy to currently released produc
     <comment>- update to 5.19: (forwarded request 1000743 from dsterba)</comment>
     <requestid>1000745</requestid>
   </revision>
+  <revision rev="132" vrev="1">
+    <srcmd5>01b1b77389bdf66cea95302193a084c4</srcmd5>
+    <version>5.19.1</version>
+    <time>1663935292</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1005422</requestid>
+  </revision>
 </revisionlist>
