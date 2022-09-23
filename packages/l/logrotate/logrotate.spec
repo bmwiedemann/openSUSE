@@ -32,7 +32,7 @@ Source2:        logrotate.default
 Source3:        logrotate.service
 Source10:       https://github.com/%{name}/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source100:      %{name}-rpmlintrc
-Patch0:         logrotate-3.20.0-man_logrotate.patch
+Patch0:         logrotate-vendor-dir.patch
 BuildRequires:  acl
 BuildRequires:  automake
 BuildRequires:  libacl-devel
@@ -60,7 +60,8 @@ autoreconf -f -i
 %configure \
     --disable-silent-rules \
     --with-state-file-path=%{_localstatedir}/lib/misc/logrotate.status \
-    --disable-werror
+    --disable-werror \
+    --enable-vendordir
 %make_build
 
 %check
