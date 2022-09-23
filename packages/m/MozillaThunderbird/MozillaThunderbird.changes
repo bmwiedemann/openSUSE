@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Fri Sep 16 08:17:49 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 102.3.0
+  https://www.thunderbird.net/en-US/thunderbird/102.3.0/releasenotes/
+  * Thunderbird will no longer attempt to import account passwords
+    when importing from another Thunderbird profile in order to
+    prevent profile corruption and permanent data loss. (bmo#1790605)
+  * Devtools performance profile will use Thunderbird presets
+    instead of Web Developer presets (bmo#1785954)
+  * Thunderbird startup performance improvements (bmo#1785967)
+  * Saving email source and images failed (bmo#1777323, bmo#1778804)
+  * Error message was shown repeatedly when temporary disk
+    space was full (bmo#1788580)
+  * Attaching OpenPGP keys without a set size to non-encrypted
+    messages briefly displayed a size of zero bytes (bmo#1788952)
+  * Global Search entry box initially contained "undefined" (bmo#1780963)
+  * Delete from POP Server mail filter rule intermittently
+    failed to trigger (bmo#1789418)
+  * Connections to POP3 servers without UIDL support failed (bmo#1789314)
+  * Pop accounts with "Fetch headers only" set downloaded complete
+    messages if server did not advertise TOP capability (bmo#1789356)
+  * "File -> New -> Address Book Contact" from Compose window did
+    not work (bmo#1782418)
+  * Attach "My vCard" option in compose window was not available
+    (bmo#1787614)
+  * Improved performance of matching a contact to an email address
+    (bmo#1782725)
+  * Address book only recognized a contact's first two email
+    addresses (bmo#1777156)
+  * Address book search and autocomplete failed if a contact vCard
+    could not be parsed (bmo#1789793)
+  * Downloading NNTP messages for offline use failed (bmo#1785773)
+  * NNTP client became stuck when connecting to Public-Inbox servers
+    (bmo#1786203, boo#1203554)
+  * Various visual and UX improvements (bmo#1782235, bmo#1787448,
+    bmo#1788725, bmo#1790324)
+  * unresolved: No dedicated "Department" field in address book
+    (bmo#1777780)
+  MFSA 2022-42 (bsc#1203477)
+  * CVE-2022-40959 (bmo#1782211)
+    Bypassing FeaturePolicy restrictions on transient pages
+  * CVE-2022-40960 (bmo#1787633)
+    Data-race when parsing non-UTF-8 URLs in threads
+  * CVE-2022-40958 (bmo#1779993)
+    Bypassing Secure Context restriction for cookies with __Host
+    and __Secure prefix
+  * CVE-2022-40956 (bmo#1770094)
+    Content-Security-Policy base-uri bypass
+  * CVE-2022-40957 (bmo#1777604)
+    Incoherent instruction cache when building WASM on ARM64
+  * CVE-2022-3155 (bmo#1789061)
+    Attachment files saved to disk on macOS could be executed
+    without warning
+  * CVE-2022-40962 (bmo#1767360, bmo#1776655, bmo#1777574, bmo#1784835,
+    bmo#1785109, bmo#1786502, bmo#1789440)
+    Memory safety bugs fixed in Thunderbird 102.3
+
+-------------------------------------------------------------------
+Thu Sep  8 06:31:58 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 102.2.2
+  https://www.thunderbird.net/en-US/thunderbird/102.2.2/releasenotes/
+  * Setting added to change Calendar event double-click action to
+    open Edit Event dialog rather than view only;
+    Set calendar.events.defaultActionEdit to true
+  * Running Compact Folders on maildir folders caused a redownload
+    of all messages in the folder
+  * Accessing mail folders in profiles with many folders was slow
+  * SMTP servers were not always properly initialized, and were not
+    listed in Account Settings
+  * APOP authentication unsupported when connecting to POP3 server
+  * OpenPGP key discovery failed
+  * POP accounts hosted by AOL were not able to authenticate using OAuth2
+  * Unable to open context menu in newsgroups header for groups
+    that are not subscribed
+
+-------------------------------------------------------------------
 Thu Sep  8 06:31:58 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 102.2.2
