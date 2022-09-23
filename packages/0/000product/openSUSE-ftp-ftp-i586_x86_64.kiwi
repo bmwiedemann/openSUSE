@@ -356,8 +356,8 @@
       <repopackage name="libgomp46" onlyarch="skipit"/>
       <repopackage name="libgomp46-32bit" onlyarch="skipit"/>
       <repopackage name="libmicro-ctcs-glue" onlyarch="skipit"/>
+      <repopackage name="libmozjs-102-0" arch="i586,i686,x86_64" onlyarch="x86_64,i686"/>
       <repopackage name="libmozjs-78-0" arch="i586,i686,x86_64" onlyarch="x86_64,i686"/>
-      <repopackage name="libmozjs-91-0" arch="i586,i686,x86_64" onlyarch="x86_64,i686"/>
       <repopackage name="libmudflap41" onlyarch="skipit"/>
       <repopackage name="libmudflap41-32bit" onlyarch="skipit"/>
       <repopackage name="libmudflap45" onlyarch="skipit"/>
@@ -422,10 +422,10 @@
       <repopackage name="MozillaThunderbird" arch="i586,i686,x86_64" onlyarch="x86_64,i686"/>
       <repopackage name="MozillaThunderbird-translations-common" arch="i586,i686,x86_64" onlyarch="x86_64,i686"/>
       <repopackage name="MozillaThunderbird-translations-other" arch="i586,i686,x86_64" onlyarch="x86_64,i686"/>
+      <repopackage name="mozjs102" arch="i586,i686,x86_64" onlyarch="x86_64,i686"/>
+      <repopackage name="mozjs102-devel" arch="i586,i686,x86_64" onlyarch="x86_64,i686"/>
       <repopackage name="mozjs78" arch="i586,i686,x86_64" onlyarch="x86_64,i686"/>
       <repopackage name="mozjs78-devel" arch="i586,i686,x86_64" onlyarch="x86_64,i686"/>
-      <repopackage name="mozjs91" arch="i586,i686,x86_64" onlyarch="x86_64,i686"/>
-      <repopackage name="mozjs91-devel" arch="i586,i686,x86_64" onlyarch="x86_64,i686"/>
       <repopackage name="nodejs-electron" arch="i586,i686,x86_64" onlyarch="x86_64,i686"/>
       <repopackage name="nodejs-electron-devel" arch="i586,i686,x86_64" onlyarch="x86_64,i686"/>
       <repopackage name="OpenOffice_org-branding-SLED" onlyarch="skipit"/>
