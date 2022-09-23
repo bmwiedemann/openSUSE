@@ -19,8 +19,8 @@ Wed May 25 06:54:56 UTC 2022 - Peter Varkoly <varkoly@suse.com>
 Mon May 02 09:29:54 UTC 2022 - varkoly@suse.com
 
 - Update to version 1.0.12+v1.git.1650454062.1fbde71c:
-  * bugfix for comment in external/ec2
-  * Update external/ec2 to support IMDSv2
+  * bugfix for comment in external/ec2 (bsc#1197681)
+  * Update external/ec2 to support IMDSv2 (jsc#SLE-23490,jsc#SLE-23491, jsc#SLE-23492, jsc#SLE-23494)
   * ec2: add the action parameter to the getinfo_xml function
   * drac3_command: check for truncated url
   * wti_mpc: fix metadata mib-version description
@@ -29,6 +29,25 @@ Mon May 02 09:29:54 UTC 2022 - varkoly@suse.com
   * ipmilan_test: fix for -Werror=uninitialized
   * fix for -Werror=sizeof-pointer-memaccess
   * spec: drop /man1/ from file list, no longer used
+
+- Merge: 
+  * 0001-Update-external-ec2-to-support-IMDSv2.patch
+  * 0002-bugfix-for-comment-in-external-ec2.patch
+
+-------------------------------------------------------------------
+Wed Apr 20 14:16:52 UTC 2022 - Peter Varkoly <varkoly@suse.com>
+
+- Requesting cluster-glue bugfix (bsc#1197681)
+  * Add upstream patch:
+    0002-bugfix-for-comment-in-external-ec2.patch
+
+-------------------------------------------------------------------
+Thu Feb 24 12:55:54 UTC 2022 - Peter Varkoly <varkoly@suse.com>
+
+- (jsc#SLE-23490) (jsc#SLE-23491) (jsc#SLE-23492) (jsc#SLE-23494)
+  IMDSv2 support in ec2 stonith agent
+  * add upstream patch:
+    0001-Update-external-ec2-to-support-IMDSv2.patch
 
 -------------------------------------------------------------------
 Thu Dec 23 07:35:03 UTC 2021 - XinLiang <XLiang@suse.com>

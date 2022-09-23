@@ -648,4 +648,12 @@ New since previous SR: added patches to .changes file.</comment>
   Add addFilter(&quot;shlib-policy-name-error&quot;) in cluster-glue.rpmlintrc</comment>
     <requestid>979414</requestid>
   </revision>
+  <revision rev="73" vrev="3">
+    <srcmd5>ad69e90d4d39010e09043606b717eca5</srcmd5>
+    <version>1.0.12+v1.git.1650454062.1fbde71c</version>
+    <time>1663935294</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1005436</requestid>
+  </revision>
 </revisionlist>

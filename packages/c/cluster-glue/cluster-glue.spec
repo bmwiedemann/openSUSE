@@ -80,10 +80,10 @@ standards, and an interface to common STONITH devices.
 Summary:        Reusable cluster libraries
 Group:          System/Libraries
 Requires:       %{name} = %{version}-%{release}
+Conflicts:      libglue2
 Conflicts:      libheartbeat2 < 3.0.2
 Obsoletes:      libglue2
 Obsoletes:      libheartbeat2 < 3.0.2
-Conflicts:      libglue2
 
 %description libs
 A collection of libraries that are useful for writing cluster managers
@@ -93,7 +93,9 @@ such as Pacemaker.
 Summary:        Headers and libraries for writing cluster managers
 Group:          Development/Libraries/C and C++
 Requires:       %{name}-libs = %{version}-%{release}
+Conflicts:      libglue-devel
 Conflicts:      libheartbeat-devel < 3.0.2
+Obsoletes:      libglue-devel
 Obsoletes:      libheartbeat-devel < 3.0.2
 
 %description devel
@@ -175,7 +177,7 @@ mkdir -p %{_var}/run/heartbeat/rsctmp
 %{_unitdir}/logd.service
 %{_mandir}/man8/*
 %doc AUTHORS
-%doc COPYING
+%license COPYING
 %doc logd/logd.cf
 %{_sbindir}/rclogd
 %{_libdir}/heartbeat/ha_logd
@@ -193,7 +195,7 @@ mkdir -p %{_var}/run/heartbeat/rsctmp
 %files libs
 %{_libdir}/lib*.so.*
 %doc AUTHORS
-%doc COPYING.LIB
+%license COPYING.LIB
 
 %files devel
 %dir %{_libdir}/heartbeat
@@ -217,7 +219,7 @@ mkdir -p %{_var}/run/heartbeat/rsctmp
 %{_libdir}/stonith/plugins/stonith2/ssh.so
 %{_libdir}/stonith/plugins/external/ssh
 %doc AUTHORS
-%doc COPYING
-%doc COPYING.LIB
+%license COPYING
+%license COPYING.LIB
 
 %changelog
