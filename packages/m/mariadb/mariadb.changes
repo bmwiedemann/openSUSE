@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Sep 21 13:54:53 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 10.9.3:
+  * release notes and changelog:
+    https://mariadb.com/kb/en/library/mariadb-1093-release-notes
+    https://mariadb.com/kb/en/library/mariadb-1093-changelog
+
+-------------------------------------------------------------------
+Tue Sep 13 09:39:47 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 10.9.2:
+  * changes and improvements in MariaDB 10.9:
+    https://mariadb.com/kb/en/changes-improvements-in-mariadb-109/
+  * release notes and changelog:
+    https://mariadb.com/kb/en/library/mariadb-1092-release-notes
+    https://mariadb.com/kb/en/library/mariadb-1092-changelog
+    https://mariadb.com/kb/en/library/mariadb-1091-release-notes
+    https://mariadb.com/kb/en/library/mariadb-1091-changelog
+    https://mariadb.com/kb/en/library/mariadb-1090-release-notes
+    https://mariadb.com/kb/en/library/mariadb-1090-changelog
+  * fixes for the following security vulnerabilities:
+    10.9.2: CVE-2022-32082 (bsc#1201162)
+            CVE-2022-32089 (bsc#1201169)
+            CVE-2022-32081 (bsc#1201161)
+            CVE-2022-32091 (bsc#1201170)
+            CVE-2022-32084 (bsc#1201164)
+            CVE-2022-38791 (bsc#1202863)
+  * The package is not affected by the following security vulnerabilities:
+    CVE-2018-25032 (bsc#1197459)
+- Update list of skipped tests
+
+-------------------------------------------------------------------
 Wed Aug 31 15:06:37 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update mysql-systemd-helper to be aware of custom group, bsc#1200105

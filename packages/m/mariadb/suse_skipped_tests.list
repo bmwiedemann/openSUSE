@@ -87,3 +87,27 @@ innodb.row_size_error_log_warnings_3             : since 10.8.3 - s390x
 main.func_json_notembedded                       : since 10.8.3 - s390x, ppc64
 main.func_math                                   : since 10.8.3 - ppc64le
 
+binlog_encryption.rpl_cant_read_event_incident   : since 10.9.2 - all
+rpl.rpl_perfschema_applier_status_by_coordinator : since 10.9.2 - all
+rpl.rpl_xa_survive_disconnect_lsu_off            : since 10.9.2 - all
+rpl.rpl_cant_read_event_incident                 : since 10.9.2 - all
+rpl.rpl_heartbeat_basic                          : since 10.9.2 - all
+rpl.rpl_xa_survive_disconnect                    : since 10.9.2 - all
+rpl.rpl_report_port                              : since 10.9.2 - all
+rpl.rpl_reset_slave_fail                         : since 10.9.2 - all
+rpl.rpl_domain_id_filter_restart                 : since 10.9.2 - all
+rpl.rpl_upgrade_master_info                      : since 10.9.2 - all
+binlog_encryption.rpl_gtid_basic                 : since 10.9.2 - all
+multi_source.info_logs                           : since 10.9.2 - all
+rpl.rpl_mdev6020                                 : since 10.9.2 - all
+rpl.rpl_semi_sync_wait_point                     : since 10.9.2 - all
+rpl.rpl_err_ignoredtable                         : since 10.9.2 - all
+rpl.rpl_trigger                                  : since 10.9.2 - all
+rpl.rpl_row_img_sequence                         : since 10.9.2 - all
+rpl.rpl_gtid_basic                               : since 10.9.2 - all
+rpl.rpl_old_master                               : since 10.9.2 - all
+main.loadxml                                     : since 10.9.2 - all
+main.lock_kill                                   : since 10.9.2 - all
+innodb.innodb_bug51920                           : since 10.9.2 - all
+rpl.rpl_slave_shutdown_mdev20821                 : since 
+
