@@ -2712,4 +2712,13 @@ do special case rings. (forwarded request 934053 from matz2)</comment>
   #29545) (forwarded request 1002733 from Andreas_Schwab)</comment>
     <requestid>1002734</requestid>
   </revision>
+  <revision rev="267" vrev="5">
+    <srcmd5>7d244a79fb47850a83a141ecc1a6b8e9</srcmd5>
+    <version>2.36</version>
+    <time>1663935258</time>
+    <user>dimstar_suse</user>
+    <comment>- makeflags.patch: Makerules: fix MAKEFLAGS assignment for upcoming
+  make-4.4 (BZ# 29564) (forwarded request 1005182 from Andreas_Schwab)</comment>
+    <requestid>1005183</requestid>
+  </revision>
 </revisionlist>

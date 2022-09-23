@@ -297,6 +297,8 @@ Patch1006:      ldd-vdso-dependency.patch
 Patch1007:      syslog-extra-whitespace.patch
 # PATCH-FIX-UPSTREAM errlist: add missing entry for EDEADLOCK (BZ #29545)
 Patch1008:      errlist-edeadlock.patch
+# PATCH-FIX-UPSTREAM Makerules: fix MAKEFLAGS assignment for upcoming make-4.4 (BZ# 29564)
+Patch1009:      makeflags.patch
 
 ###
 # Patches awaiting upstream approval
@@ -530,6 +532,7 @@ library in a cross compilation setting.
 %patch1006 -p1
 %patch1007 -p1
 %patch1008 -p1
+%patch1009 -p1
 %endif
 
 %patch2000 -p1
