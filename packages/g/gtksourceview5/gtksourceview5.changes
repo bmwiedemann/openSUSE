@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Sep 22 07:55:56 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 5.6.1:
+  + Improve resilience of GtkSourceHover assistants to prevent
+    unbreakable grabs by application added widgets.
+  + Hide all assistants when unmapping GtkSourceViews.
+  + Don't dismiss hover delay timeout from pointer clicks, allow
+    them to click through to display hover information.
+  + Don't show new assistants unless parent GtkSourceView is
+    mapped. This can improve situations with tabbed editors and
+    asynchronous operations to load completion, hover data, etc.
+  + Additional Vim commands.
+  + Updated languages: go.lang.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Sep 18 10:38:39 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 5.6.0:
