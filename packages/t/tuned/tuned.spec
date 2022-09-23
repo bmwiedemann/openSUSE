@@ -17,7 +17,6 @@
 
 
 %define         profile_dir %{_prefix}/lib/%{name}
-
 Name:           tuned
 Version:        2.18.0.8+git.6f907c9
 Release:        0
@@ -175,6 +174,8 @@ Additional tuned profile(s) optimized for IBM Spectrum Scale.
 # The tuned daemon is written in pure Python. Nothing requires to be built.
 # Just a hack to avoid installation in a wrong directory
 sed -i 's|usr/libexec/tuned|%{profile_dir}|' Makefile
+sed -i 's|$(SYSCONFDIR)/modprobe.d|%{_modprobedir}|' Makefile
+sed -i 's|$(SYSCONFDIR)/dbus-1/system.d|%{_datadir}/dbus-1/system.d|' Makefile
 
 %install
 %make_install TUNED_PROFILESDIR=%{profile_dir}
@@ -200,6 +201,14 @@ sed -i 's|.*/\([^/]\+\)/[^\.]\+\.conf|\1|' %{_sysconfdir}/tuned/active_profile
 
 %pre
 %service_add_pre %{name}.service
+# Avoid restoring outdated stuff in posttrans
+[ ! -f "/etc/modprobe.d/tuned.conf.rpmsave" ] || \
+  mv -f "/etc/modprobe.d/tuned.conf.rpmsave" "/etc/modprobe.d/tuned.conf.rpmsave.old" || :
+        
+%posttrans
+# Migration of modprobe.conf files to _modprobedir
+[ ! -f "/etc/modprobe.d/tuned.conf.rpmsave" ] || \
+  mv -fv "/etc/modprobe.d/tuned.conf.rpmsave" "/etc/modprobe.d/tuned.conf" || :
 
 %preun
 %service_del_preun %{name}.service
@@ -211,9 +220,6 @@ sed -i 's|.*/\([^/]\+\)/[^\.]\+\.conf|\1|' %{_sysconfdir}/tuned/active_profile
 %endif
 
 %files
-%dir %_sysconfdir/dbus-1
-%dir %_sysconfdir/dbus-1/system.d
-%dir %{_sysconfdir}/modprobe.d
 %license COPYING
 %doc AUTHORS README
 %{_datadir}/bash-completion/completions/tuned-adm
@@ -253,16 +259,16 @@ sed -i 's|.*/\([^/]\+\)/[^\.]\+\.conf|\1|' %{_sysconfdir}/tuned/active_profile
 # active_profile might be empty when built via build service, but typically
 # not on a real install -> better do not mark it %%ghost
 %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/tuned/active_profile
-%config(noreplace) %{_sysconfdir}/modprobe.d/tuned.conf
 %config(noreplace) %{_sysconfdir}/tuned/cpu-partitioning-variables.conf
 %config(noreplace) %{_sysconfdir}/tuned/tuned-main.conf
 %config(noreplace) %{_sysconfdir}/tuned/profile_mode
 %config(noreplace) %{_sysconfdir}/tuned/post_loaded_profile
 %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/tuned/bootcmdline
-%config %{_sysconfdir}/dbus-1/system.d/com.redhat.tuned.conf
 %{_sysconfdir}/grub.d
 %{_tmpfilesdir}/tuned.conf
 %{_unitdir}/tuned.service
+%{_modprobedir}/tuned.conf
+%{_datadir}/dbus-1/system.d/com.redhat.tuned.conf
 %attr(750, root, root) %dir %{_localstatedir}/log/tuned
 %dir %{_sysconfdir}/tuned
 %{_mandir}/man5/tuned*

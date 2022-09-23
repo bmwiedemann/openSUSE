@@ -273,4 +273,12 @@ A tuned_differ_x86_and_other_archs_in_cpu_plugin.patch
     <comment></comment>
     <requestid>974312</requestid>
   </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>e4be5939d798d1c84f7d65e449a51153</srcmd5>
+    <version>2.18.0.8+git.6f907c9</version>
+    <time>1663935295</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1004565</requestid>
+  </revision>
 </revisionlist>
