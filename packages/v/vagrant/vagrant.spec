@@ -157,8 +157,6 @@ BuildRequires:  %{rubygem mime-types:3 }
 BuildRequires:  %{rubygem builder:3.2 }
 # Prevent have choice for rubygem(ruby:2.6.0:ffi:1) >= 1
 BuildRequires:  %{rubygem ffi >= 1.9 }
-# Prevent have choice for rubygem(ruby:2.5.0:thor:0) >= 0.18
-BuildRequires:  %{rubygem thor:0.19}
 # Prevent have choice for rubygem(ruby:2.5.0:addressable) >= 2.3.6
 BuildRequires:  %{rubygem addressable >= 2.7}
 

@@ -335,4 +335,12 @@
     <comment>Remove BuildRequires on public_suffix</comment>
     <requestid>993687</requestid>
   </revision>
+  <revision rev="43" vrev="6">
+    <srcmd5>fb2790cc307d854b0369f42340f46619</srcmd5>
+    <version>2.2.19</version>
+    <time>1663935288</time>
+    <user>dimstar_suse</user>
+    <comment>Remove BuildRequires on rubygem-thor (no longer necessary)</comment>
+    <requestid>1005399</requestid>
+  </revision>
 </revisionlist>

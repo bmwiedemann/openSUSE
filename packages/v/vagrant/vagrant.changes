@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 22 12:01:34 UTC 2022 - Dan Čermák <dcermak@suse.com>
+
+- Remove BuildRequires on rubygem-thor (no longer necessary)
+
+-------------------------------------------------------------------
 Mon Aug  8 07:17:40 UTC 2022 - Dan Čermák <dcermak@suse.com>
 
 - Remove BuildRequires on public_suffix
