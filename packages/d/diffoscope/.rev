@@ -417,4 +417,20 @@
 </comment>
     <requestid>998322</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>fbaed15dd8075d42a2f60c053958dde5</srcmd5>
+    <version>221</version>
+    <time>1663935308</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 221:
+ - Don't crash if we can open a PDF file with PyPDF but cannot parse the
+   annotations within. (Closes: reproducible-builds/diffoscope#311)
+ - Depend on the dedicated xxd package, not vim-common.
+ - Update external_tools.py to reflect xxd/vim-common change.
+- Remove test_python.test_diff because it's failing, it's not recognizing the
+  pyc file type with the tests fixtures
+https://salsa.debian.org/reproducible-builds/diffoscope/-/issues/284#note_280561
+</comment>
+    <requestid>1005453</requestid>
+  </revision>
 </revisionlist>

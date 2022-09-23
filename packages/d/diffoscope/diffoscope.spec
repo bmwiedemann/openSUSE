@@ -17,7 +17,7 @@
 
 
 Name:           diffoscope
-Version:        220
+Version:        221
 Release:        0
 Summary:        In-depth comparison of files, archives, and directories
 License:        GPL-3.0-or-later
@@ -135,7 +135,8 @@ fi
 
 %check
 # test_identification https://salsa.debian.org/reproducible-builds/diffoscope/-/issues/98
-py.test-%{python3_bin_suffix} -k 'not test_identification'
+# comparators/test_python/test_diff https://salsa.debian.org/reproducible-builds/diffoscope/-/issues/284#note_280561
+py.test-%{python3_bin_suffix} -k 'not ((test_python and test_diff) or test_identification)'
 
 %files
 %doc README.rst
