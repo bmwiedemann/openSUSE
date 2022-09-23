@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-aiofiles
-Version:        0.8.0
+Version:        22.1.0
 Release:        0
 Summary:        File support for asyncio
 License:        Apache-2.0

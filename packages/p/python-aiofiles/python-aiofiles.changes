@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Thu Sep 22 22:41:51 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 22.1.0
+  * Update README
+  * Update test deps
+  * Min Python to 3.7
+  * Bump poetry to 1.2.0
+  * Add missing comma
+  * CI tweaks
+  * Update README.rst
+  * Added os scantdir with is't tests and improved the tests for listdir
+  * Added os listdir function with it's tests
+  * Add notice file
+  * make test skipped below py3.7
+  * add test for `newlines`
+  * move SpooledTempFile.newlines from delegation to property
+  * update docs
+  * Add aiofiles.os.path.islink function
+  * remove symlink file at end of test
+  * Add aiofiles.os.readlink function
+  * Fix typo
+  * Add aiofiles.os.symlink
+  * Add aiofiles.os.unlink
+  * Add aiofiles.os.link function
+  * Add aiofiles.os.renames function
+  * Missing closing quote
+  * Add repo link to pyproject.toml
+- Update to 0.8.0
+  * Tweak README
+  * Update README
+  * Use os.sep
+  * Add prefix, suffix, dir args to TemporaryDirectory
+  * Fix ospath.exists test
+  * Fix typo: aiofiles.ospath.exists
+  * Update Readme with os.makedirs and os.removedirs
+  * Merge branch 'patch-2'
+  * Fix README
+  * Bump poetry
+  * Fix tox.ini
+  * Update README
+  * Black reformat
+  * Skip test on mac
+  * Fixes
+  * Add more os functions
+  * Test for path.sameopenfile
+  * Update README.rst
+  * Provide some async version functions for os.path
+  * Add several async os functions
+  * Add async remove function
+  * Update README
+  * added aiofiles.os.replace
+  * Enable testing on 3.10
+  * Correct license string 
+
+-------------------------------------------------------------------
 Sun Jan  9 15:24:11 UTC 2022 - Torsten Gruner <simmphonie@opensuse.org>
 
 - Update to 0.8.0
