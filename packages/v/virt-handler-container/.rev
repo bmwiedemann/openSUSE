@@ -89,4 +89,12 @@
     <comment></comment>
     <requestid>993187</requestid>
   </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>6ffd8c8c07327d5a7202cd0052c61991</srcmd5>
+    <version>unknown</version>
+    <time>1663935314</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix container build due to symlink issues with SP4/SP5 base images</comment>
+    <requestid>1005518</requestid>
+  </revision>
 </revisionlist>

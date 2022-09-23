@@ -37,8 +37,9 @@ RUN zypper -n install \
               util-linux-systemd && \
     zypper clean -a
 
-RUN ln -s /usr/share/kube-virt/virt-handler/nsswitch.conf /etc/ && \
-    ln -s /usr/share/kube-virt/virt-handler/ipv4-nat.nft /etc/nftables/ && \
-    ln -s /usr/share/kube-virt/virt-handler/ipv6-nat.nft /etc/nftables/
+RUN mkdir -p /etc/nftables && \
+    ln -sf /usr/share/kube-virt/virt-handler/nsswitch.conf /etc/ && \
+    ln -sf /usr/share/kube-virt/virt-handler/ipv4-nat.nft /etc/nftables/ && \
+    ln -sf /usr/share/kube-virt/virt-handler/ipv6-nat.nft /etc/nftables/
 
 ENTRYPOINT [ "/usr/bin/virt-handler" ]
