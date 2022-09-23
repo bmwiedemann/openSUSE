@@ -237,4 +237,11 @@
   * Fix bug not using custom name for summary and description in language packages (boo#1137381)</comment>
     <requestid>1005227</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>439a4fe774d3eb96114f4bb40b9edfe3</srcmd5>
+    <version>20220421</version>
+    <time>1663925283</time>
+    <user>dimstar_suse</user>
+    <comment>https://github.com/openSUSE/rpm-config-SUSE/issues/61</comment>
+  </revision>
 </revisionlist>
