@@ -42,5 +42,3 @@ for file in "$log_file" "$state_retention_file" "$status_file"; do
     fi
     chown --no-dereference ${nagios_user}:${nagios_cmdgrp} "$file"
 done
-chmod 660 "$resource_file"
-chown --no-dereference ${nagios_user}:${nagios_cmdgrp} "$resource_file"

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 15 17:26:14 UTC 2022 - Lars Vogdt <lars@linux-schulserver.de>
+
+- do not change ownership of resource_file (/etc/nagios/resource.cfg) 
+  during (re-)start: nagios does not have enough permissions to do 
+  it anyway. 
+  Fixes bsc#1192316 - thanks to Kai Lappalainen
+
+-------------------------------------------------------------------
 Fri May 13 20:57:58 UTC 2022 - Andre Klaerner <kandre@ak-online.be>
 
 - 4.4.7 - 2022-04-14

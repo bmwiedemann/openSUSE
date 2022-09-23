@@ -75,5 +75,3 @@ case "$temp_path" in
 		install -d -m755 -o${nagios_user} -g${nagios_group} "$dir"
 	;;
 esac
-chmod 660 "$resource_file"
-chown --no-dereference ${nagios_user}:${nagios_cmdgrp} "$resource_file"
