@@ -6010,4 +6010,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>5.19.8 &amp; vduse CVE &amp; btrfs fix removed (microos was fixed)</comment>
     <requestid>1002260</requestid>
   </revision>
+  <revision rev="657" vrev="1">
+    <srcmd5>a62bc1e782fb74566713141d2ee0932b</srcmd5>
+    <version>5.19.10</version>
+    <time>1663935261</time>
+    <user>dimstar_suse</user>
+    <comment>5.19.10 &amp; 5.19.9 (minus the iommu buggy patch)</comment>
+    <requestid>1005161</requestid>
+  </revision>
 </revisionlist>
