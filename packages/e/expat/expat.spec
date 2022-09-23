@@ -16,9 +16,9 @@
 #
 
 
-%global unversion 2_4_8
+%global unversion 2_4_9
 Name:           expat
-Version:        2.4.8
+Version:        2.4.9
 Release:        0
 Summary:        XML Parser Toolkit
 License:        MIT

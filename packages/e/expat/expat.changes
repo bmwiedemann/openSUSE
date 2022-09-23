@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Tue Sep 20 15:54:12 UTC 2022 - David Anes <david.anes@suse.com>
+
+- update to 2.4.9: (bsc#1203438)
+  * Security fixes:
+    - CVE-2022-40674 -- Heap use-after-free vulnerability in
+      function doContent. Expected impact is denial of service
+      or potentially arbitrary code execution.
+  * Bug fixes:
+    - MinGW: Fix mis-compilation for -D__USE_MINGW_ANSI_STDIO=0
+    - docs: Fix documentation on effect of switch XML_DTD on
+      symbol visibility in doc/reference.html
+  * Other changes:
+    - MinGW: Make fix-xmltest-log.sh drop more Wine bug output
+    - Autotools: Sync CMake templates with CMake 3.22
+    - CMake: Migrate from use of CMAKE_*_POSTFIX to
+      dedicated variables EXPAT_*_POSTFIX to stop affecting
+      other projects
+    - Windows|CMake: Add missing -DXML_STATIC to test runners
+      and fuzzers
+    - Windows|CMake: Render .def file from a template to fix
+      linking with -DEXPAT_DTD=OFF and/or -DEXPAT_ATTR_INFO=ON
+    - MinGW|CMake: Apply MSVC .def file when linking
+    - MinGW|CMake: Sync library name with GNU Autotools,
+      i.e. produce libexpat-1.dll rather than libexpat.dll
+      by default.  Filename libexpat.dll.a is unaffected.
+    - MinGW|CMake: Set missing variable CMAKE_RC_COMPILER in
+      toolchain file "cmake/mingw-toolchain.cmake" to avoid
+      error "windres: Command not found" on e.g. Ubuntu 20.04
+    - CMake: Unify inconsistent use of set() and option() in
+      context of public build time options to take need for
+      set(.. FORCE) in projects using Expat by means of
+      add_subdirectory(..) off Expat's users' shoulders
+    - Stop exporting API symbols when building a static library
+    - Resolve use of deprecated "fgrep" by "grep -F"
+    - CMake: Make documentation on variables a bit more consistent
+    - CMake: Drop leading whitespace from a #cmakedefine line in
+      file expat_config.h.cmake
+    - xmlwf: Fix harmless variable mix-up in function nsattcmp
+    - Address Cppcheck warnings
+    - Address Clang 15 compiler warnings
+    - Version info bumped from 9:8:8 to 9:9:8;
+      see https://verbump.de/ for what these numbers do
+  * Infrastructure:
+    - CI: Windows: Start covering MSVC 2022
+    - CI: macOS: Migrate off deprecated macOS 10.15
+    - CI: Linux: Make migration off deprecated Ubuntu 18.04 work
+    - CI: Upgrade Clang from 14 to 15
+    - apply-clang-format.sh: Add support for BSD find
+    - coverage.sh: Exclude MinGW headers
+    - coverage.sh: Fix name collision for -funsigned-char   
+
+-------------------------------------------------------------------
 Tue Mar 29 05:26:59 UTC 2022 - David Anes <david.anes@suse.com>
 
 - update to 2.4.8:
