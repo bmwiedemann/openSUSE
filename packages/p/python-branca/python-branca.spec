@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-branca
-Version:        0.4.2
+Version:        0.5.0
 Release:        0
 Summary:        HTML+JS page generator
 License:        MIT
@@ -31,7 +31,6 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2
-Requires:       python-six
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Jinja2}
@@ -39,7 +38,6 @@ BuildRequires:  %{python_module ipykernel}
 BuildRequires:  %{python_module nbconvert}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module selenium}
-BuildRequires:  %{python_module six}
 # /SECTION
 %python_subpackages
 

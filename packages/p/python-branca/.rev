@@ -41,4 +41,12 @@ Required by python-ipyleaflet and python-folium</comment>
     <comment></comment>
     <requestid>985685</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b9b1d598213d15a71fc77398d28466a8</srcmd5>
+    <version>0.5.0</version>
+    <time>1663935332</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1005595</requestid>
+  </revision>
 </revisionlist>
