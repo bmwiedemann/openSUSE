@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 21 10:59:30 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.3.0+git20220921.4e46a84:
+  * dbus-services: adjust tuned entry to path move to /usr (bsc#1202339)
+
+-------------------------------------------------------------------
 Fri Sep 16 14:42:45 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.3.0+git20220916.67eb412d:

@@ -4028,4 +4028,13 @@ oddjob-gpupdate isn't blocked)</comment>
   * Whitelist /var/spool/mail in postfix, sendmail and exim (bsc#1179574)</comment>
     <requestid>1004144</requestid>
   </revision>
+  <revision rev="415" vrev="1">
+    <srcmd5>d965a8bbcf86c73708435a07f781e582</srcmd5>
+    <version>2.3.0+git20220921.4e46a84</version>
+    <time>1663935259</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.0+git20220921.4e46a84:
+  * dbus-services: adjust tuned entry to path move to /usr (bsc#1202339)</comment>
+    <requestid>1005184</requestid>
+  </revision>
 </revisionlist>
