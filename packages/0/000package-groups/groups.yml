@@ -187,6 +187,7 @@ dvd:
   - gnumeric: [locked]
   - marble: [locked]
   - seamonkey: [locked]
+  - ruby3.1-rubygem-grpc: [locked]
   - systemd-presets-branding-CAASP: [locked]
   - texlive: [locked]
   - gnuchess: [locked]
