@@ -3804,6 +3804,7 @@ unsorted:
   - finger 
   - finger-server 
   - fio 
+  - fiona-fio 
   - fips 
   - fipscheck 
   - fipscheck-devel 
@@ -8950,6 +8951,8 @@ unsorted:
   - lepton: [x86_64] 
   - leptonica-devel 
   - leptonica-tools 
+  - level-zero: [x86_64] 
+  - level-zero-devel: [x86_64] 
   - leveldb 
   - leveldb-devel 
   - leveldb-devel-static 
@@ -10279,10 +10282,10 @@ unsorted:
   - libcelt-devel-32bit: [x86_64] 
   - libcelt0-2-32bit: [x86_64] 
   - libcelt051-0 
-  - libcephfs-devel: [x86_64] # devel package of dvd:librados2 
+  - libcephfs-devel: [x86_64] # devel package of dvd:librbd1 
   - libcephfs2: [x86_64] 
   - libcephsqlite: [x86_64] 
-  - libcephsqlite-devel: [x86_64] # devel package of dvd:librados2 
+  - libcephsqlite-devel: [x86_64] # devel package of dvd:librbd1 
   - libceres-devel 
   - libceres2 
   - libcerf-devel 
@@ -13584,8 +13587,8 @@ unsorted:
   - librabbitmq-devel 
   - librabbitmq4 
   - libradcli5 
-  - librados-devel: [x86_64] # devel package of dvd:librados2 
-  - libradospp-devel: [x86_64] # devel package of dvd:librados2 
+  - librados-devel: [x86_64] # devel package of dvd:librbd1 
+  - libradospp-devel: [x86_64] # devel package of dvd:librbd1 
   - libraft2 
   - libraptor-devel 
   - libraptor2-0-32bit: [x86_64] 
@@ -13608,7 +13611,7 @@ unsorted:
   - libraw1394-tools 
   - libraw20-32bit: [x86_64] 
   - libraylib400 
-  - librbd-devel: [x86_64] # devel package of dvd:librados2 
+  - librbd-devel: [x86_64] # devel package of dvd:librbd1 
   - librbio2 
   - librbl1 
   - librcc-devel 
@@ -13794,7 +13797,7 @@ unsorted:
   - librevenge-doc 
   - librevenge-generators-0_0-0 
   - librfxencode0 
-  - librgw-devel: [x86_64] # devel package of dvd:librados2 
+  - librgw-devel: [x86_64] # devel package of dvd:librbd1 
   - librgw2: [x86_64] 
   - librhash0 
   - librime-devel 
@@ -14835,9 +14838,8 @@ unsorted:
   - libwebrtc_audio_processing1-32bit: [x86_64] 
   - libwebsockets-devel 
   - libwebsockets19 
-  - libweston-10 
-  - libweston-10-0 
-  - libweston-desktop-10-0 
+  - libweston-11 
+  - libweston-11-0 
   - libwget-devel 
   - libwget1 
   - libwhich 
@@ -14888,9 +14890,9 @@ unsorted:
   - libwtcdb-devel 
   - libwtcdb-tools 
   - libwtcdb1 
-  - libwtdbo4_6_1 
-  - libwtdbomysql4_6_1 
-  - libwtdbopostgres4_6_1 
+  - libwtdbo4_8_1 
+  - libwtdbomysql4_8_1 
+  - libwtdbopostgres4_8_1 
   - libwv-1_2-4 
   - libwv2-4 
   - libwx_base-suse-devel 
@@ -22042,6 +22044,7 @@ unsorted:
   - python310-ExifRead 
   - python310-Fabric 
   - python310-Faker 
+  - python310-Fiona 
   - python310-Flask 
   - python310-Flask-Admin 
   - python310-Flask-Babel 
@@ -23374,6 +23377,7 @@ unsorted:
   - python310-haproxyctl 
   - python310-hashids 
   - python310-hatch 
+  - python310-hatch_nodejs_version 
   - python310-hatch_vcs 
   - python310-hatchling 
   - python310-hawkauthlib 
@@ -25260,6 +25264,7 @@ unsorted:
   - python38-ExifRead 
   - python38-Fabric 
   - python38-Faker 
+  - python38-Fiona 
   - python38-Flask 
   - python38-Flask-Admin 
   - python38-Flask-Babel 
@@ -26639,6 +26644,7 @@ unsorted:
   - python38-haproxyctl 
   - python38-hashids 
   - python38-hatch 
+  - python38-hatch_nodejs_version 
   - python38-hatch_vcs 
   - python38-hatchling 
   - python38-hawkauthlib 
@@ -28591,6 +28597,7 @@ unsorted:
   - python39-ExifRead 
   - python39-Fabric 
   - python39-Faker 
+  - python39-Fiona 
   - python39-Flask 
   - python39-Flask-Admin 
   - python39-Flask-Babel 
@@ -29967,6 +29974,7 @@ unsorted:
   - python39-haproxyctl 
   - python39-hashids 
   - python39-hatch 
+  - python39-hatch_nodejs_version 
   - python39-hatch_vcs 
   - python39-hatchling 
   - python39-hawkauthlib 
@@ -32497,7 +32505,7 @@ unsorted:
   - radcli-devel 
   - radeontop 
   - radeontop-lang 
-  - rados-objclass-devel: [x86_64] # devel package of dvd:librados2 
+  - rados-objclass-devel: [x86_64] # devel package of dvd:librbd1 
   - raft-devel 
   - rage 
   - rage-encryption: [x86_64] 
