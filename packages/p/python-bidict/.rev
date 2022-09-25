@@ -87,4 +87,41 @@
     <comment></comment>
     <requestid>917115</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0057b58b19c6c5f9230ba477fa37be3c</srcmd5>
+    <version>0.22.0</version>
+    <time>1664112928</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.22.0:
+ - Drop support for Python 3.6, which reached end of life on 2021-12-23
+   and is no longer supported by pip as of pip version 22.
+   Take advantage of this to reduce bidict's maintenance costs.
+ - Use mypy-appeasing explicit re-exports in ``__init__.py``
+   (e.g. ``import x as x``)
+   so that mypy no longer gives you an implicit re-export error
+   if you run it with ``--no-implicit-reexport`` (or ``--strict``)
+   against code that imports from :mod:`bidict`.
+ - Update the implementations and type annotations of
+   :meth:`bidict.BidictBase.keys` and
+   :meth:`bidict.BidictBase.values` to make use of the new
+   :class:`~bidict.BidictKeysView` type,
+   which works a bit better with type checkers.
+ - Inverse bidict instances are now computed lazily the first time
+   the :attr:`~bidict.BidictBase.inverse` attribute is accessed
+   rather than being computed eagerly during initialization.
+   (A bidict's backing, inverse, one-way mapping
+   is still kept in sync eagerly as any mutations are made,
+   to preserve key- and value-uniqueness.)
+ - Optimize initializing a bidict with another bidict.
+   In a microbenchmark on Python 3.10,
+   this now performs over **2x faster**.
+ - Optimize updating an empty bidict with another bidict.
+   In a microbenchmark on Python 3.10,
+   this now performs **60-75% faster**.
+ - Optimize :meth:`~bidict.BidictBase.copy`.
+   In a microbenchmark on Python 3.10,
+   this now performs **10-20x faster**.
+ - Optimize rolling back</comment>
+    <requestid>1005757</requestid>
+  </revision>
 </revisionlist>
