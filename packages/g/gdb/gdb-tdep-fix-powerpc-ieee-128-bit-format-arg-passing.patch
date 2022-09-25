@@ -1,0 +1,21 @@
+[gdb/tdep] Fix PowerPC IEEE 128-bit format arg passing
+
+https://sourceware.org/bugzilla/show_bug.cgi?id=29543#c5
+
+---
+ gdb/ppc-sysv-tdep.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gdb/ppc-sysv-tdep.c b/gdb/ppc-sysv-tdep.c
+index b7106542b5d..2cdf4658e35 100644
+--- a/gdb/ppc-sysv-tdep.c
++++ b/gdb/ppc-sysv-tdep.c
+@@ -1444,7 +1444,7 @@ ppc64_sysv_abi_push_param (struct gdbarch *gdbarch,
+ 	  == floatformats_ia64_quad))
+     {
+       /* IEEE FLOAT128, args in vector registers.  */
+-      ppc64_sysv_abi_push_val (gdbarch, val, TYPE_LENGTH (type), 0, argpos);
++      ppc64_sysv_abi_push_val (gdbarch, val, TYPE_LENGTH (type), 16, argpos);
+       ppc64_sysv_abi_push_vreg (gdbarch, val, argpos);
+     }
+   else if (type->code () == TYPE_CODE_FLT
