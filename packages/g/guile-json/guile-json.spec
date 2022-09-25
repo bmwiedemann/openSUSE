@@ -1,7 +1,7 @@
 #
 # spec file for package guile-json
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           guile-json
-Version:        4.5.2
+Version:        4.7.2
 Release:        0
 Summary:        JSON module for Guile
 License:        GPL-3.0-or-later
@@ -26,7 +26,6 @@ URL:            https://savannah.nongnu.org/projects/guile-json/
 Source0:        http://download.savannah.gnu.org/releases/guile-json/%{name}-%{version}.tar.gz
 Source1:        http://download.savannah.gnu.org/releases/guile-json/%{name}-%{version}.tar.gz.sig
 Source2:        https://savannah.nongnu.org/people/viewgpg.php?user_id=11331#/%{name}.keyring
-Source1000:     guile-json-rpmlintrc
 BuildRequires:  guile-devel >= 2.0.10
 Requires:       guile >= 2.0.10
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build

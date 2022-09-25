@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Sep 17 07:52:47 UTC 2022 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
+
+- Update to 4.7.2:
+  * add support for JSON Text Sequences and Concatenated JSON
+  * allow returning ordered JSON objects key/value pairs by using
+    the keyword argument #:ordered
+  * allow nested records in other records 
+- remove rpmlintrc as no longer required
+
+-------------------------------------------------------------------
 Wed May 12 21:08:03 UTC 2021 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
 
 - Update to 4.5.2:
