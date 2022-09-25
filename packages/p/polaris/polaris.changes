@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sun Sep 25 07:04:04 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 7.1.5:
+  * Fix 7e099521
+  * Define tag filters for all jobs in the workflow
+  * Re-enable build/push of documentation
+  * Build docker images using goreleaser and support arm64 (#845)
+
+-------------------------------------------------------------------
+Sun Sep 25 07:01:57 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 7.1.4:
+  * fix packr (#851)
+  * fix goreleaser version
+  * update goreleaser (#850)
+  * update docs (#846)
+  * Add debug info to kube resources, better caching strategy (#840)
+  * update deps (#841)
+  * [FWI-2357] Let Polaris modify YAML without losing comments/formatting (#821)
+  * Add warning message for multi-schema checks in admission (#839)
+  * Update README.md (#833)
+  * update dependencies (#836)
+  * Managed by Terraform
+  * Omit empty results, make pretty output less verbose (#767)
+  * Update changelog.md (#825)
+  * Bump k8s.io/client-go from 0.24.3 to 0.24.4 (#828)
+  * FWI-2547: Add checks for RBAC allowing execing or attaching to a Pod (#820)
+  * FWI-2582: Add `clusterrolebindingClusterAdmin`, `rolebindingClusterAdminRole`, and `rolebindingClusterAdminClusterRole` checks + schema tests (#823)
+- no releases between 7.0.2 and 7.1.4 upstream
+  https://github.com/FairwindsOps/polaris/releases
+
+-------------------------------------------------------------------
 Wed Sep 07 07:02:05 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 7.0.2:
