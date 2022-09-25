@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 23 09:30:34 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
+
+- Fix unstable drag-and-drop on Wayland KDE, add:
+  * gtk3-gdkwayland-Update-selections-offer-before-updating-dnd.patch
+  https://gitlab.gnome.org/GNOME/gtk/-/commit/56100ab4
+
+-------------------------------------------------------------------
 Thu Sep  1 10:27:46 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop pkgconfig(rest-0.7) BuildRequires: it seems to serve no

@@ -1587,4 +1587,14 @@ Putting the API-docs into a separate package removes 23MByte from a gtk3-devel i
   it. (forwarded request 1002762 from iznogood)</comment>
     <requestid>1003227</requestid>
   </revision>
+  <revision rev="180" vrev="6">
+    <srcmd5>06d36510c1fcd62500d451c96e53c4ed</srcmd5>
+    <version>3.24.34</version>
+    <time>1664112865</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix unstable drag-and-drop on Wayland KDE, add:
+  * gtk3-gdkwayland-Update-selections-offer-before-updating-dnd.patch
+  https://gitlab.gnome.org/GNOME/gtk/-/commit/56100ab4</comment>
+    <requestid>1005626</requestid>
+  </revision>
 </revisionlist>

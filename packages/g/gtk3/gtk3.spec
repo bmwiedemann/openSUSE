@@ -47,6 +47,8 @@ Source99:       baselibs.conf
 Patch0:         gtk3-GTK_PATH64.patch
 # PATCH-FIX-OPENSUSE gtk3-revert-forced-xftdpi.patch fvogt@opensuse.org -- Revert very controversal commit on GTK3, forcing DPI to 96
 Patch1:         gtk3-revert-forced-xftdpi.patch
+# PATCH-FIX-UPSTREAM gtk3-gdkwayland-Update-selections-offer-before-updating-dnd.patch -- Fix unstable drag&drop on Wayland
+Patch2:         gtk3-gdkwayland-Update-selections-offer-before-updating-dnd.patch
 
 BuildRequires:  cups-devel >= 1.7
 BuildRequires:  docbook-xsl-stylesheets
@@ -387,6 +389,7 @@ cp -a %{SOURCE1} .
 %patch0 -p1
 %endif
 %patch1 -p1
+%patch2 -p1
 
 %build
 NOCONFIGURE=1 ./autogen.sh
