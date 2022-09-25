@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 23 12:56:12 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- skip testsuite on qemu_user_mode emulated builds, no chance
+  of ever succeeding
+
+-------------------------------------------------------------------
 Mon Jul 18 10:28:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.44.2:
