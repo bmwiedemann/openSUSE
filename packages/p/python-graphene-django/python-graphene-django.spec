@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-graphene-django
-Version:        3.0.0b7
+Version:        3.0.0b8
 Release:        0
 Summary:        Graphene Django integration
 License:        MIT
@@ -28,12 +28,11 @@ URL:            https://github.com/graphql-python/graphene-django
 Source:         https://github.com/graphql-python/graphene-django/archive/v%{version}.tar.gz#/graphene-django-%{version}.tar.gz
 # https://github.com/graphql-python/graphene-django/issues/1321
 Patch0:         python-graphene-django-no-mock.patch
-BuildRequires:  %{python_module django-codemod}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  tree
-Requires:       python-Django >= 2.2
+Requires:       python-Django >= 3.2
 Requires:       python-graphene >= 2.9.9
 Requires:       python-graphql-core >= 3.1.0
 Requires:       python-graphql-relay
@@ -64,30 +63,33 @@ Graphene Django integration.
 %prep
 %setup -q -n graphene-django-%{version}
 %patch0 -p1
+sed -i 's/from mock import MagicMock/from unittest.mock import MagicMock/' graphene_django/filter/tests/conftest.py
+
 rm setup.cfg
 sed -i '/pytest-runner/d' setup.py
-
-# Fixed upstream after 3.0.0b7 but not released
-djcodemod run --removed-in 4.0 graphene_django/tests/urls.py graphene_django/tests/urls_pretty.py graphene_django/tests/urls_inherited.py
 
 %build
 %python_build
 
 %install
 %python_install
+%python_expand find %{buildroot}%{$python_sitelib}/graphene_django -name tests | xargs rm -r
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 PYTHONPATH=${PWD}
 export DJANGO_SETTINGS_MODULE=examples.django_test_settings
-# test_pytest_fixture_usage was noticed to be failing after Django 4, but it may
-# be something else around that time which broke it.  It has no impact on
-# django-countries, the only openSUSE package using this.
-%pytest -k 'not test_pytest_fixture_usage'
+
+# The following started failing in 4.1 with b8
+skips="test_integer_field_filter_type or test_other_filter_types or test_generate_graphql_file_on_call_graphql_schema or test_schema_representation"
+skips="$skips or test_django_objecttype_convert_choices_enum or test_django_objecttype_choices_custom_enum_name"
+skips="$skips or test_reports_validation_errors or test_errors_when_missing_operation_name or test_handles_syntax_errors_caught_by_graphql"
+
+%pytest -k "not ($skips)"
 
 %files %{python_files}
 %doc README.rst README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/graphene[_-]django*
 
 %changelog

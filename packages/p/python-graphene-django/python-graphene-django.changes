@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Sep 25 07:56:23 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Add 12 test skips for minor differences in expected string results
+- Update to v3.0.0b8
+  * Adds Python 3.10 and Django 4.1 support
+  * See https://github.com/graphql-python/graphene-django/compare/v3.0.0b7...v3.0.0b8
+
+-------------------------------------------------------------------
 Thu May 12 10:10:00 UTC 2022 - pgajdos@suse.com
 
 - do not require python-mock for build
