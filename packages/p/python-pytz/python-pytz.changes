@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 15 20:10:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2022.2.1:
+  * matches tzdata 2022b
+- avoid bashisms in rpm scripts (bsc#1195391) 
+
+-------------------------------------------------------------------
 Tue Mar 29 11:46:35 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2022.1

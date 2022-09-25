@@ -18,7 +18,7 @@
 
 # Ensure you update the tzdata_version for any minor version increase
 # otherwise the update python library has the incorrect timezone data.
-%define tzdata_version 2022a
+%define tzdata_version 2022b
 %define oldpython python
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?!pyunittest:%define pyunittest(+abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-=) \\\
@@ -29,7 +29,7 @@
     } }
 
 Name:           python-pytz
-Version:        2022.1
+Version:        2022.2.1
 Release:        0
 Summary:        World timezone definitions, modern and historical
 License:        MIT
@@ -91,7 +91,7 @@ ln -s %{_datadir}/zoneinfo %{buildroot}%{$python_sitelib}/pytz/zoneinfo
 
 %pre
 if [ $1 -gt 1 ] ; then
-[ "$(readlink -e %{python_sitelib}/pytz/zoneinfo)" == "%{python_sitelib}/pytz/zoneinfo" ] && rm -rf %{python_sitelib}/pytz/zoneinfo
+[ "$(readlink -e %{python_sitelib}/pytz/zoneinfo)" = "%{python_sitelib}/pytz/zoneinfo" ] && rm -rf %{python_sitelib}/pytz/zoneinfo
 fi || :
 
 %files %{python_files}

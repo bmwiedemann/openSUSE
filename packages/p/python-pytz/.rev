@@ -385,4 +385,14 @@
   * declare python 3.10 compatibility</comment>
     <requestid>965633</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>04fe8b8f5e7f9e73d0d2f40fca27f6ff</srcmd5>
+    <version>2022.2.1</version>
+    <time>1664112851</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2022.2.1:
+  * matches tzdata 2022b
+- avoid bashisms in rpm scripts (bsc#1195391)</comment>
+    <requestid>1005454</requestid>
+  </revision>
 </revisionlist>

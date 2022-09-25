@@ -8,9 +8,11 @@ This improves the fix from commit c00dbe290b .
  src/pytz/tests/test_tzinfo.py | 26 ++++++++++++++------------
  1 file changed, 14 insertions(+), 12 deletions(-)
 
---- a/pytz/tests/test_tzinfo.py
-+++ b/pytz/tests/test_tzinfo.py
-@@ -247,12 +247,13 @@ class USEasternDSTStartTestCase(unittest
+Index: pytz-2022.2.1/pytz/tests/test_tzinfo.py
+===================================================================
+--- pytz-2022.2.1.orig/pytz/tests/test_tzinfo.py
++++ pytz-2022.2.1/pytz/tests/test_tzinfo.py
+@@ -253,12 +253,13 @@ class USEasternDSTStartTestCase(unittest
  
      def _test_tzname(self, utc_dt, wanted):
          tzname = wanted['tzname']
@@ -29,7 +31,7 @@ This improves the fix from commit c00dbe290b .
          )
  
      def _test_utcoffset(self, utc_dt, wanted):
-@@ -510,7 +511,7 @@ class NoumeaHistoryStartTestCase(USEaste
+@@ -516,7 +517,7 @@ class NoumeaHistoryStartTestCase(USEaste
          'dst': timedelta(0),
      }
      after = {
@@ -38,7 +40,7 @@ This improves the fix from commit c00dbe290b .
          'utcoffset': timedelta(hours=11),
          'dst': timedelta(0),
      }
-@@ -521,12 +522,12 @@ class NoumeaDSTEndTestCase(USEasternDSTS
+@@ -527,12 +528,12 @@ class NoumeaDSTEndTestCase(USEasternDSTS
      tzinfo = pytz.timezone('Pacific/Noumea')
      transition_time = datetime(1997, 3, 1, 15, 00, 00, tzinfo=UTC)
      before = {
@@ -53,7 +55,7 @@ This improves the fix from commit c00dbe290b .
          'utcoffset': timedelta(hours=11),
          'dst': timedelta(0),
      }
-@@ -550,7 +551,7 @@ class TahitiTestCase(USEasternDSTStartTe
+@@ -556,7 +557,7 @@ class TahitiTestCase(USEasternDSTStartTe
          'dst': timedelta(0),
      }
      after = {
@@ -62,7 +64,7 @@ This improves the fix from commit c00dbe290b .
          'utcoffset': timedelta(hours=-10),
          'dst': timedelta(0),
      }
-@@ -563,12 +564,12 @@ class SamoaInternationalDateLineChange(U
+@@ -569,12 +570,12 @@ class SamoaInternationalDateLineChange(U
      tzinfo = pytz.timezone('Pacific/Apia')
      transition_time = datetime(2011, 12, 30, 10, 0, 0, tzinfo=UTC)
      before = {
@@ -77,12 +79,3 @@ This improves the fix from commit c00dbe290b .
          'utcoffset': timedelta(hours=14),
          'dst': timedelta(hours=1),
      }
-@@ -618,7 +619,7 @@ class LocalTestCase(unittest.TestCase):
- 
-         loc_time = loc_tz.localize(datetime(1940, 5, 10, 0, 0, 0))
-         # pre-2017a, abbreviation was NCT
--        self.assertEqual(loc_time.strftime('%Z%z'), '+0020+0020')
-+        self.assertIn(loc_time.strftime('%Z%z'), ['NET+0020', '+0020+0020'])
- 
-         loc_time = loc_tz.localize(datetime(1940, 5, 20, 0, 0, 0))
-         self.assertEqual(loc_time.strftime('%Z%z'), 'CEST+0200')

@@ -1,7 +1,9 @@
---- a/pytz/tests/test_tzinfo.py
-+++ b/pytz/tests/test_tzinfo.py
-@@ -726,15 +726,6 @@ class LocalTestCase(unittest.TestCase):
-             '1914-01-01 13:40:00 UTC+0000'
+Index: pytz-2022.2.1/pytz/tests/test_tzinfo.py
+===================================================================
+--- pytz-2022.2.1.orig/pytz/tests/test_tzinfo.py
++++ pytz-2022.2.1/pytz/tests/test_tzinfo.py
+@@ -685,15 +685,6 @@ class LocalTestCase(unittest.TestCase):
+             '2004-04-04 01:50:00 EST-0500'
          )
  
 -    def no_testCreateLocaltime(self):
