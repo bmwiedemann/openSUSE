@@ -1,5 +1,0 @@
-<package name="rubygem-thor-0_19" project="openSUSE:Factory">
-  <title>A scripting framework that replaces rake, sake and rubigen</title>
-  <description>A scripting framework that replaces rake, sake and rubigen.</description>
-  <devel project="devel:languages:ruby:extensions" package="rubygem-thor-0_19"/>
-</package>
