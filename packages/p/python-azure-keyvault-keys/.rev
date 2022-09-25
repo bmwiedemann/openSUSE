@@ -174,4 +174,15 @@
     CHANGELOG.md file provided with this package (forwarded request 994765 from glaubitz)</comment>
     <requestid>994774</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>f233a26790207ace989111e746b5f998</srcmd5>
+    <version>4.7.0</version>
+    <time>1664112923</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 4.7.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1004938 from glaubitz)</comment>
+    <requestid>1005728</requestid>
+  </revision>
 </revisionlist>
