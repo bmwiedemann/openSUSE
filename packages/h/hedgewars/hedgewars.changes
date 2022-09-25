@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep 21 22:05:40 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to 1.0.2: No changelog provided.
+- Remove patches fixed upstream:
+  * 0001-Fix-build-with-Qt-5.15.patch
+  * hedgewars-fpc320_fix.patch
+- Add hedgewars-1.0.2-rpath.patch: Fix rpmlint error
+  'binary-or-shlib-defines-rpath'.
+- Refresh spec file.
+
+-------------------------------------------------------------------
 Mon Sep 21 23:20:10 UTC 2020 - D B <buckyballreaction@gmail.com>
 
 - Added fix for compiling with FPC 3.2.0 

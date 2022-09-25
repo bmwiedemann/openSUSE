@@ -98,4 +98,18 @@
     <comment>Update changelog with new patch</comment>
     <requestid>835946</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>fbb7d5967869ebcb08f59dfe1673f992</srcmd5>
+    <version>1.0.2</version>
+    <time>1664112911</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.2: No changelog provided.
+- Remove patches fixed upstream:
+  * 0001-Fix-build-with-Qt-5.15.patch
+  * hedgewars-fpc320_fix.patch
+- Add hedgewars-1.0.2-rpath.patch: Fix rpmlint error
+  'binary-or-shlib-defines-rpath'.
+- Refresh spec file. (forwarded request 1005293 from 1Antoine1)</comment>
+    <requestid>1005683</requestid>
+  </revision>
 </revisionlist>

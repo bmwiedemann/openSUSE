@@ -1,7 +1,7 @@
 #
 # spec file for package hedgewars
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,18 +27,17 @@
 %endif
 
 Name:           hedgewars
-Version:        1.0.0
+Version:        1.0.2
 Release:        0
 Summary:        Turn-based artillery game, featuring fighting hedgehogs
 License:        GPL-2.0-only
 Group:          Amusements/Games/Strategy/Turn Based
-URL:            http://www.hedgewars.org/
+URL:            https://www.hedgewars.org/
 Source:         http://hedgewars.org/download/releases/hedgewars-src-%{version}.tar.bz2
 Source99:       %{name}-rpmlintrc
 Patch0:         hedgewars-disable_fpc_workaround.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Fix-build-with-Qt-5.15.patch
-Patch2:         hedgewars-fpc320_fix.patch
+# PATCH-FIX-OPENSUSE hedgewars-1.0.2-rpath.patch -- Fix RPATH with non-system library path
+Patch1:         hedgewars-1.0.2-rpath.patch
 BuildRequires:  SDL2-devel
 BuildRequires:  SDL2_image-devel
 BuildRequires:  SDL2_mixer-devel
@@ -65,8 +64,6 @@ BuildRequires:  libpng-devel
 # Required for QAbstractFileEngine*, which is no longer public since Qt5.12
 BuildRequires:  libQt5Core-private-headers-devel
 BuildRequires:  libqt5-linguist-devel
-BuildRequires:  shared-mime-info
-BuildRequires:  update-desktop-files
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(lua5.1)
 Requires:       %{name}-data = %{version}
@@ -122,12 +119,10 @@ rotational on the same computer.
 
 This package contains a standalone local hedgewars server.
 
-
 %prep
 %setup -q -n %{name}-src-%{version}
 %patch0 -p0
 %patch1 -p1
-%patch2 -p1
 
 %build
 # CMAKE_POLICY_DEFAULT_CMP0083=NEW - apply POSITION_INDEPENDENT_CODE also to "-pie", since CMake 3.14
@@ -137,8 +132,7 @@ This package contains a standalone local hedgewars server.
   -DNOVIDEOREC=%{?_with_videorec:0}%{!?_with_videorec:1} \
   -DNOSERVER=%{?_with_server:0}%{!?_with_server:1} \
   -DBUILD_ENGINE_C=%{?_with_engine_c:1}%{!?_with_engine_c:0}
-
-make %{?_smp_mflags}
+%cmake_build
 
 %install
 %cmake_install
@@ -157,26 +151,10 @@ chmod -x %{buildroot}%{_datadir}/mime/packages/%{name}.xml %{buildroot}%{_datadi
 # Delete obsolete xpm icon, .desktop uses the ones from hicolor
 rm %{buildroot}%{_datadir}/pixmaps/hedgewars.xpm
 
-## TODO: $LIB_INSTALL_DIR seems to be ignored.
-#%%ifarch x86_64
-#mkdir -p %%{buildroot}%%{_libdir}
-#mv %%{buildroot}/usr/lib/* %%{buildroot}%%{_libdir}/
-#%%endif
-
-%suse_update_desktop_file %{name}
 %fdupes %{buildroot}%{_datadir}
 
-%post
-/sbin/ldconfig
-%desktop_database_post
-%icon_theme_cache_post
-%mime_database_post
-
-%postun
-/sbin/ldconfig
-%desktop_database_postun
-%icon_theme_cache_postun
-%mime_database_postun
+%post -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
 
 %files
 %doc README.md ChangeLog.txt
