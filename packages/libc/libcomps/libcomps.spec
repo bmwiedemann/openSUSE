@@ -1,7 +1,7 @@
 #
 # spec file for package libcomps
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2021 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define major 0
 %define minor 1
-%define patch 18
+%define patch 19
 %define libname %{name}%{major}
 %define devname %{name}-devel
 
