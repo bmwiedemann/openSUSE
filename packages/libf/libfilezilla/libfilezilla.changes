@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Sep 24 15:19:19 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.39.1
+  * Bugfixes and minor changes:
+    - MSW: Fixed a possible hang in fz::process:kill
+- Changes from 0.39.0
+  * New features:
+    - Added readwrite mode to fz::file.
+    - MSW: Added fz::dll and fz::shdlls glue
+    - Added fz::ascii_layer
+  * Bugfixes and minor changes:
+    - *nix: Fixed mmap error handling in fz::aio_buffer_pool
+    - Fixed a potential deadlock in the aio code
+    - Fixed an issue with calling conventions on 32bit Windows
+    - MSW: fz::datetime::get_tm now works for dates past Y2K38 on
+      toolchains with 32bit time_t
+    - MSW: Fixed an error reading from fz::process
+
+-------------------------------------------------------------------
 Sat Jul 23 14:18:00 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 0.38.1
