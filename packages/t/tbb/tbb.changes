@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Sep 24 12:16:41 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2021.6.0:
+  * Improved support and use of the latest C++ standards for parallel_sort that
+    allows using this algorithm with user-defined and standard library-defined
+    objects with modern semantics.
+  * The following features are now fully functional: task_arena extensions,
+    collaborative_call_once, adaptive mutexes, heterogeneous overloads for
+    concurrent_hash_map, and task_scheduler_handle.
+  * Added support for Windows* Server 2022 and Python 3.10.
+  * Memory allocator crash on a system with an incomplete /proc/meminfo
+  * Incorrect blocking of task stealing
+  * Hang due to incorrect decrement of a limiter_node
+  * Memory corruption in some rare cases when passing big messages in a flow graph
+  * Possible deadlock in a throwable flow graph node with a lightweight policy.
+    The lightweight policy is now ignored for functors that can throw
+    exceptions
+  * Crash when obtaining a range from empty ordered and unordered containers
+  * Deadlock in a concurrent_vector resize() that could happen when the new
+    size is less than the previous size
+- drop tbb-pr609-32bit-mwaitpkg.patch (upstream)
+- add 5cb212d44732947396abdd39eae1229c7cd51644.patch, 917.patch: 
+  build on riscv64, hppa, s390x
+
+-------------------------------------------------------------------
 Fri Aug  5 19:04:35 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Add retry-pthread_create.patch that fixes
