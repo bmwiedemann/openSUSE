@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Sep 23 20:05:01 UTC 2022 - Dominik Heidler <dheidler@suse.de>
+
+- Added dependency perl(Class::Accessor::Fast)
+- Added dependency perl(constant)
+- Removed dependency perl(LWP::Simple)
+- Added dependency perl(LWP::Simple)
+- Removed dependency perl(POSIX)
+- Added dependency perl(parent)
+- Added dependency perl(POSIX)
+- Added dependency perl(strict)
+- Added dependency perl(utf8)
+- Added dependency perl(version)
+- Added dependency perl(warnings)
+- Removed dependency perl(constant)
+- Removed dependency perl(parent)
+- Removed dependency perl(strict)
+- Removed dependency perl(utf8)
+- Removed dependency perl(version)
+- Removed dependency perl(warnings)
+
+-------------------------------------------------------------------
 Thu May 20 22:12:09 UTC 2021 - Dominik Heidler <dheidler@suse.de>
 
 - Added dependency perl(Net::IP)

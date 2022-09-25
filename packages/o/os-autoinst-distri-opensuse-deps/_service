@@ -3,7 +3,7 @@
   <service name="obs_scm" mode="disabled">
     <param name="extract">os-autoinst-distri-opensuse-deps.spec</param>
     <param name="include">os-autoinst-distri-opensuse-deps\.spec</param>
-    <param name="url">git://github.com/os-autoinst/os-autoinst-distri-opensuse.git</param>
+    <param name="url">https://github.com/os-autoinst/os-autoinst-distri-opensuse.git</param>
     <param name="revision">master</param>
     <param name="versionprefix">1</param>
     <param name="versionformat">%ct.%h</param>
