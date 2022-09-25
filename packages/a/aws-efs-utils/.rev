@@ -85,4 +85,27 @@
     <comment></comment>
     <requestid>977971</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d3e46520fbc6af58d488ed6e52cd3cb9</srcmd5>
+    <version>1.33.4</version>
+    <time>1664112916</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.33.4 (bsc#1203170)
+  * Fix the issue where watchdog sending signal to incorrect
+    processes and add FIPS mode support
+  * Apply additional check on awscredsuri option
+- from version 1.33.3
+  * Fix the potential stunnel hanging issue caused by full
+    subprocess PIPE filled by stunnel log
+  * Specify FIPS mode in configuration
+  * Add separate env_path for macOS; Add comments
+  * Update get-pip.py download url in README
+- from version 1.33.2
+  * Fix the incorrect path to generate read_ahead_kb config file
+    and Bump the default tls port range from 400 to 1000
+- Add patch to use unittest.mock instead of mock in testsuite
+  * use_mock_from_unittest.patch
+- Use relative URL in Source field (forwarded request 1005624 from glaubitz)</comment>
+    <requestid>1005731</requestid>
+  </revision>
 </revisionlist>

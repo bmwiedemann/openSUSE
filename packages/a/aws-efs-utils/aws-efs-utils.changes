@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Sep 23 13:00:33 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.33.4 (bsc#1203170)
+  * Fix the issue where watchdog sending signal to incorrect
+    processes and add FIPS mode support
+  * Apply additional check on awscredsuri option
+- from version 1.33.3
+  * Fix the potential stunnel hanging issue caused by full
+    subprocess PIPE filled by stunnel log
+  * Specify FIPS mode in configuration
+  * Add separate env_path for macOS; Add comments
+  * Update get-pip.py download url in README
+- from version 1.33.2
+  * Fix the incorrect path to generate read_ahead_kb config file
+    and Bump the default tls port range from 400 to 1000
+- Add patch to use unittest.mock instead of mock in testsuite
+  * use_mock_from_unittest.patch
+- Use relative URL in Source field
+
+-------------------------------------------------------------------
 Wed May 18 05:39:02 UTC 2022 - pgajdos@suse.com
 
 - version update to 1.33.1
