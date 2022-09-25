@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep 21 21:21:19 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Always drop -gnu from triple for consistency. Patch a test that
+  was looking for -linux- in clang-test-xfail-gnuless-triple.patch.
+
+-------------------------------------------------------------------
+Mon Sep 19 18:32:11 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Use correct LLVM_HOST_TRIPLE for riscv64
+
+-------------------------------------------------------------------
 Sat Sep  3 15:15:10 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Make sure we keep -DNDEBUG. At some point %{optflags} must have

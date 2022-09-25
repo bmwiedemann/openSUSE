@@ -75,11 +75,10 @@
 %endif
 
 %ifarch %{arm}
-%define host_runtime gnueabihf
+%define host_triple %{host_cpu}-%{_host_vendor}-%{_host_os}-gnueabihf
 %else
-%define host_runtime gnu
+%define host_triple %{host_cpu}-%{_host_vendor}-%{_host_os}
 %endif
-%define host_triple %{host_cpu}-%{_host_vendor}-%{_host_os}-%{host_runtime}
 
 # By default, build everything.
 %global llvm_targets "all"
@@ -376,6 +375,8 @@ Patch33:        CMake-Look-up-target-subcomponents-in-LLVM_AVAILABLE_LIBS.patch
 Patch34:        clang-repl-private-deps.patch
 # Cherry pick patch from LLVM 15: https://github.com/llvm/llvm-project/issues/56421
 Patch35:        llvm-glibc-2-36.patch
+# Let test match for linux instead of -linux-.
+Patch36:        clang-test-xfail-gnuless-triple.patch
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  cmake >= 3.13.4
 BuildRequires:  fdupes
@@ -813,6 +814,7 @@ pushd clang-%{_version}.src
 %patch6 -p1
 %patch9 -p2
 %patch34 -p2
+%patch36 -p2
 
 # We hardcode openSUSE
 rm unittests/Driver/DistroTest.cpp

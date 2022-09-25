@@ -148,4 +148,15 @@ disable the corresponding tests.
 </comment>
     <requestid>1001713</requestid>
   </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>8d07814ab662c1060e4b4a375044e70c</srcmd5>
+    <version>14.0.6</version>
+    <time>1664112853</time>
+    <user>dimstar_suse</user>
+    <comment>- Always drop -gnu from triple for consistency. Patch a test that
+  was looking for -linux- in clang-test-xfail-gnuless-triple.patch.
+- Use correct LLVM_HOST_TRIPLE for riscv64
+</comment>
+    <requestid>1005472</requestid>
+  </revision>
 </revisionlist>
