@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Sep 24 08:46:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- conditionalize valgrind dependency - it is optional and not
+  available on all architectures 
+
+-------------------------------------------------------------------
 Sun Apr  3 11:09:27 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Set GTKDOCIZE=true when gtk3 to fix issues with autoconf 2.70
