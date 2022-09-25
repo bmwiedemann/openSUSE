@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Sep 25 06:54:38 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 5.11.0:
+  * Feature : Detect depcreated API's on a live cluster resources (#367)
+  * Bump github.com/spf13/viper from 1.12.0 to 1.13.0 (#379)
+  * Bump k8s.io/client-go from 0.25.0 to 0.25.1 (#381)
+  * Bump k8s.io/klog/v2 from 2.70.1 to 2.80.1 (#378)
+
+-------------------------------------------------------------------
 Tue Sep 13 12:44:11 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 5.10.7:
