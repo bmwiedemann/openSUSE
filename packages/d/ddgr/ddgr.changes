@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Sep 24 09:00:05 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0:
+  - Display results in reversed order (`--rev`, `--reverse`)
+  - Support Python v3.10 (dropped v3.6)
+
+-------------------------------------------------------------------
 Wed Sep  2 16:29:09 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.9:
