@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,13 @@
 %global modname libevdev
 %define libevdev_reqver 1.6.0
 Name:           python-%{modname}
-Version:        0.9
+Version:        0.11
 Release:        0
 Summary:        Python wrapper around the libevdev C library
 License:        MIT
 Group:          Development/Libraries/Python
 URL:            https://python-libevdev.readthedocs.io/
-Source0:        https://gitlab.freedesktop.org/libevdev/%{name}/-/archive/%{version}/%{name}-%{version}.tar.bz2
+Source0:        https://files.pythonhosted.org/packages/source/l/libevdev/libevdev-%{version}.tar.gz
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -43,7 +43,7 @@ python-libevdev is a wrapper around the libevdev C library, with a
 pythonic API.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{modname}-%{version}
 
 %build
 %python_build
