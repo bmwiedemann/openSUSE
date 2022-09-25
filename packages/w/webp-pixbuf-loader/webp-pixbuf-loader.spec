@@ -17,7 +17,7 @@
 
 
 Name:           webp-pixbuf-loader
-Version:        0.0.3
+Version:        0.0.6
 Release:        0
 Summary:        WebP GDK Pixbuf Loader library
 License:        LGPL-2.0-or-later
@@ -33,7 +33,7 @@ Requires:       gdk-pixbuf-thumbnailer
 %gdk_pixbuf_loader_requires
 
 %description
-webp-pixbuf-loader is a plugin  to allow loading WebP images in GTK+ applications.
+webp-pixbuf-loader is a plugin to allow loading WebP images in GTK+ applications.
 
 %prep
 %autosetup -p1
