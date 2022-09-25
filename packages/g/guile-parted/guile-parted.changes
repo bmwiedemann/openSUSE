@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Sep 17 08:42:50 UTC 2022 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
+
+- remove unused RPM lint filters, add one for devel dependency 
+
+-------------------------------------------------------------------
+Fri Sep 16 13:04:10 UTC 2022 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
+
+- Update to 0.0.6:
+  * Add cross-compilation support 
+
+-------------------------------------------------------------------
 Fri Nov  6 17:41:35 UTC 2020 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
 
 - Update to 0.0.4:
