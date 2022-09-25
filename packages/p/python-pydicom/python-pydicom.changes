@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Sep 24 02:04:40 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Skip a lot of tests, mostly due to missing test data, but there
+  are over 1900 still passing.
+- Update to v2.3.0
+  * See https://github.com/pydicom/pydicom/tree/master/doc/release_notes
+
+-------------------------------------------------------------------
 Fri Dec 10 07:41:02 UTC 2021 - pgajdos@suse.com
 
 - do not require pytest-runner for build
