@@ -221,7 +221,6 @@ system.
 Summary:        Git tools for importing Perforce repositories
 Group:          Development/Tools/Version Control
 Requires:       git-core = %{version}
-Requires:       python2-base
 
 %description p4
 Tools for importing Perforce repositories to the GIT version control
@@ -321,6 +320,8 @@ directory /git/ that calls the cgi script.
 %autosetup -p1
 
 %build
+# update shebang to use python3
+sed -e '1{s,.*,#!/usr/bin/python3,}' git-p4.py
 cat > .make <<'EOF'
 #!/bin/bash
 %make_build CFLAGS="%{optflags}" \

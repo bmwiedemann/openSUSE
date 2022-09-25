@@ -2530,4 +2530,12 @@ git 2.12.3
     <comment></comment>
     <requestid>1002342</requestid>
   </revision>
+  <revision rev="288" vrev="3">
+    <srcmd5>3a58f017e57905869cf0023ceb6c2fb4</srcmd5>
+    <version>2.37.3</version>
+    <time>1664112856</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1005485</requestid>
+  </revision>
 </revisionlist>

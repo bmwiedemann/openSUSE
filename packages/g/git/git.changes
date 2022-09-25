@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 22 13:49:57 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- drop python2 requires as git-p4 is documented to work with python3
+
+-------------------------------------------------------------------
 Fri Sep  9 11:16:03 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Remove nogroup requirement: no longer needed
