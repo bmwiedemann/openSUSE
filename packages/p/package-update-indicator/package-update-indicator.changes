@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Sep  7 18:03:50 UTC 2022 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- Update to version 8:
+  * Add setting to disable preferences widgets
+  * Fix typos and improve German translations
+  * Add new setting to hide indicator menu items
+  * Add new setting "always-active"
+  * Add Brazilian Portugese translations
+  * Add Dutch translations
+  * Do not hardcode pkg-config
+  * Fix desktop files
+  * Remove translated icon names
+  * Add Spanish translations
+- remove obsolete patch
+  org.guido-berhoerster.code.package-update-indicator.desktop.in.patch
+- Changes by Mihai Moldovan <ionic@ionic.de>:
+  * Update copyright notice.
+  * Add properly extracted license.
+  * Check destroot with fdupes for good measure.
+  * Make some dependencies more explicit and remove duplicate
+    ones (xsltproc vs. libxml2-tools).
+  * Add glib gsettings schemas macros.
+  * Reflow description to 67 characters.
+  * Use more (single) quotes.
+  * Re-sort files list alphabetically, use %{name} to avoid
+    redundancy.
+
+-------------------------------------------------------------------
 Wed Nov 18 12:01:36 UTC 2020 - Stefan Seyfried <seife+obs@b1-systems.com>
 
 - update to version 7:
