@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep 23 13:54:33 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1663941254.b479233:
+  * Prevent stalebot from closing stale issues
+  * Improve performance of 3 api endpoints by about 312% (for O3 data)
+  * Replace references of `openqabot` with new bot user `os-autoinst-bot`
+  * Fix the cloning of job when the corresponding variable is manually set
+  * Dependency cron 2022-09-21
+
+-------------------------------------------------------------------
 Wed Sep 14 06:10:19 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1662979895.bd3bc01:
