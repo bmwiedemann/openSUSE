@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 23 17:31:21 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Disable pkgconfig(libnautilus-extension) BuildRequires and pass
+  nautilus=false to meson, no longer build nautilus support.
+  Font-manager needs to be ported to gtk4. See upstream issue:
+  https://github.com/FontManager/font-manager/issues/286
+- Add obsoletes nautilus-fontmanager to ease upgrades.
+
+-------------------------------------------------------------------
 Mon Feb 14 09:54:39 UTC 2022 - Jan Baier <jbaier@suse.com>
 
 - Update to 0.8.8

@@ -38,7 +38,8 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.44
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
 BuildRequires:  pkgconfig(json-glib-1.0)
-BuildRequires:  pkgconfig(libnautilus-extension)
+# Disable nautilus until font-manager is ported to gtk4
+#BuildRequires:  pkgconfig(libnautilus-extension)
 BuildRequires:  pkgconfig(libnemo-extension)
 BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(libxml-2.0)
@@ -50,6 +51,7 @@ Requires:       %{name}-common
 Requires:       font-viewer
 Requires:       fontconfig
 Requires:       webkit2gtk-4_0-injected-bundles
+Obsoletes:      nautilus-%{name} <= %{version}
 
 %description
 Font Manager is intended to provide a way for average users to easily
@@ -104,7 +106,12 @@ This package provides integration with the Thunar file manager.
 %autosetup
 
 %build
-%meson --buildtype=release -Dnautilus=True -Dnemo=True -Dthunar=true -Dreproducible=true
+%meson \
+  --buildtype=release \
+  -Dnautilus=false \
+  -Dnemo=True \
+  -Dthunar=true \
+  -Dreproducible=true
 %meson_build
 
 %install
@@ -149,8 +156,8 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/*.appdat
 %{_datadir}/icons/hicolor/128x128/apps/%{DBusName2}.png
 %{_datadir}/icons/hicolor/256x256/apps/%{DBusName2}.png
 
-%files -n nautilus-%{name}
-%{_libdir}/nautilus/extensions-3.0/nautilus-%{name}.so
+#%%files -n nautilus-%%{name}
+#%%{_libdir}/nautilus/extensions-3.0/nautilus-%%{name}.so
 
 %files -n nemo-%{name}
 %{_libdir}/nemo/extensions-3.0/nemo-%{name}.so
