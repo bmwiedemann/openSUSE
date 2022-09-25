@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Sep 23 02:44:31 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- version update to 4.34.0
+  * Treat .unparsed as plain text. #806
+  * Remove unneeded type: ignore annotations. #813
+  * Fix internal NodeFinder visitor for when non-Docutils nodes are present in the content of a directive. #812
+  * Rename lint workflow. #814
+  * Type check pygments and limit docutils stub version. #819
+  * Convert dot files' relative path to absolute. #821
+  * CI, update Sphinx versions to test. #834
+  * CI, update for Sphinx 5.0.1. #846
+  * Fix inconsistency in example. #843
+  * Fix C# enum rendering crash. #849
+  * Drop Sphinx 3 support, add Sphinx 5 support. #850
+  * CICD: Disable python 3.6 for Sphinx master tests. #853
+  * Populate default include text-node's data field instead of raw-source. #828 
+
+-------------------------------------------------------------------
 Mon Mar  7 13:43:13 UTC 2022 - pgajdos@suse.com
 
 - version update to 4.33.1

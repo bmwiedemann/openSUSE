@@ -19,7 +19,7 @@
 %define skip_python2 1
 %define modname breathe
 Name:           python-breathe
-Version:        4.33.1
+Version:        4.34.0
 Release:        0
 Summary:        Sphinx Doxygen renderer
 License:        BSD-3-Clause
