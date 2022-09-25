@@ -321,4 +321,26 @@
   * Update stale.yml (forwarded request 1004740 from jfkw)</comment>
     <requestid>1004745</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>89d8e95c7d3a380228475fcd541970cb</srcmd5>
+    <version>0.104.0</version>
+    <time>1664112901</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.104.0:
+  * Consolidate the glob case logic
+  * hugofs: Fix glob case-sensitivity bug
+  * server: Fix 404 redirects on Windows
+  * build(deps): bump github.com/evanw/esbuild from 0.15.8 to 0.15.9
+  * build(deps): bump github.com/yuin/goldmark from 1.4.14 to 1.4.15
+  * build(deps): bump github.com/getkin/kin-openapi from 0.100.0 to 0.103.0
+  * docs: Regen docs helper
+  * build(deps): bump github.com/alecthomas/chroma/v2 from 2.2.0 to 2.3.0
+  * build(deps): bump github.com/evanw/esbuild from 0.15.7 to 0.15.8
+  * docs: Regenerate CLI docs
+  * Run go mod tidy
+  * resources/images: Add $image.Colors
+  * commands: Skip flaky test on CI
+  * config/security: Allow proxy variables in subcommands (forwarded request 1005663 from jfkw)</comment>
+    <requestid>1005664</requestid>
+  </revision>
 </revisionlist>
