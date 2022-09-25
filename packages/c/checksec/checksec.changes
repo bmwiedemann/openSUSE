@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Sep 24 08:58:02 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6.0:
+  * fix missing sysctl on fedora
+  * remove extra parenthesis
+  * add missing libc on LoongArch-64
+
+-------------------------------------------------------------------
 Wed Mar 16 10:57:05 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add procps dependency for sysctl 

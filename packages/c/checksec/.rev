@@ -38,4 +38,15 @@
     <comment>- add procps dependency for sysctl</comment>
     <requestid>962127</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5dfb5b63bd17a1660c39aaf3ec640e23</srcmd5>
+    <version>2.6.0</version>
+    <time>1664112925</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.6.0:
+  * fix missing sysctl on fedora
+  * remove extra parenthesis
+  * add missing libc on LoongArch-64</comment>
+    <requestid>1005732</requestid>
+  </revision>
 </revisionlist>
