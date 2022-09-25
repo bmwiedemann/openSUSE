@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Sep 24 16:17:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 10.3:
+  * Reduced noise in logs when :mod:`ssl` or :mod:`zlib` raise exceptions.
+  * Made compression negotiation more lax for compatibility with Firefox.
+  * Improved FAQ and quick start guide.
+  * Fixed backwards-incompatibility in 10.1 for connection handlers created with
+  * Avoided leaking open sockets when :func:`~client.connect` is canceled.
+
+-------------------------------------------------------------------
 Fri Feb  4 22:08:32 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 10.1:
