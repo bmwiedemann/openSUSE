@@ -1,5 +1,5 @@
 #
-# spec file for package python-djangorestframework
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -28,20 +28,17 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-djangorestframework%{psuffix}
-Version:        3.13.1
+Version:        3.14.0
 Release:        0
 Summary:        A REST Framework for Django
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            http://django-rest-framework.org/
 Source:         https://github.com/encode/django-rest-framework/archive/%{version}.tar.gz#/djangorestframework-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM 8530-update-tests-new-Pygments.patch gh#encode/django-rest-framework#8160 mcepl@suse.com
-# allow work with the current Pygments
-Patch0:         8530-update-tests-new-Pygments.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django >= 1.11
+Requires:       python-Django >= 3.0
 Recommends:     python-Markdown
 Recommends:     python-Pygments
 Recommends:     python-coreapi
@@ -52,16 +49,15 @@ Provides:       python-django-rest-framework = %{version}
 Obsoletes:      python-django-rest-framework < %{version}
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module Django >= 1.11}
-BuildRequires:  %{python_module Markdown >= 2.6.11}
+BuildRequires:  %{python_module Django >= 3.0}
+BuildRequires:  %{python_module Markdown >= 3.3}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module Pygments}
 BuildRequires:  %{python_module coreapi >= 2.3.1}
 BuildRequires:  %{python_module coreschema >= 0.0.4}
-BuildRequires:  %{python_module django-guardian >= 2.2.0}
+BuildRequires:  %{python_module django-guardian >= 2.4.0}
 BuildRequires:  %{python_module psycopg2}
-BuildRequires:  %{python_module pytest-django >= 3.9.0}
-BuildRequires:  python3-django-filter >= 1.1.0
+BuildRequires:  %{python_module pytest-django >= 4.1.0}
 %endif
 %python_subpackages
 
@@ -91,9 +87,7 @@ sed -i '/addopts/d' setup.cfg
 
 %check
 %if %{with test}
-# TestPosgresFieldsMapping.test_array_field started failing in v3.13.1 noticed 25-08-2022
-# TestViewNamesAndDescriptions.test_markdown has minor differences on Leap
-%pytest -rs -vv -k 'not (TestPosgresFieldsMapping and test_array_field) and not (TestViewNamesAndDescriptions and test_markdown)'
+%pytest -rs -vv
 %endif
 
 %if !%{with test}

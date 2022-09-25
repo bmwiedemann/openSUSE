@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Sep 24 14:10:26 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Update to 3.14.0
+  * Django 2.2 is no longer supported. [#8662]
+  * Django 4.1 compatibility. [#8591]
+  * Don't evaluate DateTimeField.default_timezone when a custom 
+    timezone is set. [#8531]
+  * Make relative URLs clickable in Browseable API. [#8464]
+  * Make ReturnDict support dict union operators on Python 3.9 and 
+    later. [#8302]
+- Drop merged patch 8530-update-tests-new-Pygments.patch
+
+-------------------------------------------------------------------
 Thu Aug 25 02:39:05 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Skip two tests, TestPosgresFieldsMapping.test_array_field and
