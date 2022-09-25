@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Sep 23 19:35:48 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1663935216.436f134:
+  * Prevent stalebot from closing stale issues
+  * Clarify test fail message to distinguish errors
+  * Bump API version for recent validate_script_output changes
+  * Improve performance of `wait_still_screen`
+  * Slightly simplify autotest
+  * Log HTTP response in VMWare test
+  * Ensure the VMWare test is using one event loop instance consistently
+  * Log the used underlying reactor in VMWare test
+  * Improve error handling of open/read calls in dewebsockify test
+  * Simplify `t/27-consoles-vmware.t`
+  * Extend unit tests of general hardware backend
+  * Extend tests for s390x backend
+  * Avoid adding multiple QEMU graphic backends on ARM
+  * Test setting the QEMU graphics backend (depnding on `QEMUVGA`)
+  * Fix resolution with default graphics backend on new QEMU versions
+  * Fix resolution with virtio backend on new QEMU versions
+  * Tune default similarity level for `wait_screen_change` when typing
+  * Prevent buffered output when running Perl testsuite
+  * Speed up `type_string` calls with `wait_screen_change` parameter
+  * Support `no_wait` option in `wait_screen_change`
+
+-------------------------------------------------------------------
 Wed Sep 21 07:26:29 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1663745179.57e1160:
