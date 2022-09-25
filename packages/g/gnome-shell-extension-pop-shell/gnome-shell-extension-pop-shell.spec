@@ -29,6 +29,7 @@ URL:            https://github.com/pop-os/shell
 Source:         https://github.com/pop-os/shell/archive/%{version}.tar.gz#/%{upstream_name}-%{version}.tar.gz
 Source1:        series
 Patch0:         0143b0b5eb14291cbd9e0b8328eeec93c4871ba9.patch
+Patch1:         4520e7813dcbca57ff19cba68085f5d8adf4785e.patch
 BuildRequires:  gnome-shell >= 3.36
 BuildRequires:  gobject-introspection
 BuildRequires:  typescript >= 3.8
