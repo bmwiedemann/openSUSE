@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Sep 23 20:40:39 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to v2.12.10
+  * Fixed a crash when introspecting modules compiled by cffi.
+  * decorators.cached now gets its cache cleared by calling
+    AstroidManager.clear_cache.
+- Release v2.12.9
+  * Fixed creation of the __init__ of dataclassess with multiple
+    inheritance.
+  * Fixed a crash on namedtuples that use typename to specify
+    their name.
+
+-------------------------------------------------------------------
+Thu Sep 22 22:50:11 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to Version  2.12.8
+  * Fixed a crash in the ``dataclass`` brain for ``InitVars`` without subscript typing.
+  Closes PyCQA/pylint#7422
+  * Fixed parsing of default values in ``dataclass`` attributes.
+  Closes PyCQA/pylint#7425
+
+- Update to Version 2.12.7
+  * Fixed a crash in the ``dataclass`` brain for uninferable bases.
+  Closes PyCQA/pylint#7418
+
+- Update to Version 2.12.6
+  * Fix a crash involving ``Uninferable`` arguments to ``namedtuple()``.
+  Closes PyCQA/pylint#7375
+  * The ``dataclass`` brain now understands the ``kw_only`` keyword in dataclass decorators.
+  Closes PyCQA/pylint#7290
+
+- Update to Version 2.12.5
+  * Prevent first-party imports from being resolved to `site-packages`.
+  Refs PyCQA/pylint#7365
+  * Fix ``astroid.interpreter._import.util.is_namespace()`` incorrectly
+  returning ``True`` for frozen stdlib modules on PyPy.
+  Closes #1755 
+
+-------------------------------------------------------------------
 Sat Aug 27 10:10:36 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.12.4
