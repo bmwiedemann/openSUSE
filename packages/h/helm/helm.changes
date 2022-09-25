@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Fri Sep 23 14:01:01 UTC 2022 - dmueller@suse.com
+
+- Update to version 3.10.0:
+  * bump version to v3.10.0
+  * Updating to Kubernetes 1.25 client libs
+  * Updating the certificates used for testing
+  * Updating index handling
+  * Drop direct github.com/docker/docker dependency
+  * fix special string in the filename
+  * chore: add oci install description
+  * Fixing x509 test on darwin
+  * Bump k8s.io/kube-openapi to fix CVE-2022-1996 in github.com/emicklei/go-restful
+  * fixes #11142 missing array length check on release
+  * chore(deps): bump github.com/stretchr/testify from 1.7.5 to 1.8.0
+  * Upgrading to Kubernetes 1.24.2
+  * Bump Oras to 1.2.0
+  * fix: use `go install` instead of `go get`
+  * bump Go 1.18
+  * fix: improve logging & safety of statefulSetReady
+  * make token caching an opt in feature
+  * chore(deps): bump github.com/stretchr/testify from 1.7.4 to 1.7.5
+  * chore(deps): bump github.com/rubenv/sql-migrate from 1.1.1 to 1.1.2
+  * chore(deps): bump github.com/spf13/cobra from 1.4.0 to 1.5.0 (#11075)
+  * chore(deps): bump github.com/stretchr/testify from 1.7.1 to 1.7.4
+  * Upgrading to Kubernetes 1.24.1 packages
+  * chore(deps): bump github.com/Masterminds/squirrel from 1.5.2 to 1.5.3
+  * feat(*): add flags/env for kube api tls overrides
+  * Add --burst-limit option for client-side throttling limit configuration (#10842)
+  * chore(deps): bump github.com/lib/pq from 1.10.5 to 1.10.6
+  * chore(deps): bump oras.land/oras-go from 1.1.0 to 1.1.1
+  * chore(deps): bump github.com/evanphx/json-patch
+  * Bump github.com/lib/pq from 1.10.4 to 1.10.5
+  * build(deps): bump github.com/containerd/containerd from 1.6.3 to 1.6.4
+  * build(deps): bump github.com/docker/docker
+  * bump version to v3.9.0
+  * build(deps): bump github.com/jmoiron/sqlx from 1.3.4 to 1.3.5
+  * Bump github.com/BurntSushi/toml from 1.0.0 to 1.1.0
+  * Fixed helm uninstall not deleting the resource.
+  * Fix UT
+  * Fix linter
+  * Update install.go
+  * Log error message on failed download
+  * Add support `helm list --no-headers`
+  * update go.mod
+  * fix --registry-config issue
+  * feat: add --set-json flag to set json values.
+  * fix(helm): ignore file-not-found error for `helm repo list -o json`
+
+-------------------------------------------------------------------
 Thu Aug 25 07:43:29 UTC 2022 - dmueller@suse.com
 
 - Update to version 3.9.4 (bsc#1203054, CVE-2022-36055):

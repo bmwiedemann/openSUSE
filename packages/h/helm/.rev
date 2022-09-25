@@ -393,4 +393,41 @@ See changelog in:
     <comment>  * Upgrade to oras v0.9.0 (#9269) (bsc#1181419, CVE-2021-21272)</comment>
     <requestid>1004642</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>2344ef277cbc415e338f122846c48433</srcmd5>
+    <version>3.10.0</version>
+    <time>1664112898</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.10.0:
+  * bump version to v3.10.0
+  * Updating to Kubernetes 1.25 client libs
+  * Updating the certificates used for testing
+  * Updating index handling
+  * Drop direct github.com/docker/docker dependency
+  * fix special string in the filename
+  * chore: add oci install description
+  * Fixing x509 test on darwin
+  * Bump k8s.io/kube-openapi to fix CVE-2022-1996 in github.com/emicklei/go-restful
+  * fixes #11142 missing array length check on release
+  * chore(deps): bump github.com/stretchr/testify from 1.7.5 to 1.8.0
+  * Upgrading to Kubernetes 1.24.2
+  * Bump Oras to 1.2.0
+  * fix: use `go install` instead of `go get`
+  * bump Go 1.18
+  * fix: improve logging &amp; safety of statefulSetReady
+  * make token caching an opt in feature
+  * chore(deps): bump github.com/stretchr/testify from 1.7.4 to 1.7.5
+  * chore(deps): bump github.com/rubenv/sql-migrate from 1.1.1 to 1.1.2
+  * chore(deps): bump github.com/spf13/cobra from 1.4.0 to 1.5.0 (#11075)
+  * chore(deps): bump github.com/stretchr/testify from 1.7.1 to 1.7.4
+  * Upgrading to Kubernetes 1.24.1 packages
+  * chore(deps): bump github.com/Masterminds/squirrel from 1.5.2 to 1.5.3
+  * feat(*): add flags/env for kube api tls overrides
+  * Add --burst-limit option for client-side throttling limit configuration (#10842)
+  * chore(deps): bump github.com/lib/pq from 1.10.5 to 1.10.6
+  * chore(deps): bump oras.land/oras-go from 1.1.0 to 1.1.1
+  * chore(deps): bump github.com/evanphx/json-patch
+  * Bump github.com/lib/pq from 1.10.4 to 1.10.5</comment>
+    <requestid>1005633</requestid>
+  </revision>
 </revisionlist>
