@@ -32,7 +32,6 @@ BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module djangorestframework}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django
