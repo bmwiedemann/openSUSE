@@ -16,21 +16,24 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pep440
-Version:        0.1.1
+Version:        0.1.2
 Release:        0
 Summary:        Check whether versions number match PEP 440
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Carreau/pep440
 Source:         https://files.pythonhosted.org/packages/source/p/pep440/pep440-%{version}.tar.gz
-BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module flit-core >= 3.4}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest-console-scripts}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -45,14 +48,23 @@ A simple package with utils to check whether versions number match Pep 440.
 
 %install
 %pyproject_install
+%python_clone -a %{buildroot}%{_bindir}/pep440
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest tests
 
+%post
+%python_install_alternative pep440
+
+%postun
+%python_uninstall_alternative pep440
+
 %files %{python_files}
 %doc readme.md
 %license LICENSE
-%{python_sitelib}/pep440*
+%python_alternative %{_bindir}/pep440
+%{python_sitelib}/pep440
+%{python_sitelib}/pep440-%{version}*-info
 
 %changelog
