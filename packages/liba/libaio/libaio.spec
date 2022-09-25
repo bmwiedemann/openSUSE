@@ -73,7 +73,10 @@ with, for the Linux-native asynchronous I/O facility ("async I/O", or
 rm %{buildroot}%{_libdir}/*.a
 
 %check
+# qemu-linux-user does not emulate io_setup syscall, so none of the testsuite makes sense
+%if ! 0%{?qemu_user_space_build}
 %make_build OPTFLAGS="%{optflags}" partcheck
+%endif
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
