@@ -87,4 +87,20 @@
     <comment></comment>
     <requestid>989026</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>673fa964bd6ddbe74bada114d6fae688</srcmd5>
+    <version>0.11.4</version>
+    <time>1664112882</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.11.4:
+  * Fix a memory leak caused by `lru_cache` on methods.
+  * Fix a regression issue that copying an array results in extra `None` items.
+  * Fix a regression of `array.add_line` that it incorrectly adds a comma to
+    non-value lines.
+  * Fix adding float to an integer value.
+  * Keep the end-of-array style when adding items to or removing items from an array.
+  * Fix a bug of redundant table header shown when removing children from a
+    super table.</comment>
+    <requestid>1005791</requestid>
+  </revision>
 </revisionlist>
