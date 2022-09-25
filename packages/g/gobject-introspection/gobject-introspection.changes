@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 22 17:02:33 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+- Switch to pcre2grep (pcre is dead upstream)
+
+-------------------------------------------------------------------
 Sun Sep 18 07:04:31 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.74.0:

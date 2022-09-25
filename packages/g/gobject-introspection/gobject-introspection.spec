@@ -55,7 +55,7 @@ BuildRequires:  pkgconfig(libffi) >= 3.0.0
 Requires:       file
 Requires:       libgirepository-1_0-1 = %{version}
 # gi-find-deps uses the enhanced grep variant in order to do multi-line matching (for pkg.requires(..))
-Requires:       pcre-tools
+Requires:       pcre2-tools
 Requires:       python3-xml
 Requires:       python(abi) = %{python3_version}
 

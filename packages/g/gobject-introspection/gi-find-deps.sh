@@ -113,7 +113,7 @@ function javascript_requires {
 		print_req_prov
 	done
 	# Remember files which contain a pkg.require() call
-	if pcregrep -M "pkg.require\\(([^;])*" $1 > /dev/null; then
+	if pcre2grep -M "pkg.require\\(([^;])*" $1 > /dev/null; then
 		# the file contains a pkg.require(..) list... let's remember th is file for the in-depth scanner
 		if [ -n "$jspkg" ]; then
 			jspkg=$1:${jspkg}
@@ -122,7 +122,7 @@ function javascript_requires {
 		fi
 	fi
 	# remember files which contain exlucde filters used against pkg.require()
-	if pcregrep -M "const RECOGNIZED_MODULE_NAMES =([^;])*" $1 > /dev/null; then
+	if pcre2grep -M "const RECOGNIZED_MODULE_NAMES =([^;])*" $1 > /dev/null; then
 		# the file contains RECOGNIZED_MODULE_NAMES list. We remember the file name for the follow up filtering
 		if [ -n "$jspkgfilt" ]; then
 			jspkgfilt=$1:${jspkgfilt}
@@ -136,7 +136,7 @@ function javascript_requires {
 function javascript_pkg_filter {
 # For now this is a dummy function based on gnome-weather information
 #for file in $jspkgfilt; do
-#	FILTER=($(pcregrep -M "const RECOGNIZED_MODULE_NAMES =([^;])*" $file | grep -o "'.*'" | sed "s:'::g"))
+#	FILTER=($(pcre2grep -M "const RECOGNIZED_MODULE_NAMES =([^;])*" $file | grep -o "'.*'" | sed "s:'::g"))
 #done
   FILTER=('Lang' 'Mainloop' 'Signals' 'System' 'Params')
 }
@@ -149,7 +149,7 @@ oldIFS=$IFS
 IFS=:
 for file in "$jspkg"; do
 	IFS=$'\n'
-	PKGS=$(pcregrep -M "pkg.require\\(([^;])*" $file | grep -o "'.*': '.*'")
+	PKGS=$(pcre2grep -M "pkg.require\\(([^;])*" $file | grep -o "'.*': '.*'")
 	for pkg in $PKGS; do
 		split_name_version2 $pkg
 		found=0
