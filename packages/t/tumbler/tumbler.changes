@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 22 07:12:24 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Allow building against libgepub-0.7 (boo#1203644):
+  + Adjust BuildRequires to work with libgepub-0.6 or libgepub-0.7.
+  + Replace libgepub-0.6 occurences in configure script with
+    libgepub-0.7 when libgepub 0.7 is present.
+
+-------------------------------------------------------------------
 Fri Aug 12 09:00:30 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 4.16.1

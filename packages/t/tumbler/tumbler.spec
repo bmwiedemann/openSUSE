@@ -60,7 +60,7 @@ BuildRequires:  pkgconfig(libpng)
 # OMDB cover plugin
 BuildRequires:  pkgconfig(libcurl)
 # EPUB Plugin
-BuildRequires:  pkgconfig(libgepub-0.6)
+BuildRequires:  (pkgconfig(libgepub-0.6) or pkgconfig(libgepub-0.7))
 %if %{with git}
 BuildRequires:  xfce4-dev-tools
 %endif
@@ -134,6 +134,7 @@ Provides translations to the package %{name}
 %prep
 %autosetup
 sed -i "s/libopenraw-gnome-1.0/libopenraw-gnome-0.1/g" acinclude.m4
+pkg-config --exists libgepub-0.7 && sed -i "s/gepub-0.6/gepub-0.7/g" configure || true
 
 tar -xzf %SOURCE1
 
