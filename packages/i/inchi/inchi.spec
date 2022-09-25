@@ -29,6 +29,8 @@ Source1:        https://www.inchi-trust.org/download/%{urlver}/INCHI-1-DOC.zip
 Source2:        https://www.inchi-trust.org/download/%{urlver}/INCHI-1-TEST.zip
 # PATCH-FIX-UPSTREAM inchi-1.06-optflags.patch -- Pass optflags to compiler and don't require gcc-c++ (picked from Fedora)
 Patch0:         inchi-1.06-optflags.patch
+# PATCH-FIX-UPSTREAM inchi-1.06-big-endian.patch -- Fix tests on big-endian architectures (rh#1930943)
+Patch1:         inchi-1.06-big-endian.patch
 BuildRequires:  dos2unix
 BuildRequires:  gcc
 BuildRequires:  unzip
@@ -76,9 +78,9 @@ This package contains the user documentation for the InChI software
 and InChI library API reference for developers.
 
 %prep
-# Extract Source0 then cd into extracted directory then extract Source 1 then extract Source2
+# Extract Source0 then cd into extracted directory then extract Source1 then extract Source2
 %setup -q -n INCHI-1-SRC -a 1 -a 2
-%patch0 -p1
+%autopatch -p1
 dos2unix -k readme.txt
 
 # Remove files from INCHI-1-DOC that are already present in ICHI-1-SRC so that they are not listed twice
