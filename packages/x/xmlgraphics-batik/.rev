@@ -313,4 +313,12 @@
     <comment>Build with source/target levels 8</comment>
     <requestid>963165</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>cd2ccea90e1f217a91cbd6a9d86f2b15</srcmd5>
+    <version>1.15</version>
+    <time>1664112862</time>
+    <user>dimstar_suse</user>
+    <comment>1.15 == fix security issues</comment>
+    <requestid>1005577</requestid>
+  </revision>
 </revisionlist>

@@ -20,7 +20,7 @@
 %define _buildshell /bin/bash
 %global classpath xmlgraphics-batik:rhino:xml-commons-apis:xml-commons-apis-ext:xmlgraphics-commons
 Name:           xmlgraphics-batik
-Version:        1.14
+Version:        1.15
 Release:        0
 Summary:        Scalable Vector Graphics for Java
 License:        Apache-2.0
@@ -36,12 +36,10 @@ BuildRequires:  fdupes
 BuildRequires:  javapackages-local
 BuildRequires:  jython
 BuildRequires:  rhino >= 1.6
-BuildRequires:  xalan-j2
 BuildRequires:  xml-commons-apis >= 1.3.03
 BuildRequires:  xmlgraphics-commons
 Requires:       %{name}-css = %{version}-%{release}
 Requires:       mvn(org.apache.xmlgraphics:xmlgraphics-commons)
-Requires:       mvn(xalan:xalan)
 Requires:       mvn(xml-apis:xml-apis)
 Requires:       mvn(xml-apis:xml-apis-ext)
 Obsoletes:      batik < %{version}-%{release}
@@ -180,7 +178,7 @@ done
 
 %pom_disable_module batik-test-old
 
-build-jar-repository -s lib js xml-apis xml-commons-apis-ext xalan-j2 xmlgraphics-commons jython
+build-jar-repository -s lib js xml-apis xml-commons-apis-ext xmlgraphics-commons jython
 
 %build
 export CLASSPATH=

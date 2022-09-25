@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Sep 23 07:28:24 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 1.15
+  * BATIK-1260: Java 11 module error
+  * BATIK-1321: Remove Xerces
+  * BATIK-1299: Batik-all jar has all classes so should not pull
+    other jars also
+  * BATIK-1329: Remove xalan
+  * BATIK-1331, bsc#1203674, CVE-2022-38398: Jar url should be
+    blocked by DefaultExternalResourceSecurity
+  * BATIK-1333, bsc#1203673, CVE-2022-38648: Block external resource
+    before calling fop
+  * BATIK-1335, bsc#1203672, CVE-2022-40146: Jar url should be
+    blocked by DefaultScriptSecurity
+
+-------------------------------------------------------------------
 Sun Mar 20 07:25:00 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with source/target levels 8
