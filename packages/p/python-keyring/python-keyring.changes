@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 23 20:57:12 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Clean specfile from setuptools cruft, this is a PEP517 package
+- Only python >= 3.7 is supported
+- Fix more runtime requirements
+
+-------------------------------------------------------------------
 Tue Sep 20 16:18:23 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 23.9.3 (changes since 23.9.1):

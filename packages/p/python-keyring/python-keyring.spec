@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -34,27 +32,25 @@ License:        MIT AND Python-2.0
 URL:            https://github.com/jaraco/keyring
 Source:         https://files.pythonhosted.org/packages/source/k/keyring/keyring-%{version}.tar.gz
 Patch0:         support-new-importlib.patch
-BuildRequires:  %{python_module setuptools >= 17.1}
-BuildRequires:  %{python_module setuptools_scm >= 1.15.0}
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools >= 56}
+BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-SecretStorage >= 3
-Requires:       python-entrypoints
-Requires:       python-importlib-metadata
+Requires:       python-SecretStorage >= 3.2
 Requires:       python-jaraco.classes
 Requires:       python-jeepney >= 0.4.2
-Requires:       python-setuptools
+%if 0%{python_version_nodots} < 310
+Requires:       python-importlib-metadata >= 3.6
+%endif
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module SecretStorage >= 3}
-BuildRequires:  %{python_module entrypoints}
-BuildRequires:  %{python_module importlib-metadata}
-BuildRequires:  %{python_module jaraco.classes}
 BuildRequires:  %{python_module keyring = %{version}}
 BuildRequires:  %{python_module pytest >= 3.5}
-BuildRequires:  %{python_module toml}
 %endif
 %python_subpackages
 
@@ -64,22 +60,18 @@ from python. It can be used in any application that needs safe password storage.
 
 %prep
 %autosetup -p1 -n keyring-%{version}
-echo "import setuptools; setuptools.setup()" > setup.py
 
-%if 0%{?sle_version}
-# keyring is not setting the egg version correctly without this:
-sed -i -e '1a version=%{version}' setup.cfg
-%endif
 # For rpmlint warning: remove shebang from python library:
 sed -i '/^#!/d' keyring/cli.py
-sed -i -e 's,--flake8,,' -e 's,--black,,' -e 's,--cov,,' pytest.ini
 
 %build
-%python_build
+%if !%{with test}
+%pyproject_wheel
+%endif
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/keyring
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
@@ -100,7 +92,7 @@ sed -i -e 's,--flake8,,' -e 's,--black,,' -e 's,--cov,,' pytest.ini
 %doc README.rst CHANGES.rst
 %license LICENSE
 %python_alternative %{_bindir}/keyring
-%{python_sitelib}/keyring-%{version}-py*.egg-info
+%{python_sitelib}/keyring-%{version}*-info
 %{python_sitelib}/keyring/
 %endif
 
