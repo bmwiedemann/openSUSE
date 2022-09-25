@@ -30,7 +30,6 @@ URL:            https://github.com/log2timeline/dfdatetime
 Source:         https://files.pythonhosted.org/packages/source/d/%{modname}/%{modname}-%{timestamp}.tar.gz
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six >= 1.1.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
