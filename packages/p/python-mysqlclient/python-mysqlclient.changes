@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Sep 24 10:58:20 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.1:
+  * Fix qualname of exception classes.
+  * Fix range check in ``MySQLdb._mysql.result.fetch_row()``. Invalid ``how``
+    argument caused SEGV.
+  * Fix docstring of ``_mysql.connect``.
+  * Windows: Binary wheels are updated.
+     * Use MariaDB Connector/C 3.3.1.
+     * Use cibuildwheel to build wheels.
+     * Python 3.8-3.11
+
+-------------------------------------------------------------------
 Thu Mar 24 13:10:53 UTC 2022 - pgajdos@suse.com
 
 - version update to 2.1.0

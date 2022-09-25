@@ -170,4 +170,20 @@
     <comment></comment>
     <requestid>965319</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>9b9186452dd9f4fe7c10c458e0b3a184</srcmd5>
+    <version>2.1.1</version>
+    <time>1664112878</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1.1:
+  * Fix qualname of exception classes.
+  * Fix range check in ``MySQLdb._mysql.result.fetch_row()``. Invalid ``how``
+    argument caused SEGV.
+  * Fix docstring of ``_mysql.connect``.
+  * Windows: Binary wheels are updated.
+     * Use MariaDB Connector/C 3.3.1.
+     * Use cibuildwheel to build wheels.
+     * Python 3.8-3.11</comment>
+    <requestid>1005762</requestid>
+  </revision>
 </revisionlist>

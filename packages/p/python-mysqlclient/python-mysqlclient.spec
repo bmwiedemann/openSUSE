@@ -29,7 +29,7 @@
 %bcond_with test
 %endif
 Name:           python-mysqlclient%{psuffix}
-Version:        2.1.0
+Version:        2.1.1
 Release:        0
 Summary:        Python interface to MySQL
 License:        GPL-2.0-or-later
