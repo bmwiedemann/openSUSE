@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Sep 23 02:28:43 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- update to v3.0.0 
+  * Merge pull request #114 from Bomme/py36
+  * remove .travis.yml since we have GitHub actions now
+  * install ffmpeg in github action
+  * add a GitHub actions workflow for python tox tests
+  * remove deprecated pytest-runner (fully rely on tox instead)
+  * remove python 2 specific code in gstdec.py
+  * reorganize imports; remove python 2 specific imports
+  * remove python 2.7 from travis.yml
+  * add python_requires to setup.py
+  * remove mention of Python 2 from README.rst
+  * Only list python > 3.6 in setup.py and tox.ini
+  * automatic pyupgrade rewrite
+
+-------------------------------------------------------------------
 Thu Dec  9 12:39:52 UTC 2021 - pgajdos@suse.com
 
 - pytest-runner is not required for build
