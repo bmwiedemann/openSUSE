@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 21 04:27:46 UTC 2022 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 3.1.5:
+  * SVG fonts now ignore user transformations instead of failing with
+    "unimplemented feature".
+  * Updated glyph advance width calculation for Harfbuzz 5.2 changes.
+    The new calculation is incompatible with Harfbuzz 5.1 and earlier, so
+    required version of Harfbuzz has been increased to 5.2.
+
+-------------------------------------------------------------------
 Tue Sep  6 16:48:06 UTC 2022 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to 3.1.4:
