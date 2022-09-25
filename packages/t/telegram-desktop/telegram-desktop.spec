@@ -36,7 +36,7 @@
 %define qt_major_version 6
 
 Name:           telegram-desktop
-Version:        4.0.2
+Version:        4.1.1
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
@@ -257,6 +257,7 @@ cd %{_builddir}/tdesktop-%{version}-full
       -DCMAKE_BUILD_TYPE=Release \
 %if %{qt_major_version} == 6
       -DDESKTOP_APP_QT6=ON \
+      -DQT_VERSION_MAJOR=6 \
 %else
       -DDESKTOP_APP_QT6=OFF \
       -DDESKTOP_APP_DISABLE_WAYLAND_INTEGRATION=ON \

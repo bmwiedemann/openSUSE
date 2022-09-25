@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Sep 20 15:44:53 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Pass -DQT_VERSION_MAJOR=6 to cmake when building Qt6 flavor: make
+  build stable even if some Qt5 libs are benig found.
+
+-------------------------------------------------------------------
+Sun Aug 28 04:50:11 UTC 2022 - Xu Zhao <i@xuzhao.net>
+
+- Update to version 4.1.1
+  * Fix editing media captions with animated emoji.
+  * Fix viewing animated emoji sets used in a message.
+  * Fix premium sticker tooltip auto-show in channel comments.
+  * Fix main window position and size restoring after relaunch.
+  * Other bug fixes and minor improvements.
+
+-------------------------------------------------------------------
 Sun Jun 26 14:21:10 UTC 2022 - Xu Zhao <i@xuzhao.net>
 
 - Add 0002-use-bundled-rnnoise-expected-gsl-ranges-webrtc.patch
