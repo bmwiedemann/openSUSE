@@ -1,7 +1,7 @@
 #
 # spec file for package ocli
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2020-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,6 +28,7 @@ Source:         https://github.com/owntracks/%{name}/archive/%{version}.tar.gz#/
 Patch0:         0001-FIX-adapted-for-gpsd-3.20.patch
 Patch1:         0001-FIX-adapted-for-gpsd-3.21.patch
 Patch2:         0001-FIX-adapted-for-gpsd-3.23.1.patch
+Patch3:         fix-dangling-pointer.patch
 BuildRequires:  gpsd-devel
 BuildRequires:  mosquitto-devel
 Provides:       owntracks-cli-publisher
@@ -43,6 +44,7 @@ compatible software to process location data.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 export CFLAGS="%{optflags}"
