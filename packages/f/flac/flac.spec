@@ -20,7 +20,7 @@
 %define sover_plus 10
 
 Name:           flac
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        Free Lossless Audio Codec
 License:        BSD-3-Clause AND GPL-2.0-or-later AND GFDL-1.2-only

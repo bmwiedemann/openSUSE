@@ -2,11 +2,11 @@
  configure.ac |    4 ----
  1 file changed, 4 deletions(-)
 
-Index: flac-1.4.0/configure.ac
+Index: flac-1.4.1/configure.ac
 ===================================================================
---- flac-1.4.0.orig/configure.ac
-+++ flac-1.4.0/configure.ac
-@@ -550,10 +550,6 @@ if test x$ac_cv_c_compiler_gnu = xyes -o
+--- flac-1.4.1.orig/configure.ac
++++ flac-1.4.1/configure.ac
+@@ -559,10 +559,6 @@ if test x$ac_cv_c_compiler_gnu = xyes -o
  		XIPH_ADD_CFLAGS([-fno-inline-small-functions])
  		fi
  
