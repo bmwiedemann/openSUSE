@@ -486,6 +486,7 @@
     <package name="fdupes" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="fetchmail" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="fetchmailconf" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="ffmpegthumbnailer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="ffmpegthumbs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="file" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="file-magic" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -1867,6 +1868,7 @@
     <package name="libfdk-aac2" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libfdt1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libffi8" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libffmpegthumbnailer4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libfftw3-3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libfftw3_threads3" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libfido2-1" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
@@ -1926,6 +1928,7 @@
     <package name="libgegl-0_4-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgeocode-glib-2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgeocode-glib0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libgepub-0_7-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libgexiv2-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgfortran5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgif7" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2401,7 +2404,7 @@
     <package name="libpoppler-cpp0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpoppler-glib8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpoppler-qt5-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libpoppler123" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libpoppler124" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpopt0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libportal-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libportal-gtk3-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2503,8 +2506,6 @@
     <package name="libreoffice-base" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libreoffice-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libreoffice-calc" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libreoffice-draw" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libreoffice-filters-optional" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libreoffice-gnome" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libreoffice-gtk3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libreoffice-icon-themes" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2672,6 +2673,7 @@
     <package name="libtss2-sys1" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libtss2-tctildr0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libtukit4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-transactional_base -->
+    <package name="libtumbler-1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libturbojpeg0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libtwolame0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libubsan1" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
@@ -4060,7 +4062,6 @@
     <package name="ruby3.1-rubygem-terminal-table-2" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-text" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-thor" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="ruby3.1-rubygem-thor-0_19" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-thread_safe" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-tilt" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-timers" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -4377,6 +4378,10 @@
     <package name="trousers" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="tukit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-transactional_base -->
     <package name="tukitd" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="tumbler" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="tumbler-folder-thumbnailer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="tumbler-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="tumbler-webp-thumbnailer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="tuned" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="tv-common" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="tv-fonts" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -5024,6 +5029,8 @@
     <package name="libpwquality1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="librados2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="librbd1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
+    <package name="libreoffice-draw" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libreoffice-filters-optional" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libsasl2-3-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libselinux1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libspf2-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->

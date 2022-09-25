@@ -1721,7 +1721,6 @@ unsorted:
   - caja-extension-gksu 
   - caja-extension-image-converter 
   - caja-extension-nextcloud 
-  - caja-extension-nitroshare 
   - caja-extension-open-terminal 
   - caja-extension-sendto 
   - caja-extension-sendto-blueman 
@@ -3744,7 +3743,6 @@ unsorted:
   - ffmpeg-5-libswresample-devel 
   - ffmpeg-5-libswscale-devel 
   - ffmpeg-5-private-devel 
-  - ffmpegthumbnailer 
   - ffmsindex 
   - ffnvcodec-devel 
   - ffsb 
@@ -10899,7 +10897,6 @@ unsorted:
   - libffi-devel 
   - libffi-devel-32bit: [x86_64] 
   - libffmpegthumbnailer-devel 
-  - libffmpegthumbnailer4 
   - libffms2-4 
   - libffms2-4-32bit: [x86_64] 
   - libffms2-devel 
@@ -10934,7 +10931,7 @@ unsorted:
   - libfifechan_sdl0_1_5 
   - libfilezilla-devel 
   - libfilezilla-lang 
-  - libfilezilla29 
+  - libfilezilla31 
   - libfilteraudio0 
   - libfinal-devel 
   - libfinal-examples 
@@ -11189,7 +11186,6 @@ unsorted:
   - libgeos3_11_0 
   - libgeos_c1 
   - libgeotiff5 
-  - libgepub-0_7-0 
   - libgepub-devel 
   - libgerbv1 
   - libges-1_0-0 
@@ -13232,7 +13228,7 @@ unsorted:
   - libpoppler-qt5-devel 
   - libpoppler-qt6-3 
   - libpoppler-qt6-devel 
-  - libpoppler123-32bit: [x86_64] 
+  - libpoppler124-32bit: [x86_64] 
   - libportal-devel 
   - libportal-gtk3-devel 
   - libportal-gtk4-devel 
@@ -13662,6 +13658,8 @@ unsorted:
   - librem3 
   - libreoffice-base-drivers-postgresql 
   - libreoffice-calc-extensions 
+  - libreoffice-draw: [i586] 
+  - libreoffice-filters-optional: [i586] 
   - libreoffice-gdb-pretty-printers 
   - libreoffice-glade 
   - libreoffice-l10n-af 
@@ -14506,7 +14504,6 @@ unsorted:
   - libtty-devel 
   - libtty1 
   - libtukit-devel 
-  - libtumbler-1-0 
   - libtun6-0 
   - libturbojpeg0-32bit: [x86_64] 
   - libturris-spectator-devel 
@@ -17291,11 +17288,9 @@ unsorted:
   - nautilus-extension-dropbox 
   - nautilus-extension-folder-color 
   - nautilus-extension-nextcloud 
-  - nautilus-extension-nitroshare 
   - nautilus-extension-sendto-blueman 
   - nautilus-extension-tilix 
   - nautilus-file-roller 
-  - nautilus-font-manager 
   - nautilus-image-converter 
   - nautilus-image-converter-lang 
   - nautilus-terminal 
@@ -17365,7 +17360,6 @@ unsorted:
   - nemo-extension-folder-color 
   - nemo-extension-image-converter 
   - nemo-extension-nextcloud 
-  - nemo-extension-nitroshare 
   - nemo-extension-pastebin 
   - nemo-extension-preview 
   - nemo-extension-repairer 
@@ -17544,8 +17538,6 @@ unsorted:
   - ninvaders 
   - nitrogen 
   - nitrogen-lang 
-  - nitroshare 
-  - nitroshare-kde 
   - nload 
   - nlohmann_json-devel 
   - nlopt-devel 
@@ -21090,6 +21082,7 @@ unsorted:
   - pommed 
   - pongix 
   - popeye 
+  - poppler-data: [i586] 
   - poppler-data-devel 
   - popt-devel 
   - popt-devel-32bit: [x86_64] 
@@ -42876,12 +42869,8 @@ unsorted:
   - tuigreet 
   - tuimoji 
   - tuladha-jejeg-fonts 
-  - tumbler 
   - tumbler-devel 
   - tumbler-doc 
-  - tumbler-folder-thumbnailer 
-  - tumbler-lang 
-  - tumbler-webp-thumbnailer 
   - tumbleweed-cli 
   - tunctl 
   - tuned-gtk 
