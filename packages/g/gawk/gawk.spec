@@ -28,8 +28,8 @@ Source2:        http://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz.sig
 Source3:        http://savannah.gnu.org/people/viewgpg.php?user_id=80653#/gawk.keyring
 Source4:        gawk.rpmlintrc
 Patch0:         pma.patch
-Patch1:         nan-tests.patch
-Patch2:         upref.patch
+Patch1:         nan-sign.patch
+Patch2:         double-free.patch
 Provides:       awk
 BuildRequires:  mpfr-devel
 BuildRequires:  readline-devel

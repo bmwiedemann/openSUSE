@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Sep 24 08:40:01 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- double-free.patch: Yet another fix for Node_elem_new
+
+-------------------------------------------------------------------
+Tue Sep 20 07:45:49 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- double-free.patch: Fix Node_elem_new op, replacing upref.patch
+- pma.patch: Replace with upstream solution
+- nan-sign.patch: Fix negative NaN issue on RiscV, replacing
+  nan-tests.patch
+
+-------------------------------------------------------------------
 Tue Sep 13 17:43:05 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - upref.patch: Add missing UPREF
