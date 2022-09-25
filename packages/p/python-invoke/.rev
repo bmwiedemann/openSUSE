@@ -116,4 +116,18 @@
     <comment></comment>
     <requestid>974984</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>17b9f33ba2f5eb514754e6cd5a13b953</srcmd5>
+    <version>1.7.1</version>
+    <time>1664112877</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7.1:
+  * :bug:`659` Improve behavior under ``nohup``, which causes stdin to become an
+     undetectably-unreadable (but otherwise legit) file descriptor. Previously
+     this led to `OSError` even if you weren't expecting anything on stdin; we now
+     trap this specific case and silently ignore it, allowing execution to
+     continue. Thanks to ``@kingkisskill`` for initial report and to Ryan Stoner
+     for followup and workshopping.</comment>
+    <requestid>1005761</requestid>
+  </revision>
 </revisionlist>

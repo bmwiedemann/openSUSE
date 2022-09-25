@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Sep 24 10:56:41 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.1:
+  * :bug:`659` Improve behavior under ``nohup``, which causes stdin to become an
+     undetectably-unreadable (but otherwise legit) file descriptor. Previously
+     this led to `OSError` even if you weren't expecting anything on stdin; we now
+     trap this specific case and silently ignore it, allowing execution to
+     continue. Thanks to ``@kingkisskill`` for initial report and to Ryan Stoner
+     for followup and workshopping.
+
+-------------------------------------------------------------------
 Wed May  4 12:35:49 UTC 2022 - pgajdos@suse.com
 
 - version update to 1.7.0

@@ -21,7 +21,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-invoke
-Version:        1.7.0
+Version:        1.7.1
 Release:        0
 Summary:        Pythonic Task Execution
 License:        BSD-2-Clause
