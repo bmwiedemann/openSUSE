@@ -472,8 +472,6 @@
     <ignore name="gnome-online-accounts"/>
     <package name="aaa_base" replaces="pragha"/>
     <ignore name="pragha"/>
-    <package name="aaa_base" replaces="tumbler"/>
-    <ignore name="tumbler"/>
     <package name="live-net-installer"/>
     <package name="skelcd-openSUSE"/>
     <package name="setxkbmap"/>

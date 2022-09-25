@@ -1551,4 +1551,11 @@
     <user>dimstar_suse</user>
     <comment>- Remove tumbler and pragha from xfce medium for now: fails to build.</comment>
   </revision>
+  <revision rev="194" vrev="194">
+    <srcmd5>c9d90ce070b945eecf46b7b3c0810275</srcmd5>
+    <version>unknown</version>
+    <time>1664115674</time>
+    <user>dimstar_suse</user>
+    <comment>- Re-add tumbler: build fixed</comment>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Sep 25 14:20:12 UTC 2022 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Re-add tumbler: build fixed 
+
+-------------------------------------------------------------------
 Wed Sep 21 17:38:31 UTC 2022 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - Remove tumbler and pragha from xfce medium for now: fails to build.
