@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Sep 23 09:31:49 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.0:
+  + Contacts can now import and export your contacts in the vCard
+    format (aka VCF) to or from a file on the system.
+  + Changes under the hood to make searching for contacts faster,
+    and fixes several issues when editing or adding a contact.
+  + On the UI front, Contacts has revamped the widgets when you're
+    editing contacts. Several dialogs (like the "About" window)
+    have gotten an upgrade and now look consistent with other GNOME
+    apps.
+  + Configuring your address books has moved to a dedicated spot in
+    the new preferences window.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Sep  5 14:04:14 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 43.rc:

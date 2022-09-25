@@ -17,7 +17,7 @@
 
 
 Name:           gnome-contacts
-Version:        43.rc
+Version:        43.0
 Release:        0
 Summary:        Contacts Manager for GNOME
 License:        GPL-2.0-or-later
