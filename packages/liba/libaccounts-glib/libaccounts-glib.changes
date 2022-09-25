@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 22 17:07:09 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.26:
+  * meson: add /usr/include to pkgconfig include path
+  * Avoid assert failure on ag_provider_get_tags
+
+-------------------------------------------------------------------
 Wed May 12 05:37:00 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Fixed baselibs.conf, so version changed

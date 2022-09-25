@@ -55,4 +55,14 @@
     <comment></comment>
     <requestid>892342</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>584a66e1e8f1763bf17b4df4a7372f47</srcmd5>
+    <version>1.26</version>
+    <time>1664112852</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.26:
+  * meson: add /usr/include to pkgconfig include path
+  * Avoid assert failure on ag_provider_get_tags</comment>
+    <requestid>1005461</requestid>
+  </revision>
 </revisionlist>
