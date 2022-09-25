@@ -33,7 +33,9 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.44
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.42.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
 BuildRequires:  pkgconfig(iso-codes) >= 0.35
+%ifarch aarch64 %{ix86} x86_64 ppc ppc64 ppc64le s390x armv7l armv7hl armv6l armv6hl
 BuildRequires:  pkgconfig(valgrind)
+%endif
 BuildRequires:  pkgconfig(vapigen)
 
 %description
