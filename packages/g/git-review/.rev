@@ -238,4 +238,13 @@
 - Remove now unneeded BuildRequires on mock.</comment>
     <requestid>970662</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>bf9e31408322dd6f61ae8130a0dc117c</srcmd5>
+    <version>2.3.1</version>
+    <time>1664112920</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.3.1:
+  * Improved version string parsing for Git</comment>
+    <requestid>1005735</requestid>
+  </revision>
 </revisionlist>
