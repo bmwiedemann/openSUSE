@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep 23 02:23:16 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 2.12.0 
+  * Fix an issue with SFTP servers which don't support random access I/O
+  * Fix "Recceived window change" in log message (#509)
+  * Fix forwarding a dynamically allocated port in the server (#512)
+  * Fix type of SSHServerProcessFactory
+  * Bump version number up to 2.12.0 and update change log
+
+-------------------------------------------------------------------
 Thu Aug  4 09:02:37 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Update to 2.11.0:
