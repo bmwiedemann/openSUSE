@@ -210,7 +210,7 @@ BuildRequires:  libxml2-devel
 BuildRequires:  lua-devel
 BuildRequires:  openldap2-devel
 BuildRequires:  openssl-devel >= 0.9.8a
-BuildRequires:  pcre-devel
+BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xz

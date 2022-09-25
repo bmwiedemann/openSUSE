@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 23 06:06:26 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+- The 2.4.54 release brought support for PCRE2, but for that we also
+  need to change buildrequires to pcre2-devel
+
+-------------------------------------------------------------------
 Tue Sep 20 15:01:58 UTC 2022 - David Anes <david.anes@suse.com>
 
 - Remove references to README.QUICKSTART and point them to 
