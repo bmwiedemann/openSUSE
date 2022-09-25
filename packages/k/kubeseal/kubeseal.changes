@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sun Sep 25 07:02:21 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.18.4:
+  * Release version v0.18.4 (#973)
+
+-------------------------------------------------------------------
+Sun Sep 25 06:56:49 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.18.3:
+  * Release version v0.18.3 (#972)
+  * Generate deepcopy functions for SealedSecretEncryptedData (#970)
+  * Release chart v2.6.7 (#968)
+  * Check SealedSecret status in tests (#967)
+  * Fix status sub-resource not found error on updating status (#964)
+  * Autogenerate schema-v1alpha1.yaml (#966)
+  * fix: CRDs should not include unnecessary dashes (#965)
+  * feat: Support hostNetwork and dnsPolicy (#946)
+  * Run integration tests on the chart (#962)
+  * Upgrade Go versions and dependencies (#960)
+  * Make imagePullPolicy default to Always only if using :latest image (#959)
+  * feat: Publish kubeseal binary in a Docker image (#921)
+  * Fix schema validation errors (#957)
+  * Makes the README file clean and neat. (#911)
+  * Bump Chart version to release 'Allow additional volumes deployment' (#953)
+  * Allow additional volumes deployment (#945)
+  * Add CRD schema and fix JSON errors (#941)
+  * Make the controller main skinny (#947)
+  * Extend controller-tests support and docs to minikube (#943)
+  * Take into account annotations and commonAnnotations in our chart (#944)
+  * Make the kubeseal CLI have a skinny main (#939)
+  * Remove magic init funcs and global flags (#940)
+  * Explain helm chart install on restricted environments (#938)
+  * Remove /dev/stdin mentions in Readme (#935)
+  * Fix missing push and readme on new tests rules (#937)
+  * Simplify controller testing (#924)
+  * Upgrade chart to image version 1.18.2 (#932)
+
+-------------------------------------------------------------------
 Wed Sep 07 11:30:27 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.18.2:
