@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Sep 24 15:19:08 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.61.0
+  * Bugfixes and minor changes:
+    - Updated to libfilezilla 0.39.1
+- Changes from 3.61.0-beta1
+  * New features:
+    - Use improved asynchronous file readers/writers from 
+      libfilezilla
+  * Bugfixes and minor changes:
+    - Fix export of root items in the Site Manager
+    - Handle rare cases of non-existing download directory in the
+      updater
+
+-------------------------------------------------------------------
 Sat Jul 23 14:10:54 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.60.2
