@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyxdg
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-pyxdg
-Version:        0.27
+Version:        0.28
 Release:        0
 Summary:        Implementations of freedesktop.org standards in python
 License:        LGPL-2.1-only
@@ -62,7 +62,7 @@ cp -r ../pyxdg-rel-%{version}-test-example/test/example test/
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest test/test-*.py -v
+%pytest test/test*.py -v
 
 %files %{python_files}
 %license COPYING

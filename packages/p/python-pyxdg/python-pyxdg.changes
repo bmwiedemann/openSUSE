@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Sep 24 11:19:43 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.28:
+  * BaseDirectory: Add support for $XDG_STATE_DIR
+
+-------------------------------------------------------------------
 Thu Apr 29 07:22:54 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Obsolete python-xdg to resolve conflicting state (boo#1178803)
