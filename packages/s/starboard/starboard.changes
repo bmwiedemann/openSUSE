@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Sep 25 07:10:38 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.15.9:
+  * release: prepare v0.15.9 (#1273)
+  * Using latest tag everytime for ubi-minimal (#1269)
+  * release: prepare v0.15.9-rc3 (#1266)
+  * release: prepare v0.15.9-rc2 (#1265)
+  * release: prepare v0.15.9-rc (#1264)
+  * feat: k8s resource computability (#1259)
+
+-------------------------------------------------------------------
 Wed Sep 07 12:21:46 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.15.8:
