@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 22 21:28:44 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add tilix-nautilus-43-compat.patch: nautilus: Add compatibility
+  with Nautilus 43 [gh#gnunn1/tilix#2115].
+
+-------------------------------------------------------------------
 Tue Feb 22 20:07:14 UTC 2022 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to version 1.9.5

@@ -25,15 +25,17 @@ Summary:        A tiling terminal emulator based on GTK+ 3
 License:        LGPL-3.0-only AND MPL-2.0
 URL:            https://github.com/gnunn1/tilix
 Source0:        https://github.com/gnunn1/tilix/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-%if 0%{?sle_version} < 150400 && 0%{?is_opensuse} 
+%if 0%{?sle_version} < 150400 && 0%{?is_opensuse}
 Source1:        com.gexperts.Tilix.appdata.xml
 %endif
 # PATCH-FIX-OPENSUSE gnome-ssh-agent.patch gh#gnunn1/tilix#870
 Patch0:         gnome-ssh-agent.patch
-%if 0%{?sle_version} < 150400 && 0%{?is_opensuse} 
+%if 0%{?sle_version} < 150400 && 0%{?is_opensuse}
 # PATCH-FIX-OPENSUSE 0001-Don-t-generate-appstream-meta-data-on-older-versions.patch -- Provide appdata.xml instead of generating one since we have to old version of appstream in Leap releases
 Patch1:         0001-Don-t-generate-appstream-meta-data-on-older-versions.patch
 %endif
+# PATCH-FIX-UPSTREAM tilix-nautilus-43-compat.patch  gh#gnunn1/tilix#2115 badshah400@gmail.com -- nautilus: Add compatibility with Nautilus 43
+Patch2:         tilix-nautilus-43-compat.patch
 BuildRequires:  AppStream
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
