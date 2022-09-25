@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Sep 23 19:56:00 UTC 2022 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 1.10.0:
+  * Added:
+    + Add the following to the list of directories that cannot be
+      traversed: __pypackages__, .hg, .hatch, .tox, .nox
+    + Add deprecated option to allow ambiguous features
+  * Fixed:
+    + Improve tracking of dynamic metadata
+    + Fix core metadata for entries in
+      project.optional-dependencies that use direct references
+
+-------------------------------------------------------------------
 Tue Sep 13 20:05:14 UTC 2022 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 1.9.0:
