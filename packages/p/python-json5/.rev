@@ -56,4 +56,22 @@ Required by the latest version of jupyter-jupyterlab-server</comment>
     now matches the behavior in the `json` module.</comment>
     <requestid>979749</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>892a8ca5854613cef1b81d0aa85af8fb</srcmd5>
+    <version>0.9.10</version>
+    <time>1664112929</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.10:
+  * Updated the //README.md to be clear that parsing arbitrary JS
+    code may not work.
+  * Fixed serialization for objects that subclass `int` or `float`:
+    Previously we would use the objects __str__ implementation, but
+    that might result in an illegal JSON5 value if the object had
+    customized __str__ to return something illegal. Instead,
+    we follow the lead of the `JSON` module and call `int.__repr__`
+    or `float.__repr__` directly.
+  * While I was at it, I added tests for dumps(-inf) and dumps(nan)
+    when those were supposed to be disallowed by `allow_nan=False`.</comment>
+    <requestid>1005760</requestid>
+  </revision>
 </revisionlist>
