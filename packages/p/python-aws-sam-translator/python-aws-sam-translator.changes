@@ -1,4 +1,114 @@
 -------------------------------------------------------------------
+Tue Sep 20 13:22:01 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.51.0
+  * chore: Add missing import and add partition into base test
+    for integration test by @qingchm in #2463
+  * Release 1.49.0 (to develop) by @aws-sam-cli-bot in #2465
+  * Revert "chore: Add missing import and add partition into
+    base test for integration test" by @qingchm in #2466
+  * Update methods in Metrics class to accept timestamp by @hawflau in #2470
+  * Release 1.50.0 (to develop) by @aws-sam-cli-bot in #2471
+  * feat: Add State Property to Schedule EventSource in
+    StateMachine by @konoui in #2468
+  * Test: Upgrade integration test cases lambda resources
+    runtimes to nodejs14.x by @moelasmar in #2474
+  * Add validation for S3 NotificationConfiguration in
+    Serverless Functin… by @hawflau in #2473
+  * chore: Change FeatureToggleAppConfigConfigProvider to accept AppConfig
+    client, so SAM-T can send a monitored client. by @moelasmar in #2480
+  * chore: Add basic mypy check (no behavior change) by @aahung in #2488
+  * chore: Integration test improvements with ApiKey skips and
+    retry time by @qingchm in #2487
+- from version 1.50.0
+  * chore: Skip self managed kafka tests by @qingchm in #2461
+  * chore: Add required skipifs for integration tests by @qingchm in #2462
+  * feat: Support ConsumerGroupId for Kafka events
+- from version 1.49.0
+  * Fix EventSource Schedule passes Enabled to State by @lightpriest in #1666
+  * chore: Add capability to disable S3 Events integration
+    test cases. by @moelasmar in #2454
+  * chore: Add region skip condition and retry for http
+    test by @qingchm in #2455
+  * Add validation for swagger security when ApiKeyRequired
+    is true by @hawflau in #2456
+  * Release 1.48.0 (to develop) by @aws-sam-cli-bot in #2457
+- from version 1.48.0
+  * chore: [Foss] Sync public: Update region service exclusion
+    list by @mingkun2020 in #2427
+  * chore: [Foss] Sync public: Add skip condition for http
+    by @mingkun2020 in #2429
+  * chore: [Foss] Sync public: Add skip condition for rest
+    api tests by @mingkun2020 in #2432
+  * chore: [Foss] Sync public: Add back hash verification
+    by @mingkun2020 in #2434
+  * feat: [Foss] Sync public: remove region service exclusion
+    and inclusion list by @mingkun2020 in #2437
+  * chore: [Foss] Sync public: Add skip condition for EFS
+    tests by @mingkun2020 in #2436
+  * fix: [Foss] Sync public: Update custom domain tests
+    resource by @mingkun2020 in #2435
+  * feat: Add support for the `FailOnWarnings` property on
+    `AWS::Serverless::Api` by @nialdaly in #2417
+  * chore: [Foss] Sync public: Add retry and logging for dlq/http/cors
+    flaky requests by @mingkun2020 in #2428
+  * Fix route53 record set groups by @hawflau in #2408
+  * Release 1.47.0 (to develop) by @hawflau in #2444
+  * chore: sync foss changes by @mndeveci in #2445
+- from version 1.47.0
+  * test: Add logging for relevant Amazon headers useful
+    for debugging by @mildaniel in #2390
+  * Update python3.6 runtime in integration test templates
+    by @hawflau in #2395
+  * test: Add tests for intrinsics support for DefinitionBody
+    by @torresxb1 in #2407
+  * fix: check null method for open api by @mndeveci in #2409
+  * Release 1.46.0 (to develop) by @hawflau in #2411
+  * validate Http Api Authorizers identity Header by @jonife in #2339
+  * fix: update error message to contain the normalized method rather
+    than the method dict by @mndeveci in #2414
+  * fix: use array of exceptions instead of str for
+    InvalidDocumentException by @mndeveci in #2416
+  * fix: Allow Implicit HTTP APIs to write when value of
+    method is None by @jfuss in #2413
+  * blogs, video and workshop update in readme by @praneetap in #2422
+  * fix: Fail gracefully when AutoPublishAlias is an empty string by @jfuss in #2425
+- from version 1.46.0
+  * Validation for API property Model by @jonife in #2340
+  * refactor: Make _get_function_names less verbose by @aahung in #2223
+  * Release/v1.44.0 (to develop) by @hawflau in #2363
+  * Add validation for SecretsManagerKmsKeyId by @jonife in #2323
+  * Bump minimal boto3 version to 1.19.5 by @hawflau in #2365
+  * fix: Add retries to SAR service calls on throttle by @mildaniel in #2352
+  * fix: use formatting instead of concatenating when preparing
+    the exception messages by @mndeveci in #2369
+  * Release/v1.45.0 by @hawflau in #2371
+  * sync foss changes by @mingkun2020 in #2359
+  * feat: Add a built-in AWS_IAM authorizer for HTTP APIs by @harrisonhjones in #1924
+  * reduce CloudFormation template size by @PatMyron in #2368
+  * chore: Add checkbox for intrinsic validation changes by @mildaniel in #2379
+  * Adding ApiKeySourceType. by @lee-11 in #2298
+  * chore: Update PR template wording by @mildaniel in #2383
+  * chore(test): Move assert_ to assertTrue by @jfuss in #2382
+  * fix: use InvalidDocumentException instead of ValueError by @mndeveci in #2376
+  * chore: remove sys.path override by @jfuss in #2380
+  * fix: wrap InvalidTemplateException's with InvalidDocumentException
+    by @torresxb1 in #2391
+  * fix: pass the condition attribute to the generated function url
+    resources for the conditional functions by @moelasmar in #2388
+  * fix: raise InvalidEventException for incorrect Properties field
+    usage for Api event type by @mndeveci in #2393
+  * fix: apply resource conditions to DeploymentPreference
+    resources by @keetonian in #1578
+  * feat: improve new PR and issue labeling for triaging by @torresxb1 in #2400
+  * Furl AutopublishAlias bug fix by @jonife in #2378
+  * Update FURL integ test to test invoke by @hawflau in #2401
+  * Update policy_templates.rst by @danxgh10 in #2403
+  * Release 1.46.0 (to main) by @hawflau in #2412
+- Add patch to skip tests that require a network connection
+  * skip-tests-require-network.patch
+
+-------------------------------------------------------------------
 Thu May  5 11:19:33 UTC 2022 - pgajdos@suse.com
 
 - version update to 1.45.0

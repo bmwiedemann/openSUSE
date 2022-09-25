@@ -1,0 +1,26 @@
+diff -Nru serverless-application-model-1.51.0.orig/tests/plugins/application/test_serverless_app_plugin.py serverless-application-model-1.51.0/tests/plugins/application/test_serverless_app_plugin.py
+--- serverless-application-model-1.51.0.orig/tests/plugins/application/test_serverless_app_plugin.py	2022-09-13 20:17:17.000000000 +0200
++++ serverless-application-model-1.51.0/tests/plugins/application/test_serverless_app_plugin.py	2022-09-20 15:15:16.316869823 +0200
+@@ -1,5 +1,6 @@
+ import boto3
+ import itertools
++import unittest
+ from botocore.exceptions import ClientError
+ 
+ from unittest.mock import Mock, patch
+@@ -99,6 +100,7 @@
+         self.assertEqual(self.plugin._parameters, parameters)
+ 
+ 
++@unittest.skip("Skip tests that requires network")
+ class TestServerlessAppPlugin_on_before_transform_template_translate(TestCase):
+     def setUp(self):
+         client = boto3.client("serverlessrepo", region_name="us-east-1")
+@@ -440,6 +442,7 @@
+         self.assertEqual(plugin._get_sleep_time_sec.call_count, 1)  # make sure we slept once
+ 
+ 
++@unittest.skip("Skip tests that requires network")
+ class TestServerlessAppPlugin_on_before_and_on_after_transform_template(TestCase):
+     @patch("samtranslator.plugins.application.serverless_app_plugin.SamTemplate")
+     def test_time_limit_exceeds_between_combined_sar_calls(self, SamTemplateMock):

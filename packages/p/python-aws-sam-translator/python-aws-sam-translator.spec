@@ -28,12 +28,13 @@
 %define skip_python2 1
 %endif
 Name:           python-aws-sam-translator
-Version:        1.45.0
+Version:        1.51.0
 Release:        0
 Summary:        AWS SAM template to AWS CloudFormation template translator
 License:        Apache-2.0
 URL:            https://github.com/awslabs/serverless-application-model
 Source:         https://github.com/awslabs/serverless-application-model/archive/v%{version}.tar.gz#/serverless-application-model-%{version}.tar.gz
+Patch0:         skip-tests-require-network.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -74,6 +75,7 @@ templates into AWS CloudFormation templates
 
 %prep
 %setup -q -n serverless-application-model-%{version}
+%patch0 -p1
 sed -i -e 's:~=:>=:g' requirements/base.txt
 
 %build
