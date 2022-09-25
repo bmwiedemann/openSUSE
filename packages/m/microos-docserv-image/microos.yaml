@@ -1,0 +1,8 @@
+productname: openSUSE MicroOS
+producturl: https://microos.opensuse.org
+logourl: https://microos.opensuse.org/assets/images/microos-logo.svg
+download: false
+products:
+  - name: openSUSE MicroOS
+    cache:
+      - /var/cache/rpm2docserv

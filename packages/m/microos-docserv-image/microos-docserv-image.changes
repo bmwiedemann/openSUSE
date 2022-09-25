@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Fri Sep 23 11:16:39 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Fix pkg version syntax
+
+-------------------------------------------------------------------
+Fri Sep 23 07:20:05 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Explicit install MicroOS-release-dvd to avoid have choice errors
+
+-------------------------------------------------------------------
+Thu Sep 22 13:28:57 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add microos.yaml config file
+
+-------------------------------------------------------------------
+Thu Sep 22 06:17:37 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Initial version
