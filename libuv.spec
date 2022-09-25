@@ -74,7 +74,9 @@ Mozilla's Rust language, Luvit, Julia, pyuv, and others.
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
+%if !0%{?qemu_user_space_build}
 %make_build check
+%endif
 
 %post -n libuv%{somajor} -p /sbin/ldconfig
 %postun -n libuv%{somajor} -p /sbin/ldconfig
