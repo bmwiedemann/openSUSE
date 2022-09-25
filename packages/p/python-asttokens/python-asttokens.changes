@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep 23 11:59:52 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to version 2.0.8:
+  * Merge pull request #90 from palfrey/fix-explicit-import
+  * Fix mypy explicit re-export issues
+- Changes from version 2.0.7:
+  * Merge pull request #87 from gristlabs/astroid-type-checking
+  * Fix astroid type checking import errors
+
+-------------------------------------------------------------------
 Fri Nov 19 10:21:46 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Fix build error for Leap outside repo d:l:p.
