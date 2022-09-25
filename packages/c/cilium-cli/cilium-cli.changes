@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sun Sep 25 06:55:40 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.12.4:
+  * Prepare for v0.12.4 release
+  * gha: Increase timeout for GKE
+  * connectivity: Add allowed entity related tests
+  * connectivity: Add all entities deny test
+  * connectivity: Add all ingress and egress denied
+  * build(deps): bump library/busybox from `b0b9ae9` to `8946083`
+  * ci: bump Cilium version to v1.12.2
+  * defaults: update default Cilium version to v1.12.2
+  * go.mod, vendor: pull in latest cilium charts for v1.12.2, v1.11.9, v1.10.15
+  * go.mod, vendor: update cilium to v1.12.2
+  * hubble: fix enable/disable command when `cilium-cli-helm-values` does not exist
+  * helm: Add support for remote chart version
+  * helm: Rename newChartFromCiliumVersion function
+  * build(deps): bump michi-covalent/push-to-loki from 0.2.0 to 0.2.1
+  * build(deps): bump library/busybox from `306a4bb` to `b0b9ae9`
+  * connectivity: L7 HTTP method test
+  * Retain labels when creating endpoint object in curlEndpoints
+  * Add Labels() to TestPeer interface
+  * connectivity: Add method to podToPod(endpoints)
+  * connectivity: Assert policy denies for disallowed FQDN
+  * build(deps): bump azure/login from 1.4.5 to 1.4.6
+  * eks-tunnel: Skip cilium-health check in the EKS tunnel test
+  * connectivity: Add test for cilium-health
+  * ci: switch to google-github-actions/auth for GKE based workflows
+  * Update golangci-lint to v1.19.0
+  * Dockerfile: use golang image instead of cilium-builder
+  * Update Go to 1.19.1
+  * Status: generate a more meaningful message if agent not running
+  * build(deps): bump library/busybox from `5b1ae0b` to `306a4bb`
+  * Bump go directive version to 1.19 in go.mod
+  * Update stable release to v0.12.3
+
+-------------------------------------------------------------------
 Wed Sep 07 06:58:58 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.12.3:
