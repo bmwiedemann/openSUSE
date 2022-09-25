@@ -378,6 +378,8 @@ Patch2112:      gdb-testsuite-fix-gdb.reverse-i387-env-reverse.exp-for-pie.patch
 Patch2113:      gdb-testsuite-fix-gdb.ada-literals.exp-with-aarch64.patch
 # https://sourceware.org/bugzilla/show_bug.cgi?id=29423#c8
 Patch2114:      gdb-fix-watchpoints-triggered.patch
+# https://sourceware.org/bugzilla/show_bug.cgi?id=29543#c5
+Patch2115:      gdb-tdep-fix-powerpc-ieee-128-bit-format-arg-passing.patch
 
 # Debug patches.
 
@@ -577,7 +579,7 @@ BuildRequires:  xz
 
 # Provide python package xml.etree.ElementTree, used by test-case
 # gdb.python/py-send-packet.exp.
-BuildRequires:  python-xml
+BuildRequires:  %{python}-xml
 
 %endif # %%{build_testsuite}
 
@@ -785,6 +787,7 @@ find -name "*.info*"|xargs rm -f
 %patch2112 -p1
 %patch2113 -p1
 %patch2114 -p1
+%patch2115 -p1
 
 #unpack libipt
 %if 0%{have_libipt}

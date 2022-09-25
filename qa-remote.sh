@@ -54,14 +54,14 @@ get_item ()
 	mkdir -p $dir
     fi
 
-    if [ ! -f $dir/gdb-testresults-12.1-*.rpm ]; then
+    if [ ! -f $dir/gdb-testresults-12.1-*.$arch.rpm ]; then
 	osc getbinaries -q -M testsuite -d $dir $c $arch
     fi
 
     if [ ! -d $pkgs/gdb-testresults.$c.$arch ]; then
 	(
 	    cd $dir
-	    extract gdb-testresults-12.1-*.rpm
+	    extract gdb-testresults-12.1-*.$arch.rpm
 	)
     fi
 

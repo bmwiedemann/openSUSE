@@ -358,9 +358,8 @@ kfail_aarch64=(
     "FAIL: gdb.base/large-frame.exp: optimize=-O2: backtrace"
 
     # https://sourceware.org/bugzilla/show_bug.cgi?id=29405
-    "FAIL: gdb.base/step-over-syscall.exp: vfork: displaced=off: pc after stepi matches insn addr after syscall"
-    "FAIL: gdb.base/step-over-syscall.exp: vfork: displaced=on: pc after stepi matches insn addr after syscall"
-    "FAIL: gdb.base/step-over-syscall.exp: fork: displaced=on: check_pc_after_cross_syscall: single step over fork final pc"
+    "FAIL: gdb.base/step-over-syscall.exp: (fork|vfork): displaced=(on|off): pc after stepi matches insn addr after syscall"
+    "FAIL: gdb.base/step-over-syscall.exp: (fork|vfork): displaced=(on|off): check_pc_after_cross_syscall: single step over fork final pc"
 
     # https://sourceware.org/bugzilla/show_bug.cgi?id=29418
     "FAIL: gdb.ada/O2_float_param.exp: scenario=all: frame"

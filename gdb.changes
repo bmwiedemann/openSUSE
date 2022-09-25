@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Sep 22 13:38:31 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- use python3-xml if python is python3
+
+-------------------------------------------------------------------
+Fri Sep  2 09:13:08 UTC 2022 - Tom de Vries <tdevries@suse.com>
+
+- Maintenance script qa.sh:
+  * Generalize PR29405 kfails.
+- Maintenance script qa-remote.sh:
+  * Make rpm matching more precise.
+- Patches added:
+  * gdb-tdep-fix-powerpc-ieee-128-bit-format-arg-passing.patch
+
+-------------------------------------------------------------------
 Mon Aug 22 02:58:00 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Enable debuginfod for all archs as we index all TW RPM files.
