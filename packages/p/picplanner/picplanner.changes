@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Wed Sep 14 05:44:56 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.3.1:
+  * Switch to geocode-glib-2.0.
+  * Code cleanup of the time and date selector.
+
+-------------------------------------------------------------------
+Tue Sep 13 11:16:26 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to v0.3.0. Initial OBS release.

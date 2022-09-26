@@ -1,0 +1,6 @@
+<package name="picplanner" project="openSUSE:Factory">
+  <title>PicPlanner</title>
+  <description>A GTK application for photographers using GNU Linux or especially Linux phones. It can be used to calculate the position of the Sun, Moon and Milky Way in order to plan the position and time for an photograph.</description>
+  <devel project="graphics" package="picplanner"/>
+  <url>https://gitlab.com/Zwarf/picplanner</url>
+</package>
