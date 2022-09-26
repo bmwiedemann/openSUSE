@@ -19,19 +19,19 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-django-classy-tags
-Version:        2.0.0
+Version:        3.0.1
 Release:        0
 Summary:        Class based template tags for Django
 License:        MIT
 URL:            https://github.com/ojii/django-classy-tags
 Source:         https://github.com/divio/django-classy-tags/archive/%{version}.tar.gz
-# https://github.com/django-cms/django-classy-tags/pull/66
-Patch0:         dj40.patch
-BuildRequires:  %{python_module Django >= 2.2}
+# PATCH-FIX-UPSTREAM Support django >= 4.1 gh#django-cms/django-classy-tags#86
+Patch0:         django-4-1-support.patch
+BuildRequires:  %{python_module Django >= 3.2}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django >= 2.2
+Requires:       python-Django >= 3.2
 BuildArch:      noarch
 %python_subpackages
 
@@ -40,8 +40,7 @@ This project creates an altnerate way of writing Django template tags
 which is fully compatible with the current Django templating infrastructure.
 
 %prep
-%setup -q -n django-classy-tags-%{version}
-%patch0 -p1
+%autosetup -p1 -n django-classy-tags-%{version}
 sed -i 's/verbosity=1/verbosity=2/' tests/settings.py
 
 %build
@@ -50,7 +49,6 @@ sed -i 's/verbosity=1/verbosity=2/' tests/settings.py
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%python_expand rm -r %{buildroot}%{$python_sitelib}/tests
 
 %check
 export PYTHONPATH='.'
@@ -58,7 +56,7 @@ export PYTHONPATH='.'
 
 %files %{python_files}
 %doc README.rst
-%license LICENSE.txt
+%license LICENSE
 %{python_sitelib}/classytags/
 %{python_sitelib}/django_classy_tags*egg-info/
 
