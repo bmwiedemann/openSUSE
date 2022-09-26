@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Sep 24 07:34:31 UTC 2022 - Egbert Eich <eich@suse.com>
+
+- Do not deduplicate files of testsuite Slurm configuration.
+  This directory is supposed to be mounted over /etc/slurm
+  therefore it must not contain softlinks to the files in
+  this directory.
+- Improve .a and .o file collection for test suite: find these
+  files even if there are multiple ones in a single line.
+
+-------------------------------------------------------------------
 Tue Sep 20 21:12:19 UTC 2022 - Egbert Eich <eich@suse.com>
 
 - Fix build for older product version.

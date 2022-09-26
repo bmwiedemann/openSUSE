@@ -152,7 +152,7 @@ Source1:        slurm-rpmlintrc
 Source10:       https://raw.githubusercontent.com/openSUSE/hpc/10c105e/files/slurm/slurmd.xml
 Source11:       https://raw.githubusercontent.com/openSUSE/hpc/10c105e/files/slurm/slurmctld.xml
 Source12:       https://raw.githubusercontent.com/openSUSE/hpc/10c105e/files/slurm/slurmdbd.xml
-# create: tar --owner=nobody --group=nogroup -cvzf test_setup.tar.gz test_setup
+# create: tar --owner=nobody --group=nogroup --exclude=*~ -cvzf test_setup.tar.gz test_setup
 Source20:       test_setup.tar.gz
 Source21:       README_Testsuite.md
 Patch0:         Remove-rpath-from-build.patch
@@ -851,7 +851,7 @@ while true; do
     filelist="$(for i in $filelist $tlist; do echo $i; done | sort | uniq)"
     [ "$filelist" = "$oldfilelist" ] && break
 done
-filelist+=" $(grep -r "build_dir.*\.[oa]" | sed -e 's@.*[^ ]*{build_dir}/\([^\]*\.o\).*@\1@' | sort | uniq)"
+filelist+=" $(grep -Ehor '\{*build_dir\}*[^ ]*\.[oa]' | sed -e "s@{*build_dir}*/@@" | sort | uniq)"
 cd -
 newlist=""
 for i in $filelist; do
@@ -920,11 +920,13 @@ mkdir -p %{buildroot}/root
 mv test_setup/setup-testsuite.sh %{buildroot}/root
 
 mkdir -p %{buildroot}/srv/slurm-testsuite/config/plugstack.conf.d
-mv test_setup/* %{buildroot}/srv/slurm-testsuite/config
 cp %{S:21} .
 %endif
 
 %fdupes -s %{buildroot}
+# For testsuite - do after fdupes!
+[ -d test_setup -a -d %{buildroot}/srv/slurm-testsuite/config ] && \
+    mv test_setup/* %{buildroot}/srv/slurm-testsuite/config
 
 # Temporary - remove when build is fixed upstream.
 %if !0%{?build_slurmrestd}

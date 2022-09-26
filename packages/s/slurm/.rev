@@ -938,4 +938,17 @@
     <comment>- Fix build for older product version. (forwarded request 1005246 from eeich)</comment>
     <requestid>1005247</requestid>
   </revision>
+  <revision rev="78" vrev="5">
+    <srcmd5>3d11c84ed2184b53f0b4851613001c0a</srcmd5>
+    <version>22.05.2</version>
+    <time>1664210924</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not deduplicate files of testsuite Slurm configuration.
+  This directory is supposed to be mounted over /etc/slurm
+  therefore it must not contain softlinks to the files in
+  this directory.
+- Improve .a and .o file collection for test suite: find these
+  files even if there are multiple ones in a single line. (forwarded request 1005746 from eeich)</comment>
+    <requestid>1006180</requestid>
+  </revision>
 </revisionlist>
