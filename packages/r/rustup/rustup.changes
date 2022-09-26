@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 26 05:41:12 UTC 2022 - william.brown@suse.com
+
+- Update vendored dependencies
+- bsc#1196972 - CVE-2022-24713 - Regex denial of service
+- bsc#1194119 - CVE-2021-45710 - tokio data race with memory corruption
+
+-------------------------------------------------------------------
 Fri Sep 09 01:44:21 UTC 2022 - william.brown@suse.com
 
 - boo#1203257 - Add missing link for rust-analyzer
