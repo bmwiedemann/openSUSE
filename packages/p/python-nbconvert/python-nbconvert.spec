@@ -29,25 +29,22 @@
 %else
 %bcond_with libalternatives
 %endif
-%{?!python_module:%define python_module() python3-%{**}}
+
 Name:           python-nbconvert%{psuffix}
-Version:        6.5.3
+Version:        7.0.0
 Release:        0
 Summary:        Conversion of Jupyter Notebooks
-License:        BSD-3-Clause
+License:        BSD-3-Clause AND MIT
 URL:            https://github.com/jupyter/nbconvert
 Source0:        https://files.pythonhosted.org/packages/source/n/nbconvert/nbconvert-%{version}.tar.gz
-# License Source3: BSD-3-Clause
-Source3:        https://files.pythonhosted.org/packages/source/m/mistune/mistune-0.8.4.tar.gz
-# PATCH-FIX-OPENSUSE nbconvert-vendorize-mistune.patch -- gh#jupyter/nbconvert#1685
-Patch1:         nbconvert-vendorize-mistune.patch
+# See hatch_build.py
+# License10: MIT
+Source10:       https://cdn.jupyter.org/notebook/5.4.0/style/style.min.css
 # PATCH-FIX-OPENSUSE ignore-bleach-deprecation-test.patch -- ignore warning that we don't have bleach5 yet
-Patch2:         ignore-bleach-deprecation-test.patch
+Patch0:         ignore-bleach-deprecation-test.patch
 BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module beautifulsoup4}
-BuildRequires:  %{python_module lxml}
-BuildRequires:  %{python_module packaging}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module hatchling >= 0.25}
+BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
@@ -58,7 +55,6 @@ Requires:       python-Pygments >= 2.4.1
 Requires:       python-beautifulsoup4
 Requires:       python-bleach
 Requires:       python-defusedxml
-Requires:       python-entrypoints >= 0.2.2
 Requires:       python-jupyter-core >= 4.7
 Requires:       python-jupyterlab-pygments
 Requires:       python-lxml
@@ -68,9 +64,14 @@ Requires:       python-packaging
 Requires:       python-pandocfilters >= 1.4.1
 Requires:       python-tinycss2
 Requires:       python-traitlets >= 5.0
+Requires:       (python-mistune >= 2.0.3 with python-mistune < 3)
+%if 0%{python_version_nodots} < 310
+Requires:       python-importlib-metadata >= 3.6
+%endif
 Recommends:     pandoc
 Recommends:     python-tornado >= 6.1
 Suggests:       %{name}-latex
+Suggests:       python-qtwebengine-qt5 >= 5.15
 Provides:       python-jupyter_nbconvert = %{version}
 Obsoletes:      python-jupyter_nbconvert < %{version}
 BuildArch:      noarch
@@ -128,26 +129,25 @@ via Jinja templates.
 This package pulls in the LaTeX dependencies for nbconvert.
 
 %prep
-%setup -q -n nbconvert-%{version} -b3
-
-mkdir nbconvert/vendor
-touch nbconvert/vendor/__init__.py
-cp ../mistune-0.8.4/mistune.py nbconvert/vendor/
-%patch1 -p1
-sed -i -e '/^#!\//, 1d' nbconvert/nbconvertapp.py
-sed -i -e '/^#!\//, 1d' nbconvert/filters/filter_links.py
-%patch2 -p1
+%autosetup -p1 -n nbconvert-%{version}
+for f in nbconvert/nbconvertapp.py nbconvert/filters/filter_links.py; do
+  sed -i -e '/^#!\//, 1d' $f
+  chmod -x $f
+done
+mkdir share/templates/classic/static
+cp %{SOURCE10} share/templates/classic/static/style.css
+sed -i '/addopts/ s/--color=yes//' pyproject.toml
 
 %build
-%python_build
+%if ! %{with test}
+%pyproject_wheel
+%endif
 
 %install
 %if ! %{with test}
-%python_install
-
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/jupyter-nbconvert
 %python_clone -a %{buildroot}%{_bindir}/jupyter-dejavu
-
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %fdupes %{buildroot}%{_docdir}/jupyter-nbconvert/
 %endif
@@ -155,10 +155,15 @@ sed -i -e '/^#!\//, 1d' nbconvert/filters/filter_links.py
 %if %{with test}
 %check
 export LANG=en_US.UTF-8
+# not test_webpdf: no pyppeteer, not even offline
+donttest="test_webpdf"
+# requires modules not installed: https://github.com/jupyter/nbconvert/issues/1846
+donttest="$donttest or test_convert_full_qualified_name or test_post_processor"
+# nbformat error
+donttest="$donttest or test_empty_code_cell"
 %{python_expand # installed package in :test flavor
 $python -B -m ipykernel.kernelspec --user
-# not test_webpdf: no pyppeteer, not even offline
-pytest-%{$python_bin_suffix} -v -m 'not network' -k "not test_webpdf" --pyargs nbconvert
+pytest-%{$python_bin_suffix} -v -m 'not network' -k "not ($donttest)" --pyargs nbconvert
 }
 %endif
 

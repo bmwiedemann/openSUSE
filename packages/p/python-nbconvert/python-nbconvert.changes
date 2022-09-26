@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun Sep 25 23:02:48 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 7.0.0
+  * Update to Mistune 2.0.2 by @TiagodePAlves in #1764
+  * Clean up markdown parsing by @blink1073 in #1774
+  * Switch to hatch build backend by @blink1073 in #1777
+  * switch from entrypoints to importlib-metadata by @konstin in
+    #1782
+  * Add recursive flag for glob notebook search by @paoloalba in
+    #1785
+  * Updates for sphinx 5.0 support by @blink1073 in #1788
+  * Fixed unique div ids in lab template, fixed #1759 by @veghdev
+    in #1761
+  * WebPDFExporter: Emulate media print by @martinRenou in #1791
+  * Fix fonts overriden by user stylesheet by inheriting styles by
+    @dakoop in #1793
+  * Fix lab template output alignment by @dakoop in #1795
+  * Add qtpdf and qtpng exporters by @davidbrochart in #1611
+  * Fix linters by @martinRenou in #1825
+  * Remove downloaded CSS from repository by @martinRenou in #1827
+  * escape_html: prevent escaping quotes on widgets JSON reprs
+    (#1829) by @martinRenou in #1830
+  * Remove tests from bdist by @TiagodePAlves in #1822
+  * Encode SVG image data as UTF-8 before calling lxml cleaner
+    (fixes #1836) by @emarsden in #1837
+  * Handle nbformat 5.5 by @blink1073 in #1841
+- Drop nbconvert-vendorize-mistune.patch and mistune 0.8.4 sources.
+
+-------------------------------------------------------------------
 Thu Aug 11 14:01:34 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile
