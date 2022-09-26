@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Sep 24 17:39:56 UTC 2022 - munix9@googlemail.com
+
+- Update to version 33.0.3
+  * Upgrade to platform-tools-33.0.3 (see #65).
+
+- Update to version 31.0.3p2
+  * Added e2fsdroid and ext2simg (#36)
+  * Fixed build with GCC 12 (#60 and #61)
+  * Bumped minimum required CMake version to 3.12 (#67)
+
+- Add man-pages.tar.gz
+- Add fix-mkbootimg-gki-path.patch
+- Add fix-lpmake-help-segfault.patch
+- Remove fix-add-e2fsprogs-contrib.patch (added upstream)
+- Remove fix-add-functional-include.patch (fixed upstream)
+
+-------------------------------------------------------------------
 Sun Jun 26 11:41:52 UTC 2022 - Berthold Gunreben <azouhr@opensuse.org>
 
 - Unknown processor:s390x. Disable build for s390x.

@@ -16,28 +16,36 @@
 #
 
 
+%if 0%{?suse_version} <= 1500
+%define _pyn 39
+%define _pyd 3.9
+%else
+%define _pyn 3
+%define _pyd 3
+%endif
+
 Name:           android-tools
-Version:        31.0.3p1
+Version:        33.0.3
 Release:        0
 Summary:        Android platform tools
 License:        Apache-2.0 AND MIT
-Group:          Hardware/Mobile
 URL:            https://developer.android.com/studio/releases/platform-tools
 Source0:        https://github.com/nmeum/android-tools/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        vendor.tar.gz
+Source2:        man-pages.tar.gz
 # PATCH-FIX-OPENSUSE fix-install-completion.patch boo#1185883 munix9@googlemail.com -- Simplify completion
 Patch0:         fix-install-completion.patch
-# PATCH-FEATURE-OPENSUSE fix-add-e2fsprogs-contrib.patch boo#1185883 munix9@googlemail.com -- Some more e2fsprogs tools
-Patch1:         fix-add-e2fsprogs-contrib.patch
-# PATCH-FIX-OPENSUSE fix-add-functional-include.patch munix9@googlemail.com -- Fix gcc 12 build
-Patch2:         fix-add-functional-include.patch
-BuildRequires:  cmake >= 3.1
+# PATCH-FIX-OPENSUSE fix-mkbootimg-gki-path.patch munix9@googlemail.com -- Set gki path in mkbootimg.py
+Patch1:         fix-mkbootimg-gki-path.patch
+# PATCH-FIX-UPSTREAM fix-lpmake-help-segfault.patch gh#nmeum/android-tools#73
+Patch2:         fix-lpmake-help-segfault.patch
+BuildRequires:  cmake >= 3.12
 BuildRequires:  go
 BuildRequires:  gtest
-BuildRequires:  help2man
 BuildRequires:  ninja
 BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
+BuildRequires:  python%{_pyn}
 BuildRequires:  pkgconfig(libbrotlicommon)
 BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(libunwind-generic)
@@ -45,18 +53,18 @@ BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(protobuf)
 Requires:       android-udev-rules
-Requires:       python3
+Requires:       python%{_pyn}
 Suggests:       %{name}-mkbootimg = %{version}
 Suggests:       %{name}-partition = %{version}
 Provides:       %{name}-python3 = %{version}-%{release}
 Obsoletes:      %{name}-python3 < %{version}-%{release}
+ExcludeArch:    s390x
 %if 0%{?suse_version} <= 1500
-BuildRequires:  gcc10
-BuildRequires:  gcc10-c++
+BuildRequires:  gcc11
+BuildRequires:  gcc11-c++
 %else
 BuildRequires:  gcc-c++
 %endif
-ExcludeArch:    s390x
 
 %description
 Android SDK Platform-Tools is a component for the Android SDK.
@@ -64,9 +72,8 @@ It includes tools that interface with the Android platform.
 
 %package mkbootimg
 Summary:        Android boot.img manipulation tools
-Group:          Hardware/Mobile
 Requires:       %{name} = %{version}
-Requires:       python3
+Requires:       python%{_pyn}
 BuildArch:      noarch
 
 %description mkbootimg
@@ -74,7 +81,6 @@ This package contains the Android boot.img manipulation tools.
 
 %package partition
 Summary:        Android dynamic partition tools
-Group:          Hardware/Mobile
 Requires:       %{name} = %{version}
 
 %description partition
@@ -82,7 +88,6 @@ This package contains the Android dynamic partition tools.
 
 %package bash-completion
 Summary:        Bash completion for android-tools
-Group:          Hardware/Mobile
 BuildRequires:  bash-completion
 Requires:       bash-completion
 Supplements:    (%{name} and bash-completion)
@@ -92,49 +97,48 @@ BuildArch:      noarch
 Bash command line completion support for android-tools.
 
 %prep
-%autosetup -p1
+%autosetup -a2 -p1
 tar xf %{SOURCE1} -C vendor/boringssl
 
 # fix env-script-interpreter
-sed -e '1s|^#!.*|#!/usr/bin/python3|' -i vendor/avb/avbtool.py \
-	vendor/mkbootimg/{mk,repack_,unpack_}bootimg.py
+sed -e '1s|^#!.*|#!/usr/bin/python%{_pyd}|' -i vendor/avb/avbtool.py \
+	vendor/mkbootimg/{mk,repack_,unpack_}bootimg.py \
+	vendor/mkbootimg/gki/generate_gki_certificate.py
 
 %build
 %define __builder ninja
 %if 0%{?suse_version} <= 1500
-export CC=gcc-10
-export CXX=g++-10
+export CC=gcc-11
+export CXX=g++-11
 %endif
-export CFLAGS="%{optflags} -fPIE -Wno-return-type"
+export CFLAGS="%{optflags} -Wno-return-type"
 export CXXFLAGS="$CFLAGS"
-export LDFLAGS="-pie"
 export GOFLAGS="-mod=vendor -buildmode=pie -trimpath"
+
 %cmake -DBUILD_SHARED_LIBS:BOOL=OFF
 %cmake_build
 
 %install
 %cmake_install
 
-# install avbtool
+# avbtool
 cp -pd vendor/avb/avbtool{,.py} %{buildroot}%{_bindir}
 
-# generate man pages
+# mkbootimg/gki
+install -d -m 0755 %{buildroot}%{_prefix}/lib/%{name}
+cp -a vendor/mkbootimg/gki %{buildroot}%{_prefix}/lib/%{name}
+
+# man pages
+install -d -m 0755 %{buildroot}%{_mandir}
+cp -a man/man1 %{buildroot}%{_mandir}
+
+%check
+# call some tools to test python3 compatibility
 export PATH=%{buildroot}%{_bindir}:$PATH
-install -d -m 0755 %{buildroot}%{_mandir}/man1
-for f in adb fastboot
-do
-    help2man -N %{buildroot}%{_bindir}/${f} | sed -e 's|\(/home/.*\)\(/usr/.*\)|\2|g' \
-	> %{buildroot}%{_mandir}/man1/${f}.1
-done
-for f in lp{add,dump,flash,unpack}
-do
-    help2man -N --no-discard-stderr --help-option="-h" --version-string="%{version}" \
-	${f} > %{buildroot}%{_mandir}/man1/${f}.1
-done
-for f in avbtool {mk,repack_,unpack_}bootimg
-do
-    help2man -N --version-string="%{version}" ${f} > %{buildroot}%{_mandir}/man1/${f}.1
-done
+export PYTHONPATH=%{buildroot}%{_prefix}/lib/%{name}:$PYTHONPATH
+avbtool version
+mkbootimg --help
+rm -r %{buildroot}%{_prefix}/lib/%{name}/gki/__pycache__
 
 %files
 %license LICENSE
@@ -156,12 +160,14 @@ done
 %license LICENSE
 %{_bindir}/{mk,repack_,unpack_}bootimg
 %{_mandir}/man1/{mk,repack_,unpack_}bootimg.1%{?ext_man}
+%dir %{_prefix}/lib/%{name}
+%{_prefix}/lib/%{name}/gki
 
 %files partition
 %license LICENSE
 %doc vendor/extras/partition_tools/README.md
 %{_bindir}/lp{add,dump,flash,make,unpack}
-%{_mandir}/man1/lp{add,dump,flash,unpack}.1%{?ext_man}
+%{_mandir}/man1/lp{add,dump,flash,make,unpack}.1%{?ext_man}
 
 %files bash-completion
 %{_datadir}/bash-completion/completions/adb
