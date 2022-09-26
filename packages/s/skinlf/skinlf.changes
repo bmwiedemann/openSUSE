@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Sep 24 12:43:41 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- avoid bashism in shell script 
+
+-------------------------------------------------------------------
 Wed Mar 23 19:08:42 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with java source and target levels 8

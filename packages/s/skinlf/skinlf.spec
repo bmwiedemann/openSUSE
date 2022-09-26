@@ -126,7 +126,7 @@ EOF
 cat > bin/demo.sh << EOF
 #!/bin/bash
 THEMEPACK=\$1
-if [ "\$THEMEPACK" == "" ]; then
+if [ "\$THEMEPACK" = "" ]; then
 	THEMEPACK=%{_datadir}/%{name}/themepack.zip
 else
 	shift

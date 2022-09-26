@@ -55,4 +55,12 @@ http://lists.opensuse.org/opensuse-factory/2014-04/msg00309.html</comment>
     <comment>Build with source and target levels 8</comment>
     <requestid>964433</requestid>
   </revision>
+  <revision rev="8" vrev="9">
+    <srcmd5>b6899a2fe6a2f70c327cc7496cb20eaa</srcmd5>
+    <version>6.7</version>
+    <time>1664210918</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1006089</requestid>
+  </revision>
 </revisionlist>
