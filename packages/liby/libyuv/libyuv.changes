@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Sep 25 12:22:58 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Fix quoting in pkgconfig file
+
+-------------------------------------------------------------------
 Wed Aug  3 11:30:20 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add baselibs.conf for libyuv0

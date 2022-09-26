@@ -69,9 +69,9 @@ for the YUV scaling and conversion library
 rversion=`grep --perl-regex --only-matching "(?<=LIBYUV_VERSION )[0-9]+" include/libyuv/version.h`
 cat > %{name}.pc << EOF
 prefix=%{_prefix}
-exec_prefix=${prefix}
-libdir=%{_libdir}
+exec_prefix=\${prefix}
 includedir=%{_includedir}
+libdir=%{_libdir}
  
 Name: %{name}
 Description: %{summary}
