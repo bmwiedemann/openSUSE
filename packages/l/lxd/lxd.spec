@@ -34,7 +34,7 @@
 %endif
 
 Name:           lxd
-Version:        5.3
+Version:        5.6
 Release:        0
 Summary:        Container hypervisor based on LXC
 License:        Apache-2.0
@@ -59,9 +59,9 @@ BuildRequires:  libcap-devel
 BuildRequires:  liblz4-devel
 BuildRequires:  patchelf
 BuildRequires:  pkgconfig
-BuildRequires:  sysuser-tools
 BuildRequires:  rsync
 BuildRequires:  sqlite3-devel >= 3.25
+BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(lxc) >= 4.0.0
 # Due to a limitation in openSUSE's Go packaging we cannot have a BuildRequires
