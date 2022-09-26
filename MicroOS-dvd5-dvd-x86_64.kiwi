@@ -1495,10 +1495,10 @@
       <repopackage name="libpolkit-agent-1-0"/>
       <repopackage name="libpolkit-gobject-1-0"/>
       <repopackage name="libpolkit-qt5-1-1" arch="x86_64"/>
-      <repopackage name="libpoppler-cpp0" arch="x86_64"/>
+      <repopackage name="libpoppler-cpp0"/>
       <repopackage name="libpoppler-glib8" arch="x86_64"/>
       <repopackage name="libpoppler-qt5-1" arch="x86_64"/>
-      <repopackage name="libpoppler124" arch="x86_64"/>
+      <repopackage name="libpoppler124"/>
       <repopackage name="libpopt0"/>
       <repopackage name="libportal-1" arch="x86_64"/>
       <repopackage name="libportal-gtk3-1" arch="x86_64"/>
@@ -1590,8 +1590,8 @@
       <repopackage name="libreoffice-branding-openSUSE" arch="x86_64"/>
       <repopackage name="libreoffice-branding-upstream"/>
       <repopackage name="libreoffice-calc"/>
-      <repopackage name="libreoffice-draw" arch="x86_64"/>
-      <repopackage name="libreoffice-filters-optional" arch="x86_64"/>
+      <repopackage name="libreoffice-draw"/>
+      <repopackage name="libreoffice-filters-optional"/>
       <repopackage name="libreoffice-gnome"/>
       <repopackage name="libreoffice-gtk3" arch="x86_64"/>
       <repopackage name="libreoffice-icon-themes"/>
@@ -2234,7 +2234,7 @@
       <repopackage name="polkit-gnome-lang" arch="x86_64"/>
       <repopackage name="polkit-kde-agent-5" arch="x86_64"/>
       <repopackage name="polkit-kde-agent-5-lang" arch="x86_64"/>
-      <repopackage name="poppler-data" arch="x86_64"/>
+      <repopackage name="poppler-data"/>
       <repopackage name="poppler-tools" arch="x86_64"/>
       <repopackage name="popt-lang"/>
       <repopackage name="postfix" arch="x86_64"/>

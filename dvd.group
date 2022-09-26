@@ -2506,6 +2506,8 @@
     <package name="libreoffice-base" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libreoffice-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libreoffice-calc" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libreoffice-draw" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libreoffice-filters-optional" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libreoffice-gnome" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libreoffice-gtk3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libreoffice-icon-themes" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -5029,8 +5031,6 @@
     <package name="libpwquality1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="librados2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="librbd1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
-    <package name="libreoffice-draw" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libreoffice-filters-optional" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libsasl2-3-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libselinux1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libspf2-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
