@@ -20,21 +20,30 @@
   %define _distconfdir %{_prefix}%{_sysconfdir}
 %endif
 
+# Legacy tools use x86 asm, https://github.com/oneapi-src/oneVPL/issues/69
+%ifarch x86_64 %{ix86}
+%bcond_without tools
+%else
+%bcond_with tools
+%endif
+
 %global sover 2
 Name:           libvpl
 %define lname   libvpl%{sover}
-Version:        2022.1.5
+Version:        2022.2.4
 Release:        0
 Summary:        oneAPI Video Processing Library (oneVPL) dispatcher, tools, and examples
 License:        MIT
 Group:          Development/Languages/C and C++
 URL:            https://github.com/oneapi-src/oneVPL
-Source0:        oneVPL-%{version}.tar.gz
+Source0:        https://github.com/oneapi-src/oneVPL/archive/refs/tags/v%{version}.tar.gz#/oneVPL-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM
+# https://github.com/oneapi-src/oneVPL/pull/73
+Patch0:         https://patch-diff.githubusercontent.com/raw/oneapi-src/oneVPL/pull/73.patch#/remove_x86_64_check.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(wayland-client)
-ExclusiveArch:  x86_64
 
 %description
 The oneAPI Video Processing Library (oneVPL) provides a single video processing
@@ -70,16 +79,13 @@ This package contains example applications for the oneAPI Video Processing Libra
 %autosetup -p1 -n oneVPL-%{version}
 
 %build
-mkdir -p build
-pushd build
-cmake -DCMAKE_INSTALL_PREFIX="%{_prefix}" ..
-make %{?_smp_mflags}
-popd
+%cmake \
+  -DBUILD_TOOLS:BOOL=%{?with_tools:ON}%{!?with_tools:OFF} \
+  %{nil}
+%cmake_build
 
 %install
-pushd build
-%make_install
-popd
+%cmake_install
 
 %post -n %lname -p /sbin/ldconfig
 
@@ -98,8 +104,10 @@ popd
 %{_libdir}/libvpl.so.%{sover}
 %{_libdir}/libvpl.so.%{sover}.*
 
+%if %{with tools}
 %files samples
 %{_bindir}/*
+%endif
 
 %files devel
 %doc

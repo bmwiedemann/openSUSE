@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Sep 24 11:43:47 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 2022.2.4
+  * Add SMPTE ST 2084A color description preset
+  * Add parallel encoding support
+  * Add dynamic bitstream buffer reallocation
+
+-------------------------------------------------------------------
+Mon Sep 19 23:46:34 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 2022.2.3
+  * Multiple hardware adapters are supported as part of the 2.6
+    API update. They provide faster performance by taking advantage
+    of available platform resources.
+  * MPEG2 decode is now supported in a CPU implementation to
+    improve codec coverage for systems that do not have dedicated
+    hardware.
+
+-------------------------------------------------------------------
+Mon Sep 19 23:27:26 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Enable build on all archs, oneVPL is platform agnostic, add
+  remove_x86_64_check.patch
+
+-------------------------------------------------------------------
 Mon Jul 11 09:40:17 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 2022.1.5
