@@ -1,0 +1,41 @@
+-------------------------------------------------------------------
+Fri Sep 16 07:26:34 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 5.4.8:
+  * New Vectorscan release, 5-10% faster than 5.4.7 on Arm,
+    10-20% faster on Power.
+  * CMake: Use non-deprecated method for finding python by @jth
+    in #108
+  * Optimize vectorscan for aarch64 by using shrn instruction by
+    @danlark1 in #113
+  * Fixed the PCRE download location by @pareenaverma in #116
+  * Bugfix/hyperscan backport 202208 by @markos in #118
+  *  VSX optimizations by @markos in #119
+  * when compiling with mingw64, use __mingw_aligned_malloc() and
+    __mingw_aligned_free() by @liquidaty in #121
+  * [NEON] simplify/optimize shift/align primitives by @markos
+    in #123
+  * Merge develop to master by @markos in #124
+- Drop upstream patch:
+  * vectorscan-add-missing-header.patch
+
+-------------------------------------------------------------------
+Tue Jul  5 08:46:28 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch to add missing header:
+  * vectorscan-add-missing-header.patch
+
+-------------------------------------------------------------------
+Tue May 31 14:34:28 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 5.4.7:
+  * Fix word boundary assertions under C++20 by @BigRedEye in #90
+  * Fix all ASAN issues in vectorscan by @danlark1 in #93
+  * change FAT_RUNTIME to a normal option so it can be set to off by @a16bitsysop in #94
+  * Optimized and correct version of movemask128 for ARM by @danlark1 in #102
+
+-------------------------------------------------------------------
+Tue Mar 15 14:17:33 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Version 5.4.6
+
