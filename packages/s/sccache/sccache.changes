@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 26 01:56:18 UTC 2022 - william.brown@suse.com
+
+- Update to version 0.3.0~git5.14a4b8b:
+  - improve disk cache performance
+- Update of vendored dependencies
+- bsc#1196972 - CVE-2022-24713 - Regex denial of service
+- bsc#1194119 - CVE-2021-45710 - tokio data race with memory corruption
+
+-------------------------------------------------------------------
 Mon Jun 20 03:22:06 UTC 2022 - William Brown <william.brown@suse.com>
 
 - Automatic update of vendored dependencies
