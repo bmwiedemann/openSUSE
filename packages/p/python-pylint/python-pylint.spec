@@ -37,7 +37,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-dill >= 0.2
 Requires:       python-platformdirs >= 2.2
 Requires:       python-tomlkit >= 0.10.1
-Requires:       (python-astroid >= 2.12.4 with python-astroid < 2.14.0~dev0)
+Requires:       (python-astroid >= 2.12.10 with python-astroid < 2.14.0~dev0)
 Requires:       (python-isort >= 4.2.5 with python-isort < 6)
 Requires:       (python-mccabe >= 0.6 with python-mccabe < 0.8)
 %if 0%{?python_version_nodots} < 311
@@ -48,7 +48,7 @@ Requires:       python-typing-extensions >= 3.10
 %endif
 %if %{with tests}
 # SECTION pylint deps
-BuildRequires:  %{python_module astroid >= 2.12.4 with %python-astroid < 2.14.0~dev0}
+BuildRequires:  %{python_module astroid >= 2.12.10 with %python-astroid < 2.14.0~dev0}
 BuildRequires:  %{python_module dill >= 0.2}
 BuildRequires:  %{python_module isort >= 4.2.5 with %python-isort < 6}
 BuildRequires:  %{python_module mccabe >= 0.6 with %python-mccabe < 0.8}
