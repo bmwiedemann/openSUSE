@@ -19,7 +19,7 @@
 %define somajor 0
 %define libdirname tree_sitter
 Name:           tree-sitter
-Version:        0.20.6
+Version:        0.20.7
 Release:        0
 Summary:        An incremental parsing system for programming tools
 License:        MIT

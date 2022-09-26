@@ -3,8 +3,7 @@
     <param name="url">https://github.com/tree-sitter/tree-sitter</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
-    <param name="revision">ccd6bf554d922596ce905730d98a77af368bba5c</param>
-    <param name="match-tag">*</param>
+    <param name="revision">b268e41</param>
     <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>

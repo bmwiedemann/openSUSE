@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Sep 24 09:49:29 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 0.20.7:
+  * 0.20.7
+  * Bump library versions
+  * Build core wasm library with C++ exceptions disabled
+  * Generate parsers with ABI version 14 by default
+  * Tolerate tree edits whose old range extends beyond the end of the tree
+  * Added documentation on web-tree-sitter edge cases
+  * Add ts_tree_root_node_with_offset API
+  * Fix typos
+  * Update section-2-using-parsers.md
+  * Add link to Racket language parser
+
+-------------------------------------------------------------------
 Sun Jun 19 09:12:46 UTC 2022 - socvirnyl.estela@gmail.com
 
 - Update to version 0.20.6:
