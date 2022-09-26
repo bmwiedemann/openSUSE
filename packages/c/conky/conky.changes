@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Sep 21 10:18:24 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.13.1:
+  * Add units_spacer #1094
+  * Fixes #1068 : Added custom uninstall target #1103
+  * fix typo in in lua_parse description #1121
+  * Fix SEGFAULT caused by out-of-bounds write #1124
+  * Document unimplemented weather features #1170
+  * make gw_iface work with net stat #1104
+  * Include hsv_gradient.h even if BUILTIN_CONFIG is disabled #1141
+  * Correct dependencies on generated header files #1207
+  * GUI backends phase 1 #664
+  * Http port config #1205
+  * Add syntax keyword for http_port config setting #1209
+  * fix #1165 by applying the padding function to nvidia objects #1166
+
+-------------------------------------------------------------------
+Wed Sep 21 10:15:55 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.13.0:
+  * Add units_spacer #1094
+  * Fixes #1068: Added custom uninstall target
+  * fix typo in in lua_parse description #1121
+  * Fix SEGFAULT caused by out-of-bounds write #1124
+  * Document unimplemented weather features #1170
+  * make gw_iface work with net stat #1104
+  * Include hsv_gradient.h even if BUILTIN_CONFIG is disabled #1141
+  * Correct dependencies on generated header files #1207
+  * GUI backends phase 1 #664
+  * Http port config #1205
+  * Add syntax keyword for http_port config setting #1209
+  * fix #1165 by applying the padding function to nvidia objects #1166
+
+-------------------------------------------------------------------
 Mon Apr 26 15:27:02 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.12.2:
