@@ -21,6 +21,7 @@ PIDFile=/var/run/varnishd.pid
 ExecStart=/usr/sbin/varnishd -P /var/run/varnishd.pid -F $VARNISHD_PARAMS
 ExecReload=/usr/sbin/varnish_reload_vcl
 KillMode=mixed
+TasksMax=16384
 
 [Install]
 WantedBy=multi-user.target

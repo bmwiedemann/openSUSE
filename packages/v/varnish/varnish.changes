@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 21 08:10:13 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Make reload fail nicely on vcl syntax error
+- Set TasksMax=16384 because default thread_pool_max is 5000
+
+-------------------------------------------------------------------
 Mon Sep 19 02:44:04 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Fix varnish.service stop
