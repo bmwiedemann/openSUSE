@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-trio
-Version:        0.20.0
+Version:        0.21.0
 Release:        0
 Summary:        Python async/await-native I/O library
 License:        Apache-2.0 OR MIT
@@ -79,7 +79,8 @@ sed -i '1{/^#!/d}' trio/_tools/gen_exports.py
 #   pointless for us.
 # test_SSLStream_generic deadlocks in OBS
 # test_close_at_bad_time_for_send_all fails on PPC https://github.com/python-trio/trio/issues/1753
-%pytest -k 'not (test_static_tool_sees_all_symbols or test_SSLStream_generic or test_close_at_bad_time_for_send_all)'
+# test_local_address_real fails on qemu_linux_user targets
+%pytest -k 'not (test_static_tool_sees_all_symbols or test_SSLStream_generic or test_close_at_bad_time_for_send_all or test_local_address_real)'
 
 %files %{python_files}
 %doc README.rst
