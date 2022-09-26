@@ -308,4 +308,19 @@
   * Fix typo in PersistentVolume key name (#140)</comment>
     <requestid>971237</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>03b9b821a24a7924544d188acd8b1903</srcmd5>
+    <version>0.17.0</version>
+    <time>1664210903</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.17.0:
+  * Support fsfreeze feature on Kubernetes 1.24+ (requires the updated Helm chart)
+  * Support for storage classes in S3
+  * Small change to get Benji to work with MySQL/MariaDB
+  * k8s-tools: Switch logging to structlog and JSON output
+  * k8s-tools: Pass through JSON logging from benji unaltered
+  * k8s-tools: Create PVC with default storage class if nothing is specified
+  * k8s-tools: Put an upper bound on the time we wait for PV creation</comment>
+    <requestid>1006021</requestid>
+  </revision>
 </revisionlist>
