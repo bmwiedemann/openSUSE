@@ -114,4 +114,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>993495</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>1da90394d9735b25e476e020d07db012</srcmd5>
+    <version>5.4.0</version>
+    <time>1664210889</time>
+    <user>dimstar_suse</user>
+    <comment>- limit to ruby 2.7 and 3.1 on leap (forwarded request 1005810 from darix)</comment>
+    <requestid>1005990</requestid>
+  </revision>
 </revisionlist>

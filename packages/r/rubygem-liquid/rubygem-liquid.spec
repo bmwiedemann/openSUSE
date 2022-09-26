@@ -28,6 +28,12 @@ Version:        5.4.0
 Release:        0
 %define mod_name liquid
 %define mod_full_name %{mod_name}-%{version}
+# MANUAL
+%if 0%{suse_version} && 0%{suse_version} < 1550
+%define rb_build_versions       ruby31       ruby27
+%define rb_build_ruby_abis      ruby:3.1.0   ruby:2.7.0
+%endif
+# /MANUAL
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby >= 2.7.0}
 BuildRequires:  %{rubygem gem2rpm}
@@ -48,6 +54,7 @@ A secure, non-evaling end user template engine with aesthetic markup.
 
 %install
 %gem_install \
+  --no-document \
   --doc-files="History.md LICENSE README.md" \
   -f
 
