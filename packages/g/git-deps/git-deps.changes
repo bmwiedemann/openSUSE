@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 23 08:19:58 UTC 2022 - pgajdos@suse.com
+
+- do not require python-six
+  https://trello.com/c/MO53MocR/143-remove-python3-six
+
+-------------------------------------------------------------------
 Mon Apr 12 20:46:51 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Fix Requires

@@ -1,7 +1,7 @@
 #
 # spec file for package git-deps
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,6 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  python3-pip
 BuildRequires:  python3-pygit2
 BuildRequires:  python3-setuptools
-BuildRequires:  python3-six
 BuildRequires:  python3-wheel
 Requires:       python3-pygit2
 # for html subpackage
@@ -58,6 +57,8 @@ Documentation for git-deps.
 %autosetup -p1 -n %{name}-%{version}
 
 %build
+# https://github.com/aspiers/git-deps/issues/115
+sed -i '/six/d' setup.py
 python3 -s setup.py build
 
 %install
