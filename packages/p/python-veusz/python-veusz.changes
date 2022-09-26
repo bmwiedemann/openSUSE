@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Sep 24 18:42:31 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Restore multi flavour builds for all supported python3 flavours.
+- Add python-veusz-correct-platlib-dir.patch: Ensure consistent
+  platlib path on all python3 flavours by using sysconfig module
+  direclty. N.B.: Patch to be applied after Patch1
+  [gh#veusz/veusz#627].
+- Make builds for openSUSE < 1550 unresolvable — rather than
+  failing — by requiring python >= 3.8 for builds.
+
+-------------------------------------------------------------------
 Fri Aug 19 16:01:25 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Fix obsoletion of flavored package
