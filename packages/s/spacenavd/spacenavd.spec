@@ -18,7 +18,7 @@
 
 
 Name:           spacenavd
-Version:        1.0
+Version:        1.1
 Release:        0
 Summary:        Daemon for 3Dconnexion devices
 License:        GPL-3.0-or-later
@@ -96,6 +96,9 @@ install -D -m 644 contrib/systemd/%{name}.service %{buildroot}%{_unitdir}/%{name
 %files
 %license COPYING
 %doc README.md
+%doc doc/example-spnavrc
+%doc doc/spnavrc_smouse_ent
+%doc doc/spnavrc_spilot
 %{_sbindir}/%{name}
 %{_sbindir}/rc%{name}
 %{_bindir}/spnavd_ctl

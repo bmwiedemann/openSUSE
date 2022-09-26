@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Sep 25 16:47:35 UTC 2022 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Add example files to package
+
+-------------------------------------------------------------------
+Sun Sep 25 16:30:12 UTC 2022 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Update to version 1.1
+  * fixed incorrect number of buttons reported on SpaceMouse Pro and SpaceMouse
+    Enterprise.
+  * fixed non-contiguous button numbers on SpaceMouse Pro and SpaceMouse Enterprise,
+    which could crash spnavcfg.
+  * linux evdev: detect button base offset, instead of hardcoding 256 (BN_MISC),
+    which fixes incorrect button numbers on the Magellan SpaceMouse USB.
+  * fixed crash when attempting to save configuration (save command received from
+    the client socket), and a configuration file does not already exist.
+  * linux hotplug: use delayed activation to avoid multiple hotplug triggers and
+    the resulting log spam.
+  * reduced logging on the "verbose" setting. Now accepting multiple -v arguments
+    for maximum verbosity.
+  * fixed compatibility with newer 3dconnexion SDK clients.
+  * fixed libm link omission, which broke the build on systems where isfinite is not
+    a macro to a compiler built-in (BSD libc).
+  * Added example configuration files with reasonable button mappings for the
+    SpacePilot and the SpaceMouse Enterprise under doc/.
+
+-------------------------------------------------------------------
 Tue Apr 26 10:34:54 UTC 2022 - Herbert Graeber <herbert@graeber-clan.de> 1.0
 
 - Fix spacenavd path in service file
