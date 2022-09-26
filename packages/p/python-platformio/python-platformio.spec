@@ -30,36 +30,23 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-Requires:       python-aiofiles < 0.9
 Requires:       python-aiofiles >= 0.8
-Requires:       python-ajsonrpc < 2
 Requires:       python-ajsonrpc >= 1
-Requires:       python-bottle < 0.13
 Requires:       python-bottle >= 0.12
-Requires:       python-click < 9
 Requires:       python-click >= 8.0.4
 Requires:       python-colorama
-Requires:       python-marshmallow < 4
 Requires:       python-marshmallow >= 3
-Requires:       python-pyelftools < 1
 Requires:       python-pyelftools >= 0.27
-Requires:       python-pyserial < 3.6
 Requires:       python-pyserial >= 3.5
-Requires:       python-requests < 3
 Requires:       python-requests >= 2
-Requires:       python-semantic_version < 2.11
 Requires:       python-semantic_version >= 2.10
-Requires:       python-starlette < 0.21
 Requires:       python-starlette >= 0.20
-Requires:       python-tabulate < 0.9
 Requires:       python-tabulate >= 0.8
-Requires:       python-uvicorn < 0.19
 # dropping requirement to 0.16 instead of 0.18, setup.py asks for 0.18 since python 3.7
 Requires:       python-uvicorn >= 0.16
-Requires:       python-wsproto < 1.2
 # dropping requirement to 1.0 instead of 1.1, setup.py asks for 1.1 since python 3.7
 Requires:       python-wsproto >= 1.0
-Requires:       python-zeroconf < 1
+Requires:       python-zeroconf
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 

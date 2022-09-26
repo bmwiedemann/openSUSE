@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 26 06:44:37 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Remove less-than Requires … it is just asking for pain without
+  any good reason.
+
+-------------------------------------------------------------------
 Mon Jul 25 17:25:51 UTC 2022 - Henning Wülpern <hwuelpern@gmail.com>
 
 - update to 6.1.3:
