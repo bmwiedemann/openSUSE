@@ -1,8 +1,53 @@
 -------------------------------------------------------------------
+Thu Sep 22 21:31:48 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to v1.25
+  * Add note on 2FA for qr_login
+  * Handle ServerError while getting difference
+  * Re-raise unhandled errors that occur during update handling
+  * Document the client instance cannot be used after logout
+  * Add a hard timeout on disconnect
+  * Update some raw API examples
+  * del_surrogate for HTML inline URLs
+  * Ignore ChannelParticipantLeft during iter_participants
+  * Wrap buttons typehint in Optional
+  * Fix events.Album did not have chat in PM
+  * Ignore aggressive parameter in iter_participants
+  * Replace mentions of master branch with v1
+  * Fix get_permissions for small group chats
+  * Manually construct reply_to for send_message result
+  * Strip 0-length message entities
+  * Make custom, functions and types proper modules
+  * Trust pts values during apply_difference
+  * Do not remove ENTRY_SECRET during apply difference
+  * Handle auth errors during get difference
+  * Recognize invite links with plus sign prefix
+  * Document new known RPC errors
+  * Handle CancelledError inside update loop
+  * Make use of AlbumHack for all albums
+  * Fix UpdateShort from socket was not unboxed
+  * Fix some MD parsing of inline URLs (#3920)
+  * Fix raw API docs generation
+  * Remove missed async keywords from the revert
+  * Revert "Add missing async keywords in SQLiteSession"
+  * Revert "Make sessions async"
+  * Revert "Mark certain SQLiteSession methods as async"
+  * Revert "Add workaround for SQLiteSession needing save after init"
+  * Update to layer 144
+  * Also except ChannelInvalidError during get_diff
+  * Fix missing variable and assignment in reset_deadline
+  * Handle ValueError during get_channel_difference
+  * Fix reset_deadline was not doing its job
+  * Prevent double-logging of 'timeout for updates'
+  * Support sending 4GB files (#3891)
+  * Add ENTITY_BOUNDS_INVALID and POSTPONED_TIMEOUT to known errors (#3887)
+  * Fix HTML/MD parser producing empty MessageEntity (#3885)  
+
+-------------------------------------------------------------------
 Mon Aug 29 03:58:55 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 1.24.0 
-  No changelog
+  * No changelog
 
 -------------------------------------------------------------------
 Mon Jun 14 13:51:37 UTC 2021 - Matej Cepl <mcepl@suse.com>

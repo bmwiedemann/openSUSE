@@ -254,4 +254,41 @@
     <comment></comment>
     <requestid>999914</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e6c8b7e60fd5f47fbf6eec421ae8b18b</srcmd5>
+    <version>1.25.0</version>
+    <time>1664210908</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v1.25
+  * Add note on 2FA for qr_login
+  * Handle ServerError while getting difference
+  * Re-raise unhandled errors that occur during update handling
+  * Document the client instance cannot be used after logout
+  * Add a hard timeout on disconnect
+  * Update some raw API examples
+  * del_surrogate for HTML inline URLs
+  * Ignore ChannelParticipantLeft during iter_participants
+  * Wrap buttons typehint in Optional
+  * Fix events.Album did not have chat in PM
+  * Ignore aggressive parameter in iter_participants
+  * Replace mentions of master branch with v1
+  * Fix get_permissions for small group chats
+  * Manually construct reply_to for send_message result
+  * Strip 0-length message entities
+  * Make custom, functions and types proper modules
+  * Trust pts values during apply_difference
+  * Do not remove ENTRY_SECRET during apply difference
+  * Handle auth errors during get difference
+  * Recognize invite links with plus sign prefix
+  * Document new known RPC errors
+  * Handle CancelledError inside update loop
+  * Make use of AlbumHack for all albums
+  * Fix UpdateShort from socket was not unboxed
+  * Fix some MD parsing of inline URLs (#3920)
+  * Fix raw API docs generation
+  * Remove missed async keywords from the revert
+  * Revert &quot;Add missing async keywords in SQLiteSession&quot;
+  * Revert &quot;Make sessions async&quot;</comment>
+    <requestid>1006032</requestid>
+  </revision>
 </revisionlist>
