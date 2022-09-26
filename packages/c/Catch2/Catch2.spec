@@ -17,38 +17,36 @@
 
 
 Name:           Catch2
-Version:        2.13.9
+Version:        3.1.0
 Release:        0
 Summary:        A modern, C++-native, header-only, test framework for unit-tests, TDD and BDD
 License:        BSL-1.0
 URL:            https://github.com/catchorg/%{name}/
 Source:         https://github.com/catchorg/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-#PATCH-FIX-OPENSUSE fix-pragmas-old-gcc.patch -- Fix usage of gcc pragmas for old gcc version on Leap gh#catchorg/Catch2#2416
-Patch0:         fix-pragmas-old-gcc.patch
-BuildRequires:  cmake >= 3.5
+BuildRequires:  cmake >= 3.10
 BuildRequires:  gcc-c++ >= 6
 BuildRequires:  pkgconfig
 
 %description
 Catch2 stands for C++ Automated Test Cases in a Header and is a multi-paradigm
-test framework for C++. which also supports Objective-C (and maybe C).
-It is primarily distributed as a single header file, although certain
-extensions may require additional headers.
+test framework for modern C++14 and newer.
+It also provides basic micro-benchmarking features, and simple BDD macros.
 
 %package devel
 Summary:        A modern, C++-native, header-only, test framework for unit-tests, TDD and BDD
 
 %description devel
 Catch2 stands for C++ Automated Test Cases in a Header and is a multi-paradigm
-test framework for C++. which also supports Objective-C (and maybe C).
-It is primarily distributed as a single header file, although certain
-extensions may require additional headers.
+test framework for modern C++14 and newer.
+It also provides basic micro-benchmarking features, and simple BDD macros.
 
 %prep
 %autosetup -p1
 
 %build
+%global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
 %cmake -DCMAKE_BUILD_TYPE=Release \
+       -DBUILD_SHARED_LIBS=OFF \
        -DCMAKE_INSTALL_DOCDIR=%{_defaultdocdir}/%{name} \
        -DPKGCONFIG_INSTALL_DIR=%{_libdir}/pkgconfig
 %cmake_build
@@ -65,7 +63,9 @@ extensions may require additional headers.
 %doc %{_defaultdocdir}/%{name}
 %{_datadir}/%{name}
 %{_includedir}/catch2
+%{_libdir}/lib%{name}*.a
 %{_libdir}/cmake/%{name}
 %{_libdir}/pkgconfig/catch2.pc
+%{_libdir}/pkgconfig/catch2-with-main.pc
 
 %changelog

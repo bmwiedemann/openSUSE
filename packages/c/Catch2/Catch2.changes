@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Sep 24 08:01:35 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 3.1.0
+  * Added type constraints onto random generator
+  * Added All/Any/NoneTrue range matchers
+  * The JUnit reporter now normalizes classnames from C++ namespaces
+    to Java-like namespaces
+  * The Bazel support now understands BAZEL_TEST environment variable
+  * catch_discover_tests now has a new options for setting library
+    load path(s) when running the Catch2 binary
+  * Fixed crash when listing listeners without any registered listeners
+- Update to 3.0.1
+  * Breaking changes:
+    * Catch2 is now split into multiple headers
+    * C++14 is the minimum required C++ version
+    * CATCH_CONFIG_DISABLE_MATCHERS no longer exists.
+    * CATCH_CONFIG_ENABLE_CHRONO_STRINGMAKER no longer exists.
+    * ANON_TEST_CASE has been removed
+    * Multiple commandline flags have changed their behavior
+    * See migration guide
+      https://github.com/catchorg/Catch2/blob/v3.0.1/docs/migrate-v2-to-v3.md#top
+  * Matchers have been extended with the ability to use different
+    signatures of match
+    * templated match member function
+    * Provided generic matchers like IsEmpty, SizeIs, Contains,
+      AllMatch, AnyMatch, NoneMatch
+  * Significant compilation time improvements
+  * Some runtime performance optimizations
+  * Many other changes and bugfixes
+    https://github.com/catchorg/Catch2/releases/tag/v3.0.1
+- Removed upstream merged fix-pragmas-old-gcc.patch
+
+-------------------------------------------------------------------
 Tue Apr 26 12:06:41 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 2.13.9
