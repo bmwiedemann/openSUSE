@@ -20,7 +20,7 @@
 %define so_ver 1
 
 Name:           libdxfrw
-Version:        1.1.0~rc1+git.20220702
+Version:        1.1.0~rc1+git.20220905
 Release:        0
 Summary:        Library to read and write DXF files
 License:        GPL-2.0-or-later

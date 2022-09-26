@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 19 07:24:31 UTC 2022 - jslaby@suse.cz
+
+- Update to version 1.1.0~rc1+git.20220905:
+  * inconsistent $MEASUREMENT/$INSUNITS variables, fixes LibreCAD/LibreCAD#636
+
+-------------------------------------------------------------------
 Tue Jul 26 05:25:31 UTC 2022 - jslaby@suse.cz
 
 - Update to version 1.1.0~rc1+git.20220702:
