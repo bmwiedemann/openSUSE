@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Sep 24 10:17:33 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 3.5.6:
+  * fix #1506
+  * meta template: luajit add cdata type
+  * fix #1537
+  * Replace old variable return syntax
+  * fix: string.match return type
+  * string.find returns any for now
+  * update submodules
+  * update 3rd-api
+
+- Remove time_includes.patch
+
+-------------------------------------------------------------------
 Tue Jul 26 00:08:48 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.5.0:

@@ -18,7 +18,7 @@
 
 
 Name:           lua-language-server
-Version:        3.5.0
+Version:        3.5.6
 Release:        0
 Summary:        Lua Language Server coded by Lua
 License:        MIT
@@ -31,7 +31,7 @@ Source2:        lua-lsp-launcher.sh
 Source3:        README.suse-maint.md
 # PATCH-FIX-UPSTREAM time_includes.patch gh#sumneko/lua-language-server#1377 mcepl@suse.com
 # Add missing #include
-Patch0:         time_includes.patch
+# Patch0:         time_includes.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  ninja
@@ -42,7 +42,7 @@ ExcludeArch:    s390x ppc64le ppc64
 This package provides a Language Server Protocol (LSP) implementation for Lua.
 
 %prep
-%autosetup -p1 -c
+%autosetup -c
 
 %build
 export CFLAGS="%{optflags}"
