@@ -16,7 +16,7 @@
 #
 
 
-%define fossil_uuid 84f25d7eb10c0714109d69bb2809abfa8b4b5c3d73b151a5b10df724dacd46d8
+%define fossil_uuid 1e131febd3fbb028d00cab6d020214e8fe36be95daaf93237523c29c542e9a5f
 %if 0%{?suse_version} > 1500
 %bcond_without system_sqlite
 %else
@@ -24,14 +24,13 @@
 %endif
 %bcond_without tests
 Name:           fossil
-Version:        2.18
+Version:        2.19
 Release:        0
 Summary:        Distributed software configuration management
 License:        BSD-2-Clause
 Group:          Development/Tools/Version Control
 URL:            https://fossil-scm.org/
 Source:         https://fossil-scm.org/home/tarball/%{fossil_uuid}/%{name}-%{version}.tar.gz
-Patch0:         fossil-json1.patch
 BuildRequires:  fuse-devel
 BuildRequires:  gcc
 BuildRequires:  openssl-devel

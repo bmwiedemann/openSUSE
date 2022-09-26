@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sat Sep 24 13:35:24 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.19:
+  * On file listing pages, sort filenames using the "uintnocase" collating
+    sequence, so that filenames that contains embedded integers sort in numeric
+    order even if they contain a different number of digits. (Example:
+    "fossil_80_..." comes before "fossil_100.png" in the /skins/blitz directory
+    listing.)
+  * Enhancements to the graph layout algorithm design to improve readability
+    and promote better situational awareness.
+  * Performance enhancement for the "root:BRANCHNAME" style of tag,
+    accomplished using a Common Table Expression in the underlying SQL.
+  * Sort tag listings (command line and webpage) by taking numbers into
+    consideration so as to cater for tags that follow semantic versioning.
+  * On the wiki listings, omit by default wiki pages that are associated with
+    check-ins and branches.
+  * Add the new "fossil describe" command.
+  * Markdown subsystem extended with footnotes support. See corresponding test
+    cases, known limitations and discussion.
+  * Add the new special name "start:BRANCH" to refer to the first check-in of the branch.
+  * Support generated "mimetype" columns in the TICKET and TICKETCHNG tables.
+  * Fix remote-url-overwrite bug where remote-url is overwritten by the proxy
+    setting during sync operation. Also require explicit "system" proxy setting
+    to use "http_proxy" environment variable.
+  * Reimplemented the /pikchrshow app to use a WebAssembly build of pikchr so
+    that it can render pikchrs on the client instead of requiring a server
+    round-trip.
+  * Add the email-listid setting. If set, it is used as the List-ID header for
+    all outbound notification emails.
+  * Add the "--branch" option to the "timeline" command to restrict the
+    displayed items to a specific branch.
+  * Add the "--versions" option to "fossil diff" to display details about the
+    compared versions into the patch header.
+  * Numerous other minor enhancements.
+- drop fossil-json1.patch: obsolete
+
+-------------------------------------------------------------------
 Fri Apr 22 08:55:40 UTC 2022 - Reinhard Max <max@suse.com>
 
 - fossil 2.18:

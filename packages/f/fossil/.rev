@@ -374,4 +374,12 @@
 - Add a _service file to download the tarball automatically.</comment>
     <requestid>972159</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>9b58076dba83abef3a496342eca07a34</srcmd5>
+    <version>2.19</version>
+    <time>1664210899</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1006004</requestid>
+  </revision>
 </revisionlist>
