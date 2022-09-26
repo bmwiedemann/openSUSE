@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Sep 25 07:00:59 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.26.5:
+  * release v0.26.5 (#1771)
+
+-------------------------------------------------------------------
+Sun Sep 25 06:56:00 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.26.4:
+  * clean up test
+  * K9s/rel v0.26.4 (#1767)
+  * Replace clipboard package (#868) (#1721)
+  * List all helm releases (#1755)
+  * Fix GracePeriodSeconds (#1739)
+  * Plugin for opening a root shell to k3d containter (#1709)
+  * Fix  Get CustomResourceDefinition(#1711) (#1722)
+  * Fix flux plugin to properly handle trace (#1753)
+  * README : correct (auto-)port-forwards annotations (#1744)
+  * Fix typo in cronjob (#1759)
+  * Bump golang from 1.19.0-alpine3.16 to 1.19.1-alpine3.16 (#1754)
+  * fix redundant type conversion code (#1725)
+  * update tag
+
+-------------------------------------------------------------------
 Wed Sep 07 11:41:37 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.26.3:
