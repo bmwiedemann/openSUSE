@@ -32,4 +32,12 @@ PS Factory provides x64 build. Others are disabled in order to save atm work. (f
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d560269be1df4f5c492704641d35c0c7</srcmd5>
+    <version>5.0.20220807</version>
+    <time>1664210894</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1005988</requestid>
+  </revision>
 </revisionlist>
