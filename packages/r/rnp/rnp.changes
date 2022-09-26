@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep 26 04:36:06 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- rnp 0.16.2:
+  * Support a number of additional key and encryption operations
+  * Now uses separate security rules for the data and key signatures,
+    extending SHA1 key signature support till the Jan, 19 2024.
+  * The default key expiration time was set to 2 years.
+  * The library got a number of developer visible updates, 
+    and the command-line interface gained a number of additional
+    knobs, switches, and output improvements
+
+-------------------------------------------------------------------
 Sun May 22 08:14:29 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - add upstream signing key and verify source signature
