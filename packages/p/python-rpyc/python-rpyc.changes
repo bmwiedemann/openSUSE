@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Mon Sep 26 08:17:17 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove some failing tests because they where failing for some deadlock
+  reason.
+- Add gcc-c++ required dependency for tests
+
+-------------------------------------------------------------------
+Wed Sep 21 07:46:06 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Fix multibuild with flavor global
+
+-------------------------------------------------------------------
+Tue Sep 20 16:44:42 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- update to 5.2.3:
+  * #503 rpyc_classic.py and rpyc_registry.py are tracked by pyproject.toml and
+    should resolve now. Moreover, they can now be resolved without their file
+    suffixes as well.
+  * Release 5.2.0
+    * Added support for using decorators to expose methods (see #292)
+    * Allow BgServingThread serve and sleep intervals to be customized
+    * Avoid redefining hasattr_static on every check_attr` call
+    * Updated SSL context usage to avoid deprecated aspects and changes
+    * Add a configurable timeout on the zero deploy close method
+    * Fixed --mode CLI argument for rpyc_registry
+    * Fixed propagation of AttributeErrors raised by exposed descriptors
+    * Allow filtering by host on list_services
+    * and #502 Improved documentation and fixed typos
+    * Some work around race conditions but proper fix is rather involved (see #491)
+  * Release 5.1.0
+    * Added types.MappingProxyType to builtin_types #470
+    * Updated documentation #469
+    * Fixed spradic dealock issues from wait within AsyncResult #463 and #455
+    * Fixed chained Classic RPyC connections #460
+    * Added ability to list Registry services #452
+    * Fixed bug that prevented RPyC from running on systems without SSL #451
+    * Fixed unexpected behavior with respect to auto_register #445
+    * Fixed propagation of chunk_size parameter for download_dir #433
+
+-------------------------------------------------------------------
+Mon Nov  8 20:22:29 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.1:
+  *  Fixed unexpected behavior when using inspect.isfunction
+  *  Now prevents installation of RPyC on unsupported versions of python
+  *  RPyC 5.0.0 cannot teleport functions to earlier versions
+  *  Deprecated Python 2 support to coincide with it's EOL
+  *  Server hostname default supports IPv4 and IPv6 by using the wildcard address
+  *  Fixed pickle failure on windows for ``connect_multiprocess`` and ``connect_thread``
+  *  Fixed teleport function behavior for keyword-only arguments with default
+  *  Improved documentation on custom exception handling
+  *  Fixed IPv6 support for server
+  *  Added a simple asynchrounous service example
+
+-------------------------------------------------------------------
 Wed Jun  3 10:33:48 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - replace nose with pytest

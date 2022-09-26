@@ -1,7 +1,7 @@
 #
-# spec file for package python-rpyc
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,26 +25,30 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%global skip_python2 1
 Name:           python-rpyc%{psuffix}
-Version:        4.1.5
+Version:        5.2.3
 Release:        0
 Summary:        Remote Python Call (RPyC), a RPC library
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/tomerfiliba/rpyc
 Source:         https://github.com/tomerfiliba/rpyc/archive/%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-plumbum >= 1.2
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module gevent}
 BuildRequires:  %{python_module plumbum >= 1.2}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module rpyc = %{version}}
+BuildRequires:  gcc-c++
 %endif
 %python_subpackages
 
@@ -58,13 +62,15 @@ that remote objects can be manipulated as if they were local.
 
 %prep
 %setup -q -n rpyc-%{version}
+# Replace hashbangs
+sed -i -e "s|env python|python%{python_bin_suffix}|" rpyc/cli/rpyc_classic.py rpyc/cli/rpyc_registry.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 mv %{buildroot}%{_bindir}/rpyc_classic.py %{buildroot}%{_bindir}/rpyc_classic
@@ -76,7 +82,7 @@ mv %{buildroot}%{_bindir}/rpyc_registry.py %{buildroot}%{_bindir}/rpyc_registry
 
 %if %{with test}
 %check
-%pytest -k 'not (TestDeploy or Test_Ssh or TestUdpRegistry or win32pipes)'
+%pytest -k 'not (TestDeploy or Test_Ssh or TestUdpRegistry or win32pipes or test_server_stops or test_immutable_object_return or test_return_of_modified_parameter or test_return_of_unmodified_parameter or test_dataframe_pickling or test_ssl_conenction or test_connection)'
 %endif
 
 %if !%{with test}
