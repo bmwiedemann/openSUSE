@@ -1,7 +1,7 @@
 #
 # spec file for package ack
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %endif
 %{!?perl_make_install:  %global perl_make_install make DESTDIR=%{buildroot} install_vendor}
 Name:           ack
-Version:        3.5.0
+Version:        3.6.0
 Release:        0
 Summary:        Grep-Like Text Finder
 License:        Artistic-2.0
@@ -68,7 +68,7 @@ code.
 
 %build
 perl Makefile.PL
-make %{?_smp_mflags}
+%make_build
 
 %install
 %perl_make_install
@@ -86,7 +86,7 @@ rm -f "%{buildroot}%{_localstatedir}/adm/perl-modules/ack"
 
 %check
 %if %{run_tests}
-make test %{?_smp_mflags}
+%make_build test
 %endif
 
 %files
