@@ -270,4 +270,33 @@
     execution if the user clicked on a notification popup from a malicious source.</comment>
     <requestid>1001194</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>97f43b788934b6552d10e8a9320af7d0</srcmd5>
+    <version>0.26.3</version>
+    <time>1664210901</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.26.3:
+  * Wayland: Mark windows in which a bell occurs as urgent on compositors
+    that support the xdg-activation protocol
+  * Allow passing null bytes through the system clipboard (#5483)
+  * ssh kitten: Fix KITTY_PUBLIC_KEY not being encoded properly
+    when transmitting (#5496)
+  * Sessions: Allow controlling which OS Window is active via
+    the focus_os_window directive
+  * Wayland: Fix for bug in NVIDIA drivers that prevents
+    transparency working (#5479)
+  * Wayland: Fix for a bug that could cause kitty to become
+    non-responsive when using multiple OS windows in a single
+    instance on some compositors (#5495)
+  * Wayland: Fix for a bug preventing kitty from starting on
+    Hyprland when using a non-unit scale (#5467)
+  * Wayland: Generate a XDG_ACTIVATION_TOKEN when opening URLs
+    or running programs in the background via the launch action
+  * Fix a regression that caused kitty not to restore SIGPIPE
+    after python nukes it when launching children. Affects bash
+    which does not sanitize its signal mask. (#5500)
+  * Fix a use-after-free when handling fake mouse clicks and the
+    action causes windows to be removed/re-allocated (#5506)</comment>
+    <requestid>1006016</requestid>
+  </revision>
 </revisionlist>
