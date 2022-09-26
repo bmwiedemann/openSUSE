@@ -30,7 +30,11 @@ BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cairo) >= 1.0.0
 BuildRequires:  pkgconfig(gavl) >= 0.2.3
+%if 0%{suse_version} == 1500 && 0%{?sle_version} < 150400
 BuildRequires:  pkgconfig(opencv)
+%else
+BuildRequires:  pkgconfig(opencv4)
+%endif
 
 %description
 This package provides a collection of video sources and filters plugins,

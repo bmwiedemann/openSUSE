@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 26 07:31:09 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use opencv 4 for building frei0r-plugins when possible.
+  opencv 3 doesn't support FFmpeg 5.
+
+-------------------------------------------------------------------
 Mon May  9 15:50:45 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 1.8.0
