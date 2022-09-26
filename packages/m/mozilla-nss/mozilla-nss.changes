@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Sep 17 20:53:09 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to NSS 3.82
+  * bmo#1330271 - check for null template in sec_asn1{d,e}_push_state
+  * bmo#1735925 - QuickDER: Forbid NULL tags with non-zero length
+  * bmo#1784724 - Initialize local variables in
+                  TlsConnectTestBase::ConnectAndCheckCipherSuite
+  * bmo#1784191 - Cast the result of GetProcAddress
+  * bmo#1681099 - pk11wrap: Tighten certificate lookup based on
+                  PKCS #11 URI.
+
+-------------------------------------------------------------------
 Wed Aug 17 11:03:37 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - update to NSS 3.81
