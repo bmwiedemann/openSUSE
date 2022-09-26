@@ -1,0 +1,21 @@
+diff -Naru uacme-1.7.2_orig/libev/ev_iouring.c uacme-1.7.2/libev/ev_iouring.c
+--- uacme-1.7.2_orig/libev/ev_iouring.c	2022-07-21 04:46:37.000000000 +0900
++++ uacme-1.7.2/libev/ev_iouring.c	2022-08-08 17:23:09.699888567 +0900
+@@ -214,7 +214,7 @@
+ }
+ 
+ inline_size
+-struct io_uring_sqe *
++void
+ iouring_sqe_submit (EV_P_ struct io_uring_sqe *sqe)
+ {
+   unsigned idx = sqe - EV_SQES;
+@@ -246,7 +246,7 @@
+ 
+ /* called for full and partial cleanup */
+ ecb_cold
+-static int
++static void
+ iouring_internal_destroy (EV_P)
+ {
+   close (iouring_tfd);
