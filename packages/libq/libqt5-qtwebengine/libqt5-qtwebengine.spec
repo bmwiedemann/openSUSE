@@ -1,8 +1,7 @@
 #
 # spec file for package libqt5-qtwebengine
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright © 2017 Kevin Kofler <Kevin@tigcc.ticalc.org>
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +23,10 @@
 %endif
 %bcond_without system_ffmpeg
 %bcond_without system_minizip
+%bcond_without pipewire
+%if %{?suse_version} > 1500 || 0%{?sle_version} > 150400
+%bcond_without python3
+%endif
 
 # spellchecking dictionary directory
 %global _qtwebengine_dictionaries_dir %{_libqt5_datadir}/qtwebengine_dictionaries
@@ -40,6 +43,8 @@ URL:            https://www.qt.io
 %define so_version 5.15.10
 %define tar_version qtwebengine-everywhere-src-%{version}
 Source:         %{tar_version}.tar.xz
+# Use a git snapshot for catapult to build with python3 (git rev: b7e9d5899)
+Source1:        catapult-git.tar.xz
 Source99:       libqt5-qtwebengine-rpmlintrc
 # PATCH-FIX-UPSTREAM armv6-ffmpeg-no-thumb.patch - Fix ffmpeg configuration for armv6
 Patch0:         armv6-ffmpeg-no-thumb.patch
@@ -50,26 +55,26 @@ Patch2:         sandbox-statx-futex_time64.patch
 Patch3:         rtc-dont-use-h264.patch
 # PATCH-FIX-UPSTREAM
 Patch4:         0001-skia-Some-includes-to-fix-build-with-GCC-12.patch
+# PATCH-FIX-UPSTREAM -- build with pipewire 0.3
+Patch5:         qtwebengine-pipewire-0.3.patch
+### Patch 50-99 are applied conditionally
+# PATCH-FIX-OPENSUSE -- allow building qtwebengine with python3 and ffmpeg5
+Patch50:        qtwebengine-python3.patch
+Patch51:        qtwebengine-ffmpeg5.patch
+###
 # http://www.chromium.org/blink is not ported to PowerPC & s390
 ExcludeArch:    ppc ppc64 ppc64le s390 s390x
 # Try to fix i586 MemoryErrors with rpmlint
 #!BuildIgnore: rpmlint
 BuildRequires:  bison
 BuildRequires:  fdupes
-%if %{with system_ffmpeg}
-BuildRequires:  ffmpeg-4-libavcodec-devel
-BuildRequires:  ffmpeg-4-libavformat-devel
-BuildRequires:  ffmpeg-4-libavutil-devel
-%endif
 BuildRequires:  flac-devel
 BuildRequires:  flex
-BuildRequires:  gperf
 BuildRequires:  git-core
+BuildRequires:  gperf
 BuildRequires:  krb5
 BuildRequires:  krb5-devel
 BuildRequires:  libQt5QuickControls2-devel
-# For building pdf examples...
-BuildRequires:  libqt5-qtsvg-devel
 BuildRequires:  libcap-devel
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libjpeg-devel
@@ -77,37 +82,45 @@ BuildRequires:  libpng-devel
 BuildRequires:  libqt5-qtbase-private-headers-devel >= 5.12
 BuildRequires:  libqt5-qtdeclarative-private-headers-devel >= 5.12
 BuildRequires:  libqt5-qtlocation-private-headers-devel >= 5.12
+# For building pdf examples...
+BuildRequires:  libqt5-qtsvg-devel
 BuildRequires:  libqt5-qttools-private-headers-devel >= 5.12
 BuildRequires:  libqt5-qtwebchannel-private-headers-devel >= 5.12
 BuildRequires:  libqt5-qtxmlpatterns-private-headers-devel >= 5.12
 BuildRequires:  memory-constraints
 BuildRequires:  ninja
-# nodejs-default doesn't exist on Leap 15.2
-%if 0%{?suse_version} == 1500 && 0%{?sle_version} == 150200
-BuildRequires:  nodejs-common
-%else
 BuildRequires:  nodejs-default
-%endif
 BuildRequires:  pam-devel
 BuildRequires:  pciutils-devel
 BuildRequires:  perl
 BuildRequires:  perl-JSON
+%if %{with pipewire}
+BuildRequires:  pipewire-devel
+%endif
 BuildRequires:  pkgconfig
+%if %{with python3}
+BuildRequires:  python3
+BuildRequires:  python3-devel
+BuildRequires:  python3-html5lib
+BuildRequires:  python3-xml
+%else
 BuildRequires:  python
 BuildRequires:  python-devel
 BuildRequires:  python-xml
+%endif
 BuildRequires:  re2c
 BuildRequires:  sed
 BuildRequires:  snappy-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  usbutils
 BuildRequires:  util-linux
-%ifnarch %arm
+%ifnarch %{arm}
 BuildRequires:  valgrind-devel
 %endif
 BuildRequires:  wdiff
 BuildRequires:  xz
 BuildRequires:  yasm
+BuildRequires:  yasm-devel
 BuildRequires:  perl(Switch)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(atk)
@@ -123,10 +136,15 @@ BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(harfbuzz) >= 2.4.0
-BuildRequires:  pkgconfig(icu-uc) >= 65.0
 BuildRequires:  pkgconfig(icu-i18n) >= 65.0
+BuildRequires:  pkgconfig(icu-uc) >= 65.0
 BuildRequires:  pkgconfig(jsoncpp)
 BuildRequires:  pkgconfig(lcms2)
+%if %{with system_ffmpeg}
+BuildRequires:  pkgconfig(libavcodec)
+BuildRequires:  pkgconfig(libavformat)
+BuildRequires:  pkgconfig(libavutil)
+%endif
 BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libevent)
@@ -273,7 +291,30 @@ Recommends:     libqt5-qtpdf-devel
 Examples for the libqt5-qtpdf module.
 
 %prep
-%autosetup -p1 -n %{tar_version}
+%setup -q -n %{tar_version}
+# Leap 15 doesn't understand '%%autopatch -m'
+%patch0 -p1
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
+
+%if %{with python3}
+%patch50 -p1
+# Replace the whole catapult folder rather than picking individual changes
+pushd src/3rdparty/chromium/third_party
+rm -r catapult
+tar xJf %{SOURCE1}
+mv catapult-git catapult
+popd
+%endif
+
+# FFmpeg 5
+%if %{with system_ffmpeg} && %{pkg_vcmp libavcodec-devel >= 5}
+%patch51 -p1
+%endif
+
 sed -i 's|$(STRIP)|strip|g' src/core/core_module.pro
 
 #force the configure script to generate the forwarding headers (it checks whether .git directory exists)
@@ -314,6 +355,9 @@ export RPM_OPT_FLAGS="${RPM_OPT_FLAGS} -Wno-return-type"
         -system-webengine-ffmpeg \
         -webengine-proprietary-codecs \
 %endif
+%if %{with pipewire}
+        -webengine-webrtc-pipewire
+%endif
 
 # Determine the right number of parallel processes based on the available memory
 %limit_build -m 2750
@@ -322,6 +366,7 @@ export RPM_OPT_FLAGS="${RPM_OPT_FLAGS} -Wno-return-type"
 # processes instead of its defaults.
 export NINJAFLAGS="%{?_smp_mflags}"
 
+# Warning: Don't use %%make_build or the chromium build log won't be available
 make %{_smp_mflags} VERBOSE=1
 
 %install

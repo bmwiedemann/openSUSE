@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 23 18:01:11 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patches to build with python 3, ffmpeg 5 and pipewire 0.3:
+  * qtwebengine-ffmpeg5.patch
+  * qtwebengine-pipewire-0.3.patch
+  * qtwebengine-python3.patch
+- Use a newer catapult snapshot when building with python3
+
+-------------------------------------------------------------------
 Mon Aug  8 06:45:29 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Stop using 'pkgconfig(xxx)' BuildRequires for FFmpeg

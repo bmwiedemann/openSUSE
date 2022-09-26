@@ -828,4 +828,12 @@
   dependencies. They will point to FFmpeg-5 soon. (forwarded request 993674 from cgiboudeaux)</comment>
     <requestid>993685</requestid>
   </revision>
+  <revision rev="83" vrev="3">
+    <srcmd5>a9b8e99ec30470e4160f39b2010aefd9</srcmd5>
+    <version>5.15.10</version>
+    <time>1664210861</time>
+    <user>dimstar_suse</user>
+    <comment>Allow building libqt5-qtwebengine with python3, ffmpeg 5 and pipewire 0.3</comment>
+    <requestid>1005868</requestid>
+  </revision>
 </revisionlist>
