@@ -93,16 +93,11 @@ BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(zlib)
 # gmic first looks for opencv 4 and falls back to opencv 3 if not found.
 # opencv 4 in not available in leap <= 15.3
-%if 0%{?suse_version} <= 1500
-BuildRequires:  pkgconfig(opencv)
-%else
-# ppc64 doesn't have opencv4
-%ifarch ppc64
+%if 0%{suse_version} == 1500 && 0%{?sle_version} < 150400
 BuildRequires:  pkgconfig(opencv)
 %else
 BuildRequires:  pkgconfig(opencv4)
 BuildRequires:  pkgconfig(zlib)
-%endif
 %endif
 Requires:       gmic-data = %{version}
 
