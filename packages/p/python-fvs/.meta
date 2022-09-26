@@ -1,0 +1,5 @@
+<package name="python-fvs" project="openSUSE:Factory">
+  <title>FVS</title>
+  <description>File Versioning System with hash comparison, deduplication and data storage to create unlinked states that can be deleted </description>
+  <devel project="devel:languages:python" package="python-fvs"/>
+</package>
