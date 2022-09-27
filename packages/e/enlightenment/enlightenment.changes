@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Sep 27 01:16:29 UTC 2022 - Simon Lees <sflees@suse.de>
+
+- Update to 0.25.4 Bugfix release
+  * Fix shape handling in various cases that affected apps with shaped input
+  * Fix procstats popup and dangling icon for fullscreen windows
+  * Fix a vianishing pointer in some cases
+  * Workaround Qt issue where it does not remove WM_STATE on withdraw
+  * Fix fullscreen focus toggle flicker
+  * Fix pointer sticking case
+  * Fix tap-to-click props
+  * Fix gadgcon disabled items
+  * Fix config fallback handling that means no fallback happened
+  * Fix gtk frame prop handling
+  * Fix first map handling that affected energyxt
+  * Fix CVE-2022-37706 (boo#1203631)
+  * Hanrde enlightenment_sys when mis-packaged without sysactions.conf
+- Drop fix-upstream-dont-migrate-sysinfoluncher.patch fixed upstream
+-------------------------------------------------------------------
 Tue Jun 28 04:08:49 UTC 2022 - Simon Lees <sflees@suse.de>
 
 - Disable suid storage module thats not needed under Linux

@@ -24,7 +24,7 @@
 # Fix this later
 %define build_doc 0
 Name:           enlightenment
-Version:        0.25.3
+Version:        0.25.4
 Release:        0
 Summary:        The window manager
 License:        BSD-2-Clause
@@ -48,8 +48,6 @@ Patch5:         feature-qt-apps-gtk2-theme.patch
 Patch6:         feature-openSUSE-log-to-journal.patch
 # boo#1170162 - disable the storage module thats not used on Linux for enhanced security
 Patch7:         feature-openSUSE-disable-system-storage.patch
-# boo#1197326 Don't Enable modules that don't exist in profile migration.
-Patch8:         fix-upstream-dont-migrate-sysinfoluncher.patch
 BuildRequires:  alsa-devel
 BuildRequires:  cmake
 BuildRequires:  doxygen
