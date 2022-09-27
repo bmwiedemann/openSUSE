@@ -343,4 +343,13 @@
   * config/security: Allow proxy variables in subcommands (forwarded request 1005663 from jfkw)</comment>
     <requestid>1005664</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>82504d201287e464177b38a7c86994dd</srcmd5>
+    <version>0.104.1</version>
+    <time>1664302408</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 0.104.1:
+  * Fix /static performance regression from Hugo 0.103.0 (forwarded request 1006254 from jfkw)</comment>
+    <requestid>1006255</requestid>
+  </revision>
 </revisionlist>

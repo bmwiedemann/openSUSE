@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 26 20:33:23 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 0.104.1:
+  * Fix /static performance regression from Hugo 0.103.0
+
+-------------------------------------------------------------------
 Fri Sep 23 18:09:48 UTC 2022 - jkowalczyk@suse.com
 
 - Update to version 0.104.0:
