@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Sep 24 08:37:06 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add riscv64-support.patch
+- enable build for riscv64 
+
+-------------------------------------------------------------------
 Mon Aug 17 09:51:29 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.0.13:

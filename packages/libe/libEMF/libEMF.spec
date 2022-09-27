@@ -1,7 +1,7 @@
 #
 # spec file for package libEMF
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,12 +22,13 @@ Release:        0
 Summary:        Library for Manipulation with Enhanced MetaFile (EMF, ECMA-234)
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Libraries
-URL:            http://libemf.sourceforge.net/
-Source:         http://downloads.sourceforge.net/libemf/libemf-%{version}.tar.gz
+URL:            https://libemf.sourceforge.net/
+Source:         https://downloads.sourceforge.net/libemf/libemf-%{version}.tar.gz
+Patch1:         riscv64-support.patch
 Patch2:         ppc64le-support.patch
 BuildRequires:  gcc-c++
 # taken from includes/wine/winnt.h
-ExclusiveArch:  alpha %{arm} aarch64 %{ix86} mips ppc ppc64 ppc64le sparc s390 s390x x86_64
+ExclusiveArch:  alpha %{arm} aarch64 %{ix86} mips ppc ppc64 ppc64le riscv64 sparc s390 s390x x86_64
 
 %description
 LibEMF is a C/C++ library that provides a drawing toolkit based on
@@ -89,8 +90,7 @@ SO/OO. The EMF format also has the additional advantage that it can be
 SO/OO graphics object.
 
 %prep
-%setup -q -n libemf-%{version}
-%patch2 -p1
+%autosetup -p1 -n libemf-%{version}
 
 %build
 %configure\
