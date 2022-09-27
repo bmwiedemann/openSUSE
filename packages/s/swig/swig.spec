@@ -44,6 +44,9 @@ Patch0:         swig-octave-6.patch
 Patch1:         fix-gcc12-error.patch
 # PATCH-FIX-UPSTREAM swig-python310.patch -- gh#swig/swig#2064, Fix swig test suite with python310
 Patch2:         swig-python310.patch
+# PATCH-FIX-UPSTREAM 15515f390c5e3316a7faf0cf85d661a297d45a50.patch - gh#swig/swig#2138, remove obsolete pcre1
+# from https://github.com/swig/swig/commit/15515f390c5e3316a7faf0cf85d661a297d45a50.patch
+Patch3:         15515f390c5e3316a7faf0cf85d661a297d45a50.patch
 Patch308:       swig308-isfinite.diff
 
 BuildRequires:  autoconf
@@ -52,7 +55,7 @@ BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
-BuildRequires:  pcre-devel
+BuildRequires:  pcre2-devel
 BuildRequires:  perl
 BuildRequires:  pkgconfig
 %if 0%{?centos_version} >= 800

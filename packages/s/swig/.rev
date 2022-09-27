@@ -696,4 +696,13 @@
     <comment></comment>
     <requestid>976590</requestid>
   </revision>
+  <revision rev="77" vrev="7">
+    <srcmd5>a4ed2117d314d9285848ebb64b232918</srcmd5>
+    <version>4.0.2</version>
+    <time>1664302385</time>
+    <user>RBrownFactory</user>
+    <comment>- Cherrypick 15515f390c5e3316a7faf0cf85d661a297d45a50.patch from
+  upstream to replace obsolete pcre1 with pcre2</comment>
+    <requestid>1005992</requestid>
+  </revision>
 </revisionlist>
