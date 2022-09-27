@@ -1,7 +1,7 @@
 #
 # spec file for package python-cogapp
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cogapp
-Version:        3.0.0
+Version:        3.3.0
 Release:        0
 Summary:        A code generator for executing Python snippets in source files
 License:        MIT
@@ -30,7 +30,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -41,9 +41,6 @@ need.
 
 %prep
 %setup -q -n cogapp-%{version}
-# The fix for bpo-43105 broke cogapp's way to import relative paths
-# https://github.com/nedbat/cog/issues/16
-sed -i 's/self.addToIncludePath(a)/self.addToIncludePath(os.path.abspath(a))/' cogapp/cogapp.py
 
 %build
 %python_build
@@ -61,7 +58,7 @@ mv %{buildroot}%{_bindir}/cog.py %{buildroot}%{_bindir}/cog
 %post
 %python_install_alternative cog
 
-%preun
+%postun
 %python_uninstall_alternative cog
 
 %files %{python_files}

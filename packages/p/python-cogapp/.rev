@@ -33,4 +33,23 @@
     <comment></comment>
     <requestid>891392</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b54e20874bd3e6dc010833626020bca2</srcmd5>
+    <version>3.3.0</version>
+    <time>1664302444</time>
+    <user>RBrownFactory</user>
+    <comment>- Remove not needed patch in prep section 
+- Change preun to postun to run python_uninstall_alternatives to remove rpmlint
+  errors
+
+- Update to 3.3.0:
+  Added the --check option to check whether files would change if run again, for use in continuous integration scenarios.
+- Update to 3.2.0:
+  Added the -P option to use print() instead of cog.outl() for code output.
+- Update to 3.1.0: 
+  * Fix a problem with Python 3.8.10 and 3.9.5 that require absolute paths in sys.path
+    https://github.com/nedbat/cog/issues/16
+    Python 3.9 and 3.10 are supported.</comment>
+    <requestid>1006330</requestid>
+  </revision>
 </revisionlist>
