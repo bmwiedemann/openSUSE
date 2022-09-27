@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug  8 16:00:39 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- disable sse on non-x86 architectures 
+
+-------------------------------------------------------------------
 Sat Nov 27 12:55:13 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.17.0:

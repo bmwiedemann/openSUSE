@@ -1,7 +1,7 @@
 #
 # spec file for package libimagequant
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -55,7 +55,11 @@ C library for conversion of RGBA images to 8-bit indexed-color
 
 %build
 # This is not an autoconf configure, but the script simply ignores parameters it does not know
-%configure --with-openmp
+%configure \
+%ifnarch %ix86 x86_64
+    --disable-sse \
+%endif
+    --with-openmp
 make %{?_smp_mflags}
 
 %install
