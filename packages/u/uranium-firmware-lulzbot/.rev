@@ -53,4 +53,12 @@
     <comment>cura version update</comment>
     <requestid>677904</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>e64ceeebf6c89019a6c9e297e51438a4</srcmd5>
+    <version>1.1.9.34_5f9c029d1</version>
+    <time>1664302449</time>
+    <user>RBrownFactory</user>
+    <comment>I am surprised that BuildArch: noarch and ExclusiveArch are actually working together</comment>
+    <requestid>1006356</requestid>
+  </revision>
 </revisionlist>

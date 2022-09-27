@@ -1,7 +1,7 @@
 #
 # spec file for package uranium-firmware-lulzbot
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,9 +22,11 @@ Release:        0
 Summary:        3D printer firmware
 License:        GPL-3.0-only
 Group:          System/Libraries
-Url:            https://code.alephobjects.com/source/MARLIN.git
-Source:         MARLIN-%{version}.tar.xz
+URL:            https://gitlab.com/lulzbot3d/marlin
+Source:         marlin-%{version}.tar.xz
 Patch1:         fix-build.patch
+# Build on x86_64 only atm because 32 bit cross compilers do not work anymore.
+ExclusiveArch:  x86_64
 BuildArch:      noarch
 BuildRequires:  avr-libc
 BuildRequires:  cross-avr-gcc7
@@ -33,7 +35,7 @@ BuildRequires:  cross-avr-gcc7
 Matching firmware for cura-lulzbot
 
 %prep
-%setup -q -n MARLIN-%version
+%setup -q -n marlin-%version
 %patch1 -p1
 
 %build

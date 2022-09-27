@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 27 05:49:05 UTC 2022 - Adrian Schröter <adrian@suse.de>
+
+- switch to exclusive buildarch x86_64
+  32bit cross compilers are not working anymore
+
+-------------------------------------------------------------------
+Fri Jan 22 07:15:39 UTC 2021 - Adrian Schröter <adrian@suse.de>
+
+- change git URL to new location
+
+-------------------------------------------------------------------
 Wed Feb 20 09:47:58 UTC 2019 - Adrian Schröter <adrian@suse.de>
 
 - update to 1.1.9.34
