@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 26 10:35:09 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.6+kde1, rebased upstream:
+   * Doc: Add readonly command to VirtualKeyboardSettings::availableLocales
+   * pinyin: Do not accept invalid input as pinyin initial
+   * pinyin: Prevent crash when pinyin dictionary cannot be loaded
+   * plugins/openwnn: reset() should not modify pre-edit text
+   * plugins/openwnn: Set word candidate index when item is selected
+
+-------------------------------------------------------------------
 Mon Jun 27 13:10:43 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.5+kde3, rebased upstream:
