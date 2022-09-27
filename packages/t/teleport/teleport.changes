@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Tue Sep 27 07:57:11 UTC 2022 - michael@stroeder.com
+
+- Update to version 10.2.5:
+  * Fixed issue with connecting to servers with some GUI clients e.g. PyCharm. [#16662]
+  * Added support for simplified Active Directory configuration in Desktop Access. [#16623]
+
+-------------------------------------------------------------------
+Tue Sep 27 06:39:03 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 10.2.4:
+  * Release 10.2.4 (#16712)
+  * Fix link with a long redirect chain in the CHANGELOG (#16527)
+  * [v10] helm: allow custom CA in teleport-cluster without custom certs (#16475)
+  * Disable MongoDB server selection in tests (#14622) (#16695)
+
+-------------------------------------------------------------------
+Tue Sep 27 06:32:20 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 10.2.3:
+  * Release 10.2.3 (#16686)
+  * [v10] Misc Backports (#16674)
+  * [v10] Improve logging when TDP input streaming fails (#16525)
+  * Fix issue with builtin remote proxy role getting access denied to roles (#16685)
+  * [v10] ci: Add Dependency Review linting tool (#16651)
+  * Use `testauthority` instead of `native` to generate keys in tests (#16486) (#16625)
+  * [v10] Fix flaky integration test: TestAppServersHA/RootServer (#16628) (#16666)
+  * helm: add minReadySeconds to teleport-cluster chart (#16675)
+  * Add a timeout for device cancels (#16657)
+  * bucket etcd leases (#16659)
+  * Add a version support table to the FAQ (#15924) (#16630)
+  * docs: move S3 IAM policy into an include (#16476)
+  * Introduce discovery_service and automatically run an SSM Document on discovered EC2 nodes  (#14094) (#16588)
+  * [v10] Connect: Fix premature `proxyClient.Close()` when getting kube clusters (#16538) (#16586)
+  * Backport V10: Add an AWS EC2 instance fetcher (#13886) (#16006)
+  * spell fix (#16607)
+  * [v10] azure mysql postgres auto discovery docs (#16562)
+  * Make the Fluentd guide more usable (#16051)
+  * add cluster alert links (#16426) (#16595)
+  * Fix CA pool loading for etcd backend (#16484) (#16598)
+  * Generic retrieval of FnCache values (#16485) (#16544)
+  * add status interface for cluster alerts (#16505) (#16574)
+  * [v10] ci: Swap CodeQL to larger runner and improve workflow (#16535)
+  * [v10] [Docs] note S3 versioning requirement (#16454)
+  * Allow opting out of forced OIDC email verification (#15847) (#16142)
+  * [v10] Move GitHub review bot to shared-workflows repository (#16226) (#16557)
+  * [v10] Register Windows native artifacts in release API (#16197) (#16540)
+  * Update on-prem v10 docs version (#16514)
+  * [v10] TLS Routing support with Teleport Proxy behind ALB for database access (#16415)
+  * Fix issue "tsh db env" returns error when TLS routing enabled (#16252) (#16468)
+  * Change caching resolver to return a copy of cached data (#16219) (#16353)
+
+-------------------------------------------------------------------
 Wed Sep 21 08:27:17 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 10.2.2:
