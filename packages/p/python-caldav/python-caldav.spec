@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global modname caldav
 Name:           python-%{modname}
-Version:        0.8.2
+Version:        0.9.1
 Release:        0
 Summary:        CalDAV (RFC4791) client library for Python
 License:        Apache-2.0 AND GPL-3.0-or-later

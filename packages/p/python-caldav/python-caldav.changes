@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Mon Sep 26 19:41:04 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to v0.9.1
+  ## Quick summary
+  * Tweaks to support the DAVMail server implementation
+  * v0.9.0 broke for python 3.5 and lower, due to usage of fstrings.  v0.9.1 has been tested with python 3.5.
+  * Discovery of some cases of broken support of recurring events on the server side, and logging of errors (optionally raising of errors)
+  * New method .close on the DAVClient object.
+  ## Minor changes
+  * Quite some users are complaining because recurring events aren't supported - which is intentional, because the server is supposed to take
+    care of that.  Unfortunately quite some servers doesn't.  Thanks to cos, at least we now have some code in place to log an error
+    (or optionally raising an error) when recurrences aren't taken care of (though, it only works if the server is returning non-expanded
+    recurring events - if searching for a recurrence and the server doesn't find it, then ... no error logged).
+    The error message is referring to https://github.com/python-caldav/caldav/issues/157
+* New method `.close` on the DAVClient object
+  ## Documentation fixes
+  * Added the fastmail caldav URL to the documentation - including note that they are picky on the trailing slash
+    - ref https://github.com/home-assistant/core/issues/66599
+  * Keeping the changelog up-to-date
+  ## Bugfixes
+  * v0.9.0 broke on elder python versions due to an f"string".  The f-format was introduced in python 3.6.  Anything below is actually
+    End of Life versions, but still ... it's a very small effort here to preserve compatibility with elder python versions.
+  * The library had some difficulties with the DAVMail server - at one point it does not return a calendar home set property, and at 
+    another point the calendar home set URL is the same as the calendar URL.
+  * The `URL.canonical()` method should rewrite variants of the same URL into something that will be equal - some work has been put making it more robust.
+  Issues: https://github.com/python-caldav/caldav/issues/189.  f-strings discussed outside github.
+  ## Linting
+  Removal of some extra white space
+  ## Testing framework and incompatibility matrix
+  * The testTodoDatesearch is pesky - because every server has different visions on how (or weather) to support recurring tasks.
+    Added yet more complexity to allow the test code to pass on different servers.
+  * Removed some silly test code in testSetCalendarProperties - seems to be just recreating a calendar, which we do in the setup of any test
+    unless the `unique_calendar_ids`-flag is given.
+
+-Update to v0.9
+  ## API changes
+  * `save_todo`, `save_event` and `save_journal` now takes extra parameters, assumed to be equivalent with ical attributes as defined in the icalendar library, and may build icalendar data from scratch or enhance on the given icalendar data.
+  * Added a context manager, so one can do `with DAVClient(foo) as client: ...`
+  ## Refactoring
+  * The digest vs basic auth is solved a bit differently in 0.8.2 and 0.9.  It has been fixed very carefully but inelegantly in 0.8.2, 0.9 contains a complete rewrite.  It was later shown that the logic in 0.8.2 broke for some servers, hence I've decided to discontinue support for the 0.8-branch.
+  ## Bugfixes and test framework
+  This release does not fix a reported regression at https://github.com/home-assistant/core/issues/65588 (and probably some other places)
+  that iCloud caldav URLs pointing directly to a calendar won't work.  I'm not sure if this is a regression in the caldav library or in Home Assistant. 
+  I've written up test code to catch this issue, but didn't have an iCloud account available to test with while releasing.
+  This release does not fix a reported possible regression in Home Assistant that public ICS feeds does not work anymore as the "caldav URL".
+  I don't think such an URL ever was working with the caldav library, I believe it's needed with some extra logic in the Home Assistant module if 
+  public ics feeds are to be supported.  (issues https://github.com/home-assistant/core/issues/70205 https://github.com/home-assistant/core/issues/65941)
+  * Quite some problems fixed with the authentication code
+  * The string representation of any error class was hardcoded as "AuthorizationError".
+  * Concatinating an empty unicode string with an empty byte string will cause an exception.  The python_utilities.to_wire method would return an empty
+    unicode string if given an empty unicode string.
+  * the flags no_overwrite and no_create in save_todo and save_journal didn't work
+  * scheduling still doesn't work very well, but one bug has been fixed
+  * tests and compatibility lists: some tweaks to let tests pass on the test servers (including fastmail)
+  * tests: make sure to delete the test calendar properly
+  * tests: test that non-base-urls still work
+  * tests: working around some issues on xandrikos startup, allows newer xandrikos version to be used
+  * tests: added flag "enable" in the test server config file
+
+-------------------------------------------------------------------
 Sat Jan 15 15:28:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.8.2:
