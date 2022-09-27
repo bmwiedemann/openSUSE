@@ -1,0 +1,115 @@
+-------------------------------------------------------------------
+Mon Sep 26 07:51:05 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Remove full source URL since it's downloaded by _service
+
+-------------------------------------------------------------------
+Mon Sep 26 07:27:50 UTC 2022 - filippo.bonazzi@suse.com
+
+- Update to version 0.7.2:
+  * Bumped version to v0.7.2
+  * Removed all references to `RegexCompileFlags.JAVASCRIPT_COMPAT` due to deprecation
+  * Fixed GLib2.74.0 causing a segfault. Fixes: #164
+  * Fix typo (#166)
+  * Adding instructions for installation on Fedora Silverblue and other rpm-ostree Fedora variants. (#161)
+  * Bumped PKGBUILD-git pkgver
+  * Bumped PKGBUILD sha256 sums
+
+-------------------------------------------------------------------
+Fri Sep 16 16:43:24 UTC 2022 - mcepl@suse.com
+
+- Update to version 0.7.1:
+  * Bumped application version to 0.7.1
+  * Updated rpkg spec
+  * Bumped version to 0.7.1
+  * Fixed fedora build issue
+  * Updated sha256 for pkgbuild
+  * Bumped version to 0.7.0
+  * Fix typo (#160)
+  * Removed all unnecessary GLib namespace prefixes
+  * Removed all unnecessary GLib namespace prefixes
+  * All notification urgencies can now use 0 as timeout to not expire (#158)
+  * Mpris Media Player widget (#157)
+  * Updated README with info about supported WMs
+  * Fixes #152
+  * Fixed Control Center sometimes dismissing when clicking inside of CC
+  * Customize and reorder widgets in Control Center (#150)
+  * Separate arch and ubuntu GH Actions into their own files. Fixes #151
+  * Updated Ubuntu docker file to use 22.04 LTS
+  * Fixed Config and Style not handling custom home-relative paths
+  * Fixed typo in README
+  * Updated the COPR link to the new official repo
+  * CI: Add Fedora builds (#144) (#148)
+  * Fixed styling notification summary not working correctly. Fixes #143
+  * Issue #141: Waybar subscription missed opportunity (#142)
+  * Add missing build dependency and installed files in rpmbuild spec file (#140)
+  * Fixed click to close Control Center not working on some WMs (#139)
+  * Fix gschema not being compiled on install (#138)
+  * Removed depends versions from PKGBUILD
+  * Updated Git PKGBUILD with correct pkgver format
+  * Updated PKGBUILD checksums for v0.6.3
+
+-------------------------------------------------------------------
+Thu Sep 15 22:07:17 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Upgrade to 0.7.1:
+  - Fixed building on Fedora
+- Upgrade to 0.7.0:
+  - Fix gschema not being compiled on install by @ErikReider in
+    #138
+  - Fixed click to close Control Center not working on some WMs
+    by @ErikReider in #139
+  - Add missing build dependency and installed files in rpmbuild
+    spec file by @fantognazza in #140
+  - Issue #141: Waybar subscription missed opportunity by
+    @carlosV2 in #142
+  - Customize and reorder widgets in Control Center by
+    @ErikReider in #150
+  - Mpris widget by @ErikReider in #157
+  - All notification urgency timeouts can now be 0 to disable
+    expiration by @ErikReider in #158
+  - Fix typo by @asas1asas200 in #160
+
+-------------------------------------------------------------------
+Wed Jul 13 07:41:36 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Remove SwayNotificationCenter-0.6.3.tar.gz since
+  SwayNotificationCenter-0.6.3.obscpio is enough
+
+-------------------------------------------------------------------
+Tue Jul 12 22:07:56 UTC 2022 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Package also glib-2.0 schema
+
+-------------------------------------------------------------------
+Tue Jul 12 22:00:23 UTC 2022 - filippo.bonazzi@suse.com
+
+- Update to version 0.6.3:
+  * Bumped version to v0.6.3
+  * Fixed bug where replacing notifitions aren't visible
+  * Updated Pkgbuild checksums
+  * Bumped version to 0.6.2
+  * Fixed nasty hover bug after first notification
+  * Updated style.css documentation
+  * Replaced state cacher with gsettings
+  * [Feature] Click outside Control Center to close (#133)
+  * Fixed notification trying to set icon from invalid .desktop file
+  * Renamed all notiWindow.* files to notificationWindow.*
+
+-------------------------------------------------------------------
+Mon Jul 11 13:52:16 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Fix build in i586 
+
+-------------------------------------------------------------------
+Wed Jun  8 17:24:42 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Package also README.md and license. It is hard to read README
+  (referred to in --help), when it is not provided.
+- Fix build on 32bit architectures.
+
+-------------------------------------------------------------------
+Fri May 27 09:40:04 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Initial packaging of version 0.6.1
+
