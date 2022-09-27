@@ -99,4 +99,16 @@
 - Add jupyterlab-server-fix-testing.patch</comment>
     <requestid>993389</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>70a8556d97f0d39263acdfb61a36a425</srcmd5>
+    <version>2.15.1</version>
+    <time>1664302405</time>
+    <user>RBrownFactory</user>
+    <comment>- update to 2.15.1
+  * Ignore deprecationwarning from jsonschema #295 (@blink1073)
+- update jupyterlab-server-fix-testing.patch: mistune no longer
+  vendored in nbconvert.
+</comment>
+    <requestid>1005931</requestid>
+  </revision>
 </revisionlist>

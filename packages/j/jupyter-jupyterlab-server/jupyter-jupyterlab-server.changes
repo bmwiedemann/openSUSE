@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 26 01:06:59 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- update to 2.15.1
+  * Ignore deprecationwarning from jsonschema #295 (@blink1073)
+- update jupyterlab-server-fix-testing.patch: mistune no longer
+  vendored in nbconvert.
+
+-------------------------------------------------------------------
 Fri Aug  5 19:44:09 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.15.0

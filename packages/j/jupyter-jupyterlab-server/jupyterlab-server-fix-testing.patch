@@ -1,37 +1,22 @@
-Index: jupyterlab_server-2.15.0/pyproject.toml
+Index: jupyterlab_server-2.15.1/pyproject.toml
 ===================================================================
---- jupyterlab_server-2.15.0.orig/pyproject.toml
-+++ jupyterlab_server-2.15.0/pyproject.toml
+--- jupyterlab_server-2.15.1.orig/pyproject.toml
++++ jupyterlab_server-2.15.1/pyproject.toml
 @@ -87,7 +87,7 @@ src = "jupyterlab_server/_version.py"
  src = "pyproject.toml"
  
  [tool.pytest.ini_options]
 -addopts = "-raXs --durations 10 --color=yes --doctest-modules"
-+addopts = "-raXs --durations 10 --doctest-modules"
++addopts = "-raXs --doctest-modules"
  testpaths = [
      "tests/"
  ]
-@@ -99,5 +99,7 @@ filterwarnings = [
-   "module:make_current is deprecated:DeprecationWarning",
+@@ -100,5 +100,7 @@ filterwarnings = [
    "module:clear_current is deprecated:DeprecationWarning",
    "module:There is no current event loop:DeprecationWarning",
--  "ignore:Passing a schema to Validator.iter_errors:DeprecationWarning"
-+  "ignore:Passing a schema to Validator.iter_errors:DeprecationWarning",
+   "ignore:Passing a schema to Validator.iter_errors:DeprecationWarning",
+-  "module:Subclassing validator classes is not intended to be part of their public API:DeprecationWarning"
++  "module:Subclassing validator classes is not intended to be part of their public API:DeprecationWarning",
 +  # fixed in https://github.com/p1c2u/openapi-core/pull/395 (v0.15)
 +  "ignore:The distutils package is deprecated:DeprecationWarning",
  ]
-Index: jupyterlab_server-2.15.0/tests/test_licenses_api.py
-===================================================================
---- jupyterlab_server-2.15.0.orig/tests/test_licenses_api.py
-+++ jupyterlab_server-2.15.0/tests/test_licenses_api.py
-@@ -5,7 +5,9 @@ import io
- import json
- import mimetypes
- 
--import mistune
-+# mistune is imported in tests and normally installed as transitive requirement
-+# from jupyter-server/nbconvert, but we had to vendorize it -- gh#jupyter/nbconvert#1685
-+from nbconvert.filters.markdown_mistune import mistune
- import pytest
- 
- from jupyterlab_server import LicensesApp

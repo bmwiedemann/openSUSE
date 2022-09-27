@@ -18,7 +18,7 @@
 
 %define oldpython python
 Name:           jupyter-jupyterlab-server
-Version:        2.15.0
+Version:        2.15.1
 Release:        0
 Summary:        Server components for JupyterLab and JupyterLab-like applications
 License:        BSD-3-Clause
