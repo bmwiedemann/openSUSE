@@ -507,4 +507,12 @@ bsc#1181400</comment>
     <comment>lighttpd 1.4.66 CVE-2022-37797 boo#1203358</comment>
     <requestid>1003391</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>5dddcba590f3998b4be46ef4a5c727cf</srcmd5>
+    <version>1.4.67</version>
+    <time>1664302474</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1006411</requestid>
+  </revision>
 </revisionlist>

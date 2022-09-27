@@ -26,9 +26,8 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           lighttpd
-Version:        1.4.66
+Version:        1.4.67
 Release:        0
-#
 Summary:        A Secure, Fast, Compliant, and Very Flexible Web Server
 License:        BSD-3-Clause
 Group:          Productivity/Networking/Web/Servers
