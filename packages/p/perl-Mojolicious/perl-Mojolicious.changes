@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Sep 13 03:06:38 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 9.27
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+
+  9.27  2022-09-10
+    - Added support for static assets.
+    - Added support for JSON and plain text exceptions.
+    - Removed experimental status from capture method in Mojo::Log.
+    - Added asset_dir attribute to Mojolicious::Static.
+    - Added asset_path method to Mojolicious::Static.
+    - Added url_for_asset method to Mojolicious::Controller.
+    - Added reply->html_exception, reply->html_not_found, reply->json_exception, reply->json_not_found,
+      reply->http_exception, reply->http_not_found, reply->txt_exception and reply->txt_not_found helpers to
+      Mojolicious::Plugin::DefaultHelpers.
+    - Added asset_tag helper to Mojolicious::Plugin::TagHelpers.
+    - Fixed a bug where async rendering did not work properly in the before_dispatch hook. (andrii-suse)
+
+-------------------------------------------------------------------
 Tue May 24 03:08:27 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 9.26
