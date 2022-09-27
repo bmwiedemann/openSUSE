@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep 27 06:32:11 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.7.4:
+  * fix: update github action to use current workflow path (#4705)
+  * tag v1.7.4 (#4698)
+  * fix: incorrect namespace in report controller (#4637) (#4688)
+  * Fix issue for wildcard versions (#4670) (#4674)
+
+-------------------------------------------------------------------
 Wed Sep 07 06:59:32 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 1.7.3:
