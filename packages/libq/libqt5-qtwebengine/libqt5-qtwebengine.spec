@@ -24,7 +24,10 @@
 %bcond_without system_ffmpeg
 %bcond_without system_minizip
 %bcond_without pipewire
-%if %{?suse_version} > 1500 || 0%{?sle_version} > 150400
+# The default python version is too old on Leap 15
+%if 0%{?suse_version} < 1550
+%bcond_without python39
+%else
 %bcond_without python3
 %endif
 
@@ -57,10 +60,11 @@ Patch3:         rtc-dont-use-h264.patch
 Patch4:         0001-skia-Some-includes-to-fix-build-with-GCC-12.patch
 # PATCH-FIX-UPSTREAM -- build with pipewire 0.3
 Patch5:         qtwebengine-pipewire-0.3.patch
+# PATCH-FIX-OPENSUSE -- build with python 3
+Patch6:        qtwebengine-python3.patch
 ### Patch 50-99 are applied conditionally
-# PATCH-FIX-OPENSUSE -- allow building qtwebengine with python3 and ffmpeg5
-Patch50:        qtwebengine-python3.patch
-Patch51:        qtwebengine-ffmpeg5.patch
+# PATCH-FIX-OPENSUSE -- allow building qtwebengine with ffmpeg5
+Patch50:        qtwebengine-ffmpeg5.patch
 ###
 # http://www.chromium.org/blink is not ported to PowerPC & s390
 ExcludeArch:    ppc ppc64 ppc64le s390 s390x
@@ -101,12 +105,12 @@ BuildRequires:  pkgconfig
 %if %{with python3}
 BuildRequires:  python3
 BuildRequires:  python3-devel
-BuildRequires:  python3-html5lib
 BuildRequires:  python3-xml
-%else
-BuildRequires:  python
-BuildRequires:  python-devel
-BuildRequires:  python-xml
+%endif
+%if %{with python39}
+BuildRequires:  python39
+BuildRequires:  python39-devel
+BuildRequires:  python39-xml
 %endif
 BuildRequires:  re2c
 BuildRequires:  sed
@@ -299,20 +303,19 @@ Examples for the libqt5-qtpdf module.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
-
-%if %{with python3}
-%patch50 -p1
+%patch6 -p1
 # Replace the whole catapult folder rather than picking individual changes
 pushd src/3rdparty/chromium/third_party
 rm -r catapult
 tar xJf %{SOURCE1}
 mv catapult-git catapult
 popd
-%endif
 
 # FFmpeg 5
-%if %{with system_ffmpeg} && %{pkg_vcmp libavcodec-devel >= 5}
-%patch51 -p1
+%if %{with system_ffmpeg}
+%if %{pkg_vcmp libavcodec-devel >= 5}
+%patch50 -p1
+%endif
 %endif
 
 sed -i 's|$(STRIP)|strip|g' src/core/core_module.pro
@@ -325,8 +328,12 @@ sed -i -e '/toolprefix = /d' -e 's/\${toolprefix}//g' \
   src/3rdparty/chromium/build/toolchain/linux/BUILD.gn
 
 %build
-# TODO: Get the manual unbundling from chromium.spec working here as well
 rm -r src/3rdparty/chromium/third_party/openh264/src
+
+%if %{with python39}
+sed -i 's#QMAKE_PYTHON = python3#QMAKE_PYTHON = python3.9#' mkspecs/features/functions.prf
+sed -i 's#python3#python3.9#' configure.pri
+%endif
 
 %ifnarch x86_64
 RPM_OPT_FLAGS="$RPM_OPT_FLAGS "

@@ -836,4 +836,12 @@
     <comment>Allow building libqt5-qtwebengine with python3, ffmpeg 5 and pipewire 0.3</comment>
     <requestid>1005868</requestid>
   </revision>
+  <revision rev="84" vrev="4">
+    <srcmd5>043898d394a5a5e5218b0b5f428973e2</srcmd5>
+    <version>5.15.10</version>
+    <time>1664302187</time>
+    <user>RBrownFactory</user>
+    <comment>- Use python 3.9 to build qtwebengine on Leap 15. (forwarded request 1006198 from cgiboudeaux)</comment>
+    <requestid>1006243</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 26 14:35:08 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use python 3.9 to build qtwebengine on Leap 15.
+
+-------------------------------------------------------------------
 Fri Sep 23 18:01:11 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add patches to build with python 3, ffmpeg 5 and pipewire 0.3:
