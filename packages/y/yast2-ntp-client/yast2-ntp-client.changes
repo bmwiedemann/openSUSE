@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 21 13:10:17 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
+
+- Skip to write and update netconfig configuration when netconfig
+  executable does not exist (bsc#1198066, bsc#1202748)
+- 4.5.1
+
+-------------------------------------------------------------------
 Wed Apr 06 13:24:58 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
 - Bump version to 4.5.0 (bsc#1198109)
