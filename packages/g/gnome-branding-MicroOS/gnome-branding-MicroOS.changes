@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 23 16:31:32 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Add zenity as an hard-dep, as we need it for mod-firstboot 
+
+-------------------------------------------------------------------
 Thu Aug  4 17:21:54 UTC 2022 - Shawn Dunn <sfalken@cloverleaf-linux.org>
 
 - Add Conflicts: plasma-branding-MicroOS

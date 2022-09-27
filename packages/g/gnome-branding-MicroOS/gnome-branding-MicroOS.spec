@@ -33,6 +33,7 @@ BuildRequires:  gio-branding-openSUSE
 Requires:       flatpak
 Requires:       gio-branding-openSUSE
 Requires:       sound-theme-freedesktop
+Requires:       zenity
 Conflicts:      plasma-branding-MicroOS
 Version:        20210427
 Release:        0
