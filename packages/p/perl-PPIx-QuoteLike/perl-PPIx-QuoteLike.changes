@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Sep 17 03:07:18 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.023
+   see /usr/share/doc/packages/perl-PPIx-QuoteLike/Changes
+
+  0.023		2022-09-16	T. R. Wyant
+      Update discouragement notice for variables(), and add a TODO in
+      t/variables.t for why.
+
+      Correct normalization of ${^FOO} for PPI. If the caret is present
+      the braces are not removed.
+
+-------------------------------------------------------------------
 Sat Apr 16 03:07:08 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.022
