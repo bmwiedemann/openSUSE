@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Sep 24 16:39:05 UTC 2022 - Tom Mbrt <tom.mbrt@googlemail.com>
+
+- Update to 2.3.0
+   * CMake 3.13 is now required
+   * for a full changelog, see https://github.com/FluidSynth/fluidsynth/wiki/ChangeLog#fluidsynth-230
+- Remove hard-coded fluidsynth.service and use .service generated during build
+
+-------------------------------------------------------------------
 Tue Sep  6 11:48:15 UTC 2022 - Tom Mbrt <tom.mbrt@googlemail.com>
 
 - Update to 2.2.9:

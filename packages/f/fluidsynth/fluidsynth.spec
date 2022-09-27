@@ -18,7 +18,7 @@
 
 %define sover   3
 Name:           fluidsynth
-Version:        2.2.9
+Version:        2.3.0
 Release:        0
 Summary:        A Real-Time Software Synthesizer That Uses Soundfont(tm)
 License:        LGPL-2.1-or-later
@@ -26,9 +26,8 @@ Group:          Productivity/Multimedia/Sound/Midi
 URL:            https://www.fluidsynth.orga/
 Source0:        https://github.com/FluidSynth/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}.conf
-Source2:        %{name}.service
 Source1000:     baselibs.conf
-BuildRequires:  cmake >= 3.1.0
+BuildRequires:  cmake >= 3.13.0
 BuildRequires:  gcc-c++
 BuildRequires:  ladspa-devel
 BuildRequires:  pkgconfig
@@ -76,6 +75,7 @@ This package contains the shared library for Fluidsynth.
 %build
 %cmake \
     -DFLUID_DAEMON_ENV_FILE=%{_fillupdir}/sysconfig.%{name} \
+    -DDEFAULT_SOUNDFONT=/usr/share/sounds/sf2/FluidR3_GM.sf2 \
     -Denable-lash=0
 %cmake_build
 
@@ -90,7 +90,7 @@ This package contains the shared library for Fluidsynth.
 %cmake_install
 mkdir -p %{buildroot}%{_localstatedir}/lib/%{name}
 install -Dpm0644 %{SOURCE1} %{buildroot}%{_fillupdir}/sysconfig.%{name}
-install -Dpm0644 %{SOURCE2} %{buildroot}%{_unitdir}/%{name}.service
+install -Dpm0644 build/fluidsynth.service %{buildroot}%{_unitdir}/%{name}.service
 mkdir %{buildroot}%{_sbindir}
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 
@@ -126,6 +126,8 @@ getent passwd %{name} >/dev/null || useradd -rc 'FluidSynth GM daemon' -s /bin/f
 %{_includedir}/%{name}.h
 %{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
+%dir %{_libdir}/cmake/%{name}/
+%{_libdir}/cmake/%{name}/*.cmake
 
 %files -n libfluidsynth%{sover}
 %{_libdir}/lib%{name}.so.%{sover}*
