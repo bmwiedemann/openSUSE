@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Tue Sep 20 12:05:31 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.65.1
+  * Update CloudFormation specs to `89.0.0` (#2366)
+  * Add support for `custom` RDS `Engine` types on resource
+    type `AWS::RDS::DBInstance` (#2370)
+  * Remove extra spacing in specs reducing overall size (#2371)
+  * Update `AllowedValues` for `RetentionInDays` on resource
+    type `AWS::Logs::LogGroup` (#2372)
+- from version 0.65.0
+  * Add `--force` option on `--update-specs` so cache isn't used (#2334)
+  * Add support for Python 3.10 (#2365)
+  * Update CloudFormation specs to `88.0.0` (#2361)
+  * Add in `mypy` testing and do a bunch of cleanup based on the results (#2328)
+  * Update rule I1022 to not suggest `Fn::Sub` on complext `Fn::Join`s (#2364)
+- from version 0.64.1
+  * Make `me-central-1` `ExtendedSpecs` a module (#2359)
+- from version 0.64.0
+  * Update `jsonschema` to be able to use version 3.0 and 4.0 (#2336)
+  * Remove support for python 3.6 and add python 3.9 (#2347)
+  * Update CloudFormation specs to `87.0.0` (#2353)
+  * Add support for region `me-central-1` (#2351)
+  * Disable the SAM validation checks when transforming a template (#2350)
+- from version 0.63.2
+  * Patch in attributes for `AWS::RDS::DBCluster` (#2344)
+- from version 0.63.1
+  * Update CloudFormation specs to `86.0.0` (#2335)
+- from version 0.63.0
+  * support for AWS::LanguageExtensions transform features including
+    DeletionPolicy,  UpdateReplacePolicy, Fn::Length and Fn::ToJsonString
+    docs (#2339)
+  * Add rule E1030 to validate Fn::Length is configured correctly (#2339)
+  * Add rule E1031 to validate Fn::Length is configured correctly (#2339)
+- from version 0.62.0
+  * Create new API to allow for easier integration of using cfn-lint as a
+    library docs (#2285)
+  * Update CloudFormation specs to `85.0.0` (#2324)
+  * Update Lambda deprecation dates (#2327)
+  * Fix an issue with `RulesCollection` in which configurations would carry
+    over between templates (#2331)
+  * Add used rules into `RulesCollection` so we can print all the used rules
+    in JUnit and Pretty formatting (#2330)
+  * Update error message on E3002 (#2059)
+  * Update error description on E1020 (#2329)
+- from version 0.61.5
+  * Update CloudFormation specs to `83.0.0` (#2316)
+  * Update rule I3100 have proper path to resource (#2309)
+  * Update rule E2503 by removing `AllowedValues` for
+    `AWS::ElasticLoadBalancingV2::LoadBalancer.LoadBalancerAttribute` (#2184)
+  * Update rule E3002 to include `<CommaDelimitedList` in SSM parameters (#2320)
+  * Update rule I3013 to not flag on Aurora instances (#2317)
+- from version 0.61.4
+  * Update CloudFormation specs to `81.1.0` (#2308)
+- from version 0.61.3
+  * Update CloudFormation specs to `81.0.0` (#2306)
+  * Add `AWS::EC2::KeyPair` as a `Ref` for the value type `KeyPair` (#2305)
+- from version 0.61.2
+  * Update CloudFormation specs to `78.1.0` (#2292)
+  * Add `utf-8` encoding to all `open` calls (#2298)
+- from version 0.61.1
+  * Update CloudFormation specs to `76.0.0` (#2282)
+  * Suppress `PendingDeprecationWarning` for `pydot` in
+    the `pygraphviz` package (#2289)
+  * Update descriptiosn on rule E1021, E1015, E1016, E1020, and E1017 (#2284)
+  * Update rule E3033 to ignore dynamic references for string length (#2281)
+- from version 0.61.0
+  * New rule I3100 to validate new generation instance types are used (#2267)
+  * Update CloudFormation specs to `73.1.0` (#2275)
+  * Add `AWS::OpenSearchService::Domain.AccessPolicies` to IAM rules (#2269)
+  * Reduce the calculated scenarios used when conditions match and one condition
+    has many variants (#2277)
+  * Update SARIF output to point to the general "Rules" documentation when a
+    rule doesn't specify a `source_url` (#2276)
+- Refresh patches for new version
+  * skip-tests-require-network.patch
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
 Thu May 26 12:28:47 UTC 2022 - pgajdos@suse.com
 
 - version update to 0.60.1
