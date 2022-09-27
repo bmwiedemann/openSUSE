@@ -513,4 +513,16 @@ Features
     - Merge PR #668 from Cristian Rodríguez: Set IP_BIND_ADDRESS_NO_PORT on</comment>
     <requestid>992044</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>a3edf7d80299ef452811b1658704d54e</srcmd5>
+    <version>1.16.3</version>
+    <time>1664302395</time>
+    <user>RBrownFactory</user>
+    <comment>- update to 1.16.3
+  fixes Non-Responsive Delegation Attack (CVE-2022-3204)
+
+- update to 1.16.3
+  fixes Non-Responsive Delegation Attack (CVE-2022-3204)</comment>
+    <requestid>1006106</requestid>
+  </revision>
 </revisionlist>

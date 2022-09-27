@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 21 18:36:29 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- update to 1.16.3
+  fixes Non-Responsive Delegation Attack (CVE-2022-3204)
+
+-------------------------------------------------------------------
 Mon Aug  1 13:05:10 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - update to 1.16.2 (boo#1202031 boo#1202033)

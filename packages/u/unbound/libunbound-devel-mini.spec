@@ -22,7 +22,7 @@
 %bcond_without hardened_build
 #
 Name:           libunbound-devel-mini
-Version:        1.16.2
+Version:        1.16.3
 Release:        0
 Summary:        Just a devel package for build loops
 License:        BSD-3-Clause
