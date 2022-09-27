@@ -75,7 +75,11 @@ sh ./configure --prefix=%{_prefix} \
 %make_build -C src
 
 %check
+# io_uring syscalls not supported as of qemu 7.0.0 and would test the host
+# kernel anyway not the target kernel..
+%if !0%{?qemu_user_space_build}
 /usr/bin/make runtests
+%endif
 
 %install
 %make_install

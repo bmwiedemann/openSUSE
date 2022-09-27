@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Sep 25 14:34:41 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- skip checks on qemu_linux_user builds 
+
+-------------------------------------------------------------------
 Tue Aug 16 10:53:40 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
 
 - add test-xattr-don-t-rely-on-NUL-termination.patch (bsc#1202413)
