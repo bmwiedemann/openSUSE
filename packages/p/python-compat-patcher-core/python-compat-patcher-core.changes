@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep 26 23:20:56 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to Version 2.1
+  * Debug CI
+  * Fix Trove classifiers of package
+
+- Update to Version 2.0
+  * Fix encoding and error reporting bugs
+  * Extend test coverage to Python3.10
+  * Drop support for Python2.7 and Python3.5 
+
+-------------------------------------------------------------------
 Mon Dec 13 13:35:12 UTC 2021 - pgajdos@suse.com
 
 - fix tests, do not require pytest-runner
