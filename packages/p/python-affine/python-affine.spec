@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-affine
-Version:        2.3.0
+Version:        2.3.1
 Release:        0
 Summary:        Affine transformation matrices
 License:        BSD-3-Clause

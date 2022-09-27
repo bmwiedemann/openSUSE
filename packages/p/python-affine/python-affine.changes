@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Sep 24 10:30:37 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.1:
+  * Return NotImplemented for both ValueError and TypeError in __mul__ to
+    support fallback to __rmul__ in more cases (gh-71).
+
+-------------------------------------------------------------------
 Sun Jan 16 16:19:38 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Don't check code coverage
