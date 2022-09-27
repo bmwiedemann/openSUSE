@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Sep 25 03:08:13 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.38
+   see /usr/share/doc/packages/perl-Test-Most/Changes
+
+  0.38    2022-09-24
+          - Stop permanently altering Test::More's export list (RT#73299)
+            (thanks to 2shortplanks for this)
+
+-------------------------------------------------------------------
 Sun Apr  5 03:11:30 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 0.37
