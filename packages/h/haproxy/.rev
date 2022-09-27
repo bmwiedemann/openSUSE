@@ -1227,4 +1227,12 @@
   * BUG/MINOR: ssl/cli: error when the ca-file is empty</comment>
     <requestid>998660</requestid>
   </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>24d6d921ae1d4fcce67fb19f865804cb</srcmd5>
+    <version>2.6.6+git0.274d1a4df</version>
+    <time>1664302400</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 2.6.6+git0.274d1a4df:</comment>
+    <requestid>1006114</requestid>
+  </revision>
 </revisionlist>
