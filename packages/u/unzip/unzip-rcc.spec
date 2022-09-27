@@ -60,6 +60,11 @@ Patch19:        CVE-2018-1000035.patch
 Patch20:        Fix-CVE-2014-9636-unzip-buffer-overflow.patch
 Patch21:        unzip60-total_disks_zero.patch
 Patch22:        unzip60-cfactorstr_overflow.patch
+Patch23:        unzip-initialize-the-symlink-flag.patch
+# PATCH-FIX-UPSTREAM danilo.spinella@suse.com CVE-2022-0530 bsc#1196177
+Patch24:        CVE-2022-0530.patch
+# PATCH-FIX-UPSTREAM danilo.spinella@suse.com CVE-2022-0529 bsc#1196180
+Patch25:        CVE-2022-0529.patch
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     %{_name}-doc
@@ -75,6 +80,7 @@ functionality. This version can also extract encrypted archives.
 %package doc
 Summary:        Documentation files for unzip
 Group:          Productivity/Archiving/Compression
+BuildArch:      noarch
 
 %description doc
 UnZip is an extraction utility for archives compressed in .zip format
@@ -106,6 +112,9 @@ functionality. This version can also extract encrypted archives.
 %patch20 -p1
 %patch21 -p1
 %patch22 -p1
+%patch23 -p1
+%patch24 -p1
+%patch25 -p1
 
 %build
 export RPM_OPT_FLAGS="%{optflags} \

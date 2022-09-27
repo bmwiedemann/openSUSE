@@ -1,8 +1,35 @@
 -------------------------------------------------------------------
+Mon Sep 26 09:17:32 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Build unzip-rcc using multibuild and update unzip-rcc.spec file
+
+-------------------------------------------------------------------
+Wed Sep 21 09:27:59 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Fix CVE-2022-0530, SIGSEGV during the conversion of an utf-8 string
+  to a local string (CVE-2022-0530, bsc#1196177)
+  * CVE-2022-0530.patch
+- Fix CVE-2022-0529, Heap out-of-bound writes and reads during
+  conversion of wide string to local string (CVE-2022-0529, bsc#1196180)
+  * CVE-2022-0529.patch
+
+-------------------------------------------------------------------
+Thu Sep  9 11:30:06 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add patch to fix issue with some files being incorrectly
+  detected as symlinks (boo#1190273)
+  + unzip-initialize-the-symlink-flag.patch
+
+-------------------------------------------------------------------
+Fri May 22 09:27:01 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
+
+- Change unzip-doc to noarch
+
+-------------------------------------------------------------------
 Thu Oct 11 14:49:01 UTC 2018 - kstreitova@suse.com
 
 - Add unzip60-cfactorstr_overflow.patch to fix buffer overflow in
-  list.c [bsc#1110194]
+  list.c [bsc#1110194] [CVE-2018-18384]
 
 -------------------------------------------------------------------
 Wed Jun 27 11:39:10 UTC 2018 - kstreitova@suse.com
