@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Sep 26 14:09:08 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Disable more tests that fails for i586, test_dump_option
+
+-------------------------------------------------------------------
+Mon Sep 26 13:14:11 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Avoid test_type1mm_inputs tests because it still fails for i586
+  gh#adobe-type-tools/afdko#1163
+
+-------------------------------------------------------------------
+Mon Sep 26 11:40:00 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to v3. Update to v3.9.1 
+  * [CMake] Link LibXML2 statically for Linux for bug fix (#1527)
+  * [makeotf][tx] Fix some linux compile problems with "bool" (#1524)
+  * [tx] Replace UFO lib.plist parsing with libxml2 (#1523)
+- 3.9.0 (released 2022-06-23)
+  * [tx] Replace UFO fontinfo.plist parsing with libxml2 (#1515, #1517, #1518, #1519)
+  * [makeotf] Copy va_list for second use (and add va_end's to avoid leaking) (#1512)
+  * [requirements] updated dependencies
+- 3.8.3 (released 2022-05-09)
+  * [requirements] updated dependencies
+  * [docs] Add links to previously opened Windows build issues (#1505)
+  * [docs] Fix line wrap in feature file spec (#1509)
+  * [ci] Enable Codecov informational checks (#1501)
+- Add patch to use-system-libxml2.patch to build with system installed libxml2
+- Remove some tests that are failing
+
+-------------------------------------------------------------------
 Tue Apr 12 09:08:44 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to v3.8.2

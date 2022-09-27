@@ -109,4 +109,30 @@
     <comment></comment>
     <requestid>969764</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>05cb44c88bb9a0ebad7fa0512a743d21</srcmd5>
+    <version>3.9.1</version>
+    <time>1664302438</time>
+    <user>RBrownFactory</user>
+    <comment>- Disable more tests that fails for i586, test_dump_option
+- Avoid test_type1mm_inputs tests because it still fails for i586
+  gh#adobe-type-tools/afdko#1163
+- Update to v3. Update to v3.9.1 
+  * [CMake] Link LibXML2 statically for Linux for bug fix (#1527)
+  * [makeotf][tx] Fix some linux compile problems with &quot;bool&quot; (#1524)
+  * [tx] Replace UFO lib.plist parsing with libxml2 (#1523)
+- 3.9.0 (released 2022-06-23)
+  * [tx] Replace UFO fontinfo.plist parsing with libxml2 (#1515, #1517, #1518, #1519)
+  * [makeotf] Copy va_list for second use (and add va_end's to avoid leaking) (#1512)
+  * [requirements] updated dependencies
+- 3.8.3 (released 2022-05-09)
+  * [requirements] updated dependencies
+  * [docs] Add links to previously opened Windows build issues (#1505)
+  * [docs] Fix line wrap in feature file spec (#1509)
+  * [ci] Enable Codecov informational checks (#1501)
+- Add patch to use-system-libxml2.patch to build with system installed libxml2
+- Remove some tests that are failing
+</comment>
+    <requestid>1006297</requestid>
+  </revision>
 </revisionlist>
