@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 23 09:05:44 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.1+20220923.9651e0fa:
+  * Dev: unittest: Adjust unit test based on prevous changes
+  * Dev: behave: Add functional test based on previous commit
+  * Fix: ui_cluster: 'crm cluster stop' failed to stop services (bsc#1203601)
+
+-------------------------------------------------------------------
 Wed Sep 21 10:23:36 UTC 2022 - XLiang@suse.com
 
 - Update to version 4.4.1+20220921.dbe833c5:

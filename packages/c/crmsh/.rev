@@ -2649,4 +2649,12 @@ and fixes bnc#880052</comment>
     <comment></comment>
     <requestid>1005173</requestid>
   </revision>
+  <revision rev="260" vrev="1">
+    <srcmd5>b3586949c8bee327fdf8e7f6e1a5e50a</srcmd5>
+    <version>4.4.1+20220923.9651e0fa</version>
+    <time>1664302448</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1006343</requestid>
+  </revision>
 </revisionlist>
