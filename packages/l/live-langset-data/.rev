@@ -142,4 +142,12 @@
     <comment>- Don't restart systemd-vconsole-setup.service explicitly (boo#1187618)</comment>
     <requestid>902792</requestid>
   </revision>
+  <revision rev="17" vrev="15">
+    <srcmd5>1de22ff4c80b25310aa2ad1f1b1f276f</srcmd5>
+    <version>2.0</version>
+    <time>1664302401</time>
+    <user>RBrownFactory</user>
+    <comment>- Parse lang=/keytable= options more explicitly (boo#1202925)</comment>
+    <requestid>1006120</requestid>
+  </revision>
 </revisionlist>

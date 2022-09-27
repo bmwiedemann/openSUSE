@@ -9,17 +9,22 @@ if [ $# != 0 ]; then
 	keytable=$2
 else
 	lang=en_US
+	keytable=
 	for o in $(cat /proc/cmdline); do
 		case $o in
 		lang=*)
-			eval $o
+			lang="${o#*=}"
 			;;
 		keytable=*)
-			eval $o
+			keytable="${o#*=}"
 			;;
 		esac
 	done
 fi
+
+# Avoid directory traversal through /
+lang="${lang//\/}"
+keytable="${keytable//\/}"
 
 # Strip potential .UTF-8 suffix
 lang="${lang%%.*}"
@@ -83,6 +88,6 @@ fi
 [ -n "$TIMEZONE" ] && [ -f "/usr/share/zoneinfo/$TIMEZONE" ] && rm -f /etc/localtime && ln -s /usr/share/zoneinfo/$TIMEZONE /etc/localtime
 
 # Override with the cmdline provided one, if possible
-[ -z "$keytable" ] || localectl set-keymap $keytable
+[ -z "$keytable" ] || localectl set-keymap -- "$keytable"
 
 echo "$lang" > /var/lib/zypp/RequestedLocales

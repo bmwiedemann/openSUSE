@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 26 13:54:57 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Parse lang=/keytable= options more explicitly (boo#1202925)
+
+-------------------------------------------------------------------
 Mon Jun 28 10:16:55 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Don't restart systemd-vconsole-setup.service explicitly (boo#1187618)
