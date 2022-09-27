@@ -17,14 +17,14 @@
 
 
 Name:           mold
-Version:        1.4.2
+Version:        1.5.0
 Release:        0
 Summary:        A Modern Linker (mold)
 License:        AGPL-3.0-or-later
 Group:          Development/Tools/Building
 URL:            https://github.com/rui314/mold
 Source:         https://github.com/rui314/mold/archive/v%{version}/mold-%{version}.tar.gz
-ExclusiveArch:  aarch64 %arm %ix86 x86_64 aarch64 riscv64
+ExclusiveArch:  aarch64 %arm %ix86 x86_64 aarch64 riscv64 ppc64le
 BuildRequires:  cmake
 %if %{suse_version} < 1550
 BuildRequires:  gcc10-c++
@@ -42,16 +42,18 @@ BuildRequires:  gcc-32bit
 %endif
 BuildRequires:  gdb
 BuildRequires:  glibc-devel-static
+BuildRequires:  libzstd-devel
 BuildRequires:  openssl-devel
 BuildRequires:  valgrind
 BuildRequires:  xxhash-devel
 BuildRequires:  zlib-devel
+BuildRequires:  zstd
 PreReq:         update-alternatives
 
 %if %{suse_version} < 1550
-%define build_args STRIP=true SYSTEM_XXHASH=1 USE_MIMALLOC=0
+%define build_args STRIP=true SYSTEM_XXHASH=1 USE_MIMALLOC=0 SYSTEM_ZSTD=1
 %else
-%define build_args STRIP=true SYSTEM_TBB=1 SYSTEM_XXHASH=1 USE_MIMALLOC=0
+%define build_args STRIP=true SYSTEM_TBB=1 SYSTEM_XXHASH=1 USE_MIMALLOC=0 SYSTEM_ZSTD=1
 %endif
 
 %description

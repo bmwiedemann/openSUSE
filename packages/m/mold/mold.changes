@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Tue Sep 27 07:10:17 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update to version 1.5.0
+  * PPC64LE and SPARC64 are now supported as new targets. They haven't yet been as
+    well tested as other targets, but they are already able to link mold itself on
+    these platforms. (Note that PPC64LE is very unlikely to work on the most recent
+    POWER10 machines as we didn't have a chance to test it due to a limited
+    availability (POWER10 was released in 2021). If you can support us on this
+    matter, please contact us. We also accept donations, so please consider
+    supporting our project!)
+  * RV32BE and RV64BE (32-bit and 64-bit big-endian RISC-V) are now supported as
+    experimental targets. RISC-V is usually little-endian, but there exists a
+    big-endian RISC-V as an extension. You can make gcc to emit code for big-endian
+    RISC-V by passing -mbig-endian. mold can now link object files generated with
+    that option.
+  * --compress-debug-sections=zstd is now supported. This is an option to compress
+    debug info embedded to an output file with Zstandard compression algorithm.
+    Compared to the existing --compress-debug-sections=zlib, zstd is faster and
+    gives a higher compression ratio. You probably can't start using zstd
+    compression today though, because other tools such as gdb may not be able to
+    read zstd-compressed debug info yet. But adding this option early makes mold
+    future-proof. (ede7a5a)
+  * mold no longer aligns loadable segments to page boundaries to reduce output file
+    size. Previously, we allocated holes between loadable segments. The saving by
+    this change is most visible for small programs. For example, a "hello world"
+    program used to be ~18 KiB on x86-64. It's now 7.2 KiB. (2941d75)
+  * Bug fixes and compatibility improvements
+  * [RISCV] We optimized code so that the link speed for RISC-V is now comparable to
+    the other targets. As an example, linking mold itself (~150 MiB in size) for
+    RV64 used to take ~45 seconds on a simulated 16-core machine. It now takes only
+    ~0.25 seconds. (3ab5489)
+  * mold used to create more than one .rodata section under a certain condition.
+    It's not technically wrong but confused Valgrind. This issue has been resolved.
+    (25c7aee)
+  * [ARM32] Previously, mold failed to promote remaining undefined symbols to
+    dynamic symbols if symbols are undefined weak. That caused a link failure for
+    libxml (#660). This issue has been resolved. (72e26d9)
+  * mold didn't copy symbol types when creating symbol aliases for the --defsym
+    option. (8c7f31c)
+  * --compress-debug-sections=zlib-gnu has been removed. LLVM lld removed that
+    option too as there seems to be no usage of the flag.
+- Enable ppc64le and use system zstd library as package dependency.
+
+-------------------------------------------------------------------
 Sun Sep  4 06:29:52 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Update to version 1.4.2
