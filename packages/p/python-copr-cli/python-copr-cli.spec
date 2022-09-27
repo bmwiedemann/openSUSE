@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-copr-cli
-Version:        1.100
+Version:        1.103
 Release:        0
 Summary:        Copr cli
 License:        GPL-2.0-or-later
