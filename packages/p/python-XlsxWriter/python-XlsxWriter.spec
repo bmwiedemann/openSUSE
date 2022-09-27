@@ -1,7 +1,7 @@
 #
 # spec file for package python-XlsxWriter
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         oldpython python
 Name:           python-XlsxWriter
-Version:        1.3.7
+Version:        3.0.3
 Release:        0
 Summary:        Python module for writing OOXML spreadsheet files
 License:        BSD-2-Clause
@@ -31,7 +31,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Provides:       python3-xlsxwriter = %{version}
 Obsoletes:      python3-xlsxwriter < %{version}
 BuildArch:      noarch

@@ -1,4 +1,89 @@
 -------------------------------------------------------------------
+Mon Sep 26 03:06:49 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 3.0.3:
+  * Added :func:`print_black_and_white` worksheet method to set "Black
+    and White" print options.
+
+- changes from version 3.0.2:
+  * Added :func:`set_top_left_cell` worksheet method to position the
+    first visible cell in a worksheet.
+
+- changes from version 3.0.1:
+  * Add python_requires version to setup.py to help pip find the
+    correct matching version for Python 2 and 3.
+
+- changes from version 3.0.0:
+  * This is the first Python 3 only version of XlsxWriter. It is
+    approximately 10-15% faster than the Python2/3 version.  Python 2
+    users should use XlsxWriter version 2.0.0, see below.
+
+- changes from version 2.0.0:
+  * This is the last XlsxWriter release to support Python 2. From now
+    bug fixes and new features will only be available for Python
+    3. The deprecation notice for Python 2 support in XlsxWriter has
+    been in place since May 2020 and the Python community support for
+    Python 2 ended in January 2020. Downloads of XlsxWriter for Python
+    2 is currently less than 6% of all downloads of the library, and
+    decreasing month by month.  Python 2 users should still be able to
+    install versions of XlsxWriter up to this release but not any
+    releases afterwards.
+
+- changes from version 1.4.5:
+  * Added Description/Alt Text and Decorative accessibility options
+    for charts, textboxes and buttons. These options were already
+    available for images.
+
+- changes from version 1.4.4:
+  * Added some performance improvements. Performance for larger files
+    should be 5-10% better.
+
+- changes from version 1.4.3:
+  * Added support for background images in worksheets. See
+    :func:`set_background` and :ref:`ex_background`.
+
+- changes from version 1.4.2 :
+  * Added support for GIF image files (and in Excel 365, animated GIF
+    files).
+
+- changes from version 1.4.1:
+  * Added support for dynamic arrays and new Excel 365 functions like
+    UNIQUE and FILTER. See :func:`write_dynamic_array_formula`,
+    :ref:`formula_dynamic_arrays` and :ref:`ex_dynamic_arrays`.
+  * Added constructor option "use_future_functions" to enable newer
+    Excel "future" functions in Formulas. See :ref:`formula_future`,
+    and the :func:`Workbook` constructor.
+
+- changes from version 1.4.0:
+  * Added fix for issue for where a y_axis font rotation of 0 was
+    ignored.
+
+- changes from version 1.3.9 :
+  * Added option to set row heights and column widths in pixels via
+    the :func:`set_row_pixels` and :func:`set_column_pixels` methods.
+
+- changes from version 1.3.8 :
+  * Added ability to add accessibility options "description" and
+    "decorative" to images via :func:`insert_image`. :feature:`768`.
+  * Added fix for datetime.timedelta values that exceed the Excel 1900
+    leap day (timedeltas greater than 59 days, in hours). This is a
+    backward incompatible change. :issue:`731`.
+  * Added the worksheet :func:`read_only_recommended` method to set
+    the Excel "Read-only Recommended" option that is available when
+    saving a file.  :feature:`784`.
+  * Fixed issue where temp files used in `constant_memory` mode
+    weren't closed/deleted if the workbook object was garbage
+    collected. :issue:`764`.
+  * Fixed issue where pattern formats without colors were given a
+    default black fill color. :issue:`790`.
+  * Added option to set a chart crossing to 'min' as well as the
+    existing 'max' option. The 'min' option isn't available in the
+    Excel interface but can be enabled via VBA. :feature:`773`.
+
+-------------------------------------------------------------------
 Mon Feb  8 08:51:19 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - %ifpython3 does not work with multi-build python
