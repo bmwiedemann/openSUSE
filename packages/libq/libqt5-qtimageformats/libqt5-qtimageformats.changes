@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 26 10:33:56 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.6+kde4, rebased upstream:
+   * jp2: use new APIs for jasper 3
+   * Patch bundled libtiff to compile on Integrity
+   * Update bundled libtiff to version 4.3.0
+
+-------------------------------------------------------------------
 Mon Jun 27 13:09:29 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.5+kde3, rebased upstream:
