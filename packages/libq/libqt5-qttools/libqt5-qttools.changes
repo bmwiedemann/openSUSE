@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 26 10:34:58 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.6+kde1, rebased upstream:
+   * windeployqt: Account for debug version of ICU library when deploying
+   * Doc: Fix a typo in the "Introduction to QDoc" documentation page
+   * Doc: Remove mention of custom filters
+   * Examples: Don't use QDir::separator() in internal paths
+   * Assistant: Make QResultWidget linkColor stylable
+
+-------------------------------------------------------------------
 Mon Jun 27 13:10:31 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.5+kde1, rebased upstream:
