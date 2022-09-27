@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Sep 27 12:05:43 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.12.1:
+  * fix: Pulls Fulcio root and intermediate when --certificate-chain is not
+    passed into verify-blob command. The v1.12.0 release introduced a
+    regression: when COSIGN_EXPERIMENTAL was not set, cosign verify-blob would
+    check a --certificate (without a --certificate-chain provided) against the
+    operating system root CA bundle. In this release, Cosign checks the
+    certificate against Fulcio's CA root instead (restoring the earlier
+    behavior).
+  * fix: fix cert chain validation for verify-blob in non-experimental mode
+  * fix: add COSIGN_EXPERIMENTAL=1 for verify-bloba
+  * Fix BYO-root with intermediate to fetch intermediates from annotation
+  * fix: fixing breaking changes in rekor v1.12.0 upgrade
+- use go-modules service to generate the vendor.tar and use zstd
+
+-------------------------------------------------------------------
 Thu Sep 15 12:14:37 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - updated to 1.12.0 (jsc#SLE-23879)

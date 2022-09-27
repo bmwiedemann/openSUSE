@@ -17,18 +17,18 @@
 
 
 Name:           cosign
-Version:        1.12.0
+Version:        1.12.1
 Release:        0
-%define revision 8483d6c71f153f38f237ba79c88d0fda6306e6e3
+%define revision 0baa044bea61e7c16d56023be20ead3d9204b24a
 Summary:        Container Signing, Verification and Storage in an OCI registry
 License:        Apache-2.0
 URL:            https://github.com/sigstore/cosign
 Source:         https://github.com/sigstore/cosign/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        vendor.tar.bz2
+Source1:        vendor.tar.zst
 BuildRequires:  go1.18
 BuildRequires:  golang-packaging
+BuildRequires:  zstd
 BuildRequires:  golang(API)
-%{go_nostrip}
 
 %description
 Cosign aims to make signatures invisible infrastructure.
@@ -39,7 +39,6 @@ Cosign supports:
 - Bring-your-own PKI
 - Our free OIDC PKI (Fulcio)
 - Built-in binary transparency and timestamping service (Rekor)
-
 
 %prep
 %autosetup -p1 -a1
