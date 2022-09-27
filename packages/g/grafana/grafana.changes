@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Sep 21 11:37:55 UTC 2022 - witold.bedyk@suse.com
+
+- Update to version 8.5.13:
+  + Features and enhancements:
+    * Plugins: Expose emotion/react to plugins to prevent load
+      failures
+  + Bug fix:
+    * AuthNZ: Security fixes for (bsc#1203596, CVE-2022-36062) and
+      CVE-2022-35957
+
+- Update to version 8.5.11:
+  + Features and enhancements:
+    * Rendering: Add support for renderer token
+    * Alerting: AlertingProxy to elevate permissions for request
+      forwarded to data proxy when RBAC enabled
+
+-------------------------------------------------------------------
 Mon Aug 25 09:00:00 UTC 2022 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to version 8.5.10
@@ -8,9 +25,6 @@ Mon Aug 25 09:00:00 UTC 2022 - Marius Kittler <marius.kittler@suse.com>
   + Bug fixes (8.5.9):
     * Security: Fixes for CVE-2022-31107 and CVE-2022-31097.
       #52238, @xlson
-  + Bug fixes (8.4.10):
-    * Security: Security: Fixes for CVE-2022-31107 and
-      CVE-2022-31097. #52218, @IevaVasiljeva
   + Bug fixes (8.5.6):
     * Dashboard: Fixes random scrolling on time range change.
       #50379, @torkelo
@@ -50,16 +64,12 @@ Mon Aug 25 09:00:00 UTC 2022 - Marius Kittler <marius.kittler@suse.com>
     * LokI: use millisecond steps in Grafana 8.5.x. #48630, @gabor
     * Plugins: Introduce HTTP 207 Multi Status response to
       api/ds/query. #48550, @wbrowne
-    * Reporting: Improve PDF file size using grid layout.
-      (Enterprise)
     * Transformations: Add an All Unique Values Reducer. #48653,
       @josiahg
     * Transformers: avoid error when the ExtractFields source field
       is missing. #49368, @wardbekker
     * [v8.5.x] Alerting: Update migration to migrate only alerts
       that belong to existing org\dashboard. #49199, @grafanabot
-    * [v8.5.x] Reporting: Improve PDF file size using grid layout.
-      (Enterprise)
   + Bug fixes (8.5.4):
     * Alerting: Allow disabling override timings for notification
       policies. #48648, @gillesdemey
@@ -283,9 +293,6 @@ Mon Aug 25 09:00:00 UTC 2022 - Marius Kittler <marius.kittler@suse.com>
       middleware. #47183, @marefr
     * Elasticsearch: Respect maxConcurrentShardRequests datasource
       setting. #47120, @alexandrst88
-  + Bug fixes (8.4.6):
-    * Security: Fixes CVE-2022-24812. For more information, see our
-      blog
   + Features and enhancements (8.4.5):
     * Instrumentation: Make backend plugin metrics endpoints
       available with optional authentication. #46467, @marefr
