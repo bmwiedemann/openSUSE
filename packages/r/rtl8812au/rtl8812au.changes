@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep 27 06:59:36 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Disable the service to submit the package to Factory
+- Add missing changelog entry
+- Update version to 5.13.6+git20220905.a8450b0
+
+-------------------------------------------------------------------
+Tue Sep 27 06:56:53 UTC 2022 - Victor Kwan <vkwan8@uwo.ca>
+
+- Update version to 5.13.6+git20220821.7aa0e0c
+- Fix links to point to the right repository
+- Enable the service
+
+-------------------------------------------------------------------
 Fri Apr  8 06:16:25 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
 
 - Move upstream repository to

@@ -19,12 +19,12 @@
 %{?!kernel_module_directory:%define kernel_module_directory /lib/modules}
 
 Name:           rtl8812au
-Version:        5.13.6+git20220308.0ae0e77
+Version:        5.13.6+git20220905.a8450b0
 Release:        0
 Summary:        Kernel driver for Realtek 802.11ac 8812au wifi cards
 License:        GPL-2.0-only
 Group:          System/Kernel
-URL:            https://github.com/gordboy/rtl8812au-5.9.3.2
+URL:            https://github.com/morrownr/8812au-20210629
 ExcludeArch:    s390x
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-preamble
@@ -45,10 +45,10 @@ BuildRequires:  module-init-tools
 %description
 Kernel driver for Realtek 802.11ac 8812au wifi cards
 
-The sources were obtained from https://github.com/gordboy/rtl8812au, which adaptes the official driver
+The sources were obtained from https://github.com/morrownr/8812au-20210629, which adaptes the official driver
 released by Realtek to build on recent kernels.
 
-The previous sources were obtained from https://github.com/diederikdehaas/rtl8812AU and
+The previous sources were obtained from https://github.com/morrownr/8812au-20210629, https://github.com/diederikdehaas/rtl8812AU and
 https://github.com/maurossi/rtl8812au/ .
 
 %package KMP
@@ -61,7 +61,7 @@ Kernel driver for Realtek 802.11ac 8812au wifi cards
 The sources were obtained from https://github.com/gordboy/rtl8812au, which adaptes the official driver
 released by Realtek to build on recent kernels.
 
-The previous sources were obtained from https://github.com/diederikdehaas/rtl8812AU and
+The previous sources were obtained from https://github.com/morrownr/8812au-20210629, https://github.com/diederikdehaas/rtl8812AU and
 https://github.com/maurossi/rtl8812au/ .
 
 %prep

@@ -127,4 +127,18 @@
     <comment></comment>
     <requestid>967693</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d7d99a770289a6caaee4871ae025749c</srcmd5>
+    <version>5.13.6+git20220905.a8450b0</version>
+    <time>1664302452</time>
+    <user>RBrownFactory</user>
+    <comment>- Disable the service to submit the package to Factory
+- Add missing changelog entry
+- Update version to 5.13.6+git20220905.a8450b0
+
+- Update version to 5.13.6+git20220821.7aa0e0c
+- Fix links to point to the right repository
+- Enable the service</comment>
+    <requestid>1006363</requestid>
+  </revision>
 </revisionlist>
