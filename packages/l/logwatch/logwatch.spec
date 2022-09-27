@@ -1,7 +1,7 @@
 #
 # spec file for package logwatch
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,8 +30,10 @@ Source2:        Logwatch_Dmeventd_Setup_Files.tar.xz
 Source3:        ChangeLog
 Patch0:         logwatch-firewall.patch
 Patch2:         logwatch-timestamp_in_var.patch
-Patch3:	harden_logwatch.service.patch
-Patch4:	harden_logwatch_dmeventd.service.patch
+Patch3:         harden_logwatch.service.patch
+Patch4:         harden_logwatch_dmeventd.service.patch
+# PATCH-FIX-UPSTREAM https://sourceforge.net/p/logwatch/bugs/109/
+Patch5:         logwatch-7.5.5-egrep.patch
 Requires:       grep
 Requires:       mailx
 Requires:       perl
@@ -69,6 +71,7 @@ cp %{S:3} .
 sed -i -e 's,/usr/share/doc/logwatch-\*,%{_defaultdocdir}/logwatch,' logwatch.8
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 %build
 

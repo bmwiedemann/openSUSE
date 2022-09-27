@@ -346,4 +346,14 @@ positives from dmeventd when a long logwatch run is in progress (forwarded reque
     <comment></comment>
     <requestid>926510</requestid>
   </revision>
+  <revision rev="47" vrev="4">
+    <srcmd5>ab538815cf0797d4b01bf971173ade27</srcmd5>
+    <version>7.5.5</version>
+    <time>1664302569</time>
+    <user>RBrownFactory</user>
+    <comment>- fix warnings due to GNU grep 3.8 deprecation boo#1203665
+  add logwatch-7.5.5-egrep.patch
+</comment>
+    <requestid>1006457</requestid>
+  </revision>
 </revisionlist>

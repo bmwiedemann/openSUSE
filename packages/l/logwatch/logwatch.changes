@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 22 19:55:37 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix warnings due to GNU grep 3.8 deprecation boo#1203665
+  add logwatch-7.5.5-egrep.patch
+
+-------------------------------------------------------------------
 Tue Oct  5 14:26:13 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
