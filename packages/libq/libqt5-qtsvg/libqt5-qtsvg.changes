@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 26 10:34:54 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.6+kde9, rebased upstream:
+   * Fix assert with wrong number of argument to animateTransform
+   * Avoid undefined behavior when painter transform goes oob
+
+-------------------------------------------------------------------
 Mon Jun 27 13:07:25 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.5+kde10, rebased upstream:

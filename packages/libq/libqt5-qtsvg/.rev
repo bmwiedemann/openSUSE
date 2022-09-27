@@ -414,4 +414,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment>Qt 5.15.5 with patch collection + qtscript 5.15.10 (forwarded request 985459 from favogt)</comment>
     <requestid>985494</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>6e43a3630daf1fca83bf56d973b7258b</srcmd5>
+    <version>5.15.6+kde9</version>
+    <time>1664302179</time>
+    <user>RBrownFactory</user>
+    <comment>Qt 5.15.6, untested. (forwarded request 1006197 from Vogtinator)</comment>
+    <requestid>1006232</requestid>
+  </revision>
 </revisionlist>
