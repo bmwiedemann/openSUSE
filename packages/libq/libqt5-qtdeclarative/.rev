@@ -642,4 +642,12 @@ depends on sr#251413</comment>
     <comment>Qt 5.15.5 with patch collection + qtscript 5.15.10 (forwarded request 985459 from favogt)</comment>
     <requestid>985474</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>fb8f249f7c89d5b5333a2e70118f0fdf</srcmd5>
+    <version>5.15.6+kde20</version>
+    <time>1664302165</time>
+    <user>RBrownFactory</user>
+    <comment>Qt 5.15.6, untested. (forwarded request 1006197 from Vogtinator)</comment>
+    <requestid>1006214</requestid>
+  </revision>
 </revisionlist>

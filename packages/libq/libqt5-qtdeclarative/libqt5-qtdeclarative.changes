@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Sep 26 10:33:14 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.6+kde20, rebased upstream:
+   * Reset currentChanges if currentChanges is active when refilling listView
+   * QmlPreview: Protect QQmlPreviewFileLoader::load with another mutex
+   * Use QDateTime to get offsets for emscripten (wasm)
+   * Doc: fix AnchorChanges typo
+   * Avoid crash for deep aliases
+   * doc: Improve the Input Handlers index page
+   * DropArea: Tell qdoc that DropArea indeed inherits Item
+   * QV4::Heap::GeneratorObject: remove unused member
+   * Sync shadereffect materialType cleanup between renderloops
+   * Avoid infinite loop in designer support
+   * Pass the focus reason through to the control on mouse press
+   * Update QQuickImage's DPR if re-loading the image didn't
+   * Doc: Document matrix4x4 transformation functions
+   * Add tests of matrix4x4 transformation functions
+   * Handle QScreen::physicalDotsPerInchChanged changes for the initial screen
+   * Don't let PointerHandler steal mouse grab from keepMouseGrab layer
+   * Emit grabChanged() from DragHandler and PinchHandler
+   * Resolve data race on QQmlPropertyCache's arguments object
+   * Resolve data race in QQmlPropertyData in a minimally invasive way
+   * Register the QML builtin sequence metatypes only once
+   * doc: Improve QQuickItem::containmentMask() docs
+   * When setting the line dash to be an empty array reset the style to Solid
+   * Fix QtQtuickImage docs: correct properties' signatures
+   * crash fix - avoid wrong gcc optimization
+   * Fix warnings
+   * doc: Use DragHandler rather than MouseArea in the externaldrag snippet
+   * Ensure model is in context if required properties are not used
+   * QQuickItem::forceActiveFocus(): actually force active focus
+   * a11y: make links have pressAction first
+   * Set a11y role for QQuickTextInput to EditableText
+
+-------------------------------------------------------------------
 Mon Jun 27 12:41:54 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.5+kde19, rebased upstream:
