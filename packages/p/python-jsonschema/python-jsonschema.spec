@@ -25,7 +25,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-jsonschema
-Version:        4.8.0
+Version:        4.10.3
 Release:        0
 Summary:        An implementation of JSON-Schema validation for Python
 License:        MIT
@@ -45,10 +45,12 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module attrs >= 17.4.0}
 BuildRequires:  %{python_module importlib-metadata if %python-base < 3.8}
 BuildRequires:  %{python_module importlib-resources >= 1.4.0 if %python-base < 3.9}
+BuildRequires:  %{python_module pkgutil-resolve-name if %python-base < 3.9}
 BuildRequires:  %{python_module pyrsistent >= 0.14.0}
 BuildRequires:  %{python_module typing-extensions if %python-base < 3.8}
 # SECTION test
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module Twisted}
+BuildRequires:  git-core
 # /SECTION
 # SECTION extras (if available)
 #BuildRequires:  %%{python_module fqdn}
@@ -70,6 +72,7 @@ Requires:       python-typing-extensions
 %endif
 %if 0%{python_version_nodots} < 39
 Requires:       python-importlib-resources >= 1.4.0
+Requires:       python-pkgutil-resolve-name >= 1.3.10
 %endif
 %if %{with libalternatives}
 Requires:       alts
@@ -102,7 +105,11 @@ for Python (supporting 2.6+ including Python 3).
 %python_clone -a %{buildroot}%{_bindir}/jsonschema
 
 %check
-%pytest jsonschema/tests
+export JSON_SCHEMA_TEST_SUITE=$PWD/json
+%{python_expand # see tox.ini
+export PYTHONPATH=%{buildroot}%{$python_sitelib}
+$python -B -m twisted.trial jsonschema
+}
 
 %pre
 # If libalternatives is used: Removing old update-alternatives entries.

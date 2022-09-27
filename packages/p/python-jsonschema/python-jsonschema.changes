@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Mon Sep 26 05:00:38 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 4.10.3:
+  - jsonschema.validators.validator_for now properly uses the explicitly
+    provided default validator even if the $schema URI is not found.
+
+-------------------------------------------------------------------
+Mon Sep 26 04:56:19 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 4.10.2:
+  - Fix a second place where subclasses may have added attrs attributes (#982).
+
+-------------------------------------------------------------------
+Sun Sep 25 17:47:32 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 4.10.1:
+  - Fix Validator.evolve (and APIs like iter_errors which call it) for cases
+    where the validator class has been subclassed. Doing so wasn't intended to be
+    public API, but given it didn't warn or raise an error it's of course
+    understandable. The next release however will make it warn (and a future one
+    will make it error). If you need help migrating usage of inheriting from a
+    validator class feel free to open a discussion and I'll try to give some
+    guidance (#982).
+
+-------------------------------------------------------------------
+Sun Sep 25 17:37:47 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- accept SR#1005905 to convert this to using Twisted instead of
+  pytest
+
+-------------------------------------------------------------------
+Sun Sep 25 07:37:16 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 4.10.0:
+  Add support for referencing schemas with $ref across different versions
+  of the specification than the referrer's
+
+-------------------------------------------------------------------
+Sun Sep 25 07:34:59 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 4.9.1:
+  Update some documentation examples to use newer validator releases in their
+  sample code.
+
+-------------------------------------------------------------------
+Sun Sep 25 07:31:57 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 4.9.0:
+  - Fix relative $ref resolution when the base URI is a URN or other scheme (#544).
+  - pkgutil.resolve_name is now used to retrieve validators
+    provided on the command line. This function is only available on
+    3.9+, so 3.7 and 3.8 (which are still supported) now rely on the
+    pkgutil_resolve_name <https://pypi.org/project/pkgutil_resolve_name/>_
+    backport package. Note however that the CLI itself is due
+    to be deprecated shortly in favor of check-jsonschema
+    <https://github.com/python-jsonschema/check-jsonschema>_.
+
+-------------------------------------------------------------------
 Fri Jul 29 06:28:16 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 4.8.0:
