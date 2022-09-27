@@ -1,4 +1,4 @@
-From 81f14d2b93f2691a5887207b137fdffb7238d87b Mon Sep 17 00:00:00 2001
+From f39caba21d60cb55d0c807dccd8af8578ed6c8e8 Mon Sep 17 00:00:00 2001
 From: Antonio Larrosa <larrosa@kde.org>
 Date: Tue, 6 Jun 2017 16:34:32 +0200
 Subject: [PATCH] Add remote print queue support
@@ -73,7 +73,7 @@ index 1f9cbc4565..522cfc81b6 100644
          QFile::remove(tempFile);
      }
 diff --git a/src/plugins/printsupport/cups/qcupsprintersupport.cpp b/src/plugins/printsupport/cups/qcupsprintersupport.cpp
-index 1131d43f64..0806ba3abd 100644
+index 42a7a821f2..3fbfcd2425 100644
 --- a/src/plugins/printsupport/cups/qcupsprintersupport.cpp
 +++ b/src/plugins/printsupport/cups/qcupsprintersupport.cpp
 @@ -61,6 +61,35 @@
@@ -112,7 +112,7 @@ index 1131d43f64..0806ba3abd 100644
  QT_BEGIN_NAMESPACE
  
  #if QT_CONFIG(dialogbuttonbox)
-@@ -159,11 +188,26 @@ QPrintDevice QCupsPrinterSupport::createPrintDevice(const QString &id)
+@@ -159,17 +188,35 @@ QPrintDevice QCupsPrinterSupport::createPrintDevice(const QString &id)
  
  QStringList QCupsPrinterSupport::availablePrintDeviceIds() const
  {
@@ -141,11 +141,9 @@ index 1131d43f64..0806ba3abd 100644
 +    list.reserve(qt_cups_num_printers);
 +    for (int i = 0; i < qt_cups_num_printers; ++i) {
          QString printerId = QString::fromLocal8Bit(dests[i].name);
-         if (dests[i].instance) {
+         if (dests[i].instance)
              printerId += QLatin1Char('/') + QString::fromLocal8Bit(dests[i].instance);
-@@ -172,7 +216,10 @@ QStringList QCupsPrinterSupport::availablePrintDeviceIds() const
-             list.append(printerId);
-         }
+         list.append(printerId);
      }
 -    cupsFreeDests(count, dests);
 +    if (!enablePrinterDiscovery) {
@@ -155,7 +153,7 @@ index 1131d43f64..0806ba3abd 100644
      return list;
  }
  
-@@ -185,8 +232,18 @@ QString QCupsPrinterSupport::staticDefaultPrintDeviceId()
+@@ -182,8 +229,18 @@ QString QCupsPrinterSupport::staticDefaultPrintDeviceId()
  {
      QString printerId;
      cups_dest_t *dests;
@@ -176,7 +174,7 @@ index 1131d43f64..0806ba3abd 100644
          if (dests[i].is_default) {
              printerId = QString::fromLocal8Bit(dests[i].name);
              if (dests[i].instance) {
-@@ -195,8 +252,30 @@ QString QCupsPrinterSupport::staticDefaultPrintDeviceId()
+@@ -192,8 +249,30 @@ QString QCupsPrinterSupport::staticDefaultPrintDeviceId()
              }
          }
      }
