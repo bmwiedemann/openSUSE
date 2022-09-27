@@ -1,7 +1,7 @@
 #
 # spec file for package perl-PDF-Builder
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name PDF-Builder
 Name:           perl-PDF-Builder
-Version:        3.023
+Version:        3.024
 Release:        0
-Summary:        Facilitates the creation and modification of PDF files
 License:        LGPL-2.1-or-later
+Summary:        Facilitates the creation and modification of PDF files
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/P/PM/PMPERRY/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
@@ -58,5 +58,6 @@ make test
 
 %files -f %{name}.files
 %doc Changes CONTRIBUTING docs examples README.md
+%license LICENSE
 
 %changelog
