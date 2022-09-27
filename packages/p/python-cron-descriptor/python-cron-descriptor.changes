@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Sep 27 14:32:48 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to v1.2.30: 
+  * Fixes #31
+  * Fixes #36
+  * Implements #52 fix from upstream that fixes #37
+
+- Update to v1.2.27:
+  * Added Korean support by @hanqyu
+  * Added Persian support by @Davoodeh
+  * Added Tamil support by @sankarhari
+  * Added Japanese support by @tho-asterist
+  * fixes unclosed open translation file by Rafael Reuber
+  * various fixes around
+
+-------------------------------------------------------------------
 Wed Apr  1 14:40:50 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 1.2.24
