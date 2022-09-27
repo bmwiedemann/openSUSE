@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Sep 24 08:58:51 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add nautilus-revert-extra-large-thumbnails.patch: Revert
+  "thumbnails: Create larger thumbnails for higher density
+  displays"; patch taken from upstream merge request
+  (glgo#GNOME/nautilus#2487, boo#1203697).
+
+-------------------------------------------------------------------
 Sun Sep 18 07:42:05 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.0:
