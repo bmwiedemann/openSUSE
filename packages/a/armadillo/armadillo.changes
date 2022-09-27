@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep 27 01:27:30 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 11.4.0:
+  * extended pow() with various forms of element-wise power
+    operations.
+  * added find_nan() to find indices of NaN elements.
+  * faster handling of compound expressions by sum().
+
+-------------------------------------------------------------------
 Fri Sep  9 13:55:26 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 11.2.4:
