@@ -50,6 +50,7 @@ BuildRequires:  libQt5Widgets-private-headers-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libmimetic-devel
 BuildRequires:  libqt5-linguist
+BuildRequires:  pcre-devel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  udisks2-qt5-devel >= 5.0.0
 BuildRequires:  update-desktop-files
@@ -227,8 +228,7 @@ sed -i 's/OnlyShowIn=/X-DEEPIN-OnlyShowIn=/g' \
 
 # Remove zero-length files
 rm -rf %{buildroot}%{_datadir}/dde-file-manager/mimetypes/audio.mimetype \
-        %{buildroot}%{_datadir}/dde-file-manager/mimetypes/image.mimetype \
-        %{buildroot}%{_datadir}/dde-file-manager/templates/newTxt.txt
+        %{buildroot}%{_datadir}/dde-file-manager/mimetypes/image.mimetype
 
 # File all dbus service and policy profiles, workaround boo#1134132 and boo#1134131
 mkdir build
