@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 27 14:28:30 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 0.4.0:
+  * Fixed a decoding error by forcing 'utf-8' encoding when opening a file. (#5)
+  Misc
+  * Added typing
+  * Fixed multiple issues raised by flake8 and plugins
+  * Updated dependencies (both package and dev)
+  * Bumped Python versions to 3.7+
+
+-------------------------------------------------------------------
 Mon Oct 26 21:50:13 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Kill dephell dependency

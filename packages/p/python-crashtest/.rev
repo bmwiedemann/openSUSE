@@ -24,4 +24,19 @@
     <comment></comment>
     <requestid>844276</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>abc4f5359636103654c4e386a0fddfd0</srcmd5>
+    <version>0.4.0</version>
+    <time>1664302476</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 0.4.0:
+  * Fixed a decoding error by forcing 'utf-8' encoding when opening a file. (#5)
+  Misc
+  * Added typing
+  * Fixed multiple issues raised by flake8 and plugins
+  * Updated dependencies (both package and dev)
+  * Bumped Python versions to 3.7+
+</comment>
+    <requestid>1006431</requestid>
+  </revision>
 </revisionlist>
