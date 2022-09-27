@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 26 10:38:04 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.0:
+  * Moved @named_data into main ddt.py module so it can be imported
+  * Enable usage of Sequence in named_data.py
+  * @named_data decorator to give tests with @DaTa custom names
+  * End support for 3.5
+  * Add new Python versions support
+
+-------------------------------------------------------------------
 Mon Nov  8 10:11:16 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - add six dependency 

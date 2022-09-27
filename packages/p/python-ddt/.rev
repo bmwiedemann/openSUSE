@@ -142,4 +142,17 @@
     <comment>- add six dependency</comment>
     <requestid>930120</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>7aaef6c43b702d97b837b4a2df8fa34e</srcmd5>
+    <version>1.6.0</version>
+    <time>1664302394</time>
+    <user>RBrownFactory</user>
+    <comment>- update to 1.6.0:
+  * Moved @named_data into main ddt.py module so it can be imported
+  * Enable usage of Sequence in named_data.py
+  * @named_data decorator to give tests with @DaTa custom names
+  * End support for 3.5
+  * Add new Python versions support</comment>
+    <requestid>1006090</requestid>
+  </revision>
 </revisionlist>

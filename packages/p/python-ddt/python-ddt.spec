@@ -1,7 +1,7 @@
 #
 # spec file for package python-ddt
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-ddt
-Version:        1.4.4
+Version:        1.6.0
 Release:        0
 Summary:        Data-Driven/Decorated Tests
 License:        MIT
