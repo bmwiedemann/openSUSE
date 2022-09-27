@@ -2455,4 +2455,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment></comment>
     <requestid>986204</requestid>
   </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>bb7f5d0ea39fb14e19f1ec59bb478fce</srcmd5>
+    <version>5.15.6+kde177</version>
+    <time>1664302162</time>
+    <user>RBrownFactory</user>
+    <comment>Qt 5.15.6, untested. (forwarded request 1006197 from Vogtinator)</comment>
+    <requestid>1006210</requestid>
+  </revision>
 </revisionlist>

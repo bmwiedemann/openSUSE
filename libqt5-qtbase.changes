@@ -1,4 +1,160 @@
 -------------------------------------------------------------------
+Mon Sep 26 11:59:50 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.6+kde177, rebased upstream:
+   * QStringIterator: fix UB [2/2]: use std::less to compare pointers
+   * QStringIterator: fix UB [1/2]: use has{Next,Previous}() more
+   * Assert validity in QStringIterator's unchecked methods
+   * eglfs: Fix crash when painting the mouse cursor in a multiscreen setup
+   * xcb: fix the build of native painting
+   * QNetworkReplyFileImpl: Don't emit 'finished' in the ctor
+   * Fix typo in code
+   * Fix typo in QAbstractItemModelTester
+   * sqldrivers: Fix typo in error message
+   * network: Fix typos in messages
+   * Remove XCB_EVENT_MASK_RESIZE_REDIRECT for Qt:WindowTransparentForInput
+   * Fix build without dbus support
+   * Revert "Remove the dead code for blocking methods from QtConcurrent"
+   * QAIV: Reset double-click flag in mousePressEvent
+   * Fix possible undefined behavior in clear_thread_data
+   * Revert "xcb: implement missing bits from ICCCM 4.1.4 WM_STATE handling"
+   * 3rdparty: apply a fix to the last zlib fix
+   * add color picking support on wayland using the XDG desktop portal
+   * Use class scope to refer to static function
+   * fix AT_SPI_BUS_ADDRESS actually working
+   * 3rdparty/zlib: backport the fix to CVE-2022-37434
+   * widgets: avoid setting X11BypassWindowManagerHint in QToolBar
+   * Don't access QObjectPrivate::declarativeData unguarded
+   * Apply CVE-2022-27404-27405-27406-qtbase-5.15.diff
+   * xcb: Update _NET_SUPPORTED when the window manager changes it
+   * Revert "CUPS: Add support for accessible IPP printers"
+   * QtConcurrent::ReduceKernel: fix race conditions
+   * Fix crash in QKmsDevice::createScreenForConnector
+   * Fix compile with MinGW-W64 9.0.0: Redefinition of 'struct _FILE_ID_INFO'
+   * Fallback to another file dialog implementation when XDP is inaccessible
+   * Add QXdgDesktopPortalFileDialog::useNativeFileDialog()
+   * qmake: Ignore stderr when determining the macOS SDK version
+   * Fix QDBusInterface crashing with empty path on construction
+   * Network: Update expired cert
+   * Android: guard getStateCount() with correct VERSION.SDK_INT
+   * Add note on selecting the device which is used to run tests on Android
+   * fc: Clean up current config on shutdown
+   * Doc: Add see also links to operator== and operator!=
+   * Fix framework dependencies in .la files
+   * Fix Style java code format and warnings
+   * wasm: fix network crash on abort
+   * Update bundled Freetype to 2.10.4
+   * CMake: Prevent multiple creation of the targets 'aab' and 'apk'
+   * Android: Fix fullscreen bottom bar hide issues
+   * xkb.compose: get locale from user env settings
+   * xcb: implement missing bits from ICCCM 4.1.4 WM_STATE handling
+   * macOS: Fix leaked NSMutableArray in applicationActivationChanged
+   * StyleSheet: Use rule for ComboBox in embedded QLineEdit
+   * Fix hidden API access for Android style
+   * Fix memory leak if eXIf has incorrect crc
+   * Fix invalid snippet reference in qtnetwork-index.html
+   * Doc: Fix QList<T>::fromVector example in QList<T> documentation
+   * Turn off feature timezone for emscripten
+   * QXpmHandler: actually limit characters-per-pixel to four
+   * QXpmHandler: fix re-entrancy bug in xpm_color_name
+   * QObject: cleanup the orphaned connection lists on destruction
+   * Fix crash in concurrent disconnect
+   * cleanOrphanedConnectionsImpl: Allow to skip locking
+   * QOrderedMutexLocker: Disable copy and provide explicit dismiss function
+   * Handle even more include in enum cases
+   * macOS: Stop relying on balanced CGDisplay reconfiguration callbacks
+   * QFuture: fix result reporting in the filter mode
+   * Doc: Minor cleanup in QWidget docs
+   * Don't report results when the results list is empty
+   * Windows QPA: Fix coordinates reported through UI Automation
+   * Make QSqlRecord benchmarks non-fatuous
+   * Halve the data-set size of tst_QSqlRecord::benchmarkRecord()
+   * Update deprecated NSAccessibility method
+   * H2: emit encrypted for at least the first reply, similar to H1
+   * QFile benchmark: only set up and tear down the data directory once
+   * Unify and clean up two identical tst_qfile::*_data() functions
+   * Move QSKIP()s to _data() functions in QFile benchmark
+   * Scale image with MDI icons using the correction factor
+   * QNetworkDiskCache: Fix tracking of size during storeItem()
+   * Always update the input method when QLineEdit receives focus
+   * Fix qdbusperformance and qprocess benchmarks
+   * QListView: don't scroll if selected items are removed
+   * macOS: Detect sandboxed state for command line apps
+   * Update obsoleted functionality in preparation for Qt 6
+   * Change QCollator's default locale to QLocale().collation()
+   * QDuplicateTracker: reserve() for at least Prealloc elements
+   * Point out that QTreeView's expandAll/expandToDepth don't fetch data
+   * QDuplicateTracker: fix the static buffer size calculation
+   * macOS: Don't make frameless tool windows miniaturizable
+   * macOS: Don't mangle QByteArray settings with @ prefix by decoding as UTF-8
+   * tst_QtConcurrentThreadEngine: fix the threadCount() test
+   * Fix QTextFormat::FullWidthSelection for right-to-left text layouts
+   * Fix auto completion in QFileDialog on Windows
+   * QFile benchmark: always use Unbuffered for QFSFileEngine tests
+   * Fix QDirIterator benchmark to actually find its test data
+   * macOS: Keep NSWindow alive after handling windowShouldClose callback
+   * Windows QPA: Fix dock widget drag&drop failure
+   * Remove the dead code for blocking methods from QtConcurrent
+   * QtConcurrent: call the non-blocking versions in blocking ones
+   * macOS 10.15: Fix focus frame for combo boxes
+   * Fix placement of placeholder text in QLineEdits with action icons
+   * macOS: fix separator actions not showing in menus
+   * QIcc: Update test for invalid values
+   * Doc: Use https for links to unicode.org
+   * Doc: Add a note about a limitation in QDockWidget on macOS
+   * macOS: Notify socket notifier on connection error
+   * QGlobalStatic: fix warning when using cv-qualified types
+   * Fix right-to-left text with DirectWrite engine + QPainterPath
+   * Fix mapping between Han and other CJK scripts
+   * Doc: Improve QTransform documentation
+   * Documentation: Remove section advertising Amazon
+   * Fix linking of debug projects against release Qt on Darwin platforms
+   * Extend documentation for QFile:copy()
+   * macOS: Unregister screen notification handlers on QGuiApplication shutdown
+   * macOS 11: Fix positioning of focus frame around combobox
+   * QString: Respect precision when reading data for %.*s format string
+   * Fix leak of transaction context handle in QSql's OCI driver
+   * macOS: Allow programatically minimizing frameless windows
+   * Doc: Move overrideCursor() from QApplication to QGuiApplication
+   * Doc: Add note to Qt::MatchFlags about implementation dependent behavior
+   * Update md4c to 0.4.8
+   * Android: fix mimetype/namefilters handling for FileDialog
+   * Enable glyph cache workaround for Apple M-family of GPUs
+   * Fix rendering of text checkboxes when text is selected
+   * Update public suffix list
+   * iOS: cleanup connection when a screen disconnects
+   * Windows: Read page size and orientation from setup dialog
+   * qmake: Enable response files for WASM on Windows
+   * QTextDocumentFragment: fix ifdef range
+   * Update CLDR qt_attribution.json
+   * Hangul composition: use < base + count checks, not <= checks
+   * Doc: Fix snippet for QRandomGenerator64 docs
+   * Fix date parsing when local time lacks the start of the day
+   * Fix misplacement of placeholder text in QLineEdit with RTL content
+   * Fix unaligned specialData formats
+   * QWidgetTextControl: ignore GroupSwitchModifier for BackSpace
+   * QFlags::testFlag: clarify the behavior in the docs
+   * Android: Fix build error issue in examples
+   * Silence misleading exception print in setQtContextDelegate
+   * Fix scrolling of tab bar when the visible tab is wider than the visible space
+   * Fix augmentation of UI language list
+   * Calculate space requirement of menu items based on widest elements
+   * Correct examples for int validation in QValidator documentation
+   * tst_QTimer::remainingTime(): get rid of QTest::currentTestFailed()
+   * macOS: allow Qt::AA_DontShowShortcutsInContextMenus overrides
+   * Fix conversion of swap interval from QGLFormat to QSurfaceFormat
+   * Fix rearranging of icons in listview via drag'n'drop
+   * Fix flaky QTimer::remainingTime() test
+   * tst_QDateTimeEdit::editingRanged(): use QScopedPointer
+   * QAbstractItemView: don't block dragging after double click
+   * xcb: Add more debug info for XCB_INPUT event
+   * QPageSize: make PageSizeId ctor non-explicit
+   * QtGui/math3d : Fix QQuaternion::getEulerAngles
+- Commits dropped by the rebase:
+  * Restore C++11 compatibility of QSharedPointer code
+- Refresh 0001-Add-remote-print-queue-support.patch
+
+-------------------------------------------------------------------
 Fri Jul 01 10:37:16 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.5+kde166:
