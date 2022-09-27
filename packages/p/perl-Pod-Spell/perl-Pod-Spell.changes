@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Sep 22 03:07:54 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.23
+   see /usr/share/doc/packages/perl-Pod-Spell/Changes
+
+  1.23      2022-09-21
+      - releasing as stable
+
+  1.22      2022-08-29 (TRIAL RELEASE)
+      - fix finding wordlist when not run against files directly in lib/
+
+  1.21      2022-08-24 (TRIAL RELEASE)
+      - port to use Pod::Simple rather than Pod::Parser
+      - use File::Spec rather than Path::Tiny
+      - allow explicit debug option to override environment variable
+      - packaging and metadata updates
+
+-------------------------------------------------------------------
 Wed Oct 28 15:14:13 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - update specfile with cpanspec to fix build
