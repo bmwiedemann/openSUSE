@@ -183,4 +183,18 @@
   - fix: make rekor verify work with sharded uuids by @asraa in #970 (forwarded request 1003862 from msmeissn)</comment>
     <requestid>1003863</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9c08649be8605339a245717b7495035e</srcmd5>
+    <version>0.12.1</version>
+    <time>1664302471</time>
+    <user>RBrownFactory</user>
+    <comment>- updated to rekor 0.12.1 (jsc#SLE-23476):
+  - ** Rekor ** v0.12.1 comes with a breaking change to rekor-cli v0.12.1. Users of rekor-cli MUST upgrade to the latest version
+    The addition of the intotov2 created a breaking change for the rekor-cli
+  - What's Changed
+    - fix: fix harness tests with intoto v0.0.2 by @asraa in #1052
+    - feat: add file based signer and password by @asraa in #1049
+    - Adds new rekor metrics for latency and QPS. by @var-sdk in #1059</comment>
+    <requestid>1006397</requestid>
+  </revision>
 </revisionlist>
