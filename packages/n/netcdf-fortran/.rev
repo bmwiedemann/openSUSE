@@ -183,4 +183,12 @@
   * Remove netcdf-fortran package (bsc#1187910). (forwarded request 903575 from eeich)</comment>
     <requestid>904648</requestid>
   </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>dbb745b6794af7319c69b0d55c9ca722</srcmd5>
+    <version>4.5.3</version>
+    <time>1664302451</time>
+    <user>RBrownFactory</user>
+    <comment>- Replace by ExcludeArch (forwarded request 1006417 from eeich)</comment>
+    <requestid>1006418</requestid>
+  </revision>
 </revisionlist>

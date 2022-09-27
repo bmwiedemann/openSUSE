@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 27 06:45:48 UTC 2022 - Egbert Eich <eich@suse.com>
+
+- RIP 32bit.
+
+-------------------------------------------------------------------
+Tue Jul 13 17:52:43 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Fix Obsoletes.
+
+-------------------------------------------------------------------
 Thu Jul  1 15:30:24 UTC 2021 - Egbert Eich <eich@suse.com>
 
 - Rename nf-fortran-config back to nf-config.

@@ -1,7 +1,7 @@
 #
-# spec file for package netcdf-fortran
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,8 @@
   %define DisOMPI4 ExclusiveArch:  do_not_build
  %endif
 %endif
+
+ExcludeArch:    i586 %arm s390
 
 %if "%flavor" == ""
 ExclusiveArch:  do_not_build
@@ -360,7 +362,7 @@ BuildRequires:  netcdf-%{compiler_family}%{?c_f_ver}%{?with_mpi:-%{mpi_flavor}%{
 Requires:       %{libname}%{hpc_package_name_tail %_ver} = %{version}
 
 %description
-NetCDF is a set of software libraries and self-describing, 
+NetCDF is a set of software libraries and self-describing,
 machine-independent data formats that support the creation, access,
 and sharing of array-oriented scientific data.
 
@@ -378,7 +380,7 @@ Group:          System/Libraries
 %{requires_eq libnetcdf-%{compiler_family}%{?c_f_ver}%{?with_mpi:-%{mpi_flavor}%{?mpi_ver}}-hpc}
 
 %description -n %{libname}%{hpc_package_name_tail %_ver}
-NetCDF is a set of software libraries and self-describing, 
+NetCDF is a set of software libraries and self-describing,
 machine-independent data formats that support the creation, access,
 and sharing of array-oriented scientific data.
 
@@ -420,9 +422,11 @@ Requires:       pkgconfig
 Requires:       zlib-devel >= 1.2.5
 %{?hpc_requires_devel}
 %{requires_eq netcdf-%{compiler_family}%{?c_f_ver}%{?with_mpi:-%{mpi_flavor}%{?mpi_ver}}-hpc-devel}
+Obsoletes:      %{name} < %{version}-%{release}
+Provides:       %{name} = %{version}-%{release}
 
 %description devel
-NetCDF is a set of software libraries and self-describing, 
+NetCDF is a set of software libraries and self-describing,
 machine-independent data formats that support the creation, access,
 and sharing of array-oriented scientific data.
 
@@ -441,11 +445,11 @@ Requires:       libcurl-devel >= 7.18.0
 Requires:       zlib-devel >= 1.2.5
 
 %description devel-static
-NetCDF is a set of software libraries and self-describing, 
+NetCDF is a set of software libraries and self-describing,
 machine-independent data formats that support the creation, access,
 and sharing of array-oriented scientific data.
 
-This package contains the static libraries for 
+This package contains the static libraries for
 %{?mpi_flavor:the %mpi_flavor version of} NetCDF.
 
 %prep
@@ -572,7 +576,7 @@ export F77="mpif77"
 %post -n %{libname}%{hpc_package_name_tail %_ver}
 /sbin/ldconfig -N %{hpc_libdir}
 
-%postun -n %{libname}%{hpc_package_name_tail %_ver} 
+%postun -n %{libname}%{hpc_package_name_tail %_ver}
 /sbin/ldconfig -N %{hpc_libdir}
 %hpc_module_delete_if_default
 
