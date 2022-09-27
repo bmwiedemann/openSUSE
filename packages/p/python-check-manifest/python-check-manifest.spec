@@ -27,7 +27,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-check-manifest%{psuffix}
-Version:        0.47
+Version:        0.48
 Release:        0
 Summary:        Tool to check Python source package MANIFEST.in for completeness
 License:        MIT

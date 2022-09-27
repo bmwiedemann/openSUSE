@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep 26 21:17:21 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- version update to 0.48
+
+  Add Python 3.10 support.
+  Switch to tomli instead of toml, after hearing about PEP-680. tomli will be included in the Python 3.11 standard library as
+  tomllib, while toml is apparently unmaintained.
+  Fix submodule support when .gitmodules exists in a subdirectory (#153). Note that this reverts a fix for #124: git versions
+  before 2.11 are no longer supported. 
+
+-------------------------------------------------------------------
 Thu Mar 10 10:48:13 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Add python-check-manifest-no-mock.patch
