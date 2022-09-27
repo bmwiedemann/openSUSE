@@ -375,4 +375,17 @@
 - switch from _service to standard releases (they are often enough)</comment>
     <requestid>1004535</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>571021943a3b02a4415d75e2ca9f6aca</srcmd5>
+    <version>0.10.1</version>
+    <time>1664302424</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 0.10.1:
+  * Fixes the crash with &quot;b4 ty&quot; when using a local binary to send mail
+  * The &quot;send&quot; and &quot;prep&quot; commands now properly include diffstats into
+    generated patches
+  * Does not force single-patch series to have a cover letter.
+  * Does not force &quot;v1&quot; to be added to the prefixes</comment>
+    <requestid>1006295</requestid>
+  </revision>
 </revisionlist>

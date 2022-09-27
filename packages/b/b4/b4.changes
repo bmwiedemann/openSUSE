@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 27 04:55:59 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to version 0.10.1:
+  * Fixes the crash with "b4 ty" when using a local binary to send mail
+  * The "send" and "prep" commands now properly include diffstats into
+    generated patches
+  * Does not force single-patch series to have a cover letter.
+  * Does not force "v1" to be added to the prefixes
+
+-------------------------------------------------------------------
 Mon Sep 19 05:31:24 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
 
 - Update to version 0.10.0:
