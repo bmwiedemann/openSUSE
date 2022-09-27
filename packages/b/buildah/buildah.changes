@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 21 07:41:42 UTC 2022 - dcermak@suse.com
+
+- Update to version 1.27.2:
+  * tag v1.27.2
+  * Fix broken command completion
+  * build: support --skip-unused-stages for multi-stage builds
+
+-------------------------------------------------------------------
 Mon Sep 12 09:57:27 UTC 2022 - dcermak@suse.com
 
 - Update to version 1.27.1:

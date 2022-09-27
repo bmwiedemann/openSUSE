@@ -18,7 +18,7 @@
 
 %define project github.com/containers/buildah
 Name:           buildah
-Version:        1.27.1
+Version:        1.27.2
 Release:        0
 Summary:        Tool for building OCI containers
 License:        Apache-2.0
@@ -36,7 +36,6 @@ BuildRequires:  golang-packaging
 BuildRequires:  libapparmor-devel
 BuildRequires:  libassuan-devel >= 2.5.2
 BuildRequires:  libbtrfs-devel
-BuildRequires:  libgpgme-devel
 BuildRequires:  libgpgme-devel
 BuildRequires:  libseccomp-devel
 BuildRequires:  golang(API) >= 1.13
