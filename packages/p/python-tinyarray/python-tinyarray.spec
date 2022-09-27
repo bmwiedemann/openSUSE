@@ -1,7 +1,7 @@
 #
 # spec file for package python-tinyarray
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -59,10 +59,15 @@ export CFLAGS="%{optflags}"
 
 %check
 # Disable conversion test on non x86 systems; see https://gitlab.kwant-project.org/kwant/tinyarray/-/issues/19
-%ifarch %ix86 x86_64
+%ifarch x86_64
 %pytest_arch
 %else
+# https://gitlab.kwant-project.org/kwant/tinyarray/-/issues/21
+%ifarch %ix86
+%pytest_arch -k 'not test_binary'
+%else
 %pytest_arch -k 'not test_conversion'
+%endif
 %endif
 
 %files %{python_files}
