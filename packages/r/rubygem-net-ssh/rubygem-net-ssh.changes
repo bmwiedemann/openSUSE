@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Sep 24 22:30:41 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- limit to ruby 2.7 and 3.1 on leap
+
+-------------------------------------------------------------------
 Thu Aug  4 13:20:18 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 7.0.1

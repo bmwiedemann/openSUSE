@@ -28,6 +28,12 @@ Version:        7.0.1
 Release:        0
 %define mod_name net-ssh
 %define mod_full_name %{mod_name}-%{version}
+# MANUAL
+%if 0%{suse_version} && 0%{suse_version} < 1550
+%define rb_build_versions       ruby31       ruby27
+%define rb_build_ruby_abis      ruby:3.1.0   ruby:2.7.0
+%endif
+# /MANUAL
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby >= 2.6}
 BuildRequires:  %{rubygem gem2rpm}
@@ -50,6 +56,7 @@ servers, via SSH2.
 
 %install
 %gem_install \
+  --no-document \
   --doc-files="CHANGES.txt LICENSE.txt README.md" \
   -f
 
