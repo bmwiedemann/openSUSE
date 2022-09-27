@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 26 10:48:49 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Decouple user interface logic from the probing process
+  (related to gh#yast/d-installer#247).
+- 4.5.9
+
+-------------------------------------------------------------------
 Tue Aug 16 17:42:49 UTC 2022 - Josef Reidinger <jreidinger@suse.com>
 
 - Adapt to new types of mount by in libstorage-ng. Skipped by now
