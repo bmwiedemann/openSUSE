@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 27 06:32:06 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.26.6:
+  * K9s/rel v0.26.6 (#1784)
+  * fix #1773
+  * Fix directory path when viewing ScreenDump (#1777)
+  * docs: update homebrew installation note (#1772)
+  * Log toggles: add a space after "On" in logs view (#1775)
+  * Add a closing tag when showing timestamp in log view (#1776)
+
+-------------------------------------------------------------------
 Sun Sep 25 07:00:59 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.26.5:
