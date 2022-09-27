@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Sep 26 17:48:07 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 2.1.2:
+  * Add FFmpeg 5.1 support.
+  * Add recursive search for presets in the projectm plugin.
+  * Add application icon in the pulseaudio plugin.
+  * Improve visualisation synchronisation.
+  * Fix title formatting in the KDE notification plugin.
+  * Fix "fact" chunks support in the sndfile plugin.
+  * Fix embedded cover art support in the flac plugin.
+  * Fix tag editor behaviour.
+  * Update translations.
+
+-------------------------------------------------------------------
 Fri Jun 10 22:32:18 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 2.1.1:
