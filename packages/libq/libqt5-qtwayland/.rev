@@ -427,4 +427,12 @@ This is a part of the 5.4 release, but can be built and used with older Qt relea
     <comment>Qt 5.15.5 with patch collection + qtscript 5.15.10 (forwarded request 985459 from favogt)</comment>
     <requestid>985498</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>dceb5e00007fd26a864419897c9a9c7d</srcmd5>
+    <version>5.15.6+kde49</version>
+    <time>1664302186</time>
+    <user>RBrownFactory</user>
+    <comment>Qt 5.15.6</comment>
+    <requestid>1006242</requestid>
+  </revision>
 </revisionlist>

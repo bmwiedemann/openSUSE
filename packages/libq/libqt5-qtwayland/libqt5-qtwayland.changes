@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Sep 26 12:03:24 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.6+kde49, rebased upstream:
+   * Call `finishDrag()` in `QWaylandDataDevice::dragSourceCancelled()`
+   * Client: support high-dpi mode for window icon
+   * Avoid calling requestUpdate from wrong thread
+   * Fix missing update when toggling client-side decorations
+   * Use CRLF line delimiter for text/uri-list data
+   * Fix compile tests
+   * client: Synthesize enter/leave event for popup in xdg-shell
+   * Guard mResizeDirty by the correctMutex
+   * Client: clear focus on touch cancel
+   * Build fixes for GCC 11
+   * Only close popup in the the hierchary
+   * Cleanup up all subsurface QQuickItems correctly
+   * linux-dmabuf-unstable-v1: Fix importing dmabuf buffers with modifiers
+   * Add BlankCursor for cursor names map
+   * client: Gracefully handle shutdown and window hiding
+- Drop patches, now upstream:
+  * 0002-Guard-mResizeDirty-by-the-correctMutex.patch
+
+-------------------------------------------------------------------
 Mon Jun 27 13:10:47 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.5+kde39, rebased upstream:
