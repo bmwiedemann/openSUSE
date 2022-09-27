@@ -17,7 +17,7 @@
 
 
 Name:           0ad-data
-Version:        0.0.25b
+Version:        0.0.26
 Release:        0
 Summary:        The Data Files for 0 AD
 # When openSUSE supports full spdx 2.2, replace GPL-3.0+ with (GPL-3.0+ with Font-exception-2.0)
