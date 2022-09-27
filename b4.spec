@@ -17,7 +17,7 @@
 
 
 Name:           b4
-Version:        0.10.0
+Version:        0.10.1
 Release:        0
 Summary:        Helper scripts for kernel.org patches
 License:        GPL-2.0-or-later
@@ -25,8 +25,8 @@ Group:          Development/Tools/Other
 URL:            https://git.kernel.org/pub/scm/utils/b4/b4.git
 Source0:        https://github.com/mricon/b4/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildArch:      noarch
-# SECTION test requirements
 BuildRequires:  fdupes
+# SECTION test requirements
 BuildRequires:  git-core
 BuildRequires:  python3-dkimpy >= 1.0.5
 BuildRequires:  python3-dnspython >= 2.0.0
