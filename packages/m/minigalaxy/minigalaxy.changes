@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep 27 15:55:58 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.2.2:
+  * Fix progress bar not showing up for downloads
+  * Fix downloads not being cancellable
+  * Fix incompatibility with python 3.6
+  * Fix connection error texts
+  * Show DLC titles in English
+  * Fix version not being updated during a release
+  * Update Norwegian Bokmål translation
+  * Update Czech translation
+
+-------------------------------------------------------------------
 Wed Sep 21 10:24:38 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.2.1:

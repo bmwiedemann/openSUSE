@@ -204,4 +204,20 @@
   * Add gettext to build dependencies</comment>
     <requestid>1005171</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5efd92610391aeebd8ae179ebf231ad3</srcmd5>
+    <version>1.2.2</version>
+    <time>1664302568</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 1.2.2:
+  * Fix progress bar not showing up for downloads
+  * Fix downloads not being cancellable
+  * Fix incompatibility with python 3.6
+  * Fix connection error texts
+  * Show DLC titles in English
+  * Fix version not being updated during a release
+  * Update Norwegian Bokmål translation
+  * Update Czech translation</comment>
+    <requestid>1006462</requestid>
+  </revision>
 </revisionlist>
