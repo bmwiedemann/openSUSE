@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep 26 10:34:25 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.6+kde5, rebased upstream:
+   * Revert "ToolTip: use contentWidth of Text contentItem to account for newlines"
+   * Doc: make it clear that Page doesn't render its title text
+   * QQuickComboBox: fix acceptableInput being wrong if no validator was set
+   * Add recursion guard to QQuickApplicationWindowPrivate::relayout()
+   * Fix SwipeDelegate losing swipes to parent flickables
+   * Blacklist some flaky tst_qquickdrawer functions on openSUSE
+   * Fix warnings in some tests
+   * ToolTip: use contentWidth of Text contentItem to account for newlines
+
+-------------------------------------------------------------------
 Wed Aug 24 13:22:51 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.5+kde6:
