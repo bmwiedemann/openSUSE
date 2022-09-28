@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Sep 24 12:42:43 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- avoid bashism 
+
+-------------------------------------------------------------------
 Sat Apr  9 20:20:47 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Mesa-libd3d's d3dadapter9.so is loaded with dlopen and thus not
