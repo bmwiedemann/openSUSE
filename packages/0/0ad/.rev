@@ -58,4 +58,14 @@
 </comment>
     <requestid>994558</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ad7df2a95684015ed2a2f696bb8fa52c</srcmd5>
+    <version>0.0.26</version>
+    <time>1664380309</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 0.0.26
+- Remove obsolete glibc-2.35.patch.
+</comment>
+    <requestid>1006542</requestid>
+  </revision>
 </revisionlist>

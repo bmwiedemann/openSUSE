@@ -31,7 +31,7 @@
 # Use provided library
 %bcond_without system_nvtt
 Name:           0ad
-Version:        0.0.25b
+Version:        0.0.26
 Release:        0
 Summary:        A real-time strategy game of ancient warfare
 License:        BSD-3-Clause AND CC-BY-SA-3.0 AND GPL-2.0-or-later AND LGPL-3.0-or-later AND MIT AND ISC AND MPL-2.0
@@ -44,10 +44,8 @@ Patch0:         avoid_duplicate_global_symbol_from_asm.patch
 Patch1:         no-version-check.patch
 # PATCH-FIX-OPENSUSE -- Use the newer variant of this function (related to mozjs78 upgrade)
 Patch2:         PrepareZoneForGC.patch
-# PATCH-FIX-UPSTREAM -- Don't define M_PIf if glibc already provides it
-Patch3:         glibc-2.35.patch
 # PATCH-FIX-OPENSUSE -- Skip automatic addition of an RPATH.
-Patch4:         premake-no-automatic-rpath.patch
+Patch3:         premake-no-automatic-rpath.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libXcursor-devel
@@ -99,7 +97,6 @@ flexible game engine.
 %setup -q -n %{name}-%{version}-alpha
 %patch0 -p1
 %patch3 -p1
-%patch4 -p1
 %if %{with system_mozjs}
 %patch1 -p1
 %patch2 -p1

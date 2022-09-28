@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 26 21:28:24 UTC 2022 - C J <c.j@tuta.io>
+
+- Update to 0.0.26
+- Remove obsolete glibc-2.35.patch.
+
+-------------------------------------------------------------------
 Wed Aug 10 21:06:44 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Fix rpmlint by adding premake-no-automatic-rpath.patch: don't let
