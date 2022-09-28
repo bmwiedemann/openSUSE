@@ -276,6 +276,7 @@ unsorted:
   - SpeedTest++ 
   - Srain 
   - Srain-lang 
+  - SwayNotificationCenter 
   - ThePEG-devel: [x86_64] 
   - ThePEG-libs: [x86_64] 
   - UEFITool 
@@ -2331,7 +2332,6 @@ unsorted:
   - coredns-for-k8s1.24 
   - coredns-for-k8s1.24-extras 
   - corepack16 
-  - corepack17 
   - corepack18 
   - coreutils-doc: [i586] 
   - coreutils-single 
@@ -12720,10 +12720,6 @@ unsorted:
   - libnuspell5 
   - libnutclient0 
   - libnutscan1 
-  - libnvidia-container-devel: [x86_64] 
-  - libnvidia-container-static: [x86_64] 
-  - libnvidia-container-tools: [x86_64] 
-  - libnvidia-container1: [x86_64] 
   - libnvidia-egl-wayland-devel 
   - libnvidia-egl-wayland1 
   - libnvidia-egl-wayland1-32bit: [x86_64] 
@@ -17564,9 +17560,6 @@ unsorted:
   - nodejs16 
   - nodejs16-devel 
   - nodejs16-docs 
-  - nodejs17 
-  - nodejs17-devel 
-  - nodejs17-docs 
   - nodejs18-devel 
   - nodejs18-docs 
   - noisetorch 
@@ -17829,7 +17822,6 @@ unsorted:
   - npkg 
   - npm-default 
   - npm16 
-  - npm17 
   - npth-devel 
   - nqp 
   - nrpe 
@@ -32843,7 +32835,7 @@ unsorted:
   - rtl-sdr-devel 
   - rtl-sdr-udev 
   - rtl8812au 
-  - rtl8812au-kmp-default 
+  - rtl8812au-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - rtl8812au-kmp-pae: [i586] 
   - rtl_433 
   - rtl_433-devel 
@@ -43313,7 +43305,7 @@ unsorted:
   - upsm 
   - upx 
   - uranium: [x86_64] 
-  - uranium-firmware-lulzbot 
+  - uranium-firmware-lulzbot: [x86_64] 
   - uranium-lulzbot 
   - urbanlightscape 
   - urfkill 
