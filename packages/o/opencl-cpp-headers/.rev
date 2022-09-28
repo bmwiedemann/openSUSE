@@ -76,4 +76,14 @@
 </comment>
     <requestid>980780</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f9231b7bb9a9daa8ce108d1dacc10c7f</srcmd5>
+    <version>2.0.18</version>
+    <time>1664380314</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 2.0.18.
+  * Synchronize with OpenCL v3.0.12 specification release.
+</comment>
+    <requestid>1006543</requestid>
+  </revision>
 </revisionlist>
