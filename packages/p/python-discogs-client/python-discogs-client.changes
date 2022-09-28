@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 27 18:26:10 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 2.3.0 
+  This project is no longer maintained. You can still use a REST client like Requests or other
+  third-party Python library to access the Discogs REST API.
+
+-------------------------------------------------------------------
 Tue May 25 06:52:41 UTC 2021 - pgajdos@suse.com
 
 - %check: use %pyunittest rpm macro
