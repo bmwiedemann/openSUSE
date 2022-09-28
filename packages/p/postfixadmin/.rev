@@ -445,4 +445,12 @@ SVN changes since 2.3.4 release (postfixadmin-2.3 branch)
   - Support $CONF['database_port'] for MySQL databases (forwarded request 960942 from cboltz)</comment>
     <requestid>960943</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>ed894d3fd3c4b24dfe104555533cc5c8</srcmd5>
+    <version>3.3.11</version>
+    <time>1664380298</time>
+    <user>RBrownFactory</user>
+    <comment>- Require 'php' instead of 'mod_php_any' to avoid requiring Apache (boo#1203647) (forwarded request 1006529 from cboltz)</comment>
+    <requestid>1006530</requestid>
+  </revision>
 </revisionlist>

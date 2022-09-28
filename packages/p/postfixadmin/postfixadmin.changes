@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 27 21:17:36 UTC 2022 - Christian Boltz <suse-beta@cboltz.de>
+
+- Require 'php' instead of 'mod_php_any' to avoid requiring Apache (boo#1203647)
+
+-------------------------------------------------------------------
 Thu Mar 10 22:45:44 UTC 2022 - Christian Boltz <suse-beta@cboltz.de>
 
 - Update to PostfixAdmin 3.3.11

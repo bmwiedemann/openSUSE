@@ -29,10 +29,9 @@ BuildArch:      noarch
 
 # Web interface
 %if 0%{?fedora} || 0%{?rhel_version} || 0%{?centos_ver}
-  # Requires:   mod_php_any # no idea in which fedora package mod_php5 is...
 Requires:       php_database
 %else
-Requires:       mod_php_any
+Requires:       php
 Requires:       php_any_db
 Recommends:     php-mysql
 %endif
