@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Sep 21 08:41:41 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 1.2.2:
+  * [bump] 1.2.2
+  * [clippy] Remove PartialEq, Eq warning
+  * [build.rs] Properly gzip the scdoc output
+  * [update] ignore scdoc output files
+  * [rustfmt] Fix formatting build.rs
+  * [contrib/pkgbuild/bin] Update wayshot version
+  * [bump] 1.2.1
+  * [build.rs] Fix scdoc parent stdio inheritance
+  * [contrib/pkgbuild/bin] Update wayshot version
+  * [bump] 1.2.0
+  * [chore] Bump dependencies
+  * [BuildSystem]Don't depend on system shell for scd
+  * [BuildSystem] Update install step
+  * [contrib/pkgbuild/bin] Update makedeps
+  * [contrib/pkgbuild] Fix man-page install paths
+  * [docs/readme] Formattinge error
+  * [Restructure] Move pkgbuilds into PKGBUILD
+  * [contrib/pkgbuild/bin] Add man-page support
+  * [contrib/pkgbuild/git]Add man-pages to git package
+  * [BuildSystem] Improve man page installation
+  * [contrib/pkgbuild/git] Add scdoc to makedeps
+  * [build.rs] Binary existence check
+  * [workflow] doc generation
+  * [docs]Introduce scdoc generation in rust build sys
+  * [chore] Cargo.lock
+  * [contrib/pkgbuild/bin] update pkgbuild version
+  * [backend.rs] PPM optimize performance
+  * [docs/readme] color picker example
+
+-------------------------------------------------------------------
 Thu Aug  4 03:53:24 UTC 2022 - William Brown <william.brown@suse.com>
 
 - bsc#1182059 - CVE-2021-21299 - hyper request smuggling

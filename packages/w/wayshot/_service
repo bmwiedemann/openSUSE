@@ -3,7 +3,7 @@
     <param name="url">https://github.com/waycrate/wayshot.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
-    <param name="revision">bbbdc2c1ca3f8b7732829232bc960e63deb2c4db</param>
+    <param name="revision">31baff5</param>
     <param name="versionrewrite-pattern">(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>
