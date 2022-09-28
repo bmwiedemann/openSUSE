@@ -6198,6 +6198,8 @@ unsorted:
   - goocanvas-lang 
   - goocanvas2-devel 
   - goocanvas2-lang 
+  - goodvibes 
+  - goodvibes-lang 
   - google-alegreya-fonts 
   - google-alegreya-sans-fonts 
   - google-allerta-fonts 
@@ -23892,9 +23894,6 @@ unsorted:
   - python310-nxapi-plumbing 
   - python310-o2sclpy 
   - python310-oauth2 
-  - python310-oauth2client 
-  - python310-oauth2client-flask 
-  - python310-oauth2client-gce 
   - python310-oauthlib: [i586] 
   - python310-objgraph 
   - python310-oci-sdk 
@@ -27182,9 +27181,6 @@ unsorted:
   - python38-nxapi-plumbing 
   - python38-o2sclpy 
   - python38-oauth2 
-  - python38-oauth2client 
-  - python38-oauth2client-flask 
-  - python38-oauth2client-gce 
   - python38-oauthlib 
   - python38-objgraph 
   - python38-oci-sdk 
@@ -30518,9 +30514,6 @@ unsorted:
   - python39-nxapi-plumbing 
   - python39-o2sclpy 
   - python39-oauth2 
-  - python39-oauth2client 
-  - python39-oauth2client-flask 
-  - python39-oauth2client-gce 
   - python39-oauthlib 
   - python39-objgraph 
   - python39-oci-sdk 
