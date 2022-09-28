@@ -43,6 +43,7 @@ Requires:       libvirt-daemon-kvm
 %endif
 Requires:       libvirt-client
 Requires:       libvirt-dbus >= 1.2.0
+Requires:       qemu-block-curl
 Requires:       qemu-chardev-spice
 Requires:       qemu-hw-display-qxl
 Requires:       qemu-hw-usb-redirect
