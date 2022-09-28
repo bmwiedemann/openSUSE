@@ -1,7 +1,7 @@
 #
 # spec file for package sca-patterns-sle12
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,12 +25,12 @@
 %define category SLE
 
 Name:           sca-patterns-sle12
-Version:        1.5.0
+Version:        1.5.1
 Release:        0
 Summary:        Supportconfig Analysis Patterns for SLE12
 License:        GPL-2.0-only
-Group:          System/Monitoring
 URL:            https://github.com/g23guy/sca-patterns-sle12
+Group:          System/Monitoring
 Source:         %{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 Requires:       sca-patterns-base >= 1.5.0
@@ -64,7 +64,7 @@ install -m %{mode} patterns/%{category}/sle12sp2/* %{buildroot}/%{patdir}/%{cate
 install -m %{mode} patterns/%{category}/sle12sp3/* %{buildroot}/%{patdir}/%{category}/sle12sp3
 install -m %{mode} patterns/%{category}/sle12sp4/* %{buildroot}/%{patdir}/%{category}/sle12sp4
 install -m %{mode} patterns/%{category}/sle12sp5/* %{buildroot}/%{patdir}/%{category}/sle12sp5
-%fdupes 
+%fdupes %{buildroot}%{patdir}
 
 %files
 %defattr(-,%{patuser},%{patgrp})

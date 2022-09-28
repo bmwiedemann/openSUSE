@@ -215,4 +215,12 @@
     <comment>Converted from python2 to python3 bsc#1191005 (forwarded request 929478 from jrecord)</comment>
     <requestid>929479</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>e1a3a4d0f9da2b892b0cff8426075e75</srcmd5>
+    <version>1.5.1</version>
+    <time>1664380312</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1006537</requestid>
+  </revision>
 </revisionlist>
