@@ -91,4 +91,21 @@
     <comment></comment>
     <requestid>988046</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>bdeed4bf8c865c5231c1952352913326</srcmd5>
+    <version>0.17.1</version>
+    <time>1664380306</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 0.17.1:
+  - Add a colormap control to be used with Choropleth layer
+  - Add zoom_offset param to TileLayer by @ned2
+  - Add support for as_leaflet_layer in Map.add
+  - ipywidgets 8.0 support
+  - Pin nodejs=16, drop base setup
+  - Remove HikeBike basemap from the examples
+  - Use the latest jupyterlite-sphinx release on ReadTheDocs
+  - Lazy-load the JupyterLite embedded page in documentation
+</comment>
+    <requestid>1006538</requestid>
+  </revision>
 </revisionlist>

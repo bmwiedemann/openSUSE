@@ -17,15 +17,16 @@
 
 
 %{?!python_module:%define python_module() python3-%{**}}
+%define modname  ipyleaflet
 %define         skip_python2 1
 Name:           python-ipyleaflet
-Version:        0.17.0
+Version:        0.17.1
 Release:        0
 Summary:        A Jupyter widget for dynamic Leaflet maps
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/jupyter-widgets/ipyleaflet
-Source:         https://files.pythonhosted.org/packages/py2.py3/i/ipyleaflet/ipyleaflet-%{version}-py2.py3-none-any.whl
+Source:         https://files.pythonhosted.org/packages/source/i/%{modname}/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module notebook}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
@@ -53,6 +54,9 @@ This package provides the python interface.
 
 %package     -n jupyter-ipyleaflet
 Summary:        A Jupyter widget for dynamic Leaflet maps - Jupyter files
+BuildRequires:  %{python_module jupyter_packaging}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 Requires:       jupyter-ipywidgets >= 7.0.0
 Requires:       jupyter-jupyterlab
 Requires:       jupyter-notebook
@@ -65,13 +69,13 @@ A Jupyter / Leaflet bridge enabling interactive maps in the Jupyter notebook.
 This package provides the extensions for jupyter notebook and jupyterlab.
 
 %prep
-%setup -q -c -T
+%setup -q -n %{modname}-%{version}
 
 %build
-# Not Needed
+%pyproject_wheel
 
 %install
-%pyproject_install %{SOURCE0}
+%pyproject_install
 
 %jupyter_move_config
 %fdupes %{buildroot}%{_jupyter_prefix}

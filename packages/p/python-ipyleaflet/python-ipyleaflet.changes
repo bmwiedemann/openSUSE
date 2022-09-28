@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep 27 22:31:15 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to version 0.17.1:
+  - Add a colormap control to be used with Choropleth layer
+  - Add zoom_offset param to TileLayer by @ned2
+  - Add support for as_leaflet_layer in Map.add
+  - ipywidgets 8.0 support
+  - Pin nodejs=16, drop base setup
+  - Remove HikeBike basemap from the examples
+  - Use the latest jupyterlite-sphinx release on ReadTheDocs
+  - Lazy-load the JupyterLite embedded page in documentation
+
+-------------------------------------------------------------------
 Sat Jul  9 13:22:48 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 0.17.0:
