@@ -15,4 +15,22 @@
     <comment></comment>
     <requestid>949446</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>deaf2bb8071f5c5cdbf1c4ad22d310df</srcmd5>
+    <version>1.8.1</version>
+    <time>1664380293</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 1.8.1:
+  * Updated translations.
+- Changes from version 1.8.0:
+  * System light/dark theme support.
+  * Updated Wikipedia language list.
+  * Bug fixes.
+  * Updated translations.
+- Changes from version 1.7.2:
+  * Updated translations.
+- Changes from version 1.7.1:
+  * Updated translations.</comment>
+    <requestid>1006521</requestid>
+  </revision>
 </revisionlist>
