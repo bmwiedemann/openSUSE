@@ -677,4 +677,12 @@ https://doc.powerdns.com/recursor/changelog/4.4.html#change-4.4.3</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1000494</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>7f7242ad19e9b4c12158ba761121a727</srcmd5>
+    <version>4.7.3</version>
+    <time>1664380280</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1006510</requestid>
+  </revision>
 </revisionlist>

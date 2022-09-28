@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep 20 09:03:59 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- update to 4.7.3
+  * Improvements
+    - For zones having many NS records, we are not interested in all so take a sample. #11904, PR#11936
+    - Also check qperq limit if throttling happened, as it increases counters. #11848, PR#11897
+  * Bug Fixes
+    - Failure to retrieve DNSKEYs of an Insecure zone should not be fatal. #11890, PR#11940
+    - Fix recursor not responsive after Lua config reload. #11850, PR#11879
+    - Clear the caches after loading authzones. #11843, PR#11847
+    - Resize answer length to actual received length in udpQueryResponse. #11773, PR#11774
+
+-------------------------------------------------------------------
 Wed Aug 24 15:06:22 UTC 2022 - Adam Majer <adam.majer@suse.de>
 
 - Bump requires to newer Boost, effectively disabling support for SLE-12
