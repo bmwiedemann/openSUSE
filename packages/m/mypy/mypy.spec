@@ -21,7 +21,7 @@
 %define skip_python2 1
 %define typed_ast_version 1.5.1
 Name:           mypy
-Version:        0.971
+Version:        0.981
 Release:        0
 Summary:        Optional static typing for Python
 License:        MIT
@@ -31,8 +31,6 @@ Source0:        https://files.pythonhosted.org/packages/source/m/mypy/mypy-%{ver
 # License Source1: Apache-2.0. Only for the test suite, not packaged here.
 Source1:        https://files.pythonhosted.org/packages/source/t/types-typed-ast/types-typed-ast-%{typed_ast_version}.tar.gz
 Source99:       mypy-rpmlintrc
-# PATCH-FIX-UPSTREAM mypy-pr13259-walrus.patch gh#python/mypy#13259 -- fix test failures with Python >= 3.10.6
-Patch0:         mypy-pr13259-walrus.patch
 BuildRequires:  %{python_module mypy_extensions >= 0.4.3}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tomli >= 1.1.0 if %python-base < 3.11}

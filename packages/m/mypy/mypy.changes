@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Sep 27 16:01:57 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove mypy-pr13259-walrus.patch because it's not needed anymore, it's in the
+  release now -- gh#python/mypy#13259
+
+- Update to 0.981
+  - Drop support for Python3.6 and python2
+  - Generate Error on Unbound TypeVar Return Type
+  - Methods with Empty Bodies in Protocols Are Abstract
+  - Implicit Optional Types Will Be Disabled by Default
+  - Precise Types for **kwds Using TypedDict
+  - Experimental Support for General Recursive Types
+  - Generic NamedTuples and TypedDicts
+  - Better Support for Callable Attributes
+  - Per-Module Error Code Configuration
+  - Experimental Support for Interactive Inspection of Expressions
+  - Mypyc Improvements
+    * Support async for as a statement and in comprehensions (Michael J.
+      Sullivan, PR 13444)
+    * Support async with (Michael J. Sullivan, PR 13442)
+    * Fix clang warning on different signs integer (Paul m. p. Peny, PR 13239)
+    * Fix AttributeError message (Jukka Lehtosalo, PR 13382)
+    * Fix __call__ subclasses (Ken Jin, PR 13152)
+    * Fix setup conflict with attributes named up (davfsa, PR 13012)
+    * Fix bad C generated for multiple assignment (Jukka Lehtosalo, PR 13147)
+    * Update, simplify check version test (Shantanu, PR 13125)
+
+  The full release notes can be found here: 
+  https://mypy-lang.blogspot.com/2022/09/mypy-0981-released.html
+
+-------------------------------------------------------------------
 Sat Aug  6 15:12:25 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update Requirements
