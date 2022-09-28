@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 28 00:47:23 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.1+20220928.ded85d0a:
+  * Dev: behave: Add functional test based on previous changes
+  * Dev: unittest: Adjust unit test based on previous changes
+  * Dev: bootstrap: Adjust cluster properties including priority-fencing-delay
+
+-------------------------------------------------------------------
 Fri Sep 23 09:05:44 UTC 2022 - XLiang@suse.com
 
 - Update to version 4.4.1+20220923.9651e0fa:
