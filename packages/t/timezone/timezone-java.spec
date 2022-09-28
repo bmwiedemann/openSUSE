@@ -25,7 +25,7 @@ License:        BSD-3-Clause AND SUSE-Public-Domain
 Group:          System/Base
 # COMMON-BEGIN
 # COMMON-BEGIN
-Version:        2022c
+Version:        2022d
 Release:        0
 Source:         https://www.iana.org/time-zones/repository/releases/tzdata%{version}.tar.gz
 Source1:        https://www.iana.org/time-zones/repository/releases/tzcode%{version}.tar.gz
@@ -49,8 +49,6 @@ BuildArch:      noarch
 %description
 These are configuration files that describe available time zones - this
 package is intended for Java Virtual Machine based on OpenJDK.
-
-
 
 %prep
 %setup -c  -a 1
