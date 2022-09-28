@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Sep 28 05:01:37 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.11.2:
+  * deps: fix race condition during graph traversal (#9878)
+  * ci: limit job permissions from default (#9874)
+  * remove unnecessary code
+  * add more information when service.platform isn't part of  service.build.platforms
+  * ci: upgrade to compose-go v1.6.0
+  * cli: add shell completion function (#9269)
+  * run: clean service command if entrypoint is overridden (#9836)
+  * Remove support for `DOCKER_HOST` in `.env` files (#9871)
+  * keep the platform defined, in priority, via DOCKER_DEFAULT_PLATFORM or the service.plaform one if no build platforms provided
+  * Restore `-s` in `uname` OS detection logic in `Makefile`
+  * Streamline GHA workflow
+  * Upgrade `actions/setup-go` to v3
+  * Skip some tests in CI due to flakiness
+  * Increase E2E test timeouts to reduce flakiness
+  * Temporarily disable broken E2E tests on Windows
+  * Rework Makefile for better Windows support
+  * Add GitHub Action workflow to run tests on Mac/Windows runners
+  * configure default builder export when no build.platforms defined
+  * Remove `/rebase` GitHub Action since it's no longer necessary
+
+-------------------------------------------------------------------
 Wed Sep 21 08:31:36 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 2.11.1:
