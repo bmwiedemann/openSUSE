@@ -244,4 +244,16 @@
     <user>dimstar_suse</user>
     <comment>https://github.com/openSUSE/rpm-config-SUSE/issues/61</comment>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>79dd6c60fe7523ac0b2191e072b6de04</srcmd5>
+    <version>20220926</version>
+    <time>1664380271</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 20220926:
+  * Revert macros.debuginfo and prefer a direct rpm patch
+  * Fix kernel builds after #59
+  * Redefine %__debug_install_post to simplify debuginfo setup
+  * Fix bug not using custom name for summary and description in language packages (boo#1137381)</comment>
+    <requestid>1006105</requestid>
+  </revision>
 </revisionlist>

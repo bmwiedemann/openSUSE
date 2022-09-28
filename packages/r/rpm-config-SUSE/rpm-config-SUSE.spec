@@ -18,7 +18,7 @@
 
 
 Name:           rpm-config-SUSE
-Version:        20220421
+Version:        20220926
 Release:        0
 Summary:        SUSE specific RPM configuration files
 License:        GPL-2.0-or-later
