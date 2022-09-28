@@ -644,4 +644,12 @@ Lets break everything :)
   * Revert &quot;Let symlinks from /lib/modules to /usr/src be absolute&quot;</comment>
     <requestid>931714</requestid>
   </revision>
+  <revision rev="74" vrev="2">
+    <srcmd5>0a3c87bd5daaa6e7e5f9808b7d96fbe2</srcmd5>
+    <version>84.87+git20211116.6c5fe09</version>
+    <time>1664380266</time>
+    <user>RBrownFactory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1006017</requestid>
+  </revision>
 </revisionlist>

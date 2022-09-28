@@ -2,7 +2,7 @@
   <service name="tar_scm" mode="manual">
     <param name="version">84.87</param>
     <param name="versionformat">84.87+git%cd.%h</param>
-    <param name="url">git://github.com/openSUSE/brp-check-suse.git</param>
+    <param name="url">https://github.com/openSUSE/brp-check-suse.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
     <param name="revision">master</param>
