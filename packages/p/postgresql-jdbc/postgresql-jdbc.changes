@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 27 14:35:20 UTC 2022 - Michael Calmer <mc@suse.com>
+
+- Address SQL Injection Vulnerability CVE-2022-31197
+  (bsc#1202170)
+  * Add: fix-SQL-Injection-CVE-2022-31197.patch
+
+-------------------------------------------------------------------
 Fri Jun  3 10:34:36 UTC 2022 - Michael Calmer <mc@suse.com>
 
 - Address arbitrary File Write Vulnerability CVE-2022-26520
