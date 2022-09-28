@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Sep 28 01:22:33 UTC 2022 - william.brown@suse.com
+
+- Update to version 20220928:
+  * Assigned RUSTSEC-2022-0056 to clipboard (#1425)
+  * Add unmaintained `clipboard` (#1267)
+  * Fix informational footnote wording (#1420)
+  * Add `stylish` as `ansi_term` alternative (#1421)
+  * Assigned RUSTSEC-2022-0055 to axum-core (#1419)
+  * Add `axum-core` DoS (#1417)
+  * Assigned RUSTSEC-2021-0144 to traitobject (#1415)
+  * Add unmaintained `traitobject` (#1390)
+  * Assigned RUSTSEC-2019-0039 to typemap (#1414)
+  * Add unmaintained `typemap` (#1406)
+
+-------------------------------------------------------------------
 Wed May 11 01:12:29 UTC 2022 - wbrown@suse.de
 
 - Update to version 20220511:
