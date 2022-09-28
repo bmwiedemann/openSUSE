@@ -20,7 +20,7 @@
 %define doc_ver 5.2.0
 %bcond_without libalternatives
 Name:           python-nbformat
-Version:        5.5.0
+Version:        5.6.1
 Release:        0
 Summary:        The Jupyter Notebook format
 License:        BSD-3-Clause
@@ -29,10 +29,12 @@ URL:            https://github.com/jupyter/nbformat
 # PyPI sdist has only some schema tests, get the full test suite from GitHub sources
 Source:         https://github.com/jupyter/nbformat/archive/%{version}.tar.gz#/nbformat-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module flit-core >= 3.2}
+BuildRequires:  %{python_module hatch_nodejs_version}
+BuildRequires:  %{python_module hatchling >= 1.5}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  nodejs
 BuildRequires:  python-rpm-macros >= 20210929
 Requires:       jupyter-nbformat = %{version}
 Requires:       python-fastjsonschema

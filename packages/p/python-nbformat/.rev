@@ -148,4 +148,19 @@
 </comment>
     <requestid>1004202</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a2cdff00e81525cb89151c9520b5efab</srcmd5>
+    <version>5.6.1</version>
+    <time>1664380297</time>
+    <user>RBrownFactory</user>
+    <comment>- update to version 5.6.1:
+  * Fix handling of &quot;__version__` on Python 3.7.
+- specfile:
+  * change to hatchling
+- update to version 5.6.0:
+  * Fix docs and type annotations for validator.normalize.
+  * Switch to hatch build backend.
+</comment>
+    <requestid>1006527</requestid>
+  </revision>
 </revisionlist>
