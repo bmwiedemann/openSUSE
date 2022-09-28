@@ -1499,4 +1499,28 @@ Changes:
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>983980</requestid>
   </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>a91bef58a392942c0e83bba21ea826e4</srcmd5>
+    <version>20220927</version>
+    <time>1664380268</time>
+    <user>RBrownFactory</user>
+    <comment>- fix build of testsuite spec file
+
+- sync factory build config
+- build-recipe-livebuild: run as root
+- vm_kill_kvm: Use SIGKILL after 3 minutes if the kvm process is not going away
+- Zip: Allow extraction of symlink targets
+- Convert obsolete egrep/fgrep calls to grep -E/-F
+- Add RemoteAsset support for Dockerfile based builds
+- new image format: mkosi
+- Support stacked container builds
+- Revert &quot;build-vm-kvm: enable l3-cache on i386/x86_64 builds&quot;
+- handling of non-compressed tar when creating Debian archive for DSC 3.0
+
+- kvm: exclude powerpc from io_uring, enable iothreads always (#829)
+- kvm: enable more performant I/O also for s390(x) (#828)
+- Changelog patching when building DSC format 3.0. (#831)
+- support for building from slsa provenance files</comment>
+    <requestid>1006382</requestid>
+  </revision>
 </revisionlist>

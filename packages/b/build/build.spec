@@ -28,7 +28,7 @@ Name:           %{__pkg_name}
 Summary:        A Script to Build SUSE Linux RPMs
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          Development/Tools/Building
-Version:        20220613
+Version:        20220927
 Release:        0
 Source:         obs-build-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -64,16 +64,20 @@ Conflicts:      qemu < 2.5.0
 BuildRequires:  perl(Date::Parse)
 BuildRequires:  perl(Test::Harness)
 BuildRequires:  perl(Test::More)
+%if 0%{?suse_version} >= 1200
 BuildRequires:  perl(YAML::LibYAML)
+%endif
 %if 0%{?suse_version} > 1000 || 0%{?centos_version} >= 800 || 0%{?rhel_version} >= 800 || 0%{?fedora_version} >= 21
 # None of them are actually required for core features.
 # Perl helper scripts use them.
-Recommends:     perl(Date::Language)
+Recommends:     perl(Archive::Tar)
 Recommends:     /sbin/mkfs.ext3
 Recommends:     /usr/bin/qemu-kvm
 Recommends:     bsdtar
 Recommends:     qemu-linux-user
 Recommends:     zstd
+Recommends:     perl(Config::IniFiles)
+Recommends:     perl(Date::Language)
 Recommends:     perl(Date::Parse)
 Recommends:     perl(LWP::UserAgent)
 Recommends:     perl(Net::SSL)
@@ -162,7 +166,6 @@ make CFLAGS="$RPM_BUILD_FLAGS" initvm-all
 make DESTDIR=%{buildroot} initvm-install
 strip %{buildroot}/usr/lib/build/initvm.*
 export NO_BRP_STRIP_DEBUG="true"
-chmod 0644 %{buildroot}/usr/lib/build/initvm.*
 %endif
 
 # main
@@ -256,6 +259,9 @@ exit 0
 sed -i 's,build-mkbaselibs,,' ../configs/*.conf
 if [ ! -e /.build.packages/rpmlint-Factory.rpm ]; then
   sed -i 's,rpmlint-Factory,,' ../configs/*.conf
+fi
+if [ ! -e /.build.packages/rpmlint-strict.rpm ]; then
+  sed -i 's,rpmlint-strict,,' ../configs/*.conf
 fi
 ./testbuild.sh /.build.binaries/
 
