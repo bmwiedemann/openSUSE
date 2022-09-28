@@ -152,6 +152,10 @@ thread-21.16
 %ifarch riscv64
 binary-40.3
 %endif
+%if 0%{?qemu_user_space_build}
+socket-14.15
+thread-16.2
+%endif
 EOF
 %ifnarch s390 s390x
 make test 2>&1 | tee testresults

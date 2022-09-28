@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 21 14:25:37 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- skip more tests with qemu_user builds (e.g. riscv64)
+
+-------------------------------------------------------------------
 Tue Mar 29 12:50:00 UTC 2022 - Reinhard Max <max@suse.com>
 
 - Remove the SQLite extension and package it as a subpackage of

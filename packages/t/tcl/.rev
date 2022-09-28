@@ -686,4 +686,12 @@ sqlite3 patch I will submit in a moment.</comment>
     (bsc#1179615, bsc#1181840).</comment>
     <requestid>965666</requestid>
   </revision>
+  <revision rev="64" vrev="3">
+    <srcmd5>98f5fa7f6d25858b69a79af8f06f346a</srcmd5>
+    <version>8.6.12</version>
+    <time>1664380272</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1006111</requestid>
+  </revision>
 </revisionlist>
