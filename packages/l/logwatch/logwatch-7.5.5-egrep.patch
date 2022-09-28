@@ -2,10 +2,10 @@ From: Andreas Stieger <Andreas.Stieger@gmx.de>
 Date: Thu, 22 Sep 2022 21:53:27 +0200
 References: boo#1293665
 
-Index: logwatch-7.5.5/scripts/logwatch.pl
+Index: logwatch-7.7/scripts/logwatch.pl
 ===================================================================
---- logwatch-7.5.5.orig/scripts/logwatch.pl
-+++ logwatch-7.5.5/scripts/logwatch.pl
+--- logwatch-7.7.orig/scripts/logwatch.pl
++++ logwatch-7.7/scripts/logwatch.pl
 @@ -702,7 +702,7 @@ $ENV{'LOGWATCH_NUMERIC'} = $Config{'nume
  $ENV{'HOSTNAME'} = $Config{'hostname'};
  $ENV{'OSname'} = $OSname;
@@ -15,7 +15,7 @@ Index: logwatch-7.5.5/scripts/logwatch.pl
  
  #split and splitmail also play with LOGWATCH_ONLY_HOSTNAME which is not shown by debug
  if ($Config{'hostlimit'}) {
-@@ -1399,11 +1399,11 @@ sub parselogs {
+@@ -1401,11 +1401,11 @@ sub parselogs {
              $Command = " ( $Config{'pathtocat'} $FileText| " ;
              if ($ServiceData{$Service}{pre_ignore}) {
                 if ($no_egrep) {
@@ -29,13 +29,13 @@ Index: logwatch-7.5.5/scripts/logwatch.pl
                 }
              }
              if ($HostStrip ne " ") {
-Index: logwatch-7.5.5/scripts/shared/onlycontains
+Index: logwatch-7.7/scripts/shared/onlycontains
 ===================================================================
---- logwatch-7.5.5.orig/scripts/shared/onlycontains
-+++ logwatch-7.5.5/scripts/shared/onlycontains
-@@ -18,9 +18,9 @@
- ## copyright please contact logwatch-devel@lists.sourceforge.net.
- #########################################################
+--- logwatch-7.7.orig/scripts/shared/onlycontains
++++ logwatch-7.7/scripts/shared/onlycontains
+@@ -20,9 +20,9 @@
+ 
+ use strict;
  
 -# Just does a case-insensitive egrep ;)
 +# Just does a case-insensitive grep -E ;)
@@ -45,13 +45,13 @@ Index: logwatch-7.5.5/scripts/shared/onlycontains
  
  # vi: shiftwidth=3 syntax=perl tabstop=3 et
  # Local Variables:
-Index: logwatch-7.5.5/scripts/shared/remove
+Index: logwatch-7.7/scripts/shared/remove
 ===================================================================
---- logwatch-7.5.5.orig/scripts/shared/remove
-+++ logwatch-7.5.5/scripts/shared/remove
-@@ -18,10 +18,10 @@
- ## copyright please contact logwatch-devel@lists.sourceforge.net.
- #########################################################
+--- logwatch-7.7.orig/scripts/shared/remove
++++ logwatch-7.7/scripts/shared/remove
+@@ -20,10 +20,10 @@
+ 
+ use strict;
  
 -# Just a case-insensitive, inverse egrep
 +# Just a case-insensitive, inverse grep -E

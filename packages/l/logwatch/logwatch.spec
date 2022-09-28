@@ -17,13 +17,12 @@
 
 
 Name:           logwatch
+Version:        7.7
+Release:        0
 Summary:        Tool to analyze and report on system logs
 License:        MIT
 Group:          System/Monitoring
-Version:        7.5.5
-Release:        0
 URL:            https://sourceforge.net/projects/logwatch/
-BuildArch:      noarch
 Source0:        https://sourceforge.net/projects/logwatch/files/%{name}-%{version}/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 Source2:        Logwatch_Dmeventd_Setup_Files.tar.xz
@@ -34,22 +33,20 @@ Patch3:         harden_logwatch.service.patch
 Patch4:         harden_logwatch_dmeventd.service.patch
 # PATCH-FIX-UPSTREAM https://sourceforge.net/p/logwatch/bugs/109/
 Patch5:         logwatch-7.5.5-egrep.patch
+BuildRequires:  xz
 Requires:       grep
 Requires:       mailx
 Requires:       perl
 Requires:       perl-Date-Manip
 Requires:       sh-utils
 Requires:       textutils
-BuildRequires:  xz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildArch:      noarch
 # The main reason for using systemd timers for logwatch is on distros which
 # use timers for logrotate, to keep logwatch running before logrotate, as it
 # does where both use cron.daily.  We don't need to use systemd timers on all
 # distros with systemd, just those with logrotate.timer, which for SUSE is
 # SLE 12 SP3/Leap 42.3 and newer (including 15.x).
-
 %{?systemd_requires}
-
 %if 0%{?suse_version}
 BuildRequires:  systemd-rpm-macros
 %else
@@ -66,9 +63,9 @@ desired areas at the desired detail level.
 chmod u+w Logwatch_Setup_Files/*
 %patch0
 %patch2
-cp %{S:3} .
+cp %{SOURCE3} .
 # fix package doc dir in man page
-sed -i -e 's,/usr/share/doc/logwatch-\*,%{_defaultdocdir}/logwatch,' logwatch.8
+sed -i -e 's,%{_datadir}/doc/logwatch-\*,%{_defaultdocdir}/logwatch,' logwatch.8
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
@@ -89,7 +86,7 @@ install -m 0755 -d %{buildroot}%{_datadir}/logwatch/dist.conf/services
 install -m 0755 -d %{buildroot}%{_datadir}/logwatch/scripts/services
 install -m 0755 -d %{buildroot}%{_datadir}/logwatch/scripts/shared
 install -m 0755 -d %{buildroot}%{_datadir}/logwatch/lib
-install -m 0755 -d %{buildroot}/var/lib/logwatch
+install -m 0755 -d %{buildroot}%{_localstatedir}/lib/logwatch
 install -m 0755 scripts/logwatch.pl %{buildroot}%{_datadir}/logwatch/scripts/logwatch.pl
 for i in scripts/logfiles/* ; do
    if [ $(ls $i | wc -l) -ne 0 ] ; then
@@ -152,7 +149,6 @@ echo "# Configuration overrides for specific logfiles/services may be placed her
 %service_del_postun %{name}.service %{name}.timer logwatch_dmeventd.service logwatch_dmeventd.timer
 
 %files
-%defattr(-,root,root)
 %doc README HOWTO-Customize-LogWatch ChangeLog
 %dir %{_var}/cache/logwatch
 %dir %{_sysconfdir}/logwatch
@@ -174,7 +170,7 @@ echo "# Configuration overrides for specific logfiles/services may be placed her
 %dir %{_datadir}/logwatch/scripts/shared
 %dir %{_datadir}/logwatch/scripts/logfiles/*
 %dir %{_datadir}/logwatch/lib
-%dir /var/lib/logwatch
+%dir %{_localstatedir}/lib/logwatch
 %{_datadir}/logwatch/scripts/logwatch.pl
 %{_sbindir}/logwatch
 %{_datadir}/logwatch/scripts/shared/*
@@ -193,8 +189,8 @@ echo "# Configuration overrides for specific logfiles/services may be placed her
 %{_unitdir}/logwatch_dmeventd.timer
 %{_sbindir}/rclogwatch
 %{_sbindir}/rclogwatch_dmeventd
-%doc %{_mandir}/man8/logwatch.8*
-%doc %{_mandir}/man5/*.conf.5*
+%{_mandir}/man8/logwatch.8%{?ext_man}
+%{_mandir}/man5/*.conf.5%{?ext_man}
 %config(noreplace) %{_sysconfdir}/logwatch/conf/*.conf
 
 %changelog
