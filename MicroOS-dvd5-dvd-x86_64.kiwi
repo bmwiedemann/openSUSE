@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20220926" schemaversion="4.1">
+<image name="OBS__MicroOS___20220927" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20220926</productvar>
+      <productvar name="VERSION">20220927</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20220926,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20220927,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20220926/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20220927/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -2831,6 +2831,8 @@
       <repopackage name="yelp" arch="x86_64"/>
       <repopackage name="yelp-lang" arch="x86_64"/>
       <repopackage name="yelp-xsl" arch="x86_64"/>
+      <repopackage name="zenity" arch="x86_64"/>
+      <repopackage name="zenity-lang" arch="x86_64"/>
       <repopackage name="zeromq-tools"/>
       <repopackage name="zip" arch="x86_64"/>
       <repopackage name="zisofs-tools" arch="x86_64"/>
