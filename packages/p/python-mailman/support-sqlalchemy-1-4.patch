@@ -1,7 +1,7 @@
-Index: mailman-3.3.4/setup.py
+Index: mailman-3.3.5/setup.py
 ===================================================================
---- mailman-3.3.4.orig/setup.py
-+++ mailman-3.3.4/setup.py
+--- mailman-3.3.5.orig/setup.py
++++ mailman-3.3.5/setup.py
 @@ -127,7 +127,7 @@ case second 'm'.  Any other spelling is
          'python-dateutil>=2.0',
          'passlib',
@@ -11,10 +11,10 @@ Index: mailman-3.3.4/setup.py
          'zope.component',
          'zope.configuration',
          'zope.event',
-Index: mailman-3.3.4/src/mailman/database/tests/test_factory.py
+Index: mailman-3.3.5/src/mailman/database/tests/test_factory.py
 ===================================================================
---- mailman-3.3.4.orig/src/mailman/database/tests/test_factory.py
-+++ mailman-3.3.4/src/mailman/database/tests/test_factory.py
+--- mailman-3.3.5.orig/src/mailman/database/tests/test_factory.py
++++ mailman-3.3.5/src/mailman/database/tests/test_factory.py
 @@ -76,10 +76,11 @@ class TestSchemaManager(unittest.TestCas
          # In case of MySQL, you cannot create/drop indexes on primary keys
          # manually as it is handled automatically by MySQL.
@@ -41,19 +41,23 @@ Index: mailman-3.3.4/src/mailman/database/tests/test_factory.py
          config.db.commit()
  
      def test_current_database(self):
-Index: mailman-3.3.4/src/mailman/model/listmanager.py
+Index: mailman-3.3.5/src/mailman/model/listmanager.py
 ===================================================================
---- mailman-3.3.4.orig/src/mailman/model/listmanager.py
-+++ mailman-3.3.4/src/mailman/model/listmanager.py
-@@ -31,6 +31,7 @@ from mailman.model.mime import ContentFi
+--- mailman-3.3.5.orig/src/mailman/model/listmanager.py
++++ mailman-3.3.5/src/mailman/model/listmanager.py
+@@ -31,6 +31,11 @@ from mailman.model.mime import ContentFi
  from mailman.utilities.datetime import now
  from mailman.utilities.queries import QuerySequence
  from public import public
-+from sqlalchemy.engine import Row
++try:
++    from sqlalchemy.engine import Row
++except ImportError:
++    from sqlalchemy.engine import RowProxy as Row
++
  from zope.event import notify
  from zope.interface import implementer
  
-@@ -120,7 +121,7 @@ class ListManager:
+@@ -120,7 +125,7 @@ class ListManager:
          """See `IListManager`."""
          result_set = store.query(MailingList)
          for list_id in result_set.values(MailingList._list_id):
@@ -62,30 +66,3 @@ Index: mailman-3.3.4/src/mailman/model/listmanager.py
              yield list_id[0]
  
      @property
-Index: mailman-3.3.4/src/mailman/commands/tests/test_cli_delmembers.py
-===================================================================
---- mailman-3.3.4.orig/src/mailman/commands/tests/test_cli_delmembers.py
-+++ mailman-3.3.4/src/mailman/commands/tests/test_cli_delmembers.py
-@@ -129,7 +129,9 @@ class TestCLIDelMembers(unittest.TestCas
-         subscribe(self._mlist, 'Bart')
-         result = self._command.invoke(delmembers, (
-             '-a', '-l', 'ant.example.com'))
--        self.assertEqual(result.output, '')
-+        # Do not check empty output until cache_ok warning is fixed:
-+        # https://gitlab.com/mailman/mailman/-/issues/845
-+        #self.assertEqual(result.output, '')
-         members = list(self._mlist.members.members)
-         self.assertEqual(len(members), 0)
- 
-@@ -143,7 +145,9 @@ class TestCLIDelMembers(unittest.TestCas
-             print('Bart Person <bperson@example.com>', file=infp)
-             result = self._command.invoke(delmembers, (
-                 '--fromall', '-f', infp.name))
--        self.assertEqual(result.output, '')
-+        # Do not check empty output until cache_ok warning is fixed:
-+        # https://gitlab.com/mailman/mailman/-/issues/845
-+        #self.assertEqual(result.output, '')
-         members = list(self._mlist.members.members)
-         self.assertEqual(len(members), 1)
-         self.assertEqual(str(members[0].address),
-
