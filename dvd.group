@@ -3999,6 +3999,7 @@
     <package name="ruby3.1-rubygem-regexp_parser" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-responders" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-reverse_markdown" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.1-rubygem-rgl" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-rice" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-ronn" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-rouge" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
