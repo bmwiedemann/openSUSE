@@ -1,7 +1,7 @@
 #
 # spec file for package libffi
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ Group:          Development/Languages/C and C++
 URL:            https://sourceware.org/libffi/
 Source:         https://github.com/libffi/libffi/releases/download/v%{version}/libffi-%{version}.tar.gz
 Source99:       baselibs.conf
+Patch24301:     riscv-rvalue-ext.patch
 # for make check
 BuildRequires:  dejagnu
 BuildRequires:  expect
@@ -64,7 +65,7 @@ time.
 %postun -n libffi%{libffi_sover} -p /sbin/ldconfig
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 # https://github.com/libffi/libffi/pull/647

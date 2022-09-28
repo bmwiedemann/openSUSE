@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 23 12:48:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add riscv-rvalue-ext.patch to fix libffi for RISCV64
+
+-------------------------------------------------------------------
 Wed Dec  1 15:44:46 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - disable static trampolines (bsc#1193272) 

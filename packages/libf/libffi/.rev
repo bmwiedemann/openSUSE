@@ -103,4 +103,12 @@
     <comment>- disable static trampolines (bsc#1193272) (forwarded request 935016 from dirkmueller)</comment>
     <requestid>935125</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>7d7e0ae42b0df388f57a80b100500f75</srcmd5>
+    <version>3.4.2</version>
+    <time>1664380267</time>
+    <user>RBrownFactory</user>
+    <comment>- add riscv-rvalue-ext.patch to fix libffi for RISCV64</comment>
+    <requestid>1006099</requestid>
+  </revision>
 </revisionlist>
