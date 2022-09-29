@@ -50,4 +50,12 @@
 - Drop bcond test now that upstream no longer supports Python 2</comment>
     <requestid>820819</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c9af68ed922ef19ebfece6486458c605</srcmd5>
+    <version>2.3.0</version>
+    <time>1664468004</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1006742</requestid>
+  </revision>
 </revisionlist>
