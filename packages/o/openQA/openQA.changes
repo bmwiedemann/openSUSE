@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 28 09:53:36 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1664284663.969184c:
+  * Include virtio VGA support in the openqa_worker container
+
+-------------------------------------------------------------------
 Fri Sep 23 13:54:33 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1663941254.b479233:
