@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 28 15:16:23 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to v3.4.1
+- Add multibuild support to run tests
+- Remove sphinx-testing dependecy
+
+-------------------------------------------------------------------
 Wed Nov 17 11:03:54 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
 
 - Fix building on openSUSE 15.3

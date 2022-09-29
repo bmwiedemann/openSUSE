@@ -15,4 +15,15 @@
     <comment></comment>
     <requestid>932338</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>05de9823a0e2d49fc76aa5c65a2b893f</srcmd5>
+    <version>3.4.1</version>
+    <time>1664467994</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to v3.4.1
+- Add multibuild support to run tests
+- Remove sphinx-testing dependecy
+</comment>
+    <requestid>1006716</requestid>
+  </revision>
 </revisionlist>
