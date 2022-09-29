@@ -19,7 +19,6 @@
 %define apptainerpath src/github.com/apptainer/
 %define _buildshell /bin/bash
 
-%define vers_suffix -rc.3
 %global squashfuse_version 0.1.105
 
 Summary:        Application and environment virtualization
