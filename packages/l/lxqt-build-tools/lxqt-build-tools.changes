@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 29 09:18:23 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch to fix libqt5xdg with latest glib-2.0:
+  * 4991811-fix-FindGLIB.cmake.patch
+
+-------------------------------------------------------------------
 Mon Aug 29 14:23:55 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - bsc#1195421: Add lxqt-build-tools-symbolic.patch
