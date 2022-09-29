@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Sep 25 20:21:02 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.6.2:
+  * Fixed
+    + #2237 Ensure calls to plotly.js from dcc.Graph are properly
+       sequenced even if React initiates multiple render cycles in
+       quick succession.
+    + #2218 Fix bug #1348 Validate children prop (required or not).
+    + #2223 Exclude hidden folders when building dash.page_registry.
+    + #2182 Fix #2172 Make it so that when using pages, if
+       suppress_callback_exceptions=True the validation_layout is not
+       set.
+    + #2152 Fix bug #2128 preventing rendering of multiple components
+       inside a dictionary.
+    + #2187 Fix confusing error message when trying to use pytest
+       fixtures but dash[testing] is not installed.
+    + #2202 Fix bug #2185 when you copy text with multiple quotes into
+       a table
+    + #2226 Fix #2219 pages register & background callbacks.
+
+-------------------------------------------------------------------
 Sun Aug 21 15:33:31 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 2.6.1:

@@ -19,7 +19,7 @@
 # We can't test currenty, see below.
 %bcond_with test
 Name:           python-dash
-Version:        2.6.1
+Version:        2.6.2
 Release:        0
 Summary:        Python framework for building reactive web-apps
 License:        MIT
