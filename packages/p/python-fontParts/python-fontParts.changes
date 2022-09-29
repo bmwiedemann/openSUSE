@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Sep 28 15:36:02 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- version update to 0.10.8 
+  * add contour.setStartPoint + test by @typemytype in #668
+
+- version update to 0.10.7
+  * Update fonttools to 4.34.4 by @pyup-bot in #659
+  * Update setuptools_scm to 7.0.5 by @pyup-bot in #660
+  * move the code example above the list by @typemytype in #661
+
+- version update to 0.10.6
+  * Implement OpenFonts. by @typesupply in #651
+
+- version update to 0.10.5
+  * Add implementation for glyph.autoContourOrder() by @roberto-arista in #646
+
+- version update to 0.10.4
+  * copy and change the glyph.name when ever the name is not the same by @typemytype in #634
+
+- version update to 0.10.3
+  * fix doc strings for getCharacterMapping and getReverseComponentMapping by @arialcrime in #626
+  * force change the default layer name to the source defaultLayerName by @typemytype in #630
+
+-------------------------------------------------------------------
 Wed Feb 16 09:50:28 UTC 2022 - pgajdos@suse.com
 
 - version update to 0.10.2

@@ -28,7 +28,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-fontParts%{psuffix}
-Version:        0.10.2
+Version:        0.10.8
 Release:        0
 Summary:        API for interacting with the parts of fonts
 License:        MIT
