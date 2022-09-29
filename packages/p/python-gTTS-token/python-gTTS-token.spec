@@ -1,7 +1,7 @@
 #
 # spec file for package python-gTTS-token
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-gTTS-token
-Version:        1.1.3
+Version:        1.1.4
 Release:        0
 Summary:        Python module for calculating a token to run the Google text-to-speech engine
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/boudewijn26/gTTS-token
+URL:            https://github.com/boudewijn26/gTTS-token
 Source:         https://files.pythonhosted.org/packages/source/g/gTTS-token/gTTS-token-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  dos2unix
