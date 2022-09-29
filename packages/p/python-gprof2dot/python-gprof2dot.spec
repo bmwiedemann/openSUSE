@@ -1,7 +1,7 @@
 #
 # spec file for package python-gprof2dot
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-gprof2dot
-Version:        2019.11.30
+Version:        2022.7.29
 Release:        0
 Summary:        Script to generate a dot graph from the output of several profilers
 License:        LGPL-3.0-or-later
@@ -28,7 +28,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 

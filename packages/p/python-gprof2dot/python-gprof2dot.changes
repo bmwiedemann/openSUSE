@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed Sep 28 21:37:24 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 2022.7.29.
+ * Add twine check --strict to CI
+ * Convert setup.py to setup.cfg
+ * Merge branch 'pull-71'
+ * Added a test for the flag --function-list; made differences in generated files count in test criterion.
+ * Added documentation, made test more stringent, added a github/actions script to test only
+ * Added flag --list-functions; make program runnable in Python2.7 and Python3; description included in documentation
+ * github-actions: Test Python 3.8.
+ * Bump version.
+ * github: Switch from CircleCI to GitHub Actions.
+ * Update gprof2dot.py (#66)
+ * docs: fix simple typo, generted -> generated
+ * travis: Drop integration.
+ * travis: Upgrade to Ubuntu 19.04.
+ * Bump version.
+ * add keyword argv to main, allowing calls like:
+ * Sum call counts in JSON format.
+ * Add dtrace support.
+ * Add build badges.
+ * travis: Disable deployment.
+ * circleci: Integrate.
+ * Add --nodel-label option to specify the measurements shown on the node label(s).
+ * Don't hardcode theme names in opt parsing code
+ * travis: Migrate to VM infrastructure.
+ * travis: Upgrade to Xenial.
+ * Fix a typo in gprof2dot.py
+ * Update instructions for installing dependencies on Linux.
+ * fix Profile.prune() for cases when filename is not set
+ * Remove mentions to hotshot profile.
+ * Add README and LICENSE to the manifest.
+ * Rename README.mardkown to README.md
+ * Deprecated: python 2.6
+ * Add US spelling for option to color nodes by self-time.
+ * Update password.
+ * Update setup comments.
+
+-------------------------------------------------------------------
 Tue May 26 06:34:29 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
