@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 23 07:08:23 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.0.5:
+  * Fix critical bug that causes a shift of 1 pixel in x and y after
+    a registration of images on which there was a meridian flip. 
+
+-------------------------------------------------------------------
 Wed Sep  7 08:03:09 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.0.4:
