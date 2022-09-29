@@ -1,0 +1,1554 @@
+From 2652a28bcc853e0aa20f91cbce3967a6afacecce Mon Sep 17 00:00:00 2001
+From: Daniel Garcia Moreno <daniel.garcia@suse.com>
+Date: Thu, 29 Sep 2022 12:16:42 +0200
+Subject: [PATCH] Remove sphinx-testing from test suite
+
+This patch uses pytest for testing and replaces the sphinx_testing
+package with the default sphinx.testing.
+
+Fix https://github.com/blockdiag/sphinxcontrib-blockdiag/issues/23
+---
+ tests/conftest.py           |   1 +
+ tests/docs/basic/index.rst  |   9 +-
+ tests/docs/subdir/index.rst |   8 +-
+ tests/test_basic.py         |  16 +-
+ tests/test_errors.py        | 116 +++--
+ tests/test_html.py          | 858 +++++++++++++++++++-----------------
+ tests/test_latex.py         | 396 +++++++++--------
+ tox.ini                     |  13 +-
+ 8 files changed, 756 insertions(+), 661 deletions(-)
+ create mode 100644 tests/conftest.py
+
+diff --git a/tests/conftest.py b/tests/conftest.py
+new file mode 100644
+index 0000000..1ece6b4
+--- /dev/null
++++ b/tests/conftest.py
+@@ -0,0 +1 @@
++pytest_plugins = 'sphinx.testing.fixtures'
+diff --git a/tests/docs/basic/index.rst b/tests/docs/basic/index.rst
+index 819e556..8a5a97d 100644
+--- a/tests/docs/basic/index.rst
++++ b/tests/docs/basic/index.rst
+@@ -1,9 +1,6 @@
+-Welcome to test's documentation!
+-================================
+ 
+ .. blockdiag::
+ 
+-   {
+-     A -> B;
+-   }
+-
++   A -> B;
++   A [href = ':ref:`target`'];
++    
+\ No newline at end of file
+diff --git a/tests/docs/subdir/index.rst b/tests/docs/subdir/index.rst
+index 819e556..ba6f8b1 100644
+--- a/tests/docs/subdir/index.rst
++++ b/tests/docs/subdir/index.rst
+@@ -1,9 +1,5 @@
+-Welcome to test's documentation!
+-================================
+ 
+ .. blockdiag::
+ 
+-   {
+-     A -> B;
+-   }
+-
++   A -> B;
++    
+\ No newline at end of file
+diff --git a/tests/test_basic.py b/tests/test_basic.py
+index 0bba91e..c982904 100644
+--- a/tests/test_basic.py
++++ b/tests/test_basic.py
+@@ -1,28 +1,32 @@
+ # -*- coding: utf-8 -*-
+ 
+-from sphinx_testing import with_app
++import os
++import pytest
+ 
+ 
+-@with_app(buildername='html', srcdir='tests/docs/basic/')
++docs = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'docs', 'basic')
++
++
++@pytest.mark.sphinx(buildername='html', srcdir=docs)
+ def test_build_html(app, status, warning):
+     app.builder.build_all()
+ 
+ 
+-@with_app(buildername='singlehtml', srcdir='tests/docs/basic/')
++@pytest.mark.sphinx(buildername='singlehtml', srcdir=docs)
+ def test_build_singlehtml(app, status, warning):
+     app.builder.build_all()
+ 
+ 
+-@with_app(buildername='latex', srcdir='tests/docs/basic/')
++@pytest.mark.sphinx(buildername='latex', srcdir=docs)
+ def test_build_latex(app, status, warning):
+     app.builder.build_all()
+ 
+ 
+-@with_app(buildername='epub', srcdir='tests/docs/basic/')
++@pytest.mark.sphinx(buildername='epub', srcdir=docs)
+ def test_build_epub(app, status, warning):
+     app.builder.build_all()
+ 
+ 
+-@with_app(buildername='json', srcdir='tests/docs/basic/')
++@pytest.mark.sphinx(buildername='json', srcdir=docs)
+ def test_build_json(app, status, warning):
+     app.builder.build_all()
+diff --git a/tests/test_errors.py b/tests/test_errors.py
+index 8a6a89a..58bc67c 100644
+--- a/tests/test_errors.py
++++ b/tests/test_errors.py
+@@ -1,54 +1,84 @@
+ # -*- coding: utf-8 -*-
+ 
+ from mock import patch
+-from sphinx_testing import with_app
+ 
++import os
+ import sys
+-import unittest
++import pytest
+ 
+ 
+-class TestSphinxcontribBlockdiagErrors(unittest.TestCase):
+-    @with_app(srcdir='tests/docs/basic', write_docstring=True)
+-    def test_parse_error(self, app, status, warning):
+-        """
+-        .. blockdiag::
++docs = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'docs', 'basic')
+ 
+-           { A -> B;
+-        """
+-        app.builder.build_all()
+-        self.assertIn('got unexpected token:', warning.getvalue())
+ 
+-    @with_app(srcdir='tests/docs/basic', confoverrides=dict(blockdiag_html_image_format='JPG'))
+-    def test_unknown_format_error(self, app, status, warning):
+-        app.builder.build_all()
+-        self.assertIn('unknown format: JPG', warning.getvalue())
+-
+-    @with_app(srcdir='tests/docs/basic', confoverrides=dict(blockdiag_html_image_format='PDF'))
+-    def test_reportlab_not_found_error(self, app, status, warning):
+-        try:
+-            # unload reportlab and make loading it impossible
+-            sys.modules.pop('reportlab', None)
+-            path = sys.path
+-            sys.path = []
+-
+-            app.builder.build_all()
+-
+-            self.assertIn('Could not output PDF format. Install reportlab.',
+-                          warning.getvalue())
+-        finally:
+-            sys.path = path
+-
+-    @with_app(srcdir='tests/docs/basic')
+-    @patch("blockdiag.utils.rst.nodes.blockdiag.processor.drawer.DiagramDraw")
+-    def test_rendering_error(self, app, status, warning, DiagramDraw):
+-        DiagramDraw.side_effect = RuntimeError("UNKNOWN ERROR!")
+-        app.builder.build_all()
+-        self.assertIn('UNKNOWN ERROR!', warning.getvalue())
++@pytest.mark.sphinx(srcdir=docs)
++def test_parse_error(app, status, warning):
++    doc = """
++.. blockdiag::
++
++   { A -> B;
++    """
++    (app.srcdir / 'index.rst').write_text(doc, encoding='utf-8')
++    app.builder.build_all()
++    assert 'got unexpected token:' in warning.getvalue()
++
++
++@pytest.mark.sphinx(srcdir=docs, confoverrides=dict(blockdiag_html_image_format='JPG'))
++def test_unknown_format_error(app, status, warning):
++    doc = """
++.. blockdiag::
++
++   A -> B;
++    """
++    (app.srcdir / 'index.rst').write_text(doc, encoding='utf-8')
++    app.builder.build_all()
++    assert 'unknown format: JPG' in warning.getvalue()
++
++
++@pytest.mark.sphinx(srcdir=docs, confoverrides=dict(blockdiag_html_image_format='PDF'))
++def test_reportlab_not_found_error(app, status, warning):
++    doc = """
++.. blockdiag::
++
++   A -> B;
++    """
++    (app.srcdir / 'index.rst').write_text(doc, encoding='utf-8')
++    try:
++        # unload reportlab and make loading it impossible
++        sys.modules.pop('reportlab', None)
++        path = sys.path
++        sys.path = []
+ 
+-    @with_app(srcdir='tests/docs/basic')
+-    @patch("sphinxcontrib.blockdiag.blockdiag.drawer.DiagramDraw.draw")
+-    def test_font_settings_error(self, app, status, warning, draw):
+-        draw.side_effect = UnicodeEncodeError("", "", 0, 0, "")
+         app.builder.build_all()
+-        self.assertIn('UnicodeEncodeError caught (check your font settings)',
+-                      warning.getvalue())
++
++        assert 'Could not output PDF format. Install reportlab.' in warning.getvalue()
++    finally:
++        sys.path = path
++
++
++@pytest.mark.sphinx(srcdir=docs)
++@patch("blockdiag.utils.rst.nodes.blockdiag.processor.drawer.DiagramDraw")
++def test_rendering_error(DiagramDraw, app, status, warning):
++    doc = """
++.. blockdiag::
++
++   A -> B;
++    """
++    (app.srcdir / 'index.rst').write_text(doc, encoding='utf-8')
++    DiagramDraw.side_effect = RuntimeError("UNKNOWN ERROR!")
++    app.builder.build_all()
++    assert 'UNKNOWN ERROR!' in warning.getvalue()
++
++
++@pytest.mark.skipif(sys.version_info > (3, 8), reason="Failsonpython > 3.8")
++@pytest.mark.sphinx(srcdir=docs)
++@patch("sphinxcontrib.blockdiag.blockdiag.drawer.DiagramDraw.draw")
++def test_font_settings_error(draw, app, status, warning):
++    doc = """
++.. blockdiag::
++
++   A -> B;
++    """
++    (app.srcdir / 'index.rst').write_text(doc, encoding='utf-8')
++    draw.side_effect = UnicodeEncodeError("", "", 0, 0, "")
++    app.builder.build_all()
++    assert 'UnicodeEncodeError caught (check your font settings)' in warning.getvalue()
+diff --git a/tests/test_html.py b/tests/test_html.py
+index aa530ea..1a953f0 100644
+--- a/tests/test_html.py
++++ b/tests/test_html.py
+@@ -1,405 +1,457 @@
+ # -*- coding: utf-8 -*-
+ 
+-from sphinx_testing import with_app
+-
+-import unittest
+-
+-
+-with_png_app = with_app(srcdir='tests/docs/basic',
+-                        buildername='html',
+-                        write_docstring=True)
+-with_svg_app = with_app(srcdir='tests/docs/basic',
+-                        buildername='html',
+-                        write_docstring=True,
+-                        confoverrides={
+-                            'blockdiag_html_image_format': 'SVG'
+-                        })
+-
+-
+-class TestSphinxcontribBlockdiagHTML(unittest.TestCase):
+-    @with_png_app
+-    def test_build_png_image(self, app, status, warning):
+-        """
+-        .. blockdiag::
+-
+-           A -> B;
+-        """
+-        app.builder.build_all()
+-        source = (app.outdir / 'index.html').read_text(encoding='utf-8')
+-        self.assertRegexpMatches(source, '<div class="align-default"><img .*? src="_images/.*?.png" .*?/></div>')
+-
+-    @with_app(srcdir='tests/docs/subdir', buildername='html', write_docstring=True)
+-    def test_build_png_image_in_subdir(self, app, status, warning):
+-        """
+-        .. blockdiag::
+-
+-           A -> B;
+-        """
+-        app.builder.build_all()
+-        source = (app.outdir / 'subdir' / 'index.html').read_text(encoding='utf-8')
+-        self.assertRegexpMatches(source, r'<div class="align-default"><img .*? src="../_images/.*?.png" .*?/></div>')
+-
+-    @with_png_app
+-    def test_width_option_on_png(self, app, status, warning):
+-        """
+-        .. blockdiag::
+-           :width: 224
+-
+-           A -> B;
+-        """
+-        app.builder.build_all()
+-        source = (app.outdir / 'index.html').read_text(encoding='utf-8')
+-        self.assertRegexpMatches(source, ('<div class="align-default">'
+-                                          '<a class="reference internal image-reference" href="(.*?.png)">'
+-                                          '<img height="60.0" src="\\1" width="224.0" /></a></div>'))
+-
+-    @with_png_app
+-    def test_height_option_on_png(self, app, status, warning):
+-        """
+-        .. blockdiag::
+-           :height: 240
+-
+-           A -> B;
+-        """
+-        app.builder.build_all()
+-        source = (app.outdir / 'index.html').read_text(encoding='utf-8')
+-        self.assertRegexpMatches(source, ('<div class="align-default">'
+-                                          '<a class="reference internal image-reference" href="(.*?.png)">'
+-                                          '<img height="240.0" src="\\1" width="896.0" /></a></div>'))
+-
+-    @with_png_app
+-    def test_width_option_and_height_option_on_png(self, app, status, warning):
+-        """
+-        .. blockdiag::
+-           :width: 100
+-           :height: 200
+-
+-           A -> B;
+-        """
+-        app.builder.build_all()
+-        source = (app.outdir / 'index.html').read_text()
+-        self.assertRegexpMatches(source, ('<div class="align-default">'
+-                                          '<a class="reference internal image-reference" href="(.*?.png)">'
+-                                          '<img height="200.0" src="\\1" width="100.0" /></a></div>'))
+-
+-    @with_png_app
+-    def test_scale_option_on_png(self, app, status, warning):
+-        """
+-        .. blockdiag::
+-           :scale: 25%
+-
+-           A -> B;
+-        """
+-        app.builder.build_all()
+-        source = (app.outdir / 'index.html').read_text(encoding='utf-8')
+-        self.assertRegexpMatches(source, ('<div class="align-default">'
+-                                          '<a class="reference internal image-reference" href="(.*?.png)">'
+-                                          '<img height="30.0" src="\\1" width="112.0" /></a></div>'))
+-
+-    @with_png_app
+-    def test_width_option_and_scale_option_on_png(self, app, status, warning):
+-        """
+-        .. blockdiag::
+-           :width: 28
+-           :scale: 25%
+-
+-           A -> B;
+-        """
+-        app.builder.build_all()
+-        source = (app.outdir / 'index.html').read_text(encoding='utf-8')
+-        self.assertRegexpMatches(source, ('<div class="align-default">'
+-                                          '<a class="reference internal image-reference" href="(.*?.png)">'
+-                                          '<img height="1.875" src="\\1" width="7.0" /></a></div>'))
+-
+-    @with_png_app
+-    def test_align_option_on_png(self, app, status, warning):
+-        """
+-        .. blockdiag::
+-           :align: center
+-
+-           A -> B;
+-        """
+-        app.builder.build_all()
+-        source = (app.outdir / 'index.html').read_text(encoding='utf-8')
+-        self.assertRegexpMatches(source, '<div class="align-center"><img .*? /></div>')
+-
+-    @with_png_app
+-    def test_align_option_and_width_option_on_png(self, app, status, warning):
+-        """
+-        .. blockdiag::
+-           :align: center
+-           :width: 224
+-
+-           A -> B;
+-        """
+-        app.builder.build_all()
+-        source = (app.outdir / 'index.html').read_text(encoding='utf-8')
+-        self.assertRegexpMatches(source, ('<div class="align-center">'
+-                                          '<a class="reference internal image-reference" href="(.*?.png)">'
+-                                          '<img height="60.0" src="\\1" width="224.0" /></a></div>'))
+-
+-    @with_png_app
+-    def test_name_option_on_png(self, app, status, warning):
+-        """
+-        .. blockdiag::
+-           :name: target
+-
+-           A -> B;
+-        """
+-        app.builder.build_all()
+-        source = (app.outdir / 'index.html').read_text(encoding='utf-8')
+-        self.assertRegexpMatches(source, '<div class="align-default"><img .*? id="target" src=".*?" .*? /></div>')
+-
+-    @with_png_app
+-    def test_name_option_and_width_option_on_png(self, app, status, warning):
+-        """
+-        .. blockdiag::
+-           :name: target
+-           :width: 224
+-
+-           A -> B;
+-        """
+-        app.builder.build_all()
+-        source = (app.outdir / 'index.html').read_text(encoding='utf-8')
+-        self.assertRegexpMatches(source, ('<div class="align-default">'
+-                                          '<a class="reference internal image-reference" href="(.*?.png)">'
+-                                          '<img height="60.0" id="target" src="\\1" width="224.0" /></a></div>'))
+-
+-    @with_png_app
+-    def test_href_and_scale_option_on_png(self, app, status, warning):
+-        """
+-        .. blockdiag::
+-           :scale: 50%
+-
+-           A -> B;
+-           A [href = 'http://blockdiag.com/'];
+-        """
+-        app.builder.build_all()
+-        source = (app.outdir / 'index.html').read_text(encoding='utf-8')
+-        self.assertRegexpMatches(source, ('<div class="align-default">'
+-                                          '<a class="reference internal image-reference" href="(.*?.png)">'
+-                                          '<map name="(map_\\d+)">'
+-                                          '<area shape="rect" coords="32.0,20.0,96.0,40.0" '
+-                                          'href="http://blockdiag.com/"></map>'
+-                                          '<img .*? src="\\1" usemap="#\\2" .*?/></a></div>'))
+-
+-    @with_png_app
+-    def test_reftarget_in_href_on_png1(self, app, status, warning):
+-        """
+-        .. _target:
+-
+-        heading2
+-        ---------
+-
+-        .. blockdiag::
+-
+-           A -> B;
+-           A [href = ':ref:`target`'];
+-        """
+-        app.builder.build_all()
+-        source = (app.outdir / 'index.html').read_text(encoding='utf-8')
+-        self.assertRegexpMatches(source, ('<div class="align-default"><map name="(map_\\d+)">'
+-                                          '<area shape="rect" coords="64.0,40.0,192.0,80.0" href="#target"></map>'
+-                                          '<img .*? src=".*?.png" usemap="#\\1" .*?/></div>'))
+-
+-    @with_png_app
+-    def test_reftarget_in_href_on_png2(self, app, status, warning):
+-        """
+-        .. _hello world:
+-
+-        heading2
+-        ---------
+-
+-        .. blockdiag::
+-
+-           A -> B;
+-           A [href = ':ref:`hello world`'];
+-        """
+-        app.builder.build_all()
+-        source = (app.outdir / 'index.html').read_text(encoding='utf-8')
+-        self.assertRegexpMatches(source, ('<div class="align-default"><map name="(map_\\d+)">'
+-                                          '<area shape="rect" coords="64.0,40.0,192.0,80.0" href="#hello-world">'
+-                                          '</map><img .*? src=".*?.png" usemap="#\\1" .*?/></div>'))
+-
+-    @with_png_app
+-    def test_missing_reftarget_in_href_on_png(self, app, status, warning):
+-        """
+-        .. blockdiag::
+-
+-           A -> B;
+-           A [href = ':ref:`unknown_target`'];
+-        """
+-        app.builder.build_all()
+-        source = (app.outdir / 'index.html').read_text(encoding='utf-8')
+-        self.assertRegexpMatches(source, ('<div class="align-default"><img .*? src=".*?.png" .*?/></div>'))
+-        self.assertIn('undefined label: unknown_target', warning.getvalue())
+-
+-    @with_app(srcdir='tests/docs/basic', copy_srcdir_to_tmpdir=True,
+-              write_docstring=True, confoverrides={'blockdiag_html_image_format': 'SVG'})
+-    def test_build_svg_image(self, app, status, warning):
+-        """
+-        .. blockdiag::
+-
+-           A -> B;
+-        """
+-        app.builder.build_all()
+-        source = (app.outdir / 'index.html').read_text(encoding='utf-8')
+-        self.assertRegexpMatches(source, '<div class="align-default"><svg .*?>')
+-
+-    @with_svg_app
+-    def test_width_option_on_svg(self, app, status, warning):
+-        """
+-        .. blockdiag::
+-           :width: 224
+-
+-           A -> B;
+-        """
+-        app.builder.build_all()
+-        source = (app.outdir / 'index.html').read_text(encoding='utf-8')
+-        self.assertRegexpMatches(source, ('<div class="align-default">'
+-                                          '<svg height="60.0" viewBox="0 0 448 120" width="224.0" .*?>'))
+-
+-    @with_svg_app
+-    def test_height_option_on_svg(self, app, status, warning):
+-        """
+-        .. blockdiag::
+-           :height: 240
+-
+-           A -> B;
+-        """
+-        app.builder.build_all()
+-        source = (app.outdir / 'index.html').read_text(encoding='utf-8')
+-        self.assertRegexpMatches(source, ('<div class="align-default">'
+-                                          '<svg height="240.0" viewBox="0 0 448 120" width="896.0" .*?>'))
+-
+-    @with_svg_app
+-    def test_width_option_and_height_option_on_svg(self, app, status, warning):
+-        """
+-        .. blockdiag::
+-           :width: 100
+-           :height: 200
+-
+-           A -> B;
+-        """
+-        app.builder.build_all()
+-        source = (app.outdir / 'index.html').read_text(encoding='utf-8')
+-        self.assertRegexpMatches(source, ('<div class="align-default">'
+-                                          '<svg height="200.0" viewBox="0 0 448 120" width="100.0" .*?>'))
+-
+-    @with_svg_app
+-    def test_scale_option_on_svg(self, app, status, warning):
+-        """
+-        .. blockdiag::
+-           :scale: 25%
+-
+-           A -> B;
+-        """
+-        app.builder.build_all()
+-        source = (app.outdir / 'index.html').read_text(encoding='utf-8')
+-        self.assertRegexpMatches(source, ('<div class="align-default">'
+-                                          '<svg height="30.0" viewBox="0 0 448 120" width="112.0" .*?>'))
+-
+-    @with_svg_app
+-    def test_width_option_and_scale_option_on_svg(self, app, status, warning):
+-        """
+-        .. blockdiag::
+-           :width: 28
+-           :scale: 25%
+-
+-           A -> B;
+-        """
+-        app.builder.build_all()
+-        source = (app.outdir / 'index.html').read_text(encoding='utf-8')
+-        self.assertRegexpMatches(source, ('<div class="align-default">'
+-                                          '<svg height="1.875" viewBox="0 0 448 120" width="7.0" .*?>'))
+-
+-    @with_svg_app
+-    def test_align_option_on_svg(self, app, status, warning):
+-        """
+-        .. blockdiag::
+-           :align: center
+-
+-           A -> B;
+-        """
+-        app.builder.build_all()
+-        source = (app.outdir / 'index.html').read_text(encoding='utf-8')
+-        self.assertRegexpMatches(source, '<div class="align-center"><svg .*?>')
+-
+-    @with_svg_app
+-    def test_name_option_on_svg(self, app, status, warning):
+-        """
+-        .. blockdiag::
+-           :name: target
+-
+-           A -> B;
+-        """
+-        app.builder.build_all()
+-        source = (app.outdir / 'index.html').read_text(encoding='utf-8')
+-        self.assertRegexpMatches(source, '<div class="align-default"><span id="target"></span><svg .*?>')
+-
+-    @with_svg_app
+-    def test_reftarget_in_href_on_svg1(self, app, status, warning):
+-        """
+-        .. _target:
+-
+-        heading2
+-        ---------
+-
+-        .. blockdiag::
+-
+-           A -> B;
+-           A [href = ':ref:`target`'];
+-        """
+-        app.builder.build_all()
+-        source = (app.outdir / 'index.html').read_text(encoding='utf-8')
+-        self.assertRegexpMatches(source, '<a xlink:href="#target">\\n\\s*<rect .*?>\\n\\s*</a>')
+-
+-    @with_svg_app
+-    def test_reftarget_in_href_on_svg2(self, app, status, warning):
+-        """
+-        .. _hello world:
+-
+-        heading2
+-        ---------
+-
+-        .. blockdiag::
+-
+-           A -> B;
+-           A [href = ':ref:`hello world`'];
+-        """
+-        app.builder.build_all()
+-        source = (app.outdir / 'index.html').read_text(encoding='utf-8')
+-        self.assertRegexpMatches(source, '<a xlink:href="#hello-world">\\n\\s*<rect .*?>\\n\\s*</a>')
+-
+-    @with_svg_app
+-    def test_missing_reftarget_in_href_on_svg(self, app, status, warning):
+-        """
+-        .. blockdiag::
+-
+-           A -> B;
+-           A [href = ':ref:`unknown_target`'];
+-        """
+-        app.builder.build_all()
+-        source = (app.outdir / 'index.html').read_text(encoding='utf-8')
+-        self.assertNotRegex(source, '<a xlink:href="#hello-world">\\n\\s*<rect .*?>\\n\\s*</a>')
+-        self.assertIn('undefined label: unknown_target', warning.getvalue())
+-
+-    @with_svg_app
+-    def test_autoclass_should_not_effect_to_other_diagram(self, app, status, warning):
+-        """
+-        This testcase checks that autoclass plugin is unloaded correctly (and it does not effect to other diagram).
+-
+-        .. blockdiag::
+-
+-           plugin autoclass;
+-           class foo [color = red];
+-           A_foo;
+-
+-        .. blockdiag::
+-
+-           class foo [color = red];
+-           A_foo;
+-        """
+-        app.builder.build_all()
+-        source = (app.outdir / 'index.html').read_text(encoding='utf-8')
+-        self.assertRegexpMatches(source, '<text[^>]+>A_foo</text>')  # 2nd diagram has a node labeled 'A_foo'.
++import re
++import os
++import pytest
++
++
++docs = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'docs', 'basic')
++subdir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'docs', 'subdir')
++
++
++with_png_app = pytest.mark.sphinx(srcdir=docs, buildername='html')
++with_svg_app = pytest.mark.sphinx(srcdir=docs,
++                                  buildername='html',
++                                  confoverrides={
++                                      'blockdiag_html_image_format': 'SVG'
++                                  })
++
++
++@with_png_app
++def test_build_png_image(app, status, warning):
++    doc = """
++.. blockdiag::
++
++   A -> B;
++    """
++    (app.srcdir / 'index.rst').write_text(doc, encoding='utf-8')
++    app.builder.build_all()
++    source = (app.outdir / 'index.html').read_text(encoding='utf-8')
++    assert re.search('<div class="align-default"><img .*? src="_images/.*?.png" .*?/></div>', source)
++
++
++@pytest.mark.sphinx(srcdir=subdir, buildername='html')
++def test_build_png_image_in_subdir(app, status, warning):
++    doc = """
++.. blockdiag::
++
++   A -> B;
++    """
++    (app.srcdir / 'index.rst').write_text(doc, encoding='utf-8')
++    app.builder.build_all()
++    source = (app.outdir / 'subdir' / 'index.html').read_text(encoding='utf-8')
++    assert re.search(r'<div class="align-default"><img .*? src="../_images/.*?.png" .*?/></div>', source)
++
++
++@with_png_app
++def test_width_option_on_png(app, status, warning):
++    doc = """
++.. blockdiag::
++   :width: 224
++
++   A -> B;
++    """
++    (app.srcdir / 'index.rst').write_text(doc, encoding='utf-8')
++    app.builder.build_all()
++    source = (app.outdir / 'index.html').read_text(encoding='utf-8')
++    assert re.search(('<div class="align-default">'
++                      '<a class="reference internal image-reference" href="(.*?.png)">'
++                      '<img height="60.0" src="\\1" width="224.0" /></a></div>'), source)
++
++
++@with_png_app
++def test_height_option_on_png(app, status, warning):
++    doc = """
++.. blockdiag::
++   :height: 240
++
++   A -> B;
++    """
++    (app.srcdir / 'index.rst').write_text(doc, encoding='utf-8')
++    app.builder.build_all()
++    source = (app.outdir / 'index.html').read_text(encoding='utf-8')
++    assert re.search(('<div class="align-default">'
++                      '<a class="reference internal image-reference" href="(.*?.png)">'
++                      '<img height="240.0" src="\\1" width="896.0" /></a></div>'), source)
++
++
++@with_png_app
++def test_width_option_and_height_option_on_png(app, status, warning):
++    doc = """
++.. blockdiag::
++   :width: 100
++   :height: 200
++
++   A -> B;
++    """
++    (app.srcdir / 'index.rst').write_text(doc, encoding='utf-8')
++    app.builder.build_all()
++    source = (app.outdir / 'index.html').read_text()
++    assert re.search(('<div class="align-default">'
++                      '<a class="reference internal image-reference" href="(.*?.png)">'
++                      '<img height="200.0" src="\\1" width="100.0" /></a></div>'), source)
++
++
++@with_png_app
++def test_scale_option_on_png(app, status, warning):
++    doc = """
++.. blockdiag::
++   :scale: 25%
++
++   A -> B;
++    """
++    (app.srcdir / 'index.rst').write_text(doc, encoding='utf-8')
++    app.builder.build_all()
++    source = (app.outdir / 'index.html').read_text(encoding='utf-8')
++    assert re.search(('<div class="align-default">'
++                      '<a class="reference internal image-reference" href="(.*?.png)">'
++                      '<img height="30.0" src="\\1" width="112.0" /></a></div>'), source)
++
++
++@with_png_app
++def test_width_option_and_scale_option_on_png(app, status, warning):
++    doc = """
++.. blockdiag::
++   :width: 28
++   :scale: 25%
++
++   A -> B;
++    """
++    (app.srcdir / 'index.rst').write_text(doc, encoding='utf-8')
++    app.builder.build_all()
++    source = (app.outdir / 'index.html').read_text(encoding='utf-8')
++    assert re.search(('<div class="align-default">'
++                      '<a class="reference internal image-reference" href="(.*?.png)">'
++                      '<img height="1.875" src="\\1" width="7.0" /></a></div>'), source)
++
++
++@with_png_app
++def test_align_option_on_png(app, status, warning):
++    doc = """
++.. blockdiag::
++   :align: center
++
++   A -> B;
++    """
++    (app.srcdir / 'index.rst').write_text(doc, encoding='utf-8')
++    app.builder.build_all()
++    source = (app.outdir / 'index.html').read_text(encoding='utf-8')
++    assert re.search('<div class="align-center"><img .*? /></div>', source)
++
++
++@with_png_app
++def test_align_option_and_width_option_on_png(app, status, warning):
++    doc = """
++.. blockdiag::
++   :align: center
++   :width: 224
++
++   A -> B;
++    """
++    (app.srcdir / 'index.rst').write_text(doc, encoding='utf-8')
++    app.builder.build_all()
++    source = (app.outdir / 'index.html').read_text(encoding='utf-8')
++    assert re.search(('<div class="align-center">'
++                      '<a class="reference internal image-reference" href="(.*?.png)">'
++                      '<img height="60.0" src="\\1" width="224.0" /></a></div>'), source)
++
++
++@with_png_app
++def test_name_option_on_png(app, status, warning):
++    doc = """
++.. blockdiag::
++   :name: target
++
++   A -> B;
++    """
++    (app.srcdir / 'index.rst').write_text(doc, encoding='utf-8')
++    app.builder.build_all()
++    source = (app.outdir / 'index.html').read_text(encoding='utf-8')
++    assert re.search('<div class="align-default"><img .*? id="target" src=".*?" .*? /></div>', source)
++
++
++@with_png_app
++def test_name_option_and_width_option_on_png(app, status, warning):
++    doc = """
++.. blockdiag::
++   :name: target
++   :width: 224
++
++   A -> B;
++    """
++    (app.srcdir / 'index.rst').write_text(doc, encoding='utf-8')
++    app.builder.build_all()
++    source = (app.outdir / 'index.html').read_text(encoding='utf-8')
++    assert re.search(('<div class="align-default">'
++                      '<a class="reference internal image-reference" href="(.*?.png)">'
++                      '<img height="60.0" id="target" src="\\1" width="224.0" /></a></div>'), source)
++
++
++@with_png_app
++def test_href_and_scale_option_on_png(app, status, warning):
++    doc = """
++.. blockdiag::
++   :scale: 50%
++
++   A -> B;
++   A [href = 'http://blockdiag.com/'];
++    """
++    (app.srcdir / 'index.rst').write_text(doc, encoding='utf-8')
++    app.builder.build_all()
++    source = (app.outdir / 'index.html').read_text(encoding='utf-8')
++    assert re.search(('<div class="align-default">'
++                      '<a class="reference internal image-reference" href="(.*?.png)">'
++                      '<map name="(map_\\d+)">'
++                      '<area shape="rect" coords="32.0,20.0,96.0,40.0" '
++                      'href="http://blockdiag.com/"></map>'
++                      '<img .*? src="\\1" usemap="#\\2" .*?/></a></div>'), source)
++
++
++@with_png_app
++def test_reftarget_in_href_on_png1(app, status, warning):
++    doc = """
++.. _target:
++
++heading2
++---------
++
++.. blockdiag::
++
++   A -> B;
++   A [href = ':ref:`target`'];
++    """
++    (app.srcdir / 'index.rst').write_text(doc, encoding='utf-8')
++    app.builder.build_all()
++    source = (app.outdir / 'index.html').read_text(encoding='utf-8')
++    assert re.search(('<div class="align-default"><map name="(map_\\d+)">'
++                      '<area shape="rect" coords="64.0,40.0,192.0,80.0" href="#target"></map>'
++                      '<img .*? src=".*?.png" usemap="#\\1" .*?/></div>'), source)
++
++
++@with_png_app
++def test_reftarget_in_href_on_png2(app, status, warning):
++    doc = """
++.. _hello world:
++
++heading2
++---------
++
++.. blockdiag::
++
++   A -> B;
++   A [href = ':ref:`hello world`'];
++    """
++    (app.srcdir / 'index.rst').write_text(doc, encoding='utf-8')
++    app.builder.build_all()
++    source = (app.outdir / 'index.html').read_text(encoding='utf-8')
++    assert re.search(('<div class="align-default"><map name="(map_\\d+)">'
++                      '<area shape="rect" coords="64.0,40.0,192.0,80.0" href="#hello-world">'
++                      '</map><img .*? src=".*?.png" usemap="#\\1" .*?/></div>'), source)
++
++
++@with_png_app
++def test_missing_reftarget_in_href_on_png(app, status, warning):
++    doc = """
++.. blockdiag::
++
++   A -> B;
++   A [href = ':ref:`unknown_target`'];
++    """
++    (app.srcdir / 'index.rst').write_text(doc, encoding='utf-8')
++    app.builder.build_all()
++    source = (app.outdir / 'index.html').read_text(encoding='utf-8')
++    assert re.search('<div class="align-default"><img .*? src=".*?.png" .*?/></div>', source)
++    assert 'undefined label: unknown_target' in warning.getvalue()
++
++
++@pytest.mark.sphinx(srcdir=docs, confoverrides={'blockdiag_html_image_format': 'SVG'})
++def test_build_svg_image(app, status, warning):
++    doc = """
++.. blockdiag::
++
++   A -> B;
++    """
++    (app.srcdir / 'index.rst').write_text(doc, encoding='utf-8')
++    app.builder.build_all()
++    source = (app.outdir / 'index.html').read_text(encoding='utf-8')
++    assert re.search('<div class="align-default"><svg .*?>', source)
++
++
++@with_svg_app
++def test_width_option_on_svg(app, status, warning):
++    doc = """
++.. blockdiag::
++   :width: 224
++
++   A -> B;
++    """
++    (app.srcdir / 'index.rst').write_text(doc, encoding='utf-8')
++    app.builder.build_all()
++    source = (app.outdir / 'index.html').read_text(encoding='utf-8')
++    assert re.search(('<div class="align-default">'
++                      '<svg height="60.0" viewBox="0 0 448 120" width="224.0" .*?>'), source)
++
++
++@with_svg_app
++def test_height_option_on_svg(app, status, warning):
++    doc = """
++.. blockdiag::
++   :height: 240
++
++   A -> B;
++    """
++    (app.srcdir / 'index.rst').write_text(doc, encoding='utf-8')
++    app.builder.build_all()
++    source = (app.outdir / 'index.html').read_text(encoding='utf-8')
++    assert re.search(('<div class="align-default">'
++                      '<svg height="240.0" viewBox="0 0 448 120" width="896.0" .*?>'), source)
++
++
++@with_svg_app
++def test_width_option_and_height_option_on_svg(app, status, warning):
++    doc = """
++.. blockdiag::
++   :width: 100
++   :height: 200
++
++   A -> B;
++    """
++    (app.srcdir / 'index.rst').write_text(doc, encoding='utf-8')
++    app.builder.build_all()
++    source = (app.outdir / 'index.html').read_text(encoding='utf-8')
++    assert re.search(('<div class="align-default">'
++                      '<svg height="200.0" viewBox="0 0 448 120" width="100.0" .*?>'), source)
++
++
++@with_svg_app
++def test_scale_option_on_svg(app, status, warning):
++    doc = """
++.. blockdiag::
++   :scale: 25%
++
++   A -> B;
++    """
++    (app.srcdir / 'index.rst').write_text(doc, encoding='utf-8')
++    app.builder.build_all()
++    source = (app.outdir / 'index.html').read_text(encoding='utf-8')
++    assert re.search(('<div class="align-default">'
++                      '<svg height="30.0" viewBox="0 0 448 120" width="112.0" .*?>'), source)
++
++
++@with_svg_app
++def test_width_option_and_scale_option_on_svg(app, status, warning):
++    doc = """
++.. blockdiag::
++   :width: 28
++   :scale: 25%
++
++   A -> B;
++    """
++    (app.srcdir / 'index.rst').write_text(doc, encoding='utf-8')
++    app.builder.build_all()
++    source = (app.outdir / 'index.html').read_text(encoding='utf-8')
++    assert re.search(('<div class="align-default">'
++                      '<svg height="1.875" viewBox="0 0 448 120" width="7.0" .*?>'), source)
++
++
++@with_svg_app
++def test_align_option_on_svg(app, status, warning):
++    doc = """
++.. blockdiag::
++   :align: center
++
++   A -> B;
++    """
++    (app.srcdir / 'index.rst').write_text(doc, encoding='utf-8')
++    app.builder.build_all()
++    source = (app.outdir / 'index.html').read_text(encoding='utf-8')
++    assert re.search('<div class="align-center"><svg .*?>', source)
++
++
++@with_svg_app
++def test_name_option_on_svg(app, status, warning):
++    doc = """
++.. blockdiag::
++   :name: target
++
++   A -> B;
++    """
++    (app.srcdir / 'index.rst').write_text(doc, encoding='utf-8')
++    app.builder.build_all()
++    source = (app.outdir / 'index.html').read_text(encoding='utf-8')
++    assert re.search('<div class="align-default"><span id="target"></span><svg .*?>', source)
++
++
++@with_svg_app
++def test_reftarget_in_href_on_svg1(app, status, warning):
++    doc = """
++.. _target:
++
++heading2
++---------
++
++.. blockdiag::
++
++   A -> B;
++   A [href = ':ref:`target`'];
++    """
++    (app.srcdir / 'index.rst').write_text(doc, encoding='utf-8')
++    app.builder.build_all()
++    source = (app.outdir / 'index.html').read_text(encoding='utf-8')
++    assert re.search('<a xlink:href="#target">\\n\\s*<rect .*?>\\n\\s*</a>', source)
++
++
++@with_svg_app
++def test_reftarget_in_href_on_svg2(app, status, warning):
++    doc = """
++.. _hello world:
++
++heading2
++---------
++
++.. blockdiag::
++
++   A -> B;
++   A [href = ':ref:`hello world`'];
++    """
++    (app.srcdir / 'index.rst').write_text(doc, encoding='utf-8')
++    app.builder.build_all()
++    source = (app.outdir / 'index.html').read_text(encoding='utf-8')
++    assert re.search('<a xlink:href="#hello-world">\\n\\s*<rect .*?>\\n\\s*</a>', source)
++
++
++@with_svg_app
++def test_missing_reftarget_in_href_on_svg(app, status, warning):
++    doc = """
++.. blockdiag::
++
++   A -> B;
++   A [href = ':ref:`unknown_target`'];
++    """
++    (app.srcdir / 'index.rst').write_text(doc, encoding='utf-8')
++    app.builder.build_all()
++    source = (app.outdir / 'index.html').read_text(encoding='utf-8')
++    assert not re.search('<a xlink:href="#hello-world">\\n\\s*<rect .*?>\\n\\s*</a>', source)
++    assert 'undefined label: unknown_target' in warning.getvalue()
++
++
++@with_svg_app
++def test_autoclass_should_not_effect_to_other_diagram(app, status, warning):
++    doc = """
++This testcase checks that autoclass plugin is unloaded correctly (and it does not effect to other diagram).
++
++.. blockdiag::
++
++   plugin autoclass;
++   class foo [color = red];
++   A_foo;
++
++.. blockdiag::
++
++   class foo [color = red];
++   A_foo;
++    """
++    (app.srcdir / 'index.rst').write_text(doc, encoding='utf-8')
++    app.builder.build_all()
++    source = (app.outdir / 'index.html').read_text(encoding='utf-8')
++    assert re.search('<text[^>]+>A_foo</text>', source)  # 2nd diagram has a node labeled 'A_foo'.
+diff --git a/tests/test_latex.py b/tests/test_latex.py
+index bcef06f..82c49a9 100644
+--- a/tests/test_latex.py
++++ b/tests/test_latex.py
+@@ -2,198 +2,216 @@
+ 
+ import os
+ import re
+-from sphinx_testing import with_app
+ 
+ import unittest
++import pytest
++
++docs = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'docs', 'basic')
+ 
+ CR = "\r?\n"
+ 
+ blockdiag_fontpath = '/usr/share/fonts/truetype/ipafont/ipagp.ttf'
+-with_png_app = with_app(srcdir='tests/docs/basic',
+-                        buildername='latex',
+-                        write_docstring=True,
+-                        confoverrides={
+-                            'latex_documents': [('index', 'test.tex', '', 'test', 'manual')],
+-                        })
+-with_pdf_app = with_app(srcdir='tests/docs/basic',
+-                        buildername='latex',
+-                        write_docstring=True,
+-                        confoverrides={
+-                            'latex_documents': [('index', 'test.tex', '', 'test', 'manual')],
+-                            'blockdiag_latex_image_format': 'PDF',
+-                            'blockdiag_fontpath': blockdiag_fontpath,
+-                        })
+-with_oldpdf_app = with_app(srcdir='tests/docs/basic',
+-                           buildername='latex',
+-                           write_docstring=True,
+-                           confoverrides={
+-                               'latex_documents': [('index', 'test.tex', '', 'test', 'manual')],
+-                               'blockdiag_tex_image_format': 'PDF',
+-                               'blockdiag_fontpath': blockdiag_fontpath,
+-                           })
+-
+-
+-class TestSphinxcontribBlockdiagLatex(unittest.TestCase):
+-    @with_png_app
+-    def test_build_png_image(self, app, status, warning):
+-        """
+-        .. blockdiag::
+-
+-           A -> B;
+-        """
+-        app.builder.build_all()
+-        source = (app.outdir / 'test.tex').read_text(encoding='utf-8')
+-        self.assertRegexpMatches(source, r'\\sphinxincludegraphics{{blockdiag-.*?}.png}')
+-
+-    @unittest.skipUnless(os.path.exists(blockdiag_fontpath), "TrueType font not found")
+-    @with_pdf_app
+-    def test_build_pdf_image1(self, app, status, warning):
+-        """
+-        .. blockdiag::
+-
+-           A -> B;
+-        """
+-        app.builder.build_all()
+-        source = (app.outdir / 'test.tex').read_text(encoding='utf-8')
+-        self.assertRegexpMatches(source, r'\\sphinxincludegraphics{{blockdiag-.*?}.pdf}')
+-
+-    @unittest.skipUnless(os.path.exists(blockdiag_fontpath), "TrueType font not found")
+-    @with_oldpdf_app
+-    def test_build_pdf_image2(self, app, status, warning):
+-        """
+-        .. blockdiag::
+-
+-           A -> B;
+-        """
+-        app.builder.build_all()
+-        source = (app.outdir / 'test.tex').read_text(encoding='utf-8')
+-        self.assertRegexpMatches(source, r'\\sphinxincludegraphics{{blockdiag-.*?}.pdf}')
+-
+-    @with_png_app
+-    def test_width_option(self, app, status, warning):
+-        """
+-        .. blockdiag::
+-           :width: 3cm
+-
+-           A -> B;
+-        """
+-        app.builder.build_all()
+-        source = (app.outdir / 'test.tex').read_text(encoding='utf-8')
+-        self.assertRegexpMatches(source, r'\\sphinxincludegraphics\[width=3cm\]{{blockdiag-.*?}.png}')
+-
+-    @with_png_app
+-    def test_height_option(self, app, status, warning):
+-        """
+-        .. blockdiag::
+-           :height: 4cm
+-
+-           A -> B;
+-        """
+-        app.builder.build_all()
+-        source = (app.outdir / 'test.tex').read_text(encoding='utf-8')
+-        self.assertRegexpMatches(source, r'\\sphinxincludegraphics\[height=4cm\]{{blockdiag-.*?}.png}')
+-
+-    @with_png_app
+-    def test_scale_option(self, app, status, warning):
+-        """
+-        .. blockdiag::
+-           :scale: 50%
+-
+-           A -> B;
+-        """
+-        app.builder.build_all()
+-        source = (app.outdir / 'test.tex').read_text(encoding='utf-8')
+-        self.assertRegexpMatches(source, r'\\sphinxincludegraphics\[scale=0.5\]{{blockdiag-.*?}.png}')
+-
+-    @with_png_app
+-    def test_align_option_left(self, app, status, warning):
+-        """
+-        .. blockdiag::
+-           :align: left
+-
+-           A -> B;
+-        """
+-        app.builder.build_all()
+-        source = (app.outdir / 'test.tex').read_text(encoding='utf-8')
+-        self.assertRegexpMatches(source,
+-                                 (r'{\\sphinxincludegraphics{{blockdiag-.*?}.png}'
+-                                  r'\\hspace\*{\\fill}}'))
+-
+-    @with_png_app
+-    def test_align_option_center(self, app, status, warning):
+-        """
+-        .. blockdiag::
+-           :align: center
+-
+-           A -> B;
+-        """
+-        app.builder.build_all()
+-        source = (app.outdir / 'test.tex').read_text(encoding='utf-8')
+-        self.assertRegexpMatches(source,
+-                                 (r'{\\hspace\*{\\fill}'
+-                                  r'\\sphinxincludegraphics{{blockdiag-.*?}.png}'
+-                                  r'\\hspace\*{\\fill}}'))
+-
+-    @with_png_app
+-    def test_align_option_right(self, app, status, warning):
+-        """
+-        .. blockdiag::
+-           :align: right
+-
+-           A -> B;
+-        """
+-        app.builder.build_all()
+-        source = (app.outdir / 'test.tex').read_text(encoding='utf-8')
+-        self.assertRegexpMatches(source,
+-                                 (r'{\\hspace\*{\\fill}'
+-                                  r'\\sphinxincludegraphics{{blockdiag-.*?}.png}}'))
+-
+-    @with_png_app
+-    def test_caption_option(self, app, status, warning):
+-        """
+-        .. blockdiag::
+-           :caption: hello world
+-
+-           A -> B;
+-        """
+-        app.builder.build_all()
+-        source = (app.outdir / 'test.tex').read_text(encoding='utf-8')
+-
+-        figure = re.compile((r'\\begin{figure}\[htbp\]' + CR +
+-                             r'\\centering' + CR +
+-                             r'\\capstart' + CR + CR +
+-                             r'\\noindent\\sphinxincludegraphics{{blockdiag-.*?}.png}' + CR +
+-                             r'\\caption{hello world}\\label{\\detokenize{index:id1}}\\end{figure}'),
+-                            re.DOTALL)
+-        self.assertRegexpMatches(source, figure)
+-
+-    @with_png_app
+-    def test_caption_option_and_align_option(self, app, status, warning):
+-        """
+-        .. blockdiag::
+-           :align: left
+-           :caption: hello world
+-
+-           A -> B;
+-        """
+-        app.builder.build_all()
+-        source = (app.outdir / 'test.tex').read_text(encoding='utf-8')
+-
+-        figure = re.compile((r'\\begin{wrapfigure}{l}{0pt}' + CR +
+-                             r'\\centering' + CR +
+-                             r'\\noindent\\sphinxincludegraphics{{blockdiag-.*?}.png}' + CR +
+-                             r'\\caption{hello world}\\label{\\detokenize{index:id1}}\\end{wrapfigure}'),
+-                            re.DOTALL)
+-        self.assertRegexpMatches(source, figure)
+-
+-    @with_png_app
+-    def test_href(self, app, status, warning):
+-        """
+-        .. blockdiag::
+-
+-           A -> B;
+-           A [href = ':ref:`target`'];
+-        """
+-        app.builder.build_all()
+-        source = (app.outdir / 'test.tex').read_text(encoding='utf-8')
+-        self.assertRegexpMatches(source, r'\\sphinxincludegraphics{{blockdiag-.*?}.png}')
++with_png_app = pytest.mark.sphinx(srcdir=docs,
++                                  buildername='latex',
++                                  confoverrides={
++                                      'latex_documents': [('index', 'test.tex', '', 'test', 'manual')],
++                                  })
++with_pdf_app = pytest.mark.sphinx(srcdir=docs,
++                                  buildername='latex',
++                                  confoverrides={
++                                      'latex_documents': [('index', 'test.tex', '', 'test', 'manual')],
++                                      'blockdiag_latex_image_format': 'PDF',
++                                      'blockdiag_fontpath': blockdiag_fontpath,
++                                  })
++with_oldpdf_app = pytest.mark.sphinx(srcdir=docs,
++                                     buildername='latex',
++                                     confoverrides={
++                                         'latex_documents': [('index', 'test.tex', '', 'test', 'manual')],
++                                         'blockdiag_tex_image_format': 'PDF',
++                                         'blockdiag_fontpath': blockdiag_fontpath,
++                                     })
++
++
++@with_png_app
++def test_build_png_image(app, status, warning):
++    doc = """
++.. blockdiag::
++
++   A -> B;
++    """
++    (app.srcdir / 'index.rst').write_text(doc, encoding='utf-8')
++    app.builder.build_all()
++    source = (app.outdir / 'test.tex').read_text(encoding='utf-8')
++    assert re.search(r'\\sphinxincludegraphics{{blockdiag-.*?}.png}', source)
++
++
++@unittest.skipUnless(os.path.exists(blockdiag_fontpath), "TrueType font not found")
++@with_pdf_app
++def test_build_pdf_image1(app, status, warning):
++    doc = """
++.. blockdiag::
++
++   A -> B;
++    """
++    (app.srcdir / 'index.rst').write_text(doc, encoding='utf-8')
++    app.builder.build_all()
++    source = (app.outdir / 'test.tex').read_text(encoding='utf-8')
++    assert re.search(r'\\sphinxincludegraphics{{blockdiag-.*?}.pdf}', source)
++
++
++@unittest.skipUnless(os.path.exists(blockdiag_fontpath), "TrueType font not found")
++@with_oldpdf_app
++def test_build_pdf_image2(app, status, warning):
++    doc = """
++.. blockdiag::
++
++   A -> B;
++    """
++    (app.srcdir / 'index.rst').write_text(doc, encoding='utf-8')
++    app.builder.build_all()
++    source = (app.outdir / 'test.tex').read_text(encoding='utf-8')
++    assert re.search(r'\\sphinxincludegraphics{{blockdiag-.*?}.pdf}', source)
++
++
++@with_png_app
++def test_width_option(app, status, warning):
++    doc = """
++.. blockdiag::
++   :width: 3cm
++
++   A -> B;
++    """
++    (app.srcdir / 'index.rst').write_text(doc, encoding='utf-8')
++    app.builder.build_all()
++    source = (app.outdir / 'test.tex').read_text(encoding='utf-8')
++    assert re.search(r'\\sphinxincludegraphics\[width=3cm\]{{blockdiag-.*?}.png}', source)
++
++
++@with_png_app
++def test_height_option(app, status, warning):
++    doc = """
++.. blockdiag::
++   :height: 4cm
++
++   A -> B;
++    """
++    (app.srcdir / 'index.rst').write_text(doc, encoding='utf-8')
++    app.builder.build_all()
++    source = (app.outdir / 'test.tex').read_text(encoding='utf-8')
++    assert re.search(r'\\sphinxincludegraphics\[height=4cm\]{{blockdiag-.*?}.png}', source)
++
++
++@with_png_app
++def test_scale_option(app, status, warning):
++    doc = """
++.. blockdiag::
++   :scale: 50%
++
++   A -> B;
++    """
++    (app.srcdir / 'index.rst').write_text(doc, encoding='utf-8')
++    app.builder.build_all()
++    source = (app.outdir / 'test.tex').read_text(encoding='utf-8')
++    assert re.search(r'\\sphinxincludegraphics\[scale=0.5\]{{blockdiag-.*?}.png}', source)
++
++
++@with_png_app
++def test_align_option_left(app, status, warning):
++    doc = """
++.. blockdiag::
++   :align: left
++
++   A -> B;
++    """
++    (app.srcdir / 'index.rst').write_text(doc, encoding='utf-8')
++    app.builder.build_all()
++    source = (app.outdir / 'test.tex').read_text(encoding='utf-8')
++    assert re.search((r'{\\sphinxincludegraphics{{blockdiag-.*?}.png}'
++                      r'\\hspace\*{\\fill}}'), source)
++
++
++@with_png_app
++def test_align_option_center(app, status, warning):
++    doc = """
++.. blockdiag::
++   :align: center
++
++   A -> B;
++    """
++    (app.srcdir / 'index.rst').write_text(doc, encoding='utf-8')
++    app.builder.build_all()
++    source = (app.outdir / 'test.tex').read_text(encoding='utf-8')
++    assert re.search((r'{\\hspace\*{\\fill}'
++                      r'\\sphinxincludegraphics{{blockdiag-.*?}.png}'
++                      r'\\hspace\*{\\fill}}'), source)
++
++
++@with_png_app
++def test_align_option_right(app, status, warning):
++    doc = """
++.. blockdiag::
++   :align: right
++
++   A -> B;
++    """
++    (app.srcdir / 'index.rst').write_text(doc, encoding='utf-8')
++    app.builder.build_all()
++    source = (app.outdir / 'test.tex').read_text(encoding='utf-8')
++    assert re.search((r'{\\hspace\*{\\fill}'
++                      r'\\sphinxincludegraphics{{blockdiag-.*?}.png}}'), source)
++
++
++@with_png_app
++def test_caption_option(app, status, warning):
++    doc = """
++.. blockdiag::
++   :caption: hello world
++
++   A -> B;
++    """
++    (app.srcdir / 'index.rst').write_text(doc, encoding='utf-8')
++    app.builder.build_all()
++    source = (app.outdir / 'test.tex').read_text(encoding='utf-8')
++
++    figure = re.compile((r'\\begin{figure}\[htbp\]' + CR +
++                         r'\\centering' + CR +
++                         r'\\capstart' + CR + CR +
++                         r'\\noindent\\sphinxincludegraphics{{blockdiag-.*?}.png}' + CR +
++                         r'\\caption{hello world}\\label{\\detokenize{index:id1}}\\end{figure}'),
++                        re.DOTALL)
++    assert re.search(figure, source)
++
++
++@with_png_app
++def test_caption_option_and_align_option(app, status, warning):
++    doc = """
++.. blockdiag::
++   :align: left
++   :caption: hello world
++
++   A -> B;
++    """
++    (app.srcdir / 'index.rst').write_text(doc, encoding='utf-8')
++    app.builder.build_all()
++    source = (app.outdir / 'test.tex').read_text(encoding='utf-8')
++
++    figure = re.compile((r'\\begin{wrapfigure}{l}{0pt}' + CR +
++                         r'\\centering' + CR +
++                         r'\\noindent\\sphinxincludegraphics{{blockdiag-.*?}.png}' + CR +
++                         r'\\caption{hello world}\\label{\\detokenize{index:id1}}\\end{wrapfigure}'),
++                        re.DOTALL)
++    assert re.search(figure, source)
++
++
++@with_png_app
++def test_href(app, status, warning):
++    doc = """
++.. blockdiag::
++
++   A -> B;
++   A [href = ':ref:`target`'];
++    """
++    (app.srcdir / 'index.rst').write_text(doc, encoding='utf-8')
++    app.builder.build_all()
++    source = (app.outdir / 'test.tex').read_text(encoding='utf-8')
++    assert re.search(r'\\sphinxincludegraphics{{blockdiag-.*?}.png}', source)
+diff --git a/tox.ini b/tox.ini
+index 759e174..430f652 100644
+--- a/tox.ini
++++ b/tox.ini
+@@ -5,22 +5,21 @@
+ ## building sphinx docs in separate virtual environments.  Give it a try!
+ 
+ [tox]
+-envlist = py{37,38,39},blockdiag_dev
++envlist = py{37,38,39,310},blockdiag_dev
+ 
+ [testenv]
+ usedevelop = True
+ deps=
+-    nose
++    pytest
+     mock
+     flake8
+     reportlab
+-    sphinx-testing >= 0.5.2
+ # for funcparserlib-1.0.0a0
+ pip_pre=true
+ passenv=
+     TRAVIS*
+ commands=
+-    nosetests
++    pytest
+     flake8 setup.py sphinxcontrib/ tests/
+ 
+ [testenv:blockdiag_dev]
+@@ -31,8 +30,6 @@ deps=
+ [testenv:coverage]
+ deps=
+     {[testenv]deps}
+-    coverage
+-    coveralls
++    pytest-cov
+ commands=
+-    nosetests --with-coverage --cover-package=sphinxcontrib
+-    coveralls
++    pytest -vv --cov=sphinxcontrib

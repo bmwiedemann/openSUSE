@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 29 10:26:09 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add multibuild to run tests
+- Use the github source because the pypi doesn't have the tests
+- Add patch 25.patch to remove the sphinx-testing dependency
+
+-------------------------------------------------------------------
 Mon Jan 10 22:28:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0.0:

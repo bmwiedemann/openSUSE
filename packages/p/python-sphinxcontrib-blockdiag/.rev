@@ -45,4 +45,15 @@
   * add python 3.9+ support</comment>
     <requestid>945424</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>d830881c7459bfc797346f804f708203</srcmd5>
+    <version>3.0.0</version>
+    <time>1664468073</time>
+    <user>RBrownFactory</user>
+    <comment>- Add multibuild to run tests
+- Use the github source because the pypi doesn't have the tests
+- Add patch 25.patch to remove the sphinx-testing dependency
+</comment>
+    <requestid>1006921</requestid>
+  </revision>
 </revisionlist>
