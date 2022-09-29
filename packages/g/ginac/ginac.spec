@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package ginac
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -23,7 +23,6 @@
 %if "%{flavor}" == "doc"
 %bcond_without doc
 %define pkg_suffix -doc
-BuildArch:      noarch
 %endif
 
 %if "%{flavor}" == ""
@@ -32,7 +31,7 @@ BuildArch:      noarch
 
 %define library_version 11
 Name:           %{srcname}%{?pkg_suffix}
-Version:        1.8.3
+Version:        1.8.4
 Release:        0
 Summary:        C++ library for symbolic calculations
 License:        GPL-2.0-only
@@ -45,6 +44,7 @@ Patch1:         ginac-cmake-install-doc.patch
 BuildRequires:  bison
 BuildRequires:  cln-devel
 BuildRequires:  cmake
+BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
@@ -121,6 +121,7 @@ use to develop GiNaC applications.
 %if "%{flavor}" == "doc"
 %package pdf
 Summary:        API documentation for GiNaC in PDF format
+BuildArch:      noarch
 
 %description pdf
 GiNaC (which stands for "GiNaC is Not a CAS (Computer Algebra System)") is an
@@ -130,6 +131,7 @@ This package provides the API documentation for GiNaC in PDF format.
 
 %package html
 Summary:        API documentation for GiNaC in HTML format
+BuildArch:      noarch
 
 %description html
 GiNaC (which stands for "GiNaC is Not a CAS (Computer Algebra System)") is an
@@ -139,6 +141,7 @@ This package provides the API documentation for GiNaC in HTML format.
 
 %package tutorial
 Summary:        The GiNaC tutorial in PDF format
+BuildArch:      noarch
 
 %description tutorial
 GiNaC (which stands for "GiNaC is Not a CAS (Computer Algebra System)") is an
@@ -179,6 +182,8 @@ popd
 %endif
 
 find %{buildroot} -type f -name "*.la" -delete -print
+
+%fdupes %{buildroot}%{_docdir}/%{name}/html/
 
 # SECTION Unflavoured Pkg
 %if "%{flavor}" == ""
