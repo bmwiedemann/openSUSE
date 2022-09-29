@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep 27 16:27:48 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1664296060.b33e5b8:
+  * Cover error case when invoking QEMU cmd `blockdev-snapshot-sync`
+  * Cover remaining QEMU startup code
+  * Fix typo in QEMU backend tests
+  * Test further special cases when starting QEMU
+  * Improve error handling when starting sub process in QEMU backend
+  * Test special cases when starting QEMU or mark lines as uncoverable
+  * Test remaining special cases when handling QMP command
+  * Dynamically obtain vmware datastore
+
+-------------------------------------------------------------------
 Fri Sep 23 19:35:48 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1663935216.436f134:
