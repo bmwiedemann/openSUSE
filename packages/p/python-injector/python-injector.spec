@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-injector
-Version:        0.19.0
+Version:        0.20.1
 Release:        0
 Summary:        Python dependency injection framework, inspired by Guice
 License:        BSD-3-Clause

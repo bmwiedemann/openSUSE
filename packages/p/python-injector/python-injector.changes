@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Sep 29 02:41:09 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 0.20.1
+  - Added support for PEP 604 union types (Python 3.10+), thanks to David Pärsson 
+  - Fixed building with pypandoc 1.8+, thanks to Søren Fuglede Jørgensen
+
+- Update to 0.20.0
+  - Fixed handling of Union combined with Annotated, thanks to Tobias Nilsson
+  - Fixed AssitedBuilder/child Injector interaction, thanks to Erik Cederberg
+  - Made get_bindings() and injections work even if a injectee's return type
+    annotation is a forward reference that can't be resolved
+  Backwards incompatible:
+  - Dropped Python 3.6 support 
+
+-------------------------------------------------------------------
 Mon Jan 10 13:55:04 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Fix test and runtime requirements
