@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Sep 29 13:36:20 UTC 2022 - Peter Wullinger <wullinger@rz.uni-kiel.de>
+
+- add (patch-no-exit-on-rewrite-malformed-address.patch)
+  Fix exit on attempt to rewrite a malformed address (Bug 2903)
+
+-------------------------------------------------------------------
+Tue Sep  6 09:19:57 UTC 2022 - Ludwig Nussel <lnussel@suse.de>
+
+- Own /var/spool/mail (boo#1179574)
+
+-------------------------------------------------------------------
+Thu Sep  1 07:43:11 UTC 2022 - Stefan Schubert <schubi@suse.com>
+
+- Migration to /usr/etc: Saving user changed configuration files
+  in /etc and restoring them while an RPM update.
+
+-------------------------------------------------------------------
 Wed Jun 29 14:20:50 UTC 2022 - Stefan Schubert <schubi@suse.com>
 
 - Moved logrotate files from user specific directory /etc/logrotate.d

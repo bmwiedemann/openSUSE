@@ -804,4 +804,17 @@ argument by removing the curly brackets (shell syntax).</comment>
     <comment></comment>
     <requestid>985854</requestid>
   </revision>
+  <revision rev="72" vrev="2">
+    <srcmd5>2d4d24c2edfc38cd58dab248886e5233</srcmd5>
+    <version>4.96</version>
+    <time>1664468083</time>
+    <user>RBrownFactory</user>
+    <comment>- add (patch-no-exit-on-rewrite-malformed-address.patch)
+  Fix exit on attempt to rewrite a malformed address (Bug 2903)
+- Own /var/spool/mail (boo#1179574)
+- Migration to /usr/etc: Saving user changed configuration files
+  in /etc and restoring them while an RPM update.
+</comment>
+    <requestid>1006967</requestid>
+  </revision>
 </revisionlist>

@@ -75,7 +75,7 @@ Requires(pre):  group(mail)
 Requires(pre):  fileutils textutils
 %endif
 Version:        4.96
-Release:        0
+Release:        1
 %if %{with_mysql}
 BuildRequires:  mysql-devel
 %endif
@@ -105,6 +105,7 @@ Source40:       exim.service
 Source41:       exim_db.8.gz
 Patch0:         exim-tail.patch
 Patch1:         gnu_printf.patch
+Patch2:         patch-no-exit-on-rewrite-malformed-address.patch
 
 %package -n eximon
 Summary:        Eximon, an graphical frontend to administer Exim's mail queue
@@ -148,6 +149,7 @@ once, if at all. The rest is done by logrotate / cron.)
 %setup -q -n exim-%{version}
 %patch0
 %patch1 -p1
+%patch2 -p1
 # build with fPIE/pie on SUSE 10.0 or newer, or on any other platform
 %if %{?suse_version:%suse_version}%{?!suse_version:99999} > 930
 fPIE="-fPIE"
@@ -315,6 +317,7 @@ mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/logrotate.d
 mkdir -p $RPM_BUILD_ROOT/usr/{bin,sbin,lib}
 mkdir -p $RPM_BUILD_ROOT/var/log/exim
 mkdir -p $RPM_BUILD_ROOT/var/spool/mail/
+ln -s spool/mail $RPM_BUILD_ROOT/var
 mkdir -p $RPM_BUILD_ROOT%{_fillupdir}
 mkdir -p $RPM_BUILD_ROOT%{_mandir}/man8
 mkdir -p $RPM_BUILD_ROOT/usr/bin
@@ -413,6 +416,20 @@ end
 %if 0%{?suse_version} > 1220
 %service_add_pre exim.service
 %endif
+%if 0%{?suse_version} > 1500
+# Prepare for migration to /usr/etc; save any old .rpmsave
+for i in logrotate.d/exim ; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+%endif
+
+%if 0%{?suse_version} > 1500
+%posttrans
+# Migration to /usr/etc, restore just created .rpmsave
+for i in logrotate.d/exim ; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+%endif
 
 %post
 %if 0%{?suse_version} < 1131
@@ -504,6 +521,8 @@ exit 0
 /usr/lib/sendmail
 %{_fillupdir}/sysconfig.exim
 %dir %attr(750,mail,mail) /var/log/exim
+%dir %attr(1777,root,root) /var/spool/mail
+/var/mail
 
 %files -n eximon
 %defattr(-,root,root)
