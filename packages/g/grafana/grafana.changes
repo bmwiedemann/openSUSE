@@ -586,10 +586,11 @@ Thu Jan 20 14:01:12 UTC 2022 - witold.bedyk@suse.com
       variables.
 
 - Update to version 8.3.2
-  + Security: Fixes CVE-2021-43813 and CVE-2021-43815.
+  + Security: Fixes CVE-2021-43813 and CVE-2021-43815,
+    bsc#1193686.
 
 - Update to version 8.3.1
-  + Security: Fixes CVE-2021-43798.
+  + Security: Fixes CVE-2021-43798, bsc#1193492.
 
 - Update to version 8.3.0
   + Features and enhancements:
@@ -775,10 +776,10 @@ Thu Jan 20 14:01:12 UTC 2022 - witold.bedyk@suse.com
     * Tracing: Correct tags for each span are shown.
 
 - Update to version 8.2.4
-  + Security: Fixes CVE-2021-41244.
+  + Security: Fixes CVE-2021-41244, bsc#1192763.
 
 - Update to version 8.2.3
-  + Security: Fixes CVE-2021-41174.
+  + Security: Fixes CVE-2021-41174, bsc#1192383.
 
 - Update to version 8.2.2
   + Features and enhancements:
@@ -1032,7 +1033,7 @@ Thu Jan 20 14:01:12 UTC 2022 - witold.bedyk@suse.com
     * Dashboard: Prevent folder from changing when navigating to
       general settings.
     * Docker: Force use of libcrypto1.1 and libssl1.1 versions to
-      fix CVE-2021-3711.
+      fix CVE-2021-3711, bsc#1189520.
     * Elasticsearch: Fix metric names for alert queries.
     * Elasticsearch: Limit Histogram field parameter to numeric
       values.
@@ -1113,7 +1114,8 @@ Thu Jan 20 14:01:12 UTC 2022 - witold.bedyk@suse.com
     * PasswordField: Prevent a password from being displayed when
       you click the Enter button.
     * Renderer: Remove debug.log file when Grafana is stopped.
-    * Security: Update dependencies to fix CVE-2021-36222.
+    * Security: Update dependencies to fix CVE-2021-36222,
+      bsc#1188571.
 
 - Update to version 8.1.0-beta3
   + Features and enhancements:
