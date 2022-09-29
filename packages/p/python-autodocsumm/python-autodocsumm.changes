@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 28 10:24:29 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove sphinx-testing build dependency, it's not needed anymore
+
+-------------------------------------------------------------------
 Thu Aug  4 09:17:21 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Update to 0.2.9:

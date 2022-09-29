@@ -35,7 +35,6 @@ BuildArch:      noarch
 BuildRequires:  %{python_module Sphinx >= 2.2}
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module sphinx-testing}
 # /SECTION
 %python_subpackages
 

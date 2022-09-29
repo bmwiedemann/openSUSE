@@ -61,4 +61,13 @@
     <comment></comment>
     <requestid>993140</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>e281a5c671b58a03f06fde8f01e3144b</srcmd5>
+    <version>0.2.9</version>
+    <time>1664467947</time>
+    <user>RBrownFactory</user>
+    <comment>- Remove sphinx-testing build dependency, it's not needed anymore
+</comment>
+    <requestid>1006629</requestid>
+  </revision>
 </revisionlist>
