@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 28 12:52:24 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Replace python-base with python-devel in BuildRequires (bsc#1203453)
+- Run spec-cleaner
+
+-------------------------------------------------------------------
 Sat Dec 16 08:07:07 UTC 2017 - mpluskal@suse.com
 
 - Cleanup spec file

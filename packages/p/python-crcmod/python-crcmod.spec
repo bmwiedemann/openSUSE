@@ -1,7 +1,7 @@
 #
 # spec file for package python-crcmod
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,9 +23,9 @@ Release:        0
 Summary:        CRC Generator
 License:        MIT
 Group:          Development/Languages/Python
-Url:            http://crcmod.sourceforge.net/
+URL:            https://crcmod.sourceforge.net/
 Source:         https://files.pythonhosted.org/packages/source/c/crcmod/crcmod-%{version}.tar.gz
-BuildRequires:  %{python_module base}
+BuildRequires:  %{python_module devel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %python_subpackages
@@ -55,7 +55,8 @@ C/C++ source code that can be used in another application.
 %python_expand %fdupes %{buildroot}%{$python_sitearch}/crcmod
 
 %files %{python_files}
-%doc LICENSE README changelog
+%license LICENSE
+%doc README changelog
 %{python_sitearch}/*
 
 %changelog

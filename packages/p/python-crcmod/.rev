@@ -37,4 +37,13 @@
     <comment></comment>
     <requestid>557609</requestid>
   </revision>
+  <revision rev="6" vrev="8">
+    <srcmd5>f77260ea292b13154d5b97383177267f</srcmd5>
+    <version>1.7</version>
+    <time>1664467967</time>
+    <user>RBrownFactory</user>
+    <comment>- Replace python-base with python-devel in BuildRequires (bsc#1203453)
+- Run spec-cleaner (forwarded request 1006672 from glaubitz)</comment>
+    <requestid>1006673</requestid>
+  </revision>
 </revisionlist>
