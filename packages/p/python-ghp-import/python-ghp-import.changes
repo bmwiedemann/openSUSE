@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep 28 21:18:08 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 2.1.0
+  * Remove outdated "I" and "me" from the text
+  * Use `rfc2822` date format (#109)
+  * Respect `--prefix` when using `--no-jekyll` (#107)
+  * Remove unused constant
+  * Switch from optparse to argparse (#103)
+
+- Update to version 2.0.2
+  * Build and release wheels (#102)
+
+-------------------------------------------------------------------
 Sat Aug 14 21:52:46 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim conjecture and filler wording from description. Use noun
