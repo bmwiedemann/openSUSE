@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep 27 07:44:49 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.rc:
+  + New Features: Make delete button visually destructive in
+    confirmation dialog.
+  + Fixes: Fix png icons renamed as svg.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Sep 11 19:15:56 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.beta:

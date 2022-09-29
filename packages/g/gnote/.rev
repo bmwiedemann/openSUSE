@@ -704,4 +704,12 @@ Search-provider is now it's own subpackage (forwarded request 180587 from dimsta
     <comment>GNOME 43.rc - let's get this into Staging to see what we break (e.g meson:test seems to be an issue already) (forwarded request 1002594 from dimstar)</comment>
     <requestid>1003276</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>a91767e0e7b1f5cd01471cdb986d8e28</srcmd5>
+    <version>43.rc</version>
+    <time>1664467953</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1006649</requestid>
+  </revision>
 </revisionlist>
