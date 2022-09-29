@@ -88,4 +88,12 @@
   * Fixed NumPy versions in Travis builds.</comment>
     <requestid>946660</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d0be037da709b2cdebdb13f8c0ea21de</srcmd5>
+    <version>1.2.6</version>
+    <time>1664468009</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1006738</requestid>
+  </revision>
 </revisionlist>

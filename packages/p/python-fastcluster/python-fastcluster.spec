@@ -20,7 +20,7 @@
 %define         skip_python36 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-fastcluster
-Version:        1.2.4
+Version:        1.2.6
 Release:        0
 Summary:        Hierarchical clustering routines for Python
 License:        BSD-2-Clause
