@@ -16,10 +16,10 @@
 #
 
 
-%define dlver   2.2.2-0
+%define dlver   2.2.4-0
 %define sover   1
 Name:           lazarus
-Version:        2.2.2
+Version:        2.2.4
 Release:        0
 # Please note that the LGPL is modified and this is not multi-licensed, but each component has a separate license chosen.
 Summary:        FreePascal RAD IDE and Component Library
@@ -208,6 +208,7 @@ sed <tools/install/linux/environmentoptions.xml -e "s#__LAZARUSDIR__#%{_libdir}/
 rm -rf %{buildroot}%{_libdir}/%{name}/install/man
 rm -f %{buildroot}%{_libdir}/%{name}/Makefile.fpc.orig
 rm -rf %{buildroot}%{_libdir}/%{name}/lcl/interfaces/qt5/cbindings
+%fdupes -s %{buildroot}
 
 %post -n libQt5Pas%{sover} -p /sbin/ldconfig
 

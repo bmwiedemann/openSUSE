@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 28 11:43:12 UTC 2022 - PragmaticLinux <info@pragmaticlinux.com>
+
+- Update to 2.2.4
+  * For a complete list of changes see:
+    https://wiki.freepascal.org/Lazarus_2.2_fixes_branch#Fixes_for_2.2.4_.28merged.29
+- Enabled the removal of duplicates again using fdupes, now that
+  upstream resolved the issue - boo#1197651
+
+-------------------------------------------------------------------
 Fri May 20 06:27:18 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.2.2
