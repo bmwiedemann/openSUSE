@@ -27,7 +27,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-starlette%{psuffix}
-Version:        0.20.4
+Version:        0.21.0
 Release:        0
 Summary:        Lightweight ASGI framework/toolkit
 License:        BSD-3-Clause
@@ -37,10 +37,13 @@ BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module anyio}
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module httpx}
 BuildRequires:  %{python_module itsdangerous}
-BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module typing_extensions}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-anyio >= 3.4.0
@@ -66,11 +69,11 @@ building high performance asyncio services.
 %autosetup -n starlette-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if ! %{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 

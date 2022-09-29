@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Sep 29 08:19:37 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to 0.21.0
+  * Changed
+    - Replace requests with httpx in TestClient #1376.
+  * Added
+    - Add WebSocketException and support for WebSocket exception handlers #1263.
+    - Add middleware parameter to Mount class #1649.
+    - Officially support Python 3.11 1863.
+    - Implement __repr__ for route classes #1864.
+  * Fixed
+    - Fix bug on which BackgroundTasks were cancelled when using BaseHTTPMiddleware and client disconnected #1715.
+- setup.py install is no longer supported by upstream => use pip-based installation
+- added build dependencies:
+  * python3-hatchling
+  * python3-pip
+  * python3-wheel
+
+-------------------------------------------------------------------
 Thu Aug 11 05:22:41 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove unneeded BuildRequires on contextlib2. 
