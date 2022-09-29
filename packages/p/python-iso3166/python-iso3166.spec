@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-iso3166
-Version:        2.0.2
+Version:        2.1.1
 Release:        0
 Summary:        Python ISO 3166-1 country definitions
 License:        MIT
