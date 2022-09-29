@@ -1,7 +1,7 @@
 #
 # spec file for package python-interrogate
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-interrogate
-Version:        1.2.0
+Version:        1.5.0
 Release:        0
 Summary:        Interrogate a codebase for docstring coverage
 License:        MIT
@@ -35,7 +35,7 @@ Requires:       python-py
 Requires:       python-tabulate
 Requires:       python-toml
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module attrs}
