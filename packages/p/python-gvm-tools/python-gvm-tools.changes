@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Sep 29 01:28:42 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- version update  to 22.9.0
+  * Changelog created for release to 22.9.0
+  * Fix: Consolidated Report script finds last report in time period now (#771)
+  * Bump bcrypt from 3.2.2 to 4.0.0
+  * Bump urllib3 from 1.26.11 to 1.26.12
+  * Change: Don't use a pip cache within the container build
+  * Bump charset-normalizer from 2.1.0 to 2.1.1 (#767)
+  * Bump pygments from 2.12.0 to 2.13.0
+  * Bump coverage from 6.4.3 to 6.4.4
+  * Bump autohooks from 22.8.0 to 22.8.1
+  * Bump github/codeql-action from 1 to 2
+  * Bump actions/checkout from 2 to 3
+  * Bump actions/setup-python from 2 to 4
+  * Add: Update GitHub actions via dependabot too
+  * Add dockerignor file for a cleaner container build context
+  * Remove unnecessary installation of poetry in container workflow
+  * Try to fix poetry issue not being able to find python
+  * Update Dockerfile
+  * Update container.yml
+  * Update container.yml
+  * Update container.yml
+  * Add: Build container image for gvm-tools
+  * Update and improve docs
+  * Change: Update links and terms in README and docs
+  * Add: Deploy docs to GitHub pages too
+  * Normalize strings for gmp scripts too
+  * Change: Enable string normalization with black
+  * Sort all imports with isort
+  * Change: Add autohooks-plugin-isort for import sorting
+  * Change: Use greater or equal then for dependencies with calver
+
+-------------------------------------------------------------------
 Thu Feb 17 10:32:18 UTC 2022 - pgajdos@suse.com
 
 - version update to 21.10.0

@@ -22,7 +22,7 @@
 %define skip_python36 1
 %define skip_python39 1
 Name:           python-gvm-tools
-Version:        21.10.0
+Version:        22.9.0
 Release:        0
 Summary:        Tools to control a GSM/GVM over GMP or OSP
 License:        GPL-3.0-or-later
