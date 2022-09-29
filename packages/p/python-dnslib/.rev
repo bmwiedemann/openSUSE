@@ -33,4 +33,12 @@
   * Allow custom log function (logf) in  DNSLogger</comment>
     <requestid>948249</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>df781562f9502e09358d53223f9b62c2</srcmd5>
+    <version>0.9.20</version>
+    <time>1664467927</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1006507</requestid>
+  </revision>
 </revisionlist>
