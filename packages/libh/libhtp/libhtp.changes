@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 28 08:16:01 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to version 0.5.41
+  * trim white space of invalid folding for first header
+  * clear buffered data for body data
+  * minor optimization for decompression code
+
+-------------------------------------------------------------------
 Mon Jun 27 21:32:51 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Update to version 0.5.40
