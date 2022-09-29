@@ -20,7 +20,7 @@
 %define         skip_python2 1
 %define         skip_python36 1
 Name:           python-flexx
-Version:        0.8.3
+Version:        0.8.4
 Release:        0
 Summary:        Python toolkit for creating graphical user interfaces
 License:        BSD-2-Clause
