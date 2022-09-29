@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-flufl.i18n
-Version:        4.0
+Version:        4.1.1
 Release:        0
 Summary:        High level API for internationalizing Python libraries and applications
 License:        Apache-2.0
