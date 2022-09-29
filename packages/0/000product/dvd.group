@@ -55,7 +55,7 @@
     <package name="PackageKit-gstreamer-plugin" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="PackageKit-gtk3-module" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="PackageKit-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="QGnomePlatform" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="QGnomePlatform-qt5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="WebKit2GTK-4.0-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="WebKit2GTK-4.1-lang" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="WindowMaker" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-imaging -->

@@ -198,6 +198,7 @@ unsorted:
   - PrusaSlicer 
   - PyCBC-utils: [x86_64] 
   - QCSXCAD-devel 
+  - QGnomePlatform-qt6 
   - QMPlay2 
   - QMPlay2-devel 
   - QR-Code-generator-devel 
@@ -1143,7 +1144,6 @@ unsorted:
   - backintime 
   - backintime-lang 
   - backintime-qt 
-  - backward-cpp 
   - backward-cpp-devel 
   - baekmuk-bitmap-fonts 
   - baekmuk-ttf-fonts 
@@ -5943,7 +5943,6 @@ unsorted:
   - gnome-boxes-lang 
   - gnome-branding-MicroOS: [i586] 
   - gnome-builder 
-  - gnome-builder-doc 
   - gnome-builder-lang 
   - gnome-calculator-devel 
   - gnome-calendar 
@@ -19245,6 +19244,7 @@ unsorted:
   - perl-Algorithm-Combinatorics 
   - perl-Algorithm-Diff 
   - perl-Alien-Build 
+  - perl-Alien-Build-Plugin-Download-GitLab 
   - perl-Alien-Hunspell 
   - perl-Alien-Libxml2 
   - perl-Alien-SDL 
@@ -43792,6 +43792,7 @@ unsorted:
   - wl-clipboard 
   - wl-clipboard-bash-completion 
   - wl-clipboard-fish-completion 
+  - wl-clipboard-rs 
   - wl-clipboard-zsh-completion 
   - wlgreet 
   - wlopm 
