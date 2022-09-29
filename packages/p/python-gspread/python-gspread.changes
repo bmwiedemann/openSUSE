@@ -1,4 +1,138 @@
 -------------------------------------------------------------------
+Wed Sep 28 21:55:25 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- 5.5.0 (2022-08-31)
+  Use pathlib by @lavigne958 in #1057
+  Migrate to drive API V3 by @lavigne958 in #1060
+  Implement __eq__ method for Cell by @chisvi in #1063
+  Add missing documentation on set_timeout by @lavigne958 in #1070
+  Add method to transfer / accept ownership of a spreadsheet by @lavigne958 in #1068
+  Add client_factory param to auth methods by @jlumbroso in #1075
+  Fix list_protected_ranges by @lavigne958 in #1076
+  Add function to convert column letter to column index by @lavigne958 in #1077
+  Fix docstring name of named_range() param by @dgilman in #1081
+  Fix grammar in docstring for client.export by @dgilman in #1080
+  Many typo fixes to worksheet docstrings by @dgilman in #1083
+  Fix function numericise_all by @lavigne958 in #1082
+  Fix documentation about oauth_from_dict by @lavigne958 in #1088
+  inherit_from_before option for insert_row/insert_rows by @yongrenjie in #1092
+  add method to change the color of a tab by @lavigne958 in #1095
+  docs: Fix a few typos by @timgates42 in #1094
+  Fix typo in Worksheet.batch_format method by @lavigne958 in #1101
+  ## New Contributors * @chisvi made their first contribution in #1063 * @jlumbroso made their first contribution in #1075 * @yongrenjie made their first contribution in #1092
+
+- 5.4.0 (2022-06-01)
+  fix typo by @joswlv in #1031
+  Fix error message in get_all_records by @lavigne958 in #1028
+  Added feature request #1022. Auto resizing is now available for rows … by @mketer1 in #1033
+  add new method to hide/show a worksheet by @lavigne958 in #1030
+  feat: Download PDF from Spreadsheet #1035 by @100paperkite in #1036
+  Add test on auto_resize_columns by @lavigne958 in #1039
+  Add method to unmerge cells by @lavigne958 in #1040
+  Add method to delete a protected range by @lavigne958 in #1042
+  Feature/clean organize documentation by @lavigne958 in #1043
+  Add warning about deprecated oauth flow by @lavigne958 in #1047
+  Add new batch_format method. by @lavigne958 in #1049
+  Encode string to utf-8 when importing CSV content by @lavigne958 in #1054
+  New Contributors
+  @joswlv made their first contribution in #1031
+  @mketer1 made their first contribution in #1033
+  @100paperkite made their first contribution in #1036
+- 5.3.2 (2022-04-12)
+  Bugfix/black python3.10 by @lavigne958 in #1020
+  Automate releases by @lavigne958 in #1025
+  Bugfix/get all record duplicated columns by @lavigne958 in #1021
+- 5.3.0 (2022-03-28)
+  Feature/rework test cassettes recording by @lavigne958 in #1004
+  add method list protected ranges by @lavigne958 in #1008
+  Add new methods to add/list/delete dimensionGroups by @lavigne958 in #1010
+  Add method to hide rows/columns by @lavigne958 in #1012
+  Add ability to rename Spreadsheets (via a new Spreadsheet.update_title) by @jansim in #1013
+  ## New Contributors * @jansim made their first contribution in #1013
+- 5.2.0 (2022-02-27)
+  Copy comments when during spreadsheet copy by @lavigne958 in #979
+  Update user-guide.rst by @maky-hnou in #980
+  merge setup test cassettes by @lavigne958 in #982
+  Feature/add header validation get all records by @lavigne958 in #984
+  Add timeout to client by @lavigne958 in #987
+  Feature/update timezone and locale by @lavigne958 in #989
+  Feature/make case comparison in find by @lavigne958 in #990
+  Updated API rate limits by @hvinayan in #993
+  Feature/prevent insert row to sheet with colon by @lavigne958 in #992
+  ## New Contributors * @maky-hnou made their first contribution in #980 * @hvinayan made their first contribution in #993
+- 5.1.1 (2021-12-22)
+  Fix documentation about oauth (#975 by @lavigne958)
+- 5.1.0 (2021-12-22)
+  Codespell skip docs build folder (#962 by @lavigne958)
+  Update contributing guidelines (#964 by @lavigne958)
+  Add oauth from dict (#967 by @lavigne958)
+  Update README.md to include badges (#970 by @lavigne958)
+  Add new method to get all values as a list of Cells (#968 by @lavigne958)
+  automatic conversion of a cell letter to uppercase (#972 by @Burovytskyi)
+- 5.0.0 (2021-11-26)
+  Fix a typo in HISTORY.rst (#904 by @TurnrDev)
+  Fix typo and fix return value written in docstrings (#903 by @rariyama)
+  Add deprecation warning for delete_row method in documentation (#909 by @javad94)
+  split files models.py and test.py (#912 by @lavigne958)
+  parent 39d1ecb59ca3149a8f46094c720efab883a0dc11 author Christian Clauss <cclauss@me.com> 1621149013 +0200 commit
+  ter Christian Clauss <cclauss@me.com> 1630103641 +0200 (#869 by @cclaus)
+  Enable code linter in CI (#915 by @lavigne958)
+  isort your imports (again), so you don't have to (#914 by @cclaus)
+  lint_python.yml: Try 'tox -e py' to test current Python (#916 by @cclaus)
+  Add more flake8 tests (#917 by @cclaus)
+  Update test suite (#918 by @cclaus)
+  Avoid IndexError when row_values() returns an empty row (#920 by @cclaus)
+  Bugfix - remove wrong argument in batch_update docstring (#912 by @lavigne958)
+  Improvement - Add Worksheet.index property (#922 by @lavigne958)
+  Add ability to create directory if it does not exist before saving the credentials to disk. (#925 by @benhoman)
+  Update test framework and VCR and cassettes (#926 by @lavigne958)
+  Delete .travis.yml (#928 by @cclaus)
+  Update tox.ini with all linting commands under lint env (by @lavigne958)
+  Build package and docs in CI (#930 by @lavigne958)
+  Update oauth2.rst (#933 by @amlestin)
+  Update the link to the Google Developers Console (#934 by @Croebh)
+  allow tests to run on windows, add and improve tests in WorksheetTests, add test on unbounded range, use canonical range as specified in the API,
+   add test cassettes, prevent InvalidGridRange, improve code formatting (#937 by @Fendse)
+  fix fully qualified class names in API documentation (#944 by @geoffbeier)
+  fix editor_users_emails - get only from list not all users added to spreadsheet (#939 by @Lukasz)
+  add shadow method to get a named range from a speadsheet instance (#941 by @lavigne958)
+  auto_resize_columns (#948 by @FelipeSantos75)
+  add functions for defining, deleting and listing named ranges (#945 by @p-doyle)
+  Implement open sheet within Drive folder (#951 by @datavaluepeople)
+  Fix get range for unbounded ranges (#954 by @lavigne958)
+  remove potential I/O when reading spreadsheet title (956 by @lavigne958)
+  Add include_values_in_response to append_row & append_rows (#957 by @martimarkov)
+  replace raw string "ROWS" & "COLUMNS" to Dimension named tuple, replace raw string "FORMATTED_VALUE", "UNFORMATTED_VALUE", "FORMULA"
+  to ValueRenderOption named tuple, replace raw string "RAW", "USER_ENTERED" to ValueInputOption named tuple (#958 by @ccppoo)
+-  4.0.1 (2021-08-07)
+  Do not overwrite original value when trying to convert to a number (#902 by @lavigne958)
+- 4.0.0 (2021-08-01)
+  Changed Worksheet.find() method returns None if nothing is found (#899 by @GastonBC)
+  Add Worksheet.batch_clear() to clear multiple ranges. (#897 by @lavigne958)
+  Fix copy_permission argument comparison in Client.copy() method (#898 by @lavigne958)
+  Allow creation of spreadhsheets in a shared drive (#895 by @lavigne958)
+  Allow gspread.oauth() to accept a custom credential file (#891 by @slmtpz)
+  Update tox.ini, remove python2 from env list (#887 by @cclaus)
+  Add SpreadSheet.get_worksheet_by_id() method (#857 by @a-crovetto)
+  Fix store_credentials() when authorized_user_filename is passed (#884 by @neuenmuller)
+  Remove python2 (#879 by @lavigne958)
+  Use Makefile to run tests (#883 by @lavigne958)
+  Update documentation Authentication:For End Users using OAuth Client ID (#835 by @ManuNaEira)
+  Allow fetching named ranges from Worksheet.range() (#809 by @agatti)
+  Update README to only mention python3.3+ (#877 by @lavigne958)
+  Fetch creation and lastUpdate time from SpreadSheet on open (#872 by @lavigne958)
+  Fix bug with Worksheet.insert_row() with value_input_option argument (#873 by @elijabesu)
+  Fix typos in doc and comments (#868 by @cclauss)
+  Auto cast numeric values from sheet cells to python int or float (#866 by @lavigne958)
+  Add Worksheet.get_values() method (#775 by @burnash)
+  Allow gspread.oauth() to accept a custom filename (#847 by @bastienboutonnet)
+  Document dictionary credentials auth (#860 by @dmytrostriletskyi)
+  Add Worksheet.get_note() (#855 by @water-ghosts )
+  Add steps for creating new keys (#856 by @hanzala-sohrab)
+  Add folder_id argument to Client.copy() (#851 by @punnerud)
+  Fix typos in docstrings (#848 by @dgilman) 
+
+-------------------------------------------------------------------
 Fri Mar 19 05:26:12 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.7.0:
