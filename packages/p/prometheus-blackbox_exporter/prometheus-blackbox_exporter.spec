@@ -42,7 +42,7 @@ BuildRequires:  golang >= 1.14
 BuildRequires:  libcap
 %else
 BuildRequires:  libcap-progs
-BuildRequires:  golang(API) >= 1.14
+BuildRequires:  golang(API) = 1.18
 %endif
 %{?systemd_ordering}
 %if 0%{?suse_version}

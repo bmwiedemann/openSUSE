@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 27 18:53:29 UTC 2022 - Marina Latini <marina.latini@suse.com>
+
+- Require go1.18 (bsc#1203599, GH#19127)
+
+-------------------------------------------------------------------
 Thu Jun 16 08:21:42 UTC 2022 - Julio González Gil <jgonzalez@suse.com>
 
 - Exclude s390 arch
