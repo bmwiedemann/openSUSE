@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 29 11:58:52 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Use GCC9 for Leap/SLE 15.x to fix build
+
+-------------------------------------------------------------------
 Fri Sep 16 07:26:34 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 5.4.8:

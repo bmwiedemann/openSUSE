@@ -30,7 +30,12 @@ URL:            https://github.com/VectorCamp/vectorscan
 Source:         https://github.com/VectorCamp/vectorscan/archive/refs/tags/vectorscan/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  boost-devel >= 1.57
 BuildRequires:  cmake
+%if 0%{?suse_version} > 1500
 BuildRequires:  gcc-c++ >= 9
+%else
+# Leap 15.x still uses gcc7 by default
+BuildRequires:  gcc9-c++
+%endif
 BuildRequires:  libpcap-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python
@@ -90,6 +95,10 @@ needed for developing Hyperscan applications.
 %setup -q -n %{name}-%{name}-%{version}
 
 %build
+%if 0%{?suse_version} <= 1500
+export CC=gcc-9
+export CXX=g++-9
+%endif
 %cmake \
   -DCMAKE_INSTALL_DOCDIR=%{_defaultdocdir}/%{name} \
 %ifarch %{ix86} x86_64
