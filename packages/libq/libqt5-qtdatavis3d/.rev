@@ -205,4 +205,12 @@
     <comment>Qt 5.15.5 with patch collection + qtscript 5.15.10 (forwarded request 985459 from favogt)</comment>
     <requestid>985473</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>e6efcdf1b818f9b9cf6a7cac13f0b627</srcmd5>
+    <version>5.15.6+kde0</version>
+    <time>1664467911</time>
+    <user>RBrownFactory</user>
+    <comment>Qt 5.15.6, untested. (forwarded request 1006197 from Vogtinator)</comment>
+    <requestid>1006213</requestid>
+  </revision>
 </revisionlist>

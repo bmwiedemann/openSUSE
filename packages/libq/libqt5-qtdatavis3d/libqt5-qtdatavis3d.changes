@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 26 10:33:04 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.6+kde0, rebased upstream:
+   * Fix bargraph labels face wrong direction
+   * Fix Q3DScatter memory leak
+
+-------------------------------------------------------------------
 Mon Jun 27 13:09:20 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.5+kde0, rebased upstream:
