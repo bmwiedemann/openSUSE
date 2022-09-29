@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Sep 28 19:51:07 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- version update to 0.16.0 
+ * Merge "Update the docker image to python3.9 and buster"
+ * Fix python3.9 testing
+ * Update the docker image to python3.9 and buster
+ * Overhaul package metadata and contributor info
+ * Add libffi header dependency
+ * Update testing to Python 3.9 and linters
+ * Create SSL context using PROTOCOL_TLS, fallback to highest supported version
+ * Merge "wakeConnections: Randomize connections before scanning them"
+ * Merge "Move handleDisconnect into BaseClientServer"
+ * Merge "remove unicode from code"
+ * Merge "Modify connection timeout process"
+ * wakeConnections: Randomize connections before scanning them
+ * Added Docker image builds
+ * remove unicode from code
+ * Merge "Bump crypto requirement to accomodate security standards"
+ * use python3 as context for build-python-release
+ * Bump crypto requirement to accomodate security standards
+ * Move handleDisconnect into BaseClientServer
+ * Revert "Add BSD/Darwin support."
+ * Merge "Ignore keepalive on unsupported platforms"
+ * Merge "Add BSD/Darwin support."
+
+-------------------------------------------------------------------
 Fri Sep 24 23:18:43 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Switch off the test suite, because of https://storyboard.openstack.org/#!/story/2009250
