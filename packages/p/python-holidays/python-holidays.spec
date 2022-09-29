@@ -1,7 +1,7 @@
 #
 # spec file for package python-holidays
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-holidays
-Version:        0.11.1
+Version:        0.15
 Release:        0
 Summary:        Python library for generating holidays on the fly
 License:        MIT
