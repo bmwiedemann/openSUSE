@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 26 11:44:29 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.6+kde1, rebased upstream:
+   * PropertyEditor: Update designer specifics
+   * Doc: Fix application order of Node.eulerRotation
+   * QtQuic3D AssimpImporter: use quaternion by default
+
+-------------------------------------------------------------------
 Mon Jun 27 13:12:43 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.5+kde1, rebased upstream:
