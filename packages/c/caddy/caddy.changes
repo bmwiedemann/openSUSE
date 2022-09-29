@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 23 19:30:59 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 2.6.1:
+  * core: Reuse unix sockets (UDS) and don't try to serve HTTP/3 over UDS (#5063)
+  * encode: don't WriteHeader unless called (#5060)
+  * fileserver: Reinstate --debug flag
+
+-------------------------------------------------------------------
 Tue Sep 20 20:44:58 UTC 2022 - jkowalczyk@suse.com
 
 - Update to version 2.6.0:
