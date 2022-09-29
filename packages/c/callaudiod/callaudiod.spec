@@ -16,10 +16,11 @@
 #
 
 %define soname libcallaudio0_1-0
+%define apiver 0.1
 
 
 Name:           callaudiod
-Version:        0.1.3
+Version:        0.1.4
 Release:        0
 Summary:        Daemon for audio calls
 License:        GPL-3.0-or-later AND MIT
@@ -65,6 +66,7 @@ This package contains the development and header files for %{name}.
 
 %package doc
 Summary:        API documentation for %{name}
+BuildArch:      noarch
 
 %description doc
 A daemon for audio calls.
@@ -95,12 +97,12 @@ This package contains API documentation for %{name}.
 %{_datadir}/dbus-1/services/org.mobian_project.CallAudio.service
 
 %files -n %{soname}
-%{_libdir}/libcallaudio-0.1.so.0
+%{_libdir}/libcallaudio-%{apiver}.so.*
 
 %files devel
-%{_includedir}/libcallaudio-0.1/
-%{_libdir}/libcallaudio-0.1.so
-%{_libdir}/pkgconfig/libcallaudio-0.1.pc
+%{_includedir}/libcallaudio-%{apiver}/
+%{_libdir}/libcallaudio-%{apiver}.so
+%{_libdir}/pkgconfig/libcallaudio-%{apiver}.pc
 
 %files doc
 %{_datadir}/gtk-doc/html/libcallaudio/

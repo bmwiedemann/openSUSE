@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Sep 01 20:33:20 UTC 2022 - bjorn.lie@gmail.com
+
+- Update to version 0.1.4:
+  * cad-pulse:
+    - Fix possible NULL dereference
+    - Improve monitor source identification
+    - Make sure speaker state is reset between calls
+    - Set D-Bus object properties on state change
+    - Simplify mic mute operation
+    - Track current state
+  * cli: Add --status flag to query current status
+  * dbus: Add properties to track the current state
+  * gitlab-ci: add `debian` folder for CI use
+  * libcallaudio:
+    - Add API to query current state
+    - Don't leak async data
+    - Improve documentation and fix more leaks
+    - Register enums as GType
+    - Use G_DBUS_PROXY_FLAGS_NONE instead of "0"
+  * manager:
+    - Add DBus properties
+    - Remove unused code
+    - Track state of operations
+  * src: make backend responsible for tracking current state
+- Package doc sub-package as noarch.
+- Add apiver define, ease future changes.
+
+-------------------------------------------------------------------
 Mon Jan 31 15:55:52 UTC 2022 - bjorn.lie@gmail.com
 
 - Update to version 0.1.3:
