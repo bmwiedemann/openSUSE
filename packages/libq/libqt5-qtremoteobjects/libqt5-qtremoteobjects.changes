@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 26 10:34:30 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.6+kde0, rebased upstream:
+   * Remove dead code in serializeDefinition()
+   * Remove dead code in qt_metacall()
+   * CMake: Don't claim we have qt6_generate_repc in Qt6
+   * Fix "Failed to create a timer" issue on Windows
+
+-------------------------------------------------------------------
 Mon Jun 27 13:10:12 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.5+kde0, rebased upstream:
