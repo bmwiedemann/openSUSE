@@ -17,7 +17,7 @@
 
 
 Name:           nim
-Version:        1.6.6
+Version:        1.6.8
 Release:        0
 Summary:        A statically typed compiled systems programming language
 License:        MIT
@@ -30,11 +30,11 @@ Patch0:         nim-nim-gdb_fix_interpreter.patch
 Patch1:         nim-fix-tests-certificate-key-too-small.patch
 # UPSTREAM FIX: https://github.com/nim-lang/Nim/commit/2c73e84436a11cae1676c7da0228158ba1a885cc
 Patch2:         nim-fix-tests-ip-protocol-missing.patch
-Patch3:         nim-fix-gcc-major-version-detection.patch
 
 # pull in a C compiler (required to build Nim programs)
 Requires:       gcc
 Recommends:     clang
+Recommends:     pcre
 
 BuildRequires:  binutils-devel
 
@@ -45,6 +45,7 @@ BuildRequires:  ca-certificates-mozilla
 BuildRequires:  git
 BuildRequires:  libopenssl-devel
 BuildRequires:  netcfg
+BuildRequires:  pcre
 BuildRequires:  sqlite3-devel
 BuildRequires:  timezone
 BuildRequires:  valgrind
@@ -145,9 +146,16 @@ cat << EOT >> tests_to_skip
   tests/nimdoc/trunnableexamples.nim
   # broken in Leap 15.3
   tests/exception/t13115.nim
-  # no SFML in plain SLE and missing in sin backport repos
+  # no SFML in plain SLE and missing in backport repos
   tests/niminaction/Chapter8/sfml/sfml_test.nim
 EOT
+
+%ifarch i586
+cat << EOT >> tests_to_skip
+  # flaky test, fails in i586
+  tests/async/tasyncssl.nim
+EOT
+%endif
 
 %ifarch aarch64 armv7l armv7hl ppc64le
 cat << EOT >> tests_to_skip
@@ -161,6 +169,7 @@ cat << EOT >> tests_to_skip
   tests/dll/nimhcr_unit.nim
   tests/arc/tcaseobj.nim
   tests/arc/tcaseobjcopy.nim
+  tests/async/tasyncssl.nim
 
   #aarch64 and ppc64l
   tests/range/tcompiletime_range_checks.nim

@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Wed Sep 28 07:25:35 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Remove patch nim-fix-gcc-major-version-detection.patch as it is
+  already included upstream.
+
+- Add PCRE dependency as recommended, but required while building.
+
+- Disable broken tests
+  * tasyncssl.nim [i586, armv7l]
+
+- Update to version 1.6.8:
+  * Fixed “Add –gc:arc (or –mm:arc) induce different behavior when
+    using converter”
+  * Fixed “Converting unsigned integer to float fails in VM"
+  * Fixed “regression(0.20.0 => devel): var params assignment gives
+    silently wrong results in VM” 
+  * Fixed “genDepend broken for duplicate module names in separate 
+    folders” 
+  * Fixed “Orc booting compiler doesn’t work with newSeq operations” 
+  * Fixed “hasCustomPragma and getCustomPragmaVal don’t work on 
+    fields with backticks” 
+  * Fixed “Cant use uint64 in case” 
+  * Fixed “nim jsondoc output is broken” 
+  * Fixed “Underscores are unnecessarily escaped in db_mysql” 
+  * Fixed “Invalid codegen when block ends with lent” 
+  * Fixed “locals doesn’t work with ORC” 
+  * Fixed “reset does not work on set” 
+  * Fixed “selectRead and selectWrite are dangerous to use sockets 
+    with FD numbers bigger than FD_SETSIZE (1024) on *nixes” 
+  * Fixed “use-after-free bugs in object variants” 
+  * Fixed “[ARC] C compiler error when using the result of a 
+    template in the subscript operator” 
+  * Fixed “Calling nullary templates without () doesn’t work inside 
+    calls inside other templates” 
+  * Fixed “[Regression] Incorrect captures of pegs \ident macro in 
+    nim 1.6” 
+  * Fixed “Windows gcc shipped with choosenim 1.6.4 with TLS 
+    emulation turned off : The application was unable to start 
+    correctly (0xc000007b).” 
+
+
+-------------------------------------------------------------------
 Mon Aug  8 17:16:41 UTC 2022 - David Anes <david.anes@suse.com>
 
 - Disable some tests for some platforms:
