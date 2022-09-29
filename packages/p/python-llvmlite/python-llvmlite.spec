@@ -22,7 +22,7 @@
 %define         skip_python2 1
 Name:           python-llvmlite
 # Note: this has to be in sync with Numba releases
-Version:        0.38.1
+Version:        0.39.1
 Release:        0
 Summary:        Lightweight wrapper around basic LLVM functionality
 License:        BSD-2-Clause
