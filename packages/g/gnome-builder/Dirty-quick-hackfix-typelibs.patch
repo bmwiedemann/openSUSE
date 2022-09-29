@@ -1,14 +1,10 @@
-Index: gnome-builder-43.alpha1/src/plugins/meson-templates/resources/src/main-gtk4.py
+Index: gnome-builder-43.0/src/plugins/meson-templates/resources/src/main-gtk4.py
 ===================================================================
---- gnome-builder-43.alpha1.orig/src/plugins/meson-templates/resources/src/main-gtk4.py
-+++ gnome-builder-43.alpha1/src/plugins/meson-templates/resources/src/main-gtk4.py
-@@ -4,11 +4,9 @@ import sys
- import gi
- 
- gi.require_version('Gtk', '4.0')
--{{if is_adwaita}}
+--- gnome-builder-43.0.orig/src/plugins/meson-templates/resources/src/main-gtk4.py
++++ gnome-builder-43.0/src/plugins/meson-templates/resources/src/main-gtk4.py
+@@ -8,7 +8,7 @@ gi.require_version('Gtk', '4.0')
  gi.require_version('Adw', '1')
--{{end}}
+ {{end}}
  
 -from gi.repository import Gtk, Gio{{if is_adwaita}}, Adw{{end}}
 +from gi.repository import Gtk, Gio, Adw

@@ -25,7 +25,7 @@
 
 Name:           gnome-builder
 ### FIXME ### Enable docs build again on next versionbump (see meson options)
-Version:        43.rc
+Version:        43.1
 Release:        0
 Summary:        A toolsmith for GNOME-based applications
 License:        CC-BY-SA-3.0 AND GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-3.0-or-later AND LGPL-2.1-or-later
@@ -47,8 +47,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-gi-docgen
 BuildRequires:  python3-gobject
-# Disable d-spy plugin
-#BuildRequires:  pkgconfig(dspy-1)
+BuildRequires:  pkgconfig(dspy-1)
 BuildRequires:  pkgconfig(editorconfig)
 BuildRequires:  pkgconfig(enchant-2)
 BuildRequires:  pkgconfig(flatpak) >= 0.8.0
@@ -101,11 +100,16 @@ Obsoletes:      gnome-builder-plugin-sysmon < 43.alpha
 Obsoletes:      gnome-builder-plugin-todo < 43.alpha
 Obsoletes:      gnome-builder-plugin-vala-pack < 43.alpha
 Obsoletes:      gnome-builder-plugin-xml-pack < 43.alpha
+# We need to obsolete the doc sub-package
+Obsoletes:      gnome-builder-doc <= %{version}
 
 %description
 Builder is an IDE for GNOME and a tool to help writing GNOME-based
 applications.
 
+
+
+# doc sub-package not built (no files section) for version 43 -- https://gitlab.gnome.org/GNOME/gnome-builder/-/issues/1793
 %package doc
 Summary:        Documentation files for the %{name} package
 Group:          Documentation/HTML
@@ -127,7 +131,6 @@ applications.
 %meson \
 	-D help=true \
 	-D network_tests=false \
-	-D plugin_dspy=false \
 	%{nil}
 %meson_build
 
@@ -164,13 +167,12 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Builder.des
 %{_datadir}/glib-2.0/schemas/org.gnome.builder*.gschema.xml
 %{_datadir}/icons/hicolor/
 %{_includedir}/%{name}-%{basever}/
-#%%{_libdir}/pkgconfig/gnome-builder-%%{version}.pc
-%{_libdir}/pkgconfig/gnome-builder-43.0.pc
+%{_libdir}/pkgconfig/gnome-builder-%{version}.pc
 %dir %{python3_sitelib}/gi
 %dir %{python3_sitelib}/gi/overrides
 %{python3_sitelib}/gi/overrides/*
 
-%files doc
+#%%files doc
 #%%doc %%{_datadir}/doc/libide/
 
 %files lang -f %{name}.lang
