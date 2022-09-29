@@ -1967,7 +1967,7 @@ Mon Apr 19 09:29:17 UTC 2021 - alexandre.vicenzi@suse.com
 -------------------------------------------------------------------
 Fri Apr 09 16:55:51 UTC 2021 - alexandre.vicenzi@suse.com
 
-- Update to version 3.1.0:
+- Update to version 3.1.0: (bsc#1181961, CVE-2021-20206)
   * Bump to v3.1.0
   * Fix test failure
   * Update release notes for v3.1.0 final release
