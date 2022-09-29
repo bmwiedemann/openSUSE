@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Sep 29 02:35:44 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- v0.4.6 Latest
+  Formal support for Python 3.5 -3.10.
+  Automatically find available h264 encoders and choose the best.
+  Allow users to specify quality=None.
+  A fix for closing the std stream. 
+
+- v0.4.5
+  Set daemon attribute instead of using deprecated setDaemon method.
+  Optional disabling of prevent_sigint using env var (#60).
+  Get rotation metadata (#39).
+- v0.4.4
+  Support for Aarch64.
+  Basic support to include audio when writing videos.
+
+- Version 0.4.3
+  Support for Python 3.9.
+  File object is closes after use just in case.
+- Version 0.4.2
+  Use latest version of ffmpeg (4.2.2)
+
+-------------------------------------------------------------------
 Thu Apr  9 14:12:14 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 0.4.1
