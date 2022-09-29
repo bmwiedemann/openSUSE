@@ -501,4 +501,23 @@ A powertop_libc++_fix.patch</comment>
 </comment>
     <requestid>972196</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>2d00a1f4037a3e99371c79ed78a312f0</srcmd5>
+    <version>2.15</version>
+    <time>1664468079</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 2.15:
+  * Use autoconf archive #82
+  * Patch for compatibility with Ryzen processors #91
+  * src: fix compatibility with ncurses 6.3 #92
+  * Fix buffer overrun #83
+  * Fixed valgrind errors about uninitialized values in conditionals #87
+  * Patch for compability with Ryzen processors (v2) #94
+  * Add missing line breaks after error messages #96
+  * Ensure that auto-tune is executed on resume as well #95
+- Drop contained patches:
+  * powertop-ryzen1.patch
+  * powertop-ryzen2.patch</comment>
+    <requestid>1006971</requestid>
+  </revision>
 </revisionlist>
