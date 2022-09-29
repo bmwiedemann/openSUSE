@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Thu Sep 29 09:01:33 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Build the SEV version first, so we don't overwrite the non-SEV
+  enabled plugin with the SEV one.
+
+-------------------------------------------------------------------
+Wed Sep 28 16:45:10 UTC 2022 - dfaggioli@suse.com
+
+- Update to version 1.4.4:
+  * Bump version to v1.4.4
+  * fs/macos: drop value mutability in read/write
+  * fs/macos: avoid deadlock in open_inode
+  * fs/macos: Fix path replacing on rename dir
+  * Bump version to v1.4.3
+  * devices/fs: Drop mutability from FileReadWriteAtVolatile
+  * fs/macos: keep track of unlinked files
+  * devices: add missing fence in Queue
+  * Replace mpsc with crossbeam-channel
+  * Bump version to v1.4.2
+  * init: override kernel's HOME and TERM envs
+  * init: ensure "/dev" is properly mounted
+  * init: set a default hostname if no env is present
+  * Makefile: drop library dependency on install
+  * sev: temporarily vendorize kbs-types
+  * sev: replace ureq with curl
+  * Bump version to v1.4.1
+  * clippy: Derive Eq in addition of PartialEq
+  * macos: fix symlink ownership and mode attrs
+  * Makefile: force creation of symlinks on install
+  * sev: inform the user about progress
+  * sev: extend TEE config and override VmConfig
+  * Bump version to v1.4.0
+  * sev: write zero page and include in measurement
+  * sev: adopt the tentative KBS attestation protocol
+  * sev: update sev crate to 0.3
+  * sev: drop reqwest dependency
+  * sev: replace attestation_url with tee_config_file
+  * Bump version to v1.3.0
+  * init: be permissive with non-ASCII bytes
+  * init: add support for Entrypoint
+  * init: deal with missing "/dev"
+  * init: don't override existing env vars
+  * libkrun: add krun_set_env()
+  * sev: don't rely on cmdline_secret size and unlink
+  * libkrun: remove KRUN_INIT and KRUN_WORKDIR defaults
+  * init: Add cmdline_secret and config file support
+  * Bump version to v1.2.3
+  * macos: use upstream buildah xattr key
+  * macos: honor flag enabling/disabling xattr
+  * README.md: add known users and contact sections
+
+-------------------------------------------------------------------
 Wed Aug  3 09:01:53 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
 
 - Reconcile spec file and package content (reference .xz and

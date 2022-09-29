@@ -18,7 +18,7 @@
 
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 Name:           libkrun
-Version:        1.2.2
+Version:        1.4.4
 Release:        0
 Summary:        A dynamic library providing KVM-based process isolation capabilities
 License:        Apache-2.0
@@ -56,17 +56,17 @@ cp %{SOURCE2} .cargo/config
 
 %build
 export RUSTFLAGS=%{rustflags}
-%make_build
 %ifarch x86_64
 %make_build SEV=1
 %endif
+%make_build
 
 %install
 export RUSTFLAGS=%{rustflags}
-%make_install PREFIX=%{_prefix}
 %ifarch x86_64
 %make_install SEV=1 PREFIX=%{_prefix}
 %endif
+%make_install PREFIX=%{_prefix}
 
 %files
 %license LICENSE
