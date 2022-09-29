@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Sep 29 07:06:19 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update to version 1.5.1
+  * We changed the memory layout to save both memory and disk space in 1.5.0. Even
+    though the new layout works fine on most systems, the change made the linker to
+    create unusable executables for systems with large pages. Specifically, if you
+    specify a large number for the -z max-page-size option, the loader refused to
+    execute it with the error while loading shared libraries: cannot apply
+    additional memory protection after relocation: Cannot allocate memory error. We
+    reverted our recent commits so that mold creates output files with the same
+    memory layout as it did before 1.5.0. (e62de0b)
+
+-------------------------------------------------------------------
 Tue Sep 27 07:10:17 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Update to version 1.5.0
