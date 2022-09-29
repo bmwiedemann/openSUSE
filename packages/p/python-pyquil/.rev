@@ -76,4 +76,15 @@
   * Python 3.6 is no longer supported. Python 3.7, 3.8, and 3.9 are supported.</comment>
     <requestid>1003657</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8d923ea82dbfc63309ca760d937b3fb1</srcmd5>
+    <version>3.3.1</version>
+    <time>1664467944</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 3.3.1 
+  * report non-503 http status errors when creating engagements (#1479)
+  * Ensure adding programs doesn't mutate the first (#1477)
+</comment>
+    <requestid>1006627</requestid>
+  </revision>
 </revisionlist>

@@ -20,7 +20,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyquil
-Version:        3.3.0
+Version:        3.3.1
 Release:        0
 Summary:        A Python library to generate Quantum Instruction Language (Quil) Programs
 License:        Apache-2.0

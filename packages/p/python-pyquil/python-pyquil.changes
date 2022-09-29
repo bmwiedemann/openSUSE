@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 28 09:46:42 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 3.3.1 
+  * report non-503 http status errors when creating engagements (#1479)
+  * Ensure adding programs doesn't mutate the first (#1477)
+
+-------------------------------------------------------------------
 Thu Sep 15 02:22:35 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add missing BuildRequires on pytest-timeout 
