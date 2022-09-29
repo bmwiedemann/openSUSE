@@ -17,10 +17,10 @@
 # nodebuginfo
 
 
-%define real_version 5.15.5
-%define tar_version qt-everywhere-opensource-src-5.15.5
+%define real_version 5.15.6
+%define tar_version qt-everywhere-opensource-src-5.15.6
 Name:           libqt5-qtdoc
-Version:        5.15.5
+Version:        5.15.6
 Release:        0
 Summary:        Qt 5 API Documentation
 License:        LGPL-2.1-with-Qt-Company-Qt-exception-1.1 or LGPL-3.0-only

@@ -389,4 +389,12 @@
     <comment>Qt 5.15.5 with patch collection + qtscript 5.15.10 (forwarded request 985459 from favogt)</comment>
     <requestid>985475</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>009972f5d0e62157dfd86e58cb95236a</srcmd5>
+    <version>5.15.6</version>
+    <time>1664468013</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1006758</requestid>
+  </revision>
 </revisionlist>
