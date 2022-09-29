@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Sep 28 17:42:37 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Update to latest upstream version, v3.6.3
+  * Makefile: drop library dependency on install
+  * Update TSI patch to fix issue in tsi_accept
+  * Target reproducible builds
+  * sev: update initrd.gz binary
+- Update to latest upstream version, v3.6.0
+  * sev: add a utility for generating SEV LMs
+  * utils: generate SEV-ES measurements
+  * Update SEV support
+  * Enable device-mapper (crypt+integrity) and ext4
+  * Rebase v5.15.60
+- Update to latest upstream version, v3.3.0
+  * Rebase kernel on v5.15.59
+- Update to latest upstream version, v3.2.0
+  * Rebase kernel on v5.15.57
+- Update to latest upstream version, v3.1.0
+  * Rebase kernel on v5.15.52
+
+-------------------------------------------------------------------
 Fri Jun 17 14:30:49 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
 
 - Update to latest upstream version, v.3.0.0

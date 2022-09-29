@@ -17,13 +17,13 @@
 
 
 Name:           libkrunfw
-Version:        3.0.0
+Version:        3.6.3
 Release:        0
 Summary:        A dynamic library bundling a Linux kernel in a convenient storage format
 License:        GPL-2.0-only AND LGPL-2.1-only
 URL:            https://github.com/containers/libkrunfw
 Source0:        https://github.com/containers/libkrunfw/archive/v%{version}.tar.gz#/libkrunfw-%{version}.tar.gz
-Source1:        https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.15.47.tar.xz
+Source1:        https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.15.60.tar.xz
 # libkrunfw is a plugin for us, more than a full-fledged library,
 # so let's avoid setting up a SONAME etc (which upstream is now doing).
 Patch1:         dont-set-soname-as-it-is-plugin-for-us.patch
