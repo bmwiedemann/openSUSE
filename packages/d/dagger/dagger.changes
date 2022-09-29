@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep 28 04:55:35 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.2.35:
+  * Fail auto-release if no changes since previous release (#3143)
+  * Remove usage of go.#Test.package and go.#Build.package (#3010)
+  * build(deps): bump github.com/google/go-cmp from 0.5.8 to 0.5.9 (#2999)
+  * feat(project info): output available plans (#3139)
+  * build(deps): bump sass from 1.54.9 to 1.55.0 in /website
+  * build(deps): bump amplitude-js from 8.21.0 to 8.21.1 in /website
+  * fix: Use brew install from core instead of tap (#3142)
+
+-------------------------------------------------------------------
 Wed Sep 14 05:41:15 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.2.34:
