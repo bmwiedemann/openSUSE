@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Sep 28 21:23:41 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- [2.5.5] - 2022-09-07
+  Added wrappers for unreleased macros
+  Fixed set_monitor_user_pointer and get_monitor_user_pointer
+- [2.5.4] - 2022-07-23
+  Updated to GLFW 3.3.8
+- [2.5.3] - 2022-04-09
+  Updated to GLFW 3.3.7
+- [2.5.2] - 2022-04-01
+  Fixed swapped HAT_DOWN and HAT_RIGHT constants
+- [2.5.1] - 2022-02-27
+  Updated to GLFW 3.3.6
+- [2.5.0] - 2021-12-18
+  Added /usr/lib/arm-linux-gnueabihf to library search paths
+- [2.4.0] - 2021-11-07
+  Added macOS wheels for arm64
+  Added wrappers for unreleased macros and functions
+  Updated to GLFW 3.3.5
+- [2.3.0] - 2021-10-01
+  Added /opt/homebrew/lib to library search paths
+- [2.2.0] - 2021-09-09
+  Added Linux wheels for aarch64
+  Updated to GLFW 3.3.4
+- [2.1.0] - 2021-02-28
+  Updated to GLFW 3.3.3
+- [2.0.0] - 2020-10-04
+  Changed default error reporting method to warn
+  Allow dict for ERROR_REPORTING
+- [1.12.0] - 2020-07-10 
+  Added support for CFFI pointers for Vulkan objects
+
+-------------------------------------------------------------------
 Wed Jul  8 12:38:53 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 1.11.2
