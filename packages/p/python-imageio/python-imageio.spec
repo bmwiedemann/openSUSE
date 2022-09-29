@@ -20,7 +20,7 @@
 %define skip_python2 1
 %bcond_with test_extras
 Name:           python-imageio
-Version:        2.16.1
+Version:        2.21.2
 Release:        0
 Summary:        Python library for reading and writing image, video, and related formats
 License:        BSD-2-Clause

@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Thu Sep 29 02:30:37 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 2.22.0 
+  Feature
+  * Pyav API for procedural video writing (#853) (acbcb64)
+
+- Update to v2.21.3
+  Fix
+  * Raise error if fps is specified (#871) (1f8d37a)
+  Other
+  * Fix small typo (#873) (f59e16d)
+  * Examples for Pyav (#865) (810a7a9)
+
+- Update to v2.21.2
+  Fix
+  * Allow v3.imread to read dicom (#868) (22c98c2)
+  Revert to asanyarray (#863) (fdaba04)
+  Other
+  Add missing numpy import in example (#866) (d85bfba)
+
+- Update to v2.21.1
+  Fix
+  Seeking to last frame caused EoF in pyav (#855) (7ff7f02)
+
+- Update to v2.21.0
+  Fix
+  Write single TIFF page for single RGB image (#851) (0f04bc9)
+  Feature
+  Add is_batch kwarg to pillow (#845) (21d5c73)
+  Other
+  Add a migration note about pillow squeezing (#850) (7c55a55)
+  Add missin option to imwrite type hints (#848) (6da4a42)
+  Ignore exclude_applied on legacy plugins (#844) (f082dde)
+  Remove unneeded CD steps (#847) (0d99c51)
+
+- Update to v2.20.0
+  Fix
+  Expose frame-level metadata and duration in pyav (#839) (05fcf2c)
+  Feature
+  Enable HTTP based streams in pyav (#838) (fb1150d)
+  Other
+  Fix typo in test_pyav (#846) (f89abf1)
+
+-------------------------------------------------------------------
 Fri Mar 18 19:00:48 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.16.1
