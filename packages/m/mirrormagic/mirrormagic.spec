@@ -28,6 +28,8 @@ Source1:        %{name}-icons.tar
 Source2:        %{name}.desktop
 # PATCH-FIX-UPSTREAM -- Fix LTO multiple definitions linking issue
 Patch0:         fix-multiple-definitions.patch
+# PATCH-FIX-UPSTREAM -- bmwiedemann emailed author - will be merged
+Patch1:         reproducible.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  update-desktop-files
@@ -50,6 +52,7 @@ C64 game "Deflektor".
 %prep
 %setup -q -b 1
 %patch0 -p1
+%patch1 -p1
 rm -rfv lib mirrormagic
 find . -name "*.orig" -delete
 

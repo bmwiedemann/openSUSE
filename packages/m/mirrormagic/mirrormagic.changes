@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep 25 13:40:50 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to better declare dependencies
+  to avoid non-determinism from parallel builds
+
+-------------------------------------------------------------------
 Thu Apr 29 21:58:39 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 3.0.0
