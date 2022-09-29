@@ -1,9 +1,10 @@
 <services>
   <service mode="disabled" name="obs_scm">
     <param name="url">https://github.com/XAMPPRocky/tokei</param>
+    <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@</param>
     <param name="scm">git</param>
-    <param name="version">v12.1.2</param>
-    <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
+    <param name="revision">251283677d1da3b1f379254f59a2ac3d70ab091c</param>
+    <param name="versionrewrite-pattern">tokei\@(\d+\.\d+\.\d+)</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>
     <param name="changesauthor">socvirnyl.estela@gmail.com</param>
