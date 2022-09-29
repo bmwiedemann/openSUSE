@@ -54,4 +54,22 @@
     <comment></comment>
     <requestid>981440</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>71eddeb9122f0bc05eadcf6dd35845e3</srcmd5>
+    <version>2.12.1</version>
+    <time>1664468074</time>
+    <user>RBrownFactory</user>
+    <comment>- 2.12.1 (2022-08-11)
+  Bug Fixes
+  deps: allow protobuf &lt; 5.0.0 (#322) (229e0f5)
+  deps: require proto-plus &gt;= 1.22.0 (229e0f5)
+- 2.12.0 (2022-07-14)
+  Features
+  add audience parameter (06a4096)
+  Bug Fixes
+  deps: require google-api-core&gt;=1.32.0,&gt;=2.8.0 (#315) (82ab556)
+  require python 3.7+ (#313) (28d244f) 
+</comment>
+    <requestid>1006933</requestid>
+  </revision>
 </revisionlist>

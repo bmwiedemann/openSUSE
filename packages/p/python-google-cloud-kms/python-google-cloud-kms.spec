@@ -19,23 +19,23 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-google-cloud-kms
-Version:        2.11.2
+Version:        2.12.1
 Release:        0
 Summary:        Cloud Key Management Service (KMS) API API client library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/GoogleCloudPlatform/google-cloud-python
 Source:         https://files.pythonhosted.org/packages/source/g/google-cloud-kms/google-cloud-kms-%{version}.tar.gz
-BuildRequires:  %{python_module google-api-core >= 1.14.0}
+BuildRequires:  %{python_module google-api-core >= 1.32.0}
 BuildRequires:  %{python_module grpc-google-iam-v1 >= 0.12.3}
-BuildRequires:  %{python_module proto-plus}
+BuildRequires:  %{python_module proto-plus >= 1.22.0}
 BuildRequires:  %{python_module protobuf >= 3.19}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-google-api-core >= 1.14.0
+Requires:       python-google-api-core >= 1.32.0
 Requires:       python-grpc-google-iam-v1 >= 0.12.3
 Requires(post): update-alternatives
 Requires(preun):update-alternatives
