@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 27 20:29:56 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Pass --with-boost-libdir to configure: Workarounds boost
+  detection failure on some architectures (ppc64, ppc64le and
+  riscv64 notably) (gh#acaudwell/Gource#83).
+
+-------------------------------------------------------------------
 Thu Jun 16 21:30:11 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 0.53

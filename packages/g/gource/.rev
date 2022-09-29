@@ -146,4 +146,15 @@
     <comment></comment>
     <requestid>983189</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>c97031606b31b1a7c3f5115e9f389a80</srcmd5>
+    <version>0.53</version>
+    <time>1664468011</time>
+    <user>RBrownFactory</user>
+    <comment>- Pass --with-boost-libdir to configure: Workarounds boost
+  detection failure on some architectures (ppc64, ppc64le and
+  riscv64 notably) (gh#acaudwell/Gource#83).
+</comment>
+    <requestid>1006748</requestid>
+  </revision>
 </revisionlist>

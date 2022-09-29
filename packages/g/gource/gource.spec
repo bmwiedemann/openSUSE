@@ -52,11 +52,11 @@ and third party (using additional steps) for CVS and SVN.
 %setup -q
 
 %build
-
 %configure \
+	--with-boost-libdir=%{_libdir} \
 	--with-tinyxml=yes \
 	--enable-ttf-font-dir=%{_datadir}/fonts/truetype
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
