@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Tue Sep 27 00:51:38 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 0.9.0:
+  + Changes:
+    - QGnomePlatform has been now internally split into two
+      providers for configuration, where only one is used at a time
+      (not mixed together as before). We can even switch between
+      providers on runtime, e.g. when xdg-desktop-portal is started
+      later.
+    - QGnomePlatform can now switch between dark/light themes on
+      runtime (requires Adwaita-qt 1.4.2).
+    - Implements QPlatformTheme::Appearance() for Qt6.
+    - Added support for window menu into client-side decorations.
+    - Added support for native system try icon using QGnomeTheme
+      for Qt6.
+    - Added support for GNOME 42 theme switching (using Settings
+      portal).
+  + Fixes:
+    - FileChooser portal: send window id in hex and only for
+      xwayland apps (backport from Qt).
+    - Ensure gtk uses the same windowing system as Qt (backport
+      from Qt).
+    - Fixes decoration size when QT_SCALE_FACTOR is set.
+
+-------------------------------------------------------------------
+Wed Sep 21 10:51:14 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add Obsoletes/Provides QGnomePlatform to ease the switch-over.
+
+-------------------------------------------------------------------
+Mon Sep  5 04:52:38 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
+
+- Add multibuild facility to provide both Qt5 and Qt6 flavors. This
+  is needed to hook up the right Qt base from adwaita-qt and apply
+  the configurations needed to change the styling of the window of
+  Qt apps under GNOME (boo#1202526).
+- Add respective Qt6 build requirements and make use of
+  conditionals to produce a multibuild package based on flavors.
+- Replace build requirements to match explicitly what CMakeLists
+  is looking for: libQt5PlatformSupport-private-headers-devel ->
+  cmake(Qt5XkbCommonSupport), and libQt5Core-private-headers-devel
+  -> cmake(Qt5Core).
+- Drop unneeded build requirements that are not used nor looked for
+  by CMake: pkgconfig(Qt5X11Extras), libqt5-qtwayland-devel (CMake
+  only looks for Qt5WaylandClient and WaylandClientPrivate),
+  pkgconfig(x11), and pkgconfig(gtk+-x11-3.0).
+- Add explicit pkgconfig(glib-2.0) build requirement looked for by
+  CMake but undeclared in the spec file. It was already being
+  pulled by another package though.
+- Switch all pkgconfig(*) modules by cmake(*) ones. Leap 15.4 has a
+  hard time finding pkgconfig(*) modules for adwaita-qt6, so switch
+  all qt5-dependecies too to keep them consistent.
+- Update License tag from "GPL-2.0-or-later OR LGPL-3.0-only" to
+  "LGPL-2.1-or-later AND (LGPL-3.0-only OR GPL-2.0-only OR
+  GPL-3.0-only)". Basically all the source code is LGPL-2.1 or any
+  later version, but the qgtk3dialoghelpers cpp/header files can be
+  either LGPL-3.0 or choose between GPL-2.0 and GPL-3.0 and later
+  versions approved by the KDE Free Qt Foundation.
+
+-------------------------------------------------------------------
 Wed Feb 23 21:08:10 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.8.4:
