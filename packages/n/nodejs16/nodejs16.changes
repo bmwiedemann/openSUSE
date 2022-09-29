@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Sep 26 14:20:03 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- Update to Nodejs 16.17.1:
+  * deps: llhttp updated to 6.0.9
+    + CVE-2022-32213 bypass via obs-fold mechanic (bsc#1201325)
+    + Incorrect Parsing of Multi-line Transfer-Encoding
+      (CVE-2022-32215, bsc#1201327)
+    + Incorrect Parsing of Header Fields (CVE-2022-35256, bsc#1203832)
+  * crypto: fix weak randomness in WebCrypto keygen
+    (CVE-2022-35255, bsc#1203831)
+
+-------------------------------------------------------------------
+Sat Sep 17 10:35:31 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Skip test-fs-utimes-y2K38.js on armv6hl as well as armv7hl.
+
+-------------------------------------------------------------------
 Thu Aug 25 14:10:41 UTC 2022 - Adam Majer <adam.majer@suse.de>
 
 - undici_5.8.1.patch, undici_5.8.2.patch: update undici to 5.8.2
@@ -8,7 +25,7 @@ Thu Aug 25 14:10:41 UTC 2022 - Adam Majer <adam.majer@suse.de>
 Tue Aug 16 14:53:04 UTC 2022 - Adam Majer <adam.majer@suse.de>
 
 - enable crypto-policies for SLE15 SP4+ and TW (bsc#1200303)
-- Update to LTS version 16.16.0:
+- Update to LTS version 16.17.0:
   * deps: upgrade npm to 8.15.0
   * Improved interoperability of the Web Crypto API
   * Updated Undici to 5.8.0 (bsc#1201710, CVE-2022-31150)

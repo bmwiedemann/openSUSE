@@ -21,7 +21,7 @@
 %endif
 
 Name:           nodejs16
-Version:        16.17.0
+Version:        16.17.1
 Release:        0
 
 # Double DWZ memory limits
@@ -156,7 +156,6 @@ Patch200:       versioned.patch
 
 Patch301:       undici_5.8.1.patch
 Patch302:       undici_5.8.2.patch
-
 
 BuildRequires:  fdupes
 BuildRequires:  pkg-config
@@ -356,14 +355,14 @@ Provides:       bundled(brotli) = 1.0.9
 BuildRequires:  pkgconfig(libbrotlidec)
 %endif
 
-Provides:       bundled(llhttp) = 6.0.7
+Provides:       bundled(llhttp) = 6.0.9
 Provides:       bundled(ngtcp2) = 0.1.0-DEV
 
 Provides:       bundled(node-acorn) = 8.7.0
 Provides:       bundled(node-acorn-walk) = 8.2.0
 Provides:       bundled(node-cjs-module-lexer) = 1.2.2
 Provides:       bundled(node-corepack) = 0.12.1
-Provides:       bundled(node-undici) = 5.8.0
+Provides:       bundled(node-undici) = 5.8.2
 
 %description
 Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js
@@ -877,22 +876,36 @@ ln addon-rpm.gypi deps/npm/node_modules/node-gyp/addon-rpm.gypi
 # Tarball doesn't have eslint package distributed, so disable some tests
 find test -name \*-eslint-\* -print -delete
 # No documentation is generated, don't bother checking it
-rm -f test/doctool/test-make-doc.js
+# rm test/doctool/test-make-doc.js
 # DNS lookup doesn't work in build root
-rm -f test/parallel/test-dns-cancel-reverse-lookup.js \
-      test/parallel/test-dns-resolveany.js
+rm test/parallel/test-dns-cancel-reverse-lookup.js \
+   test/parallel/test-dns-resolveany.js
 # multicast test fail since no socket?
-rm -f test/parallel/test-dgram-membership.js
+rm test/parallel/test-dgram-membership.js
+
+%if %{node_version_number} >= 18
+# OBS broken /etc/hosts -- https://github.com/openSUSE/open-build-service/issues/13104
+rm test/parallel/test-net-socket-connect-without-cb.js test/parallel/test-tcp-wrap-listen.js
+%endif
+
 %if 0%{?fedora_version}
 # test/parallel/test-crypto-certificate.js requires OPENSSL_ENABLE_MD5_VERIFY=1
 # as SPKAC required MD5 for verification
 # https://src.fedoraproject.org/rpms/openssl/blob/rawhide/f/0006-Disable-signature-verification-with-totally-unsafe-h.patch
 export OPENSSL_ENABLE_MD5_VERIFY=1
 
+# test failures
 # error:14094410:SSL routines:ssl3_read_bytes:sslv3 alert handshake
 # failure:ssl/record/rec_layer_s3.c:1543:SSL alert number 40
-rm -f test/parallel/test-tls-no-sslv3.js
+rm test/parallel/test-tls-no-sslv3.js
+%if %{node_version_number} >= 18
+rm -r test/addons/openssl-providers
+rm test/parallel/test-crypto-fips.js
 %endif
+
+%endif
+# fedora
+
 # Run CI tests
 %if 0%{with valgrind_tests}
 # valgrind may have false positives, so do not fail on these by default
@@ -959,9 +972,11 @@ make test-ci
 %files devel
 %defattr(-, root, root)
 %{_includedir}/node%{node_version_number}
+%if %{node_version_number} < 18
 %dir %{_datadir}/systemtap
 %dir %{_datadir}/systemtap/tapset
 %{_datadir}/systemtap/tapset/node%{node_version_number}.stp
+%endif
 
 %files docs
 %defattr(-,root,root)
