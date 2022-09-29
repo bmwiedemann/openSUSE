@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Sep 28 15:44:32 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- update to 1.10.3 - 2022-09-08
+  * upper limit for dependency pinning removed to support installation on more recent environments.
+
+- update to 1.10.2 - 2022-09-04
+  * bugfix: missing self in FritzStatus.get_device_info() (introduced in 1.10.0) (#165)
+  * dependencies pinned for requests not supporting Python 3.6 since version 2.28.0 and for segno (which still works with EOL versions).
+
+- update to 1.10.1 - 2022-09-01
+  * bugfix: cli argument forwarding (introduced in 1.10.0) (#164)
+  * enhancement: cli flag -y to suppress cache-verification now implies -x (use cache)
+
+- update to 1.10.0 - 2022-08-24
+  * FritzConnection
+  * API cache integration added: for faster start up times the router API can optional get saved in a cache-file.
+  *  This can save up to several seconds run-time on instanciation.
+  FritzHosts:
+  * New method get_hosts_attributes providing a list of dictionaries with the attribues of all known hosts (#134)
+  FritzStatus:
+  * New property update_available (#156)
+  * New property connection_service
+  * New property has_wan_support (#162)
+  * New property has_wan_enabled (#147)
+  * New property upnp_enabled() (#153)
+  * New property device_has_mesh_support (#146)
+  * New method get_default_connection_service (#146)
+  * New method get_device_info() (#155)
+  FritzWLAN:
+  * QR-code now supports encryption information for the described network by auto-detecting the security settings (which is optional but set to default) (#139)
+  Testing:
+  * requires opencv to check qr-codes
+  * covering Python 3.11
+  * New class ArgumentNamespace added in fritzconnection.lib.fritztools for convenient handling of dictionaries returned from FritzConnection.call_action() calls.
+  * Better error message in case application access is disabled (#142) 
+
+-------------------------------------------------------------------
 Fri Mar  4 08:55:03 UTC 2022 - pgajdos@suse.com
 
 - disable flaky test_terminate_thread_on_failed_reconnection and
