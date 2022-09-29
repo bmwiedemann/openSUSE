@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep 27 17:19:31 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 1.6
+  * RISC-V mcontext.
+  * Support for Apple Silicon.
+  * libunwind for Linux and macOS.
+  * C++17 compatibility.
+  * Various bug fixes
+- Enable unit tests
+- Change the devel package architecture to noarch, backward-cpp is
+  a header-only library.
+
+-------------------------------------------------------------------
 Wed Feb  3 20:39:31 UTC 2021 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to version 1.5

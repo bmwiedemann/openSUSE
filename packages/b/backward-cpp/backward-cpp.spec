@@ -1,7 +1,7 @@
 #
 # spec file for package backward-cpp
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           backward-cpp
-Version:        1.5
+Version:        1.6
 Release:        0
 Summary:        Stack trace printer for C++
 License:        MIT
@@ -34,6 +34,8 @@ segmentation faults.
 %package devel
 Summary:        Development files for backward-cpp
 Group:          Development/Libraries/C and C++
+# backward-cpp is a header only library
+BuildArch:      noarch
 
 %description devel
 Development files for backward-cpp, a stack trace printer for C++.
@@ -42,19 +44,22 @@ Development files for backward-cpp, a stack trace printer for C++.
 %autosetup -n backward-cpp-%{version}
 
 %build
-%cmake -DCMAKE_INSTALL_LIBDIR=%{_libdir}
+# LIBDIR is only used for the CMake Config files, and
+# <prefix>/share/<name*> is a valid location
+%cmake -DCMAKE_INSTALL_LIBDIR=%{_datadir}
 %cmake_build
 
 %install
 %cmake_install
 
-%files
-%license LICENSE.txt
-%doc README.md
+%check
+%ctest
 
 %files devel
+%license LICENSE.txt
+%doc README.md
 %{_includedir}/backward.hpp
-%{_libdir}/backward
-%{_libdir}/backward/BackwardConfig.cmake
+%{_datadir}/backward
+%{_datadir}/backward/BackwardConfig.cmake
 
 %changelog
