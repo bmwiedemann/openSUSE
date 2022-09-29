@@ -1,3 +1,13 @@
+gpxsee (11.5) stable; urgency=low
+
+  * Added support for data styles.
+  * Added Catalan localization.
+  * Fixed KML gx::Track parsing.
+  * Fixed broken map zoom 0 on HiDPI displays.
+  * Updated USGS maps (added zoom 16).
+
+ -- Martin Tuma <tumic@cbox.cz>  Wed, 28 Sep 2022 09:01:31 +0200
+
 gpxsee (11.4) stable; urgency=low
 
   * Added support for KMZ data files.

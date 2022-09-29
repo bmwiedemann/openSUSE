@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 28 08:55:08 CEST 2022 - tumic@cbox.cz
+
+- Update to version 11.5
+  * Added support for data styles.
+  * Added Catalan localization.
+  * Fixed KML gx::Track parsing.
+  * Fixed broken map zoom 0 on HiDPI displays.
+  * Updated USGS maps (added zoom 16).
+
+-------------------------------------------------------------------
 Sun Sep  4 22:38:13 CEST 2022 - tumic@cbox.cz
 
 - Update to version 11.4
