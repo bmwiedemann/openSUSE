@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Sep 28 13:42:03 UTC 2022 - dmueller@suse.com
+
+- Update to version 0.32.1:
+  * fix(java): use fields of dependency from dependencyManagement from upper pom.xml to parse deps (#2943)
+  * chore: expat lib and go binary deps vulns (#2940)
+  * wasm: Removes accidentally exported memory (#2950)
+  * fix(sbom): fix package name separation for gradle (#2906)
+  * docs(readme.md): fix broken integrations link (#2931)
+  * fix(image): handle images with single layer in rescan mergedLayers cache (#2927)
+  * fix(cli): split env values with ',' for slice flags (#2926)
+  * fix(cli): config/helm: also take into account files with `.yml` (#2928)
+  * fix(flag): add file-patterns flag for config subcommand (#2925)
+  * chore(deps): bump github.com/open-policy-agent/opa from 0.43.0 to 0.43.1 (#2902)
+
+-------------------------------------------------------------------
 Mon Sep 19 07:17:00 UTC 2022 - dmueller@suse.com
 
 - Update to version 0.32.0:
