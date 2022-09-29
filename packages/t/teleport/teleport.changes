@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 27 18:46:58 UTC 2022 - michael@stroeder.com
+
+- Update to version 10.2.6:
+  * Fixed issue with connecting to SQL Server in a leaf cluster through the local proxy. [#16616]
+  * Fixed regression issue introduced in `10.2.3` with enterprise specific web UI pages returning errors. [webapps#1212]
+
+-------------------------------------------------------------------
 Tue Sep 27 07:57:11 UTC 2022 - michael@stroeder.com
 
 - Update to version 10.2.5:
