@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-flufl.lock
-Version:        7.0
+Version:        7.1.1
 Release:        0
 Summary:        NFS-safe file locking with timeouts for POSIX and Windows
 License:        Apache-2.0
