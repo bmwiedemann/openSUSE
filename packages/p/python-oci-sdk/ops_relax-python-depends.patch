@@ -1,11 +1,10 @@
-diff -Nru oci-python-sdk-2.79.0.orig/requirements.txt oci-python-sdk-2.79.0/requirements.txt
---- oci-python-sdk-2.79.0.orig/requirements.txt	2022-08-16 19:51:03.000000000 +0200
-+++ oci-python-sdk-2.79.0/requirements.txt	2022-08-22 11:42:06.724407519 +0200
-@@ -1,21 +1,20 @@
+diff -Nru oci-python-sdk-2.84.0.orig/requirements.txt oci-python-sdk-2.84.0/requirements.txt
+--- oci-python-sdk-2.84.0.orig/requirements.txt	2022-09-27 20:54:41.000000000 +0200
++++ oci-python-sdk-2.84.0/requirements.txt	2022-09-29 09:57:19.686642980 +0200
+@@ -1,20 +1,20 @@
 -autodocsumm==0.1.11
 +autodocsumm>=0.1.11
  certifi
--configparser==4.0.2; python_version < '3'
 -coverage==4.5.2
 -cryptography>=3.2.1,<=37.0.2
 -flake8>=3.6.0,<5
@@ -41,9 +40,9 @@ diff -Nru oci-python-sdk-2.79.0.orig/requirements.txt oci-python-sdk-2.79.0/requ
 -Jinja2<3.1
 \ No newline at end of file
 +Jinja2<3.1
-diff -Nru oci-python-sdk-2.79.0.orig/setup.py oci-python-sdk-2.79.0/setup.py
---- oci-python-sdk-2.79.0.orig/setup.py	2022-08-16 19:51:03.000000000 +0200
-+++ oci-python-sdk-2.79.0/setup.py	2022-08-22 11:42:44.777753783 +0200
+diff -Nru oci-python-sdk-2.84.0.orig/setup.py oci-python-sdk-2.84.0/setup.py
+--- oci-python-sdk-2.84.0.orig/setup.py	2022-09-27 20:54:41.000000000 +0200
++++ oci-python-sdk-2.84.0/setup.py	2022-09-29 09:56:41.698758777 +0200
 @@ -31,12 +31,11 @@
  
  requires = [
