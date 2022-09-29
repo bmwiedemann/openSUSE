@@ -15,10 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define libname %{name}1-1
 
 Name:           libpanel
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        IDE paneling library for GTK
 License:        LGPL-3.0-or-later
@@ -99,4 +100,3 @@ developing applications that use %{name}.
 %files lang -f %{name}.lang
 
 %changelog
-

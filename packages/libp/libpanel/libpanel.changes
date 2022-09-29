@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 27 07:47:26 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.0.1:
+  + Drag-n-Drop fixes.
+  + Remove use of g_autofree to fix builds for MSVC.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Sep 18 10:50:00 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.0.0:
