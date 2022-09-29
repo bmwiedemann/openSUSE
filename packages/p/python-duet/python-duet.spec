@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-duet
-Version:        0.2.3
+Version:        0.2.7
 Release:        0
 Summary:        A simple future-based async library for python
 License:        Apache-2.0
@@ -32,8 +32,8 @@ BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  %{python_module asyncio-contextmanager}
 BuildRequires:  %{python_module contextvars}
 %endif
-BuildRequires:  python-rpm-macros
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-typing_extensions
 %if %python_version_nodots <= 36
 Requires:       python-asyncio-contextmanager
