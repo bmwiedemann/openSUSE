@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-flake8-blind-except
-Version:        0.2.0
+Version:        0.2.1
 Release:        0
 Summary:        A flake8 extension that checks for blind except: statements
 License:        MIT
@@ -29,7 +29,6 @@ Source1:        LICENSE
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-setuptools
 BuildArch:      noarch
 %python_subpackages
 
@@ -50,6 +49,8 @@ cp %{SOURCE1} LICENSE
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/flake8_blind_except.py
+%{python_sitelib}/flake8_blind_except-%{version}-py*.egg-info
+%pycache_only %{python_sitelib}/__pycache__
 
 %changelog
