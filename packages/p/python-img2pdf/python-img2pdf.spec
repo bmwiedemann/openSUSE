@@ -21,7 +21,7 @@
 # no numpy and scipy
 %define skip_python36 1
 Name:           python-img2pdf
-Version:        0.4.3
+Version:        0.4.4
 Release:        0
 Summary:        Python module for converting images to PDF via direct JPEG inclusion
 License:        LGPL-3.0-or-later
