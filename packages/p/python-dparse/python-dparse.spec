@@ -1,7 +1,7 @@
 #
 # spec file for package python-dparse
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %bcond_without  test
 %define skip_python2 1
 Name:           python-dparse
-Version:        0.5.1
+Version:        0.6.1
 Release:        0
 Summary:        Python dependency file parser
 License:        MIT
