@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 27 00:59:08 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 1.4.2:
+  + Fixed plugin path for Qt6.
+  + Switch between dark/light variant on runtime on
+    QEvent::PaletteChange.
+  + Qt5X11Extras is an optional dependency.
+  + UI: QMenu improvements.
+  + Fixed placeholder text color for Qt6.
+
+-------------------------------------------------------------------
 Thu Feb 24 11:11:59 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add hard cmake(Qt6Core) and cmake(Qt6Widgets) Requires to

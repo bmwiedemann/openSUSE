@@ -35,7 +35,7 @@ ExclusiveArch:  do_not_build
 %endif
 %define sover 1
 Name:           adwaita-qt%{?_suffix}%{?_suffix:-src}
-Version:        1.4.1
+Version:        1.4.2
 Release:        0
 Summary:        Adwaita theme for Qt-based applications
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
