@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Sep 29 06:23:45 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.9.8:
+  * Remove some debug message from indiserver.
+  * Don't tell cfitsio about preallocated buffers.
+  * Corrections for Pegasus Falcon Rotator.
+  * Fix blob id conflit.
+  * Adding wanderer cover v3.
+  * Fix memory leaks in indiserver.
+- Drop add-hem27.patch
+- Drop fix-cfitsio.patch
+- Drop fix-ioptron-meridian.patch
+- Drop fix-ioptron-timeout.patch
+- Drop fix-pegasus.patch
+
+-------------------------------------------------------------------
 Wed Aug 17 06:07:40 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Add fix-cfitsio.patch: FITS files produced by INDI are invalid because there is extra data at the end of the file.
