@@ -1,7 +1,7 @@
 #
 # spec file for package python-itemloaders
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 # Scrapy and thus itemadapter on TW have disabled python36 due to uvloop
 %define skip_python36 1
 Name:           python-itemloaders
-Version:        1.0.4
+Version:        1.0.6
 Release:        0
 Summary:        Base library for scrapy's ItemLoader
 License:        BSD-3-Clause

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 29 02:56:10 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to v1.0.6 
+  Fixes a regression introduced in 1.0.5 that would cause the re parameter of ItemLoader.add_xpath and similar methods to be
+  passed to lxml, which would trigger an exception when the value of re was a compiled pattern and not a string (#56).
+
+-------------------------------------------------------------------
 Sat Oct 30 12:58:13 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Disable python36, because Scrapy on TW and itemadapter have
