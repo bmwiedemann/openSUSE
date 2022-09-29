@@ -1,7 +1,7 @@
 #
 # spec file for package python-getmac
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-getmac
-Version:        0.8.2
+Version:        0.8.3
 Release:        0
 Summary:        Module to get MAC addresses of remote hosts and local interfaces
 License:        MIT
