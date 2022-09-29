@@ -28,9 +28,9 @@ Source0:        https://download.gnome.org/sources/gnome-backgrounds/43/%{name}-
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 # svg pixbuf loader
-Requires:       (gdk-pixbuf-loader-rsvg if libgdk_pixbuf-2_0)
+Requires:       gdk-pixbuf-loader-rsvg
 # webp pixbuf loader
-Requires:       (webp-pixbuf-loader if libgdk_pixbuf-2_0)
+Requires:       webp-pixbuf-loader
 BuildArch:      noarch
 Obsoletes:      %{name}-lang < %{version}
 

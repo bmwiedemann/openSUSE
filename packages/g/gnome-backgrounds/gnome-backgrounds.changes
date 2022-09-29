@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 26 13:20:48 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Set hard Requires for gdk-pixbuf-loader-rsvg and
+  webp-pixbuf-loader, ensure they are install for everyone
+  installing gnome-backgrounds (boo#1203716).
+
+-------------------------------------------------------------------
 Tue Sep 20 17:46:58 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Updated to version 43:
