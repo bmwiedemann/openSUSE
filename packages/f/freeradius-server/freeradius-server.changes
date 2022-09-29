@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 29 08:57:18 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- use chown with colon instead dot in radiusd.service
+
+-------------------------------------------------------------------
 Thu Jul 21 00:49:49 UTC 2022 - William Brown <william.brown@suse.com>
 
 - Resolve issue with linking python3 with rlm-python
