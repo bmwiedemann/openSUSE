@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Thu Sep 29 01:43:01 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 2022.9.1
+  - Automated updates to the HSTS preload list on 2022-9-1
+  * Automated updates to the HSTS preload list on 2022-8-1
+  * Fix build module name
+  * Automated updates to the HSTS preload list on 2022-7-10
+  * forgot flake8
+  * Also update the test URL
+  * Move requirements to their own directory
+  * Allow manually running cron.sh
+  * Update branch from 'master' to 'main' of Chromium repository
+  * Add explicit support for Python 3.9 and 3.10
+  * Automated updates to the HSTS preload list on 2021-12-1
+  * Automated updates to the HSTS preload list on 2021-11-1
+  * Automated updates to the HSTS preload list on 2021-10-1
+  * Automated updates to the HSTS preload list on 2021-9-1
+  * Automated updates to the HSTS preload list on 2021-8-1
+  * Run monthly instead of weekly
+  * Use env field in GHA
+  * Fix cron? add manual deploy
+  * Automated updates to the HSTS preload list on 2021-7-5
+  * Automated updates to the HSTS preload list on 2021-6-28
+  * Automated updates to the HSTS preload list on 2021-6-21
+  * Automated updates to the HSTS preload list on 2021-6-14
+  * Automated updates to the HSTS preload list on 2021-5-31
+  * Automated updates to the HSTS preload list on 2021-5-24
+  * Automated updates to the HSTS preload list on 2021-5-17
+  * Use main instead of master
+  * Update cron.sh
+  * Automated updates to the HSTS preload list on 2021-5-3
+  * Automated updates to the HSTS preload list on 2021-4-26
+  * Automated updates to the HSTS preload list on 2021-4-19
+  * Automated updates to the HSTS preload list on 2021-4-12
+  * Automated updates to the HSTS preload list on 2021-3-29
+  * Automated updates to the HSTS preload list on 2021-3-22
+  * Automated updates to the HSTS preload list on 2021-3-8
+  * Automated updates to the HSTS preload list on 2021-3-1
+  * Automated updates to the HSTS preload list on 2021-2-15
+  * Automated updates to the HSTS preload list on 2021-2-1
+  * Automated updates to the HSTS preload list on 2021-1-25
+  * Add shields to README
+  * Automated updates to the HSTS preload list on 2021-1-11
+  * Automated updates to the HSTS preload list on 2020-12-22
+  * Use lint nox session
+
+-------------------------------------------------------------------
 Sat Nov 21 11:10:55 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v2020.11.21

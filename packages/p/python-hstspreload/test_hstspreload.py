@@ -8,7 +8,7 @@ import urllib3
 import hstspreload
 
 HSTS_PRELOAD_URL = (
-    "https://chromium.googlesource.com/chromium/src/+/master/"
+    "https://chromium.googlesource.com/chromium/src/+/main/"
     "net/http/transport_security_state_static.json?format=TEXT"
 )
 
