@@ -36,7 +36,7 @@ Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
 %if 0%{?suse_version}
-BuildRequires:  golang(API) >= 1.12
+BuildRequires:  golang(API) = 1.18
 %else
 BuildRequires:  golang >= 1.12
 %endif

@@ -55,4 +55,12 @@
     <comment>- Exclude s390 arch (forwarded request 982944 from juliogonzalezgil)</comment>
     <requestid>983464</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>dad358ceadc6329429b90807e055a121</srcmd5>
+    <version>0.5.0</version>
+    <time>1664467990</time>
+    <user>RBrownFactory</user>
+    <comment>Require go1.18 (bsc#1203599, GH#19127) (forwarded request 1006664 from deneb_alpha)</comment>
+    <requestid>1006714</requestid>
+  </revision>
 </revisionlist>
