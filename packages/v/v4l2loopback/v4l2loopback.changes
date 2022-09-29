@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep 29 00:42:25 UTC 2022 - Stanislav Brabec <sbrabec@suse.com>
+
+- Update to version 0.12.7:
+  * Add explicit format specifier to printf() invocations
+    (bsc#1202156, CVE-2022-2652).
+  * REMAKE_INITRD is deprecated in dkms 3
+  * event: install event (un)subscribe hook
+  * Don't fail if allocating 0-sized buffers
+  * Other minor fixes
+- Refresh v4l2loopback-include_header.patch.
+
+-------------------------------------------------------------------
 Fri Mar  4 20:16:00 UTC 2022 - Martin Wilck <mwilck@suse.com>
 
 - Fix modprobe.d location for 15.3 and earlier (bsc#1196275, jsc#SLE-20639) 
