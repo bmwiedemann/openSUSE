@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 30 05:12:17 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.39.0:
+  * #2259 Improve handling of failures in outputs reading (#2288)
+  * Docs: update to mention run-all commands not xxx-all (#2266)
+
+-------------------------------------------------------------------
 Thu Sep 15 07:52:16 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.38.12:
