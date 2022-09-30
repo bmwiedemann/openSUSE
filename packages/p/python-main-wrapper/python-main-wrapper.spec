@@ -1,7 +1,7 @@
 #
 # spec file for package python-main-wrapper
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-main-wrapper
-Version:        0.1.0
+Version:        0.1.1
 Release:        0
 Summary:        Preconfigure Python global environment to run scripts within
 License:        MIT
@@ -34,7 +34,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-base >= 3.6.6
 Requires:       python-six
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module six}
