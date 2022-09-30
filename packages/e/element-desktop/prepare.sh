@@ -22,6 +22,8 @@ wget -c https://github.com/vector-im/element-desktop/archive/v${version}.tar.gz 
 tar xzvf element-desktop-${version}.tar.gz
 cd element-desktop-${version}
 
+changes=$(grep "^=============" -B10000 -m2 CHANGELOG.md | head -n -3 | tail -n +4)
+
 #sed -i 's@"electronVersion": "11.2.3"@"electronVersion": "13.1.2"@g' package.json
 #sed -i 's@"https://packages.riot.im/desktop/update/"@null@g' element.io/release/config.json
 
@@ -45,7 +47,8 @@ echo rm -rf "$tmpdir"
 echo -e "\n\nDONE creating npm dependency offline cache file 'npm-packages-offline-cache.tar.gz'"
 
 
-
+read -p "Write changes?"
+osc vc -m "Version ${version}\n${changes}" element-desktop.changes
 
 
 #yarn install
