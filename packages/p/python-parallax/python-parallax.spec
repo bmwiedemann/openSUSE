@@ -28,6 +28,8 @@ Source:         https://files.pythonhosted.org/packages/source/p/parallax/parall
 Patch1:         0001-Add-ssh_key-option-used-by-i-option-of-ssh-scp.patch
 Patch2:         0002-Change-format-of-scp-command-for-ipv6-compatible.patch
 Patch3:         0003-Fix-task-Don-t-use-ssh-if-command-running-on-local-b.patch
+Patch4:         0004-Fix-Error-inherit-from-Exception-instead-of-BaseExce.patch
+Patch5:         0005-Dev-add-parallax.run-to-return-non-zero-rc-without-r.patch
 
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -55,6 +57,8 @@ multiple nodes using SCP.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
+%patch5 -p1
 
 %build
 %python_build

@@ -1,0 +1,115 @@
+From 38bac0eb3cb20e9df8cbbf585cf9353793ffdba2 Mon Sep 17 00:00:00 2001
+From: nicholasyang <nicholas.yang@suse.com>
+Date: Tue, 27 Sep 2022 12:08:17 +0800
+Subject: [PATCH 5/5] Dev: add parallax.run() to return non-zero rc without
+ raising exceptions
+
+---
+ README.md            | 15 ++++++++---
+ parallax/__init__.py | 60 +++++++++++++++++++++++++++++++++++++++++++-
+ 2 files changed, 70 insertions(+), 5 deletions(-)
+
+diff --git a/README.md b/README.md
+index beb5620..268f6db 100644
+--- a/README.md
++++ b/README.md
+@@ -32,10 +32,17 @@ Share and enjoy!
+ 
+   Executes the given command on a set of hosts, collecting the output.
+ 
+-  Returns a dict mapping the hostname of
+-  each host either to a tuple containing a return code,
+-  stdout and stderr, or an `parallax.Error` instance
+-  describing the error.
++  Returns a dict mapping the hostname of each host either to a tuple containing
++  a return code, stdout and stderr when return code is 0, or an `parallax.Error`
++  instance describing the error when return code is not 0.
++
++* `parallax.run(hosts, cmdline, opts)`
++
++  Executes the given command on a set of hosts, collecting the output.
++
++  Returns a dict mapping the hostname of each host either to a tuple containing
++  a return code, stdout and stderr, or an `parallax.Error` instance describing
++  the error when ssh error occurred.
+ 
+ * `parallax.copy(hosts, src, dst, opts)`
+ 
+diff --git a/parallax/__init__.py b/parallax/__init__.py
+index 209c6f7..a3dc75e 100644
+--- a/parallax/__init__.py
++++ b/parallax/__init__.py
+@@ -162,7 +162,7 @@ def _build_call_cmd(host, port, user, cmdline, opts):
+ 
+ def call(hosts, cmdline, opts=Options()):
+     """
+-    Executes the given command on a set of hosts, collecting the output
++    Executes the given command on a set of hosts, collecting the output. Return Error when exit status != 0.
+     Returns {host: (rc, stdout, stdin) | Error}
+     """
+     if opts.outdir and not os.path.exists(opts.outdir):
+@@ -384,3 +384,61 @@ def is_local_host(host):
+     except:
+         hostname = host
+     return hostname == socket.gethostname()
++
++def run(hosts, cmdline, opts=Options()):
++    """
++    Executes the given command on a set of hosts, collecting the output. Return Error when ssh error occurred.
++    Returns {host: (rc, stdout, stdin) | Error}
++    """
++    if opts.outdir and not os.path.exists(opts.outdir):
++        os.makedirs(opts.outdir)
++    if opts.errdir and not os.path.exists(opts.errdir):
++        os.makedirs(opts.errdir)
++    manager = Manager(limit=opts.limit,
++                      timeout=opts.timeout,
++                      askpass=opts.askpass,
++                      outdir=opts.outdir,
++                      errdir=opts.errdir,
++                      warn_message=opts.warn_message,
++                      callbacks=_RunOutputBuilder())
++    for host, port, user in _expand_host_port_user(hosts):
++        is_local = is_local_host(host)
++        if is_local:
++            cmd = [cmdline]
++        else:
++            cmd = _build_call_cmd(host, port, user, cmdline, opts)
++        t = Task(host, port, user, cmd,
++                 stdin=opts.input_stream,
++                 verbose=opts.verbose,
++                 quiet=opts.quiet,
++                 print_out=opts.print_out,
++                 inline=opts.inline,
++                 inline_stdout=opts.inline_stdout,
++                 default_user=opts.default_user,
++                 is_local=is_local)
++        manager.add_task(t)
++    try:
++        return manager.run()
++    except FatalError as err:
++        raise IOError(str(err))
++
++
++class _RunOutputBuilder(object):
++    def __init__(self):
++        self.finished_tasks = []
++
++    def finished(self, task, n):
++        """Called when Task is complete"""
++        self.finished_tasks.append(task)
++
++    def result(self, manager):
++        """Called when all Tasks are complete to generate result"""
++        ret = {}
++        for task in self.finished_tasks:
++            if task.exitstatus == 255:
++                ret[task.host] = Error(', '.join(task.failures), task)
++            else:
++                ret[task.host] = (task.exitstatus,
++                                  task.outputbuffer or manager.outdir,
++                                  task.errorbuffer or manager.errdir)
++        return ret
+-- 
+2.37.3
+
