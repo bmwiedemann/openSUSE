@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-line_profiler
-Version:        3.4.0
+Version:        3.5.1
 Release:        0
 Summary:        Line-by-line profiler
 License:        BSD-3-Clause
