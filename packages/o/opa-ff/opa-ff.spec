@@ -1,7 +1,7 @@
 #
 # spec file for package opa-ff
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define git_ver .0.c22a337ee1df
+%define git_ver .0.37c1b409c254
 %define opamgt_major 0
 %define opasadb_major 1_0_0
 
@@ -24,7 +24,7 @@
 %define opasysconfdir %{_sysconfdir}/opa/
 
 Name:           opa-ff
-Version:        10.11.0.0.575
+Version:        10.11.1.3.1
 Release:        0
 Summary:        Intel Omni-Path basic tools and libraries for fabric managment
 License:        BSD-3-Clause OR GPL-2.0-only
