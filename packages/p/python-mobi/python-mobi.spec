@@ -1,7 +1,7 @@
 #
 # spec file for package python-mobi
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,15 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-mobi
-Version:        0.3.1
+Version:        0.3.3
 Release:        0
 Summary:        Library for unpacking unencrypted mobi files
-License:        GPL-3.0
+License:        GPL-3.0-only
 URL:            https://github.com/iscc/mobi
 Source:         https://files.pythonhosted.org/packages/source/m/mobi/mobi-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-loguru >= 0.4
 BuildArch:      noarch
 %python_subpackages
