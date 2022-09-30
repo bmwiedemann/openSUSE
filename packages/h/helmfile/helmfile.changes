@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Sep 28 09:20:45 UTC 2022 - manfred.h@gmx.net
+
+- Update to version 0.146.0:
+  This minor release incorporates many new features and a few bug
+  fixes, almost all thanks to 5 new contributors! Kudos to everyone
+  who contributed code 🙏
+  Also, we've been fixing a handful of regressions introduced via
+  v0.145.0 in v0.145.x patch releases. For this release, the only
+  regression we found and fixed was #370. Hopefully, this will be
+  the most reliable release ever since v0.145.0!
+
+  What's Changed:
+  * Support helm-secrets v4.0.0 by @KqLLL in #360
+  * use latest helm in github ci by @yxxhero in #367
+  * feat: show live output from the Helm binary by @rodrigorfk
+    in #286
+  * remove flags.Parse in cobra by @yxxhero in #369
+  * fix(oci): clean dead code by @jycamier in #290
+  * added option for --no-hooks for helm diff and apply by
+    @arpanadhikari in #279
+  * chore: Tidy up a local var scopinng for maintainability by
+    @mumoshu in #372
+  * move interactive option to global by @yxxhero in #370
+  * fix: add missing untar flag to pull chart from oci registry
+    by @toVersus in #371
+  * update CLI Ref by @yxxhero in #373
+  * Add preapply hook by @Sajfer in #79
+  * Fix not to ignore diff selector when it matched nothing by
+    @mumoshu in #374
+  * Bump chartify to v0.11.0 by @mumoshu in #375
+
+-------------------------------------------------------------------
 Thu Sep 15 08:42:13 UTC 2022 - manfred.h@gmx.net
 
 - Update to version 0.145.5:
