@@ -580,4 +580,51 @@ https://github.com/git-cola/git-cola/issues/991
     <comment></comment>
     <requestid>982130</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>21f60f12c34efa27dbc217eb45a5e00e</srcmd5>
+    <version>4.0.2</version>
+    <time>1664553528</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 4.0.2
+- Usability, bells and whistles
+* The Rebase editor (`git-cola-sequence-editor`) now supports multi-select.
+  Use `Shift-{Up,Down}` to select multiple lines and the keyboard hotkeys
+  listed in the `?` dialog to drive the UI.
+  https://github.com/git-cola/git-cola/pull/1257
+* The `$GIT_VISUAL` and `$VISUAL` environment variable are now consulted in addition
+  to `$GIT_EDITOR` and `$EDITOR` when the `gui.editor` configuration is unset.
+  https://github.com/git-cola/git-cola/pull/1237
+* The application window icon is now enabled when running on Wayland.
+  https://github.com/git-cola/git-cola/pull/1240
+* The Status widget now has an &quot;Open Worktree&quot; action.
+  https://github.com/git-cola/git-cola/pull/1245
+* The &quot;Open Using Default Application&quot;, &quot;Open Directory&quot;,
+  &quot;Open Parent Directory&quot; and &quot;Open Worktree&quot; actions are now available on Windows.
+* The dialog for opening repositories is now a read-only dialog that omits the
+  ability to create folders and modify the filesystem.
+  https://github.com/git-cola/git-cola/issues/1168
+* A few more `git` calls have been eliminated from the startup sequence.
+  This further improved the startup time for Git Cola.
+  https://github.com/git-cola/git-cola/pull/1259
+- Fixes
+* Documentation rendering errors have been fixed.
+  https://github.com/git-cola/git-cola/pull/1256
+* Use of a `~/.config/git-cola/language` file to override the language has been fixed.
+  https://github.com/git-cola/git-cola/issues/1246
+* We no longer write the `cola.spellcheck` configuration value on launch.
+  https://github.com/git-cola/git-cola/pull/1238
+- Translations
+* Updated Spanish translation.
+  https://github.com/git-cola/git-cola/pull/1244
+* Updated Japanese translation.
+  https://github.com/git-cola/git-cola/pull/1249
+- Packaging
+* Building documentation offline is supported again.
+  https://github.com/git-cola/git-cola/issues/1250
+* The Appstream Metadata files were missing in the v4.0.0 release are included again.
+  https://github.com/git-cola/git-cola/pull/1254
+  https://github.com/git-cola/git-cola/issues/1253
+</comment>
+    <requestid>1007243</requestid>
+  </revision>
 </revisionlist>

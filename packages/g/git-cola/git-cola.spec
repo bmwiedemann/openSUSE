@@ -18,7 +18,7 @@
 
 
 Name:           git-cola
-Version:        4.0.1
+Version:        4.0.2
 Release:        0
 Summary:        A GUI for Git
 License:        GPL-2.0-or-later
@@ -44,9 +44,8 @@ Recommends:     gitk
 Recommends:     python3-Send2Trash
 Recommends:     python3-pyinotify
 Recommends:     python3-qt5
-%if 0%{?suse_version} > 1110
+
 BuildArch:      noarch
-%endif
 
 %description
 git-cola is a graphical user interface for Git that provides a way to
@@ -63,6 +62,7 @@ python3 -m build --wheel --no-isolation
 %make_build man prefix=%{_prefix} DESTDIR=%{buildroot}  PYLINT=pylint3 PYTHON=python3 PIP=pip
 
 %install
+
 pip install --no-deps --force-reinstall  --root=%{buildroot} --prefix="%{_prefix}" dist/*.whl
 
 make install-man prefix=%{_prefix} DESTDIR=%{buildroot}  PYLINT=pylint3 PYTHON=python3 PIP=pip
@@ -79,6 +79,8 @@ make install-man prefix=%{_prefix} DESTDIR=%{buildroot}  PYLINT=pylint3 PYTHON=p
 %{_datadir}/applications/git-cola.desktop
 %{_datadir}/applications/git-dag.desktop
 %{_datadir}/applications/git-cola-folder-handler.desktop
+%{_datadir}/metainfo/git-cola.appdata.xml
+%{_datadir}/metainfo/git-dag.appdata.xml
 %dir %{_datadir}/icons/hicolor
 %dir %{_datadir}/icons/hicolor/scalable
 %dir %{_datadir}/icons/hicolor/scalable/apps
