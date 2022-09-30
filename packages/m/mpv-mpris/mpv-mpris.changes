@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep 29 19:32:58 UTC 2022 - Mia Herkt <mia@0x0.st>
+
+- Update to 0.9
+  * expose musicbrainz metadata if available
+    gh#hoyon/mpv-mpris#79
+  * Fix test failure with glib 2.73.3
+    gh#hoyon/mpv-mpris#80
+
+-------------------------------------------------------------------
 Fri Jun 17 23:04:06 UTC 2022 - Mia Herkt <mia@0x0.st>
 
 - Update to 0.8.1

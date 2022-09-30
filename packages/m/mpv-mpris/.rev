@@ -35,4 +35,16 @@
     #gh/hoyon/mpv-mpris#50</comment>
     <requestid>983511</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d6b3a39d03bbf5975539f7870da0cdea</srcmd5>
+    <version>0.9</version>
+    <time>1664553486</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 0.9
+  * expose musicbrainz metadata if available
+    gh#hoyon/mpv-mpris#79
+  * Fix test failure with glib 2.73.3
+    gh#hoyon/mpv-mpris#80</comment>
+    <requestid>1007097</requestid>
+  </revision>
 </revisionlist>

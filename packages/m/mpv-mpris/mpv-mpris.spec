@@ -17,7 +17,7 @@
 
 
 Name:           mpv-mpris
-Version:        0.8.1
+Version:        0.9
 Release:        0
 Summary:        MPRIS plugin for mpv
 License:        MIT
