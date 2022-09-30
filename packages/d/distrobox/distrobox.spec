@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package distrobox
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -15,23 +15,27 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           distrobox
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        Use any linux distribution inside your terminal
-License:        GPL-3.0
+License:        GPL-3.0-only
 URL:            https://github.com/89luca89/distrobox
 Source:         distrobox-%{version}.tar.gz
 Source1:        distrobox.conf
 # Default to distrobox-enter when just distrobox is used
-Patch1:         0001-distrobox-if-no-command-is-specified-default-to-ente.patch
 Requires:       %{_bindir}/basename
 Requires:       %{_bindir}/find
 Requires:       %{_bindir}/grep
 Requires:       %{_bindir}/sed
 Requires:       (%{_bindir}/podman or %{_bindir}/docker)
-BuildRequires:	hicolor-icon-theme
+# Idea would be: if bash completion is already there, let's have it. If
+# not, let's "only" recommend it...
+Recommends:     %{name}-bash-completion
+Requires:       (%{name}-bash-completion if bash-completion)
 BuildRequires:  ImageMagick
+BuildRequires:  hicolor-icon-theme
 BuildArch:      noarch
 
 %description
@@ -40,6 +44,16 @@ Distrobox uses podman or docker to create containers using the Linux distributio
 The created container will be tightly integrated with the host,
 allowing sharing of the HOME directory of the user, external storage,
 external USB devices and graphical apps (X11/Wayland), and audio.
+
+%package bash-completion
+Summary:        Bash completion for %{name}
+Requires:       %{name} = %{version}
+Requires:       bash-completion
+Supplements:    (%{name} and bash-completion)
+BuildArch:      noarch
+
+%description bash-completion
+Bash command line completion support for distrobox.
 
 %prep
 %autosetup -p1 -n distrobox-%{version}
@@ -90,4 +104,8 @@ done
 %dir %{_datadir}/icons/hicolor/*x*/
 %dir %{_datadir}/icons/hicolor/*x*/apps/
 %{_datadir}/icons/hicolor/*/apps/terminal-distrobox-icon.png
+
+%files bash-completion
+%{_datadir}/bash-completion/completions/%{name}*
+
 %changelog

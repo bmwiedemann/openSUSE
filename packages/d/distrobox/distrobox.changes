@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Sep 29 11:49:23 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Update to latest version (1.4.1)
+- Patches removed:
+  0001-distrobox-if-no-command-is-specified-default-to-ente.patch
+- Add a bash-completion subpackage
+- Changes in 1.4.1:
+  * completion: add bash completion support!
+  * create/enter: revert 52a34fb
+  * create: add --no-entry
+  * docs: update host and guest lists
+  * docs: redundant "else" in readme
+  * init: add mesa and vulkan drivers by default
+  * init: don't query filesystems mounted by beesd
+  * install-podman: update to 4.2.1
+  * install-podman: install crun, it generally
+    works better in rootless.
+  * install-podman: fix default configuration
+  * ephemeral: do cleanup even in case of errors
+  * generate-entry: auto-discover curl or wget.
+
+-------------------------------------------------------------------
 Wed Sep 14 09:24:10 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
 
 - Update to latest version (1.4.0)
