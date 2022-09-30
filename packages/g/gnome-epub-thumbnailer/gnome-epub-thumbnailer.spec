@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-epub-thumbnailer
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2013 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           gnome-epub-thumbnailer
-Version:        1.6
+Version:        1.7
 Release:        0
 Summary:        Thumbnailer for EPub books
 License:        GPL-2.0-or-later
@@ -26,6 +26,7 @@ Group:          Productivity/Office/Other
 URL:            https://git.gnome.org/browse/gnome-epub-thumbnailer
 Source0:        https://download.gnome.org/sources/gnome-epub-thumbnailer/%{version}/%{name}-%{version}.tar.xz
 
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gio-2.0)
@@ -39,15 +40,15 @@ Thumbnailer for EPub books.
 %autosetup
 
 %build
-%configure
-make %{?_smp_mflags}
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 %files
 %license COPYING
-%doc ChangeLog README
+%doc NEWS README
 %{_bindir}/gnome-epub-thumbnailer
 %{_bindir}/gnome-mobi-thumbnailer
 %dir %{_datadir}/thumbnailers/
