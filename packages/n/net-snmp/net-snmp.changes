@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 27 14:56:27 UTC 2022 - Alexander Bergmann <abergmann@suse.com>
+
+- Fixed python2 backward compability.
+  add:
+  * net-snmp-5.9.3-fixed-python2-bindings.patch
+
+-------------------------------------------------------------------
 Wed Sep 21 14:44:13 UTC 2022 - Alexander Bergmann <abergmann@suse.com>
 
 - update to 5.9.3:

@@ -63,6 +63,7 @@ Patch12:        net-snmp-5.9.1-harden_snmptrapd.service.patch
 Patch13:        net-snmp-5.9.1-suse-systemd-service-files.patch
 Patch14:        net-snmp-5.9.2-fix-create-v3-user-outfile.patch
 Patch15:        net-snmp-5.9.1-subagent-set-response.patch
+Patch16:        net-snmp-5.9.3-fixed-python2-bindings.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  autoconf
