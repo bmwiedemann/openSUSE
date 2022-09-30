@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 30 14:17:33 UTC 2022 - Takashi Iwai <tiwai@suse.com>
+
+- Disable LTO, as it results in segfaults (bsc#1203854)
+
+-------------------------------------------------------------------
 Wed Sep 14 07:20:38 UTC 2022 - Takashi Iwai <tiwai@suse.com>
 
 - Fix build with glibc 2.36: backports of two upstream fixes

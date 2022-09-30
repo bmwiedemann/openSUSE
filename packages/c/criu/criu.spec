@@ -21,9 +21,8 @@
 %define make_options USE_ASCIIDOCTOR=1
 %endif
 
-%ifarch %arm aarch64
+# currently broken with LTO, resulting in segfaults (bsc#1203854)
 %define _lto_cflags %{nil}
-%endif
 
 %ifarch x86_64 aarch64
 %define with_amdgpu_plugin 1
@@ -134,7 +133,6 @@ to develop applications with CRIU library.
 echo "BINFMT_MISC_VIRTUALIZED" > .config
 
 %build
-%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 export CFLAGS="%{optflags}"
 %ifarch %arm
 export CFLAGS="$CFLAGS -Wno-error=deprecated"
