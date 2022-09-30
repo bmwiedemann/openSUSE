@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 15 09:21:10 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to 2021.3:
+  - Change default value for mem_alloc_type to device
+  - License update
+  - Bug fixes.
+
+-------------------------------------------------------------------
 Fri Apr  9 09:07:20 UTC 2021 - Christian Goll <cgoll@suse.com>
 
 - Update to 2021.2:

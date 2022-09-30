@@ -1,7 +1,7 @@
 #
-# spec file for package imb
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,8 +21,8 @@
 # Base package name
 %define pname imb
 %define PNAME IMB
-%define ver 2021.2
-%define _ver 2021_2
+%define ver 2021.3
+%define _ver 2021_3
 
 %if 0%{?sle_version} >= 150200
 %define DisOMPI1 ExclusiveArch:  do_not_build
@@ -408,7 +408,7 @@ Name:           %{package_name}
 Version:        %{ver}
 Release:        0
 Summary:        Intel MPI Benchmarks (IMB)
-License:        CPL-1.0
+License:        BSD-3-Clause
 Group:          Development/Tools/Other
 URL:            https://software.intel.com/en-us/articles/intel-mpi-benchmarks
 Source0:        https://github.com/intel/mpi-benchmarks/archive/IMB-v%{version}.tar.gz#/%{pname}_%{version}.tar.gz
