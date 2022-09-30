@@ -2,7 +2,7 @@ Skip 'test/parallel/test-fs-utimes-y2K38.js' on some platforms.
 
 This test fails if coreutils' touch was built with 64-bit time_t,
 while nodejs was built with 32-bit time_t.  This is currently the case
-on i586, ppc and armv7l.  Skip the failing last command on those
+on i586, ppc and arm.  Skip the failing last command on those
 platforms.
 
 The failure was seen since coreutils-9.0.
@@ -16,7 +16,7 @@ Index: node-v16.6.2/test/parallel/test-fs-utimes-y2K38.js
 ===================================================================
 --- node-v16.6.2.orig/test/parallel/test-fs-utimes-y2K38.js
 +++ node-v16.6.2/test/parallel/test-fs-utimes-y2K38.js
-@@ -20,6 +20,23 @@ if (!common.isWindows) {
+@@ -20,6 +20,26 @@ if (!common.isWindows) {
      common.skip('File system appears to lack Y2K38 support (touch failed)');
    }
  
@@ -30,6 +30,9 @@ Index: node-v16.6.2/test/parallel/test-fs-utimes-y2K38.js
 +      common.skip('SUSE: test skipped on platforms with 32-bit time_t');
 +    }
 +    if (unameResult.stdout.trim() === 'ppc') {
++      common.skip('SUSE: test skipped on platforms with 32-bit time_t');
++    }
++    if (unameResult.stdout.trim() === 'armv6l') {
 +      common.skip('SUSE: test skipped on platforms with 32-bit time_t');
 +    }
 +    if (unameResult.stdout.trim() === 'armv7l') {
