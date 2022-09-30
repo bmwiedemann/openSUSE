@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 15 07:30:22 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to v11.3.0.0-130 (jsc#PED-349)
+  - added tool ethshmcleanup.sh for obsoleted shm file clean up
+  - added support to IMPI 2021.6
+  - update MpiApps OSU to v5.9
+
+-------------------------------------------------------------------
 Thu Sep 30 09:26:20 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Initial packaging of v11.1.0.0 (jsc#SLE-19364)

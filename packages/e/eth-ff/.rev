@@ -7,4 +7,12 @@
     <comment>- Initial packaging of v11.1.0.0 (jsc#SLE-19364)</comment>
     <requestid>922335</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a1c27920bffeeab06acc6f4dea417261</srcmd5>
+    <version>11.3.0.0</version>
+    <time>1664553451</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1007037</requestid>
+  </revision>
 </revisionlist>
