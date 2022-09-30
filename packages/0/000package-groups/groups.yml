@@ -427,4 +427,5 @@ opensuse_microos:
 opensuse_microos_desktop:
   - patterns-microos-desktop-kde: [aarch64,ppc64le,x86_64]
   - patterns-microos-desktop-gnome: [aarch64,ppc64le,x86_64]
+  - distrobox # needed by desktop, but pulled in via boolean dep
 

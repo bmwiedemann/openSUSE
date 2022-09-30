@@ -1466,4 +1466,11 @@ is not needed.
     <time>1664039877</time>
     <user>dimstar_suse</user>
   </revision>
+  <revision rev="205" vrev="203">
+    <srcmd5>b6fc015c72396f170760a8d01a5cdccd</srcmd5>
+    <version>unknown</version>
+    <time>1664531452</time>
+    <user>RBrownFactory</user>
+    <comment>Add distrobox to microos desktop group</comment>
+  </revision>
 </revisionlist>
