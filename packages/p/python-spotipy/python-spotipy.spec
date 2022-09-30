@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-spotipy
-Version:        2.19.0
+Version:        2.20.0
 Release:        0
 Summary:        Client for the Spotify Web API
 License:        MIT
@@ -26,11 +26,14 @@ URL:            https://spotipy.readthedocs.org/
 # https://github.com/plamere/spotipy/issues/454
 Source:         https://github.com/plamere/spotipy/archive/%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module redis}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-requests >= 2.20.0
-Requires:       python-six >= 1.10.0
+Requires:       python-redis >= 3.5.3
+Requires:       python-requests >= 2.25.0
+Requires:       python-six >= 1.15.0
+Requires:       python-urllib3 >= 1.26.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}

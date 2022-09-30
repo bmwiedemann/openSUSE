@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 29 13:02:28 UTC 2022 - Adrian Schröter <adrian@suse.de>
+
+- update to version 2.20.0
+  ### Added
+  * Added `RedisCacheHandler`, a cache handler that stores the token info in Redis.
+  * Changed URI handling in `client.Spotify._get_id()` to remove qureies if provided by error.
+  * Added a new parameter to `RedisCacheHandler` to allow custom keys (instead of the default `token_info` key)
+  * Simplify check for existing token in `RedisCacheHandler`
+
+-------------------------------------------------------------------
 Tue Apr 19 10:06:31 UTC 2022 - pgajdos@suse.com
 
 - version update to 2.19.0
