@@ -1,7 +1,7 @@
 #
 # spec file for package python-nested-lookup
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-nested-lookup
-Version:        0.2.21
+Version:        0.2.25
 Release:        0
 Summary:        Python functions for working with deeply nested documents (lists and dicts)
 License:        SUSE-Public-Domain
