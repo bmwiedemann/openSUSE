@@ -1,66 +1,8 @@
 -------------------------------------------------------------------
-Thu Sep 29 14:27:43 UTC 2022 - mvetter@suse.com
+Fri Sep 30 07:20:09 UTC 2022 - mvetter@suse.com
 
-- Update to version 0.5.3:
-  * Prepare release v0.5.3
-  * Don't check for empty message in listen mode.
-  * Start new development cycle.
-  * Release v0.5.2
-  * Update go modules.
-  * Don't connect to the XMPP server if the message is empty
-  * Update go modules.
-  * Remove another "little".
-  * Remove the "little".
-  * Fix typo.
-  * Improve error handling in XML parsing.
-  * Update go modules.
-  * Update go modules.
-  * Update go modules.
-  * Update go modules.
-  * Update go modules.
-  * Update go modules.
-  * Update go modules.
-  * Use resource as alias if specified and no alias is specified.
-  * Update go modules.
-  * Deprecate resource setting and introduce alias setting.
-  * Update go modules.
-  * Detect CNAME loops.
-  * Update go modules.
-  * Perform CNAME look ups.
-  * Update go modules.
-  * Fix typo.
-  * Reply to IQs.
-  * CI: Strip binaries.
-  * Update go modules.
-  * Update go modules.
-  * Remove local replace in go.mod.
-  * Update manpage.
-  * Add new lines to stanzas created by go-sendxmpp itself.
-  * Update go modules.
-  * CI: Only build binaries for releases.
-  * CI: Disable PIE for 32bit builds.
-  * CI: Try 'static-pie' for 32bit builds.
-  * CI: Enable all builds except linux/386.
-  * CI: Disable all builds except amd64 for testing.
-  * Hopefully fix CI.
-  * Revert "Add hardening flags to CI builds."
-  * Revert "Remove `-race` from CI build."
-  * Remove `-race` from CI build.
-  * Add hardening flags to CI builds.
-  * Update go modules.
-  * Words…
-  * Update go modules.
-  * Update go modules.
-  * Fix tense.
-  * Added more checks for empty messages.
-  * Update go modules.
-  * Ox: Don't encrypt empty messages.
-  * Ox: Improve error messages for failed key requests.
-  * Update modules.
-  * Update modules.
-  * Update go modules.
-  * Update go modules.
-  * Start new development cycle.
+- Update to version 0.5.4:
+  * Fix http-upload.
 
 -------------------------------------------------------------------
 Thu Sep 29 14:26:25 UTC 2022 - Michael Vetter <mvetter@suse.com>

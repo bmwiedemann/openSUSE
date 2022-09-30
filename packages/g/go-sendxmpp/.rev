@@ -44,4 +44,13 @@
   * CI: Strip binaries.</comment>
     <requestid>1006976</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a5034d25a7b62cea370728676fdb6a05</srcmd5>
+    <version>0.5.4</version>
+    <time>1664553512</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 0.5.4:
+  * Fix http-upload.</comment>
+    <requestid>1007173</requestid>
+  </revision>
 </revisionlist>
