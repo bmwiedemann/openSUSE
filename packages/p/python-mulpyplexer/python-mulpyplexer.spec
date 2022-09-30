@@ -1,7 +1,7 @@
 #
 # spec file for package python-mulpyplexer
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-mulpyplexer
-Version:        0.08
+Version:        0.09
 Release:        0
 Summary:        A module that multiplexes interactions with lists of python objects
 License:        BSD-2-Clause
