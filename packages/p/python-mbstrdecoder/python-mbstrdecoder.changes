@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 29 15:56:43 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 1.1.1:  
+  Remove chardet<5 requirement by @karolinku in #6
+  Add support for Python 3.11
+  Remove code that for support Python 2
+
+-------------------------------------------------------------------
 Wed Dec  8 12:23:02 UTC 2021 - pgajdos@suse.com
 
 - do not require pytest-runner, it is not needed
