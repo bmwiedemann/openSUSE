@@ -18,7 +18,7 @@
 
 
 Name:           gnome-logs
-Version:        43.beta
+Version:        43.0
 Release:        0
 Summary:        GNOME System Log Viewer
 License:        GPL-3.0-or-later
