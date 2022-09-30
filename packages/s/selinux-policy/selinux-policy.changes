@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Sep 29 12:54:15 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Update fix_networkmanager.patch to ensure NetworkManager chrony
+  dispatcher is properly labled and update fix_chronyd.patch to ensure
+  chrony helper script has proper label to be used by NetworkManager.
+  Also allow NetworkManager_dispatcher_custom_t to query systemd status
+  (bsc#1203824)
+
+-------------------------------------------------------------------
+Tue Sep 27 13:00:35 UTC 2022 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update fix_xserver.patch to add greetd support (bsc#1198559)
+
+-------------------------------------------------------------------
+Mon Sep 12 06:47:56 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Revamped rtorrent module
+
+-------------------------------------------------------------------
 Fri Aug 26 06:08:23 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Move SUSE directory from manual page section to html docu

@@ -257,4 +257,20 @@
     <comment></comment>
     <requestid>1000830</requestid>
   </revision>
+  <revision rev="32" vrev="5">
+    <srcmd5>ab22975ca38189f6d53c798c520bb791</srcmd5>
+    <version>20220714</version>
+    <time>1664553426</time>
+    <user>RBrownFactory</user>
+    <comment>- Update fix_networkmanager.patch to ensure NetworkManager chrony
+  dispatcher is properly labled and update fix_chronyd.patch to ensure
+  chrony helper script has proper label to be used by NetworkManager.
+  Also allow NetworkManager_dispatcher_custom_t to query systemd status
+  (bsc#1203824)
+
+- Update fix_xserver.patch to add greetd support (bsc#1198559)
+
+- Revamped rtorrent module</comment>
+    <requestid>1007016</requestid>
+  </revision>
 </revisionlist>
