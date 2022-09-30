@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Sep 29 16:37:08 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Release 1.4.0 (August 25, 2022)
+
+  - @avandierast implemented `thenCallOriginalImplementation`.  See #60
+    # Let `os.path.exists` use the real filesystem (often needed when
+    # the testing framework needs itself a working `os.path.exists`
+    # implementation) *but* fake a `.flake8` file.
+    when(os.path).exists(...).thenCallOriginalImplementation()
+    when(os.path).exists('.flake8').thenReturn(True)
+
+- Release 1.3.5 (August 18, 2022)
+  - Restore compatibility with Python 2.7
+
+- Release 1.3.3 (June 23, 2022)
+  - Hotfix: Correctly unstub methods extracted to the module level, for example ``random.randint()`` et.al. from the standard library.  See #53
+
+- Release 1.3.2 (June 23, 2022)
+  - Let `mock(spec=SomeClass)` work just as `mock(SomeClass)`
+
+- Release 1.3.1 (June 14, 2022)
+  - Reimplement `captor` to capture only during execution phase of a test.
+
+- Release 1.3.0 (December 3, 2021)
+  - Teach `captor` to remember all used values (@shashankrnr32). E.g.
+    arg = captor()
+    mock.do_something(123)
+    mock.do_something(456)
+    verify(mock).do_something(arg)
+    assert arg.all_values == [123, 456] 
+
+-------------------------------------------------------------------
 Thu Apr 22 06:00:46 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.2.2:

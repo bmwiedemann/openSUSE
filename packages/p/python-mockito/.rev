@@ -108,4 +108,12 @@
 - Do not build for Python 3.6, due to no NumPy.</comment>
     <requestid>887439</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>10634acaeaf1f6886ae7a66b9ba350c5</srcmd5>
+    <version>1.4.0</version>
+    <time>1664553461</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1007057</requestid>
+  </revision>
 </revisionlist>
