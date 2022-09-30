@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 29 16:20:05 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to  minidb 2.0.6
+  * Add vacuum_on_close option and Store.vacuum()
+
+-------------------------------------------------------------------
 Thu Sep  9 11:49:43 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Use GitHub tarball (for tests and README.md).
