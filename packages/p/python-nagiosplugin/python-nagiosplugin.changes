@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep 29 17:09:04 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- 1.3.3 (2022-02-07)
+  * new: adding support for newer python releases (3.8, 3.9, 3.10)
+  * fix: various typos in docstrings (#39, )
+  * fix: change use of deprecated upload-dir to upload_dir in setup.cfg (#34)
+  * fix: Runtime class now sets None for stdout by default (#24)
+  * fix: corrected argument order in several calls to super() (#18)
+  * cleanup: many bits of code tidying to eliminate linter warnings 
+
+-------------------------------------------------------------------
 Thu Apr 22 06:28:03 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Do not build for Python 3.6, due to no NumPy. 
