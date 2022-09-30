@@ -1,7 +1,7 @@
-Index: carla-2.4.1/source/backend/utils/Makefile
+Index: carla-2.5.0/source/backend/utils/Makefile
 ===================================================================
---- carla-2.4.1.orig/source/backend/utils/Makefile
-+++ carla-2.4.1/source/backend/utils/Makefile
+--- carla-2.5.0.orig/source/backend/utils/Makefile
++++ carla-2.5.0/source/backend/utils/Makefile
 @@ -43,6 +43,8 @@ endif
  
  LINK_FLAGS += $(LILV_LIBS)
@@ -11,11 +11,11 @@ Index: carla-2.4.1/source/backend/utils/Makefile
  
  ifeq ($(HAVE_X11),true)
  LINK_FLAGS += $(X11_LIBS)
-Index: carla-2.4.1/source/bridges-plugin/Makefile
+Index: carla-2.5.0/source/bridges-plugin/Makefile
 ===================================================================
---- carla-2.4.1.orig/source/bridges-plugin/Makefile
-+++ carla-2.4.1/source/bridges-plugin/Makefile
-@@ -154,6 +154,11 @@ NATIVE_LINK_FLAGS  += $(FLUIDSYNTH_LIBS)
+--- carla-2.5.0.orig/source/bridges-plugin/Makefile
++++ carla-2.5.0/source/bridges-plugin/Makefile
+@@ -179,6 +179,11 @@ NATIVE_LINK_FLAGS  += $(FLUIDSYNTH_LIBS)
  
  NATIVE_LINK_FLAGS  += $(MAGIC_LIBS)
  
@@ -27,11 +27,11 @@ Index: carla-2.4.1/source/bridges-plugin/Makefile
  LIBS_native        += $(MODULEDIR)/audio_decoder.a
  LIBS_native        += $(MODULEDIR)/native-plugins.a
  LIBS_native        += $(MODULEDIR)/sfzero.a
-Index: carla-2.4.1/source/bridges-ui/Makefile
+Index: carla-2.5.0/source/bridges-ui/Makefile
 ===================================================================
---- carla-2.4.1.orig/source/bridges-ui/Makefile
-+++ carla-2.4.1/source/bridges-ui/Makefile
-@@ -28,19 +28,19 @@ LINK_FLAGS       += $(WATER_LIBS) -pthre
+--- carla-2.5.0.orig/source/bridges-ui/Makefile
++++ carla-2.5.0/source/bridges-ui/Makefile
+@@ -36,19 +36,19 @@ endif
  # ---------------------------------------------------------------------------------------------------------------------
  
  BUILD_GTK2_FLAGS    = $(BUILD_CXX_FLAGS) -DBRIDGE_GTK2 $(X11_FLAGS)
@@ -56,12 +56,12 @@ Index: carla-2.4.1/source/bridges-ui/Makefile
  
  BUILD_COCOA_FLAGS   = $(BUILD_CXX_FLAGS) -DBRIDGE_COCOA -ObjC++
  LINK_COCOA_FLAGS    = $(LINK_FLAGS) -framework Cocoa $(LIBDL_LIBS)
-Index: carla-2.4.1/source/Makefile.mk
+Index: carla-2.5.0/source/Makefile.mk
 ===================================================================
---- carla-2.4.1.orig/source/Makefile.mk
-+++ carla-2.4.1/source/Makefile.mk
-@@ -198,6 +198,14 @@ ifeq ($(HAVE_PYQT),true)
- BASE_FLAGS += -DHAVE_PYQT
+--- carla-2.5.0.orig/source/Makefile.mk
++++ carla-2.5.0/source/Makefile.mk
+@@ -230,6 +230,14 @@ else ifeq ($(HAVE_SDL1),true)
+ BASE_FLAGS += -DHAVE_SDL -DHAVE_SDL1
  endif
  
 +FLAC_FLAGS  = $(shell pkg-config --cflags flac)
@@ -75,13 +75,13 @@ Index: carla-2.4.1/source/Makefile.mk
  ifeq ($(HAVE_SNDFILE),true)
  BASE_FLAGS += -DHAVE_SNDFILE
  endif
-Index: carla-2.4.1/source/plugin/Makefile
+Index: carla-2.5.0/source/plugin/Makefile
 ===================================================================
---- carla-2.4.1.orig/source/plugin/Makefile
-+++ carla-2.4.1/source/plugin/Makefile
-@@ -114,6 +114,9 @@ LINK_FLAGS += $(JUCE_GUI_EXTRA_LIBS)
- endif
- endif
+--- carla-2.5.0.orig/source/plugin/Makefile
++++ carla-2.5.0/source/plugin/Makefile
+@@ -127,6 +127,9 @@ endif
+ 
+ LINK_FLAGS += $(YSFX_GRAPHICS_LIBS)
  
 +LINK_FLAGS += $(FLAC_LIBS)
 +LINK_FLAGS += $(VORBIS_LIBS)
@@ -89,13 +89,13 @@ Index: carla-2.4.1/source/plugin/Makefile
  ifeq ($(MACOS),true)
  SYMBOLS_NATIVE  = -Wl,-exported_symbol,_carla_get_native_rack_plugin
  SYMBOLS_NATIVE += -Wl,-exported_symbol,_carla_get_native_patchbay_plugin
-Index: carla-2.4.1/source/backend/Makefile
+Index: carla-2.5.0/source/backend/Makefile
 ===================================================================
---- carla-2.4.1.orig/source/backend/Makefile
-+++ carla-2.4.1/source/backend/Makefile
-@@ -78,6 +78,8 @@ STANDALONE_LINK_FLAGS += $(LIBLO_LIBS)
- STANDALONE_LINK_FLAGS += $(MAGIC_LIBS)
+--- carla-2.5.0.orig/source/backend/Makefile
++++ carla-2.5.0/source/backend/Makefile
+@@ -86,6 +86,8 @@ STANDALONE_LINK_FLAGS += $(MAGIC_LIBS)
  STANDALONE_LINK_FLAGS += $(FLUIDSYNTH_LIBS)
+ STANDALONE_LINK_FLAGS += $(SDL_LIBS)
  STANDALONE_LINK_FLAGS += $(X11_LIBS)
 +STANDALONE_LINK_FLAGS += $(FLAC_LIBS)
 +STANDALONE_LINK_FLAGS += $(VORBIS_LIBS)

@@ -1,4 +1,171 @@
 -------------------------------------------------------------------
+Fri Sep 30 12:38:10 UTC 2022 - ecsos@opensuse.org
+
+- Update to version 2.5.0:
+  * Update copyright information related to JUCE
+  * Update juce plugin time related code for new APIs
+  * Another python3.10 compat fix
+  * Expose through backend API hints which plugin UIs are file based
+  * Do not use wine in CI builds if we can skip it
+  * Dont use LTO for windows CI builds for now
+  * Fix win32 builds
+  * Bump version to 2.5.0
+  * Fix windows/mingw build
+  * Fix strict build
+  * Fix macOS build
+  * Use full driver settings dialog in engine menu if not running
+  * Fix macOS build
+  * Update to JUCE 7.0.1, still to update to new playhead APIs
+  * Update included DPF
+  * Simplify wasm runner, using emscripten_set_interval
+  * Adjust to the non-threaded usage
+  * Also block sem_timedwait usage
+  * Make sure no threads are used on wasm
+  * Disable audiofile ops debug on wasm, verified to work
+  * Set default LV2 path for emscripten
+  * Add missing opus as supported extension in audio file plugin
+  * Report plugin UI close in embed mode
+  * Link DGL against CoreVideo on macOS
+  * Use emscripten_set_timeout_loop instead of manual management
+  * water: Add back a way to get win appdata and programfiles
+  * Cleanup
+  * Really fix build, unless compiler crashes..
+  * Another build fix
+  * Fix a typo
+  * Ignore pthread_yield for now
+  * Set _FILE_OFFSET_BITS=64 for ysfx
+  * Fix windows build
+  * Fix build after latest changes
+  * One more build fix
+  * Fix regular build
+  * Reenable audiofile seeking on wasm, which works now
+  * Do not allow to use capture logging thread on wasm
+  * Bring Runner class from DPF, use it for Engine background details
+  * More tweaks for wasm, engine verified to work, still with hacks
+  * Do not enable pthreads for wasm builds
+  * Update dgl and distrho modules
+  * Dont use simd for wasm just yet, fix missing APP_EXT usage
+  * Dont strip wasm binaries, cleanup
+  * Fix make clean
+  * More tweaks for wasm and sdl
+  * Add SDL/wasm test code
+  * Fix SDL engine for SDL1, work wasm workarounds
+  * Allow to disable JACK, and skip bridges for wasm
+  * AudioFileReader: workarounds for wasm non-threaded behaviour
+  * CarlaThread: Ignore a few things for wasm usage
+  * Initial SDL engine implementation
+  * emscripten related tweaks
+  * Keep VST3 hosting through JUCE, for now
+  * Rework and cleanup makefiles, add WASM var
+  * Allow to build with custom DGL namespace
+  * ysfx build tweaks as needed for armhf and MOD builds
+  * Fix water::DirectoryIterator for windows builds
+  * Fix a typo
+  * Another attempt at fixing ARM build
+  * Support mod:volts as LV2 unit
+  * Start handling VST3 events
+  * A few vst3 host fixes, no longer crash on load
+  * Tweak about/features for vst3 usage without juce
+  * Hacky juce test code for investigating vst3 keyboard input
+  * Add some stubs to vst3 host code
+  * Fix the previous armhf fix
+  * Start python level automated tests, WIP
+  * Make macOS installer allowed to install without rosetta2
+  * Another armhf fix
+  * Alternative approach to fix armhf builds
+  * Allow to link against custom DPF/DGL
+  * Fix armhf (non-aarch64) build
+  * Correction for ysfx %progbits
+  * Make sure to not export ysfx symbols
+  * Another small change needed for ysfx on arm
+  * Fix external plugins submodule, was changed by mistake
+  * Reorder makefile static plugin target rules
+  * Add -fsigned-char to ysfx flags
+  * Fix non-linux build
+  * Fix 32bit build and some warnings
+  * Fix ysfx no-gui build
+  * Update ysfx
+  * Fix wine plugin build
+  * Cleanup for CARLA_DECLARE_NON_COPYABLE macro use, minor jsfx things
+  * Disable juce usage on non mac/win builds
+  * Fix DISTRHO_UI_FILE_BROWSER usage
+  * Allow to build internal plugins with a custom dpf
+  * More tweaks needed for macOS builds
+  * Tweaks to get external dpf plugins to build together
+  * Allow DGL in static builds
+  * Fix a typo
+  * Fix macOS build
+  * Build fixes
+  * Initial code for juce-less VST3 native hosting
+  * Do not use -fno-gnu-unique on BSD
+  * Do not export extra DllMain for extra internal windows plugins
+  * Tweak HAVE_YSFXGUI files
+  * Fix linux build
+  * Add new file needed for updated dpf
+  * Fix a typo
+  * Cleanup some ysfx things and fix guiless build
+  * Adjust jsfx things to changes in Carla internals
+  * Fix debug build
+  * Skip msys2 CI builds that broke for no reason
+  * macOS build fix, tested this time
+  * Try to build less juce stuff
+  * Disable JUCE Dxgi usage incompatible with older mingw
+  * Update juce
+  * Yet another approach
+  * Alternative macOS fix
+  * Fix macOS build
+  * Really fix windows build
+  * Calculate Io count properly
+  * Fix a leak
+  * Fix windows build
+  * Implement native vst3 plugin scanning; Cleanup
+  * Cleanup some discovery stuff
+  * Continue cleanup
+  * More cleanup
+  * Cleanup
+  * Start cleaning up the water
+  * Remove use of WATER_COMPILER_SUPPORTS_MOVE_SEMANTICS Was never properly supported, and causes crashes in a few places
+  * Only use -std=gnu++14 when building for juce
+  * Build a few more files in c++14 for macOS
+  * Fix use of USE_COREGRAPHICS_RENDERING macro
+  * Another macOS fix
+  * Add missing files
+  * Update DPF
+  * Make juce config read by all files
+  * Keep old mingw32 tweaks to workaround crash in juce_audio_basics
+  * Fix macOS build
+  * Fix windows build with juce
+  * Fix juce mingw issues
+  * Fix new code carla for plugin bridge use
+  * Always build juce_gui_extra; Add new mingw std compat files
+  * Delete temporary files added by mistake
+  * Start the update to JUCE7
+  * Mention JSFX support in help text
+  * Link fontconfig in the 32-bit bridge build
+  * Implement JSFX (frontend)
+  * Implement JSFX (backend)
+  * Add ysfx (upstream 60917c4)
+- Rebase carla-systemlibs.patch.
+- Drop fix-include-array.patch because can no more applied.
+
+-------------------------------------------------------------------
+Fri Sep 30 12:27:12 UTC 2022 - ecsos@opensuse.org
+
+- Update to version 2.4.4:
+  * Bump version
+  * Another python3.10 compat fix
+  * Do not use -fno-gnu-unique on BSD
+  * Support mod:volts as LV2 unit
+  * Fix water::DirectoryIterator for windows builds
+  * Fix make clean
+  * Skip msys2 CI builds that broke for no reason
+  * Fix external plugins build with mxml >= 3.0
+  * Fix macOS build
+  * Fix inaccurate midi CC rounding (#1612)
+  * juce never links against x11
+  * Update dependency list
+
+-------------------------------------------------------------------
 Sat Jun  4 10:05:07 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Add fix-include-array.patch to fix Tumbleweed build error.

@@ -29,7 +29,7 @@ Name:           carla
 #NOTE: to update this package please change these two version fields in "_service" <param name="revision">v2.1.1</param> and
 #<param name="versionformat">2.1.1</param> to the version that you want and execute "osc service runall"
 # It will even fill in the .changes file. Please don't touch the Version: in the spec file, it will be filled automaticaly.
-Version:        2.4.3
+Version:        2.5.0
 Release:        0
 Summary:        An audio plugin host
 License:        BSD-2-Clause AND GPL-2.0-or-later AND BSD-3-Clause
@@ -46,8 +46,6 @@ Patch0:         carla-systemlibs.patch
 Patch1:         carla-remove-pkgconf-rpath.patch
 # PATCH-FIX-OPENSUSE -- Use the correct plugin paths for openSUSE sflees@suse.de
 Patch2:         use-correct-plugin-paths.patch
-# PATCH-FIX_OPENSUSE -- Fix build error in Tumbleweed
-Patch3:         fix-include-array.patch
 BuildRequires:  fdupes
 BuildRequires:  file-devel
 BuildRequires:  hicolor-icon-theme
@@ -74,6 +72,8 @@ BuildRequires:  pkgconfig(liblo)
 BuildRequires:  pkgconfig(libprojectM)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(mxml)
+# With sdl enable, carla does not build
+#BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(vorbisenc)
 BuildRequires:  pkgconfig(x11)
