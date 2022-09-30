@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 29 17:44:46 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+- New upstream release 27
+  * update pseudofs and fsck lists
+
+-------------------------------------------------------------------
 Sun Jul 31 19:00:04 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com> - 26
 - New upstream version 26
   * arch-chroot: Use separate pid namespace for worker processes

@@ -17,7 +17,7 @@
 
 
 Name:           arch-install-scripts
-Version:        26
+Version:        27
 Release:        0
 Summary:        Scripts aimed at automating some menial installation/recovery tasks
 License:        GPL-2.0-only
