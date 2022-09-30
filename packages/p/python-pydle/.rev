@@ -130,4 +130,36 @@
     <comment>- Fix package build by providing executable alternatives</comment>
     <requestid>866328</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f9d6cc2f4279b15cf3f324fd1c589c02</srcmd5>
+    <version>1.0.0</version>
+    <time>1664553484</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 1.0.0
+  Major changes:
+  * API change, monitor and unmonitor are now async def functions
+    gh#Shizmob/pydle#144
+  * Drop support for Python &lt; 3.5
+    gh#Shizmob/pydle#165
+  Bug fixes:
+  * Fix parsing IRCv3 tags with missing/empty values
+    gh#Shizmob/pydle#149
+  * Fixup irccat.py example
+    gh#Shizmob/pydle#152
+  * WHOIS uses deprecated @asyncio.coroutine
+    Backward compatable as the interface did not effectively change
+    gh#Shizmob/pydle#161
+  * Fix Missing Awaits in various files
+    Some internal methods were made async. As these methods are
+    internal, they are not covered by SEMVER.
+    gh#Shizmob/pydle#164
+  * Add Missing awaits in coroutine calls
+    gh#Shizmob/pydle#170
+  Features:
+  * Enable RplWhoisHostSupport implementation
+    gh#Shizmob/pydle#156
+  * Implement decorator-based event handler registration
+    gh#Shizmob/pydle#165</comment>
+    <requestid>1007087</requestid>
+  </revision>
 </revisionlist>

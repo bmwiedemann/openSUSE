@@ -1,7 +1,7 @@
 #
 # spec file for package python-pydle
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without test
 Name:           python-pydle
-Version:        0.9.4
+Version:        1.0.0
 Release:        0
 Summary:        Modular, callback-based IRCv3 library for Python 3
 License:        BSD-3-Clause
@@ -28,14 +28,15 @@ Group:          Development/Languages/Python
 URL:            https://github.com/Shizmob/pydle
 Source:         https://github.com/Shizmob/pydle/archive/v%{version}.tar.gz#/pydle-%{version}.tar.gz
 Source1:        LICENSE.md
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pure-sasl
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -57,10 +58,10 @@ sed -i 's,^#!%{_bindir}/env ,#!%{_bindir}/,' pydle/utils/irccat.py
 cp %{SOURCE1} .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_expand chmod +x %{buildroot}%{$python_sitelib}/pydle/utils/irccat.py
 %python_clone -a %{buildroot}%{_bindir}/pydle
