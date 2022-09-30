@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Sep 29 15:53:34 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 3.18.0 (2022-09-15)¶
+  Features:
+  Add Enum field (#2017) and (#2044).
+  Bug fixes:
+  Fix typing in Field._serialize signature (#2046).
+
+- Update to 3.17.1 (2022-08-22)
+  Bug fixes:
+  Add return type to fields.Email.__init__ (#2018). Thanks @kkirsche for the PR.
+  Add missing type hint to IPInterface __init__ (#2036).
+
+- Update to 3.17.0 (2022-06-26)
+  Features:
+  Support serialization as float in TimeDelta field (#1998). Thanks @marcosatti for the PR.
+  Add messages_dict property to ValidationError to facilitate type checking (#1976). Thanks @sirosen for the PR.
+
+- Update to 3.16.0 (2022-05-29)
+  Features:
+  Raise ValueError if an invalid value is passed to the unknown argument (#1721, #1732). Thanks @sirosen for the PR.
+  Other changes:
+  Set lower bound for packaging requirement (#1957). Thanks @MatthewNicolTR for reporting and thanks @sirosen for the PR.
+  Improve warning messages by passing stacklevel (#1986). Thanks @tirkarthi for the PR.
+
+- Update to 3.15.0 (2022-03-12)
+  Features:
+  Allow passing a dict to fields.Nested (#1935). Thanks @sirosen for the PR.
+  Other changes:
+  distutils deprecation warning in Python 3.10 (#1903). Thanks @kkirsche for the PR.
+  Add py310 to black target-version (#1921).
+  Drop support for Python 3.6 (#1923).
+
+-------------------------------------------------------------------
 Sun May 29 17:59:12 UTC 2022 - Torsten Gruner <simmphonie@opensuse.org>
 
 - Update to 3.14.1 (2021-11-13)
