@@ -33,6 +33,7 @@ Requires:       python-applicationinsights
 Requires:       python-azure-agrifood-farming
 Requires:       python-azure-ai-anomalydetector
 Requires:       python-azure-ai-formrecognizer
+Requires:       python-azure-ai-language-conversations
 Requires:       python-azure-ai-language-questionanswering
 Requires:       python-azure-ai-metricsadvisor
 Requires:       python-azure-ai-nspkg
@@ -70,6 +71,7 @@ Requires:       python-azure-cognitiveservices-vision-nspkg
 Requires:       python-azure-common
 Requires:       python-azure-communication-administration
 Requires:       python-azure-communication-chat
+Requires:       python-azure-communication-email
 Requires:       python-azure-communication-identity
 Requires:       python-azure-communication-networktraversal
 Requires:       python-azure-communication-nspkg
@@ -84,7 +86,6 @@ Requires:       python-azure-cosmos
 Requires:       python-azure-data-nspkg
 Requires:       python-azure-data-tables
 Requires:       python-azure-datalake-store
-Requires:       python-azure-devops
 Requires:       python-azure-digitaltwins-core
 Requires:       python-azure-eventgrid
 Requires:       python-azure-eventhub
@@ -93,6 +94,8 @@ Requires:       python-azure-eventhub-checkpointstoreblob-aio
 Requires:       python-azure-functions-devops-build
 Requires:       python-azure-graphrbac
 Requires:       python-azure-identity
+Requires:       python-azure-iot-deviceupdate
+Requires:       python-azure-iot-nspkg
 Requires:       python-azure-keyvault
 Requires:       python-azure-keyvault-administration
 Requires:       python-azure-keyvault-certificates
@@ -103,8 +106,16 @@ Requires:       python-azure-loganalytics
 Requires:       python-azure-media-videoanalyzer-edge
 Requires:       python-azure-messaging-webpubsubservice
 Requires:       python-azure-mgmt
+Requires:       python-azure-mgmt-appcontainers
+Requires:       python-azure-mgmt-confidentialledger
+Requires:       python-azure-mgmt-dnsresolver
+Requires:       python-azure-mgmt-dynatrace
+Requires:       python-azure-mgmt-nginx
+Requires:       python-azure-mgmt-scvmm
+Requires:       python-azure-mgmt-workloads
 Requires:       python-azure-mixedreality-authentication
 Requires:       python-azure-monitor
+Requires:       python-azure-monitor-ingestion
 Requires:       python-azure-monitor-query
 Requires:       python-azure-multiapi-storage
 Requires:       python-azure-nspkg
@@ -141,8 +152,6 @@ Requires:       python-msrest
 Requires:       python-msrestazure
 Requires:       python-pydocumentdb
 Requires:       python-uamqp
-Requires:       python-vsts
-Requires:       python-vsts-cd-manager
 BuildArch:      noarch
 %python_subpackages
 

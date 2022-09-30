@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Sep 30 12:20:58 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add additional packages from the Azure SDK to Requires
+  + python-azure-ai-language-conversations
+  + python-azure-communication-email
+  + python-azure-iot-deviceupdate
+  + python-azure-iot-nspkg
+  + python-azure-mgmt-appcontainers
+  + python-azure-mgmt-confidentialledger
+  + python-azure-mgmt-dnsresolver
+  + python-azure-mgmt-dynatrace
+  + python-azure-mgmt-nginx
+  + python-azure-mgmt-scvmm
+  + python-azure-mgmt-workloads
+  + python-azure-monitor-ingestion
+- Remove deprecated packages from the Azure SDK from Requires
+  + python-azure-devops
+  + python-vsts
+  + python-vsts-cd-manager
+
+-------------------------------------------------------------------
 Wed Mar 16 08:03:31 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Add additional packages from the Azure SDK to Requires
