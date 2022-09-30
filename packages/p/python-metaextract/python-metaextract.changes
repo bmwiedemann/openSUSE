@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep 29 16:10:29 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to Version 1.0.8: 
+  * Merge pull request #15 from toabctl/gh-instead-of-travis
+  * Move from Travis CI to github actions
+  * Merge pull request #14 from toabctl/drop-pytest-runner
+  * Post release version bump to 1.0.8
+  * setup.py: drop setup_requires including setuptools and pytest-runner
+  * Merge pull request #12 from jayvdb/json_dumps_default
+  * Use default json encoder 'str'
+
+-------------------------------------------------------------------
 Wed Dec  8 12:34:45 UTC 2021 - pgajdos@suse.com
 
 - do not require pytest-runner for build, it is not needed
