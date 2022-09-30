@@ -17,4 +17,12 @@
   * drop support for python versions older than 3.6</comment>
     <requestid>930117</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>219082a9109b8891ffbe80cb535c163b</srcmd5>
+    <version>3.1.0</version>
+    <time>1664553477</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1007080</requestid>
+  </revision>
 </revisionlist>
