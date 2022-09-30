@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define modname pyscard
 Name:           python-pyscard
-Version:        2.0.2
+Version:        2.0.5
 Release:        0
 Summary:        Python module adding smart card support
 License:        LGPL-2.0-or-later
