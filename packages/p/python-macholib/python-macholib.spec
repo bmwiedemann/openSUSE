@@ -1,7 +1,7 @@
 #
 # spec file for package python-macholib
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-macholib
-Version:        1.14
+Version:        1.16
 Release:        0
 Summary:        Mach-O header analysis and editing
 License:        MIT
@@ -31,7 +31,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-altgraph >= 0.15
 Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module altgraph >= 0.15}

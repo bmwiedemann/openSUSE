@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 29 15:42:05 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- version update to 1.16 
+  * Add allow_unknown_load_commands option to MachO and ```macholib.MachOHeader``.
+
+-------------------------------------------------------------------
 Mon May 25 06:50:39 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
