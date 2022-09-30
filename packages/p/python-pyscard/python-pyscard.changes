@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep 29 18:26:31 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.5
+  * no functional changes
+- Update to version 2.0.4
+   * Fix a problem on PCSCCardConnection.disconnect
+   * Add support of BaseSCardException(hresult) format
+   * Do not use deprecated distutils anymore
+- Update to version 2.0.3
+   * PCSCExceptions: include error code in the message
+
+-------------------------------------------------------------------
 Tue Apr 19 12:57:59 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - use https url
