@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Thu Sep 29 19:43:31 UTC 2022 - Mia Herkt <mia@0x0.st>
+
+- Update to 1.36.1
+Fixes
+  * An issue that could cause agents running on 32bit distributions
+    to crash during data exchange with the cloud.
+    gh#netdata/netdata#13511
+- go.d.plugin 0.40.1
+Fixes
+  * agent: do cleanup on exit
+    gh#netdata/go.d.plugin#758
+  * mysql: create a dimension per Galera state/status.
+    gh#netdata/go.d.plugin#779
+  * docker: remove data usage call.
+    gh#netdata/go.d.plugin#780
+  * httpcheck: remove spaces in "HTTP Response Time" chart
+    dimensions.
+    gh#netdata/go.d.plugin#788
+  * portcheck: remove instance-specific information from chart
+    families.
+    gh#netdata/go.d.plugin#790
+  * docker: handle the case when no images are found.
+    gh#netdata/go.d.plugin#739
+  * postgres: delay unregistering connString.
+    gh#netdata/go.d.plugin#839
+  * postgres: fix bloat size perc calc.
+    gh#netdata/go.d.plugin#841
+  * postgres: fix unregistering connStr at runtime.
+    gh#netdata/go.d.plugin#843
+  * postgres: query database size only if has 'connect' privilege.
+    gh#netdata/go.d.plugin#845
+  * postgres: don't create bloat charts if no bloat metrics
+    collected.
+    gh#netdata/go.d.plugin#846
+Collectors
+  * docker: collect the number of running containers and their
+    health state
+    gh#netdata/go.d.plugin#760
+  * logind: Keeps track of user logins and sessions by querying the
+    systemd-logind API.
+    gh#netdata/go.d.plugin#786
+  * proxysql: Monitor connections, slow queries, lagging, backends
+    status, and more.
+    gh#netdata/go.d.plugin#703
+  * [WIP] nvidia_smi: Monitors Nvidia GPU using the nvidia-smi
+    CLI tool.
+    gh#netdata/go.d.plugin#844
+Improvements
+  * mysql: produce binary log and MyISAM charts if they're enabled
+    gh#netdata/go.d.plugin#763
+  * mysql: collect more user stats metrics.
+    gh#netdata/go.d.plugin#775
+  * mysql: add Percona MySQL compatibility.
+    gh#netdata/go.d.plugin#776
+  * docker: collect images and volumes stats.
+    gh#netdata/go.d.plugin#777
+  * dnsmasq_dhcp: discover dhcp-ranges at runtime.
+    gh#netdata/go.d.plugin#778
+  * postgres: collect table and index metrics.
+  * systemdunits: create dimension for each unit state.
+    gh#netdata/go.d.plugin#795
+  * phpfpm: added the ability to directly connect to a TCP socket
+    and modify the status path.
+    gh#netdata/go.d.plugin#805
+  * agent: add _collect label (job name) to charts.
+    gh#netdata/go.d.plugin#814
+  * postgres: track acquired locks utilization.
+    gh#netdata/go.d.plugin#831
+  * postgres: human-friendly histogram buckets.
+    gh#netdata/go.d.plugin#833
+  * postgres: human-friendly histogram buckets.
+    gh#netdata/go.d.plugin#833
+  * agent: allow to define labels in config.
+    gh#netdata/go.d.plugin#840
+
+-------------------------------------------------------------------
 Wed Aug 10 22:14:25 UTC 2022 - Mia Herkt <mia@0x0.st>
 
 - Drop netdata-smartd-log-path.patch

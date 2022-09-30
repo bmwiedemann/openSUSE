@@ -3771,4 +3771,41 @@ python.d/ovpn_status_log    collector     go.d/openvpn_status_log
 </comment>
     <requestid>994622</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>2f8d75ff6e6d96dffa0128564e72be87</srcmd5>
+    <version>1.36.1</version>
+    <time>1664553487</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 1.36.1
+Fixes
+  * An issue that could cause agents running on 32bit distributions
+    to crash during data exchange with the cloud.
+    gh#netdata/netdata#13511
+- go.d.plugin 0.40.1
+Fixes
+  * agent: do cleanup on exit
+    gh#netdata/go.d.plugin#758
+  * mysql: create a dimension per Galera state/status.
+    gh#netdata/go.d.plugin#779
+  * docker: remove data usage call.
+    gh#netdata/go.d.plugin#780
+  * httpcheck: remove spaces in &quot;HTTP Response Time&quot; chart
+    dimensions.
+    gh#netdata/go.d.plugin#788
+  * portcheck: remove instance-specific information from chart
+    families.
+    gh#netdata/go.d.plugin#790
+  * docker: handle the case when no images are found.
+    gh#netdata/go.d.plugin#739
+  * postgres: delay unregistering connString.
+    gh#netdata/go.d.plugin#839
+  * postgres: fix bloat size perc calc.
+    gh#netdata/go.d.plugin#841
+  * postgres: fix unregistering connStr at runtime.
+    gh#netdata/go.d.plugin#843
+  * postgres: query database size only if has 'connect' privilege.
+    gh#netdata/go.d.plugin#845
+  * postgres: don't create bloat charts if no bloat metrics</comment>
+    <requestid>1007105</requestid>
+  </revision>
 </revisionlist>
