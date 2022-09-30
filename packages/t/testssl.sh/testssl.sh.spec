@@ -20,7 +20,7 @@
 %define _data_dir_name testssl-sh
 
 Name:           testssl.sh
-Version:        3.0.7
+Version:        3.0.8
 Release:        0
 Summary:        Testing TLS/SSL Encryption Anywhere On Any Port
 License:        GPL-2.0-or-later
@@ -30,6 +30,7 @@ Source0:        https://github.com/drwetter/%{name}/archive/refs/tags/v%{version
 Source1:        %{name}-rpmlintrc
 Patch0:         testssl.sh-2.9.95-set-install-dir.patch
 Requires:       bash >= 3.2
+Requires:       bind-utils
 Requires:       openssl
 BuildArch:      noarch
 

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Sep 28 20:54:50 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 3.0.8
+  * Fix grep 3.8 warnings on fgrep and unneeded escapes of hyphen, slash, space (Geert)
+  * Fix alignment for cipher output (David)
+  * News binaries (Darwin from Barry), carry now the appendix -bad and fixes a security problem.
+  * Backport from higher OpenSSL version to support xmpp-server
+  * Fix CT (David)
+  * Fix decryption of TLS 1.3 response (David)
+  * Upgrade Dockerfile to Alpine to 3.15
+  * Fix pretty JSON formatting when warning is issued (David)
+  * Update of certificate stores
+  * Major update of client simulation (9 new simulations , >4 removed in default run)
+  * Fix CRIME output on servers only supporting TLS 1.3 (Tomasz)
+  * Fix censys link
+  * Fix ome handshake problems w $OPENSSL ciphers, extend determine_optimal_sockets_params() to more
+  * ciphers, fix PROTOS_OFFERED (David)
+  * Relax STARTTLS FTP requirement so that it doesn't require TLS after AUTH
+  * Fix run_server_preference() with no default protocol (David)
+  * Fix getting CRL / NO_SESSION_ID under some circumstances (David)
+  * Improve/fix OpenSSL 3.0 compatibility (David)
+  * Fix formatting to documentation
+  * Add FFDHE groups to supported_groups (David)
+  * Include RSA-PSS in ClientHello (David)
+- Requires: bind-utils for required tools dig, host and nslookup
+
+-------------------------------------------------------------------
 Sat Aug 13 21:43:23 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 3.0.7
