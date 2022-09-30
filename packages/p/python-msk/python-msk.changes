@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Sep 29 16:47:51 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 0.4.0:
+  * Merge pull request #63 from PureTryOut/xdg-base-directory
+  * Bump version and rm old maintainer
+  * Merge pull request #65 from forslund/bugfix/default-MIT-license
+  * Remove copyright year and owner from MIT license
+  * Support XDG Base Directory compatible MSM
+  * Merge pull request #61 from MycroftAI/refactor/cleanup-for-flake8
+  * Include all supported versions of Python
+  * Bump version to release candidate for testing
+  * Add Github Actions to lint and publish
+  * Format all files to meet PEP8 standard
+  * Merge pull request #60 from forslund/fix-msm-version
+  * Lock version to supported msm-version
+  * Merge pull request #55 from forslund/feature/strip-token
+  * Merge pull request #54 from MycroftAI/feature/remove-old-decorator
+  * Strip token from spaces when creating askpass script
+  * Simplify ask-pass script
+  * remove deprecated intent_file_handler
+
+-------------------------------------------------------------------
 Mon Aug 30 06:51:52 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Correct Require for python-GitPython and python-PyGithub. 
