@@ -32,4 +32,12 @@
   * Fixed a size computation issue in the request handler (see #42)</comment>
     <requestid>799140</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3638b8c8498b534fa791861c28f106a9</srcmd5>
+    <version>0.4.3.2</version>
+    <time>1664553476</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1007079</requestid>
+  </revision>
 </revisionlist>
