@@ -19,7 +19,7 @@
 %define _kf5_version 5.88.0
 %bcond_without  lang
 Name:           neochat
-Version:        22.06
+Version:        22.09
 Release:        0
 Summary:        A chat client for Matrix, the decentralized communication protocol
 License:        BSD-2-Clause AND GPL-3.0-only AND GPL-3.0-or-later

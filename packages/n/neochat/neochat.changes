@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep 29 19:55:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 22.09:
+  * implemented support for configuring notifications on a per-room basis. As
+    part of his GSoC project, Snehit added a space selector to the room list,
+    which allows filtering the room list for rooms included in the selected
+    space. James also reworked the timeline layout to make it look nicer when
+    the window is very wide. There have also been a ton of other fixes and
+    improvements in translations, the layout and the stability of NeoChat.
+
+-------------------------------------------------------------------
 Fri Aug  5 06:07:29 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Use GCC 10 to build neochat on Leap.
