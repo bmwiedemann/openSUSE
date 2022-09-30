@@ -17,7 +17,7 @@
 
 
 Name:           pango
-Version:        1.50.9
+Version:        1.50.10
 Release:        0
 Summary:        Library for Layout and Rendering of Text
 License:        LGPL-2.1-or-later
@@ -26,6 +26,8 @@ URL:            https://pango.gnome.org/
 Source0:        %{name}-%{version}.tar.xz
 Source2:        macros.pango
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM 639.patch -- layout: Fix crash when no font is installed
+Patch0:         https://gitlab.gnome.org/GNOME/pango/-/merge_requests/639.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  help2man
@@ -117,7 +119,7 @@ This package contains all necessary include files and libraries needed
 to develop applications that require these.
 
 %prep
-%setup
+%autosetup -p1
 
 %build
 %meson \

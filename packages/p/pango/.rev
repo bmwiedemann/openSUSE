@@ -1129,4 +1129,16 @@
     <comment>New stable release (forwarded request 994379 from iznogood)</comment>
     <requestid>994790</requestid>
   </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>94af6fce62cb7d46d1375d0207d5fbf6</srcmd5>
+    <version>1.50.10</version>
+    <time>1664553421</time>
+    <user>RBrownFactory</user>
+    <comment>- Add 639.patch: layout: Fix crash when no font is installed.
+- Update to version 1.50.10:
+  + Avoid some unnecessary strdups.
+  + Fix line height computations with a non-trivial CTM.
+</comment>
+    <requestid>1006525</requestid>
+  </revision>
 </revisionlist>
