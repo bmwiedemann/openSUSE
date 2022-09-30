@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-mdurl
-Version:        0.1.1
+Version:        0.1.2
 Release:        0
 Summary:        Markdown URL utilities
 License:        MIT
@@ -26,10 +26,10 @@ URL:            https://github.com/executablebooks/mdurl
 Source:         https://github.com/executablebooks/mdurl/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 #Source:         https://files.pythonhosted.org/packages/source/m/mdurl/mdurl-%%{version}.tar.gz
 BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module flit}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildArch:      noarch
 %python_subpackages
