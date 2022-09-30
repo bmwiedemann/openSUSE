@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Sep 29 15:46:07 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to Version 1.15.0
+  More PEP-compliant `wraps` Latest
+  wraps now always sets the __wrapped__ attribute, and also sets the __signature__ attribute when the signature changes,
+  as specified by PEP 362. PR by #86 by lucaswiman.
+
+- Update to Version 1.14.0
+  Support for lambda functions
+  create_wrapper, create_function, wraps and with_signature now support lambda functions. They also accept a new parameter
+  co_name to define the name to be used in the compiled code. PR #80 by andrewcleveland.
+
+- Update to Version 1.13.1
+  - Fixed regression with generators in python 3.5
+  - Fixed an issue where using partial on a generator function in python 3.5 was raising a SyntaxError. Fixed #79
+
+- Update to Version 1.13.0 
+  - Support for async generator functions
+    async generator functions are now supported (See PEP525). Fixed #77. PR#78 by broglep-work.
+
+-------------------------------------------------------------------
 Tue Dec 14 12:04:47 UTC 2021 - pgajdos@suse.com
 
 - version update to 1.12.1
