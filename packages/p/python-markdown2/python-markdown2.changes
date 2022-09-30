@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Thu Sep 29 15:51:26 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- python-markdown2 2.4.5
+  [pull #466] Add optional dependencies to setup.py
+- python-markdown2 2.4.4
+  [pull #439] Fix TypeError if html-classes extra is None
+  [pull #441] Remove Python2 support
+  [pull #445] Replace <strike> with <s> in strike extra
+  [pull #446] Fix link patterns extra applying within links
+  [pull #443] create proper entry point
+  [pull #449] Codespans inside link text issue344
+  [pull #451] Underline and HTML comments
+  [pull #453] Links with brackets
+  [pull #454] Fix emacs local variable one-liners
+  [pull #457] Example of the current mixed-paragraph mode behavior in lists
+  [pull #455] Fix code block indentation in lists
+  [pull #434] Fix filter bypass leading to XSS (#362)
+  [pull #464] Fix html-classes extra not applying to code spans
+  [pull #462] Fix pygments block matching
+  [pull #462] Fix pyshell blocks in blockquotes
+  [pull #463] Fix multilevel lists
+  [pull #468] Remove _uniform_outdent_limit function
+  [pull #470] Add support for ordered lists that don't start at 1. (#469)
+  [pull #472] Fix AssertionError with lazy numbered lists (issue #471)
+  [pull #475] Add <ul> and <ol> tags to html-classes extra (#352)
+  [pull #473] XSS test and fix
+- python-markdown2 2.4.3
+  [pull #413] Fix meta indentation
+  [pull #414] Fix code surrounded by blank lines inside blockquote fenced code blocks
+  [pull #417] Fix inline code pipe symbol within tables (issue #399)
+  [pull #418] Fix code block parsing error (issue #327)
+  [pull #419] Fix hr block created when not supposed to (issue #400)
+  [pull #421] Fix backslashes removed by adjacent code blocks (issues #369 and #412)
+  [pull #420] Fix md5-* in resulting HTML when several code blocks follow one by one (issue #355)
+  [pull #422] Fix excessive <br> tags in lists using break-on-newline extra (issue #394)
+  [pull #424] Standardize key and value definitions for metadata extra (issue #423)
+  [pull #427] Fix fenced code blocks breaking lists (issue #426)
+  [pull #429] Fix catastrophic backtracking (Regex DoS) in pyshell blocks.
+  [pull #431] Fix incorrect indentation of fenced code blocks within lists
+  [pull #436] RST admonitions
+  [pull #430] Improve error message if link_patterns forgotten
+  [pull #437] fix compatibility with pygments 2.12
+
+-------------------------------------------------------------------
 Sat Mar 26 18:36:07 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.2:
