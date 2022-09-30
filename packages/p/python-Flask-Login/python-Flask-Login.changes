@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Sep 30 04:41:37 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.6.2:
+  * Fix compatibility with Werkzeug 2.2 and Flask 2.2. #691
+  * Revert change to expand_login_view that attempted to preserve a dynamic
+    subdomain value. Such values should be handled using
+    app.url_value_preprocessor and app.url_defaults. #691
+  * Ensure deprecation warnings are present for deprecated features that will be removed in the next feature release.
+    + Use request_loader instead of header_loader.
+    + Use user_loaded_from_request instead of user_loaded_from_header.
+    + Use app.config["LOGIN_DISABLED"] instead of _login_disabled.
+    + Use init_app instead of setup_app 
+
+-------------------------------------------------------------------
 Sun Jun  5 04:37:42 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 0.6.1:

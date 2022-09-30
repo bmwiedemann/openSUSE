@@ -39,4 +39,21 @@
     <comment></comment>
     <requestid>980840</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0c97033735b6ebcbd5e2907e3f4c002c</srcmd5>
+    <version>0.6.2</version>
+    <time>1664553497</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 0.6.2:
+  * Fix compatibility with Werkzeug 2.2 and Flask 2.2. #691
+  * Revert change to expand_login_view that attempted to preserve a dynamic
+    subdomain value. Such values should be handled using
+    app.url_value_preprocessor and app.url_defaults. #691
+  * Ensure deprecation warnings are present for deprecated features that will be removed in the next feature release.
+    + Use request_loader instead of header_loader.
+    + Use user_loaded_from_request instead of user_loaded_from_header.
+    + Use app.config[&quot;LOGIN_DISABLED&quot;] instead of _login_disabled.
+    + Use init_app instead of setup_app</comment>
+    <requestid>1007134</requestid>
+  </revision>
 </revisionlist>
