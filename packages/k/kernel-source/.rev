@@ -6018,4 +6018,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>5.19.10 &amp; 5.19.9 (minus the iommu buggy patch)</comment>
     <requestid>1005161</requestid>
   </revision>
+  <revision rev="658" vrev="1">
+    <srcmd5>788567ad8c4b23949aa3cb456d11e23d</srcmd5>
+    <version>5.19.12</version>
+    <time>1664553427</time>
+    <user>RBrownFactory</user>
+    <comment>5.19.12 &amp; 5.19.11 &amp; CVE fix &amp; other fixes</comment>
+    <requestid>1006632</requestid>
+  </revision>
 </revisionlist>
