@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 29 17:39:59 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 3.2.3:
+  * TCP: Improve detection of broken connection.
+
+-------------------------------------------------------------------
 Tue Sep 13 19:30:23 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 3.2.2:
