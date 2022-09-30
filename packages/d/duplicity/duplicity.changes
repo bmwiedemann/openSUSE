@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Sep 29 23:22:42 UTC 2022 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 1.0.0:
+  + Changes:
+    -  New os\_options for SWIFT backend.
+    -  Clarify when --s3-endpoint-url,-region-name are needed.
+    -  Better defaults for S3 mac procs and chunk sizing.
+    -  --s3\_multipart\_max\_procs applies to BOTO3 backend also.
+  + Fixes:
+    - Replace pydrive with pydrive2.
+    - GDrive backend: Add environment args for configuring oauth
+      flow.
+    - GDrive backend: For Google OAuth, switch to loopback flow.
+    - Reduce number of GPG file descriptors, add GPG translatable
+      errors.
+    - Webdav listing failed on responses with namespace 'ns0'.
+    - Make sure that FileChunkIO#name is a string, not a bytes-like
+      object.
+    - Fix possible memory leaks.
+    - Add check to ssh_pexpect_backend, par2backend, for version <
+      4.5.0.
+    - Add use\_poll=True to pexpect.run in par2backend.
+    - Retry on SHA1 mismatch.
+  + Other:
+    - Doc: some reformatting for better readability.
+    - Doc: clarify when --s3-endpoint-url,-region-name are need.
+- Rebase duplicity-remove_shebang.patch.
+
+-------------------------------------------------------------------
 Mon May 16 23:38:38 UTC 2022 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 0.8.23:
