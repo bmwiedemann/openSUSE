@@ -16,16 +16,18 @@
 #
 
 
+%global wx_version %(wx-config --release | sed 's/\\.//')
 %define binds webview;gl;xrc;xml;net;media;propgrid;richtext;aui;stc;html;adv;core;base
 %define sover 3_1_0_0
 Name:           wxlua
-Version:        3.1.0.0+27
+Version:        3.1.0.0+42
 Release:        0
 Summary:        Lua bindings for wxWidgets
 License:        GPL-2.0-or-later WITH WxWindows-exception-3.1
 Group:          Development/Languages/Other
 URL:            https://github.com/pkulchenko/wxlua
 Source:         %{name}-%{version}.tar.xz
+Source99:       wxlua-rpmlintrc
 BuildRequires:  ccache
 BuildRequires:  cmake >= 2.8
 BuildRequires:  desktop-file-utils
@@ -46,10 +48,10 @@ supports Lua 5.1, 5.2, 5.3, 5.4, LuaJIT and wxWidgets 3.x
 %package -n lib%{name}
 Summary:        Set of Lua bindings to the C++ wxWidgets cross-platform GUI library
 Group:          System/Libraries
-Requires:       libwxlua-wx31-%{sover} = %{version}
-Requires:       libwxlua_bind-wx31-%{sover} = %{version}
-Requires:       libwxlua_debug-wx31-%{sover} = %{version}
-Requires:       libwxlua_debugger-wx31-%{sover} = %{version}
+Requires:       libwxlua-wx%{wx_version}-%{sover} = %{version}
+Requires:       libwxlua_bind-wx%{wx_version}-%{sover} = %{version}
+Requires:       libwxlua_debug-wx%{wx_version}-%{sover} = %{version}
+Requires:       libwxlua_debugger-wx%{wx_version}-%{sover} = %{version}
 
 %description -n lib%{name}
 wxLua is a set of bindings to the C++ wxWidgets cross-platform GUI library for
@@ -58,44 +60,44 @@ exposed to Lua, meaning that your programs can have windows, dialogs, menus,
 toolbars, controls, image loading and saving, drawing, sockets, streams,
 printing, clipboard access... and much more.
 
-%package -n libwxlua-wx31-%{sover}
+%package -n libwxlua-wx%{wx_version}-%{sover}
 Summary:        Lua bindings to the C++ wxWidgets cross-platform GUI library
 Group:          System/Libraries
 
-%description -n libwxlua-wx31-%{sover}
+%description -n libwxlua-wx%{wx_version}-%{sover}
 wxLua is a set of bindings to the C++ wxWidgets cross-platform GUI library for
 the Lua programming language. Nearly all of the functionality of wxWidgets is
 exposed to Lua, meaning that your programs can have windows, dialogs, menus,
 toolbars, controls, image loading and saving, drawing, sockets, streams,
 printing, clipboard access... and much more.
 
-%package -n libwxlua_bind-wx31-%{sover}
+%package -n libwxlua_bind-wx%{wx_version}-%{sover}
 Summary:        Lua bindings to the C++ wxWidgets cross-platform GUI library
 Group:          System/Libraries
 
-%description -n libwxlua_bind-wx31-%{sover}
+%description -n libwxlua_bind-wx%{wx_version}-%{sover}
 wxLua is a set of bindings to the C++ wxWidgets cross-platform GUI library for
 the Lua programming language. Nearly all of the functionality of wxWidgets is
 exposed to Lua, meaning that your programs can have windows, dialogs, menus,
 toolbars, controls, image loading and saving, drawing, sockets, streams,
 printing, clipboard access... and much more.
 
-%package -n libwxlua_debug-wx31-%{sover}
+%package -n libwxlua_debug-wx%{wx_version}-%{sover}
 Summary:        Lua bindings to the C++ wxWidgets cross-platform GUI library
 Group:          System/Libraries
 
-%description -n libwxlua_debug-wx31-%{sover}
+%description -n libwxlua_debug-wx%{wx_version}-%{sover}
 wxLua is a set of bindings to the C++ wxWidgets cross-platform GUI library for
 the Lua programming language. Nearly all of the functionality of wxWidgets is
 exposed to Lua, meaning that your programs can have windows, dialogs, menus,
 toolbars, controls, image loading and saving, drawing, sockets, streams,
 printing, clipboard access... and much more.
 
-%package -n libwxlua_debugger-wx31-%{sover}
+%package -n libwxlua_debugger-wx%{wx_version}-%{sover}
 Summary:        Lua bindings to the C++ wxWidgets cross-platform GUI library
 Group:          System/Libraries
 
-%description -n libwxlua_debugger-wx31-%{sover}
+%description -n libwxlua_debugger-wx%{wx_version}-%{sover}
 wxLua is a set of bindings to the C++ wxWidgets cross-platform GUI library for
 the Lua programming language. Nearly all of the functionality of wxWidgets is
 exposed to Lua, meaning that your programs can have windows, dialogs, menus,
@@ -131,7 +133,8 @@ cmake .. \
 	-DwxWidgets_COMPONENTS="%{binds}" \
 	-DwxLuaBind_COMPONENTS="%{binds}" \
 	-DCMAKE_BUILD_TYPE=RelWithDebInfo \
-	-DCMAKE_INSTALL_PREFIX=%{_prefix}
+	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
+	-DCMAKE_SKIP_RPATH=TRUE
 
 pushd modules/luamodule
 make %{?_smp_mflags}
@@ -162,14 +165,14 @@ mv %{buildroot}%{_libdir}/libwx.so %{buildroot}%{_libdir}/lua/%{lua_version}/wx.
 
 sed 's-#!/usr/bin/env lua-#!/usr/bin/lua%{lua_version}-g' -i %{buildroot}%{_datadir}/wxlua/apps/wxluafreeze/*
 
-%post -n libwxlua-wx31-%{sover} -p /sbin/ldconfig
-%postun -n libwxlua-wx31-%{sover} -p /sbin/ldconfig
-%post -n libwxlua_bind-wx31-%{sover} -p /sbin/ldconfig
-%postun -n libwxlua_bind-wx31-%{sover} -p /sbin/ldconfig
-%post -n libwxlua_debug-wx31-%{sover} -p /sbin/ldconfig
-%postun -n libwxlua_debug-wx31-%{sover} -p /sbin/ldconfig
-%post -n libwxlua_debugger-wx31-%{sover} -p /sbin/ldconfig
-%postun -n libwxlua_debugger-wx31-%{sover} -p /sbin/ldconfig
+%post -n libwxlua-wx%{wx_version}-%{sover} -p /sbin/ldconfig
+%postun -n libwxlua-wx%{wx_version}-%{sover} -p /sbin/ldconfig
+%post -n libwxlua_bind-wx%{wx_version}-%{sover} -p /sbin/ldconfig
+%postun -n libwxlua_bind-wx%{wx_version}-%{sover} -p /sbin/ldconfig
+%post -n libwxlua_debug-wx%{wx_version}-%{sover} -p /sbin/ldconfig
+%postun -n libwxlua_debug-wx%{wx_version}-%{sover} -p /sbin/ldconfig
+%post -n libwxlua_debugger-wx%{wx_version}-%{sover} -p /sbin/ldconfig
+%postun -n libwxlua_debugger-wx%{wx_version}-%{sover} -p /sbin/ldconfig
 
 %files
 %{_bindir}/wxLua
@@ -182,17 +185,17 @@ sed 's-#!/usr/bin/env lua-#!/usr/bin/lua%{lua_version}-g' -i %{buildroot}%{_data
 %files -n lib%{name}
 %{_libdir}/lua/%{lua_version}/wx.so
 
-%files -n libwxlua-wx31-%{sover}
-%{_libdir}/libwxlua-wx31*.so
+%files -n libwxlua-wx%{wx_version}-%{sover}
+%{_libdir}/libwxlua-wx%{wx_version}*.so
 
-%files -n libwxlua_bind-wx31-%{sover}
-%{_libdir}/libwxlua_bind-wx31*.so
+%files -n libwxlua_bind-wx%{wx_version}-%{sover}
+%{_libdir}/libwxlua_bind-wx%{wx_version}*.so
 
-%files -n libwxlua_debug-wx31-%{sover}
-%{_libdir}/libwxlua_debug-wx31*.so
+%files -n libwxlua_debug-wx%{wx_version}-%{sover}
+%{_libdir}/libwxlua_debug-wx%{wx_version}*.so
 
-%files -n libwxlua_debugger-wx31-%{sover}
-%{_libdir}/libwxlua_debugger-wx31*.so
+%files -n libwxlua_debugger-wx%{wx_version}-%{sover}
+%{_libdir}/libwxlua_debugger-wx%{wx_version}*.so
 
 %files devel
 %{_includedir}/wxlua/

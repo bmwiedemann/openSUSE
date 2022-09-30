@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Thu Sep 29 08:12:01 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add a rpmlintrc file to ignore false positive in 15.4
+
+-------------------------------------------------------------------
+Mon Aug 29 08:10:27 UTC 2022 - christophe@krop.fr
+
+- Update to version 3.1.0.0+42:
+  * Improve build against wxWidgets 3.2.0-rc1
+  * Updated luaopen_wx to always initialize.
+  * Fixed wxBitmap error.
+  * Missing methods in wxGraphicsPenInfo are implemented
+  * wxMouseEvent methods are updated for wxWidgets 3.1
+  * cmake: add imm32 to MINGW_EXTRA_LIBS
+  * wxLuaDataObjectSimple::GetDataHere allows wxMemoryBuffer as
+    a return value
+  * wxLuaDataObjectSimple::GetDataHere calls the derived method
+    incorrectly
+  * DataViewCtrl: ExpandChildren method added for 3.1.5 and above
+  * wxPen::SetDashes(), GetDashes() are implemented
+  * Updated cmake config to better recognize GTK3 libraries
+  * Updated wx-config targets Makefile to fix reference to Lua
+    folder
+  * Updated Makefile to fix reference to Lua folder
+  * wxYELLOW etc. and wxTheColourDatabase are implemented
+  * wxEVT_SEARCH and wxEVT_SEARCH_CANCEL require >=3.1.1
+- set CMAKE_SKIP_RPATH. wxlua writes incorrect RUNPATH to
+  libraries and executables.
+
+-------------------------------------------------------------------
 Mon Apr 25 10:55:05 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop cppcheck Buildrequires: seems not to be used.

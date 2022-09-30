@@ -2,7 +2,7 @@
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://github.com/pkulchenko/wxlua.git</param>
-    <param name="revision">a30b837fac5a812a51c57b6088551aea75482a67</param>
+    <param name="revision">376d531a7f7b031222372b2cbe0c482d1c5ac4f9</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>
