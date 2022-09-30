@@ -28,6 +28,8 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Other
 URL:            https://wiki.gnome.org/Projects/Tracker
 Source0:        https://download.gnome.org/sources/tracker/3.4/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM tracker-no-egrep.patch -- Replace usage of egrep with grep -E
+Patch0:         tracker-no-egrep.patch
 
 BuildRequires:  asciidoc
 BuildRequires:  fdupes

@@ -1,0 +1,21 @@
+diff -Nur orig-tracker-3.4.0/src/tracker/bash-completion/tracker tracker-3.4.0/src/tracker/bash-completion/tracker
+--- orig-tracker-3.4.0/src/tracker/bash-completion/tracker	2022-09-17 23:23:06.000000000 +0200
++++ tracker-3.4.0/src/tracker/bash-completion/tracker	2022-09-23 15:37:54.149593212 +0200
+@@ -8,7 +8,7 @@
+     cur=${COMP_WORDS[COMP_CWORD]}
+ 
+     if [[ $cword == 1 ]]; then
+-	possible=`tracker3 | egrep "   [a-z].*   " | awk '{ print ($1) }' | sort | uniq`
++	possible=`tracker3 | grep -E "   [a-z].*   " | awk '{ print ($1) }' | sort | uniq`
+ 	COMPREPLY=( $(compgen -W "$possible" -- $cur) )
+ 	return 0;
+     fi
+@@ -37,7 +37,7 @@
+     fi
+ 
+     if [[ -z $cur ]] || [[ $cur == -* ]]; then
+-	possible=`${words[0]} ${words[1]} -h | egrep "^ *-" | sed "s/^ *//" | sed "s/  [^-].*//" | sed "s/,/\n/g" | sed "s/=.*//"`
++	possible=`${words[0]} ${words[1]} -h | grep -E "^ *-" | sed "s/^ *//" | sed "s/  [^-].*//" | sed "s/,/\n/g" | sed "s/=.*//"`
+ 	COMPREPLY=( $(compgen -W "$possible" -- $cur) )
+     fi
+ }
