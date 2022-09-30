@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Sep 29 14:42:56 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Release version 0.15.0
+  * Update .gitignore
+  * Remove old interpreter versions
+  * Merge pull request #118 from lephe/master
+  * Improve support for nested media queries
+  * Merge pull request #117 from lephe/master
+  * Basic support for CSS4 variables
+  * Merge pull request #109 from saschpe/rel
+
+- Release version 0.14.0
+  * Merge pull request #108 from saschpe/pycharm
+  * Version a PyCharm project configuration
+  * Update .gitignore rules based on Github Boilerplate
+  * Merge pull request #107 from saschpe/cleanups
+  * Add Python-3.7 to supported versions
+  * Improve minor style issues
+  * Merge pull request #105 from tirkarthi/fix-collections-import
+  * Import ABC from collections.abc instead of collections for Python 3.9 compatibility.
+  * Merge pull request #99 from hroncok/rpartition
+  * Merge pull request #98 from movermeyer/fix_badges
+  * Merge pull request #100 from cladmi/pr/fix/readme/command
+  * README.rst: fix the outdated lesscpy usage
+  * Apply PEP-8 consistently
+  * Allow to run tests from versioned folder
+  * Switched broken pypip.in badges to shields.io
+  * Merge pull request #96 from sambler/pyversions
+  * Merge pull request #97 from sambler/pysix
+  * adjust tox.ini to prevent errors from missing interpreters
+  * Make use of six.string_types consistent
+  * update python versions 2.6 was EOL in 2013 3.3 was EOL in 2017-09 add 3.6, pypy and pypy3
+
+-------------------------------------------------------------------
 Wed Apr 15 12:40:52 UTC 2020 - pgajdos@suse.com
 
 - version update to 0.14.0

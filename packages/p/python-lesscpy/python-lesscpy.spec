@@ -1,7 +1,7 @@
 #
 # spec file for package python-lesscpy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-lesscpy
-Version:        0.14.0
+Version:        0.15.0
 Release:        0
 Summary:        Lesscss compiler
 License:        MIT
@@ -34,7 +34,7 @@ Requires:       python-ply
 Requires:       python-setuptools
 Requires:       python-six
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
