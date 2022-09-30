@@ -146,6 +146,7 @@ Patch2:         add-gen-p5-chip-pci-id-to-ini-file.patch
 Patch3:         openmpi_disable_opal_fifo_test_issue5470.patch
 Patch4:         Fix-error-with-stricter-quoting-requirements-of-autoconf-2.70.patch
 Patch5:         Always-include-the-stddef.h-header.patch
+Patch6:         btl-openib-Add-support-for-newer-hardware.patch
 Provides:       mpi
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
@@ -411,6 +412,7 @@ EOF
 %patch3 -p1
 %patch4
 %patch5
+%patch6
 # Live patch the VERSION file
 sed -i -e 's/^greek=.*$/greek=%{git_ver}/' -e 's/^repo_rev=.*$/repo_rev=%{version}%{git_ver}/' \
        -e 's/^date=.*$/date="OpenMPI %{version} Distribution for SUSE"/' VERSION

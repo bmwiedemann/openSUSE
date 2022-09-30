@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 13 13:51:49 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Add patch btl-openib-Add-support-for-newer-hardware.patch to support
+  newer RDMA hardware (ConnectX 4 and 5 VF, ConnectX6 PF + VF and Broadcom adapters)
+
+-------------------------------------------------------------------
 Mon Jun 13 06:38:32 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Backport upstream patches to fix compilation with autoconf >= 2.70
