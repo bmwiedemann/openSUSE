@@ -20,7 +20,7 @@
 %global __requires_exclude qmlimport\\((KStarsLiteEnums|TelescopeLiteEnums).*
 %bcond_without lang
 Name:           kstars
-Version:        3.6.0
+Version:        3.6.1
 Release:        0
 Summary:        Desktop Planetarium
 # Note for legal: the Apache licensed files in the tarball are for the
@@ -33,6 +33,8 @@ URL:            https://edu.kde.org/kstars/
 Source0:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz
 Source1:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
+# PATCH-FIX-UPSTREAM https://invent.kde.org/education/kstars/-/merge_requests/758
+Patch0:         lower_qt_version.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
@@ -84,8 +86,13 @@ simulation of the night sky, for any time and location on Earth.
 
 %prep
 %autosetup -p1
-# remove Catalan translations due to https://invent.kde.org/education/kstars/-/issues/186
-rm -r po/ca po/ca@valencia
+# remove Catalan docs due to https://invent.kde.org/education/kstars/-/issues/186
+%if %{pkg_vcmp cmake(KF5DocTools) < 5.92}
+rm -r po/ca/docs po/ca@valencia/docs
+%endif
+
+# remove FR docs due to https://bugs.kde.org/show_bug.cgi?id=459821
+rm -r po/fr/docs
 
 %build
 %ifarch ppc ppc64
