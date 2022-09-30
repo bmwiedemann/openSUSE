@@ -1,7 +1,7 @@
 #
 # spec file for package python-jsbeautifier
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-jsbeautifier
-Version:        1.11.0
+Version:        1.14.6
 Release:        0
 Summary:        JavaScript unobfuscator and beautifier
 License:        MIT
@@ -33,7 +33,7 @@ Requires:       python-EditorConfig >= 0.12.2
 Requires:       python-setuptools
 Requires:       python-six >= 1.13.0
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module EditorConfig >= 0.12.2}
