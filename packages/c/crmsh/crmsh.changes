@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Sep 28 08:53:06 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.1+20220928.3480aa0d:
+  * Dev: behave: append more functional test for sbd and watchdog
+
+-------------------------------------------------------------------
+Wed Sep 28 08:19:45 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.1+20220928.ef80f673:
+  * Dev: unittest: Adjust unit test based on previous changes
+  * Fix: sbd: Ask if overwrite when given sbd device on interactive mode(bsc#1201428)
+
+-------------------------------------------------------------------
+Wed Sep 28 06:26:30 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.1+20220928.ea5c5190:
+  * Dev: history: print necessary log messages when collecting report
+  * Dev: report: make sure 'crm -d report' could increase the verbosity
+
+-------------------------------------------------------------------
 Wed Sep 28 00:47:23 UTC 2022 - XLiang@suse.com
 
 - Update to version 4.4.1+20220928.ded85d0a:
