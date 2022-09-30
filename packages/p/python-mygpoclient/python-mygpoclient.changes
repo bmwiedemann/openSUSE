@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 29 17:03:16 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to Version 1.9
+  * Merge pull request #15 from maxolasersquad/master
+  * Merge pull request #16 from gpodder/ci-remove-travis
+  * replace travis-ci with github actions and appveyor
+  * Resolved PEP8 linting problems
+  * use == for comparison with literal
+
+-------------------------------------------------------------------
 Mon May 25 06:50:57 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
