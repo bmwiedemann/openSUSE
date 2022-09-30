@@ -1473,4 +1473,11 @@ is not needed.
     <user>RBrownFactory</user>
     <comment>Add distrobox to microos desktop group</comment>
   </revision>
+  <revision rev="206" vrev="204">
+    <srcmd5>77e402c2bd69962b22f5840f44e35997</srcmd5>
+    <version>unknown</version>
+    <time>1664532369</time>
+    <user>RBrownFactory</user>
+    <comment>Oops, distrobox isn't ready for that yet</comment>
+  </revision>
 </revisionlist>
