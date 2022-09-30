@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jul  6 12:29:12 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Enable libfabric on all arch
+- Switch to external libevent for all flavors
+- Switch to external hwloc and PMIx for HPC builds
+- Add patches to fix compilation against hwloc v2.x
+  - Revert-hwloc-bring-back-the-configure-error-when-external-hwloc-is-2.0.patch
+  - hwloc-fix-hwloc-shmem.h-in-the-external-case.patch
+  - hwloc-updates-for-hwloc-2.0.x-API.patch
+- Backport upstream patches for external PMIx support
+  - pmix-pmix2x-Fix-the-PMIx-discovery-logic.patch
+  - pmix-Fix-detection-of-Externally-built-PMIx.patch
+- Update rpmlintrc file to ignore missing libname suffix in libopenmpi packages
+- Add patch btl-openib-Add-support-for-newer-hardware.patch to support
+  newer RDMA hardware (ConnectX 4 and 5 VF, ConnectX6 PF + VF and Broadcom adapters)
+
+-------------------------------------------------------------------
 Mon Jun 13 06:38:32 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Backport upstream patchs to fix compilation with autoconf >= 2.70 and GCC12

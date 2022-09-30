@@ -3,3 +3,4 @@ from Config import *
 
 addFilter("openmpi3-libs.* rpath-in-buildconfig")
 addFilter("openmpi3-devel.* shared-lib-calls-exit")
+addFilter("libopenmpi.* shlib-policy-name-error")
