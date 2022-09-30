@@ -1,7 +1,7 @@
 #
 # spec file for package jconvolver
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           jconvolver
-Version:        1.0.3
+Version:        1.1.0
 Release:        0
 Summary:        Convolution engine for JACK
 License:        GPL-2.0-or-later
@@ -50,6 +50,7 @@ Main features:
 Summary:        Configuration examples for jconvolver
 Group:          Productivity/Multimedia/Sound/Utilities
 Requires:       %{name}
+BuildArch:      noarch
 
 %description examples
 This package contains configuration examples for jconvolver, a convolution

@@ -1,8 +1,8 @@
-diff -ru jconvolver-1.0.3.orig/source/Makefile jconvolver-1.0.3/source/Makefile
---- jconvolver-1.0.3.orig/source/Makefile	2018-11-24 18:30:19.000000000 +0100
-+++ jconvolver-1.0.3/source/Makefile	2018-12-06 01:13:16.839661858 +0100
+diff -ru jconvolver-1.1.0.orig/source/Makefile jconvolver-1.1.0/source/Makefile
+--- jconvolver-1.1.0.orig/source/Makefile	2021-06-29 10:43:51.000000000 +0200
++++ jconvolver-1.1.0/source/Makefile	2022-09-29 21:27:18.754266913 +0200
 @@ -25,14 +25,13 @@
- VERSION = 1.0.3
+ VERSION = 1.1.0
  CPPFLAGS += -MMD -MP -DVERSION=\"$(VERSION)\"
  CXXFLAGS += -O2 -Wall
 -CXXFLAGS += -march=native

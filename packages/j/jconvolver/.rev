@@ -29,4 +29,14 @@
 </comment>
     <requestid>655454</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>45358bd80df648f3438c5cdd4cf45465</srcmd5>
+    <version>1.1.0</version>
+    <time>1664553485</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 1.1.0
+  * No changelog
+- Refresh jconvolver-build-fixes.diff</comment>
+    <requestid>1007096</requestid>
+  </revision>
 </revisionlist>
