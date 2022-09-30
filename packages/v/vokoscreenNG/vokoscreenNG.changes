@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep 29 15:31:52 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 3.4.0
+  * Add a dialog when no codecs are found
+  * Remove email report option
+  * Refactor magnifier for multi-screen setups
+  * Improved logging
+  * Various other bugfixes
+  * Translation updates
+
+-------------------------------------------------------------------
 Fri Jun 24 13:08:27 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to 3.3.0
