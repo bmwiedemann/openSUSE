@@ -15,4 +15,12 @@
     <comment>- Use python_alternative for all shipped scripts instead of python3_only.</comment>
     <requestid>867616</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8edc207afcb7ae0abe9838369efe8bf6</srcmd5>
+    <version>1.1.0</version>
+    <time>1664553478</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1007082</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-jfscripts
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-jfscripts
-Version:        0.5.0
+Version:        1.1.0
 Release:        0
 Summary:        A collection of various tools written by Josef Friedrich
 License:        MIT
@@ -35,7 +35,7 @@ Requires:       python-sphinx-argparse
 Requires:       python-termcolor
 BuildArch:      noarch
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 %python_subpackages
 
 %description
