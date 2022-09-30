@@ -24,8 +24,8 @@
 # % define build_static_devel 1
 
 %define pname mpich
-%define vers  4.0.1
-%define _vers 4_0_1
+%define vers  4.0.2
+%define _vers 4_0_2
 
 %if "%{flavor}" == ""
 ExclusiveArch:  do_not_build
@@ -212,8 +212,8 @@ ExclusiveArch:  do_not_build
 %if "%{build_flavor}" == "ucx"
 %ifarch %ix86 %arm
 # UCX is not available on 32b system so silently fallback
-# on ch3:nemesis which works with verbs
-%define build_flavor verbs
+# on ch4:ofi
+%define build_flavor ofi
 %endif
 %endif
 
@@ -275,6 +275,7 @@ BuildRequires:  libnuma-devel
 BuildRequires:  libtool
 BuildRequires:  libtool
 BuildRequires:  mpi-selector
+BuildRequires:  pmix-devel
 BuildRequires:  python3-devel
 BuildRequires:  sysfsutils
 
@@ -289,10 +290,6 @@ BuildRequires:  libucs-devel >= 1.7.0
 BuildRequires:  libuct-devel >= 1.7.0
 # UCX is only available for 64b archs
 ExcludeArch:    %ix86 %arm
-%endif
-%if "%{build_flavor}" == "verbs"
-BuildRequires:  libibverbs-devel
-BuildRequires:  librdmacm-devel
 %endif
 
 Provides:       mpi
@@ -408,7 +405,7 @@ export FFLAGS="-fallow-argument-mismatch $FFLAGS"
 export FCFLAGS="-fallow-argument-mismatch $FCFLAGS"
 %endif
 
-./autogen.sh --without-ucx --without-ofi --without-json
+./autogen.sh --without-ucx --without-ofi --without-json --without-hwloc
 %{?with_hpc:%hpc_debug}
 %if %{with hpc}
 %{hpc_setup}
@@ -427,6 +424,8 @@ export FCFLAGS="-fallow-argument-mismatch $FCFLAGS"
     --docdir=%{_datadir}/doc/%{name} \
     --disable-rpath      \
     --disable-wrapper-rpath      \
+    --with-hwloc \
+    --with-pmix \
 %if "%{build_flavor}" == "ofi"
    --with-ofi \
    --with-device=ch4:ofi \
@@ -434,9 +433,6 @@ export FCFLAGS="-fallow-argument-mismatch $FCFLAGS"
 %if "%{build_flavor}" == "ucx"
    --with-ucx \
    --with-device=ch4:ucx \
-%endif
-%if "%{build_flavor}" == "verbs"
-   --with-device=ch3:nemesis \
 %endif
 	CFLAGS="%optflags -fPIC"			\
 	CXXLAGS="%optflags -fPIC"			\

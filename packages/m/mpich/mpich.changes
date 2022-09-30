@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Sep 29 15:32:23 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to 4.0.2
+  - Fix support for dynamic process functionality with PMI2 clients
+  - Fix non-zero appnum bug in PMI2 server in Hydra
+  - Fix MPI_Op support for types created with MPI_Type_create_f90_xxx
+  - Fix Level Zero properties initialization in MPL.
+  - Use standard names for CPU affinity functions with POSIX
+    threads.
+  - Add elemental to eq/neq operators in Fortran 2008 binding
+
+-------------------------------------------------------------------
+Wed Jul  6 12:53:04 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Switch to external hwloc, and PMIx
+- On 32b systems, use ofi instead of verbs flavor by default
+
+-------------------------------------------------------------------
 Mon Mar  7 12:50:38 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to mpich 4.0.1 (bsc#1194369)
