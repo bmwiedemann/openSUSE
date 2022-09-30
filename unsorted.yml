@@ -2986,6 +2986,7 @@ unsorted:
   - distribution-logos-openSUSE-MicroOS: [i586] 
   - distribution-registry 
   - distrobox 
+  - distrobox-bash-completion 
   - dita 
   - diy-devel: [x86_64] 
   - diy-mpich-devel: [x86_64] 
@@ -7264,12 +7265,12 @@ unsorted:
   - imb-openmpi2 
   - imb-openmpi3 
   - imb-openmpi4 
-  - imb_2021_2-gnu-mpich-hpc 
-  - imb_2021_2-gnu-mvapich2-hpc 
-  - imb_2021_2-gnu-openmpi1-hpc 
-  - imb_2021_2-gnu-openmpi2-hpc 
-  - imb_2021_2-gnu-openmpi3-hpc 
-  - imb_2021_2-gnu-openmpi4-hpc 
+  - imb_2021_3-gnu-mpich-hpc 
+  - imb_2021_3-gnu-mvapich2-hpc 
+  - imb_2021_3-gnu-openmpi1-hpc 
+  - imb_2021_3-gnu-openmpi2-hpc 
+  - imb_2021_3-gnu-openmpi3-hpc 
+  - imb_2021_3-gnu-openmpi4-hpc 
   - imgp 
   - imgp-bash-completion 
   - imgp-fish-completion 
@@ -7855,6 +7856,7 @@ unsorted:
   - jlatexmath 
   - jlatexmath-fop 
   - jlatexmath-javadoc 
+  - jless 
   - jlex 
   - jlfgr 
   - jline 
@@ -14992,10 +14994,10 @@ unsorted:
   - libwx_qtu_xrc-suse8_0_0 
   - libwxcode_gtk2u_wxsqlite3-3_2-0 
   - libwxlua 
-  - libwxlua-wx31-3_1_0_0 
-  - libwxlua_bind-wx31-3_1_0_0 
-  - libwxlua_debug-wx31-3_1_0_0 
-  - libwxlua_debugger-wx31-3_1_0_0 
+  - libwxlua-wx32-3_1_0_0 
+  - libwxlua_bind-wx32-3_1_0_0 
+  - libwxlua_debug-wx32-3_1_0_0 
+  - libwxlua_debugger-wx32-3_1_0_0 
   - libwxsvg-devel 
   - libwxsvg3 
   - libx86-1 
@@ -16828,14 +16830,14 @@ unsorted:
   - mpich-ofi-gnu-hpc-devel 
   - mpich-ofi-gnu-hpc-devel-static 
   - mpich-ofi-gnu-hpc-macros-devel 
-  - mpich-ofi_4_0_1-gnu-hpc 
-  - mpich-ofi_4_0_1-gnu-hpc-devel 
-  - mpich-ofi_4_0_1-gnu-hpc-devel-static 
-  - mpich-ofi_4_0_1-gnu-hpc-macros-devel 
-  - mpich_4_0_1-gnu-hpc 
-  - mpich_4_0_1-gnu-hpc-devel 
-  - mpich_4_0_1-gnu-hpc-devel-static 
-  - mpich_4_0_1-gnu-hpc-macros-devel 
+  - mpich-ofi_4_0_2-gnu-hpc 
+  - mpich-ofi_4_0_2-gnu-hpc-devel 
+  - mpich-ofi_4_0_2-gnu-hpc-devel-static 
+  - mpich-ofi_4_0_2-gnu-hpc-macros-devel 
+  - mpich_4_0_2-gnu-hpc 
+  - mpich_4_0_2-gnu-hpc-devel 
+  - mpich_4_0_2-gnu-hpc-devel-static 
+  - mpich_4_0_2-gnu-hpc-macros-devel 
   - mpitests 
   - mpitests-mpich 
   - mpitests-mpich-gnu-hpc 
@@ -22045,6 +22047,7 @@ unsorted:
   - python310-Flask-HTTPAuth 
   - python310-Flask-Login 
   - python310-Flask-Mail 
+  - python310-Flask-Mailman 
   - python310-Flask-Migrate 
   - python310-Flask-Paranoid 
   - python310-Flask-Principal 
@@ -22343,6 +22346,7 @@ unsorted:
   - python310-asv 
   - python310-async_generator 
   - python310-async_timeout: [i586] 
+  - python310-asyncclick 
   - python310-asyncpg 
   - python310-asyncssh 
   - python310-atlassian-python-api 
@@ -24218,6 +24222,7 @@ unsorted:
   - python310-pyhcl 
   - python310-pyhibp 
   - python310-pyicumessageformat 
+  - python310-pyinstaller-hooks-contrib 
   - python310-pyipp 
   - python310-pyjavaproperties 
   - python310-pyjnius 
@@ -25266,6 +25271,7 @@ unsorted:
   - python38-Flask-HTTPAuth 
   - python38-Flask-Login 
   - python38-Flask-Mail 
+  - python38-Flask-Mailman 
   - python38-Flask-Migrate 
   - python38-Flask-Paranoid 
   - python38-Flask-Principal 
@@ -25575,6 +25581,7 @@ unsorted:
   - python38-asv 
   - python38-async_generator 
   - python38-async_timeout 
+  - python38-asyncclick 
   - python38-asyncpg 
   - python38-asyncssh 
   - python38-atlassian-python-api 
@@ -27523,6 +27530,7 @@ unsorted:
   - python38-pyhibp 
   - python38-pyicumessageformat 
   - python38-pyinotify 
+  - python38-pyinstaller-hooks-contrib 
   - python38-pyipp 
   - python38-pyjavaproperties 
   - python38-pyjnius 
@@ -28599,6 +28607,7 @@ unsorted:
   - python39-Flask-HTTPAuth 
   - python39-Flask-Login 
   - python39-Flask-Mail 
+  - python39-Flask-Mailman 
   - python39-Flask-Migrate 
   - python39-Flask-Paranoid 
   - python39-Flask-Principal 
@@ -28908,6 +28917,7 @@ unsorted:
   - python39-asv 
   - python39-async_generator 
   - python39-async_timeout 
+  - python39-asyncclick 
   - python39-asyncpg 
   - python39-asyncssh 
   - python39-atlassian-python-api 
@@ -30856,6 +30866,7 @@ unsorted:
   - python39-pyhibp 
   - python39-pyicumessageformat 
   - python39-pyinotify 
+  - python39-pyinstaller-hooks-contrib 
   - python39-pyipp 
   - python39-pyjavaproperties 
   - python39-pyjnius 
@@ -32869,9 +32880,6 @@ unsorted:
   - ruby3.1-doc 
   - ruby3.1-doc-ri 
   - ruby3.1-rubygem-grpc 
-  - ruby3.1-rubygem-omniauth-github 
-  - ruby3.1-rubygem-omniauth-google-oauth2 
-  - ruby3.1-rubygem-sinatra 
   - rubygem-docker-api 
   - rubygem-docker-api-doc 
   - rubygem-docker-api-testsuite 
