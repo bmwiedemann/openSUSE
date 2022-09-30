@@ -17,7 +17,7 @@
 
 
 Name:           kcov
-Version:        38
+Version:        40
 Release:        0
 Summary:        Code coverage tool without special compilation options
 License:        GPL-2.0-only
@@ -25,14 +25,17 @@ Group:          Development/Tools/Other
 URL:            https://github.com/SimonKagstrom/kcov
 Source0:        https://github.com/SimonKagstrom/kcov/archive/v%{version}.tar.gz
 Patch0:         link_order.patch
+# PATCH-FIX-UPSTREAM kcov-40-binutils-2.39.patch -- Fix build with binutils 2.39 (gh#SimonKagstrom#381, gh#SimonKagstrom!383)
+Patch1:         kcov-40-binutils-2.39.patch
 BuildRequires:  binutils-devel
+BuildRequires:  c++_compiler
 BuildRequires:  cmake
-BuildRequires:  gcc-c++
-BuildRequires:  libcurl-devel
-BuildRequires:  libdw-devel
-BuildRequires:  libelf-devel
-BuildRequires:  python3
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(libdw)
+BuildRequires:  pkgconfig(libelf)
+BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(zlib)
 ExcludeArch:    s390x
 
 %description
@@ -42,25 +45,24 @@ without special command-line arguments, and continuously produces output from
 long-running applications.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 # remove LLDB headers bundled for MacOS
 rm -frv external/
 
 %build
 %cmake
-%make_build
+%cmake_build
 
 %install
-cd build
-%make_install
+%cmake_install
+# ignore ChangeLog and COPYING*, they are handled with doc and license macros
+rm -r %{buildroot}%{_datadir}/doc/kcov
 
 %files
-%doc ChangeLog README
+%doc ChangeLog README.md
 %license COPYING*
-%{_bindir}/*
-%{_mandir}/man1/*
-# ignore ChangeLog and COPYING* files from install
-%exclude %{_datadir}/doc/kcov
+%{_bindir}/kcov
+%{_bindir}/kcov-system-daemon
+%{_mandir}/man1/kcov.1%{?ext_man}
 
 %changelog
