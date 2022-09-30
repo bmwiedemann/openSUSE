@@ -19,10 +19,12 @@ wget -c https://github.com/vector-im/element-web/archive/v${version}.tar.gz -O e
 tar xzvf element-web-${version}.tar.gz
 cd element-web-${version}
 
+changes=$(grep "^=============" -B10000 -m2 CHANGELOG.md | head -n -3 | tail -n +4)
+
 echo 'yarn-offline-mirror "./npm-packages-offline-cache"' > .yarnrc
 yarn cache clean
 rm -rf node_modules/
-yarn install --pure-lockfile || : # this will download tha packages into the offline cache
+yarn install --pure-lockfile --ignore-engines || : # this will download tha packages into the offline cache
 
 # download some additional dependencie that slips through this earlier method
 cd ./npm-packages-offline-cache/
@@ -57,6 +59,8 @@ echo rm -rf "$tmpdir"
 echo -e "\n\nDONE creating npm dependency offline cache file 'npm-packages-offline-cache.tar.gz'"
 
 
+read -p "Write changes?"
+osc vc -m "Version ${version}\n${changes}" element-web.changes
 
 #DIST_VERSION=$version ./scripts/package.sh
 #
