@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 29 15:42:07 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to 4.5.0-17 (jsc#PED-919)
+  - No release notes available
+- Drop Do-not-check-if-CPU-is-RO-compliant-at-compile-time.patch
+  as it was merged upstream
+
+-------------------------------------------------------------------
 Tue Aug 24 07:37:12 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to 4.5.0-2 (jsc#SLE-19251)

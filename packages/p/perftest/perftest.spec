@@ -1,7 +1,7 @@
 #
 # spec file for package perftest
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define extra_version 0.2
+%define extra_version 0.17
 Name:           perftest
 Version:        4.5
 Release:        0
@@ -26,7 +26,6 @@ Group:          Productivity/Networking/Diagnostic
 URL:            https://github.com/linux-rdma/perftest
 Source0:        %{name}-%{version}%{extra_version}.tar.gz
 Patch4:         perftest-armv6.patch
-Patch5:         Do-not-check-if-CPU-is-RO-compliant-at-compile-time.patch
 # For transition to rdma-core make sure the new packages are selected
 # Once the transition is made the version check can be removed
 BuildRequires:  autoconf
@@ -43,7 +42,6 @@ gen2 uverbs microbenchmarks
 %prep
 %setup -q -n %{name}-%{version}%{extra_version}
 %patch4 -p1
-%patch5
 
 %build
 ./autogen.sh
