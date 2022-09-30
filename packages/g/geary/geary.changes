@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Sep 30 08:52:41 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.0:
+  * Improved images management
+  * Thunderbird auto configuration support
+  * Add XDG background portal support
+  * Numerous bug fixes and user interface improvements
+  * client: Fix setting service provider
+  * engine: Cancel any remote folders update before marking a
+    message
+  * components: Rework adapative layout by removing HdySwipeGroup
+  * ui: Use a thiner progress in message header
+  * Updated translations.
+- Switch to explicit released tag, now that upstream once again are
+  doing releases.
+
+-------------------------------------------------------------------
 Wed Sep 21 11:41:38 UTC 2022 - bjorn.lie@gmail.com
 
 - Update to version 40.0+155:
