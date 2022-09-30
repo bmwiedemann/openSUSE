@@ -59,13 +59,14 @@ BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  cargo
 BuildRequires:  rust >= 1.47
 BuildRequires:  rust-std-static
+BuildRequires:  rust-cbindgen
 BuildRequires:  git
 BuildRequires:  nasm >= 2.13
 Provides:       web_browser
 Provides:       browser(npapi)
-Version:        2.53.13
+Version:        2.53.14
 Release:        0
-%define releasedate 20220711000000
+%define releasedate 20220929000000
 Summary:        An integrated web browser, composer, mail/news client, and IRC client
 License:        MPL-2.0
 Group:          Productivity/Networking/Web/Browsers
@@ -84,6 +85,7 @@ Patch2:         mozilla-language.patch
 Patch3:         mozilla-ntlm-full-path.patch
 Patch4:         seamonkey-lto.patch
 Patch5:         seamonkey-man-page.patch
+Patch6:         seamonkey-spellcheck.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 PreReq:         /bin/sh coreutils
 Provides:       seamonkey-mail = %{version}
@@ -216,6 +218,10 @@ cp %{SOURCE12} GNUmakefile
 %patch3 -p2
 %patch4 -p1
 %patch5 -p0
+
+if [ $(gcc -dumpversion | awk -F. '{print $1}') -ge 12 ]; then
+%patch6 -p1
+fi
 
 cat << EOF > .mozconfig
 mk_add_options MOZILLA_OFFICIAL=1

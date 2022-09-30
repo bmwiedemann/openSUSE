@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Sep 29 12:14:18 UTC 2022 - Tristan Miller <psychonaut@nothingisreal.com>
+
+- update to SeaMonkey 2.53.14
+  * Updates to the following DOM HTML element interfaces: Embed,
+    Object, Anchor, Area, Button, Frame, Canvas, IFrame, Link, Image,
+    MenuItem, TextArea, Source, Select, Option, Script and
+    Html. Please test add-ons.
+  * Continue the switch from Python 2 to Python 3 in the build system.
+  * Add ESR 102 links to debugQA bug 1779028.
+  * Remove about plugins from help menu bug 1779031.
+  * Dead links in cs_nav_prefs_advanced.xhtml [en-US] bug 1783558.
+  * Dead links in cs_nav_prefs_advanced.xhtml bug 1786030.
+  * Remove obsolete chat services from SeaMonkey address book bug
+    1779034.
+  * Address Book: "Get Map" button is not shown for home addresses bug
+    1779319.
+  * Added compatibility for rust 1.63
+  * SeaMonkey 2.53.14 uses the same backend as Firefox and contains
+    the relevant Firefox 60.8 security fixes.
+  * SeaMonkey 2.53.14 shares most parts of the mail and news code with
+    Thunderbird. Please read the Thunderbird 60.8.0 release notes for
+    specific security fixes in this release.
+  * Additional important security fixes up to Current Firefox 91.11
+    and Thunderbird 91.11 ESR plus many enhancements have been
+    backported. We will continue to enhance SeaMonkey security in
+    subsequent 2.53.x beta and release versions as fast as we are able
+    to.
+- add seamonkey-spellcheck.patch to work around a circular dependency
+  issue when compiling with GCC 12
+- requested inclusion in Leap 15.4 and 15.3:
+  https://bugzilla.opensuse.org/show_bug.cgi?id=1203916
+
+-------------------------------------------------------------------
 Mon Jul 11 11:43:54 UTC 2022 - Tristan Miller <psychonaut@nothingisreal.com>
 
 - update to SeaMonkey 2.53.13
