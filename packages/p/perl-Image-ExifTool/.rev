@@ -404,4 +404,12 @@ See https://bugzilla.opensuse.org/show_bug.cgi?id=1195398
 </comment>
     <requestid>986550</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>de6ca856b979b1e43cf91e9a6d39debe</srcmd5>
+    <version>12.45</version>
+    <time>1664553515</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1007185</requestid>
+  </revision>
 </revisionlist>

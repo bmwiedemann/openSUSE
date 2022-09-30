@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Sep 30 07:26:22 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 12.45:
+  * Added new IPTC Video Metadata version 1.3 tags
+  * Added a couple of new Canon lenses (thanks Norbert Wasser)
+  * Added a new Sony LensType (thanks Jos Roost)
+  * Added known Unknown value for IPTC ChromaticityColorant (thanks Herb)
+  * Added new Nikon WhiteBalanceFineTune tag (thanks Milos Komarcevic)
+  * Extract the raw thermal data from all frames of a SEQ file when -ee2 is used
+  * Decode individual tags in QuickTime ColorRepresentation
+  * Decode a new Matroska tag
+  * Improved verbose "nothing changed" messages when writing
+  * Patched -ee option to extract metadata after the first Cluster in MKV videos
+    (previously only -U and -v did this)
+  * Patched to differentiate Java bytecode .class files from Mach-O fat binaries
+  * Patched to avoid "Use of uninitialized value" warning when deleting GPS
+    coordinates via the newly writable Composite tags
+  * Patched to avoid duplicating raw data when writing Sony ARW images where the
+    raw data is double-referenced as both strips and tiles (affects ARW images
+    from some newer models like the ILCE-1 when SonyRawFileType is "Lossless
+    Compressed RAW 2")
+  * Patched to avoid "fixing" the order of IFD entries in TIFF-based RAW files
+    to improve compatibility with some RAW viewers
+  * Minor change to Composite FileNumber to remove "-" when -n is used
+  * Fixed problem extracting some timed metadata when "-api ignoretags=all" was
+    used with "-api requesttags" to request the specific information
+  * Fixed -validate feature to avoid incorrectly warning about non-capitalized
+    boolean values in XMP
+
+-------------------------------------------------------------------
 Mon Jul  4 07:12:23 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 12.42:
