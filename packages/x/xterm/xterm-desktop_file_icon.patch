@@ -2,15 +2,11 @@
 # Parent  fa7b175db269546b9408d1af03d9c04dddbc4d9b
 # use system stock icon for XTerm
 
-diff --git a/xterm.desktop b/xterm.desktop
---- a/xterm.desktop
-+++ b/xterm.desktop
-@@ -33,11 +33,11 @@
- [Desktop Entry]
- Name=XTerm
- #GenericName=Terminal
- Comment=standard terminal emulator for the X window system
- Exec=xterm
+Index: xterm-373/xterm.desktop
+===================================================================
+--- xterm-373.orig/xterm.desktop
++++ xterm-373/xterm.desktop
+@@ -38,7 +38,7 @@ Exec=xterm
  Terminal=false
  Type=Application
  Encoding=UTF-8
@@ -18,3 +14,4 @@ diff --git a/xterm.desktop b/xterm.desktop
 +Icon=terminal
  Categories=System;TerminalEmulator;
  Keywords=shell;prompt;command;commandline;cmd;
+ StartupWMClass=XTerm

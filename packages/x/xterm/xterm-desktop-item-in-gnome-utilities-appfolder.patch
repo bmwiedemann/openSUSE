@@ -3,18 +3,15 @@
 Group the desktop file into the Utilities folder in the GNOME
 shell application overview.
 
-diff --git a/xterm.desktop b/xterm.desktop
---- a/xterm.desktop
-+++ b/xterm.desktop
-@@ -34,10 +34,10 @@
- Name=XTerm
- #GenericName=Terminal
- Comment=standard terminal emulator for the X window system
- Exec=xterm
- Terminal=false
+Index: xterm-373/xterm.desktop
+===================================================================
+--- xterm-373.orig/xterm.desktop
++++ xterm-373/xterm.desktop
+@@ -39,6 +39,6 @@ Terminal=false
  Type=Application
  Encoding=UTF-8
  Icon=terminal
 -Categories=System;TerminalEmulator;
 +Categories=System;TerminalEmulator;X-GNOME-Utilities;
  Keywords=shell;prompt;command;commandline;cmd;
+ StartupWMClass=XTerm

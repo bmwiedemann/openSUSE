@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Tue Sep 27 21:01:45 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 373:
+  * improve rendering of TrueType fonts:
+       + add  resource xftTrackMemUsage to enable/disable a new feature
+         of Xft which improves performance.
+       + add   resources   xftMaxGlyphMemory  and  xftMaxUnrefFonts  to
+         customize memory-usage of Xft and fontconfig.
+       + provide for display of colored fonts in libXft 2.3.5
+       + allow for an extra TrueType font to be specified using the -fa
+         option,  as  an  override to the fontconfig scheme of fallback
+         fonts (request by Nickolas Raymond Kaczynski).
+       + improve caching of TrueType missing-glyph tests.
+       + allow no more than 255 fonts to be scanned for a fontset.
+       + eliminate a table-lookup in findXftGlyph
+  * improvements status-line feature:
+       + save/restore  wraparound  flag  when  updating the status-line
+         (report by Rajeev V. Pillai).
+       + avoid  clearing  the status-line when switching between normal
+         and alternate screens (report by Valtteri Vuorikoski).
+       + remove  adjustment  from  update_winsize leftover from initial
+         work (report by Valtteri Vuorikoski).
+  * modify wcwidth tables to separate Unicode Cf category as formatting
+    control-characters,  to  better match the guideline for unsupported
+    characters (report by Tim Chase).
+  * add configure option --disable-exec-selection.
+  * use mkstemp where mkdtemp is unavailable, when initializing colored
+    cursor.
+  * adapt fixes from OpenBSD xenocara:
+       + improve ifdef's for a few optional features.
+       + correct #ifdef to #if in a few uses of OPT_PRINT_ON_EXIT.
+  * set   StartupWMClass   in   “.desktop”  files,  e.g.,  to  help
+    cinnamon-session  notice  that xterm sets WM_CLASS and use its icon
+    (patch by Richard de Boer).
+  * disable pixel computation when rgb width is greater than 8, to work
+    with depth 30 (patch by Denis Kaganovich).
+  * improve  color-computation  for  SGR  2  faint/dim  (patch by Boian
+    Bonev).  Add  resource  faintIsRelative  to specify if the modified
+    computation  should  be  used (prompted by discussion with Matthieu
+    Herrb).
+  * correct  comparison-length  for environment variable cleanup (patch
+    by Brendan O' Dea).
+  * correct  dsl  capability  for  dec+sl  block in terminfo (report by
+      Rajeev V. Pillai).
+  * improve output formatting by vttests/utf8.pl
+  * repair  test/demo  scripts  still using "vxt-" prefix, some cleanup
+    with shellcheck.
+  * enable page-number for DECXCPR response in VT330.
+  * amend  change for combining characters in patch #371 to limit it to
+    the currently-defined codes (report by Thomas Wolff).
+  * add  directory-template  parameter  to  mktemp  in shell-scripts to
+    improve portability to older systems (patch by Ryan Schmidt).
+  * mention webpage XTerm – bracketed-paste in ctlseqs.ms
+  * update   manual-page   descriptions   for   allowPasteControls  and
+    disallowedPasteControls (patch #363).
+  * further  extended list of environment variables to purge on startup
+    (suggested by Thomas Wolff).
+  * update config.guess, config.sub
+
+-------------------------------------------------------------------
 Mon Mar 21 12:30:36 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - update to 372:
