@@ -7,7 +7,7 @@ Wed Sep 21 11:37:55 UTC 2022 - witold.bedyk@suse.com
       failures
   + Bug fix:
     * AuthNZ: Security fixes for (bsc#1203596, CVE-2022-36062) and
-      CVE-2022-35957
+      (bsc#1203597, CVE-2022-35957)
 
 - Update to version 8.5.11:
   + Features and enhancements:
