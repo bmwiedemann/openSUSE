@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Sep 30 08:41:35 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.4.1
+  * Many changes, see upstream changelog
+  * Issue an error report if a .spec file will not be generated, but 
+    command-line options specific to that functionality are given
+  * The `PyInstaller.utils.hooks.get_module_attribute` function now 
+    returns the actual attribute value instead of its string representation.
+  * The matplotlib.backends hook no longer collects all available matplotlib 
+    backends, but rather tries to auto-detect the used backend(s) by default.
+  * Drop support for Python 3.6.
+  * Make the error handing of `~PyInstaller.utils.hooks.collect_submodules` 
+    configurable.
+  * Detect if an icon file (.ico or .icns) is of another image type but has 
+    been mislabelled as a native icon type via its file suffix then either 
+    normalise to a genuinely native image type if pillow is installed or 
+    raise an error.
+  * Implement a mechanism for controlling the collection mode of modules and 
+    packages, with granularity ranging from top-level packages to individual 
+    sub-modules.
+  * Add support for setuptools-provided distutils, available since 
+    setuptools >= 60.0.
+
+-------------------------------------------------------------------
 Thu Nov 18 15:23:35 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 4.7:

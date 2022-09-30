@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyInstaller
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %bcond_without  test
 %define modname PyInstaller
 Name:           python-PyInstaller
-Version:        4.7
+Version:        5.4.1
 Release:        0
 Summary:        Bundle a Python application and all its dependencies into a single package
 License:        GPL-2.0-only
@@ -43,6 +43,7 @@ Recommends:     upx
 %if %{with test}
 BuildRequires:  %{python_module Babel}
 BuildRequires:  %{python_module Django}
+BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module QtAwesome}
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module cryptography}
@@ -52,6 +53,7 @@ BuildRequires:  %{python_module opengl}
 BuildRequires:  %{python_module pefile >= 2017.8.1}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pycountry}
+BuildRequires:  %{python_module pyinstaller-hooks-contrib}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module qt5}
@@ -106,9 +108,9 @@ fi
 %if %{with test}
 %check
 export LANG=en_US.UTF-8
-# test_get_co_using_ctypes, test_get_co_using_ctypes_from_extension, test_replace_paths_in_code broken with python 3.8 on PyInstall 3.6
-# gh#pyinstaller/pyinstaller#4406 skip TestDeeplyNested.testRegr (it is just the only method in the class)
-%pytest_arch -n auto tests/unit -k 'not (test_find_module or test_egg and not test_nspkg1 or test_get_co_using_ctypes or test_get_co_using_ctypes_from_extension or test_replace_paths_in_code or TestDeeplyNested)'
+# https://github.com/pyinstaller/pyinstaller/commit/2df8314ffaedd95ddc9e2871237e2f2188d3735e
+# the test is broken since 5.2
+%pytest_arch -n auto tests/unit -k "not test_normalize_icon"
 %endif
 
 %post
