@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Sep 30 13:13:43 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to v9.7.0 (jsc#PED-913)
+  - Fixing the handling of null elements in iov tx vector
+  - Updating coverity version to 2021.12
+  - Fixing coverity 2021.12 findings
+  - Fixing pcb resources leak for failed blocking connect
+  - Fix no SYN rexmits for blocking connect
+  - Fix blocking socket connect timer race
+  - Use VMA_HANDLE_SIGINTR for signal() API
+  - Fix segfault when IPoIB is used along with extra logging
+  - Fix no traffic during disabled sriov (azure)
+  - Update Copyright
+  - Fix stats output logic
+  - Fix debian/copyright file
+  - Fix hypervisor check under x86_64
+  - Fix gcc12 compilation issue
+  - Fix VMA_UDP_3T_RULES logic for UDP UC
+  - Add C++11 Support requirement to a compiler
+  - Export symbols from socket api only
+  - Fix gcc12 compilation issue
+  - Fix fc35 issues
+  - Add support for fortified glibc functions
+  - Fix issue in vma_recvfrom_zcopy()
+  - Fix data corruption in shrink operation
+  - Workaround for segfault on IBV_EVENT_DEVICE_FATAL
+- Drop patches fixed upstream:
+  - issue-2485156-Fix-fc35-issues.patch
+  - issue-2945718-Fix-gcc12-compilation-issue.patch
+
+-------------------------------------------------------------------
 Mon Jun 13 06:47:26 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Add issue-2945718-Fix-gcc12-compilation-issue.patch to fix
