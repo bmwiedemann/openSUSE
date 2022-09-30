@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-netutils
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Common helper functions useful in network automation
 License:        Apache-2.0
