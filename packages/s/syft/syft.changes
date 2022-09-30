@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Sep 30 05:10:45 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.58.0:
+  * Add Conan (C/C++) conan.lock file support (#1230)
+  * add sequence diagrams and flesh out TODO notes (#1233)
+  * Do not fail if unable to parse `.rpm` file (#1232)
+  * fix: support exclude patterns on Windows (#1228)
+  * Update syft bootstrap tools to latest versions. (#1225)
+  * Update Stereoscope to 56552770e555d764ea72b99d3c810326b27ead4a (#1224)
+  * Update syft bootstrap tools to latest versions. (#1223)
+  * Update syft bootstrap tools to latest versions. (#1220)
+
+-------------------------------------------------------------------
 Wed Sep 21 08:27:42 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.57.0:
