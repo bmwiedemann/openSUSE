@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 30 13:28:47 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to 10.11.2.0.3
+  - No changelog available
+- Refresh opa-fm-Fallback-to-custom-vendor-if-os_vendor-fails.patch against latest sources
+- Add opa-fm-force-code-symbols-to-be-loaded.patch to fix issues with LTO
+
+-------------------------------------------------------------------
 Mon Nov 15 19:07:26 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to 10.11.0.2.1 (jsc#SLE-20578)
