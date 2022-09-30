@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep 30 05:11:07 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.15.10:
+  * release: prepare v0.15.10 (#1279)
+  * chore: disable aqua image scanning (#1282)
+  * chore: upgrade alpine v3.16.2 (#1281)
+  * chore: upgrade alpine v3.16.2 (#1280)
+  * fix: vulnerabilities (#1278)
+
+-------------------------------------------------------------------
 Sun Sep 25 07:10:38 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.15.9:
