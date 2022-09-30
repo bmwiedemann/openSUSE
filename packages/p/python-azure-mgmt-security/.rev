@@ -71,4 +71,18 @@
 - Update Requires from setup.py (forwarded request 925355 from glaubitz)</comment>
     <requestid>925441</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>73776a4c438f1267fab6d08af75b39d6</srcmd5>
+    <version>2.0.0.0</version>
+    <time>1664553525</time>
+    <user>RBrownFactory</user>
+    <comment>- New upstream release
+  + Version 2.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 2.0.0.0 to ensure
+  proper upgrade from previous version 2.0.0b1
+- Update Requires from setup.py (forwarded request 1007208 from glaubitz)</comment>
+    <requestid>1007229</requestid>
+  </revision>
 </revisionlist>
