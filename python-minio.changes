@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Sep 29 16:28:14 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 7.1.12:
+  What's Changed
+  fix documentation display composing by @j13tw in #1231
+  fget_object(): add progress support by @moon-jong in #1235
+  Updating documentation links to new URLs by @djwfyi in #1239
+  list_objects: fix parsing user metadata as per MinIO server by @harshavardhana in #1240 
+
+- Update to version 7.1.11:
+  select: yield available payload fully by requested num_bytes by @kldtz in #1225
+
+- Update to version 7.1.10: 
+  fget_object(): remove resume support. by @balamurugana in #1215
+  fix lifecycle config rule validation by @balamurugana in #1217
+  error out if lifecycle rule has null filter by @balamurugana in #1219
+  EventIterable: Reconnect on closed response. by @balamurugana in #1222
+
+-------------------------------------------------------------------
 Wed Jun 15 14:27:53 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - version update to 7.1.9 
