@@ -501,4 +501,41 @@
 </comment>
     <requestid>995047</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>2ceff2deb9aab51a968ce6e783c830c6</srcmd5>
+    <version>0.13.5</version>
+    <time>1664553453</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to v0.13.5
+  * Fix resolving crate name bug
+    gh#PyO3/maturin#1142
+- Changes in v0.13.4:
+  * Fix Cargo.toml in new project template
+    gh#PyO3/maturin#1109
+  * Fix maturin develop on Windows when using Python installed
+    from msys2
+    gh#PyO3/maturin#1112
+  * Fix duplicated Cargo.toml of local dependencies in sdist
+    gh#PyO3/maturin#1114
+  * Add support for Cargo workspace dependencies inheritance
+    gh#PyO3/maturin#1123
+  * Add support for Cargo workspace metadata inheritance
+    gh#PyO3/maturin#1131
+  * Use goblin instead of shelling out to patchelf to get rpath
+    gh#PyO3/maturin#1139
+- Changes in v0.13.3:
+  * Allow user to override default Emscripten settings
+    gh#PyO3/maturin#1059
+  * Enable --crate-type cdylib on Rust 1.64.0
+    gh#PyO3/maturin#1060
+  * Update MSRV to 1.59.0
+    gh#PyO3/maturin#1071
+  * Fix abi3 wheel build when no Python interpreters found
+    gh#PyO3/maturin#1072
+  * Add zig ar support
+    gh#PyO3/maturin#1073
+  * Fix sdist build for optional path dependencies
+    gh#PyO3/maturin#1084</comment>
+    <requestid>1007049</requestid>
+  </revision>
 </revisionlist>
