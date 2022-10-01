@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.3.2
-%define short_version 6.3
+%define real_version 6.4.0
+%define short_version 6.4
 %define short_name qtdatavis3d
 %define tar_name qtdatavis3d-everywhere-src
 %define tar_suffix %{nil}
@@ -28,7 +28,7 @@
 %endif
 #
 Name:           qt6-datavis3d%{?pkg_suffix}
-Version:        6.3.2
+Version:        6.4.0
 Release:        0
 Summary:        Qt 6 data visualization framework
 License:        GPL-3.0-or-later
@@ -142,7 +142,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %{_qt6_qmldir}/QtDataVisualization/
 
 %files -n libQt6DataVisualization6
-%license LICENSE.*
+%license LICENSES/*
 %{_qt6_libdir}/libQt6DataVisualization.so.*
 
 %files -n qt6-datavisualization-devel
