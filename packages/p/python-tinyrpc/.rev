@@ -81,4 +81,15 @@
     <comment>- Add missed dependency on requests in tests</comment>
     <requestid>783617</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ff092aa0fd6b8d9917fe2ec222a74a85</srcmd5>
+    <version>1.1.4</version>
+    <time>1664639051</time>
+    <user>RBrownFactory</user>
+    <comment>- update to 1.1.4:
+  * fix undesired sharing of ID generators between protocol instances  
+  * add timeout to ZmqClientTransport
+  * changed zmq client timeout to seconds</comment>
+    <requestid>1007454</requestid>
+  </revision>
 </revisionlist>

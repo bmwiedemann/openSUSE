@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Oct  1 13:51:06 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.4:
+  * fix undesired sharing of ID generators between protocol instances  
+  * add timeout to ZmqClientTransport
+  * changed zmq client timeout to seconds
+
+-------------------------------------------------------------------
 Wed Mar 11 07:27:50 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add missed dependency on requests in tests

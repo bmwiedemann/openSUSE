@@ -1,7 +1,7 @@
 #
 # spec file for package python-tinyrpc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-tinyrpc
-Version:        1.0.4
+Version:        1.1.4
 Release:        0
 Summary:        A modular transport and protocol neutral RPC library
 License:        MIT
@@ -28,6 +28,7 @@ Source:         https://github.com/mbr/tinyrpc/archive/%{version}.tar.gz
 BuildRequires:  %{python_module Werkzeug}
 BuildRequires:  %{python_module gevent}
 BuildRequires:  %{python_module msgpack}
+BuildRequires:  %{python_module pika >= 1.2.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pyzmq}
 BuildRequires:  %{python_module requests}
