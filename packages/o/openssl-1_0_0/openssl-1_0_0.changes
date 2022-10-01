@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Sep 24 02:40:39 UTC 2022 - Jason Sikes <jsikes@suse.com>
+
+- Added openssl-1_0_0-paramgen-default_to_rfc7919.patch
+  * bsc#1180995
+  * Default to RFC7919 groups when generating ECDH parameters
+    using 'genpkey' or 'dhparam' in FIPS mode.
+
+-------------------------------------------------------------------
 Tue Jun 28 14:26:53 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - openssl-riscv64-config.patch: backport of riscv64 config support

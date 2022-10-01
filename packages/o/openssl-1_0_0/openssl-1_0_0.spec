@@ -104,6 +104,7 @@ Patch86:        CVE-2021-3712-ASN1_STRING-issues.patch
 # OpenSSL Security Advisory bsc#1199166 CVE-2022-1292
 Patch87:        openssl-CVE-2022-1292.patch
 Patch88:        openssl-1_0_0-Fix-file-operations-in-c_rehash.patch
+Patch89:        openssl-1_0_0-paramgen-default_to_rfc7919.patch
 # steam patches
 Patch100:       openssl-fix-cpuid_setup.patch
 # compat patches to build with soversion 10 (bsc#1175429)
@@ -270,6 +271,7 @@ testing framework and utilities.
 %patch86 -p1
 %patch87 -p1
 %patch88 -p1
+%patch89 -p1
 
 # clean up patching leftovers
 find . -name '*.orig' -delete
