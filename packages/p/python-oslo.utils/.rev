@@ -513,4 +513,13 @@
   - Drop python3.6/3.7 support in testing runtime</comment>
     <requestid>996538</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>43eb0fc01b9f89d27010b78b1a8af4d2</srcmd5>
+    <version>6.0.1</version>
+    <time>1664639045</time>
+    <user>RBrownFactory</user>
+    <comment>- update to version 6.0.1
+  - Imported Translations from Zanata</comment>
+    <requestid>1007435</requestid>
+  </revision>
 </revisionlist>
