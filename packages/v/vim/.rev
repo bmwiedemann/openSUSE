@@ -6375,4 +6375,41 @@ always built-in because vim has direct perl dependencies anyway.
   * Valva Date Format files are not recognized.</comment>
     <requestid>1004616</requestid>
   </revision>
+  <revision rev="325" vrev="1">
+    <srcmd5>6f65d2888799c7ba3924fa5b2aa73b6c</srcmd5>
+    <version>9.0.0626</version>
+    <time>1664638968</time>
+    <user>RBrownFactory</user>
+    <comment>- Updated to version 9.0.0626, fixes the following problems
+- fix boo#1203924 - CVE-2022-3352
+  * Error for modifying a const is not detected at compile time.
+  * Leaking argument type array.
+  * Too many delete() calls in tests.
+  * When quitting the cmdline window with CTRL-C it remains visible.
+  * Warning for using uninitialized value in mouse test.
+  * A closure in a nested loop in a :def function does not work.
+  * Build failure.
+  * Various problems with 'nosplitscroll'.
+  * Line number argument for :badd does not work.
+  * Command line cleared when using :redrawstatus in CmdlineChanged
+  autocommand event.
+  * When the channel test fails there is no clue why.
+  * Confusing error for &quot;saveas&quot; command with &quot;nofile&quot; buffer.
+  * Chatito files are not recognized.
+  * Unnecessary scrolling for message of only one line.
+  * Cannot redraw the status lines when editing a command.
+  * May not be able to use a pattern ad the debug prompt.
+  * Terminal test sometimes hangs.
+  * Virtual text highlight starts too early when 'number' is set.
+  * Virtual text &quot;above&quot; highlights gap after it.
+  * When at the command line :redrawstatus does not work well.
+  * Virtual text highlight starts too early with 'nowrap' and 'number' set.
+  * The win_line() function is much too long.
+  * Declaring a loop variable at the start of a block is clumsy.
+  * Compiler warns for unused argument in small version.
+  * Build fails on Appveyor.
+  * more compiler warnings for arguments in small version
+  * Manually deleting temp test files.</comment>
+    <requestid>1007186</requestid>
+  </revision>
 </revisionlist>

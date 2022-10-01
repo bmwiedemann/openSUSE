@@ -17,7 +17,7 @@
 
 
 %define pkg_version 9.0
-%define patchlevel 0500
+%define patchlevel 0626
 %define patchlevel_compact %{patchlevel}
 %define VIM_SUBDIR vim90
 %define site_runtimepath %{_datadir}/vim/site
@@ -236,6 +236,7 @@ rm src/testdir/test_terminal*
 rm src/testdir/test_textprop.*
 rm src/testdir/test_window_cmd.*
 rm src/testdir/test_writefile.*
+rm runtime/indent/testdir/vim.*
 
 %build
 export CFLAGS="%{optflags} -Wall -pipe -fno-strict-aliasing"

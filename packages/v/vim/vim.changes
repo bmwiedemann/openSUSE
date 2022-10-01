@@ -1,4 +1,123 @@
 -------------------------------------------------------------------
+Fri Sep 30 08:03:58 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 9.0.0626, fixes the following problems
+- fix boo#1203924 - CVE-2022-3352
+  * Error for modifying a const is not detected at compile time.
+  * Leaking argument type array.
+  * Too many delete() calls in tests.
+  * When quitting the cmdline window with CTRL-C it remains visible.
+  * Warning for using uninitialized value in mouse test.
+  * A closure in a nested loop in a :def function does not work.
+  * Build failure.
+  * Various problems with 'nosplitscroll'.
+  * Line number argument for :badd does not work.
+  * Command line cleared when using :redrawstatus in CmdlineChanged
+  autocommand event.
+  * When the channel test fails there is no clue why.
+  * Confusing error for "saveas" command with "nofile" buffer.
+  * Chatito files are not recognized.
+  * Unnecessary scrolling for message of only one line.
+  * Cannot redraw the status lines when editing a command.
+  * May not be able to use a pattern ad the debug prompt.
+  * Terminal test sometimes hangs.
+  * Virtual text highlight starts too early when 'number' is set.
+  * Virtual text "above" highlights gap after it.
+  * When at the command line :redrawstatus does not work well.
+  * Virtual text highlight starts too early with 'nowrap' and 'number' set.
+  * The win_line() function is much too long.
+  * Declaring a loop variable at the start of a block is clumsy.
+  * Compiler warns for unused argument in small version.
+  * Build fails on Appveyor.
+  * more compiler warnings for arguments in small version
+  * Manually deleting temp test files.
+  * Long sign text may overflow buffer.
+  * Appveyor setup contains outdated lines.
+  * Using freed memory when autocmd changes mark.
+  * The win_line() function is much too long.
+  * Edit test is flaky when run under valgrind.
+  * The win_line() function is much too long.
+  * Line number is displayed at virtual text "above".
+  * Closure gets wrong value in for loop with two loop variables.
+  * The do_set() function is much too long.
+  * Manually deleting test temp files.
+  * Long message test can be flaky.
+  * Assigning stack variable to argument confuses Coverity.
+  * Terminal pwd test fails with a very long path name.
+  * Insufficient testing for assert and test functions.
+  * Minor issues with setting a string option.
+  * When a test is slow and CI times out there is no time info.
+  * Supporting Ruby 1.8 makes code complicated.
+  * Looping over empty out_loop[] entries.
+  * reduce() with a compiled lambda could be faster.
+  * Duplicated code in calling a :def function.
+  * Crash when closing a tabpage and buffer is NULL.
+  * Mode message is delayed when :echowin was used. (Maxim Kim)
+  * Crash when using NUL in buffer that uses :source.
+  * No error for "|" after "{" in lamda.
+  * Using freed memory when command follows lambda.
+  * Scrolling with 'nosplitscroll' in callback changing curwin.
+  * Leaking memory with nested functions.
+  * Valgrind reports possibly leaked memory.
+  * Coverity warns for possibly using NULL pointer.
+  * Timer test may get stuck at hit-enter prompt.
+  * Elapsed time since testing started is not visible.
+  * When a test gets stuck it just hangs forever.
+  * HSL playlist files are not recognized.
+  * Timer_info() test fails.
+  * Cscope test causes problems when code for test timeout timer is included
+  (even when commented out).
+  * Nim files are not recognized.
+  * 'completeopt' "longest" is not used for complete().
+  * Autocmd code is indented more than needed.
+  * Cannot easily get out when using "vim file | grep word".
+  * Insert complete tests leave a mapping behind.
+  * Outdated dependencies go unnoticed.
+  * Timer garbage collect test hangs on Mac M1.
+  * The getchar() function behaves strangely with bracketed paste.
+  * Unused loop variables.
+  * Buffer underflow with unexpected :finally.
+  * Using freed memory when 'tagfunc' wipes out buffer that holds 'complete'.
+  * Adding a character for incsearch fails at end of line.
+  * Only recognizing .m3u8 files is inconsistent.
+  * Cscope test with wrong executable name fails.
+  * When long message test fails the error message is not visible.
+  * Missing change in test.
+  * Unicode tables are outdated.
+  * After exiting Insert mode spelling is not checked in the next line.
+  * Message window popup shows on only one tab page. (Naruhiko Nishino)
+  * Display not cleared when scrolling back in messages, a background color
+  is set and t_ut is empty.
+  * Makefile error message causes a shell error.
+  * Extra newline in messages after a verbose shell message.
+  * Cannot close a tab page with the middle mouse button.
+  * Using negative array index with negative width window.
+  * Latexmkrc files are not recognized.
+  * GYP files are not recognized.
+  * Too much indent.
+  * New TypeScript extensions are not recognized.
+  * With 'nosplitscroll' folds are not handled correctly.
+  * Luacheckrc file is not recognized.
+  * Dump file missing.
+  * system() opens a terminal window when using the GUI and "!" is in
+  'guioptions'.
+  * With spell checking, deleting a full stop at the end of a line does not
+  update SpellCap at the start of the next line.
+  * Blockedit test fails because of wrong indent.
+  * Global interrupt test fails when run under valgrind.
+  * Tests delete files with a separate delete() call.
+  * Blockedit test passes with wrong result.
+  * Running source tests leaves file behind.
+  * SpellFileMissing autocmd may delete buffer.
+  * Using reduce() on a list from range() is a bit slow.
+  * Spell test fails because error message changed.
+  * Calling function for reduce() has too much overhead.
+  * Too many delete() calls in tests.
+  * matchaddpos() can get slow when adding many matches.
+  * Filetype test leaves file behind.
+  * matchaddpos() can only add up to 8 matches.
+
+-------------------------------------------------------------------
 Mon Sep 19 07:48:28 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 9.0.0500, fixes the following problems
