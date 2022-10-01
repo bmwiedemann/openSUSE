@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 27 07:18:47 UTC 2022 - Martin Vidner <mvidner@suse.com>
+
+- Localize date range in Change Filter dialog (B S Srinidhi,
+  bsc#1081459)
+- 4.5.2
+
+-------------------------------------------------------------------
 Mon Jul 18 08:36:08 UTC 2022 - Martin Vidner <mvidner@suse.com>
 
 - Adapt to changed output of journalctl --list-boots,
