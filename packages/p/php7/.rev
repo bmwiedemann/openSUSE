@@ -1271,4 +1271,18 @@ file with an '_' (PHP loads extensions in alphabetical order) (forwarded request
   https://www.php.net/ChangeLog-7.php#7.4.30</comment>
     <requestid>981969</requestid>
   </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>319bb614d1a943b56540134c64ab30ce</srcmd5>
+    <version>7.4.32</version>
+    <time>1664638965</time>
+    <user>RBrownFactory</user>
+    <comment>- version update to 7.4.32
+  * This is security release that addresses an infinite recursion with specially
+    constructed phar files, and prevents a clash with variable name mangling for
+    the __Host/__Secure HTTP headers.
+  * CVEs fixed: CVE-2022-31628, CVE-2022-31629
+  https://www.php.net/ChangeLog-7.php#7.4.32
+  https://www.php.net/ChangeLog-7.php#7.4.31</comment>
+    <requestid>1006913</requestid>
+  </revision>
 </revisionlist>

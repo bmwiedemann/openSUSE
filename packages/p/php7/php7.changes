@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep 29 10:17:46 UTC 2022 - pgajdos@suse.com
+
+- version update to 7.4.32
+  * This is security release that addresses an infinite recursion with specially
+    constructed phar files, and prevents a clash with variable name mangling for
+    the __Host/__Secure HTTP headers.
+  * CVEs fixed: CVE-2022-31628, CVE-2022-31629
+  https://www.php.net/ChangeLog-7.php#7.4.32
+  https://www.php.net/ChangeLog-7.php#7.4.31
+
+-------------------------------------------------------------------
 Fri Jun 10 04:34:52 UTC 2022 - pgajdos@suse.com
 
 - version update to 7.4.30
