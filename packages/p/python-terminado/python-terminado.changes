@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep 30 15:16:04 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.16.0:
+  * Bugs fixed
+    + Fix issue where large stdin writes can cause Tornado to hang
+      #189 (@KoopaKing)
+  * Maintenance and upkeep improvements
+    + Switch to using hatch version #186 (@blink1073)
+    + Fix flake8 v5 compat #179 (@blink1073)
+
+-------------------------------------------------------------------
 Wed Jul 13 08:47:07 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update build and test requirements

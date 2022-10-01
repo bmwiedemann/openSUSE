@@ -147,4 +147,19 @@
   * Switch to hatch backend</comment>
     <requestid>988932</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>fb4297dc5387740bc2a32363d66686a4</srcmd5>
+    <version>0.16.0</version>
+    <time>1664639023</time>
+    <user>RBrownFactory</user>
+    <comment>- update to version 0.16.0:
+  * Bugs fixed
+    + Fix issue where large stdin writes can cause Tornado to hang
+      #189 (@KoopaKing)
+  * Maintenance and upkeep improvements
+    + Switch to using hatch version #186 (@blink1073)
+    + Fix flake8 v5 compat #179 (@blink1073)
+</comment>
+    <requestid>1007303</requestid>
+  </revision>
 </revisionlist>
