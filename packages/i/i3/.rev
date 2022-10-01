@@ -367,4 +367,50 @@ Please decide if this lasts to accept the sr. (forwarded request 138719 from sei
 </comment>
     <requestid>939498</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>b4f1759ebef40c1ea8f2e1998e37265e</srcmd5>
+    <version>4.21</version>
+    <time>1664639024</time>
+    <user>RBrownFactory</user>
+    <comment>- Updated to version 4.21:
+  * feat: drag tiling windows with the mouse
+  * CHANGES
+  * Allow dragging tiling windows with the mouse
+  * Add client.focused_tab_title color option
+  * Add support for multiple output names in the focus command,
+  * allowing users to cycle focus between e.g. VGA1 and LVDS1 but not DVI0.
+  * Add a toggle option to the title_window_icon command
+  * i3 switched from the obsolete PCRE 8.x regular expression matching
+    library to the current PCRE2 10.x version.
+  * BUG FIXES:
+  * docs/ipc: document all window_type values
+  * docs/userguide: clarify the difference between the \u201cworkspace N\u201d and
+    \u201cworkspace number N\u201d commands
+  * i3bar: fix default font not being applied to bars if defined after bar block
+  * i3-dmenu-desktop: add backslashes for the exec command,
+    which fixes opening some .desktop files (e.g. electrum)
+  * i3-sensible-pager: sanitize LESS environment variable to remove -E or -F
+  * testsuite: catch i3 crashes instead of hanging on crash
+  * Fix logging on machines with 256 GB of RAM
+  * Do not replace existing IPC socket on start, to prevent clobbering
+    the IPC socket when running i3 within i3 (e.g. in Xepyhr, for development)
+  * Refuse to start without a valid IPC socket
+  * Fix focus when moving container between outputs with mouse warp and
+    focus_follows_mouse
+  * Fix endless loop with transient_for windows
+  * Fix wrong \u201cfailed\u201d IPC reply on move workspace to output
+  * Fix WM registration selection (from WM_S_S&lt;screen&gt; to WM_S&lt;screen&gt;)
+  * avoid graphics artifacts when changing the layout tree by
+    initializing surfaces to all black
+  * update parent split con titles when child container swaps position with
+    another child container
+  * Fix segfault if command in bindsym is empty
+  * Fix segfault with explicit mode &quot;default&quot; key bindings
+  * Fix crash if config contains nested variables.
+  * strip trailing whitespace in bar output names
+  * Fix crash with long commands
+  * Fix changing borders by restoring BS_NORMAL _MOTIF_WM_HINTS correctly
+</comment>
+    <requestid>1007357</requestid>
+  </revision>
 </revisionlist>

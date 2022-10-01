@@ -1,7 +1,7 @@
 #
 # spec file for package i3
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           i3
-Version:        4.20.1
+Version:        4.21
 Release:        0
 Summary:        Tiling window manager
 License:        BSD-3-Clause
