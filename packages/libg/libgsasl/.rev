@@ -268,4 +268,12 @@ contains numerous GPL-3.0+ licensed test files (forwarded request 130704 from ba
 - avoid duplicate packaging of license</comment>
     <requestid>1002784</requestid>
   </revision>
+  <revision rev="36" vrev="4">
+    <srcmd5>a3cde81e2e7e7c617e3bb7e0aab8f696</srcmd5>
+    <version>1.10.0</version>
+    <time>1664638911</time>
+    <user>RBrownFactory</user>
+    <comment>- add build-fix-old-gcc.patch for older dists</comment>
+    <requestid>1006434</requestid>
+  </revision>
 </revisionlist>

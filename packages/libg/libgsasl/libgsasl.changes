@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 27 14:43:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add build-fix-old-gcc.patch for older dists 
+
+-------------------------------------------------------------------
 Mon Sep 12 09:45:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add boundary-check-CVE-2022-2469.patch (bsc#1201715)
