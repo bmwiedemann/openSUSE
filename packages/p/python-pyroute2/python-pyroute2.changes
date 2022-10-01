@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Oct  1 13:44:24 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7.3:
+  * nlsocket: CompileContext support
+  * nlsocket: support for per request parsers (see IPRoute.get_default_routes())
+  * generic: added support for dumping policies <#981>
+  * ndb: changed API for reports
+  * conntrack: fix TCP states <#991>
+  * ipmock: new component (IPMock) for mock tests
+  * thermal: update
+  * ci: nlm_generator = True -- force using generators in the CI
+  * iproute: fix neighbours dump <#962>
+  * iproute: fix rule add <#964>
+  * setup: fix build-backend <#961>
+  * packaging: back to single package layout <#935>
+  * packaging: static version <#939>
+  * ci: use nox, finish migration from nose
+  * netlink: universal nlmsg.get()
+
+-------------------------------------------------------------------
 Wed Jul  6 12:33:36 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.6.13:

@@ -307,4 +307,27 @@
   * pyroute2-cli: parser fixes</comment>
     <requestid>987188</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>99a39e43695f01556284516b487f5d2a</srcmd5>
+    <version>0.7.3</version>
+    <time>1664639051</time>
+    <user>RBrownFactory</user>
+    <comment>- update to 0.7.3:
+  * nlsocket: CompileContext support
+  * nlsocket: support for per request parsers (see IPRoute.get_default_routes())
+  * generic: added support for dumping policies &lt;#981&gt;
+  * ndb: changed API for reports
+  * conntrack: fix TCP states &lt;#991&gt;
+  * ipmock: new component (IPMock) for mock tests
+  * thermal: update
+  * ci: nlm_generator = True -- force using generators in the CI
+  * iproute: fix neighbours dump &lt;#962&gt;
+  * iproute: fix rule add &lt;#964&gt;
+  * setup: fix build-backend &lt;#961&gt;
+  * packaging: back to single package layout &lt;#935&gt;
+  * packaging: static version &lt;#939&gt;
+  * ci: use nox, finish migration from nose
+  * netlink: universal nlmsg.get()</comment>
+    <requestid>1007453</requestid>
+  </revision>
 </revisionlist>

@@ -18,26 +18,34 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyroute2
-Version:        0.6.13
+Version:        0.7.3
 Release:        0
 Summary:        Python Netlink library
 License:        Apache-2.0 OR GPL-2.0-or-later
 URL:            https://github.com/svinota/pyroute2
 Source:         https://files.pythonhosted.org/packages/source/p/pyroute2/pyroute2-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
-Requires:       python-pyroute2.core = %{version}
-Requires:       python-pyroute2.ethtool = %{version}
-Requires:       python-pyroute2.ipdb = %{version}
-Requires:       python-pyroute2.ipset = %{version}
-Requires:       python-pyroute2.ndb = %{version}
-Requires:       python-pyroute2.nftables = %{version}
-Requires:       python-pyroute2.nslink = %{version}
+Provides:       python-pyroute2.core = %{version}
+Obsoletes:      python-pyroute2.core < %{version}
+Provides:       python-pyroute2.ethtool = %{version}
+Obsoletes:      python-pyroute2.ethtool < %{version}
+Provides:       python-pyroute2.ipdb = %{version}
+Obsoletes:      python-pyroute2.ipdb < %{version}
+Provides:       python-pyroute2.ipset = %{version}
+Obsoletes:      python-pyroute2.ipset < %{version}
+Provides:       python-pyroute2.ndb = %{version}
+Obsoletes:      python-pyroute2.ndb < %{version}
+Provides:       python-pyroute2.nftables = %{version}
+Obsoletes:      python-pyroute2.nftables < %{version}
+Provides:       python-pyroute2.nslink = %{version}
+Obsoletes:      python-pyroute2.nslink < %{version}
 %python_subpackages
 
 %description
@@ -61,15 +69,24 @@ protocols. Some supported netlink families and protocols:
 %setup -q -n pyroute2-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+%python_clone -a %{buildroot}%{_bindir}/pyroute2-cli
+%python_clone -a %{buildroot}%{_bindir}/pyroute2-dhcp-client
+%python_clone -a %{buildroot}%{_bindir}/pyroute2-test-platform
+%python_clone -a %{buildroot}%{_bindir}/ss2
+
 %files %{python_files}
-%doc README.rst CHANGELOG.md
-%license LICENSE.Apache.v2 LICENSE.GPL.v2
+%doc README.rst CHANGELOG.rst
+%license LICENSE LICENSE.Apache-2.0 LICENSE.GPL-2.0-or-later
+%python_alternative %{_bindir}/pyroute2-cli
+%python_alternative %{_bindir}/pyroute2-dhcp-client
+%python_alternative %{_bindir}/pyroute2-test-platform
+%python_alternative %{_bindir}/ss2
 %{python_sitelib}/*
 
 %changelog
