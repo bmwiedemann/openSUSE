@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 13 03:07:39 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.85
+   see /usr/share/doc/packages/perl-YAML-LibYAML/Changes
+
+  0.85 Mon Sep 12 08:20:19 AM EDT 2022
+   - Convert doc from Swim to Markdown
+   - Remove travis testing
+
+-------------------------------------------------------------------
 Sun Sep  4 03:13:51 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.84
