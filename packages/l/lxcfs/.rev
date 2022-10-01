@@ -142,4 +142,16 @@
     <comment></comment>
     <requestid>957224</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>49f738e2f8bd4c4a43f6acbc57f59d0f</srcmd5>
+    <version>4.0.12</version>
+    <time>1664638970</time>
+    <user>RBrownFactory</user>
+    <comment>- add include-fixes.patch
+- reenable FORTIFY_SOURCE=3 
+
+- fix build by using FORTIFY_SOURCE=2
+- fix Supplements syntax</comment>
+    <requestid>1007348</requestid>
+  </revision>
 </revisionlist>

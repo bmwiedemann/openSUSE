@@ -31,6 +31,7 @@ URL:            https://linuxcontainers.org/lxcfs
 Source:         https://linuxcontainers.org/downloads/%{name}/%{name}-%{version}.tar.gz
 Source1:        https://linuxcontainers.org/downloads/%{name}/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
+Patch1:         include-fixes.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -51,7 +52,11 @@ LXC but is usable by any runtime.
 Summary:        LXC hooks for %{name}
 Group:          System/Management
 Requires:       %{name} = %{version}
+%if 0%{?sle_version} < 150000
 Supplements:    packageand(%{name}:liblxc1)
+%else
+Supplements:    (%{name} and liblxc1)
+%endif
 BuildArch:      noarch
 
 %description hooks-lxc
@@ -59,7 +64,7 @@ Configuration to add hooks for %{name} so that it automatically interoperates
 with LXC for all containers.
 
 %prep
-%setup
+%autosetup -p1
 
 %build
 autoreconf -vif

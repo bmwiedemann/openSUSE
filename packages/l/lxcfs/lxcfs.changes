@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Sep 30 20:50:08 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add include-fixes.patch
+- reenable FORTIFY_SOURCE=3 
+
+-------------------------------------------------------------------
+Sun Sep 25 17:00:54 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- fix build by using FORTIFY_SOURCE=2
+- fix Supplements syntax
+
+-------------------------------------------------------------------
 Tue Feb 22 08:02:32 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 4.0.12:
