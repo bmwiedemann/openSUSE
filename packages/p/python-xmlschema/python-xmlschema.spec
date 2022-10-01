@@ -19,20 +19,20 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-xmlschema
-Version:        1.9.2
+Version:        2.1.0
 Release:        0
 Summary:        An XML Schema validator and decoder
 License:        MIT
 URL:            https://github.com/sissaschool/xmlschema
 Source:         https://files.pythonhosted.org/packages/source/x/xmlschema/xmlschema-%{version}.tar.gz
-BuildRequires:  %{python_module elementpath >= 2.2.1}
+BuildRequires:  %{python_module elementpath >= 3.0.0}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-elementpath >= 2.2.1
+Requires:       python-elementpath >= 3.0.0
 Requires:       python-lxml
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
