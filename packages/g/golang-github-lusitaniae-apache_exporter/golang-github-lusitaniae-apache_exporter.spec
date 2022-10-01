@@ -23,6 +23,8 @@
 %undefine _missing_build_ids_terminate_build
 %endif
 
+%bcond_without  apparmor
+
 # Templating vars to simplify and standardize Prometheus exporters spec files
 %define	githubrepo    github.com/lusitaniae/apache_exporter
 %define	upstreamname  apache_exporter
@@ -39,6 +41,7 @@ URL:            http://%{githubrepo}
 Source:         %{upstreamname}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        %{targetname}.service
+Source3:        apparmor-usr.bin.%{targetname}
 BuildRequires:  fdupes
 BuildRequires:  golang-packaging
 BuildRequires:  xz
@@ -48,6 +51,11 @@ Requires(pre):  shadow-utils
 %else
 BuildRequires:  golang(API) = 1.15
 Requires(pre):  shadow
+%endif
+%if %{with apparmor}
+BuildRequires:  apparmor-abstractions
+BuildRequires:  apparmor-rpm-macros
+Recommends:     apparmor-abstractions
 %endif
 ExcludeArch:    s390
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -69,6 +77,11 @@ install -d -m 0755 %{buildroot}%{_unitdir}
 install -m 0644 %{SOURCE2} %{buildroot}%{_unitdir}
 install -d -m 0755 %{buildroot}%{_sbindir}
 ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rc%{targetname}
+%if %{with apparmor}
+# AppArmor profile
+mkdir -p %{buildroot}%{_sysconfdir}/apparmor.d
+install -m 0644 %{SOURCE3} %{buildroot}%{_sysconfdir}/apparmor.d/usr.bin.%{targetname}
+%endif
 
 %check
 %if 0%{?rhel}
@@ -88,6 +101,9 @@ getent passwd %{serviceuser} >/dev/null || %{_sbindir}/useradd -r -g %{serviceus
 %systemd_post %{targetname}.service
 %else
 %service_add_post %{targetname}.service
+%endif
+%if %{with apparmor}
+%apparmor_reload %{_sysconfdir}/apparmor.d/usr.bin.%{targetname}
 %endif
 
 %preun
@@ -111,5 +127,9 @@ getent passwd %{serviceuser} >/dev/null || %{_sbindir}/useradd -r -g %{serviceus
 %{_bindir}/%{targetname}
 %{_unitdir}/%{targetname}.service
 %{_sbindir}/rc%{targetname}
+%if %{with apparmor}
+%dir %{_sysconfdir}/apparmor.d
+%config %{_sysconfdir}/apparmor.d/usr.bin.%{targetname}
+%endif
 
 %changelog

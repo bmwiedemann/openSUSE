@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Sep 25 14:12:03 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- corrected comment in AppArmor profile
+
+-------------------------------------------------------------------
+Thu Sep 22 17:25:32 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- added AppArmor profile
+- added sandboxing options to systemd service unit
+
+-------------------------------------------------------------------
 Tue Sep 20 09:40:38 UTC 2022 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Exclude s390 architecture (gh#SUSE/spacewalk#19050)
