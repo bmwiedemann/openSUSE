@@ -16,13 +16,13 @@
 #
 
 
-%define real_version 6.3.2
-%define short_version 6.3
+%define real_version 6.4.0
+%define short_version 6.4
 %define tar_name qttranslations-everywhere-src
 %define tar_suffix %{nil}
 #
 Name:           qt6-translations
-Version:        6.3.2
+Version:        6.4.0
 Release:        0
 Summary:        Qt 6 Translations
 License:        GPL-3.0-only WITH Qt-GPL-exception-1.0
@@ -50,7 +50,7 @@ Translations for Qt6 libraries and tools.
 %fdupes %{buildroot}%{_qt6_translationsdir}
 
 %files
-%license LICENSE.*
+%license LICENSES/*
 %{_qt6_translationsdir}/*
 
 %changelog
