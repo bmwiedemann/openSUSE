@@ -2,8 +2,8 @@
   <service name="obs_scm" mode="disabled">
     <param name="scm">git</param>
     <param name="url">https://github.com/sharkdp/hyperfine.git</param>
-    <param name="revision">94cda2eb59755189d4a39aba559ab91702c0f3c5</param>
-    <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@</param>
+    <param name="revision">c7e5694</param>
+    <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>
