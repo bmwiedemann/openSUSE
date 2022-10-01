@@ -4037,4 +4037,16 @@ oddjob-gpupdate isn't blocked)</comment>
   * dbus-services: adjust tuned entry to path move to /usr (bsc#1202339)</comment>
     <requestid>1005184</requestid>
   </revision>
+  <revision rev="416" vrev="1">
+    <srcmd5>05f77bb2ef0bb3aeb61fa626014ef360</srcmd5>
+    <version>2.3.0+git20220929.30237f7</version>
+    <time>1664638959</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 2.3.0+git20220929.30237f7:
+  * Fix test.
+
+- Update to version 2.3.0+git20220929.abe3ab9:
+  * Add python-setup-test check to SpecCheck</comment>
+    <requestid>1006847</requestid>
+  </revision>
 </revisionlist>
