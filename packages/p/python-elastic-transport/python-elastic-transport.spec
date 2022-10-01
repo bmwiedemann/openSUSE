@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-elastic-transport
-Version:        8.1.2
+Version:        8.4.0
 Release:        0
 Summary:        Transport classes and utilities shared among Python Elastic client libraries
 License:        Apache-2.0
@@ -28,8 +28,8 @@ Source:         https://github.com/elastic/elastic-transport-python/archive/refs
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       (python-urllib3 >= 1.26.2 with python-urllib3 < 2)
 Requires:       python-certifi
+Requires:       (python-urllib3 >= 1.26.2 with python-urllib3 < 2)
 BuildArch:      noarch
 %if 0%{python_version_nodots} < 37
 Requires:       python-dataclasses
