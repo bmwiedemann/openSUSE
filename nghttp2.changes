@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Sep 24 11:21:43 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.50.0:
+  * https://nghttp2.org/blog/2022/09/21/nghttp2-v1-50-0/
+  This release adds
+  nghttp2_option_set_no_rfc9113_leading_and_trailing_ws_validation which disables
+  checking leading and trailing white spaces against HTTP field value. 
+
+-------------------------------------------------------------------
+Fri Sep 23 15:38:24 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- disable asio by default as it is deprecated by upstream and
+  will be removed in the next release
+
+-------------------------------------------------------------------
 Mon Aug 22 21:23:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.49.0:
