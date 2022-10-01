@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.3.2
-%define short_version 6.3
+%define real_version 6.4.0
+%define short_version 6.4
 %define tar_name qtconnectivity-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-connectivity%{?pkg_suffix}
-Version:        6.3.2
+Version:        6.4.0
 Release:        0
 Summary:        Qt 6 connectivity tools and libraries
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -44,6 +44,7 @@ BuildRequires:  cmake(Qt6Network)
 BuildRequires:  cmake(Qt6Quick)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  pkgconfig(bluez)
+BuildRequires:  pkgconfig(libpcsclite)
 %if "%{qt6_flavor}" == "docs"
 BuildRequires:  qt6-tools
 %{qt6_doc_packages}
@@ -117,15 +118,16 @@ The packages that build against these have to require the exact Qt version.
 %{_qt6_libexecdir}/sdpscanner
 
 %files -n libQt6Bluetooth6
-%license LICENSE.*
+%license LICENSES/*
 %{_qt6_libdir}/libQt6Bluetooth.so.*
 
 %files -n libQt6Nfc6
-%license LICENSE.*
+%license LICENSES/*
 %{_qt6_libdir}/libQt6Nfc.so.*
 
 %files devel
 %{_qt6_cmakedir}/Qt6/FindBlueZ.cmake
+%{_qt6_cmakedir}/Qt6/FindPCSCLite.cmake
 %{_qt6_cmakedir}/Qt6Bluetooth/
 %{_qt6_cmakedir}/Qt6BuildInternals/StandaloneTests/QtConnectivityTestsConfig.cmake
 %{_qt6_cmakedir}/Qt6Nfc/
