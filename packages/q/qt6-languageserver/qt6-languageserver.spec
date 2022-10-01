@@ -16,14 +16,14 @@
 #
 
 
-%define real_version 6.3.2
-%define short_version 6.3
+%define real_version 6.4.0
+%define short_version 6.4
 %define short_name qtlanguageserver
 %define tar_name qtlanguageserver-everywhere-src
 %define tar_suffix %{nil}
 #
 Name:           qt6-languageserver
-Version:        6.3.2
+Version:        6.4.0
 Release:        0
 Summary:        Implementation of the Language Server Protocol
 License:        LGPL-3.0-only OR GPL-2.0-or-later
@@ -102,7 +102,7 @@ This library does not have any ABI or API guarantees.
 %{_qt6_mkspecsdir}/modules/qt_lib_languageserver_private.pri
 
 %files -n libQt6JsonRpc6
-%license LICENSE.*
+%license LICENSES/*
 %{_qt6_libdir}/libQt6JsonRpc.so.*
 
 %files -n qt6-jsonrpc-private-devel
