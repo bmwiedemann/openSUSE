@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep 30 23:07:15 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1664522064.8df8ac9:
+  * Avoid mentioning backend files explicitly in codecov config
+  * Add files that are now fully covered to the list in codecov config
+  * Fix missing quotes output in vmx file
+  * Extend tests of IKVM backend
+  * Fix use of interpolation in error message of IPMI backend
+  * Cover `qemu.pm` fully and improve checks for invoked commands
+
+-------------------------------------------------------------------
 Tue Sep 27 16:27:48 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1664296060.b33e5b8:
