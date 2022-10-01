@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Sep 27 10:49:56 UTC 2022 - pgajdos@suse.com
+
+- use upstream
+  https://github.com/cunla/fakeredis-py/pull/51/
+- modified patches
+  % python-fakeredis-no-six.patch (refreshed)
+
+-------------------------------------------------------------------
+Fri Sep 23 13:27:54 UTC 2022 - pgajdos@suse.com
+
+- version update to 1.9.1
+  * Zrange byscore by @cunla in #44
+  * Expire options by @cunla in #46
+  * Enable redis7 support by @cunla in #42 
+- added patches
+  fix https://github.com/cunla/fakeredis-py/issues/50
+  + python-fakeredis-no-six.patch
+
+-------------------------------------------------------------------
 Sat Jun 11 11:17:33 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.8.1

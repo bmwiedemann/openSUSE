@@ -17,19 +17,20 @@
 
 
 Name:           python-fakeredis
-Version:        1.8.1
+Version:        1.9.1
 Release:        0
 Summary:        Fake implementation of redis API for testing purposes
 License:        BSD-3-Clause AND MIT
 URL:            https://github.com//dsoftwareinc/fakeredis
 Source:         https://github.com/dsoftwareinc/fakeredis-py/archive/refs/tags/v%{version}.tar.gz#/fakeredis-%{version}-gh.tar.gz
+# https://github.com/cunla/fakeredis-py/pull/51/
+Patch0:         python-fakeredis-no-six.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-redis
-Requires:       python-six >= 1.16
 Requires:       python-sortedcontainers >= 2.4.0
 Suggests:       (python-aioredis if python-redis < 4.2)
 Suggests:       python-lupa
@@ -42,7 +43,6 @@ BuildRequires:  %{python_module pytest >= 4.0}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module redis}
-BuildRequires:  %{python_module six >= 1.16}
 BuildRequires:  %{python_module sortedcontainers >= 2.4.0}
 # /SECTION
 %python_subpackages
@@ -52,6 +52,7 @@ Fake implementation of redis API for testing purposes.
 
 %prep
 %setup -q -n fakeredis-py-%{version}
+%patch0 -p1
 
 %build
 %pyproject_wheel
