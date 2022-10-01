@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 23 02:15:30 UTC 2022 - william.brown@suse.com
+
+- Update to version 1.0.0~git8.6919af0:
+  * Disable incremental builds as they don't work with sccache and don't help in obs
+
+-------------------------------------------------------------------
 Thu Apr 21 22:31:11 UTC 2022 - William Brown <william.brown@suse.com>
 
 - Add depends on zstd to allow zst compression in rust projects
