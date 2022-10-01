@@ -108,4 +108,12 @@ editors status lines (vim) and WM widgets for specific WMs (awesome, qtile)</com
     <comment></comment>
     <requestid>949910</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2d78a1e1ccc5b5937a4989dd2780f035</srcmd5>
+    <version>2.8.3</version>
+    <time>1664638976</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1007299</requestid>
+  </revision>
 </revisionlist>

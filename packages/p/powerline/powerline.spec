@@ -1,7 +1,7 @@
 #
 # spec file for package powerline
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define powerline_python_sitelib %{python3_sitelib}
 Name:           powerline
-Version:        2.8.2
+Version:        2.8.3
 Release:        0
 Summary:        Status line and prompt utility
 License:        MIT
