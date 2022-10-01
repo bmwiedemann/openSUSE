@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.3.2
-%define short_version 6.3
+%define real_version 6.4.0
+%define short_version 6.4
 %define tar_name qttools-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-tools%{?pkg_suffix}
-Version:        6.3.2
+Version:        6.4.0
 Release:        0
 Summary:        Qt 6 Tools libraries and tools
 # TODO Check if it's still valid
@@ -43,6 +43,8 @@ Source10:       org.qt.designer6.desktop
 Source11:       org.qt.linguist6.desktop
 Source12:       org.qt.qdbusviewer6.desktop
 Source13:       org.qt.assistant6.desktop
+# The 48x48 icon was removed from qttools
+Source14:       linguist6.png
 Source99:       qt6-tools-rpmlintrc
 # clang-devel in Leap 15.3 points to clang7...
 %if 0%{?suse_version} == 1500 && 0%{?sle_version} == 150300
@@ -273,6 +275,7 @@ This library does not have any ABI or API guarantees.
 %autosetup -p1 -n %{tar_name}-%{real_version}%{tar_suffix}
 
 %build
+%define _lto_cflags %{nil}
 %cmake_qt6
 
 %{qt6_build}
@@ -284,6 +287,9 @@ This library does not have any ABI or API guarantees.
 
 %{qt6_link_executables}
 
+# CMake files are not needed for plugins (except for Qt6UiPlugin)
+rm %{buildroot}%{_qt6_cmakedir}/Qt6Designer/*Plugin{Config,Targets}*.cmake
+
 # Unused file. There are no private headers for this library
 rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_linguist_private.pri
 
@@ -291,11 +297,12 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_linguist_private.pri
 %suse_update_desktop_file -i org.qt.assistant6
 %suse_update_desktop_file -i org.qt.designer6
 %suse_update_desktop_file -i org.qt.linguist6
+rm %{buildroot}%{_datadir}/pixmaps/linguist6.png
 %suse_update_desktop_file -i org.qt.qdbusviewer6
 
 # Icons for the desktop files
 install -D -m644 src/designer/src/designer/images/designer.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/designer6.png
-install -D -m644 src/linguist/linguist/images/icons/linguist-48-32.png %{buildroot}%{_datadir}/icons/hicolor/48x48/apps/linguist6.png
+install -D -m644 %{SOURCE14} %{buildroot}%{_datadir}/icons/hicolor/48x48/apps/linguist6.png
 install -D -m644 src/linguist/linguist/images/icons/linguist-128-32.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/linguist6.png
 install -D -m644 src/qdbus/qdbusviewer/images/qdbusviewer.png %{buildroot}%{_datadir}/icons/hicolor/32x32/apps/qdbusviewer6.png
 install -D -m644 src/qdbus/qdbusviewer/images/qdbusviewer-128.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/qdbusviewer6.png
@@ -312,7 +319,7 @@ install -D -m644 src/assistant/assistant/images/assistant-128.png %{buildroot}%{
 %postun -n libQt6UiTools6 -p /sbin/ldconfig
 
 %files
-%license LICENSE.*
+%license LICENSES/*
 %{_bindir}/pixeltool6
 %{_bindir}/qdistancefieldgenerator6
 %{_bindir}/qtdiag6
