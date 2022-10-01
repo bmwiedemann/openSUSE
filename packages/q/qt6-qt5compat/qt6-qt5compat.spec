@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.3.2
-%define short_version 6.3
+%define real_version 6.4.0
+%define short_version 6.4
 %define tar_name qt5compat-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-qt5compat%{?pkg_suffix}
-Version:        6.3.2
+Version:        6.4.0
 Release:        0
 Summary:        Unsupported Qt 5 APIs for Qt 6
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -116,7 +116,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %{_qt6_qmldir}/Qt5Compat/
 
 %files -n libQt6Core5Compat6
-%license LICENSE.*
+%license LICENSES/*
 %{_qt6_libdir}/libQt6Core5Compat.so.*
 
 %files devel
