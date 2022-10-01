@@ -117,7 +117,7 @@ BuildRequires:  pkgconfig(libsystemd)
 # Due to a limitation in openSUSE's Go packaging we cannot have a BuildRequires
 # for 'golang(API) >= 1.17' here, so just require 1.17 exactly. bsc#1172608
 BuildRequires:  go1.17
-Requires:       apparmor-parser
+Requires:       (apparmor-parser or container-selinux)
 Requires:       ca-certificates-mozilla
 # The docker-proxy binary used to be in a separate package. We obsolete it,
 # since now docker-proxy is maintained as part of this package.
@@ -140,6 +140,12 @@ Requires:       xz >= 4.9
 Requires(post): %fillup_prereq
 Requires(post): udev
 Requires(post): shadow
+# This recommends is added to make sure that even if you have container-selinux
+# installed you will still be prompted to install apparmor-parser which Docker
+# requires to apply AppArmor profiles (for SELinux systems this doesn't matter
+# but if you switch back to AppArmor on reboot this would result in insecure
+# containers).
+Recommends:     apparmor-parser
 # Not necessary, but must be installed when the underlying system is
 # configured to use lvm and the user doesn't explicitly provide a
 # different storage-driver than devicemapper

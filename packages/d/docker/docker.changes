@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Sep 29 08:40:35 UTC 2022 - Aleksa Sarai <asarai@suse.com>
+
+- Add apparmor-parser as a Recommends to make sure that most users will end up
+  with it installed even if they are primarily running SELinux.
+
+-------------------------------------------------------------------
+Thu Sep 29 07:27:03 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Fix syntax of boolean dependency
+
+-------------------------------------------------------------------
+Thu Jul 28 07:42:33 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
+
+- Allow to install container-selinux instead of apparmor-parser.
+
+-------------------------------------------------------------------
 Wed Jun 29 12:19:55 UTC 2022 - Aleksa Sarai <asarai@suse.com>
 
 - Backport <https://github.com/containerd/fifo/pull/32> to fix a crash-on-start
