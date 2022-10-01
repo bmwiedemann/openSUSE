@@ -1,7 +1,7 @@
 #
 # spec file for package nghttp2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,8 +28,11 @@
 %define psuffix %{nil}
 %bcond_with python
 %endif
+# libnghttp2_asio has been deprecated in this repository due to maintenance
+# issue and will be removed at the end of 2022
+%bcond_with asio
 Name:           nghttp2%{psuffix}
-Version:        1.49.0
+Version:        1.50.0
 Release:        0
 Summary:        Implementation of Hypertext Transfer Protocol version 2 in C
 License:        MIT
@@ -147,7 +150,7 @@ autoreconf -fiv
 %configure \
   --disable-static        \
   --disable-silent-rules  \
-  --enable-asio-lib       \
+  %{?with_asio:--enable-asio-lib} %{!?with_asio: --disable-asio-lib} \
   --enable-app            \
 %if %{with python}
   --enable-python-bindings \
@@ -186,9 +189,11 @@ rm -rf %{buildroot}%{_mandir}/man1/* \
 
 %if !%{with python}
 %post -n %{soname}-%{sover} -p /sbin/ldconfig
-%post -n %{soname_asio}%{sover_asio} -p /sbin/ldconfig
 %postun -n %{soname}-%{sover} -p /sbin/ldconfig
+%if %{with asio}
+%post -n %{soname_asio}%{sover_asio} -p /sbin/ldconfig
 %postun -n %{soname_asio}%{sover_asio} -p /sbin/ldconfig
+%endif
 %endif
 
 %if %{with python}
@@ -209,21 +214,23 @@ rm -rf %{buildroot}%{_mandir}/man1/* \
 %license COPYING
 %{_libdir}/%{soname}.so.%{sover}*
 
-%files -n %{soname_asio}%{sover_asio}
-%license COPYING
-%{_libdir}/%{soname_asio}.so.%{sover_asio}*
-
 %files -n %{soname}-devel
 %dir %{_includedir}/%{name}/
 %{_includedir}/%{name}/%{name}*.h
 %{_libdir}/%{soname}.so
 %{_libdir}/pkgconfig/%{soname}.pc
 
+%if %{with asio}
+%files -n %{soname_asio}%{sover_asio}
+%license COPYING
+%{_libdir}/%{soname_asio}.so.%{sover_asio}*
+
 %files -n %{soname_asio}-devel
 %dir %{_includedir}/%{name}/
 %{_includedir}/%{name}/asio_http2*.h
 %{_libdir}/%{soname_asio}.so
 %{_libdir}/pkgconfig/%{soname_asio}.pc
+%endif
 %endif
 
 %changelog
