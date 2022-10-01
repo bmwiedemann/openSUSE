@@ -17,7 +17,7 @@
 
 
 Name:           cargo-packaging
-Version:        1.0.0~git7.63c3500
+Version:        1.0.0~git8.6919af0
 Release:        0
 BuildArch:      noarch
 Summary:        Some macros to assist with cargo and rust packaging
