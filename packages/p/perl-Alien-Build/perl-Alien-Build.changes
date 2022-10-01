@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Sep 24 03:06:05 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.70
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  2.70      2022-09-23 06:27:39 -0600
+
+  2.69_01   2022-09-20 18:00:17 -0600
+    - Documentation improvements (gh#370)
+    - Added meta.platform.cpu.count and meta.platform.cpu.arch.name
+      properties (gh#371 zmughal++)
+
+-------------------------------------------------------------------
 Tue Sep  6 03:06:13 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.68
