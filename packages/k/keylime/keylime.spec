@@ -27,7 +27,7 @@
   %define _config_norepl %config(noreplace)
 %endif
 Name:           keylime
-Version:        6.4.2
+Version:        6.5.0
 Release:        0
 Summary:        Open source TPM software for Bootstrapping and Maintaining Trust
 License:        Apache-2.0 AND MIT
@@ -37,8 +37,11 @@ Source1:        keylime.xml
 Source2:        %{name}-user.conf
 Source3:        logrotate.%{name}
 Source4:        tmpfiles.%{name}
-# PATCH-FIX-OPENSUSE keylime.conf.diff
-Patch1:         keylime.conf.diff
+# openSUSE adjustments for generated configuration files
+Source10:       agent.conf.diff
+Source11:       registrar.conf.diff
+Source12:       verifier.conf.diff
+BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  firewall-macros
@@ -78,7 +81,7 @@ Requires:       python3-%{name} = %{version}
 Conflicts:      rust-keylime
 
 %description -n %{name}-config
-Subpackage of %{name} for the shared configuration file of the agent
+Subpackage of %{name} for the shared configuration files for the agent
 and the server components.
 
 %package -n %{name}-firewalld
@@ -93,6 +96,8 @@ Subpackage of %{name} for the firewalld XML service file.
 Summary:        Certify store for the TPM
 Requires:       python3-%{name} = %{version}
 Conflicts:      rust-keylime
+Provides:       user(keylime)
+%sysusers_requires
 
 %description -n %{name}-tpm_cert_store
 Subpackage of %{name} for storing the TPM certificates.
@@ -134,13 +139,24 @@ Conflicts:      rust-keylime
 %description -n %{name}-verifier
 Subpackage of %{name} for verifier service.
 
+%package -n %{name}-tenant
+Summary:        Keylime tenant command line tool
+Requires:       %{name}-config = %{version}
+Requires:       %{name}-tpm_cert_store = %{version}
+Requires:       python3-%{name} = %{version}
+Recommends:     %{name}-firewalld = %{version}
+Conflicts:      rust-keylime
+
+%description -n %{name}-tenant
+Subpackage of %{name} for tenant command line tool.
+
 %package -n %{name}-logrotate
 Summary:        Logrotate for Keylime servies
 Requires:       logrotate
 Conflicts:      rust-keylime
 
 %description -n %{name}-logrotate
-Subpacakge of %{name} for logrotate for Keylime services
+Subpackage of %{name} for logrotate for Keylime services
 
 %prep
 %autosetup -p1 -n %{name}-v%{version}
@@ -153,6 +169,12 @@ Subpacakge of %{name} for logrotate for Keylime services
 export VERSION=%{version}
 %python_install
 
+%{python_expand # Patch the generated configuration files
+patch -s --fuzz=0 %{buildroot}%{$python_sitelib}/%{srcname}/config/agent.conf < %{SOURCE10}
+patch -s --fuzz=0 %{buildroot}%{$python_sitelib}/%{srcname}/config/registrar.conf < %{SOURCE11}
+patch -s --fuzz=0 %{buildroot}%{$python_sitelib}/%{srcname}/config/verifier.conf < %{SOURCE12}
+}
+
 %python_clone -a %{buildroot}%{_bindir}/%{srcname}_verifier
 %python_clone -a %{buildroot}%{_bindir}/%{srcname}_registrar
 %python_clone -a %{buildroot}%{_bindir}/%{srcname}_agent
@@ -164,7 +186,12 @@ export VERSION=%{version}
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-install -Dpm 0600 %{srcname}.conf %{buildroot}%{_distconfdir}/%{srcname}.conf
+%{python_expand # Install configuration files
+for cfg in %{buildroot}%{$python_sitelib}/%{srcname}/config/*.conf; do
+  install -Dpm 0600 "$cfg" %{buildroot}%{_distconfdir}/%{srcname}/$(basename "$cfg")
+done
+}
+
 install -Dpm 0644 ./services/%{srcname}_agent.service %{buildroot}%{_unitdir}/%{srcname}_agent.service
 install -Dpm 0644 ./services/%{srcname}_agent_secure.mount %{buildroot}%{_unitdir}/var-lib-%{srcname}-secure.mount
 install -Dpm 0644 ./services/%{srcname}_verifier.service %{buildroot}%{_unitdir}/%{srcname}_verifier.service
@@ -218,7 +245,7 @@ cp -r ./tpm_cert_store %{buildroot}%{_sharedstatedir}/%{srcname}/
 %service_add_post %{srcname}_verifier.service
 
 %preun -n %{srcname}-verifier
-%service_del_preun %{srcname}_agent.service
+%service_del_preun %{srcname}_verifier.service
 
 %postun -n %{srcname}-verifier
 %service_del_postun %{srcname}_verifier.service
@@ -265,7 +292,9 @@ cp -r ./tpm_cert_store %{buildroot}%{_sharedstatedir}/%{srcname}/
 %{python_sitelib}/*
 
 %files -n %{srcname}-config
-%_config_norepl %attr (0600,keylime,tss) %{_distconfdir}/%{srcname}.conf
+%dir %attr(0700,keylime,tss) %{_distconfdir}/%{srcname}
+%_config_norepl %attr (0600,keylime,tss) %{_distconfdir}/%{srcname}/ca.conf
+%_config_norepl %attr (0600,keylime,tss) %{_distconfdir}/%{srcname}/logging.conf
 
 %files -n %{srcname}-firewalld
 %dir %{_prefix}/lib/firewalld
@@ -274,8 +303,8 @@ cp -r ./tpm_cert_store %{buildroot}%{_sharedstatedir}/%{srcname}/
 
 %files -n %{srcname}-tpm_cert_store
 %dir %attr(0700,keylime,tss) %{_sharedstatedir}/%{srcname}
-%dir %{_sharedstatedir}/%{srcname}/tpm_cert_store
-%{_sharedstatedir}/%{srcname}/tpm_cert_store/*
+%dir %attr(0700,keylime,tss) %{_sharedstatedir}/%{srcname}/tpm_cert_store
+%attr(0600,keylime,tss) %{_sharedstatedir}/%{srcname}/tpm_cert_store/*
 # We use this subpackage to store other unrelated things, as far as is
 # required by all the services
 %{_sysusersdir}/%{srcname}-user.conf
@@ -283,14 +312,24 @@ cp -r ./tpm_cert_store %{buildroot}%{_sharedstatedir}/%{srcname}/
 %{_tmpfilesdir}/%{srcname}.conf
 
 %files -n %{srcname}-agent
+%dir %attr(0700,keylime,tss) %{_distconfdir}/%{srcname}
+%_config_norepl %attr (0600,keylime,tss) %{_distconfdir}/%{srcname}/agent.conf
 %{_unitdir}/%{srcname}_agent.service
 %{_unitdir}/var-lib-%{srcname}-secure.mount
 
 %files -n %{srcname}-registrar
+%dir %attr(0700,keylime,tss) %{_distconfdir}/%{srcname}
+%_config_norepl %attr (0600,keylime,tss) %{_distconfdir}/%{srcname}/registrar.conf
 %{_unitdir}/%{srcname}_registrar.service
 
 %files -n %{srcname}-verifier
+%dir %attr(0700,keylime,tss) %{_distconfdir}/%{srcname}
+%_config_norepl %attr (0600,keylime,tss) %{_distconfdir}/%{srcname}/verifier.conf
 %{_unitdir}/%{srcname}_verifier.service
+
+%files -n %{srcname}-tenant
+%dir %attr(0700,keylime,tss) %{_distconfdir}/%{srcname}
+%_config_norepl %attr (0600,keylime,tss) %{_distconfdir}/%{srcname}/tenant.conf
 
 %files -n %{srcname}-logrotate
 %_config_norepl %{_distconfdir}/logrotate.d/%{srcname}

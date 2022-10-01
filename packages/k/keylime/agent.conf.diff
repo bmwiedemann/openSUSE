@@ -1,0 +1,55 @@
+--- agent.conf.ORIG	2022-09-26 10:45:14.032956447 +0200
++++ agent.conf	2022-09-26 10:56:45.789550501 +0200
+@@ -14,10 +14,12 @@
+ # 'dmidecode -s system-uuid'.
+ # If you set this to "hostname", Keylime will use the full qualified domain
+ # name of current host as the agent id.
+-uuid = d432fbb3-d2f1-4a97-9ef7-75bd81c00000
++# uuid = d432fbb3-d2f1-4a97-9ef7-75bd81c00000
++uuid = hostname
+ 
+ # The binding address and port for the agent server
+-ip = 127.0.0.1
++# ip = 127.0.0.1
++ip = 0.0.0.0
+ port = 9002
+ 
+ # Address and port where the verifier and tenant can connect to reach the agent.
+@@ -26,7 +28,8 @@
+ contact_port = 9002
+ 
+ # The address and port of registrar server which agent communicate with
+-registrar_ip = 127.0.0.1
++# registrar_ip = 127.0.0.1
++registrar_ip = <REMOTE_IP>
+ registrar_port = 8890
+ 
+ # Enable mTLS communication between agent, verifier and tenant.
+@@ -100,7 +103,8 @@
+ enable_revocation_notifications = True
+ 
+ # The IP to listen for revocation notifications via ZeroMQ
+-revocation_notification_ip = 127.0.0.1
++# revocation_notification_ip = 127.0.0.1
++revocation_notification_ip = <REMOTE_IP>
+ 
+ # The port to listen for revocation notifications via ZeroMQ
+ revocation_notification_port = 8992
+@@ -151,7 +155,8 @@
+ 
+ # List of hash algorithms used for PCRs
+ # Accepted values: sha512, sha384, sha256, sha1
+-tpm_hash_alg = sha1
++# tpm_hash_alg = sha1
++tpm_hash_alg = sha256
+ 
+ # List of encryption algorithms to use with the TPM
+ # Accepted values: ecc, rsa
+@@ -182,5 +187,5 @@
+ # If cv_ca directory exists:
+ # chown keylime /var/lib/keylime/cv_ca
+ # chown keylime /var/lib/keylime/cv_ca/cacert.crt
+-run_as = 
+-
++# run_as = 
++run_as = keylime:tss

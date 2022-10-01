@@ -1,4 +1,108 @@
 -------------------------------------------------------------------
+Mon Sep 26 07:15:17 UTC 2022 - aplanas@suse.com
+
+- Remove keylime.conf.diff patch.  Now the configuration file is
+  generated during build time
+- The "config" subpackage shared only the logger configuration file
+- New "tenant" subpackage for the Tenant command line tool
+- Drop webapp service port in firewall XML service file
+- Update to version v6.5.0:
+  * Bump up versions to 6.5.0
+  * Enable testing of Rust agent as well as Python by default
+  * New readthedocs location for keylime
+  * test_restful: Add test for /keys/verify endpoint to rust tests
+  * test_restful: Fix testing with rust agent
+  * run_tests: Install rust agent when RUST_TEST is defined
+  * A fix for "per-agent verifier-issued epoch timestamp"
+  * Move SQLite ref integrity pragma to keylime_db
+  * Separate CA key store password from server key password
+  * Generate missing key and certificates
+  * verifier: Add a configuration option to set timeouts
+  * config: Change default value for getfloat() to -1.0
+  * tenant: Add request_timeout configuration option
+  * tpm_main: Move agent specific initialization to tpm_init()
+  * failure: Do not read the verifier config on load
+  * logging, verifier: Read configuration only when needed
+  * tpm_ek_ca: Access tenant config file when needed
+  * tpm_main: Only access agent configuration if needed
+  * keylime_agent: Use a single tpm instance
+  * config: Evaluate snippets in /usr/etc/keylime before /etc/keylime
+  * Remove ignore_hostname argument from RequestsClient() calls
+  * requests_client: Ignore hostname verification by default
+  * web_util: Remove unneeded checks for absolute paths before joining
+  * requests_client: remove RequestClient class variables
+  * elchecking/policies: Use config.getlist() for measured_boot_imports
+  * mappings: Add back missing option measured_boot_imports to verifier config
+  * verifier: Fail earlier if mTLS cert is missing when required
+  * crypto: Replace if block with conditional argument passing
+  * config: Drop unused getdict()
+  * config: Use python generator to strip strings in the list
+  * verifier: Drop 'cloud' from 'cloudverifier_' variables
+  * verifier: Always generate TLS context to contact the agent
+  * ca_util: Replace if block with conditional argument
+  * Drop broken auto-ipsec demos
+  * tenant: Do not disable TLS when enable_agent_mtls = False
+  * test_config: Reload configuration on tearDown
+  * Change the meaning of trusted_client_ca=default for the agent
+  * Install configuration files in test scripts
+  * Add jinja2 as requirement for building and testing
+  * tenant: Fix mention to old configuration section
+  * tenant, verifier: Fix mTLS disablement
+  * tenant: Do not try to verify EK cert when not required
+  * Adjust test_restful to use the new configuration file
+  * ima: Do not try to read excludelist if it is None
+  * tenant: Use empty tpm_policy by default
+  * Read measured boot configuration when needed
+  * Add support for password encrypted keys
+  * Change owner of config files and fix sed command in services installer
+  * installer: Build and install split configuration files
+  * Fix configuration unit tests
+  * Remove trailing and leading white spaces in config.get_list()
+  * Make changes to use the new configuration files
+  * Add script to convert old config to new config
+  * Ignore false positive for lints
+  * Implement additional test to cover in-use deletion case
+  * Enable referential integrity for foreign keys in Keylime DB
+  * Prevent deletion of in-use allowlists via tenant + better error handling
+  * Fixes #1046 by explicitly and carefully dealing with a corner case.
+  * Fixes #1072 by explicitly and carefully dealing with yet another corner case.
+  * Define context agent due to keylime-tests PR#193
+  * Adds two small utilities which are used by "Offline Attestation" (enhancement #73)
+  * This commit solves #1091 by adding a per-agent verifier-issued epoch timestamp
+  * Remove keylime-bot
+  * Verifier log message improvements for large-scale testing.
+  * Bump version to 6.4.3
+  * KEYLIME_DIR should not be clobbered in TEST_MODE
+  * registrar: parse EK cert with pyasn1
+  * Reject invalid hash algorithms passed as arguments
+  * Treat tpm_cert_store as absolute path
+  * Fix for cloudverifier_tornado: 408 ('timeout') errors are retried instead of causing immediate attestation failure
+  * Typo fix: the two certificates got copied over each other during the openssl process by mistake.
+  * I downloaded the certs from here:
+  * Remove cryptodome.py from keylime
+  * Refactor allowlist handling on verifier to prevent premature DB writes
+  * With this change, the `verifier` will now use the `tpm2_print` command to extract clock information from the quote. It will then uses this information to make decisions about the attestation of the agent (i.e., the quote timestamp has to monotonically grow in a TPM which wasn't restarted/reset). In order to make this comparison the clock information from the previous quote is stored on the database and then both timestamps are compared.
+  * tpm_ek_ca: remove atmel keys
+  * Throw an error if --exclude is used without --allowlist
+  * Complete implementation of the Allowlists API
+  * readme: minor fixes
+  * Handle output file and algo validation errors
+  * Fixes #1063 in a minimalistic way, by making log output configurable
+  * Fix spacing
+  * Update fmf plans to run test which checking tenant verify options
+  * Fixes #1057 ensuring that the verifier can be restarted cleanly when mTLS for agents is disabled
+  * Adds a per-agent counter for "successfull attestations" on Keylime.
+  * Replace tabs with spaces
+  * Keep original control structure, minimize change
+  * Update installer.sh for RHEL8, PowerTools
+  * Set swtpm context which is later used for test filtering
+  * Update fmf plans to run tests which checking ek_certs
+  * Minor fixes
+  * Expand documentation for Measured Boot with additional info/examples.
+  * Fix the project logo in the readme (#1049)
+  * Add docs status to README
+
+-------------------------------------------------------------------
 Fri Jul 15 08:31:50 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Replace python-gpg requirement

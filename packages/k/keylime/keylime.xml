@@ -2,7 +2,6 @@
 <service>
   <short>Keylime</short>
   <description>Keylime is a remote attestation tool that requires access to several ports.</description>
-  <port protocol="tcp" port="443"/><!-- Webapp -->
   <port protocol="tcp" port="8881"/><!-- Verifier -->
   <port protocol="tcp" port="8890"/><!-- Registrar -->
   <port protocol="tcp" port="8891"/><!-- Registrar TLS -->
