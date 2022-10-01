@@ -1,7 +1,7 @@
 #
 # spec file for package libXxf86vm
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,26 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           libXxf86vm
 %define lname	libXxf86vm1
-Version:        1.1.4
+Name:           libXxf86vm
+Version:        1.1.5
 Release:        0
 Summary:        XFree86-VidMode X extension library
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            http://xorg.freedesktop.org/
-
+URL:            https://xorg.freedesktop.org/
 #Git-Clone:	git://anongit.freedesktop.org/xorg/lib/libXxf86vm
 #Git-Web:	http://cgit.freedesktop.org/xorg/lib/libXxf86vm/
-Source:         http://xorg.freedesktop.org/releases/individual/lib/%{name}-%{version}.tar.bz2
+Source:         https://xorg.freedesktop.org/releases/individual/lib/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #git#BuildRequires:	autoconf >= 2.60, automake, libtool
 BuildRequires:  fdupes
+BuildRequires:  grep
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(x11) >= 1.6
 BuildRequires:  pkgconfig(xext)
@@ -45,11 +44,11 @@ These functions provide aninterface to the server extension
 XFree86-VidModeExtension which allows the video modes to be queried
 and adjusted dynamically and mode switching to be controlled.
 
-%package -n %lname
+%package -n %{lname}
 Summary:        XFree86-VidMode X extension library
 Group:          System/Libraries
 
-%description -n %lname
+%description -n %{lname}
 These functions provide aninterface to the server extension
 XFree86-VidModeExtension which allows the video modes to be queried
 and adjusted dynamically and mode switching to be controlled.
@@ -57,7 +56,7 @@ and adjusted dynamically and mode switching to be controlled.
 %package devel
 Summary:        Development files for the XFree86-VidMode X extension library
 Group:          Development/Libraries/C and C++
-Requires:       %lname = %version
+Requires:       %{lname} = %{version}
 
 %description devel
 These functions provide aninterface to the server extension
@@ -65,33 +64,31 @@ XFree86-VidModeExtension which allows the video modes to be queried
 and adjusted dynamically and mode switching to be controlled.
 
 This package contains the development headers for the library found
-in %lname.
+in %{lname}.
 
 %prep
 %setup -q
 
 %build
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
-make install DESTDIR="%buildroot"
-rm -f "%buildroot/%_libdir"/*.la
-%fdupes %buildroot/%_prefix
+%make_install
+find %{buildroot} -type f -name "*.la" -delete -print
+%fdupes %{buildroot}/%{_prefix}
 
-%post -n %lname -p /sbin/ldconfig
+%post -n %{lname} -p /sbin/ldconfig
+%postun -n %{lname} -p /sbin/ldconfig
 
-%postun -n %lname -p /sbin/ldconfig
-
-%files -n %lname
-%defattr(-,root,root)
-%_libdir/libXxf86vm.so.1*
+%files -n %{lname}
+%license COPYING
+%{_libdir}/libXxf86vm.so.1*
 
 %files devel
-%defattr(-,root,root)
-%_includedir/X11/*
-%_libdir/libXxf86vm.so
-%_libdir/pkgconfig/xxf86vm.pc
-%_mandir/man3/*
+%{_includedir}/X11/*
+%{_libdir}/libXxf86vm.so
+%{_libdir}/pkgconfig/xxf86vm.pc
+%{_mandir}/man3/*
 
 %changelog

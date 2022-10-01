@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Sep 29 19:21:39 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- modernize spec file, add license 
+
+-------------------------------------------------------------------
+Tue Sep 27 09:40:35 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.1.5
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * Fix -Wsign-compare warning
+  * Variable scope reductions as suggested by cppcheck
+  * Update GetOldReq to use _XGetRequest()
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * autogen.sh: use exec instead of waiting for configure to finish
+
+-------------------------------------------------------------------
 Mon Mar  9 10:06:42 UTC 2015 - sndirsch@suse.com
 
 - added baselibs.conf as source to specfile in order to make
