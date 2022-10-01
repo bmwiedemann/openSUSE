@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Oct  1 13:19:07 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- update version 5.0.19
+  * workaround GTK4 bug 5200 that affects input method engines that
+    commit strings and keep the state at the same time. specifically
+    hangul / table(wubi etc) in chinese-addons and some m17n engines
+
+-------------------------------------------------------------------
 Wed Sep 21 13:57:15 UTC 2022 - Marguerite Su <i@marguerite.su>
 
 - update version 5.0.18
