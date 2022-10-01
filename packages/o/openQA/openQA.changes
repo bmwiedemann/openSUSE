@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Sep 30 18:56:59 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1664521936.e5f3b8b:
+  * codecov: Bump thresholds to current coverage
+  * Refactor listing job_templates
+  * Limit listing of job_templates to avoid timeouts
+  * Add bugzilla link for ALP in webUI
+  * Document GitHub user setup for nightly jobs
+  * Delete unused route 'tests export'
+  * Dependency cron 2022-09-28
+
+-------------------------------------------------------------------
 Wed Sep 28 09:53:36 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1664284663.969184c:
