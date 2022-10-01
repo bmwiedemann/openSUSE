@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Sep 29 08:25:06 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Add patch to fix build with readline 8.2:
+  * gdb-add-support-for-readline-8.2.patch
+
+-------------------------------------------------------------------
+Wed Sep 28 11:50:45 UTC 2022 - Tom de Vries <tdevries@suse.com>
+
+- Patches added:
+  * gdb-testsuite-fix-gdb.mi-mi-sym-info.exp-on-opensuse-tumbleweed.patch
+- Maintenance script qa.sh:
+  * Add PR26873 kfails.
+
+-------------------------------------------------------------------
+Fri Sep 23 09:46:57 UTC 2022 - Tom de Vries <tdevries@suse.com>
+
+- Maintenance script qa-remote.sh:
+  * Make rpm matching yet more precise.
+- Update patch:
+  * gdb-tdep-fix-powerpc-ieee-128-bit-format-arg-passing.patch
+- Add patches:
+  * gdb-handle-pending-c-after-rl_callback_read_char.patch
+  * gdb-testsuite-fix-have_mpx-test.patch
+  * gdb-symtab-fix-handling-of-dw_tag_unspecified_type.patch
+  * gdb-testsuite-fix-gdb.dwarf2-dw2-unspecified-type-foo.c-with-m32.patch
+
+-------------------------------------------------------------------
 Thu Sep 22 13:38:31 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - use python3-xml if python is python3
