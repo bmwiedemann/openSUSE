@@ -226,4 +226,12 @@
 - Bump version to 5.1 for easy provides/obsoletes in patterns-kubernetes</comment>
     <requestid>982845</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>f39f47136313242ce6da114a1f7d61a4</srcmd5>
+    <version>5.1</version>
+    <time>1664638904</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1006367</requestid>
+  </revision>
 </revisionlist>

@@ -45,7 +45,7 @@ Obsoletes:      patterns-caasp-container-runtime <= 4.0
 Requires:       containers-systemd
 Requires:       podman
 Requires:       podman-cni-config
-Requires:       toolbox
+Requires:       (distrobox if patterns-microos-desktop-common else toolbox)
 Requires:       pattern() = basesystem
 
 %description container_runtime

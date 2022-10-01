@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 27 06:57:18 UTC 2022 - Attila Pinter <adathor@opensuse.org>
+
+- Added Boolean operator to install distrobox if  patterns-microos-desktop-common, 
+  but install toolbox if patterns-microos-desktop-common is not installed
+
+-------------------------------------------------------------------
 Wed Jun 15 12:19:13 UTC 2022 - Richard Brown <rbrown@suse.com>
 
 - Remove kubernetes patterns, now found in patterns-kubernetes
