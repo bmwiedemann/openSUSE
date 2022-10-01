@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Sep 23 11:06:44 UTC 2022 - dimstar@opensuse.org
+
+- Update to version 84.87+git20220922.95e4f0a:
+  * Follow symlinks to infer which packages to keep
+  * Convert egrep/fgrep calls to grep -E/-F, respectively
+  * code cleanup
+  * update 50-check-kernel-build-id for compression and location of kernels
+  * reduce work in installtest script
+  * use predictable C locale for rpm listing
+  * Speedup check-lanana
+  * 50-check-kernel-build-id: handle riscv64
+
+-------------------------------------------------------------------
 Mon Mar 28 08:58:22 UTC 2022 - meissner@suse.com
 
 - Update to version 84.87+git20220325.f46ef3c:
