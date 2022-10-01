@@ -20,7 +20,7 @@
 # NEP 29: python36-numpy and -scipy are no longer available in TW
 %define         skip_python36 1
 Name:           python-emcee
-Version:        3.1.2
+Version:        3.1.3
 Release:        0
 Summary:        Python affine-invariant ensemble MCMC sampling
 License:        MIT
@@ -67,6 +67,7 @@ http://cims.nyu.edu/~weare/papers/d13.pdf
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS.rst README.rst
-%{python_sitelib}/*
+%{python_sitelib}/emcee
+%{python_sitelib}/emcee-%{version}-py*.egg-info
 
 %changelog
