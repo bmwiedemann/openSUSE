@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.3.2
-%define short_version 6.3
+%define real_version 6.4.0
+%define short_version 6.4
 %define tar_name qtwebview-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-webview%{?pkg_suffix}
-Version:        6.3.2
+Version:        6.4.0
 Release:        0
 Summary:        Qt 6 WebView library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -148,7 +148,7 @@ rm %{buildroot}%{_qt6_cmakedir}/Qt6WebView/*Plugin*.cmake
 %{_qt6_qmldir}/QtWebView/
 
 %files -n libQt6WebView6
-%license LICENSE.*
+%license LICENSES/*
 %{_qt6_libdir}/libQt6WebView.so.*
 
 %files devel
