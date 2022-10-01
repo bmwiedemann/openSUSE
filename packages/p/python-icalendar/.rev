@@ -320,4 +320,16 @@
     ``to_ical`` calls.</comment>
     <requestid>927592</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>11e9b9af32882f05d3fc4a7578292b94</srcmd5>
+    <version>4.1.0</version>
+    <time>1664639048</time>
+    <user>RBrownFactory</user>
+    <comment>- update to 4.1.0:
+  - No longer test on Python 3.4, 3.5 and PyPy2, because we cannot get it to work.
+    Technically it should still work, it is just no longer tested.
+    Do not expect much development on branch 4.x anymore.
+    The master branch will be for the remaining Python versions that we support.</comment>
+    <requestid>1007443</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2011 open-slx GmbH <Sascha.Manns@open-slx.de>
 # Copyright (c) 2009 - 7/2011 Sascha Manns <saigkill@opensuse.org>
 #
@@ -21,7 +21,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define	modname icalendar
 Name:           python-%{modname}
-Version:        4.0.9
+Version:        4.1.0
 Release:        0
 Summary:        Python parser/generator of iCalendar files package
 License:        BSD-2-Clause
