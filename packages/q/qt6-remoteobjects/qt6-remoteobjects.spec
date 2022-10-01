@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.3.2
-%define short_version 6.3
+%define real_version 6.4.0
+%define short_version 6.4
 %define tar_name qtremoteobjects-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-remoteobjects%{?pkg_suffix}
-Version:        6.3.2
+Version:        6.4.0
 Release:        0
 Summary:        Qt6 RemoteObjects Library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -149,7 +149,7 @@ rm %{buildroot}%{_qt6_pkgconfigdir}/Qt6RepParser.pc
 %{_qt6_qmldir}/QtRemoteObjects
 
 %files -n libQt6RemoteObjects6
-%license LICENSE.*
+%license LICENSES/*
 %{_qt6_libdir}/libQt6RemoteObjects.so.*
 
 %files devel
