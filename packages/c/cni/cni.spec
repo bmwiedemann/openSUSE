@@ -31,10 +31,10 @@ URL:            https://github.com/containernetworking/cni
 Source0:        %{name}-%{version}.tar.gz
 Source1:        99-loopback.conf
 Source2:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.14
 BuildRequires:  golang-packaging
 BuildRequires:  shadow
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  golang(API) >= 1.14
 Requires(post): %fillup_prereq
 Recommends:     cni-plugins
 %{?systemd_requires}
