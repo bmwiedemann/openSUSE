@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Sep 17 03:06:20 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.004002
+   see /usr/share/doc/packages/perl-Exporter-Tiny/Changes
+
+  1.004002	2022-09-16
+   [ Test Suite ]
+   - Fix for t/15nonhashvalue.t on old versions of Test::More which don't
+     support `done_testing`.
+  1.004001	2022-09-09
+   [ Bug Fixes ]
+   - Fix handling of non-hashref references in import list.
+
+-------------------------------------------------------------------
 Sat Aug 27 03:06:15 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.004000
