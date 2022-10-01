@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Wed Sep 21 02:01:16 UTC 2022 - asarai@suse.com
+
+- Update to version 4.2.1:
+  * Bump to v4.2.1
+  * Add release notes for v4.2.1
+  * remove SkipIfNotFedora() from events test
+  * fix podman events with custom format
+  * Drop stale config value resulting in asymmetric config
+  * Fix list of default capabilities
+  * Add container GID to additional groups
+  * libpod: Ensure that generated container names are random
+  * Fix bind-mount-option annotation in gen/play kube
+  * Improved Windows compatibility for machine command
+  * updated apiv2 tests to reflect hash compat fix
+  * api: return imageID instead of imageName, for "Image" when Podman API is queried
+  * Inhibit SIGTERM during Conmon startup
+  * Fix example sections to follow the same format
+  * Fix template name inconsistency
+  * service: make move to sub-cgroup non fatal
+  * Remove duplicate annotations in generated service yaml
+  * Compat API image remove events now have 'delete' status
+  * [CI:DOCS] Automatically set podman version in pkginstaller
+  * Allow colons in windows file paths
+  * Fixes isRootfull check using qemu machine on Windows
+  * vendor containers/psgo@v1.7.3
+  * Allow podman to run in an environment with keys containing spaces
+  * Document restrictions on transport in FROM
+  * Improved Windows compatibility
+  * pass environment variables to container clone
+  * podman save: update --compress validation
+  * sort hc.Binds returned from compat api
+  * Cirrus: Update podman-machine comment
+  * podman images and friends can take one image as argument
+  * [CI:DOCS] Add .DS_Store to gitignore
+  * podman-kube@.service.in: Remove Restart=never option with typo
+  * Fix #15499 already connected network
+  * [CI:DOCS] Cirrus: Update meta-task for EC2 image
+  * fix CI: remove hardcodeded alpine version
+  * fix CI: remove hardcodeded alpine version
+  * Preserve all unknown PolicyRequirement fields on (podman image trust set)
+  * Reorganize the types in policy.go a bit
+  * Add support for showing keyPaths in (podman image trust show)
+  * Support (image trust show) for sigstoreSigned entries
+  * BREAKING CHANGE: Change how (podman image trust show) represents multiple requirements
+  * Reorganize descriptionsOfPolicyRequirements a bit
+  * Use the full descriptionsOfPolicyRequirements for the default scope
+  * Rename haveMatchRegistry to registriesDConfigurationForScope
+  * Rename tempTrustShowOutput to entry
+  * Split descriptionsOfPolicyRequirements out of getPolicyShowOutput
+  * Recognize the new lookaside names for simple signing sigstore
+  * Add a unit test for trust.PolicyDescription
+  * Make the output of (podman image trust show) deterministic
+  * Make most of pkg/trust package-private
+  * Move most of ImageEngine.ShowTrust into pkg/trust.PolicyDescription
+  * Add support for sigstoreSigned in (podman image trust set)
+  * Create new policy entries together with validating input
+  * Improve validation of data in ImageEngine.SetTrust
+  * Move most of imageEngine.SetTrust to pkg/trust.AddPolicyEntries
+  * Add a variable for scope
+  * Make trust.CreateTempFile private
+  * Reorganize pkg/trust
+  * Remove an unused trust.ShowOutput type
+  * Remove commented out code
+  * libpod: UpdateContainerStatus: do not wait for container
+  * Skip / update some tests under runc
+  * Bump to v4.2.1-dev
+  * test: update apply-podman-deltas for new tests
+  * build: implement --cache-to,--cache-from and --cache-ttl
+  * vendor: bump buildah to v1.27.0
+
+-------------------------------------------------------------------
 Thu Aug 11 08:50:55 UTC 2022 - michael@stroeder.com
 
 - Update to version 4.2.0:
