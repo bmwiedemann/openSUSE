@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.3.2
-%define short_version 6.3
+%define real_version 6.4.0
+%define short_version 6.4
 %define tar_name qtshadertools-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,17 +27,13 @@
 %endif
 #
 Name:           qt6-shadertools%{?pkg_suffix}
-Version:        6.3.2
+Version:        6.4.0
 Release:        0
 Summary:        Qt 6 ShaderTools library
 License:        GPL-3.0-or-later
 URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-shadertools-rpmlintrc
-# PATCH-FIX-UPSTREAM Fix endianness issues on big endian platforms
-Patch0:         0001-Fix-encoding-decoding-of-string-literals-for-big-end.patch
-Patch1:         0002-TIntermediate-promoteConstantUnion-fix-conversion-to.patch
-Patch2:         0003-Use-intermOut.cpp-s-IsNan-and-IsInfinity-for-parse-t.patch
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-gui-private-devel
 BuildRequires:  cmake(Qt6Core)
@@ -103,7 +99,7 @@ ABI or API guarantees.
 %{_bindir}/qsb6
 
 %files -n libQt6ShaderTools6
-%license LICENSE.*
+%license LICENSES/*
 %{_qt6_libdir}/libQt6ShaderTools.so.*
 
 %files devel

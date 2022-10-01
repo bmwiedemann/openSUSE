@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Sep 29 10:36:04 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.4.0:
+  * https://www.qt.io/blog/qt-6.4-released
+
+-------------------------------------------------------------------
+Fri Sep 16 08:29:20 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.4.0 RC
+- Drop patches, fixed upstream:
+  * 0001-Fix-encoding-decoding-of-string-literals-for-big-end.patch
+  * 0003-Use-intermOut.cpp-s-IsNan-and-IsInfinity-for-parse-t.patch
+  * 0002-TIntermediate-promoteConstantUnion-fix-conversion-to.patch
+
+-------------------------------------------------------------------
 Fri Sep  9 12:41:47 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 6.3.2:
