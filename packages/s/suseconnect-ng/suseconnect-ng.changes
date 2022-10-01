@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 15 07:31:03 UTC 2022 - jtomasiak@suse.com
+
+- Update to version 0.0.10~git0.5f84106:
+  * Fix System-Token support in ruby binding (bsc#1203341)
+  * Added the PACKAGE.md file
+
+-------------------------------------------------------------------
 Mon Sep 12 15:21:04 UTC 2022 - msabate@suse.com
 
 - Update to version 0.0.9~git10.de887da7231f:

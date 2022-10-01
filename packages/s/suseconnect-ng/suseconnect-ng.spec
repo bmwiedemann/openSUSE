@@ -23,7 +23,7 @@
 %bcond_with hwinfo
 
 Name:           suseconnect-ng
-Version:        0.0.9~git10.de887da7231f
+Version:        0.0.10~git0.5f84106
 Release:        0
 URL:            https://github.com/SUSE/connect-ng
 Summary:        Utility to register a system with the SUSE Customer Center
