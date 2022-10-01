@@ -24,12 +24,11 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%define plainpython python
 # this conditional is used in the python-rpm-macros, but `osc build --without libalternatives` won't work
 %bcond_without libalternatives
-%define plainpython python
-
 Name:           python-nbclassic%{psuffix}
-Version:        0.4.3
+Version:        0.4.4
 Release:        0
 Summary:        Jupyter Notebook as a Jupyter Server Extension
 License:        BSD-3-Clause
@@ -63,6 +62,7 @@ Requires:       python-pyzmq >= 17
 Requires:       python-terminado >= 0.8.3
 Requires:       python-tornado >= 6.1
 Requires:       python-traitlets >= 4.2.1
+BuildArch:      noarch
 %if %{with libalternatives}
 BuildRequires:  alts
 Requires:       alts
@@ -75,7 +75,6 @@ BuildRequires:  %{python_module pytest-console-scripts}
 BuildRequires:  %{python_module pytest-tornasync}
 BuildRequires:  %{python_module pytest}
 %endif
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -134,7 +133,7 @@ sed -E '
 cp %{buildroot}%{_bindir}/jupyter-nbclassic %{buildroot}%{_bindir}/jupyter-notebook
 # clone after copy to jupyter-notebook
 %python_clone -a %{buildroot}%{_bindir}/jupyter-nbclassic
-duplicates="jupyter-notebook jupyter-bundlerextension jupyter-nbextension jupyter-serverextension"
+duplicates="jupyter-notebook jupyter-nbclassic-bundlerextension jupyter-nbclassic-extension jupyter-nbclassic-serverextension"
 for basebin in $duplicates; do
   %python_clone -a %{buildroot}%{_bindir}/${basebin}
   %{python_expand mv %{buildroot}%{_bindir}/${basebin}{,.nbclassic}-%{$python_bin_suffix}
@@ -177,7 +176,7 @@ done
 
 %files -n jupyter-nbclassic
 %license LICENSE
-%_jupyter_config %{_jupyter_server_confdir}/nbclassic.json
+%{_jupyter_config} %{_jupyter_server_confdir}/nbclassic.json
 %{_datadir}/icons/hicolor/*/apps/nbclassic.svg
 %{_datadir}/applications/jupyter-nbclassic.desktop
 %endif

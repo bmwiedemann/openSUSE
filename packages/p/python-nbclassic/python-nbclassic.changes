@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Sep 30 15:15:04 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+ * jupyter-nbclassic-bundlerextension,
+   jupyter-nbclassic-extension, jupyter-nbclassic-serverextension
+   gained the "-nbclassic-" part of the name; updated binary-names for
+   update-alterantives
+
+- update to version 0.4.4:
+  * Enhancements made
+    + Stop looking in the old IPython directory for nbextensions #153
+      (@minrk)
+    + Handlers under nbclassic if notebook 7 is found #141 (@echarles)
+  * Bugs fixed
+    + Fix resource display when redirecting from /notebooks/* #148
+      (@echarles)
+    + Rename duplicate entrypoints #138 (@echarles)
+    + Point nbclassic at the classic jupyter_notebook_config path #137
+      (@Zsailer)
+  * Maintenance and upkeep improvements
+    + Updating JS Dependencies #152 (@RRosio)
+    + Get the notebook version from notebook._version #133 (@echarles)
+  * Documentation improvements
+    + Updating documentation for nbclassic #134 (@RRosio)
+  * Other merged PRs
+    + UI: About box to display nbclassic instead of notebook #147
+      (@echarles)
+
+-------------------------------------------------------------------
 Tue Aug  2 15:59:57 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.4.3
