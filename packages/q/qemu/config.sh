@@ -18,12 +18,13 @@ UPSTREAM_GIT_REPO=https://gitlab.com/qemu-project/qemu.git
 # The following specifies the upstream tag or commit upon which our patchqueue
 # gets rebased. The special value LATEST may be used to "automatically" track
 # the upstream development tree in the master branch
-GIT_UPSTREAM_COMMIT_ISH=v7.0.0
+#GIT_UPSTREAM_COMMIT_ISH=v7.0.0
+GIT_UPSTREAM_COMMIT_ISH=v7.1.0
 # WARNING: If transitioning from using LATEST to not, MANUALLY re-set the
 # tarball present. If transitioning TO LATEST, make sure that
 # NEXT_RELEASE_IS_MAJOR is set correctly
 # This is used to choose the version number when LATEST processing is active
-NEXT_RELEASE_IS_MAJOR=0
+NEXT_RELEASE_IS_MAJOR=1
 
 # Unfortunately, SeaBIOS doesn't always follow an "always increasing" version
 # model, so there may be times we should overide the automated version setting.
@@ -41,7 +42,8 @@ OVERRIDE_FIVE_DIGIT_NUMBERING=0
 # Path to be used for temporary files, directories, repositories, etc.
 # Default is /dev/shm. An alternative could be /tmp (e.g., when building
 # in containers, or whatever).
-TMPDIR=/dev/shm
+#TMPDIR=/dev/shm
+TMPDIR=/tmp
 
 # This array tracks all git submodule paths within the superproject (1st entry)
 PATCH_PATH_MAP=(

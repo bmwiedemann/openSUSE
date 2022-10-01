@@ -16,20 +16,32 @@ has happened.
 Signed-off-by: Alexander Graf <agraf@suse.de>
 [AF: Rebased for v1.6 and v1.7]
 Signed-off-by: Andreas Färber <afaerber@suse.de>
+[DF: Restructured it a bit, to make ARM look like other arch-es]
+Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
 ---
- linux-user/syscall.c | 24 ++++++++++++++++++++++++
- 1 file changed, 24 insertions(+)
+ linux-user/syscall.c | 26 ++++++++++++++++++++++++--
+ 1 file changed, 24 insertions(+), 2 deletions(-)
 
 diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index c9adb65a2293e9735341a217a68d..8de1bb8d48eeb867a1047d986299 100644
+index f4091212027c254a19dc871a675d..b746511fe5ba1c03cf44a14ed811 100644
 --- a/linux-user/syscall.c
 +++ b/linux-user/syscall.c
-@@ -8099,6 +8099,27 @@ static int open_self_stat(void *cpu_env, int fd)
-     return 0;
+@@ -8157,7 +8157,8 @@ static int is_proc_myself(const char *filename, const char *entry)
  }
  
+ #if HOST_BIG_ENDIAN != TARGET_BIG_ENDIAN || \
+-    defined(TARGET_SPARC) || defined(TARGET_M68K) || defined(TARGET_HPPA)
++    defined(TARGET_SPARC) || defined(TARGET_M68K) || \
++    defined(TARGET_HPPA) || defined(TARGET_ARM)
+ static int is_proc(const char *filename, const char *entry)
+ {
+     return strcmp(filename, entry) == 0;
+@@ -8229,6 +8230,27 @@ static int open_cpuinfo(CPUArchState *cpu_env, int fd)
+ }
+ #endif
+ 
 +#if defined(TARGET_ARM)
-+static int open_cpuinfo(void *cpu_env, int fd)
++static int open_cpuinfo(CPUArchState *cpu_env, int fd)
 +{
 +    dprintf(fd,
 +"Processor       : ARMv7 Processor rev 5 (v7l)\n"
@@ -44,21 +56,20 @@ index c9adb65a2293e9735341a217a68d..8de1bb8d48eeb867a1047d986299 100644
 +"Hardware        : Genesi Efika MX (Smarttop)\n"
 +"Revision        : 51030\n"
 +"Serial          : 0000000000000000\n");
-+
 +    return 0;
 +}
 +#endif
 +
- static int open_self_auxv(void *cpu_env, int fd)
++
+ #if defined(TARGET_M68K)
+ static int open_hardware(CPUArchState *cpu_env, int fd)
  {
-     CPUState *cpu = env_cpu((CPUArchState *)cpu_env);
-@@ -8253,6 +8274,9 @@ static int do_openat(void *cpu_env, int dirfd, const char *pathname, int flags,
- #if defined(TARGET_SPARC) || defined(TARGET_HPPA)
+@@ -8253,7 +8275,7 @@ static int do_openat(CPUArchState *cpu_env, int dirfd, const char *pathname, int
+ #if HOST_BIG_ENDIAN != TARGET_BIG_ENDIAN
+         { "/proc/net/route", open_net_route, is_proc },
+ #endif
+-#if defined(TARGET_SPARC) || defined(TARGET_HPPA)
++#if defined(TARGET_SPARC) || defined(TARGET_HPPA) || defined(TARGET_ARM)
          { "/proc/cpuinfo", open_cpuinfo, is_proc },
  #endif
-+#if defined(TARGET_ARM)
-+        { "cpuinfo", open_cpuinfo, is_proc_myself },
-+#endif
  #if defined(TARGET_M68K)
-         { "/proc/hardware", open_hardware, is_proc },
- #endif

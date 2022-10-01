@@ -20,11 +20,11 @@ Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
  2 files changed, 14 insertions(+), 14 deletions(-)
 
 diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index 8de1bb8d48eeb867a1047d986299..5096b1258f6d631b80fb6cca6011 100644
+index b746511fe5ba1c03cf44a14ed811..de782620fe3c9169a58e442a6f05 100644
 --- a/linux-user/syscall.c
 +++ b/linux-user/syscall.c
-@@ -6406,8 +6406,8 @@ static abi_long do_prctl_inval1(CPUArchState *env, abi_long arg2)
- #define do_prctl_set_unalign do_prctl_inval1
+@@ -6405,8 +6405,8 @@ static abi_long do_prctl_inval1(CPUArchState *env, abi_long arg2)
+ #define do_prctl_sme_set_vl do_prctl_inval1
  #endif
  
 -static abi_long do_prctl(CPUArchState *env, abi_long option, abi_long arg2,
@@ -34,30 +34,30 @@ index 8de1bb8d48eeb867a1047d986299..5096b1258f6d631b80fb6cca6011 100644
  {
      abi_long ret;
  
-@@ -8574,10 +8574,10 @@ _syscall2(int, pivot_root, const char *, new_root, const char *, put_old)
+@@ -8581,10 +8581,10 @@ _syscall2(int, pivot_root, const char *, new_root, const char *, put_old)
   * of syscall results, can be performed.
   * All errnos that do_syscall() returns must be -TARGET_<errcode>.
   */
--static abi_long do_syscall1(void *cpu_env, int num, abi_long arg1,
+-static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_long arg1,
 -                            abi_long arg2, abi_long arg3, abi_long arg4,
 -                            abi_long arg5, abi_long arg6, abi_long arg7,
 -                            abi_long arg8)
-+static abi_long do_syscall1(void *cpu_env, int num, abi_ulong arg1,
++static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_ulong arg1,
 +                            abi_ulong arg2, abi_ulong arg3, abi_ulong arg4,
 +                            abi_ulong arg5, abi_ulong arg6, abi_ulong arg7,
 +                            abi_ulong arg8)
  {
      CPUState *cpu = env_cpu(cpu_env);
      abi_long ret;
-@@ -13201,10 +13201,10 @@ static abi_long do_syscall1(void *cpu_env, int num, abi_long arg1,
+@@ -13203,10 +13203,10 @@ static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_long arg1,
      return ret;
  }
  
--abi_long do_syscall(void *cpu_env, int num, abi_long arg1,
+-abi_long do_syscall(CPUArchState *cpu_env, int num, abi_long arg1,
 -                    abi_long arg2, abi_long arg3, abi_long arg4,
 -                    abi_long arg5, abi_long arg6, abi_long arg7,
 -                    abi_long arg8)
-+abi_long do_syscall(void *cpu_env, int num, abi_ulong arg1,
++abi_long do_syscall(CPUArchState *cpu_env, int num, abi_ulong arg1,
 +                    abi_ulong arg2, abi_ulong arg3, abi_ulong arg4,
 +                    abi_ulong arg5, abi_ulong arg6, abi_ulong arg7,
 +                    abi_ulong arg8)
@@ -65,21 +65,21 @@ index 8de1bb8d48eeb867a1047d986299..5096b1258f6d631b80fb6cca6011 100644
      CPUState *cpu = env_cpu(cpu_env);
      abi_long ret;
 diff --git a/linux-user/user-internals.h b/linux-user/user-internals.h
-index ee152ccfaa8fdfa33b1e6d36b8ab..7117d8b2c583a16311ef82a0eb60 100644
+index 0280e76addda504ea9745a17324b..1026e09da8caecf3e74159ea319e 100644
 --- a/linux-user/user-internals.h
 +++ b/linux-user/user-internals.h
 @@ -59,10 +59,10 @@ int info_is_fdpic(struct image_info *info);
  
  void target_set_brk(abi_ulong new_brk);
  void syscall_init(void);
--abi_long do_syscall(void *cpu_env, int num, abi_long arg1,
+-abi_long do_syscall(CPUArchState *cpu_env, int num, abi_long arg1,
 -                    abi_long arg2, abi_long arg3, abi_long arg4,
 -                    abi_long arg5, abi_long arg6, abi_long arg7,
 -                    abi_long arg8);
-+abi_long do_syscall(void *cpu_env, int num, abi_ulong arg1,
++abi_long do_syscall(CPUArchState *cpu_env, int num, abi_ulong arg1,
 +                    abi_ulong arg2, abi_ulong arg3, abi_ulong arg4,
 +                    abi_ulong arg5, abi_ulong arg6, abi_ulong arg7,
 +                    abi_ulong arg8);
  extern __thread CPUState *thread_cpu;
- void QEMU_NORETURN cpu_loop(CPUArchState *env);
- const char *target_strerror(int err);
+ G_NORETURN void cpu_loop(CPUArchState *env);
+ abi_long get_errno(abi_long ret);

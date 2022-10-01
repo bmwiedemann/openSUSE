@@ -78,10 +78,10 @@ Signed-off-by: Lin Ma <lma@suse.com>
  1 file changed, 8 insertions(+), 2 deletions(-)
 
 diff --git a/hw/scsi/scsi-generic.c b/hw/scsi/scsi-generic.c
-index 0306ccc7b1e4827a67aaed926f93..343b51c2c0ab5dc7fb792aeb6458 100644
+index 3d35d307e1a2dcb1390b7c319b85..aa3ae417ac726e9decf7e678e25f 100644
 --- a/hw/scsi/scsi-generic.c
 +++ b/hw/scsi/scsi-generic.c
-@@ -315,11 +315,17 @@ static void scsi_read_complete(void * opaque, int ret)
+@@ -322,11 +322,17 @@ static void scsi_read_complete(void * opaque, int ret)
      if (r->req.cmd.buf[0] == READ_CAPACITY_10 &&
          (ldl_be_p(&r->buf[0]) != 0xffffffffU || s->max_lba == 0)) {
          s->blocksize = ldl_be_p(&r->buf[4]);
@@ -99,5 +99,5 @@ index 0306ccc7b1e4827a67aaed926f93..343b51c2c0ab5dc7fb792aeb6458 100644
 +        s->max_lba = bs->total_sectors - 1;
 +        stq_be_p(&r->buf[0], s->max_lba);
      }
-     blk_set_guest_block_size(s->conf.blk, s->blocksize);
  
+     /*

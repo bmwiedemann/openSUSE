@@ -17,6 +17,7 @@ set -e
 clean_up_temp_dirs()
 {
 echo "Cleaning temporary files before exit"
+exit
 rm -rf $GIT_DIR
 rm -rf $CMP_DIR
 rm -rf $BUN_DIR
@@ -470,7 +471,7 @@ while IFS= read -r line; do
         PATCHES_BY_SUBMODULE_PATH[$INDEX]=$ACCUMULATED_PATCHES
         break;
     fi
-    if [[ "$line" =~ ^Patch[0-9]*:[\ ]*(.*)$ ]]; then
+    if [[ "$line" =~ ^#?Patch[0-9]*:[\ ]*(.*)$ ]]; then
         PATCH="${BASH_REMATCH[1]}"
         #echo "Patch is $PATCH"
         ACCUMULATED_PATCHES="$ACCUMULATED_PATCHES $PATCH"
@@ -680,9 +681,22 @@ find $BUN_DIR -mindepth 1 -delete
     for package in $PKG; do
         while IFS= read -r line; do
             if [ "$line" = "PATCH_FILES" ]; then
+                SPNUM=1000
+                SP_PATCHES=$(mktemp /tmp/sp-patches-XXXX)
 # Here (and other places below) we try to get ONLY the numbered patches, but it's possible some ACTUAL patch name actually starts with multiple digits, but EXTREMELY unlikely
 # TODO: do this better!
                 for i in [0-9][0-9][0-9][0-9]*-*.patch; do
+                    COMMENT=""
+                    if grep "^Include-If: " $i &> /dev/null ; then
+                        COMMENT="#"
+                        if [[ "$NUMBERED_PATCHES" = "0" ]]; then
+                            PATCH_NUMBER=${i%%-*}
+                            echo -e "Source$SPNUM:     ${i:${#PATCH_NUMBER}+1:40+1+5}" >> $SP_PATCHES
+                        else
+                            echo -e "Source$SPNUM:     $i" >> $SP_PATCHES
+                        fi
+                        SPNUM=$((SPNUM+1))
+                    fi
                     NUM=${i%%-*}
                     DIV=$((10#$NUM/$PATCH_RANGE))
                     REM=$((10#$NUM%$PATCH_RANGE))
@@ -696,19 +710,23 @@ find $BUN_DIR -mindepth 1 -delete
                     if [[ "$FIVE_DIGIT_POTENTIAL" != "0" ]]; then
                         if [[ "$NUMBERED_PATCHES" = "0" ]]; then
                             PATCH_NUMBER=${i%%-*}
-                            echo -e "Patch$NUM:     ${i:${#PATCH_NUMBER}+1:40+1+5}"
+                            echo -e "${COMMENT}Patch$NUM:     ${i:${#PATCH_NUMBER}+1:40+1+5}"
                         else
-                            echo -e "Patch$NUM:     $i"
+                            echo -e "${COMMENT}Patch$NUM:     $i"
                         fi
                     else
                         if [[ "$NUMBERED_PATCHES" = "0" ]]; then
                             PATCH_NUMBER=${i%%-*}
-                            echo -e "Patch$NUM:      ${i:${#PATCH_NUMBER}+1:40+1+5}"
+                            echo -e "${COMMENT}Patch$NUM:      ${i:${#PATCH_NUMBER}+1:40+1+5}"
                         else
-                            echo -e "Patch$NUM:      $i"
+                            echo -e "${COMMENT}Patch$NUM:      $i"
                         fi
                     fi
                 done
+
+                echo
+                echo "# Patches that will be applied directly across the spec file"
+		cat $SP_PATCHES
             elif [ "$line" = "PATCH_EXEC" ]; then
                 unset PREV_S
                 for i in [0-9][0-9][0-9][0-9]*-*.patch; do

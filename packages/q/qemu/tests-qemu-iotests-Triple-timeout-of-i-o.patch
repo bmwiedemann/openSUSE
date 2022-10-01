@@ -3,6 +3,8 @@ Date: Tue, 20 Nov 2018 15:46:41 -0700
 Subject: tests/qemu-iotests: Triple timeout of i/o tests due to obs
  environment
 
+Git-commit: 0000000000000000000000000000000000000000
+
 Executing tests in obs is very fickle, since you aren't guaranteed
 reliable cpu time. Triple the timeout for each test to help ensure
 we don't fail a test because the stars align against us.

@@ -1,4 +1,123 @@
 -------------------------------------------------------------------
+Wed Sep 28 16:35:10 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Runs of the test-suite seem much more stable now, in this version
+  of QEMU. (bsc#1203610) We are also fine re-enabling running them
+  in parallel.
+
+-------------------------------------------------------------------
+Wed Sep 28 11:48:14 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Switch QEMU Linux user to emulate the same CPU as the one of the
+  host by default. This is a bit conrtoversial and tricky, when
+  thinking about system emulation/virtualization. But for linux-user,
+  it should be just fine. (bsc#1203684)
+* Patches added:
+  linux-user-use-max-as-default-CPU-model-.patch
+
+-------------------------------------------------------------------
+Tue Sep 27 16:16:17 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Be less verbose when packaging documentation. In fact, with just
+  a couple of (minor) re-arrangements, we can get rid of having to
+  list all the files all the time
+- Package /etc/qemu/bridge.conf as '%config(noreplace). Next step
+  will probably be to move it to /usr/etc/qemu (bsc#1201944)
+
+-------------------------------------------------------------------
+Wed Sep 21 07:08:48 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Switch to %autosetup for all products (this required some changes
+  in update_git.sh)
+- Run check-qtest sequentially, as it's more reliable, when in OBS
+- Build with libbpf, fdt and capstone support
+- Drop the patch adding our support document, and deal with that
+  in the spec file directly
+* Patches dropped:
+  doc-add-our-support-doc-to-the-main-proj.patch
+
+-------------------------------------------------------------------
+Tue Sep 20 07:14:16 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Updated to latest upstream version 7.1
+  * https://wiki.qemu.org/ChangeLog/7.1
+  Be sure to also check the following pages:
+  * https://qemu-project.gitlab.io/qemu/about/removed-features.html
+  * https://qemu-project.gitlab.io/qemu/about/deprecated.html
+  Some notable changes:
+  * [x86] Support for architectural LBRs on KVM virtual machines
+  * [x86] The libopcode-based disassembler has been removed. Use
+          Capstone instead
+  * [LoongArch] Add initial support for the LoongArch64 architecture.
+  * [ARM] The emulated SMMUv3 now advertises support for SMMUv3.2-BBML2
+  * [ARM] The xlnx-zynqmp SoC model now implements the 4 TTC timers
+  * [ARM] The versal machine now models the Cortex-R5s in the Real-Time
+          Processing Unit (RPU) subsystem
+  * [ARM] The virt board now supports emulation of the GICv4.0
+  * [ARM] New emulated CPU types: Cortex-A76, Neoverse-N1
+  * [HPPA] Fix serial port pass-through from host to guest
+  * [HPPA] Lots of general code improvements and tidy-ups
+  * [RISC-V] RISC-V
+  * [RISC-V] Add support for privileged spec version 1.12.0
+  * [RISC-V] Use privileged spec version 1.12.0 for virt machine by default
+  * [RISC-V] Allow software access to MIP SEIP
+  * [RISC-V] Add initial support for the Sdtrig extension
+  * [RISC-V] Optimisations and improvements for the vector extension
+  * [VFIO] Experimental support for exposing emulated PCI devices over the
+           new vfio-user protocol (a vfio-user client is not yet available
+           in QEMU, though)
+  * [QMP] The on-cbw-error option for copy-before-write filter, to specify
+           behavior on CBW (copy before write) operation failure.
+  * [QMP] The cbw-timeout option for copy-before-write filter, to specify
+          timeout for CBW operation.
+  * [QMP] New commands query-stats and query-stats-schema to retrieve
+          statistics from various QEMU subsystems (right now only from
+          KVM).
+  * [QMP] The PanicAction can now be configured to report an exit-failure
+          (useful for automated testing)
+  * [Networking] QEMU can be compiled with the system slirp library even
+                 when using CFI. This requires libslirp 4.7.
+  * [Migration] Support for zero-copy-send on Linux, which reduces CPU
+                usage on the source host. Note that locked memory is needed
+                to support this
+* Patches added:
+  Revert-tests-qtest-enable-more-vhost-use.patch
+  meson-remove-pkgversion-from-CONFIG_STAM.patch
+* Patches dropped:
+  AIO-Reduce-number-of-threads-for-32bit-h.patch
+  Makefile-Don-t-check-pc-bios-as-pre-requ.patch
+  Revert-8dcb404bff6d9147765d7dd3e9c849337.patch
+  Revert-qht-constify-qht_statistics_init.patch
+  XXX-dont-dump-core-on-sigabort.patch
+  acpi_piix4-Fix-migration-from-SLE11-SP2.patch
+  configure-only-populate-roms-if-softmmu.patch
+  configure-remove-pkgversion-from-CONFIG_.patch
+  coroutine-ucontext-use-QEMU_DEFINE_STATI.patch
+  coroutine-use-QEMU_DEFINE_STATIC_CO_TLS.patch
+  coroutine-win32-use-QEMU_DEFINE_STATIC_C.patch
+  hostmem-default-the-amount-of-prealloc-t.patch
+  hw-usb-hcd-ehci-fix-writeback-order.patch
+  i8254-Fix-migration-from-SLE11-SP2.patch
+  intc-exynos4210_gic-replace-snprintf-wit.patch
+  modules-generates-per-target-modinfo.patch
+  modules-introduces-module_kconfig-direct.patch
+  pc-bios-s390-ccw-net-avoid-warning-about.patch
+  pci-fix-overflow-in-snprintf-string-form.patch
+  qemu-cvs-gettimeofday.patch
+  qemu-cvs-ioctl_debug.patch
+  qemu-cvs-ioctl_nodirection.patch
+  qht-Revert-some-constification-in-qht.c.patch
+  qom-handle-case-of-chardev-spice-module-.patch
+  scsi-lsi53c895a-fix-use-after-free-in-ls.patch
+  scsi-lsi53c895a-really-fix-use-after-fre.patch
+  softmmu-Always-initialize-xlat-in-addres.patch
+  sphinx-change-default-language-to-en.patch
+  test-add-mapping-from-arch-of-i686-to-qe.patch
+  tests-Fix-block-tests-to-be-compatible-w.patch
+  tests-qtest-Move-the-fuzz-tests-to-x86-o.patch
+  usb-Help-compiler-out-to-avoid-a-warning.patch
+
+-------------------------------------------------------------------
 Thu Sep 15 09:44:38 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - pcre-devel-static is only needed when building against

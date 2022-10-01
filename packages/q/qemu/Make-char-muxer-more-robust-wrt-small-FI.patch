@@ -94,10 +94,10 @@ index 0169d8dde4b533c9cf851831b03c..3b1495c0a4fd6b9e81f6703eeb49 100644
  #include "qemu/cutils.h"
  #include "monitor/monitor.h"
 diff --git a/chardev/chardev-internal.h b/chardev/chardev-internal.h
-index aba0240759ebf938cf391d89edb8..fb3957b771f9e24547619fd45669 100644
+index 4e03af31476cb88cbe699dfafb23..ae5738ae4e3bd90ae703740a68da 100644
 --- a/chardev/chardev-internal.h
 +++ b/chardev/chardev-internal.h
-@@ -36,6 +36,9 @@ struct MuxChardev {
+@@ -37,6 +37,9 @@ struct MuxChardev {
      Chardev parent;
      CharBackend *backends[MAX_MUX];
      CharBackend chr;

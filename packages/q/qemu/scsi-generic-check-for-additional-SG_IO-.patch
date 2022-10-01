@@ -20,10 +20,10 @@ Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
  1 file changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/hw/scsi/scsi-generic.c b/hw/scsi/scsi-generic.c
-index 343b51c2c0ab5dc7fb792aeb6458..513b10bed0f4279dc4077a31c66f 100644
+index aa3ae417ac726e9decf7e678e25f..8eb65f5f81bd4e998966571a3741 100644
 --- a/hw/scsi/scsi-generic.c
 +++ b/hw/scsi/scsi-generic.c
-@@ -391,7 +391,10 @@ static void scsi_write_complete(void * opaque, int ret)
+@@ -397,7 +397,10 @@ static void scsi_write_complete(void * opaque, int ret)
  
      aio_context_acquire(blk_get_aio_context(s->conf.blk));
  
