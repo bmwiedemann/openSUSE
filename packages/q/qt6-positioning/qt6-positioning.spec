@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.3.2
-%define short_version 6.3
+%define real_version 6.4.0
+%define short_version 6.4
 %define tar_name qtpositioning-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-positioning%{?pkg_suffix}
-Version:        6.3.2
+Version:        6.4.0
 Release:        0
 Summary:        Qt 6 Positioning plugins and libraries
 License:        GPL-3.0-or-later
@@ -186,7 +186,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Bundled_Clip2Tri
 %{_qt6_qmldir}/QtPositioning/
 
 %files -n libQt6Positioning6
-%license LICENSE.*
+%license LICENSES/*
 %{_qt6_libdir}/libQt6Positioning.so.*
 
 %files -n qt6-positioning-devel
