@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 28 06:36:56 UTC 2022 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add verify-sig.patch to verify the signatures before attaching
+  them (bsc#1200108, bsc#1203679)
+
+-------------------------------------------------------------------
 Sat Jul  9 16:19:57 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update attr.patch to fix ghost symlinks still being affected
