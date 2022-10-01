@@ -1,8 +1,6 @@
-Index: bleach/html5lib_shim.py
-===================================================================
---- bleach/html5lib_shim.py.orig
-+++ bleach/html5lib_shim.py
-@@ -18,44 +18,44 @@ warnings.filterwarnings(
+--- a/bleach/html5lib_shim.py.orig
++++ b/bleach/html5lib_shim.py
+@@ -14,46 +14,46 @@ warnings.filterwarnings(
      "ignore",
      message="html5lib's sanitizer is deprecated",
      category=DeprecationWarning,
@@ -35,6 +33,8 @@ Index: bleach/html5lib_shim.py
 -from bleach._vendor.html5lib.filters.sanitizer import (
 +from html5lib.filters.sanitizer import (
      allowed_protocols,
+     allowed_css_properties,
+     allowed_svg_properties,
  )  # noqa: E402 module level import not at top of file
 -from bleach._vendor.html5lib.filters.sanitizer import (
 +from html5lib.filters.sanitizer import (
@@ -59,29 +59,30 @@ Index: bleach/html5lib_shim.py
      Trie,
  )  # noqa: E402 module level import not at top of file
  
-Index: tests/test_clean.py
-===================================================================
---- tests/test_clean.py.orig
-+++ tests/test_clean.py
-@@ -7,7 +7,7 @@ import pytest
+--- a/tests/test_clean.py.orig
++++ b/tests/test_clean.py
+@@ -5,7 +5,7 @@ import pytest
  from bleach import clean
  from bleach.html5lib_shim import Filter
- from bleach.sanitizer import Cleaner
+ from bleach.sanitizer import ALLOWED_PROTOCOLS, Cleaner
 -from bleach._vendor.html5lib.constants import rcdataElements
 +from html5lib.constants import rcdataElements
  
  
- def test_clean_idempotent():
-Index: bleach/sanitizer.py
-===================================================================
---- bleach/sanitizer.py.orig
-+++ bleach/sanitizer.py
-@@ -283,7 +283,7 @@ class BleachSanitizerFilter(html5lib_shi
+ @pytest.mark.parametrize(
+--- a/bleach/sanitizer.py.orig
++++ b/bleach/sanitizer.py
+@@ -277,7 +277,7 @@ class BleachSanitizerFilter(html5lib_shi
              "ignore",
              message="html5lib's sanitizer is deprecated",
              category=DeprecationWarning,
 -            module="bleach._vendor.html5lib",
 +            module="html5lib",
          )
-         return super(BleachSanitizerFilter, self).__init__(source, **kwargs)
- 
+         return super().__init__(
+             source,
+--- a/bleach/parse_shim.py.orig
++++ b/bleach/parse_shim.py
+@@ -1 +1 @@
+-from bleach._vendor.parse import urlparse  # noqa
++from urllib.parse import urlparse  # noqa

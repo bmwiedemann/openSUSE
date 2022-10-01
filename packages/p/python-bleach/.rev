@@ -130,4 +130,24 @@
     <comment></comment>
     <requestid>884911</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>73dff6d334d5848e9faef741009df8e9</srcmd5>
+    <version>5.0.1</version>
+    <time>1664638958</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 5.0.1:
+  * Add missing comma to tinycss2 require. Thank you, @shadchin!
+  * Add url parse tests based on wpt url tests. (#688)
+  * Support scheme-less urls if &quot;https&quot; is in allow list. (#662)
+  * Handle escaping ``&lt;`` in edge cases where it doesn't start a tag. (#544)
+  * Correctly urlencode email address parts. Thank you, @larseggert! (#659)
+  * ``clean`` and ``linkify`` now preserve the order of HTML attributes.
+  * Drop support for Python 3.6. Thank you, @hugovk! (#629)
+  * CSS sanitization in style tags is completely different now.
+  * Python 3.9 support
+  * Drop support for unsupported Python versions &lt;3.6. (#520)
+  * add more tests for CVE-2021-23980 / GHSA-vv2x-vrpj-qqpq
+- Refresh de-vendor.patch, and convert to patch level 1</comment>
+    <requestid>1006839</requestid>
+  </revision>
 </revisionlist>

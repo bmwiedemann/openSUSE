@@ -1,7 +1,7 @@
 #
 # spec file for package python-bleach
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2015 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-bleach
-Version:        3.3.0
+Version:        5.0.1
 Release:        0
 Summary:        A whitelist-based HTML-sanitizing tool
 License:        Apache-2.0
@@ -54,8 +54,7 @@ unbalanced or mis-nested tags.
 Documentation is at http://bleach.readthedocs.org/ .
 
 %prep
-%setup -q -n bleach-%{version}
-%patch0
+%autosetup -p1 -n bleach-%{version}
 rm -rf bleach/_vendor
 
 %build
