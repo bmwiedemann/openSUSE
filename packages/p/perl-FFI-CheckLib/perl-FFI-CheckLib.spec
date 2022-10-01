@@ -18,7 +18,7 @@
 
 %define cpan_name FFI-CheckLib
 Name:           perl-FFI-CheckLib
-Version:        0.29
+Version:        0.30
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Check that a library is available for FFI

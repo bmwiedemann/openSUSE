@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep 23 03:06:56 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.30
+   see /usr/share/doc/packages/perl-FFI-CheckLib/Changes
+
+  0.30      2022-09-22 04:24:26 -0600
+    - [ BREAKING CHANGE ]
+      If the alien option is provided, the libraries provided by aliens will be
+      preferred over the system libraries (gh#47, gh#48)
+
+-------------------------------------------------------------------
 Sun Sep 11 03:06:13 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.29
