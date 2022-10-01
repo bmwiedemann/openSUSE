@@ -4558,4 +4558,12 @@
 - update staging to 7.17 release</comment>
     <requestid>1002758</requestid>
   </revision>
+  <revision rev="387" vrev="1">
+    <srcmd5>11e4d5caea04ce344a9804b2d59b514a</srcmd5>
+    <version>7.18</version>
+    <time>1664639033</time>
+    <user>RBrownFactory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1007384</requestid>
+  </revision>
 </revisionlist>

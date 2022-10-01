@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Sep 24 06:25:32 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- updated to 7.18 development release
+  - Character tables updated to Unicode 15.0.0.
+  - Wow64 support in the macOS driver.
+  - Async reader fixes in GStreamer support.
+  - Various bug fixes.
+- update staging to 7.18 release
+
+-------------------------------------------------------------------
 Mon Sep 12 07:02:48 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - updated to 7.17 development release
