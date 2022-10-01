@@ -656,4 +656,12 @@ New since previous SR: added patches to .changes file.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1005436</requestid>
   </revision>
+  <revision rev="74" vrev="4">
+    <srcmd5>fb7bf2719fb37aaf60f0dc89f73aa0af</srcmd5>
+    <version>1.0.12+v1.git.1650454062.1fbde71c</version>
+    <time>1664638907</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1006403</requestid>
+  </revision>
 </revisionlist>

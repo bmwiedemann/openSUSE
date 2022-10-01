@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 27 12:47:38 UTC 2022 - Stefan Weiberg <sweiberg@suse.com>
+
+- Rename libraries in accordance to the packaging guidelines to
+  solve a conflict in SLE with building resource-agents on 15 SP5
+  (bsc#1203744)
+
+-------------------------------------------------------------------
 Thu May 26 17:22:41 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Use the project upstream name for the -devel subpackage

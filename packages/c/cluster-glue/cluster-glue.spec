@@ -80,9 +80,9 @@ standards, and an interface to common STONITH devices.
 Summary:        Reusable cluster libraries
 Group:          System/Libraries
 Requires:       %{name} = %{version}-%{release}
-Conflicts:      libglue2
+Provides:      libglue2 = %version-%release
 Conflicts:      libheartbeat2 < 3.0.2
-Obsoletes:      libglue2
+Obsoletes:      libglue2 < %version-%release
 Obsoletes:      libheartbeat2 < 3.0.2
 
 %description libs
@@ -93,9 +93,9 @@ such as Pacemaker.
 Summary:        Headers and libraries for writing cluster managers
 Group:          Development/Libraries/C and C++
 Requires:       %{name}-libs = %{version}-%{release}
-Conflicts:      libglue-devel
+Provides:      libglue-devel = %version-%release
 Conflicts:      libheartbeat-devel < 3.0.2
-Obsoletes:      libglue-devel
+Obsoletes:      libglue-devel < %version-%release
 Obsoletes:      libheartbeat-devel < 3.0.2
 
 %description devel
