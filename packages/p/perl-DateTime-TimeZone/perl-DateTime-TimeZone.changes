@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Sep 25 03:06:15 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.54
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+
+  2.54    2022-09-24
+
+  - This release is based on version 2022d of the Olson database. This release
+    includes contemporary changes for Palestine.
+
+-------------------------------------------------------------------
 Mon Aug 15 03:06:34 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.53
