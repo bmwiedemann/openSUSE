@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Sep 26 02:45:38 UTC 2022 - Simon Lees <sflees@suse.de>
+
+- Update to 1.26.3 Bugfix release
+  * Fix theme issues
+  * Fix edje calc internal return values in some cases
+  * Fix ecore-x netwm moveresize request handling
+  * Fix ecore-x xkb handling to not leak
+  * Fix new xkb event handling
+  * Fix evas smart object to null out fields for safety
+  * Fix elm null cnp object handling to not crash in odd cases
+  * Fix ecore evas x11 dnd handling to not null out xdnd props
+  * Fix data checkme file so relocation at runtime works again
+  * Fix eina bt output to always have spaces between fields
+  * Fix png loader on arm to not have rgb values when a is 0
+  * Fix textgrid to guard against null glyphs
+  * Fix ecore-x vblank to use current time not vlbank time
+  * Fix emile to handle invalid compress types more gracefully
+  * Fix compile warnings
+  * Fix evas psd loader crash
+  * Fix osx sample compile conf script options
+  * Fix wl vsync timer to use current time not vblank time
+  * Work around xwayland issue where synthetic events are not sent
+
+-------------------------------------------------------------------
+Sat Sep 24 08:31:50 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- remove duplicate valgrind buildrequires (fixes RISCV build) 
+
+-------------------------------------------------------------------
 Wed Mar  2 14:27:42 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop python-devel BuildRequires: not needed.

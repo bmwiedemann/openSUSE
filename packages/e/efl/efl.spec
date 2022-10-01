@@ -68,7 +68,7 @@
 %{?!icon_theme_cache_create_ghost:%define icon_theme_cache_create_ghost() touch %{buildroot}%{_datadir}/icons/%{1}/icon-theme.cache}
 %{?!icon_theme_cache_post:%define icon_theme_cache_post() gtk-update-icon-cache %{_datadir}/icons/$1 &> /dev/null || :}
 Name:           efl
-Version:        1.26.2
+Version:        1.26.3
 Release:        0
 # TODO: split package to separate packages and specify licenses correctly
 Summary:        Enlightenment Foundation Libraries - set of libraries used (not only) by E17
@@ -120,7 +120,6 @@ BuildRequires:  pkgconfig(sdl)
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(tslib)
-BuildRequires:  pkgconfig(valgrind)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xcursor)
@@ -230,7 +229,7 @@ BuildRequires:  libpoppler-devel
 %if 0%{?suse_version}
 BuildRequires:  update-desktop-files
 %endif
-%ifarch %{ix86} x86_64 ppc ppc64 ppc64le s390x armv7l armv7hl armv6l armv6hl aarch64
+%ifarch %{ix86} x86_64 ppc ppc64 ppc64le s390x %{arm} aarch64
 BuildRequires:  valgrind
 %endif
 %if 0%{?physics_present}
