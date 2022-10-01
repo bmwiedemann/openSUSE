@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.3.2
-%define short_version 6.3
+%define real_version 6.4.0
+%define short_version 6.4
 %define tar_name qtwebengine-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -42,7 +42,7 @@
 %bcond_without system_minizip
 #
 Name:           qt6-webengine%{?pkg_suffix}
-Version:        6.3.2
+Version:        6.4.0
 Release:        0
 Summary:        Web browser engine for Qt applications
 License:        GPL-2.0-only OR LGPL-3.0-only OR GPL-3.0-only
@@ -52,6 +52,7 @@ Source99:       qt6-webengine-rpmlintrc
 # Patches 0-100 are upstream patches #
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
 Patch100:       rtc-dont-use-h264.patch
+#
 # Chromium/blink don't support PowerPC and zSystems and build fails on
 # 32 bits archs (https://bugreports.qt.io/browse/QTBUG-102143)
 ExclusiveArch:  aarch64 x86_64 riscv64
@@ -69,6 +70,7 @@ BuildRequires:  memory-constraints
 BuildRequires:  nodejs-default
 BuildRequires:  pipewire-devel
 BuildRequires:  pkgconfig
+BuildRequires:  python3-devel
 BuildRequires:  python3-html5lib
 BuildRequires:  qt6-core-private-devel
 BuildRequires:  qt6-gui-private-devel
@@ -99,8 +101,10 @@ BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(Qt6WidgetsTools)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(dbus-1)
+BuildRequires:  pkgconfig(epoxy)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(glproto)
@@ -460,7 +464,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BuildInternals
 %{_qt6_mkspecsdir}/modules/qt_lib_pdfwidgets_private.pri
 
 %files -n libQt6WebEngineCore6
-%license LICENSE.*
+%license LICENSES/*
 %{_qt6_libdir}/libQt6WebEngineCore.so.*
 
 %files -n qt6-webenginecore-devel
