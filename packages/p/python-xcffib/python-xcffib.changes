@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep 27 16:04:01 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0.12.1
+  * Replace nose by pytest
+  * Allow the master xcb version to pass even if failing
+  * drop Python 3.6, support Python 3.10
+  * ci: test with new xcb 1.15 release
+
+-------------------------------------------------------------------
 Fri Jul 16 11:27:23 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Replace use of nose2 by pytest. There is no need to do anything
