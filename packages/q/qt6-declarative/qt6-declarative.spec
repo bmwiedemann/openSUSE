@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.3.2
-%define short_version 6.3
+%define real_version 6.4.0
+%define short_version 6.4
 %define tar_name qtdeclarative-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-declarative%{?pkg_suffix}
-Version:        6.3.2
+Version:        6.4.0
 Release:        0
 Summary:        Qt 6 Declarative Libraries and tools
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -756,6 +756,27 @@ ABI or API guarantees.
 
 ### Private only libraries ###
 
+%package -n libQt6QmlCompiler6
+Summary:        Qt6 QmlCompiler library
+License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+
+%description -n libQt6QmlCompiler6
+The Qt 6 QmlCompiler library.
+This library does not have any ABI or API guarantees.
+
+%package -n qt6-qmlcompiler-private-devel
+Summary:        Qt 6 QmlCompiler library - Development files
+Requires:       qt6-qml-private-devel = %{version}
+Requires:       libQt6QmlCompiler6 = %{version}
+%requires_eq    qt6-core-private-devel
+# The qmlcompiler library became a shared library (again) in 6.4.0
+Provides:       qt6-qmlcompiler-devel-static = 6.4.0
+Obsoletes:      qt6-qmlcompiler-devel-static < 6.4.0
+
+%description -n qt6-qmlcompiler-private-devel
+Development files for the Qt 6 QmlCompiler library.
+This library does not have any ABI or API guarantees.
+
 %package -n libQt6QuickParticles6
 Summary:        Qt 6 QuickParticles library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -815,19 +836,6 @@ Obsoletes:      qt6-packetprotocol-private-devel < 6.2.0
 The Qt6 PacketProtocol static library.
 This library does not have any ABI or API guarantees.
 
-%package -n qt6-qmlcompiler-devel-static
-Summary:        Qt6 QmlCompiler static library
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
-Requires:       qt6-qml-private-devel = %{version}
-%requires_eq    qt6-core-private-devel
-# Renamed in 6.2.0
-Provides:       qt6-qmlcompiler-private-devel = 6.2.0
-Obsoletes:      qt6-qmlcompiler-private-devel < 6.2.0
-
-%description -n qt6-qmlcompiler-devel-static
-The Qt6 QmlCompiler static library.
-This library does not have any ABI or API guarantees.
-
 %package -n qt6-qmldebug-devel-static
 Summary:        Qt6 QmlDebug static library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -857,13 +865,6 @@ The Qt6 QmlDom static library.
 The goal of the Dom library is to provide a nicer to use basis for the
 Qml Code model, to be used by the various QML tools, the designer and
 the new compiler.
-
-%package -n qt6-qmllint-devel-static
-Summary:        Qt6 QmlLint static library
-%requires_eq    qt6-core-private-devel
-
-%description -n qt6-qmllint-devel-static
-The Qt6 QmlLint static library.
 
 %package -n qt6-quickcontrolstestutils-devel-static
 Summary:        Qt6 QuickControlsTestUtils static library
@@ -932,6 +933,7 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmlintegration_private.pri
 %post -n libQt6LabsSharedImage6 -p /sbin/ldconfig
 %post -n libQt6LabsWavefrontMesh6 -p /sbin/ldconfig
 %post -n libQt6Qml6 -p /sbin/ldconfig
+%post -n libQt6QmlCompiler6 -p /sbin/ldconfig
 %post -n libQt6QmlCore6 -p /sbin/ldconfig
 %post -n libQt6QmlLocalStorage6 -p /sbin/ldconfig
 %post -n libQt6QmlModels6 -p /sbin/ldconfig
@@ -956,6 +958,7 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmlintegration_private.pri
 %postun -n libQt6LabsSharedImage6 -p /sbin/ldconfig
 %postun -n libQt6LabsWavefrontMesh6 -p /sbin/ldconfig
 %postun -n libQt6Qml6 -p /sbin/ldconfig
+%postun -n libQt6QmlCompiler6 -p /sbin/ldconfig
 %postun -n libQt6QmlCore6 -p /sbin/ldconfig
 %postun -n libQt6QmlLocalStorage6 -p /sbin/ldconfig
 %postun -n libQt6QmlModels6 -p /sbin/ldconfig
@@ -1022,6 +1025,7 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmlintegration_private.pri
 %{_qt6_libexecdir}/qmlcachegen
 %{_qt6_libexecdir}/qmlimportscanner
 %{_qt6_libexecdir}/qmltyperegistrar
+%{_qt6_pluginsdir}/qmllint/
 %{_qt6_pluginsdir}/qmltooling/
 
 %files -n libQt6LabsAnimation6
@@ -1133,7 +1137,7 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmlintegration_private.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_labswavefrontmesh_private.pri
 
 %files -n libQt6Qml6
-%license LICENSE.*
+%license LICENSES/*
 # libQt6Qml6 'provides' %%_qt6_importsdir and %%_qt6_qmldir
 %dir %{_qt6_importsdir}
 %dir %{_qt6_qmldir}
@@ -1439,6 +1443,18 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmlintegration_private.pri
 
 ### Private only libraries ###
 
+%files -n libQt6QmlCompiler6
+%{_qt6_libdir}/libQt6QmlCompiler.so.*
+
+%files -n qt6-qmlcompiler-private-devel
+%{_qt6_cmakedir}/Qt6QmlCompilerPrivate/
+%{_qt6_descriptionsdir}/QmlCompilerPrivate.json
+%{_qt6_includedir}/QtQmlCompiler/
+%{_qt6_libdir}/libQt6QmlCompiler.prl
+%{_qt6_libdir}/libQt6QmlCompiler.so
+%{_qt6_metatypesdir}/qt6qmlcompilerprivate_*_metatypes.json
+%{_qt6_mkspecsdir}/modules/qt_lib_qmlcompiler_private.pri
+
 %files -n libQt6QuickParticles6
 %{_qt6_libdir}/libQt6QuickParticles.so.*
 
@@ -1474,17 +1490,6 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmlintegration_private.pri
 %{_qt6_metatypesdir}/qt6packetprotocolprivate_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_packetprotocol_private.pri
 
-%files -n qt6-qmlcompiler-devel-static
-%{_qt6_cmakedir}/Qt6QmlCompilerPrivate/
-%{_qt6_descriptionsdir}/QmlCompilerPrivate.json
-%{_qt6_includedir}/QtQmlCompiler/
-%{_qt6_libdir}/libQt6QmlCompiler.a
-%{_qt6_libdir}/libQt6QmlCompiler.prl
-# https://bugreports.qt.io/browse/QTBUG-98345
-%{_qt6_libdir}/objects-RelWithDebInfo/
-%{_qt6_metatypesdir}/qt6qmlcompilerprivate_*_metatypes.json
-%{_qt6_mkspecsdir}/modules/qt_lib_qmlcompiler_private.pri
-
 %files -n qt6-qmldebug-devel-static
 %{_qt6_cmakedir}/Qt6QmlDebugPrivate/
 %{_qt6_descriptionsdir}/QmlDebugPrivate.json
@@ -1502,15 +1507,6 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmlintegration_private.pri
 %{_qt6_libdir}/libQt6QmlDom.prl
 %{_qt6_metatypesdir}/qt6qmldomprivate_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_qmldom_private.pri
-
-%files -n qt6-qmllint-devel-static
-%{_qt6_cmakedir}/Qt6QmlLintPrivate/
-%{_qt6_descriptionsdir}/QmlLintPrivate.json
-%{_qt6_includedir}/QtQmlLint/
-%{_qt6_libdir}/libQt6QmlLint.a
-%{_qt6_libdir}/libQt6QmlLint.prl
-%{_qt6_metatypesdir}/qt6qmllintprivate_*_metatypes.json
-%{_qt6_mkspecsdir}/modules/qt_lib_qmllint_private.pri
 
 %files -n qt6-quickcontrolstestutils-devel-static
 %{_qt6_cmakedir}/Qt6QuickControlsTestUtilsPrivate/
