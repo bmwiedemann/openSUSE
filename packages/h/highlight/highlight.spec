@@ -18,7 +18,7 @@
 
 %bcond_without gui
 Name:           highlight
-Version:        4.2
+Version:        4.3
 Release:        0
 Summary:        Universal Source Code to Formatted Text Converter
 License:        GPL-3.0-or-later
@@ -64,6 +64,39 @@ This package provides graphical interface for %{name}.
 
 %endif
 
+%package bash-completion
+Summary:        Bash completion for %{name}
+Group:          System/Shells
+Requires:       %{name}
+Requires:       bash-completion
+Supplements:    (bash-completion and %{name})
+BuildArch:      noarch
+
+%description bash-completion
+This package provides Bash command-line completion support for %{name}.
+
+%package fish-completion
+Summary:        Fish completion for %{name}
+Group:          System/Shells
+Requires:       %{name}
+Requires:       fish
+Supplements:    (fish and %{name})
+BuildArch:      noarch
+
+%description fish-completion
+This package provides Fish command-line completion support for %{name}.
+
+%package zsh-completion
+Summary:        Zsh completion for %{name}
+Group:          System/Shells
+Requires:       %{name}
+Requires:       zsh
+Supplements:    (zsh and %{name})
+BuildArch:      noarch
+
+%description zsh-completion
+This package provides Zsh command-line completion support for %{name}.
+
 %prep
 %autosetup -p1 -n %{name}-v%{version}
 dos2unix extras/pandoc/* extras/themes-resources/base16/*
@@ -76,12 +109,12 @@ export CFLAGS="%{optflags}"
 # Don't call gui and cli targets in the same make invocation
 # as it leads to concurrency issues.
 %make_build gui                 \
-  doc_dir="%{_docdir}/%{name}/" \
+  doc_dir="%{_docdir}/" \
   QMAKE="qmake-qt5 QMAKE_CXXFLAGS=\"%{optflags}\""
 %endif
 
 %install
-%makeinstall doc_dir="%{_docdir}/%{name}/" \
+%makeinstall doc_dir="%{_docdir}/" \
 %if %{with gui}
   install-gui
 %suse_update_desktop_file -G "Text converter" -r %{name} Utility TextEditor
@@ -117,5 +150,18 @@ rm %{buildroot}%{_docdir}/%{name}/INSTALL
 %files gui-lang -f %{name}.lang
 %dir %{_datadir}/%{name}/gui_files/l10n
 %endif
+
+%files bash-completion
+%{_datadir}/bash-completion/completions/%{name}
+
+%files fish-completion
+%dir %{_datadir}/fish
+%dir %{_datadir}/fish/vendor_completions.d
+%{_datadir}/fish/vendor_completions.d/%{name}.fish
+
+%files zsh-completion
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
+%{_datadir}/zsh/site-functions/_%{name}
 
 %changelog

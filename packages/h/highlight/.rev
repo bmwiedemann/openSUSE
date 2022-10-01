@@ -690,4 +690,21 @@
 - Remove useless dependency of gui on cli.</comment>
     <requestid>964313</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>c8039a2012a57ff19965e48d5552c011</srcmd5>
+    <version>4.3</version>
+    <time>1664638954</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 4.3:
+  * Added support for Carbon.
+  * Added support for Fortran77 star comments
+    (gl#saalen/highlight#208).
+  * Added support for PowerShell block comments
+    (gl#saalen/highlight#210).
+  * Fixed Python formatted string pattern
+    (gl#saalen/highlight#212).
+  * Added new shell completion generation script
+    (gl#saalen/highlight!137).</comment>
+    <requestid>1006769</requestid>
+  </revision>
 </revisionlist>

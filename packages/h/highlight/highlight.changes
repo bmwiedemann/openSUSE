@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Sep 28 18:34:00 UTC 2022 - antoine.belvire@opensuse.org
+
+- Update to version 4.3:
+  * Added support for Carbon.
+  * Added support for Fortran77 star comments
+    (gl#saalen/highlight#208).
+  * Added support for PowerShell block comments
+    (gl#saalen/highlight#210).
+  * Fixed Python formatted string pattern
+    (gl#saalen/highlight#212).
+  * Added new shell completion generation script
+    (gl#saalen/highlight!137).
+
+-------------------------------------------------------------------
 Wed Mar 23 13:44:19 UTC 2022 - antoine.belvire@opensuse.org
 
 - Create a common subpackage for architecture-independent files
