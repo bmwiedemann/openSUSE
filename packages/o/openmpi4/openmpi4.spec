@@ -117,9 +117,14 @@ ExclusiveArch:  do_not_build
 %global hpc_openmpi_dep_version %(VER=%m_f_ver; echo -n ${VER})
 %global hpc_openmpi_dir openmpi%{hpc_openmpi_dep_version}
 %global hpc_openmpi_pack_version %{hpc_openmpi_dep_version}
+%{bcond_without pmix}
+%{bcond_without hwloc}
+%else
+%{bcond_with pmix}
+%{bcond_with hwloc}
 %endif
 
-%define git_ver .0.ffb0adcdd6
+%define git_ver .0.ffb0adcdd677
 
 #############################################################################
 #
@@ -134,12 +139,13 @@ Summary:        An implementation of MPI/SHMEM (Version %{m_f_ver})
 License:        BSD-3-Clause
 Group:          Development/Libraries/Parallel
 URL:            https://www.open-mpi.org/
-Source0:        openmpi-%{version}%{git_ver}.tar.zst
+Source0:        openmpi-%{version}%{git_ver}.tar.bz2
 Source2:        openmpi4-rpmlintrc
 Source3:        macros.hpc-openmpi
 Source4:        mpivars.sh
 Source5:        mpivars.csh
 Patch1:         orted-mpir-add-version-to-shared-library.patch
+Patch2:         btl-openib-Add-VF-support-for-ConnectX-4-5-and-6.patch
 Provides:       mpi
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
@@ -147,10 +153,13 @@ BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  hostname
+BuildRequires:  libevent-devel
+BuildRequires:  libfabric-devel
 BuildRequires:  libibumad-devel
 BuildRequires:  libibverbs-devel
 BuildRequires:  libtool
-BuildRequires:  zstd
+# net-tools is required to run hostname
+BuildRequires:  net-tools
 %if 0%{?testsuite}
 BuildArch:      noarch
 BuildRequires:  %{package_name} = %{version}
@@ -160,6 +169,12 @@ BuildRequires:  libucm-devel
 BuildRequires:  libucp-devel
 BuildRequires:  libucs-devel
 BuildRequires:  libuct-devel
+%endif
+%if %{with hwloc}
+BuildRequires:  hwloc-devel
+%endif
+%if %{with pmix}
+BuildRequires:  pmix-devel
 %endif
 %if %{without hpc}
 BuildRequires:  Modules
@@ -181,7 +196,6 @@ Requires:       lib%{package_name} = %{version}
 
 %ifarch %{ix86} x86_64
 BuildRequires:  infinipath-psm-devel
-BuildRequires:  libfabric-devel
 %endif
 
 %ifarch x86_64
@@ -360,9 +374,11 @@ Summary:        Runtime configuration files for openMPI %{?with_hpc:HPC} version
 Group:          Development/Libraries/Parallel
 Provides:       openmpi-runtime-config = %{version}
 Conflicts:      otherproviders(openmpi-runtime-config)
+%if %{without pmix}
 # OpenMPI4 is PMIx enabled
 Provides:       pmix-runtime-config = %{version}
 Conflicts:      otherproviders(pmix-runtime-config)
+%endif
 
 %description -n %{pname}%{m_f_ver}-config
 OpenMPI is an implementation of the Message Passing Interface, a
@@ -399,6 +415,7 @@ echo without HPC
 %endif
 %setup -q -n  openmpi-%{version}%{git_ver}
 %patch1
+%patch2
 
 %if %{without hpc}
 cat > %{_sourcedir}/baselibs.conf  <<EOF
@@ -442,9 +459,17 @@ export HOSTNAME=OBS
            --enable-builtin-atomics \
            --with-libltdl=%{_prefix} \
            --with-verbs \
+           --with-libfabric \
            --enable-mpi-thread-multiple \
            --disable-wrapper-rpath \
            --with-slurm \
+	   --with-libevent=external \
+%if %{with hwloc}
+	   --with-hwloc=external \
+%endif
+%if %{with pmix}
+	   --with-pmix=external \
+%endif
 %if 0%{?with_ucx}
            --with-ucx \
            --with-ucx-libdir=/usr/%_lib \
@@ -595,7 +620,9 @@ cp %{S:3} %{buildroot}%{_rpmmacrodir}
 rm -f %{buildroot}%{_sysconfdir}/openmpi-default-hostfile
 rm -f %{buildroot}%{_sysconfdir}/openmpi-mca-params.conf
 rm -f %{buildroot}%{_sysconfdir}/openmpi-totalview.tcl
+%if %{without pmix}
 rm -f %{buildroot}%{_sysconfdir}/pmix-mca-params.conf
+%endif
 %endif
 
 %if %{without hpc}
@@ -678,8 +705,10 @@ fi
 %{mpi_datadir}/openmpi/mca-btl-openib-device-params.ini
 %{mpi_datadir}/openmpi/*-data.txt
 %{mpi_datadir}/openmpi/help-*.txt
+%if %{without pmix}
 %dir %{mpi_datadir}/pmix
 %{mpi_datadir}/pmix/help-*.txt
+%endif
 
 %files %{!?with_hpc:libs}%{?with_hpc:-n lib%{name}}
 %defattr(-,root,root)
@@ -687,7 +716,7 @@ fi
 %dir %mpi_libdir/
 %mpi_libdir/*.so.*
 %{mpi_libdir}/openmpi/*.so
-%if 0%{!?build_static_devel:1}
+%if %{without pmix}
 %dir %mpi_libdir/pmix/
 %{mpi_libdir}/pmix/*.so
 %endif
@@ -727,7 +756,9 @@ fi
 %{mpi_bindir}/shmemfort
 %endif
 %{mpi_datadir}/openmpi/openmpi-valgrind.supp
+%if %{without pmix}
 %{mpi_datadir}/pmix/pmix-valgrind.supp
+%endif
 
 %files docs
 %defattr(-, root, root, -)
@@ -754,7 +785,9 @@ fi
 %files -n %{pname}%{m_f_ver}-config
 %config %{_sysconfdir}/openmpi-default-hostfile
 %config %{_sysconfdir}/openmpi-mca-params.conf
+%if %{without pmix}
 %config %{_sysconfdir}/pmix-mca-params.conf
+%endif
 %{_sysconfdir}/openmpi-totalview.tcl
 %endif
 
