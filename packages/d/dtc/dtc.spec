@@ -27,6 +27,7 @@ Source0:        https://mirrors.edge.kernel.org/pub/software/utils/dtc/dtc-%{ver
 Source1:        https://mirrors.edge.kernel.org/pub/software/utils/dtc/dtc-%{version}.tar.sign
 Source20:       baselibs.conf
 Source21:       dtc.keyring
+Patch0:         makefile-bison-rule.patch
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  libyaml-devel
@@ -59,6 +60,7 @@ This package provides development files for libfdt
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %make_build EXTRA_CFLAGS="%{optflags} -pie" LDFLAGS="%{optflags}"
