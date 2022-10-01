@@ -1,7 +1,7 @@
 #
 # spec file for package python-csv23
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-csv23
-Version:        0.3.3
+Version:        0.3.4
 Release:        0
 License:        MIT
 Summary:        Python 2/3 unicode CSV compatibility layer
