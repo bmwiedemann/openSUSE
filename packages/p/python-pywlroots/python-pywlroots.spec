@@ -18,7 +18,7 @@
 
 %bcond_without test
 Name:           python-pywlroots
-Version:        0.15.19
+Version:        0.15.22
 Release:        0
 Summary:        Python binding to the wlroots library using cffi
 License:        NCSA
@@ -38,6 +38,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module xkbcommon}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
+BuildRequires:  libdrm >= 2.4.113
 BuildRequires:  libwlroots10
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(glib-2.0)
