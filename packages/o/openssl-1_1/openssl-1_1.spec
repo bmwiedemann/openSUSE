@@ -121,6 +121,8 @@ Patch71:        openssl-1_1-Optimize-AES-XTS-aarch64.patch
 Patch72:        openssl-1_1-Optimize-AES-GCM-uarchs.patch
 #PATCH-FIX-SUSE bsc#1182959 FIPS: Fix function and reason error codes
 Patch73:        openssl-1_1-FIPS-fix-error-reason-codes.patch
+#PATCH-FIX-SUSE bsc#1180995 Default to RFC7919 groups in FIPS mode
+Patch74:        openssl-1_1-paramgen-default_to_rfc7919.patch
 Requires:       libopenssl1_1 = %{version}-%{release}
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(zlib)
