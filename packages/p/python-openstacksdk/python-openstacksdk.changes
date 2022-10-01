@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Sat Oct  1 12:24:27 UTC 2022 - cloud-devel@suse.de
+
+- update to version 0.101.0
+  - Fix Baremetal cloud layer
+  - Do not log to stdout by default
+  - Fix python-dev reference in bindep
+  - Add VPNaaS Endpoint Group resource
+  - compute: Add support for instance actions
+  - cloud: Remove a load of normalize helpers
+  - Change title for "unreleased" renos
+  - Reorg existing vpnaas content
+  - Add VPNaaS IpsecPolicy resource
+  - Allow to pass description parameter to cloud.create_server()
+  - remove unicode prefix from code
+  - cloud: Update docstrings for image functions
+  - Remove unused normalization helpers
+  - cloud: Update docstrings for accelerator functions
+  - trivial: Run some files through black
+  - Add network address_group proxy doc and unit tests
+  - block storage: Add support for the Group resource
+  - Allow unknown attributes in project resources
+  - Enable add_ips_to_server() and _needs_floating_ip() for pristine server resources
+  - docs: Add missing docs for block storage v3 proxy APIs
+  - cloud: Update docstrings for compute functions
+  - network RBAC policy: allow query for target tenant
+  - Replace deprecated failUnlessEqual with assertEqual
+  - Reduce list_router_interfaces() to necessary API calls
+  - proxy: Resolve a TODO
+  - cloud: Update docstrings for network functions
+  - Add CRUD methods for Neutron router ndp proxy
+  - Restore functionality to attach multiple floating ips with add_ip_list()
+  - resource: Merge unnecessary separation of logic
+  - cloud: Update docstrings for identity functions
+  - cloud: Update docstrings for object store functions
+  - Warn when no statsd library available
+  - cloud: Update docstrings for block storage functions
+  - Make nodepool jobs non voting
+  - compute: Add support for os-simple-tenant-usages API
+  - tests: Add pointers to docs on running tests
+  - Add update capabilities to Snapshots
+  - Disable deprecation warning for tenant_id
+  - block storage: Add support for group type specs
+  - Rework caching
+  - compute: Correct some docstrings
+  - test: Remove duplicated tests
+  - Fix object upload for RAX
+
+-------------------------------------------------------------------
 Tue Jun  7 09:18:31 UTC 2022 - cloud-devel@suse.de
 
 - update to version 0.99.0

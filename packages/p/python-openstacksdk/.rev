@@ -414,4 +414,41 @@
   - Splits class `TestMessageProxy`</comment>
     <requestid>983961</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>0563e471ea72c64abf1c78e34079772a</srcmd5>
+    <version>0.101.0</version>
+    <time>1664639046</time>
+    <user>RBrownFactory</user>
+    <comment>- update to version 0.101.0
+  - Fix Baremetal cloud layer
+  - Do not log to stdout by default
+  - Fix python-dev reference in bindep
+  - Add VPNaaS Endpoint Group resource
+  - compute: Add support for instance actions
+  - cloud: Remove a load of normalize helpers
+  - Change title for &quot;unreleased&quot; renos
+  - Reorg existing vpnaas content
+  - Add VPNaaS IpsecPolicy resource
+  - Allow to pass description parameter to cloud.create_server()
+  - remove unicode prefix from code
+  - cloud: Update docstrings for image functions
+  - Remove unused normalization helpers
+  - cloud: Update docstrings for accelerator functions
+  - trivial: Run some files through black
+  - Add network address_group proxy doc and unit tests
+  - block storage: Add support for the Group resource
+  - Allow unknown attributes in project resources
+  - Enable add_ips_to_server() and _needs_floating_ip() for pristine server resources
+  - docs: Add missing docs for block storage v3 proxy APIs
+  - cloud: Update docstrings for compute functions
+  - network RBAC policy: allow query for target tenant
+  - Replace deprecated failUnlessEqual with assertEqual
+  - Reduce list_router_interfaces() to necessary API calls
+  - proxy: Resolve a TODO
+  - cloud: Update docstrings for network functions
+  - Add CRUD methods for Neutron router ndp proxy
+  - Restore functionality to attach multiple floating ips with add_ip_list()
+  - resource: Merge unnecessary separation of logic</comment>
+    <requestid>1007440</requestid>
+  </revision>
 </revisionlist>
