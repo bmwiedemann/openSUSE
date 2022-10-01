@@ -341,6 +341,12 @@ Patch2026:      gdb-testsuite-fix-gdb.base-catch-syscall.exp-with-with-expat-no.
 Patch2027:      fix-for-gdb.base-solib-search.exp-test.patch
 Patch2028:      make-gdb.ada-float-bits.exp-more-generic.patch
 Patch2029:      gdb-testsuite-fix-gdb.threads-killed-outside.exp-on-aarch64.patch
+Patch2030:      gdb-tdep-fix-powerpc-ieee-128-bit-format-arg-passing.patch
+Patch2031:      gdb-symtab-fix-handling-of-dw_tag_unspecified_type.patch
+Patch2032:      gdb-handle-pending-c-after-rl_callback_read_char.patch
+Patch2033:      gdb-testsuite-fix-have_mpx-test.patch
+Patch2034:      gdb-testsuite-fix-gdb.dwarf2-dw2-unspecified-type-foo.c-with-m32.patch
+Patch2035:      gdb-add-support-for-readline-8.2.patch
 
 # Backports from master, not yet available in next release.
 
@@ -378,8 +384,8 @@ Patch2112:      gdb-testsuite-fix-gdb.reverse-i387-env-reverse.exp-for-pie.patch
 Patch2113:      gdb-testsuite-fix-gdb.ada-literals.exp-with-aarch64.patch
 # https://sourceware.org/bugzilla/show_bug.cgi?id=29423#c8
 Patch2114:      gdb-fix-watchpoints-triggered.patch
-# https://sourceware.org/bugzilla/show_bug.cgi?id=29543#c5
-Patch2115:      gdb-tdep-fix-powerpc-ieee-128-bit-format-arg-passing.patch
+# https://sourceware.org/pipermail/gdb-patches/2022-September/192172.html
+Patch2115:      gdb-testsuite-fix-gdb.mi-mi-sym-info.exp-on-opensuse-tumbleweed.patch
 
 # Debug patches.
 
@@ -771,6 +777,12 @@ find -name "*.info*"|xargs rm -f
 %patch2027 -p1
 %patch2028 -p1
 %patch2029 -p1
+%patch2030 -p1
+%patch2031 -p1
+%patch2032 -p1
+%patch2033 -p1
+%patch2034 -p1
+%patch2035 -p1
 
 %patch2100 -p1
 %patch2101 -p1

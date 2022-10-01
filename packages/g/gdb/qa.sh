@@ -241,6 +241,10 @@ kfail=(
 
     # https://sourceware.org/bugzilla/show_bug.cgi?id=25038
     "FAIL: gdb.reverse/test_ioctl_TCSETSW.exp: handle TCSETSW"
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=26873
+    "FAIL: gdb.threads/watchthreads-threaded.exp: threaded watch loop \(GDB internal error\)"
+
 ) # kfail
 
 kfail_sle12=(
@@ -422,6 +426,8 @@ case $n in
 
 	    # https://sourceware.org/bugzilla/show_bug.cgi?id=28667
 	    "record-full.c:[0-9]*: internal-error: ptid_t record_full_wait_1\(target_ops\*, ptid_t, target_waitstatus\*, target_wait_flags\): Assertion \`\(options & TARGET_WNOHANG\) != 0' failed."
+	    # https://sourceware.org/bugzilla/show_bug.cgi?id=26873
+	    "infrun.c:[0-9]*: internal-error: resume_1: Assertion \`!\(thread_has_single_step_breakpoints_set \(tp\) && step\)' failed."
 	)
 
 	kfail_re=$(join "|" "${kfail[@]}")
