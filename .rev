@@ -119,4 +119,12 @@
     <comment>Qt 6.3.2 (forwarded request 1003797 from cgiboudeaux)</comment>
     <requestid>1003799</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5e57ae8c43ea57f0a77375260acf5e4e</srcmd5>
+    <version>6.4.0</version>
+    <time>1664638977</time>
+    <user>RBrownFactory</user>
+    <comment>Qt 6.4.0</comment>
+    <requestid>1007304</requestid>
+  </revision>
 </revisionlist>
