@@ -340,4 +340,14 @@
   - Only pass exclude-deprecated when True</comment>
     <requestid>980779</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>e70bc4bdcaa38a5c71185269a5b08bc7</srcmd5>
+    <version>4.0.0</version>
+    <time>1664639047</time>
+    <user>RBrownFactory</user>
+    <comment>- update to version 4.0.0
+  - Drop python3.6/3.7 support in testing runtime
+  - Fix generation of sample policy files</comment>
+    <requestid>1007441</requestid>
+  </revision>
 </revisionlist>

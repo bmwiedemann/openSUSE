@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct  1 12:38:50 UTC 2022 - cloud-devel@suse.de
+
+- update to version 4.0.0
+  - Drop python3.6/3.7 support in testing runtime
+  - Fix generation of sample policy files
+
+-------------------------------------------------------------------
 Sat Jun  4 15:23:47 UTC 2022 - cloud-devel@suse.de
 
 - update to version 3.12.1
