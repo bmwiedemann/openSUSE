@@ -1,0 +1,12 @@
+<package name="qt6-quick3dphysics" project="openSUSE:Factory">
+  <title>Qt 6 Quick3D Physics Extensions</title>
+  <description>This module adds physical simulation capabilities on top of Qt Quick 3D.
+In particular, it enables rigid body simulation using simple primitives as well
+as convex- and triangle meshes and heightmaps. Physical properties such as mass,
+density, gravity and friction are customizable. This makes it possible to create
+physically correct behavior in 3D scenes without having to handcraft animations.
+
+</description>
+  <devel project="KDE:Qt6" package="qt6-quick3dphysics"/>
+  <url>https://www.qt.io</url>
+</package>
