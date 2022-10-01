@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 29 11:58:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add a77ad9693c8b49055389559187fe74eddb619746.patch to avoid
+  the cpu detection code being compiled with AVX512 enabled
+
+-------------------------------------------------------------------
 Mon Sep 12 19:55:30 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fix tests with GNU grep 3.8 boo#1203239
