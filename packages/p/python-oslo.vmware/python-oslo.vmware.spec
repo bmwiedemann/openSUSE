@@ -17,13 +17,13 @@
 
 
 Name:           python-oslo.vmware
-Version:        3.10.0
+Version:        4.0.1
 Release:        0
 Summary:        Oslo VMware library for OpenStack projects
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/oslo.vmware
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.vmware/oslo.vmware-3.10.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.vmware/oslo.vmware-4.0.1.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-Babel
 BuildRequires:  python3-ddt
@@ -88,7 +88,7 @@ BuildRequires:  python3-sphinxcontrib-apidoc
 Documentation for OpenStack common VMware library.
 
 %prep
-%autosetup -p1 -n oslo.vmware-3.10.0
+%autosetup -p1 -n oslo.vmware-4.0.1
 %py_req_cleanup
 
 %build

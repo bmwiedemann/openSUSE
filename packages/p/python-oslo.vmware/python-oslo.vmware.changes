@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Oct  1 12:21:52 UTC 2022 - cloud-devel@suse.de
+
+- update to version 4.0.1
+  - remove unicode literal from code
+  - Drop python3.6/3.7 support in testing runtime
+  - Add Python3 zed unit tests
+  - Download ISO in more simple way.
+  - Fix formatting of release list
+  - Update master for stable/yoga
+  - Imported Translations from Zanata
+
+-------------------------------------------------------------------
 Tue May 24 21:08:23 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - remove unneeded dependencies 

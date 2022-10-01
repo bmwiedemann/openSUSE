@@ -383,4 +383,19 @@
     <comment>- remove unneeded dependencies</comment>
     <requestid>979071</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>f7be7277ccc68a1cc14fa467a8ec3f04</srcmd5>
+    <version>4.0.1</version>
+    <time>1664639044</time>
+    <user>RBrownFactory</user>
+    <comment>- update to version 4.0.1
+  - remove unicode literal from code
+  - Drop python3.6/3.7 support in testing runtime
+  - Add Python3 zed unit tests
+  - Download ISO in more simple way.
+  - Fix formatting of release list
+  - Update master for stable/yoga
+  - Imported Translations from Zanata</comment>
+    <requestid>1007434</requestid>
+  </revision>
 </revisionlist>
