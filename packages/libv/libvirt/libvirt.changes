@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 27 22:36:37 UTC 2022 - James Fehlig <jfehlig@suse.com>
+
+- spec: Only drop redefinition of libexecdir on Factory and newer
+  bsc#1203775
+
+-------------------------------------------------------------------
 Thu Sep 15 12:16:26 UTC 2022 - Stefan Schubert <schubi@suse.com>
 
 - Migration to /usr/etc: Saving user changed configuration files

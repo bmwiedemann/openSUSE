@@ -972,7 +972,14 @@ libvirt plugin for NSS for translating domain names into IP addresses.
     %define libvirt_logrotate_posttrans() %nil
 %endif
 
+# The libvirt package has long redefined libexecdir. Stop the madness at SLE15.
+# Factory and newer will use the product default for libexecdir
+%if 0%{?suse_version} <= 1500
+    %define _libexecdir %{_libdir}/%{name}
+%endif
+
 %meson \
+           --libexecdir=%{_libexecdir} \
            -Drunstatedir=%{_rundir} \
            %{?arg_qemu} \
            %{?arg_openvz} \

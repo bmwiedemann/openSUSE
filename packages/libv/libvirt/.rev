@@ -4146,4 +4146,13 @@ StandardGroups in rpmlint package.
     <comment></comment>
     <requestid>1003937</requestid>
   </revision>
+  <revision rev="361" vrev="3">
+    <srcmd5>963e046b92d0df5e3958f04df18e9a9a</srcmd5>
+    <version>8.7.0</version>
+    <time>1664638945</time>
+    <user>RBrownFactory</user>
+    <comment>- spec: Only drop redefinition of libexecdir on Factory and newer
+  bsc#1203775</comment>
+    <requestid>1006540</requestid>
+  </revision>
 </revisionlist>
