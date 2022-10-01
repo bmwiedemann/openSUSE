@@ -16,7 +16,17 @@
 #
 
 
-%global __requires_exclude ^typelib\\(AppIndicator3\\)
+#
+# Gajim uses libsoup2 while GUPnP, libsoup3. And that makes the app unlunchable.
+# This is a temporary fix until upstream addresses it.
+#
+# FIXME: Once the issue https://dev.gajim.org/gajim/gajim/-/issues/11183
+#        is properly addressed, exclude only AppIndicator3.
+#
+%define __requires_exclude ^typelib\\((GUPnPIgd|AppIndicator3)\\).*$
+#
+# It was: __requires_exclude ^typelib\\(AppIndicator3\\)
+
 %if 0%{?suse_version} > 1500
 %define py3ver 3
 %define py3pkg python3
@@ -50,6 +60,7 @@ Requires:       %{py3pkg}-base
 Requires:       %{py3pkg}-css-parser
 Requires:       %{py3pkg}-gobject-Gdk
 Requires:       %{py3pkg}-gobject-cairo
+Requires:       %{py3pkg}-gssapi
 Requires:       %{py3pkg}-keyring
 Requires:       %{py3pkg}-nbxmpp >= 3.0
 Requires:       %{py3pkg}-precis-i18n >= 1.0.0

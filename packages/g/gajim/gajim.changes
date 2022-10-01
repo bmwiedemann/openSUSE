@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep 28 04:17:52 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
+
+- Temporarily remove auto generated requirement on GUPnPIgd GI
+  bindings to address fatal error caused by requirement on both
+  LibSoup2 and LibSoup3 thus making the app unlaunchable. This is
+  caused because Gajim itself depends on LibSoup 2.4 while the
+  GUPnPIgd GI bindings pulls in UPnP which in turns depends on
+  LibSoup 3.0 (boo#1203676).
+- Add missing GSSAPI Python module runtime requirement.
+
+-------------------------------------------------------------------
 Tue Sep 20 09:59:33 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version  1.5.1:
