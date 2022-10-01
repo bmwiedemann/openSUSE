@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.3.2
-%define short_version 6.3
+%define real_version 6.4.0
+%define short_version 6.4
 %define tar_name qtserialport-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-serialport%{?pkg_suffix}
-Version:        6.3.2
+Version:        6.4.0
 Release:        0
 Summary:        Qt 6 SerialPort library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -99,7 +99,7 @@ ABI or API guarantees.
 %postun -n libQt6SerialPort6 -p /sbin/ldconfig
 
 %files -n libQt6SerialPort6
-%license LICENSE.*
+%license LICENSES/*
 %{_qt6_libdir}/libQt6SerialPort.so.*
 
 %files devel
