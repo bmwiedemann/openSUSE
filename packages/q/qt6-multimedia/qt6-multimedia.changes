@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Sep 29 10:35:55 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.4.0:
+  * https://www.qt.io/blog/qt-6.4-released
+
+-------------------------------------------------------------------
+Fri Sep 16 08:29:11 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.4.0 RC
+- Enable the FFmpeg backend for better latencies
+- Use PulseAudio rather than Alsa for building qt6-multimedia
+- Add patch to fix build on PowerPC and x86:
+  * 0001-3rdparty-Fix-build-on-unsupported-platforms.patch
+
+-------------------------------------------------------------------
 Fri Sep  9 12:41:39 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 6.3.2:
