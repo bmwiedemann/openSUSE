@@ -264,4 +264,14 @@
   - Fix TestTagHelps for python3.10</comment>
     <requestid>983770</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>3d42de0b25beefca5a0adc9e88f62f09</srcmd5>
+    <version>2.6.2</version>
+    <time>1664639049</time>
+    <user>RBrownFactory</user>
+    <comment>- update to version 2.6.2
+  - Do not output log on bash autocomplete generation
+  - doc: Comment out language option</comment>
+    <requestid>1007455</requestid>
+  </revision>
 </revisionlist>

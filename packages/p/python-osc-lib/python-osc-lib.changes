@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct  1 13:52:45 UTC 2022 - cloud-devel@suse.de
+
+- update to version 2.6.2
+  - Do not output log on bash autocomplete generation
+  - doc: Comment out language option
+
+-------------------------------------------------------------------
 Tue Jun  7 09:17:36 UTC 2022 - cloud-devel@suse.de
 
 - update to version 2.6.0
