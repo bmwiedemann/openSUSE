@@ -199,10 +199,10 @@ autoconf-2.13
 	--disable-jemalloc
 
 %if 0%{?big_endian}
-echo "Generate big endian version of config/external/icu/data/icud69l.dat"
+echo "Generate big endian version of config/external/icu/data/icud71l.dat"
 pushd ../..
-  /usr/sbin/icupkg -tb config/external/icu/data/icudt69l.dat config/external/icu/data/icudt69b.dat
-  rm -f config/external/icu/data/icudt*l.dat
+  /usr/sbin/icupkg -tb config/external/icu/data/icudt71l.dat config/external/icu/data/icudt71b.dat
+  rm config/external/icu/data/icudt*l.dat
 popd
 %endif
 
