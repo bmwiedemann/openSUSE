@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Sep 30 13:17:19 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.2.9
+  * platform support:
+    ** fix build on Darwin platforms with -fno-common.  (lp#1980570, thanks to
+       Sergei Trofimovich)
+    ** include /usr/local paths when building on FreeBSD.  (lp#1981112,
+       reported by William G Lederer)
+    ** several micro-optimizations on x86-64, including: better use of
+       INC/SUB, better SAP+, shorter KEYWORDP, better argument count
+       verification
+    ** arm64: better KEYWORDP, better argument count verification
+    ** fix build on 32-bit Windows.  (lp#1988534, thanks to Alexis Rivera)
+    ** x86-64: WITH-PINNED-OBJECTS can pin constants.  (lp#1989037)
+  * bug fix: make sb-simd build in compiler-only SBCL.  (thanks to Tonas
+    Hlavaty)
+  * bug fix: SB-SPROF:WITH-PROFILING now returns the value of its body (as was
+    advertised in its documentation).
+  * bug fix: catch malformed LET* forms in DEFMETHOD bodies.  (lp#1988880,
+    reported by Patrick Poitras)
+  * enhancement: better source form tracking for atoms in LET bindings.
+  * optimization: reader character macro lookup is simpler and faster.
+  * optimization: FILL-POINTER (and its setter) are more compact.
+
+-------------------------------------------------------------------
 Wed Aug 31 09:40:34 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.2.8
