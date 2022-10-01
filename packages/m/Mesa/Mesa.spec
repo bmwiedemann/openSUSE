@@ -29,6 +29,11 @@
 %define _lto_cflags %{nil}
 %endif
 
+# Possible patent issues, see
+# https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/15258
+# for more details
+%define video_codecs 0
+
 %define drivers 0
 
 %define glamor 1
@@ -67,6 +72,10 @@
   %ifarch %{arm} aarch64
     %define with_vulkan 1
     %define vulkan_drivers swrast,amd,broadcom,freedreno
+  %endif
+  %ifarch riscv64
+    %define with_vulkan 1
+    %define vulkan_drivers swrast,amd
   %endif
 %endif
 
@@ -813,6 +822,9 @@ egl_platforms=x11,wayland
             -Dshared-llvm=true \
 %endif
 %if "%{flavor}" == "drivers"
+%if %{video_codecs}
+            -Dvideo-codecs=h264dec,h264enc,h265dec,h265enc,vc1dec \
+%endif
 %if %{gallium_loader}
             -Dgallium-vdpau=true \
             -Dgallium-xvmc=true \

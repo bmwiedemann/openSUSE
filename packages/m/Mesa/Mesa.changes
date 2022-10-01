@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Sep 29 10:00:03 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- re-disable video codecs due to possible patent issues
+  https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/15258
+
+-------------------------------------------------------------------
+Tue Sep 27 11:08:54 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Pass -Dvideo-codecs=h264dec,h264enc,h265dec,h265enc,vc1dec to
+  meson, keep support for hardware codecs inside vaapi, vdpau and
+  vulkan. These were previously enabled automatically.
+- enabled "swrast" and "amd" Vulkan drivers on riscv64, which is
+  upstream default anyway ...
+
+-------------------------------------------------------------------
 Wed Sep 21 14:20:04 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to 22.2.0

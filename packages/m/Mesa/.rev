@@ -4993,4 +4993,19 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
 - refreshed n_no-sse2-on-ix86-except-for-intel-drivers.patch</comment>
     <requestid>1005404</requestid>
   </revision>
+  <revision rev="452" vrev="324">
+    <srcmd5>fa13a3f9af2bd9d7f08bb0a0f6c6e58d</srcmd5>
+    <version>unknown</version>
+    <time>1664638926</time>
+    <user>RBrownFactory</user>
+    <comment>- re-disable video codecs due to possible patent issues
+  https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/15258
+
+- Pass -Dvideo-codecs=h264dec,h264enc,h265dec,h265enc,vc1dec to
+  meson, keep support for hardware codecs inside vaapi, vdpau and
+  vulkan. These were previously enabled automatically.
+- enabled &quot;swrast&quot; and &quot;amd&quot; Vulkan drivers on riscv64, which is
+  upstream default anyway ...</comment>
+    <requestid>1006922</requestid>
+  </revision>
 </revisionlist>
