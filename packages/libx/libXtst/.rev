@@ -86,4 +86,23 @@
     <comment></comment>
     <requestid>828734</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b001acabd4690eec0043f2e2d9522868</srcmd5>
+    <version>1.2.4</version>
+    <time>1664638905</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 1.2.4
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * send_axes: Mark switch statement fallthrough as intentional
+  * Resolve -Wsign-compare warnings
+  * Variable scope reductions as suggested by cppcheck
+  * Remove obsolete casts from Xmalloc() and Xcalloc() calls
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * autogen.sh: use exec instead of waiting for configure to finish</comment>
+    <requestid>1006369</requestid>
+  </revision>
 </revisionlist>

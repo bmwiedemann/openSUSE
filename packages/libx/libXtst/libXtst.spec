@@ -1,7 +1,7 @@
 #
 # spec file for package libXtst
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libXtst
 %define lname	libXtst6
-Version:        1.2.3
+Version:        1.2.4
 Release:        0
 Summary:        Xlib-based client API for the XTEST and RECORD extensions
 License:        MIT
@@ -27,7 +27,7 @@ URL:            http://xorg.freedesktop.org/
 
 #Git-Clone:	git://anongit.freedesktop.org/xorg/lib/libXtst
 #Git-Web:	http://cgit.freedesktop.org/xorg/lib/libXtst/
-Source:         http://xorg.freedesktop.org/releases/individual/lib/%{name}-%{version}.tar.bz2
+Source:         http://xorg.freedesktop.org/releases/individual/lib/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #git#BuildRequires:	autoconf >= 2.60, automake, libtool

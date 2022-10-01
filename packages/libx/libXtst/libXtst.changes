@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Sep 27 10:02:24 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.2.4
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * send_axes: Mark switch statement fallthrough as intentional
+  * Resolve -Wsign-compare warnings
+  * Variable scope reductions as suggested by cppcheck
+  * Remove obsolete casts from Xmalloc() and Xcalloc() calls
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * autogen.sh: use exec instead of waiting for configure to finish
+
+-------------------------------------------------------------------
 Mon Aug 10 10:32:26 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Add a Provides: libXtst = %{version} to the library subpackage
