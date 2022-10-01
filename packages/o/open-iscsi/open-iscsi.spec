@@ -16,16 +16,27 @@
 #
 
 
-# ensure usr-merge does not effect existing SLE
+# Ensure usr-merge does not effect existing SLE. Cannot use _sbindir
+# directly since meson macros pass that on, and meson does not like
+# setting it to "/sbin".  Also and move DB root to /var/lib/iscsi and
+# lockdir to /run/lock/iscsi for Factory but not SLE (yet)
 %if ! 0%{?is_opensuse}
-%define _sbindir /sbin
+# sle
+%define _iscsi_sbindir /sbin
+%define _dbroot %{_sysconfdir}/iscsi
+%define _lockdir %{_sysconfdir}/iscsi
+%else
+# opensuse
+%define _iscsi_sbindir /usr/sbin
+%define _dbroot %{_sharedstatedir}/iscsi
+%define _lockdir %{_rundir}/lock/iscsi
 %endif
 
 %define iscsi_minor_release 1
-%define iscsi_patch_release 7
+%define iscsi_patch_release 8
 %define iscsi_patch_release_suse %{iscsi_patch_release}-suse
 Name:           open-iscsi
-Version:        2.1.7
+Version:        2.1.8
 Release:        0
 Summary:        Linux iSCSI Software Initiator
 License:        GPL-2.0-or-later
@@ -33,8 +44,6 @@ Group:          Productivity/Networking/Other
 URL:            https://www.open-iscsi.com
 Source:         %{name}-2.%{iscsi_minor_release}.%{iscsi_patch_release_suse}.tar.bz2
 Patch1:         %{name}-SUSE-latest.diff.bz2
-BuildRequires:  autoconf
-BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  db-devel < 5
 BuildRequires:  fdupes
@@ -42,9 +51,10 @@ BuildRequires:  flex
 BuildRequires:  libkmod-devel
 BuildRequires:  libmount-devel
 BuildRequires:  libtool
-BuildRequires:  make
+BuildRequires:  meson >= 0.54.0
 BuildRequires:  open-isns-devel
 BuildRequires:  openssl-devel >= 1.1.1c
+BuildRequires:  perl
 BuildRequires:  pkg-config
 BuildRequires:  suse-module-tools
 BuildRequires:  pkgconfig(libsystemd)
@@ -106,6 +116,7 @@ Release:        0
 Summary:        The iSCSI User-level Library Development Library and Include files
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
+Requires:       libopeniscsiusr0_2_0 = %{version}
 Conflicts:      libopeniscsiusr0_1_0
 
 %description devel
@@ -119,24 +130,26 @@ the libopeniscsiusr library.
 
 %build
 [ -z "$SOURCE_DATE_EPOCH" ] || export KBUILD_BUILD_TIMESTAMP=@$SOURCE_DATE_EPOCH
-make %{?_smp_mflags} OPTFLAGS="%{optflags} -fno-strict-aliasing -fno-common -DOFFLOAD_BOOT_SUPPORTED -DLOCK_DIR=\\\"%{_sysconfdir}/iscsi\\\"" LIB_DIR=%{_libdir} SBINDIR=%{_sbindir} user
-cd iscsiuio
-touch AUTHORS NEWS
-autoreconf --install
-%configure --sbindir=%{_sbindir}
-make %{?_smp_mflags} CFLAGS="%{optflags}" LIB_DIR=%{_libdir}
+%meson --libdir=%{_libdir} \
+	-Dc_flags="%{optflags} -fno-strict-aliasing -fno-common -DOFFLOAD_BOOT_SUPPORTED" \
+	-Discsi_sbindir=%{_iscsi_sbindir} -Ddbroot=%{_dbroot} -Drulesdir=%{_udevrulesdir} -Dlockdir=%{_lockdir} \
+	--strip
+%meson_build
 
 %install
-make DESTDIR=%{buildroot} LIB_DIR=%{_libdir} SBINDIR=%{_sbindir} RULESDIR=%{_udevrulesdir} install
+%meson_install
+[ -d %{buildroot}%{_iscsi_sbindir} ] || mkdir -p %{buildroot}%{_iscsi_sbindir}
+# create brcm_iscsiuio symlink if needed
+[ -e %{buildroot}%{_iscsi_sbindir}/brcm_iscsiuio ] || \
+    ln -s %{_iscsi_sbindir}/iscsiuio %{buildroot}%{_iscsi_sbindir}/brcm_iscsiuio
 # create rc symlinks
-[ -d %{buildroot}%{_sbindir} ] || mkdir -p %{buildroot}%{_sbindir}
-ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rciscsi
-ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rciscsid
-ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rciscsiuio
+ln -s %{_iscsi_sbindir}/service %{buildroot}%{_iscsi_sbindir}/rciscsi
+ln -s %{_iscsi_sbindir}/service %{buildroot}%{_iscsi_sbindir}/rciscsid
+ln -s %{_iscsi_sbindir}/service %{buildroot}%{_iscsi_sbindir}/rciscsiuio
+ln -s %{_iscsi_sbindir}/service %{buildroot}%{_iscsi_sbindir}/rciscsi-init
 (cd %{buildroot}/etc; ln -sf iscsi/iscsid.conf iscsid.conf)
 # create an empty initiatorname file, as a package place holder
 echo > %{buildroot}%{_sysconfdir}/iscsi/initiatorname.iscsi
-%make_install -C iscsiuio
 # rename iscsiuio logrotate file to proper name
 %if 0%{?suse_version} > 1500
 mkdir -p %{buildroot}%{_distconfdir}/logrotate.d
@@ -149,22 +162,22 @@ mv %{buildroot}%{_sysconfdir}/logrotate.d/iscsiuiolog %{buildroot}%{_sysconfdir}
 %post
 %{?regenerate_initrd_post}
 if [ ! -f %{_sysconfdir}/iscsi/initiatorname.iscsi ] ; then
-    %{_sbindir}/iscsi-gen-initiatorname
+    %{_iscsi_sbindir}/iscsi-gen-initiatorname
 fi
-%service_add_post iscsi.service iscsid.service iscsid.socket
+%service_add_post iscsi.service iscsid.service iscsid.socket iscsi-init.service
 
 %posttrans
 %{?regenerate_initrd_posttrans}
 
 %postun
 %service_del_postun_without_restart iscsi.service
-%service_del_postun iscsid.service iscsid.socket
+%service_del_postun iscsi.service iscsid.service iscsid.socket iscsi-init.service
 
 %pre
-%service_add_pre iscsi.service iscsid.service iscsid.socket
+%service_add_pre iscsi.service iscsid.service iscsid.socket iscsi-init.service
 
 %preun
-%service_del_preun iscsi.service iscsid.service iscsid.socket
+%service_del_preun iscsi.service iscsid.service iscsid.socket iscsi-init.service
 
 %post   -n libopeniscsiusr0_2_0 -p %{run_ldconfig}
 %postun -n libopeniscsiusr0_2_0 -p %{run_ldconfig}
@@ -183,26 +196,28 @@ fi
 
 %files
 %dir %{_sysconfdir}/iscsi
+%{_sysconfdir}/iscsid.conf
 %attr(0600,root,root) %config(noreplace) %{_sysconfdir}/iscsi/iscsid.conf
 %ghost %{_sysconfdir}/iscsi/initiatorname.iscsi
-%dir %{_sysconfdir}/iscsi/ifaces
-%config %{_sysconfdir}/iscsi/ifaces/iface.example
-%{_sysconfdir}/iscsid.conf
+%dir %{_dbroot}
+%dir %{_dbroot}/ifaces
+%{_dbroot}/ifaces/iface.example
 %attr(0644,root,root) %{_unitdir}/iscsid.service
 %attr(0644,root,root) %{_unitdir}/iscsid.socket
 %attr(0644,root,root) %{_unitdir}/iscsi-init.service
 %attr(0644,root,root) %{_unitdir}/iscsi.service
 %{_systemdgeneratordir}/ibft-rule-generator
-%{_sbindir}/rciscsi
-%{_sbindir}/rciscsid
-%{_sbindir}/iscsid
-%{_sbindir}/iscsiadm
-%{_sbindir}/iscsi-iname
-%{_sbindir}/iscsistart
-%{_sbindir}/iscsi-gen-initiatorname
-%{_sbindir}/iscsi_offload
-%{_sbindir}/iscsi_discovery
-%{_sbindir}/iscsi_fw_login
+%{_iscsi_sbindir}/rciscsi
+%{_iscsi_sbindir}/rciscsid
+%{_iscsi_sbindir}/rciscsi-init
+%{_iscsi_sbindir}/iscsid
+%{_iscsi_sbindir}/iscsiadm
+%{_iscsi_sbindir}/iscsi-iname
+%{_iscsi_sbindir}/iscsistart
+%{_iscsi_sbindir}/iscsi-gen-initiatorname
+%{_iscsi_sbindir}/iscsi_offload
+%{_iscsi_sbindir}/iscsi_discovery
+%{_iscsi_sbindir}/iscsi_fw_login
 %doc README
 %license COPYING
 %{_mandir}/man8/iscsiadm.8%{ext_man}
@@ -216,11 +231,10 @@ fi
 
 %files -n libopeniscsiusr0_2_0
 %{_libdir}/libopeniscsiusr.so.*
-%{_libdir}/pkgconfig/*.pc
 
 %files -n iscsiuio
-%{_sbindir}/iscsiuio
-%{_sbindir}/brcm_iscsiuio
+%{_iscsi_sbindir}/iscsiuio
+%{_iscsi_sbindir}/brcm_iscsiuio
 %{_mandir}/man8/iscsiuio.8%{ext_man}
 %if 0%{?suse_version} > 1500
 %dir %{_distconfdir}/logrotate.d
@@ -230,11 +244,12 @@ fi
 %endif
 %attr(0644,root,root) %{_unitdir}/iscsiuio.service
 %attr(0644,root,root) %{_unitdir}/iscsiuio.socket
-%{_sbindir}/rciscsiuio
+%{_iscsi_sbindir}/rciscsiuio
 
 %files devel
 %{_includedir}/libopeniscsiusr*.h
 %{_mandir}/man3/*.3%{ext_man}
 %{_libdir}/libopeniscsiusr.so
+%{_libdir}/pkgconfig/*.pc
 
 %changelog
