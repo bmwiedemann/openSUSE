@@ -240,8 +240,8 @@ Requires(pre):  shadow
 # sbd 1.5.0+ handshake defaults to enabled with upstream sbd-release
 #            implicitly supports handshake defaults to enabled in this spec
 Conflicts:      sbd < 1.5.0
-Conflicts:      libpacemaker3
-Obsoletes:      libpacemaker3
+Provides:      libpacemaker3 = %version-%release
+Obsoletes:      libpacemaker3 < %version-%release
 
 %description libs
 Pacemaker is an advanced, scalable High-Availability cluster resource
@@ -299,6 +299,8 @@ Requires:       %{name}-cluster-libs = %{version}-%{release}
 # builds; this is supposed to be disabled for shipping code.
 Requires:       pacemaker
 %endif
+Provides:      libpacemaker-devel = %version-%release
+Obsoletes:      libpacemaker-devel < %version-%release
 
 %description devel
 Pacemaker is an advanced, scalable High-Availability cluster resource
