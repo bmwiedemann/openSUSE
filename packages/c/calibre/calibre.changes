@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Sep 30 15:03:27 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 6.6.1
+  Fixes a regression that caused the Edit metadata window to not
+  remember its last used size.
+  Note that you will have to resize it once after updating to
+  6.6.1, after which the size will be remembered.
+
+-------------------------------------------------------------------
+Fri Sep 30 05:25:44 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 6.6.0
+  * New Features
+    - Book details: allow displaying multi-valued categories such
+      as tags on separate lines via Preferences->Look & feel->Book
+      details
+    - Tag browser: When searching the Tag browser allow also
+      filtering the book list to show only books that match one of
+      the categories currently shown in the Tag browser.
+    - Edit book: When right clicking on HTML files in EPUB 3 books,
+      allow marking them as the Table of Contents (NAV document)
+  * Bug Fixes
+    - EPUB Output: Fix converting a document with obfuscated fonts
+      to EPUB 3 not working
+    - Edit book: Fix an error when processing books that contain
+      comments inside unknown CSS @ rules
+    - Content server: Fix jumping to locations such as bookmarks
+      not working on iPhone/iPad running iOS >= 15
+    - Font subsetting: Fix :first-line and :first-letter pseudo
+      classes not being handled correctly
+    - Workaround for Amazon's email delivery service not reading
+      metadata from inside ebook files
+    - Edit book: File list: Fix pressing Tab key while renaming
+      a file not starting the rename of the next file
+
+-------------------------------------------------------------------
 Fri Sep 16 05:32:34 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 6.5.0
