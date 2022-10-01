@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-invocations
-Version:        2.3.0
+Version:        2.6.1
 Release:        0
 Summary:        Reusable Invoke tasks
 License:        BSD-2-Clause
