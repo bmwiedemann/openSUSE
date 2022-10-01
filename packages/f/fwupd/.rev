@@ -440,4 +440,12 @@ Please do not fwd without building it, and checking new rpmlint warnings we may 
     <comment></comment>
     <requestid>993781</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>30e40e92415e435638e917af5f69d247</srcmd5>
+    <version>1.7.10</version>
+    <time>1664638949</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1006595</requestid>
+  </revision>
 </revisionlist>

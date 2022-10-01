@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Sep 22 14:48:43 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.7.10:
+  + Always check the BDP partitions when getting all the possible
+    ESPs
+  + Correctly detect CET IBT
+  + Do not show HSI events where we changed the spec result value
+  + Fix aligning up addresses greater than 4GB
+  + Fix applying the latest DBX update on machines with
+    20200729.x64 installed
+  + Fix checking for invalid depth requirements
+  + Fix getting the new version number of the USI docking hardware
+  + Fix HSI prefix for invalid chassis
+  + Never save the Redfish auto-generated password to a
+    user-readable file
+  + Only create users using IPMI when we've tested the hardware
+  + Only fail the kernel tainted HSI test for specific taint
+    reasons
+  + Only show changed events in the fwupdmgr security output
+  + Recognize CSME version 16 and update vulnerable versions from
+    CSMEVDT data
+  + Write all the CCGX metadata block as intended
+
+-------------------------------------------------------------------
 Mon Aug  8 12:52:48 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.7.9 (boo#1201311):

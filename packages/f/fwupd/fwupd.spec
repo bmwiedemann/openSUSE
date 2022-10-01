@@ -37,7 +37,7 @@
 %endif
 
 Name:           fwupd
-Version:        1.7.9
+Version:        1.7.10
 Release:        0
 Summary:        Device firmware updater daemon
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
