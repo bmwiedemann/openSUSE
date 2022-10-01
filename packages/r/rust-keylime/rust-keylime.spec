@@ -25,7 +25,7 @@
   %define _config_norepl %config(noreplace)
 %endif
 Name:           rust-keylime
-Version:        0.1.0+git.1659977521.0186093
+Version:        0.1.0+git.1663769444.6318234
 Release:        0
 Summary:        Rust implementation of the keylime agent
 License:        Apache-2.0 AND MIT
@@ -38,7 +38,7 @@ Source4:        keylime-user.conf
 Source5:        tmpfiles.keylime
 # PATCH-FIX-OPENSUSE keylime-agent.conf.diff
 Patch1:         keylime-agent.conf.diff
-# PATCH-FIX-OPENSUSE bindgen.patch
+# PATCH-FIX-UPSTREAM bindgen.patch -- gh#keylime/rust-keylime!459
 Patch2:         bindgen.patch
 BuildRequires:  cargo
 BuildRequires:  clang
@@ -51,6 +51,8 @@ BuildRequires:  zeromq-devel
 Requires:       libtss2-tcti-device0
 Requires:       logrotate
 Requires:       tpm2.0-abrmd
+Provides:       user(keylime)
+%sysusers_requires
 
 %description
 Rust implementation of keylime agent. Keylime is system integrity
@@ -68,8 +70,7 @@ RUSTFLAGS=%{rustflags} cargo build --release --no-default-features --features "w
 %install
 RUSTFLAGS=%{rustflags} cargo install --frozen --no-default-features --features "with-zmq" --root=%{buildroot}%{_prefix} --path .
 
-# TODO: move the configuration file into _distconfdir
-install -Dpm 0600 keylime-agent.conf %{buildroot}%{_sysconfdir}/keylime-agent.conf
+install -Dpm 0600 keylime-agent.conf %{buildroot}%{_distconfdir}/keylime/agent.conf
 install -Dpm 0644 ./dist/systemd/system/keylime_agent.service %{buildroot}%{_unitdir}/keylime_agent.service
 install -Dpm 0644 ./dist/systemd/system/var-lib-keylime-secure.mount %{buildroot}%{_unitdir}/var-lib-keylime-secure.mount
 
@@ -85,7 +86,7 @@ mkdir -p %{buildroot}%{_sharedstatedir}/keylime
 rm %{buildroot}%{_prefix}/.crates.toml
 rm %{buildroot}%{_prefix}/.crates2.json
 
-%pre
+%pre -f keylime.pre
 %service_add_pre keylime_agent.service
 %service_add_pre var-lib-keylime-secure.mount
 
@@ -108,7 +109,8 @@ rm %{buildroot}%{_prefix}/.crates2.json
 %license LICENSE
 %{_bindir}/keylime_agent
 %{_bindir}/keylime_ima_emulator
-%config(noreplace) %attr (0600,keylime,tss) %{_sysconfdir}/keylime-agent.conf
+%dir %attr(0700,keylime,tss) %{_distconfdir}/keylime
+%_config_norepl %attr (0600,keylime,tss) %{_distconfdir}/keylime/agent.conf
 %{_unitdir}/keylime_agent.service
 %{_unitdir}/var-lib-keylime-secure.mount
 %dir %{_prefix}/lib/firewalld
