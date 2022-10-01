@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Sep 20 13:37:33 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.27.76
+  * api-change:``cloudtrail``: This release includes support for importing existing trails into
+    CloudTrail Lake.
+  * api-change:``ec2``: This release adds CapacityAllocations field to DescribeCapacityReservations
+  * api-change:``mediaconnect``: This change allows the customer to use the SRT Caller protocol as
+    part of their flows
+  * api-change:``rds``: This release adds support for Amazon RDS Proxy with SQL Server compatibility.
+- from version 1.27.75
+  * api-change:``codestar-notifications``: This release adds tag based access control for the
+    UntagResource API.
+  * api-change:``ecs``: This release supports new task definition sizes.
+- from version 1.27.74
+  * api-change:``dynamodb``: Increased DynamoDB transaction limit from 25 to 100.
+  * api-change:``ec2``: This feature allows customers to create tags for vpc-endpoint-connections and
+    vpc-endpoint-service-permissions.
+  * api-change:``sagemaker``: Amazon SageMaker Automatic Model Tuning now supports specifying
+    Hyperband strategy for tuning jobs, which uses a multi-fidelity based tuning strategy to stop
+    underperforming hyperparameter configurations early.
+- from version 1.27.73
+  * api-change:``amplifyuibuilder``: Amplify Studio UIBuilder is introducing forms functionality.
+    Forms can be configured from Data Store models, JSON, or from scratch. These forms can then be
+    generated in your project and used like any other React components.
+  * api-change:``ec2``: This update introduces API operations to manage and create local gateway
+    route tables, CoIP pools, and VIF group associations.
+
+-------------------------------------------------------------------
 Wed Sep 14 10:38:16 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.27.72
