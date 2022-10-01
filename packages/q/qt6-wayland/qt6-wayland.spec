@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.3.2
-%define short_version 6.3
+%define real_version 6.4.0
+%define short_version 6.4
 %define tar_name qtwayland-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -30,7 +30,7 @@
 %global with_opengl 1
 %endif
 Name:           qt6-wayland%{?pkg_suffix}
-Version:        6.3.2
+Version:        6.4.0
 Release:        0
 Summary:        Qt 6 Wayland libraries and tools
 # The wayland compositor files are GPL-3.0-or-later
@@ -249,7 +249,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %postun -n libQt6WlShellIntegration6 -p /sbin/ldconfig
 
 %files
-%license LICENSE.*
+%license LICENSES/*
 %dir %{_qt6_pluginsdir}/platforms
 %{_qt6_libexecdir}/qtwaylandscanner
 %{_qt6_pluginsdir}/platforms/libqwayland-*.so
