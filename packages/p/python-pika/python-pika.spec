@@ -19,7 +19,7 @@
 %define mod_name pika
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-%{mod_name}
-Version:        1.2.1
+Version:        1.3.0
 Release:        0
 Summary:        Pika Python AMQP Client Library
 License:        BSD-3-Clause
@@ -27,9 +27,10 @@ Group:          Development/Languages/Python
 URL:            https://github.com/pika/pika
 Source:         https://github.com/pika/pika/archive/%{version}.tar.gz
 BuildRequires:  %{python_module Twisted}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tornado}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python
@@ -48,13 +49,12 @@ should also work with other AMQP 0-9-1 brokers.
 %setup -q -n %{mod_name}-%{version}
 # acceptance needs running configured server
 rm -rf tests/acceptance/
-sed -i -e 's:,tests/acceptance::' setup.cfg
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/%{mod_name}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/*.egg-info
 
