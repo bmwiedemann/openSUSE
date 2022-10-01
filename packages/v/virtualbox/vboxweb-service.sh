@@ -158,6 +158,10 @@ start() {
         if [ -n "$PID" ]; then
             echo "$PID" > $PIDFILE
             RETVAL=0
+	    firewall-cmd --permanent --new-service=vboxweb
+	    firewall-cmd --permanent --service=vboxweb --set-description="service to remotely manage VirtualBox"
+	    firewall-cmd --permanent --add-port=18083/tcp --zone=internal --service=vboxweb
+	    firewall-cmd --permanent --set-short="vboxweb" --service=vboxweb
             succ_msg "VirtualBox web service started"
         else
             RETVAL=1

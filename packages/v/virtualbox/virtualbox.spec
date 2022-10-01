@@ -300,6 +300,7 @@ the terms of the GNU Public License (GPL).
 
 
 
+
 ##########################################
 
 %package qt
@@ -318,11 +319,6 @@ Obsoletes:      %{name}-ose-qt < %{version}
 %description qt
 This package contains the code for the GUI used to control VMs.
 
-
-
-
-#########################################
-
 %package websrv
 Summary:        WebService GUI part for %{name}
 Group:          System/Emulators/PC
@@ -339,6 +335,7 @@ The VirtualBox web server is used to control headless VMs using a browser.
 
 
 ###########################################
+
 %package guest-tools
 Summary:        VirtualBox guest tools
 Group:          System/Emulators/PC
@@ -351,6 +348,7 @@ Supplements:    modalias(pci:v000080EEd0000CAFEsv*sd*bc*sc*i*)
 Provides:       %{name}-ose-guest-tools = %{version}
 Obsoletes:      %{name}-ose-guest-tools < %{version}
 Obsoletes:      virtualbox-guest-x11
+Provides:       virtualbox-guest-x11
 Obsoletes:      xorg-x11-driver-virtualbox-ose
 %if ! 0%{?suse_version} > 1325
 Requires(pre):  net-tools-deprecated
@@ -358,6 +356,7 @@ Requires(pre):  net-tools-deprecated
 
 %description guest-tools
 VirtualBox guest addition tools.
+
 
 
 
@@ -384,6 +383,7 @@ Python XPCOM bindings to %{name}. Used e.g. by vboxgtk package.
 
 
 
+
 ###########################################
 
 %package devel
@@ -397,6 +397,7 @@ Obsoletes:      %{name}-ose-devel < %{version}
 
 %description devel
 Development file for %{name}
+
 
 
 
@@ -435,6 +436,7 @@ sudo %{_sbindir}/vboxguestconfig
 
 
 
+
 ###########################################
 
 %package guest-desktop-icons
@@ -446,6 +448,7 @@ BuildArch:      noarch
 
 %description guest-desktop-icons
 This package contains icons for guest desktop files that were created on the desktop.
+
 
 
 

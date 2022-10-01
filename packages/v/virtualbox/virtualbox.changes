@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 27 17:23:12 UTC 2022 - Larry Finger <Larry.Finger@gmail.com>
+
+- Add a "Provides: virtualbox-guest-x11" to virtualbox-guest-tools. boo#1203735 
+
+-------------------------------------------------------------------
 Fri Sep 16 15:03:48 UTC 2022 - Larry Rainey <llrainey15@gmail.com>
 
 - Version bump to 6.1.38r86 released by Oracle September 02 2022
