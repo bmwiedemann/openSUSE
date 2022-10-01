@@ -17,20 +17,19 @@
 
 
 Name:           python-cairocffi
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        Python cairo bindings based on cffi
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/Kozea/cairocffi
 Source:         https://files.pythonhosted.org/packages/source/c/cairocffi/cairocffi-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM python-cairocffi-xfail.patch -- Xfail some tests failing with cairo 1.17.6
-Patch:          python-cairocffi-xfail.patch
-# PATCH-FIX-OPENSUSE python-cairocffi-disable-linters.patch -- Disable linters tests
-Patch2:         python-cairocffi-disable-linters.patch
-
+# https://github.com/Kozea/cairocffi/issues/208
+Source1:        https://raw.githubusercontent.com/Kozea/cairocffi/master/LICENSE
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module cffi >= 1.1.0}
+# we don't want pikepdf in Ring1 stagings
+#BuildRequires:  %{python_module pikepdf}
 BuildRequires:  %{python_module setuptools >= 39.2.0}
 BuildRequires:  %{python_module xcffib >= 0.3.2}
 BuildRequires:  cairo
@@ -71,6 +70,7 @@ This package provides the optional gdk-pixbuf image loader module.
 
 %prep
 %autosetup -n cairocffi-%{version} -p1
+cp %{SOURCE1} .
 # disable development tools for unit tests. Remove deprecated pytest-runner
 sed -i -e 's/pytest-runner$/pytest/' \
        -e '/pytest-flake8$/ d' \
@@ -92,10 +92,10 @@ sed -i 's/^from \./from cairocffi./' tests/*.py
 
 %check
 cd tests/
-# Don't test with NumPy in the python36 flavor, because python36-numpy is not in TW anymore
-# Switch off test_xcb tests gh#Kozea/cairocffi#203
-python36_ignore="--ignore test_numpy.py --ignore test_xcb.py"
-%python_expand PYTHONPATH="%{buildroot}%{$python_sitelib}" xvfb-run --server-args="-screen 0 1280x1024x16" $python -m pytest ${$python_ignore}
+# test_cairo.py needs pikepdf, remove it
+rm test_cairo.py
+# Switch off test_xcb_window (gh#Kozea/cairocffi#203)
+%python_expand PYTHONPATH="%{buildroot}%{$python_sitelib}" xvfb-run --server-args="-screen 0 1280x1024x16" $python -m pytest -k "not test_xcb_window" *.py
 
 %files %{python_files}
 %license LICENSE

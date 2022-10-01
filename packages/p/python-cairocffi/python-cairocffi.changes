@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Sep 30 09:27:55 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Avoid pulling in python-pikepdf in the stagings
+
+-------------------------------------------------------------------
+Thu Sep 29 08:06:36 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Drop outdated python36_ignore
+
+-------------------------------------------------------------------
+Tue Sep 27 17:04:28 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.4.0
+  * #205: Use pikepdf to parse generated PDF
+  * #171: Don’t use deprecated pytest-runner anymore
+- Drop no longer needed python-cairocffi-xfail.patch and 
+  python-cairocffi-disable-linters.patch
+
+-------------------------------------------------------------------
 Tue Sep 13 15:56:49 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add python-cairocffi-xfail.patch: Xfail some tests failing with
