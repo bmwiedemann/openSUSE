@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Oct  1 08:56:49 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- updated to 0.1.64 (jsc#ECO-3319)
+   - Introduce ol9 stig profile
+   - Introduce Ol9 anssi profiles
+   - Update RHEL8 STIG to V1R7
+   - Introduce e8 profile for OL9
+   - Update RHEL7 STIG to V3R8
+   - some SUSE profile fixes
+
+-------------------------------------------------------------------
 Wed Sep 21 08:24:30 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - Added several RPM requires that are needed by the SUSE remediation

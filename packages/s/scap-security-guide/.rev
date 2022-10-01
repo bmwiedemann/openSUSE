@@ -242,4 +242,18 @@ Setting up scap-security-guide (0.1.56-30.1) ... (forwarded request 896944 from 
   scripts. (e.g. awk is not necessary installed)</comment>
     <requestid>1005139</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>ea19f9358eafc1e43f8628c646fbc544</srcmd5>
+    <version>0.1.64</version>
+    <time>1664639040</time>
+    <user>RBrownFactory</user>
+    <comment>- updated to 0.1.64 (jsc#ECO-3319)
+   - Introduce ol9 stig profile
+   - Introduce Ol9 anssi profiles
+   - Update RHEL8 STIG to V1R7
+   - Introduce e8 profile for OL9
+   - Update RHEL7 STIG to V3R8
+   - some SUSE profile fixes</comment>
+    <requestid>1007411</requestid>
+  </revision>
 </revisionlist>
