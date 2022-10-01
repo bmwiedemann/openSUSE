@@ -107,6 +107,7 @@ Patch5:         gnuplot-wx3.diff
 Patch6:         gnuplot-QtCore-PIC.dif
 Patch7:         gnuplot-gd.patch
 Patch8:         gnuplot-PIE.patch
+Patch9:         gnuplot-5.4.4-grep.patch
 %define _x11lib     %{_libdir}
 %define _x11data    %{_datadir}/X11
 %define _libx11     %{_exec_prefix}/lib/X11
@@ -142,6 +143,7 @@ cp %{_sourcedir}/picins.sty docs
 %patch6 -p0 -b .pic
 %patch7 -p1 -b .gd
 %patch8 -p1 -b .pie
+%patch9 -p1 -b .grep
 
 %build
 autoreconf -fi

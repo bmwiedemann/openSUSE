@@ -1080,4 +1080,13 @@
 - Update to gnuplot 5.4.4</comment>
     <requestid>992338</requestid>
   </revision>
+  <revision rev="87" vrev="2">
+    <srcmd5>3b245466a68bfe3a76d8f26259a9e523</srcmd5>
+    <version>5.4.4</version>
+    <time>1664638947</time>
+    <user>RBrownFactory</user>
+    <comment>remove warnings with GNU grep 3.8 and fix build with egrep/fgrep
+removed boo#1203092 (forwarded request 1006499 from AndreasStieger)</comment>
+    <requestid>1006580</requestid>
+  </revision>
 </revisionlist>
