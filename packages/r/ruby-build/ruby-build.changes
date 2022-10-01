@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Sep 30 23:00:27 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20220930.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20220930
+  * Add JRuby 9.3.8.0 by @headius in #2045
+  * Use GMP from Homebrew if available by @casperisfine in #2044
+  * Fix linking to system OpenSSL on OpenSUSE by @hsbt in #2049
+  * rbenv-install: suggest rbenv global if there is no explicit global setting by @mislav in #2052
+  * rbenv-install: only print stderr notice if printing list output to a terminal by @mislav in #2055
+  * Touch up README for comprehension and clarity by @mislav in #2051
+  * Add minimum GitHub token permissions for workflows by @varunsh-coder in #2041
+  * Add Differential ShellCheck as shell linter by @jamacku in #2042
+  * Release with gh instead of with hub by @mislav in #2056
+
+-------------------------------------------------------------------
 Mon Sep 12 00:17:02 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
 
 - Add dependency packages for more Ruby interpreters.
