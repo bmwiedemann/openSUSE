@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.3.2
-%define short_version 6.3
+%define real_version 6.4.0
+%define short_version 6.4
 %define tar_name qtquick3d-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-quick3d%{?pkg_suffix}
-Version:        6.3.2
+Version:        6.4.0~git
 Release:        0
 Summary:        API for creating 3D content and 3D user interfaces based on Qt Quick
 License:        GPL-3.0-or-later
@@ -321,6 +321,19 @@ Requires:       cmake(Qt6Core)
 Development files for the Qt 6 Quick3DGlslParser library.
 This library does not have any ABI or API guarantees.
 
+### Static libraries ###
+
+# Embree only supports x86_64 and arm64
+%ifarch x86_64 aarch64
+%package -n qt6-bundledembree-devel-static
+Summary:        Qt6 BundledEmbree static library
+%requires_eq    qt6-core-private-devel
+
+%description -n qt6-bundledembree-devel-static
+The Qt6 BundledEmbree static library.
+This library does not have any ABI or API guarantees.
+%endif
+
 %{qt6_examples_package}
 
 %endif
@@ -329,6 +342,9 @@ This library does not have any ABI or API guarantees.
 %autosetup -p1 -n %{tar_name}-%{real_version}%{tar_suffix}
 
 %build
+%ifarch x86_64 aarch64
+%define _lto_cflags %{nil}
+%endif
 %cmake_qt6 \
   -DFEATURE_system_assimp=ON
 
@@ -392,13 +408,12 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_quick3dparticleeffects_private.
 %{_qt6_bindir}/shadergen
 %{_qt6_bindir}/shapegen
 %{_qt6_pluginsdir}/assetimporters/libassimp.so
-%{_qt6_pluginsdir}/assetimporters/libuip.so
 
 %files imports
 %{_qt6_qmldir}/QtQuick3D/
 
 %files -n libQt6Quick3D6
-%license LICENSE.*
+%license LICENSES/*
 %{_qt6_libdir}/libQt6Quick3D.so.*
 
 %files devel
@@ -583,6 +598,15 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_quick3dparticleeffects_private.
 %{_qt6_libdir}/libQt6Quick3DGlslParser.so
 %{_qt6_metatypesdir}/qt6quick3dglslparserprivate_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_quick3dglslparser_private.pri
+
+### Static libraries ###
+
+%ifarch x86_64 aarch64
+%files -n qt6-bundledembree-devel-static
+%{_qt6_cmakedir}/Qt6/FindWrapBundledEmbreeConfigExtra.cmake
+%{_qt6_cmakedir}/Qt6BundledEmbree/
+%{_qt6_libdir}/libQt6BundledEmbree.a
+%endif
 
 %endif
 
