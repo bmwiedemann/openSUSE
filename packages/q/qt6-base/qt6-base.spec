@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.3.2
-%define short_version 6.3
+%define real_version 6.4.0
+%define short_version 6.4
 %define tar_name qtbase-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -30,7 +30,7 @@
 %global with_gles 1
 %endif
 Name:           qt6-base%{?pkg_suffix}
-Version:        6.3.2
+Version:        6.4.0
 Release:        0
 Summary:        Qt 6 core components (Core, Gui, Widgets, Network...)
 # Legal: qtpaths is BSD-3-Clause
@@ -49,6 +49,7 @@ BuildRequires:  cmake >= 3.18.3
 BuildRequires:  cups-devel
 # The default GCC version in Leap 15 is too old
 %if 0%{?suse_version} == 1500
+BuildRequires:  gcc10-PIE
 BuildRequires:  gcc10-c++
 %else
 BuildRequires:  gcc-c++
@@ -230,6 +231,7 @@ Requires:       libQt6Core6 = %{version}
 Requires:       qt6-base-common-devel = %{version}
 %if 0%{?suse_version} == 1500
 # Some public classes require C++ 17 features
+Requires:       gcc10-PIE
 Requires:       gcc10-c++
 %endif
 
@@ -897,7 +899,7 @@ rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
 %{_qt6_pkgconfigdir}/Qt6Concurrent.pc
 
 %files -n libQt6Core6
-%license LICENSE.*
+%license LICENSES/*
 # libQt6Core6 'provides' the runtime directories except
 # %%_qt6_importsdir and %%qt6_qmldir, owned by libQt6Qml6, %%_qt6_docdir
 # owned by all documentation packages and %%_qt6_sysconfdir,
