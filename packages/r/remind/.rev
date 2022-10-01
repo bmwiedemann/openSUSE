@@ -459,4 +459,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>999366</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>79f806e33204b79b0fbdb622ed15daf0</srcmd5>
+    <version>4.1.0</version>
+    <time>1664639043</time>
+    <user>RBrownFactory</user>
+    <comment>- VERSION 4.1 Patch 0 - 2022-09-25
+- NEW FEATURE: remind: &quot;remind -c&quot; now supports the MOON special, printing
+  the moon phases in the calendar if the locale supports UTF-8 encoding.
+- NEW FEATURE: remind: &quot;remind -c&quot; now supports the SHADE special.  Works
+  best with the 256-color extended XTerm palette or 24-bit true-color
+  terminal escape sequences.
+- NEW FEATURE: remind: &quot;remind -c&quot; now supports the WEEK special.
+- NEW FEATURE: remind: The new &quot;stdout()&quot; function returns a string describing
+  where stdout is going.  Examples of return values are &quot;TTY&quot; if remind's
+  output is going to terminal, &quot;FILE&quot; if it's redirected to a plain file,
+  or &quot;PIPE&quot; if it's going to a pipe.  See the man page for all the details.
+- NEW FEATURE: Add the &quot;-wt&quot; option to set the calendar width to the terminal
+  width even if standard output is a pipe.  Useful for situations like this:
+      remind -wt -c .reminders | less -R
+- CHANGE: &quot;make install&quot; now no longer strips debugging symbols from the
+  remind and rem2ps executables.  Use &quot;make install-stripped&quot; if you want
+  them stripped.
+- CHANGE: remind: &quot;remind -c&quot; highlights today's date in bold, if
+  colors are enabled.
+- CHANGE: Dump string values with control characters escaped.
+- DOCUMENTATION FIX: Document behavior of DO and filedir() with respect
+  to symbolic links.
+- DOCUMENTATION FIX: Add home page link to man pages.  Suggested by Ian! D.
+  Allen.
+- DOCUMENTATION FIX: Make date in man pages actually be the release date.
+  Include Remind version in man pages.  Also suggested by Ian! D. Allen.
+- DOCUMENTATION FIX: Fix inaccuracy in how string constants were documented.
+- BUG FIX: Makefiles: Pass CFLAGS at link-time so link-time optimization
+  actually happens.  Pointed out by Zolan Puskas.
+- BUG FIX: If the first REM command to trigger was a RUN command, the banner</comment>
+    <requestid>1007418</requestid>
+  </revision>
 </revisionlist>

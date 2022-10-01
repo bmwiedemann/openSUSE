@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Wed Sep 28 15:06:04 UTC 2022 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 4.1 Patch 0 - 2022-09-25
+
+- NEW FEATURE: remind: "remind -c" now supports the MOON special, printing
+  the moon phases in the calendar if the locale supports UTF-8 encoding.
+
+- NEW FEATURE: remind: "remind -c" now supports the SHADE special.  Works
+  best with the 256-color extended XTerm palette or 24-bit true-color
+  terminal escape sequences.
+
+- NEW FEATURE: remind: "remind -c" now supports the WEEK special.
+
+- NEW FEATURE: remind: The new "stdout()" function returns a string describing
+  where stdout is going.  Examples of return values are "TTY" if remind's
+  output is going to terminal, "FILE" if it's redirected to a plain file,
+  or "PIPE" if it's going to a pipe.  See the man page for all the details.
+
+- NEW FEATURE: Add the "-wt" option to set the calendar width to the terminal
+  width even if standard output is a pipe.  Useful for situations like this:
+
+      remind -wt -c .reminders | less -R
+
+- CHANGE: "make install" now no longer strips debugging symbols from the
+  remind and rem2ps executables.  Use "make install-stripped" if you want
+  them stripped.
+
+- CHANGE: remind: "remind -c" highlights today's date in bold, if
+  colors are enabled.
+
+- CHANGE: Dump string values with control characters escaped.
+
+- DOCUMENTATION FIX: Document behavior of DO and filedir() with respect
+  to symbolic links.
+
+- DOCUMENTATION FIX: Add home page link to man pages.  Suggested by Ian! D.
+  Allen.
+
+- DOCUMENTATION FIX: Make date in man pages actually be the release date.
+  Include Remind version in man pages.  Also suggested by Ian! D. Allen.
+
+- DOCUMENTATION FIX: Fix inaccuracy in how string constants were documented.
+
+- BUG FIX: Makefiles: Pass CFLAGS at link-time so link-time optimization
+  actually happens.  Pointed out by Zolan Puskas.
+
+- BUG FIX: If the first REM command to trigger was a RUN command, the banner
+  would not print.  This has been fixed.
+
+- BUG FIX: replace deprecated 'fgrep' with 'grep -F' (Jochen Sprickerhof)
+
+- BUG FIX: make "make test" depend on "make all" (Jochen Sprickerhof)
+
+- BUG FIX: make "REM ... SATISFY ... MSG foo" respect $DefaultColor.  Bug
+  reported by Gunther Reißig.
+
+- BUG FIX: Don't consider IFTRIG true if we could not compute a trigger date.
+  Bug noted by Gunther Reißig
+
+-------------------------------------------------------------------
 Fri Aug 19 07:52:25 UTC 2022 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - VERSION 4.0 Patch 3 - 2022-08-16
