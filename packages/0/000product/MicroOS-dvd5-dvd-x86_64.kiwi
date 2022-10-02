@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20220930" schemaversion="4.1">
+<image name="OBS__MicroOS___20221001" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20220930</productvar>
+      <productvar name="VERSION">20221001</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20220930,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20221001,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20220930/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20221001/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -257,6 +257,8 @@
       <repopackage name="discover-notifier" arch="x86_64"/>
       <repopackage name="distribution-logos-openSUSE-icons" arch="x86_64"/>
       <repopackage name="distribution-logos-openSUSE-MicroOS" arch="x86_64"/>
+      <repopackage name="distrobox" arch="x86_64"/>
+      <repopackage name="distrobox-bash-completion" arch="x86_64"/>
       <repopackage name="dleyna-connector-dbus" arch="x86_64"/>
       <repopackage name="dleyna-server" arch="x86_64"/>
       <repopackage name="dmidecode" arch="x86_64"/>
@@ -2024,6 +2026,7 @@
       <repopackage name="nvme-cli" arch="x86_64"/>
       <repopackage name="nvme-cli-bash-completion" arch="x86_64"/>
       <repopackage name="open-iscsi" arch="x86_64"/>
+      <repopackage name="open-isns" arch="x86_64"/>
       <repopackage name="open-lldp" arch="x86_64"/>
       <repopackage name="open-vm-tools" arch="x86_64"/>
       <repopackage name="open-vm-tools-desktop" arch="x86_64"/>
