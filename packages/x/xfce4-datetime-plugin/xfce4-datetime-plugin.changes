@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep 26 18:20:35 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 0.8.2
+  * Fix time calculation
+  * build: Fix intltool lock file problem during make distcheck
+  * Fix compilation warnings
+  * autoconf: AM_CONFIG_HEADER -> AC_CONFIG_HEADERS
+  * Update `.gitignore`
+  * datetime: replace deprecated GTimeVal
+  * Translation Updates
+
+-------------------------------------------------------------------
 Fri Dec 25 19:56:32 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 0.8.1
