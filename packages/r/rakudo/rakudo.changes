@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Sun Oct  2 12:45:42 UTC 2022 - Stefan Seifert <nine@detonation.org>
+
+- Final fix for module packaging issues. This follows upstream in completely
+  reverting an offending change.
+
+-------------------------------------------------------------------
+Sun Oct  2 09:03:11 UTC 2022 - Stefan Seifert <nine@detonation.org>
+
+- Backport yet another fix for module packaging issues (included in the same file)
+
+-------------------------------------------------------------------
+Sat Oct  1 15:59:56 UTC 2022 - Stefan Seifert <nine@detonation.org>
+
+- Update backported fix to the real fix (see GitHub for explanation of this
+  weird sequence)
+
+-------------------------------------------------------------------
+Sat Oct  1 13:48:30 UTC 2022 - Stefan Seifert <nine@detonation.org>
+
+- Backport fix for module packaging in rakudo-fix-module-installation.diff
+  Details in https://github.com/rakudo/rakudo/issues/4907
+  To be removed for the next release
+
+-------------------------------------------------------------------
+Sat Oct  1 12:39:18 CEST 2022 - nine@detonation.org
+
+- update to version 2022.07
+    + Make previous values in REPL accessible with `$*N`
+    + Add an `IO::Path.dir-with-entries` method, returning a `Bool`
+    + Implement `will complain` trait
+    + Allow optional : on LHS of signature binding declaration
+    + Make &[max] and &[min] return RHS for ties
+    + Make handles on attribute of type object more natural
+    + Allow :from<Raku> in identities
+    + Reconsider the way `$*PERL` is deprecated
+    + Allow setting ThreadPoolScheduler's max_threads to semi-infinite value
+    + Re-imagine DateTime.new(Str) / Str.DateTime
+    + Make sort() a runtime error
+    + Implement coercion via new-disp and re-consider return typechecking dispatcher
+    + Make Iterable.hyper|race take Any as a default for :batch and :degree
+    + Categorize exceptions thrown by role appliers
+    + Add :real named argument to DateTime.posix
+    + Introduce (Exception|Cool).Failure coercer
+    + Implement fallback support for MRO
+    + Add IO::Path inode, dev, and devtype methods
+    + Add sub version of .head / .skip / .tail
+    + Implement Haskell's "span" as "snip" in 6.e
+    + Remove the $?COMPILATION-ID constant as it was not documented and not tested
+    + Many bugfixes and performance improvements
+
+-------------------------------------------------------------------
 Sun Apr  3 11:11:38 CEST 2022 - nine@detonation.org
 
 - update to version 2022.03

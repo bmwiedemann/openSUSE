@@ -17,7 +17,7 @@
 
 
 Name:           rakudo
-Version:        2022.03
+Version:        2022.07
 Release:        2.1
 Summary:        Raku (formerly Perl 6) implemenation that runs on MoarVM
 License:        Artistic-2.0
@@ -25,18 +25,19 @@ Group:          Development/Languages/Other
 URL:            https://rakudo.org/
 Source0:        rakudo-%{version}.tar.gz
 Patch0:         rakudo-test-log.diff
+Patch1:         rakudo-fix-module-installation.diff
 %if !0%{?rhel_version}
 BuildRequires:  fdupes
 %endif
-BuildRequires:  moarvm-devel >= 2022.03
-BuildRequires:  nqp >= 2022.03
+BuildRequires:  moarvm-devel >= 2022.07
+BuildRequires:  nqp >= 2022.07
 BuildRequires:  perl(Archive::Tar)
 BuildRequires:  perl(Digest::SHA)
 BuildRequires:  perl(IPC::Cmd)
 BuildRequires:  perl(YAML::Tiny)
 Provides:       perl6 = %{version}-%{release}
-Requires:       moarvm >= 2022.03
-Requires:       nqp >= 2022.03
+Requires:       moarvm >= 2022.07
+Requires:       nqp >= 2022.07
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %ifarch s390x
 BuildRequires:  libffi-devel
@@ -48,6 +49,7 @@ The most mature, production-ready implementation of the Raku language.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 perl Configure.pl --prefix="%{_prefix}"
