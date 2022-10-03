@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 16 16:59:32 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.38:
+  * Added configurations and scripts for continuous integration.
+  * Fixed various errors in the handling of tRNS, hIST and eXIf.
+  * Implemented many stability improvements across all platforms.
+  * Updated the internal documentation.
+
+-------------------------------------------------------------------
 Wed May  4 09:10:44 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - switch source url to https
