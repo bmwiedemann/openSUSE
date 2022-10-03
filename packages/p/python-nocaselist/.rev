@@ -19,4 +19,16 @@
     installation of the package.</comment>
     <requestid>868444</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>dedadb1293f5d87b0f7b89b9d9014dde</srcmd5>
+    <version>1.0.6</version>
+    <time>1664797471</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.6:
+  * Mitigated coveralls issue with HTTP status 422
+  * Add python 3.9 support
+  * Test suite cleanups, Pylint 2.10 fixes
+  * Python 3.10 support</comment>
+    <requestid>1007446</requestid>
+  </revision>
 </revisionlist>

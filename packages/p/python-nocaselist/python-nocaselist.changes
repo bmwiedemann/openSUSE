@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct  1 13:01:45 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.6:
+  * Mitigated coveralls issue with HTTP status 422
+  * Add python 3.9 support
+  * Test suite cleanups, Pylint 2.10 fixes
+  * Python 3.10 support
+
+-------------------------------------------------------------------
 Mon Feb  1 18:14:57 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.4:
