@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct  3 15:15:43 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.28:
+  * Disable cache when following redirects from consent.google.com
+  * Fix a display glitch on framebuffer, if the user doesn't have mouse and
+    if he presses F5, F6, F7 or F8 
+
+-------------------------------------------------------------------
 Sun Jun  5 01:01:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.27:
