@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Sep 25 07:03:54 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.31.4:
+  * Terminal compatibility: improve vttest compliance (#1671)
+  * fix: bracketed paste handling regression (#1689)
+  * fix: occasional startup crashes (#1706)
+  * fix: gracefully handle SSH disconnects (#1710)
+  * fix: handle osc params larger than 1024 bytes (#1711)
+  * Terminal compatibility: implement faux scrolling when in alternate screen mode(#1678)
+  * fix: mouse-click on tab-bar in simplified-ui now always focuses the correct tab (#1658)
+  * fix: sort UI cursors properly when multiple users are focused on the same pane (#1719)
+
+-------------------------------------------------------------------
 Sat Aug 27 12:03:02 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - update of vendored dependencies
