@@ -3,8 +3,7 @@
     <param name="url">https://github.com/kak-lsp/kak-lsp</param>
     <param name="versionformat">@PARENT_TAG@~@TAG_OFFSET@</param>
     <param name="scm">git</param>
-    <param name="revision">4f9e06e27b1211fe7726712cc81c17eb2ea81ced</param>
-    <param name="match-tag">*</param>
+    <param name="revision">0e1e865</param>
     <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)~0</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>

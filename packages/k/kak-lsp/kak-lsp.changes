@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Sep 25 06:50:51 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 14.0.0:
+  * Update changelog for release
+  * lsp-goto-document-symbol: map to s instead of <c-o>
+  * test: work around "unconfigured filetype" error in tests
+  * test: remove unnecessary code for macOS-specific tests
+  * Advertise some more LSP capabilities
+  * capabilities: minor consistency change
+  * clippy
+  * lsp-goto-document-symbol: support nested symbols
+  * lsp-capabilities: also advertise more commands based on textDocument/documentSymbols
+
+-------------------------------------------------------------------
 Tue May 17 15:59:00 UTC 2022 - socvirnyl.estela@gmail.com
 
 - Update to version 12.2.1:
