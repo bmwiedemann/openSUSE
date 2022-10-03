@@ -17,7 +17,7 @@
 
 
 Name:           openucx
-Version:        1.11.1
+Version:        1.13.1
 Release:        0
 Summary:        Communication layer for Message Passing (MPI)
 License:        BSD-3-Clause
@@ -30,6 +30,7 @@ Source:         https://github.com/openucx/ucx/releases/download/v%version/ucx-%
 Source1:        baselibs.conf
 Patch1:         openucx-s390x-support.patch
 Patch2:         ucm-fix-UCX_MEM_MALLOC_RELOC.patch
+Patch3:         UCS-DEBUG-replace-PTR-with-void.patch
 BuildRequires:  autoconf >= 2.63
 BuildRequires:  automake >= 1.10
 BuildRequires:  binutils-devel
@@ -138,6 +139,7 @@ hardware.
 %patch1
 %endif
 %patch2
+%patch3
 
 %build
 autoreconf -fi
@@ -188,6 +190,8 @@ mv %buildroot/%_bindir/io_demo  %buildroot/%_libexecdir/%{name}/
 %_datadir/%{name}/
 %_libexecdir/%{name}
 %_libdir/pkgconfig/ucx.pc
+%dir %_libdir/cmake/
+%_libdir/cmake/ucx/
 %doc LICENSE NEWS
 
 %files -n libucm0
@@ -211,11 +215,14 @@ mv %buildroot/%_bindir/io_demo  %buildroot/%_libexecdir/%{name}/
 %files -n libucs0
 %defattr(-,root,root)
 %_libdir/libucs.so.*
+%_libdir/libucs_signal.so.*
 
 %files -n libucs-devel
 %defattr(-,root,root)
 %_includedir/ucs/
 %_libdir/libucs.so
+%_libdir/libucs_signal.so
+%_libdir/pkgconfig/ucx-ucs.pc
 
 %files -n libuct0
 %defattr(-,root,root)
@@ -229,5 +236,9 @@ mv %buildroot/%_bindir/io_demo  %buildroot/%_libexecdir/%{name}/
 %_libdir/libuct.so
 %dir %_libdir/ucx/
 %_libdir/ucx/libuct_*.so
+%_libdir/pkgconfig/ucx-uct.pc
+%_libdir/pkgconfig/ucx-cma.pc
+%_libdir/pkgconfig/ucx-ib.pc
+%_libdir/pkgconfig/ucx-rdmacm.pc
 
 %changelog

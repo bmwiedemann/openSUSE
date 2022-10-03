@@ -1,4 +1,103 @@
 -------------------------------------------------------------------
+Tue Sep 27 15:55:19 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to v1.13.1 (jsc#PED-912)
+  - Core
+    - Added new objects to VFS: local and remote address of endpoint,
+      statistics of ucp_ep_create success/failure, failed/destroyed endpoints
+    - Added support for UCX static libraries
+    - Added profiling for rkey management routines
+    - PCIe relaxed order enabled by default for AMD CPUs
+    - Fixed not deallocating memory from ucp_mem_unmap if no rcache
+    - Fixed versioning infrastructure
+    - Multiple code improvements: refactoring, debug prints and assertions, etc.
+    - Multiple improvements in build, test and docs infrastructure
+    - Added new objects to VFS (md, component, log_level, etc.)
+    - Added configuration variable to specify which loadable modules are allowed
+    - Added build-time configuration to disable sigaction overriding
+  - UCP
+    - Added API to pass pre-registered memory handle to UCP operations
+    - Added implementation of AM rendezvous protocol
+    - Added 2-stage pipeline rendezvous protocol for GPU
+    - Added support for fragment mem_type for v1 pipeline proto, disabled by default
+    - Added active message support for proto v2
+    - Added UCP memory registration cache
+    - Improved adaptive progress - deactivate iface when all p2p lanes are destroyed
+    - Added support for user memh in proto_v1
+    - Added support for selecting local address when creating a client endpoint
+    - Added option to limit GPUDirectRDMA size in rendezvous protocol, UCX_RNDV_MEMTYPE_DIRECT_SIZE
+    - Deprecated UCX_SOCKADDR_AUX_TLS configuration parameter
+    - Resolving remote EP ID when creating local EP disabled by default
+    - Added client_id to ucp_worker_create() and ucp_conn_request_query() APIs
+    - Added ucp_worker_address_query() API
+    - Updated ucp_ep_query() API for getting local and remote addresses
+    - Added address versioning to correctly preserve wire compatibility starting from version 1.11.0
+    - Added new client/server connection establishment packet header format
+    - Enabled rendezvous and tag sync protocols when error handling is enabled on the endpoint
+    - Added iov zcopy support to RMA operations
+    - Reduced memory usage of unexpected messages by fitting receive buffer size to packet size
+    - Added support for modifying UCT and UCS configs by ucp_config_modify() API
+    - Optimized unpacked rkeys memory consumption
+    - Added request flag to influence latency vs. bandwidth protocol
+    - Reduced memory management overhead with new protocols
+    - Improved performance calculations for new protocols
+    - Added AMO support with GPU memory target using new protocols
+    - Added put_zcopy, get_zcopy and pipeline based rendezvous in new protocols
+    - Added support for user-defined alignment in Active Messages
+    - Added support for offload tag sync in new protocols
+    - Updated ucp_atomic_post() to use NBX flow
+  - UCT
+    - Introduced API uct_md_mkey_pack_v2
+    - Introduced UCT iface features API
+    - Introduced max_inflight_eps parameter in perf_attr API
+    - Introduced UCT_SEND_FLAG_PEER_CHECK flag that forces checking connectivity to a peer
+    - Introduced UCX_RCACHE_PURGE_ON_FORK to enable/disable cleaning regions when application is forking
+    - Disabled PEER_FAILURE capability for XPMEM
+    - Added API - uct_iface_is_reachable_v2()
+    - Added IPv6 address support in TCP
+    - Added latency estimation to uct_iface_estimate_perf()
+    - Adjusted knem and cma overhead cost
+    - Increased built-in TCP keep-alive interval to 2 seconds
+  - RDMA CORE (IB, ROCE, etc.)
+    - Introduced NDR autorecognition
+    - Introduced CQE zipping support
+    - Set the default MAX_RD_ATOMIC to maximum value supported by the hardware
+    - Disabled mlx5 ifaces on verbs MD
+    - Added detection of IB NDR devices
+    - Added check for CQ overrun in assert mode
+    - Added bitmap usage for releasing detached DCIs
+    - Added configuration for requests ack frequency with DevX
+    - Added remote QP info to tx error CQE traces
+  - ROCM
+    - Increased maximum number of HSA agents
+  - UCS
+    - Added topo module infrastructure
+    - Added memtrack and rcache information to VFS
+    - Added API for a per-process aggregate-sum statistics report
+    - Added memory pool set data structure
+    - Added new ptr_array API for bulk allocation
+    - Added ucs_string_buffer_append_flags() for string buffer
+    - Added ucs_ffs32()
+    - Added ucs_vsnprintf_safe() which always adds '\0'
+    - Added thread-safe put to ptr_map
+    - Improved accuracy of the topology distance estimation
+    - Added prints of leaked callbacks from the callback queue
+    - Removed a diagnostic message when fuse thread is stopped
+    - Added configurable limit for the memory consumed by rcache
+    - Added configuration for VFS(FUSE) thread affinity
+    - Added memory limit support to memtrack
+  - Packaging
+    - Added cmake config files for better integration with external cmake based projects
+  - Tools
+    - Added loop-back transport support in ucx_perftest
+    - Split ucx_perftest into separate modules
+    - Added process placement option for ucx_info
+    - Extended parameters correctness check in ucx_perftest
+- Backported UCS-DEBUG-replace-PTR-with-void.patch
+  from upstream to fix compilation
+
+
+-------------------------------------------------------------------
 Thu Jan 13 08:42:05 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Fix UCM bistro support on non s390x archs
