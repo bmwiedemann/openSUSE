@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct  1 13:03:58 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Use YUV_VERSION for library VERSION and YUV_VER_MAJOR for
+  SOVERSION
+
+-------------------------------------------------------------------
 Sun Sep 25 12:22:58 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Fix quoting in pkgconfig file
