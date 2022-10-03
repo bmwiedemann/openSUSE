@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul  6 15:08:09 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Add mvapich2-allow-building-with-external-hwloc.patch
+  to allow building against an external hwloc library
+- Build mvapich2 HPC flavors against pmix and hwloc system libraries
+
+-------------------------------------------------------------------
 Wed Jun 29 12:54:33 UTC 2022 - Klaus Kämpf <kkaempf@suse.com>
 
 - add pass-correct-size-to-snprintf.patch to fix potential buffer

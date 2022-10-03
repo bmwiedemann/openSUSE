@@ -213,6 +213,8 @@ ExclusiveArch:  do_not_build
 %define p_libexecdir %{p_prefix}/%{_lib}
 %define _moduledir /usr/share/modules/gnu-%{module_name}
 %define package_name mvapich2%{?pack_suff}
+%{bcond_with pmix}
+%{bcond_with hwloc}
 %else
 %{hpc_init -M -c %compiler_family %{?c_f_ver:-v %{c_f_ver}} -m mvapich2 %{?pack_suff:-e %{build_flavor}}}
 %define p_prefix   %{hpc_prefix}
@@ -227,6 +229,8 @@ ExclusiveArch:  do_not_build
 %global hpc_mvapich2_dep_version %(VER=%{?m_f_ver}; echo -n ${VER})
 %global hpc_mvapich2_dir mvapich2
 %global hpc_mvapich2_pack_version %{hpc_mvapich2_dep_version}
+%{bcond_without pmix}
+%{bcond_without hwloc}
 %endif
 
 # Disable hpc builds for SLE12
@@ -254,7 +258,7 @@ Patch2:         mvapich2-arm-support.patch
 Patch3:         0001-Drop-GCC-check.patch
 Patch4:         reproducible.patch
 Patch5:         pass-correct-size-to-snprintf.patch
-
+Patch6:         mvapich2-allow-building-with-external-hwloc.patch
 ## Armv7 specific patches
 # PATCH-FIX-UPSTREAM 0001-Drop-real128.patch (https://github.com/pmodels/mpich/issues/4005)
 Patch50:        0001-Drop-real128.patch
@@ -273,6 +277,7 @@ BuildRequires:  automake
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  flex
+BuildRequires:  hwloc-devel >= 2.0
 %ifnarch s390 s390x %{arm}
 BuildRequires:  libnuma-devel
 %endif
@@ -287,6 +292,12 @@ BuildRequires:  mpi-selector
 BuildRequires:  %{compiler_family}%{?c_f_ver}-compilers-hpc-macros-devel
 BuildRequires:  lua-lmod
 BuildRequires:  suse-hpc
+%endif
+%if %{with hwloc}
+BuildRequires:  hwloc-devel
+%endif
+%if %{with pmix}
+BuildRequires:  pmix-devel
 %endif
 %if "%{build_flavor}" == "psm" && %{with skip_hpc_build}
 ExclusiveArch:  %ix86 x86_64
@@ -392,6 +403,7 @@ is based on MPICH2 and MVICH. This package contains the static libraries
 %patch3
 %patch4
 %patch5 -p1
+%patch6
 
 # Only apply these patches on Armv7
 %ifarch armv7hl
@@ -426,6 +438,12 @@ PERL_USE_UNSAFE_INC=1 ./autogen.sh
    --docdir=%{_datadir}/doc/%{name} \
    --disable-wrapper-rpath \
    --enable-yield=sched_yield \
+%if %{with hwloc}
+   --with-hwloc=external \
+%endif
+%if %{with pmix}
+   --with-pmix=${_prefix} \
+%endif
 %if "%{build_flavor}" == "psm"
    --with-device=ch3:psm \
    --with-psm=/usr \
