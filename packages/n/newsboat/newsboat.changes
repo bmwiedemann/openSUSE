@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Mon Oct  3 15:37:07 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.29:
+  Added:
+    * New placeholder for browser, %t, which is replaced by the type of the URL
+    (#1954)
+  * contib: a script to reorder lines in the urls file (#1918)
+  * Support for Brotli compression. In fact, Newsboat will now use all the methods
+    supported by the libcurl it's linked to (#2152)
+  * In tags dialog, put the cursor on the currently selected tag, or the first tag
+    if none is selected at the moment (#2093)
+  Changed:
+  * When rendering an article, put a newline between consecutive <audio> and
+    <video> tags (#2103)
+  * When select-filter is used with an argument (e.g. from a macro), that
+    argument is now used to look up a predefined filter by name. The old
+    behaviour (applying the argument as filter) is still available by using
+    set-filter instead (#2137)
+  * When select-filter is used without an argument, it will now open the filter
+    selection dialog. Previously, set-filter from a macro without arguments
+    was ignored in the article list (#2137)
+  * Docs: use a new style for keys. It should be more readable than the old one,
+    please file issues if you disagree! (#2028)
+  * When reloading feeds in parallel, status line now shows the progress rather
+    than the number of the currently reloaded feed (#2065)
+  * Updated translations: Dutch (Dennis van der Schagt), French (Tonus), German
+    (Lysander Trischler), Italian (Mauro Scomparin), Polish (Carno), Russian and
+    Ukrainian (Alexander Batischev), Spanish (Roboron3042), Turkish (Emir SARI)
+  * Bumped minimum supported Rust version to 1.59.0
+  * Bumped minimum supported GNU Make version to 4.0 (released on
+    October 9th, 2013)
+  * Updated vendored libraries: expected-lite to 0.6.2, json.hpp to 3.11.2
+  Fixed:
+  * Segfault on sqlite3DbMallocRawNN (#1980)
+  * Scrolling when toggling show-read-feeds (#2138)
+  * Feeds not reloading in parallel when reloading only visible feeds (#2067)
+- Refresh:
+  * newsbeuter-makefile.patch
+  * newsboat-gcc12.patch
+
+-------------------------------------------------------------------
 Tue May 24 14:01:33 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Add newsboat-gcc12.patch:

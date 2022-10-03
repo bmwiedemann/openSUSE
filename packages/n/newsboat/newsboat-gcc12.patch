@@ -1,9 +1,9 @@
-Index: newsboat-2.27/src/itemlistformaction.cpp
+Index: newsboat-2.29/src/itemlistformaction.cpp
 ===================================================================
---- newsboat-2.27.orig/src/itemlistformaction.cpp
-+++ newsboat-2.27/src/itemlistformaction.cpp
-@@ -5,7 +5,7 @@
- #include <cstdio>
+--- newsboat-2.29.orig/src/itemlistformaction.cpp
++++ newsboat-2.29/src/itemlistformaction.cpp
+@@ -6,7 +6,7 @@
+ #include <cstring>
  #include <langinfo.h>
  #include <sstream>
 -#include <string>
