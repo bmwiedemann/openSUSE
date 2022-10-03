@@ -52,22 +52,24 @@ Patch2:         PackageKit-remove-polkit-rules.patch
 Patch3:         PackageKit-dnf-Add-support-for-AppStream-repodata-basenames-use.patch
 # PATCH-FIX-UPSTREAM PackageKit-fix-crash-pre-dbus.patch gh#hughsie/PackageKit!436 -- Do not crash when calling pk_dbus_get_uid() before D-Bus is  setup
 Patch4:         PackageKit-fix-crash-pre-dbus.patch
-# PATCH-FIX-UPSTREAM PackageKit-zypp-locked-packages.patch gh#hughsie/PackageKit#543, boo#1199895 sckang@suse.com -- zypp: ignore locked packages
-Patch5:         PackageKit-zypp-locked-packages.patch
 # PATCH-FIX-UPSTREAM PackageKit-zypp-add-upgrade-system.patch gh#hughsie/PackageKit/commit/930dd201b sckang@suse.com -- zypp: implement upgrade-system method
-Patch6:         PackageKit-zypp-add-upgrade-system.patch
+Patch5:         PackageKit-zypp-add-upgrade-system.patch
 # PATCH-FIX-UPSTREAM PackageKit-zypp-avoid-statuReset.patch gh#PackageKit/PackageKit/commit/dd1964255, bsc#1199895 sckang@suse.com -- zypp: Avoid statuReset() on locked packages
-Patch7:         PackageKit-zypp-avoid-statuReset.patch
+Patch6:         PackageKit-zypp-avoid-statuReset.patch
 # PATCH-FIX-UPSTREAM PackageKit-zypp-disable-upgrade-system-in-sle.patch gh#PackageKit/PackageKit/commit/0fcd820c2 sckang@suse.com -- zypp: Disable upgrade-system support in SLE
-Patch8:         PackageKit-zypp-disable-upgrade-system-in-sle.patch
+Patch7:         PackageKit-zypp-disable-upgrade-system-in-sle.patch
 # PATCH-FIX-UPSTREAM PackageKit-zypp-restore-pool-status-after-simulating-update.patch gh#PackageKit/PackageKit/commit/2b61a6649, bsc#1199895 sckang@suse.com -- zypp: restore pool status after simulating an update
-Patch9:         PackageKit-zypp-restore-pool-status-after-simulating-update.patch
+Patch8:         PackageKit-zypp-restore-pool-status-after-simulating-update.patch
 # PATCH-FIX-UPSTREAM PackageKit-zypp-fix-is-tumbleweed-check.patch gh#PackageKit/PackageKit/commit/146890153 sckang@suse.com -- zypp: build the pool before calling is_tumbleweed()
-Patch10:        PackageKit-zypp-fix-is-tumbleweed-check.patch
+Patch9:        PackageKit-zypp-fix-is-tumbleweed-check.patch
 # PATCH-FIX-UPSTREAM PackageKit-zypp-update-libzypp-dependency-version.patch gh#PackageKit/PackageKit/commit/58c7c0285, bsc#1199895 sckang@suse.com -- zypp: update libzypp dependency version
-Patch11:        PackageKit-zypp-update-libzypp-dependency-version.patch
+Patch10:        PackageKit-zypp-update-libzypp-dependency-version.patch
 # PATCH-FIX-UPSTREAM PackageKit-zypp-dont-refresh-before-searching.patch gh#PackageKit/PackageKit/commit/7e700e217, bsc#1202796 sckang@suse.com -- zypp: Don't refresh repos before searching
-Patch12:        PackageKit-zypp-dont-refresh-before-searching.patch
+Patch11:        PackageKit-zypp-dont-refresh-before-searching.patch
+# PATCH-FIX-UPSTREAM PackageKit-zypp-dont-remove-locked-packages.patch gh#PackageKit/PackageKit/commit/8649a07bc, bsc#1199895 sckang@suse.com -- zypp: Check if packages are locked before removing
+Patch12:        PackageKit-zypp-dont-remove-locked-packages.patch
+# PATCH-FIX-UPSTREAM PackageKit-zypp-fix-package-id.patch gh#PackageKit/PackageKit/commit/8eb2ef0ae, bsc#1202585 sckang@suse.com -- zypp: add repository data in package id
+Patch13:        PackageKit-zypp-add-repo-in-packageid.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
