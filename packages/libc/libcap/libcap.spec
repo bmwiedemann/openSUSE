@@ -17,7 +17,7 @@
 
 
 Name:           libcap
-Version:        2.65
+Version:        2.66
 Release:        0
 Summary:        Library for Capabilities (linux-privs) Support
 License:        BSD-3-Clause OR GPL-2.0-only

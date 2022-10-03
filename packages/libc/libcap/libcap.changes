@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Sep 29 19:49:37 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.66:
+  * Fix documentation typos in cap_from_text.3
+  * Some getpcaps code clean up and a fix for PID argument parsing from Jakub
+    Wilk.
+  * Slightly more robust Makefiles to address an error with make -j48 test observed
+  * Include a simple Go program, captrace, to trace kernel capability validation
+    checks
+  * This program can be used to figure out what capabilities a program needs to
+    operate.
+  * captrace (a wrapper for bpftrace) uses BPF kprobes to monitor the kernel for
+    capability checks and whether or not they succeed for the system, a specific
+    PID or a program's direct execution.
+  * Trim down the default file capabilities for contrib/sucap/su to those actually
+    needed and set USER and HOME environment variables so bash doesn't complain
+    about a sourcing error. 
+  
+-------------------------------------------------------------------
 Fri Jul 22 21:34:46 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.65:
