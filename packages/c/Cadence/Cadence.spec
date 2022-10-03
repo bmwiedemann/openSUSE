@@ -1,7 +1,7 @@
 #
 # spec file for package Cadence
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,28 +12,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           Cadence
-Version:        0.9.1
+Version:        0.9.2
 Release:        0
 Summary:        A JACK Audio Toolbox
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
-URL:            http://kxstudio.sourceforge.net/cadence
-Source:         v%{version}.tar.gz
-Patch0:         Fix-build-with-Qt-5-15.patch
+URL:            https://kx.studio/Applications:Cadence
+Source:         https://github.com/falkTX/Cadence/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  alsa-devel
+BuildRequires:  dbus-1-python3-devel
+BuildRequires:  libjack-devel
+BuildRequires:  python3-qt5-devel
+BuildRequires:  unzip
+BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  python3-qt5-devel
-BuildRequires:  dbus-1-python3-devel
-BuildRequires:  libjack-devel
-BuildRequires:  unzip
-BuildRequires:  update-desktop-files
 Requires:       a2jmidid
 Requires:       dbus-1-python3
 Requires:       jack_capture
@@ -56,7 +55,6 @@ Some of these also have sub-tools, such as Cadence-JackMeter and Claudia-Launche
 
 %prep
 %setup -q -n Cadence-%{version}
-%patch0 -p1
 
 %build
 export CXXFLAGS="%{optflags}"
