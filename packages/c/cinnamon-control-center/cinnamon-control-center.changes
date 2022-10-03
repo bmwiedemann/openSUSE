@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct  2 04:19:18 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- FTBFS with libgnomekbd 3.28.1
+  * add cinnamon-control-center-5.2.1-libgnomekbd-3.28.1.patch
+
+-------------------------------------------------------------------
 Mon Mar 28 19:50:00 UTC 2022 - Aaron Stern <ukbeast89@protonmail.com>
 
 - Update to version 5.2.1:

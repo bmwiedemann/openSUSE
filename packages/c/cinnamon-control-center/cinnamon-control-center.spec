@@ -26,6 +26,7 @@ License:        GPL-2.0-only AND GPL-3.0-or-later AND MIT
 Group:          System/GUI/Other
 URL:            https://github.com/linuxmint/cinnamon-control-center
 Source:         https://github.com/linuxmint/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch:          %{name}-%{version}-libgnomekbd-3.28.1.patch
 BuildRequires:  cups-devel
 BuildRequires:  desktop-data
 BuildRequires:  fdupes
@@ -116,7 +117,7 @@ This package contains all necessary include files and libraries
 needed to develop applications that require these.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %meson
