@@ -256,4 +256,21 @@ versions of libva(2)</comment>
   * Added HDR10 capability report</comment>
     <requestid>987890</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>c4698b2234f21087a02014a863975273</srcmd5>
+    <version>22.4.4</version>
+    <time>1664805573</time>
+    <user>dimstar_suse</user>
+    <comment>- adding _constraints in the hope to reserve enough disk space; 
+  trying with 7GB for now ...
+
+- u_libva-2.16.0.patch
+  * fixes build against libva 2.16.0 
+  * culprit: https://github.com/intel/libva/commit/8682f9e30f2fabf2ccc6f7609db035ed1af44703
+
+- No code changes
+- Update to version 22.4.4 was part of Intel oneVPL GPU Runtime
+  2022Q2 Release 22.4.4</comment>
+    <requestid>1007532</requestid>
+  </revision>
 </revisionlist>

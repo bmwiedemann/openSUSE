@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Oct  1 13:01:10 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- adding _constraints in the hope to reserve enough disk space; 
+  trying with 7GB for now ...
+
+-------------------------------------------------------------------
+Fri Sep 30 19:31:31 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- u_libva-2.16.0.patch
+  * fixes build against libva 2.16.0 
+  * culprit: https://github.com/intel/libva/commit/8682f9e30f2fabf2ccc6f7609db035ed1af44703
+
+-------------------------------------------------------------------
+Mon Jul 11 11:16:46 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- No code changes
+- Update to version 22.4.4 was part of Intel oneVPL GPU Runtime
+  2022Q2 Release 22.4.4
+
+-------------------------------------------------------------------
 Fri Jul  8 11:29:55 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - updated supplements.inc

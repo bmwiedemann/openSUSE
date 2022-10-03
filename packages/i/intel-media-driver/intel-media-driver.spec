@@ -29,6 +29,7 @@ Source:         %{url}/archive/intel-media-%{version}.tar.gz
 Source1:        generate-supplements.sh
 Source2:        supplements.inc
 Source3:        baselibs.conf
+Patch0:         u_libva-2.16.0.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake >= 3.5
 BuildRequires:  gmmlib-devel >= 22.1.2
@@ -69,6 +70,7 @@ libigfxcmrt%{so_ver}.
 mv media-driver-* media-driver
 chmod -x media-driver/*.md
 pushd media-driver
+%patch0 -p0
 popd
 %define __sourcedir media-driver
 #sed -i -e 's,-Werror,,' media-driver/cmrtlib/linux/CMakeLists.txt
