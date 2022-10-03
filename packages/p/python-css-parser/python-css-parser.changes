@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct  3 15:50:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.8:
+  * Replace removed assertEquals with assertEqual
+  * Upgrade other unittest asserts for clearer error messages
+  * tests: adjust exception string checks for python 3.11 
+  * tests: fix warning about \( and \o being invalid sequences
+  * Fix serialization of unknown rules containing comments
+- drop relax_error_msg_check.patch (upstream)
+
+-------------------------------------------------------------------
 Tue Jan 25 22:45:54 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to version 1.0.7:

@@ -18,16 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-css-parser
-Version:        1.0.7
+Version:        1.0.8
 Release:        0
 Summary:        CSS related utilities (parsing, serialization, etc) for python
 License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/ebook-utils/css-parser
 Source:         https://github.com/ebook-utils/css-parser/archive/v%{version}/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM relax_error_msg_check.patch gh#ebook-utils/css-parser#12 mcepl@suse.com
-# instead of home-made assert methods with the ones from the standard library
-Patch0:         relax_error_msg_check.patch
 BuildRequires:  %{python_module chardet}
 BuildRequires:  %{python_module setuptools}
 Requires:       python-chardet
