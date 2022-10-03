@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep 26 03:12:44 UTC 2022 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add PackageKit-zypp-dont-remove-locked-packages.patch: zypp:
+  Check if packages are locked before removing
+  (gh#PackageKit/PackageKit/commit/8649a07bc, bsc#1199895).
+- Add PackageKit-zypp-add-repo-in-packageid.patch: zypp: add
+  repository data in package id
+  (gh#PackageKit/PackageKit/commit/8eb2ef0ae, bsc#1202585).
+- Remove PackageKit-zypp-locked-packages.patch: reverted upstream
+  (gh#PackageKit/PackageKit/commit/ed3e38043).
+
+-------------------------------------------------------------------
 Fri Sep  2 01:16:56 UTC 2022 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Add PackageKit-zypp-dont-refresh-before-searching.patch:
