@@ -38,10 +38,10 @@ BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
 BuildRequires:  pkgconfig(gthread-2.0) >= 2.31
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.4.0
 BuildRequires:  pkgconfig(gudev-1.0)
-%if 0%{?sle_version} >= 0150200 || (0%{?suse_version} >= 01550 && 0%{?is_opensuse})
-BuildRequires:  pkgconfig(gupnp-1.2)
+%if 0%{?suse_version} > 1500
+BuildRequires:  pkgconfig(gupnp-1.6)
 %else
-BuildRequires:  pkgconfig(gupnp-1.0)
+BuildRequires:  pkgconfig(gupnp-1.2)
 %endif
 BuildRequires:  xfce4-dev-tools
 BuildRequires:  pkgconfig(json-glib-1.0)
