@@ -17,13 +17,13 @@
 
 
 Name:           python-oslo.versionedobjects
-Version:        2.6.0
+Version:        3.0.1
 Release:        0
 Summary:        Oslo Versioned Objects library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/oslo.versionedobjects
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.versionedobjects/oslo.versionedobjects-2.6.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.versionedobjects/oslo.versionedobjects-3.0.1.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-iso8601 >= 0.1.11
 BuildRequires:  python3-jsonschema
@@ -82,7 +82,7 @@ BuildRequires:  python3-openstackdocstheme
 This package contains documentation files for %{name}.
 
 %prep
-%autosetup -p1 -n oslo.versionedobjects-2.6.0
+%autosetup -p1 -n oslo.versionedobjects-3.0.1
 %py_req_cleanup
 
 %build

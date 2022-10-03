@@ -201,4 +201,21 @@
   - Update master for stable/xena</comment>
     <requestid>981118</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b70558d55dee67cb43753da5f90b4020</srcmd5>
+    <version>3.0.1</version>
+    <time>1664797586</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.0.1
+  - Python3.11: Do not use inspect.ArgSpec
+
+- update to version 3.0.0
+  - Add Python3 zed unit tests
+  - Drop python3.6/3.7 support in testing runtime
+  - Imported Translations from Zanata
+  - Update master for stable/yoga
+  - Remove unnecessary unicode prefixes
+  - setup.cfg: Replace dashes by underscores</comment>
+    <requestid>1007584</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Oct  2 14:46:39 UTC 2022 - cloud-devel@suse.de
+
+- update to version 3.0.1
+  - Python3.11: Do not use inspect.ArgSpec
+
+-------------------------------------------------------------------
+Tue Aug 16 08:42:29 UTC 2022 - cloud-devel@suse.de
+
+- update to version 3.0.0
+  - Add Python3 zed unit tests
+  - Drop python3.6/3.7 support in testing runtime
+  - Imported Translations from Zanata
+  - Update master for stable/yoga
+  - Remove unnecessary unicode prefixes
+  - setup.cfg: Replace dashes by underscores
+
+-------------------------------------------------------------------
 Tue Jun  7 08:53:51 UTC 2022 - cloud-devel@suse.de
 
 - update to version 2.6.0
