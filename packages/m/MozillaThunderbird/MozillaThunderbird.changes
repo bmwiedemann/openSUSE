@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Sep 28 08:13:07 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 102.3.1
+  * Compose window encryption options now only appear for encryption
+    technologies that have already been configured
+  * Number of contacts in currently selected address book now
+    displayed at bottom of Address Book list column
+  Fixes
+  * Password prompt did not include server hostname for POP servers
+  * Edit Contact was missing from Contacts sidebar context menus
+  * Address Book contact lists cut off display of some characters,
+    the result being unreadable
+  MFSA 2022-43
+  * CVE-2022-39249 (bmo#1791765)
+    Matrix SDK bundled with Thunderbird vulnerable to an
+    impersonation attack by malicious server administrators
+  * CVE-2022-39250 (bmo#1791765)
+    Matrix SDK bundled with Thunderbird vulnerable to a device
+    verification attack
+  * CVE-2022-39251 (bmo#1791765)
+    Matrix SDK bundled with Thunderbird vulnerable to an
+    impersonation attack
+  * CVE-2022-39236 (bmo#1791765)
+    Matrix SDK bundled with Thunderbird vulnerable to a data
+    corruption issue
+
+-------------------------------------------------------------------
 Fri Sep 16 08:17:49 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 102.3.0

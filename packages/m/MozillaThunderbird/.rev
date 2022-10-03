@@ -4443,4 +4443,34 @@ I cannot test locally unfortunately.
   * Downloading NNTP messages for offline use failed (bmo#1785773)</comment>
     <requestid>1005289</requestid>
   </revision>
+  <revision rev="290" vrev="1">
+    <srcmd5>5e92ce6d6f78ce0ec3861f02dfad406f</srcmd5>
+    <version>102.3.1</version>
+    <time>1664797430</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird 102.3.1
+  * Compose window encryption options now only appear for encryption
+    technologies that have already been configured
+  * Number of contacts in currently selected address book now
+    displayed at bottom of Address Book list column
+  Fixes
+  * Password prompt did not include server hostname for POP servers
+  * Edit Contact was missing from Contacts sidebar context menus
+  * Address Book contact lists cut off display of some characters,
+    the result being unreadable
+  MFSA 2022-43
+  * CVE-2022-39249 (bmo#1791765)
+    Matrix SDK bundled with Thunderbird vulnerable to an
+    impersonation attack by malicious server administrators
+  * CVE-2022-39250 (bmo#1791765)
+    Matrix SDK bundled with Thunderbird vulnerable to a device
+    verification attack
+  * CVE-2022-39251 (bmo#1791765)
+    Matrix SDK bundled with Thunderbird vulnerable to an
+    impersonation attack
+  * CVE-2022-39236 (bmo#1791765)
+    Matrix SDK bundled with Thunderbird vulnerable to a data
+    corruption issue</comment>
+    <requestid>1007573</requestid>
+  </revision>
 </revisionlist>
