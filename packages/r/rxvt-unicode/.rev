@@ -357,4 +357,12 @@ adds .desktop files</comment>
     <comment></comment>
     <requestid>957028</requestid>
   </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>69ce1d8acad93790fbee47545e928bad</srcmd5>
+    <version>9.30</version>
+    <time>1664820496</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1007701</requestid>
+  </revision>
 </revisionlist>
