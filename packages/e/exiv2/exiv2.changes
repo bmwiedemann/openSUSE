@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 28 15:24:59 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add tracker for SLE (jsc#PED-1393)
+
+-------------------------------------------------------------------
 Sat Nov 13 12:08:13 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- update to 0.27.5:
+- update to 0.27.5 (bsc#1189332, CVE-2021-37620,
+                    bsc#1189333, CVE-2021-37621):
   * BMFF bug fixes including CR3 previews
   * Security fixes
   * libFuzzer target
@@ -20,7 +26,11 @@ Fri Jun 18 15:15:56 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 -------------------------------------------------------------------
 Fri Jun 18 12:57:03 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
-- Update to 0.27.4 (bsc#1186053, CVE-2021-29623):
+- Update to 0.27.4 (bsc#1186053, CVE-2021-29623,
+                    bsc#1185447, CVE-2021-29470,
+                    bsc#1185002, CVE-2021-29457,
+                    bsc#1188733, CVE-2021-31291,
+                    bsc#1186192, CVE-2021-32617):
   - Support for bmff files (HEIC, HEIF, AVIF, CR3, JXL/bmff)
   - Bash test scripts rewritten in python
   - DNG 1.6 and Exif 2.32 support
@@ -77,7 +87,7 @@ Fri Aug  2 06:59:05 UTC 2019 - Martin Liška <mliska@suse.cz>
 -------------------------------------------------------------------
 Mon Jul 29 09:49:08 UTC 2019 - Andreas Schneider <asn@cryptomilk.org>
 
-- Update to 0.27.2
+- Update to 0.27.2 (bsc#1188645, CVE-2020-19716)
   * Bug and security fixes
   * Support for Nikon/AutoFocus and Sony/FocusPosition Metadata
   * Documentation and man page revisions
@@ -102,7 +112,7 @@ Wed Jul  3 07:35:25 UTC 2019 - Dan Čermák <dcermak@suse.com>
 -------------------------------------------------------------------
 Thu Jun  6 06:13:34 UTC 2019 - Dirk Stoecker <opensuse@dstoecker.de>
 
-- update to 0.27.1
+- update to 0.27.1 (CVE-2019-13108, bsc#1142675)
  * Bug and security fixes.
  * Deprecation warnings for Video, EPS and SSH support.
  * Branch 0.27-maintenance for "dots" to avoid confusion with tag 0.27 (== 0.27.0 code).

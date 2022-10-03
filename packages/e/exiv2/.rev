@@ -627,4 +627,22 @@
     <comment>- Update to 0.27.4 (bsc#1186053, CVE-2021-29623):</comment>
     <requestid>976052</requestid>
   </revision>
+  <revision rev="63" vrev="3">
+    <srcmd5>b935729c9eaf26d7dbdf97bc172c462a</srcmd5>
+    <version>0.27.5</version>
+    <time>1664797451</time>
+    <user>dimstar_suse</user>
+    <comment>- add tracker for SLE (jsc#PED-1393)
+
+- update to 0.27.5 (bsc#1189332, CVE-2021-37620,
+                    bsc#1189333, CVE-2021-37621):
+- Update to 0.27.4 (bsc#1186053, CVE-2021-29623,
+                    bsc#1185447, CVE-2021-29470,
+                    bsc#1185002, CVE-2021-29457,
+                    bsc#1188733, CVE-2021-31291,
+                    bsc#1186192, CVE-2021-32617):
+- Update to 0.27.2 (bsc#1188645, CVE-2020-19716)
+- update to 0.27.1 (CVE-2019-13108, bsc#1142675)</comment>
+    <requestid>1006717</requestid>
+  </revision>
 </revisionlist>
