@@ -20,4 +20,15 @@
   - setup.cfg: Replace dashes with underscores</comment>
     <requestid>981113</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1cb2a1644d38e29aa72534d88291f762</srcmd5>
+    <version>0.5.0</version>
+    <time>1664797592</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.5.0
+  - Update master for stable/yoga
+  - Drop python3.6/3.7 support in testing runtime
+  - Remove unnecessary unicode prefixes</comment>
+    <requestid>1007582</requestid>
+  </revision>
 </revisionlist>
