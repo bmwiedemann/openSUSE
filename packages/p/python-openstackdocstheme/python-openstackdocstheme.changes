@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct  1 12:40:34 UTC 2022 - cloud-devel@suse.de
+
+- update to version 3.0.0
+  - Drop python3.6/3.7 support in testing runtime
+  - Fix broken link for Marketplace in header
+
+-------------------------------------------------------------------
 Wed Jul 13 08:19:48 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update check section to not run setup.py test anymore 

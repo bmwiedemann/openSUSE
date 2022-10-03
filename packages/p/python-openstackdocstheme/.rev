@@ -318,4 +318,14 @@
     <comment>- update check section to not run setup.py test anymore</comment>
     <requestid>988926</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>590381a3bdbea574969ad152535b629b</srcmd5>
+    <version>3.0.0</version>
+    <time>1664797468</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.0.0
+  - Drop python3.6/3.7 support in testing runtime
+  - Fix broken link for Marketplace in header</comment>
+    <requestid>1007442</requestid>
+  </revision>
 </revisionlist>
