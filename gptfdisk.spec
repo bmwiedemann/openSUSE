@@ -23,8 +23,10 @@ Summary:        GPT partitioning and MBR repair software
 License:        GPL-2.0-only
 Group:          System/Base
 URL:            http://rodsbooks.com/gdisk
-
+#Git-Clone:     https://git.code.sf.net/p/gptfdisk/code gptfdisk-code
+#Git-Web:       https://sourceforge.net/p/gptfdisk/code/ci/master/tree/
 Source:         https://downloads.sf.net/%name/%name-%version.tar.gz
+Patch1:         0001-Fix-failure-crash-of-sgdisk-when-compiled-with-lates.patch
 BuildRequires:  gcc-c++
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig(popt)

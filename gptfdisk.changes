@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 30 11:17:17 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Add patch to fix sgdisk with popt 1.19:
+  * 0001-Fix-failure-crash-of-sgdisk-when-compiled-with-lates.patch
+
+-------------------------------------------------------------------
 Sat Aug 27 11:58:11 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.0.9
