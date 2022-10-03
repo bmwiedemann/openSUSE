@@ -1,7 +1,7 @@
 #
 # spec file for package hackrf
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,14 +20,14 @@
 %define libname lib%{name}%{sover}
 %define hackrf_group  hackrf
 Name:           hackrf
-Version:        2021.03.1
+Version:        2022.09.1
 Release:        0
 Summary:        Support programs for the open source SDR hardware
 License:        GPL-2.0-only
 Group:          Productivity/Hamradio/Other
 URL:            https://greatscottgadgets.com/hackrf/
-#Git-Clone:     https://github.com/mossmann/hackrf.git
-Source:         https://github.com/mossmann/hackrf/releases/download/v%{version}/hackrf-%{version}.tar.xz
+#Git-Clone:     https://github.com/greatscottgadgets/hackrf.git
+Source:         https://github.com/greatscottgadgets/hackrf/releases/download/v%{version}/hackrf-%{version}.tar.xz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -106,7 +106,7 @@ getent group %{hackrf_group} >/dev/null || groupadd -r %{hackrf_group}
 
 %files
 %license ../COPYING
-%doc ../RELEASENOTES ../Readme.md ../TRADEMARK
+%doc ../RELEASENOTES ../Readme.md
 %{_bindir}/hackrf_clock
 %{_bindir}/hackrf_cpldjtag
 %{_bindir}/hackrf_debug

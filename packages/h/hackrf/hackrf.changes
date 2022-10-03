@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Sep 29 19:45:18 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2022.09.1
+  Note: You must also update firmware on your HackRF !
+  Major changes:
+  * Opera Cake, an antenna switching add-on board for HackRF One
+    is fully supported.
+  * A new user interface for rad1o provides status information
+    during operation in HackRF mode.
+  * Numerous performance, stability, and instrumentation
+    improvements have been made to hackrf_transfer, hackrf_sweep,
+    libhackrf, and firmware.
+
+-------------------------------------------------------------------
 Sat Mar 20 11:48:32 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2021.03.01
