@@ -35,7 +35,6 @@ BuildRequires:  fdupes
 BuildRequires:  fish
 BuildRequires:  gcc
 BuildRequires:  make
-BuildRequires:  python3-Sphinx
 BuildRequires:  zsh
 
 %description
