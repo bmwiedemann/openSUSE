@@ -682,4 +682,18 @@
     '--html-custom-js' by allowing valid filenames.</comment>
     <requestid>1000839</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>68af9cec12ed10a922b5154909c8d1a2</srcmd5>
+    <version>1.6.4</version>
+    <time>1664820505</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.4:
+  * Added Korean translation (i18n).
+  * Added the ability to use filenames as virtualhosts using
+    '--fname-as-vhost=&lt;regex&gt;'.
+  * Enabled clawlers/bots under the OSs panel instead of being shown as
+    'Unknown'.
+  * Updated the format on the command-line help output.</comment>
+    <requestid>1007708</requestid>
+  </revision>
 </revisionlist>
