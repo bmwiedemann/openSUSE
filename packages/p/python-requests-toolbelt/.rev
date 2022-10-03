@@ -93,4 +93,14 @@
     <comment>- Properly redo the regeneration of test_certs.p12.</comment>
     <requestid>958356</requestid>
   </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>25b5f51469440b5ca44a1d74b7358856</srcmd5>
+    <version>0.9.1</version>
+    <time>1664797459</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch stop-using-pyopenssl-compat.patch:
+  * Stop importing (and using!) a pyopenssl compatibility module
+    to avoid a DeprecationWarning.</comment>
+    <requestid>1007133</requestid>
+  </revision>
 </revisionlist>

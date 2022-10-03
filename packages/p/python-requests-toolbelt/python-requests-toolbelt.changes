@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 30 04:24:08 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch stop-using-pyopenssl-compat.patch:
+  * Stop importing (and using!) a pyopenssl compatibility module
+    to avoid a DeprecationWarning. 
+
+-------------------------------------------------------------------
 Wed Mar  2 02:03:40 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Properly redo the regeneration of test_certs.p12. 

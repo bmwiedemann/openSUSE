@@ -22,7 +22,6 @@ Version:        0.9.1
 Release:        0
 Summary:        A utility belt for advanced users of python3-requests
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/requests/toolbelt
 Source:         https://files.pythonhosted.org/packages/source/r/requests-toolbelt/requests-toolbelt-%{version}.tar.gz
 # Replace expired test certificate
@@ -33,6 +32,9 @@ Patch0:         fix-tests.patch
 Patch1:         remove_mock.patch
 # PATCH-FIX-UPSTREAM requests-toolbelt-pr246-collections.abc.patch -- fix python310 deprecation. gh#requests/toolbelt#246
 Patch2:         https://github.com/requests/toolbelt/pull/246.patch#/requests-toolbelt-pr246-collections.abc.patch
+# PATCH-FIX-OPENSUSE Stop using PyOpenSSLCompat, it generates widespread
+# DeprecationWarnings
+Patch3:         stop-using-pyopenssl-compat.patch
 BuildRequires:  %{python_module requests >= 2.12.2}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -61,8 +63,6 @@ some idiosyncracies prevent effective or sane testing on that version.
 cp %{SOURCE1} tests/certs
 
 rm -rf requests_toolbelt.egg-info
-# requires network access
-rm -v tests/test_multipart_encoder.py
 
 %build
 %python_build
@@ -76,7 +76,8 @@ rm -v tests/test_multipart_encoder.py
 export OPENSSL_SYSTEM_CIPHERS_OVERRIDE=xyz_nonexistent_file
 export OPENSSL_CONF=''
 
-%pytest
+# Requires network access
+%pytest -k 'not (TestFileFromURLWrapper or test_reads_file_from_url_wrapper)'
 
 %files %{python_files}
 %license LICENSE
