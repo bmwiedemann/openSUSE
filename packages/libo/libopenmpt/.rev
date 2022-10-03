@@ -698,4 +698,35 @@ Changes in 0.5.3:
     end of the loop.</comment>
     <requestid>982866</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>1d4a99467fe6879d2d26c09a63d859a3</srcmd5>
+    <version>0.6.6</version>
+    <time>1664797454</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.6
+  * [Sec] Possible crash when playing manipulated IT / MPTM files
+    with a T00 command.
+  * MTM: In MultiTracker, setting speed and tempo are mutually
+    exclusive commands. Still, some MultiTracker modules were made
+    to be played with external players such as DMP, so they
+    actually rely on “standard” speed / tempo behaviour. Decide
+    which behaviour to use by checking of speed and tempo commands
+    are found on the same row.
+  * MTM: Ignore sample loops if the loop end is &lt;= 2.
+  * Echo DMO: Migrate left and right delay values in modules made
+    with OpenMPT versions between 1.27.01.00 and 1.30.05.00 to the
+    correct interpretation.
+- Changes in 0.6.5:
+  * [Bug] Makefile now also uses CC, CXX, LD, and AR when set as
+    environment variables.
+  * [New] Makefile now uses PKG_CONFIG as path to pkg-config.
+  * DBM: Sample middle-C frequencies were slightly off.
+    laffik_-_marynarze.dbm sounds much more bearable now.
+  * DBM: Fixed pattern break parameter interpretation.
+  * Echo DMO: Setting the delay parameter to 0 yielded a 2-second
+    echo delay instead of 1ms.
+  * Digi Booster Echo: Setting the delay parameter to 0 yielded a
+    510ms echo delay instead of approximately 334ms.</comment>
+    <requestid>1007099</requestid>
+  </revision>
 </revisionlist>
