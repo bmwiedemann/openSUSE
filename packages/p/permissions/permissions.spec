@@ -48,7 +48,10 @@ make %{?_smp_mflags} CXXFLAGS="%{optflags}"
 %make_install fillupdir=%{_fillupdir}
 
 %check
+# will fail on qemu with  unshare: unshare failed: Invalid argument
+%if !0%{?qemu_user_space_build}
 tests/regtest.py --skip-make > /dev/null
+%endif
 
 %description
 Permission settings of files and directories depending on the local

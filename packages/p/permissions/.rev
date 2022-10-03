@@ -1426,4 +1426,12 @@ https://lists.opensuse.org/archives/list/packaging@lists.opensuse.org/message/5F
     CVE-2022-31252)</comment>
     <requestid>1003262</requestid>
   </revision>
+  <revision rev="153" vrev="2">
+    <srcmd5>a58b4fbe1791f41ed3c9a5e1bf4f4e64</srcmd5>
+    <version>1599_20220912</version>
+    <time>1664797480</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1006712</requestid>
+  </revision>
 </revisionlist>

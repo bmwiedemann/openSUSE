@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 21 14:30:41 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- skip tests on qemu user builds
+
+-------------------------------------------------------------------
 Tue Sep 13 08:38:26 UTC 2022 - matthias.gerstner@suse.com
 
 - Update to version 20220912:
