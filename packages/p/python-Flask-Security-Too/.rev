@@ -127,4 +127,32 @@ This is a maintained fork of python-Flask-Security</comment>
     <comment>- Use email-validator, not email_validator package name.</comment>
     <requestid>1001868</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>37f1d8e3f39cbe12ca748bfc331168cb</srcmd5>
+    <version>5.0.2</version>
+    <time>1664805569</time>
+    <user>dimstar_suse</user>
+    <comment>- Upate to 5.0.2:
+  * Role permissions backwards compatibility bug.
+  * Fix Change Password regression.
+  * Support for WebAuthn.
+  * Support Two-factor recovery codes.
+  * Provide option to prevent user enumeration (i.e. Generic Responses).
+  * Support for Python 3.10.
+  * Support for Flask &gt;= 2.2.
+  * Add custom HTML attributes to improve user experience.
+  * Make the required zxcvbn complexity score configurable.
+  * Get rid of Flask-Mail. Flask-Mailman is now the default preferred email
+    package.
+  * A delete option has been added to us-setup (form and view).
+  * Improve username support - the LoginForm now has a separate field for
+    username.
+  * Fix test and other failures with newer Flask-Login/Werkzeug versions.
+  * Fix test failures with newer Flask versions.
+- Drop patch endswith-assert.patch:
+  * Included upstream.
+- Rebase patches no-mongodb.patch and use-pyqrcodeng.patch
+- Update {Build,}Requires versions.</comment>
+    <requestid>1007165</requestid>
+  </revision>
 </revisionlist>

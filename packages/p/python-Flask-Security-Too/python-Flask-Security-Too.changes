@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Sep 30 06:52:16 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Upate to 5.0.2:
+  * Role permissions backwards compatibility bug.
+  * Fix Change Password regression.
+  * Support for WebAuthn.
+  * Support Two-factor recovery codes.
+  * Provide option to prevent user enumeration (i.e. Generic Responses).
+  * Support for Python 3.10.
+  * Support for Flask >= 2.2.
+  * Add custom HTML attributes to improve user experience.
+  * Make the required zxcvbn complexity score configurable.
+  * Get rid of Flask-Mail. Flask-Mailman is now the default preferred email
+    package.
+  * A delete option has been added to us-setup (form and view).
+  * Improve username support - the LoginForm now has a separate field for
+    username.
+  * Fix test and other failures with newer Flask-Login/Werkzeug versions.
+  * Fix test failures with newer Flask versions.
+- Drop patch endswith-assert.patch:
+  * Included upstream.
+- Rebase patches no-mongodb.patch and use-pyqrcodeng.patch
+- Update {Build,}Requires versions.
+
+-------------------------------------------------------------------
 Thu Sep  8 06:45:05 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Use email-validator, not email_validator package name. 
