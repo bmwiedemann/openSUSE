@@ -1,0 +1,21 @@
+diff -u -r -p oneVPL-intel-gpu-intel-onevpl-22.4.4.orig/_studio/mfx_lib/encode_hw/av1/linux/base/av1ehw_base_va_packer_lin.cpp oneVPL-intel-gpu-intel-onevpl-22.4.4/_studio/mfx_lib/encode_hw/av1/linux/base/av1ehw_base_va_packer_lin.cpp
+--- oneVPL-intel-gpu-intel-onevpl-22.4.4.orig/_studio/mfx_lib/encode_hw/av1/linux/base/av1ehw_base_va_packer_lin.cpp	2022-09-30 15:37:10.498382000 +0200
++++ oneVPL-intel-gpu-intel-onevpl-22.4.4/_studio/mfx_lib/encode_hw/av1/linux/base/av1ehw_base_va_packer_lin.cpp	2022-09-30 15:40:08.100506000 +0200
+@@ -86,7 +86,7 @@ void InitSPS(
+     sps.seq_fields.bits.enable_restoration         = bs_sh.enable_restoration;
+ 
+     const mfxExtCodingOption2& CO2 = ExtBuffer::Get(par);
+-    sps.reserved8b = CO2.BRefType == MFX_B_REF_PYRAMID;
++    sps.hierarchical_flag = CO2.BRefType == MFX_B_REF_PYRAMID;
+ }
+ 
+ void InitPPS(
+@@ -451,7 +451,7 @@ void UpdatePPS(
+     pps.qmatrix_flags.bits.qm_u = bs_fh.quantization_params.qm_u;
+     pps.qmatrix_flags.bits.qm_v = bs_fh.quantization_params.qm_v;
+ 
+-    pps.reserved8bits0 = static_cast<mfxU8>(task.PyramidLevel + 1);
++    pps.hierarchical_level_plus1 = static_cast<mfxU8>(task.PyramidLevel + 1);
+     pps.skip_frames_reduced_size = static_cast<mfxI32>(task.PrevRepeatedFrameBytes);
+ }
+ 

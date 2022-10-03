@@ -93,4 +93,14 @@
 - filelist: added {_libdir}/libmfx-gen/enctools.so</comment>
     <requestid>988344</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>b5953ea551af0b64c423ad732fb67b5e</srcmd5>
+    <version>22.4.4</version>
+    <time>1664805572</time>
+    <user>dimstar_suse</user>
+    <comment>- u_libva-2.16.0.patch
+  * fixes build against libva 2.16.0 
+  * culprit: https://github.com/intel/libva/commit/8682f9e30f2fabf2ccc6f7609db035ed1af44703</comment>
+    <requestid>1007270</requestid>
+  </revision>
 </revisionlist>

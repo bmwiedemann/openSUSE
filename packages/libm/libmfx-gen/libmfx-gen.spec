@@ -28,6 +28,7 @@ URL:            https://github.com/oneapi-src/oneVPL-intel-gpu
 Source0:        intel-onevpl-%{version}.tar.gz
 Source1:        supplements.inc
 Source2:        generate-supplements.sh
+Patch0:         u_libva-2.16.0.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
