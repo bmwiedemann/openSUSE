@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct  3 14:09:14 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 2.7.2
+  * Italian translation update
+  * FluidSynth backend should honor its default soundfont.
+
+-------------------------------------------------------------------
 Thu Aug 18 11:26:40 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 2.7.1
