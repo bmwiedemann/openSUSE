@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Sat Oct 01 16:49:17 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 10.3.1:
+  * Release 10.3.1 (#16915)
+  * docs: add more details on audit log retention (#16814)
+  * [v10] Drop direct dependency on github.com/golang/protobuf (#16904)
+  * local alert resync
+  * security patch alerts
+
+-------------------------------------------------------------------
+Sat Oct 01 16:25:21 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 10.3.0:
+  * Release 10.3.0 (#16891)
+  * [v10] security: include exec command in session.start.initial_command (#16905)
+  * typo correction (#16839)
+  * Fix label based tsh when per session mfa is enabled via role (#16893)
+  * Implement RFD 82: Session Tracker Resource RBAC (#15760) (#16554)
+  * [auto] Update webassets in teleport/branch/v10 from webassets/teleport-v10 (#16888)
+  * [v10] Backport Elasticsearch suppport (#16873)
+  * Update download link (#16836)
+  * [v10] Drop a couple of deprecated/shallow Go dependencies (#16883)
+  * Added 09/29 Upcoming Releases Update
+  * update webassets (#16860)
+  * update eref (#16859)
+  * Initial RDPDR tests (#16470) (#16846)
+  * [auto] Update webassets in teleport/branch/v10 from webassets/teleport-v10 (#16807)
+  * [v10] Clean up old artifacts when retrying a tag build (#16669) (#16785)
+  * [v10] Add an Elastic Stack guide (#16842)
+  * [v10] security: one allow one exec request per SSH channel (#16813)
+  * [v10] Change kube logged in message (#16829)
+  * [v10] Document MsTeams access plugin (#16642)
+  * Update on-prem docs version (#16725)
+  * [v10] Fix auto discovery on secondary cluster of a global Aurora database (#16710)
+  * Updated operating system support
+  * [v10] Retrieve an IMDS token in the default ec2 discovery installer (#16808)
+  * [v10] Docs: Update Docker Config Path (#16522)
+  * docs: add ssh_file_copy to role spec (#16766)
+  * Update the docs issues contributing guide (#16529) (#16631)
+  * [v10] Backport PagerDuty edits (#16052)
+  * [v10] fix: Handle failures when checking for excluded credentials (#16765)
+  * [v10] update e ref (#16731)
+  * Hide `--db-user`/`--db-name` flags if they are not needed. (#16747)
+
+-------------------------------------------------------------------
 Tue Sep 27 18:46:58 UTC 2022 - michael@stroeder.com
 
 - Update to version 10.2.6:
