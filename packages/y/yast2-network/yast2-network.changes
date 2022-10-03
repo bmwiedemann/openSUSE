@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 29 09:15:47 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
+
+- Fixed issue when writing the NetworkManager config without a
+  gateway (bsc#1203866)
+- 4.5.8
+
+-------------------------------------------------------------------
 Fri Sep 16 08:23:21 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
 
 - Activate s390 devices before importing and reading the network
