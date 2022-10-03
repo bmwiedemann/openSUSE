@@ -30,7 +30,7 @@
 %bcond_with mono
 %define skip_python2 1
 Name:           xapian-bindings
-Version:        1.4.20
+Version:        1.4.21
 Release:        0
 Summary:        Bindings for xapian
 License:        GPL-2.0-only
@@ -63,6 +63,11 @@ BuildRequires:  %{phpver}-devel
 %if %{with sphinx}
 BuildRequires:  python3-Sphinx
 %endif
+%if 0%{?sle_version} == 150400
+# python38_version_nodots doesn't evaluate correctly in 150400
+%define python_files() -n python3-%{**}
+%define python_sitearch %{python3_sitearch}
+%else
 %if 0%{?python38_version_nodots} == 38
 # If we have multiple python flavors, build bindings for all of them
 %define python_subpackage_only 1
@@ -70,6 +75,7 @@ BuildRequires:  python3-Sphinx
 %else
 %define python_files() -n python3-%{**}
 %define python_sitearch %{python3_sitearch}
+%endif
 %endif
 
 %description

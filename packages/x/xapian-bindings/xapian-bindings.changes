@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Sep 30 12:07:31 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- update to 1.4.21:
+  * Documentation:
+    - Consistently say "macOS" not "Mac OS X", "OS X", etc.
+  * General:
+    - Update to use AX_CXX_COMPILE_STDCXX which is a replacement for
+      AX_CXX_COMPILE_STDCXX_11 (which we were using) which also
+      supports newer C++ standards versions which will be useful.
+      For C++11 the only difference seems to be that the macro now
+      checks for attribute support - we use C++11 attributes so
+      that seems a good thing.
+  * Portability:
+    - Drop special handling of MACOSX_DEPLOYMENT_TARGET.  This was
+      only relevant for macOS 10.3 and (for powerpc only) 10.4, and
+      Apple dropped support for 10.4 in 2009.
+  * Java:
+    - Document where to install .jar on macOS. Partly addresses #774
+- Rebase patch:
+  * do-not-use-sphinx.diff
+- Add workaround for Leap 15.4 where %python38_version_nodots
+  doesn't evaluate properly
+
+-------------------------------------------------------------------
 Tue Jul 19 14:16:07 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Refresh do-not-use-sphinx.diff

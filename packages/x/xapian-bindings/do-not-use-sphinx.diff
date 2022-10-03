@@ -109,4 +109,4 @@ Index: xapian-bindings-1.4.20/python3/Makefile.am
 +	cp -R -p `test -r docs/index.rst || echo '$(srcdir)/'`docs '$(DESTDIR)$(docdir)/python3'
  
  $(sphinxdocs): xapian/__init__.py xapian/_xapian$(PYTHON3_EXT_SUFFIX) docs/conf.py $(RST_DOCS) $(dist_exampledata_DATA)
- 	PYTHONPATH=..:$$PYTHONPATH $(OSX_SIP_HACK_ENV) $(PYTHON3) \
+ 	PYTHONPATH=..:$$PYTHONPATH $(MACOS_SIP_HACK_ENV) $(PYTHON3) \
