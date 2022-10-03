@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Sep 29 19:24:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.21:
+  * Stop trying to check for incompatible C++ ABI between the compiler used to
+    build xapian-core and the compiler used to build code using xapian-core.
+  * Fix new warnings from GCC 12.
+  * Avoid undefined value use when unpacking a key in a corrupted glass docdata
+    table.  We now skip further checks on the entry in this case.
+  * Merge allocations in MSVC directory reading compatibility code so we can
+    allocate in a single malloc() call.
+  * Add accept() wrapper which checks an assumption that Microsoft's SOCKET type
+    only actually holds 32 bit values even in 64 bit platforms and throws an
+    exception if violated.
+  * Eliminate a use of sprintf.
+  * Squash some unhelpful MSVC deprecation warnings.
+  * Declare dummy invalid parameter handler noexcept to fix a warning from MSVC.
+  * Include <stdlib.h> in configure check for sys_errlist as that's where it is
+    with mingw and MSVC.
+
+-------------------------------------------------------------------
 Sun Jul 17 15:40:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.20:
