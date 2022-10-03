@@ -18,14 +18,14 @@
 
 
 Name:           minidlna
-Version:        1.3.1
-%define oversion 1.3.0
+Version:        1.3.2
+%define oversion 1.3.2
 Release:        0
 Summary:        DLNA compatible server
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Other
-URL:            http://sourceforge.net/projects/minidlna/
-Source0:        http://prdownloads.sourceforge.net/minidlna/%{name}-%{oversion}.tar.gz
+URL:            https://sourceforge.net/projects/minidlna/
+Source0:        https://prdownloads.sourceforge.net/minidlna/%{name}-%{oversion}.tar.gz
 # Systemd unit file
 Source1:        %{name}.service
 # tmpfiles configuration for the /run directory
@@ -34,8 +34,6 @@ Source2:        %{name}-tmpfiles.conf
 Source3:        minidlna_logrotate
 # systemd-sysusers user configuration
 Source4:        %{name}-user.conf
-# unreleased version 1.3.1 from GIT
-Patch0:         minidlna-1.3.0-1.3.1.patch
 # VDR FIX thanks to Boris from openSuse
 Patch1:         minidlna-vdr.diff
 BuildRequires:  automake

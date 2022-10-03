@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Oct  1 11:29:32 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.3.2:
+  * Improved DNS rebinding attack protection.
+  * Added Samsung Neo QLED series (2021) support.
+  * Added webm/rm/rmvb support.
+  * Fixed a potential crash in SSDP request parsing.
+  * Fixed a configure script failure on some platforms.
+  * Protect against DNS rebinding attacks.
+  * Fix an socket leakage issue on some platforms.
+  * Minor bug fixes.
+- drop minidlna-1.3.0-1.3.1.patch (upstream)
+
+-------------------------------------------------------------------
 Mon Mar  7 12:07:23 CET 2022 - ro@suse.de
 
 - update to version 1.3.1 (bsc#1196814)
