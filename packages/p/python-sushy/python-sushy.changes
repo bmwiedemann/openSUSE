@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Sun Oct  2 14:49:41 UTC 2022 - cloud-devel@suse.de
+
+- update to version 4.3.0
+  - Run Ironic unit tests to avoid regressions
+  - Fix session authentication issues
+  - Update jobs names
+  - Migrate CompositionService, EventService and TaskService to enums
+  - Add basic support for CertificateService
+  - Remove unicode literal from code
+  - Changing boot device string for vmedia on SuperMicro
+  - Re-trying InsertMedia call with TransferProtocolType if required
+  - Update master for stable/xena
+  - Re-add python 3.6/3.7 in classifier
+  - Support credentials for VirtualMedia URI
+  - Follow up to Attempt using Redfish settings resource to get URI
+  - Handle AccessError with Basic Auth instead of "reauth"
+  - Support for creating and deleting virtual media TLS certificates
+  - Prepare the ground to use enums instead of strings
+  - Drop lower-constraints.txt and its testing
+  - Remove deprecated Task monitors and Volume methods
+  - Migrate System Storage constants to enums
+  - Add support for NetworkAdapter resources
+  - Migrate Fabric to enums
+  - Add revision for drive resource
+  - Migrate common constants to enums
+  - Replace the netboot job with a local-boot one
+  - Add Python3 yoga unit tests
+  - Add lower-constraints job to current development branch
+  - Change default value: insert_media write_protected
+  - Use Etag in precondition header when setting boot options
+  - Update master for stable/yoga
+  - Migrate System constants to enums
+  - Do not send compression as acceptable encoding
+  - Use only Yoga tests
+  - Raise an AccessError with SessionService init
+  - Stop logging MessageRegistry objects
+  - Add support for additional network resources.
+  - Add missing __init__.py
+  - Migrate System Network to enums
+  - Better logging when registries are not available
+  - Add some VirtualMedia fields from 1.3.0 and 1.4.0
+  - Add Python3 zed unit tests
+  - [Trivial] Fix docstring typo: s/SECORE/SECURE/g
+  - Test python 3.6 for distributions compatibility
+  - [trivial] fix Xena release versions
+  - Handle weak Etags
+  - Revert "Raise an AccessError with SessionService init"
+  - Migrate Protocol constants to enums
+  - Capture requests errors
+  - Attempt using Redfish settings resource to get URI
+  - Migrate Chassis to enums
+  - Updating yoga tested python versions in classifier
+  - Add new Storage controllers
+  - Handle mismatch between registry Identity and the way it's referred to
+  - Finalize the enum migration
+  - Migrate Manager constants to enums
+
+-------------------------------------------------------------------
 Tue Oct 26 22:13:02 UTC 2021 - cloud-devel@suse.de
 
 - update to version 3.11.0

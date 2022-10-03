@@ -160,4 +160,41 @@
   - Refactor TaskMonitor and update Volume methods</comment>
     <requestid>939550</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8c13a4bb0a7bbf27359b0a2a3426b422</srcmd5>
+    <version>4.3.0</version>
+    <time>1664797590</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.3.0
+  - Run Ironic unit tests to avoid regressions
+  - Fix session authentication issues
+  - Update jobs names
+  - Migrate CompositionService, EventService and TaskService to enums
+  - Add basic support for CertificateService
+  - Remove unicode literal from code
+  - Changing boot device string for vmedia on SuperMicro
+  - Re-trying InsertMedia call with TransferProtocolType if required
+  - Update master for stable/xena
+  - Re-add python 3.6/3.7 in classifier
+  - Support credentials for VirtualMedia URI
+  - Follow up to Attempt using Redfish settings resource to get URI
+  - Handle AccessError with Basic Auth instead of &quot;reauth&quot;
+  - Support for creating and deleting virtual media TLS certificates
+  - Prepare the ground to use enums instead of strings
+  - Drop lower-constraints.txt and its testing
+  - Remove deprecated Task monitors and Volume methods
+  - Migrate System Storage constants to enums
+  - Add support for NetworkAdapter resources
+  - Migrate Fabric to enums
+  - Add revision for drive resource
+  - Migrate common constants to enums
+  - Replace the netboot job with a local-boot one
+  - Add Python3 yoga unit tests
+  - Add lower-constraints job to current development branch
+  - Change default value: insert_media write_protected
+  - Use Etag in precondition header when setting boot options
+  - Update master for stable/yoga
+  - Migrate System constants to enums</comment>
+    <requestid>1007580</requestid>
+  </revision>
 </revisionlist>
