@@ -87,9 +87,16 @@ BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(glib-2.0)
+%if 0%{suse_version} >= 1550
+# The FFmpeg 5 port isn't ready: https://invent.kde.org/multimedia/amarok/-/merge_requests/45
+BuildRequires:  ffmpeg-4-libavcodec-devel
+BuildRequires:  ffmpeg-4-libavformat-devel
+BuildRequires:  ffmpeg-4-libavutil-devel
+%else
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
+%endif
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libgpod-1.0)
 BuildRequires:  pkgconfig(libmtp) >= 1.0.0

@@ -1204,4 +1204,13 @@ https://git.reviewboard.kde.org/r/104878/ (forwarded request 116659 from StefanB
     <comment>- Don't require QtWebEngine unconditionally</comment>
     <requestid>1005168</requestid>
   </revision>
+  <revision rev="133" vrev="3">
+    <srcmd5>44a5055560ba9df38384ac9fbee60f82</srcmd5>
+    <version>2.9.75git.20220614T014846~dc55a00143</version>
+    <time>1664797423</time>
+    <user>dimstar_suse</user>
+    <comment>- Use FFmpeg 4 to build amarok on Tumbleweed. The FFmpeg 5 port
+  needs more work.</comment>
+    <requestid>1007389</requestid>
+  </revision>
 </revisionlist>

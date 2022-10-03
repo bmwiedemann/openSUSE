@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct  1 07:24:56 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use FFmpeg 4 to build amarok on Tumbleweed. The FFmpeg 5 port
+  needs more work.
+
+-------------------------------------------------------------------
 Wed Sep 21 10:19:15 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Don't require QtWebEngine unconditionally
