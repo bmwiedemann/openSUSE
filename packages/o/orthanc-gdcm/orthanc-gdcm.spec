@@ -29,8 +29,7 @@ Source11:       orthanc-gdcm-readme.SUSE
 
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  gdcm-devel
-BuildRequires:  gdcm-libgdcm3_0
+BuildRequires:  gdcm-devel >= 3.0.18
 BuildRequires:  googletest-devel
 BuildRequires:  jsoncpp-devel
 BuildRequires:  libboost_date_time-devel >= 1.66
