@@ -1,14 +1,21 @@
 -------------------------------------------------------------------
+Sat Oct  1 09:11:03 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.14.20:
+  * Added a file for gh#scikit-hep/uproot5#697.
+- Fix versions in previous two changelogs.
+
+-------------------------------------------------------------------
 Tue Aug 23 21:36:10 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
-- Update to version 0.14.9:
+- Update to version 0.14.19:
   * modify rntuple stl test file to be more informative
     [gh#scikit-hep/scikit-hep-testdata#82].
 
 -------------------------------------------------------------------
 Wed Aug 10 21:53:24 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
-- Update to version 0.14.6:
+- Update to version 0.14.16:
   * add more RNTuple test files
     [gh#scikit-hep/scikit-hep-testdata#80].
   * add singly jagged int/float rntuple
