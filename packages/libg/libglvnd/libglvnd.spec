@@ -19,7 +19,7 @@
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 Name:           libglvnd
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        The GL Vendor-Neutral Dispatch library
 License:        MIT
@@ -29,8 +29,6 @@ Source:         https://github.com/NVIDIA/libglvnd/archive/v%{version}.tar.gz#/%
 Source1:        baselibs.conf
 Source2:        libglvnd.rpmlintrc
 Patch1:         disable-glx-tests.patch
-# PATCH-FIX-UPSTREAM - https://gitlab.freedesktop.org/glvnd/libglvnd/-/merge_requests/262
-Patch2:         libglvnd-add-bti.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -65,9 +63,7 @@ OpenGL ABI proposal. This package contains the required files for
 development.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 # fix env shebang to call py3 directly
 sed -i -e "1s|#!.*|#!%{_bindir}/python3|" src/generate/*.py
 

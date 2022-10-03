@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Oct  1 11:15:04 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.0:
+  * Add BTI landing pads for aarch64
+  * Set current thread state to NULL in teardown 
+  * Moving setspecific to before DestroyThreadState
+  * Fix a memory leak in libGLdispatch 
+  * Use assembly stubs on armv6
+- drop libglvnd-add-bti.patch (upstream)
+
+-------------------------------------------------------------------
 Thu Jul 14 12:09:50 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - let libglvnd require Mesa-dri so GL drivers are available on
