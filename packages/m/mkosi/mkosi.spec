@@ -1,7 +1,7 @@
 #
 # spec file for package mkosi
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           mkosi
-Version:        12
+Version:        13
 Release:        0
 Summary:        Build Legacy-Free OS Images
 License:        LGPL-2.1-or-later
@@ -56,6 +56,7 @@ supported (not plain MBR/BIOS).
 
 %prep
 %setup -q
+sed -i '1s/^#!\/usr\/bin\/env /#!\/usr\/bin\//' bin/mkosi
 
 %build
 %py3_build
