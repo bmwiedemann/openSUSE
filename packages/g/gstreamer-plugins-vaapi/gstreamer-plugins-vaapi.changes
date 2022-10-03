@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 30 10:31:15 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Pass package-origin='http://download.opensuse.org' to meson.
+- Drop unused ldconfig call from post(un), this is a plugin, not a
+  shared library.
+
+-------------------------------------------------------------------
 Wed Jun 22 10:40:26 UTC 2022 - Aaron Stern <ukbeast89@protonmail.com>
 
 - Update to version 1.20.3:

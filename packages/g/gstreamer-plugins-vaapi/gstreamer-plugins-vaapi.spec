@@ -67,6 +67,7 @@ VA-API.
 
 %build
 %meson \
+	-Dpackage-origin='http://download.opensuse.org' \
 	-Ddoc=disabled \
 	-Dwith_egl=yes \
 	-Dwith_encoders=yes \
@@ -80,9 +81,6 @@ VA-API.
 
 %install
 %meson_install
-
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
 
 %files
 %license COPYING.LIB
