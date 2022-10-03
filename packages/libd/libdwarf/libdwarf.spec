@@ -17,7 +17,7 @@
 
 
 Name:           libdwarf
-Version:        0.4.1
+Version:        0.4.2
 Release:        0
 Summary:        Access DWARF debugging information
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -26,6 +26,7 @@ URL:            https://prevanders.net/dwarf.html
 Source:         https://github.com/davea42/libdwarf-code/releases/download/v%{version}/libdwarf-%{version}.tar.xz
 BuildRequires:  binutils-devel
 BuildRequires:  libelf-devel
+BuildRequires:  pkgconfig(zlib)
 
 %description
 libdwarf is a library of functions to provide read/write DWARF

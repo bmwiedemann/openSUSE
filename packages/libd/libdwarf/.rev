@@ -297,4 +297,16 @@
 - drop fix-CVE-2022-32200.patch (upstream)</comment>
     <requestid>989491</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>4a4301b4c5eef5854f5de07c43bf5583</srcmd5>
+    <version>0.4.2</version>
+    <time>1664820501</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.2:
+  * memory leak fixes
+  * How to deal with a dwarf_init*() call
+    that fails (DW_DLV_ERROR) in a simple way is finally
+    documented in libdwarf.pdf and in the on-line html.</comment>
+    <requestid>1007710</requestid>
+  </revision>
 </revisionlist>
