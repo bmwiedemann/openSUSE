@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Mon Oct  3 10:48:54 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Drop baselibs.conf as there is no good reason to run a 32b MPI on a 64b system
+
+-------------------------------------------------------------------
+Mon Jul  4 18:06:38 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Initial import of openmpi v5.0.0rc7
