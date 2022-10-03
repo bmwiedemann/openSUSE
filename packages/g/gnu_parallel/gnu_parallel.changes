@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep 29 19:15:36 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 20220922:
+  * --colour-failed only changes output for failing jobs.
+  * Password for --sshlogin can be put in $SSHPASS.
+  * Examples are moved from `man parallel` to `man parallel_examples`.
+  * Bug fixes and man page updates.
+
+-------------------------------------------------------------------
 Thu Aug 25 07:48:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 20220822:
