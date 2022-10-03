@@ -20,7 +20,7 @@
 %define         soname  3_0
 %define         libsocksoname  libsocketxx1_2
 Name:           gdcm
-Version:        3.0.12
+Version:        3.0.18
 Release:        0
 Summary:        C++ library to parse DICOM medical files
 License:        BSD-3-Clause
@@ -64,11 +64,13 @@ C-MOVE). PS 3.3 & 3.6 are distributed as XML files.
 It also provides PS 3.15 certificates and password based mechanism to
 anonymize and de-identify DICOM datasets.
 
-%package        libgdcm%{soname}
+%package    -n  libgdcm%{soname}
 Summary:        DICOM medical file parser library
 Group:          System/Libraries
+Obsoletes:      gdcm-libgdcm3_0 <= 3.0.12
+Provides:       libgdcm%{soname} = %{version}
 
-%description    libgdcm%{soname}
+%description -n libgdcm%{soname}
 This package contains the shared library required by applications that
 are using %{name} for DICOM processing.
 
@@ -83,7 +85,7 @@ are using %{name} for DICOM processing.
 %package        applications
 Summary:        Command line programs for GDCM
 Group:          Productivity/Graphics/Other
-Requires:       %{name}-libgdcm%{soname}
+Requires:       libgdcm%{soname}
 
 %description    applications
 This package includes tools to convert, anonymize, manipulate,
@@ -94,7 +96,7 @@ Summary:        Libraries and headers for GDCM
 Group:          Development/Libraries/C and C++
 Requires:       %{libsocksoname}
 Requires:       %{name}-applications%{?_isa} = %{version}-%{release}
-Requires:       %{name}-libgdcm%{soname}
+Requires:       libgdcm%{soname}
 
 %description    devel
 Header files needed for developing applications that want to make use
@@ -103,7 +105,7 @@ of GDCM.
 %package        examples
 Summary:        GDCM examples
 Group:          Productivity/Graphics/Other
-Requires:       %{name}-libgdcm%{soname}
+Requires:       libgdcm%{soname}
 
 %description    examples
 CSharp, C++, Java, PHP and Python example programs for GDCM.
@@ -112,7 +114,7 @@ CSharp, C++, Java, PHP and Python example programs for GDCM.
 Summary:        Python bindings for GDCM
 Group:          Productivity/Graphics/Other
 %{?python_provide:%python_provide python3-gdcm}
-Requires:       %{name}-libgdcm%{soname}
+Requires:       libgdcm%{soname}
 
 %description -n python3-gdcm
 A Python module for interfacing with the GDCM library.
@@ -185,9 +187,9 @@ find %{buildroot}%{_datadir}/%{name}/ -depth -name CMakeLists* | xargs rm -rf
 
 %fdupes %{buildroot}
 
-%post libgdcm%{soname}  -p /sbin/ldconfig
+%post -n libgdcm%{soname}  -p /sbin/ldconfig
 %post -n %{libsocksoname}  -p /sbin/ldconfig
-%postun libgdcm%{soname} -p /sbin/ldconfig
+%postun -n libgdcm%{soname} -p /sbin/ldconfig
 %postun -n %{libsocksoname}  -p /sbin/ldconfig
 
 %check
@@ -201,7 +203,7 @@ make %{?_smp_mflags} test  || exit 0
 %dir %{_datadir}/%{name}-3.0
 %{_datadir}/%{name}-3.0/XML/
 
-%files libgdcm%{soname}
+%files -n libgdcm%{soname}
 %{_libdir}/libgdcm*.so.*
 
 %files -n %{libsocksoname}

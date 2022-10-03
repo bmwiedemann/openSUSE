@@ -115,4 +115,12 @@ Well, that changelog is not so much better than none. Seems upstream is very tig
     <comment></comment>
     <requestid>966444</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>0b10f51ced1eab5e3420366ee93f40c6</srcmd5>
+    <version>3.0.18</version>
+    <time>1664820481</time>
+    <user>dimstar_suse</user>
+    <comment>package corrected</comment>
+    <requestid>1007692</requestid>
+  </revision>
 </revisionlist>
