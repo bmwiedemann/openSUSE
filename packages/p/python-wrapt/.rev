@@ -168,4 +168,32 @@
    generating binary wheels for ``musllinux``.</comment>
     <requestid>929911</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>f58abf70cc4afbb6f221db0180f5cf1a</srcmd5>
+    <version>1.14.1</version>
+    <time>1664797474</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.14.1:
+  * When the post import hooks mechanism was being used, and a Python package with
+    its own custom module importer was used, importing modules could fail if the
+    custom module importer didn't use the latest Python import hook finder/loader
+    APIs and instead used the deprecated API. This was actually occurring with the
+    `zipimporter` in Python itself, which was not updated to use the newer Python
+    APIs until Python 3.10.
+  **Bugs Fixed**
+  * Python 3.11 dropped ``inspect.formatargspec()`` which was used in creating
+    signature changing decorators. Now bundling a version of this function
+    which uses ``Parameter`` and ``Signature`` from ``inspect`` module when
+    available. The replacement function is exposed as ``wrapt.formatargspec()``
+    if need it for your own code.
+  * When using a decorator on a class, ``isinstance()`` checks wouldn't previously
+    work as expected and you had to manually use ``Type.__wrapped__`` to access
+    the real type when doing instance checks. The ``__instancecheck__`` hook is
+    now implemented such that you don't have to use ``Type.__wrapped__`` instead
+    of ``Type`` as last argument to ``isinstance()``.
+  * Eliminated deprecation warnings related to Python module import system, which
+    would have turned into broken code in Python 3.12. This was used by the post
+    import hook mechanism.</comment>
+    <requestid>1007459</requestid>
+  </revision>
 </revisionlist>
