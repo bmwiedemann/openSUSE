@@ -116,4 +116,12 @@ New upstream version.</comment>
     <comment></comment>
     <requestid>999251</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c155979642c87d477a39080ae12fcfc0</srcmd5>
+    <version>5.6.1</version>
+    <time>1664797603</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1007598</requestid>
+  </revision>
 </revisionlist>
