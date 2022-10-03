@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Sep 24 05:17:40 UTC 2022 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Bump gupnp version requirement to fix Tumbleweed build
+
+-------------------------------------------------------------------
 Wed May 27 10:59:06 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Fix build for Leap 15.2
