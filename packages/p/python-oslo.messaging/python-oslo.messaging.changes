@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct  2 14:48:00 UTC 2022 - cloud-devel@suse.de
+
+- update to version 14.0.0
+  - Change default value of "heartbeat_in_pthread" to False
+  - Drop python3.6/3.7 support in testing runtime
+  - Add quorum queue control configurations
+
+-------------------------------------------------------------------
 Tue May 24 21:39:26 UTC 2022 - cloud-devel@suse.de
 
 - update to version 12.14.0
