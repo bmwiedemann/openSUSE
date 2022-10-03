@@ -386,12 +386,14 @@ EOF
 
 }
 
-make_grubcfg > "${efidir}/grub.cfg"
 # bnc#889765 GRUB shows broken letters at boot
 # invoke grub_install to initialize /boot/grub2 directory with files needed by grub.cfg
 # bsc#1118363 shim-install didn't specify the target for grub2-install
 # set the target explicitly for some special cases 
 ${grub_install} --target=${grub_install_target} --no-nvram
+
+# Making sure grub.cfg not overwritten by grub-install above 
+make_grubcfg > "${efidir}/grub.cfg"
 
 if test "$no_nvram" = no && test -n "$bootloader_id"; then
 

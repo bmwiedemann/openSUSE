@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 29 02:42:35 UTC 2022 - Michael Chang <mchang@suse.com>
+
+- shim-install: ensure grub.cfg created is not overwritten after
+  installing grub related files
+
+-------------------------------------------------------------------
 Mon Sep 12 12:30:54 UTC 2022 - Kilian Hanich <khanich.opensource@gmx.de>
 
 - Add logic to shim.spec to only set sbat policy when efivarfs is writeable.
