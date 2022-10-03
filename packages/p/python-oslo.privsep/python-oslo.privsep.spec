@@ -17,13 +17,13 @@
 
 
 Name:           python-oslo.privsep
-Version:        2.8.0
+Version:        3.0.1
 Release:        0
 Summary:        OpenStack library for privilege separation
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/oslo.privsep
-Source0:        https://files.pythonhosted.org/packages/source/o/oslo.privsep/oslo.privsep-2.8.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/oslo.privsep/oslo.privsep-3.0.1.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-cffi >= 1.14.0
 BuildRequires:  python3-eventlet >= 0.21.0
@@ -68,7 +68,7 @@ BuildRequires:  python3-sphinxcontrib-apidoc
 Documentation for oslo.privsep
 
 %prep
-%autosetup -p1 -n oslo.privsep-2.8.0
+%autosetup -p1 -n oslo.privsep-3.0.1
 %py_req_cleanup
 
 %build

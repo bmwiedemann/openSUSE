@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Oct  2 14:48:40 UTC 2022 - cloud-devel@suse.de
+
+- update to version 3.0.1
+  - Remove logic for Python < 3.8
+  - Drop python3.6/3.7 support in testing runtime
+
+-------------------------------------------------------------------
 Tue May 24 21:13:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - remove unneded mock dependency 
