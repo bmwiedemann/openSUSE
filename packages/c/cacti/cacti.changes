@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Sun Oct  2 18:17:03 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- cacti 1.2.22, providing one security fix, a number of bug fixes
+  and a collection of improvements:
+  * When creating new graphs, cross site injection is possible
+    (boo#1203952)
+  * When creating user from template, multiple Domain FullName and
+    Mail are not propagated
+  * Nectar Aggregate 95th emailed report broken
+  * Boost may not find archive tables correctly
+  * Users may be unable to change their password when forced during
+    a login
+  * Net-SNMP Memory Graph Template has Wrong GPRINT
+  * Search in tree view unusable on larger installations
+  * Increased bulk insert size to avoid partial inserts and potential
+    data loss.
+  * Call to undefined function boost_debug in Cacti log
+  * When no guest template is set, login cookies are not properly set
+  * Later RRDtool releases do not need to check last_update time
+  * Regex filters are not always long enough
+  * Domains based LDAP and AD Fullname and Email not auto-populated
+  * Cacti polling and boost report the wrong number of Data Sources
+    when Devices are disabled
+  * When editing Graph Template Items there are cases where VDEF's
+    are hidden when they should be shown
+  * Database SSL setting lacks default value
+  * Update default path cacti under *BSD by xmacan
+  * Web Basic authentication not creating template user
+  * Unable to change the Heartbeat of a Data Source Profile
+  * Tree Search Does Not Properly Search All Trees
+  * When structured paths are setup, RRDfiles may not always be
+    created when possible
+  * When parsing the logs, caching would help speed up processing
+  * Deprecation warnings when attempting real-time Graphs with PHP8.1
+  * Custom Timespan is lost when clicking other tree branches
+  * Non device based Data Sources not being polled
+  * When Resource XML file inproperly formatted, graph creation can
+    fail with errors
+  * Update code style to support PHP 8 requirements
+  * None" shows all graphs
+  * Realtime popup window experiences issues on some browsers
+  * Auth settings do not always properly reflect the options selected
+    by ddb4github
+  * MySQL can cause cacti to become stalled due to locking issues
+  * Boost process can get hung under rare conditions until the poller
+    times out
+  * Exporting graphs under PHP 8 can cause errors
+  * Host table has wrong default for disabled and deleted columns
+  * RRD storage paths do not scale properly
+  * When importing, make it possible to only import certain
+    components
+  * Update change_device script to include new features by
+    bmfmancini
+  * Make help pages use latest online version wherever possible
+  * Cacti should show PHP INI locations during install
+  * Detect PHP INI values that are different in the INI vs running
+    config
+  * Added Gradient Color support for AREA charts by thurban
+  * Update CDEF functions for RRDtool
+  * When boost is running, it's not clear which processes are
+    running and how long they have to complete
+
+-------------------------------------------------------------------
 Sun May 29 11:19:31 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - cacti 1.2.21:

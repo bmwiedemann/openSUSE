@@ -352,4 +352,12 @@
     <comment></comment>
     <requestid>979660</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>464ec52b3cfc3f3f76930f089fa59ab8</srcmd5>
+    <version>1.2.22</version>
+    <time>1664797595</time>
+    <user>dimstar_suse</user>
+    <comment>cacti 1.2.22 (boo#1203952)</comment>
+    <requestid>1007577</requestid>
+  </revision>
 </revisionlist>
