@@ -88,4 +88,21 @@
     a connection in the asyncio integration.</comment>
     <requestid>917207</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9fc6e71f60086bbcad14be6a48badd93</srcmd5>
+    <version>0.8.0</version>
+    <time>1664797425</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.0:
+  * Removed ``jeepney.integrate`` APIs, which were deprecated in 0.7. Use
+    ``jeepney.io`` instead (see :doc:`integrate`).
+  * Removed deprecated ``jeepney.io.tornado`` API. Tornado now uses the asyncio
+    event loop, so you can use it along with ``jeepney.io.asyncio``.
+  * Deprecated ``conn.router`` attribute in the :doc:`api/blocking` integration.
+    Use :ref:`proxies &lt;msggen_proxies&gt;` or :meth:`~.blocking.DBusConnection.send_and_get_reply`
+    to find   replies to method calls, and :meth:`~.blocking.DBusConnection.filter`
+    for other routing.
+  * Added docs page with background on D-Bus (:doc:`dbus-background`).</comment>
+    <requestid>1007472</requestid>
+  </revision>
 </revisionlist>
