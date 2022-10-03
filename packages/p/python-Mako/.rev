@@ -489,4 +489,20 @@ Switching over to update-alternatives for python 3 would be a huge undertaking a
     correctly interpret quoted sections individually</comment>
     <requestid>1002487</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>e1740f0a6858e22796334bf284bc2784</srcmd5>
+    <version>1.2.3</version>
+    <time>1664797458</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.3:
+  * Fixed issue in lexer in the same category as that of :ticket:`366` where
+    the regexp used to match an end tag didn't correctly organize for matching
+    characters surrounded by whitespace, leading to high memory / interpreter
+    hang if a closing tag incorrectly had a large amount of unterminated space
+    in it. Credit to Sebastian Chnelik for locating the issue.
+  * As Mako templates inherently render and directly invoke arbitrary Python
+    code from the template source, it is **never** appropriate to create
+    templates that contain untrusted input.</comment>
+    <requestid>1007102</requestid>
+  </revision>
 </revisionlist>
