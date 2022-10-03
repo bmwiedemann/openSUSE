@@ -18,7 +18,7 @@
 
 %global __requires_exclude typelib\\(Meta\\)
 Name:           gnome-pomodoro
-Version:        0.21.1
+Version:        0.22.0
 Release:        0
 Summary:        A time management utility for GNOME
 License:        GPL-3.0-or-later
@@ -26,8 +26,6 @@ Group:          Productivity/Office/Other
 URL:            https://gnomepomodoro.org
 Source:         https://github.com/codito/%{name}/archive/%{version}.tar.gz
 Source99:       gnome-pomodoro-rpmlintrc
-# PATCH-FIX-UPSTREAM 6f14b9ce.patch -- Mark as compatible with GNOME 43
-Patch0:         https://github.com/gnome-pomodoro/gnome-pomodoro/commit/6f14b9ce.patch
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  docbook-utils

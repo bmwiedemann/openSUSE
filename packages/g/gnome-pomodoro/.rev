@@ -292,4 +292,21 @@ doesn't work anyway. (forwarded request 796279 from develop7)</comment>
 </comment>
     <requestid>1005397</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>9713a4e4cc7ab6975190bffa6a42f02e</srcmd5>
+    <version>0.22.0</version>
+    <time>1664820506</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.22.0:
+  * Marked extension as compatible with GNOME Shell 43
+  * Fixed blur effect in GNOME Shell 42 and later
+  * Fixed GNOME detection on Ubuntu
+  * Fixed break overlay geting stuck at 0:01 on GNOME 3.38, 40 and
+    41
+  * Improved indicator rendering on HiDPI screens
+  * Updated translations.
+- Drop 6f14b9ce.patch: Fixed upstream.
+</comment>
+    <requestid>1007728</requestid>
+  </revision>
 </revisionlist>
