@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyScss
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2014 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,15 +20,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pyScss
-Version:        1.3.7
+Version:        1.4.0
 Release:        0
 Summary:        pyScss, a Scss compiler for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Kronuz/pyScss
-Source:         https://github.com/Kronuz/pyScss/archive/refs/tags/%{version}.tar.gz#/pyScss-%{version}.tar.gz
-Patch0:         pr_411.patch
-Patch1:         merged_pr_408.patch
+Source:         https://github.com/Kronuz/pyScss/archive/refs/tags/v%{version}.tar.gz#/pyScss-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -38,7 +36,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
 Requires:       python-six
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 %python_subpackages
 
 %description
@@ -58,8 +56,6 @@ http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html
 
 %prep
 %setup -q -n pyScss-%{version}
-%patch0 -p1
-%patch1 -p1
 
 %build
 export CFLAGS="%{optflags}"

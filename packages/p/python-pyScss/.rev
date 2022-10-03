@@ -94,4 +94,17 @@
     <comment></comment>
     <requestid>945620</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bfee0fd2581d1d93b993cdff71876ad8</srcmd5>
+    <version>1.4.0</version>
+    <time>1664797573</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.0:
+  * Add selector-append function support 
+  * Fix FutureWarning
+  * Fix collections deprecation warning
+  * use pathlib2 instead of pathlib
+- drop merged_pr_408.patch, pr_411.patch (upstream)</comment>
+    <requestid>1007522</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct  1 17:29:53 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.0:
+  * Add selector-append function support 
+  * Fix FutureWarning
+  * Fix collections deprecation warning
+  * use pathlib2 instead of pathlib
+- drop merged_pr_408.patch, pr_411.patch (upstream)
+
+-------------------------------------------------------------------
 Tue Jan 11 11:19:13 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Activate tests
