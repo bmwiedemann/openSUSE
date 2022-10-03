@@ -39,4 +39,12 @@
     <comment> </comment>
     <requestid>998203</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>84e266146a273dd43bbb80ec6a5572ab</srcmd5>
+    <version>2.13.7</version>
+    <time>1664797598</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.13.7.</comment>
+    <requestid>1007592</requestid>
+  </revision>
 </revisionlist>

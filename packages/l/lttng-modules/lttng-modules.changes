@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sun Oct  2 18:13:47 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 2.13.7 (changes since 2.13.4):
+  * Fix: incorrect stub prototypes when
+    CONFIG_HAVE_SYSCALL_TRACEPOINTS=n.
+  * Fix: mm/tracing: add 'accounted' entry into output of
+    allocation tracepoints (v6.0).
+  * Fix: block: remove bdevname (v6.0).
+  * Fix: fs/jbd2: Fix the documentation of the
+    jbd2_write_superblock() callers (v6.0).
+  * Fix: tie compaction probe build to CONFIG_COMPACTION.
+  * Fix: net: skb: introduce kfree_skb_reason() (v5.15.58..v5.16).
+  * Fix: workqueue: Fix type of cpu in trace event (v5.19).
+  * Fix: fs: Remove flags parameter from aops->write_begin (v5.19).
+  * Fix: mm/page_alloc: fix tracepoint mm_page_alloc_zone_locked()
+    (v5.19).
+  * Fix: bytecode validator: reject specialised load field/context
+    ref instructions.
+  * Fix: bytecode validator: reject specialised load instructions.
+  * Fix: honour "user" attribute for array/sequence of user integers.
+  * wrapper: powerpc64: fix kernel crash caused by do_get_kallsyms.
+  * Fix: event notification: Remove duplicate event enabled check.
+  * Fix: event notification capture: validate buffer length.
+  * Fix: handle capture page faults as skip field.
+  * Fix: event notification capture error handling.
+  * Fix: capture_sequence_element_{un,}signed: handle user-space
+    input.
+  * Fix: notification capture: handle userspace strings.
+  * Implement lttng_msgpack_write_user_str.
+  * Fix: bytecode interpreter: LOAD_FIELD: handle user fields.
+  * Fix: move "user" attribute from field to type.
+  * Introduce lttng_copy_from_user_check_nofault.
+  * Fix: adjust range v5.10.137 in block probe.
+  * Fix: handle integer capture page faults as skip field.
+- Drop lttng-modules-2.13.4-linux-5.19.patch: merged upstream.
+
+-------------------------------------------------------------------
 Fri Aug 19 12:42:33 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Add lttng-modules-2.13.4-linux-5.19.patch: back-port commits

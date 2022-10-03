@@ -17,7 +17,7 @@
 
 
 Name:           lttng-modules
-Version:        2.13.4
+Version:        2.13.7
 Release:        0
 Summary:        Licensing information for package lttng-modules
 License:        GPL-2.0-only AND LGPL-2.1-only AND MIT
@@ -28,8 +28,6 @@ Source1:        https://lttng.org/files/lttng-modules/%{name}-%{version}.tar.bz2
 Source2:        %{name}.keyring
 Source3:        %{name}-preamble
 Source4:        Module.supported
-# PATCH-FIX-UPSTREAM lttng-modules-2.13.4-linux-5.19.patch -- Linux 5.19 compatibility.
-Patch0:         lttng-modules-2.13.4-linux-5.19.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
 ExclusiveArch:  %ix86 x86_64 armv7l aarch64 riscv64 ppc64 ppc64le
 
@@ -39,7 +37,7 @@ This package provides licensing documentation for the lttng kmp packages.
 %kernel_module_package -p %{name}-preamble -x ec2 xen xenpae vmi um
 
 %prep
-%autosetup -p1
+%setup -q
 
 set -- *
 mkdir source obj
