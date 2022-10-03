@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct  1 17:55:05 UTC 2022 - Liang Yan <lyan@opensuse.org>
+
+- Update firecracker to version 1.1.1
+  https://github.com/firecracker-microvm/firecracker/releases/tag/v1.1.1 
+  https://github.com/firecracker-microvm/firecracker/releases/tag/v1.1.0
+- Add build depenceny clang
+- Update cargo_config based on new vendor
+
+-------------------------------------------------------------------
 Mon Jun 20 03:26:38 UTC 2022 - William Brown <william.brown@suse.com>
 
 - Automatic update of vendored dependencies
