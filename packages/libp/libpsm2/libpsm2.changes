@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 15 09:25:57 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to 11.2.230
+  - Fix silent data error on FECN-marked TID packet for
+    unaligned receive
+
+-------------------------------------------------------------------
 Mon Jun 13 08:03:18 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to 11.2.229
