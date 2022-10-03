@@ -19,19 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global skip_python2 1
 Name:           python-python-daemon
-Version:        2.3.0
+Version:        2.3.1
 Release:        0
 Summary:        Library to implement a well-behaved Unix daemon process
 License:        Apache-2.0 AND GPL-3.0-only
 Group:          Development/Languages/Python
 URL:            https://pagure.io/python-daemon/
 Source:         https://files.pythonhosted.org/packages/source/p/python-daemon/python-daemon-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM remove_safe_hasattr.patch https://pagure.io/python-daemon/issue/53 mcepl@suse.com
-# testtools.helpers.safe_hasattr has been removed and should never be mentioned again
-Patch0:         remove_safe_hasattr.patch
-# PATCH-FIX-UPSTREAM remove_double_patch.patch https://pagure.io/python-daemon/issue/62 mcepl@suse.com
-# some objects were mocked twice
-Patch1:         remove_double_patch.patch
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module importlib_resources}
 BuildRequires:  %{python_module lockfile >= 0.10}

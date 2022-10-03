@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Oct  1 17:17:04 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.1:
+  * Avoid operations on a closed stream file when detecting a socket.
+  * Correct use of names to allow `from daemon import *`.
+  Changed:
+  * Speed daemon start time by computing candidate file descriptors once.
+  * Remove incorrect double-patch of objects in test cases.
+  * Deprecate helper function `is_socket`.
+  * Drop backward-compatible helpers that provided Python 2 support.
+    * declaration of source encoding ‘utf-8’
+    * absolute_import
+    * unicode_literals
+    * module-level metaclass `type`
+    * unification of str with unicode type
+    * renamed standard library exceptions and modules
+    * raise exception from context exception
+    All these are default behaviour in Python 3 and need no special
+    handling.
+- drop remove_safe_hasattr.patch, remove_double_patch.patch (upstream)
+
+-------------------------------------------------------------------
 Sat Mar 19 08:26:41 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Add missing BuildRequires python-importlib_resources
