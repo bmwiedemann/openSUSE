@@ -70,4 +70,12 @@
   * Fix bugs</comment>
     <requestid>1000239</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>2c38f50f80088ac2df8ba908654abc9f</srcmd5>
+    <version>5.0.68</version>
+    <time>1664797585</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build on Qt 5.15.6 (forwarded request 1007543 from hillwood)</comment>
+    <requestid>1007544</requestid>
+  </revision>
 </revisionlist>
