@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Mon Sep 26 06:05:32 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 2.38.2:
+ - rewrite 2-arg super call in nested class
+- update to version 2.38.1:
+ - regenerate imports to get typing.get_type_hints version change
+- update to version 2.38.0:
+ - Add ast.Bytes in typing_classes _unparse
+   Fix "NotImplementedError: Constant(value=*)"
+   when defining TypedDict in alternative syntax
+   with literal bytes values.
+ - Implement preservation of comments "within" typing classes
+   This ensures that comments which appear around TypedDicts and
+   NamedTuples that are converted to class style are preserved.
+   The layout of the comments in the new code isn't perfect, however
+   that's relatively easy for the user to fix manually afterwards.
+   Fixes https://github.com/asottile/pyupgrade/issues/497
+   Fixes https://github.com/asottile/pyupgrade/issues/634
+   Fixes https://github.com/asottile/pyupgrade/issues/697
+ - remove pep289 rewrite
+ - upgrade azure-pipelines
+ - convert pip install comand to a block
+   github will produce a copy-paste button
+   Committed via https://github.com/asottile/all-repos
+- update to version 2.37.3:
+ - fix imports removal not including rules from previous versions
+- update to version 2.37.2:
+ - sync import rewrites from reorder-python-imports
+- update to version 2.37.1:
+ - fix replacement of entire indented import
+ - only rewrite typing.Callable in 3.10+
+- update to version 2.37.0:
+ - avoid double parse when removing imports
+ - fix indentation for import-imports being added
+ - rewrite pipes.quote -> shlex.quote
+- update to version 2.36.0:
+ - combine mock and imports plugins
+- update to version 2.35.0:
+ - document import replacements
+ - rewrite collections.Name to collections.abc.Name
+   Co-Authored-By: ptmcg <ptmcg@austin.rr.com>
+ - add more tests for import rewriting
+   Co-Authored-By: ptmcg <ptmcg@austin.rr.com>
+ - fix replacing imports when not ending in a newline
+ - rewrite from-imports of modules
+ - check in testing/generate-imports
+ - rewrite aliased import-imports
+ - avoid computing modnames when not needed in import replace
+ - handle from imports where module name is replaced
+ - fix removals and replacements at the same time
+ - replace from imports with exact symbols
+ - rewrite a few more six.moves.* attrs
+ - refactor import removal to a plugin
+ - converge open modes of io.open in one pass
+   Co-Authored-By: Ali Hamdan <ali.hamdan.dev@gmail.com>
+- update to version 2.34.0:
+ - warn that py2 mode will be going away
+ - rewrite bytes(b'foo') to b'foo'
+
+-------------------------------------------------------------------
 Tue Jun 21 08:52:27 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 2.33.0:
