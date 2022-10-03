@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Oct  2 14:50:00 UTC 2022 - cloud-devel@suse.de
+
+- update to version 3.0.1
+  - Add Python3 zed unit tests
+  - Remove unnecessary unicode prefixes
+  - Update master for stable/yoga
+  - Fix formatting of release list
+  - Drop python3.6/3.7 support in testing runtime
+
+-------------------------------------------------------------------
 Tue Jun  7 09:25:34 UTC 2022 - cloud-devel@suse.de
 
 - update to version 2.5.0

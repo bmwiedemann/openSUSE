@@ -233,4 +233,17 @@
   - Update master for stable/xena</comment>
     <requestid>983769</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>9a89b8100ba9d6c37d2c6f4393c8d29a</srcmd5>
+    <version>3.0.1</version>
+    <time>1664797589</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.0.1
+  - Add Python3 zed unit tests
+  - Remove unnecessary unicode prefixes
+  - Update master for stable/yoga
+  - Fix formatting of release list
+  - Drop python3.6/3.7 support in testing runtime</comment>
+    <requestid>1007579</requestid>
+  </revision>
 </revisionlist>
