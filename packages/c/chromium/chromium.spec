@@ -67,7 +67,7 @@
 %endif
 
 Name:           chromium
-Version:        105.0.5195.127
+Version:        106.0.5249.91
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -116,16 +116,13 @@ Patch87:        chromium-98-gtk4-build.patch
 Patch90:        chromium-100-InMilliseconds-constexpr.patch
 Patch98:        chromium-102-regex_pattern-array.patch
 Patch103:       chromium-103-VirtualCursor-std-layout.patch
-Patch105:       chromium-104-tflite-system-zlib.patch
-Patch106:       chromium-105-AdjustMaskLayerGeometry-ceilf.patch
 Patch107:       chromium-105-Bitmap-include.patch
-Patch108:       chromium-105-browser_finder-include.patch
-Patch109:       chromium-105-raw_ptr-noexcept.patch
-Patch110:       chromium-105-Trap-raw_ptr.patch
 Patch111:       chromium-105-wayland-1.20.patch
 Patch201:       chromium-86-fix-vaapi-on-intel.patch
 # PATCH-FIX-SUSE: allow prop codecs to be set with chromium branding
 Patch202:       chromium-prop-codecs.patch
+Patch203:       chromium-106-ffmpeg-duration.patch
+Patch204:       chromium-106-AutofillPopupControllerImpl-namespace.patch
 BuildRequires:  SDL-devel
 BuildRequires:  bison
 BuildRequires:  cups-devel
@@ -392,6 +389,7 @@ keeplibs=(
     third_party/angle/src/third_party/volk
     third_party/apple_apsl
     third_party/axe-core
+    third_party/bidimapper
     third_party/blink
     third_party/boringssl
     third_party/boringssl/src/third_party/fiat
@@ -467,6 +465,7 @@ keeplibs=(
     third_party/hunspell
     third_party/iccjpeg
     third_party/inspector_protocol
+    third_party/ipcz
     third_party/jinja2
     third_party/jsoncpp
     third_party/jstemplate

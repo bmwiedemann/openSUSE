@@ -1,9 +1,9 @@
-Index: chromium-85.0.4183.69/media/BUILD.gn
+Index: chromium-106.0.5249.91/media/BUILD.gn
 ===================================================================
---- chromium-85.0.4183.69.orig/media/BUILD.gn
-+++ chromium-85.0.4183.69/media/BUILD.gn
-@@ -44,12 +44,6 @@ buildflag_header("media_buildflags") {
-   ]
+--- chromium-106.0.5249.91.orig/media/BUILD.gn
++++ chromium-106.0.5249.91/media/BUILD.gn
+@@ -64,12 +64,6 @@ buildflag_header("media_buildflags") {
+   }
  }
  
 -if (proprietary_codecs && media_use_ffmpeg) {

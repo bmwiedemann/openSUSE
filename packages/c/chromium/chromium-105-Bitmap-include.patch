@@ -11,13 +11,13 @@ Commit-Queue: Stephan Hartmann <stha09@googlemail.com>
 Cr-Commit-Position: refs/heads/main@{#1027289}
 ---
 
-diff --git a/net/disk_cache/blockfile/bitmap.h b/net/disk_cache/blockfile/bitmap.h
-index 07806cf..9ffa98b9 100644
---- a/net/disk_cache/blockfile/bitmap.h
-+++ b/net/disk_cache/blockfile/bitmap.h
-@@ -8,6 +8,8 @@
- #include <stdint.h>
- #include <string.h>
+Index: chromium-106.0.5249.91/net/disk_cache/blockfile/bitmap.h
+===================================================================
+--- chromium-106.0.5249.91.orig/net/disk_cache/blockfile/bitmap.h
++++ chromium-106.0.5249.91/net/disk_cache/blockfile/bitmap.h
+@@ -10,6 +10,8 @@
+ 
+ #include <memory>
  
 +#include <memory>
 +

@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Oct  1 07:59:24 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 106.0.5249.91 (boo#1203808):
+  * CVE-2022-3370: Use after free in Custom Elements
+  * CVE-2022-3373: Out of bounds write in V8
+- includes changes from 106.0.5249.61:
+  * CVE-2022-3304: Use after free in CSS
+  * CVE-2022-3201: Insufficient validation of untrusted input in Developer Tools
+  * CVE-2022-3305: Use after free in Survey
+  * CVE-2022-3306: Use after free in Survey
+  * CVE-2022-3307: Use after free in Media
+  * CVE-2022-3308: Insufficient policy enforcement in Developer Tools
+  * CVE-2022-3309: Use after free in Assistant
+  * CVE-2022-3310: Insufficient policy enforcement in Custom Tabs
+  * CVE-2022-3311: Use after free in Import
+  * CVE-2022-3312: Insufficient validation of untrusted input in VPN
+  * CVE-2022-3313: Incorrect security UI in Full Screen
+  * CVE-2022-3314: Use after free in Logging
+  * CVE-2022-3315: Type confusion in Blink
+  * CVE-2022-3316: Insufficient validation of untrusted input in Safe Browsing
+  * CVE-2022-3317: Insufficient validation of untrusted input in Intents
+  * CVE-2022-3318: Use after free in ChromeOS Notifications
+- drop patches:
+  * chromium-104-tflite-system-zlib.patch
+  * chromium-105-AdjustMaskLayerGeometry-ceilf.patch
+  * chromium-105-Trap-raw_ptr.patch
+  * chromium-105-browser_finder-include.patch
+  * chromium-105-raw_ptr-noexcept.patch
+- add patches
+  * chromium-106-ffmpeg-duration.patch
+  * chromium-106-AutofillPopupControllerImpl-namespace.patch
+
+-------------------------------------------------------------------
 Wed Sep 14 18:09:26 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 105.0.5195.127 (boo#1203419):
