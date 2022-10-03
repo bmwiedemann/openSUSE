@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct 03 11:16:33 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.6.0+git.20221003.09a5d1e:
+  * Bump to 2.6.0.
+  * Fixed small bugs in class-template-to-class, simplify-dependent-typedef and template-arg-to-int passes
+  * member-to-global pass failed for members not ending with a ";"
+  * CMake: Fixed compilation, enabled parallel builds and deactivated unnecessary warnings for MSVC
+  * GCDABinaryPass: handle when there are no functions
+
+-------------------------------------------------------------------
 Wed Sep 14 07:04:09 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.5.0+git.20220914.93cb973:

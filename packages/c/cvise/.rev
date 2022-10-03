@@ -826,4 +826,17 @@
   * Added rename-operator pass that converts operator functions (e.g. operator +) to regular functions</comment>
     <requestid>1003450</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>753bd41b07748e1c8f2ce6b225a0f61b</srcmd5>
+    <version>2.6.0+git.20221003.09a5d1e</version>
+    <time>1664820487</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.6.0+git.20221003.09a5d1e:
+  * Bump to 2.6.0.
+  * Fixed small bugs in class-template-to-class, simplify-dependent-typedef and template-arg-to-int passes
+  * member-to-global pass failed for members not ending with a &quot;;&quot;
+  * CMake: Fixed compilation, enabled parallel builds and deactivated unnecessary warnings for MSVC
+  * GCDABinaryPass: handle when there are no functions</comment>
+    <requestid>1007666</requestid>
+  </revision>
 </revisionlist>
