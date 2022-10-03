@@ -82,4 +82,15 @@
     <comment>Qt 6.3.2 (forwarded request 1003797 from cgiboudeaux)</comment>
     <requestid>1003798</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>9168b19a510245a0ea71de4d43d18f0e</srcmd5>
+    <version>6.3.2</version>
+    <time>1664797490</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Qt 6.4 compatibility patch:
+  * 0001-Adapt-to-Qt-6.4.patch
+- Add QtQuick3D and QtSpeech bindings
+- Disable a failing test when building with Qt 6.4</comment>
+    <requestid>1007386</requestid>
+  </revision>
 </revisionlist>

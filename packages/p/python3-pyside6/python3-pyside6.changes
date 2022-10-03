@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 30 20:54:07 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add Qt 6.4 compatibility patch:
+  * 0001-Adapt-to-Qt-6.4.patch
+- Add QtQuick3D and QtSpeech bindings
+- Disable a failing test when building with Qt 6.4
+
+-------------------------------------------------------------------
 Tue Sep 13 06:51:16 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 6.3.2. Check the installed changes-6.3.2 file for the

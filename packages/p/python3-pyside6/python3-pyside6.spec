@@ -35,6 +35,8 @@ Source:         https://download.qt.io/official_releases/QtForPython/pyside6/PyS
 Patch0:         0001-Don-t-install-CMake-files-into-versioned-directories.patch
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-Always-link-to-python-libraries.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-Adapt-to-Qt-6.4.patch
 # SECTION common_dependencies
 BuildRequires:  clang-devel
 BuildRequires:  fdupes
@@ -88,6 +90,7 @@ BuildRequires:  cmake(Qt6OpenGLWidgets)
 BuildRequires:  cmake(Qt6Positioning)
 BuildRequires:  cmake(Qt6Qml)
 BuildRequires:  cmake(Qt6Quick)
+BuildRequires:  cmake(Qt6Quick3D)
 BuildRequires:  cmake(Qt6QuickControls2)
 BuildRequires:  cmake(Qt6QuickWidgets)
 BuildRequires:  cmake(Qt6RemoteObjects)
@@ -97,6 +100,7 @@ BuildRequires:  cmake(Qt6SerialPort)
 BuildRequires:  cmake(Qt6StateMachine)
 BuildRequires:  cmake(Qt6Svg)
 BuildRequires:  cmake(Qt6SvgWidgets)
+BuildRequires:  cmake(Qt6TextToSpeech)
 BuildRequires:  cmake(Qt6UiPlugin)
 BuildRequires:  cmake(Qt6UiTools)
 BuildRequires:  cmake(Qt6WebChannel)
@@ -196,12 +200,13 @@ done
 %define xvfb_command xvfb-run -s "-screen 0 1600x1200x16 -ac +extension GLX +render -noreset" \\
 
 %define excluded_tests 1
-# Excluded tests (last update: 2022-06-22)
+# Excluded tests (last update: 2022-10-01)
 # registry_existence_test only works on the Qt CI
 # The QtWebEngineWidgets_pyside-474-qtwebengineview and QtWebEngineCore tests
 # pass locally but not on the build service (SIGTRAP)
 # QtGui_qpen_test times out
-ctest_exclude_regex="registry_existence_test|QtWebEngineWidgets_pyside-474-qtwebengineview|QtWebEngineCore.*|QtGui_qpen_test"
+# QtMultimediaWidgets_qmultimediawidgets aborts
+ctest_exclude_regex="registry_existence_test|QtWebEngineWidgets_pyside-474-qtwebengineview|QtWebEngineCore.*|QtGui_qpen_test|QtMultimediaWidgets_qmultimediawidgets"
 # Qt3DExtras_qt3dextras_test fails on aarch64 (exception) and s390x (timeout)
 %ifarch aarch64 s390x
 ctest_exclude_regex="$ctest_exclude_regex|Qt3DExtras_qt3dextras_test"
