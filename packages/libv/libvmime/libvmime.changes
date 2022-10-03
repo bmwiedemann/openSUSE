@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Sep 25 18:34:03 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Force-add -fPIC under RHEL and derivatives
+
+-------------------------------------------------------------------
 Sat Jun 11 14:40:34 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to snapshot 0.9.2.175 (fc69321d)

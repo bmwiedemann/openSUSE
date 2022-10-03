@@ -219,4 +219,12 @@
     <comment>- Update to snapshot 0.9.2.175 (fc69321d)</comment>
     <requestid>983638</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>f8e5bec5448130c35fcf55a101f00469</srcmd5>
+    <version>0.9.2.175</version>
+    <time>1664797597</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1007587</requestid>
+  </revision>
 </revisionlist>

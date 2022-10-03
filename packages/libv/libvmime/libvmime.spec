@@ -98,8 +98,6 @@ make book_pdf
 popd
 %endif
 
-# for some reason I don't care researching in detail, CentOS8 dies with
-# a PIC-related relocation error during cmake-configure. Hence forcing -fPIC.
 %cmake \
         -DCMAKE_INSTALL_PREFIX:PATH="%_prefix" \
         -DINCLUDE_INSTALL_DIR:PATH="%_includedir" \
@@ -115,9 +113,9 @@ popd
 	-DVMIME_BUILD_STATIC_LIBRARY:BOOL=OFF \
 	-DCMAKE_BUILD_TYPE:STRING="RelWithDebInfo" \
 	-DCMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING="$cf" \
-	-DCMAKE_CXX_FLAGS:STRING="%{?centos_version:-fPIC} " \
+	-DCMAKE_CXX_FLAGS:STRING="%{?redhat_version:-fPIC} %{?almalinux_version:-fPIC}" \
 	-DCMAKE_C_FLAGS_RELWITHDEBINFO:STRING="$cf" \
-	-DCMAKE_C_FLAGS:STRING="%{?centos_version:-fPIC} " \
+	-DCMAKE_C_FLAGS:STRING="%{?redhat_version:-fPIC} %{?almalinux_version:-fPIC}" \
 	-DVMIME_BUILD_DOCUMENTATION:BOOL=OFF
 %cmake_build
 
