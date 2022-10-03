@@ -1,7 +1,7 @@
 #
 # spec file for package python-py3status
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-py3status
-Version:        3.28
+Version:        3.47
 Release:        0
 Summary:        Python extensible i3status wrapper
 License:        BSD-3-Clause
@@ -79,7 +79,7 @@ export LANG=en_US.UTF8
 
 %files %{python_files}
 %license LICENSE
-%doc README.rst CHANGELOG doc/configuration.rst
+%doc CHANGELOG README.md
 %python_alternative %{_bindir}/py3status
 %python_alternative %{_bindir}/py3-cmd
 %{python_sitelib}/*
