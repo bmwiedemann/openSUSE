@@ -1,7 +1,7 @@
 #
 # spec file for package python-networkx
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,42 +17,39 @@
 
 
 %{?!python_module:%define python_module() python3-%{**}}
-%define         skip_python2 1
-%define         skip_python36 1
 Name:           python-networkx
-Version:        2.6.3
+Version:        2.8.7
 Release:        0
 Summary:        Python package for the study of complex networks
 License:        BSD-3-Clause
 URL:            https://networkx.github.io/
 Source:         https://files.pythonhosted.org/packages/source/n/networkx/networkx-%{version}.tar.gz
-# gh#networkx/networkx#commit/2b032ed3eb33d82729b0f05f04357e89a125bfd1
-Patch0:         xfail-pydot-tests.patch
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
+Requires:       python-matplotlib >= 3.4
+Requires:       python-numpy >= 1.19
+Requires:       python-pandas >= 1.3
+Requires:       python-scipy >= 1.8
 Recommends:     python-PyYAML
-Recommends:     python-pydot
+Recommends:     python-pydot >= 1.4.2
 Recommends:     python-pygraphviz
 Recommends:     python-pyparsing
-Requires:       python-matplotlib >= 3.1
-Requires:       python-numpy
-Requires:       python-pandas
-Requires:       python-scipy
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module lxml}
-BuildRequires:  %{python_module pydot}
-BuildRequires:  %{python_module pygraphviz}
+BuildRequires:  %{python_module lxml >= 4.6}
+BuildRequires:  %{python_module matplotlib >= 3.4}
+BuildRequires:  %{python_module numpy >= 1.19}
+BuildRequires:  %{python_module pandas >= 1.3}
+BuildRequires:  %{python_module pydot >= 1.4.2}
+BuildRequires:  %{python_module pygraphviz >= 1.9}
 BuildRequires:  %{python_module pyparsing}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module matplotlib >= 3.1 if (%python-base without python36-base)}
-BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
-BuildRequires:  %{python_module pandas if (%python-base without python36-base)}
-BuildRequires:  %{python_module scipy if (%python-base without python36-base)}
+BuildRequires:  %{python_module scipy >= 1.8}
 # /SECTION
 %python_subpackages
 
@@ -110,7 +107,10 @@ popd
 # gh#networkx/networkx#4030 we cannot use -n auto because
 # TestKatzCentralityDirectedNumpy fails otherwise
 # (pandas) test_from_adjacency_named fails on i586
-%pytest -rs -k 'not test_from_adjacency_named'
+%if 0%{?suse_version} < 1550
+rm -v networkx/drawing/tests/test_pydot.py
+%endif
+%pytest -rs -k 'not test_from_adjacency_named and not test_asadpour_tsp'
 
 %files %{python_files}
 %license LICENSE.txt

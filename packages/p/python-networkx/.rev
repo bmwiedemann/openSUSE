@@ -318,4 +318,41 @@
   * From upstream, survive pydot test failures.</comment>
     <requestid>936169</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>665db601844d71e061286ef73cfad678</srcmd5>
+    <version>2.8.7</version>
+    <time>1664797429</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.8.7:
+  * Fixed unused root argument in has_bridges (#5846)
+  * docstring updates for `union`, `disjoint_union`, and `compose` (#5892)
+  * Updated networkx/classes/function.py . Solves Issue #5463 (#5474)
+  * Improved documentation for all_simple_paths (#5944)
+  * Change is_path to return False when node not in G instead of raising exception (#5943)
+  * Minor docstring touchups and test refactor for `is_path` (#5967)
+  * Update documentation header links for latest pydata-sphinx-theme (#5966)
+  * Fix failing example due to mpl 3.6 colorbar. (#5994)
+  * Add Tidelift security vulnerability link (#6001)
+  * Update linters (#6006)
+  * ``is_path`` used to raise a `KeyError` when the ``path`` argument contained
+    a node that was not in the Graph. The behavior has been updated so that
+    ``is_path`` returns `False` in this case rather than raising the exception.
+
+- update to version 2.8.6:
+  * Highlights
+    + Minor documentation and bug fixes.
+  * Merged PRs
+    + Add random_spanning_tree to documentation (#5810)
+    + DOC: Switch to enumerated list in quotient_graph docstring
+      (#5837)
+    + Add warning to nx_agraph about layout nondeterminism. (#5832)
+    + Update docs to include description of the return_seen kwarg
+      (#5891)
+    + Add cache reset for when G._node is changed (#5894)
+    + Allow classes to relabel nodes – casting (#5903)
+    + Update lattice.py (#5914)
+    + Add to about_us.rst (#5919)
+    + Update precommit hooks (#5923)</comment>
+    <requestid>1007533</requestid>
+  </revision>
 </revisionlist>
