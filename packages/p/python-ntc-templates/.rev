@@ -55,4 +55,41 @@
     <comment></comment>
     <requestid>929846</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5949904345c7a3a9902a73ac54e4c3d4</srcmd5>
+    <version>3.1.0</version>
+    <time>1664797542</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.1.0:
+  * New template: cisco_ios_show_ip_eigrp_interfaces_detail.textfsm
+  * New template: cisco_ios_show_snmp_group.textfsm
+  * New templates &amp; updates: Updated support for Arista EOS devices
+  * New template: cisco_xr_show_ipv4_interface.textfsm
+  * New templates: Add multiple zyxel templates
+  * Bug fix: Change huawei_vrf shortest command
+  * Bug fix: Path separator error on windows
+  * New templates: Adding multiple mikrotik routeros templates
+  * New template: aruba_os_show_ap_database_long.textfsm
+  * New template: aruba_os_show_ap_radio-database.textfsm
+  * Bug fix: EOS 4.28.XF updated output of codes in `show ip route`
+  * New template: juniper_junos_show_vlans.textfsm
+  * Bug fix: cisco_ios show ip bgp neighbors advertised-routes output where
+    metric is wider than 6 chars
+  * Bug fix: cisco_ios show ip bgp output where metric is wider than 6 chars
+  * Bug fix: cisco_nxos_show_int_breief do not match mgmt and vlan
+  * Bug fix: cisco_ios_show_module updated output for c9200
+  * Changed: add vlan_id to cisco_ios_show_interfaces
+  * Bug fix: fix not advertised vlan in cisco_nxos_show_lldp_neighbors_detail
+  * Added: Additional fields for cisco_ios_show_ip_access-lists.textfsm
+  * Bug fix: Multiple line parsing using lists with textfsm extracting wrong details
+  * Bug fix: Cisco IOS show boot missing parameter
+  * New template: arista_eos_show_processes_top_once.textfsm
+  * Bug fix: Adding a record without the vlan field for very old HP Procurve switches
+  * New template: cisco_xr_show_install_active.textfsm
+  * Changed: Clarifies docs about length order
+  * New template: ubiquiti_edgerouter_show_dhcp_leases.textfsm
+  * Bug fix: hanges the CRLF to LF to pass tests
+  * Changed: Additional fields for cisco_nxos_show_ip_route.textfsm</comment>
+    <requestid>1007476</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Sat Oct  1 17:48:54 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.0:
+  * New template: cisco_ios_show_ip_eigrp_interfaces_detail.textfsm
+  * New template: cisco_ios_show_snmp_group.textfsm
+  * New templates & updates: Updated support for Arista EOS devices
+  * New template: cisco_xr_show_ipv4_interface.textfsm
+  * New templates: Add multiple zyxel templates
+  * Bug fix: Change huawei_vrf shortest command
+  * Bug fix: Path separator error on windows
+  * New templates: Adding multiple mikrotik routeros templates
+  * New template: aruba_os_show_ap_database_long.textfsm
+  * New template: aruba_os_show_ap_radio-database.textfsm
+  * Bug fix: EOS 4.28.XF updated output of codes in `show ip route`
+  * New template: juniper_junos_show_vlans.textfsm
+  * Bug fix: cisco_ios show ip bgp neighbors advertised-routes output where
+    metric is wider than 6 chars
+  * Bug fix: cisco_ios show ip bgp output where metric is wider than 6 chars
+  * Bug fix: cisco_nxos_show_int_breief do not match mgmt and vlan
+  * Bug fix: cisco_ios_show_module updated output for c9200
+  * Changed: add vlan_id to cisco_ios_show_interfaces
+  * Bug fix: fix not advertised vlan in cisco_nxos_show_lldp_neighbors_detail
+  * Added: Additional fields for cisco_ios_show_ip_access-lists.textfsm
+  * Bug fix: Multiple line parsing using lists with textfsm extracting wrong details
+  * Bug fix: Cisco IOS show boot missing parameter
+  * New template: arista_eos_show_processes_top_once.textfsm
+  * Bug fix: Adding a record without the vlan field for very old HP Procurve switches
+  * New template: cisco_xr_show_install_active.textfsm
+  * Changed: Clarifies docs about length order
+  * New template: ubiquiti_edgerouter_show_dhcp_leases.textfsm
+  * Bug fix: hanges the CRLF to LF to pass tests
+  * Changed: Additional fields for cisco_nxos_show_ip_route.textfsm
+  * Changed: Additional fields for cisco_nxos_show_ip_interface.textfsm
+  * Changed: Additional fields for cisco_ios_show_standby.textfsm
+  * Changed: Additional fields for cisco_ios_show_module_status.textfsm
+  * Changed: Additional fields for cisco_ios_show_ip_interface.textfsm
+  * Changed: Additional fields for cisco_ios_show_interfaces_switchport.textfsm
+  * Changed: Additional fields for cisco_ios_show_etherchannel_summary.textfsm
+  * Changed: Additional fields for cisco_ios_show_lldp_neighbors_detail.textfsm
+  * Changed: Additional fields for cisco_asa_show_interface.textfsm
+  * Bug fix: show platform diag does not return the rommon version of the line cards
+  * New template: zyxel_os_cfg_nat_get.textfsm
+  * New template: zyxel_os_cfg_ipalias_get.textfsm
+  * New template: ubiquiti_edgerouter_show_version.textfsm
+  * New template: ubiquiti_edgerouter_show_interfaces_ethernet_physical.textfsm
+  * New template: ubiquiti_edgerouter_show_arp.textfsm
+  * Bug fix: aruba_os_show_ap_database model parsing error
+  * Bug fix: cisco_nxos_show_ip_interface parsing error
+  * Bug fix: Update choices for Protocol to include 'notpresent' option on
+    arista_eos_show_interfaces_description
+  * New template: aruba_os_show_ap_database.textfsm
+  * Bug fix: cisco_nxos_show_cdp_neighbors_detail update for supporting multiple versions
+  * Changed: Updated show boot template to include new formatting for Cisco IOS
+    Gibraltar output
+  * Bug fix: cisco_nxos_show_ip_bgp.textfsm not parsing correctly
+  * Added: FTD output example from Cisco support site
+  * New template: cisco_ios_show_ip_nat_translations.textfsm
+  * Bug fix: cisco_ios_show_interfaces_status.textfsm State Error
+  * Bug fix: IOS show mac address Type3 and Type4. Additional test files
+  * New template: cisco_asa_show_cpu_usage_detailed.textfsm
+  * Bug fix: cisco_ios_show_ip_eigrp_topology not parsing correctly
+  
+-------------------------------------------------------------------
 Wed Nov  3 19:58:51 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to 3.0.0
