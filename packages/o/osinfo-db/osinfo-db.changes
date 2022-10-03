@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 29 11:20:03 MDT 2022 - carnold@suse.com
+
+- Update to database version 20220830
+  osinfo-db-20220830.tar.xz
+
+-------------------------------------------------------------------
 Fri Sep  2 10:28:17 MDT 2022 - carnold@suse.com
 
 - bsc#1202827 - Fail to deploy sle15sp5 guest via virt-install with
