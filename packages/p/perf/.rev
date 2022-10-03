@@ -584,4 +584,13 @@
   It is a part of 6.0-rc5, finally!</comment>
     <requestid>1002560</requestid>
   </revision>
+  <revision rev="69" vrev="78">
+    <srcmd5>4379ed9b54d738a2636cc9915d75d0d4</srcmd5>
+    <version>MACRO</version>
+    <time>1664797619</time>
+    <user>dimstar_suse</user>
+    <comment>- add perf-6.0-lock_contention_fix_a_build_error_on_32_bit.patch
+  * needed still in 6.0 to fix build on 32bit.</comment>
+    <requestid>1007664</requestid>
+  </revision>
 </revisionlist>

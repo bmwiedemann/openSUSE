@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct  3 08:41:02 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
+
+- add perf-6.0-lock_contention_fix_a_build_error_on_32_bit.patch
+  * needed still in 6.0 to fix build on 32bit.
+
+-------------------------------------------------------------------
 Mon Sep 12 05:20:02 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
 
 - remove perf-6.0-don-t-install-headers-with-x-permissions.patch

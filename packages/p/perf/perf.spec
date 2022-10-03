@@ -35,6 +35,7 @@ Group:          Development/Tools/Debuggers
 URL:            https://perf.wiki.kernel.org/
 # remove once 6.0 reaches Tumbleweed (incl. the if below)
 Patch0:         perf-5.15-don-t-install-headers-with-x-permissions.patch
+Patch1:         perf-6.0-lock_contention_fix_a_build_error_on_32_bit.patch
 BuildRequires:  OpenCSD-devel
 BuildRequires:  audit-devel
 %ifnarch %{arm}
@@ -105,6 +106,9 @@ sed -i.old 's@\(all: .*\)info@\1@' tools/perf/Documentation/Makefile
 
 %if %{version_pure} == 519
 %patch0 -p1
+%endif
+%if %{version_pure} == 60
+%patch1 -p1
 %endif
 
 %build
