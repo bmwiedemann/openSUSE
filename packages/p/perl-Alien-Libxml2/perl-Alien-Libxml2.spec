@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Alien-Libxml2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,47 +16,47 @@
 #
 
 
-Name:           perl-Alien-Libxml2
-Version:        0.17
-Release:        0
 %define cpan_name Alien-Libxml2
-Summary:        Install the C libxml2 library on your system
+Name:           perl-Alien-Libxml2
+Version:        0.19
+Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
+Summary:        Install the C libxml2 library on your system
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/P/PL/PLICEASE/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Alien::Base) >= 2.37
 BuildRequires:  perl(Alien::Build) >= 2.37
 BuildRequires:  perl(Alien::Build::MM) >= 2.37
 BuildRequires:  perl(Alien::Build::Plugin::Build::SearchDep) >= 0.35
+BuildRequires:  perl(Alien::Build::Plugin::Download::GitLab)
 BuildRequires:  perl(Alien::Build::Plugin::Prefer::BadVersion) >= 1.05
 BuildRequires:  perl(Alien::Build::Plugin::Probe::Vcpkg)
 BuildRequires:  perl(ExtUtils::CBuilder)
-BuildRequires:  perl(Test2::V0) >= 0.000060
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.52
+BuildRequires:  perl(Test2::V0) >= 0.000121
 BuildRequires:  perl(Test::Alien)
 Requires:       perl(Alien::Base) >= 2.37
 %{perl_requires}
 # MANUAL BEGIN
+BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.0
 BuildRequires:  perl-URI
 BuildRequires:  perl(Mojo::DOM58)
 BuildRequires:  perl(Sort::Versions)
-BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.0
 # MANUAL END
 
 %description
 This module provides 'libxml2' for other modules to use.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -67,7 +67,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc alienfile author.yml Changes README
 %license LICENSE
 
