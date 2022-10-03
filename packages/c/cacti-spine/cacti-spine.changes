@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Oct  2 18:13:33 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- cacti-spine 1.2.22, delivering a number of bug fixes:
+  * When polling time is exceed, spine does not always exit as expected
+  * Spine logging at `-V 5` includes an extra line feed
+  * Incorrect SNMP responses can cause spine to crash
+  * Properly handle devices that timeout responding to the Extended Uptime
+  * MariaDB can cause spine to abort prematurely despite error handling
+  * Spine should log the error time when exiting via signal
+
+-------------------------------------------------------------------
 Sun May 29 11:16:21 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - cacti-spine 1.2.21:
