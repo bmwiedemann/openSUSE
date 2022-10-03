@@ -1,7 +1,7 @@
 #
 # spec file for package torsocks
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define _name  libtorsocks
 Name:           torsocks
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        Use SOCKS-friendly applications with Tor
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Security
-URL:            https://github.com/dgoulet/torsocks
-Source0:        https://github.com/dgoulet/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://gitlab.torproject.org/tpo/core/torsocks/-/releases/
+Source0:        https://gitlab.torproject.org/tpo/core/torsocks/-/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -71,7 +71,7 @@ and use simple
     slogin-server
 
 %prep
-%setup -q
+%setup -q -n %{name}-v%{version}-afe9dea542a8b495dbbbbe5e4b98a33cde06729b/
 
 %build
 autoreconf -fi
@@ -87,6 +87,9 @@ rm %{buildroot}/%{_libdir}/%{name}/lib%{name}.{a,la}
 
 %post   -n %{name} -p /sbin/ldconfig
 %postun -n %{name} -p /sbin/ldconfig
+
+%check
+%make_build check
 
 %files
 %doc ChangeLog README.md gpl-2.0.txt doc/socks/SOCKS5 doc/socks/socks-extensions.txt doc/notes/DEBUG extras/torsocks-bash_completion extras/torsocks-zsh_completion

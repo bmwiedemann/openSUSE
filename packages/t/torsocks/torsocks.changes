@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Sep 25 16:29:44 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.4.0:
+  * Disable ipv6 socket creation by default (signal-cli)
+  * Delegate to libc fclose when fileno fails (mutt)
+  * Add debug-log for opaque syscall passthrough
+  * Pass through non-blacklisted syscalls, fixing "Unsupported
+    syscall number" errors
+  * Fixes an issue when calling recvmsg on a domain socket 
+    non-blocking
+  * Fixed out-of-bounds write in onion pool.
+  * Add getdents / getdents64 support re ticket
+
+-------------------------------------------------------------------
 Sun Feb  9 02:45:45 UTC 2020 - wnereiz@member.fsf.org
 
 - Update to 2.3.0, announce message:
