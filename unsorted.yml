@@ -774,17 +774,12 @@ unsorted:
   - argyllcms-doc 
   - aria2-devel 
   - arkade 
-  - arm-ml-examples-data: [x86_64] 
   - arm-trusted-firmware 
   - arm-trusted-firmware-tools 
   - armadillo-devel 
   - armadillo-devel-32bit: [x86_64] 
   - armadillo-doc 
   - armagetron 
-  - armnn: [x86_64] 
-  - armnn-devel: [x86_64] 
-  - armnn-opencl: [x86_64] 
-  - armnn-opencl-devel: [x86_64] 
   - arp-scan 
   - arpack-ng-devel 
   - arpack-ng-devel-32bit: [x86_64] 
@@ -1953,6 +1948,10 @@ unsorted:
   - cherrytree 
   - cherrytree-lang 
   - chezdav 
+  - chezmoi 
+  - chezmoi-bash-completion 
+  - chezmoi-fish-completion 
+  - chezmoi-zsh-completion 
   - chmlib-devel 
   - chmlib-devel-32bit: [x86_64] 
   - chmlib-examples 
@@ -4250,7 +4249,6 @@ unsorted:
   - gdcm-applications 
   - gdcm-devel 
   - gdcm-examples 
-  - gdcm-libgdcm3_0 
   - gdk-pixbuf-devel 
   - gdk-pixbuf-devel-32bit: [x86_64] 
   - gdk-pixbuf-loader-libavif 
@@ -9808,14 +9806,6 @@ unsorted:
   - libarm_compute_graph28: [x86_64] 
   - libarmadillo11 
   - libarmadillo11-32bit: [x86_64] 
-  - libarmnn28: [x86_64] 
-  - libarmnn28-opencl: [x86_64] 
-  - libarmnnBasePipeServer28: [x86_64] 
-  - libarmnnBasePipeServer28-opencl: [x86_64] 
-  - libarmnnSerializer28: [x86_64] 
-  - libarmnnSerializer28-opencl: [x86_64] 
-  - libarmnnTfLiteParser24: [x86_64] 
-  - libarmnnTfLiteParser24-opencl: [x86_64] 
   - libarpack2 
   - libarpack2-32bit: [x86_64] 
   - libarprec0 
@@ -10364,7 +10354,6 @@ unsorted:
   - libclang12 
   - libclang12-32bit: [x86_64] 
   - libclastfm-devel 
-  - libclastfm0 
   - libclaw-devel 
   - libclaw-doc 
   - libclaw1 
@@ -11172,6 +11161,7 @@ unsorted:
   - libgdata22-32bit: [x86_64] 
   - libgdbm6-32bit: [x86_64] 
   - libgdbm_compat4-32bit: [x86_64] 
+  - libgdcm3_0 
   - libgdiplus-devel 
   - libgdiplus0 
   - libgdk_pixbuf_xlib-2_0-0-32bit: [x86_64] 
@@ -11268,7 +11258,6 @@ unsorted:
   - libglut3-32bit: [x86_64] 
   - libglvnd-devel 
   - libglvnd-devel-32bit: [x86_64] 
-  - libglyr1 
   - libglyr1-32bit: [x86_64] 
   - libgme-devel 
   - libgme0-32bit: [x86_64] 
@@ -12861,10 +12850,12 @@ unsorted:
   - libopenmpi2-gnu-hpc 
   - libopenmpi3-gnu-hpc 
   - libopenmpi4-gnu-hpc 
+  - libopenmpi5-gnu-hpc 
   - libopenmpi_1_10_7-gnu-hpc 
   - libopenmpi_2_1_6-gnu-hpc 
   - libopenmpi_3_1_6-gnu-hpc 
   - libopenmpi_4_1_4-gnu-hpc 
+  - libopenmpi_5_0_0-gnu-hpc 
   - libopenmpt-devel 
   - libopenmpt-modplug-devel 
   - libopenmpt0-32bit: [x86_64] 
@@ -14403,10 +14394,6 @@ unsorted:
   - libtiff-devel 
   - libtiff-devel-32bit: [x86_64] 
   - libtiled1 
-  - libtimelineDecoder28: [x86_64] 
-  - libtimelineDecoder28-opencl: [x86_64] 
-  - libtimelineDecoderJson28: [x86_64] 
-  - libtimelineDecoderJson28-opencl: [x86_64] 
   - libtimezonemap1 
   - libtimidity-devel 
   - libtimidity2 
@@ -14697,9 +14684,6 @@ unsorted:
   - libverto-libev-devel 
   - libverto-libev1 
   - libverto-libev1-32bit: [x86_64] 
-  - libverto-tevent-devel 
-  - libverto-tevent1 
-  - libverto-tevent1-32bit: [x86_64] 
   - libvhdi-devel 
   - libvhdi-tools 
   - libvhdi1 
@@ -18506,6 +18490,18 @@ unsorted:
   - openmpi4-libs-32bit: [x86_64] 
   - openmpi4-macros-devel 
   - openmpi4-testsuite 
+  - openmpi5 
+  - openmpi5-config 
+  - openmpi5-devel 
+  - openmpi5-docs 
+  - openmpi5-gnu-hpc 
+  - openmpi5-gnu-hpc-devel 
+  - openmpi5-gnu-hpc-devel-static 
+  - openmpi5-gnu-hpc-docs 
+  - openmpi5-gnu-hpc-macros-devel 
+  - openmpi5-libs 
+  - openmpi5-macros-devel 
+  - openmpi5-testsuite 
   - openmpi_1_10_7-gnu-hpc 
   - openmpi_1_10_7-gnu-hpc-devel 
   - openmpi_1_10_7-gnu-hpc-devel-static 
@@ -18530,6 +18526,12 @@ unsorted:
   - openmpi_4_1_4-gnu-hpc-docs 
   - openmpi_4_1_4-gnu-hpc-macros-devel 
   - openmpi_4_1_4-gnu-hpc-testsuite 
+  - openmpi_5_0_0-gnu-hpc 
+  - openmpi_5_0_0-gnu-hpc-devel 
+  - openmpi_5_0_0-gnu-hpc-devel-static 
+  - openmpi_5_0_0-gnu-hpc-docs 
+  - openmpi_5_0_0-gnu-hpc-macros-devel 
+  - openmpi_5_0_0-gnu-hpc-testsuite 
   - openmpt123 
   - openmw 
   - opennlp 
@@ -18936,6 +18938,7 @@ unsorted:
   - partitionmanager 
   - partitionmanager-lang 
   - parzip 
+  - pass-import: [x86_64] 
   - pass-otp 
   - passwdqc 
   - passwdqc-devel 
@@ -21270,7 +21273,6 @@ unsorted:
   - pqiv-wand 
   - pqiv-webp 
   - praat 
-  - pragha-plugins 
   - pragha-plugins-devel 
   - prboom-plus 
   - prelude-correlator 
@@ -21357,7 +21359,6 @@ unsorted:
   - prometheus-blackbox_exporter 
   - prometheus-client-model-source 
   - prometheus-ha_cluster_exporter: [x86_64] 
-  - prometheus-hanadb_exporter 
   - prometheus-postgres_exporter 
   - prometheus-sap_host_exporter: [x86_64] 
   - prometheus-saptune_exporter: [x86_64] 
@@ -22870,7 +22871,6 @@ unsorted:
   - python310-confuse 
   - python310-construct 
   - python310-contexter 
-  - python310-contextlib2 
   - python310-control 
   - python310-conu 
   - python310-convertdate 
@@ -23577,6 +23577,7 @@ unsorted:
   - python310-keylime: [i586] 
   - python310-keyring 
   - python310-keyring-keyutils 
+  - python310-keyring-pass 
   - python310-keyrings.alt 
   - python310-khal 
   - python310-kismet-rest 
@@ -23987,7 +23988,7 @@ unsorted:
   - python310-parted 
   - python310-particle 
   - python310-parver 
-  - python310-pass_python_keyring 
+  - python310-pass-git-helper 
   - python310-passivetotal 
   - python310-passlib 
   - python310-pastel 
@@ -24312,13 +24313,6 @@ unsorted:
   - python310-pyroma 
   - python310-pyroomacoustics 
   - python310-pyroute2 
-  - python310-pyroute2.core 
-  - python310-pyroute2.ethtool 
-  - python310-pyroute2.ipdb 
-  - python310-pyroute2.ipset 
-  - python310-pyroute2.ndb 
-  - python310-pyroute2.nftables 
-  - python310-pyroute2.nslink 
   - python310-pyrsistent: [i586] 
   - python310-pysaml2 
   - python310-pyscard 
@@ -24446,6 +24440,7 @@ unsorted:
   - python310-python-args 
   - python310-python-barcode 
   - python310-python-bidi 
+  - python310-python-binary-memcached 
   - python310-python-box 
   - python310-python-cjson 
   - python310-python-consul 
@@ -25015,6 +25010,7 @@ unsorted:
   - python310-ufoLib2 
   - python310-ufoProcessor 
   - python310-ufonormalizer 
+  - python310-uhashring 
   - python310-ujson 
   - python310-uncertainties 
   - python310-unearth 
@@ -26119,7 +26115,6 @@ unsorted:
   - python38-constantly 
   - python38-construct 
   - python38-contexter 
-  - python38-contextlib2 
   - python38-contextvars 
   - python38-control 
   - python38-conu 
@@ -26859,6 +26854,7 @@ unsorted:
   - python38-keylime 
   - python38-keyring 
   - python38-keyring-keyutils 
+  - python38-keyring-pass 
   - python38-keyrings.alt 
   - python38-khal 
   - python38-kismet-rest 
@@ -27279,7 +27275,7 @@ unsorted:
   - python38-parted 
   - python38-particle 
   - python38-parver 
-  - python38-pass_python_keyring 
+  - python38-pass-git-helper 
   - python38-passivetotal 
   - python38-passlib 
   - python38-pastel 
@@ -27621,13 +27617,6 @@ unsorted:
   - python38-pyroma 
   - python38-pyroomacoustics 
   - python38-pyroute2 
-  - python38-pyroute2.core 
-  - python38-pyroute2.ethtool 
-  - python38-pyroute2.ipdb 
-  - python38-pyroute2.ipset 
-  - python38-pyroute2.ndb 
-  - python38-pyroute2.nftables 
-  - python38-pyroute2.nslink 
   - python38-pyrsistent 
   - python38-pysaml2 
   - python38-pyscard 
@@ -27757,6 +27746,7 @@ unsorted:
   - python38-python-args 
   - python38-python-barcode 
   - python38-python-bidi 
+  - python38-python-binary-memcached 
   - python38-python-box 
   - python38-python-cjson 
   - python38-python-consul 
@@ -28354,6 +28344,7 @@ unsorted:
   - python38-ufoLib2 
   - python38-ufoProcessor 
   - python38-ufonormalizer 
+  - python38-uhashring 
   - python38-ujson 
   - python38-uncertainties 
   - python38-unearth 
@@ -29454,7 +29445,6 @@ unsorted:
   - python39-constantly 
   - python39-construct 
   - python39-contexter 
-  - python39-contextlib2 
   - python39-contextvars 
   - python39-control 
   - python39-conu 
@@ -30193,6 +30183,7 @@ unsorted:
   - python39-keylime 
   - python39-keyring 
   - python39-keyring-keyutils 
+  - python39-keyring-pass 
   - python39-keyrings.alt 
   - python39-khal 
   - python39-kismet-rest 
@@ -30615,7 +30606,7 @@ unsorted:
   - python39-parted 
   - python39-particle 
   - python39-parver 
-  - python39-pass_python_keyring 
+  - python39-pass-git-helper 
   - python39-passivetotal 
   - python39-passlib 
   - python39-pastel 
@@ -30957,13 +30948,6 @@ unsorted:
   - python39-pyroma 
   - python39-pyroomacoustics 
   - python39-pyroute2 
-  - python39-pyroute2.core 
-  - python39-pyroute2.ethtool 
-  - python39-pyroute2.ipdb 
-  - python39-pyroute2.ipset 
-  - python39-pyroute2.ndb 
-  - python39-pyroute2.nftables 
-  - python39-pyroute2.nslink 
   - python39-pyrsistent 
   - python39-pysaml2 
   - python39-pyscard 
@@ -31093,6 +31077,7 @@ unsorted:
   - python39-python-args 
   - python39-python-barcode 
   - python39-python-bidi 
+  - python39-python-binary-memcached 
   - python39-python-box 
   - python39-python-cjson 
   - python39-python-consul 
@@ -31688,6 +31673,7 @@ unsorted:
   - python39-ufoLib2 
   - python39-ufoProcessor 
   - python39-ufonormalizer 
+  - python39-uhashring 
   - python39-ujson 
   - python39-uncertainties 
   - python39-unearth 
@@ -44348,7 +44334,6 @@ unsorted:
   - xsom-javadoc 
   - xsp 
   - xstdcmap 
-  - xstereograph 
   - xstream 
   - xstream-benchmark 
   - xstream-javadoc 

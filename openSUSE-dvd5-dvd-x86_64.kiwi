@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20221001" schemaversion="4.1">
+<image name="OBS__openSUSE___20221003" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20221001</productvar>
+      <productvar name="VERSION">20221003</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20221001,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20221003,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20221001/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20221003/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -890,6 +890,7 @@
       <repopackage name="hplip"/>
       <repopackage name="hplip-hpijs"/>
       <repopackage name="hplip-sane"/>
+      <repopackage name="hplip-udev-rules"/>
       <repopackage name="hunspell"/>
       <repopackage name="hunspell-tools"/>
       <repopackage name="hwdata"/>
@@ -1524,6 +1525,7 @@
       <repopackage name="libclamav9"/>
       <repopackage name="libclang-cpp14"/>
       <repopackage name="libclang13"/>
+      <repopackage name="libclastfm0"/>
       <repopackage name="libcloudproviders0"/>
       <repopackage name="libclucene-contribs-lib1"/>
       <repopackage name="libclucene-core1"/>
@@ -1769,6 +1771,7 @@
       <repopackage name="libglut3"/>
       <repopackage name="libglvnd"/>
       <repopackage name="libglvnd-32bit" arch="x86_64"/>
+      <repopackage name="libglyr1"/>
       <repopackage name="libgme0"/>
       <repopackage name="libgmime-3_0-0"/>
       <repopackage name="libgmodule-2_0-0"/>
@@ -3763,6 +3766,7 @@
       <repopackage name="pptp"/>
       <repopackage name="pragha"/>
       <repopackage name="pragha-lang"/>
+      <repopackage name="pragha-plugins"/>
       <repopackage name="prctl"/>
       <repopackage name="presage-data"/>
       <repopackage name="prison-qt5-imports"/>
