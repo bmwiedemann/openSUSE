@@ -1,44 +1,43 @@
-Index: configure.ac
+Index: popt-1.19/configure.ac
 ===================================================================
---- a/configure.ac
-+++ b/configure.ac
-@@ -9,7 +9,6 @@
+--- popt-1.19.orig/configure.ac
++++ popt-1.19/configure.ac
+@@ -9,7 +9,6 @@ AC_CONFIG_MACRO_DIR([m4])
  AM_INIT_AUTOMAKE([1.10 foreign -Wall])
-
- AC_PROG_CC_STDC
+ 
+ m4_version_prereq([2.70], [], [AC_PROG_CC_STDC])
 -AC_PROG_CC
  AC_USE_SYSTEM_EXTENSIONS
  AM_PROG_AR
-
-Index: src/system.h
+ 
+Index: popt-1.19/src/system.h
 ===================================================================
---- a/src/system.h
-+++ b/src/system.h
+--- popt-1.19.orig/src/system.h
++++ popt-1.19/src/system.h
 @@ -2,9 +2,7 @@
-  * \file popt/system.h
+  * @file
   */
-
+ 
 -#ifdef HAVE_CONFIG_H
  #include "config.h"
 -#endif
-
+ 
  #include <ctype.h>
-
-@@ -57,6 +55,8 @@
+ 
+@@ -57,6 +55,8 @@ static inline char * stpcpy (char *dest,
  #define getenv(_s)	secure_getenv(_s)
  #elif defined(HAVE___SECURE_GETENV)
  #define	getenv(_s)	__secure_getenv(_s)
 +#else
 +#error neither secure_getenv nor __secure_getenv is available
  #endif
-
+ 
  #if !defined(__GNUC__) && !defined(__attribute__)
-
-Index: src/popt.c
+Index: popt-1.19/src/popt.c
 ===================================================================
---- a/src/popt.c
-+++ b/src/popt.c
-@@ -197,7 +197,7 @@ poptContext poptGetContext(const char *
+--- popt-1.19.orig/src/popt.c
++++ popt-1.19/src/popt.c
+@@ -181,7 +181,7 @@ poptContext poptGetContext(const char *
      con->execAbsolute = 1;
      con->arg_strip = NULL;
  
@@ -47,7 +46,7 @@ Index: src/popt.c
  	con->flags |= POPT_CONTEXT_POSIXMEHARDER;
  
      if (name)
-@@ -442,7 +442,7 @@ const char * findProgramPath(/*@null@*/
+@@ -418,7 +418,7 @@ const char * findProgramPath(const char
      if (strchr(argv0, '/'))
  	return xstrdup(argv0);
  
@@ -56,7 +55,7 @@ Index: src/popt.c
  	return NULL;
  
      /* The return buffer in t is big enough for any path. */
-@@ -1706,6 +1706,7 @@ const char * poptBadOption(poptContext c
+@@ -1633,6 +1633,7 @@ const char * poptBadOption(poptContext c
  
  const char * poptStrerror(const int error)
  {
@@ -64,7 +63,7 @@ Index: src/popt.c
      switch (error) {
        case POPT_ERROR_NOARG:
  	return POPT_("missing argument");
-@@ -1728,7 +1729,7 @@ const char * poptStrerror(const int erro
+@@ -1657,7 +1658,7 @@ const char * poptStrerror(const int erro
        case POPT_ERROR_BADCONFIG:
  	return POPT_("config file failed sanity test");
        case POPT_ERROR_ERRNO:
@@ -73,11 +72,11 @@ Index: src/popt.c
        default:
  	return POPT_("unknown error");
      }
-Index: src/poptconfig.c
+Index: popt-1.19/src/poptconfig.c
 ===================================================================
---- a/src/poptconfig.c
-+++ b/src/poptconfig.c
-@@ -540,7 +540,7 @@ int poptReadDefaultConfig(poptContext co
+--- popt-1.19.orig/src/poptconfig.c
++++ popt-1.19/src/poptconfig.c
+@@ -467,7 +467,7 @@ int poptReadDefaultConfig(poptContext co
      if (rc) goto exit;
  #endif
  

@@ -1,7 +1,7 @@
 #
 # spec file for package popt
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,20 +15,21 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define soname libpopt0
 Name:           popt
-Version:        1.18
+Version:        1.19
 Release:        0
-#!BuildIgnore:  rpmlint-Factory
 Summary:        A C library for parsing command line parameters
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/rpm-software-management/popt
 Source0:        http://ftp.rpm.org/popt/releases/popt-1.x/popt-%{version}.tar.gz
 Source2:        baselibs.conf
-Patch:          popt-libc-updates.patch
+Patch0:         popt-libc-updates.patch
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
+#!BuildIgnore:  rpmlint-Factory
 
 %description
 Popt is a C library for parsing command line parameters.  Popt was
@@ -57,8 +58,8 @@ parsing arbitrary strings into argv[] arrays using shell-like rules.
 %package devel
 Summary:        Development files for the popt library
 Group:          Development/Libraries/C and C++
-Requires:       glibc-devel
 Requires:       %{soname} = %{version}
+Requires:       glibc-devel
 
 %description devel
 The popt-devel package includes header files and libraries necessary
@@ -72,31 +73,37 @@ API documentation of the popt library, too.
 
 %build
 autoreconf -fiv
-%configure --disable-static
+%configure \
+	--disable-static \
+	--enable-werror \
+	%{nil}
 %make_build
 
 %install
 %make_install
-rm %{buildroot}%{_libdir}/libpopt.la
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %find_lang %{name}
 
-%post -n %{soname} -p /sbin/ldconfig
+%check
+%make_build check
 
+%post -n %{soname} -p /sbin/ldconfig
 %postun -n %{soname} -p /sbin/ldconfig
 
 %files -n %{soname}
 %license COPYING
-%doc CHANGES
 %{_libdir}/libpopt.so.*
 
 %files lang -f %{name}.lang
+%license COPYING
 
 %files devel
+%license COPYING
 %doc README
 %{_libdir}/libpopt.so
 %{_includedir}/popt.h
-%{_mandir}/man3/popt.3*
+%{_mandir}/man3/popt.3%{?ext_man}
 %{_libdir}/pkgconfig/popt.pc
 
 %changelog

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Sep 17 16:31:44 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- popt 1.19:
+  * various build system fixes
+  * various developer visible fixes
+  * Fix the handling of superfluous args passed with =
+  * Fix multiple resource and memory leaks
+  * Fix '=' getting shown for short options
+  * Improve random number handling
+  * translation updates and documentation improvements
+- refresh spec file, run tests, package license in every package,
+  and treat all compiler warnings and errors
+
+-------------------------------------------------------------------
 Tue Jun  7 10:56:25 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Create lang subpackage
