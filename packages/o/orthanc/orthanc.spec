@@ -18,7 +18,7 @@
 
 
 Name:           orthanc
-Version:        1.11.0
+Version:        1.11.2
 Release:        0
 Summary:        RESTful DICOM server for healthcare and medical research
 License:        GPL-3.0-or-later
@@ -153,9 +153,9 @@ help2man ./Orthanc -N -n "Lightweight, RESTful DICOM server for healthcare and m
 %check
 # we disable one test for i586
 %ifarch != ix86
-build/UnitTests
+  build/UnitTests
 %else
-build/UnitTests --gtest_filter=-ImageProcessing.Convolution --gtest_filter=-Version.CivetwebCompression --gtest_filter=-SharedLibrary.Basic
+  build/UnitTests --gtest_filter=-ImageProcessing.Convolution --gtest_filter=-Version.CivetwebCompression --gtest_filter=-SharedLibrary.Basic
 %endif
 
 %install
@@ -220,11 +220,18 @@ ln -s ../../../..%{_libdir}/%{name}/libModalityWorklists.so.%{version} \
    %{buildroot}%{_prefix}/share/%{name}/plugins/libModalityWorklists.so
 ln -s ../../../..%{_libdir}/%{name}/libConnectivityChecks.so.%{version} \
    %{buildroot}%{_prefix}/share/%{name}/plugins/libConnectivityChecks.so
-
+ln -s ../../../..%{_libdir}/%{name}/libDelayedDeletion.so.%{version} \
+   %{buildroot}%{_prefix}/share/%{name}/plugins/libDelayedDeletion.so
+   
 # Prepare documentation: "index.html", Doxygen of plugin SDK, and sample codes
 cp -r %{S:5} %{buildroot}%{_docdir}/%{name}/
 cp -r OrthancServer/Resources/Samples/ %{buildroot}%{_docdir}/%{name}/Samples
 cp -r OrthancServer/Plugins/Samples/ %{buildroot}%{_docdir}/%{name}/OrthancPluginSamples
+
+# some libs appear under buildroot/home...for whatever reason...
+rm -rf %{buildroot}/home*
+
+echo 'ldconfig -v | grep libcrypto.so'
 
 %pre
 getent group orthanc >/dev/null || groupadd -r orthanc

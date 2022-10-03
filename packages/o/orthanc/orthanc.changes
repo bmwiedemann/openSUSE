@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Tue Sep 27 10:52:42 UTC 2022 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.11.2
+  * Added support for RGBA64 images in tools/create-dicom and /preview
+  * New configuration "MaximumStorageMode" to choose between recyling of
+    old patients (default behavior) and rejection of new incoming data when
+    the MaximumStorageSize has been reached.
+  * New sample plugin: "DelayedDeletion" that will delete files from disk
+    asynchronously to speed up deletion of large studies.
+  * Lua: new "SetHttpTimeout" function
+  * Lua: new "OnHeartBeat" callback called at regular interval provided that
+       you have configured "LuaHeartBeatPeriod" > 0.
+  * "ExtraMainDicomTags" configuration now accepts Dicom Sequences.  Sequences are
+    stored in a dedicated new metadata "MainDicomSequences".  This should improve
+    DicomWeb QIDO-RS and avoid warnings like "Accessing Dicom tags from storage when 
+    accessing series : 0040,0275".
+    Main dicom sequences can now be returned in "MainDicomTags" and in "RequestedTags".
+
+  * Fix the "Never" option of the "StorageAccessOnFind" that was sill accessing
+    files (bug introduced in 1.11.0).
+  * Fix the Storage Cache for compressed files (bug introduced in 1.11.1).
+  * Fix the storage cache that was not used by the Plugin SDK.  This fixes the 
+    DicomWeb plugin "/rendered" route performance issues.
+
+  * DelayedDeletion plugin: Fix leaking of symbols
+  * SQLite now closes and deletes WAL and SHM files on exit.  This should improve
+    handling of SQLite DB over network drives.
+  * Fix static compilation of boost 1.69 on Ubuntu 22.04
+  * Upgraded dependencies for static builds:
+    - boost 1.80.0
+    - dcmtk 3.6.7  (fixes CVE-2022-2119 and CVE-2022-2120)
+    - openssl 3.0.5
+  * Housekeeper plugin: Fix resume of previous processing
+  * Added missing MOVEPatientRootQueryRetrieveInformationModel in 
+    DicomControlUserConnection::SetupPresentationContexts()
+  * Improved HttpClient error logging (add method + url)
+
+  * API version upgraded to 18
+  * /system is now reporting "DatabaseServerIdentifier"
+  * Added an Asynchronous mode to /modalities/../move.
+  * "RequestedTags" option can now include DICOM sequences.
+
+  * New function in the SDK: "OrthancPluginGetDatabaseServerIdentifier"
+
+  * DicomMap::ParseMainDicomTags has been deprecated -> retrieve "full" tags
+    and use DicomMap::FromDicomAsJson instead
+
+-------------------------------------------------------------------
 Tue May 10 19:36:27 UTC 2022 - Axel Braun <axel.braun@gmx.de>
 
 - version 1.11.0
