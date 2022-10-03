@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,14 +27,16 @@
 %endif
 %define skip_python2 1
 Name:           python-soupsieve%{psuffix}
-Version:        2.3.1
+Version:        2.3.2.post1
 Release:        0
 Summary:        A modern CSS selector implementation for BeautifulSoup
 License:        MIT
 Group:          Development/Libraries/Python
 URL:            https://github.com/facelessuser/soupsieve
 Source:         https://files.pythonhosted.org/packages/source/s/soupsieve/soupsieve-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -51,11 +53,11 @@ A modern CSS selector implementation for BeautifulSoup
 %setup -q -n soupsieve-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
