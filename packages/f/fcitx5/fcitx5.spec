@@ -54,7 +54,7 @@ BuildRequires:  xcb-util-wm-devel
 BuildRequires:  xkeyboard-config
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(cldr-emoji-annotation)
-BuildRequires:  pkgconfig(enchant)
+BuildRequires:  pkgconfig(enchant-2)
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(fmt)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
