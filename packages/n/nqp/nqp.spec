@@ -17,15 +17,15 @@
 
 
 Name:           nqp
-Version:        2022.03
+Version:        2022.07
 Release:        1.1
 Summary:        Not Quite Perl
 License:        Artistic-2.0
 Group:          Development/Languages/Other
 URL:            https://github.com/Raku/nqp
 Source:         nqp-%{version}.tar.gz
-BuildRequires:  moarvm-devel >= 2022.03
-Requires:       moarvm >= 2022.03
+BuildRequires:  moarvm-devel >= 2022.07
+Requires:       moarvm >= 2022.07
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %ifarch s390x
 BuildRequires:  libffi-devel

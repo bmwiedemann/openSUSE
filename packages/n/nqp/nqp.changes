@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Oct  1 12:32:30 CEST 2022 - nine@detonation.org
+
+- update to version 2022.07
+  * Presize $!mbc and write at offsets instead of pushing
+  * Write each frame directly to the MAST bytecode file...
+  * Speed up "sorted_keys" sub
+
+-------------------------------------------------------------------
 Sun Apr  3 11:01:45 CEST 2022 - nine@detonation.org
 
 - update to version 2022.03
