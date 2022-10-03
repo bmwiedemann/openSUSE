@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Oct  1 10:14:14 CEST 2022 - nine@detonation.org
+
+- update to version 2022.07
+
++ Attempt at implementing a "bytecode-size" dispatch
++ Run finalizers even with tc->last_handler_result
++ Set facts on disp prog translation of int and num lits
++ Commit some missed uint things
++ Add missing SC write barriers to atomic attr bind and cas
++ Fix sign comparison warnings in coerce_su implementation
++ Mimalloc should only release memory to the OS at exit if --full-cleanup was
+  used
++ Add write_uint16_at method to MAST::Bytecode
++ JIT atposref_u + getattrref_u
++ Fix mis-spesh of native calls
+
+-------------------------------------------------------------------
 Sun Apr  3 10:38:13 CEST 2022 - nine@detonation.org
 
 - update to version 2022.03

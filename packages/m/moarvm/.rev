@@ -332,4 +332,12 @@ Added information about the removal to the corresponding changelog entry.</comme
 </comment>
     <requestid>966636</requestid>
   </revision>
+  <revision rev="40" vrev="4">
+    <srcmd5>4a087e5b1f91d7baac12a5fb60cd3960</srcmd5>
+    <version>2022.07</version>
+    <time>1664797492</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1007424</requestid>
+  </revision>
 </revisionlist>

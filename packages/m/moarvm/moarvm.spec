@@ -16,7 +16,7 @@
 #
 
 
-%global mvrel 2022.03
+%global mvrel 2022.07
 Name:           moarvm
 Version:        %mvrel
 Release:        4.1
@@ -53,6 +53,7 @@ Generational, parallel, garbage collection
 %package devel
 Summary:        MoarVM development headers and libraries
 Group:          Development/Libraries/Other
+BuildArch:      noarch
 Requires:       %{name} = %{version}
 Requires:       pkgconfig(libffi)
 %if 0%{?suse_version} >= 1550
@@ -74,9 +75,6 @@ MoarVM (Metamodel On A Runtime) development headers.
 extra_config_args=
 %if 0%{?suse_version} >= 1550
 extra_config_args+=" --has-libtommath --has-libuv"
-%endif
-%ifarch riscv64
-extra_config_args+=" --c11-atomics"
 %endif
 CFLAGS="%{optflags}" \
 perl Configure.pl --prefix=%{_usr} --libdir=%{_libdir} --debug --optimize=3 --has-libffi $extra_config_args
