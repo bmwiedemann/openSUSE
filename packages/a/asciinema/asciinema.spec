@@ -1,7 +1,7 @@
 #
 # spec file for package asciinema
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,9 @@
 #
 
 
+%global pythons python3
 Name:           asciinema
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Terminal session recorder
 License:        GPL-3.0-or-later
@@ -26,7 +27,9 @@ URL:            https://asciinema.org
 Source:         https://github.com/asciinema/asciinema/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-wheel
 BuildArch:      noarch
 
 %description
@@ -36,10 +39,10 @@ Record of terminal sessions and sharing them on the web.
 %setup -q
 
 %build
-%python3_build
+%pyproject_wheel
 
 %install
-%python3_install
+%pyproject_install
 %fdupes %{buildroot}%{python3_sitelib}
 
 install -Dpm644 {man/,%{buildroot}%{_mandir}/man1/}%{name}.1
