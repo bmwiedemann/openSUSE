@@ -198,6 +198,7 @@ Summary:        Printer drivers for HP printers and all-in-one devices
 # installed from the openSUSE CDs but on our official online repository
 # only hplip-1.2.3-6.7 is available which should usually also work):
 Group:          Hardware/Printing
+Requires:       %{name}-udev-rules = %{version}-%{release}
 Suggests:       %{name} = %{version}
 # Since Nov 14 2007 ghostscript-library does no longer require /usr/bin/hpijs
 # but only "Suggests hplip-hpijs" (see Novell/Suse Bugzilla bnc#341564).
@@ -249,6 +250,7 @@ Summary:        SANE backends for HP scanners and all-in-one devices
 # also for any other backend when the hpaio backend is enabled (e.g. "scanimage -L"):
 Group:          Hardware/Scanner
 Requires:       %{name}-hpijs = %{version}-%{release}
+Requires:       %{name}-udev-rules = %{version}-%{release}
 # See comment in hpijs sub-package for same Suggests:
 Suggests:       %{name} = %{version}
 Enhances:       sane-backends
@@ -278,6 +280,13 @@ Obsoletes:      %{name}-scan < %{version}-%{release}
 This package provides the "hp-scan" and "hp-uiscan" frontend utilities. These
 utilities are alternatives to the SANE frontends "xsane" and "scanimage". They
 expose some advanced features of certain HP scanner models.
+
+%package udev-rules
+Summary:        HPLIP udev rules
+Group:          Hardware/Scanner
+
+%description udev-rules
+This package provides the udev rules required to use these devices as a normal user.
 
 %package devel
 Summary:        Development files for hplip
@@ -602,7 +611,6 @@ exit 0
 
 %files
 %config %{_sysconfdir}/xdg/autostart/hplip-systray.desktop
-%{_udevrulesdir}/56-hpmud.rules
 %{_bindir}/hp-align
 %{_bindir}/hp-check
 %{_bindir}/hp-clean
@@ -720,6 +728,9 @@ exit 0
 %dir %{_sysconfdir}/sane.d
 %dir %{_sysconfdir}/sane.d/dll.d
 %{_sysconfdir}/sane.d/dll.d/hpaio
+
+%files udev-rules
+%{_udevrulesdir}/56-hpmud.rules
 
 %files devel
 %{_libdir}/libhpip.so

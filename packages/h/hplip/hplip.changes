@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep 29 12:58:15 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Move the hplip-udev-rules requirement from hplip to hplip-hpijs.
+  The main package will get it via indirect dependencies then.
+
+-------------------------------------------------------------------
+Wed Sep 28 17:12:58 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Split off hplip-udev-rules hplip-udev-rules so that you can install
+  hplip-sane only and scan as a normal user, fixes boo#1203811
+
+-------------------------------------------------------------------
 Sun Aug  7 13:06:40 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.22.6
