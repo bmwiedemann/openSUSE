@@ -210,4 +210,12 @@ New upstream version.</comment>
     <comment></comment>
     <requestid>999252</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>174cdbca9dc1e61c5a98231b67de1184</srcmd5>
+    <version>5.6.1</version>
+    <time>1664797605</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1007599</requestid>
+  </revision>
 </revisionlist>
