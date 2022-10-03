@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Mon Sep 26 19:57:09 UTC 2022 - hpj@urpla.net
+
+- Update to version 2.4.21:
+  * Release files for 2.4.21 (#2157)
+  * Update INSTALL.md
+  * Add option to create a read-write shareable link (#2154)
+  * Fix DMD 2.100.2 depreciation warning (#2156)
+  * Update database access exclusivity test for --resync (#2155)
+  * Update notification handling for specific skipped scenarios (#2153)
+  * Update national-cloud-deployments.md (#2152)
+  * Minor update to rpm build docs to match versions (#2146)
+  * Update onedrive.spec.in to fix error building RPM (#2145)
+  * Update ubuntu-package-install.md
+  * Update documentation to document skip_size (#2132)
+  * Add option to cleanup local files regardless of sync state when using --download-only (#2113)
+  * Resolve segfault when running 'onedrive --display-sync-status' when run as 2nd process (#2105)
+  * Fix where --resync is enforced for non-sync operations (#2111)
+  * Fix to allow non-sync tasks while sync is running (#2112)
+  * Update Docker and Podman documentation (#2109)
+  * Improve application logging output for error messages (#2100)
+  * Correct a typo in docs/INSTALL.md (#2097)
+  * Update INSTALL.md (#2095)
+  * Change the exit code of the application when a --resync is required (#2096)
+  * Fix that logging output for skipped uploaded files is missing (#2094)
+  * Update INSTALL.md
+  * Update application-security.md and USAGE.md (#2088)
+  * Update Podman.md to align to Docker.md
+  * Update INSTALL.md
+  * Update documentation in relation to configuring SharePoint Libraries (#2084)
+  * Update what application options require an argument (#2082)
+  * Add option to request readonly access in oauth authorization step (#2065)
+  * Implement --display-running-config (#2064)
+  * Update --get-O365-drive-id implementation for data access (#2076)
+  * Update README.md
+  * Be consistent with permissions that are being assigned (#2075)
+  * Add Test Build Workflow (#2069)
+  * Update --resync handling of database file removal (#2067)
+  * Fix that the download progress bar doesn't always reach 100% when rate_limit is set (#2056)
+  * Release 2.4.21 Dev Prep (#2058)
+
+-------------------------------------------------------------------
 Tue Aug 16 09:24:20 UTC 2022 - egotthold@suse.com
 
 - Update to version 2.4.20:
