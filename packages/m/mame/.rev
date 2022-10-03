@@ -7,4 +7,13 @@
     <comment>0.245</comment>
     <requestid>992754</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9cebf4e50fe4967144ef1dcddd98360d</srcmd5>
+    <version>0.248</version>
+    <time>1664797531</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.248
+  * see https://mametesters.org/changelog_page.php for notes</comment>
+    <requestid>1007452</requestid>
+  </revision>
 </revisionlist>

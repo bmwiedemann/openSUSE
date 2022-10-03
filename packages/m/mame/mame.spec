@@ -39,7 +39,7 @@ ExclusiveArch:  do_not_build
 %define pkgsuffix -%{flavor}
 %endif
 
-%define fver    245
+%define fver    248
 
 # Build mame-mess by default
 # ASIO: https://github.com/mamedev/mame/issues/5721
@@ -321,7 +321,6 @@ cp -ar plugins              %{emu_data_dir}/
 cp -ar samples              %{emu_data_dir}/
 cp -ar bgfx/chains          %{emu_data_dir}/bgfx/
 cp -ar bgfx/effects         %{emu_data_dir}/bgfx/
-cp -ar bgfx/layouts         %{emu_data_dir}/bgfx/
 cp -ar bgfx/shaders/glsl    %{emu_data_dir}/bgfx/shaders/
 install -pm 0644 src/osd/modules/opengl/shader/*.{fsh,vsh} %{emu_data_dir}/opengl_shaders/
 
