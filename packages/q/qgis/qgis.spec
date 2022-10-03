@@ -127,6 +127,7 @@ Requires:       proj
 Requires:       pdal
 Requires:       python3-GDAL
 Requires:       python3-Jinja2
+Requires:       python3-numpy
 Requires:       python3-OWSLib
 Requires:       python3-PyYAML
 Requires:       python3-Pygments

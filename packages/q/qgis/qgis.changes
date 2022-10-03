@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct  3 11:28:43 UTC 2022 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- Add python numpy requirement (see BSC#1203696)
+
+-------------------------------------------------------------------
 Tue Jul  5 10:31:43 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - Adjust constraints for riscv64

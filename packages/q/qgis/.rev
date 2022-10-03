@@ -278,4 +278,13 @@
     <comment></comment>
     <requestid>988980</requestid>
   </revision>
+  <revision rev="35" vrev="5">
+    <srcmd5>f1bd691a47f32a7438112a35c1971047</srcmd5>
+    <version>3.24.1</version>
+    <time>1664820483</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python numpy requirement (see BSC#1203696)
+</comment>
+    <requestid>1007667</requestid>
+  </revision>
 </revisionlist>
