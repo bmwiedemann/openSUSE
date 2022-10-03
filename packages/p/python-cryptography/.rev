@@ -707,4 +707,41 @@
   * updated wheels to b ecompiled against openssl 3.0.5</comment>
     <requestid>990237</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>fc21f2b365b876b8447372284362eb48</srcmd5>
+    <version>38.0.1</version>
+    <time>1664797455</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 38.0.1:
+  * Fixed parsing TLVs in ASN.1 with length greater than 65535 bytes (typically
+    seen in large CRLs).
+  * Final deprecation of OpenSSL 1.1.0. The next release of ``cryptography``
+    will drop support.
+  * We no longer ship ``manylinux2010`` wheels. Users should upgrade to the
+    latest ``pip`` to ensure this doesn't cause issues downloading wheels on
+    their platform. We now ship ``manylinux_2_28`` wheels for users on new
+    enough platforms.
+  * Updated the minimum supported Rust version (MSRV) to 1.48.0, from 1.41.0.
+    Users with the latest ``pip`` will typically get a wheel and not need Rust
+    installed, but check :doc:`/installation` for documentation on installing a
+    newer ``rustc`` if required.
+  * :meth:`~cryptography.fernet.Fernet.decrypt` and related methods now accept
+    both ``str`` and ``bytes`` tokens.
+  * Parsing ``CertificateSigningRequest`` restores the behavior of enforcing
+    that the ``Extension`` ``critical`` field must be correctly encoded DER. See
+    `the issue &lt;https://github.com/pyca/cryptography/issues/6368&gt;`_ for complete
+    details.
+  * Added two new OpenSSL functions to the bindings to support an upcoming
+    ``pyOpenSSL`` release.
+  * When parsing :class:`~cryptography.x509.CertificateRevocationList` and
+    :class:`~cryptography.x509.CertificateSigningRequest` values, it is now
+    enforced that the ``version`` value in the input must be valid according to
+    the rules of :rfc:`2986` and :rfc:`5280`.
+  * Using MD5 or SHA1 in :class:`~cryptography.x509.CertificateBuilder` and
+    other X.509 builders is deprecated and support will be removed in the next
+    version.
+  * Added additional APIs to
+    :class:`~cryptography.x509.certificate_transparency.SignedCertificateTimestamp`, including</comment>
+    <requestid>1007100</requestid>
+  </revision>
 </revisionlist>
