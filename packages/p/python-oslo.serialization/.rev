@@ -281,4 +281,16 @@
   - Add Python3 yoga unit tests</comment>
     <requestid>979082</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>d5336679a2c2ae97ccf02b1b8a1bee5c</srcmd5>
+    <version>5.0.0</version>
+    <time>1664797591</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 5.0.0
+  - Remove unnecessary unicode prefixes
+  - Drop python3.6/3.7 support in testing runtime
+  - Add Python3 zed unit tests
+  - Update master for stable/yoga</comment>
+    <requestid>1007581</requestid>
+  </revision>
 </revisionlist>
