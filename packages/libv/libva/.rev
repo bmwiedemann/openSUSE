@@ -645,4 +645,33 @@ ARM builds fine. (forwarded request 141176 from Guillaume_G)</comment>
     <comment></comment>
     <requestid>987891</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>f5ca79db1cb0f9fcac7da55b05d0b494</srcmd5>
+    <version>2.16.0</version>
+    <time>1664797464</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.16.0:
+  * add: Add HierarchicalFlag &amp; hierarchical_level_plus1 for AV1e.
+  * dep: Update README.md to remove badge links
+  * dep: Removed waffle-io badge from README to fix broken link
+  * dep: Drop mailing list, IRC and Slack
+  * autotools: use wayland-scanner private-code
+  * autotools: use the wayland-scanner.pc to locate the prog
+  * meson: use wayland-scanner private-code
+  * meson: request native wayland-scanner
+  * meson: use the wayland-scanner.pc to locate the prog
+  * meson: set HAVE_VA_X11 when applicable
+  * style:Correct slight coding style in several new commits
+  * trace: add Linux ftrace mode for va trace
+  * trace: Add missing pthread_mutex_destroy
+  * drm: remove no-longer needed X == X mappings
+  * drm: fallback to drm driver name == va driver name
+  * drm: simplify the mapping table
+  * x11: simplify the mapping table
+
+- No code changes
+- Update to version 2.15.0 was part of Intel oneVPL GPU Runtime
+  2022Q2 Release 22.4.4</comment>
+    <requestid>1007250</requestid>
+  </revision>
 </revisionlist>

@@ -1,5 +1,34 @@
 -------------------------------------------------------------------
-Wed Jul  6 03:25:12 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+Thu Sep 29 19:17:18 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.16.0:
+  * add: Add HierarchicalFlag & hierarchical_level_plus1 for AV1e.
+  * dep: Update README.md to remove badge links
+  * dep: Removed waffle-io badge from README to fix broken link
+  * dep: Drop mailing list, IRC and Slack
+  * autotools: use wayland-scanner private-code
+  * autotools: use the wayland-scanner.pc to locate the prog
+  * meson: use wayland-scanner private-code
+  * meson: request native wayland-scanner
+  * meson: use the wayland-scanner.pc to locate the prog
+  * meson: set HAVE_VA_X11 when applicable
+  * style:Correct slight coding style in several new commits
+  * trace: add Linux ftrace mode for va trace
+  * trace: Add missing pthread_mutex_destroy
+  * drm: remove no-longer needed X == X mappings
+  * drm: fallback to drm driver name == va driver name
+  * drm: simplify the mapping table
+  * x11: simplify the mapping table
+
+-------------------------------------------------------------------
+Mon Jul 11 11:19:17 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- No code changes
+- Update to version 2.15.0 was part of Intel oneVPL GPU Runtime
+  2022Q2 Release 22.4.4
+
+-------------------------------------------------------------------
+Wed Jul  6 03:23:06 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to 2.15.0:
   * Add: new display HW attribute to report PCI ID
@@ -15,7 +44,7 @@ Wed Jul  6 03:25:12 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
   * Trace:print the string for profile/entrypoint/configattrib
 
 -------------------------------------------------------------------
-Tue Mar  1 00:15:06 UTC 2022 - Aaron Stern <ukbeast89@protonmail.com>
+Tue Mar  1 00:07:18 UTC 2022 - Aaron Stern <ukbeast89@protonmail.com>
 
 - Update to 2.14.0:
   * add: Add av1 encode interfaces
