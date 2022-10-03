@@ -1,7 +1,7 @@
 #
 # spec file for package python-voluptuous
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-voluptuous
-Version:        0.11.7
+Version:        0.13.1
 Release:        0
 Summary:        A Python data validation library
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-URL:            http://github.com/alecthomas/voluptuous
-Source:         https://files.pythonhosted.org/packages/source/v/voluptuous/voluptuous-%{version}.tar.gz
-# https://github.com/alecthomas/voluptuous/pull/422
-Patch0:         python-voluptuous-remove-nose.patch
+URL:            https://github.com/alecthomas/voluptuous
+Source:         https://github.com/alecthomas/voluptuous/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}-gh.tar.gz
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -40,7 +38,6 @@ coming into Python as JSON, YAML, etc.
 
 %prep
 %setup -q -n voluptuous-%{version}
-%patch0 -p1
 
 %build
 %python_build

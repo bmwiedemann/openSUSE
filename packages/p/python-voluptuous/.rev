@@ -76,4 +76,23 @@
     <comment></comment>
     <requestid>817235</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d21c656c0775c5e6275368772a4367c2</srcmd5>
+    <version>0.13.1</version>
+    <time>1664797476</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.13.1:
+  * Ignore `Enum` if it is unavailable
+  * Fix email regex match for Python 2.7
+  * Enable github actions
+  * Convert codebase to adhere to `flake8` W504 (PEP 8)
+  * Enable `flake8` in github actions
+  * `pytest` migration + enable Python 3.10
+  * Display valid `Enum` values in `Coerce`
+  * Revert Breaking Maybe change in 0.12.1
+  * Revert Breaking `Maybe` change in 0.12.1
+  * Fix Email Regex to not match on extra characters
+- drop python-voluptuous-remove-nose.patch (upstream)</comment>
+    <requestid>1007462</requestid>
+  </revision>
 </revisionlist>
