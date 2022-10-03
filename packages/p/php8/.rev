@@ -307,4 +307,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1002256</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>7bc6ed0f7f503a3d1419259df1298c6d</srcmd5>
+    <version>8.1.11</version>
+    <time>1664797450</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 8.1.11
+  * This is a security release.
+  * CVEs fixed: CVE-2022-31628, CVE-2022-31629
+    https://www.php.net/ChangeLog-8.php#8.1.11</comment>
+    <requestid>1007073</requestid>
+  </revision>
 </revisionlist>
