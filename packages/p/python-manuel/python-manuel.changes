@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Sep 29 15:48:56 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 1.12.4 (2022-06-24)
+  * Remove silly PyPI version badge.
+
+- Update to 1.12.3 (2022-06-24)
+  * Modernize internal project structure; drop tox; no user-visible changes (hopefully).
+  * Rework coverage badge generation.
+  * Drop Travis CI badge (the project is using GitHub for CI now)
+
+- Update to 1.11.2 (2022-05-15)
+  * Fix missing file in release.
+
+- Update to 1.11.1 (2022-05-14)
+  * Fix brown-bag release.
+
+- Update to 1.11.0 (2022-05-14)
+  * Fix test detection in Python 2 which was broken since 1.10.0. (#20)
+  * Add Python 3.9 and 3.10 to tox config.
+  * Add a Makefile to centeralized development activities. 
+
+-------------------------------------------------------------------
 Mon May 31 10:19:13 UTC 2021 - pgajdos@suse.com
 
 - %check: use %pytest rpm macro

@@ -1,7 +1,7 @@
 #
 # spec file for package python-manuel
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2013-2018 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-manuel
-Version:        1.10.1
+Version:        1.12.4
 Release:        0
 Summary:        Python module to build tested documentation
 License:        Apache-2.0
