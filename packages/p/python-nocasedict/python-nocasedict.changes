@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct  1 12:59:36 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.4:
+  * Fixed recursion issue with flake8 5.0
+  * Add python 3.7 support 
+
+-------------------------------------------------------------------
 Wed Jun  8 19:53:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.3:

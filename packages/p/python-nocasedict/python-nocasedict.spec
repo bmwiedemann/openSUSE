@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-nocasedict
-Version:        1.0.3
+Version:        1.0.4
 Release:        0
 Summary:        A case-insensitive ordered dictionary for Python
 License:        LGPL-2.1-or-later
@@ -27,10 +27,10 @@ URL:            https://github.com/pywbem/nocasedict
 Source:         https://files.pythonhosted.org/packages/source/n/nocasedict/nocasedict-%{version}.tar.gz
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module six >= 1.14.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-six
+Requires:       python-six >= 1.14.0
 BuildArch:      noarch
 %python_subpackages
 

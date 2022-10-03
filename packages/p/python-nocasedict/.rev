@@ -41,4 +41,14 @@
   * Removed old tools that were needed for travis and Appveyor but no longer on</comment>
     <requestid>981385</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4e9927b1690f8f1b1ad03cabc40602e9</srcmd5>
+    <version>1.0.4</version>
+    <time>1664797470</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.4:
+  * Fixed recursion issue with flake8 5.0
+  * Add python 3.7 support</comment>
+    <requestid>1007445</requestid>
+  </revision>
 </revisionlist>
