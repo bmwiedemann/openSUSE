@@ -1,7 +1,7 @@
 #
-# spec file for package xfce4-places-plugin
+# spec file
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define plugin places
 %bcond_with git
 Name:           xfce4-%{plugin}-plugin
-Version:        1.8.1
+Version:        1.8.2
 Release:        0
 Summary:        Places Menu Plugin for the Xfce Panel
 License:        GPL-2.0-or-later
@@ -97,7 +97,7 @@ rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,tl_PH,ur_PK}
 %fdupes %{buildroot}%{_datadir}
 
 %files
-%doc AUTHORS NEWS README TODO
+%doc AUTHORS NEWS README.md TODO
 %license COPYING
 %{_bindir}/xfce4-popup-places
 %{_libdir}/xfce4/panel/plugins/libplaces.so

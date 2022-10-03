@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Sep 26 18:15:57 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.8.2
+  * Remove soon-to-be-deprecated exo-string functions
+  * Remove unnecessary exo_noop() dependence
+  * Fix intltool lock file problem during make distcheck
+  * Use the new g_drive_is_removable over g_drive_is_media_removable
+  * Replace ExoBinding with GBinding
+  * Remove GSourceFunc casts
+  * Fix missing-prototypes
+  * Fix compilation warnings
+  * autoconf: Some updates
+  * Delete obsolete eo.po
+  * Delete obsolete et.po Bug #15547)
+  * Update URLs from goodies.x.o to docs.x.o (bxo#16172)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Thu Jan  7 01:33:48 UTC 2021 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Fixed dependency requirements for GTK3: pkgconfig(libxfce4panel-2.0)
