@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Mon Oct  3 09:22:52 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1:
+  * python3.6+ syntax update and code QA
+  * update tox tests to the correct python versions
+  * Expose replicas argument for KetamaRing
+  * document ketama ring replicas configuration
+
+-------------------------------------------------------------------
+Fri Jun 12 11:45:35 PM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v1.2
