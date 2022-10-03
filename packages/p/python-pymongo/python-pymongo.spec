@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-pymongo
-Version:        4.1.1
+Version:        4.2.0
 Release:        0
 Summary:        Python driver for MongoDB
 License:        Apache-2.0
@@ -28,7 +28,7 @@ URL:            https://github.com/mongodb/mongo-python-driver
 Source:         https://files.pythonhosted.org/packages/source/p/pymongo/pymongo-%{version}.tar.gz
 # PATCH-FIX-SUSE: upstream does not care about 32bit
 Patch0:         mongodb-skip-test.patch
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

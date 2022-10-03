@@ -413,4 +413,41 @@
     <comment></comment>
     <requestid>990439</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>64b653547dba366b8e0167f554bbe2f8</srcmd5>
+    <version>4.2.0</version>
+    <time>1664797542</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.2.0:
+  - Support for MongoDB 6.0.
+  - Support for the Queryable Encryption beta with MongoDB 6.0. Note that backwards-breaking
+    changes may be made before the final release.  See :ref:`automatic-queryable-client-side-encryption` for example usage.
+  - Provisional (beta) support for :func:`pymongo.timeout` to apply a single timeout
+    to an entire block of pymongo operations.
+  - Added the ``timeoutMS`` URI and keyword argument to :class:`~pymongo.mongo_client.MongoClient`.
+  - Added the :attr:`pymongo.errors.PyMongoError.timeout` property which is ``True`` when
+    the error was caused by a timeout.
+  - Added the ``check_exists`` argument to :meth:`~pymongo.database.Database.create_collection`
+    that when True (the default)  runs an additional ``listCollections`` command to verify that the
+    collection does not exist already.
+  - Added key management APIs to :class:`~pymongo.encryption.ClientEncryption`:
+  - Support for the ``crypt_shared`` library to replace ``mongocryptd`` using the new
+    ``crypt_shared_lib_path`` and ``crypt_shared_lib_required`` arguments to
+    :class:`~pymongo.encryption_options.AutoEncryptionOpts`.
+  - Fixed a bug where :meth:`~pymongo.collection.Collection.estimated_document_count`
+    would fail with a &quot;CommandNotSupportedOnView&quot; error on views (`PYTHON-2885`_).
+  - Fixed a bug where invalid UTF-8 strings could be passed as patterns for :class:`~bson.regex.Regex`
+    objects. :func:`bson.encode` now correctly raises :class:`bson.errors.InvalidStringData` (`PYTHON-3048`_).
+  - Fixed a bug that caused ``AutoReconnect(&quot;connection pool paused&quot;)`` errors in the child
+    process after fork (`PYTHON-3257`_).
+  - Fixed a bug where  :meth:`~pymongo.collection.Collection.count_documents` and
+    :meth:`~pymongo.collection.Collection.distinct` would fail in a transaction with
+    ``directConnection=True`` (`PYTHON-3333`_).
+  - GridFS no longer uploads an incomplete files collection document after encountering an
+    error in the middle of an upload fork. This results in fewer
+    :class:`~gridfs.errors.CorruptGridFile` errors (`PYTHON-1552`_).
+  - Renamed PyMongo's internal C extension methods to avoid crashing due to name conflicts
+    with mpi4py and other shared libraries (`PYTHON-2110`_).</comment>
+    <requestid>1007474</requestid>
+  </revision>
 </revisionlist>

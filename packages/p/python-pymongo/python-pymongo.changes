@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sat Oct  1 13:55:26 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.2.0:
+  - Support for MongoDB 6.0.
+  - Support for the Queryable Encryption beta with MongoDB 6.0. Note that backwards-breaking
+    changes may be made before the final release.  See :ref:`automatic-queryable-client-side-encryption` for example usage.
+  - Provisional (beta) support for :func:`pymongo.timeout` to apply a single timeout
+    to an entire block of pymongo operations.
+  - Added the ``timeoutMS`` URI and keyword argument to :class:`~pymongo.mongo_client.MongoClient`.
+  - Added the :attr:`pymongo.errors.PyMongoError.timeout` property which is ``True`` when
+    the error was caused by a timeout.
+  - Added the ``check_exists`` argument to :meth:`~pymongo.database.Database.create_collection`
+    that when True (the default)  runs an additional ``listCollections`` command to verify that the
+    collection does not exist already.
+  - Added key management APIs to :class:`~pymongo.encryption.ClientEncryption`:
+  - Support for the ``crypt_shared`` library to replace ``mongocryptd`` using the new
+    ``crypt_shared_lib_path`` and ``crypt_shared_lib_required`` arguments to
+    :class:`~pymongo.encryption_options.AutoEncryptionOpts`.
+  - Fixed a bug where :meth:`~pymongo.collection.Collection.estimated_document_count`
+    would fail with a "CommandNotSupportedOnView" error on views (`PYTHON-2885`_).
+  - Fixed a bug where invalid UTF-8 strings could be passed as patterns for :class:`~bson.regex.Regex`
+    objects. :func:`bson.encode` now correctly raises :class:`bson.errors.InvalidStringData` (`PYTHON-3048`_).
+  - Fixed a bug that caused ``AutoReconnect("connection pool paused")`` errors in the child
+    process after fork (`PYTHON-3257`_).
+  - Fixed a bug where  :meth:`~pymongo.collection.Collection.count_documents` and
+    :meth:`~pymongo.collection.Collection.distinct` would fail in a transaction with
+    ``directConnection=True`` (`PYTHON-3333`_).
+  - GridFS no longer uploads an incomplete files collection document after encountering an
+    error in the middle of an upload fork. This results in fewer
+    :class:`~gridfs.errors.CorruptGridFile` errors (`PYTHON-1552`_).
+  - Renamed PyMongo's internal C extension methods to avoid crashing due to name conflicts
+    with mpi4py and other shared libraries (`PYTHON-2110`_).
+  - Fixed tight CPU loop for network I/O when using PyOpenSSL (`PYTHON-3187`_).
+
+-------------------------------------------------------------------
 Wed Jul 20 10:58:54 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Conflict on python-bson
