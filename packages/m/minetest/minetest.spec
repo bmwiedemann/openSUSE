@@ -18,12 +18,12 @@
 
 %define minetestuser %{name}
 %define minetestgroup %{name}
-%define irrlichtmt_version 1.9.0mt7
+%define irrlichtmt_version 1.9.0mt8
 %bcond_without leveldb
 %bcond_without redis
 %bcond_without postgresql
 Name:           minetest
-Version:        5.6.0
+Version:        5.6.1
 Release:        0
 Summary:        A InfiniMiner/Minecraft inspired game
 License:        CC-BY-SA-3.0 AND LGPL-2.1-or-later
