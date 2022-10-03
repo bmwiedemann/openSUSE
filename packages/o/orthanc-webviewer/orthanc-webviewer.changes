@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 27 10:55:07 UTC 2022 - Axel Braun <axel.braun@gmx.de>
+
+- version 2.8
+  * Fix XSS inside DICOM in Orthanc Web Viewer (as reported by Stuart
+    Kurutac, NCC Group)
+  * framework190.diff removed (covered in actual version)  
+
+-------------------------------------------------------------------
 Fri Jan 29 18:25:58 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
 - framework190.diff added for compatibility with framework 1.9.0
