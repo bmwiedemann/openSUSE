@@ -253,4 +253,36 @@
     <comment></comment>
     <requestid>939575</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>248e986d36e8e35f8b0585fc4124a030</srcmd5>
+    <version>0.3.6</version>
+    <time>1664797469</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.6:
+  - scripts
+      - Fixed #175: Updated launcher executables to better handle the relationship
+        between launcher and child process in the Job API.
+  - database
+      - Fixed #170: Corrected implementation of ``get_required_dists()``.
+  - index
+      - Updated coverage pragmas for tests relating to obsolete PyPI APIs.
+  - locators
+      - Changed the default locator configuration.
+  - metadata
+      - Updates in support of PEP 643 / Metadata 2.2.
+  - scripts
+      - Updated launcher executables. Thanks to Michael Bikovitsky for his help with
+        the launcher changes.
+      - Fixed #164: Improved support for reproducible builds by allowing a fixed
+        date/time to be inserted into created .exe files. Thanks to Somber Night for the
+        patch.
+  - util
+      - Fixed #161: Updated test case.
+  - wheel
+      - Updated to write archive path of RECORD to RECORD instead of staging path.
+        Thanks to Pieter Pas for the patch.
+      - Fixed #169: Removed usage of deprecated imp module in favour of importlib.
+      - Fixed #172: Compute ABI correctly for Python &lt; 3.8.</comment>
+    <requestid>1007444</requestid>
+  </revision>
 </revisionlist>
