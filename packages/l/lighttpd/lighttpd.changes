@@ -5,6 +5,7 @@ Fri Sep 23 16:23:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Update comment about TCP_INFO on OpenBSD
   * [mod_ajp13] fix crash with bad response headers (fixes #3170)
   * [core] handle RDHUP when collecting chunked body
+    CVE-2022-41556 boo#1203872
   * [core] tweak streaming request body to backends
   * [core] handle ENOSPC with pwritev() (#3171)
   * [core] manually calculate off_t max (fixes #3171)
