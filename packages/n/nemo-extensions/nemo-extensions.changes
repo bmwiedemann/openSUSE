@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct  3 02:50:43 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- add FTBFS-setuptools-61.0.patch
+
+-------------------------------------------------------------------
 Wed May 18 06:20:05 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Prepare for Python 3.10 by correcting sitelib install paths.
