@@ -484,4 +484,30 @@ __init__.py is the only file with a definitive license statement (BSD-2-Clause).
     <comment></comment>
     <requestid>1002717</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>04f4351fec53cd5072dfde9cb157c49b</srcmd5>
+    <version>6.5.0</version>
+    <time>1664820498</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.5.0:
+  - The JSON report now includes details of which branches were taken, and which
+    are missing for each file. Thanks, Christoph Blessing (`pull 1438`_). Closes
+    `issue 1425`_.
+  - Starting with coverage.py 6.2, ``class`` statements were marked as a branch.
+    This wasn't right, and has been reverted, fixing `issue 1449`_. Note this
+    will very slightly reduce your coverage total if you are measuring branch
+    coverage.
+  - Packaging is now compliant with `PEP 517`_, closing `issue 1395`_.
+  - A new debug option ``--debug=pathmap`` shows details of the remapping of
+    paths that happens during combine due to the ``[paths]`` setting.
+  - Fix an internal problem with caching of invalid Python parsing. Found by
+    OSS-Fuzz, fixing their `bug 50381`_.
+  .. _bug 50381: https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=50381
+  .. _PEP 517: https://peps.python.org/pep-0517/
+  .. _issue 1395: https://github.com/nedbat/coveragepy/issues/1395
+  .. _issue 1425: https://github.com/nedbat/coveragepy/issues/1425
+  .. _pull 1438: https://github.com/nedbat/coveragepy/pull/1438
+  .. _issue 1449: https://github.com/nedbat/coveragepy/issues/1449</comment>
+    <requestid>1007714</requestid>
+  </revision>
 </revisionlist>

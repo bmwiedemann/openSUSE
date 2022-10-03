@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-coverage
-Version:        6.4.4
+Version:        6.5.0
 Release:        0
 Summary:        Code coverage measurement for Python
 License:        Apache-2.0
