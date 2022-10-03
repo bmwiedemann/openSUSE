@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct  1 21:09:00 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update the Qt6 pattern for the 6.4.0 release
+- Remove obsolete or missing packages from KDE patterns
+
+-------------------------------------------------------------------
 Tue Jul  5 09:39:37 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
 
 - Replace pulseaudio with pipewire as the default audio server

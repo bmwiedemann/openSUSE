@@ -19,7 +19,7 @@
 %bcond_with betatest
 
 Name:           patterns-kde
-Version:        20220215
+Version:        20221001
 Release:        0
 Summary:        Patterns for Installation (kde devel)
 License:        MIT
@@ -84,7 +84,6 @@ Recommends:     kded-devel
 Recommends:     kdelibs4support-devel
 Recommends:     kdesignerplugin-devel
 Recommends:     kdesu-devel
-Recommends:     kdewebkit-devel
 Recommends:     kdnssd-framework-devel
 Recommends:     kdoctools-devel
 Recommends:     kemoticons-devel
@@ -251,9 +250,11 @@ Recommends:     qt6-charts-devel
 Recommends:     qt6-chartsqml-devel
 Recommends:     qt6-connectivity-devel
 Recommends:     qt6-datavisualization-devel
+Recommends:     qt6-datavisualizationqml-devel
 Recommends:     qt6-declarative-devel
 Recommends:     qt6-designer-devel
 Recommends:     qt6-help-devel
+Recommends:     qt6-httpserver-devel
 Recommends:     qt6-imageformats-devel
 Recommends:     qt6-labsanimation-devel
 Recommends:     qt6-labsfolderlistmodel-devel
@@ -265,6 +266,7 @@ Recommends:     qt6-linguist-devel
 Recommends:     qt6-multimedia-devel
 Recommends:     qt6-multimediawidgets-devel
 Recommends:     qt6-networkauth-devel
+Recommends:     qt6-openglwidgets-devel
 Recommends:     qt6-pdf-devel
 Recommends:     qt6-pdfquick-devel
 Recommends:     qt6-pdfwidgets-devel
@@ -272,6 +274,17 @@ Recommends:     qt6-positioning-devel
 Recommends:     qt6-positioningquick-devel
 Recommends:     qt6-qmlxmllistmodel-devel
 Recommends:     qt6-qt5compat-devel
+Recommends:     qt6-quick3d-devel
+Recommends:     qt6-quick3dassetimport-devel
+Recommends:     qt6-quick3dassetutils-devel
+Recommends:     qt6-quick3deffects-devel
+Recommends:     qt6-quick3dhelpers-devel
+Recommends:     qt6-quick3diblbaker-devel
+Recommends:     qt6-quick3dparticleeffects-devel
+Recommends:     qt6-quick3dparticles-devel
+Recommends:     qt6-quick3dphysics-devel
+Recommends:     qt6-quick3druntimerender-devel
+Recommends:     qt6-quick3dutils-devel
 Recommends:     qt6-quicktimeline-devel
 Recommends:     qt6-remoteobjects-devel
 Recommends:     qt6-remoteobjectsqml-devel
@@ -282,9 +295,11 @@ Recommends:     qt6-sensorsquick-devel
 Recommends:     qt6-serialbus-devel
 Recommends:     qt6-serialport-devel
 Recommends:     qt6-shadertools-devel
+Recommends:     qt6-spatialaudio-devel
 Recommends:     qt6-statemachine-devel
 Recommends:     qt6-statemachineqml-devel
 Recommends:     qt6-svg-devel
+Recommends:     qt6-texttospeech-devel
 Recommends:     qt6-tools-devel
 Recommends:     qt6-uitools-devel
 Recommends:     qt6-virtualkeyboard-devel
@@ -294,6 +309,8 @@ Recommends:     qt6-webenginecore-devel
 Recommends:     qt6-webenginequick-devel
 Recommends:     qt6-webenginewidgets-devel
 Recommends:     qt6-websockets-devel
+Recommends:     qt6-webview-devel
+Recommends:     qt6-webviewquick-devel
 Suggests:       qt6-coap-devel
 Suggests:       qt6-mqtt-devel
 Suggests:       qt6-opcua-devel
@@ -431,7 +448,7 @@ Recommends:     khelpcenter5
 Recommends:     baloo5-file
 Recommends:     baloo5-kioslaves
 Recommends:     baloo5-tools
-Recommends:     kdenetwork4-filesharing
+Recommends:     kdenetwork-filesharing
 Recommends:     kio-extras5
 Recommends:     kwalletmanager5
 Recommends:     pinentry-qt5
@@ -594,7 +611,6 @@ Recommends:     kate
 Recommends:     kcachegrind
 Recommends:     kdbg
 Recommends:     kdevelop5
-Recommends:     kio_svn
 Recommends:     kompare
 Recommends:     lokalize
 Recommends:     umbrello
@@ -623,7 +639,6 @@ Obsoletes:      patterns-openSUSE-kde4_imaging < %{version}
 Obsoletes:      patterns-openSUSE-kde_imaging < %{version}
 Supplements:    (patterns-kde-kde and patterns-desktop-imaging)
 Requires:       pattern() = kde_plasma
-# from data/KDE4-IMAGE
 Recommends:     gwenview5
 Recommends:     digikam
 Recommends:     kcolorchooser
@@ -662,8 +677,8 @@ Obsoletes:      patterns-openSUSE-kde_internet < %{version}
 # 297684 for these 2
 Recommends:     konversation
 # bnc#533580
-Recommends:     plasma-nm5-openvpn
 Recommends:     plasma-nm5-openconnect
+Recommends:     plasma-nm5-openvpn
 Recommends:     plasma-nm5-pptp
 Suggests:       kget
 Suggests:       kopete
@@ -690,7 +705,6 @@ Provides:       pattern-order() = 2620
 Obsoletes:      patterns-openSUSE-kde4_multimedia < %{version}
 Obsoletes:      patterns-openSUSE-kde_multimedia < %{version}
 Supplements:    (patterns-kde-kde and patterns-desktop-multimedia)
-# from data/KDE4-Multimedia
 Recommends:     plasma5-pa
 Recommends:     PackageKit-gstreamer-plugin
 Recommends:     gstreamer-plugins-good
@@ -702,7 +716,6 @@ Suggests:       amarok
 Suggests:       dragonplayer
 Suggests:       juk
 Suggests:       k3b
-Suggests:       kscd
 
 %description kde_multimedia
 KDE Applications - Multimedia
@@ -726,7 +739,6 @@ Provides:       pattern-order() = 2700
 Obsoletes:      patterns-openSUSE-kde4_office < %{version}
 Obsoletes:      patterns-openSUSE-kde_office < %{version}
 Supplements:    (patterns-kde-kde and patterns-office-office)
-# from data/KDE4-Office
 Recommends:     libreoffice-qt5
 Recommends:     libreoffice-icon-theme-breeze
 Suggests:       scribus
@@ -764,7 +776,6 @@ Recommends:     ktp-approver
 Recommends:     ktp-contact-list
 Recommends:     ktp-desktop-applets
 Recommends:     ktp-text-ui
-Suggests:       ktp-call-ui
 Suggests:       ktp-contact-runner
 Suggests:       ktp-filetransfer-handler
 Suggests:       ktp-send-file
@@ -791,15 +802,12 @@ Provides:       pattern-order() = 2860
 Obsoletes:      patterns-openSUSE-kde4_utilities < %{version}
 Obsoletes:      patterns-openSUSE-kde_utilities < %{version}
 Recommends:     pattern() = kde_utilities_opt
-# from data/KDE4-Utilities
 Recommends:     kmag
 Recommends:     kcharselect
 Recommends:     kmousetool
 Recommends:     kompare
 Suggests:       okteta
 Suggests:       kteatime
-Suggests:       ktux
-Suggests:       amor
 Suggests:       k4dirstat
 Suggests:       sweeper
 
@@ -841,7 +849,7 @@ Recommends:     gutenprint
 # MAYBE later lsb-graphics
 # give net shares
 Recommends:     samba
-# needs python-qt4, see#649280#14
+
 Suggests:       hplip
 
 %description kde_utilities_opt
