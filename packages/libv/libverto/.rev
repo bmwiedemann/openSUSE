@@ -106,4 +106,12 @@
   * Work around libev not being c89-compliant</comment>
     <requestid>829946</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a7481ea0b380ac7690695834330c158f</srcmd5>
+    <version>0.3.2</version>
+    <time>1664797481</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1006732</requestid>
+  </revision>
 </revisionlist>

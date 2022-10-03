@@ -1,7 +1,7 @@
 #
 # spec file for package libverto
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover   1
 Name:           libverto
-Version:        0.3.1
+Version:        0.3.2
 Release:        0
 Summary:        Main loop abstraction library
 License:        MIT
