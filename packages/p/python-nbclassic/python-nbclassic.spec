@@ -24,9 +24,10 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%define plainpython python
+
 # this conditional is used in the python-rpm-macros, but `osc build --without libalternatives` won't work
 %bcond_without libalternatives
+
 Name:           python-nbclassic%{psuffix}
 Version:        0.4.4
 Release:        0
@@ -87,6 +88,7 @@ on top of the new Python server backend.
 
 %package -n jupyter-nbclassic
 Summary:        Jupyter Notebook as a Jupyter Server Extension
+Requires:       python3-nbclassic = %{version}
 
 %description -n jupyter-nbclassic
 NBClassic runs the Jupyter Notebook frontend on the Jupyter Server backend.
@@ -107,7 +109,10 @@ This package contains the jupyterlab server configuration and desktop files
 %if !%{with test}
 %install
 %pyproject_install %{SOURCE1}
-
+%python_clone -a %{buildroot}%{_bindir}/jupyter-nbclassic
+%python_clone -a %{buildroot}%{_bindir}/jupyter-nbclassic-bundlerextension
+%python_clone -a %{buildroot}%{_bindir}/jupyter-nbclassic-extension
+%python_clone -a %{buildroot}%{_bindir}/jupyter-nbclassic-serverextension
 %{python_expand #
 rm %{buildroot}%{$python_sitelib}/nbclassic/bundler/tests/resources/subdir/subsubdir/.gitkeep
 
@@ -129,32 +134,6 @@ sed -E '
 ' >> %{$python_prefix}-nbclassic.files < lang-dirs
 }
 
-# https://github.com/jupyter/notebook/issues/6501
-cp %{buildroot}%{_bindir}/jupyter-nbclassic %{buildroot}%{_bindir}/jupyter-notebook
-# clone after copy to jupyter-notebook
-%python_clone -a %{buildroot}%{_bindir}/jupyter-nbclassic
-duplicates="jupyter-notebook jupyter-nbclassic-bundlerextension jupyter-nbclassic-extension jupyter-nbclassic-serverextension"
-for basebin in $duplicates; do
-  %python_clone -a %{buildroot}%{_bindir}/${basebin}
-  %{python_expand mv %{buildroot}%{_bindir}/${basebin}{,.nbclassic}-%{$python_bin_suffix}
-    echo %{_bindir}/${basebin} >> %{$python_prefix}-nbclassic.files
-    echo %{_bindir}/${basebin}.nbclassic-%{$python_bin_suffix} >> %{$python_prefix}-nbclassic.files
-    echo "%%dir %{_datadir}/libalternatives/${basebin}" >> %{$python_prefix}-nbclassic.files
-    # increase priority over alternatives from notebook and use same grouping
-    myaltprio=%{$python_version_nodots}
-    if [ "%{$python_provides}" == "python3" ]; then
-      myaltprio=$(($myaltprio + 1000))
-    fi
-    conf=%{buildroot}%{_datadir}/libalternatives/${basebin}/${myaltprio}.conf
-    newconf=${conf/.conf/0.conf}
-    sed "s/${basebin}/${basebin}.nbclassic/" $conf > $newconf
-    echo "group=${duplicates// /, }" >> $newconf
-    rm $conf
-    echo $newconf | sed 's:%{buildroot}::' >> %{$python_prefix}-nbclassic.files
-  }
-done
-%fdupes %{buildroot}%{_bindir}
-
 %suse_update_desktop_file jupyter-nbclassic
 %endif
 
@@ -172,6 +151,9 @@ done
 %doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/jupyter-nbclassic
+%python_alternative %{_bindir}/jupyter-nbclassic-bundlerextension
+%python_alternative %{_bindir}/jupyter-nbclassic-extension
+%python_alternative %{_bindir}/jupyter-nbclassic-serverextension
 %{python_sitelib}/nbclassic-%{version}*-info
 
 %files -n jupyter-nbclassic

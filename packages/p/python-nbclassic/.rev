@@ -122,4 +122,13 @@
     <comment></comment>
     <requestid>1007398</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>703472fa59b97b6877fe71373f0f0384</srcmd5>
+    <version>0.4.4</version>
+    <time>1664797546</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove duplicates workaround
+</comment>
+    <requestid>1007481</requestid>
+  </revision>
 </revisionlist>
