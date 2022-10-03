@@ -18,15 +18,14 @@
 
 %define cpan_name IO-Socket-SSL
 Name:           perl-IO-Socket-SSL
-Version:        2.074
+Version:        2.075
 Release:        0
-Summary:        Nearly transparent SSL encapsulation for IO::Socket::INET
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Nearly transparent SSL encapsulation for IO::Socket::INET
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SU/SULLR/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
-# (bsc#1200295) perl-IO-Socket-SSL doesn't follow system "PROFILE=SYSTEM" openSSL ciphers
-# UPSTREAM PATCH: https://git.centos.org/rpms/perl-IO-Socket-SSL/blob/e0b0ae04f5cdb41b1f29cb7d76c23abba7ac35e9/f/SOURCES/IO-Socket-SSL-2.066-use-system-default-cipher-list.patch
+# PATCH-FIX-UPSTREAM (bsc1200295) perl-IO-Socket-SSL doesn't follow system "PROFILE=SYSTEM" openSSL ciphers - https://git.centos.org/rpms/perl-IO-Socket-SSL/blob/e0b0ae04f5cdb41b1f29cb7d76c23abba7ac35e9/f/SOURCES/IO-Socket-SSL-2.066-use-system-default-cipher-list.patch
 Patch0:         perl-IO-Socket-SSL-use-system-default-cipher-list.patch
 BuildArch:      noarch
 BuildRequires:  perl

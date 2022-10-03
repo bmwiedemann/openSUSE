@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Sep  3 03:06:38 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.075
+   see /usr/share/doc/packages/perl-IO-Socket-SSL/Changes
+
+  2.075
+  - treat SSL_write returning 0 same as previously -1, as suggested by both
+    OpenSSL and LibreSSL documentation
+  - propagate error from SSL_shutdown, but if the shutdown is caused by an outer
+    SSL error keep the original error
+  - small tests fixes
+
+-------------------------------------------------------------------
 Thu Jun  9 16:41:18 UTC 2022 - David Anes <david.anes@suse.com>
 
 - (bsc#1200295) follow system "PROFILE=SYSTEM" openSSL ciphers 
