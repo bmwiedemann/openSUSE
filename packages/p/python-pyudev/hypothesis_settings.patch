@@ -1,8 +1,8 @@
-diff --git a/tests/test_enumerate.py b/tests/test_enumerate.py
-index 83af62d..0c97a18 100644
---- a/tests/test_enumerate.py
-+++ b/tests/test_enumerate.py
-@@ -91,7 +91,7 @@ class TestEnumerator(object):
+Index: pyudev-0.24.0/tests/test_enumerate.py
+===================================================================
+--- pyudev-0.24.0.orig/tests/test_enumerate.py
++++ pyudev-0.24.0/tests/test_enumerate.py
+@@ -88,7 +88,7 @@ class TestEnumerator(object):
  
      @failed_health_check_wrapper
      @given(_CONTEXT_STRATEGY, _SUBSYSTEM_STRATEGY)
@@ -11,7 +11,7 @@ index 83af62d..0c97a18 100644
      def test_match_subsystem(self, context, subsystem):
          """
          Subsystem match matches devices w/ correct subsystem.
-@@ -116,7 +116,7 @@ def test_match_subsystem_nomatch_unfulfillable(self, context, subsystem):
+@@ -113,7 +113,7 @@ class TestEnumerator(object):
  
      @failed_health_check_wrapper
      @given(_CONTEXT_STRATEGY, _SUBSYSTEM_STRATEGY)
@@ -20,7 +20,7 @@ index 83af62d..0c97a18 100644
      def test_match_subsystem_nomatch_complete(self, context, subsystem):
          """
          Test that w/ respect to the universe of devices returned by
-@@ -134,7 +134,7 @@ def test_match_subsystem_nomatch_complete(self, context, subsystem):
+@@ -131,7 +131,7 @@ class TestEnumerator(object):
  
      @failed_health_check_wrapper
      @given(_CONTEXT_STRATEGY, _MATCH_PROPERTY_STRATEGY.filter(lambda x: _is_bool(x[1])))
@@ -29,7 +29,7 @@ index 83af62d..0c97a18 100644
      def test_match_property_bool(self, context, pair):
          """
          Verify that a probably boolean property lookup works.
-@@ -152,7 +152,7 @@ def test_match_property_bool(self, context, pair):
+@@ -149,7 +149,7 @@ class TestEnumerator(object):
      @given(
          _CONTEXT_STRATEGY, device_strategy(filter_func=lambda d: d.parent is not None)
      )
@@ -38,7 +38,7 @@ index 83af62d..0c97a18 100644
      def test_match_parent(self, context, device):
          """
          For a given device, verify that it is in its parent's children.
-@@ -178,7 +178,7 @@ class TestEnumeratorMatchCombinations(object):
+@@ -175,7 +175,7 @@ class TestEnumeratorMatchCombinations(ob
          _SYSNAME_STRATEGY,
          _MATCH_PROPERTY_STRATEGY,
      )
@@ -47,7 +47,7 @@ index 83af62d..0c97a18 100644
      def test_match(self, context, subsystem, sysname, ppair):
          """
          Test that matches from different categories are a conjunction.
-@@ -234,7 +234,7 @@ def test_match_passthrough_sys_name(self, enumerator):
+@@ -231,7 +231,7 @@ class TestEnumeratorMatchMethod(object):
              match_sys_name.assert_called_with(mock.sentinel.sys_name)
  
      @given(_ENUMERATOR_STRATEGY)
@@ -56,7 +56,7 @@ index 83af62d..0c97a18 100644
      def test_match_passthrough_tag(self, enumerator):
          """
          Test that special keyword tag results in a match_tag call.
-@@ -245,7 +245,7 @@ def test_match_passthrough_tag(self, enumerator):
+@@ -242,7 +242,7 @@ class TestEnumeratorMatchMethod(object):
  
      @_UDEV_TEST(172, "test_match_passthrough_parent")
      @given(_ENUMERATOR_STRATEGY)
@@ -65,7 +65,7 @@ index 83af62d..0c97a18 100644
      def test_match_passthrough_parent(self, enumerator):
          """
          Test that special keyword 'parent' results in a match parent call.
-@@ -257,7 +257,7 @@ def test_match_passthrough_parent(self, enumerator):
+@@ -254,7 +254,7 @@ class TestEnumeratorMatchMethod(object):
              match_parent.assert_called_with(mock.sentinel.parent)
  
      @given(_ENUMERATOR_STRATEGY)

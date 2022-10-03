@@ -18,13 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyudev
-Version:        0.23.2+14
+Version:        0.24.0
 Release:        0
 Summary:        Udev bindings for Python
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/Python
-URL:            http://pyudev.readthedocs.org/
-Source0:        pyudev-%{version}.tar.xz
+URL:            https://pyudev.readthedocs.io/
+Source0:        https://github.com/pyudev/pyudev/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}-gh.tar.gz
 # PATCH-FIX-UPSTREAM pytest_register_mark.patch gh#pyudev/pyudev#404 mcepl@suse.com
 # Add missing mark registration and register and use another mark
 Patch0:         pytest_register_mark.patch

@@ -1,7 +1,7 @@
-diff --git a/pytest.ini b/pytest.ini
-index 9d9100b..9c60249 100644
---- a/pytest.ini
-+++ b/pytest.ini
+Index: pyudev-0.24.0/pytest.ini
+===================================================================
+--- pyudev-0.24.0.orig/pytest.ini
++++ pyudev-0.24.0/pytest.ini
 @@ -1,3 +1,6 @@
 -[tool:pytest]
 +[pytest]
@@ -10,23 +10,23 @@ index 9d9100b..9c60249 100644
 +markers =
 +    conversion
 +    real_udev
-diff --git a/tests/_device_tests/_attributes_tests.py b/tests/_device_tests/_attributes_tests.py
-index 4e42cda..0ad1384 100644
---- a/tests/_device_tests/_attributes_tests.py
-+++ b/tests/_device_tests/_attributes_tests.py
-@@ -122,6 +122,7 @@ def test_asbool(self, a_context, device_datum):
-                 with pytest.raises(ValueError):
-                     device.attributes.asbool(key)
+Index: pyudev-0.24.0/tests/_device_tests/_attributes_tests.py
+===================================================================
+--- pyudev-0.24.0.orig/tests/_device_tests/_attributes_tests.py
++++ pyudev-0.24.0/tests/_device_tests/_attributes_tests.py
+@@ -125,6 +125,7 @@ class TestAttributes(object):
+                     except KeyError:
+                         pass
  
 +    @pytest.mark.real_udev
      @_UDEV_TEST(167, "test_available_attributes")
      @given(strategies.sampled_from(_DEVICES))
      @settings(max_examples=5)
-diff --git a/tests/_device_tests/_device_tests.py b/tests/_device_tests/_device_tests.py
-index 30230f8..1b9a1af 100644
---- a/tests/_device_tests/_device_tests.py
-+++ b/tests/_device_tests/_device_tests.py
-@@ -215,6 +215,7 @@ def test_device_node(self, a_context, device_datum):
+Index: pyudev-0.24.0/tests/_device_tests/_device_tests.py
+===================================================================
+--- pyudev-0.24.0.orig/tests/_device_tests/_device_tests.py
++++ pyudev-0.24.0/tests/_device_tests/_device_tests.py
+@@ -212,6 +212,7 @@ class TestDevice(object):
          if device.device_node:
              assert is_unicode_string(device.device_node)
  
@@ -34,11 +34,11 @@ index 30230f8..1b9a1af 100644
      @given(_CONTEXT_STRATEGY, strategies.sampled_from(_DEVICE_DATA))
      @settings(max_examples=5)
      def test_device_number(self, a_context, device_datum):
-diff --git a/tests/_device_tests/_devices_tests.py b/tests/_device_tests/_devices_tests.py
-index 2cb4825..01e5a8a 100644
---- a/tests/_device_tests/_devices_tests.py
-+++ b/tests/_device_tests/_devices_tests.py
-@@ -128,6 +128,7 @@ def test_from_name_nonexisting_subsystem(self):
+Index: pyudev-0.24.0/tests/_device_tests/_devices_tests.py
+===================================================================
+--- pyudev-0.24.0.orig/tests/_device_tests/_devices_tests.py
++++ pyudev-0.24.0/tests/_device_tests/_devices_tests.py
+@@ -125,6 +125,7 @@ class TestDevices(object):
          assert error.subsystem == "no_such_subsystem"
          assert error.sys_name == "foobar"
  
@@ -46,7 +46,7 @@ index 2cb4825..01e5a8a 100644
      @failed_health_check_wrapper
      @given(
          _CONTEXT_STRATEGY,
-@@ -143,6 +144,7 @@ def test_from_device_number(self, a_context, a_device):
+@@ -140,6 +141,7 @@ class TestDevices(object):
          device = Devices.from_device_number(a_context, typ, a_device.device_number)
          assert a_device == device
  
@@ -54,7 +54,7 @@ index 2cb4825..01e5a8a 100644
      @failed_health_check_wrapper
      @given(
          _CONTEXT_STRATEGY,
-@@ -178,6 +180,7 @@ def test_from_device_number_invalid_type(self):
+@@ -175,6 +177,7 @@ class TestDevices(object):
          with pytest.raises(DeviceNotFoundByNumberError):
              Devices.from_device_number(_CONTEXT, "foobar", 100)
  
@@ -62,11 +62,11 @@ index 2cb4825..01e5a8a 100644
      @failed_health_check_wrapper
      @given(
          _CONTEXT_STRATEGY,
-diff --git a/tests/test_enumerate.py b/tests/test_enumerate.py
-index 8efb1f8..83af62d 100644
---- a/tests/test_enumerate.py
-+++ b/tests/test_enumerate.py
-@@ -104,7 +104,7 @@ def test_match_subsystem(self, context, subsystem):
+Index: pyudev-0.24.0/tests/test_enumerate.py
+===================================================================
+--- pyudev-0.24.0.orig/tests/test_enumerate.py
++++ pyudev-0.24.0/tests/test_enumerate.py
+@@ -101,7 +101,7 @@ class TestEnumerator(object):
  
      @failed_health_check_wrapper
      @given(_CONTEXT_STRATEGY, _SUBSYSTEM_STRATEGY)
@@ -75,11 +75,11 @@ index 8efb1f8..83af62d 100644
      def test_match_subsystem_nomatch_unfulfillable(self, context, subsystem):
          """
          Combining match and no match should give an empty result.
-diff --git a/tests/test_util.py b/tests/test_util.py
-index 1389b6b..4b8587d 100644
---- a/tests/test_util.py
-+++ b/tests/test_util.py
-@@ -132,6 +132,7 @@ def raise_valueerror():
+Index: pyudev-0.24.0/tests/test_util.py
+===================================================================
+--- pyudev-0.24.0.orig/tests/test_util.py
++++ pyudev-0.24.0/tests/test_util.py
+@@ -129,6 +129,7 @@ def raise_valueerror():
  _CHAR_DEVICES = list(_CONTEXT.list_devices(subsystem="tty"))
  
  
@@ -87,7 +87,7 @@ index 1389b6b..4b8587d 100644
  @pytest.mark.skipif(len(_CHAR_DEVICES) == 0, reason="no tty devices")
  @given(strategies.sampled_from(_CHAR_DEVICES))
  @settings(max_examples=5)
-@@ -145,6 +146,7 @@ def test_get_device_type_character_device(a_device):
+@@ -142,6 +143,7 @@ def test_get_device_type_character_devic
  _BLOCK_DEVICES = list(_CONTEXT.list_devices(subsystem="block"))
  
  

@@ -239,4 +239,15 @@
     <comment>- Skip some unreliable tests.</comment>
     <requestid>962364</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>c977bda7245007f6ab2d942551e1cacc</srcmd5>
+    <version>0.24.0</version>
+    <time>1664797466</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.24.0:
+  * Remove six dependency
+  * Drop pylint tasks
+  * Support python 3.9 and 3.10</comment>
+    <requestid>1007391</requestid>
+  </revision>
 </revisionlist>
