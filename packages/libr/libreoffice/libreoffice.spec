@@ -111,6 +111,8 @@ Patch11:        poppler-22.09.0.patch
 # PATCH-FIX-UPSTREAM revert changes that cause problems with the libreoffice window
 # in KDE, bsc#1203502
 Patch12:        bsc1203502.patch
+# PATCH-FIX-UPSTREAM remove egrep/fgrep calls
+Patch13:        libreoffice-7.4.1.2-grep.patch
 # Build with java 8
 Patch101:       0001-Revert-java-9-changes.patch
 # try to save space by using hardlinks
@@ -1034,6 +1036,7 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch11 -p1
 %endif
 %patch12 -p1
+%patch13 -p1
 %patch990 -p1
 %patch991 -p1
 
