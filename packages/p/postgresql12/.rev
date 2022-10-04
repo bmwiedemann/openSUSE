@@ -277,4 +277,17 @@ Upgrade to version 12.6:
   * https://www.postgresql.org/docs/release/12.12/</comment>
     <requestid>995183</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>de8b36e097805be8557f943016f121bd</srcmd5>
+    <version>12.12</version>
+    <time>1664908648</time>
+    <user>RBrownFactory</user>
+    <comment>- Create mechanism to specify the latest supported LLVM version.
+  Automatically pin to that version if the distribution has a newer
+  unsupported default version.
+- Sync spec file with postgresql15.
+- Disable LLVM JIT on riscv64
+</comment>
+    <requestid>1006685</requestid>
+  </revision>
 </revisionlist>
