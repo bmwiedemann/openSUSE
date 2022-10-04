@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep 30 13:59:10 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- updated to rekor 0.12.2 (jsc#SLE-23476):
+  - add description on /api/v1/index/retrieve endpoint
+  - Adding e2e test coverage
+  - export rekor build/version information
+  - Use POST instead of GET for /api/log/entries/retrieve metrics.
+  - Search through all shards when searching by hash
+
+-------------------------------------------------------------------
 Tue Sep 27 12:22:57 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - updated to rekor 0.12.1 (jsc#SLE-23476):

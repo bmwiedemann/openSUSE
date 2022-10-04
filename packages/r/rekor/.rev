@@ -197,4 +197,17 @@
     - Adds new rekor metrics for latency and QPS. by @var-sdk in #1059</comment>
     <requestid>1006397</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>bc1f215f4c9f952e2cac3648e1c573e9</srcmd5>
+    <version>0.12.2</version>
+    <time>1664908695</time>
+    <user>RBrownFactory</user>
+    <comment>- updated to rekor 0.12.2 (jsc#SLE-23476):
+  - add description on /api/v1/index/retrieve endpoint
+  - Adding e2e test coverage
+  - export rekor build/version information
+  - Use POST instead of GET for /api/log/entries/retrieve metrics.
+  - Search through all shards when searching by hash (forwarded request 1007274 from msmeissn)</comment>
+    <requestid>1007909</requestid>
+  </revision>
 </revisionlist>
