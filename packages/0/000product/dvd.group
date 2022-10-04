@@ -856,6 +856,7 @@
     <package name="hplip" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="hplip-hpijs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-printing -->
     <package name="hplip-sane" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="hplip-udev-rules" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-printing -->
     <package name="hunspell" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="hunspell-tools" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="hwdata" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -1731,6 +1732,7 @@
     <package name="libclamav9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="libclang-cpp14" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="libclang13" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
+    <package name="libclastfm0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libcloudproviders0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libclucene-contribs-lib1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libclucene-core1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -1947,6 +1949,7 @@
     <package name="libglslang11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libglut3" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libglvnd" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libglyr1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libgme0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libgmime-3_0-0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libgmodule-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -3480,6 +3483,7 @@
     <package name="pptp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="pragha" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="pragha-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="pragha-plugins" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="prctl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="presage-data" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="prison-qt5-imports" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
