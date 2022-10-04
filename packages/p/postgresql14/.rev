@@ -89,4 +89,18 @@ Also for older PostgreSQL versions to keep the packaging consistent.</comment>
   * https://www.postgresql.org/docs/release/14.5/</comment>
     <requestid>995185</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>d72acea452fb2037e752477d802dbf1a</srcmd5>
+    <version>14.5</version>
+    <time>1664908651</time>
+    <user>RBrownFactory</user>
+    <comment>- Create mechanism to specify the latest supported LLVM version.
+  Automatically pin to that version if the distribution has a newer
+  unsupported default version.
+
+- Sync spec file with postgresql15.
+
+- Disable LLVM JIT on riscv64</comment>
+    <requestid>1006977</requestid>
+  </revision>
 </revisionlist>

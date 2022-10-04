@@ -19,8 +19,9 @@
 %define pgversion 14.5
 %define pgmajor 14
 %define pgsuffix %pgmajor
-%define buildlibs 1
+%define buildlibs 0
 %define tarversion %{pgversion}
+%define latest_supported_llvm_ver 14
 
 ### CUT HERE ###
 %define pgname postgresql%pgsuffix
@@ -59,6 +60,14 @@ Name:           %pgname
 %define python python
 %endif
 
+%if 0%{?suse_version} >= 1500
+%bcond_without liblz4
+%endif
+
+%if 0%{?sle_version} >= 150100 || 0%{?suse_version} >= 1550
+%bcond_without libzstd
+%endif
+
 %if %mini
 %bcond_with  selinux
 %bcond_with  icu
@@ -73,6 +82,14 @@ BuildRequires:  readline-devel
 BuildRequires:  tcl-devel
 BuildRequires:  timezone
 BuildRequires:  zlib-devel
+%if %{with liblz4}
+BuildRequires:  pkgconfig(liblz4)
+%endif
+
+%if %{with libzstd}
+BuildRequires:  pkgconfig(libzstd)
+%endif
+
 %bcond_without  selinux
 %bcond_without  icu
 %if  !%buildlibs
@@ -88,7 +105,11 @@ BuildRequires:  %libpq
 %endif
 
 %if 0%{?suse_version} >= 1500 && %pgsuffix >= 11 && %pgsuffix < 90
+%ifarch riscv64
+%bcond_with     llvm
+%else
 %bcond_without  llvm
+%endif
 %else
 %bcond_with     llvm
 %endif
@@ -114,9 +135,14 @@ BuildRequires:  libicu-devel
 BuildRequires:  libselinux-devel
 %endif
 %if %{with llvm}
-BuildRequires:  clang
 BuildRequires:  gcc-c++
+%if 0%{?product_libs_llvm_ver} > %{latest_supported_llvm_ver}
+BuildRequires:  clang%{latest_supported_llvm_ver}
+BuildRequires:  llvm%{latest_supported_llvm_ver}-devel
+%else
+BuildRequires:  clang
 BuildRequires:  llvm-devel
+%endif
 %endif
 BuildRequires:  libxslt-devel
 BuildRequires:  openldap2-devel
@@ -398,8 +424,8 @@ Summary:        Contributed Extensions and Additions to PostgreSQL
 Group:          Productivity/Databases/Tools
 Provides:       postgresql-contrib-implementation = %version-%release
 Requires:       postgresql-contrib-noarch >= %pgmajor
-Requires(post): %pgname >= %pgmajor
-Requires:       %pgname >= %pgmajor
+Requires(post): %pgname >= %{version}
+Requires:       %pgname >= %{version}
 PreReq:         %pgname-server = %version-%release
 
 %description contrib
@@ -516,6 +542,12 @@ PACKAGE_TARNAME=%pgname %configure \
         --with-uuid=e2fs \
         --with-libxml \
         --with-libxslt \
+%if %{with liblz4}
+        --with-lz4 \
+%endif
+%if %{with libzstd}
+        --with-zstd \
+%endif
 %if %{with systemd_notify}
         --with-systemd \
 %endif
@@ -578,7 +610,7 @@ mkdir -p %buildroot%pgtestdir/regress
 install -sm 0755 contrib/spi/{refint.so,autoinc.so} %buildroot%pgtestdir/regress
 install -sm 0755 src/test/regress/{pg_regress,regress.so} %buildroot%pgtestdir/regress
 for i in  src/test/regress/{data,expected,input,output,sql}; do
-	cp -r $i %buildroot%pgtestdir/regress/
+	test -d $i && cp -r $i %buildroot%pgtestdir/regress/
 done
 install -m 0644 src/test/regress/*_schedule %buildroot%pgtestdir/regress
 # }}}
