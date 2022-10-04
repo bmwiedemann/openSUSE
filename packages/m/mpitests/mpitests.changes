@@ -1,7 +1,22 @@
 -------------------------------------------------------------------
+Tue Oct  4 09:48:02 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Reenable LTO as it was not the real issue.
+- Disable parallel build which is causing all kind of unexpected cbugs and crashes
+
+-------------------------------------------------------------------
+Thu Sep 29 15:48:01 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update OSU micro benchmark to 6.1
+- Update Intel MPI Benchmarks to v2021.3
+- Add osu-fix-bad-return-values.patch to fix compilation errors
+- Add imb-cpp-flags.patch to fix IMB compilation flags
+- Disable LTO as there are multiple failures with openMPI
+
+-------------------------------------------------------------------
 Mon Sep 12 13:22:05 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- avoid using egrep, use grep -E to be compatible with newer grep versions 
+- avoid using egrep, use grep -E to be compatible with newer grep versions
 
 -------------------------------------------------------------------
 Tue Jun  9 21:14:42 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>

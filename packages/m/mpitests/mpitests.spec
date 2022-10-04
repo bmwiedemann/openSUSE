@@ -22,6 +22,7 @@
 %define pack_suff %{nil}
 %else
 %define pack_suff -%{flavor}
+
 #
 # Returns where MPI home is.
 # Looks in the RPM based on the arg name for bin/mpicc
@@ -38,8 +39,8 @@
 
 %endif
 
-%define osu_ver  5.6.3
-%define imb_ver  2019.6
+%define osu_ver  6.1
+%define imb_ver  2021.3
 %define imb_dir  mpi-benchmarks-IMB-v%{imb_ver}
 %define osu_dir  osu-micro-benchmarks-%{osu_ver}
 
@@ -67,6 +68,8 @@ Source3:        mpitests-runtests.sh
 Source4:        mpitests-run.sh
 Source100:      mpitests-rpmlintrc
 Source101:      _multibuild
+Patch1:         osu-fix-bad-return-values.patch
+Patch2:         imb-cpp-flags.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  dos2unix
 BuildRequires:  gcc-c++
@@ -187,19 +190,26 @@ Set of popular MPI benchmarks: IMB v%{imb_ver} OSU benchmarks ver %{osu_ver}
 %prep
 %setup -c -q
 %setup -T -D -a 1 -q
+%patch1 -p0
+%patch2 -p0
 
 %if "%{flavor}" != ""
 %build
 echo echo %{mpi_home}
 . %{mpi_home}/bin/mpivars.sh
 
+export CFLAGS="%{optflags}"
+export CXXFLAGS="%{optflags}"
+export LDFLAGS="%{optflags}"
+
 # IMB Build
-make %{?_smp_mflags} CC=%{mpi_home}/bin/mpicc CXX=%{mpi_home}/bin/mpicxx -C %{imb_dir}/ all
+make  CC=%{mpi_home}/bin/mpicc CXX=%{mpi_home}/bin/mpicxx \
+     -C %{imb_dir}/ all
 
 # OSU Build
 ( cd %{osu_dir} && \
   ./configure CC=%{mpi_home}/bin/mpicc CXX=%{mpi_home}/bin/mpicxx &&
-  make %{?_smp_mflags} all )
+  make all )
 
 %install
 # IMB

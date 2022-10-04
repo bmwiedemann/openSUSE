@@ -98,4 +98,21 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1004730</requestid>
   </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>3811dd530b38fcfa2e934cdd567ba0e6</srcmd5>
+    <version>3.2</version>
+    <time>1664908697</time>
+    <user>RBrownFactory</user>
+    <comment>- Reenable LTO as it was not the real issue.
+- Disable parallel build which is causing all kind of unexpected cbugs and crashes
+
+- Update OSU micro benchmark to 6.1
+- Update Intel MPI Benchmarks to v2021.3
+- Add osu-fix-bad-return-values.patch to fix compilation errors
+- Add imb-cpp-flags.patch to fix IMB compilation flags
+- Disable LTO as there are multiple failures with openMPI
+
+- avoid using egrep, use grep -E to be compatible with newer grep versions</comment>
+    <requestid>1007910</requestid>
+  </revision>
 </revisionlist>
