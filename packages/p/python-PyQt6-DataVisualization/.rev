@@ -42,4 +42,14 @@
     <comment>- Update devel runtime requirements and supplements (forwarded request 984234 from bnavigator)</comment>
     <requestid>984235</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>24c7e43fe4a4a5373265e9f515ca3ddb</srcmd5>
+    <version>6.4.0</version>
+    <time>1664908659</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 6.4.0
+  *  Added support for Qt v6.4.
+</comment>
+    <requestid>1007752</requestid>
+  </revision>
 </revisionlist>
