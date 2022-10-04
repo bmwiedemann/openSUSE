@@ -20,7 +20,7 @@
 %define mname PyQt6
 %define pyqt_build_for_qt6 1
 Name:           python-%{mname}
-Version:        6.3.1
+Version:        6.4.0
 Release:        0
 Summary:        Python bindings for Qt 6
 License:        GPL-3.0-only OR SUSE-GPL-2.0-with-FLOSS-exception OR NonFree
@@ -51,6 +51,11 @@ BuildRequires:  cmake(Qt6Multimedia)
 BuildRequires:  cmake(Qt6MultimediaWidgets)
 BuildRequires:  cmake(Qt6Nfc)
 BuildRequires:  cmake(Qt6Positioning)
+%ifarch aarch64 x86_64 riscv64
+# qt6-pdf-devel is built in qt6-webengine with ExclusiveArch
+BuildRequires:  cmake(Qt6Pdf)
+BuildRequires:  cmake(Qt6PdfWidgets)
+%endif
 BuildRequires:  cmake(Qt6Qml)
 BuildRequires:  cmake(Qt6Quick)
 BuildRequires:  cmake(Qt6QuickWidgets)
@@ -58,6 +63,7 @@ BuildRequires:  cmake(Qt6RemoteObjects)
 BuildRequires:  cmake(Qt6Sensors)
 BuildRequires:  cmake(Qt6SerialPort)
 BuildRequires:  cmake(Qt6Svg)
+BuildRequires:  cmake(Qt6TextToSpeech)
 BuildRequires:  cmake(Qt6WebChannel)
 BuildRequires:  cmake(Qt6WebSockets)
 %if 0%{?suse_version} >= 1550

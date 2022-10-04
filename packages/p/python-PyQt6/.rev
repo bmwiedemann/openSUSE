@@ -80,4 +80,12 @@ in order to avoid conflicts like boo#1192300</comment>
     <comment></comment>
     <requestid>985022</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8e72533a385a38e2d924422bec4c646c</srcmd5>
+    <version>6.4.0</version>
+    <time>1664908657</time>
+    <user>RBrownFactory</user>
+    <comment>Update to 6.4.0</comment>
+    <requestid>1007749</requestid>
+  </revision>
 </revisionlist>
