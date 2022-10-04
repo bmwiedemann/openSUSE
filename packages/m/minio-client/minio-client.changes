@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Oct 04 08:26:27 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20221001T075614Z:
+  * update minio-go/v7 master
+  * remove 'mc policy' command (#4276)
+  * Remove perf tests from support diagnostics (#4277)
+  * convert tabs to spaces in all commands (#4275)
+  * Save API key if present in the license (#4266)
+  * re-order the support perf UI (#4268)
+  * error out from support commands if not registered (#4271)
+  * Use a pager for help output (#4245)
+  * avoid expensive threads profile by default (#4270)
+  * Upload results of perf tests to SUBNET (#4254)
+  * update minio-go to address missing userMetadata (#4263)
+  * Fix mc admin scanner info --json (#4264)
+  * Update documentation links with new URLs (#4261)
+  * Print supported flags only if there is at least one flag defined (#4259)
+  * rename disks -> drives almost everywhere (#4257)
+
+-------------------------------------------------------------------
 Wed Sep 21 08:29:18 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 20220916T091647Z:
