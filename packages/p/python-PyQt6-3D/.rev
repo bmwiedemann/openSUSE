@@ -32,4 +32,14 @@
     <comment></comment>
     <requestid>970208</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c792e7be9aa4edf87ccada42c63c7681</srcmd5>
+    <version>6.4.0</version>
+    <time>1664908657</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 6.4.0
+  *  Added support for Qt v6.4.
+</comment>
+    <requestid>1007750</requestid>
+  </revision>
 </revisionlist>
