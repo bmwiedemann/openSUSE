@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Oct  3 16:01:20 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.3:
+  * Add support for DIV operator.
+  * Add support for additional SPARK keywords.
+  * Avoid tokens copy.
+  * Add REGEXP as a comparision.
+  * Add DISTINCTROW keyword for MS Access.
+  * Improve parsing of CREATE TABLE AS SELECT.
+  * Fix spelling of INDICATOR keyword.
+  * Fix formatting error in EXTRACT function.
+  * Fix bad parsing of create table statements that use lower case.
+  * Handle backtick as valid quote char.
+  * Allow any unicode character as valid identifier name.
+
+-------------------------------------------------------------------
 Fri Oct  1 12:42:17 UTC 2021 - Johannes Grassler <johannes.grassler@suse.com>
 
 - update to 0.4.2 (bsc#1190741, CVE-2021-32839):
