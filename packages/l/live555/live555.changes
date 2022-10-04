@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Oct  2 12:37:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2022.10.01:
+  - Updated the previous revision so that the virtual function "specialHandlingOfAuthenticationFailure()"
+    is now called only if there is an actual authentication failure - not on the first time that
+    we send back a "401 Unauthorized" response.
+  - Added a new virtual function "specialHandlingOfAuthenticationFailure()" to "RTSPServer" to
+    allow a subclassed "RTSPServer" to take special action (e.g., statistics logging)
+    whenever an authentication failure occurs.
+
+-------------------------------------------------------------------
 Fri Jul 22 22:01:20 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2022.07.14:
