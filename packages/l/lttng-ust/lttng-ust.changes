@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Oct  2 18:13:47 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 2.13.5:
+  * Fix: bytecode validator: reject specialised load field/context
+    ref instructions.
+  * Fix: bytecode validator: reject specialised load instructions.
+  * Fix: event notification capture: validate buffer length.
+  * Fix: event notification capture error handling.
+  * Fix: lttng-ust-comm: wait on wrong child process.
+  * fix: 'make dist' without javah.
+
+-------------------------------------------------------------------
 Mon Aug 29 10:24:41 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.13.4
