@@ -20,7 +20,7 @@
 %define muname PyQt6_WebEngine
 %define pyqt_build_for_qt6 1
 Name:           python-%{mname}
-Version:        6.3.1
+Version:        6.4.0
 Release:        0
 Summary:        Python bindings for the Qt WebEngine framework
 License:        GPL-3.0-only
@@ -41,8 +41,8 @@ BuildRequires:  cmake(Qt6WebEngineQuick)
 BuildRequires:  cmake(Qt6WebEngineWidgets)
 %requires_ge    python-PyQt6
 Provides:       python-qtwebengine-qt6 = %{version}-%{release}
-# No 32-bit builds of QtWebengine >= 6.3.0 anymore
-ExcludeArch:    %{ix86} %{arm}
+# Mirror with qt6-webengine
+ExclusiveArch:  aarch64 x86_64 riscv64
 %python_subpackages
 
 %description
