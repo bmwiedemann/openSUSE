@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 04 00:28:32 UTC 2022 - william.brown@suse.com
+
+- Update to version 1.25.1~23:
+  * Add support for loongarch64
+  * Add DisplayVersion for rustup to registry on Windows.
+  * Add `up` as an alias of `update`
+  * Move rust-analyzer to DUP_TOOLS
+  * Add rust-analyzer proxy.
+  * Improve error message when there is an error caused by override file
+
+-------------------------------------------------------------------
 Mon Sep 26 05:41:12 UTC 2022 - william.brown@suse.com
 
 - Update vendored dependencies
