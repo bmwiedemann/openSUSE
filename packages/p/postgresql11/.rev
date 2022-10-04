@@ -313,4 +313,17 @@ Upgrade to version 11.11:
   * https://www.postgresql.org/docs/release/11.17/</comment>
     <requestid>995182</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>c70c5210083ba2253e5eda8e31e55abc</srcmd5>
+    <version>11.17</version>
+    <time>1664908650</time>
+    <user>RBrownFactory</user>
+    <comment>- Create mechanism to specify the latest supported LLVM version.
+  Automatically pin to that version if the distribution has a newer
+  unsupported default version.
+- Sync spec file with postgresql15.
+- Disable LLVM JIT on riscv64
+</comment>
+    <requestid>1006686</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Sep 22 21:26:36 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Create mechanism to specify the latest supported LLVM version.
+  Automatically pin to that version if the distribution has a newer
+  unsupported default version.
+
+-------------------------------------------------------------------
+Tue Sep 13 12:39:03 UTC 2022 - Reinhard Max <max@suse.com>
+
+- Sync spec file with postgresql15.
+
+-------------------------------------------------------------------
+Mon Sep 12 07:52:42 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Disable LLVM JIT on riscv64
+
+-------------------------------------------------------------------
 Fri Aug 12 10:59:32 UTC 2022 - Reinhard Max <max@suse.com>
 
 - Update to 11.17:
