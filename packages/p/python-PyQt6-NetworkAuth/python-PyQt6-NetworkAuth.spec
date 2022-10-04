@@ -22,7 +22,7 @@
 %define skip_python2 1
 %define pyqt_build_for_qt6 1
 Name:           python-%{mname}
-Version:        6.3.0
+Version:        6.4.0
 Release:        0
 Summary:        Python bindings for the Qt Network Authorization library
 License:        GPL-3.0-only
