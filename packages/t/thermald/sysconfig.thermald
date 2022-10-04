@@ -1,7 +1,7 @@
 ## Path:	Hardware/Thermald
 ## Description:	Thermald settings
 ## Type:	string
-## Default:	"--disable-active-power"
+## Default:	""
 ## ServiceRestart: thermald
 #
 # Options for thermald
@@ -19,7 +19,7 @@
 #    --disable-active-power
 #        Disable active power management. This will not set active power limits.
 #
-THERMALD_OPTS="--disable-active-power"
+THERMALD_OPTS=""
 
 ## Type:        string
 ## Default:     "/etc/thermald/thermal-conf.xml"

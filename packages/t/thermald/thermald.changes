@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct  4 08:12:40 UTC 2022 - Timo Jyrinki <tjyrinki@suse.com>
+
+- Remove --disable-active-power from the service file and sysconfig (boo#1203991)
+
+-------------------------------------------------------------------
 Thu Jul 21 08:10:23 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
 
 - Update to 2.5:
