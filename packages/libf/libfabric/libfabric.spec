@@ -17,10 +17,10 @@
 
 
 #
-%define git_ver .0.abb0b891e97a
+%define git_ver .0.fcf62e5b494b
 
 Name:           libfabric
-Version:        1.15.1
+Version:        1.16.0
 Release:        0
 Summary:        User-space RDMA Fabric Interfaces
 License:        BSD-2-Clause OR GPL-2.0-only
@@ -28,8 +28,6 @@ Group:          Development/Libraries/C and C++
 Source:         %{name}-%{version}%{git_ver}.tar.bz2
 Source1:        baselibs.conf
 Patch0:         libfabric-libtool.patch
-Patch1:         prov-opx-Correctly-disable-OPX-if-unsupported.patch
-Patch2:         disable-flatten-attr.patch
 URL:            http://www.github.com/ofiwg/libfabric
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -72,8 +70,6 @@ services, such as RDMA. This package contains the development files.
 %prep
 %setup -q -n  %{name}-%{version}%{git_ver}
 %patch0 -p1
-%patch1
-%patch2 -p1
 
 %build
 rm -f config/libtool.m4
@@ -123,13 +119,16 @@ rm -f %{buildroot}%{_libdir}/*.la
 %{_includedir}/rdma/fi_cm.h
 %{_includedir}/rdma/fi_collective.h
 %{_includedir}/rdma/fi_domain.h
+%{_includedir}/rdma/fi_endpoint.h
 %{_includedir}/rdma/fi_eq.h
+%{_includedir}/rdma/fi_errno.h
 %{_includedir}/rdma/fi_ext.h
 %{_includedir}/rdma/fi_rma.h
-%{_includedir}/rdma/fi_endpoint.h
-%{_includedir}/rdma/fi_errno.h
 %{_includedir}/rdma/fi_tagged.h
 %{_includedir}/rdma/fi_trigger.h
+%dir %{_includedir}/rdma/providers
+%{_includedir}/rdma/providers/fi_log.h
+%{_includedir}/rdma/providers/fi_prov.h
 %{_includedir}/rdma/fi_ext_usnic.h
 %ifarch x86_64
 %{_includedir}/rdma/fi_ext_psm2.h
