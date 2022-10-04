@@ -99,4 +99,28 @@
 - reenable tests</comment>
     <requestid>956466</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>04d7bbf1429ed9600d22ac90027021eb</srcmd5>
+    <version>1.2.0</version>
+    <time>1664908637</time>
+    <user>RBrownFactory</user>
+    <comment>- update to 1.2.0:
+  * Bugfix: When a close frame with status NO_STATUS_RCVD is sent, send
+    and empty payload.
+  * Bugfix: Changing both encoding and decoding of the Host, from ascii
+    to idna.
+  * Bugfix: Support multiple Sec-WebSocket-Extensions and
+    Sec-WebSocket-Protocol headers.
+  * Accept bytes alongside string as path argument in
+    initiate_upgrade_connection.
+  * Check the state when sending events, raising if the event cannot be
+    sent in the current state.
+  * Send an empty payload for NO_STATUS_RCVD.
+  * Added support for Python 3.10.
+  * Drop support for Python 3.6, meaning the minimum supported version
+    is Python 3.7.0.
+  * Various type checking and code linting improvements.
+- drop 170.patch (upstream)</comment>
+    <requestid>1007724</requestid>
+  </revision>
 </revisionlist>

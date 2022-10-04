@@ -19,15 +19,14 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-wsproto
-Version:        1.0.0
+Version:        1.2.0
 Release:        0
 Summary:        WebSockets state-machine based protocol implementation
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://pypi.python.org/pypi/wsproto
 Source:         https://files.pythonhosted.org/packages/source/w/wsproto/wsproto-%{version}.tar.gz
-# subset of https://github.com/python-hyper/wsproto/pull/170
-Patch1:         170.patch
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

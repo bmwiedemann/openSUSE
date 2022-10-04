@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Oct  3 16:14:29 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.0:
+  * Bugfix: When a close frame with status NO_STATUS_RCVD is sent, send
+    and empty payload.
+  * Bugfix: Changing both encoding and decoding of the Host, from ascii
+    to idna.
+  * Bugfix: Support multiple Sec-WebSocket-Extensions and
+    Sec-WebSocket-Protocol headers.
+  * Accept bytes alongside string as path argument in
+    initiate_upgrade_connection.
+  * Check the state when sending events, raising if the event cannot be
+    sent in the current state.
+  * Send an empty payload for NO_STATUS_RCVD.
+  * Added support for Python 3.10.
+  * Drop support for Python 3.6, meaning the minimum supported version
+    is Python 3.7.0.
+  * Various type checking and code linting improvements.
+- drop 170.patch (upstream)
+
+-------------------------------------------------------------------
 Mon Feb 21 12:08:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add 170.patch to improve python 3.10 compatibility
