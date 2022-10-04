@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct  4 05:44:38 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2022.10.04
+  * Allow open ranges for time ranges
+  * Allow plugin extractors to replace the built-in ones
+  * New extractors
+  * youtube: download post_live videos from start
+  * youtube: add support for Shorts audio pivot feed
+
+-------------------------------------------------------------------
 Thu Sep  1 11:57:24 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2022.09.01
