@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Oct  4 13:03:09 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 1.1.0:
+  * Main updates:
+    - Add generate random support into TPM and PKCS11 providers
+    - Implement configurable exclusion of deprecated primitives
+    - Allow binary PIN values for PKCS11 provider
+    - Recognise a PKCS11 hardware token with its serial number
+      instead of slot number
+  * Full changelog: https://github.com/parallaxsecond/parsec/releases/tag/1.1.0
+
+-------------------------------------------------------------------
+Mon Sep 26 07:41:22 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 1.1.0-rc2
+
+-------------------------------------------------------------------
 Wed Apr  6 07:00:43 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - rust-packaging -> cargo-packaging (bsc#1198131)

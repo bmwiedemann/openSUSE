@@ -127,4 +127,12 @@
     <comment>- rust-packaging -&gt; cargo-packaging (bsc#1198131)</comment>
     <requestid>967250</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c3ae10db1c01aaa551c13c09ff6986b2</srcmd5>
+    <version>1.1.0</version>
+    <time>1664908698</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1007917</requestid>
+  </revision>
 </revisionlist>
