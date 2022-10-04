@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Oct  2 13:13:38 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.13.0:
+  * switch to cmake
+  * Add macros to utilize libfmt formatting for messages
+  * Allow distribution log4j to be used for socketservertest
+  * Allow for hiding of location data
+  * Add ability to get thread name not just ID
+  * Doxygen documentation is not reproducible
+  * Bugfixes see https://logging.apache.org/log4cxx/latest_stable/changelog.html#0.13.0
+
+-------------------------------------------------------------------
 Sun Sep 27 20:11:25 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.11.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package log4cxx
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,28 +17,25 @@
 
 
 Name:           log4cxx
-Version:        0.11.0
+Version:        0.13.0
 Release:        0
-%define soname 11
+%define soname 13
 Summary:        Log4j like C++ Logging Library
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://logging.apache.org/log4cxx/latest_stable/
 Source:         https://downloads.apache.org/logging/log4cxx/%{version}/apache-log4cxx-%{version}.tar.gz
+BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 BuildRequires:  graphviz
 BuildRequires:  libapr-util1-devel
 BuildRequires:  libapr1-devel
 BuildRequires:  libtool
+BuildRequires:  openldap2-devel
 BuildRequires:  pkg-config
 BuildRequires:  unixODBC-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%if 0%{?sles_version} > 10
-BuildRequires:  libesmtp-devel
-%else
-BuildRequires:  openldap2-devel
-%endif
+BuildRequires:  zip
 
 %description
 Log4cxx is a port to C++ of the log4j logging library.
@@ -103,27 +100,12 @@ Log4cxx is a port to C++ of the log4j logging library.
 %setup -qn apache-log4cxx-%{version}
 
 %build
-./autogen.sh
-# --enable-latex-docs apparently doesn't do anything
-%configure --disable-static \
-	--with-ODBC=unixODBC \
-	--with-charset=utf-8 \
-	--with-logchar=utf-8 \
-	--enable-wchar_t \
-	--enable-html-docs \
-	--enable-dot \
-%if 0%{?sles_version} > 10
-	--with-SMTP=libesmtp \
-%endif
-	--enable-doxygen
-
-make %{?_smp_mflags}
+%cmake -DLOG4CXX_CHARSET=utf-8
+%cmake_build
 
 %install
-%makeinstall
-rm -f "%buildroot/%_libdir"/*.la
+%cmake_install
 mkdir -p %{buildroot}%{_docdir}/liblog4cxx
-mv %{buildroot}%{_datadir}/doc/log4cxx %{buildroot}%{_docdir}/liblog4cxx
 
 %post   -n liblog4cxx%{soname} -p /sbin/ldconfig
 %postun -n liblog4cxx%{soname} -p /sbin/ldconfig
@@ -132,9 +114,10 @@ mv %{buildroot}%{_datadir}/doc/log4cxx %{buildroot}%{_docdir}/liblog4cxx
 %{_libdir}/liblog4cxx.so.*
 
 %files -n liblog4cxx-devel
+%{_docdir}/liblog4cxx
+%{_includedir}/log4cxx
+%{_libdir}/cmake/log4cxx/
 %{_libdir}/liblog4cxx.so
 %{_libdir}/pkgconfig/liblog4cxx.pc
-%{_includedir}/log4cxx
-%{_docdir}/liblog4cxx
 
 %changelog
