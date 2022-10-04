@@ -1142,4 +1142,23 @@
 </comment>
     <requestid>1001383</requestid>
   </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>e2b233b3e8243216deeb81e00777f673</srcmd5>
+    <version>1.22.0</version>
+    <time>1664908684</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 1.22.0
+  * Bugfixes:
+    #3868: gui: Auto select of device ID is broken on Internet Explorer
+    #7068: &quot;Restore Versions&quot; GUI breaks when path exists as both directory and file
+    #7965: Trash Can File Versioning always throws errors on restore (even when succeeded)
+    #7988: Unexpected cleanup behavior for Simple File Versioning
+    #8529: WebGUI is displayed incorrectly on &quot;tablet sized&quot; screens
+  * Enhancements:
+    #2698: Sync extended file attributes on supported file systems
+    #7603: WebUI tooltip inconsistencies
+    #8506: macOS Monterey 12.5.1 aliases break after sync
+</comment>
+    <requestid>1007831</requestid>
+  </revision>
 </revisionlist>

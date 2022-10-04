@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Oct  4 08:32:21 UTC 2022 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 1.22.0
+  * Bugfixes:
+    #3868: gui: Auto select of device ID is broken on Internet Explorer
+    #7068: "Restore Versions" GUI breaks when path exists as both directory and file
+    #7965: Trash Can File Versioning always throws errors on restore (even when succeeded)
+    #7988: Unexpected cleanup behavior for Simple File Versioning
+    #8529: WebGUI is displayed incorrectly on "tablet sized" screens
+
+  * Enhancements:
+    #2698: Sync extended file attributes on supported file systems
+    #7603: WebUI tooltip inconsistencies
+    #8506: macOS Monterey 12.5.1 aliases break after sync
+
+-------------------------------------------------------------------
 Tue Sep  6 08:25:10 UTC 2022 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 1.21.0
