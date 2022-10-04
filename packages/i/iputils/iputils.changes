@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct  3 11:45:30 UTC 2022 - Petr Vorel <pvorel@suse.cz>
+
+- Backport 2 fixes for bsc#1203957:
+  0001-ping-Add-SA_RESTART-to-sa_flags.patch
+  0002-ping-Make-ping_rts-struct-static.patch
+
+-------------------------------------------------------------------
 Mon Feb 14 09:03:06 UTC 2022 - pgajdos@suse.com
 
 - rarpd and rdisc tools are now disabled again [jsc#SLE-23521]
