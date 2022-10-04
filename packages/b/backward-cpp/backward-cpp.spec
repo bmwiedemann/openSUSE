@@ -24,6 +24,8 @@ License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/bombela/backward-cpp
 Source:         https://github.com/bombela/backward-cpp/archive/v%{version}.tar.gz#/backward-cpp-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM - https://github.com/bombela/backward-cpp/commit/84bc203529c8f355308f13defe1b86e862f0ce0d
+Patch1:         fix-test-on-aarch64.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 
@@ -41,7 +43,7 @@ BuildArch:      noarch
 Development files for backward-cpp, a stack trace printer for C++.
 
 %prep
-%autosetup -n backward-cpp-%{version}
+%autosetup -p1 -n backward-cpp-%{version}
 
 %build
 # LIBDIR is only used for the CMake Config files, and

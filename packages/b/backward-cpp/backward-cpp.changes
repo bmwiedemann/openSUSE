@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct  4 08:18:56 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch to fix test on aarch64:
+  * fix-test-on-aarch64.patch
+
+-------------------------------------------------------------------
 Tue Sep 27 17:19:31 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 1.6
