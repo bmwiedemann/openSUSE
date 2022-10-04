@@ -236,4 +236,14 @@
     <comment></comment>
     <requestid>1006884</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>95da3c0943dee654b8afccde6d6aff8e</srcmd5>
+    <version>2.1.1</version>
+    <time>1664908636</time>
+    <user>RBrownFactory</user>
+    <comment>- update to 2.1.1:
+  * Fix *schema_path* usage in `XMLSchemaBase.iter_errors()`
+  * Add *allow_empty* option to `XMLSchemaBase` validation API</comment>
+    <requestid>1007722</requestid>
+  </revision>
 </revisionlist>
