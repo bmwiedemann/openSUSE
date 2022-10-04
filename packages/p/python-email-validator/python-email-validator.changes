@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct  4 08:06:34 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 1.3.0:
+  * Deliverability checks now check for 'v=spf1 -all' SPF records as a way to reject more bad domains.
+  * Special use domain names now raise EmailSyntaxError instead of EmailUndeliverableError since they are performed even if check_deliverability is off.
+  * New module-level attributes are added to override the default values of the keyword arguments and the special-use domains list.
+  * The keyword arguments of the public methods are now marked as keyword-only.
+  * pyIsEmail's test cases are added to the tests.
+  * Recommend that check_deliverability be set to False for validation on login pages.
+  * Added an undocumented globally_deliverable option.
+
+-------------------------------------------------------------------
 Thu Sep  8 07:24:18 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.2.1:

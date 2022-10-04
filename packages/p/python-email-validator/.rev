@@ -30,4 +30,20 @@
   * Ignore warning as error from requests-toolbelt via dnspython.</comment>
     <requestid>1001873</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d70c88a0607b0924587acfbc3f9cf9a9</srcmd5>
+    <version>1.3.0</version>
+    <time>1664908679</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 1.3.0:
+  * Deliverability checks now check for 'v=spf1 -all' SPF records as a way to reject more bad domains.
+  * Special use domain names now raise EmailSyntaxError instead of EmailUndeliverableError since they are performed even if check_deliverability is off.
+  * New module-level attributes are added to override the default values of the keyword arguments and the special-use domains list.
+  * The keyword arguments of the public methods are now marked as keyword-only.
+  * pyIsEmail's test cases are added to the tests.
+  * Recommend that check_deliverability be set to False for validation on login pages.
+  * Added an undocumented globally_deliverable option.
+</comment>
+    <requestid>1007824</requestid>
+  </revision>
 </revisionlist>
