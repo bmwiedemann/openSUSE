@@ -271,4 +271,12 @@
   * added tinyexr_thirdparty_upstream.patch from upstream tinyexr (boo#1203278)</comment>
     <requestid>1004169</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>3f2f675d22c791d8eb912b6f8e0d1327</srcmd5>
+    <version>3.5.1</version>
+    <time>1664908671</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1007782</requestid>
+  </revision>
 </revisionlist>

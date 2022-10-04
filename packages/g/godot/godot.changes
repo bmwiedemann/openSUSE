@@ -1,3 +1,28 @@
+Fri Sep 30 12:00:00 UTC 2022 - cunix@mail.de
+
+- Update to 3.5.1
+
+  Added:
+  * Expose Tabs "set/get_tab_button_icon()" to scripting
+
+  Changed:
+  * Include terminal indented comments for code folding in editor
+  * Portals: Show RayCast debug helper
+
+  Fixed:
+  * GNU ld detection for pck_embed linker script
+  * CPUParticles initialize data on "set_amount"
+  * Crash when playing SceneTreeTween right after finishing
+  * "Time.get_unix_time_from_system()" not including msecs
+  * Crash when pressing up on an empty PopupMenu
+  * Exclude disabled StaticBody collisions from NavigationMesh baking
+  * Prevent HTTPRequest from polling invalid client
+  * Hotfix for Bullet's collision margin regression
+
+  And more:
+  https://downloads.tuxfamily.org/godotengine/3.5.1/Godot_v3.5.1-stable_changelog_chrono.txt
+
+-------------------------------------------------------------------
 Mon Sep 12 12:00:00 UTC 2022 - cunix@mail.de
 
 - Heap-buffer-overflow in bundled thirdparty tool tinyexr

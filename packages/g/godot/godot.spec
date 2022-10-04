@@ -24,7 +24,7 @@
 %define ca_bundle %{_localstatedir}/lib/ca-certificates/ca-bundle.pem
 
 Name:           godot
-Version:        3.5
+Version:        3.5.1
 Release:        0
 Summary:        Cross-Platform Game Engine with an Integrated Editor
 License:        MIT
@@ -168,7 +168,7 @@ Provides:       bundled(embree) = 3.13.0
 Provides:       bundled(bullet) = 3.24
 # see comments for freetype2, libpng and zlib Factory BuildRequires
 Provides:       bundled(freetype2)
-Provides:       bundled(libpng)
+Provides:       bundled(libpng) = 1.6.38
 Provides:       bundled(libzstd)
 Provides:       bundled(zlib)
 %if 0%{?sle_version} < 150200
