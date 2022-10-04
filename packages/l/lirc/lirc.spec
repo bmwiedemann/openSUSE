@@ -202,6 +202,9 @@ Some seldom used X11-based tools for debugging lirc configurations.
 %prep
 %autosetup -p1
 
+# fix up timestamps from patching (lirc-autoconf-py310.patch)
+touch tools/Makefile.in
+
 # Don't provide or require anything from _docdir, per policy.
 %global __provides_exclude_from ^%{_docdir}/.*$
 %global __requires_exclude_from ^%{_docdir}/.*$

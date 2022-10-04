@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jul 24 17:36:52 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Fix up timestamps from patching generated files
+
+-------------------------------------------------------------------
 Sun May  8 18:45:24 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Add lirc-autoconf-py310.patch: Output of autoreconf in order to
