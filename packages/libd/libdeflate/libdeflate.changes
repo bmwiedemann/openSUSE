@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct  3 15:20:28 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.14:
+  Significantly improved decompression performance on all platforms.  Examples
+  include (measuring DEFLATE only):
+  | Platform                           | Speedup over v1.13 |
+  |------------------------------------|--------------------|
+  | x86_64 (Intel Comet Lake), gcc     | 1.287x             |
+
+-------------------------------------------------------------------
 Mon Aug  8 20:57:28 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.13:
