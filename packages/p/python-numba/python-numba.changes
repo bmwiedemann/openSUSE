@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Oct  3 12:02:05 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 0.56.2
+  This release continues to add new features, bug fixes and stability
+  improvements to Numba. Please note that this will be the last release that
+  has support for Python 3.7 as the next release series (Numba 0.57) will
+  support Python 3.11! Also note that, this will be the last release to support
+  linux-32 packages produced by the Numba team.
+
+- Remove fix-max-name-size.patch, it's included in the new version.
+- Add update-tbb-backend-calls-2021.6.patch to make it compatible with the
+  latest tbb-devel version.
+- Add fix-cli-test.patch to disable one test that fails with OBS.
+
+-------------------------------------------------------------------
 Mon Jul 11 16:05:33 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.55.2

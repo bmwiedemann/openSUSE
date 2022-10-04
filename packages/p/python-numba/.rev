@@ -278,4 +278,22 @@ Python2 support was turned off by accident.  I don't go out of my way to support
     <comment></comment>
     <requestid>988613</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>6b6e43afe7b0c9c05d8251222456fc87</srcmd5>
+    <version>0.56.2</version>
+    <time>1664908678</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 0.56.2
+  This release continues to add new features, bug fixes and stability
+  improvements to Numba. Please note that this will be the last release that
+  has support for Python 3.7 as the next release series (Numba 0.57) will
+  support Python 3.11! Also note that, this will be the last release to support
+  linux-32 packages produced by the Numba team.
+- Remove fix-max-name-size.patch, it's included in the new version.
+- Add update-tbb-backend-calls-2021.6.patch to make it compatible with the
+  latest tbb-devel version.
+- Add fix-cli-test.patch to disable one test that fails with OBS.
+</comment>
+    <requestid>1007810</requestid>
+  </revision>
 </revisionlist>

@@ -31,24 +31,25 @@
 %bcond_with test
 %endif
 Name:           python-numba%{psuffix}
-Version:        0.55.2
+Version:        0.56.2
 Release:        0
 Summary:        NumPy-aware optimizing compiler for Python using LLVM
 License:        BSD-2-Clause
 URL:            https://numba.pydata.org/
 Source:         https://files.pythonhosted.org/packages/source/n/numba/numba-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix-max-name-size.patch -- fix for gh#numba/numba#3876 -- from gh#numba/numba#4373
-Patch0:         fix-max-name-size.patch
 # PATCH-FIX-OPENSUSE skip tests failing due to OBS specifics
+Patch2:         fix-cli-test.patch
 Patch3:         skip-failing-tests.patch
+# PATCH-FIX-OPENSUSE update-tbb-backend-calls-2021.6.patch, based on gh#numba/numba#7608
+Patch4:         update-tbb-backend-calls-2021.6.patch
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module numpy-devel >= %{min_numpy_ver} with %python-numpy-devel < %{max_numpy_ver}}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
-BuildRequires:  (tbb-devel >= 2021 with tbb-devel < 2021.6)
-Requires:       (python-llvmlite >= 0.38 with python-llvmlite < 0.39)
+BuildRequires:  (tbb-devel >= 2021)
+Requires:       (python-llvmlite >= 0.39 with python-llvmlite < 0.40)
 Requires:       (python-numpy >= %{min_numpy_ver} with python-numpy < %{max_numpy_ver})
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
