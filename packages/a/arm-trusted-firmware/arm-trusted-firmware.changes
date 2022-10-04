@@ -6,6 +6,18 @@ Tue Aug 30 11:34:06 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
   See https://developer.trustedfirmware.org/T996
 
 -------------------------------------------------------------------
+Mon Aug 29 10:47:03 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
+
+- Workaround for gcc 7 constant assigment error (boo#1202477).
+  + Workaround-gcc-7-constant-assignment-error.patch
+
+-------------------------------------------------------------------
+Wed Aug 17 08:48:09 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
+
+- Do not disable build on Leap
+- Fix build on Tumbleweed
+
+-------------------------------------------------------------------
 Wed Jul 13 11:25:48 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix build of zynqmp with gcc7 (Leap 15.4)

@@ -1,0 +1,138 @@
+From 9a9840d726c90dc7dad8d1c07c5f7e0ca091370b Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Mon, 29 Aug 2022 12:43:17 +0200
+Subject: [PATCH] Workaround gcc 7 constant assignment error.
+
+[   30s] plat/imx/imx8qx/imx8qx_bl31_setup.c:32:54: error: initializer element is not constant
+[   30s]  static const unsigned long BL31_COHERENT_RAM_START = BL_COHERENT_RAM_BASE;
+[   30s]                                                       ^~~~~~~~~~~~~~~~~~~~
+[   30s] plat/imx/imx8qx/imx8qx_bl31_setup.c:33:52: error: initializer element is not constant
+[   30s]  static const unsigned long BL31_COHERENT_RAM_END = BL_COHERENT_RAM_END;
+[   30s]                                                     ^~~~~~~~~~~~~~~~~~~
+[   30s] plat/imx/imx8qx/imx8qx_bl31_setup.c:34:45: error: initializer element is not constant
+[   30s]  static const unsigned long BL31_RO_START  = BL_CODE_BASE;
+[   30s]                                              ^~~~~~~~~~~~
+[   30s] plat/imx/imx8qx/imx8qx_bl31_setup.c:35:44: error: initializer element is not constant
+[   30s]  static const unsigned long BL31_RO_END   = BL_CODE_END;
+[   30s]                                             ^~~~~~~~~~~
+[   30s] plat/imx/imx8qx/imx8qx_bl31_setup.c:36:44: error: initializer element is not constant
+[   30s]  static const unsigned long BL31_RW_END   = BL_END;
+[   30s]                                             ^~~~~~
+
+Signed-off-by: Michal Suchanek <msuchanek@suse.de>
+---
+ plat/imx/imx8qm/imx8qm_bl31_setup.c   | 10 +++++-----
+ plat/imx/imx8qx/imx8qx_bl31_setup.c   | 10 +++++-----
+ plat/renesas/common/bl31_plat_setup.c |  8 ++++----
+ plat/renesas/rcar/bl2_plat_setup.c    |  8 ++++----
+ plat/renesas/rzg/bl2_plat_setup.c     |  8 ++++----
+ 5 files changed, 22 insertions(+), 22 deletions(-)
+
+diff --git a/plat/imx/imx8qm/imx8qm_bl31_setup.c b/plat/imx/imx8qm/imx8qm_bl31_setup.c
+index 68eb53422..ee3384a2e 100644
+--- a/plat/imx/imx8qm/imx8qm_bl31_setup.c
++++ b/plat/imx/imx8qm/imx8qm_bl31_setup.c
+@@ -29,11 +29,11 @@
+ #include <sci/sci.h>
+ #include <sec_rsrc.h>
+ 
+-static const unsigned long BL31_COHERENT_RAM_START	= BL_COHERENT_RAM_BASE;
+-static const unsigned long BL31_COHERENT_RAM_END	= BL_COHERENT_RAM_END;
+-static const unsigned long BL31_RO_START		= BL_CODE_BASE;
+-static const unsigned long BL31_RO_END			= BL_CODE_END;
+-static const unsigned long BL31_RW_END			= BL_END;
++#define BL31_COHERENT_RAM_START ((const unsigned long)BL_COHERENT_RAM_BASE)
++#define BL31_COHERENT_RAM_END ((const unsigned long)BL_COHERENT_RAM_END)
++#define BL31_RO_START ((const unsigned long)BL_CODE_BASE)
++#define BL31_RO_END ((const unsigned long)BL_CODE_END)
++#define BL31_RW_END ((const unsigned long)BL_END)
+ 
+ IMPORT_SYM(unsigned long, __RW_START__, BL31_RW_START);
+ 
+diff --git a/plat/imx/imx8qx/imx8qx_bl31_setup.c b/plat/imx/imx8qx/imx8qx_bl31_setup.c
+index 1da8d296c..7aca057bf 100644
+--- a/plat/imx/imx8qx/imx8qx_bl31_setup.c
++++ b/plat/imx/imx8qx/imx8qx_bl31_setup.c
+@@ -29,11 +29,11 @@
+ #include <sci/sci.h>
+ #include <sec_rsrc.h>
+ 
+-static const unsigned long BL31_COHERENT_RAM_START	= BL_COHERENT_RAM_BASE;
+-static const unsigned long BL31_COHERENT_RAM_END	= BL_COHERENT_RAM_END;
+-static const unsigned long BL31_RO_START		= BL_CODE_BASE;
+-static const unsigned long BL31_RO_END			= BL_CODE_END;
+-static const unsigned long BL31_RW_END			= BL_END;
++#define BL31_COHERENT_RAM_START ((const unsigned long)BL_COHERENT_RAM_BASE)
++#define BL31_COHERENT_RAM_END ((const unsigned long)BL_COHERENT_RAM_END)
++#define BL31_RO_START ((const unsigned long)BL_CODE_BASE)
++#define BL31_RO_END ((const unsigned long)BL_CODE_END)
++#define BL31_RW_END ((const unsigned long)BL_END)
+ 
+ IMPORT_SYM(unsigned long, __RW_START__, BL31_RW_START);
+ 
+diff --git a/plat/renesas/common/bl31_plat_setup.c b/plat/renesas/common/bl31_plat_setup.c
+index 60960d4c6..6edc9e60d 100644
+--- a/plat/renesas/common/bl31_plat_setup.c
++++ b/plat/renesas/common/bl31_plat_setup.c
+@@ -22,12 +22,12 @@
+ #include "rcar_private.h"
+ #include "rcar_version.h"
+ 
+-static const uint64_t BL31_RO_BASE		= BL_CODE_BASE;
+-static const uint64_t BL31_RO_LIMIT		= BL_CODE_END;
++#define BL31_RO_BASE ((const uint64_t)BL_CODE_BASE)
++#define BL31_RO_LIMIT ((const uint64_t)BL_CODE_END)
+ 
+ #if USE_COHERENT_MEM
+-static const uint64_t BL31_COHERENT_RAM_BASE	= BL_COHERENT_RAM_BASE;
+-static const uint64_t BL31_COHERENT_RAM_LIMIT	= BL_COHERENT_RAM_END;
++#define BL31_COHERENT_RAM_BASE ((const uint64_t)BL_COHERENT_RAM_BASE)
++#define BL31_COHERENT_RAM_LIMIT ((const uint64_t)BL_COHERENT_RAM_END)
+ #endif /* USE_COHERENT_MEM */
+ 
+ extern void plat_rcar_gic_driver_init(void);
+diff --git a/plat/renesas/rcar/bl2_plat_setup.c b/plat/renesas/rcar/bl2_plat_setup.c
+index bbfa16927..2416181a6 100644
+--- a/plat/renesas/rcar/bl2_plat_setup.c
++++ b/plat/renesas/rcar/bl2_plat_setup.c
+@@ -53,12 +53,12 @@
+  * Following symbols are only used during plat_arch_setup() only
+  * when RCAR_BL2_DCACHE is enabled.
+  */
+-static const uint64_t BL2_RO_BASE		= BL_CODE_BASE;
+-static const uint64_t BL2_RO_LIMIT		= BL_CODE_END;
++#define BL2_RO_BASE ((const uint64_t)BL_CODE_BASE)
++#define BL2_RO_LIMIT ((const uint64_t)BL_CODE_END)
+ 
+ #if USE_COHERENT_MEM
+-static const uint64_t BL2_COHERENT_RAM_BASE	= BL_COHERENT_RAM_BASE;
+-static const uint64_t BL2_COHERENT_RAM_LIMIT	= BL_COHERENT_RAM_END;
++#define BL2_COHERENT_RAM_BASE ((const uint64_t)BL_COHERENT_RAM_BASE)
++#define BL2_COHERENT_RAM_LIMIT ((const uint64_t)BL_COHERENT_RAM_END)
+ #endif
+ 
+ #endif
+diff --git a/plat/renesas/rzg/bl2_plat_setup.c b/plat/renesas/rzg/bl2_plat_setup.c
+index e9dbd2058..2d458a68f 100644
+--- a/plat/renesas/rzg/bl2_plat_setup.c
++++ b/plat/renesas/rzg/bl2_plat_setup.c
+@@ -50,12 +50,12 @@
+  * Following symbols are only used during plat_arch_setup() only
+  * when RCAR_BL2_DCACHE is enabled.
+  */
+-static const uint64_t BL2_RO_BASE		= BL_CODE_BASE;
+-static const uint64_t BL2_RO_LIMIT		= BL_CODE_END;
++#define BL2_RO_BASE ((const uint64_t)BL_CODE_BASE)
++#define BL2_RO_LIMIT ((const uint64_t)BL_CODE_END)
+ 
+ #if USE_COHERENT_MEM
+-static const uint64_t BL2_COHERENT_RAM_BASE	= BL_COHERENT_RAM_BASE;
+-static const uint64_t BL2_COHERENT_RAM_LIMIT	= BL_COHERENT_RAM_END;
++#define BL2_COHERENT_RAM_BASE ((const uint64_t)BL_COHERENT_RAM_BASE)
++#define BL2_COHERENT_RAM_LIMIT ((const uint64_t)BL_COHERENT_RAM_END)
+ #endif /* USE_COHERENT_MEM */
+ 
+ #endif /* RCAR_BL2_DCACHE */
+-- 
+2.37.1
+

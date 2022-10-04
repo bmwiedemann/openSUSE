@@ -65,6 +65,7 @@ Source2:        A3700-utils-marvell-%{a3700_utils_ver}.tar.gz
 Source3:        binaries-marvell-%{mv_bin_ver}.tar.gz
 Patch1:         atf-allow-non-git-dir.patch
 Patch2:         rockchip-rk3399-Align-default-baudrate-with-u-boot.patch
+Patch3:         Workaround-gcc-7-constant-assignment-error.patch
 # Workaround for GCC12 bug - https://gcc.gnu.org/bugzilla/show_bug.cgi?id=105523
 Patch100:       fix-mv-ddr-marvell-armada.patch
 # Fix build with GCC12 - https://github.com/MarvellEmbeddedProcessors/mv-ddr-marvell/issues/37
@@ -139,21 +140,9 @@ BuildRequires:  u-boot-rpi3
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
-# Disable some targets on SLE15-SP4 because of missing deps
-%if 0%{suse_version} < 1550
-%if "%{platform}" == "a3700" || "%{platform}" == "hikey" || "%{platform}" == "hikey960" || "%{platform}" == "imx8qm" || "%{platform}" == "imx8qx" || "%{platform}" == "rk3399"
-ExclusiveArch:  do_not_build
-%else
 %if "%{platform}" != ""
 BuildArch:      noarch
 ExclusiveArch:  aarch64
-%endif
-%endif
-%else
-%if "%{platform}" != ""
-BuildArch:      noarch
-ExclusiveArch:  aarch64
-%endif
 %endif
 
 %if "%{platform}" == "rpi4"
@@ -235,12 +224,16 @@ popd
 %endif
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 %if %{suse_version} <= 1500
 # GCC7 does not support -mbranch-protection option
 sed -i -e "s/TF_CFLAGS_aarch64	+=	-mbranch-protection=none//" plat/xilinx/zynqmp/platform.mk
 %endif
 
 %build
+%if %{suse_version} > 1500
+export TF_LDFLAGS=--no-warn-rwx-segments
+%endif
 export BUILD_MESSAGE_TIMESTAMP="\"$(date -d "$(head -n 2 %{_sourcedir}/arm-trusted-firmware.changes | tail -n 1 | cut -d- -f1 )" -u "+%%H:%%M:%%S, %%b %%e %%Y")\""
 %if "%{platform}" == "a3700"
 export CRYPTOPP_LIBDIR=%{_libdir}
