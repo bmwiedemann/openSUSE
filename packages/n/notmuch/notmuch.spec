@@ -18,13 +18,13 @@
 
 %define libversion 5
 Name:           notmuch
-Version:        0.35
+Version:        0.37
 Release:        0
 Summary:        The mail indexer
 License:        GPL-3.0-or-later
 URL:            https://notmuchmail.org
-Source0:        %{URL}/releases/notmuch-%{version}.tar.xz
-Source1:        %{URL}/releases/notmuch-%{version}.tar.xz.asc
+Source0:        https://notmuchmail.org/releases/notmuch-%{version}.tar.xz
+Source1:        https://notmuchmail.org/releases/notmuch-%{version}.tar.xz.asc
 # key fingerprint: 7A18 807F 100A 4570 C596  8420 7E4E 65C8 720B 706B
 Source4:        notmuch.keyring
 BuildRequires:  libxapian-devel
@@ -232,6 +232,7 @@ fi
 %{_bindir}/%{name}
 %{_bindir}/%{name}-emacs-mua
 %{_mandir}/man1/%{name}*.1%{?ext_man}
+%{_mandir}/man1/nmbug.1%{?ext_man}
 %{_mandir}/man5/%{name}-hooks.5%{?ext_man}
 %{_mandir}/man7/%{name}-search-terms.7%{?ext_man}
 %{_mandir}/man7/%{name}-properties.7%{?ext_man}
@@ -245,6 +246,7 @@ fi
 %{_libdir}/libnotmuch.so
 
 %files doc
+%{_infodir}/nmbug.info%{?ext_info}
 %{_infodir}/%{name}.info%{?ext_info}
 %{_infodir}/%{name}-*.info%{?ext_info}
 

@@ -355,4 +355,40 @@ From the NEWS file, this version reports the following:
     <comment></comment>
     <requestid>958304</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>34dd1fb93fffb49354b86fde8c7a41c1</srcmd5>
+    <version>0.37</version>
+    <time>1664908668</time>
+    <user>RBrownFactory</user>
+    <comment>- update to 0.37:
+  * Fix uninitialized field in message objects.
+  * Add one sided lastmod ranges for sexp queries.
+  * Expand macro parameters inside regex and wildcard modifiers.
+  * `notmuch help` now works for external commands.
+  * `NOTMUCH_CONFIG` is now passed to external commands and hooks.
+  * The function `notmuch-mua-mail` now moves point depending on the
+  * provided arguments.
+  * Restrict what mime types are inlined in replies and on refresh.
+  * The functions in notmuch-query.el are now obsolete and may be removed
+  * in a future version of Notmuch.
+  * Add some controls for lazy display of message bodies (See &quot;Dealing
+  * with large messages and threads&quot; in the notmuch-emacs documentation).
+  * Allow the user to select (with '%') a different duplicate message file
+  * to display.
+  * Use `message-dont-reply-to-names` in `notmuch-message-mode`.
+  * Add the `sexp` prefix to the infix (traditional) query parser. This
+  * allows specific subqueries to be parsed by the sexp parser (with
+  * appropropriate quoting). See `notmuch-search-terms(7)` for details.
+  * Add another heuristic to regexp fields to prevent phrase parsing of
+  * bracketed sub-expressions.
+  * Envelope from (&quot;From &quot;) headers are now escaped as X-Envelope-From: in
+  * input to `notmuch-insert`. This prevents creating mbox files when
+  * calling `notmuch-insert` from e.g. `postfix`.
+  * Use the `config_pairs` API in ConfigIterator. This returns all
+  * matching key-value pairs, not just those that happen to be stored in
+  * the database.
+  * Reorganize documention for `notmuch-config`. Add a few links from
+  * other man pages. (forwarded request 1007713 from dirkmueller)</comment>
+    <requestid>1007767</requestid>
+  </revision>
 </revisionlist>

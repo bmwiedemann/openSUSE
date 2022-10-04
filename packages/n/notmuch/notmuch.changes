@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Oct  3 15:43:57 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.37:
+  * Fix uninitialized field in message objects.
+  * Add one sided lastmod ranges for sexp queries.
+  * Expand macro parameters inside regex and wildcard modifiers.
+  * `notmuch help` now works for external commands.
+  * `NOTMUCH_CONFIG` is now passed to external commands and hooks.
+  * The function `notmuch-mua-mail` now moves point depending on the
+  * provided arguments.
+  * Restrict what mime types are inlined in replies and on refresh.
+  * The functions in notmuch-query.el are now obsolete and may be removed
+  * in a future version of Notmuch.
+  * Add some controls for lazy display of message bodies (See "Dealing
+  * with large messages and threads" in the notmuch-emacs documentation).
+  * Allow the user to select (with '%') a different duplicate message file
+  * to display.
+  * Use `message-dont-reply-to-names` in `notmuch-message-mode`.
+  * Add the `sexp` prefix to the infix (traditional) query parser. This
+  * allows specific subqueries to be parsed by the sexp parser (with
+  * appropropriate quoting). See `notmuch-search-terms(7)` for details.
+  * Add another heuristic to regexp fields to prevent phrase parsing of
+  * bracketed sub-expressions.
+  * Envelope from ("From ") headers are now escaped as X-Envelope-From: in
+  * input to `notmuch-insert`. This prevents creating mbox files when
+  * calling `notmuch-insert` from e.g. `postfix`.
+  * Use the `config_pairs` API in ConfigIterator. This returns all
+  * matching key-value pairs, not just those that happen to be stored in
+  * the database.
+  * Reorganize documention for `notmuch-config`. Add a few links from
+  * other man pages.
+
+-------------------------------------------------------------------
 Tue Mar  1 00:00:00 CET 2022 - dsterba@suse.cz
 
 - Version 0.35
