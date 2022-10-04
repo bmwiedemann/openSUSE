@@ -100,8 +100,8 @@ BuildRequires:  rust >= 1.59
 # minimal requirement:
 BuildRequires:  rust+cargo >= 1.59
 # actually used upstream:
-BuildRequires:  cargo1.60
-BuildRequires:  rust1.60
+BuildRequires:  cargo1.63
+BuildRequires:  rust1.63
 %endif
 %if 0%{useccache} != 0
 BuildRequires:  ccache
