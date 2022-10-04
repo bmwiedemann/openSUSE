@@ -293,4 +293,15 @@
 - Update Requires from setup.py (forwarded request 1005339 from glaubitz)</comment>
     <requestid>1006398</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>4e1069b26fc9d6165746c938b85042eb</srcmd5>
+    <version>28.0.1</version>
+    <time>1664908689</time>
+    <user>RBrownFactory</user>
+    <comment>- New upstream release
+  + Version 28.0.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1007840 from glaubitz)</comment>
+    <requestid>1007870</requestid>
+  </revision>
 </revisionlist>
