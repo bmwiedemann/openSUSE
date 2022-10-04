@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct  3 23:32:29 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Add _constraints to prevent random failures due to OBS resource
+  issues.
+
+-------------------------------------------------------------------
 Wed May 25 00:48:01 UTC 2022 - william.brown@suse.com
 
 - Update to version 0.17.0~git0.5214457:
