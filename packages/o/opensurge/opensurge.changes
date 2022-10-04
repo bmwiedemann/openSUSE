@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 30 20:53:50 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.6.0.3
+  * Tweaks to the level design, to the default controls and to
+    the build system.
+  * Changed the way the engine handles analog sticks.
+
+-------------------------------------------------------------------
 Thu Sep 15 22:01:11 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.6.0.2
