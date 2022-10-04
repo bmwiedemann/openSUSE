@@ -1,7 +1,7 @@
 #
 # spec file for package libvterm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,13 +22,13 @@
 %{?!_make_verbose:%define _make_verbose V=1 VERBOSE=1}
 
 Name:           libvterm
-Version:        0.1.3
+Version:        0.3
 Release:        0
 Summary:        An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://launchpad.net/libvterm
-Source:         https://launchpad.net/libvterm/trunk/v0.1/+download/libvterm-%{version}.tar.gz
+Source:         https://launchpad.net/libvterm/trunk/v0.3/+download/libvterm-%{version}.tar.gz
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 
@@ -80,6 +80,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 # Remove static library file.
 rm -vf %{buildroot}%{_libdir}/%{name}.a
+
+%check
+make test
 
 %post   -n %{name}%{sover} -p /sbin/ldconfig
 %postun -n %{name}%{sover} -p /sbin/ldconfig

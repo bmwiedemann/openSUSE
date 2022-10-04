@@ -1,4 +1,100 @@
 -------------------------------------------------------------------
+Mon Oct  3 16:40:10 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.3.0 (unfortunately, upstream doesn't provide
+  correct changelog so this is just log of VCS):
+  - Pass lineinfos into screen resize callback; make it
+    responsible for reshaping them
+  - getchar() into unsigned char in vterm-ctrl.c to avoid
+    complaints of comparison signedness (LP1894806)
+  - Avoid remaining VLA by bounding the combining-char search to
+    the max supported chars per cell
+  - Avoid putting a potentially-unbounded VLA on the stack as
+    temporary working space for character decode, by using the
+    tmpbuffer in on_text instead
+  - Set a much larger default out/tmpbuffer size (4096bytes),
+    because now a size-constrained caller could make them smaller
+  - Permit overriding size of outbuffer / tmpbuffer as builder
+    params
+  - Create struct VTermBuilder and vterm_build()
+  - VTermAllocator field can be const in struct VTerm
+  - Store INCDIR directly in .pc file rather than indirecting it
+    via PREFIX
+  - Version bump to v0.2
+  - Selection send and recv should use independent partial-state
+    storage
+  - Also support sending the selection
+  - Replace vterm_push_output_sprintf_dcs with a more generic
+    _str version that can independently control introduction C1
+    vs terminating ST
+  - Add a selection callback for query
+  - Don't emit any mouse sequences when mouse reporting disabled
+  - Remember to reset mouse flags as part of overall
+    vterm_state_reset()
+  - Add a usage comment at the top of bin/unterm.c
+  - Capture unit test for OSC 52
+  - Further bugfixes for OSC 52 handling in various split-write
+    conditions
+  - Bugfix for cornercase where two-byte ST is split across
+    buffer writes
+  - Initial attack at OSC 52 = selection management, to set the
+    clipboard
+  - An initial attack at documenting (most of?) the sequences
+    from xterm
+  - Notation fixes in doc/seqs.txt
+  - Provide state fallbacks for APC/PM/SOS
+  - Other C0/C1 controls are permitted within SOS strings
+  - Recognise APC, PM and SOS in the parser
+  - Use 0x99 as a C1 test byte instead of 0x9F because the latter
+    is APC which is a string introducer
+  - Set _XOPEN_SOURCE 600 unconditionally in vterm-ctrl.c
+  - Make libvterm compile on arm64 Macs (from
+    https://github.com/neovim/libvterm/pull/6)
+  - Ensure that resize shorter does not send the cursor to a
+    negative row
+  - Remove debugging print on DECRQSS
+  - Regenerate fullwidth.inc for latest Unicode
+  - A much more efficient find-wide-chars.pl
+  - Accept OSC ... ST without an intermediate semicolon after the
+    command number
+  - Fix printf argument types
+    (https://github.com/vim/vim/pull/5456)
+  - Partial bugfix for uncleared area after resize (thanks Jörg
+    Richter)
+  - Recognise SGR 8 for conceal (thanks Jörg Richter)
+  - Define a new dedicated 'state fallbacks' struct rather than
+    abusing the parser callbacks one
+  - New string-handling API that streams in possibly-multiple
+    fragments
+  - Remember to length-check accesses at cell->chars[] because it
+    is not necessarily zero-terminated (LP 1846869)
+  - fix memory leak of vt->tmpbuffer (LP 1843449)
+  - t/run-test.pl option to abort on first fail
+  - Accept convenience formatting in ?screen_chars assertions;
+    makes unit tests more readable
+  - Include test script line number in t/run-test.pl output
+  - Add a short unit test that resize on altscreen at least
+    doesn't crash
+  - Only enable altscreen during unit tests that need it
+  - Better handling of resize to try to avoid the final
+    memmove(), and not drag scrollback in unnecessarily
+  - Can't lazy-allocate state->lineinfos[BUFIDX_ALTSCREEN]
+    because that allocs during byte run
+  - Initial hack at tracking 'continuation' marks per line in
+    lineinfo
+  - Allow run-test.pl to cope with empty assertion results
+  - Be sure to clear DWL/DHL status for blank lines caused by
+    scroll
+  - Pass 'state fields' as a struct into resize callback in case
+    of other things it needs to edit
+  - Remember to store a state->lineinfo array for both buffers
+  - Do all the initialising of VTermState in vterm_state_new()
+  - Rename realloc_buffer() to just alloc_buffer() since it
+    doesn't need to realloc now
+  - Rewrite of resize handling logic to hopefully cope much
+    better with reflow
+
+-------------------------------------------------------------------
 Mon Mar 30 20:04:17 CEST 2020 - Matej Cepl <mcepl@suse.com>
 
 - All my previous builds were just figments of my imagination,

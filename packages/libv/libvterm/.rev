@@ -78,4 +78,12 @@
   - Fix printf argument types (gh#vim/vim#5456)</comment>
     <requestid>790279</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2e7c2ec6f6e74d62e7d3edfdcc3c36bf</srcmd5>
+    <version>0.3</version>
+    <time>1664908654</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1007736</requestid>
+  </revision>
 </revisionlist>
