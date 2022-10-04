@@ -1,0 +1,13 @@
+Index: cfe-6.0.0rc1.src/lib/Driver/Driver.cpp
+===================================================================
+--- cfe-6.0.0rc1.src.orig/lib/Driver/Driver.cpp
++++ cfe-6.0.0rc1.src/lib/Driver/Driver.cpp
+@@ -115,7 +115,7 @@ Driver::Driver(StringRef ClangExecutable
+   // Dir is bin/ or lib/, depending on where BinaryPath is.
+   std::string Dir = std::string(llvm::sys::path::parent_path(BinaryPath));
+ 
+-  SmallString<128> P(Dir);
++  SmallString<128> P((Dir != "") ? Dir : "/usr/bin/");
+   if (CustomResourceDir != "") {
+     llvm::sys::path::append(P, CustomResourceDir);
+   } else {

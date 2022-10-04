@@ -1,0 +1,44 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3776fa0df610e013a264030244e0c18e</srcmd5>
+    <version>15.0.1</version>
+    <time>1664908643</time>
+    <user>RBrownFactory</user>
+    <comment>- Initial submit based on version 15.0.1.
+* For details, see the release notes:
+- https://releases.llvm.org/15.0.0/docs/ReleaseNotes.html
+- https://releases.llvm.org/15.0.0/tools/clang/docs/ReleaseNotes.html
+- https://releases.llvm.org/15.0.0/tools/clang/tools/extra/docs/ReleaseNotes.html
+- https://releases.llvm.org/15.0.0/projects/libcxx/docs/ReleaseNotes.html
+- https://releases.llvm.org/15.0.0/tools/lld/docs/ReleaseNotes.html
+* New LLVM tools:
+- llvm-debuginfod: Provides debug info to remote hosts.
+- llvm-dwarfutil: Can copy and manipulate debug info.
+- llvm-remark-size-diff: Compute diff between remark files.
+* New Clang tools:
+- clang-offload-packager: Bundle multiple objects into single
+fat binaries including offload code.
+- clang-pseudo: Approximate heuristic parser for C++.
+- Rebase patches:
+* check-no-llvm-exegesis.patch
+* link-clang-tools-extra-shared.patch
+* lld-default-sha1.patch
+* llvm-do-not-install-static-libraries.patch
+* lto-disable-cache.patch
+- Drop patches that have landed upstream:
+* clang-repl-private-deps.patch
+* llvm-glibc-2-36.patch
+* llvm-scev-fix-isImpliedViaMerge.patch
+- Drop llvm-lifetime-for-rust.patch: this is now solved via
+attributes and LLVM doesn't need a hardcoded list of allocation
+functions anymore.
+- Add llvm-link-atomic.patch to fix build on ppc.
+- Add libcxx-test-library-path.patch to fix libc++ tests failing
+without RUNPATH on libc++.so.
+- Add libcxxabi-fix-armv7-test.patch to fix tests on armv7l.
+- Use correct LLVM_HOST_TRIPLE for riscv64.
+- Always drop -gnu from triple for consistency. Patch a test that
+  was looking for -linux- in clang-test-xfail-gnuless-triple.patch.</comment>
+    <requestid>1005588</requestid>
+  </revision>
+</revisionlist>

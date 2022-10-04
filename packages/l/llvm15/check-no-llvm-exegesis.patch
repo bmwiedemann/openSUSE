@@ -1,0 +1,16 @@
+--- a/llvm/test/CMakeLists.txt
++++ b/llvm/test/CMakeLists.txt
+@@ -81,7 +81,6 @@ set(LLVM_TEST_DEPENDS
+           llvm-dwarfdump
+           llvm-dwarfutil
+           llvm-dwp
+-          llvm-exegesis
+           llvm-extract
+           llvm-gsymutil
+           llvm-isel-fuzzer
+--- a/llvm/test/tools/llvm-exegesis/lit.local.cfg
++++ b/llvm/test/tools/llvm-exegesis/lit.local.cfg
+@@ -1,2 +1 @@
+-if 'native' not in config.available_features:
+-    config.unsupported = True
++config.unsupported = True
