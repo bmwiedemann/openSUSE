@@ -26,7 +26,7 @@
 %define luaver 5.1
 %define luaver_nopoint 51
 Name:           neovim
-Version:        0.7.2
+Version:        0.8.0
 Release:        0
 Summary:        Vim-fork focused on extensibility and agility
 License:        Apache-2.0 AND Vim
@@ -40,13 +40,6 @@ Source3:        suse-spec-template
 # we need /usr/bin/luajit. Fake it.
 Source10:       lj-busted.sh
 Source99:       neovim-rpmlintrc
-# PATCH-FIX-OPENSUSE neovim.patch mcepl@cepl.eu
-Patch0:         neovim.patch
-# PATCH-FIX-OPENSUSE neovim-0.1.7-bitop.patch mcepl@cepl.eu build with old Lua with external bit module
-Patch1:         neovim-0.1.7-bitop.patch
-# PATCH-FIX-UPSTREAM 7657-run-tests-aarch64.patch gh#neovim/neovim#7423 mcepl@suse.com
-# fix running tests on aarch64
-Patch2:         7657-run-tests-aarch64.patch
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -60,7 +53,7 @@ BuildRequires:  libnsl-devel
 BuildRequires:  libtermkey-devel
 BuildRequires:  libtool
 BuildRequires:  libuv-devel
-BuildRequires:  libvterm-devel >= 0.1
+BuildRequires:  libvterm-devel >= 0.3
 BuildRequires:  lua-macros
 BuildRequires:  make
 BuildRequires:  msgpack-c-devel
@@ -71,7 +64,7 @@ BuildRequires:  unibilium-devel
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
 Requires:       gperf
-Requires:       libvterm0 >= 0.1
+Requires:       libvterm0 >= 0.3
 Recommends:     python3-neovim
 Requires(post): desktop-file-utils
 Requires(postun):desktop-file-utils
@@ -86,11 +79,9 @@ BuildRequires:  lua51-devel
 # compat versions of libs.
 BuildRequires:  lua51-LPeg
 BuildRequires:  libluv-devel >= %{luv_min_ver}
-BuildRequires:  lua51-bit32
 BuildRequires:  lua51-luarocks
 BuildRequires:  lua51-luv >= %{luv_min_ver}
 BuildRequires:  lua51-mpack
-Requires:       lua51-bit32
 Requires:       lua51-luv >= %{luv_min_ver}
 %if 0%{?suse_version} < 1330
 BuildRequires:  hicolor-icon-theme
