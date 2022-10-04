@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct  3 16:05:27 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.11.5:
+  * Fix the type annotation of `unwrap()` and datetime parsing.
+  * Clear the existing table header when it is adding to another table.
+  * Fix a bug that escape chars are lost after concat with another string.
+  * Fix a rendering issue of tables inside arrays or inline tables.
+
+-------------------------------------------------------------------
 Sat Sep 24 16:11:36 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.11.4:

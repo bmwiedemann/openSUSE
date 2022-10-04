@@ -103,4 +103,16 @@
     super table.</comment>
     <requestid>1005791</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>811be8ffe119715cab5fb51a9b09b735</srcmd5>
+    <version>0.11.5</version>
+    <time>1664908635</time>
+    <user>RBrownFactory</user>
+    <comment>- update to 0.11.5:
+  * Fix the type annotation of `unwrap()` and datetime parsing.
+  * Clear the existing table header when it is adding to another table.
+  * Fix a bug that escape chars are lost after concat with another string.
+  * Fix a rendering issue of tables inside arrays or inline tables.</comment>
+    <requestid>1007720</requestid>
+  </revision>
 </revisionlist>

@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-tomlkit
-Version:        0.11.4
+Version:        0.11.5
 Release:        0
 Summary:        Style preserving TOML library
 License:        MIT
