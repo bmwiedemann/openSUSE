@@ -878,4 +878,150 @@ FIXES (LSP):
     <comment></comment>
     <requestid>1001084</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>4706b2403f327809bace697dc5defe93</srcmd5>
+    <version>0.8.0</version>
+    <time>1664908655</time>
+    <user>RBrownFactory</user>
+    <comment>Has to go together with sr#1007734.
+
+- Update to 0.8.0:
+  - Breaking changes:
+    - Remove 'insertmode' 'remap' and 'terse' options
+    - highlight: Rename attributes to match Vim (#19159)
+    - highlight: Error on invalid names and allow '.' and '@'
+    - terminal: Drop winpty, require Windows 10 #18253
+    - treesitter: Use @foo.bar style highlight groups
+    - treesitter: Do not merge queries by default (#20105)
+  - Features:
+    - runtime: Enable filetype.lua by default (#19216)
+    - Add undo!
+    - Add &quot;prerelease&quot; to version dict
+    - Click support for 'statusline', 'winbar' #18650
+    - Add preview functionality to user commands
+    - allow Cmdheight=0 (EXPERIMENTAL) #16251
+    - Stdpath('run'), /tmp/nvim.user/ #18993
+    - Add 'mousescroll' option (#12355)
+    - Allow :wincmd to accept a count (#19815)
+    - Multibuffer preview support for inccommand
+    - Man: Port to Lua (#19912)
+    - api: Ui options relevant for remote TUI
+    - api: Add nvim_parse_cmd And nvim_cmd
+    - api: Support handling stdin stream in remote ui
+    - api: Add group_name to nvim_get_autocmds
+    - api: Enable nvim_exec_autocmds to pass arbitrary data
+      (#18613)
+    - api: Support pattern array for exec_autocmds
+    - api: Add unsilent to command APIs
+    - api: Add replace_keycodes to nvim_set_keymap (#19598)
+    - api: Add support for :horizontal modifier
+    - api: Add &quot;move&quot; to nvim_input_mouse
+    - api/ui: &quot;ui_watched&quot; option for ui-side extmarks
+    - build: Add_glob_target runs only on changed files #19070
+    - checkhealth: Check for slow shell #17829
+    - defaults: Session data in $XDG_STATE_HOME #15583
+    - defaults: Search selection by * and # in visual mode
+      (#18538)
+    - defaults: Nnoremap &amp; :&amp;&amp; #19365
+    - defaults: enable mouse by default (set mouse=nvi) #19290
+    - diagnostic: Pass diagnostics as data to DiagnosticChanged
+      autocmd (#20173)
+    - docs: Gen_help_html.lua
+    - edit: Insert an unsimplified key using CTRL-SHIFT-V
+    - treesitter: Full support for spelling
+    - filetype: Convert more patterns to filetype.lua
+    - filetype: Remove side effects from vim.filetype.match
+      (#18894)
+    - filetype: Expand environment variables in filetype patterns
+      (#20145)
+    - fs: Add vim.fs functions: parents() dirname() basename()
+      dir() find() normalize()
+    - highlight: Implement CurSearch highlight
+    - highlight: Support scoped @spam.eggs.baked_beans groups
+    - input: Delay all simplifications
+    - l10n: Turkish translations #19441
+    - l10n: Improve zh_CN translations (#19483)
+    - lsp: Remove capabilities sanitization (#17814)
+    - lsp: Show feedback on empty hover response (#18308)
+    - lsp: Options to filter and auto-apply code actions (#18221)
+    - lsp: Add vim.lsp.buf.format (#18193)
+    - lsp: Add logging level &quot;OFF&quot; (#18379)
+    - lsp: Add LspAttach and LspDetach autocommands
+    - lsp: Add filter to vim.lsp.get_active_clients()
+    - lsp: Option to reuse_win for jump actions (#18577)
+    - lsp: Add a start function (#18631)
+    - lsp: Send didChangeConfiguration after init (#18847)
+    - lsp: Defaults: tagfunc, omnifunc, formatexpr (#19003,
+      #19677)
+    - lsp: Allow passing custom list handler to LSP functions
+      that return lists (#19213)
+    - lsp: Provide feedback if server can't compute rename result
+      (#19546)
+    - lsp: Add range option to code_action; deprecate
+      range_code_action (#19551)
+    - lsp: Disable exit_timeout by default (#19672)
+    - lsp: Add tcp support
+    - lua: Vim.deprecate() #18320
+    - lua: Vim.cmd() with kwargs acts like nvim_cmd() #18523
+    - lua: Allow some vim script functions to run in fast
+      callbacks
+    - lua: Measure require in --startuptime
+    - lua: Allow vim.cmd to be indexed (#19238)
+    - lua: Print source locations of lua callbacks (#19597)
+    - lua: Add vim.iconv (#18286)
+    - lua: Vim.ui_attach to get ui events from lua (EXPERIMENTAL)
+    - man.vim: List command flags in &quot;gO&quot; outline #17558
+    - mappings: Do not replace existing mapping for simplified
+      form
+    - mappings: Allow special keys and modifiers in mapping
+    - mapset: Support restoring &quot;replace_keycodes&quot; and &quot;desc&quot;
+    - mapset: Support restoring Lua callback (#20024)
+    - marks: Restore viewport on jump #15831
+    - nvim_create_user_command: Pass structured modifiers to
+      commands
+    - pum: Pretend 'mousemoveevent' is set when showing
+      right-click menu
+    - server: Set $NVIM, unset $NVIM_LISTEN_ADDRESS #11009
+    - server: Instance &quot;name&quot;, store pipes in stdpath(state)
+    - term: Add support for libvterm &gt;= 0.2
+    - terminal: Implement &lt;c-&gt; for terminal mode
+    - terminal: Recognize underdouble and undercurl
+    - terminfo: Bump built-in terminfo entries (#18570)
+    - treesitter: Allow customizing language symbol name
+    - treesitter: Add ability to retreive a tree/node given a
+      range
+    - treesitter: Upstream node methods from nvim-treesitter
+    - treesitter: Include language in invalid query error
+      (#14053)
+    - treesitter: Bundle Lua parser and queries
+    - treesitter: Add viml parser and queries
+    - treesitter: Add injections
+    - treesitter: Add vim.treesitter.start(), enable for Lua
+    - treesitter: Bundle :help parser and queries
+    - tui: Query terminal for CSI u support (#18181)
+    - tui: Recognize keypad keys when using kitty keyboard
+      protocol
+    - tui: Try terminfo for [re]set_cursor_color OSC #19255
+    - tui: Allow grid and host to disagree on ambiguous-width
+      chars (#19686)
+    - tui: Recognize sidescroll events (#19992)
+    - tui: Support 'mousemoveevent'
+    - ui: Add 'winbar'
+    - ui: Clear message history explicitly with msg_history_clear
+      event
+    - ui: Make right-click menu work properly with ext_multigrid
+    - ui: Allow to set the highlight namespace per window
+    - ui: Use msg_grid based implementation for cmdheight=0
+    - ui-ext: Make 'mousemoveevent' a ui_option
+    - eval: Make Lua Funcref work as method and in substitute()
+      (#20217)
+    - eval: Input() support any type for &quot;cancelreturn&quot; in a dict
+      (#19357)
+- Remove neovim-0.1.7-bitop.patch (bsc#1202958), we actually
+  don't need it (luajit has bit module) and it hurts us.
+- Remove unnecessary neovim.patch
+- Remove upstreamed 7657-run-tests-aarch64.patch.
+</comment>
+    <requestid>1007737</requestid>
+  </revision>
 </revisionlist>
