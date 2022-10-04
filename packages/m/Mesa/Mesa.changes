@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct  3 10:29:51 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add build_orig conditional switch for video codecs define.
+
+-------------------------------------------------------------------
 Thu Sep 29 10:00:03 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - re-disable video codecs due to possible patent issues

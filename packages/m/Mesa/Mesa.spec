@@ -32,7 +32,11 @@
 # Possible patent issues, see
 # https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/15258
 # for more details
+%if 0%{?BUILD_ORIG}
+%define video_codecs 1
+%else
 %define video_codecs 0
+%endif
 
 %define drivers 0
 
