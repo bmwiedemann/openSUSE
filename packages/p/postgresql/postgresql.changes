@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep  5 13:12:41 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- avoid bashisms in /bin/sh based startup script 
+
+-------------------------------------------------------------------
+Sat May 21 15:11:15 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Bump to postgresql 15 
+
+-------------------------------------------------------------------
 Wed Mar 16 14:50:22 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Change to systemd-sysusers

@@ -10,7 +10,7 @@ PIDFILE=$DATADIR/postmaster.pid
 # 
 if test -r $DATADIR/PG_VERSION ; then
     DATA_VERSION=$(cat $DATADIR/PG_VERSION)
-    POSTGRES=/usr/lib/postgresql${DATA_VERSION/./}/bin/postgres
+    POSTGRES=/usr/lib/postgresql$(echo -n $DATA_VERSION | tr -d .)/bin/postgres
 fi
 if test -x /usr/bin/postgres; then
     ACTIVE=$(readlink -q -f /usr/bin/postgres)
@@ -49,7 +49,7 @@ case "$1" in
 	    test -n "$POSTGRES_LANG" && export LC_ALL="$POSTGRES_LANG"
 	    install -d -m 700 ${DATADIR} &&
 	    echo "Initializing PostgreSQL $VERSION at location ${DATADIR}"
-	    /usr/bin/initdb --auth=ident $DATADIR &> initlog || {
+	    /usr/bin/initdb --auth=ident $DATADIR > initlog 2>&1 || {
 		echo "Initialisation failed. See $PWD/initlog ."
 		exit 1
 	    }

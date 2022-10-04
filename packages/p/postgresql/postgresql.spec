@@ -15,7 +15,7 @@
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
-%define pgmajor 14
+%define pgmajor 15
 %define defaultpackage postgresql%pgmajor
 
 %if ! %{defined _rpmmacrodir}
