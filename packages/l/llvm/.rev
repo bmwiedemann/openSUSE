@@ -2097,4 +2097,22 @@ So it would be very nice to get this into 12.2. As it is an isolated feature, it
 </comment>
     <requestid>986924</requestid>
   </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>415d245b980fb22d7d7c130b4467ecc4</srcmd5>
+    <version>15.0.1</version>
+    <time>1664908645</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 15.0.1.
+  * This release contains bug-fixes for the LLVM 15.0.1 release.
+    This release is API and ABI compatible with 15.0.0.
+- Update to version 15.0.0.
+  * For details, see the release notes:
+    - https://releases.llvm.org/15.0.0/docs/ReleaseNotes.html
+    - https://releases.llvm.org/15.0.0/tools/clang/docs/ReleaseNotes.html
+    - https://releases.llvm.org/15.0.0/tools/clang/tools/extra/docs/ReleaseNotes.html
+    - https://releases.llvm.org/15.0.0/projects/libcxx/docs/ReleaseNotes.html
+    - https://releases.llvm.org/15.0.0/tools/lld/docs/ReleaseNotes.html
+</comment>
+    <requestid>1005589</requestid>
+  </revision>
 </revisionlist>

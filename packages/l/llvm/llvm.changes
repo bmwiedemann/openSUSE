@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Sep 22 12:19:07 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 15.0.1.
+  * This release contains bug-fixes for the LLVM 15.0.1 release.
+    This release is API and ABI compatible with 15.0.0.
+
+-------------------------------------------------------------------
+Tue Sep  6 20:23:14 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 15.0.0.
+  * For details, see the release notes:
+    - https://releases.llvm.org/15.0.0/docs/ReleaseNotes.html
+    - https://releases.llvm.org/15.0.0/tools/clang/docs/ReleaseNotes.html
+    - https://releases.llvm.org/15.0.0/tools/clang/tools/extra/docs/ReleaseNotes.html
+    - https://releases.llvm.org/15.0.0/projects/libcxx/docs/ReleaseNotes.html
+    - https://releases.llvm.org/15.0.0/tools/lld/docs/ReleaseNotes.html
+
+-------------------------------------------------------------------
 Mon Jul  4 21:29:11 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 14.0.6.
