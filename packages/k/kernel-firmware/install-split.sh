@@ -46,12 +46,29 @@ make_dirs () {
 copy_link () {
     local f="$1"
     local lf="$2"
+    local src
     test -f "$dest/$f$cext" && return
-    test -z "$lf" && lf=$(readlink "$f")
+    if [ -z "$lf" ]; then
+	lf=$(readlink "$f")
+	src="$lf"
+    else
+	src="${f%/*}"
+	if [ "$src" = "$f" ]; then
+	    src="$lf"
+	else
+	    src="$src/$lf"
+	fi
+    fi
     make_dirs "$f"
-    ln -sf "$lf$cext" "$dest/$f$cext"
-    echo "\"$fwdir/$f$cext\"" >> files-$topic
-    $verbose "Link: $lf$cext -> $f$cext for topic $topic"
+    if [ -d "$dest/$src" ]; then
+	ln -sf "$lf" "$dest/$f"
+	echo "\"$fwdir/$f\"" >> files-$topic
+	$verbose "Link: $lf -> $f (directory) for topic $topic"
+    else
+	ln -sf "$lf$cext" "$dest/$f$cext"
+	echo "\"$fwdir/$f$cext\"" >> files-$topic
+	$verbose "Link: $lf$cext -> $f$cext for topic $topic"
+    fi
 }
 
 copy_file () {

@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Oct 03 06:55:34 UTC 2022 - tiwai@suse.com
+
+- Update to version 20220930 (git commit fdf1a6525852):
+  * linux-firmware: Update AMD cpu microcode
+  * mediatek: mt8195: Update scp.img to v2.0.11956
+  * mediatek: Add new mt8195 SOF firmware
+  * mediatek: Update mt8186 SOF firmware to v0.2.1
+  * linux-firmware: update firmware for mediatek bluetooth chip (MT7922)
+  * rtl_bt: Update RTL8852A BT USB firmware to 0xD9B8_8207
+  * linux-firmware: update firmware for mediatek bluetooth chip (MT7921)
+  * linux-firmware: update firmware for MT7922 WiFi device
+  * linux-firmware: update firmware for MT7921 WiFi device
+  * cxgb4: Update firmware to revision 1.27.0.0
+  * i915: Add versionless HuC files for current platforms
+  * i915: Add GuC v70.5.1 for DG1, DG2, TGL and ADL-P
+  * qca: Update firmware files for BT chip WCN3991.
+  * Removing crnv32
+  * amdgpu: update yellow carp DMCUB firmware
+  * amdgpu: add firmware for VCN 3.1.2 IP block
+  * amdgpu: add firmware for SDMA 5.2.6 IP block
+  * amdgpu: add firmware for PSP 13.0.5 IP block
+  * amdgpu: add firmware for GC 10.3.6 IP block
+  * amdgpu: add firmware for DCN 3.1.5 IP block
+  * qcom: rename Lenovo ThinkPad X13s firmware paths
+  * rtw89: 8852c: update fw to v0.27.42.0
+  * rtw89: 8852c: update fw to v0.27.36.0
+- Fix install-split.sh for dealing with a symlink of directory
+
+-------------------------------------------------------------------
 Tue Sep 06 10:43:53 UTC 2022 - tiwai@suse.com
 
 - Update to version 20220902 (git commit 2f2f0181581d):
