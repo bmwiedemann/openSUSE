@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 27 08:33:32 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.8.3:
+  Bug Fixes:
+  * FIXED: Did not play sound effect when pressing enter
+  * FIXED: Played sound effect when opening files
+  * FIXED: Missing version number
+  Translation Updates:
+  * Dutch
+
+-------------------------------------------------------------------
 Thu Sep 15 21:52:54 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Spec cleanup
