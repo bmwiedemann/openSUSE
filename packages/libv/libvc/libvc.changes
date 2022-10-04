@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct  4 12:25:55 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 012:
+  * Avoid implicit declaration of functions
+
+-------------------------------------------------------------------
 Mon Dec 13 16:04:08 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 011:
