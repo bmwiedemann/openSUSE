@@ -187,4 +187,12 @@
   * gh#shapely/shapely#1436 -- work around issue with geos 3.11.0 (forwarded request 990299 from bnavigator)</comment>
     <requestid>990300</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>1c798bd094fc7a59356f8a439d79219d</srcmd5>
+    <version>1.8.4</version>
+    <time>1664908662</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1007762</requestid>
+  </revision>
 </revisionlist>
