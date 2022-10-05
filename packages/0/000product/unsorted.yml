@@ -2028,10 +2028,10 @@ unsorted:
   - clang13 
   - clang13-devel 
   - clang13-doc 
+  - clang14 
   - clang14-devel 
-  - clang15 
+  - clang14-doc 
   - clang15-devel 
-  - clang15-doc 
   - clanlib 
   - clanlib-devel 
   - clanlib-doc 
@@ -9110,7 +9110,6 @@ unsorted:
   - libLLVM13 
   - libLLVM13-32bit: [x86_64] 
   - libLLVM14-32bit: [x86_64] 
-  - libLLVM15: [x86_64] 
   - libLLVM15-32bit: [x86_64] 
   - libLTO11 
   - libLTO11-32bit: [x86_64] 
@@ -10354,14 +10353,13 @@ unsorted:
   - libclFFT2: [x86_64] 
   - libclang-cpp13 
   - libclang-cpp13-32bit: [x86_64] 
+  - libclang-cpp14 
   - libclang-cpp14-32bit: [x86_64] 
-  - libclang-cpp15: [x86_64] 
   - libclang-cpp15-32bit: [x86_64] 
   - libclang11 
   - libclang11-32bit: [x86_64] 
   - libclang12 
   - libclang12-32bit: [x86_64] 
-  - libclang13: [i586] 
   - libclastfm-devel 
   - libclaw-devel 
   - libclaw-doc 
@@ -15389,9 +15387,9 @@ unsorted:
   - lldb13: [x86_64] 
   - lldb13-devel: [x86_64] 
   - lldb14: [x86_64] 
-  - lldb14-devel: [x86_64] # devel package of common_locks:libLLVM14 
+  - lldb14-devel: [x86_64] # devel package of dvd:libLLVM14 
   - lldb15: [x86_64] 
-  - lldb15-devel: [x86_64] # devel package of dvd:libLLVM15 
+  - lldb15-devel: [x86_64] # devel package of common_locks:libLLVM15 
   - lldpd 
   - lldpd-devel 
   - llmnrd 
@@ -15441,6 +15439,12 @@ unsorted:
   - llvm14 
   - llvm14-devel 
   - llvm14-doc 
+  - llvm14-gold 
+  - llvm14-libc++-devel: [x86_64] # devel package of dvd:libLLVM14 
+  - llvm14-libc++1: [x86_64] 
+  - llvm14-libc++abi-devel: [x86_64] # devel package of dvd:libLLVM14 
+  - llvm14-libc++abi1: [x86_64] 
+  - llvm14-libclang13 
   - llvm14-opt-viewer 
   - llvm14-polly 
   - llvm14-polly-devel 
@@ -15448,7 +15452,6 @@ unsorted:
   - llvm15 
   - llvm15-devel 
   - llvm15-doc 
-  - llvm15-gold 
   - llvm15-opt-viewer 
   - llvm15-polly 
   - llvm15-polly-devel 
