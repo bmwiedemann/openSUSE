@@ -2029,6 +2029,9 @@ unsorted:
   - clang13-devel 
   - clang13-doc 
   - clang14-devel 
+  - clang15 
+  - clang15-devel 
+  - clang15-doc 
   - clanlib 
   - clanlib-devel 
   - clanlib-doc 
@@ -9107,12 +9110,15 @@ unsorted:
   - libLLVM13 
   - libLLVM13-32bit: [x86_64] 
   - libLLVM14-32bit: [x86_64] 
+  - libLLVM15: [x86_64] 
+  - libLLVM15-32bit: [x86_64] 
   - libLTO11 
   - libLTO11-32bit: [x86_64] 
   - libLTO12 
   - libLTO12-32bit: [x86_64] 
   - libLTO13 
   - libLTO14 
+  - libLTO15 
   - libLimeSuite22_09-1 
   - libMagick++-7_Q16HDRI5 
   - libMagick++-7_Q16HDRI5-32bit: [x86_64] 
@@ -10349,10 +10355,13 @@ unsorted:
   - libclang-cpp13 
   - libclang-cpp13-32bit: [x86_64] 
   - libclang-cpp14-32bit: [x86_64] 
+  - libclang-cpp15: [x86_64] 
+  - libclang-cpp15-32bit: [x86_64] 
   - libclang11 
   - libclang11-32bit: [x86_64] 
   - libclang12 
   - libclang12-32bit: [x86_64] 
+  - libclang13: [i586] 
   - libclastfm-devel 
   - libclaw-devel 
   - libclaw-doc 
@@ -12138,6 +12147,7 @@ unsorted:
   - liblldb12: [x86_64] 
   - liblldb13: [x86_64] 
   - liblldb14: [x86_64] 
+  - liblldb15: [x86_64] 
   - liblldp_clif1: [i586] 
   - liblldpctl4 
   - liblmdb-0_9_29-32bit: [x86_64] 
@@ -12164,7 +12174,7 @@ unsorted:
   - liblog4cplus-2_0-3 
   - liblog4cpp5 
   - liblog4cxx-devel 
-  - liblog4cxx11 
+  - liblog4cxx13 
   - liblog4shib-devel 
   - liblog4shib2 
   - liblogg44-devel 
@@ -12779,6 +12789,7 @@ unsorted:
   - libomp12-devel 
   - libomp13-devel 
   - libomp14-devel 
+  - libomp15-devel 
   - libonnx 
   - libonnx_proto 
   - libonnxifi_dummy 
@@ -15368,6 +15379,7 @@ unsorted:
   - lld12 
   - lld13 
   - lld14 
+  - lld15 
   - lldb: [x86_64] 
   - lldb-devel: [x86_64] 
   - lldb11: [x86_64] 
@@ -15378,6 +15390,8 @@ unsorted:
   - lldb13-devel: [x86_64] 
   - lldb14: [x86_64] 
   - lldb14-devel: [x86_64] # devel package of common_locks:libLLVM14 
+  - lldb15: [x86_64] 
+  - lldb15-devel: [x86_64] # devel package of dvd:libLLVM15 
   - lldpd 
   - lldpd-devel 
   - llmnrd 
@@ -15431,6 +15445,14 @@ unsorted:
   - llvm14-polly 
   - llvm14-polly-devel 
   - llvm14-vim-plugins 
+  - llvm15 
+  - llvm15-devel 
+  - llvm15-doc 
+  - llvm15-gold 
+  - llvm15-opt-viewer 
+  - llvm15-polly 
+  - llvm15-polly-devel 
+  - llvm15-vim-plugins 
   - lmarbles 
   - lmdb 
   - lmdb-devel 
@@ -21200,9 +21222,11 @@ unsorted:
   - postgresql13-server-devel 
   - postgresql13-test 
   - postgresql13-timescaledb 
+  - postgresql14 
+  - postgresql14-contrib 
   - postgresql14-devel 
-  - postgresql14-devel-mini 
   - postgresql14-docs 
+  - postgresql14-llvmjit 
   - postgresql14-llvmjit-devel 
   - postgresql14-pg_cron 
   - postgresql14-pgagent 
@@ -21212,9 +21236,19 @@ unsorted:
   - postgresql14-pltcl 
   - postgresql14-postgis 
   - postgresql14-postgis-utils 
+  - postgresql14-server 
   - postgresql14-server-devel 
   - postgresql14-test 
   - postgresql14-timescaledb 
+  - postgresql15-devel 
+  - postgresql15-devel-mini 
+  - postgresql15-docs 
+  - postgresql15-llvmjit-devel 
+  - postgresql15-plperl 
+  - postgresql15-plpython 
+  - postgresql15-pltcl 
+  - postgresql15-server-devel 
+  - postgresql15-test 
   - postgrey 
   - postorius 
   - postorius-web 
@@ -21761,6 +21795,7 @@ unsorted:
   - python3-clang 
   - python3-clang13 
   - python3-clang14 
+  - python3-clang15 
   - python3-cliff 
   - python3-clingo 
   - python3-clinkgrammar 
@@ -21865,6 +21900,7 @@ unsorted:
   - python3-lldb12: [x86_64] 
   - python3-lldb13: [x86_64] 
   - python3-lldb14: [x86_64] 
+  - python3-lldb15: [x86_64] 
   - python3-logreduce 
   - python3-lttngust 
   - python3-magnumclient 
