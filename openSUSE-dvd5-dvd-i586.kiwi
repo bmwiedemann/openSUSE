@@ -284,8 +284,8 @@
       <repopackage name="ckermit"/>
       <repopackage name="clamav"/>
       <repopackage name="clang-tools"/>
-      <repopackage name="clang14"/>
-      <repopackage name="clang14-doc"/>
+      <repopackage name="clang15"/>
+      <repopackage name="clang15-doc"/>
       <repopackage name="clazy"/>
       <repopackage name="clicfs"/>
       <repopackage name="clutter-gtk-lang"/>
@@ -1453,8 +1453,8 @@
       <repopackage name="libcholmod3"/>
       <repopackage name="libchromaprint1"/>
       <repopackage name="libclamav9"/>
-      <repopackage name="libclang-cpp14"/>
-      <repopackage name="libclang-cpp15" arch="i586,i686"/>
+      <repopackage name="libclang-cpp15"/>
+      <repopackage name="libclang13"/>
       <repopackage name="libclastfm0"/>
       <repopackage name="libcloudproviders0"/>
       <repopackage name="libclucene-contribs-lib1"/>
@@ -2117,7 +2117,7 @@
       <repopackage name="liblirc_client0"/>
       <repopackage name="libliveMedia107"/>
       <repopackage name="libLLVM14"/>
-      <repopackage name="libLLVM15" arch="i586,i686"/>
+      <repopackage name="libLLVM15"/>
       <repopackage name="liblmdb-0_9_29"/>
       <repopackage name="libloader"/>
       <repopackage name="liblockdev1"/>
@@ -2876,8 +2876,7 @@
       <repopackage name="links"/>
       <repopackage name="linux-glibc-devel"/>
       <repopackage name="lklug-fonts"/>
-      <repopackage name="llvm14-gold"/>
-      <repopackage name="llvm15-libclang13" arch="i586,i686"/>
+      <repopackage name="llvm15-gold"/>
       <repopackage name="lockdev"/>
       <repopackage name="login_defs"/>
       <repopackage name="logrotate"/>
