@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct 04 16:37:54 UTC 2022 - Dawid Respondek <nyslay@gmail.com>
+
+- update to 6.2.0:
+  * 3,000+ icons in a new, modern style: Sharp Solid
+  * Sharp Regular, Light, Thin, and Duotone are in the works!
+  * Icons are all built on the same 16px grid as existing Font Awesome Classic icons.
+  * Every Classic Solid icon has been reviewed and redrawn where necessary to better compliment the new Sharp Solid style.
+  * Behind the scenes, we built new reusable modifier components for our icons, to ensure consistency between elements.
+  * Two new files are now available from the metadata directory: icon-families.json and icon-families.yml which are restructured to support Font Awesome Families.
+  * Using Pseudo Elements with Web Fonts now include CSS Custom Properties for setting font-family
+  * EcmaScript modules (ESM) have been renamed from .es.js to .mjs Font-Awesome#19041
+
+
+-------------------------------------------------------------------
 Mon Aug 15 20:59:36 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.1.2:
