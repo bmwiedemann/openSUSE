@@ -186,4 +186,12 @@ please use same ADI as https://build.opensuse.org/request/show/902766</comment>
     <comment>1.11.8</comment>
     <requestid>1006730</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>d975108296e05a1c0f21d0aa761a1373</srcmd5>
+    <version>1.11.8</version>
+    <time>1665034944</time>
+    <user>RBrownFactory</user>
+    <comment>fix oom</comment>
+    <requestid>1008216</requestid>
+  </revision>
 </revisionlist>

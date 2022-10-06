@@ -26,16 +26,15 @@ Source0:        https://github.com/vector-im/element-web/archive/v%{version}.tar
 Source1:        npm-packages-offline-cache.tar.gz
 Source2:        jitsi_external_api.min.js
 Source3:        prepare.sh
-BuildRequires:  nodejs-electron
+Patch0:         fix-webpack-oom.patch
 BuildRequires:  yarn
-ExcludeArch:    %{ix86} %{arm}
 BuildArch:      noarch
 
 %description
 A glossy Matrix collaboration client - web files
 
 %prep
-%autosetup -n element-web-%{version}
+%autosetup -n element-web-%{version} -p0
 
 %build
 echo 'yarn-offline-mirror "./npm-packages-offline-cache"' > .yarnrc
@@ -73,6 +72,8 @@ install -Dm644 config.sample.json -t "%{buildroot}%{_sysconfdir}/webapps/element
 
 %files
 %license LICENSE
+%dir %{_datadir}/webapps
+%dir %{_sysconfdir}/webapps
 %{_datadir}/webapps/element
 %{_sysconfdir}/webapps/element
 

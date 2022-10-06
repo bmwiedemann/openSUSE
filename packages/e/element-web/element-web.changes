@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct  5 13:34:44 UTC 2022 - Dominik Heidler <dheidler@suse.de>
+
+- Fix webpack oom: fix-webpack-oom.patch
+
+-------------------------------------------------------------------
+Fri Sep 30 16:52:19 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+- Remove spurious BuildRequire on electron.
+
+-------------------------------------------------------------------
 Wed Sep 28 16:14:03 UTC 2022 - Dominik Heidler <dheidler@suse.de>
 
 - Version 1.11.8
