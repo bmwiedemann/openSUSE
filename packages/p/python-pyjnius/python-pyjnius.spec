@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyjnius
-Version:        1.4.1
+Version:        1.4.2
 Release:        0
 Summary:        Access Java classes from Python
 License:        MIT
