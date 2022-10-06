@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Oct  5 05:34:35 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.16.0:
+  * Switch to jsonschema-spec #416
+  * Use auto-detect validator proxy #418
+  * OpenAPI 3.1 support + Auto-detect proxies and request / response
+    validator protocols #419
+  * Add py.typed to mark package as supporting typing #420
+  * Refuse to cast str or bytes to array #421
+  * x-model extension import model class #422
+  * Add deepObject support #379
+  * Add anyOf support #423
+  * Separate werkzeug support #426
+  * Starlette support #427
+  * Parameter deserialize complex scenario support (#329)
+  * Response headers support (#332)
+  * Response headers support for contrib (#333)
+  * Drop python 2.7 support (#335 #344 #351)
+  * Drop python 3.5 support (#339)
+  * Drop python 3.6 support #383
+  * Add python 3.10 support #383
+  * Falcon2 support drop (#353)
+  * Django2 support drop (#358)
+  * Support basic re_path for Django integration (#337)
+  * unused NoValue type removed (#340)
+  * attrs remove and use dataclasses backport for python 3.6 (#345)
+  * Request validation parameters dataclass (#346)
+  * Handle missing MIME type in MediaTypeFinder (#371)
+  * Limit openapi dependencies upper bounds #386
+  * switch to pathable #389
+  * Get rid of create_spec shortcut #393
+  * Request and Response protocols #407
+  * validator factories removed from validation shortcuts #408
+  * Predefined openapi validators #409 
+- Drop Python 2 parts.
+- Fix {Build,}Requires.
+
+-------------------------------------------------------------------
 Mon Aug 16 13:17:44 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 0.14.2

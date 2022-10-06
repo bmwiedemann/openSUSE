@@ -1,7 +1,7 @@
 #
 # spec file for package python-openapi-core
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-openapi-core
-Version:        0.14.2
+Version:        0.16.0
 Release:        0
 Summary:        Adds client-side and server-side support for the oas3
 License:        BSD-3-Clause
 URL:            https://github.com/p1c2u/openapi-core
 Source:         https://github.com/p1c2u/openapi-core/archive/%{version}.tar.gz#/openapi-core-%{version}-gh.tar.gz
+BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module WebOb}
 BuildRequires:  %{python_module Werkzeug}
@@ -32,39 +33,33 @@ BuildRequires:  %{python_module attrs}
 BuildRequires:  %{python_module dictpath}
 BuildRequires:  %{python_module falcon}
 BuildRequires:  %{python_module isodate}
+BuildRequires:  %{python_module jsonschema-spec >= 0.1.1}
 BuildRequires:  %{python_module lazy-object-proxy}
 BuildRequires:  %{python_module more-itertools >= 5.0.0}
-BuildRequires:  %{python_module openapi-schema-validator}
-BuildRequires:  %{python_module openapi-spec-validator}
+BuildRequires:  %{python_module openapi-schema-validator >= 0.3.0}
+BuildRequires:  %{python_module openapi-spec-validator >= 0.5.0}
 BuildRequires:  %{python_module parse >= 1.14.0}
+BuildRequires:  %{python_module pathable >= 0.4.0}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry}
+BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module responses}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Werkzeug
 Requires:       python-attrs
 Requires:       python-dictpath
 Requires:       python-isodate
+Requires:       python-jsonschema-spec >= 0.1.1
 Requires:       python-lazy-object-proxy
 Requires:       python-more-itertools >= 5.0.0
-Requires:       python-openapi-schema-validator
-Requires:       python-openapi-spec-validator
+Requires:       python-openapi-schema-validator >= 0.3.0
+Requires:       python-openapi-spec-validator >= 0.5.0
 Requires:       python-parse >= 1.14.0
-Requires:       python-six
+Requires:       python-pathable >= 0.4.0
 BuildArch:      noarch
-%if %{with python2}
-BuildRequires:  python-backports.functools_lru_cache
-BuildRequires:  python-backports.functools_partialmethod
-BuildRequires:  python-enum34
-BuildRequires:  python2-mock
-%endif
-%ifpython2
-Requires:       python-backports.functools_lru_cache
-Requires:       python-backports.functools_partialmethod
-Requires:       python-enum34
-%endif
 %python_subpackages
 
 %description
@@ -74,29 +69,16 @@ v3.0.0.
 
 %prep
 %setup -q -n openapi-core-%{version}
-# remove extra mock for Python 3
-find tests -name "*.py" -exec sed -i '/^import mock/ c try:\
-    from unittest import mock\
-except ImportError:\
-    import mock\
-' {} ';'
 
 %build
-export LANG=en_US.UTF-8
-%python_build
+%pyproject_wheel
 
 %install
-export LANG=en_US.UTF-8
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-sed -i '/addopts/d' setup.cfg
-export LANG=en_US.UTF-8
-# test_string_format_invalid_value: pytest >=5 incompatible,
-# fixed in git by major rewrite (but still not released in 0.14.2)
-# https://github.com/p1c2u/openapi-core/issues/158
-%pytest tests/unit -k 'not test_string_format_invalid_value'
+%pytest tests/unit -k 'not (test_read_only_properties_invalid or test_write_only_properties_invalid)'
 
 %files %{python_files}
 %license LICENSE
