@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Term-ReadLine-Gnu
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Term-ReadLine-Gnu
 Name:           perl-Term-ReadLine-Gnu
-Version:        1.42
+Version:        1.43
 Release:        0
-Summary:        Perl extension for the GNU Readline/History Library
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Perl extension for the GNU Readline/History Library
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/H/HA/HAYASHI/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
@@ -44,7 +44,7 @@ described in the section "Standard Methods" and "Term::ReadLine::Gnu
 Functions".
 
 This package also has the interface with the almost all functions and
-variables which are documented in the GNU Readline/History Library Manual. 
+variables which are documented in the GNU Readline/History Library Manual.
 
 %prep
 %autosetup  -n %{cpan_name}-%{version}
@@ -62,6 +62,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes README
+%doc Changes README.md
 
 %changelog

@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun Oct  2 03:07:18 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.43
+   see /usr/share/doc/packages/perl-Term-ReadLine-Gnu/Changes
+
+  1.43  2022-09-27
+  	- readline-8.2 support
+  	    new functions
+  		rl_trim_arg_from_keyseq
+  		rl_set_timeout
+  		rl_clear_timeout
+  		rl_timeout_remaining
+  	    new variables
+  		rl_eof_found
+  		rl_timeout_event_hook
+  	    new state values for rl_readline_state
+  		RL_STATE_TIMEOUT
+  		RL_STATE_EOF
+  	- t/00checkver.t: check if $TERM is set properly [#11]
+  	- Makefile.PL
+  	    - warn if $TERM is not set properly [#11]
+  	    - fix for MSYS2: take care of `\r\n` in the output of rlmalloc
+  	    - guess_malloc_names(): simplify the control structure
+  	- INSTALL: add a section for "MSYS2"
+  	- Gnu.xs: no more non-ANSI C compiler support (remove PARAM macros)
+  	- Gnu.pm, Gnu.xs, Gnu/XS.pm: expand tabs
+  	- README.md, INSTALL.md: changed to Markdown
+
+-------------------------------------------------------------------
 Mon May 10 03:07:23 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.42
