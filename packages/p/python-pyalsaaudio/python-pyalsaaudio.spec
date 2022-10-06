@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyalsaaudio
-Version:        0.9.1
+Version:        0.9.2
 Release:        0
 Summary:        ALSA bindings for Python
 License:        Python-2.0
