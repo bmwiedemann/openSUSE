@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Sep 29 03:06:53 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.018
+   see /usr/share/doc/packages/perl-PAR/Changes
+
+  1.018  2022-09-28
+
+  - Fix #6: PAR fails to test its build on MSWin32 with Perl-5.36.0
+
+    Makefile.PL:  Quote t/gen-hello-par.pl for Windows
+    Merge PR #5 by Tim Hoke <Tim.Hoke@veritas.com>
+
+-------------------------------------------------------------------
 Thu Jan 14 03:09:33 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.017
