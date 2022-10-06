@@ -3123,6 +3123,7 @@ unsorted:
   - drawing 
   - drawing-lang 
   - drbd-formula 
+  - drbd-kmp-default: [x86_64] 
   - drbd-utils: [i586] 
   - drc 
   - drc-doc 
@@ -3307,7 +3308,7 @@ unsorted:
   - eiskaltdcpp-qt 
   - eiskaltdcpp-qt-lang 
   - element-desktop: [x86_64] 
-  - element-web: [x86_64] 
+  - element-web 
   - elementary-cmake-modules 
   - elementary-icon-theme 
   - elementary-icon-theme-gimp-palette 
@@ -6046,9 +6047,6 @@ unsorted:
   - gnome-themes 
   - gnome-themes-extras 
   - gnome-themes-lang 
-  - gnome-todo 
-  - gnome-todo-devel 
-  - gnome-todo-lang 
   - gnome-tour 
   - gnome-tour-lang 
   - gnome-usage: [i586] 
@@ -8251,7 +8249,7 @@ unsorted:
   - keylime-firewalld: [i586] 
   - keylime-logrotate: [i586] 
   - keylime-registrar: [i586] 
-  - keylime-tenant 
+  - keylime-tenant: [i586] 
   - keylime-tpm_cert_store: [i586] 
   - keylime-verifier: [i586] 
   - keyutils-devel 
@@ -8475,6 +8473,7 @@ unsorted:
   - kraft 
   - krb5-auth-dialog 
   - krb5-auth-dialog-lang 
+  - krb5-client: [i586] 
   - krb5-devel 
   - krb5-devel-32bit: [x86_64] 
   - krb5-mini 
@@ -15931,6 +15930,7 @@ unsorted:
   - manaplus-lang 
   - manchu-fonts 
   - mandoc 
+  - mandown 
   - mangler 
   - mangohud 
   - mangohud-32bit: [x86_64] 
@@ -18372,11 +18372,14 @@ unsorted:
   - openSUSE-release-usb-x11 
   - openSUSE-signkey-cert: [x86_64] 
   - openSUSEway 
+  - openafs 
   - openafs-authlibs 
   - openafs-authlibs-devel 
+  - openafs-client 
   - openafs-devel 
   - openafs-fuse_client 
   - openafs-kernel-source 
+  - openafs-kmp-default 
   - openafs-server 
   - openal-soft-devel 
   - openal-soft-devel-32bit: [x86_64] 
@@ -22495,7 +22498,6 @@ unsorted:
   - python310-azure-data-nspkg 
   - python310-azure-data-tables 
   - python310-azure-datalake-store 
-  - python310-azure-devops 
   - python310-azure-digitaltwins-core 
   - python310-azure-digitaltwins-nspkg 
   - python310-azure-eventgrid 
@@ -25727,7 +25729,6 @@ unsorted:
   - python38-azure-data-nspkg 
   - python38-azure-data-tables 
   - python38-azure-datalake-store 
-  - python38-azure-devops 
   - python38-azure-digitaltwins-core 
   - python38-azure-digitaltwins-nspkg 
   - python38-azure-eventgrid 
@@ -29058,7 +29059,6 @@ unsorted:
   - python39-azure-data-nspkg 
   - python39-azure-data-tables 
   - python39-azure-datalake-store 
-  - python39-azure-devops 
   - python39-azure-digitaltwins-core 
   - python39-azure-digitaltwins-nspkg 
   - python39-azure-eventgrid 
