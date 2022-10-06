@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Oct  5 00:02:22 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 2022/02/04 Version 9.0.4
+  Add py.typed file to MANIFEST.in (ensures mypy actually respects the type annotations)
+
+- Update to 2022/01/18 Version 9.0.3
+  Improve type safety of EventEmitter#on, EventEmitter#add_listener and EventEmitter#listens_to by parameterizing the Handler
+  Minor fixes to documentation
+
+- Update to 2022/01/17 Version 9.0.2
+  Add tests_require to setup.py, fixing COPR build
+  Install as an editable package in environment.yml and requirements_docs.txt, fixing Conda workflows and ReadTheDocs respectively
+
+- Update to 2022/01/17 Version 9.0.1
+  Fix regression where EventEmitter#listeners began crashing when called with uninitialized listeners
+
+- Update to 2022/01/17 Version 9.0.0
+  Compatibility:
+  Drop 3.6 support
+  New features:
+  New EventEmitter.event_names() method (see PR #96)
+  Type annotations and type checking with pyright
+  Exprimental pyee.cls module exposing an @evented class decorator and a @on method decorator (see PR #84)
+  Moved/deprecated interfaces:
+  pyee.TwistedEventEmitter -> pyee.twisted.TwistedEventEmitter
+  pyee.AsyncIOEventEmitter -> pyee.asyncio.AsyncIOEventEmitter
+  pyee.ExecutorEventEmitter -> pyee.executor.ExecutorEventEmitter
+  pyee.TrioEventEmitter -> pyee.trio.TrioEventEmitter
+  Removed interfaces:
+  pyee.CompatEventEmitter
+  Documentation fixes:
+  Add docstring to BaseEventEmitter
+  Update docstrings to reference EventEmitter instead of BaseEventEmitter throughout
+  Developer Setup & CI:
+  Migrated builds from Travis to GitHub Actions
+  Refactor developer setup to use a local virtualenv 
+
+-------------------------------------------------------------------
 Fri Nov 19 11:43:43 UTC 2021 - pgajdos@suse.com
 
 - version update to 8.2.2

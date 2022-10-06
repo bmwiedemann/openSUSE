@@ -80,4 +80,12 @@ Add missing BuildRequires</comment>
     <comment></comment>
     <requestid>932769</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ae6142efa6d95ea0a900f43bf9e6f2cf</srcmd5>
+    <version>9.0.4</version>
+    <time>1665034954</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1008243</requestid>
+  </revision>
 </revisionlist>
