@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Oct  4 19:33:57 UTC 2022 - Mark Post <mpost@suse.com>
+
+- Upgraded to version 2.3.1 (jsc#PED-597)
+  * openssl-ibmca 2.3.1
+    - Adjustments for libica 4.1.0
+  * openssl-ibmca 2.3.0
+    - First version including the provider
+    - Fix for engine build without OpenSSL 3.0 sources
+  * openssl-ibmca 2.2.3
+    - Fix PKEY segfault with OpenSSL 3.0
+  * openssl-ibmca 2.2.2
+    - Fix tests with OpenSSL 3.0
+    - Build against libica 4.0
+- Removed a Requires for libica from the specfile.
+- Removed the obsolete baselibs.conf file
+
+-------------------------------------------------------------------
 Tue Mar 15 22:00:05 UTC 2022 - Mark Post <mpost@suse.com>
 
 - Completely revamped the postinstall scriptlet so that it doesn't

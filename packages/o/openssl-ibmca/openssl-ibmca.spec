@@ -19,15 +19,14 @@
 %global enginesdir %(pkg-config --variable=enginesdir libcrypto)
 
 Name:           openssl-ibmca
-Version:        2.2.1
+Version:        2.3.1
 Release:        0
 Summary:        The IBMCA OpenSSL dynamic engine
 License:        Apache-2.0
 Group:          Hardware/Other
 URL:            https://github.com/opencryptoki/openssl-ibmca
 Source:         https://github.com/opencryptoki/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        baselibs.conf
-Source2:        engine_section.txt
+Source1:        engine_section.txt
 
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -35,7 +34,6 @@ BuildRequires:  libica-devel >= 3.1.1
 BuildRequires:  libica-tools >= 2.4.0
 BuildRequires:  libtool
 BuildRequires:  openssl-devel
-Requires:       libica3
 Requires:       openssl
 ExclusiveArch:  s390x
 
@@ -57,7 +55,7 @@ export CPPFLAGS="%{optflags}"
 %install
 # Update the sample config file so that the dynamic path points
 # to the correct version of the engines directory.
-sed -i -e "/^dynamic_path/s, = .*/, = %{enginesdir}/," src/openssl.cnf.sample
+sed -i -e "/^dynamic_path/s, = .*/, = %{enginesdir}/," src/engine/openssl.cnf.sample
 
 %make_install
 rm %{buildroot}/%{enginesdir}/ibmca.la
@@ -67,12 +65,12 @@ rm %{buildroot}/%{enginesdir}/ibmca.la
 # is run. It will be read by the openssl .include directive that points
 # to /etc/ssl/engines.d/
 mkdir -p %{buildroot}%{_datadir}/%{name}
-cp -p %{SOURCE2} %{buildroot}%{_datadir}/%{name}/openssl-ibmca.sectiondef.txt
+cp -p %{SOURCE1} %{buildroot}%{_datadir}/%{name}/openssl-ibmca.sectiondef.txt
 
 # This will create the actual engine definition section that will be usable
 # by the .include directive of openSSL. That include will be inserted during
 # the postinstall phase of the package installation.
-grep -v "^#" src/openssl.cnf.sample | \
+grep -v "^#" src/engine/openssl.cnf.sample | \
     sed -n -e '/^\[ibmca_section\]/,$ p' | \
     sed -e '/^$/ {N;N;s/\n\n/\n/g;}' | \
     sed -e 's/^dynamic_path/#dynamic_path/' > %{buildroot}%{_datadir}/%{name}/openssl-ibmca.enginedef.cnf
@@ -96,13 +94,11 @@ fi
 
 %files
 %license LICENSE
+%doc ChangeLog
 %doc README.md
-%doc src/openssl.cnf.sample
-%doc src/openssl.cnf.defaultlibica
-%doc src/openssl.cnf.libica
-%doc src/openssl.cnf.libica-cex
+%doc src/engine/openssl.cnf.sample
+%doc src/engine/ibmca-engine-opensslconfig
 %dir %{_datadir}/%{name}
-%{_datadir}/%{name}/openssl.cnf.*
 %{_datadir}/%{name}/openssl-ibmca.sectiondef.txt
 %{_datadir}/%{name}/openssl-ibmca.enginedef.cnf
 %{enginesdir}/ibmca.*
