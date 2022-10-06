@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct  5 00:30:22 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to v0.1.10 
+  * Bump version
+  * Update README.md
+  * Implement introduce parameter refactoring
+  * Update python-publish.yml
+  * Update run-test.yml
+  * Update python-publish.yml
+  * Add Python 3.10 to github actions test runner
+
+-------------------------------------------------------------------
 Sat Jul 16 10:45:05 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.1.9:
