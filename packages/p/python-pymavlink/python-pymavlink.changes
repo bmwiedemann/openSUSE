@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Oct  5 00:45:55 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 2.4.35 
+  * tests: reformat XML
+  * mavlogdump.py: don't die when handling bytestrings in dataflash logs
+  * mavftpdecode: fixed handling of defaults
+  * mavextra.py: fix average(v, k, N) function
+  * mavutil: add DOCK mode to rover
+
+-------------------------------------------------------------------
+Wed Oct  5 00:43:58 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 2.4.34 
+  fixed pypi error
+
+-------------------------------------------------------------------
 Sun Oct 17 13:31:18 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.4.17
