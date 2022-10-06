@@ -1,7 +1,7 @@
 #
 # spec file for package python-panflute
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-panflute
-Version:        1.12.5
+Version:        2.2.3
 Release:        0
 Summary:        Pandoc filters package for Python
 License:        BSD-3-Clause
@@ -33,7 +33,7 @@ Requires:       python-PyYAML
 Requires:       python-click
 Requires:       python-future
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML}
