@@ -28,4 +28,12 @@
     A new function, get_submission_status, abstracts the API endpoint for monitoring submissions using the (new) result from the submit function.</comment>
     <requestid>705407</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>43d123b1906f0c586cf70e0d9cbc6d17</srcmd5>
+    <version>1.2.2</version>
+    <time>1665034936</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1008175</requestid>
+  </revision>
 </revisionlist>
