@@ -1,7 +1,7 @@
 #
 # spec file for package python-pa-ringbuffer
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pa-ringbuffer
-Version:        0.1.3
+Version:        0.1.4
 Release:        0
 Summary:        Python wrapper for PortAudio's ring buffer
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/spatialaudio/python-pa-ringbuffer
+URL:            https://github.com/spatialaudio/python-pa-ringbuffer
 Source:         https://files.pythonhosted.org/packages/source/p/pa-ringbuffer/pa-ringbuffer-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
