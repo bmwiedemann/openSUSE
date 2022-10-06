@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Oct  5 09:47:36 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to v2.1.5
+  * Ensure pypi.[ca,client]_cert[s] config items are passed to distribution
+    builder install steps to allow for custom PyPI index sources with self
+    signed certificates. #1396
+  * Fix a crash issue when depending on editable packages with extras. #1401
+  * Do not save the python path when using non-interactive mode in pdm init.
+    #1410
+  * Restrict importlib-metadata (<5.0.0) for Python <3.8 #1411
+
+-------------------------------------------------------------------
+Tue Oct  4 22:54:50 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to v2.1.4 (2022-09-17)
+  Bug Fixes
+  Fix a lock failure when depending on self with URL requirements. #1347
+  Ensure list to concatenate args for composite scripts. #1359
+  Fix an error in pdm lock --refresh if some packages has URLs. #1361
+  Fix unnecessary package downloads and VCS clones for certain commands. #1370
+  Fix a conversion error when converting a list of conditional dependencies from a Poetry format. #1383
+  Documentation
+  Adds a section to the docs on how to correctly work with PDM and version control systems. #1364
+
+- Update to v2.1.3 (2022-08-30)
+  Features & Improvements
+  When adding a package to (or removing from) a group, enhance the formatting of the group name in the printed message. #1329
+  Bug Fixes
+  Fix a bug of missing hashes for packages with file:// links the first time they are added. #1325
+  Ignore invalid values of data-requires-python when parsing package links. #1334
+  Leave an incomplete project metadata if PDM fails to parse the project files, but emit a warning. #1337
+  Fix the bug that editables package isn't installed for self package. #1344
+  Fix a decoding error for non-ASCII characters in package description when publishing it. #1345
+  Documentation
+  Clarify documentation explaining setup-script, run-setuptools, and is-purelib. #1327
+
+-------------------------------------------------------------------
 Sun Aug 14 10:47:53 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to v2.1.2

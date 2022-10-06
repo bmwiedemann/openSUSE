@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-pdm%{psuffix}
-Version:        2.1.2
+Version:        2.1.5
 Release:        0
 Summary:        Python Development Master
 License:        MIT
@@ -104,6 +104,7 @@ sed -i 's/"certifi>=[0-9.]*"/"certifi"/' pyproject.toml
 donttest="network"
 # mock testing finds the wrong python versions in our multiflavor setup
 donttest="$donttest or test_project_packages_path or test_conda_backend_create"
+donttest="$donttest or test_init_non_interactive"
 %pytest -k "not ($donttest)"
 %endif
 
