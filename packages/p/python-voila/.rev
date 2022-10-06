@@ -128,4 +128,14 @@
   * Support ipywidgets &gt;= 8</comment>
     <requestid>1002583</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>b52b53fe5d9d95d8c2db288026804fcb</srcmd5>
+    <version>0.3.6</version>
+    <time>1665034910</time>
+    <user>RBrownFactory</user>
+    <comment>- Add update-nbconvert.patch:
+  * Support python-nbconvert &lt; 8
+</comment>
+    <requestid>1008126</requestid>
+  </revision>
 </revisionlist>

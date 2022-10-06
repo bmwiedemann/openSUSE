@@ -44,6 +44,9 @@ Source99:       python-voila-rpmlintrc
 # PATCH-FIX-UPSTREAM Support ipywidgets 8, based on
 # gh#voila-dashboards/voila#1193
 Patch0:         support-ipywidgets-8.patch
+# PATCH-FIX-UPSTREAM update-nbconvert.patch based on
+# gh#voila-dashboards/voila#1161
+Patch1:         update-nbconvert.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module jupyter-packaging >= 0.10}
 BuildRequires:  %{python_module setuptools}
@@ -52,12 +55,12 @@ BuildRequires:  jupyter-jupyterlab-filesystem
 BuildRequires:  jupyter-notebook-filesystem
 BuildRequires:  python-rpm-macros
 Requires:       jupyter-voila = %{version}
-Requires:       python-nbclient >= 0.4
 Requires:       python-websockets >= 9.0
 Requires:       (python-jupyter-client >= 6.1.3 with python-jupyter-client < 8)
 Requires:       (python-jupyter-server >= 1.18 with python-jupyter-server < 2)
 Requires:       (python-jupyterlab-server >= 2.3.0 with python-jupyterlab-server < 3)
-Requires:       (python-nbconvert >= 6.4.5 with python-nbconvert < 7)
+Requires:       (python-nbclient >= 0.4.0 with python-nbclient < 0.7)
+Requires:       (python-nbconvert >= 6.4.5 with python-nbconvert < 8)
 Requires:       (python-traitlets >= 5.0.3 with python-traitlets < 6)
 BuildArch:      noarch
 %if %{with libalternatives}
@@ -121,6 +124,7 @@ sed -i '/nbclient/ s/,<0.6//' setup.cfg
 # '.' is now considered 'hidden', which is not allowed.
 sed -i 's|./jupyter.svg|jupyter.svg|' tests/notebooks/images.ipynb
 %patch0 -p1
+%patch1 -p1
 
 %build
 %python_build

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  5 07:25:19 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add update-nbconvert.patch:
+  * Support python-nbconvert < 8
+
+-------------------------------------------------------------------
 Mon Sep 12 05:59:11 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-ipywidgets-8.patch:
