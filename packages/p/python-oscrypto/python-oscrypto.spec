@@ -1,7 +1,7 @@
 #
-# spec file for package python-oscrypto
+# spec file
 #
-# Copyright (c) 2019-2020 cunix
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,15 +28,15 @@
 %endif
 
 Name:           python-oscrypto%{psuffix}
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Python crypto using OS libraries
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/wbond/oscrypto
 Source:         https://github.com/wbond/oscrypto/archive/%{version}.tar.gz#/oscrypto-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module asn1crypto >= 1.0.0}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %if %{with test}

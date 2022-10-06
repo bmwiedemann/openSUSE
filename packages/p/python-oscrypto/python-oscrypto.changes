@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Oct  4 22:15:24 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 1.3.0
+  * Add support for OpenSSL 3.0
+  * Add first-class support for RSASSA-PSS certificates
+  * Add user-friendly handling of the error message with TLS on macOS when a ceritificate has a lifetime that is longer than the CAB forum guidelines
+  * Fix AES 192/256 encryption on OpenSSL and Windows to allow no padding when plaintext is an exact multiple of 16 bytes long. Previously AES192
+    would require plaintext with a length that was a multiple of 24 AND 16, and AES256 would require plaintext with a length that was a multiple of 32.
+  * Add the ability to skip tests that require internet connectivity via @jnahmias
+  * Fix a bug throwing an exception when passing an invalid type to asymmetric.load_public_key() via @Arbitrage0
+  * Fix a number of typos in doc strings via @frennkie and @kianmeng 
+
+-------------------------------------------------------------------
+Tue Oct  4 22:14:32 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 1.2.1
+  * Fix running in an environment with a custom OpenSSL install on macOS 10.15
+  * Fix compatibility with macOS 11, where ctype.find_library() no longer works due to system .dylibs no longer being present on the filesystem
+  * Handle the Mac EPROTOTYPE error that may be returned when a TLS connection is terminated
+  * Fixed the oscrypto-tests sdist on PyPi to work properly to generate a .whl 
+
+-------------------------------------------------------------------
 Wed Feb 19 12:00:00 UTC 2020 - cunix@mail.de
 
 - Version bump to 1.2.0
