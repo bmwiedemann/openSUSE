@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct  4 19:59:04 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 2.0.19.
+  * Synchronize with OpenCL v3.0.12 specification release (with
+    OpenCL-SDK fix).
+
+-------------------------------------------------------------------
 Tue Sep 27 21:53:12 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 2.0.18.

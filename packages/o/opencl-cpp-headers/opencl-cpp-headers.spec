@@ -17,10 +17,10 @@
 #
 
 
-%global _tagver 2022.09.23
+%global _tagver 2022.09.30
 
 Name:           opencl-cpp-headers
-Version:        2.0.18
+Version:        2.0.19
 Release:        0
 Summary:        OpenCL C++ headers
 License:        Apache-2.0

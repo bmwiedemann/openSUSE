@@ -86,4 +86,15 @@
 </comment>
     <requestid>1006543</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c576d28e09a97d6b6711f0e606cd280b</srcmd5>
+    <version>2.0.19</version>
+    <time>1665034896</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 2.0.19.
+  * Synchronize with OpenCL v3.0.12 specification release (with
+    OpenCL-SDK fix).
+</comment>
+    <requestid>1008000</requestid>
+  </revision>
 </revisionlist>
