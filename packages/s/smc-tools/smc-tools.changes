@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Oct  4 19:03:55 UTC 2022 - Mark Post <mpost@suse.com>
+
+- Upgraded to version 1.8.2 (jsc#PED-577)
+  * v1.8.2 (2022-09-26)
+    Bug fixes:
+    - `smc_run`: Fix for single quotes in parameters
+    - `Makefile`: Fix target `check`
+    - `smcss`/`smc_pnet`: Fix option `--version`
+    - `smcr`/`smc_dbg`: Fix for showing the correct hardware capabailities
+  * v1.8.1 (2022-04-14)
+    Changes:
+    - `smc_rncs`: Recognize RoCE Express3 cards
+  * v1.8.0 (2022-04-11)
+    Changes:
+    - `smc_dbg`: Add stats and `smc info` output
+    - `smc_rnics`:
+        - List unknown devices with option `-a`
+        - Include software-set PNET IDs
+    - `smc_chk`: Indicate PNET IDs set by `smc_pnet`.
+    Bug fixes:
+    - `smc_rnics`: Display correct PNET ID for unknown Mellanox cards
+    - `smc_run`: Fix output of version info
+
+-------------------------------------------------------------------
 Thu Nov  4 17:14:29 UTC 2021 - Mark Post <mpost@suse.com>
 
 - Upgraded to version 1.7.0 (jsc#SLE-18328)
