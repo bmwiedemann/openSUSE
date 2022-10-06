@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -83,6 +83,9 @@ make install%{flavor_suffix} \
   PREFIX=%{_usr} \
   SYSCONFDIR=%{_sysconfdir} \
   UDEVRULESDIR=%{_udevrulesdir} \
+  %if 0%{?suse_version} > 1550
+  NETCONFDIR=%{_libexecdir}/netconfig/netconfig.d \
+  %endif
   UNITDIR=%{_unitdir}
 
 # Disable persistent net generator from udev-persistent-ifnames as
@@ -95,7 +98,11 @@ ln -s /dev/null %{buildroot}/%{_sysconfdir}/udev/rules.d/75-persistent-net-gener
 %files -n %{base_name}%{flavor_suffix}
 %defattr(-,root,root)
 %config(noreplace) %{_sysconfdir}/default/cloud-netconfig
+%if 0%{?suse_version} > 1550
+%{_libexecdir}/netconfig/netconfig.d/cloud-netconfig
+%else
 %{_sysconfdir}/netconfig.d/cloud-netconfig
+%endif
 %{_sysconfdir}/sysconfig/network/scripts/*
 %if 0%{?suse_version} >= 1315
 %{_sysconfdir}/udev/rules.d

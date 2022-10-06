@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep 18 17:14:16 UTC 2022 - Christian Boltz <suse-beta@cboltz.de>
+
+- /etc/netconfig.d/ moved to /usr/libexec/netconfig/netconfig.d/ in
+  Tumbleweed, update path (poo#116221)
+
+-------------------------------------------------------------------
 Fri Aug 27 15:00:18 UTC 2021 - Joachim Gleissner <jgleissner@suse.com>
 
 - Update to version 1.6:
