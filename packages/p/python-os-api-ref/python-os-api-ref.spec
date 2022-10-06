@@ -24,6 +24,8 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/os-api-ref
 Source0:        https://files.pythonhosted.org/packages/source/o/os-api-ref/os-api-ref-2.3.0.tar.gz
+# https://review.opendev.org/c/openstack/os-api-ref/+/860080
+Patch0:         0001-Remove-deprecated-sphinx-testing-dependency.patch
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PyYAML >= 3.12
 BuildRequires:  python3-Sphinx
@@ -31,8 +33,6 @@ BuildRequires:  python3-beautifulsoup4
 BuildRequires:  python3-openstackdocstheme >= 2.2.1
 BuildRequires:  python3-pbr >= 2.0.0
 BuildRequires:  python3-python-subunit
-BuildRequires:  python3-six
-BuildRequires:  python3-sphinx-testing
 BuildRequires:  python3-stestr
 BuildRequires:  python3-testtools
 BuildArch:      noarch
@@ -55,7 +55,6 @@ Requires:       python3-PyYAML >= 3.12
 Requires:       python3-Sphinx
 Requires:       python3-openstackdocstheme >= 2.2.1
 Requires:       python3-pbr >= 2.0.0
-Requires:       python3-six
 
 %description -n python3-os-api-ref
 This project is a collection of sphinx stanzas that assist in building an API
