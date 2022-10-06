@@ -26,7 +26,7 @@
 %define oc_cvs_tag opencryptoki
 
 Name:           openCryptoki
-Version:        3.17.0
+Version:        3.19.0
 Release:        0
 Summary:        An Implementation of PKCS#11 (Cryptoki) v2.11 for IBM Cryptographic Hardware
 License:        CPL-1.0
@@ -38,9 +38,7 @@ Source2:        openCryptoki-TFAQ.html
 Source3:        openCryptoki-rpmlintrc
 # Patch 1 is needed because group pkcs11 doesn't exist in the build environment
 # and because we don't want(?) various file and directory permissions to be 0700.
-Patch1:         ocki-3.11-remove-make-install-chgrp.patch
-Patch2:         openCryptoki-sles15-sp4-EP11-Dilithium-Specify-OID-of-key-strength-at-key-ge.patch
-Patch3:         openCryptoki-sles15-sp4-EP11-Fix-host-library-version-query.patch
+Patch1:         ocki-3.19-remove-make-install-chgrp.patch
 BuildRequires:  bison
 BuildRequires:  dos2unix
 BuildRequires:  flex
@@ -130,8 +128,6 @@ Cryptographic Accelerator (FC 4960 on pSeries).
 %prep
 %setup -q -n %{oc_cvs_tag}-%{version}
 %patch1 -p1
-%patch2 -p1
-%patch3 -p1
 
 cp %{SOURCE2} .
 
@@ -230,10 +226,16 @@ ln -sf %{_libdir}/opencryptoki/libopencryptoki.so %{_prefix}/lib/pkcs11/PKCS11_A
 %files
 %doc openCryptoki-TFAQ.html FAQ
 %doc doc/*
+%dir %{_datadir}/doc/opencryptoki
+%{_datadir}/doc/opencryptoki/policy-example.conf
+%{_datadir}/doc/opencryptoki/strength-example.conf
   # configuration directory
 %dir %{_sysconfdir}/opencryptoki
 %config %{_sysconfdir}/opencryptoki/opencryptoki.conf
+%config %{_sysconfdir}/opencryptoki/strength.conf
+%config %attr(640,root,pkcs11) %{_sysconfdir}/opencryptoki/p11sak_defined_attrs.conf
 %ifarch s390 s390x
+%config %{_sysconfdir}/opencryptoki/ccatok.conf
 %config %{_sysconfdir}/opencryptoki/ep11cpfilter.conf
 %config %{_sysconfdir}/opencryptoki/ep11tok.conf
 %{_sbindir}/pkcsep11_migrate
@@ -250,6 +252,7 @@ ln -sf %{_libdir}/opencryptoki/libopencryptoki.so %{_prefix}/lib/pkcs11/PKCS11_A
 %{_sbindir}/pkcsslotd
 %{_sbindir}/pkcsconf
 %{_sbindir}/pkcsicsf
+%{_sbindir}/pkcsstats
 %{_sbindir}/pkcstok_migrate
 %dir %{_libdir}/opencryptoki
 %dir %{_libdir}/opencryptoki/stdll
@@ -276,6 +279,7 @@ ln -sf %{_libdir}/opencryptoki/libopencryptoki.so %{_prefix}/lib/pkcs11/PKCS11_A
 %dir %{_libdir}/opencryptoki
 %dir %{_libdir}/opencryptoki/stdll
 %{_includedir}/opencryptoki
+%{_libdir}/pkgconfig/opencryptoki.pc
 
 %ifarch %{openCryptoki_32bit_arch}
 %files 32bit

@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Fri Sep 30 19:14:38 UTC 2022 - Mark Post <mpost@suse.com>
+
+- Upgrade to version 3.19.0 (jsc#PED-616)
+  + openCryptoki 3.19
+    - CCA: check for expected master key verification patterns at token init
+    - CCA: check master key verification pattern of created keys to be as expected
+    - EP11: check for expected wrapping key verification pattern at token init
+    - EP11: check wrapping key verification pattern of created keys to be as expected
+    - p11sak/pkcsconf: display PKCS#11 URIs
+    - p11sak: add support for IBM specific Dilithium keys
+    - p11sak: allow to list keys filtered by label
+    - common: add support for dual-function cryptographic functions
+    - Add support for C_SessionCancel function (PKCS#11 v3.0)
+    - EP11: add support for schnorr signatures (mechanism CKM_IBM_ECDSA_OTHER)
+    - EP11: add support for Bitcoin key derivation (mechanism CKM_IBM_BTC_DERIVE)
+    - Bug fixes
+  + openCryptoki 3.18
+    - Default to FIPS compliant token data format (tokversion = 3.12)
+    - Add support for restricting usage of mechanisms and keys via a global policy
+    - Add support for statistics counting of mechanism usage
+    - ICA/EP11: Support libica version 4
+    - p11sak tool: Allow to set different attributes for public and private keys
+- Replaced ocki-3.17-remove-make-install-chgrp.patch with an updated
+  version named ocki-3.19-remove-make-install-chgrp.patch to fit
+  the current state of the source.
+- Removed the following obsolete patches:
+  openCryptoki-sles15-sp4-EP11-Dilithium-Specify-OID-of-key-strength-at-key-ge.patch
+  openCryptoki-sles15-sp4-EP11-Fix-host-library-version-query.patch
+  ocki-3.17-EP11-Fix-C_GetMechanismList-returning-CKR_BUFFER_TOO.patch
+
+-------------------------------------------------------------------
+Wed Aug 10 16:34:10 UTC 2022 - Mark Post <mpost@suse.com>
+
+- Added ocki-3.17-EP11-Fix-C_GetMechanismList-returning-CKR_BUFFER_TOO.patch
+  for bsc#1202106. One test of the gen_purpose test cases fails with
+  C_GetMechanismList #2 rc=CKR_BUFFER_TOO_SMALL" error on the EP11 Token.
+
+-------------------------------------------------------------------
+Thu Jun  2 16:21:54 UTC 2022 - Mark Post <mpost@suse.com>
+
+- Made the following changes for bsc#1199862 "Please install
+  p11sak_defined_attrs.conf."
+  * Replaced ocki-3.11-remove-make-install-chgrp.patch with
+    ocki-3.17-remove-make-install-chgrp.patch to remove the
+    "-g pkcs11" parameter from the install command in the Makefile
+  * Updated the spec file to include
+    /etc/opencryptoki/p11sak_defined_attrs.conf as a %config file
+    with the necessary permissions and group ownership.
+
+-------------------------------------------------------------------
 Wed Mar 23 15:32:25 UTC 2022 - Mark Post <mpost@suse.com>
 
 - Added the following two patches for bac#1197395. The CKM_IBM_DILITHIUM
