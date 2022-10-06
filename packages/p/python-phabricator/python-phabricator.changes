@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct  4 23:02:50 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- version update to  0.9.1
+  * Update requests version.
+
+- version update to 0.9.0
+  * Add default retry to API calls. 
+
+-------------------------------------------------------------------
 Tue Jun  1 07:51:34 UTC 2021 - pgajdos@suse.com
 
 - version update to 0.8.1
