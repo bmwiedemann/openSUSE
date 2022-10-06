@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Oct  4 13:16:18 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Remove steam-devices again, it's only in the Non-OSS repo
+
+-------------------------------------------------------------------
+Fri Sep 30 13:24:38 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Pull in power-profiles-daemon in the Plasma pattern as well
+- Allow tlp as alternative to power-profiles-daemon (boo#1198549)
+
+-------------------------------------------------------------------
+Tue Sep 27 15:59:38 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add keylime-tenant requirement for the ra_verifier role (new subpackage)
+
+-------------------------------------------------------------------
+Thu Sep 15 15:07:56 UTC 2022 - Shawn Dunn <sfalken@cloverleaf-linux.org>
+
+- Add general desktop Requires: steam-devices.  This package is
+  highly unlikely to ever be provided through flatpak, and causes
+  close to zero impact on the base system, as it quite literally
+  contains 1 file with six udev rules. Provides for a seamless out-
+  of-box experience for anybody using the steam flatpak, without it,
+  any users running steam will need to install manually via t-u.
+
+-------------------------------------------------------------------
 Mon Aug  8 09:51:57 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Have onlyDVD require ra_agent and alt_onlyDVD ra_verifier to allow

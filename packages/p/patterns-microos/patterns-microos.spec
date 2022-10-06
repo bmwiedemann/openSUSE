@@ -319,6 +319,7 @@ Provides:       pattern-order() = 9086
 Provides:       pattern-visible()
 Requires:       keylime-firewalld
 Requires:       keylime-registrar
+Requires:       keylime-tenant
 Requires:       keylime-verifier
 
 %description ra_verifier
@@ -502,7 +503,8 @@ Requires:       yelp
 # https://build.opensuse.org/request/show/921373
 Requires:       xdg-desktop-portal-gnome
 # ensure laptop power support is there
-Requires:       power-profiles-daemon
+Requires:       (power-profiles-daemon or tlp)
+Suggests:       power-profiles-daemon
 #
 # Low-level parts that we need
 #
@@ -572,6 +574,9 @@ Requires:       purpose
 Requires:       qqc2-desktop-style
 Requires:       sddm-theme-openSUSE
 Requires:       xdg-desktop-portal-kde
+# Recommended by powerdevil5, but allow tlp as alternative
+Requires:       (power-profiles-daemon or tlp)
+Suggests:       power-profiles-daemon
 
 # Doesn't depend on PackageKit, but also works for other backends
 Requires:       discover-notifier

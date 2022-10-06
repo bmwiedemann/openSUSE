@@ -502,4 +502,24 @@ Tue Jan  20 02:29:11 UTC 2021 - Syds Bearda &lt;sydsb@opensuse.org&gt;
     <comment></comment>
     <requestid>993754</requestid>
   </revision>
+  <revision rev="53" vrev="53">
+    <srcmd5>5ccd3f8c9c474f2a53a8e4c98d2fb28d</srcmd5>
+    <version>5.0</version>
+    <time>1665034875</time>
+    <user>RBrownFactory</user>
+    <comment>- Remove steam-devices again, it's only in the Non-OSS repo
+
+- Pull in power-profiles-daemon in the Plasma pattern as well
+- Allow tlp as alternative to power-profiles-daemon (boo#1198549)
+
+- Add keylime-tenant requirement for the ra_verifier role (new subpackage)
+
+- Add general desktop Requires: steam-devices.  This package is
+  highly unlikely to ever be provided through flatpak, and causes
+  close to zero impact on the base system, as it quite literally
+  contains 1 file with six udev rules. Provides for a seamless out-
+  of-box experience for anybody using the steam flatpak, without it,
+  any users running steam will need to install manually via t-u.</comment>
+    <requestid>1007912</requestid>
+  </revision>
 </revisionlist>
