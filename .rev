@@ -7,4 +7,30 @@
     <comment></comment>
     <requestid>808933</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8f8d68c9466bbb238978720925a5b5f0</srcmd5>
+    <version>1.1.12</version>
+    <time>1665034924</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 1.1.12 (2022-09-11)
+  * Includes latest fixes to support newer versions of OpenWrt
+- Update to 1.1.11 (2021-03-21)
+  * Add rst-linter pre-commit hook to prevent committing errors to HISTORY.rst #50  
+- Update to 1.1.10 (2021-03-21)
+  * Also trigger the Github Actions on push of tags (#49)
+- Update to 1.1.9 (2021-03-21)
+  * Publish to pypi only once in github actions (#47)
+- Update to 1.1.8 (2021-03-12)
+  * Support newer openwrt snapshot versions (#45)
+  * Fix tox in github actions and also test py38 (#46)
+- Update to 1.1.7 (2020-12-08)
+  * Switch pipeline to Github actions
+- Update to 1.1.6 (2020-09-01)
+  * Fixes home-assistant/core/issues/38870, home-assistant/core/issues/39498
+  * Fixes fbradyirl/openwrt-luci-rpc/issues/33
+- Update to 1.1.5 (2020-09-01)
+  * Unpin pip versions. Allow higher. Fixes #42 https://github.com/fbradyirl/openwrt-luci-rpc/issues/42
+</comment>
+    <requestid>1008149</requestid>
+  </revision>
 </revisionlist>
