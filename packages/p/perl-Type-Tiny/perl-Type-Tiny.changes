@@ -1,4 +1,223 @@
 -------------------------------------------------------------------
+Fri Sep 30 03:06:43 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.000001
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+
+  2.000001	2022-09-29
+   [ Bug Fixes ]
+   - Avoid uninitialized warnings when creating a union between an Enum type
+     and a non-Enum type.
+     Diab Jerius++
+   [ Documentation ]
+   - Clearer documentation of Types::TypeTiny::to_TypeTiny.
+   [ Test Suite ]
+   - No longer report Type::Tie version at start of test suite, as Type::Tie
+     is now bundled.
+  2.000000	2022-09-23
+   [ Test Suite ]
+   - Minor fix for Class::Plain-related tests.
+   [ Packaging ]
+   - Repackage Type-Tiny 1.999_013 as a stable release.
+  1.999_013	2022-09-23	Type::Tiny 2.0 Preview N
+   [ Documentation ]
+   - Document usage with Class::Plain.
+   - Fix pod typo in manual.
+     Florian Schlichting++
+   - Improvements to Type::Params documentation.
+   [ Test Suite ]
+   - Test usage with Class::Plain.
+   [ Other ]
+   - Type::Params signature_for will respect inheritance when looking for
+     methods to wrap, when the `method` option is true.
+  1.999_012	2022-09-21	Type::Tiny 2.0 Preview M
+   [ Documentation ]
+   - Document in Type::Tie that Type::Tie is implicitly loaded when you tie a
+     variable to a Type::Tiny type constraint. (It was already documented in
+     the manual.)
+   - Document the Type::Tie::BASE `type` method.
+   - Removed stub pod from a bunch of internal modules. They're internal, so
+     nobody should be expecting pod.
+   [ Test Suite ]
+   - Bundle a (renamed) copy of Type::Nano in the test suite for some tests
+     combining Type::Nano and Type::Tiny type constraints, and converting
+     Type::Nano to Type::Tiny.
+   - Improved test cases for Type::Tie with an aim at 100% coverage.
+   [ Packaging ]
+   - Add Class::XSAccessor to Type::Tiny's recommendations.
+   [ Other ]
+   - Adding a type constraint to a type library will now also add it to the
+     library's type registry. (Even though this registry is unlikely to be
+     used.)
+   - Rewrite much of Type::Tie to no longer use inside-out objects and avoid
+     a dependency on Hash::Util::FieldHash or alternative implementations of
+     fieldhashes.
+   - Type::Parser's internal packages now have version numbers.
+   - Type::Tie now supports variables being cloned with Clone::clone(). It
+     already supported Storable::dclone().
+   - Type::Tie will now try to load Class::XSAccessor::Array for a speed-up.
+   - Using Type::Utils to declare a named type will now automatically add the
+     type to the caller's type registry.
+  1.999_011	2022-09-20	Type::Tiny 2.0 Preview L
+   - Added: Bundle Type::Tie which was previously in a separate distribution
+     on the CPAN.
+  1.999_010	2022-09-18	Type::Tiny 2.0 Preview K
+   [ Test Suite ]
+   - More tests.
+   [ Other ]
+   - Eval::TypeTiny::CodeAccumulator now supports $coderef->compile(alias =>
+     1).
+   - If the `ws parameter is set to true in parameterized DelimitedStr type
+     constraints, leading and trailing whitespace will now be permitted.
+   - Non-parameterized DelimitedStr now has a coercion from ArrayRef[Str].
+   - The ${^TYPE_PARAMS_MULTISIG} magic global variable is now called
+     ${^_TYPE_PARAMS_MULTISIG}. The old name will still be supported for at
+     least six months after the next stable release.
+  1.999_009	2022-09-16	Type::Tiny 2.0 Preview J
+   [ Test Suite ]
+   - Another test for `-base`.
+   [ Other ]
+   - Added: Types::Common::String now has a DelimitedStr type.
+   - Improve cache key generation for parameterized types.
+   - Minor improvements to the default name generator, used to generate the
+     display_name for parameterized type constraints.
+  1.999_008	2022-09-14	Type::Tiny 2.0 Preview I
+   [ Bug Fixes ]
+   - More sensible error message trying to import a type constraint using
+     -declare outside a type library.
+     Diab Jerius++
+   [ Other ]
+   - Added: Type::Tiny now has an exportables_by_tag method.
+   - Added: Type::Tiny::_DeclaredType is now a separate module. (It was
+     previously defined inline in Type/Library.pm.)
+   - Eval::TypeTiny::type_to_coderef() can now handle being passed undef as a
+     type constraint and will create a Type::Tiny::_DeclaredType object to
+     wrap instead.
+   - If a type library has been made immutable, you can no longer add new
+     types and coercions to it.
+   - Type::Params `signature_for` will now delay most of the signature
+     compilation until the function is called for the first time, like
+     `wrap_subs`/`wrap_methods` used to do. It still does enough up-front to
+     detect some common errors in signatures.
+   - Various Type::Library cleanups.
+  1.999_007	2022-09-13	Type::Tiny 2.0 Preview H
+   [ Documentation ]
+   - Fix pod formatting issue in Type::Params.
+   [ Test Suite ]
+   - Improved test cases; now 100% coverage on coveralls.io.
+   [ Other ]
+   - Minor refactoring, mostly to make things more easily testable.
+  1.999_006	2022-09-12	Type::Tiny 2.0 Preview G
+   [ BACK COMPAT ]
+   - If none of a multisig's alternative sigs match the parameter list
+     ${^TYPE_PARAMS_MULTISIG} will be explicitly set to undef, instead of
+     being left as-is.
+   - The Eval::TypeTiny::HAS_LEXICAL_VARS constant no longer exists. It was
+     deprecated in Type-Tiny-1.004000 (2018-07-27).
+   [ Other ]
+   - Get the `multiple` option working with the `signature_for` function from
+     Type::Params.
+   - Improved test cases and miscellaneous small bugfixes for slurpy
+     parameters in Type::Params.
+  1.999_005	2022-09-11	Type::Tiny 2.0 Preview F
+   [ Bug Fixes ]
+   - What was supposed to be a warning for slurpy+default in Type::Params was
+     throwing an exception. Corrected to be a warning.
+   [ Documentation ]
+   - Minor improvements to Type::Params documentation.
+   [ Other ]
+   - The functionality provided by Type::Params::multisig() is now provided
+     in the Type::Params v2 API. (And is slightly more functional!)
+  1.999_004	2022-09-09	Type::Tiny 2.0 Preview E
+   [ Documentation ]
+   - Minor documentation clarifications around new constructor methods for
+     Type::Tiny subclasses.
+   [ Test Suite ]
+   - Add versions of tests for the new Type::Params v2 API which don't rely
+     on Perl 5.20 features.
+   - More tests for Type::Tiny::{Class,Duck,Enum,Role} exporting.
+   [ Packaging ]
+   - Require Exporter::Tiny 1.004001.
+   [ Other ]
+   - Type::Tiny::{Class,Duck,Enum,Role} subclass Exporter::Tiny instead of
+     handling exports manually.
+  1.999_003	2022-09-09	Type::Tiny 2.0 Preview D
+   [ Bug Fixes ]
+   - Setting a default for a slurpy parameter in Type::Params now warns and
+     ignores the default instead of failing to compile because of a syntax
+     error.
+     Zhtwn++
+   [ Other ]
+   - Added: Move two helper subs out of Type::Library and into
+     Eval::TypeTiny, clean them up, and document them as part of the API
+     (set_subname and type_to_coderef).
+   - Added: Type::Tiny now has an `exportables` method which provides a list
+     of functions that the type can export. Type libraries now defer to this
+     when deciding what they can export.
+   - Added: Type::Tiny::Class is now an exporter.
+   - Added: Type::Tiny::Duck is now an exporter.
+   - Added: Type::Tiny::Enum has an is_word_safe method which indicates
+     whether all values in the enumeration are 'words' (i.e. contain only
+     word characters).
+   - Added: Type::Tiny::Enum is now an exporter.
+   - Added: Type::Tiny::Role is now an exporter.
+   - Added: Word-safe enumerations export constants for each value.
+     Branislav Zahradník++
+   - Major simplifications of Type::Library internals.
+   - The NICE_PROTOTYPES constant has been moved from Type::Library to
+     Eval::TypeTiny, though a copy of it is still available in Type::Library
+     for backwards compatibility.
+   - The intersection of two Type::Tiny::Enum objects is now a
+     Type::Tiny::Enum instead of a Type::Tiny::Intersection.
+     Branislav Zahradník++
+   - The union of two Type::Tiny::Enum objects is now a Type::Tiny::Enum
+     instead of a Type::Tiny::Union.
+   - Type::Params will call default coderefs as a method for signatures where
+     method => 1.
+  1.999_002	2022-09-07	Type::Tiny 2.0 Preview C
+   [ Bug Fixes ]
+   - Types::Common was not correctly handling the -sigs export tag.
+   [ Documentation ]
+   - Fix up some heading levels in the pod for Type::Params.
+   - Update NEWS.
+   [ Test Suite ]
+   - Better tests for `strictness` option in Type::Params.
+   - Improved tests for slurpy handling in Type::Params.
+   - The internal module Type::Params::Signature now has some tests of its
+     own.
+   [ Other ]
+   - Minor bugfixes and improvements to slurpy handling in Type::Params.
+   - The type_default method will accept parameters, and sort-of curry them.
+  1.999_001	2022-09-05	Type::Tiny 2.0 Preview B
+   [ Documentation ]
+   - Fix misspelling of 'GitHub' in documentation.
+   - Further revisions of Type::Manual.
+   - Update the SYNOPSIS for Types::Standard and Type::Tiny.
+   [ Test Suite ]
+   - Tests for the `type_default` of all builtin types.
+   [ Other ]
+   - Changes to the `type_default` for a few parameterized types.
+   - Types::Common now also extends Types::TypeTiny.
+  1.999_000	2022-09-04	Type::Tiny 2.0 Preview A
+   [ Documentation ]
+   - Updated Type::Tiny::Manual to cover new features.
+   [ Other ]
+   - %Error::TypeTiny::CarpInternal is now an alias for %Carp::CarpInternal.
+   - Added: Type::Tiny `type_default` method.
+   - Added: Type::Tiny overloads `/`.
+   - Added: Types::Common module.
+   - The Type::Params API has had a major overhaul, introducing `signature`
+     and `signature_for` functions. The `compile`, `compile_named`,
+     `compile_named_oo`, `validate`, `validate_named`, `wrap_subs`, and
+     `wrap_methods` functions are now considered the legacy API. There are no
+     plans to drop support for the legacy API in the foreseeable future.
+   - Updated: Dropping support for Perl 5.6.1 (which was released in April
+     2001), 5.6.2 (November 2003), and Perl 5.8.0 (July 2002). Type::Tiny now
+     requires at least Perl 5.8.1.
+   - Updated: Require Exporter::Tiny 1.004000+. (Previously required
+     Exporter::Tiny 1.000000.)
+
+-------------------------------------------------------------------
 Thu Sep  1 03:08:14 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.016010

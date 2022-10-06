@@ -18,7 +18,7 @@
 
 %define cpan_name Type-Tiny
 Name:           perl-Type-Tiny
-Version:        1.016010
+Version:        2.000001
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Tiny, yet Moo(se)-compatible type constraint
@@ -28,15 +28,15 @@ Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Exporter::Tiny) >= 1.000000
+BuildRequires:  perl(Exporter::Tiny) >= 1.004001
 BuildRequires:  perl(Test::More) >= 0.96
-Requires:       perl(Exporter::Tiny) >= 1.000000
+Requires:       perl(Exporter::Tiny) >= 1.004001
+Recommends:     perl(Class::XSAccessor) >= 1.17
 Recommends:     perl(Devel::LexAlias) >= 0.05
 Recommends:     perl(Devel::StackTrace)
 Recommends:     perl(Ref::Util::XS) >= 0.100
 Recommends:     perl(Regexp::Util) >= 0.003
 Recommends:     perl(Sub::Util)
-Recommends:     perl(Type::Tie)
 Recommends:     perl(Type::Tiny::XS) >= 0.016
 %{perl_requires}
 
