@@ -1,7 +1,7 @@
 #
 # spec file for package perl-JSON-MaybeXS
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,16 @@
 #
 
 
-Name:           perl-JSON-MaybeXS
-Version:        1.004003
-Release:        0
 %define cpan_name JSON-MaybeXS
-Summary:        Use L<Cpanel::JSON::XS> with a fallback to L<JSON::XS> and L<JSON::PP>
+Name:           perl-JSON-MaybeXS
+Version:        1.004004
+Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
+Summary:        Use Cpanel::JSON::XS with a fallback to JSON::XS and JSON::PP
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/E/ET/ETHER/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Cpanel::JSON::XS) >= 2.3310
@@ -54,11 +52,11 @@ want to pass options as constructor args rather than calling mutators, so
 we provide our own 'new' method that supports that.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -69,7 +67,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 %license LICENSE
 
