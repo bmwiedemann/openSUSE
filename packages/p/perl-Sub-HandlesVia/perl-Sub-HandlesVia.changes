@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep 27 03:08:13 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.037
+   see /usr/share/doc/packages/perl-Sub-HandlesVia/Changes
+
+  0.037	2022-09-26
+
+   [ Bug Fixes ]
+   - Fix test case broken by Type::Tiny v2.
+     Peter Mottram++
+   - Hash:set shouldn't hardcode use of Carp::croak. Instead a CodeGenerator
+     should decide how to deal with error messages.
+
+-------------------------------------------------------------------
 Sat Aug 27 03:07:16 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.036
