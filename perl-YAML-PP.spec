@@ -18,7 +18,7 @@
 
 %define cpan_name YAML-PP
 Name:           perl-YAML-PP
-Version:        0.034
+Version:        0.035
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        YAML 1.2 Processor
