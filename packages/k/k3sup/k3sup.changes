@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Wed Oct 05 05:24:30 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.12.7:
+  * Fix issue with string being quoted in ready command
+
+-------------------------------------------------------------------
+Wed Oct 05 05:20:46 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.12.6:
+  * Fix ready command
+
+-------------------------------------------------------------------
+Tue Oct 04 14:27:32 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.12.5:
+  * Add experimental ready feature
+
+-------------------------------------------------------------------
+Tue Oct 04 13:52:52 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.12.4:
+  * Fix issue with join token for Windows users:
+  * Remove SWAG
+  * Less is more
+  * Fix #314
+  * Clarify what sponsorship entails
+  * Clarify expectations
+
+-------------------------------------------------------------------
+Tue Oct 04 13:42:02 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.12.3:
+  * Fix parsing of host field
+
+-------------------------------------------------------------------
+Tue Oct 04 13:29:54 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.12.2:
+  * Add build for darwin arm64 and adjust get accordingly
+  * Update examples for install, join and main command
+  * Update .DEREK.yml file
+  * Remove old packages from apps feature
+  * Make data-dir configurable for getting node token
+
+-------------------------------------------------------------------
+Tue Oct 04 13:29:17 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.12.1:
+  * Alter the support message printed in k3sup
+  * Increase minimum 32-bit arm version
+  * Upgrade golang.org packages
+  * Update ISSUE_TEMPLATE.md
+
+-------------------------------------------------------------------
 Thu Jul 14 09:38:38 UTC 2022 - rombert@apache.org
 
 - Update to version 0.12.0:
