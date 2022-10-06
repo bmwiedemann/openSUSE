@@ -65,4 +65,12 @@
   * Drop support for Python 2.7 and 3.5.</comment>
     <requestid>971969</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4a838c556fd7b697878c6bae6f5b041a</srcmd5>
+    <version>0.7.3</version>
+    <time>1665034932</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1008167</requestid>
+  </revision>
 </revisionlist>

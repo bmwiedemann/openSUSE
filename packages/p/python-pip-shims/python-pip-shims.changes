@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct  4 23:04:41 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to Pip_Shims 0.7.3 (2022-07-07)
+  Trivial
+  Make the packaging imports easier to patch out to vendor'd packaging lib. #82
+
+- Update to Pip_Shims 0.7.2 (2022-06-29)
+  Features
+  Resolve issue of build_tracker being None at runtime with pip>=22.1 when using pip_shims. #81
+
+- Update to Pip_Shims 0.7.1 (2022-06-29)
+  Bug Fixes
+  Added support for new pip==22.1.x required make_preparer arg check_build_deps which defaults to False. #80 
+
+-------------------------------------------------------------------
 Fri Apr 22 02:56:02 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.7.0:

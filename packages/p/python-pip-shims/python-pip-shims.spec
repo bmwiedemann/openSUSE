@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global skip_python2 1
 Name:           python-pip-shims
-Version:        0.7.0
+Version:        0.7.3
 Release:        0
 Summary:        Compatibility shims for pip versions 8 thru current
 License:        ISC
