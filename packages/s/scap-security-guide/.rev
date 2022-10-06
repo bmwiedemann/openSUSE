@@ -256,4 +256,12 @@ Setting up scap-security-guide (0.1.56-30.1) ... (forwarded request 896944 from 
    - some SUSE profile fixes</comment>
     <requestid>1007411</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>0954045a096719b0ecf2bbd642f368da</srcmd5>
+    <version>0.1.64</version>
+    <time>1665034943</time>
+    <user>RBrownFactory</user>
+    <comment>- enable ubuntu 2204 build</comment>
+    <requestid>1008181</requestid>
+  </revision>
 </revisionlist>
