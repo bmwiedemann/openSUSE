@@ -30,6 +30,8 @@ Source:         https://github.com/ixs/napalm-procurve/archive/%{version}.tar.gz
 Patch0:         setup-parse-requirements.patch
 #PATCH-FIX-UPSTREAM https://github.com/ixs/napalm-procurve/pull/29 float speed
 Patch1:         float-speed.patch
+#PATCH-FIX-OPENSUSE fix-linter.patch remove pyflakes from code lint because it's failing
+Patch2:         fix-linter.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros

@@ -65,4 +65,14 @@
     <comment></comment>
     <requestid>999545</requestid>
   </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>33d353ba3980d0aa7f27e801cb77fc95</srcmd5>
+    <version>0.7.0</version>
+    <time>1665034946</time>
+    <user>RBrownFactory</user>
+    <comment>- Add fix-linter.patch to remove pyflakes code check. Some files fails with the
+  newer version of pyflakes.
+</comment>
+    <requestid>1008196</requestid>
+  </revision>
 </revisionlist>

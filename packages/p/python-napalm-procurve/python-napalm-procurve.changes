@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  5 12:08:15 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add fix-linter.patch to remove pyflakes code check. Some files fails with the
+  newer version of pyflakes.
+
+-------------------------------------------------------------------
 Sat Aug 27 09:43:54 UTC 2022 - Markéta Machová <mmachova@suse.com>
 
 - Fix the tests with float-speed.patch, sent upstream.
