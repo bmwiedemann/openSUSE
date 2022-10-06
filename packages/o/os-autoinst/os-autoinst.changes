@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct 04 14:23:23 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1664893395.3e0c5db:
+  * Consolidate qemu video device setting, deprecate QEMUVGA
+  * t: Add test for mouse_click/dclick/tclick
+  * testapi: Simplify matched variable assignment in wait_serial
+  * testapi: Simplify args handling in type_string
+  * testapi: Align signatures of mouse_tclick to mouse_click/mouse_dclick
+  * Simplify some code in testapi
+  * Extend tests of IKVM backend
+  * Fix use of interpolation in error message of IPMI backend
+
+-------------------------------------------------------------------
 Fri Sep 30 23:07:15 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1664522064.8df8ac9:
