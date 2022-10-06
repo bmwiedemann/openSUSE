@@ -152,4 +152,14 @@ devel:languages:go/telegraf r7 (forwarded request 758639 from jfkw)</comment>
     <comment>- Update to version 1.23.4:</comment>
     <requestid>997455</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>efa5061cf56c93b8b82423f3d3f168b4</srcmd5>
+    <version>1.24.2</version>
+    <time>1665034883</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 1.24.2:
+- Add bugref boo#1203914 to v1.23.0: fix: use readers over closers in http input (#11083)
+- Add _constraints minimum disk 4G to avoid build failures (forwarded request 1007960 from jfkw)</comment>
+    <requestid>1007961</requestid>
+  </revision>
 </revisionlist>
