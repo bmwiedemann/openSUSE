@@ -1,0 +1,11 @@
+<services>
+  <service name="cargo_vendor" mode="disabled">
+     <param name="srcdir">mandown</param>
+     <param name="compression">gz</param>
+     <param name="update">true</param>
+  </service>
+  <service name="cargo_audit" mode="disabled">
+     <param name="srcdir">mandown</param>
+  </service>
+</services>
+
