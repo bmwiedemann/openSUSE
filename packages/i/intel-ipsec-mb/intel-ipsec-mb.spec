@@ -16,9 +16,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# Versions numbers
+
 %global major        1
-%global minor        2
+%global minor        3
 %global patch        0
 
 # GitHub properties
@@ -27,27 +27,27 @@
 
 %global rpm_name     libIPSec_MB
 
-Name:               intel-ipsec-mb
-Summary:            IPSec cryptography library optimized for Intel Architecture
-Release:            0
-Version:            %{major}.%{minor}.%{patch}
-License:            BSD-3-Clause
-Group:              Development/Libraries/C and C++
-URL:                https://github.com/intel/%{name}
-Source0:            https://github.com/intel/%{name}/archive/v%{githubver}.tar.gz#/%{githubfull}.tar.gz
-ExclusiveArch:      x86_64
-BuildRequires:      make
-BuildRequires:      gcc >= 4.8.3
-BuildRequires:      nasm >= 2.14      
+Name:           intel-ipsec-mb
+Summary:        IPSec cryptography library optimized for Intel Architecture
+Release:        0
+Version:        %{major}.%{minor}.%{patch}
+License:        BSD-3-Clause
+Group:          Development/Libraries/C and C++
+URL:            https://github.com/intel/%{name}
+Source0:        https://github.com/intel/%{name}/archive/v%{githubver}.tar.gz#/%{githubfull}.tar.gz
+ExclusiveArch:  x86_64
+BuildRequires:  gcc >= 4.8.3
+BuildRequires:  make
+BuildRequires:  nasm >= 2.14
 
 %description
 An IPSec cryptography library optimized for Intel Architecture
 and primarily targeted at packet processing applications.
 
 %package devel
-Summary:            Headers for the Intel IPSec cryptographic library
-Requires:           %{rpm_name}%{major}%{?_isa} = %{version}-%{release}
-Group:              Development/Libraries/C and C++
+Summary:        Headers for the Intel IPSec cryptographic library
+Requires:       %{rpm_name}%{major}%{?_isa} = %{version}-%{release}
+Group:          Development/Libraries/C and C++
 
 %description devel
 An IPSec cryptography library optimized for Intel Architecture
@@ -56,8 +56,8 @@ and primarily targeted at packet processing applications.
 This package contains the headers for building programs with the library.
 
 %package -n %{rpm_name}%{major}
-Summary:            IPSec cryptography library optimized for Intel Architecture
-Group:              System/Libraries
+Summary:        IPSec cryptography library optimized for Intel Architecture
+Group:          System/Libraries
 
 %description -n %{rpm_name}%{major}
 An IPSec cryptography library optimized for Intel Architecture
@@ -81,7 +81,7 @@ install -m 0444 lib/libipsec-mb-dev.7 %{buildroot}/%{_mandir}/man7
 cd %{buildroot}/%{_libdir}
 ln -s libIPSec_MB.so.%{version} libIPSec_MB.so.%{major}
 ln -s libIPSec_MB.so.%{version} libIPSec_MB.so
- 
+
 %files -n %{rpm_name}%{major}
 %license LICENSE
 %{_libdir}/libIPSec_MB.so.%{version}
@@ -94,7 +94,7 @@ ln -s libIPSec_MB.so.%{version} libIPSec_MB.so
 %{_mandir}/man7/libipsec-mb-dev.7.gz
 %{_libdir}/libIPSec_MB.so
 
-%post  -n %{rpm_name}%{major} -p /sbin/ldconfig 
+%post  -n %{rpm_name}%{major} -p /sbin/ldconfig
 %postun -n %{rpm_name}%{major} -p /sbin/ldconfig
 
 %changelog
