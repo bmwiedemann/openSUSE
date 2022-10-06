@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct  4 22:57:46 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 1.0.4  
+  Bug Fixes
+  Fix a bug of editable install not reading run-setuptools = false config. #107
+  Put the long description in the body as specified by Metadata Version 2.1 #109
+  Overwrite the existing files in the custom build stage of WheelBuilder. #114
+
+-------------------------------------------------------------------
 Wed Aug  3 08:35:39 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.0.3
