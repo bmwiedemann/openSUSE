@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct  4 17:17:27 UTC 2022 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 1.0.1:
+  + Changes:
+    - Pkg New Crowdin updates.
+  - Fix:
+    - Revert changes to gpg_failed().
+  + Other:
+    - Update Crowdin configuration file.
+
+-------------------------------------------------------------------
 Thu Sep 29 23:22:42 UTC 2022 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 1.0.0:
