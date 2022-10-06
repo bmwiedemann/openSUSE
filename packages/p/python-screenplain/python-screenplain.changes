@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 04 08:42:28 UTC 2022 - andres.munoz@suse.com
+
+- Add E275 to the list of ignored errors in pycodestyle
+
+-------------------------------------------------------------------
 Thu Dec 03 21:34:14 UTC 2020 - mcepl@cepl.eu
 
 - Update to version 0.9.0+git.1597423678.4e34d1f:

@@ -16,4 +16,4 @@
  license_files = LICENSE.txt
 +
 +[pycodestyle]
-+ignore = E402,W504
++ignore = E275,E402,W504

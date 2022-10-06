@@ -1,7 +1,7 @@
 #
 # spec file for package python-screenplain
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,8 +42,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 Requires:       python-reportlab
-Requires(post):   update-alternatives
-Requires(postun):  update-alternatives
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 
 %python_subpackages
 
@@ -61,7 +61,6 @@ industry standard format. Send that file off to your producer,
 agent, director or screenwriting competition. Currently, the
 supported output formats are FDX and HTML. PDF will hopefully
 be supported in a not too distant future.
-
 
 %prep
 %setup -q -n screenplain-%{version}
