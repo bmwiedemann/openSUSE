@@ -1,7 +1,7 @@
 #
 # spec file for package python-premailer
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-premailer
-Version:        3.6.1
+Version:        3.10.0
 Release:        0
 License:        Python-2.0
 Summary:        Turns CSS blocks into style attributes
-Url:            https://premailer.io
+URL:            https://premailer.io
 Group:          Development/Languages/Python
 Source:         https://files.pythonhosted.org/packages/source/p/premailer/premailer-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-cachetools
 Requires:       python-cssselect
 Requires:       python-cssutils
@@ -41,7 +42,7 @@ BuildArch:      noarch
 Premailer is a Python library based on libxml which can analyze a
 HTML document and extract its CSS style sheets and then for all
 CSS seletors defined, it finds the DOM nodes and puts style
-attributes in instead. 
+attributes in instead.
 
 %prep
 %setup -q -n premailer-%{version}
