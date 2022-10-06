@@ -67,4 +67,19 @@
     <comment></comment>
     <requestid>965440</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f46422fbdb9e34fa0131711a77a168c4</srcmd5>
+    <version>0.5.1</version>
+    <time>1665034901</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 0.5.1:
+  * Responses schema validation #177
+  * detect spec schema version #167
+  * static types and Mypy static type check #168
+  * tests mark network #169
+  * schemas and validators lazy loading proxy #170 
+- Drop patch openapi-spec-validator-skip-urls.patch, fixed by upstream
+  by markers.</comment>
+    <requestid>1008086</requestid>
+  </revision>
 </revisionlist>

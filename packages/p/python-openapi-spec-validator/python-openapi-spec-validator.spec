@@ -19,39 +19,36 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-openapi-spec-validator
-Version:        0.4.0
+Version:        0.5.1
 Release:        0
 Summary:        Python module for validating OpenAPI Specs against Swagger and OAS3
 License:        Apache-2.0
 URL:            https://github.com/p1c2u/openapi-spec-validator
 Source:         https://github.com/p1c2u/openapi-spec-validator/archive/%{version}.tar.gz
-Patch0:         openapi-spec-validator-skip-urls.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML >= 5.1
-Requires:       python-jsonschema
-Requires:       python-openapi-schema-validator
+Requires:       python-importlib-resources
+Requires:       python-jsonschema >= 4.0.0
+Requires:       python-jsonschema-spec >= 0.1.1
+Requires:       python-lazy-object-proxy >= 1.7.1
+Requires:       python-openapi-schema-validator >= 0.3.2
 Requires:       python-setuptools
-Requires:       python-six
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML >= 5.1}
-BuildRequires:  %{python_module jsonschema}
-BuildRequires:  %{python_module openapi-schema-validator}
+BuildRequires:  %{python_module importlib-resources}
+BuildRequires:  %{python_module jsonschema >= 4.0.0}
+BuildRequires:  %{python_module jsonschema-spec >= 0.1.1}
+BuildRequires:  %{python_module lazy-object-proxy >= 1.7.1}
+BuildRequires:  %{python_module openapi-schema-validator >= 0.3.2}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six}
 # /SECTION
-%if %{with python2}
-BuildRequires:  python-pathlib2
-%endif
-%ifpython2
-Requires:       python-pathlib2
-%endif
 %python_subpackages
 
 %description
@@ -61,8 +58,7 @@ OpenAPI 3.0.0 specification. The validator aims to check
 for full compliance with the Specification.
 
 %prep
-%setup -q -n openapi-spec-validator-%{version}
-%patch0 -p1
+%autosetup -p1 -n openapi-spec-validator-%{version}
 
 %build
 %pyproject_wheel
@@ -80,7 +76,7 @@ for full compliance with the Specification.
 
 %check
 sed -i 's:tool.pytest.ini_options:hide:' pyproject.toml
-%pytest -rs
+%pytest -m 'not network'
 
 %files %{python_files}
 %doc README.rst

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct  5 05:23:42 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.5.1:
+  * Responses schema validation #177
+  * detect spec schema version #167
+  * static types and Mypy static type check #168
+  * tests mark network #169
+  * schemas and validators lazy loading proxy #170 
+- Drop patch openapi-spec-validator-skip-urls.patch, fixed by upstream
+  by markers.
+
+-------------------------------------------------------------------
 Mon Mar 28 15:10:50 UTC 2022 - pgajdos@suse.com
 
 - version update to 0.4.0
