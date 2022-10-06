@@ -1,7 +1,7 @@
 #
-# spec file for package apache-commons-parent
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define base_name       parent
 %define short_name      commons-%{base_name}
 Name:           apache-%{short_name}
-Version:        52
+Version:        53
 Release:        0
 Summary:        Apache Commons Parent Pom
 License:        Apache-2.0
@@ -39,6 +39,8 @@ BuildRequires:  mvn(org.apache:apache:pom:)
 BuildRequires:  mvn(org.codehaus.mojo:build-helper-maven-plugin)
 Requires:       mvn(org.apache:apache:pom:)
 Requires:       mvn(org.codehaus.mojo:build-helper-maven-plugin)
+# BuildRequires:  mvn(org.codehaus.mojo:version-maven-plugin)
+# Requires:       mvn(org.codehaus.mojo:version-maven-plugin)
 BuildArch:      noarch
 
 %description
@@ -57,6 +59,7 @@ The Project Object Model files for the apache-commons packages.
 %pom_remove_plugin :maven-enforcer-plugin
 %pom_remove_plugin :maven-site-plugin
 %pom_remove_plugin :maven-source-plugin
+%pom_remove_plugin :versions-maven-plugin
 
 # Remove profiles for plugins that are useless in package builds
 for profile in animal-sniffer japicmp jacoco cobertura clirr; do
