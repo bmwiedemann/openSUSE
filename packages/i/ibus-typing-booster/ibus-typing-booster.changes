@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Oct 05 13:33:17 UTC 2022 - maiku.fabian@gmail.com
+
+- Update to 2.19.1
+- Update emoji annotations from CLDR
+- Make search for input methods which contain uppercase in their names work
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/387)
+- Translation update from Weblate (bn 73.8% complete)
+
+-------------------------------------------------------------------
+Fri Sep 09 16:25:35 UTC 2022 - maiku.fabian@gmail.com
+
+- Update to 2.19.0
+- Save horizontal space to make the new Georgian translations fit better
+  on small screens
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/383)
+- Make compose support work for sequences starting with keys other
+  than Multi_key and dead keys
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/379)
+- Update emoji annotations from CLDR
+- Stop using deprecated keyword arguments “flags” and “message_format” when
+  creating Gtk.MessageDialog()
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/377)
+- Use ['ar-kbd', 'NoIME'] by default for all Arabic locales instead of just ['NoIME']
+- Make it possible to set options for m17n input methods in the typing booster setup tool
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/360)
+- Translation update from Weblate (ar 100%, bn 67%, de 100%, nl 100%, pl 100%, sv 100%, tr 100%, uk 100%)
+
+-------------------------------------------------------------------
 Thu Sep 01 14:24:57 UTC 2022 - maiku.fabian@gmail.com
 
 - Update to 2.18.10
