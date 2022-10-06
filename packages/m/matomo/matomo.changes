@@ -1,4 +1,165 @@
 -------------------------------------------------------------------
+Wed Oct  5 05:15:35 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.12.0
+  This is a major security release.
+  * matomo-org/matomo
+    - #16125 Support Sec-CH-UA Client Hints in addition to UserAgent
+    - #17452 Offer opt out without iframe / 3rd party cookies
+    - #19233 Handle 429 response code within UI
+    - #19028 Have a message in the UI after install saying this plugin does not track to Cloud
+    - #19525 Improve password confirmation in UI & API
+    - #15262 Fix average order value graph flattening out to value 0
+    - #19540 Fix sizing of subtables with different column count
+    - #15924 Ensure download urls are encoded correctly in visits log
+    - #18766 Show the selected conversion rate on Goals->Overview evolution graph
+    - #18781 Show correct “Rows to display” on Evolution graph
+    - #19335 Improve password confirmation in UI & API
+    - #19485 Fixes Goal row evolution with double quotes in the goal name resulting in an error
+    - #19550 Ensure API requests with session auth check 2fa status
+    - #19586 Require password confirmation when removing users through UI
+    - #19591 Require password confirmation when removing a site in UI
+    - #19598 Use brute force detection for reset password action
+    - #19611 Require password confirmation when inviting a user in UI
+    - #19302 Provide possibility to configure referrer exclusion list
+    - #19387 Fixes glossary navigation
+    - #19530 Allow custom cookie expiry date for `optUserOut()` & `forgetUserOptOut()` functions
+    - #19572 Add config option for database errors to ignore during updates
+    - #18750 Improve role/capability handling in usermanager
+    - #19254 Fix adjacent elements to dashboard-dropdown-menu-modal overlapping on narrower screens
+    - #19632 Fix CSP header when viewing plugin details
+    - #19446 Fixes different height of selectors
+    - #19456 Fixes icon-menu-hamburger size
+    - #12024 Improve URL detection in mod_pagespeed check
+    - #19319 Fix problem with too long browser version
+    - #19323 Attempt to handle incorrectly prefixed region codes
+    - #19346 Fix FAQ links using # in the link no longer working
+    - #19354 Improve reset password email formatting to fix broken link
+    - #19360 Fix number formatting in additional Y axis in (evolution) charts
+    - #19393 Fix date range handling to prevent evolution graph display being confused when changing the period
+    - #19508 Fixed incorrect Cuban province names on visitor map
+    - #19569 Fix for current year not processed for new custom reports
+    - #19588 Fix placing series / series picker in charts
+    - #19615 Fix for page goals visualization showing hits instead of visits
+    - #19269 Include conversion attribution in visitor details
+    - #19308 Improve debugging via Vardumper overriding
+    - #19333 Login plugin language reworked
+    - #19363 Setting prepare callback before validation
+    - #19374 Fix typo in Revenue Entry Documentation translation string
+    - #19385 Added translation keys for scope titles in custom dimensions
+    - #19420 Implement url parameter to ignore referrer
+    - #19454 Full width field in settings
+    - #19458 Add TikTok to socical networks
+    - #19491 Allow reading consent removed cookie even if cookies are disabled
+    - #19510 Update outdated FAQ and Guide links
+    - #19517 Exclude paypal as referrer in javascript tracker
+    - #19527 Update HTTPs security check, when client is using HTTP just throw a warning on diagnostic
+    - #19532 Implement cookie expire time – forgetConsentGiven
+    - #19594 Do not accept invalid SSL certificates for requests to ASPSMS and Clockwork
+    - #19673 Adds Microsoft and Yandex click ids to default query parameters exclusion list
+  * matomo-org/tag-manager
+    - #503 Add support for `data-matomo-mask` attribute on events
+    - #519 Prevent possible XSS via changeDebugUrl
+    - #249 Add description/comment field to Tags/Triggers/Variables for better documentation of functionality
+    - #543 Handle Click Events correctly in shadowDOM (web components)
+    - #334 Added goal revenue field to tag edit view
+    - #314 Fixed issue when renaming Matomo Configuration variable, its name is not propagated to the tags using it
+    - #511 Improve Start and end date for Tags handling of timezone
+    - #326 Fix for Tagmanager working along with CSP when triggering a HTML tag
+    - #495 Show info icon documentation links when defining triggers
+    - #504 Fixes UI issue by setting container selector max width
+    - #541 Add a link to the documentation about the datalayer when the container tracking code is shown
+  * matomo-org/tracker-proxy
+    - #77 Update # FAQ Links to match new knowledge base structure
+  * matomo-org/matomo-php-tracker
+    - #104 Adds support for client hints
+  * matomo-org/device-detector
+    - #7082 Add detection for postmarket os
+    - #7129 Detect new brands: Intel, PlusStyle, New Bridge, ZIK, Famous, Facetel, HLLO,
+      LNMBBS, Quest, SNAMI, TeachTouch, YUMKEM, TTK-TV, Emporia, GEOZON, iReplace, actiMirror
+    - #7134 Detect devices for several existing brands – Acer, Ulefone, Vodafone, Sony, Xiaomi
+    - #7137 Detect devices for existing brands – RoyQueen, Sico, Digicel, Xolo
+    - #7138 Fix version truncation for client hints
+    - #7140 Detect devices for existing brands – Samsung, QMovile, MyPhone, Huawei
+    - #7141 Detect Petal Search app and Detect Nova 9 SE device for Huawei brand
+    - #7142 Detect devices for existing brands – Nubia, Stylo, Kivi and others
+    - #7143 Add bots: aiHitBot, ADmantX Service Fetcher, DomainCrawler,
+      DNSResearchBot, AdAuth, Faveeo, Kozmonavt, CriteoBot
+    - #7144 Detect bots: aiHitBot, ADmantX Service Fetcher, DomainCrawler,
+      DNSResearchBot, AdAuth, Faveeo, Kozmonavt, CriteoBot
+    - #7145 Detect devices for existing brands – FiGi, Xiaomi, Hotwav, FiGi
+    - #7147 Detect devices for existing brands – Cherry Mobile, Alcatel, Panasonic, Symphony and others
+    - #7148 Add detection LastMod Bot
+    - #7149 Detect app Snapchat for Android
+    - #7150 Detect devices for existing brands – Artel, Allview, Sony, F2 Mobile and others
+    - #7151 Improve performance by skipping device parse if useragent matches desktop pattern
+    - #7152 Detect devices for existing brands – Sharp, Hyundai, Starmobile
+    - #7154 Detect devices for existing brands – Infinix, iBrit, Vivax, Karbonn
+    - #7155 Detect devices for existing brands – Motorola, QMobile, Infinix and others
+    - #7156 Adds detection for apps – Amazon shopping, Snapchat, OkHttp, PayPal IPN and others
+    - #7158 Added Internet Browser Secure, Hexa Web Browser, Browspeed Browser to available browsers
+    - #7160 Detect devices for existing brands – Winnovo, Samsung, Realme, Maxtron and others
+    - #7161 Detect devices for existing brands – iHunt, Aspera, Pixelbook, QMobile
+    - #7162 Improves version detection for iOS, macOS and tvOS
+    - #7163 Improves version detection for iPadOS
+    - #7164 Detect devices for existing brands – QMobile, Fero, Blu, Hometech, Infinix
+    - #7165 Adds detection for various apps and browsers
+    - #7166 Detect browsers: Rabbit Private Browser, Office Browser, Lynket Browser,
+      Vivid Browser Mini, Yo Browser, Yuzu Browser, BF Browser, G Browser
+    - #7167 Adds detection for Nova and improves version detection for Fedora, iOS,
+      macOS, Mandriva, Mint operating systems
+    - #7168 Adds detection for various bots and apps
+    - #7169 Adds detection for Keepsafe Browser, Inspect Browser and improves detection for Seznam Browser
+    - #7171 Detect devices – ClearPHONE, Mintt, Sky Elite D5, and others
+    - #7176 Detect devices for existing brands – Hardkernel, Blu, AT&T, Vivo
+    - #7177 Detect devices for existing brands
+    - #7178 Detect devices Logic L4T, Mastertech, and others
+    - #7179 Adds detection for various devices and improves os detection
+    - #7181 Rename Oculus brand to Meta and improves detection for Meta Quest 2
+    - #7182 Adds detection for Seolyt Bot
+    - #7183 Detect devices for existing brands and new brands – Unistrong, Equator, AXXA
+    - #7184 Detect devices for existing and new brands – D-Tech, OneClick
+    - #7186 Detect devices for existing and new brand – iXTech
+    - #7187 Detect devices for existing and new brands – BlueSky, Legend, Vue Micro
+    - #7190 Detect devices for existing and new brands – NTT West, JREN, Tibuta, ATOL, FILIX
+    - #7191 Adds detection for LinkWalker bot
+    - #7193 Optimise devices detection for apple
+    - #7194 Detect Container-related tools
+    - #7197 Detect new browsers and apps – Tint Browser, hola!, RedReader [by @sanchezzzhak]
+    - #7198 Adds detection for RouterOS
+    - #7199 Adds detection for INETDEX-BOT and NETZZAPPEN
+    - #7201 Detect devices for existing and new brands – HexaByte, CipherLab, BrandCode, Lumitel, Elevate
+    - #7202 Detect mobile app for Microsoft Office Access
+    - #7203 Improves detection for Fairphone devices and Atom, Ecosia, Iridium browsers
+    - #7204 Various consumer electronics detected as bots
+    - #7206 Improves detection for Google and Roku devices
+    - #7208 Detect devices for existing and new brands – Ceibal, Weelikeit
+    - #7209 Improves client hints version detection for Atom, hola! Browser, Opera, Smart Lenovo Browser
+    - #7211 Detect devices for existing and new brands – Boost, Orbsmart, TOX
+    - #7212 Adds detection for Panscient bot
+    - #7213 Detect devices for existing and new brands – HiHi, M3 Mobile, Hugerock, Coopers
+    - #7215 Detect devices for existing and new brands – iStar, ENIE, Dcode
+    - #7216 Adds detection for Smart Kassel, X96Q brands and improves detection for various browsers, os, libraries
+    - #7217 Adds detection for Amerigo, Internet Browser Private, 18+ Privacy, Beyond Private, Black Lion
+    - #7218 Adds detection for Wiseiplay, Always Safe Security 24, Zoe Business
+    - #7219 Detect devices for existing and new brands – Stream
+    - #7220 Detect Open Browser fast 5G
+    - #7221 Adds detection for various apps
+    - #7222 Adds detection for various browsers
+    - #7227 Detect browsers for ClientHints
+  * matomo-org/referrer-spam-list
+    - #1323 Add ucban.xyz
+    - #1324 Add hrtonline.xyz
+    - #1325 Add mytraffic.shop, supertraffic.xyz, trafficdrive.club
+    - #1326 Add bottraffic329.xyz
+    - #1327 Add getbottraffic4free.xyz
+    - #1328 Add goyua.xyz
+    - #1329 Add nanwar.xyz
+    - #1330 Add qtrstar.xyz
+  * matomo-org/searchengine-and-social-list
+    - #83 Adds TikTok to social networks
+  
+-------------------------------------------------------------------
 Thu Aug  4 12:00:56 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 4.11.0 

@@ -21,7 +21,7 @@
 %{!?_tmpfilesdir:%global _tmpfilesdir %{_prefix}/lib/tmpfiles.d}
 
 Name:           matomo
-Version:        4.11.0
+Version:        4.12.0
 Release:        0
 Summary:        Web analytics platform
 License:        GPL-3.0-or-later
@@ -236,7 +236,6 @@ fi
 %attr(0770,%{apache_user},%{apache_group}) %{apache_serverroot}/%{name}/misc/cron/archive.sh
 %attr(0770,%{apache_user},%{apache_group}) %{apache_serverroot}/%{name}/misc/log-analytics/import_logs.py
 %attr(0770,%{apache_user},%{apache_group}) %{apache_serverroot}/%{name}/vendor/pear/archive_tar/sync-php4
-%attr(0770,%{apache_user},%{apache_group}) %{apache_serverroot}/%{name}/vendor/matomo/matomo-php-tracker/run_tests.sh
 %attr(0770,%{apache_user},%{apache_group}) %{apache_serverroot}/%{name}/vendor/wikimedia/less.php/bin/lessc
 %{apache_serverroot}/%{name}/*
 
