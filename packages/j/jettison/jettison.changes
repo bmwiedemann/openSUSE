@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct  5 08:33:43 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 1.5.1
+  * Fixes:
+    + Stack Overflow fix on malformed JSON
+      (bsc#1203515, CVE-2022-40149)
+    + Prevent infinite loop when a /* comment is not terminated
+      (bsc#1203516, CVE-2022-40150)
+- Removed patches:
+  * jettison-1.3.7-jdk10plus.patch
+  * jettison-update-woodstox-version.patch
+    + not needed with current version
+
+-------------------------------------------------------------------
 Tue Mar 22 16:38:03 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with source and target levels 8
