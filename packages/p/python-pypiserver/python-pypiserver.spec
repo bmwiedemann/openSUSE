@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %bcond_without python2
 Name:           python-pypiserver
-Version:        1.4.2
+Version:        1.5.0
 Release:        0
 Summary:        Minimal PyPI server for uploading & downloading packages with pip/easy_install
 License:        MIT
@@ -68,7 +68,7 @@ rm -f pytest.ini
 # test_hash_algos:
 # ERROR: No matching distribution found for a==1.0 (from centodeps)
 # (see centodeps-setup.py)
-%pytest tests -k "not (test_pipInstall_openOk or test_pipInstall_authedOk or test_hash_algos)"
+%pytest tests -k "not (test_pipInstall_openOk or test_pipInstall_authedOk or test_hash_algos or test_pip_install_open_succeeds or test_pip_install_authed_succeeds)"
 
 %post
 %python_install_alternative pypi-server
