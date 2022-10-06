@@ -120,4 +120,12 @@
     <comment>bsc#1198345</comment>
     <requestid>969266</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>e8baf5d4e298be6a08cfbcda64cfb79b</srcmd5>
+    <version>2.10.4</version>
+    <time>1665034919</time>
+    <user>RBrownFactory</user>
+    <comment>fix factory build</comment>
+    <requestid>1008158</requestid>
+  </revision>
 </revisionlist>

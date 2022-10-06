@@ -77,7 +77,7 @@ cp -r %{_prefix}/lib/jameica/src .
 cp -r %{_prefix}/lib/jameica/lib .
 
 export CLASSPATH="$(build-classpath xml-commons-apis)"
-ant -f build/build.xml init compile jar zip src
+ant -f build/build.xml -Ddefine.java.version=1.8 init compile jar zip src
 
 %install
 mkdir -p %{buildroot}%{_prefix}/lib/jameica/plugins
