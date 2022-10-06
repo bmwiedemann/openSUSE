@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Oct  1 11:34:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.13.2:
+  * in dzsave, add add missing include directive for errno/EEXIST
+  * fix 8 bit pallete PNG save [lovell]
+  * fix null string in buffer print [pclewis]
+  * revise caching of seq mode loaders [jcupitt]
+  * reduce latency on dzsave kill [kleisauke]
+  * improve text too large check [kleisauke]
+  * fix subifd writing for small images [ruven]
+  * name ICC profiles in spngsave [lovell]
+
+-------------------------------------------------------------------
 Mon Sep 12 20:07:52 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.13.1:
