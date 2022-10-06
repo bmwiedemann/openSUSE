@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct  5 00:06:55 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Add pr_1642_chunk.patch for Django 4.1 support
+
+-------------------------------------------------------------------
 Wed May 11 12:30:36 UTC 2022 - pgajdos@suse.com
 
 - do not use python-mock for build

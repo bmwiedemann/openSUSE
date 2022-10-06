@@ -26,6 +26,8 @@ URL:            https://github.com/django-tastypie/django-tastypie
 Source:         https://github.com/django-tastypie/django-tastypie/archive/v%{version}.tar.gz
 # https://github.com/django-tastypie/django-tastypie/issues/1635
 Patch0:         python-django-tastypie-no-mock.patch
+# PATCH-FIX-UPSTREAM pr_1642_chunk.patch -- based on PR 1642
+Patch1:         pr_1642_chunk.patch
 BuildRequires:  %{python_module Django >= 1.11.0}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module biplist}
