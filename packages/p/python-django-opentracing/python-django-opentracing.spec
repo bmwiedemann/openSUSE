@@ -24,9 +24,11 @@ Summary:        OpenTracing support for Django applications
 License:        BSD-3-Clause
 URL:            https://github.com/opentracing-contrib/python-django/
 Source:         https://github.com/opentracing-contrib/python-django/archive/%{version}.tar.gz#/django_opentracing-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
+# c.f. https://github.com/opentracing-contrib/python-django/issues/71
+Patch0:         dj41.patch
 BuildRequires:  %{python_module django-codemod}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module opentracing >= 2.0}
@@ -44,6 +46,7 @@ OpenTracing support for Django applications.
 
 %prep
 %setup -q -n python-django-%{version}
+%patch0 -p1
 djcodemod run --removed-in 4.0 tests/test_site/urls.py
 sed -i 's/import mock/from unittest import mock as mock/' tests/test_site/test_middleware.py
 
