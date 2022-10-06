@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Oct  1 03:08:38 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.035
+   see /usr/share/doc/packages/perl-YAML-PP/Changes
+
+  0.035 2022-09-30 21:16:16+02:00
+
+      - Fix parsing alias as mapping key
+      - Support emitting folded block scalars. Now any input should
+        be able to output as a folded block scalar correctly. Preserving
+        scalar styles will now also preserve those
+
+-------------------------------------------------------------------
 Fri Jul  1 03:07:22 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.034
