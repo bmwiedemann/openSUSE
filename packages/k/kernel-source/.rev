@@ -6026,4 +6026,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>5.19.12 &amp; 5.19.11 &amp; CVE fix &amp; other fixes</comment>
     <requestid>1006632</requestid>
   </revision>
+  <revision rev="659" vrev="1">
+    <srcmd5>d8240f880de25bdc1e8ae38e7d3c3058</srcmd5>
+    <version>6.0.0</version>
+    <time>1665034872</time>
+    <user>RBrownFactory</user>
+    <comment>6.0</comment>
+    <requestid>1007640</requestid>
+  </revision>
 </revisionlist>

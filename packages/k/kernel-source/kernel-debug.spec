@@ -17,8 +17,8 @@
 # needssslcertforbuild
 
 
-%define srcversion 5.19
-%define patchversion 5.19.12
+%define srcversion 6.0
+%define patchversion 6.0.0
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules zstd
@@ -110,9 +110,9 @@ Name:           kernel-debug
 Summary:        A Debug Version of the Kernel
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        5.19.12
+Version:        6.0.0
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g95fa5b8
+Release:        <RELEASE>.g47c5c19
 %else
 Release:        0
 %endif
@@ -239,10 +239,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-95fa5b88eb9048aecd74e0a611f6a692fd47fcaa
-Provides:       kernel-srchash-95fa5b88eb9048aecd74e0a611f6a692fd47fcaa
+Provides:       kernel-%build_flavor-base-srchash-47c5c190085ac244fbca316e6944df1bf3c64167
+Provides:       kernel-srchash-47c5c190085ac244fbca316e6944df1bf3c64167
 # END COMMON DEPS
-Provides:       %name-srchash-95fa5b88eb9048aecd74e0a611f6a692fd47fcaa
+Provides:       %name-srchash-47c5c190085ac244fbca316e6944df1bf3c64167
 %ifarch ppc64
 Provides:       kernel-kdump = 2.6.28
 Obsoletes:      kernel-kdump <= 2.6.28
@@ -252,7 +252,7 @@ Provides:       kernel-kdump-base = 2.6.28
 Obsoletes:      kernel-kdump-base <= 2.6.28
 %endif
 %obsolete_rebuilds %name
-Source0:        https://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
+Source0:        https://www.kernel.org/pub/linux/kernel/v6.x/linux-%srcversion.tar.xz
 Source3:        kernel-source.rpmlintrc
 Source14:       series.conf
 Source16:       guards
@@ -399,7 +399,6 @@ BuildArch:      i686
 %define kmp_target_cpu i586
 %endif
 %endif
-
 
 # Will modules not listed in supported.conf abort the kernel build (0/1)?
 %define supported_modules_check 0

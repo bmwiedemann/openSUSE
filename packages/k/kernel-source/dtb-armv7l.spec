@@ -16,8 +16,8 @@
 #
 
 
-%define srcversion 5.19
-%define patchversion 5.19.12
+%define srcversion 6.0
+%define patchversion 6.0.0
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -29,9 +29,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           dtb-armv7l
-Version:        5.19.12
+Version:        6.0.0
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g95fa5b8
+Release:        <RELEASE>.g47c5c19
 %else
 Release:        0
 %endif
@@ -48,7 +48,7 @@ BuildRequires:  dtc >= 1.4.0
 %endif
 BuildRequires:  xz
 Requires:       kernel = %version
-Source0:        https://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
+Source0:        https://www.kernel.org/pub/linux/kernel/v6.x/linux-%srcversion.tar.xz
 Source3:        kernel-source.rpmlintrc
 Source14:       series.conf
 Source16:       guards

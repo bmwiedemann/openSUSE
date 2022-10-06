@@ -16,8 +16,8 @@
 #
 
 
-%define srcversion 5.19
-%define patchversion 5.19.12
+%define srcversion 6.0
+%define patchversion 6.0.0
 %define variant %{nil}
 %define vanilla_only 0
 
@@ -31,9 +31,9 @@
 %endif
 
 Name:           kernel-source
-Version:        5.19.12
+Version:        6.0.0
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g95fa5b8
+Release:        <RELEASE>.g47c5c19
 %else
 Release:        0
 %endif
@@ -50,12 +50,12 @@ BuildRequires:  fdupes
 BuildRequires:  sed
 Requires(post): coreutils sed
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-95fa5b88eb9048aecd74e0a611f6a692fd47fcaa
+Provides:       %name-srchash-47c5c190085ac244fbca316e6944df1bf3c64167
 Provides:       linux
 Provides:       multiversion(kernel)
-Source0:        https://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
-%if "https://www.kernel.org/pub/linux/kernel/v5.x/" != ""
-Source1:        https://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.sign
+Source0:        https://www.kernel.org/pub/linux/kernel/v6.x/linux-%srcversion.tar.xz
+%if "https://www.kernel.org/pub/linux/kernel/v6.x/" != ""
+Source1:        https://www.kernel.org/pub/linux/kernel/v6.x/linux-%srcversion.tar.sign
 Source2:        linux.keyring
 %endif
 Source3:        kernel-source.rpmlintrc
