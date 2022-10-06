@@ -17,24 +17,17 @@
 
 
 Name:           jettison
-Version:        1.3.7
+Version:        1.5.1
 Release:        0
 Summary:        A JSON StAX implementation
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            http://jettison.codehaus.org/
-Source0:        https://github.com/codehaus/jettison/archive/%{name}-%{version}.tar.gz
-# Change the POM to use the version of woodstox that we have available:
-Patch0:         %{name}-update-woodstox-version.patch
-Patch1:         %{name}-1.3.7-jdk10plus.patch
+Source0:        https://github.com/jettison-json/%{name}/archive/refs/tags/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
-BuildRequires:  mvn(junit:junit)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
-BuildRequires:  mvn(org.codehaus.woodstox:woodstox-core-asl)
-BuildRequires:  mvn(org.codehaus:codehaus-parent:pom:)
-BuildRequires:  mvn(stax:stax-api)
 BuildArch:      noarch
 
 %description
@@ -52,16 +45,10 @@ This package contains the API documentation for %{name}.
 
 %prep
 %setup -q -n %{name}-%{name}-%{version}
-%patch0 -p1
-%patch1 -p1
-chmod -x src/main/resources/META-INF/LICENSE
-# We don't need wagon-webdav
-%pom_xpath_remove pom:build/pom:extensions
 
 %pom_remove_plugin :maven-release-plugin
-
-# Confuses maven-bundle-plugin
-%pom_xpath_remove pom:Private-Package
+%pom_remove_plugin :nexus-staging-maven-plugin
+%pom_remove_plugin :maven-enforcer-plugin
 
 %build
 %{mvn_build} -f -- \
@@ -75,9 +62,9 @@ chmod -x src/main/resources/META-INF/LICENSE
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
-%license src/main/resources/META-INF/LICENSE
+%license LICENSE
 
 %files javadoc -f .mfiles-javadoc
-%license src/main/resources/META-INF/LICENSE
+%license LICENSE
 
 %changelog
