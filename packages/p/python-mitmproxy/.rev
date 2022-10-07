@@ -47,4 +47,61 @@
     <comment></comment>
     <requestid>964072</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2e080a80f46b2975b3840906eed9f700</srcmd5>
+    <version>8.1.1</version>
+    <time>1665185134</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 8.1.1:
+  * Support specifying the local address for outgoing connections (#5364,
+    @meitinger)
+  * Fix a bug where an excess empty chunk has been sent for chunked HEAD
+    request. (#5372, @jixunmoe)
+  * Drop pkg_resources dependency. (#5401, @PavelICS)
+  * Fix huge (&gt;65kb) http2 responses corrupted. (#5428, @dhabensky)
+  * Remove overambitious assertions in the HTTP state machine, fix some error
+    handling. (#5383, @mhils)
+  * Use default_factory for parser_options. (#5474, @rathann)
+- mitmproxy 8.1.0
+  * DNS support (#5232, @meitinger)
+  * Mitmproxy now requires Python 3.9 or above. (#5233, @mhils)
+  * Fix a memory leak in mitmdump where flows were kept in memory. (#4786,
+    @mhils)
+  * Replayed flows retain their current position in the flow list. (#5227,
+    @mhils)
+  * Periodically send HTTP/2 ping frames to keep connections alive. (#5046,
+    @EndUser509)
+  * Console Performance Improvements (#3427, @BkPHcgQL3V)
+  * Warn users if server side event responses are received without streaming.
+    (#4469, @mhils)
+  * Add flatpak support to the browser addon (#5200, @pauloromeira)
+  * Add example addon to dump contents to files based on a filter expression
+    (#5190, @redraw)
+  * Fix a bug where the wrong SNI is sent to an upstream HTTPS proxy (#5109,
+    @mhils)
+  * Make sure that mitmproxy displays error messages on startup. (#5225,
+    @mhils)
+  * Add example addon for domain fronting. (#5217, @randomstuff)
+  * Improve cut addon to better handle binary contents (#3965, @mhils)
+  * Fix text truncation for full-width characters (#4278, @kjy00302)
+  * Fix mitmweb export copy failed in non-secure domain. (#5264, @Pactortester)
+  * Add example script for manipulating cookies. (#5278, @WillahScott)
+  * When opening an external viewer for message contents, mailcap files are not
+    considered anymore.
+  * This preempts the upcoming deprecation of Python's mailcap module. (#5297,
+    @KORraNpl)
+  * Fix hostname encoding for IDNA domains in upstream mode. (#5316, @nneonneo)
+  * Fix hot reloading of contentviews. (#5319, @nneonneo)
+  * Ignore HTTP/2 information responses instead of raising an error. (#5332,
+    @mhils)
+  * Improve performance and memory usage by reusing OpenSSL contexts. (#5339,
+    @mhils)
+  * Fix handling of multiple Cookie headers when proxying HTTP/2 to HTTP/1
+    (#5337, @rinsuki)
+  * Improve http_manipulate_cookies.py example. (#5578, @insilications)
+- Add fix-big-integer.patch to fix tests with modern python versions based on
+  gh#mitmproxy/mitmproxy@780adbaf9b13
+</comment>
+    <requestid>1008760</requestid>
+  </revision>
 </revisionlist>

@@ -19,14 +19,17 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 %define skip_python36 1
+%define skip_python38 1
 Name:           python-mitmproxy
-Version:        8.0.0
+Version:        8.1.1
 Release:        0
 Summary:        An interactive, SSL/TLS-capable intercepting proxy
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://mitmproxy.org
 Source:         https://github.com/mitmproxy/mitmproxy/archive/refs/tags/v%{version}.tar.gz#/mitmproxy-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix-big-integer.patch -- based on commit gh#mitmproxy/mitmproxy@780adbaf9b13
+Patch:          fix-big-integer.patch
 BuildRequires:  %{python_module Brotli >= 1.0}
 BuildRequires:  %{python_module Flask >= 1.1.1}
 BuildRequires:  %{python_module asgiref >= 3.2.10}
@@ -97,7 +100,7 @@ mitmdump is the command-line version of mitmproxy. Think tcpdump for HTTP.
 mitmweb is a web-based interface for mitmproxy.
 
 %prep
-%setup -q -n mitmproxy-%{version}
+%autosetup -p1 -n mitmproxy-%{version}
 #remove shebang
 sed -i '1 {\@^#!/usr/bin/python@ d}' mitmproxy/contrib/urwid/raw_display.py
 sed -i '1 {\@^#!/usr/bin/env@ d}' mitmproxy/contrib/wbxml/*.py
