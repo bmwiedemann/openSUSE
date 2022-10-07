@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-pptx
-Version:        0.6.19
+Version:        0.6.21
 Release:        0
 Summary:        Generate and manipulate Open XML PowerPoint (pptx) files
 License:        MIT
