@@ -91,4 +91,17 @@
     <comment></comment>
     <requestid>1006656</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7a4e160537ee5a0b7925f444a11414cc</srcmd5>
+    <version>1.1.2</version>
+    <time>1665185147</time>
+    <user>RBrownFactory</user>
+    <comment>- Udpated to 1.1.2 which fixed CVE-2022-39237
+  * CVE-2022-39237: The sif dependency included in Apptainer before this
+    release does not verify that the hash algorithm(s) used are
+    cryptographically secure when verifying digital signatures. This release
+    updates to sif v2.8.1 which corrects this issue. See the linked advisory
+    for references and a workaround. (forwarded request 1008777 from mslacken)</comment>
+    <requestid>1008781</requestid>
+  </revision>
 </revisionlist>
