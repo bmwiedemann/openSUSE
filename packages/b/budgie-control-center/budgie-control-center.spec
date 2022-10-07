@@ -17,7 +17,7 @@
 
 
 Name:           budgie-control-center
-Version:        1.1.0+0
+Version:        1.1.1+0
 Release:        0
 Summary:        Fork of GNOME Control Center for Budgie 10
 License:        GPL-2.0-or-later
@@ -99,7 +99,6 @@ rm %{buildroot}%{_datadir}/polkit-1/rules.d/budgie-control-center.rules
 %{_datadir}/icons/hicolor/*/*/*.svg
 %{_datadir}/pixmaps/budgie-faces
 %{_datadir}/pixmaps/budgie-logo.png
-%{_datadir}/locale/en/*/*.mo
 %{_datadir}/polkit-1/actions/org.buddiesofbudgie.controlcenter.datetime.policy
 %{_datadir}/polkit-1/actions/org.buddiesofbudgie.controlcenter.remote-login-helper.policy
 %{_datadir}/polkit-1/actions/org.buddiesofbudgie.controlcenter.user-accounts.policy
@@ -114,7 +113,5 @@ rm %{buildroot}%{_datadir}/polkit-1/rules.d/budgie-control-center.rules
 %{_datadir}/bash-completion/completions/budgie-control-center
 
 %files lang -f %{name}.lang
-# english locale should be in the main package
-%exclude %{_datadir}/locale/en
 
 %changelog

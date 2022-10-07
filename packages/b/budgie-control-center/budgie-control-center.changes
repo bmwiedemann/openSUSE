@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct 06 13:05:25 UTC 2022 - gmbr3@opensuse.org
+
+- Update to version 1.1.1+0:
+  * Update background preview to look more like Budgie
+  * Ensure VNC/RDP remote control settings is honored
+  * Handle keybindings extraction
+  * More comprehensive C string extraction
+  * panels: wwan: Add WWAN 5G connection support
+
+-------------------------------------------------------------------
 Mon Aug 08 13:44:54 UTC 2022 - gmbr3@opensuse.org
 
 - Update to version 1.1.0+0:
