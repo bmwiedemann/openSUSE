@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct  7 03:49:55 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- 0.17.5
+  Make to compile, to build and to test successfully for python 3.11. 
+
+-------------------------------------------------------------------
 Sun Jul 31 21:55:59 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Initial package.
