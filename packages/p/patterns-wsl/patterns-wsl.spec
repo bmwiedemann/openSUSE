@@ -17,23 +17,22 @@
 
 
 Name:           patterns-wsl
-Version:        20220222
+Version:        20220929
 Release:        0
 Summary:        Recommended packages for Windows Subsystem for Linux, WSL, WSLg
 License:        MIT
 Group:          Metapackages
-#URL:            https://github.com/openSUSE/patterns
 URL:            https://github.com/sbradnick/patterns
 BuildRequires:  patterns-rpm-macros
+#BuildArch:      noarch
 
 %description
 This is an internal package that is used to create the patterns as part
 of the installation source setup.  Installation of this package does
 not make sense.
 
+# ----
 
-
-# -----
 %package base
 %pattern_development
 Summary:        Base WSL packages
@@ -53,7 +52,7 @@ This package contains the wsl_base pattern: recommended tools,libraries for usin
 %dir /usr/share/doc/packages/patterns
 /usr/share/doc/packages/patterns/wsl_base.txt
 
-# -----
+# ----
 
 %package gui
 %pattern_development
@@ -77,7 +76,40 @@ This package contains the wsl_gui pattern: recommended tools,libraries for using
 %dir /usr/share/doc/packages/patterns
 /usr/share/doc/packages/patterns/wsl_gui.txt
 
-# -----
+# ----
+
+%package systemd
+%pattern_development
+Summary:        WSL systemd setup
+Group:          Metapackages
+Provides:       pattern() = wsl_systemd
+Provides:       pattern-icon() = wsl
+Provides:       pattern-order() = 3420
+Provides:       pattern-visible()
+
+%description systemd
+This package contains the wsl_systemd pattern: provides /etc/wsl.conf and /sbin/init symlink where required.
+
+#%%if 0%%{?suse_version} == 1500
+#%%endif
+%post systemd
+if [[ ! -L /sbin/init ]];
+then
+  %{_bindir}/echo "ADDING /sbin/init -> /usr/lib/systemd/systemd SYMLINK."
+  %{_bindir}/ln -s %{_systemd_util_dir}/systemd /sbin/init
+  if [[ -e /etc/wsl.conf ]];
+  then
+    cp /etc/wsl.conf /etc/wsl.conf.$(date +%s)
+  fi
+  %{_bindir}/echo "ADDING /etc/wsl.conf ..."
+  %{_bindir}/echo -e "# added by wsl_systemd pattern\n[boot]\nsystemd=true\n# END: wsl_systemd pattern edit" > %{_sysconfdir}/wsl.conf
+fi
+
+%files systemd
+%dir /usr/share/doc/packages/patterns
+/usr/share/doc/packages/patterns/wsl_systemd.txt
+
+# ----
 
 %prep
 
@@ -88,5 +120,7 @@ mkdir -p %{buildroot}/usr/share/doc/packages/patterns/
 echo 'This file marks the pattern wsl_base to be installed.' > %{buildroot}/usr/share/doc/packages/patterns/wsl_base.txt
 mkdir -p %{buildroot}/usr/share/doc/packages/patterns/
 echo 'This file marks the pattern wsl_gui to be installed.' > %{buildroot}/usr/share/doc/packages/patterns/wsl_gui.txt
+mkdir -p %{buildroot}/usr/share/doc/packages/patterns/
+echo 'This file marks the pattern wsl_systemd to be installed.' > %{buildroot}/usr/share/doc/packages/patterns/wsl_systemd.txt
 
 %changelog

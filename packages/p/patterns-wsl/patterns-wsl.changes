@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 29 15:39:56 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding a patterns-wsl-systemd <-> wsl_systemd pattern to setup 2 things:
+  * /sbin/init -> /usr/lib/systemd/systemd symlink (if it doesn't exist)
+  * backup an existing /etc/wsl.conf ; drop in new /etc/wsl.conf with
+    boot.systemd=true entry.
+
+-------------------------------------------------------------------
 Tue Feb 22 19:18:54 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com> - 20220222
 
 - Adding lato-fonts as 'Requires' package for wsl_gui.
