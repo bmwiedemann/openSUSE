@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct  6 21:02:32 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 106.0.5249.103:
+  * fix possible cache manager deadlock
+  * Fix right-click menu appearing unexpectedly affecting screen
+    readers
+
+-------------------------------------------------------------------
 Sat Oct  1 07:59:24 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 106.0.5249.91 (boo#1203808):
