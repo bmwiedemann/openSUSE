@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinx_press_theme
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2021 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-sphinx_press_theme
-Version:        0.7.3
+Version:        0.8.0
 Release:        0
 Summary:        A Sphinx-doc theme based on Vuepress
 License:        MIT
