@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct  6 22:46:58 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 1.8 (2022-07-07)
+  Fix problem on macOS explicitly requiring C++11, thanks to agate-pris (issue #166)
+
+- Update to version 1.7 (2022-07-06)
+  Use current master version of rapidjson
+  Update the test suite to work on Pyston, thanks to Kevin Modzelewski (PR #161)
+
+- Update to version 1.6 (2022-02-19)
+  Fix memory leak when using end_array (issue #160) 
+
+-------------------------------------------------------------------
 Thu Jan 13 23:07:04 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to v1.5

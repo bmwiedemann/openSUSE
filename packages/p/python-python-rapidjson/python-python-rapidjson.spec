@@ -21,7 +21,7 @@
 # check git submodule and update devel:libraries:c_c++/rapidjson
 %define rjversion 1.1.0+git20211015.4d6cb081
 Name:           python-python-rapidjson
-Version:        1.5
+Version:        1.8
 Release:        0
 Summary:        Python wrapper around rapidjson
 License:        MIT
