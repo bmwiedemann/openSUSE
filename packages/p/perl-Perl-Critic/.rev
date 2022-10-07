@@ -315,4 +315,14 @@
     <comment></comment>
     <requestid>884092</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>d3f6905cf971f88e5c397ac432529021</srcmd5>
+    <version>1.140</version>
+    <time>1665185003</time>
+    <user>RBrownFactory</user>
+    <comment>- Add 3 more Pod::* requires to make it build (and reverse dependencies).
+  Not sure where they were hidden before, but now they are required
+  on Tumbleweed</comment>
+    <requestid>1008328</requestid>
+  </revision>
 </revisionlist>

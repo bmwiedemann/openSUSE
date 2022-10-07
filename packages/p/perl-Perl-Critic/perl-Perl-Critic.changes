@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct  6 05:42:24 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+- Add 3 more Pod::* requires to make it build (and reverse dependencies).
+  Not sure where they were hidden before, but now they are required
+  on Tumbleweed
+
+-------------------------------------------------------------------
 Thu Mar 25 03:07:59 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.140

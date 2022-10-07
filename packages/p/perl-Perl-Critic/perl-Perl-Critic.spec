@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Perl-Critic
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,8 +20,8 @@
 Name:           perl-Perl-Critic
 Version:        1.140
 Release:        0
-Summary:        Critique Perl source code for best-practices
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Critique Perl source code for best-practices
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/P/PE/PETDANCE/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
@@ -49,6 +49,9 @@ BuildRequires:  perl(PPIx::Regexp::Util) >= 0.068
 BuildRequires:  perl(PPIx::Utilities::Node) >= 1.001
 BuildRequires:  perl(PPIx::Utilities::Statement) >= 1.001
 BuildRequires:  perl(Perl::Tidy)
+BuildRequires:  perl(Pod::Parser)
+BuildRequires:  perl(Pod::PlainText)
+BuildRequires:  perl(Pod::Select)
 BuildRequires:  perl(Pod::Spell) >= 1
 BuildRequires:  perl(Readonly) >= 2
 BuildRequires:  perl(String::Format) >= 1.18
@@ -78,6 +81,9 @@ Requires:       perl(PPIx::Regexp::Util) >= 0.068
 Requires:       perl(PPIx::Utilities::Node) >= 1.001
 Requires:       perl(PPIx::Utilities::Statement) >= 1.001
 Requires:       perl(Perl::Tidy)
+Requires:       perl(Pod::Parser)
+Requires:       perl(Pod::PlainText)
+Requires:       perl(Pod::Select)
 Requires:       perl(Pod::Spell) >= 1
 Requires:       perl(Readonly) >= 2
 Requires:       perl(String::Format) >= 1.18
