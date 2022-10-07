@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct  7 03:38:10 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to Version 2.2.1 (released 12 Jun 2022)
+  add seek and end handlers for TargetCustom [jcupitt]
+  add block_untrusted_set, operation_block_set [jcupitt]
+  update for libvips 8.13 [jcupitt] 
+
+-------------------------------------------------------------------
 Thu May  7 17:52:59 UTC 2020 - aloisio@gmx.com
 
 - Update to version 2.1.12
