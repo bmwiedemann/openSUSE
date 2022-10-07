@@ -19,4 +19,13 @@
   * Detect CNAME loops (max. 5 CNAMEs) (via xmppsrv &gt;= 0.2.4)</comment>
     <requestid>998585</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b0311be24435730932484965ad555084</srcmd5>
+    <version>0.3.2</version>
+    <time>1665185149</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 0.3.2:
+  * Fix detection of XMPP support when using direct TLS and ALPN.</comment>
+    <requestid>1008680</requestid>
+  </revision>
 </revisionlist>

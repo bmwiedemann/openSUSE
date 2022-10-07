@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct  7 07:29:00 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.3.2:
+  * Fix detection of XMPP support when using direct TLS and ALPN.
+
+-------------------------------------------------------------------
 Mon Aug 22 08:39:21 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.3.1:
