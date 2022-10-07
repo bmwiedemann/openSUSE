@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  6 21:53:01 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- version update to 2.4.1 
+  * Reject --tracemalloc in pyperf command by @oraluben in #131
+
+-------------------------------------------------------------------
 Thu Apr  7 07:58:28 UTC 2022 - pgajdos@suse.com
 
 - version update to 2.3.1
