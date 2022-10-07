@@ -15,21 +15,3 @@ The `-w` parameter to gen_share_targets_proto.py and several other scripts remov
                        help='Wrap this script in another python '
                        'execution to disable site-packages.  This is a '
                        'fix for http://crbug.com/605592')
---- a/third_party/protobuf/BUILD.gn
-+++ b/third_party/protobuf/BUILD.gn
-@@ -696,7 +696,6 @@
-     ":copy_google",
-     ":copy_google_protobuf",
-     ":copy_google_protobuf_internal",
--    ":copy_six",
-   ]
- }
- 
-@@ -707,7 +706,6 @@
- 
-   # Targets that depend on this should depend on the copied data files.
-   data = get_target_outputs(":copy_google")
--  data += get_target_outputs(":copy_six")
-   data += get_target_outputs(":copy_google_protobuf")
-   data += get_target_outputs(":copy_google_protobuf_internal")
- }

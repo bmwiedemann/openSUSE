@@ -10,11 +10,11 @@ author: Michael Gilbert <mgilbert@debian.org>
 -      "//third_party/catapult/telemetry:bitmaptools($host_toolchain)",
      ]
      if (!is_android) {
-       deps += [ "//chrome/test:telemetry_perf_unittests" ]
+       if (!is_castos) {
 @@ -379,7 +378,6 @@ group("gn_all") {
-       "//net/android:net_junit_tests",
        "//services:services_junit_tests",
        "//testing/android/junit:junit_unit_tests",
+       "//third_party/android_build_tools/lint:custom_lint_java",
 -      "//third_party/catapult/devil",
        "//third_party/r8:custom_d8_java",
        "//tools/android:android_tools",
@@ -51,9 +51,9 @@ author: Michael Gilbert <mgilbert@debian.org>
 -      "//third_party/catapult/devil/",
 -      "//third_party/catapult/dependency_manager/",
 -      "//third_party/catapult/third_party/typ/",
-       "//third_party/depot_tools/pylint",
        "//third_party/depot_tools/pylint-1.5",
        "//third_party/depot_tools/pylint_main.py",
+       "//third_party/depot_tools/pylintrc",
 --- a/tools/binary_size/BUILD.gn
 +++ b/tools/binary_size/BUILD.gn
 @@ -20,7 +20,6 @@ python_library("sizes_py") {

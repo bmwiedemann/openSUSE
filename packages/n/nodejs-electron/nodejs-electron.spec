@@ -23,7 +23,7 @@
 
 %define mod_name electron
 # https://github.com/nodejs/node/blob/main/doc/abi_version_registry.json
-%define abi_version 107
+%define abi_version 109
 
 # Do not provide libEGL.so, etc…
 %define __provides_exclude ^lib.*\\.so.*$
@@ -90,28 +90,41 @@ BuildArch:      i686
 %bcond_with mold
 
 %if %{without lld}
-#Electron built with LTO crashes on selecting any text.
-#See https://gist.github.com/brjsp/80620a5a0be9efbee6b9154cb127879d for the stack trace.
+
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500 || 0%{?fedora}
+#TODO: Fix LTO build.
+#Electron 19 crashed on selecting any text. see https://gist.github.com/brjsp/80620a5a0be9efbee6b9154cb127879d for the stack trace.
+#Electron 20 ran vscode fine, but Signal had problems with renderer process infinite loop hang.
+#Electron 21 fails linking currently.
+#[  755s] /usr/lib64/gcc/x86_64-suse-linux/12/../../../../x86_64-suse-linux/bin/ld: /tmp/cch8lk8g.ltrans11.ltrans.o: in function `partition_alloc::internal::PCScan::JoinScan()':
+#[  755s] /home/abuild/rpmbuild/BUILD/src/out/Release/../../base/allocator/partition_allocator/starscan/stack/stack.cc:139: undefined reference to `PAPushAllRegistersAndIterateStack'
 #%%bcond_without lto
 %bcond_with lto
 %else
+#Protoc on Leap crashes when built with LTO.
 %bcond_with lto
 %endif
 
+%else #without lld
+%bcond_with lto
+%endif #without lld
+
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400 || 0%{?fedora}
 %bcond_without system_harfbuzz
-%bcond_without system_avif
 %else
 %bcond_with system_harfbuzz
+%endif
+
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500 || 0%{?fedora} >= 37
+%bcond_without system_avif
+%else
 %bcond_with system_avif
 %endif
 
 %bcond_without system_freetype
 %bcond_without system_nghttp2
 %bcond_without system_double_conversion
-%bcond_without system_jsoncpp
 %bcond_without system_woff2
-%bcond_without system_tiff
 
 
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150600 || 0%{?fedora} >= 37
@@ -192,7 +205,7 @@ BuildArch:      i686
 
 
 Name:           nodejs-electron
-Version:        20.2.0
+Version:        21.1.0
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
 License:        AFL-2.0 AND Apache-2.0 AND blessing AND BSD-2-Clause AND BSD-3-Clause AND BSD-Protection AND BSD-Source-Code AND bzip2-1.0.6 AND IJG AND ISC AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND MIT-CMU AND MIT-open-group AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later) AND MPL-2.0 AND OpenSSL AND SGI-B-2.0 AND SUSE-Public-Domain AND X11
@@ -204,48 +217,20 @@ Source10:       electron-launcher.sh
 Source11:       electron.desktop
 Source12:       electron-logo-symbolic.svg
 # Shim generators for unbundling libraries
-Source20:       absl_algorithm.gn
-Source21:       absl_base.gn
-Source22:       absl_cleanup.gn
-Source23:       absl_container.gn
-Source24:       absl_debugging.gn
-Source25:       absl_flags.gn
-Source26:       absl_functional.gn
-Source27:       absl_hash.gn
-Source28:       absl_memory.gn
-Source29:       absl_meta.gn
-Source30:       absl_numeric.gn
-Source31:       absl_random.gn
-Source32:       absl_status.gn
-Source33:       absl_strings.gn
-Source34:       absl_synchronization.gn
-Source35:       absl_time.gn
-Source36:       absl_types.gn
-Source37:       brotli.gn
-Source38:       crc32c.gn
-# https://svnweb.mageia.org/packages/cauldron/chromium-browser-stable/current/SOURCES/chromium-79-system-dav1d.patch
-Source39:       dav1d.gn
-Source40:       double-conversion.gn
-# https://svnweb.mageia.org/packages/cauldron/chromium-browser-stable/current/SOURCES/chromium-79-system-libaom.patch
-Source41:       libaom.gn
-Source42:       libavif.gn
-Source43:       libjxl.gn
-Source44:       libXNVCtrl.gn
-Source45:       swiftshader-SPIRV-Headers.gn
-Source46:       swiftshader-SPIRV-Tools.gn
-Source47:       vulkan-SPIRV-Headers.gn
-Source48:       vulkan-SPIRV-Tools.gn
-Source49:       woff2.gn
 Source50:       flatbuffers.gn
 Source51:       libsecret.gn
-Source52:       libyuv.gn
-Source53:       absl_utility.gn
 
 
 # Reverse upstream changes to be able to build against ffmpeg-4
 Source400:      ffmpeg-new-channel-layout.patch
+Source401:      audio_file_reader-ffmpeg-AVFrame-duration.patch
 # …and against icu-69
-Source401:      NumberFormat-icu71-incrementExact.patch
+Source410:      NumberFormat-icu71-incrementExact.patch
+Source411:      intl-objects-icu71-UNUM_APPROXIMATELY_SIGN_FIELD.patch
+
+#Reverse upstream changes to build against system libavif.
+#All of this patch is dead code, so it can be reversed unconditionally.
+Source420:      avif_image_decoder-AVIF_PIXEL_FORMAT_COUNT.patch
 
 
 # PATCHES for openSUSE-specific things
@@ -261,36 +246,30 @@ Patch21:        electron-13-fix-use-thin-lto.patch
 Patch25:        electron-16-system-node-headers.patch
 # https://sources.debian.org/patches/chromium/102.0.5005.115-1/debianization/support-i386.patch/
 Patch39:        support-i386.patch
-Patch49:        abseil-remove-unused-targets.patch
 # from https://sources.debian.org/patches/chromium/103.0.5060.53-1/disable/catapult.patch/
 Patch67:        disable-catapult.patch
 Patch68:        do-not-build-libvulkan.so.patch
 Patch69:        nasm-generate-debuginfo.patch
+Patch70:        disable-fuses.patch
 
 # PATCHES to use system libs
 Patch1002:      chromium-system-libusb.patch
 Patch1017:      system-libdrm.patch
 # http://svnweb.mageia.org/packages/updates/7/chromium-browser-stable/current/SOURCES/chromium-74-pdfium-system-libopenjpeg2.patch?view=markup
 Patch1038:      pdfium-fix-system-libs.patch
-%if %{with system_jsoncpp}
 # https://sources.debian.org/patches/chromium/102.0.5005.115-1/system/jsoncpp.patch/
 Patch1040:      system-jsoncpp.patch
-%endif
 # https://sources.debian.org/patches/chromium/102.0.5005.115-1/system/zlib.patch/
 Patch1041:      system-zlib.patch
 Patch1043:      node-system-libs.patch
 Patch1044:      replace_gn_files-system-libs.patch
 Patch1045:      angle-system-xxhash.patch
-%if %{with system_tiff}
 # https://svnweb.mageia.org/packages/cauldron/chromium-browser-stable/current/SOURCES/chromium-99-pdfium-system-libtiff-libpng.patch
 Patch1046:      chromium-99-pdfium-system-libtiff.patch
-%endif
 Patch1047:      cares_public_headers.patch
 Patch1048:      chromium-remove-bundled-roboto-font.patch
 Patch1053:      swiftshader-use-system-llvm.patch
-%if %{with system_abseil}
 Patch1054:      thread_annotations-fix-build-with-system-abseil.patch
-%endif
 Patch1063:      system-libbsd.patch
 Patch1065:      base-system-nspr.patch
 Patch1066:      system-gtest.patch
@@ -302,6 +281,8 @@ Patch1071:      system-pydeps.patch
 Patch1072:      node-system-icu.patch
 Patch1073:      system-nasm.patch
 Patch1074:      no-zlib-headers.patch
+Patch1075:      system-abseil-missing-shims.patch
+Patch1076:      crashpad-use-system-abseil.patch
 
 # PATCHES to fix interaction with third-party software
 Patch2004:      chromium-gcc11.patch
@@ -318,6 +299,8 @@ Patch2022:      electron-13-fix-base-check-nomerge.patch
 # Fix electron patched code
 Patch2024:      electron-16-std-vector-non-const.patch
 Patch2029:      electron-16-webpack-fix-openssl-3.patch
+Patch2030:      v8-icu69-FormattedNumberRange-no-default-constructible.patch
+Patch2031:      partition_alloc-no-lto.patch
 
 
 # PATCHES that should be submitted upstream verbatim or near-verbatim
@@ -328,19 +311,7 @@ Patch3027:      electron-16-freetype-visibility-list.patch
 Patch3028:      electron-16-third_party-symbolize-missing-include.patch
 # From https://git.droidware.info/wchen342/ungoogled-chromium-fedora
 Patch3033:      chromium-94.0.4606.71-InkDropHost-crash.patch
-# https://sources.debian.org/patches/chromium/102.0.5005.115-1/bullseye/byteswap-constexpr2.patch/
-Patch3035:      byteswap-constexpr2.patch
-Patch3042:      chromium-fix-pac-with-gcc.patch
-Patch3050:      abseil_string_number_conversions-do-not-assume-ABI.patch
-Patch3051:      multi_channel_content_detector-missing-unique_ptr.patch
-Patch3055:      json_generation-missing-unique_ptr.patch
 Patch3056:      async_shared_storage_database_impl-missing-absl-WrapUnique.patch
-Patch3057:      metrics_recorder-missing-string.patch
-Patch3058:      skia_utils-missing-uint64_t.patch
-Patch3059:      device_perf_info-missing-uint32_t.patch
-Patch3060:      dark_mode_types-uint8_t.patch
-Patch3061:      ax_property_node-missing-unique_ptr-forward.patch
-Patch3062:      attribution_manager_impl-missing-absl-WrapUnique.patch
 # https://salsa.debian.org/chromium-team/chromium/-/blob/456851fc808b2a5b5c762921699994e957645917/debian/patches/upstream/nested-nested-nested-nested-nested-nested-regex-patterns.patch
 Patch3064:      nested-nested-nested-nested-nested-nested-regex-patterns.patch
 # Fedora patch to fix build with python3.11
@@ -348,10 +319,12 @@ Patch3066:      chromium-103.0.5060.53-python3-do-not-use-deprecated-mode-U.patc
 Patch3067:      reproducible-config.gypi.patch
 Patch3068:      content_language_parser-missing-string.patch
 Patch3069:      aggregatable_attribution_utils-do-not-assume-abseil-ABI.patch
-Patch3070:      content_renderer_client-invalid-application-of-sizeof-to-incomplete-type-cast_streaming-ResourceProvider.patch
 Patch3072:      attribution_response_parsing-do-not-assume-abseil-ABI.patch
 Patch3073:      common.gypi-cpp-version.patch
-Patch3074:      extract_first_nonzero_index-neon64.patch
+Patch3074:      pending_beacon_dispatcher-virtual-functions-cannot-be-constexpr.patch
+Patch3075:      std_lib_extras-missing-intptr_t.patch
+Patch3076:      gtk_ui_platform_stub-incomplete-type-LinuxInputMethodContext.patch
+Patch3077:      argument_spec-missing-isnan-isinf.patch
 
 %if %{with clang}
 BuildRequires:  clang
@@ -394,9 +367,7 @@ BuildRequires:  libaom-devel >= 3.4
 %endif
 BuildRequires:  libbsd-devel
 BuildRequires:  libpng-devel
-%if %{with system_tiff}
 BuildRequires:  libtiff-devel
-%endif
 %if %{with system_nvctrl}
 BuildRequires:  libXNVCtrl-devel
 %endif
@@ -497,14 +468,20 @@ BuildRequires:  pkgconfig(gtk+-3.0)
 %if %{with system_harfbuzz}
 BuildRequires:  pkgconfig(harfbuzz) >= 3
 %endif
+
 %if %{with icu_71}
 BuildRequires:  pkgconfig(icu-i18n) >= 71
 %else
-BuildRequires:  pkgconfig(icu-i18n) >= 68
+
+%if 0%{?fedora}
+BuildRequires:  libicu-devel < 70
+%else
+BuildRequires:  icu.691-devel
 %endif
-%if %{with system_jsoncpp}
+
+%endif
+
 BuildRequires:  pkgconfig(jsoncpp)
-%endif
 BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(lcms2)
 %if %{with ffmpeg_5}
@@ -618,8 +595,27 @@ Group:          Development/Libraries/C and C++
 Requires:       nodejs-electron%{?_isa} = %{version}
 Requires:       pkgconfig(zlib)
 
+%if %{without icu_71}
+#SUSE patched code includes icu headers
+%if 0%{?fedora}
+Requires:       libicu-devel%{?_isa}
+%else
+Requires:       icu.691-devel%{?_isa}
+%endif
+%endif
+
 %description devel
 Development headers for Electron projects.
+
+%package doc
+Summary:        Electron API documentation
+Group:          Documentation/Other
+Enhances:       nodejs-electron-devel = %{version}
+BuildArch:      noarch
+
+
+%description doc
+Development documentation for the Electron runtime.
 
 %prep
 
@@ -629,14 +625,27 @@ Development headers for Electron projects.
 # Sanity check if macro corresponds to the actual ABI
 test $(grep ^node_module_version electron/build/args/all.gn | sed 's/.* = //') = %abi_version
 
+%if %{without system_abseil}
+patch -R -p1 < %PATCH1054
+patch -R -p1 < %PATCH1076
+%endif
+
 %if %{without ffmpeg_5}
 patch -R -p1 < %SOURCE400
 %endif
 
 %if %{without icu_71}
-patch -R -p1 < %SOURCE401
+patch -R -p1 < %SOURCE410
+patch -R -p1 < %SOURCE411
+%else
+patch -R -p1 < %PATCH2030
 %endif
 
+# This one depends on an ffmpeg nightly, reverting unconditionally.
+patch -R -p1 < %SOURCE401
+
+# This one is dead code, we cen revert it even when using bundled avif.
+patch -R -p1 < %SOURCE420
 
 # Link system wayland-protocols-devel into where chrome expects them
 mkdir -p third_party/wayland-protocols/kde/src
@@ -769,6 +778,9 @@ export LDFLAGS="${LDFLAGS} -Wl,--as-needed -fuse-ld=mold"
 %if %{with lto} && %{without clang}
 # reduce the threads for linking even more due to LTO eating ton of memory
 _link_threads=$(((%{jobs} - 2)))
+%ifarch aarch64
+_link_threads=1
+%endif
 test "$_link_threads" -le 0 && _link_threads=1
 export LDFLAGS="-flto=$_link_threads --param lto-max-streaming-parallelism=1"
 %endif
@@ -929,6 +941,9 @@ myconf_gn+=" host_cpu=\"x64\""
 %endif
 %ifarch aarch64
 myconf_gn+=" host_cpu=\"arm64\""
+#default is "standard" which does not work with gcc
+#This does not raise the cpu requirements according to https://developer.arm.com/documentation/101754/0616/armclang-Reference/armclang-Command-line-Options/-mbranch-protection
+myconf_gn+=" arm_control_flow_integrity=\"pac\""
 %endif
 %ifarch %arm
 myconf_gn+=" host_cpu=\"arm\""
@@ -948,6 +963,9 @@ myconf_gn+=" arm_use_neon=false"
 %endif
 
 %endif #ifarch arm
+
+
+
 myconf_gn+=" host_os=\"linux\""
 myconf_gn+=" is_debug=false"
 myconf_gn+=" dcheck_always_on=false"
@@ -960,6 +978,17 @@ myconf_gn+=" use_swiftshader_with_subzero=false"
 myconf_gn+=" is_component_ffmpeg=true"
 myconf_gn+=" use_cups=true"
 myconf_gn+=" use_aura=true"
+
+# always load system libvulkan.so
+myconf_gn+=" angle_use_custom_libvulkan=false"
+
+# do not build PDF support
+myconf_gn+=" enable_pdf=false"
+myconf_gn+=" enable_pdf_viewer=false"
+myconf_gn+=" enable_print_preview=false"
+myconf_gn+=" enable_basic_printing=false"
+
+
 
 # This requires the non-free closure_compiler.jar. If we ever need to build chrome with JS typecheck,
 # we would need to package it separately and compile it from sources, since the chrome git repo
@@ -996,7 +1025,7 @@ myconf_gn+=" build_with_tflite_lib=false"
 myconf_gn+=" safe_browsing_mode=0"
 
 #Do not build Chromecast
-myconf_gn+=" enable_openscreen=false"
+myconf_gn+=" enable_remoting=false"
 myconf_gn+=" enable_media_remoting=false"
 
 
@@ -1008,6 +1037,8 @@ myconf_gn+=" fatal_linker_warnings=false"
 myconf_gn+=" use_allocator=\"partition\""
 myconf_gn+=" use_allocator_shim=true"
 myconf_gn+=" use_partition_alloc=true"
+
+
 myconf_gn+=" disable_fieldtrial_testing_config=true"
 myconf_gn+=" use_gnome_keyring=false"
 myconf_gn+=" use_unofficial_version_number=false"
@@ -1162,7 +1193,6 @@ chmod -v 644 %{buildroot}%{_rpmconfigdir}/macros.d/macros.electron
 
 %files
 %license electron/LICENSE out/Release/LICENSES.chromium.html
-%doc electron/README.md
 %{_bindir}/electron
 %{_datadir}/pixmaps/electron.png
 %{_datadir}/icons/hicolor/symbolic/apps/electron-symbolic.svg
@@ -1177,5 +1207,9 @@ chmod -v 644 %{buildroot}%{_rpmconfigdir}/macros.d/macros.electron
 %files devel
 %{_includedir}/electron
 %{_rpmconfigdir}/macros.d/macros.electron
+
+%files doc
+%doc electron/README.md
+%doc electron/docs
 
 %changelog

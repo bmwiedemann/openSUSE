@@ -219,6 +219,7 @@ keeplibs=(
     third_party/hunspell #heavily forked version
     third_party/iccjpeg #not in any distro
     third_party/inspector_protocol #integral part of chrome
+    third_party/ipcz #not in any distro
     third_party/jinja2 #Patch for deterministic builds. CONSIDER UNBUNDLING this when chrome switches to jinja 3.x
     third_party/jstemplate #javascript
     third_party/khronos #Modified to add ANGLE definitions

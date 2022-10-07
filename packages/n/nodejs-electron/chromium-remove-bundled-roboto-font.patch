@@ -3,7 +3,7 @@ This font is already available in opensuse and can be installed systemwide
 --- a/ui/webui/resources/BUILD.gn	2022-06-15 15:58:23.822426713 +0200
 +++ b/ui/webui/resources/BUILD.gn	2022-06-21 15:51:23.647223308 +0200
 @@ -36,17 +36,6 @@
-     "$root_gen_dir/ui/webui/resources/cr_components/color_change_listener/resources.grdp",
+     "$root_gen_dir/third_party/jstemplate/resources.grdp",
    ]
  
 -  if (!is_chromeos_ash && !is_android) {

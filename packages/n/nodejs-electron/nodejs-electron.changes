@@ -1,4 +1,110 @@
 -------------------------------------------------------------------
+Thu Oct  6 18:00:00 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+- New upstream release 21.1.0
+  * Added WebContents.opener to access window opener
+  * Added webContents.fromFrame(frame) to get the WebContents corresponding to a WebFrameMain instance
+  * Provided display_id for desktopCapturer on Linux
+  * Updated Chromium to 106.0.5249.91
+- Add backported argument_spec-missing-isnan-isinf.patch
+- Add partition_alloc-no-lto.patch
+  * LTO is still broken but this gets us past the build error
+
+-------------------------------------------------------------------
+Tue Oct  4 20:58:18 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+- New upstream release 21.0.1
+  * Update Chromium to 106.0.5249.61
+- Add backported patch to fix build error
+  * gtk_ui_platform_stub-incomplete-type-LinuxInputMethodContext.patch
+
+-------------------------------------------------------------------
+Mon Oct  3 10:49:19 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+- New upstream release 21.0.0
+  * ABI break: NODE_MODULE_VERSION is now 109. Native modules may need recompiling
+  * Update Chromium to 106.0.5249.51
+  * Update Node to 16.16.0
+  * Enabled the V8 memory cage for external buffers. See https://www.electronjs.org/blog/v8-memory-cage for more details.
+  * Added app.getSystemLocale() method.
+  * Added new WebContents.ipc and WebFrameMain.ipc APIs.
+  * Added support for Web Bluetooth pin pairing
+  * Enable missing HKDF support in Node.js crypto
+  * Fixed a crash that occured when loading non-standard schemes from iframes.
+  * Fixed a crash when switching origins with emulation settings set.
+  * Fixed an issue where screen.getCursorScreenPoint() crashed on Wayland
+    when it was called before a BrowserWindow had been created.
+  * Fixed an issue where serialPort.open() failed with
+    `NetworkError: Failed to open serial port.`
+  * Fixed the 'length' property in UploadFile objects being ignored.
+- Add -doc subpackage.
+- Do not build PDF viewer as it is huge and we don't ship any apps using it.
+- Intentionally break any downstream software using the @electron/fuses script during build,
+  as it never actually worked with system electron and the maintainer needs to
+  be alerted to possible ABI breaks.
+  * add disable-fuses.patch
+- Switch to vendored AVIF on 15.4 and F36 due to the system one being too old.
+- Fix angle trying to load a custom libvulkan we do not ship.
+- Drop patches applied upstream:
+  * absl_algorithm.gn
+  * absl_base.gn
+  * absl_cleanup.gn
+  * absl_container.gn
+  * absl_debugging.gn
+  * absl_flags.gn
+  * absl_functional.gn
+  * absl_hash.gn
+  * absl_memory.gn
+  * absl_meta.gn
+  * absl_numeric.gn
+  * absl_random.gn
+  * absl_status.gn
+  * absl_strings.gn
+  * absl_synchronization.gn
+  * absl_time.gn
+  * absl_types.gn
+  * absl_utility.gn
+  * brotli.gn
+  * crc32c.gn
+  * dav1d.gn
+  * double-conversion.gn
+  * libaom.gn
+  * libavif.gn
+  * libjxl.gn
+  * libXNVCtrl.gn
+  * libyuv.gn
+  * swiftshader-SPIRV-Headers.gn
+  * swiftshader-SPIRV-Tools.gn
+  * vulkan-SPIRV-Headers.gn
+  * vulkan-SPIRV-Tools.gn
+  * woff2.gn
+  * abseil_string_number_conversions-do-not-assume-ABI.patch
+  * attribution_manager_impl-missing-absl-WrapUnique.patch
+  * ax_property_node-missing-unique_ptr-forward.patch
+  * byteswap-constexpr2.patch
+  * chromium-fix-pac-with-gcc.patch
+  * content_renderer_client-invalid-application-of-sizeof-to-incomplete-type-cast_streaming-ResourceProvider.patch
+  * dark_mode_types-uint8_t.patch
+  * device_perf_info-missing-uint32_t.patch
+  * extract_first_nonzero_index-neon64.patch
+  * json_generation-missing-unique_ptr.patch
+  * metrics_recorder-missing-string.patch
+  * multi_channel_content_detector-missing-unique_ptr.patch
+  * skia_utils-missing-uint64_t.patch
+- Add backported patches to fix build errors
+  * pending_beacon_dispatcher-virtual-functions-cannot-be-constexpr.patch
+  * std_lib_extras-missing-intptr_t.patch
+- Fix build with system abseil
+  * remove abseil-remove-unused-targets.patch
+  * add system-abseil-missing-shims.patch
+  * add crashpad-use-system-abseil.patch
+- Reverse upstream changes to fix build with system ffmpeg
+  * audio_file_reader-ffmpeg-AVFrame-duration.patch
+- Conditionally reverse upstream changes and add hacks in v8 headers to build with icu-69
+  * intl-objects-icu71-UNUM_APPROXIMATELY_SIGN_FIELD.patch
+  * v8-icu69-FormattedNumberRange-no-default-constructible.patch
+  * electron-devel now requires icu-devel on old OS's
+- Reverse upstream changes to build with system avif
+  * avif_image_decoder-AVIF_PIXEL_FORMAT_COUNT.patch
+
+-------------------------------------------------------------------
 Thu Sep 22 20:58:12 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
 - New upstream release 20.2.0
   * Add webFrameMain.origin API

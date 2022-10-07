@@ -1,0 +1,19 @@
+--- a/components/crash/core/app/crashpad.cc
++++ b/components/crash/core/app/crashpad.cc
+@@ -28,7 +28,7 @@
+ #include "build/build_config.h"
+ #include "build/chromeos_buildflags.h"
+ #include "components/crash/core/app/crash_reporter_client.h"
+-#include "third_party/abseil-cpp/absl/base/internal/raw_logging.h"
++#include <absl/base/internal/raw_logging.h>
+ #include "third_party/crashpad/crashpad/client/annotation.h"
+ #include "third_party/crashpad/crashpad/client/annotation_list.h"
+ #include "third_party/crashpad/crashpad/client/crash_report_database.h"
+@@ -49,6 +49,7 @@
+ #include "components/crash/core/common/crash_key.h"  // nogncheck
+ #endif
+ 
++#define raw_log_internal raw_logging_internal
+ namespace crash_reporter {
+ 
+ namespace {

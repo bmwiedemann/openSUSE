@@ -71,3 +71,14 @@ Also excluding markupsafe, because jinja2 needs an ancient version. “ImportErr
  ../../build/scripts/blinkbuild/__init__.py
  ../../build/scripts/blinkbuild/name_style_converter.py
  bind_gen/__init__.py
+--- a/third_party/blink/renderer/modules/sanitizer_api/builtins/generate_attribute_lists.py
++++ b/third_party/blink/renderer/modules/sanitizer_api/builtins/generate_attribute_lists.py
+@@ -4,7 +4,7 @@
+ # found in the LICENSE file.
+ """Generate list of attribute names known to this version of Chromium."""
+ 
+-from pyjson5.src import json5
++import json5
+ import optparse
+ import sys
+ 
