@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 06 05:07:43 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.39.1:
+  * #2222 Terragrunt sub-commands help output (#2297)
+  * [skip ci] Update CODEOWNERS (#2296)
+
+-------------------------------------------------------------------
 Fri Sep 30 05:12:17 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.39.0:
