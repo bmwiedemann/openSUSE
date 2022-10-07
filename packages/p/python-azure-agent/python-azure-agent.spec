@@ -20,45 +20,37 @@ Name:           python-azure-agent
 Summary:        Microsoft Azure Linux Agent
 License:        Apache-2.0
 Group:          System/Daemons
-Version:        2.2.49.2
+Version:        2.8.0.11
 Release:        0
 URL:            https://github.com/Azure/WALinuxAgent
 Source0:        WALinuxAgent-%{version}.tar.gz
 Patch1:         agent-no-auto-update.patch
 Patch6:         paa_force_py3_sle15.patch
-Patch11:        proper_dhcp_config_set.patch
-Patch12:        sle_hpc-is-sles.patch
-Patch13:        reset-dhcp-deprovision.patch
+Patch7:         reset-dhcp-deprovision.patch
+Patch8:         paa_12_sp5_rdma_no_ext_driver.patch
 BuildRequires:  dos2unix
 
 BuildRequires:  distribution-release
 BuildRequires:  openssl
-%if 0%{?suse_version} < 1140
-BuildRequires:  python-ordereddict
-%endif
 BuildRequires:  python-rpm-macros
 %if 0%{?suse_version} && 0%{?suse_version} > 1315
 BuildRequires:  python3-distro
 BuildRequires:  python3-setuptools
 %else
 BuildRequires:  python-setuptools
+BuildRequires:  python-xml
 %endif
 BuildRequires:  pkgconfig(udev)
 Requires:       eject
 Requires:       grep
 Requires:       iptables
 Requires:       logrotate
-Requires:       sysvinit-tools
-%if 0%{?suse_version} < 1140
-Requires:       insserv
-Requires:       sysvinit
-%else
-Requires:       systemd
-Requires:       wicked
-%endif
 Requires:       openssh
 Requires:       openssl
 Requires:       pwdutils
+Requires:       systemd
+Requires:       sysvinit-tools
+Requires:       wicked
 %if 0%{?suse_version} && 0%{?suse_version} > 1315
 Requires:       python3-distro
 Requires:       python3-pyasn1
@@ -76,12 +68,7 @@ Provides:       WALinuxAgent = %{version}
 Obsoletes:      WALinuxAgent < %{version}
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%if 0%{?suse_version} && 0%{?suse_version} <= 1110
-%{!?python_sitelib: %global python_sitelib %(python -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
-%endif
-%if 0%{?suse_version} && 0%{?suse_version} > 1110
 BuildArch:      noarch
-%endif
 
 %description
 The azure-agent supports the provisioning and running of Linux
@@ -102,9 +89,6 @@ Requires:       python3-pytest
 Requires:       python-mock
 Requires:       python-pytest
 %endif
-%if 0%{?suse_version} < 1140
-Requires:       python-ordereddict
-%endif
 
 %description test
 Unit tests for python-azure-agent.
@@ -115,9 +99,8 @@ Unit tests for python-azure-agent.
 %if 0%{?suse_version} && 0%{?suse_version} > 1315
 %patch6
 %endif
-%patch11
-%patch12 -p1
-%patch13
+%patch7
+%patch8
 
 %build
 %if 0%{?suse_version} && 0%{?suse_version} > 1315
@@ -132,17 +115,16 @@ python3 setup.py install --prefix=%{_prefix} --lnx-distro='suse' --root=%{buildr
 %else
 python setup.py install --prefix=%{_prefix} --lnx-distro='suse' --root=%{buildroot}
 %endif
-%if 0%{?suse_version} > 1140
+
 ln -s service %{buildroot}%{_sbindir}/rcwaagent
-%if 0%{?suse_version} < 1230
-    mkdir -p %{buildroot}/%{_unitdir}
-    mv %{buildroot}/usr/lib/systemd/system/* %{buildroot}/%{_unitdir}
-    rm -rf %{buildroot}/usr/lib/systemd
-%endif
-%else
-### rc symlink
-ln -s ../..%{_initddir}/waagent %{buildroot}%{_sbindir}/rcwaagent
-%endif
+mkdir -p %{buildroot}/%{_unitdir}
+
+# Deal with logic embeded in the code that puts the unit file where we do not
+# want it, sometimes (depending on teh build environment)
+if [ -e %{buildroot}/lib/systemd/system ]; then
+mv %{buildroot}/lib/systemd/system/* %{buildroot}/%{_unitdir}
+fi
+
 ### udev rules
 %if 0%{?suse_version} < 1230
 mkdir -p %{buildroot}/lib/udev/rules.d
@@ -160,10 +142,8 @@ chmod +x %{buildroot}/%{_sbindir}/waagent2.0
 %if 0%{?suse_version} > 1500
 mkdir -p %{buildroot}%{_distconfdir}/logrotate.d
 mv %{buildroot}/%{_sysconfdir}/logrotate.d/waagent.logrotate %{buildroot}/%{_distconfdir}/logrotate.d/waagent
-mv %{buildroot}/%{_sysconfdir}/logrotate.d/waagent-extn.logrotate %{buildroot}/%{_distconfdir}/logrotate.d/waagent-extn
 %else
 mv %{buildroot}/%{_sysconfdir}/logrotate.d/waagent.logrotate %{buildroot}/%{_sysconfdir}/logrotate.d/waagent
-mv %{buildroot}/%{_sysconfdir}/logrotate.d/waagent-extn.logrotate %{buildroot}/%{_sysconfdir}/logrotate.d/waagent-extn
 %endif
 
 # install tests
@@ -174,56 +154,52 @@ cp -r tests %{buildroot}/%{python_sitelib}/azurelinuxagent
 %endif
 
 %pre
-%if 0%{?suse_version} > 1140
-    %service_add_pre waagent.service
+%service_add_pre waagent.service
+%if 0%{?suse_version} > 1500
+# Prepare for migration to /usr/etc; save any old .rpmsave
+for i in logrotate.d/waagent ; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+%endif
+
+%if 0%{?suse_version} > 1500
+%posttrans
+# Migration to /usr/etc, restore just created .rpmsave
+for i in logrotate.d/waagent ; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
 %endif
 
 %post
-%if 0%{?suse_version} > 1140
-    %service_add_post waagent.service
-%endif
+%service_add_post waagent.service
 
 %preun
-%if 0%{?suse_version} > 1140
-    %service_del_preun waagent.service
-%else
-    %stop_on_removal waagent
-%endif
+%service_del_preun waagent.service
 
 %postun
 %restart_on_update waagent
-%if 0%{?suse_version} > 1140
-    %service_del_postun waagent.service
-%else
-    %insserv_cleanup
-%endif
+%service_del_postun waagent.service
 
 %files
 %defattr(0644,root,root,0755)
-%doc Changelog NOTICE README.md
+%doc NOTICE README.md
 %license LICENSE.txt
 %{_sbindir}/rcwaagent
 %attr(0755,root,root) %{_sbindir}/waagent
 %attr(0755,root,root) %{_sbindir}/waagent2.0
 %if 0%{?suse_version} > 1500
 %{_distconfdir}/logrotate.d/waagent
-%{_distconfdir}/logrotate.d/waagent-extn
 %else
 %config(noreplace) %{_sysconfdir}/logrotate.d/waagent
-%config(noreplace) %{_sysconfdir}/logrotate.d/waagent-extn
 %endif
 %config(noreplace) %{_sysconfdir}/waagent.conf
 %ghost %{_localstatedir}/log/waagent.log
-%if 0%{?suse_version} > 1140
 %{_unitdir}/waagent.service
-%else
-%attr(0755,root,root) %{_initddir}/waagent
-%endif
 %if 0%{?suse_version} < 1230
 /lib/udev/rules.d/66-azure-storage.rules
 /lib/udev/rules.d/99-azure-product-uuid.rules
 %else
-/usr//lib/udev/rules.d/66-azure-storage.rules
+/usr/lib/udev/rules.d/66-azure-storage.rules
 /usr/lib/udev/rules.d/99-azure-product-uuid.rules
 %endif
 %if 0%{?suse_version} && 0%{?suse_version} > 1315

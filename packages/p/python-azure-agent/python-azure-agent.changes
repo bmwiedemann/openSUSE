@@ -1,4 +1,228 @@
 -------------------------------------------------------------------
+Thu Sep 29 20:40:07 UTC 2022 - Robert Schweikert <rjschwei@suse.com>
+
+- Add paa_12_sp5_rdma_no_ext_driver.patch (bsc#1203181)
+
+-------------------------------------------------------------------
+Thu Sep 29 15:35:37 UTC 2022 - Robert Schweikert <rjschwei@suse.com>
+
+- Update to version 2.8.0.11 (bsc#1203164)
+  + Enabled support for Fast Track (faster processing of extensions) 
+  + Add telemetry for VM Size
+  + Add telemetry for environment variables passed to extensions
+  + Enforce CPU quota on the Agent on Red Hat and CentOS 7.4+
+  + Restore all firewall rules needed for communication with the WireServer
+  + Fix false positives reporting processes in the Agent's cgroup
+  + Fix false errors when collecting debug logs
+  + Don't report incorrect CPU usage data
+  + Fetching a goal state with empty certificates property
+  + Silence goal state fetch errors after 3 logs
+  + Change fast track timestamp default from None to datetime.min
+  + Retry HGAP's extensionsArtifact requests on BAD_REQUEST status
+  + Support for Rocky Linux
+  + RHEL 8
+  + RHEL 9
+  + Preliminary work to enforce CPU quota on extensions
+  + Preliminary work for management of agent self-updates [GA Versioning]
+  + Add CentOS 7.9 to end-to-end-tests
+  + Add Mariner to end-to-end-tests
+
+- 2.8.0.11 followed 2.7.3.0, no intermediate releases 
+
+-------------------------------------------------------------------
+Thu Sep  1 08:03:21 UTC 2022 - Stefan Schubert <schubi@suse.com>
+
+- Migration to /usr/etc: Saving user changed configuration files
+  in /etc and restoring them while an RPM update. 
+
+-------------------------------------------------------------------
+Thu Aug 11 16:55:04 UTC 2022 - Robert Schweikert <rjschwei@suse.com>
+
+- Update to 2.7.3.0 (jsc#PED-1298)
+  + Remove proper_dhcp_config_set.patch included upstream
+  + Remove sle_hpc-is-sles.patch included upstream
+  + Forward port reset-dhcp-deprovision.patch
+  + Retry HGAP's extensionsArtifact requests on BAD_REQUEST status #2622
+  + Use 'ip' instead of 'ifdown/ifup' to restart network interface on
+    RHEL >= 8.6 #2612 #2624
+- From 2.7.1.0
+  + hotfix for OOM errors on the log collector
+- From 2.7.0.6
+  + Increase time of autoupdates after updates are available #2403
+  + Send telemetry when upgrade available #2421
+  + Enable collection of debugging information #2436, #2453, #2510
+  + Add support for Python 2.6 to the debug info collection code #2452
+  + Enable CPU/memory data collection on RedHat and CentOS #2450
+  + Exclude end-to-end tests from Agent setup #2396, #2402
+  + Fix log message in cgroups management #2427
+  + Fix parsing of malformed error.json files #2433
+  + Allow DNS queries over TCP #2429
+  + Dont exit extension handler process if unable to fetch
+    first goal state #2440
+  + Improvements for Mariner #2407, #2414
+  + Add uos support #2420
+  + Add support for VMware PhotonOS #2431
+- From 2.6.0.2
+  + added cloudlinux support (#2344)
+  + Enable extensions cpu monitoring (#2357, #2384, #2391)
+  + Support Flatcar Container Linux (#2365)
+  + Retrieve VmSettings from HostGAPlugin
+    (#2378, #2382, #2386, #2394, #2397, #2404)
+  + Set Agent's CpuQuota to 75% (#2383)
+  + Use handler status if extension status is None when computing
+    the ExtensionsSummary (#2358) (#2361)
+  + fix bug with dependent extensions with no settings (#2285) (#2362)
+  + Create events dir for handlers if ETP enabled (#2366)
+  + Report status even if goal state cannot be processed (#2370)
+  + Define ExtensionsSummary.eq (#2371) (#2373)
+  + Implement ExtensionsSummary.ne in terms of eq (#2375)
+- From 2.5.0.2
+  + Enable Extension Telemetry Pipeline (#2337, #2339)
+  + Enable Periodic Log Collection in systemd distros (#2295,#2289)
+  + Implement InitialGoalStatePeriod parameter + improvements in logging
+    goal state processing(#2332)
+  + Fix operation name in InitializeHostPlugin event(#2338)
+  + Mock systemctl stop cmd (#2335)
+  + Report transitioning when status file not found (#2330)
+  + Dont create default status file for Single-Config extensions (#2318)
+  + Do not create placeholder status file for AKS extensions (#2298)
+  + Save waagent_status to history folder and add additional details to
+    the status file (#2325,#2301,#2270)
+  + Rename Debug.FetchVmSettings to Debug.EnableFastTrack (#2324)
+  + Update HostGAplugin headers before fetching vmSettings (#2323)
+  + Handle HTTP GONE in vmSettings request (#2321)
+  + Added log statements to debug issues in vmSettings API(#2317)
+  + Remove reference to re.IGNORECASE (#2316)
+  + Add and remove extension slice (#2315)
+  + FastTrack changes (#2314, #2313,#2306, #2304,#2294, #2293)
+  + Helper to handle exception message(#2305)
+  + Remove trailing spaces from command name (#2296)
+  + Add debug info for systemd-run false positives (#2292)
+  + Move Github Actions VMs to Ubuntu 18 (#2291)
+  + Onboard redhat82, ubuntu20 (#2290, #2279)
+  + Allow systemd-run in the Agent's cgroup (#2287)
+  + Use handler status if extension status is None (#2358)
+  + Bug Fix :Define ExtensionsSummary.ne (#2371)
+- From 2.4.0.2
+  + Support for Multi config (#2245, #2261)
+  + Support sles 15 sp2 distro (#2272)
+  + Cleanup history folder every 30 min (#2258)
+  + Updated _read_status_file to include a fragment of status file in
+    the exception (#2257)
+  + Fix telemetry unicode errors (Re-add #1937) (#2278)
+  + Match IPoIB interface with any alphanumeric characters (#2239)
+  + Fix bug with dependent extensions with no settings (#2285)
+  + Do not create placeholder status file for AKS extensions (#2298)
+  + Refactoring of Agent's main loop (#2275)
+  + Exception for Linux Patch Extension for creating placeholder
+    status file (#2307)
+  + Dont create default status file for Single-Config extensions (#2318)
+  + Fix bad logging (#2241)
+  + Fixed logging of PeriodicOperation (#2263)
+  + Log collector broken pipe fix (#2267)
+  + Improved logging for Multi config (#2246)
+- From 2.3.1.1
+  + revert for reducing the time window where we restart the network
+    interfaces of the VM 
+- From 2.3.0.2
+  + Enforce CPUQuota on agent #2222, #2226
+  + Add support for RequiredFeatures and GoalStateAggregateStatus APIs
+    #2190, #2206, #2209, #2216
+  + Added fallback locations for extension manifests #2188
+  + Add missing call to str.format() when creating exception #2193
+  + Remove helper network service on deprovision #2191
+  + Use a helper script to start the network service #2225 #2253
+  + Initialize published_hostname using /var/lib/cloud/data/set-hostname #2215
+  + Fix utf logging for persist firewall rules #2237
+  + Replace firewall-setup unit file if changed #2236
+- From 2.2.54
+  + PA changes to check cloud-init (#2061)
+  + log collector (#2066)
+  + cgroups CPU percentage py processor count (#2074)
+  + Parse InVMGoalStateMetaData from Extension Config (#2081)
+  + iscsi disk support for agent configs (#2073)
+  + Add support for VMs with multiple IB devices (#2085)
+  + Python 3.9 support (#2082)
+  + Add support for CBL-Mariner distro (#2099)
+  + Enable Provisioning.MonitorHostName for Ubuntu (#1934)
+  + Added supportedFeatures flag in status reporting (#2089)
+  + Parse ext runtime settings (#2087)
+  + GHA merge validation (#2097)
+  + Cgroups improvements
+  + renamed the eventsFolder variable for preview and enabled ETP (#2140)
+  + Agent slice and custom unit files telemetry (#2150)
+  + Make IPoIB interface online (#2116)
+  + Add option to disable NetworkConfigurationChanges (#2156)
+  + Log network configuration on service start (#2157)
+  + Setup persistent firewall rules on service restart (#2154)
+  + switched to using run_command (#2060)
+  + fixes for chained-comparison and dangerous-default-value pylint
+    warnings (#2072)
+  + fixed depends on errors (#2059)
+  + WireIp env variable added (#2078)
+  + Unstick HGAP channel as default (#2046)
+  + shellutil.run_command fixes (#2086, #2098)
+  + unit test fixes (#2090, #2091, #2108, #2153)
+  + fix distro resolution for RedHat (#2083)
+  + Read KVP value in binary mode (#2084)
+  + Redact protected settings in goal state debug files (#2130)
+  + Modify retry logic for empty goal state (#2140)
+  + GS no config fix (#2141)
+  + CommandExecution.log logrototate config -> custom log management (#2143)
+  + binary file for firewall rules (#2147)
+  + Refresh host ga plugin periodically (#2155)
+  + Disabled custom service (#2166)
+  + update test zips (#2167)
+- From 2.2.53.1
+  + Extension Telemetry Pipeline as a private-preview feature
+- From 2.2.53
+  + Start exthandler with the same python interpreter (#2007)
+  + Verify that the extension status is an array (#2010)
+  + Remove enum _UpdateType and retry fetching goal state (#2018)
+  + use dd for ext4 as well as xfs (#2042)
+  + Fix path for error.json (#2044)
+  + Switch to run command changes, + provisioning changes that need to be
+    reverted. (#2050)
+  + Fix timestamp for goal state archive (#2051)
+  + Case insensitive parsing or Plugins and PluginSettings (#2054)
+  + Revert "Fixed delays for HTTP retries rather than exponential
+    delays (#1967)" (#2065)
+  + Fixed bug causing "MAC verified OK" message (#2069)
+  + Revert unicode fix manually (#1937) (#2070)
+  + Recreate handler environment file on service startup (#1960)
+  + Add log collection tool and thread (#1987)
+  + Thread interface (#1990)
+  + Verify that the CPU and Memory cgroups for the agent are properly
+    initialized; disabled cgroups if they are not active. (#2015)
+  + SUSE config: use Btrfs LZO compression for ResourceDisk (#2055)
+  + Extension telemetry pipeline (#1918)
+  + Reformatted the heartbeat event (#2009)
+  + Add LIS version to OSInfo.message (#2011)
+  + One thread for telemetry (#2019)
+  + Limit description character length sent for health report (#2020)
+  + Remove Serial Console Logging (#2028)
+  + Echo log to /dev/console during provisioning (#2043)
+  + Adding telemetry for logrotate (#2045)
+  + Report placeholder extension status as an array (#2068)
+  + Fix broken link in readme (#2014)
+  + Add log collector flags to README (#2029)
+- From 2.2.52
+  + Do not retrieve users in each goal state (#1935)
+  + Fix check for systemd-run failure when invoking extensions (#1943)
+  + Fix telemetry unicode errors (#1937)
+  + Uninstall unregistered extensions (#1970)
+  + Use run_command to execute iptables (#1944)
+  + Use run_command for ip route (#1958)
+  + Fix handling of gen2 disks with udev rules (#1954)
+  + Add API for uploading logs via host plugin (#1902)
+  + Fixed delays for HTTP retries rather than exponential delays (#1967)
+  + Resolve undefined variable (#1950)
+  + Convert owner uid to string (#1949)
+  + Fix Travis special checks for distro and remove useless cgroup tests (#1959)
+  + Use tmp_dir instead of data_dir (#1968)
+
+
+-------------------------------------------------------------------
 Tue Jun 21 11:12:12 UTC 2022 - Stefan Schubert <schubi@suse.com>
 
 - Removed %config flag for files in /usr directory.

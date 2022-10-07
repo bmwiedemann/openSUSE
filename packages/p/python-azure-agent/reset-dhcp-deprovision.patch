@@ -1,17 +1,17 @@
 --- azurelinuxagent/pa/deprovision/factory.py.orig
 +++ azurelinuxagent/pa/deprovision/factory.py
-@@ -22,6 +22,7 @@ from .default import DeprovisionHandler
- from .arch import ArchDeprovisionHandler
+@@ -22,6 +22,7 @@ from .arch import ArchDeprovisionHandler
  from .clearlinux import ClearLinuxDeprovisionHandler
  from .coreos import CoreOSDeprovisionHandler
+ from .default import DeprovisionHandler
 +from .suse import SUSEDeprovisionHandler
  from .ubuntu import UbuntuDeprovisionHandler, Ubuntu1804DeprovisionHandler
  
  
-@@ -42,6 +43,8 @@ def get_deprovision_handler(distro_name=
+@@ -39,6 +40,8 @@ def get_deprovision_handler(distro_name=
          return CoreOSDeprovisionHandler()
      if "Clear Linux" in distro_full_name:
-         return ClearLinuxDeprovisionHandler()
+         return ClearLinuxDeprovisionHandler()  # pylint: disable=E1120
 +    if distro_name in ("suse", "sle_hpc", "sles", "opensuse"):
 +        return SUSEDeprovisionHandler()
  
@@ -19,7 +19,7 @@
  
 --- /dev/null
 +++ azurelinuxagent/pa/deprovision/suse.py
-@@ -0,0 +1,33 @@
+@@ -0,0 +1,34 @@
 +# Microsoft Azure Linux Agent
 +#
 +# Copyright 2022 Microsoft Corporation
@@ -53,3 +53,4 @@
 +                                         localhost))
 +        actions.append(DeprovisionAction(self.osutil.set_dhcp_hostname,
 +                                         localhost))
++
