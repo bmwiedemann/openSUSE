@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Wed Oct  5 00:39:26 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 4.2.0 
+ * Merge branch 'linked_fields' into 'main'
+ * Adds a method to get linked (880) fields
+ * fix default branch
+ * ran black .
+ * Merge branch 'exception-typo' into 'master'
+ * removed innaccurate text fixes #178
+ * FatalErorReader typo
+ * fixes #179
+ * Merge branch 'issnl' into 'master'
+ * ISSN-L
+ * Ignore venv
+ * Merge branch 'master' into 'master'
+ * Fix issue #176 - allow writing records parsed with to_unicode=False
+ * latest committers
+ * merged
+ * Merge branch 'fontanka16-master-patch-75274' into 'master'
+ * Merge branch 'readme-irc' into 'master'
+ * Fix pep8 violation in pymarc.Record.sudoc docstring
+ * (readme) freenode --> libera
+ * Merge branch 'wrecksdart-master-patch-69704' into 'master'
+ * Updated docstring and informational URL for sudoc
+ * Update CONTRIBUTING.md to reflect move to Gitlab
+ * Add typing for Regex pattern
+ * Fixed: Remove unused import
+ * Formatting: Changed by `black`
+ * New: Type hints on record.py
+ * hopefully fixes #171
+ * Field.subfields_as_dict always returns value lists
+ * Repeatable subfields
+
+- Update to 4.1.0
+ * adding 3.9
+ * pypy
+ * appease mypy
+ * small change for black
+ * Merge branch 'master' into 'master'
+ * Add a convenient function for getting subfields as a dictionary
+ * Merge branch 'fix-typehints-in-marc8.py' into 'master'
+ * make flake8 happy
+ * Merge branch 'patch-1' into 'master'
+ * make black happy
+ * Make record.fields a list, not an iterator in map_marc8_record
+ * Remove unused imports
+
+-------------------------------------------------------------------
 Fri Mar 20 11:51:32 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 4.0.0
