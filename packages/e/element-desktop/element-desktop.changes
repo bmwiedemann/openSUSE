@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct  5 15:28:09 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+- Fix FTBFS on ix86 and arm.
+
+-------------------------------------------------------------------
+Fri Sep 30 16:51:37 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+- Remove ExcludeArch, we build Electron for 32-bit too now.
+
+-------------------------------------------------------------------
 Wed Sep 28 16:13:06 UTC 2022 - Dominik Heidler <dheidler@suse.de>
 
 - Version 1.11.8

@@ -37,7 +37,6 @@ BuildRequires:  yarn
 Requires:       element-web = %{version}
 Requires:       nodejs-electron
 
-ExcludeArch:    %{ix86} %{arm}
 #Element contains no native code
 BuildArch:      noarch
 
@@ -73,17 +72,13 @@ yarn install --offline --pure-lockfile
 export PATH="$PATH:node_modules/.bin"
 #export ELECTRON_BUILDER_CACHE="$(pwd)/electron-builder-offline-cache/"
 #yarn run build:native
-yarn run build
+yarn run build:universal
 
 %install
 install -d %{buildroot}{%{_datadir}/element/,%{_sysconfdir}/webapps/element}
 
 # Install the app content, replace the webapp with a symlink to the system package
-if [ "$(arch)" == "aarch64" ] ; then
-	cp -r dist/linux-arm64-unpacked/resources/* "%{buildroot}%{_datadir}/element/"
-else
-	cp -r dist/linux-unpacked/resources/* "%{buildroot}%{_datadir}/element/"
-fi
+cp -pr dist/linux-universal-unpacked/resources/* "%{buildroot}%{_datadir}/element/"
 ln -s %{_datadir}/webapps/element "%{buildroot}%{_datadir}/element/webapp"
 
 # Config file

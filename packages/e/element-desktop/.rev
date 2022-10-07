@@ -242,4 +242,12 @@ Please use same ADI as https://build.opensuse.org/request/show/918731
  * Fix memory leak caused by unremoved listener ([\#9273](https://github.com/matrix-org/matrix-react-sdk/pull/9273)).</comment>
     <requestid>1007179</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>d17b1fcac7d52a8bd4321771ed2bda31</srcmd5>
+    <version>1.11.8</version>
+    <time>1665184985</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1008298</requestid>
+  </revision>
 </revisionlist>
