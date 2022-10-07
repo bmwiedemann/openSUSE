@@ -1,7 +1,7 @@
 #
-# spec file for package python
+# spec file
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,17 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %global modname repoze.sphinx.autointerface
 Name:           python-%{modname}
-Version:        0.8
+Version:        1.0.0
 Release:        0
 Summary:        Sphinx extension: auto-generates API docs from Zope interfaces
 License:        SUSE-Repoze
 Group:          Development/Languages/Python
 URL:            http://www.repoze.org
 Source:         https://files.pythonhosted.org/packages/source/r/repoze.sphinx.autointerface/%{modname}-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

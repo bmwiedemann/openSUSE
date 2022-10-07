@@ -48,4 +48,23 @@
 - Remove superfluous devel dependency for noarch package</comment>
     <requestid>655990</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>055f2d94ca3debb5e8e268c801607ca9</srcmd5>
+    <version>1.0.0</version>
+    <time>1665185103</time>
+    <user>RBrownFactory</user>
+    <comment>- make the package python 3.6+ only as it dropped support
+  for older versions
+
+- Update to version 1.0.0 (2022-05-26)
+  Remove sphinx.util.force_decode. Previously we hacked it in to support Python 2 and Sphinx 3.x, but Sphinx 4.0 deprecated it and dropped Python 2 support.
+  Replace Travis-CI with GitHub Actions
+  Add support for Python 3.6, 3.7, 3.8, 3.9, 3.10, and PyPy3.
+  Drop support for Python 2.7, 3.3, 3.4, 3.5, and PyPy.
+  Update to work with newer Sphinx versions:
+  Sphinx.domains -&gt; Sphinx.registry.domains
+  Sphinx.override_domain(D) -&gt; Sphinx.add_domain(D, override=True)
+  Drop support for Sphinx &lt; 4.0.</comment>
+    <requestid>1008684</requestid>
+  </revision>
 </revisionlist>
