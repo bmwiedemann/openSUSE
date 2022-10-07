@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  5 00:20:54 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to v1.4.0 
+  Bumped to 1.4.0!
+
+-------------------------------------------------------------------
 Fri May 28 07:09:16 UTC 2021 - pgajdos@suse.com
 
 - %check: use %pyunittest rpm macro
