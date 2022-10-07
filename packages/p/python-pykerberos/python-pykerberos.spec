@@ -1,7 +1,7 @@
 #
 # spec file for package python-pykerberos
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pykerberos
-Version:        1.2.1
+Version:        1.2.4
 Release:        0
 Summary:        High-level interface to Kerberos
 License:        Apache-2.0
 Group:          Development/Languages/Python
-Url:            https://github.com/02strich/pykerberos/
+URL:            https://github.com/02strich/pykerberos/
 Source:         https://pypi.io/packages/source/p/pykerberos/pykerberos-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
