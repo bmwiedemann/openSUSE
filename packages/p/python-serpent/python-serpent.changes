@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct  7 15:25:30 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 1.41 
+  * support for python 3.11 added (__getstate__ behavior change)
+  * replaced travis CI by Github actions
+
+-------------------------------------------------------------------
 Wed Mar 18 13:31:41 UTC 2020 - pgajdos@suse.com
 
 - version update to 1.30.2

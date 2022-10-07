@@ -43,4 +43,16 @@
     <comment></comment>
     <requestid>786243</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>eb393d1e30532a4665c487b495a78f84</srcmd5>
+    <version>1.41</version>
+    <time>1665185173</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 1.41 
+  * support for python up to 3.11 added (__getstate__ behavior change)
+  * replaced travis CI by Github actions
+  * drop python 3.5 support
+</comment>
+    <requestid>1008877</requestid>
+  </revision>
 </revisionlist>
