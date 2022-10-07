@@ -174,4 +174,16 @@
     <comment></comment>
     <requestid>989341</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9df056a89680a37a9d6b56ff0c551971</srcmd5>
+    <version>1.19.2</version>
+    <time>1665185176</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 1.19.2 
+  * Fix incorrect domain used for collections.abc.Callable.
+  * Support for CPython 3.11, no longer adds Optional when the argument is default
+  
+</comment>
+    <requestid>1008878</requestid>
+  </revision>
 </revisionlist>

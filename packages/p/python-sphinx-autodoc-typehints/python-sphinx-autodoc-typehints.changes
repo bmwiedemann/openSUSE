@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct  7 16:20:26 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 1.19.2 
+  * Fix incorrect domain used for collections.abc.Callable.
+  * Support for CPython 3.11, no longer adds Optional when the argument is default
+  
+-------------------------------------------------------------------
 Thu Jul 14 16:34:24 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.18.3

@@ -28,7 +28,7 @@
 %bcond_with test
 %endif
 Name:           python-sphinx-autodoc-typehints%{psuffix}
-Version:        1.18.3
+Version:        1.19.2
 Release:        0
 Summary:        Type hints (PEP 484) support for the Sphinx autodoc extension
 License:        MIT
