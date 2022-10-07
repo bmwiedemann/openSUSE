@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct  7 07:25:20 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.11:
+  * Trigger pointer selection on button release instead #281
+  * Do not highlight entry with initial mouse position #282
+  * Document alternating color argument in man page as well #283
+  * Fix exiting when an unexpected Wayland error occurs. #287
+  * wayland: Damage using buffer coordinates #293
+  * wayland: Bump version #296
+  * fix ignored --monitor in BEMENU_OPTS env var #303
+  * Add --accept-single flag #304
+  * Document feedback color argument in man page as well #307
+
+-------------------------------------------------------------------
 Wed Jul  6 10:21:25 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.6.10:

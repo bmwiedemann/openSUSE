@@ -233,4 +233,21 @@
     same as ITEM) #280</comment>
     <requestid>987131</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>353657790f378ac75c2452f632516293</srcmd5>
+    <version>0.6.11</version>
+    <time>1665185099</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 0.6.11:
+  * Trigger pointer selection on button release instead #281
+  * Do not highlight entry with initial mouse position #282
+  * Document alternating color argument in man page as well #283
+  * Fix exiting when an unexpected Wayland error occurs. #287
+  * wayland: Damage using buffer coordinates #293
+  * wayland: Bump version #296
+  * fix ignored --monitor in BEMENU_OPTS env var #303
+  * Add --accept-single flag #304
+  * Document feedback color argument in man page as well #307</comment>
+    <requestid>1008679</requestid>
+  </revision>
 </revisionlist>
