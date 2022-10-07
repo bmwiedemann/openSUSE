@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-rethinkdb
-Version:        2.4.8
+Version:        2.4.9
 Release:        0
 Summary:        Python driver library for the RethinkDB database server
 License:        Apache-2.0
