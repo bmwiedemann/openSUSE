@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct  6 22:10:20 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Version Update to pytaglib 1.5.0 (2021-12-18)
+  * fix #93: publish PyPI packages from GitLab workflow
+  * fix #92: build windows binary wheels from CI
+  * fix #89: remove Python 2 support
+  * fix #88: rename pyprinttags3 --> pyprinttags, ignore unsupported tags in the script 
+
+-------------------------------------------------------------------
 Wed Dec  8 12:16:45 UTC 2021 - pgajdos@suse.com
 
 - do not require pytest-runner for build, it is not needed
