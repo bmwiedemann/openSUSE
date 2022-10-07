@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Oct  6 22:26:44 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version v2022.09.04 
+  Fixed bugs:
+  Matplotlib failed to import properly on an APK from Buildozer and Kivy #2643
+  Closed issues:
+  KeyError: Matplotlib with kivy android #2658
+  KeyError: Matplotlib #2659
+  Upgrade from NDK 19b to 23b causes problems with Pandas library #2654
+  Update Dockerfile for ARM #2653
+  Apple M2 chip doesn't generate apk: compiling error on liblzma #2652
+  aiohttp/_http_parser.pyx:46:0: '_headers.pxi' not found #2651
+  [Question] Pip SSL ? #2649
+  Colab gives me as error "No module named 'typing_extensions' ", even if before with the same compilation it worked #2648
+  [Question] Java Files #2646
+  Using foreground services will cause wired behaviour on Android 8 #2641
+  Can't apply patches with relative paths for local recipe #2623
+  Compile for x86 on MacOS #2215
+  splash always loading #1907
+  python-for-android.readthedocs.io has problems updating, apparently #1709
+  Webview apps not working on Android #1644
+  Merged pull requests:
+  liblzma: Use p4a_install instead of install, as a file named INSTALL is already present. #2663 (misl6)
+  Force --platform=linux/amd64 in Dockerfile #2660 (misl6)
+  Remove six and enum34 dependency #2657 (misl6)
+  Update supported Python versions #2656 (misl6)
+  Fixes some E275 - assert is a keyword. #2647 (misl6)
+  Updates matplotlib, fixes an issue related to shared libc++ #2645 (misl6)
+  RTSP support for ffmpeg #2644 (alicakici1234)
+  Fixes TypeError: str.join() takes exactly one argument (2 given) in hostpython3/__init__.py", line 69 #2642 (Furtif)
+  Resolve absolute path to local recipes #2640 (dbnicholson)
+  Merges master into develop after release 2022.07.20 #2639 (misl6)
+  Fix webview Back button behaviour #2636 (interlark)
+  Add icon-bg and icon-fg to fix_args #2633 (danigm)
+  Remove stray - in output file name #2581 (dbnicholson)
+  Add option for adding files to res/xml without touching manifest #2330 (rambo)
+
+-------------------------------------------------------------------
 Tue Aug  9 00:15:47 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Add test dependencies and mark one test skipped

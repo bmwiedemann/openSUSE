@@ -20,7 +20,7 @@
 %define version_with_zeros 2020.06.02
 %define skip_python2 1
 Name:           python-python-for-android
-Version:        2020.6.2
+Version:        2022.9.4
 Release:        0
 Summary:        Android APK packager for Python scripts and apps
 License:        MIT
@@ -47,9 +47,9 @@ Recommends:     python-wheel
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Jinja2}
+BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module appdirs}
 BuildRequires:  %{python_module colorama >= 0.3.3}
-BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module pep517}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
@@ -59,13 +59,13 @@ BuildRequires:  %{python_module toml}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  clang
 BuildRequires:  ccache
+BuildRequires:  clang
 BuildRequires:  cmake
 BuildRequires:  dos2unix
 BuildRequires:  gcc-c++
-BuildRequires:  lld
 BuildRequires:  libtool
+BuildRequires:  lld
 BuildRequires:  unzip
 # /SECTION
 %python_subpackages
