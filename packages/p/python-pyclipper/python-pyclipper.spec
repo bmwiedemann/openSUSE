@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-pyclipper
-Version:        1.3.0.post2
+Version:        1.3.0.post3
 Release:        0
 Summary:        Cython wrapper for the Clipper library for clipping lines and polygons
 License:        MIT
