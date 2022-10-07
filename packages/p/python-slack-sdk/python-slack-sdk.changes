@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct  7 16:06:10 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 3.18.3 
+  Changes
+  * #1262 Fix #1261 blocks/attachments as str for chat. API calls should be clearly supported - Thanks @seratch
+  * #1259 Fix #1258 Tuple value for blocks argument does not work for Web API calls - Thanks @tommasobertoni
+  * #1253 Minor update: max elements in ActionsBlock to 25 - Thanks @YSaxon
+  * #1249 #1251 Add in timezone property for timepicker element - Thanks @hello-ashleyintech
+
+-------------------------------------------------------------------
 Wed Aug  3 07:16:53 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Inital release, 3.18.1 

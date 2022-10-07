@@ -7,4 +7,18 @@
     <comment>Inital release, 3.18.1</comment>
     <requestid>992456</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2a6447a353878ebf9cb5bfee12dd021c</srcmd5>
+    <version>3.18.3</version>
+    <time>1665185179</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 3.18.3 
+  Changes
+  * #1262 Fix #1261 blocks/attachments as str for chat. API calls should be clearly supported - Thanks @seratch
+  * #1259 Fix #1258 Tuple value for blocks argument does not work for Web API calls - Thanks @tommasobertoni
+  * #1253 Minor update: max elements in ActionsBlock to 25 - Thanks @YSaxon
+  * #1249 #1251 Add in timezone property for timepicker element - Thanks @hello-ashleyintech
+</comment>
+    <requestid>1008879</requestid>
+  </revision>
 </revisionlist>
