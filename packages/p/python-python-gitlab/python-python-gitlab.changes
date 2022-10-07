@@ -1,4 +1,105 @@
 -------------------------------------------------------------------
+Thu Oct  6 22:29:41 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to v3.10.0 (2022-09-28)
+  Feature
+  Add reset_approvals api (88693ff)
+  Add support for deployment approval endpoint (9c9eeb9)
+  Fix
+  cli: Add missing attributes for creating MRs (1714d0a)
+  cli: Add missing attribute for MR changes (20c46a0)
+
+- Update to v3.9.0 (2022-08-28)
+  Feature
+  Add support for merge_base API (dd4fbd5)
+
+- Update to v3.8.1 (2022-08-10)
+  Fix
+  client: Do not assume user attrs returned for auth() (a07547c)
+
+- Update to v3.8.0 (2022-08-04)
+  Feature
+  client: Warn user on misconfigured URL in auth() (0040b43)
+  Support downloading archive subpaths (cadb0e5)
+  Fix
+  client: Ensure encoded query params are never duplicated (1398426)
+  Optionally keep user-provided base URL for pagination (#2149) (e2ea8b8)
+  Documentation
+  Describe self-revoking personal access tokens (5ea48fc)
+
+- v3.7.0 (2022-07-28)
+  Feature
+  Allow sort/ordering for project releases (b1dd284)
+  cli: Add a custom help formatter (005ba93)
+  Add support for iterations API (194ee01)
+  groups: Add support for shared projects API (66461ba)
+  issues: Add support for issue reorder API (8703324)
+  namespaces: Add support for namespace existence API (4882cb2)
+  Add support for group and project invitations API (7afd340)
+  projects: Add support for project restore API (4794ecc)
+  Add support for filtering jobs by scope (0e1c0dd)
+  Add asdict() and to_json() methods to Gitlab Objects (08ac071)
+  api: Add support for instance-level registry repositories (284d739)
+  groups: Add support for group-level registry repositories (70148c6)
+  Add 'merge_pipelines_enabled' project attribute (fc33c93)
+  Support validating CI lint results (3b1ede4)
+  cli: Add support for global CI lint (3f67c4b)
+  objects: Add Project CI Lint support (b213dd3)
+  Add support for group push rules (b5cdc09)
+  api: Add support for get for a MR approval rule (89c18c6)
+  Fix
+  Support array types for most resources (d9126cd)
+  Use the [] after key names for array variables in params (1af44ce)
+  runners: Fix listing for /runners/all (c6dd57c)
+  config: Raise error when gitlab id provided but no config section found (1ef7018)
+  config: Raise error when gitlab id provided but no config file found (ac46c1c)
+  Add get_all param (and --get-all) to allow passing all to API (7c71d5d)
+  Results returned by attributes property to show updates (e5affc8)
+  Enable epic notes (5fc3216)
+  cli: Remove irrelevant MR approval rule list filters (0daec5f)
+  Ensure path elements are escaped (5d9c198)
+  Documentation
+  cli: Showcase use of token scopes (4a6f8d6)
+  projects: Document export with upload to URL (03f5484)
+  Describe fetching existing export status (9c5b8d5)
+  authors: Add John (e2afb84)
+  Document CI Lint usage (d5de4b1)
+  users: Add docs about listing a user's projects (065a1a5)
+  Update return type of pushrules (53cbecc)
+  Describe ROPC flow in place of password authentication (91c17b7)
+  readme: Remove redundant -v that breaks the command (c523e18)
+- v3.6.0 (2022-06-28)
+  Feature
+  downloads: Allow streaming downloads access to response iterator (#1956) (b644721)
+  api: Support head() method for get and list endpoints (ce9216c)
+  api: Implement HEAD method (90635a7)
+  users: Add approve and reject methods to User (f57139d)
+  api: Convert gitlab.const to Enums (c3c6086)
+  Add support for Protected Environments (1dc9d0f)
+  users: Add ban and unban methods (0d44b11)
+  docker: Provide a Debian-based slim image (384031c)
+  Support mutually exclusive attributes and consolidate validation to fix board lists (#2037) (3fa330c)
+  client: Introduce iterator=True and deprecate as_list=False in list() (cdc6605)
+  Fix
+  base: Do not fail repr() on lazy objects (1efb123)
+  cli: Project-merge-request-approval-rule (15a242c)
+  cli: Fix project export download for CLI (5d14867)
+  Documentation
+  api: Add separate section for advanced usage (22ae101)
+  api: Document usage of head() methods (f555bfb)
+  projects: Provide more detailed import examples (8f8611a)
+  projects: Document 404 gotcha with unactivated integrations (522ecff)
+  variables: Instruct users to follow GitLab rules for values (194b6be)
+  api: Stop linking to python-requests.org (49c7e83)
+  api: Fix incorrect docs for merge_request_approvals (#2094) (5583eaa)
+  api-usage: Add import os in example (2194a44)
+  Drop deprecated setuptools build_sphinx (048d66a)
+  usage: Refer to upsteam docs instead of custom attributes (ae7d3b0)
+  ext: Fix rendering for RequiredOptional dataclass (4d431e5)
+  Documentation updates to reflect addition of mutually exclusive attributes (24b720e)
+  Use as_list=False or all=True in Getting started (de8c6e8)  
+
+-------------------------------------------------------------------
 Wed May  4 06:24:11 UTC 2022 - pgajdos@suse.com
 
 - version update to 3.4.0
