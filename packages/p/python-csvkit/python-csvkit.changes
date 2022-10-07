@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Oct  7 07:07:37 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Fix u-a scriptlets
+- Update to v1.0.7
+  * fix: :doc:`/scripts/csvcut` extracts the correct columns when
+    --line-numbers is set.
+  * fix: Restore Python 2.7 support in edge cases.
+  * feat: Use 1024 byte sniff-limit by default across csvkit. Improve csvstat
+    performance up to 10x.
+  * feat: Add support for .xz (LZMA) compressed input files.
+  * Add Python 3.10 support.
+  * Drop Python 3.5 support (end-of-life was September 30, 2020).
+- v1.0.6
+  * :doc:`/scripts/csvstat` no longer prints "Row count: " when --count is set.
+  * :doc:`/scripts/csvclean`, :doc:`/scripts/csvcut`, :doc:`/scripts/csvgrep`
+    no longer error if standard input is null.
+  * :doc:`/scripts/csvformat` creates default headers when --no-header-row is
+    set, as documented.
+  * :doc:`/scripts/csvstack` no longer errors when --no-header-row is combined
+    with --groups or --filenames.
+
+-------------------------------------------------------------------
 Sun Feb 28 20:32:54 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Add testdbf_converted.csv to fix a test failure since

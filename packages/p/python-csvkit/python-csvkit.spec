@@ -1,7 +1,7 @@
 #
 # spec file for package python-csvkit
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define binaries csvclean csvcut csvformat csvgrep csvjoin csvjson csvlook csvpy csvsort csvsql csvstack csvstat in2csv sql2csv
 %define         skip_python2 1
 Name:           python-csvkit
-Version:        1.0.5
+Version:        1.0.7
 Release:        0
 Summary:        A library of utilities for working with CSV
 License:        MIT
@@ -46,7 +46,7 @@ BuildRequires:  %{python_module xlrd >= 0.9.2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -80,19 +80,19 @@ export LANG=en_US.UTF-8
 
 %post
 %{lua:for b in rpm.expand("%{binaries}"):gmatch("%S+") do
-  print(rpm.expand("%python_install_alternative " .. b))
+  print(rpm.expand("%python_install_alternative " .. b .. "\n"))
 end}
 
 %postun
 %{lua:for b in rpm.expand("%{binaries}"):gmatch("%S+") do
-  print(rpm.expand("%python_uninstall_alternative " .. b))
+  print(rpm.expand("%python_uninstall_alternative " .. b .. "\n"))
 end}
 
 %files %{python_files}
 %license COPYING
 %doc AUTHORS.rst CHANGELOG.rst README.rst
 %{lua:for b in rpm.expand("%{binaries}"):gmatch("%S+") do
-  print(rpm.expand("%python_alternative %{_bindir}/" .. b))
+  print(rpm.expand("%python_alternative %{_bindir}/" .. b .. "\n"))
 end}
 %{python_sitelib}/csvkit-%{version}*-info
 %{python_sitelib}/csvkit/

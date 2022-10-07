@@ -106,4 +106,30 @@
     <comment></comment>
     <requestid>875840</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c1ec5ef2864039a3f64d44450411ea88</srcmd5>
+    <version>1.0.7</version>
+    <time>1665185138</time>
+    <user>RBrownFactory</user>
+    <comment>- Fix u-a scriptlets
+- Update to v1.0.7
+  * fix: :doc:`/scripts/csvcut` extracts the correct columns when
+    --line-numbers is set.
+  * fix: Restore Python 2.7 support in edge cases.
+  * feat: Use 1024 byte sniff-limit by default across csvkit. Improve csvstat
+    performance up to 10x.
+  * feat: Add support for .xz (LZMA) compressed input files.
+  * Add Python 3.10 support.
+  * Drop Python 3.5 support (end-of-life was September 30, 2020).
+- v1.0.6
+  * :doc:`/scripts/csvstat` no longer prints &quot;Row count: &quot; when --count is set.
+  * :doc:`/scripts/csvclean`, :doc:`/scripts/csvcut`, :doc:`/scripts/csvgrep`
+    no longer error if standard input is null.
+  * :doc:`/scripts/csvformat` creates default headers when --no-header-row is
+    set, as documented.
+  * :doc:`/scripts/csvstack` no longer errors when --no-header-row is combined
+    with --groups or --filenames.
+</comment>
+    <requestid>1008677</requestid>
+  </revision>
 </revisionlist>
