@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct  7 16:13:30 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 0.7.20 
+  Bug fixes:
+  * [gitdm] Skip invalid format lines
+  * Gitdm parser won't fail reading files with an invalid format. Instead,
+  * it will ignore invalid content.
+
+-------------------------------------------------------------------
 Wed May 11 11:28:06 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Fix a bug in %%postun.
