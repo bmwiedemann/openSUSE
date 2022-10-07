@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Tue Oct  4 22:59:19 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 3.15.3
+  Add scalars() query method (complements scalar()), roughly equivalent to writing [t[0] for t in query.tuples()].
+  Small doc improvements
+  Fix and remove some flaky test assertions with Sqlite INSERT + RETURNING.
+  Fix innocuous failing Sqlite test on big-endian machines.
+  View commits
+
+- Update to 3.15.2
+  Fix bug where field-specific conversions were being applied to the pattern used for LIKE / ILIKE operations. Refs #2609
+  Fix possible infinite loop when accidentally invoking the __iter__ method on certain Column subclasses. Refs #2606
+  Add new helper for specifying which Model a particular selected column-like should be bound to, in queries with joins that select from multiple sources.
+  View commits
+
+- Update to 3.15.1
+  Fix issue introduced in Sqlite 3.39.0 regarding the propagation of column subtypes in subqueries.
+  Fix bug where cockroachdb server version was not set when beginning a transaction on an unopened database.
+  View commits
+
+- Update to 3.15.0
+  Rollback behavior change in commit ab43376697 (GH #2026). Peewee will no longer automatically return the cursor rowcount for certain bulk-inserts.
+  This should only affect users of MySQL and Sqlite who relied on a bulk INSERT returning the rowcount (as opposed to the cursor's lastrowid).
+  The rowcount behavior is still available chaining the as_rowcount() method:
+  # NOTE: this change only affects MySQL or Sqlite.
+  db = MySQLDatabase(...)
+  # Previously, bulk inserts of the following forms would return the rowcount.
+  query = User.insert_many(...)  # Bulk insert.
+  query = User.insert_from(...)  # Bulk insert (INSERT INTO .. SELECT FROM).
+  # Previous behavior (peewee 3.12 - 3.14.10):
+  # rows_inserted = query.execute()
+
+  # New behavior:
+  last_id = query.execute()
+  # To get the old behavior back:
+  rows_inserted = query.as_rowcount().execute()
+  This release contains a fix for a long-standing request to allow data-modifying queries to support CTEs.
+  CTEs are now supported for use with INSERT, DELETE and UPDATE queries - see #2152.
+  Additionally, this release adds better support for using the new RETURNING syntax with Sqlite automatically. Specify returing_clause=True when
+  initializing your SqliteDatabase and all bulk inserts will automatically specify a RETURNING clause, returning the newly-inserted primary keys.
+  This functionality requires Sqlite 3.35 or newer.
+  Smaller changes:
+  Add shortcuts.insert_where() helper for generating conditional INSERT with a bit less boilerplate.
+  Fix bug in test_utils.count_queres() which could erroneously include pool events such as connect/disconnect, etc. 
+
+-------------------------------------------------------------------
 Sat Apr 16 15:24:55 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.14.10:
