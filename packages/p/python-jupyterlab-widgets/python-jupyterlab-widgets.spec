@@ -17,8 +17,8 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define pyver 3.0.2
-%define jupver 5.0.2
+%define pyver 3.0.3
+%define jupver 5.0.3
 Name:           python-jupyterlab-widgets
 Version:        %{pyver}
 Release:        0
@@ -44,8 +44,8 @@ A JupyterLab 3.0 extension for Jupyter/IPython widgets
 Version:        %{pyver}
 Summary:        A JupyterLab extension for Jupyter/IPython widgets - Jupyter JS files
 Requires:       jupyter-jupyterlab-filesystem
-Provides:       jupyter-jupyterlab_widgets = %{pyver}-%{release}
 Provides:       jupyter-jupyter-widgets-jupyterlab-manager = %{jupver}-%{release}
+Provides:       jupyter-jupyterlab_widgets = %{pyver}-%{release}
 
 %description -n jupyter-jupyterlab-widgets
 A JupyterLab 3.0 extension for Jupyter/IPython widgets - Jupyterlab-manager JS files
