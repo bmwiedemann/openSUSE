@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct  7 16:09:45 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 1.9.0 
+  * Fix connection cache reuse for some DFS referral requests
+  * Add smbclient.path to the smbclient import allowing import smbclient; smbclient.path.func()
+
+-------------------------------------------------------------------
 Thu Nov 18 21:49:52 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.8.3
