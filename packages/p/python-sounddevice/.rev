@@ -81,4 +81,12 @@
 - Don't build for Python 3.6, NumPy isn't available</comment>
     <requestid>886510</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>66d5adb1cdca77c279d015c18603e6c7</srcmd5>
+    <version>0.4.5</version>
+    <time>1665185170</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1008875</requestid>
+  </revision>
 </revisionlist>
