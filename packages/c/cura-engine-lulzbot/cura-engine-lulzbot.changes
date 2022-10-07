@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct  7 13:58:40 UTC 2022 - Adrian Schröter <adrian@suse.de>
+
+- disable tests for now, the test code is not working with gcc11
+
+-------------------------------------------------------------------
 Mon Aug 30 08:51:54 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - aarch64 is not supported in this old version. Please use regular
