@@ -1,7 +1,7 @@
 #
 # spec file for package python-sat-search
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-sat-search
-Version:        0.2.3
+Version:        0.3.0
 Release:        0
 Summary:        A tool for discovering and downloading publicly available satellite imagery
 License:        MIT
@@ -34,7 +34,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-sat-stac
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
