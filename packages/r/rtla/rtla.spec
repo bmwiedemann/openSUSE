@@ -37,6 +37,16 @@ testing Linux as a black box, rtla leverages kernel tracing
 capabilities to provide precise information about the properties
 and root causes of unexpected results.
 
+%package rebuild
+Summary:        Empty package to ensure rebuilding rtla in OBS
+%requires_eq kernel-source
+
+%description rebuild
+This is an empty package that ensures rtla is rebuilt every time
+kernel-default is rebuilt in OBS.
+
+There is no reason to install this package.
+
 %prep
 (cd %{_prefix}/src/linux ; tar -cf - COPYING CREDITS README tools include scripts Kbuild Makefile arch/*/{include,lib,Makefile} lib Documentation/tools/rtla) | tar -xf -
 
@@ -61,5 +71,8 @@ ln -sf %{_bindir}/rtla %{buildroot}%{_bindir}/timerlat
 %{_bindir}/rtla
 %{_bindir}/osnoise
 %{_bindir}/timerlat
+
+%files rebuild
+%license COPYING
 
 %changelog

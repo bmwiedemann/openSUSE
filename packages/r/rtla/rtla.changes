@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  6 09:40:30 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Add a dummy -rebuild package to give OBS/Tumbleweed a hint when this
+  package needs a rebuild
+
+-------------------------------------------------------------------
 Mon Jul 25 14:20:41 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - Suppress stripping of installed binaries
