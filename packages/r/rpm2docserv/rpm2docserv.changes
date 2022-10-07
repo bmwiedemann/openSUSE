@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Oct 07 09:57:39 UTC 2022 - kukuk@suse.com
+
+- Update to version 20221007.388ef0d:
+  * Fix filenames in bundle
+  * Update dependencies
+
+-------------------------------------------------------------------
+Fri Oct 07 08:46:00 UTC 2022 - kukuk@suse.com
+
+- Update to version 20221007.2bb8b40:
+  * Move template in own sub-directory
+  * Use chameleon css for theming (#1)
+  * "other versions" box uses now "AltVersions" instead of "Suites"
+  * Make .Suites variable available everywhere to be useable in header.tmpl
+  * Enhance package list for microos.yaml
+
+-------------------------------------------------------------------
 Wed Sep 21 14:58:24 UTC 2022 - kukuk@suse.com
 
 - Update to version 20220921.1b436b1:
