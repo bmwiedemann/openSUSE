@@ -4,6 +4,6 @@
 versions of Ansible 2.9 and newer.
 
 </description>
-  <devel project="systemsmanagement" package="python-ansible-compat"/>
+  <devel project="systemsmanagement:ansible" package="python-ansible-compat"/>
   <url>https://github.com/ansible-community/ansible-compat</url>
 </package>

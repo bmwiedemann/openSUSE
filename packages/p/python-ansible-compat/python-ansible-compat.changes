@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Sep 25 12:50:57 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2.2.1:
+  * Bugfixes
+    - Avoid galaxy install failure with already symlinked collections (#166) @ssbarnea
+    - Avoid python warning about unknown warning category (#164) @ssbarnea
+
+-------------------------------------------------------------------
 Thu Jul 28 20:45:45 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 2.2.0:
