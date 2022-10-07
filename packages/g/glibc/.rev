@@ -2721,4 +2721,16 @@ do special case rings. (forwarded request 934053 from matz2)</comment>
   make-4.4 (BZ# 29564) (forwarded request 1005182 from Andreas_Schwab)</comment>
     <requestid>1005183</requestid>
   </revision>
+  <revision rev="268" vrev="6">
+    <srcmd5>a5b57fd31e511949dbd7e4b7b3050e76</srcmd5>
+    <version>2.36</version>
+    <time>1665184963</time>
+    <user>RBrownFactory</user>
+    <comment>- get-nscd-addresses.patch: get_nscd_addresses: Fix subscript typos (BZ
+  #29605)
+- x86-64-avx2-string-functions.patch: check for required cpu features in
+  AVX2 string functions (BZ #29611)
+- nscd-aicache.patch: nscd: Drop local address tuple variable (BZ #29607) (forwarded request 1008197 from Andreas_Schwab)</comment>
+    <requestid>1008198</requestid>
+  </revision>
 </revisionlist>

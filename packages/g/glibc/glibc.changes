@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct  5 07:53:24 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- get-nscd-addresses.patch: get_nscd_addresses: Fix subscript typos (BZ
+  #29605)
+- x86-64-avx2-string-functions.patch: check for required cpu features in
+  AVX2 string functions (BZ #29611)
+- nscd-aicache.patch: nscd: Drop local address tuple variable (BZ #29607)
+
+-------------------------------------------------------------------
 Wed Sep 21 08:47:52 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - makeflags.patch: Makerules: fix MAKEFLAGS assignment for upcoming

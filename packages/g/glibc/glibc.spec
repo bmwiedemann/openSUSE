@@ -20,7 +20,8 @@
 # It will avoid building some parts of glibc
 %bcond_with    fast_build
 
-%define build_snapshot 0
+%bcond_with snapshot
+%define build_snapshot %{with snapshot}
 %bcond_with ringdisabled
 
 %define flavor @BUILD_FLAVOR@%{nil}
@@ -299,6 +300,12 @@ Patch1007:      syslog-extra-whitespace.patch
 Patch1008:      errlist-edeadlock.patch
 # PATCH-FIX-UPSTREAM Makerules: fix MAKEFLAGS assignment for upcoming make-4.4 (BZ# 29564)
 Patch1009:      makeflags.patch
+# PATCH-FIX-UPSTREAM get_nscd_addresses: Fix subscript typos (BZ #29605)
+Patch1010:      get-nscd-addresses.patch
+# PATCH-FIX-UPSTREAM check for required cpu features in AVX2 string functions (BZ #29611)
+Patch1011:      x86-64-avx2-string-functions.patch
+# PATCH-FIX-UPSTREAM nscd: Drop local address tuple variable (BZ #29607)
+Patch1012:      nscd-aicache.patch
 
 ###
 # Patches awaiting upstream approval
@@ -533,6 +540,9 @@ library in a cross compilation setting.
 %patch1007 -p1
 %patch1008 -p1
 %patch1009 -p1
+%patch1010 -p1
+%patch1011 -p1
+%patch1012 -p1
 %endif
 
 %patch2000 -p1
