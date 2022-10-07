@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-shortuuid
-Version:        1.0.8
+Version:        1.0.9
 Release:        0
 Summary:        A generator library for concise, unambiguous and URL-safe UUIDs
 License:        BSD-3-Clause
