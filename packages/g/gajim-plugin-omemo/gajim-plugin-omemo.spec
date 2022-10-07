@@ -21,7 +21,7 @@
 %define py3pkg python310
 %define _name   omemo
 Name:           gajim-plugin-omemo
-Version:        2.8.16
+Version:        2.8.17
 Release:        0
 Summary:        Gajim plugin for OMEMO Multi-End Message and Object Encryption
 License:        GPL-3.0-only
