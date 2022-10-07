@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Tue Oct  4 05:20:35 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 22.8.0:
+  * The only change is a new feature for file fragments:
+    start-at which behaves like start-after, but preserves the string that
+    is searched for.
+    Here's a real-world example of how it can simplify your configuration.
+
+-------------------------------------------------------------------
+Mon Sep 26 05:40:36 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package python-hatch-fancy-pypi-readme
