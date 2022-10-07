@@ -17,7 +17,7 @@
 
 
 Name:           gnucash-docs
-Version:        4.10.1
+Version:        4.12
 Release:        9.1
 Summary:        Documentation Module for GnuCash
 License:        GFDL-1.1-only AND GPL-2.0-or-later
@@ -55,12 +55,7 @@ balanced books. This is the documentation module for GnuCash.
 %files -f gnucash-guide.lang -f gnucash-help.lang
 %license COPYING
 %doc AUTHORS COPYING-DOCS NEWS README
-# Own dirs so we do not have to depend on libgnome
-%dir %{_datadir}/gnome
-%dir %{_datadir}/gnome/help
-%dir %{_datadir}/gnome/help/gnucash-guide
-%doc %{_datadir}/gnome/help/gnucash-guide/C/
-%dir %{_datadir}/gnome/help/gnucash-help
-%doc %{_datadir}/gnome/help/gnucash-help/C/
+%doc %{_datadir}/help/C/gnucash-guide
+%doc %{_datadir}/help/C/gnucash-help
 
 %changelog
