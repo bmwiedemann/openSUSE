@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct  5 14:22:03 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 6.6.2 
+  * ci: test against the currently supported python versions by @raddessi in #446
+    Fix pickling exception with custom errors by @kingtong in #459
+
+-------------------------------------------------------------------
 Thu Apr  7 07:40:44 UTC 2022 - pgajdos@suse.com
 
 - python-mock is not required for build
