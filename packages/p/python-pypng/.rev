@@ -65,4 +65,13 @@
     <comment></comment>
     <requestid>886560</requestid>
   </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>4182c2f8e5357c89b61abd61c1dcb222</srcmd5>
+    <version>0.0.20</version>
+    <time>1665185136</time>
+    <user>RBrownFactory</user>
+    <comment>- Fix u-a scriptlets
+</comment>
+    <requestid>1008769</requestid>
+  </revision>
 </revisionlist>

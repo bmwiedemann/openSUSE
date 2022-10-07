@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct  7 12:15:18 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Fix u-a scriptlets
+
+-------------------------------------------------------------------
 Sat Apr 17 21:48:57 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Add pypng-pr104-py39.patch for Python 3.9 compatibility

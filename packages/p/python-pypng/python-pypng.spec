@@ -1,7 +1,7 @@
 #
 # spec file for package python-pypng
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -67,12 +67,12 @@ done
 
 %post
 %{lua: for b in rpm.expand("%{binaries}"):gmatch("%S+") do
-  print(rpm.expand("%python_install_alternative " .. b))
+  print(rpm.expand("%python_install_alternative " .. b .. "\n"))
 end}
 
 %postun
 %{lua: for b in rpm.expand("%{binaries}"):gmatch("%S+") do
-  print(rpm.expand("%python_uninstall_alternative " .. b))
+  print(rpm.expand("%python_uninstall_alternative " .. b .. "\n"))
 end}
 
 %files %{python_files}
@@ -81,7 +81,7 @@ end}
 %{python_sitelib}/pypng-%{version}*-info
 %pycache_only %{python_sitelib}/__pycache__/png.*.pyc
 %{lua: for b in rpm.expand("%{binaries}"):gmatch("%S+") do
-  print(rpm.expand("%python_alternative %{_bindir}/" .. b))
+  print(rpm.expand("%python_alternative %{_bindir}/" .. b .. "\n"))
 end}
 
 %changelog
