@@ -1,0 +1,16 @@
+<services>
+  <service mode="disabled" name="obs_scm">
+    <param name="url">https://github.com/GPUOpen-LibrariesAndSDKs/AMF</param>
+    <param name="scm">git</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="revision">v1.4.26</param>
+    <param name="changesgenerate">enable</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="include">LICENSE.txt</param>
+    <param name="include">README.md</param>
+    <param name="include">amf/doc/</param>
+    <param name="include">amf/public/include/</param>
+  </service>
+  <service mode="buildtime" name="tar"/>
+  <service mode="disabled" name="set_version"/>
+</services>

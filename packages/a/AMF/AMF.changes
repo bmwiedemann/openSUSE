@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Thu Jul 28 20:07:25 UTC 2022 - Enrico Belleri <idesmi@protonmail.com>
+
+- Update to version 1.4.26:
+  * New perceptual (PAQ) and temporal (TAQ) adaptive quantization modes for PreAnalysis
+  * New high motion quality boost mode for PreAnalysis
+  * New sharpness option for HQScaler
+  * New low latency decoding option
+  * New temporal SVC encoding options
+
+-------------------------------------------------------------------
+Wed Mar 23 10:54:50 UTC 2022 - Enrico Belleri <idesmi@protonmail.com>
+
+- initial package
