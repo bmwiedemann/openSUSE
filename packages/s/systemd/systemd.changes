@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct  4 08:51:48 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Import commit 07aa29e3942fb46b0aed5405c88e8d3179ca958f (merge of v251.5)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/532faa39ebaa6f56e493cc938a91a40df082b74f...07aa29e3942fb46b0aed5405c88e8d3179ca958f
+
+-------------------------------------------------------------------
 Wed Sep 21 09:18:34 UTC 2022 - Franck Bui <fbui@suse.com>
 
 - Drop the old band aid used during the breakage introduced by the switch of

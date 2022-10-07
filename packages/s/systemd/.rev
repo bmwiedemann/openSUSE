@@ -6116,4 +6116,14 @@ handle manual pages that consist only of a .so directive such as
   description of the systemd-experimental sub-package</comment>
     <requestid>1005162</requestid>
   </revision>
+  <revision rev="365" vrev="1">
+    <srcmd5>36ebc9a00ef6a9fa2c4520d1f5cea7db</srcmd5>
+    <version>251.5</version>
+    <time>1665184960</time>
+    <user>RBrownFactory</user>
+    <comment>- Import commit 07aa29e3942fb46b0aed5405c88e8d3179ca958f (merge of v251.5)
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/532faa39ebaa6f56e493cc938a91a40df082b74f...07aa29e3942fb46b0aed5405c88e8d3179ca958f</comment>
+    <requestid>1007837</requestid>
+  </revision>
 </revisionlist>
