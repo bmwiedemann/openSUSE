@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct  7 14:12:34 UTC 2022 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- Release 0.7.5
+  * Workaround for another inconsistency in parameter handling in OBS API
+
+-------------------------------------------------------------------
+Wed Oct  5 08:51:51 UTC 2022 - Andreas Hasenkopf <ahasenkopf@suse.com>
+
+- Release 0.7.4
+  * Deprecated `Project.get_files` (fixes #101)
+    (i.e. yet another workaround for an inconsistent server API)
+  * Updated documentation for `Package.cmd` method
+
+-------------------------------------------------------------------
 Mon Sep 19 12:11:43 UTC 2022 - Andreas Hasenkopf <ahasenkopf@suse.com>
 
 - Release 0.7.3
