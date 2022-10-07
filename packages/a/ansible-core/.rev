@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>73ba805fe49ceef26572d2ff660d2496</srcmd5>
+    <version>2.13.4</version>
+    <time>1665185005</time>
+    <user>RBrownFactory</user>
+    <comment>new package ansible-core that contains the core functionality that was previously in the ansible package
+- rpmlintrc copied from the old package and adapted
+- new ansible package will be submitted separately</comment>
+    <requestid>1008358</requestid>
+  </revision>
+</revisionlist>
