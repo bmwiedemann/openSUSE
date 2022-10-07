@@ -1,7 +1,7 @@
 #
 # spec file for package python-retryrequests
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-retryrequests
-Version:        0.0.3
+Version:        0.2.0
 Release:        0
 License:        MIT
 Summary:        Extend python requests with exponential back-off retry
-Url:            https://github.com/thombashi/retryrequests
+URL:            https://github.com/thombashi/retryrequests
 Group:          Development/Languages/Python
 Source:         https://github.com/thombashi/retryrequests/archive/v%{version}.tar.gz#/retryrequests-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools >= 38.3.0}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module requests >= 2.18.4}
 # /SECTION
