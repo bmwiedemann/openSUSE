@@ -19,13 +19,16 @@
 %define skip_python36 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-khal
-Version:        0.10.4
+Version:        0.10.5
 Release:        0
 Summary:        CLI calendar with CalDAV support
 License:        MIT
 Group:          Productivity/Office/Organizers
 URL:            https://lostpackets.de/khal/
 Source0:        https://files.pythonhosted.org/packages/source/k/khal/khal-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix tests with latest pytz version
+# https://github.com/pimutils/khal/commit/f6c9b8a53a0f12222b2ee25c82229b0605b8785a
+Patch0:         fix-pytz-tests.patch
 BuildRequires:  %{python_module atomicwrites >= 0.1.7}
 BuildRequires:  %{python_module click >= 3.2}
 BuildRequires:  %{python_module click-log >= 0.2.0}
@@ -33,6 +36,8 @@ BuildRequires:  %{python_module configobj}
 BuildRequires:  %{python_module dateutil}
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module icalendar >= 4.0.3}
+# Test dependency added by Patch0
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module pyxdg}
@@ -62,7 +67,7 @@ Khal is a CLI (console), CalDAV based calendar program, allowing syncing of
 calendars with a variety of other programs on a host of different platforms.
 
 %prep
-%setup -q -n khal-%{version}
+%autosetup -p1 -n khal-%{version}
 
 %build
 %python_build

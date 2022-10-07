@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Oct  6 07:07:28 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 0.10.5:
+  * FIX support for tzlocal >= 4.0
+  * FIX ability to show an event's calendar in ikhal
+  * FIX an error logging for certain broken icalendar events that made ikhal crash
+    after editing those events
+  * NEW Add widget to interactive event editor that allows adding attendees as
+    comma separated list of email addresses
+  * FIX event creation for events after the second next DST transition
+  * NEW Add support for Python 3.10
+  * CHANGE search, at, and list don't print "No events" anymore if no matching
+    events are found
+  * NEW Add option to use multiple color only when not all calendar colors can
+    be displayed.
+- Add fix-pytz-tests.patch to fix tests with latest pytz version
+
+-------------------------------------------------------------------
 Tue Jan 11 09:52:06 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add python-rpm-macros 
