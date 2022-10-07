@@ -45,6 +45,7 @@ License:        GPL-3.0-only
 Group:          Productivity/Networking/Talk/Clients
 URL:            https://gajim.org/
 Source:         https://gajim.org/downloads/1.5/gajim-%{version}.tar.gz
+Patch0:         0001-remove-upnp.patch
 BuildRequires:  %{py3pkg}-nbxmpp >= 3.0
 BuildRequires:  %{py3pkg}-precis-i18n >= 1.0.0
 BuildRequires:  %{py3pkg}-setuptools
@@ -52,6 +53,7 @@ BuildRequires:  ca-certificates-mozilla
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  libpcre1
 BuildRequires:  p11-kit-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
@@ -105,6 +107,7 @@ Features:
 %setup -q
 sed -i '/^Keywords/d' data/org.gajim.Gajim.desktop.in
 sed -i '1{/\/usr\/bin\/*/d;}' gajim/gajim_remote.py
+%patch0 -p0
 
 %build
 python%{py3ver} setup.py build

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct  5 14:46:54 UTC 2022 - Fritz Reichwald <reichwald@b1-systems.de>
+
+- Add 0001-remove-upnp.patch to (temporarily) remove the code in
+  app.py that is going to use GUPnP-IGD since the prior fix from
+  Luciaon is not working here.
+- Add missing libpcre BuildDep that made the build fail locally
+
+-------------------------------------------------------------------
 Wed Sep 28 04:17:52 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
 
 - Temporarily remove auto generated requirement on GUPnPIgd GI
