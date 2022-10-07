@@ -16,7 +16,7 @@
 #
 
 Name:           libressl
-Version:        3.5.3
+Version:        3.6.0
 Release:        0
 Summary:        An SSL/TLS protocol implementation
 License:        OpenSSL
@@ -46,31 +46,31 @@ LibreSSL is an open-source implementation of the Secure Sockets Layer
 OpenSSL, with the aim of refactoring the OpenSSL code so as to
 provide a more secure implementation.
 
-%package -n libcrypto49
+%package -n libcrypto50
 Summary:        An SSL/TLS protocol implementation
 Group:          System/Libraries
 
-%description -n libcrypto49
+%description -n libcrypto50
 The "crypto" library implements a wide range of cryptographic
 algorithms used in various Internet standards. The services provided
 by this library are used by the LibreSSL implementations of SSL, TLS
 and S/MIME, and they have also been used to implement SSH, OpenPGP,
 and other cryptographic standards.
 
-%package -n libssl52
+%package -n libssl53
 Summary:        An SSL/TLS protocol implementation
 Group:          System/Libraries
 
-%description -n libssl52
+%description -n libssl53
 LibreSSL is an open-source implementation of the Secure Sockets Layer
 (SSL) and Transport Layer Security (TLS) protocols. It derives from
 OpenSSL and intends to provide a more secure implementation.
 
-%package -n libtls25
+%package -n libtls26
 Summary:        A simplified interface for the OpenSSL/LibreSSL TLS protocol implementation
 Group:          System/Libraries
 
-%description -n libtls25
+%description -n libtls26
 LibreSSL is an open-source implementation of the Secure Sockets Layer
 (SSL) and Transport Layer Security (TLS) protocols. It derives from
 OpenSSL and intends to provide a more secure implementation.
@@ -81,9 +81,9 @@ libssl) for secure client and server communications.
 %package devel
 Summary:        Development files for LibreSSL, an SSL/TLS protocol implementation
 Group:          Development/Libraries/C and C++
-Requires:       libcrypto49 = %version
-Requires:       libssl52 = %version
-Requires:       libtls25 = %version
+Requires:       libcrypto50 = %version
+Requires:       libssl53 = %version
+Requires:       libtls26 = %version
 Conflicts:      libopenssl-devel
 Conflicts:      ssl-devel
 
@@ -142,12 +142,12 @@ if ! %make_build check; then
 	exit 1
 fi
 
-%post   -n libcrypto49 -p /sbin/ldconfig
-%postun -n libcrypto49 -p /sbin/ldconfig
-%post   -n libssl52 -p /sbin/ldconfig
-%postun -n libssl52 -p /sbin/ldconfig
-%post   -n libtls25 -p /sbin/ldconfig
-%postun -n libtls25 -p /sbin/ldconfig
+%post   -n libcrypto50 -p /sbin/ldconfig
+%postun -n libcrypto50 -p /sbin/ldconfig
+%post   -n libssl53 -p /sbin/ldconfig
+%postun -n libssl53 -p /sbin/ldconfig
+%post   -n libtls26 -p /sbin/ldconfig
+%postun -n libtls26 -p /sbin/ldconfig
 
 %files
 %dir %_sysconfdir/ssl/
@@ -160,13 +160,13 @@ fi
 %_mandir/man8/*.8*
 %doc COPYING
 
-%files -n libcrypto49
+%files -n libcrypto50
 %_libdir/libcrypto.so.*
 
-%files -n libssl52
+%files -n libssl53
 %_libdir/libssl.so.*
 
-%files -n libtls25
+%files -n libtls26
 %_libdir/libtls.so.*
 
 %files devel

@@ -511,4 +511,12 @@
     <comment>- Update to release 3.5.3</comment>
     <requestid>978071</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>069f5118a325505864042dad532ca730</srcmd5>
+    <version>3.6.0</version>
+    <time>1665185081</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to release 3.6.0</comment>
+    <requestid>1008599</requestid>
+  </revision>
 </revisionlist>

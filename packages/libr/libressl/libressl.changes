@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct  6 21:21:05 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.6.0
+  * Avoid expensive RFC 3779 checks during cert verification.
+  * The ASN.1 time parser has been refactored and rewritten using
+    CBS. It has been made stricter in that it now enforces the
+    rules from RFC 5280.
+  * EVP API for HKDF ported from OpenSSL and subsequently cleaned
+    up.
+  * Add initial support for TS ESSCertIDv2 verification.
+
+-------------------------------------------------------------------
 Thu May 19 07:41:31 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.5.3
