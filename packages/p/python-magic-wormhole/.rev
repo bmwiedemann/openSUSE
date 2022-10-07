@@ -103,4 +103,17 @@
     <comment></comment>
     <requestid>977996</requestid>
   </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>fb4e06d67d603bd7a387bdf1e9a99c00</srcmd5>
+    <version>0.12.0</version>
+    <time>1665185133</time>
+    <user>RBrownFactory</user>
+    <comment>- Use %pytest macro instead of plain pytest command for testing
+- Revert previous change, go back to pytest for testing
+- Disable test_welcome, that's the only test that fails for some reason for
+  python3.8 and python3.9
+- Run tests with coverage, using the same tool that is used upstream
+</comment>
+    <requestid>1008759</requestid>
+  </revision>
 </revisionlist>

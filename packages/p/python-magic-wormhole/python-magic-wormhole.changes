@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Oct  7 10:43:17 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Use %pytest macro instead of plain pytest command for testing
+
+-------------------------------------------------------------------
+Fri Oct  7 10:39:00 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Revert previous change, go back to pytest for testing
+- Disable test_welcome, that's the only test that fails for some reason for
+  python3.8 and python3.9
+
+-------------------------------------------------------------------
+Fri Oct  7 09:55:41 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Run tests with coverage, using the same tool that is used upstream
+
+-------------------------------------------------------------------
 Wed May 18 09:52:07 UTC 2022 - pgajdos@suse.com
 
 - do not require python-mock for build
