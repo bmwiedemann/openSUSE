@@ -17,7 +17,7 @@
 
 
 Name:           tealdeer
-Version:        1.5.0+0
+Version:        1.6.0
 Release:        0
 Summary:        An implementation of tldr in Rust
 License:        Apache-2.0 OR MIT
@@ -40,6 +40,36 @@ ExclusiveArch:  %{rust_tier1_arches}
 %description
 An implementation of tldr in Rust. It has example based and community-driven man pages.
 
+%package bash-completion
+Summary:        Bash Completion for %{name}
+Group:          System/Shells
+Supplements:    (%{name} and bash-completion)
+Requires:       bash-completion
+BuildArch:      noarch
+
+%description bash-completion
+Bash command-line completion support for %{name}.
+
+%package        fish-completion
+Summary:        Fish Completion for %{name}
+Group:          System/Shells
+Supplements:    (%{name} and fish)
+Requires:       fish
+BuildArch:      noarch
+
+%description    fish-completion
+Fish command-line completion support for %{name}.
+
+%package        zsh-completion
+Summary:        Zsh Completion for %{name}
+Group:          System/Shells
+Supplements:    (%{name} and zsh)
+Requires:       zsh
+BuildArch:      noarch
+
+%description    zsh-completion
+Zsh command-line completion support for %{name}.
+
 %prep
 %setup -qa1
 mkdir .cargo
@@ -50,10 +80,24 @@ cp %{SOURCE2} .cargo/config
 
 %install
 %{cargo_install}
+install -Dm644 -T ./completion/bash_tealdeer %{buildroot}%{_datadir}/bash-completion/completions/tealdeer
+install -Dm644 -T ./completion/fish_tealdeer %{buildroot}%{_datadir}/fish/vendor_completions.d/tealdeer.fish
+install -Dm644 -T ./completion/zsh_tealdeer  %{buildroot}%{_datadir}/zsh/site-functions/_tealdeer
 
 %files
 %doc README.md
 %license LICENSE-MIT LICENSE-APACHE
 %{_bindir}/tldr
+
+%files bash-completion
+%{_datadir}/bash-completion/*
+
+%files fish-completion
+%dir %{_datadir}/fish
+%{_datadir}/fish/*
+
+%files zsh-completion
+%dir %{_datadir}/zsh
+%{_datadir}/zsh/*
 
 %changelog
