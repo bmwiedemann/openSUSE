@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct  6 07:29:26 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update to 5.0.1
+  * Improvements:
+   + issue #105: run callbacks after process termination on timeout or
+     task cancellation
+
+-------------------------------------------------------------------
 Tue Sep 13 11:09:36 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Update to 5.0.0
