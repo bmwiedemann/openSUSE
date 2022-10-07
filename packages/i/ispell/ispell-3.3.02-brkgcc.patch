@@ -1,6 +1,6 @@
 --- parse.y
 +++ parse.y	2007-05-31 18:23:51.044846032 +0200
-@@ -1877,8 +1877,10 @@ static int addstringchar (str, lower, up
+@@ -1940,8 +1940,10 @@ static int addstringchar (str, lower, up
       */
      for (mslot = hashheader.nstrchars + SET_SIZE;  --mslot >= slot;  )
  	{
@@ -12,7 +12,7 @@
  	  (char *) &hashheader.stringchars[mslot - SET_SIZE][0]);
  	hashheader.lowerchars[mslot + 1] = hashheader.lowerchars[mslot];
  	hashheader.upperchars[mslot + 1] = hashheader.upperchars[mslot];
-@@ -1891,10 +1893,8 @@ static int addstringchar (str, lower, up
+@@ -1954,10 +1956,8 @@ static int addstringchar (str, lower, up
  	hashheader.lowerconv[mslot + 1] = hashheader.lowerconv[mslot];
  	hashheader.upperconv[mslot + 1] = hashheader.upperconv[mslot];
  	hashheader.sortorder[mslot + 1] = hashheader.sortorder[mslot];

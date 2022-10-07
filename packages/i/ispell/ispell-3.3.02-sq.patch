@@ -6,7 +6,7 @@
 
 --- Makefile
 +++ Makefile	2016-02-12 10:34:00.287895315 +0000
-@@ -286,7 +286,7 @@ all:	all-languages
+@@ -294,7 +294,7 @@ all:	all-languages
  
  programs: buildhash findaffix tryaffix ispell
  programs: icombine ijoin munchlist
@@ -15,7 +15,7 @@
  
  defmt-programs:
  	cd deformatters; $(MAKE) all
-@@ -345,11 +345,15 @@ install-basic:
+@@ -353,11 +353,15 @@ install-basic:
  	@. ./config.sh; \
  	  set -x; \
  	  $$INSTALL ispell.1 $(DESTDIR)$$MAN1DIR/ispell$$MAN1EXT; \
@@ -32,7 +32,7 @@
  	  cd $(DESTDIR)$$MAN45DIR; \
  	  chmod 644 ispell$$MAN45EXT
  
-@@ -383,7 +387,7 @@ install-dictbuild:
+@@ -391,7 +395,7 @@ install-dictbuild:
  	@. ./config.sh; \
  	  set -x; \
  	  $$INSTALL buildhash icombine ijoin munchlist findaffix \

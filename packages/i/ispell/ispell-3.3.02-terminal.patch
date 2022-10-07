@@ -6,17 +6,17 @@
 
 --- correct.c
 +++ correct.c	2016-02-12 11:01:38.867627625 +0000
-@@ -204,6 +204,7 @@ static char Rcs_Id[] =
-  */
+@@ -220,6 +220,7 @@ static char Rcs_Id[] =
  
  #include <ctype.h>
+ #include <fcntl.h>
 +#include <unistd.h>
  #include "config.h"
  #include "ispell.h"
  #include "proto.h"
 --- ispell.h
 +++ ispell.h	2016-02-12 11:01:38.867627625 +0000
-@@ -143,6 +143,7 @@
+@@ -146,6 +146,7 @@
  
  #include "config.h"
  #include <stdio.h>
@@ -24,7 +24,7 @@
  
  #ifdef __STDC__
  #define P(x)	x
-@@ -575,7 +576,11 @@ extern ichar_t	mytoupper P ((unsigned in
+@@ -585,7 +586,11 @@ extern ichar_t	mytoupper P ((unsigned in
  # define EXTERN extern
  #endif
  
@@ -38,17 +38,15 @@
  EXTERN char *	cm;	/* cursor movement */
 --- term.c
 +++ term.c	2016-02-12 11:02:21.858794671 +0000
-@@ -99,6 +99,9 @@ static char Rcs_Id[] =
+@@ -108,6 +108,7 @@ static char Rcs_Id[] =
  #endif
  #endif
  #include <signal.h>
 +#include <unistd.h>
-+#include <sys/types.h>
-+#include <sys/wait.h>
+ #include <sys/ioctl.h>
+ #include <sys/wait.h>
  
- void		ierase P ((void));
- void		imove P ((int row, int col));
-@@ -198,9 +201,13 @@ void terminit ()
+@@ -209,9 +210,13 @@ void terminit ()
      int			tpgrp;
  #else
  #ifdef TIOCGPGRP
@@ -62,7 +60,7 @@
  #ifdef TIOCGWINSZ
      struct winsize	wsize;
  #endif /* TIOCGWINSZ */
-@@ -304,7 +311,11 @@ retry:
+@@ -315,7 +320,11 @@ retry:
  	(void) fprintf (stderr, TERM_C_NO_BATCH);
  	exit (1);
  	}
@@ -74,7 +72,7 @@
      termchanged = 1;
  
      sbuf = osbuf;
-@@ -313,7 +324,11 @@ retry:
+@@ -324,7 +333,11 @@ retry:
      sbuf.c_iflag &= ~(INLCR | IGNCR | ICRNL);
      sbuf.c_cc[VMIN] = 1;
      sbuf.c_cc[VTIME] = 1;
@@ -86,7 +84,7 @@
  
      uerasechar = osbuf.c_cc[VERASE];
      ukillchar = osbuf.c_cc[VKILL];
-@@ -326,7 +341,11 @@ retry:
+@@ -337,7 +350,11 @@ retry:
  #endif
  #endif
  #ifdef TIOCGPGRP

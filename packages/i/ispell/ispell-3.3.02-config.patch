@@ -5,7 +5,7 @@
 
 --- Makefile
 +++ Makefile	2016-02-12 10:10:01.744028132 +0000
-@@ -259,6 +259,10 @@ EXTRADICT = Use_config.sh
+@@ -267,6 +267,10 @@ EXTRADICT = Use_config.sh
  SHELL = /bin/sh
  MAKE = make
  
@@ -16,7 +16,7 @@
  #
  # Prefix to apply to installation directories.  This is not controlled
  # by config.X; if you want to make a global change of that sort you
-@@ -664,7 +668,7 @@ config.h:	config.X local.h
+@@ -672,7 +676,7 @@ config.h:	config.X local.h
  #	Create a sample local.h if no such file currently exists
  local.h:
  	set +e; \

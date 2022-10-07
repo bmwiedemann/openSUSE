@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Oct  7 11:22:50 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Update to ispell 3.4.05
+  * A major bug in 3.4.01 that caused incorrect behavior with many
+    languages has been corrected.
+  * The default maximum number of stringchars has been doubled.
+  * Some spurious compiler warnings have been suppressed.
+  * The english.aff file has been revised so that UTF-8 is now the
+    default encoding for English dictionaries.
+  * Some subtle bugs with the handling of stringchars, which were
+    revealed by the changes to english.aff, have been corrected.
+  * A new affix command, "options", has been added to allow selection
+    of options related to a particular string character type.  There
+    are currently two options, raw_display and squeeze_strings.  Both
+    should be activated for UTF-8 encodings but few others.  This
+    change causes hash files built with earlier ispell versions to be
+    incompatible; old hash files will need to be rebuilt.
+  * Over 6000 words have been added to the English dictionaries.  Most
+    of them are in the english.xlg variant, but some are included in
+    smaller dictionaries as well.  The English dictionaries also take
+    advantage of the new UTF-8 encoding to support correct spellings of
+    words adopted from other languages, such as crêpe.
+- Port patches
+  * boo966124.dif
+  * ispell-3.3.02-brkgcc.patch
+  * ispell-3.3.02-config.patch
+  * ispell-3.3.02-mkdir.patch
+  * ispell-3.3.02-sq.patch
+  * ispell-3.3.02-strip.patch
+  * ispell-3.3.02-terminal.patch
+  * ispell-3.3.02-types.patch
+  * ispell-3.3.02.dif
+
+-------------------------------------------------------------------
 Mon Aug 24 11:58:11 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %{_prefix}/lib instead of %{_libexecdir}: the path is

@@ -4,7 +4,7 @@
 
 --- Makefile
 +++ Makefile	2016-02-12 10:35:12.834477699 +0000
-@@ -332,7 +332,6 @@ install-basic:
+@@ -340,7 +340,6 @@ install-basic:
  	@. ./config.sh; \
  	  set -x; \
  	  cd $(DESTDIR)$$BINDIR; \
@@ -12,7 +12,7 @@
  	  chmod 755 ispell$$EXEEXT
  	@. ./config.sh; \
  	  set -x; \
-@@ -392,7 +391,6 @@ install-dictbuild:
+@@ -400,7 +399,6 @@ install-dictbuild:
  	@. ./config.sh; \
  	  set -x; \
  	  cd $(DESTDIR)$$BINDIR; \

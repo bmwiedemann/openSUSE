@@ -1,7 +1,7 @@
 #
 # spec file for package ispell
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,26 +20,34 @@
 %if ! %{defined _fillupdir}
   %define _fillupdir /var/adm/fillup-templates
 %endif
+%if ! %{defined make_build}
+  %define make_build make
+%endif
+%if ! %{defined make_install}
+  %define make_install make
+%endif
 
 Name:           ispell
 BuildRequires:  bison
 BuildRequires:  ncurses-devel
 BuildRequires:  words
-URL:            http://www.lasr.cs.ucla.edu/geoff/ispell.html
-PreReq:         fillup fileutils
+URL:            https://www.cs.hmc.edu/~geoff/ispell.html
+BuildRequires:  fdupes
+Requires(post): %fillup_prereq
 Provides:       spell
 Requires:       ispell_dictionary
 Requires:       ispell_english_dictionary
 Requires:       words
-Version:        3.4.00
+Version:        3.4.05
 Release:        0
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        A Spell Checker
 License:        BSD-3-Clause
 Group:          Productivity/Text/Spell
-Source:         ispell-%{version}.tar.gz
+Source:         https://www.cs.hmc.edu/~geoff/tars/ispell-%{version}.tar.gz
 Source1:        SuSEconfig.ispell
 Source2:        sysconfig.ispell
+Source3:        ispell-rpmlintrc
 Patch0:         ispell-3.3.02.dif
 Patch1:         ispell-3.3.02-config.patch
 Patch2:         ispell-3.2.06-suse.patch
@@ -81,7 +89,10 @@ Provides:       iamerica
 Provides:       ispell_dictionary
 Provides:       ispell_english_dictionary
 Provides:       locale(ispell:en)
-Obsoletes:      iamerica
+Requires(post): bash
+Requires(post): fileutils
+Requires(postun):bash
+Requires(postun):fileutils
 
 %description -n ispell-american
 This package includes a ready American dictionary for ispell. If you
@@ -90,8 +101,6 @@ one the default English dictionary will be. A short usage description
 is given in /usr/share/doc/packages/ispell/README. The sources for this
 dictionary are included in the source package of ispell.
 
-
-
 %package     -n ispell-british
 Summary:        British ispell dictionary
 Group:          Productivity/Text/Spell
@@ -99,7 +108,10 @@ Provides:       ibritish
 Provides:       ispell_dictionary
 Provides:       ispell_english_dictionary
 Provides:       locale(ispell:en_GB)
-Obsoletes:      ibritish
+Requires(post): bash
+Requires(post): fileutils
+Requires(postun):bash
+Requires(postun):fileutils
 
 %description -n ispell-british
 This packages includes a ready British dictionary for ispell. If you
@@ -107,8 +119,6 @@ install ispell-american too, check /etc/sysconfig/ispell to see which
 one will be the default English dictionary. A short usage description
 is given in /usr/share/doc/packages/ispell/README. The sources for this
 dictionary are included in the source package of ispell.
-
-
 
 %prep
 %setup
@@ -129,7 +139,7 @@ dictionary are included in the source package of ispell.
   export PATH
   make local.h
   make config.sh
-  make all
+  %make_build -j1 all
 
 %install
   DESTDIR=%{buildroot}
@@ -138,7 +148,7 @@ dictionary are included in the source package of ispell.
   mkdir -p %{buildroot}%{_prefix}/lib/ispell/emacs
   mkdir -p %{buildroot}%{_fillupdir}
   mkdir -p %{buildroot}/var/lib/dict
-  make install DESTDIR=%{buildroot}
+  %make_install -j1 DESTDIR=%{buildroot}
   rm -f %{buildroot}/usr/share/emacs/site-lisp/ispell.el*
   install -m 0444 suse/ispell-emacs-menu.el 	%{buildroot}%{_prefix}/lib/ispell/
   install -m 0444 suse/emacs/american.el	%{buildroot}%{_prefix}/lib/ispell/emacs/
@@ -160,6 +170,11 @@ dictionary are included in the source package of ispell.
   ln -sf /var/lib/dict/english.hash    %{buildroot}%{_prefix}/lib/ispell/
   ln -sf /var/lib/dict/english.aff     %{buildroot}%{_prefix}/lib/ispell/
   rm -f %{buildroot}%{_bindir}/defmt-*
+  for man in icombine ijoin
+  do
+    echo .so man1/ispell.1 > %{buildroot}%{_mandir}/man1/${man}.1
+  done
+  %fdupes %{buildroot}%{_mandir}
 
 %post
 %{fillup_only}
@@ -204,11 +219,13 @@ fi
 %{_prefix}/lib/ispell/english.aff
 %attr(0755,root,root) %{_prefix}/lib/ispell/update
 %{_fillupdir}/sysconfig.ispell
-%verify(not link mtime) /var/lib/dict/english.hash
-%verify(not link mtime) /var/lib/dict/english.aff 
+%ghost %verify(not link mtime) /var/lib/dict/english.hash
+%ghost %verify(not link mtime) /var/lib/dict/english.aff
 %doc %{_mandir}/man1/buildhash.1.gz
 %doc %{_mandir}/man1/findaffix.1.gz
 %doc %{_mandir}/man1/ispell.1.gz
+%doc %{_mandir}/man1/icombine.1.gz
+%doc %{_mandir}/man1/ijoin.1.gz
 %doc %{_mandir}/man1/munchlist.1.gz
 %doc %{_mandir}/man1/sq.1.gz
 %doc %{_mandir}/man1/tryaffix.1.gz

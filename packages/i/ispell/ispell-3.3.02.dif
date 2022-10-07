@@ -1,30 +1,16 @@
 ---
- .pkgextract              |    9 +++++++++
- buildhash.c              |    4 ++++
- defmt.c                  |    8 ++++++++
- fields.c                 |    8 ++++++++
- icombine.c               |    4 ++++
- ijoin.c                  |    4 ++++
- ispell.c                 |    4 ++++
- languages/english/msgs.h |    8 ++++----
- munchlist.X              |   34 ++++++++++++++++++----------------
- 9 files changed, 63 insertions(+), 20 deletions(-)
+ buildhash.c |    4 ++++
+ defmt.c     |    8 ++++++++
+ fields.c    |    8 ++++++++
+ icombine.c  |    4 ++++
+ ijoin.c     |    4 ++++
+ ispell.c    |    4 ++++
+ munchlist.X |   33 +++++++++++++++++----------------
+ 7 files changed, 49 insertions(+), 16 deletions(-)
 
---- .pkgextract
-+++ .pkgextract	2016-02-12 10:00:43.934930433 +0000
-@@ -0,0 +1,9 @@
-+patch -p0 -s --backup --suffix=.config      < ../ispell-3.3.02-config.patch
-+patch -p0 -s --backup --suffix=.suse        < ../ispell-3.2.06-suse.patch
-+patch -p0 -s --backup --suffix=.languages   < ../ispell-3.3.02-languages.patch
-+patch -p0 -s --backup --suffix=.types       < ../ispell-3.3.02-types.patch
-+patch -p0 -s --backup --suffix=.terminal    < ../ispell-3.3.02-terminal.patch
-+patch -p0 -s --backup --suffix=.sq          < ../ispell-3.3.02-sq.patch
-+patch -p0 -s --backup --suffix=.brkgcc      < ../ispell-3.3.02-brkgcc.patch
-+patch -p0 -s --backup --suffix=.mkdir       < ../ispell-3.3.02-mkdir.patch
-+patch -p0 -s --backup --suffix=.strip       < ../ispell-3.3.02-strip.patch
 --- buildhash.c
-+++ buildhash.c	2016-02-12 10:00:43.934930433 +0000
-@@ -116,6 +116,7 @@ static char Rcs_Id[] =
++++ buildhash.c	2022-10-07 10:59:27.604746809 +0000
+@@ -119,6 +119,7 @@ static char Rcs_Id[] =
  #include "version.h"
  #include <ctype.h>
  #include <sys/stat.h>
@@ -32,7 +18,7 @@
  
  int		main P ((int argc, char * argv[]));
  static void	output P ((void));
-@@ -149,6 +150,9 @@ int main (argc, argv)
+@@ -152,6 +153,9 @@ int main (argc, argv)
      unsigned int i;
      int		j;
  
@@ -43,8 +29,8 @@
  	{
  	argc--;
 --- defmt.c
-+++ defmt.c	2016-02-12 10:00:43.934930433 +0000
-@@ -704,6 +704,14 @@ void checkline (ofile)
++++ defmt.c	2022-10-07 10:59:27.604746809 +0000
+@@ -719,6 +719,14 @@ void checkline (ofile)
  
  	p = ctoken;
  	endp = skipoverword (currentchar);
@@ -60,8 +46,8 @@
  	    *p++ = *currentchar++;
  	*p = 0;
 --- fields.c
-+++ fields.c	2016-02-12 10:00:43.934930433 +0000
-@@ -112,6 +112,7 @@ field_t * fieldread (file, delims, flags
++++ fields.c	2022-10-07 10:59:27.604746809 +0000
+@@ -119,6 +119,7 @@ field_t * fieldread (file, delims, flags
      if (linesize == 0)
  	{
  	free (linebuf);
@@ -69,7 +55,7 @@
  	return NULL;
  	}
      return fieldmake (linebuf, 1, delims, flags, maxf);
-@@ -433,8 +434,15 @@ void fieldfree (fieldp)
+@@ -417,8 +418,15 @@ void fieldfree (fieldp)
      if (fieldp == NULL)
  	return;
      if (fieldp->linebuf != NULL)
@@ -86,7 +72,7 @@
 +    fieldp = NULL;
      }
 --- icombine.c
-+++ icombine.c	2016-02-12 10:00:43.934930433 +0000
++++ icombine.c	2022-10-07 10:59:27.604746809 +0000
 @@ -89,6 +89,7 @@ static char Rcs_Id[] =
  #include "ispell.h"
  #include "proto.h"
@@ -106,8 +92,8 @@
  	{
  	argc--;
 --- ijoin.c
-+++ ijoin.c	2016-02-12 10:00:43.934930433 +0000
-@@ -119,6 +119,7 @@ static char Rcs_Id[] =
++++ ijoin.c	2022-10-07 10:59:27.604746809 +0000
+@@ -122,6 +122,7 @@ static char Rcs_Id[] =
  #include "ispell.h"
  #include "proto.h"
  #include "fields.h"
@@ -115,7 +101,7 @@
  
  #ifdef __STDC__
  #define SIGNED	signed
-@@ -176,6 +177,9 @@ int main (argc, argv)			/* Join files */
+@@ -179,6 +180,9 @@ int main (argc, argv)			/* Join files */
      char *		argv[];		/* Argument vector */
      {
      
@@ -126,8 +112,8 @@
  	{
  	argc--;
 --- ispell.c
-+++ ispell.c	2016-02-12 10:00:43.934930433 +0000
-@@ -235,6 +235,7 @@ static char Rcs_Id[] =
++++ ispell.c	2022-10-07 10:59:27.604746809 +0000
+@@ -244,6 +244,7 @@ static char Rcs_Id[] =
  #include <fcntl.h>
  #endif /* NO_FCNTL_H */
  #include <sys/stat.h>
@@ -135,7 +121,7 @@
  
  static void	usage P ((void));
  int		main P ((int argc, char * argv[]));
-@@ -282,6 +283,9 @@ int main (argc, argv)
+@@ -292,6 +293,9 @@ int main (argc, argv)
  
      Trynum = 0;
  
@@ -145,25 +131,8 @@
      p = getenv (LIBRARYVAR);
      if (p == NULL)
  	(void) strcpy (libdir, LIBDIR);
---- languages/english/msgs.h
-+++ languages/english/msgs.h	2016-02-12 10:00:43.934930433 +0000
-@@ -185,10 +185,10 @@
- #define CORR_C_HELP_4		"next to each one.  You have the option of replacing the word%s\n"
- #define CORR_C_HELP_5		"completely, or choosing one of the suggested words.%s\n"
-     /* You may add HELP_6 through HELP_9 if your language needs more lines */
--#define CORR_C_HELP_6		""
--#define CORR_C_HELP_7		""
--#define CORR_C_HELP_8		""
--#define CORR_C_HELP_9		""
-+#define CORR_C_HELP_6		"%s"
-+#define CORR_C_HELP_7		"%s"
-+#define CORR_C_HELP_8		"%s"
-+#define CORR_C_HELP_9		"%s"
- #define CORR_C_HELP_COMMANDS	"%s\nCommands are:%s\n%s\n"
- #define CORR_C_HELP_R_CMD	"R       Replace the misspelled word completely.%s\n"
- #define CORR_C_HELP_BLANK	"Space   Accept the word this time only.%s\n"
 --- munchlist.X
-+++ munchlist.X	2016-02-12 10:04:10.134904775 +0000
++++ munchlist.X	2022-10-07 10:59:27.604746809 +0000
 @@ -191,7 +191,7 @@ then
      echo "munchlist $*" 1>&2
      set -vx

@@ -6,7 +6,7 @@
 
 --- config.X
 +++ config.X	2016-02-12 10:26:09.229101356 +0000
-@@ -218,6 +218,7 @@
+@@ -225,6 +225,7 @@
  #undef USG		/* Define this in local.h for System V machines */
  #endif /* USG */
  
@@ -16,7 +16,7 @@
  #ifndef USG
 --- ispell.c
 +++ ispell.c	2016-02-12 10:26:09.229101356 +0000
-@@ -231,6 +231,7 @@ static char Rcs_Id[] =
+@@ -240,6 +240,7 @@ static char Rcs_Id[] =
  #include "msgs.h"
  #include "version.h"
  #include <ctype.h>
@@ -26,15 +26,12 @@
  #endif /* NO_FCNTL_H */
 --- lookup.c
 +++ lookup.c	2016-02-12 10:26:09.229101356 +0000
-@@ -89,6 +89,11 @@ static char Rcs_Id[] =
+@@ -102,6 +102,8 @@ static char Rcs_Id[] =
  #include "ispell.h"
  #include "proto.h"
  #include "msgs.h"
 +#include <sys/types.h>
 +#include <sys/stat.h>
-+#ifndef NO_FCNTL_H
-+#include <fcntl.h>
-+#endif /* NO_FCNTL_H */
+ #include <fcntl.h>
  
  int		linit P ((void));
- #ifdef INDEXDUMP
