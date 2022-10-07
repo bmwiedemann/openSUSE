@@ -1,7 +1,7 @@
 #
-# spec file for package python-akismet
+# spec file for package python-python-akismet
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-akismet
-Version:        0.4.2
+Version:        0.4.3
 Release:        0
 Summary:        Akismet v1.1 module for Python
 License:        MIT
