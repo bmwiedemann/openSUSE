@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct  4 23:50:59 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 1.4.4 (2022-02-20)
+  Minor rebuild to ensure Windows wheel documentation is correct ReST. 
+
+-------------------------------------------------------------------
 Mon Mar 15 16:26:20 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim unspecific claims and metadata repetitions from description.
