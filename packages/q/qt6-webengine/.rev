@@ -97,4 +97,12 @@
     <comment>Qt 6.4.0</comment>
     <requestid>1007337</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>5dd1a48eb8286b027478bed3123d291e</srcmd5>
+    <version>6.4.0</version>
+    <time>1665184970</time>
+    <user>RBrownFactory</user>
+    <comment>- Update disk constraints for qt6-webengine:docs (forwarded request 1007993 from cgiboudeaux)</comment>
+    <requestid>1007994</requestid>
+  </revision>
 </revisionlist>
