@@ -28,6 +28,8 @@ Group:          Development/Languages/Python
 Patch0:         werkzeug.patch
 #PATCH-FIX-UPSTREAM https://github.com/python-restx/flask-restx/pull/427 Handle Werkzeug 2.1.0 change to Response.autocorrect_location_header.
 Patch1:         redirect.patch
+#PATCH-FIX-UPSTREAM https://github.com/python-restx/flask-restx/pull/463 Fix missing parse_rule method
+Patch2:         merged_pr_463.patch
 URL:            https://github.com/python-restx/flask-restx
 Source:         https://github.com/python-restx/flask-restx/archive/%{version}.tar.gz
 BuildRequires:  %{python_module Faker}

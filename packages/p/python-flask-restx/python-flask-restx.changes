@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct  5 22:35:03 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Add upstream patch merged_pr_463.patch to support Werkzeug 2.2.
+
+-------------------------------------------------------------------
 Fri Jul 15 13:18:17 UTC 2022 - Markéta Machová <mmachova@suse.com>
 
 - Add upstream patches werkzeug.patch and redirect.patch to fix the tests.
