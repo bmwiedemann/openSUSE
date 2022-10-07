@@ -1,7 +1,7 @@
 #
 # spec file for package python-sat-stac
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-sat-stac
-Version:        0.4.0
+Version:        0.4.1
 Release:        0
 Summary:        A library for reading and working with Spatio-Temporal Asset Catalogs
 License:        MIT
@@ -34,7 +34,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-python-dateutil >= 2.7.5
 Requires:       python-requests >= 2.19.1
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
