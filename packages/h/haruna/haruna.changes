@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Oct  7 05:07:46 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.9.2
+  * actionsmodel: change text of togglePlaylistAction action to
+    just Playlist
+  * recentfilesmodel: use custom implementation instead of
+    KRecentFilesAction
+  * window: use Kirigami gridUnit for width and height
+  * mpv: move mpris connections to cpp
+  * Settings: improve right to left behaviour
+  * footer: fix play next/previous button icons in right to left
+    mode
+  * footer: fix seek bar and volume bar right to left behaviour
+  * playlistmodel: use a QUrl to determine the mimetype
+  * mpv: fix includes and call methods from MpvCore instead of
+    MpvItem
+  * Footer: improve font scaling
+  * SubtitlesFolders: fix model name
+  * settings: use qmlRegisterSingletonInstance instead of
+    qmlRegisterSingletonType
+  * Add a menu item in the Subtitles header button and menubar
+    to open a subtitle file
+  * CustomCommands: use `Kirigami.PlaceholderMessage` when there
+    are no commands
+  * Remove explicit use of ECM_KDE_MODULE_DIR, is part of
+    ECM_MODULE_PATH
+  * mpvitem: remove duplicated property
+
+-------------------------------------------------------------------
 Wed Aug 24 16:53:39 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.9.1
