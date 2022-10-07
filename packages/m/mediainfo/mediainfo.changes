@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Oct  5 11:28:18 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 22.09
+  Added features:
+  * Italian language update
+  * USAC: IOD and sampling rate coherency checking
+  * ADM: support of nested objects and complementary objects
+  * AC-4: Display of Custom downmix targets
+  * IAB: Parsing of IAB bitstream and ADM-like output
+  * Frame rate: store FrameRate_Num/Den also for integer values
+  * MPEG-4/MOV: support of time codes >30 fps
+  * MOV/MPEG-4: List of QuickTime time code discontinuities
+  * Dolby Vision: add info about more profiles
+  Fixed bugs:
+  * Text streams: show stream frame rate if not same as
+    container frame rate
+  * CDP: fix rounding of frame rate
+  * SCC: fix of CEA-608 FirstDisplay_Delay_Frames
+  * SCC: fix TimeCode_Last
+  * MPEG-4/MOV: last time code value for all kind of QuickTime
+    time codes
+  * MOV/MPEG-4: Fix frame count for NDF non-integer frame rates
+  * JSON: fix invalid output in some corner cases
+  * Several other parsing bug/crash fixes (thanks to fuzzing by
+    users)
+
+-------------------------------------------------------------------
 Fri Jun 24 04:55:07 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 22.06
