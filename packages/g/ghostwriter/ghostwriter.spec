@@ -17,13 +17,13 @@
 
 
 Name:           ghostwriter
-Version:        2.1.4
+Version:        2.1.6
 Release:        0
 Summary:        A distraction-free Markdown editor
 License:        GPL-3.0-or-later
 Group:          Productivity/Text/Editors
-URL:            https://wereturtle.github.io/ghostwriter
-Source:         https://github.com/wereturtle/ghostwriter/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://KDE.github.io/ghostwriter
+Source:         https://github.com/KDE/ghostwriter/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libqt5-linguist
