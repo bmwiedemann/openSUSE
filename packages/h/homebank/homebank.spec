@@ -17,7 +17,7 @@
 
 
 Name:           homebank
-Version:        5.5.6
+Version:        5.5.7
 Release:        0
 Summary:        Application to manage personal accounts
 License:        GPL-2.0-or-later
@@ -30,7 +30,7 @@ BuildRequires:  intltool
 BuildRequires:  libofx-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(glib-2.0) >= 2.68
+BuildRequires:  pkgconfig(glib-2.0) >= 2.39
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.16
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.26
 
@@ -69,7 +69,7 @@ rm %{buildroot}%{_datadir}/%{name}/datas/ChangeLog
 %{_datadir}/%{name}/
 %{_datadir}/icons/hicolor/*/apps/%{name}.*
 %{_datadir}/mime/packages/%{name}.xml
-%{_datadir}/appdata/%{name}.appdata.xml
+%{_datadir}/metainfo/%{name}.appdata.xml
 
 %files lang -f %{name}.lang
 

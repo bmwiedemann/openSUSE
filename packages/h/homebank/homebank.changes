@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Oct  5 16:12:38 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 5.5.7:
+  * bugfix: lp#1681532 Segfault when pressing escape while editing
+    a new transaction
+  * bugfix: lp#1981464 "Select among possible transactions" duplicate
+    transfer refactor
+  * bugfix: lp#1984246 compilation problem on Debian 11
+  * bugfix: lp#1987975 choose among target xfer faultly propose same
+    sign transaction
+  * bugfix: lp#1988489 Statistics "total" percentage breakdown
+    incorrect
+  * bugfix: lp#1988594 edit txn with keyboard ok button (alt) don't
+    update focused amount
+  * bugfix: lp#1989171 Invalid appdata confuse gnome-software
+  * bugfix: lp#1991459 register apply type=income +
+    status=uncategorized shows expense
+- BuildRequires for glib2 changed back to >= 2.39, lp#1984246
+  fixes building with glib2 < 2.68
+
+-------------------------------------------------------------------
 Thu Jun 30 18:07:43 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 5.5.6: 
