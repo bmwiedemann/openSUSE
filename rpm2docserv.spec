@@ -17,15 +17,15 @@
 
 
 Name:           rpm2docserv
-Version:        20220921.1b436b1
+Version:        20221007.388ef0d
 Release:        0
 Summary:        Make manpages from RPMs accessible in a web browser
 License:        Apache-2.0
 URL:            https://github.com/thkukuk/rpm2docserv
 Source:         rpm2docserv-%{version}.tar.xz
-BuildRequires:  golang(API) >= 1.18
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
+BuildRequires:  golang(API) >= 1.18
 # To re-create:
 # git clone https://github.com/Debian/debiman
 # cd rpm2docserv; make vendor; cd ..
@@ -61,7 +61,6 @@ BuildArch:      noarch
 
 %description -n docserv-config-apache2
 This package contains example configuration files for Apache 2.4 to act as web server for docserv manpages.
-
 
 %prep
 %setup -q
@@ -146,6 +145,5 @@ install -m 644 apache2/* %{buildroot}%{_datadir}/docserv/apache2/
 %files -n docserv-config-apache2
 %dir %{_datadir}/docserv
 %{_datadir}/docserv/apache2
-
 
 %changelog
