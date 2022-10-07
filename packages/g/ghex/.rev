@@ -476,4 +476,12 @@ Proposed for 12.3, as having a patch addressing the same fix as was done in anot
     <comment></comment>
     <requestid>1005354</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>5ca5293eed78ae1296fd7249b070cda6</srcmd5>
+    <version>43.0</version>
+    <time>1665185083</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1008621</requestid>
+  </revision>
 </revisionlist>
