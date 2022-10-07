@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Fri Sep 30 21:20:14 UTC 2022 - C J <c.j@tuta.io>
+
+- update to 5.2.7:
+  * liblzma:
+    - Add API doc note about the .xz decoder LZMA_MEMLIMIT_ERROR bug.
+    - Add dest and src NULL checks to lzma_index_cat.
+      The documentation states LZMA_PROG_ERROR can be returned from
+      lzma_index_cat. Previously, lzma_index_cat could not return
+      LZMA_PROG_ERROR. Now, the validation is similar to
+      lzma_index_append, which does a NULL check on the index
+      parameter.
+    - Fix copying of check type statistics in lzma_index_cat().
+      The check type of the last Stream in dest was never copied to
+      dest->checks (the code tried to copy it but it was done too late).
+      This meant that the value returned by lzma_index_checks() would
+      only include the check type of the last Stream when multiple
+      lzma_indexes had been concatenated.
+      In xz --list this meant that the summary would only list the
+      check type of the last Stream, so in this sense this was only
+      a visual bug. However, it's possible that some applications
+      use this information for purposes other than merely showing
+      it to the users in an informational message. I'm not aware of
+      such applications though and it's quite possible that such
+      applications don't exist.
+      Regular streamed decompression in xz or any other application
+      doesn't use lzma_index_cat() and so this bug cannot affect them.
+    - Stream decoder: Fix restarting after LZMA_MEMLIMIT_ERROR.
+      If lzma_code() returns LZMA_MEMLIMIT_ERROR it is now possible
+      to use lzma_memlimit_set() to increase the limit and continue
+      decoding. This was supposed to work from the beginning but
+      there was a bug. With other decoders (.lzma or threaded .xz)
+      this already worked correctly.
+    - lzma_filters_copy: Keep dest[] unmodified if an error occurs.
+      lzma_stream_encoder() and lzma_stream_encoder_mt() always assumed
+      this. Before this patch, failing lzma_filters_copy() could result
+      in free(invalid_pointer) or invalid memory reads in stream_encoder.c
+      or stream_encoder_mt.c.
+      To trigger this, allocating memory for a filter options structure
+      has to fail. These are tiny allocations so in practice they very
+      rarely fail.
+      Certain badness in the filter chain array could also make
+      lzma_filters_copy() fail but both stream_encoder.c and
+      stream_encoder_mt.c validate the filter chain before
+      trying to copy it, so the crash cannot occur this way.
+    - lzma_index_append: Add missing integer overflow check.
+      The documentation in src/liblzma/api/lzma/index.h suggests that
+      both the unpadded (compressed) size and the uncompressed size
+      are checked for overflow, but only the unpadded size was checked.
+      The uncompressed check is done first since that is more likely to
+      occur than the unpadded or index field size overflows.
+    - Vaccinate against an ill patch from RHEL/CentOS 7.
+      
+  * xzgrep:
+    - Fix compatibility with old shells.
+      Turns out that some old shells don't like apostrophes (') inside
+      command substitutions. The problem was introduced by commits
+      69d1b3fc29677af8ade8dc15dba83f0589cb63d6 (2022-03-29),
+      bd7b290f3fe4faeceb7d3497ed9bf2e6ed5e7dc5 (2022-07-18), and
+      a648978b20495b7aa4a8b029c5a810b5ad9d08ff (2022-07-19).
+      5.2.6 is the only stable release that included
+      this problem.
+      
+  * Translations: Add Turkish translation.
+
+-------------------------------------------------------------------
 Fri Aug 12 20:50:23 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.2.6 (CVE-2022-1271, bsc#1198062):
