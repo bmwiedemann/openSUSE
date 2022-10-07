@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Sat Oct  1 07:43:58 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 0.6
+  * added Qt 6.4 support
+  * added Qt version checking
+  * added xdgdesktopportal dialogs support
+  * improved warning about incorrect environment variable
+  * only prepend user stylesheet if it has changed
+  * removed Qt Concurrent dependency
+  * updated translations
+
+-------------------------------------------------------------------
+Mon Mar 14 14:44:45 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Init qt6ct
