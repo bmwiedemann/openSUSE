@@ -82,4 +82,18 @@
 </comment>
     <requestid>993797</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fbfbaf4d56920a2f2ab5d84c4e852c4f</srcmd5>
+    <version>1.1.1+0</version>
+    <time>1665185023</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 1.1.1+0:
+  * Update background preview to look more like Budgie
+  * Ensure VNC/RDP remote control settings is honored
+  * Handle keybindings extraction
+  * More comprehensive C string extraction
+  * panels: wwan: Add WWAN 5G connection support
+</comment>
+    <requestid>1008843</requestid>
+  </revision>
 </revisionlist>
