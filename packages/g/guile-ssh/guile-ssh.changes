@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Sep 30 16:28:30 UTC 2022 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
+
+- Update to 0.16.0:
+  * Fix cross-compilation
+  * New API: SFTP directory traversal
+  * Fix session garbage collecting errors
+  * Fix segfaults that occur on session closing
+  * Add GNU Guix package definition to the repository
+  * Bump library version to 14:0:0 according to libtool rules
+  * Remove requirement for whereis command
+  * API change: OpenSSH agent procedures are now in (ssh agent)
+  * API change: Remove 'sftp-init' from (ssh sftp)
+  * Guile-SSH channels are now explicilty blocking by default
+  * Fix random segfaults due to libssh logging
+  * Fix "random" erorrs and segfaults in channels
+  * Fix test failures due to 'primitive-fork-calls
+  * Fix the tests for Guile 3.0.7 & 3.0.5
+  * Guile-SSH builing process now less verbose
+- Update library (soname) to 14
+
+-------------------------------------------------------------------
 Fri Nov  6 17:51:15 UTC 2020 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
 
 - Update to 0.13.1:
