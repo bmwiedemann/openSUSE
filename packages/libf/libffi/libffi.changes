@@ -1,7 +1,15 @@
 -------------------------------------------------------------------
-Fri Sep 23 12:48:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
+Fri Sep 23 13:17:48 UTC 2022 - Richard Biener <rguenther@suse.com>
 
-- add riscv-rvalue-ext.patch to fix libffi for RISCV64
+- update to 3.4.3:
+  * All struct args are passed by value, regardless of size, as per ABIs.
+  * Enable static trampolines for Cygwin.
+  * Add support for Loongson's LoongArch64 architecture.
+  * Fix x32 static trampolines.
+  * Fix 32-bit x86 stdcall stack corruption.
+  * Fix ILP32 aarch64 support.
+- includes fix for RISCV64
+- disable LTO due to (ffi#733)
 
 -------------------------------------------------------------------
 Wed Dec  1 15:44:46 UTC 2021 - Dirk Müller <dmueller@suse.com>

@@ -111,4 +111,12 @@
     <comment>- add riscv-rvalue-ext.patch to fix libffi for RISCV64</comment>
     <requestid>1006099</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b32638f89995be1681a7487b8e21a17a</srcmd5>
+    <version>3.4.3</version>
+    <time>1665184961</time>
+    <user>RBrownFactory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1007869</requestid>
+  </revision>
 </revisionlist>
