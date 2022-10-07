@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Oct  6 22:49:02 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 3.7.0 (2020-11-20)
+
+  Made logger names more specific. Now can have granular filtering on these new logger names:
+  redis_lock.acquire (emits DEBUG messages)
+  redis_lock.acquire (emits WARN messages)
+  redis_lock.acquire (emits INFO messages)
+  redis_lock.refresh.thread.start (emits DEBUG messages)
+  redis_lock.refresh.thread.exit (emits DEBUG messages)
+  redis_lock.refresh.start (emits DEBUG messages)
+  redis_lock.refresh.shutdown (emits DEBUG messages)
+  redis_lock.refresh.exit (emits DEBUG messages)
+  redis_lock.release (emits DEBUG messages)
+  Contributed by Salomon Smeke Cohen in #80.
+  Fixed few CI issues regarding doc checks. Contributed by Salomon Smeke Cohen in #81.
+
+-------------------------------------------------------------------
 Wed Mar 24 21:03:34 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Skip test test_no_overlap2 (gh#ionelmc/python-redis-lock#86)
