@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Oct  6 19:02:32 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.4.7
+  * Changes to the "conntrack" program:
+  * "clash_resolve" and "chaintoolong" stats counters
+  * Defaults to the `unspec` family if the `-f` flag is absent,
+    so as to improve support for dual-stack setups.
+  * Support filtering events by IP address family.
+  * Support flushing per IP address family.
+  * Added the `save` output format representing data in conntrack
+    parameters, and support for loading such files back.
+  * Remove the `-o userspace` flag and always tag user space
+    triggered events.
+  * Introduce the `-A` flags, a variant of `-I` which does not
+    fail if the entry exists already.
+
+-------------------------------------------------------------------
 Mon Aug 30 08:34:07 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s). Modified:
