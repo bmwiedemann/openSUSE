@@ -76,6 +76,7 @@
   gh#os-autoinst/opensuse-jobgroups#180: '20220728'
   gh#os-autoinst/opensuse-jobgroups#183: '20220906'
   gh#os-autoinst/os-autoinst-distri-opensuse#15257: '20220719'
+  gh#os-autoinst/os-autoinst-distri-opensuse#15662: '20221006'
   gh#virt-manager/virt-manager#426: '20221006'
   poo#105295: '20220518'
   poo#106676: '20220412'
@@ -125,7 +126,7 @@
   poo#115385: '20220822'
   poo#115388: '20220911'
   poo#115421: '20220919'
-  poo#115694: '20221004'
+  poo#115694: '20221006'
   poo#116048: '20220830'
   poo#116161: '20220904'
   poo#116704: '20221006'
@@ -135,7 +136,7 @@
   poo#117034: '20221006'
   poo#117154: '20221006'
   poo#117214: '20220926'
-  poo#117331: '20221004'
+  poo#117331: '20221006'
   poo#117457: '20220929'
   poo#117499: '20221006'
   poo#117559: '20221006'
@@ -512,9 +513,9 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20221006'
-published: '20221004'
-publishing: '20221004'
+    <value>failed: ''
+published: '20221006'
+publishing: '20221006'
 testing: '20221006'
 </value>
   </attribute>
