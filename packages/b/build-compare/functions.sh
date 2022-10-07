@@ -404,7 +404,7 @@ function cmp_rpm_meta ()
       do
         : "${REPLY}"
         files+=( "${REPLY}" )
-      done < <(diff -U0 $file1 $file2 | sed -E -n -e '/^\+\//{s/^\+//;s/ [0-9a-f]+ [0-9]+$//;p}')
+      done < <(diff -U0 $file1 $file2 | sed --regexp-extended -n -e '/^\+\//{s/^\+//;s/ [0-9a-f]+ [0-9]+$//;p}')
     fi
 
     if test -n "$sh"; then
