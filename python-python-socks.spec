@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-socks
-Version:        2.0.2
+Version:        2.0.3
 Release:        0
 Summary:        Core proxy client functionality for Python
 License:        Apache-2.0
