@@ -19,46 +19,32 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
 Name:           weggli
-Version:        0.2.3
+Version:        0.2.4
 Release:        0
-Summary:        weggli is a fast and robust semantic search tool for C and C++ codebases
+Summary:        A semantic search tool for C and C++ codebases
 License:        Apache-2.0
 URL:            https://github.com/googleprojectzero/weggli
 Source:         https://github.com/googleprojectzero/weggli/archive/refs/tags/v%{version}.tar.gz
-Source1:        vendor.tar.xz
+Source1:        vendor.tar.zst
 Source2:        cargo_config
 BuildRequires:  cargo
 BuildRequires:  gcc-c++
 BuildRequires:  rust >= 1.55
+BuildRequires:  zstd
 
 %description
-weggli is a fast and robust semantic search tool for C and C++ codebases. It is
-designed to help security researchers identify interesting functionality in
+weggli is a semantic search tool for C and C++ codebases. It helps
+security researchers identify interesting functionality in
 large codebases.
 
 weggli performs pattern matching on Abstract Syntax Trees based on user
-provided queries. Its query language resembles C and C++ code, making it easy
+provided queries. Its query language resembles C and C++ code, making it possible
 to turn interesting code patterns into queries.
 
-weggli is inspired by great tools like Semgrep, Coccinelle, joern and CodeQL,
-but makes some different design decisions:
-
-C++ support: weggli has first class support for modern C++ constructs, such as
+weggli has support for C++ constructs such as
 lambda expressions, range-based for loops and constexprs.
-
-Minimal setup: weggli should work out-of-the box against most software you will
-encounter. weggli does not require the ability to build the software and can
+weggli does not require the ability to build the software and can
 work with incomplete sources or missing dependencies.
-
-Interactive: weggli is designed for interactive usage and fast query
-performance. Most of the time, a weggli query will be faster than a grep
-search. The goal is to enable an interactive workflow where quick switching
-between code review and query creation/improvement is possible.
-
-Greedy: weggli's pattern matching is designed to find as many (useful) matches
-as possible for a specific query. While this increases the risk of false
-positives it simplifies query creation. For example, the query $x = 10; will
-match both assignment expressions (foo = 10;) and declarations (int bar = 10;).
 
 %prep
 %autosetup -p1 -a1
