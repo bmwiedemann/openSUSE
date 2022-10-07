@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  5 20:19:45 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to fix the boost detection on Leap:
+  * 0001-Make-sure-boost-system-is-found-when-using-old-versi.patch
+
+-------------------------------------------------------------------
 Sun Jul 17 17:43:42 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2.0.7

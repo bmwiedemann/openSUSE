@@ -33,6 +33,8 @@ License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://libtorrent.org/
 Source:         %{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM -- Fix boost detection for Leap
+Patch0:         0001-Make-sure-boost-system-is-found-when-using-old-versi.patch
 BuildRequires:  cmake >= 3.12.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

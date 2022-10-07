@@ -1,0 +1,27 @@
+From 79eab66c7c4f681c3a9e693147a6c30adbe7ddb7 Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Wed, 5 Oct 2022 22:13:48 +0200
+Subject: [PATCH] Make sure boost-system is found when using old versions
+
+When using older boost versions, boost-system is a 'PUBLIC' link target.
+Make sure it's treated as a required build dependency.
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5cb81ab..9fcb346 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -802,7 +802,7 @@ endif()
+ find_public_dependency(Boost REQUIRED)
+ target_link_libraries(torrent-rasterbar PUBLIC Boost::headers)
+ if (Boost_MAJOR_VERSION LESS_EQUAL 1 AND Boost_MINOR_VERSION LESS 69)
+-	find_package(Boost REQUIRED COMPONENTS system)
++	find_public_dependency(Boost REQUIRED COMPONENTS system)
+ 	target_link_libraries(torrent-rasterbar PUBLIC Boost::system)
+ endif()
+ 
+-- 
+2.37.3
+
