@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Sep 17 17:19:41 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update /usr/etc/skel per XDG Directory Specification:
+  * Add .local/bin to eventually replace bin for user executable
+    files
+  * Use .local/share/fonts instead of .fonts for user specific fonts
+  * Add missing dirs: .local/share .local/state
+
+-------------------------------------------------------------------
 Wed Sep  7 06:50:20 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add /usr/lib/environment.d: new base directory for
