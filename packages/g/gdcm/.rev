@@ -123,4 +123,12 @@ Well, that changelog is not so much better than none. Seems upstream is very tig
     <comment>package corrected</comment>
     <requestid>1007692</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>5b661747457b3409e4deca75b64bf514</srcmd5>
+    <version>3.0.19</version>
+    <time>1665185174</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1008842</requestid>
+  </revision>
 </revisionlist>
