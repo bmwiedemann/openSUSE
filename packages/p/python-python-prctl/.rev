@@ -47,4 +47,12 @@
   * Skip a test that does not work in the OBS sandbox.</comment>
     <requestid>955548</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>5f33a1831102a8ada853a376c8bfe8db</srcmd5>
+    <version>1.8.1</version>
+    <time>1665185102</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1008683</requestid>
+  </revision>
 </revisionlist>

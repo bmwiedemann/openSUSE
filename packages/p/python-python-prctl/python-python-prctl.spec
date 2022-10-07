@@ -33,6 +33,7 @@ Patch4:         disable_no_new_privs.patch
 Patch5:         correct-uname-comparsion.patch
 Patch6:         check-for-python310-correctly.patch
 Patch7:         skip-speculation.patch
+Patch8:         dont-check-builddir.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -64,7 +65,7 @@ cp %{SOURCE99} .
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python -m unittest discover -v
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python test_prctl.py
 
 %files %{python_files}
 %license COPYING
