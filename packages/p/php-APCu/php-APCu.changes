@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 29 21:00:40 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to version 5.1.22
+  * PHP 8.2 compatibility
+  * PHP 8.1 compatibility in apc.php
+  * Fix --enable-apcu-rwlocks configure option
+  * Enable transparent huge pages for mmap memory
+  * Use monotonic clock for TTL
+
+-------------------------------------------------------------------
 Tue Nov  9 20:53:51 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to version 5.1.21
