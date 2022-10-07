@@ -44,4 +44,24 @@
 </comment>
     <requestid>1001335</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>10f781355da74c627788b1f057eb9c59</srcmd5>
+    <version>1.16.3</version>
+    <time>1665185145</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 1.16.3:
+  * editorpanel: fixed refresh of image area when switching images
+  * clutstore: do not search for working profile in the file name for CLF LUTs
+  * pipeline: move film simulation earlier (right after tone curve)
+  * tone equalizer: improved robustness of regularization with hdr images
+  * avoid infinities when loading and manipulating hdr images
+  * exposure: do not use a LUT, it's not needed
+  * fixed bug in applying partial profiles in append mode from the combobox
+  * filecatalog: let the user choose which sidecars to affect when deleting a file
+  * colorcorrection: slightly extend the range of offset sliders
+  * tonecurve: fixed glitch in expansion of curve according to the white point
+  * denoise: testing new ways of adjusting parameters according to the scale factor
+</comment>
+    <requestid>1008717</requestid>
+  </revision>
 </revisionlist>

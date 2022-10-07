@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Oct  7 07:55:37 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.16.3:
+  * editorpanel: fixed refresh of image area when switching images
+  * clutstore: do not search for working profile in the file name for CLF LUTs
+  * pipeline: move film simulation earlier (right after tone curve)
+  * tone equalizer: improved robustness of regularization with hdr images
+  * avoid infinities when loading and manipulating hdr images
+  * exposure: do not use a LUT, it's not needed
+  * fixed bug in applying partial profiles in append mode from the combobox
+  * filecatalog: let the user choose which sidecars to affect when deleting a file
+  * colorcorrection: slightly extend the range of offset sliders
+  * tonecurve: fixed glitch in expansion of curve according to the white point
+  * denoise: testing new ways of adjusting parameters according to the scale factor
+
+-------------------------------------------------------------------
 Tue Sep  6 05:41:01 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.16.2:
