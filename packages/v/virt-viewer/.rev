@@ -574,4 +574,12 @@
     <comment>Fix build with meson 0.60 and newer</comment>
     <requestid>958083</requestid>
   </revision>
+  <revision rev="73" vrev="3">
+    <srcmd5>e5c8c8652d6c2ffba3f80f6efb6dd838</srcmd5>
+    <version>11.0</version>
+    <time>1665184997</time>
+    <user>RBrownFactory</user>
+    <comment>Fix broken build in Factory</comment>
+    <requestid>1008314</requestid>
+  </revision>
 </revisionlist>

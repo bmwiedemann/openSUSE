@@ -36,6 +36,7 @@ Patch50:        netcat.patch
 Patch51:        virtview-desktop.patch
 Patch52:        virtview-dont-show-Domain-0.patch
 Patch53:        virtview-fix-build-with-meson-0.61.patch
+Patch100:       gcc-warnings-as-errors.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 BuildRequires:  bash-completion-devel
@@ -55,6 +56,7 @@ BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtk-vnc-2.0)
 BuildRequires:  pkgconfig(libvirt) >= 1.2.8
 BuildRequires:  pkgconfig(libvirt-glib-1.0) >= 1.2.8
+BuildRequires:  pkgconfig(rest-0.7)
 # Our Runtime requirements
 Requires:       netcat
 
