@@ -20,7 +20,7 @@
 %define mod_name rjsmin
 %bcond_without python2
 Name:           python-%{mod_name}
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        A JavaScript minifier written in Python
 License:        Apache-2.0
