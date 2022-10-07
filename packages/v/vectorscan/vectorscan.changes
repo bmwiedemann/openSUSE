@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct  7 07:21:19 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded BuildRequires on python
+
+-------------------------------------------------------------------
 Thu Sep 29 11:58:52 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Use GCC9 for Leap/SLE 15.x to fix build

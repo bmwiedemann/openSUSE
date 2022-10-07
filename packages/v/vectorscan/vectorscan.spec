@@ -38,7 +38,6 @@ BuildRequires:  gcc9-c++
 %endif
 BuildRequires:  libpcap-devel
 BuildRequires:  pkgconfig
-BuildRequires:  python
 BuildRequires:  ragel
 BuildRequires:  pkgconfig(libpcre)
 BuildRequires:  pkgconfig(sqlite3)
@@ -51,7 +50,7 @@ ExcludeArch:    %{ix86} %{arm}
 A fork of Intel's Hyperscan, modified to run on more platforms.
 
 Vectorscan will follow Intel's API and internal algorithms where possible,
-but will not hesitate to make code changes where it is thought of giving 
+but will not hesitate to make code changes where it is thought of giving
 better performance or better portability. In addition, the code will be
 gradually simplified and made more uniform and all architecture specific
 -currently Intel- #ifdefs will be removed and abstracted away.
@@ -66,7 +65,7 @@ Conflicts:      libhs%{sover}
 A fork of Intel's Hyperscan, modified to run on more platforms.
 
 Vectorscan will follow Intel's API and internal algorithms where possible,
-but will not hesitate to make code changes where it is thought of giving 
+but will not hesitate to make code changes where it is thought of giving
 better performance or better portability. In addition, the code will be
 gradually simplified and made more uniform and all architecture specific
 -currently Intel- #ifdefs will be removed and abstracted away.
