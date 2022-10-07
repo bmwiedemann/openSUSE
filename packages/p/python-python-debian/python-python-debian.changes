@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Oct  6 22:19:00 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 0.1.47 
+  Following is the changelog for deb822 before it was merged into python-debian.
+  * deb822.py:
+    - Allow Deb822 objects to be initialized with a dict containing the initial
+      key-value pairs.
+    - _multivalued class:
+      + Make all the multivalued dicts Deb822Dict objects, so the keys are
+        case-preserving, but case-insensitive
+    - Add a Release class, which knows about Release-file multivalued fields.
+      Thanks to Alexandre Fayolle.  (Closes: 428540)
+    - Deb822Dict no longer directly subclasses dict.  All of the important
+      methods were already implemented with userdict.DictMixin; the dict
+      subclass was so that Python would see a Deb822Dict instance as a dict
+      instance.  Unfortunately, this causes confusion if you do something like
+        d = dict(Deb822Dict({'foo': 'bar'})
+      The "Pythonic" way to check for a dictionary interface is to check for
+      the 'items' attribute.
+  * test_deb822.py:
+    - Add a test case for deriving a Python dict from a Deb822Dict.
+  * debian/control:
+    - Add a XS-Vcs-Bzr field
+
+-------------------------------------------------------------------
 Mon Jul  4 13:49:00 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Fix Homepage

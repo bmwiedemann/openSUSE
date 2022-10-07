@@ -9,4 +9,12 @@
 When accepted remove https://build.opensuse.org/package/show/openSUSE:Factory/python-debian</comment>
     <requestid>986814</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3676128dce4dc854ff7ace099575ae9f</srcmd5>
+    <version>0.1.47</version>
+    <time>1665185131</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1008714</requestid>
+  </revision>
 </revisionlist>
