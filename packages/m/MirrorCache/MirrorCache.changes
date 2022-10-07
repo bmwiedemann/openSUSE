@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Sep 29 09:47:07 UTC 2022 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.042:
+  * Add support for metalink4 format (#303)
+  * Add url parameter IP to simulate geo experience (#304)
+  * t: Fix CI after changes in async rendering in Mojo (#303)
+
+-------------------------------------------------------------------
+Tue Sep 27 11:42:51 UTC 2022 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.041:
+  * Fix metalink missing 'verification' tag (#302)
+
+-------------------------------------------------------------------
+Thu Sep 22 14:41:52 UTC 2022 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.040:
+  * Add parameter METALINK_GREEDY (#300)
+  * Optimization: assume package managers never want to render dir (#300)
+  * Fix mirror picked despite disabled in server_project table (#301)
+  * Avoid by and ru mirrors for ua requests (#298)
+
+- Remove temporary patch, it is now included in sources
+  * 0001-Avoid-by-and-ru-mrrors-for-ua-requests.patch
+
+-------------------------------------------------------------------
 Thu Sep  1 14:29:10 UTC 2022 - Elisei Roca <eroca@suse.com>
 
 - Update assets cache
