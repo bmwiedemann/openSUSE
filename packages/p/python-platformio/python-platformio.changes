@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct  4 23:08:41 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 6.1.4 (2022-08-12)
+  Added support for accepting the original FileNode environment in a “callback” function when using Build Middlewares (pull #4380)
+  Improved device port finder when using dual channel UART converter (issue #4367)
+  Improved project dependency resolving when using the pio project init --ide command
+  Upgraded build engine to the SCons 4.4.0 (release notes)
+  Keep custom “unwantedRecommendations” when generating projects for VSCode (issue #4383)
+  Do not resolve project dependencies for the cleanall target (issue #4344)
+  Warn about calling “env.BuildSources” in a POST-type script (issue #4385)
+  Fixed an issue when escaping macros/defines for IDE integration (issue #4360)
+  Fixed an issue when the “cleanall” target removes dependencies from all working environments (issue #4386) 
+
+-------------------------------------------------------------------
 Mon Sep 26 06:44:37 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Remove less-than Requires … it is just asking for pain without

@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-platformio
-Version:        6.1.3
+Version:        6.1.4
 Release:        0
 Summary:        New Generation Ecosystem for Embedded Development
 License:        Apache-2.0
