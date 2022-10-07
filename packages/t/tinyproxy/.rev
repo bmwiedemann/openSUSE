@@ -115,4 +115,12 @@
   [CVE-2022-40468] [boo#1203553]</comment>
     <requestid>1004923</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>ee8877ede9a8c973ceb28e78d6eb45c2</srcmd5>
+    <version>1.11.1</version>
+    <time>1665184993</time>
+    <user>RBrownFactory</user>
+    <comment>- Ship COPYING file</comment>
+    <requestid>1008285</requestid>
+  </revision>
 </revisionlist>

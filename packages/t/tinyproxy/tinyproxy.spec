@@ -87,6 +87,7 @@ systemd-tmpfiles --create tinyproxy.conf || :
 %service_del_postun tinyproxy.service
 
 %files
+%license COPYING
 %doc NEWS README README.md
 %dir %_sysconfdir/%name
 %config(noreplace) %_sysconfdir/%name/*.conf
