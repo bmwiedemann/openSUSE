@@ -311,4 +311,16 @@
     CHANGELOG.md file provided with this package (forwarded request 1000820 from glaubitz)</comment>
     <requestid>1000875</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>9eba2aa817eec53c413f33c261d0b3bf</srcmd5>
+    <version>1.26.0</version>
+    <time>1665185137</time>
+    <user>RBrownFactory</user>
+    <comment>- New upstream release
+  + Version 1.26.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1008726 from glaubitz)</comment>
+    <requestid>1008730</requestid>
+  </revision>
 </revisionlist>
