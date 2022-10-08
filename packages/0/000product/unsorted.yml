@@ -13,6 +13,8 @@ unsorted:
   - 4ti2-devel 
   - 6tunnel 
   - 7kaa 
+  - AMF-devel 
+  - AMF-docs 
   - ART 
   - AppCSXCAD 
   - AppStream-devel 
@@ -535,6 +537,7 @@ unsorted:
   - anjuta-lang 
   - ansible 
   - ansible-cmdb 
+  - ansible-core 
   - ansible-doc 
   - ansible-lint 
   - ansible-runner 
@@ -941,6 +944,7 @@ unsorted:
   - atril-lang 
   - atril-thumbnailer 
   - attica-qt5-devel 
+  - atuin 
   - aubio-tools 
   - audacious 
   - audacious-devel 
@@ -3307,7 +3311,7 @@ unsorted:
   - eiskaltdcpp-daemon 
   - eiskaltdcpp-qt 
   - eiskaltdcpp-qt-lang 
-  - element-desktop: [x86_64] 
+  - element-desktop 
   - element-web 
   - elementary-cmake-modules 
   - elementary-icon-theme 
@@ -8338,6 +8342,7 @@ unsorted:
   - kio_perldoc 
   - kio_perldoc-lang 
   - kirigami 
+  - kirigami-addons 
   - kirigami-devel 
   - kirigami-gallery 
   - kirigami-gallery-lang 
@@ -10476,8 +10481,8 @@ unsorted:
   - libcroco-devel 
   - libcrossguid0 
   - libcryptmount-devel 
-  - libcrypto49 
-  - libcrypto49-32bit: [x86_64] 
+  - libcrypto50 
+  - libcrypto50-32bit: [x86_64] 
   - libcryptopp-devel 
   - libcryptopp8_7_0 
   - libcryptopp8_7_0-32bit: [x86_64] 
@@ -11472,7 +11477,7 @@ unsorted:
   - libguile-srfi-srfi-13-14-v-3-3 
   - libguile-srfi-srfi-4-v-3-3 
   - libguile-srfi-srfi-60-v-2-2 
-  - libguile-ssh13 
+  - libguile-ssh14 
   - libguile1-devel 
   - libguile17 
   - libguilereadline-v-17-17 
@@ -14145,8 +14150,8 @@ unsorted:
   - libssh2-1-32bit: [x86_64] 
   - libssh2-devel 
   - libssh4-32bit: [x86_64] 
-  - libssl52 
-  - libssl52-32bit: [x86_64] 
+  - libssl53 
+  - libssl53-32bit: [x86_64] 
   - libssr-glinject 
   - libssr-glinject-32bit: [x86_64] 
   - libsss_certmap-devel 
@@ -14414,8 +14419,8 @@ unsorted:
   - libtinyxml0 
   - libtinyxml2-9 
   - libtirpc-devel 
-  - libtls25 
-  - libtls25-32bit: [x86_64] 
+  - libtls26 
+  - libtls26-32bit: [x86_64] 
   - libtntdb-devel 
   - libtntdb5 
   - libtolua++-5_1-1 
@@ -17574,6 +17579,7 @@ unsorted:
   - nodejs-devel-default 
   - nodejs-electron 
   - nodejs-electron-devel 
+  - nodejs-electron-doc 
   - nodejs-packaging 
   - nodejs-underscore 
   - nodejs16 
@@ -19069,6 +19075,7 @@ unsorted:
   - patterns-sway-sway 
   - patterns-wsl-base 
   - patterns-wsl-gui 
+  - patterns-wsl-systemd 
   - patterns-yast-devel_yast 
   - pavucontrol-qt 
   - pavucontrol-qt-lang 
@@ -23416,6 +23423,7 @@ unsorted:
   - python310-haproxyctl 
   - python310-hashids 
   - python310-hatch 
+  - python310-hatch-fancy-pypi-readme 
   - python310-hatch_nodejs_version 
   - python310-hatch_vcs 
   - python310-hatchling 
@@ -26680,6 +26688,7 @@ unsorted:
   - python38-haproxyctl 
   - python38-hashids 
   - python38-hatch 
+  - python38-hatch-fancy-pypi-readme 
   - python38-hatch_nodejs_version 
   - python38-hatch_vcs 
   - python38-hatchling 
@@ -27098,7 +27107,6 @@ unsorted:
   - python38-miniupnpc 
   - python38-misaka 
   - python38-mistune 
-  - python38-mitmproxy 
   - python38-mizani 
   - python38-mkdocs 
   - python38-mkdocs-bootstrap 
@@ -30008,6 +30016,7 @@ unsorted:
   - python39-haproxyctl 
   - python39-hashids 
   - python39-hatch 
+  - python39-hatch-fancy-pypi-readme 
   - python39-hatch_nodejs_version 
   - python39-hatch_vcs 
   - python39-hatchling 
@@ -32482,6 +32491,7 @@ unsorted:
   - qt6-wlshellintegration-private-devel 
   - qt6-xml-devel 
   - qt6-xml-private-devel 
+  - qt6ct 
   - qtcurve-gtk2 
   - qtcurve-gtk2-32bit: [x86_64] 
   - qtcurve-qt5 
@@ -32854,6 +32864,7 @@ unsorted:
   - rrdtool-cached 
   - rrdtool-devel 
   - rrdtool-doc 
+  - rrep 
   - rscsi 
   - rshim 
   - rsign2 
@@ -32899,6 +32910,7 @@ unsorted:
   - rtl_433 
   - rtl_433-devel 
   - rtla 
+  - rtla-rebuild 
   - rtmidi-devel 
   - rtorrent 
   - rtr-tools 
@@ -34055,6 +34067,9 @@ unsorted:
   - tdom-devel 
   - tea 
   - tealdeer: [x86_64] 
+  - tealdeer-bash-completion: [x86_64] 
+  - tealdeer-fish-completion: [x86_64] 
+  - tealdeer-zsh-completion: [x86_64] 
   - tecla 
   - tecla-devel 
   - tecnoballz 
