@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep 20 16:10:40 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Version update to 3.29.2:
+  * Include` Automatic-Module-Name in MANIFEST.MF
+
+- Rebased javassist-osgi.patch and corrected version numbers in
+  the patch.
+
+-------------------------------------------------------------------
 Wed Aug 17 11:32:38 UTC 2022 - David Anes <david.anes@suse.com>
 
 - Version update to 3.29.1:

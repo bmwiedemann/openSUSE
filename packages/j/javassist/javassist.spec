@@ -17,9 +17,9 @@
 #
 
 
-%define tar_version rel_3_29_1_ga
+%define tar_version rel_3_29_2_ga
 Name:           javassist
-Version:        3.29.1
+Version:        3.29.2
 Release:        0
 Summary:        Java Programming Assistant: bytecode manipulation
 License:        LGPL-2.1-or-later OR MPL-1.1
