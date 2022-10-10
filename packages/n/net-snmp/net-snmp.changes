@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct  3 11:45:51 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- change egrep/fgrep to grep -E/-F to avoid warnings boo#1203096
+  add net-snmp-5.9.3-grep.patch
+
+-------------------------------------------------------------------
 Tue Sep 27 14:56:27 UTC 2022 - Alexander Bergmann <abergmann@suse.com>
 
 - Fixed python2 backward compability.
