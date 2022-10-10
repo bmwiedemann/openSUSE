@@ -624,4 +624,14 @@
   https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/3ERUP5ZZJ6PPA36L3HVN46BH6U6JL74O/</comment>
     <requestid>955694</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>6ea10fac82075c3ae7521335a281bed8</srcmd5>
+    <version>17</version>
+    <time>1665420185</time>
+    <user>favogt_factory</user>
+    <comment>- Bump to version 17
+
+- Fix syntax error in %tmpfiles_create_package() (bsc#1203945)</comment>
+    <requestid>1007693</requestid>
+  </revision>
 </revisionlist>

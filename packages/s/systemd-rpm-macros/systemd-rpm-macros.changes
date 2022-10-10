@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct  3 13:07:42 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Bump to version 17
+
+-------------------------------------------------------------------
+Mon Oct  3 12:57:32 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Fix syntax error in %tmpfiles_create_package() (bsc#1203945)
+
+-------------------------------------------------------------------
 Thu Feb 17 18:54:40 UTC 2022 - Franck Bui <fbui@suse.com>
 
 - Bump to version 16

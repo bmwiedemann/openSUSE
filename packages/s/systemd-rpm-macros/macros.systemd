@@ -244,7 +244,7 @@ if [ -z "${TRANSACTIONAL_UPDATE}" ]; then \
 	/usr/bin/systemd-tmpfiles --replace=%_tmpfilesdir/%1.conf --create - <<SYSTEMD_INLINE_EOF || : \
 %(cat %2) \
 SYSTEMD_INLINE_EOF\
-%fi \
+fi \
 %{nil}
 
 # This should be used by package installation scripts which doesn't require
