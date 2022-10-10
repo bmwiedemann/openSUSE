@@ -30,6 +30,12 @@ Wed Sep 21 20:36:11 UTC 2022 - Michael Ströder <michael@stroeder.com>
     * Fix missing sections for INFO ALL when also requesting a module info section (#11291)
 
 -------------------------------------------------------------------
+Thu Sep  1 07:15:24 UTC 2022 - Stefan Schubert <schubi@intern>
+
+- Migration to /usr/etc: Saving user changed configuration files
+  in /etc and restoring them while an RPM update.
+
+-------------------------------------------------------------------
 Mon Jul 18 14:36:34 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - Security update to version 7.0.4
