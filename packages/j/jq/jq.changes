@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 23 16:16:46 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- build without valgrind on riscv64 - does not exist (yet)
+
+-------------------------------------------------------------------
 Thu Jul  4 17:27:13 UTC 2019 - myen@suse.com
 
 - Make jq depend on libjq1, so upgrading jq upgrades both

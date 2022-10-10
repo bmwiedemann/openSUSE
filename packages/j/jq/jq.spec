@@ -1,7 +1,7 @@
 #
 # spec file for package jq
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,14 +20,16 @@ Name:           jq
 Version:        1.6
 Release:        0
 Summary:        A lightweight and flexible command-line JSON processor
-License:        MIT AND CC-BY-3.0
+License:        CC-BY-3.0 AND MIT
 Group:          Productivity/Text/Utilities
-URL:            http://stedolan.github.io/jq/
+URL:            https://stedolan.github.io/jq/
 Source:         https://github.com/stedolan/jq/releases/download/jq-%{version}/jq-%{version}.tar.gz
 BuildRequires:  chrpath
 BuildRequires:  flex
 BuildRequires:  oniguruma-devel
+%ifnarch riscv64
 BuildRequires:  valgrind
+%endif
 Requires:       libjq1 = %{version}
 
 %description
@@ -57,6 +59,9 @@ Development files (headers and libraries for jq).
 %build
 %configure \
   --disable-static \
+%ifarch riscv64
+  --disable-valgrind \
+%endif
   --disable-silent-rules
 make %{?_smp_mflags}
 
