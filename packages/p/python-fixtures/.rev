@@ -220,4 +220,19 @@
 - Correct URL.</comment>
     <requestid>976202</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>b6e0396997419078a9f6a63de15f089e</srcmd5>
+    <version>4.0.1</version>
+    <time>1665420196</time>
+    <user>favogt_factory</user>
+    <comment>- update to 4.0.1:
+  * Remove testtools from requirements.txt as well
+  * github: Add all pypy3 versions to test matrix
+  * github: Add Python 3.11 betas to test matrix
+  * tox: Add py311
+  * Support Popen's process\_group argument from Python 3.11
+  * Update classmethod expectations (again) for Python 3.11
+  * Revert to the previous classmethod expectations for PyPy3.9</comment>
+    <requestid>1008416</requestid>
+  </revision>
 </revisionlist>
