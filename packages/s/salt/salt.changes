@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Oct  6 10:10:16 UTC 2022 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Make pass renderer configurable and fix detected issues
+- Workaround fopen line buffering for binary mode (bsc#1203834)
+- Handle non-UTF-8 bytes in core grains generation (bsc#1202165)
+- Fix Syndic authentication errors (bsc#1199562)
+
+- Added:
+  * make-pass-renderer-configurable-other-fixes-532.patch
+  * ignore-non-utf8-characters-while-reading-files-with-.patch
+  * fopen-workaround-bad-buffering-for-binary-mode-563.patch
+  * backport-syndic-auth-fixes.patch
+
+-------------------------------------------------------------------
+Thu Sep  1 12:43:39 UTC 2022 - Victor Zhestkov <victor.zhestkov@suse.com>
+
+- Add Amazon EC2 detection for virtual grains (bsc#1195624)
+- Fix the regression in schedule module releasded in 3004 (bsc#1202631)
+- Fix state.apply in test mode with file state module
+  on user/group checking (bsc#1202167)
+- Change the delimeters to prevent possible tracebacks
+  on some packages with dpkg_lowpkg
+- Make zypperpkg to retry if RPM lock is temporarily unavailable (bsc#1200596)
+
+- Added:
+  * fix-the-regression-in-schedule-module-releasded-in-3.patch
+  * retry-if-rpm-lock-is-temporarily-unavailable-547.patch
+  * change-the-delimeters-to-prevent-possible-tracebacks.patch
+  * add-amazon-ec2-detection-for-virtual-grains-bsc-1195.patch
+  * fix-state.apply-in-test-mode-with-file-state-module-.patch
+
+-------------------------------------------------------------------
+Tue Jul 12 12:37:51 UTC 2022 - Alexander Graul <alexander.graul@suse.com>
+
+- Fix test_ipc unit test
+
+- Added:
+  * fix-test_ipc-unit-tests.patch
+
+-------------------------------------------------------------------
 Fri Jul  8 09:45:54 UTC 2022 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Add support for gpgautoimport in zypperpkg module

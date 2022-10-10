@@ -330,6 +330,26 @@ Patch90:        fix-salt.states.file.managed-for-follow_symlinks-tru.patch
 Patch91:        fix-jinja2-contextfuntion-base-on-version-bsc-119874.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62209
 Patch92:        add-support-for-gpgautoimport-539.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/commit/2b486d0484c51509e9972e581d97655f4f87852e
+Patch93:        fix-test_ipc-unit-tests.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62204
+Patch94:        retry-if-rpm-lock-is-temporarily-unavailable-547.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62519
+Patch95:        change-the-delimeters-to-prevent-possible-tracebacks.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/61847
+Patch96:        fix-state.apply-in-test-mode-with-file-state-module-.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/61423
+Patch97:        fix-the-regression-in-schedule-module-releasded-in-3.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62539
+Patch98:        add-amazon-ec2-detection-for-virtual-grains-bsc-1195.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/commit/643bd4b572ca97466e085ecd1d84da45b1684332
+Patch99:        backport-syndic-auth-fixes.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62633
+Patch100:       ignore-non-utf8-characters-while-reading-files-with-.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62817
+Patch101:       fopen-workaround-bad-buffering-for-binary-mode-563.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62120
+Patch102:       make-pass-renderer-configurable-other-fixes-532.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  logrotate

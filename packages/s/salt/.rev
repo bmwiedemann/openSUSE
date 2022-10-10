@@ -2069,4 +2069,38 @@ let build start it or we will get libvirt errors.
   * save-log-to-logfile-with-docker.build.patch</comment>
     <requestid>988366</requestid>
   </revision>
+  <revision rev="131" vrev="9">
+    <srcmd5>86896a2bf8311aba9eed46b74aa363f2</srcmd5>
+    <version>3004</version>
+    <time>1665420202</time>
+    <user>favogt_factory</user>
+    <comment>- Make pass renderer configurable and fix detected issues
+- Workaround fopen line buffering for binary mode (bsc#1203834)
+- Handle non-UTF-8 bytes in core grains generation (bsc#1202165)
+- Fix Syndic authentication errors (bsc#1199562)
+- Added:
+  * make-pass-renderer-configurable-other-fixes-532.patch
+  * ignore-non-utf8-characters-while-reading-files-with-.patch
+  * fopen-workaround-bad-buffering-for-binary-mode-563.patch
+  * backport-syndic-auth-fixes.patch
+
+- Add Amazon EC2 detection for virtual grains (bsc#1195624)
+- Fix the regression in schedule module releasded in 3004 (bsc#1202631)
+- Fix state.apply in test mode with file state module
+  on user/group checking (bsc#1202167)
+- Change the delimeters to prevent possible tracebacks
+  on some packages with dpkg_lowpkg
+- Make zypperpkg to retry if RPM lock is temporarily unavailable (bsc#1200596)
+- Added:
+  * fix-the-regression-in-schedule-module-releasded-in-3.patch
+  * retry-if-rpm-lock-is-temporarily-unavailable-547.patch
+  * change-the-delimeters-to-prevent-possible-tracebacks.patch
+  * add-amazon-ec2-detection-for-virtual-grains-bsc-1195.patch
+  * fix-state.apply-in-test-mode-with-file-state-module-.patch
+
+- Fix test_ipc unit test
+- Added:
+  * fix-test_ipc-unit-tests.patch</comment>
+    <requestid>1008560</requestid>
+  </revision>
 </revisionlist>
