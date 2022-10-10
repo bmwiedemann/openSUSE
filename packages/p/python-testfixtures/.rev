@@ -206,4 +206,37 @@
     <comment></comment>
     <requestid>942857</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>3166486f3986801db5b881ac2477b3c0</srcmd5>
+    <version>7.0.0</version>
+    <time>1665420242</time>
+    <user>favogt_factory</user>
+    <comment>- Remove testfixtures-sybil3-py310.patch, it's included in upstream now.
+- Update to 7.0.0
+  * Refresh documentation.
+  * Add type annotations.
+  * Drop support for Python 2. The minimum supported Python version is now 3.6.
+  * Sybil 3 is now the minimum supported version if you use
+    :class:`~.sybil.FileParser`.
+  * Rename and refactor the date and time mocks, they are now :any:`mock_date`,
+    :any:`mock_datetime` and :any:`mock_time`. :func:`test_date`,
+    :func:`test_datetime` and :func:`test_time` are still present as aliases
+    but are now deprecated.
+  * Add :meth:`TempDirectory.as_string`, :meth:`TempDirectory.as_path` and
+    :meth:`TempDirectory.as_local`. :meth:`TempDirectory.getpath` is now
+    deprecated.
+  * :class:`TempDirectory` can now be used to wrap existing directories.
+  * Fixed a bug where :any:`OutputCapture.captured` returned bytes instead of a
+    string with fd=True.
+  * The deprecated strict option to :class:`Comparison` has been removed, use
+    the partial option instead.
+  * The deprecated :meth:`TempDirectory.check`, :meth:`TempDirectory.check_dir`
+    and :meth:`TempDirectory.check_all` methods have been removed.
+- 6.18.5 (1 Mar 2022)
+  * Fix bug in detection of Mock backport.
+- 6.18.4 (25 Feb 2022)
+  * Ensure compatibility with Sybil 2 and Sybil 3 along with pytest 6 and
+    pytest 7.</comment>
+    <requestid>1008127</requestid>
+  </revision>
 </revisionlist>

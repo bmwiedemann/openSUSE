@@ -1,7 +1,7 @@
 #
 # spec file for package python-testfixtures
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,12 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-testfixtures
-Version:        6.18.3
+Version:        7.0.0
 Release:        0
 Summary:        A collection of helpers and mock objects for unit tests and doc tests
 License:        MIT
 URL:            https://github.com/Simplistix/testfixtures
 Source:         https://files.pythonhosted.org/packages/source/t/testfixtures/testfixtures-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM testfixtures-sybil3-py310.patch -- gh#simplistix/testfixtures#167
-Patch0:         testfixtures-sybil3-py310.patch
 BuildRequires:  %{python_module Twisted}
 BuildRequires:  %{python_module pytest >= 3.6}
 BuildRequires:  %{python_module setuptools}
