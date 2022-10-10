@@ -25,7 +25,9 @@ if ! mkdir "$header_dir"; then
   exit 1
 fi
 git clone --single-branch -b "$2" "$1" "$kernel_dir"
-remove="arc c6x csky h8300 hexagon microblaze nds32 nios2 openrisc sh unicore32 xtensa um"
+date=$(git -C "$kernel_dir" cat-file -p "$2" | awk '/^tagger/ { print $(NF-1) }')
+date -d "@$date" || exit 1
+remove="arc csky h8300 hexagon microblaze nds32 nios2 openrisc sh xtensa um"
 archs=$(cd "$kernel_dir/arch" &&
 	  for arch in *; do
 	    test -d $arch || continue
@@ -66,5 +68,7 @@ for arch in $archs; do
 done
 popd
 du -sh "$header_dir"
-tar -cJf "$header_dir.tar.xz" --owner=root --group=root "${header_dir##*/}"
+tar -cJf "$header_dir.tar.xz" --owner=root --group=root --mtime="@$date" \
+    --sort=name "${header_dir##*/}"
+touch -d "@$date" "$header_dir.tar.xz"
 rm -rf "$header_dir" "$kernel_dir"

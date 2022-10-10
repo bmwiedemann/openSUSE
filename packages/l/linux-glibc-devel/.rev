@@ -676,4 +676,12 @@
     <comment>- Update to kernel headers 5.17 (forwarded request 964041 from Andreas_Schwab)</comment>
     <requestid>964042</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>c957c4556ccaef549aa14f3eb3bf9e15</srcmd5>
+    <version>6.0</version>
+    <time>1665420186</time>
+    <user>favogt_factory</user>
+    <comment>- Update to kernel headers 6.0 (forwarded request 1007739 from Andreas_Schwab)</comment>
+    <requestid>1007740</requestid>
+  </revision>
 </revisionlist>
