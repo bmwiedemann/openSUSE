@@ -173,6 +173,7 @@ Patch137:       handle_gsoap_208103.patch
 Patch142:       fixes_for_leap15.3.patch
 Patch143:       vb-6.1.16-modal-dialog-parent.patch
 Patch144:       fixes_for_leap15.4.patch
+Patch145:       fix_error_in_USB_header.patch
 Patch999:       virtualbox-fix-ui-background-color.patch
 #
 # Common BuildRequires for both virtualbox and virtualbox-kmp
@@ -531,6 +532,7 @@ This package contains the kernel-modules that VirtualBox uses to create or run v
 %patch144 -p1
 %endif
 %patch143 -p1
+%patch145 -p1
 # make VB UI background colors look sane again
 %patch999 -p1
 

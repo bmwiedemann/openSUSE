@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Oct  8 00:49:59 UTC 2022 - Larry Finger <Larry.Finger@gmail.com>
+
+- Fix build breakage with kernel 6.0 due to variable-length array in middle of a struct. boo#1204151
+  File "fix_error_in_USB_header.patch" is added.
+
+-------------------------------------------------------------------
+Wed Oct  5 17:28:00 UTC 2022 - Larry Finger <Larry.Finger@gmail.com>
+
+- Fix boo#1204019 VBoxClient: VbglR3InitUser failed: VERR_ACCESS_DENIED
+
+-------------------------------------------------------------------
 Tue Sep 27 17:23:12 UTC 2022 - Larry Finger <Larry.Finger@gmail.com>
 
 - Add a "Provides: virtualbox-guest-x11" to virtualbox-guest-tools. boo#1203735 

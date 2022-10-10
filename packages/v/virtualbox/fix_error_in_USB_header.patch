@@ -1,0 +1,20 @@
+Index: a/src/VBox/Devices/USB/linux/USBProxyDevice-linux.cpp
+===================================================================
+--- a/src/VBox/Devices/USB/linux/USBProxyDevice-linux.cpp
++++ a/src/VBox/Devices/USB/linux/USBProxyDevice-linux.cpp
+@@ -90,7 +90,6 @@ typedef struct USBPROXYURBLNX
+ # pragma GCC diagnostic push
+ # pragma GCC diagnostic ignored "-Wpedantic"
+ #endif
+-    struct usbdevfs_urb             KUrb;
+ #if RT_GNUC_PREREQ(6, 0)
+ # pragma GCC diagnostic pop
+ #endif
+@@ -110,6 +109,7 @@ typedef struct USBPROXYURBLNX
+     bool                            fDiscarded;
+     /** Size to transfer in remaining fragments of a split URB */
+     uint32_t                        cbSplitRemaining;
++    struct usbdevfs_urb             KUrb; /* This entry MUST be last */
+ } USBPROXYURBLNX, *PUSBPROXYURBLNX;
+ 
+ /**
