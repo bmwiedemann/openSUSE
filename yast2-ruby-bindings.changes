@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  6 14:26:41 UTC 2022 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Dropped support for profiler / Y2PROFILER env var (bsc#1189647)
+- 4.5.3
+
+-------------------------------------------------------------------
 Thu Aug 18 08:07:00 UTC 2022 - Josef Reidinger <jreidinger@suse.com>
 
 - Add properly glibc-locale as build dependency to test locale
