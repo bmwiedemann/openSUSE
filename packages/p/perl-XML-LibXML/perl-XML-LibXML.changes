@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Oct  1 03:07:58 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.0208
+   see /usr/share/doc/packages/perl-XML-LibXML/Changes
+
+  2.0208  2022-09-30
+      - Fix https://rt.cpan.org/Ticket/Display.html?id=144415
+          - Bug #144415 for XML-LibXML: createElementNS & setNamespace get
+            confused by Readonly scalars
+          - thanks to DAKKAR and haarg.
+
+-------------------------------------------------------------------
 Sun Apr 18 03:08:08 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.0207

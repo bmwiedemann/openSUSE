@@ -1,7 +1,7 @@
 #
 # spec file for package perl-XML-LibXML
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name XML-LibXML
 Name:           perl-XML-LibXML
-Version:        2.0207
+Version:        2.0208
 Release:        0
-Summary:        Perl Binding for libxml2
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Interface to Gnome libxml2 xml parsing and DOM library
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SH/SHLOMIF/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
@@ -57,6 +57,7 @@ stated otherwise, you only need to 'use XML::LibXML;' in your programs.
 
 %prep
 %autosetup  -n %{cpan_name}-%{version}
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
