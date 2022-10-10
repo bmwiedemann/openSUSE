@@ -579,4 +579,12 @@ patches/vrss.patch (forwarded request 226944 from jdelvare)</comment>
     <comment></comment>
     <requestid>1002352</requestid>
   </revision>
+  <revision rev="75" vrev="3">
+    <srcmd5>0d4b6f02fa7a48602110ea4b89bf9677</srcmd5>
+    <version>0.67</version>
+    <time>1665420210</time>
+    <user>favogt_factory</user>
+    <comment>Document the fact that &quot;quilt setup&quot; does not support arbitrary %prep sections and some adjustments to the spec file may be  needed (boo#1203791).</comment>
+    <requestid>1008647</requestid>
+  </revision>
 </revisionlist>

@@ -39,6 +39,7 @@ URL:            http://savannah.nongnu.org/projects/quilt
 Source:         %{name}-%{version}.tar.bz2
 Source1:        suse-start-quilt-mode.el
 Patch1:         avoid-warnings-with-grep-3.8.patch
+Patch2:         setup-document-the-limitation-of-spec-file-support.patch
 Patch81:        expand.diff
 Patch82:        quilt-support-vimdiff.patch
 Patch83:        test-faildiff-workaround-order-bug.patch
@@ -63,6 +64,7 @@ un-applied, refreshed, and more.
 %prep
 %setup -q
 %patch1 -p1
+%patch2 -p1
 %patch81 -p1
 %patch82 -p1
 %patch83 -p1

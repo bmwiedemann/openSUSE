@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct  6 16:57:34 UTC 2022 - Jean Delvare <jdelvare@suse.com>
+
+- setup-document-the-limitation-of-spec-file-support.patch:
+  Document the fact that "quilt setup" does not support arbitrary
+  %prep sections and some adjustments to the spec file may be
+  needed (boo#1203791).
+
+-------------------------------------------------------------------
 Fri Sep  9 08:18:31 UTC 2022 - Jean Delvare <jdelvare@suse.com>
 
 - avoid-warnings-with-grep-3.8.patch: Avoid warnings with grep
