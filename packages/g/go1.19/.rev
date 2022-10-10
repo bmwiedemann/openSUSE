@@ -73,4 +73,27 @@
   * go#54235 cmd/compile: internal compiler error of atomic type and offsetof (forwarded request 1001532 from jfkw)</comment>
     <requestid>1001534</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5a8e1ac91d1f972c63d4128923e71fcb</srcmd5>
+    <version>1.19.2</version>
+    <time>1665420234</time>
+    <user>favogt_factory</user>
+    <comment>- go1.19.2 (released 2022-10-04) includes security fixes to the
+  archive/tar, net/http/httputil, and regexp packages, as well as
+  bug fixes to the compiler, the linker, the runtime, and the
+  go/types package.
+  Refs boo#1200441 go1.19 release tracking
+  CVE-2022-41715 CVE-2022-2879 CVE-2022-2880
+  * go#55951 boo#1204023 security: fix CVE-2022-41715 regexp/syntax: limit memory used by parsing regexps
+  * go#55926 boo#1204024 security: fix CVE-2022-2879 archive/tar: unbounded memory consumption when reading headers
+  * go#55843 boo#1204025 security: fix CVE-2022-2880 net/http/httputil: ReverseProxy should not forward unparseable query parameters
+  * go#55270 cmd/compile: internal compiler error: method Len on *uint8 not found
+  * go#55152 cmd/compile: typebits.Set: invalid initial alignment: type Peer has alignment 8, but offset is 4
+  * go#55149 go/types: no way to construct the signature of append(s, &quot;string&quot;...) via the API
+  * go#55124 fatal error: bulkBarrierPreWrite: unaligned arguments (go 1.19.1, looks like regression)
+  * go#55114 cmd/link: new darwin linker warning on -pagezero_size and -no_pie deprecation
+  * go#54917 cmd/compile: Value live at entry
+  * go#54764 runtime/cgo(.text): unknown symbol __stack_chk_fail_local in pcrel (regression in 1.19 when building for i686) (forwarded request 1008076 from jfkw)</comment>
+    <requestid>1008078</requestid>
+  </revision>
 </revisionlist>

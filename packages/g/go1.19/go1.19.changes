@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Oct  4 18:21:57 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.19.2 (released 2022-10-04) includes security fixes to the
+  archive/tar, net/http/httputil, and regexp packages, as well as
+  bug fixes to the compiler, the linker, the runtime, and the
+  go/types package.
+  Refs boo#1200441 go1.19 release tracking
+  CVE-2022-41715 CVE-2022-2879 CVE-2022-2880
+  * go#55951 boo#1204023 security: fix CVE-2022-41715 regexp/syntax: limit memory used by parsing regexps
+  * go#55926 boo#1204024 security: fix CVE-2022-2879 archive/tar: unbounded memory consumption when reading headers
+  * go#55843 boo#1204025 security: fix CVE-2022-2880 net/http/httputil: ReverseProxy should not forward unparseable query parameters
+  * go#55270 cmd/compile: internal compiler error: method Len on *uint8 not found
+  * go#55152 cmd/compile: typebits.Set: invalid initial alignment: type Peer has alignment 8, but offset is 4
+  * go#55149 go/types: no way to construct the signature of append(s, "string"...) via the API
+  * go#55124 fatal error: bulkBarrierPreWrite: unaligned arguments (go 1.19.1, looks like regression)
+  * go#55114 cmd/link: new darwin linker warning on -pagezero_size and -no_pie deprecation
+  * go#54917 cmd/compile: Value live at entry
+  * go#54764 runtime/cgo(.text): unknown symbol __stack_chk_fail_local in pcrel (regression in 1.19 when building for i686)
+
+-------------------------------------------------------------------
 Tue Sep  6 19:24:28 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.19.1 (released 2022-09-06) includes security fixes to the
