@@ -1,0 +1,32 @@
+commit 740b5e9daa2319f7397797f2f17d8e56245fdce4
+Author: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+Date:   Thu Oct 6 18:02:38 2022 +0200
+
+    prov/rxm: Disable 128-bit atomics
+    
+    128-bit atomics fail (cause segfault) in release build of
+    provider.  Cause is likely related to alignment.  Fail
+    query calls for 128-bit integers to indicate support is not
+    provided.
+    
+    https://github.com/ofiwg/libfabric/issues/7248
+    
+    Signed-off-by: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+diff --git prov/rxm/src/rxm_atomic.c prov/rxm/src/rxm_atomic.c
+index 28e29ade0dde..0f070b92f446 100644
+--- prov/rxm/src/rxm_atomic.c
++++ prov/rxm/src/rxm_atomic.c
+@@ -509,6 +509,12 @@ int rxm_ep_query_atomic(struct fid_domain *domain, enum fi_datatype datatype,
+ 		return -FI_EINVAL;
+ 	}
+ 
++	if ((datatype == FI_INT128) || (datatype == FI_UINT128)) {
++		FI_WARN(&rxm_prov, FI_LOG_EP_CTRL,
++			"128-bit integers not supported\n");
++		return -FI_EOPNOTSUPP;
++	}
++
+ 	ret = ofi_atomic_valid(&rxm_prov, datatype, op, flags);
+ 	if (ret || !attr)
+ 		return ret;

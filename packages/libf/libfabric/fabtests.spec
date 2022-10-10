@@ -28,6 +28,7 @@ URL:            http://www.github.com/ofiwg/libfabric
 Source:         libfabric-%{version}%{git_ver}.tar.bz2
 Source1:        fabtests-rpmlintrc
 Patch0:         libfabric-libtool.patch
+Patch1:         prov-rxm-Disable-128-bit-atomics.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libfabric-devel = %{version}
@@ -40,6 +41,7 @@ Fabtests provides a set of examples that uses libfabric, a fabric software libra
 %prep
 %setup -q -n  libfabric-%{version}%{git_ver}
 %patch0 -p1
+%patch1
 
 %build
 cd fabtests

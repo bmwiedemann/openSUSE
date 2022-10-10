@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  6 16:06:29 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Add prov-rxm-Disable-128-bit-atomics.patch to fix a potential
+  segfault on misaligned buffers.
+
+-------------------------------------------------------------------
 Fri Sep 30 11:44:45 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to 1.16.0 (jsc#PED-351, jsc#PED-190)
