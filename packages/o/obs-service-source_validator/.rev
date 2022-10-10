@@ -555,4 +555,13 @@ last submission had wrong tar ball for unknown reason</comment>
 - spec file cleanups</comment>
     <requestid>1005059</requestid>
   </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>076472de39874f009aca79163f159442</srcmd5>
+    <version>0.27</version>
+    <time>1665420197</time>
+    <user>favogt_factory</user>
+    <comment>- Update to version 0.27:
+  * Do not use temporary file for GPG validation</comment>
+    <requestid>1008417</requestid>
+  </revision>
 </revisionlist>
