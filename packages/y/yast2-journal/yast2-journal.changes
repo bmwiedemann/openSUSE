@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct  4 12:53:04 UTC 2022 - Martin Vidner <mvidner@suse.com>
+
+- Fix Internal Error with systemd-251 again, the last change
+  uncovered another case (bsc#1203956).
+- 4.5.3
+
+-------------------------------------------------------------------
 Tue Sep 27 07:18:47 UTC 2022 - Martin Vidner <mvidner@suse.com>
 
 - Localize date range in Change Filter dialog (B S Srinidhi,
