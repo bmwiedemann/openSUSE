@@ -62,6 +62,7 @@ Patch5:         0001-openvswitch-merge-compiler.h-files-into-one-file.patch
 Patch6:         0002-build-Seperated-common-used-headers.patch
 Patch7:         openvswitch-2.17.2-Fix-tests-with-GNU-grep-3.8.patch
 Patch8:         a77ad9693c8b49055389559187fe74eddb619746.patch
+Patch9:         0001-m4-Test-avx512-for-x86-only.patch
 # Python subpackage
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
