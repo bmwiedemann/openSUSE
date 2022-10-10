@@ -130,4 +130,17 @@
   gh#google/googletest#3792 and gh#google/googletest#3793. (forwarded request 967778 from marxin)</comment>
     <requestid>967823</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>1e82bd9dc9e0917f5ae4d9e0f22cb1df</srcmd5>
+    <version>1.12.1</version>
+    <time>1665420387</time>
+    <user>favogt_factory</user>
+    <comment>- update to 1.12.1:
+  * Support for move-only values to Return
+  * New matchers: WhenBase64Unescaped
+  * ResultOf() now has a 3-arg overload that takes a description string for better
+    error messages
+  * CMake minimum increased to 3.5 (forwarded request 1008415 from dirkmueller)</comment>
+    <requestid>1008944</requestid>
+  </revision>
 </revisionlist>

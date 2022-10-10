@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/ansible-community/ansible-lint</param>
+              <param name="changesrevision">04f808a67e341d88bcf77fd2017199be959c0459</param></service></servicedata>

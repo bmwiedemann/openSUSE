@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Oct  2 16:21:27 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 2.2.1:
+  * Fix bug in code meant to skip over the current log file when --log option is given.
+  * Updates to copyright notices in source code.
+  * Add --deferconfirmation option.
+  * Check that files marked as duplicates haven't changed during program execution before deleting them.
+  * Update documentation to indicate units for SIZE in command-line options.
+  * Move some configuration settings to configure.ac file.
+
+-------------------------------------------------------------------
 Fri Apr  1 19:50:32 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fixes for the new wrapper:

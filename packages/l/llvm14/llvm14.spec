@@ -377,6 +377,8 @@ Patch34:        clang-repl-private-deps.patch
 Patch35:        llvm-glibc-2-36.patch
 # Let test match for linux instead of -linux-.
 Patch36:        clang-test-xfail-gnuless-triple.patch
+# Cherry pick from rust llvm project (https://reviews.llvm.org/D127751)
+Patch37:        llvm-preserve-symbols-used.patch
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  cmake >= 3.13.4
 BuildRequires:  fdupes
@@ -806,6 +808,7 @@ This package contains the development files for Polly.
 %patch25 -p2
 %patch27 -p2
 %patch33 -p2
+%patch37 -p2
 
 pushd clang-%{_version}.src
 %patch2 -p1

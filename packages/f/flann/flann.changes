@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct  6 15:27:24 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Make sure lz4 is referenced correctly from CMake and pkgconfig
+  * Add fix_lz4_linkage.patch
+  * Add 0001-Fix-LZ4_LDFLAGS-format-for-pkgconfig-file.patch
+- Add liblz4 devel dependency
+- Correct CMake config install patch
+
+-------------------------------------------------------------------
 Sun Sep 11 16:59:36 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Make sure the static libflann_cpp is neither installed nor

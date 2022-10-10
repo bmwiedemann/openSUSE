@@ -8,4 +8,18 @@
 Dependency for python-imagecodecs.</comment>
     <requestid>826101</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6a54d899f60f673c88bb035e6aae6537</srcmd5>
+    <version>1.0.0</version>
+    <time>1665420423</time>
+    <user>favogt_factory</user>
+    <comment>- Update to version 1.0.0
+  https://github.com/LLNL/zfp/releases/tag/1.0.0
+- Fix incorrect libm check when LTO is enabled, add
+  fix_math_check.patch
+- Fix compilation on ILP32 archs, add
+  0001-Fix-64-bit-integer-types-on-32-bit-archs.patch
+</comment>
+    <requestid>1008946</requestid>
+  </revision>
 </revisionlist>

@@ -3,18 +3,34 @@
     <param name="url">https://github.com/Xpra-org/xpra</param>
     <param name="scm">git</param>
     <!-- TESTING -->
-    <param name="revision">a03b3f6</param>
-    <!-- LAST VERIFIED GOOD:  (older) ;  (newer)
+    <!-- VERIFIED GOOD:  (older) ;  (newer)
     <param name="revision">d0ae240</param>
     <param name="revision">c001342</param>
+    <param name="revision">a03b3f6</param>
+    <param name="revision">cc03f57</param>
+    <param name="revision">c52d8ac</param>
+    <param name="revision">6f83fe7</param>
+    -->
+    <!-- BAD CLIPBOARD
+    <param name="revision">df36fcc</param>
+    <param name="revision">b72e623</param>
+    <param name="revision">c8f68c6</param>
+    <param name="revision">dcb5278</param>
+    -->
+    <!-- BAD (broken audio)
+    <param name="revision">c4dcd89</param>
+    <param name="revision">962acb0</param>
     -->
     <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>
     <!--  These need changed dependent on tags
           at github.com/Xpra-org/xpra ; Currently
           tag=4.3 but setup.py returns 4.4
     -->
+    <!-- Hopefully this isn't needed anymore? 20221001
     <param name="versionrewrite-pattern">v4.3</param>
     <param name="versionrewrite-replacement">4.4</param>
+    -->
+    <param name="versionrewrite-pattern">v(.*)</param>
     <!--
     <param name="package-meta">yes</param>
     -->

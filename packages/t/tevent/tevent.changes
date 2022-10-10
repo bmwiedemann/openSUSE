@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 22 15:48:44 UTC 2022 - Noel Power <nopower@suse.com>
+
+- Update to version 0.13.0
+  + tevent: add tevent_cached_getpid() helper
+- Update to version 0.12.0
+  + tevent: Add tevent queue tracing support
+  + tevent: Use internally an empty trigger function for
+    blocker requests
+
+-------------------------------------------------------------------
 Wed Feb 02 13:56:12 UTC 2022 - David Mulder <dmulder@suse.com>
 
 - Fix build on 15.3 (for the heimdal addc build), by bundling cmocka.

@@ -24,4 +24,13 @@
 </comment>
     <requestid>979692</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>74dff3a56b150086c6d09329a423b49c</srcmd5>
+    <version>6.7.0</version>
+    <time>1665420413</time>
+    <user>favogt_factory</user>
+    <comment>Big update to 6.x, needs the new ansible-core package (see SR#1008325)
+Fixes the failing builds for ansible-lint (see SR#1006256)</comment>
+    <requestid>1008346</requestid>
+  </revision>
 </revisionlist>

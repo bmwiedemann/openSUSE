@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct  8 06:49:06 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to fix build with clang 15:
+  * 0001-lupdate-Fix-build-with-clang-15.patch
+
+-------------------------------------------------------------------
 Thu Sep 29 10:36:06 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 6.4.0:

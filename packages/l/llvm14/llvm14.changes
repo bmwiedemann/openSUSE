@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 27 03:23:10 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Add llvm-preserve-symbols-used.patch to resolve some symbols preserving
+  with asm in Rust.
+
+-------------------------------------------------------------------
 Wed Sep 21 21:21:19 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Always drop -gnu from triple for consistency. Patch a test that

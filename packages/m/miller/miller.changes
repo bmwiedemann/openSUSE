@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Oct 02 16:57:42 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 6.4.0+git20220929.36d0ed760:
+  * type-safety in exec (#1099)
+  * add source-checkout info to build-from-source instructions
+  * Check -- terminator on --mfrom (#1098)
+  * todo
+  * mlr reshape multiple regex via multiple -r (#1091)
+  * Fix labels for mlr histogram --auto (#1089)
+  * Continue #1086 (#1087)
+
+-------------------------------------------------------------------
 Fri Sep  2 21:29:11 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Patch buildmode-pie.patch was added per go's request during build.

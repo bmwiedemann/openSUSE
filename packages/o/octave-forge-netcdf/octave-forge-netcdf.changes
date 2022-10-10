@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Oct  2 14:46:28 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 1.0.16:
+  * Fix compiling Octave 8+
+  * minor doc updates
+
+-------------------------------------------------------------------
 Thu Sep 15 00:43:41 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 1.0.15:

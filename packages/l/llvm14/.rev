@@ -159,4 +159,12 @@ disable the corresponding tests.
 </comment>
     <requestid>1005472</requestid>
   </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>2478a2a58baa17e32ff6e1c9a2a2d607</srcmd5>
+    <version>14.0.6</version>
+    <time>1665420279</time>
+    <user>favogt_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1007779</requestid>
+  </revision>
 </revisionlist>

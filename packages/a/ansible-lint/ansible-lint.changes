@@ -1,4 +1,268 @@
 -------------------------------------------------------------------
+Thu Oct  6 07:09:51 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- fix wrong source URLs
+
+-------------------------------------------------------------------
+Sun Sep 25 12:28:22 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.7.0:
+  * Minor Changes
+    - name[template]: recommend to use templating as suffix on names (#2483) @vineethreddykaturu
+  * Bugfixes
+    - Refactor no-loop-var-prefix rule (#2470) @oraNod
+    - key-order: now sorts block/rescue/always to the bottom (#2454) @ssbarnea
+    - Ensure we do not return relative paths outside the project (#2492) @ssbarnea
+    - fix: use ansible-compat to install collections (#2466) @mnaser
+    - Change rich markdown theme/colors (#2486) @ssbarnea
+    - schema: allow listen key on handlers (#2484) @ssbarnea
+    - Ensure that symlinked arguments are resolved (#2476) @ssbarnea
+    - Document No hosts matched the subscripted pattern (#2481) @ssbarnea
+    - Use site.getuserbase() to detect ansible executable (#2477) @ssbarnea
+
+-------------------------------------------------------------------
+Sun Sep 25 12:21:32 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.6.1:
+  * Bugfixes
+    - meta: allow empty meta schema files (#2472) @ssbarnea
+    - schema: correct documentation (#2471) @ssbarnea
+    - Fix jinja[invalid] false positive (#2465) @ssbarnea
+    - Update schemas (#2467) @ssbarnea
+    - Docs: yamllint rule (#2450) @oraNod
+    - Refactor: remove obsolete odict class alias (#2452) @ssbarnea
+    - Refactor some constants into specific module (#2451) @ssbarnea
+    - Docs: no handler rule doc update (#2446) @oraNod
+    - Fix bug with user action (#2448) @ssbarnea
+    - api: enable matchtask() to return list[MatchError] (#2445) @ssbarnea
+
+-------------------------------------------------------------------
+Sun Sep 25 11:44:27 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.6.0:
+  * Minor Changes
+    - Replace no-jinja-nesting with jinja[invalid] (#2436) @ssbarnea
+    - Create template_instead_of_copy.py (#2346) @GhostLyrics
+    - Add rule to verify that galaxy.yml collection version is present and >= 1.0.0 (#2383) @KB-perByte
+  * Bugfixes
+    - Mark galaxy rule as required only for shared profile (#2441) @ssbarnea
+    - Improve noqa comment detection (#2440) @ssbarnea
+    - Update schemas (#2439) @ssbarnea
+    - Fix bug parsing inline skips with tags: (#2438) @ssbarnea
+    - Fix bug in skip_list parsing with lists of integers (#2437) @ssbarnea
+    - Update meta schema to require standalone property (#2435) @ssbarnea
+    - Fix identification of inline noqa skips (#2300) @ssbarnea
+    - Docs: no handler rule (#2406) @oraNod
+    - Docs: updates to schema rule (#2431) @oraNod
+    - Make links to rule docs relative (#2432) @ssbarnea
+    - Fix include load in blocks (#2398) @kostyaplis
+    - Docs: Update the fqcn builtin rule docs for legacy shell (#2430) @oraNod
+    - Docs: literal compare rule (#2415) @oraNod
+    - Docs: inline env var rule (#2414) @oraNod
+    - docs: exclude_list => exclude_paths (#2428) @ltalirz
+    - Document metadata rules (#2416) @oraNod
+    - Clean-up documentation theme (#2425) @ssbarnea
+    - Change ansible-lint logo to bracket-dot from codicons (#2424) @ssbarnea
+    - Docs: empty string compare rule (#2400) @oraNod
+    - Docs: ignore errors rule (#2413) @oraNod
+    - no-changed-when: add documentation (#2417) @oraNod
+    - Docs: Minor edits to rule docs (#2418) @oraNod
+    - schema: add documentation (#2421) @ssbarnea
+    - fqcn-builtins: add documentation (#2412) @oraNod
+    - no-log-password: add documentation (#2409) @oraNod
+    - Update schemas (#2411) @ssbarnea
+    - no-jinja-when: add documentation (#2408) @oraNod
+    - Update schemas (#2410) @ssbarnea
+    - Suspend git output in progressive mode (#2369) @kostyaplis
+    - Do not parse excluded files (#2395) @sathieu
+    - docs: replace wrong occurrences of ignore_list with skip_list in rules (#2388) @karras
+
+-------------------------------------------------------------------
+Wed Sep  7 13:22:09 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- disable set_version service, as it only writes 1.md into the spec version
+
+-------------------------------------------------------------------
+Wed Sep  7 13:21:24 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.5.2:
+  * Bugfixes
+    - Correct example of selecting profile from cli (#2380) @ssbarnea
+    - refactored runner.is_exclude and MatchError to use Lintable (#2379) @ssbarnea
+    - jinja[spacing]: use black for formatting (#2375) @ssbarnea
+    - deprecated-module: add documentation (#2377) @oraNod
+    - latest: include filename on rule match (#2378) @ssbarnea
+    - Correct documentation icons (#2373) @ssbarnea
+    - Avoid resource leak warning with multiprocessing Semaphore (#2365) @ssbarnea
+    - Use lockfile feature only when not in offline mode (#2371) @ssbarnea
+    - Replace git-latest and hg-latest with latest rule (#2366) @ssbarnea
+    - Increase lock timeout to 120s (#2370) @ssbarnea
+    - Move ansible-lint config schema inside our repo (#2367) @ssbarnea
+    - Added extra checks regarding rule listing (#2368) @ssbarnea
+    - Refactor rule loading so we can correctly load markdown help files (#2362) @ssbarnea
+    - Handle FileNotFoundError caused by processing new file in progressive mode (#2364) @kostyaplis
+    - name[play]: now also correctly works with import_playbook blocks (#2359) @apatard
+    - deprecated-local-action: add documentation (#2361) @ssbarnea
+    - deprecated-command: add documentation (#2360) @ssbarnea
+    - command-instead-of-module: improve documentation (#2356) @ssbarnea
+    - command-instead-of-module: improve documentation (#2355) @ssbarnea
+    - key-order: improve documentation (#2354) @ssbarnea
+    - Include links to documentation for default output (#2353) @ssbarnea
+    - Documentation refactoring (#2352) @ssbarnea
+    - Make use of libyaml when possible (#2350) @ssbarnea
+    - name[casing]: now applies only to scripts supporting uppercase (#2347) @ssbarnea
+
+-------------------------------------------------------------------
+Wed Sep  7 13:19:28 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.5.1:
+  * Bugfixes
+    - jinja[spacing]: Include in default warn_list until it matures (#2336) @ssbarnea
+    - jinja[spacing]: Recognize keywords with implicit templating (#2334) @ssbarnea
+    - jinja[spacing]: Ensure ~ is correctly spaced (#2331) @ssbarnea
+    - jinja[spacing]: Avoid evaluating noqa comments (#2329) @ssbarnea
+    - jinja[spacing]: Fix negative numbers inside arrays (#2328) @ssbarnea
+    - command-instead-of-module: allow `systemctl --version` (#2327) @JohnVillalovos
+    - Fix subprocess.run for progressive mode (#2319) @kostyaplis
+    - Raise name[play] for plays missing a name (#2295) @ssbarnea
+
+-------------------------------------------------------------------
+Wed Sep  7 13:15:09 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.5.0:
+  * Minor Changes
+    - Add ability to process multi-document YAML files (#2290) @ssbarnea
+    - Standardize task MatchError enrichment (#2277) @cognifloyd
+    - Add name[casing] to identify wrongly capitalized task names (#2274) @ssbarnea
+    - Rename var-spacing rule to jinja[spacing] (#2259) @ssbarnea
+  * Bugfixes
+    - Reimplement jinja[spacing] to avoid use of regex (#2306) @ssbarnea
+    - Allow use of jinja with no_log (#2311) @ssbarnea
+    - Avoid erroring with empty vars files (#2310) @ssbarnea
+    - Avoid early of splitting shorthand string (#2308) @ssbarnea
+    - Remove pytest from default dependencies (#2307) @ssbarnea
+    - Fix ansible-lint pre-commit hook (#2303) @ssbarnea
+    - Change meta rules to use matchyaml instead of matchplay (#2296) @ssbarnea
+    - Make ruamel.yaml annotation implicit for yaml (#2299) @ssbarnea
+    - Prevent other rules from running on invalid yaml files (#2287) @ssbarnea
+    - Prevent duplicate warnings about deprecated tags (#2293) @ssbarnea
+    - Allow single letter role names (#2292) @ssbarnea
+    - Prevent occasional FileNotFoundError when removing the .lock file (#2291) @ssbarnea
+    - Standardize task MatchError enrichment (#2277) @cognifloyd
+    - Ensure rules are checked in specific order (#2284) @ssbarnea
+    - Prevent finding playbooks inside tasks folders (#2278) @ssbarnea
+    - Replacing os.system with subprocess functions (#2273) @jpodivin
+    - Reimplement unamed-task rule as name[missing] (#2263) @ssbarnea
+    - Implement file locking on cache directory (#2270) @ssbarnea
+    - Improve errors with invalid galaxy.yml files (#2262) @ssbarnea
+    - Fix: Progressive mode has no effect (#2261) @kostyaplis
+
+-------------------------------------------------------------------
+Thu Jul 28 20:05:19 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.4.0:
+  * Minor Changes
+    - Add initial support for rule profiles (#2245) @ssbarnea
+    - deprecated-local-action: refactor to use matchtask()  (#2238) @nishipy
+    - Add support for Python 3.11 (#2239) @ssbarnea
+  * Bugfixes
+    - Upgrade jsonschema to 4.8.0 (#2252) @ssbarnea
+    - Add ability to use use sub-rule matches on skip or warn lists (#2251) @ssbarnea
+    - Improve argument_specs matching pattern (#2249) @ssbarnea
+    - Update schemas (#2250) @ssbarnea
+    - deprecated-local-action: refactor to use matchtask()  (#2238) @nishipy
+    - no-same-owner: refactor to use matchtask() (#2233) @nishipy
+    - Add cleanup step for empty mocked role folders (#2235) @zhan9san
+    - Allow yaml extension for inventory and requirements (#2225) @netsandbox
+    - no-loop-var-prefix: refactor to use matchtask() (#2218) @nishipy
+    - Update schemas (#2223) @jeefberkey
+  * Deprecations
+    - deprecated-local-action: refactor to use matchtask()  (#2238) @nishipy
+
+-------------------------------------------------------------------
+Mon Jul 18 15:51:37 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.3.0:
+  * Minor Changes
+    - Improve bare variable detection (#2203) @ssbarnea
+    - Modify VariableHasSpacesRule to check for spaces around filters (#2180) @nirmal-j-patel
+  * Bugfixes
+    - Updated schemas (#2206) @ssbarnea
+    - Avoid load-failure with nested task imports (#2202) @ssbarnea
+    - Mark load-failure violation as unskippable (#2201) @ssbarnea
+    - Require jsonschema>=4.6.0 (#2200) @ssbarnea
+    - Ensure we require ansible-compat>=2.1.0 (#2199) @ssbarnea
+    - Update dependencies (#2193) @ssbarnea
+    - Don't yield only-builtins on nested tasks like block (#2187) @evgeni
+    - Update schemas (#2192) @ssbarnea
+- update to 6.2.2:
+  * Bugfixes
+    - Accept shell when executable is set (#2176) @nkakouros
+    - Updated JSON Schemas (#2177) @ssbarnea
+    - Avoid runtime warnings from ansible-playbook --syntax-check (#2167) @ssbarnea
+    - Fix duplicated is_nested_task() (#2162) @nishipy
+- update to 6.2.1:
+  * Bugfixes
+    - Avoid using meta schema on ansible-test integration tests (#2156) @felixfontein
+    - Update schemas (#2158, #2160) @ssbarnea
+- update to 6.2.0:
+  * Minor Changes
+    - Add rule to check key order (#2108) @jeefberkey
+    - Improve yamllint messages and documentation (#2148) @ssbarnea
+    - Convert rules documentation to markdown (#2144) @ssbarnea
+    - schema: enable validation of playbook and tasks files (#2133) @ssbarnea
+    - schema: add validation of argument_specs.yml files (#2131) @ssbarnea
+    - schema: add support for ansible-navigator config files (#2128) @ssbarnea
+    - schema: add ability to recognize ansible-lint config files (#2127) @ssbarnea
+    - schema: add ability to recognize yaml inventory files (#2126) @ssbarnea
+    - schema: add ability to recognize meta/runtime.yml files (#2125) @ssbarnea
+    - schema: add support for execution-environments (#2124) @ssbarnea
+  * Bugfixes
+    - Properly raise load-failure when utf-8 decoding fails (#2152) @ssbarnea
+    - Fix codeclimate description output (#2149) @ssbarnea
+    - Recognize tower requirements.txt files (#2147) @ssbarnea
+    - Bump test dependencies (#2145) @ssbarnea
+    - Update to append skipped rules for nested task (#2113) @nishipy
+    - Convert main README to markdown (#2141) @ssbarnea
+    - Include schemas inside the wheel (#2142) @ssbarnea
+    - Convert documentation to markdown (#2137) @ssbarnea
+    - Change custom yamllint config logging to debug (#2139) @ssbarnea
+    - Update JSON Schemas (#2138 #2146) @ssbarnea
+    - Avoid altering PATH when not needed (#2129) @ssbarnea
+    - Fix offline mode (#2115) @ssbarnea
+    - Allow use of empty files as valid config files (#2119) @ssbarnea
+- update to 6.1.0:
+  * Minor Changes
+    - Implement JSON Schema verification for several known file types (#2035) @ssbarnea
+    - Improve cli argument handling (#2099) @ziegenberg
+    - Add no-prompting rule as experimental (#2093) @ziegenberg
+    - Add only-builtins rule to check compatibility with core (#2060) @evgeni
+    - Add native SARIF output support (#2062) @yongyan-gh
+    - --write: Optionally pass rule names to --write in cli (#2051) @cognifloyd
+    - --write: Allow Transforms to mark MatchErrors as fixed (#2041) @cognifloyd
+  * Bugfixes
+    - Fix support for block tasks in unnamed-task rule (#2107) @nishipy
+    - Make sure all tasks get evaluated by matchtask including block/always/rescue and nested tasks (#2031) @nishipy
+    - Ensure tags are escaped when printed (#2096) @ssbarnea
+    - Detect role argument_specs files as a lintable kind (#2091) @ziegenberg
+    - Fix var-naming rule to show line numbers and apply noqa (#2090) @notok
+    - --write: Do not rewrite zero 0 as octal 00 (#2092) @ziegenberg
+    - Relax the yamllint rules on spaces inside braces for flow mappings (#2077) @ziegenberg
+    - Update test and typing deps and remove special code paths for py < 3.8 (#2087) @ziegenberg
+    - Update package metadata for setuptools (#2086) @ziegenberg
+    - Apply var-spacing tests to vars files (#2063) @notok
+    - Add philosophy section to the documentation (#2017) @ssbarnea
+    - Propagate error message to user on systemexit (#2058) @wbh1
+    - Fix loading ansible-lint.yml in git projects (#2059) @evgeni
+
+-------------------------------------------------------------------
+Wed Jun 22 18:00:04 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- change BuildRequires/Requires for ansible to 2.12 which is only provided
+  by the new ansible-core package
+- remove patch deprecated-pytest-hook.patch
+
+-------------------------------------------------------------------
 Sun May 29 11:07:05 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - Add deprecated-pytest-hook.patch to fix a test fail.

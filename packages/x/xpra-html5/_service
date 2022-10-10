@@ -2,7 +2,7 @@
   <service name="obs_scm" mode="disabled">
     <param name="url">https://github.com/Xpra-org/xpra-html5</param>
     <param name="scm">git</param>
-    <!-- GOOD
+    <!-- VERIFIED GOOD:  (older) ;  (newer)
     <param name="revision">8aea0a5</param>
     <param name="revision">0f51cab</param>
     <param name="revision">1fe2469</param>
@@ -12,6 +12,7 @@
     <param name="revision">9512aca</param>
     <param name="revision">e181fd1</param>
     <param name="revision">caf9971</param>
+    <param name="revision">f4e08d5</param>
     -->
     <!-- QUESTIONABLE
     <param name="revision">ced316f</param>

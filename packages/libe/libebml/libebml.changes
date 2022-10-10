@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct  8 16:46:32 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.4.4
+  * Fix ABI compatibility: unfortunately release 1.4.3 broke ABI
+    compatibility. This release restores the compatibility with
+    release 1.4.2. Please use it instead of release 1.4.3. In
+    other words: 1.4.2 & 1.4.4 are compatible, while 1.4.3 is
+    compatible with neither 1.4.2 nor 1.4.4.
+
+-------------------------------------------------------------------
 Sat Oct  1 10:59:08 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.3:

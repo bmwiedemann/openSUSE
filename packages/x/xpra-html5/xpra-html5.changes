@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Oct 01 20:00:10 UTC 2022 - scott.bradnick@suse.com
+
+- Update uglifyjs to '3.17.2'
+- Update to version 6.0+git20220926.c248091:
+  * linting
+  * linting
+  * update release no
+  * fix el9 builds
+  * update the release notes
+  * bump release no
+  * Move paint, add css class
+  * #198 send decode errors to the server
+  * typo
+  * typo
+  * only validate the frame type if it is specified
+  * #198 default to medium quality when upscaling
+  * #198 don't set any 'resize' options when not using scaling
+
+-------------------------------------------------------------------
 Fri Aug 19 19:43:48 UTC 2022 - scott.bradnick@suse.com
 
 - Updating uglifyjs to '3.17.0'

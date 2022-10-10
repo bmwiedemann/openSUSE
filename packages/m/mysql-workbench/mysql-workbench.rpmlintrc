@@ -1,3 +1,0 @@
-# files required during runtime by mysql-workbench, they are not C sources
-addFilter("devel-file-in-non-devel-package .*/usr/lib64/mysql-workbench/.*")
-addFilter("devel-file-in-non-devel-package .*/usr/lib/mysql-workbench/.*")

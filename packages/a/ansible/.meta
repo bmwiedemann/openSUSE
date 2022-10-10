@@ -6,6 +6,6 @@ over SSH and does not require any software or daemons to be installed
 on remote nodes. Extension modules can be written in any language and
 are transferred to managed machines automatically.
 </description>
-  <devel project="systemsmanagement" package="ansible"/>
+  <devel project="systemsmanagement:ansible" package="ansible"/>
   <url>http://ansible.github.com</url>
 </package>

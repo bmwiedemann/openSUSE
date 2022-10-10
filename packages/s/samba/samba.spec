@@ -32,10 +32,10 @@
 %define build_ceph 1
 %endif
 
-%define talloc_version 2.3.3
-%define tevent_version 0.11.0
-%define tdb_version    1.4.6
-%define ldb_version    2.5.0
+%define talloc_version 2.3.4
+%define tevent_version 0.13.0
+%define tdb_version    1.4.7
+%define ldb_version    2.6.1
 
 # This table represents the possible combinations of build macros.
 # They are defined only if not already defined in the build service
@@ -145,7 +145,7 @@ BuildRequires:  liburing-devel
 %endif
 BuildRequires:  sysuser-tools
 
-Version:        4.16.4+git.297.1497eb221ed
+Version:        4.17.0+git.257.5f0ed03584a
 Release:        0
 URL:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}
@@ -681,6 +681,9 @@ CONFIGURE_OPTIONS="\
 %endif
 	--bundled-libraries=NONE,socket_wrapper,cmocka,${bundled_libraries_extra} \
 	--without-fam \
+%if 0%{?suse_version} > 1500
+	--without-smb1-server \
+%endif
 "
 
 ./configure ${CONFIGURE_OPTIONS}
@@ -743,7 +746,6 @@ rm \
 
 # CTDB
 install -m 0644 packaging/SuSE/config/sysconfig.ctdb %{buildroot}/%{_fillupdir}
-install -m 0755 ctdb/config/ctdb.service %{buildroot}%{_unitdir}/ctdb.service
 ln -s service %{buildroot}/%{_sbindir}/rcctdb
 # create tmpfile conf
 install -d -m 0755 %{buildroot}/%{_tmpfilesdir}
@@ -925,6 +927,20 @@ install -m 0644 examples/LDAP/samba-nds.schema %{buildroot}/%{_datadir}/samba/LD
 
 %pre -f samba.pre
 %service_add_pre nmb.service smb.service
+%if 0%{?suse_version} > 1500
+# Prepare for migration to /usr/etc; save any old .rpmsave
+for i in logrotate.d/samba ; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+%endif
+
+%if 0%{?suse_version} > 1500
+%posttrans
+# Migration to /usr/etc, restore just created .rpmsave
+for i in logrotate.d/samba ; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+%endif
 
 %if %{with_dc}
 %pre ad-dc
@@ -1017,6 +1033,20 @@ ln -sf %{_libdir}/samba/ldb %{_libdir}/ldb2/modules/ldb/samba
 
 %pre winbind -f winbind.pre
 %service_add_pre winbind.service
+%if 0%{?suse_version} > 1500
+# Prepare for migration to /usr/etc; save any old .rpmsave
+for i in logrotate.d/samba-winbind ; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+%endif
+
+%if 0%{?suse_version} > 1500
+%posttrans winbind
+# Migration to /usr/etc, restore just created .rpmsave
+for i in logrotate.d/samba-winbind ; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+%endif
 
 %post winbind
 /sbin/ldconfig
@@ -1633,7 +1663,6 @@ exit 0
 %config %{_sysconfdir}/ctdb/nfs-checks.d/50.rquotad.check
 %{_sysconfdir}/ctdb/nfs-checks.d/README
 %{_sbindir}/ctdbd
-%{_sbindir}/ctdbd_wrapper
 %{_sbindir}/rcctdb
 %{_bindir}/ctdb
 %{_bindir}/ctdb_diagnostics
@@ -1661,7 +1690,6 @@ exit 0
 %ghost %dir /run/ctdb
 %{_mandir}/man1/ctdb.1.gz
 %{_mandir}/man1/ctdbd.1.gz
-%{_mandir}/man1/ctdbd_wrapper.1.gz
 %{_mandir}/man1/ctdb_diagnostics.1.gz
 %{_mandir}/man1/ltdbtool.1.gz
 %{_mandir}/man1/onnode.1.gz

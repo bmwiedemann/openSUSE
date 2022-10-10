@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Oct 10 09:12:47 UTC 2022 - Takashi Iwai <tiwai@suse.com>
+
+- Apply the same workaround to uncompressed flat package, too
+  (bsc#1204103)
+
+-------------------------------------------------------------------
+Sat Oct  8 15:46:30 UTC 2022 - Takashi Iwai <tiwai@suse.com>
+
+- Workaround for update failure of kernel-firmware-qcom package
+  due to the change from a directory to a symlink (bsc#1204103)
+
+-------------------------------------------------------------------
 Mon Oct 03 06:55:34 UTC 2022 - tiwai@suse.com
 
 - Update to version 20220930 (git commit fdf1a6525852):

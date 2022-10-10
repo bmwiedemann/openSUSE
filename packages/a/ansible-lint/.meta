@@ -3,6 +3,6 @@
   <description>Checks playbooks for practices and behavior that could potentially be improved
 
 </description>
-  <devel project="systemsmanagement" package="ansible-lint"/>
+  <devel project="systemsmanagement:ansible" package="ansible-lint"/>
   <url>https://github.com/willthames/ansible-lint</url>
 </package>

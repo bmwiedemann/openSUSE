@@ -61,6 +61,9 @@ Source1011:     fwtopics.py
 Source1012:     check-topic.py
 Source1013:     update-aliases.py
 Source1014:     README.build
+# workarounds
+Source1100:     qcom-post
+Source1101:     uncompressed-post
 BuildRequires:  fdupes
 BuildRequires:  suse-module-tools
 Requires(post): /usr/bin/mkdir /usr/bin/touch

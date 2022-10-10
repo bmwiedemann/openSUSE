@@ -1025,4 +1025,12 @@ require bash-completion for iproute2-bash-completion]</comment>
     <comment></comment>
     <requestid>994302</requestid>
   </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>56de3b8cdfab8967d5d9aea99de0f5f9</srcmd5>
+    <version>6.0</version>
+    <time>1665420388</time>
+    <user>favogt_factory</user>
+    <comment></comment>
+    <requestid>1008951</requestid>
+  </revision>
 </revisionlist>

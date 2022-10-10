@@ -61,6 +61,9 @@ Source1011:     fwtopics.py
 Source1012:     check-topic.py
 Source1013:     update-aliases.py
 Source1014:     README.build
+# workarounds
+Source1100:     qcom-post
+Source1101:     uncompressed-post
 BuildRequires:  fdupes
 BuildRequires:  suse-module-tools
 Requires(post): /usr/bin/mkdir /usr/bin/touch
@@ -6271,13 +6274,32 @@ sh %{_sourcedir}/list-license.sh < %{_sourcedir}/licenses.list
 %fdupes -s %{buildroot}
 
 %if "%flavor" != "compressed"
+%pre
+# ugly workaround for changing qcom/LENOVO/21BX to a symlink (bsc#1204103)
+if [ ! -L %{_firmwaredir}/qcom/LENOVO/21BX ]; then
+  if [ -d %{_firmwaredir}/qcom/LENOVO/21BX ]; then
+    mv %{_firmwaredir}/qcom/LENOVO/21BX %{_firmwaredir}/qcom/LENOVO/21BX.xxxold
+  fi
+fi
+
 %post
+# ugly workaround (bsc#1204103)
+if [ -d %{_firmwaredir}/qcom/LENOVO/21BX.xxxold ]; then
+  mv %{_firmwaredir}/qcom/LENOVO/21BX %{_firmwaredir}/qcom/LENOVO/21BX.xxxnew
+  mv %{_firmwaredir}/qcom/LENOVO/21BX.xxxold %{_firmwaredir}/qcom/LENOVO/21BX
+else
 %{?regenerate_initrd_post}
+fi
 
 %postun
 %{?regenerate_initrd_post}
 
 %posttrans
+# ugly workaround (bsc#1204103)
+if [ -L %{_firmwaredir}/qcom/LENOVO/21BX.xxxnew ]; then
+  rm -rf %{_firmwaredir}/qcom/LENOVO/21BX
+  mv %{_firmwaredir}/qcom/LENOVO/21BX.xxxnew %{_firmwaredir}/qcom/LENOVO/21BX
+fi
 %{?regenerate_initrd_posttrans}
 
 %post -n ucode-amd
@@ -6506,13 +6528,32 @@ sh %{_sourcedir}/list-license.sh < %{_sourcedir}/licenses.list
 %posttrans prestera
 %{?regenerate_initrd_posttrans}
 
+%pre qcom
+# ugly workaround for changing qcom/LENOVO/21BX to a symlink (bsc#1204103)
+if [ ! -L %{_firmwaredir}/qcom/LENOVO/21BX ]; then
+  if [ -d %{_firmwaredir}/qcom/LENOVO/21BX ]; then
+    mv %{_firmwaredir}/qcom/LENOVO/21BX %{_firmwaredir}/qcom/LENOVO/21BX.xxxold
+  fi
+fi
+
 %post qcom
+# ugly workaround (bsc#1204103)
+if [ -d %{_firmwaredir}/qcom/LENOVO/21BX.xxxold ]; then
+  mv %{_firmwaredir}/qcom/LENOVO/21BX %{_firmwaredir}/qcom/LENOVO/21BX.xxxnew
+  mv %{_firmwaredir}/qcom/LENOVO/21BX.xxxold %{_firmwaredir}/qcom/LENOVO/21BX
+else
 %{?regenerate_initrd_post}
+fi
 
 %postun qcom
 %{?regenerate_initrd_post}
 
 %posttrans qcom
+# ugly workaround (bsc#1204103)
+if [ -L %{_firmwaredir}/qcom/LENOVO/21BX.xxxnew ]; then
+  rm -rf %{_firmwaredir}/qcom/LENOVO/21BX
+  mv %{_firmwaredir}/qcom/LENOVO/21BX.xxxnew %{_firmwaredir}/qcom/LENOVO/21BX
+fi
 %{?regenerate_initrd_posttrans}
 
 %post qlogic

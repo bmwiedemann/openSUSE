@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Sun Oct  9 10:07:58 UTC 2022 - C J <c.j@tuta.io>
+
+- update to 1.7.1:
+  * Fix ABI compatibility: unfortunately release 1.7.0 broke ABI
+    compatibility. This release restores the compatibility with
+    release 1.6.3. Please use it instead of release 1.7.0. In other
+    words: 1.6.3 & 1.7.1 are compatible, while 1.7.0 is compatible
+    with neither 1.6.3 nor 1.7.1.
+
+-------------------------------------------------------------------
+Fri Oct  7 12:19:20 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.0:
+  * A C++14 compliant C++ compiler is now required.
+  * libEBML v1.4.3 is now required.
+  * Remove Coremake project files
+  * Add `KaxInternalBlock::GetRelativeTimestamp()` to access unscaled
+    block timestamps.
+  * Fixed problems with the generated `pkg-config` files if any of the
+    installation paths are absolute.
+  * Added several enums in `namespace libmatroska` for the various
+    elements that are constrained to a set of options:
+    `MatroskaTrackType`, `MatroskaTrackEncodingCompAlgo`,
+    `MatroskaChapterTranslateCodec`, `MatroskaTrackTranslateCodec`,
+    `MatroskaVideoFlagInterlaced`, `MatroskaVideoFieldOrder`,
+    `MatroskaVideoStereoMode`, `MatroskaVideoAlphaMode`,
+    `MatroskaVideoOldStereoMode`, `MatroskaVideoDisplayUnit`,
+    `MatroskaVideoAspectRatioType`, `MatroskaVideoMatrixCoefficients`,
+    `MatroskaColourChromaSitingHorz`, `MatroskaColourChromaSitingVert`,
+    `MatroskaVideoRange`, `MatroskaVideoTransferCharacteristics`,
+    `MatroskaVideoPrimaries`, `MatroskaVideoProjectionType`,
+    `MatroskaAudioEmphasis`, `MatroskaTrackPlaneType`,
+    `MatroskaContentEncodingScope`, `MatroskaContentEncodingType`,
+    `MatroskaContentEncodingAlgo`, `MatroskaAESSettingsCipherMode`,
+    `MatroskaContentSignatureAlgo`, `MatroskaContentSigHashAlgo`,
+    `MatroskaChapterSkipType`, `MatroskaChapterProcessTime` and
+    `MatroskaTargetTypeValue`.
+  * Updated the semantics to the latest specifications, deprecating the
+    following elements by preventing code to write them:
+    `KaxClusterSilentTracks`, `KaxClusterSilentTrackNumber`,
+    `KaxSlices`, `KaxReferenceFrame`, `KaxReferenceOffset`,
+    `KaxReferenceTimeCode`, `KaxTrackTimecodeScale`,
+    `KaxCodecDecodeAll`, `KaxVideoAspectRatio`, `KaxTrickTrackUID`,
+    `KaxTrickTrackSegmentUID`, `KaxTrickTrackFlag`,
+    `KaxTrickMasterTrackUID`, `KaxTrickMasterTrackSegmentUID`,
+    `KaxContentSignature`, `KaxContentSigKeyID`, `KaxContentSigAlgo` and
+    `KaxContentSigHashAlgo`.
+  * Updated the semantics to the latest specifications, making the
+    following elements mandatory (but having default values):
+    `KaxCodecDelay`, `KaxVideoPixelCropBottom`, `KaxVideoPixelCropTop`,
+    `KaxVideoPixelCropLeft`, `KaxVideoPixelCropRight`,
+    `KaxVideoBitsPerChannel`, `KaxCueCodecState`,
+    `KaxTagTargetTypeValue`, `KaxTrackLanguage`, `KaxVideoStereoMode`,
+    `KaxVideoAlphaMode`, `KaxEditionFlagOrdered`,
+    `KaxVideoChromaSitHorz`, `KaxVideoChromaSitVert`,
+    `KaxVideoColourRange`, `KaxVideoColourMatrix`,
+    `KaxVideoColourTransferCharacter`, `KaxVideoColourPrimaries` and
+    `KaxVideoDisplayUnit`.
+  * Updated the semantics to the latest specifications, removing the
+    default values from the following elements: `KaxCueBlockNumber`,
+    `KaxFlagHearingImpaired`, `KaxFlagVisualImpaired`,
+    `KaxFlagTextDescriptions`, and `KaxFlagOriginal`.
+  * Updated the semantics to the latest specifications, adding the
+    following new elements: `TagDefaultBogus` (as a placeholder for
+    accidentally used but wrong EBML ID 0x44b4), `KaxEmphasis`,
+
+-------------------------------------------------------------------
 Tue Feb 23 11:43:03 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.3:

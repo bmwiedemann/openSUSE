@@ -1,10 +1,464 @@
 -------------------------------------------------------------------
+Sat Oct 01 19:31:40 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 4.4+git20221002.1c1e6e0d:
+  * bump version
+  * add rocky / alma / oracle / centos stream
+  * add latest fix
+  * #3454 too easy to hit resizing loops with xterm
+  * show variants if we find any
+  * #3630 don't populate the full layout list if we don't have to
+  * f-stringify
+  * #3630 add test that causes wayland hang
+  * can only join strings
+  * #3630 make it easier to disable all 'after-handshake' calls
+  * fix missing systray on Ubuntu
+  * the nvjpeg flag has been split in 2
+  * build witout cuda on Fedora 37
+  * add an empty changelog
+  * #3628 try harder to find the 'interactive' version
+  * silence some minor warnings
+  * chop large opengl renderer strings when displaying them in UI
+  * #3628 fix support for cygwin ssh servers
+  * remove warning on MS Windows and MacOS
+  * update the release notes
+  * #3628 cygwin probably behaves like msys
+  * some opengl renderer strings can be very long
+  * refactor: split authandler
+  * simplify: don't copy options we don't reuse
+  * match any variation of 'gnome' DE
+  * #3628 oops, emulate the output format too
+  * typo
+  * #3628 match registry query as a plain string
+  * #3628 re-arrange workaround order
+  * #3626 we can query without cmd.exe scripting
+  * add some new definitions
+  * #3628 use paexec to get an interactive desktop
+  * silence warning
+  * silence warnings: access 'daemon' directly
+  * #3626 try harder to locate xpra on MSYS2
+  * #3626 honour more virtual commands execution on MS Windows
+  * fix for loading 'DSS' keys, aka 'dsa' files
+  * doh: check we found the keyclass
+  * #3626 correctly handle channel exec requests
+  * add funding link
+  * replace chan_send with sendall variants
+  * missed brotli compressor from clean list
+  * never try to use systemd-run on MacOS
+  * cosmetic
+  * also clean the uuid
+  * add utility for dumping xpra's x11 properties
+  * delete the mode property on exit
+  * cosmetic
+  * doh: cut&paste gone wrong
+  * refactor authorized keys parsing into a reusable function
+  * refactor and keep the first match
+  * simplify
+  * fix warnings
+  * refactoring + try to honour 'echo'
+  * cosmetic
+  * #3625 downgrade to a warning
+  * cosmetic
+  * some exceptions have no message
+  * fix '_proxy' mode: don't start a server
+  * verify we have a stdout array before accessing it
+  * cosmetic
+  * avoid errors with ssh sockets
+  * #3626 don't use 'command' command on MS Windows
+  * handle all '_proxy_*' subcommands generically
+  * 'command' can be used without any arguments
+  * f-stringify some more
+  * don't show the full backtrace at 'error' log level
+  * missing alias lookup
+  * f-stringify some more
+  * skip attempting to load codecs that aren't available
+  * f-stringify
+  * f-stringify and use mode aliases earlier
+  * also skip 'importlib._bootstrap' as a debug category
+  * use a more reliable timestamp server
+  * unused import
+  * add full backtrace at debug level
+  * bail out if no GPU found
+  * no visible logging during self-tests
+  * #3625 skip showing scary warnings
+  * f-stringify + fix warnings
+  * add nvfbc to diagnostics
+  * oops: missing exception variable caused an error
+  * cosmetic
+  * dependency is missing on Debian Bookworm
+  * the debian headers are too old
+  * the pkgconfig file takes care of the [lib]drm path
+  * remove unused framework
+  * pynvml 11.515.75
+  * ffmpeg 5.1.1
+  * update faac / faad url to maintained github fork
+  * better libvpx url
+  * 4.4 updates
+  * #3625 add early check for nvidia driver
+  * catch permission errors and report them
+  * #3625 more consistent failure messages with missing hardware
+  * use the correct loggers
+  * keep the 'owned' flag updated
+  * unused import
+  * oops: no more hex
+  * #3504 don't build the nvjpeg decoder by default
+  * simplify
+  * we must use print here
+  * initialize variable so we can handle failures
+  * remove support for gcc versions older than 6
+  * f-stringify and fix warnings
+  * f-stringify and fix warnings
+  * fix legacy packet encoders
+  * f-stringify
+  * #3390 PoC expand server
+  * don't use GLib directly
+  * don't use GLib directly
+  * #3473 also clamp pre-mapped windows
+  * f-stringify
+  * also makes the code less dense?
+  * more generic solution for missing menu items
+  * the qr menu may be missing
+  * no wayland here..
+  * when failing to parse, return 'auto' value
+  * simplify validation
+  * xsettings watcher may be None
+  * f-stringify and fix warnings
+  * shortcut out, avoids backtrace splatter
+  * type annotation was wrong
+  * free wrapper explicitly to avoid warnings
+  * #3390 add drm as a pseudo codec
+  * Fedora 37 needs an updated Cython
+  * #3390 the cursor fix is in 1.9.1
+  * #3390 add compatibility glue for older cursor function
+  * #3390 add compatibility glue for older versions
+  * Cython 3.0 alpha: use pre-release to support python 3.11
+  * #3622 handle config file parsing errors more gracefully
+  * #3390 dumb double buffering
+  * round seconds
+  * f-stringify
+  * late_start() should only run once
+  * log real errors, ignore missing PIL
+  * #3390 oops: forgot to add drm module
+  * don't import logger if we don't need it
+  * skip scary permission warning for socket dirs in XDG_RUNTIME_DIR
+  * f-stringify
+  * split method
+  * cosmetic
+  * f-stringify
+  * fix logging call
+  * win32 DotXpra only uses 'username'
+  * disable clipboard proxies until we have a peer for them
+  * better window info
+  * silence pylint warning
+  * minor warnings
+  * pycuda depends on numpy
+  * restore missing numpy import
+  * typo + add reset_logging()
+  * constify and cleanup
+  * save as jpeg, bail out sooner
+  * use ValueError
+  * cleanup and remove python2 support (simplify)
+  * f-stringify
+  * #3619 better exception message for payload size errors
+  * #3619 don't compress strings
+  * #3390 cleanup and f-stringify
+  * oops, fixup missing import from 3c02e27631d982f0540aac9be0d87272529c74d6
+  * raise min version
+  * f-stringify and minor warnings
+  * validate screen dimensions, round if necessary
+  * #3483 move most of the locking to cuda_context import
+  * better server / session type string (we don't use gtk2)
+  * try to normalize mode names better
+  * #3390 move finding devices to a reusable function
+  * cleanup and f-stringify
+  * delay bindings imports until actually needed
+  * f-stringify
+  * #3390 make save-to-file optional (too slow)
+  * validate platform earlier, remove duplicated check
+  * #3390 typo: check for 'libdrm'
+  * #3390 add kernel module loading helper
+  * #3390 move drm to its own module
+  * f-stringify and fix pylint warnings
+  * #3390 expose drm info when FULL_INFO>1
+  * silence pylint warning
+  * #3390 cleanup and f-stringify
+  * #3390 build dependency updates
+  * #3458 we have ffmpeg builds now
+  * #3390 add drm query tool
+  * #3390 update to latest API
+  * #3390 no need for info logging, we can use 'evdi' for debugging
+  * f-stringify
+  * #3616 add 'autoconnect' checkbox to dialog
+  * better error format
+  * typo
+  * pylint warnings
+  * f-stringify, fix minor warnings
+  * f-stringify and pylint warnings
+  * f-stringify and pylint warnings
+  * f-stringify
+  * f-stringify, fix minor warnings
+  * use our pkgconfig file as template
+  * don't use print()
+  * assume that the user wants to abort authentication
+  * fix pylint warnings
+  * whitespace cleanup
+  * update tests to use 'wants' array
+  * fix minor warnings, avoid print()
+  * avoid naked print() in reusable / exported functions
+  * #3610 use the last line of output
+  * #3610 detect which 'find' command to use
+  * f-stringify and remove print()
+  * #3524 support remote ssh start
+  * oops: typo
+  * linter warning
+  * f-stringify
+  * #3592 move towards generic feature requests
+  * also update default file config
+  * automatically enable sync-xvfb when using Xephyr or Xnest
+  * f-stringify
+  * f-stringify
+  * also remove session tmp dir
+  * f-strings and warnings
+  * #3002 bail out if the user cancels pinentry
+  * we can't call quit() directly from the authentication thread
+  * prettify
+  * f-strings
+  * typo
+  * f-strings
+  * f-strings
+  * #3478 tool for extracting atom names from values
+  * open() warnings and f-strings
+  * silence import warning
+  * ensure tests don't use prompts
+  * re-enable
+  * simplify
+  * remove unused argument
+  * #3610 wait for a valid header on ssh connections
+  * more cleanups, warning fixes, f-strings
+  * fix more minor warnings
+  * fix minor linter warnings
+  * server time is better than using CurrentTime
+  * use f-string
+  * revert fb6621eaf922466a4210f2d03a973893e4bfa74c
+  * re-use the superclass method
+  * we don't have 'long's any more
+  * bug: timestamp clamping should not shortcut out
+  * log all the event data
+  * simplify some more
+  * simplify, a bit
+  * update the release notes
+  * preserve URL arguments in http request path
+  * cosmetic: make code more readable
+  * mostly cosmetic refactoring
+  * fix error path ('reason' was undefined)
+  * unused import
+  * #3604 separate logging from gen-dir
+  * don't use temporary variable with reserved name
+  * OR windows don't have 'client-geometry'
+  * f-strings
+  * f-strings and fix lint warnings
+  * convert to spaces
+  * f-strings
+  * need ssl attributes to parse
+  * honour env to skip coverage
+  * #3601 the lz4 compat header file must be included explicitly
+  * we now support 1.8 or later
+  * #3601 workaround for older versions of lz4
+  * #3601 unit test
+  * remove print debug statement
+  * #3560 also update the client unit test
+  * we have to query the keymap to get properties
+  * typo
+  * oops: missing import
+  * remove unused import, add debug logging
+  * remove unused arg
+  * simplify: raise_xerrors=False is the default
+  * unused import
+  * silence lint warnings
+  * when testing, disable lost-focus-exit behaviour
+  * silence linter warnings
+  * oops, that was for testing only
+  * move x11 tests where they belong
+  * #3582 honour FULL_INFO in get_host_info
+  * pid is no longer included in host info
+  * proxy attributes are now regular display attributes
+  * silence some minor lint warnings
+  * #3560 forgot to update unit test
+  * #1796 make the 'all' list of challenge handlers configurable
+  * vfb bits require the 'display' feature
+  * remove unused imports
+  * avoid None values
+  * avoid more None values
+  * bencode doesn't like None values
+  * add missing indentation
+  * build more codecs
+  * skip test if numpy is missing
+  * tests may not initialize all attributes
+  * vfb bits require the 'display' feature
+  * try to make it clearer this should not be used
+  * skip the dbus test if python-dbus is not installed
+  * also honour the PYTHON env var when launching subprocesses
+  * typo
+  * fix deprecation warning
+  * don't use 'which' on absolute paths
+  * cosmetic
+  * make it possible to test with multiple interpreters in parallel
+  * cosmetic
+  * we can't import the enums directly
+  * skip dbus test if python-dbus is not installed
+  * also honour the interpreter here
+  * fix uninitialized warning with latest Cython
+  * #3373 enable libspng
+  * doh: use the same interpreter for running the tests
+  * make it easier to run with a different interpreter
+  * distinguish connection errors from authentication failures
+  * cosmetic
+  * cosmetic
+  * avoid deprecation warnings
+  * oops: also remove import
+  * refresh delay is no more (#3560)
+  * silence warnings with newer versions of Pillow
+  * #3486 never use print() directly from modules
+  * better error diagnostics
+  * return strings, not bytes
+  * simplify
+  * avoid errors when python-xdg is not installed
+  * downgrade missing paramiko to a warning
+  * catch missing python-dbus earlier
+  * missing python-dbus is just a warning
+  * error handling for menu loading
+  * #3601 updated deps
+  * #3572 we only need the lib
+  * #3601 deb dependencies
+  * #3100 cleanup the authentication handler interface
+  * #3100 exit more quickly if the http connection requires authentication
+  * #3100 make challenge handlers more re-usable
+  * don't add the same digest value multiple times
+  * cosmetic
+  * #3100 make authentication method re-usable
+  * #3100 'Basic' http authentication handler
+  * cuda context locking contention should be a transient problem
+  * the html5 client wants to know the frame type
+  * #3598 expose 'low' 'scaling-quality' for nvenc and nvjpeg
+  * avoid weird closure errors
+  * f-strings
+  * #3607 newer clients don't want flattened caps
+  * easier to read
+  * unused import
+
+-------------------------------------------------------------------
+Tue Aug 23 14:26:55 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 4.4+git20220823.6f83fe78f:
+  * #3607 newer clients don't want flattened caps
+  * easier to read
+  * unused import
+  * os.path.abspath always returns a path
+  * MacOS doesn't have an XDG_RUNTIME_DIR
+  * show what type of client disconnected
+  * #3059 X11 pointer grabs
+  * #3059 pointer grabs for win32 using ClipCursor
+  * fix desktop servers
+  * silence linter warnings
+  * #3504 use async calls using a cuda stream
+  * #3582 more fine grained filtering
+  * re-use value from common
+  * move icon functions to a more re-usable location
+  * simplify
+  * cosmetic
+  * oops: 10 seconds is slow
+  * #508 workaround win32 focus events
+  * #508 also show progress of downloads
+  * #508 use the Taskbar to show splash screen progress
+  * remove unused 'display' argument
+  * #1526 get dpi from comtypes
+  * #3504 move nvjpeg code to a separate method
+  * #3589 reset fraction and text and re-generating progressbar widget
+  * try harder to prevent dangling timers
+  * #3589 re-generate new buttons
+  * add debug logging
+  * remove unused 'tooltip' argument
+  * better formatting
+  * wrong positional arg
+  * fix digest errors with unchunked file transfers
+  * better formatting and f-strings
+  * avoid errors deleting the temporary file
+  * fixup version number conversion
+  * drop meaningless 'python-XX' version
+  * import errors can be handled generically
+  * #3601 remove python-lz4 fallback
+  * #3601 remove python-lz4 package dependency
+  * #3601 don't require python-lz4 anymore
+  * #3601 prefer our own lz4 cython module
+  * remove debug
+  * #3601 handle memoryviews
+  * #3601 handle memoryviews natively
+  * remove unused imports
+  * #3582 don't assume 32-bit
+  * silence some warnings
+  * fixup c420dc9170ff08c2d3f3a602114ab0af82e09b8d
+  * #3504 show pycuda context cleanup failures
+  * x11 bindings return bytes
+  * just one repeated typo
+  * #2105 bundle libproxy.py (missed from 82b0698e55f591173a5afbd3df6048de60a4d987)
+  * update embedded xxHash lib
+  * #3592 use namespace for audio caps
+  * skip empty values
+  * #3592 move clipboard caps to a prefix
+
+-------------------------------------------------------------------
+Mon Aug 22 22:57:03 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 4.4+git20220807.c52d8ac10:
+  * new git snapshot
+  * .. and here
+  * we can use the same list for '8' and '9'
+  * oops: forgot to bump version
+  * doh: wrong line
+  * ffmpeg 5.1 deprecated 'channels'
+  * use newer commit
+  * pytools 2022.1.12
+  * pbr 5.9.0
+  * ffmpeg 5.1
+  * python-lz4 4.0.2 + fix macro warning
+  * with 'epel-next-release' installed, this is not needed
+  * bump date
+  * match layout update
+  * #3600 try to build python3-lz4 for RHEL 9
+  * #2105 detect proxy settings using libproxy
+
+-------------------------------------------------------------------
+Sun Aug 21 18:06:41 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 4.4+git20220801.cc03f573e:
+  * obvious is obvious
+  * simplify: cuda-device-context is a video encoder option
+  * don't increase the quality artifically
+  * don't special case video
+  * remove 'text' special cases
+  * #3420 add control commands for 'max' options
+  * honour refresh attributes
+  * #3420 honour max-quality in more places
+  * #2105 bundle pysocks with MS Windows and MacOS binaries
+  * #3572 brotli option toggles the module
+  * 2105 install pysocks on MS Windows build machines
+  * #2105 connections via proxies using pysocks
+  * Cython 0.29.32
+  * Cython 0.29.31
+  * revert 4425c08d72e08d4d2f0fe487cdc5f03e99ba8c88 which causes crashes
+  * #2779 shortcut for showing the documentation
+  * #2779 try harder to find a valid documentation path
+  * don't install the manual in a subdirectory
+  * #2779 add a shortcut for showing all the shortcuts
+  * warn about uinput
+
+-------------------------------------------------------------------
 Wed Aug 10 12:43:24 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Making adjustments as per https://build.opensuse.org/request/show/994288
   * Swapping out '--without-strict'
   * Using CFLAGS '-Wno-error=deprecated-declarations' for all flavors
-  * Addin 'ExcludeArch:    %ix86'
+  * Adding 'ExcludeArch:    %ix86'
 
 -------------------------------------------------------------------
 Sun Aug  7 01:55:02 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>

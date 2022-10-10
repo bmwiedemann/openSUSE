@@ -30,7 +30,7 @@
 %endif
 
 Name:           mapserver
-Version:        7.6.4
+Version:        8.0.0
 Release:        0
 Summary:        Environment for building spatially-enabled internet applications
 License:        MIT
@@ -39,10 +39,7 @@ URL:            https://www.mapserver.org/
 Source:         https://download.osgeo.org/mapserver/%{name}-%{version}.tar.gz
 Source9:        %{name}-rpmlintrc
 # Known issues:
-# - /usr/share/cmake/Modules/FindPostgreSQL.cmake is silly
-#   (the postgresql version list is manual), so no postgresql
 # - swig 4.0 can't do php8, gotta wait for 4.1 so no php
-Patch0:         mapserver-7.6.1-fix_python_install_path.patch
 BuildRequires:  FastCGI-devel
 BuildRequires:  apache2-devel
 BuildRequires:  autoconf
@@ -101,7 +98,6 @@ Group:          System/Libraries
 %description -n %{libname}
 Mapserver library for mapserver or mapscript module. you need this lib to run mapserver
 or any of the mapscript module (php, java, python, ruby)
-
 
 
 # We don't require apache2_mod-php8 users could have php5 running
@@ -315,17 +311,31 @@ rm -rf %{buildroot}%{_docdir}/%{name}/tests/vera \
        %{buildroot}%{_docdir}/%{name}-%{version}/tests/vera
 
 chmod a+x "%{buildroot}/%{_libdir}/libjavamapscript.so"
+rm -fv "%buildroot/%_sysconfdir/mapserver-sample.conf"
+echo >"mapserver.conf" <<-EOF
+	CONFIG
+		ENV
+			MS_MAP_PATTERN "^"
+		END
+	END
+EOF
+
+%if 0%{?suse_version} < 1550
+mkdir -pv "%buildroot/%python3_sitearch"
+mv -v "%buildroot/%python3_sitelib"/* "%buildroot/%python3_sitearch/"
+%endif
 
 %post -n %{libname} -p /sbin/ldconfig
 
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files
-%doc README.rst HISTORY.TXT
+%doc README.rst HISTORY.TXT mapserver.conf
 %doc MIGRATION_GUIDE.txt
 %doc symbols tests
 %doc fonts
-%{_bindir}/shp2img
+%{_bindir}/coshp
+%{_bindir}/map2img
 %{_bindir}/shptree
 %{_bindir}/sortshp
 %{_bindir}/tile4ms

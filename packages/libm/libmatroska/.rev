@@ -442,4 +442,12 @@ KaxBlockGroup, KaxSimpleBlock: fixed writing the block header if the track numbe
     <comment></comment>
     <requestid>874591</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>432f9e0435e6a7650f273b018e672c1a</srcmd5>
+    <version>1.7.1</version>
+    <time>1665420403</time>
+    <user>favogt_factory</user>
+    <comment></comment>
+    <requestid>1009315</requestid>
+  </revision>
 </revisionlist>

@@ -82,4 +82,12 @@
     <comment></comment>
     <requestid>1006319</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>b12968ba7780810752c492fba5322bc7</srcmd5>
+    <version>5.6.4</version>
+    <time>1665420420</time>
+    <user>favogt_factory</user>
+    <comment>- Fix file list for %arm (forwarded request 1007237 from Guillaume_G)</comment>
+    <requestid>1008945</requestid>
+  </revision>
 </revisionlist>

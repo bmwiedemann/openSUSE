@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct  6 13:58:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.12.1:
+  * Support for move-only values to Return
+  * New matchers: WhenBase64Unescaped
+  * ResultOf() now has a 3-arg overload that takes a description string for better
+    error messages
+  * CMake minimum increased to 3.5
+
+-------------------------------------------------------------------
 Fri Apr  8 11:34:37 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Disable 2 warnings that are affected by GCC 12:

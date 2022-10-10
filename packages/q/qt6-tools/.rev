@@ -151,4 +151,12 @@
     <comment>Qt 6.4.0</comment>
     <requestid>1007332</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>5b511717efc267a00d5fcc7a80059a9c</srcmd5>
+    <version>6.4.0</version>
+    <time>1665420415</time>
+    <user>favogt_factory</user>
+    <comment>Fix build with clang 15</comment>
+    <requestid>1008920</requestid>
+  </revision>
 </revisionlist>

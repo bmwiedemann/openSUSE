@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Oct  9 06:00:12 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v16.3.1
+  * Changes of version 16.3.1
+    = Fix shape of LATIN SMALL LETTER E WITH OGONEK (U+0119)
+      (#1427).
+    = Width grade will now influence marks' width.
+
+-------------------------------------------------------------------
+Sun Oct  2 13:47:13 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v16.3.0
+  * Changes of version 16.3.0
+    = Add variant selector to remove notches for equality ligations
+      (#1425).
+    = Fix cv40's application to CYRILLIC SMALL LETTER ER (U+0440)
+      (#1426).
+
+-------------------------------------------------------------------
 Sat Oct  1 23:45:29 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v16.2.1

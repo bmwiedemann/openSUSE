@@ -617,4 +617,12 @@ x86-64 when building with python 3.5.</comment>
     <comment></comment>
     <requestid>993096</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>2c4e6b7b54c93f06f17b8a18d51a6928</srcmd5>
+    <version>2.6.1</version>
+    <time>1665420275</time>
+    <user>favogt_factory</user>
+    <comment></comment>
+    <requestid>1006989</requestid>
+  </revision>
 </revisionlist>

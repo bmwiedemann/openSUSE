@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct  7 14:11:57 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.0.69
+  * End the start queue when startid is not used
+  * Fix a bug 
+
+-------------------------------------------------------------------
 Sun Oct  2 12:11:44 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Fix build on Qt 5.15.6 

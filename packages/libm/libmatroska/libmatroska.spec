@@ -1,7 +1,7 @@
 #
 # spec file for package libmatroska
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover 7
 Name:           libmatroska
-Version:        1.6.3
+Version:        1.7.1
 Release:        0
 Summary:        Library to Deal with Matroska Files
 License:        LGPL-2.1-or-later
@@ -32,7 +32,7 @@ Source99:       %{name}.changes
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(libebml) >= 1.4.2
+BuildRequires:  pkgconfig(libebml) >= 1.4.4
 
 %description
 Libmatroska is a C++ library to parse Matroska files (.mkv and .mka).
@@ -69,7 +69,7 @@ your own applications.
 # Force some additional versioning, since upstream did not track the ABI
 # changes.
 # Tag with the version of the most recent !!incompatible!! change.
-echo "V_1.6.1 { global: *; };" > libmatroska.sym
+echo "V_1.7.0 { global: *; };" > libmatroska.sym
 export LDFLAGS="-Wl,--version-script=$PWD/libmatroska.sym"
 %cmake \
 	-DCMAKE_SHARED_LINKER_FLAGS="$LDFLAGS -Wl,--as-needed -Wl,--no-undefined -Wl,-z,now"

@@ -55,7 +55,7 @@ BuildRequires:  pkgconfig(cmocka) >= 1.1.3
 %define	build_make_smp_mflags %{?jobs:-j%jobs}
 %endif
 URL:            https://tevent.samba.org/
-Version:        0.11.0
+Version:        0.13.0
 Release:        0
 Summary:        An event system based on the talloc memory management library
 License:        LGPL-3.0-or-later

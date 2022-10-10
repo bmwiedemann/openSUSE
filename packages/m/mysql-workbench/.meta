@@ -1,9 +1,0 @@
-<package name="mysql-workbench" project="openSUSE:Factory">
-  <title>A MySQL visual modeling tool</title>
-  <description>MySQL Workbench provides DBAs and developers an integrated tools environment
-for:
- * Database Design &amp; Modeling
- * SQL Development (replacing MySQL Query Browser)
- * Database Administration (replacing MySQL Administrator)</description>
-  <devel project="server:database" package="mysql-workbench"/>
-</package>

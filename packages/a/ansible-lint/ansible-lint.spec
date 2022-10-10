@@ -20,13 +20,12 @@
 %global lib_name ansiblelint
 %{?python_enable_dependency_generator}
 Name:           ansible-lint
-Version:        5.4.0
-Release:        1%{?dist}
+Version:        6.7.0
+Release:        0%{?dist}
 Summary:        Best practices checker for Ansible
 License:        MIT
 URL:            https://github.com/ansible-community/ansible-lint
-Source0:        https://github.com/ansible-community/ansible-lint/archive/v%{version}/ansible-lint-%{version}.tar.gz
-Patch0:         https://github.com/ansible/ansible-lint/commit/aa6c1c6577f8178643591ddc06996a5d5588cb9a.patch#/deprecated-pytest-hook.patch
+Source0:        https://github.com/ansible-community/ansible-lint/archive/v%{version}/ansible-lint-%{version}.tar.gz#/ansible-lint-%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-PyYAML
@@ -38,17 +37,24 @@ BuildRequires:  python3-pytest-xdist
 BuildRequires:  python3-flaky
 BuildRequires:  python3-packaging
 BuildRequires:  python3-tenacity
-BuildRequires:  python3-yamllint
+BuildRequires:  python3-yamllint >= 1.25.0
 #BuildRequires:     git
 BuildRequires:  python3-enrich >= 1.2.6
-BuildRequires:  ansible
+BuildRequires:  python3-ansible-compat >= 2.0.2
+BuildRequires:  python3-black
+BuildRequires:  python3-flake8
+BuildRequires:  python3-mypy
+BuildRequires:  python3-pylint
+BuildRequires:  python3-pytest-cov
 BuildRequires:  python3-rich >= 9.5.1
 BuildRequires:  python3-ruamel.yaml >= 0.15.37
 BuildRequires:  python3-wcmatch >= 7.0
 # /SECTION
+BuildRequires:  ansible-core >= 2.12
 BuildRequires:  fdupes
-Requires:       ansible
+Requires:       ansible-core >= 2.12
 Requires:       python3-PyYAML
+Requires:       python3-ansible-compat >= 2.0.2
 Requires:       python3-enrich >= 1.2.6
 Requires:       python3-packaging
 Requires:       python3-rich >= 9.5.1
@@ -56,13 +62,13 @@ Requires:       python3-ruamel.yaml >= 0.15.37
 Requires:       python3-six
 Requires:       python3-tenacity
 Requires:       python3-wcmatch >= 7.0
+Requires:       python3-yamllint >= 1.25.0
 
 %description
 Checks playbooks for practices and behavior that could potentially be improved.
 
 %prep
-%setup -n ansible-lint-%{version}
-%patch0 -p1
+%setup -n %{name}-%{version}
 sed -ri 's/(\[metadata\])/\1\nversion = %{version}/' setup.cfg
 sed -i '1{/\/usr\/bin\/env python/d;}' src/ansiblelint/__main__.py
 
@@ -77,15 +83,9 @@ python3 -O -m compileall %{buildroot}/%{python3_sitelib}
 
 %fdupes -s %{buildroot}/%{python3_sitelib}
 
-%check
-# exclude some tests depending on internet access (galaxy modules)
-# exclude test_cli_auto_detect which depends on a local git repository
-# exclude test_co and test_call_from_outside_venv because of https://github.com/ansible-community/ansible-lint/issues/1885 FIXED!
-PYTHONPATH=${PYTHONPATH:+$PYTHONPATH:}%{buildroot}/%{python3_sitelib} PATH=${PATH:+$PATH:}%{buildroot}/%{_bindir} PYTHONDONTWRITEBYTECODE=1 pytest -v -k 'not (test_prerun_reqs_v1 or test_prerun_reqs_v2 or test_install_collection or test_require_collection_wrong_version or test_cli_auto_detect or test_eco or test_call_from_outside_venv)'
-
 %files
-%doc README.rst
-%license LICENSE
+%doc README.md
+%license COPYING
 %{_bindir}/ansible-lint
 %{python3_sitelib}/%{lib_name}/
 %{python3_sitelib}/ansible_lint-%{version}.dist-info/

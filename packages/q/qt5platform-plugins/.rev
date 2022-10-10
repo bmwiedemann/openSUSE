@@ -78,4 +78,14 @@
     <comment>- Fix build on Qt 5.15.6 (forwarded request 1007543 from hillwood)</comment>
     <requestid>1007544</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>18ed8cc49188248e95310f2c4c37ca91</srcmd5>
+    <version>5.0.69</version>
+    <time>1665420419</time>
+    <user>favogt_factory</user>
+    <comment>- Update version to 5.0.69
+  * End the start queue when startid is not used
+  * Fix a bug (forwarded request 1008942 from hillwood)</comment>
+    <requestid>1008943</requestid>
+  </revision>
 </revisionlist>

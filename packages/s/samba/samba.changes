@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Mon Sep 26 09:38:59 UTC 2022 - Noel Power <nopower@suse.com>
+
+- Disable SMB1 for tumbleweed builds.
+
+-------------------------------------------------------------------
+Fri Sep 23 16:22:12 UTC 2022 - Noel Power <nopower@suse.com>
+
+- Update to 4.17.0
+  * acl_xattr VFS module may unintentionally use filesystem
+    permissions instead of ACL from xattr; (bso#15126).
+  * Missing SMB2-GETINFO access checks from MS-SMB2 3.3.5.20.1;
+    (bso#15153).
+  * assert failed: !is_named_stream(smb_fname)") at
+    ../../lib/util/fault.c:197; (bso#15161).
+  * acl_xattr VFS module may unintentionally use filesystem
+    permissions instead of ACL from xattr; (bso#15126).
+  * assert failed: !is_named_stream(smb_fname)") at
+    ../../lib/util/fault.c:197; (bso#15161).
+  * Cross-node multi-channel reconnects result in SMB2 Negotiate
+    returning NT_STATUS_NOT_SUPPORTED; (bso#15159).
+  * winbind at info level debug can coredump when processing
+    wb_lookupusergroups; (bso#15160).
+  * Make use of glfs_*at() API calls in vfs_glusterfs;
+    (bso#15157).
+  * Possible use after free of connection_struct when iterating
+    smbd_server_connection->connections; (bso#15128).
+  * `net usershare add` fails with flag works with --long but
+    fails with -l; (bso#15145).
+  * acl_xattr VFS module may unintentionally use filesystem
+    permissions instead of ACL from xattr; (bso#15126).
+  * Performance regression on contended path based operations;
+    (bso#15125).
+  * Missing READ_LEASE break could cause data corruption;
+    (bso#15148).
+  * libsamba-errors uses a wrong version number; (bso#15141).
+  * SMB1 negotiation can fail to handle connection errors;
+    (bso#15152).
+  * New filename parser doesn't check veto files smb.conf
+    parameter; (bso#15143).
+  * 4.17.rc1 still uses symlink-race prone unix_convert();
+    (bso#15144).
+  * Backport fileserver related changed to 4.17.0rc2;
+    (bso#15146).
+  * Manpage for smbstatus json is missing; (bso#15147).
+  * Backport fileserver related changed to 4.17.0rc2;
+    (bso#15146).
+  * Performance regression on contended path based operations;
+    (bso#15125).
+  * Backport fileserver related changed to 4.17.0rc2;
+    (bso#15146).
+  * Fix issues found by coverity in smbstatus json code;
+    (bso#15140).
+  * Backport fileserver related changed to 4.17.0rc2;
+    (bso#15146).
+
+-------------------------------------------------------------------
+Thu Sep  1 06:07:15 UTC 2022 - Stefan Schubert <schubi@suse.com>
+
+- Migration to /usr/etc: Saving user changed configuration files
+  in /etc and restoring them while an RPM update.
+
+-------------------------------------------------------------------
 Thu Jul 28 11:56:31 UTC 2022 - Samuel Cabrero <scabrero@suse.de>
 
 - Update to 4.16.4

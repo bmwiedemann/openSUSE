@@ -51,6 +51,7 @@ RUN zypper -n install \
               parted \
               qemu-tools \
               reiserfs \
+              shadow \
               supermin \
               xfsprogs \
               xorriso \
@@ -68,7 +69,8 @@ RUN if [ "$TARGETARCH" = "arm64" ]; then \
               fi;
 
 RUN zypper -n remove kubevirt-manifests && \
-    zypper clean -a
+    zypper clean -a && \
+    useradd -u 1001 --create-home -s /bin/bash virt-libguestfs-tools
 
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x entrypoint.sh
@@ -82,4 +84,5 @@ RUN LIBGUESTFS_BACKEND=direct \
     mv appliance-*.tar.xz appliance.tar.xz && \
     rm -rf /var/tmp/.guestfs-*
 
+USER 1001
 ENTRYPOINT [ "/entrypoint.sh" ]

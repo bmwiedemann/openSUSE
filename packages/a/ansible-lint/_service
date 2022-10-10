@@ -1,0 +1,15 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/ansible-community/ansible-lint</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="revision">v6.7.0</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="changesgenerate">disable</param>
+    <param name="match-tag">v*</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+</services>

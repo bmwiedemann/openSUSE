@@ -17,15 +17,15 @@
 #
 
 
-%global version_suffix 1.63
-%global version_current 1.63.0
+%global version_suffix 1.64
+%global version_current 1.64.0
 
 %define obsolete_rust_versioned() \
+Obsoletes:      %{1}1.63%{?2:-%{2}} \
 Obsoletes:      %{1}1.62%{?2:-%{2}} \
 Obsoletes:      %{1}1.61%{?2:-%{2}} \
 Obsoletes:      %{1}1.60%{?2:-%{2}} \
-Obsoletes:      %{1}1.59%{?2:-%{2}} \
-Obsoletes:      %{1}1.58%{?2:-%{2}}
+Obsoletes:      %{1}1.59%{?2:-%{2}}
 
 # === rust arch support tiers ===
 # https://doc.rust-lang.org/nightly/rustc/platform-support.html

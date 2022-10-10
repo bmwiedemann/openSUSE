@@ -45,4 +45,12 @@
     <comment>- Update to release 5.1.2</comment>
     <requestid>1006269</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>194b8772b4ffb841d35940a2b5f16a08</srcmd5>
+    <version>5.1.2</version>
+    <time>1665420425</time>
+    <user>favogt_factory</user>
+    <comment>- Enable AMF conditionally (forwarded request 1008954 from alois)</comment>
+    <requestid>1008955</requestid>
+  </revision>
 </revisionlist>

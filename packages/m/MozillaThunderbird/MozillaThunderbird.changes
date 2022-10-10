@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct  6 07:28:32 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 102.3.2
+  * Thunderbird will try to use POP CRAM-MD5 authentication even if
+    not advertised by server
+  * more bugfixes as in
+    https://www.thunderbird.net/en-US/thunderbird/102.3.2/releasenotes
+
+-------------------------------------------------------------------
 Mon Oct  3 10:08:03 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - build using rust 1.63

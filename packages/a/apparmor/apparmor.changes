@@ -21,6 +21,13 @@ Fri Aug 26 11:37:21 UTC 2022 - David Disseldorp <ddiss@suse.com>
   https://gitlab.com/apparmor/apparmor/-/merge_requests/914 (bsc#1202344)
 
 -------------------------------------------------------------------
+Fri Aug 19 17:05:37 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- skip code linting for packaging
+  * removes pyflakes from the build requirements and thus Ring1
+  * see also https://gitlab.com/apparmor/apparmor/-/issues/121
+
+-------------------------------------------------------------------
 Mon Aug  8 18:51:26 UTC 2022 - Christian Boltz <suse-beta@cboltz.de>
 
 - add dnsmasq.diff: missing r permissions for dnsmasq//libvirt-leaseshelper

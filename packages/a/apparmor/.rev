@@ -2476,4 +2476,14 @@ so you might want to pick this SR into Staging:O (forwarded request 953283 from 
     <comment>- aa-decode: use grep -E instead of deprecated egrep (boo#1203092) (forwarded request 1001150 from AndreasStieger)</comment>
     <requestid>1001316</requestid>
   </revision>
+  <revision rev="183" vrev="3">
+    <srcmd5>0e8b088586f7f6cb4369190b7d04902b</srcmd5>
+    <version>3.0.7</version>
+    <time>1665420386</time>
+    <user>favogt_factory</user>
+    <comment>- skip code linting for packaging
+  * removes pyflakes from the build requirements and thus Ring1
+  * see also https://gitlab.com/apparmor/apparmor/-/issues/121 (forwarded request 998222 from bnavigator)</comment>
+    <requestid>1008880</requestid>
+  </revision>
 </revisionlist>

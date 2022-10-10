@@ -18,7 +18,7 @@
 
 %define _buildshell /bin/bash
 Name:           iproute2
-Version:        5.19
+Version:        6.0
 Release:        0
 Summary:        Linux network configuration utilities
 License:        GPL-2.0-only
@@ -76,6 +76,8 @@ Summary:        Bash completion for iproute
 License:        GPL-2.0-or-later
 Group:          System/Shells
 Requires:       bash-completion
+Requires:       %{name}
+Supplements:    (%{name} and bash-completion)
 
 %description bash-completion
 bash command line completion support for iproute.
@@ -133,6 +135,7 @@ for BIN in lnstat nstat routel ss; do
 done
 mkdir -p "$b/%_docdir/%name"
 cp -an README* examples/bpf "$b/%_docdir/%name/"
+sed 's-/usr/bin/env python3-/usr/bin/python3-g' -i "$b/%_sbindir/routel"
 %fdupes %buildroot/%_prefix
 
 %post

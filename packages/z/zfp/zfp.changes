@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct  1 02:55:45 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 1.0.0
+  https://github.com/LLNL/zfp/releases/tag/1.0.0
+- Fix incorrect libm check when LTO is enabled, add
+  fix_math_check.patch
+- Fix compilation on ILP32 archs, add
+  0001-Fix-64-bit-integer-types-on-32-bit-archs.patch
+
+-------------------------------------------------------------------
 Wed Aug 12 11:39:07 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Fix build for Leap on x86.

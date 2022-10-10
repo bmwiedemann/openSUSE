@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Oct  8 20:50:04 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 8
+  * MapServer now requires a config file. To get back mapserver7
+    behavior, copy /usr/share/doc/packages/mapserver/mapserver.conf
+    to mapserver.conf once.
+  * The shp2img utility has been renamed to map2img
+  * FlatGeobuf is now supported natively
+  * Initial OGC API support
+  * PHP native MapScript has been removed, in place of PHPNG
+    (SWIG) MapScript, and PHP unit tests have been re-enabled
+  * New labeling centerline GEOMTRANSFORM method for polygons
+  * Numerical validation of mapfile entries
+  * Removed various deprecated mapfile parameters
+  * New coshp utility to sort shapefile contents as well as sort
+    the associated qix spatial index.
+- Drop mapserver-7.6.1-fix_python_install_path.patch
+  (no longer applicable)
+
+-------------------------------------------------------------------
 Tue Jul 26 14:54:06 UTC 2022 - Boris Manojlovic <boris@steki.net>
 
 - re-enable postgresql support... 

@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Sun Sep 25 11:48:07 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.4.0:
+  Ansible 6.4.0 will include ansible-core 2.13.4 as well as a curated set of
+  Ansible collections to provide a vast number of modules and plugins.
+  * The changelog for ansible-core 2.13 installed by this release of
+    ansible is available here:
+    https://github.com/ansible/ansible/blob/stable-2.13/changelogs/CHANGELOG-v2.13.rst
+  * Collections which have opted into being a part of the Ansible-6
+    unified changelog will have an entry on this page:
+    https://github.com/ansible-community/ansible-build-data/blob/main/6/CHANGELOG-v6.rst
+
+-------------------------------------------------------------------
+Wed Sep  7 13:47:45 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.3.0:
+  * Ansible 6.3.0 will include ansible-core 2.13.3 as well as a curated set of
+    Ansible collections to provide a vast number of modules and plugins.
+  * The changelog for ansible-core 2.13 installed by this release of
+    ansible is available here:
+    https://github.com/ansible/ansible/blob/stable-2.13/changelogs/CHANGELOG-v2.13.rst
+  * Collections which have opted into being a part of the Ansible-6
+    unified changelog will have an entry on this page:
+    https://github.com/ansible-community/ansible-build-data/blob/main/6/CHANGELOG-v6.rst
+
+-------------------------------------------------------------------
+Wed Sep  7 13:38:07 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.2.0:
+  * Ansible 6.2.0 will include ansible-core 2.13.2 as well as a curated set of
+    Ansible collections to provide a vast number of modules and plugins.
+  * The changelog for ansible-core 2.13 installed by this release of
+    ansible is available here:
+    https://github.com/ansible/ansible/blob/stable-2.13/changelogs/CHANGELOG-v2.13.rst
+  * Collections which have opted into being a part of the Ansible-6
+    unified changelog will have an entry on this page:
+    https://github.com/ansible-community/ansible-build-data/blob/main/6/CHANGELOG-v6.rst
+
+-------------------------------------------------------------------
+Wed Jul 20 07:27:34 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- BREAKING CHANGE:
+  use this package for the ansible release made by the ansible
+  community. This requires ansible-core, which will contain the
+  actual ansible binar
+- rework ansible-rpmlintrc file to only use the filters we need
+  - most of the errors are handled inside the %build section
+
+-------------------------------------------------------------------
 Tue Dec 14 10:32:03 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Require python macros for building
@@ -6,13 +55,7 @@ Tue Dec 14 10:32:03 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@s
 -------------------------------------------------------------------
 Mon Oct 11 19:33:37 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
-- update to 2.9.27 (jsc#SLE-23631) (jsc#SLE-24133)
-  * bsc#1187725 CVE-2021-3620 ansible-connection module discloses sensitive
-    info in traceback error message (in 2.9.27)
-  * bsc#1188061 CVE-2021-3583 Template Injection through yaml multi-line
-    strings with ansible facts used in template. (in 2.9.23)
-  * bsc#1176460 gh#ansible/ansible#72094 ansible module nmcli is broken in
-    ansible 2.9.13 (in 2.9.15)
+- update to 2.9.27
 
 -------------------------------------------------------------------
 Tue Sep 14 14:03:52 UTC 2021 - Michael Ströder <michael@stroeder.com>
@@ -52,7 +95,6 @@ Tue Jun 22 14:35:05 UTC 2021 - Michael Ströder <michael@stroeder.com>
 Wed Jun  2 05:58:58 UTC 2021 - Stefan Seyfried <seife+obs@b1-systems.com>
 
 - update to 2.9.22
-  * CVE-2021-3447 (bsc#1183684) multiple modules expose secured values
 
 -------------------------------------------------------------------
 Tue May  4 05:24:10 UTC 2021 - Michael Ströder <michael@stroeder.com>

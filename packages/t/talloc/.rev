@@ -396,4 +396,12 @@ x86-64 when building with python 3.5.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>921251</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>86a951e986237c2e1b9de69fdf161def</srcmd5>
+    <version>2.3.4</version>
+    <time>1665420279</time>
+    <user>favogt_factory</user>
+    <comment></comment>
+    <requestid>1007709</requestid>
+  </revision>
 </revisionlist>

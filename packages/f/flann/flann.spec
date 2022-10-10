@@ -26,7 +26,11 @@ Group:          Productivity/Scientific/Other
 URL:            https://www.cs.ubc.ca/research/flann/
 Source:         https://github.com/tkircher/flann/releases/download/%version/flann-%version.tar.xz
 # PATCH-FIX-UPSTREAM
-Patch0:         0001-Cleanup-library-build-make-static-library-optional.patch
+Patch0:         https://github.com/tkircher/flann/commit/c9572a40574c18a79e50b6a8c0043a8cafed6e69.patch#/fix_lz4_linkage.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Cleanup-library-build-make-static-library-optional.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-Fix-LZ4_LDFLAGS-format-for-pkgconfig-file.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  googletest-devel
@@ -54,6 +58,7 @@ This package contains the shared library.
 Summary:        Development files for %{name}
 Group:          Development/Libraries/C and C++
 Requires:       lib%{name}%{sover} = %{version}
+Requires:       liblz4-devel
 
 %description    devel
 Fast Library for Approximate Nearest Neighbors.
@@ -63,6 +68,8 @@ application that use %{name}.
 
 %prep
 %autosetup -p1
+# Correct install path for CMake config
+sed -i -e 's@\(set(config_install_dir\).*)@\1 "%{_libdir}/cmake/flann")@' CMakeLists.txt
 
 %build
 %cmake \
@@ -89,6 +96,6 @@ application that use %{name}.
 %{_includedir}/%{name}/
 %{_libdir}/lib%{name}*so
 %{_libdir}/pkgconfig/%{name}.pc
-%{_prefix}/lib/cmake/
+%{_libdir}/cmake/flann
 
 %changelog

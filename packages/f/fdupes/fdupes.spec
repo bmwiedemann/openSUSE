@@ -19,7 +19,7 @@
 %{?!_rpmmacrodir:%define _rpmmacrodir /usr/lib/rpm/macros.d}
 
 Name:           fdupes
-Version:        2.1.2
+Version:        2.2.1
 Release:        0
 Summary:        Tool to identify or delete duplicate files
 License:        MIT

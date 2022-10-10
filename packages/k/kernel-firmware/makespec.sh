@@ -33,6 +33,14 @@ define_subpackage () {
 
 define_post () {
     local l="$*"
+    if [ -z "$l" -a -f uncompressed-post ]; then
+	cat uncompressed-post
+	return 0
+    fi
+    if [ -n "$l" -a -f "$l"-post ]; then
+	cat "$l"-post
+	return 0
+    fi
     test -n "$l" && l=" $l"
     echo "%post$l"
     echo "%{?regenerate_initrd_post}"

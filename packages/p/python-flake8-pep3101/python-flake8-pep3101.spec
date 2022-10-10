@@ -1,7 +1,7 @@
 #
 # spec file for package python-flake8-pep3101
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-flake8-pep3101
-Version:        1.3.0
+Version:        2.0.0
 Release:        0
 Summary:        Checks for old string formatting
 License:        GPL-2.0-only
@@ -41,7 +41,7 @@ BuildRequires:  %{python_module testfixtures}
 Checks for old string formatting.
 
 %prep
-%setup -q -n flake8-pep3101-%{version}
+%autosetup -p1 -n flake8-pep3101-%{version}
 
 %build
 %python_build
@@ -55,7 +55,7 @@ Checks for old string formatting.
 
 %files %{python_files}
 %doc CHANGES.rst README.rst
-%license LICENSE LICENSE.rst
+%license LICENSE
 %{python_sitelib}/*
 
 %changelog

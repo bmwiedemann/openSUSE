@@ -46,6 +46,8 @@ Source13:       org.qt.assistant6.desktop
 # The 48x48 icon was removed from qttools
 Source14:       linguist6.png
 Source99:       qt6-tools-rpmlintrc
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-lupdate-Fix-build-with-clang-15.patch
 # clang-devel in Leap 15.3 points to clang7...
 %if 0%{?suse_version} == 1500 && 0%{?sle_version} == 150300
 BuildRequires:  clang11-devel

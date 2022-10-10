@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 22 15:39:28 UTC 2022 - Noel Power <nopower@suse.com>
+
+- Update to 2.3.4
+  + configure/Makefile: export PYTHONHASHSEED=1 in all
+    'configure/Makefile' scripts
+  + lib:replace: Reformat shell script
+  + nsswitch: reduce dependecies to private libraries and link
+    static/builtin if possible
+
+-------------------------------------------------------------------
 Fri Sep 17 07:54:14 UTC 2021 - Samuel Cabrero <scabrero@suse.de>
 
 - Update to 2.3.3

@@ -105,7 +105,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  pcre-devel
 BuildRequires:  pkg-config
 BuildRequires:  python3
-BuildRequires:  python3-pyflakes
 BuildRequires:  perl(Locale::gettext)
 
 BuildRequires:  swig
@@ -436,7 +435,8 @@ test -f profiles/cache/*/bin.ping
 test -f profiles/cache/*/.features
 %endif
 
-make check -C utils PYFLAKES=/usr/bin/pyflakes-%{py3_ver}
+# run checks in utils except linting -- https://gitlab.com/apparmor/apparmor/-/issues/121
+make check -o check_lint -C utils
 
 %install
 # libapparmor: swig bindings only, libapparmor is packaged via libapparmor.spec

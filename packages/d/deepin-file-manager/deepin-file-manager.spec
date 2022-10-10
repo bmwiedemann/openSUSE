@@ -305,7 +305,7 @@ chmod -x %{buildroot}%{_datadir}/dbus-1/services/*.service
 %{_datadir}/applications/dde-*.desktop
 %{_datadir}/glib-2.0/schemas/*.xml
 %{_datadir}/dbus-1/services/com.deepin.dde.desktop.service
-%ifarch %arm aarch64
+%ifarch aarch64
 %{_sysconfdir}/xdg/autostart/dde-file-manager-autostart.desktop
 %endif
 

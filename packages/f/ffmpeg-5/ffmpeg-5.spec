@@ -38,6 +38,7 @@
 %nil
 
 %if 0%{?BUILD_ORIG}
+%bcond_without amf_sdk
 %bcond_without cuda_sdk
 %else
 # If software H264 is disabled, the hw driver must be as well:
@@ -46,6 +47,7 @@
 # -codecs` rather than the success/failure status of libav* initialization.
 # This becomes a problem when a format only has a HW driver;
 # the browser thinks it can do H264 but never succeeds.
+%bcond_with    amf_sdk
 %bcond_with    cuda_sdk
 %endif
 %bcond_with    amrwb
@@ -103,6 +105,9 @@ Patch9:         ffmpeg-4.4-CVE-2020-22046.patch
 Patch10:        ffmpeg-chromium.patch
 Patch91:        ffmpeg-dlopen-openh264.patch
 
+%if %{with amf_sdk}
+BuildRequires:  AMF-devel
+%endif
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  libmp3lame-devel
@@ -556,6 +561,9 @@ LDFLAGS="%_lto_cflags" \
 	--enable-ladspa \
 %if %{with vulkan}
 	--enable-libshaderc --enable-vulkan \
+%endif
+%if %{with amf}
+        --enable-amf \
 %endif
 %if !%{with cuda_sdk}
 	--disable-cuda-sdk \

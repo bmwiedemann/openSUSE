@@ -24,7 +24,8 @@
 # Comes from git tarball setup.py:
 # setup.py build --verbose ...
 # Xpra version 4.4
-%define xpra_ver 4.4
+#%%define xpra_ver 4.4
+%define xpra_ver 5.0
 # ----
 %if 0%{?suse_version} >= 1550
 %define ffmpeg_ver 5
@@ -35,7 +36,7 @@
 # ----
 %global __requires_exclude ^typelib\\(GtkosxApplication\\)|typelib\\(GdkGLExt\\)|typelib\\(GtkGLExt\\).*$
 Name:           xpra
-Version:        4.4+git20220726.a03b3f67e
+Version:        4.4+git20221002.1c1e6e0d
 Release:        0
 Summary:        Remote display server for applications and desktops
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-3.0-or-later AND MIT
@@ -81,6 +82,7 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libavcodec) >= 58
 BuildRequires:  pkgconfig(libavformat) >= 58
+BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(libswscale) >= 5
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libwebp) >= 0.4
@@ -194,12 +196,13 @@ python3 setup.py build \
 %if !%{with pandoc}
   --without-docs \
 %endif
-%if %{ffmpeg_ver} == 4
   --without-nvfbc
-%endif
-%if %{ffmpeg_ver} == 5
-  --without-nvfbc
-%endif
+#%%if %%{ffmpeg_ver} == 4
+#  --without-nvfbc
+#%%endif
+#%%if %%{ffmpeg_ver} == 5
+#  --without-nvfbc
+#%%endif
 #%%if %%{ffmpeg_ver} == 5
 #  --without-nvfbc \
 #  --without-strict

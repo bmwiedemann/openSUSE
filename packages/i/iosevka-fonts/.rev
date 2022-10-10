@@ -972,4 +972,23 @@
 </comment>
     <requestid>1007487</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>3540dd2aef09753af0b5bbacb6a56dd0</srcmd5>
+    <version>16.3.1</version>
+    <time>1665420430</time>
+    <user>favogt_factory</user>
+    <comment>- Update to v16.3.1
+  * Changes of version 16.3.1
+    = Fix shape of LATIN SMALL LETTER E WITH OGONEK (U+0119)
+      (#1427).
+    = Width grade will now influence marks' width.
+- Update to v16.3.0
+  * Changes of version 16.3.0
+    = Add variant selector to remove notches for equality ligations
+      (#1425).
+    = Fix cv40's application to CYRILLIC SMALL LETTER ER (U+0440)
+      (#1426).
+</comment>
+    <requestid>1009069</requestid>
+  </revision>
 </revisionlist>

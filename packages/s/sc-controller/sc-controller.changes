@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct  9 14:07:51 UTC 2022 - Jannik Seiler <seil0@mosad.xyz>
+
+- Update to 0.4.8.8
+  * Merged latest changes from upstream Kozec repo. Steam Deck support added
+  * Fixed AppImage build script
+  * Fixed TypeError with Autoswitch Options menu item in OSD
+  * Fixed RPAD icon display in main window
+
+-------------------------------------------------------------------
 Fri May  6 18:11:50 UTC 2022 - Jannik Seiler <seil0@mosad.xyz>
 
 - Update to 0.4.8.7

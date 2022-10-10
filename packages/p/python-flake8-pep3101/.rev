@@ -16,4 +16,20 @@
   * Warn about &quot;string %i&quot; % 33 which was previously ignored.</comment>
     <requestid>794558</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f4680c8a62357bc1feab1ca9a3311b5d</srcmd5>
+    <version>2.0.0</version>
+    <time>1665420412</time>
+    <user>favogt_factory</user>
+    <comment>- Update to 2.0.0:
+  * Update dependencies. [gforcada]
+  * Test the code on GitHub actions. [gforcada]
+  * Drop python 2.7 and only support python 3.7+. [gforcada]
+  * Use linters and formatters to keep code sane and beautiful. [gforcada]
+  * Simplify the amount of code to write a test. [gforcada]
+- Delete 29.patch, not needed anymore
+- Add 29.patch to fix tests
+</comment>
+    <requestid>1008957</requestid>
+  </revision>
 </revisionlist>

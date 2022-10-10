@@ -4481,4 +4481,16 @@ I cannot test locally unfortunately.
     <comment>- build using rust 1.63</comment>
     <requestid>1007697</requestid>
   </revision>
+  <revision rev="292" vrev="1">
+    <srcmd5>2f73bb05b8e93d2f5e5faf47a7eb56f5</srcmd5>
+    <version>102.3.2</version>
+    <time>1665420390</time>
+    <user>favogt_factory</user>
+    <comment>- Mozilla Thunderbird 102.3.2
+  * Thunderbird will try to use POP CRAM-MD5 authentication even if
+    not advertised by server
+  * more bugfixes as in
+    https://www.thunderbird.net/en-US/thunderbird/102.3.2/releasenotes</comment>
+    <requestid>1009070</requestid>
+  </revision>
 </revisionlist>

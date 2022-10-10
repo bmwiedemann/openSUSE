@@ -98,8 +98,6 @@ Obsoletes:      %{1}1.58%{?2:-%{2}}
 # armv6/7, s390x, ppc[64[le]], riscv are all "guaranteed to build" only
 # but may not always work.
 
-# === Rust on armv6hl is broken ✨ again ✨ ===
-ExcludeArch:    armv6hl
 
 # === broken distro llvm ===
 # In some situations the llvm provided on the platform may not work.

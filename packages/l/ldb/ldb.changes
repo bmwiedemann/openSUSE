@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 22 15:55:29 UTC 2022 - Noel Power <nopower@suse.com>
+
+- Update to version 2.6.1
+  + CVE-2022-32746 Use-after-free occurring in database audit
+    logging module; (bso#15009); (bsc#1201490);
+
+- Update to version 2.6.0
+  + ldb: bump version to 2.6.0 for Samba 4.17.x releases
+
+-------------------------------------------------------------------
 Mon Aug  1 08:52:16 UTC 2022 - Samuel Cabrero <scabrero@suse.de>
 
 - Update to version 2.5.2;
