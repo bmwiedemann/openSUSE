@@ -651,4 +651,16 @@ fix a jira reference in the changelog.
   - jsc#PED-620, jsc#PED-1540</comment>
     <requestid>1000756</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>9bd86b2ddf5bab661883110c1af8cf5e</srcmd5>
+    <version>8.8.0</version>
+    <time>1665420261</time>
+    <user>favogt_factory</user>
+    <comment>Updated python bindings for libvirt 8.8.0.
+
+- Update to 8.8.0
+  - Add all new APIs and constants in libvirt 8.8.0
+  - jsc#PED-620, jsc#PED-1540</comment>
+    <requestid>1008289</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct  5 14:39:29 UTC 2022 - James Fehlig <jfehlig@suse.com>
+
+- Update to 8.8.0
+  - Add all new APIs and constants in libvirt 8.8.0
+  - jsc#PED-620, jsc#PED-1540
+
+-------------------------------------------------------------------
 Thu Sep  1 20:40:49 UTC 2022 - James Fehlig <jfehlig@suse.com>
 
 - Update to 8.7.0
