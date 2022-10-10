@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyelftools
-Version:        0.28
+Version:        0.29
 Release:        0
 Summary:        Library for analyzing ELF files and DWARF debugging information
 License:        SUSE-Public-Domain

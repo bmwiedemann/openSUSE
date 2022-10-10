@@ -75,4 +75,12 @@
   * Add support for note GNU_PROPERTY_X86_FEATURE_1_AND</comment>
     <requestid>963479</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6d7af024cb0c2777242afb7887bf5498</srcmd5>
+    <version>0.29</version>
+    <time>1665420241</time>
+    <user>favogt_factory</user>
+    <comment></comment>
+    <requestid>1008121</requestid>
+  </revision>
 </revisionlist>
