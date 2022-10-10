@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Oct  6 19:29:30 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- git 2.38.0:
+  * scalar: a repository management tool for large repositories
+  * new git rebase --update-refs (global rebase.updateRefs)
+    to update dependent branches
+  * merge-tree integrated with the new ort merge strategy
+    --write-tree, while --trivial-merge retains the old mode
+  * bare git repositories can now be stored and distributed
+    in other git repositories
+  * Setting the safe.bareRepository configuration to "explicit"
+    avoids running arbitrary commands from filesystem monitoring
+    hooks of untrusted git repositories unless --git-dir is set
+  * git grep: new -m / --max-count options to limit the number
+    of matches per file
+  * git ls-files --format is a new option to customize outout
+  * git cat-file and git show now support mailmap author mapping
+  * bug fixes and performance improvements
+
+-------------------------------------------------------------------
 Thu Sep 22 13:49:57 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - drop python2 requires as git-p4 is documented to work with python3

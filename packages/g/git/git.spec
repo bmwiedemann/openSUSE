@@ -36,7 +36,7 @@
 %bcond_with    asciidoctor
 %endif
 Name:           git
-Version:        2.37.3
+Version:        2.38.0
 Release:        0
 Summary:        Fast, scalable, distributed revision control system
 License:        GPL-2.0-only
@@ -78,10 +78,10 @@ BuildRequires:  zlib-devel
 Requires:       git-core = %{version}
 Requires:       perl-Git = %{version}
 Recommends:     git-email
-Suggests:       git-gui
-Suggests:       gitk
 Suggests:       git-daemon
+Suggests:       git-gui
 Suggests:       git-web
+Suggests:       gitk
 %if 0%{?suse_version} >= 1500
 BuildRequires:  openssh-clients
 BuildRequires:  sysuser-tools
@@ -264,7 +264,7 @@ Group:          Development/Tools/Version Control
 Requires:       git-core = %{version}
 Requires:       tk >= 8.4
 %if 0%{?suse_version} == 1315
-Supplements:    packageand(git-core:tk)
+Supplements:    (git-core and tk)
 %else
 Supplements:    (git-core and tk)
 %endif
@@ -283,7 +283,7 @@ Group:          Development/Tools/Version Control
 Requires:       git-core = %{version}
 Requires:       tk >= 8.4
 %if 0%{?suse_version} == 1315
-Supplements:    packageand(git-core:tk)
+Supplements:    (git-core and tk)
 %else
 Supplements:    (git-core and tk)
 %endif
@@ -305,7 +305,7 @@ Requires:       git-core = %{version}
 Requires:       perl-CGI
 Requires:       perl-Git = %{version}
 %if 0%{?suse_version} == 1315
-Supplements:    packageand(git-core:apache2)
+Supplements:    (git-core and apache2)
 %else
 Supplements:    (git-core and apache2)
 %endif
@@ -321,7 +321,7 @@ directory /git/ that calls the cgi script.
 
 %build
 # update shebang to use python3
-sed -e '1{s,.*,#!/usr/bin/python3,}' git-p4.py
+sed -e '1{s,.*,#!%{_bindir}/python3,}' git-p4.py
 cat > .make <<'EOF'
 #!/bin/bash
 %make_build CFLAGS="%{optflags}" \
