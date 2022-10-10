@@ -18,9 +18,9 @@
 
 # define libraries
 %define libcodecs libwscodecs2
-%define libtap libwiretap12
-%define libutil libwsutil13
-%define libwire libwireshark15
+%define libtap libwiretap13
+%define libutil libwsutil14
+%define libwire libwireshark16
 %define org_name org.wireshark.Wireshark
 %if 0%{?suse_version} >= 1500
 %bcond_without lz4
@@ -28,7 +28,7 @@
 %bcond_with lz4
 %endif
 Name:           wireshark
-Version:        3.6.8
+Version:        4.0.0
 Release:        0
 Summary:        A Network Traffic Analyser
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -39,8 +39,6 @@ Source2:        https://www.wireshark.org/download/SIGNATURES-%{version}.txt#/%{
 Source3:        https://www.wireshark.org/download/gerald_at_wireshark_dot_org.gpg#/wireshark.keyring
 # PATCH-FIX-UPSTREAM wireshark-0000-wsutil-implicit_declaration_memcpy.patch
 Patch0:         wireshark-0000-wsutil-implicit_declaration_memcpy.patch
-# PATCH-FIX-UPSTREAM wireshark-0001-pkgconfig.patch bsc#1194780
-Patch1:         wireshark-0001-pkgconfig.patch
 # PATCH-FEATURE-SLE wireshark-0010-dumpcap-permission-denied.patch bsc#1180102
 Patch10:        wireshark-0010-dumpcap-permission-denied.patch
 BuildRequires:  %{rb_default_ruby_suffix}-rubygem-asciidoctor
@@ -60,6 +58,7 @@ BuildRequires:  libpcap-devel
 BuildRequires:  libqt5-linguist-devel
 BuildRequires:  libsmi-devel
 BuildRequires:  libtool
+BuildRequires:  lua51-devel
 BuildRequires:  net-snmp-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pcre-devel
@@ -70,6 +69,7 @@ BuildRequires:  spandsp-devel
 BuildRequires:  tcpd-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.3.0
 BuildRequires:  pkgconfig(Qt5Core) >= 5.3.0
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Multimedia)
@@ -78,6 +78,7 @@ BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(libmaxminddb)
 BuildRequires:  pkgconfig(libnghttp2)
+BuildRequires:  pkgconfig(libnl-3.0)
 BuildRequires:  pkgconfig(libssh) >= 0.6.0
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libxml-2.0)
@@ -102,14 +103,6 @@ BuildRequires:  pkgconfig(libbcg729)
 BuildRequires:  pkgconfig(liblz4)
 # in openSUSE Leap 42.3, lz4 was incorrectly packaged
 BuildConflicts: pkgconfig(liblz4) = 124
-%endif
-%if 0%{?suse_version} > 1310
-BuildRequires:  pkgconfig(libnl-3.0)
-%endif
-%if 0%{?suse_version} > 1320
-BuildRequires:  lua51-devel
-%else
-BuildRequires:  lua-devel
 %endif
 
 %description
@@ -226,8 +219,6 @@ install -m 644 epan/dissectors/*.h		"${IDIR}/epan/dissectors"
 install -m 644 wiretap/*.h			"${IDIR}/wiretap"
 install -m 644 wsutil/*.h			"${IDIR}/wsutil"
 
-install -D -m 0644 image/wsicon48.png %{buildroot}%{_datadir}/pixmaps/wireshark.png
-install -D -m 0644 %{org_name}.desktop %{buildroot}%{_datadir}/applications/%{org_name}.desktop
 %suse_update_desktop_file %{org_name}
 
 rm -f %{buildroot}%{_datadir}/doc/wireshark/*.html
@@ -290,7 +281,6 @@ exit 0
 %{_bindir}/wireshark
 %{_bindir}/ethereal
 %{_datadir}/applications/%{org_name}.desktop
-%{_datadir}/pixmaps/wireshark.png
 %{_datadir}/icons/hicolor/*/apps/%{org_name}.png
 %{_datadir}/icons/hicolor/*/mimetypes/%{org_name}-mimetype.png
 %{_datadir}/icons/hicolor/scalable/apps/%{org_name}.svg

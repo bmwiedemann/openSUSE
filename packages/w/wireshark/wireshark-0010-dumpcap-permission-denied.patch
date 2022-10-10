@@ -27,7 +27,7 @@ index f31914886a..d3baab6c50 100644
          dup2(sync_pipe[PIPE_WRITE], 2);
          ws_close(sync_pipe[PIPE_READ]);
          execv(argv[0], argv);
--        g_snprintf(errmsg, sizeof errmsg, "Couldn't run %s in child process: %s",
+-        snprintf(errmsg, sizeof errmsg, "Couldn't run %s in child process: %s",
 -                   argv[0], g_strerror(errno));
 +        if (errno == EPERM || errno == EACCES) {
 +                struct stat statbuf;
@@ -38,7 +38,7 @@ index f31914886a..d3baab6c50 100644
 +                        }
 +                }
 +        }
-+        g_snprintf(errmsg, sizeof errmsg, "Couldn't run %s in child process: %s%s",
++        snprintf(errmsg, sizeof errmsg, "Couldn't run %s in child process: %s%s",
 +                argv[0], g_strerror(errno), grp_warning);
 +        free(grp_warning);
          sync_pipe_errmsg_to_parent(2, errmsg, "");
@@ -56,7 +56,7 @@ index f31914886a..d3baab6c50 100644
          ws_close(sync_pipe[PIPE_READ]);
          ws_close(sync_pipe[PIPE_WRITE]);
          execv(argv[0], argv);
--        g_snprintf(errmsg, sizeof errmsg, "Couldn't run %s in child process: %s",
+-        snprintf(errmsg, sizeof errmsg, "Couldn't run %s in child process: %s",
 -                   argv[0], g_strerror(errno));
 +        if (errno == EPERM || errno == EACCES) {
 +                struct stat statbuf;
@@ -67,7 +67,7 @@ index f31914886a..d3baab6c50 100644
 +                        }
 +                }
 +        }
-+        g_snprintf(errmsg, sizeof errmsg, "Couldn't run %s in child process: %s%s",
++        snprintf(errmsg, sizeof errmsg, "Couldn't run %s in child process: %s%s",
 +                   argv[0], g_strerror(errno), grp_warning);
 +        free(grp_warning);
          sync_pipe_errmsg_to_parent(2, errmsg, "");

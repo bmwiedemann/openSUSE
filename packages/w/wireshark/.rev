@@ -1669,4 +1669,20 @@ Use capabilities for capture. bsc#957624</comment>
     <comment></comment>
     <requestid>1003499</requestid>
   </revision>
+  <revision rev="193" vrev="1">
+    <srcmd5>31d90a0619ae718f592fa1fc3e7849dc</srcmd5>
+    <version>4.0.0</version>
+    <time>1665420217</time>
+    <user>favogt_factory</user>
+    <comment></comment>
+    <requestid>1008855</requestid>
+  </revision>
+  <revision rev="194" vrev="2">
+    <srcmd5>beaa9aae4b0b91683f2cd8ba760a0363</srcmd5>
+    <version>4.0.0</version>
+    <time>1665420266</time>
+    <user>favogt_factory</user>
+    <comment></comment>
+    <requestid>1008364</requestid>
+  </revision>
 </revisionlist>

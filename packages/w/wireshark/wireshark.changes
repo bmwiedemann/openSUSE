@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct  5 15:01:15 UTC 2022 - Robert Frohl <rfrohl@suse.com>
+
+- Wireshark 4.0.0:
+  * The display filter syntax is more powerful with many new extensions.
+  * The Conversation and Endpoint dialogs have been redesigned.
+  * The default main window layout has been changed so that the Packet Detail and Packet Bytes are side by side underneath the Packet List pane.
+  * Hex dump imports from Wireshark and from text2pcap have been improved.
+  * Speed when using MaxMind geolocation has been greatly improved.
+- Further features, bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-4.0.0.html
+- updated wireshark-0010-dumpcap-permission-denied.patch
+- dropped wireshark-0001-pkgconfig.patch which was accepted upstream
+
+-------------------------------------------------------------------
 Thu Sep  8 07:45:05 UTC 2022 - Robert Frohl <rfrohl@suse.com>
 
 - Wireshark 3.6.8:
