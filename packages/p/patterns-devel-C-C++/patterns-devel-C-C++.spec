@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-devel-C-C++
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,10 +24,11 @@ Release:        0
 Summary:        Patterns for Installation (C/C++ devel pattern)
 License:        MIT
 Group:          Metapackages
-Url:            https://github.com/openSUSE/patterns
-Source0:        %{name}-rpmlintrc
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+URL:            https://github.com/openSUSE/patterns
+Source0:        patterns-devel-C-C++-rpmlintrc
+
 BuildRequires:  patterns-rpm-macros
+BuildArch:      noarch
 
 %description
 This is an internal package that is used to create the patterns as part
@@ -48,23 +49,32 @@ Provides:       pattern-order() = 3240
 Provides:       pattern-visible()
 Requires:       pattern() = devel_basis
 
-Recommends:     glibc-info
+#
+# Ensure openSUSE users will have a functional development environment.
+# Hard require gcc-c++ and libstdc++-devel as they are only soft required by
+# devel_basis Pattern.
+#
+Requires:       gcc-c++
+Requires:       libstdc++-devel
+
 Recommends:     boost-devel
 Recommends:     boost-jam
+Recommends:     glibc-info
+Recommends:     ltrace
 Recommends:     posix_cc
 Recommends:     swig
 Recommends:     valgrind
-Recommends:     ltrace
 # 403368
 Suggests:       dejagnu
 Suggests:       expect
 
 %description devel_C_C++
-Tools and libraries for software development using C/C++ and other derivative of the C programming language.
+Tools and libraries for software development using C/C++ and other derivative
+of the C programming language.
 
 %files devel_C_C++
-%dir /usr/share/doc/packages/patterns
-/usr/share/doc/packages/patterns/devel_C_C++.txt
+%dir %{_defaultdocdir}/patterns/
+%{_defaultdocdir}/patterns/devel_C_C++.txt
 
 ################################################################################
 
@@ -73,7 +83,8 @@ Tools and libraries for software development using C/C++ and other derivative of
 %build
 
 %install
-mkdir -p $RPM_BUILD_ROOT/usr/share/doc/packages/patterns
-echo 'This file marks the pattern devel_C_C++ to be installed.' > $RPM_BUILD_ROOT/usr/share/doc/packages/patterns/devel_C_C++.txt
+mkdir -p %{buildroot}%{_defaultdocdir}/patterns
+echo 'This file marks the pattern devel_C_C++ to be installed.' \
+    > %{buildroot}%{_defaultdocdir}/patterns/devel_C_C++.txt
 
 %changelog

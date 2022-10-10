@@ -1,3 +1,7 @@
-addFilter("W: no-binary");
+#
+# Safe to ignore Warnings/Errors
+#
 
+addFilter("E: explicit-lib-dependency");
+addFilter("E: devel-dependency");
 
