@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  6 21:45:03 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.14.14
+  * Skip leading UTF-8 BOM in XML documents
+
+-------------------------------------------------------------------
 Wed Aug  3 16:40:07 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.14.13
