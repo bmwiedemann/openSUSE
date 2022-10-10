@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Oct 08 08:18:43 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.4.0+git20221008.1532b6e:
+  * fix broken regex for no-manual-page-for-binary check
+  * rpmdiff: improve help for multiple values with -i/-e options
+
+-------------------------------------------------------------------
+Tue Oct 04 08:50:23 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.4.0+git20221004.e71a7e7:
+  * sendmail: whitelisting for new systemd-tmpfiles entries for /run, /run/sendmail (bsc#1203340)
+
+-------------------------------------------------------------------
+Mon Oct 03 14:06:28 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.4.0+git20221003.7eb4092:
+  * Release 2.4.0.
+
+-------------------------------------------------------------------
+Mon Oct 03 14:06:06 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.4.0+git20220929.9612681:
+  * Fix flake8 issue.
+
+-------------------------------------------------------------------
 Thu Sep 29 07:33:01 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.3.0+git20220929.30237f7:
