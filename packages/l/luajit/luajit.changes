@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct  4 19:00:14 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- exclude luajit from building on riscv64 - not yet supported
+
+-------------------------------------------------------------------
 Wed Mar 23 21:33:11 UTC 2022 - mcepl@cepl.eu
 
 - Update to version 2.1.0~beta3+git.1647772157.43ebb949:
