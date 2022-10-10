@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct  5 06:33:44 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable build on 32-bit Arm
+
+-------------------------------------------------------------------
 Tue Sep 27 06:57:18 UTC 2022 - Attila Pinter <adathor@opensuse.org>
 
 - Added Boolean operator to install distrobox if  patterns-microos-desktop-common, 
