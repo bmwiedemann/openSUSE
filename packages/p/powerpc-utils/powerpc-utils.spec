@@ -29,6 +29,8 @@ Patch1:         powerpc-utils-lsprop.patch
 Patch2:         ofpathname_powernv.patch
 Patch3:         fix_kexec_service_name_for_suse.patch
 Patch4:         libvirt-service-dep.patch
+Patch5:         lsslot-Explicity-declare-that-lmb_address-be-display.patch
+Patch6:         lsslot-Fix-lsslot-c-mem-output-when-using-4GB-LMB-si.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libnuma-devel

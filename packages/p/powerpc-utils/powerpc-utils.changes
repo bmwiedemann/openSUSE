@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct  4 18:15:11 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
+
+- Fix "lsslot -c mem" output when LMB size is set to 4GB (bsc#1202777 ltc#199300)
+  + lsslot-Fix-lsslot-c-mem-output-when-using-4GB-LMB-si.patch
+  + lsslot-Explicity-declare-that-lmb_address-be-display.patch
+
+-------------------------------------------------------------------
 Wed Jun 15 07:37:19 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
 
 - Update to upstream version 1.3.10
