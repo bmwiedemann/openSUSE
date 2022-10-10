@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct  5 20:01:23 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add fix_documentation-Sphinx.patch to fix building with the
+  current Sphinx
+  (https://gitlab.isc.org/isc-projects/bind9/-/issues/3572).
+- Reapply bind-ldapdump-use-valid-host.patch
+
+-------------------------------------------------------------------
 Wed Sep 21 11:49:07 UTC 2022 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to bind release 9.18.7

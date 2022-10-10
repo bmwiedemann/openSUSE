@@ -1,6 +1,10 @@
+---
+ vendor-files/tools/ldapdump |   14 +++++++++-----
+ 1 file changed, 9 insertions(+), 5 deletions(-)
+
 --- a/vendor-files/tools/ldapdump
 +++ b/vendor-files/tools/ldapdump
-@@ -343,11 +343,11 @@ 
+@@ -343,11 +343,11 @@ sub dropStaticZoneEntries {
          };
          print PIPE "server $server\n" or die "can’t write to $nsupdate pipe: $!";
      }
@@ -14,7 +18,7 @@
      }
      foreach my $e ( @data ) {
          next if( $e =~ /^[\s;]/ );
-@@ -587,6 +587,7 @@ 
+@@ -587,6 +587,7 @@ sub updateDynamicZone {
              my $ref = $zone_entry->get_value($rec.'record', asref => 1);
              next unless $ref;
              foreach my $rr ( @$ref ) {
@@ -22,7 +26,7 @@
                  my $where = ($rdn eq '@')?("$zone."):("$rdn.$zone");
                  my $command = "update add $where $ttl $rec $rr\n";
                  print STDERR "\t\t$command" if($DEBUG);
-@@ -596,9 +597,10 @@ 
+@@ -596,9 +597,10 @@ sub updateDynamicZone {
              }
          }
      }
@@ -35,7 +39,7 @@
          print PIPE "\n\n\n" or die "can’t write to $nsupdate pipe: $!";
          close(PIPE) or die "can’t close $nsupdate pipe: status=$?";
      }
-@@ -688,9 +688,11 @@ 
+@@ -686,9 +688,11 @@ sub parseDynEntries {
      my %entries;
      my $entry = "";
      foreach( my $i=0; $i<@data; $i++ ) {
@@ -48,4 +52,3 @@
          } else {
              $data[$i] =~ /^\s+(.*)/;
              $entries{$entry} .= "\t$1\n";
-
