@@ -211,6 +211,9 @@ install -D -m 644 %{name}.8 %{buildroot}/%{_mandir}/man8/%{name}.8
 %if %{with_systemd}
 ln -sf service %{buildroot}/%{_sbindir}/rc%{name}
 install -D -m 0644 %{SOURCE7} %{buildroot}/%{_unitdir}/%{name}.service
+%if 0%{?sle_version} && 0%{?sle_version} < 150300
+sed -r -i '/^(Protect(Home|Hostname|KernelLogs|Clock|KernelTunables|KernelModules|ControlGroups)|RestrictRealtime|PrivateMounts)=/d' %{buildroot}/%{_unitdir}/%{name}.service
+%endif
 install -D -m 0644 %{SOURCE8} %{buildroot}/%{_unitdir}/%{name}@.service
 install -D -m 0644 %{SOURCE10} %{buildroot}/%{_unitdir}/%{name}.socket
 %else

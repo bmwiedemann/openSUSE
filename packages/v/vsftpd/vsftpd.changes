@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep 16 06:18:26 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- systemd versions prior to 244 do not support the ProtectXYZ
+  directives we use in our vsftpd.service file and log warnings
+  every time the daemon starts, which confuses our users. We avoid
+  this issue by removing the unsupported options from the service
+  file when installing on a distribution that comes with such an
+  older version of systemd. [bsc#1196918]
+
+-------------------------------------------------------------------
 Thu Aug 25 08:23:08 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Apply "disable-tls13-to-support-older-openssl-versions.patch"
@@ -18,7 +28,10 @@ Wed Jun 29 13:53:16 UTC 2022 - Stefan Schubert <schubi@suse.com>
 Tue Mar  3 16:44:28 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Use rpm conditional to build against the proper OpenSSL version
-  on all distributions. [jsc#PM-3322, bsc#1187686]
+  on all distributions. This allows us to update vsftpd in all
+  maintained SLE codestreams to the current Factory version and
+  mitigate the newly discovered ALPACA attack. [jsc#SLE-24275,
+  jsc#PM-3322, bsc#1187686]
 
 -------------------------------------------------------------------
 Tue Feb  1 18:42:41 UTC 2022 - Peter Simons <psimons@suse.com>

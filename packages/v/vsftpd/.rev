@@ -890,4 +890,12 @@ confusing &quot;failed to try-restart&quot; error message. [bsc#1093179, bsc#101
     <comment>Allow building vsftpd on all active SLE codestreams as well as Factory.</comment>
     <requestid>1003263</requestid>
   </revision>
+  <revision rev="82" vrev="7">
+    <srcmd5>4d13f5276d0b3222bf821d8188565c2b</srcmd5>
+    <version>3.0.5</version>
+    <time>1665420190</time>
+    <user>favogt_factory</user>
+    <comment>fix bsc#1196918</comment>
+    <requestid>1008380</requestid>
+  </revision>
 </revisionlist>
