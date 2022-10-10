@@ -14,6 +14,7 @@
 [Unit]
 Description=Sendmail Client Mail Queue Watcher
 Before=mail-transfer-agent.target
+After=systemd-tmpfiles-setup.service
 
 [Path]
 DirectoryNotEmpty=/var/spool/clientmqueue

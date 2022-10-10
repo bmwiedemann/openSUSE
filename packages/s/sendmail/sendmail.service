@@ -18,6 +18,7 @@ Requires=var-run.mount nss-lookup.target network.target local-fs.target
 After=var-run.mount nss-lookup.target network.target local-fs.target
 Wants=time-sync.target nss-user-lookup.target
 After=time-sync.target nss-user-lookup.target
+After=systemd-tmpfiles-setup.service
 After=amavis.service cyrus.service ldap.service nscd.service ypbind.service saslauthd.service
 Wants=sendmail-client.service
 Before=sendmail-client.service
@@ -25,10 +26,21 @@ PropagatesReloadTo=sendmail-client.service
 Conflicts=postfix.service exim.service
 
 [Service]
+Group=mail
+ReadWritePaths=-/run/sendmail
+ReadWritePaths=-/run/sendmail.pid
+ReadWritePaths=-/var/run/sendmail
+ReadWritePaths=-/var/run/sendmail.pid
+ReadWritePaths=-/var/spool/mail
+ReadWritePaths=-/var/spool/mqueue
+ReadWritePaths=-/var/mail
+ReadWritePaths=-/etc/aliases.db
+ReadWritePaths=-/etc/mail/aliases.db
 # added automatically, for details please see
 # https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
 ProtectSystem=full
-ProtectHome=read-only
+# Do never do this as maildrop or procmail can not deliver mails anymore
+#ProtectHome=read-only
 PrivateDevices=true
 ProtectHostname=true
 ProtectClock=true
@@ -38,12 +50,14 @@ ProtectKernelLogs=true
 ProtectControlGroups=true
 RestrictRealtime=true
 # end of automatic additions 
-Type=forking
+# Works only with -bD but not with -bd
+Type=exec
 Restart=on-success
-PIDFile=/var/run/sendmail.pid
+# No PIDFile as it has wrong format and also shows timing problems,
+# use -bD instead of -bd to avoid forking main service process
 ExecStartPre=-/bin/echo 'Initializing SMTP port (sendmail)'
-ExecStartPre=-/etc/mail/system/sm.pre
-Environment="SENDMAIL_ARGS=-L sendmail -Am -bd -q30m -om"
+ExecStartPre=-/bin/sh -c 'make -C /etc/mail'
+Environment="SENDMAIL_ARGS=-L sendmail -Am -bD -q30m -om"
 EnvironmentFile=-/etc/sysconfig/mail
 EnvironmentFile=-/etc/sysconfig/sendmail
 ExecStart=/usr/sbin/sendmail $SENDMAIL_ARGS

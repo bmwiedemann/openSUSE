@@ -14,14 +14,22 @@
 Description=Sendmail Mail Transport Client
 Requires=sendmail.service
 After=sendmail.service
+After=systemd-tmpfiles-setup.service
 Wants=mail-transfer-agent.target
 Before=mail-transfer-agent.target
 ConditionDirectoryNotEmpty=|/var/spool/clientmqueue
+JoinsNamespaceOf=sendmail.service
 
 [Service]
+Group=mail
+ReadWritePaths=-/var/spool/clientmqueue
+ReadWritePaths=-/var/spool/clientmqueue/sm-client.pid
+ReadOnlyPaths=-/etc/mail/system/sm-client.pre
+ExecPaths=-/etc/mail/system/sm-client.pre
 # added automatically, for details please see
 # https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
 ProtectSystem=full
+# Do never do this as maildrop or procmail can not deliver mails anymore
 #ProtectHome=read-only
 PrivateDevices=true
 ProtectHostname=true
@@ -34,6 +42,7 @@ RestrictRealtime=true
 # end of automatic additions 
 Type=forking
 Restart=on-success
+# Note that PIDFile as it has wrong format and also shows timing problems
 PIDFile=/var/spool/clientmqueue/sm-client.pid
 ExecStartPre=-/etc/mail/system/sm-client.pre
 Environment="SENDMAIL_CLIENT_ARGS=-L sendmail-client -Ac -qp30m"

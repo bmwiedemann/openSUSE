@@ -14,7 +14,7 @@
 pidfile=/var/spool/clientmqueue/sm-client.pid
 
 typeset -i timeout=1000
-typeset -i port=25
+typeset port=smtp
 
 for cfg in /etc/sendmail.cf /etc/mail/sendmail.cf ; do
     test -s $cfg && break
@@ -28,19 +28,6 @@ done
 for usleep in /bin/usleep /usr/bin/usleep ; do
     test -x $usleep && break
 done
-
-#
-# Create /var/run/sendmail if not exit
-#
-if test ! -d /var/run ; then
-    if test -d /run ; then
-	/bin/ln -sf /run /var/run
-    else
-	/bin/mkdir -m 0755 /var/run
-    fi
-fi
-test -d /var/run/sendmail || /bin/mkdir --mode 1750 /var/run/sendmail
-test -x /usr/bin/chkstat  && /usr/bin/chkstat -n --set --system /var/run/sendmail
 
 #
 # Some default permissions
@@ -68,6 +55,7 @@ PortOpts=$($sed -rn '/^O[[:blank:]]+DaemonPortOptions=.*Name=MTA.*$/I {
 for opt in ${PortOpts//,/ } ; do
     case "${opt%=*}" in
     [Pp]ort) port=${opt#*=}
+             break ;;
     esac
 done
 unset opt

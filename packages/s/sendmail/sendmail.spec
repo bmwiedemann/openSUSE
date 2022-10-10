@@ -88,6 +88,8 @@ Requires(pre):  user(daemon)
 Requires(pre):  group(mail)
 Requires(pre):  user(mail)
 %endif
+Requires(post): group(mail)
+Requires(post): user(mail)
 Requires(post): %fillup_prereq
 Requires(post): coreutils
 Requires(post): permissions
@@ -95,6 +97,8 @@ Requires(post): sed
 Requires(posttrans):coreutils
 Requires(posttrans):findutils
 Requires(posttrans):m4
+Requires(verify):group(mail)
+Requires(verify):user(mail)
 Requires(verify):permissions
 %{?systemd_ordering}
 Conflicts:      postfix
@@ -112,8 +116,8 @@ Source2:        sendmail-rpmlintrc
 Source3:        sendmail-client.path
 Source4:        sendmail.service
 Source5:        sendmail-client.service
-Source6:        sendmail.systemd
-Source7:        sendmail-client.systemd
+Source6:        sendmail-client.systemd
+Source7:        sendmail.tmpfiles
 Source42:       ftp://ftp.sendmail.org/pub/sendmail/PGPKEYS#/%{name}.keyring
 Source43:       ftp://ftp.sendmail.org/pub/sendmail/%{name}.%{version}.tar.gz.sig
 # PATCH-FIX-OPENSUSE: Add our m4 extensions and maintenance scripts
@@ -331,9 +335,13 @@ processed mail on to the MTA (e.g. sendmail).
     mkdir -p %{buildroot}%{_mandir}/man5
     mkdir -p %{buildroot}%{_mandir}/man8
     mkdir -p %{buildroot}%{_fillupdir}
+    mkdir -p %{buildroot}/var/spool/mail
+    ln -s spool/mail %{buildroot}/var/mail
 %if %{without sysvinit}
     mkdir -p %{buildroot}%{_unitdir}
     mkdir -p %{buildroot}%{_mailcnfdir}/system
+    chmod 0755 %{buildroot}%{_mailcnfdir}/system
+    mkdir -p %{buildroot}%{_tmpfilesdir}
 %endif
     make \
 	DESTDIR=%{buildroot} \
@@ -519,10 +527,8 @@ processed mail on to the MTA (e.g. sendmail).
     install -m 0644 %{S:3} %{buildroot}%{_unitdir}/
     install -m 0644 %{S:4} %{buildroot}%{_unitdir}/
     install -m 0644 %{S:5} %{buildroot}%{_unitdir}/
-    install -m 0644 %{S:6} %{buildroot}%{_mailcnfdir}/system/sm.pre
-    install -m 0644 %{S:7} %{buildroot}%{_mailcnfdir}/system/sm-client.pre
-    chmod 0755 %{buildroot}%{_mailcnfdir}/system/sm.pre
-    chmod 0755 %{buildroot}%{_mailcnfdir}/system/sm-client.pre
+    install -m 0755 %{S:6} %{buildroot}%{_mailcnfdir}/system/sm-client.pre
+    install -m 0644 %{S:7} %{buildroot}%{_tmpfilesdir}/sendmail.conf
 %endif
     #
     # Documentation for libmilter
@@ -535,9 +541,6 @@ processed mail on to the MTA (e.g. sendmail).
     rm -f %{buildroot}%{_sysconfdir}/aliases %{buildroot}%{_mailcnfdir}/*.db
     rm -f %{buildroot}%{_mailcnfdir}/*/*.db
 
-%clean
-rm -rf %{buildroot}
-
 %if %{defined verify_permissions}
 %verifyscript
 %if %{with sysvinit}
@@ -548,6 +551,8 @@ rm -rf %{buildroot}
 %verify_permissions -e %{_sysconfdir}/sendmail.cf
 %if %{with sysvinit}
 %verify_permissions -e %{_sysconfdir}/init.d/sendmail
+%else
+%verify_permissions -e %{_mailcnfdir}/system/
 %endif
 %verify_permissions -e %{_mailcnfdir}/auth/
 %verify_permissions -e %{_mailcnfdir}/certs/
@@ -558,6 +563,7 @@ rm -rf %{buildroot}
 %endif
 
 %post
+%{?tmpfiles_create:%tmpfiles_create %{_prefix}/lib/tmpfiles.d/sendmail.conf}
 # Trigger rebuild of old db's
 for db in /etc/aliases.db /etc/aliases.d/*.db /etc/mail/*.db /etc/mail/*/*.db ; do
   test -e "$db"       || continue
@@ -579,6 +585,10 @@ if test -s /etc/sysconfig/sendmail ; then
     :skip
     N
   }' /etc/sysconfig/sendmail
+  #
+  # For sendmail we use -bD aka listen on port 25 but do not become a daemon
+  #
+  sed -ri '/(SENDMAIL_ARGS|Default:)/{s/-bd/-bD/g}' /etc/sysconfig/sendmail
 fi
 %{fillup_only -an mail}
 %if %{with sysvinit}
@@ -602,6 +612,8 @@ fi
 %set_permissions %{_sysconfdir}/sendmail.cf
 %if %{with sysvinit}
 %set_permissions %{_sysconfdir}/init.d/sendmail
+%else
+%set_permissions %{_mailcnfdir}/system/
 %endif
 %set_permissions %{_mailcnfdir}/auth/
 %set_permissions %{_mailcnfdir}/certs/
@@ -653,7 +665,8 @@ fi
 %dir %attr(0750,root,root) %{_mailcnfdir}/auth/
 %dir %attr(0750,root,root) %{_mailcnfdir}/certs/
 %if %{without sysvinit}
-%dir %attr(0750,root,root) %{_mailcnfdir}/system/
+%dir %attr(0755,root,root) %{_mailcnfdir}/system/
+%ghost /run/sendmail/
 %endif
 %config(noreplace) %verify(not md5 size mtime) %{_sysconfdir}/sendmail.cf
 # %{_sysconfdir}/aliases is part of netcfg
@@ -695,8 +708,8 @@ fi
 %config %attr(0644,root,root) %{_unitdir}/sendmail-client.path
 %config %attr(0644,root,root) %{_unitdir}/sendmail.service
 %config %attr(0644,root,root) %{_unitdir}/sendmail-client.service
-%config %attr(0755,root,root) %{_mailcnfdir}/system/sm.pre
 %config %attr(0755,root,root) %{_mailcnfdir}/system/sm-client.pre
+%attr(0644,root,root) %{_tmpfilesdir}/sendmail.conf
 %endif
 %{_bindir}/hoststat
 %{_bindir}/mailq
@@ -731,6 +744,10 @@ fi
 %attr(2555,root,mail) %{_sbindir}/sendmail
 %{_sbindir}/sendmail.nissl
 %{_sbindir}/rcsendmail*
+%if 0%{?suse_version} > 1140
+%dir %attr(1777,root,root) /var/spool/mail/
+%endif
+/var/mail
 
 %files devel
 %defattr(-,root,root)

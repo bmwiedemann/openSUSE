@@ -1090,4 +1090,31 @@ SUSE- proprietary prefix added until Sendmail is accepted as valid SPDX license 
   &quot;ProtectHome=read-only&quot; for now</comment>
     <requestid>950458</requestid>
   </revision>
+  <revision rev="112" vrev="3">
+    <srcmd5>012fed6ce54c4d93c3aaf54bbce7b33c</srcmd5>
+    <version>8.17.1</version>
+    <time>1665420188</time>
+    <user>favogt_factory</user>
+    <comment>- Do not start sendmail-client as user mail as this one is not
+  allowed to check port smtp aka 25
+- Fix sm-client.pre script as ports are not only numbers but
+  also alias names 
+
+- Rework system service unit files
+  * sendmail-client now use user and group mail which requires
+  * /etc/mail/system/ becomes readable by all users e.g. mail
+  * sendmail now uses -bD to avoid a fork, this requires Type=exec 
+- Various bug fixes
+- Require user and group mail for post and verify scriptlets
+- Add a %ghost for /run/sendmail whic his created by
+  tmpfile systemd configuration of sendmail
+
+- Own /var/spool/mail (boo#1179574)
+
+- Avoid older alias.db
+- Avoid that sendmail can not write its pid file 
+- Allow sendmail and its helper like maildrop and procmail
+  to write into the users mail folder</comment>
+    <requestid>1008186</requestid>
+  </revision>
 </revisionlist>
