@@ -16,11 +16,11 @@
 #
 
 
-%define pgversion 15~rc1
+%define pgversion 15~rc2
 %define pgmajor 15
 %define pgsuffix %pgmajor
 %define buildlibs 1
-%define tarversion 15rc1
+%define tarversion 15rc2
 %define latest_supported_llvm_ver 14
 
 ### CUT HERE ###

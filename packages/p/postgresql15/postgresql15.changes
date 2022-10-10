@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct  6 13:20:57 UTC 2022 - Reinhard Max <max@suse.com>
+
+- Update to 15~rc2
+  * https://www.postgresql.org/about/news/p-2521/
+  * Reverting the "optimized order of GROUP BY keys" feature.
+
+-------------------------------------------------------------------
 Fri Sep 30 10:43:09 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Fix source URLs

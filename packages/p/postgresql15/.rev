@@ -7,4 +7,14 @@
     <comment></comment>
     <requestid>1007825</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>75dce7d213f4abe6f555c6d6dd70192b</srcmd5>
+    <version>15~rc2</version>
+    <time>1665420204</time>
+    <user>favogt_factory</user>
+    <comment>- Update to 15~rc2
+  * https://www.postgresql.org/about/news/p-2521/
+  * Reverting the &quot;optimized order of GROUP BY keys&quot; feature.</comment>
+    <requestid>1008564</requestid>
+  </revision>
 </revisionlist>
