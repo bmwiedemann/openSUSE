@@ -105,4 +105,12 @@
   - Add :meth:`~rfc3986.builder.URIBuilder.extend_path`,</comment>
     <requestid>897845</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d37b6572ca5d6e78a3c9235affb7ae5d</srcmd5>
+    <version>2.0.0</version>
+    <time>1665420219</time>
+    <user>favogt_factory</user>
+    <comment></comment>
+    <requestid>1008869</requestid>
+  </revision>
 </revisionlist>
