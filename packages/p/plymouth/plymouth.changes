@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct  6 11:20:28 UTC 2022 - Cliff Zhao <qzhao@suse.com>
+
+- Update to version 22.02.122+77.c09c651:
+  * ply-device-manager: Move verify_drm_device() higher up in the
+    file.
+  * ply-device-manager: Also ignore SimpleDRM devs in coldplug 
+    enumeration path
+  * Rebase plymouth-only_use_fb_for_cirrus_bochs.patch.
+
+-------------------------------------------------------------------
 Fri Sep 16 17:39:33 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Stop providing version-release for the upstream-branding
