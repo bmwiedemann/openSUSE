@@ -21,7 +21,7 @@
 # requires some unavailable modules
 %bcond_with docs
 Name:           python-aiohttp
-Version:        3.8.1
+Version:        3.8.3
 Release:        0
 Summary:        Asynchronous HTTP client/server framework
 License:        Apache-2.0
@@ -125,15 +125,19 @@ rm -r %{buildroot}%{$python_sitearch}/aiohttp/.hash
 }
 
 %check
-donttest="test_aiohttp_request_coroutine or test_mark_formdata_as_processed or test_aiohttp_plugin_async"
+donttest="test_aiohttp_request_coroutine or test_mark_formdata_as_processed or test_aiohttp_plugin_async or test_secure_https_proxy_absolute_path"
 # no name resolution
 donttest+=" or test_client_session_timeout_zero or test_requote_redirect_url_default"
 # flaky
 donttest+=" or test_https_proxy_unsupported_tls_in_tls"
+# not running under pytest ?!
+donttest+=" or test_no_warnings"
 %if 0%{?python3_version_nodots} == 36
 donttest+=" or test_read_boundary_with_incomplete_chunk"
 %endif
-%pytest_arch --ignore ./aiohttp -rsEf -k "not ($donttest)"
+# skip functional tests
+# rm -v tests/test_proxy_functional.py
+%pytest_arch tests -rsEf -k "not ($donttest)"
 
 %files %{python_files}
 %license LICENSE.txt

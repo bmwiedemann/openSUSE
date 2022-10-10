@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Oct  4 20:31:56 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- skip more tests 
+
+-------------------------------------------------------------------
+Sat Sep 24 11:07:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.8.3:
+  * Increased the upper boundary of the :doc:`multidict:index` dependency
+    to allow for the version 6 -- by :user:`hugovk`.
+  * Added support for registering :rfc:`OPTIONS <9110#OPTIONS>`
+    HTTP method handlers via :py:class:`~aiohttp.web.RouteTableDef`.
+  * Started supporting :rfc:`authority-form <9112#authority-form>` and
+    :rfc:`absolute-form <9112#absolute-form>` URLs on the server-side.
+  * Fixed Python 3.11 incompatibilities by using Cython 0.29.25.
+  * Extended the ``sock`` argument typing declaration of the
+    :py:func:`~aiohttp.web.run_app` function as optionally
+    accepting iterables.
+  * Fixed a regression where :py:exc:`~asyncio.CancelledError`
+    occurs on client disconnection.
+  * Started exporting :py:class:`~aiohttp.web.PrefixedSubAppResource`
+    under :py:mod:`aiohttp.web` -- by :user:`Dreamsorcerer`.
+  * Dropped the :class:`object` type possibility from
+    the :py:attr:`aiohttp.ClientSession.timeout`
+    property return type declaration.
+
+-------------------------------------------------------------------
 Sun Mar 27 19:01:09 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Add ignore-pytest-deprecationwarning.patch

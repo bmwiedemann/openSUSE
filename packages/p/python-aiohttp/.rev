@@ -237,4 +237,31 @@
     <comment></comment>
     <requestid>965428</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>a3c9c80c9b9139afb73b60bdd557b11b</srcmd5>
+    <version>3.8.3</version>
+    <time>1665420232</time>
+    <user>favogt_factory</user>
+    <comment>- skip more tests 
+
+- update to 3.8.3:
+  * Increased the upper boundary of the :doc:`multidict:index` dependency
+    to allow for the version 6 -- by :user:`hugovk`.
+  * Added support for registering :rfc:`OPTIONS &lt;9110#OPTIONS&gt;`
+    HTTP method handlers via :py:class:`~aiohttp.web.RouteTableDef`.
+  * Started supporting :rfc:`authority-form &lt;9112#authority-form&gt;` and
+    :rfc:`absolute-form &lt;9112#absolute-form&gt;` URLs on the server-side.
+  * Fixed Python 3.11 incompatibilities by using Cython 0.29.25.
+  * Extended the ``sock`` argument typing declaration of the
+    :py:func:`~aiohttp.web.run_app` function as optionally
+    accepting iterables.
+  * Fixed a regression where :py:exc:`~asyncio.CancelledError`
+    occurs on client disconnection.
+  * Started exporting :py:class:`~aiohttp.web.PrefixedSubAppResource`
+    under :py:mod:`aiohttp.web` -- by :user:`Dreamsorcerer`.
+  * Dropped the :class:`object` type possibility from
+    the :py:attr:`aiohttp.ClientSession.timeout`
+    property return type declaration.</comment>
+    <requestid>1007998</requestid>
+  </revision>
 </revisionlist>

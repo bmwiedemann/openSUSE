@@ -1,11 +1,11 @@
-Index: aiohttp-3.8.1/setup.cfg
+Index: aiohttp-3.8.3/setup.cfg
 ===================================================================
---- aiohttp-3.8.1.orig/setup.cfg
-+++ aiohttp-3.8.1/setup.cfg
-@@ -119,6 +119,7 @@ filterwarnings =
- 	ignore:Exception ignored in. <function ClientSession.__del__ at 0x.:pytest.PytestUnraisableExceptionWarning:_pytest.unraisableexception
- 	ignore:Exception ignored in. <_io.FileIO .closed.>:pytest.PytestUnraisableExceptionWarning:_pytest.unraisableexception
- 	ignore:The loop argument is deprecated since Python 3.8, and scheduled for removal in Python 3.10.:DeprecationWarning:asyncio
+--- aiohttp-3.8.3.orig/setup.cfg
++++ aiohttp-3.8.3/setup.cfg
+@@ -125,6 +125,7 @@ filterwarnings =
+ 	ignore:Creating a LegacyVersion has been deprecated and will be removed in the next major release:DeprecationWarning::
+ 	ignore:module 'sre_constants' is deprecated:DeprecationWarning:pkg_resources._vendor.pyparsing
+ 	ignore:path is deprecated. Use files.. instead. Refer to https.//importlib-resources.readthedocs.io/en/latest/using.html#migrating-from-legacy for migration advice.:DeprecationWarning:certifi.core
 +	ignore:Passing None has been deprecated:pytest.PytestDeprecationWarning
  junit_suite_name = aiohttp_test_suite
  norecursedirs = dist docs build .tox .eggs
