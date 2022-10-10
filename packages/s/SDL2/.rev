@@ -339,4 +339,12 @@
     <comment>- Update to release 2.24.0</comment>
     <requestid>998295</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>17b9a645d3ebbfd72837d19fa3e7d2db</srcmd5>
+    <version>2.24.1</version>
+    <time>1665420236</time>
+    <user>favogt_factory</user>
+    <comment>- Update to release 2.24.1</comment>
+    <requestid>1008080</requestid>
+  </revision>
 </revisionlist>

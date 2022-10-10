@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  5 03:27:31 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.24.1
+  * Fixed shader compilation issues using the OpenGL ES2 renderer
+
+-------------------------------------------------------------------
 Fri Aug 19 16:25:00 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.24.0
