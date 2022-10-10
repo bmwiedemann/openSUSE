@@ -69,7 +69,7 @@ Name:           wxQt-3_2
 %define wx_debug %nil
 %define psonum 8_0_0
 %define sonum 8.0.0
-Version:        3.2.0
+Version:        3.2.1
 Release:        0
 %define wx_minor 3.2
 Summary:        C++ Library for Cross-Platform Development

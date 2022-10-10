@@ -159,4 +159,28 @@
     <comment>- Update to version 3.2.0:</comment>
     <requestid>987523</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>94bb9d04b747e913ee8c0baa6b6c3735</srcmd5>
+    <version>3.2.1</version>
+    <time>1665420237</time>
+    <user>favogt_factory</user>
+    <comment>- Update to version 3.2.1:
+  * Coming soon after 3.2.0, this is mostly a bug fix release, with
+    just one noteworthy new feature: the addition of
+    wxFileDialog::AddShortcut() function.
+  * However it fixes some important regressions and other problems:
+    - Fix crash in applications calling g_log_set_writer_func()
+      with recent glib.
+    - Several fixes to alpha channel handling in wxMSW bitmaps.
+    - Generate key and focus events for wxSearchCtrl in wxOSX.
+    - Fix creating wxRadioBox without any items in wxOSX.
+    - Fix regression with AUI floating pane positioning.
+    - Avoid new warnings given by gcc 12.
+    - Fix building with MSVS 2022 standard-conforming preprocessor.
+    - Work around MSVS 2022 optimizer bug that broke wxImage
+      resizing.
+    - NetBSD build fixes.
+- Rebase soversion.diff with quilt. (forwarded request 1008004 from iznogood)</comment>
+    <requestid>1008085</requestid>
+  </revision>
 </revisionlist>
