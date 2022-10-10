@@ -680,4 +680,14 @@
   - Support file option of pam_pwhistory</comment>
     <requestid>952147</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>96a7a1391c42d5d5162c7bb07d1c373f</srcmd5>
+    <version>1.7</version>
+    <time>1665420191</time>
+    <user>favogt_factory</user>
+    <comment>- Update to Version 1.7
+  - Correctly handle --service option with /usr/lib/pam.d and
+    /usr/etc/pam.d [bsc#1196613]</comment>
+    <requestid>1008387</requestid>
+  </revision>
 </revisionlist>

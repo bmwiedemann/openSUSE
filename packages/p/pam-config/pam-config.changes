@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct  6 12:23:38 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to Version 1.7
+  - Correctly handle --service option with /usr/lib/pam.d and
+    /usr/etc/pam.d [bsc#1196613]
+
+-------------------------------------------------------------------
 Mon Feb  7 14:55:55 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to Version 1.6
