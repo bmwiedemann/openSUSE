@@ -21,7 +21,7 @@ Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/meson.build b/meson.build
-index ce227b6c25e3c71f16416f0a8f25..09145d35aa3e684e92da7895ac67 100644
+index 20fddbd707c91c1baee604202fb1..41f693a822a7ec58085bb53a8518 100644
 --- a/meson.build
 +++ b/meson.build
 @@ -1736,7 +1736,7 @@ config_host_data.set_quoted('CONFIG_SYSCONFDIR', get_option('prefix') / get_opti

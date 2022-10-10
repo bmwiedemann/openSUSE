@@ -149,8 +149,7 @@ Source13:       supported.s390.txt
 Source14:       50-seabios-256k.json
 Source15:       60-seabios-128k.json
 Source200:      qemu-rpmlintrc
-Source201:      pkg-split.txt
-Source202:      DSDT.pcie
+Source201:      DSDT.pcie
 Source300:      bundles.tar.xz
 Source301:      update_git.sh
 Source302:      config.sh
@@ -165,30 +164,34 @@ Patch00002:     roms-Makefile-add-cross-file-to-qboot-me.patch
 Patch00003:     hw-smbios-handle-both-file-formats-regar.patch
 Patch00004:     Revert-roms-efirom-tests-uefi-test-tools.patch
 Patch00005:     qemu-binfmt-conf-Modify-default-path.patch
-Patch00006:     linux-user-add-binfmt-wrapper-for-argv-0.patch
-Patch00007:     linux-user-binfmt-support-host-binaries.patch
-Patch00008:     linux-user-Fake-proc-cpuinfo.patch
-Patch00009:     linux-user-use-target_ulong.patch
-Patch00010:     linux-user-lseek-explicitly-cast-non-set.patch
-Patch00011:     PPC-KVM-Disable-mmu-notifier-check.patch
-Patch00012:     Make-char-muxer-more-robust-wrt-small-FI.patch
-Patch00013:     qemu-bridge-helper-reduce-security-profi.patch
-Patch00014:     Raise-soft-address-space-limit-to-hard-l.patch
-Patch00015:     increase-x86_64-physical-bits-to-42.patch
-Patch00016:     xen_disk-Add-suse-specific-flush-disable.patch
-Patch00017:     xen-add-block-resize-support-for-xen-dis.patch
-Patch00018:     xen-ignore-live-parameter-from-xen-save-.patch
-Patch00019:     scsi-generic-replace-logical-block-count.patch
-Patch00020:     hw-scsi-megasas-check-for-NULL-frame-in-.patch
-Patch00021:     scsi-generic-check-for-additional-SG_IO-.patch
-Patch00022:     Revert-tests-qtest-enable-more-vhost-use.patch
-Patch00023:     tests-change-error-message-in-test-162.patch
-Patch00024:     tests-qemu-iotests-Triple-timeout-of-i-o.patch
-Patch00025:     Disable-some-tests-that-have-problems-in.patch
-Patch00026:     Make-installed-scripts-explicitly-python.patch
-Patch00027:     meson-install-ivshmem-client-and-ivshmem.patch
-Patch00028:     meson-remove-pkgversion-from-CONFIG_STAM.patch
-Patch00029:     linux-user-use-max-as-default-CPU-model-.patch
+Patch00006:     linux-user-Fake-proc-cpuinfo.patch
+Patch00007:     linux-user-use-target_ulong.patch
+Patch00008:     linux-user-lseek-explicitly-cast-non-set.patch
+Patch00009:     PPC-KVM-Disable-mmu-notifier-check.patch
+Patch00010:     Make-char-muxer-more-robust-wrt-small-FI.patch
+Patch00011:     qemu-bridge-helper-reduce-security-profi.patch
+Patch00012:     Raise-soft-address-space-limit-to-hard-l.patch
+Patch00013:     increase-x86_64-physical-bits-to-42.patch
+Patch00014:     xen_disk-Add-suse-specific-flush-disable.patch
+Patch00015:     xen-add-block-resize-support-for-xen-dis.patch
+Patch00016:     xen-ignore-live-parameter-from-xen-save-.patch
+Patch00017:     scsi-generic-replace-logical-block-count.patch
+Patch00018:     hw-scsi-megasas-check-for-NULL-frame-in-.patch
+Patch00019:     scsi-generic-check-for-additional-SG_IO-.patch
+Patch00020:     Revert-tests-qtest-enable-more-vhost-use.patch
+Patch00021:     tests-change-error-message-in-test-162.patch
+Patch00022:     tests-qemu-iotests-Triple-timeout-of-i-o.patch
+Patch00023:     Disable-some-tests-that-have-problems-in.patch
+Patch00024:     Make-installed-scripts-explicitly-python.patch
+Patch00025:     meson-install-ivshmem-client-and-ivshmem.patch
+Patch00026:     meson-remove-pkgversion-from-CONFIG_STAM.patch
+Patch00027:     linux-user-use-max-as-default-CPU-model-.patch
+Patch00028:     net-tulip-Restrict-DMA-engine-to-memorie.patch
+Patch00029:     linux-user-add-more-compat-ioctl-definit.patch
+Patch00030:     linux-user-remove-conditionals-for-many-.patch
+Patch00031:     meson-enforce-a-minimum-Linux-kernel-hea.patch
+Patch00032:     linux-user-drop-conditionals-for-obsolet.patch
+Patch00033:     block-io_uring-revert-Use-io_uring_regis.patch
 # Patches applied in roms/seabios/:
 Patch01000:     seabios-switch-to-python3-as-needed.patch
 Patch01001:     enable-cross-compilation-on-ARM.patch
@@ -377,6 +380,9 @@ Requires(post): coreutils
 %ifarch s390x
 Recommends:     qemu-hw-s390x-virtio-gpu-ccw
 %else
+# Due to change in where some documentation files are, if qemu-guest-agent
+# is installed, we need to make sure we update it to our version.
+Requires:       (qemu-guest-agent = %{qemuver} if qemu-guest-agent)
 Recommends:     qemu-hw-display-qxl
 Recommends:     qemu-hw-display-virtio-gpu
 Recommends:     qemu-hw-display-virtio-gpu-pci
@@ -462,8 +468,6 @@ syscall layer occurs on the native hardware and operating system.
 %_bindir/qemu-x86_64
 %_bindir/qemu-xtensa
 %_bindir/qemu-xtensaeb
-%_bindir/qemu-binfmt
-%_bindir/qemu-*-binfmt
 %_sbindir/qemu-binfmt-conf.sh
 
 # End of description and files for qemu-linux-user
@@ -482,7 +486,6 @@ This package acts as an umbrella package to the other QEMU sub-packages.
 %dir %_datadir/icons/hicolor/*/apps
 %dir %_datadir/%name
 %dir %_datadir/%name/firmware
-%dir %_datadir/%name/forsplits
 %dir %_datadir/%name/vhost-user
 %dir %_sysconfdir/%name
 %dir %_sysconfdir/%name/firmware
@@ -506,10 +509,6 @@ This package acts as an umbrella package to the other QEMU sub-packages.
 %_datadir/icons/hicolor/256x256/apps/qemu.png
 %_datadir/icons/hicolor/512x512/apps/qemu.png
 %_datadir/icons/hicolor/scalable/apps/qemu.svg
-%_datadir/%name/forsplits/17
-%_datadir/%name/forsplits/18
-%_datadir/%name/forsplits/19
-%_datadir/%name/forsplits/pkg-split.txt
 %_datadir/%name/keymaps
 %_datadir/%name/qemu-ifup
 %_datadir/%name/qemu-nsis.bmp
@@ -794,7 +793,6 @@ Summary:        Spice based audio support for QEMU
 Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
-Provides:       %name:%_datadir/%name/forsplits/05
 Requires:       qemu-ui-spice-core
 %{qemu_module_conflicts}
 
@@ -803,8 +801,6 @@ This package contains a module for Spice based audio support for QEMU.
 
 %files audio-spice
 %defattr(-, root, root)
-%dir %_datadir/%name/forsplits
-%_datadir/%name/forsplits/05
 %dir %_libdir/%name
 %_libdir/%name/audio-spice.so
 
@@ -925,7 +921,6 @@ Summary:        Baum braille chardev support for QEMU
 Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
-Provides:       %name:%_datadir/%name/forsplits/00
 %{qemu_module_conflicts}
 
 %description chardev-baum
@@ -934,8 +929,6 @@ This package contains a module for baum braille chardev support for QEMU.
 %files chardev-baum
 %defattr(-, root, root)
 %dir %_datadir/%name
-%dir %_datadir/%name/forsplits
-%_datadir/%name/forsplits/00
 %dir %_libdir/%name
 %_libdir/%name/chardev-baum.so
 
@@ -944,7 +937,6 @@ Summary:        Spice vmc and port chardev support for QEMU
 Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
-Provides:       %name:%_datadir/%name/forsplits/08
 Requires:       qemu-ui-spice-core
 %{qemu_module_conflicts}
 
@@ -954,8 +946,6 @@ This package contains a module for Spice chardev support for QEMU.
 %files chardev-spice
 %defattr(-, root, root)
 %dir %_datadir/%name
-%dir %_datadir/%name/forsplits
-%_datadir/%name/forsplits/08
 %dir %_libdir/%name
 %_libdir/%name/chardev-spice.so
 
@@ -964,7 +954,6 @@ Summary:        QXL display support for QEMU
 Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
-Provides:       %name:%_datadir/%name/forsplits/01
 Requires:       qemu-ui-spice-core
 %{qemu_module_conflicts}
 
@@ -974,8 +963,6 @@ This package contains a module for QXL display support for QEMU.
 %files hw-display-qxl
 %defattr(-, root, root)
 %dir %_datadir/%name
-%dir %_datadir/%name/forsplits
-%_datadir/%name/forsplits/01
 %dir %_libdir/%name
 %_libdir/%name/hw-display-qxl.so
 
@@ -984,7 +971,6 @@ Summary:        Virtio GPU display support for QEMU
 Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
-Provides:       %name:%_datadir/%name/forsplits/04
 %{qemu_module_conflicts}
 
 %description hw-display-virtio-gpu
@@ -993,8 +979,6 @@ This package contains a module for Virtio GPU display support for QEMU.
 %files hw-display-virtio-gpu
 %defattr(-, root, root)
 %dir %_datadir/%name
-%dir %_datadir/%name/forsplits
-%_datadir/%name/forsplits/04
 %_libdir/%name/hw-display-virtio-gpu.so
 %_libdir/%name/hw-display-virtio-gpu-gl.so
 
@@ -1004,7 +988,6 @@ Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
 Requires:       qemu-hw-display-virtio-gpu
-Provides:       %name:%_datadir/%name/forsplits/11
 %{qemu_module_conflicts}
 
 %description hw-display-virtio-gpu-pci
@@ -1013,8 +996,6 @@ This package contains a module providing the virtio gpu pci device for QEMU.
 %files hw-display-virtio-gpu-pci
 %defattr(-, root, root)
 %dir %_datadir/%name
-%dir %_datadir/%name/forsplits
-%_datadir/%name/forsplits/11
 %dir %_libdir/%name
 %_libdir/%name/hw-display-virtio-gpu-pci.so
 %_libdir/%name/hw-display-virtio-gpu-pci-gl.so
@@ -1024,7 +1005,6 @@ Summary:        Virtio vga device for QEMU
 Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
-Provides:       %name:%_datadir/%name/forsplits/12
 %{qemu_module_conflicts}
 
 %description hw-display-virtio-vga
@@ -1033,8 +1013,6 @@ This package contains a module providing the virtio vga device for QEMU.
 %files hw-display-virtio-vga
 %defattr(-, root, root)
 %dir %_datadir/%name
-%dir %_datadir/%name/forsplits
-%_datadir/%name/forsplits/12
 %dir %_libdir/%name
 %_libdir/%name/hw-display-virtio-vga.so
 %_libdir/%name/hw-display-virtio-vga-gl.so
@@ -1045,7 +1023,6 @@ Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
 Requires:       qemu-hw-display-virtio-gpu
-Provides:       %name:%_datadir/%name/forsplits/13
 %{qemu_module_conflicts}
 
 %description hw-s390x-virtio-gpu-ccw
@@ -1055,8 +1032,6 @@ QEMU.
 %files hw-s390x-virtio-gpu-ccw
 %defattr(-, root, root)
 %dir %_datadir/%name
-%dir %_datadir/%name/forsplits
-%_datadir/%name/forsplits/13
 %dir %_libdir/%name
 %_libdir/%name/hw-s390x-virtio-gpu-ccw.so
 
@@ -1065,7 +1040,6 @@ Summary:        USB redirection support for QEMU
 Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
-Provides:       %name:%_datadir/%name/forsplits/02
 %{qemu_module_conflicts}
 
 %description hw-usb-redirect
@@ -1074,8 +1048,6 @@ This package contains a module for USB redirection support for QEMU.
 %files hw-usb-redirect
 %defattr(-, root, root)
 %dir %_datadir/%name
-%dir %_datadir/%name/forsplits
-%_datadir/%name/forsplits/02
 %dir %_libdir/%name
 %_libdir/%name/hw-usb-redirect.so
 
@@ -1084,7 +1056,6 @@ Summary:        USB smartcard support for QEMU
 Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
-Provides:       %name:%_datadir/%name/forsplits/03
 %{qemu_module_conflicts}
 
 %description hw-usb-smartcard
@@ -1093,8 +1064,6 @@ This package contains a modules for USB smartcard support for QEMU.
 %files hw-usb-smartcard
 %defattr(-, root, root)
 %dir %_datadir/%name
-%dir %_datadir/%name/forsplits
-%_datadir/%name/forsplits/03
 %dir %_libdir/%name
 %_libdir/%name/hw-usb-smartcard.so
 
@@ -1103,7 +1072,6 @@ Summary:        USB passthrough driver support for QEMU
 Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
-Provides:       %name:%_datadir/%name/forsplits/14
 %{qemu_module_conflicts}
 
 %description hw-usb-host
@@ -1112,8 +1080,6 @@ This package contains a modules for USB passthrough driver for QEMU.
 %files hw-usb-host
 %defattr(-, root, root)
 %dir %_datadir/%name
-%dir %_datadir/%name/forsplits
-%_datadir/%name/forsplits/14
 %dir %_libdir/%name
 %_libdir/%name/hw-usb-host.so
 
@@ -1168,7 +1134,6 @@ Summary:        OpenGL based UI support for QEMU
 Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
-Provides:       %name:%_datadir/%name/forsplits/10
 %{qemu_module_conflicts}
 
 %description ui-opengl
@@ -1177,8 +1142,6 @@ This package contains a module for doing OpenGL based UI for QEMU.
 %files ui-opengl
 %defattr(-, root, root)
 %dir %_datadir/%name
-%dir %_datadir/%name/forsplits
-%_datadir/%name/forsplits/10
 %dir %_libdir/%name
 %_libdir/%name/ui-egl-headless.so
 %_libdir/%name/ui-opengl.so
@@ -1205,7 +1168,6 @@ Summary:        Core Spice support for QEMU
 Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
-Provides:       %name:%_datadir/%name/forsplits/09
 Requires:       qemu-ui-opengl
 # This next Requires is only since virt-manager expects audio support
 Requires:       qemu-audio-spice
@@ -1217,8 +1179,6 @@ This package contains a module with core Spice support for QEMU.
 %files ui-spice-core
 %defattr(-, root, root)
 %dir %_datadir/%name
-%dir %_datadir/%name/forsplits
-%_datadir/%name/forsplits/09
 %dir %_libdir/%name
 %_libdir/%name/ui-spice-core.so
 
@@ -1289,7 +1249,6 @@ Summary:        Inter-VM Shared Memory Tools for QEMU
 Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
-Provides:       %name:%_datadir/%name/forsplits/07
 
 %description ivshmem-tools
 This package contains a sample shared memory client and server which utilize
@@ -1300,8 +1259,6 @@ code.
 %files ivshmem-tools
 %defattr(-, root, root)
 %dir %_datadir/%name
-%dir %_datadir/%name/forsplits
-%_datadir/%name/forsplits/07
 %_bindir/ivshmem-client
 %_bindir/ivshmem-server
 
@@ -1385,7 +1342,6 @@ Summary:        TCG accelerator for QEMU
 Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
-Provides:       %name:%_datadir/%name/forsplits/15
 %{qemu_module_conflicts}
 
 %description accel-tcg-x86
@@ -1397,8 +1353,6 @@ This package provides the TCG accelerator for QEMU.
 %files accel-tcg-x86
 %defattr(-, root, root)
 %dir %_datadir/%name
-%dir %_datadir/%name/forsplits
-%_datadir/%name/forsplits/15
 %dir %_libdir/%name
 %_libdir/%name/accel-tcg-i386.so
 %_libdir/%name/accel-tcg-x86_64.so
@@ -1408,7 +1362,6 @@ Summary:        QTest accelerator for QEMU
 Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
-Provides:       %name:%_datadir/%name/forsplits/16
 %{qemu_module_conflicts}
 
 %description accel-qtest
@@ -1420,8 +1373,6 @@ This package provides QTest accelerator for testing QEMU.
 %files accel-qtest
 %defattr(-, root, root)
 %dir %_datadir/%name
-%dir %_datadir/%name/forsplits
-%_datadir/%name/forsplits/16
 %dir %_libdir/%name
 %_libdir/%name/accel-qtest-aarch64.so
 %_libdir/%name/accel-qtest-alpha.so
@@ -1530,7 +1481,6 @@ Release:        0
 BuildArch:      noarch
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
-Provides:       %name:%_datadir/%name/forsplits/06
 
 %description skiboot
 Provides OPAL (OpenPower Abstraction Layer) firmware, aka skiboot, as
@@ -1539,8 +1489,6 @@ traditionally packaged with QEMU.
 %files skiboot
 %defattr(-, root, root)
 %dir %_datadir/%name
-%dir %_datadir/%name/forsplits
-%_datadir/%name/forsplits/06
 %_datadir/%name/skiboot.lid
 %_datadir/%name/skiboot.lid.qemu
 %ghost %_sysconfdir/alternatives/skiboot.lid
@@ -2181,40 +2129,6 @@ rm -rf %{buildroot}%_datadir/qemu/keymaps
 unlink %{buildroot}%_datadir/qemu/trace-events-all
 install -d -m 755 %{buildroot}%_sbindir
 install -m 755 scripts/qemu-binfmt-conf.sh %{buildroot}%_sbindir
-ln -s qemu-binfmt %{buildroot}%_bindir/qemu-aarch64-binfmt
-ln -s qemu-binfmt %{buildroot}%_bindir/qemu-aarch64_be-binfmt
-ln -s qemu-binfmt %{buildroot}%_bindir/qemu-alpha-binfmt
-ln -s qemu-binfmt %{buildroot}%_bindir/qemu-arm-binfmt
-ln -s qemu-binfmt %{buildroot}%_bindir/qemu-armeb-binfmt
-ln -s qemu-binfmt %{buildroot}%_bindir/qemu-cris-binfmt
-ln -s qemu-binfmt %{buildroot}%_bindir/qemu-hexagon-binfmt
-ln -s qemu-binfmt %{buildroot}%_bindir/qemu-hppa-binfmt
-ln -s qemu-binfmt %{buildroot}%_bindir/qemu-i386-binfmt
-ln -s qemu-binfmt %{buildroot}%_bindir/qemu-m68k-binfmt
-ln -s qemu-binfmt %{buildroot}%_bindir/qemu-microblaze-binfmt
-ln -s qemu-binfmt %{buildroot}%_bindir/qemu-microblazeel-binfmt
-ln -s qemu-binfmt %{buildroot}%_bindir/qemu-mips-binfmt
-ln -s qemu-binfmt %{buildroot}%_bindir/qemu-mips64-binfmt
-ln -s qemu-binfmt %{buildroot}%_bindir/qemu-mips64el-binfmt
-ln -s qemu-binfmt %{buildroot}%_bindir/qemu-mipsel-binfmt
-ln -s qemu-binfmt %{buildroot}%_bindir/qemu-mipsn32-binfmt
-ln -s qemu-binfmt %{buildroot}%_bindir/qemu-mipsn32el-binfmt
-ln -s qemu-binfmt %{buildroot}%_bindir/qemu-nios2-binfmt
-ln -s qemu-binfmt %{buildroot}%_bindir/qemu-or1k-binfmt
-ln -s qemu-binfmt %{buildroot}%_bindir/qemu-ppc-binfmt
-ln -s qemu-binfmt %{buildroot}%_bindir/qemu-ppc64-binfmt
-ln -s qemu-binfmt %{buildroot}%_bindir/qemu-ppc64le-binfmt
-ln -s qemu-binfmt %{buildroot}%_bindir/qemu-riscv32-binfmt
-ln -s qemu-binfmt %{buildroot}%_bindir/qemu-riscv64-binfmt
-ln -s qemu-binfmt %{buildroot}%_bindir/qemu-s390x-binfmt
-ln -s qemu-binfmt %{buildroot}%_bindir/qemu-sh4-binfmt
-ln -s qemu-binfmt %{buildroot}%_bindir/qemu-sh4eb-binfmt
-ln -s qemu-binfmt %{buildroot}%_bindir/qemu-sparc-binfmt
-ln -s qemu-binfmt %{buildroot}%_bindir/qemu-sparc32plus-binfmt
-ln -s qemu-binfmt %{buildroot}%_bindir/qemu-sparc64-binfmt
-ln -s qemu-binfmt %{buildroot}%_bindir/qemu-x86_64-binfmt
-ln -s qemu-binfmt %{buildroot}%_bindir/qemu-xtensa-binfmt
-ln -s qemu-binfmt %{buildroot}%_bindir/qemu-xtensaeb-binfmt
 
 # End of additional installation steps for qemu-linux-user
 %else
@@ -2283,12 +2197,6 @@ unlink %{buildroot}%_datadir/%name/edk2-x86_64-secure-code.fd
 # this was never meant for customer consumption - delete even though installed
 unlink %{buildroot}%_bindir/elf2dmp
 
-install -D -m 0644 %{SOURCE201} %{buildroot}%_datadir/%name/forsplits/pkg-split.txt
-for X in 00 01 02 03 04 05 07 08 09 10 11 12 13 14 15 16 17 18 19
-do
-  ln -s pkg-split.txt %{buildroot}%_datadir/%name/forsplits/$X
-done
-
 # For PPC and x86 firmwares, there are a few extra install steps necessary.
 # In general, if we know that we have not built a firmware, remove it from the
 # install base, as the one that we have there is the upstream binary, that got
@@ -2305,7 +2213,6 @@ mv %{buildroot}%_datadir/%name/skiboot.lid %{buildroot}%_datadir/%name/skiboot.l
 # create a dummy target for /etc/alternatives/skiboot.lid
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 ln -s -f %{_sysconfdir}/alternatives/skiboot.lid %{buildroot}%{_datadir}/%name/skiboot.lid
-ln -s pkg-split.txt %{buildroot}%_datadir/%name/forsplits/06
 %else
 for f in %{ppc_extra_firmware} ; do
   unlink %{buildroot}%_datadir/%name/$f
@@ -2346,7 +2253,12 @@ cd %blddir
 # do that in the patch itself. Instead, we keep a copy of the binary in the
 # package sources, and put it in place now, before the tests themselves.
 # If that patch is removed, the following line needs to go as well.
-cp %{SOURCE202} %{srcdir}/tests/data/acpi/microvm/
+cp %{SOURCE201} %{srcdir}/tests/data/acpi/microvm/
+
+%if 0%{?qemu_user_space_build}
+# Seccomp is not supported by linux-user emulation
+echo 'int main (void) { return 0; }' > %{srcdir}/tests/unit/test-seccomp.c
+%endif
 
 # Compile the QOM test binary first, so that ...
 %make_build tests/qtest/qom-test
@@ -2365,7 +2277,9 @@ cp %{SOURCE202} %{srcdir}/tests/data/acpi/microvm/
 make -O V=1 VERBOSE=1 -j1 check-block
 # Run qtests in parallel. If it becomes unreliable, we can try something
 # like this: make -O V=1 VERBOSE=1 -j1 check-qtest
+%if !0%{?qemu_user_space_build}
 %make_build check-qtest
+%endif
 # Last step will be to run a full check-report, but we will
 # enable this at a later point
 #make -O V=1 VERBOSE=1 -j1 check-report.junit.xml

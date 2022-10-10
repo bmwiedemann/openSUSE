@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Fri Oct  7 12:35:50 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Fixes bsc#1204082
+* Patches added:
+  block-io_uring-revert-Use-io_uring_regis.patch
+
+Wed Oct  5 15:57:27 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Due to change in where some documentation files are, if
+  qemu-guest-agent is installed, we need to make sure we update it
+  to our version (bsc#1203995)
+
+-------------------------------------------------------------------
+Wed Oct  5 15:43:56 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- The links in the forsplit dirs, in each subpackage, born to deal with
+  package & subpackage splitting, are not really used. In fact, they're
+  "Provides:"-ed by a bunch of subpackages, but there's no "Requires:"
+  for any of them. Let's just get rid of them.
+
+-------------------------------------------------------------------
+Tue Oct  4 13:49:43 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- The old qemu-binfmt weappers around the various qemu-$ARCH Linux
+  user emulation binaries (see, e.g., bsc#1186256) are not necessary
+  any longer, and bsc#1143725 can now be considered fixed.
+* Patches dropped:
+  linux-user-add-binfmt-wrapper-for-argv-0.patch
+  linux-user-binfmt-support-host-binaries.patch
+
+-------------------------------------------------------------------
+Tue Oct  4 11:49:53 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Fix bsc#1204001. Patches are not upstream, and have been picked up
+  and backported from the ML. This is something we usually prefer to
+  avoid, but this is urgent, and the patches looks fine, with high
+  chances for them to be included as they are (and if they're not, we
+  will revisit this, i.e., drop them and re-include the ones that are
+  actually committed)
+* Patches added:
+  linux-user-add-more-compat-ioctl-definit.patch
+  linux-user-drop-conditionals-for-obsolet.patch
+  linux-user-remove-conditionals-for-many-.patch
+  meson-enforce-a-minimum-Linux-kernel-hea.patch
+
+-------------------------------------------------------------------
+Tue Oct  4 11:07:14 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Improve the output of update_git.sh, by including the list of
+  repos to which we have downstream patches.
+
+-------------------------------------------------------------------
+Fri Sep 30 14:16:50 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Fix: bsc#1202665, CVE-2022-2962
+* Patches added:
+  net-tulip-Restrict-DMA-engine-to-memorie.patch
+
+-------------------------------------------------------------------
+Fri Sep 30 12:48:20 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- skip tests that don't work under qemu-linux-user emulation
+
+-------------------------------------------------------------------
 Wed Sep 28 16:35:10 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
 
 - Runs of the test-suite seem much more stable now, in this version

@@ -1069,6 +1069,19 @@ else # not LATEST
             echo "To modify package patches, use the frombundle branch as the basis for updating"
             echo "the $GIT_BRANCH branch with the new patch queue, e.g., like this:"
             echo "  git checkout -f --recurse-submodules -B $GIT_BRANCH frombundle"
+            echo "in the following repositories:"
+            for R in $(grep "Patches applied" $PKG.spec | awk '{print $(NF)}'|sed 's/:$//'); do
+                for (( i=0; i <$REPO_COUNT; i++ )); do
+                    if [ "${R}" = "project" ]; then
+                        echo "  * ${LOCAL_REPO_MAP[0]}"
+                        continue 2
+                    fi
+                    if [ "${R}" = "${PATCH_PATH_MAP[$i]}" ]; then
+                        echo "  * ${LOCAL_REPO_MAP[$i]}"
+                        continue 2
+                    fi
+                done
+            done
             echo "Then make your changes and, when done, export them back to the package with:"
             echo "  bash ./update_git.sh git2pkg"
             ;;

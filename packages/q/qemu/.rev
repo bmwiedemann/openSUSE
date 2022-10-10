@@ -3163,4 +3163,45 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
     <comment></comment>
     <requestid>1006838</requestid>
   </revision>
+  <revision rev="237" vrev="2">
+    <srcmd5>39c8bf5e545705c878bd6f88acf0e4df</srcmd5>
+    <version>7.1.0</version>
+    <time>1665420213</time>
+    <user>favogt_factory</user>
+    <comment>- Fixes bsc#1204082
+* Patches added:
+  block-io_uring-revert-Use-io_uring_regis.patch
+- Due to change in where some documentation files are, if
+  qemu-guest-agent is installed, we need to make sure we update it
+  to our version (bsc#1203995)
+- The links in the forsplit dirs, in each subpackage, born to deal with
+  package &amp; subpackage splitting, are not really used. In fact, they're
+  &quot;Provides:&quot;-ed by a bunch of subpackages, but there's no &quot;Requires:&quot;
+  for any of them. Let's just get rid of them.
+- The old qemu-binfmt weappers around the various qemu-$ARCH Linux
+  user emulation binaries (see, e.g., bsc#1186256) are not necessary
+  any longer, and bsc#1143725 can now be considered fixed.
+* Patches dropped:
+  linux-user-add-binfmt-wrapper-for-argv-0.patch
+  linux-user-binfmt-support-host-binaries.patch
+- Fix bsc#1204001. Patches are not upstream, and have been picked up
+  and backported from the ML. This is something we usually prefer to
+  avoid, but this is urgent, and the patches looks fine, with high
+  chances for them to be included as they are (and if they're not, we
+  will revisit this, i.e., drop them and re-include the ones that are
+  actually committed)
+* Patches added:
+  linux-user-add-more-compat-ioctl-definit.patch
+  linux-user-drop-conditionals-for-obsolet.patch
+  linux-user-remove-conditionals-for-many-.patch
+  meson-enforce-a-minimum-Linux-kernel-hea.patch
+- Improve the output of update_git.sh, by including the list of
+  repos to which we have downstream patches.
+- Fix: bsc#1202665, CVE-2022-2962
+* Patches added:
+  net-tulip-Restrict-DMA-engine-to-memorie.patch
+- skip tests that don't work under qemu-linux-user emulation
+</comment>
+    <requestid>1008827</requestid>
+  </revision>
 </revisionlist>
