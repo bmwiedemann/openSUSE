@@ -3817,4 +3817,37 @@
 - Add ncurses patch 20220820</comment>
     <requestid>1003102</requestid>
   </revision>
+  <revision rev="225" vrev="29">
+    <srcmd5>e9e89a8a8f8f374db813d8351b9418a1</srcmd5>
+    <version>6.3.MACRO</version>
+    <time>1665420187</time>
+    <user>favogt_factory</user>
+    <comment>- Add ncurses patch 20221001
+  + modify configure/scripts to work around interference by GNU grep 3.8
+    (report by Sam James).
+  + update CF_XOPEN_SOURCE, adding variants &quot;gnueabi&quot; and &quot;gnueabihf&quot; to
+    get _DEFAULT_SOURCE special case (report by Adam Sampson)
+- Port patch ncurses-6.3.dif
+
+- Add ncurses patch 20220924
+  + modify configure macro CF_BUILD_CC to check if the build-compiler
+    works, rather than that it is different from the cross-compiler, e.g.,
+    to accommodate a compiler which can be used for either purpose with
+    different flags (report by Mikhail Korolev).
+  + fix another memory-leak in tic.
+  + correct change for cppcheck in menu library (report/analysis by
+    &quot;tuxway&quot;, cf: 20220903).
+  + update config.guess, config.sub
+- Correct offsets of patches
+  * ncurses-6.3.dif
+
+- Add ncurses patch 20220917
+  + reduce memory-leak in tic by separating allocations for struct entry
+    from TERMTYPE2 (cf: 20220430).
+  + improve interaction between tic -v option and NCURSES_TRACE, by
+    processing the latter only when -v option does not set _nc_tracing.
+  + modify curses_trace() to show the trace-mask as symbols, e.g.,
+    TRACE_ORDINARY, DEBUG_LEVEL(3).</comment>
+    <requestid>1007806</requestid>
+  </revision>
 </revisionlist>

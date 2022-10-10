@@ -28,7 +28,7 @@
  #include <stdio.h>
  
  #if defined(__cplusplus)
-@@ -5951,12 +5951,15 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5974,12 +5974,15 @@ cat >>$cf_edit_man <<CF_EOF
  		echo "? missing rename for \$cf_source"
  		cf_target="\$cf_source"
  	fi
@@ -46,7 +46,7 @@
  	sed	-f "$cf_man_alias" \\
  CF_EOF
  
-@@ -5966,7 +5969,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5989,7 +5992,7 @@ cat >>$cf_edit_man <<CF_EOF
  CF_EOF
  else
  cat >>$cf_edit_man <<CF_EOF
@@ -55,7 +55,7 @@
  CF_EOF
  fi
  
-@@ -6006,7 +6009,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -6029,7 +6032,7 @@ cat >>$cf_edit_man <<CF_EOF
  		mv \$TMP.$cf_so_strip \$TMP
  	fi
  	fi
@@ -64,7 +64,7 @@
  CF_EOF
  fi
  
-@@ -6015,23 +6018,23 @@ case "$MANPAGE_FORMAT" in
+@@ -6038,23 +6041,23 @@ case "$MANPAGE_FORMAT" in
  cat >>$cf_edit_man <<CF_EOF
  	if test "\$form" = format ; then
  		# BSDI installs only .0 suffixes in the cat directories
@@ -94,7 +94,7 @@
  				for cf_alias in \$aliases
  				do
  					if test "\$section" = 1 ; then
-@@ -6040,7 +6043,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -6063,7 +6066,7 @@ cat >>$cf_edit_man <<CF_EOF
  
  					if test "$MANPAGE_SYMLINKS" = yes ; then
  						if test -f "\$cf_alias\${suffix}" ; then
@@ -103,7 +103,7 @@
  							then
  								continue
  							fi
-@@ -6050,18 +6053,18 @@ CF_EOF
+@@ -6073,18 +6076,18 @@ CF_EOF
  case "x$LN_S" in
  (*-f)
  cat >>$cf_edit_man <<CF_EOF
@@ -125,7 +125,7 @@
  						echo ".so \$cf_source" >\$TMP
  CF_EOF
  if test -n "$cf_compress" ; then
-@@ -6081,9 +6084,9 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -6104,9 +6107,9 @@ cat >>$cf_edit_man <<CF_EOF
  			)
  		)
  	elif test "\$verb" = removing ; then
@@ -138,7 +138,7 @@
  		)
  		test -d "\$cf_subdir\${section}" &&
  		test -n "\$aliases" && (
-@@ -6103,6 +6106,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -6126,6 +6129,7 @@ cat >>$cf_edit_man <<CF_EOF
  #		echo ".hy 0"
  		cat \$TMP
  	fi
@@ -148,7 +148,7 @@
  done
 --- configure
 +++ configure	2022-02-24 11:04:57.464898329 +0000
-@@ -5978,7 +5978,7 @@ echo $ECHO_N "checking for an rpath opti
+@@ -6027,7 +6027,7 @@ echo $ECHO_N "checking for an rpath opti
  		fi
  		;;
  	(linux*|gnu*|k*bsd*-gnu|freebsd*)
@@ -157,7 +157,7 @@
  		;;
  	(openbsd[2-9].*|mirbsd*)
  		LD_RPATH_OPT="-Wl,-rpath,"
-@@ -6351,8 +6351,8 @@ echo "${ECHO_T}$cf_cv_ldflags_search_pat
+@@ -6400,8 +6400,8 @@ echo "${ECHO_T}$cf_cv_ldflags_search_pat
  	else
  		cf_cv_shared_soname='`basename $@`'
  	fi
@@ -168,7 +168,7 @@
  		;;
  	(mingw*msvc*)
  		cf_cv_shlib_version=msvcdll
-@@ -7591,7 +7591,7 @@ echo "${ECHO_T}$with_pcre2" >&6
+@@ -7640,7 +7640,7 @@ echo "${ECHO_T}$with_pcre2" >&6
  
  if test "x$with_pcre2" != xno ; then
  	cf_with_pcre2_ok=no
@@ -177,7 +177,7 @@
  	do
  
  if test "$PKG_CONFIG" != none && "$PKG_CONFIG" --exists "$cf_with_pcre2"; then
-@@ -14956,12 +14956,15 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15005,12 +15005,15 @@ cat >>$cf_edit_man <<CF_EOF
  		echo "? missing rename for \$cf_source"
  		cf_target="\$cf_source"
  	fi
@@ -195,7 +195,7 @@
  	sed	-f "$cf_man_alias" \\
  CF_EOF
  
-@@ -14971,7 +14974,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15020,7 +15023,7 @@ cat >>$cf_edit_man <<CF_EOF
  CF_EOF
  else
  cat >>$cf_edit_man <<CF_EOF
@@ -204,7 +204,7 @@
  CF_EOF
  fi
  
-@@ -15011,7 +15014,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15060,7 +15063,7 @@ cat >>$cf_edit_man <<CF_EOF
  		mv \$TMP.$cf_so_strip \$TMP
  	fi
  	fi
@@ -213,7 +213,7 @@
  CF_EOF
  fi
  
-@@ -15020,23 +15023,23 @@ case "$MANPAGE_FORMAT" in
+@@ -15069,23 +15072,23 @@ case "$MANPAGE_FORMAT" in
  cat >>$cf_edit_man <<CF_EOF
  	if test "\$form" = format ; then
  		# BSDI installs only .0 suffixes in the cat directories
@@ -243,7 +243,7 @@
  				for cf_alias in \$aliases
  				do
  					if test "\$section" = 1 ; then
-@@ -15045,7 +15048,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15094,7 +15097,7 @@ cat >>$cf_edit_man <<CF_EOF
  
  					if test "$MANPAGE_SYMLINKS" = yes ; then
  						if test -f "\$cf_alias\${suffix}" ; then
@@ -252,7 +252,7 @@
  							then
  								continue
  							fi
-@@ -15055,18 +15058,18 @@ CF_EOF
+@@ -15104,18 +15107,18 @@ CF_EOF
  case "x$LN_S" in
  (*-f)
  cat >>$cf_edit_man <<CF_EOF
@@ -274,7 +274,7 @@
  						echo ".so \$cf_source" >\$TMP
  CF_EOF
  if test -n "$cf_compress" ; then
-@@ -15086,9 +15089,9 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15135,9 +15138,9 @@ cat >>$cf_edit_man <<CF_EOF
  			)
  		)
  	elif test "\$verb" = removing ; then
@@ -287,7 +287,7 @@
  		)
  		test -d "\$cf_subdir\${section}" &&
  		test -n "\$aliases" && (
-@@ -15108,6 +15111,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15157,6 +15160,7 @@ cat >>$cf_edit_man <<CF_EOF
  #		echo ".hy 0"
  		cat \$TMP
  	fi
@@ -720,7 +720,7 @@
 +	$(SHELL) -e $(srcdir)/run_cmd.sh $(tinfo)/MKfallback.sh $(TERMINFO) $(TERMINFO_SRC) "$(TIC_PATH)" "$(INFOCMP_PATH)" $(FALLBACK_LIST) >$@
  
  ./lib_gen.c : $(base)/MKlib_gen.sh ../include/curses.h
- 	$(SHELL) -e $(base)/MKlib_gen.sh "$(CPP) $(CPPFLAGS)" "$(AWK)" generated <../include/curses.h >$@
+ 	FGREP="@FGREP@" $(SHELL) -e $(base)/MKlib_gen.sh "$(CPP) $(CPPFLAGS)" "$(AWK)" generated <../include/curses.h >$@
 --- ncurses/run_cmd.sh
 +++ ncurses/run_cmd.sh	2022-02-21 08:55:21.208338888 +0000
 @@ -0,0 +1,11 @@

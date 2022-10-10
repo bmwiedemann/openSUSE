@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Oct  4 06:27:40 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20221001
+  + modify configure/scripts to work around interference by GNU grep 3.8
+    (report by Sam James).
+  + update CF_XOPEN_SOURCE, adding variants "gnueabi" and "gnueabihf" to
+    get _DEFAULT_SOURCE special case (report by Adam Sampson)
+- Port patch ncurses-6.3.dif
+
+-------------------------------------------------------------------
+Mon Sep 26 07:44:32 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20220924
+  + modify configure macro CF_BUILD_CC to check if the build-compiler
+    works, rather than that it is different from the cross-compiler, e.g.,
+    to accommodate a compiler which can be used for either purpose with
+    different flags (report by Mikhail Korolev).
+  + fix another memory-leak in tic.
+  + correct change for cppcheck in menu library (report/analysis by
+    "tuxway", cf: 20220903).
+  + update config.guess, config.sub
+- Correct offsets of patches
+  * ncurses-6.3.dif
+
+-------------------------------------------------------------------
+Mon Sep 19 07:54:26 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20220917
+  + reduce memory-leak in tic by separating allocations for struct entry
+    from TERMTYPE2 (cf: 20220430).
+  + improve interaction between tic -v option and NCURSES_TRACE, by
+    processing the latter only when -v option does not set _nc_tracing.
+  + modify curses_trace() to show the trace-mask as symbols, e.g.,
+    TRACE_ORDINARY, DEBUG_LEVEL(3).
+
+-------------------------------------------------------------------
 Mon Sep 12 10:35:22 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20220910
