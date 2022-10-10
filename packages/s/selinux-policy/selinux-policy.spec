@@ -17,7 +17,7 @@
 
 
 # There are almost no SUSE specific modifications available in the policy, so we utilize the
-# ones used by redhat and include also the SUSE specific ones (see sed statement below)
+# ones used by redhat and include also the SUSE specific ones (distro_suse_to_distro_redhat.patch)
 %define distro redhat
 %define ubac n
 %define polyinstatiate n
@@ -85,6 +85,7 @@ Source129:      rebootmgr.te
 Source130:      rebootmgr.if
 Source131:      rebootmgr.fc
 
+Patch000:       distro_suse_to_distro_redhat.patch
 Patch001:       fix_djbdns.patch
 Patch002:       fix_dbus.patch
 Patch004:       fix_java.patch
@@ -406,7 +407,6 @@ exit 0
 
 %prep
 %autosetup -n fedora-policy-%{version} -p1
-find . -type f -exec sed -i -e "s/distro_suse/distro_redhat/" \{\} \;
 
 %build
 

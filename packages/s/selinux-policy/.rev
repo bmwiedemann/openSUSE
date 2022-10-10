@@ -273,4 +273,12 @@
 - Revamped rtorrent module</comment>
     <requestid>1007016</requestid>
   </revision>
+  <revision rev="33" vrev="6">
+    <srcmd5>f7c876c3cd7c10368ad7c5bc13a118d9</srcmd5>
+    <version>20220714</version>
+    <time>1665420221</time>
+    <user>favogt_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1008716</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 30 07:14:49 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Updated quilt couldn't unpack tarball. This will cause ongoing issues
+  so drop the sed statement in the %prep section and add 
+  distro_suse_to_distro_redhat.patch to add the necessary changes
+  via a patch
+
+-------------------------------------------------------------------
 Thu Sep 29 12:54:15 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
 
 - Update fix_networkmanager.patch to ensure NetworkManager chrony

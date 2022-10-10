@@ -1,7 +1,7 @@
-Index: fedora-policy-20220124/policy/modules/contrib/cron.fc
+Index: fedora-policy-20220714/policy/modules/contrib/cron.fc
 ===================================================================
---- fedora-policy-20220124.orig/policy/modules/contrib/cron.fc
-+++ fedora-policy-20220124/policy/modules/contrib/cron.fc
+--- fedora-policy-20220714.orig/policy/modules/contrib/cron.fc
++++ fedora-policy-20220714/policy/modules/contrib/cron.fc
 @@ -34,7 +34,7 @@
  
  /var/spool/cron			-d	gen_context(system_u:object_r:user_cron_spool_t,s0)
@@ -11,7 +11,7 @@ Index: fedora-policy-20220124/policy/modules/contrib/cron.fc
  
  /var/spool/cron/crontabs 	-d	gen_context(system_u:object_r:cron_spool_t,s0)
  /var/spool/cron/crontabs/.*	--	<<none>>
-@@ -55,6 +55,10 @@ ifdef(`distro_suse', `
+@@ -55,6 +55,10 @@ ifdef(`distro_redhat', `
  /var/spool/cron/lastrun		-d	gen_context(system_u:object_r:crond_tmp_t,s0)
  /var/spool/cron/lastrun/[^/]*	--	<<none>>
  /var/spool/cron/tabs		-d	gen_context(system_u:object_r:cron_spool_t,s0)
@@ -27,15 +27,15 @@ Index: fedora-policy-20220124/policy/modules/contrib/cron.fc
  /var/spool/cron/lastrun/[^/]*	--	<<none>>
  ')
 -
--ifdef(`distro_suse', `
+-ifdef(`distro_redhat', `
 -/var/spool/cron/lastrun		-d	gen_context(system_u:object_r:crond_tmp_t,s0)
 -/var/spool/cron/lastrun/[^/]*	--	<<none>>
 -/var/spool/cron/tabs		-d	gen_context(system_u:object_r:cron_spool_t,s0)
 -')
-Index: fedora-policy-20220124/policy/modules/contrib/cron.if
+Index: fedora-policy-20220714/policy/modules/contrib/cron.if
 ===================================================================
---- fedora-policy-20220124.orig/policy/modules/contrib/cron.if
-+++ fedora-policy-20220124/policy/modules/contrib/cron.if
+--- fedora-policy-20220714.orig/policy/modules/contrib/cron.if
++++ fedora-policy-20220714/policy/modules/contrib/cron.if
 @@ -1057,7 +1057,7 @@ interface(`cron_generic_log_filetrans_lo
  #
  interface(`cron_system_spool_entrypoint',`
