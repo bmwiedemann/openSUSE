@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Wed Oct 05 17:28:40 UTC 2022 - christophe@krop.fr
+
+- Update to version 5.15.11:
+  * Work-around GNOME bug misidentifying HTML content
+  * Fix busy waiting on streaming QIODevice's
+  * Add workaround for un-minimizing QWebEngineView under Gnome
+  * Build the QtDesigner plugin in all configurations
+  * Bump version to 5.15.11
+  * Fix method check
+  * Do not use the native dialog to show the color picker on macOS
+  * FIXUP: Add workaround for unstable gn on macOS in ci
+  * Fix top level build with no widget
+  * Fix touch input for widget's delegate for html popup
+  * Keep page's zoom level on loading new urls
+  * Fix leak if loader error is seen first
+  * Add workaround for unstable gn on macOS in ci
+  * Pass archiver to gn build
+  * Fix read-after-free on EGL extensions
+  * Update Chromium:
+  * FIXUP: Fix url_utils for QtWebEngine
+  * FIXUP: Workaround MSVC2022 ICE in constexpr functions
+  * Fixup: CVE-2022-0796: Use after free in Media
+  * [Backport] CVE-2022-0796: Use after free in Media
+  * [Backport] CVE-2022-1855: Use after free in Messaging
+  * [Backport] CVE-2022-1857: Insufficient policy enforcement in
+    File System API
+  * [Backport] CVE-2022-2008: Out of bounds memory access in WebGL
+  * [Backport] CVE-2022-2010: Out of bounds read in compositing
+  * [Backport] CVE-2022-2158: Type Confusion in V8
+  * [Backport] CVE-2022-2160: Insufficient policy enforcement
+    in DevTools
+  * [Backport] CVE-2022-2162: Insufficient policy enforcement in
+    File System API
+  * [Backport] CVE-2022-2294: Heap buffer overflow in WebRTC
+  * [Backport] CVE-2022-2295: Type Confusion in V8
+  * [Backport] CVE-2022-2477 : Use after free in Guest View
+  * [Backport] CVE-2022-2610: Insufficient policy enforcement
+    in Background Fetch
+  * [Backport] CVE-2022-27404
+  * [Backport] CVE-2022-27405
+  * [Backport] CVE-2022-27406
+  * [Backport] Linux sandbox: ENOSYS for some statx syscalls
+  * [Backport] Security bug 1287804
+  * [Backport] Security bug 1316578
+  * [Backport] Security bug 1343889
+- Replace sandbox-statx-futex_time64.patch with upstream change:
+  * sandbox_futex_time64.patch
+
+-------------------------------------------------------------------
 Mon Sep 26 14:35:08 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Use python 3.9 to build qtwebengine on Leap 15.

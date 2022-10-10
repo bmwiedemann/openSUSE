@@ -1,0 +1,53 @@
+From 6abdfb1d7638c787081d16bb90022cde7a86309f Mon Sep 17 00:00:00 2001
+From: Matthew Denton <mpdenton@chromium.org>
+Date: Tue, 16 Mar 2021 06:38:05 +0000
+Subject: [PATCH] Linux sandbox: support futex_time64 on 32-bit platforms
+
+This updates futex-related syscall sets to include futex_time64, which
+is a version of the futex syscall which uses 64 bit time on 32-bit
+systems, to prepare for the Y2038 problem.
+
+Change-Id: Ie933d9fec221233bf837f00c08eb7daee204081d
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/2753571
+Commit-Queue: Matthew Denton <mpdenton@chromium.org>
+Reviewed-by: Robert Sesek <rsesek@chromium.org>
+Cr-Commit-Position: refs/heads/master@{#863166}
+---
+ sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc | 7 ++++++-
+ sandbox/linux/seccomp-bpf-helpers/syscall_sets.cc    | 3 +++
+ 2 files changed, 9 insertions(+), 1 deletion(-)
+
+
+diff --git a/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc b/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc
+index 5e650d93c4b..b37f082dd69 100644
+--- a/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc
++++ b/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc
+@@ -198,8 +198,13 @@ ResultExpr EvaluateSyscallImpl(int fs_denied_errno,
+   }
+ #endif
+ 
+-  if (sysno == __NR_futex)
++  if (sysno == __NR_futex
++#if defined(__NR_futex_time64)
++      || sysno == __NR_futex_time64
++#endif
++  ) {
+     return RestrictFutex();
++  }
+ 
+   if (sysno == __NR_set_robust_list)
+     return Error(EPERM);
+diff --git a/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/syscall_sets.cc b/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/syscall_sets.cc
+index d1ea8e99a1c..3a8a924cc0a 100644
+--- a/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/syscall_sets.cc
++++ b/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/syscall_sets.cc
+@@ -427,6 +427,9 @@ bool SyscallSets::IsAllowedFutex(int sysno) {
+     case __NR_get_robust_list:
+     case __NR_set_robust_list:
+     case __NR_futex:
++#if defined(__NR_futex_time64)
++    case __NR_futex_time64:
++#endif
+     default:
+       return false;
+   }

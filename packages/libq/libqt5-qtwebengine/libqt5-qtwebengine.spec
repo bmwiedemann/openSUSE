@@ -35,15 +35,15 @@
 %global _qtwebengine_dictionaries_dir %{_libqt5_datadir}/qtwebengine_dictionaries
 
 Name:           libqt5-qtwebengine
-Version:        5.15.10
+Version:        5.15.11
 Release:        0
 Summary:        Qt 5 WebEngine Library
 License:        LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 Group:          Development/Libraries/X11
 URL:            https://www.qt.io
 %define base_name libqt5
-%define real_version 5.15.10
-%define so_version 5.15.10
+%define real_version 5.15.11
+%define so_version 5.15.11
 %define tar_version qtwebengine-everywhere-src-%{version}
 Source:         %{tar_version}.tar.xz
 # Use a git snapshot for catapult to build with python3 (git rev: b7e9d5899)
@@ -53,15 +53,16 @@ Source99:       libqt5-qtwebengine-rpmlintrc
 Patch0:         armv6-ffmpeg-no-thumb.patch
 # PATCH-FIX-OPENSUSE disable-gpu-when-using-nouveau-boo-1005323.diff
 Patch1:         disable-gpu-when-using-nouveau-boo-1005323.diff
-Patch2:         sandbox-statx-futex_time64.patch
 # PATCH-FIX-OPENSUSE
-Patch3:         rtc-dont-use-h264.patch
+Patch2:         rtc-dont-use-h264.patch
 # PATCH-FIX-UPSTREAM
-Patch4:         0001-skia-Some-includes-to-fix-build-with-GCC-12.patch
+Patch3:         0001-skia-Some-includes-to-fix-build-with-GCC-12.patch
 # PATCH-FIX-UPSTREAM -- build with pipewire 0.3
-Patch5:         qtwebengine-pipewire-0.3.patch
+Patch4:         qtwebengine-pipewire-0.3.patch
 # PATCH-FIX-OPENSUSE -- build with python 3
-Patch6:        qtwebengine-python3.patch
+Patch5:         qtwebengine-python3.patch
+# PATCH-FIX-UPSTREAM -- handle futex_time64
+Patch6:         sandbox_futex_time64.patch
 ### Patch 50-99 are applied conditionally
 # PATCH-FIX-OPENSUSE -- allow building qtwebengine with ffmpeg5
 Patch50:        qtwebengine-ffmpeg5.patch
@@ -304,6 +305,7 @@ Examples for the libqt5-qtpdf module.
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
+
 # Replace the whole catapult folder rather than picking individual changes
 pushd src/3rdparty/chromium/third_party
 rm -r catapult

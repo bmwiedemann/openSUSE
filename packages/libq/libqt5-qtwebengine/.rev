@@ -844,4 +844,12 @@
     <comment>- Use python 3.9 to build qtwebengine on Leap 15. (forwarded request 1006198 from cgiboudeaux)</comment>
     <requestid>1006243</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>e937d5c058774f48c85bdea6f37465a3</srcmd5>
+    <version>5.15.11</version>
+    <time>1665420263</time>
+    <user>favogt_factory</user>
+    <comment>Update to 5.15.11 (forwarded request 1008306 from cgiboudeaux)</comment>
+    <requestid>1008339</requestid>
+  </revision>
 </revisionlist>
