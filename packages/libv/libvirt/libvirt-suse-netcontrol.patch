@@ -13,11 +13,11 @@ Originally authored by mt@suse.de
  tools/virsh.c                           |  2 +
  6 files changed, 80 insertions(+), 5 deletions(-)
 
-Index: libvirt-8.7.0/meson.build
+Index: libvirt-8.8.0/meson.build
 ===================================================================
---- libvirt-8.7.0.orig/meson.build
-+++ libvirt-8.7.0/meson.build
-@@ -1073,6 +1073,12 @@ else
+--- libvirt-8.8.0.orig/meson.build
++++ libvirt-8.8.0/meson.build
+@@ -1060,6 +1060,12 @@ else
    netcf_dep = dependency('', required: false)
  endif
  
@@ -30,7 +30,7 @@ Index: libvirt-8.7.0/meson.build
  have_gnu_gettext_tools = false
  if not get_option('nls').disabled()
    have_gettext = cc.has_function('gettext')
-@@ -1480,10 +1486,10 @@ elif get_option('driver_hyperv').enabled
+@@ -1467,10 +1473,10 @@ elif get_option('driver_hyperv').enabled
    error('openwsman is required for the Hyper-V driver')
  endif
  
@@ -43,7 +43,7 @@ Index: libvirt-8.7.0/meson.build
  endif
  
  if not get_option('driver_libxl').disabled() and conf.has('WITH_LIBVIRTD')
-@@ -2291,6 +2297,7 @@ libs_summary = {
+@@ -2267,6 +2273,7 @@ libs_summary = {
    'libssh2': libssh2_dep.found(),
    'libutil': libutil_dep.found(),
    'netcf': conf.has('WITH_NETCF'),
@@ -51,10 +51,10 @@ Index: libvirt-8.7.0/meson.build
    'NLS': have_gnu_gettext_tools,
    'numactl': numactl_dep.found(),
    'openwsman': openwsman_dep.found(),
-Index: libvirt-8.7.0/meson_options.txt
+Index: libvirt-8.8.0/meson_options.txt
 ===================================================================
---- libvirt-8.7.0.orig/meson_options.txt
-+++ libvirt-8.7.0/meson_options.txt
+--- libvirt-8.8.0.orig/meson_options.txt
++++ libvirt-8.8.0/meson_options.txt
 @@ -29,6 +29,7 @@ option('libpcap', type: 'feature', value
  option('libssh', type: 'feature', value: 'auto', description: 'libssh support')
  option('libssh2', type: 'feature', value: 'auto', description: 'libssh2 support')
@@ -63,10 +63,10 @@ Index: libvirt-8.7.0/meson_options.txt
  option('nls', type: 'feature', value: 'auto', description: 'nls support')
  option('numactl', type: 'feature', value: 'auto', description: 'numactl support')
  option('openwsman', type: 'feature', value: 'auto', description: 'openwsman support')
-Index: libvirt-8.7.0/src/interface/interface_backend_netcf.c
+Index: libvirt-8.8.0/src/interface/interface_backend_netcf.c
 ===================================================================
---- libvirt-8.7.0.orig/src/interface/interface_backend_netcf.c
-+++ libvirt-8.7.0/src/interface/interface_backend_netcf.c
+--- libvirt-8.8.0.orig/src/interface/interface_backend_netcf.c
++++ libvirt-8.8.0/src/interface/interface_backend_netcf.c
 @@ -21,7 +21,12 @@
  
  #include <config.h>
@@ -119,7 +119,7 @@ Index: libvirt-8.7.0/src/interface/interface_backend_netcf.c
  
  static void
  virNetcfDriverStateDispose(void *obj)
-@@ -125,6 +161,10 @@ netcfStateInitialize(bool privileged,
+@@ -126,6 +162,10 @@ netcfStateInitialize(bool privileged,
           virPidFileAcquire(driver->stateDir, "driver", false, getpid())) < 0)
          goto error;
  
@@ -130,7 +130,7 @@ Index: libvirt-8.7.0/src/interface/interface_backend_netcf.c
      /* open netcf */
      if (ncf_init(&driver->netcf, NULL) != 0) {
          virReportError(VIR_ERR_INTERNAL_ERROR, "%s",
-@@ -1070,6 +1110,7 @@ static int netcfInterfaceIsActive(virInt
+@@ -1071,6 +1111,7 @@ static int netcfInterfaceIsActive(virInt
      return ret;
  }
  
@@ -138,7 +138,7 @@ Index: libvirt-8.7.0/src/interface/interface_backend_netcf.c
  static int netcfInterfaceChangeBegin(virConnectPtr conn, unsigned int flags)
  {
      int ret = -1;
-@@ -1141,6 +1182,7 @@ static int netcfInterfaceChangeRollback(
+@@ -1142,6 +1183,7 @@ static int netcfInterfaceChangeRollback(
  
      return ret;
  }
@@ -146,7 +146,7 @@ Index: libvirt-8.7.0/src/interface/interface_backend_netcf.c
  
  static virInterfaceDriver interfaceDriver = {
      .name = INTERFACE_DRIVER_NAME,
-@@ -1157,9 +1199,11 @@ static virInterfaceDriver interfaceDrive
+@@ -1158,9 +1200,11 @@ static virInterfaceDriver interfaceDrive
      .interfaceCreate = netcfInterfaceCreate, /* 0.7.0 */
      .interfaceDestroy = netcfInterfaceDestroy, /* 0.7.0 */
      .interfaceIsActive = netcfInterfaceIsActive, /* 0.7.3 */
@@ -158,7 +158,7 @@ Index: libvirt-8.7.0/src/interface/interface_backend_netcf.c
  };
  
  
-@@ -1190,6 +1234,19 @@ static virStateDriver interfaceStateDriv
+@@ -1191,6 +1235,19 @@ static virStateDriver interfaceStateDriv
  
  int netcfIfaceRegister(void)
  {
@@ -178,10 +178,10 @@ Index: libvirt-8.7.0/src/interface/interface_backend_netcf.c
      if (virRegisterConnectDriver(&interfaceConnectDriver, false) < 0)
          return -1;
      if (virSetSharedInterfaceDriver(&interfaceDriver) < 0)
-Index: libvirt-8.7.0/src/interface/interface_driver.c
+Index: libvirt-8.8.0/src/interface/interface_driver.c
 ===================================================================
---- libvirt-8.7.0.orig/src/interface/interface_driver.c
-+++ libvirt-8.7.0/src/interface/interface_driver.c
+--- libvirt-8.8.0.orig/src/interface/interface_driver.c
++++ libvirt-8.8.0/src/interface/interface_driver.c
 @@ -30,8 +30,15 @@ interfaceRegister(void)
      if (netcfIfaceRegister() == 0)
          return 0;
@@ -199,10 +199,10 @@ Index: libvirt-8.7.0/src/interface/interface_driver.c
      if (udevIfaceRegister() == 0)
          return 0;
  #endif /* WITH_UDEV */
-Index: libvirt-8.7.0/src/interface/meson.build
+Index: libvirt-8.8.0/src/interface/meson.build
 ===================================================================
---- libvirt-8.7.0.orig/src/interface/meson.build
-+++ libvirt-8.7.0/src/interface/meson.build
+--- libvirt-8.8.0.orig/src/interface/meson.build
++++ libvirt-8.8.0/src/interface/meson.build
 @@ -2,7 +2,7 @@ interface_driver_sources = [
    'interface_driver.c',
  ]
@@ -220,10 +220,10 @@ Index: libvirt-8.7.0/src/interface/meson.build
        udev_dep,
      ],
      'link_args': [
-Index: libvirt-8.7.0/tools/virsh.c
+Index: libvirt-8.8.0/tools/virsh.c
 ===================================================================
---- libvirt-8.7.0.orig/tools/virsh.c
-+++ libvirt-8.7.0/tools/virsh.c
+--- libvirt-8.8.0.orig/tools/virsh.c
++++ libvirt-8.8.0/tools/virsh.c
 @@ -545,6 +545,8 @@ virshShowVersion(vshControl *ctl G_GNUC_
      vshPrint(ctl, " Interface");
  # if defined(WITH_NETCF)

@@ -34,7 +34,6 @@
 
 # Then the secondary host drivers, which run inside libvirtd
 %define with_storage_rbd   0%{!?_without_storage_rbd:0}
-%define with_storage_sheepdog 0
 # The gluster storage backend is built for both openSUSE and SLE, but it is
 # not supported
 %define with_storage_gluster  0%{!?_without_storage_gluster:1}
@@ -124,6 +123,11 @@
     %endif
 %endif
 
+%define with_modular_daemons 0
+%if 0%{?suse_version} > 1500
+    %define with_modular_daemons 1
+%endif
+
 # Force QEMU to run as qemu:qemu
 %define qemu_user          qemu
 %define qemu_group         qemu
@@ -158,7 +162,7 @@
 
 Name:           libvirt
 URL:            http://libvirt.org/
-Version:        8.7.0
+Version:        8.8.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -283,7 +287,7 @@ BuildRequires:  numad
 BuildRequires:  wireshark-devel
 %endif
 %if %{with_libssh}
-BuildRequires:  libssh-devel >= 0.7.0
+BuildRequires:  libssh-devel >= 0.8.1
 %endif
 # Needed for the firewalld_reload macro
 %if %{with_firewalld_zone}
@@ -589,17 +593,6 @@ Requires:       %{name}-libs = %{version}-%{release}
 The storage driver backend adding implementation of the storage APIs for rbd
 volumes using the ceph protocol.
 
-%package daemon-driver-storage-sheepdog
-Summary:        Storage driver plugin for sheepdog
-Group:          System/Management
-Requires:       %{name}-daemon-driver-storage-core = %{version}-%{release}
-Requires:       %{name}-libs = %{version}-%{release}
-Requires:       sheepdog
-
-%description daemon-driver-storage-sheepdog
-The storage driver backend adding implementation of the storage APIs for
-sheepdog volumes using.
-
 %package daemon-driver-storage
 Summary:        Storage driver plugin including all backends for the libvirtd daemon
 Group:          System/Management
@@ -616,9 +609,6 @@ Requires:       %{name}-daemon-driver-storage-scsi = %{version}-%{release}
 # daemon-driver-storage metapackage
 %if %{with_storage_rbd}
 Requires:       %{name}-daemon-driver-storage-rbd = %{version}-%{release}
-%endif
-%if %{with_storage_sheepdog}
-Requires:       %{name}-daemon-driver-storage-sheepdog = %{version}-%{release}
 %endif
 %if %{with_storage_iscsi_direct}
 Requires:       %{name}-daemon-driver-storage-iscsi-direct = %{version}-%{release}
@@ -868,11 +858,6 @@ libvirt plugin for NSS for translating domain names into IP addresses.
 %else
     %define arg_storage_rbd -Dstorage_rbd=disabled
 %endif
-%if %{with_storage_sheepdog}
-    %define arg_storage_sheepdog -Dstorage_sheepdog=enabled
-%else
-    %define arg_storage_sheepdog -Dstorage_sheepdog=disabled
-%endif
 %if %{with_storage_gluster}
     %define arg_storage_gluster -Dstorage_gluster=enabled -Dglusterfs=enabled
 %else
@@ -892,6 +877,11 @@ libvirt plugin for NSS for translating domain names into IP addresses.
     %define arg_libssh2 -Dlibssh2=enabled
 %else
     %define arg_libssh2 -Dlibssh2=disabled
+%endif
+%if %{with_modular_daemons}
+    %define arg_remote_mode -Dremote_default_mode=direct
+%else
+    %define arg_remote_mode -Dremote_default_mode=legacy
 %endif
 %if %{with_numactl}
     %define arg_numactl -Dnumactl=enabled
@@ -997,7 +987,7 @@ libvirt plugin for NSS for translating domain names into IP addresses.
            -Ddriver_vz=disabled \
            -Ddriver_bhyve=disabled \
            -Ddriver_ch=disabled \
-           -Dremote_default_mode=legacy \
+           %{?arg_remote_mode} \
            -Ddriver_interface=enabled \
            -Ddriver_network=enabled \
            -Dstorage_fs=enabled \
@@ -1007,7 +997,6 @@ libvirt plugin for NSS for translating domain names into IP addresses.
            -Dstorage_disk=enabled \
            -Dstorage_mpath=enabled \
            %{?arg_storage_rbd} \
-           %{?arg_storage_sheepdog} \
            %{?arg_storage_gluster} \
            %{?arg_storage_iscsi_direct} \
            -Dstorage_zfs=disabled \
@@ -1153,9 +1142,37 @@ mv %{buildroot}/%{_datadir}/systemtap/tapset/libvirt_qemu_probes.stp \
 %check
 VIR_TEST_DEBUG=1 %meson_test -t 5 --no-suite syntax-check
 
+# For daemons with only UNIX sockets
+%define libvirt_daemon_systemd_pre() %service_add_pre %1.socket %1-ro.socket %1-admin.socket %1.service
+%define libvirt_daemon_systemd_post() %service_add_post %1.socket %1-ro.socket %1-admin.socket %1.service
+%define libvirt_daemon_systemd_preun() %service_del_preun %1.service %1-ro.socket %1-admin.socket %1.socket
+%define libvirt_daemon_systemd_postun() %service_del_postun_without_restart %1.service %1-ro.socket %1-admin.socket %1.socket
+%define libvirt_daemon_systemd_postun_restart() %service_del_postun %1.service %1-ro.socket %1-admin.socket %1.socket
+
+# For daemons with UNIX and INET sockets
+%define libvirt_daemon_systemd_pre_inet() %service_add_pre %1.socket %1-ro.socket %1-admin.socket %1-tls.socket %1-tcp.socket %1.service
+%define libvirt_daemon_systemd_post_inet() %service_add_post %1.socket %1-ro.socket %1-admin.socket %1-tls.socket %1-tcp.socket %1.service
+%define libvirt_daemon_systemd_preun_inet() %service_del_preun %1.service %1-ro.socket %1-admin.socket %1-tls.socket %1-tcp.socket %1.socket
+%define libvirt_daemon_systemd_postun_inet() %service_del_postun_without_restart %1.service %1-ro.socket %1-admin.socket %1-tls.socket %1-tcp.socket %1.socket
+%define libvirt_daemon_systemd_postun_inet_restart() %service_del_postun %1.service %1-ro.socket %1-admin.socket %1-tls.socket %1-tcp.socket %1.socket
+
+# For daemons with only UNIX sockets and no unprivileged read-only access
+%define libvirt_daemon_systemd_pre_priv() %service_add_pre %1.socket %1-admin.socket %1.service
+%define libvirt_daemon_systemd_post_priv() %service_add_post %1.socket %1-admin.socket %1.service
+%define libvirt_daemon_systemd_preun_priv() %service_del_preun %1.service %1-admin.socket %1.socket
+%define libvirt_daemon_systemd_postun_priv() %service_del_postun_without_restart %1.service %1-admin.socket %1.socket
+%define libvirt_daemon_systemd_postun_priv_restart() %service_del_postun %1.service %1-admin.socket %1.socket
+
 %pre daemon
 %libvirt_sysconfig_pre libvirtd virtproxyd virtlogd virtlockd libvirt-guests
-%service_add_pre libvirtd.service libvirtd.socket libvirtd-ro.socket libvirt-guests.service libvirtd-admin.socket libvirtd-tcp.socket libvirtd-tls.socket virtlockd.service virtlockd.socket virtlogd.service virtlogd.socket virtlockd-admin.socket virtlogd-admin.socket virtproxyd.service virtproxyd.socket virtproxyd-ro.socket virtproxyd-admin.socket virtproxyd-tcp.socket virtproxyd-tls.socket
+%libvirt_daemon_systemd_pre_priv virtlogd
+%libvirt_daemon_systemd_pre_priv virtlockd
+%if %{with_modular_daemons}
+%libvirt_daemon_systemd_pre_inet virtproxyd
+%else
+%libvirt_daemon_systemd_pre_inet libvirtd
+%endif
+%service_add_pre libvirt-guests
 %libvirt_logrotate_pre libvirtd
 
 %post daemon
@@ -1163,18 +1180,36 @@ VIR_TEST_DEBUG=1 %meson_test -t 5 --no-suite syntax-check
 %if %{with_apparmor}
 %apparmor_reload /etc/apparmor.d/usr.sbin.libvirtd
 %endif
-%service_add_post libvirtd.service libvirtd.socket libvirtd-ro.socket libvirt-guests.service libvirtd-admin.socket libvirtd-tcp.socket libvirtd-tls.socket virtlockd.service virtlockd.socket virtlogd.service virtlogd.socket virtlockd-admin.socket virtlogd-admin.socket virtproxyd.service virtproxyd.socket virtproxyd-ro.socket virtproxyd-admin.socket virtproxyd-tcp.socket virtproxyd-tls.socket
+%libvirt_daemon_systemd_post_priv virtlogd
+%libvirt_daemon_systemd_post_priv virtlockd
+%if %{with_modular_daemons}
+    %libvirt_daemon_systemd_post_inet virtproxyd
+%else
+    %libvirt_daemon_systemd_post_inet libvirtd
+%endif
+%service_add_post libvirt-guests.service
 
 %preun daemon
-%service_del_preun libvirtd.service libvirtd.socket libvirtd-ro.socket libvirt-guests.service libvirtd-admin.socket libvirtd-tcp.socket libvirtd-tls.socket virtlockd.service virtlockd.socket virtlogd.service virtlogd.socket virtlockd-admin.socket virtlogd-admin.socket virtproxyd.service virtproxyd.socket virtproxyd-ro.socket virtproxyd-admin.socket virtproxyd-tcp.socket virtproxyd-tls.socket
+%service_del_preun libvirt-guests.service
 if [ $1 = 0 ]; then
     rm -f /var/lib/%{name}/libvirt-guests
 fi
+%libvirt_daemon_systemd_preun_inet libvirtd
+%libvirt_daemon_systemd_preun_inet virtproxyd
+%libvirt_daemon_systemd_preun_priv virtlogd
+%libvirt_daemon_systemd_preun_priv virtlockd
 
 %postun daemon
 /sbin/ldconfig
 # Handle restart/reload in posttrans
-%service_del_postun_without_restart libvirtd.service libvirtd.socket libvirtd-ro.socket libvirt-guests.service libvirtd-admin.socket libvirtd-tcp.socket libvirtd-tls.socket virtlockd.service virtlockd.socket virtlogd.service virtlogd.socket virtlockd-admin.socket virtlogd-admin.socket virtproxyd.service virtproxyd.socket virtproxyd-ro.socket virtproxyd-admin.socket virtproxyd-tcp.socket virtproxyd-tls.socket
+%libvirt_daemon_systemd_postun_priv virtlogd
+%libvirt_daemon_systemd_postun_priv virtlockd
+%if %{with_modular_daemons}
+    %libvirt_daemon_systemd_postun_inet virtproxyd
+%else
+    %libvirt_daemon_systemd_postun_inet libvirtd
+%endif
+%service_del_postun_without_restart libvirt-guests.service
 
 %posttrans daemon
 %libvirt_logrotate_posttrans libvirtd
@@ -1222,22 +1257,30 @@ if test "$DISABLE_RESTART_ON_UPDATE" != yes -a \
 fi
 
 %pre daemon-driver-network
-%service_add_pre virtnetworkd.service virtnetworkd.socket virtnetworkd-ro.socket virtnetworkd-admin.socket
+%libvirt_sysconfig_pre virtnetworkd
+%libvirt_daemon_systemd_pre virtnetworkd
 
 %post daemon-driver-network
-%service_add_post virtnetworkd.service virtnetworkd.socket virtnetworkd-ro.socket virtnetworkd-admin.socket
 %if %{with_firewalld_zone}
     %firewalld_reload
+%endif
+%if %{with_modular_daemons}
+    %libvirt_daemon_systemd_post virtnetworkd
 %endif
 
 %preun daemon-driver-network
-%service_del_preun virtnetworkd.service virtnetworkd.socket virtnetworkd-ro.socket virtnetworkd-admin.socket
+%libvirt_daemon_systemd_preun virtnetworkd
 
 %postun daemon-driver-network
-%service_del_postun virtnetworkd.service virtnetworkd.socket virtnetworkd-ro.socket virtnetworkd-admin.socket
 %if %{with_firewalld_zone}
     %firewalld_reload
 %endif
+%if %{with_modular_daemons}
+    %libvirt_daemon_systemd_postun_restart virtnetworkd
+%endif
+
+%posttrans daemon-driver-network
+%libvirt_sysconfig_posttrans virtnetworkd
 
 %post daemon-config-network
 # Install the default network if one doesn't exist
@@ -1248,112 +1291,170 @@ if test $1 -eq 1 && test ! -f %{_sysconfdir}/%{name}/qemu/networks/default.xml ;
 fi
 
 %pre daemon-driver-nwfilter
-%service_add_pre virtnwfilterd.service virtnwfilterd.socket virtnwfilterd-ro.socket virtnwfilterd-admin.socket
+%libvirt_sysconfig_pre virtnwfilterd
+%libvirt_daemon_systemd_pre virtnwfilterd
 
 %post daemon-driver-nwfilter
-%service_add_post virtnwfilterd.service virtnwfilterd.socket virtnwfilterd-ro.socket virtnwfilterd-admin.socket
+%if %{with_modular_daemons}
+    %libvirt_daemon_systemd_post virtnwfilterd
+%endif
 
 %preun daemon-driver-nwfilter
-%service_del_preun virtnwfilterd.service virtnwfilterd.socket virtnwfilterd-ro.socket virtnwfilterd-admin.socket
+%libvirt_daemon_systemd_preun virtnwfilterd
 
 %postun daemon-driver-nwfilter
-%service_del_postun virtnwfilterd.service virtnwfilterd.socket virtnwfilterd-ro.socket virtnwfilterd-admin.socket
+%if %{with_modular_daemons}
+    %libvirt_daemon_systemd_postun_restart virtnwfilterd
+%endif
+
+%posttrans daemon-driver-nwfilter
+%libvirt_sysconfig_posttrans virtnwfilterd
 
 %pre daemon-driver-storage-core
-%service_add_pre virtstoraged.service virtstoraged.socket virtstoraged-ro.socket virtstoraged-admin.socket
+%libvirt_sysconfig_pre virtstoraged
+%libvirt_daemon_systemd_pre virtstoraged
 
 %post daemon-driver-storage-core
-%service_add_post virtstoraged.service virtstoraged.socket virtstoraged-ro.socket virtstoraged-admin.socket
+%if %{with_modular_daemons}
+    %libvirt_daemon_systemd_post virtstoraged
+%endif
 
 %preun daemon-driver-storage-core
-%service_del_preun virtstoraged.service virtstoraged.socket virtstoraged-ro.socket virtstoraged-admin.socket
+%libvirt_daemon_systemd_preun virtstoraged
 
 %postun daemon-driver-storage-core
-%service_del_postun virtstoraged.service virtstoraged.socket virtstoraged-ro.socket virtstoraged-admin.socket
+%if %{with_modular_daemons}
+    %libvirt_daemon_systemd_postun_restart virtstoraged
+%endif
+
+%posttrans daemon-driver-storage-core
+%libvirt_sysconfig_posttrans virtstoraged
 
 %pre daemon-driver-interface
-%service_add_pre virtinterfaced.service virtinterfaced.socket virtinterfaced-ro.socket virtinterfaced-admin.socket
+%libvirt_sysconfig_pre virtinterfaced
+%libvirt_daemon_systemd_pre virtinterfaced
 
 %post daemon-driver-interface
-%service_add_post virtinterfaced.service virtinterfaced.socket virtinterfaced-ro.socket virtinterfaced-admin.socket
+%if %{with_modular_daemons}
+    %libvirt_daemon_systemd_post virtinterfaced
+%endif
 
 %preun daemon-driver-interface
-%service_del_preun virtinterfaced.service virtinterfaced.socket virtinterfaced-ro.socket virtinterfaced-admin.socket
+%libvirt_daemon_systemd_preun virtinterfaced
 
 %postun daemon-driver-interface
-%service_del_postun virtinterfaced.service virtinterfaced.socket virtinterfaced-ro.socket virtinterfaced-admin.socket
+%if %{with_modular_daemons}
+    %libvirt_daemon_systemd_postun_restart virtinterfaced
+%endif
+
+%posttrans daemon-driver-interface
+%libvirt_sysconfig_posttrans virtinterfaced
 
 %pre daemon-driver-nodedev
-%service_add_pre virtnodedevd.service virtnodedevd.socket virtnodedevd-ro.socket virtnodedevd-admin.socket
+%libvirt_sysconfig_pre virtnodedevd
+%libvirt_daemon_systemd_pre virtnodedevd
 
 %post daemon-driver-nodedev
-%service_add_post virtnodedevd.service virtnodedevd.socket virtnodedevd-ro.socket virtnodedevd-admin.socket
+%if %{with_modular_daemons}
+    %libvirt_daemon_systemd_post virtnodedevd
+%endif
 
 %preun daemon-driver-nodedev
-%service_del_preun virtnodedevd.service virtnodedevd.socket virtnodedevd-ro.socket virtnodedevd-admin.socket
+%libvirt_daemon_systemd_preun virtnodedevd
 
 %postun daemon-driver-nodedev
-%service_del_postun virtnodedevd.service virtnodedevd.socket virtnodedevd-ro.socket virtnodedevd-admin.socket
+%if %{with_modular_daemons}
+    %libvirt_daemon_systemd_postun_restart virtnodedevd
+%endif
+
+%posttrans daemon-driver-nodedev
+%libvirt_sysconfig_posttrans virtnodedevd
 
 %pre daemon-driver-secret
-%service_add_pre virtsecretd.service virtsecretd.socket virtsecretd-ro.socket virtsecretd-admin.socket
+%libvirt_sysconfig_pre virtsecretd
+%libvirt_daemon_systemd_pre virtsecretd
 
 %post daemon-driver-secret
-%service_add_post virtsecretd.service virtsecretd.socket virtsecretd-ro.socket virtsecretd-admin.socket
+%if %{with_modular_daemons}
+    %libvirt_daemon_systemd_post virtsecretd
+%endif
 
 %preun daemon-driver-secret
-%service_del_preun virtsecretd.service virtsecretd.socket virtsecretd-ro.socket virtsecretd-admin.socket
+%libvirt_daemon_systemd_preun virtsecretd
 
 %postun daemon-driver-secret
-%service_del_postun virtsecretd.service virtsecretd.socket virtsecretd-ro.socket virtsecretd-admin.socket
+%if %{with_modular_daemons}
+    %libvirt_daemon_systemd_postun_restart virtsecretd
+%endif
+
+%posttrans daemon-driver-secret
+%libvirt_sysconfig_posttrans virtsecretd
 
 %pre daemon-driver-qemu
-%service_add_pre virtqemud.service virtqemud.socket virtqemud-ro.socket virtqemud-admin.socket
+%libvirt_sysconfig_pre virtqemud
+%libvirt_daemon_systemd_pre virtqemud
 %libvirt_logrotate_pre libvirtd.qemu
 
 %post daemon-driver-qemu
-%service_add_post virtqemud.service virtqemud.socket virtqemud-ro.socket virtqemud-admin.socket
-
-%posttrans daemon-driver-qemu
-%libvirt_logrotate_posttrans libvirtd.qemu
+%if %{with_modular_daemons}
+    %libvirt_daemon_systemd_post virtqemud
+%endif
 
 %preun daemon-driver-qemu
-%service_del_preun virtqemud.service virtqemud.socket virtqemud-ro.socket virtqemud-admin.socket
+%libvirt_daemon_systemd_preun virtqemud
 
 %postun daemon-driver-qemu
-%service_del_postun virtqemud.service virtqemud.socket virtqemud-ro.socket virtqemud-admin.socket
+%if %{with_modular_daemons}
+    %libvirt_daemon_systemd_postun_restart virtqemud
+%endif
+
+%posttrans daemon-driver-qemu
+%libvirt_sysconfig_posttrans virtqemud
+%libvirt_logrotate_posttrans libvirtd.qemu
 
 %pre daemon-driver-lxc
-%service_add_pre virtlxcd.service virtlxcd.socket virtlxcd-ro.socket virtlxcd-admin.socket
+%libvirt_sysconfig_pre virtlxcd
+%libvirt_daemon_systemd_pre virtlxcd
 %libvirt_logrotate_pre libvirtd.lxc
 
 %post daemon-driver-lxc
-%service_add_post virtlxcd.service virtlxcd.socket virtlxcd-ro.socket virtlxcd-admin.socket
-
-%posttrans daemon-driver-lxc
-%libvirt_logrotate_posttrans libvirtd.lxc
+%if %{with_modular_daemons}
+    %libvirt_daemon_systemd_post virtlxcd
+%endif
 
 %preun daemon-driver-lxc
-%service_del_preun virtlxcd.service virtlxcd.socket virtlxcd-ro.socket virtlxcd-admin.socket
+%libvirt_daemon_systemd_preun virtlxcd
 
 %postun daemon-driver-lxc
-%service_del_postun virtlxcd.service virtlxcd.socket virtlxcd-ro.socket virtlxcd-admin.socket
+%if %{with_modular_daemons}
+    %libvirt_daemon_systemd_postun_restart virtlxcd
+%endif
+
+%posttrans daemon-driver-lxc
+%libvirt_sysconfig_posttrans virtlxcd
+%libvirt_logrotate_posttrans libvirtd.lxc
 
 %pre daemon-driver-libxl
-%service_add_pre virtxend.service virtxend.socket virtxend-ro.socket virtxend-admin.socket
+%libvirt_sysconfig_pre virtxend
+%libvirt_daemon_systemd_pre virtxend
 %libvirt_logrotate_pre libvirtd.libxl
 
 %post daemon-driver-libxl
-%service_add_post virtxend.service virtxend.socket virtxend-ro.socket virtxend-admin.socket
-
-%posttrans daemon-driver-libxl
-%libvirt_logrotate_posttrans libvirtd.libxl
+%if %{with_modular_daemons}
+    %libvirt_daemon_systemd_post virtxend
+%endif
 
 %preun daemon-driver-libxl
-%service_del_preun virtxend.service virtxend.socket virtxend-ro.socket virtxend-admin.socket
+%libvirt_daemon_systemd_preun virtxend
 
 %postun daemon-driver-libxl
-%service_del_postun virtxend.service virtxend.socket virtxend-ro.socket virtxend-admin.socket
+%if %{with_modular_daemons}
+    %libvirt_daemon_systemd_postun_restart virtxend
+%endif
+
+%posttrans daemon-driver-libxl
+%libvirt_sysconfig_posttrans virtxend
+%libvirt_logrotate_posttrans libvirtd.libxl
 
 %post libs -p /sbin/ldconfig
 
@@ -1606,11 +1707,6 @@ fi
 %if %{with_storage_rbd}
 %files daemon-driver-storage-rbd
 %{_libdir}/%{name}/storage-backend/libvirt_storage_backend_rbd.so
-%endif
-
-%if %{with_storage_sheepdog}
-%files daemon-driver-storage-sheepdog
-%{_libdir}/%{name}/storage-backend/libvirt_storage_backend_sheepdog.so
 %endif
 
 %if %{with_storage_iscsi_direct}

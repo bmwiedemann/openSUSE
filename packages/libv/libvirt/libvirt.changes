@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct  5 01:23:33 UTC 2022 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 8.8.0
+  - jsc#PED-620, jsc#PED-1540
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v8-8-0-2022-10-03
+- spec: Switch from monolithic to modular daemons for Factory
+
+-------------------------------------------------------------------
 Tue Sep 27 22:36:37 UTC 2022 - James Fehlig <jfehlig@suse.com>
 
 - spec: Only drop redefinition of libexecdir on Factory and newer

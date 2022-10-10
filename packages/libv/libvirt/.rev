@@ -4155,4 +4155,12 @@ StandardGroups in rpmlint package.
   bsc#1203775</comment>
     <requestid>1006540</requestid>
   </revision>
+  <revision rev="362" vrev="1">
+    <srcmd5>49f29a1ad40ae06474d1b52160d1a3cd</srcmd5>
+    <version>8.8.0</version>
+    <time>1665420257</time>
+    <user>favogt_factory</user>
+    <comment></comment>
+    <requestid>1008231</requestid>
+  </revision>
 </revisionlist>
