@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Oct  4 18:21:57 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.18.7 (released 2022-10-04) includes security fixes to the
+  archive/tar, net/http/httputil, and regexp packages, as well as
+  bug fixes to the compiler, the linker, and the go/types package.
+  Refs boo#1193742 go1.18 release tracking
+  CVE-2022-41715 CVE-2022-2879 CVE-2022-2880
+  * go#55950 boo#1204023 security: fix CVE-2022-41715 regexp/syntax: limit memory used by parsing regexps
+  * go#55925 boo#1204024 security: fix CVE-2022-2879 archive/tar: unbounded memory consumption when reading headers
+  * go#55842 boo#1204025 security: fix CVE-2022-2880 net/http/httputil: ReverseProxy should not forward unparseable query parameters
+  * go#55151 fatal error: bulkBarrierPreWrite: unaligned arguments
+  * go#55148 go/types: no way to construct the signature of append(s, "string"...) via the API
+  * go#55113 cmd/link: new darwin linker warning on -pagezero_size and -no_pie deprecation
+  * go#54918 cmd/compile: Value live at entry
+
+-------------------------------------------------------------------
 Tue Sep  6 19:24:28 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.18.6 (released 2022-09-06) includes security fixes to the
