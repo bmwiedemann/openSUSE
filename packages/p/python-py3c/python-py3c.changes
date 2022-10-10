@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct  4 23:42:12 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version v1.4 (2021-10-15)
+  Additions:
+  add guidance around the use of Py_FindMethod (thanks to David Aguilar)
+  Fixes:
+  Avoid compiler warning about unused function
+  Fix DESTDIR support in the Makefile (thanks to David Aguilar)
+  Various documentation warning fixes (thanks to David Aguilar)
+  Project infrastructure:
+  Switch to GitHub Actions for pull request tests 
+
+-------------------------------------------------------------------
 Thu Jul 14 20:42:53 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Fix test build paths for setuptools 63

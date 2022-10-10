@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-py3c
-Version:        1.3.1
+Version:        1.4
 Release:        0
 Summary:        Python compatibility headers
 License:        MIT
