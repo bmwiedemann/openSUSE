@@ -27,7 +27,6 @@ URL:            http://openucx.org/
 #Git-Clone:	git://github.com/openucx/ucx
 #Git-Web:	https://github.com/openucx/ucx
 Source:         https://github.com/openucx/ucx/releases/download/v%version/ucx-%version.tar.gz
-Source1:        baselibs.conf
 Patch1:         openucx-s390x-support.patch
 Patch2:         ucm-fix-UCX_MEM_MALLOC_RELOC.patch
 Patch3:         UCS-DEBUG-replace-PTR-with-void.patch

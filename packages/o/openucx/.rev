@@ -209,4 +209,13 @@
     <comment></comment>
     <requestid>1007003</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>87f022ac0f6d68cd280646c0898f2d13</srcmd5>
+    <version>1.13.1</version>
+    <time>1665420255</time>
+    <user>favogt_factory</user>
+    <comment>- Update openucx-s390x-support.patch to add missing ucs_ffs32 on s390x
+- Drop baselibs.conf as openucx only works on 64b systems</comment>
+    <requestid>1008219</requestid>
+  </revision>
 </revisionlist>

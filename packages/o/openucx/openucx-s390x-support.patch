@@ -1,4 +1,4 @@
-commit 9d5c0d189d4cd5413089bd65fed1e87293e15763
+commit d85339a86c0902ca36f4306f8d971cf46ae87eaf
 Author: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 Date:   Tue Sep 27 17:47:15 2022 +0200
 
@@ -217,10 +217,10 @@ index 8786f130290a..0d251fb91868 100644
  #endif
 diff --git src/ucs/arch/s390x/bitops.h src/ucs/arch/s390x/bitops.h
 new file mode 100644
-index 000000000000..39ad125107e9
+index 000000000000..ce48ff1ff451
 --- /dev/null
 +++ src/ucs/arch/s390x/bitops.h
-@@ -0,0 +1,32 @@
+@@ -0,0 +1,37 @@
 +/**
 +* Copyright (C) Mellanox Technologies Ltd. 2001-2015.  ALL RIGHTS RESERVED.
 +*
@@ -245,6 +245,11 @@ index 000000000000..39ad125107e9
 +	if (!n)
 +		return 0;
 +	return 63 - __builtin_clz(n);
++}
++
++static UCS_F_ALWAYS_INLINE unsigned ucs_ffs32(uint32_t n)
++{
++    return __ucs_ilog2_u32(n & -n);
 +}
 +
 +static inline unsigned ucs_ffs64(uint64_t n)
