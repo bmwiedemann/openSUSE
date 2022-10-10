@@ -1360,4 +1360,12 @@
     <comment>submit new version 4.5.4</comment>
     <requestid>984197</requestid>
   </revision>
+  <revision rev="140" vrev="1">
+    <srcmd5>4ef43281126f84b1b05e2f803410f059</srcmd5>
+    <version>4.5.5</version>
+    <time>1665420265</time>
+    <user>favogt_factory</user>
+    <comment>submit new version 4.5.5</comment>
+    <requestid>1008350</requestid>
+  </revision>
 </revisionlist>

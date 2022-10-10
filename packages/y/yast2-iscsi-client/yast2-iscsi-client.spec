@@ -17,25 +17,23 @@
 
 
 Name:           yast2-iscsi-client
-Version:        4.5.4
+Version:        4.5.5
 Release:        0
 Summary:        YaST2 - iSCSI Client Configuration
 License:        GPL-2.0-only
 Group:          System/YaST
 URL:            https://github.com/yast/yast-iscsi-client
 Source0:        %{name}-%{version}.tar.bz2
-# Yast2::Systemd::Socket
-BuildRequires:  docbook-xsl-stylesheets
-BuildRequires:  libxslt
 BuildRequires:  update-desktop-files
-BuildRequires:  yast2 >= 2.23.15
+# Yast2::Systemd::Socket
 BuildRequires:  yast2 >= 4.1.3
+# needed for test of finish client which include installation/misc
 BuildRequires:  yast2-devtools >= 4.4.0
+BuildRequires:  yast2-installation
 BuildRequires:  yast2-packager
+BuildRequires:  rubygem(%rb_default_ruby_abi:yast-rake)
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:rspec)
 # Yast2::Systemd::Socket
-Requires:       iscsiuio
-Requires:       open-iscsi
 Requires:       yast2 >= 4.1.3
 Requires:       yast2-packager
 Requires:       yast2-ruby-bindings >= 3.1.7
@@ -49,8 +47,10 @@ client.
 %prep
 %setup -q
 
+%check
+%yast_check
+
 %build
-%yast_build
 
 %install
 %yast_install
@@ -58,6 +58,7 @@ client.
 
 %files
 %license COPYING
+%doc %{yast_docdir}
 %{yast_yncludedir}
 %{yast_clientdir}
 %{yast_moduledir}
@@ -66,5 +67,6 @@ client.
 %{yast_scrconfdir}
 %{yast_schemadir}
 %{yast_icondir}
+%{yast_libdir}
 
 %changelog

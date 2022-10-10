@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct  5 10:09:58 UTC 2022 - Josef Reidinger <jreidinger@suse.com>
+
+- replace .process agent with running Execute to respect changed
+  root (bsc#1128853)
+- drop spec dependencies on open-iscsi and iscsiuio as it is needed
+  only on target system. This allows container size reduction
+  (bsc#1128853)
+- 4.5.5
+
+-------------------------------------------------------------------
 Tue Jun 21 13:19:31 UTC 2022 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - Stop using the deprecated agent "background".
