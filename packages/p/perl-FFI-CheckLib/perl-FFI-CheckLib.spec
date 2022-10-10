@@ -18,7 +18,7 @@
 
 %define cpan_name FFI-CheckLib
 Name:           perl-FFI-CheckLib
-Version:        0.30
+Version:        0.31
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Check that a library is available for FFI
@@ -28,11 +28,13 @@ Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(File::Which)
 BuildRequires:  perl(List::Util) >= 1.33
 BuildRequires:  perl(Test2::API) >= 1.302015
 BuildRequires:  perl(Test2::Require::EnvVar) >= 0.000121
 BuildRequires:  perl(Test2::Require::Module) >= 0.000121
 BuildRequires:  perl(Test2::V0) >= 0.000121
+Requires:       perl(File::Which)
 Requires:       perl(List::Util) >= 1.33
 %{perl_requires}
 
