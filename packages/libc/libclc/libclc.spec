@@ -16,7 +16,7 @@
 #
 
 
-%define _libclc_llvm_ver 14.0.0
+%define _libclc_llvm_ver 15.0.0
 %define _version %_libclc_llvm_ver%{?_rc:rc%_rc}
 %define _tagver %_libclc_llvm_ver%{?_rc:-rc%_rc}
 
@@ -29,6 +29,8 @@ Group:          Development/Libraries/C and C++
 URL:            https://libclc.llvm.org/
 Source0:        https://github.com/llvm/llvm-project/releases/download/llvmorg-%{_tagver}/%{name}-%{_version}.src.tar.xz
 Source1:        %{name}-rpmlintrc
+# PATCH-FIX-UPSTREAM: CMAKE_<LANG>_FLAGS is a string and not a list.
+Patch0:         cmake-flags-concat.patch
 BuildRequires:  cmake
 %if 0%{?suse_version} >= 1550
 BuildRequires:  clang-devel
@@ -56,15 +58,19 @@ Library requirements of the OpenCL C programming language.
 
 %prep
 %setup -q -n libclc-%{_version}.src
+%patch0 -p1
 
 %build
 # The libraries are bitcode files, so LTO is neither supported nor does it help.
 %define _lto_cflags %{nil}
 
+# For now we turn off opaque pointers - Clang uses them by default, but Mesa doesn't support them yet.
 # TODO: For building all targets, we need llvm-spirv.
 %cmake \
   -DCMAKE_C_COMPILER=clang \
   -DCMAKE_CXX_COMPILER=clang++ \
+  -DCMAKE_CLC_FLAGS="-Xclang -no-opaque-pointers" \
+  -DCMAKE_LLAsm_FLAGS="-Xclang -no-opaque-pointers" \
   -DENABLE_RUNTIME_SUBNORMAL:BOOL=ON \
   -DLIBCLC_TARGETS_TO_BUILD="amdgcn--;amdgcn--amdhsa;amdgcn-mesa-mesa3d;r600--;nvptx--;nvptx64--;nvptx--nvidiacl;nvptx64--nvidiacl"
 %cmake_build

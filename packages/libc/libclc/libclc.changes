@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep 29 21:33:37 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 0.2.0+llvm15.0.0.
+- Compile without opaque pointers for now because Mesa doesn't
+  support them yet.
+- Add cmake-flags-concat.patch to ensure proper concatenation of
+  build flags: CMAKE_<LANG>_FLAGS is a string and not a list.
+
+-------------------------------------------------------------------
 Thu Aug 25 13:33:10 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - fixed build on Leap 15.3 by buildrequiring clang13/llvm13
@@ -6,7 +15,7 @@ Thu Aug 25 13:33:10 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 -------------------------------------------------------------------
 Fri Apr  1 21:44:03 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
-- Update to version 0.2.0+14.0.0.
+- Update to version 0.2.0+llvm14.0.0.
 
 -------------------------------------------------------------------
 Mon Nov 15 09:30:31 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
