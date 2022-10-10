@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Oct  1 03:06:08 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.004003
+   see /usr/share/doc/packages/perl-Exporter-Tiny/Changes
+
+  1.004003	2022-09-30
+
+   [ Bug Fixes ]
+   - If exporting non-CODE items which happen to have the same name as
+     exported CODE items, their export was being quietly blocked. These
+     exports should now work.
+     Diab Jerius++
+     <https://github.com/tobyink/p5-exporter-tiny/issues/9>
+   - Using ! with a tag now works; it was previously documented as working
+     but not implemented.
+     Diab Jerius++
+     <https://github.com/tobyink/p5-exporter-tiny/issues/8>
+
+-------------------------------------------------------------------
 Sat Sep 17 03:06:20 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.004002
