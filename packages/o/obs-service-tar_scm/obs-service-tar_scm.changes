@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 28 06:05:02 UTC 2022 - FSchreiner@suse.com
+
+- Update to version 0.10.33.1664344889.48d1960:
+  * check if lock is older than 24 hours
+
+-------------------------------------------------------------------
 Fri Sep 09 09:09:06 UTC 2022 - FSchreiner@suse.com
 
 - Update to version 0.10.32.1662712308.31d1884:
