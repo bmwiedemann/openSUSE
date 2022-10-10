@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct  5 14:01:47 UTC 2022 - Reinhard Max <max@suse.com>
+
+- bsc#1203988, CVE-2022-2928, dhcp-CVE-2022-2928.patch:
+  An option refcount overflow exists in dhcpd  
+- bsc#1203989, CVE-2022-2929, dhcp-CVE-2022-2929.patch:
+  DHCP memory leak
+
+-------------------------------------------------------------------
 Tue Apr 26 10:48:39 UTC 2022 - Reinhard Max <max@suse.com>
 
 - bsc#1198657: properly handle DHCRELAY(6)_OPTIONS.

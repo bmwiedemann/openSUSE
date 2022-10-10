@@ -1208,4 +1208,15 @@ a dhcpv6 server assert crash (bnc#767661), and other bugs
     <comment>- bsc#1198657: properly handle DHCRELAY(6)_OPTIONS.</comment>
     <requestid>972892</requestid>
   </revision>
+  <revision rev="135" vrev="11">
+    <srcmd5>8cf9102f7aff5834bfc0f2dd439dc15b</srcmd5>
+    <version>4.4.2.P1</version>
+    <time>1665420256</time>
+    <user>favogt_factory</user>
+    <comment>- bsc#1203988, CVE-2022-2928, dhcp-CVE-2022-2928.patch:
+  An option refcount overflow exists in dhcpd  
+- bsc#1203989, CVE-2022-2929, dhcp-CVE-2022-2929.patch:
+  DHCP memory leak</comment>
+    <requestid>1008224</requestid>
+  </revision>
 </revisionlist>
