@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Oct  4 23:10:53 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version v3.1.0
+  Require Python 3.7 or later.
+
+- Update to version v3.0.0
+  Removed legacy aliases wait_for_occupied_port and wait_for_free_port.
+
+- Update to version v2.7.2
+  Packaging refresh.
+
+- Update to version v2.7.1
+  #14: Fix host/port order.
+
+- Update to version v2.7.0
+  Refresh package. Require Python 3.6 or later. 
+
+-------------------------------------------------------------------
 Wed Mar 18 08:49:45 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 2.6
