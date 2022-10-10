@@ -16,7 +16,7 @@
 #
 
 
-%if 0%{?is_opensuse} && (0%{?sle_version} >= 150100 || 0%{?suse_version} > 1500)
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400 || (0%{?is_opensuse} && 0%{?sle_version} >= 150100)
 %bcond_without zchunk
 %else
 %bcond_with zchunk
@@ -43,7 +43,7 @@
 %bcond_with enable_preview_single_rpmtrans_as_default_for_zypper
 
 Name:           libzypp
-Version:        17.31.1
+Version:        17.31.2
 Release:        0
 License:        GPL-2.0-or-later
 URL:            https://github.com/openSUSE/libzypp
