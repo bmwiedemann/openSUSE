@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct  6 14:25:37 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4:
+  * Use set comprehension
+  * Fix link to entry_points
+  * Treat editable installs as Distributions too
+  * Document motvation / constrast to pkg_resources
+  * Switch build-backend to flit_core
+
+-------------------------------------------------------------------
 Mon Mar 16 10:30:18 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2

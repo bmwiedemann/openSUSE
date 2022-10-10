@@ -1,7 +1,7 @@
 #
 # spec file for package python-entrypoints
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,16 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-entrypoints
-Version:        0.3
+Version:        0.4
 Release:        0
 Summary:        Discover and load entry points from installed packages
 License:        MIT
 URL:            https://github.com/takluyver/entrypoints
 Source:         https://files.pythonhosted.org/packages/source/e/entrypoints/entrypoints-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -52,10 +54,10 @@ plugins, or multiple groups if it has different kinds of plugins.
 %setup -q -n entrypoints-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -65,6 +67,6 @@ plugins, or multiple groups if it has different kinds of plugins.
 %license LICENSE
 %{python_sitelib}/entrypoints.py*
 %pycache_only %{python_sitelib}/__pycache__/entrypoints*.py*
-%{python_sitelib}/entrypoints-%{version}-py*.egg-info
+%{python_sitelib}/entrypoints-%{version}.dist-info
 
 %changelog
