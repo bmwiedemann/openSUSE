@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 27 12:37:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- switch to go1.17 as upstream does (see https://github.com/prometheus/promu/blob/v0.13.0/.promu.yml)
+- remove go_nostrip as it isn't necessary with 1.17 anymore
+
+-------------------------------------------------------------------
 Tue May 10 15:22:43 UTC 2022 - Jordi Massaguer <jmassaguerpla@suse.com>
 
 - Exclude s390 architecture.

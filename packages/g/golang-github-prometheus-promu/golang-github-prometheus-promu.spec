@@ -16,13 +16,6 @@
 #
 
 
-%if 0%{?rhel}
-# Fix ERROR: No build ID note found in
-%undefine _missing_build_ids_terminate_build
-%endif
-
-%{go_nostrip}
-
 Name:           golang-github-prometheus-promu
 Version:        0.13.0
 Release:        0
@@ -34,14 +27,15 @@ Source:         promu-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Patch1:         0001-Set-build-date-from-SOURCE_DATE_EPOCH.patch
 BuildRequires:  golang-packaging
-%if 0%{?rhel}
-BuildRequires:  golang >= 1.15
-%else
-BuildRequires:  golang(API) = 1.15
-%endif
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExcludeArch:    s390
 %{go_provides}
+%if 0%{?rhel}
+# Fix ERROR: No build ID note found in
+%undefine _missing_build_ids_terminate_build
+BuildRequires:  golang >= 1.17
+%else
+BuildRequires:  golang(API) = 1.17
+%endif
 
 %description
 The Prometheus Utility Tool is used by the Prometheus project to build other components.
@@ -50,7 +44,7 @@ The Prometheus Utility Tool is used by the Prometheus project to build other com
 %autosetup -a1 -p1 -n promu-%{version}
 
 %build
-%goprep github.com/prometheus/promu
+%{goprep} github.com/prometheus/promu
 export VERSION=%{version}
 export CGO_ENABLED=0
 go build \
@@ -61,12 +55,11 @@ go build \
 
 %install
 install -D -m 0755 promu "%{buildroot}/%{_bindir}/promu"
-%gosrc
+%{gosrc}
 
-%gofilelist
+%{gofilelist}
 
 %files -f file.lst
-%defattr(-,root,root,-)
 %doc README.md
 %license LICENSE
 %{_bindir}/promu
