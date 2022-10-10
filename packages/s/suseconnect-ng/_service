@@ -1,4 +1,5 @@
 <services>
+  <!-- The copy of this file in the OBS package needs to be manually updated from the one in git repo. -->
   <service name="tar_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://github.com/SUSE/connect-ng.git</param>
@@ -10,7 +11,7 @@
     <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>
-    <param name="package-meta">yes</param>
+    <param name="package-meta">no</param>
     <param name="exclude">vendor</param>
   </service>
   <service name="recompress" mode="manual">

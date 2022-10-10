@@ -23,7 +23,7 @@
 %bcond_with hwinfo
 
 Name:           suseconnect-ng
-Version:        0.0.10~git0.5f84106
+Version:        0.0.10~git2.ee561b8
 Release:        0
 URL:            https://github.com/SUSE/connect-ng
 Summary:        Utility to register a system with the SUSE Customer Center
@@ -104,8 +104,6 @@ This package provides bindings needed to use libsuseconnect from Ruby scripts.
 
 %prep
 %setup -q -n connect-ng-%{version}
-# keep git metadata but don't use it for "VCS stamping"
-mv .git .git.bak
 
 %build
 find %_builddir/..
