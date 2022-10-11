@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct  4 11:42:07 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 2022.10
+
+-------------------------------------------------------------------
+Mon Oct  3 08:46:37 UTC 2022 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Enable pcm051_rev3 config for Phytec Wega board
+
+-------------------------------------------------------------------
+Wed Sep 21 14:50:42 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 2022.10-rc5
+
+-------------------------------------------------------------------
 Wed Jul 20 11:33:07 UTC 2022 - Matthias Brugger <mbrugger@suse.com>
 
 - Add board and usage documentation to the package (bsc#1201077)

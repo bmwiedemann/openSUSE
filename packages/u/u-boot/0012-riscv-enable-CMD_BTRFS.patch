@@ -1,4 +1,4 @@
-From bf4863dfcb136f5877dff28da08a78dfd00c8ecb Mon Sep 17 00:00:00 2001
+From d7994712e2debd412cf1f1e9ac25be27ff8dfd1e Mon Sep 17 00:00:00 2001
 From: Andreas Schwab <schwab@suse.de>
 Date: Fri, 24 Sep 2021 18:25:51 +0200
 Subject: [PATCH] riscv: enable CMD_BTRFS
@@ -9,10 +9,10 @@ Signed-off-by: Matthias Brugger <mbrugger@suse.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/Kconfig b/Kconfig
-index 1d3a65b590..01fb64b0f6 100644
+index 6a9e60ef66..4c24a9ad28 100644
 --- a/Kconfig
 +++ b/Kconfig
-@@ -195,7 +195,7 @@ config DISTRO_DEFAULTS
+@@ -211,7 +211,7 @@ config DISTRO_DEFAULTS
  	select HUSH_PARSER
  	select SUPPORT_RAW_INITRD
  	select SYS_LONGHELP

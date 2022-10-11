@@ -1,4 +1,4 @@
-From 2956d6fc64be6da6236f93849b55f530dcb8fe37 Mon Sep 17 00:00:00 2001
+From 1184511200f355cdd39c4a603e83c9e74f776804 Mon Sep 17 00:00:00 2001
 From: Michal Suchanek <msuchanek@suse.de>
 Date: Sun, 3 Jul 2022 18:25:39 +0200
 Subject: [PATCH] cmd: boot: add brom cmd to reboot to FEL mode
@@ -36,10 +36,10 @@ index b08f202374..36e7697b1c 100644
 +
  #endif /* _SUNXI_CPU_H */
 diff --git a/arch/arm/mach-sunxi/Kconfig b/arch/arm/mach-sunxi/Kconfig
-index e712a89534..c623b4403e 100644
+index 5712576184..468fbdc0f2 100644
 --- a/arch/arm/mach-sunxi/Kconfig
 +++ b/arch/arm/mach-sunxi/Kconfig
-@@ -1048,6 +1048,22 @@ source "board/sunxi/Kconfig"
+@@ -1036,6 +1036,22 @@ source "board/sunxi/Kconfig"
  
  endif
  

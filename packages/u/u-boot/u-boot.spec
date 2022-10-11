@@ -127,7 +127,7 @@
 %define is_armv7 1
 %define binext .img
 %endif
-%if "%target" == "omap3beagle" || "%target" == "omap4panda" || "%target" == "am335xevm"
+%if "%target" == "omap3beagle" || "%target" == "omap4panda" || "%target" == "am335xevm" || "%target" == "pcm051rev3"
 %define x_loader 1
 %define is_armv7 1
 %define binext .img
@@ -175,7 +175,7 @@
 %define is_ppc 1
 %endif
 # archive_version differs from version for RC version only
-%define archive_version 2022.07
+%define archive_version 2022.10
 %if "%{target}" == ""
 ExclusiveArch:  do_not_build
 %else
@@ -205,7 +205,7 @@ ExclusiveArch:  do_not_build
 %endif
 %endif
 %endif
-Version:        2022.07
+Version:        2022.10
 Release:        0
 Summary:        The U-Boot firmware for the %target platform
 License:        GPL-2.0-only
