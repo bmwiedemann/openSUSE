@@ -8,13 +8,13 @@ They are not compatible with the theme
  lookandfeel/contents/components/UserList.qml | 8 +++++++-
  1 file changed, 7 insertions(+), 1 deletion(-)
 
-Index: plasma-workspace-5.17.80git.20210928T142611~d53fd656e/lookandfeel/contents/components/UserList.qml
+Index: plasma-workspace-5.17.80git.20220531T124808~09e811ca3/lookandfeel/org.kde.breeze/contents/components/UserList.qml
 ===================================================================
---- plasma-workspace-5.17.80git.20210928T142611~d53fd656e.orig/lookandfeel/contents/components/UserList.qml	2021-09-28 16:26:11.000000000 +0200
-+++ plasma-workspace-5.17.80git.20210928T142611~d53fd656e/lookandfeel/contents/components/UserList.qml	2021-09-28 22:02:18.756685636 +0200
-@@ -34,7 +34,13 @@
+--- plasma-workspace-5.17.80git.20220531T124808~09e811ca3.orig/lookandfeel/org.kde.breeze/contents/components/UserList.qml	2022-05-31 12:48:08.000000000 +0200
++++ plasma-workspace-5.17.80git.20220531T124808~09e811ca3/lookandfeel/org.kde.breeze/contents/components/UserList.qml	2022-05-31 22:01:30.368435010 +0200
+@@ -54,7 +54,13 @@
      interactive: count > 1
- 
+
      delegate: UserDelegate {
 -        avatarPath: model.icon || ""
 +        avatarPath: {
@@ -26,4 +26,4 @@ Index: plasma-workspace-5.17.80git.20210928T142611~d53fd656e/lookandfeel/content
 +        }
          iconSource: model.iconName || "user-identity"
          fontSize: view.fontSize
-         vtNumber: model.vtNumber
+         needsPassword: model.needsPassword !== undefined ? model.needsPassword : true

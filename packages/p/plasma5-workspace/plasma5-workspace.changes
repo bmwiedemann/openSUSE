@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Oct  6 14:48:46 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.0
+- Too many changes to list here
+
+-------------------------------------------------------------------
+Thu Sep 15 20:47:39 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.90
+- Too many changes to list here
+- Drop patches, now upstream:
+  * 0001-widgetexplorer-Don-t-recurse-into-applet-s-containme.patch
+- Refresh patches:
+  * 0001-Ignore-default-sddm-face-icons.patch
+  * 0001-Revert-No-icons-on-the-desktop-by-default.patch
+  * 0001-Use-qdbus-qt5.patch
+
+-------------------------------------------------------------------
 Thu Sep  8 20:29:10 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix widget explorer crash (kde#458829):

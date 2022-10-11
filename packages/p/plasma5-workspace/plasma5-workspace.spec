@@ -16,12 +16,12 @@
 #
 
 
-%global __requires_exclude qmlimport\\((org\\.kde\\.plasma\\.private|org\\.kde\\.private\\.kcm|org\\.kde\\.plasma\\.kcm|LocaleListModel|FingerprintModel).*
+%global __requires_exclude qmlimport\\((org\\.kde\\.plasma\\.private|org\\.kde\\.private\\.kcm|org\\.kde\\.plasma\\.kcm|LocaleListModel|FingerprintModel|kcmregionandlang).*
 
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %{!?_fillupdir: %global _fillupdir %{_localstatedir}/adm/fillup-templates}
 
-%define kf5_version 5.58.0
+%define kf5_version 5.98.0
 
 %bcond_without released
 Name:           plasma5-workspace
@@ -29,20 +29,18 @@ Name:           plasma5-workspace
 %{!?_plasma5_bugfix: %global _plasma5_bugfix %{version}}
 # Latest ABI-stable Plasma (e.g. 5.8 in KF5, but 5.9.1 in KUF)
 %{!?_plasma5_version: %define _plasma5_version %(echo %{_plasma5_bugfix} | awk -F. '{print $1"."$2}')}
-Version:        5.25.5
+Version:        5.26.0
 Release:        0
 Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-workspace-%{version}.tar.xz
+Source:         plasma-workspace-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-workspace-%{version}.tar.xz.sig
+Source1:        plasma-workspace-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 Source3:        xprop-kde-full-session.desktop
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-widgetexplorer-Don-t-recurse-into-applet-s-containme.patch
 # PATCHES 501-??? are PATCH-FIX-OPENSUSE
 Patch501:       0001-Use-qdbus-qt5.patch
 Patch502:       0001-Ignore-default-sddm-face-icons.patch
@@ -51,6 +49,7 @@ Patch506:       0001-Revert-No-icons-on-the-desktop-by-default.patch
 BuildRequires:  breeze5-icons
 BuildRequires:  fdupes
 %if 0%{?suse_version} < 1550
+BuildRequires:  gcc10-PIE
 BuildRequires:  gcc10-c++
 %endif
 BuildRequires:  kf5-filesystem
@@ -76,6 +75,7 @@ BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
 BuildRequires:  cmake(KF5IdleTime) >= %{kf5_version}
 BuildRequires:  cmake(KF5KCMUtils) >= %{kf5_version}
 BuildRequires:  cmake(KF5KDELibs4Support) >= %{kf5_version}
+BuildRequires:  cmake(KF5KExiv2)
 BuildRequires:  cmake(KF5NetworkManagerQt) >= %{kf5_version}
 BuildRequires:  cmake(KF5NewStuff) >= %{kf5_version}
 BuildRequires:  cmake(KF5NotifyConfig) >= %{kf5_version}
@@ -94,6 +94,7 @@ BuildRequires:  cmake(KF5TextWidgets) >= %{kf5_version}
 BuildRequires:  cmake(KF5Wallet) >= %{kf5_version}
 BuildRequires:  cmake(KF5Wayland) >= %{kf5_version}
 BuildRequires:  cmake(KF5XmlRpcClient)
+BuildRequires:  cmake(KPipeWire)
 BuildRequires:  cmake(KScreenLocker) >= %{_plasma5_version}
 # Disabled until upstream complies with the KDE policies
 #BuildRequires:  cmake(KUserFeedback)
@@ -102,6 +103,7 @@ BuildRequires:  cmake(PlasmaWaylandProtocols) >= 1.1.0
 #!BuildIgnore:  kdialog
 BuildRequires:  cmake(KWinDBusInterface) >= %{_plasma5_version}
 BuildRequires:  cmake(LayerShellQt)
+BuildRequires:  cmake(PolkitQt5-1)
 BuildRequires:  cmake(Qt5Concurrent) >= 5.4.0
 BuildRequires:  cmake(Qt5DBus) >= 5.4.0
 BuildRequires:  cmake(Qt5Gui) >= 5.4.0
@@ -326,7 +328,7 @@ Plasma 5 session with Wayland from a display manager.
   %if 0%{?suse_version} < 1550
     export CXX=g++-10
   %endif
-  %cmake_kf5 -d build -- -DKDE_DEFAULT_HOME=.kde4 -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
+  %cmake_kf5 -d build -- -DKDE_DEFAULT_HOME=.kde4 -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir} -DGLIBC_LOCALE_GENERATED=TRUE -DGLIBC_LOCALE_GEN=OFF
   %cmake_build
 
 %install
@@ -420,16 +422,14 @@ fi
 %{_kf5_applicationsdir}/kcm_autostart.desktop
 %{_kf5_applicationsdir}/kcm_colors.desktop
 %{_kf5_applicationsdir}/kcm_cursortheme.desktop
-%{_kf5_applicationsdir}/kcm_desktoptheme.desktop
 %{_kf5_applicationsdir}/kcm_fontinst.desktop
 %{_kf5_applicationsdir}/kcm_fonts.desktop
-%{_kf5_applicationsdir}/kcm_formats.desktop
 %{_kf5_applicationsdir}/kcm_icons.desktop
 %{_kf5_applicationsdir}/kcm_lookandfeel.desktop
 %{_kf5_applicationsdir}/kcm_nightcolor.desktop
 %{_kf5_applicationsdir}/kcm_notifications.desktop
+%{_kf5_applicationsdir}/kcm_regionandlang.desktop
 %{_kf5_applicationsdir}/kcm_style.desktop
-%{_kf5_applicationsdir}/kcm_translations.desktop
 %{_kf5_applicationsdir}/kcm_users.desktop
 %{_kf5_bindir}/kcminit
 %{_kf5_bindir}/kcminit_startup
@@ -519,12 +519,14 @@ fi
 %{_kf5_servicesdir}/
 %{_kf5_servicetypesdir}/
 %dir %{_kf5_sharedir}/kglobalaccel
+%dir %{_kf5_sharedir}/kio
+%dir %{_kf5_sharedir}/kio/servicemenus
 %{_kf5_sharedir}/kglobalaccel/org.kde.krunner.desktop
-%{_kf5_sharedir}/ksplash/
 %{_kf5_sharedir}/kstyle/
 %{_kf5_plasmadir}/
 %{_kf5_sharedir}/solid/
 %{_kf5_sharedir}/kio_desktop/
+%{_kf5_sharedir}/kio/servicemenus/setaswallpaper.desktop
 %{_kf5_iconsdir}/hicolor/32x32/apps/preferences-desktop-color.svg
 %{_kf5_iconsdir}/hicolor/48x48/apps/klipper.svg
 %{_kf5_iconsdir}/hicolor/*/mimetypes/fonts-package.png
@@ -538,7 +540,6 @@ fi
 %{_kf5_debugdir}/*.categories
 %dir %{_kf5_sharedir}/kpackage
 %dir %{_kf5_sharedir}/kpackage/kcms
-%{_kf5_sharedir}/kpackage/kcms/kcm_translations
 # %%{_kf5_sharedir}/kpackage/kcms/kcm_feedback
 %{_kf5_sharedir}/kpackage/kcms/kcm_desktoptheme
 %dir %{_libexecdir}/kauth
