@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           powerdevil5
-Version:        5.25.5
+Version:        5.26.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -28,9 +28,9 @@ Summary:        KDE Power Management module
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/powerdevil-%{version}.tar.xz
+Source:         powerdevil-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/powerdevil-%{version}.tar.xz.sig
+Source1:        powerdevil-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= 1.2.0
@@ -45,6 +45,7 @@ BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5GlobalAccel)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IdleTime)
+BuildRequires:  cmake(KF5KCMUtils)
 BuildRequires:  cmake(KF5KDELibs4Support)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Kirigami2)
@@ -107,16 +108,33 @@ DBus helper and KCM for configuring Power settings.
 
 %files
 %license COPYING*
+%{_kf5_applicationsdir}/kcm_powerdevilactivitiesconfig.desktop
+%{_kf5_applicationsdir}/kcm_powerdevilglobalconfig.desktop
+%{_kf5_applicationsdir}/kcm_powerdevilprofilesconfig.desktop
 %{_kf5_debugdir}/powerdevil.categories
 %{_kf5_libdir}/libpowerdevilconfigcommonprivate.so.*
 %{_kf5_libdir}/libpowerdevilcore.so.*
 %{_kf5_libdir}/libpowerdevilui.so.*
 %doc %{_kf5_htmldir}/en
-%{_kf5_plugindir}/kcm_powerdevilactivitiesconfig.so
-%{_kf5_plugindir}/kcm_powerdevilglobalconfig.so
-%{_kf5_plugindir}/kcm_powerdevilprofilesconfig.so
 %dir %{_kf5_plugindir}/kf5/
+%dir %{_kf5_plugindir}/powerdevil/
+%dir %{_kf5_plugindir}/powerdevil/action
 %dir %{_kf5_plugindir}/kf5/powerdevil/
+%dir %{_kf5_plugindir}/plasma
+%dir %{_kf5_plugindir}/plasma/kcms/
+%dir %{_kf5_plugindir}/plasma/kcms/systemsettings_qwidgets
+%{_kf5_plugindir}/plasma/kcms/systemsettings_qwidgets/kcm_powerdevilactivitiesconfig.so
+%{_kf5_plugindir}/plasma/kcms/systemsettings_qwidgets/kcm_powerdevilglobalconfig.so
+%{_kf5_plugindir}/plasma/kcms/systemsettings_qwidgets/kcm_powerdevilprofilesconfig.so
+%{_kf5_plugindir}/powerdevil/action/powerdevil_brightnesscontrolaction.so
+%{_kf5_plugindir}/powerdevil/action/powerdevil_dimdisplayaction.so
+%{_kf5_plugindir}/powerdevil/action/powerdevil_dpmsaction.so
+%{_kf5_plugindir}/powerdevil/action/powerdevil_handlebuttoneventsaction.so
+%{_kf5_plugindir}/powerdevil/action/powerdevil_keyboardbrightnesscontrolaction.so
+%{_kf5_plugindir}/powerdevil/action/powerdevil_powerprofileaction.so
+%{_kf5_plugindir}/powerdevil/action/powerdevil_runscriptaction.so
+%{_kf5_plugindir}/powerdevil/action/powerdevil_suspendsessionaction.so
+%{_kf5_plugindir}/powerdevil/action/powerdevil_wirelesspowersavingaction.so
 %{_kf5_plugindir}/kf5/powerdevil/powerdevilupowerbackend.so
 %{_kf5_plugindir}/powerdevilbrightnesscontrolaction_config.so
 %{_kf5_plugindir}/powerdevildimdisplayaction_config.so
@@ -128,8 +146,6 @@ DBus helper and KCM for configuring Power settings.
 %{_kf5_plugindir}/powerdevilsuspendsessionaction_config.so
 %{_kf5_plugindir}/powerdevilwirelesspowersavingaction_config.so
 %{_kf5_notifydir}/
-%{_kf5_servicesdir}/
-%{_kf5_servicetypesdir}/
 %{_kf5_sharedir}/dbus-1/system-services/org.kde.powerdevil.backlighthelper.service
 %{_kf5_dbuspolicydir}/org.kde.powerdevil.backlighthelper.conf
 %{_kf5_sharedir}/polkit-1/actions/org.kde.powerdevil.backlighthelper.policy
