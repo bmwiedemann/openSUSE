@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Oct  1 15:55:33 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.99.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.99.0
+- Changes since 5.98.0:
+  * Only warn about a file being inaccessible if we know which file it is
+  * Add Qt6 windows CI support
+  * Fix size and position restoration on multimonitor setups (kde#427875)
+  * Warn when accessing an inaccessible config file
+  * Fix minValue/maxValue for KConfigCompilerSignallingItem
+
+-------------------------------------------------------------------
 Tue Sep  6 07:16:48 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.98.0

@@ -17,14 +17,14 @@
 
 
 %define sonum   5
-%define _tar_path 5.98
+%define _tar_path 5.99
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kconfig
-Version:        5.98.0
+Version:        5.99.0
 Release:        0
 Summary:        Advanced configuration system
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
@@ -43,11 +43,9 @@ BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(Qt5Core) >= 5.15.0
 BuildRequires:  cmake(Qt5DBus) >= 5.15.0
 BuildRequires:  cmake(Qt5Gui) >= 5.15.0
+BuildRequires:  cmake(Qt5LinguistTools) >= 5.15.0
 BuildRequires:  cmake(Qt5Qml) >= 5.15.0
 BuildRequires:  cmake(Qt5Xml) >= 5.15.0
-%if %{with released}
-BuildRequires:  cmake(Qt5LinguistTools) >= 5.15.0
-%endif
 
 %description
 KConfig provides an advanced configuration system. It is made of three parts:
@@ -152,11 +150,10 @@ their changes to their respective configuration files. Development files.
 
 %install
 %kf5_makeinstall -C build
+
 %fdupes %{buildroot}
 
-%if %{with released}
-%find_lang %{name}5 --with-qt --without-mo
-%endif
+%find_lang kconfig5 --with-qt --without-mo
 
 %post -n libKF5ConfigCore%{sonum} -p /sbin/ldconfig
 %postun -n libKF5ConfigCore%{sonum} -p /sbin/ldconfig
@@ -165,9 +162,7 @@ their changes to their respective configuration files. Development files.
 %post -n libKF5ConfigQml%{sonum} -p /sbin/ldconfig
 %postun -n libKF5ConfigQml%{sonum} -p /sbin/ldconfig
 
-%if %{with released}
-%files -n libKF5ConfigCore%{sonum}-lang -f %{name}5.lang
-%endif
+%files -n libKF5ConfigCore%{sonum}-lang -f kconfig5.lang
 
 %files -n libKF5ConfigCore%{sonum}
 %license LICENSES/*
