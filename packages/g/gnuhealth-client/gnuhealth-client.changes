@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 11 14:20:00 UTC 2022 - Axel Braun <axel.braun@gmx.de>
+
+- explicit dependency on pydot and graphviz added
+
+-------------------------------------------------------------------
 Thu Jun 16 19:58:10 UTC 2022 - Axel Braun <axel.braun@gmx.de>
 
 - version 4.0.1
