@@ -19,15 +19,15 @@
 %bcond_without released
 %define mm_support 1
 Name:           plasma-nm5
-Version:        5.25.5
+Version:        5.26.0
 Release:        0
 Summary:        Plasma applet written in QML for managing network connections
 License:        (GPL-2.0-only OR GPL-3.0-only) AND (LGPL-2.1-only OR LGPL-3.0-only)
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-nm-%{version}.tar.xz
+Source:         plasma-nm-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-nm-%{version}.tar.xz.sig
+Source1:        plasma-nm-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  NetworkManager-devel >= 0.9.8.4
@@ -36,33 +36,34 @@ BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
 BuildRequires:  mobile-broadband-provider-info
 BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5Completion) >= 5.25.0
-BuildRequires:  cmake(KF5ConfigWidgets) >= 5.25.0
-BuildRequires:  cmake(KF5CoreAddons) >= 5.25.0
-BuildRequires:  cmake(KF5DBusAddons) >= 5.25.0
-BuildRequires:  cmake(KF5Declarative) >= 5.25.0
-BuildRequires:  cmake(KF5I18n) >= 5.25.0
-BuildRequires:  cmake(KF5IconThemes) >= 5.25.0
-BuildRequires:  cmake(KF5Init) >= 5.25.0
-BuildRequires:  cmake(KF5ItemViews) >= 5.25.0
-BuildRequires:  cmake(KF5KDELibs4Support) >= 5.25.0
-BuildRequires:  cmake(KF5KIO) >= 5.25.0
-BuildRequires:  cmake(KF5NetworkManagerQt) >=  5.25.0
-BuildRequires:  cmake(KF5Notifications) >= 5.25.0
-BuildRequires:  cmake(KF5Plasma) >= 5.25.0
-BuildRequires:  cmake(KF5Service) >= 5.25.0
-BuildRequires:  cmake(KF5Solid) >= 5.25.0
-BuildRequires:  cmake(KF5Wallet) >= 5.25.0
-BuildRequires:  cmake(KF5WidgetsAddons) >= 5.25.0
-BuildRequires:  cmake(KF5WindowSystem) >= 5.25.0
-BuildRequires:  cmake(KF5XmlGui) >= 5.25.0
+BuildRequires:  cmake(KF5Completion) >= 5.98.0
+BuildRequires:  cmake(KF5ConfigWidgets)
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5DBusAddons)
+BuildRequires:  cmake(KF5Declarative)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5Init)
+BuildRequires:  cmake(KF5ItemViews)
+BuildRequires:  cmake(KF5KCMUtils)
+BuildRequires:  cmake(KF5KDELibs4Support)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5NetworkManagerQt)
+BuildRequires:  cmake(KF5Notifications)
+BuildRequires:  cmake(KF5Plasma)
+BuildRequires:  cmake(KF5Service)
+BuildRequires:  cmake(KF5Solid)
+BuildRequires:  cmake(KF5Wallet)
+BuildRequires:  cmake(KF5WidgetsAddons)
+BuildRequires:  cmake(KF5WindowSystem)
+BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qca-qt5) >= 2.1.0
-BuildRequires:  cmake(Qt5Core) >= 5.4.0
-BuildRequires:  cmake(Qt5DBus) >= 5.4.0
-BuildRequires:  cmake(Qt5Network) >= 5.4.0
-BuildRequires:  cmake(Qt5Quick) >= 5.4.0
-BuildRequires:  cmake(Qt5UiTools) >= 5.4.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.4.0
+BuildRequires:  cmake(Qt5Core) >= 5.15.0
+BuildRequires:  cmake(Qt5DBus)
+BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(Qt5Quick)
+BuildRequires:  cmake(Qt5UiTools)
+BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  pkgconfig(openconnect) >= 5.2
 Requires:       NetworkManager
 Requires:       kded
@@ -80,7 +81,7 @@ Obsoletes:      %{name}-wireguard < %{version}
 Provides:       plasma-nm = %{version}
 Obsoletes:      plasma-nm < %{version}
 %if 0%{?mm_support}
-BuildRequires:  cmake(KF5ModemManagerQt) >= 5.54.0
+BuildRequires:  cmake(KF5ModemManagerQt)
 BuildRequires:  pkgconfig(ModemManager) >= 1.0.0
 %endif
 Obsoletes:      NetworkManager-kde4-devel
@@ -301,6 +302,9 @@ wireless connectivity on Plasma Mobile.
 %{_kf5_plugindir}/plasma/network/vpn/plasmanetworkmanagement_openconnect_globalprotectui.so
 %{_kf5_plugindir}/plasma/network/vpn/plasmanetworkmanagement_openconnect_juniperui.so
 %{_kf5_plugindir}/plasma/network/vpn/plasmanetworkmanagement_openconnect_pulseui.so
+%{_kf5_plugindir}/plasma/network/vpn/plasmanetworkmanagement_openconnect_arrayui.so
+%{_kf5_plugindir}/plasma/network/vpn/plasmanetworkmanagement_openconnect_f5ui.so
+%{_kf5_plugindir}/plasma/network/vpn/plasmanetworkmanagement_openconnect_fortinetui.so
 
 %files libreswan
 %license LICENSES/*

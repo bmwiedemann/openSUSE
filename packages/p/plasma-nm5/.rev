@@ -1256,4 +1256,12 @@
     <comment>Plasma 5.25.5 (forwarded request 1001509 from Vogtinator)</comment>
     <requestid>1001624</requestid>
   </revision>
+  <revision rev="155" vrev="1">
+    <srcmd5>781a834524110144d619f74f76b8ea25</srcmd5>
+    <version>5.26.0</version>
+    <time>1665504072</time>
+    <user>RBrownFactory</user>
+    <comment>Plasma 5.26.0</comment>
+    <requestid>1009129</requestid>
+  </revision>
 </revisionlist>

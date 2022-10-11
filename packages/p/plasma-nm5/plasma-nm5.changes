@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Oct  6 14:48:48 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.0
+- Changes since 5.25.90:
+  * applet: Clean up model delaying in list delegate's destructor
+  * applet: Rename Handler's signal isScanningChanged
+  * applet: Provide visual indication when scanning Wi-Fi networks
+  * applet: Fix delayModelUpdates mode (kde#389052)
+  * applet: Block all role changes while in delayModelUpdates mode
+  * applet: Fix airplane mode binding in scan timer
+  * applet: Bind `enabled` state of "Connect" action reliably
+  * Fix .nospace() punctuation in logs
+  * Install po folder
+  * [kcm] Set KLocalizedContext for QQuickWidget (kde#459229)
+
+-------------------------------------------------------------------
+Thu Sep 15 20:47:57 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue Sep  6 16:56:49 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.25.5
