@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 11 15:36:10 UTC 2022 - Richard Brown <rbrown@suse.com>
+
+- Suggest toolbox, else the recent boolean change makes desktop+distrobox
+  the default even for container hosts 
+
+-------------------------------------------------------------------
 Wed Oct  5 06:33:44 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Enable build on 32-bit Arm

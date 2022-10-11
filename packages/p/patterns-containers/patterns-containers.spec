@@ -46,6 +46,7 @@ Requires:       containers-systemd
 Requires:       podman
 Requires:       podman-cni-config
 Requires:       (distrobox if patterns-microos-desktop-common else toolbox)
+Suggests:       toolbox
 Requires:       pattern() = basesystem
 
 %description container_runtime
