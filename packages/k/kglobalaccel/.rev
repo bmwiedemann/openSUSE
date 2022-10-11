@@ -932,4 +932,12 @@
   * 0001-Avoid-iterating-a-container-while-it-s-being-mutated.patch</comment>
     <requestid>1002911</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>e464e2bd9f2dd76e71fe91e7480e667b</srcmd5>
+    <version>5.99.0</version>
+    <time>1665503996</time>
+    <user>RBrownFactory</user>
+    <comment>KDE Frameworks 5.99 (forwarded request 1008960 from cgiboudeaux)</comment>
+    <requestid>1008995</requestid>
+  </revision>
 </revisionlist>
