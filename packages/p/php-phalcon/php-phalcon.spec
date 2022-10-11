@@ -1,7 +1,7 @@
 #
 # spec file for package php-phalcon
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           %{php_name}-%{pkg_name}
-Version:        4.1.2
+Version:        5.0.2
 Release:        0
 Summary:        PHP7 Extension Module
 License:        BSD-3-Clause
@@ -46,7 +46,12 @@ BuildRequires:  %{php_name}-psr >= 0.7.0
 BuildRequires:  gcc
 %if "%{php_name}" == "php7"
 BuildRequires:  %{php_name}-json
+BuildRequires:  php >= 7.4.1
 %endif
+%if "%{php_name}" == "php8"
+BuildRequires:  php < 8.2.0
+%endif
+
 Requires:       %{php_name}-mysql
 
 %description
