@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           plasma5-integration
-Version:        5.25.5
+Version:        5.26.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -28,31 +28,31 @@ Summary:        Plugins responsible for better integration of Qt applications in
 License:        GPL-2.0+
 Group:          System/GUI/KDE
 Url:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-integration-%{version}.tar.xz
+Source:         plasma-integration-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-integration-%{version}.tar.xz.sig
+Source1:        plasma-integration-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-BuildRequires:  extra-cmake-modules >= 5.17.0
+BuildRequires:  extra-cmake-modules >= 5.98.0
 BuildRequires:  kf5-filesystem
-BuildRequires:  libQt5Gui-private-headers-devel >= 5.5.0
+BuildRequires:  libQt5Gui-private-headers-devel >= 5.15.0
 BuildRequires:  libQt5QuickControls2-devel
+BuildRequires:  libQt5PlatformSupport-private-headers-devel
 BuildRequires:  cmake(Breeze) >= %{_plasma5_version}
-BuildRequires:  cmake(KF5Config) >= 5.17.0
-BuildRequires:  cmake(KF5ConfigWidgets) >= 5.17.0
-BuildRequires:  cmake(KF5I18n) >= 5.17.0
-BuildRequires:  cmake(KF5IconThemes) >= 5.17.0
-BuildRequires:  cmake(KF5KIO) >= 5.17.0
-BuildRequires:  cmake(KF5Notifications) >= 5.17.0
-BuildRequires:  cmake(KF5Wayland) >= 5.5.0
-BuildRequires:  cmake(KF5WidgetsAddons) >= 5.17.0
-BuildRequires:  cmake(KF5WindowSystem) >= 5.17.0
+BuildRequires:  cmake(KF5Config) >= 5.98.0
+BuildRequires:  cmake(KF5ConfigWidgets)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5Notifications)
+BuildRequires:  cmake(KF5Wayland)
+BuildRequires:  cmake(KF5WidgetsAddons)
+BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(PlasmaWaylandProtocols)
-BuildRequires:  cmake(Qt5DBus) >= 5.5.0
+BuildRequires:  cmake(Qt5DBus) >= 5.15.0
 BuildRequires:  cmake(Qt5WaylandClient)
-BuildRequires:  cmake(Qt5Widgets) >= 5.5.0
-BuildRequires:  cmake(Qt5X11Extras) >= 5.5.0
-BuildRequires:  libQt5PlatformSupport-private-headers-devel  >= 5.5.0
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5X11Extras)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcursor)
 
