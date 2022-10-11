@@ -16,14 +16,14 @@
 #
 
 
-%define _tar_path 5.98
+%define _tar_path 5.99
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kio
-Version:        5.98.0
+Version:        5.99.0
 Release:        0
 Summary:        Network transparent access to files and data
 License:        LGPL-2.1-or-later
@@ -41,6 +41,7 @@ BuildRequires:  fdupes
 # gcc7 is too old for std::transform_reduce
 %if 0%{?suse_version} == 1500
 BuildRequires:  gcc10-c++
+BuildRequires:  gcc10-PIE
 %endif
 BuildRequires:  kf5-filesystem
 BuildRequires:  krb5-devel
@@ -143,30 +144,25 @@ Development files.
 
 %if 0%{?suse_version} == 1500
 export CXX=g++-10
-# gcc-PIE only sets the linker flags for the default compiler (boo#1195628)
-%define extra_opts -- -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_CXX_LINK_PIE_SUPPORTED=ON
 %endif
 
-%{cmake_kf5 -d build %{?extra_opts}}
+%cmake_kf5 -d build
+
 %cmake_build
 
 %install
 %kf5_makeinstall -C build
 %fdupes %{buildroot}
 
-%if %{with released}
-%find_lang %{name} --with-man --all-name
+%find_lang kio --with-man --all-name
 %{kf5_find_htmldocs}
-%endif
 
 %post core -p /sbin/ldconfig
 %postun core -p /sbin/ldconfig
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
-%if %{with released}
-%files lang -f %{name}.lang
-%endif
+%files lang -f kio.lang
 
 %files core
 %doc README*
@@ -249,15 +245,15 @@ export CXX=g++-10
 %{_kf5_sharedir}/dbus-1/services/org.kde.kpasswdserver.service
 
 %files devel
-%dir %{_kf5_sharedir}/kdevfiletemplates
-%dir %{_kf5_sharedir}/kdevfiletemplates/templates/
+%dir %{_kf5_sharedir}/kdevappwizard
+%dir %{_kf5_sharedir}/kdevappwizard/templates
 %{_kf5_bindir}/protocoltojson
 %{_kf5_dbusinterfacesdir}/kf5_org.kde.KCookieServer.xml
 %{_kf5_dbusinterfacesdir}/kf5_org.kde.KDirNotify.xml
 %{_kf5_dbusinterfacesdir}/kf5_org.kde.KPasswdServer.xml
 %{_kf5_dbusinterfacesdir}/kf5_org.kde.KSlaveLauncher.xml
 %{_kf5_dbusinterfacesdir}/kf5_org.kde.kio.FileUndoManager.xml
-%{_kf5_sharedir}/kdevfiletemplates/templates/kioworker.tar.bz2
+%{_kf5_sharedir}/kdevappwizard/templates/kioworker.tar.bz2
 %{_kf5_includedir}/
 %{_kf5_libdir}/cmake/KF5KIO/
 %{_kf5_libdir}/libKF5KIOCore.so

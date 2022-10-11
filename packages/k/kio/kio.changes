@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Oct  1 15:55:52 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.99.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.99.0
+- Changes since 5.98.0:
+  * DesktopExecParser: Fix parsing of TerminalApplication when it contains args (kde#459408)
+  * KPropertiesDialog: Split single command entry box into separate exec and args
+  * allow hiding permissions tab
+  * port http to workerbase
+  * Worker template: fix install location
+  * kcms/webshortcuts: hide from System Settings' main navigation
+  * disable state validation
+  * UserNotificationHandler: fix messagebox type mismatches
+  * Fix missing details in message dialogs from worker
+
+-------------------------------------------------------------------
 Tue Sep  6 07:17:06 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.98.0
