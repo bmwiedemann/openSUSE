@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct 06 23:44:44 UTC 2022 - william.brown@suse.com
+
+- Update to version 0.17.2~git0.bccf8a5:
+  * Don't use --locked in release workflow to allow publishing again
+  * cargo-audit: Update CHANGELOG
+  * Fix `bin` screenshot URL in the README
+  * Skip dotfiles in advisory-db checkout
+  * Set the release date in CHANGELOG.md
+  * Add the `cargo audit bin` screenshot to README
+  * cargo fmt
+  * Migrate to the released version of auditable-info
+
+-------------------------------------------------------------------
 Mon Oct  3 23:32:29 UTC 2022 - William Brown <william.brown@suse.com>
 
 - Add _constraints to prevent random failures due to OBS resource
