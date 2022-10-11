@@ -21,9 +21,11 @@
 %else
 %bcond_without alternatives
 %endif
+# Unicode tests do alloc to much memory
+%bcond_with altarray
 
 %define         bextend %{nil}
-%define         bversion 5.1
+%define         bversion 5.2
 %define         bpatchlvl %(bash %{_sourcedir}/get_version_number.sh %{_sourcedir})
 %global         _incdir     %{_includedir}
 %global         _ldldir     %{_libdir}/bash
@@ -87,6 +89,8 @@ Patch50:        quotes-man2html.patch
 BuildRequires:  autoconf
 BuildRequires:  bison
 BuildRequires:  fdupes
+BuildRequires:  glibc-locale
+BuildRequires:  glibc-locale-base
 BuildRequires:  makeinfo
 BuildRequires:  patchutils
 BuildRequires:  pkgconfig
@@ -98,7 +102,7 @@ BuildRequires:  update-alternatives
 BuildRequires:  pkgconfig(audit)
 BuildRequires:  pkgconfig(ncurses)
 # This has to be always the same version as included in the bash its self
-BuildRequires:  pkgconfig(readline) = 8.1
+BuildRequires:  pkgconfig(readline) = 8.2
 %if %{with alternatives}
 Requires(post): update-alternatives
 Requires(preun):update-alternatives
@@ -139,6 +143,7 @@ Group:          System/Shells
 Provides:       alternative(sh)
 Conflicts:      alternative(sh)
 PreReq:         bash = %{version}
+BuildArch:      noarch
 
 %description sh
 Use bash as /bin/sh implementation.
@@ -217,6 +222,7 @@ Group:          System/Shells
 Requires:       bash = %{version}-%{release}
 Requires:       this-is-only-for-build-envs
 Conflicts:      rpmlib(X-CheckUnifiedSystemdir)
+BuildArch:      noarch
 
 %description legacybin
 Legacy usrmove helper files for the build system. Do not install.
@@ -230,6 +236,7 @@ Legacy usrmove helper files for the build system. Do not install.
 %endif
 %setup -q -n bash-%{bversion}%{bextend} -b1
 typeset -i level
+set +x
 for patch in ../bash-%{bversion}-patches/*-*[0-9]; do
     test -e $patch || break
 
@@ -244,6 +251,7 @@ for patch in ../bash-%{bversion}-patches/*-*[0-9]; do
     echo Patch $patch
     patch -s -p$level < $patch
 done
+set -x
 %patch1   -b .manual
 %patch3   -b .2.4.4
 %patch4   -b .evalexp
@@ -393,6 +401,7 @@ test ${rl1[2]} = ${rl2[2]} || exit 1
 	--enable-minimal-config		\
 	--enable-arith-for-command	\
 	--enable-array-variables	\
+	--disable-alt-array-implementation \
 	--enable-brace-expansion	\
 	--enable-casemod-attributes	\
 	--enable-casemod-expansion	\
@@ -410,8 +419,8 @@ test ${rl1[2]} = ${rl2[2]} || exit 1
 	--disable-strict-posix-default	\
 	--enable-separate-helpfiles=%{_datadir}/bash/helpfiles \
 	$READLINE
-  make Program=sh sh
-  make distclean
+  %make_build Program=sh sh
+  %make_build distclean
 %endif
   ./configure --build=%{_target_cpu}-suse-linux	\
 	--prefix=%{_prefix}		\
@@ -423,6 +432,7 @@ test ${rl1[2]} = ${rl2[2]} || exit 1
 	--with-afs			\
 	--with-gnu-ld			\
 	$SYSMALLOC			\
+	--enable-threads=posix		\
 	--enable-job-control		\
 	--enable-net-redirections	\
 	--enable-alias			\
@@ -436,10 +446,16 @@ test ${rl1[2]} = ${rl2[2]} || exit 1
 	--enable-help-builtin		\
 	--enable-separate-helpfiles	\
 	--enable-array-variables	\
+%if %{with altarray}
+	--enable-alt-array-implementation \
+%else
+	--disable-alt-array-implementation \
+%endif
 	--enable-brace-expansion	\
 	--enable-command-timing		\
 	--enable-disabled-builtins	\
 	--enable-glob-asciiranges-default \
+	--enable-translatable-strings	\
 	--disable-strict-posix-default	\
 	--enable-multibyte		\
 	--enable-separate-helpfiles=%{_datadir}/bash/helpfiles \
@@ -457,7 +473,7 @@ test ${rl1[2]} = ${rl2[2]} || exit 1
   tail -q -s 0.5 -f $SCREENLOG & pid=$!
   env -i HOME=$PWD TERM=$TERM LD_LIBRARY_PATH=$LD_RUN_PATH TMPDIR=$TMPDIR \
 	SCREENRC=$SCREENRC SCREENDIR=$SCREENDIR \
-	screen -D -m %make_build TESTSCRIPT=%{SOURCE4} check
+	screen -D -m %make_build -j1 TESTSCRIPT=%{SOURCE4} check
   kill -TERM $pid
 %if 0%{?do_profiling}
   rm -f jobs.gcda
@@ -467,6 +483,10 @@ test ${rl1[2]} = ${rl2[2]} || exit 1
   %make_build $makeopts "$profilecflags" all
   %make_build $makeopts -C examples/loadables/
   %make_build $makeopts documentation
+  grep -F '$'\' doc/bash.html %{nil:test for boo#1203091}
+
+%check
+  %make_build -j1 check
 
 %install
   %make_install
@@ -528,6 +548,7 @@ EOF
   %find_lang bash
   %fdupes -s %{buildroot}%{_datadir}/bash/helpfiles
   sed -ri '1{ s@/bin/sh@/bin/bash@ }' %{buildroot}%{_bindir}/bashbug
+  strip --strip-unneeded %{buildroot}%{_bindir}/bash
 
 %if %{with alternatives}
 %post -p %{_bindir}/bash

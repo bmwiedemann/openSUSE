@@ -4,7 +4,7 @@
 
 --- expr.c
 +++ expr.c	2018-11-29 08:10:59.542212175 +0000
-@@ -512,8 +512,8 @@ expassign ()
+@@ -514,8 +514,8 @@ expassign ()
    value = expcond ();
    if (curtok == EQ || curtok == OP_ASSIGN)
      {

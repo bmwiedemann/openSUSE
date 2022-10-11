@@ -15,7 +15,7 @@
  #include "chartypes.h"
  #include <errno.h>
  
-@@ -77,6 +81,15 @@ void
+@@ -79,6 +83,15 @@ void
  set_default_locale ()
  {
  #if defined (HAVE_SETLOCALE)

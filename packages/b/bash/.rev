@@ -1770,4 +1770,41 @@ Upstream declares the bash license to be GPL-3.0+ - not GPL-2.0+ (forwarded requ
   * Fix boo#1203091 -- BASH(1) Manual Page: Unprocessed macro aq</comment>
     <requestid>1004899</requestid>
   </revision>
+  <revision rev="180" vrev="1">
+    <srcmd5>c6b8d2c73758857934b1eda632ba6091</srcmd5>
+    <version>5.2.MACRO</version>
+    <time>1665503953</time>
+    <user>RBrownFactory</user>
+    <comment>- Add upstream patches
+  * bash52-001
+    Expanding unset arrays in an arithmetic context can cause a
+    segmentation fault.
+  * bash52-002
+    Starting bash with an invalid locale specification for
+    LC_ALL/LANG/LC_CTYPE can cause the shell to crash.
+- Do not run checks in parallel as it eats memory, a lot of memory
+- Disable alternate array implementation as it eats a lot of memory
+
+- Update to final bash 5.2 
+  a. When replacing a history entry, make sure the existing entry has a non-NULL
+     timestamp before copying it; it may have been added by the application, not
+     the history library.
+
+- Modernize run-tests 
+
+- add checks
+
+- Enable parallel builds by splitting clean and all at make time
+- Update to bash 5.2 rc4
+  Pos. aa is now enabled by default.
+  m. Readline now checks for changes to locale settings (LC_ALL/LC_CTYPE/LANG)
+     each time it is called, and modifies the appropriate locale-specific display
+- Port patches
+  * bash-2.03-manual.patch
+  * bash-5.2.dif
+
+- Update to bash 5.2 rc2
+  gg. Since there is no `declare -' equivalent of `local -', make sure to use</comment>
+    <requestid>1008386</requestid>
+  </revision>
 </revisionlist>

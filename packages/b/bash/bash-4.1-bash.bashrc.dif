@@ -16,11 +16,11 @@
 |other files as well even if the bash does not.
 |
 ---
- doc/bash.1 |   15 ++++++++++++---
- 1 file changed, 12 insertions(+), 3 deletions(-)
+ doc/bash.1 |   16 ++++++++++++----
+ 1 file changed, 12 insertions(+), 4 deletions(-)
 
 --- doc/bash.1
-+++ doc/bash.1	2018-09-20 08:16:12.073822864 +0000
++++ doc/bash.1	2022-06-22 06:31:11.283670836 +0000
 @@ -330,6 +330,8 @@ and executes commands from the first one
  The
  .B \-\-noprofile
@@ -52,13 +52,14 @@
  .PP
  When
  .B bash
-@@ -431,7 +439,8 @@ daemon, usually \fIrshd\fP, or the secur
+@@ -432,8 +440,8 @@ or the secure shell daemon \fIsshd\fP.
  If
  .B bash
- determines it is being run in this fashion, it reads and executes
--commands from \fI~/.bashrc\fP, if that file exists and is readable.
-+commands from \fI/etc/bash.bashrc\fP then  \fI~/.bashrc\fP when
-+those files exist and are readable.
+ determines it is being run non-interactively in this fashion,
+-it reads and executes commands from \fI~/.bashrc\fP,
+-if that file exists and is readable.
++it reads and executes commands from \fI/etc/bash.bashrc\fP then
++\fI~/.bashrc\fP, when those files exists and are readable.
  It will not do this if invoked as \fBsh\fP.
  The
  .B \-\-norc

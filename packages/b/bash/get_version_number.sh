@@ -1,5 +1,6 @@
 #!/bin/bash
 # Note: this file is used in the spec file, do not remove it
+# Print the highest version number of the patches from the archive
 sourcedir=$1
 test -n "${sourcedir}" || sourcedir=$PWD
 test -e ${sourcedir}/bash.spec  || exit 1

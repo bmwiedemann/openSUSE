@@ -11,7 +11,7 @@
 
 --- array.c
 +++ array.c	2020-10-12 16:00:37.207185803 +0000
-@@ -1028,7 +1028,7 @@ char	*s, *sep;
+@@ -1095,7 +1095,7 @@ char	*s, *sep;
   * To make a running version, compile -DTEST_ARRAY and link with:
   * 	xmalloc.o syntax.o lib/malloc/libmalloc.a lib/sh/libsh.a
   */
@@ -54,7 +54,7 @@
  signal_is_trapped (s)
 --- jobs.c
 +++ jobs.c	2020-10-12 16:00:37.267184666 +0000
-@@ -2223,6 +2223,15 @@ make_child (command, flags)
+@@ -2212,6 +2212,15 @@ make_child (command, flags)
  	 child process, go back and change callers who free `command' in
  	 the child process when this returns. */
        mypid = getpid ();
@@ -87,7 +87,7 @@
  static SigHandler *old_winch = (SigHandler *)SIG_DFL;
 --- sig.h
 +++ sig.h	2020-10-12 16:03:44.403637781 +0000
-@@ -109,8 +109,8 @@ do { \
+@@ -105,8 +105,8 @@ do { \
  extern volatile sig_atomic_t sigwinch_received;
  extern volatile sig_atomic_t sigterm_received;
  
