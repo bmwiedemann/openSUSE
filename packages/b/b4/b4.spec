@@ -28,12 +28,15 @@ BuildArch:      noarch
 BuildRequires:  fdupes
 # SECTION test requirements
 BuildRequires:  git-core
+BuildRequires:  git-filter-repo >= 2.30
 BuildRequires:  python3-dkimpy >= 1.0.5
 BuildRequires:  python3-dnspython >= 2.0.0
 BuildRequires:  python3-patatt >= 0.5
 BuildRequires:  python3-requests >= 2.24.0
 # /SECTION
 BuildRequires:  python3-setuptools
+Requires:       git-core
+Requires:       git-filter-repo >= 2.30
 Requires:       python3-dkimpy >= 1.0.5
 Requires:       python3-dnspython >= 2.0.0
 Requires:       python3-patatt >= 0.5
