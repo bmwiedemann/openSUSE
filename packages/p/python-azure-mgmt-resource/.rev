@@ -185,4 +185,16 @@
     <comment></comment>
     <requestid>978961</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>8d42e1893fac0fbbaed5454f6dfc8794</srcmd5>
+    <version>21.2.0</version>
+    <time>1665504209</time>
+    <user>RBrownFactory</user>
+    <comment>- New upstream release
+  + Version 21.2.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1009747 from glaubitz)</comment>
+    <requestid>1009773</requestid>
+  </revision>
 </revisionlist>
