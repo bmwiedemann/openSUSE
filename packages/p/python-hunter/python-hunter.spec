@@ -1,7 +1,7 @@
 #
 # spec file for package python-hunter
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,14 @@
 
 
 Name:           python-hunter
-Version:        3.3.8
+Version:        3.5.0
 Release:        0
 Summary:        Pytest plugin for coverage reporting
 License:        BSD-2-Clause
 URL:            https://github.com/ionelmc/python-hunter
 Source:         https://files.pythonhosted.org/packages/source/h/hunter/hunter-%{version}.tar.gz
-Patch0:         deps.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
@@ -35,7 +33,7 @@ Requires(postun):update-alternatives
 
 %description
 Hunter is a flexible code tracing toolkit, not for measuring coverage,
-but for debugging, logging, inspection and other nefarious purposes. 
+but for debugging, logging, inspection and other nefarious purposes.
 
 %prep
 %autosetup -p1 -n hunter-%{version}
