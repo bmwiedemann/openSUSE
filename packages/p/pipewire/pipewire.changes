@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Sat Oct  8 20:46:58 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Add 0001-filter-chain-iterate-the-port-correctly.patch: Fix
+  filter-chain convolver segfault at start.
+
+-------------------------------------------------------------------
+Sat Oct  1 18:25:10 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.3.59:
+  * Highlights
+    - Fix possible wrong samplerate in loopback streams after
+      suspend and rate switch.
+    - module-filter-chain can now adapt to the graph samplerate.
+    - Fix some potential stuttering and crackling in pulse-server.
+    - Add Bluetooth LE support. This requires experimental kernel
+      and bluez support.
+    - The ALSA plugin has more options to control the buffer size.
+      This can be used to work around high latency in
+      davinci resolve.
+    - Many bugfixes and improvements.
+  * PipeWire
+    - Add audio capture example with volume meter.
+    - Fix a case where a rate switch would not suspend all the
+      nodes of the driver first. This could cause wrong samplerates
+      in streams.
+    - Fix a case where a node would be Paused while still added to
+      the graph, causing potential crashes.
+  * Modules
+    - module-filter-chain and module-loopback now use the
+      resample.prefill option to avoid buffering extra samples and
+      causing unwanted latency when resampling is activated.
+    - module-filter-chain can now adapt to the graph samplerate.
+    - Improve module-raop to support the ALAC codec as raw PCM.
+    - Improve RTSP parsing to improve compatibility.
+  * Tools
+    - Fix 100% CPU in pw-cli monitor mode.
+    - spa-acp-tool can now be exited with ctrl-D.
+  * SPA
+    - Various libcamera fixes and improvements.
+    - Set stride on audioconvert output buffers.
+    - Make sure we always place the last requested size from the
+      resampler on the buffers in pw-stream.
+    - Add resample.prefill option in the resampler to fill the
+      history with 0 so that we don't have smaller buffers at the
+      start.
+    - Make sure that when an overflow corrupts a POD, that it will
+      always stay corrupted.
+    - Rate limit some ALSA warnings and reduce some unwanted
+      warnings.
+    - Don't recalculate the audioconverter state for each
+      pause/play.
+    - Fix some POD parsing inconsistencies and potential overflows.
+    - Add support for Asus Xonar SE.
+    - Fix Flush command handling. It should not stop playback.
+    - Refactor the peaks function and add some unit tests and
+      optimisations.
+    - The channelmix has an optimized nXm converter and new
+      unit tests.
+    - Normalisation in the channelmixer was fixed.
+  * pulse-server
+    - The requested latency of record streams was reduced to fix
+      some stuttering in Teamspeak.
+    - Tweak the max amount of bytes sent to a client.
+    - Improve maxlength calculations, this fixes some crackling
+      noise with high samplerate and channel counts in some
+      players (audacious).
+  * Bluetooth
+    - Merge Bluetooth LE support.
+    - Make sure we are backward compatible with WirePlumber.
+    - Fix some HFP and HSP AT command parsing.
+    - Use HFP by default over HSP.
+  * ALSA
+    - Increase max number of periods.
+    - The parameters handling was improved. There is now an option
+      to set the buffer-bytes of the ALSA plugin.
+    - PIPEWIRE_ALSA can now be used as an environment variable to
+      restrict the plugin formats and buffer size.
+- Rebase reduce-meson-dependency.patch.
+
+-------------------------------------------------------------------
 Thu Sep 15 09:26:22 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 0.3.58:
