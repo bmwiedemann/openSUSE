@@ -1,218 +1,32 @@
 -------------------------------------------------------------------
-Tue Oct  4 03:20:40 UTC 2022 - Joey Lee <jlee@suse.com>
+Wed Sep  7 09:45:24 UTC 2022 - Joey Lee <jlee@suse.com>
 
-- For pushing bluez 5.65 to 15-SP5 (bluez-5.62), sync the spec file and
-  log: (jsc#PED-1407)
-    - SLE15-SP5 will direct use bluez.changes for openSUSE TW.
-      So keep the contents of SLE bluez.changes to bluez.changes.sle file.
-    - Put to /usr/share/doc/packages/bluez/bluez.changes.sle in package.
+- Add shared-gatt-server-Fix-heap-overflow-when-appending-.patch
+  - The code shall check if the prepare writes would append more the
+    allowed maximum attribute length. (bsc#1194704 CVE-2022-0204)
 
 -------------------------------------------------------------------
-Mon Oct  3 05:21:03 UTC 2022 - Joey Lee <jlee@suse.com>
+Fri Mar  4 20:49:20 UTC 2022 - Martin Wilck <mwilck@suse.com>
 
-- For pushing bluez 5.65 to 15-SP5 (bluez-5.62), sync the spec file and
-  log: (jsc#PED-1407)
-    - SLE15-SP5 will use the bluez.spec from openSUSE TW. The following
-      are changes in bluez.spec of SLE15-SP5:
-	- Obsoletes:      bluez-utils <= 3.36
-	  to
-	  Obsoletes:      bluez-utils < 3.36
-	- Obsoletes:      bluez-audio <= 3.36
-	  to
-          Obsoletes:      bluez-audio < 3.36
-	- In %package -n libbluetooth3:
-	  Obsoletes:      bluez-libs <= 3.36
-	  to
-	  Obsoletes:      bluez-libs < 3.36
-	- In %package cups, add the following statements
-		Requires:       %{name}  
-		Requires:       cups
-		Supplements:    (%{name} and cups)
-	- In %package test
-	  Requires:       python3-gobject2
-	  to
-	  Requires:       python3-gobject
-	- In %package auto-enable-devices package, add
-	  Requires(post): systemd
-	- Add %package obexd and %package zsh-completion
-	  and their %description
-	- In %prep
-	    - Removed 
-		%setup -q
-	    - Removed
-		# FIXME: Change the dbus service to be a real service, not systemd launched
-		sed -i "s:Exec=/bin/false:Exec=%{_libexecdir}/bluetooth/obexd:g" obexd/src/org.bluez.obex.service
-		sed -i "/SystemdService=.*/d" obexd/src/org.bluez.obex.service
-		# END FIXME
-	- In %build, add
-	        --with-dbusconfdir=%{_datadir}  \  
-	- In %install
-	    - Removed
-		# FIXME: Do not delete the systemd service once we support systemd user/session services
-		rm %{buildroot}%{_userunitdir}/obex.service
-		# end FIXME
-	    - org.bluez.mesh.service to %{_sysconfdir}/dbus-1/system-services/,
- 	      to
-	      org.bluez.mesh.service to %{_datadir}/dbus-1/system-services/,
-	- In %files
-	    - Add
-		%{_bindir}/isotest
-		%{_libexecdir}/bluetooth/obexd
-		%{_mandir}/man1/isotest.1%{?ext_man}
-	    - %config %{_sysconfdir}/dbus-1/system.d/bluetooth.conf
-	      to
-	      %{_datadir}/dbus-1/system.d/bluetooth.conf
-            - Removed
-              %{_datadir}/dbus-1/services/org.bluez.obex.service
-            - Removed
-              %{_datadir}/zsh/site-functions/_bluetoothctl
-       - Add %files zsh-completion
-    - SLE15-SP5 will direct use bluez.changes for openSUSE TW.
-      So keep the contents of SLE bluez.changes to bluez.changes.sle file.
-    - Removed shared-gatt-server-Fix-heap-overflow-when-appending-.patch in
-      SLE15-SP5 bluez because 5.65 bluez already includes it.
-          - The code shall check if the prepare writes would append more the
-            allowed maximum attribute length. (bsc#1194704 CVE-2022-0204)
+- Install modprobe.conf files to %_modprobedir (bsc#1196275, jsc#SLE-20639)  
 
 -------------------------------------------------------------------
-Wed Sep 14 07:56:19 UTC 2022 - Joey Lee <jlee@suse.com>
+Wed Oct 27 14:39:23 UTC 2021 - Al Cho <acho@suse.com>
 
-- For pushing bluez 5.65 to 15-SP5 (bluez-5.62), sync the patches and
-  log: (jsc#PED-1407)
-    - hcidump-fixed-hci-frame-dump-stack-buffer-overflow.patch patch
-      be merged to 5.51 mainline. So 5.65 bluez already includes it.
-    - Add the following patches from the bluez-5.62 of 15-SP5:
-        - disable_some_obex_tests.patch
-            - disable tests for bypass boo#1078285
-        - hcidump-Add-assoc-dump-function-assoc-date-length-ch.patch
-            - bsc#1013708 CVE-2016-9797
-            - Al Cho has sent it to upstream but it not be merged:
-                https://lore.kernel.org/all/20181031081508.25927-1-acho@suse.com/T/
-        - hcidump-Fix-memory-leak-with-malformed-packet.patch
-            - bsc#1015171 CVE-2016-9917
-            - Al Cho has sent it to upstream but it not be merged:
-              https://www.spinics.net/lists/linux-bluetooth/msg79852.html 
-        - hcidump-Fixed-malformed-segment-frame-length.patch
-            - bsc#1013712 CVE-2016-9798
-            - Did not send to upstream.
-        - 0001-rpi3-bcm43xx-The-UART-speed-must-be-reset-after-the-firmw.patch
-            - Move 43xx firmware path for RPi3 bluetooth support bsc#1140688 bsc#995059 bsc#1094902 
-            - From https://www.yoctoproject.org/pipermail/yocto/2016-April/029424.html
-    - Respin the following patches
-        - bluez-test-2to3.diff
-            - Removed some parts of patch because those codes be included
-              in a1939bd51e0faba9a8550eea2590d99cb63a33c1 since 5.65.
-    - The following patches are the same between SLE15-SP5 with openSUSE TW:
-        - bluez-5.45-disable-broken-tests.diff in 15-SP5 matchs with
-          bluez-disable-broken-tests.diff in openSUSE TW.
-        - 0002-rpi3-Move-the-43xx-firmware-into-lib-firmware.patch in 15-SP5
-          matchs with RPi-Move-the-43xx-firmware-into-lib-firmware.patch in
-          openSUSE TW.
-
--------------------------------------------------------------------
-Wed Aug 17 20:26:50 UTC 2022 - Dirk Müller <dmueller@suse.com>
-
-- update to 5.65:
-  * Fix issue with A2DP cache invalidation handling.
-  * Fix issue with A2DP and not initialized SEP codec.
-  * Fix issue with A2DP and multiple SetConfiguration to same SEP
-  * Fix issue with AVRCP and not properly initialized volume.
-  * Fix issue with SDP records when operating in LE only mode.
-  * Fix issue with HoG and not reading report map of instances.
-  * Fix issue with GATT server crashing while disconnecting.
-  * Fix issue with not removing connected devices.
-  * Fix issue with enabling wake support without RPA Resolution.
-  * Fix issue with pairing failed due to the error of Already Paired.
-  * Add support for CONFIGURATION_DIRECTORY environment variable.
-  * Add support for STATE_DIRECTORY environment variable.
-  * Add support for "Bonded" property with Device API.
-  * Add experimental support for ISO socket.
-- drop bluez-test-2to3.diff (obsolete/upstream)
-
--------------------------------------------------------------------
-Sun May  8 16:12:30 UTC 2022 - Ben Greiner <code@bnavigator.de>
-
-- Upgrade bluez-test requirement of PyGObject from ancient version
-  2 to current version. (bluez/test is at least able to use it
-  since 2014)
-
--------------------------------------------------------------------
-Wed May  4 11:23:32 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
-
-- Move the dbus-1 system.d file to /usr (bsc#1199207)
-- Fix self-obsoletion issues
-- Add supplements to cups subpackage
-- Split zsh completion into subpackage
-- Don't tell the user to write to /usr (in README-mesh.SUSE)
-
--------------------------------------------------------------------
-Tue Apr 26 17:24:48 UTC 2022 - Giacomo Comes <gcomes.obs@gmail.com>
-
-- add Requires(post): systemd for bluez-auto-enable-devices
-   * fixes boo#1198906
-
--------------------------------------------------------------------
-Sun Mar 20 10:22:08 UTC 2022 - Stefan Seyfried <seife+obs@b1-systems.com>
-
-- update to version 5.64:
-  This is another release mostly with bug fixes on HOG, GATT, A2DP,
-  Media, AVDTP, AVRCP, and scanning failure.
-  This release includes a fix for building with old glibc (< 2.25)
-  and other minor issues found with the static code analyzing tool.
-  ISO packet support is added to the emulator as a part of LE Audio
-  development.
-- removed obsoleted 0002-Use-g_memdup2-everywhere.patch
-
--------------------------------------------------------------------
-Sun Mar  6 20:53:09 UTC 2022 - Martin Wilck <mwilck@suse.com>
-
-- Add code to restore user modifications for modprobe.d %config files
-  after moving the files to %_modprobedir
-- Use %_modprobedir (jsc#SLE-20639)
-
--------------------------------------------------------------------
-Sat Mar  5 09:07:00 UTC 2022 - Stefan Seyfried <seife+obs@b1-systems.com>
-
-- update to version 5.63:
-  * Fix issue with storing IRK causing invalid read access.
-  * Fix issue with disconnecting due to GattCharacteristic1.MTU.
-  * Add support for Device{Found,Lost} of advertising monitoring.
-
--------------------------------------------------------------------
-Sat Feb 26 18:20:25 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
-
-- Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)
-
--------------------------------------------------------------------
-Tue Nov 23 09:52:32 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
-
-- Stop nuking the obex service, we support user systemd services
-  just fine now. Following this, no longer hack the dbus service,
-  leave it as a systemd service as upstream intended.
-- Split out obex in own package with it's needed enabledment as a
-  systemd user service.
-- Add 0001-obex-Use-GLib-helper-function-to-manipulate-paths.patch:
-  obex: Use GLib helper function to manipulate paths. Instead of
-  trying to do it by hand. This also makes sure that relative paths
-  aren't used by the agent. Patch from fedora.
-
--------------------------------------------------------------------
-Sun Oct 17 07:39:24 UTC 2021 - Stefan Seyfried <seife+obs@b1-systems.com>
-
-- update to version 5.62:
+- update to version 5.62 (JIRA-SLE-18497):
   * Fix issue with handling truncation when loading LTKs.
   * Fix issue with accepting Exchange MTU on EATT bearer.
   * Fix issue with clearing DeviceLost timers on power down.
   * Fix issue with AVCTP browsing channel and missing ERTM.
   * Fix issue with AVDTP and local SEID pool for each adapter.
   * Add support for BR/EDR and LE connection failure reasons.
-- drop obsoleted patch
-  0005-media-rename-local-function-conflicting-with-pause-2.patch
+- refresh patch
+  hcidump-fixed-hci-frame-dump-stack-buffer-overflow.patch 
 
 -------------------------------------------------------------------
-Tue Aug 24 06:57:14 UTC 2021 - Stefan Seyfried <seife+obs@b1-systems.com>
+Tue Oct 12 10:34:09 UTC 2021 - Al Cho <acho@suse.com>
 
-- update to version 5.61:
+- update to version 5.61 (JIRA-SLE-18497):
   * Fix issue with A2DP while waiting for command response.
   * Fix issue with A2DP when SetConfiguration fails.
   * Fix issue with device removal handling.
@@ -220,77 +34,35 @@ Tue Aug 24 06:57:14 UTC 2021 - Stefan Seyfried <seife+obs@b1-systems.com>
   * Add support for Central Address Resolution characteristic.
   * Add support for admin policy plugin.
 
--------------------------------------------------------------------
-Tue Aug 10 09:49:45 UTC 2021 - Stefan Seyfried <seife+obs@b1-systems.com>
-
-- add fedora's patches 0002-Use-g_memdup2-everywhere.patch and
-  0005-media-rename-local-function-conflicting-with-pause-2.patch
-  to fix compatibility problems with newer glib and glibc
-
--------------------------------------------------------------------
-Mon Aug  2 18:27:38 UTC 2021 - Stefan Seyfried <seife+obs@b1-systems.com>
-
 - fix bluez-auto-enable-devices subpackage (boo#1177845)
-
--------------------------------------------------------------------
-Mon Jul 12 12:35:06 UTC 2021 - Stefan Seyfried <seife+obs@b1-systems.com>
-
+- add bluez-test-2to3.diff to get rid of python2 dependency
 - remove notification message from bluez-deprecated package.
-  I'm not going to remove it, and another maintainer can still
-  restart the removal process :-)
   also boo#1188660
+- refresh other patches
 
 -------------------------------------------------------------------
-Thu Jul  8 07:39:55 UTC 2021 - Stefan Seyfried <seife+obs@b1-systems.com>
+Fri Jul 30 10:25:30 UTC 2021 - Al Cho <acho@suse.com>
 
-- update to 5.60:
+- update to 5.60 (JIRA-SLE-18497):
   * Fix issue with reading from RFKILL device node.
   * Fix issue with AVDTP and parsing capabilities.
   * Fix issue with UnregisterApplication handling.
   * Fix issue with RegisterProfile if UUID already exists.
   * Fix issue with GATT client attribute read with offset.
   * Fix issue with non-discoverable device and advertising monitor.
-- remove bluez-5.59-0388794dc5fdb73a4ea.diff (included upstream)
-
--------------------------------------------------------------------
-Sun Jul  4 19:14:36 UTC 2021 - Stefan Seyfried <seife+obs@b1-systems.com>
-
-- add bluez-5.59-0388794dc5fdb73a4ea.diff, fixes a2dp on newly
-  paired devices, https://github.com/bluez/bluez/issues/157
-
--------------------------------------------------------------------
-Thu Jun 17 13:45:19 UTC 2021 - Stefan Seyfried <seife+obs@b1-systems.com>
-
 - update to 5.59:
   * Fix issue with string to UUID-32 conversion.
   * Fix issue with connect request if SDP search failed.
   * Fix issue with accepting invalid AVDTP capabilities.
   * Fix issue with unregister handling of AVRCP player.
-- new tool: mesh-cfgtest
-- new manpages: btmon.1, bluetooth-meshd.8
-- rebased bluez-test-2to3.diff
-
--------------------------------------------------------------------
-Wed Apr  7 07:49:44 UTC 2021 - Stefan Seyfried <seife+obs@b1-systems.com>
-
+  * new tool: mesh-cfgtest
+  * new manpages: btmon.1, bluetooth-meshd.8 
 - update to 5.58:
   * Fix issue with usage of deprecated GLib functions.
 - version 5.57:
   * Fix issue with handling GATT notification PDU parsing.
   * Fix issue with registering DIS without a valid source.
   * Fix issue with removing remote SEPs when loading from cache.
-- remove upstreamed
-  bluez-avdtp-Fix-removing-all-remote-SEPs-when-loading-from.patch
-
--------------------------------------------------------------------
-Thu Apr  1 04:27:37 UTC 2021 - Al Cho <acho@suse.com>
-
-- add bluez-avdtp-Fix-removing-all-remote-SEPs-when-loading-from.patch
-  Fix Bluetooth headphones disconnect periodically(bsc#1183821)
-
--------------------------------------------------------------------
-Wed Feb 24 20:25:23 UTC 2021 - Stefan Seyfried <seife+obs@b1-systems.com>
-
 - update to 5.56:
   * Fix issue with setting AVDTP disconnect timer.
   * Fix issue with AVDTP not sending GetCapabilities.
@@ -303,20 +75,41 @@ Wed Feb 24 20:25:23 UTC 2021 - Stefan Seyfried <seife+obs@b1-systems.com>
   * Add support for new advertising management command.
   * Add support for battery D-Bus interface.
   * removed obsolete bccmd
+- remove obsolete upstreamed patches:
+  shared-gatt-server-Fix-not-properly-checking-for-sec.patch
+  (bsc#1186463 CVE-2021-0129)
+  gatt-Fix-potential-buffer-out-of-bound.patch
+  (bsc#1187165 CVE-2021-3588)
+  shared-gatt-db-Introduce-gatt_db_attribute_set_fixed.patch
+  (bsc#1187165 CVE-2021-3588)
+  gatt-Make-use-of-gatt_db_attribute_set_fixed_length.patch
+  (bsc#1187165 CVE-2021-3588)
+- refresh other patches 
 
 -------------------------------------------------------------------
-Wed Jan 27 08:48:16 UTC 2021 - Stefan Seyfried <seife+obs@b1-systems.com>
+Wed Jul 14 10:55:42 UTC 2021 - Al Cho <acho@suse.com>
 
-- add bluez-test-2to3.diff to get rid of python2 dependency
+- Add gatt-Fix-potential-buffer-out-of-bound.patch
+  * When client features is read check if the offset is within the cli_feat
+    bounds. (bsc#1187165 CVE-2021-3588)
+- Add shared-gatt-db-Introduce-gatt_db_attribute_set_fixed.patch
+  * This enables user to inform if an attribute has a fixed length so it can
+    automatically perform bounds checking. (bsc#1187165 CVE-2021-3588)
+- Add gatt-Make-use-of-gatt_db_attribute_set_fixed_length.patch
+  * This makes use of gatt_db_attribute_set_fixed_length so the database is
+    aware of the length of the values and perform bounds checking.
+  (bsc#1187165 CVE-2021-3588) 
 
 -------------------------------------------------------------------
-Thu Sep 17 15:41:31 UTC 2020 - Stefan Seyfried <seife+obs@b1-systems.com>
+Fri Jun 11 10:13:10 UTC 2021 - Al Cho <acho@suse.com>
 
-- Packaging: remove _service and accompanying README.md,
-  maintenance in git did not work out as well as intended.
+- Add 
+  shared-gatt-server-Fix-not-properly-checking-for-sec.patch
+  * Fix not properly checking for secure flags
+  (bsc#1186463 CVE-2021-0129 CVE-2020-26558)
 
 -------------------------------------------------------------------
-Thu Sep 10 06:20:53 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+Tue Sep 15 17:11:32 UTC 2020 - Al Cho <acho@suse.com>
 
 - update to 5.55:
   * Fix issue with handling security level for HoG.
@@ -340,24 +133,6 @@ Thu Sep 10 06:20:53 UTC 2020 - Dirk Mueller <dmueller@suse.com>
   * Fix issue with handling configured scan parameter values.
   * Fix issue with handling temporary devices removal.
   * Fix issue with handling advertising flags.
-- remove input-hog-Attempt-to-set-security-level-if-not-bonde.patch,
-  input-Add-LEAutoSecurity-setting-to-input.conf.patch: upstream
-- use autopatch, spec-cleaner
-
--------------------------------------------------------------------
-Mon Jun 15 15:37:48 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
-
-- Add --enable-external-ell to actually make use of pkgconfig(ell).
-
--------------------------------------------------------------------
-Thu Apr 16 17:14:06 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
-
-- Pull in python3 packages, the tests are py3 based so it does not
-  make sense to pull in py2 packages.
-
--------------------------------------------------------------------
-Fri Mar 20 17:04:10 UTC 2020 - Stefan Seyfried <seife+obs@b1-systems.com>
-
 - update to bluez-5.54:
   * Fix issue with HOGP to accept data only from bonded devices.
   * Fix issue with A2DP sessions being connected at the same time.
@@ -365,100 +140,14 @@ Fri Mar 20 17:04:10 UTC 2020 - Stefan Seyfried <seife+obs@b1-systems.com>
   * Add support for handling MTU auto-tuning option for AVDTP.
   * Add support for new policy for Just-Works repairing.
   * Add support for Enhanced ATT bearer (EATT).
-- bluez-5.53:
+- update to bluez-5.53:
   * Fix issue with handling unregistration for advertisment.
   * Fix issue with A2DP and handling recovering process.
   * Fix issue with udpating input device information.
   * Add support for loading blocked keys.
-- remove obsolete upstreamed patches:
-  * HOGP-must-only-accept-data-from-bonded-devices.patch
-  * HID-accepts-bonded-device-connections-only.patch
-- refresh other patches
-
--------------------------------------------------------------------
-Wed Mar 18 08:29:49 UTC 2020 - Al Cho <acho@suse.com>
-
-- Add
-  HOGP-must-only-accept-data-from-bonded-devices.patch
-  HOGP 1.0 Section 6.1 establishes that the HOGP must require
-  bonding.(bsc#1166751)(CVE-2020-0556)
-  HID-accepts-bonded-device-connections-only.patch
-  This change adds a configuration for platforms to choose a more
-  secure posture for the HID profile.(bsc#1166751)(CVE-2020-0556)
-  input-hog-Attempt-to-set-security-level-if-not-bonde.patch
-  Attempt to set security level if not bonded.
-  (bsc#1166751)(CVE-2020-0556)
-  input-Add-LEAutoSecurity-setting-to-input.conf.patch
-  Add LEAutoSecurity setting to input.conf.
-  (bsc#1166751)(CVE-2020-0556)
-
--------------------------------------------------------------------
-Mon Feb 10 10:05:33 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
-
-- Fix path to systemctl in %post script 
-
--------------------------------------------------------------------
-Mon Dec 16 14:27:14 UTC 2019 - Stefan Seyfried <seife+obs@b1-systems.com>
-
-- add NoSource tag for omitting README.md from src.rpm
-
--------------------------------------------------------------------
-Thu Dec  5 09:58:03 UTC 2019 - Stefan Seyfried <seife+obs@b1-systems.com>
-
-- move all deprecated tools into bluez-deprecated package which can
-  be disabled by prjconf in OBS.
-- bluez-deprecated will go away before end of 2020 in Tumbleweed!
-
--------------------------------------------------------------------
-Thu Nov 21 16:51:16 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
-
-- BuildIgnore shared-mime-info, pulled in by libgio-2_0-0, not
-  required for building, but causes a build loop.
-- Add bcond for mesh, also enable mesh on Leap 15.2/SLE15SP2.
-- Properly conditionalize all files which are only built with enabled
-  mesh functionality, fixes build on Leap 15.1 and earlier.
-
--------------------------------------------------------------------
-Thu Nov  7 11:14:13 UTC 2019 - Stefan Seyfried <seife+obs@b1-systems.com>
-
-- fix udev directory from %_libexecdir to %_prefix/lib
-
--------------------------------------------------------------------
-Mon Nov  4 21:22:20 UTC 2019 - Stefan Seyfried <seife+obs@b1-systems.com>
-
 - update to version 5.52:
   * Fix issue with AVDTP session disconnect timeout handling.
   * Mark media endpoint APIs as stable interfaces.
-- remove obsolete 0001-mesh-Fix-segmentation-fault-on-Join-call.patch
-- disable one more segfaulting patch
-
--------------------------------------------------------------------
-Mon Oct  7 14:56:28 UTC 2019 - Stefan Seyfried <seife+obs@b1-systems.com>
-
-- add 0001-mesh-Fix-segmentation-fault-on-Join-call.patch
-  (boo#1152672)
-
--------------------------------------------------------------------
-Sun Oct  6 13:24:51 UTC 2019 - Stefan Seyfried <seife+obs@b1-systems.com>
-
-- add _service to use github.com/seifes-obs-packages/bluez.git
-  as source for the package
-
--------------------------------------------------------------------
-Fri Oct  4 10:50:15 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
-
-- Combine multiple %service_* to reduce generated boilerplate.
-
--------------------------------------------------------------------
-Wed Oct  2 08:33:56 UTC 2019 - Stefan Seyfried <seife+obs@b1-systems.com>
-
-- disable mesh service due to security concerns, see boo#1151518
-- add README-mesh.SUSE to explain the issue
-- remove no longer necessary temporary-rpmlintrc
-
--------------------------------------------------------------------
-Fri Sep 20 19:32:43 UTC 2019 - Stefan Seyfried <seife+obs@b1-systems.com>
-
 - update to version 5.51:
   * Fix issue with first agent not being registered as default.
   * Fix issue with loading devices without Service Changed CCC.
@@ -473,72 +162,6 @@ Fri Sep 20 19:32:43 UTC 2019 - Stefan Seyfried <seife+obs@b1-systems.com>
   * Fix issue with AVRCP and creating media items.
   * Add support for GATT database caching feature.
   * Add experimental support for Bluetooth Mesh Profile.
-- removed obsoleted patches:
-  * 0001-obexd-use-AM_LDFLAGS-for-linking.patch
-  * 0001-policy-Add-logic-to-connect-a-Sink.patch
-  * 0001-tools-Fix-build-after-y2038-changes-in-glibc.patch
-  * bluez-5.50-a2dp-backports.patch
-  * bluez-5.50-gcc9.patch
-  * disable_some_obex_tests.patch
-  * bluez-5.45-disable-broken-tests.diff
-- add bluez-disable-broken-tests.diff
-- add temporary rpmlintrc until security team approves
-
--------------------------------------------------------------------
-Sun Aug 18 18:11:08 UTC 2019 - Antoine Belvire <antoine.belvire@opensuse.org>
-
-- Fix build with GCC 9 (boo#1121404, bko#202213):
-  * Add bluez-5.50-gcc9.patch.
-
--------------------------------------------------------------------
-Thu Jul 11 04:29:46 UTC 2019 - Al Cho <acho@suse.com>
-
-- Fix 43xx firmware path for RPi3 bluetooth support (bsc#1140688)
- - Add RPi-Move-the-43xx-firmware-into-lib-firmware.patch
-
--------------------------------------------------------------------
-Wed Jul 10 06:02:54 UTC 2019 - Jiri Slaby <jslaby@suse.com>
-
-- Add 0001-tools-Fix-build-after-y2038-changes-in-glibc.patch: Fix
-  build after y2038 changes in glibc
-
--------------------------------------------------------------------
-Tue Jun 25 13:19:30 UTC 2019 - Frederic Crozat <fcrozat@suse.com>
-
-- Add avinfo to bluez-test, useful for debugging.
-- Only BuildRequires pkgconfig(ell) on Tumbleweed.
-- Add bluez-5.50-a2dp-backports.patch: A2DP fixes for newer codecs
-  (upstream backport).
-
--------------------------------------------------------------------
-Wed Apr 24 17:43:18 UTC 2019 - Michal Suchanek <msuchanek@suse.de>
-
-- Connect Sink profile which HSP profile connects (boo#1131772).
-  - Add 0001-policy-Add-logic-to-connect-a-Sink.patch
-
--------------------------------------------------------------------
-Mon Apr  8 14:14:21 UTC 2019 - Ludwig Nussel <lnussel@suse.com>
-
-- install bluetoothd sample config file as %doc for reference
-
--------------------------------------------------------------------
-Wed Feb 20 20:22:38 UTC 2019 - Stefan Seyfried <seife+obs@b1-systems.com>
-
-- use gcc8 for now to work around boo#1121404
-
--------------------------------------------------------------------
-Sat Feb  2 13:35:50 UTC 2019 - Stefan Seyfried <seife+obs@b1-systems.com>
-
-- add btmgmt to bluez-test
-
--------------------------------------------------------------------
-Tue Jan 15 09:05:19 UTC 2019 - seife+obs@b1-systems.com
-
-- add btgatt-client to bluez-test
-
--------------------------------------------------------------------
-Mon Jun  4 19:15:59 UTC 2018 - seife+obs@b1-systems.com
-
 - update to version 5.50:
   - Fix issue with GATT and reading long values.
   - Fix issue with GATT and reading multiple includes.
@@ -556,29 +179,6 @@ Mon Jun  4 19:15:59 UTC 2018 - seife+obs@b1-systems.com
   - Add support for handling separate discoverable state.
   - Add support for enabling HFP version 1.7 features.
   - Add support for dedicated Bluetooth logging daemon.
-- remove 0001-Don-t-refresh-adv_manager-for-non-LE-devices.patch,
-  fixed upstream
-
--------------------------------------------------------------------
-Fri May 11 07:14:16 UTC 2018 - acho@suse.com
-
-- Add
-  CVE-2016-9800-tool-hcidump-Fix-memory-leak-with-malformed-packet.patch
-  * Fix hcidump memory leak in pin_code_reply_dump().
-  (bsc#1013721)(CVE-2016-9800)
-  CVE-2016-9804-tool-hcidump-Fix-memory-leak-with-malformed-packet.patch
-  * Fix hcidump buffer overflow in commands_dump().
-  (bsc#1013877)(CVE-2016-9804) 
-
--------------------------------------------------------------------
-Mon Mar 26 06:04:01 UTC 2018 - seife+obs@b1-systems.com
-
-- add 0001-Don-t-refresh-adv_manager-for-non-LE-devices.patch
-  (boo#1086731)
-
--------------------------------------------------------------------
-Mon Mar 12 17:44:33 UTC 2018 - seife+obs@b1-systems.com
-
 - update to version 5.49:
   This is mostly a bug fix release, with fixes to features such as
   AVCTP, OBEX, GATT and Mesh. There are however some notable new
@@ -587,13 +187,127 @@ Mon Mar 12 17:44:33 UTC 2018 - seife+obs@b1-systems.com
   on the Adapter interface, which can be used for quick device
   object creation for testing purpose or when information about the
   device has been received over some Out-of-Band channel.
-- remove 0001-core-Fixes-order-InterfaceAdded.patch (upstream)
+- Add --enable-external-ell to actually make use of pkgconfig(ell).
+- remove obsolete upstreamed patches:
+  * 0001-obexd-use-AM_LDFLAGS-for-linking.patch
+  * 0001-core-Fixes-order-InterfaceAdded.patch
+  * tools-Fix-build-after-y2038-changes-in-glibc.patch
+  * hcidump-Fix-set_ext_ctrl-global-buffer-overflow.patch
+  * 0001-btmon-fix-segfault-caused-by-buffer-over-read.patch
+  * 0002-btmon-fix-segfault-caused-by-buffer-over-read.patch
+  * 0003-btmon-fix-segfault-caused-by-buffer-over-read.patch
+  * 0004-btmon-Fix-crash-caused-by-integer-underflow.patch
+  * 0005-btmon-fix-stack-buffer-overflow.patch
+  * 0006-btmon-fix-multiple-segfaults.patch
+  * 0007-btmon-fix-segfault-caused-by-integer-underflow.patch
+  * 0008-btmon-fix-segfault-caused-by-integer-undeflow.patch
+  * 0009-btmon-fix-segfault-caused-by-buffer-over-read.patch
+  * 0010-btmon-fix-segfault-caused-by-buffer-overflow.patch
+  * 0011-btmon-fix-segfault-caused-by-integer-underflow.patch
+  * 0012-btmon-fix-segfault-caused-by-buffer-over-read.patch
+- use autopatch, spec-cleaner
+- refresh other patches
 
 -------------------------------------------------------------------
-Sun Feb 11 21:12:36 UTC 2018 - seife+obs@b1-systems.com
+Thu Dec  5 03:08:47 UTC 2019 - Al Cho <acho@suse.com>
 
-- add 0001-core-Fixes-order-InterfaceAdded.patch (boo#1076898)
-- fix python shebang rpmlint warning for bluez-test
+- Add tools-Fix-build-after-y2038-changes-in-glibc.patch
+  * The 32-bit SIOCGSTAMP has been deprecated. Use the deprecated
+  name to fix the build.(bsc#1156544) 
+
+-------------------------------------------------------------------
+Tue Oct 15 09:09:39 UTC 2019 - Al Cho <acho@suse.com>
+
+- Add
+  hcidump-Fixed-malformed-segment-frame-length.patch
+  * Ensure the L2CAP SDUs whose length field match the actual frame
+  length.(bsc#1013712)(CVE-2016-9798)
+- Modify bluez.changes:
+  Remove (bsc#1013712)(CVE-2016-9798) tag from patch
+  hcidump-Add-assoc-dump-function-assoc-date-length-ch.patch 
+
+-------------------------------------------------------------------
+Thu Apr 25 08:49:38 UTC 2019 - Al Cho <acho@suse.com>
+
+- Add
+  hcidump-Add-assoc-dump-function-assoc-date-length-ch.patch
+  * amp_assoc_dump() didn't check the length of amp assoc struct.
+  (bsc#1013712)(CVE-2016-9798)(bsc#1013708)(CVE-2016-9797)
+  Add hcidump-Fix-memory-leak-with-malformed-packet.patch
+  * Do not allow to read more than allocated data buffer size.
+  (bsc#1015171)(CVE-2016-9917)
+- Refresh patches:
+  patches/bluez-cups-libexec.patch
+  patches/bluez-5.45-disable-broken-tests.diff
+- fix bluez.changes:
+  add (bsc#1013893)(CVE-2016-9802) tag for last log.
+
+-------------------------------------------------------------------
+Thu Jan 24 10:18:23 UTC 2019 - Al Cho <acho@suse.com>
+
+- Add:btmon: multiple memory management vulnerabilities fixed
+  Multiple different memory management vulnerabilities were discovered
+  in btmon while fuzzing it with American Fuzzy Lop. Purpose of this
+  fuzzing effort was to find some bugs in btmon, analyse and fix them
+  but also try to exploit them. Also goal was to prove that fuzzing is
+  low effort way to find bugs that could end up being severe ones.
+  Most common weakness appeared to be buffer over-read which was
+  usually caused by missing boundary checks before accessing array.
+  Integer underflows were also quite common. Most interesting bug was
+  simple buffer overflow that was actually discovered already couple
+  years ago by op7ic:
+  https://www.spinics.net/lists/linux-bluetooth/msg68898.html
+  but it was still not fixed. This particular vulnerability ended up
+  being quite easily exploitable if certain mitigation technics were
+  disabled.(bsc#1015173)(CVE-2016-9918)(bsc#1013893)(CVE-2016-9802)
+  0001-btmon-fix-segfault-caused-by-buffer-over-read.patch
+  0002-btmon-fix-segfault-caused-by-buffer-over-read.patch
+  0003-btmon-fix-segfault-caused-by-buffer-over-read.patch
+  0004-btmon-Fix-crash-caused-by-integer-underflow.patch
+  0005-btmon-fix-stack-buffer-overflow.patch
+  0006-btmon-fix-multiple-segfaults.patch
+  0007-btmon-fix-segfault-caused-by-integer-underflow.patch
+  0008-btmon-fix-segfault-caused-by-integer-undeflow.patch
+  0009-btmon-fix-segfault-caused-by-buffer-over-read.patch
+  0010-btmon-fix-segfault-caused-by-buffer-overflow.patch
+  0011-btmon-fix-segfault-caused-by-integer-underflow.patch
+  0012-btmon-fix-segfault-caused-by-buffer-over-read.patch
+
+-------------------------------------------------------------------
+Fri Dec  7 03:11:32 UTC 2018 - Al Cho <acho@suse.com>
+
+- Add hcidump-fixed-hci-frame-dump-stack-buffer-overflow.patch
+  to replace
+  CVE-2016-9800-tool-hcidump-Fix-memory-leak-with-malformed-packet.patch
+  (PATCH-FIX-UPSTREAM)(bsc#1013721)(CVE-2016-9800)
+  Add hcidump-Fix-set_ext_ctrl-global-buffer-overflow.patch
+  to fix global buffer overflow (PATCH-FIX-UPSTREAM)
+  (bsc#1013732)(CVE-2016-9801)
+- Fix %ifarch range. 
+
+-------------------------------------------------------------------
+Fri Jul 13 09:16:23 UTC 2018 - seife+obs@b1-systems.com
+
+- add 0001-core-Fixes-order-InterfaceAdded.patch (boo#1101119)
+  to fix headset connect after suspend/resume
+
+-------------------------------------------------------------------
+Thu Jun 28 10:27:23 UTC 2018 - acho@suse.com
+
+- Add lost patches for RPi3 bluetooth support (bsc#995059)(bsc#1094902)
+  0001-rpi3-bcm43xx-The-UART-speed-must-be-reset-after-the-firmw.patch
+  0002-rpi3-Move-the-43xx-firmware-into-lib-firmware.patch
+
+-------------------------------------------------------------------
+Fri May  4 04:20:36 UTC 2018 - acho@suse.com
+
+- Add
+  CVE-2016-9800-tool-hcidump-Fix-memory-leak-with-malformed-packet.patch
+  * Fix hcidump memory leak in pin_code_reply_dump().
+  (bsc#1013721)(CVE-2016-9800)
+  CVE-2016-9804-tool-hcidump-Fix-memory-leak-with-malformed-packet.patch
+  * Fix hcidump buffer overflow in commands_dump().
+  (bsc#1013877)(CVE-2016-9804) 
 
 -------------------------------------------------------------------
 Tue Jan 30 16:05:52 UTC 2018 - normand@linux.vnet.ibm.com

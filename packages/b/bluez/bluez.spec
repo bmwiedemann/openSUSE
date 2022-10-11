@@ -42,6 +42,7 @@ Source:         https://www.kernel.org/pub/linux/bluetooth/bluez-%{version}.tar.
 #KEEP NOSOURCE DEBUGINFO
 Source5:        baselibs.conf
 Source7:        bluetooth.modprobe
+Source9:        bluez.changes.sle
 # fix some logitech HID devices, bnc#681049, bnc#850478 --seife+obs@b1-systems.com
 Patch1:         bluez-5.11-logitech-hid2hci.patch
 Patch2:         bluez-sdp-unix-path.patch
@@ -302,9 +303,10 @@ chmod 0644 *.py *.xml *.dtd
 # fix python shebang
 sed -i -e '1s/env p/p/' %{buildroot}%{_libdir}/bluez/test/{example-gatt-{client,server},test-mesh}
 
+mkdir -p %{buildroot}%{_defaultdocdir}/%{name}
+cp %{SOURCE9} %{buildroot}%{_defaultdocdir}/%{name}
 %if %{with mesh}
 # boo#1151518
-mkdir -p %{buildroot}%{_defaultdocdir}/%{name}
 mv %{buildroot}%{_datadir}/dbus-1/system.d/bluetooth-mesh.conf %{buildroot}%{_defaultdocdir}/%{name}
 mv %{buildroot}%{_datadir}/dbus-1/system-services/org.bluez.mesh.service %{buildroot}%{_defaultdocdir}/%{name}
 cat > %{buildroot}%{_defaultdocdir}/%{name}/README-mesh.SUSE << EOF
