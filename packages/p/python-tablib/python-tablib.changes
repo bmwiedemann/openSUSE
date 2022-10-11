@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Oct 11 07:35:41 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v3.2.1
+  * Support solo CR in text input imports
+- from v3.2.0
+  * Dropped Python 3.6 support
+  * Corrected order of arguments to a regex call in safe_xlsx_sheet_title
+- from v3.1.0
+  * Add support for Python 3.10
+  * The csv, xls, and xlsx formats gained support for the skip_lines
+    keyword argument for their import_set() method to be able to skip
+    the nth first lines of a read file
+  * Avoided mutable parameter defaults
+  * Specify build backend for editable installs
+  * Doubled sample size passed to csv.Sniffer() in _csv.detect()
+
+-------------------------------------------------------------------
 Fri Apr 23 21:58:39 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Skip python36 build: no pandas
