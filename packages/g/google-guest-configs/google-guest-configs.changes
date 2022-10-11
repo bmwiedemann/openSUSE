@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 11 11:37:09 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add nvme-cli to Requires (bsc#1204068, bsc#1204091)
+
+-------------------------------------------------------------------
 Mon Feb 14 12:17:57 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20220211.00 (bsc#1195437, bsc#1195438)

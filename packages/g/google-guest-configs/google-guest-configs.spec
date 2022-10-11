@@ -35,6 +35,7 @@ BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkg-config
 %endif
 BuildRequires:  pkgconfig(udev)
+Requires:       nvme-cli
 BuildArch:      noarch
 
 %description
