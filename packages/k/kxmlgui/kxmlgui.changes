@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct  1 15:56:11 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.99.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.99.0
+- Changes since 5.98.0:
+  * use same config for position restoration as for position saving
+
+-------------------------------------------------------------------
 Tue Sep  6 07:17:24 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.98.0
