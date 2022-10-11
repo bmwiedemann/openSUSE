@@ -74,6 +74,10 @@ RUN if [ "$TARGETARCH" = "arm64" ]; then \
     ln -s ../qemu/aavmf-aarch64-vars.bin /usr/share/OVMF/AAVMF_VARS.fd ; \
     fi;
 
+# KubeVirt expects virtiofsd to be installed in /usr/libexec
+RUN ls /usr/libexec/virtiofsd || \
+    (mkdir -p /usr/libexec && ln -s ../lib/virtiofsd /usr/libexec/virtiofsd)
+
 COPY augconf /augconf
 
 RUN augtool -f /augconf

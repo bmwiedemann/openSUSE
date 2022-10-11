@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 10 13:49:10 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Ensure /usr/libexec/virtiofsd is present
+
+-------------------------------------------------------------------
 Thu Sep  1 08:23:01 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Install only libvirt-daemon-driver-qemu and do not pull unneeded deps
