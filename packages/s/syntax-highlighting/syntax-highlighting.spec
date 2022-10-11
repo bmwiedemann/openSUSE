@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5SyntaxHighlighting5
-%define _tar_path 5.98
+%define _tar_path 5.99
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           syntax-highlighting
-Version:        5.98.0
+Version:        5.99.0
 Release:        0
 Summary:        Syntax highlighting engine and library
 License:        LGPL-2.1-or-later AND GPL-2.0-only AND GPL-2.0-or-later AND GPL-3.0-only AND MIT AND BSD-3-Clause AND Artistic-1.0
@@ -40,14 +40,12 @@ BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(Qt5Core) >= 5.15.0
 BuildRequires:  cmake(Qt5Gui) >= 5.15.0
+BuildRequires:  cmake(Qt5LinguistTools) >= 5.15.0
 BuildRequires:  cmake(Qt5Network) >= 5.15.0
 BuildRequires:  cmake(Qt5Quick) >= 5.15.0
 BuildRequires:  cmake(Qt5Test) >= 5.15.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.15.0
 BuildRequires:  cmake(Qt5XmlPatterns) >= 5.15.0
-%if %{with released}
-BuildRequires:  cmake(Qt5LinguistTools) >= 5.15.0
-%endif
 
 %description
 This is a tier1/functional version of the Kate syntax highlighting engine.
@@ -94,16 +92,12 @@ It's not tied to a particular output format or editor engine.
 %kf5_makeinstall -C build
 %fdupes %{buildroot}
 
-%if %{with released}
-%find_lang syntaxhighlighting5 --with-qt --without-mo
-%endif
+%find_lang  syntaxhighlighting5 --with-qt --without-mo
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
 
-%if %{with released}
 %files -n %{lname}-lang -f syntaxhighlighting5.lang
-%endif
 
 %files
 %{_kf5_debugdir}/ksyntaxhighlighting.categories
