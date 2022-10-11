@@ -103,7 +103,6 @@ BuildRequires:  %{python_module pyparsing >= 3.0.5}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module translate-toolkit >= %{version}}
 BuildRequires:  %{python_module xml}
-BuildRequires:  subversion
 BuildRequires:  gaupol
 %endif
 %python_subpackages

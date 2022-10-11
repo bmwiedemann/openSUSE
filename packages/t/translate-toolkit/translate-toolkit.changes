@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct  4 14:09:02 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Drop not needed BuildRequires: subversion.
+
+-------------------------------------------------------------------
 Fri Apr 29 12:12:34 UTC 2022 - Markéta Machová <mmachova@suse.com>
 
 - Update to 3.6.1
