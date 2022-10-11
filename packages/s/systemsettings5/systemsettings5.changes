@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Oct  6 14:48:50 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.0
+- Changes since 5.25.90:
+  * Install po folder
+  * Set QSurfaceFormat::ResetNotification
+
+-------------------------------------------------------------------
+Thu Sep 15 20:48:08 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.90
+- Changes since 5.25.5:
+  * Pass icons by name rather than as QIcon from C++ to QML
+  * Remove category service type definition
+  * Remove unused categories
+  * Remove service type definition
+  * Fix showing translations for kinfocenter
+  * Change window size limit after screen resolution is changed
+  * Fix compile warning (order variable)
+  * Make sidebar tooltips respect the "Display informational tooltips" global setting (kde#455073)
+  * Remove extra ';'
+  * Put KServiceTypeTrader code in deprecation macros
+  * Request passing unit tests on Linux and BSD
+  * Pass strict AppStream validation
+  * systemsettingsrunner: Fix drag and drop for KCMs using embedded json metadata
+  * systemsettingsrunner: Fix all matches having the same id
+  * Port external Systemsettings/KInfoCenter KCM loading away from KpluginMetaData::fromDesktopFile
+  * Add missing includes and forward declarations
+  * IconMode: Load all of the KCMs in their category
+  * IconMode: Switch to the selected KCM (kde#444565)
+  * IconView: Remove duplicated tooltips (kde#409327)
+
+-------------------------------------------------------------------
 Tue Sep  6 16:56:57 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.25.5
