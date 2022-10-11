@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Oct 11 09:01:00 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.10.0
+  * Ignore the macOS minor version on >=11, to match the behavior
+    with pypa/packaging
+  * More fixes on ABI tag detection
+  * Fix incorrect tag on 32-bit Python running on a x86_64 host
+  * Fix sdist permissions
+  * Fix incorrect PyPy tags
+  * Fix ``install_subdirs`` not being included in wheels
+  * Take ``MACOSX_DEPLOYMENT_TARGET`` into account for the platform
+    tag
+  * Don't set the rpath on binaries if unneeded
+- Drop patches
+  * mesonpy-force-flavor.patch
+  * mesonpy-no-rpath.patch
+
+-------------------------------------------------------------------
 Tue Sep 13 01:16:30 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - add mesonpy-no-rpath.patch -- gh#FFY00/meson-python#125

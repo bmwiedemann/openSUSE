@@ -17,29 +17,25 @@
 
 
 Name:           python-meson-python
-Version:        0.8.1
+Version:        0.10.0
 Release:        0
 Summary:        Meson Python build backend (PEP 517)
 License:        MIT
 URL:            https://github.com/FFY00/meson-python
 Source:         https://files.pythonhosted.org/packages/source/m/meson_python/meson_python-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM mesonpy-force-flavor.patch gh#FY00/meson-python#51, gh#FY00/meson-python#127
-Patch0:         mesonpy-force-flavor.patch
 # PATCH-FEATURE-OPENSUSE mesonpy-trim-deps.patch code@bnavigator.de
 Patch1:         mesonpy-trim-deps.patch
-# PATCH-FIX-OPENSUSE mesonpy-no-rpath.patch code@bnavigator.de -- https://github.com/FFY00/meson-python/issues/125#issuecomment-1243388061
-Patch2:         mesonpy-no-rpath.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pyproject-metadata >= 0.5}
+BuildRequires:  %{python_module pyproject-metadata >= 0.6.1}
 BuildRequires:  %{python_module tomli >= 1.0.0}
 BuildRequires:  %{python_module typing-extensions >= 3.7.4 if %python-base < 3.8}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
-BuildRequires:  meson
+BuildRequires:  meson >= 0.63.0
 BuildRequires:  ninja
 BuildRequires:  python-rpm-macros
-Requires:       meson
+Requires:       meson >= 0.62.0
 Requires:       ninja
 Requires:       python-pyproject-metadata >= 0.5.0
 Requires:       python-tomli >= 1.0.0
@@ -49,6 +45,7 @@ Requires:       python-typing-extensions >= 3.7.4
 %endif
 # SECTION test
 BuildRequires:  %{python_module GitPython}
+BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
@@ -63,8 +60,6 @@ Python build backend (PEP 517) for Meson projects.
 %autosetup -p1 -n meson_python-%{version}
 
 %build
-# until we have https://github.com/openSUSE/python-rpm-macros/pull/139, this will build
-# a pure wheel three times.
 %pyproject_wheel
 
 %install
@@ -73,7 +68,10 @@ Python build backend (PEP 517) for Meson projects.
 
 %check
 export MESONPY_FORCE_LOCAL_LIB=1
-%pytest
+# can test test_spam only once gh#FFY00/meson-python#169
+%python_expand $python_ignore="--ignore tests/docs/examples/test_spam.py"
+unset python310_ignore
+%pytest ${$python_ignore}
 
 %files %{python_files}
 %license LICENSE
