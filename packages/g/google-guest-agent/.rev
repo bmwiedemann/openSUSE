@@ -181,4 +181,13 @@
   * correct expired key handling (#175) (forwarded request 1004155 from glaubitz)</comment>
     <requestid>1004182</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c7bdfeeb6ff0f8e10b8017b0d2f5624a</srcmd5>
+    <version>20220927.00</version>
+    <time>1665504181</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 20220927.00
+  * Workload certificate refresh (#182) (forwarded request 1009438 from glaubitz)</comment>
+    <requestid>1009583</requestid>
+  </revision>
 </revisionlist>
