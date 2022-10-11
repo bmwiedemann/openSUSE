@@ -1,7 +1,7 @@
 #
 # spec file for package python-nibabel
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,24 +19,21 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 %define skip_python36 1
-%define binaries nib-conform nib-dicomfs nib-diff nib-ls nib-nifti-dx nib-tck2trk nib-trk2tck parrec2nii
+%define binaries nib-conform nib-convert nib-dicomfs nib-diff nib-ls nib-nifti-dx nib-roi nib-stats nib-tck2trk nib-trk2tck parrec2nii
 Name:           python-nibabel
-Version:        3.1.1
+Version:        4.0.2
 Release:        0
 Summary:        Tool to access multiple neuroimaging data formats
 License:        MIT
 URL:            https://nipy.org/nibabel
 Source:         https://files.pythonhosted.org/packages/source/n/nibabel/nibabel-%{version}.tar.gz
-Patch0:         purge-nose.patch
-# PATCH-FIX-UPSTREAM - https://github.com/nipy/nibabel/pull/983
-Patch1:         983.patch
 BuildRequires:  %{python_module setuptools >= 30.3.0}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy >= 1.12
+Requires:       python-numpy >= 1.17
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     python-Pillow
 Recommends:     python-dicom >= 0.9.9
 Recommends:     python-h5py
@@ -45,7 +42,7 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module h5py}
-BuildRequires:  %{python_module numpy >= 1.12}
+BuildRequires:  %{python_module numpy >= 1.17}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
 # /SECTION
@@ -61,8 +58,6 @@ very limited support for DICOM.
 
 %prep
 %setup -q -n nibabel-%{version}
-%patch0 -p1
-%patch1 -p1
 
 %build
 %python_build
@@ -91,10 +86,13 @@ done
 %doc AUTHOR Changelog README.rst
 %license COPYING
 %python_alternative %{_bindir}/nib-conform
+%python_alternative %{_bindir}/nib-convert
 %python_alternative %{_bindir}/nib-dicomfs
 %python_alternative %{_bindir}/nib-diff
 %python_alternative %{_bindir}/nib-ls
 %python_alternative %{_bindir}/nib-nifti-dx
+%python_alternative %{_bindir}/nib-roi
+%python_alternative %{_bindir}/nib-stats
 %python_alternative %{_bindir}/nib-tck2trk
 %python_alternative %{_bindir}/nib-trk2tck
 %python_alternative %{_bindir}/parrec2nii
