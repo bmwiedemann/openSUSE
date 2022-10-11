@@ -19,19 +19,19 @@
 # Internal QML import
 %global __requires_exclude qmlimport\\(SMART.*
 
-%define kf5_version 5.74.0
+%define kf5_version 5.98.0
 %bcond_without released
 
 Name:           plasma5-disks
-Version:        5.25.5
+Version:        5.26.0
 Release:        0
 Summary:        Plasma service for monitoring disk health
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-disks-%{version}.tar.xz
+Source:         plasma-disks-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-disks-%{version}.tar.xz.sig
+Source1:        plasma-disks-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  cmake >= 3.16
