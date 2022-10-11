@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Oct  1 15:55:38 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.99.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.99.0
+- Changes since 5.98.0:
+  * Add Qt6 windows CI support
+  * Don't assume we have X11 on Windows with Qt 6
+  * Remove obsolete KDBusConnectionPool from the Qt 6 build
+  * .gitlab-ci.yml: enable static builds
+  * Fix static compilation on non-X11 systems
+
+-------------------------------------------------------------------
 Tue Sep  6 07:16:51 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.98.0
