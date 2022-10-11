@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-schemaregistry
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Microsoft Azure Schema Registry Client Library for Python
 License:        MIT
@@ -34,7 +34,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-Requires:       python-azure-core >= 1.23.0
+Requires:       python-azure-core >= 1.24.0
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-msrest >= 0.6.21
 Conflicts:      python-azure-sdk <= 2.0.0

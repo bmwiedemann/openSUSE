@@ -34,4 +34,16 @@
 - Update Requires from setup.py (forwarded request 976234 from glaubitz)</comment>
     <requestid>976377</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>292627a235f2a94604dd44f381354316</srcmd5>
+    <version>1.2.0</version>
+    <time>1665504210</time>
+    <user>RBrownFactory</user>
+    <comment>- New upstream release
+  + Version 1.2.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1009755 from glaubitz)</comment>
+    <requestid>1009774</requestid>
+  </revision>
 </revisionlist>
