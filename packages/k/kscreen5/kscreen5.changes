@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Oct  6 14:48:41 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.0
+- Changes since 5.25.90:
+  * Make extend left actually extend left, and similar for extend right
+  * Always extend out from the current primary screen
+  * kcm: reduce default height to make it fit on short screens
+  * Install po folder
+  * kded/output: when loading all configs fails, enable the output as a fallback
+  * Revert "when loading defaults don't forget to set enablement" (kde#459253)
+  * kcm: Bring back accidentally removed function call
+  * osd: Correctly position on X with QT_SCREEN_SCALE_FACTORS set
+
+-------------------------------------------------------------------
+Thu Sep 15 20:46:33 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue Sep  6 16:55:43 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.25.5
