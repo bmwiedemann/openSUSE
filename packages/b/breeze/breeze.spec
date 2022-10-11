@@ -22,19 +22,19 @@
 %{!?_plasma5_version: %define _plasma5_version %(echo %{_plasma5_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           breeze
-Version:        5.25.5
+Version:        5.26.0
 Release:        0
 Summary:        Plasma Desktop artwork, styles and assets
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/breeze-%{version}.tar.xz
+Source:         breeze-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/breeze-%{version}.tar.xz.sig
+Source1:        breeze-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  cmake >= 3.16
-BuildRequires:  extra-cmake-modules >= 0.0.13
+BuildRequires:  extra-cmake-modules >= 5.98.0
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  kf5-filesystem
@@ -52,10 +52,10 @@ BuildRequires:  cmake(KF5Kirigami2)
 BuildRequires:  cmake(KF5Package)
 BuildRequires:  cmake(KF5Wayland)
 BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  cmake(Qt5DBus) >= 5.4.0
-BuildRequires:  cmake(Qt5Quick) >= 5.4.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.4.0
-BuildRequires:  cmake(Qt5X11Extras) >= 5.4.0
+BuildRequires:  cmake(Qt5DBus) >= 5.15.0
+BuildRequires:  cmake(Qt5Quick)
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5X11Extras)
 BuildRequires:  pkgconfig(x11-xcb)
 BuildRequires:  pkgconfig(xcb)
 Requires:       breeze5-cursors >= %{version}
