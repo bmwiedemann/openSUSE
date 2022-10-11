@@ -1,0 +1,21 @@
+Origin: Assassin <assassin@assasinate-you.net>
+Author: Scarlett Moore <sgmoore@kde.org>
+Date: Mon, 8 Feb 2021
+Subject: Fix install path.
+Description: Ease consumers using this library by installing the libs
+in a standard location.
+Applied-Upstream: https://github.com/azubieta/xdg-utils-cxx/pull/17
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 6ec2686..06c9275 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -3,7 +3,7 @@ set(PROJECT_INCLUDEDIR ${PROJECT_SOURCE_DIR}/include)
+ 
+ # Install variables
+ set(PROJECT_INSTALL_INCLUDEDIR ${CMAKE_INSTALL_INCLUDEDIR}/XdgUtils)
+-set(PROJECT_INSTALL_LIBDIR ${CMAKE_INSTALL_LIBDIR}/XdgUtils)
++set(PROJECT_INSTALL_LIBDIR ${CMAKE_INSTALL_LIBDIR})
+ set(PROJECT_INSTALL_CMAKEDIR ${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME})
+ 
+ set(PROJECT_COMPONENT ${PROJECT_NAME})
