@@ -35,9 +35,6 @@ Obsoletes:      %{1}1.59%{?2:-%{2}}
 # but may not always work.
 #
 
-# Exclude problematic arches
-ExcludeArch:    armv6hl
-
 Name:           rust
 Version:        %{version_current}
 Release:        0

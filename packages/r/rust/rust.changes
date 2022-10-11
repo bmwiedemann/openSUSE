@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 28 12:23:25 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable armv6 again - boo#1196328
+
+-------------------------------------------------------------------
 Sun Sep 25 01:15:23 UTC 2022 - William Brown <william.brown@suse.com>
 
 - Update to version 1.64.0 - for details see the rust1.64 package
