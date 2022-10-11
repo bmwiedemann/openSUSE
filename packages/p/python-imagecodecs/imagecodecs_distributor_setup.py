@@ -8,27 +8,32 @@ def customize_build(EXTENSIONS, OPTIONS):
 
     includedir = os.getenv("INCDIR",'') + '/'
 
+    del EXTENSIONS['apng']    # png-apng library not available
+    del EXTENSIONS['blosc2']  # blosc2 library not available
+    del EXTENSIONS['brunsli'] # graphics/brunsli not in Factory
+    del EXTENSIONS['jetraw']  # jetraw library not available
     del EXTENSIONS['jpeg12']  # jpeg12 requires custom build
+    del EXTENSIONS['jpegxl']  # jpeg-xl library not available
     del EXTENSIONS['lerc']    # LERC library not available
     del EXTENSIONS['lz4f']    # requires static linking
-    del EXTENSIONS['jpegxl']  # jpeg-xl library not available
-    del EXTENSIONS['brunsli']  # Brunsli library not available
-    
+    del EXTENSIONS['mozjpeg'] # mozjpeg library not available
+    del EXTENSIONS['zfp']     # zfp library 0.5.5 not supported
+
     EXTENSIONS['avif']['libraries'] = [
         'avif',
         'aom',
         'dav1d',
         'rav1e',
     ]
-    
 
     if sys.maxsize < 2**63 - 1:
         # no zfp on 32-bit platforms
-        del EXTENSIONS['zfp']
+        # del EXTENSIONS['zfp']
         # avif tests fail on 32-bit
         del EXTENSIONS['avif']
-    
-    
+        # spng build fail on 32-bit
+        del EXTENSIONS['spng']
+
     openjpeg_inc = subprocess.check_output(
         ['pkgconf', '--variable=includedir', 'libopenjp2'],
         text=True,

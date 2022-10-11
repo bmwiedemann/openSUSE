@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Sun Oct  9 08:05:22 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Update imagecodecs_distributor_setup.py to skip unbuildable exts
+- Refresh always-cythonize.patch
+- Enable s390x & ppc64 builds
+- Update to v2022.9.26
+  * Pass 6357 tests.
+  * Support JPEG XL multi-channel (planar grayscale only) and multi-frame.
+  * Require libjxl 0.7 (breaking).
+  * Switch to Blosc2 API and require c-blosc 2.4 (breaking).
+  * Return LogLuv encoded TIFF as float32.
+  * Add RGBE codec via rgbe.c.
+- from v2022.8.8
+  * Drop support for libjpeg.
+  * Fix encoding JPEG in RGB color space.
+  * Require ZFP 1.0.
+- from v2022.7.31
+  * Add option to decode WebP as RGBA.
+  * Add option to specify WebP compression method.
+  * Use exact lossless WebP encoding.
+- from v2022.7.27
+  * Add LZW encoder.
+  * Add QOI codec via qoi.h
+  * Add HEIF codec via libheif
+  * Add JETRAW codec via Jetraw demo (source only).
+  * Add ByteShuffle codec, a generic version of FloatPred.
+  * Replace imcd_floatpred by imcd_byteshuffle (breaking).
+  * Use bool type in imcd (breaking).
+- from v2022.2.22
+  * Fix jpeg numcodecs with tables
+  * Add APNG codec via libpng-apng patch.
+  * Add lossless and decodingspeed parameters to jpegxl_encode
+  * Add option to read JPEG XL animations.
+  * Add dummy numthreads parameter to codec functions.
+  * Set default numthreads to 1 (disable multi-threading).
+  * Drop support for Python 3.7 and numpy < 1.19 (NEP29).
+- from v2021.11.20
+  * Fix testing on pypy and Python 3.10.
+- from v2021.11.11
+  * Require libjxl 0.6.x.
+  * Add CMS codec via Little CMS library for color space transformations (WIP).
+  * Add MOZJPEG codec via mozjpeg library (Windows only).
+  * Add SPNG codec via libspng library.
+  * Rename avif_encode maxthreads parameter to numthreads (breaking).
+  * Accept n-dimensional output in non-image numcodecs decoders.
+  * Support masks in LERC codec.
+  * Support multi-threading and planar format in JPEG2K codec.
+  * Support multi-resolution, MCT, bitspersample, and 32-bit in jpeg2k encoder.
+  * Change jpeg2k_encode level parameter to fixed quality psnr (breaking).
+  * Change jpegxl_encode effort parameter default to minimum 3.
+  * Change JPEG encoders to use YCbCr for RGB images by default.
+  * Replace lerc_encode planarconfig with planar parameter (breaking).
+  * Add option to specify omp numthreads and chunksize in ZFP codec.
+  * Set default numthreads to 0.
+  * Fix Blosc default typesize.
+  * Fix segfault in jpegxl_encode.
+  * Replace many constants with enums (breaking).
+- from v2021.8.26
+  * Add BLOSC2 codec via c-blosc2 library.
+  * Require LERC 3 and libjxl 0.5.
+  * Do not exceed literal-only size in PackBits encoder.
+  * Raise ImcdError if output is insufficient in PackBits codecs (breaking).
+  * Raise ImcdError if input is corrupt in PackBits decoder (breaking).
+  * Fix delta codec for non-native byteorder.
+- from v2021.7.30
+  * Support more dtypes and axes argument in PackBits encoder.
+  * Fix worst case output size in PackBits encoder.
+  * Fix decoding AVIF created with older libavif.
+  * Fix decoding GIF with disposal to previous for first frame.
+  * Add lossless option in jpeg_encode.
+
+-------------------------------------------------------------------
 Wed Jun 30 07:28:42 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2021.6.8

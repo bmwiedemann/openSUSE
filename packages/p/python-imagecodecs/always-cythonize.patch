@@ -1,13 +1,29 @@
-Index: imagecodecs-2021.6.8/setup.py
+Index: imagecodecs-2022.9.26/setup.py
 ===================================================================
---- imagecodecs-2021.6.8.orig/setup.py
-+++ imagecodecs-2021.6.8/setup.py
-@@ -105,7 +105,7 @@ def ext(**kwargs):
+--- imagecodecs-2022.9.26.orig/setup.py
++++ imagecodecs-2022.9.26/setup.py
+@@ -94,7 +94,7 @@ def ext(**kwargs):
+         extra_compile_args=[],
+         extra_link_args=[],
+         cython_compile_time_env={},
+-        cythonize=False,
++        cythonize=True,
+     )
+     d.update(kwargs)
+     return d
+@@ -114,13 +114,13 @@ OPTIONS = {
+     'extra_compile_args': [],
+     'extra_link_args': [],
+     'cython_compile_time_env': {},
+-    'cythonize': False,  # sys.version_info >= (3, 11)
++    'cythonize': True,  # sys.version_info >= (3, 11)
+ }
  
- 
- OPTIONS = {
--    'cythonize': 'PyPy' in sys.version,  # or sys.version_info >= (3, 10)
-+    'cythonize': True,
-     'include_dirs': ['imagecodecs'],
-     'library_dirs': [],
-     'libraries': ['m'] if sys.platform != 'win32' else [],
+ EXTENSIONS = {
+     'shared': ext(
+         cython_compile_time_env={'IS_PYPY': 'PyPy' in sys.version},
+-        cythonize='PyPy' in sys.version,
++        cythonize=True,  #'PyPy' in sys.version,
+     ),
+     'imcd': ext(sources=['imagecodecs/imcd.c']),
+     'aec': ext(libraries=['aec']),
