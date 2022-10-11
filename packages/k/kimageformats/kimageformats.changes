@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Oct  1 15:55:51 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.99.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.99.0
+- Changes since 5.98.0:
+  * Add Qt6 windows CI support
+  * pcx: Do not support sequential devices (kde#459541)
+  * Fix maximum number of channels (testcase added)
+  * LibRaw_QIODevice::seek() avoid seek on a sequential device
+  * LibRaw_QIODevice::seek() bounding checks
+  * Camera RAW images plugin
+  * .gitlab-ci.yml: enable static builds
+  * Enables opening of XCF files with Width and/or Height greater than 32K
+  * Replace C cast with reinterpret_cast
+  * avif: adjust for libavif breaking change in YUV<->RGB conversion
+  * Fix image allocation with Qt 6
+
+-------------------------------------------------------------------
 Tue Sep  6 07:17:04 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.98.0
