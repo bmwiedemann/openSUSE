@@ -20,14 +20,14 @@
 %global __requires_exclude qmlimport\\((Ubuntu\\.OnlineAccounts|org\\.kde\\.kdeconnect).*
 
 %define lname   libKF5Purpose5
-%define _tar_path 5.98
+%define _tar_path 5.99
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           purpose
-Version:        5.98.0
+Version:        5.99.0
 Release:        0
 Summary:        Framework to integrate services and actions in applications
 License:        LGPL-2.1-or-later
@@ -122,23 +122,21 @@ This package contains development files needed to build applications which rely 
 %install
 %kf5_makeinstall -C build
 
-%if %{with released}
-  %find_lang libpurpose_quick %{name}.lang
-  %find_lang libpurpose_widgets %{name}.lang
-  %find_lang purpose-fileitemaction %{name}.lang
-  %find_lang purpose_barcode %{name}.lang
-  %find_lang purpose_bluetooth %{name}.lang
-  %find_lang purpose_imgur %{name}.lang
-  %find_lang purpose_kdeconnect %{name}.lang
-  %find_lang purpose_kdeconnectsms %{name}.lang
-  %find_lang purpose_ktp-sendfile %{name}.lang
-  %find_lang purpose_nextcloud %{name}.lang
-  %find_lang purpose_pastebin %{name}.lang
-  %find_lang purpose_phabricator %{name}.lang
-  %find_lang purpose_reviewboard %{name}.lang
-  %find_lang purpose_saveas %{name}.lang
-  %find_lang purpose_youtube %{name}.lang
-%endif
+%find_lang libpurpose_quick %{name}.lang
+%find_lang libpurpose_widgets %{name}.lang
+%find_lang purpose-fileitemaction %{name}.lang
+%find_lang purpose_barcode %{name}.lang
+%find_lang purpose_bluetooth %{name}.lang
+%find_lang purpose_imgur %{name}.lang
+%find_lang purpose_kdeconnect %{name}.lang
+%find_lang purpose_kdeconnectsms %{name}.lang
+%find_lang purpose_ktp-sendfile %{name}.lang
+%find_lang purpose_nextcloud %{name}.lang
+%find_lang purpose_pastebin %{name}.lang
+%find_lang purpose_phabricator %{name}.lang
+%find_lang purpose_reviewboard %{name}.lang
+%find_lang purpose_saveas %{name}.lang
+%find_lang purpose_youtube %{name}.lang
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
@@ -147,9 +145,7 @@ This package contains development files needed to build applications which rely 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %files -n %{lname}
 %license LICENSES/*
