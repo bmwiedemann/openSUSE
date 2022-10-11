@@ -16,19 +16,19 @@
 #
 
 
-%define kf5_version 5.62.0
-%define qt5_version 5.12.0
+%define kf5_version 5.98.0
+%define qt5_version 5.15.0
 %bcond_without released
 Name:           plasma5-pa
-Version:        5.25.5
+Version:        5.26.0
 Release:        0
 Summary:        The Plasma5 Volume Manager
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-pa-%{version}.tar.xz
+Source:         plasma-pa-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-pa-%{version}.tar.xz.sig
+Source1:        plasma-pa-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= 0.0.14
@@ -39,6 +39,7 @@ BuildRequires:  cmake(KF5Declarative) >= %{kf5_version}
 BuildRequires:  cmake(KF5DocTools) >= %{kf5_version}
 BuildRequires:  cmake(KF5GlobalAccel) >= %{kf5_version}
 BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
+BuildRequires:  cmake(KF5KCMUtils)
 BuildRequires:  cmake(KF5Notifications) >= %{kf5_version}
 BuildRequires:  cmake(KF5Package) >= %{kf5_version}
 BuildRequires:  cmake(KF5Plasma) >= %{kf5_version}
@@ -82,6 +83,7 @@ A volume manager plasmoid superseding kmix.
 
 %files
 %license LICENSES/*
+%{_kf5_applicationsdir}/kcm_pulseaudio.desktop
 %{_kf5_plugindir}/
 %{_kf5_qmldir}/
 %{_kf5_sharedir}/kconf_update/

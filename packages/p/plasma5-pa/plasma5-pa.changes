@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Thu Oct  6 14:48:45 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.0
+- Changes since 5.25.90:
+  * KCM: Allow comboboxes to grow to fit contents (kde#458422)
+  * KCM: Only show port/profile labels if port combobox is visible
+  * Install po folder
+
+-------------------------------------------------------------------
+Thu Sep 15 20:47:31 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.90
+- Changes since 5.25.5:
+  * applet: Make "Profiles" menu Translucent
+  * applet: add more `KeyNavigation` properties
+  * applet: Drop redundant workaround for semi-transparent sliders
+  * applet: Support RTL layouts in volume slider
+  * Add FreeBSD Qt6 CI support
+  * Bump KF5_MIN_VERSION
+  * Clean up unneeded json values from KCM metadata
+  * Modernize KCM code
+  * Add missing license file
+  * KCM: Make list items shorter with changed layout
+  * applet: fix menu key not working
+  * applet: support arrow key navigation
+  * applet: Animate slider when 'Raise maximum volume' is toggled
+  * Remove unused QQC1 imports
+  * VolumeMonitor: Don't set stream on source output monitor
+  * applet: set role to ButtonMenu
+  * applet: port to `PC3.ToolTip`
+  * applet: add text to context menu button
+  * applet: port to `PC3.ToolTip`
+  * applet: add text to mute button
+  * applet: Fix incompatible null binding to a string property
+  * Remove extra ';'
+
+-------------------------------------------------------------------
 Tue Sep  6 16:56:14 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.25.5
