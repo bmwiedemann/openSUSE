@@ -18,18 +18,18 @@
 
 %bcond_without released
 Name:           kde-gtk-config5
-Version:        5.25.5
+Version:        5.26.0
 Release:        0
 Summary:        Daemon for GTK2 and GTK3 Applications Appearance Under KDE
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
 Group:          System/GUI/KDE
 URL:            http://projects.kde.org/kde-gtk-config
-Source:         https://download.kde.org/stable/plasma/%{version}/kde-gtk-config-%{version}.tar.xz
+Source:         kde-gtk-config-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kde-gtk-config-%{version}.tar.xz.sig
+Source1:        kde-gtk-config-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-BuildRequires:  extra-cmake-modules >= 0.0.9
+BuildRequires:  extra-cmake-modules >= 5.98.0
 BuildRequires:  gsettings-desktop-schemas
 BuildRequires:  kf5-filesystem
 BuildRequires:  sassc
@@ -41,7 +41,7 @@ BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5GuiAddons)
 BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(Qt5Svg)
+BuildRequires:  cmake(Qt5Svg) >= 5.15.0
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
