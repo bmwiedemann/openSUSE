@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Sun Oct 09 11:07:06 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 0.4.3+git14:
+  * bump dependencies (clap went from 3.x to 4.x)
+  * Render the cursor on an empty desktop
+  * Fixed a typo
+  * This protocol is not actually required / used
+  * Use safer type conversion
+  * docs: Put type in backticks
+  * Formatting
+  * Simplify closure that just calls a function
+  * Avoid copying data unnecessarily
+  * Remove unnecessary Option
+
+- Install shell completions for zsh, bash, and fish
+
+-------------------------------------------------------------------
+Sun Oct  9 06:37:58 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Initial spec for swww version 0.4.3
