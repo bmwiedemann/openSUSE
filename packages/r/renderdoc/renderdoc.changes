@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Oct 10 06:59:27 UTC 2022 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.22
+  * UI: Improved the highlighting of changed variables when
+    stepping/running in the shader debugger.
+  * OpenGL: When capture is unsupported on a running program,
+    display the reason why in the connection window as well as in
+    the overlay text.
+  * OpenGL: Show bicubic filtering functions in pipeline state
+    viewer.
+  * OpenGL: Replay multisampled backbuffers on OpenGL ES.
+  * D3D: Display magic quality values better in texture viewer
+    status bar.
+  * D3D12: Improve performance for adding patterns into discarded
+    resources.
+  * Vulkan: On fastest replay optimisation level don't override
+    renderpass load ops.
+  * Vulkan: Optimise contiguous bindings of sparse pages in buffers
+    before passing to the driver.
+  * Vulkan: Add support for extensions:
+    - VK_EXT_attachment_feedback_loop_layout
+    - VK_EXT_primitive_topology_list_restart
+    - VK_EXT_primitives_generated_query
+    - VK_EXT_depth_clip_control
+    - VK_EXT_multisampled_render_to_single_sampled 
+
+-------------------------------------------------------------------
 Wed Aug 24 07:15:54 UTC 2022 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - Update to version 1.21
