@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kmenuedit5
-Version:        5.25.5
+Version:        5.26.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -28,12 +28,12 @@ Summary:        Provides the interface and basic tools for the KDE workspace
 License:        GPL-2.0-only
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/kmenuedit-%{version}.tar.xz
+Source:         kmenuedit-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kmenuedit-%{version}.tar.xz.sig
+Source1:        kmenuedit-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-BuildRequires:  extra-cmake-modules >= 1.7.0
+BuildRequires:  extra-cmake-modules >= 5.98.0
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
 BuildRequires:  xz
@@ -46,9 +46,9 @@ BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Sonnet)
 BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(KHotKeysDBusInterface) >= %{_plasma5_version}
-BuildRequires:  cmake(Qt5Core) >= 5.4.0
-BuildRequires:  cmake(Qt5DBus) >= 5.4.0
-BuildRequires:  cmake(Qt5Xml) >= 5.4.0
+BuildRequires:  cmake(Qt5Core) >= 5.15.0
+BuildRequires:  cmake(Qt5DBus)
+BuildRequires:  cmake(Qt5Xml)
 Recommends:     %{name}-lang
 Conflicts:      kdebase4-workspace < 5.3.0
 
