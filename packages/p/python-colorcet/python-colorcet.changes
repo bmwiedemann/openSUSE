@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Oct  3 16:33:34 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 3.0.1:
+  * Update to work with matplotlib=3.6 (#90)
+  * Fix holoviews opts deprecation warning (#94)
+  * Add support for Python 3.10 (#81)
+  * Remove windows 3.6 case from test suite due to lack of mamba
+    support (#94)
+  * Remove Param dependency (#84)
+  * Improve installation instructions (#92)
+
+-------------------------------------------------------------------
 Mon Sep 19 22:01:56 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:

@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-colorcet
-Version:        3.0.0
+Version:        3.0.1
 Release:        0
 Summary:        Collection of perceptually uniform colormaps
 License:        CC-BY-4.0
