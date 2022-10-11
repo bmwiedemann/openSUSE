@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct 09 18:09:44 UTC 2022 - maiku.fabian@gmail.com
+
+- Update to 2.19.2
+- Do not commit by index when OSK is visible
+  (Resolves: https://gitlab.gnome.org/GNOME/gnome-shell/-/issues/5865)
+- Translation update from Weblate (sw 100% complete)
+
+-------------------------------------------------------------------
 Wed Oct 05 13:33:17 UTC 2022 - maiku.fabian@gmail.com
 
 - Update to 2.19.1
