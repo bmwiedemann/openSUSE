@@ -21,28 +21,28 @@
 
 %bcond_without released
 Name:           plasma5-firewall
-Version:        5.25.5
+Version:        5.26.0
 Release:        0
 Summary:        Config Module for the System Firewall
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
-Source0:        https://download.kde.org/stable/plasma/%{version}/plasma-firewall-%{version}.tar.xz
+Source0:        plasma-firewall-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-firewall-%{version}.tar.xz.sig
+Source1:        plasma-firewall-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  cmake >= 3.16
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  python3-base
-BuildRequires:  cmake(KF5CoreAddons) >= 5.30.0
+BuildRequires:  cmake(KF5CoreAddons) >= 5.98.0
 BuildRequires:  cmake(KF5Declarative)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5KCMUtils)
 BuildRequires:  cmake(KF5Plasma)
 BuildRequires:  cmake(KF5PlasmaQuick)
-BuildRequires:  cmake(Qt5Core) >= 5.14.0
+BuildRequires:  cmake(Qt5Core) >= 5.15.0
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Qml)
 BuildRequires:  cmake(Qt5X11Extras)
