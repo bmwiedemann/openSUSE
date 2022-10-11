@@ -16,14 +16,14 @@
 #
 
 
-%define _tar_path 5.98
+%define _tar_path 5.99
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kcontacts
-Version:        5.98.0
+Version:        5.99.0
 Release:        0
 Summary:        KDE Frameworks based address book API
 License:        LGPL-2.1-or-later
@@ -87,9 +87,8 @@ address books.
 
 %install
 %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-  %endif
+
+%find_lang %{name} --with-man --all-name
 
 %post -n libKF5Contacts5 -p /sbin/ldconfig
 %postun -n libKF5Contacts5 -p /sbin/ldconfig
@@ -106,8 +105,6 @@ address books.
 %{_kf5_libdir}/libKF5Contacts.so
 %{_kf5_mkspecsdir}/qt_KContacts.pri
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
