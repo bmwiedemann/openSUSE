@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5I18n5
-%define _tar_path 5.98
+%define _tar_path 5.99
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           ki18n
-Version:        5.98.0
+Version:        5.99.0
 Release:        0
 Summary:        KDE Gettext-based UI text internationalization
 License:        LGPL-2.1-or-later
@@ -104,24 +104,20 @@ Development files.
 %kf5_makeinstall -C build
 %fdupes %{buildroot}
 
-%if %{with released}
-%find_lang %{name}5
+%find_lang ki18n5
 for i in `ls %{buildroot}%{_kf5_sharedir}/locale`
 do
   if test -d  %{buildroot}%{_kf5_sharedir}/locale/$i/LC_SCRIPTS
   then
-    echo "%dir %lang(${i%%_*}) %{_kf5_sharedir}/locale/$i/LC_SCRIPTS" >>%{name}5.lang
-    echo "%lang(${i%%_*}) %{_kf5_sharedir}/locale/$i/LC_SCRIPTS/ki18n5/" >>%{name}5.lang
+    echo "%dir %lang(${i%%_*}) %{_kf5_sharedir}/locale/$i/LC_SCRIPTS" >> ki18n5.lang
+    echo "%lang(${i%%_*}) %{_kf5_sharedir}/locale/$i/LC_SCRIPTS/ki18n5/" >> ki18n5.lang
   fi
 done
-%endif
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
 
-%if %{with released}
-%files -n %{lname}-lang -f %{name}5.lang
-%endif
+%files -n %{lname}-lang -f ki18n5.lang
 
 %files -n %{lname}
 %license LICENSES/*
