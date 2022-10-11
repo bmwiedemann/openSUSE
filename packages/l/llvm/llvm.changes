@@ -1,8 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct  4 21:41:05 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 15.0.2.
+  * This release contains bug-fixes for the LLVM 15.0.0 release.
+    This release is API and ABI compatible with 15.0.0.
+
+-------------------------------------------------------------------
 Thu Sep 22 12:19:07 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 15.0.1.
-  * This release contains bug-fixes for the LLVM 15.0.1 release.
+  * This release contains bug-fixes for the LLVM 15.0.0 release.
     This release is API and ABI compatible with 15.0.0.
 
 -------------------------------------------------------------------
