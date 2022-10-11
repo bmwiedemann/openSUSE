@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Fri Oct 07 20:37:54 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20221007.638a03b:
+  * Packaging: set default package name as openSUSE-repos for non-flavour
+
+-------------------------------------------------------------------
+Fri Oct 07 10:45:42 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20221007.0e44106:
+  * Packaging: made it to be real multibuild
+
+-------------------------------------------------------------------
+Mon Sep 26 10:27:53 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220926.da3133a:
+  * Corrected path and name for LeapMicro debug repo
+
+-------------------------------------------------------------------
+Mon Sep 26 10:16:37 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220926.c75597d:
+  * Run spec-cleaner on specs
+
+-------------------------------------------------------------------
+Mon Sep 26 09:59:11 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220926.e27264d:
+  * Add LeapMicro
+
+-------------------------------------------------------------------
+Mon Sep 26 08:24:54 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220926.be4cbf8:
+  * Specs for multibuild support as we have >2 flavors
+
+-------------------------------------------------------------------
+Sat Sep 24 13:13:22 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20220924.5761673:
+  * requested in https://code.opensuse.org/leap/features/issue/91
+  * Disable post-build checks due to boo#1203715
+  * Initial rpm spec logic is based on rpm-repos-openSUSE from Neal
