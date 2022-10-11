@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5UnitConversion5
-%define _tar_path 5.98
+%define _tar_path 5.99
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kunitconversion
-Version:        5.98.0
+Version:        5.99.0
 Release:        0
 Summary:        Tool for converting physical units
 License:        LGPL-2.1-or-later
@@ -82,18 +82,15 @@ Development files.
 
 %install
 %kf5_makeinstall -C build
+
 %fdupes %{buildroot}
 
-%if %{with released}
-%find_lang %{name}5
-%endif
+%find_lang kunitconversion5
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
 
-%if %{with released}
-%files -n %{lname}-lang -f %{name}5.lang
-%endif
+%files -n %{lname}-lang -f kunitconversion5.lang
 
 %files -n %{lname}
 %license LICENSES/*
