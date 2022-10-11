@@ -17,14 +17,14 @@
 
 
 %define lname libKF5Kirigami2-5
-%define _tar_path 5.98
+%define _tar_path 5.99
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kirigami2
-Version:        5.98.0
+Version:        5.99.0
 Release:        0
 Summary:        Set of QtQuick components
 License:        LGPL-2.1-or-later
@@ -42,15 +42,13 @@ BuildRequires:  cmake(Qt5Concurrent) >= 5.15.0
 BuildRequires:  cmake(Qt5Core) >= 5.15.0
 BuildRequires:  cmake(Qt5DBus) >= 5.15.0
 BuildRequires:  cmake(Qt5Gui) >= 5.15.0
+BuildRequires:  cmake(Qt5LinguistTools) >= 5.15.0
 BuildRequires:  cmake(Qt5Quick) >= 5.15.0
 BuildRequires:  cmake(Qt5QuickControls2) >= 5.15.0
 BuildRequires:  cmake(Qt5Svg) >= 5.15.0
 BuildRequires:  cmake(Qt5Test) >= 5.15.0
 Requires:       libqt5-qtgraphicaleffects
 Requires:       libqt5-qtquickcontrols2
-%if %{with released}
-BuildRequires:  cmake(Qt5LinguistTools) >= 5.15.0
-%endif
 
 %description
 QtQuick plugins to build user interfaces based on the KDE UX guidelines.
@@ -86,9 +84,7 @@ Development files.
 %install
 %kf5_makeinstall -C build
 
-%if %{with released}
 %find_lang libkirigami2plugin --with-qt --without-mo
-%endif
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
@@ -108,8 +104,6 @@ Development files.
 %{_kf5_mkspecsdir}/qt_Kirigami2.pri
 %{_libdir}/cmake/KF5Kirigami2/
 
-%if %{with released}
 %files lang -f libkirigami2plugin.lang
-%endif
 
 %changelog
