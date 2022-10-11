@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct  1 15:56:13 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.99.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.99.0
+- Changes since 5.98.0:
+  * .gitlab-ci.yml: enable static builds
+
+-------------------------------------------------------------------
 Tue Sep  6 07:17:25 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.98.0
