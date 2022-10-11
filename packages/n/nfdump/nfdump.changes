@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri Sep 30 13:46:10 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7.0.1
+  * Fix build issues in nfdump-1.7.0
+- Drop patches:
+  * 0001-Add-missing-variable-initialization.patch
+  * 0002-Handle-fscanf-return-value-in-pidfile.c.patch
+  * 0003-Fix-snprintf-length-argument.patch
+  * fix-build.patch
+
+-------------------------------------------------------------------
+Fri Sep 30 08:08:34 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7.0
+  * nfdump is now a multi-threaded program and uses parallel
+    threads mainly for reading, writing and processing flows as
+    well as for sorting. This may result in a 2 to 3 times faster
+    flow processing, depending on the tasks. The speed improvement
+    also heavily depends on the hardware (SSD/HD) and flow
+    compression option.
+  * For netflow v9 and IPFIX, nfdump now supports flexible length
+    fields. This improves compatibility with some exporters such
+    as yaf and others. The netflow v9 decoder is more flexible in
+    decoding.
+  * Support for Cisco Network Based Application Recognition (NBAR).
+  * Supports Maxmind geo location information to tag/geolocate IP
+    addresses and AS numbers.
+  * nfpcapd automatically uses TPACKET_V3 for Linux. This improves
+    packet processing. It adds new options to collect MAC and VLAN
+    information as well as the first packet of the payload.
+  * Metric exports: By default, every 60s a flow summary statistics
+    can be sent to a UNIX socket. The corresponding program may be
+    nfinflux to insert these metrics into an influxDB or nfexporter
+    for Prometheus monitoring.
+- Add patches:
+  * 0001-Add-missing-variable-initialization.patch
+  * 0002-Handle-fscanf-return-value-in-pidfile.c.patch
+  * 0003-Fix-snprintf-length-argument.patch
+- Build with support for influxdb
+- Build libnfdump as shared library
+
+-------------------------------------------------------------------
 Sun May 22 10:12:50 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Add patch:
