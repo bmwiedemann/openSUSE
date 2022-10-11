@@ -22,17 +22,17 @@
 # Internal QML import
 %global __requires_exclude qmlimport\\(org\\.kde\\.xdgdesktopportal
 
-%define kf5_version 5.50.0
+%define kf5_version 5.98.0
 Name:           xdg-desktop-portal-kde
-Version:        5.25.5
+Version:        5.26.0
 Release:        0
 Summary:        QT/KF5 backend for xdg-desktop-portal
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/xdg-desktop-portal-kde-%{version}.tar.xz
+Source:         xdg-desktop-portal-kde-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/xdg-desktop-portal-kde-%{version}.tar.xz.sig
+Source1:        xdg-desktop-portal-kde-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
