@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Oct  6 14:48:44 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.0
+- Changes since 5.25.90:
+  * User switcher: fix excessive vertical padding in horizontal panels (kde#454111)
+  * Install po folder
+  * applets/timer: port to GridLayout in CompactRepresentation
+  * wallpapers/potd: move boolean to condition
+  * wallpapers/potd: fix not updating wallpaper in lock screen (kde#457361)
+  * wallpapers/potd: clear `Drag.imageSource` on `dragFinished`
+  * Remove ContainmentType from the grouping container plasmoid (kde#454416)
+  * [applets/notes] Show Font Toolbar just in editing mode
+  * wallpapers/potd: show image with cursor when dragging
+
+-------------------------------------------------------------------
+Thu Sep 15 20:47:07 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue Sep  6 16:56:04 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.25.5

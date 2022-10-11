@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           plasma5-addons
-Version:        5.25.5
+Version:        5.26.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -28,43 +28,46 @@ Summary:        Additional Plasma5 Widgets
 License:        GPL-2.0-or-later AND LGPL-2.1-only AND GPL-3.0-only
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/kdeplasma-addons-%{version}.tar.xz
+Source:         kdeplasma-addons-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kdeplasma-addons-%{version}.tar.xz.sig
+Source1:        kdeplasma-addons-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  kf5-filesystem
-BuildRequires:  cmake(KF5Activities) >= 5.25.0
-BuildRequires:  cmake(KF5Config) >= 5.25.0
-BuildRequires:  cmake(KF5ConfigWidgets) >= 5.25.0
-BuildRequires:  cmake(KF5CoreAddons) >= 5.25.0
-BuildRequires:  cmake(KF5Declarative) >= 5.25.0
-BuildRequires:  cmake(KF5Holidays) >= 5.25.0
-BuildRequires:  cmake(KF5I18n) >= 5.25.0
-BuildRequires:  cmake(KF5KCMUtils) >= 5.25.0
-BuildRequires:  cmake(KF5KDELibs4Support) >= 5.25.0
-BuildRequires:  cmake(KF5KIO) >= 5.25.0
-BuildRequires:  cmake(KF5Kross) >= 5.25.0
-BuildRequires:  cmake(KF5NewStuff) >= 5.25.0
-BuildRequires:  cmake(KF5Plasma) >= 5.25.0
-BuildRequires:  cmake(KF5Purpose) >= 5.25.0
-BuildRequires:  cmake(KF5Runner) >= 5.25.0
-BuildRequires:  cmake(KF5Service) >= 5.25.0
-BuildRequires:  cmake(KF5UnitConversion) >= 5.25.0
+BuildRequires:  libicu-devel
+BuildRequires:  cmake(KF5Activities) >= 5.98.0
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5ConfigWidgets)
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5Declarative)
+BuildRequires:  cmake(KF5Holidays)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5KCMUtils)
+BuildRequires:  cmake(KF5KDELibs4Support)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5Kross)
+BuildRequires:  cmake(KF5NetworkManagerQt)
+BuildRequires:  cmake(KF5NewStuff)
+BuildRequires:  cmake(KF5Plasma)
+BuildRequires:  cmake(KF5Purpose)
+BuildRequires:  cmake(KF5Runner)
+BuildRequires:  cmake(KF5Service)
+BuildRequires:  cmake(KF5UnitConversion)
 #!BuildIgnore: kwin5
 BuildRequires:  xz
 BuildRequires:  cmake(LibTaskManager) >= %{_plasma5_version}
-BuildRequires:  cmake(Qt5Core) >= 5.4.0
-BuildRequires:  cmake(Qt5DBus) >= 5.4.0
-BuildRequires:  cmake(Qt5Gui) >= 5.4.0
-BuildRequires:  cmake(Qt5Qml) >= 5.4.0
-BuildRequires:  cmake(Qt5Quick) >= 5.4.0
+BuildRequires:  cmake(Qt5Core) >= 5.15.0
+BuildRequires:  cmake(Qt5DBus)
+BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5Qml)
+BuildRequires:  cmake(Qt5Quick)
 %ifnarch ppc ppc64 ppc64le s390 s390x riscv64
-BuildRequires:  cmake(Qt5WebEngine) >= 5.7.0
+BuildRequires:  cmake(Qt5WebEngine)
 %endif
-BuildRequires:  cmake(Qt5Widgets) >= 5.4.0
-BuildRequires:  cmake(Qt5X11Extras) >= 5.4.0
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5X11Extras)
 %if 0%{?suse_version} < 1550
+BuildRequires:  gcc10-PIE
 BuildRequires:  gcc10-c++
 %endif
 BuildRequires:  pkgconfig(x11)
@@ -118,7 +121,6 @@ the Plasma desktop.
 %{_kf5_libdir}/libplasmapotdprovidercore.so.*
 %{_kf5_plugindir}/
 %{_kf5_qmldir}/
-%{_kf5_servicesdir}/
 %{_kf5_plasmadir}/
 %{_kf5_sharedir}/kwin/
 %{_kf5_iconsdir}/hicolor/*/*/*.*
@@ -129,12 +131,12 @@ the Plasma desktop.
 %files devel
 %license LICENSES/*
 %dir %{_includedir}/plasma
+%dir %{_kf5_sharedir}/kdevappwizard/
+%dir %{_kf5_sharedir}/kdevappwizard/templates
 %{_includedir}/plasma/potdprovider
 %{_kf5_cmakedir}/PlasmaPotdProvider/
 %{_kf5_libdir}/libplasmapotdprovidercore.so
-%dir %{_kf5_sharedir}/kdevfiletemplates/
-%dir %{_kf5_sharedir}/kdevfiletemplates/templates
-%{_kf5_sharedir}/kdevfiletemplates/templates/plasmapotdprovider.tar.bz2
+%{_kf5_sharedir}/kdevappwizard/templates/plasmapotdprovider.tar.bz2
 
 %if %{with released}
 %files lang -f %{name}.lang
