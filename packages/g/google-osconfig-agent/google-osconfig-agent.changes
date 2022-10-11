@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 10 13:08:52 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20220829.00
+  * Fix exclude packages field processing (#440)
+- from version 20220824.00
+  * Check for exclusive patches. (#442)
+
+-------------------------------------------------------------------
 Wed Sep  7 10:46:32 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Use install command in %post section to create state file (bsc#1202826)

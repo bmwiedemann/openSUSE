@@ -228,4 +228,15 @@
     <comment></comment>
     <requestid>1002920</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>764f43b2964b839b165477497e5c98c3</srcmd5>
+    <version>20220829.00</version>
+    <time>1665504172</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 20220829.00
+  * Fix exclude packages field processing (#440)
+- from version 20220824.00
+  * Check for exclusive patches. (#442) (forwarded request 1009474 from glaubitz)</comment>
+    <requestid>1009546</requestid>
+  </revision>
 </revisionlist>
