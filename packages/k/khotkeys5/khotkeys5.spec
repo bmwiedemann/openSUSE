@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           khotkeys5
-Version:        5.25.5
+Version:        5.26.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -28,14 +28,14 @@ Summary:        KDE's hotkey daemon
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/khotkeys-%{version}.tar.xz
+Source:         khotkeys-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/khotkeys-%{version}.tar.xz.sig
+Source1:        khotkeys-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
 Patch100:       0001-Use-qdbus-qt5-and-qdbusviewer-qt5.patch
-BuildRequires:  extra-cmake-modules >= 1.1.0
+BuildRequires:  extra-cmake-modules >= 5.98.0
 BuildRequires:  kf5-filesystem
 BuildRequires:  xz
 BuildRequires:  cmake(KF5DBusAddons)
