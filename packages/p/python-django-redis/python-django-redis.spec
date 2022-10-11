@@ -18,19 +18,20 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+%define skip_python36 1
 Name:           python-django-redis
-Version:        4.12.1
+Version:        5.2.0
 Release:        0
 Summary:        A redis cache backend for Django
 License:        BSD-3-Clause
 URL:            https://github.com/jazzband/django-redis
 Source:         https://files.pythonhosted.org/packages/source/d/django-redis/django-redis-%{version}.tar.gz
-# minimal patch to fix the testsuite, see https://github.com/jazzband/django-redis/pull/492 for reference
-Patch0:         clean-cache.patch
 BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module lz4 >= 0.15}
 BuildRequires:  %{python_module msgpack >= 0.4.6}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-django}
+BuildRequires:  %{python_module pytest-mock >= 3.0}
 BuildRequires:  %{python_module redis >= 2.10.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -48,7 +49,7 @@ A redis cache backend for Django.
 
 %prep
 %setup -q -n django-redis-%{version}
-%autopatch -p1
+sed -i '/addopts/d' setup.cfg
 
 %build
 %python_build
@@ -59,30 +60,20 @@ A redis cache backend for Django.
 
 %check
 /usr/sbin/redis-server --port 6379 &
-export PYTHONPATH=.:tests
-%python_exec tests/runtests.py
-# The first four are errors on Python 2
-# The last three tests tests raise NotImplementedError
-%{python_expand DJANGO_SETTINGS_MODULE=tests.test_sqlite_sharding \
-  $python -m pytest \
-    --deselect tests/test_backend.py::DjangoRedisCacheTestEscapePrefix::test_keys \
-    --deselect tests/test_backend.py::DjangoRedisCacheTests::test_delete_pattern \
-    --deselect tests/test_backend.py::DjangoRedisCacheTests::test_touch_missed_key \
-    --deselect tests/test_backend.py::DjangoRedisCacheTests::test_touch_negative_timeout \
-    --deselect tests/test_backend.py::DjangoRedisCacheTests::test_touch_positive_timeout \
-    --deselect tests/test_backend.py::DjangoRedisCacheTests::test_touch_zero_timeout \
-    tests
+export PYTHONPATH=${PWD}:${PWD}/tests
+%{python_expand \
+DJANGO_SETTINGS_MODULE=tests.settings.sqlite_sharding $python -m pytest -rs -v tests
+DJANGO_SETTINGS_MODULE=tests.settings.sqlite_herd $python -m pytest -rs -v tests
+DJANGO_SETTINGS_MODULE=tests.settings.sqlite_json $python -m pytest -rs -v tests
+DJANGO_SETTINGS_MODULE=tests.settings.sqlite_msgpack $python -m pytest -rs -v tests
+DJANGO_SETTINGS_MODULE=tests.settings.sqlite_zlib $python -m pytest -rs -v tests
+DJANGO_SETTINGS_MODULE=tests.settings.sqlite_lz4 $python -m pytest -rs -v tests
 }
-%python_exec tests/runtests-herd.py
-%python_exec tests/runtests-json.py
-%python_exec tests/runtests-msgpack.py
-%python_exec tests/runtests-zlib.py
-%python_exec tests/runtests-lz4.py
 killall redis-server
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/django[-_]redis*/
 
 %changelog
