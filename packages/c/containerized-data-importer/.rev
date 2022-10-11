@@ -223,4 +223,12 @@
     <comment></comment>
     <requestid>1004577</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>7c1eafa2e4282acec40b160d95c6c86e</srcmd5>
+    <version>1.55.0</version>
+    <time>1665504148</time>
+    <user>RBrownFactory</user>
+    <comment>- Update SP5 kubevirt registry path (bsc#1204140)</comment>
+    <requestid>1009259</requestid>
+  </revision>
 </revisionlist>
