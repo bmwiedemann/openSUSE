@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Oct 11 06:47:03 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.3.1
+  * Sometimes number_of_congruences erroneously returned 0 for
+    the number of congruences with 1 class.
+  * If an empty presentation (no generators or relations) was
+    used to initialise short_rules, then the Sims1::for_each and
+    Sims1::find_if could crash.
+
+-------------------------------------------------------------------
+Thu Sep 29 10:51:56 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.3.0
+  * The "Sims1" class has been redesigned and improved to
+    implement a parallel version of the low index congruences
+    algorithm.
+
+-------------------------------------------------------------------
 Thu Sep 22 09:13:45 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.2.3
