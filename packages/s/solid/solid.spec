@@ -17,10 +17,10 @@
 
 
 %define lname   libKF5Solid5
-%define _tar_path 5.98
+%define _tar_path 5.99
 %bcond_without released
 Name:           solid
-Version:        5.98.0
+Version:        5.99.0
 Release:        0
 Summary:        KDE Desktop hardware abstraction
 License:        LGPL-2.1-or-later
@@ -40,6 +40,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt5Concurrent) >= 5.15.0
 BuildRequires:  cmake(Qt5DBus) >= 5.15.0
 BuildRequires:  cmake(Qt5Gui) >= 5.15.0
+BuildRequires:  cmake(Qt5LinguistTools) >= 5.15.0
 BuildRequires:  cmake(Qt5Qml) >= 5.15.0
 BuildRequires:  cmake(Qt5Test) >= 5.15.0
 BuildRequires:  cmake(Qt5Xml) >= 5.15.0
@@ -51,9 +52,6 @@ BuildRequires:  pkgconfig(libplist-2.0)
 BuildRequires:  pkgconfig(libplist)
 %endif
 BuildRequires:  pkgconfig(libudev)
-%if %{with released}
-BuildRequires:  cmake(Qt5LinguistTools) >= 5.15.0
-%endif
 
 %description
 Solid is a device integration framework.  It provides a way of querying and
@@ -113,18 +111,15 @@ Development files.
 
 %install
 %kf5_makeinstall -C build
+
 %fdupes %{buildroot}
 
-%if %{with released}
-%find_lang %{name}5 --with-qt --without-mo
-%endif
+%find_lang solid5 --with-qt --without-mo
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
 
-%if %{with released}
-%files -n %{lname}-lang -f %{name}5.lang
-%endif
+%files -n %{lname}-lang -f solid5.lang
 
 %files -n %{lname}
 %license LICENSES/*
