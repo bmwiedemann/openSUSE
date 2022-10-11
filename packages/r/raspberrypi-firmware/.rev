@@ -760,4 +760,44 @@
     <comment></comment>
     <requestid>987830</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>99652317e756df23830298b93b331054</srcmd5>
+    <version>2022.09.30</version>
+    <time>1665504096</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 2b3cef2f4 (2022-09-30):
+  * firmware: isp: Workaround for very unpleasant artifacts in the
+    sharpening block
+  * firmware: arm_loader: Raise maximum gzipped kernel size
+  * firmware: arm-loader: Indicate tryboot status via /proc/device-tree/chosen/bootloader/tryboot
+  * firmware: arm_loader: Increase TFTP block size to 1468 bytes
+    See: raspberrypi/rpi-eeprom#375
+  * firmware: Add kernel= logging
+  * firmware: camera_auto_detect changes
+    See: #1750
+  * firmware: Fix USB boot
+    See: #1744
+  * firmware: video decode/MJPEG fixes
+    See: http://git/vc4/vc4/-/merge_requests/1548
+  * firmware: power: Restore VEC and PIXEL clocks after HDMI domain power cycle
+    See: raspberrypi/linux#4962
+  * firmware: arm_loader: Never set warranty bit
+    See: #1741
+  * firmware: vcfw: camera_subsystem: Fix loop counter for powering up devices
+    See: https://forums.raspberrypi.com/viewtopic.php?t=338917
+  * firmware: ldconfig: Add [cm4s] conditional
+  * firmware: platform: Set min_frequency for HDMI SM clock on Pi0-3
+  * firmware: power: Fix failover to secondary PMIC interface functions
+    See: https://forums.raspberrypi.com/viewtopic.php?t=338429
+  * firmware: arm_loader: Correct GPIO expander initial state via SET_GPIO_CONFIG
+    See: raspberrypi/linux#5107
+  * firmware: Disable BT flow control pins for Pi3 rev1.3
+  * firmware: arm_loader: initramfs over NVME fix
+    See: #1731
+  * firmware: arm-dt: Export log buffer addresses to /proc/chosen/log
+  * firmware: arm_loader: Fix GET_CLOCKS to not overwrite client buffer
+    See: #1688
+  * firmware: arm_loader: Declare program_sdhost_use_dma (forwarded request 1007901 from Guillaume_G)</comment>
+    <requestid>1007924</requestid>
+  </revision>
 </revisionlist>
