@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5Su5
-%define _tar_path 5.98
+%define _tar_path 5.99
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kdesu
-Version:        5.98.0
+Version:        5.99.0
 Release:        0
 Summary:        User interface for running shell commands with root privileges
 License:        LGPL-2.1-or-later
@@ -94,9 +94,7 @@ Development files.
 %kf5_makeinstall -C build
 %fdupes %{buildroot}
 
-%if %{with released}
-%find_lang kdesud5 %{name}.lang
-%endif
+%find_lang kdesud5
 
 %post -n %{lname}
 /sbin/ldconfig
@@ -106,9 +104,7 @@ Development files.
 %verifyscript -n %{lname}
 %verify_permissions -e %{_kf5_libexecdir}/kdesud
 
-%if %{with released}
-%files -n %{lname}-lang -f %{name}.lang
-%endif
+%files -n %{lname}-lang -f kdesud5.lang
 
 %files -n %{lname}
 %license LICENSES/*
