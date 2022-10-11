@@ -33,6 +33,8 @@ Patch0:         %{name}.diff
 # See https://github.com/laurikari/tre/pull/19.
 Patch1:         %{name}-chicken.patch
 Patch2:         CVE-2016-8859.patch
+# https://github.com/laurikari/tre/pull/87
+Patch3:         0001-Remove-broken-agrep-test-entry.patch
 BuildRequires:  gettext-devel
 BuildRequires:  glibc-locale
 BuildRequires:  libtool
@@ -81,10 +83,7 @@ approximate patterns as well as block oriented search.
 %lang_package
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1 -b .chicken
-%patch2 -p1
+%autosetup -p1
 ./utils/autogen.sh
 
 %build

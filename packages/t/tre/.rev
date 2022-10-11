@@ -122,4 +122,12 @@
     <comment>- require glibc-locale</comment>
     <requestid>949534</requestid>
   </revision>
+  <revision rev="17" vrev="7">
+    <srcmd5>ba520e804efb34286de8cbd1d21013fd</srcmd5>
+    <version>0.8.0_git201402282055</version>
+    <time>1665503955</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1009785</requestid>
+  </revision>
 </revisionlist>
