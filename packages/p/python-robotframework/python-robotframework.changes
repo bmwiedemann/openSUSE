@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Oct 11 01:55:27 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 5.0.1:
+  * New SKIP status
+  * Criticality has been removed
+  * Native IF/ELSE syntax
+  * Basic IF syntax
+  * Support for nested control structures
+  * Libdoc enhancements
+  * HTML output enhancements
+  * Fix running keywords in `start/end_suite` listener method
+  * Fix skipping tests in suite teardown if suite setup has been failed or skipped
+  * Avoid argument conversion if given argument has one of the accepted types
+  * Fix using using `Union` containing generics as type hint
+  * Regression using `TypedDict` as type hint
+  * Continue-on-failure mode can be controlled using tags
+  * Python 3.10 support
+  * Catching exceptions with `EXCEPT` 
+- Remove pointless BuildRequires on python
+
+-------------------------------------------------------------------
 Wed Oct  7 13:34:10 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - switch to pypi tarball 

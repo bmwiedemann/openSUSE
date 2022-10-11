@@ -1,7 +1,7 @@
 #
 # spec file for package python-robotframework
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,19 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-robotframework
-Version:        3.2.2
+Version:        5.0.1
 Release:        0
 Summary:        Generic test automation framework for acceptance testing and ATDD
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://robotframework.org/
 Source:         https://files.pythonhosted.org/packages/source/r/robotframework/robotframework-%{version}.zip
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  python
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -54,14 +52,14 @@ done
 
 %install
 %python_install
-for p in robot rebot; do
+for p in robot rebot libdoc; do
     %python_clone -a %{buildroot}%{_bindir}/$p
 done
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %post
-%python_install_alternative robot rebot
+%python_install_alternative robot rebot libdoc
 
 %postun
 %python_uninstall_alternative robot
@@ -71,6 +69,7 @@ done
 %doc README.rst
 %python_alternative %{_bindir}/rebot
 %python_alternative %{_bindir}/robot
+%python_alternative %{_bindir}/libdoc
 %{python_sitelib}/*
 
 %changelog

@@ -7,4 +7,28 @@
     <comment></comment>
     <requestid>840060</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d80695d98e0cb809f5e96bf41469d3c6</srcmd5>
+    <version>5.0.1</version>
+    <time>1665504188</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 5.0.1:
+  * New SKIP status
+  * Criticality has been removed
+  * Native IF/ELSE syntax
+  * Basic IF syntax
+  * Support for nested control structures
+  * Libdoc enhancements
+  * HTML output enhancements
+  * Fix running keywords in `start/end_suite` listener method
+  * Fix skipping tests in suite teardown if suite setup has been failed or skipped
+  * Avoid argument conversion if given argument has one of the accepted types
+  * Fix using using `Union` containing generics as type hint
+  * Regression using `TypedDict` as type hint
+  * Continue-on-failure mode can be controlled using tags
+  * Python 3.10 support
+  * Catching exceptions with `EXCEPT` 
+- Remove pointless BuildRequires on python</comment>
+    <requestid>1009641</requestid>
+  </revision>
 </revisionlist>
