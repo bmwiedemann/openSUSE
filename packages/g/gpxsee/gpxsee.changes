@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 10 00:56:00 CEST 2022 - tumic@cbox.cz
+
+- Update to version 11.6
+  * Fixed tracks/routes line style configuration (introduced in
+    11.5).
+  * Fixed KML StyleMap handling.
+
+-------------------------------------------------------------------
 Wed Sep 28 08:55:08 CEST 2022 - tumic@cbox.cz
 
 - Update to version 11.5

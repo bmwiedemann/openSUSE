@@ -1,3 +1,11 @@
+gpxsee (11.6) stable; urgency=low
+
+  * Fixed tracks/routes line style configuration (introduced in
+    11.5).
+  * Fixed KML StyleMap handling.
+
+ -- Martin Tuma <tumic@cbox.cz>  Mon, 10 Oct 2022 01:00:08 +0200
+
 gpxsee (11.5) stable; urgency=low
 
   * Added support for data styles.
