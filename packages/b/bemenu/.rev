@@ -250,4 +250,16 @@
   * Document feedback color argument in man page as well #307</comment>
     <requestid>1008679</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>eca844f1696265bf13bdc63aca2494c3</srcmd5>
+    <version>0.6.13</version>
+    <time>1665504138</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to 0.6.13:
+  * Add support to disable pointer, touch and keyboard events #311
+
+- Update to 0.6.12:
+  * fix dangling pointer state on wayland #310</comment>
+    <requestid>1009679</requestid>
+  </revision>
 </revisionlist>

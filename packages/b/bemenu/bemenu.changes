@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 11 07:56:02 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.13:
+  * Add support to disable pointer, touch and keyboard events #311
+
+-------------------------------------------------------------------
+Mon Oct 10 06:21:48 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.12:
+  * fix dangling pointer state on wayland #310
+
+-------------------------------------------------------------------
 Fri Oct  7 07:25:20 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.6.11:
