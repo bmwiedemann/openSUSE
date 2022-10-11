@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Oct  1 15:56:00 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.99.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.99.0
+- Changes since 5.98.0:
+  * .gitlab-ci.yml: enable static builds
+  * Build test KPackage structure as static plugin
+  * Copy required plasmoid kpackage definition sin autotests to avoid issues when building statically
+  * Fix duplicate symbol in static builds (kde#459099)
+  * Ignore sddmtheme dependencies if we do not have the knsrc file installed (kde#415583)
+  * Remove unneeded known categories
+
+-------------------------------------------------------------------
 Tue Sep  6 07:17:13 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.98.0
