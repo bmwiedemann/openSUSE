@@ -20,7 +20,7 @@
 %define kwin_deco 1
 
 Name:           oxygen5
-Version:        5.25.5
+Version:        5.26.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -30,12 +30,12 @@ Summary:        Oxygen style, KWin decoration and cursors
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/oxygen-%{version}.tar.xz
+Source:         oxygen-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/oxygen-%{version}.tar.xz.sig
+Source1:        oxygen-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-BuildRequires:  extra-cmake-modules >= 0.0.9
+BuildRequires:  extra-cmake-modules >= 5.98.0
 BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(KF5Completion)
 BuildRequires:  cmake(KF5Config)
@@ -53,10 +53,10 @@ BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(KDecoration2) >= %{_plasma5_version}
 %endif
 BuildRequires:  xz
-BuildRequires:  cmake(Qt5DBus) >= 5.4.0
-BuildRequires:  cmake(Qt5Quick) >= 5.4.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.4.0
-BuildRequires:  cmake(Qt5X11Extras) >= 5.4.0
+BuildRequires:  cmake(Qt5DBus) >= 5.15.0
+BuildRequires:  cmake(Qt5Quick)
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5X11Extras)
 BuildRequires:  pkgconfig(xcb)
 %if %kwin_deco
 Requires:       oxygen5-decoration
