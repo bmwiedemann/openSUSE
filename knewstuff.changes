@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Oct  1 15:55:58 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.99.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.99.0
+- Changes since 5.98.0:
+  * [kmoretools] Allow analyzing remote folders with Filelight
+  * Fix search fields resetting text when changing window size (kde#455345)
+  * Consolidate footers
+  * Fix circular visibility condition for upload action
+  * Fix broken layout on dialog footer
+  * Drop unnecessary Qt6Core5Compat dependency
+  * Remove remnants of QTextCodec usage
+
+-------------------------------------------------------------------
 Tue Sep  6 07:17:11 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.98.0
