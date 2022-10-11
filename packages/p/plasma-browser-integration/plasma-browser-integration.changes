@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Oct  6 14:48:48 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.0
+- Changes since 5.25.90:
+  * Install po folder
+
+-------------------------------------------------------------------
+Thu Sep 15 20:47:56 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.90
+- Changes since 5.25.5:
+  * Add missing license file
+  * Ignore browser-hosted web-apps in TaskManager-based browser identification
+  * Sync QT_MIN_VERSION with KF's REQUIRED_QT_VERSION
+  * Check whether removed DOM node was a player
+  * Request passing unit tests on Linux and BSD
+  * Explicitly link against KF5::ConfigCore
+
+-------------------------------------------------------------------
 Tue Sep  6 16:56:47 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.25.5
