@@ -1264,4 +1264,12 @@ This should work now, I hope... ;-) (forwarded request 570364 from wolfi323)</co
     <comment>Plasma 5.25.5 (forwarded request 1001509 from Vogtinator)</comment>
     <requestid>1001633</requestid>
   </revision>
+  <revision rev="152" vrev="7">
+    <srcmd5>d5b2778bb2202673a08c4e8de6b6f22d</srcmd5>
+    <version>84.87~git20220602T134713~22403ba</version>
+    <time>1665504076</time>
+    <user>RBrownFactory</user>
+    <comment>Plasma 5.26.0</comment>
+    <requestid>1009134</requestid>
+  </revision>
 </revisionlist>
