@@ -20,10 +20,10 @@
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
-%define _tar_path 5.98
+%define _tar_path 5.99
 %bcond_without released
 Name:           ktexteditor
-Version:        5.98.0
+Version:        5.99.0
 Release:        0
 Summary:        Embeddable text editor component
 License:        LGPL-2.1-or-later
@@ -88,18 +88,15 @@ This subpackage provides the header files.
 
 %install
 %kf5_makeinstall -C build
+
 %fdupes %{buildroot}
 
-%if %{with released}
-%find_lang %{name}5
-%endif
+%find_lang ktexteditor5
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
-%if %{with released}
-%files -n %{name}-lang -f %{name}5.lang
-%endif
+%files -n %{name}-lang -f ktexteditor5.lang
 
 %files
 %license LICENSES/*
@@ -116,9 +113,9 @@ This subpackage provides the header files.
 %{_kf5_libdir}/libKF5TextEditor.so
 %{_kf5_libdir}/cmake/KF5TextEditor/
 %{_kf5_includedir}/KTextEditor/
-%dir %{_kf5_sharedir}/kdevfiletemplates
-%dir %{_kf5_sharedir}/kdevfiletemplates/templates
-%{_kf5_sharedir}/kdevfiletemplates/templates/ktexteditor-plugin.tar.bz2
+%dir %{_kf5_sharedir}/kdevappwizard
+%dir %{_kf5_sharedir}/kdevappwizard/templates
+%{_kf5_sharedir}/kdevappwizard/templates/ktexteditor-plugin.tar.bz2
 %{_kf5_mkspecsdir}/qt_KTextEditor.pri
 
 %changelog

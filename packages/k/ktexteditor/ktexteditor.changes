@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Oct  1 15:56:06 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.99.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.99.0
+- Changes since 5.98.0:
+  * Macro replaced by factory function
+  * Small refactor to KateViewInternal::word{Prev,Next}
+  * Tests for basic cursor movement between words
+  * Remove shell-like completion handling on TAB
+  * Allow code completion using the tab key
+  * clipboardialog: add placerholder label when empty
+  * Unassign transpose character shortcut
+  * avoid magic to compute line (kde#450817)
+  * Enable indent-on-paste for indenttest
+  * Fix cstyle/indentpaste4 script
+  * Fix cstyle tests: elsething and fork
+  * Disable R indenter debug mode
+  * Don't change indent-on-paste default yet
+  * Add tests and fixes for R indent-on-paste
+  * Add tests and fixes for julia indent-on-paste
+  * Add tests for ruby indent-on-paste
+  * Add tests and fixes for python indent and indent-on-paste
+  * Fix python indent script trigger character detection with empty chars
+  * Disable cstyle.js debug mode
+  * Add tests and fixes for cstyle indent and indent-on-paste
+  * Enable 'indent text on paste' by default
+  * Normalize signatures in mainwindow.cpp
+  * Plugin template: fix install location
+
+-------------------------------------------------------------------
 Tue Sep  6 07:17:19 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.98.0
