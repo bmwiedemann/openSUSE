@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20221008" schemaversion="4.1">
+<image name="OBS__MicroOS___20221010" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20221008</productvar>
+      <productvar name="VERSION">20221010</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20221008,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20221010,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20221008/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20221010/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -529,6 +529,7 @@
       <repopackage name="gtk2-branding-openSUSE"/>
       <repopackage name="gtk2-data"/>
       <repopackage name="gtk2-engine-hcengine" arch="x86_64"/>
+      <repopackage name="gtk2-engine-murrine" arch="x86_64"/>
       <repopackage name="gtk2-immodule-amharic"/>
       <repopackage name="gtk2-immodule-inuktitut"/>
       <repopackage name="gtk2-immodule-thai"/>
@@ -538,6 +539,7 @@
       <repopackage name="gtk2-lang"/>
       <repopackage name="gtk2-metatheme-adwaita"/>
       <repopackage name="gtk2-metatheme-breeze" arch="x86_64"/>
+      <repopackage name="gtk2-metatheme-greybird-geeko" arch="x86_64"/>
       <repopackage name="gtk2-theming-engine-adwaita"/>
       <repopackage name="gtk2-tools"/>
       <repopackage name="gtk3-branding-openSUSE"/>
@@ -551,10 +553,12 @@
       <repopackage name="gtk3-lang"/>
       <repopackage name="gtk3-metatheme-adwaita"/>
       <repopackage name="gtk3-metatheme-breeze" arch="x86_64"/>
+      <repopackage name="gtk3-metatheme-greybird-geeko" arch="x86_64"/>
       <repopackage name="gtk3-schema"/>
       <repopackage name="gtk3-tools"/>
       <repopackage name="gtk4-branding-openSUSE"/>
       <repopackage name="gtk4-lang"/>
+      <repopackage name="gtk4-metatheme-greybird-geeko" arch="x86_64"/>
       <repopackage name="gtk4-schema"/>
       <repopackage name="gtk4-tools"/>
       <repopackage name="gtkiterm"/>
@@ -634,6 +638,7 @@
       <repopackage name="ipa-pmincho-fonts"/>
       <repopackage name="ipa-uigothic-fonts"/>
       <repopackage name="iproute2"/>
+      <repopackage name="iproute2-bash-completion" arch="x86_64"/>
       <repopackage name="iptables" arch="x86_64"/>
       <repopackage name="iputils"/>
       <repopackage name="irqbalance" arch="x86_64"/>
@@ -1345,6 +1350,7 @@
       <repopackage name="libldap2"/>
       <repopackage name="libldapcpp0" arch="x86_64"/>
       <repopackage name="libldb2"/>
+      <repopackage name="liblightdm-gobject-1-0" arch="x86_64"/>
       <repopackage name="liblilv-0-0"/>
       <repopackage name="liblldp_clif1" arch="x86_64"/>
       <repopackage name="libLLVM15"/>
@@ -1893,6 +1899,11 @@
       <repopackage name="libZXing1"/>
       <repopackage name="libzypp" arch="x86_64"/>
       <repopackage name="libzypp-plugin-appdata" arch="x86_64"/>
+      <repopackage name="lightdm" arch="x86_64"/>
+      <repopackage name="lightdm-gtk-greeter" arch="x86_64"/>
+      <repopackage name="lightdm-gtk-greeter-branding-openSUSE" arch="x86_64"/>
+      <repopackage name="lightdm-gtk-greeter-lang" arch="x86_64"/>
+      <repopackage name="lightdm-lang" arch="x86_64"/>
       <repopackage name="lockdev"/>
       <repopackage name="login_defs"/>
       <repopackage name="logrotate"/>
@@ -1939,6 +1950,7 @@
       <repopackage name="metamail" arch="x86_64"/>
       <repopackage name="metatheme-adwaita-common"/>
       <repopackage name="metatheme-breeze-common" arch="x86_64"/>
+      <repopackage name="metatheme-greybird-geeko-common" arch="x86_64"/>
       <repopackage name="mgopen-fonts"/>
       <repopackage name="microdnf" arch="x86_64"/>
       <repopackage name="MicroOS-release"/>
@@ -2563,7 +2575,6 @@
       <repopackage name="timezone"/>
       <repopackage name="timezone-java"/>
       <repopackage name="tnftp" arch="x86_64"/>
-      <repopackage name="toolbox" arch="x86_64"/>
       <repopackage name="totem-pl-parser" arch="x86_64"/>
       <repopackage name="totem-pl-parser-lang" arch="x86_64"/>
       <repopackage name="tpm2-0-tss" arch="x86_64"/>
