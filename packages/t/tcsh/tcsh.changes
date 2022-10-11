@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct  4 06:48:42 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Replace tcsh-6.24.01-bash52.dif with upstream fix
+
+-------------------------------------------------------------------
+Fri Sep 30 08:58:48 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch tcsh-6.24.01-bash52.dif
+  * Avoid to become last command in sub shell list as bash-5.2
+    now uses execve within sub shell which decreases SHLVL 
+
+-------------------------------------------------------------------
 Fri May 13 08:11:25 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Update to tcsh 6.24.01

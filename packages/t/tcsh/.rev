@@ -898,4 +898,12 @@
 - Remove tcsh-6.24.00-which.dif now upstream</comment>
     <requestid>976987</requestid>
   </revision>
+  <revision rev="83" vrev="2">
+    <srcmd5>0cec435fcadf36ffe273b00fa9c01740</srcmd5>
+    <version>6.24.01</version>
+    <time>1665503951</time>
+    <user>RBrownFactory</user>
+    <comment>- Replace tcsh-6.24.01-bash52.dif with upstream fix (forwarded request 1007809 from favogt)</comment>
+    <requestid>1007813</requestid>
+  </revision>
 </revisionlist>

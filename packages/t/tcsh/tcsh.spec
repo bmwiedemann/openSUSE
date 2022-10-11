@@ -35,6 +35,7 @@ Patch4:         tcsh-6.18.03-colorls.dif
 Patch5:         tcsh-6.17.06-dspmbyte.dif
 Patch6:         tcsh-6.18.03-catalogs.dif
 Patch8:         tcsh-6.22.02-local-dotlock.dif
+Patch9:         tcsh-6.24.01-bash52.dif
 BuildRequires:  autoconf
 BuildRequires:  fdupes
 BuildRequires:  ncurses-devel
@@ -61,6 +62,7 @@ correction, a history mechanism, job control, and a C-like syntax.
 %patch5      -b .dspmbyte
 %patch6      -b .catalogs
 %patch8 -p 0 -b .dotlock
+%patch9 -p 1 -b .bash52
 %patch0      -b .0
 
 %build
