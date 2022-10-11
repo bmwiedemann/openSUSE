@@ -1,7 +1,7 @@
 #
 # spec file for package omemo-utils
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ License:        MIT
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://github.com/wstrm/omemo-utils
 Source:         https://github.com/wstrm/omemo-utils/archive/v%{version}.tar.gz
+Patch0:         https://github.com/wstrm/omemo-utils/commit/866db1fc3577c93e1be44d558feca5b5a679d33c.patch#/omemo-utils-1.0.0-man.patch
 BuildRequires:  libcurl-devel
 BuildRequires:  libgcrypt-devel >= 1.7.0
 
@@ -32,6 +33,7 @@ Utilities for OMEMO media sharing.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %make_build PREFIX=%{_prefix}
@@ -41,5 +43,6 @@ Utilities for OMEMO media sharing.
 
 %files
 %{_bindir}/omut
+%{_mandir}/man1/omut.1%{?ext_man}
 
 %changelog
