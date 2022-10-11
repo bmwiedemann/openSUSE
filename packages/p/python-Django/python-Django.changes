@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Oct  4 08:22:42 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to 4.1.2 (bsc#1203793, CVE-2022-41323)
+  + Fixed a regression in Django 4.1 that caused a migration crash on
+    PostgreSQL when adding a model with ExclusionConstraint
+  + Fixed a regression in Django 4.1 that caused aggregation over a
+    queryset that contained an Exists annotation to crash due to too
+    many selected columns
+  + Fixed a bug in Django 4.1 that caused an incorrect validation of
+    CheckConstraint on NULL values
+  + Fixed a regression in Django 4.1 that caused a
+    QuerySet.values()/values_list() crash on ArrayAgg() and JSONBAgg()
+  + Fixed a bug in Django 4.1 that caused
+    ModelAdmin.autocomplete_fields to be incorrectly selected after
+    adding/changing related instances via popups
+  + Fixed a regression in Django 4.1 where the app registry was not
+    populated when running parallel tests with the multiprocessing
+    start method spawn
+  + Fixed a regression in Django 4.1 where the --debug-mode argument
+    to test did not work when running parallel tests with the
+    multiprocessing start method spawn
+  + Fixed a regression in Django 4.1 that didn’t alter a sequence type
+    when altering type of pre-Django 4.1 serial columns on PostgreSQL
+  + Fixed a regression in Django 4.1 that caused a crash for View
+    subclasses with asynchronous handlers when handling non-allowed
+    HTTP methods
+  + Reverted caching related managers for ForeignKey, ManyToManyField,
+    and GenericRelation that caused the incorrect refreshing of
+    related objects
+  + Relaxed the system check added in Django 4.1 for the same name
+    used for multiple template tag modules to a warning
+
+-------------------------------------------------------------------
 Mon Sep  5 11:14:19 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to 4.1.1
