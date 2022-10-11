@@ -20,41 +20,42 @@
 
 %bcond_without released
 Name:           kscreenlocker
-Version:        5.25.5
+Version:        5.26.0
 Release:        0
 Summary:        Library and components for secure lock screen architecture
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://projects.kde.org/kscreenlocker
-Source:         https://download.kde.org/stable/plasma/%{version}/kscreenlocker-%{version}.tar.xz
+Source:         kscreenlocker-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kscreenlocker-%{version}.tar.xz.sig
+Source1:        kscreenlocker-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 Source3:        kde
 BuildRequires:  cmake >= 3.16
-BuildRequires:  extra-cmake-modules >= 1.8.0
+BuildRequires:  extra-cmake-modules >= 5.98.0
 BuildRequires:  kf5-filesystem
 BuildRequires:  pam-devel
-BuildRequires:  cmake(KF5Config) >= 5.15.0
-BuildRequires:  cmake(KF5Crash) >= 5.15.0
-BuildRequires:  cmake(KF5Declarative) >= 5.15.0
-BuildRequires:  cmake(KF5GlobalAccel) >= 5.15.0
-BuildRequires:  cmake(KF5I18n) >= 5.15.0
-BuildRequires:  cmake(KF5IdleTime) >= 5.15.0
-BuildRequires:  cmake(KF5KCMUtils) >= 5.15.0
-BuildRequires:  cmake(KF5Notifications) >= 5.15.0
-BuildRequires:  cmake(KF5Solid) >= 5.15.0
-BuildRequires:  cmake(KF5TextWidgets) >= 5.15.0
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5Crash)
+BuildRequires:  cmake(KF5Declarative)
+BuildRequires:  cmake(KF5GlobalAccel)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5IdleTime)
+BuildRequires:  cmake(KF5KCMUtils)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5Notifications)
+BuildRequires:  cmake(KF5Solid)
+BuildRequires:  cmake(KF5TextWidgets)
 BuildRequires:  cmake(KF5Wayland)
-BuildRequires:  cmake(KF5WindowSystem) >= 5.15.0
-BuildRequires:  cmake(KF5XmlGui) >= 5.15.0
+BuildRequires:  cmake(KF5WindowSystem)
+BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(LayerShellQt)
-BuildRequires:  cmake(Qt5Quick) >= 5.5.0
-BuildRequires:  cmake(Qt5QuickWidgets) >= 5.5.0
-BuildRequires:  cmake(Qt5Test) >= 5.5.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.5.0
-BuildRequires:  cmake(Qt5X11Extras) >= 5.5.0
+BuildRequires:  cmake(Qt5Quick) >= 5.15.0
+BuildRequires:  cmake(Qt5QuickWidgets)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5X11Extras)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-server)
 BuildRequires:  pkgconfig(x11)
@@ -80,8 +81,8 @@ Library and components for secure lock screen architecture.
 Summary:        Library and components for secure lock screen architecture - development files
 Group:          Development/Libraries/C and C++
 Requires:       libKScreenLocker5 = %{version}
-Requires:       cmake(Qt5Core) >= 5.5.0
-Requires:       cmake(Qt5X11Extras) >= 5.5.0
+Requires:       cmake(Qt5Core)
+Requires:       cmake(Qt5X11Extras)
 
 %description devel
 Development files for Library and components for secure lock screen architecture.
