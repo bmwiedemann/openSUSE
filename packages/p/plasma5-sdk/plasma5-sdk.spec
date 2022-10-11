@@ -18,15 +18,15 @@
 
 %bcond_without released
 Name:           plasma5-sdk
-Version:        5.25.5
+Version:        5.26.0
 Release:        0
 Summary:        Plasma SDK
 License:        GPL-2.0-only AND LGPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://cgit.kde.org/plasma-sdk.git
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-sdk-%{version}.tar.xz
+Source:         plasma-sdk-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-sdk-%{version}.tar.xz.sig
+Source1:        plasma-sdk-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  breeze5-icons
@@ -34,34 +34,34 @@ BuildRequires:  extra-cmake-modules >= 1.8.0
 BuildRequires:  kf5-filesystem
 BuildRequires:  xz
 BuildRequires:  cmake(Grantlee5)
-BuildRequires:  cmake(KF5Archive) >= 5.25.0
-BuildRequires:  cmake(KF5Completion) >= 5.25.0
-BuildRequires:  cmake(KF5Config) >= 5.25.0
-BuildRequires:  cmake(KF5ConfigWidgets) >= 5.25.0
-BuildRequires:  cmake(KF5CoreAddons) >= 5.25.0
-BuildRequires:  cmake(KF5DBusAddons) >= 5.25.0
-BuildRequires:  cmake(KF5Declarative) >= 5.25.0
-BuildRequires:  cmake(KF5DocTools) >= 5.25.0
-BuildRequires:  cmake(KF5I18n) >= 5.25.0
-BuildRequires:  cmake(KF5IconThemes) >= 5.25.0
-BuildRequires:  cmake(KF5KIO) >= 5.25.0
+BuildRequires:  cmake(KF5Archive) >= 5.98.0
+BuildRequires:  cmake(KF5Completion)
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5ConfigWidgets)
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5DBusAddons)
+BuildRequires:  cmake(KF5Declarative)
+BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Kirigami2)
-BuildRequires:  cmake(KF5Plasma) >= 5.25.0
-BuildRequires:  cmake(KF5PlasmaQuick) >= 5.25.0
-BuildRequires:  cmake(KF5Service) >= 5.25.0
-BuildRequires:  cmake(KF5TextEditor) >= 5.25.0
-BuildRequires:  cmake(KF5WidgetsAddons) >= 5.25.0
-BuildRequires:  cmake(Qt5Core) >= 5.4.0
-BuildRequires:  cmake(Qt5DBus) >= 5.4.0
-BuildRequires:  cmake(Qt5Gui) >= 5.4.0
-BuildRequires:  cmake(Qt5Qml) >= 5.4.0
-BuildRequires:  cmake(Qt5Quick) >= 5.4.0
-BuildRequires:  cmake(Qt5Svg) >= 5.4.0
-BuildRequires:  cmake(Qt5Test) >= 5.4.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.4.0
-BuildRequires:  cmake(Qt5Xml) >= 5.4.0
+BuildRequires:  cmake(KF5Plasma)
+BuildRequires:  cmake(KF5PlasmaQuick)
+BuildRequires:  cmake(KF5Service)
+BuildRequires:  cmake(KF5TextEditor)
+BuildRequires:  cmake(KF5WidgetsAddons)
+BuildRequires:  cmake(Qt5Core) >= 5.15.0
+BuildRequires:  cmake(Qt5DBus)
+BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5Qml)
+BuildRequires:  cmake(Qt5Quick)
+BuildRequires:  cmake(Qt5Svg)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5Xml)
 Requires:       bash
-Requires:       kirigami2 >= 2.0
+Requires:       kirigami2
 Requires:       plasmaengineexplorer5
 Conflicts:      plasmate
 Recommends:     %{name}-lang
@@ -124,20 +124,18 @@ test Plasma data engines without writing a Plasma applet.
 %{_kf5_sharedir}/plasma/
 %{_kf5_sharedir}/kpackage/
 %{_kf5_plugindir}/
+%{_kf5_applicationsdir}/org.kde.plasma.cuttlefish.desktop
 %{_kf5_applicationsdir}/org.kde.plasma.themeexplorer.desktop
 %{_kf5_applicationsdir}/org.kde.plasma.lookandfeelexplorer.desktop
-%{_kf5_applicationsdir}/org.kde.cuttlefish.desktop
 %{_kf5_applicationsdir}/org.kde.plasmoidviewer.desktop
 %dir %{_kf5_iconsdir}/hicolor/*
 %dir %{_kf5_iconsdir}/hicolor/*/*
 %{_kf5_iconsdir}/*/*/*/*.*
 %{_mandir}/man1/plasmoidviewer.1%{ext_man}
-%{_kf5_appstreamdir}/org.kde.cuttlefish.appdata.xml
 %{_kf5_appstreamdir}/org.kde.plasmoidviewer.appdata.xml
 %{_kf5_appstreamdir}/org.kde.plasma.plasmoidviewershell.appdata.xml
 %{_kf5_appstreamdir}/org.kde.plasma.themeexplorer.appdata.xml
 %{_kf5_appstreamdir}/org.kde.plasma.lookandfeelexplorer.appdata.xml
-%{_kf5_servicesdir}/plasma-package-org.kde.plasma.cuttlefish.desktop
 %{_kf5_servicesdir}/plasma-shell-org.kde.plasma.plasmoidviewershell.desktop
 
 %files -n plasmaengineexplorer5

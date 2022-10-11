@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Oct  6 14:48:45 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.0
+- Changes since 5.25.90:
+  * Install po folder
+  * Set QSurfaceFormat::ResetNotification
+
+-------------------------------------------------------------------
+Thu Sep 15 20:47:32 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.90
+- Changes since 5.25.5:
+  * Port theme explorer away from QQC1
+  * [cuttlefish] Port away from KPackage
+  * Ensure that Cuttlefish's appstream ID matches name of its appdata file
+  * Add FreeBSD Qt6 CI support
+  * Add missing license file
+  * Port away from KPackage related KDeclarative::QmlObject methods
+  * Remove unused entries from kate plugin metadata
+  * KMessageBox::sorry is deprecated in kf5.97
+  * workaround in setting colors
+  * Port lookandfeelexplorer to QQC2
+  * Don't treat strings as sequential containers
+  * Request passing unit tests on Linux and BSD
+  * Modernize AppStream data
+  * plasmoidviewer/shell: Sync to the plasma-desktop code
+  * Add Qt6 Linux CI
+  * Disable Deprecated KF API
+  * engineexplorer: Port away from deprecated  Plasma::PluginLoader API
+  * themeexplorer: Port away from KPluginInfo
+  * lookandfeelexplorer: Add missing KConfigGroup include
+  * Port away from deprecated KDeclarative API
+
+-------------------------------------------------------------------
 Tue Sep  6 16:56:15 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.25.5
