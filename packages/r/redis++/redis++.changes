@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Oct  9 19:36:48 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.3.5:
+  * Ensure running async callback when error happens
+  * Add sentinel support for coroutine interface
+  * Add publish command for async interface
+- includes changes from 1.3.4:
+  * Add async support for subscriber
+  * Add async support with callbacks
+  * Add coroutine support
+
+-------------------------------------------------------------------
 Wed Feb  2 11:22:44 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Have the -devel package conflict with libredis++ < 1.3: newly,

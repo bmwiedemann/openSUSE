@@ -18,7 +18,7 @@
 
 %define sover 1
 Name:           redis++
-Version:        1.3.3
+Version:        1.3.5
 Release:        0
 Summary:        C++ client for Redis
 License:        Apache-2.0
