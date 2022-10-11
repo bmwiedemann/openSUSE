@@ -19,14 +19,14 @@
 %global __requires_exclude qmlimport\\(org\\.kde\\.kcmutils\\.private.*\\)
 
 %define lname   libKF5KCMUtils5
-%define _tar_path 5.98
+%define _tar_path 5.99
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kcmutils
-Version:        5.98.0
+Version:        5.99.0
 Release:        0
 Summary:        Classes to work with KCModules
 License:        LGPL-2.1-or-later
@@ -109,9 +109,7 @@ created with the KConfigWidgets framework. Development files.
 %kf5_makeinstall -C build
 %fdupes %{buildroot}
 
-%if %{with released}
-%find_lang %{name}5
-%endif
+%find_lang kcmutils5
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
@@ -119,9 +117,7 @@ created with the KConfigWidgets framework. Development files.
 %post -n libKF5KCMUtilsCore5 -p /sbin/ldconfig
 %postun -n libKF5KCMUtilsCore5 -p /sbin/ldconfig
 
-%if %{with released}
-%files -n %{lname}-lang -f %{name}5.lang
-%endif
+%files -n %{lname}-lang -f kcmutils5.lang
 
 %files -n %{lname}
 %license LICENSES/*
