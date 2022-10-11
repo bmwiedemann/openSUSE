@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 19 11:16:00 UTC 2022 - Joey Lee <jlee@suse.com>
+
+- Add patches to disable option ROM on sev (bsc#1199156)
+    ovmf-bsc1199156-OvmfPkg-IncompatiblePciDeviceSupportDxe-Ignore-Optio.patch
+
+-------------------------------------------------------------------
 Mon Sep 12 11:10:13 UTC 2022 - Joey Lee <jlee@suse.com>
 
 - Modified ovmf.changes log, using PED-1410 instead of PED-1359 for

@@ -59,6 +59,8 @@ Patch10:        %{name}-Revert-UefiCpuPkg-Replace-Opcode-with-the-correspond.pat
 Patch11:        %{name}-Revert-SourceLevelDebugPkg-Replace-Opcode-with-the-c.patch
 Patch12:        %{name}-Revert-MdePkg-Replace-Opcode-with-the-corresponding-.patch
 Patch13:        %{name}-Revert-MdeModulePkg-Replace-Opcode-with-the-correspo.patch
+# bsc#1199156 OVMF exposed Invalid MMIO opcode (F6) error when enabled sev and sev-es
+Patch14:        %{name}-bsc1199156-OvmfPkg-IncompatiblePciDeviceSupportDxe-Ignore-Optio.patch
 BuildRequires:  bc
 BuildRequires:  cross-arm-binutils
 BuildRequires:  cross-arm-gcc%{gcc_version}
@@ -183,6 +185,7 @@ rm -rf $PKG_TO_REMOVE
 %patch12 -p1
 %patch13 -p1
 %endif
+%patch14 -p1
 
 # add openssl
 pushd CryptoPkg/Library/OpensslLib/openssl
