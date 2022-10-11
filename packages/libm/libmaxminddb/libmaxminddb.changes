@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Oct  1 08:04:49 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- libmaxminddb 1.7.1:
+  * FD_CLOEXEC is now set on platforms that do not support O_CLOEXEC
+  * File size check now correctly compares the size to SSIZE_MAX
+  * developer visible changes
+
+-------------------------------------------------------------------
 Fri Apr 30 09:15:18 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - libmaxminddb 1.6.0:
