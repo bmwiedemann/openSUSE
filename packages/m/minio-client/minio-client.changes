@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Oct 10 06:16:28 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20221009T211059Z:
+  * feat: Introduce 'mc batch' command (#4225)
+  * Support `--dev` flag in license info|update (#4281)
+  * Keep help output after quitting (#4289)
+  * Replace 'policy' with 'anonymous' in readme (#4287)
+  * Show airgapped registration link in different color (#4282)
+
+-------------------------------------------------------------------
+Mon Oct 10 06:12:07 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20221006T012006Z:
+  * upgrade pkg and madmin-go deps
+  * Upgrade minio/pkg dependency (#4280)
+  * fix: updateURL when customURL is not passed (#4279)
+  * upgrade minio/pkg v1.4.3
+
+-------------------------------------------------------------------
 Tue Oct 04 08:26:27 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 20221001T075614Z:
