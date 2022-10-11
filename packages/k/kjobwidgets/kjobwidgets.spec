@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5JobWidgets5
-%define _tar_path 5.98
+%define _tar_path 5.99
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kjobwidgets
-Version:        5.98.0
+Version:        5.99.0
 Release:        0
 Summary:        Widgets for showing progress of asynchronous jobs
 License:        LGPL-2.1-or-later
@@ -42,13 +42,11 @@ BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5CoreAddons) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(KF5WidgetsAddons) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(Qt5DBus) >= 5.15.0
+BuildRequires:  cmake(Qt5LinguistTools) >= 5.15.0
 BuildRequires:  cmake(Qt5Test) >= 5.15.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.15.0
 BuildRequires:  cmake(Qt5X11Extras) >= 5.15.0
 BuildRequires:  pkgconfig(x11)
-%if %{with released}
-BuildRequires:  cmake(Qt5LinguistTools) >= 5.15.0
-%endif
 
 %description
 KJobWIdgets provides widgets for showing progress of asynchronous jobs.
@@ -85,16 +83,12 @@ Development files.
 %kf5_makeinstall -C build
 %fdupes %{buildroot}
 
-%if %{with released}
-%find_lang %{name}5 --with-qt --without-mo
-%endif
+%find_lang kjobwidgets5 --with-qt --without-mo
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
 
-%if %{with released}
-%files -n %{lname}-lang -f %{name}5.lang
-%endif
+%files -n %{lname}-lang -f kjobwidgets5.lang
 
 %files -n %{lname}
 %license LICENSES/*
