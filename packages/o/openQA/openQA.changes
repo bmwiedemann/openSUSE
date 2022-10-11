@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Oct 07 13:36:51 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1665149803.0112fa5:
+  * Clean stale lockfiles when fetching needles
+  * Dependency cron 2022-10-06
+  * t: Improve scope of daemon variable in 25-cache-service.t
+  * t: Correct naming "start_servers" in 25-cache-service.t
+  * t: Fix sporadic failure in 25-cache-service
+  * t: Use signatures in 24-worker-engine.t
+  * t: Use signatures in 25-cache-service.t
+  * Use signatures in OpenQA::WebAPI::Controller::Admin
+  * Use the workers count from Minion 10.25 to make monitoring more reliable
+  * Reduce two verbose log messages to trace level
+  * Use signatures in Schema::ResultSet::Screenshots
+
+-------------------------------------------------------------------
 Mon Oct 03 02:57:04 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1664678755.af47120:
