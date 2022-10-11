@@ -1,7 +1,7 @@
 #
 # spec file for package ibmswtpm2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,25 +17,22 @@
 
 
 %define suite ibmtss
-
 %ifarch    ppc ppc64 s390 s390x
 %define extra_ccflags -DBIG_ENDIAN_TPM=1
 %else
 %define extra_ccflags ""
 %endif
-
 Name:           ibmswtpm2
-Version:        1637
+Version:        1682
 Release:        0
 Summary:        IBM's Software TPM 2.0
 License:        BSD-3-Clause
 Group:          Development/Tools/Other
 URL:            https://sourceforge.net/projects/ibmswtpm2
 Source:         https://sourceforge.net/projects/ibmswtpm2/files/ibmtpm%{version}.tar.gz
-Patch:          makefile.patch
+Patch0:         makefile.patch
 Patch1:         ibmswtpm2-TcpServerPosix-Fix-use-of-uninitialized-value.patch
 Patch2:         ibmswtpm2-NVDynamic-Fix-use-of-uninitialized-value.patch
-Patch3:         ibmswtpm2-fix-ppc32.patch
 BuildRequires:  libopenssl-devel >= 1.0
 
 %description

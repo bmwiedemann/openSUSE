@@ -1,6 +1,8 @@
---- ibmswtpm2-1637.orig/src/makefile	2019-12-19 23:35:43.000000000 +0100
-+++ ibmswtpm2-1637/src/makefile	2020-08-17 18:56:34.607550789 +0200
-@@ -40,10 +40,10 @@
+Index: ibmswtpm2-1682/src/makefile
+===================================================================
+--- ibmswtpm2-1682.orig/src/makefile
++++ ibmswtpm2-1682/src/makefile
+@@ -40,11 +40,11 @@
  
  CC = /usr/bin/gcc
  
@@ -8,13 +10,14 @@
 +CCFLAGS += -fno-strict-aliasing -fno-aggressive-loop-optimizations -Wno-unused-result \
  	-Wmissing-declarations -Wmissing-prototypes -Wnested-externs \
 -	-Werror -Wsign-compare \
--	 -c -ggdb -O0 			\
 +	-Werror -Wsign-compare -Wno-unused-value -Wno-aggressive-loop-optimizations \
-+	 -c -ggdb			\
+ 	-Wno-deprecated-declarations	\
+-	 -c -ggdb -O0 			\
++	 -c -ggdb 			\
  	-DTPM_POSIX			\
  	-D_POSIX_			\
  	-DTPM_NUVOTON
-@@ -54,7 +54,7 @@
+@@ -55,7 +55,7 @@ CCFLAGS = -Wall  			\
  #	--coverage			\
  #	-fprofile-arcs -ftest-coverage
  

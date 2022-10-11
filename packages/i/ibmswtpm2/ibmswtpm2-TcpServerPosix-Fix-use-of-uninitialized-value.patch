@@ -11,13 +11,13 @@ Signed-off-by: Michal Suchanek <msuchanek@suse.de>
  src/TcpServerPosix.c | 3 ++-
  1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/src/TcpServerPosix.c b/src/TcpServerPosix.c
-index 20fcb29352a2..5bcc47aaeac7 100644
---- a/src/TcpServerPosix.c
-+++ b/src/TcpServerPosix.c
-@@ -278,7 +278,8 @@ PlatformServer(
+Index: ibmswtpm2-1682/src/TcpServerPosix.c
+===================================================================
+--- ibmswtpm2-1682.orig/src/TcpServerPosix.c
++++ ibmswtpm2-1682/src/TcpServerPosix.c
+@@ -264,7 +264,8 @@ PlatformServer(
  		      {
- 			  UINT32 actHandle;
+ 			  uint32_t actHandle;
  			  ok = ReadUINT32(s, &actHandle);
 -			  WriteUINT32(s, _rpc__ACT_GetSignaled(actHandle));
 +			  if(ok)
@@ -25,6 +25,3 @@ index 20fcb29352a2..5bcc47aaeac7 100644
  			  break;
  		      }
  		  default:
--- 
-2.26.2
-
