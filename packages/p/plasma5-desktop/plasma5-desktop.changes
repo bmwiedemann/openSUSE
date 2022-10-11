@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Thu Oct  6 14:48:44 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.0
+- Changes since 5.25.90:
+  * panel: Raise BusyIndicator above everything else
+  * [kcms/recentFiles] Fix translation catalog name
+  * Install po folder
+  * applets/kicker: in Dashboard representation, allow two lines for application name (kde#362986)
+  * kcms/landingpage: Use global themes' real names in quick chooser (kde#459367)
+  * applets/digital-clock: migrate font settings (kde#459372)
+  * Use relayout locking (kde#413645)
+  * kcms/landingpage: hide "Most Used" section when it's empty
+  * applets/kickoff: Bring back Ctrl+Tab shortcut to switch tabs (kde#440307)
+  * containments/panel: check null configOverlay
+  * containments/panel: respect `Plasmoid.immutable`
+  * containments/panel: make panel load slightly faster
+  * applets/kicker: Hide result columns when it contains no results (kde#444113)
+  * applets/kickoff: fix crash when dragging items not in favorite page on Wayland (kde#449426,kde#450215)
+  * applets/kickoff: remove excessive spacing when icon and label are set
+  * applets/kickoff: center align Kickoff icon in vertical panel (kde#459280)
+  * desktoppackage: update global shortcut after receiving `captureFinished` signal
+  * fix: Keyboard layout shortcuts activate wrong language (kde#444569)
+  * folderview: Fix grid overflow property so it properly reports overflow state (kde#419878)
+  * Use improved dominant color as accent color
+
+-------------------------------------------------------------------
+Fri Sep 16 19:58:57 UTC 2022 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Fix s390x build:
+  * Move mouse and touchpad files to the section for non s390x architectures
+
+-------------------------------------------------------------------
+Thu Sep 15 20:47:16 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue Sep  6 16:56:07 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.25.5
