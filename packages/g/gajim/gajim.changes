@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Sat Oct  8 16:00:32 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.5.2:
+  * PEPConfig: Add PEP item view.
+  * Add shortcut to restore chats after closing.
+  * ServerInfo: Add TLS version and cipher suite.
+  * XMLConsole: Apply account filter to all visible stanzas.
+  * MessageRow: Set text direction for RTL text.
+  * AvatarSelector: Add border to mark drag and drop zone.
+  * Drag and drop: Highlight target areas.
+  * GroupChatNickCompletion: Simplify suggestions.
+  * MUC: Add participant menu to avatar.
+  * StartChat: Add timeout when requesting MUC disco info.
+  * StartChat: Pass message body from XMPP URI.
+  * Windows: Ellipsise body text in notifications.
+  * Emojis: Improve shortcode usability.
+  * Avatars: Use PangoCairo for generate_avatar.
+  * Emojis: Extract codepoints for all emoji variants.
+  * Raise nbxmpp version to 3.2.4.
+  * Show account colour bar only when multiple accounts are active.
+  * Remove queue_resize leftover from MessageTextView.
+  * SearchView: Update calendar only if widget is visible.
+  * SearchView: Speed up clearing of search results.
+  * Styling: Parse emojis for Darwin only.
+  * Control: Load events before messages.
+  * Fix disabling accounts while reconnecting.
+  * Use custom icon for "Send Message" action.
+  * MessageActionsBox: Don’t fail if no contact is set while
+    updating file actions.
+  * Scroll to end after sending message.
+  * Update chat actions when account state changes.
+  * StatusIcon: Reset unread state correctly when using Flatpak.
+  * Notifications: Show correct message sender for MUC
+    notifications.
+  * Discovery: Don’t allow to join top level components.
+  * ChatList: Show context menu in correct position.
+  * Styling: Allow dots in local part of email addresses.
+  * ChatList: Set message_id correctly.
+  * Notifications: React to incoming group chat messages.
+  * When removing a chat, clear view only if it's currently loaded.
+  * AccountPage: Disable Ad-Hoc Commands button when offline.
+  * CreateGroupchatWindow: Fix Create button state when switching
+    MUC type.
+  * React correctly to UserAvatar updates.
+  * GajimRemote: Remove not needed shebang.
+
+-------------------------------------------------------------------
 Wed Oct  5 14:46:54 UTC 2022 - Fritz Reichwald <reichwald@b1-systems.de>
 
 - Add 0001-remove-upnp.patch to (temporarily) remove the code in

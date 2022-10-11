@@ -38,7 +38,7 @@
 %define py3pkg_sitelib %{_prefix}/lib/python%{py3ver}/site-packages
 %endif
 Name:           gajim
-Version:        1.5.1
+Version:        1.5.2
 Release:        0
 Summary:        XMPP client written in Python and Gtk
 License:        GPL-3.0-only
@@ -46,7 +46,7 @@ Group:          Productivity/Networking/Talk/Clients
 URL:            https://gajim.org/
 Source:         https://gajim.org/downloads/1.5/gajim-%{version}.tar.gz
 Patch0:         0001-remove-upnp.patch
-BuildRequires:  %{py3pkg}-nbxmpp >= 3.0
+BuildRequires:  %{py3pkg}-nbxmpp >= 3.2.4
 BuildRequires:  %{py3pkg}-precis-i18n >= 1.0.0
 BuildRequires:  %{py3pkg}-setuptools
 BuildRequires:  ca-certificates-mozilla
