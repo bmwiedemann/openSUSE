@@ -104,4 +104,12 @@
     for references and a workaround. (forwarded request 1008777 from mslacken)</comment>
     <requestid>1008781</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>824baccc381ed89aeaf57640ef40fd32</srcmd5>
+    <version>1.1.2</version>
+    <time>1665504200</time>
+    <user>RBrownFactory</user>
+    <comment>addef fuse2fs as recommends and build also squashfuse_ll (forwarded request 1009743 from mslacken)</comment>
+    <requestid>1009744</requestid>
+  </revision>
 </revisionlist>

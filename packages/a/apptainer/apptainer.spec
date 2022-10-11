@@ -61,6 +61,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
 %endif
 Requires:       squashfs
+Recommends:     fuse2fs
 PreReq:         permissions
 
 # there's no golang for ppc64, ppc64le does not have non pie builds
@@ -81,13 +82,18 @@ containers that can be used across host environments.
 %setup -b 10 -n squashfuse-%{squashfuse_version}
 %patch -P 10 -p1
 %endif
-%setup -q -n gopath/%{apptainerpath} -c
+%setup -q -n %{name}-%{version}
 cp %{S:1} %{S:2} %{S:3} .
-mv %{name}-%{version}%{?vers_suffix} %{name}
-cd %{_builddir}/gopath/%{apptainerpath}/apptainer
 
 %build
-cd %{name}
+%if "%{?squashfuse_version}" != ""
+pushd ../squashfuse-%{squashfuse_version}
+./autogen.sh
+FLAGS=-std=c99 ./configure --enable-multithreading
+%make_build squashfuse_ll
+popd
+%endif
+
 # create VERSION file
 echo %version > VERSION
 # Not all of these parameters currently have an effect, but they might be
@@ -109,50 +115,42 @@ tar xzf %{S:9}
         --mandir=%{_mandir} \
         --infodir=%{_infodir} \
         --without-suid
-cd builddir
-make V="" old_config=
+
+%make_build -C builddir V=""
 
 %install
 export GOPATH=$PWD/gopath
 export GOFLAGS=-mod=vendor
 export PATH=$GOPATH/bin:$PATH
-cd %{name}/builddir
 
-make DESTDIR=$RPM_BUILD_ROOT install
-cd ../..
+%make_install -C builddir V=
+
+%if "%{?squashfuse_version}" != ""
+install -m 755 ../squashfuse-%{squashfuse_version}/squashfuse_ll %{buildroot}%{_libexecdir}/%{name}/bin/squashfuse_ll
+%endif
+
 %fdupes apptainer/examples
-mkdir -p .tmp
-for j in LICENSE.md LICENSE; do
-    for i in `find . -name $j`; do
-      k="`basename ${i/%\/$j/-$j}`"
-      if ! [[ $k =~ apptainer-.* ]]; then
-          cp $i .tmp/$k
-      fi
-    done
-done
-
-%fdupes -s .tmp/
-mv .tmp/* .
-rmdir .tmp
 %fdupes -s %buildroot
 
 %files
-%doc apptainer/examples
-%doc apptainer/CONTRIBUTING.md
-%doc apptainer/README.md
-%doc apptainer/CHANGELOG.md
-%doc apptainer/CONTRIBUTORS.md
+%doc examples
+%doc CONTRIBUTING.md
+%doc README.md
+%doc CHANGELOG.md
+%doc CONTRIBUTORS.md
 %doc %{basename:%{S:1}}
 %doc %{basename:%{S:2}}
 %doc %{basename:%{S:3}}
-%license apptainer/LICENSE.md
-%license *-LICENSE.md *-LICENSE
+%license LICENSE.md
+%license LICENSE_THIRD_PARTY.md
+%license LICENSE_DEPENDENCIES.md
 %{_bindir}/*
 %dir %{_libexecdir}/apptainer
 %dir %{_libexecdir}/apptainer/bin
 %dir %{_libexecdir}/apptainer/cni
 %dir %{_libexecdir}/apptainer/lib
 %{_libexecdir}/apptainer/bin/starter
+%{_libexecdir}/apptainer/bin/squashfuse_ll
 %{_libexecdir}/apptainer/lib/offsetpreload.so
 %{_libexecdir}/apptainer/cni/*
 %dir %{_sysconfdir}/apptainer
