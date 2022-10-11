@@ -17,13 +17,13 @@
 
 
 Name:           pam_mount
-%define lname	libcryptmount0
-Version:        2.18
+%define lname   libcryptmount0
+Version:        2.19
 Release:        0
 Summary:        A PAM Module that can Mount Volumes for a User Session
-License:        LGPL-2.1-or-later AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Libraries
-URL:            http://pam-mount.sf.net/
+URL:            https://inai.de/projects/pam_mount/
 
 Source:         http://downloads.sf.net/pam-mount/%name-%version.tar.xz
 Source9:        http://downloads.sf.net/pam-mount/%name-%version.tar.asc
@@ -51,7 +51,7 @@ BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.6
 BuildRequires:  pkgconfig(mount) >= 2.20
 
-Requires(post):	coreutils
+Requires(post): coreutils
 Requires(post): perl-XML-Writer
 Requires(post): perl-XML-Parser
 # -EBUSY bugs fixed (libdevmapper):
@@ -113,7 +113,7 @@ b="%buildroot"
 rm -f $b%{_pam_moduledir}/*.{a,la} "$b/%_libdir"/*.la
 #install the docs
 mkdir -p "$b/%_docdir/%name/examples"
-cp -a doc/bugs.txt doc/news.txt LICENSE* doc/faq.txt doc/todo.txt doc/options.txt "$b/%_docdir/%name/"
+cp -a doc/bugs.txt doc/news.rst LICENSE* doc/faq.txt doc/todo.txt doc/options.txt "$b/%_docdir/%name/"
 install -m 755 %SOURCE1 "$b/%_docdir/%name/examples/"
 install -m 755 %SOURCE2 "$b/%_docdir/%name/examples/"
 %if !0%{?usrmerged}
