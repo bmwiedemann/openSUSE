@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Sep 10 23:43:22 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.9.1
+  * SciPy 1.9.1 is a bug-fix release with no new features compared
+    to 1.9.0. Notably, some important meson build fixes are
+    included.
+- Release 1.9.0
+  * Full changelog at
+    https://docs.scipy.org/doc/scipy/release.1.9.0.html
+- Highlights of the 1.9.0 release:
+  * We have modernized our build system to use meson,
+    substantially improving our build performance, and providing
+    better build-time configuration and cross-compilation support,
+  * Added scipy.optimize.milp, new function for mixed-integer
+    linear programming,
+  * Added scipy.stats.fit for fitting discrete and continuous
+    distributions to data,
+  * Tensor-product spline interpolation modes were added to
+    scipy.interpolate.RegularGridInterpolator,
+  * A new global optimizer (DIviding RECTangles algorithm)
+    scipy.optimize.direct.
+- Switch to meson-python PEP517 build
+
+-------------------------------------------------------------------
 Mon Jul 18 15:23:43 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Keep lowercase egg-info despite setuptools 60+

@@ -17,7 +17,7 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
-%define _ver 1_8_0
+%define _ver 1_9_1
 %define shortname scipy
 %define pname python-%{shortname}
 %define hpc_upcase_trans_hyph() %(echo %{**} | tr [a-z] [A-Z] | tr '-' '_')
@@ -90,27 +90,26 @@ ExclusiveArch:  do_not_build
 
 # TODO explore debundling Boost for standard and hpc
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define         skip_python2 1
-
 Name:           %{package_name}
-Version:        1.8.1
+Version:        1.9.1
 Release:        0
 Summary:        Scientific Tools for Python
 License:        BSD-3-Clause AND LGPL-2.0-or-later AND BSL-1.0
 Group:          Development/Libraries/Python
 URL:            https://www.scipy.org
 Source0:        https://files.pythonhosted.org/packages/source/s/scipy/scipy-%{version}.tar.gz
-Source100:      python-scipy-rpmlintrc
-BuildRequires:  %{python_module Cython >= 0.29.18}
+BuildRequires:  %{python_module Cython >= 0.29.21}
 BuildRequires:  %{python_module devel >= 3.8}
+BuildRequires:  %{python_module meson-python >= 0.8.1}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pybind11 >= 2.4.3}
 BuildRequires:  %{python_module pybind11-devel >= 2.4.3}
-BuildRequires:  %{python_module pythran >= 0.10.0}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pythran >= 0.9.12}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
-BuildRequires:  swig
+BuildRequires:  meson >= 0.62.2
+BuildRequires:  pkg-config
+BuildRequires:  python-rpm-macros >= 20220911
 %if "%{flavor}" == ""
 ExclusiveArch:  do_not_build
 %endif
@@ -120,10 +119,10 @@ BuildRequires:  %{python_module scipy = %{version}}
 BuildRequires:  %{python_module threadpoolctl}
 %endif
 %if %{without hpc}
-BuildRequires:  %{python_module numpy-devel >= 1.17.3}
+BuildRequires:  %{python_module numpy-devel >= 1.18.5}
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
-Requires:       python-numpy >= 1.17.3
+Requires:       python-numpy >= 1.18.5
 Requires:       python-pybind11 >= 2.4.3
  %if %{with openblas}
 BuildRequires:  openblas-devel
@@ -138,7 +137,7 @@ BuildRequires:  libopenblas%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc-devel
 BuildRequires:  lua-lmod
 BuildRequires:  suse-hpc >= 0.3
 Requires:       libopenblas%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc
-Requires:       python-numpy%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc >= 1.17.3
+Requires:       python-numpy%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc >= 1.18.5
 %endif
 %python_subpackages
 
@@ -154,31 +153,31 @@ for numerical integration and optimization.
 %prep
 %autosetup -p1 -n scipy-%{version}
 find . -type f -name "*.py" -exec sed -i "s|#!%{_bindir}/env python||" {} \;
-echo '    ignore:.*The distutils.* is deprecated.*:DeprecationWarning' >> pytest.ini
 
 %ifarch i586
 # Limit double floating point precision for x87, triggered by GCC 12.
 %global optflags %(echo "%{optflags} -ffloat-store")
 %endif
 
+%if !%{with openblas}
+# Edit the options file until we have a way to provide options to meson-python from command line or environment
+# https://github.com/FFY00/meson-python/pull/122
+sed -i "s/option('blas', type: 'string', value: 'openblas'/option('blas', type: 'string', value: 'blas'/" meson_options.txt
+sed -i "s/option('lapack', type: 'string', value: 'openblas'/option('lapack', type: 'string', value: 'lapack'/" meson_options.txt
+%endif
+
 %if !%{with test}
 %build
+# makes sure that the cython and pythran commands from the correct flavor are in PATH
+%python_flavored_alternatives
 %{python_expand #
 %if %{with hpc}
 py_ver=%{$python_version}
 %hpc_setup
 module load $python-numpy
-export CFLAGS="$(pkg-config --cflags openblas) %{optflags} -fno-strict-aliasing" LIBS="$(pkg-config --libs openblas)"
-export OPENBLAS=$OPENBLAS_LIB
-%else
-export CFLAGS="%{optflags} -fno-strict-aliasing"
-export BLAS=%{_libdir}
-export LAPACK=%{_libdir}
- %if %{with openblas}
-export OPENBLAS=%{_libdir}
- %endif
 %endif
-$python setup.py config_fc --fcompiler=gnu95 --noarch build
+export CFLAGS="%{optflags} -fno-strict-aliasing"
+%{$python_pyproject_wheel}
 }
 
 %install
@@ -187,14 +186,12 @@ $python setup.py config_fc --fcompiler=gnu95 --noarch build
 %hpc_setup
 module load $python-numpy
 %endif
-# Note: SciPy 1.9 will switch to Meson and support for numpy.distutils will be removed in 1.10
-$python setup.py install --prefix=%{p_prefix} --root=%{buildroot}
-# Setuptools 60+ unexpectedly writes the egg-info in CamelCase,
-# upstream published dist-info is lowercase; keep lowercase until above mentioned switch happens.
-if [ -d %{buildroot}%{p_python_sitearch_expand}/SciPy-%{version}-py%{$python_bin_suffix}.egg-info ]; then
-  mv %{buildroot}%{p_python_sitearch_expand}/SciPy-%{version}-py%{$python_bin_suffix}.egg-info \
-     %{buildroot}%{p_python_sitearch_expand}/scipy-%{version}-py%{$python_bin_suffix}.egg-info
-fi
+%{$python_pyproject_install --prefix %{p_prefix}}
+# https://github.com/scipy/scipy/issues/16310, delete in order to avoid rpmlint errors
+rm %{buildroot}%{p_python_sitearch_expand}/scipy/linalg/_blas_subroutines.h
+rm %{buildroot}%{p_python_sitearch_expand}/scipy/linalg/_lapack_subroutines.h
+rm %{buildroot}%{p_python_sitearch_expand}/scipy/special/_ufuncs_cxx_defs.h
+rm %{buildroot}%{p_python_sitearch_expand}/scipy/special/_ufuncs_defs.h
 %fdupes %{buildroot}%{p_python_sitearch_expand}
 }
 
@@ -251,14 +248,26 @@ donttest+=" or (TestNoData and test_nodata)"
 donttest+=" or (TestBSR and test_scalar_idx_dtype)"
 # error while getting entropy
 donttest+=" or (test_cont_basic and 500-200-ncf-arg74)"
-# fails on i586
-%ifarch i586
-donttest+=" or (test_linprog and test_bug_6690)"
-donttest+=" or (test_hausdorff and test_brute_force_comparison_forward)"
-donttest+=" or (test_hausdorff and test_2d_data_forward)"
-donttest+=" or (test_iterative and test_x0_equals_Mb)"
+%ifarch %ix86 %arm
+# fails on 32bit
+mark32bit="or xfail_on_32bit"
+# segfault(overflow)
+donttest+=" or (test_fitpack and test_bisplev_integer_overflow)"
+# precision errors
+donttest+=" or (test_peak_finding and TestFindPeaksCwt and test_find_peaks_exact)"
+donttest+=" or (test_peak_finding and TestFindPeaksCwt and test_find_peaks_withnoise)"
+donttest+=" or (test_iterative and test_x0_equals_Mb and bicgstab)"
+donttest+=" or (test_orthogonal and test_roots_gegenbauer)"
+donttest+=" or (test_discrete_basic and test_rv_sample)"
+donttest+=" or (test_distributions and TestLevyStable and nolan_samples and pct_range0-alpha_range0-beta_range0)"
+donttest+=" or (test_distributions and TestLevyStable and test_location_scale and pdf)"
 %endif
-%python_exec runtests.py -vv --no-build -m fast -- -k "not ($donttest)"
+%ifarch %arm
+donttest+=" or (test_cython_api and eval_sh_chebyt)"
+donttest+=" or (test_stats_boost_ufunc)"
+%endif
+mv scipy scipy.dont-import-me
+%pytest_arch --pyargs scipy -m "not (slow or xslow $mark32bit)" -k "not ($donttest)"
 # prevent failing debuginfo extraction because we did not create anything for testing
 touch debugsourcefiles.list
 %endif

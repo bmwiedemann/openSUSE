@@ -1097,4 +1097,12 @@ bsc#1130564: Apply update from the openSUSE package
     <comment></comment>
     <requestid>990111</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>583d54617b5ff86a48b586c3fe7197ba</srcmd5>
+    <version>1.9.1</version>
+    <time>1665504083</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1007747</requestid>
+  </revision>
 </revisionlist>
