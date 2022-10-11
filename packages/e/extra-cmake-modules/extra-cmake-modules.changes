@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Oct  1 15:55:24 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.99.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.99.0
+- Changes since 5.98.0:
+  * Correctly separate multiple interface compile definitions
+  * Also resurrect std::auto_ptr on MSVC when using Exiv2
+  * .gitlab-ci.yml: enable static builds
+  * Add Qt 6 Windows CI
+  * API dox: document KAPPTEMPLATESDIR & KFILETEMPLATESDIR
+  * Make tar'ing the examples code non-verbose
+
+-------------------------------------------------------------------
 Tue Sep  6 07:16:38 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.98.0
