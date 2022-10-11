@@ -19,7 +19,7 @@
 %bcond_without released
 %define lname   libKF5Screen7
 Name:           libkscreen2
-Version:        5.25.5
+Version:        5.26.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -29,18 +29,19 @@ Summary:        KDE's screen management library
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/libkscreen-%{version}.tar.xz
+Source:         libkscreen-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/libkscreen-%{version}.tar.xz.sig
+Source1:        libkscreen-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  cmake >= 3.16
-BuildRequires:  extra-cmake-modules
+BuildRequires:  extra-cmake-modules >= 5.98.0
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
+BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5Wayland)
 BuildRequires:  cmake(PlasmaWaylandProtocols)
-BuildRequires:  cmake(Qt5Core) >= 5.11.0
+BuildRequires:  cmake(Qt5Core) >= 5.15.0
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Test)
@@ -64,7 +65,7 @@ Plugins for dynamic display management in KDE
 Summary:        KDE's screen management library (development package)
 Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
-Requires:       cmake(Qt5Core) >= 5.11.0
+Requires:       cmake(Qt5Core)
 
 %description devel
 Development files belonging to libkscreen, dynamic display management in KDE
