@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Oct  1 15:55:39 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.99.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.99.0
+- Changes since 5.98.0:
+  * KeySequenceItem: Restore the previous value when it fails
+  * Remove project() calls from subdirs
+  * KeySequenceItem: Allow detecting when the key sequence is cleared (kde#458799)
+  * KeySequenceItem: Use the helper's shortcut instead of duplicating them
+  * KeySequenceItem: Disable clear button when there's no key sequence (kde#458798)
+  * KeySequenceItem: Cancel sequence recording when pressing the button
+  * KeySequenceItem: Remove workaround, it was addressed upstream
+  * KeySequenceItem: Show a cancel button when recording (kde#458796)
+  * GridDelegate: show tooltip when `toolTip` is empty and title/caption is elided
+  * AbstractKCM: make footer top padding optional
+  * [kquickaddons/configmodule] Make getters const
+
+-------------------------------------------------------------------
 Tue Sep  6 07:16:52 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.98.0
