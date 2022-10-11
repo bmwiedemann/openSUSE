@@ -18,27 +18,27 @@
 
 %bcond_without released
 Name:           kgamma5
-Version:        5.25.5
+Version:        5.26.0
 Release:        0
 Summary:        Display gamma configuration
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/kgamma5-%{version}.tar.xz
+Source:         kgamma5-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kgamma5-%{version}.tar.xz.sig
+Source1:        kgamma5-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-BuildRequires:  extra-cmake-modules >= 1.0.0
+BuildRequires:  extra-cmake-modules >= 5.98.0
 BuildRequires:  kf5-filesystem
 BuildRequires:  xz
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5ConfigWidgets)
 BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(Qt5Core) >= 5.4.0
-BuildRequires:  cmake(Qt5Gui) >= 5.4.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.4.0
+BuildRequires:  cmake(Qt5Core) >= 5.15.0
+BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xxf86vm)
 %if %{with released}
