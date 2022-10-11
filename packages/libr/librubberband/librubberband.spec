@@ -18,7 +18,7 @@
 
 %define sover   2
 Name:           librubberband
-Version:        3.0.0
+Version:        3.1.0
 Release:        0
 Summary:        Audio time-stretching and pitch-shifting library
 License:        GPL-2.0-or-later
@@ -119,8 +119,8 @@ developing applications that use %{name}.
 
 %install
 %meson_install
-find %{buildroot} -name '*.la' -exec rm -f {} ';'
-rm -rf %{buildroot}%{_libdir}/*.a
+
+rm %{buildroot}%{_libdir}/*.a
 
 %post -n %{name}%{sover} -p /sbin/ldconfig
 %postun -n %{name}%{sover} -p /sbin/ldconfig

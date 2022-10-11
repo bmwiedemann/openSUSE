@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Oct  3 14:45:57 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 3.1.0
+  * Add support for "short window" mode, OptionWindowShort, to
+    the new R3 processing engine.
+  * Implement OptionPitchHighSpeed in the R3 engine.
+  * Add support for the SLEEF library (libsleefdft) for FFTs.
+  * Add support for external Speex library (libspeexdsp) for
+    resampling.
+  * Update the R2 engine so that it always restores vertical phase
+    coherence gradually when returning to a ratio of 1.0 (as R3 also
+    does) rather than waiting for silence or a transient.
+  * Update R3 to properly support all sample rates between 8000 and
+    192000 Hz.
+  * Update command-line utility so as to use the extension of the
+    output filename to determine the file type to write.
+  * Remove support for libresample.
+  * Fix several bugs, including a crash when run with very low
+    sample rates.
+
+-------------------------------------------------------------------
 Wed Aug  3 17:55:40 UTC 2022 - llyyr <llyyr.public@gmail.com>
 
 - Update to version 3.0.0

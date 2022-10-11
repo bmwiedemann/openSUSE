@@ -156,4 +156,12 @@
 - Drop obsoleted patch: rubberband-mk.patch</comment>
     <requestid>993676</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>734018824c583e13deb3502b4b5fcc46</srcmd5>
+    <version>3.1.0</version>
+    <time>1665504100</time>
+    <user>RBrownFactory</user>
+    <comment></comment>
+    <requestid>1007944</requestid>
+  </revision>
 </revisionlist>
