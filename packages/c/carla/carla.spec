@@ -16,8 +16,6 @@
 #
 
 
-%define rev 9249bebbf5a8f2358cb912a5b8c429bc0c5b479b
-
 %if 0%{?suse_version} > 1501
 %bcond_without liblo
 %else
@@ -26,17 +24,15 @@
 
 %define __provides_exclude_from ^%{_libdir}/carla/jack/.*.so.0$
 Name:           carla
-#NOTE: to update this package please change these two version fields in "_service" <param name="revision">v2.1.1</param> and
-#<param name="versionformat">2.1.1</param> to the version that you want and execute "osc service runall"
+#NOTE: to update this package please change these two version fields in "_service" <param name="revision">v2.1.1</param>
+# to the version that you want and execute "osc service runall"
 # It will even fill in the .changes file. Please don't touch the Version: in the spec file, it will be filled automaticaly.
-Version:        2.5.0
+Version:        2.5.1
 Release:        0
 Summary:        An audio plugin host
 License:        BSD-2-Clause AND GPL-2.0-or-later AND BSD-3-Clause
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://kx.studio/Applications:Carla
-#https://github.com/falkTX/Carla/archive/v%%{version}.tar.gz#/
-
 Source0:        %{name}-%{version}.tar.xz
 Source1:        carla-warning
 Source2:        bsd-2-clause.txt
@@ -58,8 +54,9 @@ BuildRequires:  python3-qt5-devel
 BuildRequires:  python3-rdflib
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(alsa)
-BuildRequires:  pkgconfig(fftw3f)
+BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(flac)
+BuildRequires:  pkgconfig(freetype2)
 # for extra samplers support
 BuildRequires:  pkgconfig(fluidsynth)
 BuildRequires:  pkgconfig(gl)
@@ -69,14 +66,14 @@ BuildRequires:  pkgconfig(gtk+-3.0)
 %if %{with liblo}
 BuildRequires:  pkgconfig(liblo)
 %endif
-BuildRequires:  pkgconfig(libprojectM)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(mxml)
-# With sdl enable, carla does not build
-#BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(vorbisenc)
 BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xcursor)
+BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(zlib)
 #Wine
 #!BuildIgnore:  sane-backends-32bit
@@ -85,11 +82,14 @@ BuildRequires:  gcc-32bit
 BuildRequires:  gcc-c++-32bit
 BuildRequires:  glibc-devel-32bit
 BuildRequires:  libX11-devel-32bit
+BuildRequires:  libXcursor-devel-32bit
 BuildRequires:  libXext-devel-32bit
 BuildRequires:  libstdc++-devel-32bit
 %if 0%{?suse_version} >= 1550
 BuildRequires:  mingw32-cross-gcc
 BuildRequires:  mingw32-cross-gcc-c++
+BuildRequires:  mingw64-cross-gcc
+BuildRequires:  mingw64-cross-gcc-c++
 BuildRequires:  wine
 BuildRequires:  wine-devel
 BuildRequires:  wine-devel-32bit
@@ -144,7 +144,6 @@ export CFLAGS="%{optflags}"
 # list build configuration, no need for optflags or -j
 make features
 
-# bulding with high -j numbers often results in build failures, thus we're disabling _smp_flags for now
 make %{_smp_mflags} \
 %ifnarch %{ix86} x86_64
 	BASE_OPTS= \
@@ -159,7 +158,9 @@ export CXXFLAGS=`echo $CXXFLAGS | sed s/\-flto=auto//`
 echo $CFLAGS
 echo $CXXFLAGS
 make --trace win32 CC=i686-w64-mingw32-gcc CXX=i686-w64-mingw32-g++ LIBDIR=%{_libdir} CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="-Wl,--no-insert-timestamp"
+make --trace win64 CC=x86_64-w64-mingw32-gcc CXX=x86_64-w64-mingw32-g++ LIBDIR=%{_libdir} CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="-Wl,--no-insert-timestamp"
 make --trace wine32 LIBDIR=%{_libdir} CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="-L/usr/lib/wine"
+make --trace wine64 LIBDIR=%{_libdir} CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="-L%{_libdir}/wine"
 %endif
 
 %install
@@ -202,9 +203,12 @@ cp %{S:2} .
 %exclude %{_libdir}/carla/carla-bridge-posix32
 %exclude %{_libdir}/carla/carla-discovery-posix32
 %if 0%{?suse_version} >= 1550
-%exclude %{_libdir}/carla/jackbridge-wine32.dll
 %exclude %{_libdir}/carla/carla-bridge-win32.exe
+%exclude %{_libdir}/carla/carla-bridge-win64.exe
 %exclude %{_libdir}/carla/carla-discovery-win32.exe
+%exclude %{_libdir}/carla/carla-discovery-win64.exe
+%exclude %{_libdir}/carla/jackbridge-wine32.dll
+%exclude %{_libdir}/carla/jackbridge-wine64.dll
 %endif
 %dir %{_libdir}/lv2
 %{_libdir}/lv2/carla.lv2
@@ -225,9 +229,12 @@ cat %{_localstatedir}/adm/update-messages/%{name}-warning
 %{_libdir}/carla/carla-bridge-posix32
 %{_libdir}/carla/carla-discovery-posix32
 %if 0%{?suse_version} >= 1550
-%{_libdir}/carla/jackbridge-wine32.dll
 %{_libdir}/carla/carla-bridge-win32.exe
+%{_libdir}/carla/carla-bridge-win64.exe
 %{_libdir}/carla/carla-discovery-win32.exe
+%{_libdir}/carla/carla-discovery-win64.exe
+%{_libdir}/carla/jackbridge-wine32.dll
+%{_libdir}/carla/jackbridge-wine64.dll
 %endif
 
 %files devel

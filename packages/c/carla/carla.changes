@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Oct 10 06:22:28 UTC 2022 - christophe@krop.fr
+
+- Update to version 2.5.1:
+  * Force usage of i686-w64-mingw32 for win32 builds on 64bit systems
+  * Restore positions of external patchbay graph nodes
+  * Adjust for JUCE MIDI API changes, fix external MIDI connections
+  * Correct last commit, ensure ysfx uses generic approach for wasm
+  * Ignore MIDI ports known to cause issues in JUCE engine
+  * Change default driver on windows from DirectSound to Windows Audio
+  * Ignore some compiler warnings from qt side
+  * Fix logic around engine driver listings
+  * Use an outer frame for carla-lv2 outgoing events
+  * Fix a small leak
+  * Fix free/delete[] misusage
+  * Make malloc usage consistent in CarlaString class
+  * Cleanup ysfx setup
+  * Fully remove water::Variant use
+  * Stop using NamedValueSet in AudioProcessorGraph
+  * Do not set scale factor for LV2 plugin UIs on macOS
+  * Bump version to 2.5.1
+  * Fix several race conditions
+  * Use generic implementation for ysfx eel riscv builds
+  * Correct last commit
+  * Alternative approach for systems without MAP_LOCKED (build&runtime)
+  * Math utils performance tweaks
+  * Set X11 utf8 window title for plugin UIs
+  * noop: remove trailing whitespace
+  * Fix build with older SDL2
+  * Fix typo
+  * Fix build with new wine
+  * Make sure SDL is disabled for static plugin target
+  * Add missing file
+  * Update included DPF
+  * Fix not building static binaries on windows (2.5.0 regression)
+  * Fix win32 CI stuff
+  * Make ysfx compatible with FreeBSD
+  * Add #if defined(__FreeBSD__) to avoid #include <alloca.h> on FreeBSD
+  * Try to fix i386 build
+- Enable support for Win64 VST
+- Update build requirements
+
+-------------------------------------------------------------------
 Fri Sep 30 12:38:10 UTC 2022 - ecsos@opensuse.org
 
 - Update to version 2.5.0:
