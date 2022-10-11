@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Thu Oct  6 11:27:00 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch readline82-001 and its signing readline82-001
+  * Starting a readline application with an invalid locale
+    specification for LC_ALL/LANG/LC_CTYPE can cause it crash on
+    the first call to readline.
+
+-------------------------------------------------------------------
+Tue Sep 27 07:25:51 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Update to final readline-8.2
+  r. When replacing a history entry, make sure the existing entry has a non-NULL
+     timestamp before copying it; it may have been added by the application, not
+     the history library.
+
+-------------------------------------------------------------------
+Tue Sep 13 06:49:26 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Update to readline-8.2-rc4
+  m. Readline now checks for changes to locale settings (LC_ALL/LC_CTYPE/LANG)
+     each time it is called, and modifies the appropriate locale-specific display
+     and key binding variables when the locale changes.
+- Port patch readline-8.2.dif
+
+-------------------------------------------------------------------
+Wed Jul 27 12:13:50 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Update to readline-8.2-rc2
+
+-------------------------------------------------------------------
+Wed Jun 22 06:44:02 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- use https:// for source urls  
+- Update to readline-8.2-rc1
+
+-------------------------------------------------------------------
+Thu Apr 28 12:07:32 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Update to readline-8.2-beta
+  a. There is now an HS_HISTORY_VERSION containing the version number of the
+     history library for applications to use.
+  b. History expansion better understands multiple history expansions that may
+     contain strings that would ordinarily inhibit history expansion (e.g.,
+     `abc!$!$').
+  c. There is a new framework for readline timeouts, including new public
+     functions to set timeouts and query how much time is remaining before a
+     timeout hits, and a hook function that can trigger when readline times
+     out. There is a new state value to indicate a timeout.
+  d. Automatically bind termcap key sequences for page-up and page-down to
+     history-search-backward and history-search-forward, respectively.
+  e. There is a new `fetch-history' bindable command that retrieves the history
+     entry corresponding to its numeric argument. Negative arguments count back
+     from the end of the history.
+  f. `vi-undo' is now a bindable command.
+  g. There is a new option: `enable-active-region'. This separates control of
+     the active region and bracketed-paste. It has the same default value as
+     bracketed-paste, and enabling bracketed paste enables the active region.
+     Users can now turn off the active region while leaving bracketed paste
+     enabled.
+  h. rl_completer_word_break_characters is now `const char *' like
+     rl_basic_word_break_characters.
+  i. Readline looks in $LS_COLORS for a custom filename extension
+     (*.readline-colored-completion-prefix) and uses that as the default color
+     for the common prefix displayed when `colored-completion-prefix' is set.
+  j. Two new bindable string variables: active-region-start-color and
+     active-region-end-color. The first sets the color used to display the
+     active region; the second turns it off. If set, these are used in place
+     of terminal standout mode.
+  k. New readline state (RL_STATE_EOF) and application-visible variable
+     (rl_eof_found) to allow applications to detect when readline reads EOF
+     before calling the deprep-terminal hook.
+  l. There is a new configuration option: --with-shared-termcap-library, which
+     forces linking the shared readline library with the shared termcap (or
+     curses/ncurses/termlib) library so applications don't have to do it.
+- Remove upstream patches and their signatures now obsolete
+  * readline81-001
+  * readline81-001.sig
+  * readline81-002
+  * readline81-002.sig
+- Port patches
+  * readline-5.2-conf.patch
+  * readline-6.2-metamode.patch
+  * readline-6.2-xmalloc.dif
+  * readline-6.3-input.dif
+  * readline-6.3-rltrace.patch
+  * readline-7.0-screen.patch
+- Port patch readline-8.1.dif and rename it to readline-8.2.dif
+
+-------------------------------------------------------------------
 Fri Jan 14 12:03:35 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Add official patch readline81-002 and its signature
@@ -1687,7 +1776,7 @@ Mon Feb 15 17:24:46 CET 2010 - werner@suse.de
     forward all history entries to syslog.
   * A new variable $BASHOPTS to export shell options settable using `shopt' to
     child processes.
-  * There is a new confgure option that forces the extglob option to be
+  * There is a new configure option that forces the extglob option to be
     enabled by default.
   * New variable $BASH_XTRACEFD; when set to an integer bash will write xtrace
     output to that file descriptor.
@@ -1719,7 +1808,7 @@ Mon Feb 15 17:24:46 CET 2010 - werner@suse.de
     consume key sequences generated by keys like Home and End without having
     to bind all keys.
   * New application-settable function: rl_filename_rewrite_hook.  Can be used
-    to rewite or modify filenames read from the file system before they are
+    to rewrite or modify filenames read from the file system before they are
     compared to the word to be completed.
   * New bindable variable: skip-completed-text, active when completing in the
     middle of a word.  If enabled, it means that characters in the completion

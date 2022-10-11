@@ -38,6 +38,6 @@
 +#define xrealloc _rl_xrealloc
 +#define xfree    _rl_xfree
 +
- extern PTR_T xmalloc PARAMS((size_t));
- extern PTR_T xrealloc PARAMS((void *, size_t));
- extern void xfree PARAMS((void *));
+ extern PTR_T xmalloc (size_t);
+ extern PTR_T xrealloc (void *, size_t);
+ extern void xfree (void *);

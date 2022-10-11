@@ -17,24 +17,24 @@
 
 
 %define rl_major 8
+%define rextend %{nil}
+
 Name:           readline
-Version:        8.1
+Version:        8.2
 Release:        0
 Summary:        The readline library
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.gnu.org/software/readline/
 # Git:          http://git.savannah.gnu.org/cgit/bash.git
-Source0:        ftp://ftp.gnu.org/gnu/readline/readline-%{version}.tar.gz
-Source1:        ftp://ftp.gnu.org/gnu/readline/readline-%{version}.tar.gz.sig
+Source0:        https://ftp.gnu.org/gnu/readline/readline-%{version}%{rextend}.tar.gz
+Source1:        https://ftp.gnu.org/gnu/readline/readline-%{version}%{rextend}.tar.gz.sig
 Source2:        baselibs.conf
 Source4:        https://tiswww.case.edu/php/chet/gpgkey.asc#/%{name}.keyring
 # signatures for official patches
-Source100:      readline81-001.sig
-Source101:      readline81-002.sig
 # official patches
-Patch100:       readline81-001
-Patch101:       readline81-002
+Patch101:       readline82-001
+Source101:      readline82-001.sig
 # local patches
 Patch200:       readline-%{version}.dif
 Patch201:       readline-6.3-input.dif
@@ -103,9 +103,8 @@ This package contains the documentation for using the readline library
 as well as programming with the interface of the readline library.
 
 %prep
-%setup -q
+%setup -q -n readline-%{version}%{rextend}
 # official patches
-%patch100 -p0
 %patch101 -p0
 # local patches
 %patch201 -p2 -b .zerotty
@@ -222,6 +221,7 @@ export CC_FOR_BUILD CFLAGS_FOR_BUILD LDFLAGS_FOR_BUILD CFLAGS LDFLAGS CC
 %{_includedir}/readline/
 %{_libdir}/libhistory.so
 %{_libdir}/libreadline.so
+%{_libdir}/pkgconfig/history.pc
 %{_libdir}/pkgconfig/readline.pc
 
 %files devel-static

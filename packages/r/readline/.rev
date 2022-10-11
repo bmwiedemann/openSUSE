@@ -176,4 +176,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>947937</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3c6fdce7501ff26ad10b2d9f42bb6504</srcmd5>
+    <version>8.2</version>
+    <time>1665503952</time>
+    <user>RBrownFactory</user>
+    <comment>- Add patch readline82-001 and its signing readline82-001
+  * Starting a readline application with an invalid locale
+    specification for LC_ALL/LANG/LC_CTYPE can cause it crash on
+    the first call to readline.
+
+- Update to final readline-8.2
+  r. When replacing a history entry, make sure the existing entry has a non-NULL
+     timestamp before copying it; it may have been added by the application, not
+     the history library.
+
+- Update to readline-8.2-rc4
+  m. Readline now checks for changes to locale settings (LC_ALL/LC_CTYPE/LANG)
+     each time it is called, and modifies the appropriate locale-specific display
+     and key binding variables when the locale changes.
+- Port patch readline-8.2.dif
+
+- Update to readline-8.2-rc2
+
+- use https:// for source urls  
+- Update to readline-8.2-rc1
+
+- Update to readline-8.2-beta
+  a. There is now an HS_HISTORY_VERSION containing the version number of the
+     history library for applications to use.
+  b. History expansion better understands multiple history expansions that may
+     contain strings that would ordinarily inhibit history expansion (e.g.,
+     `abc!$!$').
+  c. There is a new framework for readline timeouts, including new public
+     functions to set timeouts and query how much time is remaining before a
+     timeout hits, and a hook function that can trigger when readline times</comment>
+    <requestid>1008385</requestid>
+  </revision>
 </revisionlist>
