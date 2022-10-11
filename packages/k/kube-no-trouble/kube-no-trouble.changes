@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Mon Oct 10 06:11:51 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.6.0:
+  * ci: Fix latest tag and avoid rebuild
+  * dep: Docker bump golang from 1.19.1-alpine3.16 to 1.19.2-alpine3.16
+  * ci: Fix missing build info in docker images
+  * ci: Fix missing build info in docker images
+  * docs: Add Docker section to readme
+  * docs: Improve release note formatting
+  * fix: Full path of the docker registry and path to docker image
+  * feat: Cover deprecated autoscaling/v2beta1 and autoscaling/v2beta2 PI group - HPA
+  * fix: Name of repo now correctly expanded when pushing to docker registry
+  * ci: Notify users of the aarch64 option when installing
+  * fix: Helm - only default to release namespace for namespaced resources
+  * ci: Build and publish docker image
+  * fix: Collect Ingress via v1 API
+  * docs: Update help output in readme to include -O flag
+  * test: Add tests for -O flag
+  * feat: Add -O flag to configure output to file
+  * test: Refactor Main tests to pass arguments directly
+  * feat: Add OutputFile option to config
+  * test: Add tests for text printer
+  * feat: Add output file support to text printer
+  * test: Add tests for JSON printer
+  * feat: Add output file support to JSON printer
+  * feat: Add outputFile support to Printer/commonPrinter
+  * test: Ref TestParsePrinter to test the resp. function
+  * feat: Support for checking additional annotations
+  * dep: Docker bump golang from 1.19.0-alpine3.16 to 1.19.1-alpine3.16
+  * ci: Pre-commit to catch new spelling issues
+  * chore: Spelling fixes
+  * chore: Users can install latest nightly
+  * chore: Test empty output text/json, ensuring json returns empty array and text stdout is empty when no issues are found
+  * test: Reduce test noise level
+  * test: Add tests for snapshot.storage.k8s.io/v1beta1
+  * feat: Add support for detecting snapshot.storage.k8s.io/v1beta1
+  * feat: User agent and dryup tests
+  * docs: Add example of scanning all files in a directory
+  * build: Update to golang 19, go mod tidy too
+  * docs: Update link to blog
+  * ci: Update checkout action to lastest
+  * fix: Arch detection dectection for aarch64
+  * feat: Version flag
+  * chore: Pre-commit fixed versions and remove broken make linter
+  * fix: Resource name can be undefined in some cases
+  * test: Fix review* fixture manifests to contain metadata
+  * test: Fix rules tests to actually evaluate
+  * ci: Update checkout to v2
+  * fix: Fix CronJob rego
+  * dep: Go bump github.com/open-policy-agent/opa from 0.33.1 to 0.34.2
+  * fix: Fix unpopulated discovery client and add test for same
+  * feat: Add support for in-cluster auth
+  * test: Refactor out env variable setup
+  * test: Extract hardcoded fixtures path to const
+
+-------------------------------------------------------------------
 Wed Jan 05 13:21:29 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.5.1:
