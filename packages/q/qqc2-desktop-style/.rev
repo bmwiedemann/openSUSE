@@ -496,4 +496,12 @@ Not installed by default yet as it's currently in beta.</comment>
     <comment>KDE Frameworks 5.98.0 (forwarded request 1001655 from cgiboudeaux)</comment>
     <requestid>1002870</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>b115864e546db67b73830b1875733455</srcmd5>
+    <version>5.99.0</version>
+    <time>1665504039</time>
+    <user>RBrownFactory</user>
+    <comment>KDE Frameworks 5.99 (forwarded request 1008960 from cgiboudeaux)</comment>
+    <requestid>1009039</requestid>
+  </revision>
 </revisionlist>

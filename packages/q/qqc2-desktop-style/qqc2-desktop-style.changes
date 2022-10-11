@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Oct  1 15:56:17 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.99.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.99.0
+- Changes since 5.98.0:
+  * ToolTip: Don't strip ampersands from HTML entities
+  * Grammar & typo in README.md
+  * Also check for controlRoot.size > 0 (kde#458486)
+  * ToolTip: use Text.Wrap, not Text.WordWrap (kde#459331)
+  * ToolButton: Do not layout for the icon when it's not set (kde#459470)
+  * ProgressBar: Add TODO KF6, since we can't remove the workaround now
+  * Add fade in/out animations to ToolTips
+  * SpinBox: Flip left/right padding for styles with indicators on the sides
+  * SpinBox: Avoid explicit horizontalAlignment in TextField for better RTL
+  * SpinBox: Remove assignment which is never read
+  * SpinBox: Reset activeSubControls when neither of indicators are active (kde#459004)
+  * SpinBox: Let hover events propagate through TextField to the control (kde#459004)
+  * SpinBox: Reformat QML for better code style and clarity
+  * SpinBox: AlignLeft by default
+  * SpinBox: Use implicit size based on the max value
+  * SpinBox: move onTextEdited to contentItem, check acceptableInput
+  * SpinBox: update imports
+
+-------------------------------------------------------------------
 Tue Sep  6 07:17:29 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.98.0
