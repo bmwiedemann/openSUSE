@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Tue Oct  4 12:27:58 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- added fix_missing_return.patch:
+  case statement without a default return.
+- drop outdated patch comment
+
+-------------------------------------------------------------------
+Tue Oct  4 11:23:37 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.3
+  see upgrades notes in:
+
+  https://rspamd.com/doc/migration.html#migration-to-rspamd-33
+
+  - [Minor] Fix typo in config documentation in statistic.conf by
+    @kamilsztuke in #4137
+  - New SYSTEM_XXHASH option and zstd MODULES fix by @arkamar in
+    #4138
+  - Migrate ZSTD_reset{C,D}Stream to a new API by @arkamar in #4140
+  - [Fix] Disable IPv6 lookups for Blocklist.de RBL by
+    @twesterhever in #4143
+  - [Fix] Do not exclude authenticated users from URIBL lookups by
+    @twesterhever in #4144
+  - [Enhancement] Adjust scores of Spamhaus SBL hits by
+    @twesterhever in #4142
+  - [Enhancement] Query HELOs, PTRs, and Reply-To's against SURBL
+    and URIBL as well by @twesterhever in #4141
+  - [Test] Allow linters to fail by @moisseev in #4150
+  - [WebUI] Add HTTP (Ajax) request timeout setting by @moisseev in
+    #4151
+  - [Minor] Query EBLs for authenticated users as well by
+    @twesterhever in #4153
+  - [WebUI] Learn a random server of "All SERVERS" by @moisseev in
+    #4160
+  - Rework symcache by @vstakhov in #4130
+  - [Minor] Add scan_time and hostname to metadata_exporter by
+    @lucasRolff in #4166
+  - fix missing preprocessor macro for SSSE3 support by @msuslu in
+    #4168
+  - [Minor] fix lower transformation for utf symbols by @tierpod in
+    #4173
+  - [Enhancement] Add expire to history redis by @vitalvas in #4175
+  - [WebUI] Add option to choose map editor by @moisseev in #4183
+  - [WebUI] Fix privileged access for secure_ip by @moisseev in
+    #4189
+  - [Fix] Upstreams: Don't ignore revive_time config option by
+    @citrin in #4208
+  - [WebUI] Tweak history table layout by @moisseev in #4209
+  - Update rspamd.spec, delete old el6 files by @ghtm2 in #4206
+  - Update rspamd.spec to fix Fedora 36 build by @ghtm2 in #4211
+  - [Minor] rspamc: fix crash on non-string element in messages by
+    @fatalbanana in #4214
+  - [Fix] Empty envelopes should not be emitted as arrays, drop
+    from schema instead by @JasonStephenson in #4216
+  - [Minor] Mimedump improvements by @JasonStephenson in #4222
+  - [Minor] Set diacritics flag for more languages by @fatalbanana
+    in #4233
+  - Add MIME types commonly used for mp3 and wav attachments by
+    @citrin in #4239
+  - [Fix] Skip sending dmarc reports in no-opt mode by @rekup in
+    #4242
+  - Fix: BAD_REP_POLICIES does not trigger for Bayes by @Player701
+    in #4244
+  - [Minor] Remove references to Atom in CONTRIBUTING.md by
+    @fiirhok in #4248
+  - [WebUI] Remove extra To column from filtering by @moisseev in
+    #4249
+  - [WebUI] Hide symbol order toggle in search dropdown by
+    @moisseev in #4250
+  - [WebUI] Hide extra To detail row on small screens by @moisseev
+    in #4254
+  - [WebUI] Migrate to D3 v7 by @moisseev in #4256
+  - [WebUI] Wrap Prism.highlightElement by @moisseev in #4257
+  - milter_headers: Header fields may be inserted at wrong
+    position. by @ikedas in #4259
+  - [WebUI] Put total in the center of pie charts by @moisseev in
+    #4262
+  - [Fix] Avoid overriding IP with Sender IP by @dragoangel in
+    #4268
+  - Allow fuzzy worker to listen on AF_UNIX sockets successfully by
+    @BtbN in #4283 
+
+-------------------------------------------------------------------
 Mon Apr  4 09:18:43 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - pcre2 is required; so removing any conditions around it
