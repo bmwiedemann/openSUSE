@@ -16,4 +16,13 @@
   See https://dino.im/blog/2022/02/dino-0.3-release/</comment>
     <requestid>954076</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>93ef9e92628baebe1b222fd598e04db9</srcmd5>
+    <version>0.3.0</version>
+    <time>1665504217</time>
+    <user>RBrownFactory</user>
+    <comment>- Fix build by using ninja instead of make for building
+  See https://github.com/dino/dino/issues/1281</comment>
+    <requestid>1009801</requestid>
+  </revision>
 </revisionlist>

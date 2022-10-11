@@ -41,6 +41,7 @@ BuildRequires:  gpgme-devel
 %endif
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libnotify-devel
+BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  vala >= 0.30
 BuildRequires:  pkgconfig(gee-0.8) >= 0.10
@@ -70,9 +71,9 @@ Requires:       gstreamer1(element-gtksink)()(64bit)
 Requires:       gstreamer1(element-gtksink)
 %endif
 %if %{with separated_plugins}
-Recommends:     %{name}-plugin-openpgp       = %{version}
-Recommends:     %{name}-plugin-omemo         = %{version}
 Recommends:     %{name}-plugin-http-upload   = %{version}
+Recommends:     %{name}-plugin-omemo         = %{version}
+Recommends:     %{name}-plugin-openpgp       = %{version}
 %else
 Provides:       %{name}-plugin-openpgp       = %{version}
 Obsoletes:      %{name}-plugin-openpgp       < %{version}
@@ -217,6 +218,7 @@ make install DESTDIR="%{buildroot}" V=1
 %endif
 %icon_theme_cache_postun
 %else
+
 %post
 %if ! %{with separated_libs}
 /sbin/ldconfig
@@ -255,6 +257,7 @@ gtk-update-icon-cache --quiet %{_datadir}/icons/hicolor &>/dev/null || :
 %if %{with separated_plugins}
 %files -f dino.lang
 %else
+
 %files -f dino.lang -f dino-omemo.lang -f dino-openpgp.lang
 %endif
 %defattr(-,root,root)
