@@ -41,4 +41,15 @@ without RUNPATH on libc++.so.
   was looking for -linux- in clang-test-xfail-gnuless-triple.patch.</comment>
     <requestid>1005588</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>10d027e8cb922e1a1763d9b20566a976</srcmd5>
+    <version>15.0.2</version>
+    <time>1665504102</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 15.0.2.
+  * This release contains bug-fixes for the LLVM 15.0.0 release.
+    This release is API and ABI compatible with 15.0.0.
+- Rebase llvm-do-not-install-static-libraries.patch.</comment>
+    <requestid>1008060</requestid>
+  </revision>
 </revisionlist>
