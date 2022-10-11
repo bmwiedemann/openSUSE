@@ -21,7 +21,7 @@
 %define plainpython python
 # upper bound is exclusive: min-numpy_ver <= numpy < max_numpy_ver
 %define min_numpy_ver 1.18
-%define max_numpy_ver 1.23
+%define max_numpy_ver 1.24
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -136,8 +136,8 @@ sed 's|^%{buildroot}|%%exclude |' devel-files0-%{$python_bin_suffix}.files > dev
 %check
 %if %{with test}
 # test the installed package, not the source without compiled modules
-mkdir emtpytestdir
-pushd emtpytestdir
+mkdir emptytestdir
+pushd emptytestdir
 %{python_expand # numbatests: check specific tests with `osc build -M test --define="numbatests <testnames>"`
 %{_bindir}/numba-%{$python_bin_suffix} -s
 $python -m numba.runtests -v -b --exclude-tags='long_running' -m %{_smp_build_ncpus} -- %{?!numbatests:numba.tests}%{?numbatests}
@@ -160,7 +160,7 @@ popd
 %{python_sitearch}/numba/
 %{python_sitearch}/numba-%{version}-py*.egg-info
 
-%files %{python_files devel}  -f devel-files-%{python_bin_suffix}.files
+%files %{python_files devel} -f devel-files-%{python_bin_suffix}.files
 %license LICENSE
 %endif
 
