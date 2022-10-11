@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Mon Oct 10 14:04:23 UTC 2022 - Lukas Kucharczyk <lukas.kucharczyk@suse.com>
+
+- Include the license in a different way
+
+-------------------------------------------------------------------
+Mon Oct 10 09:34:12 UTC 2022 - Lukas Kucharczyk <lukas.kucharczyk@suse.com>
+
+- Version 8.92 (October 7, 2022)
+ - Changed: Moved that the APE namespace is being used into CPP files instead of the global header.
+ - Fixed: The Console header was relying upon undefined types, now correctly includes All.h (thanks Valérian Sibille).
+ - Fixed: NoWindows.h now defines TCHAR, LPTSTR, LPCTSTR outside of the APE namespace like on Windows (thanks Valérian Sibille).
+- Version 8.91 (October 7, 2022)
+ - Changed: Worked through the rest of the Clang-Tidy warnings.
+ - Changed: Turned on whole program optimization for the DirectShow filter (already on for everything else).
+ - Fixed: With the non-Windows standard file reader, reads that didn't read any bytes would be reported as successful, causing FFmpeg pipes to hang forever after reaching the end of the input file (thanks Valérian Sibille).
+
+
+-------------------------------------------------------------------
+Thu Oct  6 09:39:12 UTC 2022 - Lukas Kucharczyk <lukas.kucharczyk@suse.com>
+
+- Set license to SUSE-Permissive
+- Add "%debug_package" macro to get rid of rpmlint warnings
+
+-------------------------------------------------------------------
+Wed Oct  5 14:41:45 UTC 2022 - Lukas Kucharczyk <lukas.kucharczyk@suse.com>
+
+- Version 8.90 (September 29, 2022)
+ - Changed: Updated to a new certificate for signing that's good for three more years.
+ - Changed: Use nullptr and override under MSVC.
+ - Changed: Switched the CRC code to use a table defined in the code instead of running code to build the table (makes startup a little cleaner and faster).
+ - Changed: Worked through some more Clang-Tidy warnings.
+ - Changed: When verifying an APL file, it will slow verify in all cases since it's just a small chunk of a big file (instead of checking the big file quick).
+ - Changed: Updated to Visual Studio 17.3.5.
+
