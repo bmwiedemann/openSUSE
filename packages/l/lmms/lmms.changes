@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 11 09:22:42 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to fix build with recent carla version:
+  * lmms-1.2.2-carla_defines.patch
+
+-------------------------------------------------------------------
 Wed May  4 07:20:04 UTC 2022 - Dave Plater <davejplater@gmail.com>
 
 - Disable building carla plugins, lmms no longer builds with the

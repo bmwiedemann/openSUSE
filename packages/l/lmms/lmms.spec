@@ -53,6 +53,8 @@ Patch1:         lmms-1.2.0-crippled_stk.patch
 # PATCH-FIX-UPSTREAM Fix plugin library search path, testing an upstream proposal
 Patch2:         lmms-1.2.0-libdir.patch
 Patch3:         lmms-rpmalloc-fpic.patch
+# PATCH-FIX-UPSTREAM -- Fix build with recent carla releases
+Patch4:         lmms-1.2.2-carla_defines.patch
 BuildRequires:  bash-completion
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
