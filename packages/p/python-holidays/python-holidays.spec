@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-holidays
-Version:        0.15
+Version:        0.16
 Release:        0
 Summary:        Python library for generating holidays on the fly
 License:        MIT
@@ -32,7 +32,6 @@ BuildRequires:  %{python_module pytest}
 #BuildRequires:  %%{python_module lag_baomer}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module testsuite}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -41,7 +40,6 @@ Requires:       python-hijri-converter
 Requires:       python-korean-lunar-calendar
 #Requires:       python-lag_baomer
 Requires:       python-python-dateutil
-Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
 
