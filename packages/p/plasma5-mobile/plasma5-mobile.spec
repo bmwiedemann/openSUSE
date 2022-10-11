@@ -20,11 +20,11 @@
 # MeeGo.QOfono is optional and not packaged yet
 %global __requires_exclude qmlimport\\((org\\.kde\\.phone\\.homescreen|org\\.kde\\.plasma\\.phone\\.taskpanel|MeeGo\\.QOfono).*
 
-%define kf5_version 5.82.0
+%define kf5_version 5.98.0
 
 %bcond_without released
 Name:           plasma5-mobile
-Version:        5.25.5
+Version:        5.26.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.9.3)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -34,9 +34,9 @@ Summary:        Plasma Mobile
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-mobile-%{version}.tar.xz
+Source:         plasma-mobile-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-mobile-%{version}.tar.xz.sig
+Source1:        plasma-mobile-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules
@@ -52,6 +52,7 @@ BuildRequires:  cmake(KF5Plasma) >= %{kf5_version}
 BuildRequires:  cmake(KF5PlasmaQuick) >= %{kf5_version}
 BuildRequires:  cmake(KF5Service) >= %{kf5_version}
 BuildRequires:  cmake(KF5Wayland) >= %{kf5_version}
+BuildRequires:  cmake(KPipeWire)
 BuildRequires:  cmake(KWinDBusInterface)
 BuildRequires:  cmake(LibKWorkspace)
 BuildRequires:  cmake(Qt5Core) >= 5.15.0
@@ -101,12 +102,13 @@ Plasma shell and components targeted for phones.
 %endif
 
   # Wut?
-  sed -i '#touch /tmp/simplelogin_starting#d' %{buildroot}%{_kf5_bindir}/kwinwrapper
+  sed -i '#touch /tmp/simplelogin_starting#d' %{buildroot}%{_kf5_bindir}/startplasmamobile
 
   %fdupes %{buildroot}
 
 %files
 %license LICENSES/*
+%{_kf5_applicationsdir}/kcm_mobileshell.desktop
 %dir %{_kf5_qmldir}/org/
 %dir %{_kf5_qmldir}/org/kde/
 %dir %{_kf5_qmldir}/org/kde/plasma/
@@ -119,7 +121,7 @@ Plasma shell and components targeted for phones.
 %{_kf5_qmldir}/org/kde/plasma/quicksetting/flashlight/
 %{_kf5_qmldir}/org/kde/plasma/quicksetting/screenrotation/
 %{_kf5_qmldir}/org/kde/plasma/quicksetting/screenshot/
-%{_kf5_bindir}/kwinwrapper
+%{_kf5_bindir}/startplasmamobile
 %dir %{_datadir}/wayland-sessions/
 %{_datadir}/wayland-sessions/plasma-mobile.desktop
 %dir %{_kf5_plasmadir}/look-and-feel/
@@ -131,11 +133,13 @@ Plasma shell and components targeted for phones.
 %{_kf5_plasmadir}/plasmoids/org.kde.phone.panel/
 %{_kf5_plasmadir}/plasmoids/org.kde.phone.homescreen/
 %{_kf5_plasmadir}/plasmoids/org.kde.phone.taskpanel/
+%{_kf5_plasmadir}/plasmoids/org.kde.phone.homescreen.halcyon/
 %{_kf5_plasmadir}/quicksettings/org.kde.plasma.quicksetting.airplanemode/
 %{_kf5_plasmadir}/quicksettings/org.kde.plasma.quicksetting.audio/
 %{_kf5_plasmadir}/quicksettings/org.kde.plasma.quicksetting.battery/
 %{_kf5_plasmadir}/quicksettings/org.kde.plasma.quicksetting.bluetooth/
 %{_kf5_plasmadir}/quicksettings/org.kde.plasma.quicksetting.caffeine/
+%{_kf5_plasmadir}/quicksettings/org.kde.plasma.quicksetting.donotdisturb/
 %{_kf5_plasmadir}/quicksettings/org.kde.plasma.quicksetting.flashlight/
 %{_kf5_plasmadir}/quicksettings/org.kde.plasma.quicksetting.keyboardtoggle/
 %{_kf5_plasmadir}/quicksettings/org.kde.plasma.quicksetting.location/
@@ -146,40 +150,43 @@ Plasma shell and components targeted for phones.
 %{_kf5_plasmadir}/quicksettings/org.kde.plasma.quicksetting.screenshot/
 %{_kf5_plasmadir}/quicksettings/org.kde.plasma.quicksetting.settingsapp/
 %{_kf5_plasmadir}/quicksettings/org.kde.plasma.quicksetting.wifi/
+%{_kf5_plasmadir}/quicksettings/org.kde.plasma.quicksetting.record/
 %{_kf5_notifydir}/plasma_phone_components.notifyrc
-%dir %{_kf5_plugindir}/kcms/
 %dir %{_kf5_plugindir}/plasma/
 %dir %{_kf5_plugindir}/plasma/applets/
-%{_kf5_plugindir}/kcms/kcm_mobileshell.so
+%dir %{_kf5_plugindir}/plasma/kcms/
 %{_kf5_plugindir}/plasma/applets/plasma_applet_phonepanel.so
 %{_kf5_plugindir}/plasma/applets/plasma_containment_phone_homescreen.so
 %{_kf5_plugindir}/plasma/applets/plasma_containment_phone_taskpanel.so
+%{_kf5_plugindir}/plasma/applets/plasma_containment_phone_homescreen_halcyon.so
+%{_kf5_plugindir}/plasma/kcms/systemsettings/kcm_mobileshell.so
 %{_kf5_appstreamdir}/org.kde.plasma.phone.appdata.xml
 %{_kf5_appstreamdir}/org.kde.plasma.phoneshell.appdata.xml
+%{_kf5_appstreamdir}/org.kde.plasma.quicksetting.record.appdata.xml
+%{_kf5_appstreamdir}/org.kde.phone.homescreen.appdata.xml
+%{_kf5_appstreamdir}/org.kde.phone.homescreen.halcyon.appdata.xml
+%{_kf5_appstreamdir}/org.kde.phone.panel.appdata.xml
+%{_kf5_appstreamdir}/org.kde.phone.taskpanel.appdata.xml
+%{_kf5_appstreamdir}/org.kde.plasma.quicksetting.airplanemode.appdata.xml
+%{_kf5_appstreamdir}/org.kde.plasma.quicksetting.audio.appdata.xml
+%{_kf5_appstreamdir}/org.kde.plasma.quicksetting.battery.appdata.xml
+%{_kf5_appstreamdir}/org.kde.plasma.quicksetting.bluetooth.appdata.xml
+%{_kf5_appstreamdir}/org.kde.plasma.quicksetting.caffeine.appdata.xml
+%{_kf5_appstreamdir}/org.kde.plasma.quicksetting.donotdisturb.appdata.xml
+%{_kf5_appstreamdir}/org.kde.plasma.quicksetting.flashlight.appdata.xml
+%{_kf5_appstreamdir}/org.kde.plasma.quicksetting.keyboardtoggle.appdata.xml
+%{_kf5_appstreamdir}/org.kde.plasma.quicksetting.location.appdata.xml
+%{_kf5_appstreamdir}/org.kde.plasma.quicksetting.mobiledata.appdata.xml
+%{_kf5_appstreamdir}/org.kde.plasma.quicksetting.nightcolor.appdata.xml
+%{_kf5_appstreamdir}/org.kde.plasma.quicksetting.powermenu.appdata.xml
+%{_kf5_appstreamdir}/org.kde.plasma.quicksetting.screenrotation.appdata.xml
+%{_kf5_appstreamdir}/org.kde.plasma.quicksetting.screenshot.appdata.xml
+%{_kf5_appstreamdir}/org.kde.plasma.quicksetting.settingsapp.appdata.xml
+%{_kf5_appstreamdir}/org.kde.plasma.quicksetting.wifi.appdata.xml
 %dir %{_kf5_sharedir}/kpackage/
 %dir %{_kf5_sharedir}/kpackage/kcms/
 %{_kf5_sharedir}/kpackage/kcms/kcm_mobileshell/
-%{_kf5_servicesdir}/kcm_mobileshell.desktop
-%{_kf5_servicesdir}/plasma-applet-org.kde.phone.homescreen.desktop
-%{_kf5_servicesdir}/plasma-applet-org.kde.phone.panel.desktop
-%{_kf5_servicesdir}/plasma-applet-org.kde.phone.taskpanel.desktop
 %{_kf5_servicesdir}/plasma-applet-org.kde.plasma.phone.desktop
-%{_kf5_servicesdir}/plasma-applet-org.kde.plasma.phoneshell.desktop
-%{_kf5_servicesdir}/plasma-applet-org.kde.plasma.quicksetting.airplanemode.desktop
-%{_kf5_servicesdir}/plasma-applet-org.kde.plasma.quicksetting.audio.desktop
-%{_kf5_servicesdir}/plasma-applet-org.kde.plasma.quicksetting.battery.desktop
-%{_kf5_servicesdir}/plasma-applet-org.kde.plasma.quicksetting.bluetooth.desktop
-%{_kf5_servicesdir}/plasma-applet-org.kde.plasma.quicksetting.caffeine.desktop
-%{_kf5_servicesdir}/plasma-applet-org.kde.plasma.quicksetting.flashlight.desktop
-%{_kf5_servicesdir}/plasma-applet-org.kde.plasma.quicksetting.keyboardtoggle.desktop
-%{_kf5_servicesdir}/plasma-applet-org.kde.plasma.quicksetting.location.desktop
-%{_kf5_servicesdir}/plasma-applet-org.kde.plasma.quicksetting.mobiledata.desktop
-%{_kf5_servicesdir}/plasma-applet-org.kde.plasma.quicksetting.nightcolor.desktop
-%{_kf5_servicesdir}/plasma-applet-org.kde.plasma.quicksetting.powermenu.desktop
-%{_kf5_servicesdir}/plasma-applet-org.kde.plasma.quicksetting.screenrotation.desktop
-%{_kf5_servicesdir}/plasma-applet-org.kde.plasma.quicksetting.screenshot.desktop
-%{_kf5_servicesdir}/plasma-applet-org.kde.plasma.quicksetting.settingsapp.desktop
-%{_kf5_servicesdir}/plasma-applet-org.kde.plasma.quicksetting.wifi.desktop
 
 %if %{with released}
 %files lang -f %{name}.lang

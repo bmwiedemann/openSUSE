@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Oct  6 14:48:45 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.0
+- Changes since 5.25.90:
+  * Remove unneeded stuff from CMake
+  * Install po folder
+  * taskpanel: Fix property bindings such that we ensure we have the last say
+  * navigationpanel: Fix incorrect property name reference
+  * homescreens: only close search widget and action drawer without opening the menu
+  * homescreens: also close the search widget with Meta key
+  * homescreens/halcyon: Change placeholder icon to arrow
+  * quicksettings: Fix scrollview indicators
+  * folio/appdrawer: fix app drawer button behaviour
+  * homescreens/halcyon: add Meta key support
+  * homescreens/halcyon: add showing desktop support
+  * homescreens/folio: fix Meta key support
+  * homescreens/halcyon: Use reuseItems on app list
+
+-------------------------------------------------------------------
+Thu Sep 15 20:47:26 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue Sep  6 16:56:11 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.25.5
