@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct  8 14:46:00 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 3.2.4:
+  * Tasks: Track timeouts within the task.
+  * MUC: Relax definition of MUC config change.
+
+-------------------------------------------------------------------
 Thu Sep 29 17:39:59 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 3.2.3:
