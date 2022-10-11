@@ -999,4 +999,12 @@
     <comment>Plasma 5.25.5 (forwarded request 1001509 from Vogtinator)</comment>
     <requestid>1001612</requestid>
   </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>a5c149ce28b1c7578588203010baed46</srcmd5>
+    <version>5.26.0</version>
+    <time>1665504060</time>
+    <user>RBrownFactory</user>
+    <comment>Plasma 5.26.0</comment>
+    <requestid>1009110</requestid>
+  </revision>
 </revisionlist>

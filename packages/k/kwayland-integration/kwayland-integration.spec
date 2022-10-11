@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kwayland-integration
-Version:        5.25.5
+Version:        5.26.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -28,23 +28,23 @@ Summary:        Integration plugins for various KDE frameworks for wayland windo
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/kwayland-integration-%{version}.tar.xz
+Source:         kwayland-integration-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kwayland-integration-%{version}.tar.xz.sig
+Source1:        kwayland-integration-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  cmake >= 3.16
-BuildRequires:  extra-cmake-modules >= 0.0.11
+BuildRequires:  extra-cmake-modules >= 5.98.0
 BuildRequires:  kf5-filesystem
 BuildRequires:  libQt5PlatformSupport-private-headers-devel
 BuildRequires:  libqt5-qtwayland-private-headers-devel
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(KF5GuiAddons) >= 5.60.0
-BuildRequires:  cmake(KF5IdleTime) >= 5.24.0
-BuildRequires:  cmake(KF5Wayland) >= 5.24.0
-BuildRequires:  cmake(KF5WindowSystem) >= 5.24.0
-BuildRequires:  cmake(Qt5Core) >= 5.4.0
-BuildRequires:  cmake(Qt5Test) >= 5.4.0
+BuildRequires:  cmake(KF5GuiAddons)
+BuildRequires:  cmake(KF5IdleTime)
+BuildRequires:  cmake(KF5Wayland)
+BuildRequires:  cmake(KF5WindowSystem)
+BuildRequires:  cmake(Qt5Core) >= 5.15.0
+BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5WaylandClient)
 BuildRequires:  cmake(Qt5XkbCommonSupport)
 BuildRequires:  pkgconfig(wayland-protocols)
