@@ -19,7 +19,7 @@
 %bcond_without released
 %global systemstatssover 1
 Name:           libksysguard5
-Version:        5.25.5
+Version:        5.26.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -29,17 +29,18 @@ Summary:        Task management and system monitoring library
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/libksysguard-%{version}.tar.xz
+Source:         libksysguard-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/libksysguard-%{version}.tar.xz.sig
+Source1:        libksysguard-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 Source3:        %{name}-rpmlintrc
-BuildRequires:  extra-cmake-modules >= 1.2.0
+BuildRequires:  extra-cmake-modules >= 5.98.0
 BuildRequires:  kf5-filesystem
 BuildRequires:  xz
 %if 0%{?suse_version} <= 1500
 # It does not build with the default compiler (GCC 7) on Leap 15.x
+BuildRequires:  gcc10-PIE
 BuildRequires:  gcc10-c++
 %endif
 BuildRequires:  cmake(KF5Auth)
@@ -148,14 +149,8 @@ QML applications.
 %build
 %if 0%{?suse_version} <= 1500
     export CC=gcc-10 CXX=g++-10
-  # gcc-PIE only sets the default for gcc-7, get cmake to do it for us (boo#1195628)
-  # Set CMAKE_CXX_LINK_PIE_SUPPORTED to work without "check_pie_supported()"...
-  %{cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir} \
-      -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_CXX_LINK_PIE_SUPPORTED=ON}
-%else
-  %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
 %endif
-
+  %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
   %cmake_build
 
 %install
@@ -235,21 +230,10 @@ QML applications.
 %files imports
 %license LICENSES/*
 %dir %{_kf5_qmldir}/org/kde/ksysguard
-%dir %{_kf5_qmldir}/org/kde/ksysguard/faces
-%dir %{_kf5_qmldir}/org/kde/ksysguard/formatter
-%dir %{_kf5_qmldir}/org/kde/ksysguard/process
-%dir %{_kf5_qmldir}/org/kde/ksysguard/sensors
-%{_kf5_qmldir}/org/kde/ksysguard/faces/ExtendedLegend.qml
-%{_kf5_qmldir}/org/kde/ksysguard/faces/SensorRangeSpinBox.qml
-%{_kf5_qmldir}/org/kde/ksysguard/faces/SensorFace.qml
-%{_kf5_qmldir}/org/kde/ksysguard/faces/libFacesPlugin.so
-%{_kf5_qmldir}/org/kde/ksysguard/faces/qmldir
-%{_kf5_qmldir}/org/kde/ksysguard/formatter/libFormatterPlugin.so
-%{_kf5_qmldir}/org/kde/ksysguard/formatter/qmldir
-%{_kf5_qmldir}/org/kde/ksysguard/process/libProcessPlugin.so
-%{_kf5_qmldir}/org/kde/ksysguard/process/qmldir
-%{_kf5_qmldir}/org/kde/ksysguard/sensors/libSensorsPlugin.so
-%{_kf5_qmldir}/org/kde/ksysguard/sensors/qmldir
+%{_kf5_qmldir}/org/kde/ksysguard/faces
+%{_kf5_qmldir}/org/kde/ksysguard/formatter
+%{_kf5_qmldir}/org/kde/ksysguard/process
+%{_kf5_qmldir}/org/kde/ksysguard/sensors
 
 %files devel
 %license LICENSES/*

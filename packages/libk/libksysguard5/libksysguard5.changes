@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Oct  6 14:48:43 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.0
+- Changes since 5.25.90:
+  * Install po folder
+
+-------------------------------------------------------------------
+Thu Sep 15 20:47:00 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.90
+- Changes since 5.25.5:
+  * Make AggregateSensor::SensorIterator satisfy LegacyInputIterator
+  * Add FreeBSD Qt6 CI support
+  * Add missing license files
+  * Remove no longer needed ifdefs
+  * KMessageBox::sorry is deprecated in kf5.97
+  * Actually use ${KF5_MIN_VERSION} when searching for KF5 build dependencies
+  * Add support for an iterator based aggregate function in AggregateSensor
+  * Remove extra ';'
+  * Faces: Add a property to disable editing of labels in Choices
+  * Faces: Add a method to the controller to replace sensors
+  * Keep track of and expose sensors that fail to resolve
+  * Move "Choices" into the Faces QML plugin
+  * Refactor SensorTreeItem::{indexOf,itemAt}
+  * Use std::unique_ptr for storing SensorTreeItem
+  * Sensors: Port SensorTreeModel to std::map so we can use a custom compare (kde#440310)
+  * Use cmakedefine01
+  * Remove some unused preprocessor variables
+  * Add missing QPointer include
+
+-------------------------------------------------------------------
 Tue Sep  6 16:55:57 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.25.5
