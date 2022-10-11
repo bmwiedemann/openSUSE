@@ -286,6 +286,7 @@
     <package name="chrony" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="chrony-pool-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="cifs-utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="circuslinux" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ckermit" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="clamav" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="clang-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
@@ -322,6 +323,7 @@
     <package name="cryptsetup" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="cryptsetup-doc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="cryptsetup-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="csmash" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ctags" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="cups" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="cups-backends" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-printing -->
@@ -902,8 +904,8 @@
     <package name="incidenceeditor" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="incidenceeditor-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="indic-fonts" supportstatus="unsupported"/> <!-- reason: dvd:indic-fonts -->
-    <package name="info" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="info-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="info" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="info-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="initviocons" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="inkscape" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="inkscape-extensions-extra" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
@@ -1538,7 +1540,11 @@
     <package name="libQt5Xml5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libQt5XmlPatterns5" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libQtQuick5" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libSDL-1_2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libSDL2-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libSDL_gfx15" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libSDL_image-1_2-0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libSDL_mixer-1_2-0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libSM6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libSPIRV-Tools-2022_3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
     <package name="libSoundTouch1" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
@@ -1800,7 +1806,7 @@
     <package name="libdrm_nouveau2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libdrm_radeon1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libduktape206" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libdv4" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libdv4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdvbpsi10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
     <package name="libdvdnav4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
     <package name="libdvdread8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2184,6 +2190,10 @@
     <package name="liblangtag1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="liblapack3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblastfm5-1" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="liblavfile-2_2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="liblavjpeg-2_2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="liblavplay-2_2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="liblavrec-2_2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblayout" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="liblcms2-2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libldac2" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
@@ -2239,6 +2249,7 @@
     <package name="libmetalink3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libmetis5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libmicrodns1" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
+    <package name="libmikmod3" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libmilter1_0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libminiupnpc17" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libminizip1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2249,6 +2260,7 @@
     <package name="libmm-glib0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libmng2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libmnl0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libmodplug1" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libmodulemd2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libmount1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libmousepad0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
@@ -2480,7 +2492,7 @@
     <package name="libqt5keychain1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libqt5keychain1-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libquadmath0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libquicktime0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libquicktime0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libquorum5" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libqxp-0_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libraptor2-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2841,7 +2853,7 @@
     <package name="libzebra1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libzhuyin13" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libzimg2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libzio1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="libzio1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libzip5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libzmf-0_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libzmq5" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2942,6 +2954,7 @@
     <package name="milou5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="minicom" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="minicom-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="mjpegtools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="mkfontscale" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="mkisofs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="mlocate" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
@@ -4851,20 +4864,7 @@
   <conditional name="only_i586"/>
   <packagelist relationship="recommends">
     <package name="MozillaFirefox-branding-upstream" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="circuslinux" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="csmash" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="libSDL-1_2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libSDL_gfx15" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libSDL_image-1_2-0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="libSDL_mixer-1_2-0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="liblavfile-2_2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="liblavjpeg-2_2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="liblavplay-2_2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="liblavrec-2_2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libmikmod3" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="libmodplug1" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libpng12-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="mjpegtools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <!-- openafs-client uninstallable: nothing provides kernel-uname-r = 5.19.12-1-default needed by openafs-kmp-default-1.8.8.2~rc1_k5.19.12_1-2.7.i586-->
   </packagelist>
 </group>

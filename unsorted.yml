@@ -1999,7 +1999,6 @@ unsorted:
   - cinnamon-theme-adapta 
   - cinnamon-theme-matcha 
   - cint-devel 
-  - circuslinux: [x86_64] # suggested by dvd:suggested:patterns-kde-kde 
   - citra: [x86_64] 
   - civetweb 
   - civetweb-devel 
@@ -2601,7 +2600,6 @@ unsorted:
   - csi-livenessprobe 
   - csi-node-driver-registrar 
   - csindex 
-  - csmash: [x86_64] # suggested by dvd:suggested:patterns-kde-kde 
   - csmith 
   - csound 
   - csound-devel 
@@ -9481,7 +9479,6 @@ unsorted:
   - libRaTools0 
   - libRecast1 
   - libRivet-3_1_6 
-  - libSDL-1_2-0: [x86_64] 
   - libSDL-1_2-0-32bit: [x86_64] 
   - libSDL2-2_0-0-32bit: [x86_64] 
   - libSDL2_gfx-1_0-0 
@@ -9499,13 +9496,10 @@ unsorted:
   - libSDL_bgi-suse8 
   - libSDL_gfx-devel 
   - libSDL_gfx-devel-32bit: [x86_64] 
-  - libSDL_gfx15: [x86_64] 
   - libSDL_gfx15-32bit: [x86_64] 
-  - libSDL_image-1_2-0: [x86_64] 
   - libSDL_image-1_2-0-32bit: [x86_64] 
   - libSDL_image-devel 
   - libSDL_image-devel-32bit: [x86_64] 
-  - libSDL_mixer-1_2-0: [x86_64] 
   - libSDL_mixer-1_2-0-32bit: [x86_64] 
   - libSDL_mixer-devel 
   - libSDL_mixer-devel-32bit: [x86_64] 
@@ -12084,10 +12078,6 @@ unsorted:
   - liblastfm_fingerprint5-1-32bit: [x86_64] 
   - liblaszip8 
   - liblaszip_api8 
-  - liblavfile-2_2-0: [x86_64] 
-  - liblavjpeg-2_2-0: [x86_64] 
-  - liblavplay-2_2-0: [x86_64] 
-  - liblavrec-2_2-0: [x86_64] 
   - liblayout-javadoc 
   - liblazy-devel 
   - liblazy1 
@@ -12374,7 +12364,6 @@ unsorted:
   - libmicrohttpd-devel 
   - libmicrohttpd12 
   - libmikmod-devel 
-  - libmikmod3: [x86_64] 
   - libmikmod3-32bit: [x86_64] 
   - libmilter-doc 
   - libmimalloc2 
@@ -12420,7 +12409,6 @@ unsorted:
   - libmodi-tools 
   - libmodi1 
   - libmodplug-devel 
-  - libmodplug1: [x86_64] 
   - libmodplug1-32bit: [x86_64] 
   - libmodsecurity3 
   - libmodsecurity3-32bit: [x86_64] 
@@ -16601,7 +16589,6 @@ unsorted:
   - mirror-registry: [x86_64] 
   - mirrormagic 
   - mirrorsorcerer: [x86_64] 
-  - mjpegtools: [x86_64] 
   - mjpg-streamer 
   - mk-configure 
   - mk-configure-doc 

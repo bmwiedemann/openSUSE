@@ -280,7 +280,7 @@
       <repopackage name="chrony"/>
       <repopackage name="chrony-pool-openSUSE"/>
       <repopackage name="cifs-utils"/>
-      <repopackage name="circuslinux" arch="i586,i686"/>
+      <repopackage name="circuslinux"/>
       <repopackage name="ckermit"/>
       <repopackage name="clamav"/>
       <repopackage name="clang-tools"/>
@@ -317,7 +317,7 @@
       <repopackage name="cryptsetup"/>
       <repopackage name="cryptsetup-doc"/>
       <repopackage name="cryptsetup-lang"/>
-      <repopackage name="csmash" arch="i586,i686"/>
+      <repopackage name="csmash"/>
       <repopackage name="ctags"/>
       <repopackage name="cups"/>
       <repopackage name="cups-backends"/>
@@ -2097,10 +2097,10 @@
       <repopackage name="liblangtag1"/>
       <repopackage name="liblapack3"/>
       <repopackage name="liblastfm5-1"/>
-      <repopackage name="liblavfile-2_2-0" arch="i586,i686"/>
-      <repopackage name="liblavjpeg-2_2-0" arch="i586,i686"/>
-      <repopackage name="liblavplay-2_2-0" arch="i586,i686"/>
-      <repopackage name="liblavrec-2_2-0" arch="i586,i686"/>
+      <repopackage name="liblavfile-2_2-0"/>
+      <repopackage name="liblavjpeg-2_2-0"/>
+      <repopackage name="liblavplay-2_2-0"/>
+      <repopackage name="liblavrec-2_2-0"/>
       <repopackage name="liblayout"/>
       <repopackage name="liblcms2-2"/>
       <repopackage name="libldac2"/>
@@ -2160,7 +2160,7 @@
       <repopackage name="libmetalink3"/>
       <repopackage name="libmetis5"/>
       <repopackage name="libmicrodns1"/>
-      <repopackage name="libmikmod3" arch="i586,i686"/>
+      <repopackage name="libmikmod3"/>
       <repopackage name="libmilter1_0"/>
       <repopackage name="libminiupnpc17"/>
       <repopackage name="libminizip1"/>
@@ -2171,7 +2171,7 @@
       <repopackage name="libmm-glib0"/>
       <repopackage name="libmng2"/>
       <repopackage name="libmnl0"/>
-      <repopackage name="libmodplug1" arch="i586,i686"/>
+      <repopackage name="libmodplug1"/>
       <repopackage name="libmodulemd2"/>
       <repopackage name="libmount1"/>
       <repopackage name="libmousepad0"/>
@@ -2517,11 +2517,11 @@
       <repopackage name="libscgcmd1_0"/>
       <repopackage name="libschily2_0"/>
       <repopackage name="libschroedinger-1_0-0"/>
-      <repopackage name="libSDL-1_2-0" arch="i586,i686"/>
+      <repopackage name="libSDL-1_2-0"/>
       <repopackage name="libSDL2-2_0-0"/>
-      <repopackage name="libSDL_gfx15" arch="i586,i686"/>
-      <repopackage name="libSDL_image-1_2-0" arch="i586,i686"/>
-      <repopackage name="libSDL_mixer-1_2-0" arch="i586,i686"/>
+      <repopackage name="libSDL_gfx15"/>
+      <repopackage name="libSDL_image-1_2-0"/>
+      <repopackage name="libSDL_mixer-1_2-0"/>
       <repopackage name="libseccomp2"/>
       <repopackage name="libsecret-1-0"/>
       <repopackage name="libsecret-lang"/>
@@ -2966,7 +2966,7 @@
       <repopackage name="milou5-lang"/>
       <repopackage name="minicom"/>
       <repopackage name="minicom-lang"/>
-      <repopackage name="mjpegtools" arch="i586,i686"/>
+      <repopackage name="mjpegtools"/>
       <repopackage name="mkfontscale"/>
       <repopackage name="mkisofs"/>
       <repopackage name="mlocate"/>
