@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Thu Oct  6 14:48:40 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.0
+- Changes since 5.25.90:
+  * Install po folder
+
+-------------------------------------------------------------------
+Thu Sep 15 20:46:22 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.90
+- Changes since 5.25.5:
+  * Add missing license files and remove unused one
+  * Port away from deprecated KIO code
+  * We depend against qt5.15.2
+  * kstart: Don't print pid of spawned job
+  * Utilize kcmutils_generate_desktop_file cmake method
+  * KMessageBox::sorry is deprecated in kf5.97
+  * Fix DBus name for KPluginMetaData based KCMs (kde#455943)
+  * Request passing unit tests on Linux and BSD
+  * Use cmakedefine01
+  * Add missing include
+- Refresh kdesu-add-some-i18n-love.patch
+
+-------------------------------------------------------------------
 Tue Sep  6 16:55:35 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.25.5
