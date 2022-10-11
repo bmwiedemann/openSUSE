@@ -19,11 +19,11 @@
 # Internal QML imports
 %global __requires_exclude qmlimport\\(org\\.kde\\.kinfocenter.*
 
-%global kf5_version 5.58.0
+%global kf5_version 5.98.0
 
 %bcond_without released
 Name:           kinfocenter5
-Version:        5.25.5
+Version:        5.26.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -33,9 +33,9 @@ Summary:        Utility that provides information about a computer system
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/kinfocenter-%{version}.tar.xz
+Source:         kinfocenter-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kinfocenter-%{version}.tar.xz.sig
+Source1:        kinfocenter-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
@@ -50,6 +50,7 @@ BuildRequires:  cmake(KF5CoreAddons) >= %{kf5_version}
 BuildRequires:  cmake(KF5Declarative) >= %{kf5_version}
 BuildRequires:  cmake(KF5DocTools) >= %{kf5_version}
 BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
+BuildRequires:  cmake(KF5IconThemes) >= %{kf5_version}
 BuildRequires:  cmake(KF5KCMUtils) >= %{kf5_version}
 BuildRequires:  cmake(KF5KIO) >= %{kf5_version}
 BuildRequires:  cmake(KF5Package) >= %{kf5_version}
@@ -122,6 +123,7 @@ KDE Utility that provides information about a computer system.
 %{_kf5_plugindir}/plasma/kcms/kinfocenter/kcm_interrupts.so
 %{_kf5_plugindir}/plasma/kcms/kinfocenter/kcm_nic.so
 %{_kf5_plugindir}/plasma/kcms/kinfocenter/kcm_pci.so
+%{_kf5_plugindir}/plasma/kcms/kinfocenter/kcm_kwinsupportinfo.so
 %{_kf5_plugindir}/plasma/kcms/kinfocenter/kcm_samba.so
 %{_kf5_plugindir}/plasma/kcms/kinfocenter/kcm_usb.so
 %{_kf5_plugindir}/plasma/kcms/kinfocenter/kcm_vulkan.so
@@ -134,7 +136,6 @@ KDE Utility that provides information about a computer system.
 %{_kf5_sharedir}/kpackage/
 %dir %{_kf5_sharedir}/kinfocenter/
 %{_kf5_sharedir}/kinfocenter/categories/
-%{_kf5_servicetypesdir}/
 %{_kf5_configdir}/menus/kinfocenter.menu
 %{_kf5_sharedir}/desktop-directories/
 %dir %{_libexecdir}/kauth/
