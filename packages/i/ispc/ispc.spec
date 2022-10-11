@@ -17,22 +17,26 @@
 #
 
 
+%define llvm_ver 14
+%define libname libispcrt_1
+
 Name:           ispc
-Version:        1.17.0
+Version:        1.18.0
 Release:        0
 Summary:        C-based SPMD programming language compiler
 License:        BSD-3-Clause
 Group:          Development/Languages/C and C++
 URL:            https://ispc.github.io/
 Source:         https://github.com/%{name}/%{name}/archive/v%{version}/v-%{version}.tar.gz#/%{name}-%{version}.tar.gz
-#!BuildIgnore:  clang13
+#!BuildIgnore:  clang15
 BuildRequires:  bison
-BuildRequires:  clang-devel
+BuildRequires:  clang%llvm_ver-devel
 BuildRequires:  cmake >= 3.13
 BuildRequires:  doxygen
 BuildRequires:  flex
 BuildRequires:  libomp-devel
-BuildRequires:  llvm-devel
+BuildRequires:  llvm%llvm_ver-devel
+BuildRequires:  llvm%llvm_ver-gold
 BuildRequires:  ncurses-devel
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(python3)
@@ -41,21 +45,37 @@ ExclusiveArch:  %{arm} x86_64
 # for some reason, ispc want to link to /usr/lib/crt1.o from glibc-devel-32bit for x86_64
 BuildRequires:  glibc-devel-32bit
 %endif
+# require devel for now for backwards compatibility (until now, packages just BuildRequire: ispc)
+Requires:       %{name}-devel
 
 %description
 A compiler for a variant of the C programming language, with extensions for
 "single program, multiple data" (SPMD) programming.
 
+%package -n %{libname}
+Summary:        C-based SPMD programming language compiler library
+Group:          System/Libraries
+
+%description -n %{libname}
+Libary for a variant of the C programming language, with extensions for
+"single program, multiple data" (SPMD) programming.
+
+%package devel
+Summary:        Development files for ispc
+Group:          Development/Libraries/C and C++
+Requires:       %{libname} = %{version}
+Requires:       %{name} = %{version}
+
+%description    devel
+This package contains the C++ header, symbolic links to the shared
+libraries and cmake files for %{name}.  If you would like to develop
+programs using %{name}, you will need to install %{name}-devel.
+
 %prep
 %setup -q
 
-# other distributions seem to provide curses compatibility links to ncurses
-sed -i 's|${PROJECT_NAME} pthread z tinfo curses)|${PROJECT_NAME} pthread z tinfo ncurses)|' CMakeLists.txt
-
-# fix clang library modules for new clang as carried in TW and 15.2
-%if 0%{?_llvm_sonum} >= 10 || ( 0%{?sle_version} == 150200 && 0%{?is_opensuse} )
+# fix clang library modules for our clang 10 and above
 sed -i 's|set(CLANG_LIBRARY_LIST .*)|set(CLANG_LIBRARY_LIST clang-cpp)|' CMakeLists.txt
-%endif
 
 %build
 %define _lto_cflags "-flto=thin"
@@ -67,6 +87,7 @@ echo "optflags: %{optflags}"
         -DCMAKE_C_FLAGS:STRING="$CFLAGS %{optflags} -fPIE" \
         -DCMAKE_CXX_FLAGS:STRING="$CXXFLAGS %{optflags} -fPIE" \
         -DCMAKE_EXE_LINKER_FLAGS="%{optflags} -pie" \
+        -DCURSES_CURSES_LIBRARY=/usr/%_lib/libncurses.so \
         -DISPC_INCLUDE_EXAMPLES=OFF \
         -DISPC_INCLUDE_TESTS=OFF \
         -DISPC_NO_DUMPS=ON
@@ -75,11 +96,27 @@ echo "optflags: %{optflags}"
 
 %install
 %cmake_install
+# remove static lib
+rm %{buildroot}%{_libdir}/libispcrt_static.a
+
+%post -n %{libname} -p /sbin/ldconfig
+%postun -n %{libname} -p /sbin/ldconfig
+
+%files -n %{libname}
+%license LICENSE.txt
+%doc *.md
+%{_libdir}/*.so.*
 
 %files
 %license LICENSE.txt
 %doc *.md
 %{_bindir}/%{name}
 %{_bindir}/check_isa
+
+%files devel
+%license LICENSE.txt
+%{_includedir}/ispcrt
+%{_libdir}/*.so
+%{_libdir}/cmake/ispcrt-%{version}
 
 %changelog
