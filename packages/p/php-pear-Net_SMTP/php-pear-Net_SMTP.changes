@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep 29 20:47:45 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
+
+- New upstream release 1.10.1
+  * (authXOAuth2) longer tokens violate maximum SMTP command line length
+  * (disconnect) socket will not disconnect on erroneous response upon
+    QUIT message
+  * Fix PHP 8.2 deprecation warnings on undefined properties
+
+-------------------------------------------------------------------
 Sat Jun  5 15:52:56 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - New upstream release 1.10.0
