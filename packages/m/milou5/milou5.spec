@@ -18,32 +18,32 @@
 
 %bcond_without released
 Name:           milou5
-Version:        5.25.5
+Version:        5.26.0
 Release:        0
 Summary:        Dedicated search application built on top of Baloo
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://projects.kde.org/milou
-Source:         https://download.kde.org/stable/plasma/%{version}/milou-%{version}.tar.xz
+Source:         milou-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/milou-%{version}.tar.xz.sig
+Source1:        milou-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-BuildRequires:  extra-cmake-modules >= 1.2.0
+BuildRequires:  extra-cmake-modules >= 5.98.0
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
-BuildRequires:  cmake(KF5CoreAddons) >= 5.25.0
-BuildRequires:  cmake(KF5Declarative) >= 5.25.0
-BuildRequires:  cmake(KF5I18n) >= 5.25.0
-BuildRequires:  cmake(KF5ItemModels) >= 5.25.0
-BuildRequires:  cmake(KF5Plasma) >= 5.25.0
-BuildRequires:  cmake(KF5Runner) >= 5.25.0
-BuildRequires:  cmake(KF5Service) >= 5.25.0
-BuildRequires:  cmake(KF5WindowSystem) >= 5.25.0
-BuildRequires:  cmake(Qt5Qml) >= 5.4.0
-BuildRequires:  cmake(Qt5Quick) >= 5.4.0
-BuildRequires:  cmake(Qt5Test) >= 5.4.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.4.0
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5Declarative)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5ItemModels)
+BuildRequires:  cmake(KF5Plasma)
+BuildRequires:  cmake(KF5Runner)
+BuildRequires:  cmake(KF5Service)
+BuildRequires:  cmake(KF5WindowSystem)
+BuildRequires:  cmake(Qt5Qml) >= 5.15.0
+BuildRequires:  cmake(Qt5Quick)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5Widgets)
 Recommends:     %{name}-lang
 
 %description

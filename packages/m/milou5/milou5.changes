@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Oct  6 14:48:44 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.0
+- Changes since 5.25.90:
+  * Install po folder
+
+-------------------------------------------------------------------
+Thu Sep 15 20:47:01 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.90
+- Changes since 5.25.5:
+  * Add FreeBSD Qt6 CI support
+  * Add missing license file
+  * Clean up defunct QQC1 leftover
+  * Request passing unit tests on Linux and BSD
+  * ResultDelegate: Fix action buttons fully expanding on height
+  * Remove check if result conains query string
+  * ResultDelegate: Fix height binding loop on multiline (kde#454507)
+
+-------------------------------------------------------------------
 Tue Sep  6 16:55:58 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.25.5
