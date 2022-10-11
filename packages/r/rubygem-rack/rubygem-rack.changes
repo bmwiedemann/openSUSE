@@ -1,4 +1,101 @@
 -------------------------------------------------------------------
+Mon Oct 10 13:15:23 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 3.0.0
+ see installed CHANGELOG.md
+
+  ## [3.0.0] - 2022-09-06
+  
+  - No changes
+  
+  ## [3.0.0.rc1] - 2022-09-04
+  
+  ### SPEC Changes
+  
+  - Stream argument must implement `<<` https://github.com/rack/rack/pull/1959
+  - `close` may be called on `rack.input` https://github.com/rack/rack/pull/1956
+  - `rack.response_finished` may be used for executing code after the response has been finished https://github.com/rack/rack/pull/1952
+  
+  ## [3.0.0.beta1] - 2022-08-08
+  
+  ### Security
+  
+  - Do not use semicolon as GET parameter separator. ([#1733](https://github.com/rack/rack/pull/1733), [@jeremyevans])
+  
+  ### SPEC Changes
+  
+  - Response array must now be non-frozen.
+  - Response `status` must now be an integer greater than or equal to 100.
+  - Response `headers` must now be an unfrozen hash.
+  - Response header keys can no longer include uppercase characters.
+  - Response header values can be an `Array` to handle multiple values (and no longer supports `\n` encoded headers).
+  - Response body can now respond to `#call` (streaming body) instead of `#each` (enumerable body), for the equivalent of response hijacking in previous versions.
+  - Middleware must no longer call `#each` on the body, but they can call `#to_ary` on the body if it responds to `#to_ary`.
+  - `rack.input` is no longer required to be rewindable.
+  - `rack.multithread`/`rack.multiprocess`/`rack.run_once`/`rack.version` are no longer required environment keys.
+  - `SERVER_PROTOCOL` is now a required environment key, matching the HTTP protocol used in the request.
+  - `rack.hijack?` (partial hijack) and `rack.hijack` (full hijack) are now independently optional.
+  - `rack.hijack_io` has been removed completely.
+  - `rack.response_finished` is an optional environment key which contains an array of callable objects that must accept `#call(env, status, headers, error)` and are invoked after the response is finished (either successfully or unsucessfully).
+  - It is okay to call `#close` on `rack.input` to indicate that you no longer need or care about the input.
+  - The stream argument supplied to the streaming body and hijack must support `#<<` for writing output.
+  
+  ### Removed
+  
+  - Remove `rack.multithread`/`rack.multiprocess`/`rack.run_once`. These variables generally come too late to be useful. ([#1720](https://github.com/rack/rack/pull/1720), [@ioquatix], [@jeremyevans]))
+  - Remove deprecated Rack::Request::SCHEME_WHITELIST. ([@jeremyevans])
+  - Remove internal cookie deletion using pattern matching, there are very few practical cases where it would be useful and browsers handle it correctly without us doing anything special. ([#1844](https://github.com/rack/rack/pull/1844), [@ioquatix])
+  - Remove `rack.version` as it comes too late to be useful. ([#1938](https://github.com/rack/rack/pull/1938), [@ioquatix])
+  - Extract `rackup` command, `Rack::Server`, `Rack::Handler` and related code into a separate gem. ([#1937](https://github.com/rack/rack/pull/1937), [@ioquatix])
+  
+  ### Added
+  
+  - `Rack::Headers` added to support lower-case header keys. ([@jeremyevans])
+  - `Rack::Utils#set_cookie_header` now supports `escape_key: false` to avoid key escaping.  ([@jeremyevans])
+  - `Rack::RewindableInput` supports size. ([@ahorek](https://github.com/ahorek))
+  - `Rack::RewindableInput::Middleware` added for making `rack.input` rewindable. ([@jeremyevans])
+  - The RFC 7239 Forwarded header is now supported and considered by default when looking for information on forwarding, falling back to the X-Forwarded-* headers. `Rack::Request.forwarded_priority` accessor has been added for configuring the priority of which header to check.  ([#1423](https://github.com/rack/rack/issues/1423), [@jeremyevans])
+  - Allow response headers to contain array of values. ([#1598](https://github.com/rack/rack/issues/1598), [@ioquatix])
+  - Support callable body for explicit streaming support and clarify streaming response body behaviour. ([#1745](https://github.com/rack/rack/pull/1745), [@ioquatix], [#1748](https://github.com/rack/rack/pull/1748), [@wjordan])
+  - Allow `Rack::Builder#run` to take a block instead of an argument. ([#1942](https://github.com/rack/rack/pull/1942), [@ioquatix])
+  - Add `rack.response_finished` to `Rack::Lint`. ([#1802](https://github.com/rack/rack/pull/1802), [@BlakeWilliams], [#1952](https://github.com/rack/rack/pull/1952), [@ioquatix])
+  - The stream argument must implement `#<<`. ([#1959](https://github.com/rack/rack/pull/1959), [@ioquatix])
+  
+  ### Changed
+  
+  - BREAKING CHANGE: Require `status` to be an Integer. ([#1662](https://github.com/rack/rack/pull/1662), [@olleolleolle](https://github.com/olleolleolle))
+  - BREAKING CHANGE: Query parsing now treats parameters without `=` as having the empty string value instead of nil value, to conform to the URL spec. ([#1696](https://github.com/rack/rack/issues/1696), [@jeremyevans])
+  - Relax validations around `Rack::Request#host` and `Rack::Request#hostname`. ([#1606](https://github.com/rack/rack/issues/1606), [@pvande](https://github.com/pvande))
+  - Removed antiquated handlers: FCGI, LSWS, SCGI, Thin. ([#1658](https://github.com/rack/rack/pull/1658), [@ioquatix])
+  - Removed options from `Rack::Builder.parse_file` and `Rack::Builder.load_file`. ([#1663](https://github.com/rack/rack/pull/1663), [@ioquatix])
+  - `Rack::HTTP_VERSION` has been removed and the `HTTP_VERSION` env setting is no longer set in the CGI and Webrick handlers. ([#970](https://github.com/rack/rack/issues/970), [@jeremyevans])
+  - `Rack::Request#[]` and `#[]=` now warn even in non-verbose mode. ([#1277](https://github.com/rack/rack/issues/1277), [@jeremyevans])
+  - Decrease default allowed parameter recursion level from 100 to 32. ([#1640](https://github.com/rack/rack/issues/1640), [@jeremyevans])
+  - Attempting to parse a multipart response with an empty body now raises Rack::Multipart::EmptyContentError. ([#1603](https://github.com/rack/rack/issues/1603), [@jeremyevans])
+  - `Rack::Utils.secure_compare` uses OpenSSL's faster implementation if available. ([#1711](https://github.com/rack/rack/pull/1711), [@bdewater](https://github.com/bdewater))
+  - `Rack::Request#POST` now caches an empty hash if input content type is not parseable. ([#749](https://github.com/rack/rack/pull/749), [@jeremyevans])
+  - BREAKING CHANGE: Updated `trusted_proxy?` to match full 127.0.0.0/8 network. ([#1781](https://github.com/rack/rack/pull/1781), [@snbloch](https://github.com/snbloch))
+  - Explicitly deprecate `Rack::File` which was an alias for `Rack::Files`. ([#1811](https://github.com/rack/rack/pull/1720), [@ioquatix]).
+  - Moved `Rack::Session` into [separate gem](https://github.com/rack/rack-session). ([#1805](https://github.com/rack/rack/pull/1805), [@ioquatix])
+  - `rackup -D` option to daemonizes no longer changes the working directory to the root. ([#1813](https://github.com/rack/rack/pull/1813), [@jeremyevans])
+  - The `x-forwarded-proto` header is now considered before the `x-forwarded-scheme` header for determining the forwarded protocol. `Rack::Request.x_forwarded_proto_priority` accessor has been added for configuring the priority of which header to check.  ([#1809](https://github.com/rack/rack/issues/1809), [@jeremyevans])
+  - `Rack::Request.forwarded_authority` (and methods that call it, such as `host`) now returns the last authority in the forwarded header, instead of the first, as earlier forwarded authorities can be forged by clients. This restores the Rack 2.1 behavior. ([#1829](https://github.com/rack/rack/issues/1809), [@jeremyevans])
+  - Use lower case cookie attributes when creating cookies, and fold cookie attributes to lower case when reading cookies (specifically impacting `secure` and `httponly` attributes). ([#1849](https://github.com/rack/rack/pull/1849), [@ioquatix])
+  - The response array must now be mutable (non-frozen) so middleware can modify it without allocating a new Array,therefore reducing object allocations. ([#1887](https://github.com/rack/rack/pull/1887), [#1927](https://github.com/rack/rack/pull/1927), [@amatsuda], [@ioquatix])
+  - `rack.hijack?` (partial hijack) and `rack.hijack` (full hijack) are now independently optional. `rack.hijack_io` is no longer required/specified. ([#1939](https://github.com/rack/rack/pull/1939), [@ioquatix])
+  - Allow calling close on `rack.input`. ([#1956](https://github.com/rack/rack/pull/1956), [@ioquatix])
+  
+  ### Fixed
+  
+  - Make Rack::MockResponse handle non-hash headers. ([#1629](https://github.com/rack/rack/issues/1629), [@jeremyevans])
+  - TempfileReaper now deletes temp files if application raises an exception. ([#1679](https://github.com/rack/rack/issues/1679), [@jeremyevans])
+  - Handle cookies with values that end in '=' ([#1645](https://github.com/rack/rack/pull/1645), [@lukaso](https://github.com/lukaso))
+  - Make `Rack::NullLogger` respond to `#fatal!` [@jeremyevans])
+  - Fix multipart filename generation for filenames that contain spaces. Encode spaces as "%20" instead of "+" which will be decoded properly by the multipart parser. ([#1736](https://github.com/rack/rack/pull/1645), [@muirdm](https://github.com/muirdm))
+  - `Rack::Request#scheme` returns `ws` or `wss` when one of the `X-Forwarded-Scheme` / `X-Forwarded-Proto` headers is set to `ws` or `wss`, respectively. ([#1730](https://github.com/rack/rack/issues/1730), [@erwanst](https://github.com/erwanst))
+  
+
+-------------------------------------------------------------------
 Fri Jul  8 08:41:33 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 2.2.4
