@@ -10,24 +10,24 @@ a normal session. Use it as default when the combobox is disabled.
  src/sessionmodel.cpp                 | 6 ++++++
  2 files changed, 7 insertions(+), 1 deletion(-)
 
-diff --git a/src/package/contents/ui/Advanced.qml b/src/package/contents/ui/Advanced.qml
-index 88bd73e..0b10c6c 100644
---- a/src/package/contents/ui/Advanced.qml
-+++ b/src/package/contents/ui/Advanced.qml
-@@ -70,7 +70,7 @@ Kirigami.Page {
+Index: sddm-kcm-5.17.80git.20220809T233316~d5dcd87/src/package/contents/ui/Advanced.qml
+===================================================================
+--- sddm-kcm-5.17.80git.20220809T233316~d5dcd87.orig/src/package/contents/ui/Advanced.qml
++++ sddm-kcm-5.17.80git.20220809T233316~d5dcd87/src/package/contents/ui/Advanced.qml
+@@ -76,7 +76,7 @@ Kirigami.Page {
                  textRole: "name"
                  valueRole: "file"
                  onActivated: kcm.sddmSettings.session = currentValue
 -                onEnabledChanged: enabled ? kcm.sddmSettings.session = currentValue : kcm.sddmSettings.session = ""
 +                onEnabledChanged: enabled ? kcm.sddmSettings.session = currentValue : kcm.sddmSettings.session = "default.desktop"
-                 Component.onCompleted: currentIndex = Math.max(indexOfValue(kcm.sddmSettings.session), 0)
                  KCM.SettingStateBinding {
                      visible: autologinBox.checked
-diff --git a/src/sessionmodel.cpp b/src/sessionmodel.cpp
-index 16999dd..50e22d4 100644
---- a/src/sessionmodel.cpp
-+++ b/src/sessionmodel.cpp
-@@ -109,6 +109,12 @@ void SessionModel::loadDir(const QString &path, SessionType type)
+                     configObject: kcm.sddmSettings
+Index: sddm-kcm-5.17.80git.20220809T233316~d5dcd87/src/sessionmodel.cpp
+===================================================================
+--- sddm-kcm-5.17.80git.20220809T233316~d5dcd87.orig/src/sessionmodel.cpp
++++ sddm-kcm-5.17.80git.20220809T233316~d5dcd87/src/sessionmodel.cpp
+@@ -95,6 +95,12 @@ void SessionModel::loadDir(const QString
                  isHidden = line.mid(7).toLower() == QLatin1String("true");
              }
          }
@@ -40,6 +40,3 @@ index 16999dd..50e22d4 100644
          if (!isHidden) {
              // add to sessions list
              d->sessions.push_back(si);
--- 
-2.25.1
-

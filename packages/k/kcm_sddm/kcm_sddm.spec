@@ -21,22 +21,22 @@
 
 %bcond_without released
 Name:           kcm_sddm
-Version:        5.25.5
+Version:        5.26.0
 Release:        0
 Summary:        A sddm control module for KDE
 License:        GPL-2.0-only
 Group:          System/GUI/KDE
 URL:            https://projects.kde.org/projects/kdereview/sddm-kcm/repository
-Source:         https://download.kde.org/stable/plasma/%{version}/sddm-kcm-%{version}.tar.xz
+Source:         sddm-kcm-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/sddm-kcm-%{version}.tar.xz.sig
+Source1:        sddm-kcm-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-Support-default.session-symlink.patch
 Patch2:         0002-Read-and-write-autologin-user-to-etc-sysconfig-displ.patch
 Patch3:         0003-Don-t-add-a-Wayland-suffix-to-Wayland-sessions.patch
-BuildRequires:  extra-cmake-modules
+BuildRequires:  extra-cmake-modules >= 5.98.0
 BuildRequires:  kf5-filesystem
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5Archive)
@@ -49,7 +49,7 @@ BuildRequires:  cmake(KF5KCMUtils)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5NewStuff)
 BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Qt5Core) >= 5.12.0
+BuildRequires:  cmake(Qt5Core) >= 5.15.0
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Quick)
 BuildRequires:  cmake(Qt5QuickWidgets)
