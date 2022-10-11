@@ -28,7 +28,6 @@ Patterntype: rpm-md ymp
   Repotype: none
   Patterntype: none
   Prefer: openSUSE-release-ftp
-  Prefer: -postgresql15-devel-mini
   Support: release-compare
   BuildFlags: obsgendiff
 %endif
@@ -125,7 +124,8 @@ Prefer: installation-images-openSUSE installation-images-debuginfodeps-openSUSE
 # Since not all packages care, we only add it where needed (instead of preinstall)
 Substitute: netcfg netcfg libnss_usrfiles2
 
-%ifnarch armv6l
+# fvogt 2022-10-11: Let's try this again.
+#%ifnarch armv6l
 # Not enabled for armv6l, due to https://bugzilla.opensuse.org/show_bug.cgi?id=1193317
 # Enable ccache for a selection of packages:
   BuildFlags: useccache:NetworkManager
@@ -135,19 +135,19 @@ Substitute: netcfg netcfg libnss_usrfiles2
   BuildFlags: useccache:gtk3
   BuildFlags: useccache:llvm9
   BuildFlags: useccache:nodejs-electron
-  buildflags: useccache:tensorflow
-  buildflags: useccache:tensorflow2:hpc
-  buildflags: useccache:tensorflow2:hpc-openmpi2
-  buildflags: useccache:tensorflow2:lite
-  buildflags: useccache:tensorflow2:standard
-  buildflags: useccache:tensorflow:hpc
-  buildflags: useccache:tensorflow:hpc-openmpi2
-  buildflags: useccache:tensorflow:lite
-  buildflags: useccache:tensorflow:standard
+  BuildFlags: useccache:tensorflow
+  BuildFlags: useccache:tensorflow2:hpc
+  BuildFlags: useccache:tensorflow2:hpc-openmpi2
+  BuildFlags: useccache:tensorflow2:lite
+  BuildFlags: useccache:tensorflow2:standard
+  BuildFlags: useccache:tensorflow:hpc
+  BuildFlags: useccache:tensorflow:hpc-openmpi2
+  BuildFlags: useccache:tensorflow:lite
+  BuildFlags: useccache:tensorflow:standard
   BuildFlags: useccache:webkit2gtk3:gtk3
   BuildFlags: useccache:webkit2gtk3:gtk3-soup2
   BuildFlags: useccache:webkit2gtk3:gtk4
-%endif
+#%endif
 
 # slsaprovenance - as described at https://slsa.dev/provenance/v0.2
 # slsaprovenance diabled on Apr 28 2022
@@ -1082,6 +1082,8 @@ Prefer: -wl-clipboard
 Prefer: -firewalld-prometheus-config
 # Replaced by google-noto-coloremoji-fonts. DR pending as sr#990015.
 Prefer: -noto-coloremoji-fonts
+# have choice for pkgconfig(libhs): hyperscan-devel vectorscan-devel. hyperscan is for x86 only, prefer that where possible (for now).
+Prefer: hyperscan-devel
 
 Ignore: installation-images-openSUSE:cracklib-dict-full
 Ignore: openSUSE-release:openSUSE-release-ftp,openSUSE-release-dvd5,openSUSE-release-biarch,openSUSE-release-livecdkde,openSUSE-release-livecdgnome
