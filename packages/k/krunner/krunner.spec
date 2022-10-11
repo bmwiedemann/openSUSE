@@ -17,7 +17,7 @@
 
 
 %define lname   libKF5Runner5
-%define _tar_path 5.98
+%define _tar_path 5.99
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without released
 Name:           krunner
-Version:        5.98.0
+Version:        5.99.0
 Release:        0
 Summary:        KDE Framework for providing different actions given a string query
 License:        LGPL-2.1-or-later
@@ -100,7 +100,7 @@ Files needed for developing custom runners or frontends.
 %{_kf5_libdir}/cmake/KF5Runner/
 %{_kf5_includedir}/KRunner/
 %{_kf5_mkspecsdir}/qt_KRunner.pri
-%{_kf5_sharedir}/kdevfiletemplates/
+%{_kf5_sharedir}/kdevappwizard/
 %{_kf5_dbusinterfacesdir}/kf5_org.kde.krunner1.xml
 
 %changelog
