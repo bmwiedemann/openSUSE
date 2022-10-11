@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-healpy
-Version:        1.15.2
+Version:        1.16.1
 Release:        0
 Summary:        Python library to handle pixelated data on the sphere based on HEALPix
 License:        GPL-2.0-only
@@ -30,7 +30,6 @@ BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel >= 1.13}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -42,7 +41,6 @@ Requires:       python-astropy >= 4.0
 Requires:       python-matplotlib
 Requires:       python-numpy >= 1.13
 Requires:       python-scipy
-Requires:       python-six
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 # SECTION Additional test requirements
@@ -52,7 +50,6 @@ BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module scipy}
-BuildRequires:  %{python_module six}
 # /SECTION
 %python_subpackages
 

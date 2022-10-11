@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Oct 11 10:18:41 UTC 2022 - pgajdos@suse.com
+
+- version update to 1.16.1
+  * Updated CFITSIO included in `healpy` to 4.1.0, necessary for
+    compatibility with Apple ARM chips
+- Changes from versions 1.16.0:
+  * Update HEALPix C++ sources to revision 1206
+  * Do not normalize binary arrays
+  * Fix unncessary log warning message in plots
+  * Fixed double application of `margins` in visualization
+    functions when using subplot syntax and implemented
+    `margins` parameter for `mollview`, `orthview`, and
+    `azeqview` when subplot syntax is not used
+  * Fixed `reuse_axes=True` for `cartview` and `gnomview`
+  * New features in `projview`: subplots, remove monopole-dipole,
+    labels, tickmarks, graticule, Planck and WMAP colormaps
+  * Fixed the CFITSIO version mismatch warning
+  * Added colorbar ticks and normalization
+- python-six is not required
+
+-------------------------------------------------------------------
 Tue Jul 12 00:16:21 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.15.2:
