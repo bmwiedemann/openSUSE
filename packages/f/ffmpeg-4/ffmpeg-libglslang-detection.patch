@@ -1,8 +1,8 @@
-Index: ffmpeg-4.4.1/configure
+Index: ffmpeg-4.4.3/configure
 ===================================================================
---- ffmpeg-4.4.1.orig/configure
-+++ ffmpeg-4.4.1/configure
-@@ -6370,7 +6370,12 @@ enabled fontconfig        && enable libf
+--- ffmpeg-4.4.3.orig/configure
++++ ffmpeg-4.4.3/configure
+@@ -6377,7 +6377,12 @@ enabled fontconfig        && enable libf
  enabled libfontconfig     && require_pkg_config libfontconfig fontconfig "fontconfig/fontconfig.h" FcInit
  enabled libfreetype       && require_pkg_config libfreetype freetype2 "ft2build.h FT_FREETYPE_H" FT_Init_FreeType
  enabled libfribidi        && require_pkg_config libfribidi fribidi fribidi.h fribidi_version_info

@@ -507,4 +507,17 @@
     <comment></comment>
     <requestid>999856</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>0cc8df59122e68ebc79f225e14b857ff</srcmd5>
+    <version>4.4.3</version>
+    <time>1665503956</time>
+    <user>RBrownFactory</user>
+    <comment>- Update to version 4.4.3:
+  * Stable bug fix release, mainly codecs, filter and format fixes.
+- Drop ffmpeg-sdl2-detection.patch: Fixed upstream.
+- Refresh patches with quilt:
+  * ffmpeg-libglslang-detection.patch
+  * ffmpeg-4.2-dlopen-fdk_aac.patch (forwarded request 1009347 from iznogood)</comment>
+    <requestid>1009591</requestid>
+  </revision>
 </revisionlist>
