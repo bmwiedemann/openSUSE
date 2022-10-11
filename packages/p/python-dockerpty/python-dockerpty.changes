@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 10 06:50:45 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded BuildRequires on python2.
+- Switch to %pytest macro. 
+
+-------------------------------------------------------------------
 Thu May 10 15:44:58 UTC 2018 - toddrme2178@gmail.com
 
 - Make sure ssl is available

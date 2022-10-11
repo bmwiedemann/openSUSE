@@ -41,4 +41,13 @@
     <comment></comment>
     <requestid>606254</requestid>
   </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>6c8301af921007287a1368740ce6e47b</srcmd5>
+    <version>0.4.1</version>
+    <time>1665504144</time>
+    <user>RBrownFactory</user>
+    <comment>- Remove unneeded BuildRequires on python2.
+- Switch to %pytest macro.</comment>
+    <requestid>1009251</requestid>
+  </revision>
 </revisionlist>
