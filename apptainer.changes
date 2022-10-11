@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 11 08:19:01 UTC 2022 - Christian Goll <cgoll@suse.com>
+
+- previous versions did not build squashfuse_ll, fixed this
+
+-------------------------------------------------------------------
 Fri Oct  7 12:42:57 UTC 2022 - Christian Goll <cgoll@suse.com>
 
 - Udpated to 1.1.2 which fixed CVE-2022-39237
