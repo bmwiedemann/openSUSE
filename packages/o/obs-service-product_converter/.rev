@@ -176,4 +176,24 @@
     <user>dimstar_suse</user>
     <comment>https://github.com/openSUSE/obs-service-product_converter/issues/13</comment>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>f66c47545cfb41bb924336310dfdf898</srcmd5>
+    <version>1.5.3</version>
+    <time>1665504219</time>
+    <user>RBrownFactory</user>
+    <comment>- 1.5.3
+  * fixed encoding of product provides
+  * revert fix use_undecided=&quot;true&quot; special case
+
+- 1.5.2
+  * transport module informations
+  * allow to specify a DVD volume ID manual
+
+- 1.5.0
+  * support run_depenendency_check=&quot;warn&quot; or =&quot;error&quot;
+
+- 1.4.9
+  * fix use_undecided=&quot;true&quot; special case</comment>
+    <requestid>1009817</requestid>
+  </revision>
 </revisionlist>
