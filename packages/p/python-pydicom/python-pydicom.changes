@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 10 07:20:51 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Add BD pydicom-data test data, and unskip many tests that now pass
+
+-------------------------------------------------------------------
 Sat Sep 24 02:04:40 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Skip a lot of tests, mostly due to missing test data, but there
