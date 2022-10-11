@@ -22,7 +22,7 @@
 %define sover 0
 %define libwireplumber libwireplumber-%{apiver_str}-%{sover}
 Name:           wireplumber
-Version:        0.4.11
+Version:        0.4.12
 Release:        0
 Summary:        Session / policy manager implementation for PipeWire
 License:        MIT
@@ -32,17 +32,13 @@ Source0:        wireplumber-%{version}.tar.xz
 Source1:        split-config-file.py
 # PATCH-FIX-OPENSUSE reduce-meson-required-version.patch
 Patch0:         reduce-meson-required-version.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         fix-alsa.patch
-Patch2:         0001-dbus-fix-crash-when-trying-to-reconnect.patch
-Patch3:         https://gitlab.freedesktop.org/pipewire/wireplumber/-/merge_requests/398.patch
 # docs
 BuildRequires:  doxygen
 BuildRequires:  graphviz
 # /docs
 BuildRequires:  cmake
 BuildRequires:  fdupes
-%if 0%{?sle_version} == 150300
+%if 0%{?sle_version} <= 150300
 BuildRequires:  meson >= 0.54.0
 %else
 BuildRequires:  meson >= 0.59.0
@@ -141,12 +137,9 @@ the wireplumber shared library.
 
 %prep
 %autosetup -N
-%if 0%{?sle_version} == 150300
+%if 0%{?sle_version} <= 150300
 %patch0 -p1
 %endif
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
 
 pushd src/config/main.lua.d
 python3 %{SOURCE1}

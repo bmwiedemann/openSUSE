@@ -4,40 +4,70 @@ Subject: Reduce the minimum required meson version
 With this, we can build wireplumber in SLE 15 SP3/Leap 15.3
 which only have meson 0.54
 
-Index: wireplumber-0.4.11/meson.build
+Index: wireplumber-0.4.12/meson.build
 ===================================================================
---- wireplumber-0.4.11.orig/meson.build
-+++ wireplumber-0.4.11/meson.build
+--- wireplumber-0.4.12.orig/meson.build
++++ wireplumber-0.4.12/meson.build
 @@ -1,7 +1,7 @@
  project('wireplumber', ['c'],
-   version : '0.4.11',
+   version : '0.4.12',
    license : 'MIT',
 -  meson_version : '>= 0.59.0',
 +  meson_version : '>= 0.54.0',
    default_options : [
      'warning_level=1',
      'buildtype=debugoptimized',
-@@ -42,7 +42,11 @@ spa_dep = dependency('libspa-0.2', versi
+@@ -42,7 +42,17 @@ spa_dep = dependency('libspa-0.2', versi
  pipewire_dep = dependency('libpipewire-0.3', version: '>= 0.3.52')
  mathlib = cc.find_library('m')
  threads_dep = dependency('threads')
 -libintl_dep = dependency('intl')
-+libintl_dep = dependency('', required: false)
 +
-+if not cc.has_function('ngettext')
-+  libintl_dep = cc.find_library('intl')
++
++if meson.version().version_compare('>= 0.59')
++  libintl_dep = dependency('intl')
++else
++  libintl_dep = dependency('', required: false)
++
++  if not cc.has_function('ngettext')
++    libintl_dep = cc.find_library('intl')
++  endif
 +endif
  
  system_lua = get_option('system-lua')
  if system_lua
-@@ -131,8 +135,8 @@ endif
+@@ -129,8 +139,13 @@ if get_option('tests')
+   subdir('tests')
+ endif
+ 
+-builddir = meson.project_build_root()
+-srcdir = meson.project_source_root()
++if meson.version().version_compare('>= 0.56')
++  builddir = meson.project_build_root()
++  srcdir = meson.project_source_root()
++else
++  builddir = meson.build_root()
++  srcdir = meson.source_root()
++endif
  
  conf_uninstalled = configuration_data()
  conf_uninstalled.set('MESON', '')
--conf_uninstalled.set('MESON_SOURCE_ROOT', meson.project_source_root())
--conf_uninstalled.set('MESON_BUILD_ROOT', meson.project_build_root())
-+conf_uninstalled.set('MESON_SOURCE_ROOT', meson.source_root())
-+conf_uninstalled.set('MESON_BUILD_ROOT', meson.build_root())
+@@ -150,10 +165,12 @@ wireplumber_uninstalled = custom_target(
+   command : ['cp', '@INPUT@', '@OUTPUT@'],
+ )
  
- wp_uninstalled = configure_file(
-   input : 'wp-uninstalled.sh',
+-devenv = environment({
+-  'WIREPLUMBER_MODULE_DIR': builddir / 'modules',
+-  'WIREPLUMBER_CONFIG_DIR': srcdir / 'src' / 'config',
+-  'WIREPLUMBER_DATA_DIR': srcdir / 'src',
+-})
++if meson.version().version_compare('>= 0.58')
++  devenv = environment({
++    'WIREPLUMBER_MODULE_DIR': builddir / 'modules',
++    'WIREPLUMBER_CONFIG_DIR': srcdir / 'src' / 'config',
++    'WIREPLUMBER_DATA_DIR': srcdir / 'src',
++  })
+ 
+-meson.add_devenv(devenv)
++  meson.add_devenv(devenv)
++endif
