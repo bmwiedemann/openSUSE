@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Oct  1 15:56:09 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.99.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.99.0
+- Changes since 5.98.0:
+  * Fix compile error with wl_output < v4
+  * PlasmaWindowManagement: Avoid unbounded recursion and delay in readData (kde#453124)
+  * client/plasmashell: fix applet popups displacing other windows (kde#459523)
+  * client/plasmashell: add fallback for applet popups
+  * require PlasmaWaylandProtocols 1.9.0 and bump supported plasmashell version to 8
+  * .gitlab-ci.yml: enable static builds
+  * ConnectionThread: connect by symbol rather than by name
+  * ConnectionThread: Move event dispatcing into a separate method
+  * ConnectionThread: Make sure we consume properly the threads
+  * Add support for wl_output version 4
+- Drop patch, merged upstream:
+  * 0001-client-plasmashell-add-fallback-for-applet-popups.patch
+
+-------------------------------------------------------------------
 Thu Sep 22 14:35:55 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add upstream fix (kde#459188)

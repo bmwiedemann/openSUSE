@@ -871,4 +871,12 @@
   * 0001-client-plasmashell-add-fallback-for-applet-popups.patch</comment>
     <requestid>1005433</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>f8002e7ba74c28b842708cbbaae9c0ea</srcmd5>
+    <version>5.99.0</version>
+    <time>1665504025</time>
+    <user>RBrownFactory</user>
+    <comment>KDE Frameworks 5.99 (forwarded request 1008960 from cgiboudeaux)</comment>
+    <requestid>1009028</requestid>
+  </revision>
 </revisionlist>
