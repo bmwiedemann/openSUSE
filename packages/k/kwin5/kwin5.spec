@@ -19,12 +19,12 @@
 # Internal QML imports
 %global __requires_exclude qmlimport\\((org\\.kde\\.private\\.kcms\\.kwin\\.effects|org\\.kde\\.kcms\\.kwinrules|org\\.kde\\.kwin\\.private\\.overview|org\\.kde.kwin\\.private\\.desktopgrid|org\\.kde\\.KWin\\.Effect\\.WindowView).*
 
-%global kf5_version 5.54.0
-%global qt5_version 5.11.0
+%global kf5_version 5.98.0
+%global qt5_version 5.15.0
 %global wayland (0%{?suse_version} >= 1330)
 %bcond_without released
 Name:           kwin5
-Version:        5.25.5
+Version:        5.26.0
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -34,9 +34,9 @@ Summary:        KDE Window Manager
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/kwin-%{version}.tar.xz
+Source:         kwin-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kwin-%{version}.tar.xz.sig
+Source1:        kwin-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FEATURE-OPENSUSE
@@ -44,12 +44,13 @@ Patch101:       0001-Export-consistent-hostname-as-XAUTHLOCALHOSTNAME.patch
 BuildRequires:  extra-cmake-modules >= 0.0.11
 BuildRequires:  fdupes
 %if 0%{?suse_version} < 1550
+BuildRequires:  gcc10-PIE
 BuildRequires:  gcc10-c++
 %endif
 BuildRequires:  kf5-filesystem
-BuildRequires:  libQt5Core-private-headers-devel >= 5.5.0
-BuildRequires:  libQt5Gui-private-headers-devel >= 5.5.0
-BuildRequires:  libQt5PlatformSupport-private-headers-devel >= 5.5.0
+BuildRequires:  libQt5Core-private-headers-devel >= %{qt5_version}
+BuildRequires:  libQt5Gui-private-headers-devel >= %{qt5_version}
+BuildRequires:  libQt5PlatformSupport-private-headers-devel >= %{qt5_version}
 BuildRequires:  libcap-devel
 BuildRequires:  libcap-progs
 BuildRequires:  libepoxy-devel
@@ -185,14 +186,8 @@ This package provides development files.
 %build
 %if 0%{?suse_version} < 1550
   export CXX=g++-10
-  # gcc-PIE only sets the default for gcc-7, get cmake to do it for us (boo#1195628)
-  # Set CMAKE_CXX_LINK_PIE_SUPPORTED to work without "check_pie_supported()"...
-  %{cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir} \
-      -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_CXX_LINK_PIE_SUPPORTED=ON}
-%else
-  %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
 %endif
-
+  %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
   %cmake_build
 
 %install
@@ -241,8 +236,7 @@ This package provides development files.
 %{_kf5_applicationsdir}/kcm_kwin_scripts.desktop
 %{_kf5_applicationsdir}/kcm_kwindecoration.desktop
 %{_kf5_applicationsdir}/kcm_kwinoptions.desktop
-%{_kf5_applicationsdir}/kcm_kwinscreenedges.desktop
-%{_kf5_applicationsdir}/kcm_kwintouchscreen.desktop
+%{_kf5_applicationsdir}/kcm_kwintabbox.desktop
 %{_kf5_applicationsdir}/kwincompositing.desktop
 %{_kf5_bindir}/kwin_x11
 %{_kf5_debugdir}/org_kde_kwin.categories
@@ -251,7 +245,6 @@ This package provides development files.
 %{_kf5_libdir}/libkwin.so.*
 %{_kf5_libdir}/libkwineffects.so.*
 %{_kf5_libdir}/libkwingl*utils.so.*
-%{_kf5_libdir}/libkwinxrenderutils.so.*
 %{_kf5_libdir}/libkcmkwincommon.so.5
 %{_kf5_libdir}/libkcmkwincommon.so.5.*
 %dir %{_kf5_plugindir}/plasma/
@@ -275,6 +268,7 @@ This package provides development files.
 %dir %{_kf5_plugindir}/kwin/effects/configs/
 %dir %{_kf5_plugindir}/kwin/plugins/
 %{_kf5_plugindir}/kwin/plugins/colordintegration.so
+%{_kf5_plugindir}/kwin/plugins/MouseButtonToKeyPlugin.so
 %dir %{_kf5_sharedir}/krunner
 %dir %{_kf5_sharedir}/krunner/dbusplugins
 %{_kf5_sharedir}/krunner/dbusplugins/kwin-runner-windows.desktop
@@ -286,12 +280,10 @@ This package provides development files.
 %{_kf5_plugindir}/kwin/effects/configs/kwin_diminactive_config.so
 %{_kf5_plugindir}/kwin/effects/configs/kwin_glide_config.so
 %{_kf5_plugindir}/kwin/effects/configs/kwin_invert_config.so
-%{_kf5_plugindir}/kwin/effects/configs/kwin_lookingglass_config.so
 %{_kf5_plugindir}/kwin/effects/configs/kwin_magiclamp_config.so
 %{_kf5_plugindir}/kwin/effects/configs/kwin_magnifier_config.so
 %{_kf5_plugindir}/kwin/effects/configs/kwin_mouseclick_config.so
 %{_kf5_plugindir}/kwin/effects/configs/kwin_mousemark_config.so
-%{_kf5_plugindir}/kwin/effects/configs/kwin_showfps_config.so
 %{_kf5_plugindir}/kwin/effects/configs/kwin_showpaint_config.so
 %{_kf5_plugindir}/kwin/effects/configs/kwin_slide_config.so
 %{_kf5_plugindir}/kwin/effects/configs/kwin_thumbnailaside_config.so
@@ -302,13 +294,6 @@ This package provides development files.
 %{_kf5_plugindir}/kwin/effects/configs/kwin_overview_config.so
 %dir %{_kf5_plugindir}/org.kde.kdecoration2/
 %{_kf5_plugindir}/org.kde.kdecoration2/kwin5_aurorae.so
-%dir %{_kf5_plugindir}/org.kde.kwin.platforms/
-%{_kf5_plugindir}/org.kde.kwin.platforms/KWinX11Platform.so
-%dir %{_kf5_plugindir}/org.kde.kwin.waylandbackends/
-%{_kf5_plugindir}/org.kde.kwin.waylandbackends/KWinWaylandDrmBackend.so
-%{_kf5_plugindir}/org.kde.kwin.waylandbackends/KWinWaylandVirtualBackend.so
-%{_kf5_plugindir}/org.kde.kwin.waylandbackends/KWinWaylandWaylandBackend.so
-%{_kf5_plugindir}/org.kde.kwin.waylandbackends/KWinWaylandX11Backend.so
 
 %dir %{_kf5_qmldir}/org/
 %dir %{_kf5_qmldir}/org/kde/
@@ -345,7 +330,6 @@ This package provides development files.
 %{_kf5_prefix}/include/*.h
 %{_kf5_libdir}/libkwineffects.so
 %{_kf5_libdir}/libkwingl*utils.so
-%{_kf5_libdir}/libkwinxrenderutils.so
 %{_kf5_libdir}/cmake/KWinDBusInterface/
 %{_kf5_sharedir}/dbus-1/interfaces/
 %{_kf5_cmakedir}/KWinEffects/
