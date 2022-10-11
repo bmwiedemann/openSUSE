@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Oct  6 14:48:40 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.0
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.0
+- Changes since 5.25.90:
+  * Install po folder
+  * Provide the alternatives to an appstream id together with the URL (kde#441299)
+  * ApplicationPage: Make more room for metadata with smaller spacing (kde#459574)
+  * Fix warning
+  * Set QSurfaceFormat::ResetNotification
+  * reviews: Fix warning on constant property
+  * Support systems without a Qt WebView
+
+-------------------------------------------------------------------
+Thu Sep 15 20:46:13 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.25.90
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.25.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue Sep  6 16:55:28 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.25.5
