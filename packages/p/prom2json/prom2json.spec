@@ -1,7 +1,7 @@
 #
 # spec file for package prom2json
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 # Project upstream commit.
 %define commit 9180c89
 Name:           prom2json
-Version:        1.3.0
+Version:        1.3.2
 Release:        0
 Summary:        CLI tool to scrape a Prometheus client and dump the result as JSON
 License:        Apache-2.0
@@ -33,8 +33,8 @@ URL:            https://%{project}
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  fdupes
+BuildRequires:  go >= 1.17
 BuildRequires:  go-md2man
-BuildRequires:  go >= 1.13
 ExcludeArch:    s390
 %if 0%{?is_opensuse}
 ExcludeArch:    s390x
