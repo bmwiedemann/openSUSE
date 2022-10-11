@@ -38,10 +38,10 @@ URL:            https://github.com/blockdiag/sphinxcontrib-blockdiag
 # Use the github tag instead of the pythonhosted.org to get the tests folder
 Source:         https://github.com/blockdiag/sphinxcontrib-blockdiag/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FEATURE-UPSTREAM 25.patch gh#blockdiag/sphinxcontrib-blockdiag#25
-Patch:          https://patch-diff.githubusercontent.com/raw/blockdiag/sphinxcontrib-blockdiag/pull/25.patch
+Patch0:         https://patch-diff.githubusercontent.com/raw/blockdiag/sphinxcontrib-blockdiag/pull/25.patch
+Patch1:         remove-mock.patch
 BuildRequires:  %{python_module Sphinx >= 2.0}
 BuildRequires:  %{python_module blockdiag >= 1.5.0}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -51,7 +51,6 @@ BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module Sphinx-latex}
 BuildRequires:  %{python_module funcparserlib}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module sphinxcontrib-blockdiag = %{version}}
 %endif

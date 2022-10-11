@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 10 06:32:23 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch remove-mock.patch. 
+
+-------------------------------------------------------------------
 Thu Sep 29 10:26:09 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add multibuild to run tests

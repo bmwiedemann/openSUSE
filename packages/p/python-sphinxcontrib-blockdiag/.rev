@@ -56,4 +56,12 @@
 </comment>
     <requestid>1006921</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>808c798549af03f176223ef715d8136f</srcmd5>
+    <version>3.0.0</version>
+    <time>1665504141</time>
+    <user>RBrownFactory</user>
+    <comment>- Add patch remove-mock.patch.</comment>
+    <requestid>1009250</requestid>
+  </revision>
 </revisionlist>
