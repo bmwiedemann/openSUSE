@@ -18,15 +18,15 @@
 
 %bcond_without released
 Name:           pam_kwallet
-Version:        5.25.5
+Version:        5.26.0
 Release:        0
 Summary:        A PAM Module for KWallet signing
 License:        GPL-2.0-or-later AND LGPL-2.1-only AND GPL-3.0-only
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/kwallet-pam-%{version}.tar.xz
+Source:         kwallet-pam-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/kwallet-pam-%{version}.tar.xz.sig
+Source1:        kwallet-pam-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 Source3:        baselibs.conf
@@ -36,7 +36,7 @@ BuildRequires:  libgcrypt-devel >= 1.5.0
 BuildRequires:  pam-devel
 BuildRequires:  socat
 BuildRequires:  xz
-BuildRequires:  cmake(KF5Wallet) >= 5.58.0
+BuildRequires:  cmake(KF5Wallet) >= 5.98.0
 Requires:       %{name}-common = %{version}
 # PAM modules need to be available for all archs of PAM on the system, otherwise pam-config
 # will not enable it.
