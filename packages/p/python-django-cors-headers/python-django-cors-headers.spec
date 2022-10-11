@@ -17,15 +17,14 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-%define skip_python36 1
 Name:           python-django-cors-headers
-Version:        3.7.0
+Version:        3.13.0
 Release:        0
 Summary:        A Django App that adds CORS headers to responses
 License:        MIT
 URL:            https://github.com/adamchainz/django-cors-headers
-Source:         https://files.pythonhosted.org/packages/source/d/django-cors-headers/django-cors-headers-%{version}.tar.gz
+Source:         https://github.com/adamchainz/django-cors-headers/archive/refs/tags/%{version}.tar.gz#/django-cors-headers-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module setuptools}
@@ -57,6 +56,7 @@ export DJANGO_SETTINGS_MODULE=tests.settings
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/corsheaders/
+%{python_sitelib}/django[-_]cors[-_]headers*/
 
 %changelog
