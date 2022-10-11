@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Tue Oct 11 05:00:12 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.8.1:
+  * Bugfixes
+    - Improve errors with invalid yaml files (#2589) @ssbarnea
+    - Avoid jinja[invalid] with vars on task (#2588) @ssbarnea
+    - Fix rules selection by profile (#2587) @ssbarnea
+    - Soften no-free-form occurences (#2586) @ssbarnea
+    - Ensure all rich tags are closed (#2585) @ssbarnea
+    - Docs: Add MD for role name rule (#2583) @oraNod
+    - Avoid warnings with empty role meta files (#2580) @ssbarnea
+    - Update schemas (#2582) @ssbarnea
+    - Docs: Add MD for risky shell pipe (#2577) @oraNod
+    - Include help url with JSON output format (#2578) @ssbarnea
+    - Docs: Add MD for risky-octal rule (#2574) @shatakshiiii
+
+-------------------------------------------------------------------
+Mon Oct 10 06:12:47 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.8.0:
+  * Minor Changes
+    - Add no-shorthand rule as experimental (#2527) @ssbarnea
+    - Adds summary stats about found violations (#2495) @ssbarnea
+    - Upgrade fqcn-builtins rule into fqcn (#2505) @ssbarnea
+    - Changed success/failure message (#2567) @ssbarnea
+  * Bugfixes
+    - Add extra documentation (#2503 #2511 #2546 #2551 #2552 #2554 #2555 #2559 #2560 #2561) @ssbarnea @oraNod
+    - Refactor the rendering of errors and warnings (#2566) @ssbarnea
+    - Fixed regex for pipefail rule (#2564) @ajinkyau
+    - Ensure we detect templating errors (#2558) @ssbarnea
+    - Remove enrich as a dependency (#2557) @ssbarnea
+    - Implement strict mode (#2533) @ssbarnea
+    - Avoid extra space when building task names (#2531) @ssbarnea
+    - Refactor parsing of ansible syntax check (#2529) @ssbarnea
+    - Allow var_files to be null, string and list of strings (#2528) @ssbarnea
+    - Fix bug which prevented run of rules on tasks doing imports (#2526) @ssbarnea
+    - Resolved documentation redirects (#2523) @ssbarnea
+    - Document lack of module_defaults support (#2519) @ssbarnea
+    - Allow file attribute with ansible.builtin.include_tasks (#2518) @ssbarnea
+    - Update schemas (#2517) @ssbarnea
+    - Replace template-instead-of-copy with avoid-implicit[copy-content] (#2512) @ssbarnea
+    - Fix path expansion when outside user home (#2515) @ssbarnea
+    - var-naming: also recognize vars with set_fact module (#2496) @nishipy
+    - Fix rich exception with tasks containing square brackets (#2510) @ssbarnea
+    - Fix exception with vars_prompt (#2500) @ssbarnea
+    - Fix project_dir detect with .config configs (#2499) @ssbarnea
+    - Avoid implicit templating if not play/task (#2498) @ssbarnea
+    - Fixed few profile rule name errors (#2497) @ssbarnea
+    - Rename no-shorthand to no-free-form (#2548) @ssbarnea
+    - Avoid reporting matches for files outside project_dir (#2547) @ssbarnea
+    - Allow fqcn with more than 2 dots (#2544) @ssbarnea
+    - no-shorthand: Avoid false positive with raw (#2541 #2542) @ssbarnea
+    - Fix project directory detection with config inside .config (#2540) @ssbarnea
+
+-------------------------------------------------------------------
+Thu Oct  6 08:39:49 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- check/verify/update build and runtime dependencies
+
+-------------------------------------------------------------------
 Thu Oct  6 07:09:51 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - fix wrong source URLs
