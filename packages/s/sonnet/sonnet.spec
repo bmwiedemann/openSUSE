@@ -17,14 +17,14 @@
 
 
 %define sonum   5
-%define _tar_path 5.98
+%define _tar_path 5.99
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           sonnet
-Version:        5.98.0
+Version:        5.99.0
 Release:        0
 Summary:        KDE spell checking library
 License:        LGPL-2.1-or-later
@@ -44,15 +44,13 @@ BuildRequires:  kf5-filesystem
 BuildRequires:  myspell-dictionaries
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt5Core) >= 5.15.0
+BuildRequires:  cmake(Qt5LinguistTools) >= 5.15.0
 BuildRequires:  cmake(Qt5Quick)
 BuildRequires:  cmake(Qt5Test) >= 5.15.0
 BuildRequires:  cmake(Qt5UiPlugin) >= 5.15.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.15.0
 BuildRequires:  pkgconfig(hunspell)
 BuildRequires:  pkgconfig(libvoikko)
-%if %{with released}
-BuildRequires:  cmake(Qt5LinguistTools) >= 5.15.0
-%endif
 
 %description
 Sonnet is a plugin-based spell checking library for Qt-based
@@ -130,20 +128,17 @@ to the Sonnet spell checking framework.
 
 %install
 %kf5_makeinstall -C build
+
 %fdupes %{buildroot}
 
-%if %{with released}
-%find_lang %{name}5 --with-qt --without-mo
-%endif
+%find_lang sonnet5 --with-qt --without-mo
 
 %post -n libKF5SonnetCore%{sonum} -p /sbin/ldconfig
 %postun -n libKF5SonnetCore%{sonum} -p /sbin/ldconfig
 %post -n libKF5SonnetUi%{sonum} -p /sbin/ldconfig
 %postun -n libKF5SonnetUi%{sonum} -p /sbin/ldconfig
 
-%if %{with released}
-%files -n libKF5SonnetCore%{sonum}-lang -f %{name}5.lang
-%endif
+%files -n libKF5SonnetCore%{sonum}-lang -f sonnet5.lang
 
 %files
 %doc README*
