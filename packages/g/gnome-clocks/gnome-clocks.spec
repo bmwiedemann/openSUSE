@@ -52,6 +52,7 @@ Summary:        GNOME Clocks -- Search Provider for GNOME Shell
 Group:          Productivity/Office/Other
 Requires:       %{name} = %{version}
 Supplements:    (gnome-shell and %{name})
+BuildArch:      noarch
 
 %description -n gnome-shell-search-provider-gnome-clocks
 This package contains a search provider to enable GNOME Shell to get
