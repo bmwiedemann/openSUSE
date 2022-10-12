@@ -1,5 +1,5 @@
 #
-# spec file for package python-ansible-core
+# spec file for package ansible-core
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -15,13 +15,14 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define pythons python3
 
 Name:           ansible-core
-Version:        2.13.4
+Version:        2.13.5
 Release:        0
 Summary:        Radically simple IT automation
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 URL:            https://ansible.com/
 Source:         https://files.pythonhosted.org/packages/source/a/ansible-core/ansible-core-%{version}.tar.gz
 BuildArch:      noarch
@@ -35,21 +36,20 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  python3-setuptools
 # SECTION test requirements
 BuildRequires:  python3-botocore
+BuildRequires:  python3-Jinja2
+BuildRequires:  python3-PyYAML
 BuildRequires:  python3-cryptography
 BuildRequires:  python3-curses
-BuildRequires:  python3-Jinja2
-BuildRequires:  python3-mock
 BuildRequires:  python3-packaging
-BuildRequires:  python3-PyYAML
 BuildRequires:  python3-pytest
 BuildRequires:  python3-pytz
 BuildRequires:  python3-resolvelib >= 0.5.3
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python3-cryptography
 Requires:       python3-Jinja2
-Requires:       python3-packaging
 Requires:       python3-PyYAML
+Requires:       python3-cryptography
+Requires:       python3-packaging
 Requires:       python3-resolvelib >= 0.5.3
 
 %description
