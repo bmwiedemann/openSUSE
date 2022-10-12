@@ -508,4 +508,12 @@
   * Update Headlamp addon image from v0.9.0 to v0.11.1 #14802</comment>
     <requestid>1004055</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>82ce00b366773441fb4d2d9591b7074d</srcmd5>
+    <version>1.27.1</version>
+    <time>1665591842</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1009792</requestid>
+  </revision>
 </revisionlist>

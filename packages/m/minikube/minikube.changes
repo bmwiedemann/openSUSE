@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Oct 11 02:27:46 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- BuildRequires python3 rather than python. 
+
+-------------------------------------------------------------------
+Mon Oct 10 07:38:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.27.1:
+  * QEMU Driver: Add support for dedicated network on macOS (socket_vmnet) #14989
+  * QEMU Driver: Add support minikube service and tunnel on macOS #14989
+  * Check if context is invalid during update-context command #15032
+  * Use SSH tunnel if user specifies bindAddress #14951
+  * Warn QEMU users if DNS issue detected #15073
+  * Fix status command taking a long time on docker driver while paused #15077
+  * Fix not allowing passing only an exposed port to --ports #15085
+  * Fix minikube dashboard failing on macOS #15037
+  * Fix incorrect command in powershell command tip #15012
+
+-------------------------------------------------------------------
 Fri Sep 16 08:33:56 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.27.0:
