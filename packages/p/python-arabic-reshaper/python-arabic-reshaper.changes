@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 12 02:41:34 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 2.1.4 
+  * Fix unparseable version bound for fonttools under Python 2
+
+-------------------------------------------------------------------
 Wed Sep 15 11:35:08 UTC 2021 - pgajdos@suse.com
 
 - version update to 2.1.3
