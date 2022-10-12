@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 11 16:48:12 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 4.2.1 
+  * Fix a bug where the first request in a redirect chain was not being recorded with aiohttp
+  * Various typos and small fixes, thanks @jairhenrique, @timgates42
+
+-------------------------------------------------------------------
 Thu Aug 26 12:15:11 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 4.1.1:
