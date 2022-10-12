@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ad8dcdc9fb9e64fd357d502b9b61c37a</srcmd5>
+    <version>0.13</version>
+    <time>1665591925</time>
+    <user>dimstar_suse</user>
+    <comment>pygeos is a dependency for geopandas, a widely used mechanism for using geo data with pandas</comment>
+    <requestid>1009963</requestid>
+  </revision>
+</revisionlist>
