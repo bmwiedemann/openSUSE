@@ -16,18 +16,18 @@
 #
 
 
-%define sover   8
+%define sover   9
 Name:           fmt
-Version:        8.1.1
+Version:        9.1.0
 Release:        0
 Summary:        A formatting library for C++
 License:        MIT
 URL:            http://fmtlib.net/
-Source0:        https://github.com/fmtlib/fmt/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/fmtlib/fmt/archive/%version.tar.gz
 Source1:        baselibs.conf
+BuildRequires:  c++_compiler
 BuildRequires:  cmake
-BuildRequires:  gcc-c++
-BuildRequires:  pkgconfig
+BuildRequires:  pkg-config
 
 %description
 Fmt is a formatting library for C++. It can be used as an
