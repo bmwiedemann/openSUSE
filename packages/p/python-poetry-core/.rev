@@ -47,4 +47,41 @@
     <comment></comment>
     <requestid>962657</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2cfd3f24de8801cc224f98ffbfb01cb9</srcmd5>
+    <version>1.3.2</version>
+    <time>1665591769</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.3.2
+  * Fix an issue where the normalization was not applied to the
+    path of an sdist built using a PEP 517 frontend (#495).
+- Release 1.3.1
+  * Fix an issue where a typing-driven assertion could be false at
+    runtime, causing a failure during
+    prepare_metadata_for_build_wheel (#492).
+- Release 1.3.0
+  * Add 3.11 to the list of available Python versions (#477).
+  * Deprecate poetry.core.constraints.generic, which is replaced by
+    poetry.core.packages.constraints (#482).
+  * Deprecate poetry.core.semver, which is replaced by
+    poetry.core.constraints.version (#482).
+  * Fix an issue where versions were escaped wrongly when building
+    the wheel name (#469).
+  * Fix an issue where caret constraints of pre-releases with a
+    major version of 0 resulted in an empty version range (#475).
+  * Fix an issue where the names of extras were not normalized
+    according to PEP 685 (#476).
+  * Fix an issue where sdist names were not normalized (#484).
+- Release 1.2.0
+  * Added support for subdirectories in url dependencies (#398).
+  * When setting an invalid version constraint an error is raised
+    instead of silently setting &quot;any version&quot; (#461).
+  * Allow more characters in author name (#411).
+  * Fixed an issue where incorrect Requires-Dist information was
+    generated when environment markers where used for optional
+    packages (#462).
+  * Fixed an issue where incorrect python constraints were parsed
+    from environment markers (#457). (forwarded request 1009081 from bnavigator)</comment>
+    <requestid>1009082</requestid>
+  </revision>
 </revisionlist>

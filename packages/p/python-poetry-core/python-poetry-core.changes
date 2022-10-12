@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Sun Oct  9 10:20:58 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.3.2
+  * Fix an issue where the normalization was not applied to the
+    path of an sdist built using a PEP 517 frontend (#495).
+- Release 1.3.1
+  * Fix an issue where a typing-driven assertion could be false at
+    runtime, causing a failure during
+    prepare_metadata_for_build_wheel (#492).
+- Release 1.3.0
+  * Add 3.11 to the list of available Python versions (#477).
+  * Deprecate poetry.core.constraints.generic, which is replaced by
+    poetry.core.packages.constraints (#482).
+  * Deprecate poetry.core.semver, which is replaced by
+    poetry.core.constraints.version (#482).
+  * Fix an issue where versions were escaped wrongly when building
+    the wheel name (#469).
+  * Fix an issue where caret constraints of pre-releases with a
+    major version of 0 resulted in an empty version range (#475).
+  * Fix an issue where the names of extras were not normalized
+    according to PEP 685 (#476).
+  * Fix an issue where sdist names were not normalized (#484).
+- Release 1.2.0
+  * Added support for subdirectories in url dependencies (#398).
+  * When setting an invalid version constraint an error is raised
+    instead of silently setting "any version" (#461).
+  * Allow more characters in author name (#411).
+  * Fixed an issue where incorrect Requires-Dist information was
+    generated when environment markers where used for optional
+    packages (#462).
+  * Fixed an issue where incorrect python constraints were parsed
+    from environment markers (#457).
+  * Fixed the hashing of markers and constraints (#466).
+  * Fixed an issue where the PEP 508 name of directory dependencies
+    used platform paths (#463).
+- Release 1.1.0
+  * Dropped support for Python 2.7 and 3.6 (#131, #263).
+  * Reorganized imports internally to improve performances (#131).
+  * Directory dependencies are now in non-develop mode by default
+    (#98).
+  * Improved support for PEP 440 specific versions that do not
+    abide by semantic versioning (#140).
+  * Files in source distributions now have a deterministic time to
+    improve reproducibility. (#142)
+  * Added support for script files in addition to standard entry
+    points. (#40)
+  * Added support for dependency groups. (#183)
+  * Add support for most of the guaranteed hashes (#207).
+  * Add support to declare multiple README files (#248).
+  * Add support for git sub directories (#192).
+  * Add hooks according to PEP-660 for editable installs (#182).
+  * Add support for version epochs (#264).
+  * Loose the strictness when parsing version constraint to support
+    invalid use of wildcards, e.g. >=3.* (#186).
+  * No longer assume a default git branch name (#192).
+  * Sort package name in extras to make it reproducible (#280).
+  * Improve marker handling (#208, #282, #283, #284, #286, #291,
+    #293, #294, #297).
+  * Added support for handling git urls with subdirectory (#288).
+  * Added support for metadata files as described in PEP-658 for
+    PEP-503 "simple" API repositories (#333).
+  * Renamed dependency group of runtime dependencies to from
+    default to main (#326).
+  * poetry-core is now completely type checked.
+  * Improved the SemVer constraint parsing (#327).
+  * Improved the speed when cloning git repositories (#290).
+  * Added support for valid PEP 517 projects with another
+    build-system than poetry-core as directory dependencies (#368,
+    #377).
+  * Added support for yanked files and releases according to PEP
+    592 (#400).
+  * Relaxed schema validation to allow additional properties
+    (#369).
+  * Harmonized string representation of dependencies (#393).
+  * Changed wheel name normalization to follow most recent
+    packaging specification (#394).
+  * Changed equality check of direct origin dependencies, so that
+    constraints are not considered anymore (#405).
+  * Deprecated Dependency.set_constraint() and replaced it by a
+    constraint property for consistency (#370).
+  * Removed Package.requires_extras (#374).
+  * Improved marker handling (#380, #383, #384, #390, #395).
+  * Enabled setting version of ProjectPackage to support
+    dynamically setting the project's package version (e.g. from a
+    plugin) (#447).
+
+-------------------------------------------------------------------
 Fri Mar 18 11:05:18 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.0.8

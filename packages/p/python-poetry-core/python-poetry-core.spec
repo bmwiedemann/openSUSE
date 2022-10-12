@@ -16,10 +16,8 @@
 #
 
 
-%define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-poetry-core
-Version:        1.0.8
+Version:        1.3.2
 Release:        0
 Summary:        Python poetry core utilities
 License:        MIT
@@ -27,32 +25,33 @@ Group:          Development/Languages/Python
 URL:            https://github.com/python-poetry/poetry-core
 # Only the github archive provides the tests
 Source:         %{url}/archive/%{version}.tar.gz#/poetry-core-%{version}-gh.tar.gz
-BuildRequires:  %{python_module attrs >= 19.3.0}
-BuildRequires:  %{python_module jsonschema >= 3.2.0}
-BuildRequires:  %{python_module lark-parser >= 0.9.0}
-BuildRequires:  %{python_module packaging >= 20.4}
+BuildRequires:  %{python_module attrs >= 22.1.0}
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module jsonschema >= 4.1.0}
+BuildRequires:  %{python_module lark-parser >= 1.1.2}
+BuildRequires:  %{python_module packaging >= 21.3}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pyparsing >= 2.4.7}
-BuildRequires:  %{python_module pyrsistent >= 0.16.0}
-BuildRequires:  %{python_module six >= 1.15.0}
-BuildRequires:  %{python_module tomlkit >= 0.7.0}
+BuildRequires:  %{python_module pyparsing >= 3.0.9}
+BuildRequires:  %{python_module pyrsistent >= 0.18.1}
+BuildRequires:  %{python_module tomlkit >= 0.11.3}
+BuildRequires:  %{python_module typing-extensions >= 4.3.0}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-attrs >= 19.3.0
-Requires:       python-jsonschema >= 3.2.0
-Requires:       python-lark-parser >= 0.9.0
-Requires:       python-packaging >= 20.4
-Requires:       python-pyparsing >= 2.4.7
-Requires:       python-pyrsistent >= 0.16.0
-Requires:       python-six >= 1.15.0
-Requires:       python-tomlkit >= 0.7.0
+Requires:       python-attrs >= 22.1.0
+Requires:       python-jsonschema >= 4.1.0
+Requires:       python-lark-parser >= 1.1.2
+Requires:       python-packaging >= 21.3
+Requires:       python-pyparsing >= 3.0.9
+Requires:       python-pyrsistent >= 0.18.1
+Requires:       python-tomlkit >= 0.11.3
+Requires:       python-typing-extensions >= 4.3.0
 BuildArch:      noarch
 # SECTION these are all test dependencies, including devel and git
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module pep517}
+BuildRequires:  %{python_module build}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module virtualenv}
-BuildRequires:  fdupes
 BuildRequires:  git-core
 # /SECTION
 %python_subpackages
@@ -64,10 +63,8 @@ PEP 517 compatible build frontends to build Poetry managed projects.
 
 %prep
 %setup -q -n poetry-core-%{version}
-# python-poetry will provide this file
-rm poetry/__init__.py
 # unbundle: we provide the vendored packages on our own
-rm -r poetry/core/_vendor
+rm -r src/poetry/core/_vendor
 
 %build
 %pyproject_wheel
