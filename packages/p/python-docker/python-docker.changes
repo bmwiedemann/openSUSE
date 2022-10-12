@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 12 06:39:38 UTC 2022 - pgajdos@suse.com
+
+- python-six is not required as well
+
+-------------------------------------------------------------------
 Thu Mar 17 15:22:38 UTC 2022 - pgajdos@suse.com
 
 - python-mock actually not required for build

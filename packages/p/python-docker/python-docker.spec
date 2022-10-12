@@ -34,14 +34,12 @@ BuildRequires:  %{python_module pytest-cov >= 2.1.0}
 BuildRequires:  %{python_module pytest-timeout >= 1.2.1}
 BuildRequires:  %{python_module requests >= 2.20.0}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six >= 1.10.0}
 BuildRequires:  %{python_module websocket-client >= 0.40.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-docker-pycreds >= 0.4.0
 Requires:       python-paramiko >= 2.4.2
 Requires:       python-requests >= 2.20.0
-Requires:       python-six >= 1.10.0
 Requires:       python-websocket-client >= 0.40.0
 # docker-py got renamed to docker in 2017
 Obsoletes:      python-docker-py < %{version}
