@@ -39,4 +39,29 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>993449</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>250cb7cad5e05d883f744ecdd13c3535</srcmd5>
+    <version>7.0.4</version>
+    <time>1665591886</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 7.0.4
+ see installed CHANGELOG.md
+  ## Rails 7.0.4 (September 09, 2022) ##
+  
+  *   The Redis adapter is now compatible with redis-rb 5.0
+  
+      Compatibility with redis-rb 3.x was dropped.
+  
+      *Jean Boussier*
+  
+  *   The Action Cable server is now mounted with `anchor: true`.
+  
+      This means that routes that also start with `/cable` will no longer clash with Action Cable.
+  
+      *Alex Ghiculescu*
+  
+  
+</comment>
+    <requestid>1010021</requestid>
+  </revision>
 </revisionlist>

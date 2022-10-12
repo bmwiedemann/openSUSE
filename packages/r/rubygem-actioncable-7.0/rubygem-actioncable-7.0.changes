@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Oct 10 12:50:40 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 7.0.4
+ see installed CHANGELOG.md
+
+  ## Rails 7.0.4 (September 09, 2022) ##
+  
+  *   The Redis adapter is now compatible with redis-rb 5.0
+  
+      Compatibility with redis-rb 3.x was dropped.
+  
+      *Jean Boussier*
+  
+  *   The Action Cable server is now mounted with `anchor: true`.
+  
+      This means that routes that also start with `/cable` will no longer clash with Action Cable.
+  
+      *Alex Ghiculescu*
+  
+  
+
+-------------------------------------------------------------------
 Thu Aug  4 12:48:43 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 7.0.3.1
