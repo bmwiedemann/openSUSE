@@ -39,4 +39,31 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>993459</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>26f10d25f9a383383d91da3503cd1770</srcmd5>
+    <version>7.0.4</version>
+    <time>1665591902</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 7.0.4
+ see installed CHANGELOG.md
+  ## Rails 7.0.4 (September 09, 2022) ##
+  
+  *   Redis cache store is now compatible with redis-rb 5.0.
+  
+      *Jean Boussier*
+  
+  *   Fix `NoMethodError` on custom `ActiveSupport::Deprecation` behavior.
+  
+      `ActiveSupport::Deprecation.behavior=` was supposed to accept any object
+      that responds to `call`, but in fact its internal implementation assumed that
+      this object could respond to `arity`, so it was restricted to only `Proc` objects.
+  
+      This change removes this `arity` restriction of custom behaviors.
+  
+      *Ryo Nakamura*
+  
+  
+</comment>
+    <requestid>1010047</requestid>
+  </revision>
 </revisionlist>

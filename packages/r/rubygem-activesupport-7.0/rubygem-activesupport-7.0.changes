@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Oct 10 12:55:23 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 7.0.4
+ see installed CHANGELOG.md
+
+  ## Rails 7.0.4 (September 09, 2022) ##
+  
+  *   Redis cache store is now compatible with redis-rb 5.0.
+  
+      *Jean Boussier*
+  
+  *   Fix `NoMethodError` on custom `ActiveSupport::Deprecation` behavior.
+  
+      `ActiveSupport::Deprecation.behavior=` was supposed to accept any object
+      that responds to `call`, but in fact its internal implementation assumed that
+      this object could respond to `arity`, so it was restricted to only `Proc` objects.
+  
+      This change removes this `arity` restriction of custom behaviors.
+  
+      *Ryo Nakamura*
+  
+  
+
+-------------------------------------------------------------------
 Thu Aug  4 12:53:34 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 7.0.3.1

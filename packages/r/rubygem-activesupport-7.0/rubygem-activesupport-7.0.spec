@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-activesupport-7.0
-Version:        7.0.3.1
+Version:        7.0.4
 Release:        0
 %define mod_name activesupport
 %define mod_full_name %{mod_name}-%{version}
