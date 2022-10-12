@@ -28,6 +28,7 @@ Tue Feb  2 17:56:50 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 Sun Jan 24 17:54:37 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 1.14
+  * Fixes bsc#1182748, CVE-2020-11987
   * BATIK-1284: Dont load DTDs in NodePickerPanel
   * BATIK-1292: Remove console message "About to transcoder source
     of type: ..."
