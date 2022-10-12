@@ -5818,4 +5818,41 @@
     <comment></comment>
     <requestid>1002272</requestid>
   </revision>
+  <revision rev="376" vrev="1">
+    <srcmd5>b46b1b1a7f0975c77c7b1674e65f8253</srcmd5>
+    <version>105.0.3</version>
+    <time>1665591775</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Firefox 105.0.3:
+  * Fixes for other platforms
+
+- Mozilla Firefox 105.0.2:
+  * Fixed poor contrast on various menu items with certain
+    themes on Linux systems (bmo#1792063)
+  * Fixed the scrollbar appearing on the wrong side of
+    `select` elements in right-to-left locales (bmo#1791219)
+  * Fixed a possible deadlock when loading some sites in
+    Troubleshoot Mode (bmo#1786259)
+  * Fixed a bug causing some dynamic appearance changes to
+    not appear when expected (bmo#1786521)
+  * Fixed a bug causing theme styling to not be properly applied
+    to sidebars for some add-ons in Private Browsing Mode
+    (bmo#1787543)
+
+- Mozilla Firefox 105.0.1
+  * Reverted focus behavior for new windows back to the content
+    area instead of the address bar (bmo#1784692)
+- added mozilla-i686-build.patch to avoid using avx2
+
+- Mozilla Firefox 105.0
+  https://www.mozilla.org/en-US/firefox/105.0/releasenotes
+  MFSA 2022-40 (bsc#1203477)
+  * CVE-2022-40959 (bmo#1782211)
+    Bypassing FeaturePolicy restrictions on transient pages
+  * CVE-2022-40960 (bmo#1787633)
+    Data-race when parsing non-UTF-8 URLs in threads
+  * CVE-2022-40958 (bmo#1779993)
+    Bypassing Secure Context restriction for cookies with __Host</comment>
+    <requestid>1009258</requestid>
+  </revision>
 </revisionlist>

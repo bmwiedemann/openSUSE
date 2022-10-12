@@ -3,7 +3,7 @@
 # Date 1559294891 -7200
 #      Fri May 31 11:28:11 2019 +0200
 # Node ID c2aa7198fb925e7fde96abf65b6f68b9b755f112
-# Parent  65e96e081f6f4b68d6b7998f4182a3764832c2ce
+# Parent  b8fad36c438a0d20ffe73630e35c17addb4ee57d
 Description: Add KDE integration to Firefox (toolkit parts)
 Author: Wolfgang Rosenauer <wolfgang@rosenauer.org>
 Author: Lubos Lunak <lunak@suse.com>
@@ -31,7 +31,7 @@ diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
  #ifdef MOZ_MEMORY
  #  include "mozmemory.h"
  #endif
-@@ -4791,16 +4792,27 @@ nsresult Preferences::InitInitialObjects
+@@ -4823,16 +4824,27 @@ nsresult Preferences::InitInitialObjects
      "unix.js"
  #  if defined(_AIX)
      ,
@@ -59,7 +59,7 @@ diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
  
    // Load jar:$app/omni.jar!/defaults/preferences/*.js
    // or jar:$gre/omni.jar!/defaults/preferences/*.js.
-@@ -4865,17 +4877,17 @@ nsresult Preferences::InitInitialObjects
+@@ -4897,17 +4909,17 @@ nsresult Preferences::InitInitialObjects
        }
  
        nsCOMPtr<nsIFile> path = do_QueryInterface(elem);
@@ -81,7 +81,7 @@ diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
 diff --git a/modules/libpref/moz.build b/modules/libpref/moz.build
 --- a/modules/libpref/moz.build
 +++ b/modules/libpref/moz.build
-@@ -120,16 +120,20 @@ EXPORTS.mozilla += [
+@@ -121,16 +121,20 @@ EXPORTS.mozilla += [
  ]
  EXPORTS.mozilla += sorted(["!" + g for g in gen_h])
  
@@ -165,7 +165,7 @@ diff --git a/toolkit/components/downloads/moz.build b/toolkit/components/downloa
 diff --git a/toolkit/mozapps/downloads/HelperAppDlg.jsm b/toolkit/mozapps/downloads/HelperAppDlg.jsm
 --- a/toolkit/mozapps/downloads/HelperAppDlg.jsm
 +++ b/toolkit/mozapps/downloads/HelperAppDlg.jsm
-@@ -1254,36 +1254,66 @@ nsUnknownContentTypeDialog.prototype = {
+@@ -1265,36 +1265,66 @@ nsUnknownContentTypeDialog.prototype = {
          params.handlerApp &&
          params.handlerApp.executable &&
          params.handlerApp.executable.isFile()
@@ -768,17 +768,17 @@ diff --git a/uriloader/exthandler/HandlerServiceParent.cpp b/uriloader/exthandle
  using mozilla::dom::RemoteHandlerApp;
  
  namespace {
-@@ -299,17 +299,17 @@ mozilla::ipc::IPCResult HandlerServicePa
- mozilla::ipc::IPCResult HandlerServiceParent::RecvExistsForProtocolOS(
-     const nsCString& aProtocolScheme, bool* aHandlerExists) {
+@@ -300,17 +300,17 @@ mozilla::ipc::IPCResult HandlerServicePa
+     const nsACString& aProtocolScheme, bool* aHandlerExists) {
    if (aProtocolScheme.Length() > MAX_SCHEME_LENGTH) {
      *aHandlerExists = false;
      return IPC_OK();
    }
  #ifdef MOZ_WIDGET_GTK
    // Check the GNOME registry for a protocol handler
--  *aHandlerExists = nsGNOMERegistry::HandlerExists(aProtocolScheme.get());
-+  *aHandlerExists = nsCommonRegistry::HandlerExists(aProtocolScheme.get());
+   *aHandlerExists =
+-      nsGNOMERegistry::HandlerExists(PromiseFlatCString(aProtocolScheme).get());
++      nsCommonRegistry::HandlerExists(PromiseFlatCString(aProtocolScheme).get());
  #else
    *aHandlerExists = false;
  #endif

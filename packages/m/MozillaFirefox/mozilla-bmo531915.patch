@@ -1,13 +1,13 @@
 # HG changeset patch
 # User Wolfgang Rosenauer <wr@rosenauer.org>
-# Parent  7332dfc4c47d73f1b88850b7727d33096d68e329
+# Parent  5573047016750e02413781dac0ac4c2361946ed2
 
 diff --git a/modules/fdlibm/src/math_private.h b/modules/fdlibm/src/math_private.h
 --- a/modules/fdlibm/src/math_private.h
 +++ b/modules/fdlibm/src/math_private.h
-@@ -25,17 +25,21 @@
+@@ -25,19 +25,24 @@
  
- #include "mozilla/EndianUtils.h"
+ #include "fdlibm.h"
  
  /*
   * Emulate FreeBSD internal double types.
@@ -16,10 +16,14 @@ diff --git a/modules/fdlibm/src/math_private.h b/modules/fdlibm/src/math_private
  
 +#ifdef __i386__
 +typedef long double __double_t;
++typedef long double __float_t;
 +#else
  typedef double      __double_t;
++typedef float       __float_t;
 +#endif
  typedef __double_t  double_t;
+-typedef float       __float_t;
+ typedef __float_t   float_t;
  
  /*
   * The original fdlibm code used statements like:
