@@ -335,4 +335,14 @@
     <comment></comment>
     <requestid>999450</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>3792b435dfdeaefad649a5a834aa69df</srcmd5>
+    <version>1.36.0</version>
+    <time>1665591916</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 1.36.0
+  no changelog found
+</comment>
+    <requestid>1010069</requestid>
+  </revision>
 </revisionlist>
