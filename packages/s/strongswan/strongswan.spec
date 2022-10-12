@@ -17,7 +17,7 @@
 
 
 Name:           strongswan
-Version:        5.9.7
+Version:        5.9.8
 Release:        0
 %define         upstream_version     %{version}
 %define         strongswan_docdir    %{_docdir}/%{name}
@@ -460,7 +460,6 @@ sed -i 's/\(load[ ]*=[ ]*\)yes/\1no/g' %{buildroot}/%{strongswan_configs}/charon
 		 %{buildroot}/%{_libexecdir}/ipsec/stroke \
 		 %{buildroot}/%{_libexecdir}/ipsec/starter \
 		 %{buildroot}/%{_libexecdir}/ipsec/pool \
-		 %{buildroot}/%{_libexecdir}/ipsec/scepclient \
 		 %{buildroot}/%{_libexecdir}/ipsec/imv_policy_manager \
 		 %{buildroot}/%{_libexecdir}/ipsec/_fipscheck \
 		 %{buildroot}/%{_bindir}/pt-tls-client \
@@ -573,7 +572,6 @@ fi
 %{_libexecdir}/ipsec/xfrmi
 %{_libexecdir}/ipsec/duplicheck
 %{_libexecdir}/ipsec/pool
-%{_libexecdir}/ipsec/scepclient
 %{_libexecdir}/ipsec/starter
 %{_libexecdir}/ipsec/stroke
 %{_libexecdir}/ipsec/charon
@@ -593,7 +591,6 @@ fi
 %{strongswan_docdir}/LICENSE
 %{strongswan_docdir}/AUTHORS
 %{strongswan_docdir}/ChangeLog
-%{_mandir}/man8/scepclient.8*
 %{_mandir}/man5/swanctl.conf.5.*
 %{_mandir}/man8/swanctl.8.*
 
@@ -612,7 +609,6 @@ fi
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/imcv.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/pki.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/pool.conf
-%config(noreplace) %attr(600,root,root) %{strongswan_configs}/scepclient.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/starter.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/tnc.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/swanctl.conf
@@ -946,7 +942,6 @@ fi
 %{strongswan_templates}/config/strongswan.d/imcv.conf
 %{strongswan_templates}/config/strongswan.d/pki.conf
 %{strongswan_templates}/config/strongswan.d/pool.conf
-%{strongswan_templates}/config/strongswan.d/scepclient.conf
 %{strongswan_templates}/config/strongswan.d/starter.conf
 %{strongswan_templates}/config/strongswan.d/tnc.conf
 %{strongswan_templates}/config/strongswan.d/swanctl.conf

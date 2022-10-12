@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Oct  3 20:36:03 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.9.8
+  * Fixed a vulnerability related to online certificate
+    revocation checking that was caused because the revocation
+    plugin used potentially untrusted OCSP URIs and CRL
+    distribution points in certificates.
+  * The `pki --scep/--scepca` commands implement the HTTP-based
+    "Simple Certificate Enrollment Protocol" (RFC 8894 SCEP)
+    replacing the old and long deprecated scepclient that has
+    been removed.
+  * The `pki --est|estca` commands implement the HTTPS-based
+    "Enrollment over Secure Transport" (RFC 7070 EST) protocol.
+  * The TLS client implementation now sends an empty certificate
+    payload if a certificate request is received but no
+    certificate is available.
+  * The socket plugins don't set the SO_REUSEADDR option anymore
+    on the IKE UDP sockets, so an error is triggered if e.g. two
+    daemons (e.g. charon and charon-systemd) are running
+    concurrently using the same ports.
+
+-------------------------------------------------------------------
 Sat Jul 30 06:48:29 UTC 2022 - Peter Conrad <conrad@quisquis.de>
 
 - Update to release 5.9.7
