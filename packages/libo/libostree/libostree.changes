@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Oct 10 20:25:27 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 2022.6:
+  + Finalize-staged now better supports automounted partitions and
+    skips waiting for termination signal.
+  + A file descriptor leak has been fixed in the commit logic.
+  + Add basic support for handling overlayfs whiteouts on checkout 
+    through a new --process-passthrough-whiteouts flag.
+  + Ostree rev-parse command gained a new --single flag to better
+    support repositories containing exactly one commit.
+- Drop ostree-glibc_2.36.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Thu Sep  1 08:20:44 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Use curl as http backend, stop depending on soup2:

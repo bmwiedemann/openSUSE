@@ -19,7 +19,7 @@
 %define _dracutmodulesdir %(pkg-config --variable dracutmodulesdir dracut)
 %bcond_without ed25519
 Name:           libostree
-Version:        2022.5
+Version:        2022.6
 Release:        0
 Summary:        Git for operating system binaries
 License:        LGPL-2.0-or-later
@@ -28,7 +28,6 @@ URL:            https://github.com/ostreedev/ostree
 Source:         https://github.com/ostreedev/ostree/releases/download/v%{version}/%{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE ostree-grub2-location.patch boo#974714 dimstar@opensuse.org -- Fix path to grub-mkconfig_lib
 Patch0:         ostree-grub2-location.patch
-Patch1:         ostree-glibc_2.36.patch
 BuildRequires:  bison
 BuildRequires:  gjs
 BuildRequires:  gnome-common
@@ -150,6 +149,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcostree-remount
 %service_add_pre ostree-prepare-root.service
 %service_add_pre ostree-remount.service
 %service_add_pre ostree-finalize-staged.service
+%service_add_pre ostree-finalize-staged-hold.service
 %service_add_pre ostree-finalize-staged.path
 %service_add_pre ostree-boot-complete.service
 
@@ -157,6 +157,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcostree-remount
 %service_del_preun ostree-prepare-root.service
 %service_del_preun ostree-remount.service
 %service_del_preun ostree-finalize-staged.service
+%service_del_preun ostree-finalize-staged-hold.service
 %service_del_preun ostree-finalize-staged.path
 %service_del_preun ostree-boot-complete.service
 
@@ -164,6 +165,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcostree-remount
 %service_add_post ostree-prepare-root.service
 %service_add_post ostree-remount.service
 %service_add_post ostree-finalize-staged.service
+%service_add_post ostree-finalize-staged-hold.service
 %service_add_post ostree-finalize-staged.path
 %service_add_post ostree-boot-complete.service
 %tmpfiles_create %{_tmpfilesdir}/ostree-tmpfiles.conf
@@ -172,6 +174,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcostree-remount
 %service_del_postun ostree-prepare-root.service
 %service_del_postun ostree-remount.service
 %service_del_postun ostree-finalize-staged.service
+%service_del_postun ostree-finalize-staged-hold.service
 %service_del_postun ostree-finalize-staged.path
 %service_del_postun ostree-boot-complete.service
 
@@ -190,11 +193,11 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcostree-remount
 %{_prefix}/lib/ostree/ostree-remount
 # Lost in move to curl, needs soup, but upstream have not yet ported to soup3
 #%%{_libexecdir}/libostree/ostree-trivial-httpd
-%{_libexecdir}/libostree/s390x-se-luks-gencpio
 %{_dracutmodulesdir}/98ostree/
 %{_unitdir}/ostree-prepare-root.service
 %{_unitdir}/ostree-remount.service
 %{_unitdir}/ostree-finalize-staged.service
+%{_unitdir}/ostree-finalize-staged-hold.service
 %{_unitdir}/ostree-finalize-staged.path
 %{_unitdir}/ostree-boot-complete.service
 %dir %{_sysconfdir}/dracut.conf.d
