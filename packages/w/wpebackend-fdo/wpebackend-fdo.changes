@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct  4 19:49:48 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.14.0:
+  + Fixed a crash caused by trying to deallocate already freed
+    graphics buffers in certain situations.
+- Use ldconfig_scriptlets macro for post(un) handling.
+
+-------------------------------------------------------------------
 Fri Aug 26 16:02:34 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.12.1:

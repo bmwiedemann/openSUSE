@@ -19,7 +19,7 @@
 %define sover 1
 
 Name:           wpebackend-fdo
-Version:        1.12.1
+Version:        1.14.0
 Release:        0
 Summary:        A WPE backend designed for Linux desktop systems
 License:        BSD-2-Clause
@@ -71,8 +71,7 @@ header files for developing applications that use %{name}.
 %install
 %meson_install
 
-%post -n libWPEBackend-fdo-1_0-%{sover} -p /sbin/ldconfig
-%postun -n libWPEBackend-fdo-1_0-%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libWPEBackend-fdo-1_0-%{sover}
 
 %files -n libWPEBackend-fdo-1_0-%{sover}
 %license COPYING
