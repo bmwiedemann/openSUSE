@@ -75,4 +75,12 @@
     ``params`` was being overwritten by ``data``).</comment>
     <requestid>862170</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d3ac10e51ea3cb42fe180c86e19f8506</srcmd5>
+    <version>1.2.0</version>
+    <time>1665592006</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010200</requestid>
+  </revision>
 </revisionlist>
