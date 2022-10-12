@@ -1,7 +1,7 @@
 #
 # spec file for package python-devpi-common
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-devpi-common
-Version:        3.6.0
+Version:        3.7.0
 Release:        0
 Summary:        Utilities jointly used by devpi-server and devpi-client
 License:        MIT

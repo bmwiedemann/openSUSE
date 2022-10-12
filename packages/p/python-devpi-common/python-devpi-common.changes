@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct 12 03:05:13 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 3.7.0 
+  Features
+   Add hash_type and fragment attributes to URL class.
+   Replace pkg_resources usage with packaging.
+  Bug Fixes
+   Fix #895: return content of data-yanked.
+   Fixed some cases where name and version weren’t split off correctly from filename.
+
+-------------------------------------------------------------------
 Mon Aug  2 13:13:26 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Update to 3.6.0
