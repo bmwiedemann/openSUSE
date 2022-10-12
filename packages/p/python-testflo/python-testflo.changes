@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 11 15:53:25 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 1.4.9 
+  * added --durations option and fixed some config file issues #71
+  * added --durations option that prints the n longest running tests (similar to pytest)
+  * fixed the way the .testflo config file is processed so it should support setting any, or at least most of the command line options
+  * added the --skip_dirs command line option (skip_dirs could be defined in the config file but it wasn't a valid command line option)
+
+-------------------------------------------------------------------
 Wed Jul 14 10:37:27 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - - Skip python 3.6 because numpy no longer support it.
