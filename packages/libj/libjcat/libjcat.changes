@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct  7 12:16:53 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.1.12:
+  * Correctly export the AliasIds in all cases (Richard Hughes)
+  * Install installed-test firmware.bin.ed25519 (Jan Tojnar)
+  * Predate test cert activation date by 1 day (David Bonner)
+
+-------------------------------------------------------------------
 Thu Apr 21 07:25:09 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.1.11:
