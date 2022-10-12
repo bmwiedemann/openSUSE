@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-google-protobuf
-Version:        3.21.5
+Version:        3.21.7
 Release:        0
 %define mod_name google-protobuf
 %define mod_full_name %{mod_name}-%{version}
