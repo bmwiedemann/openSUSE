@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 10 11:29:15 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update to 5.0.2
+ * issue #108: fix build tag enforcing Python 3.6 as minimum
+   compatible version.
+
+-------------------------------------------------------------------
 Thu Oct  6 07:29:26 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Update to 5.0.1
