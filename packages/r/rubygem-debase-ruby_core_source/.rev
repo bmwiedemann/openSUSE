@@ -57,4 +57,18 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>993471</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9eb3a6a7e2ada5ee3464ad820fc6bcdf</srcmd5>
+    <version>0.10.17</version>
+    <time>1665591904</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 0.10.17
+ see installed CHANGELOG.md
+  ## [0.10.17](https://github.com/ruby-debug/debase-ruby_core_source/compare/v0.10.16...v0.10.17)
+  
+  * ruby-3.2.0-preview2 added
+  
+</comment>
+    <requestid>1010050</requestid>
+  </revision>
 </revisionlist>
