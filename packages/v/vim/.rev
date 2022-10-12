@@ -6412,4 +6412,41 @@ always built-in because vim has direct perl dependencies anyway.
   * Manually deleting temp test files.</comment>
     <requestid>1007186</requestid>
   </revision>
+  <revision rev="326" vrev="1">
+    <srcmd5>fa4add15f621167f82c25869932c07be</srcmd5>
+    <version>9.0.0709</version>
+    <time>1665591770</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 9.0.0709, fixes the following problems
+  * Too many delete() calls in tests.
+  * &quot;const&quot; and &quot;final&quot; both make the type a constant. (Daniel Steinberg)
+  * Coverity warns for not checking return value.
+  * Get an error for using const only when executing.
+  * In Vim9 script a numbered function cannot be called.
+  * Too many delete() calls in tests.
+  * Calling a function from an &quot;expr&quot; option has too much overhead.
+  * FEAT_TITLE was removed but is still used.
+  * Evaluating &quot;expr&quot; options has more overhead than needed.
+  * Build error and compiler warnings.
+  * Underline color does not work in terminals that don't send a termresponse.
+  * Syntax of commands in Vim9 script depends on +eval feature.
+  * Popup menu highlight wrong on top of preview popup. (Yegappan Lakshmanan)
+  * Checking for popup in screen_char() is too late, the attribute has
+  already been changed.
+  * Cannot scroll by screen line if a line wraps.
+  * Missing part of the new option code.
+  * Breakindent test fails.
+  * Smoothscroll test fails.
+  * 'smoothscroll' is not copied to a new window on :split.
+  * CTRL-Y does not stop at line 1. (John Marriott)
+  * with 'smoothscroll' set CTRL-E does not work properly when 'foldmethod'
+  is set to &quot;indent&quot;. (Yee Cheng Chin)
+  * The 'splitscroll' option is not a good name.
+  * When using powershell input redirection does not work.
+  * No indication when the first line is broken for 'smoothscroll'.
+  * Some tests are failing.
+  * Build fails without the +conceal feature.
+  * 'smoothscroll' not tested with 'number' and &quot;n&quot; in 'cpo'.</comment>
+    <requestid>1009199</requestid>
+  </revision>
 </revisionlist>
