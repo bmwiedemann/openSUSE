@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 10 07:59:43 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.2.3:
+  * mergetools: don't let meld open all changed files on startup
+  * heptapod-ci: use shell script in pytype step 
+  * rhg: fix bugs around [use-dirstate-tracked-hint] and repo auto-upgrade
+  * status: let `--no-copies` override `ui.statuscopies`
+
+-------------------------------------------------------------------
 Mon Sep 12 13:13:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.2.2:

@@ -1521,4 +1521,16 @@
   * Improve portability of certain tar uses in tests</comment>
     <requestid>1002932</requestid>
   </revision>
+  <revision rev="176" vrev="1">
+    <srcmd5>95207acf6c57d5778d1ce6b1d781c3cd</srcmd5>
+    <version>6.2.3</version>
+    <time>1665591806</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.2.3:
+  * mergetools: don't let meld open all changed files on startup
+  * heptapod-ci: use shell script in pytype step 
+  * rhg: fix bugs around [use-dirstate-tracked-hint] and repo auto-upgrade
+  * status: let `--no-copies` override `ui.statuscopies`</comment>
+    <requestid>1009292</requestid>
+  </revision>
 </revisionlist>
