@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 29 12:52:01 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable kdump for %arm - boo#1203888
+- 20221010
+
+-------------------------------------------------------------------
 Wed Aug 10 11:36:02 UTC 2022 - Richard Brown <rbrown@suse.com>
 
 - Added "inst_microos" role to Desktop roles (boo#1202067)
