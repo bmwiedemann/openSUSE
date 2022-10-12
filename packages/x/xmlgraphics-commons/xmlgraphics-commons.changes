@@ -7,6 +7,7 @@ Fri Mar 18 17:52:48 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 Sun Jan 24 18:23:07 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version 2.6:
+  * fixes bsc#1182754, CVE-2020-11988
   * minor release
   * changes:
     + Fix test on Windows
