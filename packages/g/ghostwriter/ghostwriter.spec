@@ -22,7 +22,7 @@ Release:        0
 Summary:        A distraction-free Markdown editor
 License:        GPL-3.0-or-later
 Group:          Productivity/Text/Editors
-URL:            https://KDE.github.io/ghostwriter
+URL:            https://ghostwriter.kde.org
 Source:         https://github.com/KDE/ghostwriter/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
