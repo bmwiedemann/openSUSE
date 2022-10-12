@@ -56,7 +56,8 @@ ums-realtek ums-sddr09 ums-sddr55 ums-usbat usb-storage usbhid
 af_packet arptable_filter arp_tables arpt_mangle bpfilter bridge br_netfilter    \
 cls_bpf ebt_.* ebtable_.* ebtables ip6table_.* ip6_tables ip6t_.* ip_.* ipt_.* iptable_.* \
 nf_.* nfnetlink.* nft_.* openvswitch sch_ingress tun veth xfrm.*_tunnel xfrm_.* \
-x_tables xt_.* tcp_diag vport-.* vxlan vport-.* wireguard
+x_tables xt_.* vport-.* vxlan vport-.* wireguard \
+netlink_diag af_packet_diag raw_diag inet_diag tcp_diag udp_diag unix_diag vsock_diag
 
 %define crypto_modules \
 %(rpm -ql %{kernel_package_name} | grep -E 'kernel/crypto/|kernel/arch/.*/crypto/' | xargs basename -a | cut -d. -f1)
