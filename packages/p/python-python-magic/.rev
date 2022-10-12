@@ -105,4 +105,15 @@
 </comment>
     <requestid>955449</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>de4995bd76e4ccaee1bfbffd163b8966</srcmd5>
+    <version>0.4.27</version>
+    <time>1665591810</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.27:
+  - remove spurious pyproject.toml that breaks source builds
+  - Use tox for all multi-version testing
+  - Fix use of pytest, use it via tox</comment>
+    <requestid>1009307</requestid>
+  </revision>
 </revisionlist>

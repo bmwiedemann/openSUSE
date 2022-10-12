@@ -19,13 +19,14 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         oldpython python
 Name:           python-python-magic
-Version:        0.4.25
+Version:        0.4.27
 Release:        0
 Summary:        File type identification using libmagic
 License:        Python-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/ahupp/python-magic
 Source:         https://github.com/ahupp/python-magic/archive/%{version}.tar.gz
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module xml}
 BuildRequires:  fdupes
@@ -56,7 +57,7 @@ supports both textual and MIME-type output.
 
 %check
 export LC_ALL=en_US.UTF-8
-%pyunittest -v test.test
+%pytest
 
 %files %{python_files}
 %license LICENSE
