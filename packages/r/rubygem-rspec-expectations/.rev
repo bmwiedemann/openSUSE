@@ -217,4 +217,14 @@
     (Phil Pirozhkov, #1139)</comment>
     <requestid>957233</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>8c6c494fbcd96b2d537d6ca5d75f9de0</srcmd5>
+    <version>3.11.1</version>
+    <time>1665591756</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 3.11.1
+ see installed Changelog.md
+</comment>
+    <requestid>1010071</requestid>
+  </revision>
 </revisionlist>
