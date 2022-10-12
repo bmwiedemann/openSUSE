@@ -127,8 +127,8 @@ chmod -x dns/win32util.py
 %files %{python_files}
 %license LICENSE
 %doc README.md examples/
-%{python_sitelib}/dns/
-%{python_sitelib}/dnspython-%{version}.dist-info/
+%{python_sitelib}/dns
+%{python_sitelib}/dnspython-%{version}.dist-info
 %endif
 
 %changelog

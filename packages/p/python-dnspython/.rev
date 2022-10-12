@@ -317,4 +317,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>963789</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>c7553c920e5cbac621b8ba5503624a3b</srcmd5>
+    <version>2.2.1</version>
+    <time>1665591788</time>
+    <user>dimstar_suse</user>
+    <comment>- Include in filelist directories with their content.</comment>
+    <requestid>1009260</requestid>
+  </revision>
 </revisionlist>
