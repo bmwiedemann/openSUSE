@@ -18,21 +18,21 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-beartype
-Version:        0.10.4
+Version:        0.11.0
 Release:        0
 Summary:        Unbearably fast runtime type checking in pure Python
 License:        MIT
 URL:            https://github.com/beartype/beartype
 Source:         https://files.pythonhosted.org/packages/source/b/beartype/beartype-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module mypy >= 0.800}
+BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest >= 4.0.0}
-BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module typing_extensions}
 # /SECTION
 BuildRequires:  fdupes
@@ -71,7 +71,6 @@ Unbearably fast runtime type checking in pure Python.
 
 %check
 %pytest -k 'not (test_doc_readme or test_sphinx or test_pep561_mypy)'
-
 
 %files %{python_files}
 %doc README.rst
