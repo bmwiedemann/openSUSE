@@ -30,7 +30,7 @@
 %define min 0
 
 Name:           csound
-Version:        6.16.2
+Version:        6.17.0
 Release:        0
 Summary:        Computer Sound Synthesis and Composition Program
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -153,7 +153,7 @@ Development files for Csound, a sound synthesis program.
 %setup -q
 %autopatch -p1
 # remove __DATE__ from source files, causes unnecessary rebuilds
-sed -i 's:__DATE__:"":' Engine/musmon.c include/version.h Top/main.c
+#sed -i 's:__DATE__:"":' Engine/musmon.c include/version.h Top/main.c
 # copy readme
 cp %{SOURCE1} %{SOURCE2} .
 #These source files are undistributable
