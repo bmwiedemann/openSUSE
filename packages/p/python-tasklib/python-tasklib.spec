@@ -28,13 +28,11 @@ Source:         https://files.pythonhosted.org/packages/source/t/tasklib/tasklib
 Patch0:         disable-windows-test.patch
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six >= 1.4}
 BuildRequires:  %{python_module tzlocal}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  taskwarrior >= 2.4.0
 Requires:       python-pytz
-Requires:       python-six >= 1.4
 Requires:       python-tzlocal
 Requires:       taskwarrior >= 2.4.0
 BuildArch:      noarch
