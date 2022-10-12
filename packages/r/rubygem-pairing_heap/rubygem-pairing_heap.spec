@@ -16,26 +16,28 @@
 #
 
 
-%define mod_name pairing_heap
-%define mod_full_name %{mod_name}-%{version}
 #
 # This file was generated with a gem2rpm.yml and not just plain gem2rpm.
 # All sections marked as MANUAL, license headers, summaries and descriptions
 # can be maintained in that file. Please consult this file before editing any
 # of those fields
 #
+
 Name:           rubygem-pairing_heap
-Version:        0.3.0
+Version:        1.0.0
 Release:        0
-Summary:        Performant priority queue in pure ruby with support for changing
-License:        MIT
-Group:          Development/Languages/Ruby
-URL:            https://github.com/mhib/pairing_heap
-Source:         https://rubygems.org/gems/%{mod_full_name}.gem
-Source1:        gem2rpm.yml
+%define mod_name pairing_heap
+%define mod_full_name %{mod_name}-%{version}
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby >= 2.3.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
+URL:            https://github.com/mhib/pairing_heap
+Source:         https://rubygems.org/gems/%{mod_full_name}.gem
+Source1:        gem2rpm.yml
+Summary:        Performant priority queue in pure ruby with support for changing
+License:        MIT
+Group:          Development/Languages/Ruby
 
 %description
 Performant priority queue in pure ruby with support for changing priority
@@ -53,7 +55,6 @@ using pairing heap data structure.
 # drop files from the git repository
 find %{buildroot}/%{_libdir}/ruby/gems/ \( -name '.rubocop.yml' -o -name '.github' -o -name '.gitignore' \) | xargs rm -rf
 # /MANUAL
-
 
 %gem_packages
 
