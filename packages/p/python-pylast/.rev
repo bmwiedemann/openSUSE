@@ -99,4 +99,12 @@
     <comment></comment>
     <requestid>967312</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>5d98b844e11c449e90e0f31510941770</srcmd5>
+    <version>4.5.0</version>
+    <time>1665592018</time>
+    <user>dimstar_suse</user>
+    <comment>- drop unneeded six dependency</comment>
+    <requestid>1010214</requestid>
+  </revision>
 </revisionlist>

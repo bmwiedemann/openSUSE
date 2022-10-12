@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 12 11:31:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- drop unneeded six dependency
+
+-------------------------------------------------------------------
 Wed Apr  6 10:17:02 UTC 2022 - pgajdos@suse.com
 
 - pytest-mock is not required for build
