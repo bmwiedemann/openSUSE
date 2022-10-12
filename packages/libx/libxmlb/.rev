@@ -104,4 +104,12 @@ Needed for future versions of fwupd</comment>
     <comment></comment>
     <requestid>991056</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>eb89ba662e46528a0e942988d918e82f</srcmd5>
+    <version>0.3.10</version>
+    <time>1665591804</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1009287</requestid>
+  </revision>
 </revisionlist>

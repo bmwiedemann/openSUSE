@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Oct  1 11:12:48 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.3.10:
+  * Fix dumping and exporting multiple files from the CLI (Richard Hughes)
+  * Watch files before loading them into the builder (Philip Withnall)
+  * Fix potential double free when filtering by language (Sergio Costas Rodriguez)
+
+-------------------------------------------------------------------
 Fri Jul 22 21:52:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.3.9:
