@@ -18,14 +18,13 @@
 
 %define sover 20
 Name:           liblouis
-Version:        3.22.0
+Version:        3.23.0
 Release:        0
 Summary:        Two-way braille translator
 License:        LGPL-3.0-or-later
 Group:          Productivity/Other
 URL:            http://liblouis.org/
 Source0:        https://github.com/liblouis/liblouis/releases/download/v%{version}/liblouis-%{version}.tar.gz
-
 BuildRequires:  fdupes
 BuildRequires:  libyaml-devel
 BuildRequires:  pkgconfig
