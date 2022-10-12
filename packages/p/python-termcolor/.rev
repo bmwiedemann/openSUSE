@@ -76,4 +76,17 @@
     <comment>- Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
     <requestid>744000</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>7599cdaa1036d05ba8b890de47632533</srcmd5>
+    <version>2.0.1</version>
+    <time>1665591793</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.1:
+  * Add support for Python 3.11 and PyPy
+  * Add support for Python 3.10
+  * Support NO_COLOR
+  * Add type annotations to the project and run mypy on CI
+  * Add tests</comment>
+    <requestid>1009277</requestid>
+  </revision>
 </revisionlist>
