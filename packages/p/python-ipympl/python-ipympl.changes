@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sun Oct  9 17:30:00 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update download path and name of full example
+  * update required matplotlib version
+
+- update to version 0.9.2:
+  * Maintenance
+    + Remove unused 'close' arg to show(). by @anntzer in #466
+    + Move draw_if_interactive logic to
+      new_figure_manager_given_figure. by @anntzer in #468
+    + Add bot for updating galata screenshots by @martinRenou in #484
+    + Add support for ipywidgets 8 by @ianhi in #461
+
+- changes from version 0.9.1:
+  * Fix issue with widget versioning that prevented ipympl to work in
+    Voila, nbsphinx and vscode
+  * update release instructions by @ianhi in #459
+
+- changes from version 0.9.0:
+  * Bump url-parse from 1.5.3 to 1.5.7 by @dependabot in #433
+  * Create docs by @ianhi in #434
+  * remove linting from tests - now in precommit by @ianhi in #444
+  * fixed example notebook filepath by @lento234 in #445
+  * update binder bot link by @ianhi in #447
+  * support double click events by @ianhi in #446
+  * use new matplotlib nightly wheel in tests by @ianhi in #449
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #452
+  * add docs to readme by @ianhi in #453
+  * Add model version separate from package version by @ianhi in #448
+
+- changes from version 0.8.8:
+  * fix toolbar for mpl>3.6 by @ianhi in #428
+
+- changes from version 0.8.7:
+  * Remove centering of plot on firefox by @ianhi in #421
+  * Fix CI by @martinRenou in #423
+
+- changes from version 0.8.6:
+  * Use Retrolab on Binder by @martinRenou in #414
+  * Allow ipython-8.0 by @stonebig in #418
+
+- changes from version 0.8.5:
+  * Fix package dependencies by @martinRenou in #410
+
+-------------------------------------------------------------------
 Fri Dec 24 21:39:45 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to v0.8.4 w/ jupyter-matplotlib v0.10.4

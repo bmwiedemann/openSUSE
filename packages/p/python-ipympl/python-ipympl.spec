@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipympl
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 %define         skip_python36 1
-%define pyver   0.8.4
+%define pyver   0.9.2
 %define jsver   0.10.4
 %bcond_with     test
 Name:           python-ipympl
@@ -30,11 +30,11 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/matplotlib/ipympl
 Source0:        https://files.pythonhosted.org/packages/py2.py3/i/ipympl/ipympl-%{pyver}-py2.py3-none-any.whl
-Source1:        https://raw.githubusercontent.com/matplotlib/ipympl/%{pyver}/examples/ipympl.ipynb
+Source1:        https://github.com/matplotlib/ipympl/raw/%{pyver}/docs/examples/full-example.ipynb
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module ipykernel >= 4.7}
 BuildRequires:  %{python_module ipywidgets >= 7.6.0}
-BuildRequires:  %{python_module matplotlib >= 2.0.0}
+BuildRequires:  %{python_module matplotlib >= 3.4.0}
 BuildRequires:  %{python_module matplotlib-web}
 BuildRequires:  %{python_module nbval}
 BuildRequires:  %{python_module pip}
@@ -44,12 +44,12 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python-ipykernel >= 4.7
 Requires:       python-ipywidgets >= 7.6.0
-Requires:       python-matplotlib >= 2.0.0
+Requires:       python-matplotlib >= 3.4.0
 Requires:       python-matplotlib-web
-Provides:       python-jupyter_ipympl = %{pyver}
-Obsoletes:      python-jupyter_ipympl < %{pyver}
 Suggests:       python-jupyterlab
 Suggests:       python-notebook
+Provides:       python-jupyter_ipympl = %{pyver}
+Obsoletes:      python-jupyter_ipympl < %{pyver}
 BuildArch:      noarch
 %python_subpackages
 
@@ -105,7 +105,7 @@ cp %{SOURCE1} .
 cp %{buildroot}%{python3_sitelib}/ipympl-%{pyver}.dist-info/LICENSE .
 
 %check
-%pytest --nbval ipympl.ipynb
+%pytest --nbval full-example.ipynb
 
 %files %{python_files}
 %license LICENSE
