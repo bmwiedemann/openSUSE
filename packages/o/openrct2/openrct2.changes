@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct  5 19:25:21 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.4.2
+  https://github.com/OpenRCT2/OpenRCT2/blob/develop/debian/changelog
+- Update dependencies
+  * title-sequences 0.4.0
+  * objects 1.3.5
+- Drop patch:
+  * no-werror.patch
+- Use "-Wno-maybe-uninitialized" to avoid compilation errors
+
+-------------------------------------------------------------------
 Sun Jun 26 14:01:11 UTC 2022 - Berthold Gunreben <azouhr@opensuse.org>
 
 - Program only knows little endian. Disable s390x builds.

@@ -20,11 +20,11 @@
 %ifarch x86_64
   %define lib_suffix 64
 %endif
-%define title_version 0.1.2
-%define title_version_url %{title_version}c
-%define objects_version 1.2.1
+%define title_version 0.4.0
+%define title_version_url %{title_version}
+%define objects_version 1.3.5
 Name:           openrct2
-Version:        0.3.5.1
+Version:        0.4.2
 Release:        0
 Summary:        An open source re-implementation of Roller Coaster Tycoon 2
 License:        GPL-3.0-only
@@ -33,9 +33,6 @@ URL:            https://openrct2.io/
 Source0:        https://github.com/OpenRCT2/OpenRCT2/archive/v%{version}/OpenRCT2-%{version}.tar.gz
 Source1:        https://github.com/OpenRCT2/title-sequences/archive/v%{title_version_url}/title-sequences-%{title_version_url}.tar.gz
 Source2:        https://github.com/OpenRCT2/objects/archive/v%{objects_version}.tar.gz#/objects-%{objects_version}.tar.gz
-# https://github.com/OpenRCT2/OpenRCT2/issues/4401#issuecomment-511570036
-# PATCH-FIX-OPENSUSE no-werror.patch -- Do not use werror, as wno-clobbered does not work
-Patch0:         no-werror.patch
 BuildRequires:  cmake >= 3.9
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -47,6 +44,7 @@ BuildRequires:  shared-mime-info
 BuildRequires:  update-desktop-files
 BuildRequires:  zip
 BuildRequires:  pkgconfig(duktape)
+BuildRequires:  pkgconfig(flac)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(icu-uc) >= 59.0
@@ -56,6 +54,7 @@ BuildRequires:  pkgconfig(libzip) >= 1.0
 BuildRequires:  pkgconfig(openssl) >= 1.0.0
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(speexdsp)
+BuildRequires:  pkgconfig(vorbisfile)
 BuildRequires:  pkgconfig(zlib)
 Recommends:     (kdialog or zenity)
 ExcludeArch:    s390x
@@ -79,13 +78,13 @@ When using RCT1 sequences, the original RCT1 files have to be installed.
 
 %prep
 %setup -q -n OpenRCT2-%{version} -a 1 -a 2
-%patch0 -p1
 
 # Remove build time references so build-compare can do its work
 sed -i "s/__DATE__/\"openSUSE\"/" src/openrct2/Version.h
 sed -i "s/__TIME__/\"Build Service\"/" src/openrct2/Version.h
 
 %build
+export CXXFLAGS="%optflags -Wno-maybe-uninitialized"
 %cmake -DDOWNLOAD_TITLE_SEQUENCES=OFF -DDOWNLOAD_OBJECTS=OFF
 %make_build all
 # libopenrct2 is not installed when openrct2 is called by make, so set the LD_LIBRARY_PATH
@@ -128,6 +127,7 @@ rm -rf %{buildroot}%{_datadir}/doc
 %{_bindir}/openrct2-cli
 %{_libdir}/libopenrct2.so
 %{_mandir}/man6/openrct2.6%{?ext_man}
+%{_mandir}/man6/openrct2-cli.6%{?ext_man}
 %{_datadir}/openrct2/
 %exclude %{_datadir}/openrct2/title/rct*
 %{_datadir}/icons/hicolor/*/apps/*
