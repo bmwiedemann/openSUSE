@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 11 15:47:10 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 0.1.2 
+  * Use extras in tox instead of self-referencing the package in deps by @hroncok in #1
+  * Removed shebang from main.py by @hegjon in #3
+
+-------------------------------------------------------------------
 Fri Aug 20 12:29:39 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.1.0
