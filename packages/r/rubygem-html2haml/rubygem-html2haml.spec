@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-html2haml
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-html2haml
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 %define mod_name html2haml
 %define mod_full_name %{mod_name}-%{version}
@@ -33,8 +33,8 @@ BuildRequires:  %{ruby >= 1.9.2}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 BuildRequires:  update-alternatives
-Url:            http://haml.info
-Source:         http://rubygems.org/gems/%{mod_full_name}.gem
+URL:            http://haml.info
+Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Converts HTML into Haml
 License:        MIT
