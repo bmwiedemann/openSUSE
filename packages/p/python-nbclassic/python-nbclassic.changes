@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct  9 17:11:52 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.4.5:
+  * Bugs fixed
+    + fix: display the correct about box if jupyter notebook command
+      is used #156 (@echarles)
+
+-------------------------------------------------------------------
 Sat Oct  1 19:17:58 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Remove duplicates workaround
