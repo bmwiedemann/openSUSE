@@ -16,21 +16,18 @@
 #
 
 
-%define so_ver  15
+%define so_ver  16
 Name:           libcpuid
-Version:        0.5.1+git.1644144775
+Version:        0.6.0
 Release:        0
 Summary:        Library providing x86 CPU identification
 License:        BSD-2-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/anrieff/libcpuid
-Source0:        %{name}-%{version}.tar.gz
-BuildRequires:  autoconf
-BuildRequires:  automake
+Source0:        https://github.com/anrieff/libcpuid/releases/download/v%{version}/libcpuid-%{version}.tar.gz
 BuildRequires:  help2man
-BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  python2-base
+BuildRequires:  python3-base
 
 %description
 Libcpuid provides CPU identification for the x86 (and x86_64) architectures.
@@ -62,7 +59,6 @@ architectures.
 %setup -q
 
 %build
-autoreconf -fiv
 %configure \
   --enable-static=no
 %make_build
@@ -79,7 +75,7 @@ install -D -p -m 0644 cpuid_tool.1 \
   %{buildroot}%{_mandir}/man1/cpuid_tool.1
 
 %check
-make %{?_smp_mflags} test
+%make_build test
 
 %post -n %{name}%{so_ver} -p /sbin/ldconfig
 %postun -n %{name}%{so_ver} -p /sbin/ldconfig
