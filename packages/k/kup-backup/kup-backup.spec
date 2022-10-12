@@ -24,7 +24,7 @@ Release:        0
 Summary:        Backup scheduler for the Plasma desktop
 License:        GPL-2.0-only AND GPL-3.0-only
 Group:          System/GUI/KDE
-URL:            https://invent.kde.org/kde/kup
+URL:            https://apps.kde.org/kup/
 Source0:        https://download.kde.org/stable/%{rname}/%{rname}-%{version}.tar.xz
 %if %{with lang}
 Source1:        https://download.kde.org/stable/%{rname}/%{rname}-%{version}.tar.xz.sig
