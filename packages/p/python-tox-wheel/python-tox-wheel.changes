@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 11 16:04:08 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- version update to 0.7.0 
+  * Fixed build dir not being cleaned up in PEP 517 mode. Contributed by Michael Rans in #16.
+  * Switched CI from Travis/AppVeyor to GitHub Actions.
+
+-------------------------------------------------------------------
 Tue Dec  7 17:37:36 UTC 2021 - pgajdos@suse.com
 
 - version update to 0.6.0
