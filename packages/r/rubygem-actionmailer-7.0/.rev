@@ -39,4 +39,19 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>993451</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0e609b8e339ec40eadcbd52bb0f473c9</srcmd5>
+    <version>7.0.4</version>
+    <time>1665591888</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 7.0.4
+ see installed CHANGELOG.md
+  ## Rails 7.0.4 (September 09, 2022) ##
+  
+  *   No changes.
+  
+  
+</comment>
+    <requestid>1010023</requestid>
+  </revision>
 </revisionlist>
