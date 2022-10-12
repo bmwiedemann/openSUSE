@@ -32,7 +32,6 @@ BuildRequires:  %{python_module html5lib}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module zope.interface}
 BuildRequires:  fdupes
-BuildRequires:  python
 BuildRequires:  python-rpm-macros
 Requires:       python-html5lib
 BuildArch:      noarch
@@ -42,7 +41,6 @@ BuildArch:      noarch
 Stateful programmatic web browsing in Python. Browse pages
 programmatically with HTML form filling and clicking
 of links.
-
 
 %prep
 %setup -q -n %{modname}-%{version}
