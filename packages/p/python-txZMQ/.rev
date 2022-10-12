@@ -35,4 +35,15 @@
     <comment></comment>
     <requestid>783704</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f9d35eebe1618abd85498afa050da728</srcmd5>
+    <version>1.0.0</version>
+    <time>1665591880</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.0 
+  * Merge pull request #88 from smira/mplv2
+  * chore: relicense under MPLv2
+</comment>
+    <requestid>1009901</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-txZMQ
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-txZMQ
-Version:        0.8.2
+Version:        1.0.0
 Release:        0
 Summary:        Twisted bindings for ZeroMQ
-License:        GPL-2.0-only
+License:        MPL-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/smira/txZMQ
 Source:         https://files.pythonhosted.org/packages/source/t/txZMQ/txZMQ-%{version}.tar.gz
