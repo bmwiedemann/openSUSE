@@ -20,7 +20,7 @@
 %bcond_without python2
 %define modname Lektor
 Name:           python-Lektor
-Version:        3.3.6
+Version:        3.3.7
 Release:        0
 Summary:        A static content management system
 License:        BSD-3-Clause
