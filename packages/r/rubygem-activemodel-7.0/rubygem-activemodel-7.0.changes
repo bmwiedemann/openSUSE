@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Oct 10 12:53:50 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 7.0.4
+ see installed CHANGELOG.md
+
+  ## Rails 7.0.4 (September 09, 2022) ##
+  
+  *   Handle name clashes in attribute methods code generation cache.
+  
+      When two distinct attribute methods would generate similar names,
+      the first implementation would be incorrectly re-used.
+  
+      ```ruby
+      class A
+        attribute_method_suffix "_changed?"
+        define_attribute_methods :x
+      end
+  
+      class B
+        attribute_method_suffix "?"
+        define_attribute_methods :x_changed
+      end
+      ```
+  
+      *Jean Boussier*
+  
+
+-------------------------------------------------------------------
 Thu Aug  4 12:52:00 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 7.0.3.1

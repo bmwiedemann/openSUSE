@@ -39,4 +39,35 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>993456</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7a3c019835a24afe67f14fa8f2fb4785</srcmd5>
+    <version>7.0.4</version>
+    <time>1665591899</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 7.0.4
+ see installed CHANGELOG.md
+  ## Rails 7.0.4 (September 09, 2022) ##
+  
+  *   Handle name clashes in attribute methods code generation cache.
+  
+      When two distinct attribute methods would generate similar names,
+      the first implementation would be incorrectly re-used.
+  
+      ```ruby
+      class A
+        attribute_method_suffix &quot;_changed?&quot;
+        define_attribute_methods :x
+      end
+  
+      class B
+        attribute_method_suffix &quot;?&quot;
+        define_attribute_methods :x_changed
+      end
+      ```
+  
+      *Jean Boussier*
+  
+</comment>
+    <requestid>1010044</requestid>
+  </revision>
 </revisionlist>
