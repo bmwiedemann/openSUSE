@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rack-proxy
-Version:        0.7.2
+Version:        0.7.4
 Release:        0
 %define mod_name rack-proxy
 %define mod_full_name %{mod_name}-%{version}
