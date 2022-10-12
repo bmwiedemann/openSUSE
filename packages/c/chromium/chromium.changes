@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct 12 04:47:50 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 106.0.5249.119 (boo#1204223)
+  * CVE-2022-3445: Use after free in Skia
+  * CVE-2022-3446: Heap buffer overflow in WebSQL
+  * CVE-2022-3447: Inappropriate implementation in Custom Tabs
+  * CVE-2022-3448: Use after free in Permissions API
+  * CVE-2022-3449: Use after free in Safe Browsing
+  * CVE-2022-3450: Use after free in Peer Connection
+
+-------------------------------------------------------------------
 Thu Oct  6 21:02:32 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 106.0.5249.103:
