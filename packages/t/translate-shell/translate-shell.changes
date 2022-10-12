@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Oct 10 00:35:54 UTC 2022 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.9.7:
+  * Translate-Shell now recognizes 159 languages in total (including
+    all the languages currently supported by Google Translate, Bing Translator,
+    and Yandex.Translate)
+  * Google Translate: fixed a regression bug (bac44df)
+  * Bing Translator: fixed engine support (4a3a900)
+  * Show HTTP error codes (892b543)
+  * The default engine is now changed to auto (which uses google by
+    default, but automatically falls back on bing if the specified language
+    is not supported by Google Translate)
+  * The options -l / -lang for specifying the interface language are
+    deprecated in favor of -hl / -host; the environment variable HOME_LANG
+    is deprecated in favor of HOST_LANG
+  * 4 new options: -list-languages, -list-languages-english, -list-codes,
+    -list-all to list all languages and codes
+  * The options -L / -linguist (-list is deprecated) now show more
+    linguistic details about languages
+
+-------------------------------------------------------------------
 Wed Aug 26 19:15:07 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.9.6.12
