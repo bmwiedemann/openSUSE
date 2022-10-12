@@ -186,4 +186,21 @@
     <comment></comment>
     <requestid>977448</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>3c954fdaa1b76afd579406794cac3053</srcmd5>
+    <version>2.19.0</version>
+    <time>1665591917</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 2.19.0
+ see installed CHANGELOG.md
+  ## 2.19.0 / 2022-09-14
+  
+  ### Features
+  
+  * Allow SVG 1.0 color keyword names in CSS attributes. These colors are part of the [CSS Color Module Level 3](https://www.w3.org/TR/css-color-3/#svg-color) recommendation released 2022-01-18. [[#243](https://github.com/flavorjones/loofah/issues/243)]
+  
+  
+</comment>
+    <requestid>1010074</requestid>
+  </revision>
 </revisionlist>
