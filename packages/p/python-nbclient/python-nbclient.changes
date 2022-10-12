@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct  9 17:10:22 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.7.0:
+  * Maintenance and upkeep improvements
+    + Cleanup CI #254 (@blink1073)
+    + Handle client 8 support #253 (@blink1073)
+
+-------------------------------------------------------------------
 Fri Sep  9 16:47:56 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 0.6.8:
