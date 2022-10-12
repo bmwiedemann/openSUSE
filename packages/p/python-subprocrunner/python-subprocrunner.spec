@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-subprocrunner
-Version:        1.6.0
+Version:        2.0.0
 Release:        0
 Summary:        A Python wrapper library for subprocess module
 License:        MIT
