@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 11 02:16:31 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded BuildRequires on python 
+
+-------------------------------------------------------------------
 Thu May 21 06:55:36 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

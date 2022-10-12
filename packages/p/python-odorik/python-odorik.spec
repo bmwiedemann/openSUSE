@@ -1,7 +1,7 @@
 #
 # spec file for package python-odorik
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,6 @@ Version:        0.5
 Release:        0
 Summary:        Python module for Odorik API
 License:        GPL-3.0-or-later
-Group:          Development/Languages/Python
 URL:            https://cihar.com/software/odorik/
 Source:         https://files.pythonhosted.org/packages/source/o/odorik/odorik-%{version}.tar.bz2
 BuildRequires:  %{python_module Sphinx}
@@ -31,12 +30,11 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module pyxdg}
 BuildRequires:  fdupes
-BuildRequires:  python
 BuildRequires:  python-rpm-macros
 Requires:       python-python-dateutil
 Requires:       python-xdg
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
