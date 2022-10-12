@@ -23,23 +23,29 @@ Release:        0
 Summary:        Store and run multiple GNOME terminals in one window
 License:        GPL-2.0-only
 Group:          System/X11/Terminals
-URL:            https://gnometerminator.blogspot.com/p/introduction.html
+URL:            https://github.com/gnome-terminator/terminator
 Source:         https://github.com/gnome-terminator/terminator/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Patch0:         terminator-desktop.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gettext
 BuildRequires:  gobject-introspection
+BuildRequires:  gsettings-desktop-schemas
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
+BuildRequires:  pkgconfig(libnotify)
+BuildRequires:  python3
 BuildRequires:  python3-cairo
 BuildRequires:  python3-configobj
+BuildRequires:  python3-dbus-python
 BuildRequires:  python3-gobject-Gdk
 BuildRequires:  python3-psutil
 BuildRequires:  python3-pytest
 BuildRequires:  python3-setuptools
 BuildRequires:  update-desktop-files
 BuildRequires:  typelib(Vte) = 2.91
+BuildRequires:  xvfb-run
+Requires:       gsettings-desktop-schemas
 Requires:       python3-cairo
 Requires:       python3-configobj
 Requires:       python3-dbus-python
@@ -72,10 +78,8 @@ python3 setup.py build
 %install
 python3 setup.py install --root=%{buildroot} --prefix=%{_prefix}
 
-rm -f %{buildroot}/%{_datadir}/icons/hicolor/icon-theme.cache
-rm -f %{buildroot}/%{_datadir}/applications/%{name}.desktop
-rm -rf %{buildroot}%{_datadir}/doc/terminator/apidoc/.buildinfo
-rm -rf %{buildroot}%{_datadir}/doc/terminator/html/.buildinfo
+rm %{buildroot}/%{_datadir}/icons/hicolor/icon-theme.cache
+rm %{buildroot}/%{_datadir}/applications/%{name}.desktop
 
 desktop-file-install --vendor="" --dir=%{buildroot}%{_datadir}/applications data/%{name}.desktop
 %suse_update_desktop_file %{name}
@@ -84,8 +88,7 @@ desktop-file-install --vendor="" --dir=%{buildroot}%{_datadir}/applications data
 %find_lang %{name}
 
 %check
-# All but one test in test_prefseditor_keybindings.py causes segfault
-python3 -m pytest -k 'not (test_message_dialog_is_shown_on_duplicate_accel_assignment or test_duplicate_accels_not_possible_to_set or test_keybinding_edit_produce_expected_accels or test_keybinding_successfully_reassigned_after_clearing)' tests/
+xvfb-run python3 -m pytest
 
 %files
 %license COPYING

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct  9 01:07:52 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Replace stale website URL with Github repo 
+- Use xvfb-run to run full test suite
+
+-------------------------------------------------------------------
 Mon Sep  5 05:31:52 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Remove unnecessary BuildDepends python3-devel
