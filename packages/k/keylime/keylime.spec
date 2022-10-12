@@ -27,7 +27,7 @@
   %define _config_norepl %config(noreplace)
 %endif
 Name:           keylime
-Version:        6.5.0
+Version:        6.5.1
 Release:        0
 Summary:        Open source TPM software for Bootstrapping and Maintaining Trust
 License:        Apache-2.0 AND MIT
@@ -169,11 +169,9 @@ Subpackage of %{name} for logrotate for Keylime services
 export VERSION=%{version}
 %python_install
 
-%{python_expand # Patch the generated configuration files
-patch -s --fuzz=0 %{buildroot}%{$python_sitelib}/%{srcname}/config/agent.conf < %{SOURCE10}
-patch -s --fuzz=0 %{buildroot}%{$python_sitelib}/%{srcname}/config/registrar.conf < %{SOURCE11}
-patch -s --fuzz=0 %{buildroot}%{$python_sitelib}/%{srcname}/config/verifier.conf < %{SOURCE12}
-}
+patch -s --fuzz=0 config/agent.conf < %{SOURCE10}
+patch -s --fuzz=0 config/registrar.conf < %{SOURCE11}
+patch -s --fuzz=0 config/verifier.conf < %{SOURCE12}
 
 %python_clone -a %{buildroot}%{_bindir}/%{srcname}_verifier
 %python_clone -a %{buildroot}%{_bindir}/%{srcname}_registrar
@@ -186,11 +184,9 @@ patch -s --fuzz=0 %{buildroot}%{$python_sitelib}/%{srcname}/config/verifier.conf
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%{python_expand # Install configuration files
-for cfg in %{buildroot}%{$python_sitelib}/%{srcname}/config/*.conf; do
+for cfg in config/*.conf; do
   install -Dpm 0600 "$cfg" %{buildroot}%{_distconfdir}/%{srcname}/$(basename "$cfg")
 done
-}
 
 install -Dpm 0644 ./services/%{srcname}_agent.service %{buildroot}%{_unitdir}/%{srcname}_agent.service
 install -Dpm 0644 ./services/%{srcname}_agent_secure.mount %{buildroot}%{_unitdir}/var-lib-%{srcname}-secure.mount

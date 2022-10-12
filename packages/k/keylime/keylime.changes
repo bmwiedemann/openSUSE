@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Oct 12 06:50:54 UTC 2022 - aplanas@suse.com
+
+- Drop replace-use-of-cryptography.utils.register_interface.patch,
+  already upstream
+- Update to version v6.5.1:
+  * Bump version to 6.5.1
+  * Fix proper exception handling and impedance match in `tornado_requests` (#1128)
+  * elchecking/tests: fix type hints for Dispatcher
+  * tpm_main: unescape UEFI eventlog strings
+  * elchecking: fix standalone program
+  * elchecking/example: add support for MokListTrusted variable
+  * README, docs: remove reference to ipsec demo
+  * docs: fix typo and note box rendering
+  * docs: update installation instructions
+  * make Rust agent official, add depreacation warnings to Python agent
+  * GH first-interaction action is busted, workaround
+  * Replace use of cryptography.utils.register_interface
+  * Remove unnecessary config symbolic link
+  * Small changes required by enhancement #73 "Durable (Offline) Attestion"
+  * docs, README: add reference to official Docker containers
+  * Fix typo in ISSUE_TEMPLATE.md
+
+-------------------------------------------------------------------
+Mon Oct 10 13:55:15 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add replace-use-of-cryptography.utils.register_interface.patch to
+  support new cryptography 38.0
+
+-------------------------------------------------------------------
 Mon Sep 26 07:15:17 UTC 2022 - aplanas@suse.com
 
 - Remove keylime.conf.diff patch.  Now the configuration file is
