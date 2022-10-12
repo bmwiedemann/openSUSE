@@ -24,12 +24,12 @@
 #
 
 Name:           rubygem-rouge
-Version:        3.30.0
+Version:        4.0.0
 Release:        0
 %define mod_name rouge
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 2.0}
+BuildRequires:  %{ruby >= 2.7}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 BuildRequires:  update-alternatives
