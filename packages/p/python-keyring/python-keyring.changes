@@ -13,7 +13,7 @@ Tue Sep 20 16:18:23 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
     (masked by the compatibility fallback).
   * Add workaround for devpi_client hook with wrapped
     implementation.
-- Add the missing python-jaraco.classes dependency.
+- Add the missing python-jaraco.classes dependency (bsc#1203659)
 
 -------------------------------------------------------------------
 Sat Sep 17 08:34:37 UTC 2022 - Dirk Müller <dmueller@suse.com>
