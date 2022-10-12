@@ -17,32 +17,33 @@
 
 
 Name:           python-fakeredis
-Version:        1.9.1
+Version:        1.9.3
 Release:        0
 Summary:        Fake implementation of redis API for testing purposes
 License:        BSD-3-Clause AND MIT
 URL:            https://github.com//dsoftwareinc/fakeredis
 Source:         https://github.com/dsoftwareinc/fakeredis-py/archive/refs/tags/v%{version}.tar.gz#/fakeredis-%{version}-gh.tar.gz
-# https://github.com/cunla/fakeredis-py/pull/51/
-Patch0:         python-fakeredis-no-six.patch
+# PATCH-FIX-UPSTREAM fakeredis-pr54-fix-ensure_str.patch gh#dsoftwareinc/fakeredis#54
+Patch0:         fakeredis-pr54-fix-ensure_str.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-redis
+Requires:       python-redis < 4.4
 Requires:       python-sortedcontainers >= 2.4.0
-Suggests:       (python-aioredis if python-redis < 4.2)
-Suggests:       python-lupa
+Suggests:       (python-aioredis >= 2.0.1)
+Suggests:       python-lupa >= 1.13
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module future}
+# technically requires hypothesis >= 6.47.1, but we don't have it yet
 BuildRequires:  %{python_module hypothesis}
-BuildRequires:  %{python_module lupa}
-BuildRequires:  %{python_module pytest >= 4.0}
-BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module lupa >= 1.13}
+BuildRequires:  %{python_module pytest >= 7.1.2}
+BuildRequires:  %{python_module pytest-asyncio >= 0.19.0}
+# technically requires pytest-mock >= 3.7.0, but we don't have it yet
 BuildRequires:  %{python_module pytest-mock}
-BuildRequires:  %{python_module redis}
+BuildRequires:  %{python_module redis < 4.4}
 BuildRequires:  %{python_module sortedcontainers >= 2.4.0}
 # /SECTION
 %python_subpackages
@@ -51,8 +52,7 @@ BuildRequires:  %{python_module sortedcontainers >= 2.4.0}
 Fake implementation of redis API for testing purposes.
 
 %prep
-%setup -q -n fakeredis-py-%{version}
-%patch0 -p1
+%autosetup -p1 -n fakeredis-py-%{version}
 
 %build
 %pyproject_wheel

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Oct  9 19:22:51 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.9.3
+  * Removed python-six dependency
+  * zadd support for GT/LT by @cunla in #49
+  * Remove six dependency by @cunla in #51
+  * Add host to conn_pool_args by @cunla in #51
+- Drop python-fakeredis-no-six.patch which was incomplete
+  * all commits, including the missing ones in release now
+- Add fakeredis-pr54-fix-ensure_str.patch
+
+-------------------------------------------------------------------
 Tue Sep 27 10:49:56 UTC 2022 - pgajdos@suse.com
 
 - use upstream
