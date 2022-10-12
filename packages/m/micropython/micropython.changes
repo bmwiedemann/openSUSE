@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 11 15:17:23 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Suppress stripping of binary
+- Run tests everywhere with just the problematic ones suppressed
+
+-------------------------------------------------------------------
 Sat Jul  2 06:18:04 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 1.19.1:
