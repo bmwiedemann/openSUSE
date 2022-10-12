@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Mon Oct 10 13:08:01 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 6.0.6
+ see installed CHANGELOG.md
+
+  ## 6.0.6
+  
+  * Prevent CRuby from accidentally using the Ruby implementation fallback
+    * Reversing what v6.0.3 and v6.0.4 did, but still supporting Wasm.
+  
+  ## 6.0.5
+  
+  * Resurrect `#haml_object_ref` support in an object reference [#1097](https://github.com/haml/haml/issues/1097)
+    * This was removed in 6.0.0, and added back in this version.
+  * Stop warning `remove_whitespace: true` option.
+  
+  ## 6.0.4
+  
+  Released on October 2, 2022
+  ([diff](https://github.com/haml/haml/compare/v6.0.3...v6.0.4)).
+  
+  * Fix a parse failure of `%` in attributes [#1096](https://github.com/haml/haml/issues/1096)
+  * Add another fallback from C to Ruby for Wasm.
+  
+  ## 6.0.3
+  
+  Released on September 28, 2022
+  ([diff](https://github.com/haml/haml/compare/v6.0.2...v6.0.3)).
+  
+  * For Wasm, fallback to Ruby when C extension is not available.
+  
+  ## 6.0.2
+  
+  Released on September 28, 2022
+  ([diff](https://github.com/haml/haml/compare/v6.0.1...v6.0.2)).
+  
+  * Unescape HTML-safe arguments for `surround`, `succeed`, and `precede` on Rails
+    [#1088](https://github.com/haml/haml/issues/1088)
+  
+  ## 6.0.1
+  
+  Released on September 23, 2022
+  ([diff](https://github.com/haml/haml/compare/v6.0.0...v6.0.1)).
+  
+  * Unescape HTML-safe interpolation on Rails [#1084](https://github.com/haml/haml/issues/1084)
+  * Resurrect Haml 5's `AttributeParser.available?` for syntax\_tree-haml [#1085](https://github.com/haml/haml/issues/1085)
+  
+  ## 6.0.0
+  
+  Released on September 21, 2022
+  ([diff](https://github.com/haml/haml/compare/v5.2.2...v6.0.0)).
+  
+  * Replace the implementation with Hamlit
+    * Haml 6 is about 1.7x faster than Haml 5 in [this benchmark](benchmark/slim/run-benchmarks.rb).
+    * The parser is kept as is, but everything else is replaced.
+    * The `haml` CLI interface was also replaced.
+    * The interface of `Haml::Engine` is changed. `Haml::Template` is most likely what you need now.
+    * Most Haml helpers are removed.
+       * Rails:
+           * Kept: `find_and_reserve`, `preserve`, `surround`, `precede`, `succeed`, `capture_haml`
+           * Removed: `block_is_haml?`, `flatten`, `haml_concat`, `haml_indent`, `haml_tag`, `haml_tag_if`, `html_attrs`,
+             `html_escape`, `init_haml_helpers`, `is_haml?`, `list_of`, `non_haml`, `tab_down`, `tab_up`, `with_tabs`
+       * Tilt:
+           * Kept: `preserve`
+           * Removed: `block_is_haml?`, `capture_haml`, `escape_once`, `find_and_preserve`, `flatten`, `haml_concat`,
+             `haml_indent`, `haml_tag`, `haml_tag_if`, `html_attrs`, `html_escape`, `init_haml_helpers`, `is_haml?`,
+             `list_of`, `non_haml`, `precede`, `succeed`, `surround`, `tab_down`, `tab_up`, `with_tabs`
+    * Only the attributes in [`Haml::AttributeBuilder::BOOLEAN_ATTRIBUTES`](lib/haml/attribute_builder.rb)
+      are handled as boolean attributes.
+    * Some legacy Rails integration is removed.
+  
+
+-------------------------------------------------------------------
 Tue Jan 25 07:02:01 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 5.2.2
