@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 11 16:38:21 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to Version 2.7.1 - 10/24/2020
+  * Add Ext type value validation to Ext class and ext_serializable() decorator.
+  * Change string formatting from % to .format() throughout codebase. 
+
+-------------------------------------------------------------------
 Thu Jul 23 12:18:09 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 2.6.0
