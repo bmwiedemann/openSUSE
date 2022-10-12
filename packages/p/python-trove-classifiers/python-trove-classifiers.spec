@@ -18,19 +18,19 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-trove-classifiers
-Version:        2022.6.26
+Version:        2022.8.31
 Release:        0
 Summary:        Canonical source for classifiers on PyPI
 License:        Apache-2.0
 URL:            https://github.com/pypa/trove-classifiers
 Source:         https://files.pythonhosted.org/packages/source/t/trove-classifiers/trove-classifiers-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module wheel}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module calver}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %python_subpackages
 
@@ -57,4 +57,3 @@ Classifiers categorize projects per PEP 301. Use this package to validate classi
 %{python_sitelib}/trove_classifiers-%{version}*-info
 
 %changelog
-

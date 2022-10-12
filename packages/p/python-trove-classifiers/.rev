@@ -7,4 +7,12 @@
     <comment>Please put in openSUSE:Factory:Staging:adi:34</comment>
     <requestid>989174</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e3639c1a7eeaa0964cf0454ef248609a</srcmd5>
+    <version>2022.8.31</version>
+    <time>1665591751</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1009903</requestid>
+  </revision>
 </revisionlist>
