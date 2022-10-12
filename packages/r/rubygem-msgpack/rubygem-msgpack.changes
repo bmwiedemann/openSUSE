@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Oct 10 13:10:43 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 1.6.0
+ see installed ChangeLog
+
+  2022-09-30 1.6.0:
+  
+  * Fix a potential use-after-free bug in Buffer_free when accessing a packer or unpacker buffer. 
+  * `old-style-definition` compilation warnings.
+  * Restore zero-copy buffer feed when provided a Ruby string. This was accidentally broken in 1.5.4.
+  * Provide implementations for `ObjectSpace.memsize`. Message pack objects now properly report their size to Ruby.
+  * Fix an endianess bug on Windows platform.
+  
+
+-------------------------------------------------------------------
 Fri Aug 26 16:30:50 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 1.5.6
