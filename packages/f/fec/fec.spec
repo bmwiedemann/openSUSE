@@ -1,8 +1,8 @@
 #
 # spec file for package fec
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2017-2022, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,15 +22,16 @@ Name:           fec
 Version:        3.0.0+git.20160910
 Release:        0
 Summary:        Library with several forward error correction (FEC) functions
-License:        LGPL-2.1
+License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/Opendigitalradio/ka9q-fec
+URL:            https://github.com/Opendigitalradio/ka9q-fec
 Source:         %{name}-%{version}.tar.xz
 Patch0:         fec-fix-cmake-libdir.patch
 Patch1:         fec-fix-cmake-pkgconfig-whitespace.patch
 BuildRequires:  cmake
 BuildRequires:  git-core
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
+ExclusiveArch:  x86_64 %{arm} aarch64
 
 %description
 A library that provides a set of functions that implement several
@@ -75,7 +76,8 @@ applications that want to make use of libfec.
 %postun -n libfec%{sover} -p /sbin/ldconfig
 
 %files -n libfec%{sover}
-%doc LICENSE README README.x86-64
+%license LICENSE
+%doc README README.x86-64
 %{_libdir}/libfec.so.%{sover}
 
 %files devel

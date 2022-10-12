@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 11 19:43:02 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Fails to build on i586 - build only for "x86_64 %{arm} aarch64"
+- Run spec-cleaner
+
+-------------------------------------------------------------------
 Tue Jan 23 11:35:09 UTC 2018 - mardnh@gmx.de
 
 - Add patch:
