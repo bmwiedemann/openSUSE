@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 11 17:22:17 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 5.1.1 
+  * This patch release moves to using pathlib.Path.home() to get the home directory.
+
+-------------------------------------------------------------------
 Mon Nov  9 04:44:33 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 5.0.0:
