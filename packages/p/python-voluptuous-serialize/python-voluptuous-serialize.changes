@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 11 16:57:20 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 2.5.0 
+  * Add support for enum (#34) @balloob
+  * Include LICENSE in pip package
+
+-------------------------------------------------------------------
 Wed Jul 22 12:33:45 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 2.4.0
