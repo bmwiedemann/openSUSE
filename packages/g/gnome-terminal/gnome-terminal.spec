@@ -18,7 +18,7 @@
 
 %bcond_without  nautilus_extension
 Name:           gnome-terminal
-Version:        3.46.1
+Version:        3.46.2
 Release:        0
 Summary:        GNOME Terminal
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -107,6 +107,7 @@ rm %{buildroot}/usr/share/metainfo/org.gnome.Terminal.Nautilus.metainfo.xml
 %{_bindir}/gnome-terminal
 %{_datadir}/metainfo/org.gnome.Terminal.metainfo.xml
 %{_datadir}/applications/org.gnome.Terminal.desktop
+%{_datadir}/applications/org.gnome.Terminal.Preferences.desktop
 %{_libexecdir}/gnome-terminal-server
 %{_datadir}/dbus-1/services/org.gnome.Terminal.service
 %{_datadir}/glib-2.0/schemas/org.gnome.Terminal.gschema.xml
@@ -115,7 +116,7 @@ rm %{buildroot}/usr/share/metainfo/org.gnome.Terminal.Nautilus.metainfo.xml
 %{_mandir}/man1/gnome-terminal.1%{?ext_man}
 %dir %{_libdir}/gnome-terminal
 %{_libdir}/gnome-terminal/gschemas.compiled
-%{_libdir}/gnome-terminal/gnome-terminal-preferences
+%{_libexecdir}/gnome-terminal-preferences
 
 %files -n gnome-shell-search-provider-gnome-terminal
 %dir %{_datadir}/gnome-shell
