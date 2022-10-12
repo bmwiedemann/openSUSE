@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 11 16:46:07 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 0.1.10 
+  No upstream changelog
+
+-------------------------------------------------------------------
 Thu Aug 26 08:51:30 UTC 2021 - pgajdos@suse.com
 
 - %check: really test the package, use %pytest rpm macro
