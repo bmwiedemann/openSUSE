@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Oct  5 08:07:30 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.2:
+  + Use preferred $SHELL for $PATH discovery on host to ensure we
+    pick up various $PATH modificiations.
+  + Disable support for Fish when crossing container boundaries, it
+    caused too many runtime compat issues. A default shell fallback
+    will be used.
+  + The meson plugin gained support for extracting run commands for
+    executables installed to $prefix/bin.
+  + Remove <> from insert-matching-braces.
+  + gdbwire amalgamation updated for bugfixes.
+  + Silence stderr when using gdb to avoid merging of
+    stderr/stdout. This fixes various issues with using GDB across
+    containers.
+  + Various workspace UI fixes.
+  + Path resolution fixes when resolving paths across container
+    boundaries.
+  + Build flag extraction fixes, particularly around -isystem use
+    and C++ build flags with libclang.
+  + Fixes for display of C/C++ parameters in code completion.
+  + Fixes to spellcheck invalidation.
+  + Performance fixes for repeated lookups of programs in runtime
+    paths.
+  + GTK 4 project template improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Sep 27 07:55:58 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.1:

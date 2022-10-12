@@ -25,7 +25,7 @@
 
 Name:           gnome-builder
 ### FIXME ### Enable docs build again on next versionbump (see meson options)
-Version:        43.1
+Version:        43.2
 Release:        0
 Summary:        A toolsmith for GNOME-based applications
 License:        CC-BY-SA-3.0 AND GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-3.0-or-later AND LGPL-2.1-or-later
@@ -110,6 +110,7 @@ applications.
 
 
 # doc sub-package not built (no files section) for version 43 -- https://gitlab.gnome.org/GNOME/gnome-builder/-/issues/1793
+
 %package doc
 Summary:        Documentation files for the %{name} package
 Group:          Documentation/HTML
