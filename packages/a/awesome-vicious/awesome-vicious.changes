@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 10 18:28:18 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.5.1
+  * Fixed escaping of % in helpers.format, which affects mpd widget ${Progress}
+  * Fixed possible deadlock of when update widgets
+  * [contrib.openweather] New API compatibility, which requires an API key
+  * [gmail] Authentication documentation
+  * [mpd] Added support for sending arbitrary commands
+  * [contrib.openweather] Added various new return values
+
+-------------------------------------------------------------------
 Thu May 27 08:22:00 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update old RPM macros/constructs.
