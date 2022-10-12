@@ -312,4 +312,14 @@
     <comment></comment>
     <requestid>999445</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>9016d2989f0eb0d0766316211d56a1ac</srcmd5>
+    <version>2.6.0</version>
+    <time>1665591884</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 2.6.0
+ see installed CHANGELOG.md
+</comment>
+    <requestid>1010054</requestid>
+  </revision>
 </revisionlist>
