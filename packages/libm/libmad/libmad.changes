@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Mon Aug 29 12:39:50 UTC 2022 - Adam Majer <adam.majer@suse.de>
 
-- length-check.patch: repaces frame_length.diff. Fixes now also
+- length-check.patch: replaces frame_length.diff. Fixes now also
   bsc#1036968 (CVE-2017-8373)
 - use %license for the license
 
