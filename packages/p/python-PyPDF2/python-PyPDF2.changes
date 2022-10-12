@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Oct 12 02:36:06 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 2.11.0 
+  * New Features (ENH)
+    Addition of optional visitor-functions in extract_text() (#1252)
+    Add metadata.creation_date and modification_date (#1364)
+    Add PageObject.images attribute (#1330)
+  * Bug Fixes (BUG)
+    Lookup index in _xobj_to_image can be ByteStringObject (#1366)
+    ‘IndexError: index out of range’ when using extract_text (#1361)
+    Errors in transfer_rotation_to_content() (#1356)
+  * Robustness (ROB) 
+    Ensure update_page_form_field_values does not fail if no fields (#1346)
+    Full Changelog: https://github.com/py-pdf/PyPDF2/compare/2.10.9…2.11.0
+
+-------------------------------------------------------------------
 Wed Sep  7 18:19:10 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Spec changes: 
@@ -18,10 +34,7 @@ Wed Sep  7 16:36:36 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
    -  Prevent deduplication of PageObject (#1105)
    -  None-check in DictionaryObject.read_from_stream (#1113)
    -  Avoid IndexError in _cmap.parse_to_unicode (#1110)
-   Documentation (DOC):
-   -  Explanation for git submodule
-   -  Watermark and stamp (#1095)
-   Maintenance (MAINT):
+  Documentation (DOC): -  Explanation for git submodule -  Watermark and stamp (#1095) Maintenance (MAINT):
    -  Text extraction improvements (#1126)
    -  Destination.color returns ArrayObject instead of tuple as fallback (#1119)
    -  Use add_bookmark_destination in add_bookmark (#1100)

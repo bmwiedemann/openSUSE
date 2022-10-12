@@ -66,4 +66,12 @@ Possible drop-in replacement</comment>
     <comment></comment>
     <requestid>1001820</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0dc9ae07c503fcec31ebae37c841fb12</srcmd5>
+    <version>2.11.0</version>
+    <time>1665591934</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010000</requestid>
+  </revision>
 </revisionlist>
