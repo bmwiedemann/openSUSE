@@ -16,30 +16,32 @@
 #
 
 
-%define mod_name grpc
-%define mod_full_name %{mod_name}-%{version}
 #
 # This file was generated with a gem2rpm.yml and not just plain gem2rpm.
 # All sections marked as MANUAL, license headers, summaries and descriptions
 # can be maintained in that file. Please consult this file before editing any
 # of those fields
 #
+
 Name:           rubygem-grpc
-Version:        1.48.0
+Version:        1.49.1
 Release:        0
-Summary:        GRPC system in Ruby
-License:        Apache-2.0
-Group:          Development/Languages/Ruby
+%define mod_name grpc
+%define mod_full_name %{mod_name}-%{version}
+# MANUAL
+BuildRequires:  gcc-c++
+# /MANUAL
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  %{rubydevel >= 2.5.0}
+BuildRequires:  %{rubygem gem2rpm}
+BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/google/grpc/tree/master/src/ruby
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        rubygem-grpc.rpmlintrc
 Source2:        gem2rpm.yml
-BuildRequires:  %{rubydevel >= 2.5.0}
-BuildRequires:  %{rubygem gem2rpm}
-BuildRequires:  ruby-macros >= 5
-# MANUAL
-BuildRequires:  gcc-c++
-# /MANUAL
+Summary:        GRPC system in Ruby
+License:        Apache-2.0
+Group:          Development/Languages/Ruby
 
 %description
 Send RPCs from Ruby using GRPC.
@@ -51,7 +53,7 @@ Send RPCs from Ruby using GRPC.
 %install
 %gem_install \
   -f
-%{gem_cleanup}
+%gem_cleanup
 # MANUAL
 # drop files from the git repository
 find %{buildroot}/%{_libdir}/ruby/gems/ \( -name '.sitearchdir.-.grpc.time' -o -name '.yardopts' \) | xargs rm
@@ -60,7 +62,6 @@ find %{buildroot}/%{_libdir}/ruby/gems/ \( -name 'ca.pem' -o -name 'server1.key'
 # remove buildroot from .dep files
 find %{buildroot}/%{_libdir}/ruby/gems/ \( -name '*.dep' \) | xargs sed -i 's|%{buildroot}||'
 # /MANUAL
-
 
 %gem_packages
 
