@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Oct  9 06:33:58 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 5.3.0:
+  * Don’t add glyphs from dropped MATH or COLR tables to the subset
+    glyphs
+  * Map rlig to appropriate AAT feature selectors
+  * Update USE data files to latest version
+  * Check CBDT extents first before outline tables, to help with
+    fonts that also include an empty glyf table
+  * More work towards variable font instancing in the subsetter
+  * Subsetter repacker improvements
+
+-------------------------------------------------------------------
 Tue Sep 20 17:21:33 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 5.2.0:
