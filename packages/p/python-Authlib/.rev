@@ -57,4 +57,12 @@
 - Remove duplicated BuildRequires on pytest.</comment>
     <requestid>992686</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e2f85b6365cecb1c5254173e20887cba</srcmd5>
+    <version>1.1.0</version>
+    <time>1665591958</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010157</requestid>
+  </revision>
 </revisionlist>
