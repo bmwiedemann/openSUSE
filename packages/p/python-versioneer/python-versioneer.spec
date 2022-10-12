@@ -1,7 +1,7 @@
 #
 # spec file for package python-versioneer
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-versioneer
-Version:        0.20
+Version:        0.26
 Release:        0
 Summary:        VCS-based management of project version strings
-License:        SUSE-Public-Domain
+License:        Unlicense
 Group:          Development/Languages/Python
 URL:            https://github.com/warner/python-versioneer
 Source:         https://files.pythonhosted.org/packages/source/v/versioneer/versioneer-%{version}.tar.gz

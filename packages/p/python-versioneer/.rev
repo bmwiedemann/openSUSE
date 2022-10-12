@@ -48,4 +48,18 @@
 </comment>
     <requestid>914758</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1db86ad9f1e187174f51446372c227ce</srcmd5>
+    <version>0.26</version>
+    <time>1665591877</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.24 
+  * MNT: Relicense to Unlicense by @effigies in #317
+  * ENH: in verbose mode do not hide stderr of git rev-parse by @yarikoptic in #318
+  * DOC: clarify upgrading to 0.23 doesn't require special actions by @sappelhoff in #321
+  * ENH: Prepare for py2exe dropping distutils support by @effigies in #319
+  * ENH: Allow versioneer to be used as a module in PEP-518 mode by @effigies in #294
+</comment>
+    <requestid>1009892</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 11 16:50:13 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 0.24 
+  * MNT: Relicense to Unlicense by @effigies in #317
+  * ENH: in verbose mode do not hide stderr of git rev-parse by @yarikoptic in #318
+  * DOC: clarify upgrading to 0.23 doesn't require special actions by @sappelhoff in #321
+  * ENH: Prepare for py2exe dropping distutils support by @effigies in #319
+  * ENH: Allow versioneer to be used as a module in PEP-518 mode by @effigies in #294
+
+-------------------------------------------------------------------
 Sat Aug 28 10:09:10 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Make testing more verbose
