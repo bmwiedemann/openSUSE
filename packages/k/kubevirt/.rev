@@ -466,4 +466,12 @@ SLE identical and thus derived from a common source. Thanks!
     <comment></comment>
     <requestid>1005482</requestid>
   </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>2a48e1b1e05e1a3afbf151e6ca81b58f</srcmd5>
+    <version>0.57.0</version>
+    <time>1665591839</time>
+    <user>dimstar_suse</user>
+    <comment>- Update SP5 kubevirt registry path (bsc#1204140)</comment>
+    <requestid>1008804</requestid>
+  </revision>
 </revisionlist>
