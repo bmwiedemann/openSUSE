@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct 11 17:24:18 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 6.0.4 
+  * Detect 3.7.[7-13], 3.9.[8-13], 3.10.[1-4], PyPy 2.7.12, 3.[8-9]pypy
+  * Correct line-number detection on Python 1.0-1.4
+  * Handle SET_LINENO in older pythons
+  * Warn about wrong names in after RESERVE_FAST in Python 1.x
+  * Some PyPy x-3.9.7 tolerance
+  * Add Pypy 3.8 support
+  * Better PyPy 3.6 formatting
+  * Correct relative jump target calculation in 3.10
+
+-------------------------------------------------------------------
 Fri Feb  4 00:25:56 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 6.0.3:
