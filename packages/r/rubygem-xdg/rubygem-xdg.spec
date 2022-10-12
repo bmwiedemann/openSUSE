@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-xdg
-Version:        6.5.0
+Version:        6.6.0
 Release:        0
 %define mod_name xdg
 %define mod_full_name %{mod_name}-%{version}
