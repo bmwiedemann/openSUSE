@@ -190,9 +190,9 @@ Thu Aug 11 08:50:55 UTC 2022 - michael@stroeder.com
     - The podman info command now includes a field for information on supported authentication plugins for improved Docker compatibility. Authentication plugins are not presently supported by Podman, so this field is always empty.
     - The podman system prune command now no longer prints the Deleted Images header if no images were pruned.
     - The podman system service command now automatically creates and moves to a sub-cgroup when running in the root cgroup (#14573).
-    - Updated Buildah to v1.27.0
+    - Updated Buildah to v1.27.0 (fixes CVE-2022-21698 / bsc#1196338)
     - Updated the containers/image library to v5.22.0
-    - Updated the containers/storage library to v1.42.0
+    - Updated the containers/storage library to v1.42.0 (fixes bsc#1196751)
     - Updated the containers/common library to v0.49.1
     - Podman will automatically create a sub-cgroup and move itself into it when it detects that it is running inside a container (#14884).
     - Fixed an incorrect release note about regexp.
@@ -202,7 +202,7 @@ Thu Aug 11 08:50:55 UTC 2022 - michael@stroeder.com
 Fri Jul  1 11:08:05 UTC 2022 - Predrag Ivanović <predivan@mts.rs>
 
 - Fix build on Leap
-    Use libexec macro to set correct, per-distribution specific, directory. 
+    Use libexec macro to set correct, per-distribution specific, directory.
 
 -------------------------------------------------------------------
 Wed Jun 22 09:41:22 UTC 2022 - rbrown@suse.com
@@ -234,6 +234,7 @@ Wed Jun 22 09:41:22 UTC 2022 - rbrown@suse.com
   * The podman images --format command now accepts two new format directives: {{.CreatedAt}} and {{.CreatedSince}}.
   * The podman volume create command's -o option now accepts a new argument, o=noquota, to disable XFS quotas entirely and avoid potential issues when Podman is run on an XFS filesystem with existing quotas defined.
   * The podman info command now includes additional information on the machine Podman is running on, including disk utilization on the drive Podman is storing containers and images on, and CPU utilization.
+  * Fix CVE-2022-27191 / bsc#1197284
 - Drop obsolete patches:
   * 0001-Adjust-buildah-to-opencontainers-selinux-v1.10.1.patch
   * 0001-Relabel-relabel-links-instead-of-their-targets.patch
@@ -252,7 +253,7 @@ Mon May 23 11:48:34 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
 -------------------------------------------------------------------
 Tue Apr 12 08:09:02 UTC 2022 - Richard Brown <rbrown@suse.com>
 
-- Require catatonit >= 0.1.7 for pause functionality needed by pods 
+- Require catatonit >= 0.1.7 for pause functionality needed by pods
 
 -------------------------------------------------------------------
 Thu Apr  7 12:25:33 UTC 2022 - Fabian Vogt <fvogt@suse.com>
@@ -465,7 +466,7 @@ Wed Mar 16 13:25:48 UTC 2022 - rbrown@suse.com
   * compat: images/load must be able to load tar with multiple images
   * System tests: fix for new systemd on rawhide
   * Remove rootless_networking option from containers.conf
-  * vendor c/psgo@v1.7.2
+  * vendor c/psgo@v1.7.2 (fixes CVE-2022-1227 / bsc#1182428)
   * Engine.Remote from containers.conf
   * vendor: bump c/common and other vendors
   * rootless: report correctly the error
@@ -1211,8 +1212,8 @@ Tue Dec 07 17:54:32 UTC 2021 - michael@stroeder.com
 
 - Update to version 3.4.3:
   * Security
-    - This release addresses CVE-2021-4024, where the podman machine command opened the gvproxy API (used to forward ports to podman machine VMs) to the public internet on port 7777.
-    - This release addresses CVE-2021-41190, where incomplete specification of behavior regarding image manifests could lead to inconsistent decoding on different clients.
+    - This release addresses CVE-2021-4024 / bsc#1193166, where the podman machine command opened the gvproxy API (used to forward ports to podman machine VMs) to the public internet on port 7777.
+    - This release addresses CVE-2021-41190 / bsc#1193273, where incomplete specification of behavior regarding image manifests could lead to inconsistent decoding on different clients.
   * Features
     - The --secret type=mount option to podman create and podman run supports a new option, target=, which specifies where in the container the secret will be mounted (#12287).
   * Bugfixes
@@ -1310,7 +1311,7 @@ Wed Oct 20 14:55:38 UTC 2021 - michael@stroeder.com
     - Fixed a bug where the podman play kube command did not properly handle
       environment variables whose values contained an = (#11891).
     - Fixed a bug where the podman generate kube command could generate
-      invalid annotations when run on containers with volumes that use SELinux 
+      invalid annotations when run on containers with volumes that use SELinux
       relabelling (:z or :Z) (#11929).
     - Fixed a bug where the podman generate kube command would generate YAML
       including some unnecessary (set to default) fields (e.g. user and group,
@@ -1432,21 +1433,21 @@ Tue Aug 31 05:57:57 UTC 2021 - michael@stroeder.com
 
 - Update to version 3.3.1:
   * Bugfixes
-    - Fixed a bug where unit files created by podman generate systemd could 
+    - Fixed a bug where unit files created by podman generate systemd could
       not cleanup shut down containers when stopped by systemctl stop (#11304).
-    - Fixed a bug where podman machine commands would not properly locate 
+    - Fixed a bug where podman machine commands would not properly locate
       the gvproxy binary in some circumstances.
-    - Fixed a bug where containers created as part of a pod using the 
+    - Fixed a bug where containers created as part of a pod using the
       --pod-id-file option would not join the pod's network namespace (#11303).
-    - Fixed a bug where Podman, when using the systemd cgroups driver, 
+    - Fixed a bug where Podman, when using the systemd cgroups driver,
       could sometimes leak dbus sessions.
-    - Fixed a bug where the until filter to podman logs and podman events 
+    - Fixed a bug where the until filter to podman logs and podman events
       was improperly handled, requiring input to be negated (#11158).
-    - Fixed a bug where rootless containers using CNI networking run on 
-      systems using systemd-resolved for DNS would fail to start if resolved 
+    - Fixed a bug where rootless containers using CNI networking run on
+      systems using systemd-resolved for DNS would fail to start if resolved
       symlinked /etc/resolv.conf to an absolute path (#11358).
   * API
-    - A large number of potential file descriptor leaks from improperly closing 
+    - A large number of potential file descriptor leaks from improperly closing
       client connections have been fixed.
 
 -------------------------------------------------------------------
@@ -2061,7 +2062,7 @@ Mon Mar 29 16:29:46 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
 -------------------------------------------------------------------
 Wed Feb 24 13:46:35 UTC 2021 - Richard Brown <rbrown@suse.com>
 
-- Drop obsolete varlink.patch 
+- Drop obsolete varlink.patch
 
 -------------------------------------------------------------------
 Wed Feb 24 12:44:58 UTC 2021 - Duncan Mac-Vicar <dmacvicar@suse.com>
@@ -2128,7 +2129,7 @@ Bugfixes
     - Configuration options for slirp4netns can now be set system-wide via the NetworkCmdOptions configuration option in containers.conf.
     - The MTU of slirp4netns can now be configured via the mtu= network command option (e.g. podman run --net slirp4netns:mtu=9000).
   * Security
-    - A fix for CVE-2021-20199 is included. Podman between v1.8.0 and v2.2.1 used 127.0.0.1 as the source address for all traffic forwarded into rootless containers by a forwarded port; this has been changed to address the issue.
+    - A fix for CVE-2021-20199 / bsc#1181640 is included. Podman between v1.8.0 and v2.2.1 used 127.0.0.1 as the source address for all traffic forwarded into rootless containers by a forwarded port; this has been changed to address the issue.
   * Changes
     - Shortname aliasing support has now been turned on by default. All Podman commands that must pull an image will, if a TTY is available, prompt the user about what image to pull.
     - The podman load command no longer accepts a NAME[:TAG] argument. The presence of this argument broke CLI compatibility with Docker by making docker load commands unusable with Podman (#7387).
@@ -2436,7 +2437,7 @@ Wed Dec  2 13:24:06 UTC 2020 - Richard Brown <rbrown@suse.com>
 -------------------------------------------------------------------
 Mon Oct 26 14:08:32 UTC 2020 - Adrian Schröter <adrian@suse.de>
 
-- add dependency to timezone package or podman fails to build a 
+- add dependency to timezone package or podman fails to build a
   container (bsc#1178122)
 
 -------------------------------------------------------------------
@@ -2710,7 +2711,7 @@ Tue Aug 25 07:01:13 UTC 2020 - Michael Ströder <michael@stroeder.com>
 -------------------------------------------------------------------
 Tue Aug 18 15:11:31 UTC 2020 - Richard Brown <rbrown@suse.com>
 
-- Correct invalid use of %{_libexecdir} to ensure files should be in /usr/lib 
+- Correct invalid use of %{_libexecdir} to ensure files should be in /usr/lib
 
 -------------------------------------------------------------------
 Wed Aug 12 09:35:29 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
@@ -2723,7 +2724,7 @@ Wed Aug 12 09:35:29 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 Tue Aug  4 13:52:05 UTC 2020 - Richard Brown <rbrown@suse.com>
 
 - Add BuildRequires for pkg-config(libselinux) to build with
-  SELinux support [jsc#SMO-15] 
+  SELinux support [jsc#SMO-15]
 
 -------------------------------------------------------------------
 Mon Aug  3 06:47:04 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
