@@ -1,7 +1,7 @@
 #
 # spec file for package python-dennis
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-dennis
-Version:        0.9
+Version:        1.1.0
 Release:        0
 Summary:        Utilities for working with PO and POT files
 License:        BSD-3-Clause
@@ -36,7 +36,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-click >= 6
 Requires:       python-polib >= 1.0.8
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
