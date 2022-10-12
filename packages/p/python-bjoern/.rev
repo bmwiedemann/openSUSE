@@ -71,4 +71,20 @@
   * #162 Fix Expect: 100-Continue support (Tom Brennan)</comment>
     <requestid>816735</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d479bbbb4f205910bb4230367b080c2d</srcmd5>
+    <version>3.2.2</version>
+    <time>1665592004</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.2.2:
+  * #228, 235 Fix libev paths (Ian Swanson, Nicolas Damgaard Larsen)
+  * #234 Set ``wsgi.input_terminated`` (Nathan Hoad)
+  * Update PyPI description
+  * #173 Fix segfault with old interpreters (Goldstein)
+  * #171 Implement FileWrapper.close()
+  * Fix FileWrapper/sendfile with offset
+  * #184 Fix compile flags
+  * #218 Fix SERVER_PORT (Souheil Chelfouh)</comment>
+    <requestid>1010198</requestid>
+  </revision>
 </revisionlist>
