@@ -55,4 +55,22 @@
     <comment></comment>
     <requestid>901966</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8a78217ae30d5704d7d300e3dc861e41</srcmd5>
+    <version>2.4.12</version>
+    <time>1665591903</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 2.4.12
+ see installed ChangeLog.rdoc
+  == Version 2.4.12 (2022-10-03)
+  
+  * Do not include DelayedIO objects when :onlyif is false.
+  
+  == Version 2.4.11 (2022-09-27)
+  
+  * Make DelayedIO work with :onlyif.  Reported by Spencer McIntyre.
+  
+</comment>
+    <requestid>1010048</requestid>
+  </revision>
 </revisionlist>

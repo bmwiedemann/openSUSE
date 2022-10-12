@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Oct 10 12:59:42 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 2.4.12
+ see installed ChangeLog.rdoc
+
+  == Version 2.4.12 (2022-10-03)
+  
+  * Do not include DelayedIO objects when :onlyif is false.
+  
+  == Version 2.4.11 (2022-09-27)
+  
+  * Make DelayedIO work with :onlyif.  Reported by Spencer McIntyre.
+  
+
+-------------------------------------------------------------------
 Thu Jun 24 17:06:10 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 updated to version 2.4.10
