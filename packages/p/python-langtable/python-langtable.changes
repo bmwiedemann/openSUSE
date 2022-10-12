@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 12 03:39:37 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 0.0.60  
+  * Add list_common_locales() function (Resolves: #15)
+  * For ar_IN locale, langtable should give the 'ara' keyboard layout as the first choice (Resolves: Resolves: #14)
+
+-------------------------------------------------------------------
 Tue Sep  6 11:05:16 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
 
 update: 0.0.58 -> 0.0.59
