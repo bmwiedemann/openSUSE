@@ -16,9 +16,11 @@
 #
 
 
+%define glib_version 2.56.0
+
 %define _udevdir %(pkg-config --variable udevdir udev)
 Name:           ModemManager
-Version:        1.18.10
+Version:        1.18.12
 Release:        0
 Summary:        DBus interface for modem handling
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -36,6 +38,10 @@ BuildRequires:  ppp-devel
 BuildRequires:  python3-dbus-python
 BuildRequires:  python3-gobject-Gdk
 BuildRequires:  vala-devel >= 0.18
+BuildRequires:  pkgconfig(gio-2.0) >= %{glib_version}
+BuildRequires:  pkgconfig(glib-2.0) >= %{glib_version}
+BuildRequires:  pkgconfig(gmodule-2.0) >= %{glib_version}
+BuildRequires:  pkgconfig(gobject-2.0) >= %{glib_version}
 BuildRequires:  pkgconfig(gudev-1.0) >= 147
 BuildRequires:  pkgconfig(libsystemd) >= 209
 BuildRequires:  pkgconfig(mbim-glib) >= 1.24.0

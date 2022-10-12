@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Oct  8 08:29:25 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 1.18.12:
+  + This release fixes a few very critical issues that happpen when
+    using a glib2 newer or equal than 2.73.2, plus numerous fixes
+    for the Core, MBIM, QMI, 3GPP profile manager interface, SMS,
+    libmm-glib, and mmcli.
+  + Plugins:
+    - sierra: disable +CPOL in the GL7600.
+    - telit: add LE910Cx MBIM composition port hints.
+    - telit: add port type hints for LN920 0x1060, 0x1061
+      compositions.
+    - icera: fix double free on %%IPSYS=? response processing
+    - mtk: fix task completion when loading supported modes.
+- Add new pkgconfig modules build requirements: gio-2.0, glib-2.0,
+  gmodule-2.0, and gobject-2.0.
+- Update ModemManager.keyring to the new upstream key:
+  A814D09B9C5BC01945A64308AECE0239C6606AD5. Found at
+  www.freedesktop.org/software/ModemManager/0xAECE0239C6606AD5.asc.
+
+-------------------------------------------------------------------
 Sat Aug 27 22:17:35 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Disable make_check call, tests currently fails due to our switch
