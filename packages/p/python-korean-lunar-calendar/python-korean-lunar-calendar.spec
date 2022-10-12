@@ -1,7 +1,7 @@
 #
 # spec file for package python-korean-lunar-calendar
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define modname korean_lunar_calendar
 Name:           python-korean-lunar-calendar
-Version:        0.2.1
+Version:        0.3.1
 Release:        0
 Summary:        Korean Lunar Calendar
 License:        MIT
