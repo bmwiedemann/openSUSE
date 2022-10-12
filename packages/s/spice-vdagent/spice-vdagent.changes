@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 10 14:50:57 MDT 2022 - carnold@suse.com
+
+- bsc#1204085 - spice-vdagentd 0.22.1 doesn't work properly on
+  guest
+  allow-enable-on-boot-spice-vdagentd.service.patch
+
+-------------------------------------------------------------------
 Fri Feb 11 11:25:16 MST 2022 - carnold@suse.com
 
 - Update to version 0.22.1. Features and Issues addressed:

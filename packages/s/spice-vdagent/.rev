@@ -213,4 +213,12 @@
     <comment>Update spice-vdagent to version 0.22.1</comment>
     <requestid>954381</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>055cbf3330761b02504f5f9872da1d5c</srcmd5>
+    <version>0.22.1</version>
+    <time>1665591764</time>
+    <user>dimstar_suse</user>
+    <comment>Fix for bsc#1204085 - spice-vdagentd 0.22.1 doesn't work properly on guest</comment>
+    <requestid>1009626</requestid>
+  </revision>
 </revisionlist>

@@ -30,6 +30,7 @@ URL:            http://spice-space.org/
 Source:         http://spice-space.org/download/releases/%{name}-%{version}.tar.bz2
 Source2:        %{name}.keyring
 Patch0:         harden_spice-vdagentd.service.patch
+Patch1:         allow-enable-on-boot-spice-vdagentd.service.patch
 
 BuildRequires:  alsa-devel  >= 1.0.22
 BuildRequires:  desktop-file-utils
@@ -66,6 +67,7 @@ Features:
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 autoreconf
