@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct  8 17:06:50 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Update connection info when using UNIX socket as endpoint
+  connect-fix-Curl_updateconninfo-for-TRNSPRT_UNIX.patch
+
+-------------------------------------------------------------------
 Wed Aug 31 07:34:20 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 7.85.0:
