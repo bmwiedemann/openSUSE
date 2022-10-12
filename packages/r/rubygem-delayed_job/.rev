@@ -148,4 +148,18 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>950614</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>f0677f70dd3195f40cf9c73b89f1c79b</srcmd5>
+    <version>4.1.11</version>
+    <time>1665591905</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 4.1.11
+ see installed CHANGELOG.md
+  4.1.11 - 2022-09-28
+  ===================
+  * Fix missing require for Rails 7.0.3+
+  
+</comment>
+    <requestid>1010051</requestid>
+  </revision>
 </revisionlist>

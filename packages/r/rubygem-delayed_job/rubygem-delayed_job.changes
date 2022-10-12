@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 10 13:02:36 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 4.1.11
+ see installed CHANGELOG.md
+
+  4.1.11 - 2022-09-28
+  ===================
+  * Fix missing require for Rails 7.0.3+
+  
+
+-------------------------------------------------------------------
 Tue Jan 25 06:48:44 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 4.1.10

@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-delayed_job
-Version:        4.1.10
+Version:        4.1.11
 Release:        0
 %define mod_name delayed_job
 %define mod_full_name %{mod_name}-%{version}
