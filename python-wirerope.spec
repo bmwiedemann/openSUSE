@@ -1,7 +1,7 @@
 #
 # spec file for package python-wirerope
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-wirerope
-Version:        0.4.2
+Version:        0.4.6
 Release:        0
 Summary:        The Way to Handle Bound Methods
 License:        BSD-2-Clause
