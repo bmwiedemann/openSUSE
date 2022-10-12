@@ -1,7 +1,7 @@
 #
 # spec file for package python-termcolor
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,18 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-termcolor
-Version:        1.1.0
+Version:        2.0.1
 Release:        0
 Summary:        ANSII Color formatting for output in terminal
 License:        MIT
 URL:            https://pypi.python.org/pypi/termcolor
 Source:         https://files.pythonhosted.org/packages/source/t/termcolor/termcolor-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module hatch_vcs}
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -39,15 +44,15 @@ Available attributes: bold, dark, underline, blink, reverse, concealed.
 %setup -q -n termcolor-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %license COPYING.txt
-%doc CHANGES.rst README.rst
+%doc CHANGES.md README.md
 %{python_sitelib}/*
 
 %changelog
