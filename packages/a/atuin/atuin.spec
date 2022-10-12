@@ -21,6 +21,7 @@ Version:        11.0.0
 Release:        0
 Summary:        Magical shell history
 License:        MIT
+Group:          System/Console
 URL:            https://github.com/ellie/atuin
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
@@ -35,6 +36,33 @@ BuildRequires:  rust+cargo >= 1.59
 Atuin replaces your existing shell history with a SQLite database, and records additional context for your commands.
 Additionally, it provides optional and fully encrypted synchronisation of your history between machines, via an Atuin server.
 
+%package bash-completion
+Summary:        Bash completion for %{name}
+Requires:       %{name} = %{version}
+Supplements:    (%{name} and bash-completion)
+BuildArch:      noarch
+
+%description bash-completion
+Bash command line completion support for %{name}.
+
+%package fish-completion
+Summary:        Fish completion for %{name}
+Requires:       %{name} = %{version}
+Supplements:    (%{name} and fish)
+BuildArch:      noarch
+
+%description fish-completion
+Fish command line completion support for %{name}.
+
+%package zsh-completion
+Summary:        Zsh completion for %{name}
+Requires:       %{name} = %{version}
+Supplements:    (%{name} and zsh)
+BuildArch:      noarch
+
+%description zsh-completion
+Zsh command line completion support for %{name}.
+
 %prep
 %autosetup -a1
 mkdir .cargo
@@ -45,10 +73,26 @@ cp %{SOURCE2} .cargo/config
 
 %install
 %{cargo_install}
+install -D -m 0644 "src/shell/%{name}.bash" "%{buildroot}/%{_datadir}/bash-completion/completions/%{name}"
+install -D -m 0644 "src/shell/%{name}.fish" "%{buildroot}/%{_datadir}/fish/vendor_completions.d/%{name}.fish"
+install -D -m 0644 "src/shell/%{name}.zsh" "%{buildroot}/%{_datadir}/zsh/site-functions/_%{name}"
 
 %files
 %license LICENSE
 %doc README.md CHANGELOG.md
 %{_bindir}/atuin
+
+%files bash-completion
+%{_datadir}/bash-completion/completions/%{name}
+
+%files fish-completion
+%dir %{_datadir}/fish
+%dir %{_datadir}/fish/vendor_completions.d
+%{_datadir}/fish/vendor_completions.d/%{name}.fish
+
+%files zsh-completion
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
+%{_datadir}/zsh/site-functions/_%{name}
 
 %changelog

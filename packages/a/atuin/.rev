@@ -7,4 +7,12 @@
     <comment>I want to maintain atuin in openSUSE:Factory</comment>
     <requestid>1008393</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d26339e11ef35621c9260d7db3a6dbb7</srcmd5>
+    <version>11.0.0</version>
+    <time>1665591941</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1009928</requestid>
+  </revision>
 </revisionlist>
