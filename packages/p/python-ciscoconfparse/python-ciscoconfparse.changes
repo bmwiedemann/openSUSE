@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Oct  4 19:58:09 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.6.41
+  * Modify `uncfgtext`.  Deprecate `add_uncfgtext()`
+  * Add a dedicated bootstrap method (`_bootstrap_obj_init_junos()`)
+    for parsing `syntax==junos`
+  * Add `JunosCfgLine()`
+  * Remove `NXOSConfigList()` and `ASAConfigList()`
+  * Add test coverage for "parsing F5 configs as ios", "parsing F5
+    configs as junos"
+  * Add config diff infrastructure (preparing to make heavy changes
+    to diffs)
+  * Fix problems with `ip_factory()`
+  * Add `_ip` property to `IPv4Obj()` and `IPv6Obj()`
+  * Add support for IPv4 Mapped IPv6 Addresses
+  * Fix `BaseCfgLine().has_child_with()` method
+  * Make `ip_factory()` more resilient
+  * Code cleanup
+  * Fix IPv6 bug in `ip_factory()`
+  * Enhance `regex_groups` on `find_object_branches`
+  * Add regex match group support to `find_object_branches`
+  * Ensure masklen and prefix are int objects for `IPv4Obj()` and
+    `IPv6Obj()` network mask length
+  * Add `ccp_util.ip_factory()`
+  * Added a "disable" and "enable" command to `ccp_logger_control()`
+  * Add `ccp_logger_control()`
+  * Fix race-condition for `CiscoConfParse` kwarg in
+    `IOSConfigList`, `NXOSConfigList`, and `ASAConfigList`
+  * Add explicit configuration file encoding with default encoding
+    from python's locale module
+  * Remove colorama dependency.
+- Drop patch:
+  * no2to3.patch (not longer needed)
+- Temporary disable tests since they are not longer part of the
+  pypi-tarball.
+
+-------------------------------------------------------------------
 Tue Mar  1 09:39:26 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add no2to3.patch for compatibility with newer setuptools 
