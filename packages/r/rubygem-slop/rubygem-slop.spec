@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-slop
-Version:        4.9.2
+Version:        4.9.3
 Release:        0
 %define mod_name slop
 %define mod_full_name %{mod_name}-%{version}

@@ -246,4 +246,20 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>974080</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>eeaca2ec5ae9ca47dcd9588295ebfca9</srcmd5>
+    <version>4.9.3</version>
+    <time>1665591915</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 4.9.3
+ see installed CHANGELOG.md
+  v4.9.3 (2022-09-30)
+  -------------------
+  
+  Bug fixes:
+    * Fix explicitly false boolean options and allow for additional false arguments [#276](https://github.com/leejarvis/slop/pull/276) (Eugene Otto)
+  
+</comment>
+    <requestid>1010068</requestid>
+  </revision>
 </revisionlist>
