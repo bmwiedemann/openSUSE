@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  6 04:06:27 UTC 2022 - Tim Serong <tserong@suse.com>
+
+- Update to 16.2.9-539-gea74dd900cd:
+  + (bsc#1202292) ceph.spec.in: Add -DFMT_DEPRECATED_OSTREAM to CXXFLAGS
+
+-------------------------------------------------------------------
 Tue Jul 26 03:07:53 UTC 2022 - Tim Serong <tserong@suse.com>
 
 - Update to 16.2.9-538-g9de83fa4064:
