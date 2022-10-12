@@ -1,7 +1,7 @@
 #
 # spec file for package xortool
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,21 @@
 #
 
 
+%define pythons python3
 Name:           xortool
-Version:        0.99
+Version:        1.0.0
 Release:        0
 Summary:        A tool to analyze multi-byte xor cipher
 License:        MIT
 Group:          Productivity/Security
 URL:            https://github.com/hellman/xortool
 Source:         https://github.com/hellman/xortool/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  %{python_module docopt}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-docopt
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-wheel
+Requires:       %{python_module docopt}
 BuildArch:      noarch
 
 %description
@@ -36,16 +39,15 @@ A tool to do some xor analysis:
  * Guess the key (base on knowledge of most frequent char).
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-%python3_build
+%pyproject_wheel
 
 %install
-%python3_install
+%pyproject_install
 
 %files
-%license LICENSE
 %doc README.md
 %{_bindir}/%{name}*
 %{python3_sitelib}/%{name}/

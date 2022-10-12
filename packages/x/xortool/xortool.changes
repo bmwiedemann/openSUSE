@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct  9 16:47:54 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.0.0:
+  * support using known plaintext for filtering output
+  * improved color output
+  * more options to handle newline and cycle
+
+-------------------------------------------------------------------
 Wed Aug 26 08:35:02 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.99:
