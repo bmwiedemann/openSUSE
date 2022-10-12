@@ -627,4 +627,54 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1000906</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>2b541c90326e501fb47242a97b3b6637</srcmd5>
+    <version>2.3.23</version>
+    <time>1665591904</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 2.3.23
+ see installed CHANGELOG.md
+  # 2.3.23 (October 5, 2022)
+  
+  ## Enhancements:
+  
+    - Update GitLab CI template with new one [#5944](https://github.com/rubygems/rubygems/pull/5944)
+  
+  ## Bug fixes:
+  
+    - Fix `bundle init` not respecting umask in generated gem's Gemfile [#5947](https://github.com/rubygems/rubygems/pull/5947)
+  
+  ## Performance:
+  
+    - Further speed up Bundler by not sorting specs unnecessarily [#5868](https://github.com/rubygems/rubygems/pull/5868)
+  
+  ## Documentation:
+  
+    - Update Bundler new feature instructions [#5912](https://github.com/rubygems/rubygems/pull/5912)
+  
+  # 2.3.22 (September 7, 2022)
+  
+  ## Enhancements:
+  
+    - Use a more accurate source code uri in gemspec [#5896](https://github.com/rubygems/rubygems/pull/5896)
+    - Support `--path` option in `bundle add` [#5897](https://github.com/rubygems/rubygems/pull/5897)
+    - Improve lockfile dependency unlocking [#5881](https://github.com/rubygems/rubygems/pull/5881)
+    - Add platform alias `:windows` to Gemfile DSL [#5650](https://github.com/rubygems/rubygems/pull/5650)
+    - Make `#to_lock` consistent between `Gem::Dependency` and `Bundler::Dependency` [#5872](https://github.com/rubygems/rubygems/pull/5872)
+    - Support marshaled index specifications with `nil` required ruby version [#5824](https://github.com/rubygems/rubygems/pull/5824)
+  
+  ## Bug fixes:
+  
+    - Fix resolution hanging on musl platforms [#5875](https://github.com/rubygems/rubygems/pull/5875)
+    - Fix another regression affecting the sorbet family of gems [#5874](https://github.com/rubygems/rubygems/pull/5874)
+  
+  ## Documentation:
+  
+    - Introduce bundle-console(1) man [#5901](https://github.com/rubygems/rubygems/pull/5901)
+    - Introduce bundle-version(1) man [#5895](https://github.com/rubygems/rubygems/pull/5895)
+    - Introduce bundle-help(1) man [#5886](https://github.com/rubygems/rubygems/pull/5886)
+  
+</comment>
+    <requestid>1010049</requestid>
+  </revision>
 </revisionlist>
