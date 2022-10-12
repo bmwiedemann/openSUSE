@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct  4 20:30:22 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.1:
+  + Don't toggle editability during (auto)save operations as they
+    can break input methods and cause input stalls.
+  + Fix ctrl+home/end keyboard shortcut usage.
+  + Spellcheck improvements.
+  + Provide full document paths in tab tooltips.
+  + Fix bugreport_url in about dialog.
+  + Use stdout for --version output.
+  + Documentation updates.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Sep 18 09:27:52 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.0:
