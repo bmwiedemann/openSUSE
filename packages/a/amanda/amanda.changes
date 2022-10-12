@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct  7 12:43:58 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- %_docdir/amanda should be mode 755 and not 644
+
+-------------------------------------------------------------------
 Thu Aug 25 20:17:24 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to version 3.5.2:

@@ -191,9 +191,9 @@ ln -s amrecover.8.gz %{buildroot}%{_mandir}/man8/amoldrecover.8
 %verify_permissions -f %{_libexecdir}/amanda/suidlist
 
 %files
-%doc %attr(644,root,root) amanda-howto-collection.pdf ChangeLog NEWS AUTHORS COPYRIGHT README ReleaseNotes README.SUSE
+%doc amanda-howto-collection.pdf ChangeLog NEWS AUTHORS COPYRIGHT README ReleaseNotes README.SUSE
 %doc %attr(755,root,root) %dir %{_docdir}/%{name}
-%{_docdir}/%{name}
+%{_docdir}/%{name}/*
 %{_mandir}/man*/*
 %config %{_libexecdir}/amanda/exclude.gtar
 %attr(755,root,root) %dir %{_libexecdir}/amanda
