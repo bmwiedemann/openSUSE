@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-whitenoise
-Version:        6.0.0
+Version:        6.2.0
 Release:        0
 Summary:        Static file serving for WSGI applications
 License:        MIT
