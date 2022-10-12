@@ -17,7 +17,7 @@
 
 
 Name:           pdfmixtool
-Version:        1.1
+Version:        1.1.1
 Release:        0
 Summary:        Split, Merge, Rotate and Mix PDF Files
 License:        GPL-3.0-only
