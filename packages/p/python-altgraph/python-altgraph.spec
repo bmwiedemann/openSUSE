@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-altgraph
-Version:        0.17.2
+Version:        0.17.3
 Release:        0
 Summary:        Python graph (network) package
 License:        MIT
