@@ -27,7 +27,6 @@ URL:            https://github.com/facelessuser/bracex
 Source:         https://files.pythonhosted.org/packages/source/b/bracex/bracex-%{version}.tar.gz
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch

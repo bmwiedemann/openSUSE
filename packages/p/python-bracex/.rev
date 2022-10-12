@@ -7,4 +7,12 @@
     <comment>required for wcmath which in turn is a requirement of ansible-lint</comment>
     <requestid>949683</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>119ba6de3f683e55ac3b026634a94375</srcmd5>
+    <version>2.2.1</version>
+    <time>1665591848</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1009581</requestid>
+  </revision>
 </revisionlist>
