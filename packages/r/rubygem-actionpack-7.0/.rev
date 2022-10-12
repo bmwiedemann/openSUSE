@@ -39,4 +39,24 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>993452</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f7c97e742b3ae37ebec0f514a97548b0</srcmd5>
+    <version>7.0.4</version>
+    <time>1665591888</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 7.0.4
+ see installed CHANGELOG.md
+  ## Rails 7.0.4 (September 09, 2022) ##
+  
+  *   Prevent `ActionDispatch::ServerTiming` from overwriting existing values in `Server-Timing`.
+  
+      Previously, if another middleware down the chain set `Server-Timing` header,
+      it would overwritten by `ActionDispatch::ServerTiming`.
+  
+      *Jakub Malinowski*
+  
+  
+</comment>
+    <requestid>1010024</requestid>
+  </revision>
 </revisionlist>
