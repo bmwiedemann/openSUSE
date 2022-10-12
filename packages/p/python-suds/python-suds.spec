@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global skip_python2 1
 Name:           python-suds
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        Lightweight SOAP client
 License:        LGPL-3.0-or-later
