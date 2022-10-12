@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 12 06:54:45 UTC 2022 - pgajdos@suse.com
+
+- python-six is not required
+
+-------------------------------------------------------------------
 Mon Jul  4 09:21:54 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - No need to fiddle with versions of PyYAML

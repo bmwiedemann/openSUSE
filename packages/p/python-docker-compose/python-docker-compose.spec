@@ -38,7 +38,6 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dotenv >= 0.14.0}
 BuildRequires:  %{python_module requests >= 2.25.0}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six >= 1.3.0}
 BuildRequires:  %{python_module texttable >= 1.6.2}
 BuildRequires:  %{python_module websocket-client >= 0.57.0}
 BuildRequires:  fdupes
@@ -62,7 +61,6 @@ Requires:       python-idna >= 2.10
 Requires:       python-jsonschema >= 3.2
 Requires:       python-python-dotenv >= 0.14.0
 Requires:       python-requests >= 2.24.0
-Requires:       python-six >= 1.3.0
 Requires:       python-texttable >= 1.6.2
 Requires:       python-websocket-client >= 0.57.0
 Requires(post): update-alternatives
