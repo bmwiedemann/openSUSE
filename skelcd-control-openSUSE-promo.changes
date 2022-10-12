@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 29 13:03:17 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable kdump for %arm - boo#1203888
+- 20221010
+
+-------------------------------------------------------------------
 Tue Jul 26 14:27:02 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
 - Added "kdump" dependency, yast2-kdump only has a runtime

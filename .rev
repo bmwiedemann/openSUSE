@@ -1687,4 +1687,12 @@ package/skelcd-control-openSUSE.spec:Version:        13.2.7</comment>
     <comment>submit new version 20220726</comment>
     <requestid>991361</requestid>
   </revision>
+  <revision rev="230" vrev="1">
+    <srcmd5>6d6fd08fc83d12ffc446cc0a3220f4b8</srcmd5>
+    <version>20221010</version>
+    <time>1665591801</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 20221010</comment>
+    <requestid>1009285</requestid>
+  </revision>
 </revisionlist>
