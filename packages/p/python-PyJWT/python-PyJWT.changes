@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sun Oct  9 14:11:04 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to 2.5.0
+  * Bump actions/checkout from 2 to 3 by @dependabot in #758
+  * Bump codecov/codecov-action from 1 to 3 by @dependabot in #757
+  * Bump actions/setup-python from 2 to 3 by @dependabot in #756
+  * adding support for compressed payloads by @danieltmiles in #753
+  * Revert "adding support for compressed payloads" by @auvipy in #761
+  * Add to_jwk static method to ECAlgorithm by @leonsmith in #732
+  * Remove redundant wheel dep from pyproject.toml by @mgorny in #765
+  * Adjust expected exceptions in option merging tests for PyPy3 by @mgorny in #763
+  * Do not fail when an unusable key occurs by @DaGuich in #762
+  * Fixes for pyright on strict mode by @brandon-leapyear in #747
+  * Bump actions/setup-python from 3 to 4 by @dependabot in #769
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #770
+  * docs: fix simple typo, iinstance -> isinstance by @timgates42 in #774
+  * Expose get_algorithm_by_name as new method by @sirosen in #773
+  * Remove support for python3.6 by @sirosen in #777
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #778
+  * Emit a deprecation warning for unsupported kwargs by @sirosen in #776
+  * Fix typo: priot -> prior by @jdufresne in #780
+  * Fix for headers disorder issue by @kadabusha in #721
+  * Update audience typing by @JulianMaurin in #782
+  * Improve PyJWKSet error accuracy by @JulianMaurin in #786
+  * Add type hints to jwt/help.py and add missing types dependency by @kkirsche in #784
+  * Add cacheing functionality for JWK set by @wuhaoyujerry in #781
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #788
+  * Mypy as pre-commit check + api_jws typing by @JulianMaurin in #787
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #791
+  * Bump version to 2.5.0 by @jpadilla in #801
+
+-------------------------------------------------------------------
 Tue Jun  7 17:27:32 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 2.4.0 (CVE-2022-29217 boo#1199756)
