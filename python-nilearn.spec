@@ -19,15 +19,13 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 Name:           python-nilearn
-Version:        0.9.1
+Version:        0.9.2
 Release:        0
 Summary:        Statistical learning tool for neuroimaging
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/nilearn/nilearn
 Source:         https://github.com/nilearn/nilearn/archive/%{version}.tar.gz#/nilearn-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/nilearn/nilearn/commit/4242c0d03e3fc790b17a1d88ce5a4140633c6b6f fix test decoder (#3252)
-Patch0:         fix-test-decoder.patch
 BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -46,7 +44,6 @@ BuildRequires:  %{python_module matplotlib >= 3.0}
 BuildRequires:  %{python_module nibabel >= 3.0}
 BuildRequires:  %{python_module numpy >= 1.18}
 BuildRequires:  %{python_module pandas >= 1.0}
-BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2}
 BuildRequires:  %{python_module scikit-learn >= 0.22}
@@ -59,7 +56,7 @@ Nilearn is a Python module for statistical learning on
 NeuroImaging data.
 
 %prep
-%autosetup -p1 -n nilearn-%{version}
+%setup -n nilearn-%{version}
 sed -i '/durations/d' setup.cfg
 chmod -x nilearn/datasets/tests/data/localizer_index.json
 sed -i '1{/env python/d}' nilearn/glm/tests/test_utils.py nilearn/plotting/glass_brain_files/plot_align_svg.py
@@ -82,11 +79,14 @@ donttest+=" or test_check_niimg_wildcard"
 donttest+=" or test_clean_confounds"
 # https://github.com/nilearn/nilearn/issues/2610
 donttest+=" or test_reorder_img_mirror"
-# https://github.com/nilearn/nilearn/issues/3309
-donttest+=" or test_with_globbing_patterns_with_multiple_images"
+# ppc64 https://github.com/nilearn/nilearn/issues/3363
+donttest+=" or (test_load_confounds and test_nilearn_standardize)"
+# x86_64 https://github.com/nilearn/nilearn/issues/3382
+donttest+=" or test_tfce_smoke"
+
 if [[ $(getconf LONG_BIT) -eq 64 ]]; then
-# this is a noarch rpm package but the pure python code is only intended for 64-bit architectures
-%pytest -n auto -k "not ($donttest)"
+    # this is a noarch rpm package but the pure python code is only intended for 64-bit architectures
+%pytest -k "not ($donttest)"
 fi
 
 %files %{python_files}
