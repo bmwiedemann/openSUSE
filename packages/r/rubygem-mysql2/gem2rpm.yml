@@ -70,5 +70,7 @@
 :preamble: |-
   BuildRequires:  mysql-devel
 :sources:
-- rubygem-mysql2-rpmlintrc
+  - rubygem-mysql2-rpmlintrc
+  - series
 :patches:
+  workaround_mysql_config_libs.patch: -p1

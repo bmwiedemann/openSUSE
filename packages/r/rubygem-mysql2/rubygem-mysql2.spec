@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-mysql2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-mysql2
-Version:        0.5.3
+Version:        0.5.4
 Release:        0
 %define mod_name mysql2
 %define mod_full_name %{mod_name}-%{version}
@@ -36,10 +36,14 @@ BuildRequires:  %{rubydevel >= 2.0.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  ruby-macros >= 5
-Url:            https://github.com/brianmario/mysql2
+URL:            https://github.com/brianmario/mysql2
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        rubygem-mysql2-rpmlintrc
-Source2:        gem2rpm.yml
+Source2:        series
+Source3:        gem2rpm.yml
+# MANUAL
+Patch0:         workaround_mysql_config_libs.patch
+# /MANUAL
 Summary:        A simple, fast Mysql library for Ruby, binding to libmysql
 License:        MIT
 Group:          Development/Languages/Ruby
@@ -48,6 +52,10 @@ Group:          Development/Languages/Ruby
 A simple, fast Mysql library for Ruby, binding to libmysql.
 
 %prep
+%gem_unpack
+%patch0 -p1
+find -type f -print0 | xargs -0 touch -r %{S:0}
+%gem_build
 
 %build
 

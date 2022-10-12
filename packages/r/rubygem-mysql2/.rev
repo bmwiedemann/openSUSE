@@ -226,4 +226,41 @@
     <comment></comment>
     <requestid>751491</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>89dba5e23375b96358fb5a5469902361</srcmd5>
+    <version>0.5.4</version>
+    <time>1665591923</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to version 0.5.4
+  * The taint mechanism will be deprecated in Ruby 2.7 by @kamipo in #1083
+  * Made argument types strict for ruby 2.7 by @nobu in #1096
+  * Update rake (and rake-compiler) to suppress the warning. by @junaruga in #1099
+  * Fix crash if a Mysql2::Client object is allocated but never connected by @sodabrew in #1101
+  * Remove Enumerable include from Statement class by @adamcrown in #1104
+  * Add project metadata to the gemspec by @orien in #1089
+  * Don't call mysql_close if mysql_init wasn't called. by @fimmtiu in #1111
+  * Client session tracking by @insom in #1092
+  * Avoid a hash object allocation per each query/execute call by @kamipo in #1112
+  * Implementing type reflection from mysql result by @danhuynhdev in #1068
+  * Register C global variables to Ruby GC to avoid problems with GC.compact by @casperisfine in #1115
+  * Clarify Rails 4.2.11 support in Readme by @muzfuz in #1131
+  * Improve Homebrew compatibility by @stefansundin in #1135
+  * Tiny README syntax markup for consistency by @fwolfst in #1164
+  * Add GitHub Actions. by @junaruga in #1154
+  * Run GC.verify_compaction_references on CI by @casperisfine in #1155
+  * GitHub Actions: Add CentOS/Fedora cases. by @junaruga in #1168
+  * Random SEGV in do_send_query() by @unak in #1150
+  * GitHub Actions: Add macOS cases. by @junaruga in #1170
+  * Add GitHub Actions badges. by @junaruga in #1172
+  * Rename .travis_* files to ci/*. by @junaruga in #1171
+  * Make the benchmarks group optional. by @junaruga in #1173
+  * Verify the testing database before running tests. by @junaruga in #1174
+  * Rename the before/after hooks's symbol on RSpec 2 to the one on RSpec 3. by @junaruga in #1177
+  * Refactor CI yaml files by @junaruga in #1176
+  * Fix test failures on MariaDB by @junaruga in #1193
+  * Fix some typos [ci skip] by @kamipo in #1195
+  * Travis: Remove the command to pin Rubygems. by @junaruga in #1188
+  * Make Result#fields return interned strings in Ruby 3+ by @casperisfine in #1181</comment>
+    <requestid>1010083</requestid>
+  </revision>
 </revisionlist>
