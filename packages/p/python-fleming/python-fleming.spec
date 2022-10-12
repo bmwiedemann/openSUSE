@@ -1,7 +1,7 @@
 #
 # spec file for package python-fleming
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,16 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 Name:           python-fleming
-Version:        0.5.0
+Version:        0.7.0
 Release:        0
 Summary:        Python helpers for manipulating datetime objects relative to time zones
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/ambitioninc/fleming
 Source:         https://github.com/ambitioninc/fleming/archive/%{version}.tar.gz#/fleming-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
