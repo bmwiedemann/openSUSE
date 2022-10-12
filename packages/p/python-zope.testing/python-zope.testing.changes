@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 11 17:32:07 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 4.10 
+  * Show deprecation warnings when importing modules which are not ported to Python 3.
+  * Improve test coverage.
+  * Port zope.testing.formparser to Python 3.
+  * Add support for Python 3.10.
+
+-------------------------------------------------------------------
 Tue Oct  5 09:48:25 UTC 2021 - pgajdos@suse.com
 
 - version update to 4.9
