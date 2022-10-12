@@ -24,13 +24,13 @@
 #
 
 Name:           rubygem-rack-protection
-Version:        2.2.2
+Version:        3.0.2
 Release:        0
 %define mod_name rack-protection
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  %{ruby >= 2.6.0}
 BuildRequires:  %{rubygem gem2rpm}
-BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
 URL:            http://sinatrarb.com/protection/
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
