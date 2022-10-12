@@ -27,7 +27,7 @@
 #
 ######################################################################
 Name:           skelcd-control-openSUSE-promo
-Version:        20220726
+Version:        20221010
 Release:        0
 Summary:        The openSUSE Installation Control file
 License:        MIT
@@ -58,9 +58,11 @@ Requires:       yast2-firewall
 # instsys_cleanup
 Requires:       yast2-installation >= 3.1.201
 Requires:       yast2-iscsi-client
+%ifnarch %{arm}
 Requires:       yast2-kdump
 # yast2-kdump has only runtime dependency but the package is also needed in the inst-sys
 Requires:       kdump
+%endif
 Requires:       yast2-multipath
 Requires:       yast2-network >= 3.1.24
 Requires:       yast2-nfs-client
