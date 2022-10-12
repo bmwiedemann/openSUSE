@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 12 03:41:59 UTC 2022 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- Update to 1.8.8: 
+  * Update Extension and Experimental Features to return ZE_RESULT_ERROR_UNSUPPORTED_FEATURE instead of ZE_RESULT_ERROR_UNINITIALIZED when not found.
+
+-------------------------------------------------------------------
 Thu Sep 22 19:52:14 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - install LICENSE

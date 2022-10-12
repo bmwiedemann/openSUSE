@@ -16,8 +16,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           level-zero
-Version:        1.8.5
+Version:        1.8.8
 Release:        0
 Summary:        oneAPI Level Zero Specification Headers and Loader
 License:        MIT

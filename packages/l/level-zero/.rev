@@ -7,4 +7,14 @@
     <comment></comment>
     <requestid>1005487</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>afbc71181e33fe53e20f32d547a0be59</srcmd5>
+    <version>1.8.8</version>
+    <time>1665591936</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.8: 
+  * Update Extension and Experimental Features to return ZE_RESULT_ERROR_UNSUPPORTED_FEATURE instead of ZE_RESULT_ERROR_UNINITIALIZED when not found.
+</comment>
+    <requestid>1009998</requestid>
+  </revision>
 </revisionlist>
