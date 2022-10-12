@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 11 16:52:39 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 2.0.1 
+  * Don't run the onbuild step under setuptools' upcoming PEP 660 editable mode (contributed by @abravalheri)
+
+-------------------------------------------------------------------
 Fri Jul 22 21:44:24 UTC 2022 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
 
 - Update to v2.0.0
