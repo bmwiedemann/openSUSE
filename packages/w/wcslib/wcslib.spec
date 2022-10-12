@@ -18,7 +18,7 @@
 
 %define libver  7
 Name:           wcslib
-Version:        7.11
+Version:        7.12
 Release:        0
 Summary:        An implementation of the FITS WCS standard
 License:        LGPL-3.0-or-later

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Oct 11 19:28:48 UTC 2022 - Asterios Dramis <asterios.dramis@gmail.com>
+
+- Update to version 7.12:
+  * C library
+    - In wcsp2s() and wcss2p(), fixed handling of status returns
+      from linp2x() and linx2p() relating to distortion functions,
+      specifically with respect to setting the stat[] vector.
+      Reported by Sepideh Eskandarlou (via Mohammad Akhlaghi).
+    - When extracting by axis type, wcssub() did not account for
+      the possibility of time axes with -TAB or -LOG algorithm
+      codes. Reported by Mihai Cara.
+  * Utilities
+    - Fixed a bit of confusion in wcsgrid relating to cfitsio file
+      opening syntax, e.g. file.fits+1.  It now matches wcsware in
+      that regard.
+    - Portability fix - need to define _POSIX_C_SOURCE as 199506L
+      in order to get the declaration of localtime_r().  Reported
+      by Marc Espie.
+  * User manual
+    - Documentation generation moved to doxygen 1.9.5 (was 1.9.3).
+
+-------------------------------------------------------------------
 Thu May  5 20:07:33 UTC 2022 - Asterios Dramis <asterios.dramis@gmail.com>
 
 - Update to version 7.11:
