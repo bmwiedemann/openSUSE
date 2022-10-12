@@ -16,16 +16,14 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%global skip_python2 1
 Name:           python-joblib
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Module for using Python functions as pipeline jobs
 License:        BSD-3-Clause
 URL:            https://github.com/joblib/joblib
 Source:         https://files.pythonhosted.org/packages/source/j/joblib/joblib-%{version}.tar.gz
-Patch0:         support-setuptools-62.patch
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module lz4}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module psutil}
@@ -111,7 +109,7 @@ fi
 %files %{python_files}
 %license LICENSE.txt
 %doc README.rst
-%{python_sitelib}/joblib-%{version}-py*.egg-info
+%{python_sitelib}/joblib-%{version}*-info
 %{python_sitelib}/joblib/
 
 %changelog

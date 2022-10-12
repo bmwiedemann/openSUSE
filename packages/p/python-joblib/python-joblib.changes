@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Oct 11 13:20:33 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.2.0 (CVE-2022-21797, bsc#1204232)
+  * Fix a security issue where eval(pre_dispatch) could potentially
+    run arbitrary code. Now only basic numerics are supported.
+    #1327
+  * Make sure that joblib works even when multiprocessing is not
+    available, for instance with Pyodide #1256
+  * Avoid unnecessary warnings when workers and main process delete
+    the temporary memmap folder contents concurrently. #1263
+  * Vendor loky 3.1.0 with several fixes to more robustly forcibly
+    terminate worker processes in case of a crash. #1269
+  * Fix memory alignment bug for pickles containing numpy arrays.
+    This is especially important when loading the pickle with
+    mmap_mode != None as the resulting numpy.memmap object would
+    not be able to correct the misalignment without performing a
+    memory copy. This bug would cause invalid computation and
+    segmentation faults with native code that would directly access
+    the underlying data buffer of a numpy array, for instance
+    C/C++/Cython code compiled with older GCC versions or some old
+    OpenBLAS written in platform specific assembly. #1254
+  * Vendor cloudpickle 2.2.0 which adds support for PyPy 3.8+.
+  * Vendor loky 3.3.0 which fixes a bug with leaking processes in
+    case of nested loky parallel calls and more reliability spawn
+    the correct number of reusable workers.
+- Drop support-setuptools-62.patch
+
+-------------------------------------------------------------------
 Wed Jul 20 11:00:18 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-setuptools-62.patch:
