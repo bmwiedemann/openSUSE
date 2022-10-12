@@ -155,7 +155,15 @@ Fri Dec 28 02:37:40 UTC 2018 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 -------------------------------------------------------------------
 Thu Nov 22 08:51:04 UTC 2018 - Dirk Mueller <dmueller@suse.com>
 
-- update to official RC2 tarball release
+- update to official RC2 tarball release:
+  which obsoletes the following patches in previous dists as backports
+  that have always been upstream:
+  * obsoletes 0001-PSD-Use-Safe-add-for-preventing-overflows-in-PSD-fil.patch 
+  * obsoletes 0002-PSD-enforce-Length-of-image-resource-section-file-si.patch (CVE-2018-19108, bsc#1115364)
+  * obsoletes 0001-Fix-561.-Use-proper-counter-for-the-idx-variable.patch (CVE-2018-19607, bsc#1117513)
+  * obsoletes 0001-Avoid-null-pointer-exception-due-to-NULL-return-valu.patch (bsc#1142684, CVE-2019-13114)
+  * obsoletes 0001-IptcData-printStructure-Remove-buffer-overrun.patch (bsc#1088424, CVE-2018-9305)
+  * obsoletes 0001-Fix-SEGV-in-DataValue-Copy.patch (bsc#1109299, CVE-2018-17282)
 
 -------------------------------------------------------------------
 Fri Nov 16 12:52:40 UTC 2018 - Dirk Mueller <dmueller@suse.com>
@@ -182,6 +190,10 @@ Tue Oct 16 16:08:55 UTC 2018 - Dirk Mueller <dmueller@suse.com>
 
 - update to latest 0.26 branch:
   * Fixes CVE-2018-12264, CVE-2018-12265 (bsc#1097599)
+  * Fixes CVE-2017-9239 (bsc#1040973): null pointer dereference in doWriteImage
+  * Fixes CVE-2018-17229 (bsc#1109175): (Heap buffer overflow in Exiv2::d2Data)
+  * Fixes CVE-2018-17230 (bsc#1109176): (heap-based buffer overflow in Exiv2::ul2Data)
+  * Fixes CVE-2017-1000126 (Stack out of bounds read in webp parser) (bsc#1068873)
 
 -------------------------------------------------------------------
 Fri Jun 29 12:20:33 UTC 2018 - tchvatal@suse.com

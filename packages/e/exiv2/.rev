@@ -645,4 +645,24 @@
 - update to 0.27.1 (CVE-2019-13108, bsc#1142675)</comment>
     <requestid>1006717</requestid>
   </revision>
+  <revision rev="64" vrev="4">
+    <srcmd5>b886855c476e4c67482097518a387c13</srcmd5>
+    <version>0.27.5</version>
+    <time>1665591834</time>
+    <user>dimstar_suse</user>
+    <comment>- update to official RC2 tarball release:
+  which obsoletes the following patches in previous dists as backports
+  that have always been upstream:
+  * obsoletes 0001-PSD-Use-Safe-add-for-preventing-overflows-in-PSD-fil.patch 
+  * obsoletes 0002-PSD-enforce-Length-of-image-resource-section-file-si.patch (CVE-2018-19108, bsc#1115364)
+  * obsoletes 0001-Fix-561.-Use-proper-counter-for-the-idx-variable.patch (CVE-2018-19607, bsc#1117513)
+  * obsoletes 0001-Avoid-null-pointer-exception-due-to-NULL-return-valu.patch (bsc#1142684, CVE-2019-13114)
+  * obsoletes 0001-IptcData-printStructure-Remove-buffer-overrun.patch (bsc#1088424, CVE-2018-9305)
+  * obsoletes 0001-Fix-SEGV-in-DataValue-Copy.patch (bsc#1109299, CVE-2018-17282)
+  * Fixes CVE-2017-9239 (bsc#1040973): null pointer dereference in doWriteImage
+  * Fixes CVE-2018-17229 (bsc#1109175): (Heap buffer overflow in Exiv2::d2Data)
+  * Fixes CVE-2018-17230 (bsc#1109176): (heap-based buffer overflow in Exiv2::ul2Data)
+  * Fixes CVE-2017-1000126 (Stack out of bounds read in webp parser) (bsc#1068873)</comment>
+    <requestid>1007902</requestid>
+  </revision>
 </revisionlist>
