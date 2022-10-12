@@ -26,4 +26,12 @@
   * Drop python 2.7 support and 3.5 as well</comment>
     <requestid>946647</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3360d34dccf7f25448f8d52854689a26</srcmd5>
+    <version>4.2.0</version>
+    <time>1665591951</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010145</requestid>
+  </revision>
 </revisionlist>

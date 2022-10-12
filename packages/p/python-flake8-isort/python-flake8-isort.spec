@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global skip_python2 1
 Name:           python-flake8-isort
-Version:        4.1.1
+Version:        4.2.0
 Release:        0
 Summary:        Plugin integrating isort in flake8
 License:        GPL-2.0-only
