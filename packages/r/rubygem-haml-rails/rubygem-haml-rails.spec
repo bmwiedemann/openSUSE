@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-haml-rails
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-haml-rails
-Version:        2.0.1
+Version:        2.1.0
 Release:        0
 %define mod_name haml-rails
 %define mod_full_name %{mod_name}-%{version}
@@ -32,7 +32,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{ruby >= 2.3.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
-Url:            https://github.com/indirect/haml-rails
+URL:            https://github.com/haml/haml-rails
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        let your Gemfile do the configuring
@@ -40,7 +40,7 @@ License:        MIT
 Group:          Development/Languages/Ruby
 
 %description
-Haml-rails provides Haml generators for Rails 4. It also enables Haml as the
+Haml-rails provides Haml generators for Rails 5. It also enables Haml as the
 templating engine for you, so you don't have to screw around in your own
 application.rb when your Gemfile already clearly indicated what templating
 engine you have installed. Hurrah.
