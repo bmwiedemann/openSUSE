@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 11 16:23:29 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 2.18 
+  * Fix bug with loading generators that raise exceptions
+
+-------------------------------------------------------------------
 Sat Oct 30 13:58:34 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Specfile for version 2.12
