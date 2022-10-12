@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sun Aug 28 06:35:23 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 9.1
+  * fmt::formatted_size now works at compile time
+  * Fixed handling of invalid UTF-8 (#3038)
+  * Improved Unicode support in ostream overloads of print
+  * Added support for wide streams to fmt::streamed
+  * Added the n specifier that disables the output of delimiters
+  when formatting ranges (#2981)
+- Delete 0001-Fix-large-shift-in-uint128_fallback.patch
+  0002-Use-FMT_USE_FLOAT128-instead-of-__SIZEOF_FLOAT128__.patch
+  0001-Make-sure-the-correct-fmod-overload-is-called.patch (merged)
+
+-------------------------------------------------------------------
+Tue Jul  5 14:16:23 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 9
+  * Switched to the internal floating point formatter for all
+    decimal presentation formats. In particular this results in
+    consistent rounding on all platforms and removing the
+    s[n]printf fallback for decimal FP formatting.
+  * Compile-time floating point formatting no longer requires the
+    header-only mode.
+  * Disabled automatic std::ostream insertion operator
+    (operator<<) discovery when fmt/ostream.h is included to
+    prevent ODR violations. You can get the old behavior by
+    defining FMT_DEPRECATED_OSTREAM.
+  * Added fmt::ostream_formatter that can be used to write
+    formatter specializations that perform formatting via
+    std::ostream.
+  * Added the fmt::streamed function that takes an object and
+    formats it via std::ostream.
+  * Added experimental std::variant formatting support.
+  * Added experimental std::filesystem::path formatting support.
+  * Added a std::thread::id formatter to fmt/std.h.
+  * Added support for nested specifiers to range formatting.
+- Add 0001-Fix-large-shift-in-uint128_fallback.patch
+  0002-Use-FMT_USE_FLOAT128-instead-of-__SIZEOF_FLOAT128__.patch
+  0001-Make-sure-the-correct-fmod-overload-is-called.patch
+
+-------------------------------------------------------------------
 Sat Apr 30 12:01:50 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Replace obsolete macro %make_jobs by %cmake_build
