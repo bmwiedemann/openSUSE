@@ -143,4 +143,21 @@
     <comment></comment>
     <requestid>982535</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>24fb86cac473227b0f2b0a395be3ed46</srcmd5>
+    <version>2.6.0</version>
+    <time>1665591921</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 2.6.0
+ see installed CHANGELOG.md
+  # Changelog
+  
+  All notable changes to this project will be documented in this file.
+  
+  The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+  and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+  
+</comment>
+    <requestid>1010081</requestid>
+  </revision>
 </revisionlist>
