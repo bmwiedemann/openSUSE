@@ -1,7 +1,7 @@
 #
 # spec file for package python-xsge_tiled
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python36 1
 Name:           python-xsge_tiled
-Version:        1.0
+Version:        2.0
 Release:        0
 Summary:        xSGE Tiled Library
 License:        GPL-3.0-or-later
