@@ -1226,6 +1226,7 @@
     <package name="kpeoplevcard" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="kpimtextedit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kpimtextedit-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="kpipewire-imports" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kqtquickcharts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="kquickcharts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="krb5" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -1485,6 +1486,9 @@
     <package name="libKPimItinerary5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKPimPkPass5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKPimSMTP5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libKPipeWire5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libKPipeWire5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libKPipeWireRecord5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKSaneCore1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKScreenLocker5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKSysGuardSystemStats1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1535,6 +1539,8 @@
     <package name="libQt5WebChannel5-imports" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libQt5WebSockets5" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libQt5WebSockets5-imports" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libQt5WebView5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libQt5WebView5-imports" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libQt5Widgets5" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libQt5X11Extras5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libQt5Xml5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -3981,6 +3987,7 @@
     <package name="ruby3.1-rubygem-puma_worker_killer" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-pundit" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-rack" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.1-rubygem-rack-2.2" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-rack-accept" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-rack-oauth2" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.1-rubygem-rack-protection" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->

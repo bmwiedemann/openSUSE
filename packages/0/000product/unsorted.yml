@@ -7453,6 +7453,7 @@ unsorted:
   - iso-country-flags-png 
   - isorelax 
   - ispc: [x86_64] 
+  - ispc-devel: [x86_64] 
   - ispell-bulgarian 
   - ispell-catalan 
   - ispell-dutch 
@@ -8459,6 +8460,7 @@ unsorted:
   - kphotoalbum 
   - kphotoalbum-lang 
   - kpimtextedit-devel 
+  - kpipewire-devel 
   - kpkpass-devel 
   - kplotting-devel 
   - kpmcore 
@@ -9333,8 +9335,6 @@ unsorted:
   - libQt5WaylandCompositor5-32bit: [x86_64] 
   - libQt5WebChannel5-32bit: [x86_64] 
   - libQt5WebSockets5-32bit: [x86_64] 
-  - libQt5WebView5 
-  - libQt5WebView5-imports 
   - libQt5Widgets-devel 
   - libQt5Widgets-devel-32bit: [x86_64] 
   - libQt5Widgets-private-headers-devel 
@@ -9580,6 +9580,8 @@ unsorted:
   - libXcursor-devel-32bit: [x86_64] 
   - libXdamage-devel 
   - libXdamage-devel-32bit: [x86_64] 
+  - libXdgUtilsBaseDir1_0_1 
+  - libXdgUtilsDesktopEntry1_0_1 
   - libXdmcp-devel 
   - libXdmcp-devel-32bit: [x86_64] 
   - libXdmcp6-32bit: [x86_64] 
@@ -11884,6 +11886,7 @@ unsorted:
   - libiso9660-11-32bit: [x86_64] 
   - libisoburn-devel 
   - libisofs-devel 
+  - libispcrt_1: [x86_64] 
   - libite-devel 
   - libite5 
   - libiterm-devel 
@@ -12653,6 +12656,7 @@ unsorted:
   - libnfc-devel 
   - libnfc-tools 
   - libnfc6 
+  - libnfdump1_7_0 
   - libnfnetlink-devel 
   - libnfnetlink0-32bit: [x86_64] 
   - libnfs-devel 
@@ -15882,6 +15886,8 @@ unsorted:
   - m17n-lib-devel 
   - mISDNuser 
   - mISDNuser-devel 
+  - mac 
+  - mac-devel 
   - mac-robber 
   - macchanger 
   - macchina: [x86_64] 
@@ -17514,6 +17520,7 @@ unsorted:
   - nfc-eventd 
   - nfcutils 
   - nfdump 
+  - nfdump-devel 
   - nfoview 
   - nfoview-lang 
   - nfs-client-provisioner 
@@ -18373,6 +18380,7 @@ unsorted:
   - openSUSE-release-usb-gnome 
   - openSUSE-release-usb-kde 
   - openSUSE-release-usb-x11 
+  - openSUSE-repos-Tumbleweed 
   - openSUSE-signkey-cert: [x86_64] 
   - openSUSEway 
   - openafs 
@@ -20772,6 +20780,7 @@ unsorted:
   - php8-pear 
   - php8-pecl 
   - php8-pgsql 
+  - php8-phalcon 
   - php8-phar 
   - php8-posix 
   - php8-psr 
@@ -22195,6 +22204,7 @@ unsorted:
   - python310-PyOgg 
   - python310-PyOpenAL 
   - python310-PyPDF2 
+  - python310-PyPDF3 
   - python310-PyPrind 
   - python310-PyQRCode 
   - python310-PyQt6 
@@ -22451,6 +22461,7 @@ unsorted:
   - python310-azure-ai-language-nspkg 
   - python310-azure-ai-language-questionanswering 
   - python310-azure-ai-metricsadvisor 
+  - python310-azure-ai-ml 
   - python310-azure-ai-nspkg 
   - python310-azure-ai-textanalytics 
   - python310-azure-ai-translation-document 
@@ -22897,6 +22908,7 @@ unsorted:
   - python310-colorcet 
   - python310-colorclass 
   - python310-coloredlogs 
+  - python310-colorful 
   - python310-colorlog 
   - python310-colorlover 
   - python310-colormap 
@@ -23086,6 +23098,7 @@ unsorted:
   - python310-django-minio-storage 
   - python310-django-model-utils 
   - python310-django-money 
+  - python310-django-mptt 
   - python310-django-nine 
   - python310-django-oauth-toolkit 
   - python310-django-oidc-provider 
@@ -23112,6 +23125,7 @@ unsorted:
   - python310-django-rest-knox 
   - python310-django-reversion 
   - python310-django-rosetta 
+  - python310-django-rq 
   - python310-django-seed 
   - python310-django-sekizai 
   - python310-django-settings-toml 
@@ -24239,6 +24253,7 @@ unsorted:
   - python310-pydbus 
   - python310-pydenticon 
   - python310-pydicom 
+  - python310-pydicom-data 
   - python310-pydle 
   - python310-pydocstyle 
   - python310-pydocumentdb 
@@ -24752,7 +24767,7 @@ unsorted:
   - python310-scikit-umfpack: [x86_64] 
   - python310-scipy 
   - python310-scipy-gnu-hpc: [x86_64] 
-  - python310-scipy_1_8_0-gnu-hpc: [x86_64] 
+  - python310-scipy_1_9_1-gnu-hpc: [x86_64] 
   - python310-scitokens 
   - python310-scp 
   - python310-screeninfo 
@@ -25418,6 +25433,7 @@ unsorted:
   - python38-PyOgg 
   - python38-PyOpenAL 
   - python38-PyPDF2 
+  - python38-PyPDF3 
   - python38-PyPrind 
   - python38-PyQRCode 
   - python38-PyQt6 
@@ -25683,6 +25699,7 @@ unsorted:
   - python38-azure-ai-language-nspkg 
   - python38-azure-ai-language-questionanswering 
   - python38-azure-ai-metricsadvisor 
+  - python38-azure-ai-ml 
   - python38-azure-ai-nspkg 
   - python38-azure-ai-textanalytics 
   - python38-azure-ai-translation-document 
@@ -26139,6 +26156,7 @@ unsorted:
   - python38-colorcet 
   - python38-colorclass 
   - python38-coloredlogs 
+  - python38-colorful 
   - python38-colorlog 
   - python38-colorlover 
   - python38-colormap 
@@ -26339,6 +26357,7 @@ unsorted:
   - python38-django-minio-storage 
   - python38-django-model-utils 
   - python38-django-money 
+  - python38-django-mptt 
   - python38-django-nine 
   - python38-django-oauth-toolkit 
   - python38-django-oidc-provider 
@@ -26365,6 +26384,7 @@ unsorted:
   - python38-django-rest-knox 
   - python38-django-reversion 
   - python38-django-rosetta 
+  - python38-django-rq 
   - python38-django-seed 
   - python38-django-sekizai 
   - python38-django-settings-toml 
@@ -27539,6 +27559,7 @@ unsorted:
   - python38-pydbus 
   - python38-pydenticon 
   - python38-pydicom 
+  - python38-pydicom-data 
   - python38-pydle 
   - python38-pydocstyle 
   - python38-pydocumentdb 
@@ -28071,7 +28092,7 @@ unsorted:
   - python38-scikit-umfpack: [x86_64] 
   - python38-scipy 
   - python38-scipy-gnu-hpc: [x86_64] 
-  - python38-scipy_1_8_0-gnu-hpc: [x86_64] 
+  - python38-scipy_1_9_1-gnu-hpc: [x86_64] 
   - python38-scitokens 
   - python38-scour 
   - python38-scp 
@@ -28748,6 +28769,7 @@ unsorted:
   - python39-PyOgg 
   - python39-PyOpenAL 
   - python39-PyPDF2 
+  - python39-PyPDF3 
   - python39-PyPrind 
   - python39-PyQRCode 
   - python39-PyQt6 
@@ -29013,6 +29035,7 @@ unsorted:
   - python39-azure-ai-language-nspkg 
   - python39-azure-ai-language-questionanswering 
   - python39-azure-ai-metricsadvisor 
+  - python39-azure-ai-ml 
   - python39-azure-ai-nspkg 
   - python39-azure-ai-textanalytics 
   - python39-azure-ai-translation-document 
@@ -29468,6 +29491,7 @@ unsorted:
   - python39-colorcet 
   - python39-colorclass 
   - python39-coloredlogs 
+  - python39-colorful 
   - python39-colorlog 
   - python39-colorlover 
   - python39-colormap 
@@ -29668,6 +29692,7 @@ unsorted:
   - python39-django-minio-storage 
   - python39-django-model-utils 
   - python39-django-money 
+  - python39-django-mptt 
   - python39-django-nine 
   - python39-django-oauth-toolkit 
   - python39-django-oidc-provider 
@@ -29693,6 +29718,7 @@ unsorted:
   - python39-django-rest-knox 
   - python39-django-reversion 
   - python39-django-rosetta 
+  - python39-django-rq 
   - python39-django-seed 
   - python39-django-sekizai 
   - python39-django-settings-toml 
@@ -30870,6 +30896,7 @@ unsorted:
   - python39-pydbus 
   - python39-pydenticon 
   - python39-pydicom 
+  - python39-pydicom-data 
   - python39-pydle 
   - python39-pydocstyle 
   - python39-pydocumentdb 
@@ -31401,7 +31428,7 @@ unsorted:
   - python39-scikit-umfpack: [x86_64] 
   - python39-scipy 
   - python39-scipy-gnu-hpc: [x86_64] 
-  - python39-scipy_1_8_0-gnu-hpc: [x86_64] 
+  - python39-scipy_1_9_1-gnu-hpc: [x86_64] 
   - python39-scitokens 
   - python39-scour 
   - python39-scp 
@@ -33910,6 +33937,10 @@ unsorted:
   - sword-devel 
   - swtcalendar 
   - swtpm-devel 
+  - swww 
+  - swww-bash-completion 
+  - swww-fish-completion 
+  - swww-zsh-completion 
   - sxhkd 
   - sxiv 
   - syft 
@@ -42792,7 +42823,7 @@ unsorted:
   - tomoe-gtk-lang 
   - tomoyo-tools 
   - tomsfastmath-devel 
-  - toolbox 
+  - toolbox: [i586] 
   - tor 
   - torbrowser-apparmor-profile 
   - torbrowser-launcher 
@@ -44029,6 +44060,7 @@ unsorted:
   - xdg-desktop-portal-devel 
   - xdg-desktop-portal-lxqt 
   - xdg-desktop-portal-wlr 
+  - xdg-utils-cxx-devel 
   - xdiskusage 
   - xditview 
   - xdmsc 
