@@ -1,7 +1,7 @@
 #
 # spec file for package python-telethon-session-sqlalchemy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-telethon-session-sqlalchemy
-Version:        0.2.15
+Version:        0.2.16
 Release:        0
 Summary:        SQLAlchemy backend for Telethon session storage
 License:        MIT
