@@ -39,4 +39,23 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>993455</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1dd2f5208c081691ce65741ed773b443</srcmd5>
+    <version>7.0.4</version>
+    <time>1665591898</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 7.0.4
+ see installed CHANGELOG.md
+  ## Rails 7.0.4 (September 09, 2022) ##
+  
+  *   Update `ActiveJob::QueueAdapters::QueAdapter` to remove deprecation warning.
+  
+      Remove a deprecation warning introduced in que 1.2 to prepare for changes in
+      que 2.0 necessary for Ruby 3 compatibility.
+  
+      *Damir Zekic* and *Adis Hasovic*
+  
+</comment>
+    <requestid>1010043</requestid>
+  </revision>
 </revisionlist>

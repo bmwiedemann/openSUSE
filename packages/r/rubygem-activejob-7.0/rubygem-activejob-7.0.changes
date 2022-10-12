@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Oct 10 12:53:24 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 7.0.4
+ see installed CHANGELOG.md
+
+  ## Rails 7.0.4 (September 09, 2022) ##
+  
+  *   Update `ActiveJob::QueueAdapters::QueAdapter` to remove deprecation warning.
+  
+      Remove a deprecation warning introduced in que 1.2 to prepare for changes in
+      que 2.0 necessary for Ruby 3 compatibility.
+  
+      *Damir Zekic* and *Adis Hasovic*
+  
+
+-------------------------------------------------------------------
 Thu Aug  4 12:51:28 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 7.0.3.1
