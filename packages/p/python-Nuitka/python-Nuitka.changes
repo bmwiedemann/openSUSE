@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 11 23:26:31 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to Version 1.0.8  
+  * Standalone: Added support for more rapidfuzz implicit dependencies. Fixed in 1.0.8 already.
+  * Standalone: Added support for vibora. Fixed in 1.0.8 already.
+  * Fix, must not expose module name objects to Python import hooks. Fixed in 1.0.8 already.
+  * Fix, calls to bound methods of string values generated incorrect calls. Fixed in 1.0.8 already.
+
+-------------------------------------------------------------------
 Thu Sep 22 19:20:49 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 1.0
