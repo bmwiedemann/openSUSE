@@ -80,4 +80,13 @@
     <comment></comment>
     <requestid>1001511</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>c138649a20f7c6d49b28d9d4e244dec2</srcmd5>
+    <version>2.0.2</version>
+    <time>1665591855</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch remove-mock.patch:
+  * Remove use of mock.</comment>
+    <requestid>1009965</requestid>
+  </revision>
 </revisionlist>

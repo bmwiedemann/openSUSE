@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 12 02:26:13 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch remove-mock.patch:
+  * Remove use of mock. 
+
+-------------------------------------------------------------------
 Tue Sep  6 14:12:44 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Add test files missing from PyPI release:

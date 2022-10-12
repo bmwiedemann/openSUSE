@@ -29,6 +29,8 @@ Source1:        https://raw.githubusercontent.com/dpkp/kafka-python/master/serve
 Source2:        https://raw.githubusercontent.com/dpkp/kafka-python/master/test/conftest.py
 Source3:        https://raw.githubusercontent.com/dpkp/kafka-python/master/test/fixtures.py
 Source4:        https://raw.githubusercontent.com/dpkp/kafka-python/master/test/service.py
+# PATCH-FIX-OPENSUSE Remove use of mock module
+Patch0:         remove-mock.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -39,7 +41,6 @@ Suggests:       python-xxhash
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module lz4}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-snappy}
@@ -55,7 +56,7 @@ protocol as well as broker-aware request routing. Gzip and Snappy compression
 is also supported for message sets.
 
 %prep
-%setup -q -n kafka-python-%{version}
+%autosetup -p1 -n kafka-python-%{version}
 mkdir -p servers/0.11.0.2/resources/
 cp %{SOURCE1} servers/0.11.0.2/resources/
 
