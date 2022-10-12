@@ -887,4 +887,20 @@
     <comment></comment>
     <requestid>1007190</requestid>
   </revision>
+  <revision rev="34" vrev="4">
+    <srcmd5>391849c18400c440d93e02793265a725</srcmd5>
+    <version>8.5.13</version>
+    <time>1665591845</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010210</requestid>
+  </revision>
+  <revision rev="35" vrev="5">
+    <srcmd5>e1ee4acf22437e6632c32aaafeb67c78</srcmd5>
+    <version>8.5.13</version>
+    <time>1665591962</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010166</requestid>
+  </revision>
 </revisionlist>

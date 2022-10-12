@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Wed Sep 21 11:37:55 UTC 2022 - witold.bedyk@suse.com
 
-- Update to version 8.5.13:
+- Update to version 8.5.13 (jsc#PED-2145):
   + Features and enhancements:
     * Plugins: Expose emotion/react to plugins to prevent load
       failures
