@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %global skip_python2 1
 Name:           python-toolz
-Version:        0.11.2
+Version:        0.12.0
 Release:        0
 Summary:        List processing tools and functional utilities for python
 License:        BSD-3-Clause
