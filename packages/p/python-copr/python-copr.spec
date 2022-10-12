@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-copr
-Version:        1.122
+Version:        1.123
 Release:        0
 Summary:        Python client for copr service
 License:        GPL-2.0-or-later
