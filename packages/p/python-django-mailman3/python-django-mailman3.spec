@@ -28,6 +28,8 @@ URL:            https://gitlab.com/mailman/django-mailman3
 Source:         https://files.pythonhosted.org/packages/source/d/django-mailman3/django-mailman3-%{version}.tar.gz
 # PATCH-FEATURE-UPSTREAM dj40.patch https://gitlab.com/mailman/django-mailman3/-/merge_requests/150
 Patch0:         dj40.patch
+# PATCH-FEATURE-UPSTREAM dj41.patch https://gitlab.com/mailman/django-mailman3/-/merge_requests/170
+Patch1:         dj41.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -52,6 +54,7 @@ Django library to help interaction with Mailman.
 %prep
 %setup -q -n django-mailman3-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
 %python_build

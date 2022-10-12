@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  5 16:05:25 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add dj41.patch to make it compatible with django 4.1 based on
+  https://gitlab.com/mailman/django-mailman3/-/merge_requests/170
+
+-------------------------------------------------------------------
 Thu Jul 14 18:43:40 UTC 2022 - Jacob Michalskie <hel@lcp.world>
 
 - Fix the patch for django 4.0 to update dependencies
