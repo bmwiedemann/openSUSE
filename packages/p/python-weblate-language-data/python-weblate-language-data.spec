@@ -1,7 +1,7 @@
 #
 # spec file for package python-weblate-language-data
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define modname weblate-language-data
 %define skip_python2 1
 Name:           python-weblate-language-data
-Version:        2021.5
+Version:        2022.7
 Release:        0
 Summary:        Language Data for Weblate
 License:        MIT
