@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-css_parser
-Version:        1.11.0
+Version:        1.12.0
 Release:        0
 %define mod_name css_parser
 %define mod_full_name %{mod_name}-%{version}
