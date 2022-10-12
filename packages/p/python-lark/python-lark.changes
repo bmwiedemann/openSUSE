@@ -1,0 +1,156 @@
+-------------------------------------------------------------------
+Sun Oct  9 10:06:19 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Rename to python-lark 
+- Update dependencies
+- Fix License identifier: LICENSE was changed 6 years ago
+
+-------------------------------------------------------------------
+Thu Jul 14 18:24:01 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- BuildRequire pytest >= 6.0.0, to avoid '/home/abuild/rpmbuild/BUILD/lark-1.1.2/pytest.ini:2: requires pytest-6.0, actual pytest-3.10.1'
+
+-------------------------------------------------------------------
+Tue May 24 07:13:03 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to 1.1.2
+  * Tree instances now have a pretty print with the "rich" library,
+    when doing rich.print(tree)
+  * Bugfix for recursive regexes (with the "regex" library)
+  * Refactors, cleanups, and better mypy support
+  * Clean up tree templates implementation to reduce mypy errors
+  * Remove redefinitions related to standalone parser
+  * Added Tree.rich() method to make Tree a Rich renderable
+  * Rename lexer_state->lexer_thread, and make a few adjustments for
+    the benefit of Lark-Cython
+  * Use isinstance() checks in expcetions match_examples()
+  * change MAXREPEAT to int
+  * Tests: Small fixes
+- For previous changes check
+  https://github.com/lark-parser/lark/releases
+- Drop Python2 support
+
+-------------------------------------------------------------------
+Wed May 26 08:33:40 UTC 2021 - pgajdos@suse.com
+
+- version update to 0.11.3
+  * lot of changes, see
+    https://github.com/lark-parser/lark/releases
+- removed sources
+  * testdata.tar.gz (unneeded)
+- %check: use %pytest rpm macro
+
+-------------------------------------------------------------------
+Fri Jul  3 09:25:30 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 0.9.0
+  * Added error handling to LALR!
+    + on_error option to Lark.parse().
+    + Parser now comes with a puppet for advanced error handling.
+  * Support for better regexps with the regex module, when using
+    Lark(..., regex=True)
+
+- Update to 0.8.9
+  * Bugfix for PyInstaller (2) (Fixing the last two releases)
+
+- Update to 0.8.8
+  * Reverted EOF commit due to unexpected problems.
+
+- Update to 0.8.7
+  * Bugfix for PyInstaller
+
+- Update to 0.8.6
+  * Grammar caching: It's now possible to cache the results of the
+    LALR grammar analysis, for x2 to x3 faster loading. Use
+    Lark(..., cache=True) or specify a file name.
+  * Grammar templates: Added support for grammar "functions" that
+    expand in preprocessing.
+  * Lark online IDE: Technically not a feature, but it's possible to
+    run Lark in the browser. Now we also have a simple IDE on github
+    pages: https://lark-parser.github.io/lark/ide/app.html
+  * Other changes:
+    + Improved performance for large grammars
+    + More debug prints when in debug mode
+    + Better support for PyInstaller
+    + Lots of bugfixes: mypy stubs, v_args, docs, and more.
+
+-------------------------------------------------------------------
+Wed Apr 15 10:54:30 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.8.5
+  * Updated js2py version (for the optional nearley support)
+  * Added the g_regex_flags option, to allow applying flags to all terminals.
+  * The standalone parser is now MPL2, instead of GPL. The Mozilla 
+    Public License is much less restrictive, so this shouldn't affect 
+    anyone who's already using the standalone parser. But it should 
+    make it easier for other users to adopt it.
+  * The biggest change to this release is a new LALR engine, that is 
+    capable of dealing with a few edge cases that the previous parser couldn't.
+  * Transformers now visit tokens, as well as rules (an alternative to 
+    lexer_callbacks)
+
+-------------------------------------------------------------------
+Sun Oct 27 14:28:26 UTC 2019 - Lars Vogdt <lars@linux-schulserver.de>
+
+- Update to 0.7.7:
+  * Fixed a bug in Earley where running it from different threads 
+    produced bad results
+  * Improved error reporting when using LALR
+  * Added 'edit_terminals' option, to allow programmatical manipulation
+    of terminals, for example to support keywords in different languages.
+
+-------------------------------------------------------------------
+Wed Sep 11 13:06:32 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.7.5:
+  * Lark transformers can now visit tokens as wel
+  * Fixed long-standing non-determinism and prioritization bugs in Earley.
+  * Serialize tool now supports multiple start symbols
+  * iter_subtrees, find_data and find_pred methods are now included in standalone parser
+  * Bugfixes for the transformer interface, for the custom lexer, for grammar imports, and many more
+
+-------------------------------------------------------------------
+Mon Aug 26 13:28:28 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Drop no longer necessary disable_test.patch
+- Replace %doc entry docs/ with docs/* to avoid extra sub-directory
+- Added Suggests: python-Js2Py for optional runtime dependency
+- Update to v0.7.3
+  * Added a new tool called Serialize, that stores Lark's internal
+    state as JSON. That will allow for integration with other languages.
+  * Minor bugfix regarding line-counting and the \s regex
+- from v0.7.2
+  * Lark now allows you to specify the start symbol when calling
+    Lark.parse() (requires pre-declaration of all possible start states,
+    see the start option)
+  * Negative priority now allowed in rules and terminals
+  * Also includes many minor bugfixes, optimizations, and improvements
+    to documentation
+
+-------------------------------------------------------------------
+Tue May 21 14:06:52 UTC 2019 - pgajdos@suse.com
+
+- version update to 0.7.1
+    Lark can now serialize its parsers, resulting in simplified stand-alone code.
+    Bugfix for v_args (Issue #350)
+    Improvements and bugfixes for importing rules from grammar files
+    Performance improvement for the reconstructor feature
+    New Earley implementation with SPPF support
+    Added support for importing rules between grammars. The import mechanism
+      is namespace-aware.
+    Added the maybe_placeholders option, which causes optionals of the form
+     [expr] to return None when not matched, instead of just not appearing.
+     (optionals of the form expr? maintain the previous behavior of not
+     appearing unless matched)
+    Plenty of bugfixes, better errors, and better docs
+
+-------------------------------------------------------------------
+Thu Mar 14 16:41:11 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim bias from description.
+
+-------------------------------------------------------------------
+Wed Mar 13 15:21:17 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- initial commit
+- add disable_test.patch - skip test without needed data
