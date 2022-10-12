@@ -39,4 +39,37 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>993454</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f1aecfaeeb42609de2d90b078bbd0f5b</srcmd5>
+    <version>7.0.4</version>
+    <time>1665591898</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 7.0.4
+ see installed CHANGELOG.md
+  ## Rails 7.0.4 (September 09, 2022) ##
+  
+  *   Guard against `ActionView::Helpers::FormTagHelper#field_name` calls with nil
+      `object_name` arguments. For example:
+  
+      ```erb
+      &lt;%= fields do |f| %&gt;
+        &lt;%= f.field_name :body %&gt;
+      &lt;% end %&gt;
+      ```
+  
+      *Sean Doyle*
+  
+  *   Strings returned from `strip_tags` are correctly tagged `html_safe?`
+  
+      Because these strings contain no HTML elements and the basic entities are escaped, they are safe
+      to be included as-is as PCDATA in HTML content. Tagging them as html-safe avoids double-escaping
+      entities when being concatenated to a SafeBuffer during rendering.
+  
+      Fixes [rails/rails-html-sanitizer#124](https://github.com/rails/rails-html-sanitizer/issues/124)
+  
+      *Mike Dalessio*
+  
+</comment>
+    <requestid>1010042</requestid>
+  </revision>
 </revisionlist>
