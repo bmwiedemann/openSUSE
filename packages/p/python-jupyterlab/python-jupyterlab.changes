@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Oct  9 17:08:35 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 3.4.8:
+  * Enhancements made
+    + Adjust CSS styles degrading performance in Chromium browsers
+      #13159 (@krassowski)
+  * Bugs fixed
+    + Always show tooltip in hover box even if edges are out of view
+      #13161 (@krassowski)
+    + Fix workspace URL while cloning a workspace #12794
+      (@aditya211935)
+    + Switch back to display to hide tabs #13103 (@fcollonval)
+    + Preserve kernel icon aspect ratio #13122 (@fcollonval)
+    + Fix cell toolbar layout #13059 (@kulsoomzahra)
+    + Avoid menus overflowing in small screens #13109 (@steff456)
+  * Maintenance and upkeep improvements
+    + Fix storybook error #13135 (@fcollonval)
+    + Remove xeus-python installation for debugger test #13113
+      (@fcollonval)
+    + Resolve core_path before calling nodejs #13126 (@fcollonval)
+
+-------------------------------------------------------------------
 Tue Sep 13 15:48:52 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 3.4.7:
