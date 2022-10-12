@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Oct  4 13:21:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 22.10.0: 
+  * SplashOutputDev::tilingPatternFill: Properly restore CTM on failure.
+  * Protect against malformed files
+  * Refactor code to not use strndup
+  * Other small code refactoring
+  utils:
+  * pdftoppm: Avoid round-off errors when determining raster dimensions
+  * pdftocairo: Avoid round-off errors when determining raster dimensions
+  * pdftotext: Simplify memory handling
+  qt:
+  * Take into account flagNoView when getting/setting the visible status.
+    KDE bug #456313
+
+-------------------------------------------------------------------
 Mon Sep 12 19:33:05 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 22.09.0 (CVE-2022-38784):
