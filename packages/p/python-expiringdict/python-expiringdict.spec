@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-expiringdict
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        Dictionary with auto-expiring values for caching purposes
 License:        Apache-2.0
