@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 11 16:39:49 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 0.16.1
+  * Fixes concurrency issues with the cache invalidation mechanism. 
+
+-------------------------------------------------------------------
 Fri Mar  6 05:46:48 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to version 0.10.0:
