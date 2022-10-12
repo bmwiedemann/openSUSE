@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 12 07:15:29 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Add same ExcludeArch as the used nginx base image
+- Add SPDX-License-Identifier
+
+-------------------------------------------------------------------
 Fri Sep 23 11:16:39 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Fix pkg version syntax

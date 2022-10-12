@@ -1,7 +1,9 @@
+# SPDX-License-Identifier: MIT
 #!BuildTag: opensuse/microos-docserv:%PKG_VERSION%
 #!BuildTag: opensuse/microos-docserv:latest
 #!BuildTag: opensuse/microos-docserv:%PKG_VERSION%-%RELEASE%
 #!UseOBSRepositories
+#!ExcludeArch: i586 s390
 
 FROM opensuse/tumbleweed AS build-stage
 WORKDIR /src

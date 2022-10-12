@@ -7,4 +7,13 @@
     <comment>webserver serving manpages as html</comment>
     <requestid>1005604</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>754bdafc9deb643fc890c67fc3fec8c3</srcmd5>
+    <version>unknown</version>
+    <time>1665591944</time>
+    <user>dimstar_suse</user>
+    <comment>- Add same ExcludeArch as the used nginx base image
+- Add SPDX-License-Identifier</comment>
+    <requestid>1010124</requestid>
+  </revision>
 </revisionlist>
