@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Sun Oct  9 22:15:13 UTC 2022 - C J <c.j@tuta.io>
+
+- Update to 8.9.0:
+  BACKEND
+    * Pea 1.10
+  CODE
+    * Password Manager is now re-set only from Options > Settings >
+      Privacy, Reset Password Manager link
+    * Various fixes and improvements
+    * Correctly displays folder size inside ZIP archives if applicable
+    * Cleanup of legacy code
+    * Improved performances and memory management for browsing archives
+    * Improved opening folders after task completition
+    * Improved detecting root extraction directory
+    * Archive conversion procedure now opens target directory only once,
+      after final compression step
+    * Task window can now show temporary extraction work path from context
+      menu right-clicking on input and output links
+  FILE MANAGER
+    * Added progress bar while opening archive files supported through 7z
+      backend; progress indicator is not visible when archive pre-browsing
+      is disabled in Options > Settings > General, Performance group
+    * Improved Clipboard panel, can display tems size and modification date
+    * Improved quick navigation menu (on the left of the Address bar)
+    * Can now set password/keyfile, and display if a password is set
+    * Can now display info on current archive / selection / clipboard content
+      duplicating function of staus bar; the new Info entry is also featured
+      in main menu, Navigation group
+    * Can now toggle bookmarks, history, and clipboard views in the Status bar
+    * Improved Style button
+    * Right-clicking Style shows main menu as context menu
+    * Settings is now reachable from Style button in Tool / Address bar
+    * Updated theming engine
+    * Address bar color can now be changed separately from Address field color
+    * Tab bar color has now more options
+    * Improved existing Themes to take advantage of the new options
+    * Updated Tuxedo theme
+    * New Droid theme
+  EXTRACTION and ARCHIVING
+    * Changed default working directory to output path, as more consistent
+      with behavior of similar applications on non-Windows systems
+    * Added context menu entry for "Add to separate archives" action, shown
+      when applicable in file browser screen
+    * Improved archiving and extraction context menu, to make easier to add
+      files and folders (or open search) from bookmarks abd history items
+    * Improved test after archiving
+    * Empty archives are reported as warnings
+    * It is now possible to set the sequence of tasks to stop for auto-test
+      results (otherwise it will stop only in case of error) from Options >
+      Settings > Advanced
+    * More information is available clicking status bar string in archive
+      creation and extraction screens: task type details, temp work path
+      (if applicable), input zise, output path with total size and free space
+
+-------------------------------------------------------------------
 Mon Sep 19 11:19:46 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 8.8.0 (bsc#1202690):

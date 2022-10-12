@@ -17,9 +17,9 @@
 
 
 %define         _peazipinstalldir %{_libdir}/peazip
-%define         _helpver 8.8.0
+%define         _helpver 8.9.0
 Name:           peazip
-Version:        8.8.0
+Version:        8.9.0
 Release:        0
 Summary:        Graphical file archiver
 License:        LGPL-3.0-only
