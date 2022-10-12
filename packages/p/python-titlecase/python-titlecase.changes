@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 11 16:00:24 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 2.4 
+  * Add `preserve_blank_lines` option (#88)
+  * Add Py3.10, Drop Py3.6
+  * Update unit testing framework
+
+-------------------------------------------------------------------
 Wed Jan 13 14:28:10 UTC 2021 - pgajdos@suse.com
 
 - do not nose, but %pytest
