@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct 12 08:44:47 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.9.3
+  * playlistmodel: set QUrl scheme if not set
+  * actionsmodel: port QRegExp to QRegularExpression
+  * only use Qt5X11Extras with qt5
+  * cmake: add support for qt6
+  * pass correct type to QMetaObject::invokeMethod
+  * change emit to Q_EMIT
+  * use a QUrl instead of a QString where a QUrl is expected
+  * switch to Q_SIGNALS and Q_SLOTS
+- Added lang subpackage
+
+-------------------------------------------------------------------
 Fri Oct  7 05:07:46 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.9.2

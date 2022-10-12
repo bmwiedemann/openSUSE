@@ -17,14 +17,14 @@
 
 
 Name:           haruna
-Version:        0.9.2
+Version:        0.9.3
 Release:        0
 Summary:        Video player built with Qt/QML on top of libmpv
 License:        CC-BY-4.0 AND GPL-3.0-or-later AND WTFPL
 URL:            https://invent.kde.org/multimedia/haruna
-Source0:        https://invent.kde.org/multimedia/haruna/-/archive/v%{version}/%{name}-v%{version}.tar.gz
+Source0:        https://download.kde.org/stable/haruna/%{name}-%{version}.tar.xz
 BuildRequires:  cmake >= 3.15
-BuildRequires:  extra-cmake-modules >= 1.0.0
+BuildRequires:  extra-cmake-modules >= 5.66
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  pkgconfig
@@ -34,7 +34,8 @@ BuildRequires:  yt-dlp
 BuildRequires:  youtube-dl
 %endif
 BuildRequires:  cmake(Breeze)
-BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5Config) >= 5.98.0
+BuildRequires:  cmake(KF5ConfigWidgets)
 BuildRequires:  cmake(KF5CoreAddons)
 # not actually optional
 BuildRequires:  cmake(KF5DocTools)
@@ -44,8 +45,10 @@ BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Kirigami2)
 BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Qml) >= 5.14
+BuildRequires:  cmake(Qt5Core) >= 5.15.2
+BuildRequires:  cmake(Qt5DBus) >= 5.15.2
+BuildRequires:  cmake(Qt5Gui) >= 5.15.2
+BuildRequires:  cmake(Qt5Qml)
 BuildRequires:  cmake(Qt5Quick)
 BuildRequires:  cmake(Qt5QuickControls2)
 BuildRequires:  cmake(Qt5X11Extras)
@@ -67,8 +70,10 @@ Requires:       youtube-dl
 %description
 %{name} is a video player built with Qt/QML on top of libmpv.
 
+%lang_package
+
 %prep
-%setup -q -n %{name}-v%{version}
+%autosetup -p1
 
 %build
 %cmake
@@ -76,6 +81,8 @@ Requires:       youtube-dl
 
 %install
 %cmake_install
+
+%find_lang %{name}
 
 # let's remove the documentation for now
 rm -rf %{buildroot}%{_datadir}/doc
@@ -92,5 +99,7 @@ rm -rf %{buildroot}%{_datadir}/icons/hicolor/44x44 \
 %{_datadir}/applications/org.kde.haruna.desktop
 %{_datadir}/icons/hicolor/*/apps/haruna.*g
 %{_datadir}/metainfo/org.kde.haruna.metainfo.xml
+
+%files lang -f %{name}.lang
 
 %changelog
