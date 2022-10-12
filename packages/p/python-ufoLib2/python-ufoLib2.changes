@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 11 16:42:36 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 0.13.1 
+  * Hotfix release to support cattrs v1.10.0 and set it as the minimum required version. It changed the name of a "omit if default"
+    parameter that is relevant for our converters.
+
+-------------------------------------------------------------------
 Thu Dec 16 11:13:17 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to v0.12.1
