@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct  4 22:57:54 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.3.0:
+  - tests: fix socks thread-based server fixture
+
+-------------------------------------------------------------------
 Tue Jan 18 11:58:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - skip hanging socks test 

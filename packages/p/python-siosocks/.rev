@@ -23,4 +23,12 @@
     <comment>- skip hanging socks test</comment>
     <requestid>947209</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bb3a06a411d0b4876b486968ec3bbb38</srcmd5>
+    <version>0.3.0</version>
+    <time>1665591931</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1009950</requestid>
+  </revision>
 </revisionlist>
