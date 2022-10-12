@@ -206,4 +206,17 @@
 </comment>
     <requestid>986543</requestid>
   </revision>
+  <revision rev="18" vrev="6">
+    <srcmd5>dbfc03820b28b3003487d23ef1ac980f</srcmd5>
+    <version>1.3.5</version>
+    <time>1665591838</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-django41.patch to fix issues with django4.1
+- Add fix-elasticsearch8.patch to fix issues with elasticsearch 8.0.0
+- Rename the built package to python prefixless HyperKitty
+  * Doesn't imply any false impression of multiflavor
+- Go back to python39 -- highest supported Python by mailman
+</comment>
+    <requestid>1009242</requestid>
+  </revision>
 </revisionlist>

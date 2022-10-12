@@ -31,9 +31,20 @@
 
 %global hyperkitty_services hyperkitty-qcluster.service hyperkitty-runjob-daily.service hyperkitty-runjob-daily.timer hyperkitty-runjob-hourly.service hyperkitty-runjob-hourly.timer hyperkitty-runjob-minutely.service hyperkitty-runjob-minutely.timer hyperkitty-runjob-monthly.service hyperkitty-runjob-monthly.timer hyperkitty-runjob-quarter-hourly.service hyperkitty-runjob-quarter-hourly.timer hyperkitty-runjob-weekly.service hyperkitty-runjob-weekly.timer hyperkitty-runjob-yearly.service hyperkitty-runjob-yearly.timer
 
+%if 0%{?suse_version} >= 1550
+# Newest python supported by mailman is Python 3.9 -- https://gitlab.com/mailman/mailman/-/issues/936
+%define pythons python39
+%define mypython python39
+%define __mypython %{__python39}
+%define mypython_sitelib %{python39_sitelib}
+%else
 %{?!python_module:%define python_module() python3-%{**}}
-# mailman is built only for primary python3 flavor
 %define pythons python3
+%define mypython python3
+%define __mypython %{__python3}
+%define mypython_sitelib %{python3_sitelib}
+%endif
+
 Name:           python-HyperKitty
 Version:        1.3.5
 Release:        0
@@ -67,6 +78,10 @@ Patch3:         python-HyperKitty-no-mock.patch
 Patch4:         hyperkitty-fix-qcluster-timeout.patch
 # https://gitlab.com/mailman/hyperkitty/-/merge_requests/381 + https://gitlab.com/mailman/hyperkitty/-/merge_requests/449
 Patch5:         hyperkitty-fix-py310-tests.patch
+# PATCH-FIX-UPSTREAM fix-django41.patch gl#mailman/hyperkitty#467
+Patch6:         fix-django41.patch
+# PATCH-FIX-UPSTREAM fix-elasticsearch8.patch gl#mailman/hyperkitty#468
+Patch7:         fix-elasticsearch8.patch
 #
 BuildRequires:  %{python_module django-debug-toolbar >= 2.2}
 BuildRequires:  %{python_module isort}
@@ -79,25 +94,11 @@ BuildRequires:  openssl
 BuildRequires:  python-rpm-macros
 BuildRequires:  rsync
 BuildRequires:  sudo
-Requires:       python-Django >= 1.11
-Requires:       python-django-compressor >= 1.3
-Requires:       python-django-debug-toolbar >= 2.2
-Requires:       python-django-extensions >= 1.3.7
-Requires:       python-django-gravatar2 >= 1.0.6
-Requires:       python-django-haystack >= 2.8.0
-Requires:       python-django-mailman3 >= 1.3.7
-Requires:       python-django-q >= 1.3.9
-Requires:       python-djangorestframework >= 3.0.0
-Requires:       python-flufl.lock
-Requires:       python-libsass
-Requires:       python-mailmanclient >= 3.3.2
-Requires:       python-mistune
-Requires:       python-networkx >= 1.9.1
-Requires:       python-python-dateutil >= 2.0
-Requires:       python-pytz >= 2012
-Requires:       python-robot-detection >= 0.3
-Requires:       python-xapian-haystack >= 2.1.0
 BuildArch:      noarch
+%if 0%{?suse_version} >= 1550
+# use the real python3 primary for rpm pythondistdeps.py
+BuildRequires:  python3-packaging
+%endif
 # SECTION test requirements
 BuildRequires:  %{python_module Django >= 1.11}
 BuildRequires:  %{python_module Whoosh >= 2.5.7}
@@ -121,21 +122,45 @@ BuildRequires:  %{python_module python-dateutil >= 2.0}
 BuildRequires:  %{python_module pytz >= 2012}
 BuildRequires:  %{python_module robot-detection >= 0.3}
 # /SECTION
-%if 0%{python3_version_nodots} == 38
-# help in replacing any previously installed multiflavor package back to the primary python3 package
-Provides:       python38-Hyperkitty = %{version}-%{release}
-Obsoletes:      python38-Hyperkitty < %{version}-%{release}
-%endif
-%python_subpackages
 
 %description
 A web interface to access GNU Mailman v3 archives.
 
+%package -n %{hyperkitty_pkgname}
+Summary:        A web interface to access GNU Mailman v3 archives
+Requires:       %{mypython}-Django >= 1.11
+Requires:       %{mypython}-django-compressor >= 1.3
+Requires:       %{mypython}-django-debug-toolbar >= 2.2
+Requires:       %{mypython}-django-extensions >= 1.3.7
+Requires:       %{mypython}-django-gravatar2 >= 1.0.6
+Requires:       %{mypython}-django-haystack >= 2.8.0
+Requires:       %{mypython}-django-mailman3 >= 1.3.7
+Requires:       %{mypython}-django-q >= 1.3.9
+Requires:       %{mypython}-djangorestframework >= 3.0.0
+Requires:       %{mypython}-flufl.lock
+Requires:       %{mypython}-libsass
+Requires:       %{mypython}-mailmanclient >= 3.3.2
+Requires:       %{mypython}-mistune
+Requires:       %{mypython}-networkx >= 1.9.1
+Requires:       %{mypython}-python-dateutil >= 2.0
+Requires:       %{mypython}-pytz >= 2012
+Requires:       %{mypython}-robot-detection >= 0.3
+Requires:       %{mypython}-xapian-haystack >= 2.1.0
+%if "%{expand:%%%{mypython}_provides}" == "python3"
+Provides:       python3-%{hyperkitty_pkgname} = %{version}-%{release}
+%endif
+Obsoletes:      python3-%{hyperkitty_pkgname} < %{version}-%{release}
+Provides:       %{mypython}-%{hyperkitty_pkgname} = %{version}-%{release}
+Obsoletes:      %{mypython}-%{hyperkitty_pkgname} < %{version}-%{release}
+
+%description -n %{hyperkitty_pkgname}
+A web interface to access GNU Mailman v3 archives.
+
 %package -n %{hyperkitty_pkgname}-web
 Summary:        The webroot for GNU Mailman
+Requires:       %{hyperkitty_pkgname}
 Requires:       acl
 Requires:       openssl
-Requires:       python3-HyperKitty
 Requires:       sudo
 
 %description -n %{hyperkitty_pkgname}-web
@@ -146,7 +171,11 @@ This package holds the web interface.
 %package -n %{hyperkitty_pkgname}-web-uwsgi
 Summary:        HyperKitty - uwsgi configuration
 Requires:       %{hyperkitty_pkgname}-web
-Requires:       uwsgi
+%if 0%{suse_version} >= 1550
+Requires:       %{mypython}-uwsgi-python3
+%else
+Requires:       uwsgi-python3
+%endif
 
 %description -n %{hyperkitty_pkgname}-web-uwsgi
 A web user interface for GNU Mailman.
@@ -168,10 +197,14 @@ rsync -a example_project/* build_static_files
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
+%patch7 -p1
 
 %build
-sed -i 's|^#!/usr/bin/env.*|#!%{_bindir}/python3|' \
+sed -i 's|^#!/usr/bin/env.*|#!%{__mypython}|' \
     example_project/manage.py
+sed -i 's|/usr/bin/python3|%{__mypython}|' %{SOURCE10} %{SOURCE20} %{SOURCE21}
+sed -i 's|python3|%{mypython}|' %{SOURCE12}
 
 %python_build
 
@@ -296,11 +329,11 @@ fi
 %postun -n %{hyperkitty_pkgname}-web
 %service_del_postun %{hyperkitty_services}
 
-%files %{python_files}
+%files -n %{hyperkitty_pkgname}
 %doc AUTHORS.txt README.rst example_project doc/*.rst
 %license COPYING.txt
-%{python_sitelib}/hyperkitty
-%{python_sitelib}/HyperKitty*.egg-info
+%{mypython_sitelib}/hyperkitty
+%{mypython_sitelib}/HyperKitty-%{version}*-info
 
 %files -n %{hyperkitty_pkgname}-web
 %doc README.SUSE.md
