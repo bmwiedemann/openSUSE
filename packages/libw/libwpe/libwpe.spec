@@ -21,7 +21,7 @@
 %define sover 1_0-1
 
 Name:           libwpe
-Version:        1.12.3
+Version:        1.14.0
 Release:        0
 Summary:        General-purpose library for the WPE-flavored port of WebKit
 License:        BSD-2-Clause
@@ -66,8 +66,7 @@ header files for developing applications that use %{name}.
 %install
 %meson_install
 
-%post -n %{name}-%{sover} -p /sbin/ldconfig
-%postun -n %{name}-%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{name}-%{sover}
 
 %files -n %{name}-%{sover}
 %license COPYING

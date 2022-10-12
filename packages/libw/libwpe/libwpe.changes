@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct  4 19:55:14 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.14.0:
+  + New API to provide input events to be treated by WebKit as
+    gamepad inputs.
+  + New API to configure the target refresh rate of view backends.
+  + New API which allow clients to supply an alternative mechanism
+    for spawning WebKit auxiliary processes.
+  + New WPE_ENABLE_XKB build option, enabled by default, which can
+    be used to avoid usage of libxkbcommon.
+- Use ldconfig_scriptlets macro for post(un) handling.
+
+-------------------------------------------------------------------
 Fri Aug 26 16:00:11 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.12.3:
