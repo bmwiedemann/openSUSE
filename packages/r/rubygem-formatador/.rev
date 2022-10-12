@@ -60,4 +60,19 @@
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1195555</comment>
   </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>30931ceefd9e60ec3389a101d02244f8</srcmd5>
+    <version>1.1.0</version>
+    <time>1665591908</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 1.1.0
+ see installed changelog.txt
+  v1.0.0 01/20/21
+  ===============
+  
+  release v1, it's been stable for ages
+  
+</comment>
+    <requestid>1010056</requestid>
+  </revision>
 </revisionlist>
