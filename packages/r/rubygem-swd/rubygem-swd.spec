@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-swd
-Version:        1.3.0
+Version:        2.0.2
 Release:        0
 %define mod_name swd
 %define mod_full_name %{mod_name}-%{version}
@@ -48,7 +48,7 @@ SWD (Simple Web Discovery) Client Library.
 
 %install
 %gem_install \
-  --doc-files="LICENSE README.rdoc" \
+  --doc-files="CHANGELOG.md LICENSE README.rdoc" \
   -f
 
 %gem_packages
