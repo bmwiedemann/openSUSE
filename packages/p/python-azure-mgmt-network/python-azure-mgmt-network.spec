@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-mgmt-network
-Version:        21.0.1
+Version:        22.0.0
 Release:        0
 Summary:        Microsoft Azure Network Management Client Library
 License:        MIT
@@ -38,10 +38,10 @@ BuildRequires:  unzip
 Requires:       python-azure-common < 2.0.0
 Requires:       python-azure-common >= 1.1
 Requires:       python-azure-mgmt-core < 2.0.0
-Requires:       python-azure-mgmt-core >= 1.3.1
+Requires:       python-azure-mgmt-core >= 1.3.2
 Requires:       python-azure-mgmt-nspkg >= 3.0.0
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       python-msrest >= 0.6.21
+Requires:       python-msrest >= 0.7.1
 Conflicts:      python-azure-sdk <= 2.0.0
 
 BuildArch:      noarch
