@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Oct 12 09:47:25 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.12.0:
+  + Universal Control Point: a tool that enables one to discover
+    UPnP devices and services, retrieve information about them,
+    subscribe to events and invoke actions.
+  + Network Light: a virtual light bulb that allows control points
+    to switch it on and off, change its dimming level and query its
+    current status. It also provides a simple UI to control all the
+    network lights available on the network.
+  + AV Control Point: a simple media player UI that enables one to
+    discover and play multimedia contents available on a network.
+    It is strictly a control point and therefore does not have any
+    playback capabilities of it's own and relies on external UPnP
+    MediaRenderer devices for actual playback.
+  + Upload: a simple command line utility that uploads files to
+    known MediaServers. Use Universal Control Point for discovering
+    the MediaServers.
+  + Discover: a simple command line utility to run a SSDP discovery
+    on the network.
+
+-------------------------------------------------------------------
 Sun Aug 28 13:00:07 UTC 2022 - bjorn.lie@gmail.com
 
 - Update to version gupnp-tools-0.10.3+16:

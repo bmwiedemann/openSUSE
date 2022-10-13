@@ -3,11 +3,10 @@
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://gitlab.gnome.org/GNOME/gupnp-tools.git</param>
-    <param name="revision">master</param>
-    <param name="versionformat">0.10.3+@TAG_OFFSET@</param>
+    <param name="revision">refs/tags/gupnp-tools-0.12.0</param>
+    <param name="versionformat">0.12.0+@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">(.*)\+0</param>
     <param name="versionrewrite-replacement">\1</param>
-    <param name="changesgenerate">enable</param>
   </service>
   <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">

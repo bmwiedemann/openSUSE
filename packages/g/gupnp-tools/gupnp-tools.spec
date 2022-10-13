@@ -17,7 +17,7 @@
 
 
 Name:           gupnp-tools
-Version:        0.10.3+16
+Version:        0.12.0
 Release:        0
 Summary:        UPnP tools to test and debug UPnP devices and control points
 License:        GPL-2.0-or-later
