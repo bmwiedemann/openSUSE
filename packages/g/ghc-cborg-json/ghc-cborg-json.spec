@@ -18,7 +18,7 @@
 
 %global pkg_name cborg-json
 Name:           ghc-%{pkg_name}
-Version:        0.2.4.0
+Version:        0.2.5.0
 Release:        0
 Summary:        A library for encoding JSON as CBOR
 License:        BSD-3-Clause
