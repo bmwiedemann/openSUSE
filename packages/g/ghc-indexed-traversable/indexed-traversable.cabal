@@ -1,7 +1,7 @@
 cabal-version:      1.12
 name:               indexed-traversable
 version:            0.1.2
-x-revision:         1
+x-revision:         2
 build-type:         Simple
 license:            BSD2
 license-file:       LICENSE
@@ -47,8 +47,9 @@ tested-with:
    || ==8.6.5
    || ==8.8.4
    || ==8.10.7
-   || ==9.0.1
-   || ==9.2.1
+   || ==9.0.2
+   || ==9.2.4
+   || ==9.4.1
 
 source-repository head
   type:     git
@@ -70,7 +71,7 @@ library
 
   build-depends:
       array         >=0.3.0.2 && <0.6
-    , base          >=4.3     && <4.17
+    , base          >=4.3     && <4.18
     , containers    >=0.4.0.0 && <0.7
     , transformers  >=0.3.0.0 && <0.7
 
