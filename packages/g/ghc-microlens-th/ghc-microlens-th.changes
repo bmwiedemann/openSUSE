@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Aug 13 10:22:59 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update microlens-th to version 0.4.3.10 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Tue May 11 09:12:10 UTC 2021 - psimons@suse.com
 
 - Update microlens-th to version 0.4.3.10.
