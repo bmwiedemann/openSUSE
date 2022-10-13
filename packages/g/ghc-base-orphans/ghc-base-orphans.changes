@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Aug 11 12:05:49 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update base-orphans to version 0.8.7.
+  ## Changes in 0.8.7 [2022.08.11]
+   - Backport new instances from GHC 9.2.2/`base-4.16.1.0`:
+     * `Ix` instances for various integral types in `Foreign.C.Types`,
+       `Foreign.Ptr`, and `System.Posix.Types`. For a complete list of such types,
+       see https://gitlab.haskell.org/ghc/ghc/-/merge_requests/7385.
+   - Backport a bugfix for the `Ord1 Down` instance from GHC 9.4/`base-4.17` such
+     that it now uses reverse sort order.
+
+-------------------------------------------------------------------
 Mon Nov  1 08:37:13 UTC 2021 - psimons@suse.com
 
 - Update base-orphans to version 0.8.6.
