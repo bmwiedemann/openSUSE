@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Aug 19 11:09:37 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hslua-module-path to version 1.0.3.
+  ## hslua-module-path-1.0.3
+
+  Released 2022-08-19.
+
+  -   Fixed `make_relative` for longer base paths: Ensure that the
+      function produces correct results in cases where the root
+      (base) path has more components than the path that should be
+      made relative.
+
+-------------------------------------------------------------------
 Sat Feb 19 14:38:21 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update hslua-module-path to version 1.0.2.
