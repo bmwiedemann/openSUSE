@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 15 11:05:04 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update adjunctions to version 4.4.2.
+  4.4.2 [2022.08.15]
+  ------------------
+  * Fix the build with `mtl-2.3.1`.
+
+-------------------------------------------------------------------
 Sat May  7 23:22:16 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update adjunctions to version 4.4.1.

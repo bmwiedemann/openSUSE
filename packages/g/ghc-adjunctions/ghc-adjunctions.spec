@@ -19,7 +19,7 @@
 %global pkg_name adjunctions
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        4.4.1
+Version:        4.4.2
 Release:        0
 Summary:        Adjunctions and representable functors
 License:        BSD-2-Clause
