@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rack-oauth2
-Version:        1.21.2
+Version:        2.1.0
 Release:        0
 %define mod_name rack-oauth2
 %define mod_full_name %{mod_name}-%{version}
@@ -36,13 +36,12 @@ BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/nov/rack-oauth2
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
-Summary:        OAuth 2.0 Server & Client Library - Both Bearer and MAC token type
+Summary:        OAuth 2.0 Server & Client Library - Both Bearer token type are
 License:        MIT
 Group:          Development/Languages/Ruby
 
 %description
-OAuth 2.0 Server & Client Library. Both Bearer and MAC token type are
-supported.
+OAuth 2.0 Server & Client Library. Both Bearer token type are supported.
 
 %prep
 
@@ -50,7 +49,7 @@ supported.
 
 %install
 %gem_install \
-  --doc-files="LICENSE README.rdoc" \
+  --doc-files="CHANGELOG.md LICENSE README.rdoc" \
   -f
 
 %gem_packages
