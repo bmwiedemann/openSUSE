@@ -1,7 +1,7 @@
 cabal-version:      >=1.10
 name:               these
 version:            1.1.1.1
-x-revision:         5
+x-revision:         6
 synopsis:           An either-or-both data type.
 homepage:           https://github.com/haskellari/these
 license:            BSD3
@@ -71,7 +71,7 @@ library
 
   -- ghc boot libs
   build-depends:
-      base     >=4.5.1.0 && <4.17
+      base     >=4.5.1.0 && <4.18
     , binary   >=0.5.1.0 && <0.10
     , deepseq  >=1.3.0.0 && <1.5
 
