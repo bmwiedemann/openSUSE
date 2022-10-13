@@ -1,7 +1,7 @@
 cabal-version:      2.2
 name:               lukko
 version:            0.1.1.3
-x-revision:         2
+x-revision:         3
 synopsis:           File locking
 category:           System, Concurrency
 description:
@@ -59,8 +59,9 @@ tested-with:
    || ==8.6.5
    || ==8.8.4
    || ==8.10.7
-   || ==9.0.1
-   || ==9.2.1
+   || ==9.0.2
+   || ==9.2.4
+   || ==9.4.1
 
 source-repository head
   type:     git
@@ -75,7 +76,7 @@ flag ofd-locking
 library
   default-language:   Haskell2010
   hs-source-dirs:     src
-  build-depends:      base >=4.5 && <4.17
+  build-depends:      base >=4.5 && <4.18
   build-tool-depends: hsc2hs:hsc2hs >=0.67 && <0.69
 
   -- Main library module
