@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Sep 24 07:24:12 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update fgl to version 5.8.0.0.
+  5.8.0.0
+  -------
+
+  * Breaking change: MonadFail is no longer a superclass of GraphM.
+    This is to support GHC 9.4.  This has no effect on the IO and ST
+    instances of GraphM, but may affect users.
+
+-------------------------------------------------------------------
+Thu Aug 25 22:05:53 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update fgl to version 5.7.0.3 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
