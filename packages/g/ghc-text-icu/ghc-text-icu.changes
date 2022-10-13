@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jul 24 20:44:50 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update text-icu to version 0.8.0.2.
+  0.8.0.2
+
+  * Support for creating a collator from custom rules (#76)
+
+-------------------------------------------------------------------
 Fri Mar 11 16:11:55 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update text-icu to version 0.8.0.1 revision 2.
