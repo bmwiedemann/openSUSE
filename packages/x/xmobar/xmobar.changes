@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Aug 10 14:18:31 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update xmobar to version 0.44.2.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/xmobar-0.44.2/src/changelog.md
+
+-------------------------------------------------------------------
+Mon Jul 18 00:12:16 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update xmobar to version 0.44.1.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/xmobar-0.44.1/src/changelog.md
+
+-------------------------------------------------------------------
 Fri Jul  8 22:59:18 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update xmobar to version 0.44.

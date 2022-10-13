@@ -19,7 +19,7 @@
 %global pkg_name xmobar
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        0.44
+Version:        0.44.2
 Release:        0
 Summary:        A Minimalistic Text Based Status Bar
 License:        BSD-3-Clause
@@ -116,13 +116,13 @@ This package provides the Haskell %{name} library development files.
 
 %files
 %license license
-%doc changelog.md doc examples readme.org
+%doc changelog.md doc readme.org
 %{_bindir}/%{name}
 
 %files -n ghc-%{name} -f ghc-%{name}.files
 %license license
 
 %files -n ghc-%{name}-devel -f ghc-%{name}-devel.files
-%doc changelog.md doc examples readme.org
+%doc changelog.md doc readme.org
 
 %changelog
