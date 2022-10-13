@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 11 15:11:32 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update binary-orphans to version 1.0.3.
+  # 1.0.3
+
+  - Add `ByteArray` (from `Data.Array.Byte` instance)
+
+-------------------------------------------------------------------
 Tue Nov 16 17:11:56 UTC 2021 - Peter Simons <psimons@suse.com>
 
 - Update binary-orphans to version 1.0.2 revision 1.
