@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-yesod-form
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name yesod-form
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.7.0
+Version:        1.7.3
 Release:        0
 Summary:        Form handling support for Yesod Web Framework
 License:        MIT
@@ -57,7 +57,7 @@ BuildRequires:  ghc-hspec-devel
 API docs and the README are available at
 <http://www.stackage.org/package/yesod-form>. Third-party packages which you
 can find useful: <http://hackage.haskell.org/package/yesod-form-richtext
-yesod-form-richtext> - richtext form fields (currntly it provides only
+yesod-form-richtext> - richtext form fields (currently it provides only
 Summernote support).
 
 %package devel

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Oct  6 03:36:55 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update yesod-form to version 1.7.3.
+  ## 1.7.3
+
+  * Fixed `radioField` according to Bootstrap 3 docs. [#1783](https://github.com/yesodweb/yesod/pull/1783)
+
+-------------------------------------------------------------------
+Sun Sep 18 07:56:01 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update yesod-form to version 1.7.2.
+  ## 1.7.2
+
+  * Added `withRadioField` and re-express `radioField` into that. [#1775](https://github.com/yesodweb/yesod/pull/1775)
+
+  ## 1.7.1
+
+  * Added `colorField` for creating a html color field (`<input type="color">`) [#1748](https://github.com/yesodweb/yesod/pull/1748)
+
+-------------------------------------------------------------------
 Thu Apr 15 10:26:35 UTC 2021 - psimons@suse.com
 
 - Update yesod-form to version 1.7.0.

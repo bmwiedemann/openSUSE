@@ -31,4 +31,12 @@
     <comment>automated update of haskell stack</comment>
     <requestid>888415</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4519b826c41f209f5106a6831a1e86ab</srcmd5>
+    <version>1.7.3</version>
+    <time>1665668662</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>1009722</requestid>
+  </revision>
 </revisionlist>
