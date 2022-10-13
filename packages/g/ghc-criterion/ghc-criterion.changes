@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Aug 11 23:00:45 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update criterion to version 1.6.0.0.
+  1.6.0.0
+
+  * `criterion-measurement-0.2.0.0` adds the `measPeakMbAllocated` field to
+    `Measured` for reporting maximum megabytes allocated. Since `criterion`
+    re-exports `Measured` from `Criterion.Types`, this change affects `criterion`
+    as well. Naturally, this affects the behavior of `Measured`'s `{To,From}JSON`
+    and `Binary` instances.
+  * Fix a bug in which the `--help` text for the `--match` option was printed
+    twice in `criterion` applications.
+
+-------------------------------------------------------------------
 Wed Jun 15 23:54:51 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update criterion to version 1.5.13.0 revision 2.
