@@ -1,6 +1,6 @@
 name:           parallel
 version:        3.2.2.0
-x-revision:     4
+x-revision:     5
 -- NOTE: Don't forget to update ./changelog.md
 license:        BSD3
 license-file:   LICENSE
@@ -44,7 +44,7 @@ library
 
     build-depends:
         array      >= 0.3 && < 0.6,
-        base       >= 4.3 && < 4.17,
+        base       >= 4.3 && < 4.18,
         containers >= 0.4 && < 0.7,
         deepseq    >= 1.1 && < 1.5
 

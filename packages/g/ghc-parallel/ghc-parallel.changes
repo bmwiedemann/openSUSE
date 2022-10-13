@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 11 06:55:10 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update parallel to version 3.2.2.0 revision 5.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon Nov  1 08:29:11 UTC 2021 - psimons@suse.com
 
 - Update parallel to version 3.2.2.0 revision 4.
