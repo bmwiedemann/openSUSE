@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 29 04:40:58 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update commonmark-extensions to version 0.2.3.3.
+  ## 0.2.3.3
+
+    - Fix definition_lists extension (#96). We were not properly consuming
+      indentation in definitions, which caused problems when the definitions
+      themselves contained lists.
+
+-------------------------------------------------------------------
 Tue May 31 18:23:50 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update commonmark-extensions to version 0.2.3.2.
