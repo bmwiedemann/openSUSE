@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Sep 28 00:40:33 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update warp to version 3.3.23.
+  ## 3.3.23
+
+  * Add `setAccept` for hooking the socket `accept` call.
+    [#912](https://github.com/yesodweb/wai/pull/912)
+  * Removed some package dependencies from test suite
+    [#902](https://github.com/yesodweb/wai/pull/902)
+  * Factored out `Network.Wai.Handler.Warp.Recv` to its own package `recv`.
+    [#899](https://github.com/yesodweb/wai/pull/899)
+
+-------------------------------------------------------------------
+Tue Aug  9 01:16:33 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update warp to version 3.3.22.
+  ## 3.3.22
+
+  * Creating a bigger buffer when the current one is too small to fit the Builder
+    [#895](https://github.com/yesodweb/wai/pull/895)
+  * Using InvalidRequest instead of HTTP2Error
+    [#890](https://github.com/yesodweb/wai/pull/890)
+
+-------------------------------------------------------------------
 Mon May 30 01:06:32 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update warp to version 3.3.21.

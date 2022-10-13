@@ -19,7 +19,7 @@
 %global pkg_name warp
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        3.3.21
+Version:        3.3.23
 Release:        0
 Summary:        A fast, light-weight web server for WAI applications
 License:        MIT
@@ -38,6 +38,7 @@ BuildRequires:  ghc-http-types-devel
 BuildRequires:  ghc-http2-devel
 BuildRequires:  ghc-iproute-devel
 BuildRequires:  ghc-network-devel
+BuildRequires:  ghc-recv-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-simple-sendfile-devel
 BuildRequires:  ghc-stm-devel
@@ -53,14 +54,11 @@ BuildRequires:  ghc-word8-devel
 BuildRequires:  ghc-x509-devel
 ExcludeArch:    %{ix86}
 %if %{with tests}
-BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-QuickCheck-devel
-BuildRequires:  ghc-async-devel
 BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-hspec-devel
 BuildRequires:  ghc-http-client-devel
 BuildRequires:  ghc-process-devel
-BuildRequires:  ghc-time-devel
 %endif
 
 %description
