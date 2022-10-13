@@ -1,6 +1,6 @@
 name:               postgresql-libpq
 version:            0.9.4.3
-x-revision:         2
+x-revision:         3
 synopsis:           low-level binding to libpq
 description:
   This is a binding to libpq: the C application
@@ -37,15 +37,16 @@ tested-with:
    || ==8.6.5
    || ==8.8.4
    || ==8.10.7
-   || ==9.0.1
-   || ==9.2.1
+   || ==9.0.2
+   || ==9.2.4
+   || ==9.4.2
 
 extra-source-files: CHANGELOG.md
 
 custom-setup
   setup-depends:
       base   >=4.3  && <5
-    , Cabal  >=1.10 && <3.7
+    , Cabal  >=1.10 && <3.9
 
 -- If true,  use pkg-config,  otherwise use the pg_config based build
 -- configuration
@@ -64,14 +65,14 @@ library
 
   other-modules:    Database.PostgreSQL.LibPQ.Compat
   build-depends:
-      base        >=4.3     && <4.17
+      base        >=4.3     && <4.18
     , bytestring  >=0.9.1.0 && <0.12
 
   if !os(windows)
     build-depends: unix >=2.4.2.0 && <2.8
 
   if os(windows)
-    build-depends: Win32 >=2.2.0.2 && <2.11
+    build-depends: Win32 >=2.2.0.2 && <2.14
 
   ghc-options:      -Wall
 
