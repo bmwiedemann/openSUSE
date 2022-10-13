@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Sep  3 08:12:56 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hedgehog to version 1.1.2.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/hedgehog-1.1.2/src/CHANGELOG.md
+
+-------------------------------------------------------------------
 Sun May 22 14:23:14 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update hedgehog to version 1.1.1 revision 2.
