@@ -186,4 +186,12 @@ available, portable implementations are used.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>987108</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>eaa61fda607326fe19e3c0203258c288</srcmd5>
+    <version>0.6</version>
+    <time>1665668657</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>1009717</requestid>
+  </revision>
 </revisionlist>
