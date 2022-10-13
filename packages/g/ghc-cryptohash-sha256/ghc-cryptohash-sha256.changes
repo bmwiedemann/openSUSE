@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Aug 14 20:37:24 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update cryptohash-sha256 to version 0.11.102.1 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Tue Oct 12 11:34:17 UTC 2021 - psimons@suse.com
 
 - Update cryptohash-sha256 to version 0.11.102.1.
