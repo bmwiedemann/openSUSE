@@ -92,4 +92,34 @@
 </comment>
     <requestid>984595</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5c93df3d7594d3f53f5076d781944992</srcmd5>
+    <version>6.7.2</version>
+    <time>1665668400</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.7.2
+  * Bug fixes
+  * Refactored the structure to create the outputs module.
+  * The Python .api generation now produces the same results as the
+    old C++ code
+  * Established a pattern for class-based object formatters.
+  * Fixed a regression in instantiating class templates.
+- Update to version 6.7.1
+  * Bug fixes
+- Drop sip-6.7.0-zipstrict.patch
+- Update to version 6.7.0
+  * Added the /NoAssignmentOperator/, /NoCopyCtor/ and
+    /NoDefaultCtor/ mapped type annotations.
+  * Added the --generator-version command line option to
+    sip-distinfo.
+  * Added the 'generator_version' argument to
+    Project.get_sip_distinfo_command_line().
+  * The resolver/transform stage has been replaced with a pure
+    Python implementation.
+  * Bug fixes.
+- Add sip-6.7.0-zipstrict.patch
+  * https://www.riverbankcomputing.com/pipermail/pyqt/2022-October/044927.html
+</comment>
+    <requestid>1010240</requestid>
+  </revision>
 </revisionlist>

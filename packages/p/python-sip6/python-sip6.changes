@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Oct 12 12:20:24 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.7.2
+  * Bug fixes
+  * Refactored the structure to create the outputs module.
+  * The Python .api generation now produces the same results as the
+    old C++ code
+  * Established a pattern for class-based object formatters.
+  * Fixed a regression in instantiating class templates.
+
+-------------------------------------------------------------------
+Wed Oct  5 14:35:17 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 6.7.1
+  * Bug fixes
+- Drop sip-6.7.0-zipstrict.patch
+
+-------------------------------------------------------------------
+Mon Oct  3 17:19:16 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 6.7.0
+  * Added the /NoAssignmentOperator/, /NoCopyCtor/ and
+    /NoDefaultCtor/ mapped type annotations.
+  * Added the --generator-version command line option to
+    sip-distinfo.
+  * Added the 'generator_version' argument to
+    Project.get_sip_distinfo_command_line().
+  * The resolver/transform stage has been replaced with a pure
+    Python implementation.
+  * Bug fixes.
+- Add sip-6.7.0-zipstrict.patch
+  * https://www.riverbankcomputing.com/pipermail/pyqt/2022-October/044927.html
+
+-------------------------------------------------------------------
 Mon Jun 20 21:15:15 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 6.6.2
