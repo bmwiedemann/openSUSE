@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-X11
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pkg_name X11
 Name:           ghc-%{pkg_name}
-Version:        1.10.2
+Version:        1.10.3
 Release:        0
 Summary:        A binding to the X11 graphics library
 License:        BSD-3-Clause

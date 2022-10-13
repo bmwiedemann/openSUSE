@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep 14 17:41:13 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update X11 to version 1.10.3.
+  ## 1.10.3 (2022-09-14)
+
+    * Added `cWX`, `cWY`, `cWWidth`, `cWHeight` constants (`AttributeMask`) (#82)
+
+    * Added `FocusChangeEvent` to `data Event` (#81)
+
+    * Added `setWMNormalHints` (#83)
+
+-------------------------------------------------------------------
 Mon Nov  1 08:26:39 UTC 2021 - psimons@suse.com
 
 - Update X11 to version 1.10.2.
