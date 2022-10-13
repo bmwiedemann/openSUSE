@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 11 12:14:55 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update base-compat-batteries to version 0.12.2.
+  ## Changes in 0.12.2 [2022.08.11]
+   - This coincides with the `base-compat-0.12.2` release. Refer to the
+     [`base-compat` changelog](https://github.com/haskell-compat/base-compat/blob/master/base-compat/CHANGES.markdown#changes-in-0122-20220811)
+     for more details.
+
+-------------------------------------------------------------------
 Sat Nov 20 17:31:27 UTC 2021 - psimons@suse.com
 
 - Update base-compat-batteries to version 0.12.1 revision 2.
