@@ -19,7 +19,7 @@
 %global pkg_name memory
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.17.0
+Version:        0.18.0
 Release:        0
 Summary:        Memory and related abstraction stuff
 License:        BSD-3-Clause

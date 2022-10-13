@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep  5 01:54:53 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update memory to version 0.18.0.
+  ## 0.18
+
+  * drop support for ghc < 8.8
+  * compat with ghc 9.4
+
+  ## ...
+
+-------------------------------------------------------------------
 Thu Mar 10 01:00:19 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update memory to version 0.17.0.
