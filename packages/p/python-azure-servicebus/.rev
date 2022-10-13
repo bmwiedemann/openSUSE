@@ -225,4 +225,15 @@
 - Update Requires from setup.py (forwarded request 987809 from glaubitz)</comment>
     <requestid>987929</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>66a3d14d84bc36f66d2b38e35e55d909</srcmd5>
+    <version>7.8.1</version>
+    <time>1665668682</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 7.8.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1010235 from glaubitz)</comment>
+    <requestid>1010244</requestid>
+  </revision>
 </revisionlist>
