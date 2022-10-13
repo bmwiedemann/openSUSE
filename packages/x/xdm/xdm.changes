@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Oct 13 09:55:49 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- display-manager.service: simplified deps (boo#1203662)
+  * remove deps to time-sync.target, remote-fs.target, dbus.socket,
+    getty@tty7.service, plymouth-quit.service
+  * keep Conflicts to plymouth-quit.service
+  * keep dep to systemd-logind.service
+
+-------------------------------------------------------------------
+Tue Oct 11 15:46:37 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
+
+- Update xdm-tarball.patch:
+  * create /etc/X11/xinit directory if not present.
+
+-------------------------------------------------------------------
 Fri Sep  9 09:53:34 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add u_glibc-2.36.patch: use glibc's arc4random instead of

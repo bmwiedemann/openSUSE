@@ -983,4 +983,19 @@
     <comment></comment>
     <requestid>1003539</requestid>
   </revision>
+  <revision rev="97" vrev="5">
+    <srcmd5>ea60d1c291430ef681d502a088774566</srcmd5>
+    <version>1.1.13</version>
+    <time>1665668421</time>
+    <user>dimstar_suse</user>
+    <comment>- display-manager.service: simplified deps (boo#1203662)
+  * remove deps to time-sync.target, remote-fs.target, dbus.socket,
+    getty@tty7.service, plymouth-quit.service
+  * keep Conflicts to plymouth-quit.service
+  * keep dep to systemd-logind.service
+
+- Update xdm-tarball.patch:
+  * create /etc/X11/xinit directory if not present.</comment>
+    <requestid>1010460</requestid>
+  </revision>
 </revisionlist>
