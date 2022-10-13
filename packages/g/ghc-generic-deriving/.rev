@@ -192,4 +192,12 @@
     <comment>automated update of haskell stack</comment>
     <requestid>917486</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>90ca46dd4d92f4023d304476e45f5b6b</srcmd5>
+    <version>1.14.2</version>
+    <time>1665668522</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1008466</requestid>
+  </revision>
 </revisionlist>

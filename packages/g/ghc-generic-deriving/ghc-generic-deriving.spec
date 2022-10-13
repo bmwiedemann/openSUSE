@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-generic-deriving
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name generic-deriving
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.14.1
+Version:        1.14.2
 Release:        0
 Summary:        Generic programming library for generalised deriving
 License:        BSD-3-Clause
