@@ -1,6 +1,6 @@
 Name:                   regex-pcre-builtin
 Version:                0.95.2.3.8.44
-x-revision: 1
+x-revision: 2
 Cabal-Version:          >=1.10
 stability:              Seems to work, passes a few tests
 build-type:             Simple
@@ -25,8 +25,9 @@ extra-source-files:
   pcre/config.h pcre/pcre.h pcre/pcre_byte_order.c pcre/pcre_compile.c pcre/pcre_config.c pcre/pcre_chartables.c pcre/pcre_dfa_exec.c pcre/pcre_exec.c pcre/pcre_fullinfo.c pcre/pcre_get.c pcre/pcre_globals.c pcre/pcre_internal.h pcre/pcre_jit_compile.c pcre/pcre_maketables.c pcre/pcre_newline.c pcre/pcre_ord2utf8.c pcre/pcre_printint.c pcre/pcre_refcount.c pcre/pcre_scanner.h pcre/pcre_string_utils.c pcre/pcre_study.c pcre/pcre_tables.c pcre/pcre_ucd.c pcre/pcre_valid_utf8.c pcre/pcre_version.c pcre/pcre_xclass.c pcre/pcrecpp.h pcre/pcrecpp_internal.h pcre/pcreposix.h pcre/ucp.h
 
 tested-with:
-  GHC == 9.2.0.20210821
-  GHC == 9.0.1
+  GHC == 9.4.1
+  GHC == 9.2.4
+  GHC == 9.0.2
   GHC == 8.10.7
   GHC == 8.8.4
   GHC == 8.6.5
@@ -70,7 +71,7 @@ library
       FlexibleInstances
 
   build-depends: regex-base == 0.94.*
-               , base       >= 4.3 && < 4.17
+               , base       >= 4.3 && < 4.18
                , containers >= 0.4 && < 0.7
                , bytestring >= 0.9 && < 0.12
                , array      >= 0.3 && < 0.6
