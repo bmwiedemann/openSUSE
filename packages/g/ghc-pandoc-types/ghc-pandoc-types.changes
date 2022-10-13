@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Aug 13 18:36:11 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update pandoc-types to version 1.22.2.1.
+  [1.22.2.1]
+
+    * Allow aeson 2.1.* and criterion 1.6.
+
+-------------------------------------------------------------------
 Sat Apr  2 17:12:09 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update pandoc-types to version 1.22.2.
