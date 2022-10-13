@@ -87,9 +87,9 @@ Requires(pre):  group(daemon)
 Requires(pre):  user(daemon)
 Requires(pre):  group(mail)
 Requires(pre):  user(mail)
-%endif
 Requires(post): group(mail)
 Requires(post): user(mail)
+%endif
 Requires(post): %fillup_prereq
 Requires(post): coreutils
 Requires(post): permissions
@@ -97,8 +97,10 @@ Requires(post): sed
 Requires(posttrans):coreutils
 Requires(posttrans):findutils
 Requires(posttrans):m4
+%if 0%{?suse_version} >= 1330
 Requires(verify):group(mail)
 Requires(verify):user(mail)
+%endif
 Requires(verify):permissions
 %{?systemd_ordering}
 Conflicts:      postfix

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct  5 12:16:22 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Use group(mail) and user(mail) only on modern distributions
+
+-------------------------------------------------------------------
 Fri Sep 16 14:06:55 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Do not start sendmail-client as user mail as this one is not
