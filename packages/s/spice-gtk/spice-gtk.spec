@@ -59,7 +59,11 @@ BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(libcap-ng)
 BuildRequires:  pkgconfig(libdrm)
+%if 0%{?suse_version} <= 1500
+BuildRequires:  pkgconfig(libphodav-2.0)
+%else
 BuildRequires:  pkgconfig(libphodav-3.0)
+%endif
 BuildRequires:  pkgconfig(libpulse-mainloop-glib)
 BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.23

@@ -553,4 +553,12 @@ a new setuid binary.
     <comment></comment>
     <requestid>1003006</requestid>
   </revision>
+  <revision rev="55" vrev="3">
+    <srcmd5>5c1a6ba2a25919d51feaf4b8be8f52d4</srcmd5>
+    <version>0.41</version>
+    <time>1665668389</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1009912</requestid>
+  </revision>
 </revisionlist>

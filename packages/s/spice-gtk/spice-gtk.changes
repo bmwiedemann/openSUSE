@@ -35,7 +35,7 @@ Fri Feb 11 11:13:01 MST 2022 - carnold@suse.com
   support-new-pyparsing.patch
 
 -------------------------------------------------------------------
-Tue Dec 21 17:03:54 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+Fri Jan  7 15:22:17 UTC 2022 - Michael Gorse <mgorse@suse.com>
 
 - Add explicit pkgconfig(wayland-protocols) BuildRequires, meson
   checks for it.
@@ -47,7 +47,7 @@ Thu Dec  9 04:46:23 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
   * Use -c 'import foo' to check for module existance.
 
 -------------------------------------------------------------------
-Wed Dec  2 16:32:25 UTC 2020 - Bruce Rogers <brogers@suse.com>
+Fri Sep  3 14:47:02 MDT 2021 - carnold@suse.com
 
 - Update to version 0.39. Issues addressed:
   + !33 - Remove PulseAudio backend
@@ -70,6 +70,16 @@ Wed Dec  2 16:32:25 UTC 2020 - Bruce Rogers <brogers@suse.com>
   0002-quic-Check-image-size-in-quic_decode_begin.patch
   0003-quic-Check-RLE-lengths.patch
   0004-quic-Avoid-possible-buffer-overflow-in-find_bucket.patch
+  0001-With-OpenSSL-1.1-Disable-client-initiated-renegotiation.patch
+  0002-With-OpenSSL-1.0.2-and-earlier-disable-client-side-renegotiation.patch
+
+-------------------------------------------------------------------
+Fri May 28 04:52:02 MDT 2021 - carnold@suse.com
+
+- bsc#1181686 - VUL-0: CVE-2021-20201: spice,spice-gtk: client
+  initiated renegotiation denial of service
+  0001-With-OpenSSL-1.1-Disable-client-initiated-renegotiation.patch
+  0002-With-OpenSSL-1.0.2-and-earlier-disable-client-side-renegotiation.patch
 
 -------------------------------------------------------------------
 Thu Oct  8 14:27:50 UTC 2020 - Bruce Rogers <brogers@suse.com>
@@ -81,10 +91,10 @@ Mon Oct  5 19:51:44 UTC 2020 - Bruce Rogers <brogers@suse.com>
 
 - Fix buffer overflow vunerabilities in QUIC image decoding
   (CVE-2020-14355 bsc#1177158)
-0001-quic-Check-we-have-some-data-to-start-decoding-quic-.patch
-0002-quic-Check-image-size-in-quic_decode_begin.patch
-0003-quic-Check-RLE-lengths.patch
-0004-quic-Avoid-possible-buffer-overflow-in-find_bucket.patch
+  0001-quic-Check-we-have-some-data-to-start-decoding-quic-.patch
+  0002-quic-Check-image-size-in-quic_decode_begin.patch
+  0003-quic-Check-RLE-lengths.patch
+  0004-quic-Avoid-possible-buffer-overflow-in-find_bucket.patch
 
 -------------------------------------------------------------------
 Thu Mar 19 13:39:11 UTC 2020 - Bruce Rogers <brogers@suse.com>
