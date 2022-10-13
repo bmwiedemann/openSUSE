@@ -1,4 +1,132 @@
 -------------------------------------------------------------------
+Mon Aug 22 18:12:00 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update pandoc to version 2.19.2.
+  ## pandoc 2.19.2 (2022-08-22)
+
+    * Fix regression with data uris in 2.19.1 (#8239).
+      In 2.19.1 we used the base64URL encoding rather than base64.
+
+    * pandoc-server: handle `citeproc` parameter as documented (#8235).
+
+    * Org reader: treat *emacs-jupyter* src blocks as code cells (#8236,
+      Albert Krewinkel). This improves support for notebook-like org files
+      that are intended to be used with emacs-jupyter package.
+
+    * HTML writer and templates: revert to using `width` property for column
+      widths (Albert Krewinkel). The default `flex` and `overflow-x` properties
+      of a column are set to `auto`. In combination, these changes allow to
+      get good results when using columns with or without explicit widths.
+
+    * Org writer (Albert Krewinkel):
+
+      + Add support for jupyter nodebook cells (#6367).
+      + Prefix code language of ipynb code blocks with `jupyter-`.
+        This is the convention used by the *emacs-jupyter* package.
+      + Keep code block attributes as header args. This allows to keep more
+        information in the resulting `src` blocks, making it easier to
+        roundtrip from or through Org. Org babel ignores unknown header
+        arguments.
+      + Add code block identifier as `#+name` to src blocks.
+
+    * Fix some typos in the codebase (luz paz).
+
+    * Require hslua-module-path 1.0.3 (#8228, Albert Krewinkel).
+
+-------------------------------------------------------------------
+Fri Aug 19 06:44:22 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update pandoc to version 2.19.1.
+  ## pandoc 2.19.1 (2022-08-18)
+
+    * Add server capabilities.
+
+      + New exported module Text.Pandoc.Server [API change].
+      + The pandoc executable now starts up a web server when renamed or
+        symlinked as `pandoc-server`, and functions as a CGI program when
+        renamed or symlinked as `pandoc-server.cgi`.  See the man page for
+        `pandoc-server` for full documentation.
+
+    * Text.Pandoc.App.Opts: Redo `FromJSON` for `Opt` so that optional
+      values can be omitted (in which case the values from
+      `defaultOptions` are used).
+
+    * Org reader: treat "abstract" block as metadata (Albert Krewinkel, #8204).
+      A block of type "abstract" is assumed to define the document's abstract.
+      It is transferred from the main text to the metadata.
+
+    * Org template: add abstract from metadata as block of type "abstract"
+      (#8204).
+
+    * HTML writer: use `flex` property for column widths
+      (Albert Krewinkel, #8232).
+
+    * LaTeX writer:
+
+      + Add label to tables that have an identifier (Albert Krewinkel, #8219).
+        Tables with an identifier are marked with a `\label`. A caption is
+        always included in this case, even if the caption is empty.
+      + Use `\textquotesingle` for straight quotes in text.
+      + Fix widths of multicolumn cells (#8218).
+
+    * LaTeX template: fix behavior of `colorlinks` variable (Albert
+      Krewinkel, #8226). Fixes a regression in 2.19 that required the
+      `boxlinks` variable to be set in addition to the usual link coloring
+      variables. Otherwise links were never colored in LaTeX PDF output.
+
+    * Text.Pandoc.Highlighting: Export `lookupHighlightingStyle`
+      [API change]. Previously this lived in an unexported module
+      Text.Pandoc.App.CommandLineOptions, under the name
+      `lookupHighlightStyle`.
+
+    * Text.Pandoc.App:
+
+      + Remove unneeded MonadIO constraints in readSources.
+      + Factor out `convertWithOpts'` from `convertWithOpts`.
+        This runs in any PandocMonad, MonadIO, MonadMask instance.
+        So far it is not exported, but it might find a use later.
+
+    * Support `--strip-comments` in commonmark/gfm (#8222).
+      This change makes the commonmark reader sensitive to
+      `readerStripComments`.
+
+    * Lua: add function `pandoc.utils.citeproc` (Albert Krewinkel).
+      The function runs the *citeproc* processor on a Pandoc document.
+      Exposing this functionality to Lua allows to make citation processing
+      part of a filter or writer, simplifies the creation of multiple
+      bibliographies, and enables the use of varying citation styles in
+      different parts of a document.
+
+    * Refactor `linux/make_artifacts.sh`.
+
+    * Update INSTALL.md installation from source instructions.
+
+    * Use base64 package instead of base64-bytestring. It is supposed to be
+      faster and more standards-compliant.
+
+    * trypandoc improvements:
+
+      + Add dropdown with canned examples.
+      + Add citeproc support.
+      + Support csv, bibliographic and binary formats.
+      + Add load from file.
+      + Add permalink.  Don't always reload page.
+      + Use vanilla JS and CSS + the new `pandoc-server.cgi`.
+
+    * Allow haddock-library-1.11.0.
+
+    * Convert `tool/extract-changes.hs` to a Lua filter.
+
+-------------------------------------------------------------------
+Thu Aug  4 06:09:10 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update pandoc to version 2.19.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/pandoc-2.19/src/changelog.md
+
+-------------------------------------------------------------------
 Mon Apr  4 18:03:11 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update pandoc to version 2.18.

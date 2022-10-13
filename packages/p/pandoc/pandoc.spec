@@ -19,7 +19,7 @@
 %global pkg_name pandoc
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        2.18
+Version:        2.19.2
 Release:        0
 Summary:        Conversion between markup formats
 License:        GPL-2.0-or-later
@@ -35,7 +35,7 @@ BuildRequires:  ghc-aeson-devel
 BuildRequires:  ghc-aeson-pretty-devel
 BuildRequires:  ghc-array-devel
 BuildRequires:  ghc-attoparsec-devel
-BuildRequires:  ghc-base64-bytestring-devel
+BuildRequires:  ghc-base64-devel
 BuildRequires:  ghc-binary-devel
 BuildRequires:  ghc-blaze-html-devel
 BuildRequires:  ghc-blaze-markup-devel
@@ -56,7 +56,9 @@ BuildRequires:  ghc-emojis-devel
 BuildRequires:  ghc-exceptions-devel
 BuildRequires:  ghc-file-embed-devel
 BuildRequires:  ghc-filepath-devel
+BuildRequires:  ghc-gridtables-devel
 BuildRequires:  ghc-haddock-library-devel
+BuildRequires:  ghc-hslua-aeson-devel
 BuildRequires:  ghc-hslua-devel
 BuildRequires:  ghc-hslua-module-doclayout-devel
 BuildRequires:  ghc-hslua-module-path-devel
@@ -82,6 +84,7 @@ BuildRequires:  ghc-random-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-safe-devel
 BuildRequires:  ghc-scientific-devel
+BuildRequires:  ghc-servant-server-devel
 BuildRequires:  ghc-skylighting-core-devel
 BuildRequires:  ghc-skylighting-devel
 BuildRequires:  ghc-split-devel
@@ -95,6 +98,9 @@ BuildRequires:  ghc-time-devel
 BuildRequires:  ghc-unicode-collation-devel
 BuildRequires:  ghc-unicode-transforms-devel
 BuildRequires:  ghc-unix-devel
+BuildRequires:  ghc-wai-devel
+BuildRequires:  ghc-wai-extra-devel
+BuildRequires:  ghc-warp-devel
 BuildRequires:  ghc-xml-conduit-devel
 BuildRequires:  ghc-xml-devel
 BuildRequires:  ghc-xml-types-devel
@@ -121,12 +127,13 @@ Org-mode, Muse, Textile, txt2tags) - HTML formats (HTML 4 and 5) - Ebook
 formats (EPUB v2 and v3, FB2) - Documentation formats (GNU TexInfo, Haddock) -
 Roff formats (man, ms) - TeX formats (LaTeX, ConTeXt) - XML formats (DocBook 4
 and 5, JATS, TEI Simple, OpenDocument) - Outline formats (OPML) - Bibliography
-formats (BibTeX, BibLaTeX, CSL JSON, CSL YAML) - Word processor formats (Docx,
-RTF, ODT) - Interactive notebook formats (Jupyter notebook ipynb) - Page layout
-formats (InDesign ICML) - Wiki markup formats (MediaWiki, DokuWiki, TikiWiki,
-TWiki, Vimwiki, XWiki, ZimWiki, Jira wiki, Creole) - Slide show formats (LaTeX
-Beamer, PowerPoint, Slidy, reveal.js, Slideous, S5, DZSlides) - Data formats
-(CSV tables) - PDF (via external programs such as pdflatex or wkhtmltopdf)
+formats (BibTeX, BibLaTeX, CSL JSON, CSL YAML, RIS) - Word processor formats
+(Docx, RTF, ODT) - Interactive notebook formats (Jupyter notebook ipynb) - Page
+layout formats (InDesign ICML) - Wiki markup formats (MediaWiki, DokuWiki,
+TikiWiki, TWiki, Vimwiki, XWiki, ZimWiki, Jira wiki, Creole) - Slide show
+formats (LaTeX Beamer, PowerPoint, Slidy, reveal.js, Slideous, S5, DZSlides) -
+Data formats (CSV and TSV tables) - PDF (via external programs such as pdflatex
+or wkhtmltopdf)
 
 Pandoc can convert mathematical content in documents between TeX, MathML, Word
 equations, roff eqn, and plain text. It includes a powerful system for
