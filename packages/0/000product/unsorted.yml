@@ -65,6 +65,7 @@ unsorted:
   - HepMC2-devel 
   - Herwig-devel: [x86_64] 
   - Herwig-libs: [x86_64] 
+  - HyperKitty 
   - HyperKitty-web 
   - HyperKitty-web-uwsgi 
   - IccXML 
@@ -943,6 +944,9 @@ unsorted:
   - atril-thumbnailer 
   - attica-qt5-devel 
   - atuin 
+  - atuin-bash-completion 
+  - atuin-fish-completion 
+  - atuin-zsh-completion 
   - aubio-tools 
   - audacious 
   - audacious-devel 
@@ -3693,7 +3697,7 @@ unsorted:
   - fdo-client-devel 
   - featherpad 
   - featherpad-lang 
-  - fec-devel 
+  - fec-devel: [x86_64] 
   - feedbackd 
   - feedbackd-devel 
   - feh 
@@ -6813,6 +6817,7 @@ unsorted:
   - harminv-devel 
   - hartke-aurulentsans-fonts 
   - haruna 
+  - haruna-lang 
   - haserl 
   - hashalot 
   - hashcat 
@@ -10466,7 +10471,7 @@ unsorted:
   - libcppunit_subunit0-devel 
   - libcpuid-devel 
   - libcpuid-tools 
-  - libcpuid15 
+  - libcpuid16 
   - libcpuset-devel 
   - libcpuset1 
   - libcrc32c-devel 
@@ -10899,7 +10904,7 @@ unsorted:
   - libfdt-devel 
   - libfdt-devel-32bit: [x86_64] 
   - libfdt1-32bit: [x86_64] 
-  - libfec3 
+  - libfec3: [x86_64] 
   - libfeedback-0_0-0 
   - libff-1_0_0 
   - libff-devel 
@@ -10993,8 +10998,8 @@ unsorted:
   - libfmapi1 
   - libfmos-devel 
   - libfmos1 
-  - libfmt8: [i586] 
-  - libfmt8-32bit: [x86_64] 
+  - libfmt9: [i586] 
+  - libfmt9-32bit: [x86_64] 
   - libfole-devel 
   - libfole1 
   - libfolks-telepathy26 
@@ -13241,7 +13246,7 @@ unsorted:
   - libpoppler-qt5-devel 
   - libpoppler-qt6-3 
   - libpoppler-qt6-devel 
-  - libpoppler124-32bit: [x86_64] 
+  - libpoppler125-32bit: [x86_64] 
   - libportal-devel 
   - libportal-gtk3-devel 
   - libportal-gtk4-devel 
@@ -19211,32 +19216,6 @@ unsorted:
   - pcsc-reflex60 
   - pcsc-tools 
   - pcsc-towitoko-devel 
-  - pcsx2: [i586] 
-  - pcsx2-lang-ar: [i586] 
-  - pcsx2-lang-ca: [i586] 
-  - pcsx2-lang-cs: [i586] 
-  - pcsx2-lang-da: [i586] 
-  - pcsx2-lang-de: [i586] 
-  - pcsx2-lang-es: [i586] 
-  - pcsx2-lang-fi: [i586] 
-  - pcsx2-lang-fr: [i586] 
-  - pcsx2-lang-hr: [i586] 
-  - pcsx2-lang-hu: [i586] 
-  - pcsx2-lang-id: [i586] 
-  - pcsx2-lang-it: [i586] 
-  - pcsx2-lang-ja: [i586] 
-  - pcsx2-lang-ko: [i586] 
-  - pcsx2-lang-lt: [i586] 
-  - pcsx2-lang-nb: [i586] 
-  - pcsx2-lang-nl: [i586] 
-  - pcsx2-lang-pl: [i586] 
-  - pcsx2-lang-pt_BR: [i586] 
-  - pcsx2-lang-ru: [i586] 
-  - pcsx2-lang-sv: [i586] 
-  - pcsx2-lang-th: [i586] 
-  - pcsx2-lang-tr: [i586] 
-  - pcsx2-lang-zh_CN: [i586] 
-  - pcsx2-lang-zh_TW: [i586] 
   - pdf2djvu 
   - pdf2djvu-lang 
   - pdf2svg 
@@ -21762,7 +21741,6 @@ unsorted:
   - python3-GDAL 
   - python3-GitgExt 
   - python3-Hamlib 
-  - python3-HyperKitty 
   - python3-MapProxy 
   - python3-OpenColorIO 
   - python3-OpenImageIO 
@@ -23232,6 +23210,7 @@ unsorted:
   - python310-evilunit 
   - python310-evtx 
   - python310-exam 
+  - python310-exceptiongroup 
   - python310-execnet 
   - python310-executing 
   - python310-exiv2 
@@ -23304,6 +23283,7 @@ unsorted:
   - python310-flickrapi 
   - python310-flit 
   - python310-flit-core 
+  - python310-flit-scm 
   - python310-flower 
   - python310-fluent 
   - python310-flufl.bounce 
@@ -23667,7 +23647,7 @@ unsorted:
   - python310-langdetect 
   - python310-langtable 
   - python310-language-check 
-  - python310-lark-parser: [i586] 
+  - python310-lark: [i586] 
   - python310-latexcodec 
   - python310-lazr.config 
   - python310-lazr.delegates 
@@ -24280,6 +24260,7 @@ unsorted:
   - python310-pygaljs 
   - python310-pygame 
   - python310-pygame-devel 
+  - python310-pygeos 
   - python310-pygerrit2 
   - python310-pyglet 
   - python310-pygments-ansi-color 
@@ -24668,7 +24649,7 @@ unsorted:
   - python310-redfish 
   - python310-redis: [i586] 
   - python310-reedsolo 
-  - python310-regex: [i586] 
+  - python310-regex 
   - python310-relatorio 
   - python310-releases 
   - python310-remoto 
@@ -26492,6 +26473,7 @@ unsorted:
   - python38-evilunit 
   - python38-evtx 
   - python38-exam 
+  - python38-exceptiongroup 
   - python38-execnet 
   - python38-executing 
   - python38-exiv2 
@@ -26567,6 +26549,7 @@ unsorted:
   - python38-flickrapi 
   - python38-flit 
   - python38-flit-core 
+  - python38-flit-scm 
   - python38-flower 
   - python38-fluent 
   - python38-flufl.bounce 
@@ -26950,7 +26933,7 @@ unsorted:
   - python38-langdetect 
   - python38-langtable 
   - python38-language-check 
-  - python38-lark-parser 
+  - python38-lark 
   - python38-latexcodec 
   - python38-lazr.config 
   - python38-lazr.delegates 
@@ -27586,6 +27569,7 @@ unsorted:
   - python38-pygaljs 
   - python38-pygame 
   - python38-pygame-devel 
+  - python38-pygeos 
   - python38-pygerrit2 
   - python38-pygit2 
   - python38-pyglet 
@@ -29826,6 +29810,7 @@ unsorted:
   - python39-evilunit 
   - python39-evtx 
   - python39-exam 
+  - python39-exceptiongroup 
   - python39-execnet 
   - python39-executing 
   - python39-exiv2 
@@ -29901,6 +29886,7 @@ unsorted:
   - python39-flickrapi 
   - python39-flit 
   - python39-flit-core 
+  - python39-flit-scm 
   - python39-flower 
   - python39-fluent 
   - python39-flufl.bounce 
@@ -30284,7 +30270,7 @@ unsorted:
   - python39-langdetect 
   - python39-langtable 
   - python39-language-check 
-  - python39-lark-parser 
+  - python39-lark 
   - python39-latexcodec 
   - python39-lazr.config 
   - python39-lazr.delegates 
@@ -30923,6 +30909,7 @@ unsorted:
   - python39-pygaljs 
   - python39-pygame 
   - python39-pygame-devel 
+  - python39-pygeos 
   - python39-pygerrit2 
   - python39-pygit2 
   - python39-pyglet 
@@ -32971,6 +32958,7 @@ unsorted:
   - ruby3.1-doc 
   - ruby3.1-doc-ri 
   - ruby3.1-rubygem-grpc 
+  - ruby3.1-rubygem-jekyll 
   - rubygem-docker-api 
   - rubygem-docker-api-doc 
   - rubygem-docker-api-testsuite 
@@ -32985,7 +32973,6 @@ unsorted:
   - ruqola 
   - ruqola-lang 
   - rust 
-  - rust-analyzer 
   - rust-cbindgen 
   - rust-keylime: [i586] 
   - rust-packaging 
@@ -42745,7 +42732,6 @@ unsorted:
   - tintii 
   - tiny 
   - tinyb-devel 
-  - tinyca2 
   - tinyfecvpn 
   - tinygettext-devel 
   - tinyobjloader-devel 
