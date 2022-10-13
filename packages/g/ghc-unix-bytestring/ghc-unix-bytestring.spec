@@ -18,7 +18,7 @@
 
 %global pkg_name unix-bytestring
 Name:           ghc-%{pkg_name}
-Version:        0.3.7.7
+Version:        0.3.7.8
 Release:        0
 Summary:        Unix/Posix-specific functions for ByteStrings
 License:        BSD-3-Clause
