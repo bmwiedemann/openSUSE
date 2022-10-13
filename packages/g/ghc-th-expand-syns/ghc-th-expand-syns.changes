@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jul 23 18:00:58 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update th-expand-syns to version 0.4.10.0.
+  ## 0.4.10.0 [2022.07.23]
+
+  * Support `DefaultD`, `PromotedInfixT`, and `PromotedUInfixT` when building
+    with `template-haskell-2.19.0.0` (GHC 9.4) or later.
+
+-------------------------------------------------------------------
 Fri Sep  3 14:01:20 UTC 2021 - psimons@suse.com
 
 - Update th-expand-syns to version 0.4.9.0.
