@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -25,9 +24,8 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%define skip_python2 1
 Name:           python-Sphinx%{psuffix}
-Version:        5.1.1
+Version:        5.2.3
 Release:        0
 Summary:        Python documentation generator
 License:        BSD-2-Clause
@@ -45,9 +43,13 @@ Source4:        readthedocs.inv
 Source5:        update-intersphinx.sh
 Source99:       python-Sphinx.keyring
 BuildRequires:  %{python_module base}
+BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-pip
 # workaround for suboptimal CentOS-7 project config
 #!BuildIgnore:  texinfo
 Requires:       python-Babel >= 1.3
@@ -235,10 +237,8 @@ This package contains the HTML documentation for Sphinx.
 %setup -q -n Sphinx-%{version}
 %autopatch -p1
 
-sed -i 's/\r$//' sphinx/themes/basic/static/jquery.js # Fix wrong end-of-line encoding
-
 %build
-%python_build
+%pyproject_wheel
 
 %if %{with test}
 mkdir build.doc
@@ -251,19 +251,17 @@ cp %{SOURCE4} doc/readthedocs.inv
 # Use a more recent default (currently 3.9) from the source tag instead.
 # The same for requests.
 sed -i -e "s/\((.https:..docs.python.org.3.., \)None\()\)/\1'python3.inv'\2/g" doc/conf.py
-sed -i -e "s/\((.https:..docs.python-requests.org.*, \)None\()\)/\1'requests.inv'\2/g" doc/conf.py
+sed -i -e "s/\((.https:..requests.readthedocs.io.*, \)None\()\)/\1'requests.inv'\2/g" doc/conf.py
 sed -i -e "s/\((.https:..docs.readthedocs.io.*, \)None\()\)/\1'readthedocs.inv'\2/g" doc/conf.py
-$python setup.py build_sphinx
-rm build/sphinx/html/.buildinfo
-$python setup.py build_sphinx -b man
+# rm build/sphinx/html/.buildinfo
+$python -m sphinx -b man ./doc ./build.doc/man
+$python -m sphinx -M html ./doc ./build.doc/html
 }
-
-mv build/sphinx/{html,man} build.doc/
 %endif
 
 %install
 %if ! %{with test}
-%python_install
+%pyproject_install
 
 %python_clone -a %{buildroot}%{_bindir}/sphinx-apidoc
 %python_clone -a %{buildroot}%{_bindir}/sphinx-autogen
@@ -325,7 +323,8 @@ export LC_ALL="C.utf8"
 %python_alternative %{_bindir}/sphinx-quickstart
 %{python_sitelib}/sphinx/
 %exclude %{python_sitelib}/sphinx/texinputs/
-%{python_sitelib}/Sphinx-%{version}-py*.egg-info
+%dir %{python_sitelib}/sphinx-%{version}.dist-info
+%{python_sitelib}/sphinx-%{version}.dist-info/*
 %dir %{python_sitelib}/sphinxcontrib
 
 %files %{python_files latex}

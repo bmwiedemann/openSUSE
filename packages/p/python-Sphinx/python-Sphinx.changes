@@ -1,10 +1,58 @@
 -------------------------------------------------------------------
+Sun Oct  2 18:47:20 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- BuildRequires just flit-core instead of flit
+
+-------------------------------------------------------------------
+Fri Sep 30 18:06:55 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update to version 5.2.3
+  * #10878: Fix base64 image embedding in sphinx.ext.imgmath
+  * #10886: Add :nocontentsentry: flag and global domain table of contents entry
+    control option. Patch by Adam Turner
+
+-------------------------------------------------------------------
+Tue Sep 27 15:35:11 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update to version 5.2.2
+  * #10872: Restore link targets for autodoc modules to the top of content.
+    Patch by Dominic Davis-Foster.
+
+-------------------------------------------------------------------
+Mon Sep 26 07:06:34 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update to version 5.2.1
+  * #10861: Always normalise the ``pycon3`` lexer to ``pycon``.
+  * Fix using ``sphinx.ext.autosummary`` with modules containing titles in the
+    module-level docstring.
+- Remove unneeded spec hunks.
+
+-------------------------------------------------------------------
+Sun Sep 25 15:24:42 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update to version 5.2.0
+  * #10356: Sphinx now uses declarative metadata with pyproject.toml to create packages,
+    using PyPA’s build project as a build backend. Patch by Adam Turner.
+  * #10286: C++, support requires clauses not just between the template parameter lists and the declaration.
+  * #10755: linkcheck: Check the source URL of raw directives that use the url option.
+  * #10781: Allow ref role to be used with definitions and fields.
+  * #10717: HTML Search: Increase priority for full title and subtitle matches in search results
+  * #10718: HTML Search: Save search result score to the HTML element for debugging
+  * #10673: Make toctree accept ‘genindex’, ‘modindex’ and ‘search’ docnames
+  * #6316, #10804: Add domain objects to the table of contents. Patch by Adam Turner
+  * #6692: HTML Search: Include explicit index directive index entries in the search index and search results. Patch by Adam Turner
+  * #10816: imgmath: Allow embedding images in HTML as base64
+  * #10257: C++, ensure consistent non-specialization template argument representation.
+  * #10729: C++, fix parsing of certain non-type template parameter packs.
+  * #10715: Revert #10520: “Fix” use of sidebar classes in agogo.css_t
+
+-------------------------------------------------------------------
 Wed Jul 27 06:58:04 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Update to version 5.1.1
-* #10701: Fix ValueError in the new ``deque`` based ``sphinx.ext.napolean``
-  iterator implementation.
-* #10702: Restore compatability with third-party builders.
+  * #10701: Fix ValueError in the new ``deque`` based ``sphinx.ext.napolean``
+    iterator implementation.
+  * #10702: Restore compatability with third-party builders.
 
 -------------------------------------------------------------------
 Sun Jul 24 17:44:29 UTC 2022 - Martin Liška <mliska@suse.cz>
