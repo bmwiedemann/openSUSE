@@ -44,12 +44,18 @@ Patch6:         minizip-dont-install-crypt-header.patch
 # The following patches are taken from https://github.com/iii-i/zlib/commits/crc32vx-v3
 Patch7:         zlib-1.2.5-minizip-fixuncrypt.patch
 Patch8:         zlib-1.2.11-optimized-s390.patch
+# https://github.com/iii-i/zlib/commit/171d0ff3c9ed40da0ac14085ab16b766b1162069
 Patch9:         zlib-1.2.12-IBM-Z-hw-accelerated-deflate-s390x.patch
 Patch10:        zlib-1.2.11-covscan-issues.patch
 Patch11:        zlib-1.2.11-covscan-issues-rhel9.patch
 Patch12:        zlib-1.2.12-optimized-crc32-power8.patch
 Patch13:        zlib-1.2.12-fix-configure.patch
 Patch14:        zlib-1.2.12-s390-vectorize-crc32.patch
+# The following patches are taken from https://github.com/mscastanho/zlib/commits/power-optimizations-1.2.12
+Patch15:        zlib-1.2.12-adler32-vector-optimizations-for-power.patch
+Patch16:        zlib-1.2.12-fix-invalid-memory-access-on-ppc-and-ppc64.patch
+Patch17:        zlib-1.2.12-add-optimized-slide_hash-for-power.patch
+Patch18:        zlib-1.2.12-add-vectorized-longest_match-for-power.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -148,6 +154,10 @@ It should exit 0
 %patch12 -p1
 %patch13 -p1
 %patch14 -p1
+%patch15 -p1
+%patch16 -p1
+%patch17 -p1
+%patch18 -p1
 cp %{SOURCE4} .
 
 %build
@@ -167,10 +177,10 @@ CC="cc" ./configure \
 # Profiling flags breaks tests, as of 1.2.12
 # In particular, gzseek does not work as intended
 #%if %{do_profiling}
-#  #make %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_generate}"
+#  make %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_generate}"
 #  make check %{?_smp_mflags}
-#  #make %{?_smp_mflags} clean
-#  #make %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_feedback}"
+#  make %{?_smp_mflags} clean
+#  make %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_feedback}"
 #%else
   make %{?_smp_mflags}
 #%endif
