@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-openid_connect
-Version:        1.3.1
+Version:        2.1.0
 Release:        0
 %define mod_name openid_connect
 %define mod_full_name %{mod_name}-%{version}
@@ -48,7 +48,7 @@ OpenID Connect Server & Client Library.
 
 %install
 %gem_install \
-  --doc-files="LICENSE README.rdoc" \
+  --doc-files="CHANGELOG.md LICENSE README.rdoc" \
   -f
 
 %gem_packages
