@@ -1,6 +1,0 @@
-<package name="when-command" project="openSUSE:Factory">
-  <title>Configurable user task scheduler</title>
-  <description>When interacts with the user through a GUI, where the user can define tasks and conditions, as well as relationships of causality that bind conditions to tasks.
-When a condition is bound to a task, it is said to trigger a task.</description>
-  <devel project="X11:Utilities" package="when-command"/>
-</package>
