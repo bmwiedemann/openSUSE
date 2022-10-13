@@ -1,6 +1,6 @@
 Name:         blaze-markup
 Version:      0.8.2.8
-x-revision: 2
+x-revision:   3
 Homepage:     http://jaspervdj.be/blaze
 Bug-Reports:  http://github.com/jaspervdj/blaze-markup/issues
 License:      BSD3
@@ -20,8 +20,8 @@ Build-type:    Simple
 Cabal-version: >= 1.10
 Tested-with:   GHC == 7.8.4, GHC == 7.10.3,
                GHC == 8.0.2, GHC == 8.2.2, GHC == 8.4.4,
-               GHC == 8.6.5, GHC == 8.8.4, GHC == 8.10.4,
-               GHC == 9.0.1, GHC == 9.2.1
+               GHC == 8.6.5, GHC == 8.8.4, GHC == 8.10.7,
+               GHC == 9.0.2, GHC == 9.2.4, GHC == 9.4.1
 
 Extra-source-files:
   CHANGELOG
@@ -40,7 +40,7 @@ Library
     Text.Blaze.Renderer.Utf8
 
   Build-depends:
-    base          >= 4    && < 4.17,
+    base          >= 4    && < 4.18,
     blaze-builder >= 0.3  && < 0.5,
     text          >= 0.10 && < 2.1,
     bytestring    >= 0.9  && < 0.12
@@ -63,17 +63,18 @@ Test-suite blaze-markup-tests
     Text.Blaze.Tests.Util
 
   Build-depends:
-    HUnit            >= 1.2  && < 1.7,
-    QuickCheck       >= 2.7  && < 2.15,
-    containers       >= 0.3  && < 0.7,
-    tasty            >= 1.0  && < 1.5,
-    tasty-hunit      >= 0.10 && < 0.11,
-    tasty-quickcheck >= 0.10 && < 0.11,
     -- Copied from regular dependencies...
-    base          >= 4    && < 4.17,
-    blaze-builder >= 0.3  && < 0.5,
-    text          >= 0.10 && < 2.1,
-    bytestring    >= 0.9  && < 0.12
+    base
+    , blaze-builder
+    , text
+    , bytestring
+    -- Extra dependencies
+    , HUnit            >= 1.2  && < 1.7
+    , QuickCheck       >= 2.7  && < 2.15
+    , containers       >= 0.3  && < 0.7
+    , tasty            >= 1.0  && < 1.5
+    , tasty-hunit      >= 0.10 && < 0.11
+    , tasty-quickcheck >= 0.10 && < 0.11
 
 Source-repository head
   Type:     git

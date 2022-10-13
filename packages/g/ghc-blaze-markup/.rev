@@ -197,4 +197,12 @@ See: http://lists.opensuse.org/archive/opensuse-factory/2014-03/msg00332.html</c
     <comment>version update</comment>
     <requestid>953438</requestid>
   </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>93858ac932cddcb46e16f43127167422</srcmd5>
+    <version>0.8.2.8</version>
+    <time>1665668474</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1008440</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 15 11:11:46 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update blaze-markup to version 0.8.2.8 revision 3.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Feb  3 22:11:41 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update blaze-markup to version 0.8.2.8 revision 2.
