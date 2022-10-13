@@ -19,7 +19,7 @@
 %global pkg_name hspec-core
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.10.0
+Version:        2.10.6
 Release:        0
 Summary:        A Testing Framework for Haskell
 License:        MIT
@@ -31,25 +31,25 @@ BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-ansi-terminal-devel
 BuildRequires:  ghc-array-devel
 BuildRequires:  ghc-call-stack-devel
-BuildRequires:  ghc-clock-devel
 BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-ghc-boot-th-devel
 BuildRequires:  ghc-ghc-devel
 BuildRequires:  ghc-hspec-expectations-devel
+BuildRequires:  ghc-process-devel
 BuildRequires:  ghc-quickcheck-io-devel
 BuildRequires:  ghc-random-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-setenv-devel
 BuildRequires:  ghc-stm-devel
 BuildRequires:  ghc-tf-random-devel
+BuildRequires:  ghc-time-devel
 BuildRequires:  ghc-transformers-devel
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-base-orphans-devel
 BuildRequires:  ghc-hspec-meta-devel
-BuildRequires:  ghc-process-devel
 BuildRequires:  ghc-silently-devel
 BuildRequires:  ghc-temporary-devel
 %endif
