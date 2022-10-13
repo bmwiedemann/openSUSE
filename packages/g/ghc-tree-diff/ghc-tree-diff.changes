@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Aug 21 14:01:51 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update tree-diff to version 0.2.2.
+  ## 0.2.2
+
+  - Add instances for base and primitive's `ByteArray`s.
+
+-------------------------------------------------------------------
 Mon Jun 20 17:52:40 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update tree-diff to version 0.2.1.1 revision 2.
