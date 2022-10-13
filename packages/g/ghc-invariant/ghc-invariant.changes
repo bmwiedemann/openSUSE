@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jul 23 18:37:39 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update invariant to version 0.6 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Sun Jul  3 10:17:11 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update invariant to version 0.6.
