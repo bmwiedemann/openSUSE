@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-generic-data
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name generic-data
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.9.2.1
+Version:        1.0.0.0
 Release:        0
 Summary:        Deriving instances with GHC.Generics and related utilities
 License:        MIT
@@ -35,12 +35,9 @@ BuildRequires:  ghc-show-combinators-devel
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-generic-lens-devel
-BuildRequires:  ghc-inspection-testing-devel
 BuildRequires:  ghc-one-liner-devel
 BuildRequires:  ghc-tasty-devel
 BuildRequires:  ghc-tasty-hunit-devel
-BuildRequires:  ghc-template-haskell-devel
-BuildRequires:  ghc-unordered-containers-devel
 %endif
 
 %description
