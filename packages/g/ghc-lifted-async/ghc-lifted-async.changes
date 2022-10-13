@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Aug 13 08:24:01 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update lifted-async to version 0.10.2.3.
+  ## v0.10.2.3 - 2022-08-13
+
+  * Allow base-4.17 (GHC 9.4) and bump CI to latest GHC versions ([#39](https://github.com/maoe/lifted-async/pull/39))
+
+-------------------------------------------------------------------
 Wed Nov  3 15:52:06 UTC 2021 - psimons@suse.com
 
 - Update lifted-async to version 0.10.2.2.
