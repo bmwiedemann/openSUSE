@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Aug  4 11:22:09 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update http-client to version 0.7.13.1.
+  ## 0.7.13
+
+  * Create the ability to redact custom header values to censor sensitive information
+
+-------------------------------------------------------------------
+Tue Jul 26 13:46:23 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update http-client to version 0.7.12.
+  ## 0.7.12
+
+  * Fix premature connection closing due to weak reference lifetimes [#490](https://github.com/snoyberg/http-client/pull/490)
+
+-------------------------------------------------------------------
 Thu Feb 17 16:08:45 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update http-client to version 0.7.11 revision 1.
