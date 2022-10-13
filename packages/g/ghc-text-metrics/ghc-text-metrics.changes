@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 16 08:20:44 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update text-metrics to version 0.3.2 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Dec 30 10:10:02 UTC 2021 - Peter Simons <psimons@suse.com>
 
 - Update text-metrics to version 0.3.2.
