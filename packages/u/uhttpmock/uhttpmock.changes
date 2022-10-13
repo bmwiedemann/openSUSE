@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct 11 13:51:42 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.9.0:
+  + This release ports the library to use libsoup 3.x. Note that
+    you should stick to using the latest 0.5.x version if the
+    tested piece of software still requires libsoup 2.x as the 2
+    versions cannot be used in the same programm.
+- Replace pkgconfig(libsoup-2.4) with pkgconfig(libsoup-3.0)
+  BuildRequires following upstreams port.
+- Rename sub-package typelib and shared library following upstreams
+  bump of soname.
+
+-------------------------------------------------------------------
 Mon Sep  5 09:42:34 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.5.5:

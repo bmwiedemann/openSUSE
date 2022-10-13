@@ -18,7 +18,7 @@
 
 
 Name:           uhttpmock
-Version:        0.5.5
+Version:        0.9.0
 Release:        0
 Summary:        HTTP web service mocking library
 License:        LGPL-2.1-or-later
@@ -30,10 +30,10 @@ BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk-doc
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(gio-2.0) >= 2.36.0
+BuildRequires:  pkgconfig(gio-2.0) >= 2.38.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.38.0
 BuildRequires:  pkgconfig(gobject-2.0)
-BuildRequires:  pkgconfig(libsoup-2.4) >= 2.47.3
+BuildRequires:  pkgconfig(libsoup-3.0) >= 3.1.2
 BuildRequires:  pkgconfig(vapigen)
 
 %description
@@ -41,20 +41,20 @@ uhttpmock is a project for mocking web service APIs which use HTTP or HTTPS.
 It provides a library, libuhttpmock, which implements recording and
 playback of HTTP request/response traces.
 
-%package -n libuhttpmock-0_0-0
+%package -n libuhttpmock-1_0-1
 Summary:        HTTP web service mocking library
 Group:          System/Libraries
 
-%description -n libuhttpmock-0_0-0
+%description -n libuhttpmock-1_0-1
 uhttpmock is a project for mocking web service APIs which use HTTP or HTTPS.
 It provides a library, libuhttpmock, which implements recording and
 playback of HTTP request/response traces.
 
-%package -n typelib-1_0-Uhm-0_0
+%package -n typelib-1_0-Uhm-1_0
 Summary:        HTTP web service mocking library
 Group:          System/Libraries
 
-%description -n typelib-1_0-Uhm-0_0
+%description -n typelib-1_0-Uhm-1_0
 uhttpmock is a project for mocking web service APIs which use HTTP or HTTPS.
 It provides a library, libuhttpmock, which implements recording and
 playback of HTTP request/response traces.
@@ -62,8 +62,8 @@ playback of HTTP request/response traces.
 %package devel
 Summary:        Development files for %{name}
 Group:          Development/Libraries/Other
-Requires:       libuhttpmock-0_0-0 = %{version}
-Requires:       typelib-1_0-Uhm-0_0 = %{version}
+Requires:       libuhttpmock-1_0-1 = %{version}
+Requires:       typelib-1_0-Uhm-1_0 = %{version}
 
 %description devel
 This package contains libraries, header files and documentation for
@@ -83,22 +83,22 @@ developing applications that use %{name}.
 %install
 %meson_install
 
-%ldconfig_scriptlets -n libuhttpmock-0_0-0
+%ldconfig_scriptlets -n libuhttpmock-1_0-1
 
-%files -n libuhttpmock-0_0-0
+%files -n libuhttpmock-1_0-1
 %license COPYING
 %doc README NEWS AUTHORS
-%{_libdir}/libuhttpmock-0.0.so.*
+%{_libdir}/libuhttpmock-1.0.so.*
 
-%files -n typelib-1_0-Uhm-0_0
-%{_libdir}/girepository-1.0/Uhm-0.0.typelib
+%files -n typelib-1_0-Uhm-1_0
+%{_libdir}/girepository-1.0/Uhm-1.0.typelib
 
 %files devel
-%doc %{_datadir}/gtk-doc/html/libuhttpmock-0.0/
+%doc %{_datadir}/gtk-doc/html/libuhttpmock-1.0/
 %{_libdir}/*.so
-%{_includedir}/libuhttpmock-0.0/
-%{_libdir}/pkgconfig/libuhttpmock-0.0.pc
-%{_datadir}/gir-1.0/Uhm-0.0.gir
+%{_includedir}/libuhttpmock-1.0/
+%{_libdir}/pkgconfig/libuhttpmock-1.0.pc
+%{_datadir}/gir-1.0/Uhm-1.0.gir
 %{_datadir}/vala/vapi/
 
 %changelog
