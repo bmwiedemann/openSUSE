@@ -19,13 +19,14 @@
 %global pkg_name brick
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.73
+Version:        1.3
 Release:        0
 Summary:        A declarative terminal user interface library
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
+BuildRequires:  ghc-bimap-devel
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-config-ini-devel
 BuildRequires:  ghc-containers-devel
@@ -33,18 +34,17 @@ BuildRequires:  ghc-contravariant-devel
 BuildRequires:  ghc-data-clist-devel
 BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-directory-devel
-BuildRequires:  ghc-dlist-devel
 BuildRequires:  ghc-exceptions-devel
 BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-microlens-devel
 BuildRequires:  ghc-microlens-mtl-devel
 BuildRequires:  ghc-microlens-th-devel
+BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-stm-devel
 BuildRequires:  ghc-template-haskell-devel
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-text-zipper-devel
-BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-unix-devel
 BuildRequires:  ghc-vector-devel
 BuildRequires:  ghc-vty-devel
