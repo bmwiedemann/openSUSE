@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Aug 19 04:42:34 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update basement to version 0.0.15.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
+Sun Aug 14 14:11:01 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update basement to version 0.0.14 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Mar  3 03:43:37 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update basement to version 0.0.14.
