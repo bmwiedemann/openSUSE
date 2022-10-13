@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  5 21:35:19 UTC 2022 - Josef Reidinger <jreidinger@suse.com>
+
+- prevent leak of grub2 password to logs(bsc#1201962)
+- 4.5.7
+
+-------------------------------------------------------------------
 Wed Sep 21 20:42:31 UTC 2022 - Josef Reidinger <jreidinger@suse.com>
 
 - write stage1 location on transactional systems (bsc#1128853)
@@ -9,7 +15,7 @@ Wed Sep 21 06:24:02 UTC 2022 - Michal Filka <mfilka@suse.com>
 
 - bsc#1203418
   - added default proposal for hidden timeout
-- 4.5.5 
+- 4.5.5
 
 -------------------------------------------------------------------
 Mon Sep 12 10:04:01 UTC 2022 - Josef Reidinger <jreidinger@suse.com>
