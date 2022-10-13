@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Aug 21 12:09:00 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update singleton-bool to version 0.1.6 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Fri Dec 17 21:18:04 UTC 2021 - Peter Simons <psimons@suse.com>
 
 - Update singleton-bool to version 0.1.6 revision 1.
