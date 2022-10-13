@@ -1,8 +1,14 @@
 -------------------------------------------------------------------
+Sat Sep 17 07:37:28 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update ghcid to version 0.8.7 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
- 
+
 - disable %{ix86} build
- 
+
 -------------------------------------------------------------------
 Tue Aug 18 10:46:49 UTC 2020 - Peter Simons <psimons@suse.com>
 
@@ -12,4 +18,3 @@ Tue Aug 18 10:46:49 UTC 2020 - Peter Simons <psimons@suse.com>
 Tue Jul 21 09:34:15 UTC 2020 - psimons@suse.com
 
 - Add ghcid at version 0.8.7.
-
