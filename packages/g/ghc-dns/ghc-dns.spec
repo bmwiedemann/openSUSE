@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-dns
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global has_internal_sub_libraries 1
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        4.0.1
+Version:        4.1.0
 Release:        0
 Summary:        DNS library in Haskell
 License:        BSD-3-Clause
