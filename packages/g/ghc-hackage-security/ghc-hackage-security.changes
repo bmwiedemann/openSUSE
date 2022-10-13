@@ -1,34 +1,7 @@
 -------------------------------------------------------------------
-Wed May 25 10:55:41 UTC 2022 - Peter Simons <psimons@suse.com>
+Mon Jan 17 11:19:09 UTC 2022 - Peter Simons <psimons@suse.com>
 
-- Update hackage-security to version 0.6.2.1 revision 2.
-  Upstream has revised the Cabal build instructions on Hackage.
-
--------------------------------------------------------------------
-Fri Feb 18 15:40:15 UTC 2022 - Peter Simons <psimons@suse.com>
-
-- Update hackage-security to version 0.6.2.1 revision 1.
-  Upstream has revised the Cabal build instructions on Hackage.
-
--------------------------------------------------------------------
-Thu Feb 17 20:27:39 UTC 2022 - Peter Simons <psimons@suse.com>
-
-- Update hackage-security to version 0.6.2.1.
-  0.6.2.1
-  -------
-
-  * Allow GHC-9.0 (base-4.15) (#265)
-  * Fix running `cabal repl hackage-security` (#263)
-
--------------------------------------------------------------------
-Sat Jan 22 17:15:12 UTC 2022 - Peter Simons <psimons@suse.com>
-
-- Update hackage-security to version 0.6.2.0.
-  0.6.2.0
-  -------
-
-  * Safely prepare for when cabal factors out Cabal-syntax
-
+- Update hackage-security to version 0.6.1.0.
   0.6.1.0
   -------
 
