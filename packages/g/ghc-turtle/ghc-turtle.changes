@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep  5 00:03:05 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update turtle to version 1.6.1 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Fri Jun 17 21:38:49 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update turtle to version 1.6.1.
