@@ -1,7 +1,8 @@
-diff -ur fail2ban-0.11.2-orig/config/jail.conf fail2ban-0.11.2/config/jail.conf
---- fail2ban-0.11.2-orig/config/jail.conf	2020-11-23 21:43:03.000000000 +0100
-+++ fail2ban-0.11.2/config/jail.conf	2020-11-29 10:14:13.229200191 +0100
-@@ -731,7 +731,7 @@
+Index: fail2ban-1.0.1/config/jail.conf
+===================================================================
+--- fail2ban-1.0.1.orig/config/jail.conf
++++ fail2ban-1.0.1/config/jail.conf
+@@ -731,7 +731,7 @@ backend = %(syslog_backend)s
  # filter   = named-refused
  # port     = domain,953
  # protocol = udp
@@ -10,7 +11,7 @@ diff -ur fail2ban-0.11.2-orig/config/jail.conf fail2ban-0.11.2/config/jail.conf
  
  # IMPORTANT: see filter.d/named-refused for instructions to enable logging
  # This jail blocks TCP traffic for DNS requests.
-@@ -739,7 +739,7 @@
+@@ -739,7 +739,7 @@ backend = %(syslog_backend)s
  [named-refused]
  
  port     = domain,953
@@ -19,16 +20,13 @@ diff -ur fail2ban-0.11.2-orig/config/jail.conf fail2ban-0.11.2/config/jail.conf
  
  
  [nsd]
-Nur in fail2ban-0.11.2/config: jail.conf.orig.
-diff -ur fail2ban-0.11.2-orig/config/paths-common.conf fail2ban-0.11.2/config/paths-common.conf
---- fail2ban-0.11.2-orig/config/paths-common.conf	2020-11-23 21:43:03.000000000 +0100
-+++ fail2ban-0.11.2/config/paths-common.conf	2020-11-29 10:14:13.237200352 +0100
-@@ -90,7 +90,7 @@
+Index: fail2ban-1.0.1/config/paths-common.conf
+===================================================================
+--- fail2ban-1.0.1.orig/config/paths-common.conf
++++ fail2ban-1.0.1/config/paths-common.conf
+@@ -90,4 +90,4 @@ solidpop3d_log = %(syslog_local0)s
  mysql_log = %(syslog_daemon)s
  mysql_backend = %(default_backend)s
  
 -roundcube_errors_log = /var/log/roundcube/errors
 +roundcube_errors_log = /srv/www/roundcubemail/logs/errors
- 
- # Directory with ignorecommand scripts
- ignorecommands_dir = /etc/fail2ban/filter.d/ignorecommands

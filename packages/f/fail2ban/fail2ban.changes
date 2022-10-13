@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct 12 08:11:52 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.0.1:
+  * https://github.com/fail2ban/fail2ban/blob/1.0.1/ChangeLog
+- Remove fail2ban-0.11.2-upstream-patch-python-3.9.patch.
+- Remove fail2ban-0.11.2-upstream-patch-for-CVE-2021-32749.patch.
+- Remove fail2ban-rpmlintrc since it's no longer needed.
+- Add fail2ban.keyring.
+
+-------------------------------------------------------------------
 Sat Jan 22 11:17:48 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
 
 - Fail2ban can't be PartOf ipset.service and nftables.service that

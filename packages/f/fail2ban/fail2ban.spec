@@ -22,7 +22,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           fail2ban
-Version:        0.11.2
+Version:        1.0.1
 Release:        0
 Summary:        Bans IP addresses that make too many authentication failures
 License:        GPL-2.0-or-later
@@ -37,8 +37,7 @@ Source6:        sfw-fail2ban.conf
 Source7:        f2b-restart.conf
 # Path definitions have been submitted to upstream
 Source8:        paths-opensuse.conf
-# ignore some rpm-lint messages
-Source200:      %{name}-rpmlintrc
+Source200:      fail2ban.keyring
 # PATCH-FIX-OPENSUSE fail2ban-opensuse-locations.patch bnc#878028 jweberhofer@weberhofer.at -- update default locations for logfiles
 Patch100:       %{name}-opensuse-locations.patch
 # PATCH-FIX-OPENSUSE fail2ban-opensuse-service.patch jweberhofer@weberhofer.at -- openSUSE modifications to the service file
@@ -51,10 +50,6 @@ Patch201:       %{name}-0.10.4-env-script-interpreter.patch
 Patch300:       fail2ban-opensuse-service-sfw.patch
 # PATCH-FEATURE-OPENSUSE harden_fail2ban.service.patch jsegitz@suse.com -- Added hardening to systemd service(s) bsc#1181400
 Patch301:       harden_fail2ban.service.patch
-# PATCH-FIX-UPSTREAM fail2ban-0.11.2-upstream-patch-for-CVE-2021-32749.patch jweberhofer@weberhofer.at -- fixes CVE-2021-32749
-Patch400:       fail2ban-0.11.2-upstream-patch-for-CVE-2021-32749.patch
-# PATCH-FIX-UPSTREAM fail2ban-0.11.2-upstream-patch-python-3.9.patch jweberhofer@weberhofer.at -- allow running under python 3.9+
-Patch401:       fail2ban-0.11.2-upstream-patch-python-3.9.patch
 
 BuildRequires:  fdupes
 BuildRequires:  logrotate
@@ -142,8 +137,6 @@ sed -i -e 's/^before = paths-.*/before = paths-opensuse.conf/' config/jail.conf
 %patch300 -p1
 %endif
 %patch301 -p1
-%patch400 -p1
-%patch401 -p1
 
 rm 	config/paths-arch.conf \
 	config/paths-debian.conf \
