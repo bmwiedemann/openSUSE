@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-th-lift-instances
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name th-lift-instances
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.1.19
+Version:        0.1.20
 Release:        0
 Summary:        Lift instances for template-haskell for common data types
 License:        BSD-3-Clause

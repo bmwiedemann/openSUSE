@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Aug 23 09:45:53 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update th-lift-instances to version 0.1.20.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
+Tue Aug  9 16:30:14 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update th-lift-instances to version 0.1.19 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon Dec 13 17:35:29 UTC 2021 - Peter Simons <psimons@suse.com>
 
 - Update th-lift-instances to version 0.1.19.
