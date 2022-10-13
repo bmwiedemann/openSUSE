@@ -1,4 +1,106 @@
 -------------------------------------------------------------------
+Mon Oct  3 17:25:08 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update git-annex to version 10.20221003.
+  git-annex (10.20221003) upstream; urgency=medium
+
+    * Avoid displaying warning about git-annex restage needing to be run
+      in situations where it does not.
+    * Fix the annex.adviceNoSshCaching config, which has never worked.
+      Thanks, Reiko Asakura
+
+   -- Joey Hess <id@joeyh.name>  Mon, 03 Oct 2022 12:38:48 -0400
+
+  git-annex (10.20220927) upstream; urgency=medium
+
+    * Fix a bug in the last release that caused v8 repositories to upgrade
+      immediately to v10, rather than taking the scheduled 1 year to do so.
+    * annex.diskreserve default increased from 1 mb to 100 mb.
+    * Include the assistant and webapp when building with cabal 3.4.1.0.
+    * Merged the webapp build flag into the assistant build flag.
+    * Optimise linker in linux standalone tarballs.
+    * Fix crash importing from a directory special remote that contains
+      a broken symlink.
+    * When accessing a git remote over http needs a git credential
+      prompt for a password, cache it for the lifetime of the git-annex
+      process, rather than repeatedly prompting.
+    * Use curl for downloads from git remotes when annex.url-options is set.
+    * Fix a reversion that made dead keys not be skipped when operating on
+      all keys via --all or in a bare repo.
+      (Introduced in version 8.20200720)
+    * vicfg: Include mincopies configuration.
+    * Improve handling of directory special remotes with importtree=yes whose
+      ignoreinode setting has been changed. When getting a file from such a
+      remote, accept the content that would have been accepted with the
+      previous ignoreinode setting.
+    * directory, adb: Fixed a bug with importtree=yes and multiple files
+      in the special remote have the same content, that caused it to
+      refuse to get a file from the special remote, incorrectly complaining
+      that it had changed, due to only accepting the inode+mtime of one file
+      (that was since modified or deleted) and not accepting the inode+mtime
+      of other duplicate files.
+    * Fix a reversion that prevented git-annex from working in a
+      repository when --git-dir or GIT_DIR is specified to relocate the git
+      directory to somewhere else.
+      (Introduced in version 10.20220525)
+    * Improved handling of --time-limit when combined with -J
+    * Fix updating git index file after getting an unlocked file
+      when annex.stalldetection is set.
+    * restage: New git-annex command, handles restaging unlocked files.
+    * test: Added --test-with-git-config option.
+    * Run annex.freezecontent-command and annex.thawcontent-command
+      when on a crippled filesystem.
+      Thanks, Reiko Asakura
+    * enable-tor: Fix breakage caused by git's fix for CVE-2022-24765.
+    * Let GIT_DIR and --git-dir override git's protection against operating
+      in a repository owned by another user.
+    * p2p: Pass wormhole the --appid option before the receive/send command,
+      as it does not accept that option after the command
+    * Support "inbackend" in preferred content expressions.
+
+   -- Joey Hess <id@joeyh.name>  Tue, 27 Sep 2022 13:31:18 -0400
+
+-------------------------------------------------------------------
+Mon Aug 22 16:08:54 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update git-annex to version 10.20220822.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/git-annex-10.20220822/src/CHANGELOG
+
+-------------------------------------------------------------------
+Mon Jul 25 18:08:17 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update git-annex to version 10.20220724.
+  git-annex (10.20220724) upstream; urgency=medium
+
+    * filter-process: Fix a bug involving handling of empty files,
+      that caused git to kill git-annex filter-process.
+    * add: Fix reversion when adding an annex link that has been moved to
+      another directory. (Introduced in version 10.20220624)
+    * Added annex.alwayscompact setting which can be unset to speed up
+      writes to the git-annex branch in some cases. See its documentation
+      for important notes on when it's appropariate to use.
+    * adb: Added configuration setting oldandroid=true to avoid using
+      find -printf, which was first supported in Android around 2019-2020.
+      This may need to be enabled for old android devices that used to work
+      without it being set, since version 10.20220222 started using
+      find -printf.
+    * --backend is no longer a global option, and is only accepted by
+      commands that actually need it.
+    * Improve handling of parallelization with -J when copying content
+      from/to a git remote that is a local path.
+    * S3: Avoid writing or checking the uuid file in the S3 bucket when
+      importtree=yes or exporttree=yes.
+    * Fix a reversion that prevented --batch commands (and the assistant)
+      from noticing data written to the journal by other commands.
+    * Fix building with the Assistant build flag disabled but the Webapp
+      build flag enabled.
+
+   -- Joey Hess <id@joeyh.name>  Mon, 25 Jul 2022 12:55:38 -0400
+
+-------------------------------------------------------------------
 Thu Jun 23 18:00:23 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update git-annex to version 10.20220624.
