@@ -455,4 +455,24 @@ Changed Jira reference to the Epic and not the Team task.</comment>
     <comment>Updated package for jsc#PED-581, jsc#PED-621, jsc#PED-629</comment>
     <requestid>1003633</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>619b7c734b26ff9cd769d0600cceaf74</srcmd5>
+    <version>4.1.1</version>
+    <time>1665669211</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to version 4.1.1 (jsc#PED-581, bsc#1202365).
+  v4.1.1
+   - [PATCH] Fix aes-xts multi-part operations
+     [PATCH] Fix make dist
+  v4.1.0
+   - [FEATURE] FIPS: make libica FIPS 140-3 compliant
+     [FEATURE] New API function ica_ecdsa_sign_ex()
+     [FEATURE] New icainfo output option -r
+   - [PATCH] Various bug fixes
+- Removed the following obsolete files:
+  baselibs.conf
+  icaioctl.h
+</comment>
+    <requestid>1010295</requestid>
+  </revision>
 </revisionlist>

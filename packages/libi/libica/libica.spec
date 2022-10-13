@@ -22,21 +22,18 @@
 %endif
 
 Name:           libica
-Version:        4.0.3
+Version:        4.1.1
 Release:        0
 Summary:        Library interface for the IBM Cryptographic Accelerator device driver
 License:        CPL-1.0
 Group:          Hardware/Other
 URL:            https://github.com/opencryptoki/libica
 Source:         https://github.com/opencryptoki/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# The icaioctl.h file came from https://sourceforge.net/p/opencryptoki/icadd/ci/master/tree/
-Source1:        icaioctl.h
-Source2:        README.SUSE
-Source3:        sysconfig.z90crypt
-Source4:        z90crypt
-Source5:        z90crypt.service
-Source6:        baselibs.conf
-Source7:        %{name}-rpmlintrc
+Source1:        README.SUSE
+Source2:        sysconfig.z90crypt
+Source3:        z90crypt
+Source4:        z90crypt.service
+Source5:        %{name}-rpmlintrc
 Patch01:        libica-FIPS-make-it-possible-to-specify-fipshmac-binary.patch
 Patch99:        libica-sles15sp5-FIPS-hmac-key.patch
 
@@ -116,9 +113,6 @@ the libica library.
 %autosetup -p 1
 
 %build
-mkdir -p include/linux/
-cp %{SOURCE1} include/linux/
-
 autoreconf --force --install
 %configure CPPFLAGS="-Iinclude -fPIC" CFLAGS="%{optflags} -fPIC" \
   --enable-fips
@@ -136,15 +130,15 @@ mkdir -p %{buildroot}%{_includedir}
 cp -p include/ica_api.h %{buildroot}%{_includedir}
 mkdir -p %{buildroot}%{_sbindir}
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcz90crypt
-install -D %{SOURCE3} %{buildroot}%{_fillupdir}/sysconfig.z90crypt
-install -D %{SOURCE4} %{buildroot}%{_prefix}/lib/systemd/scripts/z90crypt
-install -D -m 644 %{SOURCE5} %{buildroot}%{_prefix}/lib/systemd/system/z90crypt.service
+install -D %{SOURCE2} %{buildroot}%{_fillupdir}/sysconfig.z90crypt
+install -D %{SOURCE3} %{buildroot}%{_prefix}/lib/systemd/scripts/z90crypt
+install -D -m 644 %{SOURCE4} %{buildroot}%{_prefix}/lib/systemd/system/z90crypt.service
 # It is installed 444 and then the __os_install_post cannot update it once the debuginfo is stripped
 # We need it early because there is %{buildroot}/%{_libdir}/.*.so.%{major}.hmac symlink pointing at it
 # and the dangling symlink test would fail
 chmod 644 %{buildroot}/%{_libdir}/.*.so.%{version}.hmac
 
-cp -a %{SOURCE2} .
+cp -a %{SOURCE1} .
 rm -vf %{buildroot}%{_libdir}/libica*.la
 rm -f %{buildroot}%{_datadir}/doc/libica/*
 rmdir %{buildroot}%{_datadir}/doc/libica

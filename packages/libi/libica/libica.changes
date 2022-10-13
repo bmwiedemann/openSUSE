@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Oct 11 20:32:12 UTC 2022 - Mark Post <mpost@suse.com>
+
+- Upgrade to version 4.1.1 (jsc#PED-581, bsc#1202365).
+  v4.1.1
+   - [PATCH] Fix aes-xts multi-part operations
+     [PATCH] Fix make dist
+  v4.1.0
+   - [FEATURE] FIPS: make libica FIPS 140-3 compliant
+     [FEATURE] New API function ica_ecdsa_sign_ex()
+     [FEATURE] New icainfo output option -r
+   - [PATCH] Various bug fixes
+- Removed the following obsolete files:
+  baselibs.conf
+  icaioctl.h
+
+-------------------------------------------------------------------
 Mon Sep 12 19:09:59 UTC 2022 - Mark Post <mpost@suse.com>
 
 - Upgraded to version 4.0.3 (jsc#PED-581, jsc#PED-621, jsc#PED-629)
