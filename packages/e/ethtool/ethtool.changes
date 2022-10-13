@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 10 16:59:14 UTC 2022 - Michal Kubeček <mkubecek@suse.cz>
+
+- update to upstream release 6.0
+  * Fix: advertisement modes autoselection by lanes (-s)
+
+-------------------------------------------------------------------
 Sun Aug 21 23:31:47 UTC 2022 - Michal Kubeček <mkubecek@suse.cz>
 
 - update to upstream release 5.19
