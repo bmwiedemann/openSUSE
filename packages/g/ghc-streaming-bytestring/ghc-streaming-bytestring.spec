@@ -19,7 +19,7 @@
 %global pkg_name streaming-bytestring
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.2.2
+Version:        0.2.4
 Release:        0
 Summary:        Fast, effectful byte streams
 License:        BSD-3-Clause

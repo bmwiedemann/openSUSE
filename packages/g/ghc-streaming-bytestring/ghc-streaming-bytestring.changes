@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Aug 26 05:30:23 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update streaming-bytestring to version 0.2.4.
+  ## 0.2.4 (2022-08-26)
+
+  #### Changed
+
+  - Changed `for`'s callback to return `ByteStream m x`, to clarify that it is not
+    used.
+
+-------------------------------------------------------------------
+Thu Aug 18 10:11:02 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update streaming-bytestring to version 0.2.3.
+  ## 0.2.3 (2022-08-18)
+
+  #### Added
+
+  - Add `for :: Monad m => ByteStream m r -> (P.ByteString -> ByteStream m r) -> ByteStream m r`
+
+-------------------------------------------------------------------
 Wed May 18 17:51:29 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update streaming-bytestring to version 0.2.2.
