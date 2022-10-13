@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-xmonad-contrib
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,9 +19,9 @@
 %global pkg_name xmonad-contrib
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.17.0
+Version:        0.17.1
 Release:        0
-Summary:        Community-maintained extensions extensions for xmonad
+Summary:        Community-maintained extensions for xmonad
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
@@ -30,6 +30,7 @@ BuildRequires:  ghc-X11-devel
 BuildRequires:  ghc-X11-xft-devel
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-containers-devel
+BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-mtl-devel
