@@ -19,7 +19,7 @@
 %global pkg_name hledger-lib
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.26.1
+Version:        1.27.1
 Release:        0
 Summary:        A reusable library providing the core functionality of hledger
 License:        GPL-3.0-or-later
@@ -33,6 +33,7 @@ BuildRequires:  ghc-aeson-pretty-devel
 BuildRequires:  ghc-ansi-terminal-devel
 BuildRequires:  ghc-array-devel
 BuildRequires:  ghc-blaze-markup-devel
+BuildRequires:  ghc-breakpoint-devel
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-call-stack-devel
 BuildRequires:  ghc-cassava-devel
@@ -40,6 +41,7 @@ BuildRequires:  ghc-cassava-megaparsec-devel
 BuildRequires:  ghc-cmdargs-devel
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-data-default-devel
+BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-doclayout-devel
 BuildRequires:  ghc-extra-devel
@@ -67,6 +69,9 @@ BuildRequires:  ghc-uglymemo-devel
 BuildRequires:  ghc-unordered-containers-devel
 BuildRequires:  ghc-utf8-string-devel
 ExcludeArch:    %{ix86}
+%if %{with tests}
+BuildRequires:  ghc-doctest-devel
+%endif
 
 %description
 A reusable library containing hledger's core functionality. This is used by
