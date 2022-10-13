@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 17 05:12:32 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update authenticate-oauth to version 1.7 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon Jun 21 05:22:45 UTC 2021 - psimons@suse.com
 
 - Update authenticate-oauth to version 1.7.
