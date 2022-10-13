@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-docker-api
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,32 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+#
+# This file was generated with a gem2rpm.yml and not just plain gem2rpm.
+# All sections marked as MANUAL, license headers, summaries and descriptions
+# can be maintained in that file. Please consult this file before editing any
+# of those fields
+#
+
 Name:           rubygem-docker-api
-Version:        1.13.2
+Version:        2.2.0
 Release:        0
 %define mod_name docker-api
 %define mod_full_name %{mod_name}-%{version}
-
+# MANUAL
+Requires:       %{rubygem excon} >= 0.46.0
+# /MANUAL
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  ruby-macros >= 3
-Url:            https://github.com/swipely/docker-api
-Source:         http://rubygems.org/gems/%{mod_full_name}.gem
+BuildRequires:  %{rubygem gem2rpm}
+BuildRequires:  %{ruby}
+BuildRequires:  ruby-macros >= 5
+URL:            https://github.com/swipely/docker-api
+Source:         https://rubygems.org/gems/%{mod_full_name}.gem
+Source1:        gem2rpm.yml
 Summary:        A simple REST client for the Docker Remote API
 License:        MIT
 Group:          Development/Languages/Ruby
@@ -33,49 +45,15 @@ Group:          Development/Languages/Ruby
 %description
 A simple REST client for the Docker Remote API.
 
-%package doc
-Summary:        RDoc documentation for %{mod_name}
-Group:          Development/Languages/Ruby
-Requires:       %{name} = %{version}
-
-%description doc
-Documentation generated at gem installation time.
-Usually in RDoc and RI formats.
-
-%package testsuite
-Summary:        Test suite for %{mod_name}
-Group:          Development/Languages/Ruby
-Requires:       %{name} = %{version}
-
-%description testsuite
-Test::Unit or RSpec files, useful for developers.
-
 %prep
-#gem_unpack
-#if you need patches, apply them here and replace the # with a % sign in the surrounding lines
-#gem_build
 
 %build
 
 %install
-%gem_install -f
-mkdir -p %{buildroot}%{_docdir}/%{name}
-ln -s %{gem_base}/gems/%{mod_full_name}/README.md %buildroot/%{_docdir}/%{name}/README.md
+%gem_install \
+  --doc-files="LICENSE README.md" \
+  -f
 
-%files
-%defattr(-,root,root,-)
-%{_docdir}/%{name}
-%{gem_base}/cache/%{mod_full_name}.gem
-%{gem_base}/gems/%{mod_full_name}/
-%exclude %{gem_base}/gems/%{mod_full_name}/spec
-%{gem_base}/specifications/%{mod_full_name}.gemspec
-
-%files doc
-%defattr(-,root,root,-)
-%doc %{gem_base}/doc
-
-%files testsuite
-%defattr(-,root,root,-)
-%{gem_base}/gems/%{mod_full_name}/spec
+%gem_packages
 
 %changelog
