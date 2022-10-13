@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Sep 28 08:42:19 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update unicode-data to version 0.3.1.
+  ## 0.3.1 (September 2022)
+
+  - Added full case conversions to `Unicode.Char.Case`:
+
+    - Case folding: `caseFoldMapping` and `toCaseFoldString`.
+    - Lower case: `lowerCaseMapping` and `toLowerString`.
+    - Upper case: `upperCaseMapping` and `toUpperString`.
+    - Title case: `titleCaseMapping` and `toTitleString`.
+    - Stream mechanism: `Unfold` and `Step`.
+
+  - Added `isNumeric`, `numericValue` and `integerValue`
+    to `Unicode.Char.Numeric`.
+  - Added the module `Unicode.Char.General.Blocks`.
+  - Add compatibility module:
+
+    - `Unicode.Char.Numeric.Compat`
+
+  ### Deprecations
+
+  - `Unicode.Char.Numeric.isNumber`: it will be replaced by `isNumeric`
+    in a _future_ version of this package.
+    Use the function in `Unicode.Char.Numeric.Compat` instead.
+
+-------------------------------------------------------------------
+Mon Sep 12 18:36:24 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update unicode-data to version 0.3.0 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Sun Jan  9 09:48:46 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update unicode-data to version 0.3.0 revision 1.
