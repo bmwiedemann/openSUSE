@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Aug 17 18:04:17 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update io-streams to version 1.5.2.2.
+  Upstream has not updated the file "changelog.md" since the last
+  release.
+
+-------------------------------------------------------------------
+Mon Aug 15 09:24:37 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update io-streams to version 1.5.2.1 revision 3.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon Mar  7 19:56:15 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update io-streams to version 1.5.2.1 revision 2.
