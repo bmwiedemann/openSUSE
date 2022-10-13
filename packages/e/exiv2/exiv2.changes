@@ -7,7 +7,10 @@ Wed Sep 28 15:24:59 UTC 2022 - Dirk Müller <dmueller@suse.com>
 Sat Nov 13 12:08:13 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.27.5 (bsc#1189332, CVE-2021-37620,
-                    bsc#1189333, CVE-2021-37621):
+                    bsc#1189333, CVE-2021-37621,
+                    bsc#1189334, CVE-2021-37622,
+                    bsc#1189338, CVE-2021-34334, 
+                    bsc#1189335, CVE-2021-37623):
   * BMFF bug fixes including CR3 previews
   * Security fixes
   * libFuzzer target

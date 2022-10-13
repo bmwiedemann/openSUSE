@@ -665,4 +665,15 @@
   * Fixes CVE-2017-1000126 (Stack out of bounds read in webp parser) (bsc#1068873)</comment>
     <requestid>1007902</requestid>
   </revision>
+  <revision rev="65" vrev="5">
+    <srcmd5>2cab49e2d6190f5d220e1268458146c6</srcmd5>
+    <version>0.27.5</version>
+    <time>1665669208</time>
+    <user>dimstar_suse</user>
+    <comment>                    bsc#1189333, CVE-2021-37621,
+                    bsc#1189334, CVE-2021-37622,
+                    bsc#1189338, CVE-2021-34334, 
+                    bsc#1189335, CVE-2021-37623):</comment>
+    <requestid>1010451</requestid>
+  </revision>
 </revisionlist>
