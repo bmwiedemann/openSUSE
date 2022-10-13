@@ -1,5 +1,0 @@
-<package name="ovn" project="openSUSE:Factory">
-  <title>Open Virtual Network</title>
-  <description>OVN (Open Virtual Network) is a series of daemons for the Open vSwitch that translate virtual network configurations into OpenFlow.</description>
-  <devel project="network" package="ovn"/>
-</package>
