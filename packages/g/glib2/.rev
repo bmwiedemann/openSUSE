@@ -2053,4 +2053,15 @@ WANTED for 13.1 (forwarded request 202421 from RBrownCCB)</comment>
   + Fix a pidfd leak that was introduced in the previous release.</comment>
     <requestid>1004760</requestid>
   </revision>
+  <revision rev="257" vrev="2">
+    <srcmd5>0e0700c37aeb297d12425d095941148e</srcmd5>
+    <version>2.74.0</version>
+    <time>1665668373</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream patch to solve GIMP crashes:
+  + f0dd96c28751f15d0703b384bfc7c314af01caa8.diff:
+    glgo#GNOME/GLib!2770 Empty values are not valid GParamSpec.
+</comment>
+    <requestid>1009340</requestid>
+  </revision>
 </revisionlist>

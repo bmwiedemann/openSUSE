@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct  7 01:25:03 UTC 2022 - Haochuan Chen <yjcoshc@mail.nankai.edu.cn>
+
+- Add upstream patch to solve GIMP crashes:
+  + f0dd96c28751f15d0703b384bfc7c314af01caa8.diff:
+    glgo#GNOME/GLib!2770 Empty values are not valid GParamSpec.
+
+-------------------------------------------------------------------
 Sun Sep 18 06:56:01 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.74.0:
