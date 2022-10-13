@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Mon Sep 12 22:00:15 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update persistent to version 2.14.3.0.
+  ## 2.14.3.0
+
+  * [#1425](https://github.com/yesodweb/persistent/pull/1425)
+      * Introduce an alias `setPsUseSnakeCaseForeignKeys` for
+        `setPsUseSnakeCaseForiegnKeys` due to a typo in the latter;
+        deprecate `setPsUseSnakeCaseForiegnKeys`
+
+-------------------------------------------------------------------
+Wed Aug 24 15:43:34 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update persistent to version 2.14.2.0.
+  ## 2.14.2.0
+
+  * [#1421](https://github.com/yesodweb/persistent/pull/1421)
+      * Add `mpsCamelCaseCompositeKeySelector` field to `MkPersistSettings`,
+        which define the style of the entity's composite key.
+
+-------------------------------------------------------------------
+Thu Aug 11 19:52:45 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update persistent to version 2.14.1.0.
+  ## 2.14.1.0
+
+  * [#1418](https://github.com/yesodweb/persistent/pull/1418/)
+      * Re-export `SafeToInsert` from `Database.Persist.Class`, which should
+        re-export it through `Database.Persist`, `Database.Persist.Sql`, etc.
+  * [#1409](https://github.com/yesodweb/persistent/pull/1409)
+      * Fix incorrect reference to rawSql in documentation.
+
+-------------------------------------------------------------------
+Wed Jul 27 07:49:12 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update persistent to version 2.14.0.3 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Wed Jul 20 22:16:13 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update persistent to version 2.14.0.3.
+  ## 2.14.0.3
+
+  * [#1411](https://github.com/yesodweb/persistent/pull/1411)
+      * Fix the docs for `FieldNameDB`, and update `FieldDef.fieldComments` docs
+        since the quasiquoter *supports* field comments now.
+
+-------------------------------------------------------------------
 Fri Jun 10 15:19:57 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update persistent to version 2.14.0.2.
