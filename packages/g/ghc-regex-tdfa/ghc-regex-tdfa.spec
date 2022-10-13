@@ -19,7 +19,7 @@
 %global pkg_name regex-tdfa
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.3.1.3
+Version:        1.3.2
 Release:        0
 Summary:        Pure Haskell Tagged DFA Backend for "Text.Regex" (regex-base)
 License:        BSD-3-Clause
@@ -37,6 +37,7 @@ BuildRequires:  ghc-text-devel
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-directory-devel
+BuildRequires:  ghc-doctest-parallel-devel
 BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-utf8-string-devel
 %endif
