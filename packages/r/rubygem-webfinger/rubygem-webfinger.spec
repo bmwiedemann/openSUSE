@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-webfinger
-Version:        1.2.0
+Version:        2.1.2
 Release:        0
 %define mod_name webfinger
 %define mod_full_name %{mod_name}-%{version}
@@ -48,7 +48,7 @@ Ruby WebFinger client library.
 
 %install
 %gem_install \
-  --doc-files="LICENSE.txt README.rdoc" \
+  --doc-files="CHANGELOG.md LICENSE.txt README.rdoc" \
   -f
 
 %gem_packages
