@@ -4493,4 +4493,19 @@ I cannot test locally unfortunately.
     https://www.thunderbird.net/en-US/thunderbird/102.3.2/releasenotes</comment>
     <requestid>1009070</requestid>
   </revision>
+  <revision rev="293" vrev="1">
+    <srcmd5>ebae8bfcd5973175a8487ee84bf6ca77</srcmd5>
+    <version>102.3.3</version>
+    <time>1665668403</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird 102.3.3
+  * Option added to show containing address book for a contact when
+    using All Address Books in vertical mode
+  * Thunderbird will try to use POP NTLM authentication even if
+    not advertised by server
+  * Task List and Today Pane sidebars will no longer load when not visible
+  * bugfixes as documented here
+    https://www.thunderbird.net/en-US/thunderbird/102.3.3/releasenotes</comment>
+    <requestid>1010277</requestid>
+  </revision>
 </revisionlist>

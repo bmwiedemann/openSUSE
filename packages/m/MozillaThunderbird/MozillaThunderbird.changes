@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 11 20:40:12 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 102.3.3
+  * Option added to show containing address book for a contact when
+    using All Address Books in vertical mode
+  * Thunderbird will try to use POP NTLM authentication even if
+    not advertised by server
+  * Task List and Today Pane sidebars will no longer load when not visible
+  * bugfixes as documented here
+    https://www.thunderbird.net/en-US/thunderbird/102.3.3/releasenotes
+
+-------------------------------------------------------------------
 Thu Oct  6 07:28:32 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 102.3.2

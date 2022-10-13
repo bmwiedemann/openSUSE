@@ -29,8 +29,8 @@
 # major 69
 # mainver %major.99
 %define major          102
-%define mainver        %major.3.2
-%define orig_version   102.3.2
+%define mainver        %major.3.3
+%define orig_version   102.3.3
 %define orig_suffix    %{nil}
 %define update_channel release
 %define source_prefix  thunderbird-%{orig_version}
