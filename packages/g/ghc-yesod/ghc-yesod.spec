@@ -18,7 +18,7 @@
 
 %global pkg_name yesod
 Name:           ghc-%{pkg_name}
-Version:        1.6.2
+Version:        1.6.2.1
 Release:        0
 Summary:        Creation of type-safe, RESTful web applications
 License:        MIT

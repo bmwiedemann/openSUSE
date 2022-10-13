@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep  8 11:36:22 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update yesod to version 1.6.2.1.
+  ## 1.6.2.1
+
+  * Support `template-haskell-2.19.0.0` [#1769](https://github.com/yesodweb/yesod/pull/1769)
+
+-------------------------------------------------------------------
 Fri Feb 11 04:25:21 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update yesod to version 1.6.2.
