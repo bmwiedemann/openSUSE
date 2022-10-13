@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Sep 17 02:06:39 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update vty to version 5.37.
+  5.37
+  ----
+
+  * The Xterm backend is now used when `TERM` matches `rxvt` or `tmux`.
+  * PictureToSpans now uses `error`, not `fail`, to avoid dependence on
+    soon-to-be-removed `MonadFail` instance for `ST` (#248)
+
+-------------------------------------------------------------------
 Mon Jul  4 16:02:42 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update vty to version 5.36.

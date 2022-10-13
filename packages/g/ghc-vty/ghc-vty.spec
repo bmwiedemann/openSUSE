@@ -19,7 +19,7 @@
 %global pkg_name vty
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        5.36
+Version:        5.37
 Release:        0
 Summary:        A simple terminal UI library
 License:        BSD-3-Clause
