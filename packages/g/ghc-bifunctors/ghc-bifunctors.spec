@@ -19,7 +19,7 @@
 %global pkg_name bifunctors
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        5.5.12
+Version:        5.5.13
 Release:        0
 Summary:        Collection Haskell 98 bifunctors, bifoldables and bitraversables
 License:        BSD-2-Clause
