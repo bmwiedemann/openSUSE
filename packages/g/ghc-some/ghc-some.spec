@@ -18,7 +18,7 @@
 
 %global pkg_name some
 Name:           ghc-%{pkg_name}
-Version:        1.0.4
+Version:        1.0.4.1
 Release:        0
 Summary:        Existential type: Some
 License:        BSD-3-Clause

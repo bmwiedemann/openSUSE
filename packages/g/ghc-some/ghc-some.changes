@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct  5 08:34:30 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update some to version 1.0.4.1.
+  # 1.0.4.1
+
+  - Drop support for GHC before 8.6
+
+-------------------------------------------------------------------
+Wed Aug 10 17:14:47 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update some to version 1.0.4 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Fri Jun 17 13:03:16 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update some to version 1.0.4.
