@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 11 19:28:31 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 22.2.1
+  * lots of stuff here: llvmpipe, lavapipe, freedreno, aco, mesa,
+    turnip, virgl, r600, zink, radv, core gallium, and nir. All in
+    all, lots of good fixes all over the tree.
+
+-------------------------------------------------------------------
 Mon Oct  3 10:29:51 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add build_orig conditional switch for video codecs define.

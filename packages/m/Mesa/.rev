@@ -5016,4 +5016,15 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
     <comment></comment>
     <requestid>1007731</requestid>
   </revision>
+  <revision rev="454" vrev="326">
+    <srcmd5>bf20faf53aec8012185b79cd58977c96</srcmd5>
+    <version>unknown</version>
+    <time>1665668392</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 22.2.1
+  * lots of stuff here: llvmpipe, lavapipe, freedreno, aco, mesa,
+    turnip, virgl, r600, zink, radv, core gallium, and nir. All in
+    all, lots of good fixes all over the tree.</comment>
+    <requestid>1009940</requestid>
+  </revision>
 </revisionlist>
