@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Sep 26 21:01:18 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update cmark-gfm to version 0.2.5.
+  cmark-gfm 0.2.5 (27 Sep 2022)
+
+    * Add support for enabling footnotes (#26, Anton Sorokin).
+
+-------------------------------------------------------------------
+Wed Sep 21 23:13:09 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update cmark-gfm to version 0.2.4.
+  cmark-gfm 0.2.4 (22 Sep 2022)
+
+    * Pull in upstream changes (includes security fix).
+
+-------------------------------------------------------------------
 Wed Mar  9 03:24:24 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update cmark-gfm to version 0.2.3.
