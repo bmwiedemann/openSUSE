@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug 11 16:02:17 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update split to version 0.2.3.5.
+  * 0.2.3.5 (11 August 2022)
+
+    - Change base upper bound to < 5.
+    - Test with GHC 9.2 and 9.4.
+
+  * 0.2.3.4-r1 (22 February 2021)
+
+    - Allow base-4.15 for GHC-9.0
+
+-------------------------------------------------------------------
 Tue Feb 15 08:02:34 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update copyright header in the spec file.
