@@ -540,4 +540,20 @@
   * Various cleanups (#1729)</comment>
     <requestid>1003287</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>94bfeae57b2319c3881a274b3553d027</srcmd5>
+    <version>0.13.1</version>
+    <time>1665668695</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.13.1:
+  * Fix configure parameter detection (#1752, #1753)
+  * Improve plugins management (#1755)
+  * Fix build with plugins enabled for Python &gt;= 3.11 (#1756)
+  * Add gruvbox_transparent theme optimized for enabled
+    transparency (#1763)
+  * Fix detection of first start used for welcome screen (#1767)
+  * Improve opening of URLs by spawning external program
+    asynchronously (#1759, #1760)</comment>
+    <requestid>1010279</requestid>
+  </revision>
 </revisionlist>

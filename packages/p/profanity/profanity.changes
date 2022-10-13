@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct 12 15:03:25 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.13.1:
+  * Fix configure parameter detection (#1752, #1753)
+  * Improve plugins management (#1755)
+  * Fix build with plugins enabled for Python >= 3.11 (#1756)
+  * Add gruvbox_transparent theme optimized for enabled
+    transparency (#1763)
+  * Fix detection of first start used for welcome screen (#1767)
+  * Improve opening of URLs by spawning external program
+    asynchronously (#1759, #1760)
+
+-------------------------------------------------------------------
 Tue Sep 13 10:06:00 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.13.0:
