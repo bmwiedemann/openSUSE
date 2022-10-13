@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Aug 21 12:17:02 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update optics-extra to version 0.4.2.1 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Fri May 20 11:51:08 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update optics-extra to version 0.4.2.1.
