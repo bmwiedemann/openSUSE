@@ -108,7 +108,7 @@ export LDFLAGS="-Wl,-z,relro,-z,now -pie"
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
-%find_lang %{name}
+%find_lang %{name} --all-name --with-man
 install -Dpm 0755 %{SOURCE4} %{buildroot}%{_bindir}/xznew
 install -Dpm 0644 %{SOURCE5} %{buildroot}%{_mandir}/man1/xznew.1
 rm -vf %{buildroot}%{_docdir}/%{name}/{COPYING,COPYING.GPLv2}
@@ -116,10 +116,8 @@ rm -vf %{buildroot}%{_docdir}/%{name}/{COPYING,COPYING.GPLv2}
 %post -n liblzma5 -p /sbin/ldconfig
 %postun -n liblzma5 -p /sbin/ldconfig
 
-%if 0%{?lang_package:1}
 %files lang -f %{name}.lang
-%{_mandir}/de/man1/*.1%{ext_man}
-%endif
+%dir %{_mandir}/fr_FR
 
 %files
 %license COPYING COPYING.GPLv2
@@ -172,27 +170,6 @@ rm -vf %{buildroot}%{_docdir}/%{name}/{COPYING,COPYING.GPLv2}
 %{_mandir}/man1/xzless.1%{ext_man}
 %{_mandir}/man1/xzmore.1%{ext_man}
 %{_mandir}/man1/xznew.1%{ext_man}
-%dir %{_mandir}/fr_FR
-%dir %{_mandir}/fr_FR/man1
-%{_mandir}/fr_FR/man1/lzcat.1%{ext_man}
-%{_mandir}/fr_FR/man1/lzcmp.1%{ext_man}
-%{_mandir}/fr_FR/man1/lzdiff.1%{ext_man}
-%{_mandir}/fr_FR/man1/lzless.1%{ext_man}
-%{_mandir}/fr_FR/man1/lzma.1%{ext_man}
-%{_mandir}/fr_FR/man1/lzmadec.1%{ext_man}
-%{_mandir}/fr_FR/man1/lzmore.1%{ext_man}
-%{_mandir}/fr_FR/man1/unlzma.1%{ext_man}
-%{_mandir}/fr_FR/man1/unxz.1%{ext_man}
-%{_mandir}/fr_FR/man1/xz.1%{ext_man}
-%{_mandir}/fr_FR/man1/xzcat.1%{ext_man}
-%{_mandir}/fr_FR/man1/xzcmp.1%{ext_man}
-%{_mandir}/fr_FR/man1/xzdec.1%{ext_man}
-%{_mandir}/fr_FR/man1/xzdiff.1%{ext_man}
-%{_mandir}/fr_FR/man1/xzless.1%{ext_man}
-%{_mandir}/fr_FR/man1/xzmore.1%{ext_man}
-%if 0%{!?lang_package:1}
-%{_datadir}/locale/*/LC_MESSAGES/xz.mo
-%endif
 
 %files -n liblzma5
 %{_libdir}/liblzma.so.5*
