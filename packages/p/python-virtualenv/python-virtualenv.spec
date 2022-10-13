@@ -28,7 +28,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-virtualenv%{psuffix}
-Version:        20.15.1
+Version:        20.16.5
 Release:        0
 Summary:        Virtual Python Environment builder
 License:        MIT
@@ -38,9 +38,11 @@ BuildRequires:  %{python_module distlib >= 0.3.1}
 BuildRequires:  %{python_module filelock >= 3.0.0}
 BuildRequires:  %{python_module importlib-metadata >= 0.12 if %python-base < 3.8}
 BuildRequires:  %{python_module importlib_resources >= 1.0 if %python-base < 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 41.0.0}
 BuildRequires:  %{python_module setuptools_scm >= 2}
 BuildRequires:  %{python_module six >= 1.9.0}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-backports.entry_points_selectable >= 1.0.4
@@ -66,7 +68,6 @@ Requires:       python-pathlib2 >= 2.3.3
 BuildRequires:  %{python_module backports.entry_points_selectable >= 1.0.4}
 BuildRequires:  %{python_module flaky >= 3}
 BuildRequires:  %{python_module packaging >= 20.0}
-BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module platformdirs >= 2}
 BuildRequires:  %{python_module pytest >= 4.0.0}
 BuildRequires:  %{python_module pytest-env >= 0.6.2}
@@ -102,11 +103,11 @@ libraries either).
 rm -r tests/unit/activation
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if ! %{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/virtualenv
 %endif
@@ -118,6 +119,8 @@ export PIP_CERT="%{_sysconfdir}/ssl/ca-bundle.pem"
 export PYTHONPATH=$PWD/src
 # online tests downloads from pypi
 donttest="test_seed_link_via_app_data"
+# gh#pypa/virtualenv!2431
+donttest+=" or test_py_pyc_missing"
 %pytest -k "not ($donttest)"
 %endif
 

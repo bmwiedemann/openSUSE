@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Oct 10 09:35:14 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to vesion 20.16.5:
+  - Do not turn echo off for subsequent commands in batch
+    activators (activate.bat and deactivate.bat)
+  - Bump embed setuptools to 65.3
+  - Upgrade embedded pip to 22.2.2 from 22.2.1 and setuptools to
+    63.4.1 from 63.2.0
+  - Bump embeded pip from 22.2 to 22.2.1
+  - Update Nushell activation scripts to version 0.67
+  - Drop support for running under Python 2 (still can generate
+    Python 2 environments)
+  - Upgrade embedded pip to 22.2 from 22.1.2 and setuptools to
+    63.2.0 from 62.6.0
+
+-------------------------------------------------------------------
 Sat Jul  9 14:09:31 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 20.15.1:
