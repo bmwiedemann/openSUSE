@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Sep 18 19:41:58 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hledger-ui to version 1.27.1.
+  Upstream has not updated the file "CHANGES.md" since the last
+  release.
+
+-------------------------------------------------------------------
+Fri Sep  2 01:32:54 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hledger-ui to version 1.27.
+  Upstream's change log file format is strange (too much unmodified
+  text at at the top). The automatic updater cannot extract the
+  relevant additions. You can find the file at:
+  http://hackage.haskell.org/package/hledger-ui-1.27/src/CHANGES.md
+
+-------------------------------------------------------------------
+Sun Aug 14 16:16:36 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hledger-ui to version 1.26.1 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon Jul 11 09:36:25 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update hledger-ui to version 1.26.1.
