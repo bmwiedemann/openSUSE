@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug  9 18:33:38 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update cereal to version 0.5.8.3.
+  0.5.8.3
+  =======
+  * GHC 9.4.1 compatibility
+
+-------------------------------------------------------------------
 Sat May 28 17:37:51 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update cereal to version 0.5.8.2 revision 1.
