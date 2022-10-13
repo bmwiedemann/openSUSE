@@ -30,4 +30,14 @@
 - Skip test-fs-utimes-y2K38.js on armv6hl as well as armv7hl.</comment>
     <requestid>1006992</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>edda4be11bd1c5538e300ea4a8b44764</srcmd5>
+    <version>18.10.0</version>
+    <time>1665668395</time>
+    <user>dimstar_suse</user>
+    <comment>- qemu_timeouts_arches.patch: set timeouts on riscv5 to 7x normal
+
+- skip more tests for riscv64/qemu emulation</comment>
+    <requestid>1010136</requestid>
+  </revision>
 </revisionlist>
