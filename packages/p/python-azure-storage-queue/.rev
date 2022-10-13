@@ -147,4 +147,16 @@
     CHANGELOG.md file provided with this package (forwarded request 987817 from glaubitz)</comment>
     <requestid>987933</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>cfe51914678eab756d7e6cc8990bc96b</srcmd5>
+    <version>12.5.0</version>
+    <time>1665668687</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 12.5.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1010252 from glaubitz)</comment>
+    <requestid>1010271</requestid>
+  </revision>
 </revisionlist>
