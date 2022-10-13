@@ -19,14 +19,15 @@
 %global pkg_name th-compat
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.1.3
+Version:        0.1.4
 Release:        0
 Summary:        Backward- (and forward-)compatible Quote and Code types
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
+BuildRequires:  ghc-directory-devel
+BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-template-haskell-devel
 ExcludeArch:    %{ix86}
@@ -39,10 +40,11 @@ BuildRequires:  ghc-mtl-devel
 %description
 This package defines a "Language.Haskell.TH.Syntax.Compat" module, which
 backports the 'Quote' and 'Code' types to work across a wide range of
-'template-haskell' versions. On recent versions of 'template-haskell' (2.17.0.0
-or later), this module simply reexports 'Quote' and 'Code' from
-"Language.Haskell.TH.Syntax". Refer to the Haddocks for
-"Language.Haskell.TH.Syntax.Compat" for examples of how to use this module.
+'template-haskell' versions. The 'makeRelativeToProject' utility is also
+backported. On recent versions of 'template-haskell' (2.17.0.0 or later), this
+module simply reexports definitions from "Language.Haskell.TH.Syntax".
+Refer to the Haddocks for "Language.Haskell.TH.Syntax.Compat" for examples of
+how to use this module.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
@@ -56,7 +58,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
