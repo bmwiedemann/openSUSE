@@ -174,4 +174,12 @@ See: http://lists.opensuse.org/archive/opensuse-factory/2014-03/msg00332.html</c
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>985834</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>ac35bd749554e5d5039d8d76a1700e08</srcmd5>
+    <version>0.4.2.2</version>
+    <time>1665668663</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>1009723</requestid>
+  </revision>
 </revisionlist>

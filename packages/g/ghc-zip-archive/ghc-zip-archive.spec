@@ -19,7 +19,7 @@
 %global pkg_name zip-archive
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.4.2.1
+Version:        0.4.2.2
 Release:        0
 Summary:        Library for creating and modifying zip archives
 License:        BSD-3-Clause

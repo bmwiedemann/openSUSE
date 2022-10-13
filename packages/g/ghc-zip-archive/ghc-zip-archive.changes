@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 26 00:39:14 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update zip-archive to version 0.4.2.2.
+  zip-archive 0.4.2.2
+
+    * Use `command -v` before trying `which` in the test suite (#62).
+      `command` is a bash builtin, but for busybox we'll need `which`.
+
+-------------------------------------------------------------------
 Thu Mar  3 00:30:15 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update zip-archive to version 0.4.2.1.
