@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 24 08:33:58 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update monad-logger to version 0.3.37.
+  ## 0.3.37
+
+  * Add `Semigroup`/`Monoid` instances to `LoggingT`, `NoLoggingT`, and `WriterLoggingT`
+
+-------------------------------------------------------------------
 Wed May 18 13:12:03 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update monad-logger to version 0.3.36 revision 2.
