@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Sep 12 23:32:58 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update th-abstraction to version 0.4.5.0.
+  ## 0.4.5.0 -- 2022.09.12
+  * Fix a bug in which data family declarations with interesting return kinds
+    (e.g., `data family F :: Type -> Type`) would be reified incorrectly when
+    using `reifyDatatype`.
+
+-------------------------------------------------------------------
+Sat Jul 23 17:44:02 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update th-abstraction to version 0.4.4.0.
+  ## 0.4.4.0 -- 2022.07.23
+  * Support free variable substitution and infix resolution for
+    `PromotedInfixT` and `PromotedUInfixT` on `template-haskell-2.19.0.0` or
+    later.
+
+-------------------------------------------------------------------
 Thu Sep  2 08:31:58 UTC 2021 - psimons@suse.com
 
 - Update th-abstraction to version 0.4.3.0.
