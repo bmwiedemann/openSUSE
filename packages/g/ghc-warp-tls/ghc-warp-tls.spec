@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-warp-tls
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pkg_name warp-tls
 Name:           ghc-%{pkg_name}
-Version:        3.3.2
+Version:        3.3.4
 Release:        0
 Summary:        HTTP over TLS support for Warp via the TLS package
 License:        MIT

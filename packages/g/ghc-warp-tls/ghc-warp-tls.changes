@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Sep 28 00:41:23 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update warp-tls to version 3.3.4.
+  ## 3.3.4
+
+  * Integrated customizable `accept` hook from `Network.Wai.Handler.Warp.Settings` (cf. `setAccept`)
+    [#912](https://github.com/yesodweb/wai/pull/912)
+  * Adjusted `httpOverTls` because of the factoring out of `Network.Wai.Handler.Warp.Recv` to its own package `recv` in the `warp` package.
+    [#899](https://github.com/yesodweb/wai/pull/899)
+
+-------------------------------------------------------------------
+Wed Aug 10 00:24:49 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update warp-tls to version 3.3.3.
+  # ChangeLog
+
+  ## 3.3.3
+
+  * Creating a bigger buffer when the current one is too small to fit the Builder
+    [#895](https://github.com/yesodweb/wai/pull/895)
+  * Expose TLS.supportedHashSignatures via TLSSettings
+    [#872](https://github.com/yesodweb/wai/pull/872)
+
+-------------------------------------------------------------------
 Wed Sep 29 07:15:05 UTC 2021 - psimons@suse.com
 
 - Update warp-tls to version 3.3.2.
