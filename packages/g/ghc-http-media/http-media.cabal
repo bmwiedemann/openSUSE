@@ -1,6 +1,6 @@
 name:          http-media
 version:       0.8.0.0
-x-revision: 6
+x-revision: 7
 license:       MIT
 license-file:  LICENSE
 author:        Timothy Jones
@@ -72,7 +72,7 @@ library
     Network.HTTP.Media.Utils
 
   build-depends:
-    base             >= 4.8  && < 4.17,
+    base             >= 4.8  && < 4.18,
     bytestring       >= 0.10 && < 0.12,
     case-insensitive >= 1.0  && < 1.3,
     containers       >= 0.5  && < 0.7,
