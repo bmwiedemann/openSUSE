@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Thu Oct  6 02:54:13 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update citeproc to version 0.8.0.2.
+  ## 0.8.0.2
+
+    * Fix missing locator after collapsing and grouping with year
+      suffix (#96).
+
+  ## 0.8.0.1
+
+    * Fix disambiguation edge case (#116). We weren't properly
+      disambiguating when only one of two ambiguous names had a
+      subsequent citation.
+
+    * Chicago page numbering fixes.
+
+    * Update test suite form upstream.
+
+    * Handle whole-citation links differently in `secondFieldAlign` (#113,
+      Benjamin Bray).
+
+    * Require data-default >= 0.5.2 (#114, Bodigrim).
+
+  ## 0.8
+
+    * Add `SubstitutedVal` constructor for `Val` [API change] (#101, #108).
+      This is used to track variables that are repressed due to substitution.
+      (We can't just delete them, because they still count when we have
+      "if" elements that check for a variable.)
+
+    * Fix logic for including a group. A group with a text node and an
+      empty variable should count as empty.
+
+    * CaseTransform: don't change words that are a mix of uppercase
+      and nonletters, like CRT1000.
+
+    * Fix label with "page" variable (#107).
+
+    * Fix error in test suite. We stripped indentation in the expected result
+      in some cases.
+
+    * Update fr-FR locale from upstream.
+
+-------------------------------------------------------------------
 Fri Jul 15 19:16:54 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update citeproc to version 0.7 revision 1.
