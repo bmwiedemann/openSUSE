@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul 20 15:05:36 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update yesod-core to version 1.6.24.0.
+  ## 1.6.24.0
+
+  * Make catching exceptions configurable and set the default back to rethrowing async exceptions. [#1772](https://github.com/yesodweb/yesod/pull/1772).
+
+-------------------------------------------------------------------
 Mon Apr 25 16:22:36 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update yesod-core to version 1.6.23.1.
