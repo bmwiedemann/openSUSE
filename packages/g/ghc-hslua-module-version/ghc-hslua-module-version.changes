@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Sep  1 17:24:55 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update hslua-module-version to version 1.0.3.
+  ## hslua-module-version-1.0.3
+
+  Released 2022-09-01.
+
+  -   Allow equality checks with non-version values: A *Version*
+      value can now be compared with any value. Previously,
+      comparing a version with a value that cannot be interpreted as
+      a Version would result in an error, violating the principle of
+      least surprise.
+
+-------------------------------------------------------------------
 Sat Feb 19 14:38:25 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update hslua-module-version to version 1.0.2.

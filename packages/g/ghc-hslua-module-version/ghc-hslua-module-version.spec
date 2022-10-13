@@ -19,7 +19,7 @@
 %global pkg_name hslua-module-version
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.0.2
+Version:        1.0.3
 Release:        0
 Summary:        Lua module to work with version specifiers
 License:        MIT
