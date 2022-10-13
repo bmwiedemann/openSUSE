@@ -19,7 +19,7 @@
 %global pkg_name serialise
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.2.5.0
+Version:        0.2.6.0
 Release:        0
 Summary:        A binary serialisation library for Haskell values
 License:        BSD-3-Clause
