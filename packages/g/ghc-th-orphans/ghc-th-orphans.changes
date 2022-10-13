@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Aug 21 21:11:11 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update th-orphans to version 0.13.14.
+  ### 0.13.14 [2022.08.21]
+  * Only depend on `th-lift-instances` for `ghc <= 7.8`.
+
+-------------------------------------------------------------------
+Wed Aug  3 07:44:04 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update th-orphans to version 0.13.13 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Fri May 20 04:12:36 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update th-orphans to version 0.13.13.
