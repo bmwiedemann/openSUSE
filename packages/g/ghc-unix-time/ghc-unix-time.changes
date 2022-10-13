@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  6 01:25:31 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update unix-time to version 0.4.8.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
