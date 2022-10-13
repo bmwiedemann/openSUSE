@@ -19,13 +19,12 @@
 %global pkg_name quickcheck-instances
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.3.27
+Version:        0.3.28
 Release:        0
 Summary:        Common quickcheck instances
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/2.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-OneTuple-devel
 BuildRequires:  ghc-QuickCheck-devel
@@ -37,6 +36,7 @@ BuildRequires:  ghc-data-fix-devel
 BuildRequires:  ghc-hashable-devel
 BuildRequires:  ghc-integer-logarithms-devel
 BuildRequires:  ghc-old-time-devel
+BuildRequires:  ghc-primitive-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-scientific-devel
 BuildRequires:  ghc-splitmix-devel
@@ -80,7 +80,6 @@ files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
