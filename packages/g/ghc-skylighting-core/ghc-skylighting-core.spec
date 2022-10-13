@@ -19,19 +19,18 @@
 %global pkg_name skylighting-core
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.12.3.1
+Version:        0.13
 Release:        0
 Summary:        Syntax highlighting library
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
+Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-aeson-devel
-BuildRequires:  ghc-ansi-terminal-devel
 BuildRequires:  ghc-attoparsec-devel
 BuildRequires:  ghc-base64-bytestring-devel
 BuildRequires:  ghc-binary-devel
-BuildRequires:  ghc-blaze-html-devel
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-case-insensitive-devel
 BuildRequires:  ghc-colour-devel
@@ -78,6 +77,7 @@ files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
+cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
