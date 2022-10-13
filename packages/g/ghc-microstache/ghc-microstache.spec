@@ -19,13 +19,12 @@
 %global pkg_name microstache
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.0.2.1
+Version:        1.0.2.2
 Release:        0
 Summary:        Mustache templates for Haskell
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/2.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-aeson-devel
 BuildRequires:  ghc-containers-devel
@@ -40,8 +39,10 @@ BuildRequires:  ghc-unordered-containers-devel
 BuildRequires:  ghc-vector-devel
 ExcludeArch:    %{ix86}
 %if %{with tests}
+BuildRequires:  ghc-base-orphans-devel
 BuildRequires:  ghc-bytestring-devel
-BuildRequires:  ghc-hspec-devel
+BuildRequires:  ghc-tasty-devel
+BuildRequires:  ghc-tasty-hunit-devel
 %endif
 
 %description
@@ -62,7 +63,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build

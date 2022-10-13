@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 11 15:04:04 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update microstache to version 1.0.2.2.
+  Upstream has not updated the file "CHANGELOG.md" since the last
+  release.
+
+-------------------------------------------------------------------
 Mon Jun 20 13:30:34 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update microstache to version 1.0.2.1 revision 2.
