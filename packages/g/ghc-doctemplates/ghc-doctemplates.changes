@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Aug 13 17:48:02 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update doctemplates to version 0.10.0.2 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon Apr  4 06:09:35 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update doctemplates to version 0.10.0.2.
