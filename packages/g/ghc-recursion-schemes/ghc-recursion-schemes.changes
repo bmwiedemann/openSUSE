@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 22 20:43:33 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update recursion-schemes to version 5.2.2.2 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon Nov  1 08:24:24 UTC 2021 - psimons@suse.com
 
 - Update recursion-schemes to version 5.2.2.2.
