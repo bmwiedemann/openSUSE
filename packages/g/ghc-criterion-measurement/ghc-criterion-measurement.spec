@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-criterion-measurement
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pkg_name criterion-measurement
 Name:           ghc-%{pkg_name}
-Version:        0.1.3.0
+Version:        0.2.0.0
 Release:        0
 Summary:        Criterion measurement functionality and associated types
 License:        BSD-3-Clause
