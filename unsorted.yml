@@ -4594,6 +4594,8 @@ unsorted:
   - ghc-bitarray-devel: [x86_64] 
   - ghc-bitmap: [x86_64] 
   - ghc-bitmap-devel: [x86_64] 
+  - ghc-bitvec: [x86_64] 
+  - ghc-bitvec-devel: [x86_64] 
   - ghc-blaze-builder: [x86_64] 
   - ghc-blaze-builder-devel: [x86_64] 
   - ghc-blaze-html: [x86_64] 
@@ -4608,6 +4610,8 @@ unsorted:
   - ghc-boring-devel: [x86_64] 
   - ghc-boxes: [x86_64] 
   - ghc-boxes-devel: [x86_64] 
+  - ghc-breakpoint: [x86_64] 
+  - ghc-breakpoint-devel: [x86_64] 
   - ghc-brick: [x86_64] 
   - ghc-brick-devel: [x86_64] 
   - ghc-bsb-http-chunked: [x86_64] 
@@ -4901,6 +4905,8 @@ unsorted:
   - ghc-gitrev-devel: [x86_64] 
   - ghc-gray-code: [x86_64] 
   - ghc-gray-code-devel: [x86_64] 
+  - ghc-gridtables: [x86_64] 
+  - ghc-gridtables-devel: [x86_64] 
   - ghc-groups: [x86_64] 
   - ghc-groups-devel: [x86_64] 
   - ghc-hackage-security: [x86_64] 
@@ -4917,6 +4923,10 @@ unsorted:
   - ghc-haskeline-devel: [x86_64] 
   - ghc-haskell-lexer: [x86_64] 
   - ghc-haskell-lexer-devel: [x86_64] 
+  - ghc-haskell-src-exts: [x86_64] 
+  - ghc-haskell-src-exts-devel: [x86_64] 
+  - ghc-haskell-src-meta: [x86_64] 
+  - ghc-haskell-src-meta-devel: [x86_64] 
   - ghc-heaps: [x86_64] 
   - ghc-heaps-devel: [x86_64] 
   - ghc-hedgehog: [x86_64] 
@@ -5278,6 +5288,8 @@ unsorted:
   - ghc-readable-devel: [x86_64] 
   - ghc-recursion-schemes: [x86_64] 
   - ghc-recursion-schemes-devel: [x86_64] 
+  - ghc-recv: [x86_64] 
+  - ghc-recv-devel: [x86_64] 
   - ghc-reducers: [x86_64] 
   - ghc-reducers-devel: [x86_64] 
   - ghc-refact: [x86_64] 
@@ -5324,6 +5336,8 @@ unsorted:
   - ghc-safe-exceptions-devel: [x86_64] 
   - ghc-sandi: [x86_64] 
   - ghc-sandi-devel: [x86_64] 
+  - ghc-sandwich: [x86_64] 
+  - ghc-sandwich-devel: [x86_64] 
   - ghc-scientific: [x86_64] 
   - ghc-scientific-devel: [x86_64] 
   - ghc-scrypt: [x86_64] 
@@ -5370,6 +5384,12 @@ unsorted:
   - ghc-skylighting-core: [x86_64] 
   - ghc-skylighting-core-devel: [x86_64] 
   - ghc-skylighting-devel: [x86_64] 
+  - ghc-skylighting-format-ansi: [x86_64] 
+  - ghc-skylighting-format-ansi-devel: [x86_64] 
+  - ghc-skylighting-format-blaze-html: [x86_64] 
+  - ghc-skylighting-format-blaze-html-devel: [x86_64] 
+  - ghc-skylighting-format-latex: [x86_64] 
+  - ghc-skylighting-format-latex-devel: [x86_64] 
   - ghc-smallcheck: [x86_64] 
   - ghc-smallcheck-devel: [x86_64] 
   - ghc-smtp-mail: [x86_64] 
@@ -5414,6 +5434,8 @@ unsorted:
   - ghc-string-conv-devel: [x86_64] 
   - ghc-string-conversions: [x86_64] 
   - ghc-string-conversions-devel: [x86_64] 
+  - ghc-string-interpolate: [x86_64] 
+  - ghc-string-interpolate-devel: [x86_64] 
   - ghc-string-qq: [x86_64] 
   - ghc-string-qq-devel: [x86_64] 
   - ghc-syb: [x86_64] 
@@ -13031,7 +13053,6 @@ unsorted:
   - libout123-0 
   - libout123-0-32bit: [x86_64] 
   - libovf-glib-devel 
-  - libovn-21_09-0 
   - libowncloudsync-devel 
   - libowncloudsync0 
   - libp11-3-32bit: [x86_64] 
@@ -14562,7 +14583,7 @@ unsorted:
   - libuev-devel 
   - libuev3 
   - libuhd4_3_0 
-  - libuhttpmock-0_0-0 
+  - libuhttpmock-1_0-1 
   - libulfius2_7 
   - libulockmgr1 
   - libumockdev-preload0 
@@ -18781,13 +18802,6 @@ unsorted:
   - otter-browser 
   - otter-browser-lang 
   - ovmf-tools: [x86_64] 
-  - ovn 
-  - ovn-central 
-  - ovn-devel 
-  - ovn-doc 
-  - ovn-docker 
-  - ovn-host 
-  - ovn-vtep 
   - owasp-modsecurity-crs 
   - owasp-modsecurity-crs-base_rules 
   - owasp-modsecurity-crs-experimental_rules 
@@ -22145,7 +22159,6 @@ unsorted:
   - python310-Parsley 
   - python310-Paste 
   - python310-PasteDeploy 
-  - python310-PeachPy: [x86_64] 
   - python310-PeakUtils 
   - python310-Pebble 
   - python310-Pillow-tk 
@@ -22812,7 +22825,6 @@ unsorted:
   - python310-cdflib 
   - python310-celery 
   - python310-celery-batches 
-  - python310-celerymon 
   - python310-cepa 
   - python310-cerealizer 
   - python310-certbot 
@@ -24117,7 +24129,6 @@ unsorted:
   - python310-polib 
   - python310-pomegranate 
   - python310-pomegranate-devel 
-  - python310-pontos 
   - python310-pony 
   - python310-pooch 
   - python310-pook 
@@ -24431,7 +24442,6 @@ unsorted:
   - python310-pytest-mockito 
   - python310-pytest-mpi 
   - python310-pytest-mpl 
-  - python310-pytest-mypy 
   - python310-pytest-openfiles 
   - python310-pytest-order 
   - python310-pytest-percent 
@@ -25376,7 +25386,6 @@ unsorted:
   - python38-Parsley 
   - python38-Paste 
   - python38-PasteDeploy 
-  - python38-PeachPy: [x86_64] 
   - python38-PeakUtils 
   - python38-Pebble 
   - python38-Pillow 
@@ -26056,7 +26065,6 @@ unsorted:
   - python38-cdflib 
   - python38-celery 
   - python38-celery-batches 
-  - python38-celerymon 
   - python38-cepa 
   - python38-cerealizer 
   - python38-certbot 
@@ -27415,7 +27423,6 @@ unsorted:
   - python38-polib 
   - python38-pomegranate 
   - python38-pomegranate-devel 
-  - python38-pontos 
   - python38-pony 
   - python38-pooch 
   - python38-pook 
@@ -27745,7 +27752,6 @@ unsorted:
   - python38-pytest-mockito 
   - python38-pytest-mpi 
   - python38-pytest-mpl 
-  - python38-pytest-mypy 
   - python38-pytest-openfiles 
   - python38-pytest-order 
   - python38-pytest-percent 
@@ -28715,7 +28721,6 @@ unsorted:
   - python39-Parsley 
   - python39-Paste 
   - python39-PasteDeploy 
-  - python39-PeachPy: [x86_64] 
   - python39-PeakUtils 
   - python39-Pebble 
   - python39-Pillow 
@@ -29394,7 +29399,6 @@ unsorted:
   - python39-cdflib 
   - python39-celery 
   - python39-celery-batches 
-  - python39-celerymon 
   - python39-cepa 
   - python39-cerealizer 
   - python39-certbot 
@@ -30755,7 +30759,6 @@ unsorted:
   - python39-polib 
   - python39-pomegranate 
   - python39-pomegranate-devel 
-  - python39-pontos 
   - python39-pony 
   - python39-pooch 
   - python39-pook 
@@ -31085,7 +31088,6 @@ unsorted:
   - python39-pytest-mockito 
   - python39-pytest-mpi 
   - python39-pytest-mpl 
-  - python39-pytest-mypy 
   - python39-pytest-openfiles 
   - python39-pytest-order 
   - python39-pytest-percent 
@@ -32959,9 +32961,6 @@ unsorted:
   - ruby3.1-doc-ri 
   - ruby3.1-rubygem-grpc 
   - ruby3.1-rubygem-jekyll 
-  - rubygem-docker-api 
-  - rubygem-docker-api-doc 
-  - rubygem-docker-api-testsuite 
   - rubygem-libguestfs: [x86_64] 
   - rubygem-passenger-nginx 
   - runawk 
@@ -43222,7 +43221,7 @@ unsorted:
   - typelib-1_0-TimezoneMap-1_0 
   - typelib-1_0-UDisks-2_0 
   - typelib-1_0-UMockdev-1_0 
-  - typelib-1_0-Uhm-0_0 
+  - typelib-1_0-Uhm-1_0 
   - typelib-1_0-Urfkill-0_0 
   - typelib-1_0-Vips-8_13 
   - typelib-1_0-Vte-3_91 
@@ -43839,8 +43838,6 @@ unsorted:
   - wf-recorder 
   - wget2 
   - wgetpaste 
-  - when-command 
-  - when-command-lang 
   - whfc 
   - whipper 
   - whohas 

@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20221012" schemaversion="4.1">
+<image name="OBS__openSUSE___20221013" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20221012</productvar>
+      <productvar name="VERSION">20221013</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20221012,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20221013,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20221012/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20221013/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -4109,6 +4109,7 @@
       <repopackage name="ruby3.1-rubygem-diff-lcs"/>
       <repopackage name="ruby3.1-rubygem-diffy"/>
       <repopackage name="ruby3.1-rubygem-docile"/>
+      <repopackage name="ruby3.1-rubygem-docker-api"/>
       <repopackage name="ruby3.1-rubygem-domain_name"/>
       <repopackage name="ruby3.1-rubygem-down"/>
       <repopackage name="ruby3.1-rubygem-dry-configurable"/>
@@ -4130,6 +4131,7 @@
       <repopackage name="ruby3.1-rubygem-fake_ftp"/>
       <repopackage name="ruby3.1-rubygem-fake_ftp-0_1"/>
       <repopackage name="ruby3.1-rubygem-faraday"/>
+      <repopackage name="ruby3.1-rubygem-faraday-follow_redirects"/>
       <repopackage name="ruby3.1-rubygem-faraday-net_http"/>
       <repopackage name="ruby3.1-rubygem-fast_gettext"/>
       <repopackage name="ruby3.1-rubygem-fast_gettext-1.1"/>
