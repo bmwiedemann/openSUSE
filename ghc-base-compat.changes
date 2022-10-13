@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug 11 12:14:42 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update base-compat to version 0.12.2.
+  ## Changes in 0.12.2 [2022.08.11]
+   - Sync with `base-4.17`/GHC 9.4
+   - Backport `(.^.)`, `(.>>.)`, `(.<<.)`, `(!>>.)`, `(!<<.)`, `oneBits` to
+     `Data.Bits.Compat`
+   - Backport `pattern TypeRep` to `Type.Reflection.Compat`
+
+-------------------------------------------------------------------
 Mon Nov  1 08:29:35 UTC 2021 - psimons@suse.com
 
 - Update base-compat to version 0.12.1.

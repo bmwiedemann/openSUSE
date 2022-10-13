@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-base-compat
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pkg_name base-compat
 Name:           ghc-%{pkg_name}
-Version:        0.12.1
+Version:        0.12.2
 Release:        0
 Summary:        A compatibility layer for base
 License:        MIT
