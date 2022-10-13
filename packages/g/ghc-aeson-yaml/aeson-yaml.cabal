@@ -2,7 +2,7 @@ cabal-version: 1.12
 
 name:           aeson-yaml
 version:        1.1.0.1
-x-revision: 1
+x-revision: 2
 homepage:       https://github.com/clovyr/aeson-yaml
 bug-reports:    https://github.com/clovyr/aeson-yaml/issues
 author:         Patrick Nielsen
@@ -38,7 +38,7 @@ library
   exposed-modules:
       Data.Aeson.Yaml
   build-depends:
-      aeson >= 0.4.0.0 && < 2.1
+      aeson >= 0.4.0.0 && < 2.2
     , base >= 4.8.2.0 && < 5
     , bytestring >= 0.10.4.0 && < 0.12
     , text >= 0.1 && < 2.1
