@@ -19,7 +19,7 @@
 %global pkg_name foundation
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.0.28
+Version:        0.0.29
 Release:        0
 Summary:        Alternative prelude with batteries and no dependencies
 License:        BSD-3-Clause
