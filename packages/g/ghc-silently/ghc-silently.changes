@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Aug 21 17:20:10 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update silently to version 1.2.5.3.
+  # 1.2.5.3 August 2022
+
+  * Tested with GHC 7.0 - 9.4.1.
+  * Remove remnants of GHC 6.x support.
+  * Silence incomplete pattern matching warning, refactor code.
+  * Add section about limitations to README.
+
+-------------------------------------------------------------------
 Tue Nov  9 08:00:21 UTC 2021 - psimons@suse.com
 
 - Update silently to version 1.2.5.2.
