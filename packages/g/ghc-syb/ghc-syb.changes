@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Sep 17 15:09:45 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update syb to version 0.7.2.2.
+  2022-09-17 Sergey Vinokurov <serg.foo@gmail.com>
+
+  	* 0.7.2.2: Compatibility with GHC 9.4
+
+  2021-01-20 Sergey Vinokurov <serg.foo@gmail.com>
+
+  	* 0.7.2.1: Update cabal version
+
+-------------------------------------------------------------------
 Thu Jan 21 08:59:14 UTC 2021 - psimons@suse.com
 
 - Update syb to version 0.7.2.1.
