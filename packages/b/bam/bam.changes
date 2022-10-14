@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 13 02:11:35 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python3.patch:
+  * Support Python 3.
+- Switch BuildRequires to python3.
+- Correct URL. 
+
+-------------------------------------------------------------------
 Mon Jan  4 14:59:25 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Replace pandoc BuildRequires with help2man: this is sufficient to
