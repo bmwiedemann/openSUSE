@@ -1,7 +1,7 @@
 #
 # spec file for package python-contextvars
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Version:        2.4
 Release:        0
 License:        Apache-2.0
 Summary:        PEP 567 (context variables) backport
-URL:            http://github.com/MagicStack/contextvars
+URL:            https://github.com/MagicStack/contextvars
 Group:          Development/Languages/Python
 Source:         https://files.pythonhosted.org/packages/source/c/contextvars/contextvars-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
