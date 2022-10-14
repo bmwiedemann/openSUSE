@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Sat Oct  8 04:21:27 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Initial package:
+  * Branch off from obs://devel:libraries:c_c++/Catch2 at version
+    2.13.9 and rename src package to Catch2-2.
+  * Catch2-2-devel: Add 'Provides: Catch2-devel = %{version}'
+    and 'Conflicts: Catch2-devel >= 3'.
+  * Drop CMAKE_RELEASE_TYPE=Release to use default
+   'RelWithDebInfo' value from %cmake macro.

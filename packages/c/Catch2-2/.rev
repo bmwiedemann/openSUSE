@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cefbe16af47f5ecfbf25f03c601b50b1</srcmd5>
+    <version>2.13.9</version>
+    <time>1665754936</time>
+    <user>dimstar_suse</user>
+    <comment>We need to maintain version 2.x of Catch2 at least until most upstream packages catch up to Catch2 &gt;= 3. See comments on sr#1005804 for rationale.</comment>
+    <requestid>1010532</requestid>
+  </revision>
+</revisionlist>
