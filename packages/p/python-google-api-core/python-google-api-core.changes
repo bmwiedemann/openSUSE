@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 14 08:14:38 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.10.2
+  * **deps:** Allow protobuf 3.19.5 (#459)
+- from version 2.10.1
+  * Improve transcoding error message (#442)
+
+-------------------------------------------------------------------
 Thu Sep  8 11:26:12 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.10.0

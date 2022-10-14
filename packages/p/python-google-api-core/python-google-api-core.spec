@@ -27,7 +27,7 @@
 %endif
 %define         skip_python2 1
 Name:           python-google-api-core
-Version:        2.10.0
+Version:        2.10.2
 Release:        0
 Summary:        Google API client core library
 License:        Apache-2.0
