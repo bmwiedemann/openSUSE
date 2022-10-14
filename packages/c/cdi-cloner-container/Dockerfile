@@ -24,8 +24,13 @@ LABEL org.opensuse.reference="%%REGISTRY%%/%%TAGPREFIX%%/cdi-cloner:%%PKG_VERSIO
 
 RUN zypper -n install \
            containerized-data-importer-cloner \
+           curl \
+           shadow \
            tar \
            util-linux && \
-    zypper clean -a
+    zypper clean -a && \
+    useradd -u 1001 --create-home -s /bin/bash cdi-cloner
 
+WORKDIR /home/cdi-cloner
+USER 1001
 ENTRYPOINT [ "/usr/bin/cloner_startup.sh" ]
