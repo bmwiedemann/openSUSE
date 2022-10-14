@@ -31,6 +31,8 @@ Group:          Productivity/Graphics/Other
 URL:            http://hugin.sourceforge.net/
 Source:         https://downloads.sourceforge.net/project/%{name}/%{name}/%{name}-%{mversion}/%{name}-%{version}.tar.bz2
 Patch0:         hugin.appdata.patch
+# workaround, lz4 is not returned by pkg_check_modules(), hardcode it now
+Patch1:         hugin-flann-lz4.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  OpenEXR-devel
 BuildRequires:  cmake >= 3.1.0
@@ -60,6 +62,8 @@ Recommends:     autopano-sift-C
 Recommends:     exiftool
 %if %{with system_flann}
 BuildRequires:  flann-devel
+# until rq#1008410 is not accepted and propagated into factory
+BuildRequires:  liblz4-devel
 %endif
 %if %{with lapack}
 BuildRequires:  lapack-devel

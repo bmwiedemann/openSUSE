@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct  6 13:38:13 UTC 2022 - pgajdos@suse.com
+
+- require liblz4-devel temporarily for build, it should be required
+  by flann-devel
+- added patches
+  workaround, lz4 is not returned by pkg_check_modules(), hardcode it now
+  + hugin-flann-lz4.patch
+
+-------------------------------------------------------------------
 Wed May  4 08:46:42 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - switch source url to https
