@@ -1,7 +1,7 @@
 #
 # spec file for package python-vine
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,17 +23,16 @@ Version:        5.0.0
 Release:        0
 Summary:        Python Promises
 License:        BSD-3-Clause
-URL:            http://github.com/celery/vine/
-Source:         https://pypi.io/packages/source/v/vine/vine-%{version}.tar.gz
+URL:            https://github.com/celery/vine/
+Source:         https://files.pythonhosted.org/packages/source/v/vine/vine-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module case}
 BuildRequires:  %{python_module pytest}
 # /SECTION
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -52,8 +51,7 @@ Promises implementation for python.
 %check
 %pytest
 
-%files %python_files
-%defattr(-,root,root,-)
+%files %{python_files}
 %doc Changelog README.rst
 %license LICENSE
 %{python_sitelib}/*
