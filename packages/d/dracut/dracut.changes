@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Oct 13 13:25:31 UTC 2022 - antonio.feijoo@suse.com
+
+- Update to version 057+suse.337.g4162a70e:
+  * fix(network-legacy): misleading duplicate address detection using wicked (bsc#1201235)
+
+  A series of fixes for NVMeoF boot (bsc#1203368):
+  * fix(man): dracut.cmdline.7: clarify "rd.nvmf.discover=fc,auto"
+  * fix(network): avoid double brackets around IPv6 address
+  * feat(nvmf): set rd.neednet=1 if tcp records encountered
+  * fix(man): dracut.cmdline(7): correct syntax for rd.nonvmf
+  * fix(network): don't use same ifname multiple times
+  * fix(nvmf): run cmdline hook before parse-ip-opts.sh
+  * fix(nvmf): avoid calling "exit" in a cmdline hook
+  * fix(nvmf): make sure "rd.nvmf.discover=fc,auto" takes precedence
+  * fix(nvmf): don't use "finished" queue for autoconnect
+  * fix(nvmf): don't create did-setup file
+  * fix(nvmf): no need to load the nvme module
+  * fix(nvmf): don't try to validate network connections in cmdline hook
+  * fix(nvmf): nvme list-subsys prints the address using commas as separator
+
+  * fix(systemd): add missing modprobe@.service (bsc#1203749)
+  * fix(i18n): do not fail if FONT in /etc/vconsole.conf has the file extension (bsc#1203267)
+
+-------------------------------------------------------------------
 Wed Sep 14 08:30:53 UTC 2022 - antonio.feijoo@suse.com
 
 - Update to version 057+suse.315.gd210fc38:
