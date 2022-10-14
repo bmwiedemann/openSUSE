@@ -44,7 +44,7 @@ Environment=KLOG_CONSOLE=10
 EnvironmentFile=-/etc/sysconfig/boot
 ExecStart=/bin/sh -c "test -s /var/log/boot.msg && /bin/mv -f /var/log/boot.msg /var/log/boot.omsg || :"
 ExecStart=/bin/sh -c "/bin/dmesg -r > /var/log/boot.msg"
-ExecStart=/bin/sh -c "test -s /dev/shm/initrd.msg && /bin/cat /dev/shm/initrd.msg >> /var/log/boot.msg || :"
+ExecStart=/bin/sh -c "test -s /dev/shm/initrd.msg -a -O /dev/shm/initrd.msg && /bin/cat /dev/shm/initrd.msg >> /var/log/boot.msg || :"
 ExecStart=/bin/sh -c "test -c /dev/tty$KLOG_CONSOLE && /usr/bin/setlogcons $KLOG_CONSOLE || :"
 ExecStart=/bin/sh -c "if test -n \"$CONSOLE_LOGLEVEL\" ; then /bin/dmesg -n $CONSOLE_LOGLEVEL || : ; fi"
 

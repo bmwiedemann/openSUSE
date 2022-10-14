@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 13 06:32:11 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Check ownership of initrd.msg before adding it to boot.msg (bsc#1204245) 
+
+-------------------------------------------------------------------
 Wed Aug 31 12:40:57 UTC 2022 - Stefan Schubert <schubi@suse.com>
 
 - Migration to /usr/etc: Saving user changed configuration files
