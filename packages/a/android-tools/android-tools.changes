@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 14 04:59:40 UTC 2022 - munix9@googlemail.com
+
+- Switch to clang/llvm because of build errors with gcc12 and the
+  new 6.0 kernel headers (recent gcc env for Leap still required)
+
+-------------------------------------------------------------------
 Sat Sep 24 17:39:56 UTC 2022 - munix9@googlemail.com
 
 - Update to version 33.0.3

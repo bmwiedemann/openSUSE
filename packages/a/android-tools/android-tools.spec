@@ -39,9 +39,11 @@ Patch0:         fix-install-completion.patch
 Patch1:         fix-mkbootimg-gki-path.patch
 # PATCH-FIX-UPSTREAM fix-lpmake-help-segfault.patch gh#nmeum/android-tools#73
 Patch2:         fix-lpmake-help-segfault.patch
+BuildRequires:  clang
 BuildRequires:  cmake >= 3.12
 BuildRequires:  go
 BuildRequires:  gtest
+BuildRequires:  llvm-gold
 BuildRequires:  ninja
 BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
@@ -62,8 +64,6 @@ ExcludeArch:    s390x
 %if 0%{?suse_version} <= 1500
 BuildRequires:  gcc11
 BuildRequires:  gcc11-c++
-%else
-BuildRequires:  gcc-c++
 %endif
 
 %description
@@ -107,12 +107,8 @@ sed -e '1s|^#!.*|#!/usr/bin/python%{_pyd}|' -i vendor/avb/avbtool.py \
 
 %build
 %define __builder ninja
-%if 0%{?suse_version} <= 1500
-export CC=gcc-11
-export CXX=g++-11
-%endif
-export CFLAGS="%{optflags} -Wno-return-type"
-export CXXFLAGS="$CFLAGS"
+export CC=clang
+export CXX=clang++
 export GOFLAGS="-mod=vendor -buildmode=pie -trimpath"
 
 %cmake -DBUILD_SHARED_LIBS:BOOL=OFF
