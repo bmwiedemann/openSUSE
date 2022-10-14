@@ -1,7 +1,7 @@
 #
 # spec file for package adolc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,10 +21,12 @@ Name:           adolc
 Version:        2.7.2
 Release:        0
 Summary:        Algorithmic Differentiation Library for C/C++
-License:        GPL-2.0-or-later OR EPL-1.0
+License:        EPL-1.0 OR GPL-2.0-or-later
 URL:            https://github.com/coin-or/ADOL-C
 Source0:        https://github.com/coin-or/ADOL-C/archive/releases/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
+# from https://github.com/coin-or/ADOL-C/pull/47.patch
+Patch1:         handle-lib64-for-riscv64.patch
 BuildRequires:  ColPack-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libstdc++-devel
@@ -73,7 +75,7 @@ BuildArch:      noarch
 This package provides the user's manual for ADOL-C.
 
 %prep
-%autosetup -n ADOL-C-releases-%{version}
+%autosetup -p1 -n ADOL-C-releases-%{version}
 
 %build
 # autoreconf -v --install --force
