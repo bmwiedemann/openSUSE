@@ -497,4 +497,19 @@
     <comment></comment>
     <requestid>997369</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>5e94d2618a008c94ed771961630a8440</srcmd5>
+    <version>1.8.9~pre1</version>
+    <time>1665754926</time>
+    <user>dimstar_suse</user>
+    <comment>- update to openafs-1.8.9~pre1 
+- remove obsolete patches:
+  * 05b722d.diff
+  * cc8edf7.diff
+  * 6348262.diff
+- apply patch for kernel 6.0:
+  * 79f03c2.diff
+</comment>
+    <requestid>1010499</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct 12 16:19:20 UTC 2022 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
+
+- update to openafs-1.8.9pre1 
+- remove obsolete patches:
+  * 05b722d.diff
+  * cc8edf7.diff
+  * 6348262.diff
+- apply patch for kernel 6.0:
+  * 79f03c2.diff
+
+
+-------------------------------------------------------------------
 Tue Aug 16 09:54:58 UTC 2022 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
 
 - update to current of upstream-branch openafs-stable-1_8_x

@@ -1,3 +1,354 @@
+commit a2c1f9dc21b9e17aa8b075e4507f07def3275c2a
+Author: Stephan Wiesand <stephan.wiesand@desy.de>
+Date:   Thu Sep 23 20:20:44 2021 +0200
+
+    Make OpenAFS 1.8.9pre1
+    
+    Update version strings for the first 1.8.9 prerelease.
+    
+    Change-Id: I6fc6dff8143445ee82188a2614588068f1feeb25
+    Reviewed-on: https://gerrit.openafs.org/14810
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Reviewed-by: Marcio Brito Barbosa <mbarbosa@sinenomine.net>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit 7a44c381f1d599f8a7ee8e6349f3c7ab190ea1f5
+Author: Stephan Wiesand <stephan.wiesand@desy.de>
+Date:   Thu Aug 25 16:01:02 2022 +0200
+
+    Update NEWS for 1.8.9pre1
+    
+    Release notes for the first 1.8.9 prerelease.
+    
+    Change-Id: I26e4334f9f1e34b36299b097525a61a89f422aaf
+    Reviewed-on: https://gerrit.openafs.org/15126
+    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit beb1a8a16c946c5ffba9868ae33f20a719fca95f
+Author: Cheyenne Wills <cwills@sinenomine.net>
+Date:   Fri Mar 6 10:00:25 2020 -0700
+
+    afs: Clean up compiler warning casting ptr to int
+    
+    In osi_probe.c, the macro 'check_result' casts a pointer to an int which
+    on older Linux kernels (e.g. 2.6.18) produces several lines with the C
+    warning:
+    
+    ... warning: cast from pointer to integer of different size
+    
+    Change the cast from int to long int.
+    
+    Linux 2.6.18 doesn't provide intptr_t or uintptr_t, and stdint.h is not
+    available to kernel modules.  But the size of a pointer is the size of a
+    long (see uintptr_t in linux/types.h - Linux 2.6.24+), so
+    change the cast from int to long.
+    
+    Note that the this code by default only gets pulled in for older Linux
+    kernels (e.g. 2.6.18).  For newer kernels, ENABLE_LINUX_SYSCALL_PROBING
+    is not defined, and so most of osi_probe.c is not built.
+    
+    Reviewed-on: https://gerrit.openafs.org/14092
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    (cherry picked from commit 38d78e2496c3d242e44bad401ecffe15e3883388)
+    
+    Change-Id: I474ad10c8cda8c414154e20f739a2aba5ba890cf
+    Reviewed-on: https://gerrit.openafs.org/15134
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit 7a8c044c09e965af05ac7978123695a3b234d8a1
+Author: Andrew Deason <adeason@sinenomine.net>
+Date:   Tue Oct 13 12:17:37 2020 -0500
+
+    dir: Set srcdir correctly in src/dir/test
+    
+    srcdir is a magic variable that needs to be set to @srcdir@, not some
+    relative path like ../../.. (which will usually be somewhere in the
+    objdir, not srcdir). Set it correctly in here.
+    
+    Without this, objdir builds can fail with:
+    
+        make[4]: Entering directory '...obj/src/dir/test'
+        make[4]: *** No rule to make target 'dtest.o', needed by 'dtest'.  Stop.
+    
+    Which happens because the automatic rule for dtest.o can't be
+    constructed, since we cannot find dtest.c automatically because srcdir
+    isn't set properly.
+    
+    This has been broken since commit 37b4195d (dtest-20021111), but was
+    not noticeable until commit 192a2ff4 (dir: make dtest buildable
+    again), since that caused dtest to actually get built.
+    
+    Also set LIBS correctly in here, using the conventional ${TOP_LIBDIR},
+    since ${srcdir} no longer points to "../../..".
+    
+    Reviewed-on: https://gerrit.openafs.org/14384
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit bc6f50ca0ce6c17a5a9b1042fa90235613f80c95)
+    
+    Change-Id: I8aff31557b6b92bb10c68abb0ba5a61a68b8f750
+    Reviewed-on: https://gerrit.openafs.org/15133
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit e3edd8c43e5808c19a37d8d74a311f4d9240665a
+Author: Cheyenne Wills <cwills@sinenomine.net>
+Date:   Mon Mar 7 18:35:03 2022 -0700
+
+    LINUX: Use bitwise & for f_flags test
+    
+    This code is clearly supposed to be masking f_flags with O_ACCMODE, and
+    so should be using a bitwise &, not the boolean &&.  Clang complains
+    about this, causing a warning (which breaks the build with
+    --enable-checking):
+    
+    error: use of logical '&&' with constant operand [-Werror,
+            -Wconstant-logical-operand]
+            } else if ((file->f_flags && O_ACCMODE) != O_WRONLY) {
+                                      ^  ~~~~~~~~~
+    .../osi_vnodeops.c:3192:28: note: use '&' for a
+            bitwise operation
+    
+    For the current code without this commit the behavior of this
+    check is as follows:
+    
+       When f_flags is:         The check is:
+       ====================     =============
+       O_RDONLY                 True  (as expected)
+       O_WRONLY                 False (as expected)
+       O_RDWR                   False (incorrect)
+       has some non-O_ACCMODE   False (incorrect)
+        bit is set
+    
+    The incorrect check doesn't cause any problems for overall correctness,
+    but it does mean that in those cases afs_linux_fillpage will not be
+    called and that partially-written pages will be left out of date and any
+    reader will need to fill the page again.
+    
+    Fix this by using the bitwise &.
+    
+    There is also an out of date link to the Linux documentation.  Update
+    the comment to point to the current documentation that is in the Linux
+    source tree.
+    
+    Reviewed-on: https://gerrit.openafs.org/14903
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit 8d9545008240d7f285b140503e432f53f41e0724)
+    
+    Change-Id: Iae459ffe87df9a21a90587c02a1ee2c20b360d33
+    Reviewed-on: https://gerrit.openafs.org/15129
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit c3f31cc9c3442aca0f6f66ba493ea92bfa46dcca
+Author: Jan Iven <iven.jan@gmail.com>
+Date:   Fri Aug 5 14:46:27 2022 +0200
+
+    systemd: do not load the 'openafs' module on boot
+    
+    remove /etc/sysconfig/modules/openafs-client.modules, i.e no longer have
+    systemd run "modprobe openafs" at boot, on RPM-based systems.
+    
+    This had been introduced with a reference to the Fedora packaging guide
+    at the time. However, this mechanism was meant just for persistent
+    driver modules (i.e expected to stay loaded over the runtime) - the
+    "openafs" module is loaded (and unloaded) by the actual systemd unit.
+    
+    The systemd unit that processes the above file comes from "initscripts",
+    this is optional in later Fedoras/RHELs and so the file may not even be
+    processed (/usr/lib/modules-load.d/ would be an alternative mechanism to
+    load modules at boot.. if needed).
+    
+    This change is mostly cosmetic, although RT#135204 showed that having
+    the "openafs" module loaded without a client running can actually be
+    harmful.
+    
+    Reviewed-on: https://gerrit.openafs.org/15092
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit 40b2c6036737a416f3b33624b5abeefa407c1b01)
+    
+    Change-Id: Iea1475217b8ae56accfb4436248011f0b84e0c09
+    Reviewed-on: https://gerrit.openafs.org/15128
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit 99f04b1398cc38fc18f7f98cca9d5785218feb0b
+Author: Cheyenne Wills <cwills@sinenomine.net>
+Date:   Thu Jul 14 13:03:08 2022 -0600
+
+    linux: Call put_page if errors in aops->readpages
+    
+    Within the address_space_operations readpages function, when we remove a
+    page from the page->lru list, we must ensure that the page reference
+    count is decremented via put_page.
+    
+    There are two cases within the flow of the afs_linux_readpages where
+    we remove a page from the page->lru list, but fail to put_page() it.
+    
+     - If we go through afs_linux_bypass_readpages we fail to call
+       put_page() if the page index is larger than the index calculated from
+       i_size_read for the cache file.
+     - If get_dcache_readahead returns an error in afs_linux_readpages, we
+       fail to put_page().  This can happen if there was a problem opening
+       the cache file, or if the cache file has no a_ops->readpage.
+    
+    Add a call to put_page in afs_linux_bypass_readpages when the page index
+    is greater than the index calculated from the i_size_read for the cache
+    file.
+    
+    Add a call to put_page in afs_linux_readpages if get_dcache_readahead
+    returns an error.
+    
+    Note: The condition of not calling put_page if there was an error
+    opening the cache file was introduced by commit 'LINUX: Don't panic on
+    some file open errors' (af73b9a3b1f), which replaced an assert with
+    code that handled the error.  The other conditions have existed since
+    the relevant code was introduced.
+    
+    In addition, the problems addressed by this commit are not present in
+    Linux kernels 5.8 and greater when the commit 'Linux-5.18: replace
+    readpages with readahead' (7a181415db1) is present, because we call
+    afs_linux_readahead instead of afs_linux_readpages.
+    
+    Reviewed-on: https://gerrit.openafs.org/15068
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit 903dd5bf5e9328431e356abc42e20c248c5df6fd)
+    
+    Change-Id: I3679969f985e83a7291a5fb735c80f7d57429c29
+    Reviewed-on: https://gerrit.openafs.org/15096
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit 0ca47d0a03bfc39c064d2a1ae88970c67dc3dbce
+Author: Cheyenne Wills <cwills@sinenomine.net>
+Date:   Tue Jul 5 10:33:19 2022 -0600
+
+    Linux-5.19: Remove flags from aops->write_begin
+    
+    The Linux 5.19 commits:
+    
+     fs: Remove aop flags parameter from grab_cache_page_write_begin()
+      (b7446e7c)
+     fs: Remove flags parameter from aops->write_begin (9d6b0cd7)
+    
+    removed the flags parameter from the address space operations
+    'write_begin' as well as removing the flags parameter from the Linux
+    function 'grab_cache_page_write_begin'.
+    
+    Add an autoconf test to see if grab_cache_page_write_begin takes 2 or
+    3 parameters. Use this as a test to determine if the address space
+    operations 'write_begin' takes a flags parameter.
+    
+    Create a version of afs_linux_write_begin that does not take a flags
+    parameter, which also calls grab_cache_page_write_begin without flags.
+    
+    Reviewed-on: https://gerrit.openafs.org/15041
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit 52d8df218ff27c139ede221ec4decf593610fc47)
+    
+    Change-Id: I20575c2e9d0979749078f4e3d6f862900c6b6561
+    Reviewed-on: https://gerrit.openafs.org/15095
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit e8f136dd687a7f7ac5296f52739f46dde8c8543e
+Author: Cheyenne Wills <cwills@sinenomine.net>
+Date:   Tue Jul 5 11:45:29 2022 -0600
+
+    Linux-5.19: Rename aops readpage to read_folio
+    
+    With Linux commits:
+      mm,fs: Remove aops->readpage   (7e0a126519)
+      fs: Introduce aops->read_folio (5efe7448a1)
+    
+    the address space operations method 'readpage' was replaced with
+    read_folio.  The operation behaves the same, except instead of taking a
+    struct page parameter, the new function takes a folio structure.
+    
+    Add an autoconf test for the address space operation entry read_folio
+    
+    Replace the references to an address space operations' readpage with
+    read_folio.  Note that the function Linux page_folio can be used to
+    obtain the required pointer to the folio for a given page.
+    
+    Introduce afs_linux_read_folio that accepts a folio and calls
+    afs_linux_readpage with the page associated with that folio.
+    
+    Reviewed-on: https://gerrit.openafs.org/15040
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    (cherry picked from commit bfb852197edcbe0c38c499faecd7c1be23308a20)
+    
+    Change-Id: Iab96bd10a143d88fe37ac8aa8980b33339c76852
+    Reviewed-on: https://gerrit.openafs.org/15094
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit 43c926bf4da3f66f3acc013159fb51072e39efdb
+Author: Cheyenne Wills <cwills@sinenomine.net>
+Date:   Tue Jul 5 10:28:10 2022 -0600
+
+    Linux: Introduce file mapping readpage helpers
+    
+    Create a helper function that determines if a file's
+     i_mapping->a_ops->readpage
+    is NULL.
+    
+    Create a helper function that calls a file's
+     i_mapping->a_ops->readpage
+    
+    There are no functional changes with this commit.
+    
+    Note: This commit isolates references to 'readpage' so that future
+    commits can change the name in a more straight forward manner.
+    
+    Reviewed-on: https://gerrit.openafs.org/15039
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit a81f7300f08d6e515adbde4bce4b72a3102b60f9)
+    
+    Change-Id: I9268fd2622ecd48ad6971a8faaeefef8128f4024
+    Reviewed-on: https://gerrit.openafs.org/15093
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
 commit 6997f890445680ecda572778155c900ba9147b7b
 Author: Cheyenne Wills <cwills@sinenomine.net>
 Date:   Mon Jun 27 08:38:25 2022 -0600
@@ -1618,11 +1969,11 @@ Date:   Tue Apr 7 10:23:16 2020 -0500
     24358c8c5ca679949ef522964d94e4d1cd1f941a (v2019.01.06)
     
     New files are:
-            m4/ax_append_compile_flags.m4
-            m4/ax_append_flag.m4
-            m4/ax_check_compile_flag.m4
-            m4/ax_gcc_func_attribute.m4
-            m4/ax_require_defined.m4
+    	m4/ax_append_compile_flags.m4
+    	m4/ax_append_flag.m4
+    	m4/ax_check_compile_flag.m4
+    	m4/ax_gcc_func_attribute.m4
+    	m4/ax_require_defined.m4
     
     Reviewed-on: https://gerrit.openafs.org/14138
     Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
@@ -1792,9 +2143,9 @@ Date:   Thu Dec 16 21:36:22 2021 +0100
     Created a new sysname "amd64_fbsd_123" in src/config/afs_sysnames.h
     and added "param" files with minimal changes:
     
-            modified:   src/config/afs_sysnames.h
-            new file:   src/config/param.amd64_fbsd_123.h
-            new file:   src/config/param.i386_fbsd_123.h
+    	modified:   src/config/afs_sysnames.h
+    	new file:   src/config/param.amd64_fbsd_123.h
+    	new file:   src/config/param.i386_fbsd_123.h
     
     This mod builds on 12.3 with all tests passing.
     
@@ -2341,4 +2692,223 @@ Date:   Thu Jun 2 13:45:27 2022 -0600
     Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
     Reviewed-by: Andrew Deason <adeason@sinenomine.net>
     Reviewed-by: Marcio Brito Barbosa <mbarbosa@sinenomine.net>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit ec106b0768dc2ce54c48bf5d9799a966ba29a0a9
+Author: Pat Riehecky <riehecky@fnal.gov>
+Date:   Wed Sep 19 15:51:00 2018 -0500
+
+    configure.ac: Add missing double include guard
+    
+    This is primarily a sanity check (identified by clang-tidy).
+    
+    Reviewed-on: https://gerrit.openafs.org/13333
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit ec45ae60536190c2f5fbf272a9acfe0a85824e24)
+    
+    Change-Id: I6cf42d3645fa2669971a3adcd320397afb4cf2bd
+    Reviewed-on: https://gerrit.openafs.org/14964
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Marcio Brito Barbosa <mbarbosa@sinenomine.net>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit f8a2aceb05914908b6a9d3e03c75e3a0c5e1a55c
+Author: Cheyenne Wills <cwills@sinenomine.net>
+Date:   Tue Dec 22 11:06:42 2020 -0700
+
+    afs: Cleanup afsincludes.h indentation
+    
+    Clean up the indentation of preprocessor statements
+    
+    Remove commented out code.
+    
+    Reviewed-on: https://gerrit.openafs.org/14471
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit 031ebf43a8d4db79ee1aa9aff571094354c548b1)
+    
+    Change-Id: I04c86b8ac8735ec50bf955bb418bb81ee5105afd
+    Reviewed-on: https://gerrit.openafs.org/14931
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit 7a03627a64789b6c5fb44def81d4d39df3587d9d
+Author: Cheyenne Wills <cwills@sinenomine.net>
+Date:   Tue Dec 22 11:03:33 2020 -0700
+
+    afs: Clean up VNOPS/afs_vnops_attrs.c indentation
+    
+    Clean up the indentation of preprocessor statements, add #endif comments
+    where helpful.
+    
+    Clean up whitespace in code indentation.
+    
+    Reviewed-on: https://gerrit.openafs.org/14470
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit 873a5d9e8835b969370f1f031acef60745a0fff8)
+    
+    Change-Id: Ia3c41652e99c44164dec852b0f8ab2f103e8e3c1
+    Reviewed-on: https://gerrit.openafs.org/14930
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit f92508b5f7cbf9562f841d226cc9cd9f345c020b
+Author: Cheyenne Wills <cwills@sinenomine.net>
+Date:   Wed Dec 23 13:25:31 2020 -0700
+
+    afs: Clean up afs_init.c indentation
+    
+    Clean up the indentation of preprocessor statements, add #endif comments
+    where helpful.
+    
+    Clean up whitespace in code indentation.
+    
+    Reviewed-on: https://gerrit.openafs.org/14469
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit d7469128ceefbd96b61f32f62fd1e11c3674dac8)
+    
+    Change-Id: Iccf5587e02b3caf0ec6725dc554255366b879d9e
+    Reviewed-on: https://gerrit.openafs.org/14929
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit 97dd85ba97799fe97d424bbdbad9ced6e582ebaa
+Author: Mark Vitale <mvitale@sinenomine.net>
+Date:   Sun May 10 22:13:13 2020 -0400
+
+    DARWIN: remove vestigial etap_event_t typedefs
+    
+    These typedefs have been present since commit
+    a41175cfbbf4d06ccfe14ae54bef8b7464ecd80b
+    "initial-darwin-support-20010327"; at least some of this material was
+    obtained directly from IBM after the initial code import.
+    
+    Based on research of old Darwin source code and kernel documentation,
+    the Event Trace Analysis Package (ETAP) was a lock-profiling interface
+    provided in older versions of Mach and xnu.  ETAP was not enabled by
+    default; the kernel had to be recompiled with certain options to enable
+    it.  Support for ETAP was removed from the xnu tree sometime between
+    xnu-517 (10.3 Panther) and xnu-792 (10.4 Tiger), although some
+    references remain in the latter under PPC support (osfmk/ppc/hw_lock.s).
+    All remaining references to etap_event_t disappeared when PPC support
+    was removed, some time between xnu-1456.1.26 (10.6 Snow Leopard) and
+    xnu-1699.24.8 (10.7.2 Lion).
+    
+    Therefore, it is possible that these typedefs were needed in the past by
+    (IBM/Transarc) AFS to support use of some lock APIs (e.g.,
+    simple_lock_init, usimple_lock_init) after the ETAP code was withdrawn
+    from xnu.  However, these typedefs have probably always been vestigial
+    for OpenAFS, because OpenAFS has never used any lock API that took
+    etap_event_t as an argument.
+    
+    Regardless, OpenAFS does not need these definitions to build and run on
+    any currently supported version of macOS.
+    
+    Remove the vestigial code.
+    
+    No functional change should be incurred by this commit.
+    
+    Reviewed-on: https://gerrit.openafs.org/14219
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Marcio Brito Barbosa <mbarbosa@sinenomine.net>
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    (cherry picked from commit 145c90bdbeeff4ea95acacd7dc110f0c6fcba281)
+    
+    Change-Id: I96cdfe756cb8917079a7cc46d6186e69337caf0d
+    Reviewed-on: https://gerrit.openafs.org/14928
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit 8db804eb1ec3f6a4b41dafff31f4805688a3da60
+Author: Andrew Deason <adeason@sinenomine.net>
+Date:   Thu Jul 18 16:21:10 2019 -0500
+
+    afs: Handle osi_NewVnode failures
+    
+    Currently, code inside afs_vcache.c assumes that osi_NewVnode always
+    returns non-NULL, which means that osi_NewVnode must panic if it
+    cannot create a new vnode.
+    
+    All of the callers of afs_GetVCache, afs_NewVCache, etc, already
+    handle getting a NULL return, though (after all, the given fid may not
+    exist or be inaccessible due to network errors, etc). So, just
+    propagate NULL returns from osi_NewVnode up to our callers, to avoid
+    panics in these situations.
+    
+    Modify osi_NewVnode on many arches to return an error on allocation
+    failure, instead of panic'ing.
+    
+    Reviewed-on: https://gerrit.openafs.org/13701
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Reviewed-by: Yadavendra Yadav <yadayada@in.ibm.com>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    (cherry picked from commit ea9e5e8519dc486cfb019447ee5d695de104079d)
+    
+    Change-Id: I2a3c5aac44a57093caee4008b86420ed05c66eb7
+    Reviewed-on: https://gerrit.openafs.org/14927
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+    Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+
+commit dfc2626e2aac0904c954915ed1d474030414cb78
+Author: Mark Vitale <mvitale@sinenomine.net>
+Date:   Fri Oct 5 10:39:23 2018 -0400
+
+    rx: remove rx_atomic bitops
+    
+    The rx_atomic bitops were introduced with commit
+    1839cdbe268f4b19ac8e81ae78548f5c78e0c641 ("rx: atomic bit ops").
+    
+    The last (only) reference to them was recently removed with commit
+    5ced6025b9f11fadbdf2e092bf40cc87499ed277 ("rx: Convert rxinit_status to
+    rx_IsRunning()").
+    
+    Remove the now unreferenced bitops.  This commit is comprised of partial
+    or complete reverts of the following commits:
+    
+    ae4ad509d35 rx: fix rx_atomic warnings under Solaris (partial)
+    c16423ec4e6 rx: fix atomics on darwin (partial)
+    9dc6dd9858a rx: Fix AIX test_and_set_bit (complete)
+    1839cdbe268 rx: atomic bit ops (complete)
+    
+    Note: The rx_atomic bitops for Linux systems are known to be broken due
+    to incorrect casting of rx_atomic_t into the unsigned long operand
+    expected by the native Linux bitops.  The failure modes include silent
+    overruns on little-endian and incorrect results on big-endian.  Do not
+    merely revert this commit in order to bring these bitops back into the
+    tree.
+    
+    Reviewed-on: https://gerrit.openafs.org/13390
+    Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    (cherry picked from commit d0dbd0f12119f0e874ba30adec81061ac6ae27c7)
+    
+    Change-Id: I214ec09c07fb35a4d1dbf9719ec3861bde931638
+    Reviewed-on: https://gerrit.openafs.org/14926
+    Tested-by: BuildBot <buildbot@rampaginggeek.com>
+    Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+    Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
     Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
