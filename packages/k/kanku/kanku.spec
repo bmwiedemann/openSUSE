@@ -22,7 +22,7 @@
 
 Name:           kanku
 # Version gets set by obs-service-tar_scm
-Version:        0.12.7
+Version:        0.13.0
 Release:        0
 License:        GPL-3.0-only
 Summary:        Development and continuous integration
@@ -173,7 +173,6 @@ Requires:       perl(YAML::PP)
 # but perl-DBD-SQLite-Amalgamation is breaks with SQL syntax errors
 # at job_histroy_sub table
 Requires:       perl-DBD-SQLite
-Requires:       logrotate
 Requires:       perl(Archive::Cpio)
 Requires:       perl(LWP::Protocol::https)
 Requires:       perl(Mail::Sendmail)
@@ -193,7 +192,7 @@ common config and lib files used in kanku
 %tmpfiles_create %_tmpfilesdir/kanku.conf
 
 %files common
-%doc README.md RELEASE-NOTES-0.11.0.md RELEASE-NOTES-0.12.0.md
+%doc README.md RELEASE-NOTES-*.md CHANGELOG.md
 
 %dir /usr/lib/kanku
 %dir /usr/lib/kanku/lib
@@ -244,9 +243,6 @@ common config and lib files used in kanku
 
 %exclude %dir /etc/profile.d
 %config /etc/profile.d/kanku.sh
-
-%exclude %dir /etc/logrotate.d/
-%config /etc/logrotate.d/kanku-common
 
 %exclude %dir %_tmpfilesdir
 %_tmpfilesdir/kanku.conf
@@ -347,7 +343,6 @@ getent passwd %{kanku_user} >/dev/null || useradd -r -g %{kanku_group} -G libvir
 
 %files common-server
 %defattr(-, root, root)
-%dir %attr(755, kankurun, kanku) /var/log/kanku
 %dir %attr(755, kankurun, kanku) /var/lib/kanku
 %dir %attr(755, kankurun, kanku) /var/lib/kanku/db
 %dir %attr(755, kankurun, kanku) /var/cache/kanku

@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Oct 13 06:56:40 UTC 2022 - FSchreiner@suse.com
+
+- Update to version 0.13.0:
+  * [doc] updated changelog ver: 0.13.0
+  * [doc] updated release notes 0.13.0
+  * [core] recreate queues named 'amq.*' without a dedicate queue name
+  * [core] refactored rabbmitmq handling in worker and dispatcher
+  * [handler] Reboot: new option 'login_timeout' to wait for console
+  * [dist] change copy in Makefile from '-av' to '-rv'
+  * [handler] SaltSSH: added multiple attributes
+  * [dist] changed 'cp -av' to 'cp -rv'
+  * [dist] added RELEASE-NOTES and CHANGELOG to spec file
+  * [doc] updated changelog
+  * [doc] updated release notes 0.12.7
+  * [doc] updated release notes 0.12.6
+  * [doc] updated release notes 0.12.5
+  * [doc] updated release notes 0.12.4
+  * [doc] updated release notes 0.12.3
+  * [doc] updated release notes 0.12.2
+  * [doc] updated release notes 0.12.1
+  * [doc] updated release notes 0.12.0
+  * [contrib] removed p2h - already in branch gh-pages-src
+  * [dist] added .statocles to .gitignore
+  * [dist] removed kanku-web.log from default logging conf
+  * [dist] remove logrotate config - now done with journald
+  * [cli] ssh: new parameter --x11_forward/-X to enable ssh x11 forwarding
+
+-------------------------------------------------------------------
 Thu Jun 23 16:55:29 UTC 2022 - FSchreiner@suse.com
 
 - Update to version 0.12.7:

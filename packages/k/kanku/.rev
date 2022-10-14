@@ -150,4 +150,12 @@
     <comment>update to 0.12.7</comment>
     <requestid>984748</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7d5a76c657e620d72f9856692b9465aa</srcmd5>
+    <version>0.13.0</version>
+    <time>1665754899</time>
+    <user>dimstar_suse</user>
+    <comment>update to version 0.13.0</comment>
+    <requestid>1010421</requestid>
+  </revision>
 </revisionlist>
