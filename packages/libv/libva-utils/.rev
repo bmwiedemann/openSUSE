@@ -169,4 +169,12 @@
   *  meson: check the dependency of libdrm</comment>
     <requestid>987904</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>17969cc4a7833719e6d3cc3b30507b9d</srcmd5>
+    <version>2.16.0</version>
+    <time>1665754958</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010607</requestid>
+  </revision>
 </revisionlist>
