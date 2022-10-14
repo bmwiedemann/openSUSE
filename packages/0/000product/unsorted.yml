@@ -27,6 +27,7 @@ unsorted:
   - CSXCAD-matlab 
   - Cadence 
   - CastXML-devel 
+  - Catch2-2-devel 
   - Catch2-devel 
   - CharLS-devel 
   - Coin-devel 
@@ -1434,6 +1435,7 @@ unsorted:
   - bowtie: [x86_64] 
   - bowtie2: [x86_64] 
   - bpftool 
+  - bpftool-bash-completion 
   - bpftool-rebuild 
   - bpftrace: [x86_64] 
   - bpftrace-tools: [x86_64] 
@@ -6999,6 +7001,7 @@ unsorted:
   - highlight-zsh-completion 
   - highway-devel 
   - highway-devel-doc 
+  - himalaya: [x86_64] 
   - himeno 
   - hiredis 
   - hiredis-devel 
@@ -8505,7 +8508,6 @@ unsorted:
   - kraft 
   - krb5-auth-dialog 
   - krb5-auth-dialog-lang 
-  - krb5-client: [i586] 
   - krb5-devel 
   - krb5-devel-32bit: [x86_64] 
   - krb5-mini 
@@ -11202,6 +11204,7 @@ unsorted:
   - libgdcm3_0 
   - libgdiplus-devel 
   - libgdiplus0 
+  - libgdk_pixbuf_xlib-2_0-0 
   - libgdk_pixbuf_xlib-2_0-0-32bit: [x86_64] 
   - libgdl-3-5 
   - libgdlmm-3_0-2 
@@ -17196,6 +17199,7 @@ unsorted:
   - myspell-ca_ES_valencia 
   - myspell-ca_FR 
   - myspell-ca_IT 
+  - myspell-ckb 
   - myspell-de_AT 
   - myspell-de_CH 
   - myspell-en_AU 
@@ -17214,7 +17218,6 @@ unsorted:
   - myspell-en_ZA 
   - myspell-en_ZW 
   - myspell-eo 
-  - myspell-eo_EO 
   - myspell-es_AR 
   - myspell-es_BO 
   - myspell-es_CL 
@@ -17238,6 +17241,7 @@ unsorted:
   - myspell-es_UY 
   - myspell-es_VE 
   - myspell-et_EE 
+  - myspell-fa_IR 
   - myspell-fr_BE 
   - myspell-fr_CA 
   - myspell-fr_CH 
@@ -17273,6 +17277,7 @@ unsorted:
   - myspell-nn_NO 
   - myspell-no 
   - myspell-oc_FR 
+  - myspell-oc_FR_lengadoc 
   - myspell-pt_PT 
   - myspell-ro 
   - myspell-ro_RO 
@@ -18406,17 +18411,15 @@ unsorted:
   - openSUSE-release-usb-gnome 
   - openSUSE-release-usb-kde 
   - openSUSE-release-usb-x11 
+  - openSUSE-repos-MicroOS 
   - openSUSE-repos-Tumbleweed 
   - openSUSE-signkey-cert: [x86_64] 
   - openSUSEway 
-  - openafs 
   - openafs-authlibs 
   - openafs-authlibs-devel 
-  - openafs-client 
   - openafs-devel 
   - openafs-fuse_client 
   - openafs-kernel-source 
-  - openafs-kmp-default 
   - openafs-server 
   - openal-soft-devel 
   - openal-soft-devel-32bit: [x86_64] 
@@ -23346,6 +23349,7 @@ unsorted:
   - python310-geolinks 
   - python310-geomdl 
   - python310-geomet 
+  - python310-geopandas 
   - python310-geopy 
   - python310-getmac 
   - python310-geventhttpclient 
@@ -24894,6 +24898,7 @@ unsorted:
   - python310-spur 
   - python310-spyder-kernels 
   - python310-sqlalchemy-migrate 
+  - python310-sqlglot 
   - python310-sqlite-fts4 
   - python310-sqlite-utils 
   - python310-sqlite3-to-mysql 
@@ -26608,6 +26613,7 @@ unsorted:
   - python38-geolinks 
   - python38-geomdl 
   - python38-geomet 
+  - python38-geopandas 
   - python38-geopy 
   - python38-getmac 
   - python38-gevent 
@@ -28227,6 +28233,7 @@ unsorted:
   - python38-spur 
   - python38-spyder-kernels 
   - python38-sqlalchemy-migrate 
+  - python38-sqlglot 
   - python38-sqlite-fts4 
   - python38-sqlite-utils 
   - python38-sqlite3-to-mysql 
@@ -29942,6 +29949,7 @@ unsorted:
   - python39-geolinks 
   - python39-geomdl 
   - python39-geomet 
+  - python39-geopandas 
   - python39-geopy 
   - python39-getmac 
   - python39-gevent 
@@ -31562,6 +31570,7 @@ unsorted:
   - python39-spur 
   - python39-spyder-kernels 
   - python39-sqlalchemy-migrate 
+  - python39-sqlglot 
   - python39-sqlite-fts4 
   - python39-sqlite-utils 
   - python39-sqlite3-to-mysql 
