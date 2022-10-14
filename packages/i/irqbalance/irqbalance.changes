@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Oct 13 09:03:59 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.1:
+  * get irq->module relationship from /sys/bus/pci/*/driver
+  * ensure --banmod is respected
+  * check whether savedptr is NULL before invoking strlen
+  * add meson
+  * support thermal events
+  * fix irqbalance never exits
+  * irqbalance-ui: able to scroll and show coulist and irqs' name 
+- drop proc-interrupts.patch (upstream)
+D proc-interrupts.patch
+- Includes the patches for feature:
+  jsc#PED-754
+  Enable IRQ Balancer to support SoC die during low power state
+
+-------------------------------------------------------------------
 Wed Aug 17 21:39:04 UTC 2022 - dmueller@suse.com
 
 - Update to version 1.9.0:

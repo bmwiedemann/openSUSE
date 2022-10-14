@@ -21,7 +21,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           irqbalance
-Version:        1.9.0
+Version:        1.9.1
 Release:        0
 Summary:        Daemon to balance IRQs on SMP machines
 License:        GPL-2.0-or-later
@@ -30,7 +30,6 @@ URL:            https://github.com/Irqbalance/irqbalance
 Source:         https://github.com/Irqbalance/irqbalance/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source3:        sysconfig.irqbalance
 Patch1:         Set-fd-limit.patch
-Patch2:         proc-interrupts.patch
 BuildRequires:  libcap-ng-devel
 BuildRequires:  libtool
 BuildRequires:  ncurses-devel
