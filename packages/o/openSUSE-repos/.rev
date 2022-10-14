@@ -13,4 +13,12 @@
 - Updates via osc service</comment>
     <requestid>1008886</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f3c5caece0122c033c400b48efcf1d47</srcmd5>
+    <version>20221012.1c71da6</version>
+    <time>1665754852</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010304</requestid>
+  </revision>
 </revisionlist>

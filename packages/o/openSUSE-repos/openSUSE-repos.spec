@@ -25,14 +25,18 @@ ExclusiveArch:  do_not_build
 
 %global flavor @BUILD_FLAVOR@%nil
 
-%if 0%{?is_opensuse}
+%if 0%{?is_opensuse} && 0%{?suse_version} >= 1550
 # Tumbleweed
 %if "%flavor" == "openSUSE-repos-Tumbleweed"
-%if %suse_version >= 1550
 %define theme Tumbleweed
 %define branding tumbleweed
 %endif
+%if "%flavor" == "openSUSE-repos-MicroOS"
+%define theme MicroOS
+%define branding microos
 %endif
+%endif
+
 %if 0%{?sle_version}
 # Leap
 %if 0%{?is_leapmicro}
@@ -47,7 +51,6 @@ ExclusiveArch:  do_not_build
 %endif
 %endif
 %endif
-%endif
 
 %if "%{?theme}" == ""
 ExclusiveArch:  do_not_build
@@ -58,7 +61,7 @@ Name:           openSUSE-repos
 %else
 Name:           openSUSE-repos-%{theme}
 %endif
-Version:        20221007.638a03b
+Version:        20221012.1c71da6
 Release:        0
 Summary:        openSUSE package repositories
 License:        MIT
@@ -76,6 +79,12 @@ Provides:       openSUSE-repos
 # Unconditionally ensure Leap upgrades to Tumbleweed
 Obsoletes:      openSUSE-repos-Leap
 Obsoletes:      openSUSE-repos-LeapMicro
+%endif
+%if "%{?theme}" == "MicroOS"
+# Support migration from literally anything including TW to MicroOS
+Obsoletes:      openSUSE-repos-Leap
+Obsoletes:      openSUSE-repos-LeapMicro
+Obsoletes:      openSUSE-repos-Tumbleweed
 %endif
 
 %description
@@ -95,6 +104,12 @@ Definitions for openSUSE repository management via zypp-services
 %{_datadir}/zypp/local/service/openSUSE/repo/opensuse-%{branding}-repoindex.xml
 %else
 %{_datadir}/zypp/local/service/openSUSE/repo/opensuse-%{branding}-ports-repoindex.xml
+%endif
+%endif
+
+%if "%{theme}" == "MicroOS"
+%ifarch x86_64 aarch64
+%{_datadir}/zypp/local/service/openSUSE/repo/opensuse-%{branding}-repoindex.xml
 %endif
 %endif
 
@@ -129,6 +144,12 @@ mkdir -p %{buildroot}%{_sysconfdir}/zypp/vars.d/
 install opensuse-%{branding}-repoindex.xml -pm 0644 %{buildroot}%{_datadir}/zypp/local/service/openSUSE/repo
 %else ifarch aarch64 %{arm} %{power64} ppc s390x riscv64
 install opensuse-%{branding}-ports-repoindex.xml -pm 0644 %{buildroot}%{_datadir}/zypp/local/service/openSUSE/repo
+%endif
+%endif
+
+%if "%{theme}" == "MicroOS"
+%ifarch x86_64 aarch64
+install opensuse-%{branding}-repoindex.xml -pm 0644 %{buildroot}%{_datadir}/zypp/local/service/openSUSE/repo
 %endif
 %endif
 
@@ -184,6 +205,12 @@ echo "zsystems" >  %{buildroot}%{_sysconfdir}/zypp/vars.d/DIST_ARCH
 ln -sf opensuse-%{branding}-repoindex.xml %{_datadir}/zypp/local/service/openSUSE/repo/repoindex.xml
 %else
 ln -sf opensuse-%{branding}-ports-repoindex.xml %{_datadir}/zypp/local/service/openSUSE/repo/repoindex.xml
+%endif
+%endif
+
+%if "%{theme}" == "MicroOS"
+%ifarch x86_64 aarch64
+ln -sf opensuse-%{branding}-repoindex.xml %{_datadir}/zypp/local/service/openSUSE/repo/repoindex.xml
 %endif
 %endif
 
