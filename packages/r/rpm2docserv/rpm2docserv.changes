@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Oct 13 14:19:48 UTC 2022 - kukuk@suse.com
+
+- Update to version 20221013.faaac97:
+  * Update go dependencies
+  * Add tumbleweed logo
+  * Add local version of logo
+  * Add empty .Suites to avoid build errors in auxserver
+  * Store svg files, too
+  * Add comment about rework of 404 error handling
+  * Use local stored logo
+  * Use product logo in header
+  * Replace "manpages" with "product" in URL description
+  * Rename fallback-icon with breadcrumb-icon
+  * Print stderr with cpio error code
+  * Don't remap existing, uncompressed files
+  * Rename "-inject-assets" to "-assets"
+  * Add stderr of cpio to error message
+
+-------------------------------------------------------------------
 Fri Oct 07 09:57:39 UTC 2022 - kukuk@suse.com
 
 - Update to version 20221007.388ef0d:
