@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 12 15:09:03 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to sort the file list (boo#1041090)
+
+-------------------------------------------------------------------
 Fri Jan  7 09:25:04 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.048:

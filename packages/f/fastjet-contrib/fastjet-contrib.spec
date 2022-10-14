@@ -24,6 +24,8 @@ Summary:        A library of 3rd-party add-ons to FastJet
 License:        GPL-2.0-only
 URL:            https://fastjet.hepforge.org/contrib/
 Source:         https://fastjet.hepforge.org/contrib/downloads/fjcontrib-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM - https://github.com/alisw/fastjet/pull/6
+Patch0:         reproducible.patch
 BuildRequires:  fastjet-devel
 BuildRequires:  gcc-c++
 
@@ -52,6 +54,7 @@ This package provides the static libraries for fastjet-contrib to link against.
 
 %prep
 %setup -q -n fjcontrib-%{version}
+%patch0 -p1
 
 %build
 # %%configure does not work as a few of the args passed to it isn't recognised by the configure script
