@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 14 01:15:46 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Update vendored dependencies
+- Add _constraints to prevent OBS workers randomly failing
+
+-------------------------------------------------------------------
 Tue Sep 13 15:51:54 UTC 2022 - jorik.cronenberg@suse.com
 
 - Update to version 0.22.1:
