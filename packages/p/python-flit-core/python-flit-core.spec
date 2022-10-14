@@ -30,12 +30,12 @@
 # The rest is in Ring1
 %define pprefix python
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} == 150500
-%{expand:%%define skip_%{primary_python} 1}
 BuildRequires:  python3-base >= 3.6
+%{expand:%%define skip_%{primary_python} 1}
 %else
+%define python_module() no-build-without-multibuild-flavor
 # no non-primary python in <=15.4
 ExclusiveArch:  do-not-build
-%define python_module() no-build-without-multibuild-flavor
 %endif
 %endif
 %if "%{flavor}" == "test"
@@ -45,30 +45,31 @@ ExclusiveArch:  do-not-build
 %else
 %bcond_with test
 %endif
-
 Name:           %{pprefix}-flit-core%{?psuffix}
 Version:        3.7.1
 Release:        0
 Summary:        Distribution-building parts of Flit
 License:        BSD-3-Clause AND MIT
 URL:            https://github.com/pypa/flit
-Source0:        https://files.pythonhosted.org/packages/source/f/flit-core/flit_core-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/f/flit_core/flit_core-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.6}
-%if %{with test}
-BuildRequires:  %{python_module flit-core = %{version}}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module testpath}
-%endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
+%if %{with test}
+BuildRequires:  %{python_module flit-core = %{version}}
+BuildRequires:  %{python_module packaging}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module testpath}
+%else
 # SECTION boo#1186870: we are a transitive build dependency of python-packaging which is used by pythondistdeps.py normally creating this entry
-#!BuildIgnore:  python3-packaging
 #!BuildIgnore:  %{primary_python}-packaging
+#!BuildIgnore:  python3-packaging
+%endif
 Provides:       %{mypython}%{python_version}dist(%{modname}) = %{version}
 %if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
-Provides:       %{mypython}3dist(%{modname}) = %{version}
 Provides:       %{mypython}3-%{modname} = %{version}-%{release}
+Provides:       %{mypython}3dist(%{modname}) = %{version}
 Obsoletes:      %{mypython}3-%{modname} < %{version}-%{release}
 %endif
 # /SECTION

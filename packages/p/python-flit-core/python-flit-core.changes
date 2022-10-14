@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct  7 12:16:47 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Make sure the 15.4 tests also have python3-packaging
+- Revert python_exec change, one pure wheel built by python3 is
+  enough
+
+-------------------------------------------------------------------
+Fri Sep 30 11:52:39 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- use the python_exec to bootstrap so that the primary interpeter
+  is used
+
+-------------------------------------------------------------------
 Tue Aug  2 19:03:15 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Use prjconf provided primary_python if available
