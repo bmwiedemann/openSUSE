@@ -22,10 +22,8 @@
 %bcond_with libalternatives
 %endif
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 Name:           python-jsonschema
-Version:        4.10.3
+Version:        4.16.0
 Release:        0
 Summary:        An implementation of JSON-Schema validation for Python
 License:        MIT
@@ -33,13 +31,10 @@ URL:            https://github.com/python-jsonschema/jsonschema
 Source:         https://files.pythonhosted.org/packages/source/j/jsonschema/jsonschema-%{version}.tar.gz
 # SECTION build
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module tomli}
-BuildRequires:  %{python_module wheel}
 # /SECTION
 # SECTION runtime
 BuildRequires:  %{python_module attrs >= 17.4.0}
@@ -85,8 +80,10 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-jsonschema is an implementation of JSON Schema (currently in Draft 3)
-for Python (supporting 2.6+ including Python 3).
+jsonschema is an implementation of the JSON Schema specification for Python
+The validator can be used as python module and from console:
+
+    $ jsonschema --instance sample.json sample.schema
 
 %prep
 %setup -q -n jsonschema-%{version}

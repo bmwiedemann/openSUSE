@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Tue Oct 11 21:10:52 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Clean up specfile
+  * remove obsolete setuptools BuildRequirements
+  * remove old distro python <= 3.6 directives
+  * update outdated description
+
+-------------------------------------------------------------------
+Tue Oct  4 05:29:39 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- change dependency from hatch_fancy_pypi_readme to hatch-fancy-pypi-readme
+
+-------------------------------------------------------------------
+Sun Oct  2 09:08:59 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 4.16.0:
+  * Improve the base URI behavior when resolving a $ref to a resolution URI
+    which is different from the resolved schema's declared $id.
+  * Accessing jsonschema.draftN_format_checker is deprecated. Instead, if you
+    want access to the format checker itself, it is exposed as
+    jsonschema.validators.DraftNValidator.FORMAT_CHECKER on any
+    jsonschema.protocols.Validator.
+
+-------------------------------------------------------------------
+Sun Oct  2 09:08:13 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 4.15.0:
+  * Enable dedicated API documentation page(s) by @Julian in #989
+
+-------------------------------------------------------------------
+Sun Oct  2 08:57:47 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 4.14.0:
+  * FormatChecker.cls_checks is deprecated. Use FormatChecker.checks on
+    an instance of FormatChecker instead.
+  * unevaluatedItems has been fixed for draft 2019. It's nonetheless
+    discouraged to use draft 2019 for any schemas, new or old.
+  * Fix a number of minor annotation issues in protocols.Validator
+
+-------------------------------------------------------------------
+Sun Oct  2 08:44:21 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 4.13.0:
+  * Add support for creating validator classes whose metaschema uses a different
+    dialect than its schemas. In other words, they may use draft2020-12 to define
+    which schemas are valid, but the schemas themselves use draft7 (or a custom
+    dialect, etc.) to define which instances are valid. Doing this is likely
+    not something most users, even metaschema authors, may need, but occasionally
+    will be useful for advanced use cases.
+
+-------------------------------------------------------------------
+Sun Oct  2 08:33:20 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 4.12.1:
+  * Use rST markers in README by @hynek in #987
+
+-------------------------------------------------------------------
+Sun Oct  2 08:26:42 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 4.12.0:
+  - Warn at runtime when subclassing validator classes. Doing so was not
+    intended to be public API, though it seems some downstream libraries
+    do so. A future version will make this an error, as it is brittle and
+    better served by composing validator objects instead. Feel free to reach
+    out if there are any cases where changing existing code seems difficult
+    and I can try to provide guidance.
+
+-------------------------------------------------------------------
+Mon Sep 26 05:01:31 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 4.11.0:
+  - jsonschema deserves a fancy readme by @hynek in #983
+- add new dependency hatch_fancy_pypi_readme
+
+-------------------------------------------------------------------
 Mon Sep 26 05:00:38 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 4.10.3:
