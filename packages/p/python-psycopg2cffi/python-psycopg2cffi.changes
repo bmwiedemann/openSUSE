@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 14 08:13:54 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add allow-rc-versions.patch to fix build with 15rc2 pg version
+
+-------------------------------------------------------------------
 Tue Oct 12 10:18:07 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.9.0

@@ -1,7 +1,7 @@
 #
 # spec file for package python-psycopg2cffi
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ Summary:        Implementation of the psycopg2 module using cffi
 License:        LGPL-3.0-or-later
 URL:            https://github.com/chtd/psycopg2cffi
 Source:         https://files.pythonhosted.org/packages/source/p/psycopg2cffi/psycopg2cffi-%{version}.tar.gz
+# PATCH-FEATURE-OPENSUSE allow-rc-versions.patch to allow 15rc2 pg version
+Patch:          allow-rc-versions.patch
 BuildRequires:  %{python_module devel >= 3.5}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -43,7 +45,7 @@ BuildRequires:  %{python_module six}
 This is a implementation of the psycopg2 module using cffi.
 
 %prep
-%setup -q -n psycopg2cffi-%{version}
+%autosetup -p1 -n psycopg2cffi-%{version}
 
 %build
 export CFLAGS="%{optflags}"
