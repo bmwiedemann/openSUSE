@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 13 07:14:18 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- use https for urls
+
+-------------------------------------------------------------------
 Wed Jul 20 16:23:58 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove unneeded Requires on python-mock. 

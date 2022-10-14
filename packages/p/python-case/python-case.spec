@@ -23,7 +23,7 @@ Release:        0
 Summary:        Python unittest Utilities
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-URL:            http://github.com/celery/case
+URL:            https://github.com/celery/case
 Source:         https://files.pythonhosted.org/packages/source/c/case/case-%{version}.tar.gz
 Patch0:         remove_unittest2.patch
 Patch1:         remove_coverage.patch

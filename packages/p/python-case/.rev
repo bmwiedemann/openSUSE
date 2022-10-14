@@ -50,4 +50,12 @@ Add remove_unittest2.patch to facilitate that</comment>
     <comment>- Remove unneeded Requires on python-mock.</comment>
     <requestid>990434</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>2eb81762ead1257c07c4974d5aef31a0</srcmd5>
+    <version>1.5.3</version>
+    <time>1665754889</time>
+    <user>dimstar_suse</user>
+    <comment>- use https for urls</comment>
+    <requestid>1010390</requestid>
+  </revision>
 </revisionlist>
