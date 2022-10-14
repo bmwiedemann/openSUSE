@@ -1,7 +1,23 @@
 -------------------------------------------------------------------
-Fri Aug  5 07:27:07 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+Thu Oct 13 08:16:51 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 22.09.00:
+  * lib: fwts_version.h - update to V22.09.00
+  * debian: update changelog
+  * acpi: iort: remove redundant code
+  * fwts-test: add regression test for SVKL
+  * acpi: svkl: add test for SVKL table (mantis 2162)
+  * acpi: nhltdump: add endpoint discriptor string description
+  * acpi: nhltdump: add dumping nhlt table for audio configurations
+
+-------------------------------------------------------------------
+Wed Sep 14 07:43:26 UTC 2022 - mpluskal@suse.com
 
 - Update to version 22.07.00:
+  * acpi: fadt: get _CST c2 c3 for p_lvl2 and p_lvl3 tests
+  * uefi: securebootcert: fix the attribute set for AuditMode and DeployedMode
+  * lib: acpi: update battery charge limiting state for _BST
+  * acpi: dbg2: update the subtype for DBG2 table
   * lib: fwts_version.h - update to V22.07.00
   * debian: update changelog
   * auto-packager: mkpackage.sh: remove impish

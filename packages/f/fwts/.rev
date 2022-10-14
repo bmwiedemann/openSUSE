@@ -899,4 +899,24 @@
   * build: Improve linking</comment>
     <requestid>993245</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>e4d383ea70068c5fc723b322f8b50d43</srcmd5>
+    <version>22.09.00</version>
+    <time>1665754903</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 22.09.00:
+  * lib: fwts_version.h - update to V22.09.00
+  * debian: update changelog
+  * acpi: iort: remove redundant code
+  * fwts-test: add regression test for SVKL
+  * acpi: svkl: add test for SVKL table (mantis 2162)
+  * acpi: nhltdump: add endpoint discriptor string description
+  * acpi: nhltdump: add dumping nhlt table for audio configurations
+
+  * acpi: fadt: get _CST c2 c3 for p_lvl2 and p_lvl3 tests
+  * uefi: securebootcert: fix the attribute set for AuditMode and DeployedMode
+  * lib: acpi: update battery charge limiting state for _BST
+  * acpi: dbg2: update the subtype for DBG2 table</comment>
+    <requestid>1010428</requestid>
+  </revision>
 </revisionlist>
