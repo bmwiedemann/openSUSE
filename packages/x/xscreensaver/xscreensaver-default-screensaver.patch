@@ -45,7 +45,7 @@ Index: driver/XScreenSaver_ad.h
 -"*ignoreUninstalledPrograms: False",
 +"*ignoreUninstalledPrograms: True",
  "*authWarningSlack:	20",
--"*textMode:		file",
+-"*textMode:		url",
 +"*textMode:		date",
  "*textLiteral:		XScreenSaver",
  "*textFile:		",
@@ -101,7 +101,7 @@ Index: driver/XScreenSaver.ad.in
 +*ignoreUninstalledPrograms: True
  *authWarningSlack:	20
  
--*textMode:		file
+-*textMode:		url
 +*textMode:		date
  *textLiteral:		XScreenSaver
  *textFile:		@DEFAULT_TEXT_FILE@

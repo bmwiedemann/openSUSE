@@ -1,8 +1,8 @@
-Index: xscreensaver-6.01/driver/xscreensaver.c
+Index: xscreensaver-6.05/driver/xscreensaver.c
 ===================================================================
---- xscreensaver-6.01.orig/driver/xscreensaver.c
-+++ xscreensaver-6.01/driver/xscreensaver.c
-@@ -811,6 +811,10 @@ error_handler (Display *dpy, XErrorEvent
+--- xscreensaver-6.05.orig/driver/xscreensaver.c
++++ xscreensaver-6.05/driver/xscreensaver.c
+@@ -909,6 +909,10 @@ error_handler (Display *dpy, XErrorEvent
     "    The more information you can provide, the better.  But please\n"
     "    report this bug, regardless!\n"
     "\n"
@@ -13,14 +13,15 @@ Index: xscreensaver-6.01/driver/xscreensaver.c
     "#######################################################################\n"
     "\n"
     "\n");
-Index: xscreensaver-6.01/driver/xscreensaver.man
+Index: xscreensaver-6.05/driver/xscreensaver.man
 ===================================================================
---- xscreensaver-6.01.orig/driver/xscreensaver.man
-+++ xscreensaver-6.01/driver/xscreensaver.man
-@@ -985,6 +985,9 @@ power-management-related activity detect
+--- xscreensaver-6.05.orig/driver/xscreensaver.man
++++ xscreensaver-6.05/driver/xscreensaver.man
+@@ -805,6 +805,10 @@ power-management-related activity detect
+ .SH BUGS
  https://www.jwz.org/xscreensaver/bugs.html explains how to write the most
  useful bug reports.  If you find a bug, please let me know!
- 
++ 
 +Before reporting any bugs to the upstream, please check it in the latest
 +version. If it is fixed there, please report it to https://bugzilla.opensuse.org/.
 +
