@@ -839,4 +839,12 @@
   * GCDABinaryPass: handle when there are no functions</comment>
     <requestid>1007666</requestid>
   </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>312719888085b7fcabd5e9afbcec7217</srcmd5>
+    <version>2.6.0+git.20221003.09a5d1e</version>
+    <time>1665754901</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not use ninja, prefer make (due to jobserver interaction with GCC).</comment>
+    <requestid>1010438</requestid>
+  </revision>
 </revisionlist>

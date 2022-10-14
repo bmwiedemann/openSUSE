@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 13 08:51:09 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Do not use ninja, prefer make (due to jobserver interaction with GCC).
+
+-------------------------------------------------------------------
 Mon Oct 03 11:16:33 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.6.0+git.20221003.09a5d1e:
