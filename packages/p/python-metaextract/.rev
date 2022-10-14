@@ -164,4 +164,20 @@
     <comment></comment>
     <requestid>1007061</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>5caaf7b01017e475064b246967c225e8</srcmd5>
+    <version>1.0.9</version>
+    <time>1665754954</time>
+    <user>dimstar_suse</user>
+    <comment>- Change preun to postun for update alternatives
+- Remove not needed setup.py patch
+- Change shared files python-sitelib glob to package
+- Update source package
+- Update to Version 1.0.9:
+  * ci: drop python 3.7, add python 3.10
+  * Add initial support for packages without setup.py
+  * Update badge given that github actions are now used
+</comment>
+    <requestid>1010574</requestid>
+  </revision>
 </revisionlist>

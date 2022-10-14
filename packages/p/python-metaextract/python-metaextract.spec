@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-metaextract
-Version:        1.0.8
+Version:        1.0.9
 Release:        0
 Summary:        Module to collect metadata for Python modules
 License:        Apache-2.0
@@ -35,7 +35,7 @@ Requires:       python-setuptools
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(postun):update-alternatives
 %python_subpackages
 
 %description
@@ -47,8 +47,6 @@ The tool was first developed in py2pack but is now its own module.
 
 %prep
 %setup -q -n metaextract-%{version}
-# https://github.com/toabctl/metaextract/issues/13
-sed -i 's:.pytest-runner.::' setup.py
 
 %build
 %python_build
@@ -62,7 +60,7 @@ sed -i 's:.pytest-runner.::' setup.py
 %post
 %python_install_alternative metaextract
 
-%preun
+%postun
 %python_uninstall_alternative metaextract
 
 %check
@@ -73,6 +71,7 @@ sed -i 's:.pytest-runner.::' setup.py
 %doc README.rst
 %license LICENSE
 %python_alternative %{_bindir}/metaextract
-%{python_sitelib}/*
+%{python_sitelib}/metaextract
+%{python_sitelib}/metaextract-%{version}*-info
 
 %changelog
