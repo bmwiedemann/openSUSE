@@ -26,10 +26,19 @@ LABEL org.opensuse.reference="%%REGISTRY%%/%%TAGPREFIX%%/cdi-importer:%%PKG_VERS
 # endlabelprefix
 
 RUN zypper -n install \
-           qemu-tools qemu-block-curl skopeo tar util-linux \
-           nbdkit nbdkit-basic-filters nbdkit-gzip-filter \
-           nbdkit-xz-filter nbdkit-curl-plugin \
-           containerized-data-importer-importer
+           containerized-data-importer-importer \
+           curl \
+           nbdkit \
+           nbdkit-basic-filters \
+           nbdkit-curl-plugin \
+           nbdkit-gzip-filter \
+           nbdkit-xz-filter \
+           qemu-block-curl \
+           qemu-tools \
+           shadow \
+           skopeo \
+           tar \
+           util-linux
 
 # nbdkit-vddk-plugin is available only on x86_64
 #!ArchExclusiveLine: x86_64
@@ -37,6 +46,9 @@ RUN if [ "$TARGETARCH" = "amd64" ]; then \
               zypper -n install nbdkit-vddk-plugin ; \
               fi;
 
-RUN zypper clean -a
+RUN zypper clean -a && \
+    useradd -u 1001 --create-home -s /bin/bash cdi-importer
 
+WORKDIR /home/cdi-importer
+USER 1001
 ENTRYPOINT [ "/usr/bin/virt-cdi-importer", "-alsologtostderr" ]
