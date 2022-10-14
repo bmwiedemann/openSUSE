@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-httptools
-Version:        0.4.0
+Version:        0.5.0
 Release:        0
 Summary:        Python framework independent HTTP protocol utils
 License:        MIT
