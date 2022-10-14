@@ -24,4 +24,15 @@
     <comment></comment>
     <requestid>812637</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>6d7f147c955e155ef639054abe22e582</srcmd5>
+    <version>1.0</version>
+    <time>1665754908</time>
+    <user>dimstar_suse</user>
+    <comment>- Update nvptx-tools tarball from git
+  * includes changes in nvptx-tools.patch
+  * deals with CUDA 11 dropping support for NVIDIA Kepler sm_30 and sm_32
+- Package nvptx-none-run and nvptx-none-run-single tools</comment>
+    <requestid>1010459</requestid>
+  </revision>
 </revisionlist>

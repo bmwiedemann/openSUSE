@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 13 09:34:42 UTC 2022 - Richard Biener <rguenther@suse.com>
+
+- Update nvptx-tools tarball from git
+  * includes changes in nvptx-tools.patch
+  * deals with CUDA 11 dropping support for NVIDIA Kepler sm_30 and sm_32
+- Package nvptx-none-run and nvptx-none-run-single tools
+
+-------------------------------------------------------------------
 Wed Jun  3 12:02:34 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Enable build on aarch64
