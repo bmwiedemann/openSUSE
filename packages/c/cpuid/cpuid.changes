@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Oct 13 14:05:28 UTC 2022 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Update to release 20221003
+  * Added synth decoding for AMD Ryzen (Phoenix E0, Storm Peak A1)
+  * Added synth & uarch synth decoding for
+    * (0,6),(11,5) Intel Meteor Lake
+    * (0,6),(11,6) Intel Grand Ridge (Crestmont)
+    * (0,6),(11,14) Intel Granite Rapids
+  * Renamed 7/0/eax enh hardware feedback to just "Thread
+    Director".
+  * Added 7/1/eax instructions.
+  * Added 0x12/0/eax SGX ENCLU EDECCSA flag.
+  * Added 0x23 Architecture Performance Monitoring Extended leaf
+    decoding.
+  * Corrected AVX512IFMA description: integer FMA, not just FMA.
+- Release 20220927
+  * Added synth decoding for (10,15),(6,1) Raphael
+  * Fixed title for AMD 0x8000001a leaf: Performance Optimization
+    identifiers.
+
+-------------------------------------------------------------------
 Sat Aug 13 10:39:31 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20220812

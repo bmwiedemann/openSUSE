@@ -17,7 +17,7 @@
 
 
 Name:           cpuid
-Version:        20220812
+Version:        20221003
 Release:        0
 Summary:        x86 CPU identification tool
 License:        GPL-2.0-or-later
@@ -35,7 +35,7 @@ the results into English descriptions. It knows about Intel, AMD, and
 Cyrix CPUs, and is fairly complete.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 # remove -Werror=format-security which is used on Mandriva, as it produces
@@ -52,6 +52,6 @@ install -pm0644 cpuid.man "%buildroot/%_mandir/man1/cpuid.1"
 %doc ChangeLog
 %license LICENSE
 %_bindir/*
-%_mandir/man1/*.1%{?ext_man}
+%_mandir/man1/*.1*
 
 %changelog

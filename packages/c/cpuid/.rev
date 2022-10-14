@@ -111,4 +111,12 @@
     <comment>- Update to release 20220812</comment>
     <requestid>994880</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a7feda8b36f77d5ab7e0e1a8b783343e</srcmd5>
+    <version>20221003</version>
+    <time>1665754931</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20221003</comment>
+    <requestid>1010511</requestid>
+  </revision>
 </revisionlist>
