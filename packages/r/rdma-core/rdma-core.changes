@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 13 07:51:25 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Add rdma-ndd-disable-systemd-ProtectHostName-feature.patch to fix issue
+  where rdma-ndd would not be aware of dynamic hostnames retrived through DHCP
+
+-------------------------------------------------------------------
 Tue Sep 13 17:47:24 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to v42.0

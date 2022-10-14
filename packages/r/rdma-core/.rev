@@ -573,4 +573,13 @@
     <comment></comment>
     <requestid>1003444</requestid>
   </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>386e1812e9fcf21acc75cf3e6b4d2e7e</srcmd5>
+    <version>42.0</version>
+    <time>1665754808</time>
+    <user>dimstar_suse</user>
+    <comment>- Add rdma-ndd-disable-systemd-ProtectHostName-feature.patch to fix issue
+  where rdma-ndd would not be aware of dynamic hostnames retrived through DHCP</comment>
+    <requestid>1010490</requestid>
+  </revision>
 </revisionlist>

@@ -77,6 +77,7 @@ Patch1:         Revert-Update-kernel-headers.patch
 Patch2:         disable-rdma-interface-renaming.patch
 Patch3:         cxgb3-fix-declaration-of-free_context.patch
 Patch4:         cxgb3-fix-support-for-new-uquery-API.patch
+Patch5:         rdma-ndd-disable-systemd-ProtectHostName-feature.patch
 BuildRequires:  binutils
 BuildRequires:  cmake >= 2.8.11
 BuildRequires:  gcc
@@ -424,6 +425,7 @@ easy, object-oriented access to IB verbs.
 %patch2
 %patch3
 %patch4
+%patch5
 
 %build
 
