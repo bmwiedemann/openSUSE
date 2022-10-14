@@ -155,4 +155,16 @@
     <comment></comment>
     <requestid>969549</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>5f63f8518ac182bd83f45ef33098ff11</srcmd5>
+    <version>4.0.0b3</version>
+    <time>1665754939</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 4.0.0b3
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1010521 from glaubitz)</comment>
+    <requestid>1010539</requestid>
+  </revision>
 </revisionlist>
