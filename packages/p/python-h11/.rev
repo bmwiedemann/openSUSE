@@ -90,4 +90,12 @@
   * Ensure request method is a valid token</comment>
     <requestid>955498</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>297509390866986ddb7a2194540c0c01</srcmd5>
+    <version>0.14.0</version>
+    <time>1665754825</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010139</requestid>
+  </revision>
 </revisionlist>
