@@ -514,4 +514,12 @@ eplacement for google-api-python-client, follow our naming convention</comment>
     <comment></comment>
     <requestid>1010143</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>4ad14298d5ab65190e725213e5dbd4c9</srcmd5>
+    <version>2.64.0</version>
+    <time>1665754981</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010904</requestid>
+  </revision>
 </revisionlist>
