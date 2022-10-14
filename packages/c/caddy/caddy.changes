@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Oct 13 19:10:18 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 2.6.2:
+  * httpcaddyfile: Improve detection of indistinguishable TLS automation policies (#5120)
+  * httpcaddyfile: Wrap site block in subroute if host matcher used (#5130)
+  * fileserver: stop listing dir when request context is cancelled (#5131)
+  * replacer: working directory global placeholder (#5127)
+  * httpcaddyfile: Fix `metrics` global option parsing (#5126)
+  * caddyconfig: Implement retries into HTTPLoader (#5077)
+  * Fix typo in comment (#5121)
+  * logging: Fix `skip_hosts` with wildcards (#5102)
+  * caddytest: Revise sleep durations
+  * core: Set version manually via CustomVersion (#5072)
+  * forwardauth: Canonicalize header fields (fix #5038) (#5097)
+  * logging: Perform filtering on arrays of strings (where possible) (#5101)
+  * logging: Add `time_local` option to use local time instead of UTC (#5108)
+  * fileserver: Treat invalid file path as NotFound (#5099)
+  * logging: Better `console` encoder defaults (#5109)
+  * httpcaddyfile: Skip `automate` when `auto_https off` is specified (#5110)
+  * core: Chdir to executable location on Windows (#5115)
+  * ci: enhance the CI/CD flow (#5118)
+  * Fix inverted logic in Windows service detection (#5106)
+  * fileserver: better dark mode visited link contrast (#5105)
+  * go.mod: Upgrade select dependencies
+  * caddyhttp: Remote IP prefix placeholders
+  * map: Remove infinite recursion check (#5094)
+  * reverseproxy: Parse humanized byte size (fix #5095)
+  * admin: Use replacer on listen addresses (#5071)
+  * core: Fix ListenQUIC listener key conflict
+  * reverseproxy: On 103 don't delete own headers (#5091)
+  * caddyhttp: replace placeholders in map defaults (#5081)
+  * core: Refactor and improve listener logic (#5089)
+  * rewrite: Only trim prefix if matched
+  * reverseproxy: fix upstream scheme handling in command (#5088)
+  * ci: fix integration tests (#5079)
+  * headers: Support repeated WriteHeader if 1xx (fix #5074)
+  * fastcgi: Redirect using original URI path (fix #5073)
+  * ci: extend goreleaser timeout to 1-hour (#5067)
+
+-------------------------------------------------------------------
 Fri Sep 23 19:30:59 UTC 2022 - jkowalczyk@suse.com
 
 - Update to version 2.6.1:
@@ -429,4 +469,4 @@ Mon May 24 12:55:21 UTC 2021 - alexandre.vicenzi@suse.com
 -------------------------------------------------------------------
 Wed Apr 28 15:47:43 UTC 2021 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
 
-- Create Caddy package 
+- Create Caddy package
