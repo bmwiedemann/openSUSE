@@ -1,7 +1,7 @@
 #
 # spec file for package python-first
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Python library to return the first true value of an iterable
 License:        MIT
 Group:          Development/Languages/Python
-URL:            http://github.com/hynek/first/
+URL:            https://github.com/hynek/first/
 Source:         https://files.pythonhosted.org/packages/source/f/first/first-%{version}.tar.gz
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
