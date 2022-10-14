@@ -15,6 +15,11 @@ Thu Jul 28 07:42:33 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
 - Allow to install container-selinux instead of apparmor-parser.
 
 -------------------------------------------------------------------
+Sun Jul 17 17:06:01 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Change to using systemd-sysusers
+
+-------------------------------------------------------------------
 Wed Jun 29 12:19:55 UTC 2022 - Aleksa Sarai <asarai@suse.com>
 
 - Backport <https://github.com/containerd/fifo/pull/32> to fix a crash-on-start

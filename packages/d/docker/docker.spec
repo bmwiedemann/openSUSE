@@ -76,6 +76,7 @@ Source102:      sysconfig.docker
 Source103:      README_SUSE.md
 Source104:      docker-audit.rules
 Source105:      docker-daemon.json
+Source106:      docker.sysusers
 # Kubelet-specific sources.
 # bsc#1086185 -- but we only apply this on Kubic.
 Source900:      docker-kubic-service.conf
@@ -114,6 +115,7 @@ BuildRequires:  zsh
 BuildRequires:  fish
 BuildRequires:  go-go-md2man
 BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  sysuser-tools
 # Due to a limitation in openSUSE's Go packaging we cannot have a BuildRequires
 # for 'golang(API) >= 1.17' here, so just require 1.17 exactly. bsc#1172608
 BuildRequires:  go1.17
@@ -137,6 +139,7 @@ Requires:       iptables >= 1.4
 Requires:       procps
 Requires:       tar >= 1.26
 Requires:       xz >= 4.9
+%sysusers_requires
 Requires(post): %fillup_prereq
 Requires(post): udev
 Requires(post): shadow
@@ -296,6 +299,7 @@ xz -dc %{SOURCE2} | tar -xof - --strip-components=1
 popd
 
 %build
+%sysusers_generate_pre %{SOURCE106} %{name} %{name}.conf
 echo "$PWD -- $PWD -- $PWD"
 
 BUILDTAGS="exclude_graphdriver_aufs apparmor selinux seccomp pkcs11"
@@ -413,6 +417,9 @@ install -p -m0644 %{cli_builddir}/man/man5/Dockerfile.5 %{buildroot}%{_mandir}/m
 install -d %{buildroot}%{_mandir}/man8
 install -p -m0644 %{cli_builddir}/man/man8/*.8 %{buildroot}%{_mandir}/man8
 
+# sysusers.d
+install -D -m0644 %{SOURCE106} %{buildroot}%{_sysusersdir}/%{name}.conf
+
 %if "%flavour" == "kubic"
 # place kubelet.env in fillupdir (for kubeadm-criconfig)
 sed -e 's-@LIBEXECDIR@-%{_libexecdir}-g' -i %{SOURCE901}
@@ -421,14 +428,7 @@ install -D -m0644 %{SOURCE901} %{buildroot}%{_fillupdir}/sysconfig.kubelet
 
 %fdupes %{buildroot}
 
-%pre
-# /var/run/docker.sock group owner.
-getent group docker >/dev/null || groupadd -r docker
-
-# used for --userns-remap=default.
-getent passwd dockremap >/dev/null || \
-	useradd -Ur -p '!' -s /bin/false -c 'docker --userns-remap=default' dockremap
-
+%pre -f %{name}.pre
 # /etc/sub[ug]id should exist already (it's part of shadow-utils), but older
 # distros don't have it. Docker just parses it and doesn't need any special
 # shadow-utils helpers.
@@ -472,6 +472,7 @@ grep -q '^dockremap:' /etc/subgid || \
 %dir %{_localstatedir}/lib/docker/
 
 %{_unitdir}/%{realname}.service
+%{_sysusersdir}/%{name}.conf
 %if "%flavour" == "kubic"
 %dir %{_unitdir}/%{realname}.service.d/
 %{_unitdir}/%{realname}.service.d/90-kubic.conf
