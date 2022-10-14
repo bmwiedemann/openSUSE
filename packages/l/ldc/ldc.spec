@@ -33,10 +33,15 @@
 %bcond_with ldc_tests
 
 # Dynamic compiling is not supported with LLVM >= 12
+%if 0%{?suse_version} > 1550
+# We force llvm14 on TW
+%global jit_support 0
+%else
 %if %{pkg_vcmp llvm-devel >= 12}
 %global jit_support 0
 %else
 %global jit_support 1
+%endif
 %endif
 
 # LLVM LTO is too much for 32bit ARM
@@ -59,8 +64,14 @@ BuildRequires:  help2man
 BuildRequires:  libconfig++-devel
 BuildRequires:  libcurl-devel
 BuildRequires:  libstdc++-devel
+%if 0%{?suse_version} > 1550
+# Cannot build with llvm15, so stick with llvm14 for now
+BuildRequires:  clang14
+BuildRequires:  llvm14-devel
+%else
 BuildRequires:  llvm-clang >= 6.0
 BuildRequires:  llvm-devel >= 6.0
+%endif
 BuildRequires:  ncurses-devel
 BuildRequires:  sqlite3-devel
 BuildRequires:  zlib-devel
@@ -171,8 +182,13 @@ sed -i "s# - -o-# \"$PWD/feVer.d\" -o-#" cmake/Modules/FindDCompiler.cmake
 touch no-suse-rules
 %cmake \
     -DCMAKE_USER_MAKE_RULES_OVERRIDE=./no-suse-rules \
+%if 0%{?suse_version} > 1550
+    -DCMAKE_C_COMPILER="%{_bindir}/clang-14" \
+    -DCMAKE_CXX_COMPILER="%{_bindir}/clang++-14" \
+%else
     -DCMAKE_C_COMPILER="%{_bindir}/clang" \
     -DCMAKE_CXX_COMPILER="%{_bindir}/clang++" \
+%endif
     -DINCLUDE_INSTALL_DIR:PATH=%{_includedir}/d \
     -DD_COMPILER:PATH=%{_bindir}/gdmd%{?gdc_suffix} \
     -DCMAKE_CXX_FLAGS="-std=c++11"
@@ -191,8 +207,13 @@ cd ..
 touch no-suse-rules
 %cmake \
     -DCMAKE_USER_MAKE_RULES_OVERRIDE=./no-suse-rules \
+%if 0%{?suse_version} > 1550
+    -DCMAKE_C_COMPILER="%{_bindir}/clang-14" \
+    -DCMAKE_CXX_COMPILER="%{_bindir}/clang++-14" \
+%else
     -DCMAKE_C_COMPILER="%{_bindir}/clang" \
     -DCMAKE_CXX_COMPILER="%{_bindir}/clang++" \
+%endif
     -DINCLUDE_INSTALL_DIR:PATH=%{_includedir}/d \
 %if %{with ldc_bootstrap}
     -DD_COMPILER:PATH=$PWD/../build-bootstrap/bin/ldmd2 \

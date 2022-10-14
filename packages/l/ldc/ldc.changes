@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct  7 14:51:48 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Build against llvm14 for Tumbleweed since llvm15 is not
+  supported yet
+
+-------------------------------------------------------------------
 Tue May 10 07:39:30 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Use gcc-d (gdc) for bootstrapping as recommended by upstream.

@@ -251,4 +251,12 @@
 - Mention %so_ver in %files</comment>
     <requestid>976651</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>d760c6e4e3b5628817b6a5b501e39675</srcmd5>
+    <version>1.29.0</version>
+    <time>1665754962</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010627</requestid>
+  </revision>
 </revisionlist>
