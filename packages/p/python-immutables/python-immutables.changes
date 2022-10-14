@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 12 03:36:57 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 0.19 
+  * Support for Python 3.11
+
+-------------------------------------------------------------------
 Mon Aug 22 22:16:34 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Don't do mypy static type checking of the sources in order to
