@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python3-%{**}}
 Name:           python-respx
-Version:        0.19.2
+Version:        0.20.0
 Release:        0
 Summary:        Mock HTTPX with request patterns and response side effects
 License:        BSD-3-Clause

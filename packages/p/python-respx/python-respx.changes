@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Oct 12 15:57:25 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 0.20.0 
+  Changed
+  * Type Router.__getitem__ to not return optional routes, thanks @flaeppe (#216)
+  * Change Call.response to raise instead of returning optional response (#217)
+  * Change CallList.last to raise instead of return optional call (#217)
+  * Type M() to not return optional pattern, by introducing a Noop pattern (#217)
+  * Type Route.pattern to not be optional (#217)
+  Fixed
+  * Correct type hints for side effects (#217)
+  Added
+  * Runs mypy on both tests and respx (#217)
+  * Added nox test session for python 3.11 (#217)
+  * Added Call.has_response helper, now that .response raises (#217)
+
+-------------------------------------------------------------------
 Mon Aug 22 07:35:00 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Run pytest with --asyncio-mode=auto due to new release of
