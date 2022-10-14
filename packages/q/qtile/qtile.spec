@@ -19,7 +19,7 @@
 %bcond_without test
 %define pythons python3
 Name:           qtile
-Version:        0.21.0
+Version:        0.22.1
 Release:        0
 Summary:        A pure-Python tiling window manager
 # All MIT except for: libqtile/widget/pacman.py:GPL (v3 or later)
@@ -30,8 +30,8 @@ Source:         https://files.pythonhosted.org/packages/source/q/%{name}/%{name}
 Source1:        %{name}-rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  gdk-pixbuf-loader-rsvg
-BuildRequires:  pango-devel
 BuildRequires:  librsvg
+BuildRequires:  pango-devel
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-cairocffi >= 0.9.0
 BuildRequires:  python3-cffi >= 1.1.0
