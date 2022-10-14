@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 14 08:01:13 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Use Catch2-2-devel on Tumbleweed since libgpiod is not ready
+  for Catch2 v3
+
+-------------------------------------------------------------------
 Wed Feb 16 18:27:03 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to v1.6.3:

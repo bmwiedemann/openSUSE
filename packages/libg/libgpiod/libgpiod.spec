@@ -43,7 +43,12 @@ BuildRequires:  libtool
 BuildRequires:  make
 BuildRequires:  python3-devel >= 3.5
 %if %{with libgpiod_tests}
+%if 0%{suse_version} > 1550
+# Only Tumbleweed bumped Catch2 to version 3.x
+BuildRequires:  Catch2-2-devel
+%else
 BuildRequires:  Catch2-devel
+%endif
 BuildRequires:  glib2-devel >= 2.50
 BuildRequires:  kernel-devel >= 5.5
 BuildRequires:  pkgconfig(libudev)
