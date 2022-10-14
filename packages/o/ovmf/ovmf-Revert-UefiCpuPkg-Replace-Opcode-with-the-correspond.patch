@@ -20,10 +20,10 @@ Signed-off-by: Lee, Chun-Yi <jlee@suse.com>
  UefiCpuPkg/PiSmmCpuDxeSmm/X64/SmiEntry.nasm   |  4 +--
  10 files changed, 43 insertions(+), 43 deletions(-)
 
-diff --git a/UefiCpuPkg/CpuDxe/X64/CpuAsm.nasm b/UefiCpuPkg/CpuDxe/X64/CpuAsm.nasm
-index a894ff53ad..66f8857fc0 100644
---- a/UefiCpuPkg/CpuDxe/X64/CpuAsm.nasm
-+++ b/UefiCpuPkg/CpuDxe/X64/CpuAsm.nasm
+Index: edk2-edk2-stable202208/UefiCpuPkg/CpuDxe/X64/CpuAsm.nasm
+===================================================================
+--- edk2-edk2-stable202208.orig/UefiCpuPkg/CpuDxe/X64/CpuAsm.nasm
++++ edk2-edk2-stable202208/UefiCpuPkg/CpuDxe/X64/CpuAsm.nasm
 @@ -1,6 +1,6 @@
  ;------------------------------------------------------------------------------
  ;*
@@ -41,10 +41,10 @@ index a894ff53ad..66f8857fc0 100644
  setCodeSelectorLongJump:
      ret
  
-diff --git a/UefiCpuPkg/Library/CpuExceptionHandlerLib/Ia32/ExceptionHandlerAsm.nasm b/UefiCpuPkg/Library/CpuExceptionHandlerLib/Ia32/ExceptionHandlerAsm.nasm
-index 3fe9aed1e8..58d5312899 100644
---- a/UefiCpuPkg/Library/CpuExceptionHandlerLib/Ia32/ExceptionHandlerAsm.nasm
-+++ b/UefiCpuPkg/Library/CpuExceptionHandlerLib/Ia32/ExceptionHandlerAsm.nasm
+Index: edk2-edk2-stable202208/UefiCpuPkg/Library/CpuExceptionHandlerLib/Ia32/ExceptionHandlerAsm.nasm
+===================================================================
+--- edk2-edk2-stable202208.orig/UefiCpuPkg/Library/CpuExceptionHandlerLib/Ia32/ExceptionHandlerAsm.nasm
++++ edk2-edk2-stable202208/UefiCpuPkg/Library/CpuExceptionHandlerLib/Ia32/ExceptionHandlerAsm.nasm
 @@ -1,5 +1,5 @@
  ;------------------------------------------------------------------------------ ;
 -; Copyright (c) 2016 - 2022, Intel Corporation. All rights reserved.<BR>
@@ -57,10 +57,10 @@ index 3fe9aed1e8..58d5312899 100644
  ;
  AsmIdtVectorBegin:
 -%assign Vector 0
- %rep  32
--    push    byte %[Vector];
-+    db      0x6a        ; push  #VectorNum
-+    db      ($ - AsmIdtVectorBegin) / ((AsmIdtVectorEnd - AsmIdtVectorBegin) / 32) ; VectorNum
+ %rep  256
+-    push    strict dword %[Vector];
++    db      0x6a        ; push  #VectorNum
++    db      ($ - AsmIdtVectorBegin) / ((AsmIdtVectorEnd - AsmIdtVectorBegin) / 32) ; VectorNum
      push    eax
      mov     eax, ASM_PFX(CommonInterruptEntry)
      jmp     eax
@@ -68,7 +68,7 @@ index 3fe9aed1e8..58d5312899 100644
  %endrep
  AsmIdtVectorEnd:
  
-@@ -288,7 +287,7 @@ ErrorCodeAndVectorOnStack:
+@@ -287,7 +286,7 @@ ErrorCodeAndVectorOnStack:
      test    edx, BIT24  ; Test for FXSAVE/FXRESTOR support.
                          ; edx still contains result from CPUID above
      jz      .3
@@ -77,7 +77,7 @@ index 3fe9aed1e8..58d5312899 100644
  .3:
  
  ;; UEFI calling convention for IA32 requires that Direction flag in EFLAGs is clear
-@@ -321,7 +320,7 @@ ErrorCodeAndVectorOnStack:
+@@ -320,7 +319,7 @@ ErrorCodeAndVectorOnStack:
                          ; are supported
      test    edx, BIT24  ; Test for FXSAVE/FXRESTOR support
      jz      .4
@@ -86,10 +86,10 @@ index 3fe9aed1e8..58d5312899 100644
  .4:
      add     esp, 512
  
-diff --git a/UefiCpuPkg/Library/CpuExceptionHandlerLib/Ia32/ExceptionTssEntryAsm.nasm b/UefiCpuPkg/Library/CpuExceptionHandlerLib/Ia32/ExceptionTssEntryAsm.nasm
-index b63cfeac6d..dd3f74d2aa 100644
---- a/UefiCpuPkg/Library/CpuExceptionHandlerLib/Ia32/ExceptionTssEntryAsm.nasm
-+++ b/UefiCpuPkg/Library/CpuExceptionHandlerLib/Ia32/ExceptionTssEntryAsm.nasm
+Index: edk2-edk2-stable202208/UefiCpuPkg/Library/CpuExceptionHandlerLib/Ia32/ExceptionTssEntryAsm.nasm
+===================================================================
+--- edk2-edk2-stable202208.orig/UefiCpuPkg/Library/CpuExceptionHandlerLib/Ia32/ExceptionTssEntryAsm.nasm
++++ edk2-edk2-stable202208/UefiCpuPkg/Library/CpuExceptionHandlerLib/Ia32/ExceptionTssEntryAsm.nasm
 @@ -1,5 +1,5 @@
  ;------------------------------------------------------------------------------ ;
 -; Copyright (c) 2017 - 2022, Intel Corporation. All rights reserved.<BR>
@@ -125,10 +125,10 @@ index b63cfeac6d..dd3f74d2aa 100644
  .4:
      add     esp, 512
  
-diff --git a/UefiCpuPkg/Library/CpuExceptionHandlerLib/X64/ExceptionHandlerAsm.nasm b/UefiCpuPkg/Library/CpuExceptionHandlerLib/X64/ExceptionHandlerAsm.nasm
-index 9a806d1f86..2a5545ecfd 100644
---- a/UefiCpuPkg/Library/CpuExceptionHandlerLib/X64/ExceptionHandlerAsm.nasm
-+++ b/UefiCpuPkg/Library/CpuExceptionHandlerLib/X64/ExceptionHandlerAsm.nasm
+Index: edk2-edk2-stable202208/UefiCpuPkg/Library/CpuExceptionHandlerLib/X64/ExceptionHandlerAsm.nasm
+===================================================================
+--- edk2-edk2-stable202208.orig/UefiCpuPkg/Library/CpuExceptionHandlerLib/X64/ExceptionHandlerAsm.nasm
++++ edk2-edk2-stable202208/UefiCpuPkg/Library/CpuExceptionHandlerLib/X64/ExceptionHandlerAsm.nasm
 @@ -1,5 +1,5 @@
  ;------------------------------------------------------------------------------ ;
 -; Copyright (c) 2012 - 2022, Intel Corporation. All rights reserved.<BR>
@@ -136,15 +136,15 @@ index 9a806d1f86..2a5545ecfd 100644
  ; SPDX-License-Identifier: BSD-2-Clause-Patent
  ;
  ; Module Name:
-@@ -32,13 +32,12 @@ SECTION .text
- ALIGN   8
- 
+@@ -34,13 +34,12 @@ ALIGN   8
+ ; Generate 32 IDT vectors.
+ ; 32 IDT vectors are enough because interrupts (32+) are not enabled in SEC and PEI phase.
  AsmIdtVectorBegin:
 -%assign Vector 0
  %rep  32
 -    push    byte %[Vector]
-+    db      0x6a        ; push  #VectorNum
-+    db      ($ - AsmIdtVectorBegin) / ((AsmIdtVectorEnd - AsmIdtVectorBegin) / 32) ; VectorNum
++    db      0x6a        ; push  #VectorNum
++    db      ($ - AsmIdtVectorBegin) / ((AsmIdtVectorEnd - AsmIdtVectorBegin) / 32) ; VectorNum
      push    rax
      mov     rax, ASM_PFX(CommonInterruptEntry)
      jmp     rax
@@ -152,7 +152,7 @@ index 9a806d1f86..2a5545ecfd 100644
  %endrep
  AsmIdtVectorEnd:
  
-@@ -258,7 +257,7 @@ DrFinish:
+@@ -260,7 +259,7 @@ DrFinish:
  ;; FX_SAVE_STATE_X64 FxSaveState;
      sub rsp, 512
      mov rdi, rsp
@@ -161,7 +161,7 @@ index 9a806d1f86..2a5545ecfd 100644
  
  ;; UEFI calling convention for x64 requires that Direction flag in EFLAGs is clear
      cld
-@@ -285,7 +284,7 @@ DrFinish:
+@@ -287,7 +286,7 @@ DrFinish:
  ;; FX_SAVE_STATE_X64 FxSaveState;
  
      mov rsi, rsp
@@ -170,7 +170,7 @@ index 9a806d1f86..2a5545ecfd 100644
      add rsp, 512
  
  ;; UINT64  Dr0, Dr1, Dr2, Dr3, Dr6, Dr7;
-@@ -372,7 +371,8 @@ DoReturn:
+@@ -374,7 +373,8 @@ DoReturn:
      push    qword [rax + 0x18]       ; save EFLAGS in new location
      mov     rax, [rax]        ; restore rax
      popfq                     ; restore EFLAGS
@@ -180,10 +180,10 @@ index 9a806d1f86..2a5545ecfd 100644
  DoIret:
      iretq
  
-diff --git a/UefiCpuPkg/Library/CpuExceptionHandlerLib/X64/Xcode5ExceptionHandlerAsm.nasm b/UefiCpuPkg/Library/CpuExceptionHandlerLib/X64/Xcode5ExceptionHandlerAsm.nasm
-index 9c72fa5815..84a12ddb88 100644
---- a/UefiCpuPkg/Library/CpuExceptionHandlerLib/X64/Xcode5ExceptionHandlerAsm.nasm
-+++ b/UefiCpuPkg/Library/CpuExceptionHandlerLib/X64/Xcode5ExceptionHandlerAsm.nasm
+Index: edk2-edk2-stable202208/UefiCpuPkg/Library/CpuExceptionHandlerLib/X64/Xcode5ExceptionHandlerAsm.nasm
+===================================================================
+--- edk2-edk2-stable202208.orig/UefiCpuPkg/Library/CpuExceptionHandlerLib/X64/Xcode5ExceptionHandlerAsm.nasm
++++ edk2-edk2-stable202208/UefiCpuPkg/Library/CpuExceptionHandlerLib/X64/Xcode5ExceptionHandlerAsm.nasm
 @@ -1,5 +1,5 @@
  ;------------------------------------------------------------------------------ ;
 -; Copyright (c) 2012 - 2022, Intel Corporation. All rights reserved.<BR>
@@ -191,17 +191,17 @@ index 9c72fa5815..84a12ddb88 100644
  ; SPDX-License-Identifier: BSD-2-Clause-Patent
  ;
  ; Module Name:
-@@ -54,13 +54,12 @@ SECTION .text
- ALIGN   8
+@@ -55,13 +55,12 @@ ALIGN   8
  
+ ; Generate 256 IDT vectors.
  AsmIdtVectorBegin:
 -%assign Vector 0
- %rep  32
--    push    byte %[Vector]
-+    db      0x6a        ; push  #VectorNum
-+    db      ($ - AsmIdtVectorBegin) / ((AsmIdtVectorEnd - AsmIdtVectorBegin) / 32) ; VectorNum
+ %rep  256
+-    push    strict dword %[Vector] ; This instruction pushes sign-extended 8-byte value on stack
++    db      0x6a        ; push  #VectorNum
++    db      ($ - AsmIdtVectorBegin) / ((AsmIdtVectorEnd - AsmIdtVectorBegin) / 32) ; VectorNum
      push    rax
-     mov     rax, strict qword 0 ;    mov     rax, ASM_PFX(CommonInterruptEntry)
+     mov     rax, strict qword 0    ; mov     rax, ASM_PFX(CommonInterruptEntry)
      jmp     rax
 -%assign Vector Vector+1
  %endrep
@@ -257,10 +257,10 @@ index 9c72fa5815..84a12ddb88 100644
  DoIret:
      iretq
  
-diff --git a/UefiCpuPkg/Library/MpInitLib/X64/MpFuncs.nasm b/UefiCpuPkg/Library/MpInitLib/X64/MpFuncs.nasm
-index f1422fd30a..f7f2937faf 100644
---- a/UefiCpuPkg/Library/MpInitLib/X64/MpFuncs.nasm
-+++ b/UefiCpuPkg/Library/MpInitLib/X64/MpFuncs.nasm
+Index: edk2-edk2-stable202208/UefiCpuPkg/Library/MpInitLib/X64/MpFuncs.nasm
+===================================================================
+--- edk2-edk2-stable202208.orig/UefiCpuPkg/Library/MpInitLib/X64/MpFuncs.nasm
++++ edk2-edk2-stable202208/UefiCpuPkg/Library/MpInitLib/X64/MpFuncs.nasm
 @@ -1,5 +1,5 @@
  ;------------------------------------------------------------------------------ ;
 -; Copyright (c) 2015 - 2022, Intel Corporation. All rights reserved.<BR>
@@ -268,16 +268,7 @@ index f1422fd30a..f7f2937faf 100644
  ; SPDX-License-Identifier: BSD-2-Clause-Patent
  ;
  ; Module Name:
-@@ -345,7 +345,7 @@ BITS 64
-     ;
-     ; Far return into 32-bit mode
-     ;
--    retfq
-+o64 retf
- 
- BITS 32
- CompatMode:
-@@ -507,7 +507,7 @@ NoSevEs:
+@@ -354,7 +354,7 @@ NoSevEs:
      ;
      ; Far return into 32-bit mode
      ;
@@ -286,10 +277,10 @@ index f1422fd30a..f7f2937faf 100644
  
  BITS 32
  PmEntry:
-diff --git a/UefiCpuPkg/PiSmmCpuDxeSmm/Ia32/Cet.nasm b/UefiCpuPkg/PiSmmCpuDxeSmm/Ia32/Cet.nasm
-index 9d66b9c5da..0919d6d05f 100644
---- a/UefiCpuPkg/PiSmmCpuDxeSmm/Ia32/Cet.nasm
-+++ b/UefiCpuPkg/PiSmmCpuDxeSmm/Ia32/Cet.nasm
+Index: edk2-edk2-stable202208/UefiCpuPkg/PiSmmCpuDxeSmm/Ia32/Cet.nasm
+===================================================================
+--- edk2-edk2-stable202208.orig/UefiCpuPkg/PiSmmCpuDxeSmm/Ia32/Cet.nasm
++++ edk2-edk2-stable202208/UefiCpuPkg/PiSmmCpuDxeSmm/Ia32/Cet.nasm
 @@ -1,5 +1,5 @@
  ;------------------------------------------------------------------------------ ;
 -; Copyright (c) 2019 - 2022, Intel Corporation. All rights reserved.<BR>
@@ -306,10 +297,10 @@ index 9d66b9c5da..0919d6d05f 100644
  
      mov     eax, cr4
      btr     eax, 23                      ; clear CET
-diff --git a/UefiCpuPkg/PiSmmCpuDxeSmm/Ia32/SmiEntry.nasm b/UefiCpuPkg/PiSmmCpuDxeSmm/Ia32/SmiEntry.nasm
-index 19de5f614e..167f5e14db 100644
---- a/UefiCpuPkg/PiSmmCpuDxeSmm/Ia32/SmiEntry.nasm
-+++ b/UefiCpuPkg/PiSmmCpuDxeSmm/Ia32/SmiEntry.nasm
+Index: edk2-edk2-stable202208/UefiCpuPkg/PiSmmCpuDxeSmm/Ia32/SmiEntry.nasm
+===================================================================
+--- edk2-edk2-stable202208.orig/UefiCpuPkg/PiSmmCpuDxeSmm/Ia32/SmiEntry.nasm
++++ edk2-edk2-stable202208/UefiCpuPkg/PiSmmCpuDxeSmm/Ia32/SmiEntry.nasm
 @@ -1,5 +1,5 @@
  ;------------------------------------------------------------------------------ ;
 -; Copyright (c) 2016 - 2022, Intel Corporation. All rights reserved.<BR>
@@ -326,10 +317,10 @@ index 19de5f614e..167f5e14db 100644
  
  CetDone:
  
-diff --git a/UefiCpuPkg/PiSmmCpuDxeSmm/X64/Cet.nasm b/UefiCpuPkg/PiSmmCpuDxeSmm/X64/Cet.nasm
-index 8bbdbb31cc..3240f9d974 100644
---- a/UefiCpuPkg/PiSmmCpuDxeSmm/X64/Cet.nasm
-+++ b/UefiCpuPkg/PiSmmCpuDxeSmm/X64/Cet.nasm
+Index: edk2-edk2-stable202208/UefiCpuPkg/PiSmmCpuDxeSmm/X64/Cet.nasm
+===================================================================
+--- edk2-edk2-stable202208.orig/UefiCpuPkg/PiSmmCpuDxeSmm/X64/Cet.nasm
++++ edk2-edk2-stable202208/UefiCpuPkg/PiSmmCpuDxeSmm/X64/Cet.nasm
 @@ -1,5 +1,5 @@
  ;------------------------------------------------------------------------------ ;
 -; Copyright (c) 2019 - 2022, Intel Corporation. All rights reserved.<BR>
@@ -346,10 +337,10 @@ index 8bbdbb31cc..3240f9d974 100644
  
      mov     rax, cr4
      btr     eax, 23                      ; clear CET
-diff --git a/UefiCpuPkg/PiSmmCpuDxeSmm/X64/SmiEntry.nasm b/UefiCpuPkg/PiSmmCpuDxeSmm/X64/SmiEntry.nasm
-index d302ca8d01..0e154e5db9 100644
---- a/UefiCpuPkg/PiSmmCpuDxeSmm/X64/SmiEntry.nasm
-+++ b/UefiCpuPkg/PiSmmCpuDxeSmm/X64/SmiEntry.nasm
+Index: edk2-edk2-stable202208/UefiCpuPkg/PiSmmCpuDxeSmm/X64/SmiEntry.nasm
+===================================================================
+--- edk2-edk2-stable202208.orig/UefiCpuPkg/PiSmmCpuDxeSmm/X64/SmiEntry.nasm
++++ edk2-edk2-stable202208/UefiCpuPkg/PiSmmCpuDxeSmm/X64/SmiEntry.nasm
 @@ -1,5 +1,5 @@
  ;------------------------------------------------------------------------------ ;
 -; Copyright (c) 2016 - 2022, Intel Corporation. All rights reserved.<BR>
@@ -366,6 +357,3 @@ index d302ca8d01..0e154e5db9 100644
  
  CetDone:
  
--- 
-2.26.2
-

@@ -22,7 +22,7 @@
 %global softfloat_version b64af41c3276f
 
 Name:           ovmf
-Version:        202205
+Version:        202208
 Release:        0
 Summary:        Open Virtual Machine Firmware
 License:        BSD-2-Clause-Patent
