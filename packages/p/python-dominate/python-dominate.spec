@@ -22,7 +22,7 @@ Version:        2.7.0
 Release:        0
 Summary:        Python library for creating and manipulating HTML documents
 License:        GPL-3.0-only
-URL:            http://github.com/Knio/dominate/
+URL:            https://github.com/Knio/dominate/
 Source:         https://files.pythonhosted.org/packages/source/d/dominate/dominate-%{version}.tar.gz
 BuildRequires:  %{python_module pytest >= 2.7.3}
 BuildRequires:  %{python_module setuptools}
