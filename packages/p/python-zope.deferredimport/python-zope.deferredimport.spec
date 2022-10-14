@@ -23,16 +23,15 @@ Release:        0
 Summary:        On-demand import name resolver
 License:        ZPL-2.1
 Group:          Development/Languages/Python
-URL:            http://github.com/zopefoundation/zope.deferredimport
+URL:            https://github.com/zopefoundation/zope.deferredimport
 Source:         https://files.pythonhosted.org/packages/source/z/zope.deferredimport/zope.deferredimport-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module zope.proxy}
 BuildRequires:  %{python_module zope.testrunner}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-zope.proxy
-BuildRequires:  fdupes
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
