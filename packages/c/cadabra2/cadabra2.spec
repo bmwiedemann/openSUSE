@@ -18,7 +18,7 @@
 
 %bcond_without tests
 Name:           cadabra2
-Version:        2.3.9.3
+Version:        2.4.0.2
 Release:        0
 Summary:        A computer algebra system for solving problems in field theory
 License:        GPL-3.0-or-later
