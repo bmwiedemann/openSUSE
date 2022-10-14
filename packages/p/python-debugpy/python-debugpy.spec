@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@
 %define skip_python36 1
 %define modname debugpy
 Name:           python-%{modname}%{psuffix}
-Version:        1.5.1
+Version:        1.6.3
 Release:        0
 Summary:        An implementation of the Debug Adapter Protocol for Python
 License:        MIT
