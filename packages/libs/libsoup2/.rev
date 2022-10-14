@@ -38,4 +38,12 @@
   + Error when libsoup3 is already loaded before libsoup2. (forwarded request 933592 from iznogood)</comment>
     <requestid>934069</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>267bcf702076a53c5165fc24c30ea995</srcmd5>
+    <version>2.74.3</version>
+    <time>1665754811</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010290</requestid>
+  </revision>
 </revisionlist>
