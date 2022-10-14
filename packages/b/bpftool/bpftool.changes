@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct  7 16:22:21 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Move bash-completion to subpackage so it isn't installed when
+  not needed
+
+-------------------------------------------------------------------
 Fri Apr  8 15:15:39 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add rebuild subpackage to ensure rebuild in TW 

@@ -33,6 +33,16 @@ BuildRequires:  libelf-devel
 bpftool allows for inspection and simple modification of BPF objects (programs
 and maps) on the system.
 
+%package bash-completion
+Summary:        Bash completion for bpftool
+Group:          System/Shells
+Requires:       bash-completion
+Requires:       %{name}
+Supplements:    (%{name} and bash-completion)
+
+%description bash-completion
+bash command line completion support for bpftool.
+
 %package rebuild
 Summary:        Empty package to ensure rebuilding bpftool in OBS
 Group:          System/Monitoring
@@ -65,8 +75,10 @@ make install doc-install DESTDIR=%{buildroot} prefix=%{_prefix} mandir=%{_mandir
 %files
 %license GPL-2.0
 %{_sbindir}/bpftool
-%{_datadir}/bash-completion/completions/bpftool
 %{_mandir}/man?/*.gz
+
+%files bash-completion
+%{_datadir}/bash-completion/completions/bpftool
 
 %files rebuild
 %license GPL-2.0
