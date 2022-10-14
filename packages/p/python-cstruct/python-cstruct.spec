@@ -1,6 +1,7 @@
 #
 # spec file for package python-cstruct
 #
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,23 +13,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cstruct
 Version:        1.8
 Release:        0
-License:        MIT
 Summary:        C-style structs for Python
-Url:            http://github.com/andreax79/python-cstruct
+License:        MIT
 Group:          Development/Languages/Python
+URL:            https://github.com/andreax79/python-cstruct
 Source:         https://github.com/andreax79/python-cstruct/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %python_subpackages
 
@@ -61,7 +63,7 @@ sed -i -e '/^#!\//, 1d' \
 %pytest
 
 %files %{python_files}
-%license LICENSE 
+%license LICENSE
 %doc changelog.txt README.md
 %{python_sitelib}/cstruct*
 

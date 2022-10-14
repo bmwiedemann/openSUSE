@@ -7,4 +7,12 @@
     <comment>  </comment>
     <requestid>826993</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cc6efd3ea94a6e46d9282473f49a57c1</srcmd5>
+    <version>1.8</version>
+    <time>1665754893</time>
+    <user>dimstar_suse</user>
+    <comment>- use https for urls</comment>
+    <requestid>1010396</requestid>
+  </revision>
 </revisionlist>
