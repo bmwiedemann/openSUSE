@@ -21,7 +21,7 @@ Index: etckeeper-1.18.5/etckeeper
 @@ -126,6 +126,13 @@
  export VCS
  
- if [ "$(which perl 2>/dev/null)" != "" ]; then
+ if command -v perl >/dev/null; then
 +	#If environment variable ETCKEEPER_AVOID_PACKAGELIST is not null,
 +	# AVOID_PACKAGELIST in etckeeper.conf is overridden here.
 +	if [ -n "$ETCKEEPER_AVOID_PACKAGELIST" ]; then
