@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Oct 12 09:04:41 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 20221012:
+ * Extend --enable-mpl-subset options effect to some dictionaries
+ * Recognise umlauts typed as -e on non DE keyboard
+ * Add missing ref to Mongolian dictionary icon in Dictionary_mn.mk
+ * tdf#149980 updated Ukrainian dictionaries to 5.8.0
+ * Add Persian (fa-IR) dictionary
+ * tdf#142152 replace keywords in Spanish dictionary description
+ * Updated Slovenian thesaurus
+ * Updated Danish spellchecker
+ * Related: tdf#147390 Add oc-FR-lengadoc to oc_FR/dictionaries.xcu
+ * Updated the English dictionaries: GB
+ * rdm#3572 update github-repo lockdown
+ * Update Mongolian dictionary
+ * There is no EO country, eo-EO is a bad language tag
+ * pt-BR thesaurus: remove idx file from source.
+ * Corrections to pt-BR thesaurus
+ * Adding Central Kurdish(ckb) Spell Checker & Dictionary
+ * resolve committed conflicts in this file
+ * Fixes to pt-BR thesaurus
+ * Update French hyphenation rules
+
+-------------------------------------------------------------------
 Mon Dec 13 12:59:20 UTC 2021 - pgajdos@suse.com
 
 - version update to 20211213
