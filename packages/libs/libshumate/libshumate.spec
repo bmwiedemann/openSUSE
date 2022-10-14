@@ -86,7 +86,6 @@ This package contains development files for %{name}.
 %meson \
 	-D libsoup3=true \
 	-D vector_renderer=true \
-	-D b_coverage=true \
 	-D gtk_doc=true \
 	%{nil}
 %meson_build
