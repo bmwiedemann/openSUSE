@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct 12 18:25:20 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 1.28.0 
+  * Better compress PNG image in documentation
+  * Remove __future__ imports specific to Python 2
+  * Remove inheritance from object specific to Python 2
+  * Simplify GitHub Actions example in documentation
+  * Update ALE vim plugin link in documentation
+  * Update license to latest version of GPLv3
+  * Pre-compile disable/enable rules regexes
+  * Rule quoted-strings: add allow-quoted-quotes option
+  * Add option ignore-from-file in config
+
+-------------------------------------------------------------------
 Mon Jul 18 16:46:08 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.27.1

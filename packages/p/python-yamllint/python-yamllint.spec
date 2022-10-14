@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-yamllint
-Version:        1.27.1
+Version:        1.28.0
 Release:        0
 Summary:        A linter for YAML files
 License:        GPL-3.0-only
