@@ -181,4 +181,12 @@
 </comment>
     <requestid>952682</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>d7e31eb5cc85f65c680d670ca7ed1494</srcmd5>
+    <version>0.3.3+git.1298315003.7bb1d18</version>
+    <time>1665754888</time>
+    <user>dimstar_suse</user>
+    <comment>- use https for urls</comment>
+    <requestid>1010388</requestid>
+  </revision>
 </revisionlist>

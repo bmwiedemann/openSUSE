@@ -41,7 +41,7 @@ BuildArch:      noarch
 Anyjson loads whichever is the fastest JSON module installed and provides
 a uniform API regardless of which JSON implementation is used.
 
-Originally part of carrot (http://github.com/ask/carrot/)
+Originally part of carrot (https://github.com/ask/carrot/)
 
 %prep
 %setup -q -n anyjson-%{version}
