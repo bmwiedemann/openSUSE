@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 13 04:49:15 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+- New upstream release 21.1.1
+  * Updated Chromium to 106.0.5249.103
+  * Fix a memory leak in content::ContentMainDelegate::CreateContentClient()
+  * You can now import the built-in electron module via ESModule loaders, i.e. import('electron') and import 'electron' now work natively.
+
+-------------------------------------------------------------------
 Thu Oct  6 18:00:00 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
 - New upstream release 21.1.0
   * Added WebContents.opener to access window opener

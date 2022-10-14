@@ -71,6 +71,11 @@ BuildArch:      i686
 %bcond_with clang
 
 
+
+%if %{with clang}
+%global toolchain clang
+%else
+
 # Linker selection. GCC only. Default is BFD.
 # arm64 reports relocation errors with BFD.
 %ifarch x86_64 aarch64
@@ -86,28 +91,20 @@ BuildArch:      i686
 %bcond_with lld
 %endif
 
+%endif #with clang
+
 #Mold succeeds on ix86 but seems to produce corrupt binaries (no build-id)
 %bcond_with mold
 
-%if %{without lld}
 
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500 || 0%{?fedora}
-#TODO: Fix LTO build.
-#Electron 19 crashed on selecting any text. see https://gist.github.com/brjsp/80620a5a0be9efbee6b9154cb127879d for the stack trace.
-#Electron 20 ran vscode fine, but Signal had problems with renderer process infinite loop hang.
-#Electron 21 fails linking currently.
-#[  755s] /usr/lib64/gcc/x86_64-suse-linux/12/../../../../x86_64-suse-linux/bin/ld: /tmp/cch8lk8g.ltrans11.ltrans.o: in function `partition_alloc::internal::PCScan::JoinScan()':
-#[  755s] /home/abuild/rpmbuild/BUILD/src/out/Release/../../base/allocator/partition_allocator/starscan/stack/stack.cc:139: undefined reference to `PAPushAllRegistersAndIterateStack'
-#%%bcond_without lto
+%if 0%{without clang}
+#LTO on GCC is broken.
+#Electron crashes on selecting any text. see https://gist.github.com/brjsp/80620a5a0be9efbee6b9154cb127879d for the stack trace.
 %bcond_with lto
 %else
-#Protoc on Leap crashes when built with LTO.
-%bcond_with lto
+%bcond_without lto
 %endif
 
-%else #without lld
-%bcond_with lto
-%endif #without lld
 
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400 || 0%{?fedora}
 %bcond_without system_harfbuzz
@@ -180,9 +177,9 @@ BuildArch:      i686
 # enable this when boo#1203378 and boo#1203379 get fixed
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150600 || 0%{?fedora} >= 37
 %if %{without clang}
-# Clang has several problems with std::optional used by system abseil
 %bcond_without system_abseil
 %else
+# Clang has several problems with std::optional used by system abseil
 %bcond_with system_abseil
 %endif
 %else
@@ -205,7 +202,7 @@ BuildArch:      i686
 
 
 Name:           nodejs-electron
-Version:        21.1.0
+Version:        21.1.1
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
 License:        AFL-2.0 AND Apache-2.0 AND blessing AND BSD-2-Clause AND BSD-3-Clause AND BSD-Protection AND BSD-Source-Code AND bzip2-1.0.6 AND IJG AND ISC AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND MIT-CMU AND MIT-open-group AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later) AND MPL-2.0 AND OpenSSL AND SGI-B-2.0 AND SUSE-Public-Domain AND X11
@@ -330,6 +327,10 @@ Patch3077:      argument_spec-missing-isnan-isinf.patch
 BuildRequires:  clang
 BuildRequires:  lld
 BuildRequires:  llvm
+%if 0%{?suse_version} && 0%{?suse_version} < 1550
+BuildRequires:  gcc11
+BuildRequires:  libstdc++6-devel-gcc11
+%endif
 %endif
 %if %{with gold}
 BuildRequires:  binutils-gold
@@ -618,6 +619,9 @@ BuildArch:      noarch
 Development documentation for the Electron runtime.
 
 %prep
+%if %{with clang}
+clang -v
+%endif
 
 # Use stable path to source to make use of ccache
 %autosetup -n src -p1
@@ -678,6 +682,7 @@ install -d -m 0755 python3-path
 ln -sf %{_bindir}/python3 "$(pwd)/python3-path/python"
 export PATH="$(pwd)/python3-path:${PATH}"
 
+
 #some Fedora ports still try to build with LTO
 ARCH_FLAGS=$(echo "%optflags"|sed 's/-f[^ ]*lto[^ ]*//g' )
 
@@ -690,6 +695,10 @@ ARCH_FLAGS=$(echo "%optflags"|sed 's/-f[^ ]*lto[^ ]*//g' )
 ARCH_FLAGS="$(echo $ARCH_FLAGS | sed -e 's/ -fexceptions / /g')"
 %endif
 
+%if %{with clang}
+#RPM debugedit cannot handle clang's default dwarf-5
+ARCH_FLAGS="$ARCH_FLAGS -fdebug-default-version=4"
+%endif
 
 
 # for wayland
@@ -782,7 +791,7 @@ _link_threads=$(((%{jobs} - 2)))
 _link_threads=1
 %endif
 test "$_link_threads" -le 0 && _link_threads=1
-export LDFLAGS="-flto=$_link_threads --param lto-max-streaming-parallelism=1"
+export LDFLAGS="$LDFLAGS -flto=$_link_threads --param lto-max-streaming-parallelism=1"
 %endif
 
 gn_system_libraries=(
@@ -1091,10 +1100,12 @@ myconf_gn+=" use_gold=false"
 %endif
 
 %if %{with lto}
-myconf_gn+=" use_thin_lto=false"
+
 
 %if %{without clang}
 myconf_gn+=" gcc_lto=true"
+%else
+myconf_gn+=" use_thin_lto=true"
 %endif
 
 # endif with lto
