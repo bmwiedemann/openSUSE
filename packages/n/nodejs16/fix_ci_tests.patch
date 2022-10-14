@@ -2,10 +2,10 @@ Author: Adam Majer <amajer@suse.de>
 Date: Dec 20 09:18:49 UTC 2017
 Summary: Fix CI unit tests framework for OBS building
 
-Index: node-v16.14.2/test/parallel/test-module-loading-globalpaths.js
+Index: node-v18.9.0/test/parallel/test-module-loading-globalpaths.js
 ===================================================================
---- node-v16.14.2.orig/test/parallel/test-module-loading-globalpaths.js
-+++ node-v16.14.2/test/parallel/test-module-loading-globalpaths.js
+--- node-v18.9.0.orig/test/parallel/test-module-loading-globalpaths.js
++++ node-v18.9.0/test/parallel/test-module-loading-globalpaths.js
 @@ -11,6 +11,9 @@ const { addLibraryPath } = require('../c
  
  addLibraryPath(process.env);
@@ -16,10 +16,10 @@ Index: node-v16.14.2/test/parallel/test-module-loading-globalpaths.js
  if (process.argv[2] === 'child') {
    console.log(require(pkgName).string);
  } else {
-Index: node-v16.14.2/test/parallel/test-tls-passphrase.js
+Index: node-v18.9.0/test/parallel/test-tls-passphrase.js
 ===================================================================
---- node-v16.14.2.orig/test/parallel/test-tls-passphrase.js
-+++ node-v16.14.2/test/parallel/test-tls-passphrase.js
+--- node-v18.9.0.orig/test/parallel/test-tls-passphrase.js
++++ node-v18.9.0/test/parallel/test-tls-passphrase.js
 @@ -223,7 +223,7 @@ server.listen(0, common.mustCall(functio
    }, onSecureConnect());
  })).unref();
@@ -29,10 +29,10 @@ Index: node-v16.14.2/test/parallel/test-tls-passphrase.js
  
  // Missing passphrase
  assert.throws(function() {
-Index: node-v16.14.2/test/parallel/test-repl-envvars.js
+Index: node-v18.9.0/test/parallel/test-repl-envvars.js
 ===================================================================
---- node-v16.14.2.orig/test/parallel/test-repl-envvars.js
-+++ node-v16.14.2/test/parallel/test-repl-envvars.js
+--- node-v18.9.0.orig/test/parallel/test-repl-envvars.js
++++ node-v18.9.0/test/parallel/test-repl-envvars.js
 @@ -2,7 +2,9 @@
  
  // Flags: --expose-internals
@@ -44,11 +44,11 @@ Index: node-v16.14.2/test/parallel/test-repl-envvars.js
  const stream = require('stream');
  const REPL = require('internal/repl');
  const assert = require('assert');
-Index: node-v16.14.2/test/common/index.mjs
+Index: node-v18.9.0/test/common/index.mjs
 ===================================================================
---- node-v16.14.2.orig/test/common/index.mjs
-+++ node-v16.14.2/test/common/index.mjs
-@@ -42,6 +42,7 @@ const {
+--- node-v18.9.0.orig/test/common/index.mjs
++++ node-v18.9.0/test/common/index.mjs
+@@ -45,6 +45,7 @@ const {
    expectsError,
    skipIfInspectorDisabled,
    skipIf32Bits,
@@ -56,7 +56,7 @@ Index: node-v16.14.2/test/common/index.mjs
    getArrayBufferViews,
    getBufferSources,
    getTTYfd,
-@@ -87,6 +88,7 @@ export {
+@@ -94,6 +95,7 @@ export {
    expectsError,
    skipIfInspectorDisabled,
    skipIf32Bits,
@@ -64,11 +64,11 @@ Index: node-v16.14.2/test/common/index.mjs
    getArrayBufferViews,
    getBufferSources,
    getTTYfd,
-Index: node-v16.14.2/Makefile
+Index: node-v18.9.0/Makefile
 ===================================================================
---- node-v16.14.2.orig/Makefile
-+++ node-v16.14.2/Makefile
-@@ -523,7 +523,8 @@ test-ci-js: | clear-stalled
+--- node-v18.9.0.orig/Makefile
++++ node-v18.9.0/Makefile
+@@ -524,7 +524,8 @@ test-ci-js: | clear-stalled
  .PHONY: test-ci
  # Related CI jobs: most CI tests, excluding node-test-commit-arm-fanned
  test-ci: LOGLEVEL := info
@@ -78,7 +78,7 @@ Index: node-v16.14.2/Makefile
  	out/Release/cctest --gtest_output=xml:out/junit/cctest.xml
  	$(PYTHON) tools/test.py $(PARALLEL_ARGS) -p tap --logfile test.tap \
  		--mode=$(BUILDTYPE_LOWER) --flaky-tests=$(FLAKY_TESTS) \
-@@ -716,7 +717,8 @@ apidocs_json = $(addprefix out/,$(apidoc
+@@ -717,7 +718,8 @@ apidocs_json = $(addprefix out/,$(apidoc
  apiassets = $(subst api_assets,api/assets,$(addprefix out/,$(wildcard doc/api_assets/*)))
  
  tools/doc/node_modules: tools/doc/package.json
@@ -88,10 +88,10 @@ Index: node-v16.14.2/Makefile
  		echo "Skipping tools/doc/node_modules (no crypto)"; \
  	else \
  		cd tools/doc && $(call available-node,$(run-npm-ci)) \
-Index: node-v16.14.2/test/parallel/test-crypto-dh.js
+Index: node-v18.9.0/test/parallel/test-crypto-dh.js
 ===================================================================
---- node-v16.14.2.orig/test/parallel/test-crypto-dh.js
-+++ node-v16.14.2/test/parallel/test-crypto-dh.js
+--- node-v18.9.0.orig/test/parallel/test-crypto-dh.js
++++ node-v18.9.0/test/parallel/test-crypto-dh.js
 @@ -167,7 +167,7 @@ assert.throws(() => {
    dh3.computeSecret('');
  }, { message: common.hasOpenSSL3 ?
@@ -101,44 +101,3 @@ Index: node-v16.14.2/test/parallel/test-crypto-dh.js
  
  // Invalid test: curve argument is undefined
  assert.throws(
-Index: node-v16.14.2/test/parallel/test-zlib-dictionary-fail.js
-===================================================================
---- node-v16.14.2.orig/test/parallel/test-zlib-dictionary-fail.js
-+++ node-v16.14.2/test/parallel/test-zlib-dictionary-fail.js
-@@ -53,7 +53,7 @@ const input = Buffer.from([0x78, 0xBB, 0
-   stream.on('error', common.mustCall(function(err) {
-     // It's not possible to separate invalid dict and invalid data when using
-     // the raw format
--    assert.match(err.message, /invalid/);
-+    assert.match(err.message, /(invalid|Operation-Ending-Supplemental Code is 0x12)/);
-   }));
- 
-   stream.write(input);
-Index: node-v16.14.2/test/parallel/test-zlib-flush-drain-longblock.js
-===================================================================
---- node-v16.14.2.orig/test/parallel/test-zlib-flush-drain-longblock.js
-+++ node-v16.14.2/test/parallel/test-zlib-flush-drain-longblock.js
-@@ -16,7 +16,7 @@ zipper.write('A'.repeat(17000));
- zipper.flush();
- 
- let received = 0;
--unzipper.on('data', common.mustCall((d) => {
-+unzipper.on('data', common.mustCallAtLeast((d) => {
-   received += d.length;
- }, 2));
- 
-Index: node-v16.14.2/test/parallel/test-zlib-from-string.js
-===================================================================
---- node-v16.14.2.orig/test/parallel/test-zlib-from-string.js
-+++ node-v16.14.2/test/parallel/test-zlib-from-string.js
-@@ -55,7 +55,9 @@ const expectedBase64Gzip = 'H4sIAAAAAAAA
-                            'sHnHNzRtagj5AQAA';
- 
- zlib.deflate(inputString, common.mustCall((err, buffer) => {
--  assert.strictEqual(buffer.toString('base64'), expectedBase64Deflate);
-+  zlib.unzip(buffer, common.mustCall((err, unzipped) => {
-+    assert.strictEqual(unzipped.toString(), inputString);
-+  }));
- }));
- 
- zlib.gzip(inputString, common.mustCall((err, buffer) => {

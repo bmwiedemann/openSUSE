@@ -1,7 +1,7 @@
-Index: node-v18.7.0/tools/install.py
+Index: node-v18.9.0/tools/install.py
 ===================================================================
---- node-v18.7.0.orig/tools/install.py
-+++ node-v18.7.0/tools/install.py
+--- node-v18.9.0.orig/tools/install.py
++++ node-v18.9.0/tools/install.py
 @@ -7,6 +7,7 @@ import errno
  import os
  import shutil
@@ -39,20 +39,11 @@ Index: node-v18.7.0/tools/install.py
      else:
        assert 0  # unhandled action type
  
-@@ -178,7 +183,7 @@ def files(action):
-       output_lib = 'libnode.' + variables.get('shlib_suffix')
-       action([output_prefix + output_lib], 'lib/' + output_lib)
-   if 'true' == variables.get('node_use_dtrace'):
--    action(['out/Release/node.d'], 'lib/dtrace/node.d')
-+    action(['out/Release/node.d'], libdir() + '/dtrace/node.d')
- 
-   # behave similarly for systemtap
-   action(['src/node.stp'], 'share/systemtap/tapset/')
-Index: node-v18.7.0/lib/internal/modules/cjs/loader.js
+Index: node-v18.9.0/lib/internal/modules/cjs/loader.js
 ===================================================================
---- node-v18.7.0.orig/lib/internal/modules/cjs/loader.js
-+++ node-v18.7.0/lib/internal/modules/cjs/loader.js
-@@ -1255,7 +1255,7 @@ Module._initPaths = function() {
+--- node-v18.9.0.orig/lib/internal/modules/cjs/loader.js
++++ node-v18.9.0/lib/internal/modules/cjs/loader.js
+@@ -1254,7 +1254,7 @@ Module._initPaths = function() {
      path.resolve(process.execPath, '..') :
      path.resolve(process.execPath, '..', '..');
  

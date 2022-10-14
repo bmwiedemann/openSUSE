@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct 13 08:29:08 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- Update to LTS version 16.18.0:
+  * http: throw error on content-length mismatch
+  * stream: add ReadableByteStream.tee()
+  * deps: npm updated to 8.19.2
+
+- nodejs-libpath.patch, fix_ci_tests.patch, versioned.patch: refreshed
+- undici_5.8.1.patch, undici_5.8.2.patch: upstreamed and removed
+- systemtap.patch: upstream regression
+
+-------------------------------------------------------------------
 Mon Sep 26 14:20:03 UTC 2022 - Adam Majer <adam.majer@suse.de>
 
 - Update to Nodejs 16.17.1:

@@ -1,0 +1,32 @@
+From 1315a833332c8b6c14023666956ecf6bb5571d5e Mon Sep 17 00:00:00 2001
+From: Stephen Gallagher <sgallagh@redhat.com>
+Date: Wed, 14 Sep 2022 16:23:13 -0400
+Subject: [PATCH] build: fix bad upstream merge
+
+The upstream merge of https://github.com/nodejs/node/commit/e27e709d3c
+accidentally removed code related to systemtap and dtrace.
+
+Signed-off-by: Stephen Gallagher <sgallagh@redhat.com>
+PR-URL: https://github.com/nodejs/node/pull/44642
+Reviewed-By: Rafael Gonzaga <rafael.nunu@hotmail.com>
+Reviewed-By: Richard Lau <rlau@redhat.com>
+---
+ tools/install.py | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/tools/install.py b/tools/install.py
+index 4b01d67da54e..9d5f4a48bca2 100755
+--- a/tools/install.py
++++ b/tools/install.py
+@@ -177,6 +177,11 @@ def files(action):
+     else:
+       output_lib = 'libnode.' + variables.get('shlib_suffix')
+       action([output_prefix + output_lib], variables.get('libdir') + '/' + output_lib)
++  if 'true' == variables.get('node_use_dtrace'):
++    action(['out/Release/node.d'], 'lib/dtrace/node.d')
++
++  # behave similarly for systemtap
++  action(['src/node.stp'], 'share/systemtap/tapset/')
+ 
+   action(['deps/v8/tools/gdbinit'], 'share/doc/node/')
+   action(['deps/v8/tools/lldb_commands.py'], 'share/doc/node/')

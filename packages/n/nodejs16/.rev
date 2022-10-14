@@ -318,4 +318,18 @@
 - Update to LTS version 16.17.0:</comment>
     <requestid>1006690</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>145dd4ad80ce8a24a4eb8a3e3bc1a18f</srcmd5>
+    <version>16.18.0</version>
+    <time>1665754919</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to LTS version 16.18.0:
+  * http: throw error on content-length mismatch
+  * stream: add ReadableByteStream.tee()
+  * deps: npm updated to 8.19.2
+- nodejs-libpath.patch, fix_ci_tests.patch, versioned.patch: refreshed
+- undici_5.8.1.patch, undici_5.8.2.patch: upstreamed and removed
+- systemtap.patch: upstream regression</comment>
+    <requestid>1010467</requestid>
+  </revision>
 </revisionlist>
