@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct 12 18:23:26 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 0.5.7 
+  * Added tox.ini to source distributions.
+
+- Update to version 0.5.6
+  * Added support for Python 3.10.
+
+- Update to version 0.5.5
+  * Added support for Python 3.9.
+
+-------------------------------------------------------------------
 Thu Apr 16 07:54:58 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.5.4:

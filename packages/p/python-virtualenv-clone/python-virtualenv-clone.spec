@@ -1,7 +1,7 @@
 #
 # spec file for package python-virtualenv-clone
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-virtualenv-clone
-Version:        0.5.4
+Version:        0.5.7
 Release:        0
 Summary:        Script to clone virtualenvs
 License:        MIT
@@ -32,7 +32,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-virtualenv
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires(preun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
