@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct 12 18:17:57 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 0.17.0 
+  * This release adds Python 3.11 support, updates bundled libuv to 1.43.0
+    and fixes a handful of issues.
+  * visit https://github.com/MagicStack/uvloop/releases/tag/v0.17.0 for more changelog for 0.17.0  
+
+
+-------------------------------------------------------------------
 Thu Sep  9 14:04:48 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
 
 - Add libuv >= 1.28.0 BuildRequires.

@@ -1,7 +1,7 @@
 #
 # spec file for package python-uvloop
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define skip_python36 1
 %define modname uvloop
 Name:           python-uvloop
-Version:        0.16.0
+Version:        0.17.0
 Release:        0
 Summary:        An asyncio event loop on top of libuv
 License:        Apache-2.0 AND MIT
