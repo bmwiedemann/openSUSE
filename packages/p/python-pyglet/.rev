@@ -123,4 +123,12 @@
   * Windows - Fix crash when font characters are more than one codepoint in length.</comment>
     <requestid>989684</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>49f028046cdc14da941338026a6e97e0</srcmd5>
+    <version>1.5.27</version>
+    <time>1665754880</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010369</requestid>
+  </revision>
 </revisionlist>
