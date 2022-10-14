@@ -1,7 +1,7 @@
 #
 # spec file for package python-backoff
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,26 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-backoff
-Version:        1.10.0
+Version:        2.2.1
 Release:        0
 Summary:        Function decoration for backoff and retry
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/litl/backoff
 Source0:        https://files.pythonhosted.org/packages/source/b/backoff/backoff-%{version}.tar.gz
-# https://github.com/litl/backoff/issues/75
-# github repo does not have setup.py
-Source1:        tests.tar.bz2
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module responses}
 # /SECTION
 %python_subpackages
 
@@ -50,18 +54,16 @@ Decorators support both regular functions for synchronous code and
 for asynchronous code.
 
 %prep
-%setup -q -n backoff-%{version} -a1
+%setup -q -n backoff-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# will not work with python 2.7
-rm -r tests/python35
 %pytest
 
 %files %{python_files}

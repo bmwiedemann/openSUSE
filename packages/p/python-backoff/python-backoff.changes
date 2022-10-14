@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Oct 13 06:36:05 UTC 2022 - Adrian Schröter <adrian@suse.de>
+
+- update to version 2.2.1
+  - Fix type hint for wait generators https://github.com/litl/backoff/issues/177
+  - Improve type annotation for wait generators from @hauntsaninja
+  - Include exception in details dict of call handlers from @petamas
+  - Improve type hints for call handlers from @cdce8p
+  - Don't use importlib.metadata for __version__ https://github.com/litl/backoff/issues/166
+  - Fix bug with max_tries/max_time callables https://github.com/litl/backoff/issues/164
+  - Get max_tries/max_time values for every call fixes #160 (from @jvrsantacruz)
+  - Allow None for jitter keyword arg (typing)
+  - Add raise_on_giveup keyword arg for decorators
+  - Add backoff.runtime wait generator for dynamically setting wait times based
+    on target function return value or exception details
+  - Improve type hints for on_success, on_backoff, on_giveup handlers
+  - Use decorator-specific detail and handler type hints
+  - Optionally use typing_extensions for python 3.7 type hinting
+  - Drop python 3.6 support
+  - Add python 3.10 support
+
+-------------------------------------------------------------------
 Fri Jan 17 16:42:58 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 1.10.0
