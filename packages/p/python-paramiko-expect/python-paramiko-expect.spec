@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-paramiko-expect
-Version:        0.3.2
+Version:        0.3.4
 Release:        0
 Summary:        An expect-like extension for the Paramiko SSH library
 License:        MIT
