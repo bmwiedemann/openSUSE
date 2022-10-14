@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 13 12:15:54 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Add README.SUSE to make users aware of potential security issues
+  (bsc#1202928)
+- Ran spec-cleaner on the spec file
+
+-------------------------------------------------------------------
 Tue May 31 06:58:06 UTC 2022 - Stefan Weiberg <sweiberg@suse.com>
 
 - Update to v0.55.0
