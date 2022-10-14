@@ -24,17 +24,14 @@
 %bcond_with rigetti
 %define cirqmodules core aqt google ionq pasqal web %{?_with_rigetty:rigetty}
 Name:           python-cirq
-Version:        0.13.1
+Version:        1.0.0
 Release:        0
 Summary:        Library for writing quantum circuits
 License:        Apache-2.0
 URL:            https://github.com/quantumlib/Cirq
 Source:         https://github.com/quantumlib/Cirq/archive/v%{version}.tar.gz#/%{packagename}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM 4636.patch gh#quantumlib/Cirq#4379 mcepl@suse.com
-# Fix t_hilbert_schmidt_inner_product_is_positive_definite to work on aarch64 as well
-Patch0:         4636.patch
-# PATCH-FIX-UPSTREAM 4873.patch gh#quantumlib/Cirq#4873
-Patch1:         https://github.com/quantumlib/Cirq/pull/4873.patch
+# PATCH-FIX-UPSTREAM fix-tests.patch gh#quantumlib/Cirq#5911
+Patch:          fix-tests.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -55,6 +52,7 @@ BuildRequires:  %{python_module requests >= 2.18}
 # /SECTION
 # SECTION cirq-google
 BuildRequires:  %{python_module google-api-core >= 1.14.0}
+BuildRequires:  %{python_module proto-plus >= 1.20.0}
 BuildRequires:  %{python_module protobuf >= 3.12.0}
 # google-api-core[grpc]
 BuildRequires:  %{python_module grpcio}
@@ -235,6 +233,8 @@ donttest="test_json_test_data_coverage"
 donttest="$donttest or test_json_and_repr_data"
 # mock error
 donttest="$donttest or test_get_engine_sampler"
+# version in release isn't updated in this test
+donttest="$donttest or test_version"
 for p in %cirqmodules; do
   pushd cirq-$p
   %pytest -k "not ($donttest)"
