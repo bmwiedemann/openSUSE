@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Oct  9 20:29:19 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 1.0:
+  * A new, much better skylight model
+  * Many details around eclipses
+  * Updated Observation List features
+  * New features in AstroCalc tool
+  * HiDPI improvements
+  * Better dithering
+  * New skyculture: Samoan
+  * Updated several skycultures
+  * Updates in Angle Measure, Satellites, Oculars, Remote Control,
+    Pulsars plugins
+  * Many more bugfixes.
+- Add patch from upstream to allow building with Qt >= 6.4.0
+  + use-QString-instead-of-QByteArray.patch
+- Add patch from upstream to make XLSX support optional
+  + make-support-XLSX-files-optional.patch
+
+-------------------------------------------------------------------
 Thu Jul  7 19:51:03 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 0.22.2:

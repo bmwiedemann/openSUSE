@@ -16,10 +16,14 @@
 #
 
 
-%global qt_version %(qtpaths --qt-version | awk -F. '{ printf "%02d%02d%02d", $1, $2, $3 }')
+%if 0%{?suse_version} > 1500
+%bcond_with     Qt5
+%else
+%bcond_without  Qt5
+%endif
 
 Name:           stellarium
-Version:        0.22.2
+Version:        1.0
 Release:        0
 Summary:        Astronomical Sky Simulator
 License:        GPL-2.0-or-later
@@ -28,16 +32,27 @@ URL:            https://stellarium.org/
 Source0:        https://github.com/Stellarium/stellarium/releases/download/v%{version}/stellarium-%{version}.tar.gz
 Source1:        https://github.com/Stellarium/stellarium/releases/download/v%{version}/stellarium-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
-BuildRequires:  cmake >= 2.8.12
+# PATCH-FIX-UPSTREAM https://github.com/Stellarium/stellarium/issues/2709
+Patch0:         use-QString-instead-of-QByteArray.patch
+# PATCH-FEATURE-UPSTREAM https://github.com/Stellarium/stellarium/pull/2723
+Patch1:         make-support-XLSX-files-optional.patch
+BuildRequires:  cmake >= 3.16.0
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++ >= 4.8.1
+BuildRequires:  gcc-c++ >= 7
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libqt5-qtpaths
-BuildRequires:  pkgconfig
+BuildRequires:  libnova-devel
+BuildRequires:  libxkbcommon-devel >= 0.5.0
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libindi)
+BuildRequires:  pkgconfig(zlib)
+%if %{with Qt5}
+BuildRequires:  libqt5-qtpaths
+BuildRequires:  libQt5Core-private-headers-devel >= 5.9.0
+BuildRequires:  libQt5Gui-private-headers-devel >= 5.9.0
 BuildRequires:  pkgconfig(Qt5Charts)
 BuildRequires:  pkgconfig(Qt5Concurrent)
-BuildRequires:  pkgconfig(Qt5Gui) >= 5.9.0
+BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Multimedia)
 BuildRequires:  pkgconfig(Qt5MultimediaWidgets)
 BuildRequires:  pkgconfig(Qt5Network)
@@ -49,9 +64,26 @@ BuildRequires:  pkgconfig(Qt5SerialPort)
 BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(Qt5UiTools)
 BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(dri)
-BuildRequires:  pkgconfig(glu)
-BuildRequires:  pkgconfig(zlib)
+%else
+BuildRequires:  qt6-core-private-devel >= 6.2.0
+BuildRequires:  qt6-gui-private-devel >= 6.2.0
+BuildRequires:  pkgconfig(Qt6Charts)
+BuildRequires:  pkgconfig(Qt6Concurrent)
+BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6Linguist)
+BuildRequires:  pkgconfig(Qt6Multimedia)
+BuildRequires:  pkgconfig(Qt6MultimediaWidgets)
+BuildRequires:  pkgconfig(Qt6Network)
+BuildRequires:  pkgconfig(Qt6OpenGL)
+BuildRequires:  pkgconfig(Qt6Positioning)
+BuildRequires:  pkgconfig(Qt6PrintSupport)
+BuildRequires:  pkgconfig(Qt6Qml)
+BuildRequires:  pkgconfig(Qt6SerialPort)
+BuildRequires:  pkgconfig(Qt6Test)
+BuildRequires:  pkgconfig(Qt6UiTools)
+BuildRequires:  pkgconfig(Qt6Widgets)
+Requires:       qt6-multimedia
+%endif
 %if 0%{?is_opensuse}
 BuildRequires:  pkgconfig(libgps)
 %endif
@@ -62,22 +94,16 @@ time, similar to what can be observed with human eyes through
 binoculars or a small telescope.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 export QT_HASH_SEED=0
-%cmake -DBUILD_SHARED_LIBS=OFF -DCMAKE_POLICY_DEFAULT_CMP0063=NEW \
-%if %{qt_version} >= 051500 && %{qt_version} < 051503 && 0%{?suse_version} < 1550
-%ifarch i586
-       -DENABLE_NLS=OFF \
-%endif
-%endif
-       -DCMAKE_CXX_VISIBILITY_PRESET=hidden -DCMAKE_VISIBILITY_INLINES_HIDDEN=1
-%if %{qt_version} >= 051500 && %{qt_version} < 051503 && 0%{?suse_version} < 1550
-%make_jobs -j1
-%else
-%make_jobs
-%endif
+%cmake	-DCMAKE_BUILD_TYPE=Release \
+	-DCPM_USE_LOCAL_PACKAGES=yes \
+	-DBUILD_SHARED_LIBS=OFF \
+	-DENABLE_SHOWMYSKY=OFF \
+	-DENABLE_XLSX=OFF
+%cmake_build
 
 %install
 %cmake_install
