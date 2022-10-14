@@ -1,7 +1,7 @@
 #
 # spec file for package python-haproxyctl
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,27 +12,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
 
 %define skip_python2 1
-
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-haproxyctl
 Version:        0.5
 Release:        0
-License:        GPL-3.0
 Summary:        HAProxy control tool
-Url:            http://github.com/neurogeek/haproxyctl
+License:        GPL-3.0-only
 Group:          Development/Languages/Python
+URL:            https://github.com/neurogeek/haproxyctl
 Source:         https://github.com/neurogeek/haproxyctl/archive/v%{version}.tar.gz#/haproxyctl-%{version}.tar.gz
 Source1:        gpl-3.0.txt
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  unzip
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+BuildRequires:  unzip
 Requires:       haproxy
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
