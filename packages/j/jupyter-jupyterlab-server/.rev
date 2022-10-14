@@ -111,4 +111,16 @@
 </comment>
     <requestid>1005931</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9836b519abaa9833922b1d3b331f9023</srcmd5>
+    <version>2.15.2</version>
+    <time>1665754911</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.15.2
+  * Pin openapi_core dependency #308 (@blink1073)
+- Disable openapi tests, as openapi-core 0.15.x is not compatible
+  * gh#jupyterlab/jupyterlab_server#308
+</comment>
+    <requestid>1010473</requestid>
+  </revision>
 </revisionlist>

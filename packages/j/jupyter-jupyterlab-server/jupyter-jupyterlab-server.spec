@@ -17,8 +17,9 @@
 
 
 %define oldpython python
+%bcond_with openapitests
 Name:           jupyter-jupyterlab-server
-Version:        2.15.1
+Version:        2.15.2
 Release:        0
 Summary:        Server components for JupyterLab and JupyterLab-like applications
 License:        BSD-3-Clause
@@ -78,12 +79,15 @@ Obsoletes:      jupyter-jupyterlab_server < %{version}-%{release}
 # SECTION test requirements
 BuildRequires:  %{python_module ipykernel}
 BuildRequires:  %{python_module jupyter-server-test}
-BuildRequires:  %{python_module openapi-core >= 0.14.2}
+%if %{with openapitests}
+# Tumbleweed is already beyond 0.15
+BuildRequires:  %{python_module openapi-core >= 0.14.2 with %python-openapi-core < 0.15}
+BuildRequires:  %{python_module openapi-spec-validator < 0.5}
+%endif
 BuildRequires:  %{python_module pytest >= 5.3.2}
 BuildRequires:  %{python_module pytest-console-scripts}
 BuildRequires:  %{python_module ruamel.yaml}
 BuildRequires:  %{python_module strict-rfc3339}
-BuildRequires:  %{python_module wheel}
 # /SECTION
 %python_subpackages
 
@@ -101,7 +105,10 @@ Obsoletes:      python-jupyterlab-server-test < %{version}-%{release}
 Requires:       python-ipykernel
 Requires:       python-jupyter-server-test
 Requires:       python-jupyterlab-server = %{version}
-Requires:       python-openapi-core >= 0.14.2
+%if %{with openapitests}
+Requires:       python-openapi-spec-validator < 0.5
+Requires:       (python-openapi-core >= 0.14.2 with python-openapi-core < 0.15)
+%endif
 Requires:       python-pytest >= 5.3.2
 Requires:       python-pytest-console-scripts
 Requires:       python-ruamel.yaml
@@ -116,6 +123,7 @@ Provides:       python-jupyterlab-server-openapi = %{version}-%{release}
 Obsoletes:      python-jupyterlab-server-openapi < %{version}-%{release}
 Requires:       python-jupyterlab-server = %{version}
 Requires:       python-openapi-core >= 0.14.2
+Requires:       python-ruamel.yaml
 
 %description openapi
 Metapackage for the jupyterlab_server[openapi] extra
@@ -131,8 +139,16 @@ Metapackage for the jupyterlab_server[openapi] extra
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+%if !%{with openapitests}
+ignore_openapi="--ignore tests/test_labapp.py \
+    --ignore tests/test_listings_api.py  \
+    --ignore tests/test_settings_api.py \
+    --ignore tests/test_themes_api.py \
+    --ignore tests/test_translation_api.py \
+    --ignore tests/test_workspaces_api.py"
+%endif
 # pytest error when trying to import tornasync plugin pulled in by jupyter-server-test (?)
-%pytest -p no:tornasync
+%pytest -p no:tornasync $ignore_openapi
 
 %files %{python_files}
 %license LICENSE
