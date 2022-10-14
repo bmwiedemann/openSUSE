@@ -369,4 +369,14 @@ python-logilab-common is in openSUSE:Factory so this builds now.</comment>
     <comment></comment>
     <requestid>1005710</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>a9b5f6ab58b840098117dcbe1cc5545f</srcmd5>
+    <version>2.12.11</version>
+    <time>1665754809</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.12.11:
+  * Improve detection of namespace packages for the modules with ``__spec__``
+    set to None.</comment>
+    <requestid>1010535</requestid>
+  </revision>
 </revisionlist>
