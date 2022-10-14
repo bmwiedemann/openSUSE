@@ -17,7 +17,7 @@
 # needsrootforbuild
 
 
-%define patchversion 6.0.0
+%define patchversion 6.0.1
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -36,9 +36,9 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        Basic QA tests for the kernel
 License:        GPL-2.0-only
 Group:          SLES
-Version:        6.0.0
+Version:        6.0.1
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g47c5c19
+Release:        <RELEASE>.g94ab0ef
 %else
 Release:        0
 %endif
