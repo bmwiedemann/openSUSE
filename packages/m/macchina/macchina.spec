@@ -17,13 +17,13 @@
 
 
 Name:           macchina
-Version:        6.0.6~git0.c21ce78
+Version:        6.1.6
 Release:        0
 Summary:        Fast, minimal and customizable system information frontend
 License:        MIT
 Group:          Productivity/Text/Utilities
 URL:            https://github.com/Macchina-CLI/macchina#macchina
-Source0:        %{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
 BuildRequires:  cargo-packaging
@@ -58,7 +58,7 @@ true # Skipping tests on other archs than x86_64 due to SIGSEGV on arm64
 
 %files
 %license LICENSE
-%doc CHANGELOG.txt README.md
+%doc CHANGELOG.md README.md
 %{_datadir}/%{name}/%{name}.toml
 %{_bindir}/%{name}
 %{_datadir}/%{name}
