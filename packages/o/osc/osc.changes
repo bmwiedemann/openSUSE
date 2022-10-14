@@ -12,6 +12,14 @@ Thu Sep  8 11:53:22 UTC 2022 - Daniel Mach <daniel.mach@suse.com>
   - Recommend openssh for ssh key auth
 
 -------------------------------------------------------------------
+Wed Aug 17 10:55:30 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
+
+- Fix M2Crypto package name on SLE12
+- Do not build with python3.6 - it does not have libraries
+    nothing provides python36-M2Crypto > 0.19
+    nothing provides python36-chardet
+
+-------------------------------------------------------------------
 Thu Aug 11 11:38:19 UTC 2022 - Daniel Mach <daniel.mach@suse.com>
 
 - fix building on distros that are not openSUSE or SLE

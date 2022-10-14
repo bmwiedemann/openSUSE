@@ -25,16 +25,10 @@
 %if %{with python3}
 
 %define use_python python3
-%define use_pythonpkg python3
-%if 0%{?suse_version} && 0%{?suse_version} < 1500
-%define use_python python3.6
-%define use_pythonpkg python36
-%endif
 
 # else if with python3
 %else
 %define use_python python
-%define use_pythonpkg python
 %endif
 
 %define version_unconverted 0.182.0
@@ -56,16 +50,16 @@ Source1:        debian.dirs
 Source2:        debian.docs
 Source3:        debian.osc.links
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{use_pythonpkg}-devel
-BuildRequires:  %{use_pythonpkg}-setuptools
+BuildRequires:  %{use_python}-devel
+BuildRequires:  %{use_python}-setuptools
 BuildRequires:  diffstat
 %if 0%{?mandriva_version} || 0%{?mageia}
 BuildRequires:  python-rpm
 Requires:       python-rpm
 %else
 %if 0%{?suse_version} >= 1500 || 0%{?fedora} >= 32 || 0%{?rhel} >= 7
-BuildRequires:  %{use_pythonpkg}-rpm
-Requires:       %{use_pythonpkg}-rpm
+BuildRequires:  %{use_python}-rpm
+Requires:       %{use_python}-rpm
 %else
 BuildRequires:  rpm-python
 Requires:       rpm-python
@@ -74,12 +68,12 @@ Requires:       rpm-python
 %if 0%{?suse_version} == 0 || 0%{?suse_version} >= 1120
 BuildArch:      noarch
 %endif
-%if 0%{?suse_version}
 Recommends:     openssh
-Requires:       %{use_pythonpkg}
-Recommends:     %{use_pythonpkg}-progressbar
-BuildRequires:  %{use_pythonpkg}-xml
-Requires:       %{use_pythonpkg}-xml
+%if 0%{?suse_version}
+Requires:       %{use_python}
+Recommends:     %{use_python}-progressbar
+BuildRequires:  %{use_python}-xml
+Requires:       %{use_python}-xml
 %if !%{with python3} && 0%{?suse_version} < 1020
 BuildRequires:  python-elementtree
 Requires:       python-elementtree
@@ -120,7 +114,7 @@ BuildRequires:  python-elementtree
 Requires:       python-elementtree
 %endif
 %if 0%{?suse_version} || 0%{?mandriva_version} || 0%{?mageia}
-%if 0%{?suse_version} >= 1500
+%if 0%{?suse_version} >= 1315
 BuildRequires:  %{use_python}-M2Crypto > 0.19
 BuildRequires:  %{use_python}-chardet
 Requires:       %{use_python}-M2Crypto > 0.19
