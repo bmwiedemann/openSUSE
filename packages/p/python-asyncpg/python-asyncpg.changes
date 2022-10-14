@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 14 07:33:54 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Disable failing test test_executemany_uvloop_ssl_issue_700, because
+  the ssl_user role doesn't have permission to create tables by default with
+  the current postgresql configuration.
+
+-------------------------------------------------------------------
 Thu Aug  4 08:57:47 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Update to 0.26.0:

@@ -54,7 +54,7 @@ A fast PostgreSQL Database Client Library for Python/asyncio.
 PostgreSQL and Python/asyncio with clean implementation
 
 %prep
-%setup -q -n asyncpg-%{version}
+%autosetup -p1 -n asyncpg-%{version}
 # no uvloop in python36 but in newer flavors
 sed -i asyncpg/_testbase/__init__.py \
   -e "/import re/ a import sys" \
@@ -78,6 +78,9 @@ export USE_UVLOOP=1
 %endif
 # fails inside obs chroot
 donttest="test_timetz_encoding"
+# fails because ssl_user doesn't have permission to create tables
+# permission denied for schema public
+donttest+=" or test_executemany_uvloop_ssl_issue_700"
 
 mv asyncpg .asyncpg
 %pytest_arch -rs -k "not ($donttest)"
