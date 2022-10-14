@@ -56,4 +56,14 @@
   * fix: support numbers in Vocab entries (forwarded request 1003635 from jfkw)</comment>
     <requestid>1003636</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>6b626aa37d1ba9c0532d2c3863a3a50e</srcmd5>
+    <version>2.20.2</version>
+    <time>1665754860</time>
+    <user>dimstar_suse</user>
+    <comment>- Add empty directory /usr/share/vale/styles for use by other
+  packages to install vale styles. Use a shortname directory per
+  style package, e.g. /usr/share/vale/styles/suse (forwarded request 1010324 from jfkw)</comment>
+    <requestid>1010325</requestid>
+  </revision>
 </revisionlist>

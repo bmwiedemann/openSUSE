@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 12 21:57:25 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Add empty directory /usr/share/vale/styles for use by other
+  packages to install vale styles. Use a shortname directory per
+  style package, e.g. /usr/share/vale/styles/suse
+
+-------------------------------------------------------------------
 Wed Sep 14 21:44:10 UTC 2022 - jkowalczyk@suse.com
 
 - Update to version 2.20.2:

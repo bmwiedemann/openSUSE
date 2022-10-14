@@ -58,10 +58,15 @@ go build \
 %install
 # Install the binary.
 install -D -m 0755 %{name} "%{buildroot}/%{_bindir}/%{name}"
+# Install empty styles directory for use by other packages
+install --directory %{buildroot}%{_datarootdir}/%{name}/styles
 
 %files
 %doc README.md
 %license LICENSE
 %{_bindir}/%{name}
+# Package empty styles directory for use by other packages
+%dir %{_datarootdir}/%{name}
+%dir %{_datarootdir}/%{name}/styles
 
 %changelog
