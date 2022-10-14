@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 14 01:18:51 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to upstream 0.15.0 release
+  * [CHANGE] Remove choose_formatter. choose_formatter only existed
+    for v0.14.x and was deprecated in v0.14.1. #846
+  * [FEATURE] Support TLS auth when using push gateway with
+    tls_auth_handler. #841
+  * [ENHANCEMENT] Add sum, livemin, and livemax multiprocess
+    modes for Gauges. #794
+
+-------------------------------------------------------------------
 Sat Jun  4 15:39:55 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - Update to upstream 0.14.1 release
