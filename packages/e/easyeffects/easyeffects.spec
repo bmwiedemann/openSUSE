@@ -23,7 +23,7 @@
 %endif
 
 Name:           easyeffects
-Version:        6.2.6
+Version:        6.3.0
 Release:        0
 Summary:        Audio effects for Pulseaudio applications
 License:        GPL-3.0-or-later
@@ -64,21 +64,29 @@ Recommends:     lv2-lsp-plugins
 Recommends:     lv2-zam-plugins
 
 %description
-PulseEffects is a limiter, compressor, reverberation, stereo equalizer and auto volume
-effects for Pulseaudio applications.
+Easyeffects is a limiter, compressor, reverberation, stereo equalizer and auto volume
+effects for pipewire applications.
 
 %package doc
-Summary:        Documentation of Audio effects for Pulseaudio applications
+Summary:        Documentation of Audio effects for pipewire applications
+BuildArch:      noarch
 
 %description doc
-This package contains documentation of Audio effects for Pulseaudio applications
+This package contains documentation of Audio effects for pipewire applications
+
+
 
 %lang_package
+
+%description lang
+Provides translations for the "%{name}" package.
 
 %prep
 %setup -q
 # we don't need this
 sed -i '/^meson.add_install_script/d' meson.build
+
+export QMAKE_CFLAGS_ISYSTEM=-I
 
 %build
 %if %{with gold}
@@ -96,6 +104,10 @@ LDFLAGS+=" -fuse-ld=gold -Wl,--icf=safe"
             -Dc_args="${CFLAGS}" \
             -Dcpp_args="${CXXFLAGS}" \
             || (cat */meson-logs/meson-log.txt; exit 1)
+######## IDIOTIC WORKAROUND ####################
+sed -i s/isystem/I/g $(gcc -dumpmachine)/*.json
+sed -i s/isystem/I/g $(gcc -dumpmachine)/*.ninja
+######## END OF IDIOTIC WORKAROUND #############
 
 %meson_build
 
@@ -108,6 +120,7 @@ LDFLAGS+=" -fuse-ld=gold -Wl,--icf=safe"
 
 %files lang -f easyeffects.lang
 %exclude %{_datadir}/help/*/%{name}
+/usr/share/locale/*/LC_MESSAGES/easyeffects-news.mo
 
 %files
 %{_bindir}/%{name}
@@ -119,8 +132,9 @@ LDFLAGS+=" -fuse-ld=gold -Wl,--icf=safe"
 %{_datadir}/metainfo/com.github.wwmm.%{name}.metainfo.xml
 
 %files doc
-%license LICENSE.md
+%license LICENSE
 %doc CHANGELOG.md README.md
 %{_datadir}/help/*/%{name}
+%exclude %{_datadir}/locale/*
 
 %changelog
