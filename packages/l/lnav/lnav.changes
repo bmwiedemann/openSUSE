@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Tue Oct 11 07:45:43 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.11.1:
+  Features:
+  * Additional validation checks for log formats have been
+    added and will result in warnings. Pass -W on the
+    command-line to view the warnings. The following new
+    check have been added:
+      + Each regex must have a corresponding sample log message
+        that it matches.
+      + Each sample must be matched by only one regex.
+  * Added built-in support for anonymizing content. The
+    :write-* commands now accept an --anonymize option
+    and there is an anonymize() SQL function. The
+    anonymization process will try to replace identifying
+    information with random data. For example, IPv4 addresses
+    are replaced with addresses in the 10.0.0.0/8 range.
+    (This feature is mainly intended to help with providing
+    information to lnav support that does not have sensitive
+    values.)
+  * Added parse_url() and unparse_url() SQL functions for
+    parsing URLs into a JSON object and then back again. Note
+    that the implementation relies on libcurl which has some
+    limitations, like not supporting all types of schemes
+    (e.g. mailto:).
+  * Added the subsecond-field and subsecond-units log
+    format properties to allow for specifying a separate
+    field for the sub-second portion of a timestamp.
+  * Added a keymap for Swedish keyboards.
+  Breaking changes:
+  * The regexp_capture() table-valued-function now returns NULL
+    instead of an empty string for the capture_name column if
+    the capture is not named.
+  Fixes:
+  * Reduce the "no patterns have a capture" error to a warning
+    so that it doesn't block lnav from starting up.
+  * Some ANSI escape sequences will now be removed before testing
+    regexes against a log message.
+  * If a line in a JSON-lines log file does not start with a
+    {, it will now be shown as-is and will not have the JSON
+    parse error.
+  Cost of Doing Business:
+  * Migrated from pcre to pcre2.
+
+-------------------------------------------------------------------
 Fri Sep  2 08:19:55 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.11.0:

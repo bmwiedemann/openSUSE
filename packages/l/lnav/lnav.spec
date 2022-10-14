@@ -26,7 +26,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  gcc6-c++
 %endif
 Name:           lnav
-Version:        0.11.0
+Version:        0.11.1
 Release:        0
 Summary:        Logfile Navigator
 License:        BSD-2-Clause
@@ -41,7 +41,7 @@ BuildRequires:  libcurl-devel
 BuildRequires:  ncurses-devel
 # Only needed for the tests to run
 BuildRequires:  openssh
-BuildRequires:  pcre-devel
+BuildRequires:  pcre2-devel
 BuildRequires:  readline-devel
 BuildRequires:  zlib-devel
 %if 0%{?suse_version}
@@ -88,7 +88,7 @@ install -D -m0644 "%{SOURCE1}" "%{buildroot}%{_datadir}/applications/%{name}.des
 
 %files
 %license LICENSE
-%doc AUTHORS NEWS README
+%doc AUTHORS NEWS.md README
 %{_bindir}/lnav
 %{_mandir}/man1/lnav.1%{?ext_man}
 %if %{defined suse_version}
