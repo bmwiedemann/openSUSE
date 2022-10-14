@@ -16,8 +16,8 @@
 #
 
 
-%define _lto_cflags %{nil}
 %define sover   6
+
 Name:           dav1d
 Version:        1.0.0
 Release:        0
@@ -25,13 +25,12 @@ Summary:        An AV1 decoder
 License:        BSD-2-Clause
 Group:          Productivity/Multimedia/Video/Editors and Convertors
 URL:            https://code.videolan.org/videolan/dav1d
-Source0:        https://code.videolan.org/videolan/dav1d/-/archive/%{version}/dav1d-%{version}.tar.gz
+Source:         https://code.videolan.org/videolan/dav1d/-/archive/%{version}/dav1d-%{version}.tar.gz
 Source99:       baselibs.conf
 BuildRequires:  meson >= 0.49.0
 BuildRequires:  nasm >= 2.14
 BuildRequires:  pkgconfig
-# necessary to meson
-BuildRequires:  rpm >= 4.14
+BuildRequires:  pkgconfig(libxxhash)
 
 %description
 dav1d is a SIMD-enhanced decoder for AV1 video. It features
@@ -64,9 +63,11 @@ Group:          System/Libraries
 %autosetup -p1
 
 %build
-# disabling xxhash until it can be built properly
-%meson -Dxxhash_muxer=disabled
+%meson
 %meson_build
+
+%check
+%meson_test
 
 %install
 %meson_install
