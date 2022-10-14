@@ -1,7 +1,7 @@
 #
 # spec file for package python-ez_setup
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,15 +23,15 @@ Release:        0
 Summary:        Contains ez_setup.py and distribute_setup.py
 License:        MIT
 Group:          Development/Languages/Python
-Url:            http://github.com/ActiveState/ez_setup
+URL:            https://github.com/ActiveState/ez_setup
 Source:         https://files.pythonhosted.org/packages/source/e/ez_setup/ez_setup-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
+BuildArch:      noarch
 %ifpython2
 # also provides distribute_setup.py
 Conflicts:      python-mockito < 0.5.3
 %endif
-BuildArch:      noarch
 %python_subpackages
 
 %description
