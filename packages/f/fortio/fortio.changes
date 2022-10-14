@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 14 04:52:48 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.38.1:
+  * build with go1.19.2 - new linters changes/fixes - dep updates, incl. security fixes (#630)
+  * Bump google.golang.org/grpc from 1.49.0 to 1.50.0 (#628)
+  * Bump github.com/fsnotify/fsnotify from 1.5.4 to 1.6.0 (#629)
+
+-------------------------------------------------------------------
 Wed Sep 21 08:29:20 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 1.38.0:
