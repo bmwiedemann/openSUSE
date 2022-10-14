@@ -120,4 +120,20 @@
     <comment></comment>
     <requestid>1003292</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f69a2802409050f961ae3852b6ac5059</srcmd5>
+    <version>2.16.2</version>
+    <time>1665754979</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.16.2
+  * **deps:** Allow protobuf 3.19.5 (#456)
+  * **samples:** Add create_recognizer code sample (#450)
+  * **samples:** Add quickstart code sample for STT V2 (#451)
+- from version 2.16.1
+  * Remove SpeechHelpers from STT V2 client library (#452)
+- from version 2.16.0
+  * Added Speech-to-Text V2 API (#447)
+  * **deps:** Require protobuf &gt;= 3.20.2 (#446) (forwarded request 1010888 from glaubitz)</comment>
+    <requestid>1010890</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct 14 10:22:04 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.16.2
+  * **deps:** Allow protobuf 3.19.5 (#456)
+  * **samples:** Add create_recognizer code sample (#450)
+  * **samples:** Add quickstart code sample for STT V2 (#451)
+- from version 2.16.1
+  * Remove SpeechHelpers from STT V2 client library (#452)
+- from version 2.16.0
+  * Added Speech-to-Text V2 API (#447)
+  * **deps:** Require protobuf >= 3.20.2 (#446)
+
+-------------------------------------------------------------------
 Tue Sep 13 09:29:35 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.15.1
