@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Oct 10 19:57:09 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- SCons 4.4.0:
+  * new functionality, including updated compile tool support,
+    the ability to override the file modification timestamp for
+    zip files, using a custom hash function, updated ninja
+    support,  experimental features via the --experimental flag
+  * many bugfixes, including improved shared library handling,
+    fixes for Fortan and many build tools
+- drop scons-3.0.0-fix-install.patch in favour of spec construct
+- switch to smaller tarball, simplifying spec file and build
+
+-------------------------------------------------------------------
 Fri Jan  3 19:23:47 CET 2020 - Matej Cepl <mcepl@suse.com>
 
 - Switch off tests

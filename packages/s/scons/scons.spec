@@ -1,7 +1,7 @@
 #
 # spec file for package scons
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,55 +16,20 @@
 #
 
 
-%define modname scons
-%global flavor @BUILD_FLAVOR@%{nil}
-%if "%{flavor}" == "test"
-%define psuffix -test
-%bcond_without test
-%else
-%define psuffix %{nil}
-%bcond_with test
-%endif
-Name:           scons%{psuffix}
-Version:        3.1.2
+%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define pythons python3
+Name:           scons
+Version:        4.4.0
 Release:        0
 Summary:        Replacement for Make
 License:        MIT
 Group:          Development/Tools/Building
 URL:            https://www.scons.org/
-Source0:        http://prdownloads.sourceforge.net/scons/%{modname}-src-%{version}.tar.gz
-#http://www.scons.org/doc/%%{version}/HTML/scons-user.html
-Source1:        scons-user.html-%{version}.tar.bz2
-# Adjust to exclude all failing tests
-Source2:        grep-filter-list.txt
-# Local modification
-Patch8:         scons-3.0.0-fix-install.patch
+Source:         http://prdownloads.sourceforge.net/scons/SCons-%{version}.tar.gz
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  grep
-BuildRequires:  python3-base >= 3.5
-BuildRequires:  python3-lxml
-BuildRequires:  python3-setuptools
-Requires:       python3-base >= 3.5
-%if %{with test}
-# texlive texlive-latex3 biber texmaker ghostscript
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  bison
-# For tests
-BuildRequires:  clang
-BuildRequires:  docbook-xsl-pdf2index
-BuildRequires:  docbook5-xsl-stylesheets
-BuildRequires:  gcc-c++
-BuildRequires:  git
-BuildRequires:  libtool
-BuildRequires:  libxml2-devel
-BuildRequires:  libxslt-devel
-BuildRequires:  libxslt-tools
-BuildRequires:  pcre-devel
-BuildRequires:  subversion
-BuildRequires:  swig
-BuildRequires:  xmlgraphics-fop
-%endif
+BuildRequires:  python-rpm-macros
+BuildArch:      noarch
 
 %description
 SCons is a make replacement that provides a range of enhanced features,
@@ -74,66 +39,25 @@ provides itself as well as the features. SCons allows you to use the
 full power of Python to control compilation.
 
 %prep
-%setup -q -n %{modname}-src-%{version} -a1
-%autopatch -p1
+%autosetup -p1 -n SCons-%{version}
 
 sed -i -e '/QT_LIBPATH = os.path.join.*QTDIR/s/lib/%{_lib}/' \
-    src/engine/SCons/Tool/qt.py
-sed -i 's|%{_bindir}/env python|%{_bindir}/python3|' src/script/*
-
-cp %{SOURCE2} grep-filter-list.txt
-chmod -x src/CHANGES.txt README.rst src/RELEASE.txt
-
-# the test is marked skipped but fails; and all are windows based so
-# we can safely ignore them
-rm -r test/MSVC/
-rm -r test/MSVS/
-rm -r test/Win32/
-rm test/fixture/no_msvc/no_regs_sconstruct.py
-rm test/fixture/no_msvc/no_msvcs_sconstruct.py
-rm test/LEX/live_mingw.py
-rm test/Decider/MD5-winonly-firstbuild.py
+    SCons/Tool/qt.py
 
 %build
-python3 bootstrap.py build/scons
-cd build/scons
-%python3_build
+%python_build
 
 %install
-%if !%{with test}
-cd build/scons
-ls -lh build/lib
-%python3_install \
- --standard-lib \
- --no-install-bat \
- --no-version-script \
- --install-scripts=%{_bindir} \
- --record installed_files.txt
-%fdupes %{buildroot}%{python3_sitelib}
-%endif
+%python_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
+mkdir -p %{buildroot}%{_mandir}/man1
+mv -v %{buildroot}%{_prefix}/*.1 %{buildroot}%{_mandir}/man1
 
-%check
-%if %{with test}
-%ifnarch aarch64 armv7l ppc64 ppc64le s390x
-TEMP_FILE=$(mktemp --tmpdir %{modname}-test.XXXXXX)
-trap 'rm -f -- "$TEMP_FILE"' INT TERM HUP EXIT
-find src/ test/ -name \*.py \
-    | grep -F -v -f grep-filter-list.txt >$TEMP_FILE
-python3 runtest.py -f $TEMP_FILE
-%else
-echo "Skiping tests on this architecture due to failures"
-%endif
-%endif
-
-%if !%{with test}
 %files
 %license LICENSE
-%doc src/CHANGES.txt README.rst src/RELEASE.txt
-%doc scons-user.html
 %{_bindir}/*
-%{python3_sitelib}/SCons
-%{python3_sitelib}/%{modname}*.egg-info
-%{_mandir}/man1/*%{ext_man}
-%endif
+%{python_sitelib}/SCons
+%{python_sitelib}/SCons-%{version}-py*.egg-info
+%{_mandir}/man1/*.1%{?ext_man}
 
 %changelog
