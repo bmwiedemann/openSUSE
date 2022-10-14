@@ -75,7 +75,7 @@ sed -i 's/True/true/' pyproject.toml
 
 %if %{with test}
 %check
-CFLAGS="-Wall -Wextra -Werror -std=c99 -pedantic -fpic"
+CFLAGS="-Wall -Wextra -Werror -Wno-strict-prototypes -std=c99 -pedantic -fpic"
 LDFLAGS="-shared"
 clang $CFLAGS $LDFLAGS -o test/data/test-callbacks.so test/data/test-callbacks.c
 

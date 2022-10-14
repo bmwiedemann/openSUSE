@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 14 01:33:02 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Add -Wno-strict-prototypes to CFLAGS for compiling tests
+
+-------------------------------------------------------------------
 Thu Jul 14 16:14:05 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Avoid install error with updated setuptools
