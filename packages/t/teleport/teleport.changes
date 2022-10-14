@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Fri Oct 14 04:56:55 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 10.3.2:
+  * Release 10.3.2 (#17303)
+  * [v10] Fix FIPS aws credentials (#17304)
+  * Desktop Access optimizations (#17071)
+  * [v10] Add AWS Roles to Drone pipelines  (#17296)
+  * [v10] Refactor Drone Pipelines to use AWS role assumption (#17244)
+  * Tweak wording of joining nodes blurb.
+  * AWS Terraform App Access, DB listeners variables (#17105)
+  * [v10] Remove installer, app and database watchers for remote proxies (#17226)
+  * [v10] Fix X11 forwarding for non-root users (#17130)
+  * [v10] Manually print installer scripts instead of using asciitable  (#17167)
+  * [v10] Fetch tags when promoting rpm/deb (#17031)
+  * [v10] Ensure operator tests are run when Go dependencies change (#17032)
+  * desktop clipboard: prevent integer underflow (#17179)
+  * Bump Cloud Version (#17150)
+  * Fix background database local proxy termination by SIGINT signal (#16932)
+  * Drain errChan in `api.client/connect` (#17159)
+  * Limit number of resources loaded into memory for version metrics (#17087)
+  * Port in Tiago's feedback.
+  * Update tool/tsh/app.go
+  * Fix unit test.
+  * Update tool/tsh/app.go
+  * Remove cacert flag from curl output during tsh app login.
+  * Revert change from PKCS1 to PKCS8 (#17045)
+  * Fix ListResources for WindowsDesktops (#17093) (#17117)
+  * Added 10/06 Upcoming Releases Update
+  * Add `username_claim` to OIDC config to select claim from Identity Provider to use as username (#17070)
+  * Update on-prem version in docs (#17091)
+  * [v10] fix: data race in NodeSession.runCommand (#17073)
+  * [v10] Finalize CI release API integration (#17064)
+  * Stop using etcd serializable mode (#17049)
+  * Missing spaces in on/offboarding section (#17039)
+  * [v10] correct plugin name reference (#17019)
+  * Refactor TestResolveEndpoints to avoid test failure when AWS SDK changes (#16943) (#16987)
+  * correct protocol name (#16995)
+  * [v10] Add docs for IdP-initiated SSO (#16897)
+  * docs: mention that WindowsDesktop now supports EC2 join (#16811)
+  * [v10] [Docs] Update 'Using Teleport Connect' for Linux & Windows (#16945)
+  * bump cloud version (#16855) (#16885)
+  * snowflake access fixes (#16940)
+  * Fixes Dismiss Stale Workflows Runs GitHub Actions (#16926)
+  * Fix client idle timeout ending sessions too early (#16868)
+  * Release 10.3.1 (#16915)
+  * docs: add more details on audit log retention (#16814)
+  * [v10] Drop direct dependency on github.com/golang/protobuf (#16904)
+  * local alert resync
+  * security patch alerts
+  * Release 10.3.0 (#16891)
+  * [v10] security: include exec command in session.start.initial_command (#16905)
+  * typo correction (#16839)
+  * Fix label based tsh when per session mfa is enabled via role (#16893)
+  * Implement RFD 82: Session Tracker Resource RBAC (#15760) (#16554)
+  * [auto] Update webassets in teleport/branch/v10 from webassets/teleport-v10 (#16888)
+  * [v10] Backport Elasticsearch suppport (#16873)
+  * Update download link (#16836)
+  * [v10] Drop a couple of deprecated/shallow Go dependencies (#16883)
+  * Added 09/29 Upcoming Releases Update
+  * update webassets (#16860)
+  * update eref (#16859)
+  * Initial RDPDR tests (#16470) (#16846)
+  * [auto] Update webassets in teleport/branch/v10 from webassets/teleport-v10 (#16807)
+  * [v10] Clean up old artifacts when retrying a tag build (#16669) (#16785)
+  * [v10] Add an Elastic Stack guide (#16842)
+  * [v10] security: one allow one exec request per SSH channel (#16813)
+  * [v10] Change kube logged in message (#16829)
+  * [v10] Document MsTeams access plugin (#16642)
+  * Update on-prem docs version (#16725)
+  * [v10] Fix auto discovery on secondary cluster of a global Aurora database (#16710)
+  * Updated operating system support
+  * [v10] Retrieve an IMDS token in the default ec2 discovery installer (#16808)
+  * [v10] Docs: Update Docker Config Path (#16522)
+  * docs: add ssh_file_copy to role spec (#16766)
+  * Update the docs issues contributing guide (#16529) (#16631)
+  * [v10] Backport PagerDuty edits (#16052)
+  * [v10] fix: Handle failures when checking for excluded credentials (#16765)
+  * [v10] update e ref (#16731)
+  * Hide `--db-user`/`--db-name` flags if they are not needed. (#16747)
+
+-------------------------------------------------------------------
 Sat Oct 01 16:49:17 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 10.3.1:
