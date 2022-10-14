@@ -1685,4 +1685,12 @@ Use capabilities for capture. bsc#957624</comment>
     <comment></comment>
     <requestid>1008364</requestid>
   </revision>
+  <revision rev="195" vrev="3">
+    <srcmd5>82e43160403b63edccf8d2e079e144da</srcmd5>
+    <version>4.0.0</version>
+    <time>1665754830</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010185</requestid>
+  </revision>
 </revisionlist>

@@ -61,7 +61,7 @@ BuildRequires:  libtool
 BuildRequires:  lua51-devel
 BuildRequires:  net-snmp-devel
 BuildRequires:  openssl-devel
-BuildRequires:  pcre-devel
+BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  portaudio-devel
 BuildRequires:  snappy-devel
@@ -157,6 +157,7 @@ Summary:        A Network Traffic Analyser - Qt UI
 Group:          Productivity/Networking/Diagnostic
 Requires:       %{name} = %{version}
 Requires:       hicolor-icon-theme
+Requires:       xdg-utils
 Provides:       %{name}-ui = %{version}
 # gtk is the deprecated ui so ensure its uninstall
 Provides:       %{name}-ui-gtk = %{version}
@@ -219,7 +220,13 @@ install -m 644 epan/dissectors/*.h		"${IDIR}/epan/dissectors"
 install -m 644 wiretap/*.h			"${IDIR}/wiretap"
 install -m 644 wsutil/*.h			"${IDIR}/wsutil"
 
+# desktop file
+cp resources/freedesktop/%{org_name}.desktop %{buildroot}%{_datadir}/applications/%{org_name}-su.desktop
+sed -i -e 's|Name=Wireshark|Name=Wireshark - Super User Mode|g' %{buildroot}%{_datadir}/applications/%{org_name}-su.desktop
+sed -i -e 's|Exec=wireshark %f|Exec=xdg-su -c wireshark %f|g' %{buildroot}%{_datadir}/applications/%{org_name}-su.desktop
+
 %suse_update_desktop_file %{org_name}
+%suse_update_desktop_file %{org_name}-su
 
 rm -f %{buildroot}%{_datadir}/doc/wireshark/*.html
 
@@ -281,6 +288,7 @@ exit 0
 %{_bindir}/wireshark
 %{_bindir}/ethereal
 %{_datadir}/applications/%{org_name}.desktop
+%{_datadir}/applications/%{org_name}-su.desktop
 %{_datadir}/icons/hicolor/*/apps/%{org_name}.png
 %{_datadir}/icons/hicolor/*/mimetypes/%{org_name}-mimetype.png
 %{_datadir}/icons/hicolor/scalable/apps/%{org_name}.svg
