@@ -54,4 +54,21 @@
 - Do not build for Python 3.6, due to no NumPy.</comment>
     <requestid>887921</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bb4b25016f18dc06c35c3d6da4bbc327</srcmd5>
+    <version>0.16</version>
+    <time>1665754975</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.16:
+  * Fix #86. When computing the change in modularity after alternating the
+    block membership of a node, the resolution parameter was multiplied to the
+    wrong term.
+    As a result, the current code fails to correctly implement the Louvain
+    algorithm, except for the special case when the resolution parameter is set
+    to one.
+- Add fix-test-karate.patch to fix tests with networkx&lt;=2.7
+  gh#taynaud/python-louvain#95
+</comment>
+    <requestid>1010639</requestid>
+  </revision>
 </revisionlist>

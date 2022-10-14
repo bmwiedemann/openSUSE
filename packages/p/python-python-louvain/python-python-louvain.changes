@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct 14 09:09:53 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 0.16:
+  * Fix #86. When computing the change in modularity after alternating the
+    block membership of a node, the resolution parameter was multiplied to the
+    wrong term.
+    As a result, the current code fails to correctly implement the Louvain
+    algorithm, except for the special case when the resolution parameter is set
+    to one.
+- Add fix-test-karate.patch to fix tests with networkx<=2.7
+  gh#taynaud/python-louvain#95
+
+-------------------------------------------------------------------
 Fri Apr 23 05:57:36 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.15:

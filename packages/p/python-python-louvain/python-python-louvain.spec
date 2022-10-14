@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-louvain
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,12 +20,14 @@
 %define         skip_python2 1
 %define         skip_python36 1
 Name:           python-python-louvain
-Version:        0.15
+Version:        0.16
 Release:        0
 Summary:        Louvain algorithm for community detection
 License:        BSD-3-Clause
 URL:            https://github.com/taynaud/python-louvain
 Source0:        https://files.pythonhosted.org/packages/source/p/python-louvain/python-louvain-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix-test-karate.patch gh#taynaud/python-louvain#95
+Patch:          fix-test-karate.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module setuptools}
@@ -50,7 +52,7 @@ Guillaume, Renaud Lambiotte, Renaud Lefebvre, Journal of
 Statistical Mechanics: Theory and Experiment 2008(10), P10008 (12pp)
 
 %prep
-%setup -q -n python-louvain-%{version}
+%autosetup -p1 -n python-louvain-%{version}
 sed -i -e '/^#!\//, 1d' community/__init__.py
 
 %build
