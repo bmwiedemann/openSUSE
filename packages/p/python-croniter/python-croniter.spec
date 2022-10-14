@@ -22,7 +22,7 @@ Version:        1.3.7
 Release:        0
 Summary:        Python iterators for datetime objects with cron-like format
 License:        MIT
-URL:            http://github.com/kiorky/croniter
+URL:            https://github.com/kiorky/croniter
 Source:         https://files.pythonhosted.org/packages/source/c/croniter/croniter-%{version}.tar.gz
 BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module pytest >= 3.0.3}

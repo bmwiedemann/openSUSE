@@ -212,4 +212,12 @@
     <comment></comment>
     <requestid>1006466</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>544c19b93479e133e6d677f99543c78e</srcmd5>
+    <version>1.3.7</version>
+    <time>1665754892</time>
+    <user>dimstar_suse</user>
+    <comment>- use https for urls</comment>
+    <requestid>1010394</requestid>
+  </revision>
 </revisionlist>
