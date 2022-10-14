@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 14 08:57:24 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Build against llvm14 for Tumbleweed since llvm15 is not
+  supported yet
+
+-------------------------------------------------------------------
 Tue Jun 28 11:39:05 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Requires python38-* for tvmc on Tumbleweed since the default

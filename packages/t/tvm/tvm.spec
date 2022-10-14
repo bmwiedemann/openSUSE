@@ -76,7 +76,12 @@ BuildRequires:  gcc-c++
 BuildRequires:  git
 BuildRequires:  gmock
 BuildRequires:  gtest
+%if 0%{?suse_version} > 1550
+# Cannot build with llvm15, so stick with llvm14 for now
+BuildRequires:  llvm14-devel
+%else
 BuildRequires:  llvm-devel
+%endif
 BuildRequires:  memory-constraints
 BuildRequires:  openblas-devel
 BuildRequires:  opencl-headers
