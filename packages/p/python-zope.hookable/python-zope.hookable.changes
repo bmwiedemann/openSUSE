@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 12 18:31:51 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 5.2 
+  * Add support for Python 3.10 and 3.11 (as of 3.11.0rc1).
+  * Disable unsafe math optimizations in C code. See pull request 25.
+
+-------------------------------------------------------------------
 Wed Oct 13 09:21:27 UTC 2021 - pgajdos@suse.com
 
 - update to version 5.1.0

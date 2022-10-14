@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,7 +27,7 @@
 %bcond_with test
 %endif
 Name:           python-zope.hookable%{psuffix}
-Version:        5.1.0
+Version:        5.2
 Release:        0
 Summary:        Zope hookable
 License:        ZPL-2.1
