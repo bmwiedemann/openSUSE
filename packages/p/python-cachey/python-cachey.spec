@@ -1,7 +1,7 @@
 #
 # spec file for package python-cachey
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ Release:        0
 Summary:        A Python cache mindful of computation/storage costs
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-URL:            http://github.com/mrocklin/cachey/
+URL:            https://github.com/mrocklin/cachey/
 Source:         https://files.pythonhosted.org/packages/source/c/cachey/cachey-%{version}.tar.gz
 BuildRequires:  %{python_module HeapDict}
 BuildRequires:  %{python_module pytest}
