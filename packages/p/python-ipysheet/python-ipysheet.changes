@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Oct 13 09:12:22 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.6
+  * no release notes
+- Added compatibility with ipywidgets 8.x
+- Added a warning about the deprecation of the whole package
+
+-------------------------------------------------------------------
+Wed Oct  5 14:21:19 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Revert 233.patch. Wait for working PR
+  -- gh#quantstack/ipysheet#233
+
+-------------------------------------------------------------------
+Wed Oct  5 11:39:48 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add patch 233.patch to fix incompatibility with ipywidgets 8.x
+  gh#quantstack/ipysheet#233
+
+-------------------------------------------------------------------
 Sun Oct 17 19:42:00 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.5

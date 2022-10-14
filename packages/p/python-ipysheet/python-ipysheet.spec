@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipysheet
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,10 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
-%define         skip_python36 1
 Name:           python-ipysheet
-Version:        0.5.0
+Version:        0.6.0
 Release:        0
 Summary:        Spreadsheet widget for the Jupyter notebook
 License:        MIT
@@ -49,10 +48,16 @@ BuildRequires:  %{python_module pytest}
 %description
 A Jupyter widget providing spreadsheets for the Jupyter notebook.
 
+WARNING
+Due to Handsontable licensing changes ipysheet is stuck witch the
+outdated Handsontable version 6.2.2 (open-source). We recommend
+not using ipysheet anymore. We suggest an alternative like
+ipydatagrid.
+
 This package provides the python interface.
 
 %prep
-%setup -q -n ipysheet-%{version}
+%autosetup -p1 -n ipysheet-%{version}
 
 %build
 %python_build

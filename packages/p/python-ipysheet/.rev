@@ -48,4 +48,21 @@
     <comment></comment>
     <requestid>925900</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>51539ad5d171b7f6823612e0a5a989b5</srcmd5>
+    <version>0.6.0</version>
+    <time>1665754910</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6
+  * no release notes
+- Added compatibility with ipywidgets 8.x
+- Added a warning about the deprecation of the whole package
+
+- Revert 233.patch. Wait for working PR
+  -- gh#quantstack/ipysheet#233
+
+- Add patch 233.patch to fix incompatibility with ipywidgets 8.x
+  gh#quantstack/ipysheet#233</comment>
+    <requestid>1010447</requestid>
+  </revision>
 </revisionlist>
