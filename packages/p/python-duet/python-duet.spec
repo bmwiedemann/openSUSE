@@ -23,7 +23,7 @@ Version:        0.2.7
 Release:        0
 Summary:        A simple future-based async library for python
 License:        Apache-2.0
-URL:            http://github.com/google/duet
+URL:            https://github.com/google/duet
 Source:         https://files.pythonhosted.org/packages/source/d/duet/duet-%{version}.tar.gz
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
