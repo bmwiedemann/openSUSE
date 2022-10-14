@@ -1433,4 +1433,12 @@ Thu Jan  9 17:33:31 UTC 2014 - fridrich.strba@suse.com
     Debian have both already gone down this path.</comment>
     <requestid>981473</requestid>
   </revision>
+  <revision rev="173" vrev="5">
+    <srcmd5>7b3d7e48eac727b15d40532b5d2c6739</srcmd5>
+    <version>1.14.0</version>
+    <time>1665754820</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable asserts (bsc#1087072)</comment>
+    <requestid>1010413</requestid>
+  </revision>
 </revisionlist>

@@ -137,6 +137,7 @@ export CXXFLAGS="%{optflags} -fno-strict-aliasing"
 export V=1
 %configure \
     --disable-static \
+    --disable-asserts \
     --runstatedir=%{_rundir} \
     --libexecdir=%{_libexecdir}/dbus-1 \
     --enable-inotify \

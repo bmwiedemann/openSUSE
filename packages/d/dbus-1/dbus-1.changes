@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 13 07:29:57 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- Disable asserts (bsc#1087072) 
+
+-------------------------------------------------------------------
 Wed Jun  8 12:36:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - version provides
