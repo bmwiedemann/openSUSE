@@ -17,7 +17,7 @@
 
 
 Name:           rpm2docserv
-Version:        20221007.388ef0d
+Version:        20221013.faaac97
 Release:        0
 Summary:        Make manpages from RPMs accessible in a web browser
 License:        Apache-2.0

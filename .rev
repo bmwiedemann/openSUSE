@@ -17,4 +17,26 @@
   * Update dependencies (forwarded request 1008746 from kukuk)</comment>
     <requestid>1008747</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>374db1d0be2cd571622317fb27e52c90</srcmd5>
+    <version>20221013.faaac97</version>
+    <time>1665754925</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20221013.faaac97:
+  * Update go dependencies
+  * Add tumbleweed logo
+  * Add local version of logo
+  * Add empty .Suites to avoid build errors in auxserver
+  * Store svg files, too
+  * Add comment about rework of 404 error handling
+  * Use local stored logo
+  * Use product logo in header
+  * Replace &quot;manpages&quot; with &quot;product&quot; in URL description
+  * Rename fallback-icon with breadcrumb-icon
+  * Print stderr with cpio error code
+  * Don't remap existing, uncompressed files
+  * Rename &quot;-inject-assets&quot; to &quot;-assets&quot;
+  * Add stderr of cpio to error message (forwarded request 1010484 from kukuk)</comment>
+    <requestid>1010485</requestid>
+  </revision>
 </revisionlist>
