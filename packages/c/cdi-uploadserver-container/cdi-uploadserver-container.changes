@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 13 14:52:40 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Create an unprivileged user to run as non-root
+- Align the installed packages with the upstream
+
+-------------------------------------------------------------------
 Thu Aug  4 07:48:37 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Use standard LABEL directive to add mandatory labels

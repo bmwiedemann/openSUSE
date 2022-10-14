@@ -23,8 +23,16 @@ LABEL org.opensuse.reference="%%REGISTRY%%/%%TAGPREFIX%%/cdi-uploadserver:%%PKG_
 # endlabelprefix
 
 RUN zypper -n install \
-           qemu-tools qemu-block-curl tar util-linux \
-           containerized-data-importer-uploadserver && \
-    zypper clean -a
+           containerized-data-importer-uploadserver \
+           curl \
+           libnbd \
+           qemu-tools \
+           shadow \
+           tar \
+           util-linux && \
+    zypper clean -a && \
+    useradd -u 1001 --create-home -s /bin/bash cdi-uploadserver
 
+WORKDIR /home/cdi-uploadserver
+USER 1001
 ENTRYPOINT [ "/usr/bin/virt-cdi-uploadserver", "-alsologtostderr" ]
