@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Oct 13 08:02:41 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.20.0
+  + New feature: If your app uses MSAL's acquire_token_interactive(), you can
+    now opt in to use broker on Windows platform to achieve Single-Sign-On (SSO)
+    and also obtain more secure tokens, all without switching the log-in experience
+    to a browser. See details in this online doc, and try it out from this sample.
+    (#451, #415)
+- from version 1.19.0
+  + New feature: A new ClientApplication(..., instance_discovery=False) parameter
+    to turn off MSAL's Instance Discovery behavior. See more details in its full
+    documentation. Also, ADFS authority will no longer trigger Instance Discovery. (#496)
+  + Enhancement: Use provided authority port when building the tenant discovery endpoint (#484)
+  + Bugfix: Fix a regression in regional endpoint which affects MSAL Python 1.14+ (#485)
+  + Enhancement: Tolerate home_account_id to be None
+- from version 1.18.0
+  + New feature: Optional initiate_auth_code_flow(..., response_mode="form_post")
+    to allow the auth code being delivered to your app by form post, which is
+    considered even more secure. (#396, #469)
+  + New feature: acquire_token_interactive(..., prompt="none") can obtain some
+    tokens from within Cloud Shell, without any prompt. (#420)
+
+-------------------------------------------------------------------
 Tue May 24 10:35:23 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.18.0b1
