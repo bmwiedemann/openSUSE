@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Oct 12 14:10:11 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 4.7.0 
+  Changes
+  fs fixtures cannot be nested; any nested fs fixture
+  (for example inside an fs_session or fs_module fixture) will just reference the outer fixture (the behavior had been unexpected before)
+  Fixes
+  reverted a performance optimization introduced in version 3.3.0 that caused hanging tests with installed torch (see #693)
+  do not use the build-in opener in pathlib as it may cause problems (see #697)
+  add support for path-like objects in shutil.disk_usage (see #699)
+  do not advertise support for Python 3.6 in setup.py (see #707)
+  return the expected type from fcntl.ioctl and fcntl.fcntl calls if arg is of type byte; the call itself does nothing as before
+  do not skip filesystem modules by name to allow using own modules with the same name (see #707)
+  add missing support for os.renames (see #714)
+
+-------------------------------------------------------------------
 Fri Aug  5 14:41:13 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 4.6.3
