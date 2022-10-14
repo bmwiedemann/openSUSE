@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 12 02:55:00 UTC 2022 - Heming Zhao <heming.zhao@suse.com>
+
+- lvm.conf should re-enable commented out option use_lvmlockd (bsc#1204219)
+  - re-enable "use_lvmlockd = 0" in lvm.conf
+
+-------------------------------------------------------------------
 Wed Sep 21 00:50:00 UTC 2022 - Heming Zhao <heming.zhao@suse.com>
 
 - lvmlockd is not supporting sanlock (bsc#1203482)
