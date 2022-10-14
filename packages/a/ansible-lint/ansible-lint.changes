@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 14 04:52:59 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.8.2:
+  * Bugfixes
+    - Fix strict mode (#2601) @ssbarnea
+    - Fix config file outside project_dir bug (#2600) @ssbarnea
+    - Add win_command/win_shell to no-free-form modules (#2596) @nre-ableton
+    - Docs: Add MD for var-naming (#2594) @oraNod
+    - Fix role-name correct code example (#2591) @branic
+
+-------------------------------------------------------------------
 Tue Oct 11 05:00:12 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 6.8.1:
