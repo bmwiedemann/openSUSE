@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 14 04:02:57 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.40.0:
+  * Implement the closed_by property for the Pagure pull request for
+    getting the login of the account that closed the pull request. (#718) 
+  * Add users_with_write_access so you can generate the set of users that
+    have write access to the project and the method has_write_access(user),
+    to query if a user has access.
+
+-------------------------------------------------------------------
 Mon Jul  4 09:50:06 UTC 2022 - Daniel García Moreno <dani@danigm.net>
 
 - Update to v0.38.1

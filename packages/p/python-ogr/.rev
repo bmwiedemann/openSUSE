@@ -15,4 +15,17 @@
     <comment></comment>
     <requestid>986672</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0a332a2e142dd07d37c74749750880bd</srcmd5>
+    <version>0.40.0</version>
+    <time>1665754942</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.40.0:
+  * Implement the closed_by property for the Pagure pull request for
+    getting the login of the account that closed the pull request. (#718) 
+  * Add users_with_write_access so you can generate the set of users that
+    have write access to the project and the method has_write_access(user),
+    to query if a user has access.</comment>
+    <requestid>1010560</requestid>
+  </revision>
 </revisionlist>

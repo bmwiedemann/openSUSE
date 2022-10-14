@@ -19,11 +19,10 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-ogr
-Version:        0.38.1
+Version:        0.40.0
 Release:        0
 Summary:        One API for multiple git forges
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/packit-service/ogr
 Source:         https://files.pythonhosted.org/packages/source/o/ogr/ogr-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools_scm_git_archive}
