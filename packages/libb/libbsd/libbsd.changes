@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Oct  7 12:04:07 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.11.7:
+  * man: Discourage using the library in non-overlay mode
+  * include: Adjust reallocarray() per glibc adoption
+  * include: Adjust arc4random() per glibc adoption
+  * include: explicit_bzero() requires _DEFAULT_SOURCE
+  * include: Simplify glibc version dependent macro handling
+  * doc: Switch references from pkg-config to pkgconf
+  * doc: Add missing empty line to separate README sections
+  * doc: Refer to the main git repository as primary
+  * test: Fix explicit_bzero() test on the Hurd
+  * fgetwln: Add comment about lack of getwline(3) for recommendation
+  * setmode: Dot not use saveset after free
+  * man: Rewrite gerprogname(3bsd) from scratch
+  * man: Lowercase man page title
+  * man: Document that some arc4random(3) functions are now in glibc 2.36
+  * Sync arc4random(3) implementation from OpenBSD
+  * Fix ELF support for big endian SH
+  * man: Use -compact also for alternative functions in libbsd(7)
+  * getentropy: Fix function cast for getauxval()
+
+-------------------------------------------------------------------
 Wed Apr 20 08:53:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add missing devel requires 

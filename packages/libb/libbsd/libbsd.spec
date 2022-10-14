@@ -18,7 +18,7 @@
 
 %define lname	libbsd0
 Name:           libbsd
-Version:        0.11.6
+Version:        0.11.7
 Release:        0
 Summary:        Library with functions commonly found on BSD systems
 License:        BSD-3-Clause
