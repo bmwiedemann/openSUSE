@@ -137,4 +137,38 @@
     <comment></comment>
     <requestid>874188</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ec38872130cdb1c102704a21a687f2d5</srcmd5>
+    <version>3.6.16</version>
+    <time>1665754912</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1010420 from Guillaume_G
+
+- Update to 3.6.16:
+    * Update underlying c code to v3.06.16 #107
+  - Skipped update to 3.4.2:
+    * add DOI by @ocefpaf in #72
+    * Use GitHub Actions for the tests by @ocefpaf in #73
+    * build wheel for Python 3.9 by @ocefpaf in #79
+    * Wrap longitude, 0-360, where it is used directly. by @efiring in #86
+    * Add link to new xarray wrapper gsw-xarray by @rcaneill in #87
+    * Add py310 test to the test matrix... by @ocefpaf in #88
+    * needs to avoid globing them before the autidwheel by @ocefpaf in #80
+    * add pre-commit by @ocefpaf in #77
+    * publish docs with GHA by @ocefpaf in #89
+    * use micromamba in tests by @ocefpaf in #93
+    * Fix teos 10 url by @ocefpaf in #94
+    * Correct Nsquared unit by @rcaneill in #91
+    * use np.expand_dims instead of np.newaxis by @rcaneill in #96
+    * Add consts to PyUFuncGenericFunction declarations by @hoodmane in #99
+    * Move to cibuildwheels by @ocefpaf in #100
+    * remove unused file by @ocefpaf in #102
+    * Rename master to main in the CIs by @ocefpaf in #105
+    * update README by @ocefpaf in #104
+    * Run every PR but publish only when tags by @ocefpaf in #106
+  - Skipped update to 3.4.1:
+    * Add DOI
+  - Enable again tests skipped on aarch64 since fixed upstream</comment>
+    <requestid>1010450</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-gsw
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,13 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-gsw
-Version:        3.4.0
+Version:        3.6.16
 Release:        0
 Summary:        Gibbs Seawater Oceanographic Package of TEOS-10
 # Note: Python code is MIT licensed
 # C-code IS BSD-3-Clause licensed (see src/c_gsw/LICENSE)
 # MATLAB function names and documentation are BSD-3-Clause licensed (see http://teos-10.org/pubs/gsw/html/gsw_licence.html)
-License:        MIT AND BSD-3-Clause
+License:        BSD-3-Clause AND MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/TEOS-10/GSW-python
 # gh#TEOS-10/GSW-Python#39 -- Tests are not included in the source tarball
@@ -61,10 +61,6 @@ export CFLAGS
 %{python_expand %fdupes %{buildroot}%{$python_sitearch}}
 
 %check
-%ifarch aarch64
-# gh#TEOS-10/GSW-Python#40 note that the failure moved from 72 to 68
-donttest+=" or (test_check_function and cfcf68)"
-%endif
 %pytest_arch ${donttest:+-k "not (${donttest:4})"}
 
 %files %{python_files}
