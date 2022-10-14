@@ -1,7 +1,7 @@
 #
 # spec file for package python-csscompressor
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        A python port of YUI CSS Compressor
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-URL:            http://github.com/sprymix/csscompressor
+URL:            https://github.com/sprymix/csscompressor
 Source:         https://files.pythonhosted.org/packages/source/c/csscompressor/csscompressor-%{version}.tar.gz
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
