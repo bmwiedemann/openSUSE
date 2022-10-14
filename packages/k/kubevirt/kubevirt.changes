@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 14 05:16:27 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Update to version 0.58.0
+  Release notes https://github.com/kubevirt/kubevirt/releases/tag/v0.58.0
+
+-------------------------------------------------------------------
 Thu Sep 22 18:52:28 UTC 2022 - Caleb Crane <caleb.crane@suse.com>
 
 - Update SP5 kubevirt registry path (bsc#1204140)
