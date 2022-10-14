@@ -125,4 +125,12 @@
   * Force disable all ASM for AMD code</comment>
     <requestid>980766</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>654817c7d073337d138b7a1b2a135046</srcmd5>
+    <version>1.5.2.6</version>
+    <time>1665754877</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010360</requestid>
+  </revision>
 </revisionlist>
