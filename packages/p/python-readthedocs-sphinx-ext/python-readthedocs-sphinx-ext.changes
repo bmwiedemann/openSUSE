@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 12 15:50:12 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 2.1.9 
+  * fix: Only add external version warning nodes on documents (#114)
+
+-------------------------------------------------------------------
 Sat Jun  4 20:40:15 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 2.1.8:
