@@ -23,7 +23,7 @@ Release:        0
 Summary:        Kombu actor framework
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
-URL:            http://github.com/ask/cl/
+URL:            https://github.com/ask/cl/
 Source:         https://files.pythonhosted.org/packages/source/c/cl/cl-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM port-2to3.patch bsc#[0-9]+ mcepl@suse.com
 # Remove use_2to3 in setup.py

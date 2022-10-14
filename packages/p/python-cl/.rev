@@ -83,4 +83,12 @@
     <comment>- Add port-2to3.patch removing use_2to3 bit from setup.py.</comment>
     <requestid>958423</requestid>
   </revision>
+  <revision rev="12" vrev="16">
+    <srcmd5>bb8aa056af3b482fdc6a3a3a0e8f1544</srcmd5>
+    <version>0.0.3</version>
+    <time>1665754891</time>
+    <user>dimstar_suse</user>
+    <comment>- use https for urls</comment>
+    <requestid>1010392</requestid>
+  </revision>
 </revisionlist>

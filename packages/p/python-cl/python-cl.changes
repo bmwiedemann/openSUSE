@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 13 07:15:05 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- use https for urls
+
+-------------------------------------------------------------------
 Wed Mar  2 08:46:09 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Add port-2to3.patch removing use_2to3 bit from setup.py.
