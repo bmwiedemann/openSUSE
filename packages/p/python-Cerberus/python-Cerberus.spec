@@ -24,7 +24,7 @@ Release:        0
 Summary:        Extensible schema and data validation tool for Python dictionaries
 License:        ISC
 Group:          Development/Languages/Python
-URL:            http://github.com/nicolaiarocci/cerberus
+URL:            https://github.com/nicolaiarocci/cerberus
 Source:         https://files.pythonhosted.org/packages/source/C/Cerberus/Cerberus-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
