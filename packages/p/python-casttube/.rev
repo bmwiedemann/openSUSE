@@ -17,4 +17,12 @@
   * Session data and queued videos info</comment>
     <requestid>946642</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>faeabc7d1ec7ce0c1a3520f9ac912aac</srcmd5>
+    <version>0.2.1</version>
+    <time>1665754890</time>
+    <user>dimstar_suse</user>
+    <comment>- use https for urls</comment>
+    <requestid>1010391</requestid>
+  </revision>
 </revisionlist>

@@ -23,7 +23,7 @@ Release:        0
 Summary:        YouTube chromecast api
 License:        MIT
 Group:          Development/Languages/Python
-URL:            http://github.com/ur1katz/casttube
+URL:            https://github.com/ur1katz/casttube
 Source:         https://files.pythonhosted.org/packages/source/c/casttube/casttube-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
