@@ -206,4 +206,12 @@
 </comment>
     <requestid>908898</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>04f9491c76d8c7da476a62beffc6e8cb</srcmd5>
+    <version>1.0.2</version>
+    <time>1665754876</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip a test that is failing due to character set fun and games.</comment>
+    <requestid>1010356</requestid>
+  </revision>
 </revisionlist>

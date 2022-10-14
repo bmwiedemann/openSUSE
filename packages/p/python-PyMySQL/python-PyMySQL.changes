@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 13 06:38:41 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Skip a test that is failing due to character set fun and games. 
+
+-------------------------------------------------------------------
 Wed Jul 28 13:51:39 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Fix databases.json used for tests.
