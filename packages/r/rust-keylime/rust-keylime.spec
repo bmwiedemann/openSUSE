@@ -25,7 +25,7 @@
   %define _config_norepl %config(noreplace)
 %endif
 Name:           rust-keylime
-Version:        0.1.0+git.1663769444.6318234
+Version:        0.1.0+git.1664480840.0ea0492
 Release:        0
 Summary:        Rust implementation of the keylime agent
 License:        Apache-2.0 AND MIT
@@ -38,8 +38,6 @@ Source4:        keylime-user.conf
 Source5:        tmpfiles.keylime
 # PATCH-FIX-OPENSUSE keylime-agent.conf.diff
 Patch1:         keylime-agent.conf.diff
-# PATCH-FIX-UPSTREAM bindgen.patch -- gh#keylime/rust-keylime!459
-Patch2:         bindgen.patch
 BuildRequires:  cargo
 BuildRequires:  clang
 BuildRequires:  firewall-macros

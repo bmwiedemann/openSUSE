@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct 12 07:51:22 UTC 2022 - aplanas@suse.com
+
+- Drop bindgen.patch as is already upstream
+- Update to version 0.1.0+git.1664480840.0ea0492:
+  * Increase unit testing
+  * Test all features with cargo tarpaulin
+  * Cargo.toml: tss-esapi bindings
+
+-------------------------------------------------------------------
 Mon Sep 26 14:15:04 UTC 2022 - aplanas@suse.com
 
 - Rebase bindgen.patch and upstream the change
