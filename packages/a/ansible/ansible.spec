@@ -16,7 +16,7 @@
 #
 
 Name:           ansible
-Version:        6.4.0
+Version:        6.5.0
 Release:        0
 Summary:        Radically simple IT automation
 License:        GPL-3.0+
@@ -31,10 +31,10 @@ BuildRequires:  fdupes
 BuildRequires:  dos2unix
 
 # SECTION test requirements
-BuildRequires:  ansible-core >= 2.13.3
+BuildRequires:  ansible-core >= 2.13.5
 # /SECTION
 
-Requires:       ansible-core >= 2.13.3
+Requires:       ansible-core >= 2.13.5
 BuildArch:      noarch
 
 %description

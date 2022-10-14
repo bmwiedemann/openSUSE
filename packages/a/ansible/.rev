@@ -915,4 +915,12 @@ numbers for further reference.
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1008798</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>96547dabe7371226b250639110996b0e</srcmd5>
+    <version>6.5.0</version>
+    <time>1665754875</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010337</requestid>
+  </revision>
 </revisionlist>
