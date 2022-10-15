@@ -184,4 +184,24 @@
   * Allow multiple instances of the &quot;-limits&quot; option.</comment>
     <requestid>993910</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9ddfb5cc19e04fd311bc8f60c61e05e2</srcmd5>
+    <version>1.1.0</version>
+    <time>1665844686</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 1.1.0
+* Fixes:
+  * Fix and improve the instant help (?) display.
+  * Fix and improve the substitution code.
+  * Fix and simplify the &quot;End&quot; key management code.
+* Improvements:
+  * Add mouse support.
+  * Allows to shift the window's content horizontally without moving the cursor.
+  * Small adjustments in UTF-8 symbols and comments.
+  * Improve the documentation.
+* Miscellaneous:
+  * Various code simplifications. 
+</comment>
+    <requestid>1011032</requestid>
+  </revision>
 </revisionlist>
