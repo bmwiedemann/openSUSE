@@ -52,6 +52,11 @@ BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
 BuildRequires:  mvn(org.eclipse.jgit:org.eclipse.jgit)
 BuildRequires:  mvn(org.eclipse.jgit:org.eclipse.jgit.ssh.jsch)
 BuildRequires:  mvn(org.sonatype.plexus:plexus-sec-dispatcher)
+%ifarch %{ix86}
+BuildConflicts: java >= 12
+BuildConflicts: java-devel >= 12
+BuildConflicts: java-headless >= 12
+%endif
 #!BuildRequires: jgit
 BuildArch:      noarch
 

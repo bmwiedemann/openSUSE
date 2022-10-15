@@ -31,4 +31,12 @@
     <comment>Build with java source/target 8 + port to commons-lang3</comment>
     <requestid>965691</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>779ff5566bded9376bb76ffc1cffd2a0</srcmd5>
+    <version>1.12.0</version>
+    <time>1665844652</time>
+    <user>dimstar_suse</user>
+    <comment>Fix i386 build breakages by requiring java 11</comment>
+    <requestid>1010951</requestid>
+  </revision>
 </revisionlist>
