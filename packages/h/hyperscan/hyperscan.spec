@@ -1,7 +1,7 @@
 #
 # spec file for package hyperscan
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@ BuildRequires:  cmake
 BuildRequires:  gcc-c++ >= 4.9
 BuildRequires:  libpcap-devel
 BuildRequires:  pkgconfig
-BuildRequires:  python
+BuildRequires:  python3-base
 BuildRequires:  ragel
 BuildRequires:  pkgconfig(libpcre)
 BuildRequires:  pkgconfig(sqlite3)
