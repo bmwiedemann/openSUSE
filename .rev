@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2d045f631b6de91a28dc26dff1a11dc6</srcmd5>
+    <version>6.2.0</version>
+    <time>1665844705</time>
+    <user>dimstar_suse</user>
+    <comment>2.6k stars
+lots of explicit deps https://www.wheelodex.org/projects/smart-open/rdepends/ , esp snakemake, azureml &amp; FedML
+optional dep of https://build.opensuse.org/package/show/devel:languages:python/python-gensim and others</comment>
+    <requestid>1011113</requestid>
+  </revision>
+</revisionlist>
