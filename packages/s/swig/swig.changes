@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct 13 17:47:25 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
+
+- Fix SystemError: PY_SSIZE_T_CLEAN macro must be defined for '#' formats
+  with python 3.10 gh#swig/swig#2277
+  + swig-Python-define-PY_SSIZE_T_CLEAN.patch
+  + swig-Define-PY_SSIZE_T_CLEAN-macro.patch
+  + swig-Define-PY_SSIZE_T_CLEAN-only-when-not-defined-yet.patch
+
+-------------------------------------------------------------------
 Thu Sep  8 13:23:05 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 - Cherrypick 15515f390c5e3316a7faf0cf85d661a297d45a50.patch from

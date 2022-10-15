@@ -1,0 +1,44 @@
+From c3f17b415dc63906218306135da49bf1f941588f Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Thu, 13 Oct 2022 23:25:52 +0200
+Subject: [PATCH] Define PY_SSIZE_T_CLEAN only when not defined yet
+
+Users of swig 4.0.2 and python 3.10 will likely define the
+PY_SSIZE_T_CLEAN macro by hand when relevant because their bindings
+won't build otherwise.
+
+Unconditionally defining PY_SSIZE_T_CLEAN in swig 4.10 will lead to
+macro redefinition warning.
+
+Signed-off-by: Michal Suchanek <msuchanek@suse.de>
+---
+ Lib/python/embed.i       | 2 +-
+ Lib/python/pyruntime.swg | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+Index: swig-4.0.2/Lib/python/embed.i
+===================================================================
+--- swig-4.0.2.orig/Lib/python/embed.i
++++ swig-4.0.2/Lib/python/embed.i
+@@ -29,7 +29,7 @@ As far as I know, this module is C++ saf
+ #endif
+ 
+ %wrapper %{
+-#ifndef SWIG_NO_PY_SSIZE_T_CLEAN
++#if !defined(PY_SSIZE_T_CLEAN) && !defined(SWIG_NO_PY_SSIZE_T_CLEAN)
+ #define PY_SSIZE_T_CLEAN
+ #endif
+ #include <Python.h>
+Index: swig-4.0.2/Lib/python/pyruntime.swg
+===================================================================
+--- swig-4.0.2.orig/Lib/python/pyruntime.swg
++++ swig-4.0.2/Lib/python/pyruntime.swg
+@@ -4,7 +4,7 @@
+ # include <math.h>
+ #endif
+ 
+-#ifndef SWIG_NO_PY_SSIZE_T_CLEAN
++#if !defined(PY_SSIZE_T_CLEAN) && !defined(SWIG_NO_PY_SSIZE_T_CLEAN)
+ #define PY_SSIZE_T_CLEAN
+ #endif
+ #if defined(_DEBUG) && defined(SWIG_PYTHON_INTERPRETER_NO_DEBUG)

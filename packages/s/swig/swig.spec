@@ -47,6 +47,12 @@ Patch2:         swig-python310.patch
 # PATCH-FIX-UPSTREAM 15515f390c5e3316a7faf0cf85d661a297d45a50.patch - gh#swig/swig#2138, remove obsolete pcre1
 # from https://github.com/swig/swig/commit/15515f390c5e3316a7faf0cf85d661a297d45a50.patch
 Patch3:         15515f390c5e3316a7faf0cf85d661a297d45a50.patch
+# PATCH-FIX-UPSTREAM https://github.com/swig/swig/pull/2277
+Patch4:         swig-Python-define-PY_SSIZE_T_CLEAN.patch
+# PATCH-FIX-UPSTREAM https://github.com/swig/swig/pull/2277
+Patch5:         swig-Define-PY_SSIZE_T_CLEAN-macro.patch
+# PATCH-FIX-UPSTREAM https://github.com/swig/swig/pull/2401
+Patch6:         swig-Define-PY_SSIZE_T_CLEAN-only-when-not-defined-yet.patch
 Patch308:       swig308-isfinite.diff
 
 BuildRequires:  autoconf
