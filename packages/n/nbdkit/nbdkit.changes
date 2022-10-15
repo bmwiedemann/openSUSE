@@ -1,4 +1,242 @@
 -------------------------------------------------------------------
+Thu Oct 13 21:21:00 UTC 2022 - jfehlig@suse.com
+
+- Update to version 1.32.2:
+  * Version 1.32.2.
+  * file: Avoid leaking h->fd on an error path
+  * common/utils/exit-with-parent.c: Use nbdkit_shutdown instead of exit
+  * tests: Use GNU cut in tests
+  * tests: Use GNU stat in tests
+  * tests/test-vddk-real.sh: Remove requires stat
+  * tests: Add requires stat --version to a few more tests
+  * tests/test-python-thread-model.sh: Skip test on non-parallel platforms
+  * tests/test-retry-request-mirror.c: Skip this test if 'disk' was not built
+  * tests/test-ocaml-errorcodes.c: Skip this test on macOS
+  * Revert "tests/test-python-thread-model.sh: Skip test on non-parallel platforms"
+  * tests: nbd: Skip all nbd plugin tests on macOS
+  * tests/test-nozero.sh: Test requires GNU stat
+  * tests/test-layers.c: Fix test for platforms without pipe2
+  * nbd: Ignore warnings about deprecated sem_* functions on macOS
+  * tests/test-layers.c: Don't link with exit-with-parent code.
+  * docs: Suggest a couple more packages to enhance macOS support
+  * tests: luks: Skip tests on macOS
+  * tests/test-memory-allocator-malloc-mlock.sh: Fix test requires
+  * tests: Fix more tests using truncate instead of $TRUNCATE
+  * tests/pki: Use GnuTLS certtool on macOS
+  * tests/test-python-thread-model.sh: Skip test on non-parallel platforms
+  * server: Further simplification of --exit-with-parent on macOS
+  * eval, sh: Better error message when we get EPIPE from script
+  * server: Simplify --exit-with-parent implementation for macOS
+  * server: Implement --exit-with-parent for macOS
+  * tests/test-exit-with-parent.c: Don't link with server code
+  * tests/test-exit-with-parent.c: Correct PIDs in debug messages
+  * tests/test-exit-with-parent.c: Fix bogus early exit from the test
+  * tests/test-exit-with-parent.c: Fix missing local variable initialization
+  * tests/test-exit-with-parent.c: Add a bunch of debugging to this test
+  * common: Move exit-with-parent code from include/ to utils/
+  * tests/test-exit-with-parent.c: Include <signal.h> for kill(2)
+  * Version 1.32.1.
+  * docs: Add macOS support to 1.32 release notes
+  * tests: Skip some nbdkit-cc-plugin OCaml tests on macOS
+  * tests: Fix miscellaneous test requires lines for macOS.
+  * example4, S3: Use $(SED) instead of sed.
+  * tests: Prefer GNU sed if available in several tests
+  * tests/test-exitwhen*sh: Fix sleep command on macOS
+  * tests: Move definition of $TRUNCATE to functions.sh.in
+  * ondemand: Fix plugin and tests on macOS
+  * wrapper: Set DYLD_LIBRARY_PATH for dynamic library path on macOS
+  * docs: Further fix relative links in README.md
+  * docs: Fix relative links in README.md
+  * build: Document macOS support in the README file
+  * tests/test-exitwhen-pipe-closed.c: Skip this test on macOS
+  * tests/test-read-password-interactive.sh: Skip test on macOS
+  * cc: Ignore undefined symbols on macOS
+  * build: Check for truncate / gtruncate
+  * tests/test-blocksize.sh: Add requires qemu-io
+  * stats: Use -std=c++11
+  * stats: Fix C++ syntax on clang 13 / macOS
+  * exitwhen: Fix some warnings on macOS
+  * exitwhen: Include <signal.h> for kill(2)
+  * file: Fix some warnings on macOS
+  * build: Disable linker script by default on macOS
+  * build: ./configure --disable-linker-script now disables all linker scripts
+  * server/public.c: Fix uid_t/gid_t bounds check on macOS
+  * server: vsock: Use fallback path for creating socket without SOCK_CLOEXEC
+  * common/utils: On macOS remove error about incomplete atomic CLOEXEC support
+  * rust: Add resolver feature
+  * server/sockets.c: Don't fail to start if ipv6.disable=1
+  * server/sockets.c: Save errno from EADDINUSE error
+  * common/utils: Fix generated windows-errors.c line endings
+  * common/replacements/get_current_dir_name.c: Include <string.h> for strlen
+  * build: Check for ranlib (AC_PROG_RANLIB)
+  * ci: Expire artifacts after 1 week
+  * server: Use ansi-colours.h header
+  * common/include: Move ANSI colours to separate library
+  * tests/make-pki.sh: Use Subject Alternative Name for server certificate
+  * docs: Suggest using Subject Alternative Name for server certificates
+  * Version 1.32.0.
+  * tests/test-tls.sh: Skip test if GnuTLS doesn't support verifying peers
+  * docs: Review nbdkit-plugin(3) page
+  * docs: Update authors list
+  * Version 1.31.15.
+  * docs: Add outline release notes for nbdkit 1.32
+  * build: Document gmake instead of make on *BSD, macOS
+  * server: Fail early if --tls-verify-peer is used on non-supported platforms
+  * tests: Avoid bash namerefs, for RHEL 7
+  * tests: Better quoting for cleanup_fn
+  * Version 1.31.14.
+  * tests: Fix TESTS line for root tests
+  * docs, tests: Fix client/server key mix-up and document
+  * tests: Add interop tests with nbd-client (the kernel client)
+  * tests/functions.sh.in: Copy requires_not and requires_root from libnbd
+  * checkwrite: Add working example using qemu-img convert
+  * tests: Hoist some EXTRA_DIST out of automake conditionals
+  * Version 1.31.13.
+  * checkwrite: Add an assertion that we checked the whole region
+  * tests: Add a regression test for bounds error in checkwrite filter
+  * checkwrite: Fix bounds error
+  * Version 1.31.12.
+  * configure: Document --with-* flags that require a parameter
+  * S3: Fix "E713 test for membership should be 'not in'"
+  * plugins/S3.py: correctly handle listing contents of empty buckets.
+  * server: Silence Coverity false positive
+  * server: Avoid Coverity warning on volatile variable
+  * multi-conn: Free memory on failure and unload
+  * floppy: Don't leak string along error path
+  * curl: Correctly check for errors when using getline
+  * cc: Use 'error' after it was assigned
+  * luks: Avoid memory leak on error path
+  * luks: Avoid potential overflow when computing key material offset and length
+  * luks: Check return values from malloc more carefully
+  * delay: Fix bounds check when parsing delay parameters
+  * Version 1.31.11.
+  * configure: Use printf to print $ISOPROG
+  * configure: Print the version of curl, libnbd and libssh
+  * configure: Make the 'feature' function print the dots
+  * tests/test-protect.c: Fix typo in previous commit
+  * tests/test-protect.c: Skip test if "disk" was not created
+  * common/include: Rename BUILD_BUG_ON_ZERO to something more meaningful
+  * common/include/test-array-size.c: Avoid Clang warning
+  * vddk: Demote another "phone home" error message to debug
+  * Use ARRAY_SIZE macro in various places in nbdkit
+  * common/include: Add ARRAY_SIZE macro
+  * Version 1.31.10.
+  * tests/test-parallel-sh.sh: Skip test under valgrind + debuginfod
+  * tests/test-parallel-sh.sh: Small cleanups
+  * tests/test-S3: Fix Python formatting
+  * server: Work around incorrect include in gnutls/socket.h
+  * server: Display kTLS setting in debug output
+  * exitwhen: Check nbdkit doesn't exit before the pipe is closed
+  * valgrind: Update comment about valgrind bug affecting OCaml
+  * ocaml: Add further valgrind suppression
+  * ocaml: Add valgrind suppression for OCaml 4.14 bug
+  * perl: Move GCC diagnostic ignored earlier
+  * docs/nbdkit-protocol.pod: block size support was added in 1.30
+  * Version 1.31.9.
+  * s3: catch and handle network timeout exceptions.
+  * s3: added TRIM and ZERO support to S3 plugin.
+  * s3: group connection-serving related code into a class.
+  * s3: move configuration settings into a class.
+  * tests: Add dummy botocore.exceptions module for S3 tests
+  * exitwhen: Link to example of how to use exit-when-pipe-closed
+  * s3: Fix concurrency bug when writing non-aligned data.
+  * rate: Allow burstiness to be controlled
+  * rate: Miscellaneous enhancements to comments and debug messages
+  * tests: Add a regression test for LUKS zeroing crash
+  * ext2: Improve comments
+  * eval: Provide default for .can_cache
+  * eval: Always end scripts in newline
+  * tests: Add regression test for NBDKIT_EMULATE_CACHE fix
+  * server: Fix NBDKIT_CACHE_EMULATE
+  * server: Fix NBDKIT_ZERO_EMULATE from filters
+  * tests: Give sensible name to test sockets
+  * Version 1.31.8.
+  * linuxdisk: Add new subdir/.gitignore to EXTRA_DIST
+  * tests: Fix test-disk2data.sh use of $PYTHON
+  * blocksize: Test of aligned writes vs. RMW race
+  * blocksize: Avoid losing aligned writes to RMW race
+  * linuxdisk: Reduce size of test
+  * Change README to use markdown (fixed)
+  * Change README to use markdown
+  * multi-conn: Fix test with newer libnbd
+  * docs: Enhance podwrapper to detect trailing whitespace
+  * docs: Fix POD verbatim paragraphs
+  * docs: Remove trailing whitespace from POD file
+  * rust: Logically group example code
+  * docs: Fix whitespace to logically group C code examples together
+  * data: Small clarification to the manual
+  * Revert "ci: Try to force Rawhide to use the nodebug kernels"
+  * Version 1.31.7.
+  * ci: Try to force Rawhide to use the nodebug kernels
+  * scripts, vddk: Remove VDDK wrapper scripts
+  * vddk: advise user on obscure thumbprint mismatch error condition
+  * scan: Fix bound so we don't try to prefetch beyond end of disk
+  * S3: use mocked boto3 module when running unit tests
+  * scripts: Split VDDK open script so we can open ESXi or vCenter
+  * ssh: Don't reference readahead or scan filters from this plugin
+  * Version 1.31.6.
+  * scan: Small typographical fix in manual
+  * scan: Remove condition variable
+  * New filter: scan
+  * stats: Enable C++ warnings
+  * stats: Fix various warnings in the filter
+  * curl: Don't document curl plugin + readahead filter
+  * cache: Fix cross-reference nbdkit-readahead-filter
+  * todo: Remove S3 items
+  * configure: Fix incorrect comment about supported VDDK version
+  * Version 1.31.5.
+  * .gitignore: Ignore __pycache__ directory wherever it occurs
+  * Improve S3 unit tests
+  * S3 plugin: add support for accessing multiple objects
+  * Configure VS Code to wrap comments at the right column.
+  * maint: List stats under optional filters in configure output
+  * S3: Older boto3 didn't have head_object, fall back to get_object
+  * vddk: Demote another useless phone-home error message to debug
+  * nbd: Hide some state machine debugging behind a debug flag
+  * Add nbdkit.parse_size() Python function.
+  * Enable flake8 linting within VS Code.
+  * Don't retrieve entire object just to get its size.
+  * Remove pointless 'global' declarations.
+  * Use RuntimeError instead of Exception
+  * Drop pointless error check.
+  * Version 1.31.4.
+  * tests: luks: Reduce time taken to run these tests
+  * luks: Refactor the filter
+  * luks: Link with libcompat on Windows
+  * luks: Various fixes for Clang
+  * luks: Disable filter with old GnuTLS in Debian 10
+  * Keep track of alignment bits for each block size.
+  * New filter: luks
+  * Version 1.31.3.
+  * build: Add VS code files to EXTRA_DIST
+  * Make length of block size histogram configurable.
+  * Avoid pointless copy of block size histogram map.
+  * Don't crash stats filter when running out of memory.
+  * Use unordered_map instead of map to track block size statistics.
+  * Add VS Code settings matching existing formatting.
+  * Track request block sizes in stats filter.
+  * tests: Print a warning if nbdkit does not start after 30 seconds
+  * file: Fix leaked file descriptor on error path
+  * eval: Fix memory leak on error path
+  * multi-conn: Fix memory leak on error path
+  * Version 1.31.2.
+  * docs: Document how to run nbdkit from inetd or xinetd
+  * pause: Delete control socket on server shutdown
+  * rust: Use a local filename for the test socket
+  * Update to nix 0.24.1
+  * rust: Use correct char type for characters
+  * readahead: Fix test
+  * readahead: Rewrite this filter so it prefetches using .cache
+  * readahead: Simplify the test replacing use of sh plugin
+  * readahead: Simplify the test by inlining some files
+  * torrent: Don't attempt to rm -rf (null) on unload
+  * Version 1.31.1.
+  * ssh: Allow the remote file to be created
+  * readahead: Minor whitespace changes
+  * ssh: Move and document thread model declaration
+  * docs/nbdkit-filter.pod: Fix invalid use of E<> in verbatim section
+
+-------------------------------------------------------------------
 Sun Jul 10 22:10:54 UTC 2022 - jfehlig@suse.com
 
 - Update to version 1.30.7:

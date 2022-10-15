@@ -27,7 +27,7 @@
 %global broken_test_arches %{arm} aarch64
 
 Name:           nbdkit
-Version:        1.30.7
+Version:        1.32.2
 Release:        0
 Summary:        Network Block Device server
 License:        BSD-3-Clause
@@ -177,9 +177,10 @@ This package contains example plugins for %{name}.
 
 
 
+
+
 # The plugins below have non-trivial dependencies are so are
 # packaged separately.
-
 %package cdi-plugin
 Summary:        Containerized Data Import plugin for %{name}
 
@@ -292,6 +293,7 @@ Provides:       %{name}-fua-filter = %{version}-%{release}
 Provides:       %{name}-ip-filter = %{version}-%{release}
 Provides:       %{name}-limit-filter = %{version}-%{release}
 Provides:       %{name}-log-filter = %{version}-%{release}
+Provides:       %{name}-luks-filter = %{version}-%{release}
 Provides:       %{name}-nocache-filter = %{version}-%{release}
 Provides:       %{name}-noextents-filter = %{version}-%{release}
 Provides:       %{name}-nofilter-filter = %{version}-%{release}
@@ -305,6 +307,7 @@ Provides:       %{name}-rate-filter = %{version}-%{release}
 Provides:       %{name}-readahead-filter = %{version}-%{release}
 Provides:       %{name}-retry-filter = %{version}-%{release}
 Provides:       %{name}-retry-request-filter = %{version}-%{release}
+Provides:       %{name}-scan-filter = %{version}-%{release}
 Provides:       %{name}-stats-filter = %{version}-%{release}
 Provides:       %{name}-swab-filter = %{version}-%{release}
 Provides:       %{name}-tls-fallback-filter = %{version}-%{release}
@@ -349,6 +352,8 @@ nbdkit-limit-filter         Limits the number of clients that can connect concur
 
 nbdkit-log-filter           Logs all transactions to a file.
 
+nbdkit-luks-filter          Read and write LUKS-encrypted disks.
+
 nbdkit-multi-conn-filter    Modifies the way multiple clients can connect to the same export simultaneously.
 
 nbdkit-nocache-filter       Disables cache requests in the underlying plugin.
@@ -367,7 +372,7 @@ nbdkit-partition-filter     Serves a single partition.
 
 nbdkit-pause-filter         Pauses NBD requests.
 
-nbdkit-protect-filter      Write-protect parts of a plugin.
+nbdkit-protect-filter       Write-protect parts of a plugin.
 
 nbdkit-rate-filter          Limits bandwidth by connection or server.
 
@@ -376,6 +381,8 @@ nbdkit-readahead-filter     Prefetches data when reading sequentially.
 nbdkit-retry-filter         Reopens connection on error.
 
 nbdkit-retry-request-filter Retries single requests if they fail.
+
+nbdkit-scan-filter          Prefetch data ahead of sequential reads.
 
 nbdkit-stats-filter         Displays statistics about operations.
 
@@ -468,7 +475,7 @@ export PATH=/usr/sbin:$PATH
 %else
     --without-libguestfs \
 %endif
-    --with-tls-priority=@NBDKIT,SYSTEM
+    %{nil}
 
 # Verify that it picked the correct version of Python
 # to avoid RHBZ#1404631 happening again silently.
@@ -526,7 +533,7 @@ export PATH=/usr/sbin:$PATH
 # metapackage so empty
 
 %files server
-%doc README
+%doc README.md
 %license LICENSE
 %{_sbindir}/nbdkit
 %dir %{_libdir}/%{name}
@@ -543,7 +550,7 @@ export PATH=/usr/sbin:$PATH
 %{_mandir}/man1/nbdkit-tls.1*
 
 %files basic-plugins
-%doc README
+%doc README.md
 %license LICENSE
 %{_libdir}/%{name}/plugins/nbdkit-data-plugin.so
 %{_libdir}/%{name}/plugins/nbdkit-eval-plugin.so
@@ -636,6 +643,7 @@ export PATH=/usr/sbin:$PATH
 %{_libdir}/%{name}/filters/nbdkit-ip-filter.so
 %{_libdir}/%{name}/filters/nbdkit-limit-filter.so
 %{_libdir}/%{name}/filters/nbdkit-log-filter.so
+%{_libdir}/%{name}/filters/nbdkit-luks-filter.so
 %{_libdir}/%{name}/filters/nbdkit-multi-conn-filter.so
 %{_libdir}/%{name}/filters/nbdkit-nocache-filter.so
 %{_libdir}/%{name}/filters/nbdkit-noextents-filter.so
@@ -650,6 +658,7 @@ export PATH=/usr/sbin:$PATH
 %{_libdir}/%{name}/filters/nbdkit-readahead-filter.so
 %{_libdir}/%{name}/filters/nbdkit-retry-filter.so
 %{_libdir}/%{name}/filters/nbdkit-retry-request-filter.so
+%{_libdir}/%{name}/filters/nbdkit-scan-filter.so
 %{_libdir}/%{name}/filters/nbdkit-stats-filter.so
 %{_libdir}/%{name}/filters/nbdkit-swab-filter.so
 %{_libdir}/%{name}/filters/nbdkit-tls-fallback-filter.so
@@ -671,6 +680,7 @@ export PATH=/usr/sbin:$PATH
 %{_mandir}/man1/nbdkit-ip-filter.1*
 %{_mandir}/man1/nbdkit-limit-filter.1*
 %{_mandir}/man1/nbdkit-log-filter.1*
+%{_mandir}/man1/nbdkit-luks-filter.1*
 %{_mandir}/man1/nbdkit-multi-conn-filter.1*
 %{_mandir}/man1/nbdkit-nocache-filter.1*
 %{_mandir}/man1/nbdkit-noextents-filter.1*
@@ -685,6 +695,7 @@ export PATH=/usr/sbin:$PATH
 %{_mandir}/man1/nbdkit-readahead-filter.1*
 %{_mandir}/man1/nbdkit-retry-filter.1*
 %{_mandir}/man1/nbdkit-retry-request-filter.1*
+%{_mandir}/man1/nbdkit-scan-filter.1*
 %{_mandir}/man1/nbdkit-stats-filter.1*
 %{_mandir}/man1/nbdkit-swab-filter.1*
 %{_mandir}/man1/nbdkit-tls-fallback-filter.1*
