@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 14 09:30:55 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.12.0
+  * Retry behavior (#1113)
+  * Modify RefreshError exception to use gcloud ADC command. (#1149)
+  * Revert "Update token refresh threshold from 20 seconds to 5 minutes". (186464b)
+- Refresh patches for new version
+  * python-google-auth-no-mock.patch
+
+-------------------------------------------------------------------
 Thu Sep  8 12:02:06 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.11.0
