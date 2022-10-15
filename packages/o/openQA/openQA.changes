@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct 15 02:15:45 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1665644111.e43a7ac:
+  * t: Fix leaked cache service processes on test abort
+
+-------------------------------------------------------------------
 Wed Oct 12 18:15:40 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1665594818.5464316:
