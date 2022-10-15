@@ -21,20 +21,20 @@
 %{?!python_module:%define python_module() python3-%{**}}
 
 Name:           python-drgn
-Version:        0.0.20
+Version:        0.0.21
 Release:        0
 Summary:        Scriptable debugger library
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Debuggers
 URL:            https://github.com/osandov/drgn
 Source:         https://files.pythonhosted.org/packages/source/d/drgn/drgn-%{version}.tar.gz
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
 BuildRequires:  libdw-devel
 BuildRequires:  libelf-devel
 BuildRequires:  libkdumpfile-devel
 BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  fdupes
 %python_subpackages
 
 %description

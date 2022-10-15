@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Oct 14 16:11:33 UTC 2022 - Petr Tesařík <ptesarik@suse.com>
+
+- Update to drgn-0.0.21:
+  * Linux kernel support up to Linux 6.0.
+  * Helpers for lockless linked lists in the Linux kernel.
+  * A helper to find the slab cache that a virtual address came.
+  * A drgn.helpers.common package for helpers that can be used with
+    any program (which may have program-specific additional
+    behavior).
+  * A helper to identify an arbitrary address (e.g., as a symbol or
+    slab object).
+  * PageFoo() helpers to check various struct page flags.
+  * Helpers for working with compound pages.
+  * A helper to get the CPU that a task last ran on.
+  * Automatic pretty-printing in IPython/Jupyter.
+  * drgn.StackTrace.prog was added as a way to get the program that a stack trace came from.
+  * Bug fixes, documentation, minor API changes.
+
+-------------------------------------------------------------------
 Sun Aug 14 20:51:07 UTC 2022 - Petr Tesařík <ptesarik@suse.com>
 
 - Initial packaging for openSUSE.
