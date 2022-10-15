@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 14 14:51:51 UTC 2022 - Predrag Ivanović <predivan@mts.rs>
+
+- Update to versio 5.6.3
+ * No upstream provided changelog.
+ * Add prevent_unused.patch to fix the build with clang > 13
+    Prevent unused but set variable warning
+    (https://github.com/apple/swift-corelibs-libdispatch/pull/764)
+ * Resolve rpmlint "E: libdispatch-devel  no-binary" error by
+   declaring libdispatch-devel as noarch.
+
+-------------------------------------------------------------------
 Sat Jul  2 11:37:03 UTC 2022 - Predrag Ivanović <predivan@mts.rs>
 
 - Update to version 5.6.2

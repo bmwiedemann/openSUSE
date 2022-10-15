@@ -16,9 +16,9 @@
 #
 
 
-%define reltag 5.6.2-RELEASE
+%define reltag 5.6.3-RELEASE
 Name:           libdispatch
-Version:        5.6.2
+Version:        5.6.3
 Release:        0
 Summary:        Apple's Grand Central Dispatch library
 License:        Apache-2.0
@@ -26,6 +26,7 @@ Group:          Development/Languages/C and C++
 URL:            https://github.com/apple/swift-corelibs-libdispatch
 Source0:        https://github.com/apple/swift-corelibs-libdispatch/archive/swift-%{reltag}.tar.gz#/corelibs-libdispatch.tar.gz
 Source1:        libdispatch-rpmlintrc
+Patch0:         prevent_unused.patch
 # set library versions
 Patch2:         soversion.patch
 BuildRequires:  chrpath
@@ -60,6 +61,7 @@ Group:          Development/Languages/C and C++
 Requires:       libdispatch1_3 = %{version}-%{release}
 # Wrong location for manpages in older version
 Conflicts:      libdispatch < %{version}-%{release}
+BuildArch:      noarch
 
 %description    devel
 The %{name}-devel package contains libraries and header files for
