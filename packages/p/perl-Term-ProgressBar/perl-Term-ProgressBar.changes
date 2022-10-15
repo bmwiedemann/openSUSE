@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct  9 03:07:26 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.23
+   see /usr/share/doc/packages/perl-Term-ProgressBar/Changes
+
+  2.23  2022-10-08 MANWAR
+        - Merged PR #11: Added a check to print a full bar at the end, thanks @cwallacetlc.
+
+-------------------------------------------------------------------
 Sun May 13 06:01:23 UTC 2018 - coolo@suse.com
 
 - updated to 2.22
