@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Oct 14 11:45:03 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add -fno-omit-frame-pointer to compiler flags as suggested
+  in the lmms docs.
+
+-------------------------------------------------------------------
+Tue Oct 11 20:41:40 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Spec Cleanup
+- Enable Carla integration again
+- Remove unneeded build requirements
+- Don't set CMAKE_SKIP_RPATH, disabling rpath completely breaks
+  a couple plugins (carla, ZynAddSubFX, VeSTige...)
+- Only skip Wine integration on Leap 15.3
+
+-------------------------------------------------------------------
 Tue Oct 11 09:22:42 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add patch to fix build with recent carla version:
@@ -447,7 +463,7 @@ Sat Jan 16 21:59:55 UTC 2016 - edogawa@aon.at
 
 - added support for internal Carla LV2/DSSI/VST plugin host
   * lmms-carla.patch: backported an upstream patch to implement NATIVE_HOST_OPCODE_HOST_IDLE
-  * added falkTX's fix for lib/lib64 in the hardcoded carla plugin resource path so that they will find their GUIs 
+  * added falkTX's fix for lib/lib64 in the hardcoded carla plugin resource path so that they will find their GUIs
 
 -------------------------------------------------------------------
 Fri Jul  3 06:52:52 UTC 2015 - olaf@aepfle.de
@@ -471,7 +487,7 @@ Mon Mar  9 16:30:42 UTC 2015 - stephan.barth@suse.com
 
 - Update to version 1.1.3 from 1.1.0
   Upstream changes:
-  
+
   - Fix pops and clicks introduced with new mixer (Bug #1662)
   - Fix 0% export bug affecting certain languages/locales (Bug #1496)
   - Fix Watsyn shows wrong selection after switching instruments (Bug #1526)
@@ -554,7 +570,7 @@ Fri May  2 06:02:58 UTC 2014 - stephan.barth@suse.com
 - Added explicit Requires for %{_bindir}/wineserver which is needed for full
   VST support
 - removed patches:
-  - lmms-0.4.14-system_fltk.patch 
+  - lmms-0.4.14-system_fltk.patch
     lmms now uses system fltk by itself
 - redone patches:
   - lmms-1.0.0-crippled_stk.patch

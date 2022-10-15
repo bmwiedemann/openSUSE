@@ -21,16 +21,11 @@
 # https://github.com/LMMS/lmms/tree/v1.2.1/src/3rdparty/rpmalloc/rpmalloc (two directories not a mistake)
 %define rpmallocrev b5bdc18051bb74a22f0bde4bcc90b01cf590b496
 %define qt5x11embedrev 022b39a1d496d72eb3e5b5188e5559f66afca957
-
-%bcond_with     carla
-%bcond_without  crippled_stk
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
 %bcond_without  wine
-%if 0%{?suse_version} <= 1500
-%bcond_with     wine
 %endif
-%if %{with carla}
-%define carlavers %(carla --version|grep Carla | cut -b 21,22,23,24,25,26)
-%endif
+%bcond_without  carla
+%bcond_without  crippled_stk
 Name:           lmms
 Version:        1.2.2
 Release:        0
@@ -64,22 +59,25 @@ BuildRequires:  filesystem
 BuildRequires:  fltk-devel
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  libQt5Core-private-headers-devel
+BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  libQt5Widgets-private-headers-devel
-BuildRequires:  libmp3lame-devel
-BuildRequires:  libqt5-qttools
 BuildRequires:  libstk-devel
-BuildRequires:  libxkbcommon-x11-devel
 BuildRequires:  pkgconfig
 BuildRequires:  sndio-devel
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  pkgconfig(Qt5UiTools)
-BuildRequires:  pkgconfig(Qt5X11Extras)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5LinguistTools)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5X11Extras)
+BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(fftw3f) >= 3.0.0
 BuildRequires:  pkgconfig(fluidsynth) >= 1.0.7
 BuildRequires:  pkgconfig(gig)
 BuildRequires:  pkgconfig(jack) >= 0.77
+BuildRequires:  pkgconfig(libmp3lame)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(portaudiocpp)
@@ -92,42 +90,30 @@ BuildRequires:  pkgconfig(vorbisenc)
 BuildRequires:  pkgconfig(vorbisfile)
 BuildRequires:  pkgconfig(xcb-keysyms)
 BuildRequires:  pkgconfig(xcb-util)
+# SECTION Zynaddsubfx
+BuildRequires:  fltk-devel
+BuildRequires:  pkgconfig(mxml)
+BuildRequires:  pkgconfig(ntk)
+BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(zlib)
-%if %{with wine}
-#Extra packages
-BuildRequires:  gcc-c++-32bit
-BuildRequires:  libQt5DBus-private-headers-devel
-BuildRequires:  libQt5KmsSupport-devel-static
-BuildRequires:  libQt5KmsSupport-private-headers-devel
-BuildRequires:  libQt5Network-private-headers-devel
-BuildRequires:  libQt5OpenGL-private-headers-devel
-BuildRequires:  libQt5PlatformSupport-devel-static
-BuildRequires:  libQt5PlatformSupport-private-headers-devel
-BuildRequires:  libQt5PrintSupport-private-headers-devel
-BuildRequires:  libQt5Sql-private-headers-devel
-BuildRequires:  libqt5-qtbase-private-headers-devel
-BuildRequires:  libstdc++-devel-32bit
-BuildRequires:  mtdev-devel
-BuildRequires:  tslib
-BuildRequires:  tslib-devel
-BuildRequires:  tslib-plugins
-#!BuildIgnore:  sane-backends-32bit
-BuildRequires:  wine
-BuildRequires:  wine-devel
-BuildRequires:  wine-devel-32bit
-Suggests:       %{name}-vst = %{version}
-%endif
-#Requires:       libstk-devel
-#Requires:       pkgconfig(gig)
-
-ExclusiveArch:  x86_64
+# /SECTION
 %if %{with carla}
 # also needed (contains libcarla_standalone2 library)
 # to enable internal Carla plugin host
 BuildRequires:  carla
 BuildRequires:  pkgconfig(carla-native-plugin)
-Requires:       carla = %carlavers
+%requires_eq    carla
 %endif
+%if %{with wine}
+#Extra packages
+BuildRequires:  gcc-c++-32bit
+BuildRequires:  libstdc++-devel-32bit
+BuildRequires:  wine
+BuildRequires:  wine-devel
+BuildRequires:  wine-devel-32bit
+#!BuildIgnore:  sane-backends-32bit
+%endif
+ExclusiveArch:  x86_64
 
 %description
 LMMS is a free cross-platform music studio which allows you to produce music
@@ -140,8 +126,8 @@ You need to install lmms-vst for VST plugins
 Summary:        Wine dependent VST plugins
 Group:          Productivity/Multimedia/Sound/Midi
 Requires:       %{name} = %{version}
-Obsoletes:      %{name} < 1.2.1
 Requires:       wine
+Obsoletes:      %{name} < 1.2.1
 
 %description vst
 LMMS is a free cross-platform music studio which allows you to produce music
@@ -159,25 +145,25 @@ Headers that provide access to the LMMS features. Install it if you plan to
 create a LMMS plugin.
 
 %prep
-%setup -q -n %{name}-%{version}
-%autopatch -p1
+%autosetup -p1
+
 pushd src/3rdparty
-rm -rf qt5-x11embed
-tar -xf %{S:2} && mv qt5-x11embed-%{qt5x11embedrev} qt5-x11embed
+rm -r qt5-x11embed
+tar -xf %{SOURCE2} && mv qt5-x11embed-%{qt5x11embedrev} qt5-x11embed
 pushd qt5-x11embed
-rm -rf 3rdparty/ECM
-ln -s /usr/share/ECM 3rdparty/ECM
+rm -r 3rdparty/ECM
+ln -s %{_datadir}/ECM 3rdparty/ECM
 popd
-cd rpmalloc && rm -rf rpmalloc && tar -xf %{S:1} && mv rpmalloc-%{rpmallocrev} rpmalloc
+cd rpmalloc && rm -r rpmalloc && tar -xf %{SOURCE1} && mv rpmalloc-%{rpmallocrev} rpmalloc
 popd
 
 %build
 export PATHBU=$PATH
 %if %{with wine}
-#Remove -m64 from CFLAGS, it causes VST build failure.
+# Remove -m64 from CFLAGS, it causes VST build failure.
 export CFLAGS="-O2 -g -fmessage-length=0 -D_FORTIFY_SOURCE=2 -fstack-protector -funwind-tables -fasynchronous-unwind-tables"
 %define optflags $CFLAGS
-%if 0%{?suse_version} > 1501 || 0%{?sle_version} > 150300
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
 #Add workaround for boo#1179734 to create the missing libwine.so symlink
 export WINELIB=$(find %{_libdir} -name libwine.so.?)
 export WINELIB32=$(find %{_prefix}/lib -name libwine.so.?)
@@ -195,44 +181,53 @@ popd
 fi
 %endif
 %endif
+
 export CFLAGS="$CFLAGS -fPIC"
+
+# https://docs.lmms.io/user-manual/getting-started/troubleshooting?q=midi+keyboards#i-compiled-lmms-with-vst-support-but-it-doesnt-work-at-all
+export CFLAGS="$CFLAGS -fno-omit-frame-pointer"
+export CXXFLAGS="%optflags -fno-omit-frame-pointer"
+
 %cmake \
 %if %{with wine}
-  -DCMAKE_CXX_FLAGS:STRING="%{optflags} -D__WIDL_objidl_generated_name_0000000C=""" \
+  -DCMAKE_CXX_FLAGS:STRING="$CXXFLAGS -D__WIDL_objidl_generated_name_0000000C=""" \
 %else
   -DWANT_VST_NOWINE:BOOL=ON \
 %endif
   -DWANT_QT5=ON \
   -DCMAKE_SHARED_LINKER_FLAGS="" \
   -DCMAKE_EXE_LINKER_FLAGS:STRING="$LDFLAGS -pie" \
-  -DCMAKE_SKIP_RPATH=ON \
-%if %{with carla}
-  -DCARLA_VERSION_HEX=0x010911 \
-%else
- -DWANT_CARLA:BOOL=OFF \
+%if !%{with carla}
+  -DWANT_CARLA:BOOL=OFF \
 %endif
   -Wno-dev
+
 export PATH=$PATHBU
-%if 0%{?suse_version} > 1501 || 0%{?sle_version} > 150300
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
 sed -i 's/\/wine\/libwinecrt0.a//' plugins/vst_base/CMakeFiles/vstbase.dir/build.make
 sed -i 's/libwinecrt0.a\/wine\///' plugins/vst_base/CMakeFiles/vstbase.dir/build.make
 %endif
-%make_jobs
+
+%cmake_build
 
 %install
 %cmake_install
+
 mkdir -p '%{buildroot}%{_defaultdocdir}/lmms/'
+
 # remove unneeded static helper library from install
 rm %{buildroot}%{_libdir}/libqx11embedcontainer.a
+
 # workaround: copy bash completion manually into install dir because it fails during cmake install
 mkdir -p %{buildroot}/%{_datadir}/bash-completion/completions
 cp %{_builddir}/lmms*/doc/bash-completion/lmms %{buildroot}%{_datadir}/bash-completion/completions/lmms
 
 %fdupes -s %{buildroot}/%{_datadir}
+
 %if %{with wine}
 mkdir -p %{buildroot}%{_localstatedir}/adm/update-messages/
-#%%{name}-warning
-cp %{S:3}  %{buildroot}%{_localstatedir}/adm/update-messages/
+# Install lmms-warning
+cp %{SOURCE3}  %{buildroot}%{_localstatedir}/adm/update-messages/
 %endif
 
 %files
