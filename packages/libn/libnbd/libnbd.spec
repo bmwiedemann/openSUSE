@@ -19,7 +19,7 @@
 %define sover 0
 
 Name:           libnbd
-Version:        1.12.4
+Version:        1.14.1
 Release:        0
 Summary:        NBD client library in userspace
 License:        LGPL-2.1-or-later
@@ -114,12 +114,12 @@ for %{name}.
 %define _lto_cflags %{nil}
 autoreconf -fiv
 %configure \
-    --with-tls-priority=@LIBNBD,SYSTEM \
     --enable-fuse \
     --disable-golang \
     PYTHON=%{__python3} \
     --enable-python \
-    --disable-static
+    --disable-static \
+    %{nil}
 
 %make_build
 
@@ -154,10 +154,12 @@ done
 %postun -n libnbd%{sover} -p /sbin/ldconfig
 
 %files
-%doc README
+%doc README.md
 %{_bindir}/nbdcopy
+%{_bindir}/nbddump
 %{_bindir}/nbdinfo
 %{_mandir}/man1/nbdcopy.1*
+%{_mandir}/man1/nbddump.1*
 %{_mandir}/man1/nbdinfo.1*
 
 %files -n libnbd%{sover}

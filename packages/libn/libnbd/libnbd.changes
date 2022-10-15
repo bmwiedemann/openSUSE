@@ -1,4 +1,113 @@
 -------------------------------------------------------------------
+Thu Oct 13 21:25:07 UTC 2022 - jfehlig@suse.com
+
+- Update to version 1.14.1:
+  * Version 1.14.1.
+  * copy/copy-file-to-qcow2-compressed.sh: Alternate test for compressed clusters
+  * ci: Expire artifacts after 1 week
+  * sh: Add workaround for macOS SIP DYLD_* environment sanitiser
+  * info: Tone down the colours in nbdinfo normal output
+  * tests/make-pki.sh: Use Subject Alternative Name for server certificate
+  * info: Improve error message when the export may be unknown to the server
+  * info: Add limited colourized output
+  * dump: Move ANSI colours to separate library under common/include
+  * Version 1.14.0.
+  * docs: Finalize release notes for 1.14
+  * Version 1.13.9.
+  * build: Document gmake instead of make on *BSD, macOS
+  * build: Use GNUTLS_CFLAGS when checking for <gnutls/socket.h>
+  * build: Remove use of $^
+  * copy: Skip compressed qcow2 test on older qemu-nbd
+  * interop: Skip interop-qemu-nbd-tls-psk if qemu-nbd doesn't support PSK
+  * tests: Check nbdkit supports --tls-verify-peer before using
+  * docs: Document signal handling
+  * generator: Set SO_NOSIGPIPE on sockets
+  * lib/crypto: Use GNUTLS_NO_SIGNAL if available
+  * docs: Add outline release notes for libnbd 1.14
+  * lib/crypto.c: Ignore TLS premature termination after write shutdown
+  * lib/crypto.c: Check for <gnutls/socket.h> before including
+  * Version 1.13.8.
+  * generator: Add README.state-machine.md to EXTRA_DIST
+  * generator: Fix reentry to REPLY.START when recv returns EAGAIN
+  * generator: Move state machine documentation to a README file
+  * tests: Avoid bash namerefs, for RHEL 7
+  * tests: Better quoting for cleanup_fn
+  * Version 1.13.7.
+  * configure: Document --with-* flags that require a parameter
+  * copy: Remove advice about using nbdcopy + cmp to compare NBD sources
+  * build: Print full versions of nbdkit and qemu-nbd
+  * tests: Add tests/connect-uri-nbd-vsock.sh to EXTRA_DIST
+  * tests: Test nbd+vsock:// support
+  * lib/uri.c: Don't corrupt memory on error path
+  * info/show.c: Don't misuse nbd_get_error or leak nbd_get_export_name
+  * fuzzing/libnbd-fuzz-wrapper.c: Fix loop condition
+  * fuse: Check return value from nbd_poll
+  * examples/batched-read-write.c: Use _exit in signal handler
+  * copy: Remove dead store
+  * Version 1.13.6.
+  * configure: Add status of interop and examples
+  * configure: Print the versions of certain external libraries
+  * configure: Check for nbdkit-file-plugin
+  * configure: Make the 'feature' function print the dots
+  * ci: Update generated files
+  * copy: Assert that request size is not too large
+  * copy: Force block size, request size and sparse size to be powers of 2
+  * copy/copy-file-to-qcow2-compressed.sh: Break up long lines
+  * Use ARRAY_SIZE macro in a few places in libnbd
+  * common/include: Rename BUILD_BUG_ON_ZERO to something more meaningful
+  * common/include/test-array-size.c: Avoid Clang warning
+  * common/include: Add ARRAY_SIZE macro
+  * dump: Add another example to the manual
+  * Version 1.13.5.
+  * copy: Use preferred block size for copying
+  * copy: Store the preferred block size in the operations struct
+  * dump/dump-data.sh: Test requires nbdkit 1.22
+  * dump: Fix tests on Debian 10
+  * dump: Fix build on i686
+  * dump: Visually separate columns 0-7 and 8-15
+  * Version 1.13.4.
+  * Add nbddump tool
+  * copy/nbd-ops.c: Fix whitespace for indentation
+  * copy/nbd-ops.c: Move related extents functions together
+  * lib: Display kTLS status
+  * copy: Print program name in some error messages
+  * Version 1.13.3.
+  * python: Allow control over copy/share of nbd.Buffer
+  * valgrind: Update comment about valgrind bug affecting OCaml
+  * ocaml: Add further valgrind suppression
+  * ocaml: Add valgrind suppression for OCaml 4.14 bug
+  * Version 1.13.2.
+  * python: Fix code style in the tests
+  * python: Slice structured read callback buffer from original
+  * python: Support len(nbd.Buffer(n))
+  * python: Accept all buffer-like objects in aio_p{read,write}
+  * python: Alter lock for persistent buffer
+  * python: Simplify passing of mutable *error to callbacks
+  * python: Whitespace cleanup
+  * python: Correctly use PyGILState
+  * Version 1.13.1.
+  * golang: aio_buffer.go: Explicit panic() on invalid usage
+  * golang: Whitespace change caused by gofmt
+  * golang: Add some more debug environment variables
+  * python: Another format tweak to generated code
+  * python: Make nbd.Buffer lighter-weight
+  * python: Simplify python generator
+  * python: Don't unwrap nbd.Buffer in nbd.py
+  * python: Make py_aio_buffer a private struct
+  * python: Reformat generated methods.c in a few places
+  * python: Enhance tests of nbd.Buffer
+  * python: Plug uninit leak in nbd.Buffer.to_bytearray
+  * python: Improve doc comments for nbd.py
+  * python: Drop pointless (char*)"..." cast
+  * python: Avoid memleak on (unlikely) module failure
+  * api: Tighter checking of structured read replies
+  * Fix small whitespace problem in README.md
+  * Change README to use markdown
+  * python: Speed up pread
+  * api: Speed up nbd_pread_structured when reading holes
+  * ci: Rebuild containers
+
+-------------------------------------------------------------------
 Fri Jul  8 17:59:24 UTC 2022 - James Fehlig <jfehlig@suse.com>
 
 - Update to version 1.12.4:
