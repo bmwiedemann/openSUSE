@@ -19,7 +19,7 @@
 %global base_name text
 %global short_name commons-%{base_name}
 Name:           apache-%{short_name}
-Version:        1.8
+Version:        1.10.0
 Release:        0
 Summary:        A library focused on algorithms working on strings
 License:        Apache-2.0

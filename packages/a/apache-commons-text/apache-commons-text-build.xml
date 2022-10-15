@@ -8,9 +8,9 @@
 
   <property name="project.groupId" value="org.apache.commons"/>
   <property name="project.artifactId" value="commons-text"/>
-  <property name="project.version" value="1.8"/>
+  <property name="project.version" value="1.10.0"/>
   
-  <property name="bundle.version" value="${project.version}.0"/>
+  <property name="spec.version" value="1.10"/>
 
   <property name="compiler.source" value="1.8"/>
   <property name="compiler.target" value="${compiler.source}"/>
@@ -122,7 +122,7 @@
 		<attribute name="Bundle-Name" value="Apache Commons Text"/>
 		<attribute name="Bundle-SymbolicName" value="org.apache.commons.commons-text"/>
 		<attribute name="Bundle-Vendor" value="The Apache Software Foundation"/>
-		<attribute name="Bundle-Version" value="${bundle.version}"/>
+		<attribute name="Bundle-Version" value="${project.version}"/>
 		<attribute name="Export-Package" value="org.apache.commons.text.diff;version=&quot;${project.version}&quot;,org.apache.commons.text.lookup;version=&quot;${project.version}&quot;,org.apache.commons.text.matcher;version=&quot;${project.version}&quot;,org.apache.commons.text.similarity;version=&quot;${project.version}&quot;,org.apache.commons.text.translate;version=&quot;${project.version}&quot;,org.apache.commons.text;version=&quot;${project.version}&quot;"/>
 		<attribute name="Implementation-Title" value="Apache Commons Text"/>
 		<attribute name="Implementation-Vendor" value="The Apache Software Foundation"/>
@@ -135,7 +135,7 @@
 		<attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=${compiler.target}))&quot;"/>
 		<attribute name="Specification-Title" value="Apache Commons Text"/>
 		<attribute name="Specification-Vendor" value="The Apache Software Foundation"/>
-		<attribute name="Specification-Version" value="${project.version}"/>
+		<attribute name="Specification-Version" value="${spec.version}"/>
       </manifest>
     </jar>
   </target>
