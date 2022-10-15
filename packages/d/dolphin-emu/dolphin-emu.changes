@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Oct 14 17:17:06 UTC 2022 - Jannik Seiler <seil0@mosad.xyz>
+
+- Updated to 5.0.17269 48c9c224cf9f82f0f9f2690b7cc6283d7448480c
+  * Added dolphin-emu-not-discord-presence.patch to fix build
+    failure if discord presence is disabled.
+  * Reduce pipeline compilation stutter through forcing FBFetch in ubershaders.
+  * Added support for native motion/rumble with SDL2.
+  * Added SD card folder syncing support.
+  * Added flush command buffers after multiple EFB copies.
+  * Added accurately handle the copy filter and gamma for EFB and XFB copies.
+  * Added HLE broadband device.
+  * Added support for libaesnd microcode.
+  * Added support for NFS files.
+
+-------------------------------------------------------------------
 Fri Jul  8 15:22:47 UTC 2022 - Илья Индиго <ilya@ilya.cf>
 
 - Initialized 5.0.16793 3cd82b619388d0877436390093a6edc2319a6904

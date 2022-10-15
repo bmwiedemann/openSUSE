@@ -7,4 +7,22 @@
     <comment>Initialized 5.0.16793 3cd82b619388d0877436390093a6edc2319a6904</comment>
     <requestid>987947</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7f3afe49e6c4e49566c6310077826fda</srcmd5>
+    <version>5.0.17269</version>
+    <time>1665844681</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 5.0.17269 48c9c224cf9f82f0f9f2690b7cc6283d7448480c
+  * Added dolphin-emu-not-discord-presence.patch to fix build
+    failure if discord presence is disabled.
+  * Reduce pipeline compilation stutter through forcing FBFetch in ubershaders.
+  * Added support for native motion/rumble with SDL2.
+  * Added SD card folder syncing support.
+  * Added flush command buffers after multiple EFB copies.
+  * Added accurately handle the copy filter and gamma for EFB and XFB copies.
+  * Added HLE broadband device.
+  * Added support for libaesnd microcode.
+  * Added support for NFS files.</comment>
+    <requestid>1011031</requestid>
+  </revision>
 </revisionlist>

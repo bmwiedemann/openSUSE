@@ -16,15 +16,16 @@
 #
 
 
-%define commit 3cd82b619388d0877436390093a6edc2319a6904
+%define commit 48c9c224cf9f82f0f9f2690b7cc6283d7448480c
 Name:           dolphin-emu
-Version:        5.0.16793
+Version:        5.0.17269
 Release:        0
 Summary:        Dolphin, a GameCube and Wii Emulator
 License:        GPL-2.0-or-later
 URL:            https://dolphin-emu.org
-# n=dolphin-emu && v=5.0.16793 && c=3cd82b619388d0877436390093a6edc2319a6904 && cd /tmp && git clone https://github.com/$n/dolphin.git $n && cd $n && git checkout $c && rm -rf .??* && cd .. && n=dolphin-emu && d=$n-$v && mv $n $d && f=$d.tar.xz && tar c --remove-files "$d" | xz -9e > "$f"
+# n=dolphin-emu && v=5.0.17269 && c=48c9c224cf9f82f0f9f2690b7cc6283d7448480c && cd /tmp && git clone https://github.com/$n/dolphin.git $n && cd $n && git checkout $c && rm -rf .??* && cd .. && n=dolphin-emu && d=$n-$v && mv $n $d && f=$d.tar.xz && tar c --remove-files "$d" | xz -9e > "$f"
 Source0:        %{name}-%{version}.tar.xz
+Patch0:         %{name}-not-discord-presence.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -64,7 +65,6 @@ BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(soundtouch)
 BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xrandr)
-BuildRequires:  pkgconfig(zlib)
 Requires:       nintendo-gamecube-wiimote-udev-rules
 ExclusiveArch:  x86_64 aarch64
 
