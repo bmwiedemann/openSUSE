@@ -19,19 +19,18 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-vistir
-Version:        0.5.2
+Version:        0.7.0
 Release:        0
 Summary:        Utilities for filesystems, paths, projects, subprocesses, and more
 License:        ISC
 Group:          Development/Languages/Python
 URL:            https://github.com/sarugaku/vistir
-Source:         https://github.com/sarugaku/vistir/archive/%{version}.tar.gz#/vistir-%{version}.tar.gz
+Source:         https://github.com/sarugaku/vistir/archive/refs/tags/v%{version}.tar.gz#/vistir-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools >= 40.8.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-colorama >= 0.3.4
 Recommends:     python-requests
-Requires:       python-six
 Recommends:     python-yaspin
 BuildArch:      noarch
 # SECTION test requirements
@@ -40,7 +39,6 @@ BuildRequires:  %{python_module hypothesis-fspaths}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module yaspin}
 # /SECTION
 %python_subpackages
