@@ -77,6 +77,11 @@ Requires:       apache-commons-compress
 Requires:       eclipse-swt
 Recommends:     snd_sf2
 Recommends:     timidity
+%ifarch %{ix86}
+BuildConflicts: java >= 12
+BuildConflicts: java-devel >= 12
+BuildConflicts: java-headless >= 12
+%endif
 %if 0%{?suse_version} >= 1500
 BuildRequires:  fluidsynth-devel
 %endif

@@ -65,4 +65,12 @@
     <comment>Build with source and target levels 8</comment>
     <requestid>964285</requestid>
   </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>fa892dfb51508e25ca8b8ee2824d6031</srcmd5>
+    <version>1.5.4</version>
+    <time>1665844653</time>
+    <user>dimstar_suse</user>
+    <comment>Fix i386 build breakages by requiring java 11</comment>
+    <requestid>1010952</requestid>
+  </revision>
 </revisionlist>

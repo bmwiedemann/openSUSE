@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 13 11:21:47 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Force building with java 11 on ix86 in order to avoid random
+  build failures
+
+-------------------------------------------------------------------
 Wed Mar 23 12:32:21 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with java source and target levels 8
