@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 14 12:33:23 UTC 2022 - Torsten Duwe <duwe@suse.com>
+
+- Do not repeat openSUSE / SLE version tests
+
+- Actually format and package the man pages
+
+-------------------------------------------------------------------
 Sun May  8 04:11:28 UTC 2022 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
 - set LZMA_XZ_SUPPORT=1 so you can (un)squash -comp lzma images
