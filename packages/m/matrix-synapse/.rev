@@ -569,4 +569,25 @@ mostly-working synapse than nothing at all) and the package has been update to
     <comment></comment>
     <requestid>1005075</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>166bb4626f46a20f5a76bdbc26251a9c</srcmd5>
+    <version>1.68.0</version>
+    <time>1665844644</time>
+    <user>dimstar_suse</user>
+    <comment>- Add workaround for poetry &gt;= 1.3.0 (boo#1204312)
+  Also add the unnormalized name to the Metadata so that the
+  checks inside synapse work correctly.
+
+- Reduce BuildRequires footprint with poetry-core instead of poetry
+
+- added https://patch-diff.githubusercontent.com/raw/matrix-org/synapse/pull/13952.patch 
+  this prevents setuptools-rust being enforced as a runtime
+  dependency. Drop dependency in the package again.
+
+- synapse checks for setuptools-rust as a runtime dep. add this
+  until we figured out a better solution 
+
+- Update to 1.68.0</comment>
+    <requestid>1010937</requestid>
+  </revision>
 </revisionlist>
