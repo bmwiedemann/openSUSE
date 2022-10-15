@@ -124,4 +124,13 @@
 </comment>
     <requestid>979177</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>baee52979b4ee9d41d3d05c28509d250</srcmd5>
+    <version>1.11.0</version>
+    <time>1665844699</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-fmt9.patch
+</comment>
+    <requestid>1011100</requestid>
+  </revision>
 </revisionlist>

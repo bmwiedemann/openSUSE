@@ -29,6 +29,8 @@ Source2:        gerbera.sysusers.in
 Patch0:         harden_gerbera.service.patch
 #PATCH-FIX-UPSTREAM https://github.com/gerbera/gerbera/pull/2635
 Patch1:         2635.patch
+#PATCH-FIX-UPSTREAM https://github.com/gerbera/gerbera/issues/2681
+Patch2:         fix-fmt9.patch
 BuildRequires:  ccache
 BuildRequires:  cmake >= 3.13
 BuildRequires:  fdupes
