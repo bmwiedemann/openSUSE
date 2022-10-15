@@ -1,7 +1,7 @@
 #
 # spec file for package kimageformats
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,6 +21,9 @@
 %endif
 %if 0%{?suse_version} > 1500 || (0%{?is_opensuse} && 0%{?sle_version} >= 150300)
 %define with_heif 1
+%endif
+%if 0%{?suse_version} > 1500 || (0%{?is_opensuse} && 0%{?sle_version} > 150400)
+%define with_jxl 1
 %endif
 %define _tar_path 5.99
 # Full KF5 version (e.g. 5.33.0)
@@ -44,21 +47,24 @@ Source2:        frameworks.keyring
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
-BuildRequires:  openexr
 BuildRequires:  openexr-devel
 BuildRequires:  cmake(KF5Archive) >= %{_kf5_bugfix_version}
-BuildRequires:  cmake(Qt5Gui) >= 5.15.0
-BuildRequires:  cmake(Qt5PrintSupport) >= 5.15.0
-BuildRequires:  cmake(Qt5Test) >= 5.15.0
+BuildRequires:  cmake(Qt5Gui) >= 5.15.2
+BuildRequires:  cmake(Qt5PrintSupport) >= 5.15.2
+BuildRequires:  cmake(Qt5Test) >= 5.15.2
 %if 0%{?with_avif}
 BuildRequires:  cmake(libavif) >= 0.8.2
 %endif
 %if 0%{?with_heif}
 BuildRequires:  cmake(libheif) >= 1.10.0
 %endif
+%if 0%{?with_jxl}
+BuildRequires:  pkgconfig(libjxl) >= 0.6.1
+BuildRequires:  pkgconfig(libjxl_threads) >= 0.6.1
+%endif
 %requires_ge    libQt5Gui5
 %requires_ge    libQt5PrintSupport5
-Recommends:     libqt5-qtimageformats >= 5.12.0
+Recommends:     libqt5-qtimageformats >= 5.15.2
 Suggests:       %{name}-eps
 
 %description
@@ -99,6 +105,9 @@ environments.
 %if 0%{?with_heif}
 %{_kf5_plugindir}/imageformats/kimg_heif.so
 %endif
+%if 0%{?with_jxl}
+%{_kf5_plugindir}/imageformats/kimg_jxl.so
+%endif
 %{_kf5_plugindir}/imageformats/kimg_exr.so
 %{_kf5_plugindir}/imageformats/kimg_hdr.so
 %{_kf5_plugindir}/imageformats/kimg_kra.so
@@ -117,6 +126,9 @@ environments.
 %endif
 %if 0%{?with_heif}
 %{_kf5_servicesdir}/qimageioplugins/heif.desktop
+%endif
+%if 0%{?with_jxl}
+%{_kf5_servicesdir}/qimageioplugins/jxl.desktop
 %endif
 %{_kf5_servicesdir}/qimageioplugins/dds.desktop
 %{_kf5_servicesdir}/qimageioplugins/exr.desktop

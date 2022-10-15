@@ -902,4 +902,12 @@
     <comment>KDE Frameworks 5.99 (forwarded request 1008960 from cgiboudeaux)</comment>
     <requestid>1009002</requestid>
   </revision>
+  <revision rev="112" vrev="2">
+    <srcmd5>324d68326e2f4601d3774e3ee33f499d</srcmd5>
+    <version>5.99.0</version>
+    <time>1665844496</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable JPEG-XL plugin (forwarded request 1009352 from iDesmI)</comment>
+    <requestid>1010886</requestid>
+  </revision>
 </revisionlist>
