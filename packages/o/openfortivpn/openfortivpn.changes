@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct 12 09:51:16 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.19.0
+  * fix "Peer refused to agree to our IP address" message
+  * avoid setting duplicate routes
+  * remove obsolete code that reads non-XML config from FortiOS
+  * improve warning message when reading options from config file
+- Update to version 1.18.0
+  * add new options to delegate the authentication to external
+    programs
+  * minor fixes in documentation
+
+-------------------------------------------------------------------
 Sat May  7 14:00:06 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.17.3
