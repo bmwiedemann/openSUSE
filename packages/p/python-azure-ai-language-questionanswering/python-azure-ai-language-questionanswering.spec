@@ -16,20 +16,18 @@
 #
 
 
-%define realversion 1.0.0
-
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %if 0%{?suse_version} >= 1500
 %define skip_python2 1
 %endif
 Name:           python-azure-ai-language-questionanswering
-Version:        1.0.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Microsoft Azure Question Answering Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-ai-language-questionanswering/azure-ai-language-questionanswering-%{realversion}.zip
+Source:         https://files.pythonhosted.org/packages/source/a/azure-ai-language-questionanswering/azure-ai-language-questionanswering-%{version}.zip
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-ai-language-nspkg >= 1.0.0}
 BuildRequires:  %{python_module azure-ai-nspkg >= 1.0.0}
@@ -40,7 +38,8 @@ BuildRequires:  unzip
 Requires:       python-azure-ai-language-nspkg >= 1.0.0
 Requires:       python-azure-ai-nspkg >= 1.0.0
 Requires:       python-azure-core < 2.0.0
-Requires:       python-azure-core >= 1.19.1
+Requires:       python-azure-core >= 1.24.0
+Requires:       python-isodate >= 0.6.1
 Conflicts:      python-azure-sdk <= 2.0.0
 BuildArch:      noarch
 %python_subpackages
@@ -54,10 +53,10 @@ in your knowledge base—automatically. Your knowledge base gets smarter, too, a
 continually learns from users' behavior.
 
 %prep
-%setup -q -n azure-ai-language-questionanswering-%{realversion}
+%setup -q -n azure-ai-language-questionanswering-%{version}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-ai-language-questionanswering-%{realversion}
+install -m 644 %{SOURCE1} %{_builddir}/azure-ai-language-questionanswering-%{version}
 %python_build
 
 %install

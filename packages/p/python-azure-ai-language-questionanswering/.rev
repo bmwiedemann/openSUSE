@@ -33,4 +33,17 @@
 - Update Requires from setup.py (forwarded request 990499 from glaubitz)</comment>
     <requestid>990541</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6cc0cbd8c3c68f8e2ccde03c7061c76e</srcmd5>
+    <version>1.1.0</version>
+    <time>1665844683</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove temporary version override
+- Update Requires from setup.py (forwarded request 1010961 from glaubitz)</comment>
+    <requestid>1011033</requestid>
+  </revision>
 </revisionlist>
