@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Text-Table
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,17 @@
 #
 
 
+%define cpan_name Text-Table
 Name:           perl-Text-Table
-Version:        1.134
+Version:        1.135
 Release:        0
 #Upstream: SUSE-Public-Domain
-%define cpan_name Text-Table
-Summary:        Organize Data in Tables
 License:        ISC
-Group:          Development/Libraries/Perl
+Summary:        Organize Data in Tables
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SH/SHLOMIF/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Module::Build) >= 0.280000
@@ -47,7 +45,7 @@ allows you to create and maintain tables that adapt to alignment
 requirements as you use them.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
 perl Build.PL installdirs=vendor
@@ -61,7 +59,6 @@ perl Build.PL installdirs=vendor
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes examples README
 %license LICENSE
 
