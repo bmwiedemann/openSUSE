@@ -18,7 +18,7 @@
 
 %define cpan_name Pod-Spell
 Name:           perl-Pod-Spell
-Version:        1.23
+Version:        1.25
 Release:        0
 License:        Artistic-2.0
 Summary:        Formatter for spellchecking Pod

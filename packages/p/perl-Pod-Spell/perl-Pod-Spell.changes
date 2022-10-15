@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct  5 03:08:28 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.25
+   see /usr/share/doc/packages/perl-Pod-Spell/Changes
+
+  1.25      2022-10-04
+      - releasing as stable
+
+  1.24      2022-10-03 (TRIAL RELEASE)
+      - account for stopwords added in UTF-8 encoded form
+
+-------------------------------------------------------------------
 Thu Sep 22 03:07:54 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.23
