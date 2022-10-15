@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct 14 12:10:39 UTC 2022 - pgajdos@suse.com
+
+- added patches
+  fix https://github.com/Shoobx/xmldiff/commit/34b810f4394965aadeca31204e6b76eb023fd11a
+  + python-xmldiff-src-upgrades.patch
+  https://github.com/Shoobx/xmldiff/issues/93
+  + python-xmldiff-no-six-remains.patch
+  
+-------------------------------------------------------------------
 Thu Jun  3 13:19:51 UTC 2021 - pgajdos@suse.com
 
 - %check: use %pyunittest rpm macro

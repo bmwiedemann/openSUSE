@@ -170,4 +170,18 @@
     <comment></comment>
     <requestid>897222</requestid>
   </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>d501540e091f7beab897d023525a8c2a</srcmd5>
+    <version>2.4</version>
+    <time>1665844654</time>
+    <user>dimstar_suse</user>
+    <comment>- added patches
+  fix https://github.com/Shoobx/xmldiff/commit/34b810f4394965aadeca31204e6b76eb023fd11a
+  + python-xmldiff-src-upgrades.patch
+  https://github.com/Shoobx/xmldiff/issues/93
+  + python-xmldiff-no-six-remains.patch
+  
+</comment>
+    <requestid>1010955</requestid>
+  </revision>
 </revisionlist>
