@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 11 14:44:56 UTC 2022 - Stefan Schubert <schubi@suse.com>
+
+- pam_env: Using libeconf for reading configuration and environment
+  files. (Patch: pam_env_econf.patch; Testcase: tst-pam_env-retval.c)
+
+-------------------------------------------------------------------
 Fri Jun 17 15:26:20 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Keep old directory in filelist for migration
