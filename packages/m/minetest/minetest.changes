@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 14 12:18:15 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Set -mbranch-protection=none only in Tumbleweed since gcc7 does
+  not support it in Leap 15.x / SLE15
+
+-------------------------------------------------------------------
 Wed Sep 28 19:40:52 UTC 2022 - Simon Vogl <simon.vogl@gmx.net>
 
 - Update to version 5.6.1:
