@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Metrics-Any
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Metrics-Any
 Name:           perl-Metrics-Any
-Version:        0.07
+Version:        0.08
 Release:        0
-Summary:        Abstract collection of monitoring metrics
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Abstract collection of monitoring metrics
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/P/PE/PEVANS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml

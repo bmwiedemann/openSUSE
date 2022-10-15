@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct 12 03:06:35 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.08
+   see /usr/share/doc/packages/perl-Metrics-Any/Changes
+
+  0.08    2022-10-11
+          [CHANGES]
+           * Optionally allow the test adapter to store full values for
+             distributions
+
+-------------------------------------------------------------------
 Thu Jul 22 03:08:36 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.07
