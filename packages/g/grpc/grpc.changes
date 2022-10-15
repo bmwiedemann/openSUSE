@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Oct 14 18:04:19 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to release 1.50.0
+  * Core
+    - Derive EventEngine from std::enable_shared_from_this. (#31060)
+    - Revert "Revert "[chttp2] fix stream leak with queued flow control
+      update and absence of writes (#30907)" (#30991)". (#30992)
+    - [chttp2] fix stream leak with queued flow control update and absence of writes. (#30907)
+    - Remove gpr_codegen. (#30899)
+    - client_channel: allow LB policy to communicate update errors to resolver. (#30809)
+    - FaultInjection: Fix random number generation. (#30623)
+  * C++
+    - OpenCensus Plugin: Add measure and views for started RPCs. (#31034)
+  * C#
+    - Grpc.Tools: Parse warnings from libprotobuf (fix #27502). (#30371)
+    - Grpc.Tools add support for env variable GRPC_PROTOC_PLUGIN (fix #27099). (#30411)
+    - Grpc.Tools document AdditionalImportDirs. (#30405)
+    - Fix OutputOptions and GrpcOutputOptions (issue #25950). (#30410)
+  * Python
+    - Support Python 3.11. (#30818)
+  * Ruby
+    - Fix ruby windows ucrt build. (#31051)
+    - Drop support for ruby 2.5. (#30699)
+
+-------------------------------------------------------------------
 Thu Sep 22 08:43:56 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - Update to release 1.49.1
