@@ -38,4 +38,20 @@
     <comment></comment>
     <requestid>994363</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>40daf5983fdaa878d724237063c460f5</srcmd5>
+    <version>2.0.4</version>
+    <time>1665844679</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.4:
+  This release adjusts the data rate limit imposed on MIDI through macOS IAC
+  bus to avoid losing data (this is a macOS limitation, not a PortMidi
+  limitation). Apparently, the limit was significantly dropped somewhere around
+  macOS 12. This release is tested on Apple M2 in addition to Linux, Win32, and
+  macOS Intel. It also includes a working but not complete port to Haiku. 
+- drop 0001-Add-missing-return-type.patch, 
+  0001-changing-path-to-pm_common-directory-in-file-pm_comm.patch
+  0001-Adding-missing-file-to-repo.patch: upstream</comment>
+    <requestid>1011016</requestid>
+  </revision>
 </revisionlist>

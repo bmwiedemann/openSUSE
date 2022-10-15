@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct 13 19:25:02 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.4:
+  This release adjusts the data rate limit imposed on MIDI through macOS IAC
+  bus to avoid losing data (this is a macOS limitation, not a PortMidi
+  limitation). Apparently, the limit was significantly dropped somewhere around
+  macOS 12. This release is tested on Apple M2 in addition to Linux, Win32, and
+  macOS Intel. It also includes a working but not complete port to Haiku. 
+- drop 0001-Add-missing-return-type.patch, 
+  0001-changing-path-to-pm_common-directory-in-file-pm_comm.patch
+  0001-Adding-missing-file-to-repo.patch: upstream
+
+-------------------------------------------------------------------
 Wed Aug 10 13:25:53 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Disable RPATH in the .spec 
