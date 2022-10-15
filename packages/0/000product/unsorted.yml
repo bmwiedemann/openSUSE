@@ -2652,6 +2652,7 @@ unsorted:
   - cvsps 
   - cwstudio 
   - cxref 
+  - cxxopts-devel 
   - cxxtools-devel 
   - cyreal-alice-fonts 
   - cyreal-junge-fonts 
@@ -3471,6 +3472,7 @@ unsorted:
   - erlang-wx 
   - erlang-wx-src 
   - erldash: [x86_64] 
+  - esbuild 
   - esc 
   - espeak-devel 
   - espeak-ng 
@@ -10670,6 +10672,8 @@ unsorted:
   - libdhash-devel-32bit: [x86_64] 
   - libdhash1-32bit: [x86_64] 
   - libdico2 
+  - libdict-devel 
+  - libdict1_0 
   - libdigikamcore7_8_0 
   - libdirac_decoder0 
   - libdirac_decoder0-32bit: [x86_64] 
@@ -11388,9 +11392,9 @@ unsorted:
   - libgraphene-devel 
   - libgravatar-devel 
   - libgromacs6 
-  - libgrpc++1_49 
-  - libgrpc27 
-  - libgrpc_plugin_support1_49 
+  - libgrpc++1_50 
+  - libgrpc28 
+  - libgrpc_plugin_support1_50 
   - libgsasl-devel 
   - libgsequencer0 
   - libgsettings-qt1 
@@ -11765,7 +11769,6 @@ unsorted:
   - libhugetlbfs-tests 
   - libhunspell-1_7-0-32bit: [x86_64] 
   - libhwloc15 
-  - libhwy1 
   - libhx509-5 
   - libhydrogen-core-1_1_1 
   - libhydrogen-core-devel 
@@ -11974,7 +11977,6 @@ unsorted:
   - libjthread1_3_3 
   - libjxl-devel 
   - libjxl-tools 
-  - libjxl0_7 
   - libjxrglue0 
   - libjxrglue0-32bit: [x86_64] 
   - libkadm5clnt7 
@@ -14616,7 +14618,7 @@ unsorted:
   - libunwind-setjmp0 
   - libunwind-setjmp0-32bit: [x86_64] 
   - libunwind8-32bit: [x86_64] 
-  - libupb27 
+  - libupb28 
   - libupm1 
   - libupnp-devel 
   - libupnp17-32bit: [x86_64] 
@@ -22437,9 +22439,9 @@ unsorted:
   - python310-aws-xray-sdk-Django 
   - python310-aws-xray-sdk-Flask-SQLAlchemy 
   - python310-aws-xray-sdk-SQLAlchemy 
-  - python310-aws-xray-sdk-aiobotocore 
   - python310-aws-xray-sdk-aiohttp 
   - python310-aws-xray-sdk-all 
+  - python310-aws-xray-sdk-bottle 
   - python310-aws-xray-sdk-mysql-connector 
   - python310-aws-xray-sdk-psycopg2 
   - python310-aws-xray-sdk-pymongo 
@@ -23127,6 +23129,7 @@ unsorted:
   - python310-django-storages 
   - python310-django-tables2 
   - python310-django-tagging 
+  - python310-django-taggit 
   - python310-django-tagulous 
   - python310-django-tastypie 
   - python310-django-timezone-field 
@@ -24827,6 +24830,7 @@ unsorted:
   - python310-slimit 
   - python310-slixmpp 
   - python310-slycot 
+  - python310-smart-open 
   - python310-smartypants 
   - python310-smbprotocol 
   - python310-smmap 
@@ -25676,9 +25680,9 @@ unsorted:
   - python38-aws-xray-sdk-Django 
   - python38-aws-xray-sdk-Flask-SQLAlchemy 
   - python38-aws-xray-sdk-SQLAlchemy 
-  - python38-aws-xray-sdk-aiobotocore 
   - python38-aws-xray-sdk-aiohttp 
   - python38-aws-xray-sdk-all 
+  - python38-aws-xray-sdk-bottle 
   - python38-aws-xray-sdk-mysql-connector 
   - python38-aws-xray-sdk-psycopg2 
   - python38-aws-xray-sdk-pymongo 
@@ -26387,6 +26391,7 @@ unsorted:
   - python38-django-storages 
   - python38-django-tables2 
   - python38-django-tagging 
+  - python38-django-taggit 
   - python38-django-tagulous 
   - python38-django-tastypie 
   - python38-django-timezone-field 
@@ -28161,6 +28166,7 @@ unsorted:
   - python38-slip-dbus 
   - python38-slixmpp 
   - python38-slycot 
+  - python38-smart-open 
   - python38-smartypants 
   - python38-smbprotocol 
   - python38-smmap 
@@ -29013,9 +29019,9 @@ unsorted:
   - python39-aws-xray-sdk-Django 
   - python39-aws-xray-sdk-Flask-SQLAlchemy 
   - python39-aws-xray-sdk-SQLAlchemy 
-  - python39-aws-xray-sdk-aiobotocore 
   - python39-aws-xray-sdk-aiohttp 
   - python39-aws-xray-sdk-all 
+  - python39-aws-xray-sdk-bottle 
   - python39-aws-xray-sdk-mysql-connector 
   - python39-aws-xray-sdk-psycopg2 
   - python39-aws-xray-sdk-pymongo 
@@ -29722,6 +29728,7 @@ unsorted:
   - python39-django-storages 
   - python39-django-tables2 
   - python39-django-tagging 
+  - python39-django-taggit 
   - python39-django-tagulous 
   - python39-django-tastypie 
   - python39-django-timezone-field 
@@ -31498,6 +31505,7 @@ unsorted:
   - python39-slip-dbus 
   - python39-slixmpp 
   - python39-slycot 
+  - python39-smart-open 
   - python39-smartypants 
   - python39-smbprotocol 
   - python39-smmap 

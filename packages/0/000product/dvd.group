@@ -2088,6 +2088,7 @@
     <package name="libhogweed6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libhugetlbfs" supportstatus="unsupported"/> <!-- reason: dvd:nvme-cli -->
     <package name="libhunspell-1_7-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libhwy1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libhyphen0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libibus-1_0-5" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libibverbs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
@@ -2144,6 +2145,7 @@
     <package name="libjson-c5" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libjson-glib-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libjte2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libjxl0_7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libkColorPicker0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkImageAnnotator0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkaccounts2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
