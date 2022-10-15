@@ -119,4 +119,12 @@
     <comment>bsc#1201316 and bsc#1201317</comment>
     <requestid>987945</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>59772a9d7fda89713e3576a4c9478493</srcmd5>
+    <version>9.4.48</version>
+    <time>1665844650</time>
+    <user>dimstar_suse</user>
+    <comment>Fix i386 build breakages by requiring java 11</comment>
+    <requestid>1010950</requestid>
+  </revision>
 </revisionlist>
