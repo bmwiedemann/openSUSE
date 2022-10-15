@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Oct 14 21:49:44 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.10.0
+  * bugfix: Only import future for py2. PR343.
+  * bugfix: Defensively copy context entities to async thread.
+    PR340.
+  * improvement: Added support for IGNORE_ERROR option when context
+    is missing. PR338.
+- Release 2.9.0
+  * bugfix: Change logging behavior to avoid overflow. PR302.
+  * improvement: Lazy load samplers to speed up cold start in
+    lambda. PR312.
+  * improvement: Replace slow json file name resolver. PR 306.
+- Remove aiobotocore from Tumbleweed -- gh#aio-libs/aiobotocore#971
+- Enable parts of the test suite
+  * multibuild: checks runtime requirements directly
+  * use github archive: contains the test files
+  * exclude tests which do not have compatible packages or require
+    network connection
+- Add extra subpackage for bottle
+- Fix mysql subpackage recommendation
+
+-------------------------------------------------------------------
 Tue Jul 27 10:19:14 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.8.0
