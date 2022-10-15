@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Oct 15 11:20:21 UTC 2022 - maiku.fabian@gmail.com
+
+- Update to 2.19.6
+- Update emoji annotations from CLDR
+- Avoid showing passwords in OSK buttons by disabling typing-booster
+  in terminals when the on-screen-keyboard (OSK) is shown
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/393)
+  (Requires: https://gitlab.gnome.org/GNOME/gnome-shell/-/merge_requests/2511)
+- Translation update from Weblate (bn 100% complete)
+
+-------------------------------------------------------------------
 Sun Oct 09 18:09:44 UTC 2022 - maiku.fabian@gmail.com
 
 - Update to 2.19.2
