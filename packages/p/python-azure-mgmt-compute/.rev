@@ -304,4 +304,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1007840 from glaubitz)</comment>
     <requestid>1007870</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>7f9c85963b7652fd0cd0dcab325c95b3</srcmd5>
+    <version>29.0.0</version>
+    <time>1665844684</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 29.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1010962 from glaubitz)</comment>
+    <requestid>1011034</requestid>
+  </revision>
 </revisionlist>
