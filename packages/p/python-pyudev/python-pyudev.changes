@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 14 08:25:20 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update hypothesis_settings.patch:
+  * extend deadlines to handle qemu emulated arches better 
+
+-------------------------------------------------------------------
 Sat Oct  1 07:48:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.24.0:

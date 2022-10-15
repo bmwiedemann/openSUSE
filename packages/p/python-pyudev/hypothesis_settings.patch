@@ -16,7 +16,7 @@ Index: pyudev-0.24.0/tests/test_enumerate.py
      @failed_health_check_wrapper
      @given(_CONTEXT_STRATEGY, _SUBSYSTEM_STRATEGY)
 -    @settings(max_examples=1)
-+    @settings(max_examples=1, deadline=500)
++    @settings(max_examples=1, deadline=2000)
      def test_match_subsystem_nomatch_complete(self, context, subsystem):
          """
          Test that w/ respect to the universe of devices returned by
@@ -25,7 +25,7 @@ Index: pyudev-0.24.0/tests/test_enumerate.py
      @failed_health_check_wrapper
      @given(_CONTEXT_STRATEGY, _MATCH_PROPERTY_STRATEGY.filter(lambda x: _is_bool(x[1])))
 -    @settings(max_examples=10)
-+    @settings(max_examples=10, deadline=500)
++    @settings(max_examples=10, deadline=2000)
      def test_match_property_bool(self, context, pair):
          """
          Verify that a probably boolean property lookup works.
@@ -34,7 +34,7 @@ Index: pyudev-0.24.0/tests/test_enumerate.py
          _CONTEXT_STRATEGY, device_strategy(filter_func=lambda d: d.parent is not None)
      )
 -    @settings(max_examples=5)
-+    @settings(max_examples=5, deadline=500)
++    @settings(max_examples=5, deadline=2000)
      def test_match_parent(self, context, device):
          """
          For a given device, verify that it is in its parent's children.
@@ -43,7 +43,7 @@ Index: pyudev-0.24.0/tests/test_enumerate.py
          _MATCH_PROPERTY_STRATEGY,
      )
 -    @settings(max_examples=10)
-+    @settings(max_examples=10, deadline=500)
++    @settings(max_examples=10, deadline=2000)
      def test_match(self, context, subsystem, sysname, ppair):
          """
          Test that matches from different categories are a conjunction.
@@ -52,7 +52,7 @@ Index: pyudev-0.24.0/tests/test_enumerate.py
  
      @given(_ENUMERATOR_STRATEGY)
 -    @settings(max_examples=1)
-+    @settings(max_examples=1, deadline=500)
++    @settings(max_examples=1, deadline=2000)
      def test_match_passthrough_tag(self, enumerator):
          """
          Test that special keyword tag results in a match_tag call.
@@ -61,7 +61,7 @@ Index: pyudev-0.24.0/tests/test_enumerate.py
      @_UDEV_TEST(172, "test_match_passthrough_parent")
      @given(_ENUMERATOR_STRATEGY)
 -    @settings(max_examples=1)
-+    @settings(max_examples=1, deadline=500)
++    @settings(max_examples=1, deadline=2000)
      def test_match_passthrough_parent(self, enumerator):
          """
          Test that special keyword 'parent' results in a match parent call.
@@ -70,7 +70,7 @@ Index: pyudev-0.24.0/tests/test_enumerate.py
  
      @given(_ENUMERATOR_STRATEGY)
 -    @settings(max_examples=1)
-+    @settings(max_examples=1, deadline=500)
++    @settings(max_examples=1, deadline=2000)
      def test_match_passthrough_property(self, enumerator):
          """
          Test that non-special keyword args are treated as properties.
