@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct 13 08:32:18 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.0:
+  + Switch to meson.
+  + Adjust a bit better to smaller screen sizes.
+  + Lots of bug fixes and modernization.
+  + Drop tray icon (won't exist in GTK4).
+  + Updated translations.
+- Changes in BuildRequires following upstream changes:
+  + Drop: intltool, update-desktop-files and pkgconfig(libnotify).
+  + Add: meson, pkgconfig(gobject-2.0) and pkgconfig(gcr-3).
+- Add meson macros following upstreams port and modernize spec.
+
+-------------------------------------------------------------------
 Mon Sep 20 20:16:39 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove obsolete translation-update-upstream support
