@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct  7 12:34:18 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- according to upstream, XMODIFIERS and QT/GTK_IM_MODULE should
+  set to fcitx instead of fcitx5
+
+-------------------------------------------------------------------
 Sat Oct  1 16:26:46 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - build with enchant-2 again (boo#1203575)
