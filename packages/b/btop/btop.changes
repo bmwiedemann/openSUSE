@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Fri Oct 07 19:21:20 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 1.2.12+git20221007.3dd6a6c:
+  * v1.2.12 Bug fix
+  * Added: Dynamic updating of max number of CPU cores
+
+-------------------------------------------------------------------
+Fri Oct 07 13:10:07 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 1.2.11+git20221007.1444476:
+  * v1.2.11 Quick fix for number of cores detection
+  * Fixed: Number of cores wrongly detected for Ryzen in rare cases.
+
+-------------------------------------------------------------------
+Thu Oct  6 20:51:57 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Classic 'forgot to remove old .tar.gz before ci' scenario ...
+
+-------------------------------------------------------------------
+Thu Oct  6 20:38:48 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Classic 'forgot to add new .tar.gz before ci' scenario ...
+
+-------------------------------------------------------------------
+Thu Oct 06 20:28:05 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 1.2.10+git20221006.7a2556e:
+  * v1.2.10 Bug fixes, cleanup + a new theme
+  * Fixed: Cpu::collect() core count counter...
+  * All but two places `const bool` have been updated
+  * More const bool cleanup
+  * Remove const from bool variables
+  * Avoid the unnecessary use of copy constructor
+  * Fix variable initialization to 'auto' for getB()
+  * Forgot to update 'auto' usage wherever necessary
+  * More 'No need for const & in bool'
+  * No need for const & in bool
+  * Changed: Using sysconf(_SC_NPROCESSORS_CONF) for number of cores instead of sysconf(_SC_NPROCESSORS_ONLN)
+  * Further Cleanup Part 2
+  * Further 'cleanup'
+  * Further improvements
+  * Clean up btop_tools.{hpp,cpp} files
+  * Ignore files created by Qt Creator
+
+-------------------------------------------------------------------
+Sun Oct 02 16:15:30 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 1.2.9+git20221002.24f0609:
+  * Fixed: Crashing when cores are offline
+  * Fixed missing "#" from value
+  * Fixed: Extra checks to avoid crash on trying to replace empty strings in tree mode
+  * Updated README.md
+  * [feature] Added Paper theme
+  * Update FUNDING.yml
+  * Update FUNDING.yml
+  * Update README.md
+
+-------------------------------------------------------------------
 Sun Aug 28 16:40:11 UTC 2022 - scott.bradnick@suse.com
 
 - Update to version 1.2.9+git20220828.26ac007:
