@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Oct 10 21:03:51 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.27:
+  + This release includes two new staging protocols:
+    - Content type hint: This protocol enables clients to provide
+      hints to the compositor about what kind of content it
+      provides, allowing compositors to optionally adapt its
+      behavior accordingly.
+    - Idle notify: This extension allows compositors to notify
+      clients about when the user is idle.
+  + Apart from these two new extensions, this release also brings
+    the usual clarifications, cleanups and fixes.
+
+-------------------------------------------------------------------
 Sat Sep 17 06:37:37 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Explicitly require a python3 interpreter to build
