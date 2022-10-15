@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-warlock
-Version:        1.3.3
+Version:        2.0.1
 Release:        0
 Summary:        Python object model built on top of JSON schema
 License:        Apache-2.0
@@ -27,14 +27,14 @@ URL:            https://github.com/bcwaldon/warlock
 Source:         https://github.com/bcwaldon/warlock/archive/%{version}.tar.gz#/warlock-%{version}.tar.gz
 BuildRequires:  %{python_module jsonpatch >= 0.7}
 BuildRequires:  %{python_module jsonschema >= 0.10}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-jsonpatch >= 0.7
 Requires:       python-jsonschema >= 0.10
-Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
 
@@ -46,15 +46,14 @@ Build self-validating python objects using JSON schemas.
 rm pytest.ini
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# Skipped because of gh#bcwaldon/warlock#64 (the package is incompatible with jsonschema < 4)
-%pytest -k 'not test_recursive_models'
+%pytest
 
 %files %{python_files}
 %doc README.md
