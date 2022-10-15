@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct 11 03:06:27 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.880
+   see /usr/share/doc/packages/perl-MCE/Changes
+
+  1.880 Mon Oct 10 04:00:00 EST 2022
+
+    * Improved reliability on the Windows platform.
+    * Improved MCE::Mutex::Channel::timedwait on the Windows platform.
+    * Improved MCE::Mutex::Channel performance on UNIX platforms.
+    * Resolved edge case in MCE::Child reaching deadlock.
+
+-------------------------------------------------------------------
 Wed May 25 03:06:24 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.879
