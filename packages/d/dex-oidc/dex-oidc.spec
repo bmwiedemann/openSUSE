@@ -20,7 +20,7 @@
 %define go_version 1.16
 
 Name:           dex-oidc
-Version:        2.33.0
+Version:        2.35.3
 Release:        0
 Summary:        OpenID Connect Identity (OIDC) and OAuth 2.0 Provider with Pluggable Connectors
 License:        Apache-2.0
