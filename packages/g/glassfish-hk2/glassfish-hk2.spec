@@ -1,7 +1,7 @@
 #
 # spec file for package glassfish-hk2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,6 +50,11 @@ BuildRequires:  mvn(org.osgi:osgi.cmpn)
 BuildRequires:  mvn(org.osgi:osgi.core)
 BuildRequires:  mvn(org.ow2.asm:asm-all)
 BuildArch:      noarch
+%ifarch %{ix86}
+BuildConflicts: java >= 12
+BuildConflicts: java-devel >= 12
+BuildConflicts: java-headless >= 12
+%endif
 %if %{without jp_minimal}
 BuildRequires:  mvn(args4j:args4j)
 BuildRequires:  mvn(com.google.inject:guice)

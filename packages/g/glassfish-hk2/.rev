@@ -15,4 +15,12 @@
     <comment>2.5.0</comment>
     <requestid>788440</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>3a416a2248500eabc32238db056ce11c</srcmd5>
+    <version>2.5.0</version>
+    <time>1665844649</time>
+    <user>dimstar_suse</user>
+    <comment>Fix i386 build breakages by requiring java 11</comment>
+    <requestid>1010949</requestid>
+  </revision>
 </revisionlist>

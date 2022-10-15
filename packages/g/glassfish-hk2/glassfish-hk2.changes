@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 13 11:21:47 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Force building with java 11 on ix86 in order to avoid random
+  build failures
+
+-------------------------------------------------------------------
 Thu Mar 26 07:50:52 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version 2.5.0
