@@ -1,7 +1,7 @@
 #
 # spec file for package libstorage-ng
 #
-# Copyright (c) 2022 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define libname %{name}1
 Name:           libstorage-ng
-Version:        4.5.45
+Version:        4.5.46
 Release:        0
 Summary:        Library for storage management
 License:        GPL-2.0-only
 Group:          System/Libraries
-Url:            https://github.com/openSUSE/libstorage-ng
+URL:            https://github.com/openSUSE/libstorage-ng
 Source:         %{name}-%{version}.tar.xz
 %if 0%{?suse_version} >= 1330
 BuildRequires:  libboost_headers-devel
@@ -139,8 +139,8 @@ This package contains Ruby bindings for libstorage-ng.
 %package utils
 Summary:        Utils for libstorage-ng
 Group:          Development/Tools/Other
-Recommends:     graphviz
 Recommends:     ImageMagick
+Recommends:     graphviz
 
 %description utils
 This package contains utils for libstorage-ng.
