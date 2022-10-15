@@ -596,4 +596,14 @@ You added ec_access.c with a GPL-2.0 (only) license. Now the spec file has to be
     <comment></comment>
     <requestid>972528</requestid>
   </revision>
+  <revision rev="72" vrev="3">
+    <srcmd5>b3f5ae2ba528b9fbdaf0e6d3a12f43d0</srcmd5>
+    <version>20220331</version>
+    <time>1665844504</time>
+    <user>dimstar_suse</user>
+    <comment>- This version includes CEDT table support as requested in feature
+  (SLE 15 SP5):
+  jsc#PED-201</comment>
+    <requestid>1010968</requestid>
+  </revision>
 </revisionlist>

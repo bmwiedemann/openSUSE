@@ -57,9 +57,7 @@ firmware. It also can disassemble AML, for debugging purposes.
 
 %prep
 %setup -q -n %{src_dir} -a 2 -a 4
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autopatch -p1
 mkdir acpidump-%{dmp_ver}
 cd acpidump-%{dmp_ver}
 # acpitools (acpidump) from kernel sources:
