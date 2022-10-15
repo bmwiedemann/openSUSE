@@ -100,7 +100,7 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  iputils
 BuildRequires:  libdbi-devel
-BuildRequires:  libsmbclient-devel
+BuildRequires:  pkgconfig(smbclient)
 BuildRequires:  libtool
 BuildRequires:  mysql-devel
 BuildRequires:  nagios-rpm-macros

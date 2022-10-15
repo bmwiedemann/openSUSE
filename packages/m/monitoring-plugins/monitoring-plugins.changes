@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  6 12:28:59 CEST 2022 - ro@suse.de
+
+- changed buildrequires libsmbclient-devel to pkgconfig(smbclient)
+  as samba packages have been reorganized in SLE and openSUSE 
+
+-------------------------------------------------------------------
 Sat Jul  2 15:56:26 UTC 2022 - Archie Cobbs <archie.cobbs@gmail.com>
 
 - added monitoring-plugins-2.3.1-check_by_ssh.patch
