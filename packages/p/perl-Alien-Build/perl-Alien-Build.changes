@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct  5 03:06:04 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.71
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  2.71      2022-10-04 11:18:14 -0600
+    - Added Alien::Build::Plugin::Extract::File (gh#375)
+
+-------------------------------------------------------------------
 Sat Sep 24 03:06:05 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.70
