@@ -78,4 +78,19 @@
   * Fix -Wshadow warnings</comment>
     <requestid>726131</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c83d07cf3cb933fa1e95bcd8bc2fcbab</srcmd5>
+    <version>1.0.7</version>
+    <time>1665929372</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.7 
+  * gitlab CI: add a basic build test
+  * man page: remove out-of-date COPYRIGHT section
+  * Apply X.Org standard coding style
+  * Remove obsolete casts on calloc &amp; malloc calls
+  * Variable scope reductions as suggested by cppcheck
+  * set_node_labels: move dereference of node to after the NULL check
+  * Add .git-blame-ignore-revs to hide whitespace commits from git blame</comment>
+    <requestid>1011139</requestid>
+  </revision>
 </revisionlist>

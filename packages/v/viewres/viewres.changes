@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Oct 15 17:18:22 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.7 
+  * gitlab CI: add a basic build test
+  * man page: remove out-of-date COPYRIGHT section
+  * Apply X.Org standard coding style
+  * Remove obsolete casts on calloc & malloc calls
+  * Variable scope reductions as suggested by cppcheck
+  * set_node_labels: move dereference of node to after the NULL check
+  * Add .git-blame-ignore-revs to hide whitespace commits from git blame
+
+-------------------------------------------------------------------
 Mon Aug 26 10:15:11 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.0.6
