@@ -1,0 +1,84 @@
+From adc0b8434a4bcef2baa515a252e4675dfbc264b7 Mon Sep 17 00:00:00 2001
+From: Andreas Schwab <schwab@suse.de>
+Date: Mon, 8 Aug 2022 11:07:19 +0200
+Subject: [PATCH] backends: Handle new RISC-V specific definitions
+
+Handle PT_RISCV_ATTRIBUTES, SHT_RISCV_ATTRIBUTES, DT_RISCV_VARIANT_CC.
+
+Signed-off-by: Andreas Schwab <schwab@suse.de>
+---
+ backends/riscv_init.c   |  4 ++++
+ backends/riscv_symbol.c | 45 +++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 49 insertions(+)
+
+diff --git a/backends/riscv_init.c b/backends/riscv_init.c
+index 141e0821..f2d46082 100644
+--- a/backends/riscv_init.c
++++ b/backends/riscv_init.c
+@@ -65,6 +65,10 @@ riscv_init (Elf *elf,
+   HOOK (eh, check_special_symbol);
+   HOOK (eh, machine_flag_check);
+   HOOK (eh, set_initial_registers_tid);
++  HOOK (eh, segment_type_name);
++  HOOK (eh, section_type_name);
++  HOOK (eh, dynamic_tag_name);
++  HOOK (eh, dynamic_tag_check);
+   if (eh->class == ELFCLASS64)
+     eh->core_note = riscv64_core_note;
+   else
+diff --git a/backends/riscv_symbol.c b/backends/riscv_symbol.c
+index c34b7702..c149b8ba 100644
+--- a/backends/riscv_symbol.c
++++ b/backends/riscv_symbol.c
+@@ -119,3 +119,48 @@ riscv_check_special_symbol (Elf *elf, const GElf_Sym *sym,
+ 
+   return false;
+ }
++
++const char *
++riscv_segment_type_name (int segment, char *buf __attribute__ ((unused)),
++			 size_t len __attribute__ ((unused)))
++{
++  switch (segment)
++    {
++    case PT_RISCV_ATTRIBUTES:
++      return "RISCV_ATTRIBUTES";
++    }
++  return NULL;
++}
++
++/* Return symbolic representation of section type.  */
++const char *
++riscv_section_type_name (int type,
++			 char *buf __attribute__ ((unused)),
++			 size_t len __attribute__ ((unused)))
++{
++  switch (type)
++    {
++    case SHT_RISCV_ATTRIBUTES:
++      return "RISCV_ATTRIBUTES";
++    }
++
++  return NULL;
++}
++
++const char *
++riscv_dynamic_tag_name (int64_t tag, char *buf __attribute__ ((unused)),
++			size_t len __attribute__ ((unused)))
++{
++  switch (tag)
++    {
++    case DT_RISCV_VARIANT_CC:
++      return "RISCV_VARIANT_CC";
++    }
++  return NULL;
++}
++
++bool
++riscv_dynamic_tag_check (int64_t tag)
++{
++  return tag == DT_RISCV_VARIANT_CC;
++}
+-- 
+2.37.1
+

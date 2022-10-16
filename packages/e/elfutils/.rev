@@ -979,4 +979,12 @@ Fixes CVE-2018-18310, CVE-2018-18520 and CVE-2018-18521.
   sets the DEBUGINFOD_URLS.</comment>
     <requestid>997533</requestid>
   </revision>
+  <revision rev="100" vrev="6">
+    <srcmd5>1a23e26afc551cf993866f23abf0c8b9</srcmd5>
+    <version>0.187</version>
+    <time>1665929321</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010631</requestid>
+  </revision>
 </revisionlist>

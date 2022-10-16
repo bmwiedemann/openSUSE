@@ -1,0 +1,32 @@
+From 1a7a4774f1e60d10e956fbc7d376f4e7222e2abb Mon Sep 17 00:00:00 2001
+From: Andreas Schwab <schwab@suse.de>
+Date: Mon, 8 Aug 2022 13:13:16 +0200
+Subject: [PATCH] elflint: Allow zero p_memsz for PT_RISCV_ATTRIBUTES
+
+The RISCV_ATTRIBUTES segment is not meant to be loaded.
+
+Signed-off-by: Andreas Schwab <schwab@suse.de>
+---
+ src/ChangeLog | 5 +++++
+ src/elflint.c | 5 ++++-
+ 2 files changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/src/elflint.c b/src/elflint.c
+index d919936f..b0e5415e 100644
+--- a/src/elflint.c
++++ b/src/elflint.c
+@@ -4731,7 +4731,10 @@ section [%2zu] '%s' must not be executable\n"),
+ 	}
+ 
+       if (phdr->p_filesz > phdr->p_memsz
+-	  && (phdr->p_memsz != 0 || phdr->p_type != PT_NOTE))
++	  && (phdr->p_memsz != 0
++	      || (phdr->p_type != PT_NOTE
++		  && !(ehdr->e_machine == EM_RISCV
++		       && phdr->p_type == PT_RISCV_ATTRIBUTES))))
+ 	ERROR (_("\
+ program header entry %d: file size greater than memory size\n"),
+ 	       cnt);
+-- 
+2.37.1
+

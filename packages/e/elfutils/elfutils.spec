@@ -40,6 +40,12 @@ BuildRequires:  libzstd-devel
 BuildRequires:  xz-devel
 BuildRequires:  zlib-devel
 
+Patch24300:     0001-libelf-Sync-elf.h-from-glibc.patch
+Patch24301:     0002-backends-Handle-new-RISC-V-specific-definitions.patch
+Patch24302:     0003-elflint-Allow-zero-p_memsz-for-PT_RISCV_ATTRIBUTES.patch
+Patch24303:     0004-readelf-Handle-SHT_RISCV_ATTRIBUTES-like-SHT_GNU_ATT.patch
+Patch24304:     0005-backends-Add-RISC-V-object-attribute-printing.patch
+
 %description
 elfutils is a collection of utilities and libraries to read, create
 and modify ELF binary files, find and handle DWARF debug data,

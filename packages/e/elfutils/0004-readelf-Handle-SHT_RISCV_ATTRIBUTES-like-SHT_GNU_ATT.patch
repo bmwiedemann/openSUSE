@@ -1,0 +1,26 @@
+From e447ecbbffb1d3f9d776b94392e76e37a1b5fd19 Mon Sep 17 00:00:00 2001
+From: Andreas Schwab <schwab@suse.de>
+Date: Mon, 8 Aug 2022 11:11:04 +0200
+Subject: [PATCH] readelf: Handle SHT_RISCV_ATTRIBUTES like SHT_GNU_ATTRIBUTES
+
+Signed-off-by: Andreas Schwab <schwab@suse.de>
+---
+ src/readelf.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/readelf.c b/src/readelf.c
+index f1f77ce8..e8317f98 100644
+--- a/src/readelf.c
++++ b/src/readelf.c
+@@ -3671,6 +3671,8 @@ print_attributes (Ebl *ebl, const GElf_Ehdr *ehdr)
+       if (shdr == NULL || (shdr->sh_type != SHT_GNU_ATTRIBUTES
+ 			   && (shdr->sh_type != SHT_ARM_ATTRIBUTES
+ 			       || ehdr->e_machine != EM_ARM)
++			   && (shdr->sh_type != SHT_RISCV_ATTRIBUTES
++			       || ehdr->e_machine != EM_RISCV)
+ 			   && (shdr->sh_type != SHT_CSKY_ATTRIBUTES
+ 			       || ehdr->e_machine != EM_CSKY)))
+ 	continue;
+-- 
+2.37.1
+

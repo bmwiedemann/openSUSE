@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 14 08:55:22 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Add RISC-V specific patches:
+  * 0001-libelf-Sync-elf.h-from-glibc.patch
+  * 0002-backends-Handle-new-RISC-V-specific-definitions.patch
+  * 0003-elflint-Allow-zero-p_memsz-for-PT_RISCV_ATTRIBUTES.patch
+  * 0004-readelf-Handle-SHT_RISCV_ATTRIBUTES-like-SHT_GNU_ATT.patch
+  * 0005-backends-Add-RISC-V-object-attribute-printing.patch
+
+-------------------------------------------------------------------
 Tue Apr 26 07:16:29 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Update to version 0.187:
