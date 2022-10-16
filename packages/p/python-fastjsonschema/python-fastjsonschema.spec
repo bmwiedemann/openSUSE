@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-fastjsonschema
-Version:        2.15.3
+Version:        2.16.2
 Release:        0
 Summary:        Fastest Python implementation of JSON schema
 License:        BSD-3-Clause

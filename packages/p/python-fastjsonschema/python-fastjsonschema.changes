@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct  6 14:32:39 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.16.2:
+  * Use temporary dir in tests for compiled code
+  * Add comments to Python versions in Github workflow
+  * Add conditional test that uses $ref
+  * Add conditional tests just to make sure the baseline works
+  * Recursively expand all $ref strings in schemas
+  * Add test case capturing the desired behaviour
+  * Expand $ref when assiging the definition field in JsonSchemaValueExce
+  * Add an assertion before removing 'data' from variable name
+
+-------------------------------------------------------------------
 Mon Jul 18 13:11:48 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Cleanup the SPEC file.
