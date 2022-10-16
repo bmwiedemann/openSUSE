@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sat Oct  8 20:29:52 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update texmath to version 0.12.5.4.
+  texmath (0.12.5.4)
+
+    * OMML reader: fix treatment of `eqArr` (#196).
+      This change also includes a change to the TeX writer: any array
+      with an alternating sequence of R,L alignments will be rendered
+      as an aligned environment (not just a single [R,L] as currently).
+
+    * OOML Writer: Add low line char ("_") to `isBarChar` (#193, Hagb).
+      Closes jgm/pandoc#8152.
+
+    * Eqn writer: use `-` for minus, `cdots` for cdots (#200).
+
+-------------------------------------------------------------------
+Thu Sep 29 05:35:12 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update texmath to version 0.12.5.3.
+  texmath (0.12.5.3)
+
+    * Eqn writer: avoid empty `{}` (#198).
+      This causes an error, along the lines of
+      ```
+      eqn:<standard input>:73: error: syntax error
+       context is
+              } above { >>> } <<<
+      ```
+      which can be avoided if we use `{""}`.
+
+-------------------------------------------------------------------
+Wed Aug  3 17:41:32 UTC 2022 - Peter Simons <psimons@suse.com>
+
+- Update texmath to version 0.12.5.2.
+  texmath (0.12.5.2)
+
+    * Fix bug in implementation of `\mspace` (#195).
+
+-------------------------------------------------------------------
 Tue May 31 18:24:37 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Update texmath to version 0.12.5.1.
