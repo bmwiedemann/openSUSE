@@ -1,0 +1,2 @@
+# Only Leap 15 complains about the soname
+addFilter("shlib-policy-name-error .*")

@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Oct 16 07:28:10 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Avoid conflict between the new data subpackage and the
+  pre-4.6.2 library
+
+-------------------------------------------------------------------
+Tue Oct 11 07:04:32 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace precheckin_cripple_tarball.sh with a _service file
+- Update to 4.6.2. Changes since 4.6.1:
+  * bug fixes in LentPitShift and Granulate classes
+  * Makefile fixes
+  * miscellaneous bug fixes
+  * updated versions of RtAudio, RtMidi and ASIO SDK files
+  Check ReleaseNotes.txt for older changes.
+- Add patches:
+  * 0001-Don-t-ignore-supplied-CXXFLAGS.patch
+  * 0002-Fix-the-library-soname.patch
+
+-------------------------------------------------------------------
+Tue Oct 11 06:53:16 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim description for size.
+- Split data files off shlib package to complete SLPP.
+- Rename devel package to just %name-devel, which is what most
+  our packages do.
+
+-------------------------------------------------------------------
 Wed Dec 16 08:52:37 UTC 2015 - olaf@aepfle.de
 
 - Restore BuildRoot: for SLE_11

@@ -1,7 +1,7 @@
 #
 # spec file for package stk
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,96 +12,98 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%bcond_without distributable
-
-%define soname 4
-
+# Upstream chose to update the soname with each version
+# https://github.com/thestk/stk/issues/89
+%define soname %{version}
 Name:           stk
-Version:        4.5.0
+Version:        4.6.2
 Release:        0
 Summary:        Synthesis ToolKit in C++
 License:        MIT
-Group:          System/Libraries
-Url:            http://ccrma.stanford.edu/software/stk/
-%if %{with distributable}
-Source0:        stk-%{version}-crippled.tar.gz
-%else
-Source0:        http://ccrma.stanford.edu/software/stk/release/stk-%{version}.tar.gz
-%endif
-Source1:        precheckin_cripple_tarball.sh
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Group:          Development/Libraries/C and C++
+URL:            https://ccrma.stanford.edu/software/stk/
+Source0:        %{name}-%{version}.tar.xz
+Source99:       stk-rpmlintrc
+# PATCH-FIX-UPSTREAM -- Don't ignore provided compiler flags
+Patch0:         0001-Don-t-ignore-supplied-CXXFLAGS.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0002-Fix-the-library-soname.patch
+BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  doxygen
 BuildRequires:  gcc-c++
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(jack)
 
 %description
-The Synthesis ToolKit in C++ (STK) is a set of open source audio
-signal processing and algorithmic synthesis classes written in the C++
-programming language. STK was designed to facilitate rapid development
-of music synthesis and audio processing software, with an emphasis on
-cross-platform functionality, realtime control, ease of use, and
-educational example code. The Synthesis ToolKit is extremely portable
-(it's mostly platform-independent C and C++ code), and it's completely
-user-extensible (all source included, no unusual libraries, and no
-hidden drivers). We like to think that this increases the chances that
-our programs will still work in another 5-10 years. In fact, the
-ToolKit has been working continuously for about 10 years now. STK
-currently runs with realtime support (audio and MIDI) on Linux,
-Macintosh OS X, and Windows computer platforms. Generic, non-realtime
-support has been tested under NeXTStep, Sun, and other platforms and
-should work with any standard C++ compiler.
+The Synthesis ToolKit in C++ (STK) is a set of audio signal
+processing and algorithmic synthesis classes. STK facilitates
+development of music synthesis and audio processing software,
+focusing on realtime control and example code. STK is
+user-extensible.
 
 %package -n libstk%{soname}
 Summary:        Synthesis ToolKit in C++
 Group:          System/Libraries
+Requires:       %{name}-data
 
 %description -n libstk%{soname}
-The Synthesis ToolKit in C++ (STK) is a set of open source audio
-signal processing and algorithmic synthesis classes written in the C++
-programming language. STK was designed to facilitate rapid development
-of music synthesis and audio processing software, with an emphasis on
-cross-platform functionality, realtime control, ease of use, and
-educational example code. The Synthesis ToolKit is extremely portable
-(it's mostly platform-independent C and C++ code), and it's completely
-user-extensible (all source included, no unusual libraries, and no
-hidden drivers). We like to think that this increases the chances that
-our programs will still work in another 5-10 years. In fact, the
-ToolKit has been working continuously for about 10 years now. STK
-currently runs with realtime support (audio and MIDI) on Linux,
-Macintosh OS X, and Windows computer platforms. Generic, non-realtime
-support has been tested under NeXTStep, Sun, and other platforms and
-should work with any standard C++ compiler.
+The Synthesis ToolKit in C++ (STK) is a set of audio signal
+processing and algorithmic synthesis classes. STK facilitates
+development of music synthesis and audio processing software,
+focusing on realtime control and example code. STK is
+user-extensible.
 
-%package -n libstk-devel
-Summary:        Development files for stk
+%package data
+Summary:        Data files for STK, a music synthesis library
+BuildArch:      noarch
+# data were split to a subpackage before the 4.6.2 update
+Conflicts:      libstk4 < 4.6.2
+
+%description data
+Data files for STK.
+
+%package devel
+Summary:        Development files for STK, a music synthesis library
 Group:          Development/Libraries/C and C++
 Requires:       libstk%{soname} = %{version}
+Provides:       libstk-devel = %{version}-%{release}
+Obsoletes:      libstk-devel < %{version}-%{release}
 
-%description -n libstk-devel
+%description devel
 The libstk-devel package contains libraries and header files for
 developing applications that use stk.
 
 %prep
-%setup0 -q
-%if 0%{?suse_version} >= 1220
-#This is needed as apcupsd doesn't recognize ppc64 correctly
-cp /usr/share/automake-*/config.* config/ 
-%endif
-sed -i 's/CXXFLAGS="$cxxflag"/CXXFLAGS="$CXXFLAGS $cxxflag"/' configure
+%autosetup -p1
 
 %build
-# I don't version the rawwaves directory because apps seems to expect it this way
-%configure --prefix=/ --with-jack --with-alsa \
-           RAWWAVE_PATH=%{_datadir}/stk/rawwaves/
-make %{?_smp_mflags} -C src
+autoreconf -fiv
+
+%configure \
+  --disable-static \
+  --enable-shared \
+  --with-jack \
+  --with-alsa \
+  RAWWAVE_PATH=%{_datadir}/stk/rawwaves/
+
+%make_build
+
+pushd doc/doxygen
+doxygen
+popd
 
 %install
 %make_install
+
+# E: shared-library-not-executable
+chmod +x %{buildroot}%{_libdir}/libstk-%{soname}.so
+
 mkdir -p %{buildroot}%{_datadir}/stk/rawwaves/
 cp -p rawwaves/*.raw %{buildroot}%{_datadir}/stk/rawwaves/
 
@@ -110,16 +112,16 @@ cp -p rawwaves/*.raw %{buildroot}%{_datadir}/stk/rawwaves/
 %postun -n libstk%{soname} -p /sbin/ldconfig
 
 %files -n libstk%{soname}
-%defattr(-,root,root,-)
-%doc README.md LICENSE
-%{_libdir}/libstk.so.%{soname}*
-# If it's not going to be versioned SLPP doesn't really matter. WTF!! I don't really know if they correctly version the library since they ignored my message in the mailing list...
+%doc README.md %doc doc/{README-Linux,ReleaseNotes,SKINI}.txt
+%license LICENSE
+%{_libdir}/libstk-%{soname}.so
+
+%files data
 %{_datadir}/stk
 
-%files -n libstk-devel
-%defattr(-,root,root,-)
-%doc doc/*
+%files devel
+%doc doc/hierarchy.txt doc/html
 %{_libdir}/libstk.so
-%{_includedir}/stk
+%{_includedir}/stk/
 
 %changelog

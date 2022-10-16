@@ -1,0 +1,25 @@
+From 03647551ef194d1e987185a7ec1cfb567daf5eab Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Tue, 11 Oct 2022 10:28:21 +0200
+Subject: [PATCH 1/2] Don't ignore supplied CXXFLAGS
+
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 4d2e1ea..31486e9 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -104,7 +104,7 @@ fi
+ CPPFLAGS="$CPPFLAGS $cppflag"
+ 
+ # For debugging and optimization ... overwrite default because it has both -g and -O2
+-CXXFLAGS="$cxxflag"
++CXXFLAGS="$cxxflag $CXXFLAGS"
+ 
+ # Check compiler and use -Wall if gnu.
+ if [test $GXX = "yes" ;] then
+-- 
+2.37.3
+
