@@ -63,4 +63,22 @@
     <comment></comment>
     <requestid>935485</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d2353ee5988bc01996eda91684925810</srcmd5>
+    <version>1.0.6</version>
+    <time>1665929385</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.6
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * Fix spelling/wording issues
+  * Trim trailing whitespace from lines
+  * gitlab CI: add a basic build test
+  * Use _CONST_X_STRING to make libXt declare String as const char *
+  * Fix -Wformat-truncation warning
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * autogen.sh: use exec instead of waiting for configure to finish</comment>
+    <requestid>1011178</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Oct 15 21:20:01 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.6
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * Fix spelling/wording issues
+  * Trim trailing whitespace from lines
+  * gitlab CI: add a basic build test
+  * Use _CONST_X_STRING to make libXt declare String as const char *
+  * Fix -Wformat-truncation warning
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * autogen.sh: use exec instead of waiting for configure to finish
+
+-------------------------------------------------------------------
 Fri Dec  3 14:08:46 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - modernize spec file (move license to licensedir)
