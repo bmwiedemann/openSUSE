@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Thu Oct  6 06:15:44 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 6.1.2:
+  - Add status, create date and domain columns in slcli vs list
+    command
+  - New command: ipsec cancel
+  - New command: subnet clear-route
+  - Deprecate slcli hw guests
+  - Remove real usersnames from test fixtrues
+  - Fix tox request.get hangout issue
+  - add vs user-access command
+  - Update Help message for commands that take in multiple
+    arguments
+  - Error with slcli order item-list
+  - deprecate sl autoscale
+  - Unhandled error running a subcommand in slcli
+- Update to 6.1.1:
+  - item-list fix
+  - updating release job to actually publish to pypi
+  - Update command - slcli object-storage endpoints
+  - add the block volume-options command
+  - add the file volume-options command
+  - fixed issues where a message warned users about closing
+    datacenter
+  - Enable --format=raw and fixes table width
+  - Update slcli hardware sensor
+  - Improved successful response to command - slcli vs cancel
+  - Fixed an issue with printing tables that contained empty
+    items
+  - Added a dependabot scanner
+  - block|file volume-options improvements
+  - Option create-options in commands hardware and dedicatedhost
+    fixed
+  - pip prod(deps): bump rich from 12.3.0 to 12.5.1
+  - block/file volume-options improvements 2
+  - New command ipsec order
+  - block/file volume-options improvement 3
+  - Command slcli vlan create - displaying an error message
+  - New Command: user device-access
+  - Command slcli vlan edit accept that we do not send any
+    parameters
+  - Updated command - slcli vlan list
+  - slcli block subnets-list command display an error message
+  - add user remove-access command
+  - Add Devices with Trunks to vlan detail
+  - slcli hardware reflash-firmware command does not display
+    success message
+  - Fix bug with command - slcli cdn edit
+
+-------------------------------------------------------------------
 Thu Jul  7 08:49:06 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.1.0:
