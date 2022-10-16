@@ -11830,6 +11830,8 @@ unsorted:
   - libiio-devel 
   - libiio-usb-udev-rules 
   - libiio0 
+  - libiir-devel 
+  - libiir1 
   - libilbc0 
   - libimaevm3: [i586] 
   - libimagequant-devel 
@@ -14220,8 +14222,7 @@ unsorted:
   - libstfl0 
   - libstilview-devel 
   - libstilview0 
-  - libstk-devel 
-  - libstk4 
+  - libstk4.6.2 
   - libstl-thumb 
   - libstlink1 
   - libstorage-ng-devel 
@@ -33785,6 +33786,8 @@ unsorted:
   - stix-pua-fonts 
   - stix-sizes-fonts 
   - stix-variants-fonts 
+  - stk-data 
+  - stk-devel 
   - stl-thumb 
   - stl-thumb-devel 
   - stlink 
