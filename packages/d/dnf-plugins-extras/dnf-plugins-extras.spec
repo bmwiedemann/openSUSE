@@ -1,7 +1,7 @@
 #
 # spec file for package dnf-plugins-extras
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2020 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -32,7 +32,7 @@
 %bcond_without tests
 
 Name:           dnf-plugins-extras
-Version:        4.0.16
+Version:        4.0.17
 Release:        0
 Summary:        Extras Plugins for DNF
 License:        GPL-2.0-or-later
@@ -226,7 +226,6 @@ popd
 # Link dnf-offline-{upgrade,distrosync}.8 to dnf-system-upgrade.8
 echo ".so man8/dnf-system-upgrade.8" > %{buildroot}%{_mandir}/man8/dnf-offline-upgrade.8
 echo ".so man8/dnf-system-upgrade.8" > %{buildroot}%{_mandir}/man8/dnf-offline-distrosync.8
-
 
 %find_lang %{name}
 
