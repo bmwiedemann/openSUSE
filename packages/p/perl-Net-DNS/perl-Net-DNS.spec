@@ -18,7 +18,7 @@
 
 %define cpan_name Net-DNS
 Name:           perl-Net-DNS
-Version:        1.34
+Version:        1.35
 Release:        0
 License:        MIT
 Summary:        Perl Interface to the Domain Name System
@@ -32,21 +32,32 @@ BuildRequires:  perl(Carp) >= 1.1
 BuildRequires:  perl(Digest::HMAC) >= 1.03
 BuildRequires:  perl(Digest::SHA) >= 5.23
 BuildRequires:  perl(Encode) >= 2.26
-BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.66
+BuildRequires:  perl(Exporter) >= 5.63
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.48
+BuildRequires:  perl(File::Find) >= 1.13
+BuildRequires:  perl(File::Spec) >= 3.29
 BuildRequires:  perl(Getopt::Long) >= 2.43
+BuildRequires:  perl(IO::File) >= 1.14
+BuildRequires:  perl(IO::Socket) >= 1.3
 BuildRequires:  perl(IO::Socket::IP) >= 0.38
 BuildRequires:  perl(PerlIO) >= 1.05
-BuildRequires:  perl(Scalar::Util) >= 1.25
+BuildRequires:  perl(Scalar::Util) >= 1.19
+BuildRequires:  perl(Test::Builder) >= 0.8
+BuildRequires:  perl(Test::More) >= 0.8
 BuildRequires:  perl(Time::Local) >= 1.19
 Requires:       perl(Carp) >= 1.1
 Requires:       perl(Digest::HMAC) >= 1.03
 Requires:       perl(Digest::SHA) >= 5.23
 Requires:       perl(Encode) >= 2.26
+Requires:       perl(Exporter) >= 5.63
+Requires:       perl(File::Spec) >= 3.29
+Requires:       perl(IO::File) >= 1.14
+Requires:       perl(IO::Socket) >= 1.3
 Requires:       perl(IO::Socket::IP) >= 0.38
 Requires:       perl(PerlIO) >= 1.05
-Requires:       perl(Scalar::Util) >= 1.25
+Requires:       perl(Scalar::Util) >= 1.19
 Requires:       perl(Time::Local) >= 1.19
-Recommends:     perl(Digest::BubbleBabble) >= 0.01
+Recommends:     perl(Digest::BubbleBabble) >= 0.02
 Recommends:     perl(Net::LibIDN2) >= 1
 %{perl_requires}
 
