@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 15 13:49:25 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- update version 1.0.4
+  * fcitx upstream suggests to use "fcitx" environment variable
+    or some application like firefox may not work, see:
+    https://github.com/fcitx/fcitx5/pull/611
+    so we need some special handling of fcitx5
+
+-------------------------------------------------------------------
 Thu Sep 22 13:32:40 UTC 2022 - Marguerite Su <i@marguerite.su>
 
 - update version 1.0.3

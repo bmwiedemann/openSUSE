@@ -17,7 +17,7 @@
 
 
 Name:           systemd-inputmethod-generator
-Version:        1.0.3
+Version:        1.0.4
 Release:        0
 Summary:        Expose INPUT_METHOD environment variable
 License:        GPL-3.0-or-later
