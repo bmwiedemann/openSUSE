@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Fri Oct 14 17:58:15 UTC 2022 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#304
+- make s390x hypervisor setting configurable (for debugging)
+- s390x: remove deprecated ESCON support (jsc#PED-595)
+- 8.15
+
+--------------------------------------------------------------------
 Wed Oct 5 15:53:27 UTC 2022 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/linuxrc#299
