@@ -18,7 +18,7 @@
 
 %define cpan_name URI
 Name:           perl-URI
-Version:        5.12
+Version:        5.16
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Uniform Resource Identifiers (absolute and relative)
@@ -28,8 +28,10 @@ Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(Test::Fatal)
 BuildRequires:  perl(Test::More) >= 0.96
 BuildRequires:  perl(Test::Needs)
+BuildRequires:  perl(Test::Warnings)
 BuildRequires:  perl(parent)
 Requires:       perl(parent)
 %{perl_requires}
@@ -81,7 +83,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes CONTRIBUTING.md README uri-test
+%doc Changes CONTRIBUTING.md perlimports.toml README uri-test
 %license LICENSE
 
 %changelog
