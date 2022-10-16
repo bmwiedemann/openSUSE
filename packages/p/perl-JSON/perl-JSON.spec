@@ -18,7 +18,7 @@
 
 %define cpan_name JSON
 Name:           perl-JSON
-Version:        4.09
+Version:        4.10
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        JSON (JavaScript Object Notation) encoder/decoder
