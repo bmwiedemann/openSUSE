@@ -76,4 +76,24 @@
   * autogen.sh: use exec instead of waiting for configure to finish</comment>
     <requestid>681283</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0fc88ec06a64d89ef9e2383e6cea350f</srcmd5>
+    <version>1.0.6</version>
+    <time>1665929384</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.6
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * man page: remove out-of-date COPYRIGHT section
+  * Variable scope reductions as recommended by cppcheck
+  * Use _CONST_X_STRING to make libXt declare String as const char *
+  * Clear -Wmissing-field-initializers warnings
+  * Fix -Wsign-compare warnings
+  * Delete HorizontalMove macro that shadows/duplicates HorizontalMove function
+  * Inline *Move &amp; *Goto functions
+  * Use standard strrchr() instead of ancient rindex()
+  * Avoid leak of new_file if we decide not to use it
+  * Declare guesses const</comment>
+    <requestid>1011177</requestid>
+  </revision>
 </revisionlist>
