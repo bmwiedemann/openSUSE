@@ -17,14 +17,14 @@
 
 
 Name:           gcr
-Version:        3.92.0
+Version:        4.0.0
 Release:        0
 # FIXME: Verify if the requires in typelib-1_0-Gcr-4 is still correct and required (see bgo#725501).
 Summary:        Library for Crypto UI related tasks
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            http://www.gnome.org
-Source0:        https://download.gnome.org/sources/gcr/3.92/gcr-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gcr/4.0/gcr-%{version}.tar.xz
 Source1:        baselibs.conf
 # PATCH-FIX-SLE gcr-bsc932232-use-libgcrypt-allocators.patch bsc#932232 hpj@suse.com -- use libgcrypt allocators for FIPS mode
 Patch1:         gcr-bsc932232-use-libgcrypt-allocators.patch

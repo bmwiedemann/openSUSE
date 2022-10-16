@@ -364,4 +364,12 @@
     <comment>43.rc - with gcr3 next to it (forwarded request 1002334 from dimstar)</comment>
     <requestid>1003127</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>f955d91af2e4d27c8210ab3a416029f2</srcmd5>
+    <version>4.0.0</version>
+    <time>1665929342</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1011152</requestid>
+  </revision>
 </revisionlist>
