@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Oct 13 03:08:25 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.41
+   see /usr/share/doc/packages/perl-HTTP-Message/Changes
+
+  6.41      2022-10-12 15:57:40Z
+      - Add maximum size for HTTP::Message->decoded_content
+        This can be used to limit the size of a decompressed HTTP response,
+        especially when making requests to untrusted or user-specified servers.
+        The $HTTP::Message::MAXIMUM_BODY_SIZE variable and the ->max_body_size
+        accessor can set this limit. (GH#181) (Max Maischein)
+  6.40      2022-10-12 15:45:52Z
+      - Fixed two typos in the doc, originally reported by FatherC
+        in RT#90716, ported over as GH#57. (GH#57) (Neil Bowers)
+  6.39      2022-10-08 13:48:26Z
+      - Remove Travis config (GH#180) (Olaf Alders)
+      - Added status_constant_name() which maps status code
+        to the name of the corresponding constant. (GH#160) (Neil Bowers)
+      - Updated the doc for status_message() to clarify that it
+        returns "Not Found" and not "HTTP_NOT_FOUND". (GH#160) (Neil Bowers)
+  6.38      2022-10-06 21:48:18Z
+      - Replace "base" with "parent" (GH#176) (James Raspass)
+      - Replace "print" with "note" in tests (GH#178) (James Raspass)
+      - Noted that OPTIONS supported was added in 6.1, to the doc
+        for HTTP::Request::Common. Addresses GH#177. (GH#179) (Neil Bowers)
+
+-------------------------------------------------------------------
 Wed Jun 15 03:06:33 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.37

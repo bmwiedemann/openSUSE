@@ -18,7 +18,7 @@
 
 %define cpan_name HTTP-Message
 Name:           perl-HTTP-Message
-Version:        6.37
+Version:        6.41
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        HTTP style message (base class)
@@ -28,6 +28,7 @@ Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(Compress::Raw::Bzip2)
 BuildRequires:  perl(Compress::Raw::Zlib)
 BuildRequires:  perl(Encode) >= 3.01
 BuildRequires:  perl(Encode::Locale) >= 1
@@ -46,6 +47,8 @@ BuildRequires:  perl(Test::Needs)
 BuildRequires:  perl(Try::Tiny)
 BuildRequires:  perl(URI) >= 1.10
 BuildRequires:  perl(URI::URL)
+BuildRequires:  perl(parent)
+Requires:       perl(Compress::Raw::Bzip2)
 Requires:       perl(Compress::Raw::Zlib)
 Requires:       perl(Encode) >= 3.01
 Requires:       perl(Encode::Locale) >= 1
@@ -60,6 +63,7 @@ Requires:       perl(IO::Uncompress::Inflate)
 Requires:       perl(IO::Uncompress::RawInflate)
 Requires:       perl(LWP::MediaTypes) >= 6
 Requires:       perl(URI) >= 1.10
+Requires:       perl(parent)
 Recommends:     perl(IO::Compress::Brotli) >= 0.004001
 Recommends:     perl(IO::Uncompress::Brotli) >= 0.004001
 %{perl_requires}
@@ -172,12 +176,12 @@ The following options can be specified.
 
   * 'charset'
 
-This override the charset parameter for text content. The value 'none' can
+This overrides the charset parameter for text content. The value 'none' can
 used to suppress decoding of the charset.
 
   * 'default_charset'
 
-This override the default charset guessed by content_charset() or if that
+This overrides the default charset guessed by content_charset() or if that
 fails "ISO-8859-1".
 
   * 'alt_charset'
