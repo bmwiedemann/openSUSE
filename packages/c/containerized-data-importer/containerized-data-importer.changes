@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Oct 15 13:41:00 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Build tools/cdi-containerimage-server with CGO_ENABLED=0
+
+-------------------------------------------------------------------
 Mon Oct 10 07:07:51 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - Update SP5 kubevirt registry path (bsc#1204140) 

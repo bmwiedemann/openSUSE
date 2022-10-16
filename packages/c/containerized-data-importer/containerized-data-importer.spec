@@ -26,6 +26,7 @@ URL:            https://github.com/kubevirt/containerized-data-importer
 Source0:        %{name}-%{version}.tar.gz
 Source1:        cdi_containers_meta
 Source2:        cdi_containers_meta.service
+Source100:      %{name}-rpmlintrc
 BuildRequires:  golang-packaging
 BuildRequires:  libnbd-devel
 BuildRequires:  pkgconfig
@@ -177,13 +178,13 @@ sed -i"" \
     %{S:1}
 
 export GOPATH=%{_builddir}/go
-export GOFLAGS="-buildmode=pie -mod=vendor"
-env \
-CDI_SOURCE_DATE_EPOCH="$(date -r LICENSE +%s)" \
-CDI_GIT_COMMIT='v%{version}' \
-CDI_GIT_VERSION='v%{version}' \
-CDI_GIT_TREE_STATE="clean" \
-./hack/build/build-go.sh build \
+export GOFLAGS="-mod=vendor"
+export CDI_SOURCE_DATE_EPOCH="$(date -r LICENSE +%s)"
+export CDI_GIT_COMMIT='v%{version}'
+export CDI_GIT_VERSION='v%{version}'
+export CDI_GIT_TREE_STATE="clean"
+
+GOFLAGS="-buildmode=pie ${GOFLAGS}" ./hack/build/build-go.sh build \
     cmd/cdi-apiserver \
     cmd/cdi-cloner \
     cmd/cdi-controller \
@@ -191,9 +192,13 @@ CDI_GIT_TREE_STATE="clean" \
     cmd/cdi-uploadproxy \
     cmd/cdi-uploadserver \
     cmd/cdi-operator \
-    tools/cdi-containerimage-server \
     tools/cdi-image-size-detection \
     tools/cdi-source-update-poller \
+    %{nil}
+
+# Disable cgo to build static binaries, so they can run on scratch images
+CGO_ENABLED=0 ./hack/build/build-go.sh build \
+    tools/cdi-containerimage-server \
     %{nil}
 
 env DOCKER_PREFIX=$reg_path DOCKER_TAG=%{version}-%{release} ./hack/build/build-manifests.sh

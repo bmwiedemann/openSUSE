@@ -231,4 +231,12 @@
     <comment>- Update SP5 kubevirt registry path (bsc#1204140)</comment>
     <requestid>1009259</requestid>
   </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>ee5ce2760b2cfae95057b483278a39f7</srcmd5>
+    <version>1.55.0</version>
+    <time>1665929364</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1011132</requestid>
+  </revision>
 </revisionlist>
