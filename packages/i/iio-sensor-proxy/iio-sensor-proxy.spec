@@ -59,6 +59,8 @@ This package contains the documentation for %{name}.
 
 %install
 %meson_install
+mkdir -p %{buildroot}%{_datadir}/dbus-1/system.d
+mv %{buildroot}%{_sysconfdir}/dbus-1/system.d/net.hadess.SensorProxy.conf %{buildroot}%{_datadir}/dbus-1/system.d
 
 %pre
 %service_add_pre %{name}.service
@@ -83,9 +85,9 @@ This package contains the documentation for %{name}.
 %{_unitdir}/iio-sensor-proxy.service
 %{_datadir}/polkit-1/actions/net.hadess.SensorProxy.policy
 # Own dirs to avoid depending on dbus while building.
-%dir %{_sysconfdir}/dbus-1
-%dir %{_sysconfdir}/dbus-1/system.d
-%config %{_sysconfdir}/dbus-1/system.d/net.hadess.SensorProxy.conf
+%dir %{_datadir}/dbus-1
+%dir %{_datadir}/dbus-1/system.d
+%{_datadir}/dbus-1/system.d/net.hadess.SensorProxy.conf
 
 %files doc
 %{_datadir}/gtk-doc/html/%{name}/
