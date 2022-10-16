@@ -18,19 +18,22 @@
 
 %define sover 0
 Name:           sord
-Version:        0.16.10
+Version:        0.16.14
 Release:        0
 Summary:        Utilities to work with RDF data
 License:        ISC
 Group:          Productivity/File utilities
 URL:            https://drobilla.net/software/sord.html
-Source0:        https://download.drobilla.net/sord-%{version}.tar.bz2
-Source1:        https://download.drobilla.net/sord-%{version}.tar.bz2.sig
+Source0:        https://download.drobilla.net/sord-%{version}.tar.xz
+Source1:        https://download.drobilla.net/sord-%{version}.tar.xz.sig
 Source2:        sord.keyring
 Source3:        baselibs.conf
+# https://github.com/drobilla/sord/commit/67bcd63bda9d7b095489a09b9880aa730ddb5488
+Patch0:         67bcd63bda9d7b095489a09b9880aa730ddb5488.patch
 BuildRequires:  doxygen
 BuildRequires:  graphviz
-BuildRequires:  pcre-devel
+BuildRequires:  meson
+BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  pkgconfig(serd-0) >= 0.22.4
@@ -60,25 +63,18 @@ Sord is a lightweight C library for storing RDF data in memory.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
-export CFLAGS='%{optflags}'
-export CXXFLAGS='%{optflags}'
-python3 ./waf configure \
-  --prefix=%{_prefix} \
-  --libdir=%{_libdir} \
-  --docdir=%{_defaultdocdir} \
-  --test \
-  --docs
-# waf only understands -j, so do not use smp_mflags
-python3 ./waf build -v %{?_smp_mflags}
+%{meson} -Ddocs=enabled -Dtests=enabled
+%{meson_build}
 
 %install
-python3 ./waf install --destdir=%{?buildroot}
-rm -rf %{buildroot}%{_docdir}/sord-0/html
+%{meson_install}
+rm -rf %{buildroot}%{_datadir}/doc/sord-0/html
 
 %check
-python3 ./waf test
+%{meson_test}
 
 %post -n libsord-0-%{sover} -p /sbin/ldconfig
 %postun -n libsord-0-%{sover} -p /sbin/ldconfig
@@ -95,7 +91,6 @@ python3 ./waf test
 %{_libdir}/libsord-0.so.%{sover}*
 
 %files devel
-%{_mandir}/man3/sord.3%{?ext_man}
 %{_libdir}/libsord-0.so
 %{_includedir}/sord-0/
 %{_libdir}/pkgconfig/sord-0.pc
