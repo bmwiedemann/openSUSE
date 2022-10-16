@@ -96,6 +96,7 @@ communication mechanism to provide location information
 %meson \
 	-Dgtk-doc=false \
 	-Ddbus-srv-user=srvGeoClue \
+	-Ddbus-sys-dir=%{_datadir}/dbus-1/system.d \
 	%{nil}
 %meson_build
 %sysusers_generate_pre %{SOURCE1} srvGeoClue system-user-srvGeoClue.conf
@@ -127,20 +128,15 @@ install -m 644 %{SOURCE1} %{buildroot}%{_sysusersdir}/system-user-srvGeoClue.con
 %dir %{_libexecdir}/geoclue-2.0/
 %{_libexecdir}/geoclue-2.0/demos/
 %{_datadir}/applications/geoclue-where-am-i.desktop
-%dir %{_datadir}/dbus-1
-%dir %{_datadir}/dbus-1/interfaces
 %{_datadir}/dbus-1/interfaces/org.freedesktop.GeoClue2.Client.xml
 %{_datadir}/dbus-1/interfaces/org.freedesktop.GeoClue2.Location.xml
 %{_datadir}/dbus-1/interfaces/org.freedesktop.GeoClue2.Manager.xml
-%dir %{_datadir}/dbus-1/system-services
 %{_datadir}/dbus-1/system-services/org.freedesktop.GeoClue2.service
 %{_datadir}/polkit-1/rules.d/50-org.freedesktop.GeoClue2.rules
-%dir %{_sysconfdir}/dbus-1
-%dir %{_sysconfdir}/dbus-1/system.d
 %dir %{_sysconfdir}/geoclue/
 %config %{_sysconfdir}/geoclue/geoclue.conf
-%config %{_sysconfdir}/dbus-1/system.d/org.freedesktop.GeoClue2.conf
-%config %{_sysconfdir}/dbus-1/system.d/org.freedesktop.GeoClue2.Agent.conf
+%{_datadir}/dbus-1/system.d/org.freedesktop.GeoClue2.conf
+%{_datadir}/dbus-1/system.d/org.freedesktop.GeoClue2.Agent.conf
 %{_unitdir}/geoclue.service
 # Upstream is explicitly asking us to package these, so lets give it a go.
 %{_sysconfdir}/xdg/autostart/geoclue-demo-agent.desktop

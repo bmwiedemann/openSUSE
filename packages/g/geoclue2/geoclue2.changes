@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct  5 13:46:12 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Move dbus system.d conf file to /usr (bsc#1204054)
+
+-------------------------------------------------------------------
 Thu Sep  1 08:46:41 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 129.patch: Port to use soup3. Following this, replace
