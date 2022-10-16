@@ -1,7 +1,7 @@
 #
 # spec file for package dnf-plugins-core
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2021 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -56,7 +56,7 @@
 #global prerel rc1
 
 Name:           dnf-plugins-core
-Version:        4.1.0
+Version:        4.3.1
 Release:        0
 Summary:        Core Plugins for DNF
 License:        GPL-2.0-or-later
@@ -184,7 +184,6 @@ debuginfo-install, groups-manager, repograph, package-cleanup, repoclosure,
 repomanage, repoquery, reposync, repotrack, builddep, config-manager, debug,
 and download that use new implementations using DNF.
 
-
 %package -n python3-dnf-plugin-leaves
 Summary:        Leaves Plugin for DNF
 Group:          System/Packages
@@ -280,8 +279,8 @@ updated by newer versions.
 %package -n python3-dnf-plugin-modulesync
 Summary:        Download module metadata and packages and create repository
 Group:          System/Packages
-Requires:       python3-%{name} = %{version}-%{release}
 Requires:       createrepo_c >= 0.17.4
+Requires:       python3-%{name} = %{version}-%{release}
 Provides:       dnf-plugin-modulesync = %{version}-%{release}
 Provides:       dnf-command(modulesync)
 
@@ -480,6 +479,5 @@ export PYTHONPATH=./plugins
 %files -n python3-dnf-plugin-modulesync
 %{python3_sitelib}/dnf-plugins/modulesync.*
 %{_mandir}/man8/dnf-modulesync.*
-
 
 %changelog

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Oct 15 19:48:45 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 4.3.1
+  * Update translations
+- includes changes from 4.3.0:
+  * [repomanage] Modules are used only when they belong to target repo
+  * copr: Guess EPEL chroots for CentOS Stream
+  * builddep: Warning when using macros with source rpms
+  * Update documentation for config-manager used with subscription-manager
+  * Update translations
+- includes changes from 4.2.1
+  * Skip all non rpm tsi for transaction_action plugins
+- includes changes from 4.2.0
+  * repomanage: Add new option --oldonly
+
+
+-------------------------------------------------------------------
 Sun Mar 27 21:52:22 UTC 2022 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to 4.1.0
