@@ -18,7 +18,7 @@
 
 %define cpan_name HTML-Parser
 Name:           perl-HTML-Parser
-Version:        3.78
+Version:        3.79
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        HTML parser class

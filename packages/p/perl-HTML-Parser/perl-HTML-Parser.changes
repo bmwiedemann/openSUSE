@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct 13 03:07:42 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.79
+   see /usr/share/doc/packages/perl-HTML-Parser/Changes
+
+  3.79      2022-10-12
+    * Modernise XS (GH#32) (James Raspass)
+    * Skip threads on older perl versions, as they often segfault (GH#31) (Graham
+    * Knop)
+
+-------------------------------------------------------------------
 Wed Apr  6 03:10:06 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.78
