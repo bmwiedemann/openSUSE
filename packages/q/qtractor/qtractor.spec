@@ -16,8 +16,12 @@
 #
 
 
+# Qt6 is the default framework in 0.9.29
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
+%define qt6 1
+%endif
 Name:           qtractor
-Version:        0.9.27
+Version:        0.9.29
 Release:        0
 Summary:        An Audio/MIDI multi-track sequencer
 License:        GPL-2.0-or-later
@@ -32,28 +36,40 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  ladspa-devel
 BuildRequires:  libjack-devel
 BuildRequires:  liblo-devel
-BuildRequires:  libqt5-linguist
 BuildRequires:  librubberband-devel
 BuildRequires:  libsamplerate-devel
 BuildRequires:  libsndfile-devel >= 1.0.11
 BuildRequires:  libvorbis-devel
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
+%if 0%{?qt6}
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6Svg)
+BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(Qt6Xml)
+%else
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5X11Extras)
-BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  cmake(Qt5Svg)
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5X11Extras)
+BuildRequires:  cmake(Qt5Xml)
+%endif
+BuildRequires:  pkgconfig(aubio)
 BuildRequires:  pkgconfig(gtk+-2.0)
 BuildRequires:  pkgconfig(lilv-0)
+BuildRequires:  pkgconfig(lv2)
 BuildRequires:  pkgconfig(mad)
 BuildRequires:  pkgconfig(shared-mime-info)
+BuildRequires:  pkgconfig(suil-0)
+BuildRequires:  pkgconfig(xcb)
 
 %description
 Qtractor is an Audio/MIDI multi-track sequencer application
-written in C++ around the Qt4 toolkit using Qt Designer.
+written in C++ around the Qt toolkit.
 
 The initial target platform will be Linux, where the Jack Audio
 Connection Kit (JACK) for audio, and the Advanced Linux Sound
@@ -65,24 +81,22 @@ specially dedicated to the personal home-studio.
 %setup -q
 
 %build
+%if 0%{?qt6}
+%cmake_qt6
+%{qt6_build}
+%else
 %cmake
 %cmake_build
+%endif
 
 %install
+%if 0%{?qt6}
+%{qt6_install}
+%else
 %cmake_install
-mv %{buildroot}%{_libdir}/qtractor/qtractor_plugin_scan %{buildroot}%{_bindir}
-
-%if 0%{?suse_version} < 1500
-%post
-%icon_theme_cache_post
-%mime_database_post
-%desktop_database_post
-
-%postun
-%desktop_database_postun
-%mime_database_postun
-%icon_theme_cache_postun
 %endif
+
+mv %{buildroot}%{_libdir}/qtractor/qtractor_plugin_scan %{buildroot}%{_bindir}
 
 %files
 %doc ChangeLog README
@@ -97,8 +111,8 @@ mv %{buildroot}%{_libdir}/qtractor/qtractor_plugin_scan %{buildroot}%{_bindir}
 %{_datadir}/icons/*/*/apps/org.rncbc.qtractor*
 %{_datadir}/icons/*/*/mimetypes/org.rncbc.qtractor.*
 %{_datadir}/mime/packages/org.rncbc.qtractor.xml
-%{_mandir}/man1/%{name}.1%{ext_man}
-%{_mandir}/fr/man1/%{name}.1%{ext_man}
+%{_mandir}/man1/%{name}.1%{?ext_man}
+%{_mandir}/fr/man1/%{name}.1%{?ext_man}
 %{_datadir}/%{name}/translations/*
 
 %changelog

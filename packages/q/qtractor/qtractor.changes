@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sat Oct 15 13:59:50 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 0.9.29:
+  * Capture same time(stamp) note-off tracking and postponing is
+    now on trial, hopefully mitigating a legato issue, reported
+    to MIDI wind instruments (EWI). (EXPERIMENTAL)
+  * Fixed an old window parenting (aka z-level) issue, related to
+    the Add Track and Track Properties dialogs and whether called
+    from the main or mixer menus.
+  * Fixed the out-of-process plugin scanner terminating too soon
+    and sometimes miss some very last results.
+  * Fixed another old bug in MIDI note-off messages not being sent
+    while playing after a loop region.
+  * Fixed a pretty ancient bug in the VST(2.x) plug-in program
+    names inventory, present when building to the VeSTige header
+    (which is still the default).
+- Changes in 0.9.28:
+  * Complete overhaul of the current host time(base)/BBT
+    information delivered to plug-in types that matter: VST,
+    VST3, CLAP and LV2.
+  * Improved key-signature editing and display on Tempo
+    Map / Markers (time-scale) management dialog.
+  * Fixed plugin selection, when creating and switching initial
+    track type, from audio to MIDI and vice-versa.
+  * Fixed typos and updated some old MIDI GM2 Controller names.
+  * Add current system user-name to the singleton/unique application
+    instance identifier (when explicitly opted in at build configure
+    time).
+
+-------------------------------------------------------------------
 Fri Jul  8 15:15:58 UTC 2022 - Dave Plater <davejplater@gmail.com>
 
 - Update to 0.9.27
