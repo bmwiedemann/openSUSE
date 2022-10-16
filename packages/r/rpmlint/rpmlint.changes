@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 14 09:09:35 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.4.0+git20221014.b4aaa76:
+  * Whitelist /var/spool/mail in postfix-bdb (bsc#1179574)
+  * dbus-services: document recent follow-up review of cups helpers
+  * FileDigestCheck: print digest hint for all possible filter types
+  * geoclue2: move dbus system.d file to /usr (bsc#1204054)
+  * iio-sensor-proxy: move dbus system.d file to /usr (bsc#1204055)
+  * gdm: move dbus system.d file to /usr (bsc#1204052)
+
+-------------------------------------------------------------------
 Sat Oct 08 08:18:43 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.4.0+git20221008.1532b6e:
