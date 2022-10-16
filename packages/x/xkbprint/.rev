@@ -59,4 +59,16 @@
   * autogen.sh: use exec instead of waiting for configure to finish</comment>
     <requestid>745133</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>344a7241d2fcb4a792bea2311f4f5192</srcmd5>
+    <version>1.0.6</version>
+    <time>1665929387</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.6 
+  * gitlab CI: add a basic build test
+  * man page: remove out-of-date COPYRIGHT section
+  * Stop leaking XkbAtomGetString allocations
+  * gitlab CI: stop requiring Signed-off-by in commits</comment>
+    <requestid>1011179</requestid>
+  </revision>
 </revisionlist>
