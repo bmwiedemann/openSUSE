@@ -260,6 +260,7 @@ running display manager.
         -Dinitial-vt=7 \
         -Dipv6=true \
         -Dpam-mod-dir=%{_pam_moduledir} \
+        -Ddbus-sys=%{_datadir}/dbus-1/system.d \
         -Dplymouth=enabled \
         -Drun-dir=/run/gdm \
 %if %{enable_split_authentication}
@@ -378,7 +379,7 @@ dconf update
 %endif
 %_config_norepl %{_pam_vendordir}/gdm-password
 %_config_norepl %{_pam_vendordir}/gdm-launch-environment
-%config %{_sysconfdir}/dbus-1/system.d/gdm.conf
+%{_datadir}/dbus-1/system.d/gdm.conf
 # /etc/xinit.d/xdm integration
 %dir %{_prefix}/lib/X11/displaymanagers
 %{_prefix}/lib/X11/displaymanagers/default-displaymanager
