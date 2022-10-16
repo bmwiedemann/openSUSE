@@ -53,4 +53,15 @@
     <comment>- Enable AMF conditionally (forwarded request 1008954 from alois)</comment>
     <requestid>1008955</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>cc3bd9c9a3ecbcb997cfd6e1b4b01fd6</srcmd5>
+    <version>5.1.2</version>
+    <time>1665929375</time>
+    <user>dimstar_suse</user>
+    <comment>- Refresh Fedora OpenH264 dlopen patch and sources for OpenH264 2.3.1
+  * Patch: ffmpeg-dlopen-openh264.patch
+  * Source: ffmpeg-dlopen-headers.tar.xz
+  * Source: ffmpeg_get_dlopen_headers.sh (forwarded request 1011140 from Pharaoh_Atem)</comment>
+    <requestid>1011142</requestid>
+  </revision>
 </revisionlist>

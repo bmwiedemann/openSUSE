@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Script to grab headers from existing packages to support dlopen() codec libraries
-# Requires: bash, coreutils, curl, bsdtar, dnf, dnf-plugins-core, tar
+# Requires: bash, coreutils, curl, bsdtar, dnf, dnf-plugins-core, tar, xz
 # Author: Neal Gompa <ngompa@fedoraproject.org>
 #
 # This program is free software: you can redistribute it and/or modify

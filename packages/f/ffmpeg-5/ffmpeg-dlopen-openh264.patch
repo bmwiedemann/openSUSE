@@ -1,6 +1,6 @@
-From 081b35c5b598fef0a2e47753752f7607ff90a2d3 Mon Sep 17 00:00:00 2001
+From 4739b0c97b3378bdaf737171777fe9a71a53eff1 Mon Sep 17 00:00:00 2001
 From: Neal Gompa <ngompa@fedoraproject.org>
-Date: Fri, 18 Feb 2022 08:12:54 -0500
+Date: Wed, 12 Oct 2022 09:41:27 -0400
 Subject: [PATCH] avcodec/openh264: Add the ability to dlopen() OpenH264
 
 We can't directly depend on OpenH264, but we can weakly link to it
@@ -12,22 +12,22 @@ Co-authored-by: Neal Gompa <ngompa@fedoraproject.org>
 Signed-off-by: Andreas Schneider <asn@cryptomilk.org>
 Signed-off-by: Neal Gompa <ngompa@fedoraproject.org>
 ---
- configure                       |    3 
- libavcodec/Makefile             |    1 
- libavcodec/libopenh264.c        |   15 +++-
- libavcodec/libopenh264_dlopen.c |  147 ++++++++++++++++++++++++++++++++++++++++
- libavcodec/libopenh264_dlopen.h |   58 +++++++++++++++
- libavcodec/libopenh264dec.c     |   10 ++
- libavcodec/libopenh264enc.c     |   10 ++
- 7 files changed, 243 insertions(+), 1 deletion(-)
+ configure                       |   3 +
+ libavcodec/Makefile             |   1 +
+ libavcodec/libopenh264.c        |  18 +++-
+ libavcodec/libopenh264_dlopen.c | 147 ++++++++++++++++++++++++++++++++
+ libavcodec/libopenh264_dlopen.h |  58 +++++++++++++
+ libavcodec/libopenh264dec.c     |  10 +++
+ libavcodec/libopenh264enc.c     |  10 +++
+ 7 files changed, 245 insertions(+), 2 deletions(-)
  create mode 100644 libavcodec/libopenh264_dlopen.c
  create mode 100644 libavcodec/libopenh264_dlopen.h
 
-Index: ffmpeg-5.1/configure
-===================================================================
---- ffmpeg-5.1.orig/configure
-+++ ffmpeg-5.1/configure
-@@ -252,6 +252,7 @@ External library support:
+diff --git a/configure b/configure
+index ba5793b2ff..8855c1a908 100755
+--- a/configure
++++ b/configure
+@@ -251,6 +251,7 @@ External library support:
    --enable-libopencore-amrwb enable AMR-WB decoding via libopencore-amrwb [no]
    --enable-libopencv       enable video filtering via libopencv [no]
    --enable-libopenh264     enable H.264 encoding via OpenH264 [no]
@@ -35,7 +35,7 @@ Index: ffmpeg-5.1/configure
    --enable-libopenjpeg     enable JPEG 2000 de/encoding via OpenJPEG [no]
    --enable-libopenmpt      enable decoding tracked files via libopenmpt [no]
    --enable-libopenvino     enable OpenVINO as a DNN module backend
-@@ -1846,6 +1847,7 @@ EXTERNAL_LIBRARY_LIST="
+@@ -1844,6 +1845,7 @@ EXTERNAL_LIBRARY_LIST="
      libmysofa
      libopencv
      libopenh264
@@ -43,7 +43,7 @@ Index: ffmpeg-5.1/configure
      libopenjpeg
      libopenmpt
      libopenvino
-@@ -6599,6 +6601,7 @@ enabled libopencv         && { check_hea
+@@ -6596,6 +6598,7 @@ enabled libopencv         && { check_headers opencv2/core/core_c.h &&
                                   require libopencv opencv2/core/core_c.h cvCreateImageHeader -lopencv_core -lopencv_imgproc; } ||
                                 require_pkg_config libopencv opencv opencv/cxcore.h cvCreateImageHeader; }
  enabled libopenh264       && require_pkg_config libopenh264 openh264 wels/codec_api.h WelsGetCodecVersion
@@ -51,11 +51,11 @@ Index: ffmpeg-5.1/configure
  enabled libopenjpeg       && { check_pkg_config libopenjpeg "libopenjp2 >= 2.1.0" openjpeg.h opj_version ||
                                 { require_pkg_config libopenjpeg "libopenjp2 >= 2.1.0" openjpeg.h opj_version -DOPJ_STATIC && add_cppflags -DOPJ_STATIC; } }
  enabled libopenmpt        && require_pkg_config libopenmpt "libopenmpt >= 0.2.6557" libopenmpt/libopenmpt.h openmpt_module_create -lstdc++ && append libopenmpt_extralibs "-lstdc++"
-Index: ffmpeg-5.1/libavcodec/Makefile
-===================================================================
---- ffmpeg-5.1.orig/libavcodec/Makefile
-+++ ffmpeg-5.1/libavcodec/Makefile
-@@ -1075,6 +1075,7 @@ OBJS-$(CONFIG_LIBMP3LAME_ENCODER)
+diff --git a/libavcodec/Makefile b/libavcodec/Makefile
+index 457ec58377..08a26fba5f 100644
+--- a/libavcodec/Makefile
++++ b/libavcodec/Makefile
+@@ -1075,6 +1075,7 @@ OBJS-$(CONFIG_LIBMP3LAME_ENCODER)         += libmp3lame.o
  OBJS-$(CONFIG_LIBOPENCORE_AMRNB_DECODER)  += libopencore-amr.o
  OBJS-$(CONFIG_LIBOPENCORE_AMRNB_ENCODER)  += libopencore-amr.o
  OBJS-$(CONFIG_LIBOPENCORE_AMRWB_DECODER)  += libopencore-amr.o
@@ -63,10 +63,10 @@ Index: ffmpeg-5.1/libavcodec/Makefile
  OBJS-$(CONFIG_LIBOPENH264_DECODER)        += libopenh264dec.o libopenh264.o
  OBJS-$(CONFIG_LIBOPENH264_ENCODER)        += libopenh264enc.o libopenh264.o
  OBJS-$(CONFIG_LIBOPENJPEG_DECODER)        += libopenjpegdec.o
-Index: ffmpeg-5.1/libavcodec/libopenh264.c
-===================================================================
---- ffmpeg-5.1.orig/libavcodec/libopenh264.c
-+++ ffmpeg-5.1/libavcodec/libopenh264.c
+diff --git a/libavcodec/libopenh264.c b/libavcodec/libopenh264.c
+index 0f6d28ed88..a124c3fa1e 100644
+--- a/libavcodec/libopenh264.c
++++ b/libavcodec/libopenh264.c
 @@ -20,8 +20,13 @@
   */
  
@@ -81,11 +81,14 @@ Index: ffmpeg-5.1/libavcodec/libopenh264.c
  
  #include "libavutil/error.h"
  #include "libavutil/log.h"
-@@ -53,7 +58,15 @@ int ff_libopenh264_check_version(void *l
+@@ -52,8 +57,17 @@ int ff_libopenh264_check_version(void *logctx)
+     // Mingw GCC < 4.7 on x86_32 uses an incorrect/buggy ABI for the WelsGetCodecVersion
      // function (for functions returning larger structs), thus skip the check in those
      // configurations.
- #if !defined(_WIN32) || !defined(__GNUC__) || !ARCH_X86_32 || AV_GCC_VERSION_AT_LEAST(4, 7)
+-#if !defined(_WIN32) || !defined(__GNUC__) || !ARCH_X86_32 || AV_GCC_VERSION_AT_LEAST(4, 7)
 -    OpenH264Version libver = WelsGetCodecVersion();
++    // Also, for dlopened OpenH264, we should not do the version check. It's too punitive.
++#if !defined(_WIN32) || !defined(__GNUC__) || !ARCH_X86_32 || AV_GCC_VERSION_AT_LEAST(4, 7) || !defined(CONFIG_LIBOPENH264_DLOPEN)
 +    OpenH264Version libver;
 +
 +#ifdef CONFIG_LIBOPENH264_DLOPEN
@@ -98,10 +101,11 @@ Index: ffmpeg-5.1/libavcodec/libopenh264.c
      if (memcmp(&libver, &g_stCodecVersion, sizeof(libver))) {
          av_log(logctx, AV_LOG_ERROR, "Incorrect library version loaded\n");
          return AVERROR(EINVAL);
-Index: ffmpeg-5.1/libavcodec/libopenh264_dlopen.c
-===================================================================
+diff --git a/libavcodec/libopenh264_dlopen.c b/libavcodec/libopenh264_dlopen.c
+new file mode 100644
+index 0000000000..49ea8ff44f
 --- /dev/null
-+++ ffmpeg-5.1/libavcodec/libopenh264_dlopen.c
++++ b/libavcodec/libopenh264_dlopen.c
 @@ -0,0 +1,147 @@
 +/*
 + * OpenH264 dlopen code
@@ -224,7 +228,7 @@ Index: ffmpeg-5.1/libavcodec/libopenh264_dlopen.c
 +      return 0;
 +  }
 +
-+#define OPENH264_LIB "libopenh264.so.6"
++#define OPENH264_LIB "libopenh264.so.7"
 +  libopenh264 = dlopen(OPENH264_LIB, RTLD_LAZY);
 +  err = dlerror();
 +  if (err != NULL) {
@@ -250,10 +254,11 @@ Index: ffmpeg-5.1/libavcodec/libopenh264_dlopen.c
 +
 +  return 0;
 +}
-Index: ffmpeg-5.1/libavcodec/libopenh264_dlopen.h
-===================================================================
+diff --git a/libavcodec/libopenh264_dlopen.h b/libavcodec/libopenh264_dlopen.h
+new file mode 100644
+index 0000000000..d7d8bb7cad
 --- /dev/null
-+++ ffmpeg-5.1/libavcodec/libopenh264_dlopen.h
++++ b/libavcodec/libopenh264_dlopen.h
 @@ -0,0 +1,58 @@
 +/*
 + * OpenH264 dlopen code
@@ -313,10 +318,10 @@ Index: ffmpeg-5.1/libavcodec/libopenh264_dlopen.h
 +#endif /* CONFIG_LIBOPENH264_DLOPEN */
 +
 +#endif /* HAVE_LIBOPENH264_DLOPEN_H */
-Index: ffmpeg-5.1/libavcodec/libopenh264dec.c
-===================================================================
---- ffmpeg-5.1.orig/libavcodec/libopenh264dec.c
-+++ ffmpeg-5.1/libavcodec/libopenh264dec.c
+diff --git a/libavcodec/libopenh264dec.c b/libavcodec/libopenh264dec.c
+index 007f86b619..57aa3bc1d1 100644
+--- a/libavcodec/libopenh264dec.c
++++ b/libavcodec/libopenh264dec.c
 @@ -19,8 +19,12 @@
   * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
   */
@@ -330,7 +335,7 @@ Index: ffmpeg-5.1/libavcodec/libopenh264dec.c
  
  #include "libavutil/common.h"
  #include "libavutil/fifo.h"
-@@ -56,6 +60,12 @@ static av_cold int svc_decode_init(AVCod
+@@ -56,6 +60,12 @@ static av_cold int svc_decode_init(AVCodecContext *avctx)
      int log_level;
      WelsTraceCallback callback_function;
  
@@ -343,10 +348,10 @@ Index: ffmpeg-5.1/libavcodec/libopenh264dec.c
      if ((err = ff_libopenh264_check_version(avctx)) < 0)
          return AVERROR_DECODER_NOT_FOUND;
  
-Index: ffmpeg-5.1/libavcodec/libopenh264enc.c
-===================================================================
---- ffmpeg-5.1.orig/libavcodec/libopenh264enc.c
-+++ ffmpeg-5.1/libavcodec/libopenh264enc.c
+diff --git a/libavcodec/libopenh264enc.c b/libavcodec/libopenh264enc.c
+index db252aace1..75289678da 100644
+--- a/libavcodec/libopenh264enc.c
++++ b/libavcodec/libopenh264enc.c
 @@ -19,8 +19,12 @@
   * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
   */
@@ -360,7 +365,7 @@ Index: ffmpeg-5.1/libavcodec/libopenh264enc.c
  
  #include "libavutil/attributes.h"
  #include "libavutil/common.h"
-@@ -137,6 +141,12 @@ static av_cold int svc_encode_init(AVCod
+@@ -137,6 +141,12 @@ static av_cold int svc_encode_init(AVCodecContext *avctx)
      WelsTraceCallback callback_function;
      AVCPBProperties *props;
  
@@ -373,3 +378,6 @@ Index: ffmpeg-5.1/libavcodec/libopenh264enc.c
      if ((err = ff_libopenh264_check_version(avctx)) < 0)
          return AVERROR_ENCODER_NOT_FOUND;
  
+-- 
+2.36.1
+
