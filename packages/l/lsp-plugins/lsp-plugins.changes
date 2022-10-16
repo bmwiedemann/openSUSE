@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct 15 11:05:04 UTC 2022 - Fabio Pesari <fpesari@tuxfamily.org>
+
+- Add fix-xorg-high-cpu-usage.patch from upstream devel branch
+  to fix lsp-plugins#272
+
+-------------------------------------------------------------------
 Mon Sep 12 02:03:46 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - remove patches, now upstream:

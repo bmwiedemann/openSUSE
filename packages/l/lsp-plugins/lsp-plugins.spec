@@ -29,6 +29,8 @@ License:        LGPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://lsp-plug.in/
 Source0:        https://github.com/sadko4u/lsp-plugins/releases/download/%{version}/%{name}-src-%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/sadko4u/lsp-plugins/issues/272#issuecomment-1242442228
+Patch0:         fix-xorg-high-cpu-usage.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  ladspa
@@ -120,6 +122,7 @@ Development files for Linux Studio Plugins
 
 %prep
 %setup -qn %{name}
+%autopatch -p1
 
 %build
 #export PREFIX="%{_prefix}" DOC_PATH="%{_docdir}" LIB_PATH="%{_libdir}"
