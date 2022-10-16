@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct 16 07:39:21 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Make sure the QPA and wayland-related plugins are installed if
+  needed
+
+-------------------------------------------------------------------
 Thu Sep 29 10:35:48 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 6.4.0:

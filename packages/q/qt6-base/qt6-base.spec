@@ -276,6 +276,8 @@ ABI or API guarantees.
 Summary:        Qt 6 GUI related libraries
 Requires:       libQt6Core6 = %{version}
 Requires:       libQt6DBus6 = %{version}
+# This package provides the wayland QPA and related plugins
+Requires:       (qt6-wayland if xwayland)
 Recommends:     qt6-imageformats = %{version}
 
 %description -n libQt6Gui6

@@ -192,4 +192,13 @@
     <comment>Qt 6.4.0</comment>
     <requestid>1007305</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>d33ca0399dcca52486952969d5d4535d</srcmd5>
+    <version>6.4.0</version>
+    <time>1665929393</time>
+    <user>dimstar_suse</user>
+    <comment>- Make sure the QPA and wayland-related plugins are installed if
+  needed</comment>
+    <requestid>1011219</requestid>
+  </revision>
 </revisionlist>
