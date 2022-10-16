@@ -155,4 +155,31 @@ Need for dosbox and aplaymidi for play MT-32 sound.</comment>
     <comment>- Changed mt32emu-2.6.3-name.patch for fix icons name.</comment>
     <requestid>980672</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1c7cfabc4c484a35ddd8a0b5c03d6aed</srcmd5>
+    <version>2.7.0</version>
+    <time>1665929374</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 2.7.0.
+  * Added support for MT-32 control ROM v.2.03.
+  * Provided two new functions for retrieving names of all standard timbres and their
+    &quot;sound groups&quot;. These also make it easier to retrieve names of custom timbres.
+  * Updated for compatibility with the Qt framework versions 6.0 and above.
+  * Added possibility to view timbre banks and select a desired instrument on each voice part.
+    The timbres are shown in a popup menu split by their &quot;sound groups&quot; which is displayed
+    when the user clicks on the instrument name set on the related part in the Channel Status pane.
+  * Added submenu &quot;Play Demo Songs&quot; to the &quot;Tools&quot; menu. When a Synth profile exists that
+    refers to one of the new-gen MT-32 ROMs, the list of demo songs contained within is shown,
+    yet a few of special items to facilitate playback control.
+  * Fixed a few problems with management of the Floating Display on multi-screen systems.
+    When the application is restarted, the position of the floating window should now be
+    restored on the same screen where it was previously. Also, the window geometry is now
+    adjusted to fit into the screen when the display it is show on is switched off, and each
+    time the floating window shows up.
+  * Extended the command-line interface to provide for opening one or more MIDI port(s)
+    at startup. The command &quot;connect_midi&quot; can be used to create ports using the system MIDI
+    driver. By using the options &quot;jack_midi_clients&quot; and &quot;jack_sync_clients&quot;, JACK MIDI ports
+    can be created as long as the JACK support is compiled in.</comment>
+    <requestid>1011136</requestid>
+  </revision>
 </revisionlist>
