@@ -63,4 +63,14 @@
     <comment>- skip python 36 build (scipy)</comment>
     <requestid>871474</requestid>
   </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>149319522530fd837492cbfc45a520e6</srcmd5>
+    <version>0.30.3</version>
+    <time>1665929358</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip failing test testFIR_FilterExampleTex (gh#mpastell/Pweave#168)
+- Add markdown.patch to fix the tests
+</comment>
+    <requestid>1011214</requestid>
+  </revision>
 </revisionlist>

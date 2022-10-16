@@ -1,7 +1,7 @@
 #
 # spec file for package python-Pweave
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ Summary:        Scientific reports with embedded python computations
 License:        BSD-3-Clause
 URL:            https://github.com/mpastell/Pweave
 Source:         https://files.pythonhosted.org/packages/source/P/Pweave/Pweave-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/mpastell/Pweave/pull/167 Adjust for API changes in Python-Markdown 3.0
+Patch0:         markdown.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -70,6 +72,7 @@ with e.g. Sphinx or rest2web.
 
 %prep
 %setup -q -n Pweave-%{version}
+%autopatch -p1
 
 %build
 %python_build
@@ -97,7 +100,8 @@ with e.g. Sphinx or rest2web.
 %check
 # tests.test_readers.test_url - online
 # Formatters/publish Layout changes with updates in jupyter
-%pytest -k 'not (test_url or testFormatters or test_publish)'
+# Failing test for testFIR_FilterExampleTex is gh#mpastell/Pweave#168
+%pytest -k 'not (test_url or testFormatters or test_publish or testFIR_FilterExampleTex)'
 
 %files %{python_files}
 %doc CHANGELOG.txt README.rst
