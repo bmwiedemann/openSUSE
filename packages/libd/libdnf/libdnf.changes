@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Oct 15 18:40:24 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- libdnf 0.69.0:
+  * Expose librepo max_downloads_per_mirror configuration
+- includes changes from 0.68.0:
+  * context: Support (NEVRA forms, provides, file provides)
+    including globs in the dnf_context_remove func
+  * dnf-context: Disconnect signal handler before dropping file
+    monitor ref
+  * Filter out advisory pkgs with different arch during advisory
+    upgrade, fixes possible problems in dependency resulution
+  * Gracefully handle failure to open repo primary file
+  * Fix listing a repository without cpeid
+
+-------------------------------------------------------------------
 Wed May  4 06:08:09 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.67.0:
