@@ -1,6 +1,7 @@
 #
 # spec file for package microdnf
 #
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2020-2021 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -15,10 +16,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global libdnf_version 0.62.0
 
 Name:           microdnf
-Version:        3.8.0
+Version:        3.9.1
 Release:        0
 Summary:        Lightweight implementation of DNF in C
 Group:          System/Packages
@@ -27,16 +29,16 @@ URL:            https://github.com/rpm-software-management/microdnf
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires:  gcc
+BuildRequires:  help2man
 BuildRequires:  meson >= 0.36.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.44.0
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.44.0
-BuildRequires:  pkgconfig(libpeas-1.0) >= 1.20.0
 BuildRequires:  pkgconfig(libdnf) >= %{libdnf_version}
+BuildRequires:  pkgconfig(libpeas-1.0) >= 1.20.0
 BuildRequires:  pkgconfig(smartcols)
-BuildRequires:  help2man
 
 # Attempt to install the DNF package manager configuration skeleton
-Recommends:    dnf-data
+Recommends:     dnf-data
 
 # Stricter dependency to keep things sane
 %requires_ge %(rpm -qf "$(readlink -f %{_libdir}/libdnf.so)")
@@ -49,23 +51,18 @@ you want the tiniest useful environments possible.
 That is, you don't want any interpreter stack and you want the most
 minimal environment possible so you can build up to exactly what you need.
 
-
 %prep
 %autosetup -p1
-
 
 %build
 %meson
 %meson_build
 
-
 %install
 %meson_install
 
-
 %check
 %meson_test
-
 
 %files
 %license COPYING

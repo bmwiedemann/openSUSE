@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 15 19:56:11 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.9.1:
+  * Add the leaves command: Lists installed packages that are not
+    required by other installed packages. Treat recommends as
+    dependencies when install_weak_deps=True
+  * UI tweaks
+
+-------------------------------------------------------------------
 Tue Apr 13 14:31:58 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to 3.8.0
