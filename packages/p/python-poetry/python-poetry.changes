@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Mon Oct 10 20:02:18 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.2.2
+  * Add forward compatibility for lock file format 2.0, which will
+    be used by Poetry 1.3 (#6608).
+  * Allow poetry lock to re-generate the lock file when invalid or
+    incompatible (#6753).
+  * Fix an issue where the deprecated JSON API was used to query
+    PyPI for available versions of a package (#6081).
+  * Fix an issue where versions were escaped wrongly when building
+    the wheel name (#6476).
+  * Fix an issue where the installation of dependencies failed if
+    pip is a dependency and is updated in parallel to other
+    dependencies (#6582).
+  * Fix an issue where the names of extras were not normalized
+    according to PEP 685 (#6541).
+  * Fix an issue where sdist names were not normalized (#6621).
+  * Fix an issue where invalid constraints, which are ignored, were
+    only reported in a debug message instead of a warning (#6730).
+
+-------------------------------------------------------------------
+Sun Oct  9 12:43:51 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.2.1
+  * Bump poetry-core to 1.2.0.
+  * Bump poetry-plugin-export to ^1.0.7.
+- Release 1.2.0
+  * https://python-poetry.org/blog/announcing-poetry-1.2.0/
+  * Dropping support for Python 2.7, 3.5 and 3.6 as runtimes
+  * Dependency groups
+  * Plugin support
+  * Migration of the poetry export command
+  * Support for yanked releases (PEP 592)
+  * Support for Direct Origin URL records (PEP 610)
+  * Subdirectory support for Git dependencies
+  * Single page repository support
+  * Synchronizing the environment with the lock file
+  * Opting out of binary distributions
+  * Native Python git client
+  * Detection of the currently active Python (experimental)
+  * PEP 508 dependency specification parsing
+  * Comprehensive HTTPS certificate support
+  * Non-verbose error handling
+  * Management of setuptools and pip
+  * Keyring backend issues
+  * Usefulness of experimental.new-installer false
+- Drop patches
+  * poetry-1645-1.1.patch
+  * poetry-4749-1.1.patch
+  * use-new-name-of-MockFixture.patch
+- Make multibuild because of circular dependencies with
+  python-poetry-plugin-export
+
+-------------------------------------------------------------------
 Fri Aug 26 16:23:30 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.1.15

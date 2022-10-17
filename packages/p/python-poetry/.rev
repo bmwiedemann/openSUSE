@@ -150,4 +150,28 @@
     (#6207)</comment>
     <requestid>999443</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>4053ab84cf6828fa83167ac43bf3d598</srcmd5>
+    <version>1.2.2</version>
+    <time>1666011449</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.2
+  * Add forward compatibility for lock file format 2.0, which will
+    be used by Poetry 1.3 (#6608).
+  * Allow poetry lock to re-generate the lock file when invalid or
+    incompatible (#6753).
+  * Fix an issue where the deprecated JSON API was used to query
+    PyPI for available versions of a package (#6081).
+  * Fix an issue where versions were escaped wrongly when building
+    the wheel name (#6476).
+  * Fix an issue where the installation of dependencies failed if
+    pip is a dependency and is updated in parallel to other
+    dependencies (#6582).
+  * Fix an issue where the names of extras were not normalized
+    according to PEP 685 (#6541).
+  * Fix an issue where sdist names were not normalized (#6621).
+  * Fix an issue where invalid constraints, which are ignored, were
+    only reported in a debug message instead of a warning (#6730). (forwarded request 1009616 from bnavigator)</comment>
+    <requestid>1009617</requestid>
+  </revision>
 </revisionlist>

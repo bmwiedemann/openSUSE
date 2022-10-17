@@ -16,10 +16,17 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+
 Name:           python-poetry
-Version:        1.1.15
+Version:        1.2.2
 Release:        0
 Summary:        Python dependency management and packaging
 License:        MIT
@@ -27,63 +34,51 @@ Group:          Development/Languages/Python
 URL:            https://python-poetry.org/
 # PyPI sdist doesnt contain tests
 Source:         https://github.com/python-poetry/poetry/archive/%{version}.tar.gz#/poetry-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/python-poetry/poetry/pull/3255#issuecomment-713442094 -- remove external http call requirement for lock --no-update
-Patch0:         poetry-1645-1.1.patch
-# PATCH-FIX-UPSTREAM https://github.com/python-poetry/poetry/commit/9591e88492508d4dba260952d53266a0032c04c7
-Patch1:         use-new-name-of-MockFixture.patch
-# PATCH-FIX-UPSTREAM https://github.com/python-poetry/poetry/pull/4749 -- make compatible with packaging >= 21
-Patch2:         poetry-4749-1.1.patch
-BuildRequires:  %{python_module CacheControl >= 0.12.9}
-BuildRequires:  %{python_module cachy >= 0.3.0}
-BuildRequires:  %{python_module cleo >= 0.8.1}
-BuildRequires:  %{python_module clikit >= 0.6.2}
-BuildRequires:  %{python_module crashtest >= 0.3.0}
-BuildRequires:  %{python_module html5lib >= 1.0}
-BuildRequires:  %{python_module importlib-metadata if %python-base < 3.6}
-BuildRequires:  %{python_module keyring >= 21.2.0}
-# cachecontrol[filecache]
-BuildRequires:  %{python_module lockfile >= 0.9}
-BuildRequires:  %{python_module packaging >= 20.4}
-BuildRequires:  %{python_module pexpect >= 4.7.0}
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pkginfo >= 1.4}
-BuildRequires:  %{python_module poetry-core >= 1.0.7}
-BuildRequires:  %{python_module requests >= 2.18}
-BuildRequires:  %{python_module requests-toolbelt >= 0.9.1}
-BuildRequires:  %{python_module shellingham >= 1.1}
-BuildRequires:  %{python_module tomlkit >= 0.7.0}
-BuildRequires:  %{python_module virtualenv >= 20.0.26}
+BuildRequires:  %{python_module poetry-core = 1.3.2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-CacheControl >= 0.12.9
 Requires:       python-cachy >= 0.3.0
-Requires:       python-cleo >= 0.8.1
-Requires:       python-clikit >= 0.6.2
+Requires:       python-cleo >= 1.0.0~a5
 Requires:       python-crashtest >= 0.3.0
+Requires:       python-dulwich >= 0.20.46
 Requires:       python-html5lib >= 1.0
+Requires:       python-jsonschema >= 4.10.0
 Requires:       python-keyring >= 21.2.0
+Requires:       python-poetry-core = 1.3.2
+Requires:       python-poetry-plugin-export >= 1.1.2
+Requires:       python-urllib3 >= 1.26.0
 # cachecontrol[filecache]
 Requires:       python-lockfile >= 0.9
 Requires:       python-packaging >= 20.4
 Requires:       python-pexpect >= 4.7.0
-Requires:       python-pkginfo >= 1.4
-Requires:       python-poetry-core >= 1.0.7
+Requires:       python-pkginfo >= 1.5
 Requires:       python-requests >= 2.18
 Requires:       python-requests-toolbelt >= 0.9.1
-Requires:       python-shellingham >= 1.1
-Requires:       python-tomlkit >= 0.7.0
-Requires:       python-virtualenv >= 20.0.26
+Requires:       python-shellingham >= 1.5
+Requires:       python-tomlkit >= 0.11.4
+Requires:       python-virtualenv >= 20.4.7
+%if 0%{?python_version_nodots} < 310
+Requires:       python-importlib-metadata >= 4.4
+%endif
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     git-core
 Recommends:     python-devel
 BuildArch:      noarch
-# SECTION test requirements
-BuildRequires:  %{python_module httpretty >= 1.0.3}
+%if %{with test}
+BuildRequires:  %{python_module deepdiff >= 5.0}
+BuildRequires:  %{python_module flatdict >= 4.0.1}
+BuildRequires:  %{python_module httpretty >= 1.0}
+BuildRequires:  %{python_module poetry = %{version}}
+BuildRequires:  %{python_module psutil}
+BuildRequires:  %{python_module pytest >= 7.1}
 BuildRequires:  %{python_module pytest-mock >= 3.5}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  git-core
-# /SECTION
+%endif
 %python_subpackages
 
 %description
@@ -91,10 +86,16 @@ Python dependency management and packaging made easy.
 
 %prep
 %autosetup -p1 -n poetry-%{version}
-rm poetry/_vendor/.gitignore
-rmdir poetry/_vendor
-find poetry -name '*.py' -executable -print0 | xargs -0 chmod a-x
+rm src/poetry/_vendor/.gitignore
+rmdir src/poetry/_vendor
+for f in console/commands/source/update.py \
+         console/events/console_events.py \
+         layouts/standard.py; do
+  [ -e src/poetry/$f ] || exit 1 # file does not exist
+  [ ! -s src/poetry/$f ] && echo "# empty module" >> src/poetry/$f || exit 2 # file is not empty
+done
 
+%if !%{with test}
 %build
 %pyproject_wheel
 
@@ -102,18 +103,22 @@ find poetry -name '*.py' -executable -print0 | xargs -0 chmod a-x
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/poetry
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
+%if %{with test}
 %check
-# discussion of this section: gh#python-poetry/poetry#1645
-%{python_expand # a virtualenv is necessary
+# can't install setuptools from PyPI (no network)
+donttest="test_uninstall_git_package_nspkg_pth_cleanup"
+# does not find the expected packages in venv
+donttest="$donttest or test_executor_should_write_pep610_url_references"
+%{python_expand # pytest needs to be called from the virtualenv python interpreter gh#python-poetry/poetry#1645
 virtualenv-%{$python_bin_suffix} --system-site-packages testenv-%{$python_bin_suffix}
 source testenv-%{$python_bin_suffix}/bin/activate
-export PYTHONPATH="%{buildroot}%{$python_sitelib}"
 export PYTHONDONTWRITEBYTECODE=1
-# pytest needs to be called from the virtualenv python interpreter
-python -m pytest -v tests
+python -m pytest -v -k "not ($donttest)"
 deactivate
 }
+%endif
 
 %post
 %python_install_alternative poetry
@@ -121,11 +126,13 @@ deactivate
 %postun
 %python_uninstall_alternative poetry
 
+%if !%{with test}
 %files %{python_files}
 %doc README.md CHANGELOG.md
 %license LICENSE
 %{python_sitelib}/poetry
 %{python_sitelib}/poetry-%{version}*-info
 %python_alternative %{_bindir}/poetry
+%endif
 
 %changelog
