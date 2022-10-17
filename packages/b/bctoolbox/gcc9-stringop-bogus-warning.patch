@@ -1,8 +1,8 @@
-diff --git a/src/logging/logging.c b/src/logging/logging.c
-index 7252840..0f135fa 100644
---- a/src/logging/logging.c
-+++ b/src/logging/logging.c
-@@ -305,6 +305,9 @@ char *bctbx_strdup_printf(const char *fmt,...){
+Index: bctoolbox-5.1.64/src/logging/logging.c
+===================================================================
+--- bctoolbox-5.1.64.orig/src/logging/logging.c
++++ bctoolbox-5.1.64/src/logging/logging.c
+@@ -422,6 +422,9 @@ char *bctbx_strdup_printf(const char *fm
  	return ret;
  }
  
@@ -12,7 +12,7 @@ index 7252840..0f135fa 100644
  char * bctbx_strcat_vprintf(char* dst, const char *fmt, va_list ap){
  	char *ret;
  	size_t dstlen, retlen;
-@@ -326,6 +329,8 @@ char * bctbx_strcat_vprintf(char* dst, const char *fmt, va_list ap){
+@@ -442,6 +445,8 @@ char * bctbx_strcat_vprintf(char* dst, c
  	}
  }
  

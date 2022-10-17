@@ -18,7 +18,7 @@
 
 %define sover   1
 Name:           bctoolbox
-Version:        5.1.45
+Version:        5.1.64
 Release:        0
 Summary:        Utility library for software from Belledonne Communications
 License:        GPL-3.0-only
@@ -30,13 +30,13 @@ Source1:        baselibs.conf
 Patch0:         bctoolbox-fix-pkgconfig.patch
 Patch1:         gcc9-stringop-bogus-warning.patch
 BuildRequires:  bcunit-devel >= 3.0.2+git.20191119
+BuildRequires:  chrpath
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  mbedtls-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bcunit)
 BuildRequires:  pkgconfig(zlib)
-BuildRequires:  chrpath
 
 %description
 Utilities library used by Belledonne Communications softwares like
