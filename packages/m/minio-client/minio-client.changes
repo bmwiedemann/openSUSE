@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 17 05:14:19 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20221012T181250Z:
+  * list jobTypes currently supported (#4298)
+  * use showAppAndExit() for pager help (#4292)
+
+-------------------------------------------------------------------
 Mon Oct 10 06:16:28 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 20221009T211059Z:
