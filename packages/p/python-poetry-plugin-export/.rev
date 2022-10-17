@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ddec8b9c7877930c090233ad57e65857</srcmd5>
+    <version>1.1.2</version>
+    <time>1666011452</time>
+    <user>dimstar_suse</user>
+    <comment>required by poetry 1.2
+
+fix multibuild</comment>
+    <requestid>1011037</requestid>
+  </revision>
+</revisionlist>

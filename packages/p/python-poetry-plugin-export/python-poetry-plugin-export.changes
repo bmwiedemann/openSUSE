@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Mon Oct 10 20:04:57 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.1.2
+  * Fix an issue where exporting a constraints.txt file fails if an
+    editable dependency is locked (#140).
+
+-------------------------------------------------------------------
+Sun Oct  9 13:19:33 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Initial specfile for v1.1.1
+- Required by poetry 1.2
