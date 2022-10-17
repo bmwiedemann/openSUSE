@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 14 18:10:05 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to version 1.49.1
+  * Support Python 3.11. (#30818)
+  * Add type stub generation support to grpcio-tools. (#30498)
+
+-------------------------------------------------------------------
 Thu Sep  1 03:43:57 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.48.0:
