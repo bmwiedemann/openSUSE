@@ -1,8 +1,8 @@
 #
 # spec file for package profile-sync-daemon
 #
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2013-2020 Artem Polishchuk & Christopher Meng
-# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,15 @@
 
 %global shortname psd
 Name:           profile-sync-daemon
-Version:        6.44
+Version:        6.48
 Release:        0
 Summary:        Symlinks and syncs browser profile dirs to RAM thus reducing HDD/SDD calls
 License:        MIT
 URL:            https://github.com/graysky2/profile-sync-daemon
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
+BuildRequires:  fdupes
 BuildRequires:  rsync
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  fdupes
 BuildRequires:  zsh
 Requires:       rsync
 BuildArch:      noarch
@@ -82,6 +82,5 @@ zsh completion for %{name}.
 
 %files zsh-completion
 %{_datadir}/zsh/site-functions/_%{shortname}
-
 
 %changelog
