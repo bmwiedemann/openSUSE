@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct 14 01:52:53 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.1+20221014.0b04f693:
+  * crm.8.adoc: spelling (recipients, embellishments)
+
+-------------------------------------------------------------------
+Fri Oct 14 01:08:15 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.1+20221013.11edd97f:
+  * Dev: Dockerfile: update the Dockerfile for updating parallax
+
+-------------------------------------------------------------------
 Wed Sep 28 08:53:06 UTC 2022 - XLiang@suse.com
 
 - Update to version 4.4.1+20220928.3480aa0d:
