@@ -1,7 +1,7 @@
 #
 # spec file for package bison
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,17 +48,7 @@ Bison is a parser generator similar to yacc(1).
   --docdir=%{_docdir}/%{name} \
   gl_cv_func_printf_directive_n=yes \
   gl_cv_func_printf_infinite_long_double=yes
-%ifarch armv6hl
-%define do_profiling 0
-%endif
-%if 0%{?do_profiling}
-  %make_build CFLAGS="%{optflags} %{cflags_profile_generate}"
-  %make_build CFLAGS="%{optflags}" check
-  %make_build clean
-  %make_build CFLAGS="%{optflags} %{cflags_profile_feedback}"
-%else
   %make_build CFLAGS="%{optflags}"
-%endif
 
 %check
 %ifnarch armv6hl
