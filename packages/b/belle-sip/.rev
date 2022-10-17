@@ -251,4 +251,13 @@
     <comment></comment>
     <requestid>997467</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>505369645b64e6e6cd44820c10f7883c</srcmd5>
+    <version>5.1.64</version>
+    <time>1666011493</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.1.64 (no changelog).
+</comment>
+    <requestid>1012001</requestid>
+  </revision>
 </revisionlist>
