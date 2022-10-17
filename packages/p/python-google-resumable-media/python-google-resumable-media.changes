@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Oct 17 09:39:25 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.4.0
+  Features
+  * Handle interrupted downloads with decompressive transcoding (#346)
+  Bug Fixes
+  * Allow recover to check the status of upload regardless of state (#343)
+  * Require python 3.7+ (#337) (942665f)
+  * Use unittest.mock (#329) (82f9769)
+  Documentation
+  * Fix changelog header to consistent size (#331) (7b1dc9c)
+- Refresh patches for new version
+  * python-google-resumable-media-no-mock.patch
+
+-------------------------------------------------------------------
 Thu Jun  9 08:40:36 UTC 2022 - pgajdos@suse.com
 
 - version update to 2.3.3
