@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Oct 15 19:26:38 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 4.14.0:
+  * doc: Describe how gpg keys are stored for `repo_ggpcheck`
+  * Set default value for variable to prevent crash
+  * Add only relevant pkgs to upgrade transaction
+  * Use `installed_all` because `installed_query` is filtered user input
+  * Don't include resolved advisories for obsoletes filtering with security filters
+  * Allow passing plugin parameters with dashes in names
+  * Fix upgrade from file to noarch pkg
+  * Translations update
+  * Expose plugin unload method to API
+  * Add support for group upgrade rollback
+  * Fix broken dependencies error reporting
+  * Add doc related to --destdir and --downloadonly options
+- includes changes from 4.13.0:
+  * Base.reset: plug (temporary) leak of libsolv's page file descriptors
+  * Don't use undocumented re.template()
+  * Small change to better present the option
+  * Use sqlite cache to make bash completion snappier
+* includes changes from 4.12.0:
+  * dnf.conf: hint users where to find more info about defaults and other options
+  * Fix unittests that relied on checksum being at the end of solvfiles
+  * completion: remove unnecessary echo
+  * Fix remove when no repos are enabled
+  * Add loongarch support for dnf
+  * Add spaces between words to fix typos
+  * [doc] Improve "proxy" configuration option documentation
+  * Fix download errors handling in non-english locales
+- drop Fix-processing-of-download-errors.patch, upstream
+
+-------------------------------------------------------------------
 Sun Mar 27 21:43:57 UTC 2022 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to 4.11.1

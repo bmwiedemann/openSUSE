@@ -1,7 +1,7 @@
 #
 # spec file for package dnf
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2021 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -50,18 +50,14 @@
 %bcond_with tests
 
 Name:           dnf
-Version:        4.11.1
+Version:        4.14.0
 Release:        0
 Summary:        Package manager forked from Yum, using libsolv as a dependency resolver
 # For a breakdown of the licensing, see PACKAGE-LICENSING
-License:        GPL-2.0-or-later AND GPL-2.0-only
+License:        GPL-2.0-only AND GPL-2.0-or-later
 Group:          System/Packages
 URL:            https://github.com/rpm-software-management/dnf
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
-
-# Backports from upstream
-## https://github.com/rpm-software-management/dnf/pull/1818
-Patch0001: Fix-processing-of-download-errors.patch
 
 # Fixes proposed upstream
 
@@ -79,8 +75,8 @@ BuildRequires:  python3-bugzilla
 BuildRequires:  systemd-rpm-macros
 Requires:       python3-dnf = %{version}-%{release}
 Recommends:     %{name}-lang >= %{version}
-Recommends:     dnf-plugins-core
 Recommends:     %{yum_subpackage_name}
+Recommends:     dnf-plugins-core
 Conflicts:      dnf-plugins-core < %{min_plugins_core}
 Provides:       dnf-command(autoremove)
 Provides:       dnf-command(check-update)
