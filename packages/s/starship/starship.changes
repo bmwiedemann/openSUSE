@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Oct 16 10:44:58 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 1.11.0:
+  * add user-defined color palette.
+  * fish: Enable left and right transience.
+  * module: Add a meson devenv indicator.
+  * schema: deny unknown keys.
+  * status: Support formatting of pipestatus separator.
+  * buf: fix spacing & harmonize docs with actual configuration.
+  * directory: don't strip duplicate directory names twice.
+  * pwsh: avoid potential deadlock in init.
+  * directory: Skip repo resolution if unused by directory config.
+
+-------------------------------------------------------------------
 Fri Sep  9 03:19:47 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 1.10.3:
