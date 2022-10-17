@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 14 12:35:15 UTC 2022 - pgajdos@suse.com
+
+- does not require python-six
+
+-------------------------------------------------------------------
 Mon Dec  6 09:24:06 UTC 2021 - cloud-devel@suse.de
 
 - removed 0b006f07226138ef26ab8296494f1dc1c09908e2.patch

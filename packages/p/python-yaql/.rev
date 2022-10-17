@@ -168,4 +168,12 @@
   - Remove setting of version/release from releasenotes</comment>
     <requestid>940202</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>4740ad32dcdc3c2c860b2131768a3e90</srcmd5>
+    <version>2.0.0</version>
+    <time>1666011485</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1011998</requestid>
+  </revision>
 </revisionlist>

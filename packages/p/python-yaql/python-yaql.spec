@@ -1,7 +1,7 @@
 #
 # spec file for package python-yaql
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,6 @@ BuildRequires:  python3-pbr
 BuildRequires:  python3-ply
 BuildRequires:  python3-python-dateutil
 BuildRequires:  python3-python-subunit
-BuildRequires:  python3-six
 BuildRequires:  python3-testrepository
 BuildRequires:  python3-testscenarios
 BuildRequires:  python3-testtools
@@ -51,7 +50,6 @@ Summary:        YAQL - Yet Another Query Language
 Requires:       python3-Babel
 Requires:       python3-ply
 Requires:       python3-python-dateutil
-Requires:       python3-six
 Conflicts:      %{oldpython}-yaql < %version-%release
 
 %description -n python3-yaql
