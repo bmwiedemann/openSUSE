@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sun Oct  9 19:18:50 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * require sphinx >= 4.2
+  * require python >= 3.7
+
+- update to version 1.5.0:
+  * Fixed bugs
+    + Parsing "returns" section with several types and no name
+    + BUG: Fix returns parsing no name
+  * Closed issues
+    + readthedocs build failing
+    + Exclude class properties from being listed under METHODS section
+    + BUG: Numpydoc doesn’t render attributes decorated with
+       "cached\_property" in the Attributes section
+    + Is numpydoc_use_blockquotes deprecated or not yet?
+    + No light theme available in docs
+    + 1.4.0 release plan
+  * Merged pull requests
+    + Update doc requirements
+    + Update pydata-sphinx-theme
+    + Support Python 3.11
+    + Update precommit hooks
+    + Use Python 3.10 to build docs
+    + Use requirements/*.txt files for CI
+    + Fix front page
+    + Add cached property support
+    + ENH: Update validate.py to allow parameters with trailing
+       underscores.
+    + DOC: Use ":ref:" when referring to section headers
+    + Remove numpydoc_use_blockquotes
+    + Require sphinx>=4.2 (cleanup)
+    + docs: fix validation include line numbers
+    + Update precommit linters
+    + Update GH actions
+    + ENH: Add support for dict show_inherited_class_members
+    + DOC: Add theme switcher and default to lightmode.
+    + Require sphinx>=4.2
+
+-------------------------------------------------------------------
 Sun Aug 14 14:36:37 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:

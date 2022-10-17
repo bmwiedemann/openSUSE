@@ -17,9 +17,8 @@
 
 
 %{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 Name:           python-numpydoc
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        Sphinx extension to support docstrings in Numpy format
 License:        BSD-3-Clause
@@ -29,12 +28,13 @@ Source:         https://files.pythonhosted.org/packages/source/n/numpydoc/numpyd
 # https://docs.python.org/3/objects.inv (changes from time to time, accessed 2021-02-23)
 Source1:        python-objects.inv
 BuildRequires:  %{python_module Jinja2 >= 2.10}
-BuildRequires:  %{python_module Sphinx >= 3.0}
+BuildRequires:  %{python_module Sphinx >= 4.2}
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2 >= 2.10
-Requires:       python-Sphinx >= 3.0
+Requires:       python-Sphinx >= 4.2
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
