@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct  9 13:05:27 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.0.0a5
+  * no release notes
+  * pre-release version required by poetry 1.2
+    gh#python-poetry/poetry#3618
+
+-------------------------------------------------------------------
 Thu Feb 24 07:47:59 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
 
 - Disable python2 which doesn't build
