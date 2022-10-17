@@ -68,4 +68,16 @@
     <comment></comment>
     <requestid>1003116</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>23abe226ff95ff4c1fe25d3a82f49ae8</srcmd5>
+    <version>3.8.4</version>
+    <time>1666011524</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.8.4
+  * **deps:** Allow protobuf 3.19.5 (#457)
+- from version 3.8.3
+  * **deps:** Require protobuf &gt;= 3.20.2 (#452)
+- Update BuildRequires and Requires from setup.py (forwarded request 1012048 from glaubitz)</comment>
+    <requestid>1012097</requestid>
+  </revision>
 </revisionlist>

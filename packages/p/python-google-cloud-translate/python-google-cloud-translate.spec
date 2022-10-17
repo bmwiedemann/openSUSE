@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-google-cloud-translate
-Version:        3.8.2
+Version:        3.8.4
 Release:        0
 Summary:        Google Cloud Translation API client library
 License:        Apache-2.0
@@ -28,7 +28,7 @@ Source:         https://files.pythonhosted.org/packages/source/g/google-cloud-tr
 BuildRequires:  %{python_module google-api-core >= 1.32.0}
 BuildRequires:  %{python_module google-cloud-core >= 1.3.0}
 BuildRequires:  %{python_module proto-plus >= 1.22.0}
-BuildRequires:  %{python_module protobuf >= 3.19.0}
+BuildRequires:  %{python_module protobuf >= 3.19.5}
 BuildRequires:  %{python_module setuptools}
 # START TESTING SECTION
 BuildRequires:  %{python_module pytest-asyncio}
@@ -39,7 +39,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-google-api-core >= 1.32.0
 Requires:       python-google-cloud-core >= 1.3.0
 Requires:       python-proto-plus >= 1.22.0
-Requires:       python-protobuf >= 3.19.0
+Requires:       python-protobuf >= 3.19.5
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch

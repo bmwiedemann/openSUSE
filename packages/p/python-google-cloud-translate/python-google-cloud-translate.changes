@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 17 09:52:07 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.8.4
+  * **deps:** Allow protobuf 3.19.5 (#457)
+- from version 3.8.3
+  * **deps:** Require protobuf >= 3.20.2 (#452)
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Mon Sep 12 16:02:14 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.8.2
