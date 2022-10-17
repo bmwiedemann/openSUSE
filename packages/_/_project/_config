@@ -474,6 +474,9 @@ Prefer: -cyrus-sasl-bdb-devel
 # Spamassassin requires wget or curl - we prefer curl, as its build dep chain seems cheaper
 Prefer: spamassassin:curl
 
+# have choice for pkgconfig(catch2): Catch2-2-devel Catch2-devel
+Prefer: -Catch2-2-devel
+
 # Python3 exists in multiple versions - we currently favor 3.8 (our default):
 Prefer: -python39
 Prefer: -python39-hotdoc
