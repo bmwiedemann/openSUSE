@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct 17 07:12:07 UTC 2022 - Илья Индиго <ilya@ilya.cf>
+
+- Updated to 0.23.10
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.23.10/NEWS
+  * storage: curl: fixed file time stamps
+  * decoder: ffmpeg: fixed libfmt 9 compiler warning
+  * encoder: flac: fixed failure when libFLAC is built without Ogg support
+  * output: alsa: fixed crash bug
+
+-------------------------------------------------------------------
 Wed Aug 24 06:10:55 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Updated to 0.23.9

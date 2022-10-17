@@ -666,4 +666,17 @@
 - Removed fix-build-ffmpeg5.patch.</comment>
     <requestid>998961</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>ea8a4974b855bb4914b78101db5be990</srcmd5>
+    <version>0.23.10</version>
+    <time>1666011490</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 0.23.10
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.23.10/NEWS
+  * storage: curl: fixed file time stamps
+  * decoder: ffmpeg: fixed libfmt 9 compiler warning
+  * encoder: flac: fixed failure when libFLAC is built without Ogg support
+  * output: alsa: fixed crash bug</comment>
+    <requestid>1011997</requestid>
+  </revision>
 </revisionlist>
