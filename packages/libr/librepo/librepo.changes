@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Oct 15 19:32:29 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.14.5:
+  * Detailed error message when using non-existing TMPDIR
+  * Make error messages about repodata and rpm mismatch more user
+    friendly 
+
+-------------------------------------------------------------------
 Wed Aug 25 16:46:36 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to 1.14.2

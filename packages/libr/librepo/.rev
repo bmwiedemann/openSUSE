@@ -206,4 +206,12 @@
   + Fix memory leaks</comment>
     <requestid>914470</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>befb365f4fb21188640b3ac8f4778536</srcmd5>
+    <version>1.14.5</version>
+    <time>1666011437</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1011160</requestid>
+  </revision>
 </revisionlist>
