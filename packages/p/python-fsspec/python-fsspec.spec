@@ -27,13 +27,13 @@
 %endif
 %define         skip_python2 1
 Name:           python-fsspec%{psuffix}
-Version:        2022.5.0
+Version:        2022.8.2
 Release:        0
 Summary:        Filesystem specification package
 License:        BSD-3-Clause
 URL:            https://github.com/fsspec/filesystem_spec
 # the tests are only in the GitHub archive
-Source:         %{url}/archive/%{version}.tar.gz#/fsspec-%{version}.tar.gz
+Source:         https://github.com/fsspec/filesystem_spec/archive/%{version}.tar.gz#/fsspec-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module importlib_metadata if %python-base < 3.8}
 BuildRequires:  %{python_module setuptools}
@@ -60,7 +60,7 @@ BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module cloudpickle}
-BuildRequires:  %{python_module distributed if %python-base < 3.10}
+BuildRequires:  %{python_module distributed}
 BuildRequires:  %{python_module fusepy}
 BuildRequires:  %{python_module gcsfs}
 BuildRequires:  %{python_module notebook}
@@ -72,7 +72,8 @@ BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-snappy}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module s3fs}
+# Too tight of a aiobotocore pinning: gh#fsspec/s3fs#615, gh#aio-libs/aiobotocore#971
+#BuildRequires:  %%{python_module s3fs}
 BuildRequires:  %{python_module smbprotocol}
 BuildRequires:  %{python_module zstandard}
 # cannot test git and http in the same installation (?)

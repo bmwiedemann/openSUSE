@@ -192,4 +192,12 @@ Required by the latest version of python-gcsfs</comment>
     <comment></comment>
     <requestid>986382</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>31ca9f3bd04fa577b5a7b52fabc3ef80</srcmd5>
+    <version>2022.8.2</version>
+    <time>1666011450</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1010953</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Fri Oct 14 11:11:45 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Don't test with python-s3fs: It is pinning aiobotocore which
+  does not play well with a rolling distro
+  gh#fsspec/s3fs#615, gh#aio-libs/aiobotocore#971
+
+-------------------------------------------------------------------
+Wed Sep 28 19:37:07 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 2022.8.2
+  * don’t close OpenFile on del (#1035)
+
+- Update to 2022.8.1
+  * revert #1024 (#1029), with strciter requirements on OpenFile usage
+
+- Update to 2022.8.0
+  Enhancements
+  * writable ZipFileSystem (#1017)
+  * make OpenFile behave like files and remove dynamic closer in .open() (#1024)
+  * use isal gunzip (#1008)
+  Fixes
+  * remove strip from _parent (#1022)
+  * disallow aiohttp prereleases (#1018)
+  * be sure to close cached file (#1016)
+  * async rm in reverse order (#1014)
+  * expose fileno in LocalFileOpener (#1010, #1005)
+  * remove temp files with simplecache writing (#1006)
+  * azure paths (#1003)
+  copy dircache keys before iter
+
+- Update to 2022.7.1
+  Fixes
+  * Remove fspath from LocalFileOpener (#1005)
+  * Revert 988 (#1003)
+
+- Update to 2022.7.0
+  Enhancements
+  * added fsspec-xrootd implementation to registry (#1000)
+  * memory file not to copy bytes (#999)
+  * Filie details passed to FUSE (#972)
+  Fixes
+  * Return info for root path of archives (#996)
+  * arbitrary kwargs passed through in pipe_file (#993)
+  * special cases for host in URLs for azure (#988)
+  * unstrip protocol criterion (#980)
+  * HTTPFile serialisation (#973)
+  Other
+  * Show erroring path in FileNotFounds (#989)
+  * Reference file info without searching directory tree (#985)
+  * Truncate for local files (#975) 
+
+-------------------------------------------------------------------
 Wed Jun 29 09:00:23 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update ot 2022.5.0
