@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Oct 17 11:36:57 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.13.4.2
+  * 2.13.4.2 (13-Oct-2022)
+    + #3627: Gradle module metadata for '2.13.4.1' references
+      non-existent jackson-bom '2.13.4.1' (instead of
+      '2.13.4.20221012')
+  * 2.13.4.1 (12-Oct-2022)
+    + #3590: Add check in primitive value deserializers to avoid
+      deep wrapper array nesting wrt 'UNWRAP_SINGLE_VALUE_ARRAYS'
+      [bsc#1204370, CVE-2022-42003]
+  * 2.13.4 (03-Sep-2022)
+    + #3275: JDK 16 Illegal reflective access for
+      'Throwable.setCause()' with
+      'PropertyNamingStrategy.UPPER_CAMEL_CASE'
+    + #3565: 'Arrays.asList()' value deserialization has changed
+      from mutable to immutable in 2.13
+    + #3582: Add check in 'BeanDeserializer._deserializeFromArray()'
+      to prevent use of deeply nested arrays [bsc#1204369,
+      CVE-2022-42004]
+
+-------------------------------------------------------------------
 Wed Jun 15 07:11:21 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Update to 2.13.3

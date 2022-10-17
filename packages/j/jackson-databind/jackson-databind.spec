@@ -17,7 +17,7 @@
 
 
 Name:           jackson-databind
-Version:        2.13.3
+Version:        2.13.4.2
 Release:        0
 Summary:        General data-binding package for Jackson (2.x)
 License:        Apache-2.0 AND LGPL-2.1-or-later
