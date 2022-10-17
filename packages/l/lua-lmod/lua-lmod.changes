@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 15 11:55:03 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+- Move latex dependencies to the pdf build flavor
+
+-------------------------------------------------------------------
 Wed Jun  9 08:36:10 UTC 2021 - Martin Liška <mliska@suse.cz>
 
 - Add new missing dependency when using Sphinx 4.x.

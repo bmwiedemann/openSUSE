@@ -1,7 +1,7 @@
 #
 # spec file for package lua-lmod
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -60,15 +60,19 @@ Requires:       tcl
 Conflicts:      Modules
 %if 0%{suse_version} >= 1550
 BuildRequires:  python3-Sphinx
-BuildRequires:  python3-Sphinx-latex
 %else
 BuildRequires:  python-Sphinx
+%endif
+Provides:       lua-lmod-man = %{version}-%{release}
+%if 0%{?build_pdf:1}
+
+%if 0%{suse_version} >= 1550
+BuildRequires:  python3-Sphinx-latex
+%else
 %if 0%{?sle_version} == 0 || 0%{?sle_version} >= 120300
 BuildRequires:  python-Sphinx-latex
 %endif
 %endif
-Provides:       lua-lmod-man = %{version}-%{release}
-%if 0%{?build_pdf:1}
 BuildRequires:  texlive
 BuildRequires:  texlive-babel
 BuildRequires:  texlive-babel-english
