@@ -17,15 +17,15 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-gscholar
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        Python library to query Google Scholar
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/venthur/gscholar
 Source0:        https://files.pythonhosted.org/packages/source/g/gscholar/gscholar-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -41,7 +41,6 @@ and get references in various formats (e.g. bibtex, endnote, etc.)
 %prep
 %setup -q -n gscholar-%{version}
 
-sed -i -e '/^#!\//, 1d' gscholar/__main__.py
 sed -i -e '/^#!\//, 1d' gscholar/gscholar.py
 
 %build

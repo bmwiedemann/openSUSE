@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Oct  9 17:57:08 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * require python >= 3.7
+
+- update to version 2.1.0:
+  * dropped python 3.6 support
+  * migrated from argparse to optparse
+  * added set-cookie in response
+
+-------------------------------------------------------------------
 Thu Feb  3 20:18:19 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:
