@@ -16,10 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define         skip_python2 1
 Name:           python-gcsfs
-Version:        2022.5.0
+Version:        2022.8.2
 Release:        0
 Summary:        Filesystem interface over GCS
 License:        BSD-3-Clause
@@ -27,6 +25,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/fsspec/gcsfs
 # Use the GitHub tarball for test data
 Source:         https://github.com/fsspec/gcsfs/archive/refs/tags/%{version}.tar.gz#/gcsfs-%{version}-gh.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
