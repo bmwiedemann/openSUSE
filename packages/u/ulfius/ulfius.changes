@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Oct 15 19:52:15 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.7.11
+  * Add ulfius_websocket_parse_json_message for incoming websocket
+    messages
+  * Breaking: in ulfius_websocket_send_json_message, return
+    U_ERROR_PARAMS if j_message is NULL
+  * Update callback examples
+  * Fix minor bugs
+
+-------------------------------------------------------------------
 Sun May 29 13:27:11 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.7.10
