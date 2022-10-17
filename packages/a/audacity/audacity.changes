@@ -1,4 +1,135 @@
 -------------------------------------------------------------------
+Sun Oct 16 08:48:46 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- No more bundled custom wxWidgets, so remove them from the .spec completely
+
+-------------------------------------------------------------------
+Fri Oct 14 03:10:15 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Fix build for Leap 15.3
+
+-------------------------------------------------------------------
+Tue Oct 11 13:05:37 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- update spec, install audacity libs into _libdir/audacity
+- update build deps - no need for carla
+- don't create lame.pc
+- use %cmake_build
+
+-------------------------------------------------------------------
+Fri Oct  7 05:23:17 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- add patch:
+  mod-script-pipe-disable-rpath.patch 
+- update audacity-rpmlintrc
+
+-------------------------------------------------------------------
+Fri Oct  7 03:02:49 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- remove patches, now upstream:
+  0001-Call-the-proper-wxBitmap-constructor-for-XPM-data.patch
+  0001-Remove-custom-languages-in-wx-3.1.6-and-above.patch
+  missing-include.patch
+- refresh patches:
+  audacity-no_buildstamp.patch
+  audacity-no_return_in_nonvoid.patch
+  no-more-strip.patch
+- update licenses
+
+- Update to 3.2.1
+Changes in version 3.2.1
+
+ This is a patch release. It fixes some bugs and has minor improvements. 
+
+    * #3686 Fixed Audacity crashing on startup on some systems.
+    * #3694 Fixed a crash when applying Waves Berzerk Distortion 
+      Mono to a mono track
+    * #3699 Fixed a freeze when very quickly starting and stopping
+      playback.
+    * #3747 macOS: Homebrew FFmpeg installs are now found automatically
+    * #3594 macOS: Fixed Melda VST Plugin UI
+    * #3474 Building with VST3 support is now possible without Conan.
+
+Changes in version 3.2.0
+
+ This version adds realtime effects and VST3. 
+
+ Prominent changes
+    * Added a new Effects button to the tracks menu, allowing you to
+      place realtime effects. 
+       Further information can be found can be found on 
+       https://support.audacityteam.org/audio-editing/using-realtime-effects
+    * Merged the mixer bar with the meter bars.
+    * Added a new Audio Setup button, replacing the Device Toolbar
+      by default. The device toolbar can be re-added via the
+      View > Toolbars menu.
+    * The Effects menu has gotten a new sorting. Other sorting and
+      grouping options can be found in the Effects preferences.
+    * Updated the icons.
+    * Added a quick audio sharing feature.
+       More info can be found on https://support.audacityteam.org/basics/sharing-audio-online
+
+ Plugin changes
+    You can find plugins on https://plugins.audacityteam.org
+    * VST3 effects are now supported.
+    * The following plugin formats are now realtime capable: 
+      VST3, LV2, LADSPA, Audio Units.
+    * Plugins now automatically get scanned, tested and enabled
+      when Audacity starts.
+ 
+ System changes
+    * Apple Silicon (arm64) is now supported on macOS
+       Note: When using an arm64 Audacity, you must use arm64
+       versions of FFMPEG and plugins. Plugins for x86-64 (Intel macs) will not load.
+       For the time being, Audacity will continue to download 
+       x86-64 versions by default to avoid these incompatibilities, 
+       but you can download an arm64 version from Github releases:
+       https://github.com/audacity/audacity/releases
+    * FFMPEG 5.0 (avformat 59) is now supported, in addition to
+      avformat 55, 57 and 58
+    * Added support for Wavpack
+    * On Linux, Audacity can now be compiled without JACK present.
+    * Audacity now uses XDG directories on Linux. 
+       Note: If you are upgrading from a previous version,
+       Audacity will keep using the ~/.audacity-data and ~/.audacity folders until you delete them.
+    * Switched from mad to mpg123 as MP3 importer
+ 
+ License update
+    * Audacity binaries are now licensed under the 
+      GNU General Public License, Version 3. 
+      Most code files remain GPLv2-or-later, but VST3 
+      support required this license update. 
+      More information can be found in the announcement 
+      post: https://github.com/audacity/audacity/discussions/2142
+ 
+ Removals
+    * Removed the Zoom Tool. You can use the zoom buttons
+      or Ctrl+Scroll (macOS: Cmd+Scroll) to zoom instead.
+    * The Audacity Manual HTML pages are no longer included 
+      in the installation.
+       If you require offline access of the manual, you can download
+       it here: https://github.com/audacity/audacity-manual/releases
+       You also can download PDFs of https://support.audacityteam.org
+       straight from its sidebar (or the three-dot button on mobile devices).
+
+
+ Fixed bugs:
+   * #3079 Fixed Audacity sometimes not being able to import MP3 
+     files (or reporting Huffman Data Overruns)
+   * #2590 Fixed rare data loss bug when placing labels during recording
+   * #2272 Fixed clip titles being able to disappear off-screen when editing them
+   * #2162 Fixed Punch and Roll not paying tracks in sync
+   * #1889 Fixed clip titles changing name when applying some effects
+   * #1624 During batch processing, Audacity will no longer stop to ask 
+     for a sample rate when an unsupported one is chosen, but choose the
+     nearest supported one instead.
+   * #2265 Fixed mod-script-pipe not being installed on Linux 
+   * #3571 Fixed GTK packaging in Appimages. This fixes various issues with
+     icons, dropdowns and similar things not appearing properly.
+   * #3634 Improved M4A/AAC support. Previously the target bitrate was 
+     not honored at all, now it can be set between 98 and 160 kbit/s (mono)
+     or 196 and 320 kbit/s (stereo). The UI does not yet reflect these limits.
+-------------------------------------------------------------------
 Sun Jun 26 11:47:35 UTC 2022 - Berthold Gunreben <azouhr@opensuse.org>
 
 - #error All sample block data is little endian...big endian not yet supported

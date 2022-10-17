@@ -1,0 +1,14 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/steinbergmedia/vst3sdk/</param>
+    <param name="revision">v3.7.6_build_18</param>
+    <param name="version">3.7.6_build_18</param>
+    <param name="changesgenerate">enable</param>
+    <param name="filename">vst3sdk</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+</services>

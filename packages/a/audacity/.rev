@@ -983,4 +983,12 @@ Remove spurious text from changes
     <comment></comment>
     <requestid>985230</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>dfea59caef18bdd742c0cbb6360ed629</srcmd5>
+    <version>3.2.1</version>
+    <time>1666011461</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1011244</requestid>
+  </revision>
 </revisionlist>
