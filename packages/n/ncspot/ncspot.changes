@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 17 10:36:29 UTC 2022 - Jan-Luca Kiok <me@jlk.one>
+
+- Update to version 0.11.2
+  Maintenance
+  * Cleanup: Remove PlayTrackMenu
+  * Fix: Crash on liked artist but no liked music
+  Features
+  * Improve context menus to make the UX/UI more consistent
+  * Exit gracefully on SIGTERM and SIGHUP
+
+-------------------------------------------------------------------
 Sun Sep 18 12:57:30 UTC 2022 - Jan-Luca Kiok <me@jlk.one>
 
 - Update to version 0.11.1
