@@ -1,0 +1,8 @@
+<package name="ardour" project="openSUSE:Factory">
+  <title>Multitrack Hardware Recording System</title>
+  <description>Ardour is a hard disk recorder (HDR) and digital audio workstation (DAW). It is capable of simultaneously recording 24 or more channels of 32-bit audio at 48kHz.
+
+Ardour is intended to function as a &quot;professional&quot; HDR system, replacing dedicated hardware solutions like the Mackie HDR and the Tascam 2424 and more traditional tape systems like the Alesis ADAT series. It supports MIDI Machine Control, so can be controlled from any MMC controller, such as the Mackie Digital 8 Bus mixer and many other modern digital mixers.
+</description>
+  <devel project="multimedia:apps" package="ardour"/>
+</package>
