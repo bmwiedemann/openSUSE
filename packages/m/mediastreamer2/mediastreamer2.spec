@@ -19,7 +19,7 @@
 %define sobase  libmediastreamer
 %define sover   11
 Name:           mediastreamer2
-Version:        5.1.45
+Version:        5.1.64
 Release:        0
 Summary:        Audio/Video real-time streaming
 License:        GPL-3.0-or-later
@@ -75,11 +75,11 @@ BuildRequires:  pkgconfig(xv)
 %if 0%{?suse_version} >= 1500
 BuildRequires:  libjpeg-devel >= 8.2.0
 %endif
+BuildRequires:  chrpath
 BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(libavcodec) >= 51.0.0
 BuildRequires:  pkgconfig(libswscale) >= 0.7.0
-BuildRequires:  chrpath
 
 %description
 Mediastreamer2 is a library to make audio and video real-time
@@ -149,7 +149,7 @@ mkdir -p %{buildroot}%{_docdir}/%{name}/
 mv -T %{buildroot}%{_datadir}/doc/%{name}-5.1.0/ \
   %{buildroot}%{_docdir}/%{name}/
 
-chrpath -d %{buildroot}%{_bindir}/mediastream %{buildroot}%{_bindir}/mkvstream %{buildroot}%{_bindir}/mediastreamer2_tester 
+chrpath -d %{buildroot}%{_bindir}/mediastream %{buildroot}%{_bindir}/mkvstream %{buildroot}%{_bindir}/mediastreamer2_tester
 chrpath -d %{buildroot}%{_libdir}/%{sobase}.so.%{sover}* %{buildroot}%{_libdir}/libmediastreamer.so
 
 %post -n %{sobase}%{sover} -p /sbin/ldconfig

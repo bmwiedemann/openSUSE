@@ -1,7 +1,8 @@
-diff -ru a/CMakeLists.txt b/CMakeLists.txt
---- a/CMakeLists.txt	2020-06-15 19:27:04.000000000 +0200
-+++ b/CMakeLists.txt	2020-06-26 11:13:58.863403760 +0200
-@@ -129,6 +129,21 @@
+Index: mediastreamer2-5.1.64/CMakeLists.txt
+===================================================================
+--- mediastreamer2-5.1.64.orig/CMakeLists.txt
++++ mediastreamer2-5.1.64/CMakeLists.txt
+@@ -135,6 +135,21 @@ cmake_dependent_option(ENABLE_QRCODE "En
  # * DISABLE_SRTP_SEARCH: skip find_package() for SRTP.
  
  
@@ -22,11 +23,12 @@ diff -ru a/CMakeLists.txt b/CMakeLists.txt
 +
  set(CMAKE_CXX_STANDARD 14)
  set(CMAKE_CXX_EXTENSIONS NO)
-
-diff -ru a/mediastreamer.pc.in b/mediastreamer.pc.in
---- a/mediastreamer.pc.in	2020-06-15 19:27:04.000000000 +0200
-+++ b/mediastreamer.pc.in	2020-06-26 11:14:44.219319903 +0200
-@@ -5,7 +5,8 @@
+ 
+Index: mediastreamer2-5.1.64/mediastreamer.pc.in
+===================================================================
+--- mediastreamer2-5.1.64.orig/mediastreamer.pc.in
++++ mediastreamer2-5.1.64/mediastreamer.pc.in
+@@ -5,7 +5,8 @@ includedir=@includedir@
  
  Name: mediastreamer 
  Description: A mediastreaming library for telephony applications
