@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Oct 15 19:41:24 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.14.0:
+  * New functions for stripping XMD from an index
+  * developer visible fixes and documentation updates
+  * Fix a crash when updating an index with an invalid subdocument
+    and a NULL error parameter.
+  * Reject duplicate contexts in modulemd-packager-v3 documents.
+  * Report an error if modulemd-validator tool is invoked with both
+    --version option and an unknown option.
+  * Fix an undefined behaviour when comparing integers of different
+    signs.
+
+-------------------------------------------------------------------
 Fri Mar 18 11:48:25 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire glib2-doc when building against glib2 more recent
