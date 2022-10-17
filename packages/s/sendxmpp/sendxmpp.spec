@@ -1,7 +1,7 @@
 #
 # spec file for package sendxmpp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,23 +24,23 @@ License:        GPL-2.0-only
 Group:          Productivity/Networking/Talk/Clients
 URL:            https://sendxmpp.hostname.sk/
 Source0:        https://github.com/lhost/sendxmpp/archive/v%{version}.tar.gz
-BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
+Requires:       perl(IO::Socket::SSL) >= 0.81
 Requires:       perl(Net::XMPP)
-%perl_requires
+BuildArch:      noarch
+%{perl_requires}
 
 %description
-sendxmpp is a perl-script to send xmpp (jabber), similar to 
+sendxmpp is a perl-script to send xmpp (jabber), similar to
 what mail(1) does for mail.
 
 %prep
 %setup -q
 
 %build
-%{__perl} Makefile.PL
-make %{?_smp_mflags}
+perl Makefile.PL
+%make_build
 
 %install
 %perl_make_install
@@ -48,6 +48,5 @@ make %{?_smp_mflags}
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,-)
 
 %changelog
