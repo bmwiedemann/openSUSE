@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Oct 15 23:12:46 UTC 2022 - Илья Индиго <ilya@ilya.cf>
+
+- Updated to dosbox-staging 0.79.1
+  * Replaced dosbox-staging-0.78.1-config.patch by dosbox-staging-0.79.1-config.patch.
+  * Replaced dosbox-staging-0.78.1-name.patch by dosbox-staging-0.79.1-name.patch.
+  * Removed dosbox-translations subpackage and added Provides/Obsoletes instructions.
+  * Added fdupes, pkgconfig(iir), pkgconfig(slirp) dependencies.
+  * Removed irrelevant instructions and enabled fluidsynth and mt32emu for Leap.
+  * https://dosbox-staging.github.io/v0-79-0/#changes
+  * https://dosbox-staging.github.io/v0-79-1/#changes
+
+-------------------------------------------------------------------
 Tue May 24 15:14:09 UTC 2022 - Илья Индиго <ilya@ilya.cf>
 
 - Updated dosbox-staging-0.78.1-config.patch.

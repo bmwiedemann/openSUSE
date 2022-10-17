@@ -299,4 +299,19 @@
 - Updated dosbox-staging-0.78.1-name.patch.</comment>
     <requestid>979030</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>6b11e3f1b6e82207de7659fa7977bc55</srcmd5>
+    <version>0.79.1</version>
+    <time>1666011468</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to dosbox-staging 0.79.1
+  * Replaced dosbox-staging-0.78.1-config.patch by dosbox-staging-0.79.1-config.patch.
+  * Replaced dosbox-staging-0.78.1-name.patch by dosbox-staging-0.79.1-name.patch.
+  * Removed dosbox-translations subpackage and added Provides/Obsoletes instructions.
+  * Added fdupes, pkgconfig(iir), pkgconfig(slirp) dependencies.
+  * Removed irrelevant instructions and enabled fluidsynth and mt32emu for Leap.
+  * https://dosbox-staging.github.io/v0-79-0/#changes
+  * https://dosbox-staging.github.io/v0-79-1/#changes</comment>
+    <requestid>1011273</requestid>
+  </revision>
 </revisionlist>

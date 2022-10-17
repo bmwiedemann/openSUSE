@@ -1,27 +1,18 @@
-diff -Pdpru dosbox-staging-0.78.1.orig/src/dosbox.cpp dosbox-staging-0.78.1/src/dosbox.cpp
---- dosbox-staging-0.78.1.orig/src/dosbox.cpp	2022-01-07 18:37:04.000000000 +0300
-+++ dosbox-staging-0.78.1/src/dosbox.cpp	2022-05-24 17:47:11.357668107 +0300
-@@ -516,7 +516,7 @@ void DOSBOX_Init() {
- 	const char *verbosity_choices[] = {
- 	        "auto", "high", "medium", "low", "splash_only", "quiet", 0,
- 	};
--	Pstring = secprop->Add_string("startup_verbosity", only_at_start, "auto");
-+	Pstring = secprop->Add_string("startup_verbosity", only_at_start, "medium");
- 	Pstring->Set_values(verbosity_choices);
- 	Pstring->Set_help(
- 	        "Controls verbosity prior to displaying the program:\n"
-@@ -549,7 +549,7 @@ void DOSBOX_Init() {
- 	pstring->Set_values(mono_pal);
+diff -Pdpru dosbox-staging-0.79.1.orig/src/dosbox.cpp dosbox-staging-0.79.1/src/dosbox.cpp
+--- dosbox-staging-0.79.1.orig/src/dosbox.cpp	2022-09-30 18:59:10.000000000 +0300
++++ dosbox-staging-0.79.1/src/dosbox.cpp	2022-10-15 19:16:47.469396803 +0300
+@@ -624,7 +624,7 @@ void DOSBOX_Init()
+ 			"RGB triplets (e.g. (255, 0, 255) for magenta).");
  
- 	pmulti = secprop->Add_multi("scaler", always, " ");
+ 	pmulti = secprop->AddMultiVal("scaler", always, " ");
 -	pmulti->SetValue("none");
 +	pmulti->SetValue("hq3x");
  	pmulti->Set_help("Scaler used to enlarge/enhance low resolution modes.\n"
  	                 "If 'forced' is appended, then the scaler will be used even if\n"
  	                 "the result might not be desired.\n"
-@@ -626,12 +626,12 @@ void DOSBOX_Init() {
+@@ -701,12 +701,12 @@ void DOSBOX_Init()
  
- 	Pmulti_remain->GetSection()->Add_string("parameters", always, "");
+ 	pmulti_remain->GetSection()->Add_string("parameters", always, "");
  
 -	Pint = secprop->Add_int("cycleup", always, 10);
 +	Pint = secprop->Add_int("cycleup", always, 500);
@@ -34,7 +25,7 @@ diff -Pdpru dosbox-staging-0.78.1.orig/src/dosbox.cpp dosbox-staging-0.78.1/src/
  	Pint->SetMinMax(1,1000000);
  	Pint->Set_help("Setting it lower than 100 will be a percentage.");
  
-@@ -715,7 +715,7 @@ void DOSBOX_Init() {
+@@ -771,7 +771,7 @@ void DOSBOX_Init()
  	        "'auto', to use the first working external MIDI player. This\n"
  	        "       might be a software synthesizer or physical device.");
  
@@ -43,20 +34,11 @@ diff -Pdpru dosbox-staging-0.78.1.orig/src/dosbox.cpp dosbox-staging-0.78.1/src/
  	pstring->Set_help(
  	        "Configuration options for the selected MIDI interface.\n"
  	        "This is usually the id or name of the MIDI synthesizer you want\n"
-@@ -829,7 +829,7 @@ void DOSBOX_Init() {
- 	// have worked with when tuning their game audio, we therefore use this
- 	// same value given it's the most likely to produce audio as intended by
- 	// the authors.
--	pint = secprop->Add_int("pcrate", when_idle, 18939);
-+	pint = secprop->Add_int("pcrate", when_idle, 48000);
- 	pint->SetMinMax(8000, 48000);
- 	pint->Set_help("Sample rate of the PC-Speaker sound generation.");
- 
-diff -Pdpru dosbox-staging-0.78.1.orig/src/gui/sdlmain.cpp dosbox-staging-0.78.1/src/gui/sdlmain.cpp
---- dosbox-staging-0.78.1.orig/src/gui/sdlmain.cpp	2022-01-07 18:37:04.000000000 +0300
-+++ dosbox-staging-0.78.1/src/gui/sdlmain.cpp	2022-05-24 17:51:25.785165473 +0300
-@@ -3432,7 +3432,7 @@ void Config_Add_SDL() {
- 	// constexpr auto deprecated = Property::Changeable::Deprecated;
+diff -Pdpru dosbox-staging-0.79.1.orig/src/gui/sdlmain.cpp dosbox-staging-0.79.1/src/gui/sdlmain.cpp
+--- dosbox-staging-0.79.1.orig/src/gui/sdlmain.cpp	2022-09-30 18:59:10.000000000 +0300
++++ dosbox-staging-0.79.1/src/gui/sdlmain.cpp	2022-10-04 23:15:38.000000000 +0300
+@@ -4109,7 +4109,7 @@ void Config_Add_SDL() {
+ 	constexpr auto deprecated = Property::Changeable::Deprecated;
  	constexpr auto on_start = Property::Changeable::OnlyAtStart;
  
 -	Pbool = sdl_sec->Add_bool("fullscreen", always, false);
@@ -64,7 +46,7 @@ diff -Pdpru dosbox-staging-0.78.1.orig/src/gui/sdlmain.cpp dosbox-staging-0.78.1
  	Pbool->Set_help("Start directly in fullscreen.\n"
  	                "Run INTRO and see Special Keys for window control hotkeys.");
  
-@@ -3444,7 +3444,7 @@ void Config_Add_SDL() {
+@@ -4121,7 +4121,7 @@ void Config_Add_SDL() {
  	Pstring->Set_help("What resolution to use for fullscreen: 'original', 'desktop'\n"
  	                  "or a fixed size (e.g. 1024x768).");
  
@@ -73,7 +55,7 @@ diff -Pdpru dosbox-staging-0.78.1.orig/src/gui/sdlmain.cpp dosbox-staging-0.78.1
  	pstring->Set_help(
  	        "Set window size when running in windowed mode:\n"
  	        "  default:   Select the best option based on your\n"
-@@ -3554,7 +3554,7 @@ void Config_Add_SDL() {
+@@ -4256,7 +4256,7 @@ void Config_Add_SDL() {
  	Pint = Pmulti->GetSection()->Add_int("ysens", always,100);
  	Pint->SetMinMax(-1000,1000);
  
@@ -82,10 +64,22 @@ diff -Pdpru dosbox-staging-0.78.1.orig/src/gui/sdlmain.cpp dosbox-staging-0.78.1
  	pbool->Set_help(
  	        "Enable this setting to bypass your operating system's mouse\n"
  	        "acceleration and sensitivity settings. This works in\n"
-diff -Pdpru dosbox-staging-0.78.1.orig/src/midi/midi_fluidsynth.cpp dosbox-staging-0.78.1/src/midi/midi_fluidsynth.cpp
---- dosbox-staging-0.78.1.orig/src/midi/midi_fluidsynth.cpp	2022-01-07 18:37:04.000000000 +0300
-+++ dosbox-staging-0.78.1/src/midi/midi_fluidsynth.cpp	2022-05-24 17:52:23.585946162 +0300
-@@ -50,7 +50,7 @@ static void init_fluid_dosbox_settings(S
+diff -Pdpru dosbox-staging-0.79.1.orig/src/hardware/gus.cpp dosbox-staging-0.79.1/src/hardware/gus.cpp
+--- dosbox-staging-0.79.1.orig/src/hardware/gus.cpp	2022-09-30 18:59:10.000000000 +0300
++++ dosbox-staging-0.79.1/src/hardware/gus.cpp	2022-10-15 19:20:07.759957010 +0300
+@@ -1610,7 +1610,7 @@ void init_gus_dosbox_settings(Section_pr
+ {
+ 	constexpr auto when_idle = Property::Changeable::WhenIdle;
+ 
+-	auto *bool_prop = secprop.Add_bool("gus", when_idle, false);
++	auto *bool_prop = secprop.Add_bool("gus", when_idle, true);
+ 	assert(bool_prop);
+ 	bool_prop->Set_help("Enable Gravis UltraSound emulation.");
+ 
+diff -Pdpru dosbox-staging-0.79.1.orig/src/midi/midi_fluidsynth.cpp dosbox-staging-0.79.1/src/midi/midi_fluidsynth.cpp
+--- dosbox-staging-0.79.1.orig/src/midi/midi_fluidsynth.cpp	2022-09-30 18:59:10.000000000 +0300
++++ dosbox-staging-0.79.1/src/midi/midi_fluidsynth.cpp	2022-10-04 23:17:09.000000000 +0300
+@@ -49,7 +49,7 @@ static void init_fluid_dosbox_settings(S
  
  	// Name 'default.sf2' picks the default soundfont if it's installed
  	// in the OS. Usually it's Fluid_R3.
