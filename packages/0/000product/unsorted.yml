@@ -765,6 +765,7 @@ unsorted:
   - arcanist 
   - arch-install-scripts 
   - archivemount 
+  - ardour 
   - argon2 
   - argon2-devel 
   - argon2-doc 
@@ -3088,7 +3089,6 @@ unsorted:
   - domination-data 
   - doomsday 
   - dosbox 
-  - dosbox-translations 
   - dosemu 
   - dotconf-devel 
   - double-conversion-devel 
@@ -5963,8 +5963,6 @@ unsorted:
   - gmsh-demos 
   - gmsh-devel 
   - gmsh-doc 
-  - gmusicbrowser 
-  - gmusicbrowser-lang 
   - gn 
   - gnome-2048 
   - gnome-2048-lang 
@@ -24026,7 +24024,6 @@ unsorted:
   - python310-pan-python 
   - python310-pandas 
   - python310-pandas-datareader 
-  - python310-pandas-ext 
   - python310-pandocfilters 
   - python310-panel 
   - python310-panflute 
@@ -24134,6 +24131,7 @@ unsorted:
   - python310-podman-compose 
   - python310-poetry 
   - python310-poetry-core 
+  - python310-poetry-plugin-export 
   - python310-polib 
   - python310-pomegranate 
   - python310-pomegranate-devel 
@@ -24818,7 +24816,6 @@ unsorted:
   - python310-simplegeneric 
   - python310-simplekml 
   - python310-single-version 
-  - python310-singledispatch 
   - python310-siosocks 
   - python310-sip-devel 
   - python310-sip4 
@@ -27321,7 +27318,6 @@ unsorted:
   - python38-pan-python 
   - python38-pandas 
   - python38-pandas-datareader 
-  - python38-pandas-ext 
   - python38-pandocfilters 
   - python38-panel 
   - python38-panflute 
@@ -27432,6 +27428,7 @@ unsorted:
   - python38-podman-compose 
   - python38-poetry 
   - python38-poetry-core 
+  - python38-poetry-plugin-export 
   - python38-polib 
   - python38-pomegranate 
   - python38-pomegranate-devel 
@@ -28151,7 +28148,6 @@ unsorted:
   - python38-simplejson 
   - python38-simplekml 
   - python38-single-version 
-  - python38-singledispatch 
   - python38-siosocks 
   - python38-sip-devel 
   - python38-sip4 
@@ -30661,7 +30657,6 @@ unsorted:
   - python39-pan-python 
   - python39-pandas 
   - python39-pandas-datareader 
-  - python39-pandas-ext 
   - python39-pandocfilters 
   - python39-panel 
   - python39-panflute 
@@ -30772,6 +30767,7 @@ unsorted:
   - python39-podman-compose 
   - python39-poetry 
   - python39-poetry-core 
+  - python39-poetry-plugin-export 
   - python39-polib 
   - python39-pomegranate 
   - python39-pomegranate-devel 
@@ -31490,7 +31486,6 @@ unsorted:
   - python39-simplejson 
   - python39-simplekml 
   - python39-single-version 
-  - python39-singledispatch 
   - python39-siosocks 
   - python39-sip-devel 
   - python39-sip4 
