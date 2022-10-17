@@ -17,8 +17,13 @@
 
 
 %if 0%{?suse_version} <= 1500
+%if 0%{?sle_version} >= 150400
+%define _pyn 310
+%define _pyd 3.10
+%else
 %define _pyn 39
 %define _pyd 3.9
+%endif
 %else
 %define _pyn 3
 %define _pyd 3

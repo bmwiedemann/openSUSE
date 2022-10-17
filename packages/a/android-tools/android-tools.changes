@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Oct 16 10:32:42 UTC 2022 - Andreas Schwab <schwab@linux-m68k.org>
+
+- Use python3.10 for 15.4
+
+-------------------------------------------------------------------
 Fri Oct 14 04:59:40 UTC 2022 - munix9@googlemail.com
 
 - Switch to clang/llvm because of build errors with gcc12 and the
