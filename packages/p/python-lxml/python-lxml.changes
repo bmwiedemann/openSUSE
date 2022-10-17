@@ -82,7 +82,7 @@ Tue Apr  6 01:51:29 UTC 2021 - Dirk Müller <dmueller@suse.com>
 - update to 4.6.3:
   * A vulnerability (CVE-2021-28957) was discovered in the HTML Cleaner by Kevin Chung,
     which allowed JavaScript to pass through.  The cleaner now removes the HTML5
-    ``formaction`` attribute.
+    ``formaction`` attribute. (bsc#1184177)
 
 -------------------------------------------------------------------
 Sun Jan 24 10:21:16 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -90,7 +90,7 @@ Sun Jan 24 10:21:16 UTC 2021 - Dirk Müller <dmueller@suse.com>
 - update to 4.6.2:
 * A vulnerability (CVE-2020-27783) was discovered in the HTML Cleaner by Yaniv Nizry,
   which allowed JavaScript to pass through.  The cleaner now removes more sneaky
-  "style" content.
+  "style" content. (bsc#1179534)
 * A vulnerability was discovered in the HTML Cleaner by Yaniv Nizry, which allowed
   JavaScript to pass through.  The cleaner now removes more sneaky "style" content.
 * GH#310: ``lxml.html.InputGetter`` supports ``__len__()`` to count the number of input fields.
@@ -256,7 +256,7 @@ Fri Nov 16 18:54:26 UTC 2018 - Todd R <toddrme2178@gmail.com>
 
 - Update to 4.2.5
   * Javascript URLs that used URL escaping were not removed by the HTML cleaner.
-    Security problem found by Omar Eissa.
+    Security problem found by Omar Eissa. (CVE-2018-19787, bsc#1118088)
 
 -------------------------------------------------------------------
 Mon Sep  3 14:34:43 UTC 2018 - comurphy@suse.com

@@ -890,4 +890,12 @@ Send to Staging:E.
 </comment>
     <requestid>1004688</requestid>
   </revision>
+  <revision rev="94" vrev="4">
+    <srcmd5>d431760896ef16e5f8058f27b711a46c</srcmd5>
+    <version>4.9.1</version>
+    <time>1666011475</time>
+    <user>dimstar_suse</user>
+    <comment>Add missing bug and CVE references</comment>
+    <requestid>1010558</requestid>
+  </revision>
 </revisionlist>
