@@ -137,6 +137,7 @@ a personal finance manager.
 %define _lto_cflags %{nil}
 %define __builder ninja
 %cmake \
+    -DCMAKE_SKIP_INSTALL_RPATH:BOOL=OFF \
     -DCMAKE_SKIP_RPATH=OFF \
     -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
     -DCMAKE_INSTALL_DOCDIR=%{_docdir}/%{name} \

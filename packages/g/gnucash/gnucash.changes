@@ -46,6 +46,14 @@ Fri Apr  1 13:43:07 UTC 2022 - Johannes Engel <jcnengel@gmail.com>
   + Performance and code clarity improvements
 
 -------------------------------------------------------------------
+Fri Jan 21 10:29:17 UTC 2022 - QK ZHU <qkzhu@suse.com>
+
+- Add -DCMAKE_SKIP_INSTALL_RPATH:BOOL=OFF to spec:
+  cmake in SLE and Leap set this variable to ON by default, hence
+  GnuCash cannot open shared object file, fix by overriding it
+  (bsc#1194378)
+
+-------------------------------------------------------------------
 Sun Jan  2 16:35:59 UTC 2022 - Johannes Engel <jcnengel@gmail.com>
 
 - Update to 4.9
