@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Oct  9 13:15:29 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.5.0
+  * Drop support for Python version older than 3.4. #50
+  * Support detecting NuShell. #56
+
+-------------------------------------------------------------------
 Wed Mar 18 12:00:31 UTC 2020 - pgajdos@suse.com
 
 - version update to 1.3.2
