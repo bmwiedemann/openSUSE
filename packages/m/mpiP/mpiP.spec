@@ -1,7 +1,7 @@
 #
-# spec file for package mpiP
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -265,7 +265,7 @@ URL:            https://github.com/LLNL/mpiP
 Source0:        https://github.com/LLNL/mpiP/releases/download/%{version}/mpip-%{version}.tgz#/%{pname}-%{version}.tgz
 Patch1:         mpip.unwinder.patch
 Patch2:         Add-return-value-to-non-void-function.patch
-
+Patch3:         pc_lookup-replace-PTR-with-void.patch
 BuildRequires:  %{compiler_family}%{?c_f_ver}-compilers-hpc-macros-devel
 BuildRequires:  %{mpi_family}%{?mpi_ver}-%{compiler_family}%{?c_f_ver}-hpc-macros-devel
 BuildRequires:  binutils-devel

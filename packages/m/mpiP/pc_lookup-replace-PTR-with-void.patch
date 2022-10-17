@@ -1,0 +1,41 @@
+commit 168e28672992f4c725046b91fda0ffada6ccf842
+Author: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+Date:   Mon Oct 17 09:59:01 2022 +0200
+
+    pc_lookup: replace PTR with void*
+    
+    PTR is not available in newer glibc versions
+    
+    Signed-off-by: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+diff --git a/pc_lookup.c b/pc_lookup.c
+index 4c595645813a..4c2a1a30e693 100644
+--- a/pc_lookup.c
++++ b/pc_lookup.c
+@@ -115,7 +115,7 @@ static void
+ find_address_in_section (abfd, section, data)
+      bfd *abfd;
+      asection *section;
+-     PTR data;
++     void* data;
+ {
+   bfd_vma vma;
+   bfd_size_type size;
+@@ -435,7 +435,7 @@ mpiP_find_src_loc (void *i_addr_hex, char **o_file_str, int *o_lineno,
+ 
+   found = FALSE;
+ 
+-  bfd_map_over_sections (abfd, find_address_in_section, (PTR) NULL);
++  bfd_map_over_sections (abfd, find_address_in_section, (void*) NULL);
+ 
+ #ifdef SO_LOOKUP
+   if (!found)
+@@ -477,7 +477,7 @@ mpiP_find_src_loc (void *i_addr_hex, char **o_file_str, int *o_lineno,
+           mpiPi_msg_debug ("fso->bfd->sections is %p\n",
+                            ((bfd *) (fso->bfd))->sections);
+           bfd_map_over_sections (fso->bfd, find_address_in_section,
+-                                 (PTR) NULL);
++                                 (void*) NULL);
+         }
+ 
+     }
