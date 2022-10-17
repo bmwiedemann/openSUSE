@@ -69,6 +69,7 @@ export CXXFLAGS="%{optflags} -fno-strict-aliasing"
 export V=1
 %configure \
     --disable-static \
+    --disable-asserts \
     --libexecdir=%{_libexecdir}/dbus-1 \
     --runstatedir=%{_rundir} \
     --enable-doxygen-docs \

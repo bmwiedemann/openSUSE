@@ -1441,4 +1441,12 @@ Thu Jan  9 17:33:31 UTC 2014 - fridrich.strba@suse.com
     <comment>- Disable asserts (bsc#1087072)</comment>
     <requestid>1010413</requestid>
   </revision>
+  <revision rev="174" vrev="6">
+    <srcmd5>3ddc82de5cab82cfcaf6d5a8025d81f2</srcmd5>
+    <version>1.14.0</version>
+    <time>1666011441</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1011186</requestid>
+  </revision>
 </revisionlist>

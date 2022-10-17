@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Oct 15 18:13:18 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Disable asserts in dbus-1-x11.spec and dbus-1-devel-doc.spec too
+
+-------------------------------------------------------------------
 Fri Mar  4 19:36:07 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.14.0:

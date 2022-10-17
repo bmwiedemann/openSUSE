@@ -77,6 +77,7 @@ export V=1
 # is included (1.14.1+)
 %configure \
     --disable-static \
+    --disable-asserts \
     --runstatedir=%{_rundir} \
     --libexecdir=%{_libexecdir}/dbus-1 \
     --enable-inotify \
