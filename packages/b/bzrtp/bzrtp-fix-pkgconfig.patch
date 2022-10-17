@@ -1,6 +1,8 @@
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -80,6 +80,16 @@ configure_file(${CMAKE_CURRENT_SOURCE_DI
+Index: bzrtp-5.1.64/CMakeLists.txt
+===================================================================
+--- bzrtp-5.1.64.orig/CMakeLists.txt
++++ bzrtp-5.1.64/CMakeLists.txt
+@@ -61,6 +61,16 @@ configure_file(${CMAKE_CURRENT_SOURCE_DI
  set_source_files_properties(${CMAKE_CURRENT_BINARY_DIR}/config.h PROPERTIES GENERATED ON)
  add_definitions("-DHAVE_CONFIG_H")
  
