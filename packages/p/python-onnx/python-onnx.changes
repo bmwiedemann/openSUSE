@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 17 08:07:43 UTC 2022 - pgajdos@suse.com
+
+- python-six is not required
+
+-------------------------------------------------------------------
 Wed Jul 20 12:30:00 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to version 1.12.0: https://github.com/onnx/onnx/releases/tag/v1.12.0

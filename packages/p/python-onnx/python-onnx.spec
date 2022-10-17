@@ -36,7 +36,6 @@ BuildRequires:  %{python_module pybind11}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -47,7 +46,6 @@ Requires:       libonnx_proto == %version
 Requires:       libonnxifi_dummy == %version
 Requires:       python-numpy
 Requires:       python-protobuf
-Requires:       python-six
 Requires:       python-typing_extensions >= 3.6.2.1
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
