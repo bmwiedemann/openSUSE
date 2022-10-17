@@ -19,22 +19,21 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-aioitertools
-Version:        0.8.0
+Version:        0.11.0
 Release:        0
 Summary:        Itertools and builtins for AsyncIO and mixed iterables
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://aioitertools.omnilib.dev
 Source:         https://files.pythonhosted.org/packages/source/a/aioitertools/aioitertools-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM aioitertools-remove-loop.patch -- gh#omnilib/aioitertools#84
-Patch0:         aioitertools-remove-loop.patch
 BuildRequires:  %{python_module asyncio}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module typing_extensions if %python-base < 3.8}
+BuildRequires:  %{python_module flit-core > 2}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module typing_extensions if %python-base < 3.10}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%if 0%{?python_version_nodots} < 38
-Requires:       python-typing_extensions >= 3.7
+%if 0%{?python_version_nodots} < 310
+Requires:       python-typing_extensions >= 4.0
 %endif
 BuildArch:      noarch
 %python_subpackages
@@ -46,10 +45,10 @@ Implementation of itertools, builtins, and more for AsyncIO and mixed-type itera
 %autosetup -p1 -n aioitertools-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

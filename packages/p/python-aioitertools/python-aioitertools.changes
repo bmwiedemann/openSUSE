@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Oct 17 12:04:35 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.11.0:
+  - New: `before_and_after` from `more_itertools` (#111)
+  - Removed: `loop` parameter is now removed from asyncio functions (#136)
+  - Docs: fixed docstring for `builtins.max` (#107)
+  - Docs: can now be built without installing package (#135)
+  - Python: Added support for Python 3.11 (#133)
+  - Python: Deprecated support for Python 3.6, to be removed in 0.12.0
+- from version 0.10.0:
+  - New `as_generated()` function for consuming multiple iterables (#99)
+- from version 0.10.0b1:
+  - New `as_generated()` function for consuming multiple iterables (#99)
+- from version 0.9.0:
+  - Python 3.10 support (#84, #97)
+  - Fixed: `as_completed()` will now cancel pending tasks when the timeout
+    threshold has been reached.
+  - Fixed: `zip()` will now gather all tasks correctly when exceptions are
+    raised, resulting in no pending tasks being unawaited.
+  - DEPRECATED: `loop` parameters to asyncio functions are ignored, and will
+    be removed entirely in v0.11.0. This is for 3.10 compatibility, as well
+    as to follow common practice and guidance around asyncio.
+- Drop patches for issues fixed upstream
+  - aioitertools-remove-loop.patch
+- Switch build system to pyproject.toml
+- Update BuildRequires from pyproject.toml
+
+-------------------------------------------------------------------
 Thu Jan  6 22:21:54 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Add aioitertools-remove-loop.patch for python310 compatibility
