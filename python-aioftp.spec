@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 Name:           python-aioftp
-Version:        0.21.3
+Version:        0.21.4
 Release:        0
 Summary:        FTP client/server for asyncio
 License:        Apache-2.0

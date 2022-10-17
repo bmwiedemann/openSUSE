@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 17 11:31:51 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.21.4
+  * setup/tests: set low bound for version of `async-timeout`
+  * docs: fix rst link markup
+  * docs: add `LIST` parsing warning explanation
+  * tests: use `pytest_asyncio` `strict` mode and proper decorations (fixes #155)
+
+-------------------------------------------------------------------
 Thu Aug 18 10:42:42 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.21.3
