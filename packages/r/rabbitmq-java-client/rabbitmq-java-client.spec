@@ -26,12 +26,13 @@ URL:            https://www.rabbitmq.com/java-client.html
 Source0:        %{name}-%{version}.tar.xz
 Source1:        rabbitmq-codegen-%{version}.tar.xz
 Patch0:         rabbitmq-java-client-3.3.4-disable-bundlor.diff
+Patch1:         rabbitmq-java-client-python3.patch
 BuildRequires:  ant
 BuildRequires:  apache-commons-io
 BuildRequires:  jakarta-commons-cli
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  junit
-BuildRequires:  python
+BuildRequires:  python3-devel
 Requires:       apache-commons-io
 Requires:       jakarta-commons-cli
 BuildArch:      noarch
@@ -43,6 +44,7 @@ The RabbitMQ Java client library allows Java code to interface to AMQP servers.
 %setup -q -a1
 ln -s rabbitmq-codegen-%{version} codegen
 %patch0
+%patch1 -p1
 find . -name *.jar | xargs rm -f
 # Java source and target
 sed -i -e 's#1\.6#1\.8#g' build.properties
