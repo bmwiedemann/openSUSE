@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Oct 16 17:09:53 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 0.7.5:
+  * Update default stations list, add SomaFM stations. !85
+  * Add a "Remove all Stations" to the right-click context menu. #152
+
+  Translations
+  * New translations: Chinese (Traditional).
+  * Updated translations: Catalan, Croatian, Dutch, French, Slovak, Spanish, Turkish.
+
+-------------------------------------------------------------------
 Sun Sep 25 16:44:58 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 0.7.4:
