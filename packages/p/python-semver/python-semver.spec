@@ -19,14 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without test
 Name:           python-semver
-Version:        3.0.0~dev.2+41+g4d2df08
+Version:        3.0.0~dev.3
 Release:        0
 Summary:        Python helper for Semantic Versioning
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/python-semver/python-semver
-#Source:         https://files.pythonhosted.org/packages/source/s/semver/semver-%%{version}.tar.gz
-Source:         https://github.com/python-semver/python-semver/archive/refs/heads/feature/tests-for-py310.tar.gz#/semver-%{version}.tar.gz
+Source:         https://github.com/python-semver/python-semver/archive/refs/tags/3.0.0-dev.3.tar.gz#/%{name}-3.0.0-dev.3-gh.tar.gz
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -43,7 +42,7 @@ A Python module for semantic versioning. Simplifies comparing versions.
 See also http://semver.org/
 
 %prep
-%setup -q -n python-semver-feature-tests-for-py310
+%setup -q -n python-semver-3.0.0-dev.3
 sed -i '/-cov/d' setup.cfg
 
 %build

@@ -162,4 +162,12 @@
     <comment>- fix support for Python 3.10 with update to development version:</comment>
     <requestid>945413</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>49edde3324ff1128f61c0b235febaea5</srcmd5>
+    <version>3.0.0~dev.3</version>
+    <time>1666011507</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1012034</requestid>
+  </revision>
 </revisionlist>

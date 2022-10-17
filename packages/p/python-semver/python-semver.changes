@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 10 08:26:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- switch to the tagged version rather than a gh branch tarball 
+
+-------------------------------------------------------------------
 Mon Jan 10 21:27:18 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - fix support for Python 3.10 with update to development version:
