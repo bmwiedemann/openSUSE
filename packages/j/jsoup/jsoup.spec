@@ -1,7 +1,7 @@
 #
 # spec file for package jsoup
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           jsoup
-Version:        1.14.2
+Version:        1.15.3
 Release:        0
 Summary:        Java library for working with HTML
 License:        MIT
@@ -28,7 +28,7 @@ Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-build.xml
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  java-devel >= 1.7
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  jsr-305
 BuildArch:      noarch

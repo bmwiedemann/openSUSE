@@ -2,8 +2,10 @@
 	<service name="tar_scm" mode="disabled">
 		<param name="scm">git</param>
 		<param name="url">https://github.com/jhy/jsoup.git</param>
-		<param name="version">1.14.2</param>
-		<param name="revision">jsoup-1.14.2</param>
+		<param name="revision">jsoup-1.15.3</param>
+		<param name="match-tag">jsoup-*</param>
+		<param name="versionformat">@PARENT_TAG@</param>
+		<param name="versionrewrite-pattern">jsoup-(.*)</param>
 		<param name="exclude">src/test/resources</param>
 	</service>
 	<service name="recompress" mode="disabled">

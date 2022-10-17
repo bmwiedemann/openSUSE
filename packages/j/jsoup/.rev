@@ -15,4 +15,12 @@
     <comment>bsc#1189749, CVE-2021-37714</comment>
     <requestid>914521</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>89809dc6cd7810bc4deaf99bf707090f</srcmd5>
+    <version>1.15.3</version>
+    <time>1666011501</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1203459, CVE-2022-36033</comment>
+    <requestid>1012018</requestid>
+  </revision>
 </revisionlist>
