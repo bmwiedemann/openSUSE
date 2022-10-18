@@ -1,4 +1,114 @@
 -------------------------------------------------------------------
+Mon Oct 17 14:57:15 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.10.0:
+  * Fix string match e2e test on vault issuer caBundle
+  * Use lowercase "specified" in vault e2e test case
+  * Addressing review comments Co-authored-by: Cody W Eilar <ecody@vmware.com>
+  * Generate Certificate Request with predictable name Co-authored-by: Cody W Eilar <ecody@vmware.com>
+  * update devel/README.md to recommend make instead
+  * Updates base images
+  * Adds a script to quickly generate latest SHAs
+  * Updates SHAs for kubebuilder-tools
+  * log more information on why the get CertificateRequest request failed
+  * Improving unit test coverage of pkg/issuer/acme/setup.go
+  * Update Chart kubeVersion to >=1.20.0-0
+  * Deploy contour from HELM chart instead of plain yaml
+  * refactor RemoveCertificate to use DeletePartialMatch
+  * fix incorrect func signature in certificate metrics controller
+  * fix formatting
+  * add issuer_{group|name|kind} labels to prom metrics
+  * Fixing the documentation typo
+  * Bump Go to 1.19
+  * upgrade dependencies
+  * Bump k8s.io dependencies
+  * add comment
+  * add kind 1.25
+  * Ensure forward-compatibility with k8s.io/apiserver's Storage interface
+  * helm: Add NetworkPolicy support
+  * improve Helm values.yaml comment
+  * chore: remove duplicate word in comments
+  * bugfix: use new tools.mk structure for rclone
+  * update container names in ytt overlays
+  * fix broken test
+  * to help troubleshooting make the helm chart container names unique
+  * Fix incorrect uses of loop variable
+  * Add annotations for ServiceMonitor in helm chart
+  * improve tools.mk docs
+  * set errexit, trap kind-logs
+  * use variables for binaries
+  * generate build targets dynamically
+  * move e2e-ci to a script
+  * Updates CertificateSigningRequest SelfSigned e2e tests to require needing the CertificateSigningRequest Feature Gate to be enabled.
+  * Add: support common labels for all resources
+  * Add topologySpreadConstraints to helm chart (fix #5149)
+  * fixup! Add option to load Vault CA bundle from Kubernetes Secret
+  * partial undo of replace-all for contour-gateway.yaml
+  * fixup! Add option to load Vault CA bundle from Kubernetes Secret
+  * Add option to load Vault CA bundle from Kubernetes Secret
+  * Document that pod template spec should be used instead of flags
+  * use GenerateName instead
+  * Update ginkgo import path to use /v2
+  * Adds e2e tests for the new SelfSigned CertificateSigningRequest Secret informer
+  * Updates selfsigned CertificateSigningRequest controller with new Secret informer, and no longer mark the request as Failed when the private key Secret is malformed. This behaviour matches the CertificateRequest self signed controller.
+  * Adds secret handler function for selfsigned CertificateSigningRequest controller, which re-syncs requests which reference the Secret via the `experimental.cert-manager.io/private-key-secret-name` annotation.
+  * Updates ACME CertificateSigningRequest for new informer registration format
+  * Update CertificateSigningRequest controller to accept a list of RegisterExtraInformerFn, which control the extra informers.
+  * Adds e2e tests for CertificateRequest self signing controller; focussing on requests being re-synced when the target Secret is up
+  * Adds extra informer for the CertificateRequest SelfSigned controller, so that CertificateRequets will be re-synced on informed Secrets which are referenced with "cert-manager.io/private-key-secret-name"
+  * add random suffix to webhooks in CA Injector e2e tests
+  * upgrade gateway api to v0.5.0
+  * Fix comment
+  * docs: Change values.yaml wording to reference correct resource
+  * Fix test flake
+  * bugfix: fix issue where CertificateRequests marked InvalidRequest were not properly marked as Failed
+  * Add test to check InvalidRequest handling for certificates
+  * Add integration test for regenerating private key for each CR upon failure
+  * integration framework: add StartInformersAndControllers
+  * rename policyEvaluator->BuildReadyConditionFromChain
+  * add pruning logic for gotestsum junit xml output
+  * only print Helm install output on error
+  * bugfix ginkgo: make tests deterministic, don't use maps to define testCases
+  * upgrade ginkgo to v2
+  * apply go fmt for go1.19
+  * simplify static manifest generation
+  * replace 'github.com/onsi/ginkgo' with 'github.com/onsi/ginkgo/v2'
+  * add trivy scan targets
+  * replace go-restful version with patched version
+  * update containerd dependency to fix CVE
+  * remove replacement for /x/net and update /x/net + /x/sys
+  * add go.mod and go.sum as sources
+  * add inteon to ONWERS
+  * Update year to 2022
+  * remove straggling BUILD.bazel file
+  * Add code comment which states that it is valid to use neither an AccessKeyID or AccessKeySecretRef
+  * In PR https://github.com/cert-manager/cert-manager/pull/5194, we introduced a validation whereby an issuer would be rejected if it did not contain AccessKeyID or SecretAccessKeyID when using the route53 DNS solver. This is incorrect, since neither should need to be defined when using AWS ambient credentials.
+  * remove issue error if role is specified
+  * Remove bazel 🎉
+  * TestManyPasswordLengths: pre-create password test cases outside of concurrent tests
+  * Update the approval e2e tests so that transient client request errors are retried, and correctly check the error returned is expected when appropriate.
+  * Add suggestion from code review
+  * When a CertificateSigningRequest using the SelfSigned issuer references a Secret which does not exist, return error, rather than marking the request as failed.
+  * add shrinking core to roadmap
+  * Adds on conflict retries to certificate state change in the SecretTemplate e2e test setups
+  * Adds on conflict retries to certificate state change in the additionaloutputformat e2e test setups
+  * add some docs on changing or adding make targets
+  * use order-only prerequisites where possible for tools
+  * update base images using ./hack/latest-base-images.sh
+  * added healthcheck to containers port spec
+  * Updates Roadmap
+  * add missing target for $(BINDIR)
+  * Retry update on conflicts during SecretTemplate tests to avoid test flakes
+  * make: cmctl and kubectl-cert_manager were using two -ldflags
+  * Kubernetes 1.20+
+  * refer to Default Security Contexts
+  * Update helm README file
+  * strengthen securityContexts
+  * update kyverno version and policy
+  * Avoid hard-coding release namespace in helm chart
+  * Use multiple --dynamic-serving-dns-names arguments
+
+-------------------------------------------------------------------
 Wed Jul 27 06:38:05 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 1.9.1:
