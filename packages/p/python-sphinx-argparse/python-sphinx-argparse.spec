@@ -16,18 +16,14 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-sphinx-argparse
-Version:        0.3.1
+Version:        0.3.2
 Release:        0
 Summary:        Sphinx extension to document argparse commands and options
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/ashb/sphinx-argparse
 Source0:        https://files.pythonhosted.org/packages/source/s/sphinx-argparse/sphinx-argparse-%{version}.tar.gz
-# https://github.com/ashb/sphinx-argparse/commit/fdb7e448b2776986415cb724d9bb3eed424e23b2
-Patch0:         python-sphinx-argparse-python310.patch
 BuildRequires:  %{python_module CommonMark}
 BuildRequires:  %{python_module Sphinx >= 1.2.0}
 BuildRequires:  %{python_module pytest}
@@ -48,6 +44,8 @@ Sphinx extension that automatically documents argparse commands and options.
 
 %install
 %python_install
+# Remove test files, they are in a seperate 'test' module.
+%python_expand rm -r %{buildroot}%{$python_sitelib}/test
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

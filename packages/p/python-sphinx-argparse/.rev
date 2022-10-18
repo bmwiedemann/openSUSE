@@ -39,4 +39,15 @@
 </comment>
     <requestid>955732</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>efd0106726ca793cce6d17ffc4aa9f81</srcmd5>
+    <version>0.3.2</version>
+    <time>1666089940</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.2:
+  * Modernize project: Py3.6+, black, flynt, flake8, Github Actions
+  * Fix tests for python-3.10 and add 3.10 to CI matrix
+- Remove patch python-sphinx-argparse-python310.patch, included upstream.</comment>
+    <requestid>1029662</requestid>
+  </revision>
 </revisionlist>
