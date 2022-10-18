@@ -37,7 +37,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-WebOb
 Requires:       python-requests
-Requires:       python-six
 Requires:       python-urllib3
 Conflicts:      python-WSGIProxy
 BuildArch:      noarch
@@ -46,7 +45,6 @@ BuildRequires:  %{python_module WebOb}
 BuildRequires:  %{python_module WebTest}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module urllib3}
 %endif
 %python_subpackages
