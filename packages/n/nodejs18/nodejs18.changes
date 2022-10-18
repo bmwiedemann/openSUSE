@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Oct 17 13:02:52 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- Update to NodeJS 18.11.0:
+  * added experimental watch mode -- running in 'watch' mode using
+    node --watch restarts the process when an imported file is changed
+  * fs: add FileHandle.prototype.readLines
+  * http: add writeEarlyHints function to ServerResponse
+  * http2: make early hints generic
+  * lib: refactor transferable AbortSignal
+  * src: add detailed embedder process initialization API
+  * util: add default value option to parsearg
+
+- legacy_python.patch, versioned.patch: updated
+
+-------------------------------------------------------------------
 Wed Oct 12 08:14:29 UTC 2022 - Adam Majer <adam.majer@suse.de>
 
 - qemu_timeouts_arches.patch: set timeouts on riscv5 to 7x normal

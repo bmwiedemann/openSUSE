@@ -1,7 +1,7 @@
-Index: node-v16.5.0/tools/utils.py
+Index: node-v18.11.0/tools/utils.py
 ===================================================================
---- node-v16.5.0.orig/tools/utils.py
-+++ node-v16.5.0/tools/utils.py
+--- node-v18.11.0.orig/tools/utils.py
++++ node-v18.11.0/tools/utils.py
 @@ -26,10 +26,10 @@
  # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  
@@ -23,4 +23,4 @@ Index: node-v16.5.0/tools/utils.py
 +  list = [ str(x) for x in list ]
    if sys.platform == 'win32':
      list = [ x.replace('\\', '/')for x in list]
-   return list
+   return sorted(list)
