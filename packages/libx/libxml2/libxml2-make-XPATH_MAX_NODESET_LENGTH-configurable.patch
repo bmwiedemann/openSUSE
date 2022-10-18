@@ -2,9 +2,11 @@
  xpath.c |   40 +++++++++++++++++++++++++++++-----------
  1 file changed, 29 insertions(+), 11 deletions(-)
 
---- a/xpath.c
-+++ b/xpath.c
-@@ -126,14 +126,32 @@
+Index: libxml2-2.10.3/xpath.c
+===================================================================
+--- libxml2-2.10.3.orig/xpath.c
++++ libxml2-2.10.3/xpath.c
+@@ -113,14 +113,32 @@
  #define XPATH_MAX_STACK_DEPTH 1000000
  
  /*
@@ -42,7 +44,7 @@
  
  /*
   * XPATH_MAX_RECRUSION_DEPTH:
-@@ -3683,7 +3701,7 @@ xmlXPathNodeSetAddNs(xmlNodeSetPtr cur,
+@@ -3689,7 +3707,7 @@ xmlXPathNodeSetAddNs(xmlNodeSetPtr cur,
      } else if (cur->nodeNr == cur->nodeMax) {
          xmlNodePtr *temp;
  
@@ -51,7 +53,7 @@
              xmlXPathErrMemory(NULL, "growing nodeset hit limit\n");
              return(-1);
          }
-@@ -3739,7 +3757,7 @@ xmlXPathNodeSetAdd(xmlNodeSetPtr cur, xm
+@@ -3745,7 +3763,7 @@ xmlXPathNodeSetAdd(xmlNodeSetPtr cur, xm
      } else if (cur->nodeNr == cur->nodeMax) {
          xmlNodePtr *temp;
  
@@ -60,7 +62,7 @@
              xmlXPathErrMemory(NULL, "growing nodeset hit limit\n");
              return(-1);
          }
-@@ -3794,7 +3812,7 @@ xmlXPathNodeSetAddUnique(xmlNodeSetPtr c
+@@ -3800,7 +3818,7 @@ xmlXPathNodeSetAddUnique(xmlNodeSetPtr c
      } else if (cur->nodeNr == cur->nodeMax) {
          xmlNodePtr *temp;
  
@@ -69,7 +71,7 @@
              xmlXPathErrMemory(NULL, "growing nodeset hit limit\n");
              return(-1);
          }
-@@ -3911,7 +3929,7 @@ xmlXPathNodeSetMerge(xmlNodeSetPtr val1,
+@@ -3917,7 +3935,7 @@ xmlXPathNodeSetMerge(xmlNodeSetPtr val1,
  	} else if (val1->nodeNr == val1->nodeMax) {
  	    xmlNodePtr *temp;
  
@@ -78,7 +80,7 @@
                  xmlXPathErrMemory(NULL, "merging nodeset hit limit\n");
                  return(NULL);
              }
-@@ -3997,7 +4015,7 @@ xmlXPathNodeSetMergeAndClear(xmlNodeSetP
+@@ -4003,7 +4021,7 @@ xmlXPathNodeSetMergeAndClear(xmlNodeSetP
  	    } else if (set1->nodeNr >= set1->nodeMax) {
  		xmlNodePtr *temp;
  
@@ -87,7 +89,7 @@
                      xmlXPathErrMemory(NULL, "merging nodeset hit limit\n");
                      return(NULL);
                  }
-@@ -4051,7 +4069,7 @@ xmlXPathNodeSetMergeAndClearNoDupls(xmlN
+@@ -4057,7 +4075,7 @@ xmlXPathNodeSetMergeAndClearNoDupls(xmlN
  	    } else if (set1->nodeNr >= set1->nodeMax) {
  		xmlNodePtr *temp;
  

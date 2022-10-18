@@ -982,4 +982,19 @@
     <comment></comment>
     <requestid>1003583</requestid>
   </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>e4be47f1768e1838aaeef99872a2b902</srcmd5>
+    <version>2.10.3</version>
+    <time>1666089878</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.10.3 (bsc#1204366, CVE-2022-40303, bsc#1204367, CVE-2022-40304):
+  + Security:
+    - [CVE-2022-40304] Fix dict corruption caused by entity
+      reference cycles
+    - [CVE-2022-40303] Fix integer overflows with XML_PARSE_HUGE
+    - Fix overflow check in SAX2.c
+  + Build system: cmake: Set SOVERSION
+- Rebase patches with quilt.</comment>
+    <requestid>1014116</requestid>
+  </revision>
 </revisionlist>

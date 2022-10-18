@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct 14 15:04:09 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.10.3 (bsc#1204366, CVE-2022-40303, bsc#1204367, CVE-2022-40304):
+  + Security:
+    - [CVE-2022-40304] Fix dict corruption caused by entity
+      reference cycles
+    - [CVE-2022-40303] Fix integer overflows with XML_PARSE_HUGE
+    - Fix overflow check in SAX2.c
+  + Build system: cmake: Set SOVERSION
+- Rebase patches with quilt.
+
+-------------------------------------------------------------------
 Thu Sep  1 15:13:08 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
 
 - Build for now with --with-legacy to enable APIs that have been
