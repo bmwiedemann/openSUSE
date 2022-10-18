@@ -1,4 +1,356 @@
 -------------------------------------------------------------------
+Thu Oct 13 16:02:52 UTC 2022 - opensuse-packaging@opensuse.org
+
+- Changes for 25.1.1:
+  * dialyzer: Dialyzer could crash when analyzing Elixir code that
+    used intricate macros.
+  * dialyzer: The --input_list_file option has been added.
+  * ssl: Fixes handling of symlinks in cacertfile option.
+  * eunit: With this change, eunit exact_execution option works
+    with application primitive.
+  * stdlib: peer nodes failed to halt when the process supervising
+    the control connection crashed. When an alternative control
+    connection was used, this supervision process also quite
+    frequently crashed when the peer node was stopped by the node
+    that started it which caused the peer node to linger without
+    ever halting.
+  * asn1: For the per and uper ASN.1 encoding rules, encoding and
+    decoding the SEQUENCE OF and SET OF constructs with 16384 items
+    or more is now supported.
+  * erts: Listen sockets created with the socket module, leaked
+    (erlang-) monitors.
+  * erts: Notifications about available distribution data sent to
+    distribution controller processes could be lost. Distribution
+    controller processes can be used when implementing an
+    alternative distribution carrier. The default distribution over
+    tcp was not effected and the bug was also not present on
+    x86/x86_64 platforms.
+  * kernel: Listen sockets created with the socket module, leaked
+    (erlang-) monitors.
+  * kernel: peer nodes failed to halt when the process supervising
+    the control connection crashed. When an alternative control
+    connection was used, this supervision process also quite
+    frequently crashed when the peer node was stopped by the node
+    that started it which caused the peer node to linger without
+    ever halting.
+- Changes for 25.1:
+  * dialyzer: Two bugs have been fixed in Dialyzer's checking of
+    behaviors: When a mandatory callback function is present but
+    not exported, Dialyzer would not complain about a missing
+    callback. When an optional callback function was not exported
+    and had incompatible arguments and/or the return values were
+    incompatible, Dialyzer would complain. This has been changed to
+    suppress the warning, because the function might not be
+    intended to be a callback function, for instance if a release
+    added a new optional callback function (such as format_status/1
+    for the gen_server behaviour added in OTP 25).
+  * dialyzer: The no_extra_return and no_missing_return warnings
+    can now be suppressed through -dialyzer directives in source
+    code.
+  * jinterface: Fix javadoc build error by adding option -encoding
+    UTF-8.
+  * diameter: There is a new configure option, --enable-
+    deterministic-build, which will apply the deterministic
+    compiler option when building Erlang/OTP. The deterministic
+    option has been improved to eliminate more sources of non-
+    determinism in several applications.
+  * crypto: Fix configure with --with-ssl and --disable-dynamic-
+    ssl-lib on Windows.
+  * crypto: Remove all references correctly in the garbage
+    collection if an engine handle was not explicit unloaded.
+  * crypto: Changed the behaviour of the engine load/unload
+    functions The engine load/unload functions have got changed
+    semantics to get a more consistent behaviour and work correct
+    when variables are garbage collected. The load functions now
+    don't register the methods for the engine to replace. That will
+    now be handled with the new functions
+    engine_register/engine_unregister if needed. Some functions are
+    removed from the documentation and therefor the API, but they
+    are left in the code for compatibility. *** POTENTIAL
+    INCOMPATIBILITY ***
+  * crypto: Fixed a naming bug for AES-CFB and Blowfish-CFB/OFB
+    when linked with OpenSSL 3.0 cryptolib.
+  * crypto: Sign/verify does now behave as in OTP-24 and earlier
+    for eddsa.
+  * crypto: Pass elliptic curve names from crypto.erl to crypto's
+    nif.
+  * crypto: The configure option --disable-deprecated-warnings is
+    removed. It was used for some releases when the support for
+    OpenSSL 3.0 was not completed. It is not needed in OTP 25.
+  * crypto: Crypto is now considered to be usable with the OpenSSL
+    3.0 cryptolib for production code. ENGINE and FIPS are not yet
+    fully functional.
+  * crypto: Do not exit if the legacy provider is missing in
+    libcrypto 3.0.
+  * ssl: Reject unexpected application data in all relevant places
+    for all TLS versions. Also, handle TLS-1.3 middlebox
+    compatibility with more care. This will make malicious
+    connections fail early and further, mitigate possible DoS
+    attacks, that would be caught by the handshake timeout. Thanks
+    to Aina Toky Rasoamanana and Olivier Levillain from Télécom
+    SudParis for alerting us of the issues in our implementation.
+  * ssl: With this change, value of cacertfile option will be
+    adjusted before loading certs from the file. Adjustments
+    include converting relative paths to absolute and converting
+    symlinks to actual file path. Thanks to Marcus Johansson
+  * ssl: In TLS-1.3, if chain certs are missing (so server auth
+    domain adherence can not be determined) send peer cert and hope
+    the server is able to recreate a chain in its auth domain.
+  * ssl: Make sure periodical refresh of CA certificate files
+    repopulates cache properly.
+  * ssl: Correct internal CRL cache functions to use internal
+    format consistently.
+  * ssl: Incorrect handling of client middlebox negotiation for
+    TLS-1.3 could result in that a TLS-1.3 server would not use
+    middlebox mode although the client was expecting it too and
+    failing the negotiation with unexpected message.
+  * ssl: If the "User" process, the process starting the TLS
+    connection, gets killed in the middle of spawning the dynamic
+    connection tree make sure we do not leave any processes behind.
+  * ssl: A vulnerability has been discovered and corrected. It is
+    registered as CVE-2022-37026 "Client Authentication Bypass".
+    Corrections have been released on the supported tracks with
+    patches 23.3.4.15, 24.3.4.2, and 25.0.2. The vulnerability
+    might also exist in older OTP versions. We recommend that
+    impacted users upgrade to one of these versions or later on the
+    respective tracks. OTP 25.1 would be an even better choice.
+    Impacted are those who are running an ssl/tls/dtls server using
+    the ssl application either directly or indirectly via other
+    applications. For example via inets (httpd), cowboy, etc. Note
+    that the vulnerability only affects servers that request client
+    certification, that is sets the option {verify, verify_peer}.
+  * eunit: With this change, Eunit can optionally not try to
+    execute related module with "_tests" suffix. This might be used
+    for avoiding duplicated executions when source and test modules
+    are located in the same folder.
+  * erl_docgen: Update DTD to allow XML tag em under pre.
+  * inets: Add httpc:ssl_verify_host_options/1 to help setting
+    default ssl options for the https client.
+  * inets: This change fixes dialyzer warnings generated for
+    inets/httpd examples (includes needed adjustment of spec for
+    ssh_sftp module).
+  * inets: Remove documentation of no longer supported callback.
+  * stdlib: Fixed inconsistency bugs in global due to
+    nodeup/nodedown messages not being delivered before/after
+    traffic over connections. Also fixed various other
+    inconsistency bugs and deadlocks in both global_group and
+    global. As building blocks for these fixes, a new BIF
+    erlang:nodes/2 has been introduced and
+    net_kernel:monitor_nodes/2 has been extended. The -hidden and
+    -connect_all command line arguments did not work if multiple
+    instances were present on the command line which has been
+    fixed. The new kernel parameter connect_all has also been
+    introduced in order to replace the -connect_all command line
+    argument.
+  * stdlib: Fix the public_key:ssh* functions to be listed under
+    the correct release in the Removed Functionality User's Guide.
+  * stdlib: The type spec for format_status/1 in gen_statem,
+    gen_server and gen_event has been corrected to state that the
+    return value is of the same type as the argument (instead of
+    the same value as the argument).
+  * stdlib: If the timer server child spec was already present in
+    kernel_sup but it was not started, the timer server would fail
+    to start with an {error, already_present} error instead of
+    restarting the server.
+  * stdlib: When changing callback module in gen_statem the
+    state_enter calls flag from the old module was used in for the
+    first event in the new module, which could confuse the new
+    module and cause malfunction. This bug has been corrected. With
+    this change some sys debug message formats have been modified,
+    which can be a problem for debug code relying on the format.
+    *** POTENTIAL INCOMPATIBILITY ***
+  * stdlib: There is a new configure option, --enable-
+    deterministic-build, which will apply the deterministic
+    compiler option when building Erlang/OTP. The deterministic
+    option has been improved to eliminate more sources of non-
+    determinism in several applications.
+  * stdlib: The rfc339_to_system_time/1,2 functions now allows the
+    minutes part to be omitted from the time zone.
+  * stdlib: The receive statement in gen_event has been optimized
+    to not use selective receive (which was never needed, and could
+    cause severe performance degradation under heavy load).
+  * stdlib: Add new API function erl_features:configurable/0
+  * parsetools: There is a new configure option, --enable-
+    deterministic-build, which will apply the deterministic
+    compiler option when building Erlang/OTP. The deterministic
+    option has been improved to eliminate more sources of non-
+    determinism in several applications.
+  * public_key: Support more Linux distributions in cacerts_load/0.
+  * public_key: Correct asn1 typenames available in type
+    pki_asn1_type()
+  * public_key: Sign/verify does now behave as in OTP-24 and
+    earlier for eddsa.
+  * snmp: Improved the get-bulk response max size calculation. Its
+    now possible to configure 'empty pdu size', see appendix c for
+    more info.
+  * snmp: Fix various example dialyzer issues
+  * ssh: Handling rare race condition at channel close.
+  * ssh: New ssh option no_auth_needed to skip the ssh
+    authentication. Use with caution!
+  * ssh: This change fixes dialyzer warnings generated for
+    inets/httpd examples (includes needed adjustment of spec for
+    ssh_sftp module).
+  * ssh: The new function ssh:daemon_replace_options/2 makes it
+    possible to change the Options in a running SSH server.
+    Established connections are not affected, only those created
+    after the call to this new function.
+  * ssh: Add a timeout as option max_initial_idle_time. It closes a
+    connection that does not allocate a channel within the timeout
+    time. For more information about timeouts, see the Timeouts
+    section in the User's Guide Hardening chapter.
+  * observer: Fixed units in gui.
+  * xmerl: There is a new configure option, --enable-deterministic-
+    build, which will apply the deterministic compiler option when
+    building Erlang/OTP. The deterministic option has been improved
+    to eliminate more sources of non-determinism in several
+    applications.
+  * asn1: There is a new configure option, --enable-deterministic-
+    build, which will apply the deterministic compiler option when
+    building Erlang/OTP. The deterministic option has been improved
+    to eliminate more sources of non-determinism in several
+    applications.
+  * erts: Fixed inconsistency bugs in global due to nodeup/nodedown
+    messages not being delivered before/after traffic over
+    connections. Also fixed various other inconsistency bugs and
+    deadlocks in both global_group and global. As building blocks
+    for these fixes, a new BIF erlang:nodes/2 has been introduced
+    and net_kernel:monitor_nodes/2 has been extended. The -hidden
+    and -connect_all command line arguments did not work if
+    multiple instances were present on the command line which has
+    been fixed. The new kernel parameter connect_all has also been
+    introduced in order to replace the -connect_all command line
+    argument.
+  * erts: Fixed IPv6 multicast_if and membership socket options.
+  * erts: Accept funs (NEW_FUN_EXT) with incorrectly encoded size
+    field. This is a workaround for a bug (OTP-18104) existing in
+    OTP 23 and 24 that could cause incorrect size fields in certain
+    cases. The emulator does not use the decoded size field, but
+    erl_interface still does and is not helped by this workaround.
+  * erts: Fixed issue with inet:getifaddrs hanging on pure IPv6
+    Windows
+  * erts: Fix faulty distribution encoding of terms with either The
+    symptom could be failed decoding on the receiving side leading
+    to aborted connection. Fix OTP-18093 is a workaround for theses
+    bugs that makes the VM accepts such faulty encoded funs. The
+    first encoding bug toward pending connection exists only in OTP
+    23 and 24, but the second one exists also on OTP 25.
+  * erts: Fixed emulator crash that could happen during crashdump
+    generation of ETS tables with options ordered_set and
+    {write_concurrency,true}.
+  * erts: Retrieval of monotonic and system clock resolution on
+    MacOS could cause a crash and/or erroneous results.
+  * erts: Fix bug where the max allowed size of erl +hmax was lower
+    than what was allowed by process_flag.
+  * erts: On computers with ARM64 (AArch64) processors, the JIT
+    could generate incorrect code when more than 4095 bits were
+    skipped at the tail end of a binary match.
+  * erts: In rare circumstances, an is_binary/1 guard test could
+    succeed when given a large integer.
+  * erts: Fix bug causing ets:info (and sometimes ets:whereis) to
+    return 'undefined' for an existing table if a concurrent
+    process were doing ets:insert with a long list on the same
+    table.
+  * erts: Fix writing and reading of more than 2 GB in a single
+    read/write operation on macOS. Before this fix attempting to
+    read/write more than 2GB would result in {error,einval}.
+  * erts: Fix bug sometimes causing emulator crash at node shutdown
+    when there are pending connections. Only seen when running duel
+    distribution protocols, inet_drv and inet_tls_dist.
+  * erts: Yield when adjusting large process message queues due to
+    The message queue adjustment work will now be interleaved with
+    all other types of work that processes have to do, even other
+    message queue adjustment work.
+  * erts: Add rudimentary debug feature (option) for the inet-
+    driver based sockets, such as gen_tcp and gen_udp.
+  * erts: Introduced the hidden and dist_listen options to
+    net_kernel:start/2. Also documented the -dist_listen command
+    line argument which was erroneously documented as a kernel
+    parameter and not as a command line argument.
+  * erts: New documentation chapter "Debugging NIFs and Port
+    Drivers" under Interoperability Tutorial.
+  * erts: Add new API function erl_features:configurable/0
+  * kernel: Fixed inconsistency bugs in global due to
+    nodeup/nodedown messages not being delivered before/after
+    traffic over connections. Also fixed various other
+    inconsistency bugs and deadlocks in both global_group and
+    global. As building blocks for these fixes, a new BIF
+    erlang:nodes/2 has been introduced and
+    net_kernel:monitor_nodes/2 has been extended. The -hidden and
+    -connect_all command line arguments did not work if multiple
+    instances were present on the command line which has been
+    fixed. The new kernel parameter connect_all has also been
+    introduced in order to replace the -connect_all command line
+    argument.
+  * kernel: Fixed IPv6 multicast_if and membership socket options.
+  * kernel: Fixed issue with inet:getifaddrs hanging on pure IPv6
+    Windows
+  * kernel: The type specifications for inet:getopts/2 and
+    inet:setopts/2 have been corrected regarding SCTP options.
+  * kernel: The type specifications for inet:parse_* have been
+    tightened.
+  * kernel: Fix gen_tcp:connect/3 spec to include the inet_backend
+    option.
+  * kernel: Fix bug where using a binary as the format when calling
+    logger:log(Level, Format, Args) (or any other logging function)
+    would cause a crash or incorrect logging.
+  * kernel: Add rudimentary debug feature (option) for the inet-
+    driver based sockets, such as gen_tcp and gen_udp.
+  * kernel: Introduced the hidden and dist_listen options to
+    net_kernel:start/2. Also documented the -dist_listen command
+    line argument which was erroneously documented as a kernel
+    parameter and not as a command line argument.
+  * kernel: Scope and group monitoring have been introduced in pg.
+    For more information see the documentation of
+    pg:monitor_scope(), pg:monitor(), and pg:demonitor().
+  * kernel: A new function global:disconnect/0 has been introduced
+    with which one can cleanly disconnect a node from all other
+    nodes in a cluster of global nodes.
+  * compiler: The compiler will now forbid using the empty atom ''
+    as module name. Also forbidden are modules names containing
+    control characters, and module names containing only spaces and
+    soft hyphens.
+  * compiler: The bin_opt_info and recv_opt_info options would
+    cause the compiler to crash when attempting to compile
+    generated code without location information.
+  * compiler: In rare circumstances involving floating point
+    operations, the compiler could terminate with an internal
+    consistency check failure.
+  * compiler: In rare circumstances when doing arithmetic
+    instructions on non-numbers, the compiler could crash.
+  * compiler: In rare circumstances, complex boolean expressions in
+    nested cases could cause the compiler to crash.
+  * compiler: Expression similar to #{assoc:=V} = #key=>self()}, V
+    would return the empty map instead of raising an exception.
+  * compiler: Eliminated a crash in the beam_ssa_bool pass of the
+    compiler when compiling a complex guard expression.
+  * compiler: In rare circumstances, the compiler could crash with
+    an internal consistency check failure.
+  * compiler: When compiling with the option inline_list_funcs, the
+    compiler could produce a nonsensical warning.
+  * compiler: When given the no_ssa_opt option, the compiler could
+    terminate with an internal consistency failure diagnostic when
+    compiling map matching.
+  * compiler: Made warnings for existing atoms being keywords in
+    experimental features more precise, by not warning about quoted
+    atoms.
+  * compiler: There is a new configure option, --enable-
+    deterministic-build, which will apply the deterministic
+    compiler option when building Erlang/OTP. The deterministic
+    option has been improved to eliminate more sources of non-
+    determinism in several applications.
+  * megaco: Fixed various dialyzer related issues in the examples
+    and the application proper.
+  * megaco: There is a new configure option, --enable-
+    deterministic-build, which will apply the deterministic
+    compiler option when building Erlang/OTP. The deterministic
+    option has been improved to eliminate more sources of non-
+    determinism in several applications.
+  * common_test: Fix cth_surefire to handle when a suite is not
+    compiled with debug_info. This bug has been present since
+    Erlang/OTP 25.0.
+  * common_test: Common Test now preserves stack traces for throws.
+
+-------------------------------------------------------------------
 Sat Aug 27 07:16:06 UTC 2022 - matwey.kornilov@gmail.com
 
 - Changes for 25.0.4:
