@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 10 18:35:18 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 1.6:
+  * Allow to select “running” sinks
+  * Fix `--get-volume` and `--get-volume-human` return non-zero
+- Drop fix-makefile-installation.patch
+
+-------------------------------------------------------------------
 Sat Nov  6 10:48:44 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 1.5:
