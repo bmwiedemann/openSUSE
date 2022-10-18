@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Oct 14 17:30:48 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 4.3.0:
+  * Fix handling of Unicode powers for units in denominator, with
+    adaptive parsing enabled (e.g. parse 10m/s² the same as 10m/s^2)
+  * Fix "+" ignored after "E" in number bases where "E" is a digit
+  * Fix scientific E notation with sign in argument when function
+    is used without parentheses
+  * Fix lambertw() for values very close to zero
+  * Fix a × b^x + cx = d when a and c have different signs and d
+    is non-zero
+  * Fix a^x × b^x = c when a and b is negative, and c is positive
+  * Fix segfaults in some corner cases
+  * Fix potential issues in handling of leap seconds (e.g. during
+    subtraction of seconds from date)
+  * var=a syntax for variable assignment with calculated expression
+  * Replace ounce with fluid ounce during conversion to volume unit
+  * Solve a^x + b^x + … = c in more cases
+  * Improve remainder/modulus for numerators with large exponents
+  * Truncate number in output of parsed expression and end with
+    ellipsis if unable to display all decimals
+  * Improved floating point calculation and output speed,
+    particularly for simple expressions with very high precision
+  * New functions: clip(), qFormat(), qError()
+  * "clear history" command and option to clear (not save) history
+    on exit (CLI)
+  * Replace selection (instead of wrap in parentheses) on operator
+    input if selection ends with operator (GTK, Qt)
+  * Act as if two arguments are required when applying base-N
+    logarithm to expression (GTK, Qt)
+  * When applying function to expression, exclude to/where
+    expression and place cursor before closing parenthesis if
+    operator is last in selection (GTK)
+  * Show padlock (or "[P]") after protected expression (Qt)
+  * Fix name field not working in argument edit dialog (Qt)
+  * Minor bug fixes and feature enhancements
+
+-------------------------------------------------------------------
 Mon May 30 07:37:08 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 4.2.0:

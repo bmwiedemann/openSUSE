@@ -1,7 +1,7 @@
 #
 # spec file for package qalculate
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define major   22
 %define libname libqalculate
 Name:           qalculate
-Version:        4.2.0
+Version:        4.3.0
 Release:        0
 Summary:        Multi-purpose desktop calculator application
 License:        GPL-2.0-or-later
