@@ -21,12 +21,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-invoke
-Version:        1.7.1
+Version:        1.7.3
 Release:        0
 Summary:        Pythonic Task Execution
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
-URL:            http://www.pyinvoke.org
+URL:            https://www.pyinvoke.org
 Source:         https://files.pythonhosted.org/packages/source/i/invoke/invoke-%{version}.tar.gz
 Patch0:         0001-Make-test-fallback-to-system-modules-when-vendorized.patch
 Patch1:         pytest4.patch

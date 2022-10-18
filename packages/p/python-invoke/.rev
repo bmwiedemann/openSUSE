@@ -130,4 +130,19 @@
      for followup and workshopping.</comment>
     <requestid>1005761</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ad6104f2dce9e429c90d683ef84ebd91</srcmd5>
+    <version>1.7.3</version>
+    <time>1666089853</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7.3:
+  * Fix a non-fatal bug in our setup.py long_description generation causing
+    1.7.0-1.7.2 to have malformed description text on PyPI. 
+  * Fix errors thrown when comparing Task objects to non-Task objects; such
+    comparisons are now always false.
+  * Refactor CLI parser instantiation such that the tasks.ignore_unknown_help
+    feature (added in 1.7) works when Invoke is run in --complete mode, i.e. in
+    tab-completion scripts.</comment>
+    <requestid>1011262</requestid>
+  </revision>
 </revisionlist>
