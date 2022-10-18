@@ -113,7 +113,9 @@
                 <volume name="var" copy_on_write="false"/>
             </systemdisk>
             <size unit="G">24</size>
-            <machine memory="1024" HWversion="10" guestOS="sles-64"/>
+            <machine memory="1024" HWversion="10" guestOS="sles-64">
+                <vmdisk id="0" controller="lsilogic"/>
+            </machine>
         </type>
     </preferences>
 
@@ -298,16 +300,18 @@
         <package name="snapper-zypp-plugin"/>   <!-- this is key snapper/zypp integration, as requested in the PRD -->
         <package name="snapper"/>
 
-        <!-- Only if not cloud-init -->
         <!-- Require 1.2.0.0 for proper NM support.
              Not sure whether this syntax is intentionally supported but it appears to work. -->
         <package name="jeos-firstboot &gt;= 1.2.0.0"/>
         <package name="fbiterm"/> <!-- Optionally used by jeos-firstboot for non-latin fonts -->
-        <!-- NM everywhere except that cloud-init needs wicked -->
-        <package name="NetworkManager"/>
 
         <!-- Not useful with OpenStack --> 
         <package name="firewalld"/>
+    </packages>
+
+    <packages type="image" profiles="kvm-and-xen,MS-HyperV,RaspberryPi">
+        <!-- NM everywhere except that cloud-init needs wicked -->
+        <package name="NetworkManager"/>
     </packages>
 
     <packages type="image" profiles="kvm-and-xen,VMware,MS-HyperV,OpenStack-Cloud">
@@ -324,6 +328,8 @@
         <package name="qemu-guest-agent"/>
     </packages>
     <packages type="image" profiles="VMware">
+        <package name="cloud-init"/>
+        <package name="cloud-init-config-suse"/>
         <package name="open-vm-tools" arch="x86_64"/>
         <package name="kernel-default-base"/>
     </packages>

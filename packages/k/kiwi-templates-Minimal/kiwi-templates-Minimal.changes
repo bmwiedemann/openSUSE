@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 25 13:59:00 UTC 2022 - Guilherme Moro <gmoro@suse.com>
+
+- Add cloud-init to VMware image (jsc#SLE-7254)
+- Change VMware to use lsilogic SCSI controller
+- Disable firewalld on VMware image
+- Do not enable jeos-firstboot on OpenStack-Cloud
+
+-------------------------------------------------------------------
 Thu Apr 14 12:32:44 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Switch to NetworkManager except for OpenStack-Cloud

@@ -69,17 +69,19 @@ if [ -e /etc/cloud/cloud.cfg ]; then
         systemctl enable cloud-init
         systemctl enable cloud-config
         systemctl enable cloud-final
-else
-        # Enable jeos-firstboot
-        mkdir -p /var/lib/YaST2
-        touch /var/lib/YaST2/reconfig_system
+fi
 
-        systemctl mask systemd-firstboot.service
-        systemctl enable jeos-firstboot.service
+if [ "$kiwi_profiles" != "OpenStack-Cloud" ]; then
+    # Enable jeos-firstboot
+    mkdir -p /var/lib/YaST2
+    touch /var/lib/YaST2/reconfig_system
+
+    systemctl mask systemd-firstboot.service
+    systemctl enable jeos-firstboot.service
 fi
 
 # Enable firewalld if installed
-if [ -x /usr/sbin/firewalld ]; then
+if [ -x /usr/sbin/firewalld ]  && [ "$kiwi_profiles" != "VMware" ]; then
         systemctl enable firewalld.service
 fi
 
