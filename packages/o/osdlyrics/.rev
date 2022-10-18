@@ -73,4 +73,12 @@
   * fix content-reproducibility (forwarded request 1003852 from hillwood)</comment>
     <requestid>1003855</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>6367ee81daaea4e61a07f39effaeede6</srcmd5>
+    <version>0.5.12</version>
+    <time>1666089939</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1029653</requestid>
+  </revision>
 </revisionlist>

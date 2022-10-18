@@ -42,7 +42,7 @@ BuildRequires:  pkgconfig(gtk+-2.0)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libglade-2.0)
 BuildRequires:  pkgconfig(libnotify)
-BuildRequires:  pkgconfig(python)
+BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(sqlite3)
 Requires:       gtk2
 Requires:       python3-chardet
