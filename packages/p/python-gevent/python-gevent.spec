@@ -1,7 +1,7 @@
 #
 # spec file for package python-gevent
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,17 +24,16 @@
 %endif
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define modversion 21.12.0
 %define modname gevent
 Name:           python-gevent
-Version:        21.12.0
+Version:        22.10.1
 Release:        0
 Summary:        Python network library that uses greenlet and libevent
 License:        MIT
 Group:          Development/Languages/Python
 URL:            http://www.gevent.org/
 # Source:         https://files.pythonhosted.org/packages/source/g/gevent/gevent-%%{version}.tar.gz
-Source0:        https://github.com/gevent/%{modname}/archive/%{modversion}.tar.gz#/%{modname}-%{modversion}.tar.gz
+Source0:        https://github.com/gevent/%{modname}/archive/%{version}.tar.gz#/%{modname}-%{version}.tar.gz
 Source100:      %{name}-rpmlintrc
 # gcc7 for 15.1 produces no-return-in-nonvoid-function, but the same compiler for 15.2 not
 # usually, as long as no return value is used, this shouldn't be treated as an error
@@ -103,7 +102,7 @@ BuildArch:      noarch
 Documentation and examples for %{name}.
 
 %prep
-%setup -q -n gevent-%{modversion}
+%setup -q -n gevent-%{version}
 %if 0%{?sle_version} <= 150100 && 0%{?is_opensuse}
 %patch0 -p1
 %endif
@@ -171,7 +170,7 @@ fi
 %files %{python_files}
 %doc AUTHORS README.rst TODO CHANGES.rst CONTRIBUTING.rst
 %license LICENSE*
-%{python_sitearch}/gevent-%{modversion}-py*.egg-info
+%{python_sitearch}/gevent-%{version}-py*.egg-info
 %{python_sitearch}/gevent/
 
 %files -n python-gevent-doc

@@ -575,4 +575,33 @@
     <comment></comment>
     <requestid>940551</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>85bde6fdec24d4f63949feca8c0357f3</srcmd5>
+    <version>22.10.1</version>
+    <time>1666089852</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 22.10.0:
+  * Update bundled libuv to 1.44.2.
+    See :issue:`1913`.
+  * Upgrade embedded c-ares to 1.18.1.
+  * Upgrade bundled libuv to 1.42.0 from 1.40.0.
+  * Added preliminary support for Python 3.11 (rc2 and later).
+    Some platforms may or may not have binary wheels at this time.
+    .. important:: Support for legacy versions of Python, including 2.7
+                   and 3.6, will be ending soon. The
+                   maintenance burden has become too great and the
+                   maintainer's time is too limited.
+  
+                   Ideally, there will be a release of gevent compatible
+                   with a final release of greenlet 2.0 that still
+                   supports those legacy versions, but that may not be
+                   possible; this may be the final release to support them.
+    :class:`gevent.threadpool.ThreadPool` can now optionally expire idle
+    threads. This is used by default in the implicit thread pool used for
+    DNS requests and other user-submitted tasks; other uses of a
+    thread-pool need to opt-in to this.
+    See :issue:`1867`.
+  * Truly disable the effects of compiling with ``-ffast-math``.</comment>
+    <requestid>1011260</requestid>
+  </revision>
 </revisionlist>
