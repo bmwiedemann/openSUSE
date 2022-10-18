@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 17 10:23:24 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.12.3
+  * **deps:** Allow protobuf 3.19.5 (#350)
+- from version 2.12.2
+  * **deps:** Require protobuf >= 3.20.2 (#347)
+
+-------------------------------------------------------------------
 Wed Sep 28 21:36:10 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - 2.12.1 (2022-08-11)
