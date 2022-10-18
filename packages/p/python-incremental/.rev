@@ -50,4 +50,13 @@
     <comment></comment>
     <requestid>942715</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e0a0fa7194af2abc4fe2b5c90ecba14a</srcmd5>
+    <version>22.10.0</version>
+    <time>1666089855</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 22.10.0:
+  * Incremental now supports type-checking with Mypy (#69)</comment>
+    <requestid>1011264</requestid>
+  </revision>
 </revisionlist>
