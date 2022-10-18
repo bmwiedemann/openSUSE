@@ -35,4 +35,15 @@
 - Package nvptx-none-run and nvptx-none-run-single tools</comment>
     <requestid>1010459</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>9eaff8b7300b87d95f47005504031401</srcmd5>
+    <version>1.0</version>
+    <time>1666089881</time>
+    <user>dimstar_suse</user>
+    <comment>Fix Wolfang Engel complaints, rejecting the SLE update because of
+&quot;missing nvptx-tools.patch removal&quot; notes.
+
+- Remove nvptx-tools.patch as it is included in the above tarball update</comment>
+    <requestid>1029657</requestid>
+  </revision>
 </revisionlist>
