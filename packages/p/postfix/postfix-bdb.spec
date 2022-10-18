@@ -56,7 +56,7 @@
 %endif
 %bcond_without ldap
 Name:           postfix-bdb
-Version: 3.7.2
+Version: 3.7.3
 Release:        0
 Summary:        A fast, secure, and flexible mailer
 License:        IPL-1.0 OR EPL-2.0
@@ -274,6 +274,8 @@ mkdir -p %{buildroot}/%{pf_sample_directory}
 mkdir -p %{buildroot}/%{pf_html_directory}
 mkdir -p %{buildroot}%{_includedir}/postfix
 mkdir -p %{buildroot}%{_sysconfdir}/pam.d
+mkdir -p %{buildroot}/var/spool/mail
+ln -s spool/mail %{buildroot}/var/mail
 install -m 644 postfix-SUSE/smtp %{buildroot}%{_sysconfdir}/pam.d/smtp
 mkdir -p %{buildroot}%{_fillupdir}
 sed -e 's;@lib@;%{_lib};g' postfix-SUSE/sysconfig.postfix > %{buildroot}%{_fillupdir}/sysconfig.postfix
@@ -551,6 +553,8 @@ fi
 %if 0%{?suse_version} >= 1330
 %{_sysusersdir}/postfix-user.conf
 %endif
+%dir %attr(1777,root,root) /var/spool/mail
+/var/mail
 
 %if %{with lmdb}
 %files lmdb

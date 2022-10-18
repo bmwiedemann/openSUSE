@@ -2103,4 +2103,12 @@ successfully tested on Tumbleweed x86_64</comment>
     <comment>sync changes files (forwarded request 993128 from computersalat)</comment>
     <requestid>993129</requestid>
   </revision>
+  <revision rev="219" vrev="1">
+    <srcmd5>46452631196a7c0183b180925adc7ac8</srcmd5>
+    <version>3.7.3</version>
+    <time>1666089851</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1009796</requestid>
+  </revision>
 </revisionlist>

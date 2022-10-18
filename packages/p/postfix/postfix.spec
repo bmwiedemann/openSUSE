@@ -42,7 +42,7 @@
 %bcond_without libnsl
 %bcond_without ldap
 Name:           postfix
-Version:        3.7.2
+Version:        3.7.3
 Release:        0
 Summary:        A fast, secure, and flexible mailer
 License:        IPL-1.0 OR EPL-2.0
@@ -289,6 +289,8 @@ mkdir -p %{buildroot}/%{pf_sample_directory}
 mkdir -p %{buildroot}/%{pf_html_directory}
 mkdir -p %{buildroot}%{_includedir}/%{name}
 mkdir -p %{buildroot}%{_sysconfdir}/pam.d
+mkdir -p %{buildroot}/var/spool/mail
+ln -s spool/mail %{buildroot}/var/mail
 install -pm 0644 %{name}-SUSE/smtp %{buildroot}%{_sysconfdir}/pam.d/smtp
 mkdir -p %{buildroot}%{_fillupdir}
 sed -e 's;@lib@;%{_lib};g' %{name}-SUSE/sysconfig.%{name} > %{buildroot}%{_fillupdir}/sysconfig.%{name}
@@ -587,6 +589,8 @@ fi
 %dir %attr(0730,%{name},maildrop) /%{pf_queue_directory}/maildrop
 %dir %attr(0710,%{name},maildrop) /%{pf_queue_directory}/public
 %{_sysusersdir}/postfix-user.conf
+%dir %attr(1777,root,root) /var/spool/mail
+/var/mail
 
 %files devel
 %{_includedir}/%{name}/
