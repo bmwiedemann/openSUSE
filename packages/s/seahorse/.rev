@@ -886,4 +886,12 @@ A couple of patches for this are competing for upstream approval at bgo#659834 -
     <comment>GNOME 43.rc - let's get this into Staging to see what we break (e.g meson:test seems to be an issue already) (forwarded request 1002686 from dimstar)</comment>
     <requestid>1003213</requestid>
   </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>cc0944309d039a36b6e128fa187d33e5</srcmd5>
+    <version>43.0</version>
+    <time>1666089867</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1012088</requestid>
+  </revision>
 </revisionlist>

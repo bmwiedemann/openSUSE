@@ -17,16 +17,16 @@
 
 
 Name:           seahorse
-Version:        42.0
+Version:        43.0
 Release:        0
 Summary:        GNOME interface for gnupg
 License:        GFDL-1.1-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Security
 URL:            https://wiki.gnome.org/Apps/Seahorse
-Source0:        https://download.gnome.org/sources/seahorse/42/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM ab2f253c.patch -- Port to soup3
-Patch0:         https://gitlab.gnome.org/GNOME/seahorse/-/commit/ab2f253c.patch
+Source0:        https://download.gnome.org/sources/seahorse/43/%{name}-%{version}.tar.xz
 
+BuildRequires:  appstream-glib
+BuildRequires:  desktop-file-utils
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
 BuildRequires:  gpg2 >= 2.2.0
@@ -98,7 +98,7 @@ search results from seahorse.
 
 %files
 %license COPYING COPYING-DOCS COPYING.LIB
-%doc AUTHORS NEWS README.md
+%doc NEWS README.md
 %doc %{_datadir}/help/C/%{name}/
 %{_bindir}/seahorse
 %{_libexecdir}/seahorse/

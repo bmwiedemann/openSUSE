@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Oct 14 08:10:01 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.0:
+  + When showing an empty page, there's now a button to add a new
+    item directly.
+  + Fixed some warnings related to .authorized_keys or .other_keys
+    not existing on the system.
+  + Keysharing over DNS-SD is now disabled by default.
+  + Port to libsoup3.
+  + Updated translations.
+- Drop ab2f253c.patch: Fixed upstream.
+- Add desktop-file-utils BuildRequires: New dependency.
+- Add appstream-glib BuildRequires: Optional BuildRequires for
+  validation of appdata during meson_test.
+
+-------------------------------------------------------------------
 Thu Sep  1 13:49:50 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add ab2f253c.patch: Port to soup3. Following this, replace
