@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct 18 05:12:14 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.51.0:
+  * implement v5 db schema to support improved matching between rpm appstream modules (#944)
+  * Update Syft to v0.59.0 (#957)
+  * expand quality gate image set to include rpm appstreams-related images (#952)
+  * Update grype bootstrap tools to latest versions. (#947)
+  * chore: add more quality gate images (#950)
+  * Add in-depth quality gate checks (#949)
+  * Update Syft to v0.58.0 (#941)
+  * Update grype bootstrap tools to latest versions. (#945)
+  * Update grype bootstrap tools to latest versions. (#935)
+  * Update Syft to v0.57.0 (#930)
+
+-------------------------------------------------------------------
 Wed Sep 21 08:31:07 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.50.2:
