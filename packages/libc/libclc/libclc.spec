@@ -69,8 +69,10 @@ Library requirements of the OpenCL C programming language.
 %cmake \
   -DCMAKE_C_COMPILER=clang \
   -DCMAKE_CXX_COMPILER=clang++ \
+%if %{_llvm_sonum} >= 15
   -DCMAKE_CLC_FLAGS="-Xclang -no-opaque-pointers" \
   -DCMAKE_LLAsm_FLAGS="-Xclang -no-opaque-pointers" \
+%endif
   -DENABLE_RUNTIME_SUBNORMAL:BOOL=ON \
   -DLIBCLC_TARGETS_TO_BUILD="amdgcn--;amdgcn--amdhsa;amdgcn-mesa-mesa3d;r600--;nvptx--;nvptx64--;nvptx--nvidiacl;nvptx64--nvidiacl"
 %cmake_build

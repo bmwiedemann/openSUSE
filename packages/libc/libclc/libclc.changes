@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct 16 17:31:22 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Fix build on Leap by adding "-Xclang -no-opaque-pointers" only
+  for Clang 15 and newer.
+
+-------------------------------------------------------------------
 Thu Sep 29 21:33:37 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 0.2.0+llvm15.0.0.
