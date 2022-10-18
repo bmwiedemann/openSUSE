@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Oct 17 14:32:15 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- update to 2.4.12
+  * Features
+    - allow storing the id_token in a client-cookie based session; see #812 and #888
+    - allow setting connection pool parameters for Memcache server connections; see #916
+    - add option to set a username for Redis authentication via OIDCRedisCacheUsername
+    - register request_object_signing_alg in dynamic client registration when using request_uri
+  * Bugfixes
+    - increase size of the output buffer when using libpcre2 for substitution; closes #915
+    - support OIDCSessionInactivityTimeout values greater than 30 days
+      when using Memcache; see #936
+    - allow for step-up discovery with an external URL using HTML refresh;
+    fixes behaviour on CentOS 7/8 when combined with ProxyPass
+    - apply exact length matching for at_hash and c_hash validation
+    - store access token obtained from backchannel in session over the one
+      returned in the frontchannel for code token and code id_token token flows
+    - check ID token signed response algorithm on backchannel logout_token
+      and retrieve its configuration value from the client metadata file
+
+-------------------------------------------------------------------
 Tue Aug 23 13:51:51 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - update to 2.4.11.3
