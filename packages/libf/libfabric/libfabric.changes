@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Oct 10 06:47:42 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to 1.16.1
+  - Core
+    - Fix windows implementation to remove fd from poll set
+  - PSM3
+    - Add missing files to release tarball
+  - Util
+    - Handle NULL address insertion to fi_av_insert
+- Drop prov-rxm-Disable-128-bit-atomics.patch which was merged upstream
+
+-------------------------------------------------------------------
 Thu Oct  6 16:06:29 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Add prov-rxm-Disable-128-bit-atomics.patch to fix a potential

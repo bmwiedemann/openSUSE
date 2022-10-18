@@ -16,10 +16,10 @@
 #
 
 
-%define git_ver .0.fcf62e5b494b
+%define git_ver .0.619d9b3c4082
 
 Name:           fabtests
-Version:        1.16.0
+Version:        1.16.1
 Release:        0
 Summary:        Test suite for libfabric API
 License:        BSD-2-Clause OR GPL-2.0-only
@@ -28,7 +28,6 @@ URL:            http://www.github.com/ofiwg/libfabric
 Source:         libfabric-%{version}%{git_ver}.tar.bz2
 Source1:        fabtests-rpmlintrc
 Patch0:         libfabric-libtool.patch
-Patch1:         prov-rxm-Disable-128-bit-atomics.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libfabric-devel = %{version}
@@ -41,7 +40,6 @@ Fabtests provides a set of examples that uses libfabric, a fabric software libra
 %prep
 %setup -q -n  libfabric-%{version}%{git_ver}
 %patch0 -p1
-%patch1
 
 %build
 cd fabtests
