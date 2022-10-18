@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 14 06:39:06 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Update to v0.11.3:
+  * Fixed build issue on systems with libfmt 9.0
+  * Fixed build issue on Apple Silicon Macs
+  * Fixed build issue on systems that only have python3 but no
+    python executable
+- Use python3-base instead of python for building
+- Use %autosetup
+
+-------------------------------------------------------------------
 Mon Aug  1 18:27:13 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - add upstream signing key and verify source signature

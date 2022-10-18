@@ -21,7 +21,7 @@
 %define _lto_cflags %{nil}
 %endif
 Name:           cryfs
-Version:        0.11.2
+Version:        0.11.3
 Release:        0
 Summary:        Cryptographic filesystem for the cloud
 License:        LGPL-3.0-only
@@ -39,7 +39,7 @@ BuildRequires:  libboost_program_options-devel >= 1.65.1
 BuildRequires:  libboost_system-devel >= 1.65.1
 BuildRequires:  libboost_thread-devel >= 1.65.1
 BuildRequires:  pkgconfig
-BuildRequires:  python
+BuildRequires:  python3-base
 BuildRequires:  cmake(range-v3)
 BuildRequires:  cmake(spdlog)
 BuildRequires:  pkgconfig(fuse) >= 2.8.6
@@ -55,7 +55,7 @@ base directory, which can then be synchronized to remote storage
 (using an external tool).
 
 %prep
-%setup -q -c
+%autosetup -c -p1
 
 %build
 mkdir build
