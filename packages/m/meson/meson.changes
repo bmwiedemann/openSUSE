@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Oct  7 13:02:05 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.63.3:
+  * modules: Fix paths to (sub)project source/build directories
+  * i18n: Fix source root in Gettext targets for subprojects
+  * backends: limit maximum path of generated filenames
+  * Fix 2 typos in a single string which can be shown in error messages.
+  * fix obscure crash on unbound variable 
+  * Warn if wrap file changes
+  * interpreter: add a special class to track the lifecycle of get_option
+
+-------------------------------------------------------------------
+Fri Sep 23 14:50:04 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add extend-test-timeout-on-qemu-builds.patch
+
+-------------------------------------------------------------------
 Wed Sep 14 12:50:06 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.63.2:
