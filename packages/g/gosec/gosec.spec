@@ -17,7 +17,7 @@
 
 
 Name:           gosec
-Version:        2.13.1
+Version:        2.14.0
 Release:        0
 Summary:        Golang security checker
 License:        Apache-2.0

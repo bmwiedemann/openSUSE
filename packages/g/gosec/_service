@@ -3,7 +3,7 @@
     <param name="url">https://github.com/securego/gosec.git</param>
     <param name="scm">git</param>
     <param name="revision">master</param>
-    <param name="version">v2.13.1</param>
+    <param name="version">v2.14.0</param>
     <param name="versionformat">@PARENT_TAG@</param>
 	<param name="versionrewrite-pattern">v(.*)</param>
   </service>
