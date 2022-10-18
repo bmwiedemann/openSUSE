@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 10 20:52:54 UTC 2022 - Robert Schweikert <rjschwei@suse.com>
+
+- Update to version 4.0.0 (bsc#1204066)
+  + Disambiguate cli options for duplicate endpoints. This is an
+    incompatible change for some API versions of IMDS. When a duplicate
+    endpoint is detected the cli option for both endpoints is expanded to a
+    unique name.
+
+-------------------------------------------------------------------
 Mon Aug  3 18:30:06 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
 
 - Update to version 3.0.3 (bsc#1174743, bsc#1174837)
