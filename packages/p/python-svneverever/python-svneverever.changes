@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 17 13:44:03 UTC 2022 - pgajdos@suse.com
+
+- version update to 1.7.1
+  * no upstream changelog
+- python-six is not required
+
+-------------------------------------------------------------------
 Thu Jan  9 11:59:37 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.4.2:

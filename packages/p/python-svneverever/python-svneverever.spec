@@ -21,17 +21,15 @@
 %define oldpython python
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-svneverever
-Version:        1.4.2
+Version:        1.7.1
 Release:        0
 Summary:        Tool collecting path entries across SVN history
 License:        GPL-3.0-only
 URL:            https://github.com/hartwork/svneverever
 Source:         https://github.com/hartwork/svneverever/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-six
 Requires:       subversion
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -62,7 +60,7 @@ directories ever having existed in the repository.
 %python_uninstall_alternative %{mod_name}
 
 %files %{python_files}
-%doc README.asciidoc
+%doc README.md
 %python_alternative %{_bindir}/%{mod_name}
 %{python_sitelib}/%{mod_name}-%{version}-*.egg-info
 %{python_sitelib}/%{mod_name}/
