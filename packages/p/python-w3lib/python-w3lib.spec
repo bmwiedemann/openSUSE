@@ -1,7 +1,7 @@
 #
 # spec file for package python-w3lib
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,9 +28,10 @@ Source:         https://files.pythonhosted.org/packages/source/w/w3lib/w3lib-%{v
 # PATCH-FIX-UPSTREAM 166-add-xfail-test_add_or_replace_parameter_fail.patch mcepl@suse.com
 # Allow working with Python fixed CVE-2021-23336
 Patch0:         166-add-xfail-test_add_or_replace_parameter_fail.patch
+# https://github.com/scrapy/w3lib/commit/c16d7bac3af3148b7018c67ef7922a5da6b3e640
+Patch1:         python-w3lib-no-six.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six >= 1.4.1}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch

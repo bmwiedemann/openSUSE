@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 14 19:10:33 UTC 2022 - pgajdos@suse.com
+
+- do not require six
+- added patches
+  https://github.com/scrapy/w3lib/commit/c16d7bac3af3148b7018c67ef7922a5da6b3e640
+  + python-w3lib-no-six.patch
+
+-------------------------------------------------------------------
 Fri Mar 19 14:28:28 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add 166-add-xfail-test_add_or_replace_parameter_fail.patch,
