@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 17 12:41:51 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use local stored logo
+
+-------------------------------------------------------------------
 Wed Oct 12 07:15:29 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Add same ExcludeArch as the used nginx base image

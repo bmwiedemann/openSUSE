@@ -16,4 +16,12 @@
 - Add SPDX-License-Identifier</comment>
     <requestid>1010124</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>af87e7d75cdb414bcafd2dfefd14b4dd</srcmd5>
+    <version>unknown</version>
+    <time>1666102013</time>
+    <user>dimstar_suse</user>
+    <comment>- Use local stored logo (forwarded request 1029709 from kukuk)</comment>
+    <requestid>1029710</requestid>
+  </revision>
 </revisionlist>
