@@ -26,6 +26,8 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/pyviz-dev/nbsmoke
 Source:         https://files.pythonhosted.org/packages/source/n/nbsmoke/nbsmoke-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM nbsmoke-pr63-remove-id.patch gh#pyviz-dev/nbsmoke#63
+Patch0:         nbsmoke-pr63-remove-id.patch
 # PATCH-FIX-OPENSUSE nbsmoke-obs-nounraisableexception.patch, don't error on warnings about obs not closing sockets in time, code@bnavigator.de
 Patch1:         nbsmoke-obs-nounraisableexception.patch
 BuildRequires:  %{python_module setuptools}
