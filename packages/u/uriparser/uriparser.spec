@@ -20,13 +20,13 @@
 
 %define so_ver  1
 Name:           uriparser
-Version:        0.9.6
+Version:        0.9.7
 Release:        0
 Summary:        A strictly RFC 3986 compliant URI parsing library
 License:        BSD-3-Clause AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://uriparser.github.io
-Source:         https://github.com/uriparser/uriparser/releases/download/uriparser-%{version}/uriparser-%{version}.tar.bz2
+Source:         https://github.com/uriparser/uriparser/releases/download/uriparser-%{version}/uriparser-%{version}.tar.xz
 Source1:        baselibs.conf
 BuildRequires:  cmake
 BuildRequires:  doxygen
@@ -37,6 +37,7 @@ BuildRequires:  graphviz
 BuildRequires:  graphviz-gd
 BuildRequires:  libqt5-qttools
 BuildRequires:  pkg-config
+BuildRequires:  xz
 BuildRequires:  pkgconfig(libxdot)
 %if %{with googletest}
 BuildRequires:  gtest >= 1.8.1
