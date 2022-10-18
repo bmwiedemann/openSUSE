@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Oct 17 09:46:45 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- update to 2.15.4
+  * False Positives Fixed
+    - Fix the message for unnecessary-dunder-call for __aiter__ and
+      __aneext__. Also only emit the warning when py-version >= 3.10. Closes #7529
+  * Other Bug Fixes
+    - Fix bug in detecting unused-variable when iterating on variable. Closes #3044
+    - Fixed handling of -- as separator between positional arguments and flags.
+      This was not actually fixed in 2.14.5. Closes #7003, Refs #7096
+    - Report no-self-argument rather than no-method-argument for methods
+      with variadic arguments. Closes #7507
+    - Fixed an issue where syntax-error couldn't be raised on files with
+      invalid encodings. Closes #7522
+    - Fix false positive for redefined-outer-name when aliasing typing
+      e.g. as t and guarding imports under t.TYPE_CHECKING. Closes #7524
+    - Fixed a crash of the modified_iterating checker when iterating on a set
+      defined as a class attribute. Closes #7528
+    - Fix bug in scanning of names inside arguments to typing.Literal.
+      See https://peps.python.org/pep-0586/#literals-enums-and-forward-references
+      for details. Refs #3299
+  * Other Changes
+    - Add method name to the error messages of no-method-argument and
+      no-self-argument. Closes #7507
+
+-------------------------------------------------------------------
 Fri Sep 23 20:30:45 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Fix astroid requirement.
