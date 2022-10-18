@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 17 14:35:43 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
+
+- Update to version 2.7.9 (jsc#PED-536)
+  - Add NVMe diagnostics support.
+
+-------------------------------------------------------------------
 Thu Sep 15 16:30:04 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
 
-- Update to version 2.7.8 (jsc#PED-536)
+- Update to version 2.7.8
 - Remove upstreamed patch
   - ppc64-diag-Directories-should-be-created-executable.patch
 - Use new libvpd

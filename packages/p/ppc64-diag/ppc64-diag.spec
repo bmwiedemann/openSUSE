@@ -17,7 +17,7 @@
 
 
 Name:           ppc64-diag
-Version:        2.7.8
+Version:        2.7.9
 Release:        0
 Summary:        Linux for Power Platform Diagnostics
 License:        GPL-2.0-or-later
@@ -104,6 +104,7 @@ done
 %dir %{_sysconfdir}/ppc64-diag
 %config %{_sysconfdir}/ppc64-diag/*
 %config %{_sysconfdir}/rc.powerfail
+%config %{_sysconfdir}/cron.daily/run_diag_nvme
 %{_mandir}/man8/*.8%{?ext_man}
 %attr(755,root,root) %{_sysconfdir}/cron.daily/run_diag_encl
 %{_unitdir}/rtas_errd.service
