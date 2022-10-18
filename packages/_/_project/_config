@@ -594,6 +594,9 @@ Prefer: -libz-ng-compat1 -zlib-ng-compat-devel -libz-ng-compat1-32bit
 # have choice for (distrobox if patterns-microos-desktop-common else toolbox) needed by patterns-containers-container_runtime: patterns-microos-desktop-common toolbox
 Prefer: -patterns-microos-desktop-common
 
+#  unresolvable: have choice for libomp.so()(64bit) needed by libispcrt_1: libomp11-devel libomp12-devel libomp13-devel libomp14-devel libomp15-devel, have choice for libomp.so(VERSION)(64bit) needed by libispcrt_1: libomp11-devel libomp12-devel libomp13-devel libomp14-devel libomp15-devel 
+Prefer: -libomp11-devel -libomp12-devel -libomp13-devel -libomp14-devel
+
 # 32bit -devel packages contain .pc files and cause a 'have choice' for OBS. unfavor the -32bit variants
 Prefer: -ColPack-devel-32bit
 Prefer: -FAudio-devel-32bit
