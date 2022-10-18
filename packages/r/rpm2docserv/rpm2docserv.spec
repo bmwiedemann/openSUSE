@@ -17,7 +17,7 @@
 
 
 Name:           rpm2docserv
-Version:        20221013.faaac97
+Version:        20221017.6bcf1b6
 Release:        0
 Summary:        Make manpages from RPMs accessible in a web browser
 License:        Apache-2.0
@@ -78,6 +78,8 @@ mkdir -p %{buildroot}%{_sbindir}
 install -m 755 bin/docserv-auxserver %{buildroot}%{_sbindir}/
 install -m 755 bin/docserv-minisrv %{buildroot}%{_sbindir}/
 install -m 755 bin/docserv-idx2rwmap %{buildroot}%{_bindir}/
+mkdir -p %{buildroot}%{_datadir}/%{name}
+cp -r assets %{buildroot}%{_datadir}/%{name}
 
 install -D -m 0644 systemd/docserv-auxserver.service %{buildroot}%{_unitdir}/docserv-auxserver.service
 install -D -m 0644 systemd/docserv-auxserver.default %{buildroot}%{_distconfdir}/default/docserv-auxserver
@@ -123,6 +125,7 @@ install -m 644 apache2/* %{buildroot}%{_datadir}/docserv/apache2/
 %license LICENSE
 %{_bindir}/rpm2docserv
 %{_bindir}/docserv-idx2rwmap
+%{_datadir}/%{name}
 
 %files -n docserv-auxserver
 %license LICENSE
