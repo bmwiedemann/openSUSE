@@ -19,7 +19,7 @@
 
 
 Name:           deno
-Version:        1.26.0
+Version:        1.26.2
 Release:        0
 Summary:        A secure JavaScript and TypeScript runtime
 License:        MIT

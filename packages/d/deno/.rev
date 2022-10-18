@@ -354,4 +354,12 @@
 </comment>
     <requestid>1007112</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b75190d79bd094888c45f760a5be153f</srcmd5>
+    <version>1.26.2</version>
+    <time>1666089887</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.26.2</comment>
+    <requestid>1029625</requestid>
+  </revision>
 </revisionlist>
