@@ -23,4 +23,13 @@
     <comment></comment>
     <requestid>896898</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>8b6fd143006be3cf26b75d0a831f6f6f</srcmd5>
+    <version>0.8.2.0</version>
+    <time>1666089943</time>
+    <user>dimstar_suse</user>
+    <comment>- Cleanup spec file.
+</comment>
+    <requestid>1029676</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package gli
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@ Name:           gli
 Version:        0.8.2.0
 Release:        0
 Summary:        Header only C++ image library for graphics software
-License:        MIT AND GPL-2.0-only
+License:        GPL-2.0-only AND MIT
 Group:          Development/Libraries/C and C++
 URL:            https://gli.g-truc.net/
 #Git-Clone:     https://github.com/g-truc/gli.git
@@ -80,14 +80,14 @@ This package provides the documentation for GLI library.
 
 %prep
 %setup -q
-%patch1 
+%patch1
 %patch2 -p1
 
 %build
 %if 0%{?suse_version} < 1500
 %cmake \
     -DCMAKE_C_COMPILER=gcc-7 \
-    -DCMAKE_CXX_COMPILER=g++-7 
+    -DCMAKE_CXX_COMPILER=g++-7
 %else
 %cmake
 %endif

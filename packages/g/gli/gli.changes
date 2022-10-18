@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 18 08:29:11 UTC 2022 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Cleanup spec file.
+
+-------------------------------------------------------------------
 Wed Jun  2 11:18:23 UTC 2021 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Backport 4ea121f: Fix ordered comparison of pointer and zero:
