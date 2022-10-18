@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 17 10:46:23 UTC 2022 - pgajdos@suse.com
+
+- version update to 1.6
+  * Use `pytest` insteed of `nose`.
+  * Fix warning around regex string.
+- deleted patches
+  - use_pytest.patch (upstreamed)
+
+-------------------------------------------------------------------
 Mon May  4 12:41:10 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Use pytest instead of nose

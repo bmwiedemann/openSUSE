@@ -1,7 +1,7 @@
 #
 # spec file for package python-purl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-purl
-Version:        1.5
+Version:        1.6
 Release:        0
 Summary:        An immutable URL class for URL building and manipulation
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/codeinthehole/purl
 Source:         https://github.com/codeinthehole/purl/archive/%{version}.tar.gz
-# https://github.com/codeinthehole/purl/pull/42
-Patch0:         use_pytest.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
@@ -41,7 +39,6 @@ An immutable URL class for URL building and manipulation.
 
 %prep
 %setup -q -n purl-%{version}
-%patch0 -p1
 
 %build
 %python_build
@@ -51,7 +48,9 @@ An immutable URL class for URL building and manipulation.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest tests/utils_tests.py tests/expansion_tests.py tests/template_tests.py  tests/url_tests.py
+pushd tests
+%pytest
+popd
 
 %files %{python_files}
 %doc README.rst
