@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Mon Oct 17 09:19:48 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.27.91
+  * api-change:``mediaconvert``: MediaConvert now supports specifying the minimum percentage of the
+    HRD buffer available at the end of each encoded video segment.
+- from version 1.27.90
+  * api-change:``amplifyuibuilder``: We are releasing the ability for fields to be configured as
+    arrays.
+  * api-change:``appflow``: With this update, you can choose which Salesforce API is used by Amazon
+    AppFlow to transfer data to or from your Salesforce account. You can choose the Salesforce REST API
+    or Bulk API 2.0. You can also choose for Amazon AppFlow to pick the API automatically.
+  * api-change:``connect``: This release adds support for a secondary email and a mobile number for
+    Amazon Connect instance users.
+  * api-change:``ds``: This release adds support for describing and updating AWS Managed Microsoft AD
+    set up.
+  * api-change:``ecs``: Documentation update to address tickets.
+  * api-change:``guardduty``: Add UnprocessedDataSources to CreateDetectorResponse which specifies
+    the data sources that couldn't be enabled during the CreateDetector request. In addition, update
+    documentations.
+  * api-change:``iam``: Documentation updates for the AWS Identity and Access Management API
+    Reference.
+  * api-change:``iotfleetwise``: Documentation update for AWS IoT FleetWise
+  * api-change:``medialive``: AWS Elemental MediaLive now supports forwarding SCTE-35 messages
+    through the Event Signaling and Management (ESAM) API, and can read those SCTE-35 messages from an
+    inactive source.
+  * api-change:``mediapackage-vod``: This release adds SPEKE v2 support for MediaPackage VOD. Speke
+    v2 is an upgrade to the existing SPEKE API to support multiple encryption keys, based on an
+    encryption contract selected by the customer.
+  * api-change:``panorama``: Pause and resume camera stream processing with
+    SignalApplicationInstanceNodeInstances. Reboot an appliance with CreateJobForDevices. More
+    application state information in DescribeApplicationInstance response.
+  * api-change:``rds-data``: Doc update to reflect no support for schema parameter on
+    BatchExecuteStatement API
+  * api-change:``ssm-incidents``: Update RelatedItem enum to support Tasks
+  * api-change:``ssm``: Support of AmazonLinux2022 by Patch Manager
+  * api-change:``transfer``: This release adds an option for customers to configure workflows that
+    are triggered when files are only partially received from a client due to premature session
+    disconnect.
+  * api-change:``translate``: This release enables customers to specify multiple target languages in
+    asynchronous batch translation requests.
+  * api-change:``wisdom``: This release updates the GetRecommendations API to include a trigger event
+    list for classifying and grouping recommendations.
+- from version 1.27.89
+  * api-change:``codeguru-reviewer``: Documentation update to replace broken link.
+  * api-change:``elbv2``: Update elbv2 client to latest version
+  * api-change:``greengrassv2``: This release adds error status details for deployments and
+    components that failed on a device and adds features to improve visibility into component
+    installation.
+  * api-change:``quicksight``: Amazon QuickSight now supports SecretsManager Secret ARN in place of
+    CredentialPair for DataSource creation and update. This release also has some minor documentation
+    updates and removes CountryCode as a required parameter in GeoSpatialColumnGroup
+- from version 1.27.88
+  * api-change:``resiliencehub``: Documentation change for AWS Resilience Hub. Doc-only update to fix
+    Documentation layout
+- from version 1.27.87
+  * api-change:``glue``: This SDK release adds support to sync glue jobs with source control
+    provider. Additionally, a new parameter called SourceControlDetails will be added to Job model.
+  * api-change:``network-firewall``: StreamExceptionPolicy configures how AWS Network Firewall
+    processes traffic when a network connection breaks midstream
+  * api-change:``outposts``: This release adds the Asset state information to the ListAssets
+    response. The ListAssets request supports filtering on Asset state.
+- from version 1.27.86
+  * api-change:``connect``: Updated the CreateIntegrationAssociation API to support the CASES_DOMAIN
+    IntegrationType.
+  * api-change:``connectcases``: This release adds APIs for Amazon Connect Cases. Cases allows your
+    agents to quickly track and manage customer issues that require multiple interactions, follow-up
+    tasks, and teams in your contact center.  For more information, see
+    https://docs.aws.amazon.com/cases/latest/APIReference/Welcome.html
+  * api-change:``ec2``: Added EnableNetworkAddressUsageMetrics flag for ModifyVpcAttribute,
+    DescribeVpcAttribute APIs.
+  * api-change:``ecs``: Documentation updates to address various Amazon ECS tickets.
+  * api-change:``s3control``: S3 Object Lambda adds support to allow customers to intercept
+    HeadObject and ListObjects requests and introduce their own compute. These requests were previously
+    proxied to S3.
+  * api-change:``workmail``: This release adds support for impersonation roles in Amazon WorkMail.
+
+-------------------------------------------------------------------
+Wed Oct 12 06:42:09 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- drop remove-six.patch, rejected by upstream and breaks
+  all dependent projects of botocore
+
+-------------------------------------------------------------------
+Tue Oct 11 11:46:31 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add remove-six.patch, which eliminates need for the six dependency.
+
+-------------------------------------------------------------------
 Tue Oct  4 09:36:03 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.27.85
