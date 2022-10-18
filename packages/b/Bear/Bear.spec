@@ -18,7 +18,7 @@
 
 %bcond_without tests
 Name:           Bear
-Version:        3.0.18
+Version:        3.0.20
 Release:        0
 Summary:        Tool to generate compilation database for clang tooling
 License:        GPL-3.0-or-later

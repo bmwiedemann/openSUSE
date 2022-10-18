@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Oct 17 13:00:02 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update to version 3.0.20:
+  * Set errno to zero after libexec's on_load (#470, @Absolucy)
+  * Add C compiler argument for dependencies (#462, @arturo-salinas)
+  * Update dependency versions.
+  * Fix build failure with fmt-9.0.0 (#471)
+
+  * Temp workaround note for old 2.4 release (#440 @ZuseZ4)
+  * Build: local dependencies get first in the search path (#453 @ton)
+  * Fix cannot execute binary file (#439 @marxin)
+
+-------------------------------------------------------------------
 Wed Jan 19 09:17:34 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Update to version 3.0.18

@@ -71,4 +71,12 @@
   * Fixed Libtool test failure. (#435, @gyakovlev)</comment>
     <requestid>950230</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d1bfaf2a68af4a636b8f7be33f617a9f</srcmd5>
+    <version>3.0.20</version>
+    <time>1666089920</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1029602</requestid>
+  </revision>
 </revisionlist>
