@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Oct 17 12:15:56 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- xf86-input-vmmouse 13.2.0:
+  * Update "See Also" list in vmmouse_detect man page
+  * Update configure.ac bug URL for gitlab migration
+  * gitlab CI: add a basic build test
+  * autogen.sh: Implement GNOME Build API
+  * autogen.sh: use quoted string variables
+  * tools: Fix declaration of xf86EnableIO()
+  * autogen: add default patch prefix
+  * Drop maintainer mode from autogen.sh
+  * autogen.sh: use exec instead of waiting for configure to finish
+  * Replace unportable test(1) operator.
+  * Add NetBSD/amd64 support for iopl calls.
+
+-------------------------------------------------------------------
 Fri Mar 12 22:20:13 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - modernize spec file (move licenses to licensedir) 

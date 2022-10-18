@@ -211,4 +211,23 @@
     <comment></comment>
     <requestid>878738</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>865988f9124d3931eb9283f0c1f40ccd</srcmd5>
+    <version>13.2.0</version>
+    <time>1666089872</time>
+    <user>dimstar_suse</user>
+    <comment>- xf86-input-vmmouse 13.2.0:
+  * Update &quot;See Also&quot; list in vmmouse_detect man page
+  * Update configure.ac bug URL for gitlab migration
+  * gitlab CI: add a basic build test
+  * autogen.sh: Implement GNOME Build API
+  * autogen.sh: use quoted string variables
+  * tools: Fix declaration of xf86EnableIO()
+  * autogen: add default patch prefix
+  * Drop maintainer mode from autogen.sh
+  * autogen.sh: use exec instead of waiting for configure to finish
+  * Replace unportable test(1) operator.
+  * Add NetBSD/amd64 support for iopl calls.</comment>
+    <requestid>1012104</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package xf86-input-vmmouse
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,14 +22,14 @@
 %define _udevrulesdir /lib/udev/rules.d
 %endif
 Name:           xf86-input-vmmouse
-Version:        13.1.0
+Version:        13.2.0
 Release:        0
 Summary:        VMware Mouse input driver for the Xorg X server
 License:        MIT
 Group:          System/X11/Servers/XF86_4
 URL:            https://xorg.freedesktop.org/
-Source0:        http://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.bz2
-Source1:        http://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.bz2.sig
+Source0:        http://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.xz
+Source1:        http://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
 Patch2:         u_Don-t-access-hardware-register-while-switched-away.patch
 Patch3:         u_conf-rename-to-70-vmmouse.conf.patch
