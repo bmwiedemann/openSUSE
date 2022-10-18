@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct 16 15:41:25 UTC 2022 - Chris Bradbury <obs@chrbrd.com>
+
+- waybar-0.9.13-fmt-compat.patch: Add upstream patch 1617 to fix build with fmt>=9.0.0
+- Use Catch2 < 3.0 due to upstream incompatibility with Catch2 >= 3.0
+
+-------------------------------------------------------------------
 Sat Jun  4 01:04:10 UTC 2022 - Arnav Singh <opensuse@arnavion.dev>
 
 - Recreate source tarball with submodules downloaded as before.
