@@ -30,8 +30,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.0.0
-BuildRequires:  pkgconfig(libnotify) >= 0.6.1
-BuildRequires:  pkgconfig(webkit2gtk-4.1)
 
 %description
 Zenity is a basic rewrite of gdialog, without the pain involved of
