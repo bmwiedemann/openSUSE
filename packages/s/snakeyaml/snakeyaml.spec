@@ -16,10 +16,10 @@
 #
 
 
-%global vertag 04401a88fa9b
+%global vertag 7f5106920d77
 %bcond_with tests
 Name:           snakeyaml
-Version:        1.31
+Version:        1.33
 Release:        0
 Summary:        YAML parser and emitter for the Java programming language
 License:        Apache-2.0
@@ -36,6 +36,7 @@ Source1:        %{name}-build.xml
 Patch0:         0001-replace-bundled-base64coder-with-java.util.Base64.patch
 # We don't have gdata-java, use commons-codec instead
 Patch1:         0002-Replace-bundled-gdata-java-client-classes-with-commo.patch
+Patch2:         0003-Fix-ReaderBomTest.patch
 BuildRequires:  ant
 BuildRequires:  apache-commons-codec
 BuildRequires:  fdupes
@@ -80,6 +81,7 @@ This package contains %{summary}.
 cp %{SOURCE1} build.xml
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %pom_remove_plugin :cobertura-maven-plugin
 %pom_remove_plugin :maven-changes-plugin
@@ -93,10 +95,47 @@ rm -f src/test/java/examples/SpringTest.java
 # Replacement for bundled gdata-java-client
 %pom_add_dep commons-codec:commons-codec
 
+# Unnecessary test-time only dependency
+%pom_remove_dep joda-time:joda-time
+rm -rf src/test/java/examples/jodatime
+%pom_remove_dep org.projectlombok:lombok
+%pom_remove_dep org.apache.velocity:velocity-engine-core
+
 # fails in rpmbuild only due to different locale
 rm src/test/java/org/yaml/snakeyaml/issues/issue67/NonAsciiCharsInClassNameTest.java
 # fails after unbundling
 rm src/test/java/org/yaml/snakeyaml/issues/issue318/ContextClassLoaderTest.java
+
+# Tests using dependencies we don't have/have removed
+rm src/test/java/org/yaml/snakeyaml/emitter/template/VelocityTest.java
+rm src/test/java/org/yaml/snakeyaml/issues/issue387/YamlExecuteProcessContextTest.java
+rm src/test/java/org/yaml/snakeyaml/env/ApplicationProperties.java
+rm src/test/java/org/yaml/snakeyaml/env/EnvLombokTest.java
+rm src/test/java/org/yaml/snakeyaml/issues/issue527/Fuzzy47047Test.java
+rm src/test/java/org/yaml/snakeyaml/issues/issue530/Fuzzy47039Test.java
+rm src/test/java/org/yaml/snakeyaml/issues/issue543/Fuzzer50355Test.java
+rm src/test/java/org/yaml/snakeyaml/issues/issue525/FuzzyStackOverflowTest.java
+rm src/test/java/org/yaml/snakeyaml/issues/issue529/Fuzzy47028Test.java
+rm src/test/java/org/yaml/snakeyaml/issues/issue531/Fuzzy47081Test.java
+rm src/test/java/org/yaml/snakeyaml/issues/issue526/Fuzzy47027Test.java
+
+# Problematic test resources for maven-resources-plugin 3.2
+rm src/test/resources/issues/issue99.jpeg
+rm src/test/resources/reader/unicode-16be.txt
+rm src/test/resources/reader/unicode-16le.txt
+rm src/test/resources/pyyaml/spec-05-01-utf16be.data
+rm src/test/resources/pyyaml/spec-05-01-utf16le.data
+rm src/test/resources/pyyaml/spec-05-02-utf16le.data
+rm src/test/resources/pyyaml/odd-utf16.stream-error
+rm src/test/resources/pyyaml/invalid-character.loader-error
+rm src/test/resources/pyyaml/invalid-character.stream-error
+rm src/test/resources/pyyaml/invalid-utf8-byte.loader-error
+rm src/test/resources/pyyaml/invalid-utf8-byte.stream-error
+rm src/test/resources/pyyaml/empty-document-bug.data
+rm src/test/resources/pyyaml/spec-05-02-utf16be.data
+rm -rf src/test/resources/fuzzer/
+# Test using the jpeg data removed above
+rm src/test/java/org/yaml/snakeyaml/issues/issue99/YamlBase64Test.java
 
 # convert CR+LF to LF
 sed -i 's/\r//g' LICENSE.txt

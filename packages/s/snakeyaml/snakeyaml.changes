@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Oct 18 07:17:01 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Fix --with tests build
+
+-------------------------------------------------------------------
+Mon Oct 17 17:05:58 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream release 1.33
+  * Fixes
+    + bsc#1204173
+    + bsc#1203154 (CVE-2022-38752)
+  * Changes of 1.33
+    + Remove some deprecated unused methods
+    + Fix #555: Fixed Github actions
+    + Fix #553: LoaderOptions.setCodePointLimit() not honored by
+      loadAll()
+    + Fix #554: Always emit numberish strings with quotes
+  * Changes of 1.32
+    + Fix #543: show the configuration in the test
+    + Fix #531: provide configuration to fail early
+    + Fix #547: Set the limit for incoming data to prevent a CVE
+      report in NIST. By default it is 3MB
+    + Fix #544: Support unescaped unicode characters for
+      double-quoted scalars
+- Modified patches:
+  * 0001-replace-bundled-base64coder-with-java.util.Base64.patch
+  * 0002-Replace-bundled-gdata-java-client-classes-with-commo.patch
+    + rebase
+- Added patch:
+  * 0003-Fix-ReaderBomTest.patch
+    + remove two tests that require unicode boms
+
+-------------------------------------------------------------------
 Wed Sep  7 07:30:01 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream release 1.31
@@ -6,7 +39,6 @@ Wed Sep  7 07:30:01 UTC 2022 - Fridrich Strba <fstrba@suse.com>
     + bsc#1202932 (CVE-2022-25857)
     + bsc#1203149 (CVE-2022-38749)
     + bsc#1203153 (CVE-2022-38751)
-    + bsc#1203154 (CVE-2022-38752)
     + bsc#1203158 (CVE-2022-38750)
   * Changes of 1.31
     + Fix #539: false positive CVE-2020-13936 (bsc#1183360)

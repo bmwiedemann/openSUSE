@@ -39,4 +39,12 @@
     <comment>1.31 = misc. security fixes + changes stuffed up</comment>
     <requestid>1001658</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7e4931cd62555340cf52a13c050a1ec1</srcmd5>
+    <version>1.33</version>
+    <time>1666089912</time>
+    <user>dimstar_suse</user>
+    <comment>1.33</comment>
+    <requestid>1029656</requestid>
+  </revision>
 </revisionlist>
