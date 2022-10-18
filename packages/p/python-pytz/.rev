@@ -395,4 +395,12 @@
 - avoid bashisms in rpm scripts (bsc#1195391)</comment>
     <requestid>1005454</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>25b49dfc8bdf196cee21cc39dd7f8fac</srcmd5>
+    <version>2022.4</version>
+    <time>1666089877</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1012299</requestid>
+  </revision>
 </revisionlist>
