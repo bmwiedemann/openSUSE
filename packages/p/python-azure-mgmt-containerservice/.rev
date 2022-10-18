@@ -304,4 +304,15 @@
 - Update Requires from setup.py (forwarded request 1005341 from glaubitz)</comment>
     <requestid>1006399</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>808811ac56c647f836700eda705258d0</srcmd5>
+    <version>20.5.0</version>
+    <time>1666102570</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 20.5.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1029685 from glaubitz)</comment>
+    <requestid>1029718</requestid>
+  </revision>
 </revisionlist>
