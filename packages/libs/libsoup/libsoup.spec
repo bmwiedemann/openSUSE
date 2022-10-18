@@ -18,7 +18,7 @@
 
 %define api_version 3.0
 Name:           libsoup
-Version:        3.2.0
+Version:        3.2.1
 Release:        0
 Summary:        HTTP client/server library for GNOME
 License:        LGPL-2.1-or-later
@@ -138,9 +138,13 @@ mkdir -p %{buildroot}%{_docdir}/%{name}-%{api_version}
 mv %{buildroot}%{_datadir}/doc/%{name}-%{api_version} %{buildroot}%{_docdir}
 
 %check
+# Disable tests on 32-bit while waiting for
+# https://gitlab.gnome.org/GNOME/libsoup/-/issues/309
+%ifnarch %ix86 %arm32 ppc
 # Run the regression tests using GnuTLS NORMAL priority
 export G_TLS_GNUTLS_PRIORITY=NORMAL
 %meson_test
+%endif
 
 %ldconfig_scriptlets 3_0-0
 

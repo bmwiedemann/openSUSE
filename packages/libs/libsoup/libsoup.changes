@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct 12 09:29:29 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.2.1:
+  + When built against nghttp2 1.50.0+ be relaxed about header
+    whitespace.
+  + Fix possible crash when cancelling an HTTP/2 message.
+  + Fix regresion where soup_server_message_get_socket() could
+    return NULL.
+  + Fix minor memory leak.
+- Disable tests on 32-bit while waiting for
+  https://gitlab.gnome.org/GNOME/libsoup/-/issues/309
+
+-------------------------------------------------------------------
 Thu Sep 15 06:10:48 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.2.0:
