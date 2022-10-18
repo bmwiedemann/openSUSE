@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 %define pyname pytest-aiohttp
 Name:           python-pytest-aiohttp
 Version:        1.0.4
@@ -28,20 +26,23 @@ Group:          Development/Languages/Python
 URL:            https://github.com/aio-libs/pytest-aiohttp
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-aiohttp/pytest-aiohttp-%{version}.tar.gz
 BuildRequires:  %{python_module aiohttp >= 3.8.1}
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pytest-asyncio}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest >= 6.1.0}
+BuildRequires:  %{python_module pytest-asyncio >= 0.17.2}
+BuildRequires:  %{python_module setuptools_scm >= 6.2}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-aiohttp >= 2.3.5
-Requires:       python-pytest
+Requires:       python-aiohttp >= 3.8.1
+Requires:       python-pytest >= 6.1.0
+Requires:       python-pytest-asyncio >= 0.17.2
 BuildArch:      noarch
 %python_subpackages
 
 %description
-The library allows to use aiohttp pytest plugin without need for implicitly loading it like pytest_plugins = 'aiohttp.pytest_plugin'.
+A library that provides fixtures for creation test aiohttp server and client.
 
 %prep
 %setup -q -n %{pyname}-%{version}
@@ -54,11 +55,12 @@ The library allows to use aiohttp pytest plugin without need for implicitly load
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# there are no tests
+%pytest
 
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/pytest_aiohttp
+%{python_sitelib}/pytest_aiohttp-%{version}*-info
 
 %changelog
