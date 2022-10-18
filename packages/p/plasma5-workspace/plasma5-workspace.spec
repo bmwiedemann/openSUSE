@@ -249,8 +249,10 @@ Can also be used by standalone tray apps.
 %package -n gmenudbusmenuproxy
 Summary:        GMenu to DBusMenu Proxy
 Group:          System/GUI/KDE
-Recommends:     (unity-gtk2-module if libgtk-2_0-0)
-Recommends:     (unity-gtk3-module if libgtk-3-0)
+Recommends:     (appmenu-gtk2-module if libgtk-2_0-0)
+Recommends:     (appmenu-gtk3-module if libgtk-3-0)
+# If installed, it force-enables itself which can cause issues
+Conflicts:      unity-gtk-module-common
 
 %description -n gmenudbusmenuproxy
 This package provides a proxy translating GMenu (GTK Menu) to DBusMenu (the

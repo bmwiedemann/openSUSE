@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 17 17:52:48 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Use appmenu-gtk-module instead of unity-gtk-module on Leap 15.2+
+  (boo#1108846)
+
+-------------------------------------------------------------------
 Thu Oct  6 14:48:46 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.26.0
