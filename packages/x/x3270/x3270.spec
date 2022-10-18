@@ -16,11 +16,11 @@
 #
 
 
-%define _suffix ga13
+%define _suffix ga6
 %define _fullname suite3270-%{version}%{_suffix}
 %define _x026ver 1.2
 Name:           x3270
-Version:        4.1
+Version:        4.2
 Release:        0
 Summary:        A Family of IBM 3270 Terminal Emulators
 License:        MIT
@@ -159,7 +159,6 @@ rm %{buildroot}%{_miscfontsdir}/fonts.dir
 
 # copy the docs
 mkdir -p %{buildroot}%{_docdir}/%{name}
-cp -pr --parents Playback %{buildroot}%{_docdir}/%{name}
 cp -pr --parents x3270/{Examples,html} %{buildroot}%{_docdir}/%{name}
 cp -pr --parents b3270/html %{buildroot}%{_docdir}/%{name}
 cp -pr --parents c3270/html %{buildroot}%{_docdir}/%{name}
@@ -201,7 +200,6 @@ install -D -m 0644 %{SOURCE2} %{buildroot}%{_datadir}/applications/x3270.desktop
 %{_mandir}/man1/x3270.1%{?ext_man}
 %doc %{_docdir}/%{name}/x3270/Examples
 %doc %{_docdir}/%{name}/x3270/html
-%doc %{_docdir}/%{name}/Playback
 %{_datadir}/applications/x3270.desktop
 # b3270
 %{_bindir}/b3270

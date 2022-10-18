@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct  9 17:26:21 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- x3270 4.2ga6:
+  * many improvements, bug fixes and feature extensions
+  * pr3287 now supports -tracefile
+  * pr3287 can now try more than one address for a host
+  * hostname lookups can now be limited to IPv4/IPv6
+
+-------------------------------------------------------------------
 Sun May  1 11:10:02 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to current stable release 4.1 ga13:
