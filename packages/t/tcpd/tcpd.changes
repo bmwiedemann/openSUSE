@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 11 09:34:37 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Add hosts.allow and hosts.deny config files from the netcfg package,
+  as they are tcpd specific, bsc#1099755
+
+-------------------------------------------------------------------
 Mon Sep  5 14:42:10 UTC 2022 - Ludwig Nussel <lnussel@suse.de>
 
 - use _libdir (boo#1191098)

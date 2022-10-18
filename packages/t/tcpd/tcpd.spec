@@ -27,6 +27,8 @@ Group:          Productivity/Networking/System
 URL:            ftp://ftp.porcupine.org/pub/security/index.html
 Source:         ftp://ftp.porcupine.org/pub/security/tcp_wrappers_%{version}.tar.gz
 Source2:        baselibs.conf
+Source3:        hosts.allow
+Source4:        hosts.deny
 Patch0:         tcp_wrappers_%{version}.diff
 Patch1:         tcp_wrappers_%{version}-ipv6-1.6.diff
 Patch2:         tcp_wrappers_%{version}-ipv6-fix.diff
@@ -155,6 +157,10 @@ install -m 644 tcpd.8 tcpdchk.8 tcpdmatch.8 %{buildroot}%{_mandir}/man8
 install -m 644 shared/libwrap.so.0.%{version} %{buildroot}/%{_libdir}
 ln -sf libwrap.so.0.%{version} %{buildroot}/%{_libdir}/libwrap.so.0
 ln -sf libwrap.so.0.%{version} %{buildroot}/%{_libdir}/libwrap.so
+mkdir -p %{buildroot}%{_sysconfdir}
+for i in hosts.allow hosts.deny; do
+  install $RPM_SOURCE_DIR/$i %{buildroot}/%{_sysconfdir}
+done
 
 %post -n %{lname} -p /sbin/ldconfig
 
@@ -170,6 +176,8 @@ ln -sf libwrap.so.0.%{version} %{buildroot}/%{_libdir}/libwrap.so
 %defattr(-,root,root)
 %doc DISCLAIMER
 %attr(755,root,root) %{_libdir}/libwrap.so.0*
+%verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/hosts.allow
+%verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/hosts.deny
 
 %files devel
 %defattr(644,root,root,755)
