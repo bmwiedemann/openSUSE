@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 17 12:59:42 UTC 2022 - kukuk@suse.com
+
+- Update to version 20221017.6bcf1b6:
+  * Add MicroOS logo as overlay for chameleon style
+  * Support "assets" in yaml config
+- Package assets directory
+
+-------------------------------------------------------------------
 Thu Oct 13 14:19:48 UTC 2022 - kukuk@suse.com
 
 - Update to version 20221013.faaac97:
