@@ -22,9 +22,9 @@ Release:        0
 Summary:        Patterns for container technologies
 License:        MIT
 Group:          Metapackages
-URL:            http://en.opensuse.org/Patterns
-Source0:        %name-rpmlintrc
-ExclusiveArch:  x86_64 %{arm} aarch64 ppc64le s390x
+URL:            https://github.com/openSUSE/patterns
+Source0:        %{name}-rpmlintrc
+ExclusiveArch:  x86_64 %{arm} aarch64 ppc64le s390x riscv64
 
 %description
 This is an internal package that is used to create the patterns as part
@@ -39,15 +39,15 @@ Provides:       pattern-category() = Containers
 Provides:       pattern-icon() = pattern-kubic
 Provides:       pattern-order() = 9030
 Provides:       pattern-visible()
-#Obsolete CaaSP Patterns
-Provides:       patterns-caasp-container-runtime
-Obsoletes:      patterns-caasp-container-runtime <= 4.0
 Requires:       containers-systemd
 Requires:       podman
 Requires:       podman-cni-config
 Requires:       (distrobox if patterns-microos-desktop-common else toolbox)
 Suggests:       toolbox
 Requires:       pattern() = basesystem
+#Obsolete CaaSP Patterns
+Provides:       patterns-caasp-container-runtime
+Obsoletes:      patterns-caasp-container-runtime <= 4.0
 
 %description container_runtime
 This pattern installs the default container runtime packages for non-clustered systems.
@@ -59,11 +59,10 @@ This pattern installs the default container runtime packages for non-clustered s
 # empty on purpose
 
 %install
-mkdir -p %buildroot/usr/share/doc/packages/patterns-containers/
-echo 'This file marks the pattern container_runtime to be installed.' >%buildroot/usr/share/doc/packages/patterns-containers/container_runtime.txt
+mkdir -p %{buildroot}%{_docdir}/patterns-containers/
+echo 'This file marks the pattern container_runtime to be installed.' >%{buildroot}%{_docdir}/patterns-containers/container_runtime.txt
 
 %files container_runtime
-%defattr(-,root,root)
 %dir %{_docdir}/patterns-containers
 %{_docdir}/patterns-containers/container_runtime.txt
 
