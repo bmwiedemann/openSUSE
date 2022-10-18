@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 17 13:58:26 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Updated fix-race-condition-during-install.patch to fix another
+  race condition during install
+
+-------------------------------------------------------------------
 Fri Sep 30 12:11:40 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to v4.21.0-1 (jsc#PED-911, jsc#PED-1188)

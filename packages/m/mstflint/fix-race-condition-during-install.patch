@@ -1,4 +1,4 @@
-commit 77d8c2e2d7de83dc8202d99bb995c423299229fb
+commit 032889d95f344f946014498e43efe173703da535
 Author: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 Date:   Mon Oct 15 09:33:09 2018 +0200
 
@@ -7,7 +7,7 @@ Date:   Mon Oct 15 09:33:09 2018 +0200
     Signed-off-by: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 diff --git dev_mgt/Makefile.am dev_mgt/Makefile.am
-index 3118b85f97a4..193abaf79e11 100644
+index 2283c2d1c763..2e4d7781e245 100644
 --- dev_mgt/Makefile.am
 +++ dev_mgt/Makefile.am
 @@ -46,7 +46,7 @@ libdev_mgt_a_SOURCES = \
@@ -19,3 +19,16 @@ index 3118b85f97a4..193abaf79e11 100644
  dist_dev_mgt_pylib_DATA = dev_mgt.py
  
  c_dev_mgt.so: libdev_mgt.a
+diff --git mtcr_py/Makefile.am mtcr_py/Makefile.am
+index 934b8030a229..da7d2aed878f 100644
+--- mtcr_py/Makefile.am
++++ mtcr_py/Makefile.am
+@@ -37,7 +37,7 @@ mtcr_pylibdir = $(libdir)/mstflint/python_tools/
+ USER_DIR = ..
+ MTCR_DIR = $(USER_DIR)/${MTCR_CONF_DIR}
+ 
+-mtcr_pylib_DATA = cmtcr.so mtcr.py
++mtcr_pylib_DATA = cmtcr.so
+ dist_mtcr_pylib_DATA = mtcr.py
+ cmtcr.so:
+ 	$(CC) -g -Wall -pthread -shared ${CFLAGS} $(MTCR_DIR)/*.o -o cmtcr.so $(MFT_CORE_LIB_LINK)
