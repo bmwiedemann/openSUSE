@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Wed Oct 12 00:12:47 UTC 2022 - C J <c.j@tuta.io>
+
+- update to 11.1.1:
+  * Bug fixes for #778 & #789
+  * Code tidying and performance improvements
+
+- version 11.1.0: Build fixes
+
+- version 11.0.0:
+  * Replacement of PointerHolder with std::shared_ptr
+  * JSON output mode is now at version 2
+  * Performance improvements, cleanup and refactoring.
+  * CLI: breaking changes: 
+    The --show-encryption flag now provides encryption information
+    even if a correct password is not supplied.
+    Default json output version with --json has changed from 1 to 2.
+    The --allow-weak-crypto flag is now mandatory when explicitly
+    creating files with weak cryptographic algorithms.
+  * API: breaking changes:
+    Deprecate QPDFObject.hh for removal in qpdf 12.
+    Pipeline::write use unsigned char const* instead of unsigned char*.
+    Deprecated QPDFAcroFormDocumentHelper::copyFieldsFromForeignPage.
+    The function passed to and called by QPDFJob::doIfVerbose now
+    takes a Pipeline& argument instead of a std::ostream& argument.
+    Remove pre qpdf-8.4.0 encryption API methods from QPDFWriter and
+    their corresponding C API functions.
+    QPDFObjectHandle::warnIfPossible no longer takes an optional
+    argument to throw an exception if there is no description.
+    QPDF objects can no longer be copied or assigned to.
+  * CLI Enhancements
+  * Library Enhancements:
+    A new object QPDFLogger has been added.
+    In QPDFObjectHandle, new methods insertItemAndGetNew,
+    appendItemAndGetNew, and replaceKeyAndGetNew. New methods
+    eraseItemAndGetOld, replaceKeyAndGetOld, and removeKeyAndGetOld.
+    QPDFObjectHandle::isDestroyed method.
+    QPDFObjectHandle::getOwningQPDF method now returns a null pointer
+    when the owning QPDF object has been destroyed.
+    QPDFObjectHandle::getQPDF is an alternative to
+    QPDFObjectHandle::getOwningQPDF.
+    Add method QPDFObjectHandle::isSameObjectAs.
+    New factory method QPDF::create() returns a std::shared_ptr<QPDF>.
+    New Pipeline methods have been added to reduce the amount of casting
+    that is needed (write, writeCstr, writeString, operator <<)
+    New Pipeline type Pl_OStream writes to a std::ostream.
+    New Pipeline type Pl_String appends to a std::string.
+    New Pipeline type Pl_Function.
+    Methods have been added to QUtil for converting PDF timestamps and
+    QPDFTime objects to ISO-8601 timestamps.
+    Enhancement to JSON class.
+    Add new functions to the C API for qpdfjob that use a qpdfjob_handle.
+    QPDFJob::registerProgressReporter & qpdfjob_register_progress_reporter
+    as a custom progress reporter with QPDFJob.
+    New overloads: QPDFObjectHandle::StreamDataProvider::provideStreamData
+    with QPDFObjGen const& instead of object ID and generation parameters.
+    In QPDFPageObjectHelper, add a copy_if_fallback parameter to most of
+    the page bounding box methods.
+    Add a move constructor to the Buffer class.
+  * Other changes:
+    In JSON v1 mode: "objects" key now reflects the repaired pages
+    tree if "pages" is specified.
+    Chapter "Contributing to qpdf" was added to the documentation.
+    The qpdf source code is now formatted automatically with clang-format.
+
+- drop obsolete patches:
+  disable-newpdf-renderer.patch
+  qpdf-10.6.3-grep-3.8.patch
+
+-------------------------------------------------------------------
 Thu Sep  8 20:18:10 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fix build with GNU grep 3.8 (boo#1203231)

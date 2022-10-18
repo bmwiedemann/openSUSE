@@ -15,10 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-%define so_version 28
+%define so_version 29
 Name:           qpdf
-Version:        10.6.3
+Version:        11.1.1
 Release:        0
 Summary:        Command-line tools and library for transforming PDF files
 License:        Apache-2.0
@@ -27,17 +26,17 @@ URL:            https://qpdf.sourceforge.io/
 Source:         https://github.com/qpdf/qpdf/releases/download/release-qpdf-%{version}/qpdf-%{version}.tar.gz
 Source1:        https://github.com/qpdf/qpdf/releases/download/release-qpdf-%{version}/qpdf-%{version}.tar.gz.asc
 Source2:        qpdf.keyring
-Patch1:         disable-newpdf-renderer.patch
-Patch2:         qpdf-10.6.3-grep-3.8.patch
 BuildRequires:  gcc-c++
-BuildRequires:  ghostscript
-BuildRequires:  libjpeg8-devel
-BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(zlib)
+BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(gnutls)
+BuildRequires:  texlive-latex
+BuildRequires:  texlive-latexmk
 BuildRequires:  python3-Sphinx
+BuildRequires:  python3-Sphinx-latex
 BuildRequires:  python3-sphinx_rtd_theme
-BuildRequires:  tiff
-BuildRequires:  zlib-devel
-BuildRequires:  pkgconfig(openssl)
+BuildRequires:  cmake
+BuildRequires:  fdupes
 
 %description
 QPDF is a program that does structural, content-preserving
@@ -56,6 +55,7 @@ existing PDF files.
 %package htmldoc
 Summary:        Documentation files for qpdf
 Group:          Documentation/HTML
+BuildArch:      noarch
 
 %description htmldoc
 This package contains the documentation for qpdf
@@ -64,6 +64,7 @@ This package contains the documentation for qpdf
 Summary:        Development files for qpdf PDF manipulation library
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
+Requires:       libqpdf%{so_version} = %{version}
 Requires:       libstdc++-devel
 
 %description devel
@@ -79,38 +80,41 @@ This packages contains the shared libraries required for the qpdf
 package.
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
-export CXXFLAGS="%{optflags} -fvisibility-inlines-hidden"
-%configure --disable-static \
-           --enable-werror \
-           --enable-crypto-openssl \
-	   --enable-html-doc \
-           --disable-implicit-crypto \
-           --docdir='${datarootdir}'/doc/packages/%{name} \
-           --enable-show-failed-test-output \
-           --enable-test-compare-images
-%make_build
+%cmake \
+  -DBUILD_DOC=ON \
+  -DBUILD_DOC_DIST=ON \
+  -DBUILD_DOC_HTML=ON \
+  -DBUILD_DOC_PDF=ON \
+  -DCMAKE_INSTALL_DOCDIR='${datarootdir}'share/doc/packages/%{name}
+%cmake_build
 
 %check
-%make_build check
-rm -rf qpdf/qtest # Unicode data can't be redistributed freely
+make -C build test
+
 
 %install
-%make_install
+%cmake_install
+mkdir -m755 -p %{buildroot}%{_docdir}/%{name}/html
+mkdir -m755 -p %{buildroot}%{_docdir}/%{name}/singlehtml
+pushd build/manual/doc-dist
+  cp -a manual-html/* %{buildroot}%{_docdir}/%{name}/html/
+  cp -a manual-single-page-html/* %{buildroot}%{_docdir}/%{name}/singlehtml/
+  install -Dm644 qpdf-manual.pdf %{buildroot}%{_docdir}/%{name}/qpdf-manual.pdf
+popd
 
-find %{buildroot} -type f -name "*.la" -delete -print
-
-%make_build doc-dist DOC_DEST=%{buildroot}%{_docdir}/%{name}
+# create symlinks for html and singlehtml duplicate docs
+%fdupes -s %{buildroot}%{_docdir}/%{name}
 
 %post -n libqpdf%{so_version} -p /sbin/ldconfig
 %postun -n libqpdf%{so_version} -p /sbin/ldconfig
 
 %files
 %dir %{_docdir}/%{name}
-%doc ChangeLog README-doc.txt
-%license Artistic-2.0
+%doc ChangeLog README-doc.txt qpdf-manual.pdf
+%license Artistic-2.0 LICENSE.txt
 %{_bindir}/*
 %{_mandir}/man1/*
 
@@ -122,8 +126,10 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libqpdf.so.%{so_version}*
 
 %files devel
+%doc %{_docdir}/%{name}/examples
 %{_includedir}/*
 %{_libdir}/pkgconfig/libqpdf.pc
 %{_libdir}/libqpdf.so
+%{_libdir}/cmake/qpdf
 
 %changelog
