@@ -133,6 +133,9 @@
     <package name="apparmor-profiles" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-apparmor -->
     <package name="apparmor-utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-apparmor -->
     <package name="apparmor-utils-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-apparmor -->
+    <package name="appmenu-gtk-module-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="appmenu-gtk2-module" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="appmenu-gtk3-module" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="appstream-glib" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="appstream-glib-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="arabic-ae-fonts" supportstatus="unsupported"/> <!-- reason: dvd:arabic-fonts -->
@@ -1610,6 +1613,8 @@
     <package name="libaom3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libapparmor1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libappindicator3-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libappmenu-gtk2-parser0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libappmenu-gtk3-parser0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libappstream-glib8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libappstream4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libapr-util1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
@@ -2477,7 +2482,7 @@
     <package name="libqgpgme7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libqmi-glib5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libqmi-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libqpdf28" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libqpdf29" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libqqwing2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libqrencode4" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libqrtr-glib0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->

@@ -735,9 +735,6 @@ unsorted:
   - appindicator-sharp-devel 
   - applet-window-appmenu 
   - applet-window-buttons 
-  - appmenu-gtk-module-common 
-  - appmenu-gtk2-module 
-  - appmenu-gtk3-module 
   - appmenu-registrar 
   - appres 
   - appstream-glib-devel 
@@ -5771,6 +5768,10 @@ unsorted:
   - git-annex: [x86_64] 
   - git-annex-bash-completion: [x86_64] 
   - git-arch 
+  - git-bug 
+  - git-bug-bash-completion 
+  - git-bug-fish-completion 
+  - git-bug-zsh-completion 
   - git-bz 
   - git-cola 
   - git-credential-gnome-keyring 
@@ -9826,9 +9827,7 @@ unsorted:
   - libappindicator3-devel 
   - libappmenu-gtk-parser-devel 
   - libappmenu-gtk2-parser-devel 
-  - libappmenu-gtk2-parser0 
   - libappmenu-gtk3-parser-devel 
-  - libappmenu-gtk3-parser0 
   - libapr-util1-0-dbd-mysql 
   - libapr-util1-0-dbd-pgsql 
   - libapr-util1-0-dbd-sqlite3 
@@ -19725,7 +19724,6 @@ unsorted:
   - perl-GraphicsMagick 
   - perl-Gravatar-URL 
   - perl-Growl-GNTP 
-  - perl-Gtk2 
   - perl-Gtk3 
   - perl-Gtk3-ImageView 
   - perl-Gtk3-SimpleList 
@@ -24448,6 +24446,7 @@ unsorted:
   - python310-pytest-mockito 
   - python310-pytest-mpi 
   - python310-pytest-mpl 
+  - python310-pytest-mypy 
   - python310-pytest-openfiles 
   - python310-pytest-order 
   - python310-pytest-percent 
@@ -24764,7 +24763,7 @@ unsorted:
   - python310-scikit-umfpack: [x86_64] 
   - python310-scipy 
   - python310-scipy-gnu-hpc: [x86_64] 
-  - python310-scipy_1_9_1-gnu-hpc: [x86_64] 
+  - python310-scipy_1_9_2-gnu-hpc: [x86_64] 
   - python310-scitokens 
   - python310-scp 
   - python310-screeninfo 
@@ -27761,6 +27760,7 @@ unsorted:
   - python38-pytest-mockito 
   - python38-pytest-mpi 
   - python38-pytest-mpl 
+  - python38-pytest-mypy 
   - python38-pytest-openfiles 
   - python38-pytest-order 
   - python38-pytest-percent 
@@ -28091,7 +28091,7 @@ unsorted:
   - python38-scikit-umfpack: [x86_64] 
   - python38-scipy 
   - python38-scipy-gnu-hpc: [x86_64] 
-  - python38-scipy_1_9_1-gnu-hpc: [x86_64] 
+  - python38-scipy_1_9_2-gnu-hpc: [x86_64] 
   - python38-scitokens 
   - python38-scour 
   - python38-scp 
@@ -31100,6 +31100,7 @@ unsorted:
   - python39-pytest-mockito 
   - python39-pytest-mpi 
   - python39-pytest-mpl 
+  - python39-pytest-mypy 
   - python39-pytest-openfiles 
   - python39-pytest-order 
   - python39-pytest-percent 
@@ -31429,7 +31430,7 @@ unsorted:
   - python39-scikit-umfpack: [x86_64] 
   - python39-scipy 
   - python39-scipy-gnu-hpc: [x86_64] 
-  - python39-scipy_1_9_1-gnu-hpc: [x86_64] 
+  - python39-scipy_1_9_2-gnu-hpc: [x86_64] 
   - python39-scitokens 
   - python39-scour 
   - python39-scp 
