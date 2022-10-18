@@ -32,7 +32,6 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  python3-appdirs >= 1.3
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
-BuildRequires:  python3-six >= 1.5
 Requires:       ffmpeg
 Requires:       libgexiv2-2 >= 0.5
 Requires:       python3-appdirs >= 1.3
@@ -43,7 +42,6 @@ Requires:       python3-qt5
 Requires:       python3-qt5-sip
 Requires:       python3-requests >= 2.4.0
 Requires:       python3-requests-oauthlib
-Requires:       python3-six >= 1.5
 Requires:       typelib(GExiv2)
 BuildArch:      noarch
 

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 18 08:37:48 UTC 2022 - pgajdos@suse.com
+
+- python-six is not required
+  https://trello.com/c/MO53MocR/143-remove-python3-six
+
+-------------------------------------------------------------------
 Wed Mar 30 08:52:22 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2022.3.2
