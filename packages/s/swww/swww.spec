@@ -19,7 +19,7 @@
 Name:           swww
 Version:        0.4.3+git14
 Release:        0
-Summary:        Efficient wallpaper daemon for Wayland
+Summary:        Wallpaper daemon for Wayland
 License:        GPL-3.0-only
 URL:            https://github.com/Horus645/swww
 Source0:        %{name}-%{version}.tar.xz
@@ -31,8 +31,8 @@ BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(xkbcommon)
 
 %description
-swww is an efficient wallpaper daemon for Wayland that is controlled
-at runtime. It uses LZ4 compression for efficient frame animations
+swww is a wallpaper daemon for Wayland that is controlled
+at runtime. It uses LZ4 compression for frame animations
 for animated wallpapers.
 
 %package        bash-completion
@@ -83,7 +83,6 @@ install -Dm644 -T completions/_swww %{buildroot}%{_datadir}/zsh/site-functions/_
 %{_bindir}/swww
 %license LICENSE
 %doc CHANGELOG.md README.md
-
 
 %files bash-completion
 %dir %{_datadir}/bash-completion
