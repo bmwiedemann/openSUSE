@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 17 17:26:27 UTC 2022 - Radoslav Kolev <radoslav.kolev@suse.com>
+
+- Annotate CVEs already fixed in upstream, but not mentioned in .changes:
+  * CVE-2014-9645 (bsc#914660):  strips of / in module names that can lead to loading unwanted modules 
+
+-------------------------------------------------------------------
 Thu Jun 30 08:30:05 UTC 2022 - Ludwig Nussel <lnussel@suse.de>
 
 - prepare spec file for rpmbuild --build-in-place --noprep
