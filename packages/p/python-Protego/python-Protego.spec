@@ -25,6 +25,8 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/scrapy/protego
 Source:         https://files.pythonhosted.org/packages/source/P/Protego/Protego-%{version}.tar.gz
+# https://github.com/scrapy/protego/issues/31
+Patch0:         python-Protego-no-six.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
@@ -39,6 +41,7 @@ Protego is a pure-Python `robots.txt` parser with support for modern conventions
 
 %prep
 %setup -q -n Protego-%{version}
+%patch0 -p1
 
 %build
 %python_build
