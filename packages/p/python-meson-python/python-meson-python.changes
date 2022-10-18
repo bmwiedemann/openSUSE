@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 14 12:44:56 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update meson-subdir-fix.patch to fix the failure for python3.8 and python3.9
+  because the meson package is only available for python3.10
+
+-------------------------------------------------------------------
+Fri Oct 14 08:49:00 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Add meson-subdir-fix.patch to fix the failure with new meson
+
+-------------------------------------------------------------------
 Tue Oct 11 09:01:00 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.10.0

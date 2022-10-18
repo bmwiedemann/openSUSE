@@ -25,6 +25,8 @@ URL:            https://github.com/FFY00/meson-python
 Source:         https://files.pythonhosted.org/packages/source/m/meson_python/meson_python-%{version}.tar.gz
 # PATCH-FEATURE-OPENSUSE mesonpy-trim-deps.patch code@bnavigator.de
 Patch1:         mesonpy-trim-deps.patch
+# PATCH-FIX-UPSTREAM https://github.com/FFY00/meson-python/commit/f51fcafb20e20a8a724a2b65f49670a74fe7d8f2 TST: update the test for install_subdir for fix in meson 0.63.3
+Patch2:         meson-subdir-fix.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyproject-metadata >= 0.6.1}

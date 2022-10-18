@@ -15,4 +15,15 @@
     <comment></comment>
     <requestid>1009788</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>d4e40cbcaaded8f70e7f453ab3cc88ca</srcmd5>
+    <version>0.10.0</version>
+    <time>1666089850</time>
+    <user>dimstar_suse</user>
+    <comment>- Update meson-subdir-fix.patch to fix the failure for python3.8 and python3.9
+  because the meson package is only available for python3.10
+- Add meson-subdir-fix.patch to fix the failure with new meson
+</comment>
+    <requestid>1010928</requestid>
+  </revision>
 </revisionlist>
