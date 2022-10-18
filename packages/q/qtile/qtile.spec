@@ -39,7 +39,6 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-pywlroots
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-setuptools_scm
-BuildRequires:  python3-six >= 1.11.0
 BuildRequires:  python3-xcffib >= 0.10.1
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(libinput)
@@ -51,7 +50,6 @@ BuildRequires:  pkgconfig(xwayland)
 Requires:       python3-cairocffi >= 0.9.0
 Requires:       python3-cairocffi-pixbuf >= 0.9.0
 Requires:       python3-cffi >= 1.1.0
-Requires:       python3-six >= 1.11.0
 Requires:       python3-xcffib >= 0.10.1
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
