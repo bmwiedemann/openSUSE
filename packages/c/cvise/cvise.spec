@@ -17,7 +17,7 @@
 
 
 Name:           cvise
-Version:        2.6.0+git.20221003.09a5d1e
+Version:        2.6.0+git.20221018.7c1f0b4
 Release:        0
 Summary:        Super-parallel Python port of the C-Reduce
 License:        BSD-3-Clause
@@ -27,7 +27,11 @@ BuildRequires:  astyle
 BuildRequires:  clang-devel
 BuildRequires:  cmake
 BuildRequires:  flex
+%if %{suse_version} < 1550
+BuildRequires:  gcc11-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  indent
 BuildRequires:  llvm-devel
 BuildRequires:  ncurses-devel
@@ -63,6 +67,10 @@ and report bugs in compilers and other tools that process C/C++ or OpenCL code.
 %autopatch -p1
 
 %build
+%if %{suse_version} < 1550
+export CC=gcc-11
+export CXX=g++-11
+%endif
 %cmake -DCMAKE_INSTALL_LIBEXECDIR=%{_libexecdir}
 %cmake_build
 

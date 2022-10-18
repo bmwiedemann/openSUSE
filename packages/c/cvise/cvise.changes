@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Oct 18 07:50:53 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.6.0+git.20221018.7c1f0b4:
+  * Fix LLVM 16 build.
+  * Move cron job to 03:00
+  * Fix CI.
+  * Split workflows.
+  * Add cron job.
+  * LLVM 16: disable one test
+  * clang 16: disable one -Werror
+  * Fix LLVM 16 issue:
+  * Fix CI
+  * Add LLVM Nightly builder.
+  * Use env for Leap.
+  * Move to -std=c++17 as it will be required by LLVM 16.
+
+-------------------------------------------------------------------
+Sat Oct 15 07:48:40 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Use gcc-11 for Leap.
+
+-------------------------------------------------------------------
 Thu Oct 13 08:51:09 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Do not use ninja, prefer make (due to jobserver interaction with GCC).

@@ -847,4 +847,26 @@
     <comment>- Do not use ninja, prefer make (due to jobserver interaction with GCC).</comment>
     <requestid>1010438</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>f4bc3daff1f1156d56b5103dcbefbe9b</srcmd5>
+    <version>2.6.0+git.20221018.7c1f0b4</version>
+    <time>1666089942</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.6.0+git.20221018.7c1f0b4:
+  * Fix LLVM 16 build.
+  * Move cron job to 03:00
+  * Fix CI.
+  * Split workflows.
+  * Add cron job.
+  * LLVM 16: disable one test
+  * clang 16: disable one -Werror
+  * Fix LLVM 16 issue:
+  * Fix CI
+  * Add LLVM Nightly builder.
+  * Use env for Leap.
+  * Move to -std=c++17 as it will be required by LLVM 16.
+
+- Use gcc-11 for Leap.</comment>
+    <requestid>1029665</requestid>
+  </revision>
 </revisionlist>
