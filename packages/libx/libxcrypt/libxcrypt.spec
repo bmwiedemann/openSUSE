@@ -1,7 +1,7 @@
 #
 # spec file for package libxcrypt
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libxcrypt
-Version:        4.4.27
+Version:        4.4.28
 Release:        0
 Summary:        Extended crypt library for DES, MD5, Blowfish and others
 License:        BSD-2-Clause AND GPL-3.0-or-later AND LGPL-2.1-or-later AND BSD-3-Clause AND SUSE-Public-Domain
