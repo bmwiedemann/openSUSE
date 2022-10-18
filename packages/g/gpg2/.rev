@@ -1325,4 +1325,12 @@ See-also: gnupg-announce/2019q1/000434.html
     <comment></comment>
     <requestid>993850</requestid>
   </revision>
+  <revision rev="163" vrev="1">
+    <srcmd5>f327a666a139e95fbd0465d56ab2f3a5</srcmd5>
+    <version>2.3.8</version>
+    <time>1666089885</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1029595</requestid>
+  </revision>
 </revisionlist>

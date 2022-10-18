@@ -17,7 +17,7 @@
 
 
 Name:           gpg2
-Version:        2.3.7
+Version:        2.3.8
 Release:        0
 Summary:        File encryption, decryption, signature creation and verification utility
 License:        GPL-3.0-or-later
@@ -39,7 +39,6 @@ Patch7:         gnupg-2.2.16-secmem.patch
 Patch8:         gnupg-accept_subkeys_with_a_good_revocation_but_no_self-sig_during_import.patch
 Patch9:         gnupg-add-test-cases-for-import-without-uid.patch
 Patch10:        gnupg-allow-import-of-previously-known-keys-even-without-UIDs.patch
-Patch11:        gnupg-2.3.7-scd-openpgp-Fix-workaround-for-Yubikey-heuristics.patch
 BuildRequires:  expect
 BuildRequires:  fdupes
 BuildRequires:  ibmswtpm2
