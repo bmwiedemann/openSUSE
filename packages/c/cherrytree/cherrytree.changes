@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sun Oct 16 14:28:10 UTC 2022 - malcolmlewis@opensuse.org
+
+- Update to version 0.99.50+8:
+  * Fixed few dialogs missing the property to be destroyed with the
+    parent, (gh#giuspen/cherrytree#2133).
+  * Better implementation for fixed integrated terminal when
+    executing a command for the first time from hidden (not yet
+    instantiated) not passing the command.
+  * Fixed loss of transparency with PNGs in some GTK3 themes,
+    (gh#giuspen/cherrytree#1402 and gh#giuspen/cherrytree#2132).
+  * Fixed integrated terminal show/hide command to follow real
+    status than settings status.
+  * Fixed issue with separator between tree and text not restored
+    when tree on right side and window maximised,
+    (gh#giuspen/cherrytree#2126).
+  * When closing virtual terminal take focus to text rather than
+    tree.
+  * New integrated terminal - added right click menu and keyboard
+    shortcuts to copy and paste.
+  * Implemented stricter checks for hard coded keyboard shortcuts
+    requiring Ctrl but not Alt, (gh#giuspen/cherrytree#2124).
+  * Changed syntax of displayed keyboard shortcuts in toolbar
+    tooltips, (gh#giuspen/cherrytree#2128).
+  * Just exposing CtrlDown and AltDown from ColumnEdit subclass to
+    TextView.
+  * Fixed minor issue with exit discarding changes icon not
+    visible.
+  * Implemented command to execute code from either text selection
+    or current line, (gh#giuspen/cherrytree#1772).
+  * Adding support for code execution via integrated terminal,
+    (gh#giuspen/cherrytree#1902, gh#giuspen/cherrytree#1772 and
+    gh#giuspen/cherrytree#547).
+  * Translation updates.
+- Add build requires VTE 2.91 for new terminal integration.
+
+-------------------------------------------------------------------
 Thu Sep 15 02:31:01 UTC 2022 - malcolmlewis@opensuse.org
 
 - Update to version 0.99.49+3:
