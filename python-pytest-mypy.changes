@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Oct 15 08:06:53 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Update URL
+- Update to v0.10.0
+  * Drop support for python<3.6
+
+-------------------------------------------------------------------
+Thu Aug 18 07:48:53 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update 0.9.1:
+  * Add support for pytest 7.
+  * Drop support for pytest<4.6.
+  * Add --mypy-config-file.
+- Drop patch 121-recent-mypy.patch, included upstream.
+- Add patch indirect-test-new-mypy.patch:
+  * Fix failing test with new mypy.
+
+-------------------------------------------------------------------
 Mon Jan 10 14:05:23 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.8.1:

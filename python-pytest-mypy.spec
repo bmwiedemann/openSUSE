@@ -19,29 +19,29 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-pytest-mypy
-Version:        0.8.1
+Version:        0.10.0
 Release:        0
 Summary:        Mypy static type checker plugin for Pytest
 License:        MIT
-Group:          Development/Languages/Python
-URL:            https://github.com/dbader/pytest-mypy
+URL:            https://github.com/realpython/pytest-mypy
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-mypy/pytest-mypy-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM 121-recent-mypy.patch gh#dbader/pytest-mypy#126 mcepl@suse.com
-# this patch makes things totally awesome
-Patch0:         121-recent-mypy.patch
+Patch0:         indirect-test-new-mypy.patch
 BuildRequires:  %{python_module setuptools_scm >= 3.5}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-filelock
+Requires:       python-attrs >= 19.0
+Requires:       python-filelock >= 3.0
 Requires:       python-mypy >= 0.900
 Requires:       python-pytest >= 2.8
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module filelock}
+BuildRequires:  %{python_module attrs >= 19.0}
+BuildRequires:  %{python_module filelock >= 3.0}
 BuildRequires:  %{python_module mypy >= 0.900}
 BuildRequires:  %{python_module pexpect}
 BuildRequires:  %{python_module pytest >= 2.8}
 BuildRequires:  %{python_module pytest-xdist}
+
 # /SECTION
 %python_subpackages
 
@@ -49,8 +49,7 @@ BuildRequires:  %{python_module pytest-xdist}
 Mypy static type checker plugin for Pytest.
 
 %prep
-%setup -q -n pytest-mypy-%{version}
-%autopatch -p1
+%autosetup -p1 -n pytest-mypy-%{version}
 
 %build
 %python_build
@@ -65,6 +64,8 @@ Mypy static type checker plugin for Pytest.
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pytest_mypy.py
+%{python_sitelib}/pytest[-_]mypy*/
+%pycache_only %{python_sitelib}/__pycache__/
 
 %changelog
