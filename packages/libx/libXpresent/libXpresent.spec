@@ -1,7 +1,7 @@
 #
 # spec file for package libXpresent
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,13 @@
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 
 Name:           libXpresent
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        An X Window System client interface to the Present extension to the X protocol
 License:        MIT
 Group:          Development/Libraries/X11
-Url:            https://gitlab.freedesktop.org/xorg/lib/libxpresent
-Source:         https://www.x.org/releases/individual/lib/%{name}-%{version}.tar.bz2
+URL:            https://gitlab.freedesktop.org/xorg/lib/libxpresent
+Source:         https://www.x.org/releases/individual/lib/%{name}-%{version}.tar.xz
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xfixes)
 BuildRequires:  pkgconfig(xrandr)
@@ -35,6 +35,7 @@ BuildRequires:  pkgconfig(presentproto)
 %endif
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 
 %description
@@ -77,6 +78,7 @@ This package contains header files and documentation for the Xpresent library.
 %install
 %make_install
 rm -f %{buildroot}%{_libdir}/*.la
+%fdupes %{buildroot}%{_mandir}
 
 %post -n %{lname} -p /sbin/ldconfig
 
@@ -87,10 +89,10 @@ rm -f %{buildroot}%{_libdir}/*.la
 
 %files devel
 %license COPYING AUTHORS
-%doc README
+%doc README.md
 %{_includedir}/X11/extensions/Xpresent.h
 %{_libdir}/libXpresent.{a,so}
 %{_libdir}/pkgconfig/xpresent.pc
-%{_mandir}/man3/Xpresent.3%{ext_man}
+%{_mandir}/man3/{Xpresent,XPresent*}.3%{ext_man}
 
 %changelog
