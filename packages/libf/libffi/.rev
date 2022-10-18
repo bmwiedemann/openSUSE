@@ -119,4 +119,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1007869</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>3f514bcbad0e34bcf009ad895ff4d367</srcmd5>
+    <version>3.4.3</version>
+    <time>1666089847</time>
+    <user>dimstar_suse</user>
+    <comment>- add riscv64-handle-big-structures.patch</comment>
+    <requestid>1010285</requestid>
+  </revision>
 </revisionlist>

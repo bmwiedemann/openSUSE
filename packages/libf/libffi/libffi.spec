@@ -26,6 +26,7 @@ Group:          Development/Languages/C and C++
 URL:            https://sourceware.org/libffi/
 Source:         https://github.com/libffi/libffi/releases/download/v%{version}/libffi-%{version}.tar.gz
 Source99:       baselibs.conf
+Patch1:         riscv64-handle-big-structures.patch
 # for make check
 BuildRequires:  dejagnu
 BuildRequires:  expect
@@ -64,7 +65,7 @@ time.
 %postun -n libffi%{libffi_sover} -p /sbin/ldconfig
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 # https://github.com/libffi/libffi/issues/733

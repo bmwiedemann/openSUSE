@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 10 09:46:39 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add riscv64-handle-big-structures.patch 
+
+-------------------------------------------------------------------
 Fri Sep 23 13:17:48 UTC 2022 - Richard Biener <rguenther@suse.com>
 
 - update to 3.4.3:
