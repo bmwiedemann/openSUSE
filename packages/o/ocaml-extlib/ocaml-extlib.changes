@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Sep 25 19:39:37 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Run dune build twice to ensure reproducible results
+
+-------------------------------------------------------------------
 Tue Aug  2 02:02:02 UTC 2022 - ohering@suse.de
 
 - Update to version 1.7.9

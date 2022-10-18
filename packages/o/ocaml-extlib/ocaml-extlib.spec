@@ -55,6 +55,7 @@ developing applications that use %name.
 dune_release_pkgs='extlib'
 %ocaml_dune_setup
 %ocaml_dune_build
+%ocaml_dune_build
 
 %install
 %ocaml_dune_install
