@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jul  9 22:47:02 UTC 2022 - Manfred Schwarb <manfred99@gmx.ch>
+
+- Update to head checkout a14256a:
+  * solves several UTF-8 issues
+  * switches to python3
+  * deal with kernel.task_delayacct (CONFIG_TASK_DELAY_ACCT)
+- remove obsolete patches:
+  * iotop-0.6-ignore-invalid-lines-in-proc-status.patch
+  * iotop-0.6-python3-header.patch
+  * iotop-0.6-python3_build.patch
+  * iotop-0.60-fix-proc-status-split.patch
+- remove patch iotop-0.6-noendcurses.patch, is now handled
+  by issuing sys.exit(1).
+- remove "BuildArch: noarch" as package is architecture dependent
+
+-------------------------------------------------------------------
 Tue May 29 15:33:22 UTC 2018 - ldevulder@suse.com
 
 - Add iotop-0.60-fix-proc-status-split.patch: Upstream commit to

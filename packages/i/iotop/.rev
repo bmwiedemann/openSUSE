@@ -196,4 +196,12 @@
   commit to fix crash when /proc/*/status has invalid lines (forwarded request 612912 from ldevulder)</comment>
     <requestid>612962</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>fc391e6f5d5fba486b62223926d31fd2</srcmd5>
+    <version>0.6git.20220308</version>
+    <time>1666102899</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1029723</requestid>
+  </revision>
 </revisionlist>

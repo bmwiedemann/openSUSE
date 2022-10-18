@@ -1,7 +1,7 @@
 #
 # spec file for package iotop
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,30 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%{!?python_sitelib: %global python_sitelib %(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")}
+%define gitdate 20220308
+%define gitversion HEAD-a14256a
+
 Name:           iotop
-Version:        0.6
+Version:        0.6git.%{gitdate}
 Release:        0
 Summary:        Top Like UI to Show Per-Process I/O Going on
 License:        GPL-2.0-only
 Group:          System/Monitoring
-Url:            http://guichaz.free.fr/iotop/
-Source0:        http://guichaz.free.fr/iotop/files/iotop-%{version}.tar.bz2
-Source1:        http://guichaz.free.fr/iotop/files/iotop-%{version}.tar.bz2.asc
-Source2:        %{name}.keyring
-Patch0:         iotop-0.6-python3_build.patch
-Patch1:         iotop-0.6-python3-header.patch
-Patch2:         iotop-0.6-noendcurses.patch
-Patch3:         iotop-0.60-fix-proc-status-split.patch
-Patch4:         iotop-0.6-ignore-invalid-lines-in-proc-status.patch
+URL:            http://guichaz.free.fr/iotop/
+Source0:        https://repo.or.cz/iotop.git/snapshot/HEAD.tar.gz#/%{name}-%{gitversion}.tar.gz
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-devel
 Requires:       python3-curses
-BuildArch:      noarch
 
 %description
 Linux has always been able to show how much I/O was going on (the bi
@@ -45,25 +40,21 @@ Iotop is a Python program with a UI similar to top to show on behalf of
 which process is the I/O going on.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
+%autosetup -p1 -n %{name}-%{gitversion}
 
 %build
-python3 setup.py build
+%python3_build
 
 %install
-python3 setup.py install --prefix=%{_prefix} --optimize=2 --root=%{buildroot}
+%python3_install
+
 %fdupes -s %{buildroot}
 
 %files
 %license COPYING
-%doc NEWS THANKS
+%doc README NEWS THANKS
 %{_sbindir}/iotop
-%{_mandir}/man8/iotop.8%{ext_man}
-%{python_sitelib}/*
+%{_mandir}/man8/iotop.8%{?ext_man}
+%{python3_sitearch}/*
 
 %changelog
