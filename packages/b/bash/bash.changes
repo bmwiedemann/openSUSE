@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct 12 17:37:47 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Don't strip binaries
+- Work around a signal mask issue with qemu linux-user emulation
+
+-------------------------------------------------------------------
+Wed Oct 12 11:30:01 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Remove backup of patched tests
+
+-------------------------------------------------------------------
 Thu Oct  6 10:43:59 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Add upstream patches

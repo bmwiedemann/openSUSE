@@ -276,12 +276,18 @@ set -x
 %endif
 %patch49  -b .pthtmp
 %patch50  -b .qd
-%patch0   -b .0
+%patch0
 
 # This has to be always the same version as included in the bash its self
 rl1=($(sed -rn '/RL_READLINE_VERSION/p' lib/readline/readline.h))
 rl2=($(sed -rn '/RL_READLINE_VERSION/p' %{_includedir}/readline/readline.h))
 test ${rl1[2]} = ${rl2[2]} || exit 1
+
+%if 0%{?qemu_user_space_build}
+# Something in qemu clobbers the signal mask to block SIGALRM during the
+# execution of this test, causing it to hang.  Skip it.
+echo exit 0 > tests/read7.sub
+%endif
 
 %build
   LANG=POSIX
@@ -548,7 +554,6 @@ EOF
   %find_lang bash
   %fdupes -s %{buildroot}%{_datadir}/bash/helpfiles
   sed -ri '1{ s@/bin/sh@/bin/bash@ }' %{buildroot}%{_bindir}/bashbug
-  strip --strip-unneeded %{buildroot}%{_bindir}/bash
 
 %if %{with alternatives}
 %post -p %{_bindir}/bash

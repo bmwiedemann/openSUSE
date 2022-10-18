@@ -1807,4 +1807,13 @@ Upstream declares the bash license to be GPL-3.0+ - not GPL-2.0+ (forwarded requ
   gg. Since there is no `declare -' equivalent of `local -', make sure to use</comment>
     <requestid>1008386</requestid>
   </revision>
+  <revision rev="181" vrev="2">
+    <srcmd5>7c4912e58b8b79263d89ac0b6ff47af8</srcmd5>
+    <version>5.2.MACRO</version>
+    <time>1666089849</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't strip binaries
+- Work around a signal mask issue with qemu linux-user emulation (forwarded request 1010321 from Andreas_Schwab)</comment>
+    <requestid>1010475</requestid>
+  </revision>
 </revisionlist>
