@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 17 12:45:32 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- libksba 1.6.2: [bsc#1204357, CVE-2022-3515]
+  * Fix integer overflow in the CRL parser.
+
+-------------------------------------------------------------------
 Sun Sep 18 09:55:37 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - libksba 1.6.1:
