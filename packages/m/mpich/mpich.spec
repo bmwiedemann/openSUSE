@@ -266,7 +266,7 @@ BuildRequires:  libjson-c-devel
 BuildRequires:  libtool
 BuildRequires:  pkg-config
 
-%ifnarch s390 s390x %{arm}
+%ifnarch s390 s390x %{arm} ppc64
 BuildRequires:  valgrind-devel
 %endif
 %ifnarch s390 s390x armv7hl

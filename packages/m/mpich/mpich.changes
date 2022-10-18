@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 17 09:02:43 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Disable valgrind on ppc64 to fix build dependency issues.
+- Add _constraints to fix compilation running out of disk space.
+
+-------------------------------------------------------------------
 Thu Sep 29 15:32:23 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to 4.0.2
