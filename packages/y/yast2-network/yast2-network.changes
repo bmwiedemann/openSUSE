@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct  3 08:31:33 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
+
+- Do not assume wicked will be installed by default anymore and
+  return the needed packages by the selected backend when them
+  are not installed (bsc#1201235, bsc#1201435)
+- 4.5.9
+
+-------------------------------------------------------------------
 Thu Sep 29 09:15:47 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
 
 - Fixed issue when writing the NetworkManager config without a
