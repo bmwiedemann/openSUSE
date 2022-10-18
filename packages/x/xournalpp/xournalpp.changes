@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 17 10:38:50 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Add Recommends webp-pixbuf-loader:
+  See https://github.com/xournalpp/xournalpp/issues/4248
+
+-------------------------------------------------------------------
 Tue Feb 22 14:48:13 UTC 2022 - postix@posteo.eu
 
 - Add Recommends tex(scontents.tex) :

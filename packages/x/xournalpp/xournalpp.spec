@@ -41,8 +41,9 @@ BuildRequires:  pkgconfig(poppler-glib)
 BuildRequires:  pkgconfig(portaudiocpp)
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(zlib)
-Recommends:     tex(standalone.tex)
+Recommends:     webp-pixbuf-loader
 Recommends:     tex(scontents.tex)
+Recommends:     tex(standalone.tex)
 %if 0%{?suse_version} < 1550
 BuildRequires:  gcc9-c++
 %else
