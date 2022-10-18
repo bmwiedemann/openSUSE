@@ -27,12 +27,12 @@ URL:            https://pypi.org/project/manuel/
 Source:         https://files.pythonhosted.org/packages/source/m/manuel/manuel-%{version}.tar.gz
 # add fixed sphinx config <hpj@urpla.net>
 Source1:        conf.py
+# https://github.com/benji-york/manuel/issues/33
+Patch0:         python-manuel-no-six.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-six
 BuildArch:      noarch
 # SECTION Documentation requirements:
 BuildRequires:  python3-Sphinx
@@ -55,7 +55,7 @@ Summary:        Build tested documentation
 This package contains documentation files for %{name}.
 
 %prep
-%setup -q -n manuel-%{version}
+%autosetup -p1 -n manuel-%{version}
 cp %{SOURCE1} .
 
 %build
