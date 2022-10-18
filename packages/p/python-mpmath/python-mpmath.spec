@@ -1,7 +1,7 @@
 #
 # spec file for package python-mpmath
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,11 +29,9 @@ BuildRequires:  %{python_module gmpy >= 1.03}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-gmpy >= 1.03
-Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
 
