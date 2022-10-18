@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Oct 18 05:11:08 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.59.0:
+  * Fixes #1179 Deprecated SPDX license (#1263)
+  * feat: add RelationshipsBySourceOwnership to syft json output (#1248)
+  * fix: reset merged package into map; (#1258)
+  * refactor: Remove experimental Anchore Enterprise upload functionality (#1257)
+  * Update syft bootstrap tools to latest versions. (#1254)
+  * Update Stereoscope to d24c9d626b33fa720210b007a20767801827b532 (#1253)
+  * Update syft bootstrap tools to latest versions. (#1244)
+  * fix apkdb checksum representation (#1247)
+  * feat: add identifiable field to source object (#1243)
+  * feat: attest support for Singularity images (#1201)
+  * Update syft bootstrap tools to latest versions. (#1239)
+  * Update Stereoscope to 1b1b744a919964f38d14e1416fb3f25221b761ce (#1240)
+  * fix: Follow symlinks when searching for globs in all-layers scope (#1221)
+  * update requires to use list; remove field (#1234)
+
+-------------------------------------------------------------------
 Fri Sep 30 05:10:45 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.58.0:
