@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Oct 17 08:27:30 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- fixed download URLs of tarball and signature file in specfile 
+
+-------------------------------------------------------------------
+Sat Oct 15 21:30:10 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.1.1
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * Adopt X.Org standard coding style (via x-indent-all.sh)
+  * Add .git-blame-ignore-revs to hide whitespace commits from git blame
+  * Variable scope reductions as recommended by cppcheck
+  * Delete functions identified as unused by cppcheck
+  * Make some functions static that aren't called from other files
+  * Remove redundant assignment
+  * Remove redundant null-pointer check
+  * Fix -Wsign-compare warnings
+  * Remove unnecessary cast of strlen result in malloc argument
+  * Remove weak symbol setup from Atom code
+  * Depend on xproto and fsproto that are now used.
+
+-------------------------------------------------------------------
 Mon Aug  2 15:19:47 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - switch to libXfont2 

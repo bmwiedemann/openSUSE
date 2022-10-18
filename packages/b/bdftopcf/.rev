@@ -80,4 +80,29 @@
     <comment>- switch to libXfont2</comment>
     <requestid>909821</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f57872bf185978afbf7ddd22b09c3ea2</srcmd5>
+    <version>1.1.1</version>
+    <time>1666089863</time>
+    <user>dimstar_suse</user>
+    <comment>- fixed download URLs of tarball and signature file in specfile 
+
+- Update to version 1.1.1
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * Adopt X.Org standard coding style (via x-indent-all.sh)
+  * Add .git-blame-ignore-revs to hide whitespace commits from git blame
+  * Variable scope reductions as recommended by cppcheck
+  * Delete functions identified as unused by cppcheck
+  * Make some functions static that aren't called from other files
+  * Remove redundant assignment
+  * Remove redundant null-pointer check
+  * Fix -Wsign-compare warnings
+  * Remove unnecessary cast of strlen result in malloc argument
+  * Remove weak symbol setup from Atom code
+  * Depend on xproto and fsproto that are now used.</comment>
+    <requestid>1012028</requestid>
+  </revision>
 </revisionlist>

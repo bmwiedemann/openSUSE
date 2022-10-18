@@ -1,7 +1,7 @@
 #
 # spec file for package bdftopcf
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           bdftopcf
-Version:        1.1
+Version:        1.1.1
 Release:        0
 Summary:        Font compiler for the X server and font server
 License:        MIT
 Group:          System/X11/Utilities
 URL:            http://xorg.freedesktop.org/
-Source0:        http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.bz2
-Source1:        http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.bz2.sig
+Source0:        http://xorg.freedesktop.org/releases/individual/util/%{name}-%{version}.tar.xz
+Source1:        http://xorg.freedesktop.org/releases/individual/util/%{name}-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(xfont2)
@@ -50,7 +50,7 @@ make %{?_smp_mflags} V=1
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS ChangeLog COPYING README
+%doc AUTHORS ChangeLog COPYING README.md
 %{_bindir}/bdftopcf
 %{_mandir}/man1/bdftopcf.1%{?ext_man}
 
