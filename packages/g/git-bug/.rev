@@ -1,0 +1,15 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d75915cf7cbee13dd1dd96049132d655</srcmd5>
+    <version>0.7.2+git.1665512451.0eef939</version>
+    <time>1666089902</time>
+    <user>dimstar_suse</user>
+    <comment>git-bug is a bug tracker that:
+
+* is fully embedded in git: you only need your git repository to have a bug tracker
+* is distributed: use your normal git remote to collaborate, push and pull your bugs!
+* works offline: in a plane or under the sea? Keep reading and writing bugs!
+* prevents vendor lock-in: your usual service is down or went bad? You already have a full backup.</comment>
+    <requestid>1029599</requestid>
+  </revision>
+</revisionlist>
