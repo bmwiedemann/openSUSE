@@ -138,4 +138,15 @@
 </comment>
     <requestid>1008126</requestid>
   </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>8c40ef0f6aad40d8d936eb502b85dc2a</srcmd5>
+    <version>0.3.6</version>
+    <time>1666089910</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump to nbclient 0.7 (See also gh#voila-dashboards/voila#1234)
+- Remove import from vendorized mistune in nbconvert: not
+  vendorized anymore
+</comment>
+    <requestid>1029570</requestid>
+  </revision>
 </revisionlist>

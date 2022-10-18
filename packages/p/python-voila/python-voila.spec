@@ -59,7 +59,7 @@ Requires:       python-websockets >= 9.0
 Requires:       (python-jupyter-client >= 6.1.3 with python-jupyter-client < 8)
 Requires:       (python-jupyter-server >= 1.18 with python-jupyter-server < 2)
 Requires:       (python-jupyterlab-server >= 2.3.0 with python-jupyterlab-server < 3)
-Requires:       (python-nbclient >= 0.4.0 with python-nbclient < 0.7)
+Requires:       (python-nbclient >= 0.4.0 with python-nbclient < 0.8)
 Requires:       (python-nbconvert >= 6.4.5 with python-nbconvert < 8)
 Requires:       (python-traitlets >= 5.0.3 with python-traitlets < 6)
 BuildArch:      noarch
@@ -119,8 +119,6 @@ This package provides the jupyter components.
 %prep
 %setup -q -n voila-%{version}
 tar xf %{SOURCE1} --strip-components=1 voila-%{version}/tests
-sed -i s/mistune.Renderer/nbconvert.vendor.mistune.Renderer/ voila/exporter.py
-sed -i '/nbclient/ s/,<0.6//' setup.cfg
 # '.' is now considered 'hidden', which is not allowed.
 sed -i 's|./jupyter.svg|jupyter.svg|' tests/notebooks/images.ipynb
 %patch0 -p1
