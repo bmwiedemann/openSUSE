@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 11 09:33:40 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Remove hosts.allow and hosts.deny config files as they are only
+  used by tcpd, which is not installed by default, bsc#1099755
+
+-------------------------------------------------------------------
 Mon Jul 19 13:59:22 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Add localhost.localdomain fallback hostname used by NetworkManager

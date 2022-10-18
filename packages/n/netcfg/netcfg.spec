@@ -1,7 +1,7 @@
 #
 # spec file for package netcfg
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,8 +27,6 @@ Source1:        exports
 Source2:        ftpusers
 Source3:        host.conf
 Source4:        hosts
-Source5:        hosts.allow
-Source6:        hosts.deny
 Source7:        hosts.equiv
 Source8:        hosts.lpd
 Source9:        networks
@@ -64,7 +62,7 @@ cp %{SOURCE16} .
 
 %install
 mkdir -p %{buildroot}%{_sysconfdir}
-for i in hostname aliases defaultdomain exports ftpusers host.conf hosts hosts.allow hosts.deny hosts.equiv hosts.lpd netgroup ethertypes; do
+for i in hostname aliases defaultdomain exports ftpusers host.conf hosts hosts.equiv hosts.lpd netgroup ethertypes; do
   install $RPM_SOURCE_DIR/$i %{buildroot}/%{_sysconfdir}
 done
 mkdir -p %{buildroot}%{_prefix}%{_sysconfdir}
@@ -87,8 +85,6 @@ install -d -m 0755 %{buildroot}/%{_sysconfdir}/exports.d
 %verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/ftpusers
 %config(noreplace) %{_sysconfdir}/host.conf
 %verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/hosts
-%verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/hosts.allow
-%verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/hosts.deny
 %verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/hosts.equiv
 %verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/hosts.lpd
 %config(noreplace) %{_sysconfdir}/netgroup
