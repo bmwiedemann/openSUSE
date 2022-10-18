@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 28 09:26:37 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Removed the strict requirement for `wl-clipboard` since `wl-clipboard-rs`
+  also exists. Thus, suggesting both `wl-clipboard` OR `wl-clipboard-rs`
+  seems to be the most appropriate approach.
+
+-------------------------------------------------------------------
 Mon Sep  6 15:31:43 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.4.0:

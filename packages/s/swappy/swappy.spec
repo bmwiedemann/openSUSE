@@ -1,7 +1,7 @@
 #
 # spec file for package swappy
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,8 @@ BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(pango)
 Requires:       fontawesome-fonts
-Requires:       wl-clipboard
+Suggests:       wl-clipboard
+Suggests:       wl-clipboard-rs
 
 %description
 A Wayland native snapshot and editor tool
