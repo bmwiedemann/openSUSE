@@ -1,7 +1,7 @@
 #
 # spec file for package python-plette
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,20 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-plette
-Version:        0.2.3
+Version:        0.4.2
 Release:        0
 Summary:        Structured Pipfile and Pipfile.lock models
 License:        ISC
 Group:          Development/Languages/Python
 URL:            https://github.com/sarugaku/plette
-Source:         https://github.com/sarugaku/plette/archive/%{version}/plette-%{version}.tar.gz
+Source:         https://github.com/sarugaku/plette/archive/refs/tags/v%{version}.tar.gz#/plette-%{version}.tar.gz
 # See https://github.com/sarugaku/plette/issues/8
 Patch0:         ignore-hashlib-case.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 36.2.2}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-six
 Requires:       python-tomlkit
 Suggests:       python-Cerberus
 BuildArch:      noarch
@@ -38,7 +39,6 @@ BuildArch:      noarch
 BuildRequires:  %{python_module Cerberus}
 BuildRequires:  %{python_module invoke}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module tomlkit}
 # /SECTION
 %python_subpackages
@@ -51,10 +51,10 @@ Structured Pipfile and Pipfile.lock models.
 %patch0 -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
