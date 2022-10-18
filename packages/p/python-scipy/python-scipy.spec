@@ -17,7 +17,7 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
-%define _ver 1_9_1
+%define _ver 1_9_2
 %define shortname scipy
 %define pname python-%{shortname}
 %define hpc_upcase_trans_hyph() %(echo %{**} | tr [a-z] [A-Z] | tr '-' '_')
@@ -91,16 +91,16 @@ ExclusiveArch:  do_not_build
 # TODO explore debundling Boost for standard and hpc
 
 Name:           %{package_name}
-Version:        1.9.1
+Version:        1.9.2
 Release:        0
 Summary:        Scientific Tools for Python
 License:        BSD-3-Clause AND LGPL-2.0-or-later AND BSL-1.0
 Group:          Development/Libraries/Python
 URL:            https://www.scipy.org
 Source0:        https://files.pythonhosted.org/packages/source/s/scipy/scipy-%{version}.tar.gz
-BuildRequires:  %{python_module Cython >= 0.29.21}
+BuildRequires:  %{python_module Cython >= 0.29.32}
 BuildRequires:  %{python_module devel >= 3.8}
-BuildRequires:  %{python_module meson-python >= 0.8.1}
+BuildRequires:  %{python_module meson-python >= 0.9.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pybind11 >= 2.4.3}
 BuildRequires:  %{python_module pybind11-devel >= 2.4.3}
@@ -261,6 +261,7 @@ donttest+=" or (test_orthogonal and test_roots_gegenbauer)"
 donttest+=" or (test_discrete_basic and test_rv_sample)"
 donttest+=" or (test_distributions and TestLevyStable and nolan_samples and pct_range0-alpha_range0-beta_range0)"
 donttest+=" or (test_distributions and TestLevyStable and test_location_scale and pdf)"
+donttest+=" or (test_data and test_boost and (betainc or btdtr))"
 %endif
 %ifarch %arm
 donttest+=" or (test_cython_api and eval_sh_chebyt)"
