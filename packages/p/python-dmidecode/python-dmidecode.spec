@@ -38,8 +38,11 @@ Patch2:         detect-lib-with-py3.patch
 # PATCH-FIX-UPSTREAM 31-version_info-v-version.patch gh#nima/python-dmidecode#31 mcepl@suse.com
 # use sys.version_info instead of sys.version
 Patch3:         31-version_info-v-version.patch
-Obsoletes:      %{oldpython}-dmidecode <= 3.12.2+git.1625035095.f0a089a
-Obsoletes:      python-python-dmidecode <= 3.12.2+git.1625035095.f0a089a
+# PATCH-FIX-UPSTREAM Makefile_libdir.patch bsc#[0-9]+ mcepl@suse.com
+# Something's wrong with finding libdirs
+Patch4:         Makefile_libdir.patch
+Obsoletes:      %{oldpython}-dmidecode <= %{version}
+Obsoletes:      python-python-dmidecode <= %{version}
 BuildRequires:  %{python_module devel}
 %if 0%{?sle_version} >= 150400 || 0%{?suse_version} >= 1550
 BuildRequires:  %{python_module libxml2}
@@ -107,7 +110,7 @@ fi
 %ghost %{_sysconfdir}/alternatives/pymap.xml
 %ghost %{_datadir}/python-dmidecode/pymap.xml
 %{_datadir}/python-dmidecode/pymap-%{python_bin_suffix}.xml
-# %{python_sitearch}/python_dmidecode-%{version}*-info
+# %%{python_sitearch}/python_dmidecode-%%{version}*-info
 %{python_sitearch}/python_dmidecode-3.12.2*-info
 %{python_sitearch}/dmidecode*
 %pycache_only %{python_sitearch}/__pycache__/dmidecode*.py[co]

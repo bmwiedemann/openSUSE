@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 17 18:05:41 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add Makefile_libdir.patch to make package building even with
+  faulty distutils.sysconfig (bsc#1204395).
+
+-------------------------------------------------------------------
 Fri May 20 15:07:23 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Synchronize SPEC file to be more like the SLE one.
