@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-nest-asyncio
-Version:        1.5.5
+Version:        1.5.6
 Release:        0
 Summary:        Patch asyncio to allow nested event loops
 License:        BSD-2-Clause
