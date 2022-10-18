@@ -7,4 +7,12 @@
     <comment>New package, see https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/LXKIX5G2IU5K3FJLMXVJS3HGDKAL4ID6/</comment>
     <requestid>974967</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>13f1cbe8df5476dc69000599d130bc57</srcmd5>
+    <version>2.1.0+git20221004.e34a3ca</version>
+    <time>1666099317</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1010495</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,196 @@
 -------------------------------------------------------------------
+Wed Oct 05 13:57:04 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 2.1.0+git20221004.e34a3ca:
+  * Stealthy fix of list_dir on windows with single letter directories.
+  * Fix process api detach bug (#1137)
+  * Fixing minor bug relating to TreeView's cache. (#1136)
+  * Add i386 architecture detection, add FreeBSD to platform detection (#1135)
+  * meson: fallback onto the C compiler when Lua could not be found (#1134)
+  * meson: updated lua wrap to v5.4.4 (#1133)
+  * plugins language_md: fixed some regressions, added caddyfile support
+  * system: added raise_window() (#1131)
+  * language_md: don't require space at end on '_', '__', '___' (#1129)
+  * gh workflow: don't make release on tag pushes to prevent double release when executed from github web interface.
+  * updated changelog
+  * core start: added missing ';' to package.cpath
+  * Added in ability to have `init.so` as a require for cpath. (#1126)
+  * Added Release Workflow and Fixed some build script issues (#1013)
+  * api: expose api_load_libs to native plugins (#1125)
+  * docs: documented ARCH global.
+  * Update unidata to version 15.0 (#1122)
+  * Added in native modules suffixes. (#1111)
+  * core: remapped core:restart to `ctrl+alt+r`
+  * contextmenu: resize on scale changes (#1117)
+  * plugin scale: added option to set default scale (#1115)
+  * Added in simple directory search to treeview. (#1110)
+  * Strictly limit find/replace commands to `core.docview` (#1108)
+  * autocomplete: properly replace current partial symbol
+  * Changed setpgrp to a more portable form.
+  * updated sdl2 wrap to 2.24
+
+-------------------------------------------------------------------
+Wed Aug 31 19:08:04 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 2.1.0+git20220821.c25f83d:
+  * Make predicate for some `TreeView` commands stricter
+  * Reduce double click radius
+  * Added a smoothing and strikethrough option to font loading. (#1087)
+  * Be more lenient with appending `PATHSEP` in `common.path_suggest` in Windows
+  * Remove final `PATHSEP` in `common.normalize_volume`
+  * Add `PATHSEP` before listing the directory in `common.path_suggest`
+  * Replace `assert` with `core.log_quiet` on command replace
+  * Add predicate memoization to `command.get_all_valid`
+  * Use `Object:is` instead of direct metatable comparison in `autocomplete`
+  * Allow command predicates to manage parameters passed to the commands
+  * language_python: add syntax support for async/await
+  * Remove dot slash from suggested paths in `common.path_suggest`
+  * Steps to generalize toolbar and treeview. (#1088)
+  * Fix [build] link and add [lite] link on Overview (#1096)
+  * Enable SDL timers
+  * Clear default Lua require path (#1085)
+  * Fix "hard" indent column info on status view. (#1078)
+  * CommandView: do not change caret size with config.line_height
+  * Add font style options in user module
+  * `drawwhitespace`: Invalidate cache on indent size change
+  * `language_python`:  Add new patterns (#1074)
+  * [chore]: Delete useless $
+  * Make `StatusView:add_item` accept a table
+  * Don't wrap around if there are no suggestions in `CommandView`
+  * Start dirmonitor check thread only after a watch is added (#1072)
+  * Make `Doc:get_selection[s]` return if the selection was actually sorted
+  * [chore]: Update syntax
+  * language_python: add syntax support for match-case statement
+  * `LogView`: Show scrollbar
+  * Increase default maximum number of log items
+  * `LogView`: Don't draw invisible items
+  * Adapt build job to lhelper-2
+  * `autocomplete`: Fix "Too many symbols" message when `Doc` has no name
+  * `language_md`: Limit inline math mode to the current line
+  * Fix opening `LogView` when reloading customizations
+  * On `doc:newline` remove line content if it contains only whitespace
+  * Don't indent empty lines in a selection
+  * `drawwhitespace`: Invalidate cache on font size change
+  * Missing header.
+  * Fix full line cut when only a single line remains
+  * renderer fonts: additions and improvements
+  * lineguide: added config spec
+  * Fixed minor issue on windows.
+  * Improve `lineguide` plugin (#1056)
+  * `findreplace`: Sort last searches
+  * language_html: Improve subsyntax highlighting (#1043)
+  * `findreplace`: Fix number of total replacements
+  * treeview: scale fallback sizes as pointed out by @Guldoman
+  * updated changelog
+  * treeview: restore ability to disable toolbarview
+  * `drawwhitespace`: Use `Docview` vertical line offset
+  * Add .cjs and .mjs for js syntax highlighting
+  * CommandView: improve performance by only drawing visible
+  * plugin treeview: fix crash
+  * build script: fix lua subproject expansion
+  * changelog: added latest changes
+  * make system.* functions support UTF8 filenames (#1042)
+  * add option to patch lua with UTF8 support
+  * `drawwhitespace`: Invalidate cache on config changes
+  * Warn if token type is a table when not needed
+  * Add helper function to report bad patterns in tokenizer
+  * Fix malformed pattern check for group patterns in tokenizer
+  * changeslog: added performance section and listed PR 1032
+  * fix memory leak and wrong check in font_retrieve
+  * run GC between scale to prevent ram from exploding
+  * omit filename from error message
+  * add .cache to gitignore
+  * Check if "open" pattern is escaped
+  * Convert more byte offsets to utf-8 pos in regex tokenizer
+  * load space metrics only instead of all metrics of the 1st 256 characters
+  * lua patch for utf-8 support
+  * `drawwhitespace`: Cache whitespace location
+  * Add `Highlighter:update_notify` to keep track of retokenized lines
+  * Downgrade `StatusView:get_items` deprecation message to warning
+  * `language_md`: Add math delimiters
+  * changelog: added links to releases
+  * initial documentation for better code completion
+  * changelog: include treeview fixes
+  * ChangesLog: more details to 2.1.0 release
+  * Open `LogView` on user/project module reload error
+  * Make `common.merge` work with invalid arguments
+  * plugin linewrapping: added priority
+  * plugin drawwhitespace: return line height on draw_line_text
+  * style: move default colors to its own style file
+  * Add `text` and `select_text` to `CommandView` options
+  * Add `show_suggestions` to `CommandView` options
+  * Fix `CommandView:enter` deprecation log
+  * plugin drawwhitespace: added config spec
+  * Added in defaults for dirwatch.
+  * Fix tooltip not getting removed after `find-replace:replace`
+  * Make `TreeView` more multi-project-dir aware
+  * Add `TreeView` helper functions to get previous/next item
+  * Allow `common.path_suggest` to specify a root directory
+  * Add `common.is_absolute_path`
+  * plugins: dropped --lite-xl version tag
+  * plugins: only check mod version
+  * core: check for sdl initialization errors
+  * Expose function to create custom log entries
+  * Add `warn` log level
+  * Always show backtrace for `error` log entries
+  * Show error if language plugin pattern has mismatching number of groups
+  * Fix UTF-8 matches in regex group `tokenizer`
+  * Don't check unnamed files in `autoreload` plugin
+  * Use new `CommandView:enter` options table
+  * Add options to `CommandView:enter`
+  * meson: fix not obeyed forcefallback for lua
+  * Made wrapping overflow optional
+  * Made moving to a line beyond the end of a document move the caret column to the end of the line
+  * Allow using regex groups to split tokens
+  * Make `regex.match` return all the results
+  * Make regex API return integers
+  * plugins: added settings gui support
+  * make lite-xl respect the taskbar and allow aero-drop in borderless mode
+  * plugin contextmenu: simplify predicate
+  * command predicates: added support for strict matching by appending '!' on string predicates
+  * Made sure we redrew things, added in a contingency in 'save' for times when we load a non-existent file, and added some checks.
+  * Changed things over to use dirwatch.
+  * As per request from jgmdev, added in ability to show nagview always.
+  * Split out reload functionality to actual document, and added in a thread to check the document, in the cases where it wouldn't be covered by dirwatch.
+  * Modified autoreload to use new dirwatch infrastructure, and added in nagview to verify that fs changes don't stomp on our changes, unless you want them to.
+  * Autoreload Nagview (#942)
+  * docs: added font.group to renderer and other adjustments
+  * tokenizer: fix next utf8 char retrieval bug
+  * adjust and consolidate duplicated predicate code
+  * keymap: changes and docs
+  * object: made is() stricter and added extends()
+  * Add utf8 support on doc lower and upper commands
+  * c core: fix extra utf8 build conflict on windows
+  * Removed undefined behaviour by using `poll` over `select`.
+  * TreeView Changes (#898)
+  * Fixed dirwatch dummy, and scanning.
+  * Bumped verison number in meson.
+  * plugins: add load priority support with '--priority:###'
+  * meson: install docs/api to datadir for lsp support
+  * Erroneously added padding.
+  * Updated linewrap and autocomplete to use the new get_line_screen_position which takes a col.
+  * Fix `ren_font_group_get_tab_size` returning unexpected values
+  * Updated treeview to match convention.
+  * Open `LogView` in correct `Node`
+  * Add pretty printing to `common.serialize`
+  * Fixed minor race condition.
+  * Fixed minor race condition.
+  * core: expose rescan_project_directories and configure_borderless_window
+  * Manage return values from "replacer" function in `Doc:replace`
+  * Make sure pipes are closed on exec.
+  * Asynchronous Reads for Dirmonitor (#930)
+  * Significantly improved performance of tokenization for larger documents by by default not requiring tokenization.
+  * Apply `drawwhitespace` plugin only to `DocView`s
+  * Added in check in case of nil.
+  * Fixed windows dirmonitor issues.
+  * Fixed some minor issues with linewrapping.
+  * Apparenlty these were issues? What?
+  * Soft Line Wrapping (#636)
+  * Added in notes to the changelog.
+  * Bumping version numbers.
+  * Improve `drawwhitespace` plugin
+
+-------------------------------------------------------------------
 Mon May 02 15:18:02 UTC 2022 - scott.bradnick@suse.com
 
 - Update to version 2.0.5+git20220502.d3c38d6:
