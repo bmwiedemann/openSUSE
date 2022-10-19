@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Oct 18 14:53:52 UTC 2022 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.3.5
+
+- Update to 2.3.5
+  - Add CPython 3.10.7 by @edgarrmondragon in #2454
+  - Docs: update Fish PATH update by @gregorias in #2449
+  - Add CPython 3.7.14, 3.8.14 and 3.9.14 by @edgarrmondragon in #2456
+  - Update miniconda3-3.9-4.12.0 by @Tsuki in #2460
+  - Add CPython 3.11.0rc2 by @ViktorHaag in #2459
+  - Add patches for 3.7.14 to support Apple Silicon by @samdoran in #2463
+  - Add ability to easily skip all use of Homebrew by @samdoran in #2464
+  - Drop Travis integration by @sobolevn in #2468
+  - Build CPython 3.12+ with --with-dsymutil in MacOS by @native-api in #2471
+  - Add Pyston 2.3.5 by @scop in #2476
+
+Full Changelog: https://github.com/pyenv/pyenv/compare/v2.3.4...v2.3.5
+
+-------------------------------------------------------------------
 Mon Oct  3 14:51:43 UTC 2022 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.3.4
 
 - Changes in spec file
