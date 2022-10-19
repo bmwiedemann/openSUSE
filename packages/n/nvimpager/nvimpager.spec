@@ -17,7 +17,7 @@
 
 
 Name:           nvimpager
-Version:        0.10.4
+Version:        0.11.0
 Release:        0
 Summary:        Use nvim as a pager
 License:        BSD-2-Clause
@@ -25,8 +25,8 @@ Group:          Productivity/Text/Editors
 URL:            https://github.com/lucc/nvimpager
 Source:         https://github.com/lucc/nvimpager/archive/refs/tags/v%{version}.tar.gz
 BuildRequires:  scdoc
-Requires:       neovim >= 0.4.4
 Requires:       lua54
+Requires:       neovim >= 0.7.2
 BuildArch:      noarch
 
 %description
