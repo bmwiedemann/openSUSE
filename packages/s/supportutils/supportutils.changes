@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Oct 18 18:14:07 UTC 2022 - jason.record@suse.com
+
+- Added lifecycle information (issue#140)
+
+-------------------------------------------------------------------
+Tue Oct 18 18:01:47 UTC 2022 - jason.record@suse.com
+
+- Changes to version 3.1.21
+  + Added type output with df command in fs-diskio.txt (issue#141)
+  + Gather all files in /etc/security/limits.d/ (issue#142)
+  + Fixed KVM virtualization detection on bare metal (bsc#1184689)
+  + Added logging using journalctl (bsc#1200330)
+  + Passwords correctly removed from email.txt, updates.txt and fs-iscsi.txt (bsc#1203818)
+  + Added system logging configuration and checking in messages_config.txt (issue#103)
+  + If rsyslog not installed collect more from journalctl (issue#120)
+  + Added systemd-status.txt for the status of all service units (issue#125)
+  + autofs includes files in (+dir:<path>) (issue#111)
+  + Get current sar data before collecting files (bsc#1192648)
+  + Collects everything in /etc/multipath/ (bsc#1192252)
+  + Collects power management information in hardware.txt (bsc#1197428)
+  + Checks for suseconnect-ng or SUSEConnect packages (bsc#1202337)
+  + Fixed conf_files and conf_text_files so y2log is gathered (issue#134, bsc#1202269)
+  + Update to nvme_info and block_info #133 (bsc#1202417)
+  + Added IO scheduler (issue#136)
+  + Added includedir directories from /etc/sudoers (bsc#1188086)
+
+-------------------------------------------------------------------
+Thu Jun  2 18:07:07 UTC 2022 - Jason Record <jason.record@suse.com>
+
+- Added a listing to /dev/mapper/. #129
+
+-------------------------------------------------------------------
 Tue Mar 15 16:48:09 UTC 2022 - Jason Record <jason.record@suse.com>
 
 - Spec file adjusted for usr-merge
