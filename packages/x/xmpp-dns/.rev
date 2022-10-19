@@ -28,4 +28,13 @@
   * Fix detection of XMPP support when using direct TLS and ALPN.</comment>
     <requestid>1008680</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bdcdbf7c33d6b7ca72703ec396275793</srcmd5>
+    <version>0.3.3</version>
+    <time>1666178253</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.3:
+  * Fix wrong timeout parsing on some systems.</comment>
+    <requestid>1029735</requestid>
+  </revision>
 </revisionlist>
