@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Oct 18 10:43:25 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 0.17
+  * Fix spelling/wording issues
+  * meson: install man page in mandir/man1/, not mandir/1/
+  * gitlab CI: add a basic build test for both autotools and meson
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * configure.ac: Use pkg-config to find zlib dependency info
+  * Obtain correct value of is_64 and is_prefetchable PCI device fields
+  * hurd_pci: Use __pci_conf_ variants of pci_conf_
+  * x86: Use gnumach device instead of /dev/mem on GNU systems && factorise ifdefs
+  * x86: Remove mapping of regions during probe - otherwise remapping later fails
+  * x86: Remove probe during create, other backends don't do this
+  * hurd: device_open(pci), /servers/bus/pci fallback
+  * x86: Sort devices by B/D/F due to recursive scan
+  * hurd: Don't necessarily look up _SERVERS_BUS_PCI
+  * Add a meson build system
+  * autoconf: Add meson files to dist tarball
+  * pciaccess.pc.in: add Libs.Private
+  * Hurd: avoid using the deprecated RPC pci_get_ndevs()
+  * hurd: Implement device memory mapping
+  * Hurd: Fix initialization order
+  * Add pci_device_disable() function
+  * missed library installation in meson
+  * hurd: Add missing round up size in map_dev_mem
+  * hurd: Fix letting map_dev_mem map anywhere
+  * hurd: Fix map_dev_mem from non-zero address
+  * hurd: Restore initialization order
+  * hurd: Fix pci_device_hurd_map_legacy
+  * Add support for building on macOS w/o X11, using endian code from "portable_endian.h"...
+  * Add parentheses to the macro definition
+  * pci_sys set NULL after free
+  * Add header protection macro in linux_devmem.h
+  * Delete redundant symbols ';'
+- switched to meson build system
+
+-------------------------------------------------------------------
 Mon Jul 22 15:02:17 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 0.16

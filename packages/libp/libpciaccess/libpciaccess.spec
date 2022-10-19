@@ -1,7 +1,7 @@
 #
 # spec file for package libpciaccess
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,25 @@
 
 Name:           libpciaccess
 %define lname	libpciaccess0
-Version:        0.16
+Version:        0.17
 Release:        0
 Summary:        Generic PCI access library
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            http://cgit.freedesktop.org/xorg/lib/libpciaccess/
+URL:            http://cgit.freedesktop.org/xorg/lib/libpciaccess/
 
 #Git-Clone:	git://anongit.freedesktop.org/xorg/lib/libpciaccess
 #Git-Web:	http://cgit.freedesktop.org/xorg/lib/libpciaccess/
-Source:         http://xorg.freedesktop.org/releases/individual/lib/%{name}-%{version}.tar.bz2
+Source:         http://xorg.freedesktop.org/releases/individual/lib/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
 Patch0:         u_libpciaccess-vgaarb-add-function-to-get-default-vga-device-and-it.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #git#BuildRequires:	autoconf >= 2.60, automake, libtool
+BuildRequires:  cmake
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(xorg-macros) >= 1.8
+BuildRequires:  pkgconfig(zlib)
 
 %description
 Provides functionality for X to access the PCI bus and devices in a
@@ -67,12 +70,11 @@ in %lname.
 %patch0 -p1
 
 %build
-%configure --with-pciids-path=%_datadir --disable-static
-make %{?_smp_mflags}
+%meson -Dpci-ids=%_datadir
+%meson_build
 
 %install
-make install DESTDIR="%buildroot"
-rm -f "%buildroot/%_libdir"/*.la
+%meson_install
 
 %post -n %lname -p /sbin/ldconfig
 
