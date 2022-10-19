@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 18 07:43:27 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to bfbd42ef2 (2022-10-14):
+  * firmware: isp: Run ISP without hi-res output buffer 
+  * firmware: arm_dt: Export the bootloader EEPROM RSA public
+    key via device-tree
+  * firmware: Add tryboot A_B mode
+  * firmware: il: isp: Correct order buffers were returned in
+  * firmware: board_info: Fix Pi 400 PHY addresses 
+    See: #1754
+
+-------------------------------------------------------------------
 Tue Oct  4 11:49:36 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 2b3cef2f4 (2022-09-30):
