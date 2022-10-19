@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Tue Oct 18 18:20:19 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.8.0:
+  * fix: panic on pipeline fallback to preview (#3169) (#3170)
+  * release-branch fix (#3166)
+  * fix build when is buildv1 but dockerfile need to be inferred (#3158) (#3163)
+  * feat: add insecure skip tls verify (#3075)
+  * add okteto healthchecks to compose (#3140)
+  * added error status when destroying to the manifest (#3142)
+  * Add "okteto@" as a prefix in OKTETO_BUILD_XXX_SHA (#3144)
+  * If insecure-skip-tls-verify set in context, don't put certificate-authority-data in temporal kubeconfig (#3125)
+  * Inject OKTETO_TOKEN in okteto deploy (#3139)
+  * add build variables as env vars for buildArgs (#3115)
+  * Review info messages shown at the beginning of each command (#3133)
+  * update init container logs (#3127)
+  * add e2e test to check if build cmd replace secrets properly (#3106)
+  * Followup unit test for secrets (#3128)
+  * Fix wrong arguments passed to `checkpvcvalues` (#3117)
+  * Different PV default sizes between cloud/staging and others (#3096)
+  * Interrupt command deploy (#3126)
+  * Deepsource bug risk (#3122)
+  * refactor: rewrite error message (#3121)
+  * Fix secret copy (#3119)
+  * Update direct dependencies (#3120)
+  * build(deps): Bump actions/stale from 5 to 6 (#3118)
+  * redeploy stack with 0 downtime (#3109)
+  * Add pr merge docs (#3110)
+  * Check context store exists on a context list command first. (#3108)
+  * Deepsource style doc (#3114)
+  * fix: improve tokern error message inside non ctx cmd (#3071)
+  * deprecate manifestv1 (#3085)
+  * Fix security issues deep source (#3095)
+  * fix antipatterns deepsource (#3099)
+  * Fix deploy build with compose: extra touches (#3100)
+  * fix: deploy with build flag (#3098)
+  * Return clear error when docker compose doesn't have dev section (#3092)
+  * Add test coverage to preview deploy cmd (#3084)
+  * Show `preview deploy` logs when running the command with `--wait` flag (#3081)
+  * Change logic for which images to build when deploying (#3057)
+  * Show pipeline deploy and destroy logs when running the command with `--wait` flag (#3073)
+  * feat: add keep annotation (#3088)
+  * Added BuildSecrets to build manifest (#3090)
+  * Fix static analysis style issues (#3087)
+  * fix: show warning only when secret value is different (#3079)
+  * feat: update syncthing to 1.21.0 (#3072)
+
+-------------------------------------------------------------------
+Tue Oct 18 18:18:23 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.7.1:
+  * fix patch in release-branch (#2961) (#3164) (#3165)
+  * fix build when is buildv1 but dockerfile need to be inferred (#3158) (#3161)
+  * fix: deploy with build flag (#3098) (#3104)
+  * Change logic for which images to build when deploying (#3057) (#3093)
+  * fix: show warning only when secret value is different (#3079) (#3080)
+  * fix: use specific terminal (#3019)
+  * Fix TestListDevModeOn (#3070)
+  * Okteto down and exec selector only active options (#3053)
+  * fix: visual bug (#3069)
+  * add build depends on okteto manifest v2  (#3064)
+
+-------------------------------------------------------------------
 Fri Sep 16 11:57:17 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 2.7.0:
