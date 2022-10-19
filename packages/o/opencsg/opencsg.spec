@@ -1,7 +1,7 @@
 #
 # spec file for package opencsg
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           opencsg
-Version:        1.4.2
+Version:        1.5.1
 Release:        0
 Summary:        Constructive Solid Geometry rendering library
-License:        SUSE-GPL-2.0-with-linking-exception
+License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-Url:            http://www.opencsg.org/
-Source:         http://www.opencsg.org/OpenCSG-%{version}.tar.gz
+URL:            https://www.opencsg.org/
+Source:         https://www.opencsg.org/OpenCSG-%{version}.tar.gz
 BuildRequires:  freeglut-devel
 BuildRequires:  gcc-c++
 BuildRequires:  glew-devel
 %if 0%{?fedora_version} || 0%{?suse_version} >= 1310
 BuildRequires:  libXmu-devel
 %endif
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 OpenCSG is a library that does image-based Constructive Solid
@@ -71,7 +70,7 @@ rm -rf glew
 cd src
 # rpath is evil
 sed -i 's@-Wl,-rpath,\.\./lib@@' Makefile
-make %{?_smp_mflags}
+%make_build
 
 %install
 mkdir -p %{buildroot}%{_prefix}
@@ -79,16 +78,14 @@ mv include %{buildroot}%{_includedir}
 mv lib %{buildroot}%{_libdir}
 
 %post -n libopencsg1 -p /sbin/ldconfig
-
 %postun -n libopencsg1 -p /sbin/ldconfig
 
 %files -n libopencsg1
-%defattr(-,root,root)
-%doc changelog.txt license.txt doc/*
-%{_libdir}/libopencsg.so.*
+%license copying.txt doc/license/gpl-3.0.txt doc/license/gpl-2.0.txt
+%doc changelog.txt doc/*
+%{_libdir}/libopencsg.so.1*
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/*
 %{_libdir}/libopencsg.so
 

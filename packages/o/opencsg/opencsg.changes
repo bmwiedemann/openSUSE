@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct  2 13:29:19 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.1:
+    GCC 11/12 compile fixes
+    Release 1.5.0 (license changed from GPLv2 to GPLv2 or newer)
+    Resolved a couple of 64-bit warnings while testing Visual Studio 2019
+
+-------------------------------------------------------------------
 Fri Apr 13 10:10:20 UTC 2018 - adrian.glaubitz@suse.com
 
 - New upstream release
