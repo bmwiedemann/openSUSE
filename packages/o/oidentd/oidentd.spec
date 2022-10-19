@@ -1,7 +1,7 @@
 #
 # spec file for package oidentd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %bcond_with    systemd
 %endif
 Name:           oidentd
-Version:        2.5.0
+Version:        3.0.0
 Release:        0
 Summary:        Configurable IDENT Server That Supports NAT/IP Masquerading
 License:        GPL-2.0-or-later

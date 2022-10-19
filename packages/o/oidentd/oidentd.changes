@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Oct 16 16:37:59 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 3.0.0
+  * Fail on non-zero EUID if NEED_ROOT is set.
+  * Drop support for very old FreeBSD versions.
+  * Drop NAT support for DragonFly BSD.
+  * Drop NAT support for FreeBSD.
+  * Create separate kernel module for DragonFly BSD.
+  * Remove '--forward-last' flag (renamed to '--masquerade-first').
+  * Remove libudb support (deprecated).
+  * Remove '\e' escape sequence for strings in configuration files (deprecated).
+  * Remove support for legacy kernels (deprecated).
+  * Remove Linux MASQFILE support (deprecated).
+  * Remove Linux IPCONNTRACK support (deprecated).
+  * Update default configuration file to hide root connections.
+  * Compile with ENABLE_DEBUGGING by default.
+
+-------------------------------------------------------------------
 Thu Oct 14 09:10:39 UTC 2021 - Samu Voutilainen <smar@smar.fi>
 
 - Remove unsupported hardening flags when using old version
