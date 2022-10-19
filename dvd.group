@@ -1992,8 +1992,6 @@
     <package name="libgom-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgomp1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libgooglepinyin0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libgovirt-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
-    <package name="libgovirt2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
     <package name="libgpg-error0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libgpgme11" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libgpgmepp6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2553,7 +2551,6 @@
     <package name="libreoffice-writer" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libreofficekit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="librepository" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="librest-0_7-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
     <package name="librest-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="librevenge-0_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="librevenge-stream-0_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->

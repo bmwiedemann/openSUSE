@@ -11353,6 +11353,8 @@ unsorted:
   - libgoocanvas-3_0-9 
   - libgooglepinyin-devel 
   - libgovirt-devel 
+  - libgovirt-lang 
+  - libgovirt2 
   - libgpaste-gtk-3-0 
   - libgpaste-gtk4-0 
   - libgpaste2-0 
@@ -13827,6 +13829,7 @@ unsorted:
   - libressl-devel 
   - libressl-devel-32bit: [x86_64] 
   - libressl-devel-doc 
+  - librest-0_7-0 
   - librest-0_7-0-32bit: [x86_64] 
   - librest-1_0-0-32bit: [x86_64] 
   - librest-devel 
@@ -14382,6 +14385,7 @@ unsorted:
   - libtcmalloc_debug4 
   - libtcmalloc_minimal4 
   - libtcmalloc_minimal_debug4 
+  - libtcmu-devel 
   - libtcmu2 
   - libtcnative-1-0 
   - libtcnative-1-0-devel 
@@ -15388,6 +15392,7 @@ unsorted:
   - lite-xl 
   - lite-xl-colors 
   - lite-xl-plugins 
+  - lite-xl-widgets 
   - litetran 
   - littleb-devel 
   - littleb-examples 
@@ -23883,6 +23888,7 @@ unsorted:
   - python310-mutmut 
   - python310-mutt-ics 
   - python310-mwclient 
+  - python310-mycli 
   - python310-mygpoclient 
   - python310-mypy 
   - python310-mypy-protobuf 
@@ -23914,7 +23920,6 @@ unsorted:
   - python310-ncclient 
   - python310-ndg-httpsclient 
   - python310-neovim 
-  - python310-neovim-remote 
   - python310-nest-asyncio 
   - python310-nested-lookup 
   - python310-net-snmp 
@@ -24570,6 +24575,7 @@ unsorted:
   - python310-python-xlib 
   - python310-python-yubico 
   - python310-python3-openid 
+  - python310-python3-saml 
   - python310-pythondialog 
   - python310-pythonfinder 
   - python310-pythonwhois 
@@ -25203,6 +25209,7 @@ unsorted:
   - python310-xlwt 
   - python310-xmldiff 
   - python310-xmlschema 
+  - python310-xmlsec 
   - python310-xmltodict 
   - python310-xpybutil 
   - python310-xrootd 
@@ -27173,6 +27180,7 @@ unsorted:
   - python38-mutmut 
   - python38-mutt-ics 
   - python38-mwclient 
+  - python38-mycli 
   - python38-mygpoclient 
   - python38-mypy 
   - python38-mypy-protobuf 
@@ -27203,7 +27211,6 @@ unsorted:
   - python38-ncclient 
   - python38-ndg-httpsclient 
   - python38-neovim 
-  - python38-neovim-remote 
   - python38-nest-asyncio 
   - python38-nested-lookup 
   - python38-net-snmp 
@@ -30511,6 +30518,7 @@ unsorted:
   - python39-mutmut 
   - python39-mutt-ics 
   - python39-mwclient 
+  - python39-mycli 
   - python39-mygpoclient 
   - python39-mypy 
   - python39-mypy-protobuf 
@@ -30543,7 +30551,6 @@ unsorted:
   - python39-ncclient 
   - python39-ndg-httpsclient 
   - python39-neovim 
-  - python39-neovim-remote 
   - python39-nest-asyncio 
   - python39-nested-lookup 
   - python39-net-snmp 
