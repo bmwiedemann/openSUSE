@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct 18 09:54:56 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.1.4
+This release includes two notable changes to XmuConvertStandardSelection():
+1) It no longer supports XA_IP_ADDRESS, which only supported IPv4 addresses
+   and simply provided the output of gethostbyname() on the local hostname.
+2) XA_OWNER_OS no longer reports "BSD" for any Unix-like OS (including Linux)
+   that it hadn't been coded to handle, instead relying on uname() where
+   available to provide the OS name.
+The lack of bug reports about the previously misleading output for these
+suggests they're not widely used, with codesearch.debian.net only finding
+matches in libXmu and the rust bindings to libXmu, and not any consumers
+of these interfaces.
+
+-------------------------------------------------------------------
 Thu Mar 21 15:25:51 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.1.3

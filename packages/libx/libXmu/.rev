@@ -77,4 +77,22 @@
     build configuration improvements and janitorial cleanups.</comment>
     <requestid>687390</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>40a31e06b6b117521b1a1a83aa204424</srcmd5>
+    <version>1.1.4</version>
+    <time>1666178233</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.4
+This release includes two notable changes to XmuConvertStandardSelection():
+1) It no longer supports XA_IP_ADDRESS, which only supported IPv4 addresses
+   and simply provided the output of gethostbyname() on the local hostname.
+2) XA_OWNER_OS no longer reports &quot;BSD&quot; for any Unix-like OS (including Linux)
+   that it hadn't been coded to handle, instead relying on uname() where
+   available to provide the OS name.
+The lack of bug reports about the previously misleading output for these
+suggests they're not widely used, with codesearch.debian.net only finding
+matches in libXmu and the rust bindings to libXmu, and not any consumers
+of these interfaces.</comment>
+    <requestid>1029698</requestid>
+  </revision>
 </revisionlist>
