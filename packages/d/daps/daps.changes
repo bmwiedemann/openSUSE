@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct 17 10:57:24 UTC 2022 - David Anes <david.anes@suse.com>
+
+* Add patch to build against libxslt 1.1.36+:
+  - In libxslt >=1.1.35, the XSLT processor changed the resolution 
+    strategy. It gets two template rules (xi:include/@href and 
+    xi:include/@*) with the same priority (0.5). That's why we need 
+    to lower the priority to zero for xi:include/@*
+  - Added patch "daps-fix-build-against-libxslt-1.1.36+.patch"
+
+-------------------------------------------------------------------
 Mon Feb 14 08:00:00 UTC 2022 - Stefan Knorr <sknorr@suse.com>
 
 - Stable release DAPS 3.3.1:

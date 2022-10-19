@@ -1,0 +1,35 @@
+From a58f0f58a318f795bdfe763ea8fc5a5d69ec1cfd Mon Sep 17 00:00:00 2001
+From: Tom Schraitle <toms@suse.de>
+Date: Tue, 11 Oct 2022 08:30:47 +0200
+Subject: [PATCH] Fix #676: Add priority=0 in xi:include/@*
+
+For libxslt >=1.1.35, the default selection strategy has been changed
+(see GNOME/libxslt@b0074ee).
+
+In libxslt >=1.1.35, the XSLT processor changed the resolution strategy.
+It gets two template rules (xi:include/@href and xi:include/@*) with the
+same priority (0.5). That's why we need to lower the priority to zero
+for xi:include/@*
+---
+ daps-xslt/profiling/base-profile.xsl | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/daps-xslt/profiling/base-profile.xsl b/daps-xslt/profiling/base-profile.xsl
+index 819224e5f..474489662 100644
+--- a/daps-xslt/profiling/base-profile.xsl
++++ b/daps-xslt/profiling/base-profile.xsl
+@@ -218,7 +218,12 @@
+    </xsl:attribute>
+ </xsl:template>
+ 
+-<!-- Remove any non-XInclude attributes -->
+-<xsl:template match="xi:include/@*" mode="profile" />
++<!-- Remove any non-XInclude attributes
++
++    Issue #676: add priority="0" to overwrite default priority of 0.5 -> 0
++    The recovery strategy has changed in libxslt >=1.1.35
++    See https://www.w3.org/TR/1999/REC-xslt-19991116#conflict
++-->
++<xsl:template match="xi:include/@*" mode="profile" priority="0" />
+ 
+ </xsl:stylesheet>

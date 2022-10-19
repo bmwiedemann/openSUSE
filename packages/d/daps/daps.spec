@@ -28,6 +28,9 @@ Group:          Productivity/Publishing/XML
 URL:            https://github.com/openSUSE/daps
 Source0:        %{name}-%{version}.tar.bz2
 Source1:        %{name}.rpmlintrc
+
+Patch0:         daps-fix-build-against-libxslt-1.1.36+.patch
+
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 BuildArch:      noarch
@@ -119,10 +122,12 @@ converting DocBook XML.
 
 
 
+
 #--------------------------------------------------------------------------
 
 %prep
 %setup -q -n %{name}-%{version}
+%autopatch -p1
 
 # Correct shebang line as suggested in
 # https://lists.opensuse.org/opensuse-packaging/2018-03/msg00017.html
