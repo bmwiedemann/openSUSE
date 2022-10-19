@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Oct 19 05:16:52 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.12.1
+  There is one low impact security fix in this patch release to add
+  missing escaping to prevent a Cross-site Scripting attack by a
+  super user on another super user.
+  * matomo-org/matomo
+    - #19853 Goal visits log query performance improvement – don’t execute the query when no idVisits
+    - #19819 Ensure empty report tables also use max width
+    - #19838 Avoid loading goals data multiple times for goal metrics
+    - #19833 Allow empty excludedReferrers on the global setting
+    - #19863 Adds missing escaping
+    - #19768 Upgrade to Matomo 4.12 breaks Matomo when DeviceDetectorCache plugin is installed
+    - #19870 Fix failures link to Learn More
+    - #19808 Visits Overview accessibility improvement – remove redundant information
+    - #19809 TourEngagement accessibility improvement – Remove redundant information
+    - #19817 Fix Referrers.getKeywordsFromSearchEngineId API for invalid subtable ids
+    - #19869 PHP8 fix – Ensure data retention settings are respected
+    - #19841 Check downloaded referrer spam list for validity
+    - #19827 Return correct parameter divId for JS opt-out
+    - #19852 Fix array to string conversion warning in userOptOut
+    - #19861 Ensure password check can only throw wrong password error
+
+-------------------------------------------------------------------
 Wed Oct  5 05:15:35 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 4.12.0
