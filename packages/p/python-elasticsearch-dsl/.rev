@@ -23,4 +23,42 @@
     <comment></comment>
     <requestid>978729</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>158cc4ca475433dffc081b1557825358</srcmd5>
+    <version>7.4.0</version>
+    <time>1666178247</time>
+    <user>dimstar_suse</user>
+    <comment>GOES TOGETHER WITH SR#1029713 !
+
+- Update to 7.4.0:
+  - Added the ConstantKeyword, RankFeatures field types
+  - Added the ScriptScore query type
+  - Added UpdateByQueryResponse.success() method
+  - Added return_doc_meta parameter to Document.save() and
+    Document.update() for accessing the complete API response
+  - Added support for calendar_interval and fixed_interval to
+    DateHistogramFacet
+  - Added Document.exists() method
+  - Added support for the year interval to DateHistogramFacet
+  - Fixed issue where to_dict() should be called recursively on
+    Search.extras and **kwargs
+  - Fixed inverse of an empty Bool query should be MatchNone
+  - Fixed issue between retry_on_conflict and optimistic
+    concurrency control within Document.update()
+- Update to 7.3.0:
+  - Added Intervals, MatchBoolPrefix, Shape, and Wrapper queries
+  - Added Boxplot, RareTerms, VariableWidthHistogram,
+    MedianAbsoluteDeviation, TTest, CumulativeCardinality,
+    Inference, MovingPercentiles, and Normalize aggregations
+  - Added __all__ and removed all star imports from
+    elasticsearch_dsl namespace to avoid leaking unintended names
+  - Fixed an issue where Object and Nested could mutate the inner
+    doc_class mapping
+  - Fixed a typo in query SpanContaining, previously was
+    SpanContainining
+- Limit required (and buildrequired) elasticsearch to &lt; 8
+  (gh#elastic/elasticsearch-dsl-py#1569).
+</comment>
+    <requestid>1029714</requestid>
+  </revision>
 </revisionlist>

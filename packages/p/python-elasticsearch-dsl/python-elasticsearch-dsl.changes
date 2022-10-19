@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Oct 18 06:48:14 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 7.4.0:
+  - Added the ConstantKeyword, RankFeatures field types
+  - Added the ScriptScore query type
+  - Added UpdateByQueryResponse.success() method
+  - Added return_doc_meta parameter to Document.save() and
+    Document.update() for accessing the complete API response
+  - Added support for calendar_interval and fixed_interval to
+    DateHistogramFacet
+  - Added Document.exists() method
+  - Added support for the year interval to DateHistogramFacet
+  - Fixed issue where to_dict() should be called recursively on
+    Search.extras and **kwargs
+  - Fixed inverse of an empty Bool query should be MatchNone
+  - Fixed issue between retry_on_conflict and optimistic
+    concurrency control within Document.update()
+- Update to 7.3.0:
+  - Added Intervals, MatchBoolPrefix, Shape, and Wrapper queries
+  - Added Boxplot, RareTerms, VariableWidthHistogram,
+    MedianAbsoluteDeviation, TTest, CumulativeCardinality,
+    Inference, MovingPercentiles, and Normalize aggregations
+  - Added __all__ and removed all star imports from
+    elasticsearch_dsl namespace to avoid leaking unintended names
+  - Fixed an issue where Object and Nested could mutate the inner
+    doc_class mapping
+  - Fixed a typo in query SpanContaining, previously was
+    SpanContainining
+- Limit required (and buildrequired) elasticsearch to < 8
+  (gh#elastic/elasticsearch-dsl-py#1569).
+
+-------------------------------------------------------------------
 Mon May 23 12:07:23 UTC 2022 - pgajdos@suse.com
 
 - do not require python-mock for build

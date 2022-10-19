@@ -16,27 +16,29 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-elasticsearch-dsl
-Version:        7.2.1
+Version:        7.4.0
 Release:        0
 Summary:        Python client for Elasticsearch
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/elasticsearch/elasticsearch-dsl-py
-Source:         https://github.com/elastic/elasticsearch-dsl-py/archive/%{version}.tar.gz#/elasticsearch-dsl-%{version}.tar.gz
+Source:         https://github.com/elastic/elasticsearch-dsl-py/archive/refs/tags/v%{version}.tar.gz#/elasticsearch-dsl-%{version}.tar.gz
 # https://github.com/elastic/elasticsearch-dsl-py/issues/1596
+# PATCH-FEATURE-UPSTREAM python-elasticsearch-dsl-no-mock.patch gh#elastic/elasticsearch-dsl-py#1596 mcepl@suse.com
+# Use unittest.mock instead of the external package (merged to master, not yet released)
 Patch0:         python-elasticsearch-dsl-no-mock.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-elasticsearch >= 7.0.0
+# gh#elastic/elasticsearch-dsl-py#1569
+Requires:       (python-elasticsearch >= 7.0.0 with python-elasticsearch < 8)
 Requires:       python-python-dateutil
 Requires:       python-six
 Suggests:       python-pytz
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module elasticsearch >= 7.0.0}
+BuildRequires:  %{python_module elasticsearch >= 7.0.0 with %python-elasticsearch < 8.0.0}
 BuildRequires:  %{python_module pytest >= 3.0.0}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module pytz}
@@ -48,8 +50,7 @@ BuildRequires:  %{python_module six}
 Python client for Elasticsearch.
 
 %prep
-%setup -q -n elasticsearch-dsl-py-%{version}
-%patch0 -p1
+%autosetup -p1 -n elasticsearch-dsl-py-%{version}
 
 %build
 %python_build
@@ -64,6 +65,7 @@ Python client for Elasticsearch.
 %files %{python_files}
 %doc AUTHORS Changelog.rst README
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/elasticsearch_dsl/
+%{python_sitelib}/elasticsearch_dsl-%{version}*-info/
 
 %changelog
