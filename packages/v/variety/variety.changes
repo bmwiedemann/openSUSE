@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct 16 21:59:39 UTC 2022 - malcolmlewis@opensuse.org
+
+- Updated to version 0.8.9:
+  * Fix errors when there is no primary monitor configured,
+    (gh#varietywalls/variety#536 and gh#varietywalls/variety#537).
+- Rebase variety-fix-data-path.patch.
+
+-------------------------------------------------------------------
 Tue Jun 21 12:37:32 UTC 2022 - Simon Lees <sflees@suse.de>
 
 - Update to 0.8.8

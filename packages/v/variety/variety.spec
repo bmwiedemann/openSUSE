@@ -19,7 +19,7 @@
 
 %global __requires_exclude typelib\\(AyatanaAppIndicator3\\)
 Name:           variety
-Version:        0.8.8
+Version:        0.8.9
 Release:        0
 Summary:        Wallpaper changer
 License:        GPL-3.0-only
@@ -101,6 +101,7 @@ rm -rf %{buildroot}%{_datadir}/doc/variety
 %if 0%{?suse_version} > 1500
 %files -f variety.lang
 %else
+
 %files
 %endif
 %defattr(-,root,root)
