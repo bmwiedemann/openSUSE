@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct 13 10:21:26 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 2.41.0
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package
+- Rename %exclude az.ps1 to azps.ps1 in %files section
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
 Fri Sep 16 10:27:36 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
