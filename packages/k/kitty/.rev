@@ -299,4 +299,25 @@
     action causes windows to be removed/re-allocated (#5506)</comment>
     <requestid>1006016</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ec1da4332836d2a9760d993fb88f72fe</srcmd5>
+    <version>0.26.4</version>
+    <time>1666178255</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.26.4:
+  * Allow centering the background_image (#5525)
+  * X11: Fix a regression in the previous release that caused pasting
+    from GTK based applications to have extra newlines (#5528)
+  * Tab bar: Improve empty space management when some tabs have
+    short titles, allocate the saved space to the active tab (#5548)
+  * Fix background_tint not applying to window margins and padding (#3933)
+  * Wayland: Fix background image scaling using tiled mode on
+    high DPI screens
+  * Wayland: Fix an abort when changing background colors with
+    wayland_titlebar_color set to background (#5562)
+  * Update to Unicode 15.0 (#5542)
+  * GNOME Wayland: Fix a memory leak in gnome-shell when using client
+    side decorations</comment>
+    <requestid>1029741</requestid>
+  </revision>
 </revisionlist>

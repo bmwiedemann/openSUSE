@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Oct 18 12:14:04 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.26.4:
+  * Allow centering the background_image (#5525)
+  * X11: Fix a regression in the previous release that caused pasting
+    from GTK based applications to have extra newlines (#5528)
+  * Tab bar: Improve empty space management when some tabs have
+    short titles, allocate the saved space to the active tab (#5548)
+  * Fix background_tint not applying to window margins and padding (#3933)
+  * Wayland: Fix background image scaling using tiled mode on
+    high DPI screens
+  * Wayland: Fix an abort when changing background colors with
+    wayland_titlebar_color set to background (#5562)
+  * Update to Unicode 15.0 (#5542)
+  * GNOME Wayland: Fix a memory leak in gnome-shell when using client
+    side decorations
+
+-------------------------------------------------------------------
 Mon Sep 26 07:59:26 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.26.3:
