@@ -117,4 +117,16 @@
     <comment></comment>
     <requestid>998086</requestid>
   </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>a77c3d70adaa99b20f44b2263bc2b39f</srcmd5>
+    <version>7.6.0</version>
+    <time>1666178235</time>
+    <user>dimstar_suse</user>
+    <comment>- Revert back to 7.6.0. elasticsearch-dsl is not compatible with
+  8.* releases (gh#elastic/elasticsearch-dsl-py#1569).
+- Add python-elasticsearch-no-nose.patch to replace sed call in
+  SPEC file.
+</comment>
+    <requestid>1029713</requestid>
+  </revision>
 </revisionlist>

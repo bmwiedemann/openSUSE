@@ -16,23 +16,28 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-elasticsearch
-Version:        8.3.3
+# DO NOT UPDATE until the compatible version of
+# python-elasticsearch-dsl is available (i.e., the same major
+# version ... currently we are waiting on 8.* release).
+Version:        7.6.0
 Release:        0
 Summary:        Python client for Elasticsearch
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/elastic/elasticsearch-py
-Source:         https://github.com/elastic/elasticsearch-py/archive/refs/tags/v%{version}.tar.gz#/elasticsearch-py-%{version}.tar.gz
+Source:         https://github.com/elastic/elasticsearch-py/archive/%{version}.tar.gz
+Patch0:         python-elasticsearch-no-nose.patch
 # https://github.com/elastic/elasticsearch-py/issues/1983
-Patch0:         python-elasticsearch-no-mock.patch
-BuildRequires:  %{python_module elastic-transport >= 8 with %python-elastic-transport < 9}
+Patch1:         python-elasticsearch-no-mock.patch
+BuildRequires:  %{python_module certifi}
+BuildRequires:  %{python_module elastic-transport}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module urllib3 >= 1.21.1}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       (python-elastic-transport >= 8 with python-elastic-transport < 9)
+Requires:       python-elastic-transport
 BuildArch:      noarch
 # SECTION test
 BuildRequires:  %{python_module PyYAML >= 5.4}
@@ -52,6 +57,7 @@ to be opinion-free and very extendable.
 %prep
 %autosetup -p1 -n elasticsearch-py-%{version}
 sed -i '/addopts/d' setup.cfg
+rm README.rst
 
 %build
 %python_build
@@ -65,7 +71,7 @@ sed -i '/addopts/d' setup.cfg
 
 %files %{python_files}
 %license LICENSE
-%doc README.rst
+%doc AUTHORS Changelog.rst README
 %{python_sitelib}/elasticsearch
 %{python_sitelib}/elasticsearch-%{version}*-info
 

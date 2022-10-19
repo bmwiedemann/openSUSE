@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 18 10:04:37 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Revert back to 7.6.0. elasticsearch-dsl is not compatible with
+  8.* releases (gh#elastic/elasticsearch-dsl-py#1569).
+- Add python-elasticsearch-no-nose.patch to replace sed call in
+  SPEC file.
+
+-------------------------------------------------------------------
 Thu Aug 18 16:35:28 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 8.3.3

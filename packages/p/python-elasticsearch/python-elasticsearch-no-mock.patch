@@ -1,39 +1,46 @@
-Index: elasticsearch-py-8.3.3/test_elasticsearch/test_helpers.py
-===================================================================
---- elasticsearch-py-8.3.3.orig/test_elasticsearch/test_helpers.py
-+++ elasticsearch-py-8.3.3/test_elasticsearch/test_helpers.py
-@@ -19,7 +19,7 @@
- import threading
- import time
- 
+---
+ test_elasticsearch/test_connection.py          |    2 +-
+ test_elasticsearch/test_helpers.py             |    2 +-
+ test_elasticsearch/test_server/test_helpers.py |    2 +-
+ test_elasticsearch/test_transport.py           |    2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
+
+--- a/test_elasticsearch/test_connection.py
++++ b/test_elasticsearch/test_connection.py
+@@ -2,7 +2,7 @@ import re
+ import ssl
+ import gzip
+ import io
+-from mock import Mock, patch
++from unittest.mock import Mock, patch
+ import urllib3
+ import warnings
+ from requests.auth import AuthBase
+--- a/test_elasticsearch/test_helpers.py
++++ b/test_elasticsearch/test_helpers.py
+@@ -1,5 +1,5 @@
+ # -*- coding: utf-8 -*-
 -import mock
 +from unittest import mock
- import pytest
+ import time
+ import threading
+ from unittest import SkipTest
+--- a/test_elasticsearch/test_server/test_helpers.py
++++ b/test_elasticsearch/test_server/test_helpers.py
+@@ -1,4 +1,4 @@
+-from mock import patch
++from unittest.mock import patch
  
- from elasticsearch import Elasticsearch, helpers
-Index: elasticsearch-py-8.3.3/test_elasticsearch/test_server/test_helpers.py
-===================================================================
---- elasticsearch-py-8.3.3.orig/test_elasticsearch/test_server/test_helpers.py
-+++ elasticsearch-py-8.3.3/test_elasticsearch/test_server/test_helpers.py
-@@ -21,7 +21,7 @@ from datetime import datetime, timedelta
- import pytest
- from dateutil import tz
- from elastic_transport import ApiResponseMeta, ObjectApiResponse
--from mock import call, patch
-+from unittest.mock import call, patch
- 
- from elasticsearch import ApiError, helpers
+ from elasticsearch import helpers, TransportError
  from elasticsearch.helpers import ScanError
-Index: elasticsearch-py-8.3.3/test_elasticsearch/test_async/test_server/test_helpers.py
-===================================================================
---- elasticsearch-py-8.3.3.orig/test_elasticsearch/test_async/test_server/test_helpers.py
-+++ elasticsearch-py-8.3.3/test_elasticsearch/test_async/test_server/test_helpers.py
-@@ -20,7 +20,7 @@ from datetime import datetime, timedelta
+--- a/test_elasticsearch/test_transport.py
++++ b/test_elasticsearch/test_transport.py
+@@ -1,7 +1,7 @@
+ # -*- coding: utf-8 -*-
+ from __future__ import unicode_literals
+ import time
+-from mock import patch
++from unittest.mock import patch
  
- import pytest
- from elastic_transport import ApiResponseMeta, ObjectApiResponse
--from mock import MagicMock, call, patch
-+from unittest.mock import MagicMock, call, patch
- 
- from elasticsearch import helpers
- from elasticsearch.exceptions import ApiError
+ from elasticsearch.transport import Transport, get_host_info
+ from elasticsearch.connection import Connection
