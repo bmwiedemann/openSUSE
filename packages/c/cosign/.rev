@@ -334,4 +334,12 @@
 - use go-modules service to generate the vendor.tar and use zstd (forwarded request 1006385 from dirkmueller)</comment>
     <requestid>1006386</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3f7d6f3bac09608449fcf182a2ce67ef</srcmd5>
+    <version>1.13.1</version>
+    <time>1666178267</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1029810</requestid>
+  </revision>
 </revisionlist>

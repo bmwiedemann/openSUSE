@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Oct 18 12:37:41 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- update to 1.13.1:
+  * verify-blob-attestation: allow multiple subjects in in_toto attestation (#2341)
+  * Nits for #2337 (#2342)
+  * Add verify-blob-attestation command and tests (#2337)
+  * Update warning when users sign images by tag. (#2313)
+  * Remove experimental flags from attest-blob and refactor (#2338)
+  * Add --output-attestation flag to attest-blob and remove experimental signing (#2332)
+  * Add attest-blob command (#2286)
+  * Add '--cert-identity' flag to support subject alternate names for ver… (#2278)
+  * Update Dockerfile section of README (#2323)
+  * Fix option description: "sign" --> "verify" (#2306)
+- update to 1.13.0:
+  * feat: use stdin as an input for predicate by @developer-guy in https://github.com/sigstore/cosign/pull/2269
+  * feat: improve the verification message by @developer-guy in https://github.com/sigstore/cosign/pull/2268
+  * use scaffolding 0.4.8 for tests. by @vaikas in https://github.com/sigstore/cosign/pull/2280
+  * fix pivtool generate key touch policy by @cpanato in https://github.com/sigstore/cosign/pull/2282
+  * Check error on chain verification failure by @haydentherapper in https://github.com/sigstore/cosign/pull/2284
+  * Fix: Remove an extra registry request from verification path. by @mattmoor in https://github.com/sigstore/cosign/pull/2285
+  * Fix: Create a static copy of signatures as part of verification. by @mattmoor in https://github.com/sigstore/cosign/pull/2287
+  * Data race in FetchSignaturesForReference by @RTann in https://github.com/sigstore/cosign/pull/2283
+  * Add support for Fulcio username identity in SAN by @haydentherapper in https://github.com/sigstore/cosign/pull/2291
+  * fix: make tlog entry lookups for online verification shard-aware by @asraa in https://github.com/sigstore/cosign/pull/2297
+  * Better help text to sign and verify SBOM by @ChristianCiach in https://github.com/sigstore/cosign/pull/2308
+  * Adding warning to pin to digest by @ChaosInTheCRD in https://github.com/sigstore/cosign/pull/2311
+  * Add annotations for upload blob. by @cldmnky in https://github.com/sigstore/cosign/pull/2188
+  * replace deprecate package by @cpanato in https://github.com/sigstore/cosign/pull/2314
+  * update release images to use go1.19.2 and cosign v1.12.1 by @cpanato in https://github.com/sigstore/cosign/pull/2315
+
+-------------------------------------------------------------------
 Tue Sep 27 12:05:43 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.12.1:

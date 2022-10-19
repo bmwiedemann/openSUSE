@@ -17,9 +17,9 @@
 
 
 Name:           cosign
-Version:        1.12.1
+Version:        1.13.1
 Release:        0
-%define revision 0baa044bea61e7c16d56023be20ead3d9204b24a
+%define revision d1c6336475b4be26bb7fb52d97f56ea0a1767f9f
 Summary:        Container Signing, Verification and Storage in an OCI registry
 License:        Apache-2.0
 URL:            https://github.com/sigstore/cosign
