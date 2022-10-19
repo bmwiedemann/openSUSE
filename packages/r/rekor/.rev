@@ -210,4 +210,26 @@
   - Search through all shards when searching by hash (forwarded request 1007274 from msmeissn)</comment>
     <requestid>1007909</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b82083202c0014f72608b6cbab2a3dd4</srcmd5>
+    <version>1.0.0</version>
+    <time>1666178282</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to rekor 1.0.0 (sc#SLE-23476):
+  - add description on /api/v1/index/retrieve endpoint by @bobcallaway in https://github.com/sigstore/rekor/pull/1073
+  - Adding e2e test coverage by @cdris in https://github.com/sigstore/rekor/pull/1071
+  - export rekor build/version information by @cpanato in https://github.com/sigstore/rekor/pull/1074
+  - Use POST instead of GET for /api/log/entries/retrieve metrics. by @var-sdk in https://github.com/sigstore/rekor/pull/1083
+  - Search through all shards when searching by hash by @priyawadhwa in https://github.com/sigstore/rekor/pull/1082
+  - verify: verify checkpoint's STH against the inclusion proof root hash by @asraa in https://github.com/sigstore/rekor/pull/1092
+  - add ability to enable/disable specific rekor API endpoints by @bobcallaway in https://github.com/sigstore/rekor/pull/1080
+  - enable configurable client retries with backoff in RekorClient by @bobcallaway in https://github.com/sigstore/rekor/pull/1096
+  - remove dead code around api-key and timestamp references by @bobcallaway in https://github.com/sigstore/rekor/pull/1098
+  - update swagger API version to 1.0.0 by @bobcallaway in https://github.com/sigstore/rekor/pull/1102
+  - remove unused RekorVersion API definition by @bobcallaway in https://github.com/sigstore/rekor/pull/1101
+  - install gocovmerge in hack/tools by @bobcallaway in https://github.com/sigstore/rekor/pull/1103
+  - add retry command line flag on rekor-cli by @bobcallaway in https://github.com/sigstore/rekor/pull/1097
+  - Add some info and debug logging to commonly used funcs by @priyawadhwa in https://github.com/sigstore/rekor/pull/1106 (forwarded request 1029932 from msmeissn)</comment>
+    <requestid>1029934</requestid>
+  </revision>
 </revisionlist>
