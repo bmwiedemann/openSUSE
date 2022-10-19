@@ -28,7 +28,7 @@ Source:         %{url}/archive/%{version}.tar.gz#/poetry-core-%{version}-gh.tar.
 BuildRequires:  %{python_module attrs >= 22.1.0}
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module jsonschema >= 4.1.0}
-BuildRequires:  %{python_module lark-parser >= 1.1.2}
+BuildRequires:  %{python_module lark >= 1.1.2}
 BuildRequires:  %{python_module packaging >= 21.3}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyparsing >= 3.0.9}
@@ -39,7 +39,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-attrs >= 22.1.0
 Requires:       python-jsonschema >= 4.1.0
-Requires:       python-lark-parser >= 1.1.2
+Requires:       python-lark >= 1.1.2
 Requires:       python-packaging >= 21.3
 Requires:       python-pyparsing >= 3.0.9
 Requires:       python-pyrsistent >= 0.18.1
