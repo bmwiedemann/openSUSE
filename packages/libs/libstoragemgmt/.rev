@@ -295,4 +295,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>970695</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>592dc20671c6cd93ea6385b8e6e64646</srcmd5>
+    <version>1.9.5</version>
+    <time>1666178236</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.5:
+  * Misc. bug fixes including one for failure to build on i386
+  * Add a udev rule entry for ALUA state changes</comment>
+    <requestid>1029739</requestid>
+  </revision>
 </revisionlist>

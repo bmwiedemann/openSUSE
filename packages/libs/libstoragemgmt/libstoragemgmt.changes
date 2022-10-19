@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 18 12:10:13 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.9.5:
+  * Misc. bug fixes including one for failure to build on i386
+  * Add a udev rule entry for ALUA state changes
+
+-------------------------------------------------------------------
 Tue Apr 12 07:39:34 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.9.4:
