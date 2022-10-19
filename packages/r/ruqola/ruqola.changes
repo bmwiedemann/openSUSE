@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 18 14:39:58 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.8.1
+  * bug fixes
+- Remove keep_tts_plugin.patch, plugin was re-enabled upstream
+
+-------------------------------------------------------------------
 Thu Sep  1 13:37:27 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 1.8.0

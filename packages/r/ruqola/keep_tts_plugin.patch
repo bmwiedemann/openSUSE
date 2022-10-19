@@ -1,9 +1,0 @@
---- ruqola-1.8.0/src/plugins/textplugin/CMakeLists.txt.orig	2022-08-31 17:23:26.000000000 +0200
-+++ ruqola-1.8.0/src/plugins/textplugin/CMakeLists.txt	2022-09-02 11:09:08.123688427 +0200
-@@ -5,5 +5,5 @@ find_package(Qt5 OPTIONAL_COMPONENTS Tex
- if (NOT Qt5TextToSpeech_FOUND)
-     message(STATUS "Qt5TextToSpeech not found, speech feature will be disabled")
- else()
--    #add_subdirectory(texttospeech)
-+    add_subdirectory(texttospeech)
- endif()

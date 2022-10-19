@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           ruqola
-Version:        1.8.0
+Version:        1.8.1
 Release:        0
 Summary:        Rocket.chat Client
 License:        GPL-2.0-or-later
@@ -29,8 +29,6 @@ Source0:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.x
 Source1:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
 %endif
-# PATCH-FIX-OPENSUSE: Keep the build of the TTS plugin enabled
-Patch0:         keep_tts_plugin.patch
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5Crash)
