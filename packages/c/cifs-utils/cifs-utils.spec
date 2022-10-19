@@ -21,7 +21,7 @@
 %endif
 
 Name:           cifs-utils
-Version:        6.15
+Version:        7.0
 Release:        0
 Summary:        Utilities for doing and managing mounts of the Linux CIFS filesystem
 License:        GPL-3.0-or-later

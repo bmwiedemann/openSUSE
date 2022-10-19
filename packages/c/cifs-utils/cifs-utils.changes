@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Oct 17 13:29:37 UTC 2022 - palcantara@suse.de
+
+- Update cifs-utils to 7.0
+  * cifs-utils: don't return uninitialized value in cifs_gss_get_req
+  * cifs-utils: make GSSAPI usage compatible with Heimdal
+  * cifs-utils: work around missing krb5_free_string in Heimdal
+  * fix warnings for -Waddress-of-packed-member
+  * setcifsacl: fix memory allocation for struct cifs_ace
+  * setcifsacl: fix comparison of actions reported by covscan
+  * cifs.upcall: remove unused variable and fix syslog message
+  * cifs.upcall: Switch to RFC principal type naming
+  * man-pages: Update cifs.upcall to mention GSS_USE_PROXY
+  * cifs.upcall: fix compiler warning
+  * cifs.upcall: add gssproxy support
+  * remove cifs-utils-6.15.tar.bz2
+  * remove cifs-utils-6.15.tar.bz2.asc
+  * add cifs-utils-7.0.tar.bz2
+  * add cifs-utils-7.0.tar.bz2.asc
+
+-------------------------------------------------------------------
 Tue May 17 09:11:59 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 6.15
