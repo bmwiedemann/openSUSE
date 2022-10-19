@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 18 15:18:39 MDT 2022 - carnold@suse.com
+
+- bsc#203689 - [tw 20220921] remote-viewer fails to start:
+  libsoup3 symbols detected.
+  virt-viewer.spec
+
+-------------------------------------------------------------------
 Wed Oct  5 16:49:16 MDT 2022 - carnold@suse.com
 
 - Fix build failures in Factory

@@ -18,7 +18,7 @@
 
 # Enabled for Tumbleweed
 %if 0%{?suse_version} >= 1550
-%define with_govirt 1
+%define with_govirt 0
 %else
 %define with_govirt 0
 %endif
@@ -56,7 +56,9 @@ BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtk-vnc-2.0)
 BuildRequires:  pkgconfig(libvirt) >= 1.2.8
 BuildRequires:  pkgconfig(libvirt-glib-1.0) >= 1.2.8
+%if %{with_govirt}
 BuildRequires:  pkgconfig(rest-0.7)
+%endif
 # Our Runtime requirements
 Requires:       netcat
 
