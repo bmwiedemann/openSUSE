@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Oct 19 05:04:23 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.12.5:
+  * Prepare for v0.12.5 release
+  * build(deps): bump helm.sh/helm/v3 from 3.10.0 to 3.10.1
+  * vendor: Pick up the latest github.com/cilium/charts
+  * build(deps): bump nick-invision/retry from 2.8.1 to 2.8.2
+  * build(deps): bump docker/setup-buildx-action from 2.0.0 to 2.2.0
+  * build(deps): bump library/golang from `9d3bd09` to `f3e6836`
+  * build(deps): bump github.com/spf13/cobra from 1.5.0 to 1.6.0
+  * build(deps): bump docker/login-action from 2.0.0 to 2.1.0
+  * build(deps): bump google-github-actions/setup-gcloud from 0.6.0 to 0.6.2
+  * build(deps): bump google-github-actions/auth from 0.8.1 to 0.8.3
+  * sysdump: auto detect namespace from list of defaults.
+  * build(deps): bump docker/build-push-action from 3.1.1 to 3.2.0
+  * Don't restart Cilium on cilium uninstall
+  * build(deps): bump google.golang.org/grpc from 1.49.0 to 1.50.0
+  * build(deps): bump library/golang from `2baa528` to `9d3bd09`
+  * [connectivity] Allow configuring cilium-agent pod selector
+  * build(deps): bump library/golang
+  * build(deps): bump library/busybox from `8946083` to `7b72c24`
+  * build(deps): bump github.com/cloudflare/cfssl from 1.6.2 to 1.6.3
+  * build(deps): bump actions/checkout from 3.0.2 to 3.1.0
+  * build(deps): bump michi-covalent/push-to-loki from 0.2.1 to 0.2.2
+  * test/connectivity: Run connectivity test in non-default namespace
+  * test/connectivity: Add length check before calls to waitForDeployments()
+  * test/connectivity: Correct perf deploys in deploymentList()
+  * test/connectivity: Add early return when deploying perf resources
+  * test/connectivity: Update drop traffic direction and reason
+  * sysdump: Collect k8s leases
+  * test/connectivity: Add any prefix for pod namespace label
+  * config, hubble: plumb context where available
+  * test/connectivity: Remove explicit namespace in policy manifest
+  * defaults: update connectivity test image versions
+  * build(deps): bump helm/kind-action from 1.3.0 to 1.4.0
+  * build(deps): bump helm.sh/helm/v3 from 3.9.4 to 3.10.0
+  * test/connectivity: Update drop traffic direction and reason
+  * policy: Add support for drop direction and reason
+  * Update stable release to v0.12.4
+
+-------------------------------------------------------------------
 Sun Sep 25 06:55:40 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.12.4:
