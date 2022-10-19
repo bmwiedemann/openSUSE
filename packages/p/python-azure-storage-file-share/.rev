@@ -137,4 +137,15 @@
 - Update Requires from setup.py (forwarded request 1010249 from glaubitz)</comment>
     <requestid>1010270</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>da3d9ce45a33bf7edb13ef9379c9c222</srcmd5>
+    <version>12.10.1</version>
+    <time>1666185192</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 12.10.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1029958 from glaubitz)</comment>
+    <requestid>1029965</requestid>
+  </revision>
 </revisionlist>
