@@ -47,7 +47,6 @@ BuildRequires:  update-desktop-files
 
 Requires:       gnu-free-fonts
 Requires:       gobject-introspection
-Requires:       graphviz
 Requires:       opencv
 Requires:       python3-GooCalendar >= 0.5
 Requires:       python3-cairo
@@ -59,7 +58,6 @@ Requires:       python3-gobject-Gdk
 Requires:       python3-gobject-cairo
 Requires:       python3-numpy
 Requires:       python3-opencv
-Requires:       python3-pydot
 Requires:       python3-pytz
 Requires:       python3-setuptools
 Requires:       python3-simplejson

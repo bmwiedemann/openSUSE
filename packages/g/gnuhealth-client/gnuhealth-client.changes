@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 12 10:48:25 UTC 2022 - Axel Braun <axel.braun@gmx.de>
+
+- explicit dependency on pydot and graphviz removed (maintainer error)
+
+-------------------------------------------------------------------
 Tue Oct 11 14:20:00 UTC 2022 - Axel Braun <axel.braun@gmx.de>
 
 - explicit dependency on pydot and graphviz added
