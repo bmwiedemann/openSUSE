@@ -4,7 +4,7 @@
 
 --- a/xarray/tutorial.py
 +++ b/xarray/tutorial.py
-@@ -149,7 +149,10 @@ def open_dataset(
+@@ -156,7 +156,10 @@ def open_dataset(
          url = f"{base_url}/raw/{version}/{path.name}"
  
      # retrieve the file

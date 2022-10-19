@@ -16,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 Name:           python-xarray
-Version:        2022.6.0
+Version:        2022.10.0
 Release:        0
 Summary:        N-D labeled arrays and datasets in Python
 License:        Apache-2.0

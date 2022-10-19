@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct 18 22:04:32 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 2022.10.0:
+  - This release brings numerous bugfixes, a change in minimum
+    supported versions, and a new scatter plot method for
+    DataArrays.
+  - Also, temporarily import loop_in_thread fixture from
+    distributed.
+- Update to 2022.9.0:
+  - This release brings a large number of bugfixes and
+    documentation improvements, as well as an external interface
+    for setting custom indexes!
+
+-------------------------------------------------------------------
 Sun Aug  7 03:12:48 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:

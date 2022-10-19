@@ -1302,4 +1302,21 @@
 </comment>
     <requestid>997996</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>4b369ab5a11f4c3a9b18a7b4478a6bb1</srcmd5>
+    <version>2022.10.0</version>
+    <time>1666178271</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2022.10.0:
+  - This release brings numerous bugfixes, a change in minimum
+    supported versions, and a new scatter plot method for
+    DataArrays.
+  - Also, temporarily import loop_in_thread fixture from
+    distributed.
+- Update to 2022.9.0:
+  - This release brings a large number of bugfixes and
+    documentation improvements, as well as an external interface
+    for setting custom indexes!</comment>
+    <requestid>1029886</requestid>
+  </revision>
 </revisionlist>
