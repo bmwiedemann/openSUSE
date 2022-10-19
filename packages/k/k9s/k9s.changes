@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Oct 18 18:18:00 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.26.7:
+  * K9s/rel v0.26.7 (#1816)
+  * Bump k8s.io/klog/v2 from 2.70.1 to 2.80.1 (#1779)
+  * Bump github.com/rs/zerolog from 1.27.0 to 1.28.0 (#1780)
+  * Bump golang from 1.19.1-alpine3.16 to 1.19.2-alpine3.16 (#1796)
+  * Bump actions/checkout from 2 to 3.1.0 (#1795)
+  * Bump github.com/mattn/go-runewidth from 0.0.13 to 0.0.14 (#1813)
+  * Bump github.com/spf13/cobra from 1.5.0 to 1.6.0 (#1814)
+  * Allow multiple port forwards for a single Pod (#1804)
+  * Bump k8s.io/kubectl from 0.25.1 to 0.25.3 (#1809)
+  * Bump golang.org/x/text from 0.3.7 to 0.4.0 (#1812)
+  * Bump github.com/fsnotify/fsnotify from 1.5.4 to 1.6.0 (#1810)
+  * Bump k8s.io/cli-runtime from 0.25.1 to 0.25.3 (#1811)
+  * use go install (#1797)
+  * Bump k8s.io/client-go from 0.25.1 to 0.25.3 (#1806)
+  * Bump k8s.io/metrics from 0.25.1 to 0.25.3 (#1807)
+  * Bump k8s.io/apimachinery from 0.25.1 to 0.25.3 (#1808)
+  * Update CronJob version to v1 (#1793)
+
+-------------------------------------------------------------------
 Tue Sep 27 06:32:06 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.26.6:
