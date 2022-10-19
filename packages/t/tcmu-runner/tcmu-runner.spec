@@ -35,7 +35,7 @@
 %bcond_with tcmalloc
 
 Name:           tcmu-runner
-Version:        1.5.4
+Version:        1.6.0
 Release:        0
 Summary:        A userspace daemon that handles the LIO TCM-User backstore
 License:        Apache-2.0
@@ -134,6 +134,15 @@ This package contains the Ceph RADOS ZBC disc emulation, using a
 file backstore in tcmu-runner.
 %endif
 
+%package -n libtcmu-devel
+Summary:        Development package for libtcmu
+Group:          Development/Libraries
+Requires:       %{name} = %{version}
+Requires:       libtcmu2 = %{version}
+
+%description -n libtcmu-devel
+Development header(s) and lib(s) for developing against libtcmu.
+
 %prep
 %setup
 %patch1 -p1
@@ -206,13 +215,13 @@ ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rctcmu-runner
 %config %{_sysconfdir}/dbus-1/system.d/tcmu-runner.conf
 %{_unitdir}/tcmu-runner.service
 %doc %{_mandir}/man8/tcmu-runner.8%{ext_man}
-%config %{_sysconfdir}/logrotate.d/tcmu-runner
+%config(noreplace) %{_sysconfdir}/logrotate.d/tcmu-runner
 %dir %{_sysconfdir}/tcmu
-%config(noreplace) %{_sysconfdir}/tcmu/tcmu.conf
+%config %{_sysconfdir}/tcmu/tcmu.conf
 
 %files -n libtcmu2
 %defattr(-,root,root)
-%{_libdir}/libtcmu.so*
+%{_libdir}/libtcmu*.so.*
 
 %if 0%{?build_handler_glusterfs}
 %files handler-glusterfs
@@ -228,5 +237,8 @@ ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rctcmu-runner
 %files handler-zbc
 %{_libdir}/tcmu-runner/handler_file_zbc.so
 %endif
+
+%files -n libtcmu-devel
+%{_libdir}/libtcmu*.so
 
 %changelog

@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Oct 14 16:14:17 UTC 2022 - lduncan@suse.com
+
+- Update to version 1.6.0 from upstream:
+  * Bump version to 1.6.0
+  * Use get_unaligned_be*() to avoid UB
+  * libtcmu: add support for write protect
+  * rbd: make it to be compatible to the old blacklist style
+  * rbd: switch to blocklist
+  * rbd: switch strtok to strtok_r
+  * tcmur_device: rename the state_lock to rdev_lock
+  * tcmur_device: rename lock to cmds_list_lock
+  * rbd: fix and add more debug logs
+  * rbd: fix the possible warning of incorrect return value type
+  * rbd: remove the reduntant logs
+  * rbd: fix memory leak when fails to get the address
+  * Revert "Create codeql-analysis.yml"
+  * rbd: fix use-after-free of addr
+  * Create codeql-analysis.yml
+  * main: fix g_object_unref: assertion 'G_IS_OBJECT (object)' failed
+  * remove pthread_getname_np calls
+  * implicitly cast pthread_t to long unsigned int
+  * add missing pthread.h include
+  * replace assert_perror with assert
+  * cast time_t to intmax_t when printing
+  * spec: make dist tag optional (#659)
+  * install-dep.sh: do not install multiple packages in one single line (#657)
+  * tcmu_read_config() check read() return value. (#656)
+
+  The 3 current patches, which are SUSE-specific, stay.
+
+  Note that this update moves libtcmu.so (a symlink) to a new
+  package: libtcmu-devel, as suggested by rpmlint.
+
+-------------------------------------------------------------------
 Tue Mar  8 22:18:43 UTC 2022 - David Disseldorp <ddiss@suse.com>
 
 - fix g_object_unref: assertion 'G_IS_OBJECT (object)' failed;
