@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Oct 13 14:37:41 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Cleaning up _service file
+
+-------------------------------------------------------------------
+Wed Jul 27 21:38:14 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version git20220624.7eafe25:
+  * Updated README (#15)
+  * fixed scrollbar color typo
+  * Added github_dark colorscheme and It's preview
+  * `duorand`: Set alpha channel of randomized color
+  * Update README.md
+  * Add Betelgeuse preview
+  * Add Betelgeuse theme
+
+-------------------------------------------------------------------
+Tue May 17 16:45:02 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version git20220517.e5d1c3d:
+  * add jellybeans and tokyo-night colorschemes
+  * add jellybeans and tokyo-night colorschemes
+  * added synthwave colorscheme
+
+-------------------------------------------------------------------
 Wed Apr 13 19:22:59 UTC 2022 - scott.bradnick@suse.com
 
 - Update to version git20220310.8e1cc27:

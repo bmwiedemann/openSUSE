@@ -1,7 +1,3 @@
-<!--
-# vim: set syntax=xml
--->
-
 <services>
   <service name="obs_scm" mode="disabled">
     <param name="url">https://github.com/lite-xl/lite-xl-colors</param>
