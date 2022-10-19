@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Oct 18 18:19:16 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.12.0:
+  * log the error object instead of the string message only
+  * replace deprecated functions
+  * bump docker dependencies version
+  * Fix Makefile target `validate-go-mod` to only run correct bakefile target
+  * Update `e2e` module deps
+  * Add Codecov
+  * port: fix container name in error message (#9909)
+  * github: add feature request template
+  * github: switch to issue template form
+  * build(deps): bump go.opentelemetry.io/otel from 1.10.0 to 1.11.0
+  * Update e2e mod dependencies
+  * build(deps): bump github.com/spf13/cobra from 1.5.0 to 1.6.0
+  * docs: update with result of `make docs`
+  * Add support to push images quietly via compose cli
+  * Bump e2e module deps
+  * build(deps): bump gotest.tools/v3 from 3.3.0 to 3.4.0
+  * don't fail when trying to remove an orphan container during down command
+  * Update to go 1.19.2 to address CVE-2022-2879, CVE-2022-2880, CVE-2022-41715
+  * ci: update docs repo path
+  * Adjust modules sync validating script
+  * Add `validate-modules` target to CI matrix
+  * Add Makefile, buildx target to ensure root and e2e go.mod are kept in sync
+  * Create new `e2e` module to separate out test dependencies, move cucumber tests
+  * Removed tests that were replaced by Cucumber features
+  * Update go.mod replace
+  * Rename start cucumber feature
+  * Convert `cascade_stop_test.go` into a cucumber feature `stop.feature`
+  * Cucumber test setup/fixtures
+
+-------------------------------------------------------------------
 Wed Sep 28 05:01:37 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 2.11.2:
