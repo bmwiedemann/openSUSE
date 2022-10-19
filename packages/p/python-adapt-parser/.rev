@@ -85,4 +85,19 @@
   * Removed requirement of pyee</comment>
     <requestid>934030</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>35a9ec77ecadbb9b5157caa9fd6a3af4</srcmd5>
+    <version>1.0.0</version>
+    <time>1666185193</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix sitelib in files section
+- Add patch remove-python-six.patch to do not require python-six
+- Remove python-six dependency
+- Remove not needed deps:
+  * unittest-xml-reporting
+  * python-pyee
+- Use pytest in check instead unittest
+</comment>
+    <requestid>1029975</requestid>
+  </revision>
 </revisionlist>

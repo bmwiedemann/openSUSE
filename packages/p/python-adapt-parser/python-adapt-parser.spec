@@ -1,7 +1,7 @@
 #
 # spec file for package python-adapt-parser
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,14 +25,12 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/MycroftAI/adapt
 Source:         https://github.com/MycroftAI/adapt/archive/refs/tags/release/v%{version}.tar.gz
-BuildRequires:  %{python_module pyee >= 8.1.0}
+# PATCH-FIX-OPENSUSE remove-python-six.patch
+Patch:          remove-python-six.patch
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six >= 1.10.0}
-BuildRequires:  %{python_module unittest-xml-reporting}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-pyee >= 8.1.0
-Requires:       python-six >= 1.10.0
 BuildArch:      noarch
 %python_subpackages
 
@@ -42,7 +40,7 @@ determination framework. It is intended to parse natural language text into
 a structured intent that can then be invoked programatically.
 
 %prep
-%setup -q -n adapt-release-v%{version}
+%autosetup -p1 -n adapt-release-v%{version}
 sed -i -s "s/==/>=/" requirements.txt
 
 %build
@@ -53,11 +51,12 @@ sed -i -s "s/==/>=/" requirements.txt
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pyunittest test/*.py
+%pytest test/*.py
 
 %files %{python_files}
 %license LICENSE.md
 %doc README.md SUPPORT.md GETTING_STARTED.md
-%{python_sitelib}/*
+%{python_sitelib}/adapt
+%{python_sitelib}/adapt_parser-%{version}*-info
 
 %changelog
