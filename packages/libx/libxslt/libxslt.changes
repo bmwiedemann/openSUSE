@@ -1,4 +1,114 @@
 -------------------------------------------------------------------
+Tue Aug 30 14:42:27 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.1.37:
+  * Improvements:
+    + Don't use deprecated libxml2 macros
+    + Don't mess with xmlDefaultSAXHandler
+  * Build system:
+    + Require automake-1.16.3 or later
+    + Remove generated files from distribution
+    + Add missing compile definition for static builds to Autotools
+
+-------------------------------------------------------------------
+Thu Aug 18 07:50:04 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Update to 1.1.36:
+  * Removals and deprecations
+    + Remove SVN keyword anchors
+    + Remove CVS and SVN-related code
+    + Remove README.cvs-commits
+    + Remove ChangeLog
+    + Remove xsltwin32config.h
+  * Improvements
+    + Simplify xsltexports.h and exsltexports.h
+    + Don't overlink executables with gcrypt
+    + Fix quadratic behavior with variables and parameters
+    + Remove case labels with XPointer location types
+    + Add configure~ to .gitignore
+    + Stop calling deprecated libxml2 functions
+  * Portability
+    + Use portable python shebangs (David Seifert)
+    + Remove useless __CYGWIN__ checks
+    + Remove cruft from win32config.h
+    + crypto.c: Silence a compiler warning on Windows (Chun-wei Fan)
+  * Build system
+    + Add missing compile definition for static builds to CMake
+    + Avoid obsolescent `test -a` constructs (David Seifert)
+    + Only link libxml2 statically in purely static build
+    + Set AC_CONFIG_MACRO_DIR
+    + Allow AM_MAINTAINER_MODE to be disabled
+    + Streamline and fix documentation installation
+    + Don't try to recreate COPYING symlink
+    + Remove special configuration for certain maintainers
+    + configure.ac: produce tar.xz only (GNOME policy) (David Seifert)
+    + Detect libm using libtool's macros (David Seifert)
+    + configure.ac: disable static libraries by default (David Seifert)
+    + python/Makefile.am: nest python docs in $(docdir) (David Seifert)
+    + python/Makefile.am: rely on global AM_INIT_AUTOMAKE (David Seifert)
+    + configure.ac: remove useless AC_SUBST (David Seifert)
+    + Use AM_PATH_PYTHON/PKG_CHECK_MODULES for python bindings (David Seifert)
+    + Change libxml2 Python config
+    + Don't check for standard C89 library functions
+    + Don't check for standard C89 headers
+    + Remove --with-html-dir option
+    + Also check for glibtoolize in autogen.sh
+    + Rework documentation build system
+    + Remove old website
+    + CMake: Relax check for enabling crypto support on Windows (Chun-wei Fan)
+    + Remove obsolete AC_HEADER_STDC autoconf macro (Vadim Zeitlin)
+    + Remove special configuration for old maintainers
+  * Test suite, CI
+    + Remove test involving XPointer range-to function
+    + Test recursion in EXSLT dynamic functions
+    + Add CI job for static build
+  * Documentation
+    + Move tutorial images
+
+-------------------------------------------------------------------
+Wed Mar  9 05:07:32 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 1.1.35:
+  * Security fixes:
+    + [CVE-2021-30560] Use-after-free in xsltApplyTemplates;
+    + A couple of memory leak and a double-free fixes.
+  * A couple of regression fixes.
+  * Many bug fixes.
+  * New xsltproc --huge option, provided by libxml XML_PARSE_HUGE.
+  * Numerous tests and code and fuzzing fixes and improvements.
+  * Updated documentation.
+- The full Libxslt 2.9.13 NEWS can be found here:
+  https://download.gnome.org/sources/libxslt/1.1/libxslt-1.1.35.\
+  news
+- Switch libxml2-devel package with its pkgconfig module
+  counterpart (libxml-2.0) to align with CONFIGURE script's checks.
+- Add fdupes build requirement/macro to hard-link duplicate files
+  in the DATADIR inside the buildroot.
+- Add explicit 'gcc' build requirement to align with CONFIGURE
+  checks.
+- Update http://xmlsoft.org URL tag to Libxslt's new web home:
+  https://gitlab.gnome.org/GNOME/libxslt.
+- Update ftp://xmlsoft.org Source tag to Libxslt's new download
+  host: https://download.gnome.org.
+- Drop no longer needed/used libgpg-error-devel. Note that despite
+  'lgpg-error' being linked against some libraries, there's no
+  automatic generation of run-time requirements on libgpg-error*
+  symbols our build system. And there's no mention of gpg-error in
+  the whole source tarball at all.
+- Drop no longer needed explicit libtool build requirement and
+  `autoreconf` call in build section since we don't touch the build
+  system scripts nor use checked out git trees anymore.
+- Drop libxslt.keyring source file as the new download host doesn't
+  offer GPG signatures.
+- Drop fixed upstream patches:
+  libxslt-config-fixes.patch (glgo#GNOME/libxslt!3);
+  libxslt-Stop-using-maxParserDepth-XPath-limit.patch;
+  libxslt-Do-not-set-maxDepth-in-XPath-contexts.patch; and
+  Recreate-xsltproc-man-page-with-old-Docbook-styleshe.patch.
+- Use ldconfig_scriptlets macro for post(un) handling of ldconfig
+  calls.
+
+-------------------------------------------------------------------
 Wed Nov 10 09:58:52 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Add missing library .so files [bsc#1191771]

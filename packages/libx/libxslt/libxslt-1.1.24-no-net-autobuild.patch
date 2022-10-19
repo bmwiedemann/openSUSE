@@ -1,5 +1,5 @@
---- xsltproc/xsltproc.c
-+++ xsltproc/xsltproc.c
+--- a/xsltproc/xsltproc.c
++++ b/xsltproc/xsltproc.c
 @@ -544,7 +544,7 @@
  
      sec = xsltNewSecurityPrefs();

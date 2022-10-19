@@ -1,7 +1,7 @@
 #
 # spec file for package libxslt
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,34 +16,46 @@
 #
 
 
-%define libver 1
-%define libexver 0
+%define libver      1
+%define libexver    0
+
 Name:           libxslt
-Version:        1.1.34
+Version:        1.1.37
 Release:        0
 Summary:        XSL Transformation Library
 License:        GPL-2.0-or-later AND MIT
 Group:          Development/Libraries/C and C++
-URL:            http://xmlsoft.org/XSLT/
-Source0:        ftp://xmlsoft.org/libxslt/libxslt-%{version}.tar.gz
-Source1:        ftp://xmlsoft.org/libxslt/libxslt-%{version}.tar.gz.asc
-Source2:        %{name}.keyring
-Source3:        xslt-config.1
-Source99:       baselibs.conf
-Patch0:         %{name}-1.1.24-no-net-autobuild.patch
-Patch1:         libxslt-config-fixes.patch
+URL:            https://gitlab.gnome.org/GNOME/libxslt
+Source0:        https://download.gnome.org/sources/%{name}/1.1/%{name}-%{version}.tar.xz
+Source1:        baselibs.conf
+Source2:        xslt-config.1
+
+# PATCH-FIX-OPENSUSE -- libxslt-1.1.24-no-net-autobuild.patch
+#   The xmlGetExternalEntityLoader() tries to fetch/parse some information via
+#   internet, which OBS's build environment does not allow it.
+Patch0:         libxslt-1.1.24-no-net-autobuild.patch
+# PATCH-FIX-UPSTREAM -- libxslt-random-seed.patch
+#   https://bugzilla.suse.com/show_bug.cgi?id=934119
+#   https://bugzilla.gnome.org/show_bug.cgi?id=758400
+#   Initialize the random seed to ensure libxslt's math.random() function
+#   produces unpredictable outputs.
+Patch1:         libxslt-random-seed.patch
+# PATCH-FIX-UPSTREAM -- 0009-Make-generate-id-deterministic.patch
+#   https://bugzilla.gnome.org/show_bug.cgi?id=751621
+#   https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=902051
+#   Make generate-id() return identifiers in a deterministic way. It used to
+#   return identifiers based on the memory address of the node object.
 Patch2:         0009-Make-generate-id-deterministic.patch
-Patch3:         libxslt-random-seed.patch
-# PATCH-FIX-UPSTREAM gitlab.gnome.org/GNOME/libxslt/commit/9ae2f94df1721e002941b40665efb762aefcea1a
-Patch4:         libxslt-Stop-using-maxParserDepth-XPath-limit.patch
-# PATCH-FIX-UPSTREAM gitlab.gnome.org/GNOME/libxslt/commit/77c26bad0433541f486b1e7ced44ca9979376908
-Patch5:         libxslt-Do-not-set-maxDepth-in-XPath-contexts.patch
-Patch6:         Recreate-xsltproc-man-page-with-old-Docbook-styleshe.patch
+#
+### SUSE patches starts on 1000
+# PATCH-FIX-SUSE
+#Patch1000:
+#
+BuildRequires:  fdupes
+BuildRequires:  gcc
 BuildRequires:  libgcrypt-devel
-BuildRequires:  libgpg-error-devel
-BuildRequires:  libtool
-BuildRequires:  libxml2-devel >= 2.9.12
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.12
 Obsoletes:      libxslt-python
 
 %description
@@ -90,7 +102,6 @@ Requires:       %{name}-tools = %{version}
 Requires:       glibc-devel
 Requires:       libexslt%{libexver} = %{version}
 Requires:       libgcrypt-devel
-Requires:       libgpg-error-devel
 Requires:       libxslt%{libver} = %{version}
 
 %description devel
@@ -113,21 +124,13 @@ This package contains xsltproc, a command line interface to the XSLT engine.
 xtend the
 
 %prep
-%setup -q
-%patch0
-%patch1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
+%autosetup -p1
 
 %build
-autoreconf -fvi
 %configure \
-  --disable-static \
-  --without-python \
-  --disable-silent-rules
+    --disable-static \
+    --without-python \
+    --disable-silent-rules
 %make_build
 
 %check
@@ -138,15 +141,16 @@ autoreconf -fvi
 
 # Unwanted doc stuff
 rm -fr %{buildroot}%{_datadir}/doc
-# the manual page is required
-install -D -m0644 %{SOURCE3} %{buildroot}%{_mandir}/man1/xslt-config.1
+# Install the manual page for xslt-config
+install -D -m0644 %{SOURCE2} %{buildroot}%{_mandir}/man1/xslt-config.1
 #kill all "la" files
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n libxslt%{libver} -p /sbin/ldconfig
-%postun -n libxslt%{libver} -p /sbin/ldconfig
-%post -n libexslt%{libexver} -p /sbin/ldconfig
-%postun -n libexslt%{libexver} -p /sbin/ldconfig
+# Hardlink same-content files
+%fdupes %{buildroot}%{_datadir}
+
+%ldconfig_scriptlets -n libxslt%{libver}
+%ldconfig_scriptlets -n libexslt%{libexver}
 
 %files -n libxslt%{libver}
 %license COPYING* Copyright
@@ -169,11 +173,18 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/*.sh
 %{_libdir}/pkgconfig/libxslt.pc
 %{_libdir}/pkgconfig/libexslt.pc
+%dir %{_libdir}/cmake/libxslt/
+%{_libdir}/cmake/libxslt/FindGcrypt.cmake
+%{_libdir}/cmake/libxslt/libxslt-config.cmake
 %{_includedir}/*
 %{_datadir}/aclocal/*
 %{_bindir}/xslt-config
 %{_mandir}/man1/xslt-config.1%{?ext_man}
 %{_mandir}/man3/*
-%doc doc/*.html doc/html doc/tutorial doc/*.gif
+%dir %{_datadir}/gtk-doc/
+%dir %{_datadir}/gtk-doc/html/
+%{_datadir}/gtk-doc/html/libexslt/
+%{_datadir}/gtk-doc/html/libxslt/
+%doc doc/*.html doc/tutorial doc/tutorial2
 
 %changelog

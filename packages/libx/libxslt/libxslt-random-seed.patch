@@ -4,14 +4,14 @@ Date:   Tue Apr 4 16:27:39 2017 +0200
 
     initialize the random seed
 
-diff --git a/libexslt/math.c b/libexslt/math.c
-index 6b24dbe0..b7a8d6e1 100644
---- a/libexslt/math.c
-+++ b/libexslt/math.c
-@@ -23,6 +23,14 @@
- #ifdef HAVE_STDLIB_H
+Index: libxslt-v1.1.36/libexslt/math.c
+===================================================================
+--- libxslt-v1.1.36.orig/libexslt/math.c
++++ libxslt-v1.1.36/libexslt/math.c
+@@ -12,6 +12,14 @@
+ #include <math.h>
  #include <stdlib.h>
- #endif
+ 
 +#ifdef HAVE_UNISTD_H
 +#include <unistd.h>
 +#endif
@@ -20,10 +20,10 @@ index 6b24dbe0..b7a8d6e1 100644
 +#include <time.h>
 +#endif
 +
- 
  #include "exslt.h"
  
-@@ -474,6 +482,20 @@ static double
+ /**
+@@ -460,6 +468,20 @@ static double
  exsltMathRandom (void) {
      double ret;
      int num;
@@ -44,4 +44,3 @@ index 6b24dbe0..b7a8d6e1 100644
  
      num = rand();
      ret = (double)num / (double)RAND_MAX;
-

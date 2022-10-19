@@ -7,8 +7,8 @@ Author: Jérémy Bobbio <lunar@debian.org>
 
 Index: libxslt-1.1.29/libxslt/functions.c
 ===================================================================
---- libxslt-1.1.29.orig/libxslt/functions.c
-+++ libxslt-1.1.29/libxslt/functions.c
+--- a/libxslt/functions.c
++++ b/libxslt/functions.c
 @@ -661,10 +661,10 @@ xsltFormatNumberFunction(xmlXPathParserC
   */
  void
