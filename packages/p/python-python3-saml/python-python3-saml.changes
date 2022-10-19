@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 18 13:36:10 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- No need to skip Python 3.10 anymore
+
+-------------------------------------------------------------------
 Mon May 23 07:59:12 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.14.0:

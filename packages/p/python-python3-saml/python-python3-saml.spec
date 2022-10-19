@@ -17,8 +17,6 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-# python-xmlsec doesn’t support 3.10 gh#mehcode/python-xmlsec#204
-%define skip_python310 1
 Name:           python-python3-saml
 Version:        1.14.0
 Release:        0

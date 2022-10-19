@@ -105,4 +105,12 @@
   * Deprecate server_port from request data dictionary</comment>
     <requestid>978650</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>92e539f33a659c9be797058580bf2e9b</srcmd5>
+    <version>1.14.0</version>
+    <time>1666178260</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1029790</requestid>
+  </revision>
 </revisionlist>
