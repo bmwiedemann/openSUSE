@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 19 12:10:51 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove not needed python-six dependency
+- Use more specific python_sitelib in files section
+- Update the source URL to the current one
+
+-------------------------------------------------------------------
 Tue Mar 10 12:56:35 UTC 2020 - pgajdos@suse.com
 
 - version update to 3.0.2
