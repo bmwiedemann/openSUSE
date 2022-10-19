@@ -1,7 +1,7 @@
 #
 # spec file for package python-tld
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,6 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
-Requires:       python-six >= 1.9
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
@@ -40,7 +39,6 @@ BuildArch:      noarch
 BuildRequires:  %{python_module Faker}
 BuildRequires:  %{python_module factory_boy}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six >= 1.9}
 # /SECTION
 %python_subpackages
 

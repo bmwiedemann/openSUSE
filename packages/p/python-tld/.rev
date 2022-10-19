@@ -174,4 +174,12 @@ pypi works again now (at least for me)</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>902717</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>62a52ade46bf8a7f4c0e83f51db4afee</srcmd5>
+    <version>0.12.6</version>
+    <time>1666178253</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1029738</requestid>
+  </revision>
 </revisionlist>
