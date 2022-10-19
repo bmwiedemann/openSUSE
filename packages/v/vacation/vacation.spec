@@ -31,6 +31,7 @@ Patch3:         vacation-%{version}.strip.diff
 Patch4:         0001-Patch-to-handle-long-folded-headers-from-Zdenek-Havr.patch
 # PATCH-FIX-SUSE Also handle junkfilter based on procmail
 Patch5:         vacation-%{version}-junkfilter.diff
+Patch6:         vacation-1.2.7.1-nogecos.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  gdbm-devel
 
@@ -54,6 +55,7 @@ Authors:
 %patch3 -p1
 %patch4
 %patch5
+%patch6 -p1
 
 %build
 # %ifarch ia64 x86_64 s390x ppc64

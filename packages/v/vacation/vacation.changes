@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep  8 03:41:15 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add vacation-1.2.7.1-nogecos.patch to strip GECOS field of most info
+
+-------------------------------------------------------------------
 Wed Feb  1 09:34:04 UTC 2017 - werner@suse.de
 
 - Add some more senders and mail tags which should not be answered 
