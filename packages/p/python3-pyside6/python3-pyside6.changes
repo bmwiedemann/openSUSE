@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Oct 16 07:04:40 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.4.0. Check the installed changes-6.4.0 file for the
+  full list of changes
+  * Modules QtPdf, QtPdfWidgets and QtSpatialAudio have been added
+  * The Qt5Compat QML imports have been added (QtGraphicalEffects)
+  * Errors message about test-configuring projects with cmake
+    have been improved
+  * The feature module has been improved by a reset function
+  * The documentation build process has been improved; it no
+    longer requires a complete PySide6 build
+  * Support for Python 3.11 has been added
+- Drop patch, fixed upstream
+  * 0001-Adapt-to-Qt-6.4.patch
+- Fix the shiboken constraints
+- Add patch to fix build failures on ARM:
+  * pyside-6.4.0-arm_gles.patch
+
+-------------------------------------------------------------------
 Fri Sep 30 20:54:07 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add Qt 6.4 compatibility patch:
