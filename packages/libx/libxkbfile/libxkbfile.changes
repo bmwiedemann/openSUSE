@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct 18 11:09:38 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.1.1
+  * Use strndup if available to avoid -Wstringop-overflow warning from gcc 9
+  * Convert check for strcasecmp to normal autoconf style
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * fix an off-by-one error in copying the name of a virtual modifier
+  * Escape non-printable characters correctly
+  * unifdef NOTYET
+  * Fix check for appending '|' character when applying rules
+
+-------------------------------------------------------------------
 Thu Mar 21 15:22:18 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.1.0
