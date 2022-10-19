@@ -17,7 +17,7 @@
 
 %define programname lite-xl
 Name:           lite-xl-plugins
-Version:        git20220501.7bee960
+Version:        git20221005.b1bc52f
 Release:        0
 Summary:        Additional plugins for %{programname}
 License:        MIT
@@ -27,15 +27,12 @@ Source0:        %{name}-%{version}.tar.gz
 Source1:        console.lua
 ### https://github.com/yamatsum/nonicons/raw/master/dist/nonicons.ttf
 Source2:        nonicons.ttf
-### https://github.com/lite-xl/lite-xl-plugins/issues/40#issuecomment-1059862448
-Source3:        indentguide.lua
 ### https://raw.githubusercontent.com/vincens2005/lite-xl-gitdiff-highlight/master/init.lua
-Source4:        gitdiff_highlight-init.lua
+Source3:        gitdiff_highlight-init.lua
 ### https://raw.githubusercontent.com/vincens2005/lite-xl-gitdiff-highlight/master/gitdiff.lua
-Source5:        gitdiff_highlight-gitdiff.lua
-Source6:        smb-addl-nonicons.txt
-Patch0:         datetimestamps.patch
-Patch1:         nonicons.patch
+Source4:        gitdiff_highlight-gitdiff.lua
+Source5:        smb-addl-nonicons.txt
+Patch0:         nonicons-userdir.patch
 Recommends:     words
 BuildArch:      noarch
 
@@ -45,27 +42,27 @@ Plugins for the Lite XL text editor, originally forked from the lite plugins rep
 %prep
 %setup -q
 %patch0
-%patch1
 
 %build
-sed -i '/  -- Following without special icon:/ r %{SOURCE6}' %{_builddir}/%{name}-%{version}/plugins/nonicons.lua
+sed -i '/  -- Following without special icon:/ r %{SOURCE5}' %{_builddir}/%{name}-%{version}/plugins/nonicons.lua
 
 %install
 mkdir -p %{buildroot}%{_datadir}/%{programname}/plugins
 mkdir -p %{buildroot}%{_datadir}/%{programname}/plugins/gitdiff_highlight
 mkdir -p %{buildroot}%{_datadir}/%{programname}/fonts
 mkdir -p %{buildroot}%{_datadir}/doc/%{name}
-### Already provided by base package; conflicts if included.
-rm plugins/language_cpp.lua
-### 'console.lua' seems to be independent of what git repo provides/
+### 'console.lua' seems to exist independent of what git repo provides/
 cp -v %{SOURCE1} plugins/
-### 'indentguide.lua' seems broken otherwise.
-cp -v %{SOURCE3} plugins/
+#####
+### 20221005, throwing error
+#rm -v plugins/ipc.lua
+# in ~/.config/lite-xl/init.lua:
+# config.plugins.ipc = false
 #####
 install -D -m644 plugins/* %{buildroot}%{_datadir}/%{programname}/plugins
 install -D -m644 %{SOURCE2} %{buildroot}%{_datadir}/%{programname}/fonts
-install -D -m644 %{SOURCE4} %{buildroot}%{_datadir}/%{programname}/plugins/gitdiff_highlight/init.lua
-install -D -m644 %{SOURCE5} %{buildroot}%{_datadir}/%{programname}/plugins/gitdiff_highlight/gitdiff.lua
+install -D -m644 %{SOURCE3} %{buildroot}%{_datadir}/%{programname}/plugins/gitdiff_highlight/init.lua
+install -D -m644 %{SOURCE4} %{buildroot}%{_datadir}/%{programname}/plugins/gitdiff_highlight/gitdiff.lua
 install -D -m644 LICENSE %{buildroot}%{_datadir}/doc/%{name}/LICENSE
 install -D -m644 README.md %{buildroot}%{_datadir}/doc/%{name}/README.md
 

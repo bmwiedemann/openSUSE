@@ -1,4 +1,174 @@
 -------------------------------------------------------------------
+Thu Oct 13 15:23:31 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Removing unused nonicons.patch
+
+-------------------------------------------------------------------
+Wed Oct 05 16:44:16 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version git20221005.b1bc52f:
+  * ipc: add different methods of opening directories
+
+-------------------------------------------------------------------
+Wed Oct 05 14:06:13 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version git20221004.2eb56c5:
+  * Added support for LaTex package and class syntax highlighting
+  * Update list of Fennel keywords to everything covered by 1.2.0 (#126)
+  * add inter-process communication (ipc) plugin (#127)
+  * regexreplacepreview: drop deprecated call to commandview set text
+  * spellcheck: updated config spec to support file type
+  * Update `language_rivet.lua` (#125)
+  * nonicons: support dynamic scaling
+  * settings: added support for file and directory options
+  * Add syntax highlighting to JSX tags (#118)
+  * Syntax highlighter for the MiniScript programming language (#124)
+  * `language_assembly_x86`: Add name
+  * settings: reapply user project and init settings after load, also added clear font cache button
+  * Added an option for number of parens
+  * Add `primary_selection`
+
+-------------------------------------------------------------------
+Wed Aug 31 21:05:41 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Some prep for lite-xl version 2.1.0:
+  * switched to upstream 2.1 branch
+  * pulled in and added new 'console.lua' (console-new.lua)
+  * updated patch for new 'nonicons.lua' (nonicons-userdir.patch)
+  * removed the following 2 files as they were fixed upstream:
+    * indentguide.lua
+    * datetimestamps.patch
+
+-------------------------------------------------------------------
+Wed Aug 31 19:29:24 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version git20220822.6700c4f:
+  * removed linecopypaste as it is now part of core
+  * settings: revert to default fonts on load error
+  * settings: handle font loading error
+  * Update nonicons.lua 2.1
+  * fixed some minor mistakes
+  * Use new `StatusView:add_item` syntax (#117)
+  * `autoinsert`: remove initial refactoring code added by mistake
+  * `autoinsert`: avoid deleting wrong characters
+  * Update language_rivet.lua
+  * `language_crystal`: remove file as we're linking to an external repo
+  * Fixed Crystal Plugin Link (#113) * Fixed Crystal Plugin Link
+  * Added language_ignore plugin (#111)
+  * Corrected wrong term: ss -> gif
+  * settings: error if widgets not found with url to repo
+  * settings: fixed default font handling
+  * settings: set about title font as reference of big_font
+  * settings: dont make toolbarview a requirement
+  * Added missing * to console plugin in README
+  * Syntax highlighting for intel x86 assembly (#107)
+  * settings: added ability to configure text and code fonts
+  * settings: fix theme loading on MacOSX when fd's have been exceeded
+  * Added language_env plugin
+  * updates to new command_view:enter interface
+  * force_syntax: use new command_view:enter interface
+  * language_cpp: removed
+  * linenumbers: fix gutter width and centerdoc combo
+  * centerdoc: fix gutter width issues
+  * `minimap`: align rects to pixel grid
+  * settings: better about childs update strategy
+  * Add language_caddyfile (#104)
+  * `nonicons`: link to invariable font download
+  * Fix incorrect link to Crystal syntax highlighting (#94)
+  * Add support for SQL strings to language_php
+  * Fixed wrong icon on opened directory
+  * Add language_htaccess
+  * `minimap`: handle more cache invalidation cases
+  * `minimap`: don't crash with colors with invalid alpha
+  * `minimap`: fix cutoff offset
+  * language_v: add syntax support for raw strings
+  * language_go: add syntax support for Go generic functions
+  * language_v: add missing table to files
+  * `minimap`: correctly manage inserted/removed lines
+  * `minimap`: performance improvements (cache, merge, avoid splitting)
+  * `minimap`: allow per-`DocView` toggle even if globally disabled
+  * settings: added tooltip to website button
+  * settings: added about pane and status bar options
+  * changed indentation to 2 spaces for consistency across the repo
+  * align_caret: correct mod version
+  * `minimap`: Add per-`DocView` toggle and option to hide on small docs (#96)
+  * language_php: support heredocs and variables inside strings
+  * Add `align_carets` (#89)
+  * language_go: small fixes (#95)
+  * added wordcount plugin
+  * language_go: extended matching and other improvements
+  * bracketmatch: return line height on DocView:draw_line_text
+  * Add more `bracketmatch` styles (#81)
+  * settings: optimizations and properly apply plugins skip versions
+  * settings: remove no longer applicable show spaces option
+  * fix wrong loading order of user enabled plugins
+  * removed lite-xl version and left only mod version
+  * settings: save settings on theme change
+  * settings: clean previous binds on apply_kybinding()
+  * colorpreview: enable by default
+  * autosave: enable by default
+  * renamed enable to enabled to match all plugins
+  * colorpreview: allow live disabling
+  * autosave: allow live disabling
+  * settings: do not save at exit to prevent config conflicts with other lite-xl instances
+  * added config_spec and other plugin compatibility fixes.
+  * settings: load config_spec of plugins enabled after startup
+  * settings: allow empty descriptions with default value
+  * settings: call scan_plugins_spec() before merge_settings()
+  * settings: added ability to scan for plugins config_spec.
+  * Add settings gui plugin (#65)
+  * indentguide: renamed idx to line
+  * colorpreview: renamed idx to line
+  * smoothcaret: fixed new line wrap issue
+  * Fix various plugins for linewrapping
+  * minimap: simplify predicate since Object:is is now strict
+  * lfautoinsert: make use of new strict predicate
+  * Added asterisk
+  * Added exterm
+  * Updated spellcheck to work with linewrapping.
+  * minimap: fix to work with lite-xl#916
+  * language_yaml: also support bracket lists after hyphens
+  * language_yaml: fixes and improvements
+  * add treeview-menu-extender plugin (#36)
+  * autowrap: removed no longer needed command see lite-xl #889
+  * nonicons.lua: Use features from v2.1
+  * language_glaz: update mod and lite-xl version.
+  * hidelinenumbers: removed, the linenumbers plugin provides a better alternative
+  * hidestatus: remove since the statusbar provides this now
+  * force_syntax: use new StatusView api
+  * rainbowparen: added ability to toggle.
+  * autowrap: show status on toggle
+  * spellcheck: added toggle command
+  * autowrap: fixed missing require 'core.common', added toggle command
+  * bigclock: fixed fonts loading and improved performance by copying only on scale changes
+  * centerdoc: added toggle and zen mode toggle commands
+  * datetimestamps: added insert custom command
+  * eval: fixed eval:replace command
+  * gitstatus: use new StatusView api
+  * linenumbers: changed to new standard config method
+  * memoryusage: use new StatusView api, use two decimals
+  * opacity: added some notifications
+  * openselected: added context menu, changed conflicting shortcut
+  * restoretabs: set command predicate to nil
+  * scalestatus: use new StatusView api
+  * smallclock: use new StatusView api, removed coroutine
+  * spellcheck: added context menu
+  * statusclock: use new StatusView api, removed coroutine optional core.redraw when %S is user
+  * tabnumbers: make use of an unused variable
+  * unboundedscroll: added command to toggle
+  * regexreplacepreview: use table.unpack in place of unpack
+  * 2.1: Additional version adjustments of newly added plugins.
+  * indentguide: use indent size from doc instead of config
+  * Appropriately merged config hashes.
+  * Bumping versions.
+  * Update language_v.lua
+  * Update language_rivet.lua
+  * Rename `indentguide` variables
+  * Allow customizing `indentguide` highlight color
+  * Add multicursor support to `indentguide`
+  * Make `indentguide` highlight the current block
+
+-------------------------------------------------------------------
 Mon May 02 15:26:39 UTC 2022 - scott.bradnick@suse.com
 
 - Update to version git20220501.7bee960:
