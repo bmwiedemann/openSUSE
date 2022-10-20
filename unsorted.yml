@@ -9937,7 +9937,7 @@ unsorted:
   - libavformat59-32bit: [x86_64] 
   - libavfs0 
   - libavif-devel 
-  - libavif14-32bit: [x86_64] 
+  - libavif15-32bit: [x86_64] 
   - libavrdude1 
   - libavresample4_0-32bit: [x86_64] 
   - libavtp-devel 
@@ -10246,9 +10246,10 @@ unsorted:
   - libcallaudio0_1-0 
   - libcallback1 
   - libcamd-doc 
+  - libcamera-base0_0_1-32bit: [x86_64] 
   - libcamera-devel 
-  - libcamera-suse7-32bit: [x86_64] 
   - libcamera-tools 
+  - libcamera0_0_1-32bit: [x86_64] 
   - libcanberra-devel 
   - libcanberra-gtk-devel 
   - libcanberra-gtk3-0-32bit: [x86_64] 
@@ -11920,7 +11921,7 @@ unsorted:
   - libiso9660-11-32bit: [x86_64] 
   - libisoburn-devel 
   - libisofs-devel 
-  - libispcrt_1: [x86_64] 
+  - libispcrt1: [x86_64] 
   - libite-devel 
   - libite5 
   - libiterm-devel 
@@ -13059,6 +13060,7 @@ unsorted:
   - libout123-0 
   - libout123-0-32bit: [x86_64] 
   - libovf-glib-devel 
+  - libovn-21_09-0 
   - libowncloudsync-devel 
   - libowncloudsync0 
   - libp11-3-32bit: [x86_64] 
@@ -14724,6 +14726,7 @@ unsorted:
   - libvdpau_va_gl1-32bit: [x86_64] 
   - libventrilo3-0 
   - libventrilo3-devel 
+  - libverdict1_4 
   - libverto-devel 
   - libverto-devel-32bit: [x86_64] 
   - libverto-glib-devel 
@@ -18810,6 +18813,13 @@ unsorted:
   - otter-browser 
   - otter-browser-lang 
   - ovmf-tools: [x86_64] 
+  - ovn 
+  - ovn-central 
+  - ovn-devel 
+  - ovn-doc 
+  - ovn-docker 
+  - ovn-host 
+  - ovn-vtep 
   - owasp-modsecurity-crs 
   - owasp-modsecurity-crs-base_rules 
   - owasp-modsecurity-crs-experimental_rules 
@@ -43582,6 +43592,7 @@ unsorted:
   - vendor-reset-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - vendor-reset-kmp-pae: [i586] 
   - vendored_licenses_packager 
+  - verdict-devel 
   - verilator 
   - verilator-devel 
   - verilator-examples 
@@ -43861,6 +43872,7 @@ unsorted:
   - wf-recorder 
   - wget2 
   - wgetpaste 
+  - whatsapp-for-linux 
   - whfc 
   - whipper 
   - whohas 
