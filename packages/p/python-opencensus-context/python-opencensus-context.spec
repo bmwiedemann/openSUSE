@@ -1,7 +1,7 @@
 #
 # spec file for package python-opencensus-context
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define repo_version 0.8.0
+%define repo_version 0.11.0
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-opencensus-context
-Version:        0.1.2
+Version:        0.1.3
 Release:        0
 Summary:        Python in-process context propogation
 License:        Apache-2.0
