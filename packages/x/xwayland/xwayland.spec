@@ -33,7 +33,8 @@ Group:          System/X11/Servers/XF86_4
 Source0:        %{url}/archive/individual/xserver/%{name}-%{version}.tar.xz
 Source1:        %{url}/archive/individual/xserver/%{name}-%{version}.tar.xz.sig
 Source2:        xwayland.keyring
-
+Patch1204412:   U_xkb-proof-GetCountedString-against-request-length-at.patch
+Patch1204416:   U_xkb-fix-some-possible-memleaks-in-XkbGetKbdByName.patch
 BuildRequires:  meson
 BuildRequires:  ninja
 BuildRequires:  pkgconfig

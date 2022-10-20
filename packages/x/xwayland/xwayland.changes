@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 19 11:19:40 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_xkb-proof-GetCountedString-against-request-length-at.patch
+  * security update for CVE-2022-3550 (bsc#1204412)
+- U_xkb-fix-some-possible-memleaks-in-XkbGetKbdByName.patch
+  * security update for CVE-2022-3551 (bsc#1204416)
+
+-------------------------------------------------------------------
 Tue Jul 12 14:22:22 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 22.1.3
