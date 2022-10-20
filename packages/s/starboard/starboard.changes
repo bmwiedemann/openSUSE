@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 19 13:10:56 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.15.11:
+  * chore: vulnerability-CVE-2022-32149 (#1293)
+  * chore: add team notification on vulnerabilities found (#1288)
+  * chore: add team notification on vulnerabilities found (#1286)
+
+-------------------------------------------------------------------
 Fri Sep 30 05:11:07 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.15.10:
