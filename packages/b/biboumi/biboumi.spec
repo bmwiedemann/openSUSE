@@ -1,7 +1,7 @@
 #
 # spec file for package biboumi
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2018 Tomáš Čech <sleep_walker@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -35,7 +35,7 @@ BuildRequires:  libgcrypt-devel
 BuildRequires:  pkgconfig
 BuildRequires:  udns-devel
 BuildRequires:  pkgconfig(botan-2)
-BuildRequires:  pkgconfig(catch2)
+BuildRequires:  pkgconfig(catch2) < 3
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(libidn)
 BuildRequires:  pkgconfig(libpq)

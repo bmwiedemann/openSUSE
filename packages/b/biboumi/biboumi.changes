@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct 15 19:43:03 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Depend on pkgconfig(catch2) < 3, as this is not compatible with
+  versions >= 3 yet.
+
+-------------------------------------------------------------------
 Thu Jun 30 11:22:41 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add Git-Clone URL
