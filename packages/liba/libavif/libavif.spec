@@ -25,11 +25,11 @@
 %endif
 
 # Also update baselibs.conf if you bump the version
-%global lib_soversion 14
+%global lib_soversion 15
 %global lib_name libavif%{lib_soversion}
 
 Name:           libavif
-Version:        0.10.1
+Version:        0.11.0
 Release:        0
 Summary:        Library for encoding and decoding .avif files
 License:        BSD-2-Clause
@@ -128,13 +128,11 @@ This package holds the development files for libavif.
 %install
 %cmake_install
 
-%post   -n %{lib_name} -p /sbin/ldconfig
-%postun -n %{lib_name} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{lib_name}
 
 %files -n %{lib_name}
 %license LICENSE
-%{_libdir}/libavif.so.%{lib_soversion}
-%{_libdir}/libavif.so.%{lib_soversion}.0.1
+%{_libdir}/libavif.so.%{lib_soversion}*
 
 %files devel
 %license LICENSE
@@ -151,5 +149,7 @@ This package holds the development files for libavif.
 
 %files -n gdk-pixbuf-loader-libavif
 %{_libdir}/gdk-pixbuf-2.0/*/loaders/libpixbufloader-avif.so
+%dir %{_datadir}/thumbnailers
+%{_datadir}/thumbnailers/avif.thumbnailer
 
 %changelog
