@@ -17,7 +17,7 @@
 
 
 Name:           libgpg-error
-Version:        1.45
+Version:        1.46
 Release:        0
 Summary:        Library That Defines Common Error Values for All GnuPG Components
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -28,6 +28,7 @@ Source1:        https://gnupg.org/ftp/gcrypt/libgpg-error/%{name}-%{version}.tar
 # http://www.gnupg.org/signature_key.en.html
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
 
 %description
@@ -62,8 +63,11 @@ Files needed for software development using libgpg-error.
 %prep
 %autosetup -p1
 
+autoreconf -fiv
+
 %build
-%configure --disable-static
+%configure --disable-static \
+	   --enable-install-gpg-error-config
 %make_build
 
 %install
@@ -98,7 +102,7 @@ rm -r %{buildroot}%{_datadir}/common-lisp
 %{_bindir}/*
 %{_libdir}/libgpg-error*.so
 %{_infodir}/gpgrt.info%{?ext_info}
-%{_mandir}/man1/*%{?ext_man}
+%{_mandir}/man1/gpg-error-config.*
 %dir %{_datadir}/libgpg-error
 %{_datadir}/libgpg-error/errorref.txt
 %dir %{_datadir}/aclocal
