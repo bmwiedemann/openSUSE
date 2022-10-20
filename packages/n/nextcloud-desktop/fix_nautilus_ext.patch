@@ -1,0 +1,29 @@
+From 011d4b89c8bbcc6e1320b06c700c608819eaf622 Mon Sep 17 00:00:00 2001
+From: Paolo Stivanin <info@paolostivanin.com>
+Date: Sat, 22 Oct 2022 16:31:24 +0200
+Subject: [PATCH] Add support for GNOME 43 (fix #5041)
+
+Signed-off-by: Paolo Stivanin <info@paolostivanin.com>
+---
+ shell_integration/nautilus/syncstate.py | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/shell_integration/nautilus/syncstate.py b/shell_integration/nautilus/syncstate.py
+index c4dacb5b0f5..4c77fda4c9d 100644
+--- a/shell_integration/nautilus/syncstate.py
++++ b/shell_integration/nautilus/syncstate.py
+@@ -200,9 +200,12 @@ def check_registered_paths(self, filename):
+                 break
+         return (topLevelFolder, internalFile)
+ 
+-    def get_file_items(self, window, files):
+-        # Show the menu extension to share a file or folder
++    def get_file_items(self, *args):
++        # `args` will be `[files: List[Nautilus.FileInfo]]` in Nautilus 4.0 API,
++        # and `[window: Gtk.Widget, files: List[Nautilus.FileInfo]]` in Nautilus 3.0 API.
++        files = args[-1]
+ 
++        # Show the menu extension to share a file or folder
+         # Get usable file paths from the uris
+         all_internal_files = True
+         for i, file_uri in enumerate(files):

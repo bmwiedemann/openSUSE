@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct 22 14:36:06 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add fix_nautilus_ext.patch: make the extension working again on Nautilus 43.
+  This patch also support previous Nautilus versions.
+
+-------------------------------------------------------------------
 Wed Oct 19 10:10:54 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.6.1
