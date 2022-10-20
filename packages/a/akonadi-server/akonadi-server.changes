@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 18 14:58:50 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- In SLE-15-SP3 we had patches that made akonadi fall back to
+  sqlite if the mysql backend is not available. Those patches were
+  already merged by upstream so we can let the package Recommend
+  mysql instead of Require it, since it's not available in SLED.
+  The Requires are set unless branding-SLE is installed so the
+  requirements are used in Leap/TW but not in SLE where it's only
+  a Recommends and an alternate Requirements is used in that case
+  where the sqlite backend is installed if mysql is not available.
+
+-------------------------------------------------------------------
 Tue Oct 11 14:31:39 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 22.08.2

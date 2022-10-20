@@ -1,7 +1,7 @@
 #
 # spec file for package akonadi-server
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -70,8 +70,11 @@ BuildRequires:  cmake(Qt5Sql)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
-Requires:       libqt5-sql-mysql
-Requires:       mysql
+Requires:       ((akonadi-server-sqlite or (libqt5-sql-mysql and mysql)) if branding-SLE)
+Requires:       (libqt5-sql-mysql or branding-SLE)
+Requires:       (mysql or branding-SLE)
+Recommends:     libqt5-sql-mysql
+Recommends:     mysql
 # FIXME: Check if it's worth it
 Recommends:     kaccounts-integration
 Recommends:     kaccounts-providers
