@@ -808,4 +808,18 @@
     <comment></comment>
     <requestid>1029664</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>fc64ae14061de0d9d4066d5e5ae684a3</srcmd5>
+    <version>2022.10.18</version>
+    <time>1666257007</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to ab37ef59f (2022-10-18):
+  * firmware: ldconfig: Add all, none, tryboot section support
+    to autoboot.txt for start.elf
+  * firmware: arm-dt: bootloader: Pass the original partition
+    number when booting a ramdisk
+  * firmware: arm_loader: HAT EEPROM support for GPIO bank 1
+    See: #1756 (forwarded request 1029980 from Guillaume_G)</comment>
+    <requestid>1029982</requestid>
+  </revision>
 </revisionlist>

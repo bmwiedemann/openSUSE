@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct 19 12:09:22 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to ab37ef59f (2022-10-18):
+  * firmware: ldconfig: Add all, none, tryboot section support
+    to autoboot.txt for start.elf
+  * firmware: arm-dt: bootloader: Pass the original partition
+    number when booting a ramdisk
+  * firmware: arm_loader: HAT EEPROM support for GPIO bank 1
+    See: #1756
+
+-------------------------------------------------------------------
 Tue Oct 18 07:43:27 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to bfbd42ef2 (2022-10-14):
