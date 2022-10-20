@@ -76,4 +76,18 @@
   * Added Ukrainian language to list in README.md (#141) @tuxlabore</comment>
     <requestid>838267</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7b10367b99a35849c211cf0b9a118f62</srcmd5>
+    <version>4.0.0</version>
+    <time>1666274523</time>
+    <user>dimstar_suse</user>
+    <comment>- use https for urls
+
+- update to 4.0.0:
+  * Drop support for Python 3.6
+  * Remove deprecated VERSION, use version instead
+  * Remove when from naturaldelta() and allow largest timedelta
+  * Remove deprecated private function aliases</comment>
+    <requestid>1030148</requestid>
+  </revision>
 </revisionlist>

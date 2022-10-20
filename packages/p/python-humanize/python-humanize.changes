@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct 13 07:20:09 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- use https for urls
+
+-------------------------------------------------------------------
+Tue Mar  8 12:37:57 UTC 2022 - Edgar Aichinger <edogawa@aon.at>
+
+- update to 4.0.0:
+  * Drop support for Python 3.6
+  * Remove deprecated VERSION, use version instead
+  * Remove when from naturaldelta() and allow largest timedelta
+  * Remove deprecated private function aliases
+
+-------------------------------------------------------------------
 Mon Sep 28 11:51:21 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2.6.0:
