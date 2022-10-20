@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 20 03:27:32 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Disable static library build, instead of deleting it
+- Remove many unused build dependencies
+
+-------------------------------------------------------------------
 Fri Sep  9 21:11:41 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Enable nanovdb as build conditional

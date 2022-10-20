@@ -29,19 +29,15 @@ License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://www.openvdb.org
 Source:         https://github.com/AcademySoftwareFoundation/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  Mesa-devel
 BuildRequires:  cmake >= 3.12
 BuildRequires:  gcc-c++
-BuildRequires:  libboost_atomic-devel >= 1.70
-BuildRequires:  libboost_iostreams-devel >= 1.70
-BuildRequires:  libboost_regex-devel >= 1.70
-BuildRequires:  libboost_system-devel >= 1.70
-BuildRequires:  libboost_thread-devel >= 1.70
+BuildRequires:  libboost_iostreams-devel-impl >= 1.70
+BuildRequires:  libboost_system-devel-impl >= 1.70
 BuildRequires:  memory-constraints
 BuildRequires:  pkgconfig
 BuildRequires:  tbb-devel
-BuildRequires:  xorg-x11-devel
 BuildRequires:  pkgconfig(blosc)
+BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glfw3)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(jemalloc)
@@ -65,7 +61,7 @@ Summary:        Development files for openvdb
 Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 
-%description	devel
+%description devel
 This package contains the C++ header files and symbolic links to the shared
 libraries for %{name}. If you would like to develop programs using %{name},
 you will need to install %{name}-devel.
@@ -75,7 +71,7 @@ Summary:        OpenVDB command line tools
 Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 
-%description	tools
+%description tools
 This package contains the command line utilites that come with the OpenVDB
 library: vdb_lod, vdb_print, vdb_render, vdb_view
 
@@ -92,6 +88,7 @@ library: vdb_lod, vdb_print, vdb_render, vdb_view
     -DCMAKE_C_FLAGS:STRING="$CFLAGS %{optflags} -fPIC " \
     -DCMAKE_CXX_FLAGS:STRING="$CXXFLAGS %{optflags} -fPIC " \
     -DCMAKE_NO_SYSTEM_FROM_IMPORTED:BOOL=TRUE \
+    -DOPENVDB_CORE_STATIC:BOOL=OFF \
 %if %{with nanovdb}
     -DUSE_NANOVDB=ON \
 %endif
@@ -106,8 +103,6 @@ library: vdb_lod, vdb_print, vdb_render, vdb_view
 
 %install
 %cmake_install
-# remove static lib
-rm %{buildroot}%{_libdir}/libopenvdb.a
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
