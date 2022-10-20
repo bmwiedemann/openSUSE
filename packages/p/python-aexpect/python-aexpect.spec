@@ -27,15 +27,15 @@ License:        GPL-2.0-only
 URL:            http://avocado-framework.readthedocs.org/
 Source:         https://github.com/avocado-framework/aexpect/archive/%{version}.tar.gz#/%{pkgname}-%{version}.tar.gz
 Patch0:         helper-version-in-cmdline.patch
+# PATCH-FIX-UPSTREAM 0001-Remove-six-dependency.patch gh#avocado-framework/aexpect#102
+Patch1:         0001-Remove-six-dependency.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
-Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
 
@@ -45,8 +45,7 @@ similar to pexpect. It can be used to control applications such as ssh, scp
 sftp, telnet, among others.
 
 %prep
-%setup -q -n %{pkgname}-%{version}
-%autopatch -p1
+%autosetup -p1 -n %{pkgname}-%{version}
 
 %build
 %python_build
@@ -70,6 +69,7 @@ export PATH=$PATH:%{buildroot}%{_bindir}
 %license LICENSE
 %doc README.rst
 %python_alternative %{_bindir}/aexpect_helper
-%{python_sitelib}/*
+%{python_sitelib}/aexpect
+%{python_sitelib}/aexpect-%{version}*-info
 
 %changelog

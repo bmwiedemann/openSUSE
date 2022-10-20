@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 19 16:18:45 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add 0001-Remove-six-dependency.patch upstream patch to remove python-six
+  dependency gh#avocado-framework/aexpect#102
+- More specific python_sitelib in files
+- Use autosetup instead of setup and autopatch
+
+-------------------------------------------------------------------
 Mon Jan 10 01:14:20 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.6.4:
