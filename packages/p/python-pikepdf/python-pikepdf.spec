@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pikepdf
-Version:        5.1.5
+Version:        6.2.0
 Release:        0
 Summary:        Read and write PDFs with Python, powered by qpdf
 License:        MPL-2.0
@@ -36,8 +36,8 @@ BuildRequires:  %{python_module ipython}
 BuildRequires:  %{python_module lxml >= 4.0}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module psutil >= 5}
-BuildRequires:  %{python_module pybind11 >= 2.9.0}
-BuildRequires:  %{python_module pybind11-devel >= 2.9.0}
+BuildRequires:  %{python_module pybind11 >= 2.10.0}
+BuildRequires:  %{python_module pybind11-devel >= 2.10.0}
 BuildRequires:  %{python_module pytest >= 6.0.0}
 BuildRequires:  %{python_module pytest-cov >= 2.10.1}
 BuildRequires:  %{python_module pytest-forked}
@@ -56,7 +56,7 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(libqpdf) >= 10.6.2
+BuildRequires:  pkgconfig(libqpdf) >= 11.1.1
 Requires:       python-Pillow >= 9.0.0
 Requires:       python-lxml >= 4.0
 Requires:       python-packaging
@@ -80,7 +80,7 @@ export CFLAGS="%{optflags}"
 %pytest_arch
 
 %files %{python_files}
-%license LICENSE.txt licenses
+%license LICENSE.txt
 %doc README.md docs/*/*.rst
 %{python_sitearch}/pikepdf/
 %{python_sitearch}/pikepdf-%{version}-py%{python_version}.egg-info/

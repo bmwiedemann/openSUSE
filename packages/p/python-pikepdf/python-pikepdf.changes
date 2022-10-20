@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Wed Oct 12 03:20:48 UTC 2022 - C J <c.j@tuta.io>
+
+- Update to version 6.2.0:
+  * Add new keyword argument Pdf.save
+- version 6.1.0: Rebuild wheels with qpdf 11.1.1.
+- version 6.0.2:
+  * Fixed large increase in binary wheel file size for linux wheels.
+  * Provide macOS and Linux wheels for Python 3.11.
+- version 6.0.1:
+  * Use qpdf 11.1.0
+- version 6.0.0:
+  * pikepdf 6.0.0 released to align with backward incompatible
+    changes in qpdf 11.
+  * Remove deprecated APIs
+- version 5.6.1:
+  * Made treatment of CCITT image photometry ignore BlackIs1.
+- version 5.6.0:
+  * Improved support for extracting the contents of inline images.
+  * Marked some "always should have been private" functions as deprecated
+    with removal planned for v6, mainly in pikepdf.models.image.
+  * Fixed all Python documentation style inconsistencies.
+- version 5.5.0:
+  * Fixed undefined behavior on creating NameTree on direct object.
+  * Fixed sdist with coverage build.
+  * Added support for specifying QPDF's library build directory, for
+    compatibility with QPDF's transition to cmake.
+  * QPDF_* environment variables will modify build paths even when CFLAGS
+    is defined.
+  * Fixed case where GIL was not held while discarding a certain exception.
+  * Now using cibuildwheel 2.9.0.
+  * Many typo fixes.
+- version 5.4.2:
+  * Fixed Pages.__eq__ not returning NotImplemented when it ought to.
+  * Fixed possible problems with NameTree and NumberTree.__eq__ operators.
+  * Changed to SPDX license headers throughout.
+- version 5.4.1:
+  * Fixed ReadTheDocs build, updated versions, fixed a test warning, improved
+    coverage, modernized type annotations.
+- version 5.4.0:
+  * New feature: pikepdf.Job bindings to QPDFJob API.
+  * New feature: pikepdf.NumberTree to support manipulation of number trees.
+  * Many improvements to pikepdf.NameTree including the ability to instantiate
+    a new name tree.
+  * Several memory leaks were fixed.
+  * Rebuilt against pybind11 2.10.0.
+- version 5.3.2: Build system requires changed to setuptools-scm 7.0.5.
+- version 5.3.1:
+  * Fixed issue with parsing inline images, causing loss of data after inline
+    images were encountered in a content stream. :issue:`299
+- version 5.3.0:
+  * Binary wheels for Linux aarch64 are now being rolled automatically.
+  * Refactor JBIG2 handling to make JBIG2 decoders more testable and pluggable.
+  * Fixed some typing issues around ObjectHelper.
+  * Exposed some pikepdf settings that were attached to the private _qpdf
+    module in a new pikepdf.settings module.
+- version 5.2.0:
+  * Avoid versions of setuptools_scm found to cause build issues. :issue:`359`
+  * Improved unhelpful error message when attemping to save a file with
+    invalid encryption settings. :issue:`341`
+  * Added workaround for XMP metadata blocks that are missing the expected
+    namespace tag. :issue:`349`
+  * Minor code improvements, removed some deprecated private methods.
+
+-------------------------------------------------------------------
 Fri Jun 17 00:45:31 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.1.5:
