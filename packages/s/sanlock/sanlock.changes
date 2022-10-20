@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 18 14:27:20 UTC 2022 - James Fehlig <jfehlig@suse.com>
+
+- Update to sanlock 3.8.5
+  - python: Replace distutils with setuptools
+  - sanlock: fix memory leak of lockspace renewal_history
+  - sanlock: fix pthread_create error check
+  - sanlock: use helper to set max_sectors_kb
+
+-------------------------------------------------------------------
 Tue Nov 16 14:08:25 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):

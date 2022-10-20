@@ -1,7 +1,7 @@
 #
-# spec file for package sanlock
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,7 +40,7 @@
 %endif
 %define pname   sanlock
 Name:           %{pprefix}%{pname}
-Version:        3.8.4
+Version:        3.8.5
 Release:        0
 %if ! %{with python}
 Summary:        A shared disk lock manager
@@ -65,6 +65,7 @@ Patch103:       suse-no-date-time.patch
 Patch104:       harden_fence_sanlockd.service.patch
 Patch105:       harden_sanlk-resetd.service.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  libaio-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
