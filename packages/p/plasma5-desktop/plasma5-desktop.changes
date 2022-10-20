@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct 18 11:27:32 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.1
+- Changes since 5.26.0:
+  * Make drag and drop of pager more reliable (kde#460541,kde#460545)
+  * Also delete entry with Notify flag
+  * Move the panel's placeholder instead of the target item and animate all of the items inbetween; also fixes mouse input that gets lost when quickly dragging applet to the very end of the panel.
+  * Revert "containments/panel: iterate all items between start index and end index when pressed"
+  * desktoptoolbox: fix flickering on closing (kde#417849)
+  * containments/panel: iterate all items between start index and end index when pressed
+
+-------------------------------------------------------------------
 Thu Oct  6 14:48:44 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.26.0
