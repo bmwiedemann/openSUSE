@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Oct 17 09:33:53 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Update to 6.4.34:
+  * Bugfixes:
+    - When an SMTP receiver refuses delivery, a message would be 
+      deleted from the mail store in spite of a softbounce option
+      that is enabled.
+
+  * Translations:
+    - Updated Serbian translation
+
+-------------------------------------------------------------------
 Thu Sep  1 07:14:57 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 6.4.33:

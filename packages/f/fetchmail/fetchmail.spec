@@ -21,7 +21,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           fetchmail
-Version:        6.4.33
+Version:        6.4.34
 Release:        0
 Summary:        Full-Featured POP and IMAP Mail Retrieval Daemon
 License:        GPL-2.0-or-later
@@ -58,6 +58,7 @@ BuildRequires:  openssl-devel
 BuildRequires:  opie
 BuildRequires:  postfix
 BuildRequires:  procmail
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base
 BuildRequires:  shadow
 BuildRequires:  systemd-rpm-macros
@@ -84,6 +85,7 @@ is included in the fetchmailconf package.
 %package -n fetchmailconf
 Summary:        Fetchmail Configuration Utility
 Requires:       %{name} = %{version}
+Requires:       python3 >= 3.7
 Requires:       python3-future
 Requires:       python3-tk
 
@@ -107,7 +109,8 @@ export CFLAGS="%{optflags} -fPIE"
     --enable-opie \
     --with-kerberos5 \
     --with-gssapi \
-    --with-ssl=%{_prefix}
+    --with-ssl=%{_prefix} \
+    --with-python=%{__python3}
 %make_build LDFLAGS="-pie"
 %sysusers_generate_pre %{SOURCE9} fetchmail
 
@@ -201,7 +204,10 @@ done
 %files -n fetchmailconf
 %{_bindir}/fetchmailconf
 %{_mandir}/man1/fetchmailconf.1%{?ext_man}
+
+%if 0%{suse_version} > 1500
 %{python3_sitelib}/fetchmailconf.*
 %{python3_sitelib}/__pycache__/fetchmailconf*
+%endif
 
 %changelog
