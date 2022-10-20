@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Oct 18 11:27:32 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.1
+- Changes since 5.26.0:
+  * Add missing Messages.sh
+  * Revert "wallpapers/potd: show image with cursor when dragging" (kde#460378)
+  * Revert "wallpapers/potd: clear `Drag.imageSource` on `dragFinished`"
+  * Icon switchers: Use the actual app icon, not the plasma icon for the app
+  * fuzzy-clock: Fix colors in full representation (calendar view)
+  * colorpicker: Make left-clicking a color copy in the default format (kde#457311)
+  * Fuzzy-clock, binary-clock: Fix clicking applets again to close calendar
+
+-------------------------------------------------------------------
 Thu Oct  6 14:48:44 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.26.0
