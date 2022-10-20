@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 18 02:39:09 UTC 2022 - Jason Sikes <jsikes@suse.com>
+
+- Update to 5.10.0
+  * Bugfixes
+  * Added more checks for invalid dates
+  * Remove GTK2 from target "mp"
+  * Make output a bit more compact.
+
+-------------------------------------------------------------------
 Sun Mar 20 17:12:39 UTC 2022 - Johannes Engel <jcnengel@gmail.com>
 
 - Update to 5.9.0

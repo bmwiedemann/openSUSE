@@ -18,15 +18,15 @@
 
 %define libversion 79
 %define devversion 5
-%define devrelease 5.9
+%define devrelease 5.10
 # Beta does not mean "before release" but a release that is considered as beta:
 %define _version %{version}
 %define _name gwenhywfar
-%define releasenumber 415
-%define checksumreleasenumber 414
+%define releasenumber 465
+%define checksumreleasenumber 464
 %bcond_with configure
 Name:           gwenhywfar
-Version:        5.9.0
+Version:        5.10.1
 Release:        0
 Summary:        Multiplatform helper library for other libraries
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -227,7 +227,7 @@ autoreconf -ifv
 	--with-guis="fox16 qt5 gtk2 gtk3" \
 	--with-plugins-cfgmgr=all
 %make_jobs
-make %{?_smp_mflags} srcdoc
+%make_build srcdoc
 
 %install
 %make_install
