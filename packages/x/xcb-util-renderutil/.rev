@@ -65,4 +65,23 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1a00f5db1f1793709d985e6ac7448b5e</srcmd5>
+    <version>0.3.10</version>
+    <time>1666256983</time>
+    <user>dimstar_suse</user>
+    <comment>- marked baselibs.conf as source in specfile 
+
+- Update to release 0.3.10
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * Update m4 to xorg/util/xcb-util-m4@c617eee22ae5c285e79e81
+  * gitlab CI: add a basic build test
+  * configure: Drop AM_MAINTAINER_MODE
+  * autogen.sh: Honor NOCONFIGURE=1
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * autogen.sh: use exec instead of waiting for configure to finish</comment>
+    <requestid>1029936</requestid>
+  </revision>
 </revisionlist>
