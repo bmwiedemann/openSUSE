@@ -135,15 +135,6 @@ Substitute: netcfg netcfg libnss_usrfiles2
   BuildFlags: useccache:gtk3
   BuildFlags: useccache:llvm9
   BuildFlags: useccache:nodejs-electron
-  BuildFlags: useccache:tensorflow
-  BuildFlags: useccache:tensorflow2:hpc
-  BuildFlags: useccache:tensorflow2:hpc-openmpi2
-  BuildFlags: useccache:tensorflow2:lite
-  BuildFlags: useccache:tensorflow2:standard
-  BuildFlags: useccache:tensorflow:hpc
-  BuildFlags: useccache:tensorflow:hpc-openmpi2
-  BuildFlags: useccache:tensorflow:lite
-  BuildFlags: useccache:tensorflow:standard
   BuildFlags: useccache:webkit2gtk3:gtk3
   BuildFlags: useccache:webkit2gtk3:gtk3-soup2
   BuildFlags: useccache:webkit2gtk3:gtk4
@@ -500,7 +491,7 @@ Prefer: go -go1.13
 Prefer: kernel-default-base
 
 # have choice for kubernetes-kubelet-common (de-prefer the old versions, ensuring to have a new unresolvable when a new version shows up)
-Prefer: -kubernetes1.18-kubelet-common -kubernetes1.19-kubelet-common -kubernetes1.20-kubelet-common -kubernetes1.21-kubelet-common -kubernetes1.22-kubelet-common -kubernetes1.23-client-common
+Prefer: -kubernetes1.20-kubelet-common -kubernetes1.21-kubelet-common -kubernetes1.22-kubelet-common -kubernetes1.23-client-common
 
 # have choice for html2text
 Prefer: -python38-html2text -python39-html2text -python310-html2text
@@ -520,9 +511,6 @@ Prefer: PackageKit-backend-zypp
 
 # have choice for pkgconfig(libftdi): libftdi-devel libftdi0-devel
 Prefer: libftdi-devel
-
-# have choice for tensorflow: tensorflow tensorflow2 tensorflow2_2_1_0-gnu-hpc tensorflow2_2_1_0-gnu-mvapich2-hpc tensorflow2_2_1_0-gnu-openmpi2-hpc
-Prefer: tensorflow2
 
 # have choice for python3-sip: python3-sip-devel python3-sip4
 Prefer: python38-sip-devel python39-sip-devel python310-sip-devel
@@ -615,7 +603,6 @@ Prefer: -alsa-topology-devel-32bit
 Prefer: -armadillo-devel-32bit
 Prefer: -arpack-ng-devel-32bit
 Prefer: -at-spi2-core-devel-32bit
-Prefer: -atk-devel-32bit
 Prefer: -atkmm-devel-32bit
 Prefer: -atkmm1_6-devel-32bit
 Prefer: -audiofile-devel-32bit
@@ -629,9 +616,6 @@ Prefer: -cairomm-devel-32bit
 Prefer: -cairomm1_0-devel-32bit
 Prefer: -cblas-devel-32bit
 Prefer: -chmlib-devel-32bit
-Prefer: -clang10-devel-32bit
-Prefer: -clang7-devel-32bit
-Prefer: -clang9-devel-32bit
 Prefer: -cppunit-devel-32bit
 Prefer: -cracklib-devel-32bit
 Prefer: -cups-devel-32bit
@@ -677,7 +661,6 @@ Prefer: -krb5-devel-32bit
 Prefer: -lapack-devel-32bit
 Prefer: -lapacke-devel-32bit
 Prefer: -libFS-devel-32bit
-Prefer: -libGLw-devel-32bit
 Prefer: -libHX-devel-32bit
 Prefer: -libICE-devel-32bit
 Prefer: -libMagick++-devel-32bit
@@ -694,16 +677,8 @@ Prefer: -libQt5Sql-devel-32bit
 Prefer: -libQt5Test-devel-32bit
 Prefer: -libQt5Widgets-devel-32bit
 Prefer: -libQt5Xml-devel-32bit
-Prefer: -libSDL-devel-32bit
 Prefer: -SDL2-devel-32bit
-Prefer: -SDL-devel-32bit
-Prefer: -libSDL2-devel-32bit
 Prefer: -libSDL2_gfx-devel-32bit
-Prefer: -libSDL2_image-devel-32bit
-Prefer: -libSDL2_mixer-devel-32bit
-Prefer: -libSDL2_net-devel-32bit
-Prefer: -libSDL2_ttf-devel-32bit
-Prefer: -libSDL_Pango-devel-32bit
 Prefer: -libSDL_gfx-devel-32bit
 Prefer: -libSDL_image-devel-32bit
 Prefer: -libSDL_mixer-devel-32bit
@@ -711,7 +686,6 @@ Prefer: -libSDL_mixer-devel-64bit
 Prefer: -libSDL_net-devel-32bit
 Prefer: -libSDL_ttf-devel-32bit
 Prefer: -libSDL_ttf-devel-64bit
-Prefer: -libSDLmm-devel-32bit
 Prefer: -libSM-devel-32bit
 Prefer: -libX11-devel-32bit
 Prefer: -libXau-devel-32bit
@@ -783,7 +757,6 @@ Prefer: -libgbm-devel-32bit
 Prefer: -libgck-devel-32bit
 Prefer: -libgcr-devel-32bit
 Prefer: -libgcrypt-devel-32bit
-Prefer: -libglue-devel-32bit
 Prefer: -libglvnd-devel-32bit
 Prefer: -libgnutls-devel-32bit
 Prefer: -libgpg-error-devel-32bit
@@ -796,7 +769,6 @@ Prefer: -libjack-devel-32bit
 Prefer: -libjbig-devel-32bit
 Prefer: -libjpeg62-devel-32bit
 Prefer: -libjpeg8-devel-32bit
-Prefer: -libkms-devel-32bit
 Prefer: -liblbxutil-devel-32bit
 Prefer: -liblcms2-devel-32bit
 Prefer: -libmount-devel-32bit
@@ -862,7 +834,6 @@ Prefer: -libvdpau-devel-32bit
 Prefer: -libverto-devel-32bit
 Prefer: -libvirt-devel-32bit
 Prefer: -libvorbis-devel-32bit
-Prefer: -libvpd2-devel-32bit
 Prefer: -libwebp-devel-32bit
 Prefer: -libxcb-devel-32bit
 Prefer: -libxcrypt-devel-32bit
@@ -874,12 +845,6 @@ Prefer: -libxml2-devel-32bit
 Prefer: -libxslt-devel-32bit
 Prefer: -libyajl-devel-32bit
 Prefer: -libzstd-devel-32bit
-Prefer: -llvm10-LTO-devel-32bit
-Prefer: -llvm10-devel-32bit
-Prefer: -llvm7-LTO-devel-32bit
-Prefer: -llvm7-devel-32bit
-Prefer: -llvm9-LTO-devel-32bit
-Prefer: -llvm9-devel-32bit
 Prefer: -lzo-devel-32bit
 Prefer: -motif-devel-32bit
 Prefer: -mpc-devel-32bit
@@ -1056,7 +1021,7 @@ Prefer: gnome-keyring-32bit
 Prefer: linux-glibc-devel
 Prefer: squid
 Prefer: libpng16-compat-devel
-Prefer: -python -python3-gobject2-devel -libpng12-0
+Prefer: -python -libpng12-0
 Prefer: perl-Mail-SPF:perl-Error
 Prefer: -xml-commons-apis-bootstrap -xml-commons-resolver-bootstrap
 Prefer: xmlgraphics-fop:xerces-j2
@@ -1085,9 +1050,6 @@ Prefer: libsane1
 Prefer: libglfw3
 # have choice for (xclip or wl-clipboard) needed by password-store: wl-clipboard xclip
 Prefer: -wl-clipboard
-Prefer: -firewalld-prometheus-config
-# Replaced by google-noto-coloremoji-fonts. DR pending as sr#990015.
-Prefer: -noto-coloremoji-fonts
 # have choice for pkgconfig(libhs): hyperscan-devel vectorscan-devel. hyperscan is for x86 only, prefer that where possible (for now).
 Prefer: hyperscan-devel
 
@@ -1409,9 +1371,7 @@ Prefer: java-11-openjdk-devel java-11-openjdk java-11-openjdk-headless java-11-o
 Prefer: java-1_8_0-openj9-devel java-1_8_0-openj9 java-1_8_0-openj9-headless
 %endif
 Prefer: java-1_8_0-openjdk-devel java-1_8_0-openjdk java-1_8_0-openjdk-headless java-1_8_0-openjdk-javadoc
-Prefer: java-16-openjdk-devel java-16-openjdk java-16-openjdk-headless java-16-openjdk-javadoc
 Prefer: java-15-openjdk-devel java-15-openjdk java-15-openjdk-headless java-15-openjdk-javadoc
-Prefer: java-1_7_0-bootstrap-devel java-1_7_0-bootstrap java-1_7_0-bootstrap-headless
 
 %ifarch x86_64 ppc64 s390x sparc64
 Substitute: glibc-devel-32bit glibc-devel-32bit glibc-32bit
