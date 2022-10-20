@@ -247,6 +247,9 @@ Patch1940:      U_xephyr-Don-t-check-for-SeatId-anymore.patch
 
 Patch1960:      u_sync-pci-ids-with-Mesa.patch
 
+Patch1204412:   U_xkb-proof-GetCountedString-against-request-length-at.patch
+Patch1204416:   U_xkb-fix-some-possible-memleaks-in-XkbGetKbdByName.patch
+
 %description
 This package contains the X.Org Server.
 
@@ -404,6 +407,8 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 %patch1930 -p1
 %patch1940 -p1
 %patch1960 -p1
+%patch1204412 -p1
+%patch1204416 -p1
 
 %build
 # We have some -z now related errors during X default startup (boo#1197994):

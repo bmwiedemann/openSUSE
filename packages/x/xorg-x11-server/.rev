@@ -3787,4 +3787,15 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>990429</requestid>
   </revision>
+  <revision rev="410" vrev="2">
+    <srcmd5>c19f3111d47b7b03a5b7522413d24049</srcmd5>
+    <version>21.1.4</version>
+    <time>1666257008</time>
+    <user>dimstar_suse</user>
+    <comment>- U_xkb-proof-GetCountedString-against-request-length-at.patch
+  * security update for CVE-2022-3550 (bsc#1204412)
+- U_xkb-fix-some-possible-memleaks-in-XkbGetKbdByName.patch
+  * security update for CVE-2022-3551 (bsc#1204416)</comment>
+    <requestid>1030009</requestid>
+  </revision>
 </revisionlist>
