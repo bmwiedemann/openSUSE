@@ -34,7 +34,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(lua)
 Suggests:       lua
 %if 0%{suse_version} >= 1550 || 0%{?sle_version} >= 150400
-%ifnarch riscv64
+%ifnarch riscv64 s390x
 BuildRequires:  pkgconfig(luajit)
 %endif
 Recommends:     luajit
