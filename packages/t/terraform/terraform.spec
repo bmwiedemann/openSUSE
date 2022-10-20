@@ -17,7 +17,7 @@
 
 
 Name:           terraform
-Version:        1.3.2
+Version:        1.3.3
 Release:        0
 Summary:        Tool for building infrastructure safely and efficiently
 License:        MPL-2.0
