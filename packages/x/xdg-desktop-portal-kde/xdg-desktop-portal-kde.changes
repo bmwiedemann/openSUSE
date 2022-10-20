@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 18 11:27:37 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.1
+- Changes since 5.26.0:
+  * screenshare SNI: use monochrome-compatible icon (kde#460514)
+
+-------------------------------------------------------------------
 Thu Oct  6 14:48:50 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.26.0
