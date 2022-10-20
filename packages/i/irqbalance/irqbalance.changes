@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 18 21:15:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add uninitialized.patch (bsc#1204371)
+- build with thermald support on x86_64 (jsc#PED-754)
+
+-------------------------------------------------------------------
 Thu Oct 13 09:03:59 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.9.1:

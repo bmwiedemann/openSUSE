@@ -30,11 +30,15 @@ URL:            https://github.com/Irqbalance/irqbalance
 Source:         https://github.com/Irqbalance/irqbalance/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source3:        sysconfig.irqbalance
 Patch1:         Set-fd-limit.patch
+Patch2:         uninitialized.patch
 BuildRequires:  libcap-ng-devel
 BuildRequires:  libtool
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0)
+%ifarch x86_64
+BuildRequires:  pkgconfig(libnl-3.0)
+%endif
 Requires(pre):  %fillup_prereq
 Recommends:     %{name}-ui
 ExcludeArch:    s390 s390x
@@ -61,7 +65,11 @@ Text UI for the IRQ balance daemon.
 
 %build
 NOCONFIGURE=1 ./autogen.sh
-%configure
+%configure \
+%ifarch x86_64
+    --enable-thermal
+%endif
+
 %make_build LDFLAGS="-Wl,-z,relro,-z,now" CFLAGS="%{optflags} -fPIE -pie $(ncurses6-config --cflags)" LDFLAGS="$(ncurses6-config --libs)"
 cp %{SOURCE3} .
 

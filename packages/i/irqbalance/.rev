@@ -548,4 +548,12 @@ D proc-interrupts.patch
   Enable IRQ Balancer to support SoC die during low power state</comment>
     <requestid>1010510</requestid>
   </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>b4f348b248c8b877d5a7dd59cd8fcd13</srcmd5>
+    <version>1.9.1</version>
+    <time>1666256982</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1029930</requestid>
+  </revision>
 </revisionlist>
