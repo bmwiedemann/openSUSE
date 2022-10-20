@@ -430,4 +430,12 @@ See changelog in:
   * Bump github.com/lib/pq from 1.10.4 to 1.10.5</comment>
     <requestid>1005633</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>d9e5ede8276fdda5381f86490f88d406</srcmd5>
+    <version>3.10.1</version>
+    <time>1666257103</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1030112</requestid>
+  </revision>
 </revisionlist>

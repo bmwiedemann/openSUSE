@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Oct 13 07:36:29 UTC 2022 - dmueller@suse.com
+
+- Update to version 3.10.1:
+  * Updating the deb location for azure cli
+  * Updating the repo the azure cli is installed from
+  * Updating to kubernetes 1.25.2 packages
+  * one defer
+  * don't change r.CachePath
+  * avoid adding new public function
+  * fix tests
+  * fix: clean up temp files in FindChartInAuthAndTLSAndPassRepoURL (#11171)
+  * Allow CGO_ENABLED to be overridden for build
+  * update: Optimize the error message
+  * add nil judge for dependency , maintainers validate  and some testcase.
+  * Fix URL with encoded path support for ChartDownloader
+  * fix: add cases.NoLower option for we can get same effect to strings.Title
+  * Tolerate temporary errors from etcdserver
+
+-------------------------------------------------------------------
 Fri Sep 23 14:01:01 UTC 2022 - dmueller@suse.com
 
 - Update to version 3.10.0:
