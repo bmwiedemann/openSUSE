@@ -120,4 +120,12 @@ Removed upstreamed patches:
   Remove no longer needed commands from the spec.</comment>
     <requestid>953901</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>ae42631465a33ed3c0a6df05626c8747</srcmd5>
+    <version>0.13.0</version>
+    <time>1666274611</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1030156</requestid>
+  </revision>
 </revisionlist>
