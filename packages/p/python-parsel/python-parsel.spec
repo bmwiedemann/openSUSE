@@ -1,7 +1,7 @@
 #
 # spec file for package python-parsel
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,16 +26,16 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/scrapy/parsel
 Source:         https://files.pythonhosted.org/packages/source/p/parsel/parsel-%{version}.tar.gz
+# https://github.com/scrapy/parsel/commit/ddb3708b9a191ca02bd20e621f43c68cc92f5d6b
+Patch0:         python-parsel-drop-python-2.patch
 BuildRequires:  %{python_module cssselect >= 0.9}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six >= 1.6.0}
 BuildRequires:  %{python_module w3lib >= 1.8.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cssselect >= 0.9
 Requires:       python-lxml
-Requires:       python-six >= 1.6.0
 Requires:       python-w3lib >= 1.8.0
 BuildArch:      noarch
 %ifpython2
@@ -54,7 +54,7 @@ Parsel is a library to extract data from HTML and XML using XPath and CSS
 selectors.
 
 %prep
-%setup -q -n parsel-%{version}
+%autosetup -p1 -n parsel-%{version}
 sed -i -e '/pytest-runner/d' setup.py
 
 %build
