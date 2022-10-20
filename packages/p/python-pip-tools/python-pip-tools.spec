@@ -33,7 +33,6 @@ Requires:       python-click >= 7
 Requires:       python-pep517
 Requires:       python-pip >= 21.2
 Requires:       python-setuptools
-Requires:       python-six
 Requires:       python-wheel
 Recommends:     git-core
 BuildArch:      noarch
@@ -43,7 +42,6 @@ BuildRequires:  %{python_module pep517}
 BuildRequires:  %{python_module pip >= 21.2}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  ca-certificates
 BuildRequires:  git-core

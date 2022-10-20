@@ -42,4 +42,12 @@
 - Add ca-certificates to BuildRequires.</comment>
     <requestid>982919</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>8ce5519f4378461d5568263b466f2178</srcmd5>
+    <version>6.6.2</version>
+    <time>1666274612</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1030157</requestid>
+  </revision>
 </revisionlist>
