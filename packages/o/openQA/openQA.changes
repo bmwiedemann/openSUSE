@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Oct 19 13:55:24 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1666187714.761da80:
+  * Switch to signatures for Auth/Fake.pm and Auth/OpenID.pm
+  * t: Reuse same cache service in 25-cache-service to speedup
+  * t: Remove redundant check for service availability in 25-cache-service.t
+  * Avoid alerts by not failing Minion jobs when downloads fail
+  * Extend checks in Gru test to verify whether job state is expected
+  * Set openQA job reason when preparation Gru task fails
+  * Extend GRU tests to check whether associated job is incompleted
+  * Allow passing error to user from GRU task without failing Minion job
+  * Refactor certain GRU tests into sub tests
+  * Use `LC_ALL` instead of `LANG` to set locale for tests
+  * Document accessing the test database
+  * Avoid test failures due to localized error messages
+
+-------------------------------------------------------------------
 Sat Oct 15 02:15:45 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1665644111.e43a7ac:
