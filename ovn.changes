@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct  4 12:56:13 UTC 2022 - David Arky <david.arky@tutanota.com>
+
+- Fix OVS inet_parse_active() function calls, more info
+  https://github.com/ovn-org/ovn/issues/128#issuecomment-1099232584
+
+-------------------------------------------------------------------
 Thu Apr 28 11:49:51 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Fix dependency on python3-ovs for ovn-docker subpackage

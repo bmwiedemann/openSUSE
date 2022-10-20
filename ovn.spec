@@ -38,7 +38,8 @@ Patch0:         0001-Run-ovn-as-openvswitch-openvswitch.patch
 Patch1:         0001-build-allow-building-with-installed-ovs.patch
 Patch2:         0002-build-Add-missing-troff-macros.patch
 Patch3:         0003-build-Fix-ovs-include-paths.patch
-Patch4: 0004-add-xml.patch
+Patch4:         0004-add-xml.patch
+Patch5:         0005-build-fix-ovs-function-signature.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  graphviz
