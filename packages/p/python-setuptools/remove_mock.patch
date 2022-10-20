@@ -11,20 +11,20 @@
  setuptools/tests/test_upload.py           |    5 +----
  10 files changed, 13 insertions(+), 18 deletions(-)
 
-Index: setuptools-63.1.0/pkg_resources/tests/test_markers.py
+Index: setuptools-65.5.0/pkg_resources/tests/test_markers.py
 ===================================================================
---- setuptools-63.1.0.orig/pkg_resources/tests/test_markers.py
-+++ setuptools-63.1.0/pkg_resources/tests/test_markers.py
+--- setuptools-65.5.0.orig/pkg_resources/tests/test_markers.py
++++ setuptools-65.5.0/pkg_resources/tests/test_markers.py
 @@ -1,4 +1,4 @@
 -import mock
 +from . import mock
  
  from pkg_resources import evaluate_marker
  
-Index: setuptools-63.1.0/pkg_resources/tests/test_pkg_resources.py
+Index: setuptools-65.5.0/pkg_resources/tests/test_pkg_resources.py
 ===================================================================
---- setuptools-63.1.0.orig/pkg_resources/tests/test_pkg_resources.py
-+++ setuptools-63.1.0/pkg_resources/tests/test_pkg_resources.py
+--- setuptools-65.5.0.orig/pkg_resources/tests/test_pkg_resources.py
++++ setuptools-65.5.0/pkg_resources/tests/test_pkg_resources.py
 @@ -9,10 +9,7 @@ import stat
  import distutils.dist
  import distutils.command.install_egg_info
@@ -37,10 +37,10 @@ Index: setuptools-63.1.0/pkg_resources/tests/test_pkg_resources.py
  
  from pkg_resources import (
      DistInfoDistribution, Distribution, EggInfoDistribution,
-Index: setuptools-63.1.0/setuptools/tests/__init__.py
+Index: setuptools-65.5.0/setuptools/tests/__init__.py
 ===================================================================
---- setuptools-63.1.0.orig/setuptools/tests/__init__.py
-+++ setuptools-63.1.0/setuptools/tests/__init__.py
+--- setuptools-65.5.0.orig/setuptools/tests/__init__.py
++++ setuptools-65.5.0/setuptools/tests/__init__.py
 @@ -5,6 +5,10 @@ import pytest
  
  __all__ = ['fail_on_ascii']
@@ -52,10 +52,10 @@ Index: setuptools-63.1.0/setuptools/tests/__init__.py
  
  is_ascii = locale.getpreferredencoding() == 'ANSI_X3.4-1968'
  fail_on_ascii = pytest.mark.xfail(is_ascii, reason="Test fails in this locale")
-Index: setuptools-63.1.0/setuptools/tests/test_build_clib.py
+Index: setuptools-65.5.0/setuptools/tests/test_build_clib.py
 ===================================================================
---- setuptools-63.1.0.orig/setuptools/tests/test_build_clib.py
-+++ setuptools-63.1.0/setuptools/tests/test_build_clib.py
+--- setuptools-65.5.0.orig/setuptools/tests/test_build_clib.py
++++ setuptools-65.5.0/setuptools/tests/test_build_clib.py
 @@ -1,6 +1,6 @@
  import pytest
  
@@ -64,10 +64,10 @@ Index: setuptools-63.1.0/setuptools/tests/test_build_clib.py
  from distutils.errors import DistutilsSetupError
  from setuptools.command.build_clib import build_clib
  from setuptools.dist import Distribution
-Index: setuptools-63.1.0/setuptools/tests/test_easy_install.py
+Index: setuptools-65.5.0/setuptools/tests/test_easy_install.py
 ===================================================================
---- setuptools-63.1.0.orig/setuptools/tests/test_easy_install.py
-+++ setuptools-63.1.0/setuptools/tests/test_easy_install.py
+--- setuptools-65.5.0.orig/setuptools/tests/test_easy_install.py
++++ setuptools-65.5.0/setuptools/tests/test_easy_install.py
 @@ -12,7 +12,7 @@ import itertools
  import distutils.errors
  import io
@@ -77,23 +77,10 @@ Index: setuptools-63.1.0/setuptools/tests/test_easy_install.py
  import time
  import re
  import subprocess
-Index: setuptools-63.1.0/setuptools/tests/test_msvc.py
+Index: setuptools-65.5.0/setuptools/tests/test_packageindex.py
 ===================================================================
---- setuptools-63.1.0.orig/setuptools/tests/test_msvc.py
-+++ setuptools-63.1.0/setuptools/tests/test_msvc.py
-@@ -5,7 +5,7 @@ Tests for msvc support module.
- import os
- import contextlib
- import distutils.errors
--import mock
-+from . import mock
- 
- import pytest
- 
-Index: setuptools-63.1.0/setuptools/tests/test_packageindex.py
-===================================================================
---- setuptools-63.1.0.orig/setuptools/tests/test_packageindex.py
-+++ setuptools-63.1.0/setuptools/tests/test_packageindex.py
+--- setuptools-65.5.0.orig/setuptools/tests/test_packageindex.py
++++ setuptools-65.5.0/setuptools/tests/test_packageindex.py
 @@ -6,7 +6,7 @@ import urllib.request
  import urllib.error
  import http.client
@@ -103,10 +90,10 @@ Index: setuptools-63.1.0/setuptools/tests/test_packageindex.py
  import pytest
  
  import setuptools.package_index
-Index: setuptools-63.1.0/setuptools/tests/test_register.py
+Index: setuptools-65.5.0/setuptools/tests/test_register.py
 ===================================================================
---- setuptools-63.1.0.orig/setuptools/tests/test_register.py
-+++ setuptools-63.1.0/setuptools/tests/test_register.py
+--- setuptools-65.5.0.orig/setuptools/tests/test_register.py
++++ setuptools-65.5.0/setuptools/tests/test_register.py
 @@ -2,10 +2,7 @@ from setuptools.command.register import
  from setuptools.dist import Distribution
  from setuptools.errors import RemovedCommandError
@@ -119,10 +106,10 @@ Index: setuptools-63.1.0/setuptools/tests/test_register.py
  
  import pytest
  
-Index: setuptools-63.1.0/setuptools/tests/test_upload.py
+Index: setuptools-65.5.0/setuptools/tests/test_upload.py
 ===================================================================
---- setuptools-63.1.0.orig/setuptools/tests/test_upload.py
-+++ setuptools-63.1.0/setuptools/tests/test_upload.py
+--- setuptools-65.5.0.orig/setuptools/tests/test_upload.py
++++ setuptools-65.5.0/setuptools/tests/test_upload.py
 @@ -2,10 +2,7 @@ from setuptools.command.upload import up
  from setuptools.dist import Distribution
  from setuptools.errors import RemovedCommandError
@@ -135,19 +122,19 @@ Index: setuptools-63.1.0/setuptools/tests/test_upload.py
  
  import pytest
  
-Index: setuptools-63.1.0/pkg_resources/tests/__init__.py
+Index: setuptools-65.5.0/pkg_resources/tests/__init__.py
 ===================================================================
 --- /dev/null
-+++ setuptools-63.1.0/pkg_resources/tests/__init__.py
++++ setuptools-65.5.0/pkg_resources/tests/__init__.py
 @@ -0,0 +1,4 @@
 +try:
 +    import mock
 +except ImportError:
 +    from unittest import mock
-Index: setuptools-63.1.0/setuptools/tests/test_bdist_deprecations.py
+Index: setuptools-65.5.0/setuptools/tests/test_bdist_deprecations.py
 ===================================================================
---- setuptools-63.1.0.orig/setuptools/tests/test_bdist_deprecations.py
-+++ setuptools-63.1.0/setuptools/tests/test_bdist_deprecations.py
+--- setuptools-65.5.0.orig/setuptools/tests/test_bdist_deprecations.py
++++ setuptools-65.5.0/setuptools/tests/test_bdist_deprecations.py
 @@ -1,6 +1,6 @@
  """develop tests
  """

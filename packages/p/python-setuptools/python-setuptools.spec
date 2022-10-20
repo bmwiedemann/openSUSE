@@ -38,7 +38,7 @@
 # in order to avoid rewriting for subpackage generator
 %define mypython python
 Name:           python-setuptools%{psuffix}
-Version:        63.2.0
+Version:        65.5.0
 Release:        0
 Summary:        Download, build, install, upgrade, and uninstall Python packages
 License:        Apache-2.0 AND MIT AND BSD-2-Clause AND Python-2.0
@@ -47,6 +47,8 @@ Source:         https://files.pythonhosted.org/packages/source/s/setuptools/setu
 Patch0:         sort-for-reproducibility.patch
 # PATCH-FIX-OPENSUSE remove_mock.patch mcepl@suse.com
 Patch1:         remove_mock.patch
+# PATCH-FIX-OPENSUSE fix-get-python-lib-python38.patch bsc#1204395
+Patch2:         fix-get-python-lib-python38.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -122,6 +124,8 @@ export LANG=en_US.UTF-8
 export PYTHONPATH=$(pwd)
 # no online comparisons in obs
 donttest="(test_apply_pyproject_equivalent_to_setupcfg and https)"
+# test_pbr_integration tries to install pbr from network using pip
+donttest+=" or test_pbr_integration"
 %pytest -rfE -n auto -k "not ($donttest)"
 %endif
 

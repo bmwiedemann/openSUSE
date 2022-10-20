@@ -847,4 +847,146 @@
     <comment></comment>
     <requestid>989636</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>f64462d6cc3b8b1e928760a983351a71</srcmd5>
+    <version>65.5.0</version>
+    <time>1666256992</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip test_pbr_integration because it tries to install pbr using pip from
+  network
+- Add fix-get-python-lib-python38.patch to fix get_python_lib() method in
+  python3.8 bsc#1204395
+- Update to version 65.5.0:
+  * #3624: Fixed editable install for multi-module/no-package src-layout
+    projects.
+  * #3626: Minor refactorings to support distutils using stdlib logging module.
+  * #3419: Updated the example version numbers to be compliant with PEP-440 on
+    the &quot;Specifying Your Project’s Version&quot; page of the user guide.
+  * #3569: Improved information about conflicting entries in the current
+    working directory and editable install (in documentation and as an
+    informational warning).
+  * #3576: Updated version of validate_pyproject.
+- v65.4.1
+  * #3613: Fixed encoding errors in expand.StaticModule when system default
+    encoding doesn't match expectations for source files.
+  * #3617: Merge with pypa/distutils@6852b20 including fix for
+    pypa/distutils#181.
+- v65.4.0
+  * #3609: Merge with pypa/distutils@d82d926 including support for
+    DIST_EXTRA_CONFIG in pypa/distutils#177.
+- v65.3.0
+  * #3547: Stop ConfigDiscovery.analyse_name from splatting the
+    Distribution.name attribute -- by :user:`jeamland`
+  * #3554: Changed requires to requests in the pyproject.toml example in the
+    :doc:`Dependency management section of the Quickstart guide
+    &lt;userguide/quickstart&gt;` -- by :user:`mfbutner`
+  * #3561: Fixed accidental name matching in editable hooks.
+- v65.2.0
+  * #3553: Sync with pypa/distutils@22b9bcf, including fixed cross-compiling
+    support and removing deprecation warning per pypa/distutils#169.
+- v65.1.1
+  * #3551: Avoided circular imports in meta path finder for editable installs
+    when a missing module has the same name as its parent.
+- v65.1.0
+  * #3536: Remove monkeypatching of msvc9compiler.
+  * #3538: Corrected documentation on how to use the legacy-editable mode.
+- v65.0.2
+  * #3505: Restored distutils msvccompiler and msvc9compiler modules and marked
+    as deprecated (pypa/distutils@c802880).
+- v65.0.1
+  * #3529: Added clarification to :doc:`/userguide/quickstart` about support to
+    setup.py.
+  * #3526: Fixed backward compatibility of editable installs and custom
+    build_ext commands inheriting directly from distutils.
+  * #3528: Fixed buid_meta.prepare_metadata_for_build_wheel when given
+    metadata_directory is &quot;.&quot;.
+- v65.0.0
+  * #3505: Removed 'msvccompiler' and 'msvc9compiler' modules from distutils.
+  * #3521: Remove bdist_msi and bdist_wininst commands, which have been
+    deprecated since Python 3.9. Use older Setuptools for these behaviors if
+    needed.
+  * #3519: Changed the note in keywords documentation regarding editable
+    installations to specify which setuptools version require a minimal
+    setup.py file or not.
+- v64.0.3
+  * #3515: Fixed &quot;inline&quot; file copying for editable installations and optional
+    extensions.
+  * #3517: Fixed editable_wheel to ensure other commands are finalized before
+    using them. This should prevent errors with plugins trying to use different
+    commands or reinitializing them.
+  * #3517: Augmented filter to prevent transient/temporary source files from
+    being considered package_data or data_files.
+- v64.0.2
+  * #3506: Suppress errors in custom build_py implementations when running
+    editable installs in favor of a warning indicating what is the most
+    appropriate migration path. This is a transitional measure. Errors might be
+    raised in future versions of setuptools.
+  * #3512: Added capability of handling namespace packages created
+    accidentally/purposefully via discovery configuration during editable
+    installs. This should emulate the behaviour of a non-editable installation.
+- v64.0.1
+  * #3497: Fixed editable_wheel for legacy namespaces.
+  * #3502: Fixed issue with editable install and single module distributions.
+  * #3503: Added filter to ignore external .egg-info files in manifest.
+  * Some plugins might rely on the fact that the .egg-info directory is
+    produced inside the project dir, which may not be the case in editable
+    installs (the .egg-info directory is produced inside the metadata directory
+    given by the build frontend via PEP 660 hooks).
+- v64.0.0
+  * #3380: Passing some types of parameters via --global-option to setuptools
+    PEP 517/PEP 660 backend is now considered deprecated. The user can pass the
+    same arbitrary parameter via --build-option (--global-option is now
+    reserved for flags like --verbose or --quiet).
+  * Both --build-option and --global-option are supported as a transitional
+    effort (a.k.a. &quot;escape hatch&quot;). In the future a proper list of allowed
+    config_settings may be created.
+  * #3265: Added implementation for editable install hooks (PEP 660).
+  * #3380: Improved the handling of the config_settings parameter in both PEP
+    517 and PEP 660 interfaces:
+  * #3392: Exposed get_output_mapping() from build_py and build_ext
+    subcommands. This interface is reserved for the use of setuptools
+    Extensions and third part packages are explicitly disallowed to calling it.
+    However, any implementation overwriting build_py or build_ext are required
+    to honour this interface.
+  * #3412: Added ability of collecting source files from custom build
+    sub-commands to sdist. This allows plugins and customization scripts to
+    automatically add required source files in the source distribution.
+  * #3414: Users can temporarily specify an environment variable
+    SETUPTOOLS_ENABLE_FEATURES=legacy-editable as a escape hatch for the PEP
+    660 behavior. This setting is transitional and may be removed in the
+    future.
+  * #3484: Added transient compat mode to editable installs. This more will be
+    temporarily available (to facilitate the transition period) for those that
+    want to emulate the behavior of the develop command (in terms of what is
+    added to sys.path). This mode is provided &quot;as is&quot;, with limited support,
+    and will be removed in future versions of setuptools.
+  * #3414: Updated :doc:`Development Mode &lt;/userguide/development_mode&gt;` to
+    reflect on the implementation of PEP 660.
+- v63.4.3
+  * #3496: Update to pypa/distutils@b65aa40 including more robust support for
+    library/include dir handling in msvccompiler (pypa/distutils#153) and test
+    suite improvements.
+- v63.4.2
+  * #3453: Bump vendored version of :pypi:`pyparsing` to 3.0.9.
+  * #3481: Add warning for potential install_requires and extras_require
+    misconfiguration in setup.cfg
+  * #3487: Modified pyproject.toml validation exception handling to make
+    relevant debugging information easier to spot.
+- v63.4.1
+  * #3482: Sync with pypa/distutils@274758f1c02048d295efdbc13d2f88d9923547f8,
+    restoring compatibility shim in bdist.format_commands.
+- v63.4.0
+  * #2971: upload_docs command is deprecated once again.
+  * #3443: Installed sphinx-hoverxref extension to show tooltips on internal an
+    external references. -- by :user:`humitos`
+  * #3444: Installed sphinx-notfound-page extension to generate nice 404 pages.
+    -- by :user:`humitos`
+  * #3480: Merge with pypa/distutils@c397f4c
+- v63.3.0
+  * #3475: Merge with pypa/distutils@129480b, including substantial delinting
+    and cleanup, some refactoring around compiler logic, better messaging in
+    cygwincompiler (pypa/distutils#161).
+</comment>
+    <requestid>1029961</requestid>
+  </revision>
 </revisionlist>
