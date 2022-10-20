@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 19 09:50:52 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream changes:
+  * 0001-avif-return-false-in-canRead-when-imageIndex-imageCo.patch (kde#460085)
+  * 0001-avif-always-indicate-endless-loop.patch
+  * 0001-avif-revert-9ac923ad09316dcca0fc11e0be6b3dfc6cce6ca0.patch
+
+-------------------------------------------------------------------
 Sun Oct  9 07:21:20 UTC 2022 - Enrico Belleri <idesmi@protonmail.com>
 
 - Enable JPEG-XL plugin

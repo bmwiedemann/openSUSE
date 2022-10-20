@@ -910,4 +910,12 @@
     <comment>- Enable JPEG-XL plugin (forwarded request 1009352 from iDesmI)</comment>
     <requestid>1010886</requestid>
   </revision>
+  <revision rev="113" vrev="3">
+    <srcmd5>e28d434467898cdefeb54511cb691ab3</srcmd5>
+    <version>5.99.0</version>
+    <time>1666256986</time>
+    <user>dimstar_suse</user>
+    <comment>Add upstream fixes</comment>
+    <requestid>1029945</requestid>
+  </revision>
 </revisionlist>

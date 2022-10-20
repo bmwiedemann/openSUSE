@@ -44,6 +44,11 @@ Source:         %{name}-%{version}.tar.xz
 Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
+# PATCH-FIX-UPSTREAM -- Recommended patches for kimageformats 5.99
+Patch0:         0001-avif-return-false-in-canRead-when-imageIndex-imageCo.patch
+Patch1:         0001-avif-always-indicate-endless-loop.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-avif-revert-9ac923ad09316dcca0fc11e0be6b3dfc6cce6ca0.patch
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
