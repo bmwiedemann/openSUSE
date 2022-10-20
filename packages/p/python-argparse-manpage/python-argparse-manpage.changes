@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 20 09:13:17 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove not needed dep python-six
+
+-------------------------------------------------------------------
 Thu Aug  4 11:18:38 UTC 2022 - Daniel Mach <daniel.mach@suse.com>
 
 - Update to 3
