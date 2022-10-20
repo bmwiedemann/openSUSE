@@ -17,17 +17,16 @@
 
 
 Name:           mold
-Version:        1.5.1
+Version:        1.6.0
 Release:        0
 Summary:        A Modern Linker (mold)
 License:        AGPL-3.0-or-later
 Group:          Development/Tools/Building
 URL:            https://github.com/rui314/mold
 Source:         https://github.com/rui314/mold/archive/v%{version}/mold-%{version}.tar.gz
-ExclusiveArch:  aarch64 %arm %ix86 x86_64 aarch64 riscv64 ppc64le
 BuildRequires:  cmake
 %if %{suse_version} < 1550
-BuildRequires:  gcc10-c++
+BuildRequires:  gcc11-c++
 %else
 # These libraries are not present for openSUSE Leap
 BuildRequires:  gcc-c++
@@ -44,16 +43,18 @@ BuildRequires:  gdb
 BuildRequires:  glibc-devel-static
 BuildRequires:  libzstd-devel
 BuildRequires:  openssl-devel
+%ifnarch ppc64
 BuildRequires:  valgrind
-BuildRequires:  xxhash-devel
+%endif
 BuildRequires:  zlib-devel
 BuildRequires:  zstd
 PreReq:         update-alternatives
+ExcludeArch:    ppc
 
 %if %{suse_version} < 1550
-%define build_args STRIP=true SYSTEM_XXHASH=1 USE_MIMALLOC=0 SYSTEM_ZSTD=1
+%define build_args -DMOLD_USE_MIMALLOC=OFF -DMOLD_USE_MIMALLOC=OFF
 %else
-%define build_args STRIP=true SYSTEM_TBB=1 SYSTEM_XXHASH=1 USE_MIMALLOC=0 SYSTEM_ZSTD=1
+%define build_args -DMOLD_USE_MIMALLOC=OFF -DMOLD_USE_MIMALLOC=OFF -DMOLD_USE_SYSTEM_TBB=ON
 %endif
 
 %description
@@ -68,42 +69,21 @@ build time especially in rapid debug-edit-rebuild cycles.
 
 %build
 %if %{suse_version} < 1550
-export CC=gcc-10
-export CXX=g++-10
+export CC=gcc-11
+export CXX=g++-11
 %endif
-export CXXFLAGS="%{optflags} -Wno-sign-compare"
-
-%make_build -e \
-CXXFLAGS="${CXXFLAGS}" \
-LDFLAGS="${CXXFLAGS}" \
-PREFIX=%{_prefix} \
-BINDIR=%{_bindir} \
-MANDIR=%{_mandir} \
-LIBDIR=%{_libdir} \
-LIBEXECDIR=%{_libexecdir} \
-%{build_args}
+%cmake %{build_args}
+%cmake_build
 
 %install
-%make_install -e \
-PREFIX=%{_prefix} \
-BINDIR=%{_bindir} \
-MANDIR=%{_mandir} \
-LIBDIR=%{_libdir} \
-LIBEXECDIR=%{_libexecdir} \
-%{build_args}
+%cmake_install
 
 %check
 %if %{suse_version} < 1550
-export TEST_CC=gcc-10
-export TEST_CXX=g++-10
+export TEST_CC=gcc-11
+export TEST_CXX=g++-11
 %endif
-%make_build test -k -e \
-PREFIX=%{_prefix} \
-BINDIR=%{_bindir} \
-MANDIR=%{_mandir} \
-LIBDIR=%{_libdir} \
-LIBEXECDIR=%{_libexecdir} \
-%{build_args}
+%ctest
 
 %post
 "%_sbindir/update-alternatives" --install \
