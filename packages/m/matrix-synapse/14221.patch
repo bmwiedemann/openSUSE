@@ -1,0 +1,63 @@
+From ce2c268f22ab30ef589a8370b691703dad44819f Mon Sep 17 00:00:00 2001
+From: David Robertson <davidr@element.io>
+Date: Tue, 18 Oct 2022 12:08:50 +0100
+Subject: [PATCH 1/2] Fix `track_memory_usage` on poetry-core 1.3.x
+ installations
+
+The same kind of problem as discussed in #14085:
+
+1. we defined an extra with an underscore
+2. we look it up at runtime with an underscore
+3. but poetry-core 1.3.x. installs it with a dash, causing (2) to fail.
+
+Fix by using a dash everywhere.
+---
+ pyproject.toml          | 4 ++--
+ synapse/config/cache.py | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 78ff799e8ec..aa1b816b264 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -227,7 +227,7 @@ jwt = ["authlib"]
+ # (if it is not installed, we fall back to slow code.)
+ redis = ["txredisapi", "hiredis"]
+ # Required to use experimental `caches.track_memory_usage` config option.
+-cache_memory = ["pympler"]
++cache-memory = ["pympler"]
+ test = ["parameterized", "idna"]
+
+ # The duplication here is awful. I hate hate hate hate hate it. However, for now I want
+@@ -258,7 +258,7 @@ all = [
+     "jaeger-client", "opentracing",
+     # redis
+     "txredisapi", "hiredis",
+-    # cache_memory
++    # cache-memory
+     "pympler",
+     # omitted:
+     #   - test: it's useful to have this separate from dev deps in the olddeps job
+diff --git a/synapse/config/cache.py b/synapse/config/cache.py
+index 2db8cfb0052..eb4194a5a91 100644
+--- a/synapse/config/cache.py
++++ b/synapse/config/cache.py
+@@ -159,7 +159,7 @@ def read_config(self, config: JsonDict, **kwargs: Any) -> None:
+
+         self.track_memory_usage = cache_config.get("track_memory_usage", False)
+         if self.track_memory_usage:
+-            check_requirements("cache_memory")
++            check_requirements("cache-memory")
+
+         expire_caches = cache_config.get("expire_caches", True)
+         cache_entry_ttl = cache_config.get("cache_entry_ttl", "30m")
+
+From 011ec6c4f2f0a4323a4fcb2949c0e2875b4dad3c Mon Sep 17 00:00:00 2001
+From: David Robertson <davidr@element.io>
+Date: Tue, 18 Oct 2022 12:58:54 +0100
+Subject: [PATCH 2/2] Changelog
+
+---
+ changelog.d/14221.misc | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 changelog.d/14221.misc

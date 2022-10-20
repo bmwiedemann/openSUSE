@@ -48,7 +48,6 @@
 %global service_identity_version      21.1.0
 %global signedjson_version            1.1.4
 %global signedjson_max_version        2
-%global six_version                   1.16.0
 %global sortedcontainers_version      2.4.0
 %global systemd_version               234
 %global typing_extensions_version     4.1.1
@@ -77,7 +76,7 @@
 %global attrs_version                 21.1.1
 %global bcrypt_version                3.1.7
 %global bleach_version                1.4.3
-%global canonicaljson_version         1.5.0
+%global canonicaljson_version         1.6.3
 %global canonicaljson_max_version     2
 %global cryptography_version          3.4.7
 %global frozendict_version            2.1.3
@@ -98,7 +97,6 @@
 %global service_identity_version      18.1.0
 %global signedjson_version            1.1.0
 %global signedjson_max_version        2
-%global six_version                   1.16.0
 %global sortedcontainers_version      1.4.4
 %global systemd_version               231
 %global typing_extensions_version     3.10.0
@@ -155,7 +153,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.68.0
+Version:        1.69.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        Apache-2.0
@@ -175,13 +173,13 @@ Source51:       matrix-synapse-generate-config.sh
 Source99:       series
 Patch:          matrix-synapse-1.4.1-paths.patch
 Patch1:         bump-dependencies.patch
-Patch2:         https://patch-diff.githubusercontent.com/raw/matrix-org/synapse/pull/13952.patch
+Patch2:         14221.patch
 # https://github.com/matrix-org/synapse/pull/10719
 # disable by marking as source until we get a decision upstream
 Source100:      10719-Fix-instert-of-duplicate-key-into-event_json.patch
 BuildRequires:  %{use_python}-base >= 3.8
 BuildRequires:  %{use_python}-pip
-BuildRequires:  %{use_python}-poetry-core
+BuildRequires:  %{use_python}-poetry-core >= 1.0.0
 BuildRequires:  %{use_python}-setuptools
 BuildRequires:  %{use_python}-wheel
 BuildRequires:  cargo
@@ -194,7 +192,7 @@ BuildRequires:  unzip
 %{?systemd_ordering}
 %{sysusers_requires}
 %requires_peq   %{use_python}-base
-BuildRequires:  %{use_python}-setuptools-rust
+BuildRequires:  (%{use_python}-setuptools-rust >= 1.3 with %{use_python}-setuptools-rust < 1.5.3)
 # NOTE: Keep this is in the same order as pyproject.toml.
 # some version locks based on poetry.lock
 BuildRequires:  %{use_python}-Jinja2 >= %{Jinja2_version}
@@ -247,8 +245,6 @@ BuildRequires:  %{use_python}-service_identity >= %{service_identity_version}
 %requires_peq   %{use_python}-service_identity
 BuildRequires:  (%{use_python}-signedjson >= %{signedjson_version} with %{use_python}-signedjson < %{signedjson_max_version})
 %requires_peq   %{use_python}-signedjson
-BuildRequires:  %{use_python}-six >= %{six_version}
-%requires_peq   %{use_python}-six
 BuildRequires:  %{use_python}-sortedcontainers >= %{sortedcontainers_version}
 %requires_peq   %{use_python}-sortedcontainers
 BuildRequires:  %{use_python}-systemd  >= %{systemd_version}
@@ -312,12 +308,12 @@ Matrix. Matrix is a system for federated Instant Messaging and VoIP.
 install -m 0644 -D %{SOURCE2} .cargo/config
 
 # Remove all un-needed #!-lines.
-find synapse/ -type f -exec sed -i '1{/^#!/d}' {} \;
+find synapse/ -type f -not -path './vendor/**' -exec sed -i '1{/^#!/d}' {} \;
 # Replace all #!/usr/bin/env lines to use #!/usr/bin/$1 directly.
-find ./ -type f -exec \
+find ./ -type f -not -path './vendor/**' -exec \
 	sed -i '1s|^#!/usr/bin/env |#!/usr/bin/|' {} \;
 # Force the usage of the default python3 sys executable
-find ./ -type f \
+find ./ -type f -not -path './vendor/**' \
 	-exec sed -i '1s|^#!/usr/bin/python.*$|#!%{__python3}|' {} \;
 
 # Update the python flavour in the service file.
@@ -332,14 +328,6 @@ cp %{S:48} README.SUSE
 # We install scripts into /usr/lib to avoid silly conflicts with other pkgs.
 install -d -m 0755 %{buildroot}%{_libexecdir}/%{pkgname}
 %pyproject_install
-
-# workaround for poetry >= 1.3.0 boo#1204312
-METADATA_FILE="%{buildroot}%{python3_sitearch}/%{eggname}-%{version}.dist-info/METADATA"
-if [ -e ${METADATA_FILE} ] ; then
-  perl -p -i.backup -e 's/(Provides-Extra: url-preview\n)/${1}Provides-Extra: url_preview\n/g' ${METADATA_FILE}
-  diff -urN ${METADATA_FILE}{.backup,} ||:
-  rm -f ${METADATA_FILE}.backup
-fi
 
 install -d -m 0755 %{buildroot}%{_bindir} %{buildroot}%{_libexecdir}/%{pkgname}/
 # move scripts to the old place.
@@ -374,7 +362,7 @@ install -d -m 0750 %{buildroot}%{_rundir}/%{pkgname}
 install -d -m 0750 %{buildroot}%{_localstatedir}/lib/%{pkgname}
 install -d -m 0750 %{buildroot}%{_localstatedir}/log/%{pkgname}
 
-%fdupes %{buildroot}%{python3_sitelib}
+%fdupes %{buildroot}%{python3_sitearch}
 
 %pre -f %{name}.pre
 %service_add_pre %{pkgname}.service
