@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct 18 11:27:37 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.1
+- Changes since 5.26.0:
+  * ScrollBar & ScrollIndicator: Show over content even if it loaded after
+  * Revert "Install po folder"
+- Drop patches, now upstream:
+  * 0001-Revert-Install-po-folder.patch
+
+-------------------------------------------------------------------
 Thu Oct  6 14:48:50 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.26.0

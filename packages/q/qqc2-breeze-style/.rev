@@ -247,4 +247,20 @@
     <comment>Plasma 5.26.0</comment>
     <requestid>1009143</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>55edeca6a4c4ee18397d27aed39e8249</srcmd5>
+    <version>5.26.1</version>
+    <time>1666257072</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.26.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.1
+- Changes since 5.26.0:
+  * ScrollBar &amp; ScrollIndicator: Show over content even if it loaded after
+  * Revert &quot;Install po folder&quot;
+- Drop patches, now upstream:
+  * 0001-Revert-Install-po-folder.patch</comment>
+    <requestid>1029981</requestid>
+  </revision>
 </revisionlist>

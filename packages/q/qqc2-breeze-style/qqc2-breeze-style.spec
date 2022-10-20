@@ -18,19 +18,17 @@
 
 %bcond_without released
 Name:           qqc2-breeze-style
-Version:        5.26.0
+Version:        5.26.1
 Release:        0
 Summary:        Breeze Style for Qt Quick Controls 2
 License:        LGPL-2.1-only OR LGPL-3.0-only
 Group:          System/Libraries
 URL:            https://www.kde.org
-Source:         qqc2-breeze-style-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/qqc2-breeze-style-%{version}.tar.xz
 %if %{with released}
-Source1:        qqc2-breeze-style-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/qqc2-breeze-style-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Revert-Install-po-folder.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
