@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct 18 11:27:28 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.1
+- Changes since 5.26.0:
+  * Reviews: Don't check for name field being empty when it's not visible (kde#460504)
+  * Fix i18n warning
+  * flatpak: Address transaction progress skipping (kde#404819,kde#434948,kde#435450,kde#448280)
+  * Delay subCategoriesChanged signals when disabling (kde#401666,kde#457408)
+  * flatpak: Improve flatpaktest reliability
+  * flatpak: Just disable the test on the CI
+
+-------------------------------------------------------------------
 Thu Oct  6 14:48:40 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.26.0
