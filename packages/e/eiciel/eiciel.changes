@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Oct 18 02:30:20 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to 0.10.0.rc2 version:
+  + This is a fully updated version to gtk4 and the new plugin
+    interface of GNOME Files 43.
+  + This version is meant to be used with GNOME Files 43 (and
+    later) and it will not work with any earlier version.
+  + The plugin support in GNOME Files 43 has been simplified, so
+    edition is not possible inside GNOME Files' Properties dialog.
+    Visualisation support has been implemented in GNOME Files. To
+    edit ACLs or Extended Attributes, use the contextual menu over
+    a file or directory in the files view of GNOME Files, this will
+    start Eiciel in edit mode for that file directly.
+  + Build system has been fully ported to Meson (Autotools has been
+    dropped).
+  + The id/app-id has been normalised from org.roger-ferrer.Eiciel
+    to org.roger_ferrer.Eiciel everywhere given the inconsistent
+    handling of the hyphen in the GNOME stack.
+- Drop no longer needed update-desktop-files build requirement and
+  suse_update_desktop_file macro.
+- Drop no longer needed libattr-devel and fdupes build requirements
+  and fdupes macro.
+- Update pkgconfig module build requirements (align with Meson
+  script):
+  + "gtkmm-3.0 >= 3.0.0" to "gtkmm-4.0 >= 4.6";
+  + "libnautilus-extension >= 3.0.0" to
+    "libnautilus-extension-4 >= 43"
+- Add Meson build requirement and replace Autotools macros with
+  Meson's (configure/make_build/make_install to meson/meson_build/
+  meson_install).
+- Add new build requirements: "giomm-2.68 >= 2.68" pkgconfig module
+  and itstool.
+- Update 'packageand(package1:package2)' obsolete Supplements
+  syntax to '(package1 and package2)' for supplementation of eiciel
+  and nautilus packages.
+- Add 0001-Add-man-subdir-to-top-level-meson.build.patch and
+  0001-Replace-deprecated-attr-xattr.h-with-sys-xattr.h.patch
+  patches to fix installation of manpage and check for sys/xattr.h
+  rather than deprecated attr/xattr.h, respectively.
+
+-------------------------------------------------------------------
 Tue May 31 08:17:27 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.9.13.1:

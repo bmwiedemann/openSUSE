@@ -16,24 +16,33 @@
 #
 
 
-%define _libnautilus_extensiondir %(pkg-config --variable extensiondir libnautilus-extension)
+%define _libnautilus_extensiondir %(pkg-config --variable extensiondir libnautilus-extension-4)
 
 Name:           eiciel
-Version:        0.9.13.1
+Version:        0.10.0.rc2
 Release:        0
 Summary:        GNOME ACL viewer and editor
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            http://rofi.roger-ferrer.org/eiciel/
-Source0:        http://rofi.roger-ferrer.org/eiciel/files/%{name}-%{version}.tar.bz2
-BuildRequires:  fdupes
+# Source0:        http://rofi.roger-ferrer.org/eiciel/files/%%{name}-%%{version}.tar.bz2
+Source0:        https://github.com/rofirrim/eiciel/archive/refs/tags/0.10.0-rc2.tar.gz#/%{name}-%{version}.tar.gz
+
+# FIX-UPSTREAM-PATCH 0001-Add-man-subdir-to-top-level-meson.build.patch luc14n0@opensuse.org
+# Intall the manpage that was silently being ignored by Meson
+Patch1:         0001-Add-man-subdir-to-top-level-meson.build.patch
+# FIX-UPSTREAM-PATCH 0001-Replace-deprecated-attr-xattr.h-with-sys-xattr.h.patch luc14n0@opensuse.org
+# Use sys/xattr.h in place of deprecated attr/xattr.h
+Patch2:         0001-Replace-deprecated-attr-xattr.h-with-sys-xattr.h.patch
+
 BuildRequires:  gcc-c++
+BuildRequires:  itstool
 BuildRequires:  libacl-devel
-BuildRequires:  libattr-devel
+BuildRequires:  meson >= 0.57
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(gtkmm-3.0) >= 3.0.0
-BuildRequires:  pkgconfig(libnautilus-extension) >= 3.0.0
+BuildRequires:  pkgconfig(giomm-2.68) >= 2.68
+BuildRequires:  pkgconfig(gtkmm-4.0) >= 4.6
+BuildRequires:  pkgconfig(libnautilus-extension-4) >= 43
 
 %description
 Eiciel allows you to visually edit file ACL entries. You can add and
@@ -44,7 +53,7 @@ graphical interface
 Summary:        Nautilus ACL viewer and editor extension
 Group:          System/GUI/GNOME
 Requires:       %{name} = %{version}
-Supplements:    packageand(eiciel:nautilus)
+Supplements:    (eiciel and nautilus)
 
 %description -n nautilus-eiciel
 A Nautilus extension that allows viewing and editing ACL permissions.
@@ -52,35 +61,28 @@ A Nautilus extension that allows viewing and editing ACL permissions.
 %lang_package
 
 %prep
-%autosetup -p1
-sed -i -e 's!attr/xattr\.h!sys/xattr\.h!g' configure
+%autosetup -p1 -n eiciel-0.10.0-rc2
 
 %build
-%configure \
-        --disable-static
-make %{?_smp_mflags}
+%meson          \
+    -D man=true \
+    %{nil}
+%meson_build
 
 %install
-%make_install
+%meson_install
 %find_lang %{name} %{?no_lang_C}
-find %{buildroot} -type f -name "*.la" -delete -print
-%suse_update_desktop_file -r org.roger-ferrer.Eiciel System Filesystem
-%fdupes %{buildroot}%{_datadir}
 
 %files
 %license COPYING
-%doc AUTHORS ChangeLog NEWS README
-%dir %{_datadir}/gnome/
-%dir %{_datadir}/gnome/help/
-%dir %{_datadir}/gnome/help/%{name}/
-%doc %{_datadir}/gnome/help/%{name}/C/
+%doc AUTHORS README.md
+%{_datadir}/help/C/%{name}
 %{_bindir}/eiciel
 %{_mandir}/man1/eiciel.1%{?ext_man}
-%{_datadir}/applications/org.roger-ferrer.Eiciel.desktop
-%{_datadir}/eiciel/
-%{_datadir}/icons/hicolor/*/apps/eiciel.*
+%{_datadir}/applications/org.roger_ferrer.Eiciel.desktop
+%{_datadir}/icons/hicolor/*/apps/*eiciel.*
 %dir %{_datadir}/metainfo
-%{_datadir}/metainfo/org.roger-ferrer.Eiciel.appdata.xml
+%{_datadir}/metainfo/org.roger_ferrer.Eiciel.appdata.xml
 
 %files -n nautilus-eiciel
 %{_libnautilus_extensiondir}/libeiciel-nautilus.so
