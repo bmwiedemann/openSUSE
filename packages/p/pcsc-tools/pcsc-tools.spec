@@ -32,7 +32,7 @@ BuildRequires:  pcsc-lite-devel
 BuildRequires:  pkgconfig
 Requires:       perl-pcsc
 Requires:       perl(Glib)
-Requires:       perl(Gtk2)
+Requires:       perl(Gtk3)
 
 %description
 These tools are used to test a PC/SC driver, card or reader
