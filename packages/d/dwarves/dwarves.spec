@@ -1,7 +1,7 @@
 #
 # spec file for package dwarves
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,8 @@
 #
 
 
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
+# no distro has libbpf >= 1.0.1 yet
+%if 0
 %define have_libbpf 1
 %endif
 %if (0%{?sle_version} && 0%{?sle_version} <= 150300) || (0%{?suse_version} && 0%{?suse_version} < 1500)
@@ -24,7 +25,7 @@
 %endif
 
 Name:           dwarves
-Version:        1.22
+Version:        1.24
 Release:        0
 Summary:        DWARF utilities
 License:        GPL-2.0-only
@@ -34,14 +35,15 @@ URL:            https://acmel.wordpress.com/
 #Git-Web:	http://git.kernel.org/cgit/devel/pahole/pahole.git
 Source:         https://fedorapeople.org/~acme/dwarves/dwarves-%version.tar.xz
 Source2:        https://fedorapeople.org/~acme/dwarves/dwarves-%version.tar.sign
+Source8:        dwarves.keyring
 Source9:        baselibs.conf
 BuildRequires:  cmake
 BuildRequires:  libdw-devel >= 0.171
 BuildRequires:  libelf-devel
 BuildRequires:  pkgconfig
 %if 0%{?have_libbpf}
-BuildRequires:  linux-glibc-devel >= 5.13
-BuildRequires:  pkgconfig(libbpf) >= 0.4.0
+BuildRequires:  linux-glibc-devel >= 5.16
+BuildRequires:  pkgconfig(libbpf) >= 1.0.0
 %endif
 BuildRequires:  pkgconfig(zlib)
 # Also known by its most prominent tool

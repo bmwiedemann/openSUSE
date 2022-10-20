@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Oct  4 17:04:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.24:
+  * Add support to BTF_KIND_ENUM64 to represent enumeration
+    entries with more than 32 bits.
+  * Support multithreaded encoding, in addition to DWARF
+    multithreaded loading, speeding up the process. Selected just
+    like DWARF multithreaded loading, using the 'pahole -j'
+    option.
+  * Encode 'char' type as signed.
+  * Add support to BTF_KIND_ENUM64.
+  * Introduce --lang and --lang_exclude to specify the language
+    the DWARF compile units were originated from to use or
+    filter.
+  * Introduce --compile to generate compilable code in a similar
+    fashion to: bpftool btf dump file vmlinux format c >
+    vmlinux.h As with 'bpftool', this will notice type shadowing,
+    i.e. multiple types with the same name and will disambiguate
+    by adding a suffix.
+  * Don't segfault when processing bogus files.
+- add dwarves.keyring for source validation
+
+-------------------------------------------------------------------
+Wed Dec  8 14:18:26 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.23
+  * Ability to encode BTF tags.
+  * Ability to carry attributes to the kernel BPF verifier for
+    further checks.
+  * Inference of struct member unnatural alignment
+    (__attribute__(__aligned__(N))) to help in generating
+    compileable headers matching the original type layout from
+    BTF data.
+
+-------------------------------------------------------------------
 Mon Aug 23 23:31:59 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.22 (bsc#1190340).
