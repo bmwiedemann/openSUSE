@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 18 11:27:35 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.1
+- Changes since 5.26.0:
+  * Fix excess comma in X-Plasma-Runner-Syntaxes values
+
+-------------------------------------------------------------------
 Thu Oct  6 14:48:48 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.26.0
