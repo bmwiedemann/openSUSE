@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Oct 19 10:10:54 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.6.1
+  - desktop#4907 [stable-3.6] Fix wrong estimated time when doing sync.
+  - desktop#4908 [stable-3.6] Bugfix/selective sync abort error
+  - desktop#4922 [stable-3.6] Bugfix/conflict resolution when selecting folder
+  - desktop#4923 [stable-3.6] Fix menu bar height calculation on macOS
+  - desktop#4926 [stable-3.6] Fix add account window text clipping, enlarge text
+  - desktop#4928 [stable-3.6] Accept valid lsColJob reply XML content types
+  - desktop#4934 [stable-3.6] Fix low-resolution file changed overlay icons in activities
+  - desktop#4941 [stable-3.6] Deallocate call notification dialog objects when closed
+  - desktop#4943 [stable-3.6] Ensure that the file being processed has had its etag properly sanitised, log etag more
+  - desktop#4973 [stable-3.6] Ensure strings in main window QML are presented as plain text and not HTML
+  - desktop#4974 [stable-3.6] Do not format text in QML components as HTML
+  - desktop#4978 [stable-3.6] Fix two factor authentication notification
+  - desktop#5000 [stable-3.6] Bring back .lnk files on Windows and always treat them as non-virtual files.
+  - desktop#5006 [stable-3.6] Fix 'Reply' primary property.
+  - desktop#5020 [stable-3.6] Update after tx migrate
+  - desktop#5030 [stable-3.6] Command-line client. Do not trust SSL certificates by default,
+    unless '--trust' option is set.
+  - desktop#5037 [stable-3.6] Fix invisible user status selector button not being checked when user is in Offline mode
+  - desktop#5048 [stable-3.6] Fix link shares default expire date being enforced as maximum expire date
+    even when maximum date enforcement is disabled on the server
+  - desktop#5052 Backport/4989/stable 3.6
+  - desktop#5053 [stable-3.6] use correct version copmparison on NSIS updater: fix update from rc
+  - desktop#5054 Improve 'Handle local file editing' feature. Add loading popup. Add f…
+  - desktop#5055 Backport/5039/bugfix/check token for edit locally requests
+  - desktop#5056 Fix account not found when doing local file editing.
+  - desktop#5057 Fix two factor auth notification: activity item was disabled.
+  - desktop#5058 [stable-3.6] Fix predefined status text formatting
+  - desktop#5059 [stable-3.6] Fix sync progress bar colours in dark mode
+  - desktop#5061 [stable-3.6] Improve handling of file name clashes
+  - desktop#5063 [stable-3.6] Ensure placeholder message in emoji picker wraps correctly
+
+-------------------------------------------------------------------
 Wed Sep  7 14:40:48 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.6.0
