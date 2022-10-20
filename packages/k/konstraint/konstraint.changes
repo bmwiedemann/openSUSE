@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Oct 20 05:03:04 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.24.0:
+  * Bump golang.org/x/text from 0.3.8 to 0.4.0 (#339)
+  * Bump github.com/spf13/cobra from 1.5.0 to 1.6.0 (#336)
+  * feat: add metadata via header annotations in rego (#324)
+  * Bump k8s.io/apimachinery from 0.25.2 to 0.25.3 (#338)
+  * Bump golang.org/x/text from 0.3.7 to 0.3.8 (#337)
+  * Bump github.com/open-policy-agent/opa from 0.44.0 to 0.45.0 (#334)
+  * Bump golang from 1.19.1-alpine to 1.19.2-alpine (#335)
+  * Bump k8s.io/apimachinery from 0.25.1 to 0.25.2 (#333)
+  * Bump k8s.io/apimachinery from 0.25.0 to 0.25.1 (#332)
+  * Update pipelines to use 1.19 (#331)
+  * Bump github.com/open-policy-agent/opa from 0.43.0 to 0.44.0 (#328)
+  * Bump golang from 1.18.5-alpine to 1.19.1-alpine (#329)
+  * Use mod flag when updating documentation
+  * Disable PSPs when installing Gatekeeper
+  * Bump github.com/spf13/viper from 1.12.0 to 1.13.0 (#326)
+  * Fix the description for lint in makefile (#325)
+  * Bump k8s.io/apimachinery from 0.24.4 to 0.25.0 (#321)
+  * Bump k8s.io/apimachinery from 0.24.3 to 0.24.4 (#320)
+  * Bump alpine from 3.16.1 to 3.16.2 (#319)
+  * Bump golang from 1.18.4-alpine to 1.18.5-alpine (#317)
+
+-------------------------------------------------------------------
 Mon Aug 01 11:06:05 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.23.0:
