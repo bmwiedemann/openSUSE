@@ -75,4 +75,22 @@
   + Fix handling of error connections</comment>
     <requestid>254110</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d7e28216d9c30a7ed3554cebf3f6eb7e</srcmd5>
+    <version>0.4.1</version>
+    <time>1666256979</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.4.1
+  * Update README for gitlab migration
+  * Use AC_CONFIG_FILES to replace the deprecated AC_OUTPUT with parameters
+  * Update m4 to xorg/util/xcb-util-m4@c617eee22ae5c285e79e81
+  * gitlab CI: add a basic build test
+  * configure: Drop AM_MAINTAINER_MODE
+  * autogen.sh: Honor NOCONFIGURE=1
+  * Add COPYING file
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * autogen.sh: use exec instead of waiting for configure to finish</comment>
+    <requestid>1029923</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Oct 19 08:01:33 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 0.4.1
+  * Update README for gitlab migration
+  * Use AC_CONFIG_FILES to replace the deprecated AC_OUTPUT with parameters
+  * Update m4 to xorg/util/xcb-util-m4@c617eee22ae5c285e79e81
+  * gitlab CI: add a basic build test
+  * configure: Drop AM_MAINTAINER_MODE
+  * autogen.sh: Honor NOCONFIGURE=1
+  * Add COPYING file
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * autogen.sh: use exec instead of waiting for configure to finish
+
+-------------------------------------------------------------------
 Fri Oct  3 16:38:43 UTC 2014 - tobias.johannes.klausmann@mni.thm.de
 
 - Update to version 0.4.0:
