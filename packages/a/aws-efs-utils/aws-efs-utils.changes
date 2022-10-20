@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 18 14:13:10 UTC 2022 - pgajdos@suse.com
+
+- python-six is not required for build
+  https://trello.com/c/MO53MocR/143-remove-python3-six
+
+-------------------------------------------------------------------
 Fri Sep 23 13:00:33 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.33.4 (bsc#1203170)

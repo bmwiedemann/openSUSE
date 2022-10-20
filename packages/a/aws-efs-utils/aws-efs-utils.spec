@@ -45,7 +45,6 @@ BuildRequires:  python3-pytest-cov >= 2.8.1
 BuildRequires:  python3-pytest-html >= 1.19.0
 BuildRequires:  python3-pytest-metadata >= 1.7.0
 BuildRequires:  python3-pytest-mock >= 1.11.2
-BuildRequires:  python3-six >= 1.11.0
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(systemd)
 Requires:       nfs-utils
