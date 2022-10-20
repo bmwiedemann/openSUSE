@@ -1,7 +1,7 @@
 #
 # spec file for package xcb-util-wm
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           xcb-util-wm
-Version:        0.4.1
+Version:        0.4.2
 Release:        0
 Summary:        XCB utility module for client- and WM-side ICCCM helpers
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            http://xcb.freedesktop.org/
+URL:            http://xcb.freedesktop.org/
 
 #Git-Clone:	git://anongit.freedesktop.org/xcb/util-wm
 #Git-Web:	http://cgit.freedesktop.org/xcb/util-wm/
-Source:         http://xorg.freedesktop.org/releases/individual/xcb/%{name}-%{version}.tar.bz2
+Source:         http://xorg.freedesktop.org/releases/individual/xcb/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #git#BuildRequires:	autoconf >= 2.62, automake, libtool

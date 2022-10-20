@@ -95,4 +95,22 @@ ref .changes
     <comment>1</comment>
     <requestid>459534</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>08f0eb1ae32fb30907f69f316a95f889</srcmd5>
+    <version>0.4.2</version>
+    <time>1666256980</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.4.2
+  * Update configure.ac bug URL for gitlab migration
+  * Update README for gitlab migration
+  * Update m4 to xorg/util/xcb-util-m4@c617eee22ae5c285e79e81
+  * gitlab CI: add a basic build test
+  * configure: Drop AM_MAINTAINER_MODE
+  * autogen.sh: Honor NOCONFIGURE=1
+  * Update .gitmodules for gitlab submodule
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * autogen.sh: use exec instead of waiting for configure to finish</comment>
+    <requestid>1029928</requestid>
+  </revision>
 </revisionlist>

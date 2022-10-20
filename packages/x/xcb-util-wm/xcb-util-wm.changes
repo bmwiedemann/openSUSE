@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Oct 19 08:08:36 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 0.4.2
+  * Update configure.ac bug URL for gitlab migration
+  * Update README for gitlab migration
+  * Update m4 to xorg/util/xcb-util-m4@c617eee22ae5c285e79e81
+  * gitlab CI: add a basic build test
+  * configure: Drop AM_MAINTAINER_MODE
+  * autogen.sh: Honor NOCONFIGURE=1
+  * Update .gitmodules for gitlab submodule
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * autogen.sh: use exec instead of waiting for configure to finish
+
+-------------------------------------------------------------------
 Tue Feb 21 12:55:10 UTC 2017 - dimstar@opensuse.org
 
 - List baselibs.conf as source.
