@@ -2071,4 +2071,12 @@ WANTED for 13.1 - BLUEZ5 FIX (forwarded request 203010 from Zaitor)</comment>
     <comment></comment>
     <requestid>1000467</requestid>
   </revision>
+  <revision rev="247" vrev="1">
+    <srcmd5>f68dd8cbbf0037ba9b04a152dc024192</srcmd5>
+    <version>1.40.2</version>
+    <time>1666256976</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1029916</requestid>
+  </revision>
 </revisionlist>
