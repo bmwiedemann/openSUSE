@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 18 08:00:32 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.1:
+  + Network: Fix crashes editing networks.
+  + Power: Don't assert if we can't find the widget for a profile.
+  + Printers: Small visual improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Sep 15 15:30:32 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.0:
