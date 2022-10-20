@@ -18,7 +18,14 @@
 
 
 %define llvm_ver 14
-%define libname libispcrt_1
+%define libname libispcrt1
+
+# LLVM is build with OpenMP support only on 64bit archs and x86
+%ifarch aarch64 ppc64 ppc64le %{ix86} x86_64
+%bcond_without openmp_task_model
+%else
+%bcond_with openmp_task_model
+%endif
 
 Name:           ispc
 Version:        1.18.0
@@ -32,19 +39,23 @@ Source:         https://github.com/%{name}/%{name}/archive/v%{version}/v-%{versi
 BuildRequires:  bison
 BuildRequires:  clang%llvm_ver-devel
 BuildRequires:  cmake >= 3.13
-BuildRequires:  doxygen
 BuildRequires:  flex
+%if %{with openmp_task_model}
 BuildRequires:  libomp-devel
+%else
+BuildRequires:  tbb-devel
+%endif
 BuildRequires:  llvm%llvm_ver-devel
 BuildRequires:  llvm%llvm_ver-gold
 BuildRequires:  ncurses-devel
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(python3)
-ExclusiveArch:  %{arm} x86_64
 %ifarch x86_64
-# for some reason, ispc want to link to /usr/lib/crt1.o from glibc-devel-32bit for x86_64
+# x86_64 always includes x86 target support: https://github.com/ispc/ispc/issues/1865
 BuildRequires:  glibc-devel-32bit
 %endif
+# aarch32 requires LLVM with aarch64 target support, likewise for ix86
+ExclusiveArch:  x86_64 aarch64
 # require devel for now for backwards compatibility (until now, packages just BuildRequire: ispc)
 Requires:       %{name}-devel
 
@@ -55,6 +66,8 @@ A compiler for a variant of the C programming language, with extensions for
 %package -n %{libname}
 Summary:        C-based SPMD programming language compiler library
 Group:          System/Libraries
+# Old library name violating SLPP, only dash or <none> allowed as separator
+Conflicts:      libispcrt_1 <= 1.18.0
 
 %description -n %{libname}
 Libary for a variant of the C programming language, with extensions for
@@ -77,27 +90,33 @@ programs using %{name}, you will need to install %{name}-devel.
 # fix clang library modules for our clang 10 and above
 sed -i 's|set(CLANG_LIBRARY_LIST .*)|set(CLANG_LIBRARY_LIST clang-cpp)|' CMakeLists.txt
 
+# disable build of static library, https://github.com/ispc/ispc/issues/2385
+sed -i -e '/build_ispcrt(STATIC/ s@.*@#\0@' ispcrt/CMakeLists.txt
+
 %build
 %define _lto_cflags "-flto=thin"
 echo "optflags: %{optflags}"
 # our llvm is built without assertions, which is required for DUMPS to be operational
 %cmake \
-        -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=%{_prefix} \
         -DCMAKE_C_FLAGS:STRING="$CFLAGS %{optflags} -fPIE" \
         -DCMAKE_CXX_FLAGS:STRING="$CXXFLAGS %{optflags} -fPIE" \
         -DCMAKE_EXE_LINKER_FLAGS="%{optflags} -pie" \
         -DCURSES_CURSES_LIBRARY=/usr/%_lib/libncurses.so \
+        -DISPCRT_BUILD_TASK_MODEL=%{?with_openmp_task_model:OpenMP}%{!?with_openmp_task_model:TBB} \
         -DISPC_INCLUDE_EXAMPLES=OFF \
-        -DISPC_INCLUDE_TESTS=OFF \
+        -DISPC_INCLUDE_TESTS=ON \
         -DISPC_NO_DUMPS=ON
 
 %cmake_build
 
 %install
 %cmake_install
-# remove static lib
-rm %{buildroot}%{_libdir}/libispcrt_static.a
+
+%check
+PATH=./build/bin/:$PATH python3 ./run_tests.py --non-interactive --verbose
+# There is also "make check-all", but that partially fails due to
+# https://github.com/ispc/ispc/issues/2386
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
