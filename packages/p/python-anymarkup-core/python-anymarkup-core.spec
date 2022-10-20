@@ -27,10 +27,11 @@ Group:          Development/Languages/Python
 URL:            https://github.com/bkabrda/anymarkup-core
 Source0:        https://github.com/bkabrda/anymarkup-core/archive/v%{version}/anymarkup-core-%{version}.tar.gz
 Patch0:         xml-to-dict-0.13.patch
+# PATCH-FIX-UPSTREAM drop-python2-support.patch gh#bkabrda/anymarkup-core#7
+Patch1:         drop-python2-support.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-six
 Suggests:       python-PyYAML
 Suggests:       python-configobj
 Suggests:       python-json5
@@ -43,7 +44,6 @@ BuildRequires:  %{python_module configobj}
 BuildRequires:  %{python_module flexmock}
 BuildRequires:  %{python_module json5}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module toml}
 BuildRequires:  %{python_module xmltodict}
 # /SECTION
@@ -54,8 +54,7 @@ This is the core library that implements functionality of
 python-anymarkup.
 
 %prep
-%setup -q -n anymarkup-core-%{version}
-%autopatch -p1
+%autosetup -p1 -n anymarkup-core-%{version}
 
 %build
 %python_build
@@ -70,6 +69,7 @@ python-anymarkup.
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/anymarkup_core
+%{python_sitelib}/anymarkup_core-%{version}*-info
 
 %changelog

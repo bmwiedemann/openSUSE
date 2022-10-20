@@ -16,4 +16,16 @@
   * fix tests with xmltodict 0.13.0 version</comment>
     <requestid>986471</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>431082f3360280dca41066dd653e69c5</srcmd5>
+    <version>0.8.1</version>
+    <time>1666257102</time>
+    <user>dimstar_suse</user>
+    <comment>- Add drop-python2-support.patch gh#bkabrda/anymarkup-core#7
+- Remove python-six dependency
+- Use a more specific python_sitelib expression in %files
+- Use autosetup instead of setup and patch
+</comment>
+    <requestid>1030107</requestid>
+  </revision>
 </revisionlist>

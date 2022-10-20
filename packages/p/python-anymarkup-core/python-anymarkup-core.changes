@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 20 06:52:24 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add drop-python2-support.patch gh#bkabrda/anymarkup-core#7
+- Remove python-six dependency
+- Use a more specific python_sitelib expression in %files
+- Use autosetup instead of setup and patch
+
+-------------------------------------------------------------------
 Thu Jun 30 07:43:44 UTC 2022 - Daniel García Moreno <dani@danigm.net>
 
 - add xml-to-dict-0.13.patch: 
