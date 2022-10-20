@@ -4082,4 +4082,17 @@ oddjob-gpupdate isn't blocked)</comment>
   * gdm: move dbus system.d file to /usr (bsc#1204052)</comment>
     <requestid>1010635</requestid>
   </revision>
+  <revision rev="419" vrev="1">
+    <srcmd5>df5273d19d05479de7bd1c5d7cf32318</srcmd5>
+    <version>2.4.0+git20221018.6c36ccd</version>
+    <time>1666257012</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.0+git20221018.6c36ccd:
+  * FilesCheck: Split big check method
+
+- Update to version 2.4.0+git20221018.ac9f2d8:
+  * SpecCheck: Split big line by line for-loop in methods
+  * rpmdiff: clarify help text on -i/-e options</comment>
+    <requestid>1029725</requestid>
+  </revision>
 </revisionlist>

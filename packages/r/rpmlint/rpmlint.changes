@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct 18 11:49:34 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.4.0+git20221018.6c36ccd:
+  * FilesCheck: Split big check method
+
+-------------------------------------------------------------------
+Tue Oct 18 07:33:19 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.4.0+git20221018.ac9f2d8:
+  * SpecCheck: Split big line by line for-loop in methods
+  * rpmdiff: clarify help text on -i/-e options
+
+-------------------------------------------------------------------
 Fri Oct 14 09:09:35 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.4.0+git20221014.b4aaa76:
