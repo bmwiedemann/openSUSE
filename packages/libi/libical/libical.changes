@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 19 09:14:47 UTC 2022 - Chris Coutinho <chrisbcoutinho@gmail.com>
+
+- Update to 3.0.16
+  * Fix regressions in 3.0.15 due to improperly tested fuzz fixes
+  * Fix argument guards in icaltime_as_timet to match documentation and tests.
+
+-------------------------------------------------------------------
 Fri Oct  7 12:12:32 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0.15:
