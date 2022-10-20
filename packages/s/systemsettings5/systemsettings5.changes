@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Oct 19 11:53:19 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix starting YaST from systemsettings:
+  * 0001-Recognize-SystemSettingsExternalApp-again.patch
+
+-------------------------------------------------------------------
+Tue Oct 18 11:27:37 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.1
+- Changes since 5.26.0:
+  * [runner] Fix desktop file name (kde#459213)
+
+-------------------------------------------------------------------
 Thu Oct  6 14:48:50 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.26.0

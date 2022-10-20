@@ -18,17 +18,19 @@
 
 %bcond_without released
 Name:           systemsettings5
-Version:        5.26.0
+Version:        5.26.1
 Release:        0
 Summary:        KDE's control center
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         systemsettings-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/systemsettings-%{version}.tar.xz
 %if %{with released}
-Source1:        systemsettings-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/systemsettings-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Recognize-SystemSettingsExternalApp-again.patch
 BuildRequires:  extra-cmake-modules >= 1.2.0
 BuildRequires:  kf5-filesystem
 BuildRequires:  update-desktop-files
