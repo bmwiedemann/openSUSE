@@ -1,7 +1,7 @@
-Index: VirtualBox-6.1.38/src/VBox/Main/webservice/Makefile.kmk
+Index: VirtualBox-6.1.40/src/VBox/Main/webservice/Makefile.kmk
 ===================================================================
---- VirtualBox-6.1.38.orig/src/VBox/Main/webservice/Makefile.kmk
-+++ VirtualBox-6.1.38/src/VBox/Main/webservice/Makefile.kmk
+--- VirtualBox-6.1.40.orig/src/VBox/Main/webservice/Makefile.kmk
++++ VirtualBox-6.1.40/src/VBox/Main/webservice/Makefile.kmk
 @@ -355,6 +355,7 @@ ifdef VBOX_GSOAP_INSTALLED
   vboxwebsrv_LIBS += \
  	$(PATH_STAGE_LIB)/vboxsoap$(VBOX_SUFF_LIB) \

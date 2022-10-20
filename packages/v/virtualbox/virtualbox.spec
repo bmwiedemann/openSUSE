@@ -52,7 +52,7 @@
 %endif
 # ********* If the VB version exceeds 6.1.x, notify the libvirt maintainer!!
 Name:           virtualbox%{?dash}%{?name_suffix}
-Version:        6.1.38
+Version:        6.1.40
 Release:        0
 Summary:        %{package_summary}
 # FIXME: use correct group or remove it, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"
@@ -173,7 +173,7 @@ Patch137:       handle_gsoap_208103.patch
 Patch142:       fixes_for_leap15.3.patch
 Patch143:       vb-6.1.16-modal-dialog-parent.patch
 Patch144:       fixes_for_leap15.4.patch
-Patch145:       fix_error_in_USB_header.patch
+
 Patch999:       virtualbox-fix-ui-background-color.patch
 #
 # Common BuildRequires for both virtualbox and virtualbox-kmp
@@ -299,9 +299,6 @@ hardware. VirtualBox is freely available as Open Source Software under
 the terms of the GNU Public License (GPL).
 
 
-
-
-
 ##########################################
 
 %package qt
@@ -332,9 +329,6 @@ Obsoletes:      %{name}-vboxwebsrv < %{version}
 The VirtualBox web server is used to control headless VMs using a browser.
 
 
-
-
-
 ###########################################
 
 %package guest-tools
@@ -359,10 +353,7 @@ Requires(pre):  net-tools-deprecated
 VirtualBox guest addition tools.
 
 
-
-
-
-###########################################
+##########################################
 
 %package -n python3-%{name}
 Summary:        Python bindings for %{name}
@@ -382,10 +373,7 @@ Obsoletes:      python3-%{name}-ose < %{version}
 Python XPCOM bindings to %{name}. Used e.g. by vboxgtk package.
 
 
-
-
-
-###########################################
+##########################################
 
 %package devel
 Summary:        Devel files for %{name}
@@ -400,10 +388,7 @@ Obsoletes:      %{name}-ose-devel < %{version}
 Development file for %{name}
 
 
-
-
-
-###########################################
+##########################################
 
 %package host-source
 Summary:        Source files for %{name} host kernel modules
@@ -435,10 +420,7 @@ These can be built for custom kernels using
 sudo %{_sbindir}/vboxguestconfig
 
 
-
-
-
-###########################################
+##########################################
 
 %package guest-desktop-icons
 Summary:        Icons for guest desktop files
@@ -451,10 +433,7 @@ BuildArch:      noarch
 This package contains icons for guest desktop files that were created on the desktop.
 
 
-
-
-
-###########################################
+##########################################
 
 %package vnc
 Summary:        VNC desktop sharing
@@ -532,7 +511,6 @@ This package contains the kernel-modules that VirtualBox uses to create or run v
 %patch144 -p1
 %endif
 %patch143 -p1
-%patch145 -p1
 # make VB UI background colors look sane again
 %patch999 -p1
 
@@ -648,7 +626,7 @@ install -m 755 out/linux.*/release/bin/additions/mount.vboxsf %{buildroot}%{_sbi
 install -m 744 src/VBox/Additions/linux/installer/vboxadd-service.sh %{buildroot}%{_vbox_instdir}/vboxadd-service
 install -d %{buildroot}%{_userunitdir}
 # udev rule for guest (virtualbox-guest-tools)
-install -m 644 %{SOURCE3}			%{buildroot}%{_udevrulesdir}/60-vboxguest.rules
+install -m 644 %{SOURCE3}			%{buildroot}%{_udevrulesdir}/90-vboxguest.rules
 install -p -m 0644 -D %{SOURCE12} %{buildroot}%{_unitdir}/vboxclient.service
 install -p -m 0644 -D %{SOURCE13} %{buildroot}%{_unitdir}/vboxservice.service
 # /media is used for auto-mounting of shared folders
@@ -1076,7 +1054,7 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %{_sbindir}/VBoxService
 %{_sbindir}/vboxguestconfig
 %{_sbindir}/mount.vboxsf
-%{_udevrulesdir}/60-vboxguest.rules
+%{_udevrulesdir}/90-vboxguest.rules
 %{_vbox_instdir}/vboxadd-service
 %{_unitdir}/vboxadd-service.service
 %{_unitdir}/multi-user.target.wants/vboxadd-service.service

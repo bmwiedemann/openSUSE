@@ -1,7 +1,7 @@
-Index: VirtualBox-6.1.38/src/VBox/Devices/PC/vbox.dsl
+Index: VirtualBox-6.1.40/src/VBox/Devices/PC/vbox.dsl
 ===================================================================
---- VirtualBox-6.1.38.orig/src/VBox/Devices/PC/vbox.dsl
-+++ VirtualBox-6.1.38/src/VBox/Devices/PC/vbox.dsl
+--- VirtualBox-6.1.40.orig/src/VBox/Devices/PC/vbox.dsl
++++ VirtualBox-6.1.40/src/VBox/Devices/PC/vbox.dsl
 @@ -1197,7 +1197,7 @@ DefinitionBlock ("DSDT.aml", "DSDT", 2,
                  Device (SMC)
                  {

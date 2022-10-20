@@ -1,7 +1,7 @@
-Index: VirtualBox-6.1.38/src/VBox/Frontends/VirtualBox/src/settings/global/UIGlobalSettingsUpdate.cpp
+Index: VirtualBox-6.1.40/src/VBox/Frontends/VirtualBox/src/settings/global/UIGlobalSettingsUpdate.cpp
 ===================================================================
---- VirtualBox-6.1.38.orig/src/VBox/Frontends/VirtualBox/src/settings/global/UIGlobalSettingsUpdate.cpp
-+++ VirtualBox-6.1.38/src/VBox/Frontends/VirtualBox/src/settings/global/UIGlobalSettingsUpdate.cpp
+--- VirtualBox-6.1.40.orig/src/VBox/Frontends/VirtualBox/src/settings/global/UIGlobalSettingsUpdate.cpp
++++ VirtualBox-6.1.40/src/VBox/Frontends/VirtualBox/src/settings/global/UIGlobalSettingsUpdate.cpp
 @@ -104,8 +104,8 @@ void UIGlobalSettingsUpdate::getFromCach
      /* Get old update data from the cache: */
      const UIDataSettingsGlobalUpdate &oldUpdateData = m_pCache->base();
@@ -13,10 +13,10 @@ Index: VirtualBox-6.1.38/src/VBox/Frontends/VirtualBox/src/settings/global/UIGlo
      if (m_pCheckBoxUpdate->isChecked())
      {
          m_pComboBoxUpdatePeriod->setCurrentIndex(oldUpdateData.m_periodIndex);
-Index: VirtualBox-6.1.38/src/VBox/Frontends/VirtualBox/src/settings/UISettingsDialogSpecific.cpp
+Index: VirtualBox-6.1.40/src/VBox/Frontends/VirtualBox/src/settings/UISettingsDialogSpecific.cpp
 ===================================================================
---- VirtualBox-6.1.38.orig/src/VBox/Frontends/VirtualBox/src/settings/UISettingsDialogSpecific.cpp
-+++ VirtualBox-6.1.38/src/VBox/Frontends/VirtualBox/src/settings/UISettingsDialogSpecific.cpp
+--- VirtualBox-6.1.40.orig/src/VBox/Frontends/VirtualBox/src/settings/UISettingsDialogSpecific.cpp
++++ VirtualBox-6.1.40/src/VBox/Frontends/VirtualBox/src/settings/UISettingsDialogSpecific.cpp
 @@ -86,8 +86,6 @@ void UISettingsDialogGlobal::retranslate
      m_pSelector->setItemText(GlobalSettingsPageType_Input, tr("Input"));
  

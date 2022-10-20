@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Oct 18 15:42:42 UTC 2022 - Larry Rainey <llrainey15@gmail.com>
+
+This is a maintenance release. The following items were fixed and/or added:
+
+    GUI: Fixed missed machine-items state translation on language change
+    USB: Fixed possible crash when the device got detached while the controller is resetting the port
+    Main: Provide guest's absolute pointing mouse device with buttons state when mouse integration is ON
+    Linux Host and Guest Additions: Prevented build failure on 5.8+ 32-bit kernels
+    Linux Host and Guest Additions: Introduced additional fixes for kernel 6.0
+    Linux Host and Guest Additions: Introduced additional fixes for Debian specific kernels
+    Solaris and Linux Guest Additions: Added better handling of negative screen sizes which some X11 desktop environments are reporting
+    Windows Guest Additions: Added fixes related to VBoxTray IPC 
+
+- Fix boo#1204233 boo#1204331 boo#1202851
+
+- Remove file fix_error_in_USB_header.patch - fixed upstream
+
+-------------------------------------------------------------------
 Sat Oct  8 00:49:59 UTC 2022 - Larry Finger <Larry.Finger@gmail.com>
 
 - Fix build breakage with kernel 6.0 due to variable-length array in middle of a struct. boo#1204151

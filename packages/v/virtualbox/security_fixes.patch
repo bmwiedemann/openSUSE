@@ -5,11 +5,11 @@
 #
 # January 31, 2019 - Larry Finger
 #
-Index: VirtualBox-6.1.38/src/VBox/Additions/linux/installer/vboxadd.sh
+Index: VirtualBox-6.1.40/src/VBox/Additions/linux/installer/vboxadd.sh
 ===================================================================
---- VirtualBox-6.1.38.orig/src/VBox/Additions/linux/installer/vboxadd.sh
-+++ VirtualBox-6.1.38/src/VBox/Additions/linux/installer/vboxadd.sh
-@@ -611,9 +611,11 @@ dmnstatus()
+--- VirtualBox-6.1.40.orig/src/VBox/Additions/linux/installer/vboxadd.sh
++++ VirtualBox-6.1.40/src/VBox/Additions/linux/installer/vboxadd.sh
+@@ -838,9 +838,11 @@ dmnstatus()
      fi
  }
  
@@ -24,10 +24,10 @@ Index: VirtualBox-6.1.38/src/VBox/Additions/linux/installer/vboxadd.sh
  case "$1" in
  # Does setup without clean-up first and marks all kernels currently found on the
  # system so that we can see later if any were added.
-Index: VirtualBox-6.1.38/src/VBox/Installer/linux/vboxdrv.sh
+Index: VirtualBox-6.1.40/src/VBox/Installer/linux/vboxdrv.sh
 ===================================================================
---- VirtualBox-6.1.38.orig/src/VBox/Installer/linux/vboxdrv.sh
-+++ VirtualBox-6.1.38/src/VBox/Installer/linux/vboxdrv.sh
+--- VirtualBox-6.1.40.orig/src/VBox/Installer/linux/vboxdrv.sh
++++ VirtualBox-6.1.40/src/VBox/Installer/linux/vboxdrv.sh
 @@ -38,6 +38,9 @@ DEVICE=/dev/vboxdrv
  MODPROBE=/sbin/modprobe
  SCRIPTNAME=vboxdrv.sh

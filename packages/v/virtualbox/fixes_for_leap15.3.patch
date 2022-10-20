@@ -1,7 +1,7 @@
-Index: VirtualBox-6.1.38/src/VBox/Runtime/r0drv/linux/the-linux-kernel.h
+Index: VirtualBox-6.1.40/src/VBox/Runtime/r0drv/linux/the-linux-kernel.h
 ===================================================================
---- VirtualBox-6.1.38.orig/src/VBox/Runtime/r0drv/linux/the-linux-kernel.h
-+++ VirtualBox-6.1.38/src/VBox/Runtime/r0drv/linux/the-linux-kernel.h
+--- VirtualBox-6.1.40.orig/src/VBox/Runtime/r0drv/linux/the-linux-kernel.h
++++ VirtualBox-6.1.40/src/VBox/Runtime/r0drv/linux/the-linux-kernel.h
 @@ -137,9 +137,9 @@
  #include <linux/interrupt.h>
  #include <linux/completion.h>

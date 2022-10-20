@@ -1,7 +1,7 @@
-Index: VirtualBox-6.1.38/Config.kmk
+Index: VirtualBox-6.1.40/Config.kmk
 ===================================================================
---- VirtualBox-6.1.38.orig/Config.kmk
-+++ VirtualBox-6.1.38/Config.kmk
+--- VirtualBox-6.1.40.orig/Config.kmk
++++ VirtualBox-6.1.40/Config.kmk
 @@ -806,7 +806,7 @@ endif
  # Use new VBoxNetDhcpd instead of old VBoxNetDHCP
  VBOX_WITH_DHCPD = 1

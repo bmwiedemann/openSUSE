@@ -1,7 +1,7 @@
-Index: VirtualBox-6.1.38/configure
+Index: VirtualBox-6.1.40/configure
 ===================================================================
---- VirtualBox-6.1.38.orig/configure
-+++ VirtualBox-6.1.38/configure
+--- VirtualBox-6.1.40.orig/configure
++++ VirtualBox-6.1.40/configure
 @@ -1591,14 +1591,14 @@ EOF
          INCQT5="$q/include $q/include/QtCore"
          FLGQT5="-DQT_SHARED"
