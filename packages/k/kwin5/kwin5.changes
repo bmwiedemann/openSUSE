@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Oct 18 11:27:30 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.1
+- Changes since 5.26.0:
+  * effects: Make WindowHeap try to fill gaps
+  * Handle scale override in locked and confined pointers (kde#460532)
+  * Move installPointerConstraint calls into the constraint handlers
+  * screencast: Don't report damage on the full screen every time
+  * Guard against reconfiguring wayland specific input on X11
+  * Make Workspace::outputAt() more robust to extreme values (kde#460446)
+  * Fix resizing by dragging top-right window corner (kde#460501)
+  * wayland: Fix handling of removed outputs in DpmsInterface
+  * wayland: Sync output device's enabled property (kde#460247)
+  * backends/drm: Fix leaving dangling dpms input event filter (kde#460322)
+  * effects/screenshot: Avoid capturing hidden cursor (kde#460358)
+  * Make "switch to screen" and "window to screen" code less error-prone
+  * Fix "window to screen" and "switch to screen" shortcuts (kde#460337)
+  * Fix scripted shader effect animations (kde#460277)
+  * Drop shaderTrait adjustment on crossfade
+  * Wayland: don't allow minimizing applet popups either
+  * wayland: don't allow maximization of applet popups
+
+-------------------------------------------------------------------
 Thu Oct  6 14:48:42 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.26.0
