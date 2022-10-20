@@ -806,4 +806,12 @@
     <comment>Plasma 5.26.0</comment>
     <requestid>1009126</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>7f11469dc4b35c5dd72a331adfd2d63e</srcmd5>
+    <version>5.26.1</version>
+    <time>1666257062</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.26.1, untested. (forwarded request 1029774 from Vogtinator)</comment>
+    <requestid>1029848</requestid>
+  </revision>
 </revisionlist>
