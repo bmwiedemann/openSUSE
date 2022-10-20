@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 18 11:27:36 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.1
+- Changes since 5.26.0:
+  * applet: add missing left padding on toolbar (kde#458742)
+  * applet: Fix enabled states of Wi-Fi and WWAN checkboxes in Edit Mode
+
+-------------------------------------------------------------------
 Thu Oct  6 14:48:48 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.26.0
