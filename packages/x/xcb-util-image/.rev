@@ -86,4 +86,23 @@
   + Check submodules before running autoconf.</comment>
     <requestid>256843</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2039e41decdb638678453aa2fcca5893</srcmd5>
+    <version>0.4.1</version>
+    <time>1666256973</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.4.1
+  * Update README for gitlab migration
+  * Add README.md to EXTRA_DIST
+  * Update configure.ac bug URL for gitlab migration
+  * Update m4 to xorg/util/xcb-util-m4@c617eee22ae5c285e79e81
+  * gitlab CI: add a basic build test
+  * configure: Drop AM_MAINTAINER_MODE
+  * autogen.sh: Honor NOCONFIGURE=1
+  * test: add XCB_SHM_LIBS to all test
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * autogen.sh: use exec instead of waiting for configure to finish</comment>
+    <requestid>1029882</requestid>
+  </revision>
 </revisionlist>

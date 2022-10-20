@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Oct 18 21:25:31 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 0.4.1
+  * Update README for gitlab migration
+  * Add README.md to EXTRA_DIST
+  * Update configure.ac bug URL for gitlab migration
+  * Update m4 to xorg/util/xcb-util-m4@c617eee22ae5c285e79e81
+  * gitlab CI: add a basic build test
+  * configure: Drop AM_MAINTAINER_MODE
+  * autogen.sh: Honor NOCONFIGURE=1
+  * test: add XCB_SHM_LIBS to all test
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * autogen.sh: use exec instead of waiting for configure to finish
+
+-------------------------------------------------------------------
 Thu Oct 16 08:57:13 UTC 2014 - sndirsch@suse.com
 
 - marked baselibs.conf in specfile as source in order to make
