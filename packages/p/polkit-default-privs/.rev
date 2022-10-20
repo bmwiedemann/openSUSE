@@ -2020,4 +2020,13 @@ for 12.3</comment>
   * Use /usr/sbin nowadays (boo#1191090)</comment>
     <requestid>1004679</requestid>
   </revision>
+  <revision rev="218" vrev="1">
+    <srcmd5>93afb4b55d99ee285289c17053b2f284</srcmd5>
+    <version>1550+20221018.7616c25</version>
+    <time>1666257011</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1550+20221018.7616c25:
+  * fwupd (bsc#1204026): add incremental {get,set}-bios-settings</comment>
+    <requestid>1029704</requestid>
+  </revision>
 </revisionlist>

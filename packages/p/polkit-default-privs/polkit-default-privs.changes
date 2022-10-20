@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 18 10:17:49 UTC 2022 - matthias.gerstner@suse.com
+
+- Update to version 1550+20221018.7616c25:
+  * fwupd (bsc#1204026): add incremental {get,set}-bios-settings
+
+-------------------------------------------------------------------
 Mon Sep 19 10:41:14 UTC 2022 - matthias.gerstner@suse.com
 
 - adjust spec file to deal with /sbin -> /usr/sbin path change
