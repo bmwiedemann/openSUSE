@@ -16,9 +16,10 @@
 #
 
 
-%define lname   libcamera-suse7
+%define lname       libcamera0_0_1
+%define lname_base  libcamera-base0_0_1
 Name:           libcamera
-Version:        0.0.0+g3887.f1776100
+Version:        0.0.1
 Release:        0
 Summary:        A complex camera support library in C++
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -27,8 +28,7 @@ URL:            http://libcamera.org/
 
 Source:         %name-%version.tar.xz
 Source1:        baselibs.conf
-Patch1:         vers.diff
-Patch2:         fix-ppc64.patch
+
 BuildRequires:  boost-devel
 BuildRequires:  c++_compiler
 %if 0%{?suse_version} <= 1500
@@ -38,7 +38,7 @@ BuildRequires:  gcc9-c++
 BuildRequires:  libQt5Core-devel
 BuildRequires:  libQt5Gui-devel
 BuildRequires:  libQt5Widgets-devel
-BuildRequires:  meson >= 0.53
+BuildRequires:  meson >= 0.56
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Jinja2
 BuildRequires:  python3-PyYAML
@@ -73,10 +73,23 @@ expose multiple kernel device nodes in /dev for different stages of
 the pipeline. The libcamera API groups and exposes these pieces as
 what users consider one "camera".
 
+%package -n %lname_base
+Summary:        A complex camera support library in C++
+Group:          System/Libraries
+
+%description -n %lname_base
+libcamera is an experimental camera user-space API.
+
+A camera may consist of multiple sensors or function blocks, and can
+expose multiple kernel device nodes in /dev for different stages of
+the pipeline. The libcamera API groups and exposes these pieces as
+what users consider one "camera".
+
 %package devel
 Summary:        Development for libcamera, a camera support library
 Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
+Requires:       %lname_base = %version
 
 %description devel
 libcamera is an experimental camera user-space API.
@@ -103,19 +116,13 @@ libcamera is an experimental camera user-space API.
 This is its integration plugin for gstreamer.
 
 %prep
-%autosetup -p1 -N
-%patch1 -p1
-%ifarch ppc64 ppc64le
-%patch2 -p1
-%endif
+%autosetup -p1
 
 %build
 %if %{pkg_vcmp gcc < 8}
 export CC=gcc-9
 export CXX=g++-9
 %endif
-export CFLAGS="%optflags -Wno-error"
-export CXXFLAGS="$CFLAGS"
 %meson \
   -Ddocumentation=disabled \
   -Dqcam=enabled \
@@ -126,19 +133,15 @@ export CXXFLAGS="$CFLAGS"
 
 %install
 %meson_install
-# libtool's -release would be so much more direct, but alas, meson...
-mv "%buildroot/%_libdir/libcamera-suse.so" "%buildroot/%_libdir/libcamera.so"
-mv "%buildroot/%_libdir/libcamera-base-suse.so" "%buildroot/%_libdir/libcamera-base.so"
-mv "%buildroot/%_libdir/pkgconfig/libcamera-suse.pc" "%buildroot/%_libdir/pkgconfig/libcamera.pc"
-mv "%buildroot/%_libdir/pkgconfig/libcamera-base-suse.pc" "%buildroot/%_libdir/pkgconfig/libcamera-base.pc"
-perl -i -pe 's{camera-suse}{camera}' "%buildroot/%_libdir/pkgconfig"/*.pc
-perl -i -pe 's{camera-base-suse}{camera-base}' "%buildroot/%_libdir/pkgconfig"/*.pc
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
+%ldconfig_scriptlets -n %lname_base
 
 %files -n %lname
-%_libdir/libcamera*.so.*
+%_libdir/libcamera.so.*
+
+%files -n %lname_base
+%_libdir/libcamera-base.so.*
 
 %files devel
 %license LICENSES/*GPL*

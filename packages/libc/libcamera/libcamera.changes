@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Oct 18 10:15:03 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.0.1:
+  * This patch release commences the package release procedures for
+    the project.
+  * Initial releases will include a bump to the patch (0.0.x)
+    version number, as well as a corresponding increment to the
+    soname.
+  * utils:
+    - Provide a release script
+    - semver: Add version helper
+  * meson:
+    - Shared Object version handling
+    - Fix typo
+  * pipeline:
+    - rkisp1: Set bytesused before queuing parameters buffer
+    - ipu3: Set bytesused before queuing parameters buffer
+  * libcamera:
+    - v4l2_videodevice: Warn if bytesused == 0 when queuing output
+      buffer
+    - framebuffer: Move remaining private data to Private class
+    - base: utils: Drop defopt
+- Change service to use explicit tags and obs_scm.
+- Drop vers.diff patch and fix-ppc64.patch: Fixed upstream.
+- Change lname define to new upstream soname libcamera0_0_1 and in
+  baselibs.conf.
+- Split out libcamera-base0_0_1 shared library, add to baselibs.
+  Package the shared librarys in individual packages.
+- Use ldconfig_scriptlets macro for post(un) handling.
+- Stop exporting -Wno-error to C(XX)FLAGS, no longer needed.
+
+-------------------------------------------------------------------
 Fri Sep  2 10:10:53 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 0.0.0+g3887.f1776100:
