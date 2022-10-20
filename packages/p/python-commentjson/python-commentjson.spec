@@ -1,7 +1,7 @@
 #
 # spec file for package python-commentjson
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,14 +24,14 @@ Summary:        Add Python and JavaScript style comments in your JSON files
 License:        MIT
 URL:            https://github.com/vaidik/commentjson
 Source:         https://github.com/vaidik/commentjson/archive/v%{version}.tar.gz#/commentjson-%{version}.tar.gz
-BuildRequires:  %{python_module lark-parser >= 0.7.1}
+BuildRequires:  %{python_module lark >= 0.7.1}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module testsuite}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-lark-parser >= 0.7.1
+Requires:       python-lark >= 0.7.1
 Requires:       python-six
 BuildArch:      noarch
 %python_subpackages

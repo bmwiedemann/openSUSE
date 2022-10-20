@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 20 11:42:04 UTC 2022 - Torsten Gruner <simmphonie@opensuse.org>
+
+- Python dependency was renamed from lark-parser to lark
+
+-------------------------------------------------------------------
 Thu Apr  8 05:26:44 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.9.0:
