@@ -1,0 +1,34 @@
+-------------------------------------------------------------------
+Wed Oct 19 11:32:54 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Remove deprecated %icon_theme_cache_post macros
+
+-------------------------------------------------------------------
+Tue Sep 27 08:27:34 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.4.7:
+  * Fixed bugs:
+    + Permission issues #226
+    + WhatsApp For Linux starts but doesnt load, keeps in loading
+      screen forever. #223
+
+-------------------------------------------------------------------
+Sat Aug  6 18:58:04 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 1.4.6
+  * Fixed bugs:
+    + Flatpak version not running in Arch Linux #211
+
+-------------------------------------------------------------------
+Thu Jul 21 04:26:56 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 1.4.5
+  * Fixed bugs:
+    + "GDBus.Error:org.freedesktop.portal.Error.NotAllowed: This
+      call is not available inside the sandbox" #207
+    + Incorrect display of the icon of the running application. #185
+
+-------------------------------------------------------------------
+Fri Jul  1 11:39:48 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of WhatsApp for Linux unofficial client 1.4.4
