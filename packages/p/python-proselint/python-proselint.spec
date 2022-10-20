@@ -35,7 +35,6 @@ BuildRequires:  python-rpm-macros
 Requires:       python-click
 Requires:       python-dbm
 Requires:       python-future
-Requires:       python-six
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
@@ -44,7 +43,6 @@ BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six}
 %if %{with python2}
 BuildRequires:  python-mock
 %endif
