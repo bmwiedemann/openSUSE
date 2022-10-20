@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct 19 11:26:41 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Implement python packaging best practices:
+  * Don't catchall python sitelib
+    - Don't install toplevel test module
+    - Make sure the correct version metadata is installed
+  * Enable testsuite
+- Add missing update-alternatives requirements
+
+-------------------------------------------------------------------
 Thu Oct 13 09:44:00 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Initial build

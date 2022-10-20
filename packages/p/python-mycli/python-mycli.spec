@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-mycli
 Version:        1.26.1
 Release:        0
@@ -24,35 +23,44 @@ Summary:        CLI for MySQL Database. With auto-completion and syntax highligh
 License:        BSD-3-Clause
 URL:            http://mycli.net
 Source:         https://files.pythonhosted.org/packages/source/m/mycli/mycli-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
-# SECTION test requirements
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+# SECTION runtime requirements for tests
+BuildRequires:  %{python_module PyMySQL >= 0.9.2}
+BuildRequires:  %{python_module Pygments >= 1.6}
 BuildRequires:  %{python_module cli-helpers >= 2.2.1}
 BuildRequires:  %{python_module click >= 7.0}
 BuildRequires:  %{python_module configobj >= 5.0.5}
 BuildRequires:  %{python_module cryptography >= 36.0.2}
-BuildRequires:  %{python_module importlib_resources >= 5.0.0}
+BuildRequires:  %{python_module importlib_resources >= 5.0.0 if %python-base < 3.9}
 BuildRequires:  %{python_module prompt_toolkit >= 3.0.6}
 BuildRequires:  %{python_module pyaes >= 1.6.1}
-BuildRequires:  %{python_module Pygments >= 1.6}
-BuildRequires:  %{python_module PyMySQL >= 0.9.2}
 BuildRequires:  %{python_module pyperclip >= 1.8.1}
 BuildRequires:  %{python_module sqlglot >= 5.1.3}
 BuildRequires:  %{python_module sqlparse >= 0.3.0}
 # /SECTION
-BuildRequires:  fdupes
+# SECTION test requirements
+BuildRequires:  %{python_module paramiko}
+BuildRequires:  %{python_module pytest}
+# /SECTION
+Requires:       python-PyMySQL >= 0.9.2
+Requires:       python-Pygments >= 1.6
 Requires:       python-cli-helpers >= 2.2.1
 Requires:       python-click >= 7.0
 Requires:       python-configobj >= 5.0.5
 Requires:       python-cryptography >= 36.0.2
+%if %python_version_nodots < 39
 Requires:       python-importlib_resources >= 5.0.0
+%endif
 Requires:       python-prompt_toolkit >= 3.0.6
 Requires:       python-pyaes >= 1.6.1
-Requires:       python-Pygments >= 1.6
-Requires:       python-PyMySQL >= 0.9.2
 Requires:       python-pyperclip >= 1.8.1
 Requires:       python-sqlglot >= 5.1.3
 Requires:       python-sqlparse >= 0.3.0
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 Suggests:       python-paramiko
 BuildArch:      noarch
 %python_subpackages
@@ -71,9 +79,10 @@ CLI for MySQL Database. With auto-completion and syntax highlighting.
 %python_clone -a %{buildroot}%{_bindir}/mycli
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-# Testsuite currently fails
-#%%check
-#%%pyunittest discover -v
+%check
+# different ticks in select statement: probably schema version mismatch
+donttest="test_auto_escaped_col_names"
+%pytest test -k "not ($donttest)"
 
 %post
 %python_install_alternative mycli
@@ -85,6 +94,8 @@ CLI for MySQL Database. With auto-completion and syntax highlighting.
 %doc AUTHORS.rst README.md changelog.md
 %license LICENSE.txt
 %python_alternative %{_bindir}/mycli
-%{python_sitelib}/*
+%{python_sitelib}/mycli
+%{python_sitelib}/mycli-%{version}*-info
+%exclude %{python_sitelib}/test
 
 %changelog
