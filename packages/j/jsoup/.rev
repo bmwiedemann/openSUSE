@@ -23,4 +23,12 @@
     <comment>bsc#1203459, CVE-2022-36033</comment>
     <requestid>1012018</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>61975fcf298bd4f9caba10c42ee54e72</srcmd5>
+    <version>1.15.3</version>
+    <time>1666275859</time>
+    <user>dimstar_suse</user>
+    <comment>Fix a typo causing failures in eclipse build</comment>
+    <requestid>1030185</requestid>
+  </revision>
 </revisionlist>

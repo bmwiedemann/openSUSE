@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 20 12:57:16 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Fix typo in the ant *-build.xml file that caused errors while
+  building eclipse
+
+-------------------------------------------------------------------
 Mon Oct 17 05:42:39 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 1.15.3
