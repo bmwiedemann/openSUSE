@@ -1,12 +1,16 @@
-<!--
-# vim: set syntax=xml
--->
-
 <services>
   <service name="obs_scm" mode="disabled">
     <param name="url">https://github.com/easymodo/qimgv</param>
     <param name="scm">git</param>
-    <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>
+    <!-- TESTING -->
+    <!-- LAST KNOWN GOOD:  (older) ;  (newer)
+    <param name="revision">fa75f65</param>
+    -->
+    <!-- BUILD FAILS:      (older) ;  (newer)
+    <param name="revision">df8ebbd</param>  # Something seems to break here.
+    <param name="revision">bc355f6</param>
+    <param name="revision">cfed4cb</param>
+    -->
     <!-- Commenting out for TEMP
     <param name="versionrewrite-pattern">v(.*)</param>
     -->
@@ -14,6 +18,7 @@
     <param name="versionrewrite-pattern">v1.0.3-alpha</param>
     <param name="versionrewrite-replacement">1.0.3a</param>
     <!-- /TEMP -->
+    <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="set_version" mode="disabled"/>

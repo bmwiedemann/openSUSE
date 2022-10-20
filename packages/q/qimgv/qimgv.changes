@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Wed Oct 12 17:07:07 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Cleaning up unused files
+
+-------------------------------------------------------------------
+Tue Sep 27 20:14:58 UTC 2022 - scott.bradnick@suse.com
+
+- Removing 'qimgv-PIE.patch' and 'qimgv-includepath.patch' from use
+- Adding (temporarily?) CFLAGS so build is successful
+- Adding 'cmake(Qt5LinguistTools)' BuildRequires
+- Update to version 1.0.3a+git20220914.d24f3fa:
+  * Update msys2-dll-deps.txt
+  * crash fix
+  * [msys2] update build script
+  * add ukrainian translation
+  * [contextmenu] use SetDefaultConstraint
+  * revert to gl player for now
+  * [settingsdialog] improve icons & minor stuff
+  * [settingsdialog] some design polishing
+  * new option - unlockMinZoom
+  * layout tweaks, finish other settings pages
+  * another settings mockup
+  * [imageviewerv2] add fixed zoom levels option
+  * croppanel - fix width
+  * workaround qt6 scaling issue with QImage::Format_Indexed8
+  * [viewerwidget] 'Up' arrow switches to FIT_WIDTH useful for quickly reading content while browsing with arrows
+  * [contextmenu] layout - scale to always fit contents
+  * Update settings.cpp
+  * fix overlays when using large font
+  * (wip) adjust widget size to accomodate oversized fonts
+  * use qt dpi rounding
+  * settings window update
+  * Core::loadTranslation() - fallback to applicationDirPath()/translations
+  * [settings] readable language names
+  * [settings] language selector, fix .qm loading
+  * [cmake] paths tweak
+  * [cmake] some translation stuff
+  * remove the qopengl dependency, because some platform drivers do not support opengl
+  * Fix an issue that the fast panel displays only nine home directories
+  * Fix exiv2 exception capture
+  * Fixed an issue where the preferences preset button does not display
+  * reserve exiv2 exception capture
+  * Remove QIMGV_PLUGIN_DIR variable definitions
+  * Fix apng cannot play and update translation file
+  * Fix the problem of locales path and add an uninstall item
+  * fix i18n issues during development and provide simplified chinese translation
+
+-------------------------------------------------------------------
+Tue Sep 27 20:13:58 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 1.0.3a+git20220701.cfed4cb9:
+  * [contextmenu] tweak item spacing
+  * [linux] setWallpaper - support kde / gnome
+  * [Core::setWallpaper] use string macros
+  * [thumbivew] always activate item on doubleclick
+  * fix statusbar being in the wrong layout #422
+  * [thumbview] incorrect scene width
+  * [ImageViewerV2] fix offset being (0,0) after setting an empty pixmap
+  * [thumbview] fix showEvent()
+  * [panel] pin button #66 #279 #400 [panel] allow side-positioning #395 [panel] center current image #151
+
+-------------------------------------------------------------------
+Tue Jul 26 16:09:13 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 1.0.3a+git20220621.fa75f65d:
+  * [settings] memory allocation limit #418
+
+-------------------------------------------------------------------
 Tue Jun 21 14:08:47 UTC 2022 - scott.bradnick@suse.com
 
 - Update to version 1.0.3a+git20220621.b219278c:

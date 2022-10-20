@@ -17,28 +17,20 @@
 
 
 Name:           qimgv
-Version:        1.0.3a+git20220621.b219278c
+Version:        1.0.3a+git20220914.d24f3fa
 Release:        0
 Summary:        Qt5 image viewer
 License:        GPL-3.0-only
+Group:          Productivity/Multimedia/Other
 URL:            https://github.com/easymodo/qimgv
 Source0:        %{name}-%{version}.tar.gz
-# PATCH-FEATURE-OPENSUSE qimgv-PIE.patch # aloisio@gmx.com add PIE flags
-Patch1:         qimgv-PIE.patch
-# PATCH-FIX-OPENSUSE qimgv-includepath.patch # aloisio@gmx.com use correct path for opencv includes
-Patch2:         qimgv-includepath.patch
-# PATCH-FIX-OPENSUSE qimgv-no_return_in_nonvoid.patch # aloisio@gmx.com pacify rpmlint
-# Has been fixed upstream, smb 20220505
-#Patch6:         qimgv-no_return_in_nonvoid.patch
-# PATCH-FIX-UPSTREAM qimgv-mpv_v2_fix.patch
-# Has been fixed upstream, smb 20220505
-#Patch7:         qimgv-mpv_v2_fix.patch
 BuildRequires:  cmake >= 3.13
 %if 0%{?suse_version} > 1500
 BuildRequires:  gcc-c++
 %else
 BuildRequires:  gcc9-c++
 %endif
+BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  opencv-devel
 BuildRequires:  pkgconfig
@@ -54,10 +46,11 @@ Requires:       mpv >= 0.32.0
 Qt5 image viewer with webm support.
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
-export CXX=g++
+# Might be easier to pass "-fPIE" here vs. patch ...
+export CXX=g++ CXXFLAGS="-Wno-error -fPIE"
 test -x "$(type -p g++-9)" && export CXX=g++-9
 %cmake
 %make_jobs
@@ -68,11 +61,14 @@ test -x "$(type -p g++-9)" && export CXX=g++-9
 %files
 %doc README.md
 %license LICENSE
+%dir %{_datadir}/%{name}
+%dir %{_datadir}/%{name}/translations
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.*
 %{_libdir}/%{name}
 %{_libdir}/%{name}/player_mpv.so
 %{_datadir}/metainfo/%{name}.appdata.xml
+%{_datadir}/%{name}/translations/*
 
 %changelog
