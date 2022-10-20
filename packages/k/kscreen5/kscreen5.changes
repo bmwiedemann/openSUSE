@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Oct 18 11:27:29 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.1
+- Changes since 5.26.0:
+  * KCM: wrap resolution label too (kde#460397)
+  * Make the Output component accept events (kde#460280)
+  * osd: Specify layer shell namespace
+  * Don't save scale in control file
+  * Use the osd window type (kde#419764)
+  * osd: Fix a crash when quitting from QML signal handler
+  * kcm: Call settingsChanged when resetting if config needs save
+
+-------------------------------------------------------------------
 Thu Oct  6 14:48:41 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.26.0
