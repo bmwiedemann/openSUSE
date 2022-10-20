@@ -2382,4 +2382,12 @@ See bugzilla 1167537 for the gory details.</comment>
   (boo#1203092)</comment>
     <requestid>1002926</requestid>
   </revision>
+  <revision rev="302" vrev="2">
+    <srcmd5>a770305300902623328982f5bf6695c0</srcmd5>
+    <version>4.17.1.1</version>
+    <time>1666256958</time>
+    <user>dimstar_suse</user>
+    <comment>- Update the macros file to simplify the debuginfo installation</comment>
+    <requestid>1012066</requestid>
+  </revision>
 </revisionlist>
