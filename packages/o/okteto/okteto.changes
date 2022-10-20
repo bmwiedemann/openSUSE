@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 19 13:04:24 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.8.1:
+  * fix: use the correct param on the API call (#3172) (#3173)
+
+-------------------------------------------------------------------
 Tue Oct 18 18:20:19 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 2.8.0:
