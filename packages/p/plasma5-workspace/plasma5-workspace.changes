@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Oct 18 11:27:35 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.1
+- Changes since 5.26.0:
+  * fix is default locale check (kde#460418)
+  * remove excess pages before pushing new pages
+  * [applets/diskanddevices] Add xdg-activation support to device ations (kde#460268)
+  * krdb: do not crash on file system problems
+  * Make the panel's corner mask 1px smaller to avoid artifacts at the corners (kde#417511)
+  * Handle multiple desktop files with different StartupWMClass (kde#358277)
+  * Add scaling and rotation support to a blur behind desktop plasmoids
+  * wallpapers/image: fix potential dead loop in PackageFinder
+  * wallpapers/image: fix potential dead loop in ImageFinder
+  * wallpapers/image: fix symlink not being found by ImageFinder (kde#460287)
+  * Revert "wallpapers/image: Fix when used outside plasmashell"
+  * wallpapers/image: Fix when used outside plasmashell
+  * If an app is playing media but hasn't provided a title, say as much instead of "No media playing" (kde#456516)
+  * wallpapers/image: reset `scale` to 1 to work around QTBUG-107458
+  * wallpapers/image: reduce the maximum allowed cost of QCache
+  * wallpapers/image: fix side-by-side previews sometimes not showing
+  * wallpapers/image: reduce preview cache insertion for single images
+
+-------------------------------------------------------------------
 Mon Oct 17 17:52:48 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Use appmenu-gtk-module instead of unity-gtk-module on Leap 15.2+
