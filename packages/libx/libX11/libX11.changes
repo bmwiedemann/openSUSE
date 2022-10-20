@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 19 08:45:08 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_fix-a-memory-leak-in-XRegisterIMInstantiateCallback.patch
+  * security update for CVE-2022-3554 (bsc#1204422)
+
+-------------------------------------------------------------------
 Thu Jun  9 02:09:02 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.8.1
