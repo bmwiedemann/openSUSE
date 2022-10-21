@@ -1,7 +1,7 @@
 #
 # spec file for package piglit
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,7 +46,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  python3-Mako
 BuildRequires:  python3-numpy
-BuildRequires:  python3-six
 BuildRequires:  python3-xml
 BuildRequires:  waffle-devel
 BuildRequires:  pkgconfig(egl)
@@ -59,7 +58,6 @@ BuildRequires:  pkgconfig(xcb-dri3)
 Requires:       python3
 Requires:       python3-Mako
 Requires:       python3-numpy
-Requires:       python3-six
 Requires:       python3-xml
 Recommends:     waffle
 ExcludeArch:    %{ix86} ppc

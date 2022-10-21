@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 18 07:41:10 UTC 2022 - pgajdos@suse.com
+
+- python-six is not required
+  https://trello.com/c/MO53MocR/143-remove-python3-six
+
+-------------------------------------------------------------------
 Wed Jul  7 12:16:31 UTC 2021 - Jozef Pupava <jpupava@suse.com>
 
 - Update suse_qa-skip-tests.txt with tests crashing on 15 SP3
