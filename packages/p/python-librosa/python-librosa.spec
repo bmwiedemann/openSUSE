@@ -33,6 +33,10 @@ Source2:        librosa-pooch-cache.tar.gz
 Patch0:         remove-contextlib2.patch
 # PATCH-FIX-OPENSUSE Skip tests that require further test data that is ~180MiB
 Patch1:         skip-test-data-missing-tests.patch
+# PATCH-FIX-UPSTREAM update-tests-for-numpy-123.patch gh#librosa/librosa#1581
+Patch2:         update-tests-for-numpy-123.patch
+# PATCH-FIX-UPSTREAM remove-hanning-from-tests.patch gh#librosa/librosa#1548
+Patch3:         remove-hanning-from-tests.patch
 BuildRequires:  %{python_module SoundFile >= 0.10.2}
 BuildRequires:  %{python_module audioread >= 2.1.9}
 BuildRequires:  %{python_module decorator >= 4.0.0}

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 21 06:29:51 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add update-tests-for-numpy-123.patch gh#librosa/librosa#1581
+- Add remove-hanning-from-tests.patch gh#librosa/librosa#1548
+
+-------------------------------------------------------------------
 Mon Sep 26 02:21:59 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.9.2:
