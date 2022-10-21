@@ -40,6 +40,7 @@ Source4:        oidentd.socket
 Source5:        https://files.janikrabe.com/pub/oidentd/releases/%{version}/oidentd-%{version}.tar.xz.asc
 # https://janikrabe.com/key.asc
 Source6:        %{name}.keyring
+Patch0:         oidentd-3.0.0-configure_zstd.patch
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  flex
@@ -62,6 +63,9 @@ pairs.
 
 %prep
 %setup -q
+%if 0%{?suse_version} < 1505
+%patch0 -p1
+%endif
 
 # Avoid "Unknown key name 'XXX' in section 'Service', ignoring." warnings from systemd on older releases
 %if 0%{?sle_version}

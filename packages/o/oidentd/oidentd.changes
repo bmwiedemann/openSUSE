@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 21 09:43:58 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Add patch oidentd-3.0.0-configure_zstd.patch to fix compilation under <= SP15.4 
+
+-------------------------------------------------------------------
+Fri Oct 21 08:20:21 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Add patch to fix compilation under <= SP15.4
+
+-------------------------------------------------------------------
 Sun Oct 16 16:37:59 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 3.0.0
