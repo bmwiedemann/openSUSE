@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct 20 17:15:08 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20221020
+  * Fix duplicated key input in pattern editor, order list, and
+    instrument editor note table
+  * Respect audio-related SDL environment variables if set
+  * Fix handling of window width and height config file options
+  * Hint SDL not to disable window manager compositing
+  * Add 4:3 aspect ratio config file option (want_fixed)
+
+-------------------------------------------------------------------
 Mon Sep  5 20:15:04 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20220905
