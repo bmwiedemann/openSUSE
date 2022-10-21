@@ -58,7 +58,6 @@ BuildRequires:  openssl-devel
 BuildRequires:  opie
 BuildRequires:  postfix
 BuildRequires:  procmail
-BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base
 BuildRequires:  shadow
 BuildRequires:  systemd-rpm-macros
@@ -110,7 +109,7 @@ export CFLAGS="%{optflags} -fPIE"
     --with-kerberos5 \
     --with-gssapi \
     --with-ssl=%{_prefix} \
-    --with-python=%{__python3}
+    --with-python=%{bindir}/python3
 %make_build LDFLAGS="-pie"
 %sysusers_generate_pre %{SOURCE9} fetchmail
 

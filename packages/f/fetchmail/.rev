@@ -899,4 +899,12 @@ reviewed ok
     <comment></comment>
     <requestid>1030160</requestid>
   </revision>
+  <revision rev="108" vrev="2">
+    <srcmd5>77156ff5043c9787fd81f6413386d688</srcmd5>
+    <version>6.4.34</version>
+    <time>1666362017</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1030373</requestid>
+  </revision>
 </revisionlist>
