@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct 19 15:42:45 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to new upstream release 1.2.0
+  * Separated FLEX and FLEX_NEXT. The former is identical to 1.1.9,
+    while FLEX_NEXT gained new features, as well as known
+    regressions. (See #168)
+  * Several smaller POCSAG fixes.
+  * Fix for opening large wav files with improper header.
+
+-------------------------------------------------------------------
 Tue Sep 22 14:33:39 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to new upstream release 1.1.9
