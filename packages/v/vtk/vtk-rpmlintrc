@@ -9,7 +9,3 @@ addFilter("vtk-java.* devel-file-in-non-devel-package")
 addFilter("vtk-openmpi-java.* shlib-policy-name-error")
 addFilter("vtk-openmpi-java.* shlib-policy-missing-suffix")
 addFilter("vtk-openmpi-java.* devel-file-in-non-devel-package")
-
-# Used by tcl bindings
-addFilter("vtk-tcl.* devel-file-in-non-devel-package")
-addFilter("vtk-openmpi-tcl.* devel-file-in-non-devel-package")

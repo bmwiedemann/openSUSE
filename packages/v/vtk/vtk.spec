@@ -20,6 +20,7 @@
 
 %bcond_with examples
 %bcond_with documentation
+%bcond_with testing
 
 %ifarch %arm aarch64
 %bcond_without gles
@@ -40,8 +41,12 @@
 %bcond_without java
 %bcond_without pegtl
 
-# Need patched version with HPDF_SHADING
+# Need version with HPDF_SHADING, i.e. >= 2.4.0
+%if 0%{?suse_version} <= 1500
 %bcond_with    haru
+%else
+%bcond_without haru
+%endif
 
 %if "%{flavor}" == ""
 %define my_suffix %{nil}
@@ -86,9 +91,9 @@
 %define shlib   %{vtklib}
 
 Name:           vtk%{?my_suffix}
-Version:        9.1.0
+Version:        9.2.2
 Release:        0
-%define series  9.1
+%define series  9.2
 Summary:        The Visualization Toolkit - A high level 3D visualization library
 # This is a variant BSD license, a cross between BSD and ZLIB.
 # For all intents, it has the same rights and restrictions as BSD.
@@ -114,8 +119,6 @@ Patch10:        0001-GL_POINT_SPRITE-is-only-available-for-Compatibility-.patch
 Patch17:        0001-Always-generate-Python-Metadata-when-WRAP_PYTHON-is-.patch
 # PATCH-FIX-UPSTREAM -- Copy generated metadata to the right directory
 Patch18:        0001-Consider-VTK_PYTHON_SITE_PACKAGES_SUFFIX-for-Python-.patch
-# PATCH-FIX-UPSTREAM
-Patch19:        0001-Add-missing-libm-link-library-to-kissfft-module.patch
 BuildRequires:  cgns-devel
 BuildRequires:  chrpath
 BuildRequires:  cmake >= 3.12
@@ -134,6 +137,8 @@ BuildRequires:  python3-numpy-devel
 BuildRequires:  python3-qt5-devel
 BuildRequires:  python3-setuptools
 BuildRequires:  utfcpp-devel
+BuildRequires:  cmake(Verdict)
+BuildRequires:  cmake(nlohmann_json)
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5OpenGL)
 BuildRequires:  pkgconfig(Qt5OpenGLExtensions)
@@ -169,7 +174,7 @@ BuildRequires:  graphviz
 BuildRequires:  gl2ps-devel > 1.4.0
 %endif
 %if %{with haru}
-BuildRequires:  libharu-devel > 2.3.0
+BuildRequires:  libharu-devel >= 2.4.0
 %endif
 %if %{with java}
 BuildRequires:  java-devel
@@ -186,6 +191,10 @@ BuildRequires:  pkgconfig(pugixml) >= 1.11
 %endif
 %if %{with pegtl}
 BuildRequires:  pegtl-devel >= 2.0.0
+%endif
+%if %{with testing}
+BuildRequires:  cli11-devel
+BuildRequires:  vtkdata = %{version}
 %endif
 
 %description
@@ -231,6 +240,8 @@ Requires:       python3-%{name} = %{version}
 Requires:       utfcpp-devel
 %{?with_mpi:Requires:       %{mpi_flavor}}
 %{?with_mpi:Requires:       %{mpi_flavor}-devel}
+Requires:       cmake(Verdict)
+Requires:       cmake(nlohmann_json)
 Requires:       pkgconfig(Qt5Core)
 Requires:       pkgconfig(Qt5OpenGL)
 Requires:       pkgconfig(Qt5OpenGLExtensions)
@@ -384,11 +395,16 @@ languages.
 %endif
 %patch17 -p1
 %patch18 -p1
-%patch19 -p1
 
 # Replace relative path ../../../../VTKData with %%{_datadir}/vtkdata
 # otherwise it will break on symlinks.
 grep -rl '\.\./\.\./\.\./\.\./VTKData' . | xargs -r perl -pi -e's,\.\./\.\./\.\./\.\./VTKData,%{_datadir}/vtkdata,g'
+
+# Fix erroneous dependency on sqlite3 binary
+sed -i -e '/set(vtk_sqlite_build_binary 1)/ s/.*/#\0/' CMakeLists.txt
+
+# Allow testing also without external downloads - https://gitlab.kitware.com/vtk/vtk/-/issues/18692
+sed -i -e '/set(vtk_enable_tests "OFF")/ s/.*/#\0/' CMakeLists.txt
 
 %build
 %if %{with mpi}
@@ -411,8 +427,11 @@ export CXXFLAGS="%{optflags}"
     -DCMAKE_INSTALL_LIBDIR:PATH=%{_lib} \
     -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%{name}-%{series} \
     -DCMAKE_INSTALL_QMLDIR:PATH=%{my_libdir}/qt5/qml \
+    -DVTK_FORBID_DOWNLOADS:BOOL=ON \
     -DVTK_PYTHON_OPTIONAL_LINK:BOOL=OFF \
-    -DVTK_BUILD_TESTING:BOOL=ON \
+    -DVTK_BUILD_TESTING:BOOL=%{?with_testing:ON}%{!?with_testing:OFF} \
+    -DVTK_DATA_STORE:PATH=/usr/share/vtkdata/.ExternalData \
+    -DExternalData_NO_SYMLINKS:BOOL=ON \
     -DVTK_BUILD_EXAMPLES:BOOL=%{?with_examples:ON}%{!?with_examples:OFF} \
     -DVTK_BUILD_DOCUMENTATION:BOOL=%{?with_documentation:ON}%{!?with_documentation:OFF} \
     -DCMAKE_NO_BUILTIN_CHRPATH:BOOL=ON \
@@ -423,6 +442,7 @@ export CXXFLAGS="%{optflags}"
     -DVTK_MODULE_ENABLE_VTK_TestingCore=WANT \
     -DVTK_MODULE_ENABLE_VTK_TestingRendering=WANT \
     -DVTK_MODULE_ENABLE_VTK_RenderingContextOpenGL2=YES \
+    -DVTK_MODULE_ENABLE_VTK_RenderingLICOpenGL2=%{?with_gles:NO}%{!?with_gles:YES} \
     -DVTK_MODULE_ENABLE_VTK_RenderingFreeTypeFontConfig=YES \
     -DVTK_CUSTOM_LIBRARY_SUFFIX="" \
     -DVTK_GROUP_ENABLE_Imaging=WANT \
@@ -537,8 +557,12 @@ export PYTHONPATH=$_PYTHON_MPI_PREFIX:$PYTHONPATH
 %endif
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{buildroot}%{my_libdir}
 export PYTHONPATH=$PYTHONPATH:%{buildroot}%{python3_sitearch}
-python3 -c "import vtk"
+PYTHONDONTWRITEBYTECODE=1 python3 -c "import vtk"
 find %{buildroot} . -name vtk.cpython-3*.pyc -print -delete # drop unreproducible time-based .pyc file
+# Unittests
+%if %{with testing}
+%ctest
+%endif
 
 %post   -n %{shlib} -p /sbin/ldconfig
 %postun -n %{shlib} -p /sbin/ldconfig
@@ -570,7 +594,7 @@ find %{buildroot} . -name vtk.cpython-3*.pyc -print -delete # drop unreproducibl
 %{my_bindir}/%{pkgname}WrapPython
 %{my_bindir}/%{pkgname}WrapPythonInit
 %{my_libdir}/*.so
-%{my_libdir}/vtk/
+%{my_libdir}/vtk-%{series}
 %{?with_mpi: %dir %{my_libdir}/cmake/}
 %{my_libdir}/cmake/%{pkgname}-%{series}/
 %{my_incdir}/%{pkgname}-%{series}/

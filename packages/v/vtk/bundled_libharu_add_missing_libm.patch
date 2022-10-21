@@ -2,8 +2,8 @@ Index: VTK-9.0.0/ThirdParty/libharu/vtklibharu/CMakeLists.txt
 ===================================================================
 --- VTK-9.0.0.orig/ThirdParty/libharu/vtklibharu/CMakeLists.txt
 +++ VTK-9.0.0/ThirdParty/libharu/vtklibharu/CMakeLists.txt
-@@ -125,6 +125,8 @@ if(PNG_FOUND)
- endif(PNG_FOUND)
+@@ -68,6 +68,8 @@ if(PNG_FOUND)
+ find_library(M_LIB m)
  endif ()
  
 +link_libraries(m)

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 14 18:07:34 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 9.2.2, see:
+  https://gitlab.kitware.com/vtk/vtk/-/blob/master/Documentation/release/9.2.md
+- Drop upstream patches:
+  + 0001-Add-missing-libm-link-library-to-kissfft-module.patch
+- Use system libharu on Tumbleweed
+- Allow optionally building and running tests (disabled for now
+  due to large required data set).
+
+-------------------------------------------------------------------
 Thu Mar 10 22:01:28 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Split java-devel subpackage from devel package, avoid pulling
