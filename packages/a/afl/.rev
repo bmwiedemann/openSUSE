@@ -1165,4 +1165,28 @@
     - build now uses all available cores (forwarded request 1005008 from msmeissn)</comment>
     <requestid>1005009</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>41488260950ab98c20fd71a13c94af38</srcmd5>
+    <version>4.04c</version>
+    <time>1666366116</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 4.04c
+  - fix gramatron and grammar_mutator build scripts
+  - enhancements to the afl-persistent-config and afl-system-config
+  - scripts
+  - afl-fuzz:
+    -   force writing all stats on exit
+  - afl-cc:
+    -   make gcc_mode (afl-gcc-fast) work with gcc down to version 3.6
+  - qemu_mode:
+    -   fixed 10x speed degredation in v4.03c
+    -   added qemu_mode/fastexit helper library
+  - unicorn_mode:
+    -   Enabled tricore arch (by @jma-qb)
+    -   Updated Capstone version in Rust bindings
+  - llvm-mode:
+    -   AFL runtime will always pass inputs via shared memory, when possible,
+        ignoring the command line. (forwarded request 1030428 from msmeissn)</comment>
+    <requestid>1030429</requestid>
+  </revision>
 </revisionlist>

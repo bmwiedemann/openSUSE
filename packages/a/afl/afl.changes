@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Oct 21 14:28:09 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- updated to 4.04c
+  - fix gramatron and grammar_mutator build scripts
+  - enhancements to the afl-persistent-config and afl-system-config
+  - scripts
+  - afl-fuzz:
+    -   force writing all stats on exit
+  - afl-cc:
+    -   make gcc_mode (afl-gcc-fast) work with gcc down to version 3.6
+  - qemu_mode:
+    -   fixed 10x speed degredation in v4.03c
+    -   added qemu_mode/fastexit helper library
+  - unicorn_mode:
+    -   Enabled tricore arch (by @jma-qb)
+    -   Updated Capstone version in Rust bindings
+  - llvm-mode:
+    -   AFL runtime will always pass inputs via shared memory, when possible,
+        ignoring the command line.
+
+-------------------------------------------------------------------
 Tue Sep 20 15:50:19 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - updated to 4.03c
