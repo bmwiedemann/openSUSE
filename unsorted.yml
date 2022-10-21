@@ -181,7 +181,6 @@ unsorted:
   - OpenSceneGraph-examples 
   - OpenSceneGraph-plugins 
   - OpenShadingLanguage: [x86_64] 
-  - OpenShadingLanguage-MaterialX-shaders-source: [x86_64] 
   - OpenShadingLanguage-common-headers: [x86_64] 
   - OpenShadingLanguage-devel: [x86_64] 
   - OpenShadingLanguage-doc: [x86_64] 
@@ -2410,6 +2409,7 @@ unsorted:
   - cracklib-dict-small 
   - cramfs-tools 
   - cramfsswap 
+  - crane 
   - crash 
   - crash-devel 
   - crash-doc 
@@ -4245,6 +4245,7 @@ unsorted:
   - gcovr-doc 
   - gcr-doc 
   - gcr3-viewer 
+  - gcrane 
   - gcstar 
   - gd-devel 
   - gd-devel-32bit: [x86_64] 
@@ -6147,6 +6148,7 @@ unsorted:
   - gnustep-make 
   - gnutls-guile 
   - go 
+  - go-containerregistry 
   - go-doc 
   - go-for-it 
   - go-for-it-lang 
@@ -11005,7 +11007,7 @@ unsorted:
   - libfluidsynth3 
   - libfluidsynth3-32bit: [x86_64] 
   - libflux-devel 
-  - libflux0_161_0 
+  - libflux0_171_0 
   - libflxmlrpc1 
   - libfm 
   - libfm-devel 
@@ -12975,10 +12977,10 @@ unsorted:
   - libosinfo-devel 
   - libosip2-15 
   - libosip2-devel 
-  - liboslcomp1_11: [x86_64] 
-  - liboslexec1_11: [x86_64] 
-  - liboslnoise1_11: [x86_64] 
-  - liboslquery1_11: [x86_64] 
+  - liboslcomp1_12: [x86_64] 
+  - liboslexec1_12: [x86_64] 
+  - liboslnoise1_12: [x86_64] 
+  - liboslquery1_12: [x86_64] 
   - libosmcomp5 
   - libosmcomp5-32bit: [x86_64] 
   - libosmgpsmap-1_0-1 
@@ -14417,7 +14419,7 @@ unsorted:
   - libtermkey-devel 
   - libtermkey1 
   - libtesseract4 
-  - libtestshade1_11: [x86_64] 
+  - libtestshade1_12: [x86_64] 
   - libtevent-devel 
   - libtexlua53-5 
   - libtexluajit2 
