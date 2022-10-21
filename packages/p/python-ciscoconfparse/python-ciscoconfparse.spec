@@ -39,6 +39,7 @@ BuildRequires:  python2-mock
 %endif
 Requires:       python-dnspython >= 2.1.0
 Requires:       python-loguru >= 0.6.0
+Requires:       python-toml >= 0.10.2
 %ifpython2
 Requires:       python-ipaddr >= 2.1.11
 %endif
