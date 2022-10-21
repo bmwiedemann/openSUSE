@@ -27,6 +27,8 @@ Group:          Productivity/File utilities
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 # PATCH-FEATURE-OPENSUSE caja-extensions_use-xdgsu.patch sor.alexei@meowr.ru -- Use xdg-su instead of a direct gksu call in caja-gksu.
 Patch0:         %{name}_use-xdgsu.patch
+# PATCH-FIX-UPSTREAM caja-extensions-gupnp-1.6.patch gh#mate-desktop#caja-extension#110 dimstar@opensuse.org -- Fix build with gupnp 1.6
+Patch1:         caja-extensions-gupnp-1.6.patch
 BuildRequires:  mate-common >= %{_version}
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dbus-glib-1)
@@ -35,7 +37,7 @@ BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libcaja-extension) >= %{_version}
 BuildRequires:  pkgconfig(mate-desktop-2.0) >= %{_version}
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150200
-BuildRequires:  pkgconfig(gupnp-1.2)
+BuildRequires:  (pkgconfig(gupnp-1.6) or pkgconfig(gupnp-1.2))
 %else
 BuildRequires:  pkgconfig(gupnp-1.0)
 %endif
