@@ -810,4 +810,12 @@ https://blog.powerdns.com/2017/06/23/powerdns-authoritative-server-4-0-4-release
     <comment>- Use systemd_ordering macro so we can use pdns inside containers</comment>
     <requestid>994383</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>aac22ab27910601a37ecd75cd213f146</srcmd5>
+    <version>4.7.0</version>
+    <time>1666361993</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1030262</requestid>
+  </revision>
 </revisionlist>
