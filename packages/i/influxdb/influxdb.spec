@@ -26,7 +26,7 @@ Name:           influxdb
 Summary:        Scalable datastore for metrics, events, and real-time analytics
 License:        MIT
 Group:          Productivity/Databases/Servers
-Version:        1.9.7
+Version:        1.10.0
 Release:        0
 URL:            https://github.com/influxdata/influxdb
 Source:         %{name}-%{version}.tar.gz
@@ -36,14 +36,13 @@ Source3:        influxdb.tmpfiles
 Source4:        influxdb.init
 Source5:        Compability_note.txt
 Patch0:         harden_influxdb.service.patch
-Patch1:         0001-fix-executor-do-not-assume-ints-are-64bits-4652.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
-BuildRequires:  go >= 1.13
+BuildRequires:  go >= 1.18
 BuildRequires:  golang-packaging >= 15.0.8
 BuildRequires:  xmlto
-BuildRequires:  pkgconfig(flux) >= 0.161.0
+BuildRequires:  pkgconfig(flux) >= 0.170.1
 %if %{with systemd}
 BuildRequires:  systemd-rpm-macros
 %{!?_tmpfilesdir:%global _tmpfilesdir /usr/lib/tmpfiles.d}
@@ -75,7 +74,6 @@ Go sources and other development files for InfluxDB
 %setup -q -n %{name}-%{version}
 %setup -q -T -D -a 1 -n %{name}-%{version}
 %patch0 -p1
-%patch1 -p1
 
 %build
 # Disable phone-home to usage.influxdata.com

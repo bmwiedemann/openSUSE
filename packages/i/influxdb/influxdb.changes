@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct  4 15:16:34 UTC 2022 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Verison 1.10.0
+  Drop 0001-fix-executor-do-not-assume-ints-are-64bits-4652.patch:
+  upstreamed
+
+-------------------------------------------------------------------
 Thu Jun  9 15:22:56 UTC 2022 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Version 1.9.7.
