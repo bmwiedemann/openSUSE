@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 21 11:21:06 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20221018.00
+  * Write workload cert status file (#184)
+- from version 20221017.00
+  * Update workload_cert permissions (#180)
+
+-------------------------------------------------------------------
 Mon Oct 10 12:57:39 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20220927.00
