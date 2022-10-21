@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct 20 13:24:58 UTC 2022 - Torsten Gruner <simmphonie@opensuse.org>
+
+- Update to v0.2.0
+  * More efficient generation of Python identifiers
+  * Workaround for CPython parser bug in 3.9.8 (#16) Yes, yet another one - still,
+    that's why hypothesmith exists...
+- Release v0.1.9
+  * Fixed rare internal error when from_node() generated misplaced except: clauses
+
+-------------------------------------------------------------------
 Sun Mar 21 20:41:41 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to v0.1.8
