@@ -19,7 +19,7 @@
 %global rustflags -Clink-arg=-Wl,-z,relro,-z,now -C debuginfo=2
 
 Name:           wezterm
-Version:        20220905.102802.7d4b8249+git3
+Version:        20220905.102802.7d4b8249+git117
 Release:        0
 Summary:        GPU-accelerated cross-platform terminal emulator and multiplexer
 URL:            https://github.com/wez/wezterm
@@ -30,10 +30,9 @@ Source2:        cargo_config
 Requires:       terminfo
 BuildRequires:  Mesa-libEGL-devel
 
+BuildRequires:  rust+cargo >= 1.43
 %if 0%{?suse_version} > 1500
 BuildRequires:  cargo-packaging
-%else
-BuildRequires:  rust+cargo >= 1.43
 %endif
 ExclusiveArch:  %{rust_arches}
 

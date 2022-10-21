@@ -2,7 +2,10 @@
 <constraints>
   <hardware>
     <physicalmemory>
-      <size unit="G">8</size>
+      <size unit="G">16</size>
     </physicalmemory>
+    <disk>
+      <size unit="G">16</size>
+    </disk>
   </hardware>
 </constraints>

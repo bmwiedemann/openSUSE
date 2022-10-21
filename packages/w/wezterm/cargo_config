@@ -1,18 +1,18 @@
 [source.crates-io]
 replace-with = "vendored-sources"
 
+[source."https://github.com/rust-x-bindings/rust-xcb"]
+git = "https://github.com/rust-x-bindings/rust-xcb"
+rev = "a85a4cf8937898b1da972367df4648143ede38ea"
+replace-with = "vendored-sources"
+
 [source."https://github.com/wez/libssh-rs.git"]
 git = "https://github.com/wez/libssh-rs.git"
 replace-with = "vendored-sources"
 
-[source."https://github.com/wez/rust-xcb"]
-git = "https://github.com/wez/rust-xcb"
-branch = "ffi"
-replace-with = "vendored-sources"
-
 [source."https://github.com/wez/xcb-imdkit-rs.git"]
 git = "https://github.com/wez/xcb-imdkit-rs.git"
-rev = "ede7c71b85fe2537efef6cf999a45690316211cf"
+branch = "waiting-on-release"
 replace-with = "vendored-sources"
 
 [source.vendored-sources]

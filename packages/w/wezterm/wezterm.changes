@@ -1,5 +1,31 @@
+-------------------------------------------------------------------
+Fri Oct 14 12:21:25 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Increase both storage and memory to 16G in _constraints file to fix out of memory
+  errors.
+
+-------------------------------------------------------------------
+Fri Oct 14 01:10:11 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Increase storage to 12G in _constraints file.
+
+-------------------------------------------------------------------
+Tue Oct 11 12:05:42 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 20220905.102802.7d4b8249+git117:
+  * term: support utf8 mouse reporting (DECSET 1005)
+  * cargo update
+  * docs: changelog for https://github.com/wez/wezterm/issues/2559
+  * Allow cursor visibility to be changed by widgets
+  * Add ResetTerminal and pane:inject_output method
+  * add window-focus-changed event
+  * Expose applying an AttributeChange on CellAttributes
+  * x11: explicitly enable Dri2
+  * validate the config to prevent div by 0 for initial_cols/initial_rows
+  * tweak --always-new-process messaging
+
 ------------------------------------------------------------------
-Tue Sep 06 11:44:03 UTC 2022 - socvirnyl.estela@gmail.com
+Tue Sep 06 11:44:03 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Add _constraints file to avoid memory exhaustion.
 - Update to version 20220905.102802.7d4b8249+git3:
@@ -60,7 +86,7 @@ Tue Sep 06 11:44:03 UTC 2022 - socvirnyl.estela@gmail.com
   * update conpty to v1.14.2281.0 release
 
 -------------------------------------------------------------------
-Mon Aug 29 06:43:55 UTC 2022 - socvirnyl.estela@gmail.com
+Mon Aug 29 06:43:55 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 20220807.113146.c2fee766+git109:
   * deps: tiny-skia 0.7 -> 0.8
