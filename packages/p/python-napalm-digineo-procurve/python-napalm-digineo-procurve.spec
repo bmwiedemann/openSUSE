@@ -1,6 +1,7 @@
 #
 # spec file for package python-napalm-digineo-procurve
 #
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,7 +13,8 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
@@ -22,14 +24,15 @@ Version:        0.2.0
 Release:        0
 License:        Apache-2.0
 Summary:        NAPALM - HP ProCurve/Aruba network driver
-Url:            https://github.com/digineo/napalm-digineo-procurve
+URL:            https://github.com/digineo/napalm-digineo-procurve
 Group:          Development/Languages/Python
 Source:         https://files.pythonhosted.org/packages/source/n/napalm-digineo-procurve/napalm-digineo-procurve-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module napalm >= 2.4.0}
-BuildRequires:  %{python_module pytest }
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module toml}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-napalm >= 2.4.0
