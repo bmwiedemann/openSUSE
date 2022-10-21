@@ -17,7 +17,7 @@
 
 
 Name:           rpi-imager
-Version:        1.7.2
+Version:        1.7.3
 Release:        0
 Summary:        Raspberry Pi Imaging Utility
 License:        Apache-2.0
