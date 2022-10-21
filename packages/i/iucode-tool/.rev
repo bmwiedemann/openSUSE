@@ -82,4 +82,12 @@
   * iucode_tool: fix filter by revision parser on ILP32</comment>
     <requestid>584420</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>72ad84223bd68cb3a1b1068b7f49ae1c</srcmd5>
+    <version>2.3.1</version>
+    <time>1666361986</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1030286</requestid>
+  </revision>
 </revisionlist>
