@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct 19 13:39:14 UTC 2022 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Add 0001-fix-compile-error-with-Rust-1.64-5273.patch:
+    Fix build for rust1.64
+
+-------------------------------------------------------------------
+Tue Oct  4 15:21:40 UTC 2022 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Update to version 0.171.0, see:
+  https://github.com/influxdata/flux/releases/
+
+-------------------------------------------------------------------
 Thu Jun 30 19:42:09 UTC 2022 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Add disable-static-library.patch: do not build static library

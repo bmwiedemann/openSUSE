@@ -21,7 +21,7 @@
 %define libflux_suffix %(echo %{version} | tr . _)
 
 Name:           flux
-Version:        0.161.0
+Version:        0.171.0
 Release:        0
 Summary:        Influx data language
 License:        MIT
@@ -30,6 +30,7 @@ Source:         %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
 Patch1:         disable-static-library.patch
+Patch2:         0001-fix-compile-error-with-Rust-1.64-5273.patch
 BuildRequires:  cargo
 BuildRequires:  rust >= 1.45
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -65,6 +66,7 @@ tar -Jxf %{SOURCE1}
 install -D %{SOURCE2} .cargo/config
 
 patch -p2 < %{PATCH1}
+patch -p2 < %{PATCH2}
 patch -p2 <<EOF
 --- a/libflux/flux/build.rs
 +++ b/libflux/flux/build.rs
@@ -97,8 +99,8 @@ exec_prefix=%{_prefix}
 libdir=%{_libdir}
 includedir=%{_includedir}
 
-Name: Flux
-Version: %{version}
+Name:           Flux
+Version:        %{version}
 Description: Library for the InfluxData Flux engine
 Libs: -L%{_libdir} -lflux
 Libs.private: -ldl -lpthread
