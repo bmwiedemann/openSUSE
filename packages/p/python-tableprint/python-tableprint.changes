@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 20 13:25:13 UTC 2022 - pgajdos@suse.com
+
+- python-six is not required
+
+-------------------------------------------------------------------
 Fri Apr 23 21:44:21 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Don't build python36-* package (missing pandas)

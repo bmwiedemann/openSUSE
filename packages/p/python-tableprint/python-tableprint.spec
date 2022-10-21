@@ -1,7 +1,7 @@
 #
 # spec file for package python-tableprint
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -32,12 +32,10 @@ BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module wcwidth}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-future
-Requires:       python-six
 Requires:       python-wcwidth
 BuildArch:      noarch
 %python_subpackages
