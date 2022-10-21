@@ -1,7 +1,7 @@
 #
 # spec file for package python-l20n
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,10 +26,8 @@ Group:          Development/Languages/Python
 URL:            https://github.com/l20n/python-l20n
 Source:         https://github.com/l20n/python-l20n/archive/%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
 
