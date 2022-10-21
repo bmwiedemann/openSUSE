@@ -3,7 +3,7 @@
     <param name="url">https://github.com/latex-lsp/texlab</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
-    <param name="revision">3d8afad</param>
+    <param name="revision">26fec86</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>

@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Oct 14 12:38:47 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 4.3.0:
+  * Bump version to v4.3.0
+  * Update dependencies
+  * Fix Okular forward search command in docs
+  * Bump url from 2.2.2 to 2.3.1 (#755)
+  * Bump criterion from 0.3.6 to 0.4.0 (#758)
+  * Bump clap from 3.2.20 to 3.2.21 (#759)
+  * Only compute inlay hints for the specified range
+  * Add test case for inlay hints
+  * Provide inlay hints for \label command
+  * Add diagnostics test case for URIs with spaces
+  * Bump anyhow from 1.0.62 to 1.0.64 (#748)
+  * Bump titlecase from 2.1.0 to 2.2.0 (#750)
+  * Bump once_cell from 1.13.1 to 1.14.0 (#751)
+  * feat(build_log): add column field to BuildError
+  * feat(build_log): parse error hint
+  * Pass codecov token explicitly to GitHub actions
+  * Add env_logger to help debug integration tests
+  * Bump insta from 1.19.0 to 1.19.1 (#746)
+  * Bump dashmap from 5.3.4 to 5.4.0 (#744)
+  * Bump clap from 3.2.17 to 3.2.20 (#747)
+  * Bump titlecase from 2.0.0 to 2.1.0 (#742)
+  * Bump notify from 5.0.0-pre.16 to 5.0.0 (#743)
+  * Prefer matching groups rather than envs in parser
+
+-------------------------------------------------------------------
 Sun Sep 04 07:51:52 UTC 2022 - socvirnyl.estela@gmail.com
 
 - Update to version 4.2.2:
