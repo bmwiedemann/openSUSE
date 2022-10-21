@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct 21 11:32:09 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.12.2
+  This release contains fixes to regressions discovered in the Matomo 4.12.0 and 4.12.1 releases,
+  including performance improvements achieved by avoiding unnecessary, expensive queries, 
+  bug fixes on the new tracking opt out, and a minor security improvement to prevent
+  possible XSS attacks by one super user account on another super user. 
+
+-------------------------------------------------------------------
 Wed Oct 19 05:16:52 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 4.12.1
