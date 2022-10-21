@@ -142,4 +142,16 @@
     <comment>- Remove unneeded BuildRequires on python-devel</comment>
     <requestid>902967</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>fe755c694f7aa04b4ba21531eca544a4</srcmd5>
+    <version>2.4.0</version>
+    <time>1666362000</time>
+    <user>dimstar_suse</user>
+    <comment>- do not require six
+- added patches
+  https://github.com/sybrenstuvel/flickrapi/commit/e47e62df304d36ae81c483230bb41e6f4dde8bfd
+  + python-flickrapi-no-python2.patch
+</comment>
+    <requestid>1030330</requestid>
+  </revision>
 </revisionlist>

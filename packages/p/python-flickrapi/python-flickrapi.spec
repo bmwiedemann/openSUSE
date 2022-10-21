@@ -1,7 +1,7 @@
 #
 # spec file for package python-flickrapi
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,17 +25,19 @@ License:        Python-2.0
 Group:          Development/Libraries/Python
 URL:            http://stuvel.eu/projects/flickrapi
 Source0:        https://files.pythonhosted.org/packages/source/f/flickrapi/flickrapi-%{version}.tar.gz
-BuildRequires:  %{python_module requests-oauthlib}
-BuildRequires:  %{python_module requests-toolbelt}
-BuildRequires:  %{python_module requests}
+# https://github.com/sybrenstuvel/flickrapi/commit/e47e62df304d36ae81c483230bb41e6f4dde8bfd
+Patch0:         python-flickrapi-no-python2.patch
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry}
+BuildRequires:  %{python_module requests-oauthlib >= 0.4.2}
+BuildRequires:  %{python_module requests-toolbelt >= 0.3.1}
+BuildRequires:  %{python_module requests >= 2.4.3}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-requests >= 2.4.3
 Requires:       python-requests-oauthlib >= 0.4.2
 Requires:       python-requests-toolbelt >= 0.3.1
-Requires:       python-six >= 1.8.0
 BuildArch:      noarch
 %ifpython2
 Provides:       python-flickrapi-doc = %{version}
@@ -51,13 +53,14 @@ photos, and all Flickr API functions.
 
 %prep
 %setup -q -n flickrapi-%{version}
+%patch0 -p1
 sed -i "1d" flickrapi/__init__.py # Fix non-executable script
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 rm -rf %{buildroot}%{python_sitelib}/*.txt # Remove wrongly installed documentation
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
