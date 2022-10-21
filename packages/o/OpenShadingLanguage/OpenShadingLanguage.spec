@@ -23,7 +23,7 @@
 %define oiio_major_minor_ver %(rpm -q --queryformat='%%{version}' OpenImageIO-devel | cut -d . -f 1-2)
 
 Name:           OpenShadingLanguage
-Version:        1.11.17.0
+Version:        1.12.6.2
 Release:        0
 Summary:        A language for programmable shading
 License:        BSD-3-Clause
@@ -31,10 +31,8 @@ Group:          Productivity/Graphics/Other
 URL:            https://github.com/AcademySoftwareFoundation/OpenShadingLanguage
 Source0:        https://github.com/AcademySoftwareFoundation/OpenShadingLanguage/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://creativecommons.org/licenses/by/3.0/legalcode.txt#/CC-BY-3.0.txt
-# PATCH-FIX-UPSTREAM - Extracted from https://github.com/AcademySoftwareFoundation/OpenShadingLanguage/pull/1492
-Patch0:         0001-Fix-compatibility-with-LLVM-14.patch
-BuildRequires:  OpenEXR-devel
-BuildRequires:  OpenImageIO
+BuildRequires:  OpenEXR-devel >= 2.3
+BuildRequires:  OpenImageIO >= 2.2
 BuildRequires:  bison
 BuildRequires:  clang-devel > 7
 BuildRequires:  cmake >= 3.12
@@ -43,7 +41,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
-BuildRequires:  llvm-devel > 7
+BuildRequires:  llvm-devel > 9
 %ifnarch %{arm}
 # Build fails with partio on armv7/armv6
 BuildRequires:  partio-devel
@@ -76,20 +74,6 @@ Open Shading Language (OSL) is a language for programmable shading
 in advanced renderers and other applications, ideal for describing
 materials, lights, displacement, and pattern generation.
 This package contains documentation.
-
-%package MaterialX-shaders-source
-Summary:        MaterialX shader nodes
-License:        BSD-3-Clause
-Group:          Development/Languages/Other
-Requires:       %{name} = %{version}
-Requires:       %{name}-common-headers
-
-%description MaterialX-shaders-source
-Open Shading Language (OSL) is a language for programmable shading
-in advanced renderers and other applications, ideal for describing
-materials, lights, displacement, and pattern generation.
-
-This package contains the code for the MaterialX shader nodes.
 
 %package example-shaders-source
 Summary:        OSL shader examples
@@ -208,7 +192,6 @@ find . -iname CMakeLists.txt -exec sed "-i" "-e s/COMMAND python/COMMAND python3
       -DCMAKE_SKIP_RPATH:BOOL=TRUE \
       -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%{name} \
       -DOSL_SHADER_INSTALL_DIR:PATH=%{_datadir}/%{name}/shaders/ \
-      -DOSL_BUILD_MATERIALX:BOOL=ON \
       -DCMAKE_CXX_STANDARD:STRING=14
 %cmake_build
 
@@ -248,9 +231,6 @@ find %{buildroot}%{python3_sitearch} -name oslquery.so -print -delete
 %files doc
 %license CC-BY-3.0.txt
 %doc %{_docdir}/%{name}/
-
-%files MaterialX-shaders-source
-%{_datadir}/%{name}/shaders/MaterialX
 
 %files example-shaders-source
 %{_datadir}/%{name}/shaders/*.osl

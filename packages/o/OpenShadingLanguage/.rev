@@ -128,4 +128,30 @@ Initial version 1.9.13 created for blender see boo#1120406</comment>
     <comment></comment>
     <requestid>1001124</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>0751c84e8f12d544b64653fed0e19abc</srcmd5>
+    <version>1.12.6.2</version>
+    <time>1666361951</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.12.6.2:
+  For details see
+  https://github.com/AcademySoftwareFoundation/OpenShadingLanguage/releases/tag/v1.12.6.2
+  * Batch shading: A fully operational &quot;batch shading&quot; support when
+    using CPUs supporting the Intel AVX2 or AVX512 instruction set
+    architectures, allows shading 8 or 16 points at a time,
+    accelerated by using SIMD instructions. (Changes contributed
+    by Intel.)
+  * OptiX: A reasonable subset of the OSL language can run on
+    NVIDIA GPUs for Cuda or OptiX-based renderers.
+  * Standardized material closures: Synchronize with MaterialX on
+    a minimum standard set of material closures. This is reflected
+    in both the OSL spec as well as reference implementations of
+    those closures in testrender.
+- Remove subpackage with MaterialX shaders. These were already
+  deprecated for some time, instead ones from upstream
+  MaterialX project should be used.
+- Drop upstream 0001-Fix-compatibility-with-LLVM-14.patch
+</comment>
+    <requestid>1030214</requestid>
+  </revision>
 </revisionlist>

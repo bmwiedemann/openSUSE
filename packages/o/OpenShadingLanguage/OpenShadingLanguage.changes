@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Oct 19 15:16:37 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to 1.12.6.2:
+  For details see
+  https://github.com/AcademySoftwareFoundation/OpenShadingLanguage/releases/tag/v1.12.6.2
+  * Batch shading: A fully operational "batch shading" support when
+    using CPUs supporting the Intel AVX2 or AVX512 instruction set
+    architectures, allows shading 8 or 16 points at a time,
+    accelerated by using SIMD instructions. (Changes contributed
+    by Intel.)
+  * OptiX: A reasonable subset of the OSL language can run on
+    NVIDIA GPUs for Cuda or OptiX-based renderers.
+  * Standardized material closures: Synchronize with MaterialX on
+    a minimum standard set of material closures. This is reflected
+    in both the OSL spec as well as reference implementations of
+    those closures in testrender.
+- Remove subpackage with MaterialX shaders. These were already
+  deprecated for some time, instead ones from upstream
+  MaterialX project should be used.
+- Drop upstream 0001-Fix-compatibility-with-LLVM-14.patch
+
+-------------------------------------------------------------------
 Tue Apr 26 01:04:09 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix compatibility with LLVM >= 14.0, add
