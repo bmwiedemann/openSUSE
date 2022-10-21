@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,20 +27,20 @@
 %endif
 %bcond_without python2
 Name:           python-opencensus%{psuffix}
-Version:        0.8.0
+Version:        0.11.0
 Release:        0
 Summary:        A stats collection and distributed tracing framework
 License:        Apache-2.0
 URL:            https://github.com/census-instrumentation/opencensus-python
 Source:         https://github.com/census-instrumentation/opencensus-python/archive/v%{version}.tar.gz#/opencensus-python-%{version}-gh.tar.gz
 # PATCH-FIX-UPSTREAM opencensus-pr1002-remove-mock.patch -- gh#census-instrumentation/opencensus-python#1002
-Patch0:         https://github.com/census-instrumentation/opencensus-python/pull/1002.patch#/opencensus-pr1002-remove-mock.patch
+Patch0:         opencensus-pr1002-remove-mock.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-google-api-core < 3.0.0
 Requires:       python-google-api-core >= 1.0.0
-Requires:       python-opencensus-context >= 0.1.2
+Requires:       python-opencensus-context >= 0.1.3
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module google-api-core >= 1.0.0}
