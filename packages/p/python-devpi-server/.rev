@@ -68,4 +68,62 @@
     <comment></comment>
     <requestid>974397</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9675f479326f466a34127b56d0603c9e</srcmd5>
+    <version>6.7.0</version>
+    <time>1666361998</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 6.7.0
+  6.7.0 (2022-09-28)
+  ==================
+  Features
+  --------
+  - Add nginx example to devpi-gen-config with caching of simple pages for
+    installers like pip.
+  - Automatically check for +files when using --replica-file-search-path.
+  - Set headers to prevent caching for simple links with stale results.
+  Bug Fixes
+  ---------
+  - Fix #840: Correct url scheme in config if nginx is behind another proxy.
+  6.6.1 (2022-09-12)
+  ==================
+  Bug Fixes
+  ---------
+  - Fix slowdown introduced in 6.6.0 when simple links for mirrors are
+    requested more than once in the same thread.
+  - Removed preservation of original server uuid during import. Imported state
+    is different from the original server. Replicas could not detect the change
+    and get into an inconsistent state.
+  - Prevent cache trashing when updating simple links on mirrors for projects
+    with huge number of releases.
+  - Preserve toxresult filenames during import to keep them being accessible on
+    the same URLs after the fix for #686 in 5.2.0.
+  6.6.0 (2022-08-16)
+  ==================
+  Features
+  --------
+  - Fix #592: return dict from list_projects_perstage of mirrors where the
+    values contain the un-normalized project name. This allows support in
+    devpi-web 4.1.0 to index them correctly.
+  - Check name in project list instead of fetching project page for mirrors.
+    This improves response times and avoids leaking typos of private package
+    names upstream.
+  - Use ETag header if provided by mirror to reduce bandwidth usage and
+    latency.
+  - Prevent concurrent updates of simple links on mirrors with a short lived
+    lock.
+  - Support PEP-691 conformant fetching for mirrors, and requests with JSON
+    result for installers. Proxy servers should add compression support for the
+    application/vnd.pypi.simple.v1+json content type (gzip_types for nginx).
+  Bug Fixes
+  ---------
+  - Fix #743: support PEP427 escaped wheels with local version, where the + is
+    replaced by _.
+  - Fix #895: store and return content of data-yanked.
+  - Fix #908: include basic auth from mirror_url when fetching packages.
+  - Fix #914: switch to write transaction as late as possible when streaming a
+    file from a mirror.
+</comment>
+    <requestid>1030317</requestid>
+  </revision>
 </revisionlist>
