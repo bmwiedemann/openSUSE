@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Oct 13 16:05:44 UTC 2022 - varkoly@suse.com
+
+- Update to version 4.11.0+git.1665557656.1381bf21:
+  * fence_lpar: only output additional error output on DEBUG level
+  * fence_virt: add note that reboot-action doesnt power on nodes that are powered off
+  * fencing: source_env(): dont process empty lines
+  * fence_ecloud: new fence agent
+  * fence_sbd: improve error handling
+  * configure: check for google-auth instead of deprecated oauth2client
+  * fence_ibm_vpc: add token cache support
+  * build: add FENCETMPDIR for state files
+  * build: make xml-check: ignore detected paths in *_file parameters not matching saved metadata
+  * fence_gce: add httplib2 to try/except: pass
+  * configure/spec: cleanup and fixes
+  * fence_gce: Add user agent to API requests (#491)
+  * fence_ibm_powervs: add support for proxy, private API servers and get token via API key (#490)
+  * fence_ibm_vpc: add proxy support
+  * fence_zvmip: show unable to connect error instead of full stacktrace, e.g. when not using --ssl for SSL devices
+
+-------------------------------------------------------------------
 Thu Jul 14 12:51:31 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Don’t use python-oauth2client, which is deprecated
