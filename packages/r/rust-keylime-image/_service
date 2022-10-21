@@ -1,0 +1,10 @@
+<services>
+  <service mode="buildtime" name="kiwi_metainfo_helper"/>
+  <service mode="buildtime" name="docker_label_helper"/>
+  <service name="replace_using_package_version" mode="buildtime">
+    <param name="file">Dockerfile</param>
+    <param name="regex">%%KEYLIME_VERSION%%</param>
+    <param name="package">rust-keylime</param>
+    <param name="parse-version">minor</param>
+  </service>
+</services>

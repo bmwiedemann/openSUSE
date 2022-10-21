@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Thu Oct 20 11:03:57 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Drop rust-keylime-start.sh CMD script
+- Replace "-a" with "&&" in the configure script
+- Drop docker-entrypoint.sh script
+- Add README documentation
+
+-------------------------------------------------------------------
+Mon Oct 10 12:03:21 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Initial image based on Keylime 6.5.1
