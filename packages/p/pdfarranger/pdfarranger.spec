@@ -18,7 +18,7 @@
 
 
 Name:           pdfarranger
-Version:        1.8.2
+Version:        1.9.1
 Release:        0
 Summary:        Merge, split, rotate, crop, and rearrange pages of PDF documents
 License:        GPL-3.0-only
@@ -36,7 +36,7 @@ Requires:       gtk3
 Requires:       python3-cairo
 Requires:       python3-dateutil >= 2.4.0
 Requires:       python3-gobject-Gdk
-Requires:       python3-pikepdf >= 1.7.0
+Requires:       python3-pikepdf >= 2.8.0
 Requires:       typelib-1_0-Gtk-3_0
 Requires:       typelib-1_0-Poppler-0_18
 Recommends:     python3-img2pdf >= 0.3.4

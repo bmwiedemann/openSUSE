@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Oct 12 04:05:37 UTC 2022 - C J <c.j@tuta.io>
+
+- Update to 1.9.1:
+  * Support for PikePDF 6 and so qpdf 11 (#716)
+  * Fix a bug in booklet creation (#720)
+  * Some translation update
+
+- Version 1.9.0
+  * Many improvements and fixes in the icon view (#505, #506, #612,
+    #629, #632, #637, #654, #670)
+  * Remember previous file chooser location (#508)
+  * Add close and open actions (#581, #593, #597)
+  * Increase I/O performance and responsiveness (#542, #623)
+  * Add option to set language in Windows (#578)
+  * Add support for pasting an image from clipboard (#675)
+  * Pan the view when pressing mouse wheel and moving mouse (#677)
+  * Add fullscreen mode (#665)
+  * Allow to print the document (#647)
+  * Require GTK >= 3.20 because of a new file chooser on Windows
+    (#704)
+  * State that pikepdf 6 is not yet supported (#716)
+
+-------------------------------------------------------------------
 Tue Sep 13 17:17:16 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add missing typelib-1_0-Gtk-3_0 requirement

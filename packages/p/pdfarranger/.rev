@@ -60,4 +60,12 @@
     <comment>- Add missing typelib-1_0-Gtk-3_0 requirement</comment>
     <requestid>1003374</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a00087e1af06ebf9c23ff1a17e0e587e</srcmd5>
+    <version>1.9.1</version>
+    <time>1666361980</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1030239</requestid>
+  </revision>
 </revisionlist>
