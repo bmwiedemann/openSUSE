@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 20 12:20:20 UTC 2022 - pgajdos@suse.com
+
+- python-six is not required
+
+-------------------------------------------------------------------
 Wed May  4 22:02:36 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Skip failing tests (gh#pycroscopy/pyUSID#80).

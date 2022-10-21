@@ -42,7 +42,6 @@ BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sidpy >= 0.0.1}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module toolz}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -57,7 +56,6 @@ Requires:       python-matplotlib >= 2.0.0
 Requires:       python-numpy >= 1.10
 Requires:       python-psutil
 Requires:       python-sidpy >= 0.0.1
-Requires:       python-six
 Requires:       python-toolz
 BuildArch:      noarch
 %python_subpackages
