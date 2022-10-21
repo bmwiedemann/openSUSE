@@ -55,7 +55,6 @@ BuildRequires:  python3-python-dateutil
 BuildRequires:  python3-requests
 BuildRequires:  python3-ruamel.yaml
 BuildRequires:  python3-setuptools
-BuildRequires:  python3-six
 BuildRequires:  python3-toml
 BuildRequires:  pkgconfig(libsystemd)
 Requires:       borgbackup

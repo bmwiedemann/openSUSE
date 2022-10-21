@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 18 13:26:05 UTC 2022 - pgajdos@suse.com
+
+- python-six is not required
+  https://trello.com/c/MO53MocR/143-remove-python3-six
+
+-------------------------------------------------------------------
 Mon Aug 15 19:52:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.24:
