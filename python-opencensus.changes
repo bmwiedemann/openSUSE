@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct 18 10:24:27 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.11.0
+  * Updated `azure`, `context`, `flask`, `requests` modules
+- from version 0.10.0
+  * Add kwargs to derived gauge (#1135)
+- from version 0.9.0
+  * Make sure handler.flush() doesn't deadlock (#1112)
+- Refresh patches for new version
+  * opencensus-pr1002-remove-mock.patch
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
 Sat Oct 23 10:47:21 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.8.0

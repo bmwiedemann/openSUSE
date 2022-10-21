@@ -15,4 +15,21 @@
     <comment></comment>
     <requestid>927212</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d6c75628da26d80b8cff9157e3ad8f25</srcmd5>
+    <version>0.11.0</version>
+    <time>1666362001</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.11.0
+  * Updated `azure`, `context`, `flask`, `requests` modules
+- from version 0.10.0
+  * Add kwargs to derived gauge (#1135)
+- from version 0.9.0
+  * Make sure handler.flush() doesn't deadlock (#1112)
+- Refresh patches for new version
+  * opencensus-pr1002-remove-mock.patch
+- Update Requires from setup.py
+</comment>
+    <requestid>1030337</requestid>
+  </revision>
 </revisionlist>
