@@ -1,4 +1,252 @@
 -------------------------------------------------------------------
+Thu Oct 20 23:39:03 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 0.0.10:
+  * bplist: Make torepr convert to values
+  * Update github-golangci-lint to 1.50.0 from 1.49.0
+  * Update make-golangci-lint to 1.50.0 from 1.49.0
+  * decode,tar: Add scalar description and Try* helpers
+  * bplist: Fix unknown field for singletons and add torepr tests
+  * mp4: Fix data_format typo
+  * interp: Fix interrupt panic for cli eval
+  * gojq: Update fq fork
+  * deps: Manual update ones not using bump
+  * gojq: Update rebased fq fork
+  * readline: Update rebased fq fork
+  * doc: Fix some incorrect example prompts
+  * wav: Decode smpl chunk
+  * interp: Make to{actual,sym} behave similar to tovalue
+  * ranges,decode: Correctly skip empty ranges when adding unknown fields
+  * updates tests post integer-bug fix
+  * Fixes bug in integer parsing
+  * Fixes and embeds documentation
+  * updates torepr for data type
+  * updates fqtest
+  * adds function for decoding fixed sized arrays
+  * fixes from PR comments
+  * removed unused return type
+  * removed unneccessary type conversions
+  * Documentation cleanup
+  * Size check on nBits to save memory
+  * Added documentation and tests, fixed bad date parsing
+  * Code fixes from PR, still need to add tests and testdata
+  * Adds support for Apple Binary Plist, version 00
+  * doc,help: Nicer format help and move help tests into each format
+  * doc,html,xml: Add more documentation and examples
+  * ar: Integer strings might be empty
+  * csv: Add tsv and header example
+  * wasm: Add some documentation
+  * mp4: More codec names (from mp4ra.org)
+  * doc: Fix format sections a bit
+  * help,doc: Use markdown for format documentation again
+  * markdown: Add decoder
+  * elf: Basic program header notes decoding
+  * test: Skip go test with -race by default
+  * Update github-go-version from 1.19.0, 1.19.0, 1.19.0 to 1.19.1
+  * Update docker-golang from 1.19.0 to 1.19.1
+  * elf: Treat missing string tables as empty to be more robust
+  * html: Handle html with leading doctype etc
+  * decode: Remove RangeSorted flag as we can decide on array/struct instead
+  * interp,decode: For struct use map to lookup field
+  * perfomance: increase performance by map usage
+  * generics: Use more from x/exp
+  * range,decode: Use own range sort impl to speed up a bit
+  * sortex: Package with type safe sort helpers
+  * matroska: Add proper lacing support
+  * bitcoin_blkdat,bitcoin_block: Make sure there is a header if blkdat
+
+-------------------------------------------------------------------
+Thu Oct 20 23:37:27 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 0.0.9:
+  * xml: Switch from "-" to "@" as attribute prefix and make it an option
+  * ci: Skip -race for windows and macos
+  * xml: Even more namespace fixes
+  * columnwriter,dump: Add Column interface and refactor into BarColumn and MultiLineColumn
+  * interp,dump: Correctly flush columns if data will be shown
+  * prores_frame: Add basic container and frame header decoder
+  * Update github-golangci-lint from 1.48.0 to 1.49.0
+  * Update make-golangci-lint from 1.48.0 to 1.49.0
+  * fqtest: Run tests in parallell
+  * script: Use strings.Builder to collect output
+  * wasm: add `-timeout 20m` for go test to workaround ci test fail
+  * wasm: add wasm to probe list
+  * wasm: run `golangci-lint run --fix`
+  * wasm: fix comment format
+  * wasm: update tests
+  * wasm: add comment to clarify lazy initialization
+  * wasm: define and use constants for some insturctions
+  * gojq: Update fq fork
+  * add ULEB and SLEB to known words for spell check
+  * wasm: make the godoc formatter happy
+  * wasm: use FieldULEB128() / FieldSLEB128() defined in the upstream
+  * dev,fuzz: Add some useful retrigger snippets
+  * wasm: fix lint issues
+  * wasm: avoid race condition
+  * xml: Keep track of default namespace and skip it element names
+  * decode: Add LEB128 readers
+  * wasm: use WRITE_ACTUAL=1 to generate .fqtest files
+  * wasm: remove unused function
+  * wasm: tidy up
+  * wasm: further simplification
+  * wasm: use s.ActualU() instead of s.Actual.(uint64)
+  * wasm: `make doc`
+  * wasm: to be able to probe
+  * gopacket: Switch/update to new fork, remove SLL2 hack
+  * wasm: remove nolint:unparam which is no longer needed
+  * wasm: use map, not switch
+  * wasm: use underscores for symbol values
+  * wasm: use scalar.UToSymStr for simplicity
+  * wasm: fix lint issues
+  * xml: Correctly sort if one #seq is found and allow negative seq numbers
+  * wasm: initial version
+  * Add 32 bps FLAC to test
+  * Add sample size entry to list for 32bps flac streams
+  * pcap: Add ns support and add header field
+  * flac: Make gen script generate correct fqtest files
+  * flac_frame: Cleanup some dev lefterovers and todos
+  * Fix decoding of FLAC raw entropy partition
+  * interp: Add --unicode-output/-U to force use of unicode
+  * mp3_frame: Add LSF support and fix incorrect main data handling
+  * gojq: Update fq fork, fix scope argcount issue
+  * jsonl: Add decoder, also tojsonl encoder
+  * yaml: Error on trailing yaml/json
+  * tar: Some number fields can be empty
+  * gojq: Update fq fork, new scope function, rawstring, stricter integers
+  * *extra: Rename <pkg>extra to just <pkg>ex and refactor to use generics
+  * matroska: Strip newlines in description
+  * xml: Allow trailing <?procinstr?>
+  * dns: Rename isTCP to hasLengthHeader
+  * dns: Don't use dns (udp) format for tcp also
+  * interp,dump: Show address bar for root, nested roots and on format change
+  * decode: Refactor to use scalar type assert helper
+  * zip: Correctly limit max EOCD find
+  * macho: Decode cmd symtab symbols
+  * test: Update tests, go 1.19 uses \xff instead of \u00ff
+  * Update github-go-version from 1.18.5, 1.18.5, 1.18.5 to 1.19.0
+  * lint: Fix ioutil deprecation, reformat for new doc standard
+  * Update github-golangci-lint from 1.47.3 to 1.48.0
+  * Update make-golangci-lint from 1.47.3 to 1.48.0
+  * zip: Skip header assert as there are zip files with other things appended
+  * decode,scalar: Map empty string also else sym might ends up nil
+  * xml,html: Always include attrs and children in array mode
+  * Update docker-golang from 1.18.5 to 1.19.0
+  * Update github-go-version from 1.18.4, 1.18.4, 1.18.4 to 1.18.5
+  * Update docker-golang from 1.18.4 to 1.18.5
+  * macho: Split into macho/macho_fat, fix offset issue and add string decoding
+  * lint,decode,fuzz:: Fix nilerr warnings, one real one should be ignored for now
+  * Update github-golangci-lint from 1.47.2 to 1.47.3
+  * Update make-golangci-lint from 1.47.2 to 1.47.3
+  * decode: Simplify compound range sort behaviour
+  * doc,interp: Update and add more examples
+  * interp,doc: Add -R raw string slurp hint to -s help
+  * doc: Update README demo a bit with new features
+  * elf: Remove redundant program_header struct
+  * interp: Use RegisterFS instead of format files
+  * xml,csv,interp: Handle JQValue when string normalizing
+  * gojq: Preserve keys order for to_entries when used with JQValue
+
+-------------------------------------------------------------------
+Thu Oct 20 23:36:57 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 0.0.8:
+  * asn1_ber,goreleaser: Convert CRLF to LF in asn1 xml tests, hopefully fixes goreleaer workspace dirty error
+  * doc: Improve and cleanup text formats
+  * doc: Update and shorten README.md a bit
+  * avro_ocf: Fix panic on missing meta schema
+  * format,intepr: Refactor json, yaml, etc into formats also move out related functions
+  * hevc_vps,fuzz: Error on too many vps layers
+  * elf,fuzz: Error on too large string table
+  * asn1: Add regression test for range decode fix ##330
+  * decode: Range decode with new decoder to preserve bit reader
+  * mp4: Don't range sort samples, keep sample table order
+  * doc: Clarify decode, slurp and spew args
+  * Update github-golangci-lint from 1.47.1 to 1.47.2
+  * Update make-golangci-lint from 1.47.1 to 1.47.2
+  * Update gomod-BurntSushi/toml from 1.1.0 to 1.2.0
+  * fuzz: Replace built tag with FUZZTEST env and use new interp api
+  * dev: Cleanup some code to fix a bunch of new linter warnings
+  * Update github-golangci-lint from 1.47.0 to 1.47.1
+  * dev: Cleanup linters and fix some unused args
+  * Update make-golangci-lint from 1.47.0 to 1.47.1
+  * Update make-golangci-lint from 1.46.2 to 1.47.0
+  * Update github-golangci-lint from 1.46.2 to 1.47.0
+  * interp: Cleanup and clarify some format naming
+  * gojqextra: Simplify function type helpers
+  * interp,format: Refactor registry usage and use function helpers
+  * Update github-go-version from 1.18.3, 1.18.3, 1.18.3 to 1.18.4
+  * Update docker-golang from 1.18.3 to 1.18.4
+  * mapstruct: Handle nested values when converting to camel case
+  * doc: Use singular jq value to refer to jq value
+  * mp4: Don't  decode encrypted samples
+  * fairplay: Add basic SPC decoder and PSSH system id
+  * interp: Rename --decode-file to --argdecode to be more consistent
+  * readline: Rebase on top of tpodowd's update PR
+  * bitcoin: Add blkdat, block, transcation and script decoder
+  * gojq: Rebase fq fork
+  * mod: Update golang.org/x/{crypto,net}
+  * readline: Rebase on top of tpodowd's redraw/completion fixes PR
+  * elf: Use correct offset to dynamic linking string table
+  * doc: Typos and add note about Try* functions
+  * decode: Cleanup Try<f>/<f> pairs
+  * Update usage.md
+  * doc: Add more related tools
+  * interp: Add group/0
+  * interp: Extract to/from map/struct to own package
+  * gojqextra: Cleanup gojq type cast code
+  * interp: Make empty _finally fin error on error
+  * doc: Correct bencode spec URL
+  * mp4: Properly use trun data offset
+  * dump: Skip JQValueEx if there are not options
+  * matroska: Update ebml_matroska.xml and allow unknown ids
+  * mp4,senc: Refactor current track/moof tracking and add senc box support
+  * Update github-go-version from 1.18.2, 1.18.2, 1.18.2 to 1.18.3
+  * Update docker-golang from 1.18.2 to 1.18.3
+  * gojq: Update rebased fq fork
+  * interp: Cast jq value to go value properly for encoding functions
+  * interp: Improve type normalization and use it for toyaml and totoml
+  * interp: Add to/from<encoding> for some common serialzations, encodings and hashes
+  * mp4,bitio: Fix broken pssh decoding and add proper reader cloning to bitio
+  * zip: s/Decompress/Uncompress/
+  * zip: Add uncompress=false test and some docs
+  * interp: help: Fix incorrect options example
+  * zip: Add zip64 support and uncompress option
+  * doc: go 1.18 and improve intro text a bit
+  * gojq: Update rebased fq fork
+  * gojq: Rebase fq fork
+  * fqtest: Cleanup path usage
+  * interp: Add internal _is_<type> helpers
+  * fq: Use go 1.18
+  * mp3: Use d.FieldValueU and some cleanup
+  * interp: Refactor dump and revert #259 for now
+  * readline: Update fq fork
+  * mp4: Skip fields for pcm samples for now
+  * interp: Fix crash when including relatve path when no search paths are set
+  * Update github-golangci-lint from 1.46.1 to 1.46.2
+  * Update make-golangci-lint from 1.46.1 to 1.46.2
+  * Update github-golangci-lint from 1.46.0 to 1.46.1
+  * Update make-golangci-lint from 1.46.0 to 1.46.1
+  * Update github-go-version from 1.18.1, 1.18.1, 1.18.1 to 1.18.2
+  * Update docker-golang from 1.18.1 to 1.18.2
+  * interp: dump: Fix column truncate issue with unicode bars
+  * interp: dump: Show address bar for nested roots
+  * mp4: mvhd,tkhd,mdhd,mehd: Add version 1 support
+  * Update github-golangci-lint from 1.45.2 to 1.46.0
+  * Update make-golangci-lint from 1.45.2 to 1.46.0
+  * icc_profile: Correctly clamp align padding on EOF
+  * mp4: Add track id field and add track for tfhd with unseen track_id
+  * scalar,mp4,gzip,tar: Add timestamp to description
+  * scalar: Add *Fn type to map value and clearer naming
+  * tcp: Split into client/server structs and add skipped_bytes and has_start/end per direction
+  * wav,bencode,mpeg_ps_packet,id3v1: Random fixes
+  * mp4: iinf: Only assume sub boxes for version 0
+  * avc_pps: Correct check if there is more rbsp data
+  * gojq: Fix JQValue index and destructuring issue and rebase fq fork
+  * decode: Make compound range sort optional
+  * decode: Keep decode tree on RangeFn error
+  * readme: add MacPorts install details
+
+-------------------------------------------------------------------
 Wed Jun 29 23:01:01 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Initial package version 0.0.7:

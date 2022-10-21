@@ -20,7 +20,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           fq
-Version:        0.0.7
+Version:        0.0.10
 Release:        0
 Summary:        CLI tool and REPL for working with binary data inspired by jq
 License:        MIT

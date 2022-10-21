@@ -10,4 +10,12 @@ New functionality via a SUSE Hack Week project is in progress for a subsequent r
 https://hackweek.opensuse.org/21/projects/add-mbr-binary-format-support-to-the-fq-command-line-tool</comment>
     <requestid>985962</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1f3faf40f54b9517bb786deb7f404798</srcmd5>
+    <version>0.0.10</version>
+    <time>1666361982</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0.10: (forwarded request 1030253 from jfkw)</comment>
+    <requestid>1030254</requestid>
+  </revision>
 </revisionlist>
