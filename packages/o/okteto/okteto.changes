@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 21 10:55:46 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.8.2:
+  * logs: add logs to syncthing terminating process (#3184) (#3185)
+  * Revert "fix: volumes not being deleted (#2955)" (#3176) (#3181)
+
+-------------------------------------------------------------------
 Wed Oct 19 13:04:24 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 2.8.1:
