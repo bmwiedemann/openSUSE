@@ -41,7 +41,6 @@ BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module qt5}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module toolz}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -58,7 +57,6 @@ Requires:       python-mpi4py
 Requires:       python-numpy >= 1.10
 Requires:       python-psutil
 Requires:       python-qt5
-Requires:       python-six
 Requires:       python-toolz
 BuildArch:      noarch
 %python_subpackages

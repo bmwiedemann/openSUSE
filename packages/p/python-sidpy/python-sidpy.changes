@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 21 12:10:57 UTC 2022 - pgajdos@suse.com
+
+- python-six is not required
+
+-------------------------------------------------------------------
 Tue Apr 26 06:17:09 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove skip for Python 3.10, dask is now available. 
