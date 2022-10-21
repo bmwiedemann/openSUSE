@@ -17,9 +17,9 @@
 
 
 Name:           vtkdata
-Version:        9.1.0
+Version:        9.2.2
 Release:        0
-%define series  9.1
+%define series  9.2
 Summary:        Kitware VTK Library Data
 License:        BSD-3-Clause
 Group:          Productivity/Scientific/Other
