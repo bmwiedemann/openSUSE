@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct 21 11:22:57 UTC 2022 - ro@suse.de
+
+- Update to version 0.27:
+  * use current directory when not given to avoid crashes
+
+-------------------------------------------------------------------
+Fri Oct 21 10:10:50 UTC 2022 - ro@suse.de
+
+- Update to version 0.27:
+  * Fix python3 line
+  * Apply feedback
+  * Add new validator to check rust audit is enforced
+
+-------------------------------------------------------------------
 Thu Oct 06 14:21:56 UTC 2022 - dmueller@suse.com
 
 - Update to version 0.27:

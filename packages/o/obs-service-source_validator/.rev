@@ -564,4 +564,18 @@ last submission had wrong tar ball for unknown reason</comment>
   * Do not use temporary file for GPG validation</comment>
     <requestid>1008417</requestid>
   </revision>
+  <revision rev="61" vrev="3">
+    <srcmd5>8c52b9094604c9c8893ae6915fccaa24</srcmd5>
+    <version>0.27</version>
+    <time>1666362012</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.27:
+  * use current directory when not given to avoid crashes
+
+- Update to version 0.27:
+  * Fix python3 line
+  * Apply feedback
+  * Add new validator to check rust audit is enforced</comment>
+    <requestid>1030365</requestid>
+  </revision>
 </revisionlist>
