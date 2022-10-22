@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Oct 21 11:59:08 UTC 2022 - Richard Brown <rbrown@suse.com>
+
+- Require at-spi2-core else risk major performance issues (boo#1204564) 
+
+-------------------------------------------------------------------
+Sat Oct 15 08:04:10 UTC 2022 - Milachew <milachew@mail.lv>
+
+- Delete some abandoned packages.
+- Replace gnome-tweak-tool to gnome-tweaks.
+
+-------------------------------------------------------------------
+Sun Sep 25 09:10:09 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add gnome-backgrounds Recommends to gnome-x11 pattern.
+
+-------------------------------------------------------------------
 Tue Jul  5 09:38:43 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
 
 - Replace pulseaudio with pipewire as the default audio server

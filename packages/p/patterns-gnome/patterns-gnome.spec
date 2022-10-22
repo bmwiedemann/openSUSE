@@ -124,6 +124,7 @@ Recommends:     dconf-editor
 Recommends:     evince
 Recommends:     evolution
 Recommends:     evolution-ews
+Recommends:     gnome-backgrounds
 Recommends:     gnome-bluetooth
 # bsc#1069699
 Recommends:     gnome-characters
@@ -282,15 +283,8 @@ Recommends:     gnome-keyring-pam
 #Requires: gnome-settings-daemon
 # implied by gnome-shell
 #Requires:       gnome-control-center
-#
-# Default sessions
-# - Put in Recommends for now, to make sure the livecd will always build; but
-#   ideally, should be in Requires
-# - We also we explicitly put the packages required by those sessions, in case
-#   gnome-session-*-session is not installable, to make sure the livecd is
-#   somehow a bit usable
-#
-Recommends:     gnome-session-default-session
+# Accessability is not an option, and performance issues if its missing (boo#1204564)
+Requires:       at-spi2-core
 # boo#1090117
 Recommends:     gnome-shell-classic
 Recommends:     gnome-extensions
@@ -379,7 +373,7 @@ Recommends:     gnome-calculator
 Recommends:     gnome-software
 Recommends:     gnome-system-monitor
 # bnc#859494 bsc#1065790
-Recommends:     gnome-tweak-tool
+Recommends:     gnome-tweaks
 Recommends:     nautilus-extension-terminal
 Recommends:     nautilus-share
 Recommends:     pinentry-gnome3
@@ -416,8 +410,6 @@ Provides:       pattern-icon() = pattern-gnome
 Provides:       pattern-order() = 1420
 Obsoletes:      patterns-openSUSE-gnome_basis_opt < %{version}
 Requires:       pattern() = x11
-# #394406
-Recommends:     dynamic-wallpaper-branding-openSUSE
 
 %description gnome_basis_opt
 Base packages for the GNOME desktop environment.
@@ -684,7 +676,7 @@ Recommends:     gnome-screenshot
 #
 # Packages that really make sense
 #
-Recommends:     gnome-tweak-tool
+Recommends:     gnome-tweaks
 Recommends:     gnome-weather
 Recommends:     gsf-office-thumbnailer
 Recommends:     nautilus-extension-seahorse
