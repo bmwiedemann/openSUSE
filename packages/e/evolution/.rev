@@ -2373,4 +2373,41 @@ Recommended for 12.3</comment>
 </comment>
     <requestid>1004778</requestid>
   </revision>
+  <revision rev="261" vrev="1">
+    <srcmd5>6d561111d3da644654ae0c5c80f61996</srcmd5>
+    <version>3.46.1</version>
+    <time>1666440753</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.46.1:
+  + Calendar: Compare date with correct zone
+  + publish-calendar: Correct type of a 'port' variable to match
+    GUri's port type
+  + Fix possible crash under type_ahead_complete_on_timeout_cb()
+  + EWebView: Make sure an error is set when passing it to
+    webkit_uri_scheme_request_finish_error()
+  + EHTTPRequest: Rearrange free functions and set error on failure
+  + help: Replace to-be-retired mailing list with GNOME Discourse
+    link
+  + Bugs fixed:
+    - Add option to disable use of header bars
+    - Calendar:
+      . Decode attendee names in meeting editor
+      . Meeting's Reply-To-All should not use attendee response in
+        Subject
+      . Periodically refresh Marcus Bains line
+    - Contacts: Correct print of multiline text
+    - EHeaderBarButton: Avoid busy loop on toggle action's 'active'
+      change
+    - Enable sandboxing for WebKitGTK 2.38.0+
+    - EShellHeaderBar: Disable subtitle for the header bar
+    - Fix possible memory leak in e_table_state_load_from_node()
+    - Group Manager: Auto-deselect sources in to be hidden groups
+    - Hide extra separators in Composer, Mail and Calendar view
+      toolbars
+    - Limit number of previewed messages on mbox file import
+    - Mail:
+      . Hide print Preview in the menu
+      . Update preview's iframe height to match its content (forwarded request 1030296 from iznogood)</comment>
+    <requestid>1030391</requestid>
+  </revision>
 </revisionlist>
