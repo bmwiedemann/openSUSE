@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Oct 20 11:49:44 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add platlibdir-in-sys.patch to provide sys.platlibdir attribute. This is used
+  by python-setuptools in distutils.sysconfig.get_python_lib bsc#1204395
+
+-------------------------------------------------------------------
+Wed Oct 19 07:12:23 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.8.15:
+  - Fix multiplying a list by an integer (list *= int): detect
+    the integer overflow when the new allocated length is close
+    to the maximum size.
+  - Fix a shell code injection vulnerability in the
+    get-remote-certificate.py example script. The script no
+    longer uses a shell to run openssl commands. (originally
+    filed as CVE-2022-37460, later withdrawn)
+  - Fix command line parsing: reject -X int_max_str_digits option
+    with no value (invalid) when the PYTHONINTMAXSTRDIGITS
+    environment variable is set to a valid limit.
+  - When ValueError is raised if an integer is larger than the
+    limit, mention the sys.set_int_max_str_digits() function in
+    the error message.
+  - Update bundled libexpat to 2.4.9
+  - Fixes a potential buffer overrun in msilib.
+
+-------------------------------------------------------------------
 Sun Sep 11 09:07:38 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.8.14:
