@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 20 19:55:11 UTC 2022 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 1.11.1:
+  * Fixed: Fix default file selection behavior of the wheel target
+    when there is a single top-level module
+
+-------------------------------------------------------------------
 Sun Oct  9 19:49:17 UTC 2022 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 1.11.0:
