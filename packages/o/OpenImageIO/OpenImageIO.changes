@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sat Oct 22 08:22:19 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Provide testdata oiio-images-*.tar.xz as a service
+- Make sure, testsuite can find the images
+
+-------------------------------------------------------------------
+Fri Oct 21 10:09:03 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Clarify testsuite python requirements
+- Streamline %check directives
+- Enable ptex_broken test
+
+-------------------------------------------------------------------
+Thu Oct 20 17:56:44 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix and reenable testsuite
+- Some minor spec file cleanup
+
+-------------------------------------------------------------------
+Thu Oct 20 16:14:45 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add memory (3GByte), memoryperjob (600 MByte) constraints, avoid
+  build failures on hosts with high core count and low memory.
+
+-------------------------------------------------------------------
+Wed Oct 19 15:23:48 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add explicit build dependency for boost::atomic, fixes build
+  on Leap.
+
+-------------------------------------------------------------------
+Fri Oct 14 22:07:00 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- update to 2.4.4.2
+  * too many changes, check: https://github.com/OpenImageIO/oiio/releases/
+- add oiio-images.tar.xz for checks
+- ignore check results
+- adjust libver to 2.4
+- minor build adjustments
+
+-------------------------------------------------------------------
 Mon Jul 18 17:57:22 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
 
 - explicitly conflict the wrongly named OpenColorIO libs

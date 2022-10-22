@@ -241,4 +241,29 @@ Updated oiio-detectplatform-others.patch to handle armv6l
     <comment></comment>
     <requestid>990298</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>80b5e6479ad53123fb02df44e7469890</srcmd5>
+    <version>2.4.4.2</version>
+    <time>1666440786</time>
+    <user>dimstar_suse</user>
+    <comment>- Provide testdata oiio-images-*.tar.xz as a service
+- Make sure, testsuite can find the images
+- Clarify testsuite python requirements
+- Streamline %check directives
+- Enable ptex_broken test
+- Fix and reenable testsuite
+- Some minor spec file cleanup
+- Add memory (3GByte), memoryperjob (600 MByte) constraints, avoid
+  build failures on hosts with high core count and low memory.
+- Add explicit build dependency for boost::atomic, fixes build
+  on Leap.
+- update to 2.4.4.2
+  * too many changes, check: https://github.com/OpenImageIO/oiio/releases/
+- add oiio-images.tar.xz for checks
+- ignore check results
+- adjust libver to 2.4
+- minor build adjustments
+</comment>
+    <requestid>1030498</requestid>
+  </revision>
 </revisionlist>

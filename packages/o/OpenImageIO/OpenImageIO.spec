@@ -31,16 +31,19 @@
 %bcond_with apidocs
 %bcond_with ptex
 
-%define so_ver 2_3
-%define major_minor_ver 2.3
+%define images_ts 20221017T102353
+%define so_ver 2_4
+%define major_minor_ver 2.4
 Name:           OpenImageIO
-Version:        2.3.15.0
+Version:        2.4.4.2
 Release:        0
 Summary:        Library for Reading and Writing Images
 License:        BSD-3-Clause
 Group:          Productivity/Graphics/Other
 URL:            https://www.openimageio.org/
 Source0:        https://github.com/OpenImageIO/oiio/archive/refs/tags/v%{version}.tar.gz#/oiio-%{version}.tar.gz
+# this contains the actual test images, only used during build
+Source1:        oiio-images-%{images_ts}.tar.xz
 # NOTE: Please don't uncomment a build requirement unless you have submitted the package to factory and it exists
 #BuildRequires:  Field3D-devel
 BuildRequires:  cmake >= 3.12
@@ -53,6 +56,7 @@ BuildRequires:  ffmpeg-devel
 BuildRequires:  gcc-c++
 BuildRequires:  giflib-devel
 BuildRequires:  hdf5-devel
+BuildRequires:  libboost_atomic-devel
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
@@ -64,6 +68,8 @@ BuildRequires:  pugixml-devel
 %if %{with python_bindings}
 BuildRequires:  python3-devel
 BuildRequires:  python3-pybind11-devel
+# required for testsuite
+BuildRequires:  python3-numpy
 %endif
 BuildRequires:  robin-map-devel
 BuildRequires:  tbb-devel
@@ -165,13 +171,15 @@ Group:          Development/Libraries/Python
 This package contains python bindings for OpenImageIO.
 
 %prep
-%setup -q -n oiio-%{version}
+%setup -q -n oiio-%{version} -a 1
 %autopatch -p1
 
 # Make sure that bundled libraries are not used
 rm -f src/include/pugiconfig.hpp \
       src/include/pugixml.hpp
 rm -rf src/include/tbb/
+
+for i in $(grep -rl "%{_bindir}/env python$"); do sed -i '1s@^#!.*@#!%{_bindir}/python3@' ${i}; done
 
 %build
 %cmake \
@@ -186,9 +194,11 @@ rm -rf src/include/tbb/
     -DLINKSTATIC:BOOL=OFF \
     -DUSE_EXTERNAL_PUGIXML:BOOL=ON \
     -DUSE_FFMPEG:BOOL=ON \
+    -DUSE_Nuke:BOOL=OFF \
     -DCMAKE_SKIP_RPATH:BOOL=ON \
-    -DUSE_OPENCV:BOOL=%{?with_opencv:ON}%{?without_opencv:OFF} \
-    -DUSE_PYTHON:BOOL=%{?with_python_bindings:ON}%{?without_python_bindings:OFF} \
+    -DUSE_OPENCV:BOOL=%{?with_opencv:ON}%{!?with_opencv:OFF} \
+    -DUSE_PYTHON:BOOL=%{?with_python_bindings:ON}%{!?with_python_bindings:OFF} \
+    -DUSE_Ptex:BOOL=%{?with_ptex:ON}%{!?with_ptex:OFF} \
     -DPYTHON_EXECUTABLE:PATH=%{_bindir}/python3 \
     -DPLUGIN_SEARCH_PATH:PATH=%{_libdir}/%{name}-%{major_minor_ver} \
     ..
@@ -215,19 +225,26 @@ rm %{buildroot}%{_docdir}/%{name}/LICENSE*md
 %fdupes -s %{buildroot}
 
 %check
-# Make sure testsuite can find required fonts
-mkdir -p build/fonts
-ln -s ../../src/fonts/Droid_Serif/DroidSerif.ttf build/fonts/DroidSerif.ttf
-ln -s ../../src/fonts/Droid_Sans/DroidSans.ttf build/fonts/DroidSans.ttf
+# Make sure, testsuite can find required test images and fonts
+ln -sf $(pwd)/oiio-images-%{images_ts} build/testsuite/oiio-images
+mkdir -p ~/fonts
+ln -sf $(pwd)/src/fonts/Droid_Serif/DroidSerif.ttf ~/fonts/DroidSerif.ttf
+ln -sf $(pwd)/src/fonts/Droid_Sans/DroidSans.ttf ~/fonts/DroidSans.ttf
+export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
+# used as suffix for python binary
+export PYTHON_VERSION=3
+export PYTHONPATH=%{buildroot}%{python3_sitearch}
+export PYTHONDONTWRITEBYTECODE=1
 # Exclude known broken tests
 # timer tests won't do reliably in OBS
 %ifarch x86_64
-%ctest '-E' 'broken|texture-icwrite|unit_timer|unit_simd|heif|cmake-consumer'
+%ctest '-E' 'ptex-broken|texture-icwrite|unit_timer|unit_simd|heif|cmake-consumer'
 %ctest '-R' 'texture-icwrite' || true
 #%%ctest '-j1' '-R' 'unit_timer'
 %else
 # Many test cases are failing on PPC, ARM, ix64 ... ignore for now
-%ctest '-E' 'broken|texture-icwrite|unit_timer' || true
+%ctest '-E' 'ptex-broken|texture-icwrite|unit_timer|unit_simd|heif|cmake-consumer' || true
+%ctest '-R' 'texture-icwrite' || true
 #%%ctest '-j1' '-R' 'unit_timer'
 %endif
 
@@ -264,7 +281,9 @@ ln -s ../../src/fonts/Droid_Sans/DroidSans.ttf build/fonts/DroidSans.ttf
 
 %if %{with python_bindings}
 %files -n python3-%{name}
-%{python3_sitearch}/%{name}.*.so
+%dir %{python3_sitearch}/%{name}
+%{python3_sitearch}/%{name}/__init__.py
+%{python3_sitearch}/%{name}/%{name}.*.so
 %endif
 
 %changelog
