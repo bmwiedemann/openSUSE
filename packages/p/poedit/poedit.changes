@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 21 20:30:45 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Poedit 3.2:
+  * Added QA warnings about incorrect use of placeholders.
+  * Added format string highlighting for Objective-C, Qt, KDE, Lua, C# and
+    Pascal.
+  * Bugfixes.
+- Add poedit-3.2-fix-file-save.patch: Fix wrong error displayed on file save
+  (gh#vslavik/poedit!772).
+
+-------------------------------------------------------------------
 Fri Jul  8 15:05:19 UTC 2022 - Dingzhong Chen <wsxy162@gmail.com>
 
 - Poedit 3.1.1:

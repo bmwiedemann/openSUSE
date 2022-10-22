@@ -1,0 +1,38 @@
+From aa44afe0e9346fc2addd84136da800e5902a0f12 Mon Sep 17 00:00:00 2001
+From: Antoine Belvire <antoine.belvire@opensuse.org>
+Date: Sat, 22 Oct 2022 11:19:59 +0200
+Subject: [PATCH] Fix chmod/chown return code verification logic
+
+On Linux, TempOutputFileFor::ReplaceFile returns a wrong status, indicating
+the replacement has failed when it has not. This leads to a misleading error
+message displayed to user on every po file save.
+
+The cause is in the verification of the return codes of chown/chmod.
+chown and chmod return a non-zero integer value when an error occurs.
+A non-zero value is considered as a boolean 'true'.
+
+This commit fixes the logic error; It explicitly compares the returned
+integer value to another integer to avoid confusion.
+---
+ src/utility.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/utility.cpp b/src/utility.cpp
+index 546c143b9..cf2144702 100644
+--- a/src/utility.cpp
++++ b/src/utility.cpp
+@@ -302,9 +302,9 @@ bool TempOutputFileFor::ReplaceFile(const wxString& temp, const wxString& dest)
+   #ifdef __UNIX__
+     if (overwrite)
+     {
+-        if (!chown(destPath, st.st_uid, st.st_gid))
++        if (chown(destPath, st.st_uid, st.st_gid) != 0)
+             return false;
+-        if (!chmod(destPath, st.st_mode))
++        if (chmod(destPath, st.st_mode) != 0)
+             return false;
+     }
+   #endif
+-- 
+2.38.0
+
