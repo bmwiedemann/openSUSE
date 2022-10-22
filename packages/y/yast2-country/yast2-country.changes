@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 21 07:22:31 UTC 2022 - Martin Vidner <mvidner@suse.com>
+
+- Use Canadian (CSA) instead of Canadian (Multilingual) keyboard
+  layout, adapting to xkeyboard-config-2.37 (bsc#1204573)
+- 4.5.2
+
+-------------------------------------------------------------------
 Fri Jun 17 14:39:10 UTC 2022 - Josef Reidinger <jreidinger@suse.com>
 
 - Adapt language module to run properly in chroot (bsc#1199840)
