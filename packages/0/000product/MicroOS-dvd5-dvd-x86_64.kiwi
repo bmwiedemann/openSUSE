@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20221021" schemaversion="4.1">
+<image name="OBS__MicroOS___20221022" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20221021</productvar>
+      <productvar name="VERSION">20221022</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20221021,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20221022,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20221021/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20221022/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -208,6 +208,7 @@
       <repopackage name="cpp" arch="x86_64"/>
       <repopackage name="cpp12" arch="x86_64"/>
       <repopackage name="cpupower" arch="x86_64"/>
+      <repopackage name="cpupower-bash-completion" arch="x86_64"/>
       <repopackage name="cpupower-lang" arch="x86_64"/>
       <repopackage name="cracklib"/>
       <repopackage name="cracklib-dict-full"/>
@@ -2285,14 +2286,14 @@
       <repopackage name="python3-cupshelpers" arch="x86_64"/>
       <repopackage name="python3-firewall" arch="x86_64"/>
       <repopackage name="python3-gedit" arch="x86_64"/>
-      <repopackage name="python3-ldb" arch="x86_64"/>
+      <repopackage name="python3-ldb"/>
       <repopackage name="python3-louis" arch="x86_64"/>
       <repopackage name="python3-nftables" arch="x86_64"/>
       <repopackage name="python3-policycoreutils" arch="x86_64"/>
       <repopackage name="python3-selinux" arch="x86_64"/>
       <repopackage name="python3-solv" arch="x86_64"/>
       <repopackage name="python3-speechd" arch="x86_64"/>
-      <repopackage name="python3-talloc" arch="x86_64"/>
+      <repopackage name="python3-talloc"/>
       <repopackage name="python3-tdb" arch="x86_64"/>
       <repopackage name="python3-tevent" arch="x86_64"/>
       <repopackage name="python310"/>
@@ -2448,11 +2449,11 @@
       <repopackage name="rust-keylime" arch="x86_64"/>
       <repopackage name="sac"/>
       <repopackage name="samba" arch="x86_64"/>
-      <repopackage name="samba-ad-dc-libs" arch="x86_64"/>
+      <repopackage name="samba-ad-dc-libs"/>
       <repopackage name="samba-client" arch="x86_64"/>
       <repopackage name="samba-client-libs"/>
-      <repopackage name="samba-libs" arch="x86_64"/>
-      <repopackage name="samba-libs-python3" arch="x86_64"/>
+      <repopackage name="samba-libs"/>
+      <repopackage name="samba-libs-python3"/>
       <repopackage name="samba-python3" arch="x86_64"/>
       <repopackage name="sazanami-fonts"/>
       <repopackage name="sbc" arch="x86_64"/>
