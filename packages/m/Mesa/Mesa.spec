@@ -42,7 +42,7 @@
 
 %define glamor 1
 %define _name_archive mesa
-%define _version 22.2.1
+%define _version 22.2.2
 %define with_opencl 0
 %define with_vulkan 0
 %define with_llvm 0
@@ -119,7 +119,7 @@
 %endif
 
 Name:           Mesa%{psuffix}
-Version:        22.2.1
+Version:        22.2.2
 Release:        0
 Summary:        System for rendering 3-D graphics
 License:        MIT
@@ -139,6 +139,7 @@ Patch54:        n_drirc-disable-rgb10-for-chromium-on-amd.patch
 Patch58:        u_dep_xcb.patch
 Patch100:       U_fix-mpeg1_2-decode-mesa-20.2.patch
 Patch200:       u_fix-build-on-ppc64le.patch
+Patch201:       u_0001-gallivm-Fix-LLVM-optimization-with-the-new-pass-mana.patch
 Patch300:       n_buildfix-21.3.0.patch
 Patch400:       n_no-sse2-on-ix86-except-for-intel-drivers.patch
 Patch500:       n_stop-iris-flicker.patch
@@ -760,6 +761,7 @@ rm -rf docs/README.{VMS,WIN32,OS2}
 %patch58 -p1
 %patch100 -p1
 %patch200 -p1
+%patch201 -p1
 %patch300 -p1
 %ifarch %{ix86}
 %patch400 -p1
