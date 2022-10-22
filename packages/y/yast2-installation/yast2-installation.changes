@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 20 13:53:14 UTC 2022 - Steffen Winterfeldt <snwint@suse.com>
+
+- add 'repo', 'cd', 'dvd', 'hd', and 'label' schemes to
+  Yast::Transfer::FileFromUrl (jsc#SLE-22578, jsc#SLE-24584)
+- 4.5.8
+
+-------------------------------------------------------------------
 Thu Sep 15 14:04:42 UTC 2022 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Don't set QT_SCALE_FACTOR unless > 1 (bsc#1199020)
