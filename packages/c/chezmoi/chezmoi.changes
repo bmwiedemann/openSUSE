@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Oct 21 00:11:38 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Put up new package description following
+  https://en.opensuse.org/openSUSE:Package_description_guidelines
+
+-------------------------------------------------------------------
+Thu Oct 20 16:33:13 UTC 2022 - filippo.bonazzi@suse.com
+
+- Update to version 2.25.0
+    fix: Use textconv in interactive diffs
+    feat: Add shell completion for --include and --exclude flags
+    feat: Add eqFold template function
+    feat: Add scriptEnv configuration variable
+    feat: Use target paths in automatically generated commit messages
+    feat: 1Password account lookup table
+    chore: Fail if multiple config file templates or config files are found
+    fix: Make chattr {no,}encrypted decrypt and encrypt source file
+
+-------------------------------------------------------------------
 Fri Sep 30 15:27:54 UTC 2022 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Clean up spec file

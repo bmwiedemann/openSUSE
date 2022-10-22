@@ -1,7 +1,7 @@
 #
 # spec file for package chezmoi
 #
-# Copyright (c) 2022 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
+
 Name:           chezmoi
-Version:        2.24.0
+Version:        2.25.0
 Release:        0
-Summary:        Manage your dotfiles across multiple machines, securely
+Summary:        A multi-host manager for dotfiles
 License:        MIT
 Group:          Development/Tools/Version Control
-Url:            https://chezmoi.io
+URL:            https://chezmoi.io
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Recommends:     git
 BuildRequires:  golang(API) >= 1.18
 
 %description
-Manage your dotfiles across multiple machines, securely.
+chezmoi is a manager for personal preference configs and state files
+("dotfiles") that programs such as editors might create. chezmoi
+sources dotfiles from a GitHub repository and installs them onto new,
+empty machines.
 
 %package bash-completion
 Summary:        Bash completion for %{name}

@@ -7,4 +7,22 @@
     <comment>Would like to have this package available in Tumbleweed</comment>
     <requestid>1007636</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>808e065605fc6cbcc736b1359929025c</srcmd5>
+    <version>2.25.0</version>
+    <time>1666440805</time>
+    <user>dimstar_suse</user>
+    <comment>- Put up new package description following
+  https://en.opensuse.org/openSUSE:Package_description_guidelines
+- Update to version 2.25.0
+    fix: Use textconv in interactive diffs
+    feat: Add shell completion for --include and --exclude flags
+    feat: Add eqFold template function
+    feat: Add scriptEnv configuration variable
+    feat: Use target paths in automatically generated commit messages
+    feat: 1Password account lookup table
+    chore: Fail if multiple config file templates or config files are found
+    fix: Make chattr {no,}encrypted decrypt and encrypt source file</comment>
+    <requestid>1030437</requestid>
+  </revision>
 </revisionlist>
