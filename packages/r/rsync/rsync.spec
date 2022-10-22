@@ -29,7 +29,7 @@
 %endif
 
 Name:           rsync
-Version:        3.2.6
+Version:        3.2.7
 Release:        0
 Summary:        Versatile tool for fast incremental file transfer
 License:        GPL-3.0-or-later
