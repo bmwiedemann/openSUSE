@@ -3,7 +3,7 @@
     <param name="url">https://github.com/tectonic-typesetting/tectonic/</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
-    <param name="revision">9818a77</param>
+    <param name="revision">d752d29</param>
     <param name="versionrewrite-pattern">tectonic@(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>
