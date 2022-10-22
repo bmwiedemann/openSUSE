@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Tue Oct 18 13:28:26 UTC 2022 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#900
+- make result of ParitionTable::is_partition_id_supported() depend
+  on parted version
+- 4.5.47
+
+--------------------------------------------------------------------
 Fri Oct 14 12:50:44 UTC 2022 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#899
