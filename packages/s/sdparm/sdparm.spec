@@ -1,7 +1,7 @@
 #
 # spec file for package sdparm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,18 +46,18 @@ such that the disk stops operating or is slowed down. Use with care.
 %build
 # None of these is performance-critical, so use -Os rather than -O2:
 CFLAGS=$(echo "%optflags" | sed 's/\-O2/-Os/')
-%configure
+%configure --bindir=%{_sbindir}
 %make_build
 
 %install
-%make_install bindir="/sbin"
+%make_install
 
 %files
 %license BSD_LICENSE
 %doc README ChangeLog
-/sbin/sas_disk_blink
-/sbin/scsi_ch_swp
-/sbin/sdparm
+%{_sbindir}/sas_disk_blink
+%{_sbindir}/scsi_ch_swp
+%{_sbindir}/sdparm
 %_mandir/man8/*.8%{?ext_man}
 
 %changelog

@@ -173,4 +173,12 @@
     <comment></comment>
     <requestid>902730</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>3463f37a8828c6f885c0f7d6c232dbca</srcmd5>
+    <version>1.12</version>
+    <time>1666440763</time>
+    <user>dimstar_suse</user>
+    <comment>- Use /usr/sbin (boo#1191094) (forwarded request 1001299 from lnussel)</comment>
+    <requestid>1030023</requestid>
+  </revision>
 </revisionlist>
