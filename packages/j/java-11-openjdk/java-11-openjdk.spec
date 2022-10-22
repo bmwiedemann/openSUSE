@@ -37,8 +37,7 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      11
 %global interimver      0
-%global updatever       16
-%global datever         2022-07-19
+%global updatever       17
 %global buildver        8
 %global openjdk_repo    jdk11u
 %global openjdk_tag     jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}+%{buildver}
@@ -624,12 +623,6 @@ mkdir -p %{buildoutputdir}
 pushd %{buildoutputdir}
 
 bash ../configure \
-    --with-version-feature=%{featurever} \
-    --with-version-interim=%{interimver} \
-    --with-version-update=%{updatever} \
-    --with-version-patch=%{?patchver:%{patchver}}%{!?patchver:0} \
-    --with-version-date=%{datever} \
-    --with-version-build=%{buildver} \
 %if %{is_release}
     --with-version-pre="" \
 %endif
@@ -1375,6 +1368,7 @@ fi
 %{_jvmdir}/%{sdkdir}/include/jni.h
 %{_jvmdir}/%{sdkdir}/include/jvmticmlr.h
 %{_jvmdir}/%{sdkdir}/include/jvmti.h
+%{_jvmdir}/%{sdkdir}/include/sizecalc.h
 %{_jvmdir}/%{sdkdir}/lib/ct.sym
 %{_jvmdir}/%{sdkdir}/lib/libattach.so
 %if ! %{with zero}
