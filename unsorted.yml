@@ -512,6 +512,7 @@ unsorted:
   - alure 
   - alure-devel 
   - amanda 
+  - amarok: [i586] # suggested by dvd:suggested:patterns-kde-kde_multimedia 
   - amarok-lang 
   - amazon-ecs-init: [x86_64] 
   - amazon-ssm-agent: [x86_64] 
@@ -2340,6 +2341,7 @@ unsorted:
   - coredns-for-k8s1.24-extras 
   - corepack16 
   - corepack18 
+  - corepack19 
   - coreutils-doc: [i586] 
   - coreutils-single 
   - coreutils-testsuite 
@@ -3129,7 +3131,6 @@ unsorted:
   - drawing 
   - drawing-lang 
   - drbd-formula 
-  - drbd-kmp-default: [x86_64] 
   - drbd-utils: [i586] 
   - drc 
   - drc-doc 
@@ -5969,7 +5970,6 @@ unsorted:
   - gnome-2048 
   - gnome-2048-lang 
   - gnome-autoar-devel 
-  - gnome-backgrounds 
   - gnome-bluetooth-1 
   - gnome-bluetooth-1-devel 
   - gnome-bluetooth-1-lang 
@@ -6956,7 +6956,10 @@ unsorted:
   - heimdall-frontend 
   - heimer 
   - helix 
+  - helix-bash-completion 
+  - helix-fish-completion 
   - helix-runtime 
+  - helix-zsh-completion 
   - hello 
   - hello-kubic: [x86_64] 
   - hello-kubic-k8s-yaml: [x86_64] 
@@ -9208,8 +9211,8 @@ unsorted:
   - libOpenIPMI0 
   - libOpenIPMIui1 
   - libOpenImageDenoise1: [x86_64] 
-  - libOpenImageIO2_3 
-  - libOpenImageIO_Util2_3 
+  - libOpenImageIO2_4 
+  - libOpenImageIO_Util2_4 
   - libOpenSceneGraph-devel 
   - libOpenSceneGraph161 
   - libOpenThreads-devel 
@@ -11385,6 +11388,9 @@ unsorted:
   - libgpm2-32bit: [x86_64] 
   - libgpod-devel 
   - libgpod-doc 
+  - libgpod-lang: [i586] 
+  - libgpod-tools: [i586] 
+  - libgpod4: [i586] 
   - libgpod4-32bit: [x86_64] 
   - libgrail6 
   - libgrail6-32bit: [x86_64] 
@@ -12112,6 +12118,7 @@ unsorted:
   - liblasso-devel 
   - liblasso3 
   - liblastfm-qt5-devel 
+  - liblastfm5-1: [i586] 
   - liblastfm5-1-32bit: [x86_64] 
   - liblastfm_fingerprint5-1 
   - liblastfm_fingerprint5-1-32bit: [x86_64] 
@@ -12291,6 +12298,7 @@ unsorted:
   - libmariadb3-32bit: [x86_64] 
   - libmariadb_plugins 
   - libmariadbd-devel 
+  - libmariadbd19: [i586] 
   - libmariadbprivate 
   - libmarisa0 
   - libmarisa0-32bit: [x86_64] 
@@ -12575,6 +12583,7 @@ unsorted:
   - libmwaw-devel-doc 
   - libmwaw-tools 
   - libmxml1-32bit: [x86_64] 
+  - libmygpo-qt5-1: [i586] 
   - libmygpo-qt5-devel 
   - libmypaint-devel 
   - libmypaint-gegl-devel 
@@ -12801,6 +12810,7 @@ unsorted:
   - libodraw-tools 
   - libodraw1 
   - libofa-devel 
+  - libofa0: [i586] 
   - libofa0-32bit: [x86_64] 
   - libofx 
   - libofx-devel 
@@ -14367,6 +14377,7 @@ unsorted:
   - libtachyon-0_99_5 
   - libtag-devel 
   - libtag-doc 
+  - libtag-extras1: [i586] 
   - libtag1-32bit: [x86_64] 
   - libtag_c0-32bit: [x86_64] 
   - libtaginfo-devel 
@@ -17630,8 +17641,11 @@ unsorted:
   - nodejs16 
   - nodejs16-devel 
   - nodejs16-docs 
+  - nodejs18 
   - nodejs18-devel 
   - nodejs18-docs 
+  - nodejs19-devel 
+  - nodejs19-docs 
   - noisetorch 
   - nomacs 
   - nomacs-lang 
@@ -17892,6 +17906,7 @@ unsorted:
   - npkg 
   - npm-default 
   - npm16 
+  - npm18 
   - npth-devel 
   - nqp 
   - nrpe 
@@ -33050,14 +33065,12 @@ unsorted:
   - salt-syndic 
   - salt-zsh-completion 
   - samba-ad-dc 
-  - samba-ad-dc-libs-32bit: [x86_64] 
   - samba-ceph: [x86_64] 
   - samba-devel 
   - samba-devel-32bit: [x86_64] 
   - samba-doc 
   - samba-dsdb-modules 
   - samba-krb-printing 
-  - samba-libs-32bit: [x86_64] 
   - samba-libs-python3-32bit: [x86_64] 
   - samba-test 
   - samba-tool 
@@ -43847,7 +43860,6 @@ unsorted:
   - webkit2gtk4-minibrowser 
   - weblate: [x86_64] 
   - weblate-doc: [x86_64] 
-  - webp-pixbuf-loader 
   - websocketpp-devel 
   - weechat 
   - weechat-devel 
@@ -44653,6 +44665,9 @@ unsorted:
   - zdbsp 
   - zeal 
   - zellij: [x86_64] 
+  - zellij-bash-completion: [x86_64] 
+  - zellij-fish-completion: [x86_64] 
+  - zellij-zsh-completion: [x86_64] 
   - zerobranestudio 
   - zerofree 
   - zeromq-devel 
