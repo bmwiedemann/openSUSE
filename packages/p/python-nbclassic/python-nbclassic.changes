@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Oct 22 03:38:13 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.4.7:
+  * New features added
+    + Fix/nbclassic base url #168 (@mcrutch)
+  * Enhancements made
+    + Add a redirect from /nbclassic to /nbclassic/tree if both
+      notebook>=7 if both notebook>=7 and nbclassic are installed #166
+      (@echarles)
+  * Bugs fixed
+    + Allow NBClassic to work with NB7 and ServerApp.base_url #165
+      (@mcrutch)
+
+- changes from version 0.4.6:
+  * New features added
+    + Adds new file custom-preload that is loaded in a different order
+      than custom.js before the main.js script is executed #155
+      (@lneves12)
+  * Bugs fixed
+    + Use var instead of const to ensure js-test succeed #159
+      (@echarles)
+  * Documentation improvements
+    + add badge for documentation #160 (@RRosio)
+
+-------------------------------------------------------------------
 Sun Oct  9 17:11:52 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 0.4.5:
