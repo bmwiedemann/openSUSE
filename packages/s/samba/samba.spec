@@ -145,7 +145,7 @@ BuildRequires:  liburing-devel
 %endif
 BuildRequires:  sysuser-tools
 
-Version:        4.17.0+git.257.5f0ed03584a
+Version:        4.17.1+git.270.17afe7cb6b
 Release:        0
 URL:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}
@@ -791,6 +791,9 @@ done
 %if %{with_dc}
 	ln -s service %{buildroot}/%{_sbindir}/rcsamba-ad-dc
 	install -m 0644 systemd/sysconfig.samba-ad-dc %{buildroot}%{_fillupdir}
+	# Drop-in file for named to allow r/w access to dlz dir (bsc#1201689)
+	install -d -m 0755 -p %{buildroot}%{_unitdir}/named.service.d
+	install -m 0644 systemd/named-override.conf %{buildroot}%{_unitdir}/named.service.d/26-samba-dlz.conf
 %endif
 rm %{buildroot}/%{_sysconfdir}/sysconfig/samba
 install -m 0644 systemd/sysconfig.samba %{buildroot}%{_fillupdir}
@@ -1751,6 +1754,8 @@ exit 0
 %files ad-dc
 %{_fillupdir}/sysconfig.samba-ad-dc
 %{_unitdir}/samba-ad-dc.service
+%dir %{_unitdir}/named.service.d
+%{_unitdir}/named.service.d/26-samba-dlz.conf
 %{_sbindir}/samba
 %{_sbindir}/samba_dnsupdate
 %{_sbindir}/samba_kcc

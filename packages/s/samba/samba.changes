@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Wed Oct 19 12:48:21 UTC 2022 - Noel Power <nopower@suse.com>
+
+- Update to 4.17.1
+  * CVE-2021-20251 [SECURITY] Bad password count not incremented
+    atomically; (bso#14611).
+  * smbXsrv_connection_shutdown_send result leaked; (bso#15174).
+  * Flush on a named stream never completes; (bso#15182).
+  * Permission denied calling SMBC_getatr when file not exists;
+    (bso#15195).
+  * Samba 4.5 sometimes cannot be upgraded to Samba 4.6 or later
+    over DRS: WERROR_DS_DRA_MISSING_PARENT due to faulty GET_ANC;
+    (bso#15189).
+  * pytest: add file removal helpers for TestCaseInTempDir;
+    (bso#15191).
+  * CVE-2021-20251 [SECURITY] Bad password count not incremented
+    atomically; (bso#14611).
+  * Samba 4.5 sometimes cannot be upgraded to Samba 4.6 or later
+    over DRS: WERROR_DS_DRA_MISSING_PARENT due to faulty GET_ANC;
+    (bso#15189).
+  * Flush on a named stream never completes; (bso#15182).
+  * vfs_gpfs silently garbles timestamps > year 2106;
+    (bso#15151).
+  * CVE-2021-20251 [SECURITY] Bad password count not incremented
+    atomically; (bso#14611).
+  * multi-channel socket passing may hit a race if one of the
+    involved processes already existed; (bso#15200).
+  * memory leak on temporary of struct imessaging_post_state and
+    struct tevent_immediate on struct imessaging_context (in
+    rpcd_spoolss and maybe others); (bso#15201).
+  * Since popt1.19 various use after free errors using result of
+    poptGetArg are now exposed; (bso#15205); (boo#1204279).
+  * Remove special case for O_CREAT in SMB_VFS_OPENAT from
+    vfs_glusterfs; (bso#15192).
+  * GETPWSID in memory cache grows indefinetly with each NTLM
+    auth; (bso#15169).
+  * CVE-2021-20251 [SECURITY] Bad password count not incremented
+    atomically; (bso#14611).
+- Install a systemd drop-in file for named service to allow
+  read/write access to the DLZ directory; (bsc#1201689);
+
+-------------------------------------------------------------------
+Fri Oct 14 14:20:51 UTC 2022 - Noel Power <nopower@suse.com>
+
+- Fix use after free errors resulting from using return of
+  poptGetArg exposed since popt-1.19; (boo#1204279); (bso#15205).
+
+-------------------------------------------------------------------
+Mon Sep 26 10:40:18 UTC 2022 - Noel Power <nopower@suse.com>
+
+- s3: smbd: Fix memory leak in
+  smbd_server_connection_terminate_done(); (bso#15174).
+
+-------------------------------------------------------------------
 Mon Sep 26 09:38:59 UTC 2022 - Noel Power <nopower@suse.com>
 
 - Disable SMB1 for tumbleweed builds.
