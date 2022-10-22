@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Oct 22 10:00:12 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.13.0
+  * The ASDF Standard is at v1.6.0
+  * Add ability to pull information from schema about asdf file
+    data, using ~asdf.AsdfFile.schema_info method. [#1167]
+- Release 2.12.1
+  * Overhaul of the ASDF documentation to make it more consistent
+    and readable. [#1142, #1152]
+  * Update deprecated instances of abstractproperty to
+    abstractmethod [#1148]
+  * Move build configuration into pyproject.toml [#1149, #1155]
+  * Pin jsonschema to below 4.10.0. [#1171]
+- Release 2.12.0
+  * Added ability to display title as a comment in using the info()
+    functionality. [#1138]
+  * Add ability to set asdf-standard version for schema example
+    items. [#1143]
+- Add asdf-pr1185+pr1203-fix-jsonschema.patch
+  * gh#asdf-format/asdf#1185, gh#asdf-format/asdf#1203
+- Add asdf-pr1214-installed-packages.patch
+  * gh#asdf-format/asdf#1214
+
+-------------------------------------------------------------------
 Tue Apr 26 11:36:22 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.11.1

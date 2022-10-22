@@ -138,4 +138,31 @@
     <comment></comment>
     <requestid>973211</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>f5ecdeef3c4ea88028238f3339e133af</srcmd5>
+    <version>2.13.0</version>
+    <time>1666452805</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.13.0
+  * The ASDF Standard is at v1.6.0
+  * Add ability to pull information from schema about asdf file
+    data, using ~asdf.AsdfFile.schema_info method. [#1167]
+- Release 2.12.1
+  * Overhaul of the ASDF documentation to make it more consistent
+    and readable. [#1142, #1152]
+  * Update deprecated instances of abstractproperty to
+    abstractmethod [#1148]
+  * Move build configuration into pyproject.toml [#1149, #1155]
+  * Pin jsonschema to below 4.10.0. [#1171]
+- Release 2.12.0
+  * Added ability to display title as a comment in using the info()
+    functionality. [#1138]
+  * Add ability to set asdf-standard version for schema example
+    items. [#1143]
+- Add asdf-pr1185+pr1203-fix-jsonschema.patch
+  * gh#asdf-format/asdf#1185, gh#asdf-format/asdf#1203
+- Add asdf-pr1214-installed-packages.patch
+  * gh#asdf-format/asdf#1214 (forwarded request 1030519 from bnavigator)</comment>
+    <requestid>1030520</requestid>
+  </revision>
 </revisionlist>

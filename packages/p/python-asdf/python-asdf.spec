@@ -25,19 +25,22 @@
 %bcond_with test
 %endif
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define         skip_python2 1
 Name:           python-asdf%{psuffix}
-Version:        2.11.1
+Version:        2.13.0
 Release:        0
 Summary:        Python tools to handle ASDF files
 License:        BSD-2-Clause AND BSD-3-Clause
 URL:            https://github.com/asdf-format/asdf
 Source0:        https://files.pythonhosted.org/packages/source/a/asdf/asdf-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module packaging >= 16.0}
-BuildRequires:  %{python_module setuptools >= 30.3.0}
-BuildRequires:  %{python_module setuptools_scm}
+# PATCH-FIX-UPSTREAM  asdf-pr1185+pr1203-fix-jsonschema.patch gh#asdf-format/asdf#1185, gh#asdf-format/asdf#1203
+Patch0:         asdf-pr1185+pr1203-fix-jsonschema.patch
+# PATCH-FIX-UPSTREAM  asdf-pr1214-installed-packages.patch gh#asdf-format/asdf#1214
+Patch1:         asdf-pr1214-installed-packages.patch
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools >= 42}
+BuildRequires:  %{python_module setuptools_scm >= 3.4}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML >= 3.10
@@ -82,14 +85,14 @@ sed -i -e '/^#!\//, 1d' asdf/extern/RangeHTTPServer.py
 chmod a-x asdf/extern/RangeHTTPServer.py
 sed -i 's/\r$//' asdf/tests/data/example_schema.json
 chmod a-x asdf/tests/data/example_schema.json
-sed -i '/addopts/ s/--color=yes//' setup.cfg
+sed -i '/addopts/ s/--color=yes//' pyproject.toml
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/asdftool
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
