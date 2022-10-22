@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 21 08:08:01 UTC 2022 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Unit tests adapted to a recent behavior change in libstorage-ng
+  (gh#openSUSE/libstorage-ng#900).
+- 4.5.10
+
+-------------------------------------------------------------------
 Mon Sep 26 10:48:49 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Decouple user interface logic from the probing process
