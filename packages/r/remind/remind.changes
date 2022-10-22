@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Fri Oct 14 15:39:42 UTC 2022 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 4.2 Patch 0 - 2022-10-14
+
+- NEW FEATURE: remind: Allow weekdays to be globally-omitted.  For example:
+
+       OMIT Saturday Sunday
+
+  globally-omits all Saturdays and Sundays.
+
+- NEW FEATURE: remind: Add ansicolor() built-in function to make it easier
+  to colorize reminders on the terminal.  Suggested by Tim Chase.
+
+- NEW FEATURE: remind: Add several special variables related to the color
+  mode: $UseVTColors, $UseBGVTColors, $Use256Colors, $UseTrueColors and
+  $TerminalBackground.  Based on a suggestion by Tim Chase.
+
+- NEW FEATURE: remind: Add utctolocal() and localtoutc() built-in functions.
+
+- NEW FEATURE: remind: Add timezone() built-in function.
+
+- NEW FEATURE: remind: Add trigtags() function per suggestion from Tim Chase.
+
+- NEW FEATURE: remind: The $AddBlankLines system variable controls whether or
+  not a blank line is added after each reminder.
+
+- NEW FEATURE: remind: The built-in functions columns() and rows() return the
+  width and height of the terminal (in character positions) respectively.
+
+- NEW FEATURE: remind: The built-in function columns("string") returns the
+  number of columns occupied by "string" on the terminal, taking into account
+  double-width Unicode characters and zero-width ANSI escape sequences.
+
+- NEW FEATURE: remind: You can add custom substitution sequences of the form
+  %{name} or %*{name} that end up calling the function subst_name and using
+  its return value as the replacement for the substitution sequence.
+
+- NEW FEATURE: remind: Add the FUNSET command to undefine a user-defined
+  function.
+
+- NEW FILES: Add standard include files holidays/jewish.rem and
+  ansitext.rem (the latter defines standard ANSI escape codes for
+  changing text attributes such as bold, underline, etc.)
+
+- NEW EXAMPLES: add examples/alignmemt.rem, examples/ansitext and
+  examples/astro
+
+- BUG FIX: remind: Make MSF correctly format UTF-8 text and text with
+  embedded ANSI color-changing codes.
+
+- BUG FIX: remind: Make ADDOMIT actually work correctly in a SATISFY-type
+  REM command.  Bug found by Gunther Reißig
+
+- BUG FIX: Convert documentation files and src/lang.h to UTF-8.  Patch
+  from Jochen Sprickerhof.
+
+- BUG FIX: Fix tests in non-UTF-8 locales.
+
+- BUG FIX: Fix a few problems with the include/holidays/us.rem file.
+
+- BUG FIX: remind: Fix an ancient logic error in DBufPutc that hurt
+  performance.
+
+- MINOR IMPROVEMENT: Clean up code and remove some dead code.
+
+-------------------------------------------------------------------
 Wed Sep 28 15:06:04 UTC 2022 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - VERSION 4.1 Patch 0 - 2022-09-25
