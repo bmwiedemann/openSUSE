@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 15 10:16:46 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Add shell completions for bash, fish and zsh.
+- Add desktop application entry and icon.
+- Increase memory to 8G and storage to 16G in _constraints file.
+
+-------------------------------------------------------------------
 Thu Sep 15 00:35:16 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - add README-suse-maint.md in the specfile's sources.

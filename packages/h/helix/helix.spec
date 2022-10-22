@@ -39,6 +39,36 @@ ExclusiveArch:  %{rust_arches}
 A kakoune/neovim inspired modal text editor with built-in LSP and
 has treesitter support for syntax highlighting and improved navigation
 
+%package        bash-completion
+Summary:        Bash Completion for %{name}
+Group:          System/Shells
+Supplements:    (%{name} and bash-completion)
+Requires:       bash-completion
+BuildArch:      noarch
+
+%description    bash-completion
+Bash command-line completion support for %{name}.
+
+%package        fish-completion
+Summary:        Fish Completion for %{name}
+Group:          System/Shells
+Supplements:    (%{name} and fish)
+Requires:       fish
+BuildArch:      noarch
+
+%description    fish-completion
+Fish command-line completion support for %{name}.
+
+%package        zsh-completion
+Summary:        Zsh Completion for %{name}
+Group:          System/Shells
+Supplements:    (%{name} and zsh)
+Requires:       zsh
+BuildArch:      noarch
+
+%description    zsh-completion
+Zsh command-line completion support for %{name}.
+
 %prep
 %autosetup -a1 -c -n %{name}-%{version}
 mkdir -p .cargo
@@ -59,6 +89,12 @@ export HELIX_DISABLE_AUTO_GRAMMAR_BUILD=true
 %{cargo_build}
 HELIX_RUNTIME="$PWD/runtime" ./target/release/hx --grammar build
 
+# Shell completions
+sed -i "s|hx|helix|g" contrib/completion/hx.*
+
+# Desktop file
+sed -i "s|hx|helix|g" contrib/Helix.desktop
+
 %install
 mkdir -p %{buildroot}%{_libdir}/%{name}
 mkdir -p %{buildroot}%{_helix_runtimedir}
@@ -72,14 +108,33 @@ ln -sv %{_helix_runtimedir} %{buildroot}%{_libdir}/%{name}/runtime
 install -D -d -m 0755 %{buildroot}%{_bindir}
 ln -sv %{_libdir}/%{name}/hx %{buildroot}%{_bindir}/%{name}
 
+# Desktop application file
+install -Dm644 -T %{_builddir}/%{name}-%{version}/contrib/Helix.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
+
+# Icon
+install -Dm644 -T %{_builddir}/%{name}-%{version}/contrib/%{name}.png %{buildroot}%{_datadir}/pixmaps/%{name}.png
+
+# Shell completions
+install -Dm644 -T %{_builddir}/%{name}-%{version}/contrib/completion/hx.bash %{buildroot}%{_datadir}/bash-completion/completions/%{name}
+install -Dm644 -T %{_builddir}/%{name}-%{version}/contrib/completion/hx.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/%{name}.fish
+install -Dm644 -T %{_builddir}/%{name}-%{version}/contrib/completion/hx.zsh %{buildroot}%{_datadir}/zsh/site-functions/_%{name}
+
+
 %files
 %license LICENSE
 %doc README.md CHANGELOG.md languages.toml docs/CONTRIBUTING.md docs/architecture.md docs/vision.md
 %dir %{_libdir}/%{name}
+
+# Desktop application file
+%{_datadir}/pixmaps/*
+%{_datadir}/applications/*
+
 # hx symlinked as helix
 %{_bindir}/%{name}
+
 # The real hx binary
 %{_libdir}/%{name}/hx
+
 # Tutor
 %{_helix_runtimedir}/tutor.txt
 
@@ -102,5 +157,16 @@ ln -sv %{_libdir}/%{name}/hx %{buildroot}%{_bindir}/%{name}
 
 # Symlinked runtime directory
 %{_libdir}/%{name}/runtime
+
+%files bash-completion
+%{_datadir}/bash-completion/*
+
+%files fish-completion
+%dir %{_datadir}/fish
+%{_datadir}/fish/*
+
+%files zsh-completion
+%dir %{_datadir}/zsh
+%{_datadir}/zsh/*
 
 %changelog
