@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Oct 22 12:23:00 UTC 2022 - Heming Zhao <heming.zhao@suse.com>
+
+- drbd: build error against kernel v6.0.2 (bsc#1204596)
+  - add patch:
+    + bsc-1204596_01-block-remove-blk_cleanup_disk.patch
+    + bsc-1204596_02-drbd-stop-using-bdevname-in-drbd_report_io_error.patch
+
+-------------------------------------------------------------------
 Tue Aug 23 00:13:00 UTC 2022 - Heming Zhao <heming.zhao@suse.com>
 
 - drbd: build error against kernel v5.19 (bsc#1202600)

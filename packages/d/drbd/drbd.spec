@@ -56,6 +56,8 @@ Patch19:        bsc-1202600_01-remove-QUEUE_FLAG_DISCARD.patch
 Patch20:        bsc-1202600_02-dax-introduce-DAX_RECOVERY_WRITE-dax-access-mode.patch
 Patch21:        bsc-1202600_03-block-decouple-REQ_OP_SECURE_ERASE-from-REQ_OP_DISCA.patch
 Patch22:        bsc-1202600_04-remove-assign_p_sizes_qlim.patch
+Patch23:        bsc-1204596_01-block-remove-blk_cleanup_disk.patch
+Patch24:        bsc-1204596_02-drbd-stop-using-bdevname-in-drbd_report_io_error.patch
 Patch99:        suse-coccinelle.patch
 #https://github.com/openSUSE/rpmlint-checks/blob/master/KMPPolicyCheck.py
 BuildRequires:  coccinelle >= 1.0.8
@@ -111,6 +113,8 @@ installed kernel.
 %patch20 -p1
 %patch21 -p1
 %patch22 -p1
+%patch23 -p1
+%patch24 -p1
 %patch99 -p1
 
 mkdir source
