@@ -4508,4 +4508,13 @@ I cannot test locally unfortunately.
     https://www.thunderbird.net/en-US/thunderbird/102.3.3/releasenotes</comment>
     <requestid>1010277</requestid>
   </revision>
+  <revision rev="294" vrev="1">
+    <srcmd5>009471935a45a4142d863909872d22f3</srcmd5>
+    <version>102.4.0</version>
+    <time>1666440768</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird 102.4.0
+  https://www.thunderbird.net/en-US/thunderbird/102.4.0/releasenotes</comment>
+    <requestid>1030125</requestid>
+  </revision>
 </revisionlist>
