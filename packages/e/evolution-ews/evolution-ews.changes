@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 21 06:53:30 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.46.1:
+  + Handle negative value for GUri's port
+  + EwsConnect: Early stop a response traversal
+  + ESoapResponse: Allow NULL for some traversal functions
+  + ebb_ews_mailbox_to_contact: Fix a memory leak
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Sep 16 07:06:20 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.46.0:

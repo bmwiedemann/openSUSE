@@ -1105,4 +1105,17 @@
 </comment>
     <requestid>1004779</requestid>
   </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>fd9e19582871284bba0baaba31f7391d</srcmd5>
+    <version>3.46.1</version>
+    <time>1666440754</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.46.1:
+  + Handle negative value for GUri's port
+  + EwsConnect: Early stop a response traversal
+  + ESoapResponse: Allow NULL for some traversal functions
+  + ebb_ews_mailbox_to_contact: Fix a memory leak
+  + Updated translations. (forwarded request 1030297 from iznogood)</comment>
+    <requestid>1030392</requestid>
+  </revision>
 </revisionlist>
