@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Oct 20 08:39:39 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.9
+  * gitlab CI: add a basic build test
+  * Fix spelling/wording issues
+  * Use AC_CONFIG_FILES to replace the deprecated AC_OUTPUT with parameters
+  * Fix -Wsign-compare warnings
+  * Fix -Wshadow warnings
+  * Make Emalloc() argument a size_t to match malloc()
+  * Simplify HAVE_MKSTEMP block
+  * unifdef SIGNALRETURNSINT
+  * Add .git-blame-ignore-revs to hide whitespace commits from git blame
+  * autogen.sh: use quoted string variables
+  * autogen.sh: use exec instead of waiting for configure to finish
+
+-------------------------------------------------------------------
 Sun May 16 08:18:17 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - modernize spec-file (move license to licensedir) 
