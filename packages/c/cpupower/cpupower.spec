@@ -24,18 +24,18 @@
 %define version %(rpm -q --qf '%%{VERSION}' kernel-source)
 Name:           cpupower
 Version:        %{version}
+#Version:        5.19
 Release:        0
 Summary:        Tools to determine and set CPU Power related Settings
 License:        GPL-2.0-only
 Group:          System/Base
 URL:            https://git.kernel.org/cgit/linux/kernel/git/rafael/linux-pm.git
-Patch1:         cpupower_rapl.patch
-Patch2:         rapl_monitor.patch
 Patch3:         cpupower_exclude_kernel_Makefile.patch
 Patch6:         amd_do_not_show_amount_of_boost_states_if_zero.patch
 BuildRequires:  gettext-tools
 BuildRequires:  kernel-source
 BuildRequires:  libcap-devel
+BuildRequires:  libnl-devel
 BuildRequires:  pciutils
 BuildRequires:  pciutils-devel
 
@@ -71,6 +71,16 @@ governor (e.g. ondemand, userspace, conservative) and the cpufreq HW driver
 For that purpose, it compares the performance governor to a configured
 powersave module.
 
+%package bash-completion
+Summary:        Bash completion for cpupower
+Group:          System/Shells
+Requires:       %{name}
+Requires:       bash-completion
+Supplements:    (%{name} and bash-completion)
+
+%description bash-completion
+bash command line completion support for cpupower.
+
 %package rebuild
 Summary:        Empty package to ensure rebuilding cpupower in OBS
 Group:          System/Monitoring
@@ -89,8 +99,6 @@ There is no reason to install this package.
 (cd %{_prefix}/src/linux ; tar -cf - COPYING CREDITS README tools include scripts Kbuild Makefile arch/*/{include,lib,Makefile} lib) | tar -xf -
 chmod +x tools/power/cpupower/utils/version-gen.sh
 cd %{maindir}
-%patch1 -p1
-%patch2 -p1
 %patch3 -p1
 %patch6 -p1
 
@@ -126,7 +134,6 @@ mv %{buildroot}//%{_docdir}/%{name}/cpufreq-bench_script.sh %{buildroot}/%{_docd
 %postun -n libcpupower0 -p /sbin/ldconfig
 
 %files
-%{_datadir}/bash-completion/completions/cpupower
 %{_mandir}/man1/cpupower*%{?ext_man}
 %{_bindir}/cpupower
 %ifarch %{ix86} x86_64
@@ -152,8 +159,13 @@ mv %{buildroot}//%{_docdir}/%{name}/cpufreq-bench_script.sh %{buildroot}/%{_docd
 %files devel
 %{_includedir}/cpufreq.h
 %{_includedir}/cpuidle.h
-%{_includedir}/powercap.h
+#%%{_includedir}/powercap.h
 %{_libdir}/libcpu*.so
+
+%files bash-completion
+%dir %{_datadir}/bash-completion
+%dir %{_datadir}/bash-completion/completions
+%{_datadir}/bash-completion/completions/cpupower
 
 %files lang -f %{name}.lang
 

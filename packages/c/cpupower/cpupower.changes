@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Oct 21 13:59:41 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- clean up sources: drop rapl_monitor.patch and
+  cpupower_rapl.patch.
+
+-------------------------------------------------------------------
+Fri Oct  7 15:59:26 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Move bash-completion to subpackage so it isn't installed when
+  not needed
+
+-------------------------------------------------------------------
+Tue Jul  5 09:02:11 UTC 2022 - Thomas Renninger <trenn@suse.de>
+
+- Remove powercap capabilities to patch againt latest kernel sources
+  -> still keep the patches, will be removed after trying to get this
+     mainline
+- Add netlink (libnl-devel) requires
+
+-------------------------------------------------------------------
 Fri Apr  8 14:57:24 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add rebuild subpackage to trigger rebuild on kernel updates 
