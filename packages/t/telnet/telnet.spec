@@ -1,7 +1,7 @@
 #
 # spec file for package telnet
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,9 @@ Patch3:         telnet-bsd-1.2-no_gethostbyname.patch
 Patch4:         telnet-bsd-1.2-hostalias.patch
 #PATCH-FIX-UPSTREAM bnc#898481 kstreitova@suse.com -- fix the infinite loop consumes an entire CPU
 Patch5:         telnet-bsd-1.2-fix-infinite-loop.patch
+# PATCH-FIX-SECURITY bsc#1203759 danilo.spinella@suse.com CVE-2022-39028
+# NULL pointer dereference in telnetd
+Patch6:         CVE-2022-39028.patch
 BuildRequires:  ncurses-devel
 BuildRequires:  systemd-rpm-macros
 Provides:       nkitb:%{_bindir}/telnet
@@ -68,6 +71,7 @@ this machine.
 %patch3
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 %build
 export CFLAGS="%{optflags} -fpie $(ncurses6-config --cflags)"

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 21 14:47:08 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Fix CVE-2022-39028, NULL pointer dereference in telnetd
+  (CVE-2022-39028, bsc#1203759)
+  CVE-2022-39028.patch
+
+-------------------------------------------------------------------
 Wed Dec 15 17:52:32 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update Source location to use Gentoo mirror, fixes bsc#1129925
