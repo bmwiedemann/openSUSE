@@ -22,7 +22,7 @@
 %endif
 
 #see bsc#1191084
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
   # for SLEs
   %define sbindir /sbin
 %else
@@ -194,7 +194,7 @@ autoreconf -fi -I /usr/share/aclocal
   %endif
   --enable-dynamic-fsck=yes \
   --enable-dynamic-ctl=yes \
-  %if !0%{?usrmerged}
+  %if 0%{?suse_version} < 1550
   # "do nothing"
   %else
   --with-root-prefix=/usr
@@ -235,7 +235,7 @@ cd reflink
 make DESTDIR="%{buildroot}" install
 cd ..
 
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 mv %{buildroot}/{,/usr}/sbin/o2image
 mv %{buildroot}/{,/usr}/sbin/debugfs.ocfs2
 #mv %{buildroot}/{,/usr}/sbin/ocfs2_controld.pcmk
