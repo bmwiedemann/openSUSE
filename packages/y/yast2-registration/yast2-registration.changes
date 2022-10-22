@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct 19 08:13:54 UTC 2022 - José Iván López González <jlopez@suse.com>
+
+- Add reader for products defined in a YAML file.
+- Allow forcing registration and configuring a YAML product as
+  installed product.
+- Related to jsc#PED-1380 and jsc#PM-3439.
+- 4.5.6
+
+-------------------------------------------------------------------
 Tue Jun  7 12:37:04 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Do not crash when cloning an unregistered system with
