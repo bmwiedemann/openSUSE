@@ -924,4 +924,31 @@
     on Linux; the bug had appeared in 1.17.5.</comment>
     <requestid>990292</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>de3dfa88649778684eb36f0ee619ed5e</srcmd5>
+    <version>1.23.2</version>
+    <time>1666440765</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 1.23.2
+  * Security: processing of a specially crafted mp4 file by the
+    ngx_http_mp4_module might cause a worker process crash, worker
+    process memory disclosure, or might have potential other impact
+    (CVE-2022-41741, CVE-2022-41742).
+  * Feature: the &quot;$proxy_protocol_tlv_...&quot; variables.
+  * Feature: TLS session tickets encryption keys are now automatically
+    rotated when using shared memory in the &quot;ssl_session_cache&quot;
+    directive.
+  * Change: the logging level of the &quot;bad record type&quot; SSL errors has
+    been lowered from &quot;crit&quot; to &quot;info&quot;.
+  * Change: now when using shared memory in the &quot;ssl_session_cache&quot;
+    directive the &quot;could not allocate new session&quot; errors are logged at
+    the &quot;warn&quot; level instead of &quot;alert&quot; and not more often than once per second.
+  * Bugfix: nginx/Windows could not be built with OpenSSL 3.0.x.
+  * Bugfix: in logging of the PROXY protocol errors.
+  * Workaround: shared memory from the &quot;ssl_session_cache&quot; directive was
+    spent on sessions using TLS session tickets when using TLSv1.3 with OpenSSL.
+  * Workaround: timeout specified with the &quot;ssl_session_timeout&quot;
+    directive did not work when using TLSv1.3 with OpenSSL or BoringSSL.</comment>
+    <requestid>1030027</requestid>
+  </revision>
 </revisionlist>
