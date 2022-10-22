@@ -20,7 +20,7 @@
 %define doc_ver 5.2.0
 %bcond_without libalternatives
 Name:           python-nbformat
-Version:        5.6.1
+Version:        5.7.0
 Release:        0
 Summary:        The Jupyter Notebook format
 License:        BSD-3-Clause

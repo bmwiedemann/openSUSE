@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 22 03:43:12 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 5.7.0:
+  * Always use jsonschema to handle error reporting.
+  * Fix deprecation warning suggestion.
+
+-------------------------------------------------------------------
 Tue Sep 27 16:58:10 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 5.6.1:
