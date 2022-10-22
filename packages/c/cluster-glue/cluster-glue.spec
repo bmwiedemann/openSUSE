@@ -23,7 +23,7 @@
 # Directory where we install documentation
 %global glue_docdir %{_defaultdocdir}/%{name}
 Name:           cluster-glue
-Version:        1.0.12+v1.git.1650454062.1fbde71c
+Version:        1.0.12+v1.git.1663933145.1619d044
 Release:        0
 Summary:        Reusable cluster components
 License:        GPL-2.0-only AND LGPL-2.1-or-later
@@ -80,7 +80,7 @@ standards, and an interface to common STONITH devices.
 Summary:        Reusable cluster libraries
 Group:          System/Libraries
 Requires:       %{name} = %{version}-%{release}
-Provides:      libglue2 = %version-%release
+Provides:       libglue2 = %version-%release
 Conflicts:      libheartbeat2 < 3.0.2
 Obsoletes:      libglue2 < %version-%release
 Obsoletes:      libheartbeat2 < 3.0.2
@@ -93,7 +93,7 @@ such as Pacemaker.
 Summary:        Headers and libraries for writing cluster managers
 Group:          Development/Libraries/C and C++
 Requires:       %{name}-libs = %{version}-%{release}
-Provides:      libglue-devel = %version-%release
+Provides:       libglue-devel = %version-%release
 Conflicts:      libheartbeat-devel < 3.0.2
 Obsoletes:      libglue-devel < %version-%release
 Obsoletes:      libheartbeat-devel < 3.0.2
