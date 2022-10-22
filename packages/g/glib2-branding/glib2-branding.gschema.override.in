@@ -11,6 +11,7 @@ toolkit-accessibility = false
 [org.gnome.desktop.background]
 ## Default wallpaper
 picture-uri = "@@WALLPAPER_URI@@"
+picture-uri-dark = "@@WALLPAPER_URI@@"
 picture-options = "stretched"
 @@IF_openSUSE@@primary-color = "#258c06"
 @@IF_openSUSE@@secondary-color = "#258c06"

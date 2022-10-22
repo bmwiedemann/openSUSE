@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 17 16:06:38 UTC 2022 - Milachew <milachew@mail.lv>
+
+- Fix default openSUSE wallpaper is not present in dark mode (boo#1204138).
+
+-------------------------------------------------------------------
 Tue Mar 15 01:55:58 UTC 2022 - Yifan Jiang <yfjiang@suse.com>
 
 - Update .gschema.override.in: Change default libreoffice startup
