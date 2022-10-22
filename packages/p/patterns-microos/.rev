@@ -522,4 +522,12 @@ Tue Jan  20 02:29:11 UTC 2021 - Syds Bearda &lt;sydsb@opensuse.org&gt;
   any users running steam will need to install manually via t-u.</comment>
     <requestid>1007912</requestid>
   </revision>
+  <revision rev="54" vrev="54">
+    <srcmd5>dea4c16e4402f880d10dbcf05b44f6a7</srcmd5>
+    <version>5.0</version>
+    <time>1666440785</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1030320</requestid>
+  </revision>
 </revisionlist>

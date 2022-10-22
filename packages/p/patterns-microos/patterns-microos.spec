@@ -100,7 +100,9 @@ Requires:       health-checker
 Requires:       health-checker-plugins-MicroOS
 Requires:       iputils
 Requires:       issue-generator
+%ifnarch %{arm}
 Requires:       kdump
+%endif
 Requires:       less
 Requires:       microos-tools
 Requires:       openssh
@@ -480,6 +482,8 @@ Requires:       seahorse-daemon
 Requires:       gvfs-backends
 # We need the icons to work
 Requires:       adwaita-icon-theme
+# We need this for accessability and the lack of it causes big performance issues (boo#1204564)
+Requires:       at-spi2-core
 # Some fonts
 Requires:       adobe-sourcecodepro-fonts
 Requires:       adobe-sourcesanspro-fonts
@@ -611,7 +615,7 @@ Requires:       pam_pwquality
 Requires:       policycoreutils-python-utils
 Requires:       qemu-guest-agent
 Requires:       spice-vdagent
-Requires:       tftpboot-installation-openSUSE-MicroOS-%{_arch}
+Requires:       tftpboot-installation-openSUSE-MicroOS-%{_target_cpu}
 %ifarch %ix86 x86_64
 Requires:       ucode-amd
 Requires:       ucode-intel

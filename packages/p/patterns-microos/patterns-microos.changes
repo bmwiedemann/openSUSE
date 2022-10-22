@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Oct 21 08:19:01 UTC 2022 - Richard Brown <rbrown@suse.com>
+
+- Require at-spi2-core else risk major performance issues (boo#1204564) 
+
+-------------------------------------------------------------------
+Wed Oct 19 07:05:42 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Do not require kdump on 32-bit arm - boo#1203888
+
+-------------------------------------------------------------------
+Mon Oct 17 09:14:52 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Replace tftpboot-installation-openSUSE-MicroOS-%{_arch}
+  with tftpboot-installation-openSUSE-MicroOS-%{_target_cpu}
+  to match what installation-images:MicroOS produces
+
+-------------------------------------------------------------------
 Tue Oct  4 13:16:18 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Remove steam-devices again, it's only in the Non-OSS repo
