@@ -45,7 +45,7 @@ ExclusiveArch:  x86_64
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-pythran%{psuffix}
-Version:        0.11.0
+Version:        0.12.0
 Release:        0
 Summary:        Ahead of Time compiler for numeric kernels
 License:        BSD-3-Clause
@@ -53,9 +53,6 @@ URL:            https://github.com/serge-sans-paille/pythran
 # Tests are only availble in github archive
 Source0:        https://github.com/serge-sans-paille/pythran/archive/refs/tags/%{version}.tar.gz#/pythran-%{version}-gh.tar.gz
 Source99:       python-pythran-rpmlintrc
-Patch0:         gcc12-fixes.patch
-# PATCH-FIX-UPSTREAM pythran-pr1984-fixdistutils.patch gh#serge-sans-paille/pythran#1984
-Patch1:         pythran-pr1984-fixdistutils.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

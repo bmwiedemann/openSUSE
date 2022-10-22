@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Oct 11 08:41:50 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.12.0
+  * Improve numpy expression computation speed
+  * Decent ICC support (fixing an issue from 2018!)
+  * Much faster C++ code generation
+  * Complete rework of constant folder
+  * Support C++-time evaluation of numpy.ndarray.ndim
+  * Improved omp declare reduction support
+  * Allow indexing of ndarray by integers of mixed types
+  * A lot of small pesty bug fixes in the C++ headers
+- Drop patches
+  * gcc12-fixes.patch
+  * pythran-pr1984-fixdistutils.patch
+
+-------------------------------------------------------------------
 Mon Jul 18 12:24:47 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Add pythran-pr1984-fixdistutils.patch
