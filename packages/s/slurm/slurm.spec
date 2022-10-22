@@ -18,7 +18,7 @@
 
 # Check file META in sources: update so_version to (API_CURRENT - API_AGE)
 %define so_version 38
-%define ver 22.05.2
+%define ver 22.05.5
 %define _ver _22_05
 %define dl_ver %{ver}
 # so-version is 0 and seems to be stable

@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Oct 14 08:49:24 UTC 2022 - Christian Goll <cgoll@suse.com>
+
+- updated to 22.05.5
+- NOTE: Slurm validates that libraries are of the same version. Unfortunately,
+  due to an oversight, we failed to notice that the slurmstepd loads the
+  hash_k12 library only after a job has completed. This means that if the
+  hash_k12 library is upgraded before a job finishes, the slurmstepd will load
+  the new library when the job finishes, and will fail due to a mismatch of
+  versions.  This results in nodes with slurmstepd processes stuck
+  indefinitely. These processes require manual intervention to clean up. There
+  is no clean way to resolve these hung slurmstepd processes.
+  The only recommended way to upgrade between minor versions of 22.05 with
+  RPM’s or upgrades that replace current binaries and libraries is to drain the
+  nodes of running jobs first.
+- Fixes a number of moderate severity issues, noteable are:
+  * Load hash plugin at slurmstepd launch time to prevent issues loading the
+    plugin at step completion if the Slurm installation is upgraded.
+  * Update nvml plugin to match the unique id format for MIG devices in new
+    Nvidia drivers.
+  * Fix multi-node step launch failure when nodes in the controller aren't in
+    natural order. This can happen with inconsistent node naming (such as
+    node15 and node052) or with dynamic nodes which can register in any order.
+  * job_container/tmpfs - cleanup containers even when the .ns file isn't
+    mounted anymore.
+  * Wait up to PrologEpilogTimeout before shutting down slurmd to allow prolog
+    and epilog scripts to complete or timeout. Previously, slurmd waited 120
+    seconds before timing out and killing prolog and epilog scripts.
+
+-------------------------------------------------------------------
 Sat Sep 24 07:34:31 UTC 2022 - Egbert Eich <eich@suse.com>
 
 - Do not deduplicate files of testsuite Slurm configuration.
