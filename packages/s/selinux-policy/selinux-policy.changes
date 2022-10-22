@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Oct 19 11:45:57 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 20221019. Refreshed:
+  * distro_suse_to_distro_redhat.patch
+  * fix_apache.patch
+  * fix_chronyd.patch
+  * fix_cron.patch
+  * fix_init.patch
+  * fix_kernel_sysctl.patch
+  * fix_networkmanager.patch
+  * fix_rpm.patch
+  * fix_sysnetwork.patch
+  * fix_systemd.patch
+  * fix_systemd_watch.patch
+  * fix_unconfined.patch
+  * fix_unconfineduser.patch
+  * fix_unprivuser.patch
+  * fix_xserver.patch
+- Dropped fix_cockpit.patch as this is now packaged with cockpit itself
+- Remove the ipa module, freeip ships their own module
+- Added fix_alsa.patch to allow reading of config files in home directories
+- Extended fix_networkmanager.patch and fix_postfix.patch to account
+  for SUSE systems
+- Added dontaudit_interface_kmod_tmpfs.patch to prevent AVCs when startproc
+  queries the running processes
+- Updated fix_snapper.patch to allow snapper to talk to rpm via dbus
+
+-------------------------------------------------------------------
 Fri Sep 30 07:14:49 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
 
 - Updated quilt couldn't unpack tarball. This will cause ongoing issues

@@ -1,7 +1,7 @@
-Index: fedora-policy/policy/modules/contrib/snapper.te
+Index: fedora-policy-20221019/policy/modules/contrib/snapper.te
 ===================================================================
---- fedora-policy.orig/policy/modules/contrib/snapper.te
-+++ fedora-policy/policy/modules/contrib/snapper.te
+--- fedora-policy-20221019.orig/policy/modules/contrib/snapper.te
++++ fedora-policy-20221019/policy/modules/contrib/snapper.te
 @@ -18,6 +18,9 @@ files_config_file(snapperd_conf_t)
  type snapperd_data_t;
  files_type(snapperd_data_t)
@@ -23,7 +23,7 @@ Index: fedora-policy/policy/modules/contrib/snapper.te
  kernel_setsched(snapperd_t)
  
  domain_read_all_domains_state(snapperd_t)
-@@ -73,6 +80,10 @@ storage_raw_read_fixed_disk(snapperd_t)
+@@ -73,6 +80,14 @@ storage_raw_read_fixed_disk(snapperd_t)
  auth_use_nsswitch(snapperd_t)
  
  optional_policy(`
@@ -31,13 +31,17 @@ Index: fedora-policy/policy/modules/contrib/snapper.te
 +')
 +
 +optional_policy(`
++        rpm_dbus_chat(snapperd_t)
++')
++
++optional_policy(`
      cron_system_entry(snapperd_t, snapperd_exec_t)
  ')
  
-Index: fedora-policy/policy/modules/contrib/snapper.fc
+Index: fedora-policy-20221019/policy/modules/contrib/snapper.fc
 ===================================================================
---- fedora-policy.orig/policy/modules/contrib/snapper.fc
-+++ fedora-policy/policy/modules/contrib/snapper.fc
+--- fedora-policy-20221019.orig/policy/modules/contrib/snapper.fc
++++ fedora-policy-20221019/policy/modules/contrib/snapper.fc
 @@ -7,9 +7,17 @@
  
  /var/log/snapper\.log.* --  gen_context(system_u:object_r:snapperd_log_t,s0)

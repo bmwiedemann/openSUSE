@@ -1,7 +1,7 @@
-Index: fedora-policy-20220624/policy/modules/contrib/postfix.fc
+Index: fedora-policy-20221019/policy/modules/contrib/postfix.fc
 ===================================================================
---- fedora-policy-20220624.orig/policy/modules/contrib/postfix.fc
-+++ fedora-policy-20220624/policy/modules/contrib/postfix.fc
+--- fedora-policy-20221019.orig/policy/modules/contrib/postfix.fc
++++ fedora-policy-20221019/policy/modules/contrib/postfix.fc
 @@ -1,37 +1,21 @@
  # postfix
 -/etc/rc\.d/init\.d/postfix    --  gen_context(system_u:object_r:postfix_initrc_exec_t,s0)
@@ -75,11 +75,20 @@ Index: fedora-policy-20220624/policy/modules/contrib/postfix.fc
  /var/spool/postfix/private(/.*)? gen_context(system_u:object_r:postfix_private_t,s0)
  /var/spool/postfix/public(/.*)? gen_context(system_u:object_r:postfix_public_t,s0)
  /var/spool/postfix/bounce(/.*)? gen_context(system_u:object_r:postfix_spool_bounce_t,s0)
-Index: fedora-policy-20220624/policy/modules/contrib/postfix.te
+Index: fedora-policy-20221019/policy/modules/contrib/postfix.te
 ===================================================================
---- fedora-policy-20220624.orig/policy/modules/contrib/postfix.te
-+++ fedora-policy-20220624/policy/modules/contrib/postfix.te
-@@ -447,6 +447,14 @@ logging_send_syslog_msg(postfix_map_t)
+--- fedora-policy-20221019.orig/policy/modules/contrib/postfix.te
++++ fedora-policy-20221019/policy/modules/contrib/postfix.te
+@@ -121,6 +121,8 @@ allow postfix_master_t self:udp_socket c
+ allow postfix_master_t postfix_etc_t:dir rw_dir_perms;
+ allow postfix_master_t postfix_etc_t:file rw_file_perms;
+ mta_filetrans_aliases(postfix_master_t, postfix_etc_t)
++# SUSE also runs this on /etc/alias
++mta_filetrans_aliases(postfix_master_t, etc_t)
+ 
+ can_exec(postfix_master_t, postfix_exec_t)
+ 
+@@ -447,6 +449,14 @@ logging_send_syslog_msg(postfix_map_t)
  
  userdom_use_inherited_user_ptys(postfix_map_t)
  
@@ -94,7 +103,7 @@ Index: fedora-policy-20220624/policy/modules/contrib/postfix.te
  optional_policy(`
  	locallogin_dontaudit_use_fds(postfix_map_t)
  ')
-@@ -687,6 +695,14 @@ corenet_tcp_connect_spamd_port(postfix_m
+@@ -687,6 +697,14 @@ corenet_tcp_connect_spamd_port(postfix_m
  files_search_all_mountpoints(postfix_smtp_t)
  
  optional_policy(`
