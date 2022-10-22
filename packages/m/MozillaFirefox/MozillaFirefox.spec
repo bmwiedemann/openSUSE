@@ -28,9 +28,9 @@
 # orig_suffix b3
 # major 69
 # mainver %major.99
-%define major          105
-%define mainver        %major.0.3
-%define orig_version   105.0.3
+%define major          106
+%define mainver        %major.0
+%define orig_version   106.0
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -54,8 +54,10 @@
 %ifarch %ix86
 ExclusiveArch:  i586 i686
 BuildArch:      i686
-%{expand:%%global optflags %(echo "%optflags"|sed -e s/i586/i686/) -march=i686 -mtune=generic}
+%{expand:%%global optflags %(echo "%optflags"|sed -e s/i586/i686/) -march=i686 -mtune=generic -msse2}
 %endif
+%{expand:%%global optflags %(echo "%optflags"|sed -e s/-Werror=return-type//) }
+%{expand:%%global optflags %(echo "%optflags"|sed -e s/-flto=auto//) }
 
 # general build definitions
 %define progname firefox
@@ -97,8 +99,8 @@ BuildRequires:  gcc11-c++
 BuildRequires:  gcc-c++
 %endif
 %if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150300
-BuildRequires:  cargo >= 1.59
-BuildRequires:  rust >= 1.59
+BuildRequires:  cargo >= 1.61
+BuildRequires:  rust >= 1.61
 %else
 # Newer sle/leap/tw use parallel versioned rust releases which have
 # a different method for provides that we can use to request a
@@ -117,8 +119,8 @@ BuildRequires:  libcurl-devel
 BuildRequires:  libiw-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
-BuildRequires:  mozilla-nspr-devel >= 4.34.1
-BuildRequires:  mozilla-nss-devel >= 3.82
+BuildRequires:  mozilla-nspr-devel >= 4.35
+BuildRequires:  mozilla-nss-devel >= 3.83
 BuildRequires:  nasm >= 2.14
 BuildRequires:  nodejs >= 10.22.1
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
@@ -224,7 +226,7 @@ Patch22:        mozilla-silence-no-return-type.patch
 Patch23:        mozilla-bmo531915.patch
 Patch25:        one_swizzle_to_rule_them_all.patch
 Patch26:        svg-rendering.patch
-Patch27:        mozilla-i686-build.patch
+Patch27:        mozilla-buildfixes.patch
 # Firefox/browser
 Patch101:       firefox-kde.patch
 Patch102:       firefox-branded-icons.patch
@@ -362,15 +364,16 @@ echo "" > .obsenv.sh
 
 cat >> .obsenv.sh <<EOF
 export CARGO_HOME=${RPM_BUILD_DIR}/%{srcname}-%{orig_version}/.cargo
-export MOZ_SOURCE_CHANGESET=$RELEASE_TAG
-export SOURCE_REPO=$RELEASE_REPO
-export source_repo=$RELEASE_REPO
-export MOZ_SOURCE_REPO=$RELEASE_REPO
-export MOZ_BUILD_DATE=$RELEASE_TIMESTAMP
+export MOZ_SOURCE_CHANGESET=\$RELEASE_TAG
+export SOURCE_REPO=\$RELEASE_REPO
+export source_repo=\$RELEASE_REPO
+export MOZ_SOURCE_REPO=\$RELEASE_REPO
+export MOZ_BUILD_DATE=\$RELEASE_TIMESTAMP
 export MOZILLA_OFFICIAL=1
 export BUILD_OFFICIAL=1
 export MOZ_TELEMETRY_REPORTING=1
 export MACH_USE_SYSTEM_PYTHON=1
+export CFLAGS="%{optflags}"
 %if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150400
 export CC=gcc-11
 %else
@@ -378,23 +381,23 @@ export CC=gcc-11
 export CC=gcc
 export CXX=g++
 %if 0%{?gcc_version:%{gcc_version}} >= 12
-export CFLAGS="$CFLAGS -fimplicit-constexpr"
+export CFLAGS="\$CFLAGS -fimplicit-constexpr"
 %endif
 %endif
 %endif
 %ifarch %arm %ix86
 # Limit RAM usage during link
-export LDFLAGS="${LDFLAGS} -Wl,--no-keep-memory -Wl,--reduce-memory-overheads"
+export LDFLAGS="\$LDFLAGS -Wl,--no-keep-memory -Wl,--reduce-memory-overheads"
 # A lie to prevent -Wl,--gc-sections being set which requires more memory than 32bit can offer
 export GC_SECTIONS_BREAKS_DEBUG_RANGES=yes
 %endif
-export LDFLAGS="${LDFLAGS} -fPIC -Wl,-z,relro,-z,now"
+export LDFLAGS="\$LDFLAGS -fPIC -Wl,-z,relro,-z,now"
 %ifarch ppc64 ppc64le
 %if 0%{?clang_build} == 0
-export CFLAGS="$CFLAGS -mminimal-toc"
+export CFLAGS="\$CFLAGS -mminimal-toc"
 %endif
 %endif
-export CXXFLAGS="$CFLAGS"
+export CXXFLAGS="\$CFLAGS"
 export MOZCONFIG=$RPM_BUILD_DIR/mozconfig
 EOF
 # Done with env-variables.

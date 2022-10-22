@@ -1,10 +1,10 @@
 # HG changeset patch
-# Parent  602c790a8615e43dbfe8ce15a30d020e0fb4f5e7
+# Parent  ccd8f974707cba440cffeb0c66b5bcc0cda73c63
 
 diff --git a/Cargo.lock b/Cargo.lock
 --- a/Cargo.lock
 +++ b/Cargo.lock
-@@ -2298,18 +2298,16 @@ name = "glsl-to-cxx"
+@@ -2296,18 +2296,16 @@ name = "glsl-to-cxx"
  version = "0.1.0"
  dependencies = [
   "glsl",
@@ -26,7 +26,7 @@ diff --git a/Cargo.lock b/Cargo.lock
 diff --git a/Cargo.toml b/Cargo.toml
 --- a/Cargo.toml
 +++ b/Cargo.toml
-@@ -146,16 +146,17 @@ async-task = { git = "https://github.com
+@@ -143,16 +143,17 @@ async-task = { git = "https://github.com
  chardetng = { git = "https://github.com/hsivonen/chardetng", rev="3484d3e3ebdc8931493aa5df4d7ee9360a90e76b" }
  chardetng_c = { git = "https://github.com/hsivonen/chardetng_c", rev="ed8a4c6f900a90d4dbc1d64b856e61490a1c3570" }
  coremidi = { git = "https://github.com/chris-zen/coremidi.git", rev="fc68464b5445caf111e41f643a2e69ccce0b4f83" }
@@ -38,11 +38,11 @@ diff --git a/Cargo.toml b/Cargo.toml
 +glslopt = { path = "third_party/rust/glslopt/" }
  
  # application-services overrides to make updating them all simpler.
- interrupt-support = { git = "https://github.com/mozilla/application-services", rev = "2689788cecf24c385e6b7440e3aa1a89c511f14a" }
- sql-support = { git = "https://github.com/mozilla/application-services", rev = "2689788cecf24c385e6b7440e3aa1a89c511f14a" }
- sync15-traits = { git = "https://github.com/mozilla/application-services", rev = "2689788cecf24c385e6b7440e3aa1a89c511f14a" }
- viaduct = { git = "https://github.com/mozilla/application-services", rev = "2689788cecf24c385e6b7440e3aa1a89c511f14a" }
- webext-storage = { git = "https://github.com/mozilla/application-services", rev = "2689788cecf24c385e6b7440e3aa1a89c511f14a" }
+ interrupt-support = { git = "https://github.com/mozilla/application-services", rev = "fb1c78b13c27b5db1fd5458b8c2d8f433855dd61" }
+ sql-support = { git = "https://github.com/mozilla/application-services", rev = "fb1c78b13c27b5db1fd5458b8c2d8f433855dd61" }
+ sync15-traits = { git = "https://github.com/mozilla/application-services", rev = "fb1c78b13c27b5db1fd5458b8c2d8f433855dd61" }
+ viaduct = { git = "https://github.com/mozilla/application-services", rev = "fb1c78b13c27b5db1fd5458b8c2d8f433855dd61" }
+ webext-storage = { git = "https://github.com/mozilla/application-services", rev = "fb1c78b13c27b5db1fd5458b8c2d8f433855dd61" }
  
 diff --git a/gfx/skia/skia/include/codec/SkEncodedOrigin.h b/gfx/skia/skia/include/codec/SkEncodedOrigin.h
 --- a/gfx/skia/skia/include/codec/SkEncodedOrigin.h
@@ -1943,29 +1943,16 @@ diff --git a/intl/icu/source/i18n/number_rounding.cpp b/intl/icu/source/i18n/num
 diff --git a/third_party/libwebrtc/api/adaptation/resource.cc b/third_party/libwebrtc/api/adaptation/resource.cc
 --- a/third_party/libwebrtc/api/adaptation/resource.cc
 +++ b/third_party/libwebrtc/api/adaptation/resource.cc
-@@ -4,25 +4,29 @@
-  *  Use of this source code is governed by a BSD-style license
-  *  that can be found in the LICENSE file in the root of the source
-  *  tree. An additional intellectual property rights grant can be found
-  *  in the file PATENTS.  All contributing project authors may
-  *  be found in the AUTHORS file in the root of the source tree.
-  */
- 
- #include "api/adaptation/resource.h"
-+#include "rtc_base/checks.h"
- 
- namespace webrtc {
- 
+@@ -17,16 +17,17 @@ namespace webrtc {
  const char* ResourceUsageStateToString(ResourceUsageState usage_state) {
    switch (usage_state) {
      case ResourceUsageState::kOveruse:
        return "kOveruse";
      case ResourceUsageState::kUnderuse:
        return "kUnderuse";
-+    default:
-+      RTC_NOTREACHED();
-+      return "";
    }
+   RTC_CHECK_NOTREACHED();
++  return nullptr;
  }
  
  ResourceListener::~ResourceListener() {}
@@ -1973,22 +1960,20 @@ diff --git a/third_party/libwebrtc/api/adaptation/resource.cc b/third_party/libw
  Resource::Resource() {}
  
  Resource::~Resource() {}
+ 
 diff --git a/third_party/libwebrtc/api/rtp_parameters.cc b/third_party/libwebrtc/api/rtp_parameters.cc
 --- a/third_party/libwebrtc/api/rtp_parameters.cc
 +++ b/third_party/libwebrtc/api/rtp_parameters.cc
-@@ -24,16 +24,19 @@ const char* DegradationPreferenceToStrin
-     case DegradationPreference::DISABLED:
-       return "disabled";
+@@ -27,16 +27,17 @@ const char* DegradationPreferenceToStrin
      case DegradationPreference::MAINTAIN_FRAMERATE:
        return "maintain-framerate";
      case DegradationPreference::MAINTAIN_RESOLUTION:
        return "maintain-resolution";
      case DegradationPreference::BALANCED:
        return "balanced";
-+    default:
-+      RTC_NOTREACHED();
-+      return "";
    }
+   RTC_CHECK_NOTREACHED();
++  return "";
  }
  
  const double kDefaultBitratePriority = 1.0;
@@ -1996,22 +1981,42 @@ diff --git a/third_party/libwebrtc/api/rtp_parameters.cc b/third_party/libwebrtc
  RtcpFeedback::RtcpFeedback() = default;
  RtcpFeedback::RtcpFeedback(RtcpFeedbackType type) : type(type) {}
  RtcpFeedback::RtcpFeedback(RtcpFeedbackType type,
+                            RtcpFeedbackMessageType message_type)
+diff --git a/third_party/libwebrtc/api/video/video_frame_buffer.cc b/third_party/libwebrtc/api/video/video_frame_buffer.cc
+--- a/third_party/libwebrtc/api/video/video_frame_buffer.cc
++++ b/third_party/libwebrtc/api/video/video_frame_buffer.cc
+@@ -87,16 +87,18 @@ const char* VideoFrameBufferTypeToString
+       return "kI422";
+     case VideoFrameBuffer::Type::kI010:
+       return "kI010";
+     case VideoFrameBuffer::Type::kNV12:
+       return "kNV12";
+     default:
+       RTC_DCHECK_NOTREACHED();
+   }
++  RTC_DCHECK_NOTREACHED();
++  return nullptr;
+ }
+ 
+ int I420BufferInterface::ChromaWidth() const {
+   return (width() + 1) / 2;
+ }
+ 
+ int I420BufferInterface::ChromaHeight() const {
+   return (height() + 1) / 2;
 diff --git a/third_party/libwebrtc/api/video_codecs/video_codec.cc b/third_party/libwebrtc/api/video_codecs/video_codec.cc
 --- a/third_party/libwebrtc/api/video_codecs/video_codec.cc
 +++ b/third_party/libwebrtc/api/video_codecs/video_codec.cc
-@@ -114,16 +114,19 @@ const char* CodecTypeToPayloadString(Vid
-     case kVideoCodecAV1:
-       return kPayloadNameAv1;
+@@ -117,16 +117,17 @@ const char* CodecTypeToPayloadString(Vid
      case kVideoCodecH264:
        return kPayloadNameH264;
      case kVideoCodecMultiplex:
        return kPayloadNameMultiplex;
      case kVideoCodecGeneric:
        return kPayloadNameGeneric;
-+    default:
-+      RTC_NOTREACHED();
-+      return "";
    }
+   RTC_CHECK_NOTREACHED();
++  return "";
  }
  
  VideoCodecType PayloadStringToCodecType(const std::string& name) {
@@ -2019,22 +2024,20 @@ diff --git a/third_party/libwebrtc/api/video_codecs/video_codec.cc b/third_party
      return kVideoCodecVP8;
    if (absl::EqualsIgnoreCase(name, kPayloadNameVp9))
      return kVideoCodecVP9;
+   if (absl::EqualsIgnoreCase(name, kPayloadNameAv1) ||
 diff --git a/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc b/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc
 --- a/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc
 +++ b/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc
-@@ -156,16 +156,19 @@ class VideoEncoderSoftwareFallbackWrappe
-             << "Trying to access encoder in uninitialized fallback wrapper.";
-         // Return main encoder to preserve previous behavior.
-         ABSL_FALLTHROUGH_INTENDED;
+@@ -158,16 +158,17 @@ class VideoEncoderSoftwareFallbackWrappe
+         [[fallthrough]];
        case EncoderState::kMainEncoderUsed:
          return encoder_.get();
        case EncoderState::kFallbackDueToFailure:
        case EncoderState::kForcedFallback:
          return fallback_encoder_.get();
-+    default:
-+      RTC_NOTREACHED();
-+      return nullptr;
      }
+     RTC_CHECK_NOTREACHED();
++    return nullptr;
    }
  
    // Updates encoder with last observed parameters, such as callbacks, rates,
@@ -2042,20 +2045,19 @@ diff --git a/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallb
    void PrimeEncoder(VideoEncoder* encoder) const;
  
    // Settings used in the last InitEncode call and used if a dynamic fallback to
-@@ -334,16 +337,19 @@ int32_t VideoEncoderSoftwareFallbackWrap
-     case EncoderState::kUninitialized:
-       return WEBRTC_VIDEO_CODEC_ERROR;
+   // software is required.
+@@ -338,16 +339,17 @@ int32_t VideoEncoderSoftwareFallbackWrap
      case EncoderState::kMainEncoderUsed: {
        return EncodeWithMainEncoder(frame, frame_types);
      }
      case EncoderState::kFallbackDueToFailure:
      case EncoderState::kForcedFallback:
        return fallback_encoder_->Encode(frame, frame_types);
-+    default:
-+      RTC_NOTREACHED();
-+      return WEBRTC_VIDEO_CODEC_ERROR;
    }
+   RTC_CHECK_NOTREACHED();
++  return WEBRTC_VIDEO_CODEC_ERROR;
  }
+ 
  int32_t VideoEncoderSoftwareFallbackWrapper::EncodeWithMainEncoder(
      const VideoFrame& frame,
      const std::vector<VideoFrameType>* frame_types) {
@@ -2065,19 +2067,16 @@ diff --git a/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallb
 diff --git a/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc b/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc
 --- a/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc
 +++ b/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc
-@@ -156,16 +156,19 @@ const char* Adaptation::StatusToString(A
-     case Adaptation::Status::kAwaitingPreviousAdaptation:
-       return "kAwaitingPreviousAdaptation";
+@@ -163,16 +163,17 @@ const char* Adaptation::StatusToString(A
      case Status::kInsufficientInput:
        return "kInsufficientInput";
      case Status::kAdaptationDisabled:
        return "kAdaptationDisabled";
      case Status::kRejectedByConstraint:
        return "kRejectedByConstraint";
-+    default:
-+      RTC_NOTREACHED();
-+      return "";
    }
+   RTC_CHECK_NOTREACHED();
++  return "";
  }
  
  Adaptation::Adaptation(int validation_id,
@@ -2085,19 +2084,17 @@ diff --git a/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc b/thi
                         VideoAdaptationCounters counters,
                         VideoStreamInputState input_state)
      : validation_id_(validation_id),
-@@ -375,16 +378,19 @@ VideoStreamAdapter::RestrictionsOrState 
-       return IncreaseResolution(input_state, current_restrictions_);
-     }
+       status_(Status::kValid),
+@@ -385,16 +386,17 @@ VideoStreamAdapter::RestrictionsOrState 
      case DegradationPreference::MAINTAIN_RESOLUTION: {
        // Scale up framerate.
        return IncreaseFramerate(input_state, current_restrictions_);
      }
      case DegradationPreference::DISABLED:
        return Adaptation::Status::kAdaptationDisabled;
-+    default:
-+      RTC_NOTREACHED();
-+      return Adaptation::Status::kAdaptationDisabled;
    }
+   RTC_CHECK_NOTREACHED();
++  return Adaptation::Status::kAdaptationDisabled;
  }
  
  Adaptation VideoStreamAdapter::GetAdaptationDown() {
@@ -2105,19 +2102,17 @@ diff --git a/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc b/thi
    VideoStreamInputState input_state = input_state_provider_->InputState();
    ++adaptation_validation_id_;
    RestrictionsOrState restrictions_or_state =
-@@ -454,16 +460,19 @@ VideoStreamAdapter::GetAdaptationDownSte
-     case DegradationPreference::MAINTAIN_FRAMERATE: {
-       return DecreaseResolution(input_state, current_restrictions);
+       GetAdaptationDownStep(input_state, current_restrictions_);
+@@ -467,16 +469,17 @@ VideoStreamAdapter::GetAdaptationDownSte
      }
      case DegradationPreference::MAINTAIN_RESOLUTION: {
        return DecreaseFramerate(input_state, current_restrictions);
      }
      case DegradationPreference::DISABLED:
        return Adaptation::Status::kAdaptationDisabled;
-+    default:
-+      RTC_NOTREACHED();
-+      return Adaptation::Status::kAdaptationDisabled;
    }
+   RTC_CHECK_NOTREACHED();
++  return Adaptation::Status::kAdaptationDisabled;
  }
  
  VideoStreamAdapter::RestrictionsOrState VideoStreamAdapter::DecreaseResolution(
@@ -2125,18 +2120,18 @@ diff --git a/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc b/thi
      const RestrictionsWithCounters& current_restrictions) {
    int target_pixels =
        GetLowerResolutionThan(input_state.frame_size_pixels().value());
-@@ -594,16 +603,18 @@ Adaptation VideoStreamAdapter::GetAdaptD
+   // Use single active stream if set, this stream could be lower than the input.
+@@ -620,16 +623,18 @@ Adaptation VideoStreamAdapter::GetAdaptD
      case DegradationPreference::MAINTAIN_FRAMERATE:
        return GetAdaptationDown();
      case DegradationPreference::BALANCED: {
        return RestrictionsOrStateToAdaptation(
            GetAdaptDownResolutionStepForBalanced(input_state), input_state);
      }
-     default:
-       RTC_NOTREACHED();
-+      return RestrictionsOrStateToAdaptation(
-+          Adaptation::Status::kAdaptationDisabled, input_state);
    }
+   RTC_CHECK_NOTREACHED();
++  return RestrictionsOrStateToAdaptation(
++         Adaptation::Status::kAdaptationDisabled, input_state);
  }
  
  VideoStreamAdapter::RestrictionsOrState
@@ -2144,11 +2139,11 @@ diff --git a/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc b/thi
      const VideoStreamInputState& input_state) const {
    // Adapt twice if the first adaptation did not decrease resolution.
    auto first_step = GetAdaptationDownStep(input_state, current_restrictions_);
+   if (!absl::holds_alternative<RestrictionsWithCounters>(first_step)) {
 diff --git a/third_party/libwebrtc/call/simulated_network.cc b/third_party/libwebrtc/call/simulated_network.cc
 --- a/third_party/libwebrtc/call/simulated_network.cc
 +++ b/third_party/libwebrtc/call/simulated_network.cc
-@@ -72,16 +72,18 @@ bool CoDelSimulation::DropDequeuedPacket
-         if (queue_size - packet_size < kMaxPacketSize)
+@@ -73,16 +73,17 @@ bool CoDelSimulation::DropDequeuedPacket
            state_ = kPending;
          last_drop_at_ = next_drop_at;
          ++drop_count_;
@@ -2156,7 +2151,7 @@ diff --git a/third_party/libwebrtc/call/simulated_network.cc b/third_party/libwe
        }
        return false;
    }
-+  RTC_NOTREACHED();
+   RTC_CHECK_NOTREACHED();
 +  return false;
  }
  
@@ -2169,19 +2164,16 @@ diff --git a/third_party/libwebrtc/call/simulated_network.cc b/third_party/libwe
 diff --git a/third_party/libwebrtc/call/video_send_stream.cc b/third_party/libwebrtc/call/video_send_stream.cc
 --- a/third_party/libwebrtc/call/video_send_stream.cc
 +++ b/third_party/libwebrtc/call/video_send_stream.cc
-@@ -22,16 +22,19 @@ namespace {
- const char* StreamTypeToString(VideoSendStream::StreamStats::StreamType type) {
-   switch (type) {
+@@ -25,16 +25,17 @@ const char* StreamTypeToString(VideoSend
      case VideoSendStream::StreamStats::StreamType::kMedia:
        return "media";
      case VideoSendStream::StreamStats::StreamType::kRtx:
        return "rtx";
      case VideoSendStream::StreamStats::StreamType::kFlexfec:
        return "flexfec";
-+    default:
-+        RTC_NOTREACHED();
-+        return "";
    }
+   RTC_CHECK_NOTREACHED();
++  return "";
  }
  
  }  // namespace
@@ -2189,62 +2181,76 @@ diff --git a/third_party/libwebrtc/call/video_send_stream.cc b/third_party/libwe
  VideoSendStream::StreamStats::StreamStats() = default;
  VideoSendStream::StreamStats::~StreamStats() = default;
  
-diff --git a/third_party/libwebrtc/modules/audio_coding/neteq/decision_logic.cc b/third_party/libwebrtc/modules/audio_coding/neteq/decision_logic.cc
---- a/third_party/libwebrtc/modules/audio_coding/neteq/decision_logic.cc
-+++ b/third_party/libwebrtc/modules/audio_coding/neteq/decision_logic.cc
-@@ -347,17 +347,17 @@ NetEq::Operation DecisionLogic::FuturePa
-     return NetEq::Operation::kNormal;
+ std::string VideoSendStream::StreamStats::ToString() const {
+diff --git a/third_party/libwebrtc/modules/audio_processing/agc/clipping_predictor.cc b/third_party/libwebrtc/modules/audio_processing/agc/clipping_predictor.cc
+--- a/third_party/libwebrtc/modules/audio_processing/agc/clipping_predictor.cc
++++ b/third_party/libwebrtc/modules/audio_processing/agc/clipping_predictor.cc
+@@ -373,11 +373,12 @@ std::unique_ptr<ClippingPredictor> Creat
+           /*adaptive_step_estimation=*/true);
+     case ClippingPredictorMode::kFixedStepClippingPeakPrediction:
+       return std::make_unique<ClippingPeakPredictor>(
+           num_channels, config.window_length, config.reference_window_length,
+           config.reference_window_delay, config.clipping_threshold,
+           /*adaptive_step_estimation=*/false);
    }
+   RTC_DCHECK_NOTREACHED();
++  return nullptr;
+ }
  
-   // If previous was comfort noise, then no merge is needed.
-   if (prev_mode == NetEq::Mode::kRfc3389Cng ||
-       prev_mode == NetEq::Mode::kCodecInternalCng) {
-     size_t cur_size_samples =
-         estimate_dtx_delay_
--            ? cur_size_samples = span_samples_in_packet_buffer
-+            ? span_samples_in_packet_buffer
-             : num_packets_in_packet_buffer * decoder_frame_length;
-     // Target level is in number of packets in Q8.
-     const size_t target_level_samples =
-         (delay_manager_->TargetLevel() * packet_length_samples_) >> 8;
-     const bool generated_enough_noise =
-         static_cast<uint32_t>(generated_noise_samples + target_timestamp) >=
-         available_timestamp;
+ }  // namespace webrtc
+diff --git a/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc b/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc
+--- a/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc
++++ b/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc
+@@ -54,16 +54,18 @@ std::vector<float> PreprocessWeights(rtc
+ rtc::FunctionView<float(float)> GetActivationFunction(
+     ActivationFunction activation_function) {
+   switch (activation_function) {
+     case ActivationFunction::kTansigApproximated:
+       return ::rnnoise::TansigApproximated;
+     case ActivationFunction::kSigmoidApproximated:
+       return ::rnnoise::SigmoidApproximated;
+   }
++  // supposed to be never reached apparently therefore returning bogus
++  return ::rnnoise::TansigApproximated;
+ }
  
+ }  // namespace
+ 
+ FullyConnectedLayer::FullyConnectedLayer(
+     const int input_size,
+     const int output_size,
+     const rtc::ArrayView<const int8_t> bias,
 diff --git a/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc b/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
 --- a/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
 +++ b/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
-@@ -108,16 +108,19 @@ GainControl::Mode Agc1ConfigModeToInterf
-   using Agc1Config = AudioProcessing::Config::GainController1;
-   switch (mode) {
+@@ -116,16 +116,17 @@ GainControl::Mode Agc1ConfigModeToInterf
      case Agc1Config::kAdaptiveAnalog:
        return GainControl::kAdaptiveAnalog;
      case Agc1Config::kAdaptiveDigital:
        return GainControl::kAdaptiveDigital;
      case Agc1Config::kFixedDigital:
        return GainControl::kFixedDigital;
-+    default:
-+      RTC_NOTREACHED();
-+      return GainControl::kAdaptiveAnalog;
    }
+   RTC_CHECK_NOTREACHED();
++  return GainControl::kAdaptiveAnalog;
+ }
+ 
+ bool MinimizeProcessingForUnusedOutput() {
+   return !field_trial::IsEnabled("WebRTC-MutedStateKillSwitch");
  }
  
  // Maximum lengths that frame of samples being passed from the render side to
  // the capture side can have (does not apply to AEC3).
- static const size_t kMaxAllowedValuesOfSamplesPerBand = 160;
- static const size_t kMaxAllowedValuesOfSamplesPerFrame = 480;
- 
-@@ -1847,16 +1850,17 @@ void AudioProcessingImpl::InitializeNois
+@@ -1921,16 +1922,17 @@ void AudioProcessingImpl::InitializeNois
              case NoiseSuppresionConfig::kModerate:
                return NsConfig::SuppressionLevel::k12dB;
              case NoiseSuppresionConfig::kHigh:
                return NsConfig::SuppressionLevel::k18dB;
              case NoiseSuppresionConfig::kVeryHigh:
                return NsConfig::SuppressionLevel::k21dB;
-             default:
-               RTC_NOTREACHED();
-+              return NsConfig::SuppressionLevel::k6dB;
            }
+           RTC_CHECK_NOTREACHED();
++	  return NsConfig::SuppressionLevel::k6dB;
          };
  
      NsConfig cfg;
@@ -2252,115 +2258,70 @@ diff --git a/third_party/libwebrtc/modules/audio_processing/audio_processing_imp
      submodules_.noise_suppressor = std::make_unique<NoiseSuppressor>(
          cfg, proc_sample_rate_hz(), num_proc_channels());
    }
+ }
 diff --git a/third_party/libwebrtc/modules/audio_processing/include/audio_processing.cc b/third_party/libwebrtc/modules/audio_processing/include/audio_processing.cc
 --- a/third_party/libwebrtc/modules/audio_processing/include/audio_processing.cc
 +++ b/third_party/libwebrtc/modules/audio_processing/include/audio_processing.cc
-@@ -22,38 +22,47 @@ std::string NoiseSuppressionLevelToStrin
-     case AudioProcessing::Config::NoiseSuppression::Level::kLow:
-       return "Low";
+@@ -27,28 +27,30 @@ std::string NoiseSuppressionLevelToStrin
      case AudioProcessing::Config::NoiseSuppression::Level::kModerate:
        return "Moderate";
      case AudioProcessing::Config::NoiseSuppression::Level::kHigh:
        return "High";
      case AudioProcessing::Config::NoiseSuppression::Level::kVeryHigh:
        return "VeryHigh";
-+    default:
-+      RTC_NOTREACHED();
-+      return "";
    }
+   RTC_CHECK_NOTREACHED();
++  return "";
  }
  
- std::string GainController1ModeToString(
-     const AudioProcessing::Config::GainController1::Mode& mode) {
+ std::string GainController1ModeToString(const Agc1Config::Mode& mode) {
    switch (mode) {
-     case AudioProcessing::Config::GainController1::Mode::kAdaptiveAnalog:
+     case Agc1Config::Mode::kAdaptiveAnalog:
        return "AdaptiveAnalog";
-     case AudioProcessing::Config::GainController1::Mode::kAdaptiveDigital:
+     case Agc1Config::Mode::kAdaptiveDigital:
        return "AdaptiveDigital";
-     case AudioProcessing::Config::GainController1::Mode::kFixedDigital:
+     case Agc1Config::Mode::kFixedDigital:
        return "FixedDigital";
-+    default:
-+      RTC_NOTREACHED();
-+      return "";
    }
- }
- 
- std::string GainController2LevelEstimatorToString(
-     const AudioProcessing::Config::GainController2::LevelEstimator& level) {
-   switch (level) {
-     case AudioProcessing::Config::GainController2::LevelEstimator::kRms:
-       return "Rms";
-     case AudioProcessing::Config::GainController2::LevelEstimator::kPeak:
-       return "Peak";
-+    default:
-+      RTC_NOTREACHED();
-+      return "";
-   }
- }
- 
- int GetDefaultMaxInternalRate() {
- #ifdef WEBRTC_ARCH_ARM_FAMILY
-   return 32000;
- #else
-   return 48000;
-diff --git a/third_party/libwebrtc/modules/pacing/pacing_controller.cc b/third_party/libwebrtc/modules/pacing/pacing_controller.cc
---- a/third_party/libwebrtc/modules/pacing/pacing_controller.cc
-+++ b/third_party/libwebrtc/modules/pacing/pacing_controller.cc
-@@ -78,16 +78,19 @@ int GetPriorityForType(RtpPacketMediaTyp
-       // Video has "normal" priority, in the old speak.
-       // Send redundancy concurrently to video. If it is delayed it might have a
-       // lower chance of being useful.
-       return kFirstPriority + 3;
-     case RtpPacketMediaType::kPadding:
-       // Packets that are in themselves likely useless, only sent to keep the
-       // BWE high.
-       return kFirstPriority + 4;
-+    default:
-+      RTC_NOTREACHED();
-+      return -1;
-   }
+   RTC_CHECK_NOTREACHED();
++  return "";
  }
  
  }  // namespace
  
- const TimeDelta PacingController::kMaxExpectedQueueLength =
-     TimeDelta::Millis(2000);
- const float PacingController::kDefaultPaceMultiplier = 2.5f;
+ constexpr int AudioProcessing::kNativeSampleRatesHz[];
+ 
+ void CustomProcessing::SetRuntimeSetting(
+     AudioProcessing::RuntimeSetting setting) {}
 diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc
 --- a/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc
 +++ b/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc
-@@ -31,12 +31,15 @@ std::unique_ptr<VideoRtpDepacketizer> Cr
-       return std::make_unique<VideoRtpDepacketizerVp8>();
-     case kVideoCodecVP9:
+@@ -33,11 +33,12 @@ std::unique_ptr<VideoRtpDepacketizer> Cr
        return std::make_unique<VideoRtpDepacketizerVp9>();
      case kVideoCodecAV1:
        return std::make_unique<VideoRtpDepacketizerAv1>();
      case kVideoCodecGeneric:
      case kVideoCodecMultiplex:
        return std::make_unique<VideoRtpDepacketizerGeneric>();
-+    default:
-+      RTC_NOTREACHED();
-+      return nullptr;
    }
+   RTC_CHECK_NOTREACHED();
++  return nullptr;
  }
  
  }  // namespace webrtc
 diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
 --- a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
 +++ b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
-@@ -125,16 +125,19 @@ bool IsNonVolatile(RTPExtensionType type
-     case kRtpExtensionNone:
-     case kRtpExtensionNumberOfExtensions:
-       RTC_NOTREACHED();
-       return false;
+@@ -132,16 +132,17 @@ bool IsNonVolatile(RTPExtensionType type
+ #if defined(WEBRTC_MOZILLA_BUILD)
      case kRtpExtensionCsrcAudioLevel:
        // TODO: Mozilla implement for CsrcAudioLevel
        RTC_CHECK(false);
        return false;
-+    default:
-+      RTC_NOTREACHED();
-+      return false;
+ #endif
    }
+   RTC_CHECK_NOTREACHED();
++  return false;
  }
  
  bool HasBweExtension(const RtpHeaderExtensionMap& extensions_map) {
@@ -2368,22 +2329,20 @@ diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc b/third
           extensions_map.IsRegistered(kRtpExtensionTransportSequenceNumber02) ||
           extensions_map.IsRegistered(kRtpExtensionAbsoluteSendTime) ||
           extensions_map.IsRegistered(kRtpExtensionTransmissionTimeOffset);
+ }
 diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc
 --- a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc
 +++ b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc
-@@ -40,16 +40,19 @@ namespace {
- const char* FrameTypeToString(AudioFrameType frame_type) {
-   switch (frame_type) {
+@@ -42,16 +42,17 @@ const char* FrameTypeToString(AudioFrame
      case AudioFrameType::kEmptyFrame:
        return "empty";
      case AudioFrameType::kAudioFrameSpeech:
        return "audio_speech";
      case AudioFrameType::kAudioFrameCN:
        return "audio_cn";
-+    default:
-+      RTC_NOTREACHED();
-+      return "";
    }
+   RTC_CHECK_NOTREACHED();
++  return "";
  }
  #endif
  
@@ -2391,22 +2350,20 @@ diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc b
      "WebRTC-IncludeCaptureClockOffset";
  
  }  // namespace
+ 
 diff --git a/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_layers_checker.cc b/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_layers_checker.cc
 --- a/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_layers_checker.cc
 +++ b/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_layers_checker.cc
-@@ -23,16 +23,19 @@ TemporalLayersChecker::CreateTemporalLay
-                                                    int num_temporal_layers) {
-   switch (type) {
+@@ -25,16 +25,17 @@ TemporalLayersChecker::CreateTemporalLay
      case Vp8TemporalLayersType::kFixedPattern:
        return std::make_unique<DefaultTemporalLayersChecker>(
            num_temporal_layers);
      case Vp8TemporalLayersType::kBitrateDynamic:
        // Conference mode temporal layering for screen content in base stream.
        return std::make_unique<TemporalLayersChecker>(num_temporal_layers);
-+    default:
-+      RTC_NOTREACHED();
-+      return nullptr;
    }
+   RTC_CHECK_NOTREACHED();
++  return nullptr;
  }
  
  TemporalLayersChecker::TemporalLayersChecker(int num_temporal_layers)
@@ -2414,29 +2371,28 @@ diff --git a/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_laye
        sequence_number_(0),
        last_sync_sequence_number_(0),
        last_tl0_sequence_number_(0) {}
+ 
 diff --git a/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc b/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
 --- a/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
 +++ b/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
-@@ -49,16 +49,19 @@ bool IsFramerateScalingEnabled(Degradati
- }
- 
+@@ -58,16 +58,17 @@ bool IsFramerateScalingEnabled(Degradati
  std::string ToString(VideoAdaptationReason reason) {
    switch (reason) {
      case VideoAdaptationReason::kQuality:
        return "quality";
      case VideoAdaptationReason::kCpu:
        return "cpu";
-+    default:
-+      RTC_NOTREACHED();
-+      return "";
    }
+   RTC_CHECK_NOTREACHED();
++  return "";
  }
  
- }  // namespace
- 
- class VideoStreamEncoderResourceManager::InitialFrameDropper {
-  public:
-   explicit InitialFrameDropper(
+ std::vector<bool> GetActiveLayersFlags(const VideoCodec& codec) {
+   std::vector<bool> flags;
+   if (codec.codecType == VideoCodecType::kVideoCodecVP9) {
+     flags.resize(codec.VP9().numberOfSpatialLayers);
+     for (size_t i = 0; i < flags.size(); ++i) {
+       flags[i] = codec.spatialLayers[i].active;
 diff --git a/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/ast_to_hir.cpp b/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/ast_to_hir.cpp
 --- a/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/ast_to_hir.cpp
 +++ b/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/ast_to_hir.cpp

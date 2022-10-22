@@ -1,11 +1,11 @@
 # HG changeset patch
-# Parent  b5471d23321d16a0bacc25b7afd27d2e16adba1a
+# Parent  37d8d8fc1d9e42887a736102ff9cdab24d7a9aa8
 Taken from https://bugzilla.mozilla.org/show_bug.cgi?id=1504834
 
 diff --git a/gfx/2d/DrawTargetSkia.cpp b/gfx/2d/DrawTargetSkia.cpp
 --- a/gfx/2d/DrawTargetSkia.cpp
 +++ b/gfx/2d/DrawTargetSkia.cpp
-@@ -130,18 +130,17 @@ static IntRect CalculateSurfaceBounds(co
+@@ -147,18 +147,17 @@ static IntRect CalculateSurfaceBounds(co
    Rect sampledBounds = inverse.TransformBounds(*aBounds);
    if (!sampledBounds.ToIntRect(&bounds)) {
      return surfaceBounds;
@@ -28,11 +28,11 @@ diff --git a/gfx/2d/DrawTargetSkia.cpp b/gfx/2d/DrawTargetSkia.cpp
 diff --git a/gfx/2d/Types.h b/gfx/2d/Types.h
 --- a/gfx/2d/Types.h
 +++ b/gfx/2d/Types.h
-@@ -84,25 +84,18 @@ enum class SurfaceFormat : int8_t {
+@@ -87,25 +87,18 @@ enum class SurfaceFormat : int8_t {
    Depth,
  
    // This represents the unknown format.
-   UNKNOWN,
+   UNKNOWN,  // TODO: Replace uses with Maybe<SurfaceFormat>.
  
  // The following values are endian-independent synonyms. The _UINT32 suffix
  // indicates that the name reflects the layout when viewed as a uint32_t

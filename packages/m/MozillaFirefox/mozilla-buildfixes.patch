@@ -1,6 +1,6 @@
 # HG changeset patch
 # User Wolfgang Rosenauer <wr@rosenauer.org>
-# Parent  63af48397aee6985bb8d711bd918a201e5c8c282
+# Parent  39a0846a4f2df1c4669273933d74567a8774e1da
 # References: bmo#1792159 - Add missing includes to AtomicOperationsGenerated.h
 
 diff --git a/js/src/jit/GenerateAtomicOperations.py b/js/src/jit/GenerateAtomicOperations.py
@@ -25,6 +25,28 @@ diff --git a/js/src/jit/GenerateAtomicOperations.py b/js/src/jit/GenerateAtomicO
  } // namespace jit
  } // namespace js
  
+diff --git a/media/ffvpx/config_unix_aarch64.h b/media/ffvpx/config_unix_aarch64.h
+--- a/media/ffvpx/config_unix_aarch64.h
++++ b/media/ffvpx/config_unix_aarch64.h
+@@ -324,17 +324,17 @@
+ #define HAVE_SETCONSOLETEXTATTRIBUTE 0
+ #define HAVE_SETCONSOLECTRLHANDLER 0
+ #define HAVE_SETDLLDIRECTORY 0
+ #define HAVE_SETMODE 0
+ #define HAVE_SETRLIMIT 1
+ #define HAVE_SLEEP 0
+ #define HAVE_STRERROR_R 1
+ #define HAVE_SYSCONF 1
+-#define HAVE_SYSCTL 1
++#define HAVE_SYSCTL 0
+ #define HAVE_USLEEP 1
+ #define HAVE_UTGETOSTYPEFROMSTRING 0
+ #define HAVE_VIRTUALALLOC 0
+ #define HAVE_WGLGETPROCADDRESS 0
+ #define HAVE_BCRYPT 0
+ #define HAVE_VAAPI_DRM 0
+ #define HAVE_VAAPI_X11 0
+ #define HAVE_VDPAU_X11 0
 diff --git a/mozglue/misc/SIMD_avx2.cpp b/mozglue/misc/SIMD_avx2.cpp
 --- a/mozglue/misc/SIMD_avx2.cpp
 +++ b/mozglue/misc/SIMD_avx2.cpp
