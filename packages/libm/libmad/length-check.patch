@@ -132,7 +132,7 @@ Index: libmad-0.15.1b/layer12.c
      header->crc_check =
        mad_bit_crc(stream->ptr, 4 * (bound * nch + (32 - bound)),
  		  header->crc_check);
-@@ -133,6 +150,11 @@ int mad_layer_I(struct mad_stream *strea
+@@ -133,7 +150,17 @@ int mad_layer_I(struct mad_stream *strea
  
    for (sb = 0; sb < bound; ++sb) {
      for (ch = 0; ch < nch; ++ch) {
@@ -142,9 +142,15 @@ Index: libmad-0.15.1b/layer12.c
 +	return -1;
 +      }
        nb = mad_bit_read(&stream->ptr, 4);
++      if (mad_bit_nextbyte(&stream->ptr) > stream->next_frame) {
++        stream->error = MAD_ERROR_LOSTSYNC;
++        stream->sync = 0;
++        return -1;
++}
  
        if (nb == 15) {
-@@ -145,6 +167,11 @@ int mad_layer_I(struct mad_stream *strea
+ 	stream->error = MAD_ERROR_BADBITALLOC;
+@@ -145,7 +172,17 @@ int mad_layer_I(struct mad_stream *strea
    }
  
    for (sb = bound; sb < 32; ++sb) {
@@ -154,9 +160,15 @@ Index: libmad-0.15.1b/layer12.c
 +      return -1;
 +    }
      nb = mad_bit_read(&stream->ptr, 4);
++    if (mad_bit_nextbyte(&stream->ptr) > stream->next_frame) {
++      stream->error = MAD_ERROR_LOSTSYNC;
++      stream->sync = 0;
++      return -1;
++    }
  
      if (nb == 15) {
-@@ -161,6 +188,11 @@ int mad_layer_I(struct mad_stream *strea
+       stream->error = MAD_ERROR_BADBITALLOC;
+@@ -161,7 +198,17 @@ int mad_layer_I(struct mad_stream *strea
    for (sb = 0; sb < 32; ++sb) {
      for (ch = 0; ch < nch; ++ch) {
        if (allocation[ch][sb]) {
@@ -166,9 +178,15 @@ Index: libmad-0.15.1b/layer12.c
 +	  return -1;
 +	}
  	scalefactor[ch][sb] = mad_bit_read(&stream->ptr, 6);
++    if (mad_bit_nextbyte(&stream->ptr) > stream->next_frame) {
++      stream->error = MAD_ERROR_LOSTSYNC;
++      stream->sync = 0;
++      return -1;
++    }
  
  # if defined(OPT_STRICT)
-@@ -185,8 +217,10 @@ int mad_layer_I(struct mad_stream *strea
+ 	/*
+@@ -185,8 +232,15 @@ int mad_layer_I(struct mad_stream *strea
        for (ch = 0; ch < nch; ++ch) {
  	nb = allocation[ch][sb];
  	frame->sbsample[ch][s][sb] = nb ?
@@ -177,15 +195,20 @@ Index: libmad-0.15.1b/layer12.c
  		    sf_table[scalefactor[ch][sb]]) : 0;
 +	if (stream->error != 0)
 +	  return -1;
++    if (mad_bit_nextbyte(&stream->ptr) > stream->next_frame) {
++       stream->error = MAD_ERROR_LOSTSYNC;
++       stream->sync = 0;
++       return -1;
++    }
        }
      }
  
-@@ -194,7 +228,14 @@ int mad_layer_I(struct mad_stream *strea
+@@ -194,7 +248,14 @@ int mad_layer_I(struct mad_stream *strea
        if ((nb = allocation[0][sb])) {
  	mad_fixed_t sample;
  
 -	sample = I_sample(&stream->ptr, nb);
-+	if (mad_bit_length(&stream->ptr, &frameend_ptr) < nb) {
++	if (mad_bit_length(&stream->ptr, &frameend_ptr) < nb || mad_bit_nextbyte(&stream->ptr) > stream->next_frame) {
 +	  stream->error = MAD_ERROR_LOSTSYNC;
 +	  stream->sync = 0;
 +          return -1;
@@ -196,7 +219,7 @@ Index: libmad-0.15.1b/layer12.c
  
  	for (ch = 0; ch < nch; ++ch) {
  	  frame->sbsample[ch][s][sb] =
-@@ -280,13 +321,21 @@ struct quantclass {
+@@ -280,13 +341,21 @@ struct quantclass {
  static
  void II_samples(struct mad_bitptr *ptr,
  		struct quantclass const *quantclass,
@@ -219,7 +242,7 @@ Index: libmad-0.15.1b/layer12.c
      /* degrouping */
      c = mad_bit_read(ptr, quantclass->bits);
      nlevels = quantclass->nlevels;
-@@ -299,8 +348,14 @@ void II_samples(struct mad_bitptr *ptr,
+@@ -299,8 +368,14 @@ void II_samples(struct mad_bitptr *ptr,
    else {
      nb = quantclass->bits;
  
@@ -235,7 +258,7 @@ Index: libmad-0.15.1b/layer12.c
    }
  
    for (s = 0; s < 3; ++s) {
-@@ -336,6 +391,9 @@ int mad_layer_II(struct mad_stream *stre
+@@ -336,6 +411,9 @@ int mad_layer_II(struct mad_stream *stre
    unsigned char const *offsets;
    unsigned char allocation[2][32], scfsi[2][32], scalefactor[2][32][3];
    mad_fixed_t samples[3];
@@ -245,7 +268,7 @@ Index: libmad-0.15.1b/layer12.c
  
    nch = MAD_NCHANNELS(header);
  
-@@ -402,13 +460,24 @@ int mad_layer_II(struct mad_stream *stre
+@@ -402,13 +480,24 @@ int mad_layer_II(struct mad_stream *stre
    for (sb = 0; sb < bound; ++sb) {
      nbal = bitalloc_table[offsets[sb]].nbal;
  
@@ -271,7 +294,7 @@ Index: libmad-0.15.1b/layer12.c
      allocation[0][sb] =
      allocation[1][sb] = mad_bit_read(&stream->ptr, nbal);
    }
-@@ -417,8 +486,14 @@ int mad_layer_II(struct mad_stream *stre
+@@ -417,8 +506,14 @@ int mad_layer_II(struct mad_stream *stre
  
    for (sb = 0; sb < sblimit; ++sb) {
      for (ch = 0; ch < nch; ++ch) {
@@ -287,7 +310,7 @@ Index: libmad-0.15.1b/layer12.c
      }
    }
  
-@@ -441,6 +516,11 @@ int mad_layer_II(struct mad_stream *stre
+@@ -441,6 +536,11 @@ int mad_layer_II(struct mad_stream *stre
    for (sb = 0; sb < sblimit; ++sb) {
      for (ch = 0; ch < nch; ++ch) {
        if (allocation[ch][sb]) {
@@ -299,7 +322,7 @@ Index: libmad-0.15.1b/layer12.c
  	scalefactor[ch][sb][0] = mad_bit_read(&stream->ptr, 6);
  
  	switch (scfsi[ch][sb]) {
-@@ -451,11 +531,21 @@ int mad_layer_II(struct mad_stream *stre
+@@ -451,11 +551,21 @@ int mad_layer_II(struct mad_stream *stre
  	  break;
  
  	case 0:
@@ -321,23 +344,37 @@ Index: libmad-0.15.1b/layer12.c
  	  scalefactor[ch][sb][2] = mad_bit_read(&stream->ptr, 6);
  	}
  
-@@ -487,7 +577,9 @@ int mad_layer_II(struct mad_stream *stre
+@@ -487,7 +597,17 @@ int mad_layer_II(struct mad_stream *stre
  	if ((index = allocation[ch][sb])) {
  	  index = offset_table[bitalloc_table[offsets[sb]].offset][index - 1];
  
 -	  II_samples(&stream->ptr, &qc_table[index], samples);
++               if (mad_bit_nextbyte(&stream->ptr) > stream->next_frame)
++               {
++                       stream->error = MAD_ERROR_LOSTSYNC;
++                       stream->sync = 0;
++                       return -1;
++               }
++
++
 +	  II_samples(&stream->ptr, &qc_table[index], samples, stream);
 +	  if (stream->error != 0)
 +            return -1;
  
  	  for (s = 0; s < 3; ++s) {
  	    frame->sbsample[ch][3 * gr + s][sb] =
-@@ -505,7 +597,9 @@ int mad_layer_II(struct mad_stream *stre
+@@ -505,7 +625,15 @@ int mad_layer_II(struct mad_stream *stre
        if ((index = allocation[0][sb])) {
  	index = offset_table[bitalloc_table[offsets[sb]].offset][index - 1];
  
 -	II_samples(&stream->ptr, &qc_table[index], samples);
 +	II_samples(&stream->ptr, &qc_table[index], samples, stream);
++               if (mad_bit_nextbyte(&stream->ptr) > stream->next_frame)
++               {
++                       stream->error = MAD_ERROR_LOSTSYNC;
++                       stream->sync = 0;
++                       return -1;
++               }
 +	if (stream->error != 0)
 +          return -1;
  
@@ -711,6 +748,15 @@ Index: libmad-0.15.1b/layer3.c
  # if 0 && defined(DEBUG)
    if (bits_left < 0)
      fprintf(stderr, "read %d bits too many\n", -bits_left);
+@@ -1577,7 +1640,7 @@ void III_imdct_l(mad_fixed_t const [18],
+ # else
+ #  if 1
+ static
+-void fastsdct(mad_fixed_t const x[9], mad_fixed_t y[18])
++void fastsdct(mad_fixed_t const x[9], mad_fixed_t y[17])
+ {
+   mad_fixed_t a0,  a1,  a2,  a3,  a4,  a5,  a6,  a7,  a8,  a9,  a10, a11, a12;
+   mad_fixed_t a13, a14, a15, a16, a17, a18, a19, a20, a21, a22, a23, a24, a25;
 @@ -2348,10 +2411,11 @@ void III_freqinver(mad_fixed_t sample[18
   */
  static
@@ -752,15 +798,15 @@ Index: libmad-0.15.1b/layer3.c
 +        return error;
 +
 +      bits_left -= part2_length;
- 
--      error = III_huffdecode(ptr, xr[ch], channel, sfbwidth[ch], part2_length);
++
 +      if (part2_length > channel->part2_3_length)
 +        return MAD_ERROR_BADPART3LEN;
 +
 +      part3_length = channel->part2_3_length - part2_length;
 +      if (part3_length > bits_left)
 +        return MAD_ERROR_BADPART3LEN;
-+
+ 
+-      error = III_huffdecode(ptr, xr[ch], channel, sfbwidth[ch], part2_length);
 +      error = III_huffdecode(ptr, xr[ch], channel, sfbwidth[ch], part3_length);
        if (error)
  	return error;
@@ -806,7 +852,19 @@ Index: libmad-0.15.1b/layer3.c
      }
  
      mad_bit_finish(&peek);
-@@ -2653,7 +2733,7 @@ int mad_layer_III(struct mad_stream *str
+@@ -2608,6 +2688,11 @@ int mad_layer_III(struct mad_stream *str
+     next_md_begin = 0;
+ 
+   md_len = si.main_data_begin + frame_space - next_md_begin;
++  if (md_len + MAD_BUFFER_GUARD > MAD_BUFFER_MDLEN) {
++    stream->error = MAD_ERROR_LOSTSYNC;
++    stream->sync = 0;
++    return -1;
++  }
+ 
+   frame_used = 0;
+ 
+@@ -2645,7 +2730,7 @@ int mad_layer_III(struct mad_stream *str
    /* decode main_data */
  
    if (result == 0) {
