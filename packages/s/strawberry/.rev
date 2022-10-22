@@ -1067,4 +1067,26 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
 </comment>
     <requestid>1001049</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>64c69471a21a5350d30211d05fe12589</srcmd5>
+    <version>1.0.10</version>
+    <time>1666440804</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.10
+ + Bugfixes:
+ + Fixed &quot;Could not open settings file for writing: No such file or directory&quot; error before settings file is created.
+ + Fixed visual glitch on currently playing track (#1051).
+ + Fixed &quot;Unknown error&quot; on Tidal search (#1047).
+ + Fixed incomplete lyrics from Genius.
+ + Fixed icons not showing in the file view on some systems (#1024).
+ + Fixed issues with context and playing widget stopping when using VLC (#1054).
+ + Enhancements:
+ + Fixed narrowing conversions in connects.
+ + Fixed casts from QByteArray.
+ + Removed subdir for generated dbus files
+ + Removed use of fixed font in context (#1040).
+ + Improve Musixmatch lyrics search.
+</comment>
+    <requestid>1030466</requestid>
+  </revision>
 </revisionlist>
