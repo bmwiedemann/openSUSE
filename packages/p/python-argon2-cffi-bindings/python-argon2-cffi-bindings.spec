@@ -32,13 +32,11 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools >= 45}
 BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libargon2)
 Requires:       python-cffi >= 1.0.1
-Requires:       python-six
 Provides:       python-argon2_cffi_bindings
 Obsoletes:      python-argon2_cffi_bindings
 %python_subpackages
@@ -64,6 +62,7 @@ export ARGON2_CFFI_USE_SYSTEM=1
 %files %{python_files}
 %doc README.md CHANGELOG.md
 %license LICENSE
-%{python_sitearch}/*
+%{python_sitearch}/_argon2_cffi_bindings
+%{python_sitearch}/argon2_cffi_bindings-%{version}*-info
 
 %changelog
