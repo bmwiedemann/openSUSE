@@ -239,4 +239,15 @@
   * Check for exclusive patches. (#442) (forwarded request 1009474 from glaubitz)</comment>
     <requestid>1009546</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>64b37807d6802950a5ba48b98a8d175f</srcmd5>
+    <version>20221013.01</version>
+    <time>1666451382</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20221013.01
+  * Don't print raw pointer data. (#446)
+- from version 20221013.00
+  * Delete yum transaction files if created. (#445) (forwarded request 1030516 from glaubitz)</comment>
+    <requestid>1030536</requestid>
+  </revision>
 </revisionlist>

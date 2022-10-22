@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 21 13:12:03 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20221013.01
+  * Don't print raw pointer data. (#446)
+- from version 20221013.00
+  * Delete yum transaction files if created. (#445)
+
+-------------------------------------------------------------------
 Mon Oct 10 13:08:52 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20220829.00
