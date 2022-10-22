@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Oct 21 09:07:05 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Import commit f78bba8d037cc26c09bbdd167625b2d7fe1f5a30 (merge of v251.6)
+
+  Beside the merge of v251.6, it also includes the following backport:
+
+  - 07aaa898bd pstore: do not try to load all known pstore modules
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/07aa29e3942fb46b0aed5405c88e8d3179ca958f...f78bba8d037cc26c09bbdd167625b2d7fe1f5a30
+  
+
+-------------------------------------------------------------------
+Wed Oct 19 07:23:51 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Don't create /var/lib/systemd/random-seed in %post (bsc#1181458)
+
+  To make sure that the same seed is not replicated when installing from a
+  'golden' image.
+
+  For regular installations the random seed file is initialized by the installer
+  itself (bsc#1174964). Even if it didn't, the random seed file would be created
+  on first boot anyway.
+
+-------------------------------------------------------------------
+Wed Oct 12 18:35:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- Avoid expanding of macro in comment which leads to an error on installation
+  (workaround for bsc#1203847)
+
+-------------------------------------------------------------------
 Tue Oct  4 08:51:48 UTC 2022 - Franck Bui <fbui@suse.com>
 
 - Import commit 07aa29e3942fb46b0aed5405c88e8d3179ca958f (merge of v251.5)

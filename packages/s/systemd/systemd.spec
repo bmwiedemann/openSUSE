@@ -19,7 +19,7 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define min_kernel_version 4.5
-%define archive_version +suse.31.g07aa29e394
+%define archive_version +suse.34.gf78bba8d03
 
 %define _testsuitedir /usr/lib/systemd/tests
 %define xinitconfdir %{?_distconfdir}%{!?_distconfdir:%{_sysconfdir}}/X11/xinit
@@ -72,7 +72,7 @@
 
 Name:           systemd%{?mini}
 URL:            http://www.freedesktop.org/wiki/Software/systemd
-Version:        251.5
+Version:        251.6
 Release:        0
 Summary:        A System and Session Manager
 License:        LGPL-2.1-or-later
@@ -987,9 +987,6 @@ pam-config --add --systemd || :
 %sysusers_create systemd-journal.conf
 %sysusers_create systemd-timesync.conf
 
-[ -e %{_localstatedir}/lib/random-seed ] && mv %{_localstatedir}/lib/random-seed %{_localstatedir}/lib/systemd/ || :
-/usr/lib/systemd/systemd-random-seed save || :
-
 systemctl daemon-reexec || :
 
 # Reexecute user manager instances (if any). It is asynchronous but it
@@ -1062,7 +1059,7 @@ fi
 %{_prefix}/lib/systemd/scripts/migrate-sysconfig-i18n.sh || :
 
 %postun
-# daemon-reload is implied by %%systemd_postun_with_restart
+# daemon-reload is implied by systemd_postun_with_restart
 %systemd_postun_with_restart systemd-journald.service
 %systemd_postun_with_restart systemd-timesyncd.service
 # Avoid restarting logind until fixed upstream (issue #1163)

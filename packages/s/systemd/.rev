@@ -6126,4 +6126,27 @@ handle manual pages that consist only of a .so directive such as
   https://github.com/openSUSE/systemd/compare/532faa39ebaa6f56e493cc938a91a40df082b74f...07aa29e3942fb46b0aed5405c88e8d3179ca958f</comment>
     <requestid>1007837</requestid>
   </revision>
+  <revision rev="366" vrev="1">
+    <srcmd5>d215fa840bdf07d0ab3a484572bc4234</srcmd5>
+    <version>251.6</version>
+    <time>1666440762</time>
+    <user>dimstar_suse</user>
+    <comment>- Import commit f78bba8d037cc26c09bbdd167625b2d7fe1f5a30 (merge of v251.6)
+  Beside the merge of v251.6, it also includes the following backport:
+  - 07aaa898bd pstore: do not try to load all known pstore modules
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/07aa29e3942fb46b0aed5405c88e8d3179ca958f...f78bba8d037cc26c09bbdd167625b2d7fe1f5a30
+  
+
+- Don't create /var/lib/systemd/random-seed in %post (bsc#1181458)
+  To make sure that the same seed is not replicated when installing from a
+  'golden' image.
+  For regular installations the random seed file is initialized by the installer
+  itself (bsc#1174964). Even if it didn't, the random seed file would be created
+  on first boot anyway.
+
+- Avoid expanding of macro in comment which leads to an error on installation
+  (workaround for bsc#1203847)</comment>
+    <requestid>1030349</requestid>
+  </revision>
 </revisionlist>
