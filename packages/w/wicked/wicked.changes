@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Oct 20 14:36:21 UTC 2022 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- version 0.6.70
+- build: Link as Position Independent Executable (bsc#1184124)
+- dhcp4: Fix issues in reuse of last lease (bsc#1187655)
+- dhcp6: Add option to refresh lease (jsc#SLE-9492,jsc#SLE-24307)
+- dhcp6: Remove address before release (USGv6 DHCPv6_1_2_07b)
+- dhcp6: Ignore lease release status (USGv6 DHCPv6_1_2_07e,1_3_03)
+- dhcp6: Consider ppp interfaces supported (gh#openSUSE/wicked#924)
+- team: Fix to configure port priority in teamd (bsc#1200505)
+- firewall-ext: No config change on ifdown (bsc#1201053,bsc#118950)
+- wireless: Fix SEGV on supplicant restart (gh#openSUSE/wicked#931)
+- wireless: Add support for WPA3 and PMF (bsc#1198894)
+- wireless: Remove libiw dependencies (gh#openSUSE/wicked#910)
+- client: Fix SEGV on empty xpath results (gh#openSUSE/wicked#919)
+- client: Add release options to ifdown/ifreload (jsc#SLE-10249)
+- dbus: Clear string array before append (gh#openSUSE/wicked#913)
+- socket: Fix SEGV on heavy socket restart errors (bsc#1192508)
+- systemd: Remove systemd-udev-settle dependency (bsc#1186787) 
+
+-------------------------------------------------------------------
 Wed Apr 13 11:43:38 UTC 2022 - Marius Tomaschewski <mt@suse.com>
 
 - version 0.6.69
@@ -53,7 +74,7 @@ Fri Oct  1 14:19:44 UTC 2021 - Marius Tomaschewski <mt@suse.com>
 - ifstatus: Don't show link as "up" without RUNNING flag set
 - firewalld: Make the zone assignment permanent (boo#1189560)
 - fsm: cleanup and improve ifconfig and ifpolicy access utils
-- dbus: cleanup the dbus-service.h file and unused property makros
+- dbus: cleanup the dbus-service.h file and unused property macros
 - cleanup: applied code-spell run typo corrections
 - dracut: initial fixes and improved option handling (boo#1182227)
 
@@ -249,7 +270,7 @@ Fri Sep 21 14:27:21 UTC 2018 - rtorreromarijnissen@suse.com
 - dhcp6: fix to properly decline dynamic addresses
 - extensions: do not use /etc/HOSTNAME artifact (bsc#972463)
 - ethtool: call offload ioctl if requested by offload name,
-  e.g. tso has been splitted into several features and the
+  e.g. tso has been split into several features and the
   old STSO offload ioctl sets multiple features at once.
 - ethtool: add missing pause support (bsc#1102871)
 - dhcp6: refresh info using rfc4242 info-refresh-time
@@ -303,7 +324,7 @@ Fri Feb  2 15:26:32 UTC 2018 - mt@suse.de
 - dhcp4: use rfc4361 client-id as new default for ethernet on sle15
   (fate#323576). It can be also enabled/disabled in wicked-config(5).
 - client: fixed broken wicked arp utility command (bsc#1078245)
-- cleanup: add mising/explicit designated field initializers
+- cleanup: add missing/explicit designated field initializers
 - pkgconfig: fix to request libnl3 instead of libnl1
 - dbus: add missing DBUS_ERROR_FAILED type to a dbus_set_error call
   and enforce formatting input as string when an extension did not
@@ -372,7 +393,7 @@ Thu May  4 12:56:33 UTC 2017 - mt@suse.de
 Fri Nov 18 12:08:22 UTC 2016 - mt@suse.de
 
 - version 0.6.39
-- dhcp: suport to define and request custom options (bsc#988954),
+- dhcp: support to define and request custom options (bsc#988954),
   documented in wicked-config(5) and ifcfg-dhcp(5) manual pages.
 - dhcp6: fix refresh on newprefix workaround (boo#972471)
 - dhcp4: do not fail in capture on link type change (bsc#975466)
@@ -422,7 +443,7 @@ Tue Aug  2 19:59:07 CEST 2016 - ndas@suse.de
 - leaseinfo: dump other/unknown dhcp options
 - dhcp4: initial support to request custom options (bsc#916948,bsc#988954)
 - lease: store and load other/unknown dhcp options
-- utils: fixed last byte formating in ni_format_hex
+- utils: fixed last byte formatting in ni_format_hex
 - dbus: handle unparsed dhcp options in leases
 - dhcp4: store unparsed options in the lease
 - addrconf: add generic dhcp options to lease
@@ -487,7 +508,7 @@ Tue Apr  5 13:50:07 UTC 2016 - mt@suse.de
 - version 0.6.31
 - xml: fix to not assert on too long entities or missed semicolon
   and fixed pointer use on DOCTYPE related parse error.
-- ifconfig: readd broadcast calculation (bcs#971629).
+- ifconfig: re-add broadcast calculation (bcs#971629).
   While the kernel does not need it and calculates itself, e.g.
   glibc getbroadcastnets function used by yp expect it to be set.
 - ifup: let ovs bridges pull ovs-system config and omit ovs-system
@@ -557,7 +578,7 @@ Thu Nov 12 16:19:49 UTC 2015 - mt@suse.de
 -------------------------------------------------------------------
 Thu Oct 22 09:53:35 UTC 2015 - mt@suse.de
 
-- vesion 0.6.27
+- version 0.6.27
 - nanny: fix policy file reading and objects references (boo#916035)
 - ovs: use --may-exist option in add-port (bsc#951315) commands to
   avoid error messages when the port is already in the db.
@@ -811,7 +832,7 @@ Fri Sep 26 14:50:43 UTC 2014 - pwieczorkiewicz@suse.com
   (bnc#890084)
 - hwaddr: change hwaddr only when valid (bnc#898622)
 - ifup/ifstatus: no failure report on failed/deferred lease,
-  correctly OR grouped leas status (bnc#896188)
+  correctly OR grouped lease status (bnc#896188)
 - ifup,ifreload: wait for all tentative addresses
 - config: improved allowed update mask/defaults
 - man: added startmode hotplug and use-nanny (bnc#896403),
@@ -835,7 +856,7 @@ Fri Sep 19 14:16:26 UTC 2014 - mt@suse.de
   leases e.g. after restart and adjust lifetime on renewal.
 - routes: lookup and accept custom table names defined in the
   /etc/iproute2/rt_tables file and set forgotten route table
-  netlink attibute if provided by the kernel (bnc#885007).
+  netlink attribute if provided by the kernel (bnc#885007).
 - ethernet: do not fail when some ethtool operation is not
   supported (bnc#897264)
 - fsm: add link-masterdev relation when all dependencies are
@@ -985,7 +1006,7 @@ Wed Jul 23 13:22:44 UTC 2014 - mt@suse.de
   When the interface is not ready to send out a lease release,
   commit the lease drop and notify wickedd, so ifdown goes on.
 - ifup: update client-info and client-state on device-ready,
-  do not detect persistance but set if requested only (bnc#876845).
+  do not detect persistence but set if requested only (bnc#876845).
 
 -------------------------------------------------------------------
 Mon Jul 21 18:23:54 UTC 2014 - mt@suse.de
@@ -1153,7 +1174,7 @@ Mon May 19 15:42:43 UTC 2014 - mt@suse.de
 - server: no unrequested device-ready events (bnc#871135)
   This bug caused e.g. bridges not going up from device-exists
   even they already were in device-ready state before.
-- client: do not mix shared with exlusive references (bnc#877776)
+- client: do not mix shared with exclusive references (bnc#877776)
 - ifconfig: do not fail on delete for vanished devices
 - nanny: drop policies on ifdown, turn some errors to debug
 - sysconfig: add WICKED_DEBUG and WICKED_LOG_LEVEL variables
@@ -1320,7 +1341,7 @@ Thu Feb 27 22:03:51 UTC 2014 - mt@suse.de
 - version 0.5.13
 - bridge: do not require link-up on ports (bnc#862530)
 - bonding: try to enslave into bond using netlink
-- extensions: disabled writting of wickedd.log (debug) file
+- extensions: disabled writing of wickedd.log (debug) file
 - addrconf: avoid unwanted updates, update flag fixes (bnc#865325)
 - compat: blacklist all and default interface names
 - leaseinfo: fixed typo in BOOTSERVERNAME variable
@@ -1417,7 +1438,7 @@ Wed Feb  5 21:34:55 UTC 2014 - mt@suse.com
 - do not set mtu or link-address when device is up as this
   tends to fail or break upper [vlan, ...] devices
 - limit mtu of upper (vlan) devices to the mtu of lower (eth)
-- addrconf: initial lease writting/parsing helpers / disarmed
+- addrconf: initial lease writing/parsing helpers / disarmed
 - Disable modem support for now, new ModemManage API (bnc#859888)
 - dhcp: fixed byteswap in ipudp_checksum and checksum_partial
 - leaseinfo: include prefixlen in IPADDR same as in ifcfg files
@@ -1495,7 +1516,7 @@ Fri Dec  6 14:22:09 UTC 2013 - mt@suse.com
 - client: add client-state including a persistent mode
   to skip ifdown for important interfaces by default
 - client: ifup --persistent and ifdown --force options
-- several lldp fixes, mostly for parsing / formating
+- several lldp fixes, mostly for parsing / formatting
 - logging: added timestamp option to stderr --log-target
 - extensions/updater: get and set NIS settings from lease
 - extensions: replace resolver with new generic updater

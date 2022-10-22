@@ -1647,4 +1647,29 @@
   [- 0001-fsm-fix-device-rename-via-yast-bsc-1194392.patch]</comment>
     <requestid>969877</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>e28e604414d91829f25442d098a47e3e</srcmd5>
+    <version>0.6.70</version>
+    <time>1666440720</time>
+    <user>dimstar_suse</user>
+    <comment>- changes: spell fixes
+- version 0.6.70
+- build: Link as Position Independent Executable (bsc#1184124)
+- dhcp4: Fix issues in reuse of last lease (bsc#1187655)
+- dhcp6: Add option to refresh lease (jsc#SLE-9492,jsc#SLE-24307)
+- dhcp6: Remove address before release (USGv6 DHCPv6_1_2_07b)
+- dhcp6: Ignore lease release status (USGv6 DHCPv6_1_2_07e,1_3_03)
+- dhcp6: Consider ppp interfaces supported (gh#openSUSE/wicked#924)
+- team: Fix to configure port priority in teamd (bsc#1200505)
+- firewall-ext: No config change on ifdown (bsc#1201053,bsc#118950)
+- wireless: Fix SEGV on supplicant restart (gh#openSUSE/wicked#931)
+- wireless: Add support for WPA3 and PMF (bsc#1198894)
+- wireless: Remove libiw dependencies (gh#openSUSE/wicked#910)
+- client: Fix SEGV on empty xpath results (gh#openSUSE/wicked#919)
+- client: Add release options to ifdown/ifreload (jsc#SLE-10249)
+- dbus: Clear string array before append (gh#openSUSE/wicked#913)
+- socket: Fix SEGV on heavy socket restart errors (bsc#1192508)
+- systemd: Remove systemd-udev-settle dependency (bsc#1186787)</comment>
+    <requestid>1030243</requestid>
+  </revision>
 </revisionlist>
