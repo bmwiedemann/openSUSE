@@ -17,21 +17,20 @@
 
 
 Name:           xkeyboard-config
-Version:        2.36
+Version:        2.37
 Release:        0
 Summary:        The X Keyboard Extension
 License:        CDDL-1.0 AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
 Group:          System/X11/Utilities
 URL:            https://www.freedesktop.org/Software/XKeyboardConfig
 Source:         https://xorg.freedesktop.org/archive/individual/data/%{name}/%{name}-%{version}.tar.xz
-Patch0:         U_Fixes-regression-from-c3c5d02-were-mistakenly-replac.patch
 # PATCH-FIX-OPENSUSE disable-2xalt_2xctrl-toggle.diff fdo#4927 -- This is just a workaround until fdo#4927 is fixed
 Patch109:       n_disable-2xalt_2xctrl-toggle.diff
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  python3
+BuildRequires:  python3-base
 BuildRequires:  xsltproc
 BuildRequires:  perl(XML::Parser)
 BuildRequires:  pkgconfig(xorg-macros) >= 1.12
@@ -50,7 +49,6 @@ make keyboards more accessible to people with physical impairments.
 
 %prep
 %setup -q
-%patch0 -p1
 %patch109 -p1
 
 %build
