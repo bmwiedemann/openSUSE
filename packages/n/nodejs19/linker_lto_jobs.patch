@@ -1,0 +1,41 @@
+Purpose of these dependencies is to make sure that the linker
+is run serially over these binaries instead of in parallel.
+OBS workers run out of memory as each executable seems to require
+upward of 5G RAM
+
+Index: node-v19.0.0/node.gyp
+===================================================================
+--- node-v19.0.0.orig/node.gyp
++++ node-v19.0.0/node.gyp
+@@ -922,6 +922,7 @@
+         '<(node_lib_target_name)',
+         'deps/histogram/histogram.gyp:histogram',
+         'deps/uvwasi/uvwasi.gyp:uvwasi',
++        'fuzz_url',
+       ],
+       'includes': [
+         'node.gypi'
+@@ -965,6 +966,7 @@
+         'deps/googletest/googletest.gyp:gtest_main',
+         'deps/histogram/histogram.gyp:histogram',
+         'deps/uvwasi/uvwasi.gyp:uvwasi',
++        'fuzz_env',
+       ],
+ 
+       'includes': [
+@@ -1062,6 +1064,7 @@
+         '<(node_lib_target_name)',
+         'deps/histogram/histogram.gyp:histogram',
+         'deps/uvwasi/uvwasi.gyp:uvwasi',
++        'cctest',
+       ],
+ 
+       'includes': [
+@@ -1131,6 +1134,7 @@
+         '<(node_lib_target_name)',
+         'deps/histogram/histogram.gyp:histogram',
+         'deps/uvwasi/uvwasi.gyp:uvwasi',
++        'embedtest'
+       ],
+ 
+       'includes': [

@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Fri Oct 21 09:28:29 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- Initial version 19.0.0:
+  * HTTP(S)/1.1 KeepAlive by default
+  * DTrace/SystemTap/ETW Support were removed
+  * The V8 engine is updated to version 10.7, which is part of Chromium 107.
+    This version include a new feature to the JavaScript API:
+    Intl.NumberFormat
+  * llhttp has been updated to version 8.1.0.
+
+For details see
+https://github.com/nodejs/node/blob/main/doc/changelogs/CHANGELOG_V19.md#19.0.0
+
