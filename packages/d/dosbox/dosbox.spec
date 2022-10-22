@@ -32,7 +32,7 @@ BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(SDL2_net)
 BuildRequires:  pkgconfig(alsa)
-BuildRequires:  pkgconfig(fluidsynth) >= 2.2.3
+BuildRequires:  pkgconfig(fluidsynth) >= 2.3.0
 BuildRequires:  pkgconfig(gmock)
 BuildRequires:  pkgconfig(gtest)
 BuildRequires:  pkgconfig(iir)
@@ -41,6 +41,7 @@ BuildRequires:  pkgconfig(mt32emu)
 BuildRequires:  pkgconfig(opusfile)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(slirp)
+BuildRequires:  pkgconfig(speexdsp)
 BuildRequires:  pkgconfig(zlib)
 Recommends:     fluid-soundfont-gm
 Provides:       %{name}-translations = %{version}

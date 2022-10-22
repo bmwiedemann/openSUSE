@@ -314,4 +314,12 @@
   * https://dosbox-staging.github.io/v0-79-1/#changes</comment>
     <requestid>1011273</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>9d30df57bd32a9d30a979e9831fb5210</srcmd5>
+    <version>0.79.1</version>
+    <time>1666440814</time>
+    <user>dimstar_suse</user>
+    <comment>- Added pkgconfig(speexdsp) dependency.</comment>
+    <requestid>1030501</requestid>
+  </revision>
 </revisionlist>
