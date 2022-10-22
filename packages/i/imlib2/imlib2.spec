@@ -17,28 +17,48 @@
 
 
 %define lname	libImlib2-1
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150400
+%bcond_without jxl
+%else
+%bcond_with jxl
+%endif
+%bcond_with svg
+%bcond_with postscript
 Name:           imlib2
 Version:        1.9.1
 Release:        0
 Summary:        Image handling and conversion library
 License:        BSD-3-Clause
 Group:          Development/Libraries/X11
-URL:            https://sourceforge.net/projects/enlightenment/
+URL:            https://sourceforge.net/projects/enlightenment
 Source:         https://downloads.sourceforge.net/project/enlightenment/imlib2-src/%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  doxygen
 BuildRequires:  giflib-devel
-BuildRequires:  libICE-devel
-BuildRequires:  libjpeg-devel
-BuildRequires:  libpng-devel
 BuildRequires:  pkgconfig
-BuildRequires:  xorg-x11-libX11-devel
-BuildRequires:  xorg-x11-libXext-devel
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(id3tag)
+BuildRequires:  pkgconfig(libheif)
+BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libtiff-4)
-BuildRequires:  pkgconfig(libwebp)
+BuildRequires:  pkgconfig(libwebpdemux)
+BuildRequires:  pkgconfig(x11-xcb)
+BuildRequires:  pkgconfig(xcb)
+BuildRequires:  pkgconfig(xcb-shm) >= 1.9
+BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(zlib)
+BuildRequires:  pkgconfig(libopenjp2)
+BuildRequires:  pkgconfig(libpng)
+%if %{with jxl}
+BuildRequires:  pkgconfig(libjxl)
+BuildRequires:  pkgconfig(libjxl_threads)
+%endif
+%if %{with svg}
+BuildRequires:  pkgconfig(librsvg-2.0) >= 2.46
+%endif
+%if %{with postscript}
+BuildRequires:  pkgconfig(libspectre)
+%endif
 Recommends:     imlib2-loaders
 
 %description
@@ -90,10 +110,21 @@ Provides:       imlib2-loader_tga
 Provides:       imlib2-loader_tiff
 Provides:       imlib2-loader_xpm
 Provides:       imlib2-loader_zlib
+Provides:       imlib2-loader_j2k
+Provides:       imlib2-loader_heif
+%if %{with jxl}
+Provides:       imlib2-loader_jxl
+%endif
+%if %{with svg}
+Provides:       imlib2-loader_svg
+%endif
+%if %{with postscript}
+Provides:       imlib2-loader_ps
+%endif
 
 %description loaders
 This package contains the imlib2 image loaders for: argb, bmp, gif,
-jpeg, png, pnm, tga, tiff, xpm
+jpeg, png, pnm, tga, tiff, xpm, j2k, heif, jxl.
 
 %prep
 %setup -q
@@ -110,7 +141,7 @@ jpeg, png, pnm, tga, tiff, xpm
 %endif
 	--enable-shared \
 	--enable-visibility-hiding \
-        --enable-doc-build \
+	--enable-doc-build \
 	--disable-static
 %make_build
 
