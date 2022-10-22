@@ -16,11 +16,7 @@
 #
 
 
-%ifarch riscv64
-%define afl_rt compiler-rt,llvm-rt
-%else
 %define afl_rt compiler-rt,llvm-rt,llvm-rt-lto
-%endif
 
 %ifarch %{arm} %ix86 s390x x86_64
 %define afl_32 1
