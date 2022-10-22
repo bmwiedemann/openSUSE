@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 19 15:07:28 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Add sentry-cli for riscv64
+
+-------------------------------------------------------------------
 Tue Oct 11 19:23:57 UTC 2022 - Dominik Heidler <dheidler@suse.de>
 
 - Version 1.11.10
@@ -42,6 +47,7 @@ Wed Oct  5 13:34:44 UTC 2022 - Dominik Heidler <dheidler@suse.de>
 
 -------------------------------------------------------------------
 Fri Sep 30 16:52:19 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+
 - Remove spurious BuildRequire on electron.
 
 -------------------------------------------------------------------
