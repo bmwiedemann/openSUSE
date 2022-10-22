@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Oct 22 13:35:05 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.12.2:
+  * go.mod: docker 5aac513617f072b15322b147052cbda0d451d389 / v22.06-dev
+
+-------------------------------------------------------------------
+Sat Oct 22 13:32:02 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.12.1:
+  * update docker engine API to apply fix of CVE-2022-39253
+  * Update `e2e` module deps
+  * build(deps): bump go.opentelemetry.io/otel from 1.11.0 to 1.11.1
+  * Skip flaky test in CI
+
+-------------------------------------------------------------------
 Tue Oct 18 18:19:16 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 2.12.0:
