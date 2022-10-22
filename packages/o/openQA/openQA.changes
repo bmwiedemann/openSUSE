@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct 22 02:15:55 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1666370010.771049f:
+  * Log used worker cache URL in case of a connection error
+  * Make cacheservice URL configurable via `workers.ini`
+  * Support skip and broken results in LTP parser
+  * Document specifying the version when tagging builds
+  * Ensure no more secrets are present in `vars.json` before uploading it
+
+-------------------------------------------------------------------
 Wed Oct 19 13:55:24 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1666187714.761da80:
