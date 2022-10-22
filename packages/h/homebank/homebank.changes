@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 21 15:59:00 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 5.5.8:
+  * bugfix: lp#1992548 linking xfers between accounts fails to
+    join correctly
+  * bugfix: lp#1992284 manage tag edit input is empty
+
+-------------------------------------------------------------------
 Wed Oct  5 16:12:38 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 5.5.7:
