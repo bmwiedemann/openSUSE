@@ -17,13 +17,15 @@
 
 
 Name:           harfbuzz
-Version:        5.3.0
+Version:        5.3.1
 Release:        0
 Summary:        An OpenType text shaping engine
 License:        MIT
 URL:            https://www.freedesktop.org/wiki/Software/HarfBuzz
 Source0:        https://github.com/harfbuzz/harfbuzz/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM harfbuzz-5.3.1-Fix_check-symbols_failure.patch -- Fix failing tests
+Patch0:         harfbuzz-5.3.1-Fix_check-symbols_failure.patch
 
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
