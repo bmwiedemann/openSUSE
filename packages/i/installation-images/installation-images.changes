@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Thu Oct 20 15:19:57 UTC 2022 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#613
+- remove reiserfs support (bsc#1204551)
+- 17.64
+
+--------------------------------------------------------------------
 Mon Aug 22 12:26:50 UTC 2022 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#612

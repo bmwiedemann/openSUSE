@@ -40,7 +40,6 @@ ExclusiveArch:  do_not_build
 %define with_plymouth 1
 %define with_shim 1
 %define with_storage_ng 1
-%define with_reiserfs_kmp 0
 %define with_ssl_hmac 1
 %define with_exfat 0
 %define with_kernel_extra 0
@@ -211,7 +210,6 @@ BuildRequires:  distribution-logos-openSUSE-MicroOS
 %endif
 
 %if "%theme" == "SLED"
-%define with_reiserfs_kmp 1
 %define branding_skelcd   leanos
 %define branding_systemd  SLE
 %define branding_plymouth SLE
@@ -221,7 +219,6 @@ BuildRequires:  unified-installer-release
 %endif
 
 %if "%theme" == "SLES"
-%define with_reiserfs_kmp 1
 %define branding_skelcd   leanos
 %define branding_systemd  SLE
 %define branding_plymouth SLE
@@ -245,7 +242,6 @@ BuildRequires:  unified-installer-release
 %endif
 
 %if "%theme" == "SLES_SAP"
-%define with_reiserfs_kmp 1
 %define branding_skelcd   leanos
 %define branding_systemd  SLE
 %define branding_plymouth SLE
@@ -255,7 +251,6 @@ BuildRequires:  unified-installer-release
 %endif
 
 %if "%theme" == "CAASP"
-%define with_reiserfs_kmp 1
 %define branding_skelcd   CAASP
 %define branding_systemd  CAASP
 %define branding_plymouth SLE
@@ -291,9 +286,6 @@ BuildRequires:  grub2-branding-%branding_grub2
 ExcludeArch:    %ix86
 %endif
 
-%if %with_reiserfs_kmp
-BuildRequires:  reiserfs-kmp-default
-%endif
 BuildRequires:  xf86-input-libinput
 BuildRequires:  google-roboto-fonts
 BuildRequires:  noto-sans-fonts
@@ -474,7 +466,6 @@ BuildRequires:  pothana2000
 BuildRequires:  procinfo
 BuildRequires:  procps
 BuildRequires:  psmisc
-BuildRequires:  reiserfs
 BuildRequires:  rgb
 BuildRequires:  rpcbind
 BuildRequires:  rsync
@@ -672,7 +663,7 @@ AutoReqProv:    off
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0-or-later
 Group:          Metapackages
-Version:        17.63
+Version:        17.64
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)
