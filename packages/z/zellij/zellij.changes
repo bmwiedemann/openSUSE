@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Sat Oct 15 00:32:25 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Install zellij.desktop and zellij.png.
+
+-------------------------------------------------------------------
+Mon Oct 10 10:20:22 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Use tier 1 arches because some crate for other tier archs
+  are not supported.
+- Use rust version 1.59 and above.
+- Mandown only exists in Tumbleweed.
+
+------------------------------------------------------------------
+Sun Oct  9 02:05:25 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Explicitly just enable unstable features with `--features unstable`
+- Rebuild wasm-wasi plugins manually.
+- Update specfile:
+  * Use mandown to generate manpage for zellij from a markdown file.
+  * Move docs with %doc macro properly.
+
+-------------------------------------------------------------------
+Sat Oct  8 10:51:51 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Enable all features which includes unstable features.
+
+-------------------------------------------------------------------
+Wed Oct  5 22:24:29 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Fix install of shell completions in specfile.
+
+-------------------------------------------------------------------
+Wed Oct  5 00:41:20 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update vendored dependencies.
+
+-------------------------------------------------------------------
+Tue Oct  4 17:03:17 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Don't rebuild the plugins. Seems to cause a version mismatch.
+
+-------------------------------------------------------------------
+Tue Oct  4 16:27:54 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Revert to disabling cargo update.
+- Reupload non-updated vendored deps.
+
+-------------------------------------------------------------------
+Tue Oct  4 15:34:36 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Add bash completions
+- Add zsh completions
+- Add fish completions
+- Disable tests since it is "ignored" by default.
+
+-------------------------------------------------------------------
+Tue Oct  4 04:40:22 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Reenable cargo update in _service.
+- Reupload vendor.tar.gz with updated deps.
+- Add `libgcc_s1` in BuilRequires in specfile.
+- Increase physical memory size in _constraints file.
+- Enable cargo tests.
+- Enable all arches.
+
+-------------------------------------------------------------------
+Mon Oct  3 01:16:19 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Disable cargo update to fix some wasm related issues.
+- Reupload vendored deps with the not updated cargo dependencies.
+
+-------------------------------------------------------------------
 Sun Sep 25 07:03:54 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 0.31.4:
