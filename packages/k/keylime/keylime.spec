@@ -56,7 +56,7 @@ Requires:       python-SQLAlchemy
 Requires:       python-alembic
 Requires:       python-cryptography
 Requires:       python-gpg
-Requires:       python-lark-parser
+Requires:       python-lark
 Requires:       python-psutil
 Requires:       python-pyzmq
 Requires:       python-requests

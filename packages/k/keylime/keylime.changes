@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 13 09:15:04 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update requirement name to python-lark
+
+-------------------------------------------------------------------
 Wed Oct 12 06:50:54 UTC 2022 - aplanas@suse.com
 
 - Drop replace-use-of-cryptography.utils.register_interface.patch,
