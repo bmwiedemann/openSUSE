@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Oct  8 14:30:53 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- update to 6.0:
+  * ipstats: Add param.h for musl
+  * Update kernel headers
+  * libbpf: add xdp program name support
+  * iplink: bond_slave: add per port prio support
+  * seg6: add support for SRv6 Headend Reduced Encapsulation
+  * lib: Introduce ppp protocols
+  * f_flower: Introduce PPPoE support
+
+-------------------------------------------------------------------
 Wed Aug 10 10:35:10 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - update to 5.19:
