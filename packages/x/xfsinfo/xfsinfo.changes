@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct 22 08:11:51 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.7
+   gitlab CI: add a basic build test
+   Variable scope reductions as recommended by cppcheck
+   Mark usage() as _X_COLD
+   gitlab CI: stop requiring Signed-off-by in commits
+   Cleanup README.md
+
+-------------------------------------------------------------------
 Thu Aug 11 08:19:34 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - modernize spec-file, move license to licensedir

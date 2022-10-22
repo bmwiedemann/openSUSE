@@ -77,4 +77,17 @@
     <comment></comment>
     <requestid>998311</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>29370d9952cfd1fdb30a520167da186a</srcmd5>
+    <version>1.0.7</version>
+    <time>1666440809</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.7
+   gitlab CI: add a basic build test
+   Variable scope reductions as recommended by cppcheck
+   Mark usage() as _X_COLD
+   gitlab CI: stop requiring Signed-off-by in commits
+   Cleanup README.md</comment>
+    <requestid>1030486</requestid>
+  </revision>
 </revisionlist>

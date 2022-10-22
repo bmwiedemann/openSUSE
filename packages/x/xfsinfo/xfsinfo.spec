@@ -17,14 +17,14 @@
 
 
 Name:           xfsinfo
-Version:        1.0.6
+Version:        1.0.7
 Release:        0
 Summary:        X font server information utility
 License:        MIT
 Group:          System/X11/Utilities
 URL:            https://xorg.freedesktop.org/
-Source0:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.bz2
-Source1:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.bz2.sig
+Source0:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
+Source1:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libfs)
