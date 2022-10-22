@@ -2153,4 +2153,26 @@ Please do NOT put in Staging E - but different staging prj. This is against 3.12
 </comment>
     <requestid>1004777</requestid>
   </revision>
+  <revision rev="240" vrev="1">
+    <srcmd5>dd29397cce7e33d4815a32d8d84f1059</srcmd5>
+    <version>3.46.1</version>
+    <time>1666440752</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.46.1:
+  + po: Merge .source files back to the POTFILES.in
+  + IMAPX: Hide complete requests in debug logs for some sensitive
+    commands
+  + Handle negative value for GUri's port
+  + CamelDB: Fix an uninitialized variable warning
+  + Bugs Fixed:
+    - LDAP:
+      . Possible memory leak in build_mods_from_contacts()
+      . Use valid values for error paths of contact create/remove
+    - Serialize OAuth2 token refresh for an account
+    - IMAP: Does not forget renamed folders on the server
+    - Tautology in e_named_parameters_equal()
+    - camel-db.c: Rearrange transaction handling
+  + Updated translations. (forwarded request 1030294 from iznogood)</comment>
+    <requestid>1030390</requestid>
+  </revision>
 </revisionlist>

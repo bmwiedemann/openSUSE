@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Oct 21 06:44:20 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.46.1:
+  + po: Merge .source files back to the POTFILES.in
+  + IMAPX: Hide complete requests in debug logs for some sensitive
+    commands
+  + Handle negative value for GUri's port
+  + CamelDB: Fix an uninitialized variable warning
+  + Bugs Fixed:
+    - LDAP:
+      . Possible memory leak in build_mods_from_contacts()
+      . Use valid values for error paths of contact create/remove
+    - Serialize OAuth2 token refresh for an account
+    - IMAP: Does not forget renamed folders on the server
+    - Tautology in e_named_parameters_equal()
+    - camel-db.c: Rearrange transaction handling
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Sep 16 07:01:21 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.46.0:
