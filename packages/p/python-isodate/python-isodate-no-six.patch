@@ -1,0 +1,52 @@
+Index: isodate-0.6.1/setup.py
+===================================================================
+--- isodate-0.6.1.orig/setup.py
++++ isodate-0.6.1/setup.py
+@@ -40,7 +40,6 @@ setup(name='isodate',
+ 
+       # dependencies:
+       install_requires=[
+-          'six'
+       ],
+ 
+       # PyPI metadata
+Index: isodate-0.6.1/src/isodate.egg-info/requires.txt
+===================================================================
+--- isodate-0.6.1.orig/src/isodate.egg-info/requires.txt
++++ isodate-0.6.1/src/isodate.egg-info/requires.txt
+@@ -1 +0,0 @@
+-six
+Index: isodate-0.6.1/src/isodate/isoduration.py
+===================================================================
+--- isodate-0.6.1.orig/src/isodate/isoduration.py
++++ isodate-0.6.1/src/isodate/isoduration.py
+@@ -34,8 +34,6 @@ from datetime import timedelta
+ from decimal import Decimal
+ import re
+ 
+-from six import string_types
+-
+ from isodate.duration import Duration
+ from isodate.isoerror import ISO8601Error
+ from isodate.isodatetime import parse_datetime
+@@ -82,7 +80,7 @@ def parse_duration(datestring):
+       The alternative format does not support durations with years, months or
+       days set to 0.
+     """
+-    if not isinstance(datestring, string_types):
++    if not isinstance(datestring, str):
+         raise TypeError("Expecting a string %r" % datestring)
+     match = ISO8601_PERIOD_REGEX.match(datestring)
+     if not match:
+Index: isodate-0.6.1/src/isodate/tests/test_pickle.py
+===================================================================
+--- isodate-0.6.1.orig/src/isodate/tests/test_pickle.py
++++ isodate-0.6.1/src/isodate/tests/test_pickle.py
+@@ -1,6 +1,6 @@
+ import unittest
+ 
+-from six.moves import cPickle as pickle
++import pickle
+ 
+ import isodate
+ 

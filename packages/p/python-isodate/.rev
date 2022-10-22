@@ -155,4 +155,15 @@
 - drop coerce-decimal-to-int-python-310.patch (upstream)</comment>
     <requestid>954393</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>65fa1816efc42e05dd321600e26114eb</srcmd5>
+    <version>0.6.1</version>
+    <time>1666440744</time>
+    <user>dimstar_suse</user>
+    <comment>- added patches
+  https://github.com/gweis/isodate/commit/07d1602048083415bc22dc72cff152c9c2e0e021
+  + python-isodate-no-six.patch
+</comment>
+    <requestid>1030332</requestid>
+  </revision>
 </revisionlist>

@@ -24,11 +24,11 @@ Summary:        An ISO 8601 Date/Time/Duration Parser and Formatter
 License:        BSD-3-Clause
 URL:            https://pypi.org/project/isodate/
 Source:         https://files.pythonhosted.org/packages/source/i/isodate/isodate-%{version}.tar.gz
+# https://github.com/gweis/isodate/commit/07d1602048083415bc22dc72cff152c9c2e0e021
+Patch0:         python-isodate-no-six.patch
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
 
