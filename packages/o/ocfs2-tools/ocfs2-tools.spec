@@ -21,6 +21,15 @@
   %define _fillupdir /var/adm/fillup-templates
 %endif
 
+#see bsc#1191084
+%if !0%{?usrmerged}
+  # for SLEs
+  %define sbindir /sbin
+%else
+  # for opensuse
+  %define sbindir %{_sbindir}
+%endif
+
 #if run  "rpmbuild --with=ocfs2console"
 #_with_ocfs2console will be automatically defined
 %if %{defined _with_ocfs2console}
@@ -180,11 +189,16 @@ export PROJECT="ocfs2-tools"
 autoreconf -fi -I /usr/share/aclocal
 
 %configure --disable-debug \
-%if 0%{_ocfs2console} == 1
---enable-ocfs2console=yes \
-%endif
---enable-dynamic-fsck=yes \
---enable-dynamic-ctl=yes
+  %if 0%{_ocfs2console} == 1
+  --enable-ocfs2console=yes \
+  %endif
+  --enable-dynamic-fsck=yes \
+  --enable-dynamic-ctl=yes \
+  %if !0%{?usrmerged}
+  # "do nothing"
+  %else
+  --with-root-prefix=/usr
+  %endif
 
 make OPTS="%{optflags}"
 
@@ -195,7 +209,7 @@ make reflink
 cd ..
 
 %install
-mkdir -p %{buildroot}/sbin
+mkdir -p %{buildroot}%{sbindir}
 mkdir -p %{buildroot}%{_prefix}/bin
 mkdir -p %{buildroot}%{_fillupdir}
 mkdir -p %{buildroot}%{_udevrulesdir}
@@ -204,16 +218,16 @@ cp -f vendor/common/o2cb.sysconfig %{buildroot}%{_fillupdir}/sysconfig.o2cb
 
 %if %{systemd_enabled}
     mkdir -p %{buildroot}/usr/lib/systemd/system
-    cp -f  vendor/common/o2cb.service %{buildroot}/usr/lib/systemd/system/
-    cp -f  vendor/common/ocfs2.service %{buildroot}/usr/lib/systemd/system/
-    cp -f vendor/common/o2cb.init %{buildroot}/sbin
-    cp -f vendor/common/ocfs2.init %{buildroot}/sbin
+    cp -f vendor/common/o2cb.service  %{buildroot}/usr/lib/systemd/system/
+    cp -f vendor/common/ocfs2.service %{buildroot}/usr/lib/systemd/system/
+    cp -f vendor/common/o2cb.init     %{buildroot}%{sbindir}
+    cp -f vendor/common/ocfs2.init    %{buildroot}%{sbindir}
 %else
     mkdir -p %{buildroot}%{_sysconfdir}/init.d
-    cp -f vendor/common/o2cb.init %{buildroot}%{_sysconfdir}/init.d/o2cb
-    cp -f vendor/common/ocfs2.init %{buildroot}%{_sysconfdir}/init.d/ocfs2
-    ln -sf ..%{_sysconfdir}/init.d/o2cb  %{buildroot}/sbin/rco2cb
-    ln -sf ..%{_sysconfdir}/init.d/ocfs2  %{buildroot}/sbin/rcocfs2
+    cp  -f vendor/common/o2cb.init       %{buildroot}%{_sysconfdir}/init.d/o2cb
+    cp  -f vendor/common/ocfs2.init      %{buildroot}%{_sysconfdir}/init.d/ocfs2
+    ln -sf ..%{_sysconfdir}/init.d/o2cb  %{buildroot}%{sbindir}/rco2cb
+    ln -sf ..%{_sysconfdir}/init.d/ocfs2 %{buildroot}%{sbindir}/rcocfs2
 %endif
 make DESTDIR="%{buildroot}" install
 
@@ -221,9 +235,11 @@ cd reflink
 make DESTDIR="%{buildroot}" install
 cd ..
 
+%if !0%{?usrmerged}
 mv %{buildroot}/{,/usr}/sbin/o2image
 mv %{buildroot}/{,/usr}/sbin/debugfs.ocfs2
 #mv %{buildroot}/{,/usr}/sbin/ocfs2_controld.pcmk
+%endif
 chmod a-x %{buildroot}/%{_libdir}/libo2cb.a
 chmod a-x %{buildroot}/%{_libdir}/libo2dlm.a
 chmod a-x %{buildroot}/%{_libdir}/libocfs2.a
@@ -266,14 +282,14 @@ python -c "import compileall; compileall.compile_dir('%{buildroot}/%{py_sitedir}
 %doc documentation/users_guide.txt
 %dir /usr/lib/udev
 %dir %{_udevrulesdir}
-/sbin/fsck.ocfs2
-/sbin/mkfs.ocfs2
-/sbin/mounted.ocfs2
-/sbin/tunefs.ocfs2
-/sbin/mount.ocfs2
-/sbin/ocfs2_hb_ctl
-/sbin/o2cluster
-/sbin/defragfs.ocfs2
+%{sbindir}/fsck.ocfs2
+%{sbindir}/mkfs.ocfs2
+%{sbindir}/mounted.ocfs2
+%{sbindir}/tunefs.ocfs2
+%{sbindir}/mount.ocfs2
+%{sbindir}/ocfs2_hb_ctl
+%{sbindir}/o2cluster
+%{sbindir}/defragfs.ocfs2
 %{_sbindir}/o2image
 %{_sbindir}/debugfs.ocfs2
 %{_sbindir}/o2hbmonitor
@@ -308,17 +324,17 @@ python -c "import compileall; compileall.compile_dir('%{buildroot}/%{py_sitedir}
 %files o2cb
 %defattr(-,root,root)
 %doc README.O2CB
-/sbin/o2cb_ctl
-/sbin/o2cb
+%{sbindir}/o2cb_ctl
+%{sbindir}/o2cb
 
 %if %{systemd_enabled}
-    /sbin/o2cb.init
-    /sbin/ocfs2.init
+    %{sbindir}/o2cb.init
+    %{sbindir}/ocfs2.init
     /usr/lib/systemd/system/o2cb.service
     /usr/lib/systemd/system/ocfs2.service
 %else
-    /sbin/rco2cb
-    /sbin/rcocfs2
+    %{sbindir}/rco2cb
+    %{sbindir}/rcocfs2
     %{_sysconfdir}/init.d/o2cb
     %{_sysconfdir}/init.d/ocfs2
 %endif
