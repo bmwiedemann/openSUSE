@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 21 21:32:17 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.4.0+git20221019.c1d68e9:
+  * add pyupgrade to CI
+  * format with pyupgrade --py38-plus
+
+-------------------------------------------------------------------
 Tue Oct 18 11:49:34 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.4.0+git20221018.6c36ccd:

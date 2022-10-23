@@ -4095,4 +4095,14 @@ oddjob-gpupdate isn't blocked)</comment>
   * rpmdiff: clarify help text on -i/-e options</comment>
     <requestid>1029725</requestid>
   </revision>
+  <revision rev="420" vrev="1">
+    <srcmd5>1da3ba9dce30c820c4c41afdef14e6bd</srcmd5>
+    <version>2.4.0+git20221019.c1d68e9</version>
+    <time>1666535564</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.0+git20221019.c1d68e9:
+  * add pyupgrade to CI
+  * format with pyupgrade --py38-plus</comment>
+    <requestid>1030465</requestid>
+  </revision>
 </revisionlist>
