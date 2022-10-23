@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Oct 21 14:27:36 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.1:
+  + Fix searches not completing if installing or uninstalling an
+    app at the same time.
+  + Notify of errors when running a flatpak app whose runtime is
+    missing.
+  + Fix installing local RPM packages.
+  + Fix distribution upgrades when package conflicts are present.
+  + Fix opening web apps from their details page.
+  + Improve appearance of app ratings if ratings data cannot be
+    downloaded.
+  + Fix crash when showing offline update errors on startup.
+  + Highlight priority of firmware updates, making security fixes
+    more obvious.
+  + Fix installation of pending apps in some situations.
+  + Fix downloading of rpm-ostree app updates from the Updates
+    page.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Sep 16 06:59:45 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.0:
