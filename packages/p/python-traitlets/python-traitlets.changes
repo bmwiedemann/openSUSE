@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct 22 03:47:08 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 5.5.0:
+  * Clean up application typing
+  * Update tests and docs to use non-deprecated functions
+  * Clean up version handling
+  * Prep for jupyter releaser
+  * Format the changelog
+
+-------------------------------------------------------------------
 Mon Sep 12 14:34:49 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 5.4.0:

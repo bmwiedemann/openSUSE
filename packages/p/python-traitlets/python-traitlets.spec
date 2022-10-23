@@ -17,19 +17,18 @@
 
 
 Name:           python-traitlets
-Version:        5.4.0
+Version:        5.5.0
 Release:        0
 Summary:        Traitlets Python configuration system
 License:        BSD-3-Clause
 URL:            https://github.com/ipython/traitlets
 Source:         https://files.pythonhosted.org/packages/source/t/traitlets/traitlets-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module hatchling >= 0.25}
+BuildRequires:  %{python_module hatchling >= 1.5}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-hatchling >= 0.25
 BuildArch:      noarch
 %python_subpackages
 
