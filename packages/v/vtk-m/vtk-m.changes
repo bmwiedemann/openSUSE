@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Tue Oct 18 22:01:07 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Use format_spec_file service to clean up/correct whitespace
+- Clean up left over declarations
+- Correct library package name for MPI flavors
+- Use same variables for prefix etc. as in other _multibuild MPI
+  flavor subpackages.
+- Remove check section, no unittest are actually run (but move
+  examples build to regular build).
+- Replace 0001-fix-soname-lib.patch with upstream version
+
+-------------------------------------------------------------------
+Fri Oct 12 18:00:00 UTC 2022 - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com> - 1.9.0-0
+
+- Generated initial spec for vtk-m 1.9.0.
+- Added OpenMP flavor.
+- Added CUDA optional build (using --with cuda).
