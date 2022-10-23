@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Oct  4 17:22:08 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.1:
+  * fix inadvertently changed struct bpf_object_open_opts memory layout;
+  * fix btf.h header relying on struct enum64 type defined in kernel UAPI headers;
+  * fix NULL pointer exception in API btf_dump__dump_type_data;
+  * remove struct btf_map_def accidentally left in bpf_helpers.h header.
+  * All deprecated APIs and features removed!
+  * support for syscall-specific kprobe/kretprobe
+    (SEC("ksyscall/<syscall_name>") and SEC("kretsyscall/<syscall_name>"));
+  * support for sleepable uprobe BPF programs (SEC("uprobe.s"));
+  * support for per-cgroup LSM BPF programs (SEC("lsm_cgroup"));
+  * support for new BPF CO-RE relocation TYPE_MATCHES;
+  * bpf_prog_load() and bpf_map_create() are now smarter about handling program
+    and map name on old kernels (it will be ignored if kernel doesn't support
+    names);
+  * BTF_KIND_ENUM64 support;
+  * increase tracing attachment (kprobe/uprobe/tracepoint) robustness by using
+    tracefs or debugfs, whichever is mounted;
+  * new APIs for converting BPF enums to their string representation:
+  * libbpf_bpf_prog_type_str();
+  * libbpf_bpf_map_type_str();
+  * libbpf_bpf_link_type_str();
+  * libbpf_bpf_attach_type_str();
+  * bpf_program__set_autoattach() and bpf_program__autoattach() to allow opting
+    out from auto-attaching of BPF program by BPF skeleton;
+  * perf_buffer__buffer() API to give access to underlying per-CPU buffer for BPF ringbuf;
+  * bpf_obj_get_opts() API for more flexible fetching of BPF kernel objects' information.
+- see https://github.com/libbpf/libbpf/releases/tag/v1.0.0 for detailed changelog
+
+-------------------------------------------------------------------
 Wed Aug  3 13:55:13 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update to release 0.8.1:
