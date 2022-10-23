@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Oct  8 05:20:22 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.1.1:
+  * Add configuration option BUILD_TOOLS that can be used to
+    disable building the CLI tool (gh#nuspell/nuspell#122). 
+  * Made error reporting more detailed and robust
+    (gh#nuspell/nuspell#123).
+  * Fix compiler warnings regarding usage of deprecated functions.
+- Changes from version 5.1.0:
+  * Add new API for finding dictionaries on the filesystem that
+    uses facilities from C++17 std::filesystem.
+  * Simplify CLI tool and removed some unused features from it.
+  * Deprecate old API for finding dictionaries on the filesystem
+    that used strings for paths.
+  * Remove man-page for CLI tool and dependency on pandoc.
+- BuildRequires: pkgconfig(catch2) < 3 instead of unversioned
+  Catch2-devel, since package is not yet compatible with Catch2
+  version 3 and higher.
+- Require gcc-c++ >= 10 for successful builds, i.e. BuildRequires:
+  gcc10-c++ for openSUSE < 1550.
+- Fix building of API documentation and install it as part of
+  new doc package; BuildRequires: fdupes, graphviz (for dot).
+- Spec file cleanups:
+  * Install license with every package.
+  * Remove any doc files from shared lib and install as part of
+    %{name}: shared lib should contain nothing more than the shared
+    object(s) and license.
+  * Move all %libname.so.* files to shared lib package, devel pkg
+    should contain just the %libname.so symlink amidst other devel
+    files.
+  * %{name}-devel pkg dependencies: Add shared lib, drop %{name}.
+
+-------------------------------------------------------------------
 Thu Jun 17 07:27:33 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to version 5.0.0.
