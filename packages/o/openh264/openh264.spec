@@ -20,12 +20,12 @@
 # moz plugin commit hash
 %global commit1 3a01c086d1b0394238ff1b5ad22e76022830625a
 
-%global somajor 6
+%global somajor 7
 %global libname lib%{name}-%{somajor}
 %global devname lib%{name}-devel
 
 Name:           openh264
-Version:        2.2.0
+Version:        2.3.1
 Release:        0
 Summary:        H.264 codec library
 Group:          Productivity/Multimedia/Other

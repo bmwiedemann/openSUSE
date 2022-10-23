@@ -17,4 +17,12 @@ This is per https://code.opensuse.org/leap/features/issue/22#comment-838</commen
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>964275</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4a7f9a71b3083d65faebc50b00c7f760</srcmd5>
+    <version>2.3.1</version>
+    <time>1666535590</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1030548</requestid>
+  </revision>
 </revisionlist>
