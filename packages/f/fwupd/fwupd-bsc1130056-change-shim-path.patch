@@ -1,9 +1,9 @@
-Index: fwupd-1.7.2/plugins/uefi-capsule/fu-uefi-bootmgr.c
+Index: fwupd-1.8.5/plugins/uefi-capsule/fu-uefi-bootmgr.c
 ===================================================================
---- fwupd-1.7.2.orig/plugins/uefi-capsule/fu-uefi-bootmgr.c
-+++ fwupd-1.7.2/plugins/uefi-capsule/fu-uefi-bootmgr.c
-@@ -294,7 +294,8 @@ fu_uefi_bootmgr_bootnext(FuDevice *devic
- 	secure_boot = fu_efivar_secure_boot_enabled();
+--- fwupd-1.8.5.orig/plugins/uefi-capsule/fu-uefi-bootmgr.c
++++ fwupd-1.8.5/plugins/uefi-capsule/fu-uefi-bootmgr.c
+@@ -292,7 +292,8 @@ fu_uefi_bootmgr_bootnext(FuDevice *devic
+ 	secure_boot = fu_efivar_secure_boot_enabled(NULL);
  	if (secure_boot) {
  		/* test to make sure shim is there if we need it */
 -		shim_app = fu_uefi_get_esp_app_path(device, esp_path, "shim", error);

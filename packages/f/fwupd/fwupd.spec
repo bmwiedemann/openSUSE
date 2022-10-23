@@ -36,23 +36,28 @@
 %bcond_with fish_support
 %endif
 
+%define shlib_sover  2
+
 Name:           fwupd
-Version:        1.7.10
+Version:        1.8.6
 Release:        0
 Summary:        Device firmware updater daemon
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Management
 URL:            https://fwupd.org/
-# Do not use upstream tarball, we are using source service!
-#Source:         https://github.com/%%{name}/%%{name}/archive/%%{version}.tar.gz
 Source:         %{name}-%{version}.tar.xz
+
 # PATCH-FIX-OPENSUSE fwupd-bsc1130056-shim-path.patch bsc#1130056
 Patch1:         fwupd-bsc1130056-change-shim-path.patch
 # PATCH-FIX-OPENSUSE fwupd-jscSLE-11766-close-efidir-leap-gap.patch jsc#SLE-11766 qkzhu@suse.com -- Set SLE and openSUSE esp os dir at runtime
 Patch2:         fwupd-jscSLE-11766-close-efidir-leap-gap.patch
+# PATCH-FEATURE-OPENSUSE harden_fwupd-offline-update.service.patch -- Harden services
 Patch3:         harden_fwupd-offline-update.service.patch
+# PATCH-FEATURE-OPENSUSE harden_fwupd-refresh.service.patch -- Harden services
 Patch4:         harden_fwupd-refresh.service.patch
+
 BuildRequires:  dejavu-fonts
+BuildRequires:  fdupes
 %if %{with fish_support}
 BuildRequires:  fish
 %endif
@@ -62,7 +67,6 @@ BuildRequires:  gnutls
 BuildRequires:  gobject-introspection
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gpgme-devel
-BuildRequires:  gtk-doc
 BuildRequires:  help2man
 BuildRequires:  intltool
 BuildRequires:  libelf-devel
@@ -79,6 +83,10 @@ BuildRequires:  pkgconfig(appstream-glib) >= 0.5.10
 BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(colorhug) >= 1.2.12
+%ifnarch s390x ppc64le
+BuildRequires:  pkgconfig(flashrom)
+%endif
+BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.45.8
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.48.8
 BuildRequires:  pkgconfig(glib-2.0) >= 2.45.8
@@ -86,22 +94,26 @@ BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gnutls)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gthread-2.0)
-BuildRequires:  pkgconfig(gtk-doc) >= 1.14
 BuildRequires:  pkgconfig(gudev-1.0) >= 232
 BuildRequires:  pkgconfig(gusb) >= 0.2.9
 BuildRequires:  pkgconfig(jcat) >= 0.1.3
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.1.1
 BuildRequires:  pkgconfig(libarchive)
+BuildRequires:  pkgconfig(libcbor)
 BuildRequires:  pkgconfig(libcurl) >= 7.62.0
 BuildRequires:  pkgconfig(libelf)
 BuildRequires:  pkgconfig(libgcab-1.0) >= 1.0
 BuildRequires:  pkgconfig(libprotobuf-c)
 BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  pkgconfig(mbim-glib)
+BuildRequires:  pkgconfig(mm-glib)
 BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.103
 BuildRequires:  pkgconfig(protobuf)
+BuildRequires:  pkgconfig(qmi-glib)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(tss2-esys) >= 2.0
 BuildRequires:  pkgconfig(udev)
+BuildRequires:  pkgconfig(umockdev-1.0)
 BuildRequires:  pkgconfig(xmlb) >= 0.1.13
 %if %{with efi_fw_update}
 BuildRequires:  gnu-efi
@@ -132,21 +144,12 @@ the local machine.
 You can either use a GUI software manager like GNOME Software to view and apply
 updates, the command line tool or the system D-Bus interface directly.
 
-%package -n libfwupd2
+%package -n libfwupd%{shlib_sover}
 Summary:        Allow session software to update device firmware
 Group:          System/Libraries
 Requires:       %{name} >= %{version}
 
-%description -n libfwupd2
-fwupd is a daemon to allows session software to update device firmware on
-the local machine.
-
-%package -n libfwupdplugin5
-Summary:        Allow session software to update device firmware
-Group:          System/Libraries
-Requires:       %{name} >= %{version}
-
-%description -n libfwupdplugin5
+%description -n libfwupd%{shlib_sover}
 fwupd is a daemon to allows session software to update device firmware on
 the local machine.
 
@@ -155,14 +158,6 @@ Summary:        GObject-introspection bindings for libfwupd
 Group:          System/Libraries
 
 %description -n typelib-1_0-Fwupd-2_0
-fwupd is a daemon to allows session software to update device firmware on
-the local machine.
-
-%package -n typelib-1_0-FwupdPlugin-1_0
-Summary:        GObject-introspection bindings for libfwupd
-Group:          System/Libraries
-
-%description -n typelib-1_0-FwupdPlugin-1_0
 fwupd is a daemon to allows session software to update device firmware on
 the local machine.
 
@@ -176,12 +171,20 @@ A generic tool to upload firmware to USB Devices based on Device Firmware Upgrad
 %package devel
 Summary:        Allow session software to update device firmware
 Group:          Development/Languages/C and C++
-Requires:       libfwupd2 = %{version}
-Requires:       libfwupdplugin5 = %{version}
+Requires:       %{name} = %{version}
+Requires:       libfwupd%{shlib_sover} = %{version}
+Requires:       typelib-1_0-Fwupd-2_0 = %{version}
 
 %description devel
 fwupd is a daemon to allows session software to update device firmware on
 the local machine.
+
+%package doc
+Summary:        Developer documentation for %{name}
+BuildArch:      noarch
+
+%description doc
+Developer documentation for %{name}.
 
 %package bash-completion
 Summary:        Bash completion for fwupd
@@ -223,48 +226,50 @@ export CFLAGS="%{optflags} -D_GNU_SOURCE"
 # Synaptics requires Dell support, i.e. x86 only
 %meson \
 %if %{with efi_fw_update}
-  -Dplugin_uefi_capsule=true \
-  -Dplugin_uefi_pk=true \
+  -Dplugin_uefi_capsule=enabled \
+  -Dplugin_uefi_pk=enabled \
   -Defi_binary=false \
   -Dsystemd_unit_user=root \
 %else
-  -Dplugin_uefi_capsule=false \
-  -Dplugin_uefi_pk=false \
+  -Dplugin_uefi_capsule=disabled \
+  -Dplugin_uefi_pk=disabled \
 %endif
 %if %{with msr_support}
-  -Dplugin_msr=true \
+  -Dplugin_msr=enabled \
 %else
-  -Dplugin_msr=false \
+  -Dplugin_msr=disabled \
 %endif
 %if %{with dell_support}
-  -Dplugin_dell=true \
-  -Dplugin_synaptics_mst=true \
+  -Dplugin_dell=enabled \
+  -Dplugin_synaptics_mst=enabled \
 %else
-  -Dplugin_dell=false \
-  -Dplugin_synaptics_mst=false \
+  -Dplugin_dell=disabled \
+  -Dplugin_synaptics_mst=disabled \
 %endif
 %ifnarch %{ix86} x86_64
-  -Dplugin_amt=false \
-  -Dplugin_synaptics_rmi=false \
+  -Dplugin_amt=disabled \
+  -Dplugin_synaptics_rmi=disabled \
 %endif
-  -Dplugin_nvme=false \
-  -Dplugin_redfish=false \
-  -Ddocs=gtkdoc \
-  -Dsupported_build=true \
+  -Dplugin_nvme=enabled \
+  -Dplugin_redfish=enabled \
+  -Ddocs=enabled \
+  -Dsupported_build=enabled \
   -Dtests=false \
+%ifarch s390x ppc64le
+  -Dplugin_flashrom=disabled \
+%endif
   %{nil}
 %meson_build
 
 %install
 %meson_install
-# README.md is packaged as doc
-rm %{buildroot}/usr/share/doc/fwupd/builder/README.md
 # Add SUSE specific rcfoo service symlink
 mkdir -p %{buildroot}%{_sbindir}
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcfwupd-offline-update
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcfwupd-refresh
 %find_lang %{name}
+%fdupes -s %{buildroot}%{_datadir}/doc
 
 # Do not ship default polkit .rules - openSUSE overrides them anyway - boo#1125428
 rm %{buildroot}%{_datadir}/polkit-1/rules.d/org.freedesktop.fwupd.rules
@@ -276,11 +281,7 @@ rm -fr %{buildroot}%{_datadir}/installed-tests
 rm -fr %{buildroot}%{_datadir}/fish
 %endif
 
-%post   -n libfwupd2 -p /sbin/ldconfig
-%postun -n libfwupd2 -p /sbin/ldconfig
-
-%post   -n libfwupdplugin5 -p /sbin/ldconfig
-%postun -n libfwupdplugin5 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libfwupd%{shlib_sover}
 
 %preun
 %service_del_preun %{name}.service fwupd-offline-update.service fwupd-refresh.service
@@ -337,7 +338,6 @@ rm -fr %{buildroot}%{_datadir}/fish
 %endif
 %{_datadir}/%{name}/metainfo/org.freedesktop.fwupd.remotes.lvfs-testing.metainfo.xml
 %{_datadir}/%{name}/metainfo/org.freedesktop.fwupd.remotes.lvfs.metainfo.xml
-%{_datadir}/%{name}/quirks.d/*.quirk
 %{_datadir}/%{name}/remotes.d/vendor/firmware/README.md
 %{_mandir}/man1/fwupdagent.1%{?ext_man}
 %{_mandir}/man1/fwupdmgr.1%{?ext_man}
@@ -365,42 +365,41 @@ rm -fr %{buildroot}%{_datadir}/fish
 %{_sysconfdir}/grub.d/35_fwupd
 %endif
 %{_udevrulesdir}/90-fwupd-devices.rules
-%{_libdir}/fwupd-plugins-5/
 %dir %{_datadir}/metainfo
 %{_datadir}/metainfo/org.freedesktop.fwupd.metainfo.xml
 %{_datadir}/icons/hicolor/*
 %{_prefix}/lib/systemd/system-shutdown/fwupd.shutdown
 %{_prefix}/lib/systemd/system-preset/fwupd-refresh.preset
+%dir %{_libdir}/fwupd-%{version}
+%{_libdir}/fwupd-%{version}/libfu_plugin_flashrom.so
+%{_libdir}/fwupd-%{version}/libfu_plugin_modem_manager.so
+%{_libdir}/fwupd-%{version}/libfwupdengine.so
+%{_libdir}/fwupd-%{version}/libfwupdplugin.so
+%{_libdir}/fwupd-%{version}/libfwupdutil.so
+%{_datadir}/%{name}/quirks.d/builtin.quirk.gz
 
 %files -n dfu-tool
 %{_bindir}/dfu-tool
 %{_mandir}/man1/dfu-tool.1%{?ext_man}
 
-%files -n libfwupd2
+%files -n libfwupd%{shlib_sover}
 %{_libdir}/libfwupd.so.*
-
-%files -n libfwupdplugin5
-%{_libdir}/libfwupdplugin.so.*
 
 %files -n typelib-1_0-Fwupd-2_0
 %{_libdir}/girepository-1.0/Fwupd-2.0.typelib
 
-%files -n typelib-1_0-FwupdPlugin-1_0
-%{_libdir}/girepository-1.0/FwupdPlugin-1.0.typelib
-
-%files lang -f %{name}.lang
-
 %files devel
-%doc %{_datadir}/gtk-doc/html/fwupd/
 %{_datadir}/gir-1.0/Fwupd-2.0.gir
-%{_datadir}/gir-1.0/FwupdPlugin-1.0.gir
 %{_datadir}/vala/vapi/fwupd.deps
 %{_datadir}/vala/vapi/fwupd.vapi
 %{_includedir}/fwupd-1/
 %{_libdir}/pkgconfig/fwupd.pc
-%{_libdir}/pkgconfig/fwupdplugin.pc
 %{_libdir}/libfwupd.so
-%{_libdir}/libfwupdplugin.so
+
+%files doc
+%doc %{_datadir}/doc/fwupd/
+%doc %{_datadir}/doc/libfwupd/
+%doc %{_datadir}/doc/libfwupdplugin/
 
 %files bash-completion
 %{_datadir}/bash-completion/completions/fwupdmgr
@@ -411,5 +410,7 @@ rm -fr %{buildroot}%{_datadir}/fish
 %files fish-completion
 %{_datadir}/fish/vendor_completions.d/fwupdmgr.fish
 %endif
+
+%files lang -f %{name}.lang
 
 %changelog

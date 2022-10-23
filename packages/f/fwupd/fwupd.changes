@@ -1,7 +1,296 @@
 -------------------------------------------------------------------
+Fri Oct 14 08:57:52 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.8.6:
+  + This release adds the following features:
+    - Reduce the installed package size by more than 30%
+    - Translate more interactive messages
+  + This release fixes the following bugs:
+    - Allow disabling a DFU device when required
+    - Fix a regression when getting the i2c bus number
+    - Fix a small memory leak when reloading the parade-lspcon
+      device
+    - Fix installing the dbx update when using fwupdtool
+    - Improve writing CoSWID and uSWID metadata
+    - Only include the last 5 releases in the installed metainfo
+      file
+    - Only request the BOS descriptor for newer libgusb versions
+    - Prevent high memory usage when loading corrupt SREC files
+    - Try harder when trying to find the default ESP volume
+    - Use a higher compression preset for the UEFI splash images
+  + This release adds support for the following hardware:
+    - Focaltech touchpads
+    - FPC fingerprint readers
+    - Supermicro machines using Redfish
+- Drop plugin_sover define, and sub-packages libfwupdplugin7 and
+  typelib-1_0-FwupdPlugin-1_0 following upstream changes.
+
+-------------------------------------------------------------------
+Fri Sep 30 17:11:26 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.8.5:
+  + This release adds the following features:
+    - Add a new android-boot plugin to update specific block
+      devices
+    - Add new plugin to display SMU firmware version on AMD APU/CPU
+    - Add support for platform capability descriptors so devices
+      can set quirks
+    - Move the generic Intel Goshen Ridge code out to a new plugin
+  + This release fixes the following bugs:
+    - Allow specifying the ESP when applying the dbx update
+    - Always check the BDP partitions when getting all the possible
+      ESPs
+    - Correctly update Wacom AES devices
+    - Disable changing sleep mode on Ryzen 6000 systems
+    - Do not show the 'may not be usable while updating' message
+      for DBX updates
+    - Expose Pine64 PinePhone Pro MTD as Tow-Boot
+    - Fix a critical warning when issuing Secure Boot modem AT
+      commands
+    - Fix a fuzzing crash when parsing malicious FDT data
+    - Fix aligning up addresses greater than 4GB
+    - Fix a possible crash when dumping VBE firmware
+    - Fix a possible critical warning when parsing cabinet archives
+    - Fix a regression when parsing pixart-rf firmware
+    - Fix a small memory leak when parsing UF2 files
+    - Fix checking for invalid depth requirements
+    - Fix parsing the coSWID firmware ID when encoded as a UUID
+    - Fix parsing uSWID uncompressed metadata
+    - Fix uploading to DFU-CSR devices
+    - Limit the archive size to 25% of the RAM, or 4G
+    - Load coSWID metadata from a uSWID MTD block device
+    - Never save the Redfish auto-generated password to a
+      user-readable file
+    - Only create users using IPMI when we know it's going to work
+    - Write all the CCGX metadata block as intended
+  + This release adds support for the following hardware:
+    - Corsair SABRE RGB PRO Gaming mouse
+    - More Sonix CAM devices
+    - More Intel Goshen Ridge USB-4 docks
+- Changes from version 1.8.4:
+  + This release adds the following features:
+    - Add a translated title and long description for HSI security
+      attributes
+    - Add support for loading a machine-default BIOS settings
+      policy
+    - Add support for reading and writing BIOS settings
+    - Allow loading BIOS settings for host emulation
+    - Prompt users to fix some BIOS configuration issues
+  + This release fixes the following bugs:
+    - Actually show provided AppStream security issues
+    - Add Quectel secure boot status AT commands
+    - Correctly detect CET IBT
+    - Do not assert when running with no plugins
+    - Do not require UEFI capsule updates for checking TPM PCR0
+    - Do not show HSI events where we changed the spec result value
+    - Fix applying the latest DBX update
+    - Include vfat in the list of possible BDP partition types
+    - Install all devices with the same composite id in fwupdtool
+    - Only fail the kernel HSI test for specific taint reasons
+    - Only show changed events in fwupdmgr security
+    - Update vulnerable CMSE versions from CSMEVDT data
+ + This release adds support for the following hardware:
+    - Elan non-HID touchpads
+    - Google Prism
+    - LabTop Mk III
+    - ThinkPad Thunderbolt 4 Dock
+    - ThinkPad Universal Smart Dock
+- Changes from version 1.8.3:
+  + This release adds the following features:
+    - Add resolution flags to each security attribute failures for
+      the user
+    - Allow loading in emulated host profiles for debugging
+    - Check if Intel TME has been disabled by the firmware or
+      platform
+    - Wait for the system to acquiesce after doing each update
+  + This release fixes the following bugs:
+    - Do not use CoD even when advertized on non-aarch64 platforms
+    - Fix a crash when updating the Logitech Bolt radio device
+    - Fix a critical warning when parsing an invalid PHAT record
+    - Fix a critical warning when parsing invalid FDT firmware
+    - Fix fwupdmgr security when plugins are added to the blocklist
+    - Fix parsing SMBIOS data to correct the device hardware IDs
+    - Fix uploading signed reports by sending the correct checksum
+    - Use the correct protocol attribute name when exporting to
+      JSON
+  + This release adds support for the following hardware:
+    - Additional Startech devices
+    - Additional Elan fingerprint readers
+- Changes from version 1.8.2:
+  + This release adds the following features:
+    - Add startup profiling which allowed us to speed up daemon
+      startup considerably
+    - Add support for OptionROM, CPD and FPT firmware formats for
+      future hardware
+    - Add the HostVendor to the D-Bus interface
+    - Break some internal ABI and add a conversion helper for
+      out-of-tree plugins
+    - Optionally build the quirk files into the daemon binary to
+      reduce installed size
+  + This release fixes the following bugs:
+    - Allow front-end clients to read the percentage property
+    - Allow more quirk entries to add multiple items
+    - Allow to force install Genesys firmware even if the
+      public-key does not match
+    - Allow UFS disks to define the signed status in metadata
+    - Autoconnect the Redfish network device when rebooting the BMC
+    - Copy the instance ID strings when incorporating devices
+    - Do not generate a capsule header for the FMP GUID
+    - Ensure more firmware formats can round-trip to and from XML
+    - Fix a regression for devices using the Atmel FLIP Bootloader
+    - Fix running fwupdtool security with a user-specified plugin
+      allowlist
+    - Handle ENOTTY with the correct error code for ioctl calls
+    - Increase the self tests coverage substantially
+    - Modernize the AMT plugin and split out common MEI
+      functionality
+    - Only move the logitech-bulkcontroller progressbar forwards
+      when writing
+    - Set the device ID on the FwupdRequest to allow better UX
+    - Show the get-details output when the device requirements fail
+    - Simply quirk matching for i2c devices to speed up daemon
+      startup
+    - Support SHA256 fastboot hashes if specified
+    - Use force-detach to bypass the DFU streaming check for camera
+      devices
+    - Use the SCSI target to correctly set the physical ID
+    - Wait for the System76 launch device to re-enumerate if
+      already unlocked
+  + This release adds support for the following hardware:
+    - Corsair HARPOON RGB Wireless mouse
+    - U-Boot devices writing simple FIT images
+    - Genesys M27fd AIM101
+    - More PixArt wireless devices
+    - More Steelseries HID, Sonic and Fizz devices
+    - System76 launch_2
+- Changes from version 1.8.1:
+  + This release adds the following features:
+    - Add archive writing support for devices with composite
+      firmware
+    - Add a way to read device composite firmware in fwupdtool
+    - Allow clients to opt-in to showing updates with user-solvable
+      problems
+    - Allow the device to pause polling when writing firmware
+    - Export the system and device battery levels on the D-Bus
+      interface
+    - Log errors and warnings to the win32 eventlog when required
+    - Add X-UsbReceiver as an update category with icon
+      usb-receiver
+  + This release fixes the following bugs:
+    - Accurately return the last-set status to client tools
+    - Allow dumping flashrom firmware using fwupdtool
+    - Allow specifying a non-file D-Bus transport
+    - Allow to request post actions from fwupdtool
+    - Always be arch-explicit when installing OS deps
+    - Be more resilient when restarting the Redfish BMC
+    - Do not mark all Redfish updates as UPDATABLE
+    - Do not use 'dongle' to describe USB receiver hardware
+    - Download in-process when using fwupdtool
+    - Fix a critical warning on failed modem update
+    - Fix regression when probing PS175 devices
+    - Hardcode the Redfish filedata name to firmware.bin
+    - Set the Bluetooth version if REV has been set
+    - Switch the Windows installer from NSIS to MSI
+    - Use StartServiceCtrlDispatcherA for the daemon on Windows
+    - Use the native certificate store on Windows
+  + This release adds support for the following hardware:
+    - Corsair KATAR PRO XT, SABRE PRO and KATAR PRO Wireless
+    - HP Thunderbolt Dock G4
+    - Lenovo ThinkPad Universal USB-C Dock
+    - More PixArt wireless devices
+    - More SunplusIT USB cameras
+    - Some UFS devices
+    - Steelseries Aerox 3 Wireless and Rival 3 Wireless
+- Changes from version 1.8.0:
+  + This release adds the following features:
+    - Add a new attribute for CPUs supported by HSI
+    - Add coSWID and uSWID parsers to libfwupdplugin for initial
+      SBoM support
+    - Add new HSI attributes for the AMD PSP and various other
+      system protections
+    - Add the runtime fwupd-efi version as a firmware requirement
+    - Allow 'fwupdmgr install' to install a specified firmware
+      version
+    - Allow overriding the detected machine type for debugging and
+      development
+    - Restart the BMC after installing BCM updates
+    - Show the device serial number and instance IDs by default
+    - Support dumping the MTD image to a firmware blob
+    - Take a device inhibit when updating a device
+    - Use the CFI manufacturer ID to set the vendor
+    - Use the correct icon automatically for more hardware
+  + This release fixes the following bugs:
+    - Add signed-payload metadata for more devices
+    - Allow Capsule-on-Disk to work in more cases
+    - Allow quirking the detected flashrom flash size
+    - Check for os-release on FWUPD_SYSCONFDIR
+    - Check the alignment when parsing raw firmware
+    - Check the update protocol exists when checking requirements
+    - Convert the build system to use meson tristate features
+    - Correctly probe USB-2 hubs with more than 7 ports
+    - Do not add the Windows compatibility ID to capsule devices
+    - Do not allow the DBX update for specific motherboards
+    - Do not expect KernelCmdline on Windows
+    - Do not export USB4 host controllers as updatable if they
+      don't have unique GUIDs
+    - Do not fallback to audio-card and use a more suitable icon
+      for USB hubs
+    - Do not hardcode the libexecdir to /usr/libexec
+    - Do not leak child processes when canceling
+    - Do not show unconnected or unreachable devices in the client
+      tools
+    - Do not throw away the TPM eventlog when uploading to the LVFS
+    - Do not use /var/run for the socket
+    - Export the version_lowest_raw value correctly
+    - Fix build for MacOS and add to the CI matrix
+    - Fix eventlog replay for Intel TXT machines
+    - Fix several small memory leaks
+    - Fix writing large mtd images than 10kb
+    - Ignore MTD devices that report EPERM on open
+    - Mark the ME region device locked if it is read only
+    - Never send the DeviceChanged signal with old data
+    - Only show the CLI time remaining for predictable status
+      phases
+    - Respect the NO_COLOR env variable
+    - Return the correct error when there is no GPIO device to open
+    - Support the new UPower PENDING device states
+  + This release adds support for the following hardware:
+    - CH341A SPI programmer
+    - Corsair Sabre RGB PRO and Slipstream USB receiver
+    - Genesys GL3521 and GL3590 hubs
+    - Google Servo Dock
+    - Logitech M550, M650 and K650
+    - More ELAN fingerprint readers
+    - More integrated Wacom panels
+    - More NovaCustom machines
+    - More StaLabs StarLite machines
+    - More Tuxedo laptops
+    - Quectel EM05
+    - FlatFrog devices
+    - System76 launch_lite_1
+- Rebase patches with quilt.
+- Use ldconfig_scriptlets macro for post(un) handling.
+- Add shlib_sover define and set it to 2, ease future updates.
+- Add plugin_sover define and set it to 7, ease future updates, and
+  rename libfwupdplugin5 to libfwupdplugin7 following upstream
+  changes.
+- Drop gtk-doc and pkgconfig(gtk-doc) BuildRequires: No longer
+  needed nor used. Following this, stop passing docs=gtkdoc to
+  meson, no longer recognized.
+- Add pkgconfig(gi-docgen), pkgconfig(libcbor), pkgconfig(mm-glib),
+  pkgconfig(mbim-glib), pkgconfig(qmi-glib) and
+  pkgconfig(umockdev-1.0) BuildRequires, and conditional
+  pkgconfig(flashrom) BuildRequires: New dependencies.
+- Update options passed to meson following upstream changes.
+- Replace false for plugin_nvme and plugin_redfish with enabled,
+  build nvme and redfish plugins.
+- Split out developer/api docs in new doc sub-package, add fdupes
+  BuildRequires and macros, remove duplicates.
+
+-------------------------------------------------------------------
 Thu Sep 22 14:48:43 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
-- Update to version 1.7.10:
+- Update to version 1.7.10 (CVE-2022-3287, boo#1203852):
   + Always check the BDP partitions when getting all the possible
     ESPs
   + Correctly detect CET IBT
@@ -13,7 +302,7 @@ Thu Sep 22 14:48:43 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
   + Fix getting the new version number of the USI docking hardware
   + Fix HSI prefix for invalid chassis
   + Never save the Redfish auto-generated password to a
-    user-readable file
+    user-readable file (CVE-2022-3287, boo#1203852).
   + Only create users using IPMI when we've tested the hardware
   + Only fail the kernel tainted HSI test for specific taint
     reasons

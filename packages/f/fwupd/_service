@@ -1,9 +1,10 @@
+<?xml version="1.0"?>
 <services>
   <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/fwupd/fwupd.git</param>
     <param name="scm">git</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">1.7.10</param>
+    <param name="revision">1.8.6</param>
   </service>
   <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">
