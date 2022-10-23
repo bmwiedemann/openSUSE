@@ -77,4 +77,48 @@
     <comment>1</comment>
     <requestid>438254</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0846be641f23d0b0e022fe46f7da4b9d</srcmd5>
+    <version>0.9.11</version>
+    <time>1666535582</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.11
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * Remove unnecessary casts from malloc &amp; free calls
+  * Reduce variable scopes as recommended by cppcheck
+  * Resolve -Wsign-compare warnings
+  * Rename xDepth to xPDepth to quiet -Wshadow warnings
+  * fix coredumps in XRenderComputeTrapezoids (issue #1)
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * WIP: Documentation
+  * autogen.sh: use exec instead of waiting for configure to finish
+  * Add missing HAVE_CONFIG_H guard to Xrenderint.h
+  * amend cppcheck-scope change, fixing c89 build
+  * additional cppcheck-scope warning
+  * cppcheck (removing unused assignment lets variable scope reduction)
+  * use casts to reduce compiler warnings (no object change)
+  * use _Xconst with DataInt32/DataInt16/memcpy to reduce strict compiler warnings
+  * use _X_UNUSED for compiler-warnings
+  * whitespace fix
+  * fix regression
+  * fix coredumps in XRenderComputeTrapezoids (issue #1)
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * WIP: Documentation
+  * autogen.sh: use exec instead of waiting for configure to finish
+  * Add missing HAVE_CONFIG_H guard to Xrenderint.h
+  * amend cppcheck-scope change, fixing c89 build
+  * additional cppcheck-scope warning
+  * cppcheck (removing unused assignment lets variable scope reduction)
+  * use casts to reduce compiler warnings (no object change)
+  * use _Xconst with DataInt32/DataInt16/memcpy to reduce strict compiler warnings
+  * use _X_UNUSED for compiler-warnings
+  * whitespace fix
+  * fix regression</comment>
+    <requestid>1030487</requestid>
+  </revision>
 </revisionlist>

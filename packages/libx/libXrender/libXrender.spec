@@ -1,7 +1,7 @@
 #
 # spec file for package libXrender
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libXrender
 %define lname	libXrender1
-Version:        0.9.10
+Version:        0.9.11
 Release:        0
 Summary:        X Rendering Extension library
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            http://cgit.freedesktop.org/xorg/lib/libXrender/
+URL:            http://cgit.freedesktop.org/xorg/lib/libXrender/
 
 #Git-Clone:	git://anongit.freedesktop.org/xorg/lib/libXrender
 #Git-Web:	http://cgit.freedesktop.org/xorg/lib/libXrender/
-Source:         http://xorg.freedesktop.org/releases/individual/lib/%{name}-%{version}.tar.bz2
+Source:         http://xorg.freedesktop.org/releases/individual/lib/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #git#BuildRequires:	autoconf >= 2.60, automake, libtool

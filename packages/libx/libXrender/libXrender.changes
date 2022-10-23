@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sat Oct 22 08:17:20 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 0.9.11
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * Remove unnecessary casts from malloc & free calls
+  * Reduce variable scopes as recommended by cppcheck
+  * Resolve -Wsign-compare warnings
+  * Rename xDepth to xPDepth to quiet -Wshadow warnings
+  * fix coredumps in XRenderComputeTrapezoids (issue #1)
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * WIP: Documentation
+  * autogen.sh: use exec instead of waiting for configure to finish
+  * Add missing HAVE_CONFIG_H guard to Xrenderint.h
+  * amend cppcheck-scope change, fixing c89 build
+  * additional cppcheck-scope warning
+  * cppcheck (removing unused assignment lets variable scope reduction)
+  * use casts to reduce compiler warnings (no object change)
+  * use _Xconst with DataInt32/DataInt16/memcpy to reduce strict compiler warnings
+  * use _X_UNUSED for compiler-warnings
+  * whitespace fix
+  * fix regression
+  * fix coredumps in XRenderComputeTrapezoids (issue #1)
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * WIP: Documentation
+  * autogen.sh: use exec instead of waiting for configure to finish
+  * Add missing HAVE_CONFIG_H guard to Xrenderint.h
+  * amend cppcheck-scope change, fixing c89 build
+  * additional cppcheck-scope warning
+  * cppcheck (removing unused assignment lets variable scope reduction)
+  * use casts to reduce compiler warnings (no object change)
+  * use _Xconst with DataInt32/DataInt16/memcpy to reduce strict compiler warnings
+  * use _X_UNUSED for compiler-warnings
+  * whitespace fix
+  * fix regression
+
+-------------------------------------------------------------------
 Sat Oct 29 00:03:45 UTC 2016 - tobias.johannes.klausmann@mni.thm.de
 
 - Update to version 0.9.10:
