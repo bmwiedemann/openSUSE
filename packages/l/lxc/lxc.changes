@@ -1,7 +1,23 @@
 -------------------------------------------------------------------
-Wed Jun 22 04:40:50 UTC 2022 - Aleksa Sarai <asarai@suse.com>
+Wed Oct 19 13:05:52 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- re-enable FORTIFY_SOURCE=3
+- add patch 0001-Backport-Commit-build-detect-where-struct-mount_attr.patch
+  This patch backports the fix from
+  https://github.com/lxc/lxc/pull/4179/commits/c1115e1503bf955c97f4cf3b925a6a9f619764c3
+  The patch fixes the code so builds are no longer failing
+  due to gcc errors -Werror=implicit-function-declaration and
+  -Werror=incompatible-pointer-types
+
+-------------------------------------------------------------------
+Wed Oct 19 00:07:07 UTC 2022 - Aleksa Sarai <asarai@suse.com>
 
 - Always build with seccomp support on every architecture. boo#1199963
+
+-------------------------------------------------------------------
+Sun Sep 25 17:09:12 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- fix build by using FORTIFY_SOURCE=2
 
 -------------------------------------------------------------------
 Sun Jun  5 09:38:47 UTC 2022 - munix9@googlemail.com

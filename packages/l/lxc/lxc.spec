@@ -47,6 +47,7 @@ Source2:        %{name}.keyring
 Source3:        lxc-createconfig.in
 Source90:       openSUSE-apparmor.conf
 Source91:       missing_setuid.txt.in
+Patch0:         0001-Backport-Commit-build-detect-where-struct-mount_attr.patch
 BuildRequires:  automake
 BuildRequires:  gcc
 BuildRequires:  libapparmor-devel
@@ -127,6 +128,7 @@ Bash command line completion support for %{name}.
 
 %prep
 %setup
+%patch0 -p1
 
 %build
 ./autogen.sh
