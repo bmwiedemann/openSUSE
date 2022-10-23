@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct 22 03:37:06 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 6.16.1:
+  * Bugs fixed
+    + PR: Destroy tk app to avoid memory leak #1008 (@impact27)
+  * Maintenance and upkeep improvements
+    + Maintenance cleanup #1006 (@blink1073)
+    + Ignore warnings in prereleases test #1002 (@blink1073)
+
+-------------------------------------------------------------------
 Tue Sep 27 16:56:23 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 6.16.0:

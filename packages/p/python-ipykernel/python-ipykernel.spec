@@ -16,10 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define         skip_python2 1
 Name:           python-ipykernel
-Version:        6.16.0
+Version:        6.16.1
 Release:        0
 Summary:        IPython Kernel for Jupyter
 License:        BSD-3-Clause
