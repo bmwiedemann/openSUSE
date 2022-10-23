@@ -213,4 +213,12 @@
      timeout hits, and a hook function that can trigger when readline times</comment>
     <requestid>1008385</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>d2c406b8e3973aa83000e27a3140c693</srcmd5>
+    <version>8.2</version>
+    <time>1666535559</time>
+    <user>dimstar_suse</user>
+    <comment>- Extend version linker map file to detect usage of new symbols (boo#1204336)</comment>
+    <requestid>1030327</requestid>
+  </revision>
 </revisionlist>

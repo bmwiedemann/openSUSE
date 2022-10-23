@@ -134,7 +134,7 @@ cflags ()
     case "$flag" in
     -Wl,*)
 	  if echo 'int main () { return 0; }' | \
-	     ${CC:-gcc} -Werror $flag -o /dev/null -xc - > /dev/null 2>&1 ; then
+ 	     ${CC:-gcc} -Werror $flag -o /dev/null -xc - > /dev/null 2>&1 ; then
 	      eval $var=\${$var:+\$$var\ }$flag
 	  fi
 	  ;;
@@ -168,7 +168,68 @@ LARGEFILE="$(getconf LFS_CFLAGS)"
 	    rl_print_last_kbd_macro;
 	    rl_signal_event_hook;
 	};
+
+	READLINE_7.0 {
+	    rl_bracketed_paste_begin;
+	    rl_callback_sigcleanup;
+	    rl_clear_visible_line;
+	    rl_pending_signal;
+	    rl_redraw_prompt_last_line;
+	    rl_tty_set_echoing;
+	    rl_vi_unix_word_rubout;
+	    rl_vi_yank_pop;
+	    history_file_version;
+	    history_lines_read_from_file;
+	    history_lines_written_to_file;
+	    history_multiline_entries;
+	    rl_persistent_signal_handlers;
+	    history_file_version;
+	    history_lines_read_from_file;
+	    history_lines_written_to_file;
+	    history_multiline_entries;
+	    rl_persistent_signal_handlers;
+	} READLINE_6.3;
+
+	READLINE_8.0 {
+	    remove_history_range;
+	    rl_check_signals;
+	    rl_empty_keymap;
+	    rl_function_of_keyseq_len;
+	    rl_next_screen_line;
+	    rl_previous_screen_line;
+	    rl_set_keymap_name;
+	    history_quoting_state;
+	} READLINE_7.0;
+
+	READLINE_8.1 {
+	    rl_activate_mark;
+	    rl_clear_display;
+	    rl_deactivate_mark;
+	    rl_keep_mark_active;
+	    rl_mark_active_p;
+	    rl_operate_and_get_next;
+	} READLINE_8.0;
+
+	READLINE_8.2 {
+	    rl_fetch_history;
+	    rl_set_timeout;
+	    rl_timeout_remaining;
+	    rl_trim_arg_from_keyseq;
+	    rl_eof_found;
+	    rl_timeout_event_hook;
+	} READLINE_8.1;
 	EOF
+found=0
+for rl in %{_libdir}/libreadline.so.*.*
+do
+    test READLINE_${rl##/*.so.} = READLINE_%{version} && found=1
+done
+if test $found = 0
+then
+   %{warn:Warning, ABI change likely}
+   sleep 5
+fi
+
 CFLAGS="%{optflags} $LARGEFILE -D_GNU_SOURCE -D_RPM_OPT_FLAGS -g"
 LDFLAGS=""
 cflags -Wuninitialized         CFLAGS

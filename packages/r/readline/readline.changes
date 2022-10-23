@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 21 08:36:57 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Extend version linker map file to detect usage of new symbols (boo#1204336) 
+
+-------------------------------------------------------------------
 Thu Oct  6 11:27:00 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch readline82-001 and its signing readline82-001
