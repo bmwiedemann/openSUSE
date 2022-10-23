@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Oct 22 19:35:23 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.3.7:
+  * Fix the system-tray icon tooltip to always reflect current
+    main window title, usually the current patchbay name.
+  * Make up visual immediate feedback connections.
+
+-------------------------------------------------------------------
 Sat Sep 24 17:16:51 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 0.3.6:
