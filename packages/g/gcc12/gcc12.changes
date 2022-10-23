@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Oct 20 08:20:31 UTC 2022 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-12 branch head, 0aaef83351473e8f4eb774f8f99, git537
+
+-------------------------------------------------------------------
+Thu Oct 13 09:59:52 UTC 2022 - Richard Biener <rguenther@suse.com>
+
+- Update embedded newlib to version 4.2.0
+  * includes newlib-4.1.0-aligned_alloc.patch
+
+-------------------------------------------------------------------
+Mon Sep 26 11:06:06 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add gcc12-riscv-inline-atomics.patch,
+  gcc12-riscv-pthread.patch: handle subword size inline atomics
+  (needed by several openSUSE packages)
+
+-------------------------------------------------------------------
 Wed Aug 31 12:38:20 UTC 2022 - Richard Biener <rguenther@suse.com>
 
 - Prune invalid-license rpmlint warnings, the SLE12 codestream

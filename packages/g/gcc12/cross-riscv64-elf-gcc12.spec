@@ -101,7 +101,7 @@ Name:           %{pkgname}
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        12.2.1+git416
+Version:        12.2.1+git537
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -115,7 +115,7 @@ Source1:        change_spec
 Source2:        gcc12-rpmlintrc
 Source3:        gcc12-testresults-rpmlintrc
 Source4:        README.First-for.SuSE.packagers
-Source5:        newlib-4.1.0.tar.xz
+Source5:        newlib-4.2.0.20211231.tar.xz
 Patch2:         gcc-add-defaultsspec.diff
 Patch5:         tls-no-direct.diff
 Patch6:         gcc43-no-unwind-tables.diff
@@ -128,13 +128,15 @@ Patch18:        gcc10-amdgcn-llvm-as.patch
 Patch19:        gcc11-gdwarf-4-default.patch
 Patch20:        gcc11-amdgcn-disable-hot-cold-partitioning.patch
 Patch21:        gcc12-fifo-jobserver-support.patch
+# taken from https://gcc.gnu.org/pipermail/gcc-patches/2022-April/593378.html
+Patch22:        gcc12-riscv-inline-atomics.patch
+# remove libatomics linking
+Patch23:        gcc12-riscv-pthread.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
 Patch60:        gcc44-textdomain.patch
 Patch61:        gcc44-rename-info-files.patch
-# Patches for embedded newlib
-Patch100:       newlib-4.1.0-aligned_alloc.patch
 
 # Define the canonical target and host architecture
 #   %%gcc_target_arch  is supposed to be the full target triple
@@ -307,10 +309,7 @@ only, it is not intended for any other use.
 %prep
 %if 0%{?nvptx_newlib:1}%{?amdgcn_newlib:1}
 %setup -q -n gcc-%{version} -a 5
-ln -s newlib-4.1.0/newlib .
-cd newlib
-%patch100 -p1
-cd ..
+ln -s newlib-4.2.0.20211231/newlib .
 %else
 %setup -q -n gcc-%{version}
 %endif
@@ -326,6 +325,8 @@ cd ..
 %patch16
 %patch17 -p1
 %patch21 -p1
+%patch22 -p1
+%patch23 -p1
 # These patches are needed only for llvm11
 %if "%{TARGET_ARCH}" == "amdgcn" && %{suse_version} < 1550
 %patch18 -p1
