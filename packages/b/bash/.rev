@@ -1816,4 +1816,13 @@ Upstream declares the bash license to be GPL-3.0+ - not GPL-2.0+ (forwarded requ
 - Work around a signal mask issue with qemu linux-user emulation (forwarded request 1010321 from Andreas_Schwab)</comment>
     <requestid>1010475</requestid>
   </revision>
+  <revision rev="182" vrev="3">
+    <srcmd5>d185894c58461e75a2fab09e06c8b97f</srcmd5>
+    <version>5.2.MACRO</version>
+    <time>1666535555</time>
+    <user>dimstar_suse</user>
+    <comment>- Explicit require versioned libreadline8 as we face new ABI
+  functions used by the bash (boo#1204336)</comment>
+    <requestid>1030166</requestid>
+  </revision>
 </revisionlist>

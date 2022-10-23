@@ -23,6 +23,8 @@
 %endif
 # Unicode tests do alloc to much memory
 %bcond_with altarray
+%define rl_major 8
+%define rl_version 8.2
 
 %define         bextend %{nil}
 %define         bversion 5.2
@@ -105,8 +107,10 @@ BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(readline) = 8.2
 %if %{with alternatives}
 Requires(post): update-alternatives
+Requires(post): libreadline%{rl_major} = %{rl_version}
 Requires(preun):update-alternatives
 %endif
+Requires:       libreadline%{rl_major} = %{rl_version}
 Suggests:       bash-doc = %{version}
 Suggests:       command-not-found
 Provides:       /bin/bash
@@ -282,6 +286,12 @@ set -x
 rl1=($(sed -rn '/RL_READLINE_VERSION/p' lib/readline/readline.h))
 rl2=($(sed -rn '/RL_READLINE_VERSION/p' %{_includedir}/readline/readline.h))
 test ${rl1[2]} = ${rl2[2]} || exit 1
+
+# Sometimes we face major ABI change(s) but only a minor version change
+rl1=($(sed -rn '/RL_VERSION_MAJOR/p' lib/readline/readline.h))
+test ${rl1[2]} = %{rl_major} || exit 1
+rl2=($(sed -rn '/RL_VERSION_MINOR/p' lib/readline/readline.h))
+test ${rl1[2]}.${rl2[2]} = %{rl_version} || exit 1
 
 %if 0%{?qemu_user_space_build}
 # Something in qemu clobbers the signal mask to block SIGALRM during the

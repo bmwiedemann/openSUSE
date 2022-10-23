@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 20 11:14:16 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Explicit require versioned libreadline8 as we face new ABI
+  functions used by the bash (boo#1204336) 
+
+-------------------------------------------------------------------
 Wed Oct 12 17:37:47 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - Don't strip binaries
