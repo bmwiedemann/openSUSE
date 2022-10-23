@@ -18,7 +18,7 @@
 
 
 %define srcversion 6.0
-%define patchversion 6.0.2
+%define patchversion 6.0.3
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules zstd
@@ -110,9 +110,9 @@ Name:           kernel-zfcpdump
 Summary:        The IBM System Z zfcpdump Kernel
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        6.0.2
+Version:        6.0.3
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g7fb6561
+Release:        <RELEASE>.gf00a35f
 %else
 Release:        0
 %endif
@@ -239,10 +239,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-7fb65619ade7cd7af855b41782d74be48b5cd0f4
-Provides:       kernel-srchash-7fb65619ade7cd7af855b41782d74be48b5cd0f4
+Provides:       kernel-%build_flavor-base-srchash-f00a35f20f890e0c12cffca53f75a8fcedaf596d
+Provides:       kernel-srchash-f00a35f20f890e0c12cffca53f75a8fcedaf596d
 # END COMMON DEPS
-Provides:       %name-srchash-7fb65619ade7cd7af855b41782d74be48b5cd0f4
+Provides:       %name-srchash-f00a35f20f890e0c12cffca53f75a8fcedaf596d
 %obsolete_rebuilds %name
 Source0:        https://www.kernel.org/pub/linux/kernel/v6.x/linux-%srcversion.tar.xz
 Source3:        kernel-source.rpmlintrc
