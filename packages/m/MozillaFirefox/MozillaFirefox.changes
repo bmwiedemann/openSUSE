@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Oct 23 07:34:50 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 106.0.1
+  * Addresses a crash experienced by users with AMD Zen 1 CPUs
+    (bmo#1796126)
+
+-------------------------------------------------------------------
 Sun Oct 16 20:08:21 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 106.0

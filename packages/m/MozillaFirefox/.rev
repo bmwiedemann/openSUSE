@@ -5891,4 +5891,14 @@
   as it was extended with changes for other archs</comment>
     <requestid>1030290</requestid>
   </revision>
+  <revision rev="378" vrev="1">
+    <srcmd5>1e394c238be9ddfea1076dcd8f147ff9</srcmd5>
+    <version>106.0.1</version>
+    <time>1666535565</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Firefox 106.0.1
+  * Addresses a crash experienced by users with AMD Zen 1 CPUs
+    (bmo#1796126)</comment>
+    <requestid>1030584</requestid>
+  </revision>
 </revisionlist>
