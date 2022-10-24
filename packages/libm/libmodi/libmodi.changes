@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct 23 12:16:45 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20221023
+  * Unspecified updates to LZFSE/LZVN support, fallback deflate
+    and fallback bzip2 support
+  * Moved ADC, LZFSE and LZVN compression to libfmos
+
+-------------------------------------------------------------------
 Mon Aug 29 09:26:05 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update build requirements on libcdirectory, libcfile
