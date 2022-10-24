@@ -104,4 +104,12 @@
     <comment>- Add forced symvers</comment>
     <requestid>994005</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>18601e7afadd7c49b9b1174d6cf1d77d</srcmd5>
+    <version>20220922</version>
+    <time>1666602785</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20220922</comment>
+    <requestid>1030601</requestid>
+  </revision>
 </revisionlist>

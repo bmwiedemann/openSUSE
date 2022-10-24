@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Oct 23 11:56:58 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20220922
+  * Updated LZXpress documentation
+  * Unspecific updates main code, Python binding and tests
+
+-------------------------------------------------------------------
 Mon Aug  8 11:37:44 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Add forced symvers
