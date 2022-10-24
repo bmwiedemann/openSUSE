@@ -33,7 +33,8 @@ Fri Jun 18 12:57:03 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
                     bsc#1185447, CVE-2021-29470,
                     bsc#1185002, CVE-2021-29457,
                     bsc#1188733, CVE-2021-31291,
-                    bsc#1186192, CVE-2021-32617):
+                    bsc#1186192, CVE-2021-32617,
+                    bsc#1185913, CVE-2021-29463):
   - Support for bmff files (HEIC, HEIF, AVIF, CR3, JXL/bmff)
   - Bash test scripts rewritten in python
   - DNG 1.6 and Exif 2.32 support
