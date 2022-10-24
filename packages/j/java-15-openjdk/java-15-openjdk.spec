@@ -32,9 +32,8 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      15
 %global interimver      0
-%global updatever       8
-%global datever         2022-07-19
-%global buildver        4
+%global updatever       9
+%global buildver        5
 %global openjdk_repo    jdk15u
 %global openjdk_tag     jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}+%{buildver}
 %global openjdk_dir     %{openjdk_repo}-jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}-%{buildver}
@@ -170,7 +169,6 @@ Patch13:        implicit-pointer-decl.patch
 Patch14:        zgc-alignment.patch
 Patch15:        system-pcsclite.patch
 Patch16:        missing-return.patch
-Patch17:        openjdk-glibc234.patch
 #
 Patch20:        loadAssistiveTechnologies.patch
 #
@@ -199,7 +197,6 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  fontconfig-devel
 BuildRequires:  freetype2-devel
-BuildRequires:  gcc-c++
 BuildRequires:  giflib-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  java-ca-certificates
@@ -265,6 +262,13 @@ Provides:       jre1.6.x
 Provides:       jre1.7.x
 Provides:       jre1.8.x
 Provides:       jre1.9.x
+%if 0%{?suse_version} < 1500
+BuildRequires:  gcc7
+BuildRequires:  gcc7-c++
+%else
+BuildRequires:  gcc >= 7
+BuildRequires:  gcc-c++ >= 7
+%endif
 %if %{bootcycle}
 BuildRequires:  java-devel >= 14
 BuildConflicts: java-devel >= 16
@@ -427,7 +431,6 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %endif
 
 %patch16 -p1
-%patch17 -p1
 
 %patch20 -p1
 
@@ -487,33 +490,17 @@ done
 export ARCH_DATA_MODEL=64
 %endif
 
-%ifarch alpha
-export CFLAGS="$CFLAGS -mieee"
-%endif
-
-EXTRA_CFLAGS="-Wno-error -std=gnu99"
-EXTRA_CPP_FLAGS="-Wno-error"
-
-%ifarch ppc64 ppc64le ppc
-EXTRA_CFLAGS="$EXTRA_CFLAGS -fno-strict-aliasing"
-%endif
-
-%if 0%{?suse_version} >= 1330
-EXTRA_CFLAGS="$EXTRA_CFLAGS -std=gnu++98 -fno-delete-null-pointer-checks -fno-lifetime-dse -fpermissive"
-EXTRA_CPP_FLAGS="$EXTRA_CPP_FLAGS -std=gnu++98 -fno-delete-null-pointer-checks -fno-lifetime-dse"
-%endif
-
 mkdir -p %{buildoutputdir}
 
 pushd %{buildoutputdir}
 
 bash ../configure \
-    --with-version-feature=%{featurever} \
-    --with-version-interim=%{interimver} \
-    --with-version-update=%{updatever} \
-    --with-version-patch=%{?patchver:%{patchver}}%{!?patchver:0} \
-    --with-version-date=%{datever} \
-    --with-version-build=%{buildver} \
+%if 0%{?suse_version} < 1500
+    CPP=cpp-7 \
+    CXX=g++-7 \
+    CC=gcc-7 \
+    NM=gcc-nm-7 \
+%endif
 %if %{is_release}
     --with-version-pre="" \
 %endif
@@ -1092,6 +1079,7 @@ fi
 %{_jvmdir}/%{sdkdir}/include/jni.h
 %{_jvmdir}/%{sdkdir}/include/jvmticmlr.h
 %{_jvmdir}/%{sdkdir}/include/jvmti.h
+%{_jvmdir}/%{sdkdir}/include/sizecalc.h
 %{_jvmdir}/%{sdkdir}/lib/ct.sym
 %{_jvmdir}/%{sdkdir}/lib/libattach.so
 %if ! %{with zero}
