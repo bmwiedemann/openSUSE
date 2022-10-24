@@ -17,10 +17,10 @@
 
 
 Name:           gtk-layer-shell
-Version:        0.7.0
+Version:        0.8.0
 Release:        0
 Summary:        Library to create desktop components for Wayland
-License:        MIT AND LGPL-3.0-or-later AND GPL-3.0-or-later
+License:        GPL-3.0-or-later AND LGPL-3.0-or-later AND MIT
 Group:          System/GUI/Other
 URL:            https://github.com/wmww/gtk-layer-shell
 Source:         %{url}/archive/v%{version}.tar.gz
@@ -34,10 +34,11 @@ BuildRequires:  pkgconfig(gdk-broadway-3.0)
 BuildRequires:  pkgconfig(gdk-wayland-3.0)
 BuildRequires:  pkgconfig(gdk-x11-3.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.31
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.34
 BuildRequires:  pkgconfig(gtk+-broadway-3.0)
 BuildRequires:  pkgconfig(gtk+-wayland-3.0)
 BuildRequires:  pkgconfig(gtk+-x11-3.0)
+BuildRequires:  pkgconfig(vapigen)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-cursor)
 BuildRequires:  pkgconfig(wayland-protocols)
@@ -98,8 +99,12 @@ This package provides the GObject Introspection bindings for gtk-layer-shell.
 %{_includedir}/gtk-layer-shell
 %{_libdir}/pkgconfig/gtk-layer-shell-0.pc
 %{_datadir}/gir-1.0/GtkLayerShell-0.1.gir
+%dir %{_datadir}/vala
+%dir %{_datadir}/vala/vapi
+%{_datadir}/vala/vapi/gtk-layer-shell-0.deps
+%{_datadir}/vala/vapi/gtk-layer-shell-0.vapi
 
-%files -n  typelib-1_0-GtkLayerShell-0_1
+%files -n typelib-1_0-GtkLayerShell-0_1
 %{_libdir}/girepository-1.0/GtkLayerShell-0.1.typelib
 
 %changelog

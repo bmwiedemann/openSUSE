@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 24 10:34:41 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.8.0:
+  * Vala: support generating vapi files
+  * Fix: memory leak, #128
+  * Compat: stop warning when GTK version is not explicitly supported
+  * Compat: bump supported GTK to 3.24.34
+
+-------------------------------------------------------------------
 Fri Jan 28 08:39:34 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.7.0:
