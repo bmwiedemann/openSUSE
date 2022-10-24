@@ -151,4 +151,12 @@ part of summer 2013 libyal refresh for opensuse 13.1
     <comment>- Add forced symvers</comment>
     <requestid>994010</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>db994742788679271925b7e543c24fec</srcmd5>
+    <version>20221023</version>
+    <time>1666602788</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20221023</comment>
+    <requestid>1030604</requestid>
+  </revision>
 </revisionlist>

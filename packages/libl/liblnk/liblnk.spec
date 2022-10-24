@@ -18,36 +18,38 @@
 
 %define lname	liblnk1
 Name:           liblnk
-Version:        20210417
+Version:        20221023
 Release:        0
 Summary:        Library and tools to access the Windows Shortcut File (LNK) format
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Productivity/File Utilities
 URL:            https://github.com/libyal/liblnk
-Source:         %name-%version.tar.xz
-Source2:        Windows_Shortcut_File_LNK_format.pdf
+Source:         https://github.com/libyal/liblnk/releases/download/%version/liblnk-alpha-%version.tar.gz
+Source2:        https://github.com/libyal/liblnk/releases/download/%version/liblnk-alpha-%version.tar.gz.asc
+Source3:        %name.keyring
+Source8:        Windows_Shortcut_File_LNK_format.pdf
 Patch1:         system-libs.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  c_compiler
-BuildRequires:  gettext-tools >= 0.18.1
+BuildRequires:  gettext-tools >= 0.21
 BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(libbfio) >= 20201229
-BuildRequires:  pkgconfig(libcdata) >= 20200509
-BuildRequires:  pkgconfig(libcerror) >= 20201121
-BuildRequires:  pkgconfig(libcfile) >= 20201229
-BuildRequires:  pkgconfig(libclocale) >= 20200913
-BuildRequires:  pkgconfig(libcnotify) >= 20200913
-BuildRequires:  pkgconfig(libcpath) >= 20200623
-BuildRequires:  pkgconfig(libcsplit) >= 20200703
-BuildRequires:  pkgconfig(libcthreads) >= 20200508
-BuildRequires:  pkgconfig(libfdatetime) >= 20180910
-BuildRequires:  pkgconfig(libfguid) >= 20180724
-BuildRequires:  pkgconfig(libfole) >= 20170502
-BuildRequires:  pkgconfig(libfwps) >= 20191221
-BuildRequires:  pkgconfig(libfwsi) >= 20210419
-BuildRequires:  pkgconfig(libuna) >= 20201204
+BuildRequires:  pkgconfig(libbfio) >= 20220120
+BuildRequires:  pkgconfig(libcdata) >= 20220115
+BuildRequires:  pkgconfig(libcerror) >= 20220101
+BuildRequires:  pkgconfig(libcfile) >= 20220106
+BuildRequires:  pkgconfig(libclocale) >= 20220107
+BuildRequires:  pkgconfig(libcnotify) >= 20220108
+BuildRequires:  pkgconfig(libcpath) >= 20220108
+BuildRequires:  pkgconfig(libcsplit) >= 20220109
+BuildRequires:  pkgconfig(libcthreads) >= 20220102
+BuildRequires:  pkgconfig(libfdatetime) >= 20220112
+BuildRequires:  pkgconfig(libfguid) >= 20220113
+BuildRequires:  pkgconfig(libfole) >= 20220115
+BuildRequires:  pkgconfig(libfwps) >= 20220122
+BuildRequires:  pkgconfig(libfwsi) >= 20220927
+BuildRequires:  pkgconfig(libuna) >= 20220611
 %python_subpackages
 
 %description
@@ -83,7 +85,7 @@ applications that want to make use of %name.
 
 %prep
 %autosetup -p1
-cp "%SOURCE2" .
+cp %_sourcedir/*.pdf .
 
 %build
 autoreconf -fi
