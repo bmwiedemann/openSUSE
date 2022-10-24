@@ -223,6 +223,9 @@ FileProvides: /usr/bin/host bind-utils
 FileProvides: /sbin/start_daemon sysvinit-tools
 FileProvides: /sbin/pidof sysvinit-tools
 FileProvides: /sbin/ifup wicked-service
+%if "%_repository" != "standard" && "%_repository" != "ports"
+FileProvides: /usr/bin/gdb-add-index gdb
+%endif
 
 Preinstall: aaa_base filesystem attr bash bash-sh coreutils diffutils
 Preinstall: fillup glibc grep pam permissions rpm rpm-config-SUSE sed tar
@@ -564,6 +567,9 @@ Prefer: notification-daemon
 
 # We have multiple nodejs versions in the repo - prefer version -default (from meta package)
 Prefer: nodejs-default nodejs-devel-default npm-default
+
+# unresolvable: have choice for libhs.so.5()(64bit) needed by rspamd: libhs5 libhs5-vectorscan5
+Prefer: -libhs5-vectorscan5
 
 # have choice for libpulse.so.0 needed by wine-32bit: apulse-32bit libpulse0-32bit - prefering the 'original'
 Prefer: libpulse0-32bit libsane1-32bit -pipewire-pulseaudio
