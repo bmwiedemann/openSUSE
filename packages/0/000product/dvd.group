@@ -1687,7 +1687,7 @@
     <package name="libboost_python-py3-1_80_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="libboost_thread1_80_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libbox2d2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libbpf0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libbpf1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libbreezecommon5-5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libbrlapi0_8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libbrotlicommon1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -1892,6 +1892,7 @@
     <package name="libfile1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libfind4_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libfl2" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libflashrom1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libflatpak0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libfltk1_3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libfolks-eds26" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -1910,10 +1911,10 @@
     <package name="libfreetype6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libfreshclam2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="libfribidi0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libftdi1-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libfuse2" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libfuse3-3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libfwupd2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="libfwupdplugin5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libgadu3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgarcon-1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libgarcon-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
@@ -2137,6 +2138,8 @@
     <package name="libjasper6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libjavascriptcoregtk-4_0-18" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libjavascriptcoregtk-4_1-0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
+    <package name="libjaylink" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libjaylink0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libjbig2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libjcat1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libjd0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->

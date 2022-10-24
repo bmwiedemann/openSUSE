@@ -4108,6 +4108,7 @@ unsorted:
   - fwnncom 
   - fwts 
   - fwupd-devel 
+  - fwupd-doc 
   - fwupd-fish-completion 
   - fx 
   - fxload 
@@ -10187,7 +10188,7 @@ unsorted:
   - libbox2d2-32bit: [x86_64] 
   - libbpf-devel 
   - libbpf-devel-static 
-  - libbpf0-32bit: [x86_64] 
+  - libbpf1-32bit: [x86_64] 
   - libbraiding-devel 
   - libbraiding0 
   - libbraille 
@@ -10999,7 +11000,6 @@ unsorted:
   - libfl-devel-32bit: [x86_64] 
   - libfl2-32bit: [x86_64] 
   - libflann1_9 
-  - libflashrom1 
   - libflatbuffers2 
   - libflickcurl-devel 
   - libflickcurl0 
@@ -11108,7 +11108,6 @@ unsorted:
   - libfsxfs1 
   - libftdi-devel 
   - libftdi1 
-  - libftdi1-2 
   - libftdi1-devel 
   - libftgl2: [i586] 
   - libftgl2-32bit: [x86_64] 
@@ -11954,9 +11953,7 @@ unsorted:
   - libjavascriptcoregtk-4_0-18-32bit: [x86_64] 
   - libjavascriptcoregtk-4_1-0-32bit: [x86_64] 
   - libjavascriptcoregtk-5_0-0: [i586] 
-  - libjaylink 
   - libjaylink-devel 
-  - libjaylink0 
   - libjbig-devel 
   - libjbig-devel-32bit: [x86_64] 
   - libjbig2dec0 
@@ -14843,6 +14840,10 @@ unsorted:
   - libvterm-devel 
   - libvterm-tools 
   - libvterm0 
+  - libvtk-m-1_9 
+  - libvtk-m-1_9-mpich 
+  - libvtk-m-1_9-openmpi3 
+  - libvtk-m-1_9-openmpi4 
   - libvtk1 
   - libvtk1-openmpi2 
   - libvtk1-openmpi3 
@@ -17948,6 +17949,7 @@ unsorted:
   - nuoveXT2-icon-theme 
   - nuspell 
   - nuspell-devel 
+  - nuspell-doc 
   - nut 
   - nut-cgi 
   - nut-devel 
@@ -43129,7 +43131,6 @@ unsorted:
   - typelib-1_0-Folks-0_7 
   - typelib-1_0-FolksEds-0_7 
   - typelib-1_0-FolksTelepathy-0_7 
-  - typelib-1_0-FwupdPlugin-1_0 
   - typelib-1_0-GCab-1_0 
   - typelib-1_0-GData-0_0 
   - typelib-1_0-GES-1_0 
@@ -43758,6 +43759,10 @@ unsorted:
   - vtk-devel 
   - vtk-java 
   - vtk-java-devel 
+  - vtk-m-devel 
+  - vtk-m-mpich-devel 
+  - vtk-m-openmpi3-devel 
+  - vtk-m-openmpi4-devel 
   - vtk-openmpi2-devel 
   - vtk-openmpi2-java 
   - vtk-openmpi2-java-devel 
