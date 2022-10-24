@@ -1,7 +1,7 @@
 #
 # spec file for package balsa
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           balsa
-Version:        2.6.3
+Version:        2.6.4
 Release:        0
 Summary:        The GNOME Mail Program
 License:        GPL-2.0-or-later
@@ -26,7 +26,6 @@ Source0:        %{url}/%{name}-%{version}.tar.xz
 
 BuildRequires:  compface-devel
 BuildRequires:  fdupes
-BuildRequires:  gpgme-devel >= 1.8.0
 BuildRequires:  intltool
 BuildRequires:  libesmtp-devel
 BuildRequires:  openldap2-devel
@@ -37,6 +36,7 @@ BuildRequires:  pkgconfig(fribidi)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(gmime-3.0)
 BuildRequires:  pkgconfig(gnutls)
+BuildRequires:  pkgconfig(gpgme) >= 1.8.0
 BuildRequires:  pkgconfig(gspell-1)
 BuildRequires:  pkgconfig(gssrpc)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.4.0
@@ -73,6 +73,7 @@ An e-mail client for GNOME. It supports
 
 %build
 %configure\
+	--disable-static\
 	--enable-more-warnings\
 	--with-canberra\
 	--with-ldap\
@@ -89,11 +90,12 @@ An e-mail client for GNOME. It supports
 %install
 %make_install
 %find_lang %{name} %{?no_lang_C}
+find %{buildroot} -type f -name "*.la" -delete -print
 %fdupes %{buildroot}%{_datadir}
 
 %files
 %license COPYING
-%doc README ChangeLog NEWS TODO AUTHORS HACKING
+%doc README.md ChangeLog NEWS TODO AUTHORS HACKING
 %doc docs/mh-mail-HOWTO docs/vconvert.awk docs/pine2vcard
 %doc %{_datadir}/help/C/%{name}/
 %{_bindir}/*
@@ -107,6 +109,8 @@ An e-mail client for GNOME. It supports
 %dir %{_sysconfdir}/sound
 %dir %{_sysconfdir}/sound/events
 %config %{_sysconfdir}/sound/events/*.soundlist
+%dir %{_libdir}/%{name}
+%{_libdir}/%{name}/libhtmlfilter.so
 
 %files lang -f %{name}.lang
 

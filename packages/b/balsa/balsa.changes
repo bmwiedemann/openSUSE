@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Oct 21 20:13:48 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.6.4:
+  + Fix display/printout with nondefault HTML preferences.
+  + HTML context meny improments, integration with Webkit HTML
+    privacy filter.
+  + Header edition in GNOME editor fixed.
+  + Some MDN, iCalendar issues fixed.
+  + More informative error messages.
+  + Notification improvements.
+  + Show UI for opening download location after download.
+  + Minor memory leaks plugged.
+  + Code refactoring and cleanup.
+  + Library and build system deprecation cleanups.
+  + Updated translations.
+- Pass disable static to configure and remove la files in install.
+- Replace gpgme-devel with pkgconfig(gpgme) BuildRequires following
+  upstreams changes.
+
+-------------------------------------------------------------------
 Wed Dec 29 09:58:16 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.6.3:
