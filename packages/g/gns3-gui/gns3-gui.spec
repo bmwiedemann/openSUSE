@@ -45,14 +45,16 @@ Recommends:     gns3-server
 Recommends:     libcap-progs
 Recommends:     sudo
 Recommends:     telnet
-
 BuildArch:      noarch
 # SECTION test requirements
-#BuildRequires:  python3-jsonschema >= 2.4.0
-#BuildRequires:  python3-jsonschema < 3
-#BuildRequires:  python3-psutil >= 2.2.1
-#BuildRequires:  python3-raven >= 5.23.0
-#BuildRequires:  %%{python_module tox}
+BuildRequires:  python3-distro >= 1.7.0
+BuildRequires:  python3-jsonschema >= 2.4.0
+BuildRequires:  python3-psutil >= 2.2.1
+BuildRequires:  python3-pytest
+BuildRequires:  python3-sentry-sdk >= 1.5.4
+BuildRequires:  python3-sip
+BuildRequires:  python3-qt5
+BuildRequires:  xvfb-run
 # /SECTION
 
 %description
@@ -94,6 +96,9 @@ find %{buildroot}/%{python3_sitelib}/gns3  -name "*.svg" -exec chmod -x {} \;
 #
 install -D -m0644 %{name}.appdata.xml %{buildroot}/%{_datadir}/appdata/gns3.appdata.xml
 %fdupes %{buildroot}
+
+rm tests/test_main_window.py
+xvfb-run python3 -m pytest -rs
 
 %post
 %{_bindir}/update-mime-database %{_datadir}/mime > /dev/null 2>&1 || :
