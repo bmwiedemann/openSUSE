@@ -272,7 +272,7 @@ BuildRequires:  binutils-devel
 BuildRequires:  dejagnu
 BuildRequires:  libunwind-devel
 BuildRequires:  lua-lmod
-BuildRequires:  python
+BuildRequires:  python3
 #BuildRequires:  slurm-node
 BuildRequires:  suse-hpc
 %{?hpc_requires}
@@ -334,6 +334,7 @@ export FC=mpifort
 export F77=$FC
 export CFLAGS="-D__DATE__=\\\"NODATE\\\" -D__TIME__=\\\"NOTIME\\\""
 export FFLAGS="-std=legacy"
+export HAVE_PYTHON="python3"
 %hpc_configure \
     --enable-demangling \
 %ifarch aarch64
@@ -341,7 +342,7 @@ export FFLAGS="-std=legacy"
 %endif
     --docdir=%{_docdir}/%{name}
 
-make %{?_smp_mflags} shared
+make %{?_smp_mflags} PYTHON="python3" shared
 
 %install
 %hpc_setup
