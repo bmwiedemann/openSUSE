@@ -124,4 +124,12 @@
     <comment>update</comment>
     <requestid>999953</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>73ba28d03cc55a79b8a434f41ec896fe</srcmd5>
+    <version>20221023</version>
+    <time>1666602787</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20221023</comment>
+    <requestid>1030603</requestid>
+  </revision>
 </revisionlist>

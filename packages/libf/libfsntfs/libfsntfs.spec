@@ -18,7 +18,7 @@
 
 %define lname	libfsntfs1
 Name:           libfsntfs
-Version:        20220220
+Version:        20221023
 Release:        0
 Summary:        Library and tools to access the NTFS filesystem
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
@@ -30,7 +30,7 @@ Source3:        %name.keyring
 Patch1:         system-libs.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  c_compiler
-BuildRequires:  gettext-tools >= 0.18.1
+BuildRequires:  gettext-tools >= 0.21
 BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
@@ -45,13 +45,13 @@ BuildRequires:  pkgconfig(libcpath) >= 20220108
 BuildRequires:  pkgconfig(libcsplit) >= 20220109
 BuildRequires:  pkgconfig(libcthreads) >= 20220102
 BuildRequires:  pkgconfig(libfcache) >= 20220110
-BuildRequires:  pkgconfig(libfdata) >= 20211023
+BuildRequires:  pkgconfig(libfdata) >= 20220111
 BuildRequires:  pkgconfig(libfdatetime) >= 20220112
 BuildRequires:  pkgconfig(libfguid) >= 20220113
 BuildRequires:  pkgconfig(libfusn) >= 20220119
-BuildRequires:  pkgconfig(libfwnt) >= 20210906
-BuildRequires:  pkgconfig(libhmac) >= 20200104
-BuildRequires:  pkgconfig(libuna) >= 20220102
+BuildRequires:  pkgconfig(libfwnt) >= 20220922
+BuildRequires:  pkgconfig(libhmac) >= 20220425
+BuildRequires:  pkgconfig(libuna) >= 20220611
 %python_subpackages
 
 %description
