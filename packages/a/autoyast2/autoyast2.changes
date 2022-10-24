@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Oct 17 10:30:48 UTC 2022 - Steffen Winterfeldt <snwint@suse.com>
+
+- fix profile location parsing and add 'repo' URL scheme (jsc#SLE-22578,
+  jsc#SLE-24584)
+- 4.5.6
+
+-------------------------------------------------------------------
+Tue Oct  4 09:34:18 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
+
+- Add needed packages for the selected network backend in order to
+  prevent it is not declared in the software section (bsc#1201235,
+  bsc#1201435)
+- 4.5.5
+
+-------------------------------------------------------------------
 Fri Sep  9 08:29:55 UTC 2022 - Michal Filka <mfilka@suse.com>
 
 - bsc#1203227
