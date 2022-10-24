@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Fri Oct 21 10:42:22 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Use github source to get tests
+- Build with %pyproject macros
+- Run tests correctly
+
+-------------------------------------------------------------------
+Fri Jul 22 04:52:44 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Initial packaging (v0.3.1) needed by python-napalm
