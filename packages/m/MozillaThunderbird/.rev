@@ -4517,4 +4517,21 @@ I cannot test locally unfortunately.
   https://www.thunderbird.net/en-US/thunderbird/102.4.0/releasenotes</comment>
     <requestid>1030125</requestid>
   </revision>
+  <revision rev="295" vrev="2">
+    <srcmd5>de54d622a4ba7bafdab9938278d0b50d</srcmd5>
+    <version>102.4.0</version>
+    <time>1666602766</time>
+    <user>dimstar_suse</user>
+    <comment>  MFSA 2022-46 (bsc#1203477)
+  * CVE-2022-42927 (bmo#1789128)
+    Same-origin policy violation could have leaked cross-origin URLs
+  * CVE-2022-42928 (bmo#1791520)
+    Memory Corruption in JS Engine
+  * CVE-2022-42929 (bmo#1789439)
+    Denial of Service via window.print
+  * CVE-2022-42932 (bmo#1789729, bmo#1791363, bmo#1792041)
+    Memory safety bugs fixed in Firefox 106, Firefox ESR 102.4 and
+    Thunderbird 102.4.0</comment>
+    <requestid>1030583</requestid>
+  </revision>
 </revisionlist>
