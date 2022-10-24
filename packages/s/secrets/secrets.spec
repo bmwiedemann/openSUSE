@@ -17,39 +17,39 @@
 
 
 Name:           secrets
-Version:        6.5
+Version:        7.0
 Release:        0
 Summary:        A password manager for GNOME
 License:        GPL-3.0-or-later
 URL:            https://gitlab.gnome.org/World/secrets
 Source0:        %{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Update-pykeepass-to-4.0.3.patch
+
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
 BuildRequires:  meson >= 0.51.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base >= 3.7.0
-BuildRequires:  python3-construct
+BuildRequires:  python3-gobject
 BuildRequires:  python3-gobject-Gdk
 BuildRequires:  python3-pykeepass >= 4.0.3
 BuildRequires:  python3-pyotp >= 2.4.0
 BuildRequires:  python3-pytest
+BuildRequires:  python3-validators
+BuildRequires:  python3-zxcvbn
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.66.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk4) >= 4.5.0
 BuildRequires:  pkgconfig(libadwaita-1)
-BuildRequires:  pkgconfig(pwquality) >= 1.4.0
 
 Requires:       python3-argon2-cffi
-Requires:       python3-construct
 Requires:       python3-gobject-Gdk
 Requires:       python3-lxml
-Requires:       python3-pwquality
 Requires:       python3-pycryptodome
 Requires:       python3-pykeepass
 Requires:       python3-pyotp
+Requires:       python3-validators
+Requires:       python3-zxcvbn
 
 Obsoletes:      gnome-passwordsafe < 6.1
 Provides:       gnome-passwordsafe = %{version}
@@ -82,7 +82,12 @@ sed -i -e '1{s,^#!@PYTHON@,,}' gsecrets/const.py.in
 %find_lang %{name} %{?no_lang_C}
 
 %check
-%meson_test
+# Disable meson_test for now, fails without BuildRequires itself to complete
+# Run the 3 first tests manually
+#%%meson_test
+desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
+glib-compile-schemas --strict --dry-run %{buildroot}%{_datadir}/glib-2.0/schemas/
+appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.xml
 
 %files
 %license LICENSE
