@@ -1480,4 +1480,12 @@ is not needed.
     <user>RBrownFactory</user>
     <comment>Oops, distrobox isn't ready for that yet</comment>
   </revision>
+  <revision rev="207" vrev="205">
+    <srcmd5>035910cf5efe8f93fe95b891520a3ffe</srcmd5>
+    <version>unknown</version>
+    <time>1666604830</time>
+    <user>dimstar_suse</user>
+    <comment>Wicked should at least also be on the DVD - it's still a valid choice</comment>
+    <requestid>1030684</requestid>
+  </revision>
 </revisionlist>

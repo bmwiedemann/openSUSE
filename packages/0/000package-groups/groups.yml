@@ -177,6 +177,7 @@ dvd:
   - kexec-tools
   - quota-nfs
   - nvme-cli
+  - wicked
 
   - patterns-media-rest_dvd
   # all loggers
