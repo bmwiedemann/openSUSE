@@ -120,4 +120,14 @@
   * Update install.sh</comment>
     <requestid>981197</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>bbce2133c9a1fdbf84d893416fbfa3bd</srcmd5>
+    <version>20221021</version>
+    <time>1666610153</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20221021:
+  * Fixed libadwaita issues
+  * Fixed gnome-shell 43 issues</comment>
+    <requestid>1030841</requestid>
+  </revision>
 </revisionlist>
