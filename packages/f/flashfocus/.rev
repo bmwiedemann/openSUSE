@@ -212,4 +212,14 @@
     + #76 Add CODEOWNERS file</comment>
     <requestid>1003078</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>b164fc4b434bf85beaf468eb947132cc</srcmd5>
+    <version>2.3.1</version>
+    <time>1666610152</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.1:
+  * Fixed: #78 Fix error when the current workspace is null
+  * Not user facing: #79 Fixed a bunch of mypy warnings</comment>
+    <requestid>1030844</requestid>
+  </revision>
 </revisionlist>

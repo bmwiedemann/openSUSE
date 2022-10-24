@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 24 10:31:09 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.3.1:
+  * Fixed: #78 Fix error when the current workspace is null
+  * Not user facing: #79 Fixed a bunch of mypy warnings
+
+-------------------------------------------------------------------
 Tue Sep 13 05:42:27 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.3.0:
