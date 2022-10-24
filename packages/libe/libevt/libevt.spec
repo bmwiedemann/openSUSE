@@ -18,14 +18,16 @@
 
 %define lname	libevt1
 Name:           libevt
-Version:        20220808
+Version:        20221022
 Release:        0
 Summary:        Library and tools to access the Windows Event Log (EVT) format
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libevt
-Source:         %name-%version.tar.xz
-Source2:        Windows_Event_Log_EVT.pdf
+Source:         https://github.com/libyal/libevt/releases/download/%version/libevt-alpha-%version.tar.gz
+Source2:        https://github.com/libyal/libevt/releases/download/%version/libevt-alpha-%version.tar.gz.asc
+Source3:        %name.keyring
+Source8:        Windows_Event_Log_EVT.pdf
 Patch1:         system-libs.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  c_compiler
@@ -96,7 +98,7 @@ applications that want to make use of %name.
 
 %prep
 %autosetup -p1
-cp "%SOURCE2" .
+cp %_sourcedir/*.pdf .
 
 %build
 autoreconf -fi
