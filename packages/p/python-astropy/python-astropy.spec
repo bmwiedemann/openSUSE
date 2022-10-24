@@ -56,7 +56,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 Name:           python-astropy%{psuffix}
-Version:        5.1
+Version:        5.1.1
 Release:        0
 Summary:        Community-developed python astronomy tools
 License:        BSD-3-Clause
@@ -186,6 +186,7 @@ hypothesis.settings.register_profile(
     suppress_health_check=[hypothesis.HealthCheck.too_slow]
 )
 " >> astropy/conftest.py
+sed -i 's/--color=yes//' setup.cfg
 
 %build
 %{?unbundle_libs}
@@ -218,7 +219,10 @@ donttest+=" or (test_precision and (test_day_frac_exact or test_resolution_never
 %endif
 %ifarch %arm32
   # gh#astropy/astropy#12017
-  donttest+=" or test_stats"
+  donttest+=" or test_stats"  
+%endif
+%ifarch %ix86 %arm
+  donttest+=" or (test_models_quantities and test_models_fitting and LevMarLSQFitter)"
 %endif
 # http://docs.astropy.org/en/latest/development/testguide.html#running-tests
 # running pytest directly would require building the extensions inplace
