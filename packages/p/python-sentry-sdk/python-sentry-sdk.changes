@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Sun Oct 23 10:40:00 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v1.10.1
+  * Bug fixes for FastAPI and Sentry SDK 1.10.0
+  * The wrapped receive() did not return anything
+- from v1.10.0
+  * Unified naming for span ops
+    We have unified the strings of our span operations.
+    See https://develop.sentry.dev/sdk/performance/span-operations/
+  * Include framework in SDK name
+  * Asyncio integration
+  * Add exception handling to Asyncio Integration
+  * Fix asyncio task factory
+  * Have instrumentation for ASGI middleware receive/send callbacks.
+  * Use Django internal ASGI handling from Channels version 4.0.0.
+  * fix(integrations): Fix http putrequest when url is None
+  * Check for Decimal is in_valid_sample_rate
+  * Add session for aiohttp integration
+  * feat(profiling): Extract qualified name for each frame
+  * feat(profiling): Attach thread metadata to profiles
+  * ref(profiling): Rename profiling frame keys
+  * fix(profiling): get_frame_name only look at arguments
+  * fix(profiling): Need to sample profile correctly
+  * fix(profiling): Race condition spawning multiple profiling threads
+- from v1.9.10
+  * Use content-length header in ASGI instead of reading request body
+  * Added newer Celery versions to test suite
+  * Django 4.x support
+  * Increase max string size for desc
+  * Fix for partial signals in old Django and old Python versions
+  * Convert profile output to the sample format
+  * Dynamically adjust profiler sleep time
+- from v1.9.9
+  * Instrument Django Signals so they show up in "Performance" view
+  * include other Django enhancements brought up by the community
+  * fix(profiling): Profiler mode type hints
+  * New ASGIMiddleware tests
+  * ref: upgrade linters to flake8 5.x
+  * feat(profiling): Introduce different profiler schedulers
+  * fix(profiling): Check transaction sampled status before profiling
+  * Wrap Baggage ser/deser in capture_internal_exceptions
+  * feat(profiling): Add support for profiles_sample_rate
+  * feat(profiling): Support for multithreaded profiles
+- from v1.9.8
+  * Baggage creation for head of trace
+    The SDK now also generates new baggage entries for dynamic sampling
+    when it is the first (head) SDK in the pipeline.
+- from v1.9.7
+  * Let SentryAsgiMiddleware work with Starlette and FastAPI integrations
+- from v1.9.6
+  * Auto-enable Starlette and FastAPI
+  * Add more version constraints
+- from v1.9.5
+  * fix(redis): import redis pipeline using full path
+- from v1.9.4
+  * Remove TRANSACTION_SOURCE_UNKNOWN and default to CUSTOM
+  * feat(redis): Add instrumentation for redis pipeline
+  * Handle no release when uploading profiles
+- from v1.9.3
+  * Wrap StarletteRequestExtractor in capture_internal_exceptions
+- from v1.9.2
+  * chore: remove quotes
+- from v1.9.1
+  * Fix FastAPI issues
+  * Add deprecation warning for 3.4, 3.5
+  * Update Flask and Quart integrations
+  * fix(django): Send correct "url" transaction source if Django resolver fails to resolve
+- from v1.9.0
+  * feat(profiler): Add experimental profiler under experiments.enable_profiling
+  * Fixed problem with broken response and python-multipart
+1.8.0
+  * feat(starlette): add Starlette integration
+    Important: Remove manual usage of SentryAsgiMiddleware!
+  * fix: avoid sending empty Baggage header
+  * fix: properly freeze Baggage object
+- from v1.7.2
+  * feat(transactions): Transaction Source
+  * Removed (unused) sentry_timestamp header
+- from v1.7.1
+  * Skip malformed baggage items
+- from v1.7.0
+  * feat(tracing): Dynamic Sampling Context / Baggage continuation
+  * The SDK now propagates the W3C Baggage Header from incoming
+    transactions to outgoing requests. It also extracts Sentry
+    specific sampling information and adds it to the transaction
+    headers to enable Dynamic Sampling in the product.
+
+-------------------------------------------------------------------
 Sun Jul  3 09:34:55 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 1.6.0
