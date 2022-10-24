@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Oct 16 01:21:53 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v16.3.4
+  * Changes of version 16.3.4
+    = Fix inconsistent serifs in Exists and Forall sign (#1435).
+
+-------------------------------------------------------------------
+Mon Oct 10 12:41:37 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v16.3.3
+  * Changes of version 16.3.3
+    = Fix application of CV/SS on certain composites and some of
+      the sample images (#1433).
+
+-------------------------------------------------------------------
+Sun Oct  9 19:49:20 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v16.3.2
+  * Changes of version 16.3.2
+    = Fix alignment of Ogonek in LATIN SMALL LETTER I WITH OGONEK
+      (U+012F) at with 'cv34' = 5 (#1431).
+    = Fix soft dot of LATIN SMALL LETTER I WITH OGONEK (U+012F)
+      (#1432).
+- Add the _constraints file
+
+-------------------------------------------------------------------
 Sun Oct  9 06:00:12 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v16.3.1
