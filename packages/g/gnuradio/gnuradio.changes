@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct 23 18:38:48 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Add patch:
+  * fix-build-with-fmt9.patch
+
+-------------------------------------------------------------------
 Mon Sep 19 11:58:41 UTC 2022 - pgajdos@suse.com
 
 - does not require python3-six
