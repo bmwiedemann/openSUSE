@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 21 11:28:11 UTC 2022 - pgajdos@suse.com
+
+- added patches
+  https://github.com/mcmtroffaes/latexcodec/commit/88eca3e4e279ffa313662a75052598ec5610ff92
+  + python-latexcodec-no-python2.patch
+
+-------------------------------------------------------------------
 Thu Jul 23 10:40:41 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Update to 2.0.1:

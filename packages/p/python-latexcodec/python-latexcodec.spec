@@ -1,7 +1,7 @@
 #
 # spec file for package python-latexcodec
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,14 +26,14 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/mcmtroffaes/latexcodec
 Source:         https://github.com/mcmtroffaes/latexcodec/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# https://github.com/mcmtroffaes/latexcodec/commit/88eca3e4e279ffa313662a75052598ec5610ff92
+Patch0:         python-latexcodec-no-python2.patch
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six >= 1.4.1}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-six >= 1.4.1
 BuildArch:      noarch
 %python_subpackages
 
@@ -42,6 +42,7 @@ A lexer and codec to work with LaTeX code in Python.
 
 %prep
 %setup -q -n %{modname}-%{version}
+%patch0 -p1
 
 %build
 %python_build
