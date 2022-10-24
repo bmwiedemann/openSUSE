@@ -636,4 +636,14 @@ Latest changes:
     having modeset/nvidia (issue #81)</comment>
     <requestid>991872</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>800cc8be52997c999daa6c78cc95f8e1</srcmd5>
+    <version>0.8.9</version>
+    <time>1666602791</time>
+    <user>dimstar_suse</user>
+    <comment>- SUSEPrime-0.8.9
+  * prime-select.sh: Fix broken PCI BusID parsing on machines
+    with several domains (issue#88)</comment>
+    <requestid>1030616</requestid>
+  </revision>
 </revisionlist>
