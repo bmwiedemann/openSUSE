@@ -2339,7 +2339,6 @@ unsorted:
   - coredns-for-k8s1.23-extras 
   - coredns-for-k8s1.24 
   - coredns-for-k8s1.24-extras 
-  - corepack16 
   - corepack18 
   - corepack19 
   - coreutils-doc: [i586] 
@@ -17639,9 +17638,6 @@ unsorted:
   - nodejs-electron-doc 
   - nodejs-packaging 
   - nodejs-underscore 
-  - nodejs16 
-  - nodejs16-devel 
-  - nodejs16-docs 
   - nodejs18 
   - nodejs18-devel 
   - nodejs18-docs 
@@ -17906,7 +17902,6 @@ unsorted:
   - nping 
   - npkg 
   - npm-default 
-  - npm16 
   - npm18 
   - npth-devel 
   - nqp 
@@ -25076,6 +25071,8 @@ unsorted:
   - python310-trustme 
   - python310-truststore 
   - python310-tsk 
+  - python310-ttp 
+  - python310-ttp-templates 
   - python310-tweepy 
   - python310-twine 
   - python310-twitter 
@@ -28417,6 +28414,8 @@ unsorted:
   - python38-trove-classifiers 
   - python38-trustme 
   - python38-tsk 
+  - python38-ttp 
+  - python38-ttp-templates 
   - python38-tvm: [x86_64] 
   - python38-tweepy 
   - python38-twine 
@@ -31756,6 +31755,8 @@ unsorted:
   - python39-trove-classifiers 
   - python39-trustme 
   - python39-tsk 
+  - python39-ttp 
+  - python39-ttp-templates 
   - python39-tweepy 
   - python39-twine 
   - python39-twitter 
@@ -43895,8 +43896,6 @@ unsorted:
   - whfc 
   - whipper 
   - whohas 
-  - wicked: [i586] 
-  - wicked-service: [i586] 
   - widelands 
   - widelands-data 
   - widelands-debug 
