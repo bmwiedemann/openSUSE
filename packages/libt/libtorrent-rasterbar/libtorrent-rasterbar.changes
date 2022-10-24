@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sun Oct 23 14:17:19 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.0.8
+  * fix uTP streams timing out instead of closing cleanly
+  * add write_torrent_file_buf() overload for generating
+    .torrent files
+  * add create_torrent::generate_buf() function to generate into
+    a buffer
+  * fix copy_file when the file ends with a sparse region
+  * uTP performance, fix packet loss when sending is stalled
+  * fix trackers being stuck after session pause/resume
+  * fix bug in hash_picker with empty files
+  * uTP performance, prevent premature timeouts/resends
+  * add option to not memory map files below a certain size
+  * settings_pack now returns default values when queried for
+    missing settings
+  * fix copy_file fall-back when SEEK_HOL/SEEK_DATA is not
+    supported
+  * improve error reporting from file copy and move
+  * tweak pad file placement to match reference implementation
+    (tail-padding)
+  * uTP performance, more lenient nagle's algorithm to always
+    allow one outstanding undersized packet
+  * uTP performance, piggy-back held back undersized packet with
+    ACKs
+  * uTP performance, don't send redundant deferred ACKs
+  * support incoming SOCKS5 packets with hostnames as source
+    address, for UDP trackers
+  * ignore duplicate network interface change notifications on
+    linux
+  * fix total_want/want accounting when forcing a recheck
+  * fix merging metadata with magnet links added on top of
+    existing torrents
+  * add torrent_flag to default all file priorities to
+    dont_download
+  * fix &so= feature in magnet links
+  * improve compatibility of SOCKS5 UDP ASSOCIATE
+  * fix madvise range for flushing cache in mmap_storage
+  * open files with no_cache set in O_SYNC mode
+- Drop 0001-Make-sure-boost-system-is-found-when-using-old-versi.patch
+  (merged upstream)
+
+-------------------------------------------------------------------
 Wed Oct  5 20:19:45 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add patch to fix the boost detection on Leap:
