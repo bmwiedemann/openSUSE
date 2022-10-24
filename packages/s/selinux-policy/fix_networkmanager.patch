@@ -1,8 +1,8 @@
-Index: fedora-policy-20221019/policy/modules/contrib/networkmanager.te
+Index: fedora-policy-20220714/policy/modules/contrib/networkmanager.te
 ===================================================================
---- fedora-policy-20221019.orig/policy/modules/contrib/networkmanager.te
-+++ fedora-policy-20221019/policy/modules/contrib/networkmanager.te
-@@ -275,6 +275,9 @@ userdom_read_home_certs(NetworkManager_t
+--- fedora-policy-20220714.orig/policy/modules/contrib/networkmanager.te
++++ fedora-policy-20220714/policy/modules/contrib/networkmanager.te
+@@ -276,6 +276,9 @@ userdom_read_home_certs(NetworkManager_t
  userdom_read_user_home_content_files(NetworkManager_t)
  userdom_dgram_send(NetworkManager_t)
  
@@ -12,18 +12,7 @@ Index: fedora-policy-20221019/policy/modules/contrib/networkmanager.te
  tunable_policy(`use_nfs_home_dirs',`
      fs_read_nfs_files(NetworkManager_t)
  ')
-@@ -284,6 +287,10 @@ tunable_policy(`use_samba_home_dirs',`
- ')
- 
- optional_policy(`
-+    nis_systemctl_ypbind(NetworkManager_t)
-+')
-+
-+optional_policy(`
- 	avahi_domtrans(NetworkManager_t)
- 	avahi_kill(NetworkManager_t)
- 	avahi_signal(NetworkManager_t)
-@@ -292,6 +299,14 @@ optional_policy(`
+@@ -293,6 +296,14 @@ optional_policy(`
  ')
  
  optional_policy(`
@@ -38,7 +27,7 @@ Index: fedora-policy-20221019/policy/modules/contrib/networkmanager.te
  	bind_domtrans(NetworkManager_t)
  	bind_manage_cache(NetworkManager_t)
  	bind_kill(NetworkManager_t)
-@@ -419,6 +434,8 @@ optional_policy(`
+@@ -420,6 +431,8 @@ optional_policy(`
  	nscd_kill(NetworkManager_t)
  	nscd_initrc_domtrans(NetworkManager_t)
  	nscd_systemctl(NetworkManager_t)
@@ -47,7 +36,7 @@ Index: fedora-policy-20221019/policy/modules/contrib/networkmanager.te
  ')
  
  optional_policy(`
-@@ -606,6 +623,7 @@ files_manage_etc_files(NetworkManager_di
+@@ -602,6 +615,7 @@ files_manage_etc_files(NetworkManager_di
  
  init_status(NetworkManager_dispatcher_cloud_t)
  init_status(NetworkManager_dispatcher_ddclient_t)
@@ -55,21 +44,10 @@ Index: fedora-policy-20221019/policy/modules/contrib/networkmanager.te
  init_append_stream_sockets(networkmanager_dispatcher_plugin)
  init_ioctl_stream_sockets(networkmanager_dispatcher_plugin)
  init_stream_connect(networkmanager_dispatcher_plugin)
-@@ -621,6 +639,10 @@ optional_policy(`
- ')
- 
- optional_policy(`
-+	nscd_shm_use(NetworkManager_dispatcher_chronyc_t)
-+')
-+
-+optional_policy(`
- 	cloudform_init_domtrans(NetworkManager_dispatcher_cloud_t)
- ')
- 
-Index: fedora-policy-20221019/policy/modules/contrib/networkmanager.if
+Index: fedora-policy-20220714/policy/modules/contrib/networkmanager.if
 ===================================================================
---- fedora-policy-20221019.orig/policy/modules/contrib/networkmanager.if
-+++ fedora-policy-20221019/policy/modules/contrib/networkmanager.if
+--- fedora-policy-20220714.orig/policy/modules/contrib/networkmanager.if
++++ fedora-policy-20220714/policy/modules/contrib/networkmanager.if
 @@ -132,6 +132,24 @@ interface(`networkmanager_initrc_domtran
          init_labeled_script_domtrans($1, NetworkManager_initrc_exec_t)
  ')
@@ -95,10 +73,10 @@ Index: fedora-policy-20221019/policy/modules/contrib/networkmanager.if
  ########################################
  ## <summary>
  ##	Execute NetworkManager server in the NetworkManager domain.
-Index: fedora-policy-20221019/policy/modules/contrib/networkmanager.fc
+Index: fedora-policy-20220714/policy/modules/contrib/networkmanager.fc
 ===================================================================
---- fedora-policy-20221019.orig/policy/modules/contrib/networkmanager.fc
-+++ fedora-policy-20221019/policy/modules/contrib/networkmanager.fc
+--- fedora-policy-20220714.orig/policy/modules/contrib/networkmanager.fc
++++ fedora-policy-20220714/policy/modules/contrib/networkmanager.fc
 @@ -24,6 +24,7 @@
  /usr/lib/NetworkManager/dispatcher\.d/04-iscsi	--	gen_context(system_u:object_r:NetworkManager_dispatcher_iscsid_script_t,s0)
  /usr/lib/NetworkManager/dispatcher\.d/10-sendmail	--	gen_context(system_u:object_r:NetworkManager_dispatcher_sendmail_script_t,s0)

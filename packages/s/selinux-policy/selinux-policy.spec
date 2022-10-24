@@ -33,7 +33,7 @@ Summary:        SELinux policy configuration
 License:        GPL-2.0-or-later
 Group:          System/Management
 Name:           selinux-policy
-Version:        20221019
+Version:        20220714
 Release:        0
 Source:         fedora-policy-%{version}.tar.bz2
 Source1:        selinux-policy-rpmlintrc
@@ -132,7 +132,7 @@ Patch049:       fix_nis.patch
 Patch050:       fix_libraries.patch
 Patch051:       fix_dovecot.patch
 # https://github.com/cockpit-project/cockpit/pull/15758
-#Patch052:       fix_cockpit.patch
+Patch052:       fix_cockpit.patch
 Patch053:       fix_systemd_watch.patch
 # kernel specific sysctl.conf (boo#1184804)
 Patch054:       fix_kernel_sysctl.patch
@@ -144,8 +144,6 @@ Patch059:       systemd_domain_dyntrans_type.patch
 Patch060:       fix_dnsmasq.patch
 Patch061:       fix_userdomain.patch
 Patch062:       fix_cloudform.patch
-Patch063:       fix_alsa.patch
-Patch064:       dontaudit_interface_kmod_tmpfs.patch
 
 Patch100:       sedoctool.patch
 

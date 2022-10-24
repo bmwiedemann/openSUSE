@@ -1,7 +1,7 @@
-Index: fedora-policy-20221019/policy/modules/services/xserver.fc
+Index: fedora-policy-20220714/policy/modules/services/xserver.fc
 ===================================================================
---- fedora-policy-20221019.orig/policy/modules/services/xserver.fc
-+++ fedora-policy-20221019/policy/modules/services/xserver.fc
+--- fedora-policy-20220714.orig/policy/modules/services/xserver.fc
++++ fedora-policy-20220714/policy/modules/services/xserver.fc
 @@ -71,6 +71,7 @@ HOME_DIR/\.dmrc.*	--	gen_context(system_
  /etc/X11/[wxg]dm/Xsession --	gen_context(system_u:object_r:xsession_exec_t,s0)
  /etc/X11/wdm(/.*)?		gen_context(system_u:object_r:xdm_rw_etc_t,s0)
@@ -51,13 +51,13 @@ Index: fedora-policy-20221019/policy/modules/services/xserver.fc
  
  /var/run/video.rom	--	gen_context(system_u:object_r:xserver_var_run_t,s0)
  /var/run/xorg(/.*)?		gen_context(system_u:object_r:xserver_var_run_t,s0)
-Index: fedora-policy-20221019/policy/modules/services/xserver.te
+Index: fedora-policy-20220714/policy/modules/services/xserver.te
 ===================================================================
---- fedora-policy-20221019.orig/policy/modules/services/xserver.te
-+++ fedora-policy-20221019/policy/modules/services/xserver.te
-@@ -475,6 +475,10 @@ userdom_dontaudit_read_admin_home_lnk_fi
- 
- kernel_read_vm_sysctls(xdm_t)
+--- fedora-policy-20220714.orig/policy/modules/services/xserver.te
++++ fedora-policy-20220714/policy/modules/services/xserver.te
+@@ -473,6 +473,10 @@ userdom_delete_user_home_content_files(x
+ userdom_signull_unpriv_users(xdm_t)
+ userdom_dontaudit_read_admin_home_lnk_files(xdm_t)
  
 +files_manage_generic_pids_symlinks(xdm_t)
 +userdom_manage_user_home_content_dirs(xdm_t)
