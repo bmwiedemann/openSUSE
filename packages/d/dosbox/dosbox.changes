@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 24 07:11:24 UTC 2022 - Илья Индиго <ilya@ilya.cf>
+
+- Updated pkgconfig(slirp) >= 4.7.0 dependency.
+
+-------------------------------------------------------------------
 Sat Oct 22 09:28:32 UTC 2022 - Илья Индиго <ilya@ilya.cf>
 
 - Added pkgconfig(speexdsp) dependency.

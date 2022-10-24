@@ -40,7 +40,7 @@ BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(mt32emu)
 BuildRequires:  pkgconfig(opusfile)
 BuildRequires:  pkgconfig(sdl2)
-BuildRequires:  pkgconfig(slirp)
+BuildRequires:  pkgconfig(slirp) >= 4.7.0
 BuildRequires:  pkgconfig(speexdsp)
 BuildRequires:  pkgconfig(zlib)
 Recommends:     fluid-soundfont-gm

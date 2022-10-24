@@ -322,4 +322,12 @@
     <comment>- Added pkgconfig(speexdsp) dependency.</comment>
     <requestid>1030501</requestid>
   </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>74b9fc2d8a24979bcc0b4b83f4af6a0c</srcmd5>
+    <version>0.79.1</version>
+    <time>1666603094</time>
+    <user>dimstar_suse</user>
+    <comment>Updated pkgconfig(slirp) &gt;= 4.7.0 dependency.</comment>
+    <requestid>1030665</requestid>
+  </revision>
 </revisionlist>
