@@ -1,4 +1,104 @@
 -------------------------------------------------------------------
+Mon Oct 24 04:43:02 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream tag jdk-13.0.13+5 (October 2022 CPU)
+  * Security fixes:
+    + JDK-8289366, bsc#1204480, CVE-2022-39399: Improve HTTP/2
+      client usage
+    + JDK-8288508: Enhance ECDSA usage
+    + JDK-8286918, bsc#1204472, CVE-2022-21628: Better HttpServer
+      service
+    + JDK-8287446, bsc#1204475, CVE-2022-21624: Enhance icon
+      presentations
+    + JDK-8286910: Improve JNDI lookups
+    + JDK-8286511: Improve macro allocation
+    + JDK-8286526, bsc#1204473, CVE-2022-21619: Improve NTLM support
+    + JDK-8286533, bsc#1204471, CVE-2022-21626: Key X509 usages
+    + JDK-8286077, bsc#1204468, CVE-2022-21618: Wider MultiByte
+    + JDK-8286519: Better memory handling
+    + JDK-8285662: Better permission resolution
+    + JDK-8282252: Improve BigInteger/Decimal validation
+    + JDK-8290334: Update FreeType to 2.12.1
+    + JDK-8289853: Update HarfBuzz to 4.4.1
+  * Other changes:
+    + JDK-8242565: Policy initialization issues when the denyAfter
+      constraint is enabled
+    + JDK-8277488: Add expiry exception for Digicert
+      (geotrustglobalca) expiring in May 2022
+    + JDK-8266082: AssertionError in Annotate.fromAnnotations with
+      -Xdoclint
+    + JDK-8257467: [TESTBUG] -Wdeprecated-declarations is reported
+      at sigset() in exesigtest.c
+    + JDK-8272472: StackGuardPages test doesn't build with glibc
+      2.34
+    + JDK-8266172: -Wstringop-overflow happens in vmError.cpp
+    + JDK-8266170: -Wnonnull happens in classLoaderData.inline.hpp
+    + JDK-8272720: Fix the implementation of loop unrolling
+      heuristic with LoopPercentProfileLimit
+    + JDK-8292579: (tz) Update Timezone Data to 2022c
+    + JDK-8028265: Add legacy tz tests to OpenJDK
+    + JDK-8269285: Crash/miscompile in
+      CallGenerator::for_method_handle_inline after JDK-8191998
+    + JDK-8247818: GCC 10 warning stringop-overflow with symbol code
+    + JDK-8252051: Make mlvmJvmtiUtils strncpy uses GCC 10.x
+      friendly
+    + JDK-8249875: GCC 10 warnings -Wtype-limits with JFR code
+    + JDK-8268361: Fix the infinite loop in next_line
+    + JDK-8287463: JFR: Disable TestDevNull.java on Windows
+    + JDK-8282947: JFR: Dump on shutdown live-locks in some
+      conditions
+    + JDK-8283441: C2: segmentation fault in
+      ciMethodBlocks::make_block_at(int)
+    + JDK-7131823: bug in GIFImageReader
+    + JDK-8286594: (zipfs) Mention paths with dot elements in
+      ZipException and cleanups
+    + JDK-8282071: Update java.xml module-info
+    + JDK-8261354: SIGSEGV at MethodIteratorHost
+    + JDK-8269039: Disable SHA-1 Signed JARs
+    + JDK-8289549: ISO 4217 Amendment 172 Update
+    + JDK-8283277: ISO 4217 Amendment 171 Update
+    + JDK-8280684: JfrRecorderService failes with
+      guarantee(num_written > 0) when no space left on device.
+    + JDK-8287672: jtreg test com/sun/jndi/ldap/
+      /LdapPoolTimeoutTest.java fails intermittently in nightly run
+    + JDK-8257569: Failure observed with
+      JfrVirtualMemory::initialize
+    + JDK-8264792: The NumberFormat for locale sq_XK formats price
+      incorrectly.
+    + JDK-8272806: [macOS] "Apple AWT Internal Exception" when
+      input method is changed
+    + JDK-8284549: JFR: FieldTable leaks FieldInfoTable member
+    + JDK-8289486: Improve XSLT XPath operators count efficiency
+    + JDK-8256372: [macos] Unexpected symbol was displayed on
+      JTextField with Monospaced font
+    + JDK-8286277: CDS VerifyError when calling clone() on object
+      array
+    + JDK-8277422: tools/jar/JarEntryTime.java fails with modified
+      time mismatch
+    + JDK-8285081: Improve XPath operators count accuracy
+    + JDK-8282280: Update Xerces to Version 2.12.2
+    + JDK-8278758: runtime/BootstrapMethod/BSMCalledTwice.java
+      fails with release VMs after JDK-8262134
+    + JDK-8279842: HTTPS Channel Binding support for Java
+      GSS/Kerberos
+    + JDK-8262134: compiler/uncommontrap/TestDeoptOOM.java failed
+      with "guarantee(false) failed: wrong number of expression
+      stack elements during deopt"
+    + JDK-8279520: SPNEGO has not passed channel binding info into
+      the underlying mechanism
+    + JDK-8277795: LDAP connection timeout not honoured under
+      contention
+    + JDK-8281628: KeyAgreement : generateSecret intermittently not
+      resetting
+    + JDK-8286855: javac error on invalid jar should only print
+      filename
+    + JDK-8286444: javac errors after JDK-8251329 are not helpful
+      enough to find root cause
+- Removed patch:
+  * openjdk-glibc234.patch
+    + fixed by upstream in JDK-8272472
+
+-------------------------------------------------------------------
 Thu Jul 21 07:40:17 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream tag jdk-13.0.12+4 (July 2022 CPU)
