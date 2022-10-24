@@ -385,4 +385,12 @@
     <comment></comment>
     <requestid>968371</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>47808bf4b587603d867f09dca29d1b45</srcmd5>
+    <version>2.7.3</version>
+    <time>1666610154</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.7.3:</comment>
+    <requestid>1030845</requestid>
+  </revision>
 </revisionlist>
