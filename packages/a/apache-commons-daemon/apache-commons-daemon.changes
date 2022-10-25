@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Oct 21 04:37:52 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.3.2:
+  * Fixes:
+    - Procrun. Remove noisy INFO log message that triggered logging
+      once per minute while the service was running.
+    - Fix typos in Javadoc and comments.
+    - Procrun. The DependsOn parameter is no longer ignored when
+      updating the service configuration.
+    - Fix crash and provide an error level log message when the
+      user attempts to start the service without configuring a
+      JVM and none is available via the registry.
+  * Updates:
+    - Bump actions/cache from 3.0.3 to 3.0.8.
+    - Bump actions/checkout from 3 to 3.0.2.
+    - Bump commons-parent from 53 to 54.
+    - Bump spotbugs-maven-plugin from 4.6.0.0 to 4.7.2.0.
+    - Bump jacoco-maven-plugin from 0.8.7 to 0.8.8.
+    - Bump japicmp-maven-plugin from 0.15.4 to 0.16.0.
+    - Bump JUnit 4 to 5 vintage.
+  * Remove apache-commons-daemon-riscv64.patch already upstream
+
+-------------------------------------------------------------------
 Sat Mar 19 13:05:21 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with source/target levels 8
