@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct 23 12:12:50 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.7
+  * string: new quoting modes HXQUOTE_BASE64URL & HXQUOTE_BASE64IMAP
+
+-------------------------------------------------------------------
 Mon Jun 27 16:48:54 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.6
