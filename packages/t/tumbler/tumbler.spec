@@ -188,7 +188,7 @@ mv custom_thumbnailers/folder-thumbnailer %{buildroot}%{_bindir}/
 %{_libdir}/tumbler-1/plugins/tumbler-odf-thumbnailer.so
 %{_libdir}/tumbler-1/plugins/tumbler-pixbuf-thumbnailer.so
 %{_libdir}/tumbler-1/plugins/tumbler-poppler-thumbnailer.so
-%if %{?suse_version} == 1500
+%if 0%{?suse_version} <= 1500 && 0%{?sle_version} < 150500
 %{_libdir}/tumbler-1/plugins/tumbler-raw-thumbnailer.so
 %endif
 %{_libdir}/tumbler-1/plugins/tumbler-gepub-thumbnailer.so

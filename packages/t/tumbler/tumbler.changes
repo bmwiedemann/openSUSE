@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 25 08:36:51 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Exclude RAW thumbnailer on Leap 15.5+ as well
+
+-------------------------------------------------------------------
 Thu Sep 22 07:12:24 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Allow building against libgepub-0.7 (boo#1203644):
