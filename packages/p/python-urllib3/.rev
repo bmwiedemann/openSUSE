@@ -602,4 +602,12 @@
     for justification and info on how to migrate.</comment>
     <requestid>998723</requestid>
   </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>7838a2e385707fd5db684ca44c0ececd</srcmd5>
+    <version>1.26.12</version>
+    <time>1666689506</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1030868</requestid>
+  </revision>
 </revisionlist>

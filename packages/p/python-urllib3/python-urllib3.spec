@@ -110,9 +110,9 @@ rm %{buildroot}/%{$python_sitelib}/urllib3/packages/__pycache__/six*.pyc
 
 ln -s %{$python_sitelib}/six.py %{buildroot}/%{$python_sitelib}/urllib3/packages/six.py
 ln -sf %{$python_sitelib}/__pycache__/six.cpython-%{$python_version_nodots}.opt-1.pyc \
-       %{buildroot}/%{python3_sitelib}/urllib3/packages/__pycache__/
+       %{buildroot}/%{$python_sitelib}/urllib3/packages/__pycache__/
 ln -sf %{$python_sitelib}/__pycache__/six.cpython-%{$python_version_nodots}.pyc \
-       %{buildroot}/%{python3_sitelib}/urllib3/packages/__pycache__/
+       %{buildroot}/%{$python_sitelib}/urllib3/packages/__pycache__/
 
 %fdupes %{buildroot}%{$python_sitelib}
 }
@@ -138,7 +138,7 @@ skiplist+=" or test_requesting_large_resources_via_ssl"
 %license LICENSE.txt
 %doc CHANGES.rst README.rst
 %{python_sitelib}/urllib3
-%{python_sitelib}/urllib3-%{version}-py*.egg-info
+%{python_sitelib}/urllib3-%{version}*-info
 %endif
 
 %changelog
