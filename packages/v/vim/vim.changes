@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Mon Oct 24 08:56:32 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 9.0.0814, fixes the following problems
+ * Kitty terminal is not recognized.
+ * GUI mouse scrollwheel mappings don't work.
+ * Error if :echowin is preceded by a command modifier
+ * readblob() returns empty when trying to read too much
+ * Test for job writing to buffer fails
+ * sonnet filetype detection has a typo
+ * With 'smoothscroll' typing "0" may not go to the first column
+ * 'langmap' works differently when there are modifiers
+ * Filetype autocmd may cause freed memory access
+ * Crash when trying to divice the largest negative number by -1
+ * readblob() cannot read from character device.
+ * The modifyOtherKeys flag is set when it should not.
+ * In compiled function ->() on next line not recognized
+ * Clang format configuration files are not recognized.
+ * Order of assert function arguments is reverted.
+ * readblob() always reads the whole file.
+ * At the hit-Enter prompt the End and Home keys may not work.
+ * Dummy buffer ends up in a window
+ * User command does not get number from :tab modifier
+ * Memory leak with empty shell command
+ * ":!" doesn't do anything but does update the previous command.
+ * OpenVPN files are not recognized.
+ * 'scroll' value computed in unexpected location
+ * The libvterm code is outdated.
+ * Quickfix commands may keep memory allocated.
+ * With a Visual block a put command column may go negative.
+ * Indent and option tests fail.
+ * Cannot use 'indentexpr' for Lisp indenting.
+ * Display test for 'listchars' "precedes" fails
+ * Line number not visisble with smoothscroll'', 'nu' and 'rnu'
+ * No autocmd event for changing text in a terminal window
+ * 'scrolloff' does not work well with 'smoothscroll'.
+ * Crash when popup closed in callback
+ * Alloc/free of buffer for each quickfix entry is inefficient
+ * Wrong cursor position when using "gj" and "gk" in a long line.
+ * In script in autoload dir exported variable is not found.
+
+-------------------------------------------------------------------
+Thu Oct 13 16:21:57 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 9.0.0743, fixes the following problems
+  * Virtual text "after" not correct with 'nowrap'.
+  * Quitting/unloading/hiding a terminal buffer does not always work properly.
+  * SubStation Alpha files are not recognized.
+  * Wrong column when calling setcursorcharpos() with zero lnum.
+  * <amatch> of MenuPopup event is expanded like a file name.
+  * With 'nowrap' two virtual text below not displayed correctly.
+  * Wrong argument for append() gives two error messages.
+  * With 'nowrap' virtual text "after" does not scroll left.
+  * Compiler warning for unused variable in tiny build.
+  * Extra empty line between two virtual text "below" when 'wrap' and 'number'
+  are set.
+  * Too many delete() calls in tests.
+  * Virtual text "above" with padding not displayed correctly.
+  * Virtual text "after" does not show with 'list' set.
+  * Extra empty line below virtual text when 'list' is set.
+  * Closure in compiled function gets same variable in block.
+  * Virtual text "after" wraps to next line even when 'wrap' is off and
+  'list' is set.
+  * Looping over list of lists and changing the list contents works in Vim9
+  script, not in a compiled function.
+  * Help in the repository differs from patched version too much.
+  * extend() test fails.
+  * The rightleft and arabic features are disabled.
+  * Startup test fails with right-left feature.
+  * clang-tidy configuration files are not recognized.
+  * No check for white space before and after "=<<". (Doug Kearns)
+  * Use of strftime() is not safe.
+  * Cursor position invalid when scrolling with 'smoothscroll' set. (Ernie
+  Rael)
+  * Breakindent and scrolloff tests fail.
+  * Quickfix listing does not handle very long messages.
+  * Lisp word only recognized when a space follows.
+  * Cannot suppress completion "scanning" messages.
+  * Mouse column not correctly used for popup_setpos.
+  * prop_add_list() gives multiple errors for invalid argument.
+  * Cannot specify an ID for each item with prop_add_list(). (Sergey Vlasov)
+  * Starting cscope on Unix does not quote the arguments correctly. (Gary
+  Johnson)
+
+-------------------------------------------------------------------
 Sun Oct  9 21:37:48 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 9.0.0709, fixes the following problems

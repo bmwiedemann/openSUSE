@@ -6449,4 +6449,41 @@ always built-in because vim has direct perl dependencies anyway.
   * 'smoothscroll' not tested with 'number' and &quot;n&quot; in 'cpo'.</comment>
     <requestid>1009199</requestid>
   </revision>
+  <revision rev="327" vrev="1">
+    <srcmd5>321fc7d34ebf27536cfed4a75494e3b0</srcmd5>
+    <version>9.0.0814</version>
+    <time>1666689501</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 9.0.0814, fixes the following problems
+ * Kitty terminal is not recognized.
+ * GUI mouse scrollwheel mappings don't work.
+ * Error if :echowin is preceded by a command modifier
+ * readblob() returns empty when trying to read too much
+ * Test for job writing to buffer fails
+ * sonnet filetype detection has a typo
+ * With 'smoothscroll' typing &quot;0&quot; may not go to the first column
+ * 'langmap' works differently when there are modifiers
+ * Filetype autocmd may cause freed memory access
+ * Crash when trying to divice the largest negative number by -1
+ * readblob() cannot read from character device.
+ * The modifyOtherKeys flag is set when it should not.
+ * In compiled function -&gt;() on next line not recognized
+ * Clang format configuration files are not recognized.
+ * Order of assert function arguments is reverted.
+ * readblob() always reads the whole file.
+ * At the hit-Enter prompt the End and Home keys may not work.
+ * Dummy buffer ends up in a window
+ * User command does not get number from :tab modifier
+ * Memory leak with empty shell command
+ * &quot;:!&quot; doesn't do anything but does update the previous command.
+ * OpenVPN files are not recognized.
+ * 'scroll' value computed in unexpected location
+ * The libvterm code is outdated.
+ * Quickfix commands may keep memory allocated.
+ * With a Visual block a put command column may go negative.
+ * Indent and option tests fail.
+ * Cannot use 'indentexpr' for Lisp indenting.
+ * Display test for 'listchars' &quot;precedes&quot; fails</comment>
+    <requestid>1030701</requestid>
+  </revision>
 </revisionlist>
