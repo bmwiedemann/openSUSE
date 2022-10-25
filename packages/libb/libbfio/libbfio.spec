@@ -18,7 +18,7 @@
 
 Name:           libbfio
 %define lname	libbfio1
-Version:        20220120
+Version:        20221025
 Release:        0
 Summary:        Library to provide basic file input/output abstraction
 License:        LGPL-3.0-or-later
@@ -29,7 +29,7 @@ Source2:        https://github.com/libyal/libbfio/releases/download/%version/lib
 Source9:        %name.keyring
 Patch1:         system-libs.patch
 BuildRequires:  c_compiler
-BuildRequires:  gettext-tools >= 0.18.1
+BuildRequires:  gettext-tools >= 0.21
 BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libcdata) >= 20220115
@@ -40,7 +40,7 @@ BuildRequires:  pkgconfig(libcnotify) >= 20220108
 BuildRequires:  pkgconfig(libcpath) >= 20220108
 BuildRequires:  pkgconfig(libcsplit) >= 20220109
 BuildRequires:  pkgconfig(libcthreads) >= 20220102
-BuildRequires:  pkgconfig(libuna) >= 20220102
+BuildRequires:  pkgconfig(libuna) >= 20220611
 
 %description
 libbfio is used in multiple other libraries like libewf, libmsiecf,

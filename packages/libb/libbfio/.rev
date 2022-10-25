@@ -150,4 +150,12 @@ libyal refresh for opensuse 13.1 release (forwarded request 184907 from gregfree
     <comment>update</comment>
     <requestid>999945</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>d2f0f0347dedfe40ac4b1f2009a23f44</srcmd5>
+    <version>20221025</version>
+    <time>1666691474</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20221025</comment>
+    <requestid>1031086</requestid>
+  </revision>
 </revisionlist>
