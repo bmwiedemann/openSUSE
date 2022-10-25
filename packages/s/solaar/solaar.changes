@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 25 05:42:18 UTC 2022 - asn@cryptomilk.org
+
+- Update to version 1.1.6:
+  * release 1.1.6
+  * docs: mention that fn-swap is saved on some devices
+  * docs: add Dell-branded mouse and keyboard
+  * ui: only update remaining pairings after sucessful pairing
+  * listener: check for presence of status attribute when resuming
+  * Update Croatian translation
+  * po: update Polish translation
+
+-------------------------------------------------------------------
 Thu Sep 15 05:24:41 UTC 2022 - asn@cryptomilk.org
 
 - Update to version 1.1.5:

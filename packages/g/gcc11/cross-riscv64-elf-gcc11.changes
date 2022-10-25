@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 24 08:56:14 UTC 2022 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-11 branch head (bd0c76a2329e7fe6d6612c225), git2076
+  * includes fix for -Wmismatched-tags ICE  [bsc#1204599]
+
+-------------------------------------------------------------------
 Wed Aug 31 14:21:03 UTC 2022 - Richard Biener <rguenther@suse.com>
 
 - Remove fixed sys/mount.h

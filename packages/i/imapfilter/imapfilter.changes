@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct 22 18:45:40 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to 2.7.6:
+  * Support building with OpenSSL 3.0.0 and later.
+  * Several minor improvements to documentation and example code.
+  * Removed deprecated CRAM-MD5 mechanism.
+  * Bug fix; session was destroyed incorrectly on login failures.
+  * Bug fix; potential session management problems.
+
+-------------------------------------------------------------------
 Sun Dec 20 12:51:29 UTC 2020 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.7.5:

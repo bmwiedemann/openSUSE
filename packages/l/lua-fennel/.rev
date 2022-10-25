@@ -7,4 +7,12 @@
     <comment>Initial submission of Fennec programming language (LISP-like with macros compiling to Lua) to Factory.</comment>
     <requestid>914809</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fc41cac7857309f666cb6537db22b594</srcmd5>
+    <version>1.2.1</version>
+    <time>1666689602</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1030955</requestid>
+  </revision>
 </revisionlist>

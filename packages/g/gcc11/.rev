@@ -279,4 +279,13 @@ The compiler is NOT used by default.</comment>
 - Remove workaround for obs-service-format_spec_file.</comment>
     <requestid>1000461</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b12d6bf493e08e116853ee4ef345d96d</srcmd5>
+    <version>11.3.1+git2076</version>
+    <time>1666689571</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to gcc-11 branch head (bd0c76a2329e7fe6d6612c225), git2076
+  * includes fix for -Wmismatched-tags ICE  [bsc#1204599]</comment>
+    <requestid>1030847</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Oct 20 20:07:36 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Use Catch2 < 3.0. Unfortunately Catch2 3.x is API
+  incompatible with Catch2 2.x.
+- Add 0001-fix-building-with-new-ffmpeg.patch
+
+-------------------------------------------------------------------
+Tue Sep 13 21:47:18 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to version 6.2.2204
+  * no changelog provided
+- Split nggui library package, to avoid pulling in otherwise
+  unneeded dependencies.
+
+-------------------------------------------------------------------
 Thu Sep  8 05:40:33 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Limit dependencies to ffmpeg-4 variant and older, see upstream

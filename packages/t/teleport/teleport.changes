@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct 25 04:54:30 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 11.0.0:
+  * Full changelog see https://github.com/gravitational/teleport/releases/tag/v11.0.0
+  * Teleport 11 brings the following new major features and improvements:
+    - Hardware-backed private keys support for Server Access (Enterprise only).
+    - Replacement of obsolete SCP protocol with SFTP for Server Access.
+    - Removal of persistent storage requirement for Helm charts.
+    - Automatic discovery and enrollment of EKS/AKS clusters for Kubernetes Access.
+    - Richer Azure integrations for Server and Database Access.
+    - Cassandra and Scylla support for Database Access, including AWS Keyspaces.
+    - GitHub Actions and Terraform support for Machine ID.
+    - Access Requests and file upload/download support for Teleport Connect.
+
+-------------------------------------------------------------------
 Thu Oct 20 08:03:56 UTC 2022 - michael@stroeder.com
 
 - Update to version 10.3.3 with multiple improvements and bug fixes:

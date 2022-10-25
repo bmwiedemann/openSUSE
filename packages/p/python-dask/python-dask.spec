@@ -43,7 +43,7 @@
 %define         skip_python2 1
 Name:           python-dask%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-distributed! <===
-Version:        2022.9.0
+Version:        2022.10.0
 Release:        0
 Summary:        Minimal task scheduling abstraction
 License:        BSD-3-Clause
@@ -61,6 +61,8 @@ Requires:       python-fsspec >= 0.6.0
 Requires:       python-packaging >= 20.0
 Requires:       python-partd >= 0.3.10
 Requires:       python-toolz >= 0.8.2
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     %{name}-array = %{version}
 Recommends:     %{name}-bag = %{version}
 Recommends:     %{name}-dataframe = %{version}
@@ -77,15 +79,15 @@ Recommends:     python-psutil
 Recommends:     python-pyarrow >= 0.14.0
 Recommends:     python-s3fs >= 0.4.0
 Recommends:     python-xxhash
-Suggests:       %{name}-all = %{version}
+Suggests:       %{name}-complete = %{version}
 Suggests:       %{name}-diagnostics = %{version}
 Provides:       %{name}-multiprocessing = %{version}-%{release}
 Obsoletes:      %{name}-multiprocessing < %{version}-%{release}
 BuildArch:      noarch
 %if %{with test}
 # test that we specified all requirements correctly in the core
-# and subpackages by only requiring dask-all and optional extras
-BuildRequires:  %{python_module dask-all = %{version}}
+# and subpackages by only requiring dask-complete and optional extras
+BuildRequires:  %{python_module dask-complete = %{version}}
 BuildRequires:  %{python_module pytest-rerunfailures}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
@@ -127,7 +129,7 @@ Dask is composed of two parts:
   larger-than-memory or distributed environments. These parallel collections
   run on top of dynamic task schedulers.
 
-%package all
+%package complete
 # This must have a Requires for dask and all the dask subpackages
 Summary:        All dask components
 Requires:       %{name} = %{version}
@@ -138,8 +140,10 @@ Requires:       %{name}-delayed = %{version}
 Requires:       %{name}-diagnostics = %{version}
 Requires:       %{name}-distributed = %{version}
 Requires:       %{name}-dot = %{version}
+Provides:       %{name}-all = %{version}-%{release}
+Obsoletes:      %{name}-all < %{version}-%{release}
 
-%description all
+%description complete
 A flexible library for parallel computing in Python.
 
 Dask is composed of two parts:
@@ -320,6 +324,7 @@ chmod a-x dask/dataframe/io/orc/utils.py
 %install
 %if !%{with test}
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/dask
 %{python_expand # give SUSE specific install instructions
 sed -E -i '/Please either conda or pip install/,/python -m pip install/ {
   s/either conda or pip//;
@@ -363,10 +368,17 @@ donttest+=" or test_map_partitions_df_input"
 %pytest --pyargs dask -n auto -r fE -m "not network" -k "not ($donttest)" --reruns 3 --reruns-delay 3
 %endif
 
+%post
+%python_install_alternative dask
+
+%postun
+%python_uninstall_alternative dask
+
 %if !%{with test}
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
+%python_alternative %{_bindir}/dask
 %{python_sitelib}/dask/
 %{python_sitelib}/dask-%{version}*-info
 %exclude %{python_sitelib}/dask/array/
@@ -378,7 +390,7 @@ donttest+=" or test_map_partitions_df_input"
 %pycache_only %exclude %{python_sitelib}/dask/__pycache__/delayed*.pyc
 %pycache_only %exclude %{python_sitelib}/dask/__pycache__/dot.*
 
-%files %{python_files all}
+%files %{python_files complete}
 %license LICENSE.txt
 
 %files %{python_files array}

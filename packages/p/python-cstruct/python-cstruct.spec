@@ -2,7 +2,7 @@
 # spec file for package python-cstruct
 #
 # Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2020-2022, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cstruct
-Version:        1.8
+Version:        3.3
 Release:        0
 Summary:        C-style structs for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/andreax79/python-cstruct
 Source:         https://github.com/andreax79/python-cstruct/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -46,17 +45,14 @@ a string.
 
 %prep
 %setup -q
-sed -i -e '/^#!\//, 1d' \
-  cstruct/__init__.py \
-  cstruct/examples/fdisk.py \
-  cstruct/examples/who.py \
-  cstruct/tests/test_cstruct.py
 
 %build
 %python_build
 
 %install
 %python_install
+%python_expand find %{buildroot}%{$python_sitelib} -name "*.py" -exec sed -i -e '/^#!\//, 1d' {} \;
+%python_expand rm -R %{buildroot}%{$python_sitelib}/tests/
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 17 18:04:18 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add fix-maint-issue.patch (fixes bsc#1203311).
+- No, we actually don't need python-six at all.
+
+-------------------------------------------------------------------
 Thu Oct  6 06:15:44 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 6.1.2:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-delegator.py
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,10 +23,10 @@ Release:        0
 Summary:        Python library for dealing with subprocesses
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/kennethreitz/delegator.py
+URL:            https://github.com/kennethreitz/delegator.py
 Source:         https://files.pythonhosted.org/packages/source/d/delegator.py/delegator.py-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/kennethreitz/delegator.py/master/tests/test_chain.py
-Patch0:         exclude-eof-from-result.patch
+Patch0:         merged_pr_62.patch
 BuildRequires:  %{python_module pexpect >= 4.1.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}

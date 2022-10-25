@@ -313,4 +313,24 @@
   * FACT: Fill all fields for WAVESTOP notifications, avoiding uninitialized memory issues (forwarded request 994144 from ukbeast89)</comment>
     <requestid>994145</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>a7f2bb3195aff31fa90edb997b0152ca</srcmd5>
+    <version>22.10</version>
+    <time>1666689594</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 22.10:
+  * Added a quick comment to the SDL backend.
+- Update to 22.09.01:
+  * Fix a regression where requesting a specific mastering voice format 
+    would return a format overwritten by device defaults
+- Update to 22.09:
+  * Update to SDL 2.24. This has been made a hard requirement, as it 
+    fixes/adds way too much to ignore:
+    2.1 and 4.1 audio is now supported
+  * On Windows, we now prioritize DirectSound over WASAPI
+  * The PulseAudio samples hack has been removed
+  * The non-power-of-two samples hack for Emscripten/OSS has also been removed
+  * GetDeviceDetails(0) now uses SDL_GetDefaultAudioInfo, obsoleting our hack (forwarded request 1030904 from ukbeast89)</comment>
+    <requestid>1030912</requestid>
+  </revision>
 </revisionlist>

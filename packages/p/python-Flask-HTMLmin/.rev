@@ -58,4 +58,12 @@
   * No longer require pytest-runner.</comment>
     <requestid>941568</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b08d5361ed9b12e1d70b6d263a284164</srcmd5>
+    <version>2.2.0</version>
+    <time>1666689609</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1030923</requestid>
+  </revision>
 </revisionlist>

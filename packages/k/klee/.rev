@@ -1259,4 +1259,22 @@ build with uclibc</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1003284</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>db4a32794f08297595ff8278adfbe235</srcmd5>
+    <version>2.3+20220926</version>
+    <time>1666689629</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3+20220926:
+  * Improve the message for when large arrays become symbolic.
+  * Pass llvm.experimental.noalias.scope.decl to IntrinsicLowering so that
+    it strips out these intrinsics
+  * Improve pattern for FileCheck in UBSan's tests
+  * Add README to UBSan runtime
+  * Eliminate .undefined_behavior.err category and simplify tests
+  * Check extensions of generated files in tests
+  * Introduce separate categories for different kinds of undefined behavior
+  * Support UBSan-enabled binaries
+- update FileCheck.cpp to llvm 14's</comment>
+    <requestid>1031045</requestid>
+  </revision>
 </revisionlist>

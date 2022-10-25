@@ -134,8 +134,8 @@ echo "V_%version { global: *; };" >v.sym
 %install
 mv %_builddir/rt/* %buildroot/
 find %{buildroot} -type f -name "*.la" -delete -print
-install -Dpm0755 "%{SOURCE2}" "%{buildroot}/sbin/mount.ewf"
-ln -s mount.ewf "%{buildroot}/sbin/umount.ewf"
+install -Dpm0755 "%{SOURCE2}" "%{buildroot}%{_sbindir}/mount.ewf"
+ln -s mount.ewf "%{buildroot}%{_sbindir}/umount.ewf"
 
 %check
 make check
@@ -159,7 +159,7 @@ make check
 %{_bindir}/ewfdebug
 
 %{_mandir}/man1/ewf*.1*
-/sbin/*mount.ewf
+%{_sbindir}/*mount.ewf
 
 %files -n %name-devel
 %license COPYING*

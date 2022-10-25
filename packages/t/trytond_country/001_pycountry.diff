@@ -2,7 +2,7 @@ diff --git a/country.py b/country.py
 index ff5eceb4da725156b204060e9d1b9f26b89aa1c5..1e8e76671099672eb5baffd84dd6d1694f547de6 100644
 --- a/country.py
 +++ b/country.py
-@@ -94,6 +94,7 @@ class Subdivision(DeactivableMixin, ModelSQL, ModelView):
+@@ -98,6 +98,7 @@ class Subdivision(DeactivableMixin, ModelSQL, ModelView):
      code = fields.Char('Code', required=True, select=True,
          help="The ISO code of the subdivision.")
      type = fields.Selection([
@@ -10,7 +10,7 @@ index ff5eceb4da725156b204060e9d1b9f26b89aa1c5..1e8e76671099672eb5baffd84dd6d169
          ('administration', 'Administration'),
          ('administrative area', 'Administrative area'),
          ('administrative atoll', 'Administrative atoll'),
-@@ -198,7 +199,7 @@ class Subdivision(DeactivableMixin, ModelSQL, ModelView):
+@@ -202,7 +202,7 @@ class Subdivision(DeactivableMixin, ModelSQL, ModelView):
          ('unitary authority (england)', 'Unitary authority (england)'),
          ('unitary authority (wales)', 'Unitary authority (wales)'),
          ('zone', 'zone'),
@@ -19,7 +19,7 @@ index ff5eceb4da725156b204060e9d1b9f26b89aa1c5..1e8e76671099672eb5baffd84dd6d169
      parent = fields.Many2One('country.subdivision', 'Parent',
          domain=[
              ('country', '=', Eval('country', -1)),
-@@ -220,10 +221,15 @@ class Subdivision(DeactivableMixin, ModelSQL, ModelView):
+@@ -224,10 +225,15 @@ class Subdivision(DeactivableMixin, ModelSQL, ModelView):
  
          super().__register__(module_name)
  
@@ -34,7 +34,7 @@ index ff5eceb4da725156b204060e9d1b9f26b89aa1c5..1e8e76671099672eb5baffd84dd6d169
 +
      @classmethod
      def search_rec_name(cls, name, clause):
-         return ['OR',
+         if clause[1].startswith('!') or clause[1].startswith('not '):
 diff --git a/scripts/import_countries.py b/scripts/import_countries.py
 index 626e1ceee8c38496b83127d119709db6208a3bf6..85c5906581c2138ac720ab52927b3c054523543a 100755
 --- a/scripts/import_countries.py

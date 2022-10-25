@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 24 20:27:32 UTC 2022 - maiku.fabian@gmail.com
+
+- Update to 2.19.7
+- Avoid inline completion when OSK (on-screen-keyboard) is shown
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/395)
+- Do not reset input purpose on focus out
+  (See: https://gitlab.gnome.org/GNOME/gnome-shell/-/issues/5966#note_1576732)
+
+-------------------------------------------------------------------
 Sat Oct 15 11:20:21 UTC 2022 - maiku.fabian@gmail.com
 
 - Update to 2.19.6

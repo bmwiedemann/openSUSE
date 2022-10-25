@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Oct 24 12:24:47 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Upgrade to 0.13.6:
+  - Add cargo-deny integration
+  - Fix maturin develop in Windows conda virtual environment
+  - Filter out unwanted Cargo target kinds when determine bridge
+    model
+  - Add maturin develop test case for conda
+  - Bump console from 0.15.1 to 0.15.2
+  - Bump thiserror from 1.0.36 to 1.0.37
+  - [StepSecurity] ci: Harden GitHub Actions
+  - Downgrade indicatif to fix build on some 32-bit platforms
+  - Allow rustix dependency now that Alpine removed thumb-mode on
+    armv7l
+  - Bump textwrap from 0.15.0 to 0.15.1
+  - Replace pretty_env_logger with tracing-subscriber
+  - Include Cargo.lock by default in source distribution
+
+-------------------------------------------------------------------
 Thu Sep 29 18:36:10 UTC 2022 - Mia Herkt <mia@0x0.st>
 
 - Update to v0.13.5

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Oct 23 11:33:29 UTC 2022 - Simon Vogl <simon.vogl@gmx.net>
+
+- Removed 0001-fix-older-qt-compilation.patch as it is merged upstream
+- Enabled RubberBand support on openSUSE Leap 15.5 and SLE15SP5+
+- Dropped support for openSUSE Leap 15.3 and SLE15SP3 as they can't satisfy QMPlay2's future build requirements anymore
+- Switched to gcc11 on openSUSE Leap and SLE
+- Update to version 22.10.23
+   * allow to use CPU Vulkan implementation by "QMPLAY2_ALLOW_VULKAN_CPU" environment variable,
+   * allow to skip "yt-dlp" updates (configuration file only),
+   * export "My Radio Stations" to PLS or M3U playlists,
+   * add "My Radio Stations" to system tray menu,
+   * fix subtitles synchronization with video,
+   * fix language detextion for some locales,
+   * fix various subtitles scaling issues,
+   * fix AV1 aspect ratio in some cases,
+   * other minoir subtitles fixes,
+   * other minor fixes.
+
+-------------------------------------------------------------------
 Fri Aug 26 23:16:47 UTC 2022 - Simon Vogl <simon.vogl@gmx.net>
 
 - Added 0001-fix-older-qt-compilation.patch to fix a compile error on openSUSE Leap 15.3

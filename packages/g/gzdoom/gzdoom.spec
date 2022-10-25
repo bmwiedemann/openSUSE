@@ -50,7 +50,7 @@ BuildRequires:  pkgconfig(sdl2) >= 2.0.6
 BuildRequires:  pkgconfig(vpx)
 BuildRequires:  pkgconfig(zlib)
 %if 0%{?suse_version} >= 1550
-BuildRequires:  glslang-devel
+BuildRequires:  glslang-devel >= 11.10
 BuildRequires:  pkgconfig(vulkan) >= 1.2.162
 %else
 Provides:       bundled(glslang) = 11.10.0

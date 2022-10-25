@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-softlayer
 Version:        6.1.2
@@ -25,6 +24,9 @@ Summary:        A set of Python libraries that assist in calling the SoftLayer A
 License:        MIT
 URL:            https://github.com/softlayer/softlayer-python
 Source:         https://github.com/softlayer/softlayer-python/archive/v%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix-maint-issue.patch bsc#1203311 mcepl@suse.com
+# xmlrpc y2038 problem
+Patch0:         fix-maint-issue.patch
 BuildRequires:  %{python_module click >= 8.0.4}
 BuildRequires:  %{python_module prettytable >= 2.5.0}
 BuildRequires:  %{python_module prompt_toolkit >= 2}
@@ -33,7 +35,6 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.20.0}
 BuildRequires:  %{python_module rich >= 12.5.1}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six >= 1.7.0}
 BuildRequires:  %{python_module softlayer-zeep >= 5.0.0}
 BuildRequires:  %{python_module testtools}
 BuildRequires:  %{python_module typing_extensions}
@@ -47,7 +48,6 @@ Requires:       python-pygments >= 2.0.0
 Requires:       python-requests >= 2.20.0
 Requires:       python-rich >= 12.5.1
 Requires:       python-setuptools
-Requires:       python-six >= 1.7.0
 Requires:       python-softlayer-zeep >= 5.0.0
 Requires:       python-typing_extensions
 Requires:       python-urllib3 >= 1.24
@@ -60,7 +60,7 @@ Requires(postun):update-alternatives
 This library provides a simple Python client to interact with SoftLayer's XML-RPC API.
 
 %prep
-%setup -q -n softlayer-python-%{version}
+%autosetup -p1 -n softlayer-python-%{version}
 
 %build
 %python_build

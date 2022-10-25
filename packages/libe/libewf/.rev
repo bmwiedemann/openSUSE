@@ -175,4 +175,12 @@ Replace python 2 with python 3</comment>
     <comment>- Add forced symvers</comment>
     <requestid>993982</requestid>
   </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>7d107803010e249ed45f4e7134c00765</srcmd5>
+    <version>20140811</version>
+    <time>1666689581</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1030876</requestid>
+  </revision>
 </revisionlist>

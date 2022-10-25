@@ -31,7 +31,7 @@ Name:           klee
 Summary:        LLVM Execution Engine
 License:        NCSA
 Group:          Development/Languages/Other
-Version:        2.3+20220826
+Version:        2.3+20220926
 Release:        0
 URL:            http://klee.github.io/
 Source0:        %{name}-%{version}.tar.xz
@@ -148,6 +148,7 @@ ninja check
 %{_libdir}/klee/runtime/libkleeRuntimeFreestanding*_{%{runtime_variants}}.bca
 %{_libdir}/klee/runtime/libkleeRuntimeIntrinsic*_{%{runtime_variants}}.bca
 %{_libdir}/klee/runtime/libkleeRuntimeKLEELibc*_{%{runtime_variants}}.bca
+%{_libdir}/klee/runtime/libkleeUBSan*_{%{runtime_variants}}.bca
 %if %{with_uclibc}
 %{_libdir}/klee/runtime/klee-uclibc.bca
 %{_libdir}/klee/runtime/libkleeRuntimePOSIX*_{%{runtime_variants}}.bca

@@ -45,7 +45,7 @@
 %bcond_with paralleltests
 Name:           python-distributed%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-distributed! <===
-Version:        2022.9.0
+Version:        2022.10.0
 Release:        0
 Summary:        Library for distributed computing with Python
 License:        BSD-3-Clause
@@ -56,7 +56,7 @@ Source99:       python-distributed-rpmlintrc
 Patch1:         distributed-ignore-offline.patch
 # PATCH-FIX-OPENSUSE distributed-ignore-thread-leaks.patch -- ignore leaking threads on obs, code@bnavigator.de
 Patch2:         distributed-ignore-thread-leaks.patch
-# PATCh-FIX-OPENSUSE Ignore two deprecations introduced by Tornado 6.2
+# PATCH-FIX-OPENSUSE Ignore two deprecations introduced by Tornado 6.2
 Patch3:         support-tornado-6-2.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module setuptools}
@@ -82,12 +82,11 @@ Requires(postun):update-alternatives
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module bokeh}
-BuildRequires:  %{python_module dask-all = %{version}}
+BuildRequires:  %{python_module dask-complete = %{version}}
 BuildRequires:  %{python_module distributed = %{version}}
 BuildRequires:  %{python_module ipykernel}
 BuildRequires:  %{python_module ipython}
 BuildRequires:  %{python_module jupyter_client}
-BuildRequires:  %{python_module pytest-asyncio >= 0.17.2}
 BuildRequires:  %{python_module pytest-rerunfailures}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
@@ -155,19 +154,18 @@ donttest+=" or (test_variable and test_variable_in_task)"
 donttest+=" or (test_worker and test_worker_reconnects_mid_compute)"
 # server-side fail due to the non-network warning in a subprocess where the patched filter does not apply
 donttest+=" or (test_client and test_quiet_close_process)"
-
-# Exception messages not caught -- https://github.com/dask/distributed/issues/5460#issuecomment-1079432890
-python310_donttest+=" or test_exception_text"
-python310_donttest+=" or test_worker_bad_args"
-python310_donttest+=" or test_run_spec_deserialize_fail"
+# creates OOM aborts on some obs workers
+donttest+=" or (test_steal and steal_communication_heavy_tasks)"
 
 if [[ $(getconf LONG_BIT) -eq 32 ]]; then
   # OverflowError -- https://github.com/dask/distributed/issues/5252
   donttest+=" or test_ensure_spilled_immediately"
   donttest+=" or test_value_raises_during_spilling"
   donttest+=" or test_fail_to_pickle_execute_1"
-  # https://github.com/dask/distributed/issues/6718
-  python310_donttest+=" or (test_profile and test_basic)"
+  # https://github.com/dask/distributed/issues/7174
+  donttest+=" or (test_steal and steal_communication_heavy_tasks)"
+  # https://github.com/dask/distributed/issues/7175
+  donttest+=" or (test_sizeof_error and larger)"
 fi
 
 %if %{with paralleltests}

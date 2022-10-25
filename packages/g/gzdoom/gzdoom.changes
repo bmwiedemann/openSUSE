@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 24 23:24:06 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update gzdoom-vulkan.patch for glslang-11.12.
+
+-------------------------------------------------------------------
 Sun Jul 24 07:43:09 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Replace 0001-Revert-load-the-hex-font-as-early-as-possible.patch

@@ -209,4 +209,12 @@
     <comment>bugfix version</comment>
     <requestid>993358</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>bf0b2c0b8a0441c3c0f1ab2e38c2a76a</srcmd5>
+    <version>6.0.9</version>
+    <time>1666689624</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1031038</requestid>
+  </revision>
 </revisionlist>

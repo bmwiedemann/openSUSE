@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Oct 24 09:16:08 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.1:
+  + clipboard: Always clear mime type tables when updating clients
+    clipboard
+  + hwaccel-nvidia:
+    - Also output actual NVENC errors when API calls fail
+    - Always output CUDA errors when API calls fail
+    - Fix small style issue
+  + man: Only include man page content for compiled-in backends
+  + rdp-audio-output-stream: Set stream inactive before destroying
+    it
+  + rdp-monitor-config: Fix typo in verify_monitor_config
+  + rdp/nw-auto: Fix crash when updating unchanged ping source
+  + rdp:
+    - Suspend PipeWire stream on exit instead of flushing it
+    - Unlock stream lock mutex while suspending other audio streams
+  + session-rdp:
+    - Also check VCM handle when clearing it
+    - Fix check when creation of virtual channel manager fails
+    - Only print colour depth fix message when situation applies
+  + vnc: Suspend PipeWire stream on exit instead of flushing it
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Sep 18 07:29:40 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.0:

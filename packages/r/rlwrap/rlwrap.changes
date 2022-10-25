@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct 21 08:28:23 UTC 2022 - Daniel Donisa <daniel.donisa@suse.com>
+
+- Update to 0.46
+
+  * Bug fixes:
+
+  - rlwrapfilter.py would not find collections.Callable with newer (>= 3.10) python
+  - rlwrapfilter.py would choke on rlwrap version strings (like 0.45.2) that cannot be converted by float()
+  - rlwrap could segfault or garble prompts containing a carriage return
+  - configure.ac would complain about obsolete macros with newest autoconf
+  - Bind TAB to self-insert if no completions are specified on the rlwrap command line
+
+-------------------------------------------------------------------
 Fri Jul  9 12:13:24 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Use upstream tar ball, that do not repack 

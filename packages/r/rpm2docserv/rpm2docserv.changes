@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct 25 07:54:57 UTC 2022 - kukuk@suse.com
+
+- Update to version 20221025.f562697:
+  * Use absolut URL for logo
+
+-------------------------------------------------------------------
+Mon Oct 24 09:03:49 UTC 2022 - kukuk@suse.com
+
+- Update to version 20221024.57b37b8:
+  * Update dependencies
+  * Use MicroOS logo, switch to offline build
+  * Fix usage of external style sheet (#2)
+  * Add "IsOffline" variable for templates
+
+-------------------------------------------------------------------
 Mon Oct 17 12:59:42 UTC 2022 - kukuk@suse.com
 
 - Update to version 20221017.6bcf1b6:

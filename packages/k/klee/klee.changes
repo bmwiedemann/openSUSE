@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct 25 06:53:25 UTC 2022 - jslaby@suse.cz
+
+- Update to version 2.3+20220926:
+  * Improve the message for when large arrays become symbolic.
+  * Pass llvm.experimental.noalias.scope.decl to IntrinsicLowering so that
+    it strips out these intrinsics
+  * Improve pattern for FileCheck in UBSan's tests
+  * Add README to UBSan runtime
+  * Eliminate .undefined_behavior.err category and simplify tests
+  * Check extensions of generated files in tests
+  * Introduce separate categories for different kinds of undefined behavior
+  * Support UBSan-enabled binaries
+- update FileCheck.cpp to llvm 14's
+
+-------------------------------------------------------------------
 Tue Sep  6 09:21:23 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
 
 - add llvm 14 support

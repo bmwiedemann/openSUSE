@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Oct 20 12:15:15 UTC 2022 - David Mulder <dmulder@suse.com>
+
+Release v0.3.6:
+- Fix Bug #15 cepces.conf.dist: server should be pointed to actual CEP host
+- Replace old requests_kerberos with requests_gssapi
+- setup: Do not install example configs
+- setup: Respect the prefix the user specifies
+- Delete the spec file
+- Make Kerberos delegation configurable
+- Fix Bug #24 cepces-submit 'TypeError: option values must be strings'
+- Removed b755b56d25f3e54f8f15d9985fd0597b21c1051d.patch because
+  it is now upstream.
+
+-------------------------------------------------------------------
+Wed Jun 01 18:58:29 UTC 2022 - David Mulder <dmulder@suse.com>
+
+Release v0.3.5:
+- Added polling_interval which tells certmonger how long to wait in seconds before retrying.
+- Implemented Certificate authentication method.
+- Python 3.10 compatible.
+
+-------------------------------------------------------------------
 Tue May 10 19:19:56 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add b755b56d25f3e54f8f15d9985fd0597b21c1051d.patch

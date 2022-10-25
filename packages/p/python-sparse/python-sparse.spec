@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 Name:           python-sparse
 Version:        0.13.0
@@ -26,6 +25,9 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/pydata/sparse
 Source:         https://files.pythonhosted.org/packages/source/s/sparse/sparse-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM skip-32bit-archs.patch gh#pydata/sparse#490 mcepl@suse.com
+# Skip some tests on 32bit architecture
+Patch0:         skip-32bit-archs.patch
 BuildRequires:  %{python_module setuptools}
 # SECTION test requirements
 BuildRequires:  %{python_module dask-array}

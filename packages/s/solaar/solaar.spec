@@ -21,7 +21,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           solaar
-Version:        1.1.5
+Version:        1.1.6
 Release:        0
 Summary:        Linux devices manager for the Logitech Unifying Receiver
 License:        GPL-2.0-or-later
@@ -129,6 +129,7 @@ ln -s solaar %{buildroot}%{_bindir}/solaar-cli
 %{_datadir}/icons/hicolor/scalable/apps/solaar.svg
 %{_datadir}/metainfo/io.github.pwr_solaar.solaar.metainfo.xml
 %{python_sitelib}/hidapi
+%{python_sitelib}/hid_parser
 %{python_sitelib}/logitech_receiver
 %{python_sitelib}/keysyms
 %{python_sitelib}/solaar

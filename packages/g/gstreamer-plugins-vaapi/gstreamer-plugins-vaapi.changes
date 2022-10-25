@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 22 09:05:41 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.20.4:
+  + vaapi:
+    - Handle when no encoders/decoders available.
+    - Crash in gst_vaapidecode_class_init() when no
+      decoders/encoders available.
+
+-------------------------------------------------------------------
 Fri Sep 30 10:31:15 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Pass package-origin='http://download.opensuse.org' to meson.

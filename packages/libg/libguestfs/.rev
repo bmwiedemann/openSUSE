@@ -966,4 +966,12 @@
     <comment>Add upstream patch for disabling ocaml builds. Additional side benefit of this submission is to trigger rebuild of libguestfs against latest libgcrpyt.</comment>
     <requestid>1001501</requestid>
   </revision>
+  <revision rev="85" vrev="3">
+    <srcmd5>232994fe7b01ff7d6fe6a6d3f67d4253</srcmd5>
+    <version>1.48.4</version>
+    <time>1666689589</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1030893</requestid>
+  </revision>
 </revisionlist>

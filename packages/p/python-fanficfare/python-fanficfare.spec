@@ -21,14 +21,13 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-fanficfare
-Version:        4.16.0
+Version:        4.17.0
 Release:        0
 Summary:        Tool for making eBooks from stories on fanfiction and other web sites
 License:        GPL-3.0-only
 Group:          Development/Languages/Python
 URL:            https://github.com/JimmXinu/FanFicFare
 Source:         https://github.com/JimmXinu/%{modname}/archive/v%{version}/%{modname}-%{version}.tar.gz
-# Source:         %%{modname}-%%{version}.tar.gz
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module chardet}
 BuildRequires:  %{python_module cloudscraper}
@@ -93,6 +92,7 @@ dos2unix DESCRIPTION.rst README.md
 %license LICENSE
 %doc DESCRIPTION.rst README.md
 %python_alternative %{_bindir}/%{modnamedown}
-%{python_sitelib}/*
+%{python_sitelib}/%{modname}-%{version}*-info
+%{python_sitelib}/%{modnamedown}
 
 %changelog

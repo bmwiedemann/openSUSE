@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 25 06:47:09 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.8.11:
+  * Use fake message-ids when empty
+  * Add explicit check for charconv header
+  * Fix outdated doc for mime part actions
+  * mu-view: be clearer when no text-body found
+  * Fix mu4e-header-thread-first-child-prefix copy-pasta
+  * Ensure mime-parts are utf8
+
+-------------------------------------------------------------------
 Thu Sep 15 07:01:30 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.8.10:

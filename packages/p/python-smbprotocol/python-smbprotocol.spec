@@ -31,12 +31,10 @@ BuildRequires:  %{python_module pyspnego}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cryptography >= 2.0
 Requires:       python-pyspnego
-Requires:       python-six
 Suggests:       python-gssapi >= 1.4.1
 BuildArch:      noarch
 %python_subpackages

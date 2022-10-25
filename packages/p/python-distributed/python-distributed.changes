@@ -1,4 +1,108 @@
 -------------------------------------------------------------------
+Fri Oct 21 13:22:30 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2022.10.0
+  * Use of new dask CLI (GH#6735) Doug Davis
+  * Refactor occupancy (GH#7075) Hendrik Makait
+  * Expose managed/unmanaged/spilled memory to Prometheus (GH#7112)
+    crusaderky
+  * Round up saturation-factor (GH#7116) Gabe Joseph
+  * Return default on KeyError at any level in get_metadata
+    (GH#7109) Hendrik Makait
+  * Count task states per task prefix and expose to Prometheus
+    (GH#7088) Nat Tabris
+  * Add scheduler-sni option for dask workers (GH#6290) Burt
+    Holzman
+  * Improve exception catching in UCX communication (GH#7132) Peter
+    Andreas Entschev
+  * Improve robustness of PipInstall plugin (GH#7111) Hendrik
+    Makait
+  * Fix dependencies that should point to dask/dask (GH#7138) James
+    Bourbeau
+  * Hold on to z.sum() until test completes (GH#7136) Lawrence
+    Mitchell
+  * Update typing for system_monitor after python/typeshed#8829
+    (GH#7131) Lawrence Mitchell
+  * Fix two potentially flaky queuing tests (GH#7124) Gabe Joseph
+  * Revamp SystemMonitor (GH#7097) crusaderky
+  * Adjust hardware benchmarks bokeh test (GH#7096) Florian Jetter
+  * Multi-platform mypy checks (GH#7094) crusaderky
+
+-------------------------------------------------------------------
+Fri Sep 30 23:19:52 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 2022.9.2:
+  * Enhancements
+    + Smarter stealing with dependencies (GH#7024) Hendrik Makait
+    + Enable Active Memory Manager by default (GH#7042) crusaderky
+    + Allow timeout strings in distributed.wait (GH#7081) James
+      Bourbeau
+    + Make AMM memory measure configurable (GH#7062) crusaderky
+    + AMM support for actors (GH#7072) crusaderky
+    + Expose message-bytes-limit in config (GH#7074) Hendrik Makait
+    + Detect mismatching Python version in scheduler (GH#7018) Hendrik
+      Makait
+    + Improve KilledWorker message users see (GH#7043) James Bourbeau
+    + Support for cgroups v2 and respect soft limits (GH#7051)
+      Samantha Hughes
+  * Bug Fixes
+    + Catch BaseException on UCX read error (GH#6996) Peter Andreas
+      Entschev
+    + Fix transfer limiting in _select_keys_for_gather (GH#7071)
+      Hendrik Makait
+    + Parse worker-saturation if a string (GH#7064) Gabe Joseph
+    + Nanny(config=...) parameter overlays global dask config
+      (GH#7069) crusaderky
+    + Ensure default clients don’t propagate to subprocesses (GH#7028)
+      Florian Jetter
+  * Documentation
+    + Improve documentation of message-bytes-limit (GH#7077) Hendrik
+      Makait
+    + Minor tweaks to Sphinx documentation (GH#7041) crusaderky
+    + Improve upload_file API documentation (GH#7040) Florian Jetter
+  * Maintenance
+    + test_serialize_numba: Workaround issue with np.empty_like in NP
+      1.23 (GH#7089) Graham Markall
+    + Type platform constants for mypy (GH#7091) jakirkham
+    + dask-worker-space (GH#7054) crusaderky
+    + Remove failing test case (GH#7087) Hendrik Makait
+    + test_default_client (GH#7058) crusaderky
+    + Fix pre-commit fails with recent versions of mypy and pandas
+      (GH#7068) crusaderky
+    + Add factorization utility (GH#7048) James Bourbeau
+
+-------------------------------------------------------------------
+Fri Sep 16 19:55:34 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 2022.9.1:
+  * Enhancements
+    + Add dashboard component for size of open data transfers
+      (GH#6982) Hendrik Makait
+    + Allow very fast keys and very expensive transfers as stealing
+      candidates (GH#7022) Florian Jetter
+  * Bug Fixes
+    + No longer double count transfer cost in stealing (GH#7036)
+      Hendrik Makait
+  * Maintenance
+    + Make test_wait_first_completed robust (GH#7039) Florian Jetter
+    + Partial annotations for SchedulerState (GH#7023) crusaderky
+    + Add more type annotations to stealing.py (GH#7009) Florian
+      Jetter
+    + Update codecov settings (GH#7015) Florian Jetter
+    + Speed up test_balance (GH#7008) Florian Jetter
+    + Fix test report after queuing job added (GH#7012) Gabe Joseph
+    + Clean up env variables in Gihub Actions (GH#7001) crusaderky
+    + Make test_steal_reschedule_reset_in_flight_occupancy non timing
+      dependent (GH#7010) Florian Jetter
+    + Replaced distributed.utils.key_split with dask.utils.key_split
+      (GH#7005) Luke Conibear
+    + Revert “Revert “Limit incoming data transfers by amount of data”
+      (GH#6994)” (:pr:`7007) Florian Jetter
+    + CI job running tests with queuing on (GH#6989) Gabe Joseph
+    + Fix distributed/tests/test_client_executor.py::test_wait
+      (GH#6990) Florian Jetter
+
+-------------------------------------------------------------------
 Sat Sep 10 15:18:16 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 2022.9.0:

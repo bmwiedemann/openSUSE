@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Oct 24 17:22:25 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 4.17.0:
+  - Update Translations
+  - Fix site name fanfiction.tenhawkpresents.ink
+  - Flaresolverr v3 beta using 'expiry' cookie key, was
+    'expires'.
+  - Flaresolverr v3 beta doesn't have 'headers'??
+  - adapter_adultfanfictionorg: Fixes for site changes.
+  - Disable Cancel during metadata update ProgBar.
+  - adapter_chosentwofanficcom: Site has several links to each
+    story in a series page.
+  - Fixes for add_category/genre_when_multi_category settings.
+
+-------------------------------------------------------------------
 Tue Sep 20 12:26:39 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 4.16.0:

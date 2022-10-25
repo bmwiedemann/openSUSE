@@ -19,7 +19,7 @@
 
 %define majorver 6.0
 Name:           trytond_country
-Version:        %{majorver}.2
+Version:        %{majorver}.3
 Release:        0
 Summary:        The "country" module for the Tryton ERP system
 License:        GPL-3.0-only

@@ -207,4 +207,12 @@ and that one is GPL3.</comment>
   it used to fix seems just gone)</comment>
     <requestid>990870</requestid>
   </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>f5b166bf90779e8c3c88b65141641911</srcmd5>
+    <version>4.8.2</version>
+    <time>1666689614</time>
+    <user>dimstar_suse</user>
+    <comment>- Update gzdoom-vulkan.patch for glslang-11.12.</comment>
+    <requestid>1030979</requestid>
+  </revision>
 </revisionlist>

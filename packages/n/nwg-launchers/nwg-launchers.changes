@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Oct 25 06:50:55 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.7.1.1:
+  Fix missing version bump #210
+
+-------------------------------------------------------------------
+Tue Oct 25 06:50:06 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.7.1:
+  * Fix failing to start due to incorrect CSS property name in
+    default config #208
+
+-------------------------------------------------------------------
+Mon Oct 24 10:43:04 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.7.0:
+  * XDG Desktop Menu Categories #198
+  * Allow to define CSS classes in nwgbar JSON file #195
+  * Saturate icon size if it's off the allowed range (16-2048) #188
+  * Use /tmp if XDG_RUNTIME_DIR is not defined and /var/run/user/UID not exists #192
+  * Allow for ~ in the beginning of Exec= value #205
+- Add nwg-launchers-readme.patch: we already ship the readme
+
+-------------------------------------------------------------------
 Sun Sep 26 21:14:46 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.6.3:

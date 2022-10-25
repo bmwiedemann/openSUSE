@@ -23,7 +23,7 @@
 %bcond_with pytest
 
 Name:           netgen
-Version:        6.2.2203
+Version:        6.2.2204
 Release:        0
 Summary:        Automatic 3D tetrahedral mesh generator
 License:        LGPL-2.1-only
@@ -48,8 +48,11 @@ Patch9:         0001-Include-filesystem-from-experimental-for-GCC-7.patch
 Patch10:        0001-Fix-netgen-executable-and-library-RUNPATHs.patch
 # PATCH-FIX-OPENSUSE
 Patch11:        0001-Ignore-invalid-unknown-types-in-pybind11-docstrings.patch
+# PATCH-FIX-UPSTREAM
+Patch12:        0001-fix-building-with-new-ffmpeg.patch
 %if %{with opencascade}
 BuildRequires:  occt-devel
+BuildRequires:  (pkgconfig(catch2) >= 2.13.4 with pkgconfig(catch2) < 3)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(xi)
 %endif
@@ -66,7 +69,6 @@ BuildRequires:  python3-pybind11-stubgen
 BuildRequires:  python3-pytest
 BuildRequires:  python3-pytest-check
 %endif
-BuildRequires:  pkgconfig(catch2)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(icu-uc)
@@ -81,12 +83,10 @@ BuildRequires:  metis-devel
 BuildRequires:  openmpi-devel
 %endif
 %if %{with ffmpeg}
-# Limit to ffmpeg-4 and older, see upstream issue
-# https://github.com/NGSolve/netgen/issues/112
-BuildRequires:  pkgconfig(libavcodec) <= 58.134.100
-BuildRequires:  pkgconfig(libavformat) <= 58.76.100
-BuildRequires:  pkgconfig(libavutil) <= 56.70.100
-BuildRequires:  pkgconfig(libswscale) <= 5.9.100
+BuildRequires:  pkgconfig(libavcodec)
+BuildRequires:  pkgconfig(libavformat)
+BuildRequires:  pkgconfig(libavutil)
+BuildRequires:  pkgconfig(libswscale)
 %endif
 BuildRequires:  xz
 # x86 (32bit) is no longer supported upstream. Also exclude other 32 bit archs
@@ -109,6 +109,15 @@ Provides:       %{name}:%{_libdir}/netgen/libngcore.so
 
 %description -n netgen-libs
 NETGEN mesh generator shared libraries.
+
+%package -n netgen-gui-libs
+Summary:        NETGEN mesher library - GUI part
+Group:          System/Libraries
+Conflicts:      netgen-libs < 6.2.2204
+Provides:       %{name}:%{_libdir}/netgen/libnggui.so
+
+%description -n netgen-gui-libs
+GUI support for NETGEN mesh generator shared libraries.
 
 %package devel
 Summary:        Development files for netgen
@@ -213,7 +222,11 @@ export LD_LIBRARY_PATH=%{buildroot}%{_libdir}/%{name}
 
 %files -n netgen-libs
 %dir %{_libdir}/netgen
-%{_libdir}/netgen/*.so
+%{_libdir}/netgen/libngcore.so
+%{_libdir}/netgen/libnglib.so
+
+%files -n netgen-gui-libs
+%{_libdir}/netgen/libnggui.so
 
 %files -n python3-%{name}
 %{python3_sitearch}/netgen

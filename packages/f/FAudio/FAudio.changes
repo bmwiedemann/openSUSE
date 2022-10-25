@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Oct 24 14:33:50 UTC 2022 - Aaron Stern <ukbeast89@protonmail.com>
+
+- Update to 22.10:
+  * Added a quick comment to the SDL backend.
+
+-------------------------------------------------------------------
+Mon Oct 24 14:31:41 UTC 2022 - Aaron Stern <ukbeast89@protonmail.com>
+
+- Update to 22.09.01:
+  * Fix a regression where requesting a specific mastering voice format 
+    would return a format overwritten by device defaults
+
+-------------------------------------------------------------------
+Mon Oct 24 14:28:37 UTC 2022 - Aaron Stern <ukbeast89@protonmail.com>
+
+- Update to 22.09:
+  * Update to SDL 2.24. This has been made a hard requirement, as it 
+    fixes/adds way too much to ignore:
+    2.1 and 4.1 audio is now supported
+  * On Windows, we now prioritize DirectSound over WASAPI
+  * The PulseAudio samples hack has been removed
+  * The non-power-of-two samples hack for Emscripten/OSS has also been removed
+  * GetDeviceDetails(0) now uses SDL_GetDefaultAudioInfo, obsoleting our hack
+
+-------------------------------------------------------------------
 Tue Aug  9 13:18:48 UTC 2022 - Aaron Stern <ukbeast89@protonmail.com>
 
 - Update to 22.08:

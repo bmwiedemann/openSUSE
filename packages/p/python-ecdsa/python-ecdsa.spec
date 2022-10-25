@@ -1,7 +1,7 @@
 #
 # spec file for package python-ecdsa
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,12 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ecdsa
-Version:        0.17.0
+Version:        0.18.0
 Release:        0
 Summary:        ECDSA cryptographic signature library (pure python)
 License:        MIT
-URL:            https://github.com/warner/python-ecdsa
+URL:            https://github.com/tlsfuzzer/python-ecdsa
 Source:         https://files.pythonhosted.org/packages/source/e/ecdsa/ecdsa-%{version}.tar.gz
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pytest}
@@ -31,7 +30,7 @@ BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  openssl
 BuildRequires:  python-rpm-macros
-Requires:       python-six
+Requires:       python-six >= 1.9.0
 Suggests:       python-gmpy
 Suggests:       python-gmpy2
 BuildArch:      noarch
@@ -59,11 +58,16 @@ find ./ -type f -name "*.py" -perm 644 -exec sed -i -e '1{\@^#! %{_bindir}/env p
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# unfortunate hypothesis fuzzing (gh#warner/python-ecdsa#307):
+donttest="(test_ecdsa and test_sig_verify)"
+donttest="$donttest or (test_jacobi and test_add and scale_points)"
+donttest="$donttest or (test_ellipticcurve and test_p192_mult_tests)"
+%pytest -k "not ($donttest)"
 
 %files %{python_files}
 %license LICENSE
 %doc NEWS README.md
-%{python_sitelib}/*
+%{python_sitelib}/ecdsa
+%{python_sitelib}/ecdsa-%{version}*-info
 
 %changelog

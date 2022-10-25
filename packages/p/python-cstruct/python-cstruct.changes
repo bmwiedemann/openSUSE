@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Oct 24 15:29:46 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.3
+  * Fix tests on 32bit architecture
+- Update to version 3.2
+  * Add more tests
+
+-------------------------------------------------------------------
+Fri Oct 14 13:45:17 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.1
+  * Make CStruct/MemCStruct Pickle Friendly
+- Update to version 3.0
+  * Flexible array support
+- Update to version 2.3
+  * Fix compare with None
+- Update to version 2.2
+  Fixes
+  * Fix empty MemCStruct size
+  Improvements
+  * Python 3.10 support
+  * pytest
+  * black code style
+
+-------------------------------------------------------------------
 Thu Oct 13 07:17:06 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - use https for urls

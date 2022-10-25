@@ -77,7 +77,11 @@ BuildRequires:  pkgconfig(fftw3f) >= 3.0.0
 BuildRequires:  pkgconfig(fluidsynth) >= 1.0.7
 BuildRequires:  pkgconfig(gig)
 BuildRequires:  pkgconfig(jack) >= 0.77
+%if 0%{?suse_version} > 1500
 BuildRequires:  pkgconfig(libmp3lame)
+%else
+BuildRequires:  libmp3lame-devel
+%endif
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(portaudiocpp)

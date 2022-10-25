@@ -353,4 +353,12 @@ It now only builds for &gt;12.2, not sure if there is a simple fix to get it to 
   * Bug fix; &quot;certificates&quot; option incorrectly controlled hostname validation.</comment>
     <requestid>857149</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>5d37d7f90b27ab3d3e94d698c1597cd0</srcmd5>
+    <version>2.7.6</version>
+    <time>1666689582</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1030869</requestid>
+  </revision>
 </revisionlist>

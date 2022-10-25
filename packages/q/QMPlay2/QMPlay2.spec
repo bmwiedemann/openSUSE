@@ -19,7 +19,7 @@
 %define __builder Ninja
 
 Name:           QMPlay2
-Version:        22.08.21
+Version:        22.10.23
 Release:        0
 Summary:        A Qt based media player, streamer and downloader
 License:        LGPL-3.0-or-later
@@ -28,13 +28,11 @@ URL:            https://github.com/zaps166/QMPlay2
 Source:         https://github.com/zaps166/QMPlay2/releases/download/%{version}/QMPlay2-src-%{version}.tar.xz
 # PATCH-FEATURE-OPENSUSE
 Patch1:         0001-add-opensuse-customizations.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         0001-fix-older-qt-compilation.patch
 BuildRequires:  cmake >= 3.16
 BuildRequires:  gcc-c++
 # Use gcc 10 for openSUSE Leap 15.3+ and SLE15SP3+
-%if 0%{?suse_version} < 1550 && 0%{?sle_version} >= 150300
-BuildRequires:  gcc10-c++
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} >= 150400
+BuildRequires:  gcc11-c++
 %endif
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
@@ -64,8 +62,8 @@ BuildRequires:  pkgconfig(libswscale) >= 5.1.100
 BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(libva-glx)
 BuildRequires:  pkgconfig(portaudio-2.0)
-# Enable rubberband support on openSUSE Tumbleweed
-%if 0%{?suse_version} >= 1550
+# Enable rubberband support on openSUSE Tumbleweed and openSUSE Leap 15.5, SLE15SP5+
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500
 BuildRequires:  pkgconfig(rubberband) >= 3.0.0
 %endif
 BuildRequires:  pkgconfig(shaderc)
@@ -104,9 +102,9 @@ It's a development package for %{name}.
 # Build options
 %cmake \
   -DCMAKE_SHARED_LINKER_FLAGS="%{?build_ldflags} -Wl,--as-needed -Wl,-z,now" \
-%if 0%{?suse_version} < 1550 && 0%{?sle_version} >= 150300
-  -DCMAKE_C_COMPILER=gcc-10 \
-  -DCMAKE_CXX_COMPILER=g++-10 \
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} >= 150400
+  -DCMAKE_C_COMPILER=gcc-11 \
+  -DCMAKE_CXX_COMPILER=g++-11 \
 %endif
   -DSOLID_ACTIONS_INSTALL_PATH="%{_datadir}/solid/actions" \
   -DUSE_LINK_TIME_OPTIMIZATION=ON \
@@ -117,7 +115,7 @@ It's a development package for %{name}.
   -DUSE_GLSLC=ON \
   -DUSE_PORTAUDIO=ON \
   -DUSE_PIPEWIRE=ON \
-%if 0%{?suse_version} >= 1550
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500
   -DUSE_RUBBERBAND=ON \
 %else
   -DUSE_RUBBERBAND=OFF \

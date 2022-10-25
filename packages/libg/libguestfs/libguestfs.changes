@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 20 13:40:22 UTC 2022 - Ludwig Nussel <lnussel@suse.de>
+
+- Drop reiserfs (boo#1191092)
+
+-------------------------------------------------------------------
 Tue Sep  6 10:36:25 MDT 2022 - carnold@suse.com
 
 - Upstream patch to fix running configure --disable-ocaml

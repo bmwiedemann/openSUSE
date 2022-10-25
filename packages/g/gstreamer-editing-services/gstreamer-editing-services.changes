@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 22 09:12:12 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.20.4:
+  + Deadlock in ges because of recursive gst_init() call.
+  + ges/gstframepositioner: don't create one compositor per frame
+    meta.
+  + nle: clear seek event properly.
+
+-------------------------------------------------------------------
 Wed Jun 22 10:51:29 UTC 2022 - Aaron Stern <ukbeast89@protonmail.com>
 
 - Update to version 1.20.3:

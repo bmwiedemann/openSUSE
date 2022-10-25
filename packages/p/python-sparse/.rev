@@ -79,4 +79,14 @@
     <comment></comment>
     <requestid>989321</requestid>
   </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>0b82f5c1565a2e8545d171c38228f6ee</srcmd5>
+    <version>0.13.0</version>
+    <time>1666689612</time>
+    <user>dimstar_suse</user>
+    <comment>- Add skip-32bit-archs.patch skiping a failing test on 32bit arch
+  (gh#pydata/sparse#490).
+- Also remove conditional python_module definition.</comment>
+    <requestid>1030992</requestid>
+  </revision>
 </revisionlist>

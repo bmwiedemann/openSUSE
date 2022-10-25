@@ -1,7 +1,8 @@
 #
 # spec file for package jefferson
 #
-# Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2020-2022, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,23 +18,20 @@
 
 
 Name:           jefferson
-Version:        0.3+git.20160616
+Version:        0.4.1+git.20220705
 Release:        0
 Summary:        JFFS2 filesystem extraction tool
 License:        MIT
 Group:          Development/Tools/Other
 URL:            https://github.com/sviehb/jefferson
 Source:         %{name}-%{version}.tar.xz
-# Add support for python3
-Patch0:         https://github.com/sviehb/jefferson/pull/18.patch
-Patch1:         jefferson-use-pylzma.patch
 BuildRequires:  fdupes
 BuildRequires:  help2man
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-cstruct >= 1.5
-BuildRequires:  python3-setuptools
+BuildRequires:  python3-cstruct >= 2.1
 BuildRequires:  python3-pylzma
-Requires:       python3-cstruct >= 1.5
+BuildRequires:  python3-setuptools
+Requires:       python3-cstruct >= 2.1
 Requires:       python3-pylzma
 BuildArch:      noarch
 
@@ -52,8 +50,6 @@ Features:
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
 chmod -x README.md
 
 %build

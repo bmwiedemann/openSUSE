@@ -44,7 +44,6 @@ BuildRequires:  gperf
 BuildRequires:  libtool
 BuildRequires:  ocaml >= 4.04
 BuildRequires:  ocaml-hivex-devel
-BuildRequires:  pkgconf-pkg-config
 BuildRequires:  po4a
 BuildRequires:  readline-devel
 BuildRequires:  supermin >= 5.1.18
@@ -316,7 +315,6 @@ BuildRequires:  ntfsprogs
 BuildRequires:  pam-config
 BuildRequires:  parted
 BuildRequires:  psmisc
-BuildRequires:  reiserfs
 BuildRequires:  sg3_utils
 BuildRequires:  strace
 %ifarch %ix86 x86_64
@@ -361,7 +359,6 @@ Recommends:     ldmtool
 Recommends:     mdadm
 Recommends:     mkisofs
 Recommends:     parted
-Recommends:     reiserfs
 Recommends:     xfsprogs
 Recommends:     zerofree
 
@@ -505,7 +502,7 @@ This package is needed if you want to write software using the
 GObject bindings.  It also contains GObject Introspection information.
 
 %package rescue
-Summary:        virt-rescue shell
+Summary:        Virt-rescue shell
 BuildRequires:  iputils
 BuildRequires:  lsof
 BuildRequires:  pciutils
@@ -518,7 +515,7 @@ machines, and additional tools to use inside the shell such as ssh,
 network utilities, editors and debugging utilities.
 
 %package rsync
-Summary:        rsync support for %{name}
+Summary:        Rsync support for %{name}
 Requires:       %{name} = %{version}-%{release}
 BuildRequires:  rsync
 

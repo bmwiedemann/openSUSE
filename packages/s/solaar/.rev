@@ -422,4 +422,20 @@
 </comment>
     <requestid>1003678</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>d978b4ca1175d2703210a042eb77d18c</srcmd5>
+    <version>1.1.6</version>
+    <time>1666689619</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.6:
+  * release 1.1.6
+  * docs: mention that fn-swap is saved on some devices
+  * docs: add Dell-branded mouse and keyboard
+  * ui: only update remaining pairings after sucessful pairing
+  * listener: check for presence of status attribute when resuming
+  * Update Croatian translation
+  * po: update Polish translation
+</comment>
+    <requestid>1031003</requestid>
+  </revision>
 </revisionlist>

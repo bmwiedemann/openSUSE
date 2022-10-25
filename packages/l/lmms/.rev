@@ -413,4 +413,12 @@ Require: filesystem</comment>
     <comment></comment>
     <requestid>1010978</requestid>
   </revision>
+  <revision rev="42" vrev="10">
+    <srcmd5>f7d599e3c828c37fcefbb6e3cfc3d6ec</srcmd5>
+    <version>1.2.2</version>
+    <time>1666689631</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1031051</requestid>
+  </revision>
 </revisionlist>

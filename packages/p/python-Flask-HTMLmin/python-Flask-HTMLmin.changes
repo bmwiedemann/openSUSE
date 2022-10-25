@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Feb 19 19:21:30 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 2.2.0:
+  * Added CSS minification
+  * Create codeql-analysis.yml
+  * Add python 3.9 to setup classifiers
+  * Fix tests
+  * Bump urllib3 from 1.26.3 to 1.26.5
+
+-------------------------------------------------------------------
 Mon Dec 20 05:07:09 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch remove-pytest-runner.patch:
