@@ -8092,10 +8092,6 @@ unsorted:
   - jzlib-javadoc 
   - k0sctl 
   - k3b-devel 
-  - k3d 
-  - k3d-bash-completion 
-  - k3d-fish-completion 
-  - k3d-zsh-completion 
   - k3s-install 
   - k3s-selinux 
   - k3sup 
@@ -11416,7 +11412,7 @@ unsorted:
   - libgsm-utils 
   - libgsm1-32bit: [x86_64] 
   - libgsmsd8 
-  - libgsoap-2_8_122 
+  - libgsoap-2_8_123 
   - libgssapi3 
   - libgssdp-1_6-0-32bit: [x86_64] 
   - libgssdp-devel 
@@ -17541,6 +17537,7 @@ unsorted:
   - netgen: [x86_64] 
   - netgen-devel: [x86_64] 
   - netgen-examples: [x86_64] 
+  - netgen-gui-libs: [x86_64] 
   - netgen-libs: [x86_64] 
   - nethogs 
   - netlabel-tools 
@@ -22622,6 +22619,7 @@ unsorted:
   - python310-azure-mgmt-edgegateway 
   - python310-azure-mgmt-edgeorder 
   - python310-azure-mgmt-elastic 
+  - python310-azure-mgmt-elasticsan 
   - python310-azure-mgmt-eventgrid 
   - python310-azure-mgmt-eventhub 
   - python310-azure-mgmt-extendedlocation 
@@ -23009,9 +23007,9 @@ unsorted:
   - python310-dash-renderer 
   - python310-dash-table 
   - python310-dask 
-  - python310-dask-all 
   - python310-dask-array 
   - python310-dask-bag 
+  - python310-dask-complete 
   - python310-dask-dataframe 
   - python310-dask-delayed 
   - python310-dask-diagnostics 
@@ -23433,7 +23431,6 @@ unsorted:
   - python310-gscholar 
   - python310-gsm0338 
   - python310-gspread 
-  - python310-gssapi 
   - python310-gst 
   - python310-gsw 
   - python310-guessit 
@@ -24415,6 +24412,7 @@ unsorted:
   - python310-pysnmp 
   - python310-pysofaconventions 
   - python310-pysolr 
+  - python310-pyspnego 
   - python310-pysrt 
   - python310-pyssim 
   - python310-pystache 
@@ -24710,8 +24708,8 @@ unsorted:
   - python310-requests-file 
   - python310-requests-ftp 
   - python310-requests-futures 
-  - python310-requests-gssapi 
   - python310-requests-hawk 
+  - python310-requests-kerberos 
   - python310-requests-mock 
   - python310-requests-oauthlib 
   - python310-requests-unixsocket 
@@ -24766,7 +24764,6 @@ unsorted:
   - python310-ruamel.yaml.convert 
   - python310-ruffus 
   - python310-runthis-sphinxext 
-  - python310-s3fs 
   - python310-s3transfer 
   - python310-sadisplay 
   - python310-safe-netrc 
@@ -25867,6 +25864,7 @@ unsorted:
   - python38-azure-mgmt-edgegateway 
   - python38-azure-mgmt-edgeorder 
   - python38-azure-mgmt-elastic 
+  - python38-azure-mgmt-elasticsan 
   - python38-azure-mgmt-eventgrid 
   - python38-azure-mgmt-eventhub 
   - python38-azure-mgmt-extendedlocation 
@@ -26270,9 +26268,9 @@ unsorted:
   - python38-dash-renderer 
   - python38-dash-table 
   - python38-dask 
-  - python38-dask-all 
   - python38-dask-array 
   - python38-dask-bag 
+  - python38-dask-complete 
   - python38-dask-dataframe 
   - python38-dask-delayed 
   - python38-dask-diagnostics 
@@ -28097,7 +28095,6 @@ unsorted:
   - python38-ruamel.yaml.convert 
   - python38-ruffus 
   - python38-runthis-sphinxext 
-  - python38-s3fs 
   - python38-s3transfer 
   - python38-sadisplay 
   - python38-safe-netrc 
@@ -29208,6 +29205,7 @@ unsorted:
   - python39-azure-mgmt-edgegateway 
   - python39-azure-mgmt-edgeorder 
   - python39-azure-mgmt-elastic 
+  - python39-azure-mgmt-elasticsan 
   - python39-azure-mgmt-eventgrid 
   - python39-azure-mgmt-eventhub 
   - python39-azure-mgmt-extendedlocation 
@@ -29610,9 +29608,9 @@ unsorted:
   - python39-dash-renderer 
   - python39-dash-table 
   - python39-dask 
-  - python39-dask-all 
   - python39-dask-array 
   - python39-dask-bag 
+  - python39-dask-complete 
   - python39-dask-dataframe 
   - python39-dask-delayed 
   - python39-dask-diagnostics 
@@ -31438,7 +31436,6 @@ unsorted:
   - python39-ruamel.yaml.convert 
   - python39-ruffus 
   - python39-runthis-sphinxext 
-  - python39-s3fs 
   - python39-s3transfer 
   - python39-sadisplay 
   - python39-safe-netrc 
