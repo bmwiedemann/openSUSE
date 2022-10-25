@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Oct 22 11:32:16 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.1:
+  + Fixing various issues left after the GTK 4 port.
+  + Fix setting adaptive narrow (phone) mode on first launch on
+    portrait displays.
+  + Fix dragging-and-dropping route entris in the sidebar.
+  + Fix opening shapelayer files when dragged-and-dropped onto the
+    main window.
+  + Fix selecting turnpoint instructions showing the position of
+    the instruction on the map.
+  + Fix local tiles (using the --local command-line option).
+  + Fix location service dialog.
+  + Fix send-to dialog.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Sep 18 09:02:30 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.0:
