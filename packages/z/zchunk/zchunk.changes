@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct 24 13:06:52 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.3:
+  * Remove meson deprecation warning 
+  * Add license scan report and status 
+  * test/zck_cmp_uncomp: fix printf format types 
+  * meson: add option to build without docs 
+  * zck: declare write_data as static
+
+-------------------------------------------------------------------
 Fri Apr 22 01:32:37 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.2.2
