@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 25 03:30:02 UTC 2022 - Nicholas Yang <nicholas.yang@suse.com>
+
+- Packaging: create /var/log/crmsh with tmpfiles.d (bsc#1204670)
+
+-------------------------------------------------------------------
 Fri Oct 14 01:52:53 UTC 2022 - XLiang@suse.com
 
 - Update to version 4.4.1+20221014.0b04f693:
