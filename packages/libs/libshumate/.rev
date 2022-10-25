@@ -23,4 +23,12 @@
     <comment></comment>
     <requestid>1010291</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>19beeca4c33d355efcb38e13231ce2a4</srcmd5>
+    <version>1.0.2</version>
+    <time>1666689519</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 1030524 from iznogood)</comment>
+    <requestid>1030679</requestid>
+  </revision>
 </revisionlist>

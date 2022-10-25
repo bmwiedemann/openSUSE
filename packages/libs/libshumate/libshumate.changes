@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 22 11:29:40 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.0.2:
+  + Avoid flickering when panning the map.
+  + Fix warnings about min/max zoom levels for the viewport.
+  + Fix documentation comments.
+  + Fix cross-compilation for gi-docgen.
+
+-------------------------------------------------------------------
 Tue Oct 11 08:49:50 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Stop passing b_coverage=true to meson. We do not need the
