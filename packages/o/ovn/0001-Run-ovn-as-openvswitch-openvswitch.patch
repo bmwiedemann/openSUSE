@@ -1,0 +1,67 @@
+From aa1869378cf512fd7aeee16c0a030264c2623270 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jaime=20Caama=C3=B1o=20Ruiz?= <jcaamano@suse.com>
+Date: Fri, 8 May 2020 11:23:04 +0200
+Subject: [PATCH] Run ovn as openvswitch:openvswitch
+
+Change default run configuration to unprivilieged user openvswitch and
+group openvswitch. Expect any further customization from user in
+sysconfig/ovn.
+---
+ rhel/etc_logrotate.d_ovn                                | 2 +-
+ rhel/usr_lib_systemd_system_ovn-controller-vtep.service | 1 +
+ rhel/usr_lib_systemd_system_ovn-controller.service      | 1 +
+ rhel/usr_lib_systemd_system_ovn-northd.service          | 1 +
+ 4 files changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/rhel/etc_logrotate.d_ovn b/rhel/etc_logrotate.d_ovn
+index a351ec303..4b26333fc 100644
+--- a/rhel/etc_logrotate.d_ovn
++++ b/rhel/etc_logrotate.d_ovn
+@@ -6,7 +6,7 @@
+ # without warranty of any kind.
+ 
+ /var/log/ovn/*.log {
+-    su root root
++    su openvswitch openvswitch
+     daily
+     compress
+     sharedscripts
+diff --git a/rhel/usr_lib_systemd_system_ovn-controller-vtep.service b/rhel/usr_lib_systemd_system_ovn-controller-vtep.service
+index 09ad0612c..dd6ff6675 100644
+--- a/rhel/usr_lib_systemd_system_ovn-controller-vtep.service
++++ b/rhel/usr_lib_systemd_system_ovn-controller-vtep.service
+@@ -35,6 +35,7 @@ After=openvswitch.service
+ [Service]
+ Type=simple
+ Restart=on-failure
++Environment=OVN_USER_ID=openvswitch:openvswitch
+ Environment=OVS_RUNDIR=%t/openvswitch
+ Environment=OVN_RUNDIR=%t/ovn
+ Environment=OVN_DB=unix:%t/ovn/ovnsb_db.sock
+diff --git a/rhel/usr_lib_systemd_system_ovn-controller.service b/rhel/usr_lib_systemd_system_ovn-controller.service
+index 15d0ac853..c602760f1 100644
+--- a/rhel/usr_lib_systemd_system_ovn-controller.service
++++ b/rhel/usr_lib_systemd_system_ovn-controller.service
+@@ -23,6 +23,7 @@ After=openvswitch.service
+ Type=forking
+ PIDFile=/var/run/ovn/ovn-controller.pid
+ Restart=on-failure
++Environment=OVN_USER_ID=openvswitch:openvswitch
+ Environment=OVN_RUNDIR=%t/ovn OVS_RUNDIR=%t/openvswitch
+ EnvironmentFile=-/etc/sysconfig/ovn
+ EnvironmentFile=-/etc/sysconfig/ovn-controller
+diff --git a/rhel/usr_lib_systemd_system_ovn-northd.service b/rhel/usr_lib_systemd_system_ovn-northd.service
+index d281f861c..d5c7dfa5f 100644
+--- a/rhel/usr_lib_systemd_system_ovn-northd.service
++++ b/rhel/usr_lib_systemd_system_ovn-northd.service
+@@ -20,6 +20,7 @@ After=syslog.target
+ [Service]
+ Type=oneshot
+ RemainAfterExit=yes
++Environment=OVN_USER_ID=openvswitch:openvswitch
+ Environment=OVN_RUNDIR=%t/ovn OVN_DBDIR=/var/lib/ovn
+ EnvironmentFile=-/etc/sysconfig/ovn
+ EnvironmentFile=-/etc/sysconfig/ovn-northd
+-- 
+2.16.4
+
