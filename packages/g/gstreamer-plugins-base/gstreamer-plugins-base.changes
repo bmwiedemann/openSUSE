@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Oct 21 21:22:08 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.20.4:
+  + decodebin3:
+    - Fix mutex leaks
+    - Fix memory issues with active selection list
+    - uridecodebin3, urisourcebin: Event handling fixes
+    - Fix EOS event sequence
+  + parsebin:
+    - Avoid crash with unknown streams
+    - SIGSEGV during HLS stream using souphttpsrc
+  + glimagesink:
+    - Only allow setting the GL display/context if it is a valid
+      value
+    - Segfault on android devices
+  + gstgl: Fix several memory leaks in macOS
+  + opusenc: improve inband-fec property documentation
+  + playsink: Hold a reference to the soft volume element
+  + pbutils: descriptions: fix
+    gst_pb_utils_get_caps_description_flags()
+  + rtspurl: Use gst_uri_join_strings() in
+    gst_rtsp_url_get_request_uri_with_control() instead of a
+    hand-crafted, wrong version
+  + rtspconnection: protect cancellable by a mutex
+  + sdpmessage: Don't set SDP medias from caps without
+    media/payload/clock-rate fields
+  + samiparse: fix handling of self-closing tags
+  + ssaparse: include required system headers for isspace() and
+    sscanf() functions
+  + subparse: fix crash when parsing invalid timestamps in mpl2
+  + subparse fixes
+  + textoverlay: Don't miscalculate text running times
+  + videoaggregator: always convert when user provides
+    converter-config
+  + video: Fix scaling in 4x horizontal co-sited chroma (Y41B,
+    YUV9, YVU9 and IYU9)
+  + xmptag: register musicbrainz tags during init to fix critical
+    in jpegparse
+  + xvimagesink: fix image leaks in error code path
+  + tests: skip unit tests for dependency-less elements that have
+    been disabled
+
+-------------------------------------------------------------------
 Wed Jun 22 10:24:56 UTC 2022 - Aaron Stern <ukbeast89@protonmail.com>
 
 - Update to version 1.20.3:
