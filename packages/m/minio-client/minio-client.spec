@@ -22,14 +22,14 @@
 %define binary_name minio-client
 
 Name:           minio-client
-Version:        20221012T181250Z
+Version:        20221022T033929Z
 Release:        0
 Summary:        Client for MinIO
 License:        AGPL-3.0-only
 URL:            https://github.com/minio/mc
 Source:         %{archive_name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.17
+BuildRequires:  go >= 1.18
 
 %description
 MinIO Client is a replacement for ls, cp, mkdir, diff and rsync commands for filesystems and object storage.

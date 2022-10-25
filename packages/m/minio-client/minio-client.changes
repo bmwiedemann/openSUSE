@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Oct 25 04:44:22 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20221022T033929Z:
+  * improve retention CLI errors and comply with 'mc' style (#4321)
+  * Fixing typo in MC (#4320)
+
+-------------------------------------------------------------------
+Fri Oct 21 10:57:25 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20221020T232633Z:
+  * make sure to pass jobType to GenerateBatchJob() (#4319)
+  * replication diff: add header (#4288)
+  * Add command to unregister a cluster (#4314)
+  * Add LDAP support for IDP Config commands (#4296)
+  * Improve help text for `support profile|perf` (#4311)
+  * update new deps (#4303)
+  * change example bucket names to simple names (#4308)
+  * Add number of offline disks in heal info summary (#4305)
+  * avoid unnecessary tea program for 'license info' (#4306)
+  * Print license info table with solid lines (#4301)
+- BuildRequire go1.18
+
+-------------------------------------------------------------------
 Mon Oct 17 05:14:19 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 20221012T181250Z:
