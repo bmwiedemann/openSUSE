@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 24 11:10:21 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add python-distutils-deprecated.patch: ignore distutils
+  deprecation warning.
+
+-------------------------------------------------------------------
 Thu Mar 26 14:37:21 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Changed version format to 5~git20200227.e40da77 as that can be

@@ -1,7 +1,7 @@
 #
-# spec file for package pocketsphinx
+# spec file for package pocketsphinx5
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,7 +24,7 @@ Release:        0
 Summary:        Speech recognizer library written in C
 License:        BSD-2-Clause
 Group:          Productivity/Office/Other
-Url:            http://cmusphinx.sourceforge.net/wiki/download/
+URL:            http://cmusphinx.sourceforge.net/wiki/download/
 Source:         pocketsphinx-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM pocketsphinx-doxygen.patch -- Obtained from fedora package (http://pkgs.fedoraproject.org/cgit/rpms/pocketsphinx.git/tree/)
 Patch0:         pocketsphinx-doxygen.patch
@@ -32,6 +32,8 @@ Patch0:         pocketsphinx-doxygen.patch
 Patch1:         use-python3.patch
 # PATCH-FIX-OPENSUSE fix-reproducible-builds.patch -- Do not use __DATE__ or __TIME__
 Patch2:         fix-reproducible-builds.patch
+# PATCH-FIX-OPENSUSE python-distutils-deprecated.patch -- ignore distutils deprecation warning
+Patch3:         python-distutils-deprecated.patch
 BuildRequires:  alsa-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -42,12 +44,12 @@ BuildRequires:  gstreamer-plugins-base-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  python3
-BuildRequires:  python3-devel
 BuildRequires:  python3-Cython
+BuildRequires:  python3-devel
 BuildRequires:  sphinxbase5-devel
 BuildRequires:  swig
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 
 %description
 Pocketsphinx is a version of the open-source CMU Sphinx II speech
@@ -108,6 +110,7 @@ This package provides the GStreamer plugin for pocketsphinx.
 %patch0
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 sed -ie "1s,^#!/usr/bin/env python$,#!/usr/bin/python3," doc/doxy2swig.py
 
 %build
@@ -139,7 +142,6 @@ update-alternatives --install %{_bindir}/pocketsphinx_batch pocketsphinx_batch %
   --slave %{_mandir}/man1/pocketsphinx_batch.1%{ext_man} pocketsphinx_batch.1%{ext_man} %{_mandir}/man1/pocketsphinx_batch-%{versuffix}.1%{ext_man} \
   --slave %{_mandir}/man1/pocketsphinx_continuous.1%{ext_man} pocketsphinx_continuous.1%{ext_man} %{_mandir}/man1/pocketsphinx_continuous-%{versuffix}.1%{ext_man} \
   --slave %{_mandir}/man1/pocketsphinx_mdef_convert.1%{ext_man} pocketsphinx_mdef_convert.1%{ext_man} %{_mandir}/man1/pocketsphinx_mdef_convert-%{versuffix}.1%{ext_man}
-
 
 %postun
 if [ ! -f %{_bindir}/pocketsphinx_batch ]; then
@@ -177,7 +179,6 @@ fi
 
 %files -n python3-pocketsphinx5
 %{python3_sitearch}/pocketsphinx
-
 
 %files -n gstreamer-plugin-pocketsphinx
 %{_libdir}/gstreamer-1.0/libgstpocketsphinx.so
