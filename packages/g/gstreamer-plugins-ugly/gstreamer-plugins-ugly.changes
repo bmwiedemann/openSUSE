@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 22 09:00:12 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.20.4:
+  + tests: skip unit tests for dependency-less elements that have
+    been disabled.
+
+-------------------------------------------------------------------
 Wed Jun 22 10:38:00 UTC 2022 - Aaron Stern <ukbeast89@protonmail.com>
 
 - Update to version 1.20.3:
