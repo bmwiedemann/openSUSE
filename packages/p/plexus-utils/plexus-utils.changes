@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Oct 25 11:01:11 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.5.0
+  * Changes of 3.5.0
+    + Don't throw IOException when none is required
+    + Always preserve dominant node value (even if empty)
+    + Don't overwrite blank (but non-empty) dominant values during
+      mergeXpp3Dom
+    + Deprecate isEmpty(String) and isNotEmpty(String) in favour of
+      same named
+    + isEmpty(String) must not return false for whitespace-only
+      values
+    + Get rid maven-plugin-testing-harness from dependency
+  * Changes of 3.4.2
+    + Provides a CachingOuptutStream and a CachingWriter
+    + Use (already) precalculated value
+    + use github shared actions
+    + MXParser fixes
+    + Fix last modified time not being updated on linux
+    + Fix regression and deprecate: FileUtils.fileAppend should
+      create file
+    + Fix some testing XML files checkout with incorrect eol
+    + Fixed regressions: #163 and #194
+    + Don't ignore valid SCM files
+  * Change of 3.4.1
+    + Fixes #163: Regression: encoding error when parsing a
+      ISO-8859-1 xml
+
+-------------------------------------------------------------------
 Wed May 11 14:05:52 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 3.3.1
