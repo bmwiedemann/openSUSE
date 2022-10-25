@@ -61,7 +61,7 @@
 %endif
 
 Name:           gstreamer-plugins-bad
-Version:        1.20.3
+Version:        1.20.4
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
@@ -74,8 +74,6 @@ Source99:       baselibs.conf
 Patch0:         fix-build-with-srt-1.3.4.patch
 # PATCH-FIX-OPENSUSE spandsp3.patch jengelh@inai.de -- Fix build against spandsp 3.x. Patch is not upstreamable in this form
 Patch2:         spandsp3.patch
-# PATCH-FIX-UPSTREAM va-allocator-fix.patch -- Fix translation of VADRMPRIMESurfaceDescriptor + Use always lseek to get dmabuf size
-Patch3:         va-allocator-fix.patch
 
 %if %{with fdk_aac}
 BuildRequires:  pkgconfig(fdk-aac) >= 0.1.4
@@ -652,7 +650,6 @@ making use of the GStreamer Transcoding API.
 %if %{pkg_vcmp spandsp-devel >= 3}
 %patch2 -p1
 %endif
-%patch3 -p1
 
 %build
 %global optflags %{optflags} -fcommon

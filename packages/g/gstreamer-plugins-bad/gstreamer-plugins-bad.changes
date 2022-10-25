@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sat Oct 22 09:19:02 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.20.4:
+  + amcvideodec: fix GstAmcSurfaceTexture segfault.
+  + audiobuffersplit: Fix drift that was introduced by wrong
+    calculations in gapless mode.
+  + audiovisualizer: fix buffer mapping to not increase refcount.
+  + avfvideosrc: Fix wrong default framerate value.
+  + d3d11decoder: Check 16K resolution support.
+  + d3d11videosink: Fix for force-aspect-ratio setting when
+    rendering on shared texture.
+  + GstPlay: missing cleanup for g_autoptr.
+  + mxfdemux: Always calculate BlockAlign of raw audio to work
+    around files with broken BlockAlign field in the headers.
+  + nvdec: Fix for HEVC decoding when coded resolution is larger
+    than display resolution.
+  + openh264enc: Fix constrained-high encoding.
+  + openh264: Register debug categories earlier.
+  + openmpt: update from now deprecated api.
+  + player/play: Fix object construction and various leaks.
+  + player: Plug a memory leak.
+  + proxysink: Make sure stream-start and caps events are
+    forwarded, and fix memory leak.
+  + tests: skip unit tests for dependency-less elements that have
+    been disabled.
+  + tsdemux: Don't trigger a program change when falling back to
+    ignore-pcr behaviour.
+  + va:
+    - allocator: Fix translation of VADRMPRIMESurfaceDescriptor.
+    - h265dec: Fix a crash because of missing reference frame.
+    - vah265dec: Decoder segfaults on seek.
+  + wasapi2: Fix initial mute/volume setting.
+  + wasapi: Implement default audio channel mask.
+  + webrtcbin:
+    - Fix pointer dereference before null check.
+    - Limit sink query to sink pads.
+  + webrtc: Make sure to return NULL when validating TURN server
+    fails.
+- Drop va-allocator-fix.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Mon Aug 29 10:48:21 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Build microdns support. Following this add pkgconfig(microdns)
