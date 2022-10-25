@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Oct 22 16:23:10 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 5.9.3:
+  * Enhancements
+    + 2040, [macOS]: provide wheels for arm64 architecture. (patch by
+      Matthieu Darbois)
+  * Bug fixes
+    + 2116, [macOS], [critical]: `psutil.net_connections`_ fails with
+      RuntimeError.
+    + 2135, [macOS]: Process.environ() may contain garbage data. Fix
+      out-of-bounds read around sysctl_procargs. (patch by Bernhard
+      Urban-Forster)
+    + 2138, [Linux], [critical]: can't compile psutil on Android due
+      to undefined ethtool_cmd_speed symbol.
+    + 2142, [POSIX]: net_if_stats() 's flags on Python 2 returned
+      unicode instead of str. (patch by Matthieu Darbois)
+    + 2147, [macOS] Fix disk usage report on macOS 12+. (patch by
+      Matthieu Darbois)
+    + 2150, [Linux] Process.threads() may raise NoSuchProcess. Fix
+      race condition. (patch by Daniel Li)
+    + 2153, [macOS] Fix race condition in
+      test_posix.TestProcess.test_cmdline. (patch by Matthieu Darbois)
+
+-------------------------------------------------------------------
 Sat Sep 10 15:41:34 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 5.9.2:
