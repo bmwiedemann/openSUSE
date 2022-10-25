@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 11 17:11:02 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 1.4.1 
+  - Fix stack growth bug when `run_forever` reconnects (#854)
+  - Add doctest CI for sphinx docs code examples (d150099)
+  - General docs improvements
+
+-------------------------------------------------------------------
 Tue Apr 12 13:43:50 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.3.2
