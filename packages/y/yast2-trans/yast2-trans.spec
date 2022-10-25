@@ -17,7 +17,7 @@
 
 
 Name:           yast2-trans
-Version:        84.87.20221016.284cfa770d
+Version:        84.87.20221023.365770fb5e
 Release:        0
 Summary:        YaST2 - Translation Container Package
 License:        GPL-2.0-or-later
