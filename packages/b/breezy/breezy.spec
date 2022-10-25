@@ -19,7 +19,7 @@
 Name:           breezy
 Version:        3.2.2
 Release:        0
-Summary:        Friendly distributed version control system
+Summary:        Distributed version control system with multi-format support
 License:        GPL-2.0-or-later
 URL:            https://www.breezy-vcs.org/
 Source:         https://files.pythonhosted.org/packages/source/b/breezy/breezy-%{version}.tar.gz
@@ -52,7 +52,9 @@ BuildRequires:  python3-testtools
 # /SECTION
 
 %description
-Friendly distributed version control system
+Breezy is a version control system implemented in Python with
+multi-format support. Breezy has built-in support for the Git and
+Bazaar file formats and network protocols.
 
 %prep
 %setup -q -n breezy-%{version}
