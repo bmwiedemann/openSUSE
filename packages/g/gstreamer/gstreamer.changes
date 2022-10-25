@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Fri Oct 21 21:16:22 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.20.4:
+  + Highlighted bugfixes in 1.20.4:
+    - avaudiodec: fix playback issue with WMA files, would throw an
+      error at EOS with FFmpeg 5.x
+    - Fix deadlock when loading gst-editing-services plugin
+    - Fix input buffering capacity in live mode for aggregator,
+      video/audio aggregator subclasses, muxers
+    - glimagesink: fix crash on Android
+    - subtitle handling and subtitle overlay fixes
+    - matroska-mux: allow width + height changes for
+      avc3|hev1|vp8|vp9
+    - rtspsrc: fix control url handling for spec compliant servers
+      and add fallback for incompliant servers
+    - WebRTC fixes
+    - RTP retransmission fixes
+    - video: fixes for formats with 4x subsampling and horizontal
+      co-sited chroma (Y41B, YUV9, YVU9 and IYU9)
+    - Fix consuming of the macOS package as a framework in XCode
+    - Performance improvements
+    - Miscellaneous bug fixes, memory leak fixes, and other
+      stability and reliability improvements
+  + gstreamer:
+    - buffer: drop parent meta in deep copy/foreach_metadata
+    - devicemonitor: Use a sync bus handler for the provider to
+      avoid accumulating all messages until the provider is stopped
+    - element: Fix requesting of pads with string templates
+    - gst:
+      . Protect initialization state with a recursive mutex
+      . Add missing define guard for build without gstreamer debug
+        logging support
+    - gst_init: Initialize static plugins just before dynamic plugins
+    - info: Parse "NONE" as a valid level name
+    - meta: Set the parent refcount of the GstStructure correctly
+    - pluginloader: Don't hang on short reads/writes
+    - tracers: leaks:
+      . Fix potentially invalid memory access when trying to detect
+        object type
+      . Fix object-refings.class flags
+    - uri: When setting the same string again do nothing
+    - value: Don't loop forever when serializing invalid flag
+  + Base Libraries:
+    - aggregator:
+      . Fix input buffering in live mode (was too low before in
+        many cases)
+      . Fix reversed active/flushing arguments in debug log output
+      . Reset EOS flag after receiving a stream-start event
+  + Core Elements: queue2:
+    - Hold the lock when modifying sinkresult
+    - Fix deadlock when deactivate is called in pull mode
+
+-------------------------------------------------------------------
 Wed Jun 22 09:59:29 UTC 2022 - Aaron Stern <ukbeast89@protonmail.com>
 
 - Update to version 1.20.3
@@ -17,7 +70,7 @@ Wed Jun 22 09:59:29 UTC 2022 - Aaron Stern <ukbeast89@protonmail.com>
     - Support for building against OpenCV 4.6 and other build fixes
     - Miscellaneous bug fixes, memory leak fixes, and other
       stability and reliability improvements
-  + gstreamer:      
+  + gstreamer:
     - clock: Avoid creating a weakref with every entry 
       (performance improvement)
     - plugin: add Apache 2 license to list of known licenses to avoid 
