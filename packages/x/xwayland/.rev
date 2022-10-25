@@ -147,4 +147,34 @@
   * security update for CVE-2022-3551 (bsc#1204416)</comment>
     <requestid>1030010</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c18f83389d800028f3e4b5f2af6144a8</srcmd5>
+    <version>22.1.4</version>
+    <time>1666689510</time>
+    <user>dimstar_suse</user>
+    <comment>- U_Do-not-ignore-leave-events.patch
+  * fixes xwayland issue#1397, issue#1395
+
+- Update to version 22.1.4
+  * xwayland: Aggregate scroll axis events to fix kinetic scrolling
+  * Forbid server grabs by non-WM on *rootless* XWayland
+  * xkb: Avoid length-check failure on empty strings.
+  * ci: remove redundant slash in libxcvt repository url
+  * dix: Skip more code in SetRootClip for ROOT_CLIP_INPUT_ONLY
+  * dix: Fix overzealous caching of ResourceClientBits()
+  * xwayland: Prevent Xserver grabs with rootless
+  * xwayland: Delay wl_surface destruction
+  * build: Bump wayland requirement to 1.18
+  * xwayland: set tag on our surfaces
+  * xwayland: Clear the &quot;xwl-window&quot; tag on unrealize
+  * xwayland: correct the type for the discrete scroll events
+  * xkb: fix some possible memleaks in XkbGetKbdByName
+  * xkb: length-check XkbGetKbdByName before accessing the fields
+  * xkb: length-check XkbListComponents before accessing the fields
+  * xkb: proof GetCountedString against request length attacks
+- supersedes security patches:
+  * U_xkb-fix-some-possible-memleaks-in-XkbGetKbdByName.patch
+  * U_xkb-proof-GetCountedString-against-request-length-at.patch</comment>
+    <requestid>1030894</requestid>
+  </revision>
 </revisionlist>
