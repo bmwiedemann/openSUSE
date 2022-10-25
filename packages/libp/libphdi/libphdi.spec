@@ -18,7 +18,7 @@
 
 Name:           libphdi
 %define lname	libphdi1
-Version:        20220301
+Version:        20221025
 Release:        0
 Summary:        Library and tools to access the Parallels Hard Disk images
 License:        LGPL-3.0-or-later
@@ -31,12 +31,12 @@ Patch1:         system-libs.patch
 BuildRequires:  bison
 BuildRequires:  c_compiler
 BuildRequires:  flex
-BuildRequires:  gettext-tools >= 0.18.1
+BuildRequires:  gettext-tools >= 0.21
 BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros %{python_module devel}
 BuildRequires:  pkgconfig(fuse) >= 2.6
-BuildRequires:  pkgconfig(libbfio) >= 20220120
+BuildRequires:  pkgconfig(libbfio) >= 20221025
 BuildRequires:  pkgconfig(libcdata) >= 20220115
 BuildRequires:  pkgconfig(libcdirectory) >= 20220105
 BuildRequires:  pkgconfig(libcerror) >= 20220101
@@ -47,10 +47,10 @@ BuildRequires:  pkgconfig(libcpath) >= 20220108
 BuildRequires:  pkgconfig(libcsplit) >= 20220109
 BuildRequires:  pkgconfig(libcthreads) >= 20220102
 BuildRequires:  pkgconfig(libfcache) >= 20220110
-BuildRequires:  pkgconfig(libfdata) >= 20211023
+BuildRequires:  pkgconfig(libfdata) >= 20220111
 BuildRequires:  pkgconfig(libfguid) >= 20220113
 BuildRequires:  pkgconfig(libfvalue) >= 20220120
-BuildRequires:  pkgconfig(libuna) >= 20220102
+BuildRequires:  pkgconfig(libuna) >= 20220611
 %python_subpackages
 
 %description
