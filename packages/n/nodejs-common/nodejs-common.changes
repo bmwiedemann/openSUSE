@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 21 10:09:34 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- Use NodeJS 19 as default for TW
+
+-------------------------------------------------------------------
 Sun Jul 31 15:51:38 UTC 2022 - Adam Majer <adam.majer@suse.de>
 
 - Use NodeJS 18 as default for TW and for SLE15 SP5
