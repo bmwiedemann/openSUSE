@@ -24,7 +24,7 @@ Summary:        POSIX-compliant Implementation of /bin/sh
 License:        BSD-3-Clause
 Group:          System/Shells
 URL:            http://gondor.apana.org.au/~herbert/dash/
-Source:         http://gondor.apana.org.au/~herbert/dash/files/dash-%{version}.tar.gz
+Source0:        http://gondor.apana.org.au/~herbert/dash/files/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM: https://git.kernel.org/pub/scm/utils/dash/dash.git/commit/?id=29d6f2148f10213de4e904d515e792d2cf8c968e
 Patch1:         check-nflag-in-evaltree.patch
 BuildRequires:  libedit-devel
@@ -39,6 +39,7 @@ Group:          System/Shells
 Requires:       dash = %{version}
 Conflicts:      alternative(sh)
 Provides:       alternative(sh)
+BuildArch:      noarch
 
 %description sh
 Use dash as /bin/sh implementation.
