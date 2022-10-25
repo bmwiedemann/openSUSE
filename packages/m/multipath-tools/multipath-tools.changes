@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Oct 24 08:22:20 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 0.9.2+57+suse.cf3c1e9:
+  * Fix multipathd authorization bypass and symlink attack
+    (bsc#1202739 CVE-2022-41973 CVE-2022-41974)
+  * add multipath-dracut.conf: dracut config file to install
+    tmpfiles.d/multipath.conf in initramfs
+  * Use "queue_mode bio" for NVMeoF/TCP devices
+  * Upstream bug fixes and hwtable updates
+- Drop recompress.service, it just slows down build
+
+-------------------------------------------------------------------
 Fri Sep  9 19:38:03 UTC 2022 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 0.9.1+52+suse.be8809e:

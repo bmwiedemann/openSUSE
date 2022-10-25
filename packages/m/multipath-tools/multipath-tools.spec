@@ -34,13 +34,13 @@
 %define libdmmp_version %(echo %{_libdmmp_version} | tr . _)
 
 Name:           multipath-tools
-Version:        0.9.1+52+suse.be8809e
+Version:        0.9.2+57+suse.cf3c1e9
 Release:        0
 Summary:        Tools to Manage Multipathed Devices with the device-mapper
 License:        GPL-2.0-only AND GPL-3.0-or-later
 Group:          System/Base
 URL:            http://christophe.varoqui.free.fr/
-Source:         multipath-tools-%{version}.tar.xz
+Source:         multipath-tools-%{version}.tar
 Source1:        multipath.conf
 # SUSE policy: disable partition deletion by default
 Source2:        dont-del-part-nodes.rules
@@ -48,6 +48,7 @@ Source2:        dont-del-part-nodes.rules
 Source3:        dm-parts.conf
 Source4:        libmpathpersist-example.c
 Source5:        libmpathpersist-example-old.c
+Source6:        multipath-dracut.conf
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_requires}
 BuildRequires:  libaio-devel
@@ -188,6 +189,8 @@ mkdir -p %{buildroot}/usr/lib/modules-load.d
 install -m 644 -D %{SOURCE1} "%{buildroot}/usr/lib/modules-load.d/multipath.conf"
 install -m 644 %{SOURCE2} %{buildroot}%{_udevrulesdir}/00-dont-del-part-nodes.rules
 install -m 644 -D %{SOURCE3} %{buildroot}/usr/lib/dracut/dracut.conf.d/dm-parts.conf
+install -m 644 -D %{SOURCE6} %{buildroot}/usr/lib/dracut/dracut.conf.d/multipath.conf
+sed -i 's,@TMPFILESDIR@,%{_tmpfilesdir},' %{buildroot}/usr/lib/dracut/dracut.conf.d/multipath.conf
 
 %post -n libmpath0 -p %{run_ldconfig}
 %postun -n libmpath0 -p %{run_ldconfig}
@@ -198,6 +201,7 @@ install -m 644 -D %{SOURCE3} %{buildroot}/usr/lib/dracut/dracut.conf.d/dm-parts.
 
 %post
 [ -f /.buildenv ] && exit 0
+%tmpfiles_create %{_tmpfilesdir}/multipath.conf
 %service_add_post multipathd.socket multipathd.service
 if [ $1 -eq 1 ]; then
     [ ! -x /sbin/modprobe ] || /sbin/modprobe dm_multipath || true
@@ -233,12 +237,14 @@ exit 0
 /usr/lib/modules-load.d/multipath.conf
 %dir /usr/lib/dracut
 %dir /usr/lib/dracut/dracut.conf.d
-
+/usr/lib/dracut/dracut.conf.d/multipath.conf
+%{_tmpfilesdir}/multipath.conf
 %{_mandir}/man8/multipath.8*
 %{_mandir}/man5/multipath.conf.5*
 %{_mandir}/man8/multipathd.8*
 %{_mandir}/man8/multipathc.8*
 %{_mandir}/man8/mpathpersist.8*
+%ghost /run/multipath
 
 %files -n libmpath0
 %{libdir}/libmultipath.so.0

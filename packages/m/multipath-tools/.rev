@@ -1714,4 +1714,14 @@ see https://github.com/opensvc/multipath-tools/compare/2bdd3a14..79c3556f</comme
     to preserve history; fix revision in _service file).</comment>
     <requestid>1002357</requestid>
   </revision>
+  <revision rev="147" vrev="1">
+    <srcmd5>5c554dd04801460ed71156cd311dd3f4</srcmd5>
+    <version>0.9.2+57+suse.cf3c1e9</version>
+    <time>1666689503</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.1+52+suse.be8809e:
+  * Code-identical to 0.9.1+48+suse.9c6c435 (merge in git repo
+    to preserve history; fix revision in _service file). (forwarded request 1030842 from mwilck)</comment>
+    <requestid>1030843</requestid>
+  </revision>
 </revisionlist>
