@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Oct 22 09:03:41 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.20.4:
+  + avauddec:
+    - Fix regression with WMA files, would throw an error at EOS.
+    - Fix unnecessary reconfiguration if the audio layout isn't
+      specified.
+  + libav: Fix for APNG encoder property registration.
+  + Failure to decode end of WMA file.
+
+-------------------------------------------------------------------
 Wed Jun 22 10:36:06 UTC 2022 - Aaron Stern <ukbeast89@protonmail.com>
 
 - Update to version 1.20.3:
