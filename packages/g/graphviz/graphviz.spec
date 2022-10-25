@@ -81,6 +81,8 @@ Patch3:         graphviz-2.20.2-interpreter_names.patch
 Patch4:         graphviz-useless_warnings.patch
 Patch5:         graphviz-no_strict_aliasing.patch
 Patch6:         graphviz-no_php_extra_libs.patch
+# https://gitlab.com/graphviz/graphviz/-/issues/2303
+Patch7:         swig-4.1.0.patch
 
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -412,6 +414,7 @@ programs that use the graphviz libraries including man3 pages.
 %patch4
 %patch5 -p1
 %patch6
+%patch7 -p1
 
 # pkg-config returns 0 (TRUE) when guile-2.2 is present
 if pkg-config --atleast-version=2.2 guile-2.2; then
