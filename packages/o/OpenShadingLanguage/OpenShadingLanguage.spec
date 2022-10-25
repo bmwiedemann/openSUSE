@@ -31,6 +31,8 @@ Group:          Productivity/Graphics/Other
 URL:            https://github.com/AcademySoftwareFoundation/OpenShadingLanguage
 Source0:        https://github.com/AcademySoftwareFoundation/OpenShadingLanguage/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://creativecommons.org/licenses/by/3.0/legalcode.txt#/CC-BY-3.0.txt
+# PATCH-FIX-UPSTREAM - https://github.com/AcademySoftwareFoundation/OpenShadingLanguage/pull/1605
+Patch1:         1605.patch
 BuildRequires:  OpenEXR-devel >= 2.3
 BuildRequires:  OpenImageIO >= 2.2
 BuildRequires:  bison
