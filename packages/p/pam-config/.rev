@@ -690,4 +690,14 @@
     /usr/etc/pam.d [bsc#1196613]</comment>
     <requestid>1008387</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>29c3d8ee16f0056896b01c4fad170d7c</srcmd5>
+    <version>1.8</version>
+    <time>1666689502</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to Version 1.8
+  - Move systemd_home after all optional modules (#13)
+  - Add pam_u2f support [bsc#1115512]</comment>
+    <requestid>1030733</requestid>
+  </revision>
 </revisionlist>

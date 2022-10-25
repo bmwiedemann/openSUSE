@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 24 09:33:52 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to Version 1.8
+  - Move systemd_home after all optional modules (#13)
+  - Add pam_u2f support [bsc#1115512]
+
+-------------------------------------------------------------------
 Thu Oct  6 12:23:38 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to Version 1.7
