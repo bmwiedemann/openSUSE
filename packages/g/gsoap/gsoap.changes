@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 24 13:23:19 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.8.123
+  * Update to make `std::string` typed element tags self-closing,
+    which is consistent with `char*` typed element tags.
+  * Improvement to HTTP header line processing to drop start-end
+    quotes.
+
+-------------------------------------------------------------------
 Sun Aug 28 22:30:53 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.8.122
