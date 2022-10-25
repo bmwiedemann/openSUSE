@@ -18,7 +18,7 @@
 
 %define lname   libvslvm1
 Name:           libvslvm
-Version:        20210807
+Version:        20221025
 Release:        0
 Summary:        Library to access the Linux Logical Volume Manager (LVM) volume system
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
@@ -30,29 +30,30 @@ Source3:        %name.keyring
 Patch1:         system-libs.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  c_compiler
-BuildRequires:  gettext-tools >= 0.18.1
+BuildRequires:  gettext-tools >= 0.21
 BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(fuse)
-BuildRequires:  pkgconfig(libbfio) >= 20201229
-BuildRequires:  pkgconfig(libcdata) >= 20200509
-BuildRequires:  pkgconfig(libcerror) >= 20201121
-BuildRequires:  pkgconfig(libcfile) >= 20201229
-BuildRequires:  pkgconfig(libclocale) >= 20200913
-BuildRequires:  pkgconfig(libcnotify) >= 20200913
-BuildRequires:  pkgconfig(libcpath) >= 20200623
-BuildRequires:  pkgconfig(libcsplit) >= 20200703
-BuildRequires:  pkgconfig(libcthreads) >= 20200508
-BuildRequires:  pkgconfig(libfcache) >= 20200708
-BuildRequires:  pkgconfig(libfdata) >= 20201129
-BuildRequires:  pkgconfig(libfvalue) >= 20210510
-BuildRequires:  pkgconfig(libuna) >= 20210801
+BuildRequires:  pkgconfig(libbfio) >= 20221025
+BuildRequires:  pkgconfig(libcdata) >= 20220115
+BuildRequires:  pkgconfig(libcerror) >= 20220101
+BuildRequires:  pkgconfig(libcfile) >= 20220106
+BuildRequires:  pkgconfig(libclocale) >= 20220107
+BuildRequires:  pkgconfig(libcnotify) >= 20220108
+BuildRequires:  pkgconfig(libcpath) >= 20220108
+BuildRequires:  pkgconfig(libcsplit) >= 20220109
+BuildRequires:  pkgconfig(libcthreads) >= 20220102
+BuildRequires:  pkgconfig(libfcache) >= 20220110
+BuildRequires:  pkgconfig(libfdata) >= 20220111
+BuildRequires:  pkgconfig(libfvalue) >= 20220120
+BuildRequires:  pkgconfig(libuna) >= 20220611
 %python_subpackages
 
 %description
-libvslvm is a library to access the Linux Logical Volume Manager (LVM) volume system.
+libvslvm is a library to access the Linux Logical Volume Manager
+(LVM) volume system.
 
 %package -n %{lname}
 Summary:        Library to access Linux Logical Volume Manager (LVM) volume containers
@@ -60,15 +61,17 @@ License:        LGPL-3.0-or-later
 Group:          System/Libraries
 
 %description -n %{lname}
-The libvslvm library is a library to access Linux Logical Volume Manager (LVM) volume containers
+The libvslvm library is a library to access Linux Logical Volume
+Manager (LVM) volume containers
 
 %package tools
-Summary:        Several tools for reading Linux Logical Volume Manager (LVM) volume systems
+Summary:        Several tools for reading Linux Logical Volume Manager (LVM) systems
 License:        LGPL-3.0-or-later
 Group:          Productivity/File utilities
 
 %description tools
-Several tools for reading Linux Logical Volume Manager (LVM) volume systems
+Several tools for reading Linux Logical Volume Manager (LVM) volume
+systems.
 
 See libvslvm for additional details.
 

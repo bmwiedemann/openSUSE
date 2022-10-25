@@ -80,4 +80,12 @@
     <comment>- Add forced symvers</comment>
     <requestid>994033</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4b88ef597e790f64e915f82ceca517e4</srcmd5>
+    <version>20221025</version>
+    <time>1666691476</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20221025</comment>
+    <requestid>1031087</requestid>
+  </revision>
 </revisionlist>
