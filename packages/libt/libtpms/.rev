@@ -135,4 +135,12 @@
   * tpm2: When writing state initialize s_ContextSlotMask if not set (forwarded request 968240 from dirkmueller)</comment>
     <requestid>968367</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>4873ee6240e0c4199deb2f56f6a12112</srcmd5>
+    <version>0.9.3</version>
+    <time>1666780291</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixed CVE-2021-3623 (bsc#1187767) (forwarded request 1030434 from msmeissn)</comment>
+    <requestid>1031153</requestid>
+  </revision>
 </revisionlist>

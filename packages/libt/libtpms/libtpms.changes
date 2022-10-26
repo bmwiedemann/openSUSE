@@ -18,6 +18,7 @@ Thu Dec  9 19:57:51 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
   * tpm2: Added a cache for private exponent D and prime Q
   * tpm2: bug fixes
 - Drop upstream fixed libtpms-CVE-2021-3746.patch
+- Fixed CVE-2021-3623 (bsc#1187767)
 
 -------------------------------------------------------------------
 Tue Aug 31 16:36:31 UTC 2021 - pgajdos@suse.com
