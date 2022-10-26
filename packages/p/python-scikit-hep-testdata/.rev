@@ -103,4 +103,15 @@
     <comment></comment>
     <requestid>1007518</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b9f65c3deb39bc28b299aa1243c4191e</srcmd5>
+    <version>0.4.22</version>
+    <time>1666780302</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.14.22:
+  - fix two bugs in gh#scikit-hep/uproot5
+- Remove unnecessary code for building with Python 2.
+</comment>
+    <requestid>1031204</requestid>
+  </revision>
 </revisionlist>

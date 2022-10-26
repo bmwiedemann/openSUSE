@@ -16,11 +16,10 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define srcname scikit-hep-testdata
 %define modname %( echo %{srcname} | tr '-' '_' )
 Name:           python-scikit-hep-testdata
-Version:        0.4.20
+Version:        0.4.22
 Release:        0
 Summary:        Example HEP files for testing and demonstrating
 License:        BSD-3-Clause
@@ -31,12 +30,10 @@ Source:         https://github.com/scikit-hep/scikit-hep-testdata/archive/v%{ver
 Patch1:         scikit-hep-testdata-datadir.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module importlib-resources >= 1.3 if %python-base < 3.9}
-BuildRequires:  %{python_module pathlib2 if %python-base <= 2.7}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module toml}
-BuildRequires:  %{python_module typing if %python-base <= 2.7}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION Test requirements
@@ -46,10 +43,6 @@ Requires:       python-PyYAML
 Requires:       python-requests
 %if %python_version_nodots < 39
 Requires:       python-importlib-resources >= 1.3
-%endif
-%if %python_version_nodots <= 27
-Requires:       python-pathlib2
-Requires:       python-typing
 %endif
 Requires:       scikit-hep-testdata-files = %{version}
 Requires(post): update-alternatives

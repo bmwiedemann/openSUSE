@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 25 20:11:00 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.14.22:
+  - fix two bugs in gh#scikit-hep/uproot5
+- Remove unnecessary code for building with Python 2.
+
+-------------------------------------------------------------------
 Sat Oct  1 09:11:03 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.14.20:
