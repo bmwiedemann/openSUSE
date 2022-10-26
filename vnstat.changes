@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sat Oct 22 13:06:26 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.10:
+  Fixed
+  * Image output of 5 minute graph wasn't possible if data
+    retention of the 5 minute time period was configured as
+    unlimited.
+  * Estimates and average rates weren't calculated correctly for
+    daily, monthly and yearly time periods when monitoring of the
+    interface had been started during the ongoing time period.
+  * Estimates weren't being shown in summary output when
+    OutputStyle or --style was configured with a value less than 2.
+  * Alignment of column header in short output wasn't correct when
+    OutputStyle or --style was configured with the value 0 (vnstat)
+  New
+  * Support input of more than 31 characters in interface name when
+    using interface1+interface2 syntax data merge queries.
+  * Support passing --config option multiple times, later files
+    override earlier files if settings overlap (vnstat and vnstati)
+  * Add configuration option EstimateVisible for controlling the
+    visibility of the estimate line.
+  * Add configuration option EstimateText for modifying the default
+    "estimated" text string when the estimate line is visible.
+  * Add --style support to -tr / --traffic output.
+  * Add summary option to --json and --xml outputs.
+  * Add timestamps to --json and --xml outputs.
+  * Add Prometheus compatible metrics endpoint cgi to examples.
+    (examples/vnstat-metrics.cgi)
+
+-------------------------------------------------------------------
 Mon Jan 24 22:10:08 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.9:
