@@ -16,16 +16,15 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pythonfinder
-Version:        1.2.4
+Version:        1.3.1
 Release:        0
 Summary:        A tool to locate Python on the system
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/sarugaku/pythonfinder
-Source:         https://github.com/sarugaku/pythonfinder/archive/%{version}.tar.gz#/pythonfinder-%{version}.tar.gz
+Source:         https://github.com/sarugaku/pythonfinder/archive/refs/tags/v%{version}.tar.gz#/pythonfinder-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools >= 36.2.2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -48,10 +47,6 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module vistir >= 0.2.5}
 # /SECTION
-%ifpython2
-Requires:       pathlib2
-Requires:       python-backports.functools_lru_cache
-%endif
 %python_subpackages
 
 %description
