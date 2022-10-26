@@ -18,7 +18,7 @@
 
 %define libffi_sover 8
 Name:           libffi
-Version:        3.4.3
+Version:        3.4.4
 Release:        0
 Summary:        Foreign Function Interface Library
 License:        MIT
@@ -26,7 +26,6 @@ Group:          Development/Languages/C and C++
 URL:            https://sourceware.org/libffi/
 Source:         https://github.com/libffi/libffi/releases/download/v%{version}/libffi-%{version}.tar.gz
 Source99:       baselibs.conf
-Patch1:         riscv64-handle-big-structures.patch
 # for make check
 BuildRequires:  dejagnu
 BuildRequires:  expect
@@ -68,8 +67,6 @@ time.
 %autosetup -p1
 
 %build
-# https://github.com/libffi/libffi/issues/733
-%define _lto_cflags %{nil}
 # https://github.com/libffi/libffi/pull/647
 %configure --disable-exec-static-tramp
 %make_build

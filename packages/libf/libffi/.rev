@@ -127,4 +127,19 @@
     <comment>- add riscv64-handle-big-structures.patch</comment>
     <requestid>1010285</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7e0409dd54d8e2d086a6dae81926f1bc</srcmd5>
+    <version>3.4.4</version>
+    <time>1666780274</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to libffi 3.4.4
+  * Important aarch64 fixes, including support for linux builds
+      with Link Time Optimization (-flto).
+  * Fix x86 stdcall stack alignment.
+  * Fix x86 Windows msvc assembler compatibility.
+  * Fix moxie and or1k small structure args.
+- drop riscv64-handle-big-structures.patch
+- reenable LTO</comment>
+    <requestid>1031049</requestid>
+  </revision>
 </revisionlist>
