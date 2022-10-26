@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Oct 24 16:33:24 UTC 2022 - mvetter@suse.com
+
+- Update to version 1.22:
+  * view_curses: do not force black background #29
+  * fixed scroller logic #30
+  * fixed corner case of full scroller #32
+  * Update README.md #35
+  * Add regex search
+  * Better checking and error handling in netlink code
+  * More graceful signal handling
+  * Fix bug with a missing check if a process exited
+  * New option to hide exited processes
+  * Add color to % values and option to disable color at all
+  * Implement the suggestion from https://no-color.org
+  * Fix bug with cursor displayed in unusual places
+
+-------------------------------------------------------------------
 Wed Feb 02 23:28:14 UTC 2022 - jonathan@jontech.app
 
 - Update to version 1.21:
