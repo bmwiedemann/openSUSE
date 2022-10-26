@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Oct 26 10:41:45 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 7.2.2
+  * Fix default config test #1885 (@blink1073)
+  * Add ensure label workflow #1884 (@blink1073)
+  * Add release workflows #1883 (@blink1073)
+  * Maintenance cleanup #1881 (@blink1073)
+- Release 7.2.1
+  * Fix version handling #1878 (@blink1073)
+- Release 7.2.0
+  * Prep for jupyter releaser #1877 (@blink1073)
+  * Add support for jupyter_client 8 #1867 (@blink1073)
+- Release 7.1.0
+  * Fix markdown table not render bug by @Neutree in #1853
+  * Replace lxml.html.clean_html with bleach; drop lxml dependency
+    by @akx in #1854
+  * Remove CircleCI badge from README by @akx in #1857
+  * Added support for section (slide) "data-*" attributes by
+    @bouzidanas in #1861
+- Drop ignore-bleach-deprecation-test.patch
+
+-------------------------------------------------------------------
 Sun Sep 25 23:02:48 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 7.0.0

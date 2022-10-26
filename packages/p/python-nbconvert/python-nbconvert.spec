@@ -31,7 +31,7 @@
 %endif
 
 Name:           python-nbconvert%{psuffix}
-Version:        7.0.0
+Version:        7.2.2
 Release:        0
 Summary:        Conversion of Jupyter Notebooks
 License:        BSD-3-Clause AND MIT
@@ -40,8 +40,6 @@ Source0:        https://files.pythonhosted.org/packages/source/n/nbconvert/nbcon
 # See hatch_build.py
 # License10: MIT
 Source10:       https://cdn.jupyter.org/notebook/5.4.0/style/style.min.css
-# PATCH-FIX-OPENSUSE ignore-bleach-deprecation-test.patch -- ignore warning that we don't have bleach5 yet
-Patch0:         ignore-bleach-deprecation-test.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module hatchling >= 0.25}
 BuildRequires:  %{python_module pip}

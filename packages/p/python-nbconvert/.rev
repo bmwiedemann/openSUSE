@@ -209,4 +209,29 @@
 - Drop nbconvert-vendorize-mistune.patch and mistune 0.8.4 sources.</comment>
     <requestid>1005929</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>7ecdfa4d9a4481e04b5c0a8b6489878b</srcmd5>
+    <version>7.2.2</version>
+    <time>1666787150</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.2.2
+  * Fix default config test #1885 (@blink1073)
+  * Add ensure label workflow #1884 (@blink1073)
+  * Add release workflows #1883 (@blink1073)
+  * Maintenance cleanup #1881 (@blink1073)
+- Release 7.2.1
+  * Fix version handling #1878 (@blink1073)
+- Release 7.2.0
+  * Prep for jupyter releaser #1877 (@blink1073)
+  * Add support for jupyter_client 8 #1867 (@blink1073)
+- Release 7.1.0
+  * Fix markdown table not render bug by @Neutree in #1853
+  * Replace lxml.html.clean_html with bleach; drop lxml dependency
+    by @akx in #1854
+  * Remove CircleCI badge from README by @akx in #1857
+  * Added support for section (slide) &quot;data-*&quot; attributes by
+    @bouzidanas in #1861
+- Drop ignore-bleach-deprecation-test.patch</comment>
+    <requestid>1031313</requestid>
+  </revision>
 </revisionlist>
