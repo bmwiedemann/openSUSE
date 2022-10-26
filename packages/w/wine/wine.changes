@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct 15 11:23:14 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- updated to 7.19 development release
+  - Support for storing DOS attributes on disk.
+  - Bundled vkd3d upgraded to version 1.5.
+  - Support for MPEG-4 audio format.
+  - Various bug fixes.
+- update staging to 7.19 release
+
+-------------------------------------------------------------------
 Sat Sep 24 06:25:32 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - updated to 7.18 development release
