@@ -1,9 +1,9 @@
-Index: napalm-3.4.0/test/nxos/test_getters.py
+Index: napalm-4.0.0/test/nxos/test_getters.py
 ===================================================================
---- napalm-3.4.0.orig/test/nxos/test_getters.py	2022-02-12 19:54:06.000000000 +0100
-+++ napalm-3.4.0/test/nxos/test_getters.py	2022-03-24 13:25:06.984241556 +0100
+--- napalm-4.0.0.orig/test/nxos/test_getters.py
++++ napalm-4.0.0/test/nxos/test_getters.py
 @@ -5,7 +5,7 @@ from napalm.base.test import helpers
- from napalm.base.test import models
+ from napalm.base import models
  
  import pytest
 -from mock import patch
@@ -11,12 +11,12 @@ Index: napalm-3.4.0/test/nxos/test_getters.py
  
  
  def mock_time():
-Index: napalm-3.4.0/test/nxos_ssh/test_getters.py
+Index: napalm-4.0.0/test/nxos_ssh/test_getters.py
 ===================================================================
---- napalm-3.4.0.orig/test/nxos_ssh/test_getters.py	2022-02-12 19:54:06.000000000 +0100
-+++ napalm-3.4.0/test/nxos_ssh/test_getters.py	2022-03-24 13:24:34.132045526 +0100
+--- napalm-4.0.0.orig/test/nxos_ssh/test_getters.py
++++ napalm-4.0.0/test/nxos_ssh/test_getters.py
 @@ -5,7 +5,7 @@ from napalm.base.test import helpers
- from napalm.base.test import models
+ from napalm.base import models
  
  import pytest
 -from mock import patch
@@ -24,10 +24,10 @@ Index: napalm-3.4.0/test/nxos_ssh/test_getters.py
  
  
  def mock_time():
-Index: napalm-3.4.0/test/eos/test_heredoc.py
+Index: napalm-4.0.0/test/eos/test_heredoc.py
 ===================================================================
---- napalm-3.4.0.orig/test/eos/test_heredoc.py	2022-02-12 19:54:06.000000000 +0100
-+++ napalm-3.4.0/test/eos/test_heredoc.py	2022-03-24 13:27:07.968963492 +0100
+--- napalm-4.0.0.orig/test/eos/test_heredoc.py
++++ napalm-4.0.0/test/eos/test_heredoc.py
 @@ -1,4 +1,4 @@
 -import mock
 +import unittest.mock as mock

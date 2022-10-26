@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-napalm
-Version:        3.4.0
+Version:        4.0.0
 Release:        0
 Summary:        Network Automation and Programmability Abstraction Layer
 License:        Apache-2.0
@@ -28,7 +28,6 @@ URL:            https://github.com/napalm-automation/napalm
 Source:         https://github.com/napalm-automation/napalm/archive/%{version}.tar.gz#/napalm-%{version}.tar.gz
 # https://github.com/napalm-automation/napalm/issues/1594
 Patch0:         python-napalm-no-mock.patch
-Patch1:         netmiko-4-support.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -37,7 +36,7 @@ Requires:       python-PyYAML
 Requires:       python-cffi >= 1.11.3
 Requires:       python-ciscoconfparse
 Requires:       python-future
-Requires:       python-junos-eznc >= 2.2.1
+Requires:       python-junos-eznc >= 2.6.3
 Requires:       python-lxml >= 4.3.0
 Requires:       python-ncclient
 Requires:       python-netaddr
@@ -56,14 +55,14 @@ BuildArch:      noarch
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module cffi >= 1.11.3}
-BuildRequires:  %{python_module ciscoconfparse}
 BuildRequires:  %{python_module ddt}
 BuildRequires:  %{python_module future}
-BuildRequires:  %{python_module junos-eznc >= 2.2.1}
+BuildRequires:  %{python_module junos-eznc >= 2.6.3}
 BuildRequires:  %{python_module lxml >= 4.3.0}
 BuildRequires:  %{python_module ncclient}
 BuildRequires:  %{python_module netaddr}
 BuildRequires:  %{python_module netmiko >= 4.0.0}
+BuildRequires:  %{python_module netutils >= 1.0.0}
 BuildRequires:  %{python_module paramiko >= 2.6.0}
 BuildRequires:  %{python_module pyeapi >= 0.8.2}
 BuildRequires:  %{python_module pytest >= 5.4.3}
@@ -71,6 +70,8 @@ BuildRequires:  %{python_module requests >= 2.7.0}
 BuildRequires:  %{python_module scp}
 BuildRequires:  %{python_module setuptools >= 38.4.0}
 BuildRequires:  %{python_module textfsm}
+BuildRequires:  %{python_module ttp-templates}
+BuildRequires:  %{python_module ttp}
 BuildRequires:  %{python_module typing_extensions}
 # /SECTION
 %python_subpackages

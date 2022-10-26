@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Tue Oct 25 07:19:55 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove empty netmiko-4-support.patch
+
+-------------------------------------------------------------------
+Fri Oct 21 11:13:13 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 4.0.0
+  Type Hinting
+  ============
+  - After months of work, @Kircheneer added type hinting support in #1412 and
+    #1476.
+  New features
+  ============
+  - Add Commit-Confirm support for Cisco IOS #1691
+  - New encoding argument added to the cli method to return the output of
+    operational / show commands in the desired format. Currently supported on
+    Junos and EOS. #1637 & #1663
+  - Added ttp_parse helper function to codebase #1563
+  - Replaced ciscoconfparse with netutils #1565
+  - New SSH transport available for Arista EOS - thanks @thomasbridge74 #1502
+  Improvements
+  ============
+  - Adds mac and ip checks for getters #1560
+  - The uptime field in the get_facts return is now float type: #1651
+  - [NX-OS] Improve compare_config for NXOS partial merging #1567
+  - [EOS] support arbitrary transport class #1643 & #1647
+  - [EOS] move config lock check to _load_config #1642
+  - [EOS] Handle modern memory output from Arista EOS 4.27+ #1673
+  - [IOS-XR] Improving get_facts behavior to handle XML changes in newer OS
+    versions #1667
+  - [Junos] make sure we don't duplicate LLDP neighbor entries #1640
+  Bug fixes
+  =========
+  - [Junos] find for system uptime element #1675
+  - [IOS-XR] get_lldp_neighbor_details does not support 'N/A' capabilities
+    #1681
+  - [IOS-XR] get_lldp_neighbor_details add alternative lldp local interface key
+    #1682
+  - [NX-OS] get_interfaces fix description on SVI interfaces #1571
+  - [IOS] get_vlans does not return all interfaces if they wrap around in the
+    config #1569
+  - [Junos] Fix #1549: Check peer admin status from the BGP options #1566
+  - [EOS] get_bgp_neighbors_detail only returns back a single peer for a
+    certain EOS platform #1573
+
+- Update to 3.4.1
+  * Pinning to junos-eznc>=2.6.3
+
+-------------------------------------------------------------------
 Fri Aug  5 04:58:33 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch netmiko-4-support.patch:
