@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct 26 07:13:13 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update to 22.10.25:
+  * Make B015 and B018 messages slightly more polite (#298)
+  * Add B027: Empty method in abstract base class with no abstract decorator
+  * Multiple B024 false positive fixes
+  * Move CI to use tox (#294)
+  * Move to using PEP621 / pyproject.toml package (#291)
+  * Tested in 3.11
+-------------------------------------------------------------------
 Fri Aug 26 17:51:42 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Update 22.8.23:
