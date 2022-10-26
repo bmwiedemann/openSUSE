@@ -82,4 +82,12 @@
   by markers.</comment>
     <requestid>1008086</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>68e03c54dc179c5e9ba10c595cd03131</srcmd5>
+    <version>0.5.1</version>
+    <time>1666780300</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove conditional definition of python_module.</comment>
+    <requestid>1031203</requestid>
+  </revision>
 </revisionlist>

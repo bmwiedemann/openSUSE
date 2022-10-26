@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 25 20:05:16 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Remove conditional definition of python_module.
+
+-------------------------------------------------------------------
 Wed Oct  5 05:23:42 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.5.1:
