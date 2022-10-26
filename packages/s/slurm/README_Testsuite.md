@@ -22,12 +22,8 @@ For tests involving MPI this test suite currently uses OpenMPI version 4.
 
 ## Install and set up the Base System
 
-1. Prepare image with a minimal minimal text mode installation.
-2. Add NFS kernel server support:
-   ```
-    # zypper install nfs-kernel-server
-	```
-3. Install, enable and start sshd and make sure root is able to log in
+1. Prepare image with a minimal text mode installation.
+2. Install, enable and start sshd and make sure root is able to log in
    without password across all nodes.
     ```
 	 # zypper install openssh-server openssh-clients
@@ -35,18 +31,18 @@ For tests involving MPI this test suite currently uses OpenMPI version 4.
 	 # ssh-keygen -t rsa -f .ssh/id_rsa -N
 	 # cat .ssh/id_rsa.pub >> .ssh/authorized_keys
 	```
-4. Create a test user 'auser' allow ssh from/to root:
+3. Create a test user 'auser' allow ssh from/to root:
    ```
      # useradd -m auser
 	 # cp -r /root/.ssh /home/auser
    ```
-5. Set up a persistent network if to obtain the network address and
+4. Set up a persistent network if to obtain the network address and
    hostname thru DHCP:
    ```
     # echo 'SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", '\
 	  'ATTR{address}=="?*", ATTR{dev_id}=="0x0", ATTR{type}=="1",'\
-	  ' KERNEL=="?*", NAME="lan0"
-    # cat > root/etc/sysconfig/network/ifcfg-lan0 <<EOF
+	  ' KERNEL=="?*", NAME="lan0" >> /etc/udev/rules.d/70-persistent-net.rules
+    # cat > /etc/sysconfig/network/ifcfg-lan0 <<EOF
 	BOOTPROTO='dhcp'
 	MTU=''
 	REMOTE_IPADDR=''
@@ -59,21 +55,20 @@ For tests involving MPI this test suite currently uses OpenMPI version 4.
 ## Install and set up the Slurm specific Environment
 
 1. Install package slurm-testsuite.
-2. Set up, enable mariadb, add slurm accounting database:
+2. Set up, enable & start mariadb, add slurm accounting database:
+
    ```
     # sed -i -e "/^bind-address/s@\(^.*$\)@# \1@" /etc/my.cnf
-    # systemctl start maridb
+    # systemctl start mariadb
 	# mysql -uroot -e "create user 'slurm'@'node01' identified by 'linux';"
 	# mysql -uroot -e "create database slurm_acct_db;"
 	# mysql -uroot -e "grant all on slurm_acct_db.* TO 'slurm'@'node01';"
 	```
-3. Set up shared home, testsuite and slurm config directories, enable
-   NFS server:
+3. Set up shared home, testsuite and slurm config directories, install and
+   enable  NFS kernel server.
    ```
    # mkdir -p /srv/home
    # mv /home/auser /srv/home
-   # mkdir /home/slurm-testsuite
-   # chown slurm:slurm /home/slurm-testsuite
    # cat >> /etc/exports <<EOF
      /srv/home *(rw,no_subtree_check,sync,no_root_squash)
      /srv/slurm-testsuite *(rw,no_subtree_check,sync,no_root_squash)
@@ -85,9 +80,16 @@ For tests involving MPI this test suite currently uses OpenMPI version 4.
      node01:/srv/slurm-testsuite/config /etc/slurm nfs sync,hard,rw 0 0
      node01:/srv/slurm-testsuite/shared /var/lib/slurm/shared nfs sync,hard,rw 0 0
      node01:/srv/slurm-testsuite /home/slurm-testsuite nfs sync,hard,rw 0 0
+	 EOF
+   # zypper install nfs-kernel-server
    # systemctl enable nfs-server
-
    ```
+4. Enable munge and slurmd:
+    ```
+	# systemctl enable munge
+	# systemctl enable slurmd
+	```
+
 # Clone Nodes and bring up Test System
 
 1. Now halt the system and duplicate it 3 times.
@@ -95,13 +97,8 @@ For tests involving MPI this test suite currently uses OpenMPI version 4.
 2. Set up the dhcp server and make sure the nodes receive the hostnames
    ``node01```,..., ```node04```.
 
-3. Enable munge and slurmd:
-    ```
-	# systemctl enable munge
-	# systemctl enable slurmd
-	```
-
 4. Boot all 4 nodes (start with ```node01```).
+
 5. On ```node01```, log in as ```root``` and run ```setup-testsuite.sh```:
    ```
    # ./setup-testsuite.sh
@@ -110,7 +107,7 @@ For tests involving MPI this test suite currently uses OpenMPI version 4.
    ```
    # sudo -s -u slurm
    $ module load gnu openmpi
-   $ cd /home/test/home/slurm-testsuite/testsuite/expect
+   $ cd /home/slurm-testsuite/testsuite/expect
    $ ./regression.py
    ```
 

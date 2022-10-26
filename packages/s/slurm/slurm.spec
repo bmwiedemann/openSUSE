@@ -576,6 +576,9 @@ Group:          Productivity/Clustering/Computing
 Plugins for specific cray hardware, includes power and knl node management.
 Contains also cray specific documentation.
 
+# Certain packages are not shipped with SLE.
+%define ts_depends %{?sle_version:Recommends}%{!?sle_version:Requires}
+
 %package testsuite
 Summary:        Regression tests from Slurm sources
 Group:          Productivity/Clustering/Computing
@@ -583,7 +586,7 @@ Requires:       %{name} = %version
 Requires:       %{name}-auth-none = %version
 Requires:       %{name}-cray = %version
 Requires:       %{name}-devel = %version
-Requires:       %{name}-hdf5 = %version
+%{?have_hdf5:%ts_depends:     %{name}-hdf5 = %version}
 Requires:       %{name}-lua = %version
 Requires:       %{name}-munge = %version
 Requires:       %{name}-node = %version
@@ -596,11 +599,12 @@ Requires:       %{name}-sql = %version
 Requires:       %{name}-torque = %version
 Requires:       mariadb
 %{?with_pmix:Requires:       pmix-devel}
+Requires:       bind-utils
 Requires:       bzip2
 Requires:       expect
 Requires:       gcc-c++
 Requires:       libnuma-devel
-Requires:       openmpi4-gnu-hpc-devel
+%ts_depends:     openmpi4-gnu-hpc-devel
 Requires:       pdsh
 Requires:       perl-%{name} = %version
 Requires:       sudo
@@ -640,6 +644,14 @@ mkdir -p mybin; ln -s /usr/bin/python2 mybin/python3
 %build
 # needed as slurm works that way bsc#1200030
 export SUSE_ZNOW=0
+
+# To make stripped object files work which we ship in the
+# testsuite package we need to build with -ffat-lto-objects.
+# This should not affect anything as we do not ship static
+# libraries and object files - except for the testsuite.
+%if "%{?_lto_cflags}" != ""
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+%endif
 
 autoreconf
 [ -e $(pwd)/mybin ] && PATH=$(pwd)/mybin:$PATH
@@ -1055,7 +1067,9 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite /srv/slurm-testsu
 runuser -u %slurm_u -- tar --same-owner -C /srv/slurm-testsuite -xjf %{_datadir}/%{name}/slurmtest.tar.bz2
 
 %preun testsuite
-rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite /srv/slurm-testsuite/config.h
+rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
+   /srv/slurm-testsuite/slurm /srv/slurm-testsuite/shared \
+   /srv/slurm-testsuite/config.h
 
 %{!?nil:
 # On update the %%postun code of the old package restarts the

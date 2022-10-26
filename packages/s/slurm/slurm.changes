@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct 21 15:14:30 UTC 2022 - Egbert Eich <eich@suse.com>
+
+- Test Suite fixes:
+  * Update README_Testsuite.md.
+  * Clean up left over files when de-installing test suite.
+  * Adjustment to test suite package: for SLE mark the openmpi4
+    devel package and slurm-hdf5 optional.
+  * Add -ffat-lto-objects to the build flags when LTO is set to
+    make sure the object files we ship with the test suite still
+    work correctly.
+  * Improve setup-testsuite.sh: copy ssh fingerprints from all nodes.
+
+-------------------------------------------------------------------
 Fri Oct 14 08:49:24 UTC 2022 - Christian Goll <cgoll@suse.com>
 
 - updated to 22.05.5
@@ -106,6 +119,9 @@ Tue May 31 12:56:05 UTC 2022 - Christian Goll <cgoll@suse.com>
   "bf_licenses" option in SchedulerParameters.
 - removed file slurm-2.4.4-init.patch as sysvinit is now realy deprecated
 - removed file load-pmix-major-version.patch as fixed upstream
+- set environment variable SUSE_ZNOW to 0 in %build to avoid module load
+  failures due to unresolved symbols as module take advantage of lazy
+  bindings (bsc#1200030).
 
 -------------------------------------------------------------------
 Tue May 10 10:26:02 UTC 2022 - Egbert Eich <eich@suse.com>

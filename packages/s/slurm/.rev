@@ -983,4 +983,24 @@
     seconds before timing out and killing prolog and epilog scripts. (forwarded request 1010642 from mslacken)</comment>
     <requestid>1030432</requestid>
   </revision>
+  <revision rev="80" vrev="2">
+    <srcmd5>96159247c76cea4952135361b11af56c</srcmd5>
+    <version>22.05.5</version>
+    <time>1666780320</time>
+    <user>dimstar_suse</user>
+    <comment>- Test Suite fixes:
+  * Update README_Testsuite.md.
+  * Clean up left over files when de-installing test suite.
+  * Adjustment to test suite package: for SLE mark the openmpi4
+    devel package and slurm-hdf5 optional.
+  * Add -ffat-lto-objects to the build flags when LTO is set to
+    make sure the object files we ship with the test suite still
+    work correctly.
+  * Improve setup-testsuite.sh: copy ssh fingerprints from all nodes.
+
+- set environment variable SUSE_ZNOW to 0 in %build to avoid module load
+  failures due to unresolved symbols as module take advantage of lazy
+  bindings (bsc#1200030).</comment>
+    <requestid>1031255</requestid>
+  </revision>
 </revisionlist>
