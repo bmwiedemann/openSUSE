@@ -18,7 +18,7 @@
 
 %define sover 1
 Name:           redis++
-Version:        1.3.5
+Version:        1.3.6
 Release:        0
 Summary:        C++ client for Redis
 License:        Apache-2.0
@@ -30,6 +30,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(hiredis)
 BuildRequires:  pkgconfig(hiredis_ssl)
 BuildRequires:  pkgconfig(libuv)
+BuildRequires:  pkgconfig(openssl)
 
 %description
 Redis-plus-plus, a C++ client for Redis based on hiredis and written in C++11/C++17.
