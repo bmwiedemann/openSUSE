@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 26 12:32:08 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add xboxdrv-scons-4.2.patch: Fix build with SCons 4.2.
+
+-------------------------------------------------------------------
 Sat Jul  9 02:23:17 UTC 2022 - malcolmlewis@opensuse.org
 
 - Add support for Betop controller (0x11c0:0x5205).

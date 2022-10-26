@@ -39,6 +39,8 @@ Patch0:         %{name}-fix-delay.patch
 Patch1:         xboxdrv-scons3.patch
 #PATCH-FIX-OPENSUSE xboxdrv-add-new-device.patch malcolmlewis@opensuse.org -- Add new wireless controller device (0x02a9, "Microsoft X-Box pad v? (?)).
 Patch2:         xboxdrv-add-new-device.patch
+# PATCH-FIX-UPSTREAM xboxdrv-scons-4.2.patch dimstar@opensuse.org -- Fix build with SCons 4.2; patch taken from Arch
+Patch3:         xboxdrv-scons-4.2.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_headers-devel
 BuildRequires:  pkgconfig
@@ -61,6 +63,7 @@ shouldn't be to hard to add if somebody is interested.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 cp -f %{SOURCE1} 50-xpad.conf
 cp -f %{SOURCE2} %{name}.conf
