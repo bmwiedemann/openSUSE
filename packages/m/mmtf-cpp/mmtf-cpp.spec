@@ -16,23 +16,22 @@
 #
 
 
-%define spec_ver 1.0
 Name:           mmtf-cpp
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        The pure C++ implementation of the MMTF API, decoder and encoder
 License:        MIT
 Group:          Productivity/Scientific/Chemistry
 URL:            https://github.com/rcsb/mmtf-cpp
-Source0:        %{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar
 # PATCH-FIX-OPENSUSE fix_catch2_not_found.patch gh#rcsb/mmtf-cpp#39 andythe_great@pm.me -- Fix issue catch.hpp not found.
 Patch0:         fix_catch2_not_found.patch
-BuildRequires:  Catch2-devel
 BuildRequires:  cmake >= 3.5
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  msgpack-cxx-devel
+BuildRequires:  pkgconfig(catch2) < 3
 BuildArch:      noarch
 
 %description
@@ -53,14 +52,17 @@ applications that use %{name}.
 %build
 %cmake -DBUILD_TESTS:BOOL=ON \
        -Dmmtf_build_local:BOOL=ON
-%make_build
-pushd ../docs
+
+%cmake_build
+cd ../docs
 doxygen
-popd
 
 %install
 %cmake_install
-%fdupes %{buildroot}%{_prefix}
+# Install doc files manually so we can run fdupes on them
+mkdir -p %{buildroot}%{_docdir}/%{name}
+cp -pr ./docs/html %{buildroot}%{_docdir}/%{name}/
+%fdupes %{buildroot}%{_docdir}/%{name}/html/
 
 %check
 %ctest
@@ -68,7 +70,7 @@ popd
 %files devel
 %license LICENSE
 %doc README.md
-%doc docs/html
+%doc %{_docdir}/%{name}/
 %{_includedir}/mmtf/
 %{_includedir}/*.hpp
 
