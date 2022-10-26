@@ -39,4 +39,12 @@
     <comment>- disable tests on 32 bit</comment>
     <requestid>951713</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>38efbaca1f84a2299db43b9db8f7fe7f</srcmd5>
+    <version>0.8.1</version>
+    <time>1666780281</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1031139</requestid>
+  </revision>
 </revisionlist>

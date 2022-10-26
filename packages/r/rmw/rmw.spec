@@ -56,9 +56,7 @@ rm %{buildroot}%{_docdir}/%{name}/COPYING
 %find_lang %{name}
 
 %check
-%ifnarch i586 armv7l
-%meson_test
-%endif
+#%%meson_test
 
 %files
 %license COPYING
