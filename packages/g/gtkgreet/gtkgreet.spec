@@ -1,7 +1,7 @@
 #
 # spec file for package gtkgreet
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,7 @@ Summary:        GTK based greeter for greetd
 License:        GPL-3.0-only
 URL:            https://git.sr.ht/~kennylevinsen/gtkgreet
 Source:         %{name}-%{version}.tar.gz
+Patch0:         gtkgreet-glib-2.74.patch
 BuildRequires:  cmake
 BuildRequires:  gtk-layer-shell-devel
 BuildRequires:  libjson-c-devel
@@ -39,7 +40,7 @@ Recommends:     greetd
 GTK based greeter for greetd, to be run under cage or similar.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 export CFLAGS="-Wno-sign-compare"

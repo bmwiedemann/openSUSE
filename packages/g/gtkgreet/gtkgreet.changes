@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 26 12:57:04 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add gtkgreet-glib-2.74.patch: Fix build against glib 2.74.0.
+
+-------------------------------------------------------------------
 Sat Feb 20 17:05:05 UTC 2021 - Denys Kondratenko <stdden@opensuse.org>
 
 - Update to 0.7 This release includes the ability to style gtkgreet with 
