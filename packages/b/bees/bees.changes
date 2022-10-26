@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 20 00:00:00 CEST 2022 - dsterba@suse.cz
+
+- update to 0.7 git 5953ea6d3c5646 (20221025)
+- build fixes
+- Removed patch: 0001-fs-fix-FIEMAP_MAX_OFFSET-type-silliness-in-fiemap.h.patch
+
+-------------------------------------------------------------------
 Mon Sep  5 00:00:00 CEST 2022 - dsterba@suse.cz
 
 - Added patch: 0001-fs-fix-FIEMAP_MAX_OFFSET-type-silliness-in-fiemap.h.patch

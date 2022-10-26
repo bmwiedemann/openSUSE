@@ -23,4 +23,14 @@
     <comment>fix build on ppc64le (forwarded request 1001258 from dsterba)</comment>
     <requestid>1001259</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d9aca2210a1e2563bd03d16d0d6f74a4</srcmd5>
+    <version>0.7.20221025</version>
+    <time>1666793319</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.7 git 5953ea6d3c5646 (20221025)
+- build fixes
+- Removed patch: 0001-fs-fix-FIEMAP_MAX_OFFSET-type-silliness-in-fiemap.h.patch (forwarded request 1031345 from dsterba)</comment>
+    <requestid>1031346</requestid>
+  </revision>
 </revisionlist>

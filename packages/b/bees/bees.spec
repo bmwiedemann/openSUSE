@@ -16,16 +16,18 @@
 #
 
 
+%define vtag 0.7-20221025
+
 Name:           bees
-Version:        0.7
+Version:        0.7.20221025
 Release:        0
 Summary:        Best-Effort Extent-Same, a btrfs deduplication agent
 License:        GPL-3.0-only
 Group:          System/Filesystems
 URL:            https://github.com/Zygo/bees
-Source:         https://github.com/Zygo/bees/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+#Source:         https://github.com/Zygo/bees/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         bees-%{vtag}-git.tar.xz
 Patch1:         fix-Makefile-version.diff
-Patch2:         0001-fs-fix-FIEMAP_MAX_OFFSET-type-silliness-in-fiemap.h.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libbtrfs-devel
 BuildRequires:  libuuid-devel
@@ -49,9 +51,8 @@ Hilights:
 * Automatic self-throttling based on system load
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{vtag}
 %patch1 -p1
-%patch2 -p1
 
 %build
 cat >localconf <<-EOF
