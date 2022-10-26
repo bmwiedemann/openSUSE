@@ -366,4 +366,12 @@ to Staging:F with it</comment>
     <comment></comment>
     <requestid>1010454</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>bf06623bb13beb07873d247e71ae36db</srcmd5>
+    <version>21.1.1</version>
+    <time>1666780966</time>
+    <user>dimstar_suse</user>
+    <comment>fix lto build</comment>
+    <requestid>1031231</requestid>
+  </revision>
 </revisionlist>

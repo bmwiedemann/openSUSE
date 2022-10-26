@@ -2,13 +2,15 @@ Compile files which declare functions in inline assembly without LTO due to http
 
 --- src/base/allocator/partition_allocator/BUILD.gn.old	2022-10-01 13:53:03.367797474 +0200
 +++ src/base/allocator/partition_allocator/BUILD.gn	2022-10-05 14:23:53.999860356 +0200
-@@ -51,6 +51,22 @@
+@@ -51,6 +51,24 @@
    }
  }
  
-+source_set("partition_alloc_asm") {
++static_library("partition_alloc_asm") {
 +  defines = [ "PA_PCSCAN_STACK_SUPPORTED" ]
-+  cflags = [ "-fno-lto" ]
++  if (gcc_lto) {
++    configs -= [ "//build/config/compiler:gcc_lto" ]
++  }
 +  if (current_cpu == "x64") {
 +    sources = [ "starscan/stack/asm/x64/push_registers_asm.cc" ]
 +  } else if (current_cpu == "x86") {

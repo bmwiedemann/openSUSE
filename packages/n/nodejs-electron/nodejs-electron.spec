@@ -96,13 +96,17 @@ BuildArch:      i686
 #Mold succeeds on ix86 but seems to produce corrupt binaries (no build-id)
 %bcond_with mold
 
+%ifnarch %ix86 %arm aarch64
+# OBS does not have enough powerful machines to build with LTO on aarch64.
 
-%if 0%{without clang}
-#LTO on GCC is broken.
-#Electron crashes on selecting any text. see https://gist.github.com/brjsp/80620a5a0be9efbee6b9154cb127879d for the stack trace.
-%bcond_with lto
-%else
+%if (0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150600 || 0%{?fedora})
 %bcond_without lto
+%else
+%bcond_with lto
+%endif
+
+%else
+%bcond_with lto
 %endif
 
 
@@ -232,6 +236,7 @@ Source420:      avif_image_decoder-AVIF_PIXEL_FORMAT_COUNT.patch
 
 # PATCHES for openSUSE-specific things
 Patch0:         chromium-102-compiler.patch
+Patch1:         fpic.patch
 Patch3:         gcc-enable-lto.patch
 Patch5:         chromium-norar.patch
 Patch6:         chromium-vaapi.patch
@@ -298,6 +303,7 @@ Patch2024:      electron-16-std-vector-non-const.patch
 Patch2029:      electron-16-webpack-fix-openssl-3.patch
 Patch2030:      v8-icu69-FormattedNumberRange-no-default-constructible.patch
 Patch2031:      partition_alloc-no-lto.patch
+Patch2032:      seccomp_bpf-no-lto.patch
 
 
 # PATCHES that should be submitted upstream verbatim or near-verbatim
@@ -322,6 +328,16 @@ Patch3074:      pending_beacon_dispatcher-virtual-functions-cannot-be-constexpr.
 Patch3075:      std_lib_extras-missing-intptr_t.patch
 Patch3076:      gtk_ui_platform_stub-incomplete-type-LinuxInputMethodContext.patch
 Patch3077:      argument_spec-missing-isnan-isinf.patch
+Patch3078:      select_file_dialog_linux_kde-Wodr.patch
+Patch3079:      web_contents_impl-Wsubobject-linkage.patch
+Patch3080:      compact_enc_det_generated_tables-Wnarrowing.patch
+Patch3081:      string_hasher-type-pun-UB-causes-heap-corruption.patch
+Patch3082:      ipcz-buffer_id-Wnarrowing.patch
+Patch3083:      swiftshader-Half-Wstrict-aliasing.patch
+Patch3084:      swiftshader-Constants-Wstrict-aliasing.patch
+Patch3085:      half_float-Wstrict-aliasing.patch
+Patch3086:      unzip-Wsubobject-linkage.patch
+Patch3087:      v8_initializer-PageAllocator-fpermissive.patch
 
 %if %{with clang}
 BuildRequires:  clang
@@ -342,7 +358,6 @@ BuildRequires:  c-ares-devel
 %if %{with system_crc32c}
 BuildRequires:  cmake(Crc32c)
 %endif
-BuildRequires:  cups-devel
 %if %{with system_double_conversion}
 BuildRequires:  double-conversion-devel
 %endif
@@ -368,7 +383,6 @@ BuildRequires:  libaom-devel >= 3.4
 %endif
 BuildRequires:  libbsd-devel
 BuildRequires:  libpng-devel
-BuildRequires:  libtiff-devel
 %if %{with system_nvctrl}
 BuildRequires:  libXNVCtrl-devel
 %endif
@@ -503,7 +517,6 @@ BuildRequires:  pkgconfig(libcares)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libevent)
-BuildRequires:  pkgconfig(libffi)
 %if %{with system_jxl}
 BuildRequires:  pkgconfig(libjxl)
 %endif
@@ -533,7 +546,6 @@ BuildRequires:  pkgconfig(minizip)
 %endif
 BuildRequires:  pkgconfig(nspr) >= 4.9.5
 BuildRequires:  pkgconfig(nss) >= 3.26
-BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(opus) >= 1.3.1
 BuildRequires:  pkgconfig(pangocairo)
 BuildRequires:  pkgconfig(re2)
@@ -558,11 +570,11 @@ BuildRequires:  pkgconfig(vpx) >= 1.8.2
 %endif
 %if %{without clang}
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150600 || 0%{?fedora}
-BuildRequires:  gcc >= 10
-BuildRequires:  gcc-c++ >= 10
+BuildRequires:  gcc >= 11
+BuildRequires:  gcc-c++ >= 11
 %else
-BuildRequires:  gcc10
-BuildRequires:  gcc10-c++
+BuildRequires:  gcc11-PIE
+BuildRequires:  gcc11-c++
 %endif
 %endif
 %if %{with pipewire}
@@ -686,6 +698,10 @@ export PATH="$(pwd)/python3-path:${PATH}"
 #some Fedora ports still try to build with LTO
 ARCH_FLAGS=$(echo "%optflags"|sed 's/-f[^ ]*lto[^ ]*//g' )
 
+#Work around an upstream ODR issue.
+#Remove this once https://bugs.chromium.org/p/chromium/issues/detail?id=1375049 gets fixed.
+ARCH_FLAGS="$ARCH_FLAGS -DIS_SERIAL_ENABLED_PLATFORM"
+
 
 
 
@@ -706,25 +722,27 @@ export CXXFLAGS="${ARCH_FLAGS} -I/usr/include/wayland -I/usr/include/libxkbcommo
 export CFLAGS="${CXXFLAGS}"
 
 # Google has a bad coding style, using a macro `NOTREACHED()` that is not properly detected by GCC
-# multiple times throughout the codebase. It is not possible to redefine the macro to __builtin_unreachable,
+# multiple times throughout the codebase (including generated code). It is not possible to redefine the macro to __builtin_unreachable,
 # as it has an astonishing syntax, behaving like an ostream (in debug builds it is supposed to trap and print an error message)
 export CXXFLAGS="${CXXFLAGS} -Wno-error=return-type"
-# As of 19.0.8, export_gin_v8platform_pageallocator_for_usage_outside_of_the_gin.patch
-# introduces non-conformant C++ code (redefinition of PageAllocator)
-# This is an Electron-specific problem that does not appear in Chromium.
-export CXXFLAGS="${CXXFLAGS} -fpermissive"
+# [ 8947s] gen/third_party/blink/renderer/bindings/modules/v8/v8_gpu_sampler_descriptor.h:212:39: error: narrowing conversion of '4294967295' from 'unsigned int' to 'float' [-Wnarrowing]
+# [ 8947s]   212 | float member_lod_max_clamp_{0xffffffff};
+# I have no idea where this code is generated, and it is not something that needs a critical fix.
+# Remove this once upstream issues a proper patch.
+export CXXFLAGS="${CXXFLAGS} -Wno-error=narrowing"
+
+# A bunch of memcpy'ing of JSObject in V8 runs us into “Logfile got too big, killed job.”
+export CXXFLAGS="${CXXFLAGS} -Wno-class-memaccess"
 
 # REDUCE DEBUG for C++ as it gets TOO large due to “heavy hemplate use in Blink”. See symbol_level below and chromium-102-compiler.patch
 export CXXFLAGS="$(echo ${CXXFLAGS} | sed -e 's/-g / /g' -e 's/-g$//g')"
 
-%ifarch %ix86 %arm
+%ifnarch x86_64
 export CFLAGS="$(echo ${CFLAGS} | sed -e 's/-g /-g1 /g' -e 's/-g$/-g1/g')"
 %endif
 
 
 export LDFLAGS="%{?build_ldflags}"
-
-
 
 
 %if %{with clang}
@@ -742,12 +760,16 @@ export RANLIB=llvm-ranlib
 
 %ifarch %ix86 %arm
 #try to reduce memory
-#%%if %{with gold}
-#export LDFLAGS="${LDFLAGS} -Wl,--no-map-whole-files -Wl,--no-keep-memory -Wl,--no-keep-files-mapped"
-#%%else
-#export LDFLAGS="${LDFLAGS} -Wl,--no-keep-memory -Wl,--hash-size=30 -Wl,--reduce-memory-overheads"
-#%%endif
+%if %{without lld}
+
+%if %{with gold}
+export LDFLAGS="${LDFLAGS} -Wl,--no-map-whole-files -Wl,--no-keep-memory -Wl,--no-keep-files-mapped"
+%else
+export LDFLAGS="${LDFLAGS} -Wl,--no-keep-memory -Wl,--hash-size=30 -Wl,--reduce-memory-overheads"
 %endif
+
+%endif #without lld
+%endif #ifarch ix86 arm
 
 
 
@@ -759,11 +781,11 @@ export AR=gcc-ar
 export NM=gcc-nm
 export RANLIB=gcc-ranlib
 %else
-export CC=gcc-10
-export CXX=g++-10
-export AR=gcc-ar-10
-export NM=gcc-nm-10
-export RANLIB=gcc-ranlib-10
+export CC=gcc-11
+export CXX=g++-11
+export AR=gcc-ar-11
+export NM=gcc-nm-11
+export RANLIB=gcc-ranlib-11
 %endif
 
 # endif with clang
@@ -787,8 +809,17 @@ export LDFLAGS="${LDFLAGS} -Wl,--as-needed -fuse-ld=mold"
 %if %{with lto} && %{without clang}
 # reduce the threads for linking even more due to LTO eating ton of memory
 _link_threads=$(((%{jobs} - 2)))
+
 %ifarch aarch64
 _link_threads=1
+
+%if %{with gold}
+export LDFLAGS="${LDFLAGS} -Wl,--no-map-whole-files -Wl,--no-keep-memory -Wl,--no-keep-files-mapped"
+%else
+export LDFLAGS="${LDFLAGS} -Wl,--no-keep-memory -Wl,--hash-size=30 -Wl,--reduce-memory-overheads"
+%endif
+
+
 %endif
 test "$_link_threads" -le 0 && _link_threads=1
 export LDFLAGS="$LDFLAGS -flto=$_link_threads --param lto-max-streaming-parallelism=1"
@@ -1010,7 +1041,11 @@ myconf_gn+=" enable_js_type_check=false"
 # symbol_level=0 disable debug
 # blink (HTML engine) and v8 (js engine) are template-heavy, trying to compile them with full debug leads to linker errors
 %ifnarch %ix86 %arm aarch64
+%if %{without lto}
 myconf_gn+=" symbol_level=2"
+%else
+myconf_gn+=" symbol_level=1"
+%endif
 myconf_gn+=" blink_symbol_level=1"
 myconf_gn+=" v8_symbol_level=1"
 %endif
@@ -1026,12 +1061,18 @@ myconf_gn+=" v8_symbol_level=1"
 %endif
 
 myconf_gn+=" use_kerberos=true"
+
+# do not build some chrome features not used by electron
 myconf_gn+=" enable_vr=false"
 myconf_gn+=" optimize_webui=false"
 myconf_gn+=" enable_reading_list=false"
 myconf_gn+=" enable_reporting=false"
 myconf_gn+=" build_with_tflite_lib=false"
 myconf_gn+=" safe_browsing_mode=0"
+myconf_gn+=" enable_captive_portal_detection=false"
+myconf_gn+=" enable_browser_speech_service=false"
+myconf_gn+=" enable_speech_service=false"
+myconf_gn+=" enable_screen_ai_service=false"
 
 #Do not build Chromecast
 myconf_gn+=" enable_remoting=false"
@@ -1151,7 +1192,8 @@ gn gen out/Release --args="import(\"//electron/build/args/release.gn\") ${myconf
 ninja -v %{?_smp_mflags} -C out/Release chromium_licenses
 ninja -v %{?_smp_mflags} -C out/Release copy_headers
 
-ninja -v %{?_smp_mflags} -C out/Release electron
+# dump the linker command line (if any) in case of failure
+ninja -v %{?_smp_mflags} -C out/Release electron || (cat out/Release/*.rsp | sed 's/ /\n/g' && false)
 
 
 

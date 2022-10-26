@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun Oct 23 12:54:08 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+- Enable LTO on x64 (Tumbleweed and Fedora only) now that it works correctly.
+  * add seccomp_bpf-no-lto.patch
+- Do not build some chromium features unused in Electron.
+- Remove upstream's tinkering with optimization flags.
+  * change chromium-102-compiler.patch
+- Remove upstream's warning suppression
+  * change chromium-102-compiler.patch
+  * add -Wno-class-memaccess due to log spam
+  * add -Wno-error=narrowing due to non-compliant generated code
+- Add -DIS_SERIAL_ENABLED_PLATFORM to work around upstream C++ ODR error.
+- Build main binary as PIE instead of PIC.
+  * change chromium-102-compiler.patch
+  * add fpic.patch
+- Compile with gcc11 (was 10) on Leap now that it's available.
+- Add backported patches
+  * compact_enc_det_generated_tables-Wnarrowing.patch
+  * half_float-Wstrict-aliasing.patch
+  * ipcz-buffer_id-Wnarrowing.patch
+  * select_file_dialog_linux_kde-Wodr.patch
+  * string_hasher-type-pun-UB-causes-heap-corruption.patch
+  * unzip-Wsubobject-linkage.patch
+  * web_contents_impl-Wsubobject-linkage.patch
+- Add patches to fix C++ bugs and submit them upstream
+  * swiftshader-Constants-Wstrict-aliasing.patch
+  * swiftshader-Half-Wstrict-aliasing.patch
+  * v8_initializer-PageAllocator-fpermissive.patch
+
+-------------------------------------------------------------------
 Thu Oct 13 04:49:15 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
 - New upstream release 21.1.1
   * Updated Chromium to 106.0.5249.103

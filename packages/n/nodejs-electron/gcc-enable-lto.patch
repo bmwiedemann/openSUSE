@@ -36,35 +36,8 @@ Index: electron-17.1.0/build/config/compiler/BUILD.gn
 +  cflags = [ "-flto=auto" ]
 +}
 +
- config("default_stack_frames") {
+ config("default_stack_frames") { }
+ config("xdefault_stack_frames") {
    if (is_posix || is_fuchsia) {
-     if (enable_frame_pointers) {
 Index: electron-17.1.0/sandbox/linux/BUILD.gn
 ===================================================================
---- electron-17.1.0.orig/sandbox/linux/BUILD.gn	2022-03-07 17:20:37.288839348 +0100
-+++ electron-17.1.0/sandbox/linux/BUILD.gn	2022-03-09 08:25:02.250701641 +0100
-@@ -245,6 +245,9 @@ component("seccomp_bpf") {
-     "//build:chromeos_buildflags",
-     "//sandbox:sandbox_buildflags",
-   ]
-+  if (gcc_lto) {
-+    configs -= [ "//build/config/compiler:gcc_lto" ]
-+  }
- 
-   if (is_android) {
-     sources += [
-Index: chromium-96.0.4664.93/base/BUILD.gn
-===================================================================     
---- a/base/BUILD.gn
-+++ b/base/BUILD.gn
-@@ -1986,6 +1986,10 @@
-     }
-   }
-
-+  if (gcc_lto) {
-+    configs -= [ "//build/config/compiler:gcc_lto" ]
-+  }
-+
-   if (use_partition_alloc) {
-     sources += [
-       "allocator/partition_allocator/address_pool_manager_unittest.cc",

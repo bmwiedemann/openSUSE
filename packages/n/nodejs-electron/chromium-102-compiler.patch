@@ -1,3 +1,15 @@
+SUSE: Disable the following:
+* Optimizer flags. Anything other than straight -O2 isn't well tested (either more or less optimization)
+  * -flto still needs to be handled by gn as it needs to be disabled for some targets,
+    and global CFLAGS go at the end of the commandline
+* Submodel options (-march and friends). Upstream notoriously forces SSE3 despite the code not requiring it.
+  * note that cpu options for ARM are currently left in, as they do not seem to do harm and V8 needs to know the exact target anyway
+* Debuginfo format. Upstream seems to force something that is not recognized by rpmbuild.
+  * per-target debuginfo level is left in as it is still useful (-g2 everywhere does not work)
+* Emitting code for the PIC model. It is needed in case of shared libraries, but results in a larger executable (and Electron is already enormous)
+  It should be enabled individually on code that gets into separate libraries (and we know when to do it — otherwise we're getting linker error)
+
+
 From 307a0f63dd9b118f4b8470ed3d7567e81fdb7a6d Mon Sep 17 00:00:00 2001
 From: Mike Gilbert <floppym@gentoo.org>
 Date: Fri, 22 Apr 2022 09:05:24 +0000
@@ -11,7 +23,7 @@ diff --git a/build/config/compiler/BUILD.gn b/build/config/compiler/BUILD.gn
 index d40843b..b92f03b 100644
 --- a/build/config/compiler/BUILD.gn
 +++ b/build/config/compiler/BUILD.gn
-@@ -286,9 +286,7 @@
+@@ -274,9 +274,7 @@
  
    configs += [
      # See the definitions below.
@@ -21,7 +33,31 @@ index d40843b..b92f03b 100644
      ":compiler_codegen",
      ":compiler_deterministic",
    ]
-@@ -522,31 +520,6 @@
+@@ -305,7 +303,12 @@
+   if (!is_win) {
+     # Common POSIX compiler flags setup.
+     # --------------------------------
+-    cflags += [ "-fno-strict-aliasing" ]  # See http://crbug.com/32204
++    # To future SUSE maintainers: Do not re-enable this, you will save yourself hours of debugging!
++    # This is an optimizer flag, not a C dialect flag to make GCC behave like clang.
++    # Despite what the -Wlto-type-mismatch warning text tells you, enabling this will NOT fix miscompiles,
++    # and seems to cause other problems in GCC12. See https://bugs.chromium.org/p/chromium/issues/detail?id=1373615#c6
++    # ANY BUGS DUE TO ALIASING SHOULD BE FIXED IN CODE, AND THE PATCHES SENT UPSTREAM!
++    # cflags += [ "-fno-strict-aliasing" ]  # See http://crbug.com/32204
+ 
+     # Stack protection.
+     if (is_apple) {
+@@ -432,9 +435,6 @@
+   # Linux/Android/Fuchsia common flags setup.
+   # ---------------------------------
+   if (is_linux || is_chromeos || is_android || is_fuchsia) {
+-    asmflags += [ "-fPIC" ]
+-    cflags += [ "-fPIC" ]
+-    ldflags += [ "-fPIC" ]
+ 
+     if (!is_clang) {
+       # Use pipes for communicating between sub-processes. Faster.
+@@ -527,31 +527,6 @@
      ldflags += [ "-Wl,-z,keep-text-section-prefix" ]
    }
  
@@ -53,7 +89,7 @@ index d40843b..b92f03b 100644
    # Rust compiler setup (for either clang or rustc).
    if (enable_rust) {
      defines += [ "RUST_ENABLED" ]
-@@ -880,7 +853,8 @@
+@@ -862,7 +837,8 @@
  # without using everything that "compiler" brings in.  Options that
  # tweak code generation for a particular CPU do not belong here!
  # See "compiler_codegen", below.
@@ -63,7 +99,7 @@ index d40843b..b92f03b 100644
    cflags = []
    ldflags = []
    defines = []
-@@ -1232,45 +1206,6 @@
+@@ -1227,45 +1203,6 @@
      }
    }
  
@@ -109,7 +145,17 @@ index d40843b..b92f03b 100644
    # Tells the compiler not to use absolute paths when passing the default
    # paths to the tools it invokes. We don't want this because we don't
    # really need it and it can mess up the goma cache entries.
-@@ -1615,7 +1541,7 @@
+@@ -1400,7 +1337,8 @@
+ # Collects all warning flags that are used by default.  This is used as a
+ # subconfig of both chromium_code and no_chromium_code.  This way these
+ # flags are guaranteed to appear on the compile command line after -Wall.
+-config("default_warnings") {
++config("default_warnings") { }
++config("xdefault_warnings") {
+   cflags = []
+   cflags_c = []
+   cflags_cc = []
+@@ -1597,7 +1535,7 @@
        defines = [ "_HAS_NODISCARD" ]
      }
    } else {
@@ -118,7 +164,7 @@ index d40843b..b92f03b 100644
      if (treat_warnings_as_errors) {
        cflags += [ "-Werror" ]
  
-@@ -1624,10 +1550,6 @@
+@@ -1606,10 +1544,6 @@
        # well.
        ldflags = [ "-Werror" ]
      }
@@ -129,7 +175,7 @@ index d40843b..b92f03b 100644
  
      # In Chromium code, we define __STDC_foo_MACROS in order to get the
      # C99 macros on Mac and Linux.
-@@ -1636,16 +1558,6 @@
+@@ -1618,16 +1552,6 @@
        "__STDC_FORMAT_MACROS",
      ]
  
@@ -146,7 +192,27 @@ index d40843b..b92f03b 100644
      if (is_mac) {
        cflags_objc = [ "-Wobjc-missing-property-synthesis" ]
        cflags_objcc = [ "-Wobjc-missing-property-synthesis" ]
-@@ -2035,7 +1948,8 @@
+@@ -1887,7 +1811,8 @@
+ # gcc 4.9 and earlier had no way of suppressing this warning without
+ # suppressing the rest of them.  Here we centralize the identification of
+ # the gcc 4.9 toolchains.
+-config("no_incompatible_pointer_warnings") {
++config("no_incompatible_pointer_warnings") { }
++config("xno_incompatible_pointer_warnings") {
+   cflags = []
+   if (is_clang) {
+     cflags += [ "-Wno-incompatible-pointer-types" ]
+@@ -1990,7 +1915,8 @@
+   }
+ }
+ 
+-config("default_stack_frames") {
++config("default_stack_frames") { }
++config("xdefault_stack_frames") {
+   if (is_posix || is_fuchsia) {
+     if (enable_frame_pointers) {
+       cflags = [ "-fno-omit-frame-pointer" ]
+@@ -2017,7 +1943,8 @@
  }
  
  # Default "optimization on" config.
@@ -156,7 +222,7 @@ index d40843b..b92f03b 100644
    if (is_win) {
      if (chrome_pgo_phase != 2) {
        # Favor size over speed, /O1 must be before the common flags.
-@@ -2073,7 +1987,8 @@
+@@ -2055,7 +1982,8 @@
  }
  
  # Turn off optimizations.
@@ -166,7 +232,7 @@ index d40843b..b92f03b 100644
    if (is_win) {
      cflags = [
        "/Od",  # Disable optimization.
-@@ -2113,7 +2028,8 @@
+@@ -2095,7 +2023,8 @@
  # Turns up the optimization level. On Windows, this implies whole program
  # optimization and link-time code generation which is very expensive and should
  # be used sparingly.
@@ -176,7 +242,7 @@ index d40843b..b92f03b 100644
    if (is_nacl && is_nacl_irt) {
      # The NaCl IRT is a special case and always wants its own config.
      # Various components do:
-@@ -2146,7 +2062,8 @@
+@@ -2128,7 +2057,8 @@
  #
  # TODO(crbug.com/621335) - rework how all of these configs are related
  # so that we don't need this disclaimer.
@@ -186,7 +252,7 @@ index d40843b..b92f03b 100644
    if (is_nacl && is_nacl_irt) {
      # The NaCl IRT is a special case and always wants its own config.
      # Various components do:
-@@ -2172,7 +2089,8 @@
+@@ -2154,7 +2084,8 @@
    }
  }
  
@@ -196,7 +262,7 @@ index d40843b..b92f03b 100644
    cflags = [ "-O1" ] + common_optimize_on_cflags
    rustflags = [ "-Copt-level=1" ]
    ldflags = common_optimize_on_ldflags
-@@ -2291,7 +2209,8 @@
+@@ -2273,7 +2204,8 @@
  }
  
  # Full symbols.
@@ -206,7 +272,7 @@ index d40843b..b92f03b 100644
    if (is_win) {
      if (is_clang) {
        cflags = [ "/Z7" ]  # Debug information in the .obj files.
-@@ -2419,7 +2338,8 @@
+@@ -2398,7 +2330,8 @@
  # Minimal symbols.
  # This config guarantees to hold symbol for stack trace which are shown to user
  # when crash happens in unittests running on buildbot.
@@ -216,7 +282,7 @@ index d40843b..b92f03b 100644
    if (is_win) {
      # Functions, files, and line tables only.
      cflags = []
-@@ -2492,7 +2412,8 @@
+@@ -2470,7 +2403,8 @@
  # This configuration contains function names only. That is, the compiler is
  # told to not generate debug information and the linker then just puts function
  # names in the final debug information.
