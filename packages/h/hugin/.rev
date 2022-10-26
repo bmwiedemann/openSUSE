@@ -603,4 +603,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1010482</requestid>
   </revision>
+  <revision rev="75" vrev="6">
+    <srcmd5>b7fea9dea5d4bb4554ec93545e4666b1</srcmd5>
+    <version>2021.0.0</version>
+    <time>1666787720</time>
+    <user>dimstar_suse</user>
+    <comment>- fixed on flann side by Stefan Brüns
+- deleted patches
+  - hugin-flann-lz4.patch (not needed) (forwarded request 1012014 from pgajdos)</comment>
+    <requestid>1031318</requestid>
+  </revision>
 </revisionlist>

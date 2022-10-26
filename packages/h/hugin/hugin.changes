@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 17 07:41:24 UTC 2022 - pgajdos@suse.com
+
+- fixed on flann side by Stefan Brüns
+- deleted patches
+  - hugin-flann-lz4.patch (not needed)
+
+-------------------------------------------------------------------
 Thu Oct  6 13:38:13 UTC 2022 - pgajdos@suse.com
 
 - require liblz4-devel temporarily for build, it should be required
