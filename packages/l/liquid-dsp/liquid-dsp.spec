@@ -1,7 +1,7 @@
 #
 # spec file for package liquid-dsp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -34,7 +34,7 @@ BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(fftw3)
-%ifnarch %{arm}
+%ifarch x86_64 aarch64
 BuildRequires:  pkgconfig(libfec)
 %endif
 
