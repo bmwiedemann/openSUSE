@@ -8060,7 +8060,6 @@ unsorted:
   - jupyter-notebook-filesystem 
   - jupyter-notebook-lang 
   - jupyter-notebook-latex 
-  - jupyter-notebook-shim 
   - jupyter-octave-kernel 
   - jupyter-panel 
   - jupyter-plotly 
@@ -22342,7 +22341,6 @@ unsorted:
   - python310-agate-sql 
   - python310-agate-stats 
   - python310-aina 
-  - python310-aiobotocore 
   - python310-aiodataloader 
   - python310-aiodns 
   - python310-aioeventlet 
@@ -24878,6 +24876,7 @@ unsorted:
   - python310-spark_parser 
   - python310-sparse 
   - python310-speaklater 
+  - python310-specfile 
   - python310-sphinx-argparse 
   - python310-sphinx-autodoc-typehints 
   - python310-sphinx-book-theme 
@@ -25583,7 +25582,6 @@ unsorted:
   - python38-agate-sql 
   - python38-agate-stats 
   - python38-aina 
-  - python38-aiobotocore 
   - python38-aiodataloader 
   - python38-aiodns 
   - python38-aioeventlet 
@@ -28924,7 +28922,6 @@ unsorted:
   - python39-agate-sql 
   - python39-agate-stats 
   - python39-aina 
-  - python39-aiobotocore 
   - python39-aiodataloader 
   - python39-aiodns 
   - python39-aioeventlet 
@@ -31559,6 +31556,7 @@ unsorted:
   - python39-spark_parser 
   - python39-sparse 
   - python39-speaklater 
+  - python39-specfile 
   - python39-sphinx-argparse 
   - python39-sphinx-autodoc-typehints 
   - python39-sphinx-book-theme 
