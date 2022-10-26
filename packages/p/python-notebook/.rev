@@ -183,4 +183,17 @@
   gh#jupyter/notebook#6501</comment>
     <requestid>992398</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>8fd68079ec2f65d655826a03d8f7e68b</srcmd5>
+    <version>6.5.1</version>
+    <time>1666787151</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.5.1
+  * fix: pin temporary to nbclassic 0.4.5 #6570 (@echarles)
+- Release 6.5.0
+  * Forward port of #6461 - Fix a typo in exception text #6545
+    (@krassowski)
+  * Normalise os_path #6540 (@krassowski)</comment>
+    <requestid>1031319</requestid>
+  </revision>
 </revisionlist>

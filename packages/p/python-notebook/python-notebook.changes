@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct 26 10:54:30 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.5.1
+  * fix: pin temporary to nbclassic 0.4.5 #6570 (@echarles)
+- Release 6.5.0
+  * Forward port of #6461 - Fix a typo in exception text #6545
+    (@krassowski)
+  * Normalise os_path #6540 (@krassowski)
+
+-------------------------------------------------------------------
 Tue Aug  2 21:19:05 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Enforce libalternatives grouping for nbclassic alternatives

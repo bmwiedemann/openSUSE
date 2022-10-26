@@ -35,7 +35,7 @@ BuildArch:      noarch
 %bcond_with libalternatives
 %endif
 Name:           python-notebook%{psuffix}
-Version:        6.4.12
+Version:        6.5.1
 Release:        0
 Summary:        Jupyter Notebook interface
 License:        BSD-3-Clause
@@ -43,7 +43,8 @@ Group:          Development/Languages/Python
 URL:            https://github.com/jupyter/notebook
 Source0:        https://files.pythonhosted.org/packages/source/n/notebook/notebook-%{version}.tar.gz
 Source100:      python-notebook-rpmlintrc
-BuildRequires:  %{python_module jupyter-core >= 4.4.0}
+BuildRequires:  %{python_module jupyter-packaging >= 0.9}
+BuildRequires:  %{python_module nbclassic >= 0.4.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros >= 20210929
 Requires:       jupyter-notebook = %{version}
@@ -54,6 +55,7 @@ Requires:       python-ipykernel
 Requires:       python-ipython_genutils
 Requires:       python-jupyter-client >= 5.3.4
 Requires:       python-jupyter-core >= 4.6.1
+Requires:       python-nbclassic
 Requires:       python-nbconvert >= 5
 Requires:       python-nbformat
 Requires:       python-prometheus_client
@@ -163,6 +165,8 @@ This package pulls in the LaTeX dependencies for the Jupyter Notebook.
 
 %prep
 %setup -q -n notebook-%{version}
+# unpin nbclassic (see https://github.com/jupyter/notebook/pull/6593)
+sed -i 's/nbclassic==/nbclassic>=/' setup.py
 
 # We don't want to run selenium tests
 rm -rf notebook/tests/selenium
