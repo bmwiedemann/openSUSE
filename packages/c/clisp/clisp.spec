@@ -1,7 +1,7 @@
 #
 # spec file for package clisp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Summary:        A Common Lisp Interpreter
 # Included gllib is GPL-3.0-or-later
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          Development/Languages/Other
-Url:            https://gitlab.com/gnu-clisp/clisp
+URL:            https://gitlab.com/gnu-clisp/clisp
 Source:         %name-%version.tar.bz2
 Source3:        clisp-rpmlintrc
 Source4:        README.SUSE
@@ -87,6 +87,8 @@ BuildRequires:  pkgconfig(zlib)
 Requires(pre):  vim
 Requires(pre):  vim-data
 Requires:       ffcall
+# CLISP memory image data are compressed with gzip
+Requires:       /usr/bin/gzip
 Provides:       %{name}-devel
 Suggests:       %{name}-doc
 
@@ -327,6 +329,7 @@ then
     type -p ip > /dev/null 2>&1 && ip link || :
     type -p ss > /dev/null 2>&1 && ss -x   || :
 fi
+
 #
 %install
 #

@@ -385,4 +385,13 @@ you may enable build for SLE &gt;= 10 (forwarded request 96955 from rudi_m)</com
     <comment>- Do not use LTO for clisp images</comment>
     <requestid>729347</requestid>
   </revision>
+  <revision rev="50" vrev="5">
+    <srcmd5>2965aeb8e86917145c5982c87728cd91</srcmd5>
+    <version>2.49.92</version>
+    <time>1666786915</time>
+    <user>dimstar_suse</user>
+    <comment>- Depends on gzip as CLISP memory image data are compressed
+  with gzip (boo#1132118). (forwarded request 1030408 from marxin)</comment>
+    <requestid>1031152</requestid>
+  </revision>
 </revisionlist>
