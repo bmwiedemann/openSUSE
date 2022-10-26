@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
 Name:           python-tox
 Version:        3.26.0
 Release:        0
@@ -68,9 +66,6 @@ BuildRequires:  %{python_module pytest >= 4.0.0}
 BuildRequires:  %{python_module pytest-mock >= 1.10.0}
 BuildRequires:  %{python_module pytest-randomly >= 1.0.0}
 BuildRequires:  %{python_module pytest-xdist >= 1.22.2}
-%if %{with python2}
-BuildRequires:  python-pathlib2 >= 2.3.3
-%endif
 # /SECTION
 %if "%{python_flavor}" == "python3" || "%{?python_provides}" == "python3"
 Provides:       tox = %{version}
@@ -118,10 +113,6 @@ donttest+=" or test_different_config_cwd"
 donttest+=" or test_toxuone_env"
 donttest+=" or test_isolated_build_backend_missing_hook"
 donttest+=" or test_parallel_live or (test_parallel and not test_parallel_)"
-%if %{with python2}
-# wants to install pathlib2 wheel on python2
-donttest+=" or test_build_backend_without_submodule"
-%endif
 
 %{python_expand # tests expect an active virtualenv with a clean python name as sys.executable
 virtualenv-%{$python_bin_suffix} --system-site-packages testenv-%{$python_bin_suffix}

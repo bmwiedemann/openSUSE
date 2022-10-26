@@ -541,4 +541,13 @@ please add to Staging:E, should fix the tox failure</comment>
     <comment></comment>
     <requestid>1010419</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>f51a7862d2d577e87da119c03d2d40c6</srcmd5>
+    <version>3.26.0</version>
+    <time>1666780297</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove python2-related parts of the SPEC file.
+</comment>
+    <requestid>1031190</requestid>
+  </revision>
 </revisionlist>
