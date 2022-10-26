@@ -16,16 +16,16 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 Name:           python-jupyter-kernel-test
-Version:        0.4.3
+Version:        0.4.5
 Release:        0
 Summary:        A tool for testing Jupyter kernels
 License:        BSD-3-Clause
 URL:            https://github.com/jupyter/jupyter_kernel_test
 Source:         https://files.pythonhosted.org/packages/source/j/jupyter_kernel_test/jupyter_kernel_test-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.6}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module hatchling >= 1.5}
+BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-jsonschema
@@ -48,10 +48,10 @@ successful code execution and conformance with the Jupyter Messaging Protocol.
 %setup -q -n jupyter_kernel_test-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

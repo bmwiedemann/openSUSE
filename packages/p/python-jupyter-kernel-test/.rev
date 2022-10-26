@@ -7,4 +7,18 @@
     <comment>required by python-octave-kernel again. Upstream resumed maintainenance again</comment>
     <requestid>965093</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>dc750362070e031cd8cd9343058929a0</srcmd5>
+    <version>0.4.5</version>
+    <time>1666786917</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.5
+  * Switch to hatch backend #100 (@blink1073)
+  * Fix flake8 v5 compat #95 (@blink1073)
+  * Adopt flake8 and update ci #75 (@blink1073)
+  * Add git-blame-ignore-revs #74 (@blink1073)
+  * Drop support for py36 #72 (@blink1073)
+  * Fix typos #71 (@martinRenou)</comment>
+    <requestid>1031310</requestid>
+  </revision>
 </revisionlist>

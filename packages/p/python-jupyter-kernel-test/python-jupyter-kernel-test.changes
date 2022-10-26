@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct 26 10:26:11 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.4.5
+  * Switch to hatch backend #100 (@blink1073)
+  * Fix flake8 v5 compat #95 (@blink1073)
+  * Adopt flake8 and update ci #75 (@blink1073)
+  * Add git-blame-ignore-revs #74 (@blink1073)
+  * Drop support for py36 #72 (@blink1073)
+  * Fix typos #71 (@martinRenou)
+
+-------------------------------------------------------------------
 Sat Mar 26 20:26:54 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Initial specfile for 0.4.3 
