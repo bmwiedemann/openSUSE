@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 25 08:20:20 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Revert use of internal PMIx and hwloc library
+  - Using external libraries disables the build of all process managers
+
+-------------------------------------------------------------------
 Mon Oct 17 09:02:43 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Disable valgrind on ppc64 to fix build dependency issues.

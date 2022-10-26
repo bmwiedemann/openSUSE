@@ -261,7 +261,6 @@ Patch2:         autoconf-pull-dynamic-and-not-static-libs-from-pkg-config.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 BuildRequires:  fdupes
-BuildRequires:  hwloc-devel >= 1.6
 BuildRequires:  libjson-c-devel
 BuildRequires:  libtool
 BuildRequires:  pkg-config
@@ -275,7 +274,6 @@ BuildRequires:  libnuma-devel
 BuildRequires:  libtool
 BuildRequires:  libtool
 BuildRequires:  mpi-selector
-BuildRequires:  pmix-devel
 BuildRequires:  python3-devel
 BuildRequires:  sysfsutils
 
@@ -405,7 +403,7 @@ export FFLAGS="-fallow-argument-mismatch $FFLAGS"
 export FCFLAGS="-fallow-argument-mismatch $FCFLAGS"
 %endif
 
-./autogen.sh --without-ucx --without-ofi --without-json --without-hwloc
+./autogen.sh --without-ucx --without-ofi --without-json
 %{?with_hpc:%hpc_debug}
 %if %{with hpc}
 %{hpc_setup}
@@ -424,8 +422,6 @@ export FCFLAGS="-fallow-argument-mismatch $FCFLAGS"
     --docdir=%{_datadir}/doc/%{name} \
     --disable-rpath      \
     --disable-wrapper-rpath      \
-    --with-hwloc \
-    --with-pmix \
 %if "%{build_flavor}" == "ofi"
    --with-ofi \
    --with-device=ch4:ofi \
