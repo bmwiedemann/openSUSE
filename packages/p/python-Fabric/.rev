@@ -364,4 +364,12 @@
   * Drop install_requires on pathlib2.</comment>
     <requestid>993698</requestid>
   </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>98518b4fcc3b0d10967be56bf5070715</srcmd5>
+    <version>2.7.1</version>
+    <time>1666780299</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove conditional definition of python_module.</comment>
+    <requestid>1031201</requestid>
+  </revision>
 </revisionlist>
