@@ -1,8 +1,10 @@
---- doc/Makefile.am
-+++ doc/Makefile.am
-@@ -41,12 +41,12 @@
- 	test -f CT_data.3  || $(LN_S) ctapi.3 CT_data.3 && \
- 	test -f CT_close.3 || $(LN_S) ctapi.3 CT_close.3)
+diff --git a/doc/Makefile.am b/doc/Makefile.am
+index 3752c9c..c04859e 100644
+--- a/doc/Makefile.am
++++ b/doc/Makefile.am
+@@ -41,12 +41,12 @@ install-data-hook:
+ 	test -f CT_data.3  || $(LN_S) $(shell echo ctapi | sed '$(transform)').3 CT_data.3 && \
+ 	test -f CT_close.3 || $(LN_S) $(shell echo ctapi | sed '$(transform)').3 CT_close.3)
  if INSTALL_USB_BUNDLE
 -	install -D -m 644 Info.plist "@PCSC_LITE_DIR@/drivers/towitoko.bundle/Contents/Info.plist"
 +	install -D -m 644 Info.plist "@PCSC_LITE_DIR@/towitoko.bundle/Contents/Info.plist"
@@ -15,9 +17,11 @@
 +	rm -f "@PCSC_LITE_DIR@/towitoko.bundle/Contents/Info.plist"
  endif
  
---- src/driver/Makefile.am
-+++ src/driver/Makefile.am
-@@ -37,13 +37,13 @@
+diff --git a/src/driver/Makefile.am b/src/driver/Makefile.am
+index c17a761..30c3879 100644
+--- a/src/driver/Makefile.am
++++ b/src/driver/Makefile.am
+@@ -37,13 +37,13 @@ libtowitoko_la_LIBADD = $(top_builddir)/src/ct-api/libtowitoko-ctapi.la \
  
  install-exec-hook:
  if INSTALL_USB_BUNDLE

@@ -1,7 +1,7 @@
 #
 # spec file for package pcsc-towitoko
 #
-# Copyright (c) 2011 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,29 +12,28 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# norootforbuild
 
-
-Name:           pcsc-towitoko
-BuildRequires:  libtool pcsc-lite-devel pkg-config
 %define _name towitoko
-Version:        2.0.7
-Release:        182
-Group:          Productivity/Security
-License:        LGPL-2.1+
-Url:            http://www.geocities.com/cprados
+%define scdir %(pkg-config libpcsclite --variable=usbdropdir)
+Name:           pcsc-towitoko
+Version:        2.0.8
+Release:        0
 Summary:        PCSC driver for Towitoko Smart Card Readers
-Source:         %{_name}-%{version}.tar.bz2
-Patch:          %{_name}-%{version}-install.diff
-Patch1:         %{_name}-destdir.patch
-Patch2:         towitoko-2.0.7-implicit-decls.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+License:        LGPL-2.1-or-later
+Group:          Productivity/Security
+URL:            https://github.com/cprados/towitoko-linux
+Source:         https://github.com/cprados/towitoko-linux/archive/refs/tags/v%{version}.tar.gz
+Patch1:         %{_name}-%{version}-install.diff
+Patch2:         %{_name}-destdir.patch
+Patch3:         towitoko-%{version}-implicit-decls.patch
+BuildRequires:  libtool
+BuildRequires:  pcsc-lite-devel
+BuildRequires:  pkgconfig
 Requires:       pcsc-lite
 Supplements:    modalias(usb:v067Bp2303d*dc*dsc*dp*ic*isc*ip*)
-%define ifddir %(pkg-config libpcsclite --variable=usbdropdir)
 
 %description
 This package contains a driver for Towitoko Chipdrive Micro, Extern,
@@ -46,15 +45,7 @@ pcsc-lite package.
 Please note, that many modern Towitoko readers are supported by the
 openct package.
 
-
-
-Authors:
---------
-    Carlos Prados <cprados@yahoo.com>
-    David Corcoran <corcoran@linuxnet.com>
-
 %package -n libtowitoko2
-License:        LGPL-2.1+
 Summary:        Library for PCSC driver for Towitoko Smart Card Readers
 Group:          System/Libraries
 
@@ -68,15 +59,7 @@ pcsc-lite package.
 Please note, that many modern Towitoko readers are supported by the
 openct package.
 
-
-
-Authors:
---------
-    Carlos Prados <cprados@yahoo.com>
-    David Corcoran <corcoran@linuxnet.com>
-
 %package devel
-License:        LGPL-2.1+
 Summary:        PCSC driver for Towitoko Smart Card Readers
 Group:          Development/Libraries/C and C++
 Requires:       libtowitoko2 = %{version}
@@ -91,55 +74,40 @@ pcsc-lite package.
 Please note, that many modern Towitoko readers are supported by the
 openct package.
 
-
-
-Authors:
---------
-    Carlos Prados <cprados@yahoo.com>
-    David Corcoran <corcoran@linuxnet.com>
-
 %prep
-%setup -q -n %{_name}-%{version}
-%patch
-%patch1
-%patch2
+%setup -q -n %{_name}-linux-%{version}
+%autopatch -p1
 
 %build
 autoreconf -f -i
 %configure\
 	--includedir=%{_includedir}/PCSC/towitoko\
-	--with-pcsc-lite-dir=%{ifddir}\
+	--with-pcsc-lite-dir=%{scdir}\
 	--enable-win32-com\
 	--enable-usb-bundle
-make %{?jobs:-j%jobs}
+%make_build
 
 %install
-%makeinstall
-mv $RPM_BUILD_ROOT%{_bindir}/tester $RPM_BUILD_ROOT%{_bindir}/towitoko-tester
-
-%clean
-rm -rf $RPM_BUILD_ROOT
+%make_install
+mv %{buildroot}%{_bindir}/tester %{buildroot}%{_bindir}/towitoko-tester
 
 %post -n libtowitoko2 -p /sbin/ldconfig
-
 %postun -n libtowitoko2 -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS COPYING ChangeLog NEWS README THANKS
+%license COPYING
+%doc AUTHORS ChangeLog NEWS README THANKS
 %{_bindir}/*
-%{ifddir}/*
+/%{scdir}/*
 
 %files -n libtowitoko2
-%defattr(-,root,root)
 %{_libdir}/libtowitoko.so.2
 %{_libdir}/libtowitoko.so.2.*
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/PCSC/*
 %{_libdir}/*.so
 %{_libdir}/*.*a
-%doc %{_mandir}/man3/*.*
+%{_mandir}/man3/*.*
 
 %changelog
