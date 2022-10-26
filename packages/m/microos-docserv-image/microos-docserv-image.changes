@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 26 07:02:21 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable build on armv6
+
+-------------------------------------------------------------------
 Mon Oct 24 09:05:40 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Use offline mode for container

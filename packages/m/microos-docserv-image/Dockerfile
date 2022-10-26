@@ -3,7 +3,7 @@
 #!BuildTag: opensuse/microos-docserv:latest
 #!BuildTag: opensuse/microos-docserv:%PKG_VERSION%-%RELEASE%
 #!UseOBSRepositories
-#!ExcludeArch: i586 s390
+#!ExcludeArch: i586 s390 armv6l armv6hl
 
 FROM opensuse/tumbleweed AS build-stage
 WORKDIR /src
