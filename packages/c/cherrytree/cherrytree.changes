@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Oct 24 15:55:22 UTC 2022 - malcolmlewis@opensuse.org
+
+- Update to version 0.99.51:
+  * Added support for building unit tests with local gtest/gmock
+    libraries in new cmake option USE_SHARED_GTEST_GMOCK,
+    (gh#giuspen/cherrytree#2089)
+  * Fixed import from zim, (gh#giuspen/cherrytree#1870).
+  * Fix after getting rid os stringstream.
+  * Dropped support for pandoc as implementation relies on
+    std::stringstream which is not to be used.
+  * Fixed inconsistency between codebox width displayed and printed
+    to pdf with auto expand enabled.
+  * Translation updates.
+
+-------------------------------------------------------------------
 Sun Oct 16 14:28:10 UTC 2022 - malcolmlewis@opensuse.org
 
 - Update to version 0.99.50+8:
