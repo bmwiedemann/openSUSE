@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 25 14:16:58 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * maven-javadoc-plugin-ioexception.patch
+    + allow building with wider range of plexus-utils versions,
+      including the 3.5.0 that does not declare IOException as
+      thrown in functions where it is actually not thrown. 
+
+-------------------------------------------------------------------
 Fri May 13 09:41:52 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Fix build with modello 2.0.0
