@@ -31,7 +31,7 @@
 %bcond_with libalternatives
 %endif
 Name:           python-jupyter-server%{psuffix}
-Version:        1.18.1
+Version:        1.21.0
 Release:        0
 Summary:        The backend to Jupyter web applications
 License:        BSD-3-Clause
@@ -94,7 +94,7 @@ Summary:        The backend to Jupyter web applications - test requirements
 Group:          Development/Languages/Python
 Requires:       python-ipykernel
 Requires:       python-jupyter-server = %{version}
-Requires:       python-pytest >= 6
+Requires:       python-pytest >= 7
 Requires:       python-pytest-console-scripts
 Requires:       python-pytest-mock
 Requires:       python-pytest-timeout

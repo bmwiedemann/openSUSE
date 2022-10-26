@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Oct 26 10:32:16 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.21.0
+  * Handle client 8 pending kernels #1014 (@blink1073)
+- Release 1.19.1
+  * Wrap the concurrent futures in an asyncio future #1000
+    (@blink1073)
+- Release 1.19.0
+  * New features added
+    + Backport Inject session identifier into environment variable
+      #920 (@vidartf)
+  * Enhancements made
+    + Backport #981: Make it easier to pass custom env variables to
+      kernel #994 (@divyansshhh)
+    + Retry certain errors between server and gateway #944
+      (@kevin-bates)
+  * Bugs fixed
+    + Backport PR #965: Correct content-type headers #966
+      (@epignot)
+    + avoid creating asyncio.Lock at import time #935 (@minrk)
+    + Fix c.GatewayClient.url snippet syntax #917 (@rickwierenga)
+    + Add back support for kernel launch timeout pad #910
+      (@CiprianAnton)
+  * Maintenance and upkeep improvements
+    + Test with client 8 updates #992 (@blink1073)
+    + Backport PR #922: Improve logging of bare exceptions etc.
+      #926 (@thetorpedodog)
+    + Fix handling of dev version #913 (@blink1073)
+    + Fix owasp link #908 (@blink1073)
+
+-------------------------------------------------------------------
 Fri Aug  5 19:58:24 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Add missing pytest-timeout in -test package
