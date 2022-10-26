@@ -20,15 +20,13 @@
 %bcond_without crowdin_integration
 %bcond_with bundled_deps
 Name:           poedit
-Version:        3.2
+Version:        3.2.1
 Release:        0
 Summary:        Gettext Catalog Editing Tool
 License:        MIT
 Group:          Development/Tools/Other
 URL:            https://poedit.net/
 Source:         https://github.com/vslavik/poedit/releases/download/v%{version}-oss/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM poedit-3.2-fix-file-save.patch -- Fix wrong error displayed on file save (gh#vslavik/poedit!772)
-Patch0:         poedit-3.2-fix-file-save.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_iostreams-devel >= 1.60

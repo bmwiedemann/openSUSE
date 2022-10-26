@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 25 19:33:10 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Poedit 3.2.1: Fixed chown/chmod verification logic broken in 3.2.
+- Remove poedit-3.2-fix-file-save.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Fri Oct 21 20:30:45 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Poedit 3.2:
