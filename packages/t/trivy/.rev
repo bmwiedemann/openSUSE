@@ -549,4 +549,12 @@
   * chore(deps): bump github.com/open-policy-agent/opa from 0.43.0 to 0.43.1 (#2902)</comment>
     <requestid>1006699</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>5815d3b69b56e882fabe0a093fa9ee48</srcmd5>
+    <version>0.33.0</version>
+    <time>1666780315</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1031258</requestid>
+  </revision>
 </revisionlist>

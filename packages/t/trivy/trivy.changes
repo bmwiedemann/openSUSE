@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Wed Oct 26 05:22:55 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.33.0:
+  * refactor(k8s): custom reports (#3076)
+  * fix(misconf): Bump in-toto-golang with correct CycloneDX predicate (#3068)
+  * feat(image): add support for passing architecture and OS (#3012)
+  * test: disable containerd integration tests for non-amd64 arch (#3073)
+  * feat(server): Add support for client/server mode to rootfs command (#3021)
+  * feat(vuln): support non-packaged binaries (#3019)
+  * feat: compliance reports (#2951)
+  * fix(flag): disable flag parsing for each plugin command (#3074)
+  * feat(nodejs): add support dependency location for yarn.lock files (#3016)
+  * chore: Switch github.com/liamg dependencies to github.com/aquasecurity (#3069)
+  * feat: add k8s components (#2589)
+  * fix(secret): update the regex for secrets scanning (#2964)
+  * chore(deps): bump github.com/samber/lo from 1.27.1 to 1.28.2 (#2979)
+  * fix: bump trivy-kubernetes (#3064)
+  * docs: fix missing 'image' subcommand (#3051)
+  * chore: Patch golang x/text vulnerability (#3046)
+  * chore: add licensed project logo (#3058)
+  * feat(ubuntu): set Ubuntu 22.10 EOL (#3054)
+  * refactor(analyzer): use strings.TrimSuffix instead of strings.HasSuffix (#3028)
+  * feat(report): Use understandable value for shortDescription in SARIF reports (#3009)
+  * docs(misconf): fix typo (#3043)
+  * feat: add support for scanning azure ARM (#3011)
+  * feat(report): add location.message to SARIF output (#3002) (#3003)
+  * chore(deps): bump github.com/aws/aws-sdk-go from 1.44.95 to 1.44.109 (#2980)
+  * feat(nodejs): add dependency line numbers for npm lock files (#2932)
+  * test(fs): add `--skip-files`, `--skip-dirs` (#2984)
+  * docs: add Woodpecker CI integrations example (#2823)
+  * chore(deps): bump github.com/sigstore/rekor from 0.12.0 to 0.12.2 (#2981)
+  * chore(deps): bump github.com/liamg/memoryfs from 1.4.2 to 1.4.3 (#2976)
+  * chore(deps): bump github.com/spf13/viper from 1.12.0 to 1.13.0 (#2975)
+  * chore(deps): bump github.com/caarlos0/env/v6 from 6.10.0 to 6.10.1 (#2982)
+  * fix(sbom): ref generation if serialNumber is empty when input is cyclonedx file (#3000)
+  * fix(java): don't stop parsing jar file when wrong inner jar is found (#2989)
+  * fix(sbom): use nuget purl type for dotnet-core (#2990)
+  * perf: retrieve rekor entries in bulk (#2987)
+  * feat(aws): Custom rego policies for AWS scanning (#2994)
+  * docs: jq cli formatting (#2881)
+  * docs(repo): troubleshooting $TMPDIR customization (#2985)
+  * chore(deps): bump actions/cache from 3.0.8 to 3.0.9 (#2969)
+  * chore(deps): bump actions/stale from 5 to 6 (#2970)
+  * chore(deps): bump sigstore/cosign-installer from 2.5.1 to 2.7.0 (#2971)
+  * chore(deps): bump helm/chart-testing-action from 2.3.0 to 2.3.1 (#2972)
+  * chore(deps): bump helm/kind-action from 1.3.0 to 1.4.0 (#2973)
+  * chore: run `go fmt` (#2897)
+  * chore(go): updates wazero to 1.0.0-pre.2 (#2955)
+  * fix(aws): Less function for slice sorting always returns false #2967
+  * fix(java): fix unmarshal pom exclusions (#2936)
+
+-------------------------------------------------------------------
 Wed Sep 28 13:42:03 UTC 2022 - dmueller@suse.com
 
 - Update to version 0.32.1:
