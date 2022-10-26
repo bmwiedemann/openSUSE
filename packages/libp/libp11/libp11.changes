@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Oct 17 01:22:26 UTC 2022 - Jason Sikes <jsikes@suse.com>
+
+- Update to 0.4.12:
+  * Fixed using an explicitly provided PIN regardless of the secure login flag (Alon Bar-Lev)
+  * Fixed RSA_PKCS1_PADDING handling (Michał Trojnara)
+  * Fixed a crash on LLP64, including 64-bit Windows (Małgorzata Olszówka)
+  * Fixed searching objects when both ID and label are specified (minfrin)
+  * Fixed the OAEP "source" parameter (S-P Chan)
+  * Fixed object searching by label (Michał Trojnara)
+  * Fixed thread safety in slot enumeration (Michał Trojnara)
+  * Fixed storing certificates on tokens (Mateusz Kwiatkowski)
+  * Fixed several memory leaks (Michał Trojnara, Jakub Jelen, Timo Teräs)
+  * Fixed OpenSSL 3.0 compatibility (Jakub Jelen)
+  * Fixed LibreSSL compatibility (orbea, patchMonkey156)
+  * Major concurrency improvements and refactoring (Timo Teräs)
+  * Added re-numeration of slots as an engine control command (Markus Koetter)
+  * Added the PKCS11_update_slots() API function (Timo Teräs)
+  * Added support for the SHA3 hash function (alegon01)
+  * Added a self-test for engine RSA operations (Uri Blumenthal)
+
+-------------------------------------------------------------------
 Thu Nov 26 12:00:19 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.4.11:

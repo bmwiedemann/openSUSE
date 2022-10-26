@@ -1,7 +1,7 @@
 #
 # spec file for package libp11
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %define libname libp11-3
 %endif
 Name:           libp11
-Version:        0.4.11
+Version:        0.4.12
 Release:        0
 Summary:        Library Implementing a Small Layer on Top of PKCS#11 API
 License:        LGPL-2.1-or-later
@@ -113,7 +113,7 @@ echo %{libname} > %{_sourcedir}/baselibs.conf
   --disable-silent-rules \
 	--enable-doc\
 	--docdir=%{_docdir}/%{libname}
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
