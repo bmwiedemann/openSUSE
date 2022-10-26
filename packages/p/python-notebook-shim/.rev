@@ -9,4 +9,16 @@
 (supersede: remove stray _multibuild)</comment>
     <requestid>980926</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>128472eb159815378732b18e4bf3cb75</srcmd5>
+    <version>0.2.0</version>
+    <time>1666787154</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.2
+  * raise ceiling on jupyter_server dependency to &lt; 3 #12
+  * remove dev version #15
+  * switch to hatch build backend #14
+- Remove jupyter subpackage: no config installed anymore</comment>
+    <requestid>1031321</requestid>
+  </revision>
 </revisionlist>

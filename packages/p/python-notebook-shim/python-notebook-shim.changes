@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct 26 11:19:48 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to v0.2
+  * raise ceiling on jupyter_server dependency to < 3 #12
+  * remove dev version #15
+  * switch to hatch build backend #14
+- Remove jupyter subpackage: no config installed anymore
+
+-------------------------------------------------------------------
 Sun Jun  5 17:26:42 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Initial specfile for v0.1
