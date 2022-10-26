@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Tue Oct 25 09:48:05 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to version v0.8.0
+  * Added Specfile.update_tag() method that allows updating tag values while
+    trying to preserve macro expansions. You can watch a demo on YouTube.
+    (#101)
+- 0.7.0
+  * It is now possible to filter changelog entries by specifying lower bound
+    EVR, upper bound EVR or both. (#104)
+  * Added support for filenames specified in source URL fragments, for example:
+    https://example.com/foo/1.0/download.cgi#/%{name}-%{version}.tar.gz (#100)
+
+-------------------------------------------------------------------
+Sat Sep 17 04:08:46 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v0.6.0
+
