@@ -17,14 +17,14 @@
 
 
 Name:           fuzzel
-Version:        1.7.0
+Version:        1.8.0
 Release:        0
 Summary:        A Wayland-native application launcher, similar to rofi's drun mode
 License:        MIT
 Group:          System/X11/Utilities
 URL:            https://codeberg.org/dnkl/fuzzel
 Source:         https://codeberg.org/dnkl/fuzzel/archive/%{version}.tar.gz
-BuildRequires:  meson >= 0.48.0
+BuildRequires:  meson >= 0.58
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  scdoc
@@ -56,7 +56,13 @@ Zsh command-line completion support for %{name}
 
 %build
 export CFLAGS="%{optflags}"
+%if 0%{?sle_version} == 150400 && 0%{?is_opensuse}
+# For whatever reason, meson >= 0.58 should already support the c18 standard.
+# Setting it to none.
+%meson -Denable-cairo=enabled -Dpng-backend=libpng -Dsvg-backend=nanosvg -Dc_std=none
+%else
 %meson -Denable-cairo=enabled -Dpng-backend=libpng -Dsvg-backend=nanosvg
+%endif
 
 %meson_build
 
@@ -68,8 +74,14 @@ export CFLAGS="%{optflags}"
 %license %{_datadir}/doc/%{name}/LICENSE
 %doc %{_datadir}/doc/%{name}/README.md
 %{_datadir}/doc/%{name}/CHANGELOG.md
+
 %{_bindir}/%{name}
+
 %{_mandir}/man1/%{name}.1%{?ext_man}
+%{_mandir}/man5/%{name}.ini.5%{?ext_man}
+
+%dir %{_sysconfdir}/xdg/%{name}
+%config(noreplace) %{_sysconfdir}/xdg/%{name}/%{name}.ini
 
 %files zsh-completion
 %dir %{_datadir}/zsh/

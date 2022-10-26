@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Tue Oct 25 22:22:00 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 1.8.0:
+  - Added:
+    * Support for file based configuration.
+    * Customizable key bindings.
+    * "Custom" key bindings (like Rofi’s `kb-custom-N` key
+      bindings).
+    * If `argv[0]` is _dmenu_, fuzzel now starts in dmenu mode.
+    * `--password=[CHARACTER]` command line option. Intended to be used
+      with “password input”; all typed text is rendered as _CHARACTER_,
+      defaulting to `*` if _CHARACTER_ is omitted.
+    * `Ctrl+y` binding to execute selected entry.
+    * `Ctrl+j`/`Ctrl+k` binding to move to the next/previous item.
+    * Escape sequences in `Exec` arguments are now supported.
+    * Quoted environment variables in `Exec` arguments are now supported.
+    * Multiple space-separated search words can now be entered at the prompt.
+    * `-M,--selection-match-color`, that lets you configure the color of
+      matched substrings of the currently selected item
+    * New config option `image-size-ratio`, allowing you to control the
+      size of the large image displayed when there are only a “few”
+      matches.
+    * Support for icons in dmenu mode, using Rofi’s extended dmenu
+      protocol.
+    * `--layer` command line option, allowing you to choose which layer to
+      render the fuzzel window on (`top` or `overlay`).
+    * `--no-exit-on-keyboard-focus-loss` command line option
+      (`exit-on-keyboard-focus-loss` config option).
+  
+  - Changed:
+    * `-i` is now **ignored**. This is to increase compatibility with
+      other similar utilities. To set the icon theme, either use the long
+      option (`--icon-theme=THEME`), or set it in the configuration file
+      (default: `$XDG_CONFIG_HOME/fuzzel/fuzzel.ini`).
+    * Minimum required meson version is now 0.58.
+    * libpng warnings are now routed through fuzzel’s logging
+      ([#101][101]).
+    * Nanosvg is now the default SVG backend. librsvg is still supported,
+      and can be used by setting the `-Dsvg-backend=librsvg` meson option.
+    * It is no longer necessary to close stdin when using fuzzel in dmenu
+      mode, as long as `--no-run-if-empty` is **not** being used.
+    * Improved performance of initial rendering of icons.
+    * `--terminal` now defaults to `$TERMINAL -e`.
+    * Font shaping is now applied to the prompt
+    * The large image displayed when there are only a “few” matches is now
+      smaller by default.
+    * Swapped meaning of the command line options `-p` and `-P`; `-p` is
+      now the short option for `--prompt`.
+    * Do not add icon-sized padding on the left size in dmenu mode.
+    * Color config values are now allowed to be prefixed with `#`.
+  
+  - Fixed:
+    * User `.desktop` entries with `NoDisplay=true` not overriding system
+      entries.
+    * Icon lookup is now better at following the XDG specification.
+    * Backspace removes not only the previous character, but also
+      everything **after** the cursor.
+    * Crash on exit in dmenu mode when selection list is empty.
+    * Keypad `enter` not executing the selected entry
+  
+- Fix build for meson having issue with c18 standard in spec by
+  setting it to none. C18 standard is already supported in
+  meson long before version 0.58.
+
+-------------------------------------------------------------------
 Fri Apr 22 00:08:14 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - remove librsvg-2.0 as build dependency:
