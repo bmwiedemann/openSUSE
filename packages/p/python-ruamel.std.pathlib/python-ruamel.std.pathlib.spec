@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ruamel.std.pathlib
 Version:        0.9.2
 Release:        0
@@ -30,9 +29,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-ruamel.base >= 1.0.0+post1
 BuildArch:      noarch
-%ifpython2
-Requires:       python-pathlib2
-%endif
 %python_subpackages
 
 %description
