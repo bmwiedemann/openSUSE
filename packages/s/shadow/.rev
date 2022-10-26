@@ -758,4 +758,14 @@
   * Use &quot;extern &quot;C&quot;&quot; to make libsubid easier to use from C++</comment>
     <requestid>999092</requestid>
   </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>c4b39e6a87eb3147c02c4dba18ea22f9</srcmd5>
+    <version>4.12.3</version>
+    <time>1666780272</time>
+    <user>dimstar_suse</user>
+    <comment>- Add shadow-prefix-overflow.patch:
+  Fix buffer overflow when calling useradd with --prefix
+  See https://github.com/shadow-maint/shadow/pull/588</comment>
+    <requestid>1030965</requestid>
+  </revision>
 </revisionlist>

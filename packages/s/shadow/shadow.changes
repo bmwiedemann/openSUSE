@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 24 22:04:41 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Add shadow-prefix-overflow.patch:
+  Fix buffer overflow when calling useradd with --prefix
+  See https://github.com/shadow-maint/shadow/pull/588
+
+-------------------------------------------------------------------
 Mon Aug 22 13:59:35 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.12.3:

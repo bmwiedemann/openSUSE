@@ -59,6 +59,8 @@ Patch7:         shadow-login_defs-suse.patch
 Patch8:         useradd-userkeleton.patch
 # PATCH-FIX-SUSE disable_new_audit_function.patch adam.majer@suse.de -- Disable newer libaudit functionality for older distributions.
 Patch9:         disable_new_audit_function.patch
+# PATCH-FIX-UPSTREAM  shadow-prefix-overflow.patch mvetter@suse.com -- Fix buffer overflow when using --prefix in useradd
+Patch10:        https://github.com/shadow-maint/shadow/commit/eaebea55a495a56317ed85e959b3599f73c6bdf2.patch#/shadow-prefix-overflow.patch
 BuildRequires:  audit-devel > 2.3
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -129,6 +131,7 @@ Development files for libsubid4.
 %if 0%{?suse_version} < 1330
 %patch9 -p1
 %endif
+%patch10 -p1
 
 iconv -f ISO88591 -t utf-8  doc/HOWTO > doc/HOWTO.utf8
 mv -v doc/HOWTO.utf8 doc/HOWTO
