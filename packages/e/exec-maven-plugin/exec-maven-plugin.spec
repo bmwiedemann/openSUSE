@@ -24,6 +24,7 @@ License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://www.mojohaus.org/exec-maven-plugin/
 Source0:        https://repo1.maven.org/maven2/org/codehaus/mojo/exec-maven-plugin/%{version}/exec-maven-plugin-%{version}-source-release.zip
+Patch0:         exec-maven-plugin-ioexception.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  unzip
@@ -53,6 +54,7 @@ API documentation for %{name}.
 
 %prep
 %setup -q -n exec-maven-plugin-%{version}
+%patch0 -p1
 
 sed -i 's/\r$//' LICENSE.txt
 find . -name *.jar -delete

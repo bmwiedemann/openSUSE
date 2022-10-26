@@ -1,0 +1,12 @@
+diff -urEbwB exec-maven-plugin-3.0.0.orig/src/main/java/org/codehaus/mojo/exec/ExecMojo.java exec-maven-plugin-3.0.0/src/main/java/org/codehaus/mojo/exec/ExecMojo.java
+--- exec-maven-plugin-3.0.0.orig/src/main/java/org/codehaus/mojo/exec/ExecMojo.java	2022-10-25 15:44:52.358398144 +0200
++++ exec-maven-plugin-3.0.0/src/main/java/org/codehaus/mojo/exec/ExecMojo.java	2022-10-25 15:49:53.360427182 +0200
+@@ -505,7 +505,7 @@
+                 enviro.put( (String) entry.getKey(), (String) entry.getValue() );
+             }
+         }
+-        catch ( IOException x )
++        catch ( Exception x )
+         {
+             getLog().error( "Could not assign default system enviroment variables.", x );
+         }

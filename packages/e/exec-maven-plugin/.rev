@@ -23,4 +23,12 @@
     <comment>appease darix</comment>
     <requestid>988611</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>33ecbe941a9d7c140a65c1b8714a7d5f</srcmd5>
+    <version>3.0.0</version>
+    <time>1666780289</time>
+    <user>dimstar_suse</user>
+    <comment>fix build with plexus-utils 3.5.0</comment>
+    <requestid>1031162</requestid>
+  </revision>
 </revisionlist>
