@@ -173,7 +173,7 @@ For manual creation of the database, the folowing steps are to be performed:
 
 As result you will have a bare Tryton database with the base modules installed.
 
-See: http://doc.tryton.org/4.2/trytond/doc/topics/configuration.html
+See: https://docs.tryton.org/projects/server/en/latest/topics/configuration.html#topics-configuration
 
 Installation of the Webfrontend for tryton (sao) from source
 ------------------------------------------------------------

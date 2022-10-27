@@ -20,7 +20,7 @@
 %define majorver 6.0
 %define base_name tryton
 Name:           trytond
-Version:        %{majorver}.21
+Version:        %{majorver}.22
 Release:        0
 Summary:        An Enterprise Resource Planning (ERP) system
 License:        GPL-3.0-or-later
@@ -45,6 +45,7 @@ BuildRequires:  python3-python-sql >= 0.5
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-wrapt
 
+Requires:       graphviz
 Requires:       html2text
 Requires:       libreoffice-pyuno
 Requires:       python3-Genshi
