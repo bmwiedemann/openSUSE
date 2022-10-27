@@ -302,4 +302,12 @@
     <comment></comment>
     <requestid>1002298</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>314a492594bac8ef5044078d1a7a454c</srcmd5>
+    <version>11.12.0</version>
+    <time>1666871601</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 11.12</comment>
+    <requestid>1030978</requestid>
+  </revision>
 </revisionlist>

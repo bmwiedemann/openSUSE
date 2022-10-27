@@ -16,9 +16,9 @@
 #
 
 
-%define lname libglslang11
+%define lname libglslang11_12
 Name:           glslang
-Version:        11.11.0
+Version:        11.12.0
 Release:        0
 Summary:        OpenGL and OpenGL ES shader front end and validator
 License:        BSD-3-Clause
@@ -27,7 +27,8 @@ URL:            https://www.khronos.org/opengles/sdk/tools/Reference-Compiler/
 #Git-URL:	https://github.com/KhronosGroup/glslang
 Source:         https://github.com/KhronosGroup/glslang/archive/%version.tar.gz
 Source3:        baselibs.conf
-Patch0:         0001-build-set-SOVERSION-on-all-libraries.patch
+Patch1:         0001-build-set-SOVERSION-on-all-libraries.patch
+Patch2:         abibreak_bump.diff
 BuildRequires:  bison
 BuildRequires:  cmake >= 2.8
 BuildRequires:  fdupes
@@ -92,7 +93,6 @@ for i in libOGLCompiler libOSDependent libGenericCodeGen libMachineIndependent; 
 	ln -s libglslang.so "$b/%_libdir/$i.so"
 	rm -f "$b/%_libdir/$i.a"
 done
-sed -i 's,\.a",\.so",g' %buildroot%{_datadir}/glslang/glslang-targets-*.cmake
 
 %fdupes %buildroot/%_prefix
 
@@ -116,6 +116,5 @@ sed -i 's,\.a",\.so",g' %buildroot%{_datadir}/glslang/glslang-targets-*.cmake
 %_libdir/libSPVRemapper.so
 %_libdir/libglslang.so
 %_includedir/*
-%_datadir/%name/
 
 %changelog

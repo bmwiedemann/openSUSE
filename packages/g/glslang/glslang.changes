@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Oct 24 19:30:21 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.12
+  * Add support for GL_EXT_mesh_shader
+  * Add support for NonSemantic.Shader.DebugInfo.100
+  * Make OpEmitMeshTasksEXT a terminal instruction
+  * Make gl_SubGroupARB a flat in int in Vulkan
+  * Add support for GL_EXT_opacity_micromap
+  * Add preamble support to C interface
+- Add abibreak_bump.diff
+
+-------------------------------------------------------------------
 Fri Sep  9 10:35:49 UTC 2022 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Adjust the cmake support files to use the shared libraries added
