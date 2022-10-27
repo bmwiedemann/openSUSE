@@ -23,10 +23,10 @@
 %endif
 
 %define __ksyms_path ^%{_firmwaredir}
-%define version_unconverted 20220930
+%define version_unconverted 20221017
 
 Name:           kernel-firmware
-Version:        20220930
+Version:        20221017
 Release:        0
 Summary:        Linux kernel firmware files
 License:        GPL-2.0-only AND SUSE-Firmware AND GPL-2.0-or-later AND MIT
@@ -43,6 +43,7 @@ Source2:        ast_dp501_fw.bin
 Source8:        ql2600_fw.bin
 Source9:        ql2700_fw.bin
 Source10:       ql8300_fw.bin
+Source11:       cirrus-cs35l41-firmware.tar.xz
 Source99:       %{name}-rpmlintrc
 # temporary revert (bsc#1202152): taken from upstream commit 06acb465d80b
 Source100:      rtw8822c_fw.bin
@@ -64,6 +65,8 @@ Source1014:     README.build
 # workarounds
 Source1100:     qcom-post
 Source1101:     uncompressed-post
+# temporary fix
+Patch1:         cirrus-WHENCE-update.patch
 BuildRequires:  fdupes
 BuildRequires:  suse-module-tools
 Requires(post): /usr/bin/mkdir /usr/bin/touch
@@ -873,6 +876,7 @@ Supplements:    modalias(bcma:m04BFid0812rev11cl*)
 Supplements:    modalias(bcma:m04BFid0812rev17cl*)
 Supplements:    modalias(bcma:m04BFid0812rev18cl*)
 Supplements:    modalias(pci:v000014E4d00004354sv*sd*bc02sc80i*)
+Supplements:    modalias(pci:v000014E4d00004355sv*sd*bc02sc80i*)
 Supplements:    modalias(pci:v000014E4d00004355sv000014E4sd00004355bc02sc80i*)
 Supplements:    modalias(pci:v000014E4d00004365sv000014E4sd00004365bc02sc80i*)
 Supplements:    modalias(pci:v000014E4d000043A3sv*sd*bc02sc80i*)
@@ -891,6 +895,8 @@ Supplements:    modalias(pci:v000014E4d000043E9sv*sd*bc02sc80i*)
 Supplements:    modalias(pci:v000014E4d000043ECsv*sd*bc02sc80i*)
 Supplements:    modalias(pci:v000014E4d000043EFsv*sd*bc02sc80i*)
 Supplements:    modalias(pci:v000014E4d0000440Dsv*sd*bc02sc80i*)
+Supplements:    modalias(pci:v000014E4d00004415sv*sd*bc02sc80i*)
+Supplements:    modalias(pci:v000014E4d00004425sv*sd*bc02sc80i*)
 Supplements:    modalias(pci:v000014E4d00004464sv*sd*bc02sc80i*)
 Supplements:    modalias(pci:v000014E4d0000AA31sv*sd*bc02sc80i*)
 Supplements:    modalias(pci:v000014E4d0000AA52sv*sd*bc02sc80i*)
@@ -913,6 +919,7 @@ Supplements:    modalias(sdio:c*v02D0dA94D*)
 Supplements:    modalias(sdio:c*v02D0dA962*)
 Supplements:    modalias(sdio:c*v02D0dA9A4*)
 Supplements:    modalias(sdio:c*v02D0dA9A6*)
+Supplements:    modalias(sdio:c*v02D0dA9AF*)
 Supplements:    modalias(sdio:c*v02D0dA9BF*)
 Supplements:    modalias(sdio:c*v02D0dAAE8*)
 Supplements:    modalias(usb:v043Ep3101d*dc*dsc*dp*ic*isc*ip*in*)
@@ -1551,6 +1558,7 @@ Supplements:    modalias(pci:v00008086d00004683sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00004688sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00004689sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d0000468Asv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d0000468Bsv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00004690sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00004691sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00004692sv*sd*bc03sc*i*)
@@ -6017,6 +6025,10 @@ Supplements:    modalias(acpi*:INT33C8:*)
 Supplements:    modalias(acpi*:INT3438:*)
 Supplements:    modalias(acpi*:PNPB006:*)
 Supplements:    modalias(hdaudio:v11020011r*a01*)
+Supplements:    modalias(of:N*T*Cmediatek,mt8186-dsp)
+Supplements:    modalias(of:N*T*Cmediatek,mt8186-dspC*)
+Supplements:    modalias(of:N*T*Cmediatek,mt8195-dsp)
+Supplements:    modalias(of:N*T*Cmediatek,mt8195-dspC*)
 Supplements:    modalias(pci:v00001073d00000004sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001073d0000000Asv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001073d0000000Csv*sd*bc*sc*i*)
@@ -6253,7 +6265,8 @@ This package contains compressed kernel firmware files for
 various USB WiFi / Ethernet drivers.
 
 %prep
-%setup -q
+%setup -q -a 11
+%patch1 -p1
 # additional firmwares
 cat %{SOURCE1} >> WHENCE
 cp %{SOURCE2} %{SOURCE8} %{SOURCE9} %{SOURCE10} .
