@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Oct 26 12:41:16 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.10.10:
+  + Core Server
+    * Partially reverts an unsafe inter-node communication
+      optimization that could affect classic mirrored queue
+      operation ordering.
+    * Classic mirrored queue leader replica issued to much credit
+      to follower replicas, resulting in an uneven load and
+      memory footprint between them.
+    * Intra-cluster communication link metric collector could run
+      into an exception when peer connection has just been
+      re-established, e.g. after a peer node restart.
+  + MQTT Plugin
+    * When a node was put into maintenance mode, it closed all MQTT
+      client connections cluster-wide instead of just local client
+      connections.
+- For updates between 3.10.5 and 3.10.9, please see
+  https://www.rabbitmq.com/changelog.html
+
+-------------------------------------------------------------------
 Sat Jun 18 12:34:14 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
 
 - Update to 3.10.5

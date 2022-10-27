@@ -739,4 +739,12 @@ The new default is much safer and will reduce the effect application channel lea
     <comment></comment>
     <requestid>983568</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>21633727e311af56b38bb29d8700ba94</srcmd5>
+    <version>3.10.10</version>
+    <time>1666871654</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1031374</requestid>
+  </revision>
 </revisionlist>
