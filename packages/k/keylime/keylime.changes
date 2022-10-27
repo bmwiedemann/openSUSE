@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct 26 14:10:21 UTC 2022 - aplanas@suse.com
+
+- Update to version v6.5.2:
+  * Back to 6.5.1
+  * This PR fixes a bug that prevented 6.5.x verifiers from interacting with 6.2. agents
+  * Revert "Revert "tenant: open file to send utf-8 encoded" (#1136)" (#1141)
+  * Revert "tenant: open file to send utf-8 encoded" (#1136)
+  * ca_util: allow users in the same group to read the created certificates and keys (#1138)
+  * Update sample ima-policy to exclude overlayfs
+  * installer: remove tarball option
+
+-------------------------------------------------------------------
 Thu Oct 13 09:15:04 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update requirement name to python-lark
