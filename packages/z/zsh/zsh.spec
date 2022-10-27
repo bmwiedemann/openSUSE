@@ -95,6 +95,17 @@ mechanism, and more.
 
 This package contains the Zsh manual in HTML format.
 
+%package sh
+Summary:        Handle behaviour of /bin/sh
+Group:          System/Shells
+Requires:       zsh = %{version}
+Conflicts:      alternative(sh)
+Provides:       alternative(sh)
+BuildArch:      noarch
+
+%description sh
+Use zsh as /bin/sh implementation.
+
 %prep
 %setup -q
 %if 0%{?suse_version}
@@ -192,6 +203,13 @@ rm -f %{buildroot}/%{_infodir}/dir
 %fdupes %{buildroot}
 %endif
 
+#
+# Create the symlink required for zsh-sh to handle /bin/sh
+#
+%if 0%{?suse_version}
+  ln -s %{_bindir}/zsh %{buildroot}%{_bindir}/sh
+%endif
+
 %check
 %if ! 0%{?qemu_user_space_build}
 %if 0%{?suse_version}
@@ -211,9 +229,7 @@ mv Test/E01options.ztst Test/E01options.ztst.mvd
 %endif
 
 %preun
-%if 0%{?suse_version}
-  :
-%else
+%if ! 0%{?suse_version}
   if [ "$1" = 0 ] ; then
     /sbin/install-info --delete %{_infodir}/zsh.info.gz %{_infodir}/dir \
       --entry="* zsh: (zsh).                  An enhanced bourne shell."
@@ -221,23 +237,20 @@ mv Test/E01options.ztst Test/E01options.ztst.mvd
 %endif
 
 %post
-%if 0%{?suse_version}
-  %install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
-%else
-if [ ! -f %{_sysconfdir}/shells ]; then
-  echo "%{_bindir}/zsh" > %{_sysconfdir}/shells
-else
-  grep -q "^%{_bindir}/zsh$" %{_sysconfdir}/shells || echo "%{_bindir}/zsh" >> %{_sysconfdir}/shells
-fi
+%if ! 0%{?suse_version}
+  if [ ! -f %{_sysconfdir}/shells ]; then
+    echo "%{_bindir}/zsh" > %{_sysconfdir}/shells
+  else
+    grep -q "^%{_bindir}/zsh$" %{_sysconfdir}/shells \
+      || echo "%{_bindir}/zsh" >> %{_sysconfdir}/shells
+  fi
 
-/sbin/install-info %{_infodir}/zsh.info.gz %{_infodir}/dir \
-  --entry="* zsh: (zsh).                  An enhanced bourne shell."
+  /sbin/install-info %{_infodir}/zsh.info.gz %{_infodir}/dir \
+    --entry="* zsh: (zsh).                  An enhanced bourne shell."
 %endif
 
 %postun
-%if 0%{?suse_version}
-  %install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
-%else
+%if ! 0%{?suse_version}
   if [ "$1" = 0 ] ; then
     if [ -f %{_sysconfdir}/shells ] ; then
       TmpFile=`%{_bindir}/mktemp /tmp/.zshrpmXXXXXX`
@@ -278,5 +291,8 @@ fi
 
 %files htmldoc
 %doc Doc/htmldoc/*
+
+%files sh
+%{_bindir}/sh
 
 %changelog

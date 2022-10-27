@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Oct 22 05:22:28 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
+
+- Add zsh-sh subpackage to offer Zsh users a "native" way to handle
+  /bin/sh scripts and use an SH shell with the capabilities of Zsh
+  itself to emulate a Bourne shell. An 'sh' symlink pointing to the
+  Zsh binary is all that is needed for it to emulate the Bourne
+  shell, it is similar to the use of `emulate sh` Zsh's built-in
+  command or the `zsh --emulate sh` shell command.
+- Drop deprecated use of install_info(_delete) post(un) macros. RPM
+  file triggers have replaced their functionality since 2019.
+
+-------------------------------------------------------------------
 Mon Sep 12 13:03:37 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add egrep-deprecation.patch (bsc#1203241) 
