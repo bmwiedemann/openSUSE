@@ -633,4 +633,23 @@ ers toes by using a lock while creating the base images. By :user:`gaborbernat`.
 </comment>
     <requestid>1009349</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>d0d9f61fc4e7d87543b05681f9951819</srcmd5>
+    <version>20.16.6</version>
+    <time>1666871643</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20.16.6:
+  - Drop unneeded shims for PyPy3 directory structure
+  - Fix selected scheme on debian derivatives for python 3.10
+    when python3-distutils is not installed or the venv scheme is
+    not avaiable
+  - Allow the test suite to pass even with the original C shell
+    (rather than tcsh)
+  - Fix fallback handling of downloading wheels for bundled
+    packages
+  - Upgrade embedded setuptools to 65.5.0 from 65.3.0 and pip to
+    22.3 from 22.2.2
+</comment>
+    <requestid>1031181</requestid>
+  </revision>
 </revisionlist>

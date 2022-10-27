@@ -25,10 +25,9 @@
 %bcond_with test
 %endif
 # there is no platformdirs for python2 on any of the target distributions
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-virtualenv%{psuffix}
-Version:        20.16.5
+Version:        20.16.6
 Release:        0
 Summary:        Virtual Python Environment builder
 License:        MIT
