@@ -2322,4 +2322,18 @@ Please forward to 13.2, so we can have a working DrKonqi there (forwarded reques
     <comment></comment>
     <requestid>1006865</requestid>
   </revision>
+  <revision rev="167" vrev="5">
+    <srcmd5>0523fc379070243affe2506e13ba9316</srcmd5>
+    <version>12.1</version>
+    <time>1666871641</time>
+    <user>dimstar_suse</user>
+    <comment>- Maintenance script qa-remote.sh:
+  * Make &quot;Get remote testsuite results&quot; more verbose.
+- Patches added (swo#29277):
+  * gdb-fix-assert-in-handle_jit_event.patch
+- Maintenance script qa.sh:
+  * Add PR29706 and PR28617 kfails.
+</comment>
+    <requestid>1031179</requestid>
+  </revision>
 </revisionlist>

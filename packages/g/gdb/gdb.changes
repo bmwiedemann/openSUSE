@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 19 16:35:34 UTC 2022 - Tom de Vries <tdevries@suse.com>
+
+- Patches added (swo#29277):
+  * gdb-fix-assert-in-handle_jit_event.patch
+- Maintenance script qa.sh:
+  * Add PR29706 and PR28617 kfails.
+
+-------------------------------------------------------------------
 Thu Sep 29 08:25:06 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Add patch to fix build with readline 8.2:
