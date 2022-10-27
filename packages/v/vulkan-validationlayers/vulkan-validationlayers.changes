@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Oct 24 19:25:31 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.3.231.0
+  * Add runtime SPIRV 8/16bit features
+  * Add queue submit apply barriers support
+  * Fix hangs in NV best practices
+  * Add vendor check in ClearDepthStencilImage
+  * Add compatibility and checks for attachment_feedback_loop_layout
+  * Add new gpu_shader instructions
+  * Add QueueSubmit2 support
+  * Add feature checks for feedback_loop_layout
+  * Add check to avoid crash in CTS
+  * Don't auto-validate SPIR-V after optimization
+  * Use a thread for QUEUE_STATE submission processing
+  * Fix VVL crash when dynamic line rasterization is used
+
+-------------------------------------------------------------------
 Fri Aug 26 19:41:43 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release SDK-1.3.224.1
