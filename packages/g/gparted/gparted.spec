@@ -34,9 +34,7 @@ BuildRequires:  intltool
 BuildRequires:  perl-XML-Parser
 BuildRequires:  pkgconfig
 BuildRequires:  polkit
-%if 0%{?suse_version} > 1500
-BuildRequires:  pkexec
-%endif
+BuildRequires:  /usr/bin/pkexec
 BuildRequires:  update-desktop-files
 BuildRequires:  xfsprogs-devel
 BuildRequires:  yelp-tools
@@ -62,7 +60,7 @@ Recommends:     nilfs-utils
 Recommends:     ntfsprogs
 Recommends:     udftools
 Recommends:     xfsprogs
-Recommends:     pkexec
+Requires:     /usr/bin/pkexec
 %if !0%{?is_opensuse}
 BuildRequires:  translation-update-upstream
 %endif
