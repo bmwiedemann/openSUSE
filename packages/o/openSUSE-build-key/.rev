@@ -312,4 +312,13 @@ However, it would be good to have these out before we do switch. (forwarded requ
     <comment></comment>
     <requestid>994310</requestid>
   </revision>
+  <revision rev="37" vrev="46">
+    <srcmd5>6e8bf145959cbf92ec564aeb9100ba4a</srcmd5>
+    <version>1.0</version>
+    <time>1666871634</time>
+    <user>dimstar_suse</user>
+    <comment>- add the SUSE Container key in PEM format too to new
+  /usr/share/pki/containers/ directory. (bsc#1204706) (forwarded request 1031132 from msmeissn)</comment>
+    <requestid>1031133</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 25 11:43:48 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- add the SUSE Container key in PEM format too to new
+  /usr/share/pki/containers/ directory. (bsc#1204706)
+
+-------------------------------------------------------------------
 Wed Aug 10 09:01:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add gpg-pubkey-29b700a4-62b07e22.asc (bsc#1199184)

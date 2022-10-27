@@ -18,6 +18,8 @@
 
 %define keydir  %{_prefix}/lib/rpm/gnupg/keys/
 %define containerkeydir  %{_datadir}/container-keys/
+%define pemcontainerkeydir  /%{_datadir}/pki/containers/
+
 Name:           openSUSE-build-key
 Version:        1.0
 Release:        0
@@ -43,6 +45,8 @@ Source7:        opensuse-container-9ab48ce9-5ae3116a.asc
 Source8:        build-container-d4ade9c3-5a2e9669.asc
 # openSUSE Backports key (previously PackageHub, now also Leap 15.3 / 15.4)
 Source9:        gpg-pubkey-65176565-61a0ee8f.asc
+# Container key SUSE Linux Enterprise in PEM format
+Source11:       build-container-d4ade9c3-5a2e9669.pem
 Source98:       security_at_suse_de.asc
 BuildRequires:  gpg
 Conflicts:      suse-build-key
@@ -96,6 +100,8 @@ done
 mkdir -p %{buildroot}%{containerkeydir}/
 install -c -m 644 %{SOURCE7} %{buildroot}%{containerkeydir}/opensuse-container-key.asc
 install -c -m 644 %{SOURCE8} %{buildroot}%{containerkeydir}/suse-container-key.asc
+mkdir -p %{buildroot}%{pemcontainerkeydir}/
+install -c -m 644 %{SOURCE11} %{buildroot}%{pemcontainerkeydir}/suse-container-key.pem
 
 %files
 %defattr(644,root,root)
@@ -103,6 +109,8 @@ install -c -m 644 %{SOURCE8} %{buildroot}%{containerkeydir}/suse-container-key.a
 %attr(755,root,root) %dir %{_prefix}/lib/rpm/gnupg
 %attr(755,root,root) %dir %{keydir}
 %attr(755,root,root) %dir %{containerkeydir}
+%attr(755,root,root) %dir %{_datadir}/pki/
+%attr(755,root,root) %dir %{pemcontainerkeydir}
 %{keydir}/gpg-pubkey-3dbdc284-53674dd4.asc
 %{keydir}/gpg-pubkey-39db7c82-5f68629b.asc
 %{keydir}/gpg-pubkey-29b700a4-62b07e22.asc
@@ -111,6 +119,7 @@ install -c -m 644 %{SOURCE8} %{buildroot}%{containerkeydir}/suse-container-key.a
 %endif
 %{containerkeydir}/opensuse-container-key.asc
 %{containerkeydir}/suse-container-key.asc
+%{pemcontainerkeydir}/suse-container-key.pem
 %ifarch riscv64
 %{keydir}/gpg-pubkey-697ba1e5-5c755904.asc
 %endif
