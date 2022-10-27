@@ -135,4 +135,12 @@
     <comment></comment>
     <requestid>998744</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>7a3812dff49cfa44726f0775bfc532cf</srcmd5>
+    <version>2022.3</version>
+    <time>1666871600</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2022.3</comment>
+    <requestid>1030962</requestid>
+  </revision>
 </revisionlist>
