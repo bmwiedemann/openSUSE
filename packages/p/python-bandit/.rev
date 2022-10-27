@@ -150,4 +150,15 @@
     <comment></comment>
     <requestid>962068</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>e2dbc36638cd44e10aeda930767c41cd</srcmd5>
+    <version>1.7.4</version>
+    <time>1666871696</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove not needed python-six dependency
+- Use autosetup instead of setup + patch
+- More specific sitelib package in %files
+</comment>
+    <requestid>1031533</requestid>
+  </revision>
 </revisionlist>

@@ -40,7 +40,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-GitPython >= 1.0.1
 Requires:       python-PyYAML >= 5.3.1
-Requires:       python-six >= 1.10.0
 Requires:       python-stestr >= 1.0.0
 Requires:       python-stevedore >= 1.20.0
 Requires:       python-toml
@@ -56,7 +55,6 @@ BuildRequires:  %{python_module fixtures >= 3.0.0}
 BuildRequires:  %{python_module pbr >= 2.0}
 BuildRequires:  %{python_module python-subunit >= 0.0.18}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six >= 1.10.0}
 BuildRequires:  %{python_module stestr >= 2.5.0}
 BuildRequires:  %{python_module stevedore >= 1.20.0}
 BuildRequires:  %{python_module testrepository >= 0.0.18}
@@ -77,8 +75,7 @@ plugins against the AST nodes. Once Bandit has finished scanning all the files
 it generates a report.
 
 %prep
-%setup -q -n bandit-%{version}
-%patch0 -p1
+%autosetup -p1 -n bandit-%{version}
 sed -i '/^#!/d' bandit/__main__.py
 
 %if !%{with test}
@@ -117,7 +114,8 @@ sed -i '/^#!/d' bandit/__main__.py
 %python_alternative %{_bindir}/bandit
 %python_alternative %{_bindir}/bandit-config-generator
 %python_alternative %{_bindir}/bandit-baseline
-%{python_sitelib}/*
+%{python_sitelib}/bandit
+%{python_sitelib}/bandit-%{version}*-info
 %endif
 
 %changelog

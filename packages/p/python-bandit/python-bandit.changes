@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 27 11:16:40 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove not needed python-six dependency
+- Use autosetup instead of setup + patch
+- More specific sitelib package in %files
+
+-------------------------------------------------------------------
 Wed Mar 16 06:50:41 UTC 2022 - pgajdos@suse.com
 
 - version update to 1.7.4
