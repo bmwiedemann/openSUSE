@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Oct 26 08:41:00 UTC 2022 - Andras Timar <andras.timar@collabora.com>
+
+- Fix bsc#1201095 - LO-L3: Text box shows that does not show in PowerPoint
+  * bsc1201095.patch
+
+-------------------------------------------------------------------
+Thu Oct 13 10:07:43 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 7.4.2.3:
+  https://wiki.documentfoundation.org/Releases/7.4.2/RC3
+  https://wiki.documentfoundation.org/Releases/7.4.2/RC2
+  https://wiki.documentfoundation.org/Releases/7.4.2/RC1
+- Remove upstreamed patches:
+  * poppler-22.09.0.patch
+  * bsc1203502.patch
+
+-------------------------------------------------------------------
 Tue Sep 27 19:27:10 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Change egrep/fgrep calls to grep -E/-F, respectively boo#1203092
@@ -29,6 +46,8 @@ Wed Aug 31 07:45:42 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 7.4.1.1:
   https://wiki.documentfoundation.org/Releases/7.4.1/RC1
+  * provides fixes for the following security vulnerabilities:
+    CVE-2022-3140, bsc#1203209
 
 -------------------------------------------------------------------
 Tue Aug 23 13:46:00 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
@@ -121,6 +140,9 @@ Tue Apr 19 10:40:59 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
   You can find the complete release notes here:
   https://wiki.documentfoundation.org/Releases/7.3.3/RC1
   * Fixes bsc#1196499
+  * provides fixes for the following security vulnerabilities:
+    CVE-2022-26305, bsc#1201868
+    CVE-2022-26307, bsc#1201872
 - Remove upstreamed patches:
   * bsc1195881.patch
   * bsc1196212.patch

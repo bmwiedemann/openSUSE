@@ -49,7 +49,7 @@
 %endif
 %bcond_with firebird
 Name:           libreoffice
-Version:        7.4.1.2
+Version:        7.4.2.3
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -107,12 +107,10 @@ Patch3:         mediawiki-no-broken-help.diff
 Patch6:         gcc11-fix-error.patch
 Patch9:         fix_math_desktop_file.patch
 Patch10:        fix_gtk_popover_on_3.20.patch
-Patch11:        poppler-22.09.0.patch
-# PATCH-FIX-UPSTREAM revert changes that cause problems with the libreoffice window
-# in KDE, bsc#1203502
-Patch12:        bsc1203502.patch
 # PATCH-FIX-UPSTREAM remove egrep/fgrep calls
 Patch13:        libreoffice-7.4.1.2-grep.patch
+# LO-L3: Text box shows that does not show in PowerPoint
+Patch14:        bsc1201095.patch
 # Build with java 8
 Patch101:       0001-Revert-java-9-changes.patch
 # try to save space by using hardlinks
@@ -1032,11 +1030,8 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch10 -p1
 %patch101 -p1
 %endif
-%if 0%{?suse_version} > 1550
-%patch11 -p1
-%endif
-%patch12 -p1
 %patch13 -p1
+%patch14 -p1
 %patch990 -p1
 %patch991 -p1
 
