@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-Mathics
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -38,6 +38,8 @@ Summary:        A general-purpose computer algebra system
 License:        Apache-2.0 AND BSD-3-Clause AND GPL-3.0-only AND MIT
 URL:            https://mathics.github.io/
 Source0:        https://github.com/Mathics3/mathics-core/releases/download/%{version}/%{pyname}-%{version}.tar.gz
+# PATCH-FEATURE-OPENSUSE python-Mathics-relax-sympy-version.patch badshah400@gmail.com -- Allow working with sympy version >= 1.11
+Patch0:         python-Mathics-relax-sympy-version.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module Django >= 1.8}
 BuildRequires:  %{python_module colorama}
@@ -82,7 +84,7 @@ Provides:       python-Mathics3 = %{version}
 Mathics is a general-purpose computer algebra system (CAS). It is meant to be a free, lightweight alternative to Mathematica.
 
 %prep
-%setup -q -n %{pyname}-%{version}
+%autosetup -p1 -n %{pyname}-%{version}
 
 # FIX SPURIOUS EXEC PERMISSIONS
 chmod -x ./mathics/data/ExampleData/{numberdata.csv,InventionNo1.xml}

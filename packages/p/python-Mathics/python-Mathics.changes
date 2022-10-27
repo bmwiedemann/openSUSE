@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct 23 04:51:56 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add python-Mathics-relax-sympy-version.patch: Relax sympy
+  requirement to allow sympy >= 1.11.
+
+-------------------------------------------------------------------
 Mon Sep 19 12:47:11 UTC 2022 - pgajdos@suse.com
 
 - does not require python-six
