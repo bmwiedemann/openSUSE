@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 22 16:22:08 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 3.2.2:
+  * OAuth2.0 Provider: * CVE-2022-36087
+- Also remove the conditional definition of python_module.
+
+-------------------------------------------------------------------
 Mon Sep 12 14:39:20 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:
