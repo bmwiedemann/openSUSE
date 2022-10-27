@@ -1,7 +1,7 @@
-Index: hsqldb-2.4.1/hsqldb/sample/hsqldb.service
+Index: hsqldb/sample/hsqldb.service
 ===================================================================
---- hsqldb-2.4.1.orig/hsqldb/sample/hsqldb.service
-+++ hsqldb-2.4.1/hsqldb/sample/hsqldb.service
+--- hsqldb.orig/sample/hsqldb.service
++++ hsqldb/sample/hsqldb.service
 @@ -17,6 +17,19 @@ Description=HyperSQL Database Server
  After=socket.service
  

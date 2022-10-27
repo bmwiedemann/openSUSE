@@ -1,7 +1,39 @@
 -------------------------------------------------------------------
+Mon Oct 24 15:55:11 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Upgrade to upstream version 2.7.1: (bsc#1204521, CVE-2022-41853)
+  * version 2.7.1 jar requires JRE 11 or later - tested up to Java 17
+  * version 2.7.1 alternative jar requires JRE 8 or later
+  * CVE-2022-41853 disallow calling java methods - setting the 
+    hsqldb.java_method_names is required for accessing java methods
+  * enhancements to RECURSIVE CTE's
+
+- Upgrade to upstream version 2.7.0
+  * version 2.7.0 jar requires JRE 11 or later - tested up to Java 17
+  * version 2.7.0 alternative jar requires JRE 8 or later
+  * added support for JSON constructor functions
+  * added support for microsecond precision CURRENT_TIMESTAMP and similar functions
+  * added support for GRANT and REVOKE on all objects in a schema
+  * added support for CSV file data import and export
+  * added support for regional time zones such as 'America/New_York' in conversions
+  * added SET DATABASE SQL MAX RECURSIVE (sql.max_recursive) setting
+  * changed the default for SET DATABASE SQL SYS INDEX NAMES (sql.sys_index_names) to true
+  * changed the properties reported by JDBC DatabaseMetaDat::getClientInfoProperties() method
+  * improved  JDBC DatabaseMetaDat::getTablePrivileges() method to cover fine-grained privileges
+  * improved error messages for SQL settings statements
+  * improved documentation
+  * added some minor enhancements
+  * fixed a number of reported regressions and bugs (see tracker)
+
+- Refreshed/rebased patches with quilt:
+  * hsqldb-apidocs.patch
+  * hsqldb-mdescriptor.patch (downgraded to build as 1.7)
+  * harden_hsqldb.service.patch
+
+-------------------------------------------------------------------
 Thu Mar 17 05:53:55 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
-- Upgrade to upsteam version 2.6.1
+- Upgrade to upstream version 2.6.1
 - Modified patch:
   * hsqldb-apidocs.patch
     + adapt to changed context

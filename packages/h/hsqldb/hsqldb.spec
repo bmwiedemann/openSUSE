@@ -22,7 +22,7 @@
 %endif
 
 Name:           hsqldb
-Version:        2.6.1
+Version:        2.7.1
 Release:        0
 Summary:        HyperSQL Database Engine
 License:        BSD-3-Clause
@@ -41,8 +41,8 @@ Source7:        hsqldb-wrapper
 Source8:        hsqldb-post
 Source9:        hsqldb-stop
 # Javadoc fails to create since apidocs folder is deleted and not recreated
-Patch0:         %{name}-apidocs.patch
-Patch1:         %{name}-mdescriptor.patch
+Patch0:         hsqldb-apidocs.patch
+Patch1:         hsqldb-mdescriptor.patch
 Patch3:         harden_hsqldb.service.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
@@ -124,13 +124,11 @@ chmod -R go=u-w *
 sed -i -e 's/doc-src/doc/g' build/build.xml
 sed -i -e 's|doc/apidocs|%{_javadocdir}/%{name}|g' index.html
 
-%patch0 -p1
-%patch1 -p1
-%patch3 -p2
+%autopatch -p1
 
 %build
 pushd build
-export JAVA_TOOL_OPTIONS="-Dfile.encoding=UTF8 -Dant.build.javac.source=1.7 -Dant.build.javac.target=1.7"
+export JAVA_TOOL_OPTIONS="-Dfile.encoding=UTF8"
 ant hsqldb javadoc -Dservletapi.lib=$(build-classpath glassfish-servlet-api)
 popd
 
