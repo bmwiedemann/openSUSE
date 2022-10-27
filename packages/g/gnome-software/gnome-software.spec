@@ -60,10 +60,9 @@ BuildRequires:  pkgconfig(sysprof-4)
 BuildRequires:  pkgconfig(sysprof-capture-4)
 BuildRequires:  pkgconfig(xmlb) >= 0.1.7
 # boo#1090042
-Requires:       PackageKit
 Requires:       fwupd
 Requires:       iso-codes
-Requires:       (libzypp-plugin-appdata if PackageKit-backend-zypp)
+Recommends:     %{name}-plugin-packagekit
 Recommends:     flatpak
 # bsc#1178768
 %if 0%{?sle_version}
@@ -81,6 +80,17 @@ Requires:       %{name} = %{version}
 %description devel
 This subpackage contains the header files for developing
 GNOME software store plugins.
+
+%package plugin-packagekit
+Summary:        GNOME Software Store - PackageKit plugin
+Group:          System/GUI/GNOME
+Requires:       %{name} = %{version}
+Requires:       PackageKit
+Requires:       (libzypp-plugin-appdata if PackageKit-backend-zypp)
+
+%description plugin-packagekit
+This subpackage provides the packagekit plugin used by
+the GNOME software store.
 
 %lang_package
 
@@ -137,7 +147,23 @@ FOE
 %{_distconfdir}/xdg/autostart/org.gnome.Software.desktop
 
 %dir %{_libdir}/gnome-software/plugins-%{gs_plugin_api}/
-%{_libdir}/gnome-software/plugins-%{gs_plugin_api}/*.so
+%{_libdir}/gnome-software/plugins-%{gs_plugin_api}/libgs_plugin_dpkg.so
+%{_libdir}/gnome-software/plugins-%{gs_plugin_api}/libgs_plugin_dummy.so
+%{_libdir}/gnome-software/plugins-%{gs_plugin_api}/libgs_plugin_epiphany.so
+%{_libdir}/gnome-software/plugins-%{gs_plugin_api}/libgs_plugin_fedora-langpacks.so
+%{_libdir}/gnome-software/plugins-%{gs_plugin_api}/libgs_plugin_fedora-pkgdb-collections.so
+%{_libdir}/gnome-software/plugins-%{gs_plugin_api}/libgs_plugin_flatpak.so
+%{_libdir}/gnome-software/plugins-%{gs_plugin_api}/libgs_plugin_fwupd.so
+%{_libdir}/gnome-software/plugins-%{gs_plugin_api}/libgs_plugin_generic-updates.so
+%{_libdir}/gnome-software/plugins-%{gs_plugin_api}/libgs_plugin_hardcoded-blocklist.so
+%{_libdir}/gnome-software/plugins-%{gs_plugin_api}/libgs_plugin_icons.so
+%{_libdir}/gnome-software/plugins-%{gs_plugin_api}/libgs_plugin_malcontent.so
+%{_libdir}/gnome-software/plugins-%{gs_plugin_api}/libgs_plugin_modalias.so
+%{_libdir}/gnome-software/plugins-%{gs_plugin_api}/libgs_plugin_os-release.so
+%{_libdir}/gnome-software/plugins-%{gs_plugin_api}/libgs_plugin_provenance-license.so
+%{_libdir}/gnome-software/plugins-%{gs_plugin_api}/libgs_plugin_provenance.so
+%{_libdir}/gnome-software/plugins-%{gs_plugin_api}/libgs_plugin_repos.so
+%{_libdir}/gnome-software/plugins-%{gs_plugin_api}/libgs_plugin_rewrite-resource.so
 %{_libdir}/gnome-software/libgnomesoftware.so.%{gs_plugin_api}
 %dir %{_datadir}/swcatalog/
 %dir %{_datadir}/swcatalog/xml/
@@ -154,6 +180,10 @@ FOE
 %{_includedir}/%{name}/*.h
 %{_libdir}/pkgconfig/gnome-software.pc
 %{_libdir}/gnome-software/libgnomesoftware.so
+
+%files plugin-packagekit
+%{_libdir}/gnome-software/plugins-%{gs_plugin_api}/libgs_plugin_packagekit.so
+%{_libdir}/gnome-software/plugins-%{gs_plugin_api}/libgs_plugin_appstream.so
 
 %files lang -f %{name}.lang
 

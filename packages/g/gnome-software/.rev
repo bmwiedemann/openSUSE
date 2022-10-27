@@ -911,4 +911,12 @@ cd - (forwarded request 199127 from Zaitor)</comment>
     <comment></comment>
     <requestid>1030443</requestid>
   </revision>
+  <revision rev="99" vrev="2">
+    <srcmd5>c772be887aa7bb7200dc4e8fc17df26c</srcmd5>
+    <version>43.1</version>
+    <time>1666871552</time>
+    <user>dimstar_suse</user>
+    <comment>To Factory for MicroOS Desktop (forwarded request 1031279 from RBrownSUSE)</comment>
+    <requestid>1031309</requestid>
+  </revision>
 </revisionlist>
