@@ -15,9 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
 Name:           wike
-Version:        1.8.1
+Version:        1.8.2
 Release:        0
 Summary:        A Wikipedia reader for the GNOME Desktop
 License:        GPL-3.0-or-later
