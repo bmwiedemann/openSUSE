@@ -241,4 +241,12 @@ other affected packages to make sure the copies are refreshed.
     <comment>libunistring 1.0 (forwarded request 968013 from AndreasStieger)</comment>
     <requestid>969260</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>80aef35ff9952049504b94f7b77425ba</srcmd5>
+    <version>1.1</version>
+    <time>1666871543</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1031301</requestid>
+  </revision>
 </revisionlist>

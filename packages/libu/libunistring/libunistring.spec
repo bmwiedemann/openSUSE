@@ -16,9 +16,9 @@
 #
 
 
-%define lname	libunistring2
+%define sover	5
 Name:           libunistring
-Version:        1.0
+Version:        1.1
 Release:        0
 Summary:        GNU Unicode string library
 License:        GPL-2.0-or-later OR LGPL-3.0-or-later
@@ -39,17 +39,17 @@ case folding and regular expressions).
 %package devel
 Summary:        Development files for the GNU Unicode string library
 Group:          Development/Libraries/C and C++
-Requires:       %{lname} = %{version}
+Requires:       %{name}%{sover} = %{version}
 
 %description devel
 Development files for programs using libunistring and documentation
 for UniString library.
 
-%package -n %{lname}
+%package -n %{name}%{sover}
 Summary:        GNU Unicode string library
 Group:          System/Libraries
 
-%description -n %{lname}
+%description -n %{name}%{sover}
 This portable C library implements Unicode string types in three flavours:
 (UTF-8, UTF-16, UTF-32), together with functions for character processing
 (names, classifications, properties) and functions for string processing
@@ -64,7 +64,7 @@ case folding and regular expressions).
 %make_build
 
 %install
-make DESTDIR=%{buildroot} INSTALL="install -p" install
+%make_install
 cp AUTHORS NEWS README HACKING DEPENDENCIES THANKS ChangeLog %{buildroot}/%{_docdir}/%{name}
 rm -f %{buildroot}/%{_infodir}/dir
 rm -f %{buildroot}/%{_libdir}/libunistring.la
@@ -80,9 +80,9 @@ sed -i 's:50000:50:g' tests/test-malloca.c
 %make_build check #
 %endif
 
-%files -n %{lname}
+%files -n %{name}%{sover}
 %license COPYING*
-%{_libdir}/libunistring.so.2*
+%{_libdir}/libunistring.so.%{sover}{,.*}
 
 %files devel
 %license COPYING*
@@ -92,7 +92,7 @@ sed -i 's:50000:50:g' tests/test-malloca.c
 %{_includedir}/unistring
 %{_includedir}/*.h
 
-%post -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%post -n %{name}%{sover} -p /sbin/ldconfig
+%postun -n %{name}%{sover} -p /sbin/ldconfig
 
 %changelog
