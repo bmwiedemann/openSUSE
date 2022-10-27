@@ -195,7 +195,7 @@ rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-brandin
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20221026</value>
+    <value>20221027</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
@@ -528,8 +528,8 @@ set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
     <value>failed: ''
-published: '20221025'
-publishing: '20221025'
+published: '20221026'
+publishing: '20221026'
 testing: '20221026'
 </value>
   </attribute>
