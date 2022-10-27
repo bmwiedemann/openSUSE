@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 25 09:26:59 UTC 2022 - Noel Power <nopower@suse.com>
+
+- Update to 4.17.2
+  * CVE-2022-3592 [SECURITY] samba: Wide links protection broken;
+    (bso#15207); (bsc#1204499).
+  * CVE-2022-3437 [SECURITY] samba: Buffer overflow in Heimdal
+    unwrap_des3();(bso#15134); (bsc#1204254).
+
+-------------------------------------------------------------------
 Wed Oct 19 12:48:21 UTC 2022 - Noel Power <nopower@suse.com>
 
 - Update to 4.17.1
