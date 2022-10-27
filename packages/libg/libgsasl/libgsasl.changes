@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 25 08:36:11 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- refresh keyring
+
+-------------------------------------------------------------------
 Tue Sep 27 14:43:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add build-fix-old-gcc.patch for older dists 

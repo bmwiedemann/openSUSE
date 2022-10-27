@@ -276,4 +276,12 @@ contains numerous GPL-3.0+ licensed test files (forwarded request 130704 from ba
     <comment>- add build-fix-old-gcc.patch for older dists</comment>
     <requestid>1006434</requestid>
   </revision>
+  <revision rev="37" vrev="5">
+    <srcmd5>feb4e82284caa78a9193a5044f200202</srcmd5>
+    <version>1.10.0</version>
+    <time>1666871619</time>
+    <user>dimstar_suse</user>
+    <comment>- refresh keyring</comment>
+    <requestid>1031076</requestid>
+  </revision>
 </revisionlist>
