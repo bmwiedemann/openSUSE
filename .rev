@@ -1058,4 +1058,23 @@
 </comment>
     <requestid>1004981</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>41f84b96cef19efb374b62819034d71f</srcmd5>
+    <version>4.17.0</version>
+    <time>1666689604</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.17.0:
+  - Update Translations
+  - Fix site name fanfiction.tenhawkpresents.ink
+  - Flaresolverr v3 beta using 'expiry' cookie key, was
+    'expires'.
+  - Flaresolverr v3 beta doesn't have 'headers'??
+  - adapter_adultfanfictionorg: Fixes for site changes.
+  - Disable Cancel during metadata update ProgBar.
+  - adapter_chosentwofanficcom: Site has several links to each
+    story in a series page.
+  - Fixes for add_category/genre_when_multi_category settings.
+</comment>
+    <requestid>1030937</requestid>
+  </revision>
 </revisionlist>
