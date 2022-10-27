@@ -6149,4 +6149,16 @@ handle manual pages that consist only of a .so directive such as
   (workaround for bsc#1203847)</comment>
     <requestid>1030349</requestid>
   </revision>
+  <revision rev="367" vrev="1">
+    <srcmd5>a73a3756d9f0174c2234ef921b253d15</srcmd5>
+    <version>251.7</version>
+    <time>1666871607</time>
+    <user>dimstar_suse</user>
+    <comment>- Import commit c212388f7de8d22a3f7c22b19553548ccc0cdd15 (merge of v251.7)
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/f78bba8d037cc26c09bbdd167625b2d7fe1f5a30...c212388f7de8d22a3f7c22b19553548ccc0cdd15
+
+- specfile: reindent comments</comment>
+    <requestid>1031048</requestid>
+  </revision>
 </revisionlist>

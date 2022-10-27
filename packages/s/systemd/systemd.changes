@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct 25 07:19:15 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Import commit c212388f7de8d22a3f7c22b19553548ccc0cdd15 (merge of v251.7)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/f78bba8d037cc26c09bbdd167625b2d7fe1f5a30...c212388f7de8d22a3f7c22b19553548ccc0cdd15
+
+-------------------------------------------------------------------
+Tue Oct 25 07:12:11 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- specfile: reindent comments
+
+-------------------------------------------------------------------
 Fri Oct 21 09:07:05 UTC 2022 - Franck Bui <fbui@suse.com>
 
 - Import commit f78bba8d037cc26c09bbdd167625b2d7fe1f5a30 (merge of v251.6)
@@ -10,7 +23,6 @@ Fri Oct 21 09:07:05 UTC 2022 - Franck Bui <fbui@suse.com>
   For a complete list of changes, visit:
   https://github.com/openSUSE/systemd/compare/07aa29e3942fb46b0aed5405c88e8d3179ca958f...f78bba8d037cc26c09bbdd167625b2d7fe1f5a30
   
-
 -------------------------------------------------------------------
 Wed Oct 19 07:23:51 UTC 2022 - Franck Bui <fbui@suse.com>
 

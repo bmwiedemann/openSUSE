@@ -19,7 +19,7 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define min_kernel_version 4.5
-%define archive_version +suse.34.gf78bba8d03
+%define archive_version +suse.36.gc212388f7d
 
 %define _testsuitedir /usr/lib/systemd/tests
 %define xinitconfdir %{?_distconfdir}%{!?_distconfdir:%{_sysconfdir}}/X11/xinit
@@ -72,7 +72,7 @@
 
 Name:           systemd%{?mini}
 URL:            http://www.freedesktop.org/wiki/Software/systemd
-Version:        251.6
+Version:        251.7
 Release:        0
 Summary:        A System and Session Manager
 License:        LGPL-2.1-or-later
@@ -109,8 +109,8 @@ BuildRequires:  libmount-devel >= 2.27.1
 BuildRequires:  meson >= 0.43
 BuildRequires:  pam-devel
 BuildRequires:  python3-jinja2
-# regenerate_initrd_post macro is expanded during build, hence this
-# BR. Also this macro was introduced since version 12.4.
+# regenerate_initrd_post macro is expanded during build, hence this BR. Also
+# this macro was introduced since version 12.4.
 BuildRequires:  suse-module-tools >= 12.4
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(blkid) >= 2.26
@@ -504,10 +504,9 @@ Recommends:     python3
 Recommends:     python3-colorama
 # Optional dep for mkfs.vfat needed by test-loop-block (otherwise skipped)
 Recommends:     dosfstools
-# The following deps on libs are for test-dlopen-so whereas the
-# pkgconfig ones are used by test-funtions to find the libs on the
-# host and install them in the image, see install_missing_libraries()
-# for details.
+# The following deps on libs are for test-dlopen-so whereas the pkgconfig ones
+# are used by test-funtions to find the libs on the host and install them in the
+# image, see install_missing_libraries() for details.
 %if %{with resolved}
 Requires:       libidn2
 Requires:       pkgconfig(libidn2)
@@ -738,9 +737,8 @@ export BRP_PESIGN_FILES="/usr/lib/systemd/boot/efi/systemd-bootx64.efi"
 %endif
 %endif
 
-# Don't ship resolvconf symlink for now as it conflicts with the
-# binary shipped by openresolv and provides limited compatibility
-# only
+# Don't ship resolvconf symlink for now as it conflicts with the binary shipped
+# by openresolv and provides limited compatibility only.
 %if %{with resolved}
 rm %{buildroot}%{_sbindir}/resolvconf
 rm %{buildroot}%{_mandir}/man1/resolvconf.1*
@@ -754,8 +752,8 @@ mkdir -p % %{buildroot}%{_sysconfdir}/systemd/network
 mkdir -p % %{buildroot}%{_sysconfdir}/systemd/nspawn
 
 # Package the scripts used to fix all packaging issues. Also drop the
-# "scripts-{systemd/udev}" prefix which is used because osc doesn't
-# allow directories in the workspace...
+# "scripts-{systemd/udev}" prefix which is used because osc doesn't allow
+# directories in the workspace...
 %if %{with machined}
 install -m0755 -D %{SOURCE100} %{buildroot}%{_systemd_util_dir}/scripts/fix-machines-btrfs-subvol.sh
 %endif
@@ -794,23 +792,23 @@ if [ "$(realpath %{_modprobedir})" != /usr/lib/modprobe.d ]; then
         mv %{buildroot}/usr/lib/modprobe.d/* %{buildroot}%{_modprobedir}/
 fi
 
-# don't enable wall ask password service, it spams every console (bnc#747783)
+# Don't enable wall ask password service, it spams every console (bnc#747783).
 rm %{buildroot}%{_unitdir}/multi-user.target.wants/systemd-ask-password-wall.path
 
-# do not ship sysctl defaults in systemd package, will be part of
-# aaa_base (in procps for now)
+# do not ship sysctl defaults in systemd package, will be part of aaa_base (in
+# procps for now).
 rm -f %{buildroot}%{_sysctldir}/50-default.conf
 rm -f %{buildroot}%{_sysctldir}/50-pid-max.conf
 
-# Make sure systemd-network polkit rules file starts with a suitable
-# number prefix so it takes precedence over our polkit-default-privs.
+# Make sure systemd-network polkit rules file starts with a suitable number
+# prefix so it takes precedence over our polkit-default-privs.
 %if %{with networkd}
 mv %{buildroot}%{_datadir}/polkit-1/rules.d/systemd-networkd.rules \
         %{buildroot}%{_datadir}/polkit-1/rules.d/60-systemd-networkd.rules
 %endif
 
-# since v207 /etc/sysctl.conf is no longer parsed (commit
-# 04bf3c1a60d82791), however backward compatibility is provided by
+# Since v207 /etc/sysctl.conf is no longer parsed (commit 04bf3c1a60d82791),
+# however backward compatibility is provided by
 # /usr/lib/sysctl.d/99-sysctl.conf.
 ln -s ../../../etc/sysctl.conf %{buildroot}%{_sysctldir}/99-sysctl.conf
 
@@ -818,27 +816,26 @@ ln -s ../../../etc/sysctl.conf %{buildroot}%{_sysctldir}/99-sysctl.conf
 # SUSE (bsc#1006978).
 rm -f %{buildroot}%{_sysusersdir}/basic.conf
 
-# Remove README file in init.d as (SUSE) rpm requires executable files
-# in this directory... oh well.
+# Remove README file in init.d as (SUSE) rpm requires executable files in this
+# directory... oh well.
 rm -f %{buildroot}/etc/init.d/README
 
-# This dir must be owned (and thus created) by systemd otherwise the
-# build system will complain. This is odd since we simply own a ghost
-# file in it...
+# This dir must be owned (and thus created) by systemd otherwise the build
+# system will complain. This is odd since we simply own a ghost file in it...
 mkdir -p %{buildroot}%{_sysconfdir}/X11/xorg.conf.d
 
-# Make sure directories in /var exist
+# Make sure directories in /var exist.
 mkdir -p %{buildroot}%{_localstatedir}/lib/systemd/coredump
 mkdir -p %{buildroot}%{_localstatedir}/lib/systemd/catalog
 
-# Make sure the NTP units dir exists
+# Make sure the NTP units dir exists.
 mkdir -p %{buildroot}%{_ntpunitsdir}
 
-# Make sure the shutdown/sleep drop-in dirs exist
+# Make sure the shutdown/sleep drop-in dirs exist.
 mkdir -p %{buildroot}%{_prefix}/lib/systemd/system-shutdown/
 mkdir -p %{buildroot}%{_prefix}/lib/systemd/system-sleep/
 
-# Make sure these directories are properly owned
+# Make sure these directories are properly owned.
 mkdir -p %{buildroot}%{_unitdir}/basic.target.wants
 mkdir -p %{buildroot}%{_unitdir}/default.target.wants
 mkdir -p %{buildroot}%{_unitdir}/dbus.target.wants
@@ -861,7 +858,7 @@ mkdir -p %{buildroot}%{_userpresetdir}
 mkdir -p %{buildroot}%{_systemd_system_env_generator_dir}
 mkdir -p %{buildroot}%{_systemd_user_env_generator_dir}
 
-# ensure after.local wrapper is called
+# Ensure after.local wrapper is called.
 install -m 644 %{SOURCE11} %{buildroot}%{_unitdir}/
 ln -s ../after-local.service %{buildroot}%{_unitdir}/multi-user.target.wants/
 
@@ -878,8 +875,8 @@ touch %{buildroot}%{_localstatedir}/lib/systemd/i18n-migrated
 
 %fdupes -s %{buildroot}%{_mandir}
 
-# Make sure to disable all services by default. The Suse branding
-# presets package takes care of defining the right policies.
+# Make sure to disable all services by default. The Suse branding presets
+# package takes care of defining the right policies.
 rm -f %{buildroot}%{_presetdir}/*.preset
 echo 'disable *' >%{buildroot}%{_presetdir}/99-default.preset
 echo 'disable *' >%{buildroot}%{_userpresetdir}/99-default.preset
@@ -925,21 +922,21 @@ if [ -f /usr/share/systemd/kbd-model-map.xkb-generated ]; then
                 >>%{buildroot}%{_datarootdir}/systemd/kbd-model-map
 fi
 
-# kbd-model-map.legacy is used to provide mapping for legacy keymaps,
-# which may still be used by yast.
+# kbd-model-map.legacy is used to provide mapping for legacy keymaps, which may
+# still be used by yast.
 cat %{SOURCE14} >>%{buildroot}%{_datarootdir}/systemd/kbd-model-map
 
-# Don't ship systemd-journald-audit.socket as there's no other way for
-# us to prevent journald from recording audit messages in the journal
-# by default (bsc#1109252).
+# Don't ship systemd-journald-audit.socket as there's no other way for us to
+# prevent journald from recording audit messages in the journal by default
+# (bsc#1109252).
 rm -f %{buildroot}%{_unitdir}/systemd-journald-audit.socket
 rm -f %{buildroot}%{_unitdir}/sockets.target.wants/systemd-journald-audit.socket
 
 %if %{with testsuite}
 cp -a test %{buildroot}%{_testsuitedir}/
 # When the tests are installed, the effective testdata directory is in
-# %{_testsuitedir}, the other one, which is actually a symlink, is
-# only useful when the tests are run directly from the source.
+# %{_testsuitedir}, the other one, which is actually a symlink, is only useful
+# when the tests are run directly from the source.
 rm %{buildroot}%{_testsuitedir}/test/testdata
 # kbd-model-map became a dangling symlink, drop it.
 rm %{buildroot}%{_testsuitedir}/test/test-keymap-util/kbd-model-map
@@ -950,26 +947,24 @@ find %{buildroot}%{_testsuitedir}/ -name .git\* -exec rm -fr {} \;
 %find_lang systemd
 %endif
 
-# Build of installation images uses a hard coded list of packages with
-# a %%pre that needs to be run during the build. systemd is one of them
-# so keep the section even if it's empty.
+# Build of installation images uses a hard coded list of packages with a %%pre
+# that needs to be run during the build. systemd is one of them so keep the
+# section even if it's empty.
 %pre
 :
 
 %post
-# Make /etc/machine-id an empty file during package installation. On
-# the first boot, machine-id is initialized and either committed (if
-# /etc/ is writable) or the system/image runs with a transient machine
-# ID, that changes on each boot (if the image is read-only). This is
-# especially important for appliance builds to avoid an identical
-# machine ID in all images.
+# Make /etc/machine-id an empty file during package installation. On the first
+# boot, machine-id is initialized and either committed (if /etc/ is writable) or
+# the system/image runs with a transient machine ID, that changes on each boot
+# (if the image is read-only). This is especially important for appliance builds
+# to avoid an identical machine ID in all images.
 if [ $1 -eq 1 ]; then
         touch     %{_sysconfdir}/machine-id
         chmod 444 %{_sysconfdir}/machine-id
 fi
 
-# /etc/machine-id might have been created writeable incorrectly
-# (boo#1092269).
+# /etc/machine-id might have been created writeable incorrectly (boo#1092269).
 if [ "$(stat -c%a %{_sysconfdir}/machine-id)" != 444 ]; then
         echo "Incorrect file mode bits for /etc/machine-id which should be 0444, fixing..."
         chmod 444 %{_sysconfdir}/machine-id
@@ -981,27 +976,25 @@ pam-config --add --systemd || :
 %ldconfig
 %endif
 
-# systemd-sysusers is not available in %pre so this needs to be done
-# in %%post. However this shouldn't be an issue since all files the
-# main package ships are owned by root.
+# systemd-sysusers is not available in %pre so this needs to be done in
+# %%post. However this shouldn't be an issue since all files the main package
+# ships are owned by root.
 %sysusers_create systemd-journal.conf
 %sysusers_create systemd-timesync.conf
 
 systemctl daemon-reexec || :
 
-# Reexecute user manager instances (if any). It is asynchronous but it
-# shouldn't be a problem in practice: a problem would arise only if
-# the new version of a user service has a brand new option that is
-# only understood by the latest version of the user manager and the
-# user service is started before the user manager get reexecuted. But
-# this case is very unlikely especially since we don't restart any
-# user service for now.
+# Reexecute user manager instances (if any). It is asynchronous but it shouldn't
+# be a problem in practice: a problem would arise only if the new version of a
+# user service has a brand new option that is only understood by the latest
+# version of the user manager and the user service is started before the user
+# manager get reexecuted. But this case is very unlikely especially since we
+# don't restart any user service for now.
 #
-# Before doing this, we unfortunately have to wait until users will
-# reexec their user manager (by either rebooting or restarting their
-# session) to a version that supports SIGRTMIN+25 otherwise sending
-# the signal to an old version will kill the manager which means
-# tearing down the user session.
+# Before doing this, we unfortunately have to wait until users will reexec their
+# user manager (by either rebooting or restarting their session) to a version
+# that supports SIGRTMIN+25 otherwise sending the signal to an old version will
+# kill the manager which means tearing down the user session.
 #
 # systemctl kill --kill-who=main --signal=SIGRTMIN+25 "user@*.service" || :
 
@@ -1020,9 +1013,9 @@ fi
 %systemd_post remote-fs.target
 %systemd_post systemd-timesyncd.service
 
-# v228 wrongly set world writable suid root permissions on timestamp
-# files used by permanent timers. Fix the timestamps that might have
-# been created by the affected versions of systemd (bsc#1020601).
+# v228 wrongly set world writable suid root permissions on timestamp files used
+# by permanent timers. Fix the timestamps that might have been created by the
+# affected versions of systemd (bsc#1020601).
 for stamp in $(ls /var/lib/systemd/timers/stamp-*.timer 2>/dev/null); do
         chmod 0644 $stamp
 done
@@ -1032,12 +1025,12 @@ for username in $(ls /var/lib/systemd/linger/* 2>/dev/null); do
         chmod 0644 $username
 done
 
-# Due to the fact that DynamicUser= was turned ON during v235 and then
-# switched back to off in v240, /var/lib/systemd/timesync might be a
-# symlink pointing to /var/lib/private/systemd/timesync, which is
-# inaccessible for systemd-timesync user as /var/lib/private is 0700
-# root:root, see https://github.com/systemd/systemd/issues/11329 for
-# details. Note: only TW users might be affected by this bug.
+# Due to the fact that DynamicUser= was turned ON during v235 and then switched
+# back to off in v240, /var/lib/systemd/timesync might be a symlink pointing to
+# /var/lib/private/systemd/timesync, which is inaccessible for systemd-timesync
+# user as /var/lib/private is 0700 root:root, see
+# https://github.com/systemd/systemd/issues/11329 for details. Note: only TW
+# users might be affected by this bug.
 if [ -L %{_localstatedir}/lib/systemd/timesync ]; then
         rm %{_localstatedir}/lib/systemd/timesync
         mv %{_localstatedir}/lib/private/systemd/timesync %{_localstatedir}/lib/systemd/timesync
@@ -1046,14 +1039,13 @@ fi
 # This includes all hacks needed when upgrading from SysV.
 %{_prefix}/lib/systemd/scripts/upgrade-from-pre-210.sh || :
 
-# Migrate old i18n settings previously configured in /etc/sysconfig to
-# the new locations used by systemd (/etc/locale.conf,
-# /etc/vconsole.conf, ...). Recent versions of systemd parse the new
-# locations only.
+# Migrate old i18n settings previously configured in /etc/sysconfig to the new
+# locations used by systemd (/etc/locale.conf, /etc/vconsole.conf, ...). Recent
+# versions of systemd parse the new locations only.
 #
-# This is needed both at package updates and package installations
-# because we might be upgrading from a system which was running SysV
-# init (systemd package is being installed).
+# This is needed both at package updates and package installations because we
+# might be upgrading from a system which was running SysV init (systemd package
+# is being installed).
 #
 # It's run only once.
 %{_prefix}/lib/systemd/scripts/migrate-sysconfig-i18n.sh || :
@@ -1068,10 +1060,10 @@ fi
 %systemd_pre remote-cryptsetup.target
 %systemd_pre systemd-pstore.service
 
-# New installations uses the last compat symlink generation number
-# (currently at 2), which basically disables all compat symlinks. On
-# old systems, the file doesn't exist. This is equivalent to
-# generation #1, which enables the creation of all compat symlinks.
+# New installations uses the last compat symlink generation number (currently at
+# 2), which basically disables all compat symlinks. On old systems, the file
+# doesn't exist. This is equivalent to generation #1, which enables the creation
+# of all compat symlinks.
 if [ $1 -eq 1 ]; then
         echo "COMPAT_SYMLINK_GENERATION=2" >/usr/lib/udev/compat-symlink-generation
 fi
@@ -1100,15 +1092,16 @@ rm -f /etc/udev/rules.d/{20,55,65}-cdrom.rules
 %postun -n udev%{?mini}
 %regenerate_initrd_post
 
-# The order of the units being restarted is important here because there's currently no
-# way to queue multiple jobs into a single transaction atomically. Therefore systemctl
-# will create 3 restart jobs that can be handled by PID1 separately and if the jobs for
-# the sockets are being handled first then starting them again will fail as the service
-# is still active hence the sockets held by udevd. However if the restart job for udevd
-# is handled first, there should be enough time to queue the socket jobs before the stop
-# job for udevd is processed. Hence PID1 will automatically sort the restart jobs
-# correctly by stopping the service then the sockets and then by starting the sockets and
-# the unit.
+# The order of the units being restarted is important here because there's
+# currently no way to queue multiple jobs into a single transaction
+# atomically. Therefore systemctl will create 3 restart jobs that can be handled
+# by PID1 separately and if the jobs for the sockets are being handled first
+# then starting them again will fail as the service is still active hence the
+# sockets held by udevd. However if the restart job for udevd is handled first,
+# there should be enough time to queue the socket jobs before the stop job for
+# udevd is processed. Hence PID1 will automatically sort the restart jobs
+# correctly by stopping the service then the sockets and then by starting the
+# sockets and the unit.
 #
 # Note that when systemd-udevd is restarted, there will always be a short time
 # frame where no socket will be listening to the events sent by the kernel, no
@@ -1130,21 +1123,19 @@ rm -f /etc/udev/rules.d/{20,55,65}-cdrom.rules
 %if %{with machined}
 %ldconfig
 if [ $1 -gt 1 ]; then
-        # Convert /var/lib/machines subvolume to make it suitable for
-        # rollbacks, if needed. See bsc#992573. The installer has been fixed
-        # to create it at installation time.
+        # Convert /var/lib/machines subvolume to make it suitable for rollbacks,
+        # if needed. See bsc#992573. The installer has been fixed to create it
+        # at installation time.
         #
         # The convertion might only be problematic for openSUSE distros
-        # (TW/Factory) where previous versions had already created the
-        # subvolume at the wrong place (via tmpfiles for example) and user
-        # started to populate and use it. In this case we'll let the user fix
-        # it manually.
+        # (TW/Factory) where previous versions had already created the subvolume
+        # at the wrong place (via tmpfiles for example) and user started to
+        # populate and use it. In this case we'll let the user fix it manually.
         #
         # For SLE12 this subvolume was only introduced during the upgrade from
-        # v210 to v228 when we added this workaround. Note that the subvolume
-        # is still created at the wrong place due to the call to
-        # tmpfiles_create macro previously however it's empty so there
-        # shouldn't be any issues.
+        # v210 to v228 when we added this workaround. Note that the subvolume is
+        # still created at the wrong place due to the call to tmpfiles_create
+        # macro previously however it's empty so there shouldn't be any issues.
         %{_prefix}/lib/systemd/scripts/fix-machines-btrfs-subvol.sh || :
 fi
 
