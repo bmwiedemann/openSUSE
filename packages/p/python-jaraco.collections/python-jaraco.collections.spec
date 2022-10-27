@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-jaraco.collections
-Version:        3.5.2
+Version:        3.6.0
 Release:        0
 Summary:        Tools to work with collections
 License:        MIT

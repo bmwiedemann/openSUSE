@@ -51,4 +51,18 @@
     <comment></comment>
     <requestid>1000110</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9ef1009b61840ee30863380d1a09af83</srcmd5>
+    <version>3.6.0</version>
+    <time>1666871532</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to 3.6.0:
+  - Revised DictFilter:
+    - Fixed issue where DictFilter.__contains__ would raise a
+      KeyError.
+    - Relies heavily now on collections.abc.Mapping base class.
+- Remove conditional definition of python_module.
+</comment>
+    <requestid>1031198</requestid>
+  </revision>
 </revisionlist>

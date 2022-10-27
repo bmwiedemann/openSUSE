@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct 25 19:21:15 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Upgrade to 3.6.0:
+  - Revised DictFilter:
+    - Fixed issue where DictFilter.__contains__ would raise a
+      KeyError.
+    - Relies heavily now on collections.abc.Mapping base class.
+
+-------------------------------------------------------------------
+Tue Oct 25 19:17:07 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Remove conditional definition of python_module.
+
+-------------------------------------------------------------------
 Mon Aug 29 11:37:21 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to v3.5.2
