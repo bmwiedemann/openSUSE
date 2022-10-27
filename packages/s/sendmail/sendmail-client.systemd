@@ -30,13 +30,6 @@ for usleep in /bin/usleep /usr/bin/usleep ; do
 done
 
 #
-# Some default permissions
-#
-/bin/touch		$pidfile
-/bin/chown mail:mail	$pidfile
-/bin/chmod 0600		$pidfile
-
-#
 # Make sure that configuration is uptodate
 #
 test -x /usr/bin/make && /usr/bin/make -C /etc/mail > /dev/null 2>&1

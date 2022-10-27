@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 25 09:32:15 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Remove maybe perilous shell script code from sm-client.pre (boo#1202937) 
+
+-------------------------------------------------------------------
 Wed Oct  5 12:16:22 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Use group(mail) and user(mail) only on modern distributions
