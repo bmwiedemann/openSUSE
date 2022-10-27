@@ -123,4 +123,20 @@
 </comment>
     <requestid>1010473</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4693a768a795a3268d0dd9f687213a80</srcmd5>
+    <version>2.16.1</version>
+    <time>1666871653</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.16.1
+  * Prep for using releaser #327 (@blink1073)
+  * Maintenance cleanup #325 (@blink1073)
+  * Fix workflows and add new ones #318 (@fcollonval)
+- Release 2.16.0
+  * raise jupyter_server pin to include 2.x #302 (@Zsailer)
+  * CI Cleanup #316 (@blink1073)
+  * Ignore warnings in prerelease test #312 (@blink1073)
+- Drop jupyterlab-server-fix-testing.patch</comment>
+    <requestid>1031373</requestid>
+  </revision>
 </revisionlist>

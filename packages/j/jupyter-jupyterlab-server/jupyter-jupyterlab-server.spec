@@ -19,23 +19,21 @@
 %define oldpython python
 %bcond_with openapitests
 Name:           jupyter-jupyterlab-server
-Version:        2.15.2
+Version:        2.16.1
 Release:        0
 Summary:        Server components for JupyterLab and JupyterLab-like applications
 License:        BSD-3-Clause
 URL:            https://github.com/jupyterlab/jupyterlab_server
 Source:         https://files.pythonhosted.org/packages/source/j/jupyterlab_server/jupyterlab_server-%{version}.tar.gz
 Source100:      jupyter-jupyterlab-server-rpmlintrc
-# PATCH-FIX-OPENSUSE jupyterlab-server-fix-testing.patch code@bnavigator.de -- remove color, failing deprecation warnings, and used nbconvert vendored mistune
-Patch0:         jupyterlab-server-fix-testing.patch
 BuildRequires:  %{python_module Babel}
 BuildRequires:  %{python_module Jinja2 >= 3.0.3}
 BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module hatchling >= 0.25}
-BuildRequires:  %{python_module importlib-metadata >= 3.6 if %python-base < 3.10}
+BuildRequires:  %{python_module hatchling >= 1.5}
+BuildRequires:  %{python_module importlib-metadata >= 4.8.3 if %python-base < 3.10}
 BuildRequires:  %{python_module json5}
 BuildRequires:  %{python_module jsonschema >= 3.0.1}
-BuildRequires:  %{python_module jupyter_server >= 1.4}
+BuildRequires:  %{python_module jupyter_server >= 1.4 with %python-jupyter_server < 3}
 BuildRequires:  %{python_module packaging > 0.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module requests}
@@ -47,9 +45,9 @@ Requires:       python-json5
 Requires:       python-jsonschema >= 3.0.1
 Requires:       python-packaging
 Requires:       python-requests
-Requires:       (python-jupyter-server >= 1.8 with python-jupyter-server < 2)
+Requires:       (python-jupyter-server >= 1.8 with python-jupyter-server < 3)
 %if 0%{?python_version_nodots} < 310
-Requires:       python-importlib-metadata >= 3.6
+Requires:       python-importlib-metadata >= 4.8.3
 %endif
 Provides:       python-jupyterlab-server = %{version}-%{release}
 Obsoletes:      python-jupyterlab-server < %{version}-%{release}
@@ -84,7 +82,7 @@ BuildRequires:  %{python_module jupyter-server-test}
 BuildRequires:  %{python_module openapi-core >= 0.14.2 with %python-openapi-core < 0.15}
 BuildRequires:  %{python_module openapi-spec-validator < 0.5}
 %endif
-BuildRequires:  %{python_module pytest >= 5.3.2}
+BuildRequires:  %{python_module pytest >= 7}
 BuildRequires:  %{python_module pytest-console-scripts}
 BuildRequires:  %{python_module ruamel.yaml}
 BuildRequires:  %{python_module strict-rfc3339}
@@ -130,6 +128,7 @@ Metapackage for the jupyterlab_server[openapi] extra
 
 %prep
 %autosetup -p1 -n jupyterlab_server-%{version}
+sed -i 's/--color=yes//' pyproject.toml
 
 %build
 %pyproject_wheel
