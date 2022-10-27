@@ -25,7 +25,12 @@ Summary:        A tool to analyze the memory behavior of Python objects
 License:        Apache-2.0
 URL:            https://github.com/pympler/pympler
 Source:         https://files.pythonhosted.org/packages/source/P/Pympler/Pympler-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM pympler-flaky-tests.patch gh#pympler/pympler#90 mcepl@suse.com
+# More cycles needed with more recent versions of Python
 Patch0:         pympler-flaky-tests.patch
+# PATCH-FIX-UPSTREAM no-inspect-getargspec.patch gh#pympler/pympler#148 mcepl@suse.com
+# Replaced removed method inspect.getargspec
+Patch1:         no-inspect-getargspec.patch
 BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -44,8 +49,7 @@ unexpected runtime behavior like memory bloat and other "pymples"
 can easily be identified.
 
 %prep
-%setup -q -n Pympler-%{version}
-%patch0 -p1
+%autosetup -p1 -n Pympler-%{version}
 
 %build
 %python_build
@@ -55,7 +59,11 @@ can easily be identified.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -k 'not (test_otracker_diff or test_repr_function or test_stracker or test_snapshot_members or test_charts)'
+# gh#pympler/pympler#134
+skiptests="test_repr_function"
+# gh#pympler/pympler#148
+skiptests+=" or test_findgarbage or test_prune or test_get_tree"
+%pytest -k "not ($skiptests)"
 
 %files %{python_files}
 %license LICENSE

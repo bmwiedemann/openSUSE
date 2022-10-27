@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct 26 21:16:00 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Reorganize skipping of failing tests.
+
+-------------------------------------------------------------------
+Wed Oct 26 12:37:21 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add no-inspect-getargspec.patch porting out deprecated
+  (and in 3.11 removed) method inspect.getargspec
+  (gh#pympler/pympler#148).
+
+-------------------------------------------------------------------
 Wed Jun  8 08:24:18 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Add BR for python-dbm to make build working on 15.*.

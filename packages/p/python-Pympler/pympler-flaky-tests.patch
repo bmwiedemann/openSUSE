@@ -1,8 +1,10 @@
-Index: Pympler-0.7/test/asizeof/test_asizeof.py
-===================================================================
---- Pympler-0.7.orig/test/asizeof/test_asizeof.py
-+++ Pympler-0.7/test/asizeof/test_asizeof.py
-@@ -197,8 +197,8 @@ class TypesTest(unittest.TestCase):
+---
+ test/asizeof/test_asizeof.py |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- a/test/asizeof/test_asizeof.py
++++ b/test/asizeof/test_asizeof.py
+@@ -193,8 +193,8 @@ class TypesTest(unittest.TestCase):
          s = asizeof.asizeof(all=True, code=True)
          c = gc.collect()
          # NumPy (and/or other, recent) modules causes some
