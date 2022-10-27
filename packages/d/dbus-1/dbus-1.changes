@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Wed Oct 26 08:53:48 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.14.4 (bsc#1204111, CVE-2022-42010, 
+                    bsc#1204112, CVE-2022-42011,
+                    bsc#1204113, CVE-2022-42012):
+  This is a security update for the dbus 1.14.x stable branch, fixing
+  denial-of-service issues (CVE-2022-42010, -42011, -42012) and applying
+  security hardening (dbus#416).
+  Behaviour changes:
+  * On Linux, dbus-daemon and other uses of DBusServer now create a
+     path-based Unix socket, unix:path=..., when asked to listen on a
+     unix:tmpdir=... address. This makes unix:tmpdir=... equivalent to
+     unix:dir=... on all platforms.
+     Previous versions would have created an abstract socket, unix:abstract=...,
+     in this situation.
+     This change primarily affects the well-known session bus when run via
+     dbus-launch(1) or dbus-run-session(1). The user bus, enabled by configuring
+     dbus with --enable-user-session and running it on a systemd system,
+     already used path-based Unix sockets and is unaffected by this change.
+     This behaviour change prevents a sandbox escape via the session bus socket
+     in sandboxing frameworks that can share the network namespace with the host
+     system, such as Flatpak.
+     This change might cause a regression in situations where the abstract socket
+     is intentionally shared between the host system and a chroot or container,
+     such as some use-cases of schroot(1). That regression can be resolved by
+     using a bind-mount to share either the D-Bus socket, or the whole /tmp
+     directory, with the chroot or container.
+     (dbus#416, Simon McVittie)
+  * Denial of service fixes:
+    - Evgeny Vereshchagin discovered several ways in which an authenticated
+      local attacker could cause a crash (denial of service) in
+      dbus-daemon --system or a custom DBusServer. In uncommon configurations
+      these could potentially be carried out by an authenticated remote attacker.
+    - An invalid array of fixed-length elements where the length of the array
+      is not a multiple of the length of the element would cause an assertion
+      failure in debug builds or an out-of-bounds read in production builds.
+      This was a regression in version 1.3.0.
+      (dbus#413, CVE-2022-42011; Simon McVittie)
+    - A syntactically invalid type signature with incorrectly nested parentheses
+      and curly brackets would cause an assertion failure in debug builds.
+      Similar messages could potentially result in a crash or incorrect message
+      processing in a production build, although we are not aware of a practical
+      example. (dbus#418, CVE-2022-42010; Simon McVittie)
+    - A message in non-native endianness with out-of-band Unix file descriptors
+      would cause a use-after-free and possible memory corruption in production
+      builds, or an assertion failure in debug builds. This was a regression in
+      version 1.3.0. (dbus#417, CVE-2022-42012; Simon McVittie)
+    - Preserve errno on failure to open /proc/self/oom_score_adj
+      (dbus!285, Gentoo#834725; Mike Gilbert)
+    - On Linux, don't log warnings if oom_score_adj is read-only but does not
+      need to be changed (dbus!291, Simon McVittie)
+    - Slightly improve error-handling for inotify
+      (dbus!235, Simon McVittie)
+    - Don't crash if dbus-daemon is asked to watch more than 128 directories
+      for changes (dbus!302, Jan Tojnar)
+
+-------------------------------------------------------------------
 Thu Oct 13 07:29:57 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - Disable asserts (bsc#1087072) 

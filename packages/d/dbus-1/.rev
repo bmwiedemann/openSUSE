@@ -1449,4 +1449,41 @@ Thu Jan  9 17:33:31 UTC 2014 - fridrich.strba@suse.com
     <comment></comment>
     <requestid>1011186</requestid>
   </revision>
+  <revision rev="175" vrev="1">
+    <srcmd5>b8805a27a341ed60df742c33ba696049</srcmd5>
+    <version>1.14.4</version>
+    <time>1666871648</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.14.4 (bsc#1204111, CVE-2022-42010, 
+                    bsc#1204112, CVE-2022-42011,
+                    bsc#1204113, CVE-2022-42012):
+  This is a security update for the dbus 1.14.x stable branch, fixing
+  denial-of-service issues (CVE-2022-42010, -42011, -42012) and applying
+  security hardening (dbus#416).
+  Behaviour changes:
+  * On Linux, dbus-daemon and other uses of DBusServer now create a
+     path-based Unix socket, unix:path=..., when asked to listen on a
+     unix:tmpdir=... address. This makes unix:tmpdir=... equivalent to
+     unix:dir=... on all platforms.
+     Previous versions would have created an abstract socket, unix:abstract=...,
+     in this situation.
+     This change primarily affects the well-known session bus when run via
+     dbus-launch(1) or dbus-run-session(1). The user bus, enabled by configuring
+     dbus with --enable-user-session and running it on a systemd system,
+     already used path-based Unix sockets and is unaffected by this change.
+     This behaviour change prevents a sandbox escape via the session bus socket
+     in sandboxing frameworks that can share the network namespace with the host
+     system, such as Flatpak.
+     This change might cause a regression in situations where the abstract socket
+     is intentionally shared between the host system and a chroot or container,
+     such as some use-cases of schroot(1). That regression can be resolved by
+     using a bind-mount to share either the D-Bus socket, or the whole /tmp
+     directory, with the chroot or container.
+     (dbus#416, Simon McVittie)
+  * Denial of service fixes:
+    - Evgeny Vereshchagin discovered several ways in which an authenticated
+      local attacker could cause a crash (denial of service) in
+      dbus-daemon --system or a custom DBusServer. In uncommon configurations</comment>
+    <requestid>1031295</requestid>
+  </revision>
 </revisionlist>

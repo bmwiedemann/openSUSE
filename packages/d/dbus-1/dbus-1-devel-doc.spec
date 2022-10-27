@@ -23,7 +23,7 @@
 %global _backup %{_sysconfdir}/sysconfig/services.rpmbak.%{name}-%{version}-%{release}
 %bcond_without selinux
 Name:           dbus-1-devel-doc
-Version:        1.14.0
+Version:        1.14.4
 Release:        0
 Summary:        Developer documentation package for D-Bus
 License:        AFL-2.1 OR GPL-2.0-or-later
