@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20221026" schemaversion="4.1">
+<image name="OBS__MicroOS___20221027" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20221026</productvar>
+      <productvar name="VERSION">20221027</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20221026,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20221027,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20221026/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20221027/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -459,6 +459,7 @@
       <repopackage name="gnome-shell-search-provider-nautilus" arch="x86_64"/>
       <repopackage name="gnome-software" arch="x86_64"/>
       <repopackage name="gnome-software-lang" arch="x86_64"/>
+      <repopackage name="gnome-software-plugin-packagekit" arch="x86_64"/>
       <repopackage name="gnome-system-monitor" arch="x86_64"/>
       <repopackage name="gnome-system-monitor-lang" arch="x86_64"/>
       <repopackage name="gnome-terminal" arch="x86_64"/>
@@ -1076,7 +1077,7 @@
       <repopackage name="libgjs0" arch="x86_64"/>
       <repopackage name="libglib-2_0-0"/>
       <repopackage name="libglibmm-2_4-1" arch="x86_64"/>
-      <repopackage name="libglslang11" arch="x86_64"/>
+      <repopackage name="libglslang11_12" arch="x86_64"/>
       <repopackage name="libGLU1" arch="x86_64"/>
       <repopackage name="libglvnd"/>
       <repopackage name="libgme0"/>
@@ -1757,7 +1758,7 @@
       <repopackage name="libudev1"/>
       <repopackage name="libudisks2-0"/>
       <repopackage name="libudisks2-0_btrfs"/>
-      <repopackage name="libunistring2"/>
+      <repopackage name="libunistring5"/>
       <repopackage name="libunwind8"/>
       <repopackage name="libupower-glib3" arch="x86_64"/>
       <repopackage name="liburcu8"/>

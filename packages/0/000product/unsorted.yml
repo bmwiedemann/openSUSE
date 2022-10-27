@@ -9549,7 +9549,7 @@ unsorted:
   - libSILLY1 
   - libSM-devel 
   - libSM-devel-32bit: [x86_64] 
-  - libSPIRV-Tools-2022_3-32bit: [x86_64] 
+  - libSPIRV-Tools-2022_4-32bit: [x86_64] 
   - libSampleICC-devel 
   - libSampleICC2 
   - libSavitar-devel 
@@ -9571,7 +9571,7 @@ unsorted:
   - libVFlib3-10 
   - libVSyntaxHighlighting1 
   - libVTextEdit1 
-  - libVkLayer_utils-1_3_224_1 
+  - libVkLayer_utils-1_3_231_0 
   - libWN3 
   - libWPEBackend-fdo-1_0-1-32bit: [x86_64] 
   - libWildMidi2 
@@ -11291,7 +11291,7 @@ unsorted:
   - libgloox18 
   - libgloox18-32bit: [x86_64] 
   - libglpk40 
-  - libglslang11-32bit: [x86_64] 
+  - libglslang11_12-32bit: [x86_64] 
   - libgltf-0_1-1 
   - libgltf-devel 
   - libglusterd0 
@@ -11324,7 +11324,7 @@ unsorted:
   - libgnt-devel 
   - libgnt0 
   - libgnt0-32bit: [x86_64] 
-  - libgnuastro16 
+  - libgnuastro17 
   - libgnuradio-3_10_4 
   - libgnuradio-iqbalance-devel 
   - libgnuradio-iqbalance3_9_0 
@@ -14143,8 +14143,8 @@ unsorted:
   - libspatialindex6 
   - libspatialite-devel 
   - libspatialite7 
-  - libspdlog1 
-  - libspdlog1-32bit: [x86_64] 
+  - libspdlog1_10 
+  - libspdlog1_10-32bit: [x86_64] 
   - libspdylay7 
   - libspectre-devel 
   - libspeechd-devel 
@@ -24788,7 +24788,7 @@ unsorted:
   - python310-scikit-umfpack: [x86_64] 
   - python310-scipy 
   - python310-scipy-gnu-hpc: [x86_64] 
-  - python310-scipy_1_9_2-gnu-hpc: [x86_64] 
+  - python310-scipy_1_9_3-gnu-hpc: [x86_64] 
   - python310-scitokens 
   - python310-scp 
   - python310-screeninfo 
@@ -28119,7 +28119,7 @@ unsorted:
   - python38-scikit-umfpack: [x86_64] 
   - python38-scipy 
   - python38-scipy-gnu-hpc: [x86_64] 
-  - python38-scipy_1_9_2-gnu-hpc: [x86_64] 
+  - python38-scipy_1_9_3-gnu-hpc: [x86_64] 
   - python38-scitokens 
   - python38-scour 
   - python38-scp 
@@ -31459,7 +31459,7 @@ unsorted:
   - python39-scikit-umfpack: [x86_64] 
   - python39-scipy 
   - python39-scipy-gnu-hpc: [x86_64] 
-  - python39-scipy_1_9_2-gnu-hpc: [x86_64] 
+  - python39-scipy_1_9_3-gnu-hpc: [x86_64] 
   - python39-scitokens 
   - python39-scour 
   - python39-scp 
@@ -44714,6 +44714,7 @@ unsorted:
   - zpaq 
   - zram-generator 
   - zsh-htmldoc 
+  - zsh-sh 
   - zstd-gzip 
   - zsync 
   - zutils 
