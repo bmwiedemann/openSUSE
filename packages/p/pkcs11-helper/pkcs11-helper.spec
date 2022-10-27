@@ -17,13 +17,13 @@
 
 
 Name:           pkcs11-helper
-Version:        1.28.0
+Version:        1.29.0
 Release:        0
 Summary:        Helper Library for the Use with Smart Cards and the PKCS#11 API
 License:        BSD-3-Clause AND GPL-2.0-only
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/OpenSC/OpenSC/wiki
-Source0:        https://github.com/OpenSC/%{name}/releases/download/%{name}-1.28/%{name}-%{version}.tar.bz2
+Source0:        https://github.com/OpenSC/%{name}/releases/download/%{name}-%{version}/%{name}-%{version}.tar.bz2
 Source2:        baselibs.conf
 BuildRequires:  doxygen
 BuildRequires:  fdupes
