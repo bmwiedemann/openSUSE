@@ -92,6 +92,8 @@ Mon Oct 12 20:12:32 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
 - Only build with AV1-AVIF support
 - Update to version 1.9.1
   * https://github.com/strukturag/libheif/releases/tag/v1.9.1
+- fixed CVE-2020-23109 [bsc#1192382]
+  (bca0162018df9a32d21c05aad1fa203881fa7813)
 
 -------------------------------------------------------------------
 Wed Jul 08 15:54:52 UTC 2018 - plinnell@opensuse.org
