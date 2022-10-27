@@ -22,7 +22,6 @@
 %bcond_with libalternatives
 %endif
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -32,17 +31,18 @@
 %bcond_with test
 %endif
 Name:           python-wheel%{psuffix}
-Version:        0.37.1
+Version:        0.38.0
 Release:        0
 Summary:        A built-package format for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pypa/wheel
 Source:         https://github.com/pypa/wheel/archive/%{version}.tar.gz#/wheel-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools >= 40.9}
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module setuptools >= 57.0.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
-Requires:       python-setuptools >= 40.9
+Requires:       python-setuptools >= 57.0.0
 %if %{with libalternatives}
 Requires:       alts
 BuildRequires:  alts

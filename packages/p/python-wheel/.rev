@@ -256,4 +256,29 @@
   * Updated vendored ``packaging`` library to v20.9</comment>
     <requestid>954400</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>dbcc81c99d50a98a82a2152ae482c31a</srcmd5>
+    <version>0.38.0</version>
+    <time>1666871603</time>
+    <user>dimstar_suse</user>
+    <comment>- specfile:
+  * require python &gt;= 3.8
+  * update required version for setuptools
+- update to version 0.38.0:
+  * Dropped support for Python &lt; 3.7
+  * Updated vendored &quot;packaging&quot; to 21.3
+  * Replaced all uses of &quot;distutils&quot; with &quot;setuptools&quot;
+  * The handling of &quot;license_files&quot; (including glob patterns and
+    default values) is now delegated to &quot;setuptools&gt;=57.0.0&quot; (#466).
+    The package dependencies were updated to reflect this change.
+  * Fixed potential DoS attack via the &quot;WHEEL_INFO_RE&quot; regular
+    expression
+  * Fixed &quot;ValueError: ZIP does not support timestamps before 1980&quot;
+    when using &quot;SOURCE_DATE_EPOCH=0&quot; or when on-disk timestamps are
+    earlier than 1980-01-01. Such timestamps are now changed to the
+    minimum value before packaging.
+
+- Also remove the conditional definition of python_module.</comment>
+    <requestid>1030995</requestid>
+  </revision>
 </revisionlist>
