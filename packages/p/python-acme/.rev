@@ -691,4 +691,12 @@
     support for it will be removed in the next major release.</comment>
     <requestid>1005262</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>086e56733600d3260f902229072b562e</srcmd5>
+    <version>1.31.0</version>
+    <time>1666871675</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>1031480</requestid>
+  </revision>
 </revisionlist>
