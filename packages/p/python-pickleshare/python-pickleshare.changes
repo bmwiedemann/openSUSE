@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 25 19:48:06 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Remove unnecessary code for building with Python 2.
+
+-------------------------------------------------------------------
 Sat Mar 14 07:54:17 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2
