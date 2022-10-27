@@ -24,7 +24,7 @@
 # and the independently increasing toolchain release number (216).
 
 Name:           spirv-headers
-Version:        1.6.1+sdk224+git2.0bcc624
+Version:        1.6.1+sdk231+git0.85a1ed2
 Release:        0
 Summary:        Machine-readable files from the SPIR-V registry
 License:        MIT

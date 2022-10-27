@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct 24 19:43:45 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to 1.6.1+sdk231 (85a1ed2)
+  * Implement headers definitions for SPV_EXT_mesh_shader
+  * Add definitions for SPV_ARM_core_builtins
+  * Something with VK_EXT_opacity_micromap
+  * Add support for texel buffers to clspv non-semantic
+    instruction set
+
+-------------------------------------------------------------------
 Mon Aug 22 23:25:58 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to 1.6.1+sdk224+git2.0bcc624
