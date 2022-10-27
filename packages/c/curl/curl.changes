@@ -1,8 +1,88 @@
 -------------------------------------------------------------------
+Wed Oct 26 07:51:51 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 7.86.0:
+  * Security fixes:
+    - POST following PUT confusion [bsc#1204383, CVE-2022-32221]
+    - .netrc parser out-of-bounds access [bsc#1204384, CVE-2022-35260]
+    - HTTP proxy double-free [bsc#1204385, CVE-2022-42915]
+    - HSTS bypass via IDN [bsc#1204386, CVE-2022-42916]
+  * Changes:
+    - NPN: remove support for and use of
+    - Websockets: initial support
+  * Bugfixes:
+    - altsvc: reject bad port numbers
+    - autotools: reduce brute-force when detecting recv/send arg list
+    - aws_sigv4: fix header computation
+    - cli tool: do not use disabled protocols
+    - connect: change verbose IPv6 address:port to [address]:port
+    - connect: fix builds without AF_INET6
+    - connect: fix Curl_updateconninfo for TRNSPRT_UNIX
+    - connect: fix the wrong error message on connect failures
+    - content_encoding: use writer struct subclasses for different encodings
+    - cookie: reject cookie names or content with TAB characters
+    - curl/add_file_name_to_url: use the libcurl URL parser
+    - curl/get_url_file_name: use libcurl URL parser
+    - curl: warn for --ssl use, considered insecure
+    - docs/libcurl/symbols-in-versions: add several missing symbols
+    - ftp: ignore a 550 response to MDTM
+    - functypes: provide the recv and send arg and return types
+    - getparameter: return PARAM_MANUAL_REQUESTED for -M even when disabled
+    - header: define public API functions as extern c
+    - headers: reset the requests counter at transfer start
+    - hostip: guard PF_INET6 use
+    - hostip: lazily wait to figure out if IPv6 works until needed
+    - http, vauth: always provide Curl_allow_auth_to_host() functionality
+    - http2: make nghttp2 less picky about field whitespace
+    - http: try parsing Retry-After: as a number first
+    - http_proxy: restore the protocol pointer on error
+    - lib: add missing limits.h includes
+    - lib: prepare the incoming of additional protocols
+    - lib: sanitize conditional exclusion around MIME
+    - libssh: if sftp_init fails, don't get the sftp error code
+    - mprintf: reject two kinds of precision for the same argument
+    - mqtt: return error for too long topic
+    - netrc: compare user name case sensitively
+    - netrc: replace fgets with Curl_get_line
+    - netrc: use the URL-decoded user
+    - ngtcp2: fix build errors due to changes in ngtcp2 library
+    - noproxy: support proxies specified using cidr notation
+    - openssl: make certinfo available for QUIC
+    - resolve: make forced IPv4 resolve only use A queries
+    - schannel: ban server ALPN change during recv renegotiation
+    - schannel: don't reset recv/send function pointers on renegotiation
+    - schannel: when importing PFX, disable key persistence
+    - setopt: use the handler table for protocol name to number conversions
+    - setopt: when POST is set, reset the 'upload' field
+    - single_transfer: use the libcurl URL parser when appending query parts
+    - smb: replace CURL_WIN32 with WIN32
+    - tool: avoid generating ambiguous escaped characters in --libcurl
+    - tool_main: exit at once if out of file descriptors
+    - tool_operate: more transfer cleanup after parallel transfer fail
+    - tool_operate: prevent over-queuing in parallel mode
+    - tool_paramhelp: asserts verify maximum sizes for string loading
+    - tool_xattr: save the original URL, not the final redirected one
+    - url: a zero-length userinfo part in the URL is still a (blank) user
+    - url: allow non-HTTPS HSTS-matching for debug builds
+    - url: rename function due to name-clash in Watt-32
+    - url: use IDN decoded names for HSTS checks
+    - urlapi: detect scheme better when not guessing
+    - urlapi: fix parsing URL without slash with CURLU_URLENCODE
+    - urlapi: reject more bad characters from the host name field
+  * Remove patch upstream:
+    - connect-fix-Curl_updateconninfo-for-TRNSPRT_UNIX.patch
+
+-------------------------------------------------------------------
 Sat Oct  8 17:06:50 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Update connection info when using UNIX socket as endpoint
   connect-fix-Curl_updateconninfo-for-TRNSPRT_UNIX.patch
+
+-------------------------------------------------------------------
+Fri Sep 30 12:35:59 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- Change the deprecated configure option --enable-hidden-symbols
+  to the new --enable-symbol-hiding.
 
 -------------------------------------------------------------------
 Wed Aug 31 07:34:20 UTC 2022 - Pedro Monreal <pmonreal@suse.com>

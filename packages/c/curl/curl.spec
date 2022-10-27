@@ -21,7 +21,7 @@
 # need ssl always for python-pycurl
 %bcond_without openssl
 Name:           curl
-Version:        7.85.0
+Version:        7.86.0
 Release:        0
 Summary:        A Tool for Transferring Data from URLs
 License:        curl
@@ -35,7 +35,6 @@ Patch1:         dont-mess-with-rpmoptflags.patch
 Patch2:         curl-secure-getenv.patch
 #PATCH-FIX-OPENSUSE bsc#1076446 protocol redirection not supported or disabled
 Patch3:         curl-disabled-redirect-protocol-message.patch
-Patch4:         connect-fix-Curl_updateconninfo-for-TRNSPRT_UNIX.patch
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 Requires:       libcurl4 = %{version}
@@ -123,7 +122,7 @@ sed -i 's/\(link_all_deplibs=\)unknown/\1no/' configure
     --with-gssapi=$(krb5-config --prefix) \
     --with-libidn2 \
     --with-libssh \
-    --enable-hidden-symbols \
+    --enable-symbol-hiding \
     --disable-static \
     --enable-threaded-resolver
 
