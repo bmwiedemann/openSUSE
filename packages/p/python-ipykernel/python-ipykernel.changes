@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 26 08:13:32 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 6.16.2
+  * Fix failing test and update matrix #1010 (@blink1073)
+- Disable debugger tests
+
+-------------------------------------------------------------------
 Sat Oct 22 03:37:06 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 6.16.1:

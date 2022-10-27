@@ -322,4 +322,15 @@
 </comment>
     <requestid>1030494</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>cc4763e4a6805ddb757a200aa182c238</srcmd5>
+    <version>6.16.2</version>
+    <time>1666871544</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.16.2
+  * Fix failing test and update matrix #1010 (@blink1073)
+- Disable debugger tests
+</comment>
+    <requestid>1031304</requestid>
+  </revision>
 </revisionlist>

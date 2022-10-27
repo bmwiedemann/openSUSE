@@ -17,7 +17,7 @@
 
 
 Name:           python-ipykernel
-Version:        6.16.1
+Version:        6.16.2
 Release:        0
 Summary:        IPython Kernel for Jupyter
 License:        BSD-3-Clause
@@ -65,11 +65,10 @@ Requires:       python-tornado >= 6.1
 Requires:       python-traitlets >= 5.1.0
 # /SECTION
 # SECTION test requirements
-BuildRequires:  %{python_module curio}
 BuildRequires:  %{python_module flaky}
-BuildRequires:  %{python_module pytest >= 6.0}
+BuildRequires:  %{python_module matplotlib}
+BuildRequires:  %{python_module pytest >= 7.0}
 BuildRequires:  %{python_module pytest-timeout}
-BuildRequires:  %{python_module trio}
 # we don't want ipyparallel and its dependencies in Ring1, see below
 #BuildRequires:  #{python_module ipyparallel}
 # /SECTION
@@ -112,7 +111,9 @@ $python -m ipykernel install \
 %check
 # flaky: bad timings in obs often cause this to fail
 donttest="test_shutdown_subprocesses"
-%pytest -k "not ($donttest)"
+# fails in obs setups
+ignoretests="--ignore ipykernel/tests/test_debugger.py"
+%pytest -k "not ($donttest)" $ignoretests
 
 %files %{python_files}
 %doc README.md
