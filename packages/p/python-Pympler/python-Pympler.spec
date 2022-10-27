@@ -28,15 +28,14 @@ Source:         https://files.pythonhosted.org/packages/source/P/Pympler/Pympler
 # PATCH-FIX-UPSTREAM pympler-flaky-tests.patch gh#pympler/pympler#90 mcepl@suse.com
 # More cycles needed with more recent versions of Python
 Patch0:         pympler-flaky-tests.patch
-# PATCH-FIX-UPSTREAM no-inspect-getargspec.patch gh#pympler/pympler#148 mcepl@suse.com
-# Replaced removed method inspect.getargspec
-Patch1:         no-inspect-getargspec.patch
+BuildRequires:  %{python_module bottle}
 BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
+Requires:       python-tk
 %python_subpackages
 
 %description
@@ -50,6 +49,12 @@ can easily be identified.
 
 %prep
 %autosetup -p1 -n Pympler-%{version}
+
+# Remove bundled bottle (gh#pympler/pympler#148)
+rm pympler/util/bottle.py
+
+# Remove unnecessary shebang
+sed -i '1{\@^#!%{_bindir}/env python@d}' pympler/asizeof.py
 
 %build
 %python_build
@@ -68,6 +73,7 @@ skiptests+=" or test_findgarbage or test_prune or test_get_tree"
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/pympler
+%{python_sitelib}/Pympler-%{version}*-info
 
 %changelog

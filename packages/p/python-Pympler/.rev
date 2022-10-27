@@ -74,4 +74,16 @@
     <comment></comment>
     <requestid>1031404</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>bcb8aa9d7bf9fc438085441498f83e8d</srcmd5>
+    <version>1.0.1</version>
+    <time>1666978117</time>
+    <user>dimstar_suse</user>
+    <comment>- Add _constraints
+- Clean up SPEC file.
+- Remove no-inspect-getargspec.patch, because we unbundle
+  bottle.py (gh#pympler/pympler#148).
+</comment>
+    <requestid>1031839</requestid>
+  </revision>
 </revisionlist>
