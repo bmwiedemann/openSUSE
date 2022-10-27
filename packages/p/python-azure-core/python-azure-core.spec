@@ -31,14 +31,12 @@ Source:         https://files.pythonhosted.org/packages/source/a/azure-core/azur
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six >= 1.6}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python-aiohttp >= 3.0
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-requests >= 2.18.4
-Requires:       python-six >= 1.11.0
 Requires:       python-typing_extensions >= 4.0.1
 Conflicts:      python-azure-sdk <= 2.0.0
 

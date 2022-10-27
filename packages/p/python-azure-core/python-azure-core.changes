@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 27 11:10:06 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove python-six dependency. All references to this module in the azure-core
+  has been removed by this PR: gh#Azure/azure-sdk-for-python#25565
+  The dependency is still in the requirements, but there's no reference in the
+  code.
+
+-------------------------------------------------------------------
 Fri Oct  7 08:08:33 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
