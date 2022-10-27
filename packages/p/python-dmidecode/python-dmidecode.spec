@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-dmidecode
-Version:        3.12.2+git.1625035095.f0a089a
+Version:        3.12.2+git.1666757106.e6ab5bc
 Release:        0
 Summary:        Python module to access DMI data
 License:        GPL-2.0-only
@@ -27,20 +27,18 @@ Group:          System/Libraries
 URL:            https://github.com/nima/python-dmidecode
 # Source0:        https://github.com/nima/python-dmidecode/archive/refs/tags/v%%{version}.tar.gz#/python-dmidecode-%%{version}.tar.gz
 Source0:        python-dmidecode-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM huge-memory.patch gh#nima/python-dmidecode#33 mcepl@suse.com
 # use DWORD instead of WORD when calling dmi_memory_device_extended_size
 Patch0:         huge-memory.patch
 # PATCH-FIX-UPSTREAM gcc7-inline.patch gh#nima/python-dmidecode#35 mcepl@suse.com
 # Don't use inline keyword.
 Patch1:         gcc7-inline.patch
-# PATCH-FIX-UPSTREAM detect-lib-with-py3.patch gh#nima/python-dmidecode#36 mcepl@suse.com
-#  Make the code future-proof against removal of distutils module.
-Patch2:         detect-lib-with-py3.patch
 # PATCH-FIX-UPSTREAM 31-version_info-v-version.patch gh#nima/python-dmidecode#31 mcepl@suse.com
 # use sys.version_info instead of sys.version
-Patch3:         31-version_info-v-version.patch
-# PATCH-FIX-UPSTREAM Makefile_libdir.patch bsc#[0-9]+ mcepl@suse.com
-# Something's wrong with finding libdirs
-Patch4:         Makefile_libdir.patch
+Patch2:         31-version_info-v-version.patch
+# PATCH-FIX-UPSTREAM detect-lib-with-py3.patch gh#nima/python-dmidecode#36 mcepl@suse.com
+#  Make the code future-proof against removal of distutils module.
+Patch3:         detect-lib-with-py3.patch
 Obsoletes:      %{oldpython}-dmidecode <= %{version}
 Obsoletes:      python-python-dmidecode <= %{version}
 BuildRequires:  %{python_module devel}

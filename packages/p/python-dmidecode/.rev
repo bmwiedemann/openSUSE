@@ -59,4 +59,37 @@
 </comment>
     <requestid>1029603</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>821b18d332ed2226ea465981554dd890</srcmd5>
+    <version>3.12.2+git.1666757106.e6ab5bc</version>
+    <time>1666871651</time>
+    <user>dimstar_suse</user>
+    <comment>- Modify detect-lib-with-py3.patch to be more robust.
+- Update to version 3.12.2+git.1666757106.e6ab5bc:
+  * fix address_from_efi ret=0 message
+  * fix function dmi_slot_segment_bus_func null point error in system slot
+  * fix warning: this 'if' clause does not guard
+  * fix warning: variable 'str_n' set but not used
+  * fix warning: passing argument 2 of 'dmi_tpm_vendor_id' makes pointer from integer without a cast
+  * fix warning: unused variable 'attr'
+  * fix warning: unused variable 'addrstr'
+  * fix warning: suggest parentheses around assignment used as truth value
+  * fix warning: suggest parentheses around assignment used as truth value
+  * src/dmidecode.c: In function 'dmi_tpm_characteristics': src/dmidecode.c:4788:24: warning: 'return' with a value, in function returning void [-Wreturn-type] 4788 | return data_n; | ^~~~~~
+  * fix warning: passing argument 3 of 'dmi_slot_peers' from incompatible pointer type
+  * fix warning: unused variable 'ver'
+  * fix warning: variable 'eptype' set but not used
+  * fix warning: suggest parentheses around '&amp;&amp;' within '||'
+  * fix warning: comparison of integer expressions of different signedness
+  * fix warning: ignoring return value of 'legacy_decode'
+  * fix warning argument 1 null where non-null expected
+  * Update python-dmidecode to smbios 3.3.0
+  * Fix for printing an empty dictionary
+  * Fix the failure of opening &quot;/dev/mem&quot;: Permission denied
+  * Fix bugs: 1. Fix smbios3_decode decoding sysfs table dump error. 2. Fix check smbios version error warning message.
+  * Fix reading info permission deny bugs.
+- Remove duplicated Makefile_libdir.patch.
+</comment>
+    <requestid>1031403</requestid>
+  </revision>
 </revisionlist>
