@@ -33,6 +33,8 @@ Patch1:         xmlbeans-saxon-virtualnode.patch
 #PATCH-FIX-UPSTREAM xmlbeans-2.6.0-java8.patch -- Fix build with Java 8
 Patch2:         xmlbeans-2.6.0-java8.patch
 Patch3:         xmlbeans-2.6.0-jdk9.patch
+#PATCH-FIX-UPSTREAM bsc#1180915 CVE-2021-23926 XML parsers does not protect from malicious XML input
+Patch4:         xmlbeans-CVE-2021-23926.patch
 BuildRequires:  ant >= 1.6
 BuildRequires:  bea-stax-api
 BuildRequires:  java-devel >= 1.8
@@ -95,6 +97,7 @@ This package contains additional scripts.
 %patch1 -p1
 %patch2
 %patch3 -p1
+%patch4 -p1
 
 %build
 # Piccolo and jam are rebuilt from source and bundled with xbean

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 17 09:24:54 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- Security Fix: [bsc#1180915, CVE-2021-23926]
+  * XML parsers does not protect from malicious XML input
+  * Add xmlbeans-CVE-2021-23926.patch
+
+-------------------------------------------------------------------
 Sat Mar 19 23:19:36 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with java source/target levels 8
