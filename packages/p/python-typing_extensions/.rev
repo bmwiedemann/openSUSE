@@ -144,4 +144,26 @@
     <comment></comment>
     <requestid>1001419</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>45257d574226ec68cbc8b4edfe49f82d</srcmd5>
+    <version>4.4.0</version>
+    <time>1666871607</time>
+    <user>dimstar_suse</user>
+    <comment>- Clean specfile from old cruft.
+- Requires Python 3.7+
+- Fix testsuite: Must test as module; don't need multibuild.
+- Update Summary and Description
+- Update to version 4.4.0
+  * Add `typing_extensions.Any` a backport of python 3.11's Any class which is
+    subclassable at runtime. (backport from python/cpython#31841, by Shantanu
+    and Jelle Zijlstra). Patch by James Hilton-Balfe (@Gobot1234).
+  * Add initial support for TypeVarLike `default` parameter, PEP 696.
+    Patch by Marc Mueller (@cdce8p).
+  * Runtime support for PEP 698, adding `typing_extensions.override`. Patch by
+    Jelle Zijlstra.
+  * Add the `infer_variance` parameter to `TypeVar`, as specified in PEP 695.
+    Patch by Jelle Zijlstra.
+</comment>
+    <requestid>1031001</requestid>
+  </revision>
 </revisionlist>

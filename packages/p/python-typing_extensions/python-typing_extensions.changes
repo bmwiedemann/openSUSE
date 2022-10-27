@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Oct 24 18:14:28 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Clean specfile from old cruft.
+- Requires Python 3.7+
+- Fix testsuite: Must test as module; don't need multibuild.
+- Update Summary and Description
+
+-------------------------------------------------------------------
+Tue Oct 18 12:07:27 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 4.4.0
+  * Add `typing_extensions.Any` a backport of python 3.11's Any class which is
+    subclassable at runtime. (backport from python/cpython#31841, by Shantanu
+    and Jelle Zijlstra). Patch by James Hilton-Balfe (@Gobot1234).
+  * Add initial support for TypeVarLike `default` parameter, PEP 696.
+    Patch by Marc Mueller (@cdce8p).
+  * Runtime support for PEP 698, adding `typing_extensions.override`. Patch by
+    Jelle Zijlstra.
+  * Add the `infer_variance` parameter to `TypeVar`, as specified in PEP 695.
+    Patch by Jelle Zijlstra.
+
+-------------------------------------------------------------------
 Mon Sep  5 06:47:51 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Add _typed_dict_test_helper.py missing from PyPI release
