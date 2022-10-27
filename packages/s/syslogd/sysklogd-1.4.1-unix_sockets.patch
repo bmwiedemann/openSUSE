@@ -1,6 +1,11 @@
+---
+ syslog.conf.5 |   10 +++++++
+ syslogd.c     |   76 ++++++++++++++++++++++++++++++++++++++++++++++++++++++----
+ 2 files changed, 82 insertions(+), 4 deletions(-)
+
 --- syslog.conf.5
-+++ syslog.conf.5	2004-09-16 20:21:07.144284248 +0000
-@@ -159,6 +159,16 @@ command  before
++++ syslog.conf.5	2022-10-14 13:18:21.953821655 +0000
+@@ -173,6 +173,16 @@ command  before
  .BR syslogd (8)
  is started.
  
@@ -18,8 +23,8 @@
  If the file you specified is a tty, special tty-handling is done, same
  with
 --- syslogd.c
-+++ syslogd.c	2004-09-16 20:21:07.150143661 +0000
-@@ -633,6 +633,10 @@ struct filed {
++++ syslogd.c	2022-10-14 13:25:41.625956092 +0000
+@@ -688,6 +688,10 @@ struct filed {
  			struct sockaddr_in	f_addr;
  #endif
  		} f_forw;		/* forwarding address */
@@ -30,7 +35,7 @@
  		char	f_fname[MAXFNAME];
  	} f_un;
  	char	f_prevline[MAXSVLINE];		/* last message logged */
-@@ -644,6 +648,8 @@ struct filed {
+@@ -699,6 +703,8 @@ struct filed {
  	int	f_repeatcount;			/* number of "repeated" msgs */
  	int	f_flags;			/* store some additional flags */
  };
@@ -39,7 +44,7 @@
  
  /*
   * Intervals at which we flush out "message repeated" messages,
-@@ -674,10 +680,11 @@ int	repeatinterval[] = { 30, 60 };	/* #
+@@ -729,10 +735,11 @@ int	repeatinterval[] = { 30, 60 };	/* #
  #define F_FORW_SUSP	7		/* suspended host forwarding */
  #define F_FORW_UNKN	8		/* unknown host forwarding */
  #define F_PIPE		9		/* named pipe */
@@ -52,7 +57,7 @@
  };
  
  struct	filed *Files = (struct filed *) 0;
-@@ -1941,6 +1948,32 @@ void fprintlog(f, from, flags, msg)
+@@ -2050,6 +2057,32 @@ void fprintlog(f, from, flags, msg)
  			(void) fsync(f->f_file);
  		break;
  
@@ -85,7 +90,7 @@
  	case F_USERS:
  	case F_WALL:
  		f->f_time = now;
-@@ -2347,6 +2380,7 @@ void init()
+@@ -2462,6 +2495,7 @@ void init()
  				case F_PIPE:
  				case F_TTY:
  				case F_CONSOLE:
@@ -93,7 +98,7 @@
  					(void) close(f->f_file);
  				break;
  			}
-@@ -2499,7 +2533,11 @@ void init()
+@@ -2614,7 +2648,11 @@ void init()
  				case F_PIPE:
  				case F_TTY:
  				case F_CONSOLE:
@@ -106,7 +111,7 @@
  					if (f->f_file == -1)
  						printf(" (unused)");
  					break;
-@@ -2717,8 +2755,37 @@ void cfline(line, f)
+@@ -2832,14 +2870,44 @@ void cfline(line, f)
  	switch (*p)
  	{
  	case '@':
@@ -135,12 +140,20 @@
 +					(chmod(f->fus_su.sun_path, 0666) < 0)) {
 +				dprintf("Can't bind unix socket to name\n");
 +				logerror("Can't bind unix unix socket to name");
-+				break;                        
-+			}                                     
++				break;
++			}
 +			break;
 +		}
  #ifdef SYSLOG_INET
++#ifndef INET6
+ 		if (!LogPort) {
+ 			f->f_type = F_UNUSED;
+ 			logerror("Forward rule without networking enabled");
+ 			break;
+ 		}
+-
 -		(void) strcpy(f->f_un.f_forw.f_hname, ++p);
++#endif
 +		(void) strcpy(f->f_un.f_forw.f_hname, p);
  		dprintf("forwarding host: %s\n", p);	/*ASP*/
  #ifdef INET6

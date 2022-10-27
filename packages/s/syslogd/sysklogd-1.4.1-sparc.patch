@@ -1,14 +1,14 @@
 --- ksym.c
 +++ ksym.c	2001-05-23 18:50:36.000000000 +0000
-@@ -112,6 +112,7 @@
+@@ -130,6 +130,7 @@
  #include <stdlib.h>
  #include <malloc.h>
  #include <sys/utsname.h>
 +#include <ctype.h>
  #include "klogd.h"
  #include "ksyms.h"
- 
-@@ -770,6 +771,84 @@ extern char * ExpandKadds(line, el)
+ #include "module.h"
+@@ -809,6 +810,84 @@ extern char * ExpandKadds(line, el)
  	if ( (num_syms == 0) ||
  	     (kp = strstr(line, "[<")) == (char *) 0 )
  	{

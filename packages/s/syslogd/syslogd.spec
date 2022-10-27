@@ -25,14 +25,14 @@
 %define _rundir %{_localstatedir}/run
 %endif
 Name:           syslogd
-Version:        1.4.1
+Version:        1.5.1
 Release:        0
 Summary:        The Syslog daemon
 License:        GPL-2.0-or-later
 Group:          System/Daemons
 URL:            https://www.infodrom.org/projects/sysklogd/
 Source:         https://www.infodrom.org/projects/sysklogd/download/sysklogd-%{version}.tar.gz
-Source4:        https://www.infodrom.org/projects/sysklogd/download/sysklogd-%{version}.tar.gz.asc
+#Source4:        https://www.infodrom.org/projects/sysklogd/download/sysklogd-%{version}.tar.gz.asc
 Source1:        logrotate.syslog
 Source2:        sysconfig.syslogd
 Source3:        sysconfig.klogd
@@ -47,20 +47,14 @@ Patch0:         sysklogd-1.4.1.dif
 Patch1:         sysklogd-1.4.1-dgram.patch
 Patch2:         sysklogd-1.4.1-sparc.patch
 Patch3:         sysklogd-1.4.1-forw.patch
-Patch4:         sysklogd-1.4.1-fileleak.patch
 Patch5:         sysklogd-ipv6.diff
 Patch6:         sysklogd-1.4.1-klogd24.dif
 Patch7:         sysklogd-1.4.1-large.patch
 Patch8:         sysklogd-1.4.1-dns.patch
 Patch9:         sysklogd-1.4.1-reopen.patch
-Patch10:        sysklogd-1.4.1-no_SO_BSDCOMPAT.diff
-Patch11:        sysklogd-1.4.1-owl-crunch_list.diff
 Patch12:        sysklogd-1.4.1-ksyslogsize.diff
 Patch13:        sysklogd-1.4.1-unix_sockets.patch
 Patch14:        sysklogd-1.4.1-showpri.patch
-Patch15:        sysklogd-1.4.1-preserve_percents.patch
-Patch16:        sysklogd-1.4.1-utf8.patch
-Patch17:        sysklogd-1.4.1-ksym.patch
 Patch18:        sysklogd-1.4.1-dontsleep.patch
 Patch19:        sysklogd-1.4.1-signal.dif
 Patch20:        sysklogd-1.4.1-clearing.patch
@@ -72,18 +66,20 @@ Patch25:        sysklogd-1.4.1-systemd-multi.dif
 Patch26:        sysklogd-1.4.1-systemd-sock-name.patch
 # PATCH-FIX-SUSE bsc#897262, CVE-2014-3634 rsyslog/syslogd: remote syslog PRI vulnerability
 Patch28:        sysklogd-1.4.1-CVE-2014-3634.patch
-Patch29:        klogd-obsolete.patch
 BuildRequires:  pkgconfig
+BuildRequires:  group(news)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(systemd)
+BuildRequires:  user(news)
 Requires:       klogd
 Requires(post): %fillup_prereq
 Requires(post): permissions
 # Note: this package is for >= 12.3 only
 # and does not provide LSB init scripts!
 Requires(pre):  syslog-service >= 2.0
-Requires(pre):  user(news) group(news)
-Conflicts:      otherproviders(syslog)
+Requires(pre):  user(news)
+Requires(pre):  group(news)
+Conflicts:      syslog
 Provides:       sysklogd
 Provides:       syslog
 Provides:       sysvinit(syslog)
@@ -125,24 +121,18 @@ The package syslog-service provides the service boot
 scripts for SysV and the service unit files for systemd.
 
 %prep
-%setup -q -n sysklogd-1.4.1
+%setup -q -n sysklogd-1.5.1
 %patch1   -b .dgram
 %patch2   -b .sparc
 %patch3   -b .forw
-%patch4   -b .fileleak
 %patch5   -b .ipv6
 %patch6   -b .klogd24
 %patch7   -b .large
 %patch8   -b .dns
 %patch9   -b .reopen
-%patch10  -b .sobsd
-%patch11  -b .owlcr
 %patch12  -b .klsize
 %patch13  -b .usock
 %patch14  -b .shprio
-%patch15  -b .presperc
-%patch16  -b .utf8
-%patch17  -b .ksym
 %patch18  -b .sleep
 %patch19  -b .signal
 %patch20  -b .clear
@@ -153,8 +143,7 @@ scripts for SysV and the service unit files for systemd.
 %patch25  -b .sd2
 %patch26  -b .sd3
 %patch28  -b .cve20143634
-%patch29 -p1
-%patch0
+%patch0 -b .p0
 
 %build
 %ifarch s390 s390x

@@ -1,13 +1,18 @@
+---
+ sysklogd.8 |   23 +++++++++++++++++++++++
+ syslogd.c  |   54 ++++++++++++++++++++++++++++++++++++++----------------
+ 2 files changed, 61 insertions(+), 16 deletions(-)
+
 --- sysklogd.8
-+++ sysklogd.8	2005-05-23 14:48:34.564338699 +0000
++++ sysklogd.8	2022-10-14 13:33:28.961599858 +0000
 @@ -31,6 +31,7 @@ sysklogd \- Linux system logging utiliti
  ]
  .RB [ " \-t " ]
  .RB [ " \-v " ]
 +.RB [ " \-S " ]
- .LP
  .SH DESCRIPTION
  .B Sysklogd
+ provides two system utilities which provide support for
 @@ -158,6 +159,28 @@ loghost.
  .TP
  .B "\-v"
@@ -34,12 +39,12 @@
 +
 +The above message contains a priority/facility code of '5Q', which breaks
 +down to a priority of 5 (LOG_NOTICE) and a facility of 16 (LOG_LOCAL0).
- .LP
  .SH SIGNALS
  .B Syslogd
+ reacts to a set of signals.  You may easily send a signal to
 --- syslogd.c
-+++ syslogd.c	2009-11-24 18:12:55.320216000 +0100
-@@ -594,6 +594,9 @@ int funix[MAXFUNIX] = { -1, };
++++ syslogd.c	2022-10-14 13:27:33.395957312 +0000
+@@ -649,6 +649,9 @@ int funix[MAXFUNIX] = { -1, };
  #define SYNC_FILE	0x002	/* do fsync on file after printing */
  #define ADDDATE		0x004	/* add a date to the message */
  #define MARK		0x008	/* this message is a mark */
@@ -49,7 +54,7 @@
  
  /*
   * This table contains plain text for h_errno errors used by the
-@@ -772,7 +775,7 @@ void printchopped(const char *hname, cha
+@@ -828,7 +831,7 @@ void printchopped(const char *hname, cha
  void printline(const char *hname, char *msg);
  void printsys(char *msg);
  void logmsg(int pri, char *msg, const char *from, int flags);
@@ -58,7 +63,7 @@
  void endtty();
  void wallmsg(register struct filed *f, struct iovec *iov);
  void reapchild();
-@@ -861,7 +864,7 @@ int main(argc, argv)
+@@ -920,7 +923,7 @@ int main(argc, argv)
  		funix[i]  = -1;
  	}
  
@@ -67,7 +72,7 @@
  		switch((char)ch) {
  		case 'a':
  			if (nfunix < MAXFUNIX)
-@@ -913,6 +916,9 @@ int main(argc, argv)
+@@ -972,6 +975,9 @@ int main(argc, argv)
  		case 'v':
  			printf("syslogd %s.%s\n", VERSION, PATCHLEVEL);
  			exit (0);
@@ -77,19 +82,7 @@
  		case '?':
  		default:
  			usage();
-@@ -1151,9 +1157,9 @@ int main(argc, argv)
- 				dprintf("UNIX socket error: %d = %s.\n", \
- 					errno, strerror(errno));
- 				logerror("recvfrom UNIX");
--	      	}
--				}
- 			}
-+		    }
-+		}
- #endif
- 
- #ifdef SYSLOG_INET
-@@ -1221,7 +1227,7 @@ int main(argc, argv)
+@@ -1287,7 +1293,7 @@ int main(argc, argv)
  
  int usage()
  {
@@ -98,7 +91,7 @@
  		" [-s domainlist] [-f conffile]\n");
  	exit(1);
  }
-@@ -1660,7 +1666,7 @@ void logmsg(pri, msg, from, flags)
+@@ -1755,7 +1761,7 @@ void logmsg(pri, msg, from, flags)
  
  		if (f->f_file >= 0) {
  			untty();
@@ -107,7 +100,7 @@
  			(void) close(f->f_file);
  			f->f_file = -1;
  		}
-@@ -1706,13 +1712,13 @@ void logmsg(pri, msg, from, flags)
+@@ -1805,13 +1811,13 @@ void logmsg(pri, msg, from, flags)
  			 * in the future.
  			 */
  			if (now > REPEATTIME(f)) {
@@ -123,7 +116,7 @@
  			f->f_prevpri = pri;
  			f->f_repeatcount = 0;
  			(void) strncpy(f->f_lasttime, timestamp, 15);
-@@ -1721,11 +1727,11 @@ void logmsg(pri, msg, from, flags)
+@@ -1820,11 +1826,11 @@ void logmsg(pri, msg, from, flags)
  			if (msglen < MAXSVLINE) {
  				f->f_prevlen = msglen;
  				(void) strcpy(f->f_prevline, msg);
@@ -137,7 +130,7 @@
  			}
  		}
  	}
-@@ -1737,11 +1743,7 @@ void logmsg(pri, msg, from, flags)
+@@ -1840,11 +1846,7 @@ void logmsg(pri, msg, from, flags)
  } /* balance parentheses for emacs */
  #endif
  
@@ -150,7 +143,7 @@
  {
  	struct iovec iov[6];
  	register struct iovec *v = iov;
-@@ -1762,9 +1764,29 @@ void fprintlog(f, from, flags, msg)
+@@ -1865,9 +1867,29 @@ void fprintlog(f, from, flags, msg)
  	v->iov_base = f->f_lasttime;
  	v->iov_len = 15;
  	v++;

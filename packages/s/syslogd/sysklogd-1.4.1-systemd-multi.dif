@@ -1,6 +1,10 @@
+---
+ syslogd.c |  121 +++++++++++++++++++++++++++++++++++---------------------------
+ 1 file changed, 70 insertions(+), 51 deletions(-)
+
 --- syslogd.c
-+++ syslogd.c	2011/01/20 10:55:18
-@@ -574,6 +574,9 @@ static volatile sig_atomic_t restart;
++++ syslogd.c	2022-10-17 09:33:43.942759127 +0000
+@@ -626,6 +626,9 @@ static volatile sig_atomic_t restart;
  int nfunix = 1;
  char *funixn[MAXFUNIX] = { _PATH_LOG };
  int funix[MAXFUNIX] = { -1, };
@@ -10,7 +14,7 @@
  
  #ifdef UT_NAMESIZE
  # define UNAMESZ	UT_NAMESIZE	/* length of a login name */
-@@ -1000,12 +1003,44 @@ int main(argc, argv)
+@@ -1047,12 +1050,44 @@ int main(argc, argv)
  					exit(1);
  				}
  
@@ -58,12 +62,10 @@
  				untty();
  				break;
  			}
-@@ -1041,7 +1076,12 @@ int main(argc, argv)
- 				dprintf("Pidfile (and pid) already exist.\n");
+@@ -1094,6 +1129,11 @@ int main(argc, argv)
  				exit(1);
  			}
--		} /* if ( !Debug ) */
-+		} /* if ( !(Debug || NoFork)) */
+ 		} /* if ( !Debug ) */
 +#if defined(__linux__)
 +		/* if (sd_booted()) */ {
 +			sd_fds = sd_listen_fds(0);
@@ -72,7 +74,7 @@
  	}
  #endif
  
-@@ -1323,54 +1363,30 @@ static int create_unix_socket(const char
+@@ -1367,54 +1407,30 @@ static int create_unix_socket(const char
  		return -1;
  
  #if defined(__linux__)
@@ -121,12 +123,7 @@
 -#else
 -				return -1;
 -#endif
-+	if (sd_fds > 0) {
-+		for (fd = SD_LISTEN_FDS_START; fd < SD_LISTEN_FDS_START + sd_fds; fd++) {
-+			if( sd_is_socket_unix(fd, SOCK_DGRAM, -1, path, 0) == 1) {
-+				/* ok, it matches -- just use as is */
-+				return fd;
- 			}
+-			}
 - 
 -			if (!r) {
 -				logerror("Passed systemd socket of wrong type");
@@ -135,7 +132,12 @@
 -#else
 -				return -1;
 -#endif
--			}
++	if (sd_fds > 0) {
++		for (fd = SD_LISTEN_FDS_START; fd < SD_LISTEN_FDS_START + sd_fds; fd++) {
++			if( sd_is_socket_unix(fd, SOCK_DGRAM, -1, path, 0) == 1) {
++				/* ok, it matches -- just use as is */
++				return fd;
+ 			}
 - 
 -			return fd;
 +			/*
@@ -146,7 +148,7 @@
  		}
  	}
  #endif
-@@ -2485,14 +2501,17 @@ void dienow(void)
+@@ -2537,14 +2553,17 @@ void dienow(void)
  	if (InetInuse) close(inetm);
  
  	/* Clean-up files. */

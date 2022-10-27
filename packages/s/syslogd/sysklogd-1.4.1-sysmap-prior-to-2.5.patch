@@ -19,7 +19,7 @@ Signed-off-by: Jeff Mahoney <jeffm@suse.com>
 
 --- klogd.c
 +++ klogd.c	2009-08-12 12:19:17.333901686 +0000
-@@ -275,6 +275,8 @@ _syscall3(int,ksyslog,int, type, char *,
+@@ -285,6 +285,8 @@ _syscall3(int,ksyslog,int, type, char *,
  #define ksyslog klogctl
  #endif
  
@@ -28,7 +28,7 @@ Signed-off-by: Jeff Mahoney <jeffm@suse.com>
  #define LOG_BUFFER_SIZE 4096
  #define LOG_LINE_LENGTH 1000
  
-@@ -999,6 +1001,23 @@ static void SetBufSize(void)
+@@ -1014,6 +1016,23 @@ static void SetBufSize(void)
  	}
  }
  
@@ -52,7 +52,7 @@ Signed-off-by: Jeff Mahoney <jeffm@suse.com>
  
  int main(argc, argv)
  
-@@ -1166,6 +1185,9 @@ int main(argc, argv)
+@@ -1199,6 +1218,9 @@ int main(argc, argv)
  	else
  		openlog("kernel", 0, LOG_KERN);
  

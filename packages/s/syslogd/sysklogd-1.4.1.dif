@@ -1,55 +1,44 @@
-Index: .pkgextract
-===================================================================
---- /dev/null
-+++ .pkgextract
-@@ -0,0 +1,20 @@
-+patch -p0 -b --suffix=.dgram    -s < ../sysklogd-1.4.1-dgram.patch
-+patch -p0 -b --suffix=.sparc    -s < ../sysklogd-1.4.1-sparc.patch
-+patch -p0 -b --suffix=.forw     -s < ../sysklogd-1.4.1-forw.patch
-+patch -p0 -b --suffix=.fileleak -s < ../sysklogd-1.4.1-fileleak.patch
-+patch -p0 -b --suffix=.ipv6     -s < ../sysklogd-ipv6.diff
-+patch -p0 -b --suffix=.klogd24  -s < ../sysklogd-1.4.1-klogd24.dif
-+patch -p0 -b --suffix=.large    -s < ../sysklogd-1.4.1-large.patch
-+patch -p1 -b --suffix=.dns      -s < ../sysklogd-1.4.1-dns.patch
-+patch -p0 -b --suffix=.reopen   -s < ../sysklogd-1.4.1-reopen.patch
-+patch -p0 -b --suffix=.sobsd    -s < ../sysklogd-1.4.1-no_SO_BSDCOMPAT.diff
-+patch -p1 -b --suffix=.owlcr    -s < ../sysklogd-1.4.1-owl-crunch_list.diff
-+patch -p1 -b --suffix=.klsize   -s < ../sysklogd-1.4.1-ksyslogsize.diff
-+patch -p0 -b --suffix=.usock    -s < ../sysklogd-1.4.1-unix_sockets.patch
-+patch -p0 -b --suffix=.shprio   -s < ../sysklogd-1.4.1-showpri.patch
-+patch -p1 -b --suffix=.presperc -s < ../sysklogd-1.4.1-preserve_percents.patch
-+patch -p1 -b --suffix=.utf8     -s < ../sysklogd-1.4.1-utf8.patch
-+patch -p1 -b --suffix=.ksym     -s < ../sysklogd-1.4.1-ksym.patch
-+patch -p1 -b --suffix=.sleep    -s < ../sysklogd-1.4.1-dontsleep.patch
-+patch -p0 -b --suffix=.signal   -s < ../sysklogd-1.4.1-signal.dif
-+patch -p0 -b --suffix=.clear    -s < ../sysklogd-1.4.1-clearing.patch
-Index: Makefile
-===================================================================
---- Makefile.orig
-+++ Makefile
-@@ -1,14 +1,17 @@
- # Makefile for syslogd and klogd daemons.
+---
+ Makefile         |   24 ++++++++++++----------
+ klogd.c          |   57 ++++++++++++++++++++++++++++++++++++++++------------
+ pidfile.c        |   10 ++++-----
+ resolve.c        |   21 ++++++++++++++++---
+ sample-s390.conf |   60 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ sample.conf      |   60 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ syslog.c         |    7 +++++-
+ syslogd.c        |   51 ++++++++++++++++++++++++++++------------------
+ 8 files changed, 238 insertions(+), 52 deletions(-)
+
+--- Makefile
++++ Makefile	2022-10-19 09:50:35.677760471 +0000
+@@ -17,20 +17,23 @@
+ #   along with this program; if not, write to the Free Software
+ #   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  
 +# For newer Kernel we have 16k buffer size
 +LOG_BUFFER_SIZE = -DLOG_BUFFER_SIZE=16384
 +
  CC= gcc
--#CFLAGS= -g -DSYSV -Wall
-+#CFLAGS= -g -DSYSV -Wall $(LOG_BUFFER_SIZE)
+ #SKFLAGS= -g -DSYSV -Wall
  #LDFLAGS= -g
--CFLAGS= $(RPM_OPT_FLAGS) -DINET6 -O3 -DSYSV -fomit-frame-pointer -Wall -fno-strength-reduce -I.
+-SKFLAGS= $(RPM_OPT_FLAGS) -DINET6 -O3 -DSYSV -fomit-frame-pointer -Wall -fno-strength-reduce -I.
++SKFLAGS= $(RPM_OPT_FLAGS) -D_GNU_SOURCE -DINET6 -DSYSV -Wall $(LOG_BUFFER_SIZE) -fPIE -I.
+ # -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE
+ # -D_FILE_OFFSET_BITS=64 -D_LARGEFILE64_SOURCE
+ # $(shell getconf LFS_SKFLAGS)
 -LDFLAGS= -s
-+CFLAGS= $(RPM_OPT_FLAGS) -D_GNU_SOURCE -DINET6 -DSYSV -Wall -pipe $(LOG_BUFFER_SIZE) -fPIE -I.
 +LDFLAGS= -pie
  
  # Look where your install program is.
  INSTALL = /usr/bin/install
--BINDIR = /usr/sbin
-+BINDIR = /sbin
- MANDIR = /usr/man
+ 
+ # Destination paths, set prefix=/opt if required
+-BINDIR = $(prefix)/usr/sbin
++BINDIR = $(prefix)/sbin
+ MANDIR = $(prefix)/usr/share/man
  
  # There is one report that under an all ELF system there may be a need to
-@@ -25,7 +28,7 @@ MANDIR = /usr/man
+@@ -47,7 +50,7 @@ LIBS += $(shell pkg-config libsystemd --
  
  # Define the following to impart start-up delay in klogd.  This is
  # useful if klogd is started simultaneously or in close-proximity to syslogd.
@@ -58,30 +47,31 @@ Index: Makefile
  
  # The following define determines whether the package adheres to the
  # file system standard.
-@@ -115,11 +118,12 @@ clobber: clean
+@@ -127,14 +130,15 @@ clobber: clean
  	rm -f syslogd klogd ksym syslog_tst oops_test TAGS tsyslogd tklogd
  
  install_exec: syslogd klogd
 -	${INSTALL} -m 500 -s syslogd ${BINDIR}/syslogd
 -	${INSTALL} -m 500 -s klogd ${BINDIR}/klogd
-+	${INSTALL} syslogd ${DESTDIR}${BINDIR}/syslogd
-+	${INSTALL} klogd ${DESTDIR}${BINDIR}/klogd
++	${INSTALL} -m 500 -s syslogd ${DESTDIR}${BINDIR}/syslogd
++	${INSTALL} -m 500 -s klogd ${DESTDIR}${BINDIR}/klogd
 +	${INSTALL} -m 644 sample.conf ${DESTDIR}/etc/syslog.conf
  
  install_man:
--	${INSTALL} -o ${MAN_OWNER} -g ${MAN_OWNER} -m 644 sysklogd.8 ${MANDIR}/man8/sysklogd.8
--	${INSTALL} -o ${MAN_OWNER} -g ${MAN_OWNER} -m 644 syslogd.8 ${MANDIR}/man8/syslogd.8
--	${INSTALL} -o ${MAN_OWNER} -g ${MAN_OWNER} -m 644 syslog.conf.5 ${MANDIR}/man5/syslog.conf.5
--	${INSTALL} -o ${MAN_OWNER} -g ${MAN_OWNER} -m 644 klogd.8 ${MANDIR}/man8/klogd.8
-+	${INSTALL} -m 644 sysklogd.8 ${DESTDIR}${MANDIR}/man8/sysklogd.8
-+	${INSTALL} -m 644 syslogd.8 ${DESTDIR}${MANDIR}/man8/syslogd.8
-+	${INSTALL} -m 644 syslog.conf.5 ${DESTDIR}${MANDIR}/man5/syslog.conf.5
-+	${INSTALL} -m 644 klogd.8 ${DESTDIR}${MANDIR}/man8/klogd.8
-Index: klogd.c
-===================================================================
---- klogd.c.orig
-+++ klogd.c
-@@ -277,15 +277,21 @@ _syscall3(int,ksyslog,int, type, char *,
+-	${INSTALL} -o ${MAN_USER} -g ${MAN_GROUP} -m ${MAN_PERMS} sysklogd.8 ${MANDIR}/man8/sysklogd.8
+-	${INSTALL} -o ${MAN_USER} -g ${MAN_GROUP} -m ${MAN_PERMS} syslogd.8 ${MANDIR}/man8/syslogd.8
+-	${INSTALL} -o ${MAN_USER} -g ${MAN_GROUP} -m ${MAN_PERMS} syslog.conf.5 ${MANDIR}/man5/syslog.conf.5
+-	${INSTALL} -o ${MAN_USER} -g ${MAN_GROUP} -m ${MAN_PERMS} klogd.8 ${MANDIR}/man8/klogd.8
++	${INSTALL} -m ${MAN_PERMS} sysklogd.8 ${DESTDIR}${MANDIR}/man8/sysklogd.8
++	${INSTALL} -m ${MAN_PERMS} syslogd.8 ${DESTDIR}${MANDIR}/man8/syslogd.8
++	${INSTALL} -m ${MAN_PERMS} syslog.conf.5 ${DESTDIR}${MANDIR}/man5/syslog.conf.5
++	${INSTALL} -m ${MAN_PERMS} klogd.8 ${DESTDIR}${MANDIR}/man8/klogd.8
+ 
+ obj-m += oops.o
+ 
+--- klogd.c
++++ klogd.c	2022-10-19 09:50:35.677760471 +0000
+@@ -289,15 +289,21 @@ _syscall3(int,ksyslog,int, type, char *,
  
  #include <sys/utsname.h>
  
@@ -107,7 +97,7 @@ Index: klogd.c
  #endif
  
  #include "fortify.h"
-@@ -299,6 +305,8 @@ static int	kmsg,
+@@ -311,6 +317,8 @@ static int	kmsg,
  
  static int	use_syscall = 0,
  		one_shot = 0,
@@ -116,7 +106,7 @@ Index: klogd.c
  		symbol_lookup = 1,
  		no_fork = 0;	/* don't fork - don't run in daemon mode */
  
-@@ -874,8 +882,7 @@ static void LogLine(char *ptr, int len)
+@@ -891,8 +899,7 @@ static void LogLine(char *ptr, int len)
                 value  = strtoul(sym_start+1, (char **) 0, 16);
                 *(line-1) = '>';  /* put back delim */
  
@@ -126,7 +116,7 @@ Index: klogd.c
                 {
                    parse_state = PARSING_TEXT;
                    break;
-@@ -916,7 +923,7 @@ static void LogLine(char *ptr, int len)
+@@ -933,7 +940,7 @@ static void LogLine(char *ptr, int len)
  static void LogKernelLine(void)
  
  {
@@ -135,7 +125,7 @@ Index: klogd.c
  
  	/*
  	 * Zero-fill the log buffer.  This should cure a multitude of
-@@ -925,6 +932,11 @@ static void LogKernelLine(void)
+@@ -942,6 +949,11 @@ static void LogKernelLine(void)
  	 * messages into this fresh buffer.
  	 */
  	memset(log_buffer, '\0', log_buf_size);
@@ -147,12 +137,12 @@ Index: klogd.c
  	if ( (rdcnt = ksyslog(2, log_buffer, log_buf_size-1)) < 0 )
  	{
  		if ( errno == EINTR )
-@@ -1033,10 +1045,15 @@ int main(argc, argv)
- 			*output = (char *) 0;
+@@ -1051,10 +1063,15 @@ int main(argc, argv)
  
  #ifndef TESTING
+ 	pid_t ppid = getpid();
 -	chdir ("/");
-+	if (chdir("/") < 0) {
++	if (chdir ("/") < 0) {
 +		fprintf(stderr,
 +			"klogd: Can not change to root directory: %s\n",
 +			strerror(errno));
@@ -165,7 +155,7 @@ Index: klogd.c
  		switch((char)ch)
  		{
  		    case '2':		/* Print lines with symbols twice. */
-@@ -1067,6 +1084,14 @@ int main(argc, argv)
+@@ -1085,6 +1102,14 @@ int main(argc, argv)
  		    case 'o':		/* One-shot mode. */
  			one_shot = 1;
  			break;
@@ -180,7 +170,7 @@ Index: klogd.c
  		    case 'p':
  			SetParanoiaLevel(1);	/* Load symbols on oops. */
  			break;	
-@@ -1193,8 +1218,11 @@ int main(argc, argv)
+@@ -1229,8 +1254,11 @@ int main(argc, argv)
  	if ( one_shot )
  	{
  		if (symbol_lookup) {
@@ -194,7 +184,7 @@ Index: klogd.c
  		}
  		if ( (logsrc = GetKernelLogSrc()) == kernel )
  			LogKernelLine();
-@@ -1209,8 +1237,11 @@ int main(argc, argv)
+@@ -1245,8 +1273,11 @@ int main(argc, argv)
  #endif
  	logsrc = GetKernelLogSrc();
  	if (symbol_lookup) {
@@ -207,11 +197,9 @@ Index: klogd.c
 +			Syslog(LOG_WARNING, "Cannot build symbol table - disabling symbol lookups");
  	}
  
-         /* The main loop. */
-Index: pidfile.c
-===================================================================
---- pidfile.c.orig
-+++ pidfile.c
+ #ifndef TESTING
+--- pidfile.c
++++ pidfile.c	2022-10-19 09:50:35.677760471 +0000
 @@ -46,11 +46,11 @@
  int read_pid (char *pidfile)
  {
@@ -252,10 +240,8 @@ Index: pidfile.c
    if (!fprintf(f,"%d\n", pid)) {
        fprintf(stderr, "Can't write pid , %s.\n", strerror(errno));
        close(fd);
-Index: resolve.c
-===================================================================
---- resolve.c.orig
-+++ resolve.c
+--- resolve.c
++++ resolve.c	2022-10-19 09:50:35.677760471 +0000
 @@ -13,6 +13,7 @@
  #include <stdlib.h>
  #include <signal.h>
@@ -296,10 +282,8 @@ Index: resolve.c
 +	dprintf("failed to write: %s\n", strerror(errno));
 +	exit(1);
  }
-Index: sample-s390.conf
-===================================================================
---- /dev/null
-+++ sample-s390.conf
+--- sample-s390.conf
++++ sample-s390.conf	2022-10-19 09:50:35.677760471 +0000
 @@ -0,0 +1,60 @@
 +# /etc/syslog.conf - Configuration file for syslogd(8)
 +#
@@ -361,10 +345,8 @@ Index: sample-s390.conf
 +local2,local3.*			-/var/log/localmessages
 +local4,local5.*			-/var/log/localmessages
 +local6,local7.*			-/var/log/localmessages
-Index: sample.conf
-===================================================================
---- /dev/null
-+++ sample.conf
+--- sample.conf
++++ sample.conf	2022-10-19 09:50:35.677760471 +0000
 @@ -0,0 +1,60 @@
 +# /etc/syslog.conf - Configuration file for syslogd(8)
 +#
@@ -426,11 +408,9 @@ Index: sample.conf
 +local2,local3.*			-/var/log/localmessages
 +local4,local5.*			-/var/log/localmessages
 +local6,local7.*			-/var/log/localmessages
-Index: syslog.c
-===================================================================
---- syslog.c.orig
-+++ syslog.c
-@@ -70,7 +70,12 @@ static char sccsid[] = "@(#)syslog.c	5.2
+--- syslog.c
++++ syslog.c	2022-10-19 09:50:35.677760471 +0000
+@@ -73,7 +73,12 @@ static char sccsid[] = "@(#)syslog.c	5.2
  #include <paths.h>
  #include <stdio.h>
  
@@ -444,11 +424,9 @@ Index: syslog.c
  
  #undef LOG_FAC
  static inline int LOG_FAC(const int pri)
-Index: syslogd.c
-===================================================================
---- syslogd.c.orig
-+++ syslogd.c
-@@ -466,6 +466,7 @@ static char sccsid[]  __attribute__ ((un
+--- syslogd.c
++++ syslogd.c	2022-10-19 09:55:06.300950261 +0000
+@@ -519,6 +519,7 @@ static char sccsid[]  __attribute__ ((un
  #include <sys/types.h>
  #endif
  #include <utmp.h>
@@ -456,7 +434,7 @@ Index: syslogd.c
  #include <ctype.h>
  #include <string.h>
  #include <setjmp.h>
-@@ -594,7 +595,11 @@ int sd_fds = 0;
+@@ -651,7 +652,11 @@ int sd_fds = 0;
  # define UNAMESZ	8	/* length of a login name */
  #endif
  #define MAXUNAMES	20	/* maximum number of user names */
@@ -469,7 +447,7 @@ Index: syslogd.c
  
  #define INTERNAL_NOPRI	0x10	/* the "no priority" priority */
  #define TABLE_NOPRI	0	/* Value to indicate no priority in f_pmask */
-@@ -674,8 +679,8 @@ struct filed {
+@@ -733,8 +738,8 @@ struct filed {
   * in seconds after previous message is logged.  After each flush,
   * we move to the next interval until we reach the largest.
   */
@@ -480,7 +458,7 @@ Index: syslogd.c
  #define	REPEATTIME(f)	((f)->f_time + repeatinterval[(f)->f_repeatcount])
  #define	BACKOFF(f)	{ if (++(f)->f_repeatcount > MAXREPEAT) \
  				 (f)->f_repeatcount = MAXREPEAT; \
-@@ -789,7 +794,7 @@ int usage(void);
+@@ -849,7 +854,7 @@ int usage(void);
  static pid_t sid;
  #endif
  void untty(void);
@@ -489,16 +467,7 @@ Index: syslogd.c
  void printline(const char *hname, char *msg);
  void printsys(char *msg);
  void logmsg(int pri, char *msg, const char *from, int flags);
-@@ -837,7 +842,7 @@ int main(argc, argv)
- #else /* __GLIBC__ */
- #ifndef TESTING
- #ifdef SYSLOG_INET
--	size_t len;
-+	socklen_t len;
- #endif
- #endif
- 	int num_fds;
-@@ -883,7 +888,12 @@ int main(argc, argv)
+@@ -944,7 +949,12 @@ int main(argc, argv)
  	int maxfds;
  
  #ifndef TESTING
@@ -512,33 +481,7 @@ Index: syslogd.c
  #endif
  	for (i = 1; i < MAXFUNIX; i++) {
  		funixn[i] = "";
-@@ -1138,13 +1148,15 @@ int main(argc, argv)
- 	leave = 0;
- 
- 	(void) signal(SIGTERM, die);
-+	(void) siginterrupt(SIGTERM,1);		/* Make recvfrom() be able to receive EINTR */
- 	(void) signal(SIGINT, Debug ? die : SIG_IGN);
- 	(void) signal(SIGQUIT, Debug ? die : SIG_IGN);
- 	(void) signal(SIGCHLD, reapchild);
--	(void) signal(SIGALRM, domark);
- 	(void) signal(SIGUSR1, Debug ? debug_switch : SIG_IGN);
- 	(void) signal(SIGXFSZ, SIG_IGN);
-+	(void) signal(SIGALRM, domark);
- 	(void) alarm(TIMERINTVL);
-+	(void) siginterrupt(SIGALRM,1);		/* Make recvfrom() be able to receive EINTR */
- 
- 	/* Create a partial message table for all file descriptors. */
- 	num_fds = getdtablesize();
-@@ -1313,7 +1325,7 @@ int main(argc, argv)
- 				 *  -Joey
- 				 */
- 				printchopped(from, line, \
-- 					     i + 2,  finet);
-+ 					     (size_t)(i + 2),  finet);
- 			} else if (i < 0 && errno != EINTR) {
- 				dprintf("INET socket error: %d = %s.\n", \
- 					errno, strerror(errno));
-@@ -1332,7 +1344,7 @@ int main(argc, argv)
+@@ -1400,7 +1410,7 @@ int main(argc, argv)
  			parts[fileno(stdin)] = (char *) 0;
  			i = read(fileno(stdin), line, MAXLINE);
  			if (i > 0) {
@@ -547,7 +490,7 @@ Index: syslogd.c
  		  	} else if (i < 0) {
  		    		if (errno != EINTR) {
  		      			logerror("stdin");
-@@ -1406,8 +1418,9 @@ static int create_unix_socket(const char
+@@ -1474,8 +1484,9 @@ static int create_unix_socket(const char
  		close(fd);
  #ifndef SYSV
  		dienow();
@@ -558,7 +501,7 @@ Index: syslogd.c
  	}
  	return fd;
  }
-@@ -1584,7 +1597,7 @@ void untty()
+@@ -1660,7 +1671,7 @@ void untty()
  void printchopped(hname, msg, len, fd)
  	const char *hname;
  	char *msg;
@@ -567,16 +510,16 @@ Index: syslogd.c
  	int fd;
  {
  	auto int ptlngth;
-@@ -1684,6 +1697,8 @@ void printline(hname, msg)
+@@ -1771,6 +1782,8 @@ void printline(hname, msg)
  	while ((c = *p++) && q < &line[sizeof(line) - 4]) {
- 		if (c == '\n')
+ 		if (c == '\n' || c == 127)
  			*q++ = ' ';
 +		else if (c == '\t')
 +			*q++ = c;
  		else if (c < 040) {
  			*q++ = '^';
  			*q++ = c ^ 0100;
-@@ -1851,7 +1866,7 @@ void logmsg(pri, msg, from, flags)
+@@ -1954,7 +1967,7 @@ void logmsg(pri, msg, from, flags)
  		    !strcmp(from, f->f_prevhost)) {
  			(void) strncpy(f->f_lasttime, timestamp, 15);
  			f->f_prevcount++;
@@ -585,49 +528,52 @@ Index: syslogd.c
  			    f->f_prevcount, now - f->f_time,
  			    repeatinterval[f->f_repeatcount]);
  			/*
-@@ -2178,13 +2193,7 @@ void wallmsg(f, iov)
+@@ -2293,15 +2306,7 @@ void wallmsg(f, iov)
  	register struct filed *f;
  	struct iovec *iov;
  {
--	char p[6 + UNAMESZ];
+-	char p[sizeof (_PATH_DEV) + UNAMESZ];
 -	register int i;
 -	int ttyf, len;
  	static int reenter = 0;
 -	struct utmp ut;
 -	struct utmp *uptr;
 -	char greetings[200];
+-
+-	(void) &len;
  
  	if (reenter++)
  		return;
-@@ -2198,9 +2207,18 @@ void wallmsg(f, iov)
+@@ -2309,12 +2314,18 @@ void wallmsg(f, iov)
+ 	/* open the user login file */
+ 	setutent();
+ 
+-
+ 	/*
+ 	 * Might as well fork instead of using nonblocking I/O
  	 * and doing notty().
  	 */
  	if (fork() == 0) {
-+		char p[6 + UNAMESZ];
++		char p[sizeof (_PATH_DEV) + UNAMESZ];
 +		register int i;
-+		int ttyf;
-+		static int len = 0;
++		int ttyf, len;
 +		struct utmp ut;
 +		struct utmp *uptr;
-+		static char greetings[200];
++		char greetings[200];
 +
  		(void) signal(SIGTERM, SIG_DFL);
  		(void) alarm(0);
- 		(void) signal(SIGALRM, endtty);
-+		(void) siginterrupt(SIGALRM,1); /* Make recvfrom() be able to receive EINTR */
  		(void) snprintf(greetings, sizeof(greetings),
- 		    "\r\n\7Message from syslogd@%s at %.24s ...\r\n",
- 			(char *) iov[2].iov_base, ctime(&now));
-@@ -2212,7 +2230,7 @@ void wallmsg(f, iov)
- 			/* is this slot used? */
- 			if (ut.ut_name[0] == '\0')
- 				continue;
--			if (ut.ut_type == LOGIN_PROCESS)
-+			if (ut.ut_type != USER_PROCESS)
- 			        continue;
- 			if (!(strcmp (ut.ut_name,"LOGIN"))) /* paranoia */
- 			        continue;
-@@ -2382,7 +2400,7 @@ void domark()
+@@ -2358,7 +2369,7 @@ void wallmsg(f, iov)
+ 				iov[1].iov_len = 0;
+ 			}
+ 			if (setjmp(ttybuf) == 0) {
+-				(void) signal(SIGALRM, endtty);
++				(void) resignal(SIGALRM, endtty);
+ 				(void) alarm(15);
+ 				/* open the terminal */
+ 				ttyf = open(p, O_WRONLY|O_NOCTTY);
+@@ -2521,7 +2532,7 @@ void domark()
  	for (f = Files; f; f = f->f_next) {
  #endif
  		if (f->f_prevcount && now >= REPEATTIME(f)) {
@@ -636,11 +582,3 @@ Index: syslogd.c
  			    TypeNames[f->f_type], f->f_prevcount,
  			    repeatinterval[f->f_repeatcount]);
  			fprintlog(f, LocalHostName, 0, (char *)NULL);
-@@ -2392,6 +2410,7 @@ void domark()
- 	}
- 	(void) signal(SIGALRM, domark);
- 	(void) alarm(TIMERINTVL);
-+	(void) siginterrupt(SIGALRM,1);		/* Make recvfrom() be able to receive EINTR */
- }
- 
- void debug_switch()

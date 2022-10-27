@@ -832,4 +832,41 @@
     <comment>- Check ownership of initrd.msg before adding it to boot.msg (bsc#1204245)</comment>
     <requestid>1010464</requestid>
   </revision>
+  <revision rev="102" vrev="801">
+    <srcmd5>1294455246e41f0ba93a3c03aeff06cd</srcmd5>
+    <version>unknown</version>
+    <time>1666871579</time>
+    <user>dimstar_suse</user>
+    <comment>- Update ot version 1.5.1
+  ChangeLog for version 1.5.1
+    Many thanks to Rainer Gerhards, rsyslog project lead, for
+    identifying a problem with how rsyslog's rsyslogd and sysklogd's
+    syslogd check for invalid priority values (CVE-2014-3634).
+  ChangeLog for version 1.5
+  * Fix file descriptor leak in klogd
+  * Improve argument list processing
+  * Prevent potential buffer overflow in reading messages from the
+    kernel log ringbuffer
+  * Ensure that &quot;len&quot; is not placed in a register, and that the endtty()
+    signal handler is not installed too early which could cause a
+    segmentation fault or worse
+  * klogd will reconnect to the logger (mostly syslogd) after it went
+    away during operation
+  * On heavily loaded system syslog will not spit out error messages
+    anymore when recvfrom() results in EAGAIN
+  * Makefile improvements
+  * Local copy of module.h
+  * Improved manpage
+  * Always log with syslogd's timezone and locale
+  * Remove trailing newline when forwarding messages
+  * Continue working properly if /etc/service is missing and ignore
+    network activity
+  * Continue writing to log files as soon as space becomes available
+    again after a filled up disk
+  * Removed test to detect control characters&gt; 0x20 as this prevented
+    characters encoded in UTF-8 to be properly passed through
+  * Only resolve the local domain when accepting messages from remote
+  * Properly accompany the MARK message with the facility</comment>
+    <requestid>1031362</requestid>
+  </revision>
 </revisionlist>

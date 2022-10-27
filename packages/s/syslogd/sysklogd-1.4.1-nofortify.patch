@@ -20,7 +20,7 @@
 +#endif
 --- klogd.c
 +++ klogd.c	2008-05-30 10:19:59.501151202 +0000
-@@ -286,6 +286,8 @@ static char	*PidFile = "/etc/klogd.pid";
+@@ -296,6 +296,8 @@ static char	*PidFile = "/etc/klogd.pid";
  #endif
  #endif
  
@@ -31,7 +31,7 @@
  		terminate = 0,
 --- syslog.c
 +++ syslog.c	2008-05-30 10:20:24.799728870 +0000
-@@ -72,6 +72,8 @@ static char sccsid[] = "@(#)syslog.c	5.2
+@@ -75,6 +75,8 @@ static char sccsid[] = "@(#)syslog.c	5.2
  
  #define	_PATH_LOGNAME	"/dev/log"
  

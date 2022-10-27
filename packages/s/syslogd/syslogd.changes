@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Wed Oct 19 11:57:37 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Update ot version 1.5.1
+  ChangeLog for version 1.5.1
+    Many thanks to Rainer Gerhards, rsyslog project lead, for
+    identifying a problem with how rsyslog's rsyslogd and sysklogd's
+    syslogd check for invalid priority values (CVE-2014-3634).
+  ChangeLog for version 1.5
+  * Fix file descriptor leak in klogd
+  * Improve argument list processing
+  * Prevent potential buffer overflow in reading messages from the
+    kernel log ringbuffer
+  * Ensure that "len" is not placed in a register, and that the endtty()
+    signal handler is not installed too early which could cause a
+    segmentation fault or worse
+  * klogd will reconnect to the logger (mostly syslogd) after it went
+    away during operation
+  * On heavily loaded system syslog will not spit out error messages
+    anymore when recvfrom() results in EAGAIN
+  * Makefile improvements
+  * Local copy of module.h
+  * Improved manpage
+  * Always log with syslogd's timezone and locale
+  * Remove trailing newline when forwarding messages
+  * Continue working properly if /etc/service is missing and ignore
+    network activity
+  * Continue writing to log files as soon as space becomes available
+    again after a filled up disk
+  * Removed test to detect control characters> 0x20 as this prevented
+    characters encoded in UTF-8 to be properly passed through
+  * Only resolve the local domain when accepting messages from remote
+  * Properly accompany the MARK message with the facility
+  * Improved daemonise routine in klogd to stabilise startup
+  * klogd will not change the console log level anymore unless -c is given
+  * Added back /usr/src/linux/System.map as fall-back location
+  * Rewrite the module symbol parser to read from /proc/kallsyms
+  * Notify the waiting parent process if the client dies
+  * Complete rewrite of the oops kernel module for Linux 2.6
+  * Only read kernel symbols from /proc/kallsyms if no System.map
+    has been read
+  * Improved symbol lookup
+  * Prevent named pipes from becoming the controlling tty
+  * Fixing a race condition in syslogd discovered in UML
+  * Improved README.linux
+  * Added boundary checks in klogd
+  * Don't block on the network socket in case of packet loss
+  * Don't crash when filesize limit is reached (e.g. without LFS)
+  * Fix spurious hanging syslogd in connection with futex and NPTL
+    introduced in recent glibc versions and Linux 2.6 (details)
+  * Improved syslog.conf(5) manpage
+  * Use socklen_t where appropriate
+  * Use newer query_module function rather than stepping through /dev/kmem.
+  * Remove special treatment of the percent sign in klogd 
+- Remove patches now upstream solved
+  * klogd-obsolete.patch
+  * sysklogd-1.4.1-fileleak.patch
+  * sysklogd-1.4.1-ksym.patch
+  * sysklogd-1.4.1-no_SO_BSDCOMPAT.diff
+  * sysklogd-1.4.1-owl-crunch_list.diff
+  * sysklogd-1.4.1-preserve_percents.patch
+  * sysklogd-1.4.1-utf8.patch
+- Port patches
+  * sysklogd-1.4.1-CVE-2014-3634.patch
+  * sysklogd-1.4.1-clearing.patch
+  * sysklogd-1.4.1-dgram.patch
+  * sysklogd-1.4.1-dns.patch
+  * sysklogd-1.4.1-dontsleep.patch
+  * sysklogd-1.4.1-forw.patch
+  * sysklogd-1.4.1-klogd24.dif
+  * sysklogd-1.4.1-ksyslogsize.diff
+  * sysklogd-1.4.1-large.patch
+  * sysklogd-1.4.1-nofortify.patch
+  * sysklogd-1.4.1-reload.dif
+  * sysklogd-1.4.1-reopen.patch
+  * sysklogd-1.4.1-showpri.patch
+  * sysklogd-1.4.1-signal.dif
+  * sysklogd-1.4.1-sparc.patch
+  * sysklogd-1.4.1-sysmap-prior-to-2.5.patch
+  * sysklogd-1.4.1-systemd-multi.dif
+  * sysklogd-1.4.1-systemd-sock-name.patch
+  * sysklogd-1.4.1-systemd.dif
+  * sysklogd-1.4.1-unix_sockets.patch
+  * sysklogd-1.4.1.dif
+  * sysklogd-ipv6.diff
+
+-------------------------------------------------------------------
 Thu Oct 13 06:32:11 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Check ownership of initrd.msg before adding it to boot.msg (bsc#1204245) 
@@ -19,7 +105,7 @@ Tue Jun 21 12:20:58 UTC 2022 - Stefan Schubert <schubi@suse.com>
 Tue Apr 19 14:51:10 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - https urls, added gpg signature (but not the keyring, could not
-  find id)
+  find it)
 
 -------------------------------------------------------------------
 Fri Mar  4 07:22:27 UTC 2022 - Dr. Werner Fink <werner@suse.de>

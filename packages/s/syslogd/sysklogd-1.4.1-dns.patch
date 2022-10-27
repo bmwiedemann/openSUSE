@@ -1,6 +1,12 @@
+---
+ Makefile  |    4 
+ resolve.c |  249 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ syslogd.c |  139 +++++-----------------------------
+ 3 files changed, 275 insertions(+), 117 deletions(-)
+
 --- Makefile
-+++ Makefile	2003-06-02 12:30:18.000000000 +0000
-@@ -59,8 +59,8 @@ test: syslog_tst ksym oops_test tsyslogd
++++ Makefile	2022-10-18 06:11:16.691008894 +0000
+@@ -79,8 +79,8 @@ test: syslog_tst ksym oops.ko tsyslogd
  
  install: install_man install_exec
  
@@ -12,7 +18,7 @@
  klogd:	klogd.o syslog.o pidfile.o ksym.o ksym_mod.o
  	${CC} ${LDFLAGS} -o klogd klogd.o syslog.o pidfile.o ksym.o \
 --- resolve.c
-+++ resolve.c	2003-06-02 12:30:33.000000000 +0000
++++ resolve.c	2022-10-18 06:11:16.691008894 +0000
 @@ -0,0 +1,249 @@
 +/*
 + * Resolve a hostname
@@ -264,8 +270,8 @@
 +	exit(0);
 +}
 --- syslogd.c
-+++ syslogd.c	2003-06-02 12:30:26.000000000 +0000
-@@ -628,14 +628,7 @@ struct filed {
++++ syslogd.c	2022-10-18 06:17:39.648170295 +0000
+@@ -683,14 +683,7 @@ struct filed {
  		struct {
  			char	f_hname[MAXHOSTNAMELEN+1];
  #ifdef INET6
@@ -281,16 +287,18 @@
  #else
  			struct sockaddr_in	f_addr;
  #endif
-@@ -790,7 +783,7 @@ int decode(char *name, struct code *code
+@@ -846,19 +839,17 @@ int decode(char *name, struct code *code
  #if defined(__GLIBC__)
  #define dprintf mydprintf
  #endif /* __GLIBC__ */
 -static void dprintf(char *, ...);
 +void dprintf(char *, ...);
  static void allocate_log(void);
- void sighup_handler();
+-void sighup_handler();
++void sighup_handler(int sig);
  
-@@ -799,10 +792,8 @@ static int create_unix_socket(const char
+ #ifdef SYSLOG_UNIXAF
+ static int create_unix_socket(const char *path);
  #endif
  #ifdef SYSLOG_INET
  static int create_inet_socket();
@@ -303,7 +311,7 @@
  #endif
  
  int main(argc, argv)
-@@ -1337,63 +1328,6 @@ static int create_inet_socket()
+@@ -1413,63 +1404,6 @@ static int create_inet_socket()
  	return fd;
  }
  
@@ -367,7 +375,7 @@
  #endif
  
  char **
-@@ -1814,7 +1748,7 @@ void fprintlog(f, from, flags, msg)
+@@ -1913,7 +1847,7 @@ void fprintlog(f, from, flags, msg)
  	char line[MAXLINE + 1];
  	time_t fwd_suspend;
  #ifdef INET6
@@ -376,7 +384,7 @@
  #else
  	struct hostent *hp;
  #endif
-@@ -1883,38 +1817,21 @@ void fprintlog(f, from, flags, msg)
+@@ -1982,38 +1916,21 @@ void fprintlog(f, from, flags, msg)
  	 */
  	case F_FORW_UNKN:
  		dprintf(" %s\n", f->f_un.f_forw.f_hname);
@@ -429,7 +437,17 @@
  
  	case F_FORW:
  		/* 
-@@ -2544,6 +2461,7 @@ void init()
+@@ -2429,9 +2346,7 @@ void logerror(type)
+ }
+ 
+ void die(sig)
+-
+ 	int sig;
+-	
+ {
+ 	register struct filed *f;
+ 	char buf[100];
+@@ -2655,6 +2570,7 @@ void init()
  #endif
  
  #ifdef SYSLOG_INET
@@ -437,7 +455,7 @@
  	if (Forwarding || AcceptRemote) {
  		if (finet < 0) {
  			finet = create_inet_socket();
-@@ -2560,10 +2478,6 @@ void init()
+@@ -2671,10 +2587,6 @@ void init()
  		InetInuse = 0;
  	}
  	inetm = finet;
@@ -448,12 +466,33 @@
  #endif
  
  	Initialized = 1;
-@@ -2923,7 +2837,7 @@ int decode(name, codetab)
+@@ -3040,8 +2952,7 @@ int decode(name, codetab)
  	return (-1);
  }
  
 -static void dprintf(char *fmt, ...)
+-
 +void dprintf(char *fmt, ...)
- 
  {
  	va_list ap;
+ 
+@@ -3061,8 +2972,7 @@ static void dprintf(char *fmt, ...)
+  * The following function is responsible for allocating/reallocating the
+  * array which holds the structures which define the logging outputs.
+  */
+-static void allocate_log()
+-
++static void allocate_log(void)
+ {
+ 	dprintf("Called allocate_log, nlogs = %d.\n", nlogs);
+ 	
+@@ -3109,8 +3019,7 @@ static void allocate_log()
+  * doing this during a signal handler.  Instead this function simply sets
+  * a flag variable which will tell the main loop to go through a restart.
+  */
+-void sighup_handler()
+-
++void sighup_handler(int sig)
+ {
+ 	restart = 1;
+ 	signal(SIGHUP, sighup_handler);

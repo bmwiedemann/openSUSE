@@ -1,27 +1,35 @@
+---
+ CHANGES   |    3 
+ Makefile  |    2 
+ syslogd.c |  228 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++------
+ 3 files changed, 210 insertions(+), 23 deletions(-)
+
 --- CHANGES
-+++ CHANGES	2002-08-02 11:28:10.000000000 +0000
-@@ -1,3 +1,7 @@
++++ CHANGES	2022-10-13 08:13:35.285747318 +0000
+@@ -72,6 +72,9 @@ Version 1.5
+  . Matthew Fischer <futhark@vzavenue.net>
+    - Remove special treatment of the percent sign in klogd
+ 
 +Version 1.4.1-usagi (2001/03/21)
 + - syslogd IPv6 support
 +   (based on patch from Hiroyuki YAMAMORI <h-yamamo@db3.so-net.ne.jp>)
-+
+ 
  Version 1.4.1
  
-  . klogd will set the console log level only if `-c' is given on the
 --- Makefile
-+++ Makefile	2002-08-02 11:58:42.000000000 +0000
-@@ -3,7 +3,7 @@
++++ Makefile	2022-10-13 08:30:44.607385067 +0000
+@@ -20,7 +20,7 @@
  CC= gcc
- #CFLAGS= -g -DSYSV -Wall
+ #SKFLAGS= -g -DSYSV -Wall
  #LDFLAGS= -g
--CFLAGS= $(RPM_OPT_FLAGS) -O3 -DSYSV -fomit-frame-pointer -Wall -fno-strength-reduce
-+CFLAGS= $(RPM_OPT_FLAGS) -DINET6 -O3 -DSYSV -fomit-frame-pointer -Wall -fno-strength-reduce
- LDFLAGS= -s
- 
- # Look where your install program is.
+-SKFLAGS= $(RPM_OPT_FLAGS) -O3 -DSYSV -fomit-frame-pointer -Wall -fno-strength-reduce
++SKFLAGS= $(RPM_OPT_FLAGS) -DINET6 -O3 -DSYSV -fomit-frame-pointer -Wall -fno-strength-reduce
+ # -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE
+ # -D_FILE_OFFSET_BITS=64 -D_LARGEFILE64_SOURCE
+ # $(shell getconf LFS_SKFLAGS)
 --- syslogd.c
-+++ syslogd.c	2002-08-02 12:00:16.000000000 +0000
-@@ -599,6 +599,7 @@ int funix[MAXFUNIX] = { -1, };
++++ syslogd.c	2022-10-13 08:30:05.088090073 +0000
+@@ -654,6 +654,7 @@ int funix[MAXFUNIX] = { -1, };
   * This table contains plain text for h_errno errors used by the
   * net subsystem.
   */
@@ -29,7 +37,7 @@
  const char *sys_h_errlist[] = {
      "No problem",						/* NETDB_SUCCESS */
      "Authoritative answer: host not found",			/* HOST_NOT_FOUND */
-@@ -607,6 +608,7 @@ const char *sys_h_errlist[] = {
+@@ -662,6 +663,7 @@ const char *sys_h_errlist[] = {
      "Valid name, no data record of requested type",		/* NO_DATA */
      "no address, look for MX record"				/* NO_ADDRESS */
   };
@@ -37,7 +45,7 @@
  
  /*
   * This structure represents the files that will have log
-@@ -625,7 +627,18 @@ struct filed {
+@@ -680,7 +682,18 @@ struct filed {
  		char	f_uname[MAXUNAMES][UNAMESZ+1];
  		struct {
  			char	f_hname[MAXHOSTNAMELEN+1];
@@ -56,8 +64,8 @@
  		} f_forw;		/* forwarding address */
  		char	f_fname[MAXFNAME];
  	} f_un;
-@@ -732,7 +745,11 @@ char	LocalHostName[MAXHOSTNAMELEN+1];	/*
- char	*LocalDomain;		/* our local domain name */
+@@ -788,7 +801,11 @@ char	*LocalDomain;		/* our local domain
+ char	*emptystring = "";
  int	InetInuse = 0;		/* non-zero if INET sockets are being used */
  int	finet = -1;		/* Internet datagram socket */
 +#ifdef INET6
@@ -68,7 +76,7 @@
  int	Initialized = 0;	/* set when we have initialized ourselves */
  int	MarkInterval = 20 * 60;	/* interval between marks in seconds */
  int	MarkSeq = 0;		/* mark sequence number */
-@@ -759,10 +776,10 @@ void fprintlog(register struct filed *f,
+@@ -815,10 +832,10 @@ void fprintlog(register struct filed *f,
  void endtty();
  void wallmsg(register struct filed *f, struct iovec *iov);
  void reapchild();
@@ -81,7 +89,7 @@
  void die(int sig);
  #ifndef TESTING
  void doexit(int sig);
-@@ -782,6 +799,10 @@ static int create_unix_socket(const char
+@@ -838,6 +855,10 @@ static int create_unix_socket(const char
  #endif
  #ifdef SYSLOG_INET
  static int create_inet_socket();
@@ -92,7 +100,7 @@
  #endif
  
  int main(argc, argv)
-@@ -816,7 +837,12 @@ int main(argc, argv)
+@@ -875,7 +896,12 @@ int main(argc, argv)
  #ifndef TESTING
  	int	fd;
  #ifdef  SYSLOG_INET
@@ -105,9 +113,9 @@
  	char *from;
  #endif
  	pid_t ppid = getpid();
-@@ -1137,11 +1163,21 @@ int main(argc, argv)
- 			memset(line, '\0', sizeof(line));
- 			i = recvfrom(finet, line, MAXLINE - 2, 0, \
+@@ -1204,10 +1230,21 @@ int main(argc, argv)
+ 			memset(line, 0, sizeof(line));
+ 			msglen = recvfrom(finet, line, MAXLINE - 2, 0, \
  				     (struct sockaddr *) &frominet, &len);
 +#ifdef INET6
 +			if (getnameinfo((struct sockaddr *)&frominet, len,
@@ -118,17 +126,17 @@
 +			dprintf("Message from inetd socket: #%d, host: %s\n",
 +				inetm, hbuf);
 +#else
++
  			dprintf("Message from inetd socket: #%d, host: %s\n",
  				inetm, inet_ntoa(frominet.sin_addr));
 +#endif
- 			if (i > 0) {
- 				line[i] = line[i+1] = '\0';
+ 			if (msglen > 0) {
 -				from = (char *)cvthname(&frominet);
 +				from = (char *)cvthname((struct sockaddr*)&frominet);
  				/*
  				 * Here we could check if the host is permitted
  				 * to send us syslog messages. We just have to
-@@ -1227,17 +1263,50 @@ static int create_unix_socket(const char
+@@ -1293,18 +1330,51 @@ static int create_unix_socket(const char
  static int create_inet_socket()
  {
  	int fd, on = 1;
@@ -138,6 +146,7 @@
 +#else
  	struct sockaddr_in sin;
 +#endif
+ 	int sockflags;
  
 +#ifdef INET6
 +	fd = socket(AF_INET6, SOCK_DGRAM, 0);
@@ -179,7 +188,7 @@
  	if (setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, \
  		       (char *) &on, sizeof(on)) < 0 ) {
  		logerror("setsockopt(REUSEADDR), suspending inet");
-@@ -1253,13 +1322,77 @@ static int create_inet_socket()
+@@ -1329,13 +1399,77 @@ static int create_inet_socket()
  		close(fd);
  		return -1;
  	}
@@ -257,7 +266,7 @@
  #endif
  
  char **
-@@ -1679,8 +1812,12 @@ void fprintlog(f, from, flags, msg)
+@@ -1778,8 +1912,12 @@ void fprintlog(f, from, flags, msg)
  	register int l;
  	char line[MAXLINE + 1];
  	time_t fwd_suspend;
@@ -270,7 +279,7 @@
  
  	dprintf("Called fprintlog, ");
  
-@@ -1734,22 +1871,27 @@ void fprintlog(f, from, flags, msg)
+@@ -1833,22 +1971,27 @@ void fprintlog(f, from, flags, msg)
  				fwd_suspend);
  		}
  		break;
@@ -300,7 +309,7 @@
  				dprintf("Retries: %d\n", f->f_prevcount);
  				if ( --f->f_prevcount < 0 ) {
  					dprintf("Giving up.\n");
-@@ -1760,7 +1902,9 @@ void fprintlog(f, from, flags, msg)
+@@ -1859,7 +2002,9 @@ void fprintlog(f, from, flags, msg)
  			}
  			else {
  			        dprintf("%s found, resuming.\n", f->f_un.f_forw.f_hname);
@@ -310,31 +319,7 @@
  				f->f_prevcount = 0;
  				f->f_type = F_FORW;
  				goto f_forw;
-@@ -1783,27 +1927,31 @@ void fprintlog(f, from, flags, msg)
- 			dprintf("Not sending message to remote.\n");
- 		else {
- 			f->f_time = now;
--/* afx: add <sourcehost 
-+/* afx: add <sourcehost
-  */
--			if ((TagForward == 1) && 
-+			if ((TagForward == 1) &&
- 			    strncmp(f->f_prevhost,LocalHostName,MAXHOSTNAMELEN+1)) {
--				(void) snprintf(line, sizeof(line), "<%d><%s: %s\n", 
--						f->f_prevpri, f->f_prevhost, 
-+				(void) snprintf(line, sizeof(line), "<%d><%s: %s\n",
-+						f->f_prevpri, f->f_prevhost,
- 						(char *) iov[4].iov_base);
- 			} else {
- 				(void) snprintf(line, sizeof(line), "<%d>%s\n",
--						f->f_prevpri, 
-+						f->f_prevpri,
- 						(char *) iov[4].iov_base);
- 			}
--/* end afx */			
-+/* end afx */
- 			l = strlen(line);
- 			if (l > MAXLINE)
+@@ -1901,7 +2046,11 @@ void fprintlog(f, from, flags, msg)
  				l = MAXLINE;
  			if (sendto(finet, line, l, 0, \
  				   (struct sockaddr *) &f->f_un.f_forw.f_addr,
@@ -343,14 +328,11 @@
 +				   family == AF_INET6 ?
 +					sizeof(struct sockaddr_in6) :
 +#endif
-+					sizeof(struct sockaddr_in)) != l) {
++					sizeof(f->f_un.f_forw.f_addr)) != l) {
  				int e = errno;
--				dprintf("INET sendto error: %d = %s.\n", 
-+				dprintf("INET sendto error: %d = %s.\n",
+ 				dprintf("INET sendto error: %d = %s.\n", 
  					e, strerror(e));
- 				f->f_type = F_FORW_SUSP;
- 				errno = e;
-@@ -2025,28 +2173,53 @@ void reapchild()
+@@ -2132,28 +2281,53 @@ void reapchild()
  /*
   * Return a printable representation of a host address.
   */
@@ -412,7 +394,7 @@
  		if (isupper(*p))
  			*p = tolower(*p);
  
-@@ -2054,17 +2227,17 @@ const char *cvthname(f)
+@@ -2161,17 +2335,17 @@ const char *cvthname(f)
  	 * Notice that the string still contains the fqdn, but your
  	 * hostname and domain are separated by a '\0'.
  	 */
@@ -433,7 +415,7 @@
  					}
  					count++;
  				}
-@@ -2072,9 +2245,9 @@ const char *cvthname(f)
+@@ -2179,9 +2353,9 @@ const char *cvthname(f)
  			if (LocalHosts) {
  				count=0;
  				while (LocalHosts[count]) {
@@ -445,7 +427,7 @@
  					}
  					count++;
  				}
-@@ -2082,7 +2255,7 @@ const char *cvthname(f)
+@@ -2189,7 +2363,7 @@ const char *cvthname(f)
  		}
  	}
  
@@ -454,7 +436,7 @@
  }
  
  void domark()
-@@ -2132,7 +2305,7 @@ void debug_switch()
+@@ -2239,7 +2413,7 @@ void debug_switch()
   * Print syslogd errors some place.
   */
  void logerror(type)
@@ -463,7 +445,7 @@
  {
  	char buf[100];
  
-@@ -2226,6 +2399,7 @@ void init()
+@@ -2333,6 +2507,7 @@ void init()
  #else
  	char cline[BUFSIZ];
  #endif
@@ -471,15 +453,15 @@
  	struct servent *sp;
  
  	sp = getservbyname("syslog", "udp");
-@@ -2236,6 +2410,7 @@ void init()
- 		return;
- 	}
+@@ -2347,6 +2522,7 @@ void init()
+ 		LogPort = 0;
+ 	} else
  	LogPort = sp->s_port;
 +#endif
  
  	/*
  	 *  Close all open log files and free log descriptor array.
-@@ -2384,6 +2559,10 @@ void init()
+@@ -2495,6 +2671,10 @@ void init()
  		InetInuse = 0;
  	}
  	inetm = finet;
@@ -490,7 +472,7 @@
  #endif
  
  	Initialized = 1;
-@@ -2471,7 +2650,7 @@ void cfline(line, f)
+@@ -2582,7 +2762,7 @@ void cfline(line, f)
  	int singlpri = 0;
  	int ignorepri = 0;
  	int syncfile;
@@ -499,8 +481,8 @@
  	struct hostent *hp;
  #endif
  	char buf[MAXLINE];
-@@ -2630,6 +2809,9 @@ void cfline(line, f)
- #ifdef SYSLOG_INET
+@@ -2747,6 +2927,9 @@ void cfline(line, f)
+ 
  		(void) strcpy(f->f_un.f_forw.f_hname, ++p);
  		dprintf("forwarding host: %s\n", p);	/*ASP*/
 +#ifdef INET6
@@ -509,7 +491,7 @@
  		if ( (hp = gethostbyname(p)) == NULL ) {
  			f->f_type = F_FORW_UNKN;
  			f->f_prevcount = INET_RETRY_MAX;
-@@ -2644,6 +2826,7 @@ void cfline(line, f)
+@@ -2761,6 +2944,7 @@ void cfline(line, f)
  		f->f_un.f_forw.f_addr.sin_port = LogPort;
  		if ( f->f_type == F_FORW )
  			memcpy((char *) &f->f_un.f_forw.f_addr.sin_addr, hp->h_addr, hp->h_length);

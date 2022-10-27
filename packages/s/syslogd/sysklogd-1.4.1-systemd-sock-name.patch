@@ -1,6 +1,6 @@
 --- syslogd.c
 +++ syslogd.c	2012/02/20 19:41:22
-@@ -558,6 +558,10 @@ static char sccsid[]  __attribute__ ((un
+@@ -610,6 +610,10 @@ static char sccsid[]  __attribute__ ((un
  #define _PATH_LOG	"/dev/log"
  #endif
  
@@ -11,7 +11,7 @@
  char	*ConfFile = _PATH_LOGCONF;
  char	*PidFile = _PATH_LOGPID;
  char	ctty[] = _PATH_CONSOLE;
-@@ -889,6 +893,15 @@ int main(argc, argv)
+@@ -936,6 +940,15 @@ int main(argc, argv)
  		funix[i]  = -1;
  	}
  

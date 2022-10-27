@@ -1,6 +1,6 @@
 --- klogd.c
 +++ klogd.c	2007-06-18 11:22:06.978362000 +0000
-@@ -416,9 +416,11 @@ static void Terminate()
+@@ -436,9 +436,11 @@ static void Terminate()
  {
  	CloseLogSrc();
  	Syslog(LOG_INFO, "Kernel log daemon terminating.");

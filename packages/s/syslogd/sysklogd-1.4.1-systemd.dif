@@ -4,17 +4,17 @@
  2 files changed, 67 insertions(+), 5 deletions(-)
 
 --- Makefile
-+++ Makefile	2017-04-06 09:32:55.360422009 +0000
-@@ -3,7 +3,7 @@
++++ Makefile	2022-10-17 09:00:32.945828594 +0000
+@@ -20,7 +20,7 @@
  CC= gcc
- #CFLAGS= -g -DSYSV -Wall
+ #SKFLAGS= -g -DSYSV -Wall
  #LDFLAGS= -g
--CFLAGS= $(RPM_OPT_FLAGS) -DINET6 -O3 -DSYSV -fomit-frame-pointer -Wall -fno-strength-reduce
-+CFLAGS= $(RPM_OPT_FLAGS) -DINET6 -O3 -DSYSV -fomit-frame-pointer -Wall -fno-strength-reduce -I.
- LDFLAGS= -s
- 
- # Look where your install program is.
-@@ -21,7 +21,7 @@ MANDIR = /usr/man
+-SKFLAGS= $(RPM_OPT_FLAGS) -DINET6 -O3 -DSYSV -fomit-frame-pointer -Wall -fno-strength-reduce
++SKFLAGS= $(RPM_OPT_FLAGS) -DINET6 -O3 -DSYSV -fomit-frame-pointer -Wall -fno-strength-reduce -I.
+ # -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE
+ # -D_FILE_OFFSET_BITS=64 -D_LARGEFILE64_SOURCE
+ # $(shell getconf LFS_SKFLAGS)
+@@ -43,7 +43,7 @@ MANDIR = $(prefix)/usr/share/man
  # specific to the ALPHA.  If you are attempting to build this package under
  # an ALPHA and linking fails with unresolved references please try
  # uncommenting the following define.
@@ -24,8 +24,8 @@
  # Define the following to impart start-up delay in klogd.  This is
  # useful if klogd is started simultaneously or in close-proximity to syslogd.
 --- syslogd.c
-+++ syslogd.c	2017-04-06 09:29:43.524044965 +0000
-@@ -505,6 +505,7 @@ static char sccsid[]  __attribute__ ((un
++++ syslogd.c	2022-10-17 08:59:33.354879789 +0000
+@@ -558,6 +558,7 @@ static char sccsid[]  __attribute__ ((un
  
  #if defined(__linux__)
  #include <paths.h>
@@ -33,7 +33,7 @@
  #endif
  
  #ifndef UTMP_FILE
-@@ -990,8 +991,11 @@ int main(argc, argv)
+@@ -1047,8 +1048,11 @@ int main(argc, argv)
  				}
  
  				num_fds = getdtablesize();
@@ -47,7 +47,7 @@
  				untty();
  				break;
  			}
-@@ -1298,6 +1302,59 @@ static int create_unix_socket(const char
+@@ -1362,6 +1366,59 @@ static int create_unix_socket(const char
  	if (path[0] == '\0')
  		return -1;
  
@@ -107,7 +107,7 @@
  	(void) unlink(path);
  
  	memset(&sunx, 0, sizeof(sunx));
-@@ -2368,7 +2425,12 @@ void dienow(void)
+@@ -2480,7 +2537,12 @@ void dienow(void)
  	if (InetInuse) close(inetm);
  
  	/* Clean-up files. */
