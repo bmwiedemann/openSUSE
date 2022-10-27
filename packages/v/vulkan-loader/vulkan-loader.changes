@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 24 19:14:20 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.3.231.0
+  * Don't pass portability bit to ICDs that dont expect it.
+  * Allow implicit layers for all API versions.
+
+-------------------------------------------------------------------
 Mon Aug 22 22:40:18 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release SDK-1.3.224.0 (09afdf642)
