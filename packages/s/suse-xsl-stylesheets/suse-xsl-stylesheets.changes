@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 25 13:01:00 UTC 2022 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.86.4
+
+- Update 2.86.4
+  - Fix #413: issue in l10n for French by @tomschr in #502
+  - Fix #472: Include SVG icons for "Report doc bug" and "Edit source"
+  - Fix #490, #493: "Report bug" links are gone from all doc HTML pages (DOCTEAM-732)
+  - Fix #497 Broken style sheets for "Edit source" and "Report bug" by @tomschr
+  - Fix #499: Change format of <title> by @tomschr in #501
+
+Full Changelog: https://github.com/openSUSE/suse-xsl/compare/2.86.3...2.86.4
+
+-------------------------------------------------------------------
 Wed Oct 12 10:33:42 UTC 2022 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.86.3
 
 - Update 2.86.3
