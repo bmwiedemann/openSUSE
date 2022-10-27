@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 25 13:06:32 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to avoid launching xdg-desktop-portal by accident:
+  * 0001-disable-automatic-portal-launching.patch
+
+-------------------------------------------------------------------
 Fri Mar 18 13:00:36 UTC 2022 - Andrew Hibberson <alerts2@hib.by>
 
 - Add patch to retry starting the display server (boo#1196228)

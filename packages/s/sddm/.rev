@@ -678,4 +678,12 @@ https://github.com/sddm/sddm/commit/1bc813d08b8130e458a6550ec47fb2bfbe6de080 (fo
   * 0004-Retry-starting-the-display-server.patch</comment>
     <requestid>970379</requestid>
   </revision>
+  <revision rev="59" vrev="7">
+    <srcmd5>26897c8d204910d0e2932248a29545cd</srcmd5>
+    <version>0.19.0</version>
+    <time>1666871636</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1031164</requestid>
+  </revision>
 </revisionlist>
