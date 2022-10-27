@@ -1,8 +1,8 @@
-Index: mailman-3.3.5/setup.py
+Index: mailman-3.3.6/setup.py
 ===================================================================
---- mailman-3.3.5.orig/setup.py
-+++ mailman-3.3.5/setup.py
-@@ -127,7 +127,7 @@ case second 'm'.  Any other spelling is
+--- mailman-3.3.6.orig/setup.py	2022-09-02 05:49:42.000000000 +0200
++++ mailman-3.3.6/setup.py	2022-10-27 11:00:31.427260047 +0200
+@@ -128,7 +128,7 @@ case second 'm'.  Any other spelling is
          'python-dateutil>=2.0',
          'passlib',
          'requests',
@@ -11,10 +11,10 @@ Index: mailman-3.3.5/setup.py
          'zope.component',
          'zope.configuration',
          'zope.event',
-Index: mailman-3.3.5/src/mailman/database/tests/test_factory.py
+Index: mailman-3.3.6/src/mailman/database/tests/test_factory.py
 ===================================================================
---- mailman-3.3.5.orig/src/mailman/database/tests/test_factory.py
-+++ mailman-3.3.5/src/mailman/database/tests/test_factory.py
+--- mailman-3.3.6.orig/src/mailman/database/tests/test_factory.py	2022-09-02 05:49:42.000000000 +0200
++++ mailman-3.3.6/src/mailman/database/tests/test_factory.py	2022-10-27 11:00:31.427260047 +0200
 @@ -76,10 +76,11 @@ class TestSchemaManager(unittest.TestCas
          # In case of MySQL, you cannot create/drop indexes on primary keys
          # manually as it is handled automatically by MySQL.
@@ -41,11 +41,11 @@ Index: mailman-3.3.5/src/mailman/database/tests/test_factory.py
          config.db.commit()
  
      def test_current_database(self):
-Index: mailman-3.3.5/src/mailman/model/listmanager.py
+Index: mailman-3.3.6/src/mailman/model/listmanager.py
 ===================================================================
---- mailman-3.3.5.orig/src/mailman/model/listmanager.py
-+++ mailman-3.3.5/src/mailman/model/listmanager.py
-@@ -31,6 +31,11 @@ from mailman.model.mime import ContentFi
+--- mailman-3.3.6.orig/src/mailman/model/listmanager.py	2022-09-02 05:49:42.000000000 +0200
++++ mailman-3.3.6/src/mailman/model/listmanager.py	2022-10-27 11:00:31.427260047 +0200
+@@ -39,6 +39,11 @@ from mailman.model.mime import ContentFi
  from mailman.utilities.datetime import now
  from mailman.utilities.queries import QuerySequence
  from public import public
@@ -57,7 +57,7 @@ Index: mailman-3.3.5/src/mailman/model/listmanager.py
  from zope.event import notify
  from zope.interface import implementer
  
-@@ -120,7 +125,7 @@ class ListManager:
+@@ -128,7 +133,7 @@ class ListManager:
          """See `IListManager`."""
          result_set = store.query(MailingList)
          for list_id in result_set.values(MailingList._list_id):

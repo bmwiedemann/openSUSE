@@ -46,7 +46,7 @@
 %define mypython_sitelib %{python3_sitelib}
 %endif
 Name:           python-mailman%{psuffix}
-Version:        3.3.5
+Version:        3.3.6
 Release:        0
 Summary:        A Mailing List Manager
 Group:          Productivity/Networking/Email/Mailinglists
@@ -75,12 +75,10 @@ Patch0:         python-mailman-test_interact_default_banner.patch
 Patch1:         support-sqlalchemy-1-4.patch
 # Suppprt Alembic 1.8.x
 Patch2:         support-alembic-1-8.patch
-#
-# PATCH-FIX-UPSTREAM ARC-message-fail-tests.patch bsc#[0-9]+ mcepl@suse.com
-# this patch makes things totally awesome
-Patch3:         ARC-message-fail-tests.patch
 # Disable cache_ok warnings on console messages: disable caching completely at the moment
-Patch4:         mailman-support-sqlalchemy-1-4.patch
+Patch3:         mailman-support-sqlalchemy-1-4.patch
+# Support attrs 22.1
+Patch4:         support-attrs-22.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
