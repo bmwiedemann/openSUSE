@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Thu Oct 20 15:05:16 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.9.3
+  * SciPy 1.9.3 is a bug-fix release with no new features compared
+    to 1.9.2.
+  * #3691: scipy.interpolate.UnivariateSpline segfault
+  * #5286: BUG: multivariate_normal returns a pdf for values
+    outside its…
+  * #6551: BUG: stats: inconsistency in docs and behavior of gmean
+    and hmean
+  * #9245: running
+    scipy.interpolate.tests.test_fitpack::test_bisplev_integer_overflow…
+  * #12471: test_bisplev_integer_overflow: Segmentation fault (core
+    dumped)
+  * #13321: Bug: setting iprint=0 hides all output from
+    fmin_l_bfgs_b, but…
+  * #13730: `scipy.stats.mood` does not correct for ties
+  * #14019: ks_2samp throws `RuntimeWarning: overflow encountered
+    in double_scalars`
+  * #14589: `shgo` error since scipy 1.8.0.dev0+1529.803e52d
+  * #14591: Input data validation for RectSphereBivariateSpline
+  * #15101: BUG: binom.pmf - RuntimeWarning: divide by zero
+  * #15342: BUG: scipy.optimize.minimize: Powell’s method function
+    evaluated…
+  * #15964: BUG: lombscargle fails if argument is a view
+  * #16211: BUG: Possible bug when using winsorize on pandas data
+    instead…
+  * #16459: BUG: stats.ttest_ind returns wrong p-values with
+    permutations
+  * #16500: odr.Model default meta value fails with __getattr__
+  * #16519: BUG: Error in error message for incorrect sample
+    dimension in…
+  * #16527: BUG: dimension of isuppz in syevr is mistranslated
+  * #16600: BUG: `KDTree`’s optional argument `eps` seems to have
+    no…
+  * #16656: dtype not preserved with operations on sparse arrays
+  * #16751: BUG: `stats.fit` on `boltzmann` expects `bound` for
+    `lambda`,…
+  * #17012: BUG: Small oversight in sparse.linalg.lsmr?
+  * #17020: BUG: Build failure due to problems with shebang line in
+    cythoner.py
+  * #17088: BUG: stats.rayleigh.fit: returns `loc` that is
+    inconsistent…
+  * #17104: BUG? Incorrect branch in `LAMV` / `_specfunc.lamv`
+  * #17196: DOC: keepdims in stats.mode is incorrectly documented
+- Move multibuild flavor ":standard" to unflavored build
+- Test in parallel (pytest-xdist) 
+
+-------------------------------------------------------------------
 Tue Oct 11 08:36:20 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 1.9.2

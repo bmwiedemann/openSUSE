@@ -17,12 +17,12 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
-%define _ver 1_9_2
+%define _ver 1_9_3
 %define shortname scipy
 %define pname python-%{shortname}
 %define hpc_upcase_trans_hyph() %(echo %{**} | tr [a-z] [A-Z] | tr '-' '_')
 
-%if "%{flavor}" == "standard"
+%if "%{flavor}" == ""
  %bcond_with hpc
  %ifarch armv6l s390 s390x m68k
   %bcond_with openblas
@@ -91,7 +91,7 @@ ExclusiveArch:  do_not_build
 # TODO explore debundling Boost for standard and hpc
 
 Name:           %{package_name}
-Version:        1.9.2
+Version:        1.9.3
 Release:        0
 Summary:        Scientific Tools for Python
 License:        BSD-3-Clause AND LGPL-2.0-or-later AND BSL-1.0
@@ -110,10 +110,9 @@ BuildRequires:  fdupes
 BuildRequires:  meson >= 0.62.2
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros >= 20220911
-%if "%{flavor}" == ""
-ExclusiveArch:  do_not_build
-%endif
 %if %{with test}
+BuildRequires:  %{python_module pytest-timeout}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy = %{version}}
 BuildRequires:  %{python_module threadpoolctl}
@@ -152,7 +151,7 @@ for numerical integration and optimization.
 
 %prep
 %autosetup -p1 -n scipy-%{version}
-find . -type f -name "*.py" -exec sed -i "s|#!%{_bindir}/env python||" {} \;
+sed -i '1{/env python/d}' scipy/sparse/linalg/_isolve/tests/test_gcrotmk.py
 
 %ifarch i586
 # Limit double floating point precision for x87, triggered by GCC 12.
@@ -248,11 +247,11 @@ donttest+=" or (TestNoData and test_nodata)"
 donttest+=" or (TestBSR and test_scalar_idx_dtype)"
 # error while getting entropy
 donttest+=" or (test_cont_basic and 500-200-ncf-arg74)"
+# https://github.com/scipy/scipy/issues/16927
+donttest+=" or (test_lobpcg and test_failure_to_run_iterations)"
 %ifarch %ix86 %arm
 # fails on 32bit
 mark32bit="or xfail_on_32bit"
-# segfault(overflow)
-donttest+=" or (test_fitpack and test_bisplev_integer_overflow)"
 # precision errors
 donttest+=" or (test_peak_finding and TestFindPeaksCwt and test_find_peaks_exact)"
 donttest+=" or (test_peak_finding and TestFindPeaksCwt and test_find_peaks_withnoise)"
@@ -268,7 +267,7 @@ donttest+=" or (test_cython_api and eval_sh_chebyt)"
 donttest+=" or (test_stats_boost_ufunc)"
 %endif
 mv scipy scipy.dont-import-me
-%pytest_arch --pyargs scipy -m "not (slow or xslow $mark32bit)" -k "not ($donttest)"
+%pytest_arch --pyargs scipy -n auto -m "not (slow or xslow $mark32bit)" -k "not ($donttest)"
 # prevent failing debuginfo extraction because we did not create anything for testing
 touch debugsourcefiles.list
 %endif
