@@ -976,4 +976,41 @@ Remove 0001-fix-sqlite3.10.0-test.patch. Applied upstream.</comment>
     variable used as bound parameter value within the lambda would not carry</comment>
     <requestid>1004264</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>7ff564482373acf557921b1784033f43</srcmd5>
+    <version>1.4.42</version>
+    <time>1666871604</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.4.42:
+  * orm
+    + The Session.execute.bind_arguments dictionary is no longer
+      mutated when passed to Session.execute() and similar; instead,
+      it’s copied to an internal dictionary for state changes. Among
+      other things, this fixes and issue where the “clause” passed to
+      the Session.get_bind() method would be incorrectly referring to
+      the Select construct used for the “fetch” synchronization
+      strategy, when the actual query being emitted was a Delete or
+      Update. This would interfere with recipes for “routing
+      sessions”.  References: #8614
+    + A warning is emitted in ORM configurations when an explicit
+      remote() annotation is applied to columns that are local to the
+      immediate mapped class, when the referenced class does not
+      include any of the same table columns. Ideally this would raise
+      an error at some point as it’s not correct from a mapping point
+      of view.  References: #7094
+    + A warning is emitted when attempting to configure a mapped class
+      within an inheritance hierarchy where the mapper is not given
+      any polymorphic identity, however there is a polymorphic
+      discriminator column assigned. Such classes should be abstract
+      if they never intend to load directly.  References: #7545
+    + Fixed regression for 1.4 in contains_eager() where the “wrap in
+      subquery” logic of joinedload() would be inadvertently triggered
+      for use of the contains_eager() function with similar statements
+      (e.g. those that use distinct(), limit() or offset()), which
+      would then lead to secondary issues with queries that used some
+      combinations of SQL label names and aliasing. This “wrapping” is
+      not appropriate for contains_eager() which has always had the
+      contract that the user-defined SQL statement is unmodified with</comment>
+    <requestid>1030996</requestid>
+  </revision>
 </revisionlist>

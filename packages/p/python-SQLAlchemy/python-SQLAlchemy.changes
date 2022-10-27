@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Sat Oct 22 16:19:42 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.4.42:
+  * orm
+    + The Session.execute.bind_arguments dictionary is no longer
+      mutated when passed to Session.execute() and similar; instead,
+      it’s copied to an internal dictionary for state changes. Among
+      other things, this fixes and issue where the “clause” passed to
+      the Session.get_bind() method would be incorrectly referring to
+      the Select construct used for the “fetch” synchronization
+      strategy, when the actual query being emitted was a Delete or
+      Update. This would interfere with recipes for “routing
+      sessions”.  References: #8614
+    + A warning is emitted in ORM configurations when an explicit
+      remote() annotation is applied to columns that are local to the
+      immediate mapped class, when the referenced class does not
+      include any of the same table columns. Ideally this would raise
+      an error at some point as it’s not correct from a mapping point
+      of view.  References: #7094
+    + A warning is emitted when attempting to configure a mapped class
+      within an inheritance hierarchy where the mapper is not given
+      any polymorphic identity, however there is a polymorphic
+      discriminator column assigned. Such classes should be abstract
+      if they never intend to load directly.  References: #7545
+    + Fixed regression for 1.4 in contains_eager() where the “wrap in
+      subquery” logic of joinedload() would be inadvertently triggered
+      for use of the contains_eager() function with similar statements
+      (e.g. those that use distinct(), limit() or offset()), which
+      would then lead to secondary issues with queries that used some
+      combinations of SQL label names and aliasing. This “wrapping” is
+      not appropriate for contains_eager() which has always had the
+      contract that the user-defined SQL statement is unmodified with
+      the exception of adding the appropriate columns to be fetched.
+      References: #8569
+    + Fixed regression where using ORM update() with
+      synchronize_session=’fetch’ would fail due to the use of
+      evaluators that are now used to determine the in-Python value
+      for expressions in the the SET clause when refreshing objects;
+      if the evaluators make use of math operators against non-numeric
+      values such as PostgreSQL JSONB, the non-evaluable condition
+      would fail to be detected correctly. The evaluator now limits
+      the use of math mutation operators to numeric types only, with
+      the exception of “+” that continues to work for strings as
+      well. SQLAlchemy 2.0 may alter this further by fetching the SET
+      values completely rather than using evaluation.  References:
+      #8507
+  * engine
+    + Fixed issue where mixing “*” with additional explicitly-named
+      column expressions within the columns clause of a select()
+      construct would cause result-column targeting to sometimes
+      consider the label name or other non-repeated names to be an
+      ambiguous target.  References: #8536
+  * asyncio
+    + Improved implementation of asyncio.shield() used in context
+      managers as added in #8145, such that the “close” operation is
+      enclosed within an asyncio.Task which is then strongly
+      referenced as the operation proceeds. This is per Python
+      documentation indicating that the task is otherwise not strongly
+      referenced.  References: #8516
+  * postgresql
+    + aggregate_order_by now supports cache generation.  References:
+      #8574
+  * mysql
+    + Adjusted the regular expression used to match “CREATE VIEW” when
+      testing for views to work more flexibly, no longer requiring the
+      special keyword “ALGORITHM” in the middle, which was intended to
+      be optional but was not working correctly. The change allows
+      view reflection to work more completely on MySQL-compatible
+      variants such as StarRocks. Pull request courtesy John Bodley.
+      References: #8588
+  * mssql
+    + Fixed yet another regression in SQL Server isolation level fetch
+      (see #8231, #8475), this time with “Microsoft Dynamics CRM
+      Database via Azure Active Directory”, which apparently lacks the
+      system_views view entirely. Error catching has been extended
+      that under no circumstances will this method ever fail, provided
+      database connectivity is present.  References: #8525
+- Also remove the conditional definition of python_module.
+
+-------------------------------------------------------------------
 Sat Sep 17 07:23:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.41:
