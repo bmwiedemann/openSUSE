@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 25 13:55:07 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.3.4:
+  * Support for Unicode 15.0.0
+  * Uses IDNA2008 from tables from unicode.org rather than IANA
+    for consistency with other implementation and support for
+    Unicode versions 12 through 15. This breaks backwards-
+    compatibility regarding U+19DA and recent releases
+
+-------------------------------------------------------------------
 Tue Jul 12 19:28:19 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.3.3:
