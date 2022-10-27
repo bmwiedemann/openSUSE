@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 25 19:19:05 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.10.0:
+  - Prefer casefold in FoldedCase.
+
+-------------------------------------------------------------------
 Thu Aug 18 18:48:46 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to v3.9.1

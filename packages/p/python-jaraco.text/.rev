@@ -93,4 +93,14 @@
     <comment></comment>
     <requestid>998094</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0d4f583123768cb4c16c62b12717baba</srcmd5>
+    <version>3.10.0</version>
+    <time>1666871531</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.10.0:
+  - Prefer casefold in FoldedCase.
+</comment>
+    <requestid>1031197</requestid>
+  </revision>
 </revisionlist>
