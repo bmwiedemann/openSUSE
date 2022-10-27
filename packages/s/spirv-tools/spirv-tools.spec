@@ -17,10 +17,10 @@
 
 
 %define _lto_cflags %nil
-%define lname libSPIRV-Tools-2022_3
+%define lname libSPIRV-Tools-2022_4
 
 Name:           spirv-tools
-Version:        2022.3
+Version:        2022.4
 Release:        0
 Summary:        API and commands for processing SPIR-V modules
 License:        Apache-2.0
@@ -30,15 +30,13 @@ URL:            https://github.com/KhronosGroup/SPIRV-Tools
 Source:         https://github.com/KhronosGroup/SPIRV-Tools/archive/refs/tags/v%version.tar.gz
 Source9:        baselibs.conf
 Patch1:         ver.diff
-Patch2:         gcc48.diff
-Patch3:         0001-Fix-array-copy-propagation-4890.patch
 BuildRequires:  bison
 BuildRequires:  cmake >= 2.8.12
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
 BuildRequires:  python3-base
 BuildRequires:  python3-xml
-BuildRequires:  spirv-headers >= 1.6.1+sdk216
+BuildRequires:  spirv-headers >= 1.6.1+sdk231
 
 %description
 The package includes an assembler, binary module parser,
@@ -71,9 +69,6 @@ find . -type f -name CMakeLists.txt -exec \
 	perl -i -pe 's{\@PACKAGE_VERSION\@}{%version}' CMakeLists.txt {} +
 
 %build
-%if 0%{?suse_version} >= 1550
-#export CXXFLAGS="%optflags -Wno-error=stringop-truncation"
-%endif
 %cmake -DSPIRV-Headers_SOURCE_DIR="%_prefix" \
 	-DSPIRV_TOOLS_BUILD_STATIC:BOOL=OFF -DBUILD_SHARED_LIBS:BOOL=ON
 %cmake_build
