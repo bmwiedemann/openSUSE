@@ -3458,4 +3458,19 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
 - rebae ImageMagick-library-installable-in-parallel.patch (forwarded request 1010128 from polslinux)</comment>
     <requestid>1010129</requestid>
   </revision>
+  <revision rev="259" vrev="1">
+    <srcmd5>703245fd791ad166930e2ef324aa5f8d</srcmd5>
+    <version>7.1.0.51</version>
+    <time>1666871553</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.1.0.51:
+  * obtain scene from image structure
+  * prevent undefined shift
+  * Added private api to go through a linked list without using semaphores.
+  * Fixed build.
+  * latest automake configuration
+  * fix undefined-shift in ReadTGAImage @ https://oss-fuzz.com/testcase?key=5129864151957504
+  * prevent divide by zero exception (forwarded request 1031300 from dirkmueller)</comment>
+    <requestid>1031316</requestid>
+  </revision>
 </revisionlist>

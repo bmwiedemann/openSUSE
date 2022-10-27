@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct 26 09:27:50 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.1.0.51:
+  * obtain scene from image structure
+  * prevent undefined shift
+  * Added private api to go through a linked list without using semaphores.
+  * Fixed build.
+  * latest automake configuration
+  * fix undefined-shift in ReadTGAImage @ https://oss-fuzz.com/testcase?key=5129864151957504
+  * prevent divide by zero exception
+
+-------------------------------------------------------------------
 Wed Oct 12 08:06:39 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - update to 7.1.0.50:
