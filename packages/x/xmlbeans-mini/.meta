@@ -14,4 +14,5 @@ there are also API's that allow you access to the full XML infoset
 (XMLBeans keeps full XML Infoset fidelity) as well as to allow you to
 reflect into the XML schema itself through an XML Schema Object model.</description>
   <devel project="openSUSE:Factory" package="xmlbeans"/>
+  <bcntsynctag>xmlbeans</bcntsynctag>
 </package>
