@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 25 18:14:06 UTC 2022 - Matthias Eliasson <elimat@opensuse.org>
+
+- update to 0.18:
+  + Fixed minor leak
+  + Updated translations
+  + Documentation fixes
+
+-------------------------------------------------------------------
 Thu Sep 16 02:08:38 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove obsolete translation-update-upstream support

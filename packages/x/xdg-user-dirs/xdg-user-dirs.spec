@@ -1,7 +1,7 @@
 #
 # spec file for package xdg-user-dirs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xdg-user-dirs
-Version:        0.17
+Version:        0.18
 Release:        0
 Summary:        Utilities to handle user data directories
 License:        GPL-2.0-only
@@ -40,7 +40,7 @@ handles localization (i.e. translation) of the filenames.
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
