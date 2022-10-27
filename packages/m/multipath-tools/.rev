@@ -1724,4 +1724,13 @@ see https://github.com/opensvc/multipath-tools/compare/2bdd3a14..79c3556f</comme
     to preserve history; fix revision in _service file). (forwarded request 1030842 from mwilck)</comment>
     <requestid>1030843</requestid>
   </revision>
+  <revision rev="148" vrev="1">
+    <srcmd5>8c2454c01c030c87aaa0170d13da7932</srcmd5>
+    <version>0.9.2+59+suse.ac8942d</version>
+    <time>1666871541</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.2+59+suse.ac8942d:
+  * Fix segfault in &quot;multipath -t&quot; command (boo#1204731) (forwarded request 1031262 from mwilck)</comment>
+    <requestid>1031265</requestid>
+  </revision>
 </revisionlist>
