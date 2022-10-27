@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Oct 26 06:19:38 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Update to 2.5.0: (bsc#1204708)
+  * Security fixes:
+    - CVE-2022-43680 -- Fix heap use-after-free after overeager 
+      destruction of a shared DTD in function 
+      XML_ExternalEntityParserCreate in out-of-memory situations.
+      Expected impact is denial of service or potentially arbitrary
+      code execution.
+  * Bug fixes:
+    - Fix curruption from undefined entities
+    - Fix case when parsing was suspended while processing nested
+      entities
+    - Stop leaking opening tag bindings after a closing tag mismatch 
+      error where a parser is reset through XML_ParserReset and then
+      reused to parse
+    - CMake: Fix generation of pkg-config file
+    - MinGW|CMake: Fix static library name
+  * Other changes:
+    - Protect header expat_config.h from multiple inclusion
+    - examples: Make use of XML_GetBuffer and be more consistent
+      across examples
+    - Address compiler warnings
+    - Version info bumped from 9:9:8 to 9:10:8; see 
+      https://verbump.de/ for what these numbers do
+
+-------------------------------------------------------------------
 Tue Sep 20 15:54:12 UTC 2022 - David Anes <david.anes@suse.com>
 
 - update to 2.4.9: (bsc#1203438)
