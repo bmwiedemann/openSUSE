@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 24 12:51:30 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Added "log.group" method for grouping the log messages
+  (bsc#1204625)
+- Update Rakefile to allow installing the Ruby files in inst-sys
+  using the "yupdate" command
+- 4.5.4
+
+-------------------------------------------------------------------
 Thu Oct  6 14:26:41 UTC 2022 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Dropped support for profiler / Y2PROFILER env var (bsc#1189647)
