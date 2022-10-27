@@ -32,7 +32,7 @@
 %bcond_with test
 %endif
 Name:           python-jupyter-core%{psuffix}
-Version:        4.11.1
+Version:        4.11.2
 Release:        0
 Summary:        Base package on which Jupyter projects rely
 License:        BSD-3-Clause

@@ -110,4 +110,14 @@ Update to 4.6.1</comment>
 - Refresh use_rpms_paths.patch</comment>
     <requestid>992082</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c704c09ad723b1d8e4cf90ca53e8d3a0</srcmd5>
+    <version>4.11.2</version>
+    <time>1666871547</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.11.2
+  * no release notes
+  * from the git log: merge GHSA-m678-f26j-3hrp</comment>
+    <requestid>1031307</requestid>
+  </revision>
 </revisionlist>
