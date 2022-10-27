@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 24 19:10:42 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.3.231.0
+  * No changelog was provided
+    (but do take a look in vulkan-
+- Drop 0001-Drop-wayland-client.h-include.patch (merged upstream)
+
+-------------------------------------------------------------------
 Mon Aug 22 22:38:14 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release SDK-1.3.224.0

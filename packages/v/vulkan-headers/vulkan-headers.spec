@@ -21,14 +21,13 @@
 # Consider only updating the sources in lockstep.
 #
 Name:           vulkan-headers
-Version:        1.3.224.0
+Version:        1.3.231.0
 Release:        0
 Summary:        Vulkan C and C++ API header files
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/KhronosGroup/Vulkan-Headers
 Source:         https://github.com/KhronosGroup/Vulkan-Headers/archive/refs/tags/sdk-%version.tar.gz
-Patch1:         0001-Drop-wayland-client.h-include.patch
 BuildRequires:  cmake >= 2.8.11
 BuildArch:      noarch
 Requires:       pkgconfig(wayland-client)
