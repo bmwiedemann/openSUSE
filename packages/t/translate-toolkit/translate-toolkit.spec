@@ -42,16 +42,17 @@
 %define manpages translatetoolkit %binaries_and_manpages
 
 Name:           translate-toolkit%{psuffix}
-Version:        3.6.1
+Version:        3.7.3
 Release:        0
 Summary:        Tools and API to assist with translation and software localization
 License:        GPL-2.0-or-later
 URL:            https://toolkit.translatehouse.org/
-Source:         https://github.com/translate/translate/releases/download/%{version}/%{modname}-%{version}.tar.gz
+Source:         translate-%{version}.tar
 Patch0:         xliff-xsd-no-network.patch
 Patch1:         sphinx-intersphinx.patch
 BuildRequires:  %{python_module Levenshtein >= 0.12}
 BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module sphinx-bootstrap-theme}
 BuildRequires:  %{python_module beautifulsoup4 >= 4.3}
 # extra modules here are needed for manpages
 BuildRequires:  %{python_module cheroot >= 8.3.0}
@@ -147,7 +148,7 @@ The %{name}-devel-doc package contains Translate Toolkit API documentation for d
 toolkit or to use the libraries in other localization tools.
 
 %prep
-%setup -q -n %{modname}-%{version}
+%setup -q -n translate-%{version}
 %autopatch -p1
 
 sed -i 296"s|'share'|'translate/share'|" setup.py
@@ -185,7 +186,7 @@ install -m 644 docs/_build/man/* %{buildroot}%{_mandir}/man1/
 
 # move documentation files to datadir, use default flavor version for common
 install -d -m 755 %{buildroot}%{_defaultdocdir}/%{modname}
-mv %{buildroot}%{python_sitelib}/translate/docs/_build/html %{buildroot}%{_defaultdocdir}/%{modname}
+mv docs/_build/html %{buildroot}%{_defaultdocdir}/%{modname}
 %{python_expand rm -rf %{buildroot}%{$python_sitelib}/translate/docs
 rm -rf %{buildroot}home/abuild/.local/lib/python%{$python_version}/site-packages/
 }
@@ -207,7 +208,8 @@ done
 %check
 %if %{with test}
 rm -v translate/storage/test_fluent.py
-%pytest
+# https://github.com/translate/translate/issues/4745
+%pytest -k 'not test_wrap_gettext'
 %endif
 
 %post

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Oct 26 16:27:56 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.7.3:
+  * Addded new classified rewriter
+  * Updated CLDR data
+  * Fixes in the Android, GWT and RC formats.
+  * Rewritten installation to use modern setuptools features.
+  * Added support for Resource Dictionary format.
+  * Fixes in the CSV, PO and RC formats.
+  * Fixes in the JSON, YAML, RC, and properties formats.
+  * see https://docs.translatehouse.org/projects/translate-toolkit/en/latest/releases/3.7.3.html
+  * see https://docs.translatehouse.org/projects/translate-toolkit/en/latest/releases/3.7.2.html
+  * see https://docs.translatehouse.org/projects/translate-toolkit/en/latest/releases/3.7.1.html
+  * see https://docs.translatehouse.org/projects/translate-toolkit/en/latest/releases/3.7.0.html
+  * see https://docs.translatehouse.org/projects/translate-toolkit/en/latest/releases/3.6.2.html
+- switch to obs_scm due to broken upstream tarball (gh#translate/translate#4744)
+
+-------------------------------------------------------------------
 Tue Oct  4 14:09:02 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Drop not needed BuildRequires: subversion.
