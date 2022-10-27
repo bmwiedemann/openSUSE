@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Oct 24 20:51:47 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.8.2:
+  + Input:
+    - Give input methods more control over resets and allow them to
+      preserve state.
+    - Align interpretation of modifiers in key events in X11 and
+      Wayland.
+  + GtkColumnView: Fixes to focus handling.
+  + GtkPopover:
+    - Fix problems with focus when dismissing popovers.
+    - Fix problems with focusing editable labels in popovers.
+  + Build:
+    - Fix build problems with resources and non-gnu linkers.
+    - Fix gi-docgen detection in cross builds.
+    - Require meson 0.60.
+  + Debugging:
+    - Make more debug options available in no-debug builds.
+    - Improve consistency of debug logging.
+    - Give names to all sources.
+  + Accessibility: Introduce GtkAccessibleRange.
+  + Wayland:
+    - Make monitor bounds handling more robust.
+    - Prevent shrinking clients due to wrong toplevel bounds.
+  + Broadway: Return correct pointer coordinates from device
+    queries.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Sep 16 16:52:20 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 4.8.1:
