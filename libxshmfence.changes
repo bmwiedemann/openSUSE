@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 18 18:29:13 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.3.1
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * alloc: prefer atomic close-on-exec without O_TMPFILE as well
+  * alloc: prefer SHM_ANON on FreeBSD a la memfd_create
+
+-------------------------------------------------------------------
 Mon Feb 26 18:51:24 UTC 2018 - sndirsch@suse.com
 
 - Update to version 1.3
