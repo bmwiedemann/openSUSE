@@ -2130,4 +2130,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1000211</requestid>
   </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>c0b2cb10853594773befa79ed07a3e57</srcmd5>
+    <version>9.24.49</version>
+    <time>1666871584</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.24.48 → 9.24.49
+
+- Fixed test-image-vagrant
+  virtualbox-guest-tools obsoletes virtualbox-guest-x11
+
+- ignore the type check on the Result class
+  With an update of mypy the bound TypeVar is no longer allowed.
+  In newer versions of python we could use the &quot;Self&quot; type or
+  import annotations from the future module. Unfortunately in
+  older python versions which we still support (3.6) there is
+  no non intrusive change which allows us to handle that type
+  annotation. Thus this commit ignores the return type spec
+  for Result.load() for the moment.
+
+- Stop copying /dev files statically into the OCI container
+  In containers (nspawn) where part of the /dev filesystem is bind-mounted
+  from outside system, kiwi fails to do the rsync (in creation of the
+  nodes).
+  There is no reason to actually copy whole tree inside so let's just
+  not do it (as it does not seem to be needed at all).
+
+- List riscv64 as a valid architecture in the schemas
+  This is needed so that architecture filters on riscv64 specifics can
+  be defined.
+
+- Support DM integrity legacy options
+  Add a new attribute integrity_legacy_hmac=&quot;true|false&quot; which
+  allows to use old flawed HMAC calculation (does not protect superblock).
+  Add a new attribute integrity_legacy_padding=&quot;true|false&quot; which
+  allows to use inefficient legacy padding. Do not use these attributes</comment>
+    <requestid>1031379</requestid>
+  </revision>
 </revisionlist>

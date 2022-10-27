@@ -1,7 +1,95 @@
 -------------------------------------------------------------------
+Sat Oct 22 22:27:41 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.48 → 9.24.49
+
+-------------------------------------------------------------------
+Sat Oct 22 22:18:38 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed test-image-vagrant
+
+  virtualbox-guest-tools obsoletes virtualbox-guest-x11
+
+-------------------------------------------------------------------
+Fri Oct 21 11:30:48 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- ignore the type check on the Result class
+
+  With an update of mypy the bound TypeVar is no longer allowed.
+  In newer versions of python we could use the "Self" type or
+  import annotations from the future module. Unfortunately in
+  older python versions which we still support (3.6) there is
+  no non intrusive change which allows us to handle that type
+  annotation. Thus this commit ignores the return type spec
+  for Result.load() for the moment.
+
+-------------------------------------------------------------------
+Wed Oct 12 20:31:54 CEST 2022 - Igor Raits <igor.raits@gmail.com>
+
+- Stop copying /dev files statically into the OCI container
+
+  In containers (nspawn) where part of the /dev filesystem is bind-mounted
+  from outside system, kiwi fails to do the rsync (in creation of the
+  nodes).
+
+  There is no reason to actually copy whole tree inside so let's just
+  not do it (as it does not seem to be needed at all).
+
+-------------------------------------------------------------------
+Tue Oct 11 22:55:31 CEST 2022 - Dirk Müller <dirk@dmllr.de>
+
+- List riscv64 as a valid architecture in the schemas
+
+  This is needed so that architecture filters on riscv64 specifics can
+  be defined.
+
+-------------------------------------------------------------------
+Wed Sep 14 15:59:26 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Support DM integrity legacy options
+
+  Add a new attribute integrity_legacy_hmac="true|false" which
+  allows to use old flawed HMAC calculation (does not protect superblock).
+  Add a new attribute integrity_legacy_padding="true|false" which
+  allows to use inefficient legacy padding. Do not use these attributes
+  until compatibility with a specific old kernel is required!
+
+-------------------------------------------------------------------
+Wed Aug 31 13:00:30 CEST 2022 - Jan Macku <jamacku@redhat.com>
+
+- ci(lint): Add Shell linter - Differential Shellcheck
+
+-------------------------------------------------------------------
+Wed Aug 31 12:11:21 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Limit repo alias names to be a safe POSIX name
+
+  Characters like spaces or other symbols used in repo alias names
+  can cause the package manager to fail setting up the repo. Thus
+  this patch changes the schema to only allow for safe POSIX names
+  matching: {pattern = "[a-zA-Z0-9_\-\.]+"}. This Fixes #2170
+
+-------------------------------------------------------------------
+Thu Aug 25 17:09:11 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Increase space for test-image-embedded test
+
+  Add more space to test profile: SystemFeatures
+
+-------------------------------------------------------------------
+Thu Aug 25 17:05:00 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Increase efifatimage size for legacy build test
+
+-------------------------------------------------------------------
 Tue Aug 23 11:48:16 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 9.24.47 → 9.24.48
+
+-------------------------------------------------------------------
+Sun Aug 21 17:01:55 CEST 2022 - Laszlo Gombos <laszlo.gombos@gmail.com>
+
+- Return failure if overlay is not supported
 
 -------------------------------------------------------------------
 Wed Aug 10 20:40:42 CEST 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
