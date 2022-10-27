@@ -16,10 +16,10 @@
 #
 
 
-%define sover 16
+%define sover 17
 %bcond_with     tests
 Name:           gnuastro
-Version:        0.18
+Version:        0.19
 Release:        0
 Summary:        GNU Astronomy Utilities
 License:        GPL-3.0-or-later

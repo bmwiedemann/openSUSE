@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Oct 25 14:20:54 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU Astronomy Utilities 0.19 (library 17.0.0)
+  * Arithmetic: Added new type operators and physical constants
+  * ConvertType: It is now possible to draw vector graphics marks
+    from a catalog over the output PDF images. A number of options
+    have been added to ConvertType for doing this
+  * It is now possible to select the color of the border of images
+    produced in vector graphics outputs (EPS and PDF) with
+    '--bordercolor'.
+  * Additional parameters to the Fits operation
+  * Statistics: Linear and Polynomial least squares fitting are now
+    available, wrapping the corresponsing calls in the GNU
+    Scientific Library
+  * Table: It is now possible to customize the format of floating
+    point numbers in the plain-text outputs
+  * Warp: Can correct distortions (with any standard recognized by
+    WCSLIB) and simultaneously align the image to the coordinate
+    system. When no named linear operation (like '--rotate', '--scale'
+    or etc) is requested, Warp will go into this mode. A number of
+    customization options were added.
+  * Statistics: --refcol has been removed 
+  * Warp: --align: has been removed
+  * Warp: -c is now short for --center, not --centeroncorner
+  * A number of bug fixes, and documentation updates
+
+-------------------------------------------------------------------
 Wed Aug 10 16:54:05 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU Astronomy Utilities 0.18 (library 16.0.0)
