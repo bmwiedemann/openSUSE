@@ -1332,4 +1332,12 @@
     <comment>New stable</comment>
     <requestid>1004770</requestid>
   </revision>
+  <revision rev="153" vrev="1">
+    <srcmd5>a0d8ca1547f1f4475f6a2a0abb7fcbbc</srcmd5>
+    <version>2.38.1</version>
+    <time>1666871590</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1030949</requestid>
+  </revision>
 </revisionlist>
