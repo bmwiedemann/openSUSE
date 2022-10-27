@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct  4 15:32:12 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to 1.31.0
+  * If Certbot exits before setting up its usual log files, the temporary 
+    directory created to save logging information will begin with the name 
+    certbot-log- rather than a generic name. This should not be considered a 
+    stable aspect of Certbot and may change again in the future.
+  * Fixed an incompatibility in the certbot-dns-cloudflare plugin and the 
+    Cloudflare library which was introduced in the Cloudflare library version 
+    2.10.1. The library would raise an error if a token was specified in the 
+    Certbot --dns-cloudflare-credentials file as well as the cloudflare.cfg 
+    configuration file of the Cloudflare library.
+
+-------------------------------------------------------------------
 Wed Sep 21 17:47:20 UTC 2022 - Markéta Machová <mmachova@suse.com>
 
 - Update to 1.30.0
