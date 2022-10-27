@@ -98,7 +98,7 @@
  \fIfile\fP .\|.\|.
  
 -\fBctags\fP [\|\-aCdgIQRVh\|] [\|\-BtTuvwx\|] [\|\-l \fIlanguage\fP\|]
-+\fBgnuctag\fP [\|\-aCdgIQRVh\|] [\|\-BtTuvwx\|] [\|\-l \fIlanguage\fP\|]
++\fBgnuctags\fP [\|\-aCdgIQRVh\|] [\|\-BtTuvwx\|] [\|\-l \fIlanguage\fP\|]
  .if n .br
  [\|\-o \fItagfile\fP\|] [\|\-r \fIregexp\fP\|]
  [\|\-\-parse\-stdin=\fIfile\fP\|]
@@ -134,7 +134,7 @@
  The default is to use the delimiter "\|\fB/\fP\|", to search \fIforwards\fP
  through files.
 -Only \fBctags\fP accepts this option.
-+Only \fBgnuctag\fP accepts this option.
++Only \fBgnuctags\fP accepts this option.
  .TP
  .B \-\-declarations
  In C and derived languages, create tags for function declarations,
@@ -168,15 +168,6 @@
  Print usage information.  Followed by one or more \-\-language=LANG
 --- lib-src/Makefile.in
 +++ lib-src/Makefile.in	2020-08-11 10:31:37.642931244 +0000
-@@ -30,6 +30,8 @@ CC=@CC@
- CFLAGS=@CFLAGS@
- CPPFLAGS = @CPPFLAGS@
- LDFLAGS = @LDFLAGS@
-+override CFLAGS := $(CFLAGS:-fno-PIE=-g) -fPIE
-+override LDFLAGS += -pie
- 
- version=@version@
- ## Used in $archlibdir.
 @@ -134,7 +136,7 @@ MKDIR_P = @MKDIR_P@
  CLIENTW = @CLIENTW@
  
@@ -205,17 +196,6 @@
  #ifdef WINDOWSNT
  #include "ntlib.h"
  #undef _WIN32_WINNT
---- lib/Makefile.in
-+++ lib/Makefile.in	2020-08-11 10:17:21.102266456 +0000
-@@ -33,6 +33,8 @@ all:
- 
- HAVE_NATIVE_COMP = @HAVE_NATIVE_COMP@
- 
-+override CFLAGS := $(CFLAGS) -fPIC
-+
- ALL_CFLAGS= \
-   $(C_SWITCH_SYSTEM) $(C_SWITCH_MACHINE) $(DEPFLAGS) \
-   $(GNULIB_WARN_CFLAGS) $(WERROR_CFLAGS) $(PROFILING_CFLAGS) $(CFLAGS) \
 --- lisp/cmuscheme.el
 +++ lisp/cmuscheme.el	2020-08-11 10:17:21.106266385 +0000
 @@ -231,7 +231,8 @@ is run).

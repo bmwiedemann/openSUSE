@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 26 11:56:36 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Fix typos in etags manpage
+- Don't disable PIE
+
+-------------------------------------------------------------------
 Sun Jun 19 23:02:39 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
 
 replace: efont-unicode with gnu-unifont-bitmap-fonts in emacs-x11 requires

@@ -158,13 +158,13 @@ Requires(pre):  fileutils
 Requires(pre):  group(games)
 Requires(pre):  user(games)
 %endif
-Source:         ftp://ftp.gnu.org/gnu/emacs/emacs-%{version}.tar.xz
+Source:         https://ftp.gnu.org/gnu/emacs/emacs-%{version}.tar.xz
 Source1:        app-defaults.Emacs
 Source2:        site-lisp.tar.bz2
 Source3:        dot.gnu-emacs
 Source4:        emacs-rpmlintrc
 Source5:        emacs.sh
-Source6:        ftp://ftp.gnu.org/gnu/emacs/emacs-%{version}.tar.xz.sig
+Source6:        https://ftp.gnu.org/gnu/emacs/emacs-%{version}.tar.xz.sig
 # https://ftp.gnu.org/gnu/gnu-keyring.gpg
 Source7:        %{name}.keyring
 Source8:        emacs-%{version}-pdf.tar.xz
@@ -412,13 +412,11 @@ VERSION=%{version}
 %endif
  CFLAGS="${RPM_OPT_FLAGS} -D_GNU_SOURCE -DGDK_DISABLE_DEPRECATION_WARNINGS -DGLIB_DISABLE_DEPRECATION_WARNINGS"
 LDFLAGS=
-  cflags -Wl,-no-pie             LDFLAGS
   cflags -pipe                   CFLAGS
   cflags -Wno-pointer-sign       CFLAGS
   cflags -Wno-unused-variable    CFLAGS
   cflags -Wno-unused-label       CFLAGS
   cflags -fno-optimize-sibling-calls CFLAGS
-  cflags -fno-PIE                CFLAGS
   cflags -Wl,-O2		 LDFLAGS
 %ifarch ia64
  CFLAGS=$(echo "${CFLAGS}"|sed -r 's/-O[0-9]?/-O1/g')
