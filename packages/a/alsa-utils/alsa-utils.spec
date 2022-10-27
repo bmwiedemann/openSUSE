@@ -25,7 +25,7 @@
 %endif
 
 Name:           alsa-utils
-Version:        1.2.7
+Version:        1.2.8
 Release:        0
 Summary:        Advanced Linux Sound Architecture Utilities
 License:        GPL-2.0-or-later
@@ -36,6 +36,8 @@ Source1:        https://www.alsa-project.org/files/pub/utils/alsa-utils-%{versio
 Source2:        01beep.conf
 Source3:        sound-extra.service
 Source5:        load-sound-modules.sh
+# from https://www.alsa-project.org/files/pub/gpg-release-key-v1.txt
+Source6:        alsa-utils.keyring
 Patch100:       alsa-info-no-update-for-distro-script.patch
 Patch101:       alsa-utils-configure-version-revert.patch
 BuildRequires:  alsa-devel

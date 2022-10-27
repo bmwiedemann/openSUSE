@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 25 07:30:22 UTC 2022 - Takashi Iwai <tiwai@suse.com>
+
+- Update to alsa-utils 1.2.8:
+  automake update, minor alsactl, amixer and aplay fixes.
+  https://www.alsa-project.org/wiki/Changes_v1.2.7.2_v1.2.8  
+- Add keyring
+
+-------------------------------------------------------------------
 Wed Jun  1 05:54:52 UTC 2022 - Takashi Iwai <tiwai@suse.com>
 
 - Update to alsa-utils 1.2.7:
