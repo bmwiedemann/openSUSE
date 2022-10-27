@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Wed Oct 26 15:17:07 UTC 2022 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#307
+- s390x: support PCI-attached networking device (jsc#PED-619)
+- 8.16
+
+--------------------------------------------------------------------
 Fri Oct 14 17:58:15 UTC 2022 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/linuxrc#304
