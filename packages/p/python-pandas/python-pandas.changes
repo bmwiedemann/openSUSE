@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Sat Oct 22 16:10:11 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.5.1:
+  * Fixed regressions
+    + Fixed Regression in Series.__setitem__() casting None to NaN for
+      object dtype (GH48665)
+    + Fixed Regression in DataFrame.loc() when setting values as a
+      DataFrame with all True indexer (GH48701)
+    + Regression in read_csv() causing an EmptyDataError when using an
+      UTF-8 file handle that was already read from (GH48646)
+    + Regression in to_datetime() when utc=True and arg contained
+      timezone naive and aware arguments raised a ValueError (GH48678)
+    + Fixed regression in DataFrame.loc() raising FutureWarning when
+      setting an empty DataFrame (GH48480)
+    + Fixed regression in DataFrame.describe() raising TypeError when
+      result contains NA (GH48778)
+    + Fixed regression in DataFrame.plot() ignoring invalid colormap
+      for kind="scatter" (GH48726)
+    + Fixed regression in MultiIndex.values`() resetting freq
+      attribute of underlying Index object (GH49054)
+    + Fixed performance regression in factorize() when na_sentinel is
+      not None and sort=False (GH48620)
+    + Fixed regression causing an AttributeError during warning
+      emitted if the provided table name in DataFrame.to_sql() and the
+      table name actually used in the database do not match (GH48733)
+    + Fixed regression in to_datetime() when arg was a date string
+      with nanosecond and format contained %f would raise a ValueError
+      (GH48767)
+    + Fixed regression in assert_frame_equal() raising for MultiIndex
+      with Categorical and check_like=True (GH48975)
+    + Fixed regression in DataFrame.fillna() replacing wrong values
+      for datetime64[ns] dtype and inplace=True (GH48863)
+    + Fixed DataFrameGroupBy.size() not returning a Series when axis=1
+      (GH48738)
+    + Fixed Regression in DataFrameGroupBy.apply() when user defined
+      function is called on an empty dataframe (GH47985)
+    + Fixed regression in DataFrame.apply() when passing non-zero axis
+      via keyword argument (GH48656)
+    + Fixed regression in Series.groupby() and DataFrame.groupby()
+      when the grouper is a nullable data type (e.g. Int64) or a
+      PyArrow-backed string array, contains null values, and
+      dropna=False (GH48794)
+    + Fixed performance regression in Series.isin() with mismatching
+      dtypes (GH49162)
+    + Fixed regression in DataFrame.to_parquet() raising when file
+      name was specified as bytes (GH48944)
+    + Fixed regression in ExcelWriter where the book attribute could
+      no longer be set; however setting this attribute is now
+      deprecated and this ability will be removed in a future version
+      of pandas (GH48780)
+    + Fixed regression in DataFrame.corrwith() when computing
+      correlation on tied data with method="spearman" (GH48826)
+  * Bug fixes
+    + Bug in Series.__getitem__() not falling back to positional for
+      integer keys and boolean Index (GH48653)
+    + Bug in DataFrame.to_hdf() raising AssertionError with boolean
+      index (GH48667)
+    + Bug in assert_index_equal() for extension arrays with non
+      matching NA raising ValueError (GH48608)
+    + Bug in DataFrame.pivot_table() raising unexpected FutureWarning
+      when setting datetime column as index (GH48683)
+    + Bug in DataFrame.sort_values() emitting unnecessary
+      FutureWarning when called on DataFrame with boolean sparse
+      columns (GH48784)
+    + Bug in arrays.ArrowExtensionArray with a comparison operator to
+      an invalid object would not raise a NotImplementedError
+      (GH48833)
+  * Other
+    + Avoid showing deprecated signatures when introspecting functions
+      with warnings about arguments becoming keyword-only (GH48692)
+
+-------------------------------------------------------------------
+Mon Sep 19 21:49:49 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update required versions
+
+- update to version 1.5.0:
+  * long changelog, full version available at
+    https://pandas.pydata.org/pandas-docs/stable/whatsnew/v1.5.0.html#
+
+-------------------------------------------------------------------
 Sat Sep 10 13:25:41 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:
