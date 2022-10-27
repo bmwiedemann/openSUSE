@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Oct 26 15:37:59 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- update to version 3.5.0
+  * Enhancements made
+    + Optimize text mimerenderer: ansi vs autolink #13202
+      (@vidartf)
+    + Collapse debugger panel when disabling debugger #13088
+      (@yanmulin)
+    + File Browser: add support for filtering directories on search
+      #12342 (@jtpio)
+    + Prompt for renaming at first manual save #12953 (@fcollonval)
+    + Raise ceiling on jupyter_server dependency to < 3 #13068
+      (@Zsailer)
+  * Bugs fixed
+    + Set isUntitled to false on document path changes #13268
+      (@fcollonval)
+    + Don't dispose the notebook metadata editor on active cell
+      change #13259 (@fcollonval)
+    + Use keystroke format consistent with menus #13200
+      (@fcollonval)
+  * Maintenance and upkeep improvements
+    + Fix memory leaks #13229 (@fcollonval)
+    + Bump to the latest Lumino 1.x #13190 (@fcollonval)
+    + Update branch configuration #13184 (@fcollonval)
+
+-------------------------------------------------------------------
 Sun Oct  9 17:08:35 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 3.4.8:

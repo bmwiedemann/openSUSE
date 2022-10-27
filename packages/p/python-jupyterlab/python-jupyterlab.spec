@@ -17,7 +17,7 @@
 
 
 Name:           python-jupyterlab
-Version:        3.4.8
+Version:        3.5.0
 Release:        0
 Summary:        Environment for interactive and reproducible computing
 License:        BSD-3-Clause
@@ -30,7 +30,7 @@ BuildRequires:  %{python_module Jinja2 >= 2.1}
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module ipython}
 BuildRequires:  %{python_module jupyter_core}
-BuildRequires:  %{python_module jupyter_server >= 1.16}
+BuildRequires:  %{python_module jupyter_server >= 1.16 with %python-jupyter_server < 3}
 BuildRequires:  %{python_module jupyterlab-server >= 2.10}
 BuildRequires:  %{python_module nbclassic}
 BuildRequires:  %{python_module notebook < 7}
@@ -44,12 +44,12 @@ Requires:       jupyter-jupyterlab = %{version}
 Requires:       python-Jinja2 >= 2.1
 Requires:       python-ipython
 Requires:       python-jupyter_core
-Requires:       python-jupyter_server >= 1.16
 Requires:       python-jupyterlab-server >= 2.10
 Requires:       python-nbclassic
 Requires:       python-notebook < 7
 Requires:       python-packaging
 Requires:       python-tornado >= 6.1
+Requires:       (python-jupyter_server >= 1.16 with python-jupyter_server < 3)
 Provides:       python-jupyter_jupyterlab = %{version}
 Obsoletes:      python-jupyter_jupyterlab < %{version}
 BuildArch:      noarch

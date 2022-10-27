@@ -269,4 +269,33 @@
     <comment></comment>
     <requestid>1009181</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>8c16df05dd6e52982c931b3ed0fcf2eb</srcmd5>
+    <version>3.5.0</version>
+    <time>1666871656</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.5.0
+  * Enhancements made
+    + Optimize text mimerenderer: ansi vs autolink #13202
+      (@vidartf)
+    + Collapse debugger panel when disabling debugger #13088
+      (@yanmulin)
+    + File Browser: add support for filtering directories on search
+      #12342 (@jtpio)
+    + Prompt for renaming at first manual save #12953 (@fcollonval)
+    + Raise ceiling on jupyter_server dependency to &lt; 3 #13068
+      (@Zsailer)
+  * Bugs fixed
+    + Set isUntitled to false on document path changes #13268
+      (@fcollonval)
+    + Don't dispose the notebook metadata editor on active cell
+      change #13259 (@fcollonval)
+    + Use keystroke format consistent with menus #13200
+      (@fcollonval)
+  * Maintenance and upkeep improvements
+    + Fix memory leaks #13229 (@fcollonval)
+    + Bump to the latest Lumino 1.x #13190 (@fcollonval)
+    + Update branch configuration #13184 (@fcollonval)</comment>
+    <requestid>1031382</requestid>
+  </revision>
 </revisionlist>
