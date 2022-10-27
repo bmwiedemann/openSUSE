@@ -20,9 +20,10 @@ Version:        20221026
 Release:        0
 License:        BSD-3-Clause
 Group:          System/Fhs
+%global debug_package %{nil}
 
 Provides:       %name-%version
-Provides:       product() = openSUSE-Addon-NonOss
+Provides:       product() = openSUSE%2DAddon%2DNonOss
 Provides:       product(openSUSE-Addon-NonOss) = 20221026-0
 Provides:       product-label() = non%20oss%20addon
 Provides:       product-cpeid() = cpe%3A%2Fo%3Aopensuse%3Aopensuse%2Daddon%2Dnonoss%3A20221026
