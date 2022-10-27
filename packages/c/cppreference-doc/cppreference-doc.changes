@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 24 11:09:11 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add cppreference-doc-premailer-3.9-compat.patch: Make
+  pre-processing compatible with premailer >= 3.9.
+
+-------------------------------------------------------------------
 Thu Sep 15 02:54:34 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add BuildRequires: python3-cssutils for all openSUSE versions,

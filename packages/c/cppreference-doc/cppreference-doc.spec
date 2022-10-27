@@ -24,6 +24,8 @@ License:        CC-BY-SA-3.0
 Group:          Documentation/HTML
 URL:            http://en.cppreference.com/w/
 Source0:        https://github.com/PeterFeicht/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM cppreference-doc-premailer-3.9-compat.patch badshah400@gmail.com -- Fix building against premailer >= 3.9
+Patch0:         cppreference-doc-premailer-3.9-compat.patch
 BuildRequires:  devhelp
 BuildRequires:  fdupes
 BuildRequires:  libqt5-qttools
@@ -62,7 +64,7 @@ Cppreference is a complete online reference for the C and C++ languages and stan
 This package provides the documentation in the qhelp format.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 make %{?_smp_mflags} qhelpgenerator=qhelpgenerator-qt5
