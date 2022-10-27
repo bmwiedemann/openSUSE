@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Oct 26 08:16:05 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1666772157.b8fb43f:
+  * docs: Use consistent writing "openQA"
+  * Fix bug where some pages briefly show up with light theme in darkmode
+  * Document interaction of custom dirs with default-initialization
+  * Improve documentation about triggering tests of custom versions
+  * Allow specifying `NEEDLES_DIR` to be relative to `CASEDIR`
+  * Fix invisible buttons in some forms with darkmode
+  * Fix overview table header in darkmode
+  * Fix jumbotron and card background in darkmode
+  * Bring back the old light theme
+  * t: Fix timing error
+  * Fix host/port in broken t/25-cache-client.t
+  * Fix cache service host config for IPs != 127.0.0.1
+  * Show correct job status in worker job list
+  * Add theme settings and replace media queries with .darkmode class
+  * Fix error handling in web UI download jobs since 4cee25f
+  * Add darkmode capability
+  * docs: Simplify developer mode firewall rules
+  * Add distri-opensuse specific worker container dockerfile
+  * Improve rendering "waiting for background (GRU) tasks"
+
+-------------------------------------------------------------------
 Sat Oct 22 02:15:55 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1666370010.771049f:
