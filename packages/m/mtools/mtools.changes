@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 22 19:28:06 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 4.0.42:
+  * Added postcmd attribute in drive description to allow to
+    execute "device release" code automatically at end of
+    command
+  * Code cleanup, signedness cleanup about directory entries
+
+-------------------------------------------------------------------
 Wed Sep 21 19:19:05 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 4.0.41:
