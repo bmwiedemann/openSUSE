@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 25 12:19:45 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Improve logging, use the new "log.group" call to group logs for
+  each registration step (bsc#1204625)
+- 4.5.7
+
+-------------------------------------------------------------------
 Wed Oct 19 08:13:54 UTC 2022 - José Iván López González <jlopez@suse.com>
 
 - Add reader for products defined in a YAML file.

@@ -17,7 +17,7 @@
 
 
 Name:           yast2-registration
-Version:        4.5.6
+Version:        4.5.7
 Release:        0
 Summary:        YaST2 - Registration Module
 License:        GPL-2.0-only
@@ -38,15 +38,15 @@ BuildRequires:  suseconnect-ruby-bindings > 0.0.4
 # ProductSpec API
 BuildRequires:  yast2-packager >= 4.4.13
 BuildRequires:  yast2-update >= 3.1.36
-# yast/rspec/helpers.rb
-BuildRequires:  yast2-ruby-bindings >= 4.4.7
+# log.group call
+BuildRequires:  yast2-ruby-bindings >= 4.5.4
 
 # Y2Packager::NewRepositorySetup
 Requires:       yast2 >= 4.4.42
 # "dupAllowVendorChange" option in Pkg.SetSolverFlags()
 Requires:       yast2-pkg-bindings >= 3.1.34
-# N_() method
-Requires:       yast2-ruby-bindings >= 3.1.12
+# log.group call
+Requires:       yast2-ruby-bindings >= 4.5.4
 # uses Fiddle instead of FFI
 Requires:       suseconnect-ruby-bindings > 0.0.4
 Requires:       yast2-add-on >= 3.1.8
