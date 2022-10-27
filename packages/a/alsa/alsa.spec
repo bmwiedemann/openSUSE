@@ -32,7 +32,7 @@
 %endif
 
 Name:           alsa
-Version:        1.2.7.2
+Version:        1.2.8
 Release:        0
 Summary:        Advanced Linux Sound Architecture
 License:        LGPL-2.1-or-later
@@ -53,6 +53,8 @@ Source30:       all_notes_off
 Source31:       all_notes_off.bin
 Source32:       all_notes_off.mid
 Source34:       alsa-init.sh
+# from https://www.alsa-project.org/files/pub/gpg-release-key-v1.txt
+Source35:       alsa.keyring
 # rest suse fixes
 Patch101:       alsa-lib-ignore-non-accessible-ALSA_CONFIG_PATH.patch
 BuildRequires:  doxygen

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 25 07:19:06 UTC 2022 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 1.2.8:
+  add FreeBSD/NetBD/OpenBSD build support, fixes in control namehint,
+  various PCM plugins and UCM.  For details, see:
+    https://www.alsa-project.org/wiki/Changes_v1.2.7.2_v1.2.8
+- Add keyring
+
+-------------------------------------------------------------------
 Mon Jul 18 07:05:32 UTC 2022 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 1.2.7.2: minor updates, including fixes for PCM
