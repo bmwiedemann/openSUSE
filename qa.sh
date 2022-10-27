@@ -245,6 +245,16 @@ kfail=(
     # https://sourceware.org/bugzilla/show_bug.cgi?id=26873
     "FAIL: gdb.threads/watchthreads-threaded.exp: threaded watch loop \(GDB internal error\)"
 
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=28617
+    "FAIL: gdb.base/info-os.exp: get file descriptors"
+    "FAIL: gdb.base/info-os.exp: get internet-domain sockets"
+    "FAIL: gdb.base/info-os.exp: get message queues"
+    "FAIL: gdb.base/info-os.exp: get process groups"
+    "FAIL: gdb.base/info-os.exp: get semaphores"
+    "FAIL: gdb.base/info-os.exp: get shared-memory regions"
+    "FAIL: gdb.base/info-os.exp: get threads"
+
+    
 ) # kfail
 
 kfail_sle12=(
@@ -352,6 +362,9 @@ kfail_factory=(
     # https://sourceware.org/bugzilla/show_bug.cgi?id=29253
     "FAIL: gdb.server/stop-reply-no-thread.exp: to_disable=threads: continue to main \(timeout\)"
     "FAIL: gdb.server/stop-reply-no-thread.exp: to_disable=threads: continue until exit \(timeout\)"
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=29706
+    "FAIL: gdb.base/eof-exit.exp: with non-dump terminal: with bracketed-paste-mode on: close GDB with eof \(missed the prompt\)"
 
 ) # kfail_factory
 

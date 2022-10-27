@@ -347,6 +347,7 @@ Patch2032:      gdb-handle-pending-c-after-rl_callback_read_char.patch
 Patch2033:      gdb-testsuite-fix-have_mpx-test.patch
 Patch2034:      gdb-testsuite-fix-gdb.dwarf2-dw2-unspecified-type-foo.c-with-m32.patch
 Patch2035:      gdb-add-support-for-readline-8.2.patch
+Patch2036:      gdb-fix-assert-in-handle_jit_event.patch
 
 # Backports from master, not yet available in next release.
 
@@ -783,6 +784,7 @@ find -name "*.info*"|xargs rm -f
 %patch2033 -p1
 %patch2034 -p1
 %patch2035 -p1
+%patch2036 -p1
 
 %patch2100 -p1
 %patch2101 -p1
