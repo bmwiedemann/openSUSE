@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed Oct 26 07:18:39 UTC 2022 - Joey Lee <jlee@suse.com>
+
+- For pushing bluez 5.65 to 15-SP5 (bluez-5.62), sync more change log:
+   (jsc#PED-1407)
+    - The hcidump-Fix-set_ext_ctrl-global-buffer-overflow.patch
+      be merged to bluez-5.51 in 2018. (bsc#1013732)(CVE-2016-9801)
+    - The following btmon patches are merged to bluez-5.51 and later:
+	  0001-btmon-fix-segfault-caused-by-buffer-over-read.patch
+	  0002-btmon-fix-segfault-caused-by-buffer-over-read.patch
+	  0003-btmon-fix-segfault-caused-by-buffer-over-read.patch
+	  0004-btmon-Fix-crash-caused-by-integer-underflow.patch
+	  0005-btmon-fix-stack-buffer-overflow.patch
+	  0006-btmon-fix-multiple-segfaults.patch
+	  0007-btmon-fix-segfault-caused-by-integer-underflow.patch
+	  0008-btmon-fix-segfault-caused-by-integer-undeflow.patch
+	  0009-btmon-fix-segfault-caused-by-buffer-over-read.patch
+	  0010-btmon-fix-segfault-caused-by-buffer-overflow.patch
+	  0011-btmon-fix-segfault-caused-by-integer-underflow.patch
+	  0012-btmon-fix-segfault-caused-by-buffer-over-read.patch
+      (bsc#1015173)(CVE-2016-9918)(bsc#1013893)(CVE-2016-9802)
+    - The shared-gatt-server-Fix-not-properly-checking-for-sec.patch
+      be merged to bluez-5.57 in 2021.
+      (bsc#1186463 CVE-2021-0129 CVE-2020-26558)
+    - The gatt-Fix-potential-buffer-out-of-bound.patch be merged to
+      bluez-5.56 in 2021. (bsc#1187165 CVE-2021-3588)
+    - The shared-gatt-db-Introduce-gatt_db_attribute_set_fixed.patch
+      be merged to bluez-5.56 in 2021. (bsc#1187165 CVE-2021-3588)
+    - The gatt-Make-use-of-gatt_db_attribute_set_fixed_length.patch
+      be merged to bluez-5.56 in 2021. (bsc#1187165 CVE-2021-3588)
+    - Add JIRA-SLE-18497 number to 5.60, 5.61 and 5.62 update log
+      to sync with bluez.changes in SLE15-SP5.
+    - Install modprobe.conf files to %_modprobedir
+      This change already in bluez.sepc in openSUSE:Factory/bluez.
+      Sync the change log here. (bsc#1196275, jsc#SLE-20639)  
+
+-------------------------------------------------------------------
 Tue Oct  4 03:20:40 UTC 2022 - Joey Lee <jlee@suse.com>
 
 - For pushing bluez 5.65 to 15-SP5 (bluez-5.62), sync the spec file and
@@ -81,6 +117,7 @@ Wed Sep 14 07:56:19 UTC 2022 - Joey Lee <jlee@suse.com>
   log: (jsc#PED-1407)
     - hcidump-fixed-hci-frame-dump-stack-buffer-overflow.patch patch
       be merged to 5.51 mainline. So 5.65 bluez already includes it.
+      (PATCH-FIX-UPSTREAM)(bsc#1013721)(CVE-2016-9800)
     - Add the following patches from the bluez-5.62 of 15-SP5:
         - disable_some_obex_tests.patch
             - disable tests for bypass boo#1078285
@@ -107,7 +144,7 @@ Wed Sep 14 07:56:19 UTC 2022 - Joey Lee <jlee@suse.com>
           bluez-disable-broken-tests.diff in openSUSE TW.
         - 0002-rpi3-Move-the-43xx-firmware-into-lib-firmware.patch in 15-SP5
           matchs with RPi-Move-the-43xx-firmware-into-lib-firmware.patch in
-          openSUSE TW.
+          openSUSE TW. (bsc#995059)(bsc#1094902)
 
 -------------------------------------------------------------------
 Wed Aug 17 20:26:50 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -199,7 +236,7 @@ Tue Nov 23 09:52:32 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 -------------------------------------------------------------------
 Sun Oct 17 07:39:24 UTC 2021 - Stefan Seyfried <seife+obs@b1-systems.com>
 
-- update to version 5.62:
+- update to version 5.62 (JIRA-SLE-18497):
   * Fix issue with handling truncation when loading LTKs.
   * Fix issue with accepting Exchange MTU on EATT bearer.
   * Fix issue with clearing DeviceLost timers on power down.
@@ -212,7 +249,7 @@ Sun Oct 17 07:39:24 UTC 2021 - Stefan Seyfried <seife+obs@b1-systems.com>
 -------------------------------------------------------------------
 Tue Aug 24 06:57:14 UTC 2021 - Stefan Seyfried <seife+obs@b1-systems.com>
 
-- update to version 5.61:
+- update to version 5.61 (JIRA-SLE-18497):
   * Fix issue with A2DP while waiting for command response.
   * Fix issue with A2DP when SetConfiguration fails.
   * Fix issue with device removal handling.
@@ -243,7 +280,7 @@ Mon Jul 12 12:35:06 UTC 2021 - Stefan Seyfried <seife+obs@b1-systems.com>
 -------------------------------------------------------------------
 Thu Jul  8 07:39:55 UTC 2021 - Stefan Seyfried <seife+obs@b1-systems.com>
 
-- update to 5.60:
+- update to 5.60 (JIRA-SLE-18497):
   * Fix issue with reading from RFKILL device node.
   * Fix issue with AVDTP and parsing capabilities.
   * Fix issue with UnregisterApplication handling.
@@ -476,7 +513,7 @@ Fri Sep 20 19:32:43 UTC 2019 - Stefan Seyfried <seife+obs@b1-systems.com>
 - removed obsoleted patches:
   * 0001-obexd-use-AM_LDFLAGS-for-linking.patch
   * 0001-policy-Add-logic-to-connect-a-Sink.patch
-  * 0001-tools-Fix-build-after-y2038-changes-in-glibc.patch
+  * 0001-tools-Fix-build-after-y2038-changes-in-glibc.patch (bsc#1156544)
   * bluez-5.50-a2dp-backports.patch
   * bluez-5.50-gcc9.patch
   * disable_some_obex_tests.patch
@@ -500,7 +537,7 @@ Thu Jul 11 04:29:46 UTC 2019 - Al Cho <acho@suse.com>
 Wed Jul 10 06:02:54 UTC 2019 - Jiri Slaby <jslaby@suse.com>
 
 - Add 0001-tools-Fix-build-after-y2038-changes-in-glibc.patch: Fix
-  build after y2038 changes in glibc
+  build after y2038 changes in glibc (bsc#1156544)
 
 -------------------------------------------------------------------
 Tue Jun 25 13:19:30 UTC 2019 - Frederic Crozat <fcrozat@suse.com>
@@ -592,7 +629,7 @@ Mon Mar 12 17:44:33 UTC 2018 - seife+obs@b1-systems.com
 -------------------------------------------------------------------
 Sun Feb 11 21:12:36 UTC 2018 - seife+obs@b1-systems.com
 
-- add 0001-core-Fixes-order-InterfaceAdded.patch (boo#1076898)
+- add 0001-core-Fixes-order-InterfaceAdded.patch (boo#1076898)(boo#1101119)
 - fix python shebang rpmlint warning for bluez-test
 
 -------------------------------------------------------------------

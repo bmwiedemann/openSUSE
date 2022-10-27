@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct 26 07:18:39 UTC 2022 - Joey Lee <jlee@suse.com>
+
+- This bluez.changes.sle be copied from SLE15-SP5/bluez.changes and
+  stop maintenance because we sync the change between openSUSE:Factory/bluez
+  with SLE15-SP5/bluez.
+  In the future we will keep the bluez sync between openSUSE:Factory
+  with SLE.  (jsc#PED-1407)
+
+-------------------------------------------------------------------
 Wed Sep  7 09:45:24 UTC 2022 - Joey Lee <jlee@suse.com>
 
 - Add shared-gatt-server-Fix-heap-overflow-when-appending-.patch
