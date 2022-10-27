@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 27 07:26:17 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update to 22.10.27:
+  * B027: Ignore @overload decorator (#306)
+  * B023: Also fix map (#305)
+  * B023: Avoid false alarms with filter, reduce, key= and return. Added tests for functools (#303)
+
+-------------------------------------------------------------------
 Wed Oct 26 07:13:13 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Update to 22.10.25:
