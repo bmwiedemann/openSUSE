@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         oldpython python
 %bcond_with test
 Name:           python-Cython
 Version:        0.29.32
@@ -36,10 +34,6 @@ Requires:       python-devel
 Requires:       python-xml
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
-%ifpython2
-Provides:       %{oldpython}-cython = %{version}
-Obsoletes:      %{oldpython}-cython < %{version}
-%endif
 %python_subpackages
 
 %description
@@ -62,15 +56,9 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %python_build
 
 %install
-%{python_expand %$python_install
-# Prepare for update-alternatives usage
-mkdir -p %{buildroot}%{_sysconfdir}/alternatives
+%python_install
 for p in cython cythonize cygdb ; do
-    mv %{buildroot}%{_bindir}/$p %{buildroot}%{_bindir}/$p-%{$python_bin_suffix}
-done
-}
-for p in cython cythonize cygdb ; do
-    %prepare_alternative $p
+    %python_clone -a %{buildroot}%{_bindir}/$p
 done
 
 %{python_expand chmod a+x %{buildroot}%{$python_sitearch}/Cython/Build/Cythonize.py

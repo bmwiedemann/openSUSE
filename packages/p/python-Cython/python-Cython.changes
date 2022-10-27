@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 26 01:33:21 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove leftover Python 2 gubbins.
+- Stop using handrolled macros for install and update-alternatives,
+  switch to the provided ones.
+- Update package names in rpmlintrc.
+
+-------------------------------------------------------------------
 Tue Aug  2 11:51:50 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Update to 0.29.32:

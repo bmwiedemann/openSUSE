@@ -746,4 +746,15 @@
     <comment></comment>
     <requestid>992334</requestid>
   </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>7b20e82e63770660f7cdfd585e0d6cea</srcmd5>
+    <version>0.29.32</version>
+    <time>1666871536</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove leftover Python 2 gubbins.
+- Stop using handrolled macros for install and update-alternatives,
+  switch to the provided ones.
+- Update package names in rpmlintrc.</comment>
+    <requestid>1031225</requestid>
+  </revision>
 </revisionlist>
