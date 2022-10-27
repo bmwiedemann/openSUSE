@@ -749,4 +749,40 @@ Using build service only atm, any additional work might take a while again... (f
     <comment></comment>
     <requestid>970778</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>a65a876aa57ed929f5230f8957ef3168</srcmd5>
+    <version>0.21.1</version>
+    <time>1666871524</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to Version 0.21.1
+  
+  * Runtime behaviour:
+    - On AIX, locale names with a script or with an uppercase language are now
+      supported.
+      For example, sr_Cyrl_RS.UTF-8 is treated like sr_RS.UTF-8@cyrillic, and
+      EN_US.UTF-8 is treated like en_US.UTF-8.
+  
+  * The base Unicode standard is now updated to 14.0.0.
+  
+  * Portability:
+    - Building on macOS 11/arm64 is now supported.
+    - Building on Linux/powerpc64le with glibc ≥ 2.35 is now supported.
+
+- update keyring for the last version update 
+
+- Update to Version 0.21.1
+  
+  * Runtime behaviour:
+    - On AIX, locale names with a script or with an uppercase language are now
+      supported.
+      For example, sr_Cyrl_RS.UTF-8 is treated like sr_RS.UTF-8@cyrillic, and
+      EN_US.UTF-8 is treated like en_US.UTF-8.
+  
+  * The base Unicode standard is now updated to 14.0.0.
+  
+  * Portability:
+    - Building on macOS 11/arm64 is now supported.
+    - Building on Linux/powerpc64le with glibc ≥ 2.35 is now supported.</comment>
+    <requestid>1030692</requestid>
+  </revision>
 </revisionlist>

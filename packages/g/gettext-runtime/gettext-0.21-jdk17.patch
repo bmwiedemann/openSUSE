@@ -1,28 +1,34 @@
---- gettext-0.21/gettext-runtime/configure.ac	2022-04-08 16:40:35.014012388 +0200
-+++ gettext-0.21/gettext-runtime/configure.ac	2022-04-08 16:42:34.054638232 +0200
-@@ -34,7 +34,7 @@
+Index: gettext-0.21.1/gettext-runtime/configure.ac
+===================================================================
+--- gettext-0.21.1.orig/gettext-runtime/configure.ac
++++ gettext-0.21.1/gettext-runtime/configure.ac
+@@ -34,7 +34,7 @@ AC_PROG_INSTALL
  
  gt_JAVA_CHOICE
- 
--gt_JAVACOMP([1.5], [1.6])
-+gt_JAVACOMP([1.8], [1.8])
- AC_CHECK_PROG([JAR], [jar], [jar])
- if test -n "$HAVE_JAVACOMP" && test -n "$JAR" && test "$JAVA_CHOICE" != no; then
-   BUILDJAVA=yes
---- gettext-0.21/gettext-tools/configure.ac	2022-04-08 16:40:35.138012934 +0200
-+++ gettext-0.21/gettext-tools/configure.ac	2022-04-08 16:59:13.080602790 +0200
-@@ -35,7 +35,7 @@
+ AS_IF([test "$JAVA_CHOICE" != no], [
+-  gt_JAVACOMP([1.5], [1.6])
++  gt_JAVACOMP([1.8], [1.8])
+   AC_CHECK_PROG([JAR], [jar], [jar])
+   if test -n "$HAVE_JAVACOMP" && test -n "$JAR"; then
+     BUILDJAVA=yes
+Index: gettext-0.21.1/gettext-tools/configure.ac
+===================================================================
+--- gettext-0.21.1.orig/gettext-tools/configure.ac
++++ gettext-0.21.1/gettext-tools/configure.ac
+@@ -35,7 +35,7 @@ AC_PROG_INSTALL
  gt_JAVA_CHOICE
- 
- gt_JAVAEXEC
--gt_JAVACOMP([1.5])
-+gt_JAVACOMP([1.8], [1.8])
- AC_CHECK_PROG([JAR], [jar], [jar])
- if test -n "$HAVE_JAVACOMP" && test -n "$JAR" && test "$JAVA_CHOICE" != no; then
-   BUILDJAVA=yes
---- gettext-0.21/gettext-tools/gnulib-lib/javacomp.c	2022-04-08 16:40:35.238013375 +0200
-+++ gettext-0.21/gettext-tools/gnulib-lib/javacomp.c	2022-04-08 16:41:56.686411176 +0200
-@@ -116,9 +116,8 @@
+ AS_IF([test "$JAVA_CHOICE" != no], [
+   gt_JAVAEXEC
+-  gt_JAVACOMP([1.5])
++  gt_JAVACOMP([1.8], [1.8])
+   AC_CHECK_PROG([JAR], [jar], [jar])
+   if test -n "$HAVE_JAVACOMP" && test -n "$JAR" && test "$JAVA_CHOICE" != no; then
+     BUILDJAVA=yes
+Index: gettext-0.21.1/gettext-tools/gnulib-lib/javacomp.c
+===================================================================
+--- gettext-0.21.1.orig/gettext-tools/gnulib-lib/javacomp.c
++++ gettext-0.21.1/gettext-tools/gnulib-lib/javacomp.c
+@@ -116,9 +116,8 @@ default_target_version (void)
                 && (java_version_cache[1] >= '2'
                     && java_version_cache[1] <= '7')
                 && java_version_cache[2] == '\0')
@@ -34,7 +40,7 @@
        else
          java_version_cache = "1.1";
      }
-@@ -128,7 +127,7 @@
+@@ -128,7 +127,7 @@ default_target_version (void)
  /* ======================= Source version dependent ======================= */
  
  /* Convert a source version to an index.  */
@@ -43,7 +49,7 @@
  static unsigned int
  source_version_index (const char *source_version)
  {
-@@ -144,7 +143,7 @@
+@@ -144,7 +143,7 @@ source_version_index (const char *source
    else if (source_version[0] == '9' && source_version[1] == '\0')
      return 5;
    else if (source_version[0] == '1'
@@ -52,7 +58,7 @@
             && source_version[2] == '\0')
      return source_version[1] - '0' + 6;
    error (EXIT_FAILURE, 0, _("invalid source_version argument to compile_java_class"));
-@@ -171,6 +170,10 @@
+@@ -171,6 +170,10 @@ get_goodcode_snippet (const char *source
      return "class conftest { public void m() { var i = new Integer(0); } }\n";
    if (strcmp (source_version, "11") == 0)
      return "class conftest { Readable r = (var b) -> 0; }\n";
@@ -63,7 +69,7 @@
    error (EXIT_FAILURE, 0, _("invalid source_version argument to compile_java_class"));
    return NULL;
  }
-@@ -197,6 +200,10 @@
+@@ -197,6 +200,10 @@ get_failcode_snippet (const char *source
      return "class conftestfail { Readable r = (var b) -> 0; }\n";
    if (strcmp (source_version, "11") == 0)
      return NULL;
@@ -74,7 +80,7 @@
    error (EXIT_FAILURE, 0, _("invalid source_version argument to compile_java_class"));
    return NULL;
  }
-@@ -204,7 +211,7 @@
+@@ -204,7 +211,7 @@ get_failcode_snippet (const char *source
  /* ======================= Target version dependent ======================= */
  
  /* Convert a target version to an index.  */
@@ -83,7 +89,7 @@
  static unsigned int
  target_version_index (const char *target_version)
  {
-@@ -215,7 +222,7 @@
+@@ -215,7 +222,7 @@ target_version_index (const char *target
    else if (target_version[0] == '9' && target_version[1] == '\0')
      return 8;
    else if (target_version[0] == '1'
@@ -92,7 +98,7 @@
             && target_version[2] == '\0')
      return target_version[1] - '0' + 9;
    error (EXIT_FAILURE, 0, _("invalid target_version argument to compile_java_class"));
-@@ -245,10 +252,10 @@
+@@ -245,10 +252,10 @@ corresponding_classfile_version (const c
      return 52;
    if (strcmp (target_version, "9") == 0)
      return 53;
@@ -107,7 +113,7 @@
    error (EXIT_FAILURE, 0, _("invalid target_version argument to compile_java_class"));
    return 0;
  }
-@@ -2433,7 +2440,7 @@
+@@ -2439,7 +2446,7 @@ compile_java_class (const char * const *
          }
      }
  
@@ -116,9 +122,11 @@
    err = true;
  
   done2:
---- gettext-0.21/gettext-tools/src/write-java.c	2022-04-08 16:40:35.218013286 +0200
-+++ gettext-0.21/gettext-tools/src/write-java.c	2022-04-08 16:41:56.690411201 +0200
-@@ -1208,8 +1208,14 @@
+Index: gettext-0.21.1/gettext-tools/src/write-java.c
+===================================================================
+--- gettext-0.21.1.orig/gettext-tools/src/write-java.c
++++ gettext-0.21.1/gettext-tools/src/write-java.c
+@@ -1209,8 +1209,14 @@ msgdomain_write_java (message_list_ty *m
       Java compilers create the class files in the source file's directory -
       which is in a temporary directory in our case.  */
    java_sources[0] = java_file_name;

@@ -20,7 +20,7 @@
 %bcond_without mini
 
 Name:           gettext-runtime-mini
-Version:        0.21
+Version:        0.21.1
 Release:        0
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
@@ -58,7 +58,7 @@ Source2:        suse-start-po-mode.el
 Source3:        gettext-linkdupes.sh
 Source4:        baselibs.conf
 Source5:        gettext-rpmlintrc
-Source6:        %name.keyring
+Source6:        gettext-runtime.keyring
 Patch0:         gettext-0.12.1-sigfpe.patch
 Patch1:         gettext-0.19.3-fix-bashisms.patch
 Patch2:         gettext-0.12.1-gettextize.patch
