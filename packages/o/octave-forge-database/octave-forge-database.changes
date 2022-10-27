@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 26 14:54:22 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update 0001-Use-pkg-config-instead-of-pg_config.patch: simplify
+  by using pkg-config --atleast-version instead of trying to awk
+  over the --modversion output. Happens to fix build with pgsql
+  15rc2.
+
+-------------------------------------------------------------------
 Mon Nov 25 22:49:13 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 2.4.4

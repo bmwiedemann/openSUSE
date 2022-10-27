@@ -9,10 +9,10 @@ Subject: [PATCH] Use pkg-config instead of pg_config
  src/configure.ac |  6 +-----
  3 files changed, 7 insertions(+), 50 deletions(-)
 
-diff --git a/src/Makefile.in b/src/Makefile.in
-index fd9882a..9efb1a5 100644
---- a/src/Makefile.in
-+++ b/src/Makefile.in
+Index: database-2.4.4/src/Makefile.in
+===================================================================
+--- database-2.4.4.orig/src/Makefile.in
++++ database-2.4.4/src/Makefile.in
 @@ -39,7 +39,7 @@ endif
  ifndef OCT_LINK_OPTS
  OCT_LINK_OPTS := $(shell $(MKOCTFILE) -p OCT_LINK_OPTS)
@@ -45,7 +45,7 @@ index fd9882a..9efb1a5 100644
  
  doc: $(INFOFILE)
  
-@@ -136,7 +136,7 @@ RDEFUNX_DLD := DEFUNX_DLD_REPLACEMENT_FOR_PACKAGE_DOCS
+@@ -136,7 +136,7 @@ RDEFUNX_DLD := DEFUNX_DLD_REPLACEMENT_FO
  %.bin: %.cc
  	if grep -q $(RDEFUN_DLD) $<; then echo "The string '$(RDEFUN_DLD)' must not be present in source code, but is in $<."; exit 1; fi
  	if grep -q $(RDEFUNX_DLD) $<; then echo "The string '$(RDEFUNX_DLD)' must not be present in source code, but is in $<."; exit 1; fi
@@ -54,10 +54,10 @@ index fd9882a..9efb1a5 100644
  
  clean:
  	$(RM) *.o octave-core *.oct *.cc.docstrings MFDOCSTRINGS *~
-diff --git a/src/configure b/src/configure
-index 4a57240..50bafe9 100755
---- a/src/configure
-+++ b/src/configure
+Index: database-2.4.4/src/configure
+===================================================================
+--- database-2.4.4.orig/src/configure
++++ database-2.4.4/src/configure
 @@ -2216,46 +2216,7 @@ fi
  if test -z "$OCTAVE_CONFIG"; then
  as_fn_error 1 "octave-config not found" "$LINENO" 5;
@@ -86,7 +86,7 @@ index 4a57240..50bafe9 100755
 -done
 -  done
 -IFS=$as_save_IFS
- 
+-
 -fi
 -fi
 -PG_CONFIG=$ac_cv_prog_PG_CONFIG
@@ -97,7 +97,7 @@ index 4a57240..50bafe9 100755
 -  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
 -$as_echo "no" >&6; }
 -fi
--
+ 
 -
 -if test -z "$PG_CONFIG"; then
 -as_fn_error 1 "pg_config not found" "$LINENO" 5;
@@ -105,20 +105,29 @@ index 4a57240..50bafe9 100755
  for ac_prog in gawk mawk nawk awk
  do
    # Extract the first word of "$ac_prog", so it can be a program name with args.
-@@ -3649,7 +3610,7 @@ fi
+@@ -3649,13 +3610,13 @@ fi
  # Check for PostgreSQL version.
  { $as_echo "$as_me:${as_lineno-$LINENO}: checking whether PostgreSQL version >= 8.3" >&5
  $as_echo_n "checking whether PostgreSQL version >= 8.3... " >&6; }
 -if `$PG_CONFIG --version | awk 'NR==1 { print $(NF); };' | awk -F '.' ' { if ( $1 > 8 || $1 == 8 && $2 >= 3 ) exit 1; else exit 0}'`; then
-+if `pkg-config libpq --modversion | awk 'NR==1 { print $(NF); };' | awk -F '.' ' { if ( $1 > 8 || $1 == 8 && $2 >= 3 ) exit 1; else exit 0}'`; then
++if `pkg-config --atleast-version 8.3 libpq`; then
++  { $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
++$as_echo "yes" >&6; }
++else
    { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
  $as_echo "no" >&6; }
    as_fn_error 1 "package \"database\" does not work with PostgreSQL version < 8.3" "$LINENO" 5;
-diff --git a/src/configure.ac b/src/configure.ac
-index 143b4ac..65c5bda 100644
---- a/src/configure.ac
-+++ b/src/configure.ac
-@@ -37,10 +37,6 @@ AC_CHECK_PROG(OCTAVE_CONFIG, octave-config, octave-config)
+-else
+-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
+-$as_echo "yes" >&6; }
+ fi
+ 
+ # Start of checks for Octave features, preparations for checks.
+Index: database-2.4.4/src/configure.ac
+===================================================================
+--- database-2.4.4.orig/src/configure.ac
++++ database-2.4.4/src/configure.ac
+@@ -37,10 +37,6 @@ AC_CHECK_PROG(OCTAVE_CONFIG, octave-conf
  if test -z "$OCTAVE_CONFIG"; then
  AC_MSG_ERROR([octave-config not found], 1);
  fi
@@ -129,15 +138,18 @@ index 143b4ac..65c5bda 100644
  AC_PROG_AWK
  if test -z "$ac_cv_prog_AWK"; then
  AC_MSG_ERROR([AWK not found], 1);
-@@ -66,7 +62,7 @@ AC_FUNC_ERROR_AT_LINE
+@@ -66,11 +62,11 @@ AC_FUNC_ERROR_AT_LINE
  
  # Check for PostgreSQL version.
  AC_MSG_CHECKING([whether PostgreSQL version >= 8.3])
 -if `$PG_CONFIG --version | awk 'NR==1 { print $(NF); };' | awk -F '.' ' { if ( $1 > 8 || $1 == 8 && $2 >= 3 ) exit 1; else exit 0}'`; then
-+if `pkg-config libpq --modversion | awk 'NR==1 { print $(NF); };' | awk -F '.' ' { if ( $1 > 8 || $1 == 8 && $2 >= 3 ) exit 1; else exit 0}'`; then
++if `pkg-config --atleast-version 8.3 libpq`; then
++  AC_MSG_RESULT(yes)
++else
    AC_MSG_RESULT(no)
    AC_MSG_ERROR([package "database" does not work with PostgreSQL version < 8.3], 1);
- else
--- 
-2.21.0
-
+-else
+-  AC_MSG_RESULT(yes)
+ fi
+ 
+ # Start of checks for Octave features, preparations for checks.
