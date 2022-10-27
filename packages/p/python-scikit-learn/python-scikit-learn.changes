@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 11 13:10:22 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update dependencies
+- Add sklearn-pr24283-gradient-segfault.patch
+  * gh#scikit-learn/scikit-learn#24283
+- Update test suite setup.
+
+-------------------------------------------------------------------
 Sat Sep 10 13:32:25 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 1.1.2:
