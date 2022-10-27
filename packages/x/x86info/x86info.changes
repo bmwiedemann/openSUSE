@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 26 08:26:44 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch use-python3.patch:
+  * Use python3 to create header files. 
+
+-------------------------------------------------------------------
 Tue Jan 21 10:01:46 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
 
 - Upgraded to new version 1.31+git.20200121

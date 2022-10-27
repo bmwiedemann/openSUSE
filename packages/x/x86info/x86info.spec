@@ -1,7 +1,7 @@
 #
 # spec file for package x86info
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,9 @@ License:        GPL-2.0-only
 Group:          System/Monitoring
 URL:            http://www.codemonkey.org.uk/projects/x86info/
 Source:         %{name}-%{version}.tar.xz
+Patch0:         use-python3.patch
 BuildRequires:  pkgconfig
-BuildRequires:  python2
+BuildRequires:  python3
 BuildRequires:  pkgconfig(libpci)
 ExclusiveArch:  %{ix86} x86_64
 
@@ -36,7 +37,7 @@ the contents of model-specific registers, discover CPU silicon
 revisions, and more.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 make CFLAGS="%{optflags} -Iinclude -DVERSION=%{version}" %{?_smp_mflags} V=1
