@@ -20,7 +20,8 @@
 %define align_version_orig	37-43
 %define align_version		37.43
 %define a_version		2.18
-%define bufexplorer_version	7.4.24
+%define bufexplorer_version	7.4.25
+%define bufexplorer_version_orig v.%{bufexplorer_version}
 %define calendar_version	2.5
 %define colorsel_version	20110107
 %define colorschemes_version	1.0
@@ -33,7 +34,7 @@
 %define gnupg_version		2.7.1
 %define latex_version		1.10.0+20220519
 %define locateopen_version	1.3
-%define markdown_version	2.0.0+20220507
+%define markdown_version	2.0.0+20220926
 %define matrix_version		1.10
 %define minibufexpl_version	6.3.2
 %define multiplesearch_version	1.3
@@ -66,7 +67,7 @@ Group:          Productivity/Text/Editors
 URL:            http://www.vim.org/
 Source0:        https://github.com/vim-scripts/Align/archive/refs/tags/%{align_version_orig}.tar.gz#/vimplugin-align-%{align_version}.tar.gz
 Source1:        https://github.com/vim-scripts/a.vim/archive/refs/tags/%{a_version}.tar.gz#/vimplugin-a-%{a_version}.tar.gz
-Source2:        https://github.com/jlanzarotta/bufexplorer/archive/refs/tags/v%{bufexplorer_version}.tar.gz#/bufexplorer-%{bufexplorer_version}.tar.gz
+Source2:        https://github.com/jlanzarotta/bufexplorer/archive/refs/tags/%{bufexplorer_version_orig}.tar.gz#/bufexplorer-%{bufexplorer_version}.tar.gz
 Source3:        https://github.com/vim-scripts/calendar.vim--Matsumoto/archive/refs/tags/%{calendar_version}.tar.gz#/calendar.vim--Matsumoto-%{calendar_version}.tar.gz
 Source4:        https://github.com/vim-scripts/colorsel.vim/archive/refs/tags/%{colorsel_version}.tar.gz#/vimplugin-colorsel-%{colorsel_version}.tar.gz
 Source5:        vimplugin-colorschemes-%{colorschemes_version}.tar.bz2
@@ -806,7 +807,7 @@ fi \
 
 %files -n vim-plugin-bufexplorer
 %defattr(-,root,root,0755)
-%license bufexplorer-%{bufexplorer_version}/LICENSE
+%license bufexplorer-%{bufexplorer_version_orig}/LICENSE
 %vimplugin_dir/doc/bufexplorer.txt
 %vimplugin_dir/plugin/bufexplorer.vim
 

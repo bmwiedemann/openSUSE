@@ -385,4 +385,12 @@
 - fixes boo#1203460 (forwarded request 1003883 from mimi_vx)</comment>
     <requestid>1003987</requestid>
   </revision>
+  <revision rev="44" vrev="51">
+    <srcmd5>0757bd8f3e3426504cd04ee95406bf43</srcmd5>
+    <version>unknown</version>
+    <time>1666871671</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1031458</requestid>
+  </revision>
 </revisionlist>
