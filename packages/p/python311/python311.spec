@@ -103,7 +103,7 @@ Obsoletes:      python39%{?1:-%{1}}
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 %bcond_without profileopt
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.11.0rc2
+Version:        3.11.0
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -166,6 +166,9 @@ Patch35:        fix_configure_rst.patch
 # PATCH-FIX-UPSTREAM support-expat-CVE-2022-25236-patched.patch jsc#SLE-21253 mcepl@suse.com
 # Makes Python resilient to changes of API of libexpat
 Patch36:        support-expat-CVE-2022-25236-patched.patch
+# PATCH-FIX-UPSTREAM 98437-sphinx.locale._-as-gettext-in-pyspecific.patch gh#python/cpython#98366 mcepl@suse.com
+# this patch makes things totally awesome
+Patch37:        98437-sphinx.locale._-as-gettext-in-pyspecific.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -432,6 +435,7 @@ other applications.
 %endif
 %patch35 -p1
 %patch36 -p1
+%patch37 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac

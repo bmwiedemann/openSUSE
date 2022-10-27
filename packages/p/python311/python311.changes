@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Tue Oct 25 08:39:47 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.11.0 (overall changes from 3.10.*):
+  - General changes
+    - PEP 657 -- Include Fine-Grained Error Locations in
+      Tracebacks
+    - PEP 654 -- Exception Groups and except*
+    - PEP 680 -- tomllib: Support for Parsing TOML in the
+      Standard Library
+    - gh-90908 -- Introduce task groups to asyncio
+    - gh-34627 -- Atomic grouping ((?>...)) and possessive
+      quantifiers (*+, ++, ?+, {m,n}+) are now supported in
+      regular expressions.
+    - The Faster CPython Project is already yielding some
+      exciting results. Python 3.11 is up to 10-60% faster than
+      Python 3.10. On average, we measured a 1.22x speedup on the
+      standard benchmark suite. See Faster CPython for details.
+  - Typing and typing language changes
+    - PEP 673 -- Self Type
+    - PEP 646 -- Variadic Generics
+    - PEP 675 -- Arbitrary Literal String Type
+    - PEP 655 -- Marking individual TypedDict items as required
+      or potentially-missing
+    - PEP 681 -- Data Class Transforms
+- (just changes from 3.11.0rc2):
+  - Fix multiplying a list by an integer (list *= int): detect
+    the integer overflow when the new allocated length is close
+    to the maximum size. Issue reported by Jordan Limor. Patch by
+    Victor Stinner.
+  - On Linux the multiprocessing module returns to using
+    filesystem backed unix domain sockets for communication
+    with the forkserver process instead of the Linux abstract
+    socket namespace. Only code that chooses to use the
+    “forkserver” start method is affected. Abstract sockets have
+    no permissions and could allow any user on the system in the
+    same network namespace (often the whole system) to inject
+    code into the multiprocessing forkserver process. This was
+    a potential privilege escalation. Filesystem based socket
+    permissions restrict this to the forkserver process user as
+    was the default in Python 3.8 and earlier. This prevents
+    Linux CVE-2022-42919.
+  - Fix an issue where several frame objects could be backed by
+    the same interpreter frame, possibly leading to corrupted
+    memory and hard crashes of the interpreter.
+  - Fix possible data corruption or crashes when accessing the
+    f_back member of newly-created generator or coroutine frames.
+  - Fix a crash occurring when PyEval_GetFrame() is called while
+    the topmost Python frame is in a partially-initialized state.
+  - Fix command line parsing: reject -X int_max_str_digits option
+    with no value (invalid) when the PYTHONINTMAXSTRDIGITS
+    environment variable is set to a valid limit. Patch by Victor
+    Stinner.
+  - Fix undefined behaviour in _testcapimodule.c.
+  - When ValueError is raised if an integer is larger than the
+    limit, mention the sys.set_int_max_str_digits() function in
+    the error message. Patch by Victor Stinner.
+  - Correctly raise SyntaxError on exception groups (PEP 654) on
+    python versions prior to 3.11
+  - Document some places where an assignment expression needs
+    parentheses.
+  - Update the bundled copies of pip and setuptools to versions
+    22.3 and 65.5.0 respectively.
+  - fix Flag to use boundary CONFORM
+  - This restores previous Flag behavior of allowing flags with
+    non-sequential values to be combined; e.g.
+  - class Skip(Flag): TWO = 2 EIGHT = 8
+  - Skip.TWO | Skip.EIGHT -> <Skip.TWO|EIGHT: 10>
+  - Fix ! in c domain ref target syntax via a conf.py patch, so
+    it works as intended to disable ref target resolution.
+  - Update tutorial introduction output to use 3.10+ SyntaxError
+    invalid range.
+
+-------------------------------------------------------------------
+Fri Oct 21 10:14:03 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add 98437-sphinx.locale._-as-gettext-in-pyspecific.patch to
+  allow building of documentation with the latest Sphinx 5.3.0
+  (gh#python/cpython#98366).
+
+-------------------------------------------------------------------
 Thu Sep 15 08:43:07 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.11.0rc2:
