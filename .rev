@@ -965,4 +965,24 @@ This should fix the current openQA failure: https://openqa.opensuse.org/tests/12
     <comment></comment>
     <requestid>1001287</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>ca17255e3778f6783b6ed44c65a94c3e</srcmd5>
+    <version>4.1.0</version>
+    <time>1666871581</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 4.1.0
+  - t-u: Add a &quot;setup-kdump&quot; command; implements [jsc#PED-1441]
+  - Export TRANSACTIONAL_UPDATE_ROOT (the path to the snapshot) in the update environment; implements [jsc#PED-1078]
+  - Add support for &quot;notify&quot; reboot method for desktop use [gh#openSUSE/transactional-update#93]
+  - Fix kdump initrd recreation detection; the check was performed in the active snapshot instead of the target snapshot
+  - Document register command [bsc#1202900]
+  - Avoid unnecessary snapshots for register command [bsc#1202901]
+  - Various optimizations for register command
+  - Remove bogus error message when triggering reboot
+  - Rework /etc overlay documentation in &quot;The Transactional Update Guide&quot;
+  - Fix incorrect manpage formatting
+  - Remove leftover &quot;salt&quot; reboot method in configuration example file
+  - Replace deprecated std::mem_fn with lambdas</comment>
+    <requestid>1031369</requestid>
+  </revision>
 </revisionlist>
