@@ -1,8 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 25 21:09:07 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- run tests
+- add Avoid-double-free-on-deinit_thermal.patch (bsc#1204607)
+
+-------------------------------------------------------------------
 Tue Oct 18 21:15:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add uninitialized.patch (bsc#1204371)
-- build with thermald support on x86_64 (jsc#PED-754)
+- build with thermald support on x86_64 (jsc#PED-1039)
 
 -------------------------------------------------------------------
 Thu Oct 13 09:03:59 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -17,9 +23,6 @@ Thu Oct 13 09:03:59 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * irqbalance-ui: able to scroll and show coulist and irqs' name 
 - drop proc-interrupts.patch (upstream)
 D proc-interrupts.patch
-- Includes the patches for feature:
-  jsc#PED-754
-  Enable IRQ Balancer to support SoC die during low power state
 
 -------------------------------------------------------------------
 Wed Aug 17 21:39:04 UTC 2022 - dmueller@suse.com

@@ -556,4 +556,15 @@ D proc-interrupts.patch
     <comment></comment>
     <requestid>1029930</requestid>
   </revision>
+  <revision rev="67" vrev="3">
+    <srcmd5>b5a26250d23a80f1afe966b31d56569e</srcmd5>
+    <version>1.9.1</version>
+    <time>1666871534</time>
+    <user>dimstar_suse</user>
+    <comment>- run tests
+- add Avoid-double-free-on-deinit_thermal.patch (bsc#1204607)
+
+- build with thermald support on x86_64 (jsc#PED-1039)</comment>
+    <requestid>1031212</requestid>
+  </revision>
 </revisionlist>

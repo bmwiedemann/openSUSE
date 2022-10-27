@@ -31,6 +31,8 @@ Source:         https://github.com/Irqbalance/irqbalance/archive/refs/tags/v%{ve
 Source3:        sysconfig.irqbalance
 Patch1:         Set-fd-limit.patch
 Patch2:         uninitialized.patch
+# https://github.com/Irqbalance/irqbalance/pull/243
+Patch3:         Avoid-double-free-on-deinit_thermal.patch
 BuildRequires:  libcap-ng-devel
 BuildRequires:  libtool
 BuildRequires:  ncurses-devel
@@ -83,6 +85,9 @@ sed -ie "s|EnvironmentFile=.*|EnvironmentFile=%{_sysconfdir}/sysconfig/irqbalanc
 sed -ie "s|After=syslog.target||g" misc/irqbalance.service
 install -D -m 0644 misc/irqbalance.service %{buildroot}%{_unitdir}/irqbalance.service
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcirqbalance
+
+%check
+%make_build check
 
 %pre
 %service_add_pre irqbalance.service
