@@ -25,7 +25,7 @@
   %define _config_norepl %config(noreplace)
 %endif
 Name:           rust-keylime
-Version:        0.1.0+git.1664480840.0ea0492
+Version:        0.1.0+git.1666019359.f5de47b
 Release:        0
 Summary:        Rust implementation of the keylime agent
 License:        Apache-2.0 AND MIT
@@ -38,7 +38,7 @@ Source4:        keylime-user.conf
 Source5:        tmpfiles.keylime
 # PATCH-FIX-OPENSUSE keylime-agent.conf.diff
 Patch1:         keylime-agent.conf.diff
-BuildRequires:  cargo
+BuildRequires:  cargo-packaging
 BuildRequires:  clang
 BuildRequires:  firewall-macros
 BuildRequires:  libarchive-devel
@@ -51,6 +51,10 @@ Requires:       logrotate
 Requires:       tpm2.0-abrmd
 Provides:       user(keylime)
 %sysusers_requires
+# Disable this line if you wish to support all platforms.  In most
+# situations, you will likely only target tier1 arches for user facing
+# components.
+# ExclusiveArch:  %_{rust_tier1_arches}
 
 %description
 Rust implementation of keylime agent. Keylime is system integrity
@@ -62,11 +66,11 @@ mkdir .cargo
 cp %{SOURCE2} .cargo/config
 
 %build
-RUSTFLAGS=%{rustflags} cargo build --release --no-default-features --features "with-zmq"
+%{cargo_build} --no-default-features --features "with-zmq"
 %sysusers_generate_pre %{SOURCE4} keylime keylime-user.conf
 
 %install
-RUSTFLAGS=%{rustflags} cargo install --frozen --no-default-features --features "with-zmq" --root=%{buildroot}%{_prefix} --path .
+%{cargo_install} --no-default-features --features "with-zmq"
 
 install -Dpm 0600 keylime-agent.conf %{buildroot}%{_distconfdir}/keylime/agent.conf
 install -Dpm 0644 ./dist/systemd/system/keylime_agent.service %{buildroot}%{_unitdir}/keylime_agent.service
@@ -81,8 +85,8 @@ install -d %{buildroot}%{_libexecdir}/keylime
 # Create work directory
 mkdir -p %{buildroot}%{_sharedstatedir}/keylime
 
-rm %{buildroot}%{_prefix}/.crates.toml
-rm %{buildroot}%{_prefix}/.crates2.json
+# %_check
+# %_{cargo_test}
 
 %pre -f keylime.pre
 %service_add_pre keylime_agent.service

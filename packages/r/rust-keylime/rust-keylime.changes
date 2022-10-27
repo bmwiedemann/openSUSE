@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 25 08:16:33 UTC 2022 - aplanas@suse.com
+
+- Add cargo-audit service per policy
+- Update to version 0.1.0+git.1666019359.f5de47b:
+  * README: mark Rust agent as the official one, fix cargo run command
+
+-------------------------------------------------------------------
 Wed Oct 12 07:51:22 UTC 2022 - aplanas@suse.com
 
 - Drop bindgen.patch as is already upstream
