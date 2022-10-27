@@ -16,8 +16,9 @@
 #
 
 
-%define _sover  1
 Name:           spdlog
+%define lname	libspdlog1_10
+%define sover	1.10
 Version:        1.10.0
 Release:        0
 Summary:        C++ logging library
@@ -25,6 +26,8 @@ License:        MIT
 URL:            https://github.com/gabime/spdlog
 Source0:        https://github.com/gabime/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM fix for bug boo#1199306
+Patch0:         https://github.com/gabime/%{name}/commit/e36b69a0ecbdfb51cc28087b11256fb88c360ba4.patch
 BuildRequires:  cmake >= 3.10
 %if 0%{?suse_version} > 1500
 BuildRequires:  gcc-c++ >= 8
@@ -33,17 +36,21 @@ BuildRequires:  gcc8-c++
 %endif
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(catch2) >= 2.13.4
+BuildRequires:  (pkgconfig(catch2) >= 2.13.4 with pkgconfig(catch2) < 3)
 BuildRequires:  pkgconfig(fmt) >= 8.0.0
 BuildRequires:  pkgconfig(libsystemd)
 
 %description
-This is a packaged version of the gabime/spdlog header-only C++
-logging library available at Github.
+A header-only/compiled, C++ logging library.
+
+* Asynchronous mode (optional)
+* Multi/Single threaded loggers.
+* Various log targets (rotating/daily files, console, with colors,
+  syslog, custom target)
 
 %package devel
-Summary:        Development files for %{name}
-Requires:       lib%{name}%{_sover} = %{version}
+Summary:        Header files for spdlog
+Requires:       %{lname} = %{version}
 Requires:       libstdc++-devel
 Requires:       pkgconfig(fmt)
 
@@ -51,16 +58,20 @@ Requires:       pkgconfig(fmt)
 The %{name}-devel package contains C++ header files for developing
 applications that use %{name}.
 
-%package     -n lib%{name}%{_sover}
+%package     -n %{lname}
 Summary:        C++ logging library
 
-%description -n lib%{name}%{_sover}
-This is a packaged version of the gabime/spdlog C++ logging library
-available at Github.
+%description -n %{lname}
+A header-only/compiled, C++ logging library.
+
+* Asynchronous mode (optional)
+* Multi/Single threaded loggers.
+* Various log targets (rotating/daily files, console, with colors,
+  syslog, custom target)
 
 %prep
 %autosetup -p1
-find . -name '.gitignore' -exec rm {} \;
+find . -name .gitignore -delete
 sed -i -e "s,\r,," README.md LICENSE
 
 %build
@@ -80,22 +91,22 @@ test -x "$(type -p g++-8)" && export CXX=g++-8
 %ninja_install -C build
 
 %check
-export LD_LIBRARY_PATH="%{_builddir}/%{name}-%{version}/build"
+export LD_LIBRARY_PATH="$PWD/build"
 %ctest
 
-%post -n lib%{name}%{_sover} -p /sbin/ldconfig
+%post -n %{lname} -p /sbin/ldconfig
 
-%postun -n lib%{name}%{_sover} -p /sbin/ldconfig
+%postun -n %{lname} -p /sbin/ldconfig
 
 %files devel
 %license LICENSE
 %doc README.md
-%{_includedir}/%{name}
-%{_libdir}/lib%{name}.so
-%{_libdir}/cmake/%{name}
-%{_libdir}/pkgconfig/%{name}.pc
+%{_includedir}/spdlog/
+%{_libdir}/libspdlog.so
+%{_libdir}/cmake/spdlog/
+%{_libdir}/pkgconfig/spdlog.pc
 
-%files -n lib%{name}%{_sover}
-%{_libdir}/lib%{name}.so.%{_sover}*
+%files -n %{lname}
+%{_libdir}/libspdlog.so.*
 
 %changelog

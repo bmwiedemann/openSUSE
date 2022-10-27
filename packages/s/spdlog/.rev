@@ -321,4 +321,18 @@
     <comment>Updated to version 1.10.0.</comment>
     <requestid>974295</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>aca5e94d1bad766355bf2842f3c5a150</srcmd5>
+    <version>1.10.0</version>
+    <time>1666871600</time>
+    <user>dimstar_suse</user>
+    <comment>- Adjust baselibs.conf for #1199306 patch.
+- Update descriptions.
+- Add e36b69a0ecbdfb51cc28087b11256fb88c360ba4.patch 
+  [boo#1199306]; changes SONAME to be more distinct
+- Limit build choices on catch2-dependency to catch2 2.13.4 and
+  lower than (new) 3 
+</comment>
+    <requestid>1030968</requestid>
+  </revision>
 </revisionlist>

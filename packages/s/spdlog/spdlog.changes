@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Oct 24 22:04:21 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Adjust baselibs.conf for #1199306 patch.
+- Update descriptions.
+
+-------------------------------------------------------------------
+Thu Oct 20 20:00:13 UTC 2022 - Bernd Ritter <comrad@posteo.de>
+
+- Add e36b69a0ecbdfb51cc28087b11256fb88c360ba4.patch 
+  [boo#1199306]; changes SONAME to be more distinct
+
+-------------------------------------------------------------------
+Wed Oct 19 21:16:08 UTC 2022 - Bernd Ritter <comrad@posteo.de>
+
+- Limit build choices on catch2-dependency to catch2 2.13.4 and
+  lower than (new) 3 
+
+-------------------------------------------------------------------
 Mon Apr 18 19:47:37 UTC 2022 - Bernd Ritter <comrad@posteo.de>
 
 - Update to version 1.10.0

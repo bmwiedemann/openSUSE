@@ -1,0 +1,24 @@
+From 41efc971addb0596de50337863f01491a9fba2a5 Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Fri, 13 May 2022 09:44:09 +0200
+Subject: [PATCH] build: expand SOVERSION to not give false illusion of
+ compatibility
+
+Fixes #2369
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 21577e508..dc6b0ded1 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -169,7 +169,7 @@ target_include_directories(spdlog PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST
+ target_link_libraries(spdlog PUBLIC Threads::Threads)
+ spdlog_enable_warnings(spdlog)
+ 
+-set_target_properties(spdlog PROPERTIES VERSION ${SPDLOG_VERSION} SOVERSION ${SPDLOG_VERSION_MAJOR})
++set_target_properties(spdlog PROPERTIES VERSION ${SPDLOG_VERSION} SOVERSION ${SPDLOG_VERSION_MAJOR}.${SPDLOG_VERSION_MINOR})
+ set_target_properties(spdlog PROPERTIES DEBUG_POSTFIX d)
+ 
+ if(COMMAND target_precompile_headers AND SPDLOG_ENABLE_PCH)
