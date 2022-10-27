@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Oct 18 18:20:45 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 0.1.4
+  * Update README for gitlab migration
+  * Add README.md to EXTRA_DIST
+  * Use AC_CONFIG_FILES to replace the deprecated AC_OUTPUT with parameters
+  * Update m4 to xorg/util/xcb-util-m4@c617eee22ae5c285e79e81
+  * gitlab CI: add a basic build test
+  * configure: Drop AM_MAINTAINER_MODE
+  * autogen.sh: Honor NOCONFIGURE=1
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * autogen.sh: use exec instead of waiting for configure to finish
+  * documentation: Call xcb_free_cursor() when done
+  * Fix out-of-source builds
+
+-------------------------------------------------------------------
 Wed Nov  1 15:15:19 UTC 2017 - mpluskal@suse.com
 
 - Clean up with spec-cleaner

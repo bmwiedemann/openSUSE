@@ -1,7 +1,7 @@
 #
 # spec file for package xcb-util-cursor
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define lname   libxcb-cursor0
 Name:           xcb-util-cursor
-Version:        0.1.3
+Version:        0.1.4
 Release:        0
 Summary:        XCB cursor library (libxcursor port)
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            http://xcb.freedesktop.org/
+URL:            http://xcb.freedesktop.org/
 #Git-Clone:	git://anongit.freedesktop.org/xcb/util-cursor
 #Git-Web:	http://cgit.freedesktop.org/xcb/util-cursor/
-Source:         http://xcb.freedesktop.org/dist/%{name}-%{version}.tar.bz2
+Source:         http://xcb.freedesktop.org/dist/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
 BuildRequires:  autoconf
 BuildRequires:  automake
