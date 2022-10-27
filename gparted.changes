@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 27 09:13:52 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Require/BuildRequire /usr/bin/pkexec instead of pkexec: allow to
+  work with it being split from polkit, or integrated.
+
+-------------------------------------------------------------------
 Tue Sep  6 13:51:55 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend reiserfs: the openSUSE kernel has disabled
