@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 24 17:07:32 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Add fix-exec-stack.patch to disable executable stacks for i586
+
+-------------------------------------------------------------------
 Thu Aug 26 18:06:51 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
 
 - generate startup code dynamically to cope with libexec relocation

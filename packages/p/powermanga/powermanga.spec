@@ -1,7 +1,7 @@
 #
 # spec file for package powermanga
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ License:        GPL-3.0-or-later
 Group:          Amusements/Games/Action/Arcade
 URL:            http://linux.tlk.fr/games/Powermanga/
 Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tgz
+Patch0:         fix-exec-stack.patch
 %if 0%{?suse_version}
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -44,7 +45,7 @@ and destroy more than 60 different types of opponents.
 Nice musics, many weapons, and a ton of surprises.
 
 %prep
-%setup -q
+%autosetup -p1
 
 # Default to English
 sed -i 's|fr|en|' texts/config.ini
