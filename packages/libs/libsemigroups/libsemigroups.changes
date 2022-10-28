@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 28 11:43:26 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.3.2
+  * Fix inaccurate exception information for ``replace_subword``
+  * string-view: fix bug in append method This bug sometimes
+    caused the ``normal_form`` member function of the
+    ``Kambites`` class template to return incorrect results, or
+    sometimes to cause a crash.
+
+-------------------------------------------------------------------
 Tue Oct 11 06:47:03 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.3.1
