@@ -25,7 +25,7 @@
 %define category SLE
 
 Name:           sca-patterns-sle12
-Version:        1.5.1
+Version:        1.5.3
 Release:        0
 Summary:        Supportconfig Analysis Patterns for SLE12
 License:        GPL-2.0-only
@@ -64,7 +64,7 @@ install -m %{mode} patterns/%{category}/sle12sp2/* %{buildroot}/%{patdir}/%{cate
 install -m %{mode} patterns/%{category}/sle12sp3/* %{buildroot}/%{patdir}/%{category}/sle12sp3
 install -m %{mode} patterns/%{category}/sle12sp4/* %{buildroot}/%{patdir}/%{category}/sle12sp4
 install -m %{mode} patterns/%{category}/sle12sp5/* %{buildroot}/%{patdir}/%{category}/sle12sp5
-%fdupes %{buildroot}%{patdir}
+%fdupes %{buildroot}
 
 %files
 %defattr(-,%{patuser},%{patgrp})

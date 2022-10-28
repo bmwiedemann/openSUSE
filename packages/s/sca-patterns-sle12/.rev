@@ -223,4 +223,12 @@
     <comment></comment>
     <requestid>1006537</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>fb71bc1beebd5e00700861e065b3494f</srcmd5>
+    <version>1.5.3</version>
+    <time>1666978229</time>
+    <user>dimstar_suse</user>
+    <comment>Many new security patterns and fixed invalid solution urls (forwarded request 1031619 from jrecord)</comment>
+    <requestid>1031620</requestid>
+  </revision>
 </revisionlist>
