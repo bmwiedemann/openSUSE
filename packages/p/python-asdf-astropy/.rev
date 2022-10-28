@@ -42,4 +42,21 @@ This is just to get rid of the build failure in d:l:p. It is not suitable for an
     <comment></comment>
     <requestid>980930</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7261a61d4f97a56f845e9f4eef214eec</srcmd5>
+    <version>0.2.2</version>
+    <time>1666978215</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2.2
+  * Add converter for the new Schechter1D model.
+  * Add CITATION file.
+  * Add migration and quick-start documentation guides, and update
+    minimum Python version.
+  * Update FrameConverter to enable the use of multiple tags.
+  * Bugfixes for astropy.time converters.
+  * Remove unnecessary tag: from schemas.
+  * Add converters for ModelBoundingBox and CompoundBoundingBox.
+- Drop asdf-astropy-pr84-fixtests.patch</comment>
+    <requestid>1031583</requestid>
+  </revision>
 </revisionlist>

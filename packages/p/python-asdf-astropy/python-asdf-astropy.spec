@@ -25,17 +25,14 @@
 %bcond_with test
 %endif
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 Name:           python-asdf-astropy%{psuffix}
-Version:        0.2.1
+Version:        0.2.2
 Release:        0
 Summary:        ASDF serialization support for astropy
 License:        BSD-3-Clause
 URL:            https://github.com/astropy/asdf-astropy
 Source:         https://files.pythonhosted.org/packages/source/a/asdf-astropy/asdf_astropy-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM asdf-astropy-pr84-fixtests.patch -- gh#astropy/asdf-astropy#84
-Patch1:         https://github.com/astropy/asdf-astropy/pull/84.patch#/asdf-astropy-pr84-fixtests.patch
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module packaging >= 16.0}
 BuildRequires:  %{python_module setuptools >= 42}
 BuildRequires:  %{python_module setuptools_scm}

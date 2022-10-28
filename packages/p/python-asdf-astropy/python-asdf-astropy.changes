@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct 27 16:23:35 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.2.2
+  * Add converter for the new Schechter1D model.
+  * Add CITATION file.
+  * Add migration and quick-start documentation guides, and update
+    minimum Python version.
+  * Update FrameConverter to enable the use of multiple tags.
+  * Bugfixes for astropy.time converters.
+  * Remove unnecessary tag: from schemas.
+  * Add converters for ModelBoundingBox and CompoundBoundingBox.
+- Drop asdf-astropy-pr84-fixtests.patch
+
+-------------------------------------------------------------------
 Sun Jun  5 19:41:15 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Add asdf-astropy-pr84-fixtests.patch - gh#astropy/asdf-astropy#84
