@@ -142,4 +142,14 @@
     <comment></comment>
     <requestid>992421</requestid>
   </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>32e64ea323581639bcfca9145d2dae5a</srcmd5>
+    <version>5.8.22</version>
+    <time>1666978271</time>
+    <user>dimstar_suse</user>
+    <comment>- Require /usr/bin/pkexec instead of pkexec (the package name):
+  allow the package to install on systems where pkexec has been
+  split out or not. (forwarded request 1031500 from dimstar)</comment>
+    <requestid>1031671</requestid>
+  </revision>
 </revisionlist>
