@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 27 18:59:58 UTC 2022 - jason.record@suse.com
+
+- Changes to version 1.5.2
+  + Removed invalid patterns (bsc#1204798)
+  + Updated or removed invalid solution links in patterns
+  + Updated links with old domains to use suse.com
+
+-------------------------------------------------------------------
 Tue Mar  8 17:16:56 UTC 2022 - Jason Record <jason.record@suse.com>
 
 - More updates to version 1.5.1

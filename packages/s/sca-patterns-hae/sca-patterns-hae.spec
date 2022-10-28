@@ -25,7 +25,7 @@
 %define category HAE
 
 Name:           sca-patterns-hae
-Version:        1.5.1
+Version:        1.5.2
 Release:        0
 Summary:        Supportconfig Analysis Patterns for HAE
 License:        GPL-2.0-only
