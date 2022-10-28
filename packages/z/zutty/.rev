@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>76fa4222d35143896445d8c5d665b749</srcmd5>
+    <version>0.13</version>
+    <time>1666978192</time>
+    <user>dimstar_suse</user>
+    <comment>New package see https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/RW47B5UGCTWVEUMQASZAPGA7ULTVM4MI. Disabled stripping the binaries.</comment>
+    <requestid>1031534</requestid>
+  </revision>
+</revisionlist>
