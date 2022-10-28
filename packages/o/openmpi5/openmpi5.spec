@@ -1,7 +1,7 @@
 #
-# spec file for package %{package_name}%{?testsuite:-testsuite}
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2004-2005 The Trustees of Indiana University and Indiana
 #                         University Research and Technology
 #                         Corporation.  All rights reserved.
@@ -142,13 +142,13 @@ BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  hwloc-devel
 BuildRequires:  libevent-devel
+BuildRequires:  libfabric-devel
 BuildRequires:  libibumad-devel
 BuildRequires:  libibverbs-devel
-BuildRequires:  libfabric-devel
 BuildRequires:  libtool
 # net-tools is required to run hostname
 BuildRequires:  net-tools
-BuildRequires:  python
+BuildRequires:  python3
 %if 0%{?testsuite}
 BuildArch:      noarch
 BuildRequires:  %{package_name} = %{version}
@@ -510,7 +510,6 @@ done
 # GCC 5 builds the ignore-tkr extension and there is no way to
 # turn that off
 rm -f %{buildroot}%{mpi_libdir}/mpi_ext.mod
-
 
 %fdupes %{buildroot}%{mpi_mandir}
 %fdupes %{buildroot}%{mpi_datadir}

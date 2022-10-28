@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 28 05:23:12 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Move from python 2 to python 3.
+
+-------------------------------------------------------------------
 Mon Oct  3 10:48:54 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Drop baselibs.conf as there is no good reason to run a 32b MPI on a 64b system
