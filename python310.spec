@@ -67,7 +67,7 @@ Obsoletes:      python39%{?1:-%{1}}
 %define tarversion %{version}
 %endif
 # We don't process beta signs well
-%define         folderversion 3.10.7
+%define         folderversion %{tarversion}
 %define         tarname    Python-%{tarversion}
 %define         sitedir         %{_libdir}/python%{python_version}
 # three possible ABI kinds: m - pymalloc, d - debug build; see PEP 3149
@@ -103,7 +103,7 @@ Obsoletes:      python39%{?1:-%{1}}
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 %bcond_without profileopt
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.10.7
+Version:        3.10.8
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -169,8 +169,9 @@ Patch36:        support-expat-CVE-2022-25236-patched.patch
 # PATCH-FIX-UPSTREAM CVE-2015-20107-mailcap-unsafe-filenames.patch bsc#1198511 mcepl@suse.com
 # avoid the command injection in the mailcap module.
 Patch37:        CVE-2015-20107-mailcap-unsafe-filenames.patch
-# PATCH-FIX-UPSTREAM gh-96710: Make the test timing more lenient for the int/str DoS regression test. (#96717)
-Patch38:        test-int-timing.patch
+# PATCH-FIX-UPSTREAM 98437-sphinx.locale._-as-gettext-in-pyspecific.patch gh#python/cpython#98366 mcepl@suse.com
+# this patch makes things totally awesome
+Patch38:        98437-sphinx.locale._-as-gettext-in-pyspecific.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
