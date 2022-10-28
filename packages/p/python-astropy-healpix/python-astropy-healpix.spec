@@ -16,26 +16,27 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 Name:           python-astropy-healpix
-Version:        0.6
+Version:        0.7
 Release:        0
 Summary:        HEALPix for Astropy
 License:        BSD-3-Clause
 URL:            https://github.com/astropy/astropy-healpix
 Source:         https://files.pythonhosted.org/packages/source/a/astropy_healpix/astropy_healpix-%{version}.tar.gz
+BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module extension-helpers}
-BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-astropy
+Requires:       python-astropy >= 3
 Requires:       python-numpy
-Provides:       python-astropy-healpix = %{version}-%{release}
+Provides:       python-astropy_healpix = %{version}-%{release}
 # SECTION test requirements
-BuildRequires:  %{python_module astropy}
+BuildRequires:  %{python_module astropy >= 3}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pytest-astropy}
 # /SECTION
@@ -50,10 +51,10 @@ and based on C code written by Dustin Lang in astrometry.net.
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
