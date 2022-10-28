@@ -26,26 +26,30 @@
 %bcond_without lto
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
 %bcond_without gtk4
+%bcond_without qt
 %else
 %bcond_with gtk4
+%bcond_with qt
 %endif
 %ifarch aarch64
 %bcond_with swiftshader
 %else
 %bcond_without swiftshader
 %endif
-%if 0%{?suse_version} >= 1550
+%if 0%{?suse_version} >= 1599
 %bcond_without system_harfbuzz
 %bcond_without system_freetype
 %bcond_without arm_bti
 %bcond_without system_icu
 %bcond_without ffmpeg_51
+%bcond_without system_avif
 %else
 %bcond_with system_harfbuzz
 %bcond_with system_freetype
 %bcond_with arm_bti
 %bcond_with system_icu
 %bcond_with ffmpeg_51
+%bcond_with system_avif
 %endif
 %bcond_without pipewire
 %bcond_without system_ffmpeg
@@ -63,11 +67,15 @@
 %if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150400
 %define llvm_version 12
 %else
+%if 0%{?suse_version} < 1599 && 0%{?sle_version} < 150500
 %define llvm_version 13
+%else
+%define llvm_version 14
+%endif
 %endif
 
 Name:           chromium
-Version:        106.0.5249.119
+Version:        107.0.5304.87
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -101,7 +109,7 @@ Patch9:         system-libdrm.patch
 Patch10:        chromium-disable-parallel-gold.patch
 Patch11:        chromium-lp151-old-drm.patch
 # gentoo/fedora/arch patchset
-Patch15:        chromium-105-compiler.patch
+Patch15:        chromium-107-compiler.patch
 Patch17:        chromium-86-ImageMemoryBarrierData-init.patch
 Patch21:        chromium-gcc11.patch
 Patch40:        chromium-91-java-only-allowed-in-android-builds.patch
@@ -116,13 +124,12 @@ Patch87:        chromium-98-gtk4-build.patch
 Patch90:        chromium-100-InMilliseconds-constexpr.patch
 Patch98:        chromium-102-regex_pattern-array.patch
 Patch103:       chromium-103-VirtualCursor-std-layout.patch
-Patch107:       chromium-105-Bitmap-include.patch
 Patch111:       chromium-105-wayland-1.20.patch
 Patch201:       chromium-86-fix-vaapi-on-intel.patch
 # PATCH-FIX-SUSE: allow prop codecs to be set with chromium branding
 Patch202:       chromium-prop-codecs.patch
 Patch203:       chromium-106-ffmpeg-duration.patch
-Patch204:       chromium-106-AutofillPopupControllerImpl-namespace.patch
+Patch204:       chromium-107-system-zlib.patch
 BuildRequires:  SDL-devel
 BuildRequires:  bison
 BuildRequires:  cups-devel
@@ -279,6 +286,14 @@ BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(libavformat) >= %{ffmpeg_version}
 BuildRequires:  pkgconfig(libavutil)
+%endif
+%if %{with system_avif}
+BuildRequires:  pkgconfig(libavif)
+BuildRequires:  pkgconfig(libyuv)
+%endif
+%if %{with qt}
+BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5Widgets)
 %endif
 %if %{with clang}
 %if 0%{?suse_version} < 1550
@@ -476,7 +491,6 @@ keeplibs=(
     third_party/libaom/source/libaom/third_party/fastfeat
     third_party/libaom/source/libaom/third_party/vector
     third_party/libaom/source/libaom/third_party/x86inc
-    third_party/libavif
     third_party/libgav1
     third_party/libgifcodec
     third_party/libjingle
@@ -492,7 +506,6 @@ keeplibs=(
     third_party/libx11/src
     third_party/libxcb-keysyms/keysyms
     third_party/libxml/chromium
-    third_party/libyuv
     third_party/libzip
     third_party/lottie
     third_party/lss
@@ -508,7 +521,7 @@ keeplibs=(
     third_party/nasm
     third_party/nearby
     third_party/node
-    third_party/node/node_modules/polymer-bundler/lib/third_party/UglifyJS2
+    third_party/omnibox_proto
     third_party/one_euro_filter
     third_party/openscreen
     third_party/openscreen/src/third_party/mozilla
@@ -543,9 +556,7 @@ keeplibs=(
     third_party/shell-encryption
     third_party/simplejson
     third_party/skia
-    third_party/skia/include/third_party/skcms/
     third_party/skia/include/third_party/vulkan/
-    third_party/skia/third_party/skcms
     third_party/skia/third_party/vulkan
     third_party/smhasher
     third_party/sqlite
@@ -615,6 +626,10 @@ keeplibs+=(
     third_party/libvpx
     third_party/libvpx/source/libvpx/third_party/x86inc
 )
+%endif
+%if !%{with system_avif}
+keeplibs+=( third_party/libyuv )
+keeplibs+=( third_party/libavif )
 %endif
 # needed due to bugs in GN
 keeplibs+=(
@@ -731,6 +746,10 @@ gn_system_libraries+=( libvpx )
 %if %{with system_ffmpeg}
 gn_system_libraries+=( ffmpeg )
 %endif
+%if %{with system_avif}
+gn_system_libraries+=( libyuv )
+gn_system_libraries+=( libavif )
+%endif
 build/linux/unbundle/replace_gn_files.py --system-libraries ${gn_system_libraries[@]}
 
 # Create the configuration for GN
@@ -783,6 +802,9 @@ myconf_gn+=" v8_use_external_startup_data=true"
 %if %{with gtk4}
 myconf_gn+=" gtk_version=4"
 %endif
+%if %{without qt}
+myconf_gn+=" use_qt=false"
+%endif
 # See dependency logic in third_party/BUILD.gn
 %if %{with system_harfbuzz}
 myconf_gn+=" use_system_harfbuzz=true"
@@ -791,6 +813,7 @@ myconf_gn+=" use_system_harfbuzz=true"
 myconf_gn+=" use_system_freetype=true"
 %endif
 myconf_gn+=" use_system_libwayland=true"
+myconf_gn+=" use_system_libwayland_server=true"
 myconf_gn+=" use_system_wayland_scanner=true"
 myconf_gn+=" enable_hangout_services_extension=true"
 myconf_gn+=" enable_vulkan=true"

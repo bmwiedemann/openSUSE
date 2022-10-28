@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Oct 28 08:35:09 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 107.0.5304.87 (boo#1204819)
+  * CVE-2022-3723: Type Confusion in V8
+
+-------------------------------------------------------------------
+Thu Oct 27 08:57:48 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- Chromium 107.0.5304.68 (boo#1204732)
+  * CVE-2022-3652: Type Confusion in V8
+  * CVE-2022-3653: Heap buffer overflow in Vulkan
+  * CVE-2022-3654: Use after free in Layout
+  * CVE-2022-3655: Heap buffer overflow in Media Galleries
+  * CVE-2022-3656: Insufficient data validation in File System
+  * CVE-2022-3657: Use after free in Extensions
+  * CVE-2022-3658: Use after free in Feedback service on Chrome OS
+  * CVE-2022-3659: Use after free in Accessibility
+  * CVE-2022-3660: Inappropriate implementation in Full screen mode
+  * CVE-2022-3661: Insufficient data validation in Extensions
+- Added patches:
+  * chromium-107-compiler.patch
+  * chromium-107-system-zlib.patch
+- Removed patches:
+  * chromium-105-compiler.patch
+  * chromium-105-Bitmap-include.patch
+  * chromium-106-AutofillPopupControllerImpl-namespace.patch
+- Unbundle libyuv and libavif on TW
+- Prepare 15.5
+- Use qt on 15.4+ (15.3 too old)
+
+-------------------------------------------------------------------
 Wed Oct 12 04:47:50 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 106.0.5249.119 (boo#1204223)
