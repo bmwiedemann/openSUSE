@@ -24,15 +24,15 @@
 #
 
 Name:           rubygem-oauth2
-Version:        1.4.9
+Version:        2.0.9
 Release:        0
 %define mod_name oauth2
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 1.9.0}
+BuildRequires:  %{ruby >= 2.2.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
-URL:            https://github.com/oauth-xx/oauth2
+URL:            https://gitlab.com/oauth-xx/oauth2
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        A Ruby wrapper for the OAuth 2.0 protocol

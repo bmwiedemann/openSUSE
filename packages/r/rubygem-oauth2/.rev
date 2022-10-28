@@ -49,4 +49,27 @@
     <comment></comment>
     <requestid>956451</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>207ea6786f29e7c9d3c028a64bbd8c8a</srcmd5>
+    <version>2.0.9</version>
+    <time>1666978296</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 2.0.9
+ see installed CHANGELOG.md
+updated to version 2.0.7
+ see installed CHANGELOG.md
+  ## [2.0.7] - 2022-08-22
+  ### Added
+  - [#629](https://github.com/oauth-xx/oauth2/pull/629) - Allow POST of JSON to get token (@pboling, @terracatta)
+  
+  ### Fixed
+  - [#626](https://github.com/oauth-xx/oauth2/pull/626) - Fixes a regression in 2.0.6. Will now prefer the key order from the lookup, not the hash keys (@rickselby)
+    - Note: This fixes compatibility with `omniauth-oauth2` and AWS
+  - [#625](https://github.com/oauth-xx/oauth2/pull/625) - Fixes the printed version in the post install message (@hasghari)
+  
+updated to version 2.0.6
+ see installed CHANGELOG.md
+</comment>
+    <requestid>1010030</requestid>
+  </revision>
 </revisionlist>
