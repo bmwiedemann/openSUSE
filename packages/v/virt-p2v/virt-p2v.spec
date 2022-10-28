@@ -43,7 +43,7 @@ BuildRequires:  perl(Pod::Simple)
 ####BuildRequires: /usr/bin/pod2text
 BuildRequires:  libxml2-devel
 BuildRequires:  gtk3-devel
-BuildRequires:  pcre-devel
+BuildRequires:  pcre2-devel
 BuildRequires:  xz
 BuildRequires:  pkgconfig(bash-completion) >= 2.0
 #BuildRequires: dbus-devel
