@@ -5901,4 +5901,19 @@
     (bmo#1796126)</comment>
     <requestid>1030584</requestid>
   </revision>
+  <revision rev="379" vrev="1">
+    <srcmd5>e9da95c71a62d767741d53e4a929e1bd</srcmd5>
+    <version>106.0.2</version>
+    <time>1666978172</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Firefox 106.0.2
+  * Fix missing content on some PDF forms (bmo#1794351)
+  * Fix column width for the Notification sub-panel in Settings
+    (bmo#1793558)
+  * Fix a browser freeze with accessibility enabled on some sites
+    such as the Proxmox Web UI (bmo#1793748)
+  * Fix page reloading not working with Firefox View and not
+    refreshing synced data (bmo#1792680, bmo#1794474)</comment>
+    <requestid>1031637</requestid>
+  </revision>
 </revisionlist>
