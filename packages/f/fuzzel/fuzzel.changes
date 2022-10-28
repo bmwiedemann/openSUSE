@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 28 12:11:39 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 1.8.1:
+  - Fixed:
+    * Regression: not able to input text with modifiers (e.g. Shift) pressed (#177).
+
+-------------------------------------------------------------------
 Tue Oct 25 22:22:00 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 1.8.0:

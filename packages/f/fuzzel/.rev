@@ -84,4 +84,15 @@
 </comment>
     <requestid>1031217</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6c120e33e3025685bc6828b27847fc1a</srcmd5>
+    <version>1.8.1</version>
+    <time>1666978315</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8.1:
+  - Fixed:
+    * Regression: not able to input text with modifiers (e.g. Shift) pressed (#177).
+</comment>
+    <requestid>1031947</requestid>
+  </revision>
 </revisionlist>
