@@ -25,4 +25,12 @@
   See https://github.com/dino/dino/issues/1281</comment>
     <requestid>1009801</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>fd18721396264395a8de9caf4ddf0070</srcmd5>
+    <version>0.3.0</version>
+    <time>1666978305</time>
+    <user>dimstar_suse</user>
+    <comment>- boo#1204259: Add dino-0.3.0-libsoup.patch</comment>
+    <requestid>1031926</requestid>
+  </revision>
 </revisionlist>

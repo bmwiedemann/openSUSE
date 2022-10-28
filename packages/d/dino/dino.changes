@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 28 10:10:48 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- boo#1204259: Add dino-0.3.0-libsoup.patch
+
+-------------------------------------------------------------------
 Tue Oct 11 13:08:38 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Fix build by using ninja instead of make for building
