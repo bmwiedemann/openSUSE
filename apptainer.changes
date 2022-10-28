@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 28 08:54:51 UTC 2022 - Egbert Eich <eich@suse.com>
+
+- Add Provides: and Obsoletes: to attempt to mark this as a possible
+  replacement for the original singularity package which has been
+  discontinued.
+
+-------------------------------------------------------------------
 Tue Oct 11 08:19:01 UTC 2022 - Christian Goll <cgoll@suse.com>
 
 - previous versions did not build squashfuse_ll, fixed this
