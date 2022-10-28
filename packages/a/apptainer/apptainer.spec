@@ -29,6 +29,8 @@ Version:        1.1.2
 Release:        0
 # https://spdx.org/licenses/BSD-3-Clause-LBNL.html
 URL:            https://apptainer.org
+Provides:       singularity
+Obsoletes:      singularity <= 3.8.5
 Source0:        https://github.com/apptainer/apptainer/archive/v%{version}%{?vers_suffix}/apptainer-%{version}%{?vers_suffix}.tar.gz
 Source1:        README.SUSE
 Source2:        SLE-12SP5.def

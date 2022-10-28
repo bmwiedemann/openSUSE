@@ -112,4 +112,14 @@
     <comment>addef fuse2fs as recommends and build also squashfuse_ll (forwarded request 1009743 from mslacken)</comment>
     <requestid>1009744</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>6fe59e36e8667a8fd816a512e85b8106</srcmd5>
+    <version>1.1.2</version>
+    <time>1666978299</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Provides: and Obsoletes: to attempt to mark this as a possible
+  replacement for the original singularity package which has been
+  discontinued. (forwarded request 1031909 from eeich)</comment>
+    <requestid>1031911</requestid>
+  </revision>
 </revisionlist>
