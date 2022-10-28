@@ -20,7 +20,7 @@
 %define gdk_pixbuf_binary_version 2.10.0
 
 Name:           gdk-pixbuf
-Version:        2.42.9
+Version:        2.42.10
 Release:        0
 Summary:        An image loading library
 License:        LGPL-2.1-or-later
@@ -36,8 +36,6 @@ Source1:        macros.gdk-pixbuf
 Source2:        README.SUSE
 Source3:        gdk-pixbuf-rpmlintrc
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM 0001-jpeg-Increase-memory-limit-for-loading-image-data.patch mgorse@suse.com -- fix loading of larger images.
-Patch0:         0001-jpeg-Increase-memory-limit-for-loading-image-data.patch
 
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  docutils
