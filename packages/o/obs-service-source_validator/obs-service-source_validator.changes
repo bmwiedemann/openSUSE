@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 28 14:51:26 UTC 2022 - dmueller@suse.com
+
+- Update to version 0.28:
+  * also avoid expansion on grep
+  * add quotes around BASE to avoid shell expansion
+
+-------------------------------------------------------------------
 Tue Oct 25 07:59:18 UTC 2022 - dmueller@suse.com
 
 - Update to version 0.27:
