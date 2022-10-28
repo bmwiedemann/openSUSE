@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 27 09:11:09 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Require /usr/bin/pkexec instead of pkexec (the package name):
+  allow the package to install on systems where pkexec has been
+  split out or not.
+
+-------------------------------------------------------------------
 Mon Jul 18 09:49:45 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - require pkexec for pkexec binary
