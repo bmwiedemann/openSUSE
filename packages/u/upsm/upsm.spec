@@ -1,7 +1,7 @@
 #
 # spec file for package upsm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           upsm
-Version:        2.2.0
+Version:        3.0.0
 Release:        0
 Summary:        Qt-based ups monitor (front-end for upsc from Network UPS Tools)
 License:        SUSE-Public-Domain
