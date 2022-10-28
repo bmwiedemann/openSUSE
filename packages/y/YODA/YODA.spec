@@ -16,7 +16,7 @@
 #
 
 
-%define ver 1.9.6
+%define ver 1.9.7
 %define so_name lib%{name}-%(echo %{ver} | tr '.' '_')
 Name:           YODA
 Version:        %{ver}
@@ -27,6 +27,8 @@ Group:          Development/Libraries/C and C++
 URL:            https://yoda.hepforge.org/
 Source:         http://www.hepforge.org/archive/yoda/%{name}-%{version}.tar.bz2
 Patch0:         sover.diff
+# PATCH-FEATURE-OPENSUSE YODA-correct-python-platlib.patch badshah400@gmail.com -- Ensure correct python platlib ($prefix/lib64/) is used consistently across multiple python versions
+Patch1:         YODA-correct-python-platlib.patch
 BuildRequires:  bash-completion
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
@@ -131,7 +133,6 @@ mv %{buildroot}%{_sysconfdir}/bash_completion.d/* %{buildroot}%{_datadir}/bash-c
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
-export PYTHONPATH=%{buildroot}%{python3_sitearch}
 %make_build check
 
 %post   -n %{so_name} -p /sbin/ldconfig
@@ -151,7 +152,6 @@ export PYTHONPATH=%{buildroot}%{python3_sitearch}
 %files -n python3-%{name}
 %{python3_sitearch}/yoda/
 %{python3_sitearch}/yoda1/
-%{python3_sitearch}/yoda*.egg-info
 %{_datadir}/bash-completion/completions/*
 %{_bindir}/aida2flat
 %{_bindir}/aida2yoda
