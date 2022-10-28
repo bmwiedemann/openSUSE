@@ -1,7 +1,7 @@
 #
 # spec file for package texlive-cjk-latex-extras
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,10 @@ BuildRequires:  texlive
 %if 0%{?suse_version} < 1300
 BuildRequires:  texlive-bin
 %endif
-PreReq:         /bin/mkdir /bin/rm /usr/bin/touch /usr/bin/updmap
+PreReq:         /bin/mkdir
+PreReq:         /bin/rm
+PreReq:         /usr/bin/touch
+PreReq:         /usr/bin/updmap
 Requires:       freetype-tools
 Requires:       texlive-cjk
 Requires:       texlive-latex
@@ -63,8 +66,10 @@ Obsoletes:      cjk-latex-wadalab-mincho2
 Provides:       locale(texlive-cjk:ja;ko;zh)
 Version:        20070515
 Release:        0
-Url:            http://cjk.ffii.org/
+URL:            http://cjk.ffii.org/
 Source0:        texlive-cjk-latex-extras-%{version}.tar.bz2
+#PATCH-FIX-OPENSUSE texlive-cjk-latex-extras-bsc1159111-avoid-usage-safe-rm.patch bsc#1159111 qzhao@suse.com -- replace safe-rm to avoid security risks.
+Patch0:         texlive-cjk-latex-extras-bsc1159111-avoid-usage-safe-rm.patch
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        Extra fonts and scripts for CJK LaTeX
@@ -77,6 +82,7 @@ automatically generate fonts and setup files to use with CJK LaTeX.
 
 %prep
 %setup0
+%patch0 -p1
 mv README.SuSE README.SUSE
 find . -name CVS -type d | xargs rm -rf
 
@@ -92,7 +98,7 @@ install -p -m 755 cjk-latex-config     $RPM_BUILD_ROOT/usr/sbin/
 install -p -m 755 cjk-latex-t1mapgen   $RPM_BUILD_ROOT/usr/sbin/
 install -p -m 755 sfd2map              $RPM_BUILD_ROOT/usr/sbin/
 
-%post 
+%post
 [ -x usr/bin/texhash ] && usr/bin/texhash
 LC_ALL=POSIX /usr/sbin/cjk-latex-config
 /usr/bin/updmap -sys --enable Map=wadalab.map

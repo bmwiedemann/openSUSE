@@ -1,0 +1,9 @@
+diff -Nura texlive-cjk-latex-extras-20070515/cjk-latex-t1mapgen texlive-cjk-latex-extras-20070515_new/cjk-latex-t1mapgen
+--- texlive-cjk-latex-extras-20070515/cjk-latex-t1mapgen	2005-02-28 21:31:03.000000000 +0800
++++ texlive-cjk-latex-extras-20070515_new/cjk-latex-t1mapgen	2022-10-26 14:15:30.064864270 +0800
+@@ -45,4 +45,4 @@
+ # Therefore, deleting /var/cache/fonts/pk/* makes sure that all available pfb
+ # fonts are used:
+ 
+-find /var/cache/fonts/pk/ -type f -print0 | xargs -r -l100 -0 -- /usr/bin/safe-rm
++find /var/cache/fonts/pk/ -type f -print0 | xargs -r -l100 -0 -- /usr/bin/rm

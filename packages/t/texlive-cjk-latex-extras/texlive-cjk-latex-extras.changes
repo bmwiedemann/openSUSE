@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 19 06:41:44 UTC 2022 - Cliff Zhao <qzhao@suse.com>
+
+- Add texlive-cjk-latex-extras-bsc1159111-avoid-usage-safe-rm.patch
+  replace safe-rm to avoid security risks(bsc#1159111).
+
+-------------------------------------------------------------------
 Sat Oct 13 02:38:37 UTC 2018 - Marguerite Su <i@marguerite.su>
 
 - use `udpmap -sys` to fix %post scriptlet for Tumbleweed
