@@ -18,7 +18,7 @@
 
 
 %define srcversion 6.0
-%define patchversion 6.0.3
+%define patchversion 6.0.5
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules zstd
@@ -110,9 +110,9 @@ Name:           kernel-vanilla
 Summary:        The Standard Kernel - without any SUSE patches
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        6.0.3
+Version:        6.0.5
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gf00a35f
+Release:        <RELEASE>.g7359656
 %else
 Release:        0
 %endif
@@ -239,10 +239,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-f00a35f20f890e0c12cffca53f75a8fcedaf596d
-Provides:       kernel-srchash-f00a35f20f890e0c12cffca53f75a8fcedaf596d
+Provides:       kernel-%build_flavor-base-srchash-7359656e16c5fb0cf358bc75890037b4d7164011
+Provides:       kernel-srchash-7359656e16c5fb0cf358bc75890037b4d7164011
 # END COMMON DEPS
-Provides:       %name-srchash-f00a35f20f890e0c12cffca53f75a8fcedaf596d
+Provides:       %name-srchash-7359656e16c5fb0cf358bc75890037b4d7164011
 %obsolete_rebuilds %name
 Source0:        https://www.kernel.org/pub/linux/kernel/v6.x/linux-%srcversion.tar.xz
 Source3:        kernel-source.rpmlintrc
