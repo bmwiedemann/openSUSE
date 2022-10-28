@@ -1862,4 +1862,12 @@
     <comment></comment>
     <requestid>993366</requestid>
   </revision>
+  <revision rev="236" vrev="2">
+    <srcmd5>55b6bc3bf3d0f4e84d713646a626d44b</srcmd5>
+    <version>4.1.0</version>
+    <time>1666978169</time>
+    <user>dimstar_suse</user>
+    <comment>Sync changelog with SLE15-SP5. No code change.</comment>
+    <requestid>1031597</requestid>
+  </revision>
 </revisionlist>
