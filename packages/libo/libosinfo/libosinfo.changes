@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct  4 14:00:46 MDT 2022 - carnold@suse.com
+
+- jsc#PED-2113 [Virt Tools] Refresh Virtualization Tools for Xen
+  and KVM Management
+
+-------------------------------------------------------------------
 Wed Aug 31 19:33:40 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 3a0fef72.patch: build: Add option to select libsoup ABI.
@@ -6,6 +12,12 @@ Wed Aug 31 19:33:40 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
   BuildRequires.
 - Modernize spec, use ldconfig_scriptlets macro for post(un)
   handling, package COPYING with license macro.
+
+-------------------------------------------------------------------
+Wed Mar 30 14:10:01 MDT 2022 - carnold@suse.com
+
+- bsc#1197769 - FTBFS: libosinfo won't compile on SP4
+  libosinfo.spec
 
 -------------------------------------------------------------------
 Tue Mar  1 10:49:08 MST 2022 - carnold@suse.com
