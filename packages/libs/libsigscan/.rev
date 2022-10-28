@@ -98,4 +98,12 @@ Required by recent python-dfVFS release</comment>
     <comment>update</comment>
     <requestid>999961</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0158be3ea54ea84a79f6c7f7b3e0fcb9</srcmd5>
+    <version>20221027</version>
+    <time>1666978311</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20221027</comment>
+    <requestid>1031938</requestid>
+  </revision>
 </revisionlist>

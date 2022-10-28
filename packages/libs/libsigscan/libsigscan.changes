@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 28 11:48:35 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20221027
+  * Unspecific updates to Python bindings
+
+-------------------------------------------------------------------
 Mon Aug 29 09:30:38 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update build requirement on libcfile
