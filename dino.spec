@@ -32,9 +32,12 @@ License:        GPL-3.0-only
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://github.com/dino/dino
 Source:         https://github.com/dino/dino/releases/download/v%{version}/dino-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM: mvetter@suse.com - boo#1204259 https://github.com/dino/dino/issues/1285
+Patch0:         dino-0.3.0-libsoup.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 %if 0%{?suse_version}
+BuildRequires:  libgpgme-devel
 BuildRequires:  libgpgmepp-devel
 %else
 BuildRequires:  gpgme-devel
@@ -178,6 +181,7 @@ Contains the HTTP Upload plugin for %{name}.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 # workaround until we clarified if the gcc return type check is actually wrong there.
@@ -185,6 +189,7 @@ Contains the HTTP Upload plugin for %{name}.
 export CFLAGS="%{optflags} -Wno-return-type"
 %endif
 echo "PRERELEASE %{version}" > VERSION
+cmake -B build -DUSE_SOUP3=1
 %configure \
 %if ! %{with shared_libsignal}
   --with-libsignal-in-tree
@@ -193,9 +198,11 @@ echo "PRERELEASE %{version}" > VERSION
 # -DCMAKE_EXE_LINKER_FLAGS="-Wl,--as-needed"    \
 # -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed" \
 # -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed"
+cmake -B build -DUSE_SOUP3=1
 make %{?_smp_mflags} V=1
 
 %install
+cmake -B build -DUSE_SOUP3=1
 #cmake_install
 make install DESTDIR="%{buildroot}" V=1
 # desktop-file-validate %{buildroot}%{_datadir}/applications/dino.desktop

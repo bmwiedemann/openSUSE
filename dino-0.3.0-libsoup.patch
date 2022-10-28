@@ -1,0 +1,604 @@
+From 339d1d8f557e88ef6bb5812980b8988dc8fdf10d Mon Sep 17 00:00:00 2001
+From: Marvin W <git@larma.de>
+Date: Wed, 30 Mar 2022 10:36:07 -0600
+Subject: [PATCH] Fix Version handling, add function to retrieve short version
+ without git commit
+
+---
+ libdino/CMakeLists.txt       | 2 +-
+ libdino/src/application.vala | 6 ++++++
+ main/CMakeLists.txt          | 2 +-
+ main/src/ui/application.vala | 4 ++--
+ 4 files changed, 10 insertions(+), 4 deletions(-)
+
+diff --git a/libdino/CMakeLists.txt b/libdino/CMakeLists.txt
+index ce836f623..20f5ffee4 100644
+--- a/libdino/CMakeLists.txt
++++ b/libdino/CMakeLists.txt
+@@ -89,7 +89,7 @@ DEPENDS
+     ${CMAKE_BINARY_DIR}/exports/dino_i18n.h
+ )
+
+-add_definitions(${VALA_CFLAGS} -DDINO_SYSTEM_PLUGIN_DIR="${PLUGIN_INSTALL_DIR}" -DDINO_SYSTEM_LIBDIR_NAME="${LIBDIR_NAME}" -DG_LOG_DOMAIN="libdino")
++add_definitions(${VALA_CFLAGS} -DDINO_SYSTEM_PLUGIN_DIR="${PLUGIN_INSTALL_DIR}" -DDINO_SYSTEM_LIBDIR_NAME="${LIBDIR_NAME}" -DG_LOG_DOMAIN="libdino" -DDINO_VERSION=\"${PROJECT_VERSION}\")
+ add_library(libdino SHARED ${LIBDINO_VALA_C} ${CMAKE_BINARY_DIR}/exports/dino_i18n.h)
+ add_dependencies(libdino dino-vapi)
+ target_link_libraries(libdino xmpp-vala qlite ${LIBDINO_PACKAGES} m)
+diff --git a/libdino/src/application.vala b/libdino/src/application.vala
+index f381c21db..9b36dd795 100644
+--- a/libdino/src/application.vala
++++ b/libdino/src/application.vala
+@@ -1,7 +1,13 @@
+ using Dino.Entities;
+
+ namespace Dino {
++
+ extern const string VERSION;
++public string get_version() { return VERSION; }
++public string get_short_version() {
++    if (!VERSION.contains("~")) return VERSION;
++    return VERSION.split("~")[0] + "+";
++}
+
+ public interface Application : GLib.Application {
+
+diff --git a/main/CMakeLists.txt b/main/CMakeLists.txt
+index e052785a2..2326253cd 100644
+--- a/main/CMakeLists.txt
++++ b/main/CMakeLists.txt
+@@ -212,7 +212,7 @@ OPTIONS
+     ${MAIN_EXTRA_OPTIONS}
+ )
+
+-add_definitions(${VALA_CFLAGS} -DGETTEXT_PACKAGE=\"${GETTEXT_PACKAGE}\" -DLOCALE_INSTALL_DIR=\"${LOCALE_INSTALL_DIR}\" -DDINO_VERSION=\"${PROJECT_VERSION}\")
++add_definitions(${VALA_CFLAGS} -DGETTEXT_PACKAGE=\"${GETTEXT_PACKAGE}\" -DLOCALE_INSTALL_DIR=\"${LOCALE_INSTALL_DIR}\")
+ add_executable(dino ${MAIN_VALA_C} ${MAIN_GRESOURCES_TARGET} src/emojichooser.c)
+ add_dependencies(dino ${GETTEXT_PACKAGE}-translations)
+ target_include_directories(dino PRIVATE src)
+diff --git a/main/src/ui/application.vala b/main/src/ui/application.vala
+index 2fd5320e8..6c02087f1 100644
+--- a/main/src/ui/application.vala
++++ b/main/src/ui/application.vala
+@@ -42,7 +42,7 @@ public class Dino.Ui.Application : Gtk.Application, Dino.Application {
+
+         startup.connect(() => {
+             if (print_version) {
+-                print(@"Dino $(Dino.VERSION)\n");
++                print(@"Dino $(Dino.get_version())\n");
+                 Process.exit(0);
+             }
+
+@@ -270,7 +270,7 @@ public class Dino.Ui.Application : Gtk.Application, Dino.Application {
+     }
+
+     private void show_about_window() {
+-        string? version = Dino.VERSION.strip().length == 0 ? null : Dino.VERSION;
++        string? version = Dino.get_version().strip().length == 0 ? null : Dino.get_version();
+         if (version != null && !version.contains("git")) {
+             switch (version.substring(0, 3)) {
+                 case "0.2": version = @"$version - <span font_style='italic'>Mexican Caribbean Coral Reefs</span>"; break;
+
+From 193bf38a790b2a124493c3b7ad591f826e0f773d Mon Sep 17 00:00:00 2001
+From: Marvin W <git@larma.de>
+Date: Wed, 30 Mar 2022 10:36:52 -0600
+Subject: [PATCH] Allow cancellation of file transfers
+
+---
+ libdino/src/entity/file_transfer.vala         |  1 +
+ libdino/src/service/file_manager.vala         | 11 +++--
+ .../file_default_widget.vala                  | 16 +++++-
+ .../file_widget.vala                          |  5 ++
+ plugins/http-files/src/file_provider.vala     | 49 +++++++++++++++++--
+ plugins/http-files/src/file_sender.vala       |  3 +-
+ 6 files changed, 73 insertions(+), 12 deletions(-)
+
+diff --git a/libdino/src/entity/file_transfer.vala b/libdino/src/entity/file_transfer.vala
+index 1823478fe..20bc1a7aa 100644
+--- a/libdino/src/entity/file_transfer.vala
++++ b/libdino/src/entity/file_transfer.vala
+@@ -70,6 +70,7 @@ public class FileTransfer : Object {
+     public State state { get; set; default=State.NOT_STARTED; }
+     public int provider { get; set; }
+     public string info { get; set; }
++    public Cancellable cancellable { get; default=new Cancellable(); }
+ 
+     private Database? db;
+     private string storage_dir;
+diff --git a/libdino/src/service/file_manager.vala b/libdino/src/service/file_manager.vala
+index a478695c7..b82e0afb9 100644
+--- a/libdino/src/service/file_manager.vala
++++ b/libdino/src/service/file_manager.vala
+@@ -246,7 +246,7 @@ public class FileManager : StreamInteractionModule, Object {
+             File file = File.new_for_path(Path.build_filename(get_storage_dir(), filename));
+ 
+             OutputStream os = file.create(FileCreateFlags.REPLACE_DESTINATION);
+-            yield os.splice_async(input_stream, OutputStreamSpliceFlags.CLOSE_SOURCE|OutputStreamSpliceFlags.CLOSE_TARGET);
++            yield os.splice_async(input_stream, OutputStreamSpliceFlags.CLOSE_SOURCE | OutputStreamSpliceFlags.CLOSE_TARGET, Priority.LOW, file_transfer.cancellable);
+             file_transfer.path = file.get_basename();
+             file_transfer.input_stream = yield file.read_async();
+ 
+@@ -292,14 +292,15 @@ public class FileManager : StreamInteractionModule, Object {
+         if (is_sender_trustworthy(file_transfer, conversation)) {
+             try {
+                 yield get_file_meta(file_provider, file_transfer, conversation, receive_data);
+-
+-                if (file_transfer.size >= 0 && file_transfer.size < 5000000) {
+-                    yield download_file_internal(file_provider, file_transfer, conversation);
+-                }
+             } catch (Error e) {
+                 warning("Error downloading file: %s", e.message);
+                 file_transfer.state = FileTransfer.State.FAILED;
+             }
++            if (file_transfer.size >= 0 && file_transfer.size < 5000000) {
++                download_file_internal.begin(file_provider, file_transfer, conversation, (_, res) => {
++                    download_file_internal.end(res);
++                });
++            }
+         }
+ 
+         conversation.last_active = file_transfer.time;
+diff --git a/main/src/ui/conversation_content_view/file_default_widget.vala b/main/src/ui/conversation_content_view/file_default_widget.vala
+index 28b7d477d..638dab155 100644
+--- a/main/src/ui/conversation_content_view/file_default_widget.vala
++++ b/main/src/ui/conversation_content_view/file_default_widget.vala
+@@ -19,6 +19,7 @@ public class FileDefaultWidget : EventBox {
+ 
+     public ModelButton file_open_button;
+     public ModelButton file_save_button;
++    public ModelButton cancel_button;
+ 
+     private FileTransfer.State state;
+ 
+@@ -27,6 +28,7 @@ public class FileDefaultWidget : EventBox {
+         this.leave_notify_event.connect(on_pointer_left_event);
+         file_open_button = new ModelButton() { text=_("Open"), visible=true };
+         file_save_button = new ModelButton() { text=_("Save as…"), visible=true };
++        cancel_button = new ModelButton() { text=_("Cancel"), visible=true };
+     }
+ 
+     public void update_file_info(string? mime_type, FileTransfer.State state, long size) {
+@@ -59,6 +61,18 @@ public class FileDefaultWidget : EventBox {
+                 mime_label.label = _("Downloading %s…").printf(get_size_string(size));
+                 spinner.active = true;
+                 image_stack.set_visible_child_name("spinner");
++
++                // Create a menu
++                Gtk.PopoverMenu popover_menu = new Gtk.PopoverMenu();
++                Box file_menu_box = new Box(Orientation.VERTICAL, 0) { margin=10, visible=true };
++                file_menu_box.add(cancel_button);
++                popover_menu.add(file_menu_box);
++                file_menu.popover = popover_menu;
++                file_menu.button_release_event.connect(() => {
++                    popover_menu.visible = true;
++                    return true;
++                });
++                popover_menu.closed.connect(on_pointer_left);
+                 break;
+             case FileTransfer.State.NOT_STARTED:
+                 if (mime_description != null) {
+@@ -84,7 +98,7 @@ public class FileDefaultWidget : EventBox {
+         if (state == FileTransfer.State.NOT_STARTED) {
+             image_stack.set_visible_child_name("download_image");
+         }
+-        if (state == FileTransfer.State.COMPLETE) {
++        if (state == FileTransfer.State.COMPLETE || state == FileTransfer.State.IN_PROGRESS) {
+             file_menu.opacity = 1;
+         }
+         return false;
+diff --git a/main/src/ui/conversation_content_view/file_widget.vala b/main/src/ui/conversation_content_view/file_widget.vala
+index 0040db3c7..b63195dc4 100644
+--- a/main/src/ui/conversation_content_view/file_widget.vala
++++ b/main/src/ui/conversation_content_view/file_widget.vala
+@@ -131,6 +131,7 @@ public class FileDefaultWidgetController : Object {
+         widget.button_release_event.connect(on_clicked);
+         widget.file_open_button.clicked.connect(open_file);
+         widget.file_save_button.clicked.connect(save_file);
++        widget.cancel_button.clicked.connect(cancel_download);
+     }
+ 
+     public void set_file_transfer(FileTransfer file_transfer, StreamInteractor stream_interactor) {
+@@ -186,6 +187,10 @@ public class FileDefaultWidgetController : Object {
+         }
+     }
+ 
++    private void cancel_download() {
++        file_transfer.cancellable.cancel();
++    }
++
+     private bool on_clicked(EventButton event_button) {
+         switch (state) {
+             case FileTransfer.State.COMPLETE:
+diff --git a/plugins/http-files/src/file_provider.vala b/plugins/http-files/src/file_provider.vala
+index e33824391..118857215 100644
+--- a/plugins/http-files/src/file_provider.vala
++++ b/plugins/http-files/src/file_provider.vala
+@@ -46,6 +46,38 @@ public class FileProvider : Dino.FileProvider, Object {
+         }
+     }
+ 
++    private class LimitInputStream : InputStream {
++        InputStream inner;
++        int64 remaining_size;
++
++        public LimitInputStream(InputStream inner, int64 max_size) {
++            this.inner = inner;
++            this.remaining_size = max_size;
++        }
++
++        private ssize_t check_limit(ssize_t read) throws IOError {
++            this.remaining_size -= read;
++            if (remaining_size < 0) throw new IOError.FAILED("Stream length exceeded limit");
++            return read;
++        }
++
++        public override ssize_t read(uint8[] buffer, Cancellable? cancellable = null) throws IOError {
++            return check_limit(inner.read(buffer, cancellable));
++        }
++
++        public override async ssize_t read_async(uint8[]? buffer, int io_priority = GLib.Priority.DEFAULT, Cancellable? cancellable = null) throws IOError {
++            return check_limit(yield inner.read_async(buffer, io_priority, cancellable));
++        }
++
++        public override bool close(Cancellable? cancellable = null) throws IOError {
++            return inner.close(cancellable);
++        }
++
++        public override async bool close_async(int io_priority = GLib.Priority.DEFAULT, Cancellable? cancellable = null) throws IOError {
++            return yield inner.close_async(io_priority, cancellable);
++        }
++    }
++
+     private void on_file_message(Entities.Message message, Conversation conversation) {
+         var additional_info = message.id.to_string();
+ 
+@@ -64,9 +96,11 @@ public class FileProvider : Dino.FileProvider, Object {
+         if (http_receive_data == null) return file_meta;
+ 
+         var session = new Soup.Session();
++        session.user_agent = @"Dino/$(Dino.get_short_version()) ";
+         var head_message = new Soup.Message("HEAD", http_receive_data.url);
+ 
+         if (head_message != null) {
++            head_message.request_headers.append("Accept-Encoding", "identity");
+             try {
+                 yield session.send_async(head_message, null);
+             } catch (Error e) {
+@@ -75,12 +109,12 @@ public class FileProvider : Dino.FileProvider, Object {
+ 
+             string? content_type = null, content_length = null;
+             head_message.response_headers.foreach((name, val) => {
+-                if (name == "Content-Type") content_type = val;
+-                if (name == "Content-Length") content_length = val;
++                if (name.down() == "content-type") content_type = val;
++                if (name.down() == "content-length") content_length = val;
+             });
+             file_meta.mime_type = content_type;
+             if (content_length != null) {
+-                file_meta.size = int.parse(content_length);
++                file_meta.size = int64.parse(content_length);
+             }
+         }
+ 
+@@ -97,9 +131,14 @@ public class FileProvider : Dino.FileProvider, Object {
+ 
+         try {
+             var session = new Soup.Session();
++            session.user_agent = @"Dino/$(Dino.get_short_version()) ";
+             Soup.Request request = session.request(http_receive_data.url);
+-
+-            return yield request.send_async(null);
++            InputStream stream = yield request.send_async(file_transfer.cancellable);
++            if (file_meta.size != -1) {
++                return new LimitInputStream(stream, file_meta.size);
++            } else {
++                return stream;
++            }
+         } catch (Error e) {
+             throw new FileReceiveError.DOWNLOAD_FAILED("Downloading file error: %s".printf(e.message));
+         }
+diff --git a/plugins/http-files/src/file_sender.vala b/plugins/http-files/src/file_sender.vala
+index e005b8c50..8a22ffe18 100644
+--- a/plugins/http-files/src/file_sender.vala
++++ b/plugins/http-files/src/file_sender.vala
+@@ -98,8 +98,9 @@ public class HttpFileSender : FileSender, Object {
+         message.wrote_headers.connect(() => transfer_more_bytes(file_transfer.input_stream, message.request_body));
+         message.wrote_chunk.connect(() => transfer_more_bytes(file_transfer.input_stream, message.request_body));
+         Soup.Session session = new Soup.Session();
++        session.user_agent = @"Dino/$(Dino.get_short_version()) ";
+         try {
+-            yield session.send_async(message);
++            yield session.send_async(message, file_transfer.cancellable);
+             if (message.status_code < 200 || message.status_code >= 300) {
+                 throw new FileSendError.UPLOAD_FAILED("HTTP status code %s".printf(message.status_code.to_string()));
+             }
+From baa4a6a1eb4e98558acfef6e2a24c2c13d42db5c Mon Sep 17 00:00:00 2001
+From: Marvin W <git@larma.de>
+Date: Sat, 9 Apr 2022 00:28:42 +0200
+Subject: [PATCH] Prepare http-files plugin for libsoup-3 support
+
+Note: ice plugin still depends on libsoup-2.4 and one can't have both
+in the same process, so this remains disabled by default
+---
+ cmake/FindSoup.cmake                      | 31 ---------------
+ cmake/FindSoup2.cmake                     | 31 +++++++++++++++
+ cmake/FindSoup3.cmake                     | 31 +++++++++++++++
+ plugins/http-files/CMakeLists.txt         | 12 +++++-
+ plugins/http-files/src/file_provider.vala | 47 +++++++++++++----------
+ plugins/http-files/src/file_sender.vala   | 34 ++++++++++------
+ 6 files changed, 122 insertions(+), 64 deletions(-)
+ delete mode 100644 cmake/FindSoup.cmake
+ create mode 100644 cmake/FindSoup2.cmake
+ create mode 100644 cmake/FindSoup3.cmake
+
+diff --git a/cmake/FindSoup.cmake b/cmake/FindSoup.cmake
+deleted file mode 100644
+index d5afab489..000000000
+--- a/cmake/FindSoup.cmake
++++ /dev/null
+@@ -1,31 +0,0 @@
+-include(PkgConfigWithFallback)
+-find_pkg_config_with_fallback(Soup
+-    PKG_CONFIG_NAME libsoup-2.4
+-    LIB_NAMES soup-2.4
+-    INCLUDE_NAMES libsoup/soup.h
+-    INCLUDE_DIR_SUFFIXES libsoup-2.4 libsoup-2.4/include libsoup libsoup/include
+-    DEPENDS GIO
+-)
+-
+-if(Soup_FOUND AND NOT Soup_VERSION)
+-    find_file(Soup_VERSION_HEADER "libsoup/soup-version.h" HINTS ${Soup_INCLUDE_DIRS})
+-    mark_as_advanced(Soup_VERSION_HEADER)
+-
+-    if(Soup_VERSION_HEADER)
+-        file(STRINGS "${Soup_VERSION_HEADER}" Soup_MAJOR_VERSION REGEX "^#define SOUP_MAJOR_VERSION +\\(?([0-9]+)\\)?$")
+-        string(REGEX REPLACE "^#define SOUP_MAJOR_VERSION \\(?([0-9]+)\\)?$" "\\1" Soup_MAJOR_VERSION "${Soup_MAJOR_VERSION}")
+-        file(STRINGS "${Soup_VERSION_HEADER}" Soup_MINOR_VERSION REGEX "^#define SOUP_MINOR_VERSION +\\(?([0-9]+)\\)?$")
+-        string(REGEX REPLACE "^#define SOUP_MINOR_VERSION \\(?([0-9]+)\\)?$" "\\1" Soup_MINOR_VERSION "${Soup_MINOR_VERSION}")
+-        file(STRINGS "${Soup_VERSION_HEADER}" Soup_MICRO_VERSION REGEX "^#define SOUP_MICRO_VERSION +\\(?([0-9]+)\\)?$")
+-        string(REGEX REPLACE "^#define SOUP_MICRO_VERSION \\(?([0-9]+)\\)?$" "\\1" Soup_MICRO_VERSION "${Soup_MICRO_VERSION}")
+-        set(Soup_VERSION "${Soup_MAJOR_VERSION}.${Soup_MINOR_VERSION}.${Soup_MICRO_VERSION}")
+-        unset(Soup_MAJOR_VERSION)
+-        unset(Soup_MINOR_VERSION)
+-        unset(Soup_MICRO_VERSION)
+-    endif()
+-endif()
+-
+-include(FindPackageHandleStandardArgs)
+-find_package_handle_standard_args(Soup
+-    REQUIRED_VARS Soup_LIBRARY
+-    VERSION_VAR Soup_VERSION)
+diff --git a/cmake/FindSoup2.cmake b/cmake/FindSoup2.cmake
+new file mode 100644
+index 000000000..07ffed144
+--- /dev/null
++++ b/cmake/FindSoup2.cmake
+@@ -0,0 +1,31 @@
++include(PkgConfigWithFallback)
++find_pkg_config_with_fallback(Soup2
++    PKG_CONFIG_NAME libsoup-2.4
++    LIB_NAMES soup-2.4
++    INCLUDE_NAMES libsoup/soup.h
++    INCLUDE_DIR_SUFFIXES libsoup-2.4 libsoup-2.4/include libsoup libsoup/include
++    DEPENDS GIO
++)
++
++if(Soup2_FOUND AND NOT Soup2_VERSION)
++    find_file(Soup2_VERSION_HEADER "libsoup/soup-version.h" HINTS ${Soup_INCLUDE_DIRS})
++    mark_as_advanced(Soup2_VERSION_HEADER)
++
++    if(Soup_VERSION_HEADER)
++        file(STRINGS "${Soup2_VERSION_HEADER}" Soup2_MAJOR_VERSION REGEX "^#define SOUP_MAJOR_VERSION +\\(?([0-9]+)\\)?$")
++        string(REGEX REPLACE "^#define SOUP_MAJOR_VERSION \\(?([0-9]+)\\)?$" "\\1" Soup_MAJOR_VERSION "${Soup2_MAJOR_VERSION}")
++        file(STRINGS "${Soup2_VERSION_HEADER}" Soup2_MINOR_VERSION REGEX "^#define SOUP_MINOR_VERSION +\\(?([0-9]+)\\)?$")
++        string(REGEX REPLACE "^#define SOUP_MINOR_VERSION \\(?([0-9]+)\\)?$" "\\1" Soup_MINOR_VERSION "${Soup2_MINOR_VERSION}")
++        file(STRINGS "${Soup2_VERSION_HEADER}" Soup2_MICRO_VERSION REGEX "^#define SOUP_MICRO_VERSION +\\(?([0-9]+)\\)?$")
++        string(REGEX REPLACE "^#define SOUP_MICRO_VERSION \\(?([0-9]+)\\)?$" "\\1" Soup_MICRO_VERSION "${Soup2_MICRO_VERSION}")
++        set(Soup_VERSION "${Soup2_MAJOR_VERSION}.${Soup2_MINOR_VERSION}.${Soup2_MICRO_VERSION}")
++        unset(Soup2_MAJOR_VERSION)
++        unset(Soup2_MINOR_VERSION)
++        unset(Soup2_MICRO_VERSION)
++    endif()
++endif()
++
++include(FindPackageHandleStandardArgs)
++find_package_handle_standard_args(Soup2
++    REQUIRED_VARS Soup2_LIBRARY
++    VERSION_VAR Soup2_VERSION)
+diff --git a/cmake/FindSoup3.cmake b/cmake/FindSoup3.cmake
+new file mode 100644
+index 000000000..07b4893a4
+--- /dev/null
++++ b/cmake/FindSoup3.cmake
+@@ -0,0 +1,31 @@
++include(PkgConfigWithFallback)
++find_pkg_config_with_fallback(Soup3
++    PKG_CONFIG_NAME libsoup-3.0
++    LIB_NAMES soup-3.0
++    INCLUDE_NAMES libsoup/soup.h
++    INCLUDE_DIR_SUFFIXES libsoup-2.4 libsoup-2.4/include libsoup libsoup/include
++    DEPENDS GIO
++)
++
++if(Soup3_FOUND AND NOT Soup3_VERSION)
++    find_file(Soup3_VERSION_HEADER "libsoup/soup-version.h" HINTS ${Soup3_INCLUDE_DIRS})
++    mark_as_advanced(Soup3_VERSION_HEADER)
++
++    if(Soup3_VERSION_HEADER)
++        file(STRINGS "${Soup3_VERSION_HEADER}" Soup3_MAJOR_VERSION REGEX "^#define SOUP_MAJOR_VERSION +\\(?([0-9]+)\\)?$")
++        string(REGEX REPLACE "^#define SOUP_MAJOR_VERSION \\(?([0-9]+)\\)?$" "\\1" Soup3_MAJOR_VERSION "${Soup3_MAJOR_VERSION}")
++        file(STRINGS "${Soup3_VERSION_HEADER}" Soup3_MINOR_VERSION REGEX "^#define SOUP_MINOR_VERSION +\\(?([0-9]+)\\)?$")
++        string(REGEX REPLACE "^#define SOUP_MINOR_VERSION \\(?([0-9]+)\\)?$" "\\1" Soup3_MINOR_VERSION "${Soup3_MINOR_VERSION}")
++        file(STRINGS "${Soup3_VERSION_HEADER}" Soup3_MICRO_VERSION REGEX "^#define SOUP_MICRO_VERSION +\\(?([0-9]+)\\)?$")
++        string(REGEX REPLACE "^#define SOUP_MICRO_VERSION \\(?([0-9]+)\\)?$" "\\1" Soup3_MICRO_VERSION "${Soup3_MICRO_VERSION}")
++        set(Soup3_VERSION "${Soup3_MAJOR_VERSION}.${Soup3_MINOR_VERSION}.${Soup3_MICRO_VERSION}")
++        unset(Soup3_MAJOR_VERSION)
++        unset(Soup3_MINOR_VERSION)
++        unset(Soup3_MICRO_VERSION)
++    endif()
++endif()
++
++include(FindPackageHandleStandardArgs)
++find_package_handle_standard_args(Soup3
++    REQUIRED_VARS Soup3_LIBRARY
++    VERSION_VAR Soup3_VERSION)
+diff --git a/plugins/http-files/CMakeLists.txt b/plugins/http-files/CMakeLists.txt
+index 77579fdbc..2da46731d 100644
+--- a/plugins/http-files/CMakeLists.txt
++++ b/plugins/http-files/CMakeLists.txt
+@@ -1,10 +1,18 @@
++set(HTTP_FILES_DEFINITIONS)
++if(USE_SOUP3)
++   set(Soup Soup3)
++   set(HTTP_FILES_DEFINITIONS ${HTTP_FILES_DEFINITIONS} SOUP_3)
++else()
++   set(Soup Soup2)
++endif()
++
+ find_packages(HTTP_FILES_PACKAGES REQUIRED
+     Gee
+     GLib
+     GModule
+     GObject
+     GTK3
+-    Soup
++    ${Soup}
+ )
+ 
+ vala_precompile(HTTP_FILES_VALA_C
+@@ -19,6 +27,8 @@ CUSTOM_VAPIS
+     ${CMAKE_BINARY_DIR}/exports/qlite.vapi
+ PACKAGES
+     ${HTTP_FILES_PACKAGES}
++DEFINITIONS
++    ${HTTP_FILES_DEFINITIONS}
+ )
+ 
+ add_definitions(${VALA_CFLAGS})
+diff --git a/plugins/http-files/src/file_provider.vala b/plugins/http-files/src/file_provider.vala
+index 118857215..3a3aeb946 100644
+--- a/plugins/http-files/src/file_provider.vala
++++ b/plugins/http-files/src/file_provider.vala
+@@ -98,24 +98,26 @@ public class FileProvider : Dino.FileProvider, Object {
+         var session = new Soup.Session();
+         session.user_agent = @"Dino/$(Dino.get_short_version()) ";
+         var head_message = new Soup.Message("HEAD", http_receive_data.url);
++        head_message.request_headers.append("Accept-Encoding", "identity");
+ 
+-        if (head_message != null) {
+-            head_message.request_headers.append("Accept-Encoding", "identity");
+-            try {
+-                yield session.send_async(head_message, null);
+-            } catch (Error e) {
+-                throw new FileReceiveError.GET_METADATA_FAILED("HEAD request failed");
+-            }
++        try {
++#if SOUP_3
++            yield session.send_async(head_message, GLib.Priority.LOW, null);
++#else
++            yield session.send_async(head_message, null);
++#endif
++        } catch (Error e) {
++            throw new FileReceiveError.GET_METADATA_FAILED("HEAD request failed");
++        }
+ 
+-            string? content_type = null, content_length = null;
+-            head_message.response_headers.foreach((name, val) => {
+-                if (name.down() == "content-type") content_type = val;
+-                if (name.down() == "content-length") content_length = val;
+-            });
+-            file_meta.mime_type = content_type;
+-            if (content_length != null) {
+-                file_meta.size = int64.parse(content_length);
+-            }
++        string? content_type = null, content_length = null;
++        head_message.response_headers.foreach((name, val) => {
++            if (name.down() == "content-type") content_type = val;
++            if (name.down() == "content-length") content_length = val;
++        });
++        file_meta.mime_type = content_type;
++        if (content_length != null) {
++            file_meta.size = int64.parse(content_length);
+         }
+ 
+         return file_meta;
+@@ -129,11 +131,16 @@ public class FileProvider : Dino.FileProvider, Object {
+         HttpFileReceiveData? http_receive_data = receive_data as HttpFileReceiveData;
+         if (http_receive_data == null) assert(false);
+ 
++        var session = new Soup.Session();
++        session.user_agent = @"Dino/$(Dino.get_short_version()) ";
++        var get_message = new Soup.Message("GET", http_receive_data.url);
++
+         try {
+-            var session = new Soup.Session();
+-            session.user_agent = @"Dino/$(Dino.get_short_version()) ";
+-            Soup.Request request = session.request(http_receive_data.url);
+-            InputStream stream = yield request.send_async(file_transfer.cancellable);
++#if SOUP_3
++            InputStream stream = yield session.send_async(get_message, GLib.Priority.LOW, file_transfer.cancellable);
++#else
++            InputStream stream = yield session.send_async(get_message, file_transfer.cancellable);
++#endif
+             if (file_meta.size != -1) {
+                 return new LimitInputStream(stream, file_meta.size);
+             } else {
+diff --git a/plugins/http-files/src/file_sender.vala b/plugins/http-files/src/file_sender.vala
+index 8a22ffe18..ab81ffce8 100644
+--- a/plugins/http-files/src/file_sender.vala
++++ b/plugins/http-files/src/file_sender.vala
+@@ -73,6 +73,7 @@ public class HttpFileSender : FileSender, Object {
+         }
+     }
+ 
++#if !SOUP_3
+     private static void transfer_more_bytes(InputStream stream, Soup.MessageBody body) {
+         uint8[] bytes = new uint8[4096];
+         ssize_t read = stream.read(bytes);
+@@ -83,26 +84,35 @@ public class HttpFileSender : FileSender, Object {
+         bytes.length = (int)read;
+         body.append_buffer(new Soup.Buffer.take(bytes));
+     }
++#endif
+ 
+     private async void upload(FileTransfer file_transfer, HttpFileSendData file_send_data, FileMeta file_meta) throws FileSendError {
+         Xmpp.XmppStream? stream = stream_interactor.get_stream(file_transfer.account);
+         if (stream == null) return;
+ 
+-        Soup.Message message = new Soup.Message("PUT", file_send_data.url_up);
+-        message.request_headers.set_content_type(file_meta.mime_type, null);
+-        message.request_headers.set_content_length(file_meta.size);
++        var session = new Soup.Session();
++        session.user_agent = @"Dino/$(Dino.get_short_version()) ";
++        var put_message = new Soup.Message("PUT", file_send_data.url_up);
++#if SOUP_3
++        put_message.set_request_body(file_meta.mime_type, file_transfer.input_stream, (ssize_t) file_meta.size);
++#else
++        put_message.request_headers.set_content_type(file_meta.mime_type, null);
++        put_message.request_headers.set_content_length(file_meta.size);
++        put_message.request_body.set_accumulate(false);
++        put_message.wrote_headers.connect(() => transfer_more_bytes(file_transfer.input_stream, put_message.request_body));
++        put_message.wrote_chunk.connect(() => transfer_more_bytes(file_transfer.input_stream, put_message.request_body));
++#endif
+         foreach (var entry in file_send_data.headers.entries) {
+-            message.request_headers.append(entry.key, entry.value);
++            put_message.request_headers.append(entry.key, entry.value);
+         }
+-        message.request_body.set_accumulate(false);
+-        message.wrote_headers.connect(() => transfer_more_bytes(file_transfer.input_stream, message.request_body));
+-        message.wrote_chunk.connect(() => transfer_more_bytes(file_transfer.input_stream, message.request_body));
+-        Soup.Session session = new Soup.Session();
+-        session.user_agent = @"Dino/$(Dino.get_short_version()) ";
+         try {
+-            yield session.send_async(message, file_transfer.cancellable);
+-            if (message.status_code < 200 || message.status_code >= 300) {
+-                throw new FileSendError.UPLOAD_FAILED("HTTP status code %s".printf(message.status_code.to_string()));
++#if SOUP_3
++            yield session.send_async(put_message, GLib.Priority.LOW, file_transfer.cancellable);
++#else
++            yield session.send_async(put_message, file_transfer.cancellable);
++#endif
++            if (put_message.status_code < 200 || put_message.status_code >= 300) {
++                throw new FileSendError.UPLOAD_FAILED("HTTP status code %s".printf(put_message.status_code.to_string()));
+             }
+         } catch (Error e) {
+             throw new FileSendError.UPLOAD_FAILED("HTTP upload error: %s".printf(e.message));
