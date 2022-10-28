@@ -56,4 +56,14 @@
     <comment></comment>
     <requestid>961430</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0b99452cb4b83bfe43b1d578b8a55fe9</srcmd5>
+    <version>0.2.2</version>
+    <time>1666978224</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.2.2
+  * The plugin is now aware of the ``run_slow`` and ``run_hugemem``
+    options introduced in ``pytest-astropy`` version 0.10.0. [#48]</comment>
+    <requestid>1031606</requestid>
+  </revision>
 </revisionlist>

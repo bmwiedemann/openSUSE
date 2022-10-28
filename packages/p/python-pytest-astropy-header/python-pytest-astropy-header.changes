@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 27 17:23:49 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to v0.2.2
+  * The plugin is now aware of the ``run_slow`` and ``run_hugemem``
+    options introduced in ``pytest-astropy`` version 0.10.0. [#48]
+
+-------------------------------------------------------------------
 Sun Mar 13 08:25:07 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to v0.2.1

@@ -25,10 +25,9 @@
 %bcond_with test
 %endif
 %define modname pytest-astropy-header
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
+
 Name:           python-%{modname}%{psuffix}
-Version:        0.2.1
+Version:        0.2.2
 Release:        0
 Summary:        Pytest plugin to add diagnostic information to the header of the test output
 License:        BSD-3-Clause
@@ -46,6 +45,8 @@ BuildRequires:  %{python_module astropy >= 4.0}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest >= 4.6}
 %endif
+Provides:       python-pytest_astropy_header = %{version}-%{release}
+BuildArch:      noarch
 %python_subpackages
 
 %description
