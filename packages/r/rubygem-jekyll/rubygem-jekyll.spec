@@ -24,12 +24,12 @@
 #
 
 Name:           rubygem-jekyll
-Version:        4.2.2
+Version:        4.3.1
 Release:        0
 %define mod_name jekyll
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 2.4.0}
+BuildRequires:  %{ruby >= 2.5.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  ruby-macros >= 5
