@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 21 10:14:03 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add 98437-sphinx.locale._-as-gettext-in-pyspecific.patch to
+  allow building of documentation with the latest Sphinx 5.3.0
+  (gh#python/cpython#98366).
+
+-------------------------------------------------------------------
 Thu Oct 20 11:49:44 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add platlibdir-in-sys.patch to provide sys.platlibdir attribute. This is used

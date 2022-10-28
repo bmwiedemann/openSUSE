@@ -25,6 +25,8 @@ Summary:        Sphinx Doxygen renderer
 License:        BSD-3-Clause
 URL:            https://github.com/michaeljones/breathe
 Source:         https://github.com/michaeljones/%{modname}/archive/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Fix-tests-for-Sphinx-5.3.0.patch gh#breathe-doc/breathe#865
+Patch0:         Fix-tests-for-Sphinx-5.3.0.patch
 BuildRequires:  %{python_module Sphinx >= 4.0}
 BuildRequires:  %{python_module docutils >= 0.12}
 BuildRequires:  %{python_module pytest}

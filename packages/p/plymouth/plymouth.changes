@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Oct 26 07:12:23 UTC 2022 - Cliff Zhao <qzhao@suse.com>
+
+- Update to version 22.02.122+94.4bd41a3:
+  * plugins: label-freetype: Fixes calculation of line width.
+  * plugins: label-freetype: Fix font alignment.
+  * populate-initrd: Install label-freetype plugin into initrd if 
+    available.
+  * plugins: Add FreeType-based label plugin.
+  * ply-label: Don't crash if label plugin fails.
+  * details: Don't replay boot buffer on serial consoles.
+  * main: Add "reload" command.
+  * ply-device-manager: Add plymouth.force-frame-buffer-on-boot 
+    parameter, allow to choose force framebuffer mode.
+  * systemd: Add mkinitcpio support to 
+    plymouth-switch-root-initramfs.service.
+  * Rebase plymouth-only_use_fb_for_cirrus_bochs.patch;
+    for build success.
+  * Rebase plymouth-watermark-config.patch;
+    for build success.
+  * Drop 0001-Add-label-ft-plugin.patch;
+    for already merged by upstream.
+  * Drop 0002-Install-label-ft-plugin-into-initrd-if-available.patch
+    for already merged by upstream.
+  * Drop 0003-fix_null_deref.patch
+    for already merged by upstream.
+  * Drop 0004-label-ft-fix-alignment.patch
+    for already merged by upstream.
+
+-------------------------------------------------------------------
 Thu Oct  6 11:20:28 UTC 2022 - Cliff Zhao <qzhao@suse.com>
 
 - Update to version 22.02.122+77.c09c651:

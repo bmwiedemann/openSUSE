@@ -6,13 +6,10 @@ DRM does not work well with cirrus and bochs (no display) but the framebuffer dr
 prevents DRM drivers from loading.
 As we need to support cirrus for libvirt and bochs for QEMU, we cannot just remove support for frame-buffer.
 
-Index: plymouth-0.9.3+git20180807.7663b0c/src/libply-splash-core/ply-device-manager.c
-===================================================================
-
-diff -Nura plymouth-22.02.122+77.c09c651/src/libply-splash-core/ply-device-manager.c plymouth-22.02.122+77.c09c651_new/src/libply-splash-core/ply-device-manager.c
---- plymouth-22.02.122+77.c09c651/src/libply-splash-core/ply-device-manager.c	2022-10-06 07:38:29.000000000 +0800
-+++ plymouth-22.02.122+77.c09c651_new/src/libply-splash-core/ply-device-manager.c	2022-10-07 00:22:51.532816241 +0800
-@@ -312,6 +312,18 @@
+diff -Nura plymouth-22.02.122+94.4bd41a3/src/libply-splash-core/ply-device-manager.c plymouth-22.02.122+94.4bd41a3_new/src/libply-splash-core/ply-device-manager.c
+--- plymouth-22.02.122+94.4bd41a3/src/libply-splash-core/ply-device-manager.c	2022-10-26 19:09:02.000000000 +0800
++++ plymouth-22.02.122+94.4bd41a3_new/src/libply-splash-core/ply-device-manager.c	2022-10-27 00:07:06.605777003 +0800
+@@ -316,6 +316,18 @@
                  subsystem = udev_device_get_subsystem (device);
                  ply_trace ("device subsystem is %s", subsystem);
  
@@ -31,7 +28,7 @@ diff -Nura plymouth-22.02.122+77.c09c651/src/libply-splash-core/ply-device-manag
                  if (strcmp (subsystem, SUBSYSTEM_DRM) == 0) {
                          if (!manager->device_timeout_elapsed && !verify_drm_device (device)) {
                                  ply_trace ("ignoring since we only handle SimpleDRM devices after timeout");
-@@ -319,10 +331,18 @@
+@@ -323,10 +335,18 @@
                          }
                          ply_trace ("found DRM device %s", device_path);
                          renderer_type = PLY_RENDERER_TYPE_DRM;
@@ -48,6 +45,6 @@ diff -Nura plymouth-22.02.122+77.c09c651/src/libply-splash-core/ply-device-manag
 +                        else if (!fb_device_has_drm_device (manager, device)) {
 +                                ply_trace ("avoiding use of framebuffer to not block DRM drivers from working");
 +                        }
+                         else if (force_fb)
+                                 renderer_type = PLY_RENDERER_TYPE_FRAME_BUFFER;
                          else
-                                 ply_trace ("ignoring, since there's a DRM device associated with it");
-                 }

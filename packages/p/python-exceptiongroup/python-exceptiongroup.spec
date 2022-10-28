@@ -17,7 +17,6 @@
 
 
 %define pyversion 1.0.0rc9
-%define skip_python311 1
 Name:           python-exceptiongroup
 Version:        1.0.0~rc9
 Release:        0
@@ -25,7 +24,7 @@ Summary:        Backport of PEP 654 (exception groups)
 License:        MIT AND Python-2.0
 URL:            https://github.com/agronholm/exceptiongroup
 Source:         https://github.com/agronholm/exceptiongroup/archive/refs/tags/%{pyversion}.tar.gz#/exceptiongroup-%{pyversion}-gh.tar.gz
-BuildRequires:  %{python_module base >= 3.7 with %python-base < 3.11}
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module flit-scm}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}

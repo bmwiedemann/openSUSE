@@ -17,7 +17,7 @@
 
 
 Name:           sudo
-Version:        1.9.11p3
+Version:        1.9.12
 Release:        0
 Summary:        Execute some commands as root
 License:        ISC
@@ -33,7 +33,6 @@ Source6:        fate_313276_test.sh
 Source7:        README_313276.test
 # PATCH-OPENSUSE: the "SUSE" branding of the default sudo config
 Patch0:         sudo-sudoers.patch
-Patch1:         sudo-1.9.10-update_sudouser_to_utf8.patch
 BuildRequires:  audit-devel
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  groff
@@ -121,7 +120,7 @@ export LDFLAGS="-pie"
     --with-sssd
 %if 0%{?sle_version} < 150000
 # the SLES12 way
-make %{?_smp_mflags} V=1
+%make_build
 %else
 # -B required to make every build give the same result - maybe from bad build deps in Makefiles?
 %make_build -B
@@ -227,7 +226,6 @@ chmod 0440 %{_sysconfdir}/sudoers
 %{_libexecdir}/%{name}/%{name}/group_file.so
 %{_libexecdir}/%{name}/%{name}/system_group.so
 %{_libexecdir}/%{name}/%{name}/audit_json.so
-%{_libexecdir}/%{name}/%{name}/sample_approval.so
 %{_libexecdir}/%{name}/%{name}/sudo_intercept.so
 %{_libexecdir}/%{name}/libsudo_util.so.*
 %attr(0711,root,root) %dir %ghost %{_localstatedir}/lib/%{name}

@@ -125,6 +125,8 @@ Requires:       %{_name}-data >= %{version}
 Requires:       %{_name}-prompter >= %{version}
 Recommends:     %{_name}-ssh-agent
 Recommends:     %{name}-ssh-askpass
+# https://bugzilla.opensuse.org/show_bug.cgi?id=1204071 - to properly manage keys using gnome-keyring
+Requires:       (%{name}-ssh-askpass if gnome-keyring)
 Recommends:     %{_name}-viewer
 # To make lang package installable
 Provides:       %{name} = %{version}

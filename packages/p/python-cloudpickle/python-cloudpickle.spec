@@ -25,6 +25,8 @@ Summary:        Extended pickling support for Python objects
 License:        BSD-3-Clause
 URL:            https://github.com/cloudpipe/cloudpickle
 Source:         https://files.pythonhosted.org/packages/source/c/cloudpickle/cloudpickle-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Move-builtin-classmethod_descriptor-to-a-different-t.patch gh#cloudpipe/cloudpickle#486
+Patch0:         Move-builtin-classmethod_descriptor-to-a-different-t.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -53,7 +55,7 @@ Among other things, cloudpickle supports pickling for lambda expressions,
 functions and classes defined interactively in the __main__ module.
 
 %prep
-%setup -q -n cloudpickle-%{version}
+%autosetup -p1 -n cloudpickle-%{version}
 
 %build
 %python_build
@@ -71,6 +73,7 @@ export PYTHONPATH=':./tests/cloudpickle_testpkg'
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/cloudpickle
+%{python_sitelib}/cloudpickle-%{version}*-info
 
 %changelog

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Oct 26 22:33:32 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.4:
+  * [XERCESC-2195] - Invalid attribute in .gitattributes file
+  * [XERCESC-2196] - cross-compiling issue
+  * [XERCESC-2214] - Wrong delete[] in MemBufInputSource dtor
+  * [XERCESC-2217] - ICUTranscoder::transcodeFrom buffer overflow
+  * [XERCESC-2218] - CurlURLInputStream constructor memory leak
+  * [XERCESC-2219] - XMLReader constructor: memory leak when refreshRawBuffer() throws
+  * [XERCESC-2221] - InMemMsgLoader::loadMsg(): fix memory leak when transcoding fails
+  * [XERCESC-2222] - DFAContentModel::checkUniqueParticleAttribution(): fix memory leak
+  * [XERCESC-2223] - SAX2XMLReaderImpl::error(): potential memory leak
+  * [XERCESC-2225] - Link to installed CMake targets of CURL
+  * [XERCESC-2227] - Memleak fixes in ContentSpecNode and ComplexTypeInfo classes
+  * [XERCESC-2228] - DFAContentModel: fix memory leaks when OutOfMemoryException occurs
+  * [XERCESC-2229] - IGXMLScanner::scanDocTypeDecl(): fix memory leak on exception
+  * [XERCESC-2230] - DFAContentModel::buildSyntaxTree(): fix memory leaks when OutOfMemoryException occurs
+  * [XERCESC-2235] - DFAContentModel::buildDFA(): correctly zero-initialize fFollowList
+  * [XERCESC-2236] - Dependencies aren't loaded when using provided CMake config package
+  * [XERCESC-2241] - Integer overflows in DFAContentModel class
+  * [XERCESC-2242] - Non-default curl location breaks autoconf link detection 
+
+-------------------------------------------------------------------
 Sat Aug 15 19:33:22 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 3.2.3:

@@ -23,7 +23,7 @@
 %global soversion 5
 
 Name:           plymouth
-Version:        22.02.122+77.c09c651
+Version:        22.02.122+94.4bd41a3
 Release:        0
 Summary:        Graphical Boot Animation and Logger
 License:        GPL-2.0-or-later
@@ -54,14 +54,6 @@ Patch9:         plymouth-log-on-default.patch
 Patch10:        plymouth-screen-twice-scale-on-160DPI-higher.patch
 # PATCH-FIX-OPENSUSE plymouth-crash-avoid-on-keyboard-remove-input-handler.patch bsc#1193736 qzhao@suse.com -- Confirm keyboard handler list not NULL before release memory to avoid crash.
 Patch11:        plymouth-crash-avoid-on-keyboard-remove-input-handler.patch
-# PATCH-FIX-UPSTREAM 0001-Add-label-ft-plugin.patch boo#959986 fvogt@suse.com -- Add ability to output text in initrd needed for encryption.
-Patch1001:      0001-Add-label-ft-plugin.patch
-# PATCH-FIX-UPSTREAM 0002-Install-label-ft-plugin-into-initrd-if-available.patch boo#959986 fvogt@suse.com -- Add ability to output text in initrd needed for encryption.
-Patch1002:      0002-Install-label-ft-plugin-into-initrd-if-available.patch
-# PATCH-FIX-UPSTREAM 0003-fix_null_deref.patch boo#959986 fvogt@suse.com -- Add ability to output text in initrd needed for encryption.
-Patch1003:      0003-fix_null_deref.patch
-# PATCH-FIX-UPSTREAM 0004-label-ft-fix-alignment.patch boo#959986 fvogt@suse.com -- Fix alignment for label-ft
-Patch1004:      0004-label-ft-fix-alignment.patch
 BuildRequires:  automake
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gcc
@@ -595,10 +587,10 @@ fi
 %{_libdir}/plymouth/fade-throbber.so
 
 %files plugin-label
-%{_libdir}/plymouth/label.so
+%{_libdir}/plymouth/label-pango.so
 
 %files plugin-label-ft
-%{_libdir}/plymouth/label-ft.so
+%{_libdir}/plymouth/label-freetype.so
 
 %files plugin-script
 %{_libdir}/plymouth/script.so

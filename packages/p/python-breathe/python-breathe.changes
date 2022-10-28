@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 28 06:53:44 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add Fix-tests-for-Sphinx-5.3.0.patch to make the package compatible with
+  Sphinx 5.3.0
+
+-------------------------------------------------------------------
 Tue Oct 25 12:46:34 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Fix build errors in Leap and Tumbleweed.

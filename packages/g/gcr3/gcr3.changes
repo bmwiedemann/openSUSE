@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 25 12:37:26 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Have libgcr-3-1 require gcr3-ssh-askpass when gnome-keyring is
+  present: gnome-keyring interacts deeper with this library, which
+  justifies a hard dep in this case (boo#1204071).
+
+-------------------------------------------------------------------
 Fri Sep 16 07:19:20 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - gcr-ssh-askpass: this package does still exist on gcr4 too, but

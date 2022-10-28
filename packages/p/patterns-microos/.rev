@@ -530,4 +530,12 @@ Tue Jan  20 02:29:11 UTC 2021 - Syds Bearda &lt;sydsb@opensuse.org&gt;
     <comment></comment>
     <requestid>1030320</requestid>
   </revision>
+  <revision rev="55" vrev="55">
+    <srcmd5>44a1d37fbcfbde69f9f997f3162e956d</srcmd5>
+    <version>5.0</version>
+    <time>1666978152</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gcr3-ssh-askpass as it's also needed with latest GNOME</comment>
+    <requestid>1031498</requestid>
+  </revision>
 </revisionlist>

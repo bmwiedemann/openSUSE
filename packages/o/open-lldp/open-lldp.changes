@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct 26 18:58:43 UTC 2022 - lduncan@suse.com
+
+- Update to version v1.1+58.8ca361bab766:
+  * clif: Include string.h for mem* function prototypes
+  * basman: use return address when pulling address
+  * Revert "Use interface index instead of name in libconfig"
+  * 8021Qaz: check for rx block validity
+  * 8021qaz: squelch initialization errors
+  * macvtap: fix error condition
+  * vdp22: convert command parsing to null term
+
+-------------------------------------------------------------------
 Mon Sep 20 16:03:06 UTC 2021 - lduncan@suse.com
 
 - Update to version v1.1+44.0f781b4162d3:

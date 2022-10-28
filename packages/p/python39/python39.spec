@@ -93,7 +93,7 @@
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 %bcond_without profileopt
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.9.14
+Version:        3.9.15
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -161,6 +161,9 @@ Patch35:        support-expat-CVE-2022-25236-patched.patch
 # PATCH-FIX-UPSTREAM CVE-2015-20107-mailcap-unsafe-filenames.patch bsc#1198511 mcepl@suse.com
 # avoid the command injection in the mailcap module.
 Patch36:        CVE-2015-20107-mailcap-unsafe-filenames.patch
+# PATCH-FIX-UPSTREAM 98437-sphinx.locale._-as-gettext-in-pyspecific.patch gh#python/cpython#98366 mcepl@suse.com
+# this patch makes things totally awesome
+Patch37:        98437-sphinx.locale._-as-gettext-in-pyspecific.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -420,6 +423,7 @@ other applications.
 %endif
 %patch35 -p1
 %patch36 -p1
+%patch37 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac

@@ -500,6 +500,7 @@ Requires:       noto-emoji-fonts
 Requires:       noto-sans-fonts
 # So that GNOME keyring works
 Requires:       gcr-ssh-askpass
+Requires:       gcr3-ssh-askpass
 Requires:       samba
 # #509829
 Requires:       xdg-user-dirs-gtk

@@ -173,6 +173,9 @@ Patch34:        bpo34990-2038-problem-compileall.patch
 Patch36:        support-expat-CVE-2022-25236-patched.patch
 # PATCH-FIX-OPENSUSE platlibdir-in-sys.patch bsc#1204395
 Patch37:        platlibdir-in-sys.patch
+# PATCH-FIX-UPSTREAM 98437-sphinx.locale._-as-gettext-in-pyspecific.patch gh#python/cpython#98366 mcepl@suse.com
+# this patch makes things totally awesome
+Patch38:        98437-sphinx.locale._-as-gettext-in-pyspecific.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -440,6 +443,7 @@ other applications.
 %patch34 -p1
 %patch36 -p1
 %patch37 -p1
+%patch38 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac

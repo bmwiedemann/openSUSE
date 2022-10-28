@@ -1,7 +1,7 @@
 #
 # spec file for package xerces-c
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define libname libxerces-c-3_2
 Name:           xerces-c
-Version:        3.2.3
+Version:        3.2.4
 Release:        0
 Summary:        A Validating XML Parser
 License:        Apache-2.0
 URL:            https://xerces.apache.org/xerces-c/
-Source0:        http://www.apache.org/dist/xerces/c/3/sources/%{name}-%{version}.tar.gz
-Source1:        http://www.apache.org/dist/xerces/c/3/sources/%{name}-%{version}.tar.gz.asc
+Source0:        https://www.apache.org/dist/xerces/c/3/sources/%{name}-%{version}.tar.gz
+Source1:        https://www.apache.org/dist/xerces/c/3/sources/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
 BuildRequires:  fdupes

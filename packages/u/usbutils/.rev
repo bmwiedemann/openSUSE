@@ -392,4 +392,12 @@
   * lsusb: Fix buffer size copy/paste error (forwarded request 915408 from pluskalm)</comment>
     <requestid>915414</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>461abbe760ad2dfda09762bc88e226c0</srcmd5>
+    <version>015</version>
+    <time>1666978149</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1031468</requestid>
+  </revision>
 </revisionlist>

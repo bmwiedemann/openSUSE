@@ -80,11 +80,17 @@ depth=0;
 
 function chown_database_dirs_bconfig() {
         ldapdir=$(find $1 -type f -name "olcDatabase*" | xargs grep -i olcdbdirectory | awk '{print $2}')
-        for dir in $ldapdir; do
+        for dir in $(realpath ${ldapdir}); do
+            if [[ $dir =~ ^/var/lib/ldap$|^/var/lib/ldap/.* ]]; then
                 [ -d "$dir" ] && [ -n "$OPENLDAP_USER" ] && \
-                        chown -R $OPENLDAP_USER $dir 2>/dev/null
+                        chown -h -R $OPENLDAP_USER $dir 2>/dev/null
                 [ -d "$dir" ] && [ -n "$OPENLDAP_GROUP" ] && \
-                        chgrp -R $OPENLDAP_GROUP $dir 2>/dev/null
+                        chgrp -h -R $OPENLDAP_GROUP $dir 2>/dev/null
+            else
+                echo "Skipping chown -h of external directory for security reasons. You must manually run:"
+                echo "# chown -h -R $OPENLDAP_USER $dir"
+                echo "# chgrp -h -R $OPENLDAP_GROUP $dir"
+            fi
         done
 }
 
@@ -92,9 +98,9 @@ function chown_database_dirs() {
         ldapdir=`grep ^directory $1 | awk '{print $2}'`
         for dir in $ldapdir; do
                 [ -d "$dir" ] && [ -n "$OPENLDAP_USER" ] && \
-                        chown -R $OPENLDAP_USER $dir 2>/dev/null
+                        chown -h -R $OPENLDAP_USER $dir 2>/dev/null
                 [ -d "$dir" ] && [ -n "$OPENLDAP_GROUP" ] && \
-                        chgrp -R $OPENLDAP_GROUP $dir 2>/dev/null
+                        chgrp -h -R $OPENLDAP_GROUP $dir 2>/dev/null
         done
         includes=`grep ^include $1 | awk '{print $2}'`
         if [ $depth -le 50 ]; then
@@ -112,30 +118,30 @@ GROUP_CMD=""
 [ ! "x$OPENLDAP_CONFIG_BACKEND" = "xldap" ] && SLAPD_CONFIG_ARG="-f /etc/openldap/slapd.conf"
 
 
-# chown backend directories if OPENLDAP_CHOWN_DIRS ist set
+# chown -h backend directories if OPENLDAP_CHOWN_DIRS ist set
 if [ "$(echo "$OPENLDAP_CHOWN_DIRS" | tr 'A-Z' 'a-z')" = "yes" ]; then
     if [ -n "$OPENLDAP_USER" -o -n "$OPENLDAP_GROUP" ]; then
         if [ -n "$OPENLDAP_CONFIG_BACKEND" -a "$OPENLDAP_CONFIG_BACKEND" = "ldap" ]; then
-            chown -R $OPENLDAP_USER /etc/openldap/slapd.d 2>/dev/null
-            chgrp -R $OPENLDAP_GROUP /etc/openldap/slapd.d 2>/dev/null
+            chown -h -R $OPENLDAP_USER /etc/openldap/slapd.d 2>/dev/null
+            chgrp -h -R $OPENLDAP_GROUP /etc/openldap/slapd.d 2>/dev/null
             chown_database_dirs_bconfig "/etc/openldap/slapd.d"
         # assume back-config usage if slapd.conf is not present but slapd.d is
         elif [ ! -f /etc/openldap/slapd.conf -a /etc/openldap/slapd.d ]; then
-            chown -R $OPENLDAP_USER /etc/openldap/slapd.d 2>/dev/null
-            chgrp -R $OPENLDAP_GROUP /etc/openldap/slapd.d 2>/dev/null
+            chown -h -R $OPENLDAP_USER /etc/openldap/slapd.d 2>/dev/null
+            chgrp -h -R $OPENLDAP_GROUP /etc/openldap/slapd.d 2>/dev/null
             chown_database_dirs_bconfig "/etc/openldap/slapd.d"
         else
             chown_database_dirs "/etc/openldap/slapd.conf"
-            chgrp $OPENLDAP_GROUP /etc/openldap/slapd.conf 2>/dev/null
+            chgrp -h $OPENLDAP_GROUP /etc/openldap/slapd.conf 2>/dev/null
         fi
         if test -f /etc/sasl2/slapd.conf ; then
-        chgrp $OPENLDAP_GROUP /etc/sasl2/slapd.conf 2>/dev/null
+        chgrp -h $OPENLDAP_GROUP /etc/sasl2/slapd.conf 2>/dev/null
         chmod 640 /etc/sasl2/slapd.conf 2>/dev/null
         fi
         if [ -n "$OPENLDAP_KRB5_KEYTAB" ]; then
             keytabfile=${OPENLDAP_KRB5_KEYTAB/#FILE:/}
             if test -f $keytabfile ; then
-                chgrp $OPENLDAP_GROUP $keytabfile 2>/dev/null
+                chgrp -h $OPENLDAP_GROUP $keytabfile 2>/dev/null
                 chmod g+r $keytabfile 2>/dev/null
             fi
         fi
@@ -159,7 +165,7 @@ init_ldaps_listener_urls
 
 if [ ! -d $SLAPD_PID_DIR ]; then
     mkdir -p $SLAPD_PID_DIR
-    chown ldap:ldap $SLAPD_PID_DIR
+    chown -h ldap:ldap $SLAPD_PID_DIR
 fi
 echo -n "Starting ldap-server"
 exec $SLAPD_BIN  -h "$LDAP_URLS $LDAPS_URLS $LDAPI_URLS" \

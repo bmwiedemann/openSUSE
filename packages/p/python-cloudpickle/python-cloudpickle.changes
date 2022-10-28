@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 28 12:04:27 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add Move-builtin-classmethod_descriptor-to-a-different-t.patch to fix the
+  tests with python 3.10.8 gh#cloudpipe/cloudpickle#486
+
+-------------------------------------------------------------------
 Sat Oct  1 11:24:59 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2.0:

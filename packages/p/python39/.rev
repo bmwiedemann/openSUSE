@@ -721,4 +721,12 @@
       require perfect forward secrecy (PFS) ciphers.</comment>
     <requestid>1003029</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>0bc9d8ebd1c380b30bc82f2879327c8a</srcmd5>
+    <version>3.9.15</version>
+    <time>1666978114</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1031408</requestid>
+  </revision>
 </revisionlist>

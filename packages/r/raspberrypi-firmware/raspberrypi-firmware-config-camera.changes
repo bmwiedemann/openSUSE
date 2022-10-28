@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct 27 13:34:08 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 13691cee9 (2022-10-26):
+  * firmware: arm_loader: Add vcmailbox support for 256bit OTP
+    customer device key
+    See: raspberrypi/usbboot#163
+  * firmware: il: video_encode: MJPEG is not conditional on
+    being RASPBERRYPI_FULL
+
+
+-------------------------------------------------------------------
 Wed Oct 19 12:09:22 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to ab37ef59f (2022-10-18):

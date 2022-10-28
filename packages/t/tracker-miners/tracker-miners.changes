@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct 26 13:27:29 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.4.1:
+  + Warning fixes to gstreamer extractor.
+  + Silence EXDEV warnings on FANotify monitor failures, likely in
+    some systems.
+  + New handled syscalls in seccomp: set_mempolicy, get_mempolicy,
+    epoll_create1.
+  + Improve performance of lookups of related CUE files for
+    gstreamer media.
+  + Fix memory leaks.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Sep 18 08:36:55 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.4.0:

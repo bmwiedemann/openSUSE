@@ -195,4 +195,12 @@
   * Avoiding null pointer dereference</comment>
     <requestid>920350</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>6571a18c54533e152b2bf893dbce8853</srcmd5>
+    <version>1.1+58.8ca361bab766</version>
+    <time>1666978133</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1031410</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package usbutils
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           usbutils
-Version:        014
+Version:        015
 Release:        0
 Summary:        Tools and libraries for USB devices
 License:        GPL-2.0-or-later
 Group:          Hardware/Other
 URL:            https://sourceforge.net/projects/linux-usb/
-Source0:        https://www.kernel.org/pub/linux/utils/usb/%{name}/%{name}-%{version}.tar.xz
+Source0:        https://github.com/gregkh/usbutils/archive/refs/tags/v%{version}.tar.gz
 Source1:        usbutils-rpmlintrc
 BuildRequires:  autoconf
 BuildRequires:  automake

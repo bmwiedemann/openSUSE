@@ -127,7 +127,7 @@ autoreconf -f
 %configure\
         --enable-pam \
         --without-libcap-ng \
-        --with-pam-dir=/%{_lib}/security
+        --with-pam-dir=%{_pam_moduledir}
 %make_build
 
 %install
@@ -206,7 +206,7 @@ fi
 %{_libdir}/gnome-keyring/devel/gkm-xdg-store-standalone.so
 
 %files pam
-%attr(555,root,root) /%{_lib}/security/*.so
+%attr(555,root,root) %{_pam_moduledir}/*.so
 %{_mandir}/man8/pam_gnome_keyring.8%{?ext_man}
 
 %files lang -f %{name}.lang

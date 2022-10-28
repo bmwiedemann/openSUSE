@@ -13,4 +13,14 @@
     <time>1663781681</time>
     <user>dimstar_suse</user>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>dff4af92fa90faef67089c6be6ab4e37</srcmd5>
+    <version>3.41.0</version>
+    <time>1666978141</time>
+    <user>dimstar_suse</user>
+    <comment>- Have libgcr-3-1 require gcr3-ssh-askpass when gnome-keyring is
+  present: gnome-keyring interacts deeper with this library, which
+  justifies a hard dep in this case (boo#1204071). (forwarded request 1031327 from iznogood)</comment>
+    <requestid>1031451</requestid>
+  </revision>
 </revisionlist>

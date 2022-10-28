@@ -757,4 +757,12 @@
     <comment></comment>
     <requestid>1000473</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>7ed564f661050830b893c2b05abffe95</srcmd5>
+    <version>2.42.10</version>
+    <time>1666978142</time>
+    <user>dimstar_suse</user>
+    <comment>New upstream release (forwarded request 1031331 from iznogood)</comment>
+    <requestid>1031452</requestid>
+  </revision>
 </revisionlist>

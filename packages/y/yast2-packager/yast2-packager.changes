@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 25 10:20:48 UTC 2022 - Steffen Winterfeldt <snwint@suse.com>
+
+- support 'repo' scheme for add-ons (jsc#SLE-22578, jsc#SLE-24584)
+- 4.5.6
+
+-------------------------------------------------------------------
 Thu May 26 12:40:24 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
 - Support managing system in a chroot (bsc#1199840)

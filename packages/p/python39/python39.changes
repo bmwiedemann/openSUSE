@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Oct 21 10:14:03 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add 98437-sphinx.locale._-as-gettext-in-pyspecific.patch to
+  allow building of documentation with the latest Sphinx 5.3.0
+  (gh#python/cpython#98366).
+
+-------------------------------------------------------------------
+Wed Oct 19 07:12:23 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.9.15:
+  - Fix multiplying a list by an integer (list *= int): detect
+    the integer overflow when the new allocated length is close
+    to the maximum size.
+  - Fix a shell code injection vulnerability in the
+    get-remote-certificate.py example script. The script no
+    longer uses a shell to run openssl commands. (originally
+    filed as CVE-2022-37460, later withdrawn)
+  - Fix command line parsing: reject -X int_max_str_digits option
+    with no value (invalid) when the PYTHONINTMAXSTRDIGITS
+    environment variable is set to a valid limit.
+  - When ValueError is raised if an integer is larger than the
+    limit, mention the sys.set_int_max_str_digits() function in
+    the error message.
+  - Update bundled libexpat to 2.4.9
+
+-------------------------------------------------------------------
 Sun Sep 11 08:49:43 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.9.14:

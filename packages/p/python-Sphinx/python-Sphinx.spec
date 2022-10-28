@@ -25,7 +25,7 @@
 %bcond_with test
 %endif
 Name:           python-Sphinx%{psuffix}
-Version:        5.2.3
+Version:        5.3.0
 Release:        0
 Summary:        Python documentation generator
 License:        BSD-2-Clause

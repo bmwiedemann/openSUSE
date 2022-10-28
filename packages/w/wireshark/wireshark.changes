@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Oct 27 08:25:40 UTC 2022 - Robert Frohl <rfrohl@suse.com>
+
+- Wireshark 4.0.1:
+  * Comparing a boolean field against 1 always succeeds on big-endian machines.
+  * Qt: MaxMind GeoIP columns not added to Endpoints table.
+  * Fuzz job crash output: fuzz-2022-10-04-7131.pcap.
+  * The RTP player might not play audio on Windows.
+  * Wireshark 4.0 breaks display filter expression with > sign.
+  * Capture filters not working when using SSH capture and dumpcap.
+  * Packet diagram field values are not terminated.
+  * Packet bytes not displayed completely if scrolling.
+  * Fuzz job crash output: fuzz-2022-10-13-7166.pcap.
+  * Decoding bug H.245 userInput Signal.
+  * CFDP dissector doesn’t handle \"destination filename\" only.
+  * Home page capture button doesn’t pop up capture options dialog.
+  * Missing dot in H.248 protocol name.
+  * Missing dot for protocol H.264 in protocol column.
+  * Fuzz job crash output: fuzz-2022-10-23-7240.pcap.
+- Further features, bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-4.0.1.html
+
+-------------------------------------------------------------------
 Fri Oct  7 06:15:13 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Added an additional desktopfile to start wireshark which asks for

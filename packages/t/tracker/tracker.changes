@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Oct 26 13:18:30 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.4.1:
+  + Fixes to VAPI file.
+  + Fixes to IRI escaping checks in TrackerResource.
+  + Move fts: prefix definition to base ontology.
+  + Improve memory usage of already executed TrackerBatch objects
+    for GC languages.
+  + Replace deprecated egrep tool usage in bash completion script.
+  + Fixes for memory leaks and invalid memory access.
+  + Fix endpoint-side cancellation of client-side D-Bus cancelled
+    queries.
+  + Updated translations.
+- Drop tracker-no-egrep.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Fri Sep 23 13:40:16 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add tracker-no-egrep.patch: Replace usage of egrep with grep -E
