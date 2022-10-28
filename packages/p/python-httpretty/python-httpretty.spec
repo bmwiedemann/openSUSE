@@ -32,6 +32,8 @@ Patch1:         453-fix-tests-pytest.patch
 # PATCH-FIX-OPENSUSE test_double_slash may be replaced with / from stdlib
 # gh#gabrielfalcao/HTTPretty#457
 Patch2:         double-slash-paths.patch
+#PATCH-FIX-UPSTREAM 460-fix-tests-two-miliseconds
+Patch3:         460-miliseconds_tests.patch
 BuildRequires:  %{python_module boto3}
 BuildRequires:  %{python_module eventlet}
 BuildRequires:  %{python_module fakeredis}

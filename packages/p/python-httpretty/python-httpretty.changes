@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 27 16:52:32 UTC 2022 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Add patch 460-miliseconds_tests.patch (gh#gabrielfalcao/HTTPretty#460):
+  * Correct tests for s390x and aarch64 because of timeout failures 
+    after 2 miliseconds
+
+-------------------------------------------------------------------
 Sun Aug  8 09:17:40 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Fix test suite:
