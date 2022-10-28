@@ -1,7 +1,7 @@
 #
 # spec file for package fwnn
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,7 +24,7 @@ Release:        0
 Summary:        FreeWnn Japanese Input System--Server Only
 License:        GPL-2.0-or-later
 Group:          System/I18n/Japanese
-Url:            http://freewnn.sourceforge.jp/
+URL:            http://freewnn.sourceforge.jp/
 # Upstream hasn't released tarball yet.
 # I entered the following commands.
 # cvs -d :pserver:anonymous@cvs.osdn.net:/cvsroot/freewnn export -r freewnn-1-1-1-a023-1 -d FreeWnn-1.1.1-a023.1 FreeWnn
@@ -51,7 +51,7 @@ BuildRequires:  ncurses-devel
 BuildRequires:  tcpd-devel
 Requires:       fwnncom = %{version}
 # %%{_sbindir}/useradd
-Requires(pre):	shadow
+Requires(pre):  shadow
 Conflicts:      wnn6
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -98,7 +98,7 @@ client programs which use FreeWnn for Japanese input.
 %package -n fwnncom
 Summary:        Common Files for FreeWnn
 Group:          System/I18n/Japanese
-Requires(pre):         shadow
+Requires(pre):  shadow
 
 %description -n fwnncom
 This package includes files you need to run FreeWnn, Free cWnn, Free
@@ -111,8 +111,8 @@ Group:          System/I18n/Chinese
 Requires:       fcwnncom = %{version}
 Requires:       fkwnn = %{version}
 Requires:       fwnn = %{version}
-Requires(pre):	shadow
-Requires(post):	fcwnncom
+Requires(pre):  shadow
+Requires(post): fcwnncom
 
 %description -n fcwnn
 Free cWnn Chinese Input System (mainland China).
@@ -121,7 +121,7 @@ Free cWnn Chinese Input System (mainland China).
 Summary:        Free cWnn/tWnn Chinese Input System Common Files (Mainland and Taiwan)
 Group:          System/I18n/Chinese
 Requires:       fwnncom = %{version}
-Requires(pre):	shadow
+Requires(pre):  shadow
 
 %description -n fcwnncom
 This package includes the common files for the Free cWnn and Free tWnn
@@ -152,8 +152,8 @@ Summary:        Free tWnn Chinese Input System (Taiwan)
 Group:          System/I18n/Chinese
 Requires:       fcwnn = %{version}
 Requires:       fcwnncom = %{version}
-Requires(pre):	shadow
-Requires(post):	fcwnncom
+Requires(pre):  shadow
+Requires(post): fcwnncom
 
 %description -n ftwnn
 Free tWnn Chinese input system (Taiwan).
@@ -162,7 +162,7 @@ Free tWnn Chinese input system (Taiwan).
 Summary:        Free kWnn Korean Input System
 Group:          System/I18n/Korean
 Requires:       fwnncom = %{version}
-Requires(pre):	shadow
+Requires(pre):  shadow
 
 %description -n fkwnn
 Free kWnn Korean input system.
@@ -185,6 +185,8 @@ Provides:       fwknndev = %{version}-%{release}
 %description -n fkwnn-devel
 This package contains the header files and libraries for building
 client programs that use the Korean Input System, Free kWnn.
+
+
 
 ######################################################################
 # package xwnmo
@@ -238,7 +240,7 @@ make
 #popd
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+make DESTDIR=%{buildroot} INSTPGMFLAGS= install %{?_smp_mflags}
 make install.man DESTDIR=%{buildroot}
 #pushd Wnn/uum
 #make install DESTDIR=$RPM_BUILD_ROOT INSTPGMFLAGS=

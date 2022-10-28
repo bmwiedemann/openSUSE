@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 25 13:52:29 UTC 2022 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- Fix generation of debuginfo packages. The IMake based build system by
+  default strips binaries during `make install` phase already. Avoid this by
+  overriding the corresponding make variable.
+
+-------------------------------------------------------------------
 Thu Sep 16 07:16:15 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:
