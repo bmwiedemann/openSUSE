@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct 27 17:04:18 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.18.2
+  * Corrected the reported requested forward SIP accuracy and
+    reported fit residuals by to_fits_sip() and to_fits(). [#413,
+    #419]
+  * Fixed a bug due to which the check for divergence in
+    _fit_2D_poly() and hence in to_fits() and to_fits_sip() was
+    ignored. [#414]
+
+-------------------------------------------------------------------
 Thu Mar 17 07:59:13 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.18.1

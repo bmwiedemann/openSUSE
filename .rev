@@ -71,4 +71,18 @@
   * Fix asdf-astropy related test failure (forwarded request 962341 from bnavigator)</comment>
     <requestid>962342</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a0cc709404e14e97c8547b361fc5ae31</srcmd5>
+    <version>0.18.2</version>
+    <time>1666978218</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.18.2
+  * Corrected the reported requested forward SIP accuracy and
+    reported fit residuals by to_fits_sip() and to_fits(). [#413,
+    #419]
+  * Fixed a bug due to which the check for divergence in
+    _fit_2D_poly() and hence in to_fits() and to_fits_sip() was
+    ignored. [#414]</comment>
+    <requestid>1031604</requestid>
+  </revision>
 </revisionlist>

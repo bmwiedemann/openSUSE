@@ -16,10 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 Name:           python-gwcs
-Version:        0.18.1
+Version:        0.18.2
 Release:        0
 Summary:        Generalized World Coordinate System
 License:        BSD-3-Clause
@@ -29,8 +27,8 @@ Source:         https://files.pythonhosted.org/packages/source/g/gwcs/gwcs-%{ver
 BuildRequires:  %{python_module asdf >= 2.8.1}
 BuildRequires:  %{python_module asdf-astropy >= 0.2.0}
 BuildRequires:  %{python_module asdf_wcs_schemas}
-BuildRequires:  %{python_module astropy >= 4.1}
-BuildRequires:  %{python_module base >= 3.6}
+BuildRequires:  %{python_module astropy >= 5.1}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module setuptools_scm}
@@ -40,7 +38,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-asdf >= 2.8.1
 Requires:       python-asdf-astropy >= 0.2.0
 Requires:       python-asdf_wcs_schemas
-Requires:       python-astropy >= 4.1
+Requires:       python-astropy >= 5.1
 Requires:       python-numpy
 Requires:       python-scipy
 BuildArch:      noarch
