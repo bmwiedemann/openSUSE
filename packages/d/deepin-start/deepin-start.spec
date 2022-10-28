@@ -32,6 +32,10 @@ Source99:       deepin-start-rpmlintrc
 # PATCH-FIX-OPENSUSE deepin-start-disable-gobuild-in-makefile.patch hillwood@opensuse.org
 # Use gobuild macro instead of makefile to build go binaries
 Patch0:         deepin-start-disable-gobuild-in-makefile.patch
+%if 0%{?suse_version} > 1500
+# PATCH-FIX-OPENSUSE workaround-dde-kwin-crash.patch hillwood@opensuse.org - Workaround the dde-kwin crash issue
+Patch1:         workaround-dde-kwin-crash.patch
+%endif
 BuildRequires:  fdupes
 BuildRequires:  golang-github-linuxdeepin-dde-api
 BuildRequires:  golang-github-linuxdeepin-go-dbus-factory

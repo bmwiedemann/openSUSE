@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 27 12:21:16 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add workaround-dde-kwin-crash.patch for Tumbleweed, Workaround the 
+  dde-kwin crash issue
+  
+-------------------------------------------------------------------
 Thu Aug 25 02:36:36 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.9.49
