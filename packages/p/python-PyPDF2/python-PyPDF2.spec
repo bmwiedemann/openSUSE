@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-PyPDF2
-Version:        2.11.0
+Version:        2.11.1
 Release:        0
 Summary:        PDF toolkit
 License:        BSD-3-Clause
