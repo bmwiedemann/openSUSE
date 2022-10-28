@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct  4 14:00:46 MDT 2022 - carnold@suse.com
+
+- jsc#PED-2104 [Virt Tools] Refresh Virtualization Tools for Xen
+  and KVM Management
+
+-------------------------------------------------------------------
 Wed Jun 29 09:51:03 MDT 2022 - carnold@suse.com
 
 - bsc#1201064 - Libguestfs: Buffer overflow in get_keys leads

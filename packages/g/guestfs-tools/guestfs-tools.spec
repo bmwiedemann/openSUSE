@@ -66,6 +66,9 @@ BuildRequires:  make
 BuildRequires:  ncurses-devel
 BuildRequires:  ocaml-findlib-devel
 BuildRequires:  ocaml-gettext-devel
+%if 0%{?suse_version} <= 1500
+BuildRequires:  ocaml-gettext-stub-devel
+%endif
 BuildRequires:  ocaml-libguestfs-devel
 BuildRequires:  ocaml-ounit-devel
 BuildRequires:  pcre2-devel
@@ -307,8 +310,16 @@ rm -f $RPM_BUILD_ROOT%{_mandir}/man1/virt-dib.1*
 
 %files man-pages-ja
 %lang(ja) %{_mandir}/ja/man1/*.1*
+%if 0%{?suse_version} <= 1500
+%dir %{_mandir}/ja
+%dir %{_mandir}/ja/man1
+%endif
 
 %files man-pages-uk
 %lang(uk) %{_mandir}/uk/man1/*.1*
+%if 0%{?suse_version} <= 1500
+%dir %{_mandir}/uk
+%dir %{_mandir}/uk/man1
+%endif
 
 %changelog
