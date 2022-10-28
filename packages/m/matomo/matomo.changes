@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 27 19:49:51 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.12.3
+  * matomo-org/matomo
+    - #19905 Fix to apply Tag Manager database update when upgrading from 4.12
+    - #19818 Improve alignment in Visits > real-time by hiding parent of period selector
+
+-------------------------------------------------------------------
 Fri Oct 21 11:32:09 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 4.12.2
