@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Oct 20 17:53:12 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2
+  * Add shell completion of sub-configuration names
+  * Does not work with sub configuration names that contains one
+    or more white spaces.
+
+-------------------------------------------------------------------
+Sat Oct 15 11:17:13 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.1
+  * Fix output line delay
+  * Apply output line delay on lines ending with \n.
+  * On most systems lines ends with \n or \r\n.
+  * Do not print timestamps in hex mode
+  * Improve input mechanism in hex mode
+  * Add support for sending prefix character to serial device
+  * Update example tiorc
+
+-------------------------------------------------------------------
 Sun Sep 11 10:21:41 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.0
