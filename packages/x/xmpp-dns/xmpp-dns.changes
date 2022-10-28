@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 28 13:35:31 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.3.4:
+  * Fix namespace for xmpps-client stream opening (jabber:client
+    instead of jabber:server).
+  * Add from attribute for server-to-server connection test.
+
+-------------------------------------------------------------------
 Tue Oct 18 12:04:13 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.3.3:

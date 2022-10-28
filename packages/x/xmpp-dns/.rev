@@ -37,4 +37,15 @@
   * Fix wrong timeout parsing on some systems.</comment>
     <requestid>1029735</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>90996d781ef5a1c9a9948c6cd6e37a57</srcmd5>
+    <version>0.3.4</version>
+    <time>1666978322</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.4:
+  * Fix namespace for xmpps-client stream opening (jabber:client
+    instead of jabber:server).
+  * Add from attribute for server-to-server connection test.</comment>
+    <requestid>1031969</requestid>
+  </revision>
 </revisionlist>
