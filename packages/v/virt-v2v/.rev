@@ -55,4 +55,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>990311</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>fb8962d352f46e9fa24da5c196b3cfa7</srcmd5>
+    <version>2.0.7</version>
+    <time>1666978212</time>
+    <user>dimstar_suse</user>
+    <comment>Sync with SLE15-SP5 changelog and spec file. Include ocaml compiler fixes for SLE15-SP5</comment>
+    <requestid>1031599</requestid>
+  </revision>
 </revisionlist>

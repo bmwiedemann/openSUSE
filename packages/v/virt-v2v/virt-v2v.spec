@@ -28,6 +28,8 @@ Summary:        Tools to convert a virtual machine to run on KVM
 License:        GPL-2.0-or-later
 Group:          System/Management
 URL:            https://github.com/libguestfs/virt-v2v
+Patch0:         fix-linker-error.patch
+Patch1:         fix-compiler-error-Stdlib.stderr.patch
 Source0:        https://download.libguestfs.org/virt-v2v/%{source_directory}/%{name}-%{version}.tar.gz
 Source1:        https://download.libguestfs.org/virt-v2v/%{source_directory}/%{name}-%{version}.tar.gz.sig
 

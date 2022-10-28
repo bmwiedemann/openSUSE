@@ -1,8 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct  4 14:00:46 MDT 2022 - carnold@suse.com
+
+- jsc#PED-2113 [Virt Tools] Refresh Virtualization Tools for Xen
+  and KVM Management
+
+-------------------------------------------------------------------
 Tue Jul 12 16:03:38 MDT 2022 - carnold@suse.com
 
 - Update to version 2.0.7
   * This is a bug fix release
+  fix-compiler-error-Stdlib.stderr.patch
 - Drop patch contained in new tarball
   CVE-2022-2211-options-fix-buffer-overflow-in-get_keys.patch
 
@@ -52,7 +59,6 @@ Thu May 12 14:40:29 MDT 2022 - carnold@suse.com
     guests. This tool was deprecated and then removed in oVirt 4.3.
   * Deprecated tool virt-v2v-copy-to-local has been removed.
     This was deprecated in November 2018.
-- Drop fix-linker-error.patch
 
 -------------------------------------------------------------------
 Thu Jan  6 15:56:46 MST 2022 - carnold@suse.com
