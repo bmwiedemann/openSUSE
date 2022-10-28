@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Oct 24 19:53:26 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.22.1
+  * add udevadm command parser
+  * add lspci command parser
+  * add pci.ids file parser
+  * fix proc-pid-stat parser for command names with spaces and
+    newlines
+  * enhance ip-address parser to add ip_split field
+  * display until iso-datetime is removed in a future version.
+  * optimize performance of calculated timestamps
+
+-------------------------------------------------------------------
 Sat Jun 18 17:14:53 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.20.1
