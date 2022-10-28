@@ -24,4 +24,22 @@
   asdf-astropy -- gh#astropy/asdf-astropy#82 (forwarded request 980933 from bnavigator)</comment>
     <requestid>980934</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bb3c762e667ab57200a3e44e200abc26</srcmd5>
+    <version>1.0.3</version>
+    <time>1666978215</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v1.0.3
+  * The in progress ASDF Standard is v1.6.0
+  * The stable ASDF Standard is v1.5.0
+  * Update documentation to be consistent with the ASDF library
+    documentation.
+  * Add time-1.2.0 schema to document bugfix requiring additional
+    property to be written from asdf-astropy.
+  * Move packaging to pyproject.toml file from setup.cfg and
+    setup.py files.
+  * Remove tag from within the time-1.1.0 schema.
+  * Remove tag from within the remaining schemas.</comment>
+    <requestid>1031584</requestid>
+  </revision>
 </revisionlist>
