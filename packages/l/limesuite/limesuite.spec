@@ -21,7 +21,7 @@
 %define libname libLimeSuite%{sover}
 %define soapy_modver 0.8
 Name:           limesuite
-Version:        22.09.0
+Version:        22.09.1
 Release:        0
 Summary:        Collection of software supporting LMS7-based hardware
 License:        Apache-2.0
