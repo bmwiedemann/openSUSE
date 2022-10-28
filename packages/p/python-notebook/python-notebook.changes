@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 27 15:11:59 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Add notebook-pr6578+pr6580-404errors.patch
+  * fix 404 errors at startup
+  * gh#jupyter/notebook#6580 -- custom preload
+  * gh#jupyter/notebook#6578 -- jquery from nbclassic
+
+-------------------------------------------------------------------
 Wed Oct 26 10:54:30 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 6.5.1

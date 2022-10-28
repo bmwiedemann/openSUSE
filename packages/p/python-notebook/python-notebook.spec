@@ -43,6 +43,8 @@ Group:          Development/Languages/Python
 URL:            https://github.com/jupyter/notebook
 Source0:        https://files.pythonhosted.org/packages/source/n/notebook/notebook-%{version}.tar.gz
 Source100:      python-notebook-rpmlintrc
+# PATCH-FIX-UPSTREAM notebook-pr6578+pr6580-404errors.patch gh#jupyter/notebook#6578 gh#jupyter/notebook#6580
+Patch1:         notebook-pr6578+pr6580-404errors.patch
 BuildRequires:  %{python_module jupyter-packaging >= 0.9}
 BuildRequires:  %{python_module nbclassic >= 0.4.0}
 BuildRequires:  %{python_module setuptools}
@@ -164,7 +166,7 @@ interactive computing.
 This package pulls in the LaTeX dependencies for the Jupyter Notebook.
 
 %prep
-%setup -q -n notebook-%{version}
+%autosetup -p1 -n notebook-%{version}
 # unpin nbclassic (see https://github.com/jupyter/notebook/pull/6593)
 sed -i 's/nbclassic==/nbclassic>=/' setup.py
 
