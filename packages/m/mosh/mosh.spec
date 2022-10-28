@@ -18,7 +18,7 @@
 
 
 Name:           mosh
-Version:        1.4.0.rc1
+Version:        1.4.0
 Release:        0
 Summary:        The mobile shell
 License:        GPL-3.0-or-later

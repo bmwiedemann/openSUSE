@@ -3,7 +3,7 @@
     <param name="url">https://github.com/mobile-shell/mosh.git</param>
     <param name="scm">git</param>
     <param name="revision">master</param>
-    <param name="version">1.4.0.rc1</param>
+    <param name="version">1.4.0</param>
     <param name="versionrewrite-pattern">(.*)</param>
   </service>
   <service name="tar" mode="disabled"/>

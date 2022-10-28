@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Oct 27 14:12:48 UTC 2022 - Pavel Dostál <pdostal@suse.com>
+
+- Update to version 1.4.0:
+  * New features:
+    Support OSC 52 clipboard copy integration (Alex Cornejo)
+    Allow non-inserting prediction (--predict-overwrite) (John Hood)
+    Don't do prediction on large pastes into mosh-client (John Hood)
+    Add true color support (Kang Jianbin)
+    Add syslog logging of connections (Tom Judge)
+    If exec()ing the remote command fails, pause briefly (John Hood)
+
+  * Bug fixes:
+    ignore unknown renditions (Keith Winstein)
+    Overlays were getting set to the wrong colors (John Hood)
+    Fix issue with incorrect true-color background erase colors (John Hood)
+    Use HAVE_UTEMPTER instead of HAVE_UPTEMPTER (Michael Jarvis)
+    Apply latest consecutive resize, not earliest (Peter Edwards)
+    Use CLOCK_MONOTONIC_RAW when available (Harry Sintonen)
+    Add tmux and alacritty to title_term_types (Naïm Favier)
+    Don't sometimes hang just after launching ssh (Kalle Samuels)
+
+  * Internal changes:
+    Reformat printed strings in source (John Hood)
+    Code cleanups (John Hood, Anders Kaseorg, Benjamin Barenblat, Alex Chernyakhovsky)
+    Always use non-blocking sockets for recvmsg() (John Hood)
+    Add Perl compile (John Hood)
+    Improvements to the test suite (John Hood)
+    Fixes to autoconf configure (Anders Kaseorg)
+    Cleanups to our cryptography code (Benjamin Barenblat, Alex Chernyakhovsky)
+
+  * Infrastructure changes:
+    Add support for OCLint static checker (John Hood)
+    Switch from Travis-CI to Github Actions (Wolfgang E. Sanyer, Alex Chernyakhovsky)
+    Add code coverage and fuzzing infrastructure (Alex Chernyakhovsky)
+
+-------------------------------------------------------------------
 Thu Aug 04 05:39:16 UTC 2022 - pdostal@suse.com
 
 - Update to version 1.4.0.rc1:
