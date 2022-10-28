@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 25 11:20:14 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Enable build on riscv64
+
+-------------------------------------------------------------------
 Tue Oct 11 19:43:02 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Fails to build on i586 - build only for "x86_64 %{arm} aarch64"

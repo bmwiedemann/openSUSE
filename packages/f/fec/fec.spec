@@ -31,7 +31,7 @@ Patch1:         fec-fix-cmake-pkgconfig-whitespace.patch
 BuildRequires:  cmake
 BuildRequires:  git-core
 BuildRequires:  pkgconfig
-ExclusiveArch:  x86_64 %{arm} aarch64
+ExclusiveArch:  x86_64 %{arm} aarch64 riscv64
 
 %description
 A library that provides a set of functions that implement several
