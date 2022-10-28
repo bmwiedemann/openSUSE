@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 27 13:12:40 UTC 2022 - C J <c.j@tuta.io>
+
+- update to 1.29:
+  * Fix font name quoting in Gtk CSS
+  * Update translations
+
+-------------------------------------------------------------------
 Sun Apr 10 13:39:48 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.28.1:

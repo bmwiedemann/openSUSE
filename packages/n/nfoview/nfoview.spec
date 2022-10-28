@@ -17,14 +17,13 @@
 
 
 Name:           nfoview
-Version:        1.28.1
+Version:        1.29
 Release:        0
 Summary:        Simple Viewer for NFO Files
 License:        GPL-3.0-or-later
 Group:          Productivity/Text/Utilities
 URL:            https://otsaloma.io/nfoview/
 Source:         https://github.com/otsaloma/nfoview/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  fdupes
 BuildRequires:  gettext
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python3-devel
@@ -45,12 +44,11 @@ clickable hyperlinks.
 %autosetup -p1
 
 %build
-%python3_build
+%make_build
 
 %install
-%python3_install
+%make_install PREFIX=/usr
 %suse_update_desktop_file -r io.otsaloma.nfoview Office Viewer
-%python_expand %fdupes %{buildroot}%{$python_sitelib}/%{name}
 %find_lang %{name}
 
 %files
