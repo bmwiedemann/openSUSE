@@ -16,4 +16,24 @@
     <comment></comment>
     <requestid>961494</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d689fac6ba27318cba724f75539611e2</srcmd5>
+    <version>0.3.0</version>
+    <time>1666978216</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.3.0
+  * Add schemas to properly support bounding_box and
+    compound_bounding_box.
+  * Add fixed and bounds to base transform schema to properly
+    document them.
+  * Add input_units_equivalencies to base transform schema to
+    properly document it.
+  * Update spline1d schema.
+  * Add Schechter1D schema.
+  * Fix fix_inputs tag bug.
+  * Create docs for package.
+  * Move packaging configuration to pyproject.toml.
+  * Remove unnecessary tag: entry from all schemas.</comment>
+    <requestid>1031586</requestid>
+  </revision>
 </revisionlist>

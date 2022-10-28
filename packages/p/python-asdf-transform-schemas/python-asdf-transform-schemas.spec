@@ -25,17 +25,18 @@
 %bcond_with test
 %endif
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 Name:           python-asdf-transform-schemas%{psuffix}
-Version:        0.2.2
+Version:        0.3.0
 Release:        0
 Summary:        ASDF schemas for transforms
 License:        BSD-3-Clause
 URL:            https://github.com/asdf-format/asdf-transform-schemas
 Source:         https://files.pythonhosted.org/packages/source/a/asdf-transform-schemas/asdf_transform_schemas-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools >= 42}
+BuildRequires:  %{python_module setuptools_scm >= 3.4}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-asdf-standard >= 1.0.1
@@ -47,6 +48,7 @@ BuildRequires:  %{python_module asdf-transform-schemas = %{version}}
 BuildRequires:  %{python_module asdf}
 BuildRequires:  %{python_module pytest}
 %endif
+Provides:       python-asdf_transform_schemas = %{version}-%{release}
 BuildArch:      noarch
 %python_subpackages
 
@@ -55,13 +57,16 @@ ASDF schemas for transforms
 
 %prep
 %setup -q -n asdf_transform_schemas-%{version}
+sed -i "/addopts = '--color=yes'/d" pyproject.toml
 
+%if !%{with test}
 %build
-%python_build
+%pyproject_wheel
+%endif
 
 %if !%{with test}
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
