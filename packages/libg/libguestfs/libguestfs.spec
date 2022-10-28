@@ -406,7 +406,9 @@ for guestfish, guestmount and various virt-* tools.
 Summary:        Additional dependencies for inspecting guest icons
 BuildArch:      noarch
 Requires:       %{name} = %{version}-%{release}
+%if 0%{?suse_version} > 1500
 Requires:       icoutils
+%endif
 
 %description inspect-icons
 %{name}-inspect-icons is a metapackage that pulls in additional

@@ -974,4 +974,12 @@
     <comment></comment>
     <requestid>1030893</requestid>
   </revision>
+  <revision rev="86" vrev="4">
+    <srcmd5>99a7f45824cdf5990358b86cf82882fc</srcmd5>
+    <version>1.48.4</version>
+    <time>1666978210</time>
+    <user>dimstar_suse</user>
+    <comment>Sync with SLE15-SP5 changelog and spec file.</comment>
+    <requestid>1031589</requestid>
+  </revision>
 </revisionlist>
