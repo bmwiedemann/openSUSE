@@ -20,7 +20,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-asyncclick
-Version:        8.1.3.2
+Version:        8.1.3.4
 Release:        0
 Summary:        A wrapper around optparse for command line utilities
 License:        BSD-3-Clause
