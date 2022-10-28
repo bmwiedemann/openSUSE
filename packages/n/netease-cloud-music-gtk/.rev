@@ -122,4 +122,18 @@
 </comment>
     <requestid>998626</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d88479b40e74ec41094d9982b4480c27</srcmd5>
+    <version>2.0.3</version>
+    <time>1666978292</time>
+    <user>dimstar_suse</user>
+    <comment>- Release version 2.0.3
+ + Add volume settings.
+ + Update dependency version.
+ + Update translation.
+ + Optimize page style.
+ + Update project description.
+</comment>
+    <requestid>1031836</requestid>
+  </revision>
 </revisionlist>
