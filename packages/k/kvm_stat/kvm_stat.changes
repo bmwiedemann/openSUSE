@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 28 14:24:29 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Fix security issue about debugfs described in bsc#1202924
+  * Added patches:
+    tools-kvm_stat-fix-attack-vector-with-user-controlle.patch
+
+-------------------------------------------------------------------
 Wed Aug 31 13:38:21 UTC 2022 - Stefan Schubert <schubi@intern>
 
 - Migration to /usr/etc: Saving user changed configuration files

@@ -47,6 +47,8 @@ Patch05:        add-command-line-switch-z-skip-zero-records.patch
 Patch06:        add-command-line-switch-L-to-log-file.patch
 Patch07:        add-sample-systemd-unit.patch
 Patch08:        add-restart-delay.patch
+# PAtch 09 is for bsc#1202924
+Patch09:        tools-kvm_stat-fix-attack-vector-with-user-controlle.patch
 
 %define XXX This package provides a userspace tool "kvm_stat", which displays KVM vm exit \
 information as a means of monitoring vm behavior. The data is taken from the\
@@ -85,6 +87,7 @@ There is no reason to install this package.
 %patch07 -p1
 %patch08 -p1
 %endif
+%patch09 -p1
 
 %build
 make -C tools/kvm/kvm_stat %{?_smp_mflags}
