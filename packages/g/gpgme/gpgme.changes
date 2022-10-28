@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Thu Aug 18 20:30:13 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- gpgme 1.18.0
+  * New keylist mode to force refresh via external methods
+  * The keylist operations now create an import result to report the
+    result of the locate keylist modes
+  * core: Return BAD_PASSPHRASE error code on symmetric decryption
+    failure
+  * cpp, qt: Do not export internal symbols anymore
+  * cpp, qt: Support revocation of own OpenPGP keys
+  * qt: The file name of (signed and) encrypted data can now be set
+  * cpp, qt: Support setting the primary user ID
+  * python: Fix segv(NULL) when inspecting contect after exeception
+- includes changes from version 1.17.1:
+  * qt: Fix a bug in the ABI compatibility of 1.17.0
+- includes changes from 1.17.0:
+  * New context flag "key-origin"
+  * New context flag "import-filter"
+  * New export mode to export secret subkeys
+  * Detect errors during the export of secret keys
+  * New function gpgme_op_receive_keys to import keys from a keyserver
+    without first running a key listing
+  * Detect bad passphrase error in certificate import
+  * Allow setting --key-origin when importing keys
+  * Support components "keyboxd", "gpg-agent", "scdaemon", "dirmngr",
+    "pinentry", and "socketdir" in gpgme_get_dirinfo
+  * Under Unix use poll(2) instead of select(2), when available.
+  * Fix results returned by gpgme_data_* functions
+  * Support closefrom also for glibc
+    (drop upstream gpgme-use-glibc-closefrom.patch
+  * cpp,qt: Add support for export of secret keys and secret subkeys.
+  * cpp,qt: Support for adding existing subkeys to other keys
+  * qt: Extend ChangeExpiryJob to change expiration of primary key
+    and of subkeys at the same time
+  * qt: Support WKD lookup without implicit import
+  * qt: Allow specifying an import filter when importing keys
+  * qt: Allow retrieving the default value of a config entry
+- drop patches included upstream
+  * gpgme-1.16.0-Use-after-free-in-t-edit-sign-test.patch
+  * gpgme-1.16.0-t-various-testSignKeyWithExpiration-32-bit.patch
+- add patches to fix tests:
+  * gpgme-1.18.0-T6137-qt_test.patch
+
+-------------------------------------------------------------------
 Fri Dec 24 13:05:32 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Add patches to support building bindings packages for

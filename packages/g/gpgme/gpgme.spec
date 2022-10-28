@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@
 %endif
 %{!?python_module:%define python_module() python-%{**} python3-{**}}
 Name:           gpgme%{psuffix}
-Version:        1.16.0
+Version:        1.18.0
 Release:        0
 Summary:        Programmatic library interface to GnuPG
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -43,14 +43,12 @@ Source2:        baselibs.conf
 Source3:        gpgme.keyring
 # used to have a fixed timestamp
 Source99:       gpgme.changes
-Patch0:         gpgme-1.16.0-Use-after-free-in-t-edit-sign-test.patch
-Patch1:         gpgme-1.16.0-t-various-testSignKeyWithExpiration-32-bit.patch
-# PATCH-FIX-UPSTREAM bsc#1189089 Use glibc's closefrom
-Patch2:         gpgme-use-glibc-closefrom.patch
 # PATCH-FIX-UPSTREAM support python 3.10  -- https://dev.gnupg.org/D545
 Patch3:         gpgme-D545-python310.patch
 # PATCH-FIX-UPSTREAM support python 3.10  -- https://dev.gnupg.org/D546
 Patch4:         gpgme-D546-python310.patch
+# PATCH-FIX-UPSTREAM fix qt tests -- https://dev.gnupg.org/T6137
+Patch5:         gpgme-1.18.0-T6137-qt_test.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -185,12 +183,12 @@ management.
 This package contains the bindings to use the library from Python 3 applications.
 %endif
 
-%package -n libqgpgme7
+%package -n libqgpgme15
 Summary:        Programmatic Qt library interface to GnuPG
 Group:          System/Libraries
 Requires:       gpg2
 
-%description -n libqgpgme7
+%description -n libqgpgme15
 GnuPG Made Easy (GPGME) is a library designed to make access to GnuPG
 easier for applications. It provides a high-level crypto API for
 encryption, decryption, signing, signature verification, and key
@@ -203,7 +201,7 @@ Summary:        Development files for libqgpgme, a Qt library for accessing GnuP
 Group:          Development/Libraries/C and C++
 Requires:       libgpgme-devel = %{version}
 Requires:       libgpgmepp-devel = %{version}
-Requires:       libqgpgme7 = %{version}
+Requires:       libqgpgme15 = %{version}
 
 %description -n libqgpgme-devel
 GnuPG Made Easy (GPGME) is a library designed to make access to GnuPG
@@ -215,14 +213,12 @@ This package contains the bindings to use the library in Qt C++ applications.
 
 %prep
 %setup -q -n gpgme-%{version}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
 %patch3 -p1
 %patch4 -p1
-./autogen.sh
+%patch5 -p1
 
 %build
+./autogen.sh
 build_timestamp=$(date -u +%{Y}-%{m}-%{dT}%{H}:%{M}+0000 -r %{SOURCE99})
 languages="cl cpp"
 
@@ -263,8 +259,8 @@ rm -r %{buildroot}%{_libdir}/pkgconfig/gpgme*
 %endif
 
 %if %{with qt}
-%post -n libqgpgme7 -p /sbin/ldconfig
-%postun -n libqgpgme7 -p /sbin/ldconfig
+%post -n libqgpgme15 -p /sbin/ldconfig
+%postun -n libqgpgme15 -p /sbin/ldconfig
 %endif
 
 %if !%{with qt}
@@ -323,7 +319,7 @@ rm -r %{buildroot}%{_libdir}/pkgconfig/gpgme*
 %endif
 
 %if %{with qt}
-%files -n libqgpgme7
+%files -n libqgpgme15
 %license COPYING COPYING.LESSER LICENSES
 %{_libdir}/libqgpgme.so.*
 
