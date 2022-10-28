@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Oct 27 05:09:14 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.1+20221027.e42809ff:
+  * Packaging: create /var/log/crmsh with tmpfiles.d
+  * fix: behave: mkdir /var/log/crmsh in docker image
+  * Fix: log: ownership and mode of log files should be set in RotatingFileHandler
+  * Fix: #977 crmsh not working when using ACL
+  * fix: log: fail to open log file even if user is in haclient group (bsc#1204670)
+
+-------------------------------------------------------------------
+Wed Oct 26 01:27:08 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.1+20221026.a0f9a70f:
+  * fix: userdir: race condition during directory creation
+
+-------------------------------------------------------------------
 Tue Oct 25 03:30:02 UTC 2022 - Nicholas Yang <nicholas.yang@suse.com>
 
 - Packaging: create /var/log/crmsh with tmpfiles.d (bsc#1204670)
