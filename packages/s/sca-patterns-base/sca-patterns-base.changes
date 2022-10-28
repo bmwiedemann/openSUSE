@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 26 19:12:21 UTC 2022 - jason.record@suse.com
+
+- Changes to version 1.5.1
+  + Fixed UnicodeDecodeError when reading files (bsc#1204723)
+
+-------------------------------------------------------------------
 Thu Nov  4 21:56:53 UTC 2021 - Jason Record <jason.record@suse.com>
 
 - Changes to updated version 1.5.0

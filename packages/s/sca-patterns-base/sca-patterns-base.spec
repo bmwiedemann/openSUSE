@@ -1,7 +1,7 @@
 #
 # spec file for package sca-patterns-base
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,12 +24,12 @@
 %define patgrp root
 
 Name:           sca-patterns-base
-Version:        1.5.0
+Version:        1.5.1
 Release:        0
 Summary:        Supportconfig Analysis Pattern Base Libraries
 License:        GPL-2.0-only
-Group:          System/Monitoring
 URL:            https://github.com/g23guy/sca-patterns-base
+Group:          System/Monitoring
 Source:         %{name}-%{version}.tar.gz
 Requires:       bash
 Requires:       perl
@@ -37,7 +37,7 @@ Requires:       python3-base
 BuildArch:      noarch
 
 %description
-Supportconfig Analysis (SCA) appliance pattern base libraries used 
+Supportconfig Analysis (SCA) appliance pattern base libraries used
 by all patterns
 
 %prep
