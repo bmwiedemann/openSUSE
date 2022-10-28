@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Fri Oct 28 10:32:37 UTC 2022 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#901
+- set used feature flag for quota (bsc#1204773)
+- 4.5.48
+
+--------------------------------------------------------------------
 Tue Oct 18 13:28:26 UTC 2022 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#900
