@@ -17,8 +17,8 @@ index bff03e88..1832ad42 100644
  
  FILE ( GLOB_RECURSE	ly_source_files ${ly_src_dir}/*.cc )
 @@ -22,9 +21,6 @@ LIST ( SORT			ly_unittest_sources )
- 
- INCLUDE_DIRECTORIES( BEFORE ${ly_inc_dir} )
+   ADD_DEFINITIONS ( -D_CRT_SECURE_NO_WARNINGS )
+ endif()
  
 -# this creates the static library (.a)
 -ADD_LIBRARY				( ${ly_lib_static} STATIC ${ly_source_files} )

@@ -9,7 +9,7 @@ index 1832ad42..854aea7f 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -28,15 +28,9 @@ SET_TARGET_PROPERTIES	( ${ly_lib_shared} PROPERTIES PREFIX "lib" )
- INCLUDE ( CM_linux_packages.cmake )
+ INCLUDE	( CM_linux_packages.cmake )
  SET_TARGET_PROPERTIES	( ${ly_lib_shared} PROPERTIES VERSION ${YUV_VERSION} SOVERSION ${YUV_VER_MAJOR} )
  
 -# this creates the conversion tool

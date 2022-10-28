@@ -2,7 +2,7 @@
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://chromium.googlesource.com/libyuv/libyuv.git</param>
-    <param name="revision">d248929c059ff7629a85333699717d7a677d8d96</param>
+    <param name="revision">f9fda6e7d819c07a684ba6bc97cbf0e257bbcb37</param>
     <param name="versionformat">%cd+%h</param>
     <param name="changesgenerate">enable</param>
   </service>

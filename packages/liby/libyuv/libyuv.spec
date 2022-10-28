@@ -15,8 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           libyuv
-Version:        20220713+d248929c
+Version:        20220920+f9fda6e
 Release:        0
 Summary:        YUV scaling and conversion library
 License:        BSD-3-Clause
@@ -31,8 +32,8 @@ Patch2:         Disable-static-library.patch
 Patch3:         Don-t-install-conversion-tool.patch
 Patch4:         Use-library-suffix-during-installation.patch
 Patch5:         Link-main-library-against-libjpeg.patch
-BuildRequires:  gcc-c++
 BuildRequires:  cmake
+BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libjpeg)
 
@@ -72,11 +73,11 @@ prefix=%{_prefix}
 exec_prefix=\${prefix}
 includedir=%{_includedir}
 libdir=%{_libdir}
- 
-Name: %{name}
-Description: %{summary}
-Version: ${rversion}
-Libs: -lyuv
+
+Name:  %{name}
+Description:  %{summary}
+Version:  ${rversion}
+Libs:  -lyuv
 EOF
 
 %cmake
