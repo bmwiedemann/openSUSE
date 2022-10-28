@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 28 08:54:51 UTC 2022 - Egbert Eich <eich@suse.com>
+
+- Add Provides: and Obsoletes: to attempt to mark this as a possible
+  replacement for the original singularity package which has been
+  discontinued.
+
+-------------------------------------------------------------------
 Mon Aug  8 13:35:03 UTC 2022 - Christian Goll <cgoll@suse.com>
 
 - Fixed i586 builds

@@ -7,4 +7,14 @@
     <comment>Community edition of singularity.</comment>
     <requestid>993794</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>bee28eec459da904893f8b0cd6807fba</srcmd5>
+    <version>3.10.2</version>
+    <time>1666978301</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Provides: and Obsoletes: to attempt to mark this as a possible
+  replacement for the original singularity package which has been
+  discontinued. (forwarded request 1031910 from eeich)</comment>
+    <requestid>1031912</requestid>
+  </revision>
 </revisionlist>

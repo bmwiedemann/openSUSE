@@ -32,6 +32,8 @@ Version:        3.10.2
 Release:        0
 License:        Apache-2.0 AND BSD-3-Clause-LBNL
 URL:            https://www.sylabs.io/singularity/
+Provides:       singularity
+Obsoletes:      singularity <= 3.8.5
 Source:         https://github.com/sylabs/singularity/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Source1:        README.SUSE
 Patch1:         useful_error_message.patch
@@ -90,7 +92,6 @@ export GOPATH=$PWD/gopath
 mkdir -p "$GOPATH"
 # remove stray binary https://github.com/sylabs/singularity/issues/941
 rm third_party/conmon/bin/conmon
-
 
 # Not all of these parameters currently have an effect, but they might be
 #  used someday.  They are the same parameters as in the configure macro.
