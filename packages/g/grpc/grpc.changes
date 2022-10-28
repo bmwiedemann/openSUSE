@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 28 09:58:50 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to release 1.50.1
+  Fix Bazel 4 support and objc bazel tests on python3.9 (#31410)
+
+-------------------------------------------------------------------
 Fri Oct 14 18:04:19 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - Update to release 1.50.0

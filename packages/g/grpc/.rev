@@ -427,4 +427,13 @@ put together with abseil-cpp</comment>
 Note: In my home project this only builds on Factory/Tumbleweed. (forwarded request 1011023 from stroeder)</comment>
     <requestid>1011025</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>475707a5f01c58cd9017b6184fd3505e</srcmd5>
+    <version>1.50.1</version>
+    <time>1666978307</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.50.1
+  Fix Bazel 4 support and objc bazel tests on python3.9 (#31410) (forwarded request 1031924 from stroeder)</comment>
+    <requestid>1031934</requestid>
+  </revision>
 </revisionlist>
