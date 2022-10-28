@@ -175,4 +175,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>977078</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>662fe310a16d873bb6e8a1003c00fb34</srcmd5>
+    <version>1.5.3</version>
+    <time>1666978229</time>
+    <user>dimstar_suse</user>
+    <comment>Factory Ready (forwarded request 1031621 from jrecord)</comment>
+    <requestid>1031622</requestid>
+  </revision>
 </revisionlist>

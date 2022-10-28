@@ -25,7 +25,7 @@
 %define category SLE
 
 Name:           sca-patterns-sle15
-Version:        1.5.1
+Version:        1.5.3
 Release:        0
 Summary:        Supportconfig Analysis Patterns for SLE15
 License:        GPL-2.0-only
@@ -81,6 +81,5 @@ install -m %{mode} patterns/%{category}/sle15sp4/* %{buildroot}/%{patdir}/%{cate
 %attr(%{mode},%{patuser},%{patgrp}) %{patdir}/%{category}/sle15sp2/*
 %attr(%{mode},%{patuser},%{patgrp}) %{patdir}/%{category}/sle15sp3/*
 %attr(%{mode},%{patuser},%{patgrp}) %{patdir}/%{category}/sle15sp4/*
-%attr(444,%{patuser},%{patgrp}) %{patdir}/%{category}/sle15sp4/README
 
 %changelog
