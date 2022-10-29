@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-glfw
-Version:        2.5.4
+Version:        2.5.5
 Release:        0
 Summary:        A ctypes-based wrapper for GLFW3
 License:        MIT
