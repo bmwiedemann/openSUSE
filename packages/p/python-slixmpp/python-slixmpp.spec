@@ -1,7 +1,7 @@
 #
 # spec file for package python-slixmpp
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define skip_python36 1
 %define _name   slixmpp
 Name:           python-slixmpp
-Version:        1.7.1
+Version:        1.8.2
 Release:        0
 Summary:        Python XMPP (Jabber) Library that Implements Everything as a Plugin
 License:        MIT
