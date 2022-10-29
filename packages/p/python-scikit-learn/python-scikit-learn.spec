@@ -43,7 +43,7 @@
 # enable pytest color output for local debugging: osc --with pytestcolor
 %bcond_with pytestcolor
 Name:           python-scikit-learn%{psuffix}
-Version:        1.1.2
+Version:        1.1.3
 Release:        0
 Summary:        Python modules for machine learning and data mining
 License:        BSD-3-Clause
@@ -104,6 +104,7 @@ sed -i '/--color=yes/d' setup.cfg
 
 %build
 %if !%{with test}
+export CFLAGS="%{optflags}"
 %python_build
 %endif
 
