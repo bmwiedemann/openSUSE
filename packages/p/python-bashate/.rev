@@ -112,4 +112,15 @@
     <comment></comment>
     <requestid>959943</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>abc2cca0d790d3b01f7a4f9f223cd5d6</srcmd5>
+    <version>2.1.1</version>
+    <time>1667067452</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1031651 from yarunachalam
+
+- Update to 2.1.1: 
+    * No upstream changelog</comment>
+    <requestid>1032179</requestid>
+  </revision>
 </revisionlist>
