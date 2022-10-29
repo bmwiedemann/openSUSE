@@ -352,4 +352,35 @@
   * Fix /static performance regression from Hugo 0.103.0 (forwarded request 1006254 from jfkw)</comment>
     <requestid>1006255</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>30a6ad322589bdf71de3f5857217c601</srcmd5>
+    <version>0.105.0</version>
+    <time>1667067411</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.105.0:
+  * build(deps): bump golang.org/x/tools from 0.1.12 to 0.2.0
+  * build(deps): bump github.com/getkin/kin-openapi from 0.106.0 to 0.107.0
+  * build(deps): bump golang.org/x/text from 0.3.7 to 0.4.0
+  * build(deps): bump github.com/spf13/cobra from 1.5.0 to 1.6.1
+  * build(deps): bump github.com/getkin/kin-openapi from 0.103.0 to 0.106.0
+  * build(deps): bump github.com/tdewolff/minify/v2 from 2.12.1 to 2.12.4
+  * Revise the fix for shortcode vs output format nilpointer
+  * Avoid nilpointer when shortcode page content output nil
+  * livereload: Use text/javascript here, too
+  * media: Rename application/javascript, application/typescript to text/javascript etc.
+  * build(deps): bump github.com/yuin/goldmark from 1.4.15 to 1.5.2
+  * build(deps): bump github.com/fsnotify/fsnotify from 1.5.4 to 1.6.0
+  * Skip flakey server tests on GitHub Action on Windows
+  * build(deps): bump github.com/magefile/mage from 1.13.0 to 1.14.0
+  * github: Avoid duplicate test runs
+  * tpl/encoding: Add noHTMLEscape option to jsonify
+  * build(deps): bump github.com/evanw/esbuild from 0.15.9 to 0.15.12
+  * Update Go and Alpine version in Dockerfile
+  * Don't use self-closing generator tag
+  * build: Update to Go 1.19.2
+  * github: Use SHA versions
+  * Resolve dependency-path not found error in workflow
+  * Use setup-go action to cache dependencies</comment>
+    <requestid>1032075</requestid>
+  </revision>
 </revisionlist>

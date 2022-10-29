@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri Oct 28 21:38:57 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 0.105.0:
+  * build(deps): bump golang.org/x/tools from 0.1.12 to 0.2.0
+  * build(deps): bump github.com/getkin/kin-openapi from 0.106.0 to 0.107.0
+  * build(deps): bump golang.org/x/text from 0.3.7 to 0.4.0
+  * build(deps): bump github.com/spf13/cobra from 1.5.0 to 1.6.1
+  * build(deps): bump github.com/getkin/kin-openapi from 0.103.0 to 0.106.0
+  * build(deps): bump github.com/tdewolff/minify/v2 from 2.12.1 to 2.12.4
+  * Revise the fix for shortcode vs output format nilpointer
+  * Avoid nilpointer when shortcode page content output nil
+  * livereload: Use text/javascript here, too
+  * media: Rename application/javascript, application/typescript to text/javascript etc.
+  * build(deps): bump github.com/yuin/goldmark from 1.4.15 to 1.5.2
+  * build(deps): bump github.com/fsnotify/fsnotify from 1.5.4 to 1.6.0
+  * Skip flakey server tests on GitHub Action on Windows
+  * build(deps): bump github.com/magefile/mage from 1.13.0 to 1.14.0
+  * github: Avoid duplicate test runs
+  * tpl/encoding: Add noHTMLEscape option to jsonify
+  * build(deps): bump github.com/evanw/esbuild from 0.15.9 to 0.15.12
+  * Update Go and Alpine version in Dockerfile
+  * Don't use self-closing generator tag
+  * build: Update to Go 1.19.2
+  * github: Use SHA versions
+  * Resolve dependency-path not found error in workflow
+  * Use setup-go action to cache dependencies
+
+-------------------------------------------------------------------
+Tue Oct 04 14:49:57 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 0.104.3:
+  * resources: Update golden image dithering exception list
+  * resources/images: Fix 2 animated GIF resize issues
+  * server: Fix flaky TestServerPathEncodingIssues tests
+  * commands: Remove extraneous newline from result of convert toTOML
+  * config/security: Fix filename
+
+-------------------------------------------------------------------
+Tue Oct 04 14:49:29 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 0.104.2:
+  * Fix htimes /: operation not permitted error on config changes
+
+-------------------------------------------------------------------
 Mon Sep 26 20:33:23 UTC 2022 - jkowalczyk@suse.com
 
 - Update to version 0.104.1:
