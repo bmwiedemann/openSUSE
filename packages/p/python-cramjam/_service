@@ -13,11 +13,12 @@
     <param name="compression">xz</param>
   </service>
   <service mode="disabled" name="set_version"/>
-  <service name="cargo_audit" mode="disabled">
-     <param name="srcdir">pyrus-cramjam</param>
-  </service>
   <service name="cargo_vendor" mode="disabled">
      <param name="srcdir">pyrus-cramjam</param>
      <param name="compression">xz</param>
+     <param name="update">true</param>
+  </service>
+  <service name="cargo_audit" mode="disabled">
+     <param name="srcdir">pyrus-cramjam</param>
   </service>
 </services>
