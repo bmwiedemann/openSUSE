@@ -45,7 +45,7 @@
 # Set this to 1 for fixing bugs.
 %define debugbuild 0
 
-# Find the version of python3 that blender is going to build against.
+# Define the version of python3 that blender is going to build against.
 %define py3ver 3.10
 %define py3pkg python310
 
@@ -67,7 +67,7 @@
 %bcond_with openxr
 
 Name:           blender
-Version:        3.3.0
+Version:        3.3.1
 Release:        0
 Summary:        A 3D Modelling And Rendering Package
 License:        GPL-2.0-or-later
@@ -153,7 +153,7 @@ BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libzstd)
-BuildRequires:  pkgconfig(python-3.9)
+BuildRequires:  pkgconfig(python-%{py3ver})
 BuildRequires:  pkgconfig(sndfile)
 %ifarch x86_64
 # oneVPL only available on x86_64 atm

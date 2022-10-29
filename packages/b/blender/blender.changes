@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Oct 23 17:33:34 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Clarify current python dependency
+
+-------------------------------------------------------------------
+Sun Oct  9 17:21:18 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to 3.3.1:
+  https://www.blender.org/download/releases/3-3/
+  https://wiki.blender.org/wiki/Reference/Release_Notes/3.3
+
+-------------------------------------------------------------------
 Tue Sep 13 07:17:18 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - oneVPL only available on x86_64 atm, so disable it on all other
