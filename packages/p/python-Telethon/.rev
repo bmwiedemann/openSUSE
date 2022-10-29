@@ -291,4 +291,12 @@
   * Revert &quot;Make sessions async&quot;</comment>
     <requestid>1006032</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8a59d76fa1cd83208d452f8a17aac720</srcmd5>
+    <version>1.25.4</version>
+    <time>1667067448</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032173</requestid>
+  </revision>
 </revisionlist>

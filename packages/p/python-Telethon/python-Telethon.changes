@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 27 21:22:55 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 1.25.4 
+  * Revert accidental NO_UPDATES_TIMEOUT
+
+-------------------------------------------------------------------
 Thu Sep 22 21:31:48 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to v1.25
