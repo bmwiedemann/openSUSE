@@ -20,7 +20,7 @@
 # no numpy for Python 3.6
 %define skip_python36 1
 Name:           python-cftime
-Version:        1.6.1
+Version:        1.6.2
 Release:        0
 Summary:        Time-handling functionality from netcdf4-python
 License:        MIT

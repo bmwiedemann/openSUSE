@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct 27 22:15:54 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 1.6.2 
+  * num2date should not fail on an empty integer array (issue #287).
+  * longdouble keyword in date2num so that a roundtrip from a time to a date
+    and back again does not lose microsecond precision when the units require
+    the times be encoded as floating point values (PR #284)
+  * added strptime method (issue #277).
+  * cibuildwheel wheel-building workflow added to github actions by @ocefpaf (triggers binary
+    wheel builds and uploads to pypi automatically when GH release created). PR #290.
+
+-------------------------------------------------------------------
 Mon Sep 26 19:50:01 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 1.6.1

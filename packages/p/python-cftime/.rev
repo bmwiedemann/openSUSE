@@ -167,4 +167,21 @@
     <comment></comment>
     <requestid>1006300</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d77129816b97a5b091923c3ed6c26d3b</srcmd5>
+    <version>1.6.2</version>
+    <time>1667067454</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1031655 from yarunachalam
+
+- Update to version 1.6.2 
+    * num2date should not fail on an empty integer array (issue #287).
+    * longdouble keyword in date2num so that a roundtrip from a time to a date
+      and back again does not lose microsecond precision when the units require
+      the times be encoded as floating point values (PR #284)
+    * added strptime method (issue #277).
+    * cibuildwheel wheel-building workflow added to github actions by @ocefpaf (triggers binary
+      wheel builds and uploads to pypi automatically when GH release created). PR #290.</comment>
+    <requestid>1032181</requestid>
+  </revision>
 </revisionlist>
