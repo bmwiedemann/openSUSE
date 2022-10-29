@@ -1,9 +1,12 @@
 -------------------------------------------------------------------
-Thu Sep 29 02:39:43 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+Fri Oct 28 17:41:56 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update Version 0.8 (2022-09-22)
   * Add --version to bin importlab.
   * Use ImportStatement.source to impove import resolution.
+
+-------------------------------------------------------------------
+Thu Sep 29 02:39:43 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update Version 0.7 (2022-01-07)
   * Fix path resolution for case-insensitive filesystems.

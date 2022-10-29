@@ -21,7 +21,7 @@
 # python36-networkx no longer exists in Tumbleweed (due to SciPy following NEP 29)
 %define         skip_python36 1
 Name:           python-importlab
-Version:        0.7
+Version:        0.8
 Release:        0
 Summary:        A library to calculate python dependency graphs
 License:        Apache-2.0
