@@ -234,4 +234,22 @@ Resubmitting in the hope that all bots and maintainers pick it up this time. The
     <comment></comment>
     <requestid>1001318</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>8210961d867eb0f36db012104e83368f</srcmd5>
+    <version>2.5.0</version>
+    <time>1667067468</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.5.0
+  * Arachne perimeter generator
+  * Lightning infill
+  * Pressure equalizer
+  * STEP file import
+  * various smaller features and bugfixes
+  * Big changelog since v2.4.2, most changes decribed in alpha and
+    beta release notes:
+    https://github.com/prusa3d/PrusaSlicer/releases
+- Add up-occt-version.patch
+</comment>
+    <requestid>1032201</requestid>
+  </revision>
 </revisionlist>

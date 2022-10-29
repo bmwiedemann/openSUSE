@@ -17,7 +17,7 @@
 
 
 Name:           PrusaSlicer
-Version:        2.4.2
+Version:        2.5.0
 Release:        0
 Summary:        G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)
 License:        AGPL-3.0-only
@@ -28,6 +28,8 @@ Source0:        https://github.com/prusa3d/PrusaSlicer/archive/version_%{version
 Patch0:         PrusaSlicer-boost1.79.patch
 # PATCH-FIX-UPSTREAM PrusaSlicer-cereal.patch -- gh#prusa3d/PrusaSlicer#7809
 Patch1:         PrusaSlicer-cereal.patch
+# PATCH-FIX-OPENSUSE up-occt-version.patch mike.chikov@gmail.com -- install wrapper so into libdir, not bindir
+Patch2:         up-occt-version.patch
 BuildRequires:  blosc-devel
 BuildRequires:  cereal-devel
 BuildRequires:  cgal-devel >= 4.13.2
@@ -56,10 +58,13 @@ BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
 BuildRequires:  libcurl-devel
 BuildRequires:  libexpat-devel
+BuildRequires:  libjpeg-devel
 BuildRequires:  memory-constraints
 BuildRequires:  nlopt-devel
+BuildRequires:  occt-devel
 BuildRequires:  openexr-devel
-BuildRequires:  openvdb-devel >= 5
+# See https://github.com/prusa3d/PrusaSlicer/pull/9103
+BuildRequires:  openvdb-devel >= 7.1
 BuildRequires:  openvdb-tools
 BuildRequires:  pkgconfig
 BuildRequires:  tbb-devel
@@ -113,7 +118,7 @@ sed -i tests/libslic3r/CMakeLists.txt -e '\@test_voronoi.cpp@d'
 %install
 %cmake_install
 
-%suse_update_desktop_file -r PrusaSlicer Graphics 3DGraphics Science Engineering
+%suse_update_desktop_file -r PrusaSlicer Graphics 3DGraphics
 %suse_update_desktop_file -r PrusaGcodeviewer Graphics 3DGraphics
 
 #remove stray font file
@@ -152,19 +157,15 @@ find %{buildroot}%{_datadir}/%{name}/localization -type d | sed '
 %fdupes %{buildroot}%{_datadir}
 
 %check
-%ctest --timeout 600
+%ctest
 
 %files -f lang-files
 %{_bindir}/prusa-slicer
 %{_bindir}/prusa-gcodeviewer
+%{_libdir}/OCCTWrapper.so
 %dir %{_datadir}/%{name}/
 %{_datadir}/%{name}/{icons,models,profiles,shaders,udev,data,shapes}/
-%{_datadir}/icons/hicolor/32x32/apps/%{name}.png
-%{_datadir}/icons/hicolor/128x128/apps/%{name}.png
-%{_datadir}/icons/hicolor/192x192/apps/%{name}.png
-%{_datadir}/icons/hicolor/32x32/apps/%{name}-gcodeviewer.png
-%{_datadir}/icons/hicolor/128x128/apps/%{name}-gcodeviewer.png
-%{_datadir}/icons/hicolor/192x192/apps/%{name}-gcodeviewer.png
+%{_datadir}/icons/hicolor/*/apps/%{name}*.png
 %{_datadir}/applications/PrusaSlicer.desktop
 %{_datadir}/applications/PrusaGcodeviewer.desktop
 %license LICENSE

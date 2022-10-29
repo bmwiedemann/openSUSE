@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Oct 29 11:35:55 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2.5.0
+  * Arachne perimeter generator
+  * Lightning infill
+  * Pressure equalizer
+  * STEP file import
+  * various smaller features and bugfixes
+  * Big changelog since v2.4.2, most changes decribed in alpha and
+    beta release notes:
+    https://github.com/prusa3d/PrusaSlicer/releases
+- Add up-occt-version.patch
+
+-------------------------------------------------------------------
 Mon Sep  5 17:17:49 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Quoting Lucas Matena (see gh#prusa3d/PrusaSlicer#8299, issue 2): 
