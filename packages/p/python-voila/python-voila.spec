@@ -24,39 +24,29 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%if 0%{?suse_version} > 1500
+
 %bcond_without libalternatives
-%else
-%bcond_with libalternatives
-%endif
-%{?!python_module:%define python_module() python3-%{**}}
-%define         skip_python2 1
+
 Name:           python-voila%{psuffix}
-Version:        0.3.6
+Version:        0.4.0
 Release:        0
 Summary:        Plugin for serving read-only live Jupyter notebooks
 License:        BSD-3-Clause
 URL:            https://github.com/voila-dashboards/voila
-# Need both source archives: PyPI for the npm compiled JS static files, GitHub for the tests
-Source:         https://files.pythonhosted.org/packages/source/v/voila/voila-%{version}.tar.gz
-Source1:        https://github.com/voila-dashboards/voila/archive/refs/tags/v%{version}.tar.gz#/voila-%{version}-gh.tar.gz
+# Need both source archives: PyPI wheel for the npm compiled JS static files, GitHub for the tests
+Source0:        https://github.com/voila-dashboards/voila/archive/refs/tags/v%{version}.tar.gz#/voila-%{version}-gh.tar.gz
+Source1:        https://files.pythonhosted.org/packages/py3/v/voila/voila-%{version}-py3-none-any.whl
 Source99:       python-voila-rpmlintrc
-# PATCH-FIX-UPSTREAM Support ipywidgets 8, based on
-# gh#voila-dashboards/voila#1193
-Patch0:         support-ipywidgets-8.patch
-# PATCH-FIX-UPSTREAM update-nbconvert.patch based on
-# gh#voila-dashboards/voila#1161
-Patch1:         update-nbconvert.patch
 BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module jupyter-packaging >= 0.10}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-jupyterlab-filesystem
 BuildRequires:  jupyter-notebook-filesystem
 BuildRequires:  python-rpm-macros
 Requires:       jupyter-voila = %{version}
+Requires:       python-jupyter-core >= 4.11
 Requires:       python-websockets >= 9.0
-Requires:       (python-jupyter-client >= 6.1.3 with python-jupyter-client < 8)
+Requires:       (python-jupyter-client >= 6.1.3 with python-jupyter-client < 7.4.2)
 Requires:       (python-jupyter-server >= 1.18 with python-jupyter-server < 2)
 Requires:       (python-jupyterlab-server >= 2.3.0 with python-jupyterlab-server < 3)
 Requires:       (python-nbclient >= 0.4.0 with python-nbclient < 0.8)
@@ -74,7 +64,9 @@ Requires(postun):update-alternatives
 BuildRequires:  %{python_module ipywidgets}
 BuildRequires:  %{python_module matplotlib-web}
 BuildRequires:  %{python_module matplotlib}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pandas}
+BuildRequires:  %{python_module papermill}
 BuildRequires:  %{python_module pytest-rerunfailures}
 BuildRequires:  %{python_module pytest-tornasync}
 BuildRequires:  %{python_module pytest}
@@ -117,21 +109,15 @@ notebook is never sent to the front-end.
 This package provides the jupyter components.
 
 %prep
-%setup -q -n voila-%{version}
-tar xf %{SOURCE1} --strip-components=1 voila-%{version}/tests
-# '.' is now considered 'hidden', which is not allowed.
-sed -i 's|./jupyter.svg|jupyter.svg|' tests/notebooks/images.ipynb
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n voila-%{version}
 
 %build
-%python_build
+# Source1 wheel is pre-built (npm through hatchling jupyter-builder, not possible offline)
 
 %if !%{with test}
 %install
-%python_install
+%pyproject_install %{SOURCE1}
 %python_clone -a %{buildroot}%{_bindir}/voila
-%jupyter_move_config
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %fdupes %{buildroot}%{_jupyter_prefix}
 %endif
@@ -142,7 +128,7 @@ export JUPYTER_PATH=%{_jupyter_prefix}:$PWD/tests/test_template/share/jupyter:$P
 export VOILA_TEST_DEBUG=1
 # very flaky in obs environments
 donttest="test_kernel_death or test_request_with_query"
-%pytest tests -k "not ($donttest)" --reruns 2 --reruns-delay 1
+%pytest tests -k "not ($donttest)"  --reruns 2 --reruns-delay 1
 %endif
 
 %if !%{with test}

@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sat Oct 29 16:10:03 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- re-add reruns for server-side zmq test failures
+
+-------------------------------------------------------------------
+Fri Oct 28 15:10:16 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to v0.4.0
+  * Render read-only notebook #1181 (@trungleduc)
+  * Add Voila app port to kernel env #1176 (@dcnadler)
+  * Add Voila configuration option for default kernel environmental
+    variables #1175 (@dcnadler)
+  * Add upper bound on jupyter_client dependency #1239
+    (@martinRenou)
+  * Fix inifinite loop in property access #1185 (@martinRenou)
+  * Update nbclient #1234 (@martinRenou)
+  * Remove pin on jupyter_releaser #1232 (@jtpio)
+  * Update nbclient pinning #1224 (@martinRenou)
+  * Bump d3-color from 3.0.1 to 3.1.0 #1221 (@dependabot)
+  * Remove extra_requires #1215 (@martinRenou)
+  * Couple of ui-tests maintenance changes #1214 (@martinRenou)
+  * Use ipywidgets 8 on Binder #1210 (@jtpio)
+  * Fix typos #1198 (@kianmeng)
+  * Migrate to hatch #1197 (@jtpio)
+  * Bump terser from 4.8.0 to 4.8.1 #1174 (@dependabot)
+  * Update nbconvert pinning #1161 (@martinRenou)
+  * feat: support for ipywidgets 8 #1046 (@mariobuikhuizen)
+- Drop support-ipywidgets-8.patch, update-nbconvert.patch
+
+-------------------------------------------------------------------
 Mon Oct 17 16:32:43 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Bump to nbclient 0.7 (See also gh#voila-dashboards/voila#1234)
