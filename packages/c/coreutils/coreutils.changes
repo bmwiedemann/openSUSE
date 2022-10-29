@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 26 20:29:11 UTC 2022 - Bernhard Voelker <mail@bernhard-voelker.de>
+
+- coreutils-tests-workaround-make-fdleak.patch: Add patch to work around
+  a GNU make bug which leaks file descriptors when using the jobserver;
+  this makes some tests fail.
+- coreutils.spec: Reference the patch.
+
+-------------------------------------------------------------------
 Tue Aug  9 12:13:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - refresh coreutils-i18n.patch from Fedora to make expand and unexpand

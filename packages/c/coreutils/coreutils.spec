@@ -64,6 +64,7 @@ Patch501:       coreutils-test_without_valgrind.patch
 Patch810:       coreutils-skip-tests-rm-ext3-perf.patch
 # Upstream patch - remove with version >9.1:
 Patch850:       gnulib-simple-backup-fix.patch
+Patch900:       coreutils-tests-workaround-make-fdleak.patch
 BuildRequires:  automake
 BuildRequires:  gmp-devel
 BuildRequires:  hostname
@@ -159,6 +160,7 @@ This package contains the documentation for the GNU Core Utilities.
 
 %patch810
 %patch850
+%patch900
 
 # ================================================
 %build
@@ -194,13 +196,13 @@ ln -v lib/parse-datetime.{c,y} .
   chmod a+x tests/misc/sort-mb-tests.sh
   # Avoid parallel make, because otherwise some timeout based tests like
   # rm/ext3-perf may fail due to high CPU or IO load.
-  %make_build check-very-expensive \
+  %make_build check-very-expensive VERBOSE=yes \
     && install -d -m 755 %{buildroot}%{_docdir}/%{name} \
     && xz -c tests/test-suite.log \
          > %{buildroot}%{_docdir}/%{name}/test-suite.log.xz
 %else
   # Run the shorter check otherwise.
-  %make_build check
+  %make_build check VERBOSE=yes
 %endif
 
 # ================================================

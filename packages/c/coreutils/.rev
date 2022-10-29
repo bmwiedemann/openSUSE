@@ -1251,4 +1251,12 @@ then, coreutils doesn't need this patch from the kernel v4.10-rc1. (forwarded re
 - Remove python2 from buildrequires - appears to be a left over</comment>
     <requestid>994133</requestid>
   </revision>
+  <revision rev="148" vrev="5">
+    <srcmd5>1c12f6e774ee5c0d6c32c2ec55b29a1b</srcmd5>
+    <version>9.1</version>
+    <time>1667067297</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1031469</requestid>
+  </revision>
 </revisionlist>
