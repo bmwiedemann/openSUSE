@@ -21,7 +21,6 @@
 %bcond_with    fast_build
 
 %bcond_with snapshot
-%define build_snapshot %{with snapshot}
 %bcond_with ringdisabled
 
 %define flavor @BUILD_FLAVOR@%{nil}
@@ -140,7 +139,7 @@ License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-2.1-or-later WIT
 Group:          System/Libraries
 Version:        2.36
 Release:        0
-%if !%{build_snapshot}
+%if %{without snapshot}
 %define git_id c804cd1c00
 %define libversion %version
 %else
@@ -150,7 +149,7 @@ Release:        0
 URL:            https://www.gnu.org/software/libc/libc.html
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source:         https://ftp.gnu.org/pub/gnu/glibc/glibc-%{version}.tar.xz
-%if !%{build_snapshot}
+%if %{without snapshot}
 Source1:        https://ftp.gnu.org/pub/gnu/glibc/glibc-%{version}.tar.xz.sig
 %endif
 Source2:        http://savannah.gnu.org/project/memberlist-gpgkeys.php?group=libc&download=1#/glibc.keyring
@@ -306,6 +305,8 @@ Patch1010:      get-nscd-addresses.patch
 Patch1011:      x86-64-avx2-string-functions.patch
 # PATCH-FIX-UPSTREAM nscd: Drop local address tuple variable (BZ #29607)
 Patch1012:      nscd-aicache.patch
+# PATCH-FIX-UPSTREAM elf: Reinstate on DL_DEBUG_BINDINGS _dl_lookup_symbol_x
+Patch1013:      dl-debug-bindings.patch
 
 ###
 # Patches awaiting upstream approval
@@ -486,7 +487,7 @@ Requires:       glibc = %{version}
 
 %description extra
 The glibc-extra package contains some extra binaries for glibc that
-are not essential but recommend to use.
+are not essential but recommend for use.
 
 makedb: A program to create a database for nss
 
@@ -529,7 +530,7 @@ library in a cross compilation setting.
 %patch304 -p1
 %patch306 -p1
 
-%if !%{build_snapshot}
+%if %{without snapshot}
 %patch1000 -p1
 %patch1001 -p1
 %patch1002 -p1
@@ -543,6 +544,7 @@ library in a cross compilation setting.
 %patch1010 -p1
 %patch1011 -p1
 %patch1012 -p1
+%patch1013 -p1
 %endif
 
 %patch2000 -p1

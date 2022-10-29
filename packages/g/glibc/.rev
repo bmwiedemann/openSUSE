@@ -2733,4 +2733,13 @@ do special case rings. (forwarded request 934053 from matz2)</comment>
 - nscd-aicache.patch: nscd: Drop local address tuple variable (BZ #29607) (forwarded request 1008197 from Andreas_Schwab)</comment>
     <requestid>1008198</requestid>
   </revision>
+  <revision rev="269" vrev="7">
+    <srcmd5>6c3bc56e376514d8b02ed468deaaf8a1</srcmd5>
+    <version>2.36</version>
+    <time>1667067299</time>
+    <user>dimstar_suse</user>
+    <comment>- dl-debug-bindings.patch: elf: Reinstate on DL_DEBUG_BINDINGS
+  _dl_lookup_symbol_x (bsc#1204710) (forwarded request 1031471 from Andreas_Schwab)</comment>
+    <requestid>1031472</requestid>
+  </revision>
 </revisionlist>

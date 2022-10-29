@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 26 14:07:48 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- dl-debug-bindings.patch: elf: Reinstate on DL_DEBUG_BINDINGS
+  _dl_lookup_symbol_x (bsc#1204710)
+
+-------------------------------------------------------------------
 Wed Oct  5 07:53:24 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - get-nscd-addresses.patch: get_nscd_addresses: Fix subscript typos (BZ
