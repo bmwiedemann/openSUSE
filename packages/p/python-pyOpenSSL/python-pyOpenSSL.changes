@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Oct 21 14:20:05 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Upstream post-release doc fix (gh#pyca/pyopenssl#1150)
+  * The minimum cryptography version is now 38.0.x (and we now pin
+    releases  against cryptography major versions to prevent future
+    breakage)
+- Add pyOpenSSL-pr1158-conditional-__all__.patch
+  gh#pyca/pyopenssl#1158
+
+-------------------------------------------------------------------
+Thu Sep 29 19:33:29 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 22.1.0:
+  * Remove support for SSLv2 and SSLv3.
+  * The minimum ``cryptography`` version is now 37.0.2.
+  * The ``OpenSSL.crypto.X509StoreContextError`` exception has been refactored,
+    changing its internal attributes.
+  * Add ``OpenSSL.SSL.Connection.set_verify`` and ``OpenSSL.SSL.Connection.get_verify_mode``
+    to override the context object's verification flags.
+  * Add ``OpenSSL.SSL.Connection.use_certificate`` and
+    ``OpenSSL.SSL.Connection.use_privatekey``
+    to set a certificate per connection (and not just per context)
+
+-------------------------------------------------------------------
 Wed Jun  1 08:25:21 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Shift BuildRequires on openssl, it's only required for tests.

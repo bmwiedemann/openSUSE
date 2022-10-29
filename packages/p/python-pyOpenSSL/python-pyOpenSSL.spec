@@ -27,7 +27,7 @@
 %endif
 %global skip_python2 1
 Name:           python-pyOpenSSL%{psuffix}
-Version:        22.0.0
+Version:        22.1.0
 Release:        0
 Summary:        Python wrapper module around the OpenSSL library
 License:        Apache-2.0
@@ -36,12 +36,14 @@ Source:         https://files.pythonhosted.org/packages/source/p/pyOpenSSL/pyOpe
 # PATCH-FIX-UPSTREAM skip-networked-test.patch gh#pyca/pyopenssl#68 mcepl@suse.com
 # Mark tests requiring network access
 Patch0:         skip-networked-test.patch
+# PATCH-FIX-UPSTREAM pyOpenSSL-pr1158-conditional-__all__.patch gh#pyca/pyopenssl#1158
+Patch1:         pyOpenSSL-pr1158-conditional-__all__.patch
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %if %{with test}
-BuildRequires:  %{python_module cryptography >= 35}
+BuildRequires:  %{python_module cryptography >= 38.0.0 with %python-cryptography < 39}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module pretend}
 BuildRequires:  %{python_module pyOpenSSL >= %version}
@@ -50,7 +52,7 @@ BuildRequires:  ca-certificates-mozilla
 BuildRequires:  openssl
 %endif
 Requires:       python-cffi
-Requires:       python-cryptography >= 35
+Requires:       (python-cryptography >= 38.0.0 with python-cryptography < 39)
 Provides:       pyOpenSSL = %{version}
 BuildArch:      noarch
 %python_subpackages
@@ -65,8 +67,7 @@ cryptography (<https://github.com/pyca/cryptography>), which provides (among
 other things) a cffi-based interface to OpenSSL.
 
 %prep
-%setup -q -n pyOpenSSL-%{version}
-%autopatch -p1
+%autosetup -p1 -n pyOpenSSL-%{version}
 
 %build
 %python_build
@@ -92,7 +93,7 @@ export LC_ALL=en_US.UTF-8
 %license LICENSE
 %doc *.rst
 %{python_sitelib}/OpenSSL/
-%{python_sitelib}/pyOpenSSL-%{version}-py*.egg-info
+%{python_sitelib}/pyOpenSSL-%{version}*-info
 %endif
 
 %changelog
