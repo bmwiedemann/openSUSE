@@ -575,4 +575,15 @@ Core and Builtins
     <comment></comment>
     <requestid>1031407</requestid>
   </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>f5d3e39492364c973823fa92d178c3b5</srcmd5>
+    <version>3.8.15</version>
+    <time>1667067369</time>
+    <user>dimstar_suse</user>
+    <comment>- Add CVE-2022-37454-sha3-buffer-overflow.patch to fix
+  bsc#1204577 (CVE-2022-37454, gh#python/cpython#98517) buffer
+  overflow in hashlib.sha3_* implementations (originally from the
+  XKCP library).</comment>
+    <requestid>1032060</requestid>
+  </revision>
 </revisionlist>

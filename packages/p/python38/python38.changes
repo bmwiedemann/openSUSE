@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 28 19:43:13 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add CVE-2022-37454-sha3-buffer-overflow.patch to fix
+  bsc#1204577 (CVE-2022-37454, gh#python/cpython#98517) buffer
+  overflow in hashlib.sha3_* implementations (originally from the
+  XKCP library).
+
+-------------------------------------------------------------------
 Fri Oct 21 10:14:03 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Add 98437-sphinx.locale._-as-gettext-in-pyspecific.patch to
