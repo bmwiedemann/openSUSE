@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 31 14:21:40 UTC 2022 - Stefan Schubert <schubi@suse.com>
+
+- Migration to /usr/etc: Saving user changed configuration files
+  in /etc and restoring them while an RPM update.
+
+-------------------------------------------------------------------
 Tue Jun 21 12:38:51 UTC 2022 - Stefan Schubert <schubi@suse.com>
 
 - Moved logrotate files from user specific directory /etc/logrotate.d
