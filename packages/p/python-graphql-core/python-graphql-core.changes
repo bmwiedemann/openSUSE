@@ -1,5 +1,5 @@
 -------------------------------------------------------------------
-Wed Sep 28 21:51:38 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+Fri Oct 28 17:25:12 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 3.2.3 
   Patch-release GraphQL-core v3.2.3, based on GraphQL.js v16.6.0.
@@ -14,6 +14,9 @@ Wed Sep 28 21:51:38 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
   Recommend using poetry instead of pipenv in the docs (#161)
   Cast error message to string to handle proxy objects (#175)
   Remove newline in description (#180)
+
+-------------------------------------------------------------------
+Wed Sep 28 21:51:38 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 3.2.1
   Patch-release GraphQL-core v3.2.1, based on GraphQL.js v16.3.0.

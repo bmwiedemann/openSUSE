@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-graphql-core
-Version:        3.2.1
+Version:        3.2.3
 Release:        0
 Summary:        GraphQL implementation for Python
 License:        MIT
