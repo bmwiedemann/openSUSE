@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Thu Oct 27 22:40:18 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 1.6: 
+  ***IMPORTANT NOTE*** This is the last release on pypi.  Curio
+     will no longer be making package releases.  The most recent
+     version can be obtained at https://github.com/dabeaz/curio.
+
+     Fixed a problem with cancellation and waiting in UniversalEvent.
+     Reported by vytasrgl.
+	   
+     Merged a fix for #350 where UniversalEvents couldn't be set
+     more than once.   Reported and fixed by Stephen Harding.
+	   
+     Fixed Issue #340 related to the handling of daemonic tasks
+     in a TaskGroup.   TaskGroups can now be given existing
+     daemonic tasks in the constructor.  Daemonic tasks are
+     correctly cancelled if a TaskGroup used as a context manager
+     terminates due to an exception.
+           
+    Changed all cancellation related exceptions to inherit
+    from BaseException instead of Exception.   This makes
+    them play slightly better with normal exception handling
+    code:
+
+               try:
+                   await some_operation()
+               except Exception as err:
+                   # Normal (expected) program related error
+                   ...
+               except CancelledError as err:
+                   # Cancellation of some kind
+                   ...
+
+    This also mirrors a similar change to asyncio.CancelledError
+    which now directly inherits from BaseException.
+    ***POTENTIAL INCOMPATIBILITY***
+    If you were using try: ... except Exception: to catch
+    cancellation, that code will break. 
+           
+    Added ps() and where() commands to the monitor
+    that can be used from the Curio REPL when you run
+    `python -m curio`.  These can also be used to monitor
+    the state of the kernel from a different thread.
+    For example:
+    from threading import Thread
+               
+       kern = Kernel()
+       Thread(target=kern.run, args=[main]).start()
+
+        >>> from curio.monitor import ps
+        >>> ps(kern)
+        ... displays active tasks ...
+
+    This makes it a bit easier to have some of the monitor
+    capability in an live-environment where Curio is running.
+
+-------------------------------------------------------------------
 Tue Aug 24 07:52:53 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.5:
