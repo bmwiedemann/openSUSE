@@ -215,4 +215,12 @@
     <comment>- Add missing runtime requirement</comment>
     <requestid>1030351</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>5bdbc9dae3e9e01247f00f20b5d31ceb</srcmd5>
+    <version>1.6.50</version>
+    <time>1667067409</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032073</requestid>
+  </revision>
 </revisionlist>
