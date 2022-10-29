@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Thu Oct 27 20:51:42 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 5.6
+  Features
+  - Add official support for Python 3.11. (Note that PyInstaller v5.5 is also expected to work but
+  - has only been tested with a pre-release of Python 3.11.) (#6783)
+
+  Implement a new hook utility function, collect_delvewheel_libs_directory(), intended for dealing with external shared
+  library in delvewheel-enabled PyPI wheels for Windows. (#7170)
+  Bugfix
+  - (macOS) Fix OpenCV (cv2) loader error in generated macOS .app bundles, caused by the relocation of package’s source .py files. (#7180)
+  - (Windows) Improve compatibility with scipy 1.9.2, whose Windows wheels switched to delvewheel, and therefore have shared
+    libraries located in external .libs directory. (#7168)
+  - (Windows) Limit the DLL parent path preservation behavior from #7028 to files collected from site-packages directories
+    (as returned by site.getsitepackages() and site.getusersitepackages()) instead of all paths in sys.path, to avoid unintended
+    behavior in corner cases, such as sys.path containing the drive root or user’s home directory. (#7155)
+  - Fix compatibility with PySide6 6.4.0, where the deprecated Qml2ImportsPath location key is not available anymore;
+    use the new QmlImportsPath key when it is available. (#7164)
+  - Prevent PyInstaller runtime hook for setuptools from attempting to override distutils with setuptools-provided
+    version when setuptools is collected and its version is lower than 60.0. This both mimics the unfrozen behavior and
+    prevents errors on versions between 50.0 and 60.0, where we do not explicitly collect setuptools._distutils. (#7172)
+
+  Incompatible Changes
+  - (macOS) In generated macOS .app bundles, the collected source .py files are not relocated from Contents/MacOS to Contents/Resources anymore,
+    to avoid issues when the path to a .py file is supposed to resolve to the same directory as adjacent binary extensions.
+    On the other hand, this change might result in regressions w.r.t. bundle signing and/or notarization. (#7180)
+
+  Bootloader
+  - (Windows) Update the bundled zlib sources to v1.2.13. (#7166)
+
+- Update to 5.5  
+  Features
+  - (Windows) Support embedding multiple icons in the executable. (#7103)
+  Bugfix
+  - (Windows) Fix a regression introduced in PyInstaller 5.4 (#6925), where incorrect copy of python3.dll
+    (and consequently an additional, incorrect copy of python3X.dll from the same directory) is collected when additional python
+    installations are present in PATH. (#7102)
+  - (Windows) Provide run-time override for ctypes.util.find_library that searches sys._MEIPASS in addition to directories specified in PATH. (#7097)
+  - Fix the problem with pywin32 DLLs not being found when importing pywin32 top-level extension modules, caused by the DLL directory structure
+    preservation behavior introduced in #7028. Introduce a new bootstrap/loader module that adds the pywin32_system32 directory,
+    if available, to both sys.path and the DLL search paths, in lieu of having to provide a runtime hook script for every single top-level
+    extension module from pywin32. (#7110)
+  - Hooks
+    Fix an error raised by the matplotlib.backends hook when trying to specify the list of backends to collect via the hooks configuration. (#7091)
+
+-------------------------------------------------------------------
 Fri Sep 30 08:41:35 UTC 2022 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.4.1

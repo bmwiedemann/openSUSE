@@ -21,7 +21,7 @@
 %bcond_without  test
 %define modname PyInstaller
 Name:           python-PyInstaller
-Version:        5.4.1
+Version:        5.6.1
 Release:        0
 Summary:        Bundle a Python application and all its dependencies into a single package
 License:        GPL-2.0-only
