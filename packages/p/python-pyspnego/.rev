@@ -110,4 +110,12 @@
     of `NegotiateProxy` before any contexts have been set up</comment>
     <requestid>1007433</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ef1450daeae07e3547ebe83e6203e218</srcmd5>
+    <version>0.6.0</version>
+    <time>1667067405</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032070</requestid>
+  </revision>
 </revisionlist>
