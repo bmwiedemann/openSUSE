@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Oct 29 07:44:23 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- modify _service to no longer use the tar_scm service,
+  as the resulting tarball is not as expected
+
+-------------------------------------------------------------------
+Sat Oct 29 07:29:21 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- Update to 6.8.4:
+  * Bugfixes
+    - Add experimental rule for run_once (#2626) @ajinkyau
+    - Fix package name in pip upgrade instructions (#2625) @davedittrich
+    - Docs: wrap loop var tag (#2610) @oraNod
+    - Prevent pip exception with version check (#2624) @ssbarnea
+
+-------------------------------------------------------------------
+Sat Oct 29 07:27:33 UTC 2022 - kastl@b1-systems.de
+
+- Update to version v6.8.3:
+  * Bugfixes
+    -  Add warning message about outdated linter version (#2615) @ssbarnea
+    -  Detect ScannerError while searching for skipped rules (#2619) @felixfontein
+    -  Fix merging of command line options with configuration (#2616) @ssbarnea
+    -  Refactor fqcn to recommend use of canonical names (#2604) @ssbarnea
+    -  Allow toggling strict in the config file (#2603) @hemberger
+
+-------------------------------------------------------------------
 Fri Oct 14 04:52:59 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 6.8.2:

@@ -49,4 +49,12 @@ Fixes the failing builds for ansible-lint (see SR#1006256)</comment>
     <comment></comment>
     <requestid>1010628</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e0001343cdc0aebd0e8b24d7c8c74f3c</srcmd5>
+    <version>6.8.4</version>
+    <time>1667067431</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032120</requestid>
+  </revision>
 </revisionlist>
