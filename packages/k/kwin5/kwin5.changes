@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Oct 27 06:53:03 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix redraw issues with window scaling (kde#461032):
+  * 0001-x11window-revert-more-from-3a28c02f.patch
+
+-------------------------------------------------------------------
+Wed Oct 26 14:15:52 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.2.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.2
+- Changes since 5.26.1:
+  * fix compile
+  * x11window: partially revert 3a28c02f
+  * Replace some manual floored QPointF->QPoint conversion with flooredPoint calls
+  * DecorationInputFilter: Use QPointF instead of QPoint for events
+  * Window: Floor rather than round when doing hitTest for the decoration (kde#460686)
+  * Add a helper function to convert QPointF to QPoint using floor instead of round
+  * wayland: Fix missing relative motion events (kde#444510)
+  * Implement a enableRequested signal for text-input-v3
+  * kcmkwin/kwindecoration: use Kirigami.ActionToolBar for the footer actions (kde#460793)
+  * autotests/integration: make inputmethodtest more realstic
+  * inputpanelv1window: never hide overlay panels
+  * inputmethod: reset m_shouldShowPanel when the tracked window changes
+  * inputpanelv1window: show window when client maps it after setting the mode (kde#460537)
+  * x11window: don't change size for centering windows with maximization
+  * output: don't round geometry as often
+  * effects/blur: Fix clipping when sliding virtual desktops (kde#460382)
+  * Fix potential race condition when text input state change and focus change happened at the same time
+  * Fix wording in action 'Switch to Screen'
+  * backends/drm: don't crash if connector has no modes
+
+-------------------------------------------------------------------
 Tue Oct 18 11:27:30 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.26.1
