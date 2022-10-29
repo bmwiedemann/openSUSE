@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20221027" schemaversion="4.1">
+<image name="OBS__openSUSE___20221028" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -32,11 +32,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20221027</productvar>
+      <productvar name="VERSION">20221028</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20221027,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20221028,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20221027/i586</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20221028/i586</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -2388,7 +2388,7 @@
       <repopackage name="libqalculate22"/>
       <repopackage name="libqb100"/>
       <repopackage name="libqca-qt5-2"/>
-      <repopackage name="libqgpgme7"/>
+      <repopackage name="libqgpgme15"/>
       <repopackage name="libqmi-glib5"/>
       <repopackage name="libqmi-tools"/>
       <repopackage name="libqpdf29"/>
@@ -3942,6 +3942,7 @@
       <repopackage name="ruby3.1-rubygem-inifile"/>
       <repopackage name="ruby3.1-rubygem-jaro_winkler"/>
       <repopackage name="ruby3.1-rubygem-jbuilder"/>
+      <repopackage name="ruby3.1-rubygem-jekyll"/>
       <repopackage name="ruby3.1-rubygem-jekyll-sass-converter"/>
       <repopackage name="ruby3.1-rubygem-jekyll-watch"/>
       <repopackage name="ruby3.1-rubygem-jquery-rails"/>
@@ -4114,6 +4115,7 @@
       <repopackage name="ruby3.1-rubygem-simpleidn"/>
       <repopackage name="ruby3.1-rubygem-slim"/>
       <repopackage name="ruby3.1-rubygem-slop"/>
+      <repopackage name="ruby3.1-rubygem-snaky_hash"/>
       <repopackage name="ruby3.1-rubygem-spring"/>
       <repopackage name="ruby3.1-rubygem-sprockets"/>
       <repopackage name="ruby3.1-rubygem-sprockets-3.7"/>
@@ -4155,6 +4157,7 @@
       <repopackage name="ruby3.1-rubygem-vagrant_cloud"/>
       <repopackage name="ruby3.1-rubygem-validate_email"/>
       <repopackage name="ruby3.1-rubygem-validate_url"/>
+      <repopackage name="ruby3.1-rubygem-version_gem"/>
       <repopackage name="ruby3.1-rubygem-virtus"/>
       <repopackage name="ruby3.1-rubygem-warden"/>
       <repopackage name="ruby3.1-rubygem-web-console"/>

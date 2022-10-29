@@ -2724,7 +2724,6 @@ unsorted:
   - dash-sh 
   - dasher 
   - dasher-lang 
-  - data-partition-service 
   - datamash 
   - dataquay-devel 
   - datefudge 
@@ -9693,7 +9692,7 @@ unsorted:
   - libXxf86vm-devel 
   - libXxf86vm-devel-32bit: [x86_64] 
   - libXxf86vm1-32bit: [x86_64] 
-  - libYODA-1_9_6 
+  - libYODA-1_9_7 
   - libZXing1-32bit: [x86_64] 
   - liba2ps1 
   - liba52-0-32bit: [x86_64] 
@@ -13419,7 +13418,7 @@ unsorted:
   - libqcustomplot2 
   - libqd0 
   - libqgpgme-devel 
-  - libqgpgme7-32bit: [x86_64] 
+  - libqgpgme15-32bit: [x86_64] 
   - libqhexedit4 
   - libqhull_r8_0 
   - libqimageblitz5-1 
@@ -18761,6 +18760,7 @@ unsorted:
   - os-maven-plugin 
   - os-maven-plugin-javadoc 
   - os-service-types-doc 
+  - os-update 
   - osc 
   - osc-collab-server 
   - osc-plugin-collab 
@@ -22173,7 +22173,6 @@ unsorted:
   - python310-Mathics 
   - python310-Mathics-Scanner 
   - python310-MechanicalSoup 
-  - python310-Ming 
   - python310-MiniMock 
   - python310-Morfessor 
   - python310-MouseInfo 
@@ -25408,7 +25407,6 @@ unsorted:
   - python38-Mathics 
   - python38-Mathics-Scanner 
   - python38-MechanicalSoup 
-  - python38-Ming 
   - python38-MiniMock 
   - python38-Morfessor 
   - python38-MouseInfo 
@@ -28748,7 +28746,6 @@ unsorted:
   - python39-Mathics 
   - python39-Mathics-Scanner 
   - python39-MechanicalSoup 
-  - python39-Ming 
   - python39-MiniMock 
   - python39-Morfessor 
   - python39-MouseInfo 
@@ -33006,15 +33003,12 @@ unsorted:
   - ruby3.1-doc 
   - ruby3.1-doc-ri 
   - ruby3.1-rubygem-grpc 
-  - ruby3.1-rubygem-jekyll 
   - rubygem-libguestfs: [x86_64] 
   - rubygem-passenger-nginx 
   - runawk 
   - runawk-examples 
   - runc: [i586] 
   - rungetty 
-  - runsc: [x86_64] 
-  - runsc-containerd: [x86_64] 
   - ruqola 
   - ruqola-lang 
   - rust 
@@ -43530,13 +43524,6 @@ unsorted:
   - vala-panel 
   - vala-panel-appmenu-lang 
   - vala-panel-devel 
-  - vala-panel-extras-battery 
-  - vala-panel-extras-gtop 
-  - vala-panel-extras-lang 
-  - vala-panel-extras-volume 
-  - vala-panel-extras-weather 
-  - vala-panel-extras-xkb 
-  - vala-panel-extras-xkb-flags 
   - vala-panel-lang 
   - vala-panel-plugin-appmenu 
   - vala-panel-plugins-base 
@@ -44718,6 +44705,7 @@ unsorted:
   - zstd-gzip 
   - zsync 
   - zutils 
+  - zutty 
   - zvbi 
   - zvbi-devel 
   - zvbi-devel-32bit: [x86_64] 
