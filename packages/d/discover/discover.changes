@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct 26 14:15:27 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.2
+- Changes since 5.26.1:
+  * flatpak: make sure we look up the correct resource (kde#460365)
+  * flatpak: Only show the beta information for apps (kde#459131)
+  * flatpak: Properly render if the beta package is too old
+  * snap: Port away from Kirigami.ItemViewHeader (kde#460391)
+
+-------------------------------------------------------------------
 Tue Oct 18 11:27:28 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.26.1
