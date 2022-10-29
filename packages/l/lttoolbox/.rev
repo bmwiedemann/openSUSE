@@ -23,4 +23,12 @@
     <comment>- Update to release 3.6.6</comment>
     <requestid>981027</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5613f8d2bcbecbb97d42e0c4546ca2ed</srcmd5>
+    <version>3.7.0</version>
+    <time>1667067390</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.7.0</comment>
+    <requestid>1032029</requestid>
+  </revision>
 </revisionlist>

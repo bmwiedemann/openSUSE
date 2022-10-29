@@ -17,9 +17,9 @@
 
 
 Name:           lttoolbox
-%define lname   liblttoolbox3-3_6-1
+%define lname   liblttoolbox3
 Summary:        Toolbox for lexical processing and morphological analysis
-Version:        3.6.6
+Version:        3.7.0
 Release:        0
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Other
@@ -90,17 +90,19 @@ rm -f "%buildroot/%_libdir"/*.la
 
 %files
 %_bindir/lt-*
+%_bindir/lsx-*
 %_datadir/lttoolbox
+%_mandir/man1/lsx-*.1*
 %_mandir/man1/lt-*.1*
 %doc README
 %license COPYING
 
 %files -n %lname
-%_libdir/liblttoolbox3-3.6.so.1*
+%_libdir/liblttoolbox.so.*
 
 %files devel
 %_includedir/%name/
-%_libdir/liblttoolbox3.so
+%_libdir/liblttoolbox.so
 %_libdir/pkgconfig/*.pc
 
 %changelog
