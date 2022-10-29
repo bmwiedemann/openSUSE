@@ -347,4 +347,12 @@
     <comment>- Update to release 2.24.1</comment>
     <requestid>1008080</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>ece411ec7d8779ee8237bfecd0aa6be1</srcmd5>
+    <version>2.24.1</version>
+    <time>1667067302</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop unused buildrequires on nasm</comment>
+    <requestid>1031935</requestid>
+  </revision>
 </revisionlist>

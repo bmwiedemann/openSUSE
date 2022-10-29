@@ -35,7 +35,6 @@ Patch1:         sdl2-symvers.patch
 Patch2:         sdl2-khronos.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  nasm
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(alsa) >= 0.9.0
 BuildRequires:  pkgconfig(dbus-1)

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 27 22:38:05 UTC 2022 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- Drop unused buildrequires on nasm 
+
+-------------------------------------------------------------------
 Wed Oct  5 03:27:31 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.24.1
