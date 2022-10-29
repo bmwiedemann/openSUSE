@@ -23,4 +23,31 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>773857</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>365cfece8710f70b27776ecb98cf4183</srcmd5>
+    <version>0.9.1</version>
+    <time>1667067440</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 0.9.1
+ see installed CHANGES
+  0.9.1
+  
+    * Fix Slim's error in AttributeMerger due to 0.9.0's :capture_generator (#137)
+    * Fix Temple::ERB::Engine's &lt;%= to not escape and &lt;%== to escape expressions
+  
+  0.9.0
+  
+    * Require Ruby 2.5+ (#131)
+    * Change default :capture_generator to self (#113)
+    * Improve compatibility with Rails 7.1 (#135)
+    * Support Rails 6.1's annotate_rendered_view_with_filenames
+      with Temple::Filters::Ambles (#134)
+    * Fix a crash in StringSplitter filter (#138)
+    * Fix a warning by Object#=~ since Ruby 2.6 (#129)
+    * Fix deprecated Tilt template mime type (#108)
+    * Stop using deprecated EscapeUtils from Temple::Utils (#136)
+  
+</comment>
+    <requestid>1032163</requestid>
+  </revision>
 </revisionlist>
