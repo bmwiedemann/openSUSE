@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Oct 27 21:15:45 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to v2.7.0 
+  Highlights:
+  * Added Python 3.11 support, dropped Python 3.6 support
+  * Improved support for :ref:`asynchronous callbacks <topics-coroutines>`
+  * :ref:`Asyncio support <using-asyncio>` is enabled by default on new projects
+  * Output names of item fields can now be arbitrary strings
+  * Centralized :ref:`request fingerprinting <request-fingerprints>` configuration is now possible
+  Modified requirements
+  * Python 3.7 or greater is now required; support for Python 3.6 has been dropped. Support for the upcoming Python 3.11 has been added.
+    The minimum required version of some dependencies has changed as well:
+    - lxml: 3.5.0 → 4.3.0
+    - Pillow (:ref:`images pipeline <images-pipeline>`): 4.0.0 → 7.1.0
+    - zope.interface: 5.0.0 → 5.1.0
+    (:issue:`5512`, :issue:`5514`, :issue:`5524`, :issue:`5563`, :issue:`5664`, :issue:`5670`, :issue:`5678`)
+  Deprecations
+    - :meth:`ImagesPipeline.thumb_path <scrapy.pipelines.images.ImagesPipeline.thumb_path>` must now accept an item parameter (:issue:`5504`, :issue:`5508`).
+    - The scrapy.downloadermiddlewares.decompression module is now deprecated (:issue:`5546`, :issue:`5547`).
+  
+  Complete changelog https://github.com/scrapy/scrapy/blob/2.7/docs/news.rst
+
+-------------------------------------------------------------------
 Fri Sep  9 15:21:20 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to v2.6.2 

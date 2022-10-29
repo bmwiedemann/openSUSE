@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-Scrapy
-Version:        2.6.2
+Version:        2.7.0
 Release:        0
 Summary:        A high-level Python Screen Scraping framework
 License:        BSD-3-Clause
