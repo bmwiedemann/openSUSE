@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Oct 27 19:48:01 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 1.56 
+   This is the last release that will support Python 3.6.
+  *Bug Fixes & Improvements
+   Create repo from template (#2090) (b50283a)
+   Improve signature of Repository.create_repo (#2118) (001970d)
+   Add support for 'visibility' attribute preview for Repositories (#1872) (8d1397a)
+   Add Repository.rename_branch method (#2089) (6452ddf)
+   Add function to delete pending reviews on a pull request (#1897) (c8a945b)
+   Cover all code paths in search_commits (#2087) (f1faf94)
+   Correctly deal when PaginatedList's data is a dict (#2084) (93b92cd)
+   Add two_factor_authentication in AuthenticatedUser. (#1972) (4f00cbf)
+   Add ProjectCard.edit() to the type stub (#2080) (d417e4c)
+   Add method to delete Workflow runs (#2078) (b1c8eec)
+   Implement organization.cancel_invitation() (#2072) (53fb498)
+   Feat: Add html_url property in Team Class. (#1983) (6570892)
+   Add support for Python 3.10 (#2073) (aa694f8)
+   Add github actions secrets to org (#2006) (bc5e595)
+   Correct replay for Organization.create_project() test (#2075) (fcc1236)
+   Fix install command example (#2043) (99e00a2)
+   Fix: #1671 Convert Python Bool to API Parameter for Authenticated User Notifications (#2001) (1da600a)
+   Do not transform requestHeaders when logging (#1965) (1265747)
+   Add type to OrderedDict (#1954) (ed7d0fe)
+   Add Commit.get_pulls() to pyi (#1958) (b466470)
+   Adding headers in GithubException is a breaking change (#1931) (d1644e3)
+
+-------------------------------------------------------------------
 Wed May 12 05:57:53 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.55:
