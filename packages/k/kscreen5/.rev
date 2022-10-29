@@ -1115,4 +1115,12 @@ If possible, please copy to 13.2 - many thanks!
     <comment>Plasma 5.26.1, untested. (forwarded request 1029774 from Vogtinator)</comment>
     <requestid>1029831</requestid>
   </revision>
+  <revision rev="140" vrev="1">
+    <srcmd5>8df465958ad7ed56756105de59bcee63</srcmd5>
+    <version>5.26.2</version>
+    <time>1667067337</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.26.2, untested but now with kwin scaling fix (forwarded request 1031457 from Vogtinator)</comment>
+    <requestid>1031862</requestid>
+  </revision>
 </revisionlist>
