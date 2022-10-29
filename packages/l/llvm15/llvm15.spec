@@ -16,14 +16,14 @@
 #
 
 
-%define _relver 15.0.2
+%define _relver 15.0.3
 %define _version %_relver%{?_rc:rc%_rc}
 %define _tagver %_relver%{?_rc:-rc%_rc}
 %define _minor  15.0
 %define _sonum  15
 %define _itsme15 1
 # Integer version used by update-alternatives
-%define _uaver  1502
+%define _uaver  1503
 %define _soclang 13
 %define _socxx  1
 
@@ -384,6 +384,10 @@ Patch34:        llvm-link-atomic.patch
 Patch35:        libcxxabi-fix-armv7-test.patch
 # Let test match for linux instead of -linux-.
 Patch36:        clang-test-xfail-gnuless-triple.patch
+# Fix lowering of "icmp uge <4 x i32> zeroinitializer, ..." on armv7. (https://reviews.llvm.org/D136447?id=469567, boo#1204267, gh#llvm/llvm-project#58514)
+Patch37:        llvm-armv7-fix-vector-compare-with-zero-lowering.patch
+# Fix build with Swig 4.1.0: backport of upstream commits 81fc5f7909a4, f0a25fe0b746. (gh#llvm/llvm-project#58018)
+Patch38:        lldb-swig-4.1.0-build-fix.patch
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  cmake >= 3.13.4
 BuildRequires:  fdupes
@@ -812,6 +816,7 @@ This package contains the development files for Polly.
 %patch25 -p2
 %patch33 -p2
 %patch34 -p2
+%patch37 -p1
 
 pushd clang-%{_version}.src
 %patch2 -p1
@@ -843,6 +848,7 @@ popd
 %if %{with lldb}
 pushd lldb-%{_version}.src
 %patch11 -p1
+%patch38 -p2
 popd
 %endif
 

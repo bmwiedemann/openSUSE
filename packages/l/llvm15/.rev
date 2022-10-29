@@ -52,4 +52,20 @@ without RUNPATH on libc++.so.
 - Rebase llvm-do-not-install-static-libraries.patch.</comment>
     <requestid>1008060</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8ff65aa50b22743c6248ddb54c83a5df</srcmd5>
+    <version>15.0.3</version>
+    <time>1667067304</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 15.0.3.
+  * This release contains bug-fixes for the LLVM 15.0.0 release.
+    This release is API and ABI compatible with 15.0.0.
+- Add llvm-armv7-fix-vector-compare-with-zero-lowering.patch: Fix
+  lowering of non-canonical vector comparison with zero on armv7,
+  preventing a crash (boo#1204267, gh#llvm/llvm-project#58514).
+- Add lldb-swig-4.1.0-build-fix.patch: Fix build with Swig 4.1.0.
+- Rebase llvm-do-not-install-static-libraries.patch.
+</comment>
+    <requestid>1031948</requestid>
+  </revision>
 </revisionlist>
