@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 27 22:48:11 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 0.4.1 
+  * Unbreak process suspension with blessed
+  * Remove xforms
+
+-------------------------------------------------------------------
 Sat Sep 10 15:48:54 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:
