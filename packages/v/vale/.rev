@@ -66,4 +66,27 @@
   style package, e.g. /usr/share/vale/styles/suse (forwarded request 1010324 from jfkw)</comment>
     <requestid>1010325</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5f0498644c3b1a699e924defc12145e1</srcmd5>
+    <version>2.21.0</version>
+    <time>1667067403</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.21.0:
+  * test: add another case for `IgnoredClasses`
+  * refactor: report actual XML error message
+  * test: add table test case for `IgnoredClasses`
+  * docs: update `.vale.ini` config
+  * docs: update `.vale.ini` config
+  * docs: update `.vale.ini` config
+  * feat: support comments in ignore files
+  * feat: ignore blocks by class
+  * fix: handle `0` suffix
+  * fix: `skip` should be an upper bound
+  * fix: `skip` should be an upper bound
+  * fix: ensure sequence length is non-zero
+  * feat: load local packages
+  * chore: restore Dockerfile
+  * chore: restore Dockerfile (forwarded request 1032068 from jfkw)</comment>
+    <requestid>1032069</requestid>
+  </revision>
 </revisionlist>

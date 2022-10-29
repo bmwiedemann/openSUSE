@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Oct 28 20:49:34 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 2.21.0:
+  * test: add another case for `IgnoredClasses`
+  * refactor: report actual XML error message
+  * test: add table test case for `IgnoredClasses`
+  * docs: update `.vale.ini` config
+  * docs: update `.vale.ini` config
+  * docs: update `.vale.ini` config
+  * feat: support comments in ignore files
+  * feat: ignore blocks by class
+  * fix: handle `0` suffix
+  * fix: `skip` should be an upper bound
+  * fix: `skip` should be an upper bound
+  * fix: ensure sequence length is non-zero
+  * feat: load local packages
+  * chore: restore Dockerfile
+  * chore: restore Dockerfile
+
+-------------------------------------------------------------------
 Wed Oct 12 21:57:25 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Add empty directory /usr/share/vale/styles for use by other
