@@ -20,7 +20,7 @@
 %bcond_without  test
 %define skip_python2 1
 Name:           python-dparse
-Version:        0.6.1
+Version:        0.6.2
 Release:        0
 Summary:        Python dependency file parser
 License:        MIT

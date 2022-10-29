@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 27 22:55:51 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 0.6.2 
+  * Fixed bug: always call the parent from the PATH in the resolve_file function.
+
+-------------------------------------------------------------------
 Tue Sep 27 19:06:18 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - update to 0.6.1
