@@ -19,18 +19,18 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-pegasus-wms.common
-Version:        5.0.2
+Version:        5.0.3
 Release:        0
 Summary:        Pegasus Workflow Management System Python Commons
 License:        Apache-2.0
 URL:            https://pegasus.isi.edu
 Source:         pegasus-wms.common-gh-%{version}.tar.xz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML > 5.3}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-PyYAML > 5.3
