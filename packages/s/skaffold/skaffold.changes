@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Oct 29 07:07:26 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.0.1:
+  * release: v2.0.1 (#7999)
+  * fix: revert "fix: no longer pass os env vars through to verify as this can cause unexpected issues with PATH, GOPATH, etc (#7949)" (#7998)
+  * chore: set v3 schema as the first schema shown on v2 doc site (#7982)
+  * fix: stderr of "helm template" not printed (#7986)
+  * docs: Fix helm command (#7987)
+  * chore: bump version deps (#7969)
+  * docs: Add a copy of the buildpacks node tutorial without a skaffold.yaml (#7968)
+  * chore(deps): bump peter-evans/create-or-update-comment (#7974)
+  * chore(deps): bump actions/upload-artifact from 3.1.0 to 3.1.1 (#7973)
+  * chore: bump examples/* to apiVersion: skaffold/v3 (#7970)
+
+-------------------------------------------------------------------
 Fri Oct 21 10:55:28 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 2.0.0:
