@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global skip_python2 1
 Name:           python-PyJWT
-Version:        2.5.0
+Version:        2.6.0
 Release:        0
 Summary:        JSON Web Token implementation in Python
 License:        MIT
@@ -54,11 +54,12 @@ find ./ -type f -name "*.py" -perm 644 -exec sed -i -e '1{\@^#!%{_bindir}/env py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_bin_suffix} -o addopts="" -k "not test_verify_false_deprecated"
+%pytest -k "not test_verify_false_deprecated"
 
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS.rst CHANGELOG.rst README.rst
-%{python_sitelib}/*
+%{python_sitelib}/jwt
+%{python_sitelib}/PyJWT-%{version}*-info
 
 %changelog

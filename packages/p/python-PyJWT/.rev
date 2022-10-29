@@ -246,4 +246,22 @@
     <comment></comment>
     <requestid>1009264</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>1d3564d95ed3addc3bd2158af6dfeb9d</srcmd5>
+    <version>2.6.0</version>
+    <time>1667067368</time>
+    <user>dimstar_suse</user>
+    <comment>- Clean up SPEC file.
+- Update to 2.6.0 
+  Changed
+  * bump up cryptography &gt;= 3.4.0 by @jpadilla in #807
+  * Remove types-cryptography from crypto extra by @lautat in #805
+  Fixed
+  * Invalidate token on the exact second the token expires #797
+  * fix: version 2.5.0 heading typo by @c0state in #803
+  Added
+  * Adding validation for issued_at when iat &gt; (now + leeway) as ImmatureSignatureError by @sriharan16 in #794
+</comment>
+    <requestid>1032058</requestid>
+  </revision>
 </revisionlist>
