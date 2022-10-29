@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct 26 14:16:11 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.2
+- Changes since 5.26.1:
+  * kcms/tablet: Fix dragging components (kde#460376)
+  * Revert "applets/taskmanager: make it harder to accidentally start a drag" (kde#460809)
+  * [applets/digitalclock] Fix font size change when migrating from 5.25 (kde#460415)
+  * kcms/mouse: Set preventStealing on the button capture
+  * Use KeySequenceItem.captureFinished to notify a binding has been entered
+
+-------------------------------------------------------------------
 Tue Oct 18 11:27:32 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.26.1
