@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-timers
-Version:        4.3.4
+Version:        4.3.5
 Release:        0
 %define mod_name timers
 %define mod_full_name %{mod_name}-%{version}
