@@ -16,7 +16,7 @@
 #
 
 
-%define plasma_version 5.26.1
+%define plasma_version 5.26.2
 Name:           plasma5-openSUSE
 Version:        84.87~git20220602T134713~22403ba
 Release:        0

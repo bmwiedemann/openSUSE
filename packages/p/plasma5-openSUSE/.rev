@@ -1280,4 +1280,12 @@ This should work now, I hope... ;-) (forwarded request 570364 from wolfi323)</co
     <comment>Plasma 5.26.1, untested. (forwarded request 1029774 from Vogtinator)</comment>
     <requestid>1029856</requestid>
   </revision>
+  <revision rev="154" vrev="9">
+    <srcmd5>38088f6c0b39d98b032350eea83d3dbe</srcmd5>
+    <version>84.87~git20220602T134713~22403ba</version>
+    <time>1667067355</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.26.2, untested but now with kwin scaling fix (forwarded request 1031457 from Vogtinator)</comment>
+    <requestid>1031887</requestid>
+  </revision>
 </revisionlist>
