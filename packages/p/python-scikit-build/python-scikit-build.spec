@@ -1,5 +1,5 @@
 #
-# spec file for package python-scikit-build
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -16,84 +16,102 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%bcond_without test
+%define psuffix -test
+%else
+%bcond_with test
+%define psuffix %{nil}
+%endif
+
 %define skip_python2 1
-Name:           python-scikit-build
-Version:        0.13.1
+Name:           python-scikit-build%{psuffix}
+Version:        0.16.1
 Release:        0
 Summary:        Improved build system generator for Python C/C++/Fortran/Cython extensions
 License:        MIT
 URL:            https://github.com/scikit-build/scikit-build
 Source:         https://files.pythonhosted.org/packages/source/s/scikit-build/scikit-build-%{version}.tar.gz
 Source99:       sample-setup.cfg
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module setuptools >= 28.0.0}
+BuildRequires:  %{python_module devel >= 3.6}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools >= 42.0.0}
+BuildRequires:  %{python_module wheel}
+%if !%{with test}
+# https://github.com/scikit-build/scikit-build/issues/689
+BuildRequires:  %{python_module setuptools_scm}
+%endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       cmake
 Requires:       python-distro
 Requires:       python-packaging
-Requires:       python-setuptools >= 28.0.0
-Requires:       python-wheel >= 0.29.0
-# SECTION test requirements
+Requires:       python-setuptools >= 42.0.0
+Requires:       python-wheel >= 0.32.0
+%if %python_version_nodots < 38
+Requires:       python-typing-extensions >= 3.7
+%endif
+%if %{with test}
 BuildRequires:  %{python_module Cython >= 0.25.1}
-BuildRequires:  %{python_module build}
-BuildRequires:  %{python_module distro}
+BuildRequires:  %{python_module build >= 0.7}
 BuildRequires:  %{python_module flake8 >= 3.0.4}
 BuildRequires:  %{python_module path.py >= 11.5.0}
-BuildRequires:  %{python_module pytest >= 4.5.0}
+BuildRequires:  %{python_module pytest >= 6.0.0 with %python-pytest < 7.2}
 BuildRequires:  %{python_module pytest-mock >= 1.10.4}
 BuildRequires:  %{python_module pytest-virtualenv >= 1.2.5}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module six >= 1.10.0}
+BuildRequires:  %{python_module scikit-build = %{version}}
 BuildRequires:  %{python_module virtualenv}
-BuildRequires:  %{python_module wheel >= 0.29.0}
-BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
 BuildRequires:  git-core
 BuildRequires:  ninja
-# /SECTION
+%endif
+BuildArch:      noarch
 %python_subpackages
 
 %description
 Improved build system generator for Python C/C++/Fortran/Cython extensions
 
 %prep
-%setup -q -n scikit-build-%{version}
+%autosetup -p1 -n scikit-build-%{version}
+%if %{with test}
 # some tests call setup.py develop|install|test, which by default write to /usr
 # This is not allowed in OBS
 # gh#scikit-build/scikit-build#469
 %python_expand mkdir -p /tmp/fakepythonroot%{$python_sitelib}
 cp %{S:99} tests/samples/hello-cpp/setup.cfg
-sed -i "/hello-1.2.3\/setup.py/ a \        'hello-1.2.3/setup.cfg'," tests/test_hello_cpp.py
 cp %{S:99} tests/samples/cython-flags/setup.cfg
 cp %{S:99} tests/samples/issue-274-support-default-package-dir/setup.cfg
 cp %{S:99} tests/samples/issue-274-support-one-package-without-package-dir/setup.cfg
 cp %{S:99} tests/samples/issue-334-configure-cmakelist-non-cp1252-encoding/setup.cfg
-sed -i 's/from mock import/from unittest.mock import/' tests/*.py
-# remove coverage flags
-sed -i '/addopts/ d' setup.cfg
+%endif
 
+%if !%{with test}
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
+%if %{with test}
 %check
-export PYTHONPATH=/tmp/fakepythonroot%{$python_sitelib}
 # test_pep518 needs a wheelhouse with downloaded wheels including platform dependent cmake
 donttest="test_pep518"
-# setuptools 62+ discovery fails here
-donttest="$donttest or (test_script_keyword and pure)"
+# https://github.com/scikit-build/scikit-build/issues/784
+donttest="$donttest or (test_hide_listing and True and bdist_wheel)"
 %pytest -k "not ($donttest)"
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %doc AUTHORS.rst README.rst CONTRIBUTING.rst HISTORY.rst docs/
 %license LICENSE
 %{python_sitelib}/skbuild
 %{python_sitelib}/scikit_build-%{version}*-info
+%endif
 
 %changelog

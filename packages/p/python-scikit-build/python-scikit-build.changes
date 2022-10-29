@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Sat Oct 29 15:32:48 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.16.1
+  * Patch release that fixes a missing Python requires setting and
+    some missing files #790, and addresses a warning from
+    setuptools in the tests.
+- Drop skbuild-pr785-ignoredeprecation.patch fixed upstream
+
+-------------------------------------------------------------------
+Sat Oct 29 12:54:06 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.16.0
+  * This release adds support for Python 3.11 and removes support
+    for Python 2.7 and 3.5 (#688). Testing and static checking
+    improved, including being fully statically typed internally
+    (though setuptools is not fully typed, so it is of limited
+    use).
+  * All deprecated setuptools/distutils features are also
+    deprecated in scikit-build, like the test command,
+    easy_install, etc. Editable mode is still unsupported. Python
+    3.6 support is deprecated. Older versions of CMake (<3.15) are
+    not recommended; a future version will remove support for older
+    CMake's (along with providing a better mechanism for ensuring a
+    proper CMake is available). If you need any of these features,
+    please open or find an issue explaining what and why you need
+    something.
+  * Cython module now supports FindPython mode. #743
+  * PyPy is discovered without extra settings in FindPython mode
+    #744
+  * FindPython mode uses a new path specification, should help make
+    it usable. #774
+  * Better flushing and output streams for more consistent output
+    ordering. #781
+- Add skbuild-pr785-ignoredeprecation.patch
+  * gh#scikit-build/scikit-build#785
+
+-------------------------------------------------------------------
+Wed Aug 24 09:44:45 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.15.0
+  * Add support for FindPython (including 2 and 3). Thanks
+    @hameerabbasi for the contribution. See #712.
+  * Add support for Cygwin. Thanks @ax3l and @DWesl and @poikilos
+    for the help! See #485.
+  * Fixed issue with distutils usage in Python 3.10. Thanks to
+    @SuperSandro2000 for the contribution in #700.
+- Release 0.14.1
+  * Fix issue with SKBUILD_CONFIGURE_OPTIONS not being read.
+  * Reverted manifest install changes.
+- Release 0.14.0
+  * Add support for --install-target scikit-build command line
+    option. And cmake_install_target in setup.py. Allows providing
+    an install target different than the default install. Thanks
+    @phcerdan for the contribution. See #477.
+  * The manifest install location computation was fixed. Thanks
+    @kratsg for the contribution in #682.
+  * Byte-compilation was skipped due to a missing return. Thanks
+    @pekkarr in #678.
+  * Packages can now be computed from the same shared collections,
+    before this could confuse Scikit-build. Thanks @vyasr in #675.
+  * Fixed library detection for PyPy 3.9. Thanks @rkaminsk in #673.
+  * Scikit-build now uses pyproject.toml and setuptools_scm to
+    build. If you are packaging scikit-build itself, you might need
+    to update your requirements. See #634.
+  * The codebase is now formatted with Black. #665
+
+-------------------------------------------------------------------
 Wed Aug 24 09:44:44 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Skip a test failing with setuptools 62+
