@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 29 15:39:08 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20221029T100923Z:
+  * Add new healing summary (#4323)
+  * support inspect: bump up metadata version (#4331)
+  * Improve format of perf tests output (#4330)
+  * Updating usage for mc replicate edit (#4328)
+
+-------------------------------------------------------------------
 Tue Oct 25 04:44:22 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 20221022T033929Z:
