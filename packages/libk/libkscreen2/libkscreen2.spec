@@ -19,7 +19,7 @@
 %bcond_without released
 %define lname   libKF5Screen7
 Name:           libkscreen2
-Version:        5.26.1
+Version:        5.26.2
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -44,6 +44,7 @@ BuildRequires:  cmake(PlasmaWaylandProtocols)
 BuildRequires:  cmake(Qt5Core) >= 5.15.0
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5WaylandClient)
 BuildRequires:  cmake(Qt5X11Extras)
@@ -78,8 +79,10 @@ Recommends:     %{name}-plugin
 %description -n %{lname}
 Shared library for dynamic display management in KDE
 
+%lang_package -n %{lname}
+
 %prep
-%setup -q -n libkscreen-%{version}
+%autosetup -p1 -n libkscreen-%{version}
 
 %build
   %cmake_kf5 -d build
@@ -87,7 +90,8 @@ Shared library for dynamic display management in KDE
 
 %install
   %kf5_makeinstall -C build
-  %fdupes -s %{buildroot}
+  %find_lang libkscreen5 --with-qt --all-name --without-mo
+  %fdupes %{buildroot}
 
 %post -n %{lname} -p /sbin/ldconfig
 
@@ -114,6 +118,8 @@ Shared library for dynamic display management in KDE
 %files -n %{lname}
 %license LICENSES/*
 %{_kf5_libdir}/libKF5Screen.so.*
+
+%files -n %{lname}-lang -f libkscreen5.lang
 
 %files devel
 %license LICENSES/*
