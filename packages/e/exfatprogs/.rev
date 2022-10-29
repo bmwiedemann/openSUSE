@@ -110,4 +110,29 @@
     <comment></comment>
     <requestid>932251</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0a359bd7be12e040c33c6a6223c79803</srcmd5>
+    <version>1.2.0</version>
+    <time>1667067313</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.0:
+  Changes:
+  * fsck.exfat: Keep traveling files even if there is a corrupted
+    directory entry set.
+  * fsck.exfat: Introduce the option &quot;b&quot; to recover a boot sector even
+    if an exFAT filesystem is not found.
+  * fsck.exfat: Introduce the option &quot;s&quot; to create files in
+    &quot;/LOST+FOUND&quot;, which have clusters allocated but was not belonged to
+    any files.
+  * fsck.exfat: Rename '.' and '..' entry name to the one user want.
+  Features:
+  * fsck.exfat: Repair corruptions of an exFAT filesystem. Please refer
+    to fsck.exfat manpage to see what kind of corruptions can be repaired.
+  * exfat2img: Dump metadata of an exFAT filesystem. Please refer to
+    exfat2img manpage to see how to use it.
+  Buf fixes:
+  * fsck.exfat: Fix an infinite loop while traveling files.
+  * tune.exfat: Fix bitmap entry corruption when adding new volume lablel.</comment>
+    <requestid>1031970</requestid>
+  </revision>
 </revisionlist>

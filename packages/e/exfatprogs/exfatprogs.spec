@@ -1,7 +1,7 @@
 #
 # spec file for package exfatprogs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           exfatprogs
-Version:        1.1.3
+Version:        1.2.0
 Release:        0
 Summary:        Utilities for exFAT file system maintenance
 License:        GPL-2.0-or-later
@@ -66,10 +66,12 @@ autoreconf -fi
 %{_mandir}/man8/fsck.exfat.8%{?ext_man}
 %{_mandir}/man8/mkfs.exfat.8%{?ext_man}
 %{_mandir}/man8/tune.exfat.8%{?ext_man}
+%{_mandir}/man8/exfat2img.8%{?ext_man}
 %{_sbindir}/dump.exfat
 %{_sbindir}/exfatlabel
 %{_sbindir}/fsck.exfat
 %{_sbindir}/mkfs.exfat
 %{_sbindir}/tune.exfat
+%{_sbindir}/exfat2img
 
 %changelog
