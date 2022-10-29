@@ -19,20 +19,20 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-pegasus-wms.api
-Version:        5.0.2
+Version:        5.0.3
 Release:        0
 Summary:        Pegasus Workflow Management System Python API
 License:        Apache-2.0
 URL:            http://pegasus.isi.edu
-Source0:         pegasus-wms.api-gh-%{version}.tar.xz
-Source1:         pegasus-schema-yaml-%{version}.tar.xz
-BuildRequires:  python-rpm-macros
+Source0:        pegasus-wms.api-gh-%{version}.tar.xz
+Source1:        pegasus-schema-yaml-%{version}.tar.xz
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pegasus-wms.common < 5.1}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module jsonschema}
+BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-pegasus-wms.common < 5.1
