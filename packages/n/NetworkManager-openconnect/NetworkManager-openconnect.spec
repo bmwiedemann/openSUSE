@@ -25,7 +25,10 @@ Group:          Productivity/Networking/System
 URL:            http://www.gnome.org/projects/NetworkManager
 Source0:        https://download.gnome.org/sources/NetworkManager-openconnect/1.2/%{name}-%{version}.tar.xz
 Source1:        system-user-nm-openconnect.conf
-
+Patch0:         dbus-location.patch
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  libtool
 BuildRequires:  intltool
 BuildRequires:  libxml2-tools
 BuildRequires:  pkgconfig
@@ -65,6 +68,7 @@ OpenConnect, an implementation of the Cisco AnyConnect VPN system.
 %autosetup -p1
 
 %build
+autoreconf -fiv
 %configure \
 	--disable-static \
 	--with-gtk4=yes \
@@ -88,7 +92,7 @@ install -m 0644 %{SOURCE1} %{buildroot}%{_sysusersdir}/
 %{_libexecdir}/nm-openconnect-service
 %{_libexecdir}/nm-openconnect-service-openconnect-helper
 %{_vpnservicedir}/nm-openconnect-service.name
-%{_sysconfdir}/dbus-1/system.d/nm-openconnect-service.conf
+%{_datadir}/dbus-1/system.d/nm-openconnect-service.conf
 %{_sysusersdir}/system-user-nm-openconnect.conf
 
 %files gnome
