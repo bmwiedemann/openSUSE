@@ -18,15 +18,16 @@
 
 
 Name:           embree
-Version:        3.13.3
+Version:        3.13.5
 Release:        0
 Summary:        Ray Tracing Kernels
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/embree/embree
-Source:         %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.xz
 BuildRequires:  cmake >= 3.1.0
 BuildRequires:  gcc-c++
+BuildRequires:  ispc
 BuildRequires:  pkgconfig
 # can't build static with TBB 2021
 #BuildRequires:  tbb-devel
@@ -67,9 +68,9 @@ export CXXFLAGS="%{optflags}"
 %cmake \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DEMBREE_STATIC_LIB=ON \
-    -DEMBREE_TASKING_SYSTEM=INTERNAL \
     -DEMBREE_LIB_INSTALL_DIR=%{_libdir} \
-    -DEMBREE_ISPC_SUPPORT=OFF \
+    -DEMBREE_ISPC_SUPPORT=ON \
+    -DEMBREE_TASKING_SYSTEM=INTERNAL \
     -DEMBREE_RAY_MASK=ON \
     -DEMBREE_FILTER_FUNCTION=ON \
     -DEMBREE_BACKFACE_CULLING=OFF \
@@ -82,7 +83,6 @@ export CXXFLAGS="%{optflags}"
 
 %install
 %cmake_install
-mv %{buildroot}%{_libdir}/cmake/%{name}-%{version} %{buildroot}%{_libdir}/cmake/%{name}3
 rm -r %{buildroot}%{_mandir}
 rm -r %{buildroot}/usr/share/doc
 
@@ -90,7 +90,7 @@ rm -r %{buildroot}/usr/share/doc
 %license LICENSE.txt
 %doc CHANGELOG.md README.md
 %{_includedir}/embree3
-%{_libdir}/cmake/embree3
+%{_libdir}/cmake/%{name}-%{version}
 %{_libdir}/*.a
 
 %changelog

@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Oct 25 10:56:41 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Remove the cmake config tweaking
+
+-------------------------------------------------------------------
+Sat Oct 22 17:44:44 UTC 2022 - hpj@urpla.net
+
+- Update to version 3.13.5:
+  * regenerated documentation
+  * setting version to v3.13.5
+  * ci: add github actions workflows
+  * FastAllocator: fix the false sharing in SpinLock array
+  * Fixed spatial splitting for non-planar quads.
+  * no longer automatically starting thread nor setting affinity
+  * disabling thread ID affinity re-mapping as it causes issues inside LXC containers
+  * TBB: Stop task_scheduler_observer when TaskScheduler is destroyed
+  * Improved self intersection avoidance for RTC_GEOMETRY_TYPE_DISC_POINT geometry type.
+  * Fix compilation issues on macOS 12.5 and Apple clang version 13.1.6
+
+- Update to version 3.13.4:
+  * Using 8-wide BVH and double pumped NEON instructions on Apple M1 gives 8% performance boost.
+  * Fixed binning related crash in SAH BVH builder.
+  * Added EMBREE_TBB_COMPONENT cmake option to define the component/library name of Intel® TBB (default: tbb).
+  * Embree supports now Intel® oneAPI DPC++/C++ Compiler 2022.0.0
+
+- Switch to _service based package source
+- Use simd compiler ispc
+
+-------------------------------------------------------------------
+Sat Oct 22 16:56:52 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Fix cmake devel config to reflect reality
+
+-------------------------------------------------------------------
 Tue Apr 26 07:22:16 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update _constraints for aarch64
