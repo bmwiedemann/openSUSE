@@ -343,4 +343,12 @@
   * Add get_timeline() to Issue's type stubs (#1663) (6bc9ecc8)</comment>
     <requestid>892366</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>1b49edc63525b8970f0f298555f5aec1</srcmd5>
+    <version>1.56</version>
+    <time>1667067395</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032047</requestid>
+  </revision>
 </revisionlist>
