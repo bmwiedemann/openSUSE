@@ -1983,4 +1983,12 @@ Tue Sep 23 20:24:35 UTC 2014 - hrvoje.senjan@gmail.com
     <comment>Plasma 5.26.1, untested. (forwarded request 1029774 from Vogtinator)</comment>
     <requestid>1029861</requestid>
   </revision>
+  <revision rev="200" vrev="1">
+    <srcmd5>8b5dfedfa170e8fa481e07073518fafa</srcmd5>
+    <version>5.26.2</version>
+    <time>1667067358</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.26.2, untested but now with kwin scaling fix (forwarded request 1031457 from Vogtinator)</comment>
+    <requestid>1031892</requestid>
+  </revision>
 </revisionlist>

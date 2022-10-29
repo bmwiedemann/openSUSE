@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Oct 26 14:16:26 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.2
+- Changes since 5.26.1:
+  * Revert "applets/notifications: allow screen reader to read notification body in FullRepresentation" (kde#460895)
+  * runners/kill: Fix config group name mismatch (kde#460899)
+  * [kcms/kcm_regionandlanguage] fix config not saved after clicking 'defaults' and 'save' (kde#460842)
+  * disable automatic portal launching early on (kde#458865)
+  * wallpapers/image: disable animated wallpaper on X11
+  * wallpapers/image: fall back to default wallpaper when url is empty (kde#460692)
+  * systemtray: Avoid dbus calls after exit (kde#460814)
+  * Save layout immediately after a resolution change triggered relayout
+  * Remove unnecessary heuristic relayout function call
+  * Use KeySequenceItem.captureFinished to notify a binding has been entered (kde#459322)
+
+-------------------------------------------------------------------
 Tue Oct 18 11:27:35 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.26.1
