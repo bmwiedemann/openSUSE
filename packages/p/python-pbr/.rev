@@ -691,4 +691,12 @@
   * Adding python classifiers py38 &amp; py39</comment>
     <requestid>998219</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>e408d33f8ab04fbcd1095f7fc2704186</srcmd5>
+    <version>5.11.0</version>
+    <time>1667067366</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032046</requestid>
+  </revision>
 </revisionlist>
