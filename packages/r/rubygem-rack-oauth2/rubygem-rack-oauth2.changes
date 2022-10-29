@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct 28 05:04:14 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 2.2.0
+ see installed CHANGELOG.md
+
+  ## [2.1.0] - 2022-10-10
+  
+  ### Added
+  
+  - accept local_http_config on Rack::OAuth2::Client#access_token! & revoke!  to support custom headers etc. by @nov in https://github.com/nov/rack-oauth2/pull/93
+  
+
+-------------------------------------------------------------------
 Mon Oct 10 13:15:34 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 2.1.0
