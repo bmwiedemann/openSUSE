@@ -9,4 +9,15 @@
 When accepted to Factory, please, remove python-stem.</comment>
     <requestid>962927</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1c4c3151c5990ac83ca98d1c8ba7d9f6</srcmd5>
+    <version>1.8.4</version>
+    <time>1667067453</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1031654 from yarunachalam
+
+- Update to v1.8.4 
+    Complete changelog https://stem.torproject.org/change_log.html#version-1-8</comment>
+    <requestid>1032180</requestid>
+  </revision>
 </revisionlist>

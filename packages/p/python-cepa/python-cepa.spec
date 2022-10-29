@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-cepa
-Version:        1.8.3
+Version:        1.8.4
 Release:        0
 Summary:        Python controller library for Tor
 License:        LGPL-3.0-only
