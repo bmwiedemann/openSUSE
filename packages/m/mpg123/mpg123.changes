@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Fri Oct 28 11:29:10 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.31.0
+  mpg123:
+  * The --control / -C switch will make mpg123 abort now if
+    terminal control cannot be enabled.
+  * Revert to internal network code for plain HTTP to ensure
+    continued support for original shoutcast servers that do not
+    talk proper HTTP. External backends are built at the same
+    time and can be enforced using --network <backend>.
+  * Try-witout-port for internal network code is gone. We do not
+    need to keep each ancient hack for specific hosts.
+  * Handle redirections independently of the backend behind
+    net123.
+  * Set proxy environment variables when --proxy is specified,
+    for net123 backends to use.
+  * Continue reading for long commands in generic control,
+    avoiding unnecessary unfinished command errors.
+  * Change error message from 'unknown command' to
+    'unknown command with arguments' to avoid confusion why
+    'help foo' is unknown, as opposed to 'help'.
+  * Reduce CPU load while just waiting for terminal input.
+  * Condense terminal control help output and excessive vertical
+    whitespace in printouts.
+  * Fix interaction of pause (looping) with buffer, adding
+    --pauseloop to set the loop interval.
+  * Numeric option arguments are strictly checked now for
+    conversion errors. This also catches -devbuffer, which was
+    interpretd as -d 0 before. This also applies to out123.
+  libout123:
+  * Add same interruption handling to out123_write() as to
+    unintr_write(), adding EAGAIN to fix bug 342 for certain
+    ALSA setups.
+  * Fix race condition to deadlock on buffer_sync_param() where
+    parameters after the command byte got read as more commands.
+    This got triggered easily by using the pause key in terminal
+    mode with buffer (which was discouraged before because of
+    buffer flushing). Generally, changing parameters with active
+    buffer process was dangerous since libout123 entered the
+    scene.
+  other:
+  * some build fixes for compiler pickyness
+  * Disable largefile renames also for non-sensitive POSIX
+    systems
+
+-------------------------------------------------------------------
 Tue Aug  2 07:50:11 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.30.2
