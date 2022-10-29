@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pamqp
-Version:        3.2.0
+Version:        3.2.1
 Release:        0
 Summary:        Pure-python AMQP 0-9-1 frame encoder and decoder
 License:        BSD-3-Clause
