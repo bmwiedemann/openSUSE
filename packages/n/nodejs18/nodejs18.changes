@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 28 10:31:50 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- Update to NodeJS 18.12.0 LTS:
+  * Running in 'watch' mode using node --watch restarts the process
+    when an imported file is changed.
+  * fs: add FileHandle.prototype.readLines
+  * http: add writeEarlyHints function to ServerResponse
+  * http2: make early hints generic
+  * util: add default value option to parsearg
+
+-------------------------------------------------------------------
 Mon Oct 17 13:02:52 UTC 2022 - Adam Majer <adam.majer@suse.de>
 
 - Update to NodeJS 18.11.0:

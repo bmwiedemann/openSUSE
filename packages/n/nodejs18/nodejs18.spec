@@ -15,13 +15,23 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+###########################################################
+#
+#   WARNING! WARNING! WARNING! WARNING! WARNING! WARNING!
+#
+# This spec file is generated from a template hosted at
+# https://github.com/AdamMajer/nodejs-packaging
+#
+###########################################################
 
+# Fedora doesn't have rpm-config-SUSE which provides
+# ext_man in /usr/lib/rpm/macros.d/macros.obs
 %if 0%{?fedora_version}
 %define ext_man .gz
 %endif
 
 Name:           nodejs18
-Version:        18.11.0
+Version:        18.12.0
 Release:        0
 
 # Double DWZ memory limits
@@ -119,12 +129,12 @@ Source1:        https://nodejs.org/dist/v%{version}/SHASUMS256.txt
 Source2:        https://nodejs.org/dist/v%{version}/SHASUMS256.txt.sig
 Source3:        nodejs.keyring
 
-# Python 3.4 compatible node-gyp
-### https://github.com/nodejs/node-gyp.git
-### git archive v7.1.2 gyp/ | xz > node-gyp_7.1.2.tar.xz
-Source5:        node-gyp_7.1.2.tar.xz
-# Only required to run unit tests in NodeJS 10+
-Source10:       update_npm_tarball.sh
+# Python 3.4 compatible node-gyp 
+### https://github.com/nodejs/node-gyp.git 
+### git archive v7.1.2 gyp/ | xz > node-gyp_7.1.2.tar.xz 
+Source5:        node-gyp_7.1.2.tar.xz 
+# Only required to run unit tests in NodeJS 10+ 
+Source10:       update_npm_tarball.sh 
 Source11:       node_modules.tar.xz
 Source20:       bash_output_helper.bash
 
@@ -134,6 +144,8 @@ Patch3:         fix_ci_tests.patch
 Patch5:         sle12_python3_compat.patch
 Patch7:         manual_configure.patch
 Patch13:        openssl_binary_detection.patch
+
+
 
 ## Patches specific to SUSE and openSUSE
 Patch100:       linker_lto_jobs.patch
@@ -161,8 +173,8 @@ Patch200:       versioned.patch
 Patch304:       new_python3.patch
 Patch305:       qemu_timeouts_arches.patch
 
-BuildRequires:  fdupes
 BuildRequires:  pkg-config
+BuildRequires:  fdupes
 BuildRequires:  procps
 BuildRequires:  xz
 BuildRequires:  zlib-devel
@@ -182,10 +194,10 @@ BuildRequires:  config(netcfg)
 %if 0%{?suse_version} == 1110
 # GCC 5 is only available in the SUSE:SLE-11:SP4:Update repository (SDK).
 %if %node_version_number >= 8
-BuildRequires:  gcc5-c++
+BuildRequires:   gcc5-c++
 %define forced_gcc_version 5
 %else
-BuildRequires:  gcc48-c++
+BuildRequires:   gcc48-c++
 %define forced_gcc_version 4.8
 %endif
 %endif
@@ -195,15 +207,15 @@ BuildRequires:  gcc48-c++
 # for SLE-12:Update targets
 %if 0%{?suse_version} == 1315
 %if %node_version_number >= 17
-BuildRequires:  gcc12-c++
+BuildRequires:   gcc12-c++
 %define forced_gcc_version 12
 %else
 %if %node_version_number >= 14
-BuildRequires:  gcc9-c++
+BuildRequires:   gcc9-c++
 %define forced_gcc_version 9
 %else
 %if %node_version_number >= 8
-BuildRequires:  gcc7-c++
+BuildRequires:   gcc7-c++
 %define forced_gcc_version 7
 %endif
 %endif
@@ -212,7 +224,7 @@ BuildRequires:  gcc7-c++
 
 %if 0%{?suse_version} == 1500
 %if %node_version_number >= 17
-BuildRequires:  gcc12-c++
+BuildRequires:   gcc12-c++
 %define forced_gcc_version 12
 %endif
 %endif
@@ -222,6 +234,7 @@ BuildRequires:  gcc12-c++
 %if ! 0%{?forced_gcc_version:1}
 BuildRequires:  gcc-c++
 %endif
+
 
 # Python dependencies
 %if %node_version_number >= 16
@@ -247,8 +260,8 @@ BuildRequires:  python
 %endif
 
 %if 0%{?suse_version} >= 1500 && %{node_version_number} >= 10
-BuildRequires:  group(nobody)
 BuildRequires:  user(nobody)
+BuildRequires:  group(nobody)
 %endif
 
 %if ! 0%{with intree_openssl}
@@ -311,7 +324,7 @@ BuildRequires:  valgrind
 %if %{with libalternatives}
 Requires:       alts
 %else
-Requires(postun):%{_sbindir}/update-alternatives
+Requires(postun): %{_sbindir}/update-alternatives
 %endif
 # either for update-alternatives, or their removal
 Requires(post): %{_sbindir}/update-alternatives
@@ -350,14 +363,15 @@ ExclusiveArch:  not_buildable
 %endif
 %endif
 
-Provides:       bundled(libuv) = 1.43.0
 Provides:       bundled(uvwasi) = 0.0.13
+Provides:       bundled(libuv) = 1.43.0
 Provides:       bundled(v8) = 10.2.154.15
 %if %{with intree_brotli}
 Provides:       bundled(brotli) = 1.0.9
 %else
 BuildRequires:  pkgconfig(libbrotlidec)
 %endif
+
 
 Provides:       bundled(llhttp) = 6.0.10
 Provides:       bundled(ngtcp2) = 0.8.1
@@ -379,8 +393,8 @@ provided by npm.
 Summary:        Development headers for NodeJS 18.x
 Group:          Development/Languages/NodeJS
 Provides:       nodejs-devel = %{version}
-Requires:       %{name} = %{version}
 Requires:       npm18 = %{version}
+Requires:       %{name} = %{version}
 
 %description devel
 This package provides development headers for Node.js needed for creation
@@ -397,12 +411,12 @@ Requires:       nodejs-common
 Requires:       nodejs18 = %{version}
 Provides:       nodejs-npm = %{version}
 Obsoletes:      nodejs-npm < 4.0.0
-Provides:       npm = %{version}
 Provides:       npm(npm) = 8.19.2
+Provides:       npm = %{version}
 %if 0%{?suse_version} >= 1500
 %if %{node_version_number} >= 10
-Requires:       group(nobody)
 Requires:       user(nobody)
+Requires:       group(nobody)
 %endif
 %endif
 Provides:       bundled(node-abbrev) = 1.1.1
@@ -568,8 +582,8 @@ Provides:       bundled(node-spdx-exceptions) = 2.3.0
 Provides:       bundled(node-spdx-expression-parse) = 3.0.1
 Provides:       bundled(node-spdx-license-ids) = 3.0.11
 Provides:       bundled(node-ssri) = 9.0.1
-Provides:       bundled(node-string-width) = 4.2.3
 Provides:       bundled(node-string_decoder) = 1.3.0
+Provides:       bundled(node-string-width) = 4.2.3
 Provides:       bundled(node-strip-ansi) = 6.0.1
 Provides:       bundled(node-supports-color) = 7.2.0
 Provides:       bundled(node-tar) = 6.1.11
@@ -670,11 +684,12 @@ find -name \*~ -print0 -delete
 find \( -name \*.js.orig -or -name \*.md.orig -or -name \*.1.orig \) -delete
 
 # downgrade node-gyp to last version that supports python 3.4 for SLE12
-%if 0%{?use_version} && 0%{?suse_version} < 1500
+%if 0%{?suse_version} && 0%{?suse_version} < 1500
 rm -r  deps/npm/node_modules/node-gyp
 mkdir deps/npm/node_modules/node-gyp
 tar -C deps/npm/node_modules/node-gyp Jxf %{SOURCE5}
 %endif
+
 
 %build
 # normalize shebang
@@ -764,7 +779,9 @@ EOF
 %if 0%{with gdb}
     --gdb \
 %endif
+%if %{node_version_number} < 19
     --without-dtrace \
+%endif
 %if %{node_version_number} >= 16 && (0%{?suse_version} > 1550 || 0%{?sle_version} >= 150400)
     --openssl-default-cipher-list=PROFILE=SYSTEM \
 %endif
@@ -1001,9 +1018,11 @@ make test-ci
 %files devel
 %defattr(-, root, root)
 %{_includedir}/node%{node_version_number}
+%if %{node_version_number} < 19
 %dir %{_datadir}/systemtap
 %dir %{_datadir}/systemtap/tapset
 %{_datadir}/systemtap/tapset/node%{node_version_number}.stp
+%endif
 
 %files docs
 %defattr(-,root,root)
@@ -1019,7 +1038,6 @@ update-alternatives --remove npm-default %{_bindir}/npm%{node_version_number}
 update-alternatives --remove npx-default %{_bindir}/npx%{node_version_number}
 
 %else
-
 %pre
 # remove files that are no longer owned but provided by update-alternatives
 if ! [ -L %{_mandir}/man1/node.1%{ext_man} ]; then
