@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Oct 29 02:16:00 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1666949337.70dda4e:
+  * Use signatures in WebAPI::Controller::Test
+  * Revert "Add button to insert marker for unblocking incident to OSD branding"
+  * Implement server-side max and default limit
+  * Add limits initialization for next previous ajax
+  * Add ajax subtest to 16-tests_jobs_next_previous.t
+  * Add button to insert marker for unblocking incident to OSD branding
+  * Allow customizing commenting tools via branding
+
+-------------------------------------------------------------------
 Wed Oct 26 08:16:05 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1666772157.b8fb43f:
