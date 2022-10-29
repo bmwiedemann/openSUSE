@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct 26 14:16:16 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.2
+- Changes since 5.26.1:
+  * mmplugin: Cleanup signals
+  * dataproviders: Fix mobile provider label
+  * mmplugin: Ensure variables are reset properly
+  * mmplugin: Flesh out update signals and behaviour
+
+-------------------------------------------------------------------
 Tue Oct 18 11:27:33 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.26.1
