@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kde-gtk-config5
-Version:        5.26.1
+Version:        5.26.2
 Release:        0
 Summary:        Daemon for GTK2 and GTK3 Applications Appearance Under KDE
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
@@ -49,6 +49,7 @@ BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(x11)
 # Needed for syncing GTK+ settings
 Requires:       xsettingsd
+Requires:       gsettings-desktop-schemas
 Suggests:       gtk2-metatheme-breeze
 Suggests:       gtk3-metatheme-breeze
 Supplements:    packageand(plasma5-workspace:libgtk-2_0-0)
