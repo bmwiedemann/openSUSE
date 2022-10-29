@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Oct 25 04:55:40 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 3.3.1
+  - Hotfix release reverting PR #555 which can cause segfaults
+- Changes in version 3.3.0
+  - Add support for DualSense trigger haptic feedback
+  - Selection "None" Preset does not change button labels
+  - Multiple problems caused by invalid thread handling
+    - Saving PS4 Controller setup stops set toggle from working
+    - Saving Breaks Set Switching
+    - Saving config breaks turbo
+    - Warnings QObject: Cannot create children for a parent that
+      is in a different thread
+  - Fix some code warnings
+  - Remove some unused code
+  - Limit number of logged events
+  - Some refactors and docs updates
+  - Update SDL mappings database
+  - Update translations: Korean, Ukrainian, Spanish
+
+-------------------------------------------------------------------
 Tue Jul 19 17:31:46 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 3.2.5
