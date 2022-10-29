@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-fedora-messaging
-Version:        3.1.0
+Version:        3.2.0
 Release:        0
 Summary:        Python tools for Fedora's messaging infrastructure
 License:        GPL-2.0-or-later
