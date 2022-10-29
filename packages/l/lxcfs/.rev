@@ -154,4 +154,12 @@
 - fix Supplements syntax</comment>
     <requestid>1007348</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a3b09afa7dfbf5b0e85047539b763630</srcmd5>
+    <version>5.0.2</version>
+    <time>1667067413</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032079</requestid>
+  </revision>
 </revisionlist>

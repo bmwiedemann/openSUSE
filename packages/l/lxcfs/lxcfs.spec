@@ -22,7 +22,7 @@
 %endif
 
 Name:           lxcfs
-Version:        4.0.12
+Version:        5.0.2
 Release:        0
 Summary:        FUSE filesystem for LXC
 License:        Apache-2.0
@@ -31,14 +31,14 @@ URL:            https://linuxcontainers.org/lxcfs
 Source:         https://linuxcontainers.org/downloads/%{name}/%{name}-%{version}.tar.gz
 Source1:        https://linuxcontainers.org/downloads/%{name}/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
-Patch1:         include-fixes.patch
-BuildRequires:  autoconf
-BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  help2man
 BuildRequires:  libtool
+BuildRequires:  meson >= 0.50
 BuildRequires:  pam-devel
 BuildRequires:  pkg-config
+BuildRequires:  python3
+BuildRequires:  python3-jinja2
 BuildRequires:  pkgconfig(fuse)
 BuildRequires:  pkgconfig(systemd)
 %{?systemd_requires}
@@ -67,19 +67,20 @@ with LXC for all containers.
 %autosetup -p1
 
 %build
-autoreconf -vif
-%configure --with-distro=opensuse
-make %{?_smp_mflags}
+%meson \
+	-D init-script=systemd \
+	-D runtime-path=%{_rundir} \
+	%{nil}
+%meson_build
 
 %install
 # The shared library liblxcfs.so used by lxcfs is not supposed to be used by
 # any other program. lxcfs will automatically install it to {_libdir}/{name}
 # which is out of the way of any other users.
-%make_install
+%meson_install
 install -d -m 0755 %{buildroot}%{_sharedstatedir}/%{name}
 
 # systemd service and sysv-init compat wrapper.
-install -D -m 0644 config/init/systemd/%{name}.service %{buildroot}%{_unitdir}/%{name}.service
 mkdir -p %{buildroot}%{_sbindir}
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 

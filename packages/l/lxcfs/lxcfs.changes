@@ -1,8 +1,34 @@
 -------------------------------------------------------------------
+Sat Oct 29 00:02:49 UTC 2022 - Aleksa Sarai <asarai@suse.com>
+
+- Update to LXCFS 5.0.2. The full upstream changelog is available from:
+  https://discuss.linuxcontainers.org/t/lxcfs-5-0-lts-has-been-released/13535
+  https://discuss.linuxcontainers.org/t/lxcfs-5-0-1-has-been-released/14709
+  https://discuss.linuxcontainers.org/t/lxcfs-5-0-2-has-been-released/14811
+  boo#1204842
+
+  LXCFS 5.0.2:
+  * Fix crash during load/reload on FUSE 3
+
+  LXCFS 5.0.1:
+  * Fixes to /sys/devices/system/cpu handling on FUSE 2
+  * Fix for a formatting issue in /proc/stat
+  * Fix for a cgroup2 issue in handling cgroups with no CPU limits
+  * Fix for library reload logic
+
+  LXCFS 5.0:
+  * Switch to meson
+  + Complete cgroup2 support
+  + /proc/slabinfo support
+  + /sys/devices/system/cpu support
+- Drop no-longer needed patches.
+  - include-fixes.patch
+
+-------------------------------------------------------------------
 Fri Sep 30 20:50:08 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add include-fixes.patch
-- reenable FORTIFY_SOURCE=3 
+- reenable FORTIFY_SOURCE=3
 
 -------------------------------------------------------------------
 Sun Sep 25 17:00:54 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
@@ -58,12 +84,12 @@ Mon May 24 06:34:21 UTC 2021 - Johannes Kastl <kastl@b1-systems.de>
   *  Update for new diskstats fields
   *  Fix some build issues
   * for full list of changes see
-  https://discuss.linuxcontainers.org/t/lxcfs-4-0-6-lts-has-been-released/9236 
+  https://discuss.linuxcontainers.org/t/lxcfs-4-0-6-lts-has-been-released/9236
 
 -------------------------------------------------------------------
 Wed Aug 12 04:44:02 UTC 2020 - Pavol Cupka <palica@liguros.net>
 
-- update to LXCFS 4.0.5 
+- update to LXCFS 4.0.5
   detailed changelog:
   https://discuss.linuxcontainers.org/t/lxcfs-4-0-5-lts-has-been-released/8602
 
@@ -72,14 +98,14 @@ Sat Jun 27 06:20:52 UTC 2020 - Pavol Cupka <palica@liguros.net>
 
 - update to LXCFS 4.0.4 (released on the 18th of June 2020)
   detailed changelog:
-  https://discuss.linuxcontainers.org/t/lxcfs-4-0-4-lts-has-been-released/8212 
+  https://discuss.linuxcontainers.org/t/lxcfs-4-0-4-lts-has-been-released/8212
 
 -------------------------------------------------------------------
 Sun May 10 05:58:58 UTC 2020 - Pavol Cupka <palica@liguros.net>
 
 - update to LXCFS 4.0.3 (released on the 17th of April 2020)
   detailed changelog:
-  https://discuss.linuxcontainers.org/t/lxcfs-4-0-3-lts-has-been-released/7470 
+  https://discuss.linuxcontainers.org/t/lxcfs-4-0-3-lts-has-been-released/7470
 
 -------------------------------------------------------------------
 Wed Apr  1 14:23:25 UTC 2020 - Aleksa Sarai <asarai@suse.com>
