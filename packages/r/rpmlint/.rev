@@ -4105,4 +4105,21 @@ oddjob-gpupdate isn't blocked)</comment>
   * format with pyupgrade --py38-plus</comment>
     <requestid>1030465</requestid>
   </revision>
+  <revision rev="421" vrev="1">
+    <srcmd5>4f5cc85705f38d68b56c744a765e48cf</srcmd5>
+    <version>2.4.0+git20221028.5eac7b1</version>
+    <time>1667067317</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.0+git20221028.5eac7b1:
+  * SpecCheck: Add python_sitelib glob check
+  * dbus-service whitelist: move NetworkManager-openconnect to /usr (bsc#1204795)
+
+- Update to version 2.4.0+git20221025.93c4f05:
+  * Add python-module-def check to SpecCheck
+
+- Update to version 2.4.0+git20221024.648726f:
+  * Update the Python module regex to also match stable ABI names
+  * update checkout action to v3</comment>
+    <requestid>1031936</requestid>
+  </revision>
 </revisionlist>

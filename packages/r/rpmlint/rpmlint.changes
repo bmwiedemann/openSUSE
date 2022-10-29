@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Oct 28 11:44:25 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.4.0+git20221028.5eac7b1:
+  * SpecCheck: Add python_sitelib glob check
+  * dbus-service whitelist: move NetworkManager-openconnect to /usr (bsc#1204795)
+
+-------------------------------------------------------------------
+Fri Oct 28 07:52:02 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.4.0+git20221025.93c4f05:
+  * Add python-module-def check to SpecCheck
+
+-------------------------------------------------------------------
+Mon Oct 24 11:47:42 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.4.0+git20221024.648726f:
+  * Update the Python module regex to also match stable ABI names
+  * update checkout action to v3
+
+-------------------------------------------------------------------
 Fri Oct 21 21:32:17 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.4.0+git20221019.c1d68e9:
