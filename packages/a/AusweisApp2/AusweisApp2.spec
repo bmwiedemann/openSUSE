@@ -17,7 +17,7 @@
 
 
 Name:           AusweisApp2
-Version:        1.24.2
+Version:        1.24.3
 Release:        0
 Summary:        Official authentication app for German ID cards and residence permits
 License:        EUPL-1.2
@@ -27,25 +27,25 @@ Source0:        https://github.com/Governikus/AusweisApp2/archive/%{version}.tar
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libQt5Concurrent-devel
-BuildRequires:  libQt5Core-devel
-BuildRequires:  libQt5Network-devel
-BuildRequires:  libQt5QuickControls2-devel
-BuildRequires:  libQt5QuickTemplates2-devel
-BuildRequires:  libQt5Svg-devel
-BuildRequires:  libQt5Xml-devel
 BuildRequires:  libopenssl-1_1-devel
-BuildRequires:  libqt5-linguist-devel
-BuildRequires:  libqt5-qtdeclarative-devel
-BuildRequires:  libqt5-qttools-devel
-BuildRequires:  libqt5-qtwebsockets-devel
 BuildRequires:  ninja
 BuildRequires:  pcsc-lite-devel
+BuildRequires:  pkgconfig
+BuildRequires:  qt6-concurrent-devel
+BuildRequires:  qt6-core-devel
+BuildRequires:  qt6-linguist-devel
+BuildRequires:  qt6-network-devel
+BuildRequires:  qt6-qml-devel
+BuildRequires:  qt6-qmlworkerscript-devel
+BuildRequires:  qt6-quick-devel
+BuildRequires:  qt6-quickcontrols2-devel
+BuildRequires:  qt6-shadertools-devel
+BuildRequires:  qt6-statemachine-devel
+BuildRequires:  qt6-svg-devel
+BuildRequires:  qt6-websockets-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(libudev)
 Requires:       hicolor-icon-theme
-Requires:       libqt5-qtgraphicaleffects
-Requires:       libqt5-qtquickcontrols2
 
 %description
 This app is developed and issued by the German government to be
@@ -79,6 +79,6 @@ install -DTm644 %{_builddir}/%{name}-%{version}/resources/images/npa.png %{build
 %{_datadir}/metainfo
 %{_datadir}/applications/com.governikus.ausweisapp2.desktop
 %{_datadir}/icons/hicolor
-%{_mandir}/man1/%{name}.1.gz
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
 %changelog

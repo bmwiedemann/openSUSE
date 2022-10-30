@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Oct 29 23:27:58 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 1.24.3
+    * Fixed crashes on Android.
+    * Disabled (cloud) backup on Android and iOS.
+    * Fixed the A11y display of the SaK pairing code on Android and iOS.
+    * Blocked installation on unsupported versions of Windows 10.
+    * Fixed compatibility with Qt 6.4.
+    * Enabled the simulator in the Android and iOS SDK.
+- Upgrade Qt build and runtime dependencies for Qt6
+  + Add Qt6 packages to BuildRequires
+    * qt6-concurrent-devel
+    * qt6-core-devel
+    * qt6-linguist-devel
+    * qt6-network-devel
+    * qt6-qml-devel
+    * qt6-qmlworkerscript-devel
+    * qt6-quick-devel
+    * qt6-quickcontrols2-devel
+    * qt6-shadertools-devel
+    * qt6-statemachine-devel
+    * qt6-svg-devel
+    * qt6-websockets-devel
+  + Drop all Qt5 packages from BuildRequires and Requires
+- Run spec-cleaner
+
+-------------------------------------------------------------------
 Wed Sep  7 07:39:34 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
