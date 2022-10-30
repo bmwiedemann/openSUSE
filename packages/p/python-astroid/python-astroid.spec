@@ -17,7 +17,7 @@
 
 
 Name:           python-astroid
-Version:        2.12.11
+Version:        2.12.12
 Release:        0
 Summary:        Representation of Python source as an AST for pylint
 License:        LGPL-2.1-or-later

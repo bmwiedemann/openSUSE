@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-dry-core
-Version:        0.8.1
+Version:        0.9.1
 Release:        0
 %define mod_name dry-core
 %define mod_full_name %{mod_name}-%{version}

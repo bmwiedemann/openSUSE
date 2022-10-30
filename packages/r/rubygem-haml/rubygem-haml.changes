@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct 28 04:58:34 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 6.0.7
+ see installed CHANGELOG.md
+
+  ## 6.0.7
+  
+  * `Haml::Engine` and `Haml::Template` use StringBuffer instead of ArrayBuffer
+    * It seems more performant in many cases with recent Ruby versions.
+    * `Haml::RailsTemplate` is not affected.
+  
+
+-------------------------------------------------------------------
 Mon Oct 10 13:08:01 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 6.0.6

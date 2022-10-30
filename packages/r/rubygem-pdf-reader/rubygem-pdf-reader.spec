@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-pdf-reader
-Version:        2.10.0
+Version:        2.11.0
 Release:        0
 %define mod_name pdf-reader
 %define mod_full_name %{mod_name}-%{version}

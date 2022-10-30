@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Oct 29 00:11:21 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 2.2.0 
+  Telemetry: dump `app.extensions` and `app.config.html_theme` (#117)
+    * Telemetry: dump `app.extensions` and `app.config.html_theme`
+    Dump data from Sphinx into a JSON file that will be read and processed by our
+    Telemetry collector. This will help us to get some insights about extensions and
+    theme usage.
+    * Telemetry: handle unexpected exceptions
+    * Telemetry: comment about config-inited
+    * Style
+    * Telemetry: save only extensions defined by the user
+    Instead of saving `app.extensions` (all extensions used by Sphinx, including
+    default ones), we only save `app.config.extensions` which are the ones defined
+    by the user itself.
+    Update release steps (#116)
+    Use build is recommend now
+    https://packaging.python.org/en/latest/guides/distributing-packages-using-setuptools/#packaging-your-project
+
+-------------------------------------------------------------------
 Wed Oct 12 15:50:12 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 2.1.9 

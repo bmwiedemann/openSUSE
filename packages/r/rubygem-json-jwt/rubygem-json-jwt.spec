@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-json-jwt
-Version:        1.16.0
+Version:        1.16.1
 Release:        0
 %define mod_name json-jwt
 %define mod_full_name %{mod_name}-%{version}
@@ -49,7 +49,7 @@ JSON Web Key) in Ruby.
 
 %install
 %gem_install \
-  --doc-files="LICENSE README.md" \
+  --doc-files="CHANGELOG.md LICENSE README.md" \
   -f
 
 %gem_packages

@@ -73,4 +73,19 @@
 </comment>
     <requestid>1010048</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ea5ab61607c7968cb2c6fec64c730927</srcmd5>
+    <version>2.4.13</version>
+    <time>1667150921</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 2.4.13
+ see installed ChangeLog.rdoc
+  == Version 2.4.13 (2022-10-16)
+  
+  * Relax over-strict parameter naming requirements.  Requested by
+    vinayak3qilabs.
+  
+</comment>
+    <requestid>1032133</requestid>
+  </revision>
 </revisionlist>

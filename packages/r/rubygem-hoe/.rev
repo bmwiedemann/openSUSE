@@ -441,4 +441,25 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1000909</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>ad1b152a46ec93af8530aeff1c5edc8d</srcmd5>
+    <version>3.26.0</version>
+    <time>1667150933</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 3.26.0
+ see installed History.rdoc
+  === 3.26.0 / 2022-10-20
+  
+  * 2 minor enhancements:
+  
+    * Added warning to bundled minitest/test_task.
+    * Removed dead rcov plugin and added (simple)cov plugin.
+  
+  * 1 bug fix:
+  
+    * Fixed test task load path issue, prepend Hoe.include_dirs to ensure they come first.
+  
+</comment>
+    <requestid>1032145</requestid>
+  </revision>
 </revisionlist>

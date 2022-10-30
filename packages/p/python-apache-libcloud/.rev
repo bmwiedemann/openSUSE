@@ -469,4 +469,12 @@ https://github.com/apache/libcloud/blob/trunk/CHANGES.rst#changes-in-apache-libc
 </comment>
     <requestid>1003312</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>ed4a94c9cab651e61652ca640cb88aeb</srcmd5>
+    <version>3.6.1</version>
+    <time>1667150905</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032174</requestid>
+  </revision>
 </revisionlist>

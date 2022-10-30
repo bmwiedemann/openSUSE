@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct 28 04:52:48 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 2.4.13
+ see installed ChangeLog.rdoc
+
+  == Version 2.4.13 (2022-10-16)
+  
+  * Relax over-strict parameter naming requirements.  Requested by
+    vinayak3qilabs.
+  
+
+-------------------------------------------------------------------
 Mon Oct 10 12:59:42 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 2.4.12

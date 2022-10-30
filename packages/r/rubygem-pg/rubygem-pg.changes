@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Oct 28 05:03:15 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 1.4.4
+ see installed History.rdoc
+
+  == v1.4.4 [2022-10-11] Lars Kanis <lars@greiz-reinsdorf.de>
+  
+  - Revert to let libpq do the host iteration while connecting. #485
+    Ensure that parameter `connect_timeout` is still respected.
+  - Handle multiple hosts in the connection string, where only one host has writable session. #476
+  - Add some useful information to PG::Connection#inspect. #487
+  - Support new pgresult_stream_any API in sequel_pg-1.17.0. #481
+  - Update Windows fat binary gem to PostgreSQL-14.5.
+  
+  
+
+-------------------------------------------------------------------
 Mon Aug 29 06:53:55 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 1.4.3

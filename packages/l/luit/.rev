@@ -124,4 +124,17 @@
   * update config.guess, config.sub</comment>
     <requestid>839817</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>37dfb7ab4eed0c1ce939b43eb62d5ec3</srcmd5>
+    <version>20221028</version>
+    <time>1667150911</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20221028
+  * fix a few compiler-warnings
+  * updated plink.sh, from xterm.
+  * updated configure script, to work around regression in grep 3.8
+  * updated configure macros for compiler-warning fixes.
+  * update config.guess, config.sub, install-sh</comment>
+    <requestid>1032233</requestid>
+  </revision>
 </revisionlist>

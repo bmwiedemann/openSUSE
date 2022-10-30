@@ -152,4 +152,18 @@
     <comment></comment>
     <requestid>990905</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>3ec906bf990eb8d1bc10327c944eeca6</srcmd5>
+    <version>0.16.1</version>
+    <time>1667150909</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.16.1:
+  * Handle glibc-hwcaps on ppc64le on CentOS/RHEL/Rocky 8 for tests/replace-add-needed.sh (fixes #406)
+  * Add --print-os-abi and --set-os-abi options
+  * Fix Out-of-bounds read in the function modifyRPath
+  * Sync .note.gnu.property to PT_GNU_PROPERTY
+  * Fix out of bounds access when increasing program header table
+  * Rework file shifting to avoid sections crossing multiple segments</comment>
+    <requestid>1032197</requestid>
+  </revision>
 </revisionlist>

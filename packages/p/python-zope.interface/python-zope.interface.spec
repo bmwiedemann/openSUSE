@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 %global modname zope.interface
 %define oldpython python
 Name:           python-zope.interface%{psuffix}
-Version:        5.4.0
+Version:        5.5.0
 Release:        0
 Summary:        Interfaces for Python
 License:        ZPL-2.1

@@ -343,4 +343,24 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1000914</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>8f84128e30e4cbe8f6ec630ba09e9329</srcmd5>
+    <version>1.4.4</version>
+    <time>1667150937</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 1.4.4
+ see installed History.rdoc
+  == v1.4.4 [2022-10-11] Lars Kanis &lt;lars@greiz-reinsdorf.de&gt;
+  
+  - Revert to let libpq do the host iteration while connecting. #485
+    Ensure that parameter `connect_timeout` is still respected.
+  - Handle multiple hosts in the connection string, where only one host has writable session. #476
+  - Add some useful information to PG::Connection#inspect. #487
+  - Support new pgresult_stream_any API in sequel_pg-1.17.0. #481
+  - Update Windows fat binary gem to PostgreSQL-14.5.
+  
+  
+</comment>
+    <requestid>1032152</requestid>
+  </revision>
 </revisionlist>

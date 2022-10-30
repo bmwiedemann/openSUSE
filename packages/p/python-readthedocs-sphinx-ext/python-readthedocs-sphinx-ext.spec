@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-readthedocs-sphinx-ext
-Version:        2.1.9
+Version:        2.2.0
 Release:        0
 Summary:        Sphinx extension for Read the Docs overrides
 License:        MIT

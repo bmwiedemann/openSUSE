@@ -68,4 +68,18 @@
   * Contains some tiny bugfixes sitting in git unreleased for too long.</comment>
     <requestid>621311</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>126f0bf78eb573f127de2582936f6044</srcmd5>
+    <version>1.1.5</version>
+    <time>1667150914</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.6
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * XineramaQueryScreens: fix -Wsign-compare warning
+  * Remove &quot;register&quot; type qualifier from variable declarations</comment>
+    <requestid>1032239</requestid>
+  </revision>
 </revisionlist>

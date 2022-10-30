@@ -1,7 +1,7 @@
 #
 # spec file for package libmysofa
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sover 1
 %define __builder ninja
 Name:           libmysofa
-Version:        1.2.1
+Version:        1.3.1
 Release:        0
 Summary:        Reader for AES SOFA HRTF files
 License:        BSD-3-Clause
@@ -32,7 +32,7 @@ BuildRequires:  cmake
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 # for tests
-# BuildRequires:  nodejs-common
+BuildRequires:  nodejs-common
 BuildRequires:  pkgconfig(cunit)
 BuildRequires:  pkgconfig(zlib)
 
@@ -70,8 +70,8 @@ This package contains the development libraries and headers for libmysofa.
 %cmake_install
 
 # test suite is broken
-# %%check
-# %%cmake_build -C build test
+%check
+%cmake_build -C build test
 
 %post -n %{name}%{sover} -p /sbin/ldconfig
 %postun -n %{name}%{sover} -p /sbin/ldconfig

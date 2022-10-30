@@ -1,7 +1,7 @@
 #
 # spec file for package luit
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           luit
-Version:        20201003
+Version:        20221028
 Release:        0
 Summary:        Locale and ISO 2022 support for Unicode terminals
 License:        MIT

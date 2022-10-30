@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Oct 28 04:55:07 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 0.16.1
+ see installed CHANGELOG.md
+
+  ## 0.16.1 2022-10-13
+  
+  ### Changed
+  
+  - Restored performance of config value reads (direct reader methods as well as aggregate methods like `#values` and `#to_h`) to pre-0.16.0 levels (#149 by @timriley)
+  
+  [Compare v0.16.0...v0.16.1](https://github.com/dry-rb/dry-configurable/compare/v0.16.0...v0.16.1)
+  
+
+-------------------------------------------------------------------
 Mon Oct 10 13:03:10 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 0.16.0

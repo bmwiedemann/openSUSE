@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct 27 21:41:48 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 2.12.12: 
+  * Add the ``length`` parameter to ``hash.digest`` & ``hash.hexdigest`` in the ``hashlib`` brain.
+    Refs PyCQA/pylint#4039
+  * Prevent a crash when a module's ``__path__`` attribute is unexpectedly missing.
+    Refs PyCQA/pylint#7592
+  * Fix inferring attributes with empty annotation assignments if parent
+    class contains valid assignment.
+    Refs PyCQA/pylint#7631
+
+-------------------------------------------------------------------
 Thu Oct 13 19:31:55 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.12.11:

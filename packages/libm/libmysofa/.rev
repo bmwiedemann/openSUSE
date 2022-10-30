@@ -101,4 +101,16 @@
     <comment></comment>
     <requestid>939047</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f54c5b140855e8bd163ccec666255965</srcmd5>
+    <version>1.3.1</version>
+    <time>1667150916</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.3.1:
+  * added a memory loader for HRTFs
+  * supporting strange head geometrics from MeshHRTF
+- Enable test suite
+</comment>
+    <requestid>1032256</requestid>
+  </revision>
 </revisionlist>

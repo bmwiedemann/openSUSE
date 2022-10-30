@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct 27 22:51:58 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 1.1.2 
+  * Added support for negative timestamp (#1060)
+  * Fixed PytzUsageWarning for Python versions >= 3.6 (#1062)
+  * Added support for dates with dots and spaces (#1028)
+  * Improved support for Ukrainian, Croatian and Russian (#1072, #1074, #1079, #1082, #1073, #1083)
+  * Added support for parsing Unix timestamps consistently regardless of timezones (#954)
+  * Improved tests (#1086)
+
+-------------------------------------------------------------------
 Thu Aug 18 16:25:26 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Clean requirements: no code coverage

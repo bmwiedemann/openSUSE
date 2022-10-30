@@ -356,4 +356,20 @@ Package is MIT licensed (see MIT license and README.md). However, the sass compo
 </comment>
     <requestid>1010035</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>802e2abf040279d908620b46ff61859c</srcmd5>
+    <version>6.0.7</version>
+    <time>1667150931</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 6.0.7
+ see installed CHANGELOG.md
+  ## 6.0.7
+  
+  * `Haml::Engine` and `Haml::Template` use StringBuffer instead of ArrayBuffer
+    * It seems more performant in many cases with recent Ruby versions.
+    * `Haml::RailsTemplate` is not affected.
+  
+</comment>
+    <requestid>1032144</requestid>
+  </revision>
 </revisionlist>

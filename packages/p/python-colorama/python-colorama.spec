@@ -19,15 +19,17 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-colorama
-Version:        0.4.5
+Version:        0.4.6
 Release:        0
 Summary:        Cross-platform colored terminal text
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/tartley/colorama
 Source:         https://github.com/tartley/colorama/archive/%{version}.tar.gz
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
@@ -53,10 +55,10 @@ Linux or Macs can now also work on Windows, simply by calling colorama.init().
 %setup -q -n colorama-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -68,7 +70,6 @@ Linux or Macs can now also work on Windows, simply by calling colorama.init().
 %doc demos/
 %dir %{python_sitelib}/colorama
 %{python_sitelib}/colorama/*
-%dir %{python_sitelib}/colorama-%{version}-py*.egg-info
-%{python_sitelib}/colorama-%{version}-py*.egg-info
+%{python_sitelib}/colorama-%{version}*.dist-info
 
 %changelog

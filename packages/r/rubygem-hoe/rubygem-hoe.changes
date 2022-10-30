@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Oct 28 04:58:58 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 3.26.0
+ see installed History.rdoc
+
+  === 3.26.0 / 2022-10-20
+  
+  * 2 minor enhancements:
+  
+    * Added warning to bundled minitest/test_task.
+    * Removed dead rcov plugin and added (simple)cov plugin.
+  
+  * 1 bug fix:
+  
+    * Fixed test task load path issue, prepend Hoe.include_dirs to ensure they come first.
+  
+
+-------------------------------------------------------------------
 Mon Aug 29 06:51:36 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 3.25.0

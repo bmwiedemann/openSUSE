@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct 28 05:02:38 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+updated to version 2.2.0
+ see installed CHANGELOG.md
+
+  ## [2.1.0] - 2022-10-10
+  
+  ### Changed
+  
+  - mTLS access token by @nov in https://github.com/nov/openid_connect/pull/76
+  
+
+-------------------------------------------------------------------
 Mon Oct 10 13:13:13 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 2.1.0

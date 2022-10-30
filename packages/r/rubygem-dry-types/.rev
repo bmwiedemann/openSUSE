@@ -15,4 +15,33 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>903502</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1493090f72b86cb12176bbb0e2c354ec</srcmd5>
+    <version>1.6.1</version>
+    <time>1667150928</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 1.6.1
+ see installed CHANGELOG.md
+  ## 1.6.1 2022-10-15
+  
+  
+  ### Changed
+  
+  - Fix issues with internal const_missing and Inflector/Module constants (@flash-gordon + @solnic)
+  
+  [Compare v1.6.0...v1.6.1](https://github.com/dry-rb/dry-types/compare/v1.6.0...v1.6.1)
+  
+  ## 1.6.0 2022-10-15
+  
+  
+  ### Changed
+  
+  - Optimize `PredicateRegistry` for Ruby 2.7+ (see #420 for more details) (@casperisfine)
+  - Use zeitwerk for auto-loading (@flash-gordon)
+  
+  [Compare v1.5.1...v1.6.0](https://github.com/dry-rb/dry-types/compare/v1.5.1...v1.6.0)
+  
+</comment>
+    <requestid>1032139</requestid>
+  </revision>
 </revisionlist>

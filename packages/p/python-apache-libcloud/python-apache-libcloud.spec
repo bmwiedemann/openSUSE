@@ -20,7 +20,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-apache-libcloud
-Version:        3.6.0
+Version:        3.6.1
 Release:        0
 Summary:        Abstraction over multiple cloud provider APIs
 License:        Apache-2.0
