@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Sun Oct 30 08:55:27 UTC 2022 - manfred.h@gmx.net
+
+- go1.19 is required for building.
+
+-------------------------------------------------------------------
+Sun Oct 30 08:39:22 UTC 2022 - manfred.h@gmx.net
+
+- Update to version 0.147.0:
+  v0.147.0 is the first Helmfile version to officially support Helm
+  3.10.0, along with several fixes and new features.
+  Starting from helmfile v0.147.0, helmfile version will check for
+  the latest version of Helmfile and print a tip if the current
+  version is not the latest. To disable this behavior, set
+  environment variable HELMFILE_UPGRADE_NOTICE_DISABLED to any
+  non-empty value.
+
+  What's Changed
+  * build(deps): bump helm.sh/helm/v3 from 3.8.1 to 3.9.4 by
+    @dependabot in #377
+  * Update towards-1.0.md by @mumoshu in #378
+  * build(deps): bump k8s.io/apimachinery from 0.24.4 to 0.25.1
+    by @dependabot in #376
+  * build(deps): bump helm.sh/helm/v3 from 3.9.4 to 3.10.0 by
+    @dependabot in #387
+  * build(deps): bump k8s.io/apimachinery from 0.25.1 to 0.25.2
+    by @dependabot in #386
+  * docs: fix best pratices guide link by @TartanLeGrand in #398
+  * Fix incubator charts location in advanced-features.md by
+    @duckty in #401
+  * fix: docs typo by @stoned in #400
+  * fix path issue in windows by @yxxhero in #385
+  * fix: build command short description by @stoned in #403
+  * imprv: convert hyphen included in repo name to underbar with
+    gatherOCIUsernamePassword. by @mugioka in #406
+  * Optimize cmd pkg by @yxxhero in #384
+  * update helm-diff version to 3.5.0 by @yxxhero in #379
+  * Update ci.yaml and use helm 3.10.0 by @yxxhero in #383
+  * Use helm show chart to identify chart version by @felipecrs
+    in #395
+  * fix SetRetainValuesFiles issue by @yxxhero in #388
+  * bump: upgrade gopkg.in/yaml.v2 to gopkg.in/yaml.v3 by
+    @yxxhero in #396
+  * docs: update docs order by @yxxhero in #407
+  * feat: retrieve repository's username/password from environment
+    by @kevinleturc in #415
+  * feat: add more clear error message and Environment info for
+    template by @yxxhero in #413
+  * doc: update template funcs docs by @yxxhero in #414
+  * fix README.md users.md to USERS.md by @yxxhero in #410
+  * feat: optimize version output by @yxxhero in #412
+  * feat: add reuse-values args for diff apply and sync by @yxxhero
+    in #411
+  * fix: helmfile deps issue with oci repo by @yxxhero in #419
+
+-------------------------------------------------------------------
 Wed Sep 28 09:20:45 UTC 2022 - manfred.h@gmx.net
 
 - Update to version 0.146.0:
