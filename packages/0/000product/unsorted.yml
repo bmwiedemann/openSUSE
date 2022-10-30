@@ -12237,7 +12237,7 @@ unsorted:
   - liblttng-ust-ctl5 
   - liblttng-ust-python-agent1 
   - liblttng-ust1: [i586] 
-  - liblttoolbox3-3_6-1 
+  - liblttoolbox3 
   - liblua5_1-5 
   - liblua5_1-5-32bit: [x86_64] 
   - liblua5_3-5-32bit: [x86_64] 
@@ -33003,6 +33003,7 @@ unsorted:
   - ruby3.1-doc 
   - ruby3.1-doc-ri 
   - ruby3.1-rubygem-grpc 
+  - ruby3.1-rubygem-slim 
   - rubygem-libguestfs: [x86_64] 
   - rubygem-passenger-nginx 
   - runawk 
