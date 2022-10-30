@@ -206,7 +206,7 @@ BuildArch:      i686
 
 
 Name:           nodejs-electron
-Version:        21.1.1
+Version:        21.2.0
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
 License:        AFL-2.0 AND Apache-2.0 AND blessing AND BSD-2-Clause AND BSD-3-Clause AND BSD-Protection AND BSD-Source-Code AND bzip2-1.0.6 AND IJG AND ISC AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND MIT-CMU AND MIT-open-group AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later) AND MPL-2.0 AND OpenSSL AND SGI-B-2.0 AND SUSE-Public-Domain AND X11
@@ -253,6 +253,7 @@ Patch67:        disable-catapult.patch
 Patch68:        do-not-build-libvulkan.so.patch
 Patch69:        nasm-generate-debuginfo.patch
 Patch70:        disable-fuses.patch
+Patch71:        enable-jxl.patch
 
 # PATCHES to use system libs
 Patch1002:      chromium-system-libusb.patch
@@ -338,6 +339,7 @@ Patch3084:      swiftshader-Constants-Wstrict-aliasing.patch
 Patch3085:      half_float-Wstrict-aliasing.patch
 Patch3086:      unzip-Wsubobject-linkage.patch
 Patch3087:      v8_initializer-PageAllocator-fpermissive.patch
+Patch3088:      fix-no-ppapi-build.patch
 
 %if %{with clang}
 BuildRequires:  clang
@@ -399,7 +401,9 @@ BuildRequires:  memory-constraints
 %if %{with mold}
 BuildRequires:  mold
 %endif
+%ifarch %ix86 x86_64
 BuildRequires:  nasm
+%endif
 %if 0%{?suse_version}
 BuildRequires:  ninja >= 1.7.2
 %else
@@ -760,7 +764,7 @@ export RANLIB=llvm-ranlib
 
 %ifarch %ix86 %arm
 #try to reduce memory
-%if %{without lld}
+%if %{without lld} && %{without mold}
 
 %if %{with gold}
 export LDFLAGS="${LDFLAGS} -Wl,--no-map-whole-files -Wl,--no-keep-memory -Wl,--no-keep-files-mapped"
@@ -813,12 +817,13 @@ _link_threads=$(((%{jobs} - 2)))
 %ifarch aarch64
 _link_threads=1
 
+%if %{without mold}
 %if %{with gold}
 export LDFLAGS="${LDFLAGS} -Wl,--no-map-whole-files -Wl,--no-keep-memory -Wl,--no-keep-files-mapped"
 %else
 export LDFLAGS="${LDFLAGS} -Wl,--no-keep-memory -Wl,--hash-size=30 -Wl,--reduce-memory-overheads"
 %endif
-
+%endif
 
 %endif
 test "$_link_threads" -le 0 && _link_threads=1
@@ -1028,7 +1033,9 @@ myconf_gn+=" enable_pdf_viewer=false"
 myconf_gn+=" enable_print_preview=false"
 myconf_gn+=" enable_basic_printing=false"
 
-
+#do not build chrome pepper plugins support
+myconf_gn+=" enable_plugins=false"
+myconf_gn+=" enable_ppapi=false"
 
 # This requires the non-free closure_compiler.jar. If we ever need to build chrome with JS typecheck,
 # we would need to package it separately and compile it from sources, since the chrome git repo
@@ -1038,7 +1045,7 @@ myconf_gn+=" enable_js_type_check=false"
 # The option below get overriden by whatever is in CFLAGS/CXXFLAGS, so they affect only C++ code.
 # symbol_level=2 is full debug
 # symbol_level=1 is enough info for stacktraces
-# symbol_level=0 disable debug
+# symbol_level=0 no debuginfo (only function names in private symbols)
 # blink (HTML engine) and v8 (js engine) are template-heavy, trying to compile them with full debug leads to linker errors
 %ifnarch %ix86 %arm aarch64
 %if %{without lto}
@@ -1049,10 +1056,11 @@ myconf_gn+=" symbol_level=1"
 myconf_gn+=" blink_symbol_level=1"
 myconf_gn+=" v8_symbol_level=1"
 %endif
-%ifarch %ix86 %arm 
-myconf_gn+=" symbol_level=0" #Sorry, no debug on 32bit for now.
-myconf_gn+=" blink_symbol_level=0" #Sorry, no debug on 32bit for now.
-myconf_gn+=" v8_symbol_level=0" #Sorry, no debug on 32bit for now.
+%ifarch %ix86 %arm
+#Sorry, no debug on 32bit.
+myconf_gn+=" symbol_level=0" 
+myconf_gn+=" blink_symbol_level=0"
+myconf_gn+=" v8_symbol_level=0"
 %endif
 %ifarch aarch64 #“No space left on device” with symbol level 2
 myconf_gn+=" symbol_level=1"

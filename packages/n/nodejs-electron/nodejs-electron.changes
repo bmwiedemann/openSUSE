@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 28 05:00:28 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+- New upstream release 21.2.0
+  * Set app's desktop file name and v8 flags according to package.json.
+  * Removed support for nodeIntegrationInWorker in Service Workers and Shared Workers owing to sandboxing policies.
+  * Updated Chromium to 106.0.5249.119.
+- Do not compile PPAPI support since we don't use it.
+  * fix-no-ppapi-build.patch
+- Enable JXL imageformat support as it is exposed by element-desktop.
+  * enable-jxl.patch
+
+-------------------------------------------------------------------
 Sun Oct 23 12:54:08 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
 - Enable LTO on x64 (Tumbleweed and Fedora only) now that it works correctly.
   * add seccomp_bpf-no-lto.patch
