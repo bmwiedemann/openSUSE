@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Oct 28 12:30:43 UTC 2022 - Aleksa Sarai <asarai@suse.com>
+
+- Update to LXC 5.0.1. boo#1204842
+  Bugfixes:
+  * Fixed a mount issue resulting in container startup failure when host
+    bind-mounts were used
+  * Various meson packaging fixes especially around libcap detection
+  Major changes from LXC 5.0:
+  * Switch to meson build tooling.
+  * New cgroup configuration options.
+  * Time namespace support.
+  * VLAN support on veth devices.
+  * Configurable tx/rx queues on veth devices.
+- Remove all of the missing_setuid warning logic -- all modern openSUSE
+  versions have the necessary permissions configuration and thus we don't need
+  to handle this case anymore.
+- Backport <https://github.com/lxc/lxc/pull/4215> in order to fix the build on
+  openSUSE:
+  + OPENSUSE-0001-meson.build-allow-explicit-distrosysconfdir.patch
+  + OPENSUSE-0002-build-detect-where-struct-mount_attr-is-declared.patch
+  + OPENSUSE-0003-build-detect-sys-pidfd.h-availability.patch
+  + OPENSUSE-0004-cgroups-fix-Waddress-warning.patch
+  + OPENSUSE-0005-build-fix-handling-of-dependancies-to-fix-build-on-o.patch
+  + OPENSUSE-0006-build-only-build-init.lxc.static-if-libcap-is-static.patch
+  + OPENSUSE-0007-build-drop-build-time-systemd-dependency.patch
+- Remove no longer needed backports:
+  - 0001-Backport-Commit-build-detect-where-struct-mount_attr.patch
+
+-------------------------------------------------------------------
 Wed Oct 19 13:05:52 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - re-enable FORTIFY_SOURCE=3

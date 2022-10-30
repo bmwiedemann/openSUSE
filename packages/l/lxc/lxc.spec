@@ -1,7 +1,7 @@
 #
 # spec file for package lxc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,21 +21,9 @@
 %define _sharedstatedir /var/lib
 %endif
 
-# In later versions of openSUSE's permissions config, lxc-user-nic was
-# whitelisted with a setuid bit enabled -- but in order to allow building on
-# old distros we must not make it setuid on pre-15.1 distros. See bsc#988348.
-%if 0%{suse_version} <= 1500 && 0%{?sle_version} < 150100
-%define old_permissions 1
-%endif
-%define setuid_mode 0%{!?old_permissions:4}750
-
-# XXX: Really should be included (in some form) in standard openSUSE macros.
-#      suse_install_update_message is useless for subpackages.
-%define _updatemessagedir      /var/adm/update-messages
-
 %define         shlib_version 1
 Name:           lxc
-Version:        4.0.12
+Version:        5.0.1
 Release:        0
 URL:            http://linuxcontainers.org/
 Summary:        Userspace tools for Linux kernel containers
@@ -46,24 +34,31 @@ Source1:        https://linuxcontainers.org/downloads/%{name}/%{name}-%{version}
 Source2:        %{name}.keyring
 Source3:        lxc-createconfig.in
 Source90:       openSUSE-apparmor.conf
-Source91:       missing_setuid.txt.in
-Patch0:         0001-Backport-Commit-build-detect-where-struct-mount_attr.patch
-BuildRequires:  automake
+# Backport of <https://github.com/lxc/lxc/pull/4215>.
+Patch10:        OPENSUSE-0001-meson.build-allow-explicit-distrosysconfdir.patch
+Patch11:        OPENSUSE-0002-build-detect-where-struct-mount_attr-is-declared.patch
+Patch12:        OPENSUSE-0003-build-detect-sys-pidfd.h-availability.patch
+Patch13:        OPENSUSE-0004-cgroups-fix-Waddress-warning.patch
+Patch14:        OPENSUSE-0005-build-fix-handling-of-dependancies-to-fix-build-on-o.patch
+Patch15:        OPENSUSE-0006-build-only-build-init.lxc.static-if-libcap-is-static.patch
+Patch16:        OPENSUSE-0007-build-drop-build-time-systemd-dependency.patch
+BuildRequires:  bash-completion
+BuildRequires:  cmake
+BuildRequires:  docbook2x
+BuildRequires:  fdupes
 BuildRequires:  gcc
+BuildRequires:  gcc-c++
 BuildRequires:  libapparmor-devel
 BuildRequires:  libcap-devel
 BuildRequires:  libgnutls-devel
+BuildRequires:  libseccomp-devel
 BuildRequires:  libselinux-devel
 BuildRequires:  libtool
+BuildRequires:  libxslt
+BuildRequires:  meson >= 0.61
 BuildRequires:  pam-devel
 BuildRequires:  pkg-config
-BuildRequires:  libseccomp-devel
-BuildRequires:  bash-completion
-BuildRequires:  docbook-utils
-BuildRequires:  docbook2x
-BuildRequires:  fdupes
-BuildRequires:  libxslt
-BuildRequires:  pkgconfig(systemd)
+BuildRequires:  systemd-devel
 Requires:       libcap-progs
 Requires:       lxcfs
 Requires:       lxcfs-hooks-lxc
@@ -126,104 +121,81 @@ BuildArch:      noarch
 %description bash-completion
 Bash command line completion support for %{name}.
 
+%package ja-doc
+Summary:        Japanese documentation for %{name}
+License:        LGPL-2.1-or-later
+Group:          System/Management
+Requires:       %{name} = %{version}
+BuildArch:      noarch
+
+%description ja-doc
+Japanese language man pages for %{name}.
+
+%package ko-doc
+Summary:        Korean documentation for %{name}
+License:        LGPL-2.1-or-later
+Group:          System/Management
+Requires:       %{name} = %{version}
+BuildArch:      noarch
+
+%description ko-doc
+Korean language man pages for %{name}.
+
 %prep
-%setup
-%patch0 -p1
+%autosetup -p1
 
 %build
-./autogen.sh
-%configure \
-	--enable-pam \
-	--enable-seccomp \
-%if 0%{?is_opensuse} && 0%{?suse_version} >= 1500
-	--with-pamdir=%_pam_moduledir \
-%endif
-	--disable-static \
-	--disable-examples \
-	--disable-rpath \
-	--disable-werror \
-	--with-init-script=systemd \
-	--with-systemdsystemunitdir=%{_unitdir}
-make %{?_smp_mflags}
-
-# Ensure that shlib_version was correct.
-lxc_api_version="$(echo "@LXC_ABI_MAJOR@" | ./config.status --file -)"
-[ "$lxc_api_version" = "%{shlib_version}" ]
+%meson \
+	-D examples=false \
+	-D tests=false \
+	-D init-script=systemd \
+	-D systemd-unitdir=%{_unitdir} \
+	-D distrosysconfdir=default \
+	-D pam-cgroup=true \
+	-D runtime-path=%{_rundir} \
+	%{nil}
+%meson_build
 
 # openSUSE-specific templated files.
-./config.status --file=lxc-createconfig:%{S:3}
-./config.status --file=missing_setuid.txt:%{S:91}
-
-# Add an additional warning header if the distro is old enough that
-# /etc/permissions should already be whitelisting lxc-user-nic.
-%if ! 0%{?old_permissions}
-patch missing_setuid.txt <<EOF
---- a/missing_setuid.txt
-+++ b/missing_setuid.txt
-@@ -0,0 +1,4 @@
-+NOTE: It appears you are running on a new-enough distribution that this warning
-+      should not have appeared. If you are not using a "paranoid" profile,
-+      please report this as a bug using <https://bugs.opensuse.org/>.
-+
-EOF
-%endif
+# TODO: Switch this be done properly with meson (unfortunately meson doesn't
+# have an equivalent to "config.status --file" (which lets you do variable
+# replacement on arbitray files not included in the project config).
+sed -i 's|@LXCTEMPLATEDIR@|%{_datadir}/lxc/templates|g' %{S:3}
 
 %install
-%make_install
+%meson_install
 install -d -m 0755 %{buildroot}%{_sharedstatedir}/%{name}
 
 # openSUSE-specific helpers and configuration.
-install -D -m 0755 lxc-createconfig %{buildroot}%{_bindir}/lxc-createconfig
+install -D -m 0755 %{S:3} %{buildroot}%{_bindir}/lxc-createconfig
 install -D -m 0644 %{S:90} %{buildroot}%{_datadir}/%{name}/config/common.conf.d/30-openSUSE-apparmor.conf
 
 # sysv-init compat wrappers.
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}-net
 
-# Install bash-completion. Note that we have to install a symlink for every
-# lxc-* command because bash-completion relies on the binary name to pick the
-# bash-completion script.
-install -D -m 0644 config/bash/lxc %{buildroot}%{_datadir}/bash-completion/completions/_%{name}
-for bin in $(find src/lxc/lxc-* -executable -print0 | xargs -n1 -0 basename)
-do
-	ln -s "_%{name}" "%{buildroot}%{_datadir}/bash-completion/completions/$bin"
-done
-# lxc installs bash-completion to the wrong location.
-rm -f %{buildroot}%{_sysconfdir}/bash_completion.d/%{name}*
-
 # Clean up.
 find %{buildroot} -type f -name '*.la' -delete
+find %{buildroot} -type f -name '*.a' -delete
 %fdupes %{buildroot}
 
 %pre
-%service_add_pre lxc@.service lxc.service lxc-net.service
+%service_add_pre lxc@.service lxc.service lxc-net.service lxc-monitord.service
 
 %post
 #restart_on_update apparmor - but non-broken (bnc#853019)
 systemctl is-active -q apparmor && systemctl reload apparmor ||:
-%service_add_post lxc@.service lxc.service lxc-net.service
+%service_add_post lxc@.service lxc.service lxc-net.service lxc-monitord.service
 
 %preun
-%service_del_preun lxc@.service lxc.service lxc-net.service
+%service_del_preun lxc@.service lxc.service lxc-net.service lxc-monitord.service
 
 %postun
-%service_del_postun lxc@.service lxc.service lxc-net.service
+%service_del_postun lxc@.service lxc.service lxc-net.service lxc-monitord.service
 
 %post -n liblxc%{shlib_version}
 /sbin/ldconfig
 %set_permissions %{_libexecdir}/%{name}/lxc-user-nic
-
-# Remove any existing update messages if we're reinstalling. I'm a bit
-# surprised this isn't done automatically. We don't do this on postun because
-# we should keep around past package update messages.
-[ "$1" -gt 1 ] && \
-	find %{_updatemessagedir} -xtype f \
-		-name 'liblxc%{shlib_version}-%{version}-%{release}-*.txt' -delete
-
-# If lxc-user-nic doesn't have setuid we need to copy the update-message.
-[ -u %{_libexecdir}/%{name}/lxc-user-nic ] ||
-	cp %{_defaultdocdir}/liblxc%{shlib_version}/missing_setuid.txt \
-	   %{_updatemessagedir}/liblxc%{shlib_version}-%{version}-%{release}-missing_setuid.txt
 
 %postun -n liblxc%{shlib_version} -p /sbin/ldconfig
 
@@ -246,9 +218,7 @@ systemctl is-active -q apparmor && systemctl reload apparmor ||:
 %{_sbindir}/rclxc
 %{_sbindir}/rclxc-net
 %{_mandir}/man[^3]/*
-%{_unitdir}/%{name}.service
-%{_unitdir}/%{name}-net.service
-%{_unitdir}/%{name}@.service
+%{_unitdir}/%{name}*.service
 
 # AppArmor profiles specifically for the lxc binaries.
 %config %{_sysconfdir}/apparmor.d/usr.bin.lxc-*
@@ -278,7 +248,7 @@ systemctl is-active -q apparmor && systemctl reload apparmor ||:
 %dir %{_sharedstatedir}/%{name}
 %{_libexecdir}/%{name}/
 # Make sure lxc-user-nic has the right mode.
-%attr(%{setuid_mode},root,kvm) %{_libexecdir}/%{name}/lxc-user-nic
+%attr(04750,root,kvm) %{_libexecdir}/%{name}/lxc-user-nic
 
 # AppArmor profiles and templates related to LXC.
 %dir %{_sysconfdir}/apparmor.d/lxc
@@ -286,11 +256,6 @@ systemctl is-active -q apparmor && systemctl reload apparmor ||:
 %config %{_sysconfdir}/apparmor.d/abstractions/lxc/*
 %config %{_sysconfdir}/apparmor.d/lxc-*
 %config %{_sysconfdir}/apparmor.d/lxc/*
-
-# In order to avoid fun issues with update-messages we store update-messages in
-# docdir and then copy them in post to /var/adm/update-messages if it makes
-# sense.
-%doc missing_setuid.txt
 
 %files -n liblxc-devel
 %defattr(-,root,root)
@@ -301,5 +266,13 @@ systemctl is-active -q apparmor && systemctl reload apparmor ||:
 %files bash-completion
 %defattr(-,root,root)
 %{_datadir}/bash-completion/
+
+%files ja-doc
+%defattr(-,root,root)
+%{_mandir}/ja/
+
+%files ko-doc
+%defattr(-,root,root)
+%{_mandir}/ko/
 
 %changelog

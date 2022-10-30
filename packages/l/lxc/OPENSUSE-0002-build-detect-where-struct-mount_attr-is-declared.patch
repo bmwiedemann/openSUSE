@@ -1,21 +1,75 @@
-From fa03a307595e37b6e313d8d9ca9a0ad2d20d38a8 Mon Sep 17 00:00:00 2001
+From b7b269680f4a773a54b274d7fbd1140fc32e1935 Mon Sep 17 00:00:00 2001
 From: Christian Brauner <brauner@kernel.org>
 Date: Tue, 9 Aug 2022 16:14:25 +0200
-Subject: [PATCH] Backport Commit 'build: detect where struct mount_attr is
- declared'
+Subject: [PATCH 2/7] build: detect where struct mount_attr is declared
 
 Fixes: #4176
 Signed-off-by: Christian Brauner (Microsoft) <christian.brauner@ubuntu.com>
-Signed-off-by: Johannes Kastl <kastl@b1-systems.de>
 ---
+ meson.build                | 30 ++++++++++++++++++++++++++++--
  src/lxc/conf.c             |  6 +++---
  src/lxc/conf.h             |  2 +-
  src/lxc/mount_utils.c      |  6 +++---
  src/lxc/syscall_wrappers.h | 12 ++++++++++--
- 4 files changed, 17 insertions(+), 9 deletions(-)
+ 5 files changed, 45 insertions(+), 11 deletions(-)
 
+diff --git a/meson.build b/meson.build
+index 95bf22372891..735fca25622e 100644
+--- a/meson.build
++++ b/meson.build
+@@ -593,7 +593,6 @@ decl_headers = '''
+ foreach decl: [
+     '__aligned_u64',
+     'struct clone_args',
+-    'struct mount_attr',
+     'struct open_how',
+     'struct rtnl_link_stats64',
+ ]
+@@ -613,7 +612,6 @@ foreach tuple: [
+     ['struct seccomp_notif_sizes'],
+     ['struct clone_args'],
+     ['__aligned_u64'],
+-    ['struct mount_attr'],
+     ['struct open_how'],
+     ['struct rtnl_link_stats64'],
+ ]
+@@ -633,6 +631,34 @@ foreach tuple: [
+     endif
+ endforeach
+ 
++## Types.
++decl_headers = '''
++#include <sys/mount.h>
++'''
++
++# We get -1 if the size cannot be determined
++if cc.sizeof('struct mount_attr', prefix: decl_headers, args: '-D_GNU_SOURCE') > 0
++    srcconf.set10('HAVE_' + 'struct mount_attr'.underscorify().to_upper(), true)
++    found_types += 'struct mount_attr (sys/mount.h)'
++else
++    srcconf.set10('HAVE_' + 'struct mount_attr'.underscorify().to_upper(), false)
++    missing_types += 'struct mount_attr (sys/mount.h)'
++endif
++
++## Types.
++decl_headers = '''
++#include <linux/mount.h>
++'''
++
++# We get -1 if the size cannot be determined
++if cc.sizeof('struct mount_attr', prefix: decl_headers, args: '-D_GNU_SOURCE') > 0
++    srcconf.set10('HAVE_UAPI_' + 'struct mount_attr'.underscorify().to_upper(), true)
++    found_types += 'struct mount_attr (linux/mount.h)'
++else
++    srcconf.set10('HAVE_UAPI_' + 'struct mount_attr'.underscorify().to_upper(), false)
++    missing_types += 'struct mount_attr (linux/mount.h)'
++endif
++
+ ## Headers.
+ foreach ident: [
+     ['bpf',               '''#include <sys/syscall.h>
 diff --git a/src/lxc/conf.c b/src/lxc/conf.c
-index c1ce717bf..e198a5ff3 100644
+index ffbe74c2f6cb..4193cd07f52e 100644
 --- a/src/lxc/conf.c
 +++ b/src/lxc/conf.c
 @@ -2885,7 +2885,7 @@ static int __lxc_idmapped_mounts_child(struct lxc_handler *handler, FILE *f)
@@ -46,10 +100,10 @@ index c1ce717bf..e198a5ff3 100644
  		ssize_t ret;
  
 diff --git a/src/lxc/conf.h b/src/lxc/conf.h
-index ccf59b47e..1c58026d9 100644
+index 7dc2f15b603c..772479f9e1be 100644
 --- a/src/lxc/conf.h
 +++ b/src/lxc/conf.h
-@@ -216,7 +216,7 @@ struct lxc_mount_options {
+@@ -223,7 +223,7 @@ struct lxc_mount_options {
  	unsigned long mnt_flags;
  	unsigned long prop_flags;
  	char *data;
@@ -59,7 +113,7 @@ index ccf59b47e..1c58026d9 100644
  };
  
 diff --git a/src/lxc/mount_utils.c b/src/lxc/mount_utils.c
-index bba75f933..88dd73ee3 100644
+index bba75f933cc9..88dd73ee36b2 100644
 --- a/src/lxc/mount_utils.c
 +++ b/src/lxc/mount_utils.c
 @@ -31,7 +31,7 @@ lxc_log_define(mount_utils, lxc);
@@ -90,7 +144,7 @@ index bba75f933..88dd73ee3 100644
  		.attr_clr	= attr_clr,
  		.propagation	= propagation,
 diff --git a/src/lxc/syscall_wrappers.h b/src/lxc/syscall_wrappers.h
-index a5e98b565..c8a7d0c7b 100644
+index a5e98b565cb6..c8a7d0c7b700 100644
 --- a/src/lxc/syscall_wrappers.h
 +++ b/src/lxc/syscall_wrappers.h
 @@ -18,6 +18,12 @@
