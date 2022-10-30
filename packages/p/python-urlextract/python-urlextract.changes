@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 29 16:25:27 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to v1.7.0
+  * correct handling when authority starts with @ symbol
+  * remove unreserved characters from the beginning of found URL
+  * added typing and mypy checkcs - by mimi89999
+  * updated list of TLDs
+
+-------------------------------------------------------------------
 Wed Aug 17 04:36:34 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v1.6.0
