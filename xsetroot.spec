@@ -1,7 +1,7 @@
 #
 # spec file for package xsetroot
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           xsetroot
-Version:        1.1.2
+Version:        1.1.3
 Release:        0
 Summary:        Utility to set X root window parameter
 License:        MIT
 Group:          System/X11/Utilities
 URL:            https://xorg.freedesktop.org/
-Source0:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.bz2
+Source0:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xbitmaps)
@@ -50,7 +50,7 @@ background ("root") window on a workstation display running X.
 
 %files
 %license COPYING
-%doc ChangeLog README
+%doc ChangeLog README.md
 %{_bindir}/xsetroot
 %{_mandir}/man1/xsetroot.1%{?ext_man}
 
