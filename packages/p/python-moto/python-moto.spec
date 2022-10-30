@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-moto
-Version:        3.1.16
+Version:        4.0.8
 Release:        0
 Summary:        Library to mock out the boto library
 License:        Apache-2.0
@@ -31,29 +31,29 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2 >= 2.10.1
-Requires:       python-Werkzeug
+Requires:       python-Werkzeug >= 0.5
 Requires:       python-boto3 >= 1.9.201
 Requires:       python-botocore >= 1.12.201
 Requires:       python-cryptography >= 3.3.1
-Requires:       python-python-dateutil >= 2.1
 Requires:       python-pytz
 Requires:       python-requests >= 2.5
-Requires:       python-responses >= 0.9.0
+Requires:       python-responses >= 0.13.0
 Requires:       python-xmltodict
+Requires:       (python-python-dateutil >= 2.1 with python-python-dateutil < 3)
 %if 0%{?python_version_nodots} < 38
 Requires:       python-importlib-metadata
 %endif
+Conflicts:      (python-Werkzeug >= 2.2.0 with python-Werkzeug < 2.2.2)
 Requires(post): update-alternatives
 Requires(preun):update-alternatives
 Recommends:     python-moto-all
 Suggests:       python-moto-server
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Flask}
+BuildRequires:  %{python_module Flask without (%python-Flask >= 2.2.0 with %python-Flask < 2.2.2)}
 BuildRequires:  %{python_module Flask-Cors}
 BuildRequires:  %{python_module Jinja2 >= 2.10.1}
 BuildRequires:  %{python_module PyYAML >= 5.1}
-BuildRequires:  %{python_module Werkzeug}
 BuildRequires:  %{python_module aws-xray-sdk >= 0.93}
 BuildRequires:  %{python_module boto3 >= 1.9.201}
 BuildRequires:  %{python_module botocore >= 1.12.201}
@@ -71,14 +71,15 @@ BuildRequires:  %{python_module parameterized}
 BuildRequires:  %{python_module pyparsing >= 3}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-dateutil >= 2.1}
+BuildRequires:  %{python_module python-dateutil >= 2.1 with %python-python-dateutil < 3}
 BuildRequires:  %{python_module python-jose}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module requests >= 2.5}
-BuildRequires:  %{python_module responses >= 0.9.0}
+BuildRequires:  %{python_module responses >= 0.13.0}
 BuildRequires:  %{python_module sshpubkeys >= 3.1.0}
 BuildRequires:  %{python_module sure}
 BuildRequires:  %{python_module xmltodict}
+BuildRequires:  %{python_module Werkzeug >= 0.5 without (%python-Werkzeug >= 2.2.0 with %python-Werkzeug < 2.2.2)}
 # /SECTION
 %python_subpackages
 
@@ -111,6 +112,7 @@ Summary:        Library to mock out the boto library -- all extras
 Requires:       python-Flask
 Requires:       python-Flask-Cors
 Requires:       python-moto-all = %{version}
+Conflicts:      (python-Flask >= 2.2.0 with python-Flask < 2.2.2)
 
 %description server
 A library that allows your python tests to mock out the boto
@@ -147,11 +149,10 @@ donttest+=" or test_firehose_put"
 donttest+=" or test_vpc_peering_connections_cross_region_fail"
 donttest+=" or test_events_lambdatriggers_integration"
 donttest+=" or (test_s3_lambda_integration and test_objectcreated_put__invokes_lambda and ObjectCreated)"
-# no  python2.7 on TW
+donttest+=" or (test_server and test_appsync_list_tags_for_resource)"
+donttest+=" or (test_server and test_s3_server_post_to_bucket_redirect)"
+donttest+=" or (test_multiple_accounts_server and test_with_custom_request_header)"
 donttest+=" or test_invoke_function_from_sqs_exception"
-donttest+=" or test_rotate_secret_lambda_invocations"
-# requires botocore >= 1.27.14, see https://github.com/spulec/moto/pull/5253
-donttest+=" or test_create_customer_gateways_using_publicip_argument"
 
 # see Makefile
 deselect_for_parallel=" or test_kinesisvideoarchivedmedia or test_awslambda or test_batch or test_ec2 or test_sqs"

@@ -1,4 +1,295 @@
 -------------------------------------------------------------------
+Fri Oct 28 11:00:14 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.0.8
+  * General:
+    * Unpins the werkzeug-dependency - Moto now works with
+      werkzeug==2.2.2
+    * Fixes the Docker-build to run on M1 Macbooks.
+  * New Services:
+    * ServiceQuotas:
+        * get_service_quota()
+        * list_aws_default_service_quotas()
+  * New Methods:
+    * CloudFront: list_invalidations()
+    * RDS: modify_db_cluster()
+  * Miscellaneous:
+    * Lambda:delete_function() - fixed an issue where the wrong
+      Function would be deleted when providing a qualifier
+    * ECR:put_image() now removes any existing images that have the
+      provided tag
+    * IAM:detach_user/group/role_policy() now throws the correct
+      error message when the policy is not attached in the first
+      place 
+    * S3:list_object_versions(): Fix delimiter to take prefix into
+      account 
+    * S3: Now closes file handles as early as possible when
+      deleting files/multipart uploads
+    * Sagamaker:describe_training_job() now throws the correct
+      exception when trying to explain a non-existing job
+
+-------------------------------------------------------------------
+Thu Oct 13 15:36:55 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.0.7
+  * New Services:
+    * Comprehend:
+        * create_entity_recognizer()
+        * delete_entity_recognizer()
+        * describe_entity_recognizer()
+        * list_entity_recognizers()
+        * list_tags_for_resource()
+        * stop_training_entity_recognizer()
+    * MeteringMarketplace:
+        * batch_meter_usage()
+  * New Methods:
+    * EC2:
+        * modify_vpc_endpoint()
+    * MediaConnect:
+        * grant_flow_entitlements()
+        * revoke_flow_entitlement()
+        * update_flow_entitlement()
+        * update_flow_output()
+  * Miscellaneous:
+    * DynamoDB:transact_write_items() - Now includes validation if
+      multipel operations are provided in the same item
+    * EC2:cancel_spot_fleet_request() - Fixed a bug where instances
+      were always terminated
+    * EC2:create_instances() - Now uses the private IP address as
+      as provided in the NetworkInterface
+    * EC2:describe_instance_types() - Now supports all filters
+    * ECS:run_task() - Now creates/attaches an ENI if appropriate
+    * S3: Fixed an issue where file handles were not closed on
+      large uploads
+- Release 4.0.6
+  * General:
+    * Moto can now be seeded, which will make identifiers
+      deterministic. See
+      http://docs.getmoto.org/en/latest/docs/configuration/recorder/index.html
+    * The format for access-key and role ids has been changed, and
+      is now generated using the same algorithm that AWS uses
+  * Miscellaneous:
+    * AWSLambda:add_permission() now properly handles the
+      PrincipalOrgID-param
+    * DynamoDB:update_item() now validates duplicate
+      UpdateExpressions
+    * EC2 now exposes instance types in the correct availability
+      zones for us-west-1 (us-west-1a and us-west-1b)
+    * EC2 has various improvements around the handling of
+      RouteTableAssociations
+    * Glue:get_tables() now supports the Expression-parameter
+    * Organizations:create_organization() now uses a default value
+      for FeatureSet=ALL
+    * RDS:describe_db_subnet_groups() now returns the
+      DBSubnetGroupArn-attribute
+    * S3:upload_file() now supports the ExtraArgs:
+      ChecksumAlgorithm-parameter
+    * SSM:list_commands() now returns the
+      DeliveryTimedOutCount-attribute
+- Release 4.0.5
+  * General:
+    * Moto now has a Recorder, to easily record and replay a given
+      set of requests. See
+      http://docs.getmoto.org/en/latest/docs/configuration/recorder/index.html
+  * Miscellaneous:
+    * CloudFormation now supports the creation/update/deletion of
+      AWS::EC2::LaunchTemplate
+    * Glue:start_job_run() now respects the
+      MaxConcurrentRuns-parameter
+    * S3:get_object() now performs rudimentary BucketPolicy
+      validation
+    * StateManager now supports `glue::job_run`, managing how long
+      it takes to for a Glue job to become 'SUCCEEDED'
+- Release 4.0.3
+  * General:
+    * Compatible with openapi-spec-validator 0.5.x
+  * New Methods:
+    * Kinesis:
+        * update_stream_mode()
+    * WAFv2:
+        * associate_web_acl()
+        * delete_web_acl()
+        * disassociate_web_acl()
+        * get_web_acl()
+        * get_web_acl_for_resource()
+        * list_rule_groups()
+        * list_tags_for_resource()
+        * tag_resource()
+        * untag_resource()
+        * update_web_acl()
+  * Miscellaneous:
+    * DynamoDB:query() now has improved support for
+      KeyConditionExpression
+    * Kinesis:put_records() now validates the size/number of
+      records, following AWS' behaviour
+- Release 4.0.2
+  * New Services:
+    * Amazon Managed Prometheus (AMP)
+        * create_rule_groups_namespace()
+        * create_workspace()
+        * delete_rule_groups_namespace()
+        * delete_workspace()
+        * describe_rule_groups_namespace()
+        * describe_workspace()
+        * list_rule_groups_namespaces()
+        * list_tags_for_resource()
+        * list_workspaces()
+        * put_rule_groups_namespace()
+        * tag_resource()
+        * untag_resource()
+        * update_workspace_alias()
+  * Miscellaneous:
+    * APIGateway:put_method() now supports the
+      requestParameters-parameter
+    * AutoScaling:create_auto_scaling_group() now supports the
+      MixedInstancesPolicy-parameter
+    * CloudWatchLogs:filter_log_events() now supports the
+      filterPattern-parameter
+    * DynamoDB:batch_put_item() now has validatior for empty keys
+    * Kinesis:create_stream() now supports stream-mode=OnDemand
+    * S3:head_object() now returns the PartsCount-header
+    * SNS:subscribe() now has increased support for the
+      FilterPolicy-argument
+    * SSM now returns the
+      /aws/service/ami-amazon-linux-latest-parameters as provided
+      by AWS
+- Release 4.0.1
+  * New Services:
+    * Personalize:
+        * create_schema()
+        * delete_schema()
+        * describe_schema()
+        * list_schemas()
+    * Signer:
+        * cancel_signing_profile()
+        * get_signing_profile()
+        * list_signing_platforms()
+        * put_signing_profile()
+  * New Methods:
+    * AWS Lambda:
+        * create_function_url_config()
+        * delete_function_url_config()
+        * get_function_url_config()
+        * update_function_url_config()
+    * Glue:
+        * update_database()
+    * EC2:
+        * describe_volumes_modifications()
+        * modify_volume()
+    * S3:
+        * delete_bucket_ownership_rule()
+        * get_bucket_ownership_rule()
+        * put_bucket_ownership_rule()
+  * Miscellaneous:
+    * CloudFormation: Fixed a bug where deletion of
+      AWS::Route53::RecordSet would result in an error
+    * DynamoDB: Fixed a bug where a TableARN would always return
+      region=us-east-1
+    * EC2:create_launch_template() now supports the
+      TagSpecifications-parameter
+    * EC2:describe_instance_types() now supports the
+      Filters-parameter
+    * EC2:run_instances() now supports the HibernationOptions-param
+- Release 4.0.0
+  * General:
+    * Introduces MultiAccount support (see
+      http://docs.getmoto.org/en/latest/docs/multi_account.html)
+    * Removes deprecated decorators mock_dynamodb2 and mock_rds2
+    * The API for the TreadedMotoServer is now considered stable
+  * Dependencies:
+    * The responses-module now has a minimum version of 0.13.0
+- Release 3.1.18
+  * General:
+    * Flask has now also been pinned to 2.1.x, as that is the
+      latest release that works with werkzeug 2.1.x
+  * New Methods:
+    * EC2:
+        * create_fleet()
+        * describe_fleets()
+        * describe_fleet_instances()
+        * delete_fleets()
+    * SES:
+        * describe_configuration_set()
+        * send_bulk_templated_email()
+  * Miscellaneous:
+    * EC2: describe_key_pairs() now returns the KeyPairId-attribute
+    * EC2: import_key_pair() now returns the KeyPairId-attribute
+    * EC2: describe_launch_templates() now behaves correctly when
+      called with an unknown template name
+    * RDS: create_db_instance() now returns the
+      AvailabilityZone-attribute
+    * RDS: describe_db_instances() now returns the
+      AvailabilityZone-attribute
+- Release 3.1.17
+  * General:
+    * Werkzeug has been pinned to 2.1.x, as the latest 2.2.x
+      releases cause some issues
+  * New Services:
+    * CodeBuild:
+        * batch_get_builds()
+        * delete_project()
+        * list_builds()
+        * list_builds_for_project()
+        * start_build()
+        * stop_build()
+    * Cost Explorer:
+        * create_cost_category_definition()
+        * delete_cost_category_definition()
+        * describe_cost_category_definition()
+        * update_cost_category_definition()
+
+    * EMR Serverless:
+        * create_application()
+        * delete_application()
+        * get_application()
+        * list_applications()
+        * start_application()
+        * start_job_run()
+        * stop_application()
+        * update_application()
+  * New Methods:
+    * Autoscaling:
+        * delete_scheduled_action()
+        * describe_scheduled_actions()
+        * put_scheduled_update_group_action()
+    * CloudFront:
+        * create_distribution_with_tags()
+        * create_invalidation()
+        * list_tags_for_resource()
+    * Glue:
+        * create_schema()
+        * delete_schema()
+        * get_schema_by_definition()
+        * get_schema_version()
+        * put_schema_version_metadata()
+        * register_schema_version()
+    * Greengrass:
+        * associate_role_to_group()
+        * create_deployment()
+        * disassociate_role_from_group()
+        * get_associated_role()
+        * get_deployment_status()
+        * list_deployments()
+        * reset_deployments()
+    * IAM:
+        * update_assume_role_policy()
+    * IOT:
+        * list_targets_for_policy()
+    * KMS:
+        * replicate_key()
+    * MediaConnect:
+        * add_flow_sources()
+        * update_flow_source()
+  * Miscellaneous:
+    * CloudFormation now supports the creation of
+      AWS::AutoScaling::ScheduledAction
+    * CognitoIDP now supports pagination for list_groups() and
+      list_users_in_group()
+    * EC2:describe_instances() now supports the filter 'key-name'
+    * IAM:create_access_key() now limits the number of keys per
+      user to 2
+
+-------------------------------------------------------------------
 Mon Jun 27 20:07:48 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.1.16
