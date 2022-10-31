@@ -271,4 +271,25 @@
     <comment></comment>
     <requestid>985586</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>ba2fd396ad6dcf84371dbc6f147add12</srcmd5>
+    <version>2022.10.31</version>
+    <time>1667209518</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2022.10.31:
+  * complete-command to specify and change how a command is completed
+  * p, P, ! and &lt;a-!&gt; commands now select the inserted text
+  * x now just extends the selection to contain full lines (as &lt;a-x&gt; did)
+    &lt;a-x&gt; trims partial lines from the selection (as &lt;a-X&gt; did)
+  * User mappings is now bound to &lt;space&gt; while keeping/removing main
+    selection moved to , and &lt;a-,&gt;
+  * Prompt history registers %reg{colon}, %reg{slash} and %reg{pipe}
+    now have reverse chronological order
+  * Executing user mode mappings no longer adds to prompt history registers.
+- Remove kakoune-2021.11.08-gcc-12.patch
+- Remove BR for libboost_regex, libxslt-tools, and ncurses:
+  not needed anymore
+- Require gcc &gt;= 12</comment>
+    <requestid>1032407</requestid>
+  </revision>
 </revisionlist>

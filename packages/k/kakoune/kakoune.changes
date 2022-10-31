@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Oct 31 07:42:12 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2022.10.31:
+  * complete-command to specify and change how a command is completed
+  * p, P, ! and <a-!> commands now select the inserted text
+  * x now just extends the selection to contain full lines (as <a-x> did)
+    <a-x> trims partial lines from the selection (as <a-X> did)
+  * User mappings is now bound to <space> while keeping/removing main
+    selection moved to , and <a-,>
+  * Prompt history registers %reg{colon}, %reg{slash} and %reg{pipe}
+    now have reverse chronological order
+  * Executing user mode mappings no longer adds to prompt history registers.
+- Remove kakoune-2021.11.08-gcc-12.patch
+- Remove BR for libboost_regex, libxslt-tools, and ncurses:
+  not needed anymore
+- Require gcc >= 12
+
+-------------------------------------------------------------------
 Mon Jun 27 20:43:08 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Add kakoune-2021.11.08-gcc-12.patch: Fix build with gcc 12.

@@ -1,7 +1,7 @@
 #
 # spec file for package kakoune
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,16 @@
 
 
 Name:           kakoune
-Version:        2021.11.08
+Version:        2022.10.31
 Release:        0
 Summary:        A code editor heavily inspired by Vim
 License:        Unlicense
 Group:          Productivity/Text/Editors
 URL:            https://kakoune.org/
 Source:         https://github.com/mawww/kakoune/releases/download/v%{version}/kakoune-%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM kakoune-2021.11.08-gcc-12.patch -- Fix build with gcc 12 (gh#mawww/kakoune#4544)
-Patch:          kakoune-2021.11.08-gcc-12.patch
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++ >= 5.0
-BuildRequires:  libboost_regex-devel >= 1.50
-BuildRequires:  libxslt-tools
-BuildRequires:  ncurses-devel >= 6.0
+BuildRequires:  gcc-c++ >= 12
 
 %description
 Kakoune is a code editor heavily inspired by Vim.
@@ -43,7 +38,7 @@ It's faster as in less keystrokes, supports multiple selections and uses orthogo
 %build
 pushd src
 
-%make_build CXXFLAGS="%{optflags} -std=gnu++17"
+%make_build CXXFLAGS="%{optflags} -std=gnu++20"
 
 popd
 
