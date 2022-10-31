@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 
 Name:           python-strictyaml
-Version:        1.6.1
+Version:        1.6.2
 Release:        0
 Summary:        Strict, typed YAML parser
 License:        MIT
