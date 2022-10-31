@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Oct 29 00:57:35 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 3.19.1
+  Improve WebClient#files_upload_v2() to use given filename as the default title value - Thanks @seratch @mattpr
+
+- Update to 3.19.0
+  #1272 Add files.upload v2 support, which resolves #1191 #1165 - Thanks @seratch
+
+- Update to 3.18.5
+  #1271 Add more revert to #1269 - Thanks @seratch @yardensachs
+
+- Update to 3.18.4 
+  #1264 Fix retry_handlers type hint in AsyncBaseClient - Thanks @ronyb29
+  #1265 #1266 Add selected_time (timepicker) to ViewStateValue class - Thanks @rei-0
+  #1270 Add include_all_metadata to conversations.replies API arguments - Thanks @seratch
+  #1269 Adjust the logic added by #1246 - Thanks @seratch @eddyg 
+
+-------------------------------------------------------------------
 Fri Oct  7 16:06:10 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 3.18.3 
