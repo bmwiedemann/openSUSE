@@ -23,4 +23,12 @@
     <comment>- Do not use python_module for Requires.</comment>
     <requestid>1000526</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>53f9aaa36be8dde22e9fc83582f437a3</srcmd5>
+    <version>1.7.2</version>
+    <time>1667217867</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032432</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Oct 29 00:55:58 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 1.7.2 
+  * Documentation changes release.
+
+-------------------------------------------------------------------
+Sat Oct 29 00:53:02 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 1.7.1 
+  * Add license to metadata by @duncanmmacleod in #150
+  * Update badges in README by @duncanmmacleod in #152
+  * Miscellaneous documentation fixes by @duncanmmacleod in #155
+  * Update setup.py by @duncanmmacleod in #156
+  * Adding codacy github action by @djw8605 in #158
+  * Attempt to fix codacy in github actions by @djw8605 in #159
+  * Add pyproject.toml file for PEP 517 builds by @lpsinger in #162
+  * Install requires setuptools by @lpsinger in #163
+
+-------------------------------------------------------------------
 Thu Sep  1 00:45:32 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Do not use python_module for Requires. 
