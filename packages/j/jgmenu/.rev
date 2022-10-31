@@ -341,4 +341,30 @@
     errors</comment>
     <requestid>919742</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>040436cc26de47495f17d3f932e87f52</srcmd5>
+    <version>4.4.1</version>
+    <time>1667209509</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.4.1:
+  * Chase librsvg2 API changes
+    + Use rsvg_handle_render_document() to render icons instead of
+      deprecated rsvg_handle_get_dimensions() and
+      rsvg_handle_render_cairo(). This requres librsvg2 &gt;= 2.46
+    + jgmenu.svg: specify width and height to enable some applications
+      using imlib2 &gt;= v1.8 (such as feh and tint2) to render the
+      jgmenu.svg icon correctly. This is an indirect result of the
+      librsvg2 API deprecation of rsvg_handle_get_dimensions() and
+      rsvg_handle_render_cairo()
+  * jgmenu-apps: correctly sort desktop entries in languages other than
+    English. Issue #166
+  * Handle symlinked icon directories in order to support Papirus-Dark.
+    Issue #122.
+  * Use cache directory ${XDG_CACHE_HOME:-$HOME/.cache} rather than just
+    defaulting to ~/.cache. Issue #175.
+  * Fix widgets cursor-motion bug caused by background rect and text
+    widgets blocking action widgets which should handle mouse-over.
+    Issue #167</comment>
+    <requestid>1032379</requestid>
+  </revision>
 </revisionlist>

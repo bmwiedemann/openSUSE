@@ -1,7 +1,7 @@
 #
 # spec file for package jgmenu
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           jgmenu
-Version:        4.4.0
+Version:        4.4.1
 Release:        0
 Summary:        Small X11 menu intended to be used with openbox and tint2
 License:        GPL-2.0-only
@@ -32,7 +32,7 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libmenu-cache)
-BuildRequires:  pkgconfig(librsvg-2.0)
+BuildRequires:  pkgconfig(librsvg-2.0) >= 2.46
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(pangocairo)
