@@ -5,10 +5,6 @@ replace-with = "vendored-sources"
 git = "https://github.com/gtk-rs/gtk-rs-core"
 replace-with = "vendored-sources"
 
-[source."https://github.com/gtk-rs/gtk3-rs"]
-git = "https://github.com/gtk-rs/gtk3-rs"
-replace-with = "vendored-sources"
-
 [source."https://github.com/gtk-rs/gtk4-rs"]
 git = "https://github.com/gtk-rs/gtk4-rs"
 replace-with = "vendored-sources"

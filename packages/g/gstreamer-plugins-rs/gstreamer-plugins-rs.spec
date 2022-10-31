@@ -25,7 +25,7 @@
 #%%global __requires_exclude pkgconfig\\(csound\\)
 
 Name:           gstreamer-plugins-rs
-Version:        0.8.4+git20220824.052092cd
+Version:        0.9.alpha.1+git20221020.5c89c3d
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
@@ -47,12 +47,14 @@ BuildRequires:  git
 BuildRequires:  meson >= 0.47.0
 BuildRequires:  nasm
 BuildRequires:  pkgconfig
+BuildRequires:  python3-tomli
 BuildRequires:  rust >= 1.51
 BuildRequires:  pkgconfig(cairo) >= 1.10.0
 BuildRequires:  pkgconfig(dav1d)
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-base-1.0)
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
+BuildRequires:  pkgconfig(gstreamer-webrtc-1.0)
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(libsodium)
 BuildRequires:  pkgconfig(libwebp)
@@ -61,6 +63,7 @@ BuildRequires:  pkgconfig(pango)
 Requires:       gstreamer
 Requires:       gstreamer-plugins-base
 Enhances:       gstreamer
+ExcludeArch:    ppc ppc64 ppc64le s390
 
 %description
 GStreamer is a streaming media framework based on graphs of filters
@@ -101,6 +104,8 @@ cp %{SOURCE2} .cargo/config
 export RUSTFLAGS=%{rustflags}
 
 %meson \
+	--default-library=shared \
+	-Ddoc=disabled \
 	-Ddav1d=auto \
 	-Dsodium=system \
 	-Dcsound=disabled \
@@ -130,6 +135,7 @@ cp %{SOURCE3} %{buildroot}%{_datadir}/appdata/
 %{_libdir}/gstreamer-%{gst_branch}/libgsthlssink3.so
 %{_libdir}/gstreamer-%{gst_branch}/libgsthsv.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstlewton.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstndi.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstraptorq.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrav1e.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstreqwest.so
@@ -145,6 +151,8 @@ cp %{SOURCE3} %{buildroot}%{_datadir}/appdata/
 %{_libdir}/gstreamer-%{gst_branch}/libgstrstextwrap.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrstracers.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrswebp.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstrswebrtc.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstrtpav1.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstsodium.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstspotify.so
 %{_libdir}/gstreamer-%{gst_branch}/libgsttextahead.so
@@ -152,9 +160,10 @@ cp %{SOURCE3} %{buildroot}%{_datadir}/appdata/
 %{_libdir}/gstreamer-%{gst_branch}/libgsttogglerecord.so
 %{_libdir}/gstreamer-%{gst_branch}/libgsturiplaylistbin.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstvideofx.so
-
+%{_libdir}/gstreamer-%{gst_branch}/libgstwebrtchttp.so
 %dir %{_datadir}/appdata
 %{_datadir}/appdata/gstreamer-plugins-rs.appdata.xml
+%{_bindir}/gst-webrtc-signalling-server
 
 %files devel
 %{_libdir}/pkgconfig/*.pc

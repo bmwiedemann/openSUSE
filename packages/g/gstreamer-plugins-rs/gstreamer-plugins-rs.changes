@@ -1,4 +1,165 @@
 -------------------------------------------------------------------
+Fri Oct 21 06:18:44 UTC 2022 - bjorn.lie@gmail.com
+
+- Update to version 0.9.alpha.1+git20221020.5c89c3d:
+  * meson: add plugins list to summary
+  * fallbacksrc: Don't configure conversion elements for normal
+    stream
+  * webrtc:
+    - Rename and add to meson build the signalling server
+    - Enhance documentation
+    - Minor cleanup
+    - Rename signaller and protocol crates
+    - Update and unify rust-version and edition
+    - Uniformise GType names
+    - Port to new ElementBuilder API
+- Add ppc ppc64 ppc64le s390 ExcludeArch: Current versions of
+  gstreamer-plugins-rs depends on rs-ring, and rs-ring does not yet
+  support building on these targets.
+
+-------------------------------------------------------------------
+Mon Oct 10 15:17:09 UTC 2022 - bjorn.lie@gmail.com
+
+- Update to version 0.9.alpha.1+git20221010.b1b7070:
+  * Change *Impl trait methods to only take &self and not
+    Self::Type in addition
+  * fallbacksrc:
+    - Always restart the fallback stream on EOS and make sure to
+      EOS all streams if the main stream is EOS
+    - Retry fallback stream on errors too
+  * jsontovtt:
+    - Add timeout property
+    - Print object information to debug message
+  * Update for glib::Object::new() API changes
+  * update-version.sh: Also update version in meson.build
+  * Use `GFV::none_for_format` where applicable
+
+-------------------------------------------------------------------
+Thu Oct 06 11:58:03 UTC 2022 - bjorn.lie@gmail.com
+
+- Update to version 0.9.alpha.1+git20221005.0b13bfe:
+  * Add missing Since markers to new plugins
+  * Add RTP de/payloader elements for AV1
+  * Allow "unused_doc_comments" as we use hotdoc and not rustdoc
+  * awstranscriber:
+    - fix set_property for language-code
+    - only set vocabulary filter when vocabulary is set
+  * aws: Update to aws 0.48/0.18
+  * build: Update versions to be 0.9.0-alpha.1
+  * cargo:
+    - Sort members and default-members lists
+    - Update default-members list
+  * cea608tojson: Clip column number if it exceeds allowed value
+  * csound: Fix score-offset getter
+  * dav1ddec: Require dav1d 1.0.0 in meson
+  * dav1d: Update to dav1d 0.9
+  * doc: Mark request::user-agent as doc show default
+  * docs: Remove cruft
+  * examples: Update to clap 4
+  * fallbacksrc:
+    - Always restart the fallback stream on EOS and make sure to
+      EOS all streams if the main stream is EOS
+    - Implement support for fallback streams
+    - Retry fallback stream on errors too
+  * fallbackswitch:
+    - Fix lock order problem between state and stream lock
+    - Flush and deactivate pads before releasing them
+    - Make sure to flush/reset pads during pad (de)activation
+    - Port the example to GTK 4
+  * Fixes for removal of SpecificFormattedValues ops on ref
+  * Fix missing pkgconfig requires
+  * fmp4mux:
+    - Drop GAP buffers before doing ONVIF UTC time re-timestamping
+    - Drop gap buffers before further processing
+    - Implement a better strategy for splitting fragments and
+      deciding which buffers go into which fragment
+    - Split huge drain function into separate functions
+  * Generate plugins documentation using hotdoc
+  * jitterbuffer: fix typo when calculating max_misorder_time
+  * jsontovtt: Don't push zero-duration cue data
+  * meson:
+    - Blacklist csound and threadshare plugins for gst-full
+    - Define gst_plugins with list of dependencies
+    - Fix deprecation warning
+    - Fix directory/plugin name mapping for new webrtchttp plugin
+    - Fix gstwebrtc/gstsdp subproject usage
+    - Fix usage of python3 variable which was renamed recently
+    - Import python module only once
+    - Use workspace Cargo.toml to find crates path
+  * net/onvif: update with new `gst::Signed` features
+  * onvif:
+    - Fix for `gst::meta::CustomMeta::register()` API change
+    - Rename onvif(de)pay to rtponvifmetadata(de)pay and include
+      the metadata specifier in the other element names too
+  * onvifmetadatacombiner:
+    - Do not classify as Muxer
+    - Drop gap metadata buffers
+  * onvifmetadataparse:
+    - Drop initial buffers if their UTC time would be negative
+    - Drop initial buffers until an UTC/running time mapping can be
+      established
+    - Handle negative running times in debug output
+    - Pass through other XML as is with the UTC times based on the
+      buffer PTSs
+    - Push buffers from a separate source pad task to guarantee
+      latency and generally improve correctness
+    - Refactor clock/condvar waiting
+    - Schedule EOS events after the last currently queued up frame
+    - Simplify some code
+    - Start source pad task on StreamStart if needed
+  * pngenc: Allow using deprecated compression levels
+  * rav1e: Pin `v_frame` dependency to version 0.2.5 for now
+  * rtpav1depay: Don't unnecessary map RTP payload a second time
+  * rtpav1pay: Don't push buffers downstream while holding mutexes
+  * rtpav1:
+    - Remove some unneeded lifetime annotations
+    - Reset state on FlushStop/Eos in all conditions and reset all
+      of the state
+    - Specify version helper dependency by path
+    - Use GStreamer types by namespace instead of importing dozens
+      of types directly into the scope
+  * s3sink: Dont set call_timeout,call_attempt_timeout is enough
+    with retry.
+  * s3sink, s3src: Max 1 (re)try when retry-duration <
+    request_timeout.
+  * text/json:
+    - hard depend on ser_de feature of gst crate
+    - use renamed gst feature 'serde'
+  * threadshare: disable tests that can't work on windows
+  * togglerecord: Port example to GTK 4
+  * tracers:
+    - Fix documentation comment using gtk-doc style
+    - queue-levels: Update for `gst::TracerImpl` API changes
+  * ts: add feature to add counters for performance evaluation
+  * ts/executor: clear the reactor instead of closing it...
+  * ts-jitterbuffer:
+    - Declare `request-pt-map` signal
+    - extra robustness for Windows CI
+    - Fix latency type when getting property
+  * ts/scheduler:
+    - fix shutdown
+    - improve tasks / io & timers polling  balance
+  * ts/standalone: multiple improvements
+  * ts/Task: don't drain sub tasks after state transition and
+    iteration
+  * ts/timers: multiple improvements
+  * Update for GLib ParamSpec builder API changes
+  * Update minimum supported Rust version to 1.63
+  * update-version.sh: Also update version in meson.build
+  * uriplaylistbin: Port example from structopt to clap
+  * video/rspng: add missing doc feature gate
+  * whipsink: A GstBin implementation for WHIP
+- Add python3-tomli and pkgconfig(gstreamer-webrtc-1.0)
+  BuildRequires: New dependencies.
+- Pass default-library=shared and doc=disabled to meson, ensure we
+  build the shared lib as default and disable build of docs.
+
+-------------------------------------------------------------------
+Mon Sep 12 21:23:10 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update constraints for i586, bump to 22 G here too.
+
+-------------------------------------------------------------------
 Mon Aug 29 23:16:32 UTC 2022 - bjorn.lie@gmail.com
 
 - Update to version 0.8.4+git20220824.052092cd:
