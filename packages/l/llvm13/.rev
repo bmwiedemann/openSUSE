@@ -161,4 +161,13 @@
 </comment>
     <requestid>1001714</requestid>
   </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>6e35320f97920cdfe2c8ab1bac4a0841</srcmd5>
+    <version>13.0.1</version>
+    <time>1667209497</time>
+    <user>dimstar_suse</user>
+    <comment>- Add lldb-swig-4.1.0-build-fix.patch: Fix build with Swig 4.1.0.
+</comment>
+    <requestid>1032340</requestid>
+  </revision>
 </revisionlist>
