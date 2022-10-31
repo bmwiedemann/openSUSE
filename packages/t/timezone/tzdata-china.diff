@@ -1,8 +1,8 @@
-Index: timezone-2022b/asia
+Index: timezone-2022f/asia
 ===================================================================
---- timezone-2022b.orig/asia
-+++ timezone-2022b/asia
-@@ -663,6 +663,8 @@ Rule	PRC	1987	1991	-	Apr	Sun>=11	 2:00	1
+--- timezone-2022f.orig/asia
++++ timezone-2022f/asia
+@@ -653,6 +653,8 @@ Rule	PRC	1987	1991	-	Apr	Sun>=11	 2:00	1
  Zone	Asia/Shanghai	8:05:43	-	LMT	1901
  			8:00	Shang	C%sT	1949 May 28
  			8:00	PRC	C%sT
@@ -10,12 +10,12 @@ Index: timezone-2022b/asia
 +Link  Asia/Shanghai Asia/Beijing
  # Xinjiang time, used by many in western China; represented by Ürümqi / Ürümchi
  # / Wulumuqi.  (Please use Asia/Shanghai if you prefer Beijing time.)
- Zone	Asia/Urumqi	5:50:20	-	LMT	1928
-Index: timezone-2022b/zone.tab
+ # Vostok base in Antarctica matches this since 1970.
+Index: timezone-2022f/zone.tab
 ===================================================================
---- timezone-2022b.orig/zone.tab
-+++ timezone-2022b/zone.tab
-@@ -147,6 +147,7 @@ CL	-3327-07040	America/Santiago	Chile (m
+--- timezone-2022f.orig/zone.tab
++++ timezone-2022f/zone.tab
+@@ -144,6 +144,7 @@ CL	-3327-07040	America/Santiago	Chile (m
  CL	-5309-07055	America/Punta_Arenas	Region of Magallanes
  CL	-2709-10926	Pacific/Easter	Easter Island
  CM	+0403+00942	Africa/Douala
@@ -23,11 +23,11 @@ Index: timezone-2022b/zone.tab
  CN	+3114+12128	Asia/Shanghai	Beijing Time
  CN	+4348+08735	Asia/Urumqi	Xinjiang Time
  CO	+0436-07405	America/Bogota
-Index: timezone-2022b/zone1970.tab
+Index: timezone-2022f/zone1970.tab
 ===================================================================
---- timezone-2022b.orig/zone1970.tab
-+++ timezone-2022b/zone1970.tab
-@@ -127,6 +127,7 @@ CK	-2114-15946	Pacific/Rarotonga
+--- timezone-2022f.orig/zone1970.tab
++++ timezone-2022f/zone1970.tab
+@@ -124,6 +124,7 @@ CK	-2114-15946	Pacific/Rarotonga
  CL	-3327-07040	America/Santiago	Chile (most areas)
  CL	-5309-07055	America/Punta_Arenas	Region of Magallanes
  CL	-2709-10926	Pacific/Easter	Easter Island

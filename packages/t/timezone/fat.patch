@@ -1,10 +1,10 @@
-Index: timezone-2020d/Makefile
+Index: timezone-2022f/Makefile
 ===================================================================
---- timezone-2020d.orig/Makefile
-+++ timezone-2020d/Makefile
-@@ -386,7 +386,7 @@ ZIC=		$(zic) $(ZFLAGS)
- # To grow the files and work around older application bugs, append "-b fat";
- # see ZIC_BLOAT_DEFAULT above.
+--- timezone-2022f.orig/Makefile
++++ timezone-2022f/Makefile
+@@ -406,7 +406,7 @@ ZIC=		$(zic) $(ZFLAGS)
+ # possibly at the expense of introducing bugs in newer ones,
+ # append "-b fat"; see ZIC_BLOAT_DEFAULT above.
  # See the zic man page for more about -b and -r.
 -ZFLAGS=
 +ZFLAGS=-b fat
