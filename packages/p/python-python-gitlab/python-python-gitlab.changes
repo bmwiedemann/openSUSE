@@ -1,5 +1,5 @@
 -------------------------------------------------------------------
-Thu Oct  6 22:29:41 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+Fri Oct 28 20:36:42 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to v3.10.0 (2022-09-28)
   Feature
@@ -8,6 +8,9 @@ Thu Oct  6 22:29:41 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
   Fix
   cli: Add missing attributes for creating MRs (1714d0a)
   cli: Add missing attribute for MR changes (20c46a0)
+
+-------------------------------------------------------------------
+Thu Oct  6 22:29:41 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to v3.9.0 (2022-08-28)
   Feature
