@@ -1,8 +1,11 @@
 -------------------------------------------------------------------
-Wed Sep 28 15:44:32 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+Fri Oct 28 17:04:59 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - update to 1.10.3 - 2022-09-08
   * upper limit for dependency pinning removed to support installation on more recent environments.
+
+-------------------------------------------------------------------
+Wed Sep 28 15:44:32 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - update to 1.10.2 - 2022-09-04
   * bugfix: missing self in FritzStatus.get_device_info() (introduced in 1.10.0) (#165)
