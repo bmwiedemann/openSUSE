@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Fri Dec 10 19:50:34 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
-- privoxy 3.0.33 (boo#1183584):
+- privoxy 3.0.33 (boo#1193584):
   * CVE-2021-44543: Encode the template name to prevent XSS
     (cross-side scripting) when Privoxy is configured to servce
     the user-manual itself
