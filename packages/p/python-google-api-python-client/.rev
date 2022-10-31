@@ -522,4 +522,12 @@ eplacement for google-api-python-client, follow our naming convention</comment>
     <comment></comment>
     <requestid>1010904</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>f2e4f13ff97658376b92e934e6e55119</srcmd5>
+    <version>2.65.0</version>
+    <time>1667209487</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032324</requestid>
+  </revision>
 </revisionlist>
