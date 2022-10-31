@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Mon Oct 31 05:29:13 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.8.0:
+  * Switched the build system from autotools to meson which also removed
+    the need for plugin_pack.py.
+  * Set the glib dependency to versions >= 2.32.0.
+  * Set the gtk dependency to versions >= 2.10.0.
+  * Removed the irssi happy new year easter egg.
+  * Removed xmms-remote as XMMS 1.x has been dead for quite some time.
+  * Removed the autoprofile plugin as it was incomplete and unlikely to be
+    completed.
+  * Removed the infopane plugin as it wasn't very useful.
+  * Removed the talkfilters plugin as its dependencies are not typically
+    packaged by distributions anymore.
+  * Removed the Napster plugin as opennap hasn't been updated in 20 years.
+  * Removed the xchat-chats plugin as it's kind of hacky and bundles a very
+    old version of the xchat widget.
+  * Removed the awaynotify plugin as it was incomplete and unlikely to be
+    completed.
+  * Removed the buddy icon tools plugin as it was incomplete and unlikely to be completed.
+  * Removed the buddytime plugin as it was incomplete and unlikely to be
+    completed.
+  * Removed the chronic plugin as it was incomplete and unlikely to be
+    completed.
+  * Removed the stocker plugin as the AOL servers it talked to have long since
+    been shutdown.
+  * Removed the smartear plugin as it was incomplete and unlikely to be
+    completed.
+  * Removed the nomobility plugin as it was incomplete and unlikely to be
+    completed.
+  * Removed the msglen plugin as it was incomplete and unlikely to be completed.
+  * Removed the ignorance plugin as it was incomplete and unlikely to be
+    completed.
+  * Removed the hideconv plugin as its functionality is in pidgin 2.3.0 and
+    newer.
+  * Removed the findip plugin as it never really worked in the first place.
+  * Removed the stress plugin as it didn't build by default.
+- Remove patches:
+  * purple-plugin-pack-fix-autoprofile-crash.patch
+  * purple-plugin_pack-fix-warning.patch
+- Update BuildRequires.
+- Update URL and Source location.
+
+-------------------------------------------------------------------
 Mon Mar 19 15:12:01 UTC 2018 - sor.alexei@meowr.ru
 
 - Add a missing build dependency: python2.
