@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rdiscount
-Version:        2.2.0.2
+Version:        2.2.7
 Release:        0
 %define mod_name rdiscount
 %define mod_full_name %{mod_name}-%{version}
@@ -37,7 +37,7 @@ Conflicts:      ruby = 1.9.2
 BuildRequires:  ruby-devel > 1.9.2
 # /MANUAL
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-#BuildRequires:  %{rubydevel < 1.9.2}
+BuildRequires:  %{rubydevel}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 BuildRequires:  update-alternatives
