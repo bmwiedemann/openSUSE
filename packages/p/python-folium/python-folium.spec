@@ -20,7 +20,7 @@
 %define skip_python36 1
 %define modname folium
 Name:           python-folium
-Version:        0.12.1.post1
+Version:        0.13.0
 Release:        0
 Summary:        Make beautiful maps with Leafletjs and Python
 License:        MIT

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Oct 31 09:28:03 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.13.0:
+  * Lazy popup: only load content on click
+    (gh#python-visualization/folium#1511).
+  * Add Leaflet.VectorGrid plugin: VectorGridProtobuf
+    (gh#python-visualization/folium#1576).
+  * Add blur parameter to HeatMapWithTime plugin
+    (gh#python-visualization/folium#1529).
+  * New ClickForLatLng class: click to save lat/lon to clipboard
+    (gh#python-visualization/folium#1530).
+  * Add width parameter to css for FloatImage
+    (gh#python-visualization/folium#1570).
+  * Add support for tooltips in TimestampedGeoJson objects
+    (gh#python-visualization/folium#1472).
+  * Expose GeoJson's web retrieval to its own function
+    (gh#python-visualization/folium#1458).
+  * Restore allowing simple Popup in GeoJson
+    (gh#python-visualization/folium#1528).
+  * Fix test failure with recent branca change on map ids
+    (gh#python-visualization/folium#1556).
+  * Documentation updates.
+
+-------------------------------------------------------------------
 Mon Feb 14 19:52:52 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.12.1.post1:
