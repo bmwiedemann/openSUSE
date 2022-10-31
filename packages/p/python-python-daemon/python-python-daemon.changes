@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Oct 28 20:27:24 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 2.3.2 
+  Bugs Fixed:
+  * Declare Twine as a development dependency (not a build dependency).
+    Closes: Pagure #55. Thanks to Jason Andryuk for the report.
+    Thanks to James Hilliard for the implementation.
+  * Specify to build a wheel distribution for only Python 3 or later.
+  * Specify the built package requires Python 3 or later.
+    Closes: Pagure #66. Thanks to Nick M. for the report and implementation.
+  Removed:
+  * The earlier version 2.3.1 is now “yanked” from PyPI (unlisted and not an
+    installation candidate), because that version incorrectly permitted
+    installation on Python 2. Thanks to Nick M. for the report.
+
+-------------------------------------------------------------------
 Sat Oct  1 17:17:04 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.3.1:

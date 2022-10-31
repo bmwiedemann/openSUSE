@@ -245,4 +245,12 @@
 - drop remove_safe_hasattr.patch, remove_double_patch.patch (upstream)</comment>
     <requestid>1007473</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>b94c14c16c8a24291c2ebbb840f81cd8</srcmd5>
+    <version>2.3.2</version>
+    <time>1667219184</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032449</requestid>
+  </revision>
 </revisionlist>
