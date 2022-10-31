@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-tox-wheel
-Version:        0.7.0
+Version:        1.0.0
 Release:        0
 Summary:        A Tox plugin that builds and installs wheels instead of sdist
 License:        BSD-2-Clause
@@ -29,13 +29,13 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-tox >= 3.9
-Requires:       python-wheel >= 0.31
+Requires:       python-wheel >= 0.33.1
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tox >= 3.9}
 BuildRequires:  %{python_module tox-no-internet}
-BuildRequires:  %{python_module wheel >= 0.31}
+BuildRequires:  %{python_module wheel >= 0.33.1}
 # /SECTION
 %python_subpackages
 
