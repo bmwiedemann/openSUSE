@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 30 12:40:05 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- spec cleanups
+- fix URL
+- enable build for RISCV64 and 32bit ARM
+
+-------------------------------------------------------------------
 Sat Feb 13 10:15:48 UTC 2021 - Nathan Cutler <ncutler@suse.com>
 
 - Added tcmu-runner-handler-rbd to ceph_base (bsc#1175862) 

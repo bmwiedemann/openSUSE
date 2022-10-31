@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-ceph-containers
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,9 +22,9 @@ Release:        0
 Summary:        Patterns for the Ceph containers
 License:        MIT
 Group:          Metapackages
-URL:            http://en.opensuse.org/Patterns
+URL:            https://github.com/openSUSE/patterns
 Source:         %name-rpmlintrc
-ExclusiveArch:  x86_64 aarch64 ppc64le s390x
+ExclusiveArch:  x86_64 %arm32 aarch64 ppc64le s390x riscv64
 
 %description
 This is an internal package that is used to create the patterns as part
@@ -79,7 +79,6 @@ mkdir -p %buildroot/usr/share/doc/packages/patterns-ceph-containers/
 echo 'This file marks the pattern ceph-base to be installed.' >%buildroot/usr/share/doc/packages/patterns-ceph-containers/ceph_base.txt
 
 %files ceph_base
-%defattr(-,root,root)
 %dir %{_docdir}/patterns-ceph-containers
 %{_docdir}/patterns-ceph-containers/ceph_base.txt
 
