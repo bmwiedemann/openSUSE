@@ -1,8 +1,11 @@
 -------------------------------------------------------------------
-Fri Sep 16 19:41:00 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+Sat Oct 29 18:10:03 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 5.4.0
   * Disable unsafe math optimizations in C code. See pull request 89.
+
+-------------------------------------------------------------------
+Fri Sep 16 19:41:00 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 5.3.0 
   * Allow calling bound methods of some built-in objects such as ().__repr__ and {}.__repr__ by default.
