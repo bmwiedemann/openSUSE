@@ -5900,7 +5900,6 @@ unsorted:
   - glassfish-websocket-api-javadoc 
   - glassfishbuild-maven-plugin 
   - glassfishbuild-maven-plugin-javadoc 
-  - glava 
   - glew 
   - glew-devel 
   - glfw2-devel 
@@ -20933,6 +20932,8 @@ unsorted:
   - plasma-wayland-protocols 
   - plasma5-addons-devel 
   - plasma5-applet-suse-prime 
+  - plasma5-bigscreen 
+  - plasma5-bigscreen-lang 
   - plasma5-firewall 
   - plasma5-firewall-lang 
   - plasma5-integration-devel 
@@ -23979,8 +23980,8 @@ unsorted:
   - python310-numpy-devel 
   - python310-numpy-gnu-hpc 
   - python310-numpy-gnu-hpc-devel 
-  - python310-numpy_1_21_6-gnu-hpc 
-  - python310-numpy_1_21_6-gnu-hpc-devel 
+  - python310-numpy_1_23_4-gnu-hpc 
+  - python310-numpy_1_23_4-gnu-hpc-devel 
   - python310-numpydoc 
   - python310-nwdiag 
   - python310-nxapi-plumbing 
@@ -27276,8 +27277,8 @@ unsorted:
   - python38-numpy-devel 
   - python38-numpy-gnu-hpc 
   - python38-numpy-gnu-hpc-devel 
-  - python38-numpy_1_21_6-gnu-hpc 
-  - python38-numpy_1_21_6-gnu-hpc-devel 
+  - python38-numpy_1_23_4-gnu-hpc 
+  - python38-numpy_1_23_4-gnu-hpc-devel 
   - python38-numpydoc 
   - python38-nwdiag 
   - python38-nxapi-plumbing 
@@ -30616,8 +30617,8 @@ unsorted:
   - python39-numpy-devel 
   - python39-numpy-gnu-hpc 
   - python39-numpy-gnu-hpc-devel 
-  - python39-numpy_1_21_6-gnu-hpc 
-  - python39-numpy_1_21_6-gnu-hpc-devel 
+  - python39-numpy_1_23_4-gnu-hpc 
+  - python39-numpy_1_23_4-gnu-hpc-devel 
   - python39-numpydoc 
   - python39-nwdiag 
   - python39-nxapi-plumbing 
@@ -43878,6 +43879,7 @@ unsorted:
   - wget2 
   - wgetpaste 
   - whatsapp-for-linux 
+  - whatsapp-for-linux-lang 
   - whfc 
   - whipper 
   - whohas 
