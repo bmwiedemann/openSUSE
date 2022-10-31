@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Sat Oct 29 13:23:00 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- update to 9.3.0
+  * Limit SAMPLESPERPIXEL to avoid runtime DOS #6700
+  * Initialize libtiff buffer when saving #6699
+  * Inline fname2char to fix memory leak #6329
+  * Fix memory leaks related to text features #6330
+  * Use double quotes for version check on old CPython on Windows #6695
+  * Remove backup implementation of Round for Windows platforms #6693
+  * Fixed set_variation_by_name offset #6445
+  * Fix malloc in _imagingft.c:font_setvaraxes #6690
+  * Release Python GIL when converting images using matrix operations #6418
+  * Added ExifTags enums #6630
+  * Do not modify previous frame when calculating delta in PNG #6683
+  * Added support for reading BMP images with RLE4 compression #6674
+  * Decode JPEG compressed BLP1 data in original mode #6678
+  * Added GPS TIFF tag info #6661
+  * Added conversion between RGB/RGBA/RGBX and LAB #6647
+  * Do not attempt normalization if mode is already normal #6644
+  * Fixed seeking to an L frame in a GIF #6576
+  * Consider all frames when selecting mode for PNG save_all #6610
+  * Don't reassign crc on ChunkStream close #6627
+  * Raise a warning if NumPy failed to raise an error during conversion #6594
+  * Show all frames in ImageShow #6611
+  * Allow FLI palette chunk to not be first #6626
+  * If first GIF frame has transparency for RGB_ALWAYS loading strategy, use RGBA mode #6592
+  * Round box position to integer when pasting embedded color #6517
+  * Removed EXIF prefix when saving WebP #6582
+  * Pad IM palette to 768 bytes when saving #6579
+  * Added DDS BC6H reading #6449
+  * Added support for opening WhiteIsZero 16-bit integer TIFF images #6642
+  * Raise an error when allocating translucent color to RGB palette #6654
+  * Added reading of TIFF child images #6569
+  * Improved ImageOps palette handling #6596
+  * Defer parsing of palette into colors #6567
+  * Apply transparency to P images in ImageTk.PhotoImage #6559
+  * Use rounding in ImageOps contain() and pad() #6522
+  * Fixed GIF remapping to palette with duplicate entries #6548
+  * Allow remap_palette() to return an image with less than 256 palette entries #6543
+  * Corrected BMP and TGA palette size when saving #6500
+  * Do not call load() before draft() in Image.thumbnail #6539
+  * Copy palette when converting from P to PA #6497
+  * Allow RGB and RGBA values for PA image putpixel #6504
+  * Removed support for tkinter in PyPy before Python 3.6 #6551
+  * Do not use CCITTFaxDecode filter if libtiff is not available #6518
+  * Fallback to not using mmap if buffer is not large enough #6510
+  * Fixed writing bytes as ASCII tag #6493
+  * Open 1 bit EPS in mode 1 #6499
+  * Removed support for tkinter before Python 1.5.2 #6549
+  * Allow default ImageDraw font to be set #6484
+  * Save 1 mode PDF using CCITTFaxDecode filter #6470
+  * Added support for RGBA PSD images #6481
+  * Parse orientation from XMP tag contents #6463
+  * Added support for reading ATI1/ATI2 (BC4/BC5) DDS images #6457
+  * Do not clear GIF tile when checking number of frames #6455
+  * Support saving multiple MPO frames #6444
+  * Do not double quote Pillow version for setuptools >= 60 #6450
+  * Added ABGR BMP mask mode #6436
+  * Fixed PSDraw rectangle #6429
+  * Raise ValueError if PNG sRGB chunk is truncated #6431
+  * Handle missing Python executable in ImageShow on macOS #6416
+
+-------------------------------------------------------------------
 Fri Jul  1 17:02:08 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - removed obsolete tiff-readcount.patch
