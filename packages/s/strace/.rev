@@ -1381,4 +1381,17 @@ http://lists.opensuse.org/opensuse-factory/2015-03/msg00391.html (forwarded requ
     * Updated lists of ioctl commands from Linux 5.19. (forwarded request 994822 from AndreasSchwab)</comment>
     <requestid>994823</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>dfbc8bcc1a69034d0aca4a7638f9d418</srcmd5>
+    <version>6.0</version>
+    <time>1667209471</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to strace 6.0
+  * Enhanced decoding of PTP_* ioctl commands.
+  * Updated decoding of setns syscall.
+  * Updated lists of BPF_*, BTRFS_*, FAN_*, ETH_P_*, KVM_*, NDTPA_*,
+    NT_*, PERF_*, and TLS_INFO_* constants.
+  * Updated lists of ioctl commands from Linux 6.0. (forwarded request 1032263 from AndreasSchwab)</comment>
+    <requestid>1032264</requestid>
+  </revision>
 </revisionlist>

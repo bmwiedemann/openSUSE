@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct 29 18:44:10 UTC 2022 - Andreas Schwab <schwab@linux-m68k.org>
+
+- Update to strace 6.0
+  * Enhanced decoding of PTP_* ioctl commands.
+  * Updated decoding of setns syscall.
+  * Updated lists of BPF_*, BTRFS_*, FAN_*, ETH_P_*, KVM_*, NDTPA_*,
+    NT_*, PERF_*, and TLS_INFO_* constants.
+  * Updated lists of ioctl commands from Linux 6.0.
+
+-------------------------------------------------------------------
 Fri Aug 12 20:06:23 UTC 2022 - Andreas Schwab <schwab@linux-m68k.org>
 
 - Update to strace 5.19
