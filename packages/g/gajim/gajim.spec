@@ -64,7 +64,7 @@ Requires:       %{py3pkg}-gobject-Gdk
 Requires:       %{py3pkg}-gobject-cairo
 Requires:       %{py3pkg}-gssapi
 Requires:       %{py3pkg}-keyring
-Requires:       %{py3pkg}-nbxmpp >= 3.0
+Requires:       %{py3pkg}-nbxmpp >= 3.2.4
 Requires:       %{py3pkg}-precis-i18n >= 1.0.0
 Requires:       %{py3pkg}-pyOpenSSL >= 16.2
 Requires:       %{py3pkg}-pycairo >= 1.16.0
