@@ -1,7 +1,7 @@
 #
 # spec file for package rgb
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           rgb
-Version:        1.0.6
+Version:        1.1.0
 Release:        0
 Summary:        X color name database
 License:        MIT
 Group:          System/X11/Utilities
 URL:            https://xorg.freedesktop.org/
-Source0:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.bz2
+Source0:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(xorg-macros) >= 1.8
 BuildRequires:  pkgconfig(xproto)
@@ -47,7 +47,7 @@ rgb program to convert the text file into the binary database format.
 
 %files
 %license COPYING
-%doc AUTHORS ChangeLog README
+%doc AUTHORS ChangeLog README.md
 %{_bindir}/showrgb
 %dir %{_datadir}/X11
 %{_datadir}/X11/rgb.txt

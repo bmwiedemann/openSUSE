@@ -64,4 +64,18 @@
     <comment></comment>
     <requestid>893443</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>832decd0a487661111f7c862009269a8</srcmd5>
+    <version>1.1.0</version>
+    <time>1667209467</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.0
+  * This release adds a new configure option --with-rgb-db-library to allow
+    builders more control over which dbm or ndbm compatible library is used
+    if --with-rgb-db-type is set to one of the non-default database options
+    instead of the default of &quot;text&quot;.  The --with-rgb-db-library option can
+    allow use of libraries that are not normally searched for (gdbm_compat)
+    or to bypass libraries we do normally search for (like Berkeley db).</comment>
+    <requestid>1032261</requestid>
+  </revision>
 </revisionlist>
