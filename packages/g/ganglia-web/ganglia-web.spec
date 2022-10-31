@@ -1,7 +1,7 @@
 #
 # spec file for package ganglia-web
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,6 +53,7 @@ written in the PHP5/7 language and uses the Dwoo templating engine.
 %prep
 %setup -q -n %{name}-%{gittag}
 %autopatch -p1
+
 %build
 cp %SOURCE2 .
 
@@ -78,7 +79,7 @@ cp -v download_js.sh %{buildroot}%{_docdir}/%{name}/download_js.sh
 %defattr(-,root,root)
 %doc AUTHORS TODO README README.SUSE
 %{_docdir}/%{name}/download_js.sh
-%license COPYING 
+%license COPYING
 %dir %{web_prefixdir}/
 %dir %{web_prefixdir}/dwoo
 %{web_prefixdir}/*

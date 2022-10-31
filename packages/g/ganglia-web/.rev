@@ -48,4 +48,15 @@
  * add the available memory to the graph, if present</comment>
     <requestid>868328</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>0efa2b337b835f99f8c61391192d3653</srcmd5>
+    <version>3.7.5</version>
+    <time>1667219187</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 3.7.5 which fixes bsc#1179835
+ * add the available memory to the graph, if present
+- Possible XSS via ce &amp; cs parameters in header.php are no longer present
+  in this version (bsc#1160761, CVE-2019-20378).</comment>
+    <requestid>1032451</requestid>
+  </revision>
 </revisionlist>
