@@ -7,4 +7,39 @@
     <comment></comment>
     <requestid>1029974</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b5478501ee3be28576d29b5dfa404b56</srcmd5>
+    <version>1.5.0</version>
+    <time>1667209481</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.0:
+  * Implemented enhancements:
+    + Ctrl+P to open preferences #237
+    + Localize WFL_FRIENDLY_NAME and WFL_DESCRIPTION for the desktop file #235
+    + Simplify Config &amp; Preferences (Breaks Backward Compatibility!) #229
+    + Localization #180
+    + Start minimised #136
+  * Fixed bugs:
+    + Preferences window is not attached to the main window #236
+    + Permission issues #226
+    + Slow responding even without hardware acceleration #225
+    + Keeps freezing/spinning the CPU #224
+    + WhatsApp For Linux starts but doesnt load, keeps in loading screen forever. #223
+    + No Display with Whatsapp business account #220
+    + Does not work with hardware acceleration + does not persist preferences #216
+    + Spell check does not work #215
+    + Flatpak version not running in Arch Linux #211
+    + No Internet Connection Pop-up #209
+    + Notification icon dissapears imediately #202
+    + Auto turn off notifications #194
+  * Merged pull requests:
+    + Use official ArchLinux logo image in README #241
+    + Update Italian translation #240
+    + Add Italian translation #234
+    + Added Dutch translation #233
+    + Implement localization support #232
+    + Implement start minimized option #231
+    + Use webkit2gtk-4.1 if webkit2gtk-4.0 is not found #228</comment>
+    <requestid>1032367</requestid>
+  </revision>
 </revisionlist>

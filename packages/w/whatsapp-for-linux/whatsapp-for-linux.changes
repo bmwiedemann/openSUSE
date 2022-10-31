@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Oct 29 19:28:09 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.5.0:
+  * Implemented enhancements:
+    + Ctrl+P to open preferences #237
+    + Localize WFL_FRIENDLY_NAME and WFL_DESCRIPTION for the desktop file #235
+    + Simplify Config & Preferences (Breaks Backward Compatibility!) #229
+    + Localization #180
+    + Start minimised #136
+  * Fixed bugs:
+    + Preferences window is not attached to the main window #236
+    + Permission issues #226
+    + Slow responding even without hardware acceleration #225
+    + Keeps freezing/spinning the CPU #224
+    + WhatsApp For Linux starts but doesnt load, keeps in loading screen forever. #223
+    + No Display with Whatsapp business account #220
+    + Does not work with hardware acceleration + does not persist preferences #216
+    + Spell check does not work #215
+    + Flatpak version not running in Arch Linux #211
+    + No Internet Connection Pop-up #209
+    + Notification icon dissapears imediately #202
+    + Auto turn off notifications #194
+  * Merged pull requests:
+    + Use official ArchLinux logo image in README #241
+    + Update Italian translation #240
+    + Add Italian translation #234
+    + Added Dutch translation #233
+    + Implement localization support #232
+    + Implement start minimized option #231
+    + Use webkit2gtk-4.1 if webkit2gtk-4.0 is not found #228
+
+-------------------------------------------------------------------
 Wed Oct 19 11:32:54 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Remove deprecated %icon_theme_cache_post macros

@@ -17,7 +17,7 @@
 
 
 Name:           whatsapp-for-linux
-Version:        1.4.7
+Version:        1.5.0
 Release:        0
 Summary:        WhatsApp for Linux
 License:        GPL-3.0-only
@@ -35,6 +35,8 @@ BuildRequires:  pkgconfig(webkit2gtk-4.0) >= 2.34
 %description
 An unofficial WhatsApp desktop application written in C++.
 
+%lang_package
+
 %prep
 %setup -q
 
@@ -46,6 +48,8 @@ An unofficial WhatsApp desktop application written in C++.
 %cmake_install
 %fdupes -s %{buildroot}%{_datadir}/icons
 
+%find_lang %{name}
+
 %files
 %{_bindir}/%{name}
 %{_datadir}/applications/com.github.eneshecan.WhatsAppForLinux.desktop
@@ -54,5 +58,8 @@ An unofficial WhatsApp desktop application written in C++.
 %{_datadir}/metainfo/*.xml
 %doc README.md
 %license LICENSE
+
+%files lang -f %{name}.lang
+%{_datadir}/locale/??/LC_MESSAGES/%{name}.mo
 
 %changelog
