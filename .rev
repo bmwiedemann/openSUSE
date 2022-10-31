@@ -196,4 +196,19 @@
   * Add note about Linux namespace requirement</comment>
     <requestid>943599</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>ad7222f528f35a3a8b71f5f77db38c41</srcmd5>
+    <version>0.10.0</version>
+    <time>1667209479</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.10.0 
+  * Remove exec flag from tool.py
+  https://github.com/xattr/xattr/pull/106
+  * Update the documentation to mention
+  the attr package and its getfattr and
+  setfattr tools
+  https://github.com/xattr/xattr/pull/103
+</comment>
+    <requestid>1032327</requestid>
+  </revision>
 </revisionlist>
