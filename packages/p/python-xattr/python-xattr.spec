@@ -16,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-xattr
-Version:        0.9.9
+Version:        0.10.0
 Release:        0
 Summary:        Python wrapper for extended filesystem attributes
 License:        MIT
@@ -63,7 +62,7 @@ export CFLAGS="%{optflags}"
 
 %check
 export LC_ALL=en_US.utf-8
-%python_exec -m unittest discover
+%pyunittest discover -v
 
 %post
 %python_install_alternative xattr
