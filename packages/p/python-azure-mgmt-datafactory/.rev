@@ -219,4 +219,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1012027 from glaubitz)</comment>
     <requestid>1012101</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>922e5e0f0c9511492453b978466ab601</srcmd5>
+    <version>2.9.0</version>
+    <time>1667209490</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 2.9.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1030899 from glaubitz)</comment>
+    <requestid>1032332</requestid>
+  </revision>
 </revisionlist>
