@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 28 20:31:05 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 0.1.48 
+  * Fix version bound for subscripting abc.Iterator, abc.MutableMapping
+  * Don't raise AmbiguousDeb822FieldKeyError in __contains__.
+
+-------------------------------------------------------------------
 Thu Oct  6 22:19:00 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 0.1.47 
