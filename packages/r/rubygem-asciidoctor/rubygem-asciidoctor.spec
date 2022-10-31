@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-asciidoctor
-Version:        2.0.17
+Version:        2.0.18
 Release:        0
 %define mod_name asciidoctor
 %define mod_full_name %{mod_name}-%{version}
