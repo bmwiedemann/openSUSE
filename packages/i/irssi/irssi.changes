@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Oct 31 07:38:51 UTC 2022 - Ailin Nemui <ailin.nemui@gmail.com>
+
+- update to 1.4.3
+  - Fix freeze on Alt+arrows (#1416, #1417)
+  - Fix crash on /upgrade (#1399, #1419)
+  - Fix saving of -disallow_starttls (#1401, #1420)
+  - Fix libnv detection on FreeBSD (freebsd#265397, #1407). By
+    Guido Falsi and Kristof Provost
+  - Minor help and script fixes (#1380, #1393, #1411, #1413,
+    #1414, #1415)
+
+-------------------------------------------------------------------
 Sat Jul 16 18:26:53 UTC 2022 - Ailin Nemui <ailin.nemui@gmail.com>
 
 - drop patches; upstreamed
