@@ -16,22 +16,23 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define         skip_python2 1
 Name:           python-fastparquet
-Version:        0.8.1
+Version:        0.8.3
 Release:        0
 Summary:        Python support for Parquet file format
 License:        Apache-2.0
 URL:            https://github.com/dask/fastparquet/
 Source:         https://github.com/dask/fastparquet/archive/%{version}.tar.gz#/fastparquet-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fastparquet-pr813-updatefixes.patch gh#dask/fastparquet#813
+Patch1:         fastparquet-pr813-updatefixes.patch
 BuildRequires:  %{python_module Cython}
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module cramjam >= 2.3.0}
 # version requirement not declared for runtime, but necessary for tests.
 BuildRequires:  %{python_module fsspec >= 2021.6.0}
-BuildRequires:  %{python_module numpy-devel >= 1.18}
-BuildRequires:  %{python_module pandas >= 1.1.0}
+BuildRequires:  %{python_module numpy-devel >= 1.20.3}
+BuildRequires:  %{python_module packaging}
+BuildRequires:  %{python_module pandas >= 1.5.0}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
@@ -41,8 +42,9 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cramjam >= 2.3.0
 Requires:       python-fsspec
-Requires:       python-numpy >= 1.18
-Requires:       python-pandas >= 1.1.0
+Requires:       python-numpy >= 1.20.3
+Requires:       python-packaging
+Requires:       python-pandas >= 1.5.0
 Recommends:     python-python-lzo
 %python_subpackages
 
@@ -51,7 +53,7 @@ This is a Python implementation of the parquet format
 for integrating it into python-based Big Data workflows.
 
 %prep
-%setup -q -n fastparquet-%{version}
+%autosetup -p1 -n fastparquet-%{version}
 # remove pytest-runner from setup_requires
 sed -i "s/'pytest-runner',//" setup.py
 # this is not meant for setup.py
