@@ -16,16 +16,9 @@
 #
 
 
-#
-%if 0%{?suse_version} > 1500
-%bcond_without libalternatives
-%else
-%bcond_with libalternatives
-%endif
-
 %global flavor @BUILD_FLAVOR@%{nil}
-%define ver 1.21.6
-%define _ver 1_21_6
+%define ver 1.23.4
+%define _ver 1_23_4
 %define pname python-numpy
 %define hpc_upcase_trans_hyph() %(echo %{**} | tr [a-z] [A-Z] | tr '-' '_')
 %if "%{flavor}" == ""
@@ -48,11 +41,16 @@
 %ifarch s390 s390x
 %{?with_openblas:ExclusiveArch:  do_not_build}
 %endif
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
-%define         skip_python36 1
 %{?with_hpc:%{hpc_requires}}
+#
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+#
 %bcond_with ringdisabled
+#
 %if %{without hpc}
 %define package_name %{pname}
 %define p_python_sitearch %{python_sitearch}
@@ -73,41 +71,43 @@ ExclusiveArch:  do_not_build
 %endif
 Name:           %{package_name}
 # set %%ver and %%_ver instead above
-Version:        %ver
+Version:        %{ver}
 Release:        0
 Summary:        NumPy array processing for numbers, strings, records and objects
 License:        BSD-3-Clause
 URL:            http://www.numpy.org/
-Source:         https://files.pythonhosted.org/packages/source/n/numpy/numpy-%{version}.zip
+Source:         https://files.pythonhosted.org/packages/source/n/numpy/numpy-%{version}.tar.gz
 Source99:       python-numpy-rpmlintrc
 # PATCH-FIX-OPENSUSE numpy-buildfix.patch -- openSUSE-specific build fixes
 Patch0:         numpy-buildfix.patch
 # PATCH-FIX-OPENSUSE numpy-1.9.0-remove-__declspec.patch -- fix for spurious compiler warnings that cause build failure
 Patch1:         numpy-1.9.0-remove-__declspec.patch
-# PATCH-FIX-UPSTREAM -- gh#numpy/numpy#20388
-Patch3:         numpy-fix-cpu_asimdfhm.patch
-BuildConflicts: gcc11 < 11.2
-BuildRequires:  %{python_module Cython >= 0.29.24}
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module Cython >= 0.29.30}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module hypothesis >= 6.12.0}
-BuildRequires:  %{python_module pytest >= 6.2.4}
+BuildRequires:  %{python_module hypothesis >= 6.24.1}
+BuildRequires:  %{python_module pytest >= 6.2.5}
 BuildRequires:  %{python_module pytest-xdist}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 60.0.0}
 BuildRequires:  %{python_module testsuite}
+BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros >= 20210929
-BuildRequires:  unzip
+BuildConflicts: gcc11 < 11.2
 %if 0%{?suse_version}
 BuildRequires:  fdupes
 %endif
 %if %{without hpc}
+# Last version which packaged %%{_bindir}/f2py without update-alternatives
+# Protect it from substitution
+%define oldpy_numpy python-numpy
+Conflicts:      %{oldpy_numpy} <= 1.12.0
  %if 0%{?suse_version}
 BuildRequires:  gcc-fortran
  %else
 BuildRequires:  gcc-gfortran
  %endif
  %if %{with openblas}
-BuildRequires:  openblas-devel > 0.3.4
+BuildRequires:  openblas-devel > 0.3.20
  %else
 BuildRequires:  blas-devel
 BuildRequires:  cblas-devel
@@ -115,10 +115,6 @@ BuildRequires:  lapack-devel
 # openblas has significantly better performance for some operations
 Recommends:     libopenblas_pthreads0
  %endif
-# Last version which packaged %%{_bindir}/f2py without update-alternatives
-# Protect it from substitution
-%define oldpy_numpy python-numpy
-Conflicts:      %{oldpy_numpy} <= 1.12.0
  %if %{with libalternatives}
 BuildRequires:  alts
 Requires:       alts
@@ -264,11 +260,6 @@ mkdir -p testing
 cp pytest.ini testing/
 pushd testing
 
-# Python 3.10 deprecated distutils. This is going to be fixed in numpy 1.22 gh#numpy/numpy#20419
-echo '    ignore:.*distutils.*:DeprecationWarning' >> pytest.ini
-# Fixed in numpy 1.21.5 - gh#numpy/numpy#20467
-echo '    ignore:.*load_module.*:DeprecationWarning' >> pytest.ini
-
 # flaky tests
 test_failok+=" or test_structured_object_indexing"
 test_failok+=" or test_structured_object_item_setting"
@@ -281,7 +272,7 @@ test_failok+=" or test_generalized_sq"
 test_failok+=" or TestF77ReturnCharacter"
 test_failok+=" or TestF90ReturnCharacter"
 %endif
-%ifarch %ix86
+%ifarch %{ix86}
 # (arm 32-bit seems okay here)
 # gh#numpy/numpy#18387
 test_failok+=" or test_pareto"

@@ -1,4 +1,195 @@
 -------------------------------------------------------------------
+Thu Oct 20 13:48:08 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.23.4
+  * NumPy 1.23.4 is a maintenance release that fixes bugs
+    discovered after the 1.23.3 release and keeps the build
+    infrastructure current. The main improvements are fixes for
+    some annotation corner cases, a fix for a long time
+    nested_iters memory leak, and a fix of complex vector dot for
+    very large arrays. The Python versions supported for this
+    release are 3.8-3.11.
+
+-------------------------------------------------------------------
+Tue Oct 11 08:27:00 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Revert some spec-cleaner "Verschlimmbesserungen"
+- Remove old unused directives for Python <=3.6 from specfile
+
+-------------------------------------------------------------------
+Fri Sep 30 23:43:53 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * remove patch numpy-fix-cpu_asimdfhm.patch, included upstream
+  * update line numbers for other patches
+  * require c++ compiler
+
+- update to version 1.23.3:
+  * #22136: BLD: Add Python 3.11 wheels to aarch64 build
+  * #22148: MAINT: Update setup.py for Python 3.11.
+  * #22155: CI: Test NumPy build against old versions of GCC(6, 7, 8)
+  * #22156: MAINT: support IBM i system
+  * #22195: BUG: Fix circleci build
+  * #22214: BUG: Expose heapsort algorithms in a shared header
+  * #22215: BUG: Support using libunwind for backtrack
+  * #22216: MAINT: fix an incorrect pointer type usage in f2py
+  * #22220: BUG: change overloads to play nice with pyright.
+  * #22221: TST,BUG: Use fork context to fix MacOS savez test
+  * #22222: TYP,BUG: Reduce argument validation in C-based
+     __class_getitem__
+  * #22223: TST: ensure np.equal.reduce raises a TypeError
+  * #22224: BUG: Fix the implementation of numpy.array_api.vecdot
+  * #22230: BUG: Better report integer division overflow (backport)
+
+- changes from version 1.23.2:
+  * #22030: ENH: Add __array_ufunc__ typing support to the nin=1
+     ufuncs
+  * #22031: MAINT, TYP: Fix np.angle dtype-overloads
+  * #22032: MAINT: Do not let _GenericAlias wrap the underlying
+     classes'...
+  * #22033: TYP,MAINT: Allow einsum subscripts to be passed via
+     integer...
+  * #22034: MAINT,TYP: Add object-overloads for the np.generic rich
+     comparisons
+  * #22035: MAINT,TYP: Allow the squeeze and transpose method to...
+  * #22036: BUG: Fix subarray to object cast ownership details
+  * #22037: BUG: Use Popen to silently invoke f77 -v
+  * #22038: BUG: Avoid errors on NULL during deepcopy
+  * #22039: DOC: Add versionchanged for converter callable behavior.
+  * #22057: MAINT: Quiet the anaconda uploads.
+  * #22078: ENH: reorder includes for testing on top of system
+     installations...
+  * #22106: TST: fix test_linear_interpolation_formula_symmetric
+  * #22107: BUG: Fix skip condition for
+     test_loss_of_precision[complex256]
+  * #22115: BLD: Build python3.11.0rc1 wheels.
+
+- changes from version 1.23.1:
+  * #21866: BUG: Fix discovered MachAr (still used within valgrind)
+  * #21867: BUG: Handle NaNs correctly for float16 during sorting
+  * #21868: BUG: Use keepdims during normalization in np.average
+     and...
+  * #21869: DOC: mention changes to max_rows behaviour in np.loadtxt
+  * #21870: BUG: Reject non integer array-likes with size 1 in delete
+  * #21949: BLD: Make can_link_svml return False for 32bit builds on
+     x86_64
+  * #21951: BUG: Reorder extern "C" to only apply to function
+     declarations...
+  * #21952: BUG: Fix KeyError in crackfortran operator support
+
+- changes from version 1.23.0:
+  * long changelog
+    https://github.com/numpy/numpy/blob/main/doc/changelog/1.23.0-changelog.rst
+
+- changes from version 1.22.4:
+  * #21191: TYP, BUG: Fix np.lib.stride_tricks re-exported under
+     the...
+  * #21192: TST: Bump mypy from 0.931 to 0.940
+  * #21243: MAINT: Explicitly re-export the types in numpy._typing
+  * #21245: MAINT: Specify sphinx, numpydoc versions for CI doc builds
+  * #21275: BUG: Fix typos
+  * #21277: ENH, BLD: Fix math feature detection for wasm
+  * #21350: MAINT: Fix failing simd and cygwin tests.
+  * #21438: MAINT: Fix failing Python 3.8 32-bit Windows test.
+  * #21444: BUG: add linux guard per #21386
+  * #21445: BUG: Allow legacy dtypes to cast to datetime again
+  * #21446: BUG: Make mmap handling safer in frombuffer
+  * #21447: BUG: Stop using PyBytesObject.ob_shash deprecated in
+     Python 3.11.
+  * #21448: ENH: Introduce numpy.core.setup_common.NPY_CXX_FLAGS
+  * #21472: BUG: Ensure compile errors are raised correclty
+  * #21473: BUG: Fix segmentation fault
+  * #21474: MAINT: Update doc requirements
+  * #21475: MAINT: Mark npy_memchr with no_sanitize("alignment") on
+     clang
+  * #21512: DOC: Proposal - make the doc landing page cards more
+     similar...
+  * #21525: MAINT: Update Cython version to 0.29.30.
+  * #21536: BUG: Fix GCC error during build configuration
+  * #21541: REL: Prepare for the NumPy 1.22.4 release.
+  * #21547: MAINT: Skip tests that fail on PyPy.
+
+- changes from version 1.22.3:
+  * #21048: MAINT: Use "3.10" instead of "3.10-dev" on travis.
+  * #21106: TYP,MAINT: Explicitly allow sequences of array-likes in
+     np.concatenate
+  * #21137: BLD,DOC: skip broken ipython 8.1.0
+  * #21138: BUG, ENH: np._from_dlpack: export correct device
+     information
+  * #21139: BUG: Fix numba DUFuncs added loops getting picked up
+  * #21140: BUG: Fix unpickling an empty ndarray with a non-zero
+     dimension...
+  * #21141: BUG: use ThreadPoolExecutor instead of ThreadPool
+  * #21142: API: Disallow strings in logical ufuncs
+  * #21143: MAINT, DOC: Fix SciPy intersphinx link
+  * #21148: BUG,ENH: np._from_dlpack: export arrays with any strided
+     size-1...
+
+- changes from version 1.22.2:
+  * #20842: BLD: Add NPY_DISABLE_SVML env var to opt out of SVML
+  * #20843: BUG: Fix build of third party extensions with
+     Py_LIMITED_API
+  * #20844: TYP: Fix pyright being unable to infer the real and
+     imag...
+  * #20845: BUG: Fix comparator function signatures
+  * #20906: BUG: Avoid importing numpy.distutils on import
+     numpy.testing
+  * #20907: MAINT: remove outdated mingw32 fseek support
+  * #20908: TYP: Relax the return type of np.vectorize
+  * #20909: BUG: fix f2py's define for threading when building with
+     Mingw
+  * #20910: BUG: distutils: fix building mixed C/Fortran extensions
+  * #20912: DOC,TST: Fix Pandas code example as per new release
+  * #20935: TYP, MAINT: Add annotations for flatiter.__setitem__
+  * #20936: MAINT, TYP: Added missing where typehints in
+     fromnumeric.pyi
+  * #20937: BUG: Fix build_ext interaction with non numpy extensions
+  * #20938: BUG: Fix missing intrinsics for windows/arm64 target
+  * #20945: REL: Prepare for the NumPy 1.22.2 release.
+  * #20982: MAINT: f2py: don't generate code that triggers
+     -Wsometimes-uninitialized.
+  * #20983: BUG: Fix incorrect return type in reduce without initial
+     value
+  * #20984: ENH: review return values for PyArray_DescrNew
+  * #20985: MAINT: be more tolerant of setuptools >= 60
+  * #20986: BUG: Fix misplaced return.
+  * #20992: MAINT: Further small return value validation fixes
+
+- changes from version 1.22.1:
+  * #20702: MAINT, DOC: Post 1.22.0 release fixes.
+  * #20703: DOC, BUG: Use pngs instead of svgs.
+  * #20704: DOC:Fixed the link on user-guide landing page
+  * #20714: BUG: Restore vc141 support
+  * #20724: BUG: Fix array dimensions solver for multidimensional
+     arguments...
+  * #20725: TYP: change type annotation for __array_namespace__ to
+     ModuleType
+  * #20726: TYP, MAINT: Allow ndindex to accept integer tuples
+  * #20757: BUG: Relax dtype identity check in reductions
+  * #20763: TYP: Allow time manipulation functions to accept date and
+     timedelta...
+  * #20768: TYP: Relax the type of ndarray.__array_finalize__
+  * #20795: MAINT: Raise RuntimeError if setuptools version is too
+     recent.
+  * #20796: BUG, DOC: Fixes SciPy docs build warnings
+  * #20797: DOC: fix OpenBLAS version in release note
+  * #20798: PERF: Optimize array check for bounded 0,1 values
+  * #20805: BUG: Fix that reduce-likes honor out always (and live in
+     the...
+  * #20806: BUG: array_api.argsort(descending=True) respects
+     relative...
+  * #20807: BUG: Allow integer inputs for pow-related functions in
+     array_api
+  * #20814: DOC: Refer to NumPy, not pandas, in main page
+  * #20815: DOC: Update Copyright to 2022 [License]
+  * #20819: BUG: Return correctly shaped inverse indices in array_api
+     set...
+
+- changes from version 1.22.0:
+  * long list of changes
+    https://github.com/numpy/numpy/blob/main/doc/changelog/1.22.0-changelog.rst
+
+-------------------------------------------------------------------
 Sun May 29 18:15:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.21.6:
