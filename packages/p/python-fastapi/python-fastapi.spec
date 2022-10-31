@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-fastapi
-Version:        0.85.0
+Version:        0.85.1
 Release:        0
 Summary:        FastAPI framework
 License:        MIT
@@ -31,6 +31,9 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pydantic >= 1.0.0
 Requires:       python-starlette >= 0.13.6
+# PATCH-FIX-UPSTREAM Update starlette to 0.21.0
+# https://github.com/tiangolo/fastapi/pull/5471
+Patch0:         fastapi-support-startlette-0.21.0.patch
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Flask >= 1.1.2}
@@ -50,7 +53,7 @@ BuildRequires:  %{python_module pytest >= 5.4.3}
 BuildRequires:  %{python_module python-jose}
 BuildRequires:  %{python_module python-multipart >= 0.0.5}
 BuildRequires:  %{python_module requests >= 2.24.0}
-BuildRequires:  %{python_module starlette >= 0.20.4}
+BuildRequires:  %{python_module starlette >= 0.21.0}
 BuildRequires:  %{python_module trio}
 # /SECTION
 %python_subpackages
@@ -60,6 +63,7 @@ Python FastAPI framework.
 
 %prep
 %setup -q -n fastapi-%{version}
+%autopatch -p1
 
 # Requires orjson
 rm tests/test_default_response_class.py

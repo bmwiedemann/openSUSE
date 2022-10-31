@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 31 08:45:35 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Update to 0.85.1
+  * Fix support for strings in OpenAPI status codes: default, 1XX, 
+    2XX, 3XX, 4XX, 5XX.
+  * Docs: Add WayScript x FastAPI Tutorial to External Links section
+
+- Add support for Starlette 0.21.0:
+  * Add patch fastapi-support-startlette-0.21.0.patch
+
+-------------------------------------------------------------------
 Thu Sep 15 14:24:19 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - added new build dependencies
