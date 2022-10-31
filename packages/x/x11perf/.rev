@@ -80,4 +80,19 @@
     <comment></comment>
     <requestid>934226</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b40d3355729b52789e6509aac0b41641</srcmd5>
+    <version>1.6.2</version>
+    <time>1667212549</time>
+    <user>dimstar_suse</user>
+    <comment>- fixed URL for tarball in specfile 
+
+- Update to version 1.6.2 
+  * tests: Skip trapezoids for unsupported XRender formats
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * Variable scope reductions as recommended by cppcheck
+  * Stop casting return value of malloc() and calloc()</comment>
+    <requestid>1032414</requestid>
+  </revision>
 </revisionlist>

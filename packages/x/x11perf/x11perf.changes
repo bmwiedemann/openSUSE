@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Oct 31 09:42:02 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- fixed URL for tarball in specfile 
+
+-------------------------------------------------------------------
+Sat Oct 29 17:12:21 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.6.2 
+  * tests: Skip trapezoids for unsupported XRender formats
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * Variable scope reductions as recommended by cppcheck
+  * Stop casting return value of malloc() and calloc()
+
+-------------------------------------------------------------------
 Wed May 12 21:15:46 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - modernize spec file: 
