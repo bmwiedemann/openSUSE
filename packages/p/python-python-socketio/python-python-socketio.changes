@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct 28 20:49:21 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 5.7.2 
+  * Fixed disconnect implementation when using a message queue #1002 (commit)
+  * Fixed remote async disconnects via message queue #1003 (commit)
+  * Support optional payloads in msgpack implementation #981 (commit) (thanks Cromfel!)
+  * Recommend ASGI integration for Sanic in Documentation (commit)
+
+-------------------------------------------------------------------
 Thu Oct  6 22:50:37 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to Release 5.7.1 - 2022-07-15
