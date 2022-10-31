@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 29 12:00:35 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 20221022:
+  * --latest-line chops line length at terminal width.
+  * Determine max command length faster on Microsoft Windows.
+
+-------------------------------------------------------------------
 Thu Sep 29 19:15:36 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 20220922:
