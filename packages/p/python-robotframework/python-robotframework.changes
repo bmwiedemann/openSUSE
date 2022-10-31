@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Oct 29 00:32:45 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 6.0.0 
+  Most important enhancements
+  * Localization
+  * Enhancements to using keywords with embedded arguments
+  * Enhancements to keyword namespaces
+  * Enhancements to automatic argument conversion
+  * Enhancements for setting keyword and test tags
+  * Possibility to disable continue-on-failure mode
+  * start/end_keyword listener methods get more information about control structures
+  * Libdoc enhancements
+  * Performance enhancements for executing user keywords
+  * Python 3.11 support
+  Backwards incompatible changes
+  Deprecated features
+  * Force Tags and Default Tags settings
+  * Keywords in test case files having precedence over local keywords in resource files
+  * WITH NAME in favor of AS when giving alias to imported library
+  * Singular section headers like Test Case
+  * Using variables with embedded arguments so that value does not match custom pattern
+  * robot.utils.TRUE_STRINGS and robot.utils.FALSE_STRINGS
+  * Python 3.6 support
+
+-------------------------------------------------------------------
 Tue Oct 11 01:55:27 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 5.0.1:

@@ -31,4 +31,12 @@
 - Remove pointless BuildRequires on python</comment>
     <requestid>1009641</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>05ae0fe90fadd463254096738dada265</srcmd5>
+    <version>6.0</version>
+    <time>1667217869</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032438</requestid>
+  </revision>
 </revisionlist>
