@@ -15,12 +15,13 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %if ! %{defined _distconfdir}
   %define _distconfdir %{_datadir}
 %endif
 
 Name:           os-update
-Version:        1.1
+Version:        1.2
 Release:        0
 Summary:        Updates the system regular to stay current and safe
 License:        GPL-2.0-or-later
