@@ -44,4 +44,12 @@
   * Fix CairSVGConverter::convert for usage on Windows</comment>
     <requestid>934529</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d97047f02ee93b8e9fd7a663b55b7f04</srcmd5>
+    <version>1.2.1</version>
+    <time>1667213236</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032428</requestid>
+  </revision>
 </revisionlist>
