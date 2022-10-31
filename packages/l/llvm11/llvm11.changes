@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Oct 30 14:09:39 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Add lldb-swig-4.1.0-build-fix.patch: Fix build with Swig 4.1.0.
+
+-------------------------------------------------------------------
 Sat Sep  3 15:15:10 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Make sure we keep -DNDEBUG. At some point %{optflags} must have

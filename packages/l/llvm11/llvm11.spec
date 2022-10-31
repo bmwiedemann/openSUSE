@@ -140,6 +140,8 @@ Patch33:        CMake-Look-up-target-subcomponents-in-LLVM_AVAILABLE_LIBS.patch
 Patch34:        compiler-rt-Remove-cyclades-inclusion-in-sanitizer.patch
 # Fix SystemZ stack temporary overflow. (https://reviews.llvm.org/D97514)
 Patch35:        llvm-systemz-args-handling.patch
+# Fix build with Swig 4.1.0: backport of upstream commits 81fc5f7909a4, f0a25fe0b746. (gh#llvm/llvm-project#58018)
+Patch38:        lldb-swig-4.1.0-build-fix.patch
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -604,6 +606,7 @@ popd
 %if %{with lldb}
 pushd lldb-%{_version}.src
 %patch11 -p1
+%patch38 -p2
 popd
 %endif
 
