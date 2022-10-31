@@ -1,7 +1,7 @@
 #
 # spec file for package ssdp-responder
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           ssdp-responder
-Version:        1.7
+Version:        1.9
 Release:        0
 Summary:        SSDP responder for Linux
 License:        ISC
@@ -26,7 +26,7 @@ Group:          Productivity/Networking/Other
 URL:            https://github.com/troglobit/ssdp-responder
 #Git-Clone:     https://github.com/troglobit/ssdp-responder.git
 Source:         https://github.com/troglobit/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:	harden_ssdpd.service.patch
+Patch0:         harden_ssdpd.service.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 %{?systemd_requires}
@@ -40,8 +40,7 @@ Windows uses to present the icon when an InternetGatewayDevice is
 announced.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 autoreconf -fiv

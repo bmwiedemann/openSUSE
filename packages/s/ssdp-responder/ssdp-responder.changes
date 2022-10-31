@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct 31 06:33:00 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.9:
+  * Add testing command line options to sscp-scan
+  * Fix TOCTOU issue with caching of UUID
+- includes changes form 1.8:
+  * improvements to UUID cache directory handling
+  * Fix avahi-daemon (mDNS) conflict
+
+-------------------------------------------------------------------
 Tue Nov 23 15:22:24 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
