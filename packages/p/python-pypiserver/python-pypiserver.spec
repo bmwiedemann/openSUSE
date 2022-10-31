@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %bcond_without python2
 Name:           python-pypiserver
-Version:        1.5.0
+Version:        1.5.1
 Release:        0
 Summary:        Minimal PyPI server for uploading & downloading packages with pip/easy_install
 License:        MIT
