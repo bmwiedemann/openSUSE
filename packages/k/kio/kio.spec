@@ -1,7 +1,7 @@
 #
 # spec file for package kio
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,12 +36,14 @@ Source2:        frameworks.keyring
 %endif
 # PATCH-FIX-OPENSUSE kio_help-fallback-to-kde4-docs.patch -- allow kio_help to see into kde4 documentation, needed especially for khelpcenter5
 Patch0:         kio_help-fallback-to-kde4-docs.patch
+# PATCH-FIX-UPSTREAM kio-mr1008-fix-webdav.diff kde#460717, https://invent.kde.org/frameworks/kio/-/merge_requests/1008
+Patch1:         https://invent.kde.org/frameworks/kio/-/commit/501091059ae9fc2877d621cdbc0fb3c5ece56dae.diff#/kio-mr1008-fix-webdav.diff
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 # gcc7 is too old for std::transform_reduce
 %if 0%{?suse_version} == 1500
-BuildRequires:  gcc10-c++
 BuildRequires:  gcc10-PIE
+BuildRequires:  gcc10-c++
 %endif
 BuildRequires:  kf5-filesystem
 BuildRequires:  krb5-devel
