@@ -318,4 +318,15 @@
     https://www.php.net/ChangeLog-8.php#8.1.11</comment>
     <requestid>1007073</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>3eb64fd726742776e2f75af785e0d7e4</srcmd5>
+    <version>8.1.12</version>
+    <time>1667306478</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 8.1.12
+  * This is a security release.
+  * fixed: CVE-2022-31630, CVE-2022-37454
+  * https://www.php.net/ChangeLog-8.php#8.1.12</comment>
+    <requestid>1032538</requestid>
+  </revision>
 </revisionlist>
