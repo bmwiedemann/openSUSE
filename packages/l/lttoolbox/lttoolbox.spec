@@ -19,7 +19,7 @@
 Name:           lttoolbox
 %define lname   liblttoolbox3
 Summary:        Toolbox for lexical processing and morphological analysis
-Version:        3.7.0
+Version:        3.7.1
 Release:        0
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Other

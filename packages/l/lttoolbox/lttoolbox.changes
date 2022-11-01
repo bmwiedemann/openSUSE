@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  1 09:02:40 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.7.1
+  * Write directly to output stream; Don't hexify single char16_t.
+
+-------------------------------------------------------------------
 Fri Oct 28 17:58:32 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.7.0
