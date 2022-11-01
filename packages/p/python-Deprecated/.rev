@@ -65,4 +65,12 @@
   * run unit tests on Wrapt 1.13 (release candidate).</comment>
     <requestid>936117</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>6ac4ab4f5c4c7914154a0b29e776eb84</srcmd5>
+    <version>1.2.13</version>
+    <time>1667306474</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032520</requestid>
+  </revision>
 </revisionlist>

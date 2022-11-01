@@ -1,7 +1,7 @@
 #
 # spec file for package python-Deprecated
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-wrapt >= 1.10
 BuildArch:      noarch
+Provides:       python-deprecated = %{version}-%{release}
 %python_subpackages
 
 %description
@@ -54,6 +55,7 @@ you can use the ``@deprecated`` decorator.
 %files %{python_files}
 %doc CHANGELOG.rst README.md
 %license LICENSE.rst
-%{python_sitelib}/*
+%{python_sitelib}/deprecated
+%{python_sitelib}/Deprecated-%{version}*-info
 
 %changelog
