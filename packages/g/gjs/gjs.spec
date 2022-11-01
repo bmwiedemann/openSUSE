@@ -17,7 +17,7 @@
 
 
 Name:           gjs
-Version:        1.74.0
+Version:        1.74.1
 # FIXME # Disable tests for unstable 1.71.1 - Try tests again on next versionbump
 Release:        0
 Summary:        JavaScript bindings based on gobject-introspection and Mozilla

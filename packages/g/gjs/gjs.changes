@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 31 08:34:31 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.74.1:
+  + Closed bugs and merge requests:
+    - Problem calling promisified D-Bus wrappers with callback.
+    - docs:
+      . Fix link in issue template.
+      . Document Gio.FileEnumerator iteration.
+      . Fix Markdown formatting in README.MSVC.md.
+
+-------------------------------------------------------------------
 Wed Sep 21 05:15:05 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.74.0:
