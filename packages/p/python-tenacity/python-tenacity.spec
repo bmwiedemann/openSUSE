@@ -1,7 +1,7 @@
 #
 # spec file for package python-tenacity
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without  python2
 Name:           python-tenacity
-Version:        6.3.1
+Version:        8.0.1
 Release:        0
 Summary:        Python module for retrying code until it succeeeds
 License:        Apache-2.0
@@ -32,19 +30,12 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.9.0}
 BuildRequires:  %{python_module tornado}
 BuildRequires:  %{python_module typeguard}
+BuildRequires:  %{python_module typing-extensions}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-six >= 1.9.0
 Recommends:     python-tornado
 BuildArch:      noarch
-%if %{with python2}
-BuildRequires:  python2-futures >= 3.0
-BuildRequires:  python2-monotonic >= 0.6
-%endif
-%ifpython2
-Requires:       python-futures >= 3.0
-Requires:       python-monotonic >= 0.6
-%endif
 %python_subpackages
 
 %description
