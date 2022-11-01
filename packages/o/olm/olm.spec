@@ -1,5 +1,5 @@
 #
-# spec file for package olm
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 %global origname olm
 %global origlibname lib%{origname}
@@ -24,7 +23,7 @@
 %global descriptor An implementation of the Double Ratchet cryptographic ratchet \
 in C and C++, including an implementation of the Megolm cryptographic ratchet
 Name:           %{origname}
-Version:        3.2.12
+Version:        3.2.13
 Release:        0
 Summary:        Double Ratchet cryptographic library
 License:        Apache-2.0
