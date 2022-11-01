@@ -227,4 +227,12 @@
     <comment>- Update to release 0.77</comment>
     <requestid>979620</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>5a16d1bb9c243c0cc4eaa603982c02e9</srcmd5>
+    <version>0.78</version>
+    <time>1667306572</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.78</comment>
+    <requestid>1032546</requestid>
+  </revision>
 </revisionlist>
