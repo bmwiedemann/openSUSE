@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-jsbeautifier
-Version:        1.14.6
+Version:        1.14.7
 Release:        0
 Summary:        JavaScript unobfuscator and beautifier
 License:        MIT

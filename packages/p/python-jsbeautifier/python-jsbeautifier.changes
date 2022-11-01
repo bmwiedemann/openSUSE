@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 28 17:51:42 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to v1.14.7 
+  * Doc: Updates web browser implementation examples (#2107)
+  * HTML formatter breaks layout by introducing newlines (#1989)
+
+-------------------------------------------------------------------
 Thu Sep 29 14:11:29 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to v1.14.6
