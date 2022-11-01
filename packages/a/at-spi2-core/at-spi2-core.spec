@@ -45,6 +45,8 @@ BuildRequires:  pkgconfig(xtst)
 Requires:       dbus-1
 Provides:       at-spi2-atk-gtk2 = %{version}
 Obsoletes:      at-spi2-atk-gtk2 < %{version}
+# xprop is needed when using XWayland
+Requires:       (xprop if xwayland)
 
 %description
 AT-SPI is a general interface for applications to make use of the

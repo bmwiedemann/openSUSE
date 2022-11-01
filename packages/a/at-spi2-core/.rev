@@ -2585,4 +2585,12 @@
 </comment>
     <requestid>1004768</requestid>
   </revision>
+  <revision rev="99" vrev="2">
+    <srcmd5>0c7ade2402e331d8297d1f062680244d</srcmd5>
+    <version>2.46.0</version>
+    <time>1667306446</time>
+    <user>dimstar_suse</user>
+    <comment>- Ensure xprop is required when xwayland is installed. (forwarded request 1031971 from fcrozat)</comment>
+    <requestid>1032391</requestid>
+  </revision>
 </revisionlist>
