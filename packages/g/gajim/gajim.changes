@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Mon Oct 31 11:23:23 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.5.3:
+  * Allow to copy multiple messages.
+  * Accounts: Add setting for default workspace.
+  * Preferences: Add send_on_ctrl_enter setting.
+  * Add actions menu to Start Chat button.
+  * ExceptionDialog: Close dialog with ESC.
+  * ChatList: Show drafts.
+  * StartChat: Recognise input of xmpp uris.
+  * Workspaces: Add "Mark as read" menu item.
+  * Improve emoji completion.
+  * ACE: Enable reset button only for changed values.
+  * Avatar: Follow modernxmpps suggestions for color generation.
+  * Preferences: Add escape_key_closes to "Chat" section.
+  * Preferences: Reorder "Chat" settings and add a "General"
+    section.
+  * Preferences: Move show_chatstate_in_banner to ACE settings.
+  * Remove confirm_paste_image setting.
+  * Remove setting to hide the chat banner.
+  * GroupchatRoster: Don’t load roster when its hidden.
+  * Emoji completion: Abort early if max menu entry count reached.
+  * Disable loading of GUPnPIgd library.
+  * Remote: Make get_status() return correct status when offline.
+  * Plugins: Use correct gettext import.
+  * Make strings translatable.
+  * Enable emoji chooser action.
+  * AvatarBox: Only react to clicks for GroupchatContacts.
+  * Remote: Return True for change_status.
+  * ChatActionProcessor: Popdown on focus out event.
+  * Avatar placeholders: Correctly use the first grapheme as the
+    "letter".
+  * Fix quoting /me messages.
+  * StartChat: Don’t use jid argument for global dialogue.
+  * Try leaving group chat only if account is online.
+  * AccountPage: Disable profile button when not connected.
+  * MUC: Allow changing subject if there is none.
+  * PluginsWindow: Fix typo in plugin tooltip.
+  * PluginManager: Block plugins which have been integrated into
+    Gajim.
+  * MessageInputTextView: Fix correction mode when switching chats.
+  * AdHoc: Make MultiLineLabel selectable.
+  * Settings: Check if account is connected before trying to get
+    context.
+  * Styling: Various link parsing issues.
+  * Send message icon: Increase line width and make icon symbolic.
+  * Accounts: Use account label for disable confirmation.
+  * AccountBadge: Update colours correctly.
+  * Update account label when changing label setting.
+  * SearchView: Scroll to to when resetting.
+  * Notification: Draw avatar correctly on scale > 1.
+  * Preview: Don’t fail hard when parsing fragments.
+  * PreviewAudio: Increase update rate for seek bar.
+  * AccountPage: Disable Excute Command button by default.
+  * Client: Load trusted certificates on connect().
+  * ChatList: Don’t increase in width while drag and drop.
+  * Roster: Always show workspace when starting chat.
+  * WorkspaceSidebar: Don't increase in width while drag and drop.
+  * ChatFunctionPage: React to connection changes.
+  * Preview: Set user-agent for session.
+  * SearchView: Limit displayed results to account_id of contact.
+  * Don’t fail when disabling accounts.
+- Drop 0001-remove-upnp.patch: applied upstream.
+
+-------------------------------------------------------------------
 Thu Oct 27 22:08:06 UTC 2022 - I. Petrov <ico@dante.tk>
 
 - Bump python-nbxmpp version requirement to 3.2.4.

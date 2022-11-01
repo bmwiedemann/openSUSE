@@ -443,4 +443,12 @@
     <comment> </comment>
     <requestid>1032335</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>5591524ee0e4f1edfc9c7d2c4ca9708e</srcmd5>
+    <version>1.5.3</version>
+    <time>1667306545</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5.3.</comment>
+    <requestid>1032508</requestid>
+  </revision>
 </revisionlist>
