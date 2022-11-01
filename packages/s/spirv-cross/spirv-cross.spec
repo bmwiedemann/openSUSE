@@ -19,7 +19,7 @@
 %define _libpkg libspirv-cross-c-shared0
 %define __builder ninja
 Name:           spirv-cross
-Version:        1.3.216.0
+Version:        1.3.231.0
 Release:        0
 Summary:        Tool and library for SPIR-V reflection and disassembly
 License:        Apache-2.0 OR MIT
@@ -29,7 +29,7 @@ Source0:        https://github.com/KhronosGroup/SPIRV-Cross/archive/sdk-%version
 BuildRequires:  c++_compiler
 BuildRequires:  cmake >= 3
 BuildRequires:  ninja
-BuildRequires:  pkgconfig
+BuildRequires:  pkg-config
 
 %description
 SPIRV-Cross is a tool and library designed for parsing and

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Oct 24 20:13:48 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.3.231.0
+  * GLSL: disable row major load around on GLES.
+  * GLSL: added an option to disable row-major-load workaround.
+  * GLSL: Implement GL_EXT_mesh_shader.
+  * GLSL: Implement task shaders.
+  * GLSL: Account for ES sampler1D to sampler2D promotion in
+    textureSize.
+  * MSL: Report unsupported 64-bit atomics.
+  * Add reflection support for shader record buffers.
+
+-------------------------------------------------------------------
 Wed Jun 15 17:05:14 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.3.216.0
