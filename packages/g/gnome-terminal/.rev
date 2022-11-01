@@ -2368,4 +2368,12 @@
     <comment></comment>
     <requestid>1009282</requestid>
   </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>065a2b154f2b8789894fd1afb2355c66</srcmd5>
+    <version>3.46.3</version>
+    <time>1667306435</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 1031530 from iznogood)</comment>
+    <requestid>1032383</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Oct 27 11:11:44 UTC 2022 - bjorn.lie@gmail.com
+
+- Update to version 3.46.3:
+  * client: More env vars to filter.
+  * desktop: Use Preferences icon.
+  * icons: Add separate icons for Preferences.
+  * l10n: Remove mjw from LINGUAS.
+  * metainfo: Remove XML namespaces.
+  * prefs:
+    - Use different wm class.
+    - Use new icon.
+  * profile: Use correct schema source for the profiles list
+    schema.
+  * Updated translations.
+
+-------------------------------------------------------------------
 Sun Oct 09 10:47:16 UTC 2022 - bjorn.lie@gmail.com
 
 - Update to version 3.46.2:

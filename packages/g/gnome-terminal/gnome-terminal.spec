@@ -18,7 +18,7 @@
 
 %bcond_without  nautilus_extension
 Name:           gnome-terminal
-Version:        3.46.2
+Version:        3.46.3
 Release:        0
 Summary:        GNOME Terminal
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
