@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 28 17:50:00 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to v9.1.1
+  * Change requirement to build[virtualenv] as workaround for pypa/build#266.
+- Update to v9.1.0
+  * Prefer build to pep517 for loading package metadata.
+
+-------------------------------------------------------------------
 Mon Aug 29 19:50:09 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Remove stray python3.inv

@@ -17,15 +17,15 @@
 
 
 Name:           python-jaraco.packaging
-Version:        9.0.0
+Version:        9.1.1
 Release:        0
 Summary:        Supplement packaging Python releases
 License:        MIT
 URL:            https://github.com/jaraco/jaraco.packaging
 Source:         https://files.pythonhosted.org/packages/source/j/jaraco.packaging/jaraco.packaging-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module build}
 BuildRequires:  %{python_module importlib-metadata if %python-version < 3.8}
-BuildRequires:  %{python_module pep517}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 56}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
@@ -37,7 +37,7 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module rst.linker >= 1.9}
 # /SECTION
-Requires:       python-pep517
+Requires:       python-build
 %if 0%{?python_version_nodots} < 38
 Requires:       python-importlib-metadata
 %endif
