@@ -25,7 +25,7 @@
 %define _fillupdir %_localstatedir/adm/fillup-templates
 %endif
 Name:           varnish
-Version:        7.1.1
+Version:        7.2.0
 Release:        0
 Summary:        Accelerator for HTTP services
 License:        BSD-2-Clause
@@ -38,7 +38,6 @@ Source5:        varnish.logrotate
 Source7:        varnish.service
 Source8:        varnishlog.service
 Source9:        varnish_reload_vcl
-Patch1:         varnish-5.1.2-add-fallthrough-comments.patch
 Patch2:         uninit.patch
 BuildRequires:  libxslt-devel
 BuildRequires:  ncurses-devel
