@@ -7,4 +7,12 @@
     <comment>required for cookiecutter https://build.opensuse.org/request/show/969173</comment>
     <requestid>969831</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e480fe28f9b9c05571c8ac578ff9c6f7</srcmd5>
+    <version>4.3.0</version>
+    <time>1667306526</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032478</requestid>
+  </revision>
 </revisionlist>

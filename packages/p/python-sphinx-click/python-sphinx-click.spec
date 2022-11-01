@@ -18,20 +18,20 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-sphinx-click
-Version:        3.1.0
+Version:        4.3.0
 Release:        0
 Summary:        Sphinx extension that automatically documents click applications
 License:        MIT
 URL:            https://github.com/stephenfin/sphinx-click
 Source:         https://files.pythonhosted.org/packages/source/s/sphinx_click/sphinx-click-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module pbr}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-BuildRequires: python-rpm-generators
+BuildRequires:  python-rpm-generators
 %{?python_enable_dependency_generator}
 %python_subpackages
 
