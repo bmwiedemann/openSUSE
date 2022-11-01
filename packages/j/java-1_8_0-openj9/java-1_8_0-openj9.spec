@@ -26,18 +26,18 @@
 %global abs2rel perl -e %{script}
 %global syslibdir       %{_libdir}
 # Standard JPackage naming and versioning defines.
-%global updatever       345
-%global buildver        b01
+%global updatever       352
+%global buildver        b08
 %global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk8/archive
-%global root_revision   f2d89babf53797cf7884ec3eead7014d52cc2f63
-%global root_branch     v0.33.0-release
+%global root_revision   b213334935844e882a8ac821c5c9fa3170e4834e
+%global root_branch     v0.35.0-release
 %global omr_repository  https://github.com/eclipse/openj9-omr/archive
-%global omr_revision    b58aa2708c095efadf522f67aaef9f7de2a7cbc7
-%global omr_branch      v0.33.0-release
+%global omr_revision    85a21674fdf30403b75c3000a4dc10605ca52ba2
+%global omr_branch      v0.35.0-release
 %global openj9_repository https://github.com/eclipse/openj9/archive
-%global openj9_revision 04a55b45b3a0d75813335fda0fb8703819690ee7
-%global openj9_branch   v0.33.0-release
-%global openj9_tag      openj9-0.33.0
+%global openj9_revision e04a7f6c1c365a6b375deb5f641c72309b170b95
+%global openj9_branch   v0.35.0-release
+%global openj9_tag      openj9-0.35.0
 # priority must be 6 digits in total
 %global priority        1801
 %global javaver         1.8.0
@@ -913,6 +913,9 @@ fi
 %{_jvmdir}/%{jredir}/lib/security/policy/limited/local_policy.jar
 %{_jvmdir}/%{jredir}/lib/security/policy/unlimited/US_export_policy.jar
 %{_jvmdir}/%{jredir}/lib/security/policy/unlimited/local_policy.jar
+%ifarch x86_64
+%{_jvmdir}/%{jredir}/lib/security/nss.fips.cfg
+%endif
 
 %files devel
 %dir %{_jvmdir}/%{sdkdir}/bin

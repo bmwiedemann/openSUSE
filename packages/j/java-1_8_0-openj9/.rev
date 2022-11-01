@@ -119,4 +119,12 @@
     <comment>July 2022 CPU</comment>
     <requestid>995891</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>03ee9d618e3b747ad7ba997b6427bac5</srcmd5>
+    <version>1.8.0.352</version>
+    <time>1667306508</time>
+    <user>dimstar_suse</user>
+    <comment>Security fixes</comment>
+    <requestid>1032468</requestid>
+  </revision>
 </revisionlist>
