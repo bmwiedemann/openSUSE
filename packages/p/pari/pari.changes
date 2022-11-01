@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Oct 27 13:41:40 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to release 2.15.0
+  * The GP language:
+  * Notion of DebugLevel "domains" that allow to finely control
+    diagnostics.
+  * The syntax setdebug(dom, val) and default(def, val) are now
+    recognized in the GPRC file.
+  * Linear Algebra:
+  * qflll() now implements most LLL modes in fplll (fast, dpe and
+    heuristic), allowing large speedups. Directly and in the many
+    functions that use the LLL algorithm.
+  * New GP function snfrank(), a utility function returning
+    q-ranks from Smith Normal Forms
+  * Elementary Number Theory:
+  * New GP function: harmonic(), to compute generalized harmonic
+    numbers
+  * Reworked Euler numbers, analogously to Benoulli's: eulervec()
+    is now faster and caches computed values, and a new GP
+    function eulerreal() computes floating point approximations.
+  * Elliptic Curves: New module to compute the Mordell-Weil group
+    of rational elliptic curves
+  * See https://pari.math.u-bordeaux.fr/pub/pari/unix/pari-2.15.0.changelog
+    for details.
+
+-------------------------------------------------------------------
 Wed Apr 13 18:58:43 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to release 2.13.4

@@ -232,4 +232,12 @@
     <comment>- Update to release 2.13.4</comment>
     <requestid>970168</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>508b7421749657ca938292fb891a251a</srcmd5>
+    <version>2.15.0</version>
+    <time>1667306594</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.15.0</comment>
+    <requestid>1032584</requestid>
+  </revision>
 </revisionlist>

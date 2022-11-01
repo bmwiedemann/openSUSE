@@ -25,10 +25,10 @@ power series, algebraic numbers, and transcendental functions.\
 # See
 # http://pari.math.u-bordeaux.fr/archives/pari-dev-1211/msg00006.html
 # for details on the SO versioning.
-%global sover 7
+%global sover 8
 %global lname   libpari-gmp-tls%sover
 Name:           pari
-Version:        2.13.4
+Version:        2.15.0
 Release:        0
 Summary:        Computer Algebra System for computations in Number Theory
 License:        GPL-2.0-only
