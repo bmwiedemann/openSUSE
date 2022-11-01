@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 24 14:56:10 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Fix CVE-2022-3647, crash in sigsegvHandler debug function
+  (CVE-2022-3647, bsc#1204633)
+  * cve-2022-3647.patch
+
+-------------------------------------------------------------------
 Wed Sep 21 20:36:11 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - Update to version 7.0.5 (boo#1203638)

@@ -40,6 +40,9 @@ Source10:       https://raw.githubusercontent.com/redis/redis-hashes/master/READ
 Patch0:         %{name}-conf.patch
 Patch3:         reproducible.patch
 Patch4:         ppc-atomic.patch
+# PATCH-FIX-UPSTREAm bsc#1204633 danilo.spinella@suse.com CVE-2022-3647
+# crash in sigsegvHandler debug function
+Patch5:         cve-2022-3647.patch
 BuildRequires:  jemalloc-devel
 BuildRequires:  libopenssl-devel >= 1.1.1
 BuildRequires:  pkgconfig
@@ -67,6 +70,7 @@ echo "`grep -F %{name}-%{version}.tar.gz %{SOURCE10} | cut -d' ' -f4`  %{SOURCE0
 %patch0
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 %build
 export HOST=OBS # for reproducible builds
