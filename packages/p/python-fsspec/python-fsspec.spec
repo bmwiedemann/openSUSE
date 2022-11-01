@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -27,7 +26,7 @@
 %endif
 %define         skip_python2 1
 Name:           python-fsspec%{psuffix}
-Version:        2022.8.2
+Version:        2022.10.0
 Release:        0
 Summary:        Filesystem specification package
 License:        BSD-3-Clause
@@ -40,23 +39,23 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  fuse
 BuildRequires:  python-rpm-macros
-%if 0%{?python_version_nodots} < 38
-Requires:       python-importlib_metadata
-%endif
 Requires:       fuse
 Suggests:       python-adlfs
 Suggests:       python-aiohttp
-Suggests:       python-pygit2
-Suggests:       python-dropboxdrivefs
-Suggests:       python-dropbox
 Suggests:       python-dask
 Suggests:       python-distributed
+Suggests:       python-dropbox
+Suggests:       python-dropboxdrivefs
 Suggests:       python-gcsfs
 Suggests:       python-paramiko
+Suggests:       python-pygit2
 Suggests:       python-requests
 Suggests:       python-s3fs
 Suggests:       python-smbprotocol
 BuildArch:      noarch
+%if 0%{?python_version_nodots} < 38
+Requires:       python-importlib_metadata
+%endif
 %if %{with test}
 BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module cloudpickle}
