@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Oct 28 20:55:25 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 2022.5 
+
+   * IANA 2022e
+   Squashed 'tz/' changes from 0fc8f915a..16bd7a384
+    c4eb3fcf2 Release 2022e
+    842ad565d Add Jordan URL from Brian Inglis
+    3aa74b7f7 Jordan to switch from +02/+03 with DST to plain +03
+    59aa97e8e Syria to switch from +02/+03 with DST to plain +03
+    f29068291 Prefer UT for whole-hour UT transitions
+    7f860c0fe Circa-1922 Mexico fixes
+    ff2e2a09a Treat 1931 changes in Mexico as DST
+
+-------------------------------------------------------------------
 Thu Oct 13 17:34:52 UTC 2022 - Axel Braun <axel.braun@gmx.de>
 
 - update to 2022.4
