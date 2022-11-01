@@ -1,7 +1,7 @@
 #
 # spec file for package mimic
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ License:        BSD-3-Clause AND MIT-CMU
 Group:          Productivity/Text/Convertors
 URL:            https://mimic.mycroft.ai
 Source:         https://github.com/MycroftAI/mimic/archive/%{version}.tar.gz
+Patch0:         mimic-HTS_Free.patch
 BuildRequires:  automake
 BuildRequires:  gcc
 BuildRequires:  libtool
@@ -63,7 +64,7 @@ reads it out loud to create a voice.
 This package contains the headers and development libraries for mimic.
 
 %prep
-%setup -q -n %{name}1-%{version}
+%autosetup -p1 -n %{name}1-%{version}
 
 %build
 ./autogen.sh

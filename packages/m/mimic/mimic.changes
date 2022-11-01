@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 31 14:45:25 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add mimic-HTS_Free.patch: use HTS_free instead of libc's free()
+  function (https://github.com/MycroftAI/mimic1/issues/231).
+
+-------------------------------------------------------------------
 Fri Apr  9 07:18:55 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Set disk constraints for all archs
