@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 31 14:27:52 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Limit to catch < 3: not compatible yet to Catch 3.
+
+-------------------------------------------------------------------
 Mon Jun  6 16:55:41 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Add procmon-add_missing_include.patch to fix Factory build

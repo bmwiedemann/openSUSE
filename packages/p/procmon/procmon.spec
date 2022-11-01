@@ -32,7 +32,7 @@ Patch1:         procmon-no_return_in_nonvoid.patch
 Patch2:         procmon-add_missing_include.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  pkgconfig(catch2)
+BuildRequires:  (pkgconfig(catch2) with pkgconfig(catch2) < 3)
 BuildRequires:  pkgconfig(libbcc)
 BuildRequires:  pkgconfig(libedit)
 BuildRequires:  pkgconfig(libelf)
