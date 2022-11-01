@@ -17,7 +17,7 @@
 
 
 Name:           cdecl
-Version:        11.15
+Version:        12.0
 Release:        0
 Summary:        C/C++ function declaration translator
 License:        GPL-3.0-or-later
@@ -25,7 +25,7 @@ Group:          Development/Languages/C and C++
 URL:            https://github.com/paul-j-lucas/cdecl/
 
 Source:         https://github.com/paul-j-lucas/cdecl/releases/download/cdecl-%version/cdecl-%version.tar.gz
-Patch1:         unbreak-gnulib.diff
+Patch1:         0001-build-resolve-compile-failure-due-to-improper-attrib.patch
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  ncurses-devel

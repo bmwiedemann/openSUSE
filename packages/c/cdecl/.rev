@@ -458,4 +458,12 @@
     <comment>- Update to release 11.15</comment>
     <requestid>977073</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>98e6d25dff6616dbeecd417f2ba67c53</srcmd5>
+    <version>12.0</version>
+    <time>1667306921</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 12</comment>
+    <requestid>1032681</requestid>
+  </revision>
 </revisionlist>

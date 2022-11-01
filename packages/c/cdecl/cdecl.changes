@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Nov  1 10:24:44 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 12
+  * Added suggestions to error messages in certain cases when a
+    keyword is expected, for example:
+  * The placeholder name of C2X has been changed to C23.
+  * The TERM environment variable is no longer considered when
+    determining whether color should be used in output. Now, all
+    that matters is whether the output stream is connected to a
+    TTY.
+  * Previously declared types in pseudo-Engilsh are now checked
+    to ensure they're not being used as objects.
+- Add 0001-build-resolve-compile-failure-due-to-improper-attrib.patch
+- Delete unbreak-gnulib.diff
+
+-------------------------------------------------------------------
 Fri May 13 15:37:51 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 11.15
