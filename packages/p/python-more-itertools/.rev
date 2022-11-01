@@ -351,4 +351,12 @@
   * This library is now marked for Python 3.10 compatibility in PyPI (thanks to chayim)</comment>
     <requestid>1004179</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>236e75d0cc23a1d0095f18d79995f0dd</srcmd5>
+    <version>9.0.0</version>
+    <time>1667306470</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032501</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Oct 28 18:32:55 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 9.0.0 
+  * Potentially breaking changes
+   grouper() no longer accepts an integer as its first argument. Previously this raised a DeprecationWarning.
+   collate() has been removed. Use the built-in heapq.merge() instead.
+   windowed() now yields nothing when its iterable is empty.
+   This library now advertises support for Python 3.7+.
+  * New functions
+   constrained_batches()
+   batched() (from the Python itertools docs)
+   polynomial_from_roots() (from the Python itertools docs)
+   sieve() (from the Python itertools docs)
+  * Other changes
+   Some documentation issues were fixed (thanks to nanouasyn)
+
+-------------------------------------------------------------------
 Fri Sep 16 18:26:20 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.14.0:

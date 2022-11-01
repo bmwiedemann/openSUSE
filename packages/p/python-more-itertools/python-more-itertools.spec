@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-more-itertools
-Version:        8.14.0
+Version:        9.0.0
 Release:        0
 Summary:        More routines for operating on iterables, beyond itertools
 License:        MIT
