@@ -578,4 +578,12 @@
     <comment>- Add the missing python-jaraco.classes dependency (bsc#1203659)</comment>
     <requestid>1009752</requestid>
   </revision>
+  <revision rev="51" vrev="4">
+    <srcmd5>c04845195f3762476683ec7c3cc5bef4</srcmd5>
+    <version>23.9.3</version>
+    <time>1667306426</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032377</requestid>
+  </revision>
 </revisionlist>

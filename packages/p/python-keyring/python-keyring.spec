@@ -31,7 +31,6 @@ Summary:        System keyring service access from Python
 License:        MIT AND Python-2.0
 URL:            https://github.com/jaraco/keyring
 Source:         https://files.pythonhosted.org/packages/source/k/keyring/keyring-%{version}.tar.gz
-Patch0:         support-new-importlib.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 56}
@@ -78,6 +77,8 @@ sed -i '/^#!/d' keyring/cli.py
 
 %if %{with test}
 %check
+# https://github.com/jaraco/keyring/issues/526
+rm -r keyring.egg-info
 %pytest
 %endif
 

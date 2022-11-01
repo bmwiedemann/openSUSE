@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct 30 11:35:42 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Drop support-new-importlib.patch
+  * "New" importlib 5.0 dropped deprecated indexing support
+    gh#python/importlib_metadata#405
+  * See also gh#jaraco/keyring#526
+
+-------------------------------------------------------------------
 Fri Sep 23 20:57:12 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Clean specfile from setuptools cruft, this is a PEP517 package
