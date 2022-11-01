@@ -31,18 +31,17 @@
 %bcond_with test
 %endif
 Name:           python-wheel%{psuffix}
-Version:        0.38.0
+Version:        0.37.1
 Release:        0
 Summary:        A built-package format for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pypa/wheel
 Source:         https://github.com/pypa/wheel/archive/%{version}.tar.gz#/wheel-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
-BuildRequires:  %{python_module setuptools >= 57.0.0}
+BuildRequires:  %{python_module setuptools >= 40.9.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
-Requires:       python-setuptools >= 57.0.0
+Requires:       python-setuptools >= 40.9.0
 %if %{with libalternatives}
 Requires:       alts
 BuildRequires:  alts
@@ -107,7 +106,7 @@ export PYTHONDONTWRITEBYTECODE=1
 %doc docs/news.rst README.rst
 %license LICENSE.txt
 %python_alternative %{_bindir}/wheel
-%{python_sitelib}/wheel-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/wheel-%{version}*-info
 %{python_sitelib}/wheel/
 %endif
 

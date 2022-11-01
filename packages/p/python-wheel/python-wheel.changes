@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct 29 15:57:58 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Revert to 0.37.1
+  * v0.38.0 has been yanked from PyPI
+
+-------------------------------------------------------------------
 Sat Oct 22 16:24:25 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:
