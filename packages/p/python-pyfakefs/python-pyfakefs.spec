@@ -27,7 +27,7 @@
 %endif
 %define skip_python2 1
 Name:           python-pyfakefs%{psuffix}
-Version:        4.7.0
+Version:        5.0.0
 Release:        0
 Summary:        Fake file system that mocks the Python file system modules
 License:        Apache-2.0
