@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 31 08:29:10 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add rofi-launcher provides to allow coexistence with
+  rofi-wayland.
+
+-------------------------------------------------------------------
 Mon Aug 22 08:33:24 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.7.5:

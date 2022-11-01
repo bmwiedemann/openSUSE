@@ -22,8 +22,8 @@ Release:        0
 Summary:        A window switcher, run dialog and dmenu replacement
 License:        MIT
 Group:          System/GUI/Other
-URL:            https://davedavenport.github.io/rofi/
-Source:         https://github.com/DaveDavenport/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
+URL:            https://github.com/davatorium/rofi
+Source:         https://github.com/davatorium/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Patch0:         xdg-terminal.patch
 # Required version 0.11 is not yet in TW BuildRequires:  check-devel
 BuildRequires:  bison
@@ -41,6 +41,9 @@ BuildRequires:  xcb-util-devel
 BuildRequires:  xcb-util-wm-devel
 BuildRequires:  xcb-util-xrm-devel
 Requires:       xdg-utils
+# To allow coexistence with rofi-wayland
+Conflicts:      rofi-wayland
+Provides:       rofi-launcher
 
 %description
 rofi is a popup window switcher roughly based on "superswitcher",
