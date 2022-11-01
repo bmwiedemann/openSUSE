@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 29 01:20:39 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 0.7.21 
+  * Update package dependencies
+  * Update jinja2 package and dev-dependencies.
+  * Update Poetry's package dependencies
+- Clean up SPEC file to remove rpmlint warnings.
+
+-------------------------------------------------------------------
 Fri Oct  7 16:13:30 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 0.7.20 

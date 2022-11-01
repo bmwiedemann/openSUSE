@@ -17,11 +17,10 @@
 
 
 %define binaries stackalytics2sh mozilla2sh mailmap2sh grimoirelab2sh gitdm2sh eclipse2sh sortinghat sh2mg mg2sh
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-sortinghat
-Version:        0.7.20
+Version:        0.7.21
 Release:        0
 Summary:        A tool to manage identities
 License:        GPL-3.0-only
@@ -31,10 +30,12 @@ Source0:        https://files.pythonhosted.org/packages/source/s/sortinghat/sort
 # PATCH-FIX-UPSTREAM no_decl_class_registry.patch gh#chaoss/grimoirelab-sortinghat#579 mcepl@suse.com
 # make the package compatible with SQLAlchemy 1.4.*
 Patch0:         no_decl_class_registry.patch
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Jinja2
+Requires:       python-Jinja2 >= 3.0.1
 Requires:       python-PyMySQL >= 0.7.0
 Requires:       python-PyYAML >= 3.12
 Requires:       python-SQLAlchemy >= 1.2
@@ -51,7 +52,8 @@ BuildRequires:  %{python_module PyMySQL >= 0.7.0}
 BuildRequires:  %{python_module PyYAML >= 3.12}
 BuildRequires:  %{python_module SQLAlchemy >= 1.2}
 BuildRequires:  %{python_module httpretty >= 0.9.5}
-BuildRequires:  %{python_module pandas >= 0.17}
+BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pandas >= 0.25.3}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil >= 2.6.0}
 BuildRequires:  %{python_module requests >= 2.9}
@@ -90,14 +92,19 @@ into unique identities (and maybe affiliate them).
 sed -i -e "s/\('pandoc'\|'wheel',\)//" -e 's/==/>=/' setup.py
 
 %build
-%python_build
+%pyproject_wheel
+%{python_expand sed -i -e '1s@/usr/bin/.*python.*$@%{$__python}@' \
+    sortinghat/misc/*.py sortinghat/bin/*.py
+}
 
 %install
-%python_install
+%pyproject_install
 for b in %{binaries}; do
   %python_clone -a %{buildroot}%{_bindir}/$b
 done
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%{python_expand rm -r %{buildroot}%{$python_sitelib}/sortinghat/{bin,misc}
+%fdupes %{buildroot}%{$python_sitelib}
+}
 
 %check
 exit_code=0
@@ -132,12 +139,12 @@ sed -i -e "s/'3306'/self.kwargs['port']/" tests/test_cmd_init.py
 exit $exit_code
 
 %post
-for b in %{binaries}; do
+for b in mg2sh sh2mg sortinghat eclipse2sh gitdm2sh grimoirelab2sh mailmap2sh mozilla2sh stackalytics2sh; do
   %python_install_alternative $b
 done
 
 %postun
-for b in %{binaries}; do
+for b in mg2sh sh2mg sortinghat eclipse2sh gitdm2sh grimoirelab2sh mailmap2sh mozilla2sh stackalytics2sh; do
   %python_uninstall_alternative $b
 done
 
@@ -152,6 +159,7 @@ done
 %python_alternative %{_bindir}/mailmap2sh
 %python_alternative %{_bindir}/mozilla2sh
 %python_alternative %{_bindir}/stackalytics2sh
-%{python_sitelib}/*
+%{python_sitelib}/sortinghat
+%{python_sitelib}/sortinghat-%{version}*-info
 
 %changelog
