@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 31 11:23:23 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 3.2.5:
+  * Add support for XEP-0421.
+  * MUC: Check correctly for muc subject.
+  * Client: Don’t override modified certification errors.
+
+-------------------------------------------------------------------
 Sat Oct  8 14:46:00 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 3.2.4:
