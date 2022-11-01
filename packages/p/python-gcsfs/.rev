@@ -99,4 +99,16 @@
     <comment></comment>
     <requestid>1009270</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>81fa26ee718c70e290186f84dcaa3f3e</srcmd5>
+    <version>2022.10.0</version>
+    <time>1667306608</time>
+    <user>dimstar_suse</user>
+    <comment>HAS TO TOGETHER WITH https://build.opensuse.org/request/show/1010953
+
+- Update to 2022.10.0:
+  - bump fsspec to 2022.10.0
+</comment>
+    <requestid>1032641</requestid>
+  </revision>
 </revisionlist>

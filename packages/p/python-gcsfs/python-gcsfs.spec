@@ -17,7 +17,7 @@
 
 
 Name:           python-gcsfs
-Version:        2022.8.2
+Version:        2022.10.0
 Release:        0
 Summary:        Filesystem interface over GCS
 License:        BSD-3-Clause
