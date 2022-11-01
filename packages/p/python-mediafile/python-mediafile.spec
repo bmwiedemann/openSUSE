@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-mediafile
-Version:        0.9.0
+Version:        0.10.0
 Release:        0
 Summary:        Handles low-level interfacing for files' tags Wraps Mutagen to
 License:        MIT
