@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 31 02:20:35 UTC 2022 - william.brown@suse.com
+
+- Update to version 0.9.0+0:
+  * v0.9.0
+  * use pkcs1 crate to parse RSAPrivateKey ASN.1 object
+  * qa: Add workflow that runs `cargo vet --locked`
+  * qa: Import `cargo vet` audits from Firefox and zcashd
+  * qa: Add `crypto-reviewed` criteria or `cargo vet`
+  * qa: `cargo vet init`
+
+-------------------------------------------------------------------
 Tue Aug 09 03:56:26 UTC 2022 - william.brown@suse.com
 
 - Set minimum rust requirement to 1.59
