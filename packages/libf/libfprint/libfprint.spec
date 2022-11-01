@@ -29,7 +29,7 @@
 %endif
 
 Name:           libfprint
-Version:        1.94.4
+Version:        1.94.5
 Release:        0
 Summary:        Library for fingerprint reader support
 License:        LGPL-2.1-or-later
