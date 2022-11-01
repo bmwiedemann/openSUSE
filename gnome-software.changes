@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 26 01:55:06 UTC 2022 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add gnome-software-disable-offline-update.patch: Disable offline
+  update in SLE and openSUSE Leap(bsc#944832).
+
+-------------------------------------------------------------------
 Fri Oct 21 16:11:16 UTC 2022 - Richard Brown <rbrown@suse.com>
 
 - Split out packagekit (and related appstream) plugins into a
