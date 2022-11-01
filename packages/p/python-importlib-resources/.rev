@@ -63,4 +63,12 @@ It does NOT conflict with python38 standard library.</comment>
 </comment>
     <requestid>1003114</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>58e52fa30bea53849af309b6d01d88e6</srcmd5>
+    <version>5.10.0</version>
+    <time>1667306428</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032378</requestid>
+  </revision>
 </revisionlist>
