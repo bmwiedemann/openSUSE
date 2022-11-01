@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-lesscpy
-Version:        0.15.0
+Version:        0.15.1
 Release:        0
 Summary:        Lesscss compiler
 License:        MIT
