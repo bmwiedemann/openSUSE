@@ -42,12 +42,12 @@ Source99:       baselibs.conf
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libjpeg8-devel
-BuildRequires:  nasm
 BuildRequires:  pkgconfig(dav1d)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(rav1e) >= 0.5.0
-BuildRequires:  pkgconfig(zlib)
 
 %if %{with aom}
 BuildRequires:  pkgconfig(aom) >= 2.0.0
