@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Oct 28 17:58:49 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to v1.1.3 
+  Various fixes and refactors
+  * Add user to cache filename; better handle cache load/save failures by @klauer in #1179
+  * refactor: add 'usedforsecurity=False' arg to hashlib.md5 usage by @cquick01 in #1190
+  * Create lark/grammars/init.py by @chanicpanic in #1171
+  * Adjust imports for Python 3.11 by @The-Compiler in #1140
+  * Fix for issue #1173 by @erezsh in #1198
+  * Add match stmt support to python.lark by @joseph-e-k in #1123
+  * Added match stmt support to python.lark by @MegaIng in #1016
+  * Linting to fix minor issues by @Erotemic in #1128
+  * Simplify lexer: Use Match.lastgroup instead of lastindex by @erezsh in #1129
+  * Fix confusing import in examples by @JonasLoos in #1138
+  * Move iter_subtrees_topdown into standalone by @camgunz in #1137
+  * Fix 1146: use the class's get instead of the instance's get by @MegaIng in #1147
+  * fix: remove Python 2 legacy packaging code by @henryiii in #1148
+  * Fix for PR #1149 by @erezsh in #1150
+  * Old link for sppf is no longer valid. Point to web archive instead. by @patrickhuber in #1159
+  * Fix ForestToPyDotVisitor by @chanicpanic in #1167
+  * Close file-like objects to address ResourceWarning. by @shawnbrown in #1183
+  * Minor adjustments to PR #1179 by @erezsh in #1189
+  * Adjustments for PR #1152 by @erezsh in #1191
+  * Remove trailing whitespace by @bcr in #1196
+
+-------------------------------------------------------------------
 Sun Oct  9 10:06:19 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Rename to python-lark 
