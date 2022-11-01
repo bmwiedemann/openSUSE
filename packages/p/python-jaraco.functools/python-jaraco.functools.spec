@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-jaraco.functools
-Version:        3.5.1
+Version:        3.5.2
 Release:        0
 Summary:        Tools to work with functools
 License:        MIT
