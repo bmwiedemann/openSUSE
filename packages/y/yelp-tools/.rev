@@ -249,4 +249,12 @@
     <comment>GNOME 42 - ready for impact</comment>
     <requestid>963646</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>45dcbec59d6c12944ebe2673afd8745d</srcmd5>
+    <version>42.1</version>
+    <time>1667306451</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release</comment>
+    <requestid>1032405</requestid>
+  </revision>
 </revisionlist>

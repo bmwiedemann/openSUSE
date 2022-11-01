@@ -17,7 +17,7 @@
 
 
 Name:           yelp-tools
-Version:        42.0
+Version:        42.1
 Release:        0
 Summary:        Collection of utilities to help create documentation
 License:        GPL-2.0-or-later
@@ -54,7 +54,7 @@ wraps things up in a developer-friendly way.
 
 %files
 %license COPYING
-%doc AUTHORS NEWS README
+%doc AUTHORS NEWS README.md
 %{_bindir}/yelp-build
 %{_bindir}/yelp-check
 %{_bindir}/yelp-new
