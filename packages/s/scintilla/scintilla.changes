@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Oct 31 10:33:57 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to versoin 5.3.1:
+  * Added SCI_STYLESETINVISIBLEREPRESENTATION to make it easier to
+    edit around invisible text (Feature #1453).
+  * Removed NotifyLexerChanged notification from DocWatcher. This
+    is a private interface but could be used by independent
+    platform layers and was exposed by ScintillaDocument in the Qt
+    implementation of ScintillaEdit.
+  * Draw lines more consistently in SC_PHASES_TWO and
+    SC_PHASES_ONE modes by clipping drawing to just the line
+    rectangle.
+  * Draw SC_MARK_BAR markers underneath other markers as they
+    often cover multiple lines for change history and other
+    markers mark individual lines.
+  * Enlarge point and point top indicators and scale to be larger
+    with larger text.
+  * Suppress change history background line shading when printing.
+    Bug #2358.
+  * Make SCI_LINESCROLL more accurate when width of space not
+    integer (Bug #2357).
+  * On GTK, fix bug where there were too many or too few lines
+    when wrapping (Bug #2349). 
+
+-------------------------------------------------------------------
 Fri Sep  9 13:42:37 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.3.0:
