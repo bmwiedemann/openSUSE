@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Oct 28 17:56:18 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 2.9.0 
+  Chore
+  * migrate to setup.cfg (#666) (5f7ae483)
+  * ci:
+    testing with Python3.10 and ZK 3.5.10, 3.6.3, 3.7.1 (#659) (bd627973)
+    better specify how to trigger Github Actions (#658) (1ea097d5)
+    Replace Travis with Github Actions (8eb462f2)
+  * Doc
+    fix simple typo, untill -> until (85f1b5fc)
+  * Features
+    core: make DNS resolution error retriable (#631) (e0810242)
+  * Bug Fixes
+    core:
+    use selectors to poll connections instead of raw select in threading,gevent,eventlet (#656) (4042a850)
+    do not allow responses to choke request and ping processing (89e06603)
+  * recipe:
+    fix deadlock in r/w lock recipe (#650) (9bb84994, closes #649)
+    fix deprecation warning from threading.Event (569c89cd)
+
+-------------------------------------------------------------------
 Tue May 17 13:05:14 UTC 2022 - pgajdos@suse.com
 
 - drop test dependencies from BuildRequires, we do not plan to

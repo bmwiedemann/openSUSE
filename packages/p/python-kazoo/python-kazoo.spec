@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-kazoo
-Version:        2.8.0
+Version:        2.9.0
 Release:        0
 Summary:        Higher Level Zookeeper Client
 License:        Apache-2.0
