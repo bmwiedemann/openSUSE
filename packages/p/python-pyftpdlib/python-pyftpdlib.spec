@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-pyftpdlib
-Version:        1.5.6
+Version:        1.5.7
 Release:        0
 Summary:        Asynchronous FTP server library for Python
 License:        MIT
