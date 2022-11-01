@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define         skip_python2 1
 Name:           python-streamz
 Version:        0.6.4
 Release:        0
@@ -25,13 +23,16 @@ Summary:        Tool to build continuous data pipelines
 License:        BSD-3-Clause
 URL:            https://github.com/python-streamz/streamz/
 Source:         https://files.pythonhosted.org/packages/source/s/streamz/streamz-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM  streamz-pr455-ci-fixes.patch gh#python-streamz/streamz#455
+Patch0:         streamz-pr455-ci-fixes.patch
 # PATCH-FIX-OPENSUSE streamz-opensuse-python-exec.patch -- call tests with correct flavor
-Patch0:         streamz-opensuse-python-exec.patch
-# PATCH-FIX-OPENSUSE New distributed now requires to call cleanup with loop
-Patch1:         support-new-distributed.patch
+Patch1:         streamz-opensuse-python-exec.patch
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+# Setuptools is a runtime requirement because of pkg_resources usage
+Requires:       python-setuptools
 Requires:       python-six
 Requires:       python-toolz
 Requires:       python-tornado

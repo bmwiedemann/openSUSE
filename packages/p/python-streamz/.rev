@@ -78,4 +78,12 @@
 - Ignore graph tests due to weird failures.</comment>
     <requestid>999153</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>aca570cac6e334b95eba5e37e019c30b</srcmd5>
+    <version>0.6.4</version>
+    <time>1667306614</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032653</requestid>
+  </revision>
 </revisionlist>
