@@ -35,6 +35,9 @@ URL:            https://docs.python-requests.org/
 Source:         https://files.pythonhosted.org/packages/source/r/requests/requests-%{version}.tar.gz
 # PATCH-FIX-SUSE: do not hardcode versions in setup.py/requirements
 Patch0:         requests-no-hardcoded-version.patch
+# PATCH-FIX-UPSTREAN: Allow charset normalizer >=2 and <4
+# - https://github.com/psf/requests/commit/c57f1f0ca10e61771b459c857182c23626607312
+Patch1:         requests-allow-charset-normalizer-3.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

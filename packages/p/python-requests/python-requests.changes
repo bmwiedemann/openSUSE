@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 31 07:43:29 UTC 2022 - David Anes <david.anes@suse.com>
+
+- allow using newest version of charset-normalizer (3.0+) 
+  * requests-allow-charset-normalizer-3.patch
+
+-------------------------------------------------------------------
 Thu Sep 29 14:01:56 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - requires python 3.7 or newer
