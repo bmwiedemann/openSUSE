@@ -27,4 +27,12 @@
 - add pycodestyle-indent-size.patch and use pypi tarball to avoid poetry</comment>
     <requestid>882503</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>278007bf17f715143c7d6db812aeb1f6</srcmd5>
+    <version>4.1.2</version>
+    <time>1667306528</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032481</requestid>
+  </revision>
 </revisionlist>
