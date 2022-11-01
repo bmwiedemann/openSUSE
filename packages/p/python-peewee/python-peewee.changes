@@ -1,5 +1,5 @@
 -------------------------------------------------------------------
-Tue Oct  4 22:59:19 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+Fri Oct 28 19:52:59 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 3.15.3
   Add scalars() query method (complements scalar()), roughly equivalent to writing [t[0] for t in query.tuples()].
@@ -7,6 +7,9 @@ Tue Oct  4 22:59:19 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
   Fix and remove some flaky test assertions with Sqlite INSERT + RETURNING.
   Fix innocuous failing Sqlite test on big-endian machines.
   View commits
+
+-------------------------------------------------------------------
+Tue Oct  4 22:59:19 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 3.15.2
   Fix bug where field-specific conversions were being applied to the pattern used for LIKE / ILIKE operations. Refs #2609
