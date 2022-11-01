@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 31 06:19:21 UTC 2022 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Update gdm-sysconfig-settings.patch: Fix gdm doesn't start
+  if /etc/sysconfig/displaymanager is missing (bsc#1204578).
+
+-------------------------------------------------------------------
 Wed Oct  5 13:42:58 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Move dbus system.d conf file to /usr (bsc#1204052)

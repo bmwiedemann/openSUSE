@@ -2,7 +2,7 @@ Index: gdm-43.0/common/gdm-settings-system-backend.c
 ===================================================================
 --- /dev/null
 +++ gdm-43.0/common/gdm-settings-system-backend.c
-@@ -0,0 +1,369 @@
+@@ -0,0 +1,372 @@
 +/* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 8 -*-
 + *
 + * Copyright (C) 2008 Hans Petter Jansson <hpj@copyleft.no>
@@ -368,6 +368,9 @@ Index: gdm-43.0/common/gdm-settings-system-backend.c
 +{
 +        GObject *object;
 +
++        if (!g_file_test ("/etc/sysconfig/displaymanager", G_FILE_TEST_IS_REGULAR))
++                return NULL;
++
 +        object = g_object_new (GDM_TYPE_SETTINGS_SYSTEM_BACKEND, NULL);
 +
 +        return GDM_SETTINGS_BACKEND (object);
@@ -445,11 +448,13 @@ Index: gdm-43.0/common/gdm-settings.c
  
  struct _GdmSettings
  {
-@@ -198,6 +199,8 @@ gdm_settings_reload (GdmSettings *settin
+@@ -198,6 +199,10 @@ gdm_settings_reload (GdmSettings *settin
          if (backend)
                  settings->backends = g_list_prepend (NULL, backend);
  
-+        settings->backends = g_list_prepend (settings->backends, gdm_settings_system_backend_new ());
++        backend = gdm_settings_system_backend_new ();
++        if (backend)
++                settings->backends = g_list_prepend (settings->backends, backend);
 +
          backend = gdm_settings_desktop_backend_new (GDM_RUNTIME_CONF);
          if (backend)

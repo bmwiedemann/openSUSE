@@ -1901,4 +1901,13 @@
     <comment></comment>
     <requestid>1011146</requestid>
   </revision>
+  <revision rev="248" vrev="3">
+    <srcmd5>6ceb6e59be19030dfc6348810d82cffe</srcmd5>
+    <version>43.0</version>
+    <time>1667306442</time>
+    <user>dimstar_suse</user>
+    <comment>- Update gdm-sysconfig-settings.patch: Fix gdm doesn't start
+  if /etc/sysconfig/displaymanager is missing (bsc#1204578). (forwarded request 1032366 from xiaoguang_wang)</comment>
+    <requestid>1032387</requestid>
+  </revision>
 </revisionlist>
