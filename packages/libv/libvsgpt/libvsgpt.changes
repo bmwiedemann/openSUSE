@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 31 17:18:16 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20221029
+  * Recognize partition type 0xf as Extended Container as well
+
+-------------------------------------------------------------------
 Mon Aug  8 11:37:44 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Add forced symvers
