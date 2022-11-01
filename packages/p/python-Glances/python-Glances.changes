@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 31 11:35:40 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to version 3.3.0.2
+  * Password files in same configuration dir in effect #2143
+  * Fail to load config file on Python 3.10 #2176
+
+-------------------------------------------------------------------
 Mon Oct 17 09:25:55 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - Update to version 3.3.0
