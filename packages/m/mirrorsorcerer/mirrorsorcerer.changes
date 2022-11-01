@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 01 01:41:21 UTC 2022 - william.brown@suse.com
+
+- Update to version 0.1.1~0:
+  * Improve mirrorsorcerer unit file
+  * Add the CF front to replaceable to undo some user issues
+
+-------------------------------------------------------------------
 Thu Oct 13 22:33:09 UTC 2022 - william.brown@suse.com
 
 - Update to version 0.1.0~23:
