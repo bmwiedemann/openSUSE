@@ -1,7 +1,7 @@
 #
 # spec file for package crash
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -62,9 +62,9 @@ URL:            https://crash-utility.github.io/
 Summary:        Crash utility for live systems; netdump, diskdump, LKCD or mcore dumpfiles
 License:        GFDL-1.2-only AND GPL-3.0-or-later
 Group:          Development/Tools/Debuggers
-Version:        7.3.0
+Version:        7.3.1
 Release:        0
-Source:         https://github.com/crash-utility/crash/archive/7.3.0.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/crash-utility/crash/archive/7.3.1.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        http://ftp.gnu.org/gnu/gdb/gdb-7.6.tar.gz
 Source2:        crash_whitepaper-%{whitepaper_version}.tar.bz2
 Source3:        README.SUSE
@@ -97,31 +97,10 @@ Patch24:        %{name}-SLE15-SP1-Fix-for-PPC64-kernel-virtual-address-translati
 Patch27:        %{name}-Define-fallback-PN_XNUM.patch
 Patch29:        eppic-remove-duplicate-symbols.patch
 Patch30:        %{name}-enable-zstd-support.patch
-# PATCH-FIX-UPSTREAM - https://github.com/crash-utility/crash/commit/4badc6229c69f5cd9da7eb7bdf400a53ec6db01a.patch
-Patch46:        %{name}-xen-pvops.patch
-# PATCH-FIX-UPSTREAM - https://github.com/crash-utility/crash/commit/cf0c8d10e1870d89b39f40382634db51aa8fcf2c.patch
-Patch47:        %{name}-mod-fix-module-object-file-lookup.patch
-Patch48:        0001-Fix-for-kmem-s-S-option-on-Linux-5.7-and-later-kerne.patch
-Patch49:        0002-memory-Add-support-for-SECTION_TAINT_ZONE_DEVICE-fla.patch
-Patch50:        0003-memory-Fix-for-kmem-n-option-to-display-NID-correctl.patch
-Patch51:        0004-defs.h-Fix-the-value-of-TIF_SIGPENDING-macro.patch
-Patch52:        0005-Fix-waitq-command-for-Linux-4.13-and-later-kernels.patch
-Patch53:        0006-Handle-task_struct-state-member-changes-for-kernels-.patch
-Patch54:        0007-arm64-rename-ARM64_PAGE_OFFSET_ACTUAL-to-ARM64_FLIP_.patch
-Patch55:        0008-arm64-assign-page_offset-with-VA_BITS-kernel-configu.patch
-Patch56:        0009-arm64-use-dedicated-bits-to-record-the-VA-space-layo.patch
-Patch57:        0010-arm64-implement-switchable-PTOV-VTOP-for-kernels-5.1.patch
-Patch58:        0011-diskdump-Fail-readmem-early-if-dump-is-incomplete.patch
-Patch59:        0012-netdump-Permit-zero_excluded-for-incomplete-ELF-dump.patch
-Patch60:        0013-diskdump-Print-total-number-of-dumpable-pages.patch
-Patch61:        0014-diskdump-Introduce-read_pd.patch
-Patch62:        0015-x86_64-Fix-check-for-__per_cpu_offset-initialization.patch
-Patch63:        0016-arm64-Get-CPU-registers-from-ELF-notes-even-without-.patch
-Patch64:        0017-ppc64-Add-MMU-type-info-in-machdep-command.patch
-Patch65:        0018-diskdump-Add-support-for-reading-dumpfiles-compresse.patch
+Patch31:        %{name}-extensions-rule-for-defs.patch
 Patch66:        0019-Add-kernel-version-dependent-check-for-getting-lengt.patch
-Patch67:        0020-arm64-Use-VA_BITS-for-page_offset-calculation.patch
 Patch90:        %{name}-sial-ps-2.6.29.diff
+Patch99:        %{name}-usrmerge.patch
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  libeppic-devel
@@ -321,28 +300,7 @@ ln -s %{SOURCE1} .
 %patch24 -p1
 %endif
 %patch27 -p1
-%patch46 -p1
-%patch47 -p1
-%patch48 -p1
-%patch49 -p1
-%patch50 -p1
-%patch51 -p1
-%patch52 -p1
-%patch53 -p1
-%patch54 -p1
-%patch55 -p1
-%patch56 -p1
-%patch57 -p1
-%patch58 -p1
-%patch59 -p1
-%patch60 -p1
-%patch61 -p1
-%patch62 -p1
-%patch63 -p1
-%patch64 -p1
-%patch65 -p1
 %patch66 -p1
-%patch67 -p1
 %if %{have_snappy}
 %patch15 -p1
 %endif
@@ -354,6 +312,8 @@ ln -s %{SOURCE1} .
 #    base=`basename "$f"`
 #    cp "$f" "${base#%{name}-}"
 #done
+
+%patch31 -p1
 
 ## SIAL patches
 cd sial-scripts-%{scripts_version}
@@ -369,6 +329,9 @@ cd -
 cp %{S:3} .
 mkdir kbuild
 cp %{S:6} memory_driver
+%if 0%{?suse_version} > 1550
+%patch99 -p1
+%endif
 
 %build
 %ifarch ppc64le ppc64

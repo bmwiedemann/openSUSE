@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Tue Oct 25 22:03:56 UTC 2022 - David Mair <dmair@suse.com>
+
+- make of crash extensions was failing due to extension shared
+  objects depending on extension source file plus defs.h. defs.h is
+  hardlinked from the crash base source directory before the .so
+  make rule but make reports it doesn't know how to make requirement
+  defs.h. I added a rule for defs.h in the extensions Makefile that
+  creates defs.h the same way as was previously used but satisfies
+  the dependency resolution on demand then the make succeeded.
+  * crash-extensions-rule-for-defs.patch
+  (bsc#1204587)
+
+-------------------------------------------------------------------
+Tue Feb 15 19:48:44 UTC 2022 - David Mair <dmair@suse.com>
+
+- Update to crash 7.3.1
+ - Refresh
+   * eppic-switch-to-system-lib.patch
+ - Remove patches present in version upgrade
+   * 0001-Fix-for-kmem-s-S-option-on-Linux-5.7-and-later-kerne.patch
+   * 0002-memory-Add-support-for-SECTION_TAINT_ZONE_DEVICE-fla.patch
+   * 0003-memory-Fix-for-kmem-n-option-to-display-NID-correctl.patch
+   * 0004-defs.h-Fix-the-value-of-TIF_SIGPENDING-macro.patch
+   * 0005-Fix-waitq-command-for-Linux-4.13-and-later-kernels.patch
+   * 0006-Handle-task_struct-state-member-changes-for-kernels-.patch
+   * 0007-arm64-rename-ARM64_PAGE_OFFSET_ACTUAL-to-ARM64_FLIP_.patch
+   * 0008-arm64-assign-page_offset-with-VA_BITS-kernel-configu.patch
+   * 0009-arm64-use-dedicated-bits-to-record-the-VA-space-layo.patch
+   * 0010-arm64-implement-switchable-PTOV-VTOP-for-kernels-5.1.patch
+   * 0011-diskdump-Fail-readmem-early-if-dump-is-incomplete.patch
+   * 0012-netdump-Permit-zero_excluded-for-incomplete-ELF-dump.patch
+   * 0013-diskdump-Print-total-number-of-dumpable-pages.patch
+   * 0014-diskdump-Introduce-read_pd.patch
+   * 0015-x86_64-Fix-check-for-__per_cpu_offset-initialization.patch
+   * 0016-arm64-Get-CPU-registers-from-ELF-notes-even-without-.patch
+   * 0017-ppc64-Add-MMU-type-info-in-machdep-command.patch
+   * 0018-diskdump-Add-support-for-reading-dumpfiles-compresse.patch
+   * 0020-arm64-Use-VA_BITS-for-page_offset-calculation.patch
+   * crash-mod-fix-module-object-file-lookup.patch
+   * crash-xen-pvops.patch
+
+-------------------------------------------------------------------
+Thu Dec 16 10:05:36 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- UsrMerge: debug info is in /usr/lib/debug/usr/lib/modules
+  (boo#1190434, crash-usrmerge.patch)
+
+-------------------------------------------------------------------
 Wed Nov 10 12:52:42 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
 
 - Update to 7.3.0 (jsc#SLE-17360).
