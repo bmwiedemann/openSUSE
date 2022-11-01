@@ -601,4 +601,13 @@
     <comment>New stable release (forwarded request 1030525 from iznogood)</comment>
     <requestid>1030680</requestid>
   </revision>
+  <revision rev="75" vrev="2">
+    <srcmd5>1b58acdfe1e78849d9c80e48a9137463</srcmd5>
+    <version>43.1</version>
+    <time>1667306448</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gnome-maps-icu72.patch: fix comparisons in time tests
+  (glgo#GNOME/gnome-maps!261). (forwarded request 1031983 from mgorse)</comment>
+    <requestid>1032392</requestid>
+  </revision>
 </revisionlist>

@@ -26,6 +26,8 @@ URL:            https://wiki.gnome.org/Apps/Maps
 Source0:        https://download.gnome.org/sources/gnome-maps/43/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM gnome-maps-fix-dependency.patch -- Fix upstream dodo when setting dependency for libshumate
 Patch0:         gnome-maps-fix-dependency.patch
+# PATCH-FIX-UPSTREAM gnome-maps-icu72.patch mgorse@suse.com -- fix comparisons in time tests.
+Patch1:         gnome-maps-icu72.patch
 
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
