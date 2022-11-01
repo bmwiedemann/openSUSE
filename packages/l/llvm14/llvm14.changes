@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Oct 30 14:09:39 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Add lldb-swig-4.1.0-build-fix.patch: Fix build with Swig 4.1.0.
+
+-------------------------------------------------------------------
 Tue Sep 27 03:23:10 UTC 2022 - William Brown <william.brown@suse.com>
 
 - Add llvm-preserve-symbols-used.patch to resolve some symbols preserving

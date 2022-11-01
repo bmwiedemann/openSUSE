@@ -379,6 +379,8 @@ Patch35:        llvm-glibc-2-36.patch
 Patch36:        clang-test-xfail-gnuless-triple.patch
 # Cherry pick from rust llvm project (https://reviews.llvm.org/D127751)
 Patch37:        llvm-preserve-symbols-used.patch
+# Fix build with Swig 4.1.0: backport of upstream commits 81fc5f7909a4, f0a25fe0b746. (gh#llvm/llvm-project#58018)
+Patch38:        lldb-swig-4.1.0-build-fix.patch
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  cmake >= 3.13.4
 BuildRequires:  fdupes
@@ -845,6 +847,7 @@ popd
 %if %{with lldb}
 pushd lldb-%{_version}.src
 %patch11 -p1
+%patch38 -p2
 popd
 %endif
 
