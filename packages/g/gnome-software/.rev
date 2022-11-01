@@ -919,4 +919,13 @@ cd - (forwarded request 199127 from Zaitor)</comment>
     <comment>To Factory for MicroOS Desktop (forwarded request 1031279 from RBrownSUSE)</comment>
     <requestid>1031309</requestid>
   </revision>
+  <revision rev="100" vrev="3">
+    <srcmd5>07c56e81cd53fee7f2097b0f1d2f66ac</srcmd5>
+    <version>43.1</version>
+    <time>1667306437</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gnome-software-disable-offline-update.patch: Disable offline
+  update in SLE and openSUSE Leap(bsc#944832). (forwarded request 1031668 from JonathanKang)</comment>
+    <requestid>1032384</requestid>
+  </revision>
 </revisionlist>

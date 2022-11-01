@@ -29,6 +29,8 @@ Source0:        https://download.gnome.org/sources/gnome-software/43/%{name}-%{v
 %if 0%{?sle_version}
 # PATCH-FIX-OPENSUSE gnome-software-launch-gpk-update-viewer-for-updates.patch bsc#1077332 boo#1090042 sckang@suse.com -- Don't launch gnome-software when clicking the updates notification. Launch gpk-update-viewer instead.
 Patch0:         gnome-software-launch-gpk-update-viewer-for-updates.patch
+# PATCH-FIX-OPENSUSE gnome-software-disable-offline-update.patch bsc#944832 sckang@suse.com -- Disable offline update in SLE and openSUSE Leap
+Patch1:         gnome-software-disable-offline-update.patch
 %endif
 
 BuildRequires:  gtk-doc
