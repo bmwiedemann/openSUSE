@@ -8,4 +8,12 @@
 This package is eventually going to be needed by Kitty, when someone manages to fix the new versions.</comment>
     <requestid>919719</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>41c4c302f0f044410fd33d91af2c0924</srcmd5>
+    <version>0.6.3</version>
+    <time>1667306527</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032480</requestid>
+  </revision>
 </revisionlist>
