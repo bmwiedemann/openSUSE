@@ -24,6 +24,7 @@ License:        MIT
 Group:          Development/Languages/C and C++
 URL:            https://rr-project.org/
 Source:         https://github.com/mozilla/%{name}/archive/%{version}.tar.gz
+Patch0:         https://github.com/rr-debugger/rr/commit/2979c60e.patch
 BuildRequires:  capnproto
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -46,7 +47,7 @@ also provides efficient reverse execution under gdb. Set breakpoints and
 data watchpoints and quickly reverse-execute to where they were hit.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 # Fix incorrect path to bash

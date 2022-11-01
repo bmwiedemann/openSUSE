@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 31 14:09:34 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 2979c60e.patch: Avoid creating a struct with elements after
+  ethtool_sset_info's variable-length-array.
+
+-------------------------------------------------------------------
 Tue Aug 16 07:12:55 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- filelist fix for aarch64 
+- filelist fix for aarch64
 
 -------------------------------------------------------------------
 Mon Aug  8 06:59:55 UTC 2022 - Michael Vetter <mvetter@suse.com>
