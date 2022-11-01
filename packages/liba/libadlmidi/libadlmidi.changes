@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Oct 31 08:50:23 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.5.1
+  * Added an ability to disable the automatical arpeggio.
+  * Added an ability to set the count of loops (how many times to
+    play the song).
+  * Added an ability to disable/enable the playing of selected
+    MIDI channels.
+  * Fixed memory damages and crashes while playing XMI files.
+  * Added bank-specific MT32 defaults (to don't confuse XMI
+    playback between different games, works for AIL and IBK only,
+    and for WOPL if set at the header).
+  * Added the chip channels allocation mode option.
+  * Fixed the playback of multi-song XMI files.
+  * Added an ability to switch the XMI song on the fly.
+
+-------------------------------------------------------------------
 Mon May  3 15:17:19 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.5.0.1.1

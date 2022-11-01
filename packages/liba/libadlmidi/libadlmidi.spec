@@ -1,8 +1,8 @@
 #
 # spec file for package libadlmidi
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2019-2020, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2019-2022, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,14 +20,14 @@
 %define sover 1
 %define libname libADLMIDI
 Name:           libadlmidi
-%define hyphver 1.5.0.1-1
-Version:        1.5.0.1.1
+%define hyphver 1.5.1
+Version:        1.5.1
 Release:        0
 Summary:        A software MIDI synthesizer library with OPL3 emulation
 License:        GPL-3.0-only AND LGPL-3.0-only
 Group:          Development/Languages/C and C++
 URL:            https://github.com/Wohlstand/%{libname}
-Source:         %{URL}/archive/v%{hyphver}.tar.gz#/%{libname}-%{hyphver}.tar.gz
+Source:         https://github.com/Wohlstand/libADLMIDI/archive/refs/tags/v%{hyphver}.tar.gz#/%{libname}-%{hyphver}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
