@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-communication-identity
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
 Summary:        Microsoft Azure Communication Identity Service Client Library for Python
 License:        MIT
