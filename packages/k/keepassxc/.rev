@@ -393,4 +393,24 @@
     <comment>- update to 2.7.3:</comment>
     <requestid>1030845</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>0d9e0d2f8f56086c581df185db2949dd</srcmd5>
+    <version>2.7.4</version>
+    <time>1667306595</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.7.4:
+  - Changes
+    - Add 2 months expiration preset [#8687]
+    - CLI: Add Unicode support on Windows [#8618]
+  - Fixes
+    - Fix crash on macOS when unlocking database [#8676]
+    - Fix display of passwords in preview panel [#8633]
+    - Fix clicking links in entry preview panel [#8644]
+    - Prevent expired entries search if no results returned [#8643]
+    - Browser: Revert code causing connection problems [#8665]
+    - Browser: Fix socket file symbolic link on Linux [#8656]
+    - Flatpak: Fix launching browser proxy service [#8680]
+    - SSH Agent: Fix paegent support on Windows [#8619]</comment>
+    <requestid>1032580</requestid>
+  </revision>
 </revisionlist>
