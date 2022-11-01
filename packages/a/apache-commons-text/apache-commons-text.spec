@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package apache-commons-text
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -27,6 +27,8 @@ Group:          Development/Libraries/Java
 URL:            https://commons.apache.org/proper/commons-text/
 Source0:        http://archive.apache.org/dist/commons/text/source/commons-text-%{version}-src.tar.gz
 Source1:        %{name}-build.xml
+Source2:        http://archive.apache.org/dist/commons/text/source/commons-text-%{version}-src.tar.gz.asc
+Source3:        https://www.apache.org/dist/commons/KEYS#/%{name}.keyring
 BuildRequires:  ant
 BuildRequires:  apache-commons-lang3
 BuildRequires:  fdupes

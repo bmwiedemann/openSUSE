@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 31 19:49:13 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- add upstream signing key and verify source signature
+
+-------------------------------------------------------------------
 Fri Oct 14 12:47:40 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 1.10.0 (mitigation of bsc#1204284,

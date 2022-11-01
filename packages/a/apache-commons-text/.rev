@@ -31,4 +31,12 @@
     <comment>1.10.0, fixing bsc#1204284</comment>
     <requestid>1010926</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>53bd8a736b3d920800bd4ec14d4821da</srcmd5>
+    <version>1.10.0</version>
+    <time>1667306601</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032601</requestid>
+  </revision>
 </revisionlist>
