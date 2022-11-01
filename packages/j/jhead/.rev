@@ -199,4 +199,15 @@
     <comment></comment>
     <requestid>888169</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>a4733c96713d34cdce5002a39d9ebdbd</srcmd5>
+    <version>3.06.0.1</version>
+    <time>1667306549</time>
+    <user>dimstar_suse</user>
+    <comment>- security fix [bsc#1204409, CVE-2022-41751]
+  * arbitrary OS commands by placing them in a JPEG filename
+  * Added patch jhead-CVE-2022-41751-1.patch
+  * Added patch jhead-CVE-2022-41751-2.patch (forwarded request 1031580 from david.anes)</comment>
+    <requestid>1032523</requestid>
+  </revision>
 </revisionlist>

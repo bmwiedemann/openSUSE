@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 27 16:07:11 UTC 2022 - David Anes <david.anes@suse.com>
+
+- security fix [bsc#1204409, CVE-2022-41751]
+  * arbitrary OS commands by placing them in a JPEG filename
+  * Added patch jhead-CVE-2022-41751-1.patch
+  * Added patch jhead-CVE-2022-41751-2.patch
+
+-------------------------------------------------------------------
 Mon Apr 19 08:59:49 UTC 2021 - pgajdos@suse.com
 
 - version update to 3.06.0.1
