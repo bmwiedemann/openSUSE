@@ -33,17 +33,17 @@
 %define svrcorelib libsvrcore0
 
 Name:           389-ds
-Version:        2.3.0~git0.3db81913e
+Version:        2.3.0~git22.8fedec0
 Release:        0
 Summary:        389 Directory Server
 License:        GPL-3.0-or-later AND MPL-2.0
 Group:          Productivity/Networking/LDAP/Servers
 URL:            https://pagure.io/389-ds-base
-Source:         389-ds-base-%{version}.tar.xz
+Source:         389-ds-base-%{version}.tar.zst
 Source1:        extra-schema.tgz
 Source2:        LICENSE.openldap
-Source3:        vendor.tar.xz
-Source4:        supportutils-plugin-dirsrv.tar.xz
+Source3:        vendor.tar.zst
+Source4:        supportutils-plugin-dirsrv.tar.zst
 Source5:        70yast.ldif
 Source9:        %{name}-rpmlintrc
 Source10:       %{user_group}-user.conf
@@ -89,6 +89,7 @@ BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  zlib-devel
+BuildRequires:  zstd
 BuildRequires:  pkgconfig(icu-i18n)
 BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(libcap)

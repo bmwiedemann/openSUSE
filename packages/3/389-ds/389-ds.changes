@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Oct 21 03:26:08 UTC 2022 - william.brown@suse.com
+
+- Update to version 2.3.0~git22.8fedec0:
+  * Issue 5495 - RFE - skip dds during migration. (#5496)
+  * Issue 5491 - UI - Add rework and finish jpegPhoto functionality (#5492)
+  * Issue 5368 - Retro Changelog trimming does not work (#5486)
+  * Issue 5487 - Fix various issues with logconv.pl
+  * Issue 5476 - RFE - add memberUid read aci by default (#5477)
+  * Issue 5482 - lib389 - Can not enable replication with a mixed case suffix
+  * Issue 5478 - Random crash in connection code during server shutdown (#5479)
+  * Issue 3061 - RFE - Add password policy debug log level
+  * Issue 5302 - Release tarballs don't contain cockpit webapp
+  * Issue 5262 - high contention in find_entry_internal_dn on mixed load (#5264)
+
+-------------------------------------------------------------------
 Wed Sep 07 01:45:06 UTC 2022 - william.brown@suse.com
 
 - Update to version 2.3.0~git0.3db81913e:
