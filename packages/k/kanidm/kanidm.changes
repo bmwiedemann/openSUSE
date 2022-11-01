@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Nov  1 04:31:58 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Update to kanidm 1.1.0-alpha.10
+  * Management and tracking of authenticated sessions
+  * Make upgrade migrations more robust when upgrading over multiple versions
+  * Add support for service account tokens via ldap for extended read permissions
+  * Unix password management in web ui for posix accounts
+  * Support internal dynamic group entries
+  * Allow selection of name/spn in oidc claims
+  * Admin UI wireframes and basic elements
+  * TLS enforced as a requirement for all servers
+  * Support API service account tokens
+  * Make name rules stricter due to issues found in production
+  * Improve Oauth2 PKCE testing
+  * Add support for new password import hashes
+  * Allow configuration of trusting x forward for headers
+  * Components for account permission elevation modes
+  * Make pam\_unix more robust in high latency environments
+  * Add proc macros for test cases
+  * Improve authentication requests with cookie/token seperation
+  * Cleanup of expired authentication sessions
+  * Improved administration of password badlists
+
+-------------------------------------------------------------------
 Fri Sep 09 02:33:47 UTC 2022 - william.brown@suse.com
 
 - Update to version 1.1.0~alpha9~git6.b20d5312:
