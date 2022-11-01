@@ -24,6 +24,8 @@ Summary:        U2F host library for interacting with a U2F device over USB
 License:        Apache-2.0
 URL:            https://github.com/google/pyu2f/
 Source:         https://github.com/google/pyu2f/archive/refs/tags/%{version}.tar.gz#/pyu2f-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/google/pyu2f/pull/32 fix DeprecationWarning for logging and fake_filesystem
+Patch:          fix-deprecation-warning.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
@@ -40,7 +42,7 @@ BuildArch:      noarch
 U2F host library for interacting with a U2F device over USB.
 
 %prep
-%setup -q -n pyu2f-%{version}
+%autosetup -p1 -n pyu2f-%{version}
 sed -i 's/import mock/from unittest import mock/' pyu2f/tests/*_test.py pyu2f/tests/hid/*_test.py
 
 %build
