@@ -2416,7 +2416,7 @@ unsorted:
   - crash-doc 
   - crash-eppic 
   - crash-gcore 
-  - crash-kmp-default 
+  - crash-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - crash-kmp-pae: [i586] 
   - crawl 
   - crawl-data 
@@ -13095,7 +13095,7 @@ unsorted:
   - libpapi_6_0_0_1-hpc 
   - libparanoia1_0 
   - libparaview5_10 
-  - libpari-gmp-tls7 
+  - libpari-gmp-tls8 
   - libparlatype-devel 
   - libparlatype5 
   - libparpack2-openmpi1 
@@ -22417,6 +22417,7 @@ unsorted:
   - python310-asn1crypto 
   - python310-aspectlib 
   - python310-aspy.yaml 
+  - python310-ast-decompiler 
   - python310-asteval 
   - python310-astor 
   - python310-astral 
@@ -22947,6 +22948,7 @@ unsorted:
   - python310-confuse 
   - python310-construct 
   - python310-contexter 
+  - python310-contourpy 
   - python310-control 
   - python310-conu 
   - python310-convertdate 
@@ -24813,6 +24815,7 @@ unsorted:
   - python310-setproctitle 
   - python310-setuptools-declarative-requirements 
   - python310-setuptools-git 
+  - python310-setuptools-git-versioning: [i586] 
   - python310-setuptools-rust 
   - python310-setuptools-version-command 
   - python310-setuptools-wheel 
@@ -25659,6 +25662,7 @@ unsorted:
   - python38-asn1crypto 
   - python38-aspectlib 
   - python38-aspy.yaml 
+  - python38-ast-decompiler 
   - python38-asteval 
   - python38-astor 
   - python38-astral 
@@ -26204,6 +26208,7 @@ unsorted:
   - python38-construct 
   - python38-contexter 
   - python38-contextvars 
+  - python38-contourpy 
   - python38-control 
   - python38-conu 
   - python38-convertdate 
@@ -28147,6 +28152,7 @@ unsorted:
   - python38-setuptools 
   - python38-setuptools-declarative-requirements 
   - python38-setuptools-git 
+  - python38-setuptools-git-versioning: [i586] 
   - python38-setuptools-rust 
   - python38-setuptools-version-command 
   - python38-setuptools-wheel 
@@ -28998,6 +29004,7 @@ unsorted:
   - python39-asn1crypto 
   - python39-aspectlib 
   - python39-aspy.yaml 
+  - python39-ast-decompiler 
   - python39-asteval 
   - python39-astor 
   - python39-astral 
@@ -29542,6 +29549,7 @@ unsorted:
   - python39-construct 
   - python39-contexter 
   - python39-contextvars 
+  - python39-contourpy 
   - python39-control 
   - python39-conu 
   - python39-convertdate 
@@ -31486,6 +31494,7 @@ unsorted:
   - python39-setuptools 
   - python39-setuptools-declarative-requirements 
   - python39-setuptools-git 
+  - python39-setuptools-git-versioning: [i586] 
   - python39-setuptools-rust 
   - python39-setuptools-version-command 
   - python39-setuptools-wheel 
