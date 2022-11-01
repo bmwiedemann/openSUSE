@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Oct 30 10:51:21 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 4.96.4
+  * fix hash functions used for finding local tcp/udp IPCs
+  * Show copyright notice in --version output.
+  * Avoid some easy collissions for udp/udp6 sockets when hashing
+  * Changing the number of ipcbuckets to 4096
+  * obtain correct information of memory-mapped file.
+- drop remove-hostname.patch now upstream
+
+-------------------------------------------------------------------
 Mon Jul  4 13:53:11 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update remove-hostname.patch with the upstream version
