@@ -16,12 +16,11 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define modname minidb
 %define         skip_python2 1
 %bcond_without  test
 Name:           python-minidb
-Version:        2.0.6
+Version:        2.0.7
 Release:        0
 Summary:        SQLite3-based store for Python objects
 License:        ISC
