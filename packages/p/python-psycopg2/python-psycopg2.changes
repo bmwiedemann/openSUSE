@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Oct 28 19:56:31 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 2.9.5 
+  * Add support for Python 3.11.
+  * Add support for rowcount in MERGE statements in binary packages
+    (ticket`#1497`).
+  * Wheel package compiled against OpenSSL 1.1.1r and PostgreSQL 15 libpq.
+
+- Update to 2.9.4
+  * Fix `~psycopg2.extras.register_composite()`,
+    `~psycopg2.extras.register_range()` with customized search_path
+    (ticket`#1487`).
+  * Handle correctly composite types with names or in schemas requiring escape.
+  * Find ``pg_service.conf file in the ``/etc/postgresql-common`` directory in
+    binary packages (ticket`1365`).
+  * `~psycopg2.errorcodes` map and `~psycopg2.errors` classes updated to
+    PostgreSQL 15.
+  * Wheel package compiled against OpenSSL 1.1.1q and PostgreSQL 14.4
+
+-------------------------------------------------------------------
 Thu Dec 30 09:54:04 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.9.3:
