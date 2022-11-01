@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-DateTime
-Version:        4.5
+Version:        4.7
 Release:        0
 Summary:        Zope DateTime data type
 License:        ZPL-2.1
