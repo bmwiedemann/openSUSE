@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 29 05:03:26 UTC 2022 - Daniel Molkentin <daniel@molkentin.de>
+
+- Update to 0.7.1
+  * See https://github.com/dehydrated-io/dehydrated/releases/tag/v0.7.1 
+  * Removes more-examples.patch
+
+-------------------------------------------------------------------
 Sat Jul 23 07:56:50 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add postrun hook scripts for apache+nginx

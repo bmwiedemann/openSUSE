@@ -53,7 +53,7 @@
 %endif
 
 Name:           dehydrated
-Version:        0.7.0
+Version:        0.7.1
 Release:        0
 Summary:        A client for signing certificates with an ACME server
 License:        MIT
@@ -77,7 +77,6 @@ Source17:       dehydrated.target
 Source18:       dehydrated-postrun-hooks.service
 Source19:       dehydrated-postrun-hooks@.service
 Source20:       README.postrun-hooks
-Patch:          more-examples.patch
 BuildRequires:  %{_apache}
 Requires:       coreutils
 Requires:       curl
@@ -172,7 +171,6 @@ if [ -e %{_sysconfdir}/dehydrated/config.sh ]; then mv %{_sysconfdir}/dehydrated
 
 %prep
 %setup -q
-%patch -p1
 cp %{SOURCE9} .
 cp %{SOURCE10} .
 cp %{SOURCE20} .
@@ -206,10 +204,12 @@ cat > %{buildroot}%{_sysconfdir}/dehydrated/postrun-hooks.d/reload-apache2.sh <<
 #!/bin/sh
 systemctl reload apache2.service
 EOF
+%if %{with nginx}
 cat > %{buildroot}%{_sysconfdir}/dehydrated/postrun-hooks.d/reload-nginx.sh << EOF
 #!/bin/sh
 systemctl reload nginx.service
 EOF
+%endif
 
 %if %{with nginx}
 install -m 0755 -d %{buildroot}%{_sysconfdir}/nginx
@@ -280,7 +280,7 @@ diff -urN docs/examples/config %{buildroot}%{_home}/config ||:
 %{_bindir}/dehydrated
 %attr(-,%{_user},root) %dir %{_localstatedir}/lib/acme-challenge
 %{_mandir}/man1/*
-%doc LICENSE README.md docs/*.md docs/*.jpg
+%doc LICENSE README.md docs/*.md
 %doc README.maintainer
 %if %{defined redhat}
 %doc README.Fedora
