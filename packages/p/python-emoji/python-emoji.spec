@@ -18,7 +18,7 @@
 
 
 Name:           python-emoji
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Emoji for Python
 License:        BSD-3-Clause
@@ -61,6 +61,7 @@ By default, the language is English (``language='en'``) but Spanish (``'es'``), 
 %files %{python_files}
 %doc CHANGES.md README.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/emoji
+%{python_sitelib}/emoji-%{version}*-info
 
 %changelog

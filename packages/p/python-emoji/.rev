@@ -129,4 +129,13 @@
     <comment></comment>
     <requestid>1005611</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>dd82be0e770cf373eaeaafec16d5a661</srcmd5>
+    <version>2.2.0</version>
+    <time>1667306614</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.0
+  *  Add support for Unicode Version 15</comment>
+    <requestid>1032655</requestid>
+  </revision>
 </revisionlist>
