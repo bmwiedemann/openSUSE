@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pymarc
-Version:        4.2.0
+Version:        4.2.1
 Release:        0
 Summary:        MARC bibliographic data manipulation module
 License:        BSD-2-Clause

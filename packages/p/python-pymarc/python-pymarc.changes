@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 28 20:11:57 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 4.2.1 
+  * Bugfix for Field.delete_subfield() for situations when a subfield value is present with the name of the subfield that you want to delete.
+  * Updated README to point to ReadTheDocs documentation. 
+
+-------------------------------------------------------------------
 Wed Oct  5 00:39:26 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 4.2.0 
