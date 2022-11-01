@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Oct 27 11:05:07 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.1:
+  + build: Disable nautilus extension by default.
+  + comics:
+    - Avoid critical when pixbuf can't be rendered.
+    - Better debug on archive error.
+    - Fix crash that can happen if archive is damaged.
+    - Still try to open broken comics.
+  + shell: Fix use-after-free on a modified document.
+  + Fix incorrect link in README.md.
+  + Use https URL for libarchive.org in README.md.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Sep 18 17:09:50 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.0:
