@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Tue Nov  1 09:26:42 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.1.1856.0
+  + Lower message length threshold for cloudwatch log streaming
+  + Ran gofmt and goimports with golang version 1.19
+  + Report AvailabilityZone and AvailabilityZoneId in health pings
+  + Update AWS Go SDK to v1.44.78
+  + from version 3.1.1767.0
+  + Fix samba configuration for sub-domains
+  + from version 3.1.1732.0
+  + Add code in document/session worker to fallback to default
+    identity selector when runtime config not present
+  + Fix to handle command-line-arguments in document/session
+    worker when launched by old agent workers
+- from version 3.1.1634.0
+  + Fallback to file based IPC if named pipe creation times out
+  + Increase tls handshake timeout in http download client
+  + Log mds client timeout errors as WARN
+- from version 3.1.1575.0
+  + Added separate metric for snapd running apps failure during update
+  + Fixed idle session timeout with smux keep alive configuration based on CLI version
+  + Updated AgentTaskComplete message retry
+  + Updated go version to 1.18.3
+- from version 3.1.1511.0
+  + Collect kernel version in InstanceDetailedInformation
+  + Support separate output stream for non-interactive session
+  + Cleanup default log group name for runcommands
+  + Updated rpm spec file to include build id
+- from version 3.1.1476.0
+  + Fix port session premature close when local server is not connected before timeout
+- from version 3.1.1446.0
+  + Add created date to AgentJobAck message
+  + Disable smux keep alive to use idle session timeout feature
+  + Fix unit-tests running on windows
+- from version 3.1.1374.0
+  + Added timeout for s3 HEAD requests
+  + Added vpc address deny to port forwarding
+  + Fixed for reboot scenario in configure package plugin
+  + Fixed goroutine leak in seelog library
+  + Fixed nullpointer segmentation fault in configure package plugin
+  + Improved error handling in manifest download in updater
+  + Improved worker initialization to improve startup failure logging
+
+-------------------------------------------------------------------
 Thu Apr 21 10:15:58 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Fix mangled ExlusiveArch field
