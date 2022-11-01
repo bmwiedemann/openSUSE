@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-typedload
-Version:        2.18
+Version:        2.19
 Release:        0
 Summary:        Load and dump data from json-like format into typed data structures
 License:        GPL-3.0-only
