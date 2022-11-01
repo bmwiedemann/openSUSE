@@ -29,19 +29,18 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      17
 %global interimver      0
-%global updatever       4
-%global datever         2022-07-19
+%global updatever       5
 %global buildver        8
 %global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk17/archive
-%global root_revision   d680e266ef43d1c2e239c7d2fd49e6f9a11992ed
-%global root_branch     v0.33.0-release
+%global root_revision   32d2c409a3325231f58eed81de0f0f1a229b43d6
+%global root_branch     v0.35.0-release
 %global omr_repository  https://github.com/eclipse/openj9-omr/archive
-%global omr_revision    b58aa2708c095efadf522f67aaef9f7de2a7cbc7
-%global omr_branch      v0.33.0-release
+%global omr_revision    85a21674fdf30403b75c3000a4dc10605ca52ba2
+%global omr_branch      v0.35.0-release
 %global openj9_repository https://github.com/eclipse/openj9/archive
-%global openj9_revision 04a55b45b3a0d75813335fda0fb8703819690ee7
-%global openj9_branch   v0.33.0-release
-%global openj9_tag      openj9-0.33.0
+%global openj9_revision e04a7f6c1c365a6b375deb5f641c72309b170b95
+%global openj9_branch   v0.35.0-release
+%global openj9_tag      openj9-0.35.0
 %global java_atk_wrapper_version 0.33.2
 # priority must be 6 digits in total
 %if 0%{?suse_version} > 1500 || 0%{?java_bootstrap}
@@ -444,12 +443,6 @@ bash configure \
     CC=gcc-7 \
     NM=gcc-nm-7 \
 %endif
-    --with-version-feature=%{featurever} \
-    --with-version-interim=%{interimver} \
-    --with-version-update=%{updatever} \
-    --with-version-patch=%{?patchver:%{patchver}}%{!?patchver:0} \
-    --with-version-date=%{datever} \
-    --with-version-build=%{buildver} \
     --with-version-pre="" \
     --with-version-opt="suse-%{release}-%{_arch}" \
     --disable-warnings-as-errors \
@@ -575,7 +568,7 @@ pushd %{imagesdir}
   cp -a jmods %{buildroot}%{_jvmdir}/%{sdkdir}
 
 # Install nss.cfg
-install -m 644 %{SOURCE13} %{buildroot}%{_jvmdir}/%{sdkdir}/lib/security/
+install -m 644 %{SOURCE13} %{buildroot}%{_jvmdir}/%{sdkdir}/conf/security/
 
 # Install Javadoc documentation.
 install -d -m 755 %{buildroot}%{_javadocdir}
@@ -926,7 +919,7 @@ fi
 %{_jvmdir}/%{sdkdir}/lib/*/libjvm.so
 
 %config(noreplace) %{_jvmdir}/%{sdkdir}/lib/security/blocked.certs
-%config(noreplace) %{_jvmdir}/%{sdkdir}/lib/security/nss.cfg
+%config(noreplace) %{_jvmdir}/%{sdkdir}/conf/security/nss.cfg
 %{_jvmdir}/%{sdkdir}/lib/security/default.policy
 %{_jvmdir}/%{sdkdir}/lib/security/public_suffix_list.dat
 
@@ -972,6 +965,7 @@ fi
 %{_jvmdir}/%{sdkdir}/include/jni.h
 %{_jvmdir}/%{sdkdir}/include/jvmticmlr.h
 %{_jvmdir}/%{sdkdir}/include/jvmti.h
+%{_jvmdir}/%{sdkdir}/include/sizecalc.h
 %{_jvmdir}/%{sdkdir}/lib/ct.sym
 %{_jvmdir}/%{sdkdir}/lib/libattach.so
 %{_jvmdir}/%{sdkdir}/include/linux/jawt_md.h
