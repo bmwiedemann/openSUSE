@@ -315,4 +315,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1029685 from glaubitz)</comment>
     <requestid>1029718</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>78578ee14f57663e3d0ca662c93e92c9</srcmd5>
+    <version>20.6.0</version>
+    <time>1667306578</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 20.6.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1032469 from glaubitz)</comment>
+    <requestid>1032556</requestid>
+  </revision>
 </revisionlist>
