@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Oct 27 11:08:00 UTC 2022 - bjorn.lie@gmail.com
+
+- Update to version 0.70.1:
+  + app:
+    - Disconnect signal handlers on dispose.
+    - Filter unwanted environment variables.
+  + build:
+    - Add define for darwin.
+    - Fix netbsd define.
+  + widget:
+    - Don't consume right clicks on gtk4.
+    - Implement clipboard for gtk4.
+  * Updated translations.
+
+-------------------------------------------------------------------
 Fri Sep 16 23:52:32 UTC 2022 - bjorn.lie@gmail.com
 
 - Update to version 0.70.0:
