@@ -7801,6 +7801,7 @@ unsorted:
   - jersey-javadoc 
   - jetbrains-annotations 
   - jetbrains-annotations-javadoc 
+  - jetbrains-mono-fonts 
   - jettison 
   - jettison-javadoc 
   - jetty-annotations 
@@ -12771,7 +12772,6 @@ unsorted:
   - libnvidia-egl-wayland1 
   - libnvidia-egl-wayland1-32bit: [x86_64] 
   - libnvme-devel 
-  - libnvme-mi1 
   - libnxml-devel 
   - libnxml0 
   - libnxml0-32bit: [x86_64] 
@@ -13654,7 +13654,7 @@ unsorted:
   - libraw1394-devel-32bit: [x86_64] 
   - libraw1394-tools 
   - libraw20-32bit: [x86_64] 
-  - libraylib400 
+  - libraylib420 
   - librbd-devel: [x86_64] # devel package of dvd:librados2 
   - librbio2 
   - librbl1 
@@ -32045,7 +32045,6 @@ unsorted:
   - qemu-block-dmg 
   - qemu-block-gluster 
   - qemu-block-iscsi 
-  - qemu-block-nfs 
   - qemu-block-ssh 
   - qemu-chardev-baum 
   - qemu-extra 
@@ -43823,6 +43822,7 @@ unsorted:
   - warzone2100-data 
   - wasi-libc 
   - wasm-pack: [x86_64] 
+  - watchexec: [x86_64] 
   - watson 
   - watson-bash-completion 
   - watson-fish-completion 
@@ -44397,6 +44397,7 @@ unsorted:
   - xplayer-plparser-devel 
   - xplayer-plparser-lang 
   - xplayer-plugins 
+  - xplr 
   - xplsprinters 
   - xpp2 
   - xpp2-demo 
