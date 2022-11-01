@@ -466,4 +466,12 @@
     <comment>- Update to release 12</comment>
     <requestid>1032681</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>553a9bdf408e4ccb0ed11a9bf1df8267</srcmd5>
+    <version>13.0</version>
+    <time>1667310030</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 13</comment>
+    <requestid>1032692</requestid>
+  </revision>
 </revisionlist>

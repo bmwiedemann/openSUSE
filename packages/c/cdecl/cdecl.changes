@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov  1 13:11:29 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 13
+  * Better copy constructor support
+  * A lot of C23 keywords are now recognized
+  * More C++23 keywords are now recognized
+  * Enumerations in C++ can now be bit fields.
+  * C++11 explicit user-defined conversion operators
+- Delete 0001-build-resolve-compile-failure-due-to-improper-attrib.patch
+
+-------------------------------------------------------------------
 Tue Nov  1 10:24:44 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 12
