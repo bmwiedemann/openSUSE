@@ -2038,4 +2038,12 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
     <comment></comment>
     <requestid>1004803</requestid>
   </revision>
+  <revision rev="227" vrev="2">
+    <srcmd5>be64b53ca4d313b284f86c3bb83514c9</srcmd5>
+    <version>43.0</version>
+    <time>1667306439</time>
+    <user>dimstar_suse</user>
+    <comment>Add gnome-shell-disable-offline-update-dialog.patch : Disable offline update suggestion before shutdown/reboot in SLE and openSUSE Leap (bsc#944832). (forwarded request 1031902 from milachew)</comment>
+    <requestid>1032385</requestid>
+  </revision>
 </revisionlist>

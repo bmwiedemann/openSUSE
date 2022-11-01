@@ -61,6 +61,8 @@ Patch1008:      gnome-shell-disable-ibus-when-not-installed.patch
 Patch1009:      gnome-shell-fate324570-Make-GDM-background-image-configurable.patch
 # PATCH-FIX-UPSTREAM gnome-shell-jsc#SLE-16051-Input-method-recommendation.patch jsc#SLE-16051 glgo#GNOME/gnome-shell!1563 qzhao@suse.com -- launch recommended input engines when Gnome-shell init in CJK regions.
 Patch1010:      gnome-shell-jsc#SLE-16051-Input-method-recommendation.patch
+# PATCH-FIX-SLE gnome-shell-disable-offline-update-dialog.patch bsc#944832 milachew@mail.lv -- Disable offline update suggestion before shutdown/reboot in SLE and openSUSE Leap.
+Patch1011:      gnome-shell-disable-offline-update-dialog.patch
 
 # needed for directory ownership
 BuildRequires:  asciidoc
@@ -193,6 +195,7 @@ This package contains an optional extensions app for managing GNOME Shell extens
 %patch1009 -p1
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
 %patch1010 -p1
+%patch1011 -p1
 %endif
 %endif
 
