@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov  1 12:35:37 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.6.1
+  * Custom verification callbacks could cause the X.509 verifier
+    to fail to store errors resulting from leaf certificate
+    verification.
+  * Unbreak ASN.1 indefinite length encoding.
+
+-------------------------------------------------------------------
 Thu Oct  6 21:21:05 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.6.0
