@@ -31,12 +31,13 @@ URL:            http://portablecl.org/
 Source0:        https://github.com/pocl/pocl/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       pocl-rpmlintrc
 Patch0:         link_against_libclang-cpp_so.patch
-BuildRequires:  clang-devel >= 6.0.0
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  ninja
 BuildRequires:  opencl-headers
 BuildRequires:  pkgconfig
+BuildRequires:  ((clang-devel >= 6.0.0 with clang-devel < 15) or clang14-devel)
+#!BuildIgnore: clang15
 BuildRequires:  pkgconfig(OpenCL)
 BuildRequires:  pkgconfig(hwloc)
 # PPC has limited support/testing from upstream

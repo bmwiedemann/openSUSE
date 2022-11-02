@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov  2 10:13:14 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- IF clang-devel is >= 15, force dependency to clang14-devel.
+
+-------------------------------------------------------------------
 Tue Sep  6 16:34:33 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 3.0
