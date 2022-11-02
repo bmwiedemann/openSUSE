@@ -297,4 +297,18 @@
   * go#54918 cmd/compile: Value live at entry (forwarded request 1008075 from jfkw)</comment>
     <requestid>1008077</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>cf834167df3a1038a1242971107db67a</srcmd5>
+    <version>1.18.8</version>
+    <time>1667389587</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.18.8 (released 2022-11-01) includes security fixes to the
+  os/exec and syscall packages, as well as bug fixes to the
+  runtime.
+  Refs boo#1193742 go1.18 release tracking
+  CVE-2022-41716
+  * go#56327 boo#1204941 security: fix CVE-2022-41716 syscall, os/exec: unsanitized NUL in environment variables
+  * go#56308 runtime: &quot;runtime·lock: lock count&quot; fatal error when cgo is enabled (forwarded request 1032741 from jfkw)</comment>
+    <requestid>1032743</requestid>
+  </revision>
 </revisionlist>

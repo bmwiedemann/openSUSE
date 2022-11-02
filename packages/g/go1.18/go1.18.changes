@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov  1 17:18:30 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.18.8 (released 2022-11-01) includes security fixes to the
+  os/exec and syscall packages, as well as bug fixes to the
+  runtime.
+  Refs boo#1193742 go1.18 release tracking
+  CVE-2022-41716
+  * go#56327 boo#1204941 security: fix CVE-2022-41716 syscall, os/exec: unsanitized NUL in environment variables
+  * go#56308 runtime: "runtime·lock: lock count" fatal error when cgo is enabled
+
+-------------------------------------------------------------------
 Tue Oct  4 18:21:57 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.18.7 (released 2022-10-04) includes security fixes to the
