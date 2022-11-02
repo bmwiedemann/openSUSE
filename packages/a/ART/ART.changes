@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov  2 09:37:51 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.16.4:
+ * crop window: reset the tool to "hand" after a "spot wb" action
+ * allow to save pngs uncompressed
+ * improved support for custom loaders and savers
+ * metadata: trying to improve lens identification for canon cameras
+ * reverted thumbnail.cc change due to glitch in the file browser (issue #267)
+ * trying to improve the (perceived) responsiveness of the file browser
+
+-------------------------------------------------------------------
 Fri Oct  7 07:55:37 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.16.3:

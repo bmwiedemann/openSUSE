@@ -64,4 +64,19 @@
 </comment>
     <requestid>1008717</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>688b0dba57bd2884df6b6c85180aec0c</srcmd5>
+    <version>1.16.4</version>
+    <time>1667395180</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.16.4:
+ * crop window: reset the tool to &quot;hand&quot; after a &quot;spot wb&quot; action
+ * allow to save pngs uncompressed
+ * improved support for custom loaders and savers
+ * metadata: trying to improve lens identification for canon cameras
+ * reverted thumbnail.cc change due to glitch in the file browser (issue #267)
+ * trying to improve the (perceived) responsiveness of the file browser
+</comment>
+    <requestid>1032813</requestid>
+  </revision>
 </revisionlist>
