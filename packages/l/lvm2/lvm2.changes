@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 31 12:11:00 UTC 2022 - Heming Zhao <heming.zhao@suse.com>
+
+- dracut-initqueue timeouts with 5.3.18-150300.59.63 kernel on ppc64le (bsc#1199074)
+  - in lvm2.spec, change device_mapper_version from 1.02.185 to %{lvm2_version}_1.02.185
+
+-------------------------------------------------------------------
 Wed Oct 12 02:55:00 UTC 2022 - Heming Zhao <heming.zhao@suse.com>
 
 - lvm.conf should re-enable commented out option use_lvmlockd (bsc#1204219)

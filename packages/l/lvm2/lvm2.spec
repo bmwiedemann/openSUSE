@@ -22,7 +22,10 @@
 %define _udevdir %(pkg-config --variable=udevdir udev)
 %define cmdlib liblvm2cmd2_03
 %define lvm2_version              2.03.16
-%define device_mapper_version     1.02.185
+# For device_mapper_version, it's package version, see bsc#1199074.
+# Also note there is another dm version on below "sed -ie ... VERSION_DM".
+%define upstream_device_mapper_version  1.02.185
+%define device_mapper_version           %{lvm2_version}_1.02.185
 %define thin_provisioning_version 0.7.0
 %define _supportsanlock 1
 %define dlm_version     4.0.9
@@ -206,7 +209,8 @@ extra_opts="
 ### COMMON-CONFIG-BEGIN ###
 export PATH=$PATH:/sbin:%{_sbindir}
 # Why this messy fix here? someone released a wrong version...
-sed -ie "s/%{device_mapper_version}/1.03.01/g" VERSION_DM
+# There will change library version to 1.03.01, see output "dmsetup --version".
+sed -ie "s/%{upstream_device_mapper_version}/1.03.01/g" VERSION_DM
 %configure \
     --enable-dmeventd \
     --enable-dmfilemapd \
