@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov  1 03:00:49 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Fix spec file to use catch2 >= 3.0
+
+-------------------------------------------------------------------
+Thu Oct 27 06:52:06 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.14:
+  No changelog. Too many commits to list. Please see
+  https://github.com/Alexays/Waybar/compare/0.9.13...0.9.14
+- Remove waybar-0.9.13-fmt-compat.patch
+- Use catch2 >= 3
+- Enable sndio
+
+-------------------------------------------------------------------
 Sun Oct 16 15:41:25 UTC 2022 - Chris Bradbury <obs@chrbrd.com>
 
 - waybar-0.9.13-fmt-compat.patch: Add upstream patch 1617 to fix build with fmt>=9.0.0

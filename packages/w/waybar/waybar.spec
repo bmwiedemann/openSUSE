@@ -17,7 +17,7 @@
 
 
 Name:           waybar
-Version:        0.9.13
+Version:        0.9.14
 Release:        0
 Summary:        Customizable Wayland bar for Sway and Wlroots based compositors
 License:        MIT
@@ -26,8 +26,7 @@ URL:            https://github.com/Alexays/Waybar
 # use this to download tarball. then use `meson subprojects download`
 # to get the `date` dependency. and create own tarball
 #Source:         https://github.com/Alexays/Waybar/archive/%{version}.tar.gz
-Source:         %{version}.tar.gz
-Patch:          https://patch-diff.githubusercontent.com/raw/Alexays/Waybar/pull/1617.patch#/waybar-0.9.13-fmt-compat.patch
+Source:         %{version}.tar.xz
 BuildRequires:  cmake
 %if 0%{?sle_version} >= 150400
 BuildRequires:  gcc11-c++
@@ -39,9 +38,8 @@ BuildRequires:  meson
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 # test dependency
-BuildRequires:  pkgconfig(catch2) < 3.0
-# wait for SR#860135
-#BuildRequires:  sndio-devel >= 1.7.0
+BuildRequires:  pkgconfig(catch2) >= 3.0
+BuildRequires:  sndio-devel >= 1.7.0
 # optional: man pages
 BuildRequires:  scdoc
 # optional: tray module
@@ -59,6 +57,7 @@ BuildRequires:  pkgconfig(libnl-3.0)
 BuildRequires:  pkgconfig(libnl-genl-3.0)
 # optional: audio
 BuildRequires:  pkgconfig(libevdev)
+BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(sigc++-2.0)
@@ -97,7 +96,7 @@ This package provides the upstream look and feel for sway.
 %if 0%{?sle_version} >= 150400
 export CXX=g++-11
 %endif
-%meson -Dsndio=disabled
+%meson
 %meson_build
 
 %install
