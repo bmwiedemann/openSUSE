@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct 25 19:11:59 UTC 2022 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 0.9.20
+  + New features
+    - Mitigation for too fast vertical scroll has been implemented.
+  + Bug fixes
+    - Windows RDS compatibility has been improved
+    - Update xrdpapi simple example to work with new logging
+    - sesman: fix spacing in log
+    - Fix MSTSC crashes when resolution is changed by maximizing
+      on a different monitor
+    - Mark count with unused attribute
+    - Simple maintenance improvements
+
+-------------------------------------------------------------------
 Sun May 15 09:00:20 UTC 2022 - Sarah Kriesch <sarah.kriesch@opensuse.org>
 
 - Update to version 0.9.19
