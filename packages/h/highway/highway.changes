@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov  1 08:29:19 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.0.2
+  * Add ExclusiveNeither, FindKnownFirstTrue, Ne128
+  * Add 16-bit SumOfLanes/ReorderWidenMulAccumulate/ReorderDemote2To
+  * Faster sort for low-entropy input, improved pivot selection
+  * Support static dispatch to SVE2_128 and SVE_256
+- Leap just needs a modern gcc, no need for clang
+
+-------------------------------------------------------------------
+Wed Oct 26 16:47:07 UTC 2022 - Tom Mbrt <tom.mbrt@googlemail.com>
+
+- Fix build on openSUSE Leap by using clang
+
+-------------------------------------------------------------------
 Thu Sep 22 09:20:14 UTC 2022 - Enrico Belleri <idesmi@protonmail.com>
 
 - Update to 1.0.1:

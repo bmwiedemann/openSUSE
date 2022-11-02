@@ -20,7 +20,7 @@
 %define lname libhwy1
 
 Name:           highway
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 Summary:        C++ library providing SIMD/vector intrinsics
 License:        Apache-2.0
@@ -29,13 +29,9 @@ URL:            https://github.com/google/highway
 Source:         https://github.com/google/highway/archive/refs/tags/%version.tar.gz
 # https://github.com/google/highway/issues/776
 %if 0%{?suse_version} > 1550
-%ifarch aarch64
-BuildRequires:  gcc11-c++
-%else
 BuildRequires:  c++_compiler
-%endif
 %else
-BuildRequires:  c++_compiler
+BuildRequires:  gcc10-c++
 %endif
 BuildRequires:  cmake
 BuildRequires:  pkg-config
@@ -77,10 +73,8 @@ Documentation for Highway development.
 %build
 export CFLAGS="%optflags -DHWY_COMPILE_ALL_ATTAINABLE"
 export CXXFLAGS="$CFLAGS"
-%if 0%{?suse_version} > 1550
-%ifarch aarch64
-export CXX=g++-11
-%endif
+%if 0%{?suse_version} < 1550
+export CXX=g++-10
 %endif
 
 %cmake \
