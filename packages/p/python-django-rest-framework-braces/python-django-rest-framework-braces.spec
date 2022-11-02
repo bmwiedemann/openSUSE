@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global skip_python36 1
 Name:           python-django-rest-framework-braces
 Version:        0.3.4
@@ -58,6 +57,8 @@ sed -i 's/from collections import Mapping/from collections.abc import Mapping/' 
 sed -i '/argparse/d' setup.* requirements*
 sed -i '/\.admin/d' tests/settings.py
 sed -i 's/^import mock/from unittest import mock/' drf_braces/tests/test_mixins.py drf_braces/tests/*/test_*.py
+# NullBooleanField is removed from django gh#dealertrack/django-rest-framework-braces#36
+sed -i "s/'NullBooleanField',//" drf_braces/fields/_fields.py
 
 %build
 %python_build
@@ -75,6 +76,7 @@ export DJANGO_SETTINGS_MODULE=tests.settings
 %files %{python_files}
 %doc AUTHORS.rst README.rst
 %license LICENSE.rst
-%{python_sitelib}/*braces*/
+%{python_sitelib}/drf_braces
+%{python_sitelib}/django_rest_framework_braces-%{version}*-info
 
 %changelog

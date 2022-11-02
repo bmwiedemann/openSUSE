@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov  2 12:54:00 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Fix tests gh#dealertrack/django-rest-framework-braces#36
+- Remove python_module macro definition
+- More specific python_sitelib files
+
+-------------------------------------------------------------------
 Tue Jun 21 08:30:07 UTC 2022 - Markéta Machová <mmachova@suse.com>
 
 - Do not require python-mock for build

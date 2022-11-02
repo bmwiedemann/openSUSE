@@ -31,4 +31,15 @@
     <comment></comment>
     <requestid>984112</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>29f95573576463cb9bb6cef53291f756</srcmd5>
+    <version>0.3.4</version>
+    <time>1667398150</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix tests gh#dealertrack/django-rest-framework-braces#36
+- Remove python_module macro definition
+- More specific python_sitelib files
+</comment>
+    <requestid>1032884</requestid>
+  </revision>
 </revisionlist>
