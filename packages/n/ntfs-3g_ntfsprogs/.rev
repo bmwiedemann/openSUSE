@@ -225,4 +225,12 @@ Please forward to 12.3</comment>
   * CVE-2022-30788, CVE-2022-30789</comment>
     <requestid>979742</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>7b1621047d769481699f0786fc06da54</srcmd5>
+    <version>2022.10.3</version>
+    <time>1667389583</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032696</requestid>
+  </revision>
 </revisionlist>

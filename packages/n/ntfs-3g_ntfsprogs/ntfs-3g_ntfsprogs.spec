@@ -23,7 +23,7 @@
 %define sbindir /sbin
 %endif
 Name:           ntfs-3g_ntfsprogs
-Version:        2022.5.17
+Version:        2022.10.3
 Release:        0
 Summary:        NTFS Support in Userspace
 License:        GPL-2.0-or-later
