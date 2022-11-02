@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 29 12:46:08 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.54.06:
+  * Abyss HTTP server: Fix memory corruption in processing of "authorization"
+    header field. Broken in Xmlrpc-c 1.41 
+
+-------------------------------------------------------------------
 Mon Aug  8 20:47:54 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.54.05:

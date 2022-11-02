@@ -19,12 +19,12 @@
 %define soname 3
 %define soname_cpp 8
 Name:           xmlrpc-c
-Version:        1.54.05
+Version:        1.54.06
 Release:        0
 Summary:        Library implementing XML-based Remote Procedure Calls
 License:        BSD-3-Clause AND MIT
 Group:          Development/Libraries/C and C++
-URL:            http://xmlrpc-c.sourceforge.net/
+URL:            https://xmlrpc-c.sourceforge.net/
 Source:         https://sourceforge.net/projects/xmlrpc-c/files/Xmlrpc-c%{20}Super%{20}Stable/%{version}/xmlrpc-c-%{version}.tgz
 BuildRequires:  autoconf
 BuildRequires:  automake
