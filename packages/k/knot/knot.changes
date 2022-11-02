@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov  1 09:52:45 UTC 2022 - Michal Hrusecky <michal.hrusecky@opensuse.org>
+
+- update to version 3.2.2, see:
+  https://www.knot-dns.cz/2022-11-01-version-322.html
+
+-------------------------------------------------------------------
+Thu Sep 22 11:40:39 UTC 2022 - Michal Hrusecky <michal.hrusecky@opensuse.org>
+
+- update to version 3.2.1, see:
+  https://www.knot-dns.cz/2022-09-09-version-321.html
+
+-------------------------------------------------------------------
 Tue Aug 30 19:26:25 UTC 2022 - Michal Hrusecky <michal.hrusecky@opensuse.org>
 
 - add keyring to spec file as source to suppress factory-auto error

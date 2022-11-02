@@ -110,4 +110,15 @@ https://www.knot-dns.cz/</comment>
   https://www.knot-dns.cz/2022-08-22-version-320.html</comment>
     <requestid>1000339</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d72ae8bd50fa750fa2414d98d65dd94e</srcmd5>
+    <version>3.2.2</version>
+    <time>1667389649</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.2.2, see:
+  https://www.knot-dns.cz/2022-11-01-version-322.html
+- update to version 3.2.1, see:
+  https://www.knot-dns.cz/2022-09-09-version-321.html</comment>
+    <requestid>1032821</requestid>
+  </revision>
 </revisionlist>
