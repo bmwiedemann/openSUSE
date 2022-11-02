@@ -18,7 +18,7 @@
 
 %define lname	libevtx1
 Name:           libevtx
-Version:        20220724
+Version:        20221101
 Release:        0
 Summary:        Library and tools to access the Windows XML Event Log (EVTX) format
 License:        GFDL-1.3-only AND LGPL-3.0-or-later
@@ -35,7 +35,7 @@ BuildRequires:  gettext-tools >= 0.21
 BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(libbfio) >= 20220120
+BuildRequires:  pkgconfig(libbfio) >= 20221025
 BuildRequires:  pkgconfig(libcdata) >= 20220115
 BuildRequires:  pkgconfig(libcdirectory) >= 20220105
 BuildRequires:  pkgconfig(libcerror) >= 20220101
@@ -52,8 +52,8 @@ BuildRequires:  pkgconfig(libfdatetime) >= 20220112
 BuildRequires:  pkgconfig(libfguid) >= 20220113
 BuildRequires:  pkgconfig(libfvalue) >= 20220120
 BuildRequires:  pkgconfig(libfwevt) >= 20220723
-BuildRequires:  pkgconfig(libfwnt) >= 20210906
-BuildRequires:  pkgconfig(libregf) >= 20220131
+BuildRequires:  pkgconfig(libfwnt) >= 20220922
+BuildRequires:  pkgconfig(libregf) >= 20221026
 BuildRequires:  pkgconfig(libuna) >= 20220611
 BuildRequires:  pkgconfig(libwrc) >= 20220720
 BuildRequires:  pkgconfig(python3)

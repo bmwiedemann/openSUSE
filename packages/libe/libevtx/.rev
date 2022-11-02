@@ -198,4 +198,12 @@ part of summer 2013 libyal refresh for opensuse 13.1</comment>
     <comment>update</comment>
     <requestid>999948</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>41ab91645f8959159409e9c7c037f0be</srcmd5>
+    <version>20221101</version>
+    <time>1667398148</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20221101</comment>
+    <requestid>1032878</requestid>
+  </revision>
 </revisionlist>
