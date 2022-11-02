@@ -17,7 +17,6 @@
 
 
 %define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without test
 Name:           python-pydle
 Version:        1.0.0
@@ -28,6 +27,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/Shizmob/pydle
 Source:         https://github.com/Shizmob/pydle/archive/v%{version}.tar.gz#/pydle-%{version}.tar.gz
 Source1:        LICENSE.md
+Patch0:         python-pydle-poetry-syntax.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry}
 BuildRequires:  %{python_module pytest}
@@ -52,7 +52,7 @@ Features include:
 * IRCv3.2 (base only, work in progress)
 
 %prep
-%setup -q -n pydle-%{version}
+%autosetup -p1 -n pydle-%{version}
 dos2unix pydle/utils/irccat.py
 sed -i 's,^#!%{_bindir}/env ,#!%{_bindir}/,' pydle/utils/irccat.py
 cp %{SOURCE1} .
@@ -80,7 +80,8 @@ cp %{SOURCE1} .
 
 %files %{python_files}
 %license LICENSE.md
-%{python_sitelib}/*
+%{python_sitelib}/pydle
+%{python_sitelib}/pydle-%{version}*-info
 %python_alternative %{_bindir}/pydle
 %python_alternative %{_bindir}/pydle-irccat
 

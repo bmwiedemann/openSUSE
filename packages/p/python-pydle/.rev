@@ -162,4 +162,18 @@
     gh#Shizmob/pydle#165</comment>
     <requestid>1007087</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>476cf4d009e8a6b899198173755078e6</srcmd5>
+    <version>1.0.0</version>
+    <time>1667404706</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python-pydle-poetry-syntax.patch: Fix version limiation in
+  pyprojects.toml. NOTE: I changed to &lt; 3.11 even though upstream
+  declares &lt; 3.10; but since this limiation was simply ignored by
+  poetry &lt; 1.2 and we provide already packages for python 3.10
+  (which seem to work?) this seemed most suitable workaround for
+  now (https://github.com/Shizmob/pydle/issues/181).
+</comment>
+    <requestid>1032914</requestid>
+  </revision>
 </revisionlist>

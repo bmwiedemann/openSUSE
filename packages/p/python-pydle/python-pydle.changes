@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov  2 12:11:45 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add python-pydle-poetry-syntax.patch: Fix version limiation in
+  pyprojects.toml. NOTE: I changed to < 3.11 even though upstream
+  declares < 3.10; but since this limiation was simply ignored by
+  poetry < 1.2 and we provide already packages for python 3.10
+  (which seem to work?) this seemed most suitable workaround for
+  now (https://github.com/Shizmob/pydle/issues/181).
+
+-------------------------------------------------------------------
 Thu Sep 29 18:44:37 UTC 2022 - Mia Herkt <mia@0x0.st>
 
 - Update to version 1.0.0
