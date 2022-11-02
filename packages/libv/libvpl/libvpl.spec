@@ -30,7 +30,7 @@
 %global sover 2
 Name:           libvpl
 %define lname   libvpl%{sover}
-Version:        2022.2.4
+Version:        2023.0.0
 Release:        0
 Summary:        oneAPI Video Processing Library (oneVPL) dispatcher, tools, and examples
 License:        MIT
