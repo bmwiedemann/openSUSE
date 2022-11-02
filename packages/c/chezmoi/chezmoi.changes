@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Nov 02 10:28:25 UTC 2022 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.26.0:
+    feat: Improve handling of include and exclude for externals and encrypted files
+    feat: Extend --include and --exclude flags to include templates
+    feat: Add --recurse-submodules flag to init and update command
+    chore: Fix refactored --include and --exclude flags
+    feat: Add per-template configurable delimiters
+    chore: Tweak template directive implementation
+    feat: Add option to exclude scripts that are always run
+    fix: Extend template directives functionality
+    chore: Fix comments that start from an incorrect name
+    chore: Use fs.ModePerm instead of 0o777 for all permissions
+    fix: Include git repo external state in state dump output
+    chore: Improve error messages from git-repo externals
+    fix: Construct templateDataMap manually
+    chore: Reorder eqFold template function reference page
+    chore: Update dependencies
+
+-------------------------------------------------------------------
 Fri Oct 21 00:11:38 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Put up new package description following

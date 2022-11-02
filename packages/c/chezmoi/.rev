@@ -25,4 +25,12 @@
     fix: Make chattr {no,}encrypted decrypt and encrypt source file</comment>
     <requestid>1030437</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8723a44f4be90a6d94c01d8eb285c637</srcmd5>
+    <version>2.26.0</version>
+    <time>1667395182</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032853</requestid>
+  </revision>
 </revisionlist>
