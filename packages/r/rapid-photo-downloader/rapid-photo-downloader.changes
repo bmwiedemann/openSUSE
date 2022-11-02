@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov  2 09:41:56 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.9.34:
+  * avoid infinite loop when detecting setuptools install status in
+    install.py script.
+
+-------------------------------------------------------------------
 Sun May  8 14:32:05 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.9.33

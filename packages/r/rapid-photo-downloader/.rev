@@ -665,4 +665,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>977381</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>7ec5c98310b55d322990ac170f6b1786</srcmd5>
+    <version>0.9.34</version>
+    <time>1667389654</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.34:
+  * avoid infinite loop when detecting setuptools install status in
+    install.py script.</comment>
+    <requestid>1032847</requestid>
+  </revision>
 </revisionlist>

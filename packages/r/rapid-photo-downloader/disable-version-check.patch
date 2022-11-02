@@ -5,11 +5,11 @@ Subject: Disable version check
 Set variable so that there is no automated version
 update check inside the program.
 
-Index: rapid-photo-downloader-0.9.20/raphodo/constants.py
+Index: rapid-photo-downloader-0.9.34/raphodo/constants.py
 ===================================================================
---- rapid-photo-downloader-0.9.20.orig/raphodo/constants.py
-+++ rapid-photo-downloader-0.9.20/raphodo/constants.py
-@@ -31,7 +31,7 @@ remote_versions_file = 'https://www.damo
+--- rapid-photo-downloader-0.9.34.orig/raphodo/constants.py
++++ rapid-photo-downloader-0.9.34/raphodo/constants.py
+@@ -31,7 +31,7 @@ remote_versions_file = "https://damonlyn
  
  # If set to True, the ability to check for a new version will be removed
  # from the user interface and disabled in program logic.
