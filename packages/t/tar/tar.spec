@@ -39,9 +39,14 @@ Patch3:         %{name}-ignore_lone_zero_blocks.patch
 Patch5:         add_readme-tests.patch
 Patch6:         tar-PIE.patch
 Patch7:         tests-skip-time01-on-32bit-time_t.patch
-# PATCH-FIX-OPENSUSE danilo.spinella@suse.com bsc#1200657
+# PATCH-FIX-UPSTREAM danilo.spinella@suse.com bsc#1200657
 # fix race condition while creating intermediate subdirectories
-Patch8:         bsc1200657.patch
+Patch8:         tar-fix-race-condition.patch
+# PATCH-FIX-UPSTREAM danilo.spinella@suse.com bsc#1203600
+# Unexpected inconsistency when making directory
+Patch9:         tar-avoid-overflow-in-symlinks-tests.patch
+Patch10:        bsc1200657.patch
+Patch11:        tar-fix-extract-unlink.patch
 BuildRequires:  automake >= 1.15
 BuildRequires:  libacl-devel
 BuildRequires:  libselinux-devel
@@ -113,6 +118,9 @@ it may as well access remote devices or files.
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
+%patch9 -p1
+%patch10 -p1
+%patch11 -p1
 
 %build
 %define my_cflags -W -Wall -Wpointer-arith -Wstrict-prototypes -Wformat-security -Wno-unused-parameter -fPIE

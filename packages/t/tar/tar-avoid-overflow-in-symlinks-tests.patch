@@ -1,0 +1,76 @@
+From d935dc7d1c150b3425dd43dc13a4dd2e2b712c26 Mon Sep 17 00:00:00 2001
+From: Paul Eggert <eggert@cs.ucla.edu>
+Date: Mon, 13 Jun 2022 17:02:54 -0700
+Subject: Avoid EOVERFLOW problems in some symlink tests
+
+* src/extract.c (is_directory_link): New arg ST.  Caller changed.
+(is_directory_link, open_output_file):
+Use readlinkat, not fstatat, to determine whether a string
+names a symlink.  This avoids EOVERFLOW issues.
+(extract_dir): Avoid duplicate calls to fstatat when
+keep_directory_symlink_option && fstatat_flags == 0
+and the file is a symlink to an existing file.
+---
+ src/extract.c | 28 ++++++++++++----------------
+ 1 file changed, 12 insertions(+), 16 deletions(-)
+
+diff --git a/src/extract.c b/src/extract.c
+index fda4617..6d2543f 100644
+--- a/src/extract.c
++++ b/src/extract.c
+@@ -982,18 +982,12 @@ apply_nonancestor_delayed_set_stat (char const *file_name, bool after_links)
+ 
+ 
+ static bool
+-is_directory_link (const char *file_name)
++is_directory_link (char const *file_name, struct stat *st)
+ {
+-  struct stat st;
+-  int e = errno;
+-  int res;
+-
+-  res = (fstatat (chdir_fd, file_name, &st, AT_SYMLINK_NOFOLLOW) == 0 &&
+-	 S_ISLNK (st.st_mode) &&
+-	 fstatat (chdir_fd, file_name, &st, 0) == 0 &&
+-	 S_ISDIR (st.st_mode));
+-  errno = e;
+-  return res;
++  char buf[1];
++  return (0 <= readlinkat (chdir_fd, file_name, buf, sizeof buf)
++	  && fstatat (chdir_fd, file_name, st, 0) == 0
++	  && S_ISDIR (st->st_mode));
+ }
+ 
+ /* Given struct stat of a directory (or directory member) whose ownership
+@@ -1066,11 +1060,14 @@ extract_dir (char *file_name, int typeflag)
+ 	      || old_files_option == OVERWRITE_OLD_FILES))
+ 	{
+ 	  struct stat st;
++	  st.st_mode = 0;
+ 
+-	  if (keep_directory_symlink_option && is_directory_link (file_name))
++	  if (keep_directory_symlink_option
++	      && is_directory_link (file_name, &st))
+ 	    return 0;
+ 
+-	  if (deref_stat (file_name, &st) == 0)
++	  if ((st.st_mode != 0 && fstatat_flags == 0)
++	      || deref_stat (file_name, &st) == 0)
+ 	    {
+ 	      current_mode = st.st_mode;
+ 	      current_mode_mask = ALL_MODE_BITS;
+@@ -1178,9 +1175,8 @@ open_output_file (char const *file_name, int typeflag, mode_t mode,
+   if (! HAVE_WORKING_O_NOFOLLOW
+       && overwriting_old_files && ! dereference_option)
+     {
+-      struct stat st;
+-      if (fstatat (chdir_fd, file_name, &st, AT_SYMLINK_NOFOLLOW) == 0
+-	  && S_ISLNK (st.st_mode))
++      char buf[1];
++      if (0 <= readlinkat (chdir_fd, file_name, buf, sizeof buf))
+ 	{
+ 	  errno = ELOOP;
+ 	  return -1;
+-- 
+cgit v1.1
+

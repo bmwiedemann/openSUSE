@@ -598,4 +598,12 @@
   * bsc1200657.patch</comment>
     <requestid>998566</requestid>
   </revision>
+  <revision rev="78" vrev="8">
+    <srcmd5>fb6b899b7b6db846732c99951ef863fb</srcmd5>
+    <version>1.34</version>
+    <time>1667389578</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032467</requestid>
+  </revision>
 </revisionlist>

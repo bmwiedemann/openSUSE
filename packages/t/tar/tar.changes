@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct 27 13:55:03 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Fix unexpected inconsistency when making directory, bsc#1203600
+  * tar-avoid-overflow-in-symlinks-tests.patch
+  * tar-fix-extract-unlink.patch
+- Update race condition fix, bsc#1200657
+  * tar-fix-race-condition.patch
+- Refresh bsc1200657.patch
+
+-------------------------------------------------------------------
 Sat Aug 20 06:23:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - drop tar-recursive--files-from.patch (causes bsc#918487) 

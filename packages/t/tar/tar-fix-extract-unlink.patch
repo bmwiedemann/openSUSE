@@ -1,0 +1,187 @@
+From 17debecd7300e94f590b8ce167a8c0735cb6d57d Mon Sep 17 00:00:00 2001
+From: Sergey Poznyakoff <gray@gnu.org>
+Date: Sat, 22 Oct 2022 12:06:45 +0300
+Subject: Fix savannah bug #63123
+
+The bug was introduced by commit 79d1ac38c1, which didn't take into
+account all the consequences of returning RECOVER_OK on EEXIST, in
+particular interactions with the delayed_set_stat logic.
+
+The commit 79d1ac38c1 is reverted (the bug it was intended to fix
+was actually fixed by 79a442d7b0).  Instead:
+
+* src/extract.c (maybe_recoverable): Don't call maybe_recoverable
+if EEXIST is reported when UNLINK_FIRST_OLD_FILES option is set.
+---
+ src/extract.c | 108 +++++++++++++++++++++++++++++++---------------------------
+ 1 file changed, 58 insertions(+), 50 deletions(-)
+
+diff --git a/src/extract.c b/src/extract.c
+index 78de47f..37ab295 100644
+--- a/src/extract.c
++++ b/src/extract.c
+@@ -679,9 +679,10 @@ fixup_delayed_set_stat (char const *src, char const *dst)
+ 
+ /* After a file/link/directory creation has failed due to ENOENT,
+    create all required directories.  Return zero if all the required
+-   directories were created, nonzero (issuing a diagnostic) otherwise.  */
++   directories were created, nonzero (issuing a diagnostic) otherwise.
++   Set *INTERDIR_MADE if at least one directory was created.  */
+ static int
+-make_directories (char *file_name)
++make_directories (char *file_name, bool *interdir_made)
+ {
+   char *cursor0 = file_name + FILE_SYSTEM_PREFIX_LEN (file_name);
+   char *cursor;	        	/* points into the file name */
+@@ -725,6 +726,7 @@ make_directories (char *file_name)
+ 			  desired_mode, AT_SYMLINK_NOFOLLOW);
+ 
+ 	  print_for_mkdir (file_name, cursor - file_name, desired_mode);
++	  *interdir_made = true;
+ 	  parent_end = NULL;
+ 	}
+       else
+@@ -879,12 +881,9 @@ maybe_recoverable (char *file_name, bool regular, bool *interdir_made)
+       FALLTHROUGH;
+ 
+     case ENOENT:
+-      /* Attempt creating missing intermediate directories.  */
+-      if (make_directories (file_name) == 0)
+-	{
+-	  *interdir_made = true;
+-	  return RECOVER_OK;
+-	}
++      /* Attempt creating missing intermediate directories. */
++      if (make_directories (file_name, interdir_made) == 0)
++	return RECOVER_OK;
+       break;
+ 
+     default:
+@@ -1072,61 +1071,69 @@ extract_dir (char *file_name, int typeflag)
+ 	  break;
+ 	}
+ 
+-      if (errno == EEXIST
+-	  && (interdir_made
++      if (errno == EEXIST)
++	{
++	  if (interdir_made
+ 	      || keep_directory_symlink_option
+ 	      || old_files_option == NO_OVERWRITE_DIR_OLD_FILES
+ 	      || old_files_option == DEFAULT_OLD_FILES
+-	      || old_files_option == OVERWRITE_OLD_FILES))
+-	{
+-	  struct stat st;
+-	  st.st_mode = 0;
+-
+-	  if (keep_directory_symlink_option
+-	      && is_directory_link (file_name, &st))
+-	    return 0;
+-
+-	  if ((st.st_mode != 0 && fstatat_flags == 0)
+-	      || deref_stat (file_name, &st) == 0)
++	      || old_files_option == OVERWRITE_OLD_FILES)
+ 	    {
+-	      current_mode = st.st_mode;
+-	      current_mode_mask = ALL_MODE_BITS;
++	      struct stat st;
++	      st.st_mode = 0;
++
++	      if (keep_directory_symlink_option
++		  && is_directory_link (file_name, &st))
++		return 0;
+ 
+-	      if (S_ISDIR (current_mode))
++	      if ((st.st_mode != 0 && fstatat_flags == 0)
++		  || deref_stat (file_name, &st) == 0)
+ 		{
+-		  if (interdir_made)
+-		    {
+-		      repair_delayed_set_stat (file_name, &st);
+-		      return 0;
+-		    }
+-		  else if (old_files_option == NO_OVERWRITE_DIR_OLD_FILES)
++		  current_mode = st.st_mode;
++		  current_mode_mask = ALL_MODE_BITS;
++
++		  if (S_ISDIR (current_mode))
+ 		    {
+-		      /* Temporarily change the directory mode to a safe
+-			 value, to be able to create files in it, should
+-			 the need be.
+-		      */
+-		      mode = safe_dir_mode (&st);
+-		      status = fd_chmod(-1, file_name, mode,
+-					AT_SYMLINK_NOFOLLOW, DIRTYPE);
+-		      if (status == 0)
++		      if (interdir_made)
+ 			{
+-			  /* Store the actual directory mode, to be restored
+-			     later.
+-			  */
+-			  current_stat_info.stat = st;
+-			  current_mode = mode & ~ current_umask;
+-			  current_mode_mask = MODE_RWX;
+-			  atflag = AT_SYMLINK_NOFOLLOW;
+-			  break;
++			  repair_delayed_set_stat (file_name, &st);
++			  return 0;
+ 			}
+-		      else
++		      else if (old_files_option == NO_OVERWRITE_DIR_OLD_FILES)
+ 			{
+-			  chmod_error_details (file_name, mode);
++			  /* Temporarily change the directory mode to a safe
++			     value, to be able to create files in it, should
++			     the need be.
++			  */
++			  mode = safe_dir_mode (&st);
++			  status = fd_chmod (-1, file_name, mode,
++					     AT_SYMLINK_NOFOLLOW, DIRTYPE);
++			  if (status == 0)
++			    {
++			      /* Store the actual directory mode, to be restored
++				 later.
++			      */
++			      current_stat_info.stat = st;
++			      current_mode = mode & ~ current_umask;
++			      current_mode_mask = MODE_RWX;
++			      atflag = AT_SYMLINK_NOFOLLOW;
++			      break;
++			    }
++			  else
++			    {
++			      chmod_error_details (file_name, mode);
++			    }
+ 			}
++		      break;
+ 		    }
+-		  break;
+ 		}
+ 	    }
++	  else if (old_files_option == UNLINK_FIRST_OLD_FILES)
++	    {
++	      status = 0;
++	      break;
++	    }
++	  
+ 	  errno = EEXIST;
+ 	}
+ 
+@@ -1978,11 +1985,12 @@ rename_directory (char *src, char *dst)
+   else
+     {
+       int e = errno;
++      bool interdir_made;
+ 
+       switch (e)
+ 	{
+ 	case ENOENT:
+-	  if (make_directories (dst) == 0)
++	  if (make_directories (dst, &interdir_made) == 0)
+ 	    {
+ 	      if (renameat (chdir_fd, src, chdir_fd, dst) == 0)
+ 		return true;
+-- 
+cgit v1.1
+
