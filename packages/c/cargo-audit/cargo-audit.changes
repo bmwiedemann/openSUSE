@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov 01 22:30:54 UTC 2022 - william.brown@suse.com
+
+- Update to version 0.17.3~git0.fdb9752:
+  * Set release date in CHANGELOG.md
+  * Clarify changelog
+  * Depend on rustsec 0.26.3 which added the CachedIndex used in `cargo audit bin`
+  * bump cargo-audit to 0.17.3
+  * bump rustsec to 0.26.3
+  * More complete changelog for rustsec crate
+  * Drop obsolete comment - html_root_url no longer exists
+  * Add cargo-auditable to home page
+
+-------------------------------------------------------------------
 Thu Oct 06 23:44:44 UTC 2022 - william.brown@suse.com
 
 - Update to version 0.17.2~git0.bccf8a5:
