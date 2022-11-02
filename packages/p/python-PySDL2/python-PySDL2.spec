@@ -16,18 +16,16 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         X_display         ":98"
 Name:           python-PySDL2
-Version:        0.9.13
+Version:        0.9.14
 Release:        0
 Summary:        Python ctypes wrapper around SDL2
 License:        SUSE-Public-Domain
 URL:            https://github.com/py-sdl/py-sdl2
 Source:         https://files.pythonhosted.org/packages/source/P/PySDL2/PySDL2-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM mixer_tests_fix.patch gh#py-sdl/py-sdl2#241 mcepl@suse.com
-# allow dynamic configuration of libmpg123
-Patch0:         mixer_tests_fix.patch
+# PATCH-FIX-OPENSUSE fix-tests.patch to make test work in chroot env without access to /dev/input
+Patch0:         fix-tests.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -62,6 +60,7 @@ Python classes and wrappers for common SDL2 functionality.
 %autosetup -p1 -n PySDL2-%{version}
 
 sed -i 's/\r$//' AUTHORS.txt COPYING.txt README.md
+find . -name *DS_Store -delete
 
 %build
 %pyproject_wheel
@@ -71,15 +70,6 @@ sed -i 's/\r$//' AUTHORS.txt COPYING.txt README.md
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-#############################################
-### Launch a virtual framebuffer X server ###
-###      (pytest-xvfb is not enough)      ###
-#############################################
-export DISPLAY=%{X_display}
-Xvfb %{X_display} >& Xvfb.log &
-trap "kill $! || true" EXIT
-sleep 10
-
 export SDL_VIDEODRIVER=dummy
 export SDL_AUDIODRIVER=dummy
 export SDL_RENDER_DRIVER=software
