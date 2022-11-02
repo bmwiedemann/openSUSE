@@ -17,19 +17,20 @@
 
 
 Name:           wbg
-Version:        1.0.2
+Version:        1.1.0
 Release:        0
 Summary:        Wallpaper application for layer-shell Wayland compositors
 License:        MIT
 Group:          System/GUI/Other
 URL:            https://codeberg.org/dnkl/wbg
 Source0:        https://codeberg.org/dnkl/wbg/archive/%version.tar.gz
-BuildRequires:  gcc-c++
+BuildRequires:  c_compiler
 BuildRequires:  meson >= 0.58.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(pixman-1)
 BuildRequires:  pkgconfig(tllist) >= 1.0.1
 BuildRequires:  pkgconfig(wayland-client)
@@ -49,7 +50,6 @@ scaled-to-fit on all monitors.
 %build
 export CFLAGS="%{optflags}"
 %meson
-
 %meson_build
 
 %install
