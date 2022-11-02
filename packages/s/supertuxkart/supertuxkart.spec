@@ -1,7 +1,7 @@
 #
 # spec file for package supertuxkart
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 #
 Name:           supertuxkart
-Version:        1.3
+Version:        1.4
 Release:        0
 Summary:        A 3D kart racing game
-License:        GPL-2.0-or-later AND GPL-3.0-or-later AND CC-BY-SA-3.0
+License:        CC-BY-SA-3.0 AND GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          Amusements/Games/3D/Race
 URL:            https://supertuxkart.net/
 Source:         https://github.com/supertuxkart/stk-code/releases/download/%{version}/supertuxkart-%{version}-src.tar.xz
@@ -64,7 +64,7 @@ BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(xrandr)
 Requires:       %{name}-data = %{version}
 Requires(post): hicolor-icon-theme
-Requires(postun): hicolor-icon-theme
+Requires(postun):hicolor-icon-theme
 
 %description
 SuperTuxKart is a Free 3d kart racing game.
@@ -124,6 +124,16 @@ unzip %{SOURCE1}
 # Man page:
 mkdir -p %{buildroot}%{_mandir}/man6
 cp %{SOURCE9} %{buildroot}%{_mandir}/man6
+
+# libangelscript does not need to be provided
+for file in /usr/include/angelscript.h \
+   /usr/lib/cmake/Angelscript/AngelscriptConfig.cmake \
+   /usr/lib/cmake/Angelscript/AngelscriptConfigVersion.cmake \
+   /usr/lib/cmake/Angelscript/AngelscriptTargets-relwithdebinfo.cmake \
+   /usr/lib/cmake/Angelscript/AngelscriptTargets.cmake \
+   /usr/lib/libangelscript.a; do
+   rm %{buildroot}/$file
+done
 
 %if 0%{?suse_version} < 1500
 %post

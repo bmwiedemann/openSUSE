@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Nov  2 09:27:38 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.4:
+  + General:
+    - Lap trial mode.
+    - Fix parachute powerup.
+    - Fix gyroscope on walldriving surface.
+    - Enable ARMv7 build for Windows.
+    - Restore macOS <= 10.14 support.
+    - Avoid triggering other goal lines when the goal is already
+      scored.
+  + Graphics
+    - Items and stars animation.
+    - LOD optimization.
+    - Implement HiDPI support in SDL2 properly.
+    - Beta Vulkan renderer.
+    - Make sky particle always fall vertically.
+  + Tracks and modeling
+    - Updated Konqi.
+    - New Godette kart.
+    - Updated Battle Island and Cave X.
+    - Fix broken invisible wall in Antediluvian Abyss.
+    - New textures in Shifting Sands.
+    - Balanced starting positions in all official soccer fields.
+  + Networking
+    - Add track searching to network track screen.
+    - Make limit of players in game configurable.
+    - Allow using real addon karts (same hitbox and kart type as in
+      local game).
+  + User Interface: Add left side ghost replay difficulties.
+
+-------------------------------------------------------------------
 Wed Sep 29 18:09:14 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to version 1.3
