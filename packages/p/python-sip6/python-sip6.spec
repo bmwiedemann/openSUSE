@@ -17,13 +17,15 @@
 
 
 Name:           python-sip6
-Version:        6.7.2
+Version:        6.7.3
 Release:        0
 Summary:        A Python bindings generator for C/C++ libraries
 License:        GPL-2.0-only OR GPL-3.0-only OR SUSE-SIP
 Group:          Development/Libraries/Python
 URL:            https://www.riverbankcomputing.com/software/sip
 Source0:        https://files.pythonhosted.org/packages/source/s/sip/sip-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM sip-hg2860-fixprop.patch https://www.riverbankcomputing.com/hg/sip/rev/2157850bf018, https://www.riverbankcomputing.com/pipermail/pyqt/2022-October/045021.html
+Patch0:         sip-hg2860-fixprop.patch
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module ply}
