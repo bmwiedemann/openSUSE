@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  1 18:54:55 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to 4.7.2
+  * Un-reverse xfr freshness check PR#12130
+
+-------------------------------------------------------------------
 Mon Oct 31 15:43:18 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - Update to 4.7.1
