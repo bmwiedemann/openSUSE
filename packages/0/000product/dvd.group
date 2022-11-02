@@ -2334,6 +2334,7 @@
     <package name="libnuma1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libnumbertext-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libnumbertext-data" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libnvme-mi1" supportstatus="unsupported"/> <!-- reason: dvd:nvme-cli -->
     <package name="libnvme1" supportstatus="unsupported"/> <!-- reason: dvd:nvme-cli -->
     <package name="liboauth0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libobjc4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3685,6 +3686,7 @@
     <package name="qemu-accel-tcg-x86" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="qemu-audio-spice" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="qemu-block-curl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
+    <package name="qemu-block-nfs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="qemu-chardev-spice" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="qemu-guest-agent" supportstatus="unsupported"/> <!-- reason: dvd:qemu-guest-agent -->
     <package name="qemu-hw-display-qxl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
