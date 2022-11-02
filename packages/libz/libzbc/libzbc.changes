@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov  2 10:55:20 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.13
+  * Improve the detection of ATA devices with the scsi backend
+    driver
+  * Add the -scsi and -ata option to all command line tools to
+    respectively force the use of the SCSI or ATA backend
+    drivers.
+
+-------------------------------------------------------------------
 Tue Aug 17 06:58:54 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 5.12.0
