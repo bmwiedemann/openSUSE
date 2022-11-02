@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov  2 09:07:26 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.5.0
+  Feature:
+  * dependencies: Drop Python 3.6 support
+  Fix:
+  * audio_codec: Detect "E-AC-3" and "AC-3"
+  * typo: Fix common typo
+
+-------------------------------------------------------------------
 Fri Feb 18 12:09:07 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
 
 - Rename the dependency on importlib-resources to
