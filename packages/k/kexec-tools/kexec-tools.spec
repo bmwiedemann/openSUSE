@@ -32,6 +32,8 @@ Source3:        kexec-load.service
 Source4:        %{name}-rpmlintrc
 Patch3:         %{name}-disable-test.patch
 Patch4:         %{name}-vmcoreinfo-in-xen.patch
+# https://patchwork.kernel.org/project/linux-riscv/patch/20190416123233.4779-1-mick@ics.forth.gr/
+Patch5:         %{name}-riscv64.patch
 Patch10:        %{name}-SYS_getrandom.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
