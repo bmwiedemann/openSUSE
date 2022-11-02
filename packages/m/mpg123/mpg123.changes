@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov  1 05:12:49 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.31.1
+  * Fix largefile aliases for the case of a largefile-insensitive
+    build that still does define _FILE_OFFSET_BITS from the
+    outside (sys/feature_tests.h on Illumos).
+
+-------------------------------------------------------------------
 Fri Oct 28 11:29:10 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.31.0
