@@ -36,7 +36,7 @@ BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  fontconfig-devel
 #check for Leap version = 15.4
-%if 0%{?sle_version} == 150400 && 0%{?is_opensuse}
+%if 0%{?sle_version} >= 150400 && 0%{?is_opensuse}
 BuildRequires:  gcc11-c++
 %else
 BuildRequires:  gcc-c++
@@ -136,7 +136,7 @@ rm -rf Utilities/rle
 rm -rf Utilities/wxWidgets
 
 %build
-%if 0%{?sle_version} == 150400 && 0%{?is_opensuse}
+%if 0%{?sle_version} >= 150400 && 0%{?is_opensuse}
 export CXX=g++-11
 %endif
 %cmake	.. \

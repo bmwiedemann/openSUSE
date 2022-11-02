@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov  2 10:49:42 UTC 2022 - Max Lin <mlin@suse.com>
+
+- use compiler gcc11-c++ to fix Leap 15.5 build
+
+-------------------------------------------------------------------
 Wed Oct  5 08:50:49 UTC 2022 - Axel Braun <axel.braun@gmx.de>
 
 - version 3.0.19 - no changelog
