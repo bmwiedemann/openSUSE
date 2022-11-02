@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov  1 19:41:16 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to 5.67
+  * New features
+    - Provided a logging callback to custom engines.
+  * Bugfixes
+    - Fixed "make cert" with OpenSSL older than 3.0.
+    - Fixed the code and the documentation to use conscious
+      language for SNI servers (thx to Clemens Lang).
+
+-------------------------------------------------------------------
 Mon Sep 12 13:31:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.66:
