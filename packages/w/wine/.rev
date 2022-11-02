@@ -4574,4 +4574,18 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1031129</requestid>
   </revision>
+  <revision rev="389" vrev="1">
+    <srcmd5>66460a8f4129317ee98d2164325635c2</srcmd5>
+    <version>7.20</version>
+    <time>1667389606</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 7.20 development release
+  - Mono engine updated to version 7.4.0.
+  - Font linking improvements.
+  - A number of fixes for exception unwinding.
+  - Support for dumping EMF spool files in WineDump.
+  - Various bug fixes.
+- update staging to 7.20 release</comment>
+    <requestid>1032680</requestid>
+  </revision>
 </revisionlist>
