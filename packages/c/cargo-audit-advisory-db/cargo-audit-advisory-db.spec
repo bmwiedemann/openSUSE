@@ -17,14 +17,13 @@
 
 
 Name:           cargo-audit-advisory-db
-Version:        20220928
+Version:        20221102
 Release:        0
 Summary:        A database of known security issues for Rust depedencies
 License:        CC0-1.0
 URL:            https://github.com/RustSec/advisory-db
 Source0:        advisory-db-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
-BuildRequires:  cargo-packaging
 Requires:       cargo-audit
 ExclusiveArch:  %{rust_tier1_arches}
 

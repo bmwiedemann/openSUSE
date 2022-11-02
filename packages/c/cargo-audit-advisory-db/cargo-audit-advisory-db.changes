@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov 01 22:16:48 UTC 2022 - william.brown@suse.com
+
+- Update to version 20221102:
+  * Assigned RUSTSEC-2022-0065 to openssl-src (#1455)
+  * CVE-2022-3786 in openssl (#1453)
+  * Assigned RUSTSEC-2022-0064 to openssl-src (#1454)
+  * CVE-2022-3602 in openssl (#1452)
+  * Assigned RUSTSEC-2022-0063 to linked_list_allocator (#1449)
+  * Add CVE-2022-36086 for linked_list_allocator (#1448)
+  * Assigned RUSTSEC-2022-0062 to matrix-sdk (#1445)
+  * Add advisory for logging of access tokens in matrix-sdk (#1444)
+  * Assigned RUSTSEC-2022-0061 to parity-wasm (#1443)
+  * Add unmaintained `parity-wasm` (#1441)
+
+-------------------------------------------------------------------
 Wed Sep 28 01:22:33 UTC 2022 - william.brown@suse.com
 
 - Update to version 20220928:
