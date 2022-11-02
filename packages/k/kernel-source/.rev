@@ -6066,4 +6066,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.0.5 &amp; 6.0.4 &amp; bluetooth CVE &amp; alsa fix</comment>
     <requestid>1031431</requestid>
   </revision>
+  <revision rev="664" vrev="1">
+    <srcmd5>5e4c35911c357f918983e739a391dda7</srcmd5>
+    <version>6.0.6</version>
+    <time>1667400329</time>
+    <user>dimstar_suse</user>
+    <comment>6.0.6 &amp; 3 CVEs in PCMCIA &amp; ring buffer crash fix</comment>
+    <requestid>1032782</requestid>
+  </revision>
 </revisionlist>
