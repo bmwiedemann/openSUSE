@@ -1,5 +1,0 @@
-<package name="autoconf-el" project="openSUSE:Factory">
-  <title>Emacs mode for editing GNU Autoconf scripts</title>
-  <description>Emacs mode for editing GNU Autoconf scripts</description>
-  <devel project="openSUSE:Factory" package="autoconf"/>
-</package>
