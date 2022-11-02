@@ -355,4 +355,12 @@
     <comment>- Drop unused buildrequires on nasm</comment>
     <requestid>1031935</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>6fd5544286c9155c045e136b14c0fc89</srcmd5>
+    <version>2.24.2</version>
+    <time>1667389584</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.24.2</comment>
+    <requestid>1032697</requestid>
+  </revision>
 </revisionlist>

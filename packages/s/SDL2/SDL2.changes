@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  1 14:27:40 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.24.2
+  * Fixed crash in Wayland_HasScreenKeyboardSupport()                                                                  
+
+-------------------------------------------------------------------
 Thu Oct 27 22:38:05 UTC 2022 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
 - Drop unused buildrequires on nasm 
