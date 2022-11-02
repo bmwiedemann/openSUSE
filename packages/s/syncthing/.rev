@@ -1161,4 +1161,21 @@
 </comment>
     <requestid>1007831</requestid>
   </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>8c89f26cbb62e6bd4628583631fcb60d</srcmd5>
+    <version>1.22.1</version>
+    <time>1667393575</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.22.1
+  * Bugfixes:
+    #8084: Scope ID should be filtered out of IPv6 addresses when using Remote GUI
+    #8569: Periodic connection losses to webui because docker image doesn't support upgrade
+    #8594: Extended attributes are only synced one way
+  * Enhancements:
+    #3987: Private relay server with authentication
+    #8244: Show connection type in Remote Devices
+    #8430: Add HTTP health check without using API Token
+</comment>
+    <requestid>1032810</requestid>
+  </revision>
 </revisionlist>

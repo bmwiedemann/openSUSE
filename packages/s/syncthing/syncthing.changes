@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Nov  2 09:05:44 UTC 2022 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 1.22.1
+  * Bugfixes:
+    #8084: Scope ID should be filtered out of IPv6 addresses when using Remote GUI
+    #8569: Periodic connection losses to webui because docker image doesn't support upgrade
+    #8594: Extended attributes are only synced one way
+
+  * Enhancements:
+    #3987: Private relay server with authentication
+    #8244: Show connection type in Remote Devices
+    #8430: Add HTTP health check without using API Token
+
+-------------------------------------------------------------------
 Tue Oct  4 08:32:21 UTC 2022 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 1.22.0
