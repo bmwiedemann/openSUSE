@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov  2 08:38:18 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.9.6:
+  * added 2 lines to check if the /usr/share/backgrounds/nwg-shell path
+    exists, and set it as the sample_dir, if so.
+
+-------------------------------------------------------------------
 Wed Jun  1 13:24:46 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.9.5:
