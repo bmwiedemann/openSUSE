@@ -136,4 +136,42 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>871549</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7f3976c1b3d2aa4b836f2c5eb97c4c91</srcmd5>
+    <version>0.8</version>
+    <time>1667389615</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8:
+  - build: add git based version information back
+  - lexers: fix bug in bash lexer for last here-doc
+  - vis: make O implementation independent of &lt;Up&gt; mapping
+  - fix typos in comments
+  - lua: fix luacheck warnings 
+  - vis: rename to/till motion internals 
+  - vis: implement multiline to/till motions
+  - vis-lua: provide file.permission property 
+  - Mention pkg-config in README 
+  - lexers/strace: improve comments, field names and syscall results
+  - lexers/git-rebase: also highlight break command
+  - filetype: Set &quot;bash&quot; for APKBUILD and .ebuild.
+  - filetype: Detect make shebang for &quot;makefile&quot;.
+  - Adding .sv extension to verilog syntax highlighter
+  - build: update alpine in docker build to version 3.13
+  - sam: only skip the last empty match if it follows a newline
+  - sam: produce empty match at the end of looped range
+  - test: update
+  - gitignore: remove vim specific swap files 
+  - sam: tweak handling of zero length matches in y commands 
+  - sam: simplify trailing match handling for x/y commands
+  - vis: correctly close pipe connected to stdin of external process 
+  - add lua5.4 in configure script
+  - vis: Add readline Ctrl+A/E bindings
+  - ci: verify codecov script before using it
+  - ci: verify coverity scan script before using it
+  - filetype: Set &quot;groovy&quot; for Jenkinsfile
+  - README: x/freenode/c/libera/ 
+  - Set version to 0.8
+</comment>
+    <requestid>1032706</requestid>
+  </revision>
 </revisionlist>
