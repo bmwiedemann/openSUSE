@@ -13322,13 +13322,13 @@ unsorted:
   - libpromises-devel 
   - libpromises3 
   - libprotobuf-c-devel 
-  - libprotobuf-lite3_21_6-32bit: [x86_64] 
+  - libprotobuf-lite3_21_9-32bit: [x86_64] 
   - libprotobuf-mutator-devel 
   - libprotobuf-mutator0 
   - libprotobuf-nanopb0 
-  - libprotobuf3_21_6-32bit: [x86_64] 
-  - libprotoc3_21_6 
-  - libprotoc3_21_6-32bit: [x86_64] 
+  - libprotobuf3_21_9-32bit: [x86_64] 
+  - libprotoc3_21_9 
+  - libprotoc3_21_9-32bit: [x86_64] 
   - libproxy-devel 
   - libproxy-sharp 
   - libproxy-tools 
@@ -23848,6 +23848,7 @@ unsorted:
   - python310-mediafile 
   - python310-meld3 
   - python310-memory_profiler 
+  - python310-mercantile 
   - python310-mergedeep 
   - python310-meson-python 
   - python310-metaextract 
@@ -24815,7 +24816,7 @@ unsorted:
   - python310-setproctitle 
   - python310-setuptools-declarative-requirements 
   - python310-setuptools-git 
-  - python310-setuptools-git-versioning: [i586] 
+  - python310-setuptools-git-versioning 
   - python310-setuptools-rust 
   - python310-setuptools-version-command 
   - python310-setuptools-wheel 
@@ -25248,6 +25249,7 @@ unsorted:
   - python310-xsge_tiled 
   - python310-xvfbwrapper 
   - python310-xxhash 
+  - python310-xyzservices 
   - python310-yacron 
   - python310-yafe 
   - python310-yamldoc 
@@ -27146,6 +27148,7 @@ unsorted:
   - python38-mediafile 
   - python38-meld3 
   - python38-memory_profiler 
+  - python38-mercantile 
   - python38-mergedeep 
   - python38-meson-python 
   - python38-metaextract 
@@ -28152,7 +28155,7 @@ unsorted:
   - python38-setuptools 
   - python38-setuptools-declarative-requirements 
   - python38-setuptools-git 
-  - python38-setuptools-git-versioning: [i586] 
+  - python38-setuptools-git-versioning 
   - python38-setuptools-rust 
   - python38-setuptools-version-command 
   - python38-setuptools-wheel 
@@ -28599,6 +28602,7 @@ unsorted:
   - python38-xsge_tiled 
   - python38-xvfbwrapper 
   - python38-xxhash 
+  - python38-xyzservices 
   - python38-yacron 
   - python38-yafe 
   - python38-yamldoc 
@@ -30486,6 +30490,7 @@ unsorted:
   - python39-mediafile 
   - python39-meld3 
   - python39-memory_profiler 
+  - python39-mercantile 
   - python39-mergedeep 
   - python39-meson-python 
   - python39-metaextract 
@@ -31494,7 +31499,7 @@ unsorted:
   - python39-setuptools 
   - python39-setuptools-declarative-requirements 
   - python39-setuptools-git 
-  - python39-setuptools-git-versioning: [i586] 
+  - python39-setuptools-git-versioning 
   - python39-setuptools-rust 
   - python39-setuptools-version-command 
   - python39-setuptools-wheel 
@@ -31940,6 +31945,7 @@ unsorted:
   - python39-xsge_tiled 
   - python39-xvfbwrapper 
   - python39-xxhash 
+  - python39-xyzservices 
   - python39-yacron 
   - python39-yafe 
   - python39-yamldoc 
@@ -44504,6 +44510,7 @@ unsorted:
   - xylib-devel 
   - xyscan 
   - xyscan-doc 
+  - xyzservices-data 
   - xz-devel 
   - xz-devel-32bit: [x86_64] 
   - xz-java 
