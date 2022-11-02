@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Tue Oct 25 12:32:56 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20221025.1ef34941:
+  * add configuration for ALP staging
+
+-------------------------------------------------------------------
+Tue Oct 25 10:50:59 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20221025.f4999b32:
+  * Don't hard code bash as interpreter for source_validator scripts
+
+-------------------------------------------------------------------
+Mon Oct 24 03:22:40 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20221024.39e322e2:
+  * gocd: add openSUSE:Leap:15.4:Images to pkglistgen pipeline for the Leap 15.4 CR
+
+-------------------------------------------------------------------
+Thu Oct 20 08:34:34 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20221020.4765ffae:
+  * osclib: Correct syntax error in typing
+  * osclib: Submit summary-staging.txt to the devel project
+  * osclib: Add typehints
+  * ignore: venv, vscode and IDEA config directories
+
+-------------------------------------------------------------------
+Thu Oct 13 13:07:24 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20221013.5e2a1716:
+  * pkglistgen: Convert sections to class
+  * Docs: Fix typos
+  * pkglistgen: Add type annotations
+  * osclib: Add type annotations
+
+-------------------------------------------------------------------
+Thu Oct 13 05:28:07 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20221013.21411e52:
+  * Fix the syncing of rebuild failures for multibuild flavors
+
+-------------------------------------------------------------------
 Thu Sep 29 12:33:12 UTC 2022 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20220929.aad22912:
