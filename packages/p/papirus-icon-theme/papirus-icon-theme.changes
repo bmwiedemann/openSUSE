@@ -1,4 +1,134 @@
 -------------------------------------------------------------------
+Tue Nov  1 22:34:05 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 20221101
+
+* Added icons:
+
+  * icon Eyedropper
+  * icon GridPlayer
+  * icon Helm #3289
+  * icon Hidamari
+  * icon Memento
+  * icon QQmusic
+  * symlink Mixxx #3292
+  * symlink Sigil
+  * symlink YouTube Music (Web app) #3290
+  * Updated icons:
+
+* Updated icons:
+
+  * redesign Google Drive #3293
+  * redesign Nicotine+ #3288
+
+- Version 20220910 changes:
+* Added icons:
+
+  * Ear Tag #3226
+  * mimetypes packages Arch Linux
+  * mimetypes Rnote
+  * Jetbrains Toolbox (tray) #3228
+  * Stella (flatpak)
+  * Kasts #3238
+  * ThiefMD #3235
+  * Naver Whale #3229
+  * ffmpeg #3233
+  * Gabut Download Manager
+  * pacseek #3239
+  * LibreOffice 7.4
+  * Harmonoid
+  * EndeavourOS #3263
+  * Rog Control Center #3261
+  * Cemu
+  * electron12/16/17/18/19
+  * playonlinux4
+  * ED2E_EpicGamesLauncher.0
+  * CE93_RobloxPlayerLauncher.0
+  * 631F_RobloxStudioLauncherBeta.0
+  * Element #3278
+  * Step mimetypes #3022
+  * WebCord #3280
+  * p3x-onenote
+  * DevHub (tray)
+  * Myuzi
+  * Helix #3283
+  * GNOME Crossword Editor #3284
+  * LAMPA
+
+* Updated icons:
+
+  * QT QDBusViewer #3234
+  * Déjà Dup #3279
+  * Raider
+  * Font Downloader
+  * Short Circuit
+  * Quod Libet #3281
+  * Ex Falso #3281
+  * resize Ferdium (tray 22/24) #3285
+
+* Changes and fixes:
+
+  * fix more duplicated icons on actions/apps #3257
+
+- Version 20220808 changes:
+* Added icons:
+
+  * gnu.pspp
+  * qmmp
+  * MongoDB
+  * FreeDownloadManager
+  * Boxi
+  * GNOME Settings
+  * BlueBubbles
+  * Around #3191
+  * Internxt Drive (tray)
+  * TickTick (app & tray)
+  * Vita3K #3204
+  * Morgen (app & tray)
+  * GNOME Crosswords #3200
+  * ToolBox #3199
+  * Bforartists #3193
+  * Plex Desktop
+  * Jetbrains DataSpell #3206
+  * Ferdium (tray) #3207
+  * Clockify (tray)
+  * Flare
+  * HexChat
+  * Material Maker
+  * wechat-uos
+  * Airshipper #3213
+  * Cinny
+  * Logseq
+  * ZapZap
+  * Done
+  * SuperTux
+  * BiglyBT
+  * Open Hardware Monitor #3217
+  * Tagger #3167
+  * Minecraft Bedrock Launcher #3184
+  * MAME
+  * Trilium
+  * NormCap
+  * SysDVR-Qt
+  * Distributor Logo Peppermint #3222
+  * Kasts #3223
+
+* Updated icons:
+
+  * Vaults
+  * Tubefeeder
+  * Cider
+  * Internxt Drive
+  * Flacon #3181
+  * Hackgregator
+  * Trilium
+  * Distributor Logo Lubuntu #3221
+
+* Changes and fixes:
+
+  * change symlinks on Qt5 Tools #3224
+
+-------------------------------------------------------------------
 Sun Jul 10 10:17:14 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Update to version 20220710
