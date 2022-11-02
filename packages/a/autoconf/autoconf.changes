@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct 27 15:25:30 UTC 2022 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- fix testsuite failure by bash 5.2 update
+  * [fix-testsuite-failures-with-bash-5.2.patch]
+
+-------------------------------------------------------------------
+Mon Mar 28 12:14:28 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- convert to use _multibuild
+- fix keyring gpg validation
+
+-------------------------------------------------------------------
 Fri Mar 12 22:04:21 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - use https urls 

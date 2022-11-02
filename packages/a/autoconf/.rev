@@ -321,4 +321,12 @@
     <comment>Let me see what's missing - ring0 is fine</comment>
     <requestid>964995</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>a89c2b56854cdc4fd197d923b30ef483</srcmd5>
+    <version>2.71</version>
+    <time>1667389580</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032644</requestid>
+  </revision>
 </revisionlist>

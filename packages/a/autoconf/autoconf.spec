@@ -1,7 +1,7 @@
 #
-# spec file for package autoconf
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,15 @@
 #
 
 
-Name:           autoconf
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "testsuite"
+%global psuffix -testsuite
+%elif "%{flavor}" == "el"
+%global psuffix -el
+%else
+%global psuffix %{nil}
+%endif
+Name:           autoconf%{?psuffix}
 Version:        2.71
 Release:        0
 Summary:        A GNU Tool for Automatically Configuring Source Code
@@ -24,16 +32,25 @@ License:        GPL-3.0-or-later
 URL:            https://www.gnu.org/software/autoconf
 Source0:        https://ftp.gnu.org/gnu/autoconf/autoconf-%{version}.tar.xz
 Source1:        https://ftp.gnu.org/gnu/autoconf/autoconf-%{version}.tar.xz.sig
-Source2:        %{name}.keyring
+Source9:        autoconf.keyring
 Patch0:         autoreconf-ltdl.diff
+Patch1:         fix-testsuite-failures-with-bash-5.2.patch
 BuildRequires:  help2man
 BuildRequires:  m4 >= 1.4.6
+BuildArch:      noarch
+%if "%{name}" == "autoconf"
 Requires:       info
 Requires:       m4 >= 1.4.6
 Requires:       perl-base >= 5.6
-BuildArch:      noarch
+%endif
 %if "%{name}" == "autoconf-testsuite"
 BuildRequires:  gcc-c++
+%endif
+%if "%{name}" == "autoconf-el"
+%global site_lisp %{_datadir}/emacs/site-lisp
+BuildRequires:  emacs-nox
+BuildRequires:  gcc-c++
+Enhances:       emacs
 %endif
 
 %description
@@ -52,6 +69,7 @@ only required for the generation of the scripts, not their use.
 %prep
 %setup -q -n autoconf-%{version}
 %patch0
+%patch1 -p1
 
 %build
 %configure
@@ -63,7 +81,31 @@ trap 'test $? -ne 0 && cat tests/testsuite.log' EXIT
 %make_build check
 
 %install
+%elif "%{name}" == "autoconf-el"
+
+%install
+mkdir -p %{buildroot}%{site_lisp}
+install -c -m 644 lib/emacs/autoconf-mode.el  %{buildroot}%{site_lisp}/autoconf-mode.el
+install -c -m 644 lib/emacs/autoconf-mode.elc %{buildroot}%{site_lisp}/autoconf-mode.elc
+install -c -m 644 lib/emacs/autotest-mode.el  %{buildroot}%{site_lisp}/autotest-mode.el
+install -c -m 644 lib/emacs/autotest-mode.elc %{buildroot}%{site_lisp}/autotest-mode.elc
+sed 's/^;//' > %{buildroot}%{site_lisp}/suse-start-%{name}.el <<\EOF
+;;; %{site_lisp}/suse-start-%{name}.el
+;
+(autoload 'autoconf-mode "autoconf-mode"
+          "Major mode for editing autoconf files." t)
+(add-to-list 'auto-mode-alist
+             '("configure\\.\\(ac\\|in\\)\\'" . autoconf-mode))
+;
+(autoload 'autotest-mode "autotest-mode"
+          "Major mode for editing autotest files." t)
+(add-to-list 'auto-mode-alist
+             '("\\.at\\'" . autotest-mode))
+;
+;;; %{site_lisp}/suse-start-%{name}.el ends here
+EOF
 %else
+
 %install
 %make_install
 %endif
@@ -76,6 +118,13 @@ trap 'test $? -ne 0 && cat tests/testsuite.log' EXIT
 %{_datadir}/autoconf
 %{_infodir}/*.gz
 %{_mandir}/man1/*.gz
+%endif
+
+%if "%{name}" == "autoconf-el"
+%files
+%license COPYING
+%{site_lisp}/*.el
+%{site_lisp}/*.elc
 %endif
 
 %changelog
