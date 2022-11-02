@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 31 10:09:02 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.50.0:
+  * Support Python 3.11. [gh#grpc/grpc#30818].
+
+-------------------------------------------------------------------
 Fri Oct 14 18:10:05 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - Update to version 1.49.1
