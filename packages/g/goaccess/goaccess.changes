@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov  2 08:35:38 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.6.5:
+  * Updated Dockerfile build stage to use alpine:3.
+  * Updated deb build to use the right libncursesw6 dependency.
+
+-------------------------------------------------------------------
 Mon Oct  3 15:23:23 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.6.4:
