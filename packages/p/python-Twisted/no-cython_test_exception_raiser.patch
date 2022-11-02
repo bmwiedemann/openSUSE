@@ -2,11 +2,11 @@
  src/twisted/test/test_failure.py |    3 ++-
  1 file changed, 2 insertions(+), 1 deletion(-)
 
-Index: Twisted-22.1.0/src/twisted/test/test_failure.py
+Index: Twisted-22.10.0/src/twisted/test/test_failure.py
 ===================================================================
---- Twisted-22.1.0.orig/src/twisted/test/test_failure.py
-+++ Twisted-22.1.0/src/twisted/test/test_failure.py
-@@ -15,7 +15,8 @@ from io import StringIO
+--- Twisted-22.10.0.orig/src/twisted/test/test_failure.py
++++ Twisted-22.10.0/src/twisted/test/test_failure.py
+@@ -16,7 +16,8 @@ from io import StringIO
  from traceback import FrameSummary
  from unittest import skipIf
  

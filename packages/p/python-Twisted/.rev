@@ -1437,4 +1437,41 @@
     <comment></comment>
     <requestid>984316</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>440803d08a207858f005cdaaa360972b</srcmd5>
+    <version>22.10.0</version>
+    <time>1667389597</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 22.10.0:
+  * Features
+    + twisted.internet.defer.maybeDeferred will now schedule a coroutine
+      result as asynchronous operation and return a Deferred that fires with
+      the result of the coroutine.
+    + Twisted now works with Cryptography versions 37 and above, and as a
+      result, its minimum TLS protocol version has been upgraded to TLSv1.2.
+    + The systemd: endpoint parser now supports &quot;named&quot; file descriptors. This
+      is a more reliable mechanism for choosing among several inherited
+      descriptors.
+  * Bugfixes
+    + twisted.internet.base.DelayedCall.__repr__ will no longer raise
+      AttributeError if the DelayedCall was created before debug mode was
+      enabled. As a side-effect, twisted.internet.base.DelayedCall.creator is
+      now defined as None in cases where previously it was undefined.
+    + twisted.internet.iocpreactor.udp now properly re-queues its listener
+      when there is a failure condition on the read from the socket.
+    + twisted.internet.defer.inlineCallbacks no longer causes confusing
+      StopIteration tracebacks to be added to the top of tracebacks
+      originating in triggered callbacks.
+    + The typing of twisted.internet.task.react no longer constrains the
+      type of argv.
+    + ContextVar.reset() now works correctly inside inlineCallbacks functions
+      and coroutines.
+    + Implement twisted.python.failure._Code.co_positions for compatibility
+      with Python 3.11.
+    + twisted.pair.tuntap._TUNSETIFF and ._TUNGETIFF values are now correct
+      parisc, powerpc and sparc architectures. 
+    + twisted.web.vhost.NameVirtualHost will no longerreturn a NoResource
+      error. (bsc#1204781, CVE-2022-39348)</comment>
+    <requestid>1032605</requestid>
+  </revision>
 </revisionlist>

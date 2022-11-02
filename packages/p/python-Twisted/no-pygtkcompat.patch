@@ -1,7 +1,7 @@
-Index: Twisted-22.1.0/src/twisted/internet/gireactor.py
+Index: Twisted-22.10.0/src/twisted/internet/gireactor.py
 ===================================================================
---- Twisted-22.1.0.orig/src/twisted/internet/gireactor.py
-+++ Twisted-22.1.0/src/twisted/internet/gireactor.py
+--- Twisted-22.10.0.orig/src/twisted/internet/gireactor.py
++++ Twisted-22.10.0/src/twisted/internet/gireactor.py
 @@ -21,20 +21,24 @@ On Python 3, pygobject v3.4 or later is
  """
  

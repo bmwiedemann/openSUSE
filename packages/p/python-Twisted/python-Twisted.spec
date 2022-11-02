@@ -25,10 +25,9 @@
 %define psuffix %{nil}
 %endif
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-Twisted%{psuffix}
-Version:        22.4.0
+Version:        22.10.0
 Release:        0
 Summary:        An asynchronous networking framework written in Python
 License:        MIT
@@ -47,8 +46,6 @@ Patch4:         no-cython_test_exception_raiser.patch
 Patch5:         no-pygtkcompat.patch
 # PATCH-FIX-OPENSUSE remove-dependency-version-upper-bounds.patch boo#1190036 -- run with h2 >= 4.0.0 and priority >= 2.0
 Patch6:         remove-dependency-version-upper-bounds.patch
-# PATCH-FIX-OPENSUSE Skip test that is broken with Expat >= 2.4.5
-Patch7:         skip-namespacewithwhitespace.patch
 BuildRequires:  %{python_module incremental >= 21.3.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -72,6 +69,7 @@ BuildRequires:  %{python_module Twisted-all_non_platform = %{version}}
 BuildRequires:  %{python_module Twisted-conch_nacl = %{version}}
 # declared nowhere but required to pass 8 tests with timezone checks
 BuildRequires:  %{python_module pytz}
+BuildRequires:  %{python_module hypothesis}
 %endif
 BuildArch:      noarch
 %python_subpackages
@@ -153,9 +151,6 @@ This metapackage is for the optional feature http2
 %package contextvars
 Summary:        Contextvars extra for Twisted
 Requires:       python-Twisted = %{version}
-%if 0%{?python_version_nodots} < 37
-Requires:       python-contextvars >= 2.4
-%endif
 
 %description contextvars
 Twisted is an extensible framework for Python programming, with special focus

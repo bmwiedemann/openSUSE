@@ -1,7 +1,7 @@
-Index: Twisted-22.4.0/setup.cfg
+Index: Twisted-22.10.0/setup.cfg
 ===================================================================
---- Twisted-22.4.0.orig/setup.cfg
-+++ Twisted-22.4.0/setup.cfg
+--- Twisted-22.10.0.orig/setup.cfg
++++ Twisted-22.10.0/setup.cfg
 @@ -72,10 +72,10 @@ serial =
  	pyserial >= 3.0
  	pywin32 != 226; platform_system == "Windows"
