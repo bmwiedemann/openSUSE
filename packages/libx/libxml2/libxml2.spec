@@ -32,7 +32,9 @@ Summary:        A Library to Manipulate XML Files
 URL:            https://gitlab.gnome.org/GNOME/libxml2
 Source0:        https://download.gnome.org/sources/%{name}/2.10/libxml2-%{version}.tar.xz
 Source1:        baselibs.conf
-#
+# W3C Conformance tests
+Source2:        https://www.w3.org/XML/Test/xmlts20080827.tar.gz
+
 ### -- Upstream patches range from 0 to 999 -- ###
 # PATCH-FIX-UPSTREAM libxml2-python3-unicode-errors.patch bsc#1064286 mcepl@suse.com
 # remove segfault after doc.freeDoc()
@@ -205,7 +207,9 @@ chmod a-x python/tests/*.py
 %check
 # qemu-arm can't keep up atm, disabling check for arm
 %ifnarch %{arm}
+tar xzvf %{SOURCE2} # add conformance tests where they are expected
 %make_build check
+rm -rf xmlconf/ # remove the conformance tests afterwards
 %endif
 
 %ldconfig_scriptlets -n %{libname}

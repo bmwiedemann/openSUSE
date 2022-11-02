@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 31 18:12:58 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Add W3C conformance tests to the testsuite (bsc#1204585):
+  * Added file xmlts20080827.tar.gz 
+
+-------------------------------------------------------------------
 Fri Oct 14 15:04:09 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.10.3 (bsc#1204366, CVE-2022-40303, bsc#1204367, CVE-2022-40304):
