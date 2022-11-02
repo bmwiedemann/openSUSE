@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Nov  2 10:35:31 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Update to 0.85.2
+  * Docs:
+    - Fix grammar and add helpful links to dependencies in docs/en/docs/async.md.
+    - Fix broken link in alternatives.md. 
+    - Fix typo in docs about contributing, for compatibility with pip in Zsh. 
+    - Fix typo in docs with examples for Python 3.10 instead of 3.9.
+  
+  *Translations:
+    - Add Portuguese translation for docs/pt/docs/tutorial/request-forms.md.
+    - Add Chinese translation for docs/zh/docs/tutorial/dependencies/classes-as-dependencies.md.
+    - Add French translation for deployment/deta.md.
+    - Update Chinese translation for docs/zh/docs/tutorial/query-params-str-validations.md.
+    - Add Chinese translation for docs/zh/docs/tutorial/sql-databases.md.
+    - Add Chinese translation for docs/zh/docs/advanced/wsgi.md.
+    - Add Portuguese translation for docs/pt/docs/tutorial/body-multiple-params.md.
+    - Add Portuguese translation for docs/pt/docs/tutorial/path-params-numeric-validations.md.
+    - Add French translation for deployment/versions.md.
+    - Add French translation for docs/fr/docs/help-fastapi.md.
+    - Fix typo in Chinese translation for docs/zh/docs/tutorial/security/first-steps.md.
+    - Add Portuguese translation for docs/pt/docs/tutorial/response-status-code.md.
+    - Add config for Tamil translations.
+
+-------------------------------------------------------------------
 Mon Oct 31 08:45:35 UTC 2022 - David Anes <david.anes@suse.com>
 
 - Update to 0.85.1

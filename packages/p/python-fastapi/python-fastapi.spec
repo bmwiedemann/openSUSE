@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-fastapi
-Version:        0.85.1
+Version:        0.85.2
 Release:        0
 Summary:        FastAPI framework
 License:        MIT
@@ -30,7 +30,7 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pydantic >= 1.0.0
-Requires:       python-starlette >= 0.13.6
+Requires:       python-starlette >= 0.21.0
 # PATCH-FIX-UPSTREAM Update starlette to 0.21.0
 # https://github.com/tiangolo/fastapi/pull/5471
 Patch0:         fastapi-support-startlette-0.21.0.patch

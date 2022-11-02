@@ -34,10 +34,10 @@ Subject: [PATCH] Update starlette to 0.21.0.
  .../test_websockets/test_tutorial002.py          | 12 +++++++-----
  26 files changed, 80 insertions(+), 71 deletions(-)
 
-Index: fastapi-0.85.1/fastapi/security/api_key.py
+Index: fastapi-0.85.2/fastapi/security/api_key.py
 ===================================================================
---- fastapi-0.85.1.orig/fastapi/security/api_key.py
-+++ fastapi-0.85.1/fastapi/security/api_key.py
+--- fastapi-0.85.2.orig/fastapi/security/api_key.py
++++ fastapi-0.85.2/fastapi/security/api_key.py
 @@ -54,7 +54,7 @@ class APIKeyHeader(APIKeyBase):
          self.auto_error = auto_error
  
@@ -47,10 +47,10 @@ Index: fastapi-0.85.1/fastapi/security/api_key.py
          if not api_key:
              if self.auto_error:
                  raise HTTPException(
-Index: fastapi-0.85.1/fastapi/security/http.py
+Index: fastapi-0.85.2/fastapi/security/http.py
 ===================================================================
---- fastapi-0.85.1.orig/fastapi/security/http.py
-+++ fastapi-0.85.1/fastapi/security/http.py
+--- fastapi-0.85.2.orig/fastapi/security/http.py
++++ fastapi-0.85.2/fastapi/security/http.py
 @@ -38,7 +38,7 @@ class HTTPBase(SecurityBase):
      async def __call__(
          self, request: Request
@@ -87,10 +87,10 @@ Index: fastapi-0.85.1/fastapi/security/http.py
          scheme, credentials = get_authorization_scheme_param(authorization)
          if not (authorization and scheme and credentials):
              if self.auto_error:
-Index: fastapi-0.85.1/fastapi/security/oauth2.py
+Index: fastapi-0.85.2/fastapi/security/oauth2.py
 ===================================================================
---- fastapi-0.85.1.orig/fastapi/security/oauth2.py
-+++ fastapi-0.85.1/fastapi/security/oauth2.py
+--- fastapi-0.85.2.orig/fastapi/security/oauth2.py
++++ fastapi-0.85.2/fastapi/security/oauth2.py
 @@ -126,7 +126,7 @@ class OAuth2(SecurityBase):
          self.auto_error = auto_error
  
@@ -118,10 +118,10 @@ Index: fastapi-0.85.1/fastapi/security/oauth2.py
          scheme, param = get_authorization_scheme_param(authorization)
          if not authorization or scheme.lower() != "bearer":
              if self.auto_error:
-Index: fastapi-0.85.1/fastapi/security/open_id_connect_url.py
+Index: fastapi-0.85.2/fastapi/security/open_id_connect_url.py
 ===================================================================
---- fastapi-0.85.1.orig/fastapi/security/open_id_connect_url.py
-+++ fastapi-0.85.1/fastapi/security/open_id_connect_url.py
+--- fastapi-0.85.2.orig/fastapi/security/open_id_connect_url.py
++++ fastapi-0.85.2/fastapi/security/open_id_connect_url.py
 @@ -23,7 +23,7 @@ class OpenIdConnect(SecurityBase):
          self.auto_error = auto_error
  
@@ -131,10 +131,10 @@ Index: fastapi-0.85.1/fastapi/security/open_id_connect_url.py
          if not authorization:
              if self.auto_error:
                  raise HTTPException(
-Index: fastapi-0.85.1/fastapi/security/utils.py
+Index: fastapi-0.85.2/fastapi/security/utils.py
 ===================================================================
---- fastapi-0.85.1.orig/fastapi/security/utils.py
-+++ fastapi-0.85.1/fastapi/security/utils.py
+--- fastapi-0.85.2.orig/fastapi/security/utils.py
++++ fastapi-0.85.2/fastapi/security/utils.py
 @@ -1,7 +1,9 @@
 -from typing import Tuple
 +from typing import Optional, Tuple
@@ -147,10 +147,10 @@ Index: fastapi-0.85.1/fastapi/security/utils.py
      if not authorization_header_value:
          return "", ""
      scheme, _, param = authorization_header_value.partition(" ")
-Index: fastapi-0.85.1/pyproject.toml
+Index: fastapi-0.85.2/pyproject.toml
 ===================================================================
---- fastapi-0.85.1.orig/pyproject.toml
-+++ fastapi-0.85.1/pyproject.toml
+--- fastapi-0.85.2.orig/pyproject.toml
++++ fastapi-0.85.2/pyproject.toml
 @@ -38,7 +38,7 @@ classifiers = [
      "Topic :: Internet :: WWW/HTTP",
  ]
@@ -160,18 +160,18 @@ Index: fastapi-0.85.1/pyproject.toml
      "pydantic >=1.6.2,!=1.7,!=1.7.1,!=1.7.2,!=1.7.3,!=1.8,!=1.8.1,<2.0.0",
  ]
  dynamic = ["version"]
-@@ -69,6 +69,7 @@ test = [
+@@ -71,6 +71,7 @@ test = [
      "python-jose[cryptography] >=3.3.0,<4.0.0",
      "pyyaml >=5.3.1,<7.0.0",
      "passlib[bcrypt] >=1.7.2,<2.0.0",
 +    "trio >=0.19,<0.22.0",
  
      # types
-     "types-ujson ==5.4.0",
-Index: fastapi-0.85.1/tests/test_enforce_once_required_parameter.py
+     "types-ujson ==5.5.0",
+Index: fastapi-0.85.2/tests/test_enforce_once_required_parameter.py
 ===================================================================
---- fastapi-0.85.1.orig/tests/test_enforce_once_required_parameter.py
-+++ fastapi-0.85.1/tests/test_enforce_once_required_parameter.py
+--- fastapi-0.85.2.orig/tests/test_enforce_once_required_parameter.py
++++ fastapi-0.85.2/tests/test_enforce_once_required_parameter.py
 @@ -101,7 +101,7 @@ def test_schema():
  
  
@@ -181,10 +181,10 @@ Index: fastapi-0.85.1/tests/test_enforce_once_required_parameter.py
      assert response.status_code == status.HTTP_422_UNPROCESSABLE_ENTITY
  
  
-Index: fastapi-0.85.1/tests/test_extra_routes.py
+Index: fastapi-0.85.2/tests/test_extra_routes.py
 ===================================================================
---- fastapi-0.85.1.orig/tests/test_extra_routes.py
-+++ fastapi-0.85.1/tests/test_extra_routes.py
+--- fastapi-0.85.2.orig/tests/test_extra_routes.py
++++ fastapi-0.85.2/tests/test_extra_routes.py
 @@ -333,7 +333,7 @@ def test_get_api_route_not_decorated():
  
  
@@ -194,10 +194,10 @@ Index: fastapi-0.85.1/tests/test_extra_routes.py
      assert response.status_code == 200, response.text
      assert response.json() == {"item_id": "foo", "item": {"name": "Foo", "price": None}}
  
-Index: fastapi-0.85.1/tests/test_get_request_body.py
+Index: fastapi-0.85.2/tests/test_get_request_body.py
 ===================================================================
---- fastapi-0.85.1.orig/tests/test_get_request_body.py
-+++ fastapi-0.85.1/tests/test_get_request_body.py
+--- fastapi-0.85.2.orig/tests/test_get_request_body.py
++++ fastapi-0.85.2/tests/test_get_request_body.py
 @@ -104,5 +104,5 @@ def test_openapi_schema():
  
  def test_get_with_body():
@@ -205,10 +205,10 @@ Index: fastapi-0.85.1/tests/test_get_request_body.py
 -    response = client.get("/product", json=body)
 +    response = client.request("GET", "/product", json=body)
      assert response.json() == body
-Index: fastapi-0.85.1/tests/test_param_include_in_schema.py
+Index: fastapi-0.85.2/tests/test_param_include_in_schema.py
 ===================================================================
---- fastapi-0.85.1.orig/tests/test_param_include_in_schema.py
-+++ fastapi-0.85.1/tests/test_param_include_in_schema.py
+--- fastapi-0.85.2.orig/tests/test_param_include_in_schema.py
++++ fastapi-0.85.2/tests/test_param_include_in_schema.py
 @@ -33,8 +33,6 @@ async def hidden_query(
      return {"hidden_query": hidden_query}
  
@@ -259,10 +259,10 @@ Index: fastapi-0.85.1/tests/test_param_include_in_schema.py
      response = client.get(path)
      assert response.status_code == expected_status
      assert response.json() == expected_response
-Index: fastapi-0.85.1/tests/test_security_api_key_cookie.py
+Index: fastapi-0.85.2/tests/test_security_api_key_cookie.py
 ===================================================================
---- fastapi-0.85.1.orig/tests/test_security_api_key_cookie.py
-+++ fastapi-0.85.1/tests/test_security_api_key_cookie.py
+--- fastapi-0.85.2.orig/tests/test_security_api_key_cookie.py
++++ fastapi-0.85.2/tests/test_security_api_key_cookie.py
 @@ -22,8 +22,6 @@ def read_current_user(current_user: User
      return current_user
  
@@ -295,10 +295,10 @@ Index: fastapi-0.85.1/tests/test_security_api_key_cookie.py
      response = client.get("/users/me")
      assert response.status_code == 403, response.text
      assert response.json() == {"detail": "Not authenticated"}
-Index: fastapi-0.85.1/tests/test_security_api_key_cookie_description.py
+Index: fastapi-0.85.2/tests/test_security_api_key_cookie_description.py
 ===================================================================
---- fastapi-0.85.1.orig/tests/test_security_api_key_cookie_description.py
-+++ fastapi-0.85.1/tests/test_security_api_key_cookie_description.py
+--- fastapi-0.85.2.orig/tests/test_security_api_key_cookie_description.py
++++ fastapi-0.85.2/tests/test_security_api_key_cookie_description.py
 @@ -22,8 +22,6 @@ def read_current_user(current_user: User
      return current_user
  
@@ -331,10 +331,10 @@ Index: fastapi-0.85.1/tests/test_security_api_key_cookie_description.py
      response = client.get("/users/me")
      assert response.status_code == 403, response.text
      assert response.json() == {"detail": "Not authenticated"}
-Index: fastapi-0.85.1/tests/test_security_api_key_cookie_optional.py
+Index: fastapi-0.85.2/tests/test_security_api_key_cookie_optional.py
 ===================================================================
---- fastapi-0.85.1.orig/tests/test_security_api_key_cookie_optional.py
-+++ fastapi-0.85.1/tests/test_security_api_key_cookie_optional.py
+--- fastapi-0.85.2.orig/tests/test_security_api_key_cookie_optional.py
++++ fastapi-0.85.2/tests/test_security_api_key_cookie_optional.py
 @@ -29,8 +29,6 @@ def read_current_user(current_user: User
          return current_user
  
@@ -367,10 +367,10 @@ Index: fastapi-0.85.1/tests/test_security_api_key_cookie_optional.py
      response = client.get("/users/me")
      assert response.status_code == 200, response.text
      assert response.json() == {"msg": "Create an account first"}
-Index: fastapi-0.85.1/tests/test_tuples.py
+Index: fastapi-0.85.2/tests/test_tuples.py
 ===================================================================
---- fastapi-0.85.1.orig/tests/test_tuples.py
-+++ fastapi-0.85.1/tests/test_tuples.py
+--- fastapi-0.85.2.orig/tests/test_tuples.py
++++ fastapi-0.85.2/tests/test_tuples.py
 @@ -252,16 +252,16 @@ def test_tuple_with_model_invalid():
  
  
@@ -391,10 +391,10 @@ Index: fastapi-0.85.1/tests/test_tuples.py
 -    response = client.post("/tuple-form/", data=[("values", "1")])
 +    response = client.post("/tuple-form/", content=[("values", "1")])
      assert response.status_code == 422, response.text
-Index: fastapi-0.85.1/tests/test_tutorial/test_advanced_middleware/test_tutorial001.py
+Index: fastapi-0.85.2/tests/test_tutorial/test_advanced_middleware/test_tutorial001.py
 ===================================================================
---- fastapi-0.85.1.orig/tests/test_tutorial/test_advanced_middleware/test_tutorial001.py
-+++ fastapi-0.85.1/tests/test_tutorial/test_advanced_middleware/test_tutorial001.py
+--- fastapi-0.85.2.orig/tests/test_tutorial/test_advanced_middleware/test_tutorial001.py
++++ fastapi-0.85.2/tests/test_tutorial/test_advanced_middleware/test_tutorial001.py
 @@ -9,6 +9,6 @@ def test_middleware():
      assert response.status_code == 200, response.text
  
@@ -403,10 +403,10 @@ Index: fastapi-0.85.1/tests/test_tutorial/test_advanced_middleware/test_tutorial
 +    response = client.get("/", follow_redirects=False)
      assert response.status_code == 307, response.text
      assert response.headers["location"] == "https://testserver/"
-Index: fastapi-0.85.1/tests/test_tutorial/test_body/test_tutorial001.py
+Index: fastapi-0.85.2/tests/test_tutorial/test_body/test_tutorial001.py
 ===================================================================
---- fastapi-0.85.1.orig/tests/test_tutorial/test_body/test_tutorial001.py
-+++ fastapi-0.85.1/tests/test_tutorial/test_body/test_tutorial001.py
+--- fastapi-0.85.2.orig/tests/test_tutorial/test_body/test_tutorial001.py
++++ fastapi-0.85.2/tests/test_tutorial/test_body/test_tutorial001.py
 @@ -176,7 +176,7 @@ def test_post_broken_body():
      response = client.post(
          "/items/",
@@ -466,10 +466,10 @@ Index: fastapi-0.85.1/tests/test_tutorial/test_body/test_tutorial001.py
      )
      assert response.status_code == 422, response.text
      assert response.json() == invalid_dict
-Index: fastapi-0.85.1/tests/test_tutorial/test_body/test_tutorial001_py310.py
+Index: fastapi-0.85.2/tests/test_tutorial/test_body/test_tutorial001_py310.py
 ===================================================================
---- fastapi-0.85.1.orig/tests/test_tutorial/test_body/test_tutorial001_py310.py
-+++ fastapi-0.85.1/tests/test_tutorial/test_body/test_tutorial001_py310.py
+--- fastapi-0.85.2.orig/tests/test_tutorial/test_body/test_tutorial001_py310.py
++++ fastapi-0.85.2/tests/test_tutorial/test_body/test_tutorial001_py310.py
 @@ -185,7 +185,7 @@ def test_post_broken_body(client: TestCl
      response = client.post(
          "/items/",
@@ -529,10 +529,10 @@ Index: fastapi-0.85.1/tests/test_tutorial/test_body/test_tutorial001_py310.py
      )
      assert response.status_code == 422, response.text
      assert response.json() == invalid_dict
-Index: fastapi-0.85.1/tests/test_tutorial/test_cookie_params/test_tutorial001.py
+Index: fastapi-0.85.2/tests/test_tutorial/test_cookie_params/test_tutorial001.py
 ===================================================================
---- fastapi-0.85.1.orig/tests/test_tutorial/test_cookie_params/test_tutorial001.py
-+++ fastapi-0.85.1/tests/test_tutorial/test_cookie_params/test_tutorial001.py
+--- fastapi-0.85.2.orig/tests/test_tutorial/test_cookie_params/test_tutorial001.py
++++ fastapi-0.85.2/tests/test_tutorial/test_cookie_params/test_tutorial001.py
 @@ -3,8 +3,6 @@ from fastapi.testclient import TestClien
  
  from docs_src.cookie_params.tutorial001 import app
@@ -551,10 +551,10 @@ Index: fastapi-0.85.1/tests/test_tutorial/test_cookie_params/test_tutorial001.py
 +    response = client.get(path)
      assert response.status_code == expected_status
      assert response.json() == expected_response
-Index: fastapi-0.85.1/tests/test_tutorial/test_cookie_params/test_tutorial001_py310.py
+Index: fastapi-0.85.2/tests/test_tutorial/test_cookie_params/test_tutorial001_py310.py
 ===================================================================
---- fastapi-0.85.1.orig/tests/test_tutorial/test_cookie_params/test_tutorial001_py310.py
-+++ fastapi-0.85.1/tests/test_tutorial/test_cookie_params/test_tutorial001_py310.py
+--- fastapi-0.85.2.orig/tests/test_tutorial/test_cookie_params/test_tutorial001_py310.py
++++ fastapi-0.85.2/tests/test_tutorial/test_cookie_params/test_tutorial001_py310.py
 @@ -70,14 +70,6 @@ openapi_schema = {
  }
  
@@ -583,10 +583,10 @@ Index: fastapi-0.85.1/tests/test_tutorial/test_cookie_params/test_tutorial001_py
 +    response = client.get(path)
      assert response.status_code == expected_status
      assert response.json() == expected_response
-Index: fastapi-0.85.1/tests/test_tutorial/test_custom_request_and_route/test_tutorial001.py
+Index: fastapi-0.85.2/tests/test_tutorial/test_custom_request_and_route/test_tutorial001.py
 ===================================================================
---- fastapi-0.85.1.orig/tests/test_tutorial/test_custom_request_and_route/test_tutorial001.py
-+++ fastapi-0.85.1/tests/test_tutorial/test_custom_request_and_route/test_tutorial001.py
+--- fastapi-0.85.2.orig/tests/test_tutorial/test_custom_request_and_route/test_tutorial001.py
++++ fastapi-0.85.2/tests/test_tutorial/test_custom_request_and_route/test_tutorial001.py
 @@ -26,7 +26,7 @@ def test_gzip_request(compress):
          data = gzip.compress(data)
          headers["Content-Encoding"] = "gzip"
@@ -596,10 +596,10 @@ Index: fastapi-0.85.1/tests/test_tutorial/test_custom_request_and_route/test_tut
      assert response.json() == {"sum": n}
  
  
-Index: fastapi-0.85.1/tests/test_tutorial/test_custom_response/test_tutorial006.py
+Index: fastapi-0.85.2/tests/test_tutorial/test_custom_response/test_tutorial006.py
 ===================================================================
---- fastapi-0.85.1.orig/tests/test_tutorial/test_custom_response/test_tutorial006.py
-+++ fastapi-0.85.1/tests/test_tutorial/test_custom_response/test_tutorial006.py
+--- fastapi-0.85.2.orig/tests/test_tutorial/test_custom_response/test_tutorial006.py
++++ fastapi-0.85.2/tests/test_tutorial/test_custom_response/test_tutorial006.py
 @@ -32,6 +32,6 @@ def test_openapi_schema():
  
  
@@ -608,10 +608,10 @@ Index: fastapi-0.85.1/tests/test_tutorial/test_custom_response/test_tutorial006.
 +    response = client.get("/typer", follow_redirects=False)
      assert response.status_code == 307, response.text
      assert response.headers["location"] == "https://typer.tiangolo.com"
-Index: fastapi-0.85.1/tests/test_tutorial/test_custom_response/test_tutorial006b.py
+Index: fastapi-0.85.2/tests/test_tutorial/test_custom_response/test_tutorial006b.py
 ===================================================================
---- fastapi-0.85.1.orig/tests/test_tutorial/test_custom_response/test_tutorial006b.py
-+++ fastapi-0.85.1/tests/test_tutorial/test_custom_response/test_tutorial006b.py
+--- fastapi-0.85.2.orig/tests/test_tutorial/test_custom_response/test_tutorial006b.py
++++ fastapi-0.85.2/tests/test_tutorial/test_custom_response/test_tutorial006b.py
 @@ -27,6 +27,6 @@ def test_openapi_schema():
  
  
@@ -620,10 +620,10 @@ Index: fastapi-0.85.1/tests/test_tutorial/test_custom_response/test_tutorial006b
 +    response = client.get("/fastapi", follow_redirects=False)
      assert response.status_code == 307
      assert response.headers["location"] == "https://fastapi.tiangolo.com"
-Index: fastapi-0.85.1/tests/test_tutorial/test_custom_response/test_tutorial006c.py
+Index: fastapi-0.85.2/tests/test_tutorial/test_custom_response/test_tutorial006c.py
 ===================================================================
---- fastapi-0.85.1.orig/tests/test_tutorial/test_custom_response/test_tutorial006c.py
-+++ fastapi-0.85.1/tests/test_tutorial/test_custom_response/test_tutorial006c.py
+--- fastapi-0.85.2.orig/tests/test_tutorial/test_custom_response/test_tutorial006c.py
++++ fastapi-0.85.2/tests/test_tutorial/test_custom_response/test_tutorial006c.py
 @@ -27,6 +27,6 @@ def test_openapi_schema():
  
  
@@ -632,10 +632,10 @@ Index: fastapi-0.85.1/tests/test_tutorial/test_custom_response/test_tutorial006c
 +    response = client.get("/pydantic", follow_redirects=False)
      assert response.status_code == 302
      assert response.headers["location"] == "https://pydantic-docs.helpmanual.io/"
-Index: fastapi-0.85.1/tests/test_tutorial/test_path_operation_advanced_configurations/test_tutorial006.py
+Index: fastapi-0.85.2/tests/test_tutorial/test_path_operation_advanced_configurations/test_tutorial006.py
 ===================================================================
---- fastapi-0.85.1.orig/tests/test_tutorial/test_path_operation_advanced_configurations/test_tutorial006.py
-+++ fastapi-0.85.1/tests/test_tutorial/test_path_operation_advanced_configurations/test_tutorial006.py
+--- fastapi-0.85.2.orig/tests/test_tutorial/test_path_operation_advanced_configurations/test_tutorial006.py
++++ fastapi-0.85.2/tests/test_tutorial/test_path_operation_advanced_configurations/test_tutorial006.py
 @@ -47,7 +47,7 @@ def test_openapi_schema():
  
  
@@ -645,10 +645,10 @@ Index: fastapi-0.85.1/tests/test_tutorial/test_path_operation_advanced_configura
      assert response.status_code == 200, response.text
      assert response.json() == {
          "size": 30,
-Index: fastapi-0.85.1/tests/test_tutorial/test_path_operation_advanced_configurations/test_tutorial007.py
+Index: fastapi-0.85.2/tests/test_tutorial/test_path_operation_advanced_configurations/test_tutorial007.py
 ===================================================================
---- fastapi-0.85.1.orig/tests/test_tutorial/test_path_operation_advanced_configurations/test_tutorial007.py
-+++ fastapi-0.85.1/tests/test_tutorial/test_path_operation_advanced_configurations/test_tutorial007.py
+--- fastapi-0.85.2.orig/tests/test_tutorial/test_path_operation_advanced_configurations/test_tutorial007.py
++++ fastapi-0.85.2/tests/test_tutorial/test_path_operation_advanced_configurations/test_tutorial007.py
 @@ -58,7 +58,7 @@ def test_post():
          - x-men
          - x-avengers
@@ -676,10 +676,10 @@ Index: fastapi-0.85.1/tests/test_tutorial/test_path_operation_advanced_configura
      assert response.status_code == 422, response.text
      assert response.json() == {
          "detail": [
-Index: fastapi-0.85.1/tests/test_tutorial/test_websockets/test_tutorial002.py
+Index: fastapi-0.85.2/tests/test_tutorial/test_websockets/test_tutorial002.py
 ===================================================================
---- fastapi-0.85.1.orig/tests/test_tutorial/test_websockets/test_tutorial002.py
-+++ fastapi-0.85.1/tests/test_tutorial/test_websockets/test_tutorial002.py
+--- fastapi-0.85.2.orig/tests/test_tutorial/test_websockets/test_tutorial002.py
++++ fastapi-0.85.2/tests/test_tutorial/test_websockets/test_tutorial002.py
 @@ -4,20 +4,18 @@ from fastapi.websockets import WebSocket
  
  from docs_src.websockets.tutorial002 import app
@@ -736,10 +736,10 @@ Index: fastapi-0.85.1/tests/test_tutorial/test_websockets/test_tutorial002.py
      with pytest.raises(WebSocketDisconnect):
          with client.websocket_connect("/items/foo/ws?q=bar&token=some-token"):
              pytest.fail(
-Index: fastapi-0.85.1/tests/test_generate_unique_id_function.py
+Index: fastapi-0.85.2/tests/test_generate_unique_id_function.py
 ===================================================================
---- fastapi-0.85.1.orig/tests/test_generate_unique_id_function.py
-+++ fastapi-0.85.1/tests/test_generate_unique_id_function.py
+--- fastapi-0.85.2.orig/tests/test_generate_unique_id_function.py
++++ fastapi-0.85.2/tests/test_generate_unique_id_function.py
 @@ -1,5 +1,6 @@
  import warnings
  from typing import List
@@ -755,10 +755,10 @@ Index: fastapi-0.85.1/tests/test_generate_unique_id_function.py
  def test_warn_duplicate_operation_id():
      def broken_operation_id(route: APIRoute):
          return "foo"
-Index: fastapi-0.85.1/tests/test_tutorial/test_async_sql_databases/test_tutorial001.py
+Index: fastapi-0.85.2/tests/test_tutorial/test_async_sql_databases/test_tutorial001.py
 ===================================================================
---- fastapi-0.85.1.orig/tests/test_tutorial/test_async_sql_databases/test_tutorial001.py
-+++ fastapi-0.85.1/tests/test_tutorial/test_async_sql_databases/test_tutorial001.py
+--- fastapi-0.85.2.orig/tests/test_tutorial/test_async_sql_databases/test_tutorial001.py
++++ fastapi-0.85.2/tests/test_tutorial/test_async_sql_databases/test_tutorial001.py
 @@ -1,3 +1,4 @@
 +import pytest
  from fastapi.testclient import TestClient
