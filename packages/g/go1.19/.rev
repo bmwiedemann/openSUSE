@@ -96,4 +96,20 @@
   * go#54764 runtime/cgo(.text): unknown symbol __stack_chk_fail_local in pcrel (regression in 1.19 when building for i686) (forwarded request 1008076 from jfkw)</comment>
     <requestid>1008078</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>69f5f6dee767e6345a692a385ff0d911</srcmd5>
+    <version>1.19.3</version>
+    <time>1667389590</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.19.3 (released 2022-11-01) includes security fixes to the
+  os/exec and syscall packages, as well as bug fixes to the
+  compiler and the runtime.
+  Refs boo#1200441 go1.19 release tracking
+  CVE-2022-41716
+  * go#56328 boo#1204941 security: fix CVE-2022-41716 syscall, os/exec: unsanitized NUL in environment variables
+  * go#56309 runtime: &quot;runtime·lock: lock count&quot; fatal error when cgo is enabled
+  * go#56168 cmd/compile: libFuzzer instrumentation fakePC overflow on 386 arch
+  * go#56106 internal/fuzz: array literal initialization causes ICE &quot;unhandled stmt ASOP&quot; while fuzzing (forwarded request 1032742 from jfkw)</comment>
+    <requestid>1032744</requestid>
+  </revision>
 </revisionlist>
