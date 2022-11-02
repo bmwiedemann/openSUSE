@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Oct 31 10:28:22 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.5.1:
+  * [XrdFfs] Fix a bug in xrootdfs (gh#xrootd/xrootd#1777).
+  * [Server] Avoid SEGV when client tries to access file after
+    deferred closed.
+  * [XrdHttp] The server certificate is renewed by the Refresh
+    thread of the XrdTlsContext object.
+  * [XrdHttp] Fix a segv happening when a client sends a first
+    line starting with a space.
+  * [XrdTls] Shutdown the socket if a SSL error happens when
+    trying to accept a connection.
+  * [Apps] Avoid SEGV when asking for help.
+  * [XrdCl] copy job: fix memory leak (buffers not queued on
+    error).
+  * [Server] Add O_RDWR open flag when creating file to avoid fs
+    issue.
+  * [Server] Properly handle opaque info for fsctl operations.
+  * [XrdHttp] Allow VO names with spaces and other quoted chars.
+  * [XrdCl] LocalFileHandler: fail gracefuly on overloaded
+    machines.
+  * [XrdCl] Introduce new error code for handling local errors.
+  * [XrdCl] local file handler: obtain error code with aio_error.
+  * [XrdCl] xrdfs ls: sanitize ls entry.
+  * [CMake] Add ENABLE_ switch for scitokens and
+    macaroons(gh#xrootd/xrootd#1728).
+  * [XrdTls] Start the CRLRefresh thread in XrdTlsContext
+    constructor.
+  * [XrdTls] Changed the bit set for the activation of the Refresh
+    thread.
+  * [XrdTls] The CRL refresh thread logic only starts when there
+    is a need for it.
+  * [XrdTls] Free current context when a new context is generated.
+  * [XrdHttpTpc] Pass src size to OFS via oss.asize.
+
+-------------------------------------------------------------------
 Thu Sep 29 13:26:53 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - rpmlintrc: Filter out missing-call-to-setgroups-before-setuid

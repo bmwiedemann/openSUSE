@@ -23,7 +23,7 @@
 %bcond_without libc_semaphore
 
 Name:           xrootd
-Version:        5.5.0
+Version:        5.5.1
 Release:        0
 Summary:        An eXtended Root Daemon
 License:        LGPL-3.0-or-later
