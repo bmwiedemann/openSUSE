@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Nov  2 08:52:18 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.18.1:
+  * v6.18.1
+  * Update CHANGELOG.md
+  * Added Zen4 to randomx_boost.sh
+  * RandomX: added MSR mod for Zen 4
+  * Update CHANGELOG.md
+  * Fix: protectRX flushed CPU cache only on MacOS/iOS
+  * Update m_size only if blob was set successfully
+  * Don't reset when pool sends the same job blob
+  * RandomX: optimized CFROUND elimination more
+  * RandomX: optimized CFROUND elimination
+  * RandomX: added Blake2 AVX2 version
+  * Fixed GCC 12 warnings
+  * Update README.md
+  * v6.18.1-dev
+  * Recognize armv7ve as valid ARMv7 target.
+
+-------------------------------------------------------------------
 Mon Jul 18 14:42:35 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 6.18.0:
