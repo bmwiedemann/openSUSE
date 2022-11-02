@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Oct 30 22:18:43 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 22.3.0:
+  * Support for default build types
+  * Add ATS-M Device Ids
+  * Adding more dg2 device Ids
+  * Fixing XE_HPC macro usage for Cache Policy settings
+  * Fix QPtich calculations for CCS
+  * PVC PAT table implementations
+  * Initialize NumPATRegisters
+  * Add PVC Device IDs
+  * Fix GetPrivatePATEntry API
+  * Introducing MTL Support
+
+-------------------------------------------------------------------
+Mon Jul 11 11:17:33 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- No code changes
+- Update to version 22.1.4 was part of Intel oneVPL GPU Runtime
+  2022Q2 Release 22.4.4
+
+-------------------------------------------------------------------
 Wed Jul  6 03:28:46 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 22.1.4:

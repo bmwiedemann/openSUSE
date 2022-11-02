@@ -157,4 +157,26 @@
     <comment></comment>
     <requestid>987887</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>7f4d122d02c420a4ae0789247ca17170</srcmd5>
+    <version>22.3.0</version>
+    <time>1667395187</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 22.3.0:
+  * Support for default build types
+  * Add ATS-M Device Ids
+  * Adding more dg2 device Ids
+  * Fixing XE_HPC macro usage for Cache Policy settings
+  * Fix QPtich calculations for CCS
+  * PVC PAT table implementations
+  * Initialize NumPATRegisters
+  * Add PVC Device IDs
+  * Fix GetPrivatePATEntry API
+  * Introducing MTL Support
+
+- No code changes
+- Update to version 22.1.4 was part of Intel oneVPL GPU Runtime
+  2022Q2 Release 22.4.4</comment>
+    <requestid>1032871</requestid>
+  </revision>
 </revisionlist>
