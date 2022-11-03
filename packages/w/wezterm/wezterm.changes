@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Oct 26 22:28:40 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 20220905.102802.7d4b8249+git147:
+  * deps: textwrap -> 0.16
+  * cargo update
+  * deps: upgrade finl_unicode to 1.2
+  * macos: remove UNHANDLED: IME: do_command_by_selector warnings
+  * render: remove redundant extra quad buffer
+  * trim heap usage
+  * reduce log level strength of "breaking on overflow"
+  * ci: maybe fix suse CI
+  * update cargo.lock for bidi release
+  * bidi: bump version for publish
+  * update harfbuzz to 5.3.1
+  * mux client: add a warning
+  * gui: set up mux socket for `wezterm connect` case as well
+  * fix panic with window:set_workspace when default domain is mux
+  * bidi: move conformance tests to separate file
+  * cargo update
+  * termwiz: fixup for 32-bit systems
+  * termwiz: update widechar_width for unicode 15
+  * keys: ctrl-shift-1 didn't switch to the first tab
+  * launcher: don't panic when launching nothing
+  * fonts: fix shaping for U+28 U+FF9F
+  * fmt
+  * fix wrapping issue with double-wide cells and hyperlink rules
+  * mux client: consider domain id when mapping panes
+  * mux client: add domain id to logs
+  * mux client: refine some debug a big
+  * charselect: improve compatibility with QMK unicode inputs
+  * ssh: libssh: improve diagnostic in case connect fails
+  * mux: fix stale local/remote window id mapping in mux client
+  * config: validate consistency of domain names
+
+-------------------------------------------------------------------
 Fri Oct 14 12:21:25 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Increase both storage and memory to 16G in _constraints file to fix out of memory
