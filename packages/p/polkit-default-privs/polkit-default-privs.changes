@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 02 10:15:16 UTC 2022 - matthias.gerstner@suse.com
+
+- Update to version 1550+20221102.9f111fa:
+  * allow local logged in users to change NetworkManager configuration,
+    keyboard layout and locale settings without entering a password (in the
+    easy profile).
+
+-------------------------------------------------------------------
 Tue Oct 18 10:17:49 UTC 2022 - matthias.gerstner@suse.com
 
 - Update to version 1550+20221018.7616c25:
