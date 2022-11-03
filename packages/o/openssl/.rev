@@ -1673,4 +1673,12 @@ fixes its regression.
     <comment>- updated to 1.1.q release</comment>
     <requestid>987362</requestid>
   </revision>
+  <revision rev="162" vrev="1">
+    <srcmd5>8318d0f294f3a7955a9119eb5df7ce72</srcmd5>
+    <version>1.1.1s</version>
+    <time>1667499180</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032896</requestid>
+  </revision>
 </revisionlist>
