@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov  2 19:58:12 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 1.13:
+  * xml_attribute::set_value, xml_node::set_value and xml_text::set
+    now have overloads that accept pointer to non-null-terminated
+    string and size.
+  * Fix error handling in xml_document::save_file that could result
+    in the function succeeding while running out of disk space.
+  * Fix memory leak during error handling of some out-of-memory
+    conditions during xml_document::load.
+
+-------------------------------------------------------------------
 Thu Feb 17 21:28:34 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to version 1.12.1:
