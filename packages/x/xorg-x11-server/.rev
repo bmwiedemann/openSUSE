@@ -3798,4 +3798,17 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
   * security update for CVE-2022-3551 (bsc#1204416)</comment>
     <requestid>1030009</requestid>
   </revision>
+  <revision rev="411" vrev="3">
+    <srcmd5>ac425168630d82be50afce0543bdb5f2</srcmd5>
+    <version>21.1.4</version>
+    <time>1667499220</time>
+    <user>dimstar_suse</user>
+    <comment>- removed N_Disable-HW-Cursor-for-cirrus-and-mgag200-kernel-modules.patch 
+  * meanwhile cirrus and mgag200 Kernel drivers have been rewritten
+    multiple times and no longer have (broken) hardware cursor
+
+- u_xf86-Accept-devices-with-the-kernels-ofdrm-driver.patch
+  * Add workaround to support ofdrm</comment>
+    <requestid>1032921</requestid>
+  </revision>
 </revisionlist>

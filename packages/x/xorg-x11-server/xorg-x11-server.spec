@@ -213,8 +213,6 @@ Patch101:       u_02-DIX-ConfineTo-Don-t-bother-about-the-bounding-box-when-grab
 
 Patch104:       u_xorg-server-xdmcp.patch
 
-Patch115:       N_Disable-HW-Cursor-for-cirrus-and-mgag200-kernel-modules.patch
-
 Patch117:       xorg-x11-server-byte-order.patch
 
 Patch160:       u_vesa-Add-VBEDPMSGetCapabilities-VBEDPMSGet.patch
@@ -240,6 +238,7 @@ Patch1900:      u_no-lto-for-tests.patch
 Patch1910:      u_modesetting-Fix-dirty-updates-for-sw-rotation.patch
 
 Patch1920:      u_xf86-Accept-devices-with-the-hyperv_drm-driver.patch
+Patch1921:      u_xf86-Accept-devices-with-the-kernels-ofdrm-driver.patch
 
 Patch1930:      u_xfree86-activate-GPU-screens-on-autobind.patch
 
@@ -377,7 +376,6 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 %patch100 -p1
 #%patch101 -p1
 %patch104 -p1
-%patch115 -p1
 %patch117 -p1
 %patch160 -p1
 %patch208 -p1
@@ -404,6 +402,7 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 %patch1900 -p1
 %patch1910 -p1
 %patch1920 -p1
+%patch1921 -p1
 %patch1930 -p1
 %patch1940 -p1
 %patch1960 -p1

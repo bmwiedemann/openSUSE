@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Nov  2 15:37:07 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- removed N_Disable-HW-Cursor-for-cirrus-and-mgag200-kernel-modules.patch 
+  * meanwhile cirrus and mgag200 Kernel drivers have been rewritten
+    multiple times and no longer have (broken) hardware cursor
+
+-------------------------------------------------------------------
+Wed Nov  2 12:29:59 UTC 2022 - Thomas Zimmermann <tzimmermann@suse.de>
+
+- u_xf86-Accept-devices-with-the-kernels-ofdrm-driver.patch
+  * Add workaround to support ofdrm
+
+-------------------------------------------------------------------
 Wed Oct 19 11:06:46 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - U_xkb-proof-GetCountedString-against-request-length-at.patch
