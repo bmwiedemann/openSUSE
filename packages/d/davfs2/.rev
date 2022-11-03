@@ -66,4 +66,16 @@
 - enable keyring validating</comment>
     <requestid>979043</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5f31a43de5b85ba61c6a5abe151247c4</srcmd5>
+    <version>1.7.0</version>
+    <time>1667499237</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7.0:
+  * This release uses more portable code.
+  * Fix cached file not up to date attributes.
+  * Always check for valid prop etag.
+- Update davfs2.keyring to match the new upstream one.</comment>
+    <requestid>1032904</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           davfs2
-Version:        1.6.1
+Version:        1.7.0
 Release:        0
 Summary:        FUSE-Filesystem to access WebDAV servers
 License:        GPL-3.0-only
