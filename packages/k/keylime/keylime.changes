@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 02 15:38:00 UTC 2022 - aplanas@suse.com
+
+- Update to version v6.5.3:
+  * crypto: Provide input as bytes to encrypt
+  * Revert "Revert "Revert "tenant: open file to send utf-8 encoded" (#1136)" (#1141)"
+  * Update runtime_ima.rst
+
+-------------------------------------------------------------------
 Wed Oct 26 14:10:21 UTC 2022 - aplanas@suse.com
 
 - Update to version v6.5.2:
