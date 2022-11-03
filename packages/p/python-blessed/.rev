@@ -85,4 +85,17 @@
     <comment></comment>
     <requestid>962273</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>355adf26567861eda8be304e44f484f9</srcmd5>
+    <version>1.19.1</version>
+    <time>1667499284</time>
+    <user>dimstar_suse</user>
+    <comment>- Add drop-python2-support.patch to remove python-six dependency
+  gh#jquast/blessed#245
+- Remove python_module macro definition
+- Remove skip_python2 define
+- More specific python_sitelib in %files
+</comment>
+    <requestid>1033027</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov  3 10:55:45 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add drop-python2-support.patch to remove python-six dependency
+  gh#jquast/blessed#245
+- Remove python_module macro definition
+- Remove skip_python2 define
+- More specific python_sitelib in %files
+
+-------------------------------------------------------------------
 Wed Mar 16 12:16:20 UTC 2022 - pgajdos@suse.com
 
 - version update to 1.19.1

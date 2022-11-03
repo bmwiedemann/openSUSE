@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-blessed
 Version:        1.19.1
 Release:        0
@@ -25,6 +23,8 @@ Summary:        Wrapper around terminal styling, screen positioning, and keyboar
 License:        MIT
 URL:            https://github.com/jquast/blessed
 Source:         https://files.pythonhosted.org/packages/source/b/blessed/blessed-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM drop-python2-support.patch gh#jquast/blessed#245
+Patch:          drop-python2-support.patch
 BuildRequires:  %{python_module curses}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
@@ -75,7 +75,7 @@ Blessed **does not** provide...
   the ansi module in concert with colorama to resolve this.
 
 %prep
-%setup -q -n blessed-%{version}
+%autosetup -p1 -n blessed-%{version}
 # disable cons25 tests as they fail in OBS
 sed -i -e 's:cons25 ::' tests/accessories.py
 # do not pull extra deps that are not needed
@@ -96,6 +96,7 @@ export TEST_QUICK=1
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/blessed
+%{python_sitelib}/blessed-%{version}*-info
 
 %changelog
