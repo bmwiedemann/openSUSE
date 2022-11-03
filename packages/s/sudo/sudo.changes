@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov  1 22:04:32 UTC 2022 - Jason Sikes <jsikes@suse.com>
+
+- Modified sudo-sudoers.patch
+  * [bsc#1203978 jsc#PED-260]
+  * Remove uncommented "Defaults targetpw" portion of /etc/sudo-sudoers file.
+  * Sudo now asks for the password of the user calling sudo instead of the
+    target (i.e. root) user.
+
+-------------------------------------------------------------------
 Tue Oct 25 23:41:55 UTC 2022 - Jason Sikes <jsikes@suse.com>
 
 - Update to 1.9.12:

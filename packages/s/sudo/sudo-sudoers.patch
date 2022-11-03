@@ -52,7 +52,7 @@ index 5efda5d..e757da4 100644
  ##
  ## Uncomment to send mail if the user does not enter the correct password.
  # Defaults mail_badpass
-@@ -68,10 +59,16 @@
+@@ -68,7 +59,6 @@
  ## Set maxseq to a smaller number if you don't have unlimited disk space.
  # Defaults log_output
  # Defaults!/usr/bin/sudoreplay !log_output
@@ -60,27 +60,13 @@ index 5efda5d..e757da4 100644
  # Defaults!REBOOT !log_output
  # Defaults maxseq = 1000
  
-+## In the default (unconfigured) configuration, sudo asks for the root password.
-+## This allows use of an ordinary user account for administration of a freshly
-+## installed system. When configuring sudo, delete the two
-+## following lines:
-+Defaults targetpw   # ask for the password of the target user i.e. root
-+ALL   ALL=(ALL) ALL   # WARNING! Only use this together with 'Defaults targetpw'!
-+
- ##
- ## Runas alias specification
- ##
-@@ -87,13 +84,5 @@ root ALL=(ALL:ALL) ALL
+@@ -87,9 +84,6 @@ root ALL=(ALL:ALL) ALL
  ## Same thing without a password
  # %wheel ALL=(ALL:ALL) NOPASSWD: ALL
  
 -## Uncomment to allow members of group sudo to execute any command
 -# %sudo	ALL=(ALL:ALL) ALL
 -
--## Uncomment to allow any user to run sudo if they know the password
--## of the user they are running the command as (root by default).
--# Defaults targetpw  # Ask for the password of the target user
--# ALL ALL=(ALL:ALL) ALL  # WARNING: only use this together with 'Defaults targetpw'
--
- ## Read drop-in files from @sysconfdir@/sudoers.d
- @includedir @sysconfdir@/sudoers.d
+ ## Uncomment to allow any user to run sudo if they know the password
+ ## of the user they are running the command as (root by default).
+ # Defaults targetpw  # Ask for the password of the target user
