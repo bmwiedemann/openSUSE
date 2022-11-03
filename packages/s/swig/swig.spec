@@ -30,30 +30,15 @@ BuildRequires:  ruby
 BuildRequires:  ruby-devel
 %endif
 Name:           swig
-Version:        4.0.2
+Version:        4.1.0
+%define srcversion v4.1.0
 Release:        0
 Summary:        Simplified Wrapper and Interface Generator
 License:        BSD-3-Clause AND GPL-3.0-or-later
 Group:          Development/Languages/C and C++
 URL:            http://www.swig.org/
-Source:         http://prdownloads.sourceforge.net/swig/%{name}-%{version}.tar.gz
+Source:         https://github.com/swig/swig/archive/refs/tags/%{srcversion}.tar.gz
 Source1:        %{name}.rpmlintrc
-
-# PATCH-FIX-UPSTREAM swig-octave-6.patch gh#swig/swig#2020 badshah400@gmail.com -- Allow swig to work with octave 6 and above; patch part of upstream merge request
-Patch0:         swig-octave-6.patch
-Patch1:         fix-gcc12-error.patch
-# PATCH-FIX-UPSTREAM swig-python310.patch -- gh#swig/swig#2064, Fix swig test suite with python310
-Patch2:         swig-python310.patch
-# PATCH-FIX-UPSTREAM 15515f390c5e3316a7faf0cf85d661a297d45a50.patch - gh#swig/swig#2138, remove obsolete pcre1
-# from https://github.com/swig/swig/commit/15515f390c5e3316a7faf0cf85d661a297d45a50.patch
-Patch3:         15515f390c5e3316a7faf0cf85d661a297d45a50.patch
-# PATCH-FIX-UPSTREAM https://github.com/swig/swig/pull/2277
-Patch4:         swig-Python-define-PY_SSIZE_T_CLEAN.patch
-# PATCH-FIX-UPSTREAM https://github.com/swig/swig/pull/2277
-Patch5:         swig-Define-PY_SSIZE_T_CLEAN-macro.patch
-# PATCH-FIX-UPSTREAM https://github.com/swig/swig/pull/2401
-Patch6:         swig-Define-PY_SSIZE_T_CLEAN-only-when-not-defined-yet.patch
-Patch308:       swig308-isfinite.diff
 
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -135,7 +120,6 @@ understandig SWIG usage.
 
 %prep
 %setup -q
-%autopatch -p1
 
 %build
 %ifarch s390 s390x
