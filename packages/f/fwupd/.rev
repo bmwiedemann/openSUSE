@@ -456,4 +456,12 @@ Please do not fwd without building it, and checking new rpmlint warnings we may 
     <comment></comment>
     <requestid>1030182</requestid>
   </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>ac7c89f04bc95d003ad4b98e5fbff9db</srcmd5>
+    <version>1.8.6</version>
+    <time>1667499207</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1033128</requestid>
+  </revision>
 </revisionlist>

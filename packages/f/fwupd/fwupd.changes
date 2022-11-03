@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov  3 07:03:49 UTC 2022 - Tseng <dennis.tseng@suse.com>
+
+- For pushing fwupd-1.8.6 to 15-SP5 (fwupd-1.7.3), sync change log:
+   (jsc#PED-1232)
+    - fwupd-bsc1193921-nvme-ignore-non-PCI-NVMe-devices.patch
+      be merged to fwupd-1.7.3
+
+-------------------------------------------------------------------
 Fri Oct 14 08:57:52 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.8.6:
