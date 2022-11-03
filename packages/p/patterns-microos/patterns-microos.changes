@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov  2 10:12:15 UTC 2022 - Richard Brown <rbrown@suse.com>
+
+- cups-pk-helper shouldn't be linked to PackageKit, as "pk" stands
+  for PolicyKit in this case (boo#1204949) 
+
+-------------------------------------------------------------------
 Thu Oct 27 09:02:25 UTC 2022 - Richard Brown <rbrown@suse.com>
 
 - Add gcr3-ssh-askpass as it's also needed with latest GNOME 

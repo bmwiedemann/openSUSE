@@ -538,4 +538,13 @@ Tue Jan  20 02:29:11 UTC 2021 - Syds Bearda &lt;sydsb@opensuse.org&gt;
     <comment>- Add gcr3-ssh-askpass as it's also needed with latest GNOME</comment>
     <requestid>1031498</requestid>
   </revision>
+  <revision rev="56" vrev="56">
+    <srcmd5>9a88202df563fd3ac9ecbb22d6efd1aa</srcmd5>
+    <version>5.0</version>
+    <time>1667499194</time>
+    <user>dimstar_suse</user>
+    <comment>- cups-pk-helper shouldn't be linked to PackageKit, as &quot;pk&quot; stands
+  for PolicyKit in this case (boo#1204949)</comment>
+    <requestid>1032822</requestid>
+  </revision>
 </revisionlist>

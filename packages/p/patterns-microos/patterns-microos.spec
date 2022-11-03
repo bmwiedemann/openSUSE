@@ -368,12 +368,12 @@ Requires:       OpenPrintingPPDs
 Requires:       bluez-cups
 Requires:       cups
 Requires:       cups-filters
+Requires:       cups-pk-helper
 Requires:       ghostscript
 Requires:       hplip-hpijs
 Requires:       system-config-printer-common
 Requires:       system-config-printer-dbus-service
 Requires:       udev-configure-printer
-Requires:       (cups-pk-helper if PackageKit)
 
 # Common tools
 Requires:       bash-completion
