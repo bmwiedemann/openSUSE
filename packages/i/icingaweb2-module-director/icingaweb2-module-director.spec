@@ -19,7 +19,7 @@
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 
 Name:           icingaweb2-module-director
-Version:        1.10.1
+Version:        1.10.2
 Release:        0
 Summary:        Config module for Icinga Web 2
 License:        GPL-2.0-or-later

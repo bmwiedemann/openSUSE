@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Nov  3 15:46:35 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.10.2
+  * Fixed issues
+    - You can find issues and feature requests related to this release on our roadmap
+  * UI
+    - FEATURE: improve Service Set table layout (#2648)
+    - FIX: modifying single time-period ranges had no effect (#2525)
+    - FIX: activity log pagination is now on a single line (#2649)
+  * Import and Sync
+    - FIX: triggering Sync manually produced an error on PostgreSQL (#2636)
+    - FIX: purge stopped working for objects with uppercase characters (#2627)
+    - FIX: Notification Apply rule is now possible (wasn't since v1.8) (#2142, #2634)
+    - FIX: nested property access with intermediate NULL values now gives NULL (#2474, #2584)
+    - FIX: automated Sync jobs stopped working (#2633)
+  * Configuration Baskets
+    - FEATURE: more details shown in error messages related to invalid characters (#2646)
+    - FIX: snapshots for Baskets containing Baskets failed since v1.10 (#2644)
+  * REST API
+    - FIX: Self Service API returned invalid JSON on PHP 8.1 (#2614)
+  * Internals
+    - FIX: issue with empty activity log, deprecate outdated method (#2630)
+
+-------------------------------------------------------------------
 Fri Oct  7 12:15:19 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 1.10.1
