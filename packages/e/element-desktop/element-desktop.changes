@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov  2 15:28:31 UTC 2022 - Dominik Heidler <dheidler@suse.de>
+
+- Version 1.11.13
+## 🐛 Bug Fixes
+ * Fix default behavior of Room.getBlacklistUnverifiedDevices ([\#2830](https://github.com/matrix-org/matrix-js-sdk/pull/2830)). Contributed by @duxovni.
+ * Catch server versions API call exception when starting the client ([\#2828](https://github.com/matrix-org/matrix-js-sdk/pull/2828)). Fixes vector-im/element-web#23634.
+ * Fix authedRequest including `Authorization: Bearer undefined` for password resets ([\#2822](https://github.com/matrix-org/matrix-js-sdk/pull/2822)). Fixes vector-im/element-web#23655.
+
+-------------------------------------------------------------------
 Wed Oct 12 09:08:09 UTC 2022 - Dominik Heidler <dheidler@suse.de>
 
 - Version 1.11.10
