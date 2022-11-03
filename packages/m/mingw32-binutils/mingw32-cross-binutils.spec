@@ -32,7 +32,7 @@ Patch2:         0001-dllwrap-windres-and-dlltools-use-mktemp-which-should.patch
 #!BuildIgnore: post-build-checks
 BuildRequires:  bison
 BuildRequires:  flex
-BuildRequires:  mingw32-cross-gcc-c++
+BuildRequires:  mingw32-filesystem
 BuildRequires:  texinfo
 # NB: This must be left in.
 Requires:       mingw32-filesystem
