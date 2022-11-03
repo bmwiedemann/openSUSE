@@ -1,0 +1,51 @@
+From 6014a642ae24e37c287adbf41d615efa18d0da3d Mon Sep 17 00:00:00 2001
+From: Joan Bruguera <joanbrugueram@gmail.com>
+Date: Tue, 1 Nov 2022 23:01:50 +0100
+Subject: [PATCH] nv50/ir/nir: ignore sampler for TXF/TXQ ops.
+
+Recently, a regression was reported where videos in Firefox had shifted/
+glitched colors on certain Kepler hardware. This was bisected to
+bf02bffe156214dad942f56ee68c380d1968704f, however, the issue already
+existed but didn't hit users until TGSI was switched to NIR as default.
+
+The issue was traced to a YUV-to-RGB fragment shader used by Firefox,
+which uses three samplers for the Y/U/V components. The Y component was
+handled correctly, but the U/V components were bogus, causing the issue.
+
+After analysis, it appears the TXF/TXQ ops. should only handle the texture
+(r) but not the sampler (s), see 63b850403c90f33c295d3ad6be4ad749d4ea6274
+and 346ce0b98832e33d5411200002571b3edea9e2bb.
+Similarly, handleTXQ/handleTXF on nv50_ir_from_tgsi always sets s=0.
+Only Kepler was affected because other hardware ignores s at codegen.
+
+Always set s=0 on NIR for TXF/TXQ, to keep TGSI behavior and fix the
+regression.
+
+Thanks: Karol Herbst and M Henning for help diagnosing the issue.
+Closes: https://gitlab.freedesktop.org/mesa/mesa/-/issues/7416
+Cc: mesa-stable
+Suggested-by: Karol Herbst <kherbst@redhat.com>
+Reviewed-by: Karol Herbst <kherbst@redhat.com>
+Reviewed-by: M Henning <drawoc@darkrefraction.com>
+Signed-off-by: Joan Bruguera <joanbrugueram@gmail.com>
+Part-of: <https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/19453>
+---
+ src/nouveau/codegen/nv50_ir_from_nir.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/nouveau/codegen/nv50_ir_from_nir.cpp b/src/nouveau/codegen/nv50_ir_from_nir.cpp
+index cbefa93d25fa..4550acbf180d 100644
+--- a/src/nouveau/codegen/nv50_ir_from_nir.cpp
++++ b/src/nouveau/codegen/nv50_ir_from_nir.cpp
+@@ -3133,6 +3133,8 @@ Converter::visit(nir_tex_instr *insn)
+ 
+       r = bindless ? 0xff : insn->texture_index;
+       s = bindless ? 0x1f : insn->sampler_index;
++      if (op == OP_TXF || op == OP_TXQ)
++         s = 0;
+ 
+       defs.resize(newDefs.size());
+       for (uint8_t d = 0u; d < newDefs.size(); ++d) {
+-- 
+GitLab
+

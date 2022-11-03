@@ -5035,4 +5035,17 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
     <comment></comment>
     <requestid>1030385</requestid>
   </revision>
+  <revision rev="456" vrev="328">
+    <srcmd5>a3916df120a46db3a6e6829eadd39c27</srcmd5>
+    <version>unknown</version>
+    <time>1667499223</time>
+    <user>dimstar_suse</user>
+    <comment>- u_nouveau-corrupted-colors-boo1203949.patch
+  * fixes corrupted colors in videos on nouveau with Kepler in
+    Firefox (boo#1203949, issue#7416)
+
+- moved drirc.d config snippets from Mesa to Mea-dri package;
+  radv driver specific conf was missing completely (boo#1204866)</comment>
+    <requestid>1032970</requestid>
+  </revision>
 </revisionlist>

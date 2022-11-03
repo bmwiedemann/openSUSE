@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Nov  2 16:56:33 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- u_nouveau-corrupted-colors-boo1203949.patch
+  * fixes corrupted colors in videos on nouveau with Kepler in
+    Firefox (boo#1203949, issue#7416)
+
+-------------------------------------------------------------------
+Wed Nov  2 08:53:22 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- moved drirc.d config snippets from Mesa to Mea-dri package;
+  radv driver specific conf was missing completely (boo#1204866)
+
+-------------------------------------------------------------------
 Fri Oct 21 09:41:37 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Add patch to fix LLVM optimization to avoid failure on armv7

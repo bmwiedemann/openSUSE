@@ -143,6 +143,7 @@ Patch201:       u_0001-gallivm-Fix-LLVM-optimization-with-the-new-pass-mana.patc
 Patch300:       n_buildfix-21.3.0.patch
 Patch400:       n_no-sse2-on-ix86-except-for-intel-drivers.patch
 Patch500:       n_stop-iris-flicker.patch
+Patch600:       u_nouveau-corrupted-colors-boo1203949.patch
 %ifarch %{ix86} x86_64
 BuildRequires:  DirectX-Headers
 %endif
@@ -767,6 +768,7 @@ rm -rf docs/README.{VMS,WIN32,OS2}
 %patch400 -p1
 %endif
 %patch500 -p1
+%patch600 -p1
 
 # Remove requires to vulkan libs from baselibs.conf on platforms
 # where vulkan build is disabled; ugly ...
@@ -889,9 +891,6 @@ rm -f %{buildroot}/%{_libdir}/pkgconfig/wayland-egl.pc
 # Delete things that we do not package in the Mesa-drivers variant, but can
 # not disable from buildling and installing.
 
-# in Mesa
-rm -rf %{buildroot}/%{_datadir}/drirc.d
-
 rm -f %{buildroot}/%{_libdir}/libEGL.so*
 # in Mesa-libEGL-devel
 rm %{buildroot}/%{_includedir}/EGL/egl.h
@@ -926,6 +925,8 @@ rm -rf %{buildroot}/%{_includedir}/KHR
 rm -f %{buildroot}/%{_libdir}/vdpau/libvdpau_gallium.so
 
 %else
+# package in Mesa-dri
+rm -rf %{buildroot}/%{_datadir}/drirc.d
 
 rm -f %{buildroot}/%{_libdir}/dri/*_dri.so
 
@@ -991,8 +992,6 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %files
 %license docs/license.rst
 %doc docs/README*
-%dir %{_datadir}/drirc.d
-%config %{_datadir}/drirc.d/*
 
 %files libEGL1
 %{_libdir}/libEGL_mesa.so*
@@ -1107,6 +1106,8 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 
 %if "%{flavor}" == "drivers"
 %files -n Mesa-dri
+%dir %{_datadir}/drirc.d
+%config %{_datadir}/drirc.d/*
 %dir %{_libdir}/dri
 %{_libdir}/dri/*_dri.so
 %ifarch %{ix86} x86_64 aarch64 %{arm} ppc64 ppc64le riscv64
