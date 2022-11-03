@@ -17,7 +17,7 @@
 
 
 Name:           libfsapfs
-Version:        20220709
+Version:        20221102
 Release:        0
 Summary:        Library and tools to access the Apple File System (APFS)
 License:        LGPL-3.0-only
@@ -33,7 +33,7 @@ BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(fuse) >= 2.6
-BuildRequires:  pkgconfig(libbfio) >= 20220120
+BuildRequires:  pkgconfig(libbfio) >= 20221025
 BuildRequires:  pkgconfig(libcaes) >= 20220529
 BuildRequires:  pkgconfig(libcdata) >= 20220115
 BuildRequires:  pkgconfig(libcerror) >= 20220101
@@ -44,9 +44,10 @@ BuildRequires:  pkgconfig(libcpath) >= 20220108
 BuildRequires:  pkgconfig(libcsplit) >= 20220109
 BuildRequires:  pkgconfig(libcthreads) >= 20220102
 BuildRequires:  pkgconfig(libfcache) >= 20220110
-BuildRequires:  pkgconfig(libfdata) >= 20211023
+BuildRequires:  pkgconfig(libfdata) >= 20220111
 BuildRequires:  pkgconfig(libfdatetime) >= 20220112
 BuildRequires:  pkgconfig(libfguid) >= 20220113
+BuildRequires:  pkgconfig(libfmos) >= 20220811
 BuildRequires:  pkgconfig(libhmac) >= 20220425
 BuildRequires:  pkgconfig(libuna) >= 20220611
 BuildRequires:  pkgconfig(openssl)
@@ -116,8 +117,8 @@ echo "V_%version { global: *; };" >v.sym
 }
 
 %install
-mv %_builddir/rt/* %buildroot/
-rm -fv %{buildroot}%{_libdir}/*.la
+mv "%_builddir/rt"/* "%buildroot/"
+rm -fv "%buildroot/%_libdir"/*.la
 
 %check
 make check || /bin/true

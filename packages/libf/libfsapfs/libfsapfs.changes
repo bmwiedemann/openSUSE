@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov  3 09:36:57 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20221102
+  * Moved LZVN compression to libfmos
+  * More unspecified updates
+
+-------------------------------------------------------------------
 Mon Aug 29 09:30:38 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update build requirement on libcfile

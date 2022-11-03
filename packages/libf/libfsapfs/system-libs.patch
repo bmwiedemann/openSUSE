@@ -5,15 +5,15 @@ Some dirs are not present in snapshots directly generated from git
 (nor are they marked as a submodule). Patch it out, since we have
 them as system libs.
 ---
- Makefile.am  |   32 --------------------------------
- configure.ac |   16 ----------------
- 2 files changed, 48 deletions(-)
+ Makefile.am  |   34 ----------------------------------
+ configure.ac |   17 -----------------
+ 2 files changed, 51 deletions(-)
 
-Index: libfsapfs/Makefile.am
+Index: libfsapfs-20221102/Makefile.am
 ===================================================================
---- libfsapfs.orig/Makefile.am
-+++ libfsapfs/Makefile.am
-@@ -3,22 +3,6 @@ ACLOCAL_AMFLAGS = -I m4
+--- libfsapfs-20221102.orig/Makefile.am
++++ libfsapfs-20221102/Makefile.am
+@@ -3,23 +3,6 @@ ACLOCAL_AMFLAGS = -I m4
  SUBDIRS = \
  	include \
  	common \
@@ -31,12 +31,13 @@ Index: libfsapfs/Makefile.am
 -	libfdata \
 -	libfdatetime \
 -	libfguid \
+-	libfmos \
 -	libhmac \
 -	libcaes \
  	libfsapfs \
  	pyfsapfs \
  	pyfsapfs-python2 \
-@@ -80,22 +64,6 @@ lib: library
+@@ -80,23 +63,6 @@ lib: library
  
  library:
  	(cd $(srcdir)/common && $(MAKE) $(AM_MAKEFLAGS))
@@ -54,16 +55,17 @@ Index: libfsapfs/Makefile.am
 -	(cd $(srcdir)/libfdata && $(MAKE) $(AM_MAKEFLAGS))
 -	(cd $(srcdir)/libfdatetime && $(MAKE) $(AM_MAKEFLAGS))
 -	(cd $(srcdir)/libfguid && $(MAKE) $(AM_MAKEFLAGS))
+-	(cd $(srcdir)/libfmos && $(MAKE) $(AM_MAKEFLAGS))
 -	(cd $(srcdir)/libhmac && $(MAKE) $(AM_MAKEFLAGS))
 -	(cd $(srcdir)/libcaes && $(MAKE) $(AM_MAKEFLAGS))
  	(cd $(srcdir)/libfsapfs && $(MAKE) $(AM_MAKEFLAGS))
  	(cd $(srcdir)/po && $(MAKE) $(AM_MAKEFLAGS))
  
-Index: libfsapfs/configure.ac
+Index: libfsapfs-20221102/configure.ac
 ===================================================================
---- libfsapfs.orig/configure.ac
-+++ libfsapfs/configure.ac
-@@ -183,22 +183,6 @@ dnl Generate Makefiles
+--- libfsapfs-20221102.orig/configure.ac
++++ libfsapfs-20221102/configure.ac
+@@ -185,23 +185,6 @@ dnl Generate Makefiles
  AC_CONFIG_FILES([Makefile])
  AC_CONFIG_FILES([include/Makefile])
  AC_CONFIG_FILES([common/Makefile])
@@ -81,6 +83,7 @@ Index: libfsapfs/configure.ac
 -AC_CONFIG_FILES([libfdata/Makefile])
 -AC_CONFIG_FILES([libfdatetime/Makefile])
 -AC_CONFIG_FILES([libfguid/Makefile])
+-AC_CONFIG_FILES([libfmos/Makefile])
 -AC_CONFIG_FILES([libhmac/Makefile])
 -AC_CONFIG_FILES([libcaes/Makefile])
  AC_CONFIG_FILES([libfsapfs/Makefile])
