@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Mon Oct 31 10:05:48 UTC 2022 - david.anes@suse.com
+
+- Update to version 1.20.6:
+  * release: watchexec-cli v1.20.6 
+  * release: watchexec v2.0.2
+  * Default release pr version to patch
+  * Enable OIDC
+  * Checkout before setting up signing
+  * Debug gitsign
+  * Document the absolute crate release order
+  * Use gitsign for release-pr commits
+  * release: watchexec-filterer-globset v1.0.1
+  * release: watchexec-filterer-tagged v0.1.1
+
+- Many changes since 1.12 version, see 
+  https://github.com/watchexec/watchexec for full details.
+
+-------------------------------------------------------------------
+Fri Apr 24 17:25:46 UTC 2020 - R. Tyler Croy <rtyler@brokenco.de>
+
+- initial packaging of watchexec
