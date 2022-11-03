@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 %define         skip_python36 1
 %bcond_without     test
@@ -42,7 +41,6 @@ Requires:       python-greenlet
 Requires:       python-pygments
 Requires:       python-pyxdg
 Requires:       python-requests
-Requires:       python-six >= 1.5
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     python-cwcwidth
@@ -59,7 +57,6 @@ BuildRequires:  %{python_module greenlet}
 BuildRequires:  %{python_module pygments}
 BuildRequires:  %{python_module pyxdg}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module six >= 1.5}
 BuildRequires:  %{python_module wcwidth}
 %endif
 %ifpython2

@@ -101,4 +101,14 @@
     <comment></comment>
     <requestid>1002730</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>73436e2b2cd05b2bdfdb7328fa5b85a5</srcmd5>
+    <version>0.23</version>
+    <time>1667499297</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove python-six not needed dependency
+- Remove python_module macro definition
+</comment>
+    <requestid>1033061</requestid>
+  </revision>
 </revisionlist>
