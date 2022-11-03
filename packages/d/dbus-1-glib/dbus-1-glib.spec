@@ -1,7 +1,7 @@
 #
 # spec file for package dbus-1-glib
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,6 +45,8 @@ GLib thread abstraction and main loop.
 Summary:        GLib-based library for using D-Bus
 Provides:       %{name} = %{version}
 Obsoletes:      %{name} < %{version}
+# Split provides: libdbus-glib-1.so.2 used to be in dbus-1-glib before 0.112
+Provides:       %{name}:%{_libdir}/libdbus-glib-1.so.2
 
 %description -n %{soname}
 D-Bus add-on library to integrate the standard D-Bus library with the
@@ -75,6 +77,7 @@ This package contains developer documentation.
 
 %package -n dbus-1-glib-tool
 Summary:        Tool package for D-Bus/GLib bindings
+Requires:       %{name} = %{version}
 
 %description -n dbus-1-glib-tool
 D-Bus add-on tool to integrate the standard D-Bus library with the
@@ -86,6 +89,9 @@ This package contains dbus-binding-tool and manpage.
 Summary:        Bash-completion package for D-Bus/GLib bindings
 Requires:       dbus-1-glib-tool
 Supplements:    (dbus-1-glib-tool and bash-completion)
+# Up to version 0.112, the entire dbus-1-glib was in an unsplit package
+Provides:       dbus-1-glib:/etc/bash_completion.d/dbus-bash-completion.sh
+Conflicts:      dbus-1-glib < 0.112
 
 %description bash-completion
 D-Bus add-on tool to integrate the standard D-Bus library with the

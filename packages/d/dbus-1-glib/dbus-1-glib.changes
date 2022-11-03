@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov  2 13:12:33 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Try to guard against incomplete update stacks (boo#1202241):
+  + Add split-provides to libdbus-1-glib and bash-completion
+    sub-package.
+  + Add explicit conflict to bash-completion subpackage against
+    dbus-1-glib < 0.112 (when the package split happened)
+  + Ensure dbus-1-glib-tool gets the correct library version
+    installed.
+
+-------------------------------------------------------------------
 Wed Dec  8 08:11:36 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add relevant dbus-1-glib-<targettype> provides/obsoletes also in
