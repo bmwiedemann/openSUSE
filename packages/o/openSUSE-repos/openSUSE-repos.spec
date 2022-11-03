@@ -61,7 +61,7 @@ Name:           openSUSE-repos
 %else
 Name:           openSUSE-repos-%{theme}
 %endif
-Version:        20221012.1c71da6
+Version:        20221103.b904c44
 Release:        0
 Summary:        openSUSE package repositories
 License:        MIT
@@ -70,8 +70,6 @@ URL:            https://github.com/openSUSE/openSUSE-repos
 Source:         openSUSE-repos-%{version}.tar.xz
 #boo#1203715
 BuildRequires:  -post-build-checks
-# We're compatible with any SUSE Linux distribution
-Requires:       suse-release
 Requires:       zypper
 Conflicts:      otherproviders(openSUSE-repos)
 Provides:       openSUSE-repos
