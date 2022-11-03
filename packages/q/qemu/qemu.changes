@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Oct 26 11:17:37 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- qtests test are not realiable when run inside OBS builders, so
+  let's disable that part of the testsuite for now. There is work
+  ongoing to run it somewhere else (on dedicated hosts) to avoid
+  loosing coverage. (bsc#1204566)
+
+-------------------------------------------------------------------
+Fri Oct 24 16:28:16 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Improve dependency handling (e.g., what's recommended vs. what's
+  required.
+- Add a subpackage (qemu-headless) that brings in all the packages
+  that are needed for creating VMs with tools like virt-install
+  or VirtManager, run either locally or from a remote host.
+  (bsc#1202166)
+
+-------------------------------------------------------------------
+Mon Oct 10 10:28:11 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Build fails due to exceeding 10 GB disk limit (10430 MB):
+  raise disk space contraint to 12 GB
+
+-------------------------------------------------------------------
 Fri Oct  7 12:35:50 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
 
 - Fixes bsc#1204082

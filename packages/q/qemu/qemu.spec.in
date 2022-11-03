@@ -98,6 +98,8 @@
 %define with_daxctl 1
 %endif
 
+%bcond_with chkqtests
+
 # enforce pxe rom sizes for migration compatability from SLE 11 SP3 forward
 # the following need to be > 64K
 %define supported_nics_large {e1000 rtl8139}
@@ -337,6 +339,7 @@ Recommends:     qemu-ui-spice-app
 # End of "ifarch s390x"
 %endif
 Recommends:     qemu-block-curl
+Recommends:     qemu-block-nfs
 Recommends:     qemu-ksm = %{qemuver}
 Recommends:     qemu-tools
 Recommends:     qemu-ui-curses
@@ -347,7 +350,6 @@ Suggests:       qemu-accel-qtest
 Suggests:       qemu-block-dmg
 Suggests:       qemu-block-gluster
 Suggests:       qemu-block-iscsi
-Suggests:       qemu-block-nfs
 Suggests:       qemu-block-ssh
 Suggests:       qemu-chardev-baum
 Suggests:       qemu-extra
@@ -361,6 +363,27 @@ Obsoletes:      qemu-ui-sdl < %{qemuver}
 # End of Requires, Recommends, etc for qemu.
 # There isn't any for qemu-linux-user.
 %endif
+
+%package headless
+Summary:        Minimum set of packages for having a functional QEMU
+Group:          System/Emulators/PC
+Version:        %{qemuver}
+Release:        0
+Requires:       qemu
+Requires:       qemu-tools
+%if %{legacy_qemu_kvm}
+Requires:       qemu-kvm
+%endif
+Requires:       qemu-hw-usb-redirect
+# qemu-ui-spice-core will bring in qemu-audio-spice qemu-ui-opengl too
+Requires:       qemu-ui-spice-core
+Requires:       qemu-chardev-spice
+
+%description headless
+%{generic_qemu_description}
+
+This meta-package brings in, as dependencies, the minimum set of packages
+currently necessary for having a functional (headless) QEMU/KVM stack.
 
 %if "%{name}" == "qemu-linux-user"
 # Description and files for the qemu-linux-user package
@@ -509,9 +532,14 @@ Requires:       qemu-ipxe
 Requires:       qemu-seabios
 Requires:       qemu-sgabios
 Requires:       qemu-vgabios
+%ifarch x86_64
+Requires:       qemu-ovmf-x86_64
+%else
+Recommends:     qemu-ovmf-ia32
+Recommends:     qemu-ovmf-x86_64
+%endif
 Recommends:     ovmf
 Recommends:     qemu-microvm
-Recommends:     qemu-ovmf-x86_64
 
 %description x86
 %{generic_qemu_description}
@@ -2217,10 +2245,9 @@ echo 'int main (void) { return 0; }' > %{srcdir}/tests/unit/test-seccomp.c
 # This would be `make_build check-block`. But iotests are not reliable
 # if ran in parallel in OBS, so let's be slow for now.
 make -O V=1 VERBOSE=1 -j1 check-block
-# Run qtests in parallel. If it becomes unreliable, we can try something
-# like this: make -O V=1 VERBOSE=1 -j1 check-qtest
-%if !0%{?qemu_user_space_build}
-%make_build check-qtest
+%if %{with chkqtests} && !0%{?qemu_user_space_build}
+# Run qtests sequentially, as it's too unreliable, when run in OBS, if parallelized
+make -O V=1 VERBOSE=1 -j1 check-qtest
 %endif
 # Last step will be to run a full check-report, but we will
 # enable this at a later point
