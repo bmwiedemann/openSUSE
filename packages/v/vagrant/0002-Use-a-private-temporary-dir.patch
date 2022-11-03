@@ -1,7 +1,7 @@
-From df5d75cdb6c3f415e53bd494d3db5e4c809d8230 Mon Sep 17 00:00:00 2001
+From 2e7fbb949344d7918f2b80ad35c3e95018f07ba0 Mon Sep 17 00:00:00 2001
 From: Antonio Terceiro <terceiro@debian.org>
 Date: Wed, 22 Oct 2014 09:40:14 -0200
-Subject: [PATCH 02/13] Use a private temporary dir
+Subject: [PATCH 02/12] Use a private temporary dir
 
 Without this vagrant will clutter $TMPDIR with dozens of even hundreds
 of temporary files (~4 per vagrant invocation).
@@ -15,7 +15,7 @@ Signed-off-by: Johannes Kastl <kastl@b1-systems.de>
  create mode 100644 lib/vagrant/util/tempfile.rb
 
 diff --git a/lib/vagrant/box.rb b/lib/vagrant/box.rb
-index 41b63b292..b2d4c6a05 100644
+index 90dc69d38..4ee79b988 100644
 --- a/lib/vagrant/box.rb
 +++ b/lib/vagrant/box.rb
 @@ -9,6 +9,7 @@ require "vagrant/util/downloader"
@@ -26,7 +26,7 @@ index 41b63b292..b2d4c6a05 100644
  
  module Vagrant
    # Represents a "box," which is a package Vagrant environment that is used
-@@ -124,7 +125,7 @@ module Vagrant
+@@ -142,7 +143,7 @@ module Vagrant
      # @param [Hash] download_options Options to pass to the downloader.
      # @return [BoxMetadata]
      def load_metadata(download_options={})
@@ -36,10 +36,10 @@ index 41b63b292..b2d4c6a05 100644
  
        url = @metadata_url
 diff --git a/lib/vagrant/util.rb b/lib/vagrant/util.rb
-index c135dacc2..2d14897a1 100644
+index 4b3e0ff09..cacead1bc 100644
 --- a/lib/vagrant/util.rb
 +++ b/lib/vagrant/util.rb
-@@ -46,6 +46,8 @@ module Vagrant
+@@ -53,6 +53,8 @@ module Vagrant
      autoload :SilenceWarnings,           'vagrant/util/silence_warnings'
      autoload :SSH,                       'vagrant/util/ssh'
      autoload :StackedProcRunner,         'vagrant/util/stacked_proc_runner'
@@ -94,5 +94,5 @@ index 000000000..0cbbb53ac
 +  FileUtils.rm_rf(Vagrant::Util::Tempfile.private_tmpdir)
 +end
 -- 
-2.35.1
+2.38.1
 

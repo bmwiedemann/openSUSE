@@ -26,7 +26,7 @@
 
 
 Name:           vagrant
-Version:        2.2.19
+Version:        2.3.2
 Release:        0
 Summary:        Tool for building and distributing virtualized development environments
 License:        MIT
@@ -57,11 +57,9 @@ Patch6:         0006-do-not-abuse-relative-paths-in-docker-plugin-to-make.patch
 Patch7:         0007-Don-t-abuse-relative-paths-in-plugins.patch
 Patch8:         0008-Skip-failing-tests.patch
 Patch9:         0009-Disable-Subprocess-unit-test.patch
-Patch10:        0010-Add-support-for-Ruby-3.1.patch
-Patch11:        0011-Bump-version-of-ed25519-to-1.3.0.patch
-Patch12:        0012-Bump-rspec-dependency-to-3.11.0.patch
-Patch13:        0013-Stop-using-the-last-argument-as-kwargs-in-unit-tests.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Patch10:        0010-Remove-dependency-on-grpc-tools.patch
+Patch11:        0011-Bump-net-ssh-to-7.0.patch
+Patch12:        0012-Relax-rspec-dependency-to-3.11.patch
 
 # force only one ruby version
 # CAUTION: if you change this, then you *must* also change the sed calls which
@@ -95,14 +93,16 @@ BuildRequires:  %{rubygem bundler}
 BuildRequires:  %{rubygem bcrypt_pbkdf:1 >= 1.1 }
 #  s.add_dependency "childprocess", "~> 4.1.0"
 BuildRequires:  %{rubygem childprocess:4.1 }
-# PATCHED
 #  s.add_dependency "ed25519", "~> 1.3.0"
 BuildRequires:  %{rubygem ed25519:1.3 >= 1.3.0 }
 #  s.add_dependency "erubi"
 BuildRequires:  %{rubygem erubi }
+#  s.add_dependency 'googleapis-common-protos-types', '~> 1.3'
+BuildRequires:  %{rubygem googleapis-common-protos-types:1 >= 1.3}
+#  s.add_dependency "grpc"
+BuildRequires:  %{rubygem grpc}
 #  s.add_dependency "i18n", "~> 1.8"
 BuildRequires:  %{rubygem i18n:1 >= 1.8 }
-# PATCHED
 #  s.add_dependency "listen", "~> 3.6"
 BuildRequires:  %{rubygem listen:3 >= 3.6 }
 #  s.add_dependency "hashicorp-checkpoint", "~> 0.1.5"
@@ -112,19 +112,23 @@ BuildRequires:  %{rubygem log4r:1.1 >= 1.1.9 }
 BuildConflicts:  %{rubygem log4r:1.1 >= 1.1.11 }
 #  s.add_dependency "mime-types", "~> 3.3"
 BuildRequires:  %{rubygem mime-types:3 >= 3.3 }
-# PATCHED
 #  s.add_dependency "net-ftp", "~> 0.1"
 BuildRequires:  %{rubygem net-ftp:0 >= 0.1 }
-#  s.add_dependency "net-ssh", ">= 6.1.0", "< 6.2"
-BuildRequires:  %{rubygem net-ssh:6.1 >= 6.1.0 }
-#  s.add_dependency "net-sftp", "~> 3.0"
-BuildRequires:  %{rubygem net-sftp:3 }
-#  s.add_dependency "net-scp", "~> 3.0.0"
-BuildRequires:  %{rubygem net-scp:3.0 }
+# PATCHED
+#  s.add_dependency "net-ssh", "~> 7.0"
+BuildRequires:  %{rubygem net-ssh:7 }
+# PATCHED
+#  s.add_dependency "net-sftp", "~> 4.0"
+BuildRequires:  %{rubygem net-sftp:4 }
+# PATCHED
+#  s.add_dependency "net-scp", "~> 4.0"
+BuildRequires:  %{rubygem net-scp:4 }
 #  s.add_dependency "rb-kqueue", "~> 0.2.0"
 BuildRequires:  %{rubygem rb-kqueue:0.2 }
 #  s.add_dependency "rexml", "~> 3.2"
 BuildRequires:  %{rubygem rexml:3 >= 3.2 }
+#  s.add_dependency "rgl", "~> 0.5.7"
+BuildRequires:  %{rubygem rgl:0.5 >= 0.5.7}
 #  s.add_dependency "rubyzip", "~> 2.0"
 BuildRequires:  %{rubygem rubyzip:2}
 # Intentionally removed, wdm only works on Windows
@@ -138,16 +142,20 @@ BuildRequires:  %{rubygem winrm-elevated:1 >= 1.2.1 }
 #  s.add_dependency "vagrant_cloud", "~> 3.0.5"
 BuildRequires:  %{rubygem vagrant_cloud:3.0 >= 3.0.5 }
 
+# PATCHED -> removed
+#  s.add_development_dependency "grpc-tools", "~> 1.41.1"
+# BuildRequires:  %%{rubygem grpc-tools:1.41 >= 1.41.1}
+
 # devel dependencies:
 #  s.add_development_dependency "rake", "~> 13.0"
 BuildRequires:  %{rubygem rake:13 }
 # PATCHED
-#  s.add_development_dependency "rspec", "~> 3.11.0"
-BuildRequires:  %{rubygem rspec:3.11 }
+#  s.add_development_dependency "rspec", "~> 3.11"
+BuildRequires:  %{rubygem rspec:3 >= 3.11 }
 #  s.add_development_dependency "rspec-its", "~> 1.3.0"
 BuildRequires:  %{rubygem rspec-its:1.3 }
-#  s.add_development_dependency "fake_ftp", "~> 0.1.1"
-BuildRequires:  %{rubygem fake_ftp:0.1 >= 0.1.1 }
+#  s.add_development_dependency "fake_ftp", "~> 0.3.0"
+BuildRequires:  %{rubygem fake_ftp:0.3 >= 0.3.0 }
 #  s.add_development_dependency "webrick", "~> 1.7.0"
 BuildRequires:  %{rubygem webrick:1.7 }
 
@@ -183,14 +191,12 @@ BuildRequires:  fdupes
 Requires:       %{rubygem bcrypt_pbkdf:1 >= 1.1 }
 #    s.add_dependency "childprocess", "~> 4.1.0"
 Requires:       %{rubygem childprocess:4.1}
-# PATCHED
 #   s.add_dependency "ed25519", "~> 1.3.0"
 Requires:       %{rubygem ed25519:1.3 >= 1.3.0}
 #  s.add_dependency "erubi"
 Requires:       %{rubygem erubi}
 #  s.add_dependency "i18n", "~> 1.8"
 Requires:       %{rubygem i18n:1 >= 1.8}
-# PATCHED
 #  s.add_dependency "listen", "~> 3.6"
 Requires:       %{rubygem listen:3 >= 3.6}
 #  s.add_dependency "hashicorp-checkpoint", "~> 0.1.5"
@@ -200,15 +206,17 @@ Requires:       %{rubygem log4r:1.1 >= 1.1.9 }
 Requires:       %{rubygem log4r:1.1 < 1.1.11 }
 #  s.add_dependency "mime-types", "~> 3.3"
 Requires:       %{rubygem mime-types:3 >= 3.3}
-# PATCHED
 #  s.add_dependency "net-ftp", "~> 0.1"
 BuildRequires:  %{rubygem net-ftp:0 >= 0.1 }
-#  s.add_dependency "net-ssh", ">= 6.1.0", "< 6.2"
-Requires:       %{rubygem net-ssh:6.1 >= 6.1.0 }
-#  s.add_dependency "net-sftp", "~> 3.0"
-Requires:       %{rubygem net-sftp:3 }
-#  s.add_dependency "net-scp", "~> 3.0.0"
-Requires:       %{rubygem net-scp:3.0 }
+# PATCHED
+#  s.add_dependency "net-ssh", "~> 7.0"
+Requires:       %{rubygem net-ssh:7 }
+# PATCHED
+#  s.add_dependency "net-sftp", "~> 4.0"
+Requires:       %{rubygem net-sftp:4 }
+# PATCHED
+#  s.add_dependency "net-scp", "~> 4.0"
+Requires:       %{rubygem net-scp:4 }
 #  s.add_dependency "rb-kqueue", "~> 0.2.0"
 Requires:       %{rubygem rb-kqueue:0.2}
 #  s.add_dependency "rexml", "~> 3.2"
@@ -376,8 +384,10 @@ rm -f %{buildroot}%{_bindir}/vagrant.orig.%{rb_ruby_suffix}
 rm -f %{buildroot}%{vagrant_plugin_dir}/bin/vagrant.orig.%{rb_ruby_suffix}
 rm -f %{buildroot}%{vagrant_dir}/lib/vagrant/util.rb.orig
 
-# remove build script from vagrant
-rm -f %{buildroot}%{vagrant_dir}/.runner.sh
+# remove build scripts & nix stuff & go stuff
+rm -rf %{buildroot}%{vagrant_dir}/{.runner.sh,Dockerfile,Makefile,go.mod,go.sum,shell.nix,nix,gen.go,flake.lock,flake.nix,vagrant-config.hcl}
+# we use our own binstub
+rm -rf %{buildroot}%{vagrant_dir}/binstubs/
 
 %fdupes %{buildroot}%{dirname:%vagrant_plugin_dir}
 

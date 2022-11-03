@@ -1,4 +1,99 @@
 -------------------------------------------------------------------
+Tue Nov  1 13:29:55 UTC 2022 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 2.3.2
+
+  Rebase patches:
+  * 0001-bin-vagrant-silence-warning-about-installer.patch
+  * 0002-Use-a-private-temporary-dir.patch
+  * 0003-plugins-don-t-abuse-require_relative.patch.patch
+  * 0004-fix-vbox-package-boo-1044087-added-by-robert.muntean.patch
+  * 0005-do-not-depend-on-wdm.patch
+  * 0006-do-not-abuse-relative-paths-in-docker-plugin-to-make.patch
+  * 0007-Don-t-abuse-relative-paths-in-plugins.patch
+  * 0008-Skip-failing-tests.patch
+  * 0009-Disable-Subprocess-unit-test.patch
+
+  Removed patches:
+  * 0010-Add-support-for-Ruby-3.1.patch
+  * 0011-Remove-dependency-on-grpc-tools.patch (rebased as 0010-Remove-dependency-on-grpc-tools.patch)
+
+  Added patches:
+  * 0010-Remove-dependency-on-grpc-tools.patch
+  * 0011-Bump-net-ssh-to-7.0.patch
+  * 0012-Relax-rspec-dependency-to-3.11.patch
+
+## 2.3.2 (October 18, 2022)
+
+FEATURES:
+
+- provider/virtualbox: Add support for VirtualBox 7.0 [GH-12947]
+
+## 2.3.1 (September 29, 2022)
+
+IMPROVEMENTS:
+
+- core: Raise error if required metadata.json box fields are not present [GH-12895]
+- core: Provider helpful error when box version format is invalid [GH-12911]
+
+BUG FIXES:
+
+- Fix flakiness when bringing up a machine that forwards ssh [GH-12909]
+- communicator/ssh: Fix `private_key_path` behavior when `keys_only` is disabled [GH-12885]
+- synced_folder/nfs: Update exports file creation [GH-12910]
+- util/downloader: Fix user agent [GH-12925]
+
+VAGRANT-GO:
+
+- Support secret interactive input [GH-12876]
+- Support terminal coloring [GH-12888]
+- Validate if requested provider is usable and append/prepend information to errors [GH-12898]
+- Raise error if required metadata.json box fields are not present [GH-12919]
+
+-------------------------------------------------------------------
+Fri Sep  23 16:07:13 UTC 2022 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 2.3.0
+
+  Rebase patches:
+  * 0001-bin-vagrant-silence-warning-about-installer.patch
+  * 0002-Use-a-private-temporary-dir.patch
+  * 0003-plugins-don-t-abuse-require_relative.patch.patch
+  * 0004-fix-vbox-package-boo-1044087-added-by-robert.muntean.patch
+  * 0005-do-not-depend-on-wdm.patch
+  * 0006-do-not-abuse-relative-paths-in-docker-plugin-to-make.patch
+  * 0007-Don-t-abuse-relative-paths-in-plugins.patch
+  * 0008-Skip-failing-tests.patch
+  * 0009-Disable-Subprocess-unit-test.patch
+  * 0010-Add-support-for-Ruby-3.1.patch
+
+  Removed patches:
+  * 0011-Bump-version-of-ed25519-to-1.3.0.patch
+  * 0012-Bump-rspec-dependency-to-3.11.0.patch
+  * 0013-Stop-using-the-last-argument-as-kwargs-in-unit-tests.patch
+
+  Added patches:
+  * 0011-Remove-dependency-on-grpc-tools.patch
+
+## 2.3.0 (August 5, 2022)
+
+FEATURES:
+
+- core: Introduce vagrant-go [GH-12819]
+
+IMPROVEMENTS:
+
+- core: Set rsa-sha2 in kex algorithm set to enable in key exchange [GH-12584]
+- core/bundler: Improve Gem spec selection when resolving [GH-12567]
+- push/heroku: Display output from push [GH-12646]
+
+BUG FIXES:
+
+- host/darwin: Fix `NameError` for version capability [GH-12581]
+- push/ftp:  Fix `VAGRANT_CWD` handling [GH-12645]
+- guests/redhat: Fix NFS shares on Rocky 9 guests [GH-12813]
+
+-------------------------------------------------------------------
 Thu Sep 22 12:01:34 UTC 2022 - Dan Čermák <dcermak@suse.com>
 
 - Remove BuildRequires on rubygem-thor (no longer necessary)

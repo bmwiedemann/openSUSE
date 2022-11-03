@@ -343,4 +343,12 @@
     <comment>Remove BuildRequires on rubygem-thor (no longer necessary)</comment>
     <requestid>1005399</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>46c79a5080ee1756bd3e5afae0b0668f</srcmd5>
+    <version>2.3.2</version>
+    <time>1667501969</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1033033</requestid>
+  </revision>
 </revisionlist>
