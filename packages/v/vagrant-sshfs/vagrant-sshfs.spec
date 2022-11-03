@@ -37,6 +37,8 @@ Source2:        https://keybase.io/dustymabe/pgp_keys.asc#/%{name}.keyring
 Source3:        testsuite.sh
 # FIX-OPENSUSE use the Tumbleweed.$(uname -m) vagrant box instead of fedora/*-cloud-base
 Patch0:         0001-Use-opensuse-Tumbleweed.-uname-m-box-instead-of-Fedo.patch
+# FIX-OPENSUSE Use the root group for the synced folders (boo#1200894)
+Patch1:         0002-Use-the-root-group-for-the-synced-folders.patch
 BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
 BuildRequires:  vagrant >= 1.9.1

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov  3 15:23:38 UTC 2022 - Dan Čermák <dcermak@suse.com>
+
+- Add 0002-Use-the-root-group-for-the-synced-folders.patch to fix boo#1200894
+  Upstream started setting the wheel group for the synced folders, but this is
+  not available in the opensuse boxes. Thus we use the root group instead.
+
+-------------------------------------------------------------------
 Fri Jul  1 12:33:19 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix testsuite.sh: Follow changes of version 1.3.7, use

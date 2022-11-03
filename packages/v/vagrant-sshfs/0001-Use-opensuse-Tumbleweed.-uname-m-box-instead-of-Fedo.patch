@@ -1,7 +1,8 @@
 From 4b81caf95e5dc8e5eeba3f10f5c61584ddfd3101 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
 Date: Wed, 1 Apr 2020 22:34:10 +0200
-Subject: [PATCH] Use opensuse/Tumbleweed.$(uname -m) box instead of Fedora/36
+Subject: [PATCH 1/2] Use opensuse/Tumbleweed.$(uname -m) box instead of
+ Fedora/36
 
 ---
  test/misc/Vagrantfile | 2 +-
@@ -21,5 +22,5 @@ index 834ef40..92c4d16 100644
      config.vm.define host do | tmp |
          tmp.vm.hostname = host
 -- 
-2.35.3
+2.38.1
 
