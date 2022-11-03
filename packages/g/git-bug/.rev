@@ -12,4 +12,14 @@
 * prevents vendor lock-in: your usual service is down or went bad? You already have a full backup.</comment>
     <requestid>1029599</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cf36e0cadf82a2a6c5952ac53107f1bc</srcmd5>
+    <version>0.7.2+git.1666446996.55a2e8e</version>
+    <time>1667499307</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.2+git.1666446996.55a2e8e:
+  * doc: fix incorrect indentation
+</comment>
+    <requestid>1033080</requestid>
+  </revision>
 </revisionlist>
