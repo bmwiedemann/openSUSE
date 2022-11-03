@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 31 10:14:45 UTC 2022 - Martin Vidner <mvidner@suse.com>
+
+- Fix hash vs keyword arguments in RSpec expectations (bsc#1204871)
+- 4.5.8
+
+-------------------------------------------------------------------
 Tue Oct 25 12:19:45 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
 - Improve logging, use the new "log.group" call to group logs for
