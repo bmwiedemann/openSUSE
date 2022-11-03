@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov  3 11:41:40 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add drop-python2-support.patch to remove python-six
+  gh#Blosc/bloscpack#118
+- Remove python_module definition
+
+-------------------------------------------------------------------
 Sun Jan 16 16:12:38 UTC 2022 - Benjamin Greiner <code@bnavigator.de>
 
 - Remove unused coverage packages from dependencies

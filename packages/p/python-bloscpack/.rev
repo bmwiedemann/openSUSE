@@ -56,4 +56,15 @@
     <comment></comment>
     <requestid>946886</requestid>
   </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>414007d86f5d26983958a47bb9829a0d</srcmd5>
+    <version>0.16.0</version>
+    <time>1667499292</time>
+    <user>dimstar_suse</user>
+    <comment>- Add drop-python2-support.patch to remove python-six
+  gh#Blosc/bloscpack#118
+- Remove python_module definition
+</comment>
+    <requestid>1033055</requestid>
+  </revision>
 </revisionlist>

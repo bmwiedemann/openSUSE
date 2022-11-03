@@ -1,7 +1,7 @@
 #
 # spec file for package python-bloscpack
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 Name:           python-bloscpack
 Version:        0.16.0
 Release:        0
@@ -28,12 +26,13 @@ Source:         https://files.pythonhosted.org/packages/source/b/bloscpack/blosc
 # PATCH-FEATURE-UPSTREAM remove_nose.patch gh#Blosc/bloscpack#99 mcepl@suse.com
 # Remove nose dependency
 Patch0:         remove_nose.patch
+# PATCH-FIX-UPSTREAM drop-python2-support.patch gh#Blosc/bloscpack#118
+Patch1:         drop-python2-support.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-blosc
 Requires:       python-numpy
-Requires:       python-six
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     cryptography >= 1.3.4
@@ -46,7 +45,6 @@ BuildRequires:  %{python_module cryptography >= 1.3.4}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pyOpenSSL >= 0.14}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six}
 # /SECTION
 %python_subpackages
 
