@@ -1,7 +1,7 @@
 #
 # spec file for package powerstat
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2017-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,13 +18,13 @@
 
 
 Name:           powerstat
-Version:        0.02.26
+Version:        0.02.27
 Release:        0
 Summary:        Laptop power measuring tool
 License:        GPL-2.0-only
 Group:          System/Monitoring
-URL:            https://kernel.ubuntu.com/~cking/powerstat/
-Source:         http://kernel.ubuntu.com/~cking/tarballs/%{name}/%{name}-%{version}.tar.gz
+URL:            https://github.com/ColinIanKing/powerstat
+Source:         https://github.com/ColinIanKing/powerstat/archive/refs/tags/V%{version}.tar.gz
 
 %description
 Powerstat measures the power consumption of a mobile PC that has a battery
@@ -35,6 +35,7 @@ standard deviation and min/max of the gathered data.
 %package bash-completion
 Summary:        Bash Completion for %{name}
 Group:          System/Benchmark
+BuildRequires:  bash-completion
 Requires:       %{name} = %{version}
 Requires:       bash-completion
 Supplements:    (powerstat and bash-completion)
@@ -55,6 +56,7 @@ export CFLAGS="%{optflags}"
 
 %files
 %license COPYING
+%doc README.md
 %{_bindir}/powerstat
 %{_mandir}/man8/powerstat.8%{?ext_man}
 

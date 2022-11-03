@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Sep 24 09:31:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.02.27:
+  * added README
+  * snapcraft: update to core20
+  * Return uint32_t from proc_info_hash
+  * snap: add supported build architectures
+  * Fix whitespace in strlcpy 
+
+-------------------------------------------------------------------
 Mon Jun 28 12:31:56 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.02.26
