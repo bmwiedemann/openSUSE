@@ -18,7 +18,7 @@
 
 %define lname	libluksde1
 Name:           libluksde
-Version:        20220807
+Version:        20221103
 Release:        0
 Summary:        Library and tools to access LUKS Disk Encryption encrypted files
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
