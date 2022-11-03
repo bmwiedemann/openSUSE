@@ -17,14 +17,13 @@
 
 
 Name:           nvme-cli
-Version:        2.1.2
+Version:        2.2.1
 Release:        0
 Summary:        NVM Express user space tools
 License:        GPL-2.0-only
 Group:          Hardware/Other
 URL:            https://github.com/linux-nvme/nvme-cli/
 Source0:        nvme-cli-%{version}.tar.gz
-Source1:        nvme-cli-rpmlintrc
 # downstream patches
 Patch100:       0100-harden_nvmf-connect@.service.patch
 BuildRequires:  gcc
@@ -102,6 +101,12 @@ rm %{buildroot}%{_sysconfdir}/dracut/dracut.conf.d/70-nvmf-autoconnect.conf
 # for subpackage nvme-cli-regress-script:
 install -m 744 -D regress %{buildroot}%{_sbindir}/nvme-regress
 
+mkdir -p %{buildroot}%{_sbindir}
+pushd %{buildroot}%{_sbindir}
+ln -s service rcnvmefc-boot-connections
+ln -s service rcnvmf-autoconnect
+popd
+
 %define services nvmefc-boot-connections.service nvmf-connect.target nvmf-autoconnect.service
 
 %pre
@@ -113,7 +118,7 @@ if [ ! -s %{_sysconfdir}/nvme/hostnqn ]; then
 	%{_sbindir}/nvme gen-hostnqn > %{_sysconfdir}/nvme/hostnqn
 fi
 if [ ! -s %{_sysconfdir}/nvme/hostid ]; then
-	%{_bindir}/uuidgen > %{_sysconfdir}/nvme/hostid
+	sed -nr 's/.*:uuid:(.*?)$/\1/p' %{_sysconfdir}/nvme/hostnqn > %{_sysconfdir}/nvme/hostid
 fi
 %service_add_post %{services} nvmf-connect@.service
 
@@ -137,6 +142,8 @@ fi
 %license LICENSE
 %doc README.md
 %{_sbindir}/nvme
+%{_sbindir}/rcnvmefc-boot-connections
+%{_sbindir}/rcnvmf-autoconnect
 %{_mandir}/man1/nvme*.1*%{?ext_man}
 %{_udevrulesdir}/70-nvmf-autoconnect.rules
 %{_udevrulesdir}/71-nvmf-iopolicy-netapp.rules

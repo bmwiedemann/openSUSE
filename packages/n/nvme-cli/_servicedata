@@ -1,6 +1,6 @@
 <servicedata>
   <service name="tar_scm">
     <param name="url">https://github.com/linux-nvme/nvme-cli.git</param>
-    <param name="changesrevision">93dd92fefd36581fc795909ed4a1b07e23e92acc</param>
+    <param name="changesrevision">aff7a09da61a555cea25c48b24224b6e45b905df</param>
   </service>
 </servicedata>

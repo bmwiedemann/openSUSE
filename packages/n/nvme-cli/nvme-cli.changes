@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Wed Nov 02 17:10:58 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version 2.2.1:
+  * Added parsing for Solidigm telemetry observable data.
+  * add item ddr_ecc_err_cnt in smart-log-add
+  * build: Drop dependency on libuuid
+  * build: Fix endian check for cross build
+  * build: Remove unused uuid.wrap file
+  * build: Remove unusned uuid.h include
+  * completions: Add show-topology tab completion
+  * fabrics: Honor JSON config file in connect-all command
+  * fabrics: Trigger auto connect if config.json exists
+  * fabrics: fix 'persistent' handling during connect-all with JSON file
+  * fabrics: nvme config --modify depends on -n and -t argument
+  * fabrics: re-read the discovery log page when a discovery controller reconnected
+  * json: Support uint64 types serialization for older json-c versions
+  * nvme, plugins: fix __u64 -> unsigned long long assumptions
+  * nvme-print: Add missing values in id-ctrl for JSON output
+  * nvme-print: Handle NULL hostid in JSON output
+  * nvme-print: Output 128bit values as uint128 type instead of double
+  * nvme-print: Print fguid as a UUID
+  * nvme-print: Use uint128 JSON function for media_units_written
+  * nvme-print: decode MI status values
+  * nvme-print: decode status types
+  * nvme-print: fix wrong json key
+  * nvme: Add helper function to parse 16-bit comma separated list
+  * nvme: Add nvme_cmd wrapper for get_features
+  * nvme: Add show-topology command
+  * nvme: Add wrapper for Format NVM
+  * nvme: Add wrapper for Sanitize NVM
+  * nvme: Add wrappers for Get Log page helpers
+  * nvme: Add wrappers for Identify controller lists
+  * nvme: Add wrappers for NS attach/detach
+  * nvme: Add wrappers for NS management functions
+  * nvme: Add wrappers for basic NS identify
+  * nvme: Add wrappers for firmware commands
+  * nvme: Fix set feature command to get feature identifier 0Dh length as zero
+  * nvme: Introduce a union in struct nvme_dev for different transport types
+  * nvme: Introduce nvme_cli_ wrappers, wrap identify and identify_ctrl
+  * nvme: Make static nvme_dev private to open_dev(), use locals elsewhere
+  * nvme: Masks SSTAT in sanize-log output
+  * nvme: Remove static nvme_dev, allocate on open instead
+  * nvme: Use correct print format specifier for sizeof arguments
+  * nvme: Use local struct nvme_dev for show_registers & map_registers
+  * nvme: check if cfg.metadata is NULL before passing it to strlen()
+  * nvme: use helpers for checking status types
+  * plugins/innogrit: Include timer.h
+  * plugins/innogrit: add smart items for smart-log-add
+  * plugins/micron-nvme: Use correct print format specifier for sizeof arguments
+  * plugins/ocp: Include timer.h
+  * plugins/ocp: Output 128bit values as uint128 type instead of double
+  * plugins/ocp: pass struct nvme_dev to internal functions
+  * plugins/seagate: Add support for OCP
+  * plugins/toshiba: pass struct nvme_dev rather than fd + name
+  * plugins/virtium: Output 128bit values as uint128 type instead of double
+  * plugins/wdc: Add support for SN660 drive
+  * plugins/wdc: Add type case for feature id
+  * plugins/wdc: Output 128bit values as uint128 type instead of double
+  * plugins/wdc: pass a struct nvme_dev around rather than a fd
+  * plugins/wdc: pass struct nvme_dev rather than using global nvme_dev
+  * plugins/ytmc: pass struct nvme_dev rather than fd + name
+  * plugins: Use PRIu64 format specifier for 64bit types
+  * print: Add Controller Ready Timeout Exceeded HW error code
+  * solidgm: fix initialization warning
+  * solidigm: Added parsing for telemetry customer screenable data
+  * solidigm: Fix printf format for size_t variable
+  * solidigm: Updated Telemetry parsing code to MIT license.
+  * subprojects/libnvme: update for MI admin command coverage
+  * tests: Update license to GPL-2.0-or-later
+  * tree: Add NVMe-MI support
+  * tree: Add dev_fd() helper
+  * tree: Change nvme_dev from global to static
+  * tree: Combine NVMe file descriptor into struct nvme_dev
+  * tree: Move global device info to a single struct
+  * tree: fail on non-negative return values from parse_and_open
+  * udev: Add HOST_IFACE to udev rule
+  * util/json.h: Add json_object_get_uint64 fallback implementation
+  * util/json: Add 128 bit JSON helpers
+  * util/types: Add 128 bit conversion helpers
+  * util: Fix le128_to_cpu on big-endian
+  * util: Fix le128_to_cpu on little-endian
+  * util: Move common type conversion helpers into util section
+  * utils/json: Add json_object_new_uint64 for json-c < 0.14
+  * utils: Fix uint128_t usage
+  * wdc:  OCP Log page updates and fixes
+  * zns.c: report zones should be started after retrieved zone
+- Handle suse-missing-rclink lint warnings by providing the symlinks
+- Drop rpmlintrc as it is not needed anymore
+
+-------------------------------------------------------------------
 Wed Sep 21 08:32:38 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Support auto discovery, add %systemd_ordering to spec file (bsc#1186399)
