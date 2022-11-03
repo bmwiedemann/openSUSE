@@ -18,39 +18,33 @@
 
 %define _name mlt
 %define libname lib%{_name}
-%define lversion 7.8.0
+%define lversion 7.10.0
 %define sover 7
 %define lib_pkgname %{libname}-%{sover}-%{sover}
 %define _name_pp %{_name}++
 %define libname_pp lib%{_name_pp}
 %define sover_pp 7
-%define lversion_pp 7.8.0
+%define lversion_pp 7.10.0
 %define libpp_pkgname %{libname_pp}-%{sover_pp}-%{sover_pp}
 # Qt 6 is not available in Leap 15.3
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
 %bcond_without Qt6
 %endif
 Name:           %{libname}
-Version:        7.8.0
+Version:        7.10.0
 Release:        0
 Summary:        Multimedia framework for television broadcasting
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.mltframework.org
 Source0:        https://github.com/mltframework/mlt/archive/v%{version}.tar.gz#/%{_name}-%{version}.tar.gz
-Patch0:         0001-Another-take-on-fixing-the-wcrtomb-issue.patch
-# Improvements to allow building both the Qt 5 and Qt 6 mods and prevent loading both at the same time
-Patch1:         0001-Split-to-allow-installing-Qt5-and-Qt6-in-parallel-80.patch
-Patch2:         0002-Remove-deprecated-C-register-keyword-815.patch
-Patch3:         0003-Move-CMake-code-for-testing-to-the-right-position-fo.patch
-Patch4:         0004-Add-MLT_REPOSITORY_DENY-envvar-to-skip-plugin-loadin.patch
-Patch5:         0005-Avoid-to-load-both-qt-modules-816.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 %if %{with Qt6} && 0%{?sle_version}
 # Qt 6 requires a compiler that fully supports c++-17
 BuildRequires:  gcc10-c++
+BuildRequires:  gcc10-PIE
 %endif
 BuildRequires:  ladspa-devel
 BuildRequires:  pkgconfig
