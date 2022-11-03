@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Oct 27 13:16:53 UTC 2022 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.044:
+  * Move minion stats to unauthenticated route (#313)
+  * Fix occasional duplicate error in agg_download (#313)
+
+-------------------------------------------------------------------
+Thu Oct 27 09:32:56 UTC 2022 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.043:
+  * Add backend for download size reports (#309)
+  * Add mirrors to zsync response (#312)
+  * Prefer zsync over metalink responses (#312)
+  * Avoid race condition when new files are discovered while mirrors are scanned (#311)
+  * Fix generation of zsync hashes for big files (#310)
+  * t: add manual test for local folder (#308)
+  * Retry hashes import if a new file hasnt got any (#307)
+  * Add trailing slash for top folders (#306) - bmwiedermann
+
+-------------------------------------------------------------------
 Thu Sep 29 09:47:07 UTC 2022 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - Update to version 1.042:
