@@ -110,4 +110,79 @@
     <comment></comment>
     <requestid>1010575</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7c96058b04befbffa4f7afc1fe8b92d3</srcmd5>
+    <version>0.10.0</version>
+    <time>1667499311</time>
+    <user>dimstar_suse</user>
+    <comment>- Add drop-python2-support.patch to remove python-six dependency
+  gh#python-caldav/caldav#228
+- Remove python_module macro definition
+- Update to 0.10.0
+  ## Quick summary
+  * Work on a universal search method
+    * Refactoring, consolidated lots of slightly duplicated code into one
+      method to rule them all
+    * Support for things needed by the calendar-cli utility, like search by
+      categories
+  * Support for completion of recurring tasks
+  * More utilities for tasks
+    * Uncomplete-method ... for undoing the complete (recurrences not supported
+      though)
+    * get/set duration/dtstart/dtend (arguably this belongs to vobject and/or
+      icalendar)
+  * Other improvements:
+    * picklable URLs
+    * display_name convenience method
+    * possible to set child/parent relationships
+  * Potential bugfix: sequence number may need to be increased when saving
+    something to the calendar (not backported, this may have side effects)
+  ## Search method
+  Calendar now has a method search.  Here is some information from the
+  docstring:
+  Parameters supported:
+  * xml - use this search query, and ignore other filter parameters
+  * comp_class - set to event, todo or journal to restrict search to this
+    resource type.  Some server implementations require this to be set.
+  * todo - sets comp_class to Todo, and restricts search to pending tasks,
+    unless the next parameter is set ...
+  * include_completed - include completed tasks
+  * event - sets comp_class to event
+  * text attribute search parameters: category, uid, summary, omment,
+    description, location, status
+  * expand - do server side expanding of recurring events/tasks
+  * start, stop: do a time range search
+  * filters - other kind of filters (in lxml tree format)
+  * sort_keys - list of attributes to use when sorting
+  not supported yet:
+  * negated text match
+  * attribute not set
+  ## Completed tasks
+  While the RFCs do support recurring tasks, they are not very clear on the
+  details.  In v0.10 there are three different ways to complete a task.  The
+  first one is to ignore the RRULE property and mark the task as completed.
+  This is the backwards-compatibility mode - though, according to my
+  understanding of a &quot;recurring task&quot; this is the wrong way to do it.
+  The two other modes considers the task to be &quot;interval based&quot; is no BY-rules
+  are specified in the RRULE - meaning that if a task is supposed to be done
+  weekly, then a week should pass from it was completed and until one needs to
+  start with it again - no matter the DTSTART of the original instance - but
+  the standards may also be interpreted so that if the original task was to be
+  started at a Tuesday 10:00, then all recurrences should be started at a
+  Tuesday 10:00.
+  Both the modes stores a copy of the completed task, for the record.  The
+  &quot;safe&quot; mode stores the copy as a completely independent task, and modifies
+  the DTSTART/DUE of the original task - so the completed task is not linked up
+  to the recurring task.  (One may eventually try to make a link by
+  establishing a &quot;parent task&quot;).
+  The &quot;thisandfuture&quot;-mode will establish the completed task as a separate
+  recurrence in a recurrence set.  The non-completed task is also duplicated
+  with a new DTSTART set and range set to THISANDFUTURE. As I understand the
+  RFC, this is the way to handle interval-based tasks, future recurrences will
+  then base their starting time on the DTSTART of the THISANDFUTURE task.  For
+  fixed tasks the THISANDFUTURE recurrence is moot, so I'm considering to
+  create a third mode as well.
+</comment>
+    <requestid>1033143</requestid>
+  </revision>
 </revisionlist>

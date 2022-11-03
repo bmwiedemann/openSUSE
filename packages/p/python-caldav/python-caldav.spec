@@ -16,26 +16,25 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global modname caldav
 Name:           python-%{modname}
-Version:        0.9.2
+Version:        0.10.0
 Release:        0
 Summary:        CalDAV (RFC4791) client library for Python
 License:        Apache-2.0 AND GPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://pypi.python.org/pypi/%{modname}
 Source:         https://files.pythonhosted.org/packages/source/c/caldav/%{modname}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM drop-python2-support.patch gh#python-caldav/caldav#228
+Patch1:         drop-python2-support.patch
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module vobject}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-lxml
 Requires:       python-requests
-Requires:       python-six
 Requires:       python-vobject
 BuildArch:      noarch
 %ifpython2
@@ -51,7 +50,7 @@ It can read all the tags, but only write a few things (create calendars,
 events, modify events and properties).
 
 %prep
-%setup -q -n %{modname}-%{version}
+%autosetup -p1 -n %{modname}-%{version}
 # Remove shebangs
 find caldav -name "*.py" | xargs sed -i '1 {/^#!/d}'
 
