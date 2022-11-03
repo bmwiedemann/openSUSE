@@ -21,7 +21,7 @@
 %define _rname  openssl
 Name:           openssl-3
 # Don't forget to update the version in the "openssl" package!
-Version:        3.0.5
+Version:        3.0.7
 Release:        0
 Summary:        Secure Sockets and Transport Layer Security
 License:        Apache-2.0
@@ -152,7 +152,7 @@ patch -p1 -R < %{P:8}
 export MALLOC_CHECK_=3
 export MALLOC_PERTURB_=$(($RANDOM % 255 + 1))
 # export HARNESS_VERBOSE=yes
-LD_LIBRARY_PATH="$PWD" make TESTS='-test_evp_fetch_prov -test_tsa' test -j1
+LD_LIBRARY_PATH="$PWD" make TESTS='-test_evp_fetch_prov -test_tsa -test_ssl_new -test_sslapi' test -j1
 # show ciphers
 gcc -o showciphers %{optflags} -I%{buildroot}%{_includedir} %{SOURCE5} -L%{buildroot}%{_libdir} -lssl -lcrypto
 LD_LIBRARY_PATH=%{buildroot}%{_libdir} ./showciphers
