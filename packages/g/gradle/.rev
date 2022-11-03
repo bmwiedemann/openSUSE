@@ -172,4 +172,22 @@
     <comment>Make the groovy/gradle combo build and run with Java 17</comment>
     <requestid>978708</requestid>
   </revision>
+  <revision rev="22" vrev="15">
+    <srcmd5>0084068f8a6e069bdcb8c3a9ac88807f</srcmd5>
+    <version>4.4.1</version>
+    <time>1667499233</time>
+    <user>dimstar_suse</user>
+    <comment>- Added patches:
+  * refractors-uses-and-creation-of-temp-dirs-to-use-unified-api.patch
+    * Created from commit 00ea1181ded00196664379edffa3ce043cb27191
+    * This centralization allows unified control over temporary file &amp; directory creation.
+      The goal is to drive all temp directory creation logic through a
+      set of common logical components. Doing so allows us to make our temp directory
+      usage relocatable.
+  * refractor-temporary-directory-usages.patch
+    * Created from commit 8c2f6b7db50ab071a289fb5c4cbb9b2125609105
+    * Refractor temporary directory usages to be safe
+  bsc#1184807 cve-2021-29428</comment>
+    <requestid>1032905</requestid>
+  </revision>
 </revisionlist>

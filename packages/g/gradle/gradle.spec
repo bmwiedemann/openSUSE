@@ -55,6 +55,8 @@ Patch302:       remove-timestamps.patch
 Patch303:       cast-estimated-runtime-to-long.patch
 Patch304:       port-to-guava-30.patch
 Patch305:       gradle-java17.patch
+Patch400:       refractors-uses-and-creation-of-temp-dirs-to-use-unified-api.patch
+Patch401:       refractor-temporary-directory-usages.patch
 # manpage build dependencies
 BuildRequires:  asciidoc
 # Generic build dependencies
