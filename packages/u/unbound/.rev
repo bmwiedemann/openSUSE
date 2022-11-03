@@ -525,4 +525,12 @@ Features
   fixes Non-Responsive Delegation Attack (CVE-2022-3204)</comment>
     <requestid>1006106</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>27d38828fdfd41cd82408f656c0538e7</srcmd5>
+    <version>1.17.0</version>
+    <time>1667499215</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1032866</requestid>
+  </revision>
 </revisionlist>
