@@ -19,7 +19,7 @@
 %define sover 1
 
 Name:           libnvme
-Version:        1.1
+Version:        1.2
 Release:        0
 Summary:        Linux-native nvme device management library
 License:        LGPL-2.1-or-later
@@ -75,8 +75,8 @@ Python binding part.
 %autosetup -p1
 
 %build
-%meson \
-    -Ddocs=man -Ddocs-build=true
+export KBUILD_BUILD_TIMESTAMP=@${SOURCE_DATE_EPOCH:-$(date +%s)}
+%meson -Ddocs=man %{?_with_docs_build:-Ddocs-build=true}
 %meson_build
 
 %install
@@ -107,7 +107,7 @@ Python binding part.
 %{_libdir}/%{name}-mi.so.%{sover}*
 
 %files -n python3-libnvme
-%{python3_sitearch}/libnvme
+%dir %{python3_sitearch}/libnvme
 %{python3_sitearch}/libnvme/*.so
 %{python3_sitearch}/libnvme/__init__.py
 %{python3_sitearch}/libnvme/nvme.py
