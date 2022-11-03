@@ -17,50 +17,50 @@
 
 
 Name:           sdcc
-Version:        4.1.0
+Version:        4.2.0
 Release:        0
 Summary:        Small Device C Compiler
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          Development/Languages/C and C++
-URL:            http://sdcc.sourceforge.net/
+URL:            https://sdcc.sourceforge.net/
 Source:         http://downloads.sourceforge.net/%{name}/%{name}-src-%{version}.tar.bz2
 Source1:        %{name}-rpmlintrc
 Patch0:         0001-Doc-Disable-fallback-to-dvipdfm-remove-non-pdftex-ta.patch
 Patch2:         sdcc_enable_additional_target_libs.patch
 Patch4:         sdcc-pcode.patch
 BuildRequires:  bison
-%if 0%{?suse_version} >= 1500
-BuildRequires:  libboost_headers-devel
-%else
-BuildRequires:  boost-devel
-%endif
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  glibc-devel
 BuildRequires:  gputils
-BuildRequires:  libstdc++-devel
-BuildRequires:  libtool
-BuildRequires:  ncurses-devel
-BuildRequires:  python3-base
 # documentation
 BuildRequires:  inkscape
+BuildRequires:  libstdc++-devel
+BuildRequires:  libtool
 BuildRequires:  lyx
 BuildRequires:  makeinfo
+BuildRequires:  ncurses-devel
+BuildRequires:  python3-base
 BuildRequires:  texlive-babel-english
+BuildRequires:  texlive-epstopdf
 BuildRequires:  texlive-fancyhdr
-BuildRequires:  texlive-makeindex-bin
-%if 0%{?suse_version} >= 1500
-BuildRequires:  texlive-footnotehyper
-%endif
 BuildRequires:  texlive-geometry
 BuildRequires:  texlive-latex
 BuildRequires:  texlive-makeindex
+BuildRequires:  texlive-makeindex-bin
 BuildRequires:  texlive-ulem
 BuildRequires:  zlib-devel
 BuildRequires:  tex(footnote.sty)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+%if 0%{?suse_version} >= 1500
+BuildRequires:  libboost_headers-devel
+%else
+BuildRequires:  boost-devel
+%endif
+%if 0%{?suse_version} >= 1500
+BuildRequires:  texlive-footnotehyper
+%endif
 
 %description
 SDCC is a C compiler for 8051 class and similar microcontrollers.
@@ -85,6 +85,7 @@ This package contains documentation for SDCC C compiler.
 Summary:        Small Device C Compiler
 Group:          Development/Languages/C and C++
 Requires:       %{name} = %{version}
+BuildArch:      noarch
 
 %description    libc-sources
 SDCC is a C compiler for 8051 class and similar microcontrollers.
@@ -96,7 +97,7 @@ This package contains sources for the C library and other files for
 development.
 
 %prep
-%setup -q -n %{name}
+%setup -q
 rm support/regression/tests/bug3304184.c
 # remove non-free libraries, see doc/README.txt: Licenses
 find device/non-free/ \( -iname \*.h -o -iname \*.c -o -iname \*.S \) -delete
@@ -105,22 +106,22 @@ find -name '*.[ch]' -perm -u=x | xargs chmod a-x
 %patch0 -p1
 %patch2 -p1
 %patch4
-sed -i '1 s@.*@#!/usr/bin/python3@' support/scripts/as2gbmap.py
+sed -i '1 s@.*@#!%{_bindir}/python3@' support/scripts/as2gbmap.py
 
 %build
 # Force configure to ignore missing, but unused TeX binaries
-export LATEX2HTML=/usr/bin/true
-export DVIPDFM=/usr/bin/true
-export PYTHON=/usr/bin/python3
+export LATEX2HTML=%{_bindir}/true
+export DVIPDFM=%{_bindir}/true
+export PYTHON=%{_bindir}/python3
 %configure \
     --docdir=%{_docdir}/sdcc \
     --disable-non-free \
     --disable-doc
 
 inkscape --export-area-drawing --export-pdf=doc/MCS51_named.pdf doc/MCS51_named.svg
-
-make %{?_smp_mflags}
-make %{?_smp_mflags} -C doc sdccman.pdf
+export LDFLAGS=-s
+%make_build
+%make_build -C doc sdccman.pdf
 
 %install
 %make_install
@@ -180,5 +181,7 @@ mv %{buildroot}%{_datadir}/%{name}/src %{buildroot}%{_datadir}/%{name}/lib/src
 %{_docdir}/%{name}/ucsim
 %{_docdir}/%{name}/sdas
 %{_docdir}/%{name}/sdccman.pdf
+%{_mandir}/man1/serialview.1%{?ext_man}
+%{_mandir}/man1/ucsim.1%{?ext_man}
 
 %changelog

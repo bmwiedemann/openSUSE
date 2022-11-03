@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Sep 29 22:05:23 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 4.2.0
+  * New Feature List:
+    - C23 memset_explicit
+    - Support for --oldralloc has been removed from the 
+      z80, z180, tlcs90, z80n, ez80_z80, r2k, r2ka, r3ka backends.
+    - gbz80 port now uses more efficient block-initalization of 
+      global variables (users of a custom crt0 need to adapt theirs).
+    - Full support for __z88dk_callee for the 
+      z80, z180, gbz80, tlcs90, z80n, ez80_z80, r2k, r2ka, r3ka, stm8 backends.
+    - Support for __raisonance, __iar and __cosmic calling conventions for stm8.
+    - Support for a new __sdcccall(1) calling convention in the stm8 port AS NEW DEFAULT.
+    - Support for a new __sdcccall(1) calling convention in the gbz80 port AS NEW DEFAULT.
+    - Support for a new __sdcccall(1) calling convention in the z80, z80n and z180 ports AS NEW DEFAULT.
+    - Support for a new __sdcccall(1) calling convention in the r2k, r2ka, r3k, tlcs90 and ez80_z80 ports.
+    - Removed support for --profile for gbz80, z80, z180, tlcs90, z80n, ez80_z80, r2k, r2ka, r3ka backends.
+    - The z80n port Z80N Core minimum version has been raised from 1.0 to 2.0.
+    - Improved rematerialization support in the 
+      stm8, gbz80, z80, z180, tlcs90, z80n, ez80_z80, r2k, r2ka, r3ka backends.
+    - The gbz80 port was renamed to sm83.
+    - New in-development mos6502 port.
+
+-------------------------------------------------------------------
 Thu Apr 28 09:56:56 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Adjust rpmlint filter:
