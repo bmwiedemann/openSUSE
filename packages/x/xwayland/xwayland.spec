@@ -24,7 +24,7 @@
 %endif
 
 Name:           xwayland
-Version:        22.1.4
+Version:        22.1.5
 Release:        0
 URL:            http://xorg.freedesktop.org/
 Summary:        X
@@ -33,7 +33,6 @@ Group:          System/X11/Servers/XF86_4
 Source0:        %{url}/archive/individual/xserver/%{name}-%{version}.tar.xz
 Source1:        %{url}/archive/individual/xserver/%{name}-%{version}.tar.xz.sig
 Source2:        xwayland.keyring
-Patch0:         U_Do-not-ignore-leave-events.patch
 BuildRequires:  meson
 BuildRequires:  ninja
 BuildRequires:  pkgconfig

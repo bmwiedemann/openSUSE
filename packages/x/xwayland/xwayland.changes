@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Nov  2 11:27:06 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 22.1.5
+  * This is a follow-up release to address a couple of regressions
+    which found their way into the recent xwayland-22.1.4 release,
+    namely:
+    + Double scroll wheel events with some Wayland compositors
+      https://gitlab.freedesktop.org/xorg/xserver/-/issues/1392
+    + Key keeps repeating when a window is closed while a key is pressed
+      https://gitlab.freedesktop.org/xorg/xserver/-/issues/1395
+- supersedes U_Do-not-ignore-leave-events.patch
+
+-------------------------------------------------------------------
 Mon Oct 24 13:50:22 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - U_Do-not-ignore-leave-events.patch

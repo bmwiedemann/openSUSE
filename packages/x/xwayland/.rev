@@ -177,4 +177,20 @@
   * U_xkb-proof-GetCountedString-against-request-length-at.patch</comment>
     <requestid>1030894</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>2cc5bf78100872205a8931fd6167b1a6</srcmd5>
+    <version>22.1.5</version>
+    <time>1667499210</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 22.1.5
+  * This is a follow-up release to address a couple of regressions
+    which found their way into the recent xwayland-22.1.4 release,
+    namely:
+    + Double scroll wheel events with some Wayland compositors
+      https://gitlab.freedesktop.org/xorg/xserver/-/issues/1392
+    + Key keeps repeating when a window is closed while a key is pressed
+      https://gitlab.freedesktop.org/xorg/xserver/-/issues/1395
+- supersedes U_Do-not-ignore-leave-events.patch</comment>
+    <requestid>1032862</requestid>
+  </revision>
 </revisionlist>
