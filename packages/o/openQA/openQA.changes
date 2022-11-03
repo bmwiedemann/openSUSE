@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 02 13:56:19 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1667397351.67490e1:
+  * Simplify database operations in WebAPI::Controller::Test
+
+-------------------------------------------------------------------
 Sat Oct 29 02:16:00 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1666949337.70dda4e:
