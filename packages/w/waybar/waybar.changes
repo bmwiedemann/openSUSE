@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Thu Nov  3 08:47:28 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.15:
+  * Added gamemode man file to meson #1566
+  * upower: unbreak build on libc++ systems (FreeBSD, OpenBSD, Chimera) #1567
+  * fix: vertical bar not anchored when width is set #1571
+  * fixes bluetooth module #1576
+  * Advertise river modules #1578
+  * river/mode: new module in #1579
+  * README.md: add river/mode to feature list in #1580
+  * Add total bandwidth formatting options #1575
+  * Retain instance name css class for custom modules #1588
+  * pulseaudio: avoid retaining outdated form factor #1590
+  * Last weekday applies Unix fmt #1599
+  * New Gentoo CI #1612
+  * CI: upgrade FreeBSD version to avoid future breakage #1621
+  * battery: fix wrong definition for "format" #1624
+  * Language: Add layout as class name #1628
+  * fix: adapt to fmt 9.0.0 breaking changes #1617
+  * CI: prevent FreeBSD breakage in future #1637
+  * Added UPower to README #1638
+  * sni: Use the pixmap if for the given icon name an icon could not be found #1627
+  * mpd: add filename formatter #1631
+  * Added a Hyprland backend and a Window module #1656
+  * Feature: sway/window can show 'shell' parameter #1651
+  * #1591 river escape window and mode #1668
+  * fix(network): dont escape essid in tooltip #1669
+  * scale icons for HiDPI monitor #1670
+  * style(lint): fix some files lint #1672
+  * add JACK module #1653
+  * Added a basic hyprland/language module #1657
+  * Add 'max-volume' option to pulseaudio #1659
+  * Add support for reading the config path from env #1600
+  * feat(idle-inhibitor): add tooltip format #1678
+  * Issue#1545. Calendar scrolling opportunity #1646
+  * Add battery format-time option for zero-padded minutes #1412
+  * added checking router id in handleEvent function, because module does… #1685
+  * Revert "added checking router id in handleEvent function, because module does…" #1686
+  * FreeBSD: Add support to temperature #1702
+  * mpd: encode "&" signs to "&" for gtk braunschweig in #1710
+  * Add config option to ignore Pulseaudio Sinks #1636
+  * Add config value for inhibitor default state. #1720
+  * Fixed pulseaudio max-volume configuration #1704
+  * Escape text in custom module #1687
+  * Use GtkButton instead of GtkLabel for Modules #1120
+  * Some logic issues in battery.cpp #1679
+  * Fix binary pow formatting for values between 1000 and 1024 #1630
+  * [FreeBSD] Use thermal-zone #1705
+  * [hyprland/window] Add option to show active window on a per monitor basis #1719
+  * pulseaudio: disconnect on destruction #1728
+  * [sway/scratchpad] New module for scratchpad of sway #1667
+  * added user module #1701
+  * Remove border effect on hover #1729
+  * [hyprland/window] Fix crash on quickly switching workspaces #1733
+  * Add option to wlr/workspaces to sort workspaces by number #1721
+  * FreeBSD: Add support to battery #1703
+  * Fix battery indicator crash on linux #1736
+  * Set default minimal width of buttons to zero #1737
+  * Fix button padding #1738
+  * Fix build with catch2>=3.0.0 #1724
+  * [hyprland/window] Implement rewrite option like in sway/window #1730
+  * Improve keyboard response time and enable hotplug support #1661
+  * Fixed gamemode module segfaulting when disconnecting monitor #1740
+  * fixed memory module not rounding numbers #1744
+  * taskbar: implement drag-and-drop task reordering #1747
+  * Revert "Escape text in custom module" #1758
+
+-------------------------------------------------------------------
 Tue Nov  1 03:00:49 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Fix spec file to use catch2 >= 3.0

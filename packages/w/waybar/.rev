@@ -633,4 +633,41 @@
     <comment></comment>
     <requestid>1032797</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>ea67c1cc6a8830c7a07fe5cda4bfc907</srcmd5>
+    <version>0.9.15</version>
+    <time>1667499278</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.15:
+  * Added gamemode man file to meson #1566
+  * upower: unbreak build on libc++ systems (FreeBSD, OpenBSD, Chimera) #1567
+  * fix: vertical bar not anchored when width is set #1571
+  * fixes bluetooth module #1576
+  * Advertise river modules #1578
+  * river/mode: new module in #1579
+  * README.md: add river/mode to feature list in #1580
+  * Add total bandwidth formatting options #1575
+  * Retain instance name css class for custom modules #1588
+  * pulseaudio: avoid retaining outdated form factor #1590
+  * Last weekday applies Unix fmt #1599
+  * New Gentoo CI #1612
+  * CI: upgrade FreeBSD version to avoid future breakage #1621
+  * battery: fix wrong definition for &quot;format&quot; #1624
+  * Language: Add layout as class name #1628
+  * fix: adapt to fmt 9.0.0 breaking changes #1617
+  * CI: prevent FreeBSD breakage in future #1637
+  * Added UPower to README #1638
+  * sni: Use the pixmap if for the given icon name an icon could not be found #1627
+  * mpd: add filename formatter #1631
+  * Added a Hyprland backend and a Window module #1656
+  * Feature: sway/window can show 'shell' parameter #1651
+  * #1591 river escape window and mode #1668
+  * fix(network): dont escape essid in tooltip #1669
+  * scale icons for HiDPI monitor #1670
+  * style(lint): fix some files lint #1672
+  * add JACK module #1653
+  * Added a basic hyprland/language module #1657
+  * Add 'max-volume' option to pulseaudio #1659</comment>
+    <requestid>1033009</requestid>
+  </revision>
 </revisionlist>
