@@ -613,4 +613,12 @@
   - hugin-flann-lz4.patch (not needed) (forwarded request 1012014 from pgajdos)</comment>
     <requestid>1031318</requestid>
   </revision>
+  <revision rev="76" vrev="7">
+    <srcmd5>f34a5fca99f11537e6b5a2180f56f811</srcmd5>
+    <version>2021.0.0</version>
+    <time>1667499276</time>
+    <user>dimstar_suse</user>
+    <comment>- Add xdg-data.patch: fixes bsc#1204546 (forwarded request 1032873 from polslinux)</comment>
+    <requestid>1033007</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov  2 12:29:44 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add xdg-data.patch: fixes bsc#1204546
+
+-------------------------------------------------------------------
 Mon Oct 17 07:41:24 UTC 2022 - pgajdos@suse.com
 
 - fixed on flann side by Stefan Brüns
