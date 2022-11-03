@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Nov  2 10:30:10 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.87.0
+  * Support for cloning from a backup from the last available timestamp in the Database service
+  * Support for third-party scanning using Qualys in the Vulnerability Scanning service
+  * Support for customer-provided encryption keys in the Logging Analytics service
+  * Support for connections for database resources in the GoldenGate service
+  * The properties `dataType`, `timeDataEnded`, `compartmentId` is made from required
+    to optional from the `StorageWorkRequestSummary` model in Log Analytics service
+- from version 2.86.0
+  * Support for the Disaster Recovery service
+  * Support for running code interactively with session applications using
+    statements in the Data Flow service
+  * Support for language custom models and language translation
+    in the AI Language service
+  * type `documents` is changed from `TextClassificationDocument` to `TextDocument` in
+    `BatchDetectLanguageTextClassificationDetails` model in the AI Language service
+  * type `documents` is changed from `SentimentsDocument` to `TextDocument` in
+    `BatchDetectLanguageSentimentsDetails` model in the AI Language service
+  * type `documents` is changed from `KeyPhraseDocument` to `TextDocument` in
+    `BatchDetectLanguageKeyPhrasesDetails` model in the AI Language service
+  * type `documents` is changed from `EntityDocument` to `TextDocument` in
+    `BatchDetectLanguageEntitiesDetails` model in the AI Language service
+- Refresh patches for new version
+  * ops_relax-python-depends.patch
+
+-------------------------------------------------------------------
 Mon Oct 10 12:08:10 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.85.0
