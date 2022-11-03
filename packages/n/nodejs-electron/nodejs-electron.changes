@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Nov  1 20:51:32 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+- New upstream release 21.2.1
+  * Fixed spurious promise rejection in webContents.loadURL when navigating to a hash.
+  * Updated Chromium to 106.0.5249.165.
+- Add electron-version-from-env.patch to fix build error
+- Add upstreamable patches fixing various erroneous C++ constructs
+  * ipcz-safe_math-Wuninitialized.patch
+  * passwords_counter-Wsubobject-linkage.patch
+  * static_constructors-Wstrict-aliasing.patch
+  * vector_math_impl-Wstrict-aliasing.patch
+  * webgl_image_conversion-Wstrict-aliasing.patch
+  * xr_cube_map-Wstrict-aliasing.patch
+
+-------------------------------------------------------------------
 Fri Oct 28 05:00:28 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
 - New upstream release 21.2.0
   * Set app's desktop file name and v8 flags according to package.json.

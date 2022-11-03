@@ -206,7 +206,7 @@ BuildArch:      i686
 
 
 Name:           nodejs-electron
-Version:        21.2.0
+Version:        21.2.1
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
 License:        AFL-2.0 AND Apache-2.0 AND blessing AND BSD-2-Clause AND BSD-3-Clause AND BSD-Protection AND BSD-Source-Code AND bzip2-1.0.6 AND IJG AND ISC AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND MIT-CMU AND MIT-open-group AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later) AND MPL-2.0 AND OpenSSL AND SGI-B-2.0 AND SUSE-Public-Domain AND X11
@@ -254,6 +254,7 @@ Patch68:        do-not-build-libvulkan.so.patch
 Patch69:        nasm-generate-debuginfo.patch
 Patch70:        disable-fuses.patch
 Patch71:        enable-jxl.patch
+Patch72:        electron-version-from-env.patch
 
 # PATCHES to use system libs
 Patch1002:      chromium-system-libusb.patch
@@ -340,6 +341,12 @@ Patch3085:      half_float-Wstrict-aliasing.patch
 Patch3086:      unzip-Wsubobject-linkage.patch
 Patch3087:      v8_initializer-PageAllocator-fpermissive.patch
 Patch3088:      fix-no-ppapi-build.patch
+Patch3089:      ipcz-safe_math-Wuninitialized.patch
+Patch3090:      passwords_counter-Wsubobject-linkage.patch
+Patch3091:      vector_math_impl-Wstrict-aliasing.patch
+Patch3092:      webgl_image_conversion-Wstrict-aliasing.patch
+Patch3093:      xr_cube_map-Wstrict-aliasing.patch
+Patch3094:      static_constructors-Wstrict-aliasing.patch
 
 %if %{with clang}
 BuildRequires:  clang
@@ -692,6 +699,8 @@ sed -i 's/OFFICIAL_BUILD/GOOGLE_CHROME_BUILD/' \
 # GN sets lto on its own and we need just ldflag options, not cflags
 %define _lto_cflags %{nil}
 
+# see electron-version-from-env.patch
+export SUSE_ELECTRON_VERSION=%{version}
 
 # Make sure python is python3
 install -d -m 0755 python3-path
@@ -1199,6 +1208,7 @@ gn gen out/Release --args="import(\"//electron/build/args/release.gn\") ${myconf
 #Build the supplementary stuff first to notice errors earlier bc building electron itself takes several hours.
 ninja -v %{?_smp_mflags} -C out/Release chromium_licenses
 ninja -v %{?_smp_mflags} -C out/Release copy_headers
+ninja -v %{?_smp_mflags} -C out/Release version
 
 # dump the linker command line (if any) in case of failure
 ninja -v %{?_smp_mflags} -C out/Release electron || (cat out/Release/*.rsp | sed 's/ /\n/g' && false)
@@ -1234,10 +1244,11 @@ install -pm 0755 libEGL.so               -t %{buildroot}%{_libdir}/electron/
 install -pm 0755 libGLESv2.so            -t %{buildroot}%{_libdir}/electron/
 install -pm 0755 libvk_swiftshader.so    -t %{buildroot}%{_libdir}/electron/
 install -pm 0644 vk_swiftshader_icd.json -t %{buildroot}%{_libdir}/electron/
+install -pm 0644 version                 -t %{buildroot}%{_libdir}/electron/
 popd
 
 
-install -pTm644 electron/ELECTRON_VERSION  %{buildroot}%{_libdir}/electron/version
+
 
 # Install folders required for webapps
 mkdir -p "%{buildroot}%{_sysconfdir}/webapps"
