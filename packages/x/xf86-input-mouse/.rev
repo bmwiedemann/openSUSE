@@ -122,4 +122,24 @@ Added a development package (forwarded request 129381 from klausi123)</comment>
     <comment></comment>
     <requestid>792798</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>9251b9f1d51475bcc17659a04fee7a1a</srcmd5>
+    <version>1.9.4</version>
+    <time>1667499187</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.9.4
+  * Update configure.ac bug URL for gitlab migration
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * sun_mouse: Fix -Wsign-compare warnings
+  * sun_mouse: Fix -Wnull-dereference warning
+  * checkForErraticMovements: Fix -Wempty-body warnings
+  * SetupMouse: fix -Wsign-compare warning
+  * InputDriverRec: Fix -Wmissing-field-initializers warning
+  * autoGood: quiet -Wimplicit-fallthrough warning
+  * configure: check for timingsafe_memcmp
+  * sun_mouse.c: #include &quot;config.h&quot;</comment>
+    <requestid>1032786</requestid>
+  </revision>
 </revisionlist>

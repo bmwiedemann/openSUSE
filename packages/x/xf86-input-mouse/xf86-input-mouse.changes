@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Nov  2 08:07:25 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.9.4
+  * Update configure.ac bug URL for gitlab migration
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * sun_mouse: Fix -Wsign-compare warnings
+  * sun_mouse: Fix -Wnull-dereference warning
+  * checkForErraticMovements: Fix -Wempty-body warnings
+  * SetupMouse: fix -Wsign-compare warning
+  * InputDriverRec: Fix -Wmissing-field-initializers warning
+  * autoGood: quiet -Wimplicit-fallthrough warning
+  * configure: check for timingsafe_memcmp
+  * sun_mouse.c: #include "config.h"
+
+-------------------------------------------------------------------
 Thu Apr  9 16:52:05 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Downgrade Supplements: xorg-x11-server to Enhances, to avoid the
