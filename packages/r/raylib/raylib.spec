@@ -17,7 +17,7 @@
 
 
 Name:           raylib
-Version:        4.0.0
+Version:        4.2.0
 Release:        0
 Summary:        C library for learning video game programming
 License:        Zlib
@@ -31,7 +31,10 @@ BuildRequires:  libXcursor-devel
 BuildRequires:  libXi-devel
 BuildRequires:  libXinerama-devel
 BuildRequires:  libXrandr-devel
-BuildRequires:  libglfw-devel
+# raylib ships an in-tree glfw that is a copy of *a* git revision of upstream glfw
+# containing features they need. They are unhappy that it takes such
+# a long time for 3.4 to be released. So ship it.
+#BuildRequires:  libglfw-devel >= 3.4
 
 %description
 A C library for learning video game programming.
@@ -40,17 +43,17 @@ raylib is inspired by the Borland BGI graphics library and by the XNA framework.
 %package -n raylib-devel
 Summary:        Development files for %{name}
 Group:          Development/Libraries/C and C++
-Requires:       libraylib400 = %{version}
+Requires:       libraylib420 = %{version}
 Requires:       openal-soft-devel
 
 %description -n raylib-devel
 Development files and headers for %{name}.
 
-%package -n libraylib400
+%package -n libraylib420
 Summary:        C library for learning video game programming
 Group:          System/Libraries
 
-%description -n libraylib400
+%description -n libraylib420
 A C library for learning video game programming.
 
 %prep
@@ -63,22 +66,21 @@ A C library for learning video game programming.
   -DBUILD_SHARED_LIBS=ON \
   -DCMAKE_BUILD_TYPE=Release \
   -DOpenGL_GL_PREFERENCE=GLVND \
-  -DUSE_EXTERNAL_GLFW=ON
+  -DUSE_EXTERNAL_GLFW=OFF
 
 %install
 %cmake_install
 
-%post -n libraylib400 -p /sbin/ldconfig
-%postun -n libraylib400 -p /sbin/ldconfig
+%post -n libraylib420 -p /sbin/ldconfig
+%postun -n libraylib420 -p /sbin/ldconfig
 
-%files -n libraylib400
+%files -n libraylib420
 %license LICENSE
 %{_libdir}/libraylib.so.*
 
 %files -n raylib-devel
 %doc CHANGELOG README.md
 %{_includedir}/raylib.h
-%{_includedir}/raudio.h
 %{_includedir}/raymath.h
 %{_includedir}/rlgl.h
 %{_libdir}/libraylib.so

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Nov  3 12:43:51 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Switch -DUSE_EXTERNAL_GLFW to OFF:
+  Earlier we build required on our glfw package.
+  But with raylib 4.2.0 they started to use features are only
+  in the development version.
+  They were unhappy that glfw 3.4.0 takes a long time to be
+  relased and decided to create a in-tree copy.
+  So for raylib 4.2.0 to build we need to use this in-tree version.
+
+-------------------------------------------------------------------
+Fri Aug 12 05:37:23 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.2.0:
+  * extra libraries cleanup:
+  * examples review
+  * rres resource format
+  * raygui official gui library
+  * new file system API
+  * New audio stream processors API
+  * For details see https://github.com/raysan5/raylib/releases/tag/4.2.0
+
+-------------------------------------------------------------------
 Mon Feb 28 17:50:08 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.0.0:

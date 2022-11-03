@@ -207,4 +207,27 @@
   * For details see: https://github.com/raysan5/raylib/blob/4.0.0/CHANGELOG</comment>
     <requestid>958098</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d32067a69e370e6903d9ab0e6748f21c</srcmd5>
+    <version>4.2.0</version>
+    <time>1667499301</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch -DUSE_EXTERNAL_GLFW to OFF:
+  Earlier we build required on our glfw package.
+  But with raylib 4.2.0 they started to use features are only
+  in the development version.
+  They were unhappy that glfw 3.4.0 takes a long time to be
+  relased and decided to create a in-tree copy.
+  So for raylib 4.2.0 to build we need to use this in-tree version.
+
+- Update to 4.2.0:
+  * extra libraries cleanup:
+  * examples review
+  * rres resource format
+  * raygui official gui library
+  * new file system API
+  * New audio stream processors API
+  * For details see https://github.com/raysan5/raylib/releases/tag/4.2.0</comment>
+    <requestid>1033063</requestid>
+  </revision>
 </revisionlist>
