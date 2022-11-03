@@ -34,7 +34,6 @@ Group:          Amusements/Games/3D/Shoot
 URL:            https://ioquake3.org
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  curl-devel
-BuildRequires:  nasm
 BuildRequires:  openal-soft-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(sdl2)
@@ -114,6 +113,7 @@ chmod 755 dobuild
 %if %{with installer}
 ./dobuild installer
 %endif
+
 #
 %install
 %if !%{with installeronly}
