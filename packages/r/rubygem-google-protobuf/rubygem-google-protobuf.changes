@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Nov  3 11:16:58 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- cleanup gem2rpm.yml:
+  - preamble:
+    - this works for 2.5 and up just fine so disabling 2.7 is not
+      needed.
+  - post install:
+    - we do not need to set +x bit just because the file has a she
+      bang line. it is clearly a library.
+    - use print0/xargs -r0 to avoid any problems with paths with
+      whitespaces.
+
+-------------------------------------------------------------------
+Thu Nov  3 11:01:20 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Add do-not-wrap.patch:
+  * wrapping memcpy caused loading 'google/protobuf' to hang
+
+-------------------------------------------------------------------
 Fri Oct 28 04:57:44 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 3.21.9

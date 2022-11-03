@@ -27,4 +27,23 @@
 </comment>
     <requestid>1032142</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>c604ce2cc978518bdbc3174919aacb62</srcmd5>
+    <version>3.21.9</version>
+    <time>1667501971</time>
+    <user>dimstar_suse</user>
+    <comment>- cleanup gem2rpm.yml:
+  - preamble:
+    - this works for 2.5 and up just fine so disabling 2.7 is not
+      needed.
+  - post install:
+    - we do not need to set +x bit just because the file has a she
+      bang line. it is clearly a library.
+    - use print0/xargs -r0 to avoid any problems with paths with
+      whitespaces.
+
+- Add do-not-wrap.patch:
+  * wrapping memcpy caused loading 'google/protobuf' to hang</comment>
+    <requestid>1033041</requestid>
+  </revision>
 </revisionlist>

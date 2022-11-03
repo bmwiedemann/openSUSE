@@ -15,12 +15,6 @@
 # ## used by gem2rpm
 # :disable_automatic_rdoc_dep: true
 # ## used by gem2rpm
-:preamble: |-
-  %global _lto_cflags %{nil}
-  %if 0%{?suse_version} > 1500
-  %define rb_build_versions ruby31
-  %define rb_build_ruby_abi ruby:3.1.0
-  %endif
 #   BuildRequires: foobar
 #   Requires: foobar
 # ## used by gem2rpm
@@ -39,9 +33,8 @@
 #   %endif
 # ## used by gem2rpm
 :post_install: |-
-  find %{buildroot}/%{_libdir}/ruby/gems/ \( -name '.sitearchdir.-.google.time' \) | xargs rm
-  find %{buildroot}/%{_libdir}/ruby/gems/ \( -name 'ruby-upb.c' -o -name 'ruby-upb.h' \) | xargs chmod -x
-  find %{buildroot}/%{_libdir}/ruby/gems/ \( -name 'descriptor_dsl.rb' \) | xargs chmod +x
+  find %{buildroot}/%{_libdir}/ruby/gems/ \( -name '.sitearchdir.-.google.time' \) -delete
+  find %{buildroot}/%{_libdir}/ruby/gems/ \( -name 'ruby-upb.c' -o -name 'ruby-upb.h' \) -print0 | xargs -r0 chmod -x
 # ## used by gem2rpm
 # :testsuite_command: |-
 #   (pushd %{buildroot}%{gem_base}/gems/%{mod_full_name} && rake test)
@@ -74,5 +67,8 @@
 #     :post: |-
 #       /bin/echo foo
 #
+:patches:
+  do-not-wrap.patch: -p1
 :sources:
   - rubygem-google-protobuf-rpmlintrc
+  - series

@@ -29,11 +29,6 @@ Release:        0
 %define mod_name google-protobuf
 %define mod_full_name %{mod_name}-%{version}
 # MANUAL
-%global _lto_cflags %{nil}
-%if 0%{?suse_version} > 1500
-%define rb_build_versions ruby31
-%define rb_build_ruby_abi ruby:3.1.0
-%endif
 # /MANUAL
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{rubydevel >= 2.3}
@@ -42,7 +37,11 @@ BuildRequires:  ruby-macros >= 5
 URL:            https://developers.google.com/protocol-buffers
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        rubygem-google-protobuf-rpmlintrc
-Source2:        gem2rpm.yml
+Source2:        series
+Source3:        gem2rpm.yml
+# MANUAL
+Patch0:         do-not-wrap.patch
+# /MANUAL
 Summary:        Protocol Buffers
 License:        BSD-3-Clause
 Group:          Development/Languages/Ruby
@@ -51,6 +50,10 @@ Group:          Development/Languages/Ruby
 Protocol Buffers are Google's data interchange format.
 
 %prep
+%gem_unpack
+%patch0 -p1
+find -type f -print0 | xargs -0 touch -r %{S:0}
+%gem_build
 
 %build
 
@@ -59,9 +62,8 @@ Protocol Buffers are Google's data interchange format.
   -f
 %gem_cleanup
 # MANUAL
-find %{buildroot}/%{_libdir}/ruby/gems/ \( -name '.sitearchdir.-.google.time' \) | xargs rm
-find %{buildroot}/%{_libdir}/ruby/gems/ \( -name 'ruby-upb.c' -o -name 'ruby-upb.h' \) | xargs chmod -x
-find %{buildroot}/%{_libdir}/ruby/gems/ \( -name 'descriptor_dsl.rb' \) | xargs chmod +x
+find %{buildroot}/%{_libdir}/ruby/gems/ \( -name '.sitearchdir.-.google.time' \) -delete
+find %{buildroot}/%{_libdir}/ruby/gems/ \( -name 'ruby-upb.c' -o -name 'ruby-upb.h' \) -print0 | xargs -r0 chmod -x
 # /MANUAL
 
 %gem_packages
