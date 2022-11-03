@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov  2 12:48:20 UTC 2022 - Takashi Iwai <tiwai@suse.com>
+
+- Fix regression with Dell WD15 Dock and others (bsc#1204719):
+  0002-spa-support-the-speakers-output-only-case-in-report_.patch
+
+-------------------------------------------------------------------
 Sat Oct  8 20:46:58 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Add 0001-filter-chain-iterate-the-port-correctly.patch: Fix

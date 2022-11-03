@@ -66,6 +66,8 @@ Source99:       baselibs.conf
 Patch0:         reduce-meson-dependency.patch
 # PATCH-FIX-UPSTREAM 0001-filter-chain-iterate-the-port-correctly.patch
 Patch1:         0001-filter-chain-iterate-the-port-correctly.patch
+# PATCH-FIX-UPSTREAM 0002-spa-support-the-speakers-output-only-case-in-report_.patch
+Patch2:         0002-spa-support-the-speakers-output-only-case-in-report_.patch
 BuildRequires:  docutils
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -338,6 +340,7 @@ This package provides a PulseAudio implementation based on PipeWire
 %patch0 -p1
 %endif
 %patch1 -p1
+%patch2 -p1
 
 %build
 %if %{pkg_vcmp gcc < 8}
