@@ -203,4 +203,14 @@
     <comment></comment>
     <requestid>1030158</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>42774acd26c638a37d2d4bdbf00b5bed</srcmd5>
+    <version>0.7.7</version>
+    <time>1667499241</time>
+    <user>dimstar_suse</user>
+    <comment>- Release 0.7.7
+  * Support for Python 3.11
+  * Workaround for another parameter inconsistency in the API</comment>
+    <requestid>1032915</requestid>
+  </revision>
 </revisionlist>

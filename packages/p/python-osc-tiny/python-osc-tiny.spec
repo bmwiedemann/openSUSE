@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-osc-tiny
-Version:        0.7.6
+Version:        0.7.7
 Release:        0
 Summary:        Client API for openSUSE BuildService
 License:        MIT
@@ -41,6 +40,7 @@ Requires:       python-lxml
 Requires:       python-python-dateutil
 Requires:       python-pytz
 Requires:       python-requests
+Requires:       (python-cached-property if python-base < 3.8)
 Suggests:       openssh
 BuildArch:      noarch
 # Using 'if' instead of 'with' because the latter requires rpm >= 4.14
@@ -49,7 +49,6 @@ BuildRequires:  %{python_module cached-property if %python-base < 3.8}
 %else
 BuildRequires:  %{python_module cached-property}
 %endif
-Requires:       (python-cached-property if python-base < 3.8)
 %python_subpackages
 
 %description
@@ -78,6 +77,7 @@ For further details see:
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/osctiny
+%{python_sitelib}/osc_tiny-%{version}*-info
 
 %changelog
