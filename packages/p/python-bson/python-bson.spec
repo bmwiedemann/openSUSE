@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-bson
 Version:        0.5.10
 Release:        0
@@ -25,15 +24,15 @@ License:        Apache-2.0 AND BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/py-bson/bson
 Source:         https://github.com/py-bson/bson/archive/%{version}.tar.gz#/bson-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM drop-python2-support.patch gh#py-bson/bson#118
+Patch:          drop-python2-support.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-python-dateutil >= 2.4.0
-Requires:       python-six >= 1.9.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module python-dateutil >= 2.4.0}
-BuildRequires:  %{python_module six >= 1.9.0}
 # /SECTION
 %python_subpackages
 
@@ -41,7 +40,7 @@ BuildRequires:  %{python_module six >= 1.9.0}
 BSON codec for Python.
 
 %prep
-%setup -q -n bson-%{version}
+%autosetup -p1 -n bson-%{version}
 sed -i '1 {/^#!/d}' bson/*.py
 
 %build
@@ -57,6 +56,7 @@ sed -i '1 {/^#!/d}' bson/*.py
 %files %{python_files}
 %doc README.rst
 %license LICENSE LICENSE_APACHE
-%{python_sitelib}/*
+%{python_sitelib}/bson
+%{python_sitelib}/bson-%{version}*-info
 
 %changelog

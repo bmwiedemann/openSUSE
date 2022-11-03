@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov  3 12:54:43 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add drop-python2-support.patch to remote python-six dep gh#py-bson/bson#118
+- Remove python_module macro definition
+- More specific python_sitelib in %files
+
+-------------------------------------------------------------------
 Fri Sep 23 02:48:27 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version v0.5.10 
