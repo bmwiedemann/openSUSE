@@ -20,19 +20,18 @@
 %define _firmwaredir /lib/firmware
 %endif
 
-%define sofversion  2.2
-%define tplgversion 2.2.1
+%define sofversion  2.2.2
+%define tplgversion 2.2.2
 
 Name:           sof-firmware
 Summary:        Firmware Data Files for SOF Drivers
 License:        BSD-3-Clause
 Group:          Hardware/Other
-Version:        %tplgversion
+Version:        2.2.2
 Release:        0
 URL:            https://github.com/thesofproject/sof-bin
 BuildRequires:  fdupes
 Source:         https://github.com/thesofproject/sof-bin/releases/download/v%{sofversion}/sof-bin-v%{sofversion}.tar.gz
-Source2:        https://github.com/thesofproject/sof-bin/releases/download/v%tplgversion/sof-tplg-v%tplgversion.tar.gz
 BuildArch:      noarch
 # Merrifield
 Supplements:    modalias(pci:v00008086d0000119Asv*sd*bc*sc*i*)
@@ -81,7 +80,6 @@ Various firmware data files for SOF drivers.
 
 %prep
 %setup -q -n sof-bin-v%{sofversion}
-tar xf %{SOURCE2}
 
 %build
 

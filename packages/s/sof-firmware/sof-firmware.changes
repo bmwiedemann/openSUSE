@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov  3 11:08:43 UTC 2022 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 2.2.2:
+  * Add support for Intel Raptor Lake (jsc#PED-850)
+  * CAVS firmware files are dropped
+
+-------------------------------------------------------------------
 Sun Aug 28 04:34:38 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add sof-tplg-v2.2.1
