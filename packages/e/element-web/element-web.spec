@@ -17,7 +17,7 @@
 
 
 Name:           element-web
-Version:        1.11.10
+Version:        1.11.13
 Release:        0
 Summary:        A glossy Matrix collaboration client - web files
 License:        Apache-2.0
@@ -28,6 +28,7 @@ Source2:        jitsi_external_api.min.js
 Source3:        prepare.sh
 Patch0:         fix-webpack-oom.patch
 BuildRequires:  yarn
+BuildRequires:  nodejs18
 BuildArch:      noarch
 
 %description
