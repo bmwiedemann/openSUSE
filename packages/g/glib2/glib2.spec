@@ -60,6 +60,8 @@ Patch3:         glib2-dbus-socket-path.patch
 Patch4:         glib2-gdbus-codegen-version.patch
 # PATCH-FIX-UPSTREAM ca905744.patch dimstar@opensuse.org -- Revert "Handling collision between standard i/o file descriptors and newly created ones"
 Patch5:         https://gitlab.gnome.org/GNOME/glib/-/commit/ca905744.patch
+# PATCH-FIX-UPSTREAM a1151bc1.patch -- gio/gdesktopappinfo: Free the wrapped argv array on launch failure
+Patch6:         https://gitlab.gnome.org/GNOME/glib/-/commit/a1151bc1.patch
 
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
@@ -264,6 +266,7 @@ the functionality of the installed glib2 package.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 cp -a %{SOURCE1} %{SOURCE2} %{SOURCE5} .
 cp -a %{SOURCE4} gnome_defaults.conf
 # replace /usr/bin/env shebangs
