@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Nov  2 12:00:40 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Updated openssl.keyring with key A21FAB74B0088AA361152586B8EF1A6BA9DA2D5C
+
+- Update to 1.1.1s:
+  * Fixed a regression introduced in 1.1.1r version not refreshing the
+    certificate data to be signed before signing the certificate.
+
+- Update to 1.1.1r:
+  * Fixed the linux-mips64 Configure target which was missing the
+    SIXTY_FOUR_BIT bn_ops flag. This was causing heap corruption on that
+    platform.
+  * Fixed a strict aliasing problem in bn_nist. Clang-14 optimisation was
+    causing incorrect results in some cases as a result.
+  * Fixed SSL_pending() and SSL_has_pending() with DTLS which were failing to
+    report correct results in some cases
+  * Fixed a regression introduced in 1.1.1o for re-signing certificates with
+    different key sizes
+  * Added the loongarch64 target
+  * Fixed a DRBG seed propagation thread safety issue
+  * Fixed a memory leak in tls13_generate_secret
+  * Fixed reported performance degradation on aarch64. Restored the
+    implementation prior to commit 2621751 ("aes/asm/aesv8-armx.pl: avoid
+    32-bit lane assignment in CTR mode") for 64bit targets only, since it is
+    reportedly 2-17% slower and the silicon errata only affects 32bit targets.
+    The new algorithm is still used for 32 bit targets.
+  * Added a missing header for memcmp that caused compilation failure on some
+    platforms
+
+-------------------------------------------------------------------
 Sat Sep 24 02:40:39 UTC 2022 - Jason Sikes <jsikes@suse.com>
 
 - Added openssl-1_1-paramgen-default_to_rfc7919.patch
