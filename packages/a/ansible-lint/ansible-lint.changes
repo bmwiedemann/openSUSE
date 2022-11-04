@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Nov  1 07:16:16 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.8.5:
+  * Bugfixes
+    - Fix offline mode (#2643) @ssbarnea
+    - Delay app initialization (#2642) @ssbarnea
+    - Fix pip version check (#2641) @ssbarnea
+    - Fix progressive mode exit code (#2638) @ssbarnea
+    - role-name[path]: Now detects use of paths when including roles (#2532) @ssbarnea
+    - Avoid altering severity based on level on codeclimate output (#2637) @ssbarnea
+    - Do not emit fqcn[action-core] when ansible.legacy is used for builtin modules (#2634) @felixfontein
+    - Avoid upgrade recommendation for bleeding edge users (#2630) @ssbarnea
+
+-------------------------------------------------------------------
 Sat Oct 29 07:44:23 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - modify _service to no longer use the tar_scm service,
