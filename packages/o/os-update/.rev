@@ -16,4 +16,15 @@
   - Restart updated services</comment>
     <requestid>1032437</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cdb1b6ec31adf8fcfb75cb0ebb4fcf7d</srcmd5>
+    <version>1.3</version>
+    <time>1667579855</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.3
+  - Restart services: don't restart os-update itself during update
+
+- Require zypper-needs-restarting</comment>
+    <requestid>1033455</requestid>
+  </revision>
 </revisionlist>

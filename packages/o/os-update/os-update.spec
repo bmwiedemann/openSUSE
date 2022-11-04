@@ -21,7 +21,7 @@
 %endif
 
 Name:           os-update
-Version:        1.2
+Version:        1.3
 Release:        0
 Summary:        Updates the system regular to stay current and safe
 License:        GPL-2.0-or-later
@@ -30,6 +30,7 @@ Source:         https://github.com/thkukuk/os-update/releases/download/v%{versio
 Source99:       os-update-rpmlintrc
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(systemd)
+Requires:       zypper-needs-restarting
 Recommends:     rebootmgr
 BuildArch:      noarch
 
