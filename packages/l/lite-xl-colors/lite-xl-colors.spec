@@ -17,12 +17,13 @@
 
 %define programname lite-xl
 Name:           lite-xl-colors
-Version:        git20220624.7eafe25
+Version:        git20221011.b245158
 Release:        0
 Summary:        Additional colors for %{programname}
 License:        MIT
 URL:            https://github.com/lite-xl/lite-xl-colors
 Source:         %{name}-%{version}.tar.gz
+Requires:       lite-xl
 BuildArch:      noarch
 
 %description
