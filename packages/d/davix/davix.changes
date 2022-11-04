@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov  3 14:54:02 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 0.8.3:
+  * Bug fixes
+    - [DMC-1345] - Segfault when encountering invalid redirection URL
+    - [DMC-1346] - Segfault because of empty NeonSession object
+
+-------------------------------------------------------------------
 Fri Jul 15 04:32:48 UTC 2022 - Timothy Brown <stimut@gmail.com>
 
 - Update to version 0.8.2
