@@ -241,4 +241,13 @@
 </comment>
     <requestid>1031837</requestid>
   </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>dfa4aaaa6352c6f977f9738a1460b7c3</srcmd5>
+    <version>4.34.0</version>
+    <time>1667579504</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove not needed dep python-six
+</comment>
+    <requestid>1033062</requestid>
+  </revision>
 </revisionlist>
