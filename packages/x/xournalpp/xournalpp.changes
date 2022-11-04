@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov  2 07:43:06 UTC 2022 - Fabio Pesari <fpesari@tuxfamily.org>
+
+- Updated to version 1.1.2:
+ * Fix assertion on selection existence
+ * Fix PDF toolbox showing at the wrong position on Wayland
+ * Minimum size for shape recognizer now 
+   customizable (gh#xournalpp/xournalpp#4283)
+   
+-------------------------------------------------------------------
 Mon Oct 17 10:38:50 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Add Recommends webp-pixbuf-loader:
