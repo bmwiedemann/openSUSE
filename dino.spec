@@ -25,15 +25,13 @@
 %endif
 
 Name:           dino
-Version:        0.3.0
+Version:        0.3.1
 Release:        0
 Summary:        Modern Jabber/XMPP Client using GTK+/Vala
 License:        GPL-3.0-only
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://github.com/dino/dino
 Source:         https://github.com/dino/dino/releases/download/v%{version}/dino-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM: mvetter@suse.com - boo#1204259 https://github.com/dino/dino/issues/1285
-Patch0:         dino-0.3.0-libsoup.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 %if 0%{?suse_version}
@@ -181,7 +179,6 @@ Contains the HTTP Upload plugin for %{name}.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 # workaround until we clarified if the gcc return type check is actually wrong there.
