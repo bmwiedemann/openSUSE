@@ -3,7 +3,7 @@
     <param name="url">https://github.com/mike-fabian/ibus-table</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
-    <param name="revision">88ac6d921e6252e2d1450f017a519fc12e591138</param>
+    <param name="revision">399751b84b078b79afcfbf64b2ce374018400e21</param>
     <param name="versionrewrite-pattern">Release (\d+\.\d+\.\d+)</param>
     <param name="versionrewrite-replacement">\1</param>
   </service>

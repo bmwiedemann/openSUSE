@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov  3 20:19:55 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
+
+update: 1.16.12 -> 1.16.13
+- Get program name of focused window also when ibus cannot get it
+- Use focus id if available (it is available for ibus >= 1.5.27)
+- Use IBus.PreeditFocusMode.COMMIT and make sure the input is cleared and the UI updated when the focus changes
+- Do not reset input purpose on focus out
+- Do not commit by index when OSK is visible
+
+-------------------------------------------------------------------
 Fri Sep  9 21:13:07 UTC 2022 - Gordon Leung <pirateclip@protonmail.com> - 1.16.12
 
 update: 1.16.11 -> 1.16.12

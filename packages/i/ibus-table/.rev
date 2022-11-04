@@ -372,4 +372,12 @@ feat: use _service files to automate fetching sources</comment>
 - Add 128x128, 256x256, and svg (remote) icons to ibus-table.appdata.xml</comment>
     <requestid>1002359</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>cd5a3086e24ed84874b401a248c2497b</srcmd5>
+    <version>1.16.13</version>
+    <time>1667579678</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1033165</requestid>
+  </revision>
 </revisionlist>
