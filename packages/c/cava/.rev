@@ -197,4 +197,22 @@
   bugfixes:</comment>
     <requestid>972509</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6fb4ddf419ab9249e98805b03f1ab7ef</srcmd5>
+    <version>0.8.3</version>
+    <time>1667579864</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.3:
+  bugfixes:
+  * fix some calculations on x-axis label
+  * cavacore: channels where sorted wrong according to doc
+  * fix autosensing sometimes not working
+  improvements:
+  * improved response time by decreasing audio buffer size
+  * add support for alacritty synchronized updates
+  * brought EQ back by popular demand
+  * added support for hex colors and gradient in noncurses mode
+  * add configurable orientation of bars</comment>
+    <requestid>1033470</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           cava
-Version:        0.8.2
+Version:        0.8.3
 Release:        0
 Summary:        Console-based Audio Visualizer for Alsa
 License:        MIT
@@ -33,7 +33,6 @@ BuildRequires:  libtool
 BuildRequires:  ncurses-devel
 # Installing the psf in a directory that comes from kbd
 Requires:       kbd
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 C.A.V.A. is a bar spectrum audio visualizer for the Linux terminal using ALSA, pulseaudio or fifo buffer for input.
@@ -44,14 +43,14 @@ C.A.V.A. is a bar spectrum audio visualizer for the Linux terminal using ALSA, p
 %configure FONT_DIR="%{_datadir}/kbd/consolefonts"
 
 %build
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 
 %files
-%defattr(-,root,root)
-%doc README.md LICENSE
+%license LICENSE
+%doc README.md
 %{_bindir}/cava
 %dir %{_datadir}/kbd/
 %dir %{_datadir}/kbd/consolefonts/

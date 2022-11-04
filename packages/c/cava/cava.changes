@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Nov  4 09:06:43 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.8.3:
+  bugfixes:
+  * fix some calculations on x-axis label
+  * cavacore: channels where sorted wrong according to doc
+  * fix autosensing sometimes not working
+  improvements:
+  * improved response time by decreasing audio buffer size
+  * add support for alacritty synchronized updates
+  * brought EQ back by popular demand
+  * added support for hex colors and gradient in noncurses mode
+  * add configurable orientation of bars
+
+-------------------------------------------------------------------
 Mon Apr 25 08:23:26 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.8.2:
