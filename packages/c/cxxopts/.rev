@@ -7,4 +7,12 @@
     <comment>Required for new version of pamixer</comment>
     <requestid>1011116</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>169458574bc75f7f20c62372f4612e07</srcmd5>
+    <version>3.0.0</version>
+    <time>1667579880</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1033516</requestid>
+  </revision>
 </revisionlist>

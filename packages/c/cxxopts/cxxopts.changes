@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 14 10:04:26 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update descriptions with limitations.
+- Trim macros from URL: line (for copy-pasting with mouse).
+
+-------------------------------------------------------------------
 Sat Dec  4 06:17:35 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Initial package (v3.0.0)

@@ -1,7 +1,7 @@
 #
 # spec file for package cxxopts
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,24 +19,27 @@
 Name:           cxxopts
 Version:        3.0.0
 Release:        0
-Summary:        Lightweight C++ command line option parser
+Summary:        C++ command line option parser
 License:        MIT
-URL:            https://github.com/jarro2783/%{name}
+URL:            https://github.com/jarro2783/cxxopts
 Source0:        https://github.com/jarro2783/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
-BuildRequires:  gcc-c++
+BuildRequires:  c++_compiler
 
 %description
-CXXOpts is a lightweight C++ option parser library, supporting the standard
-GNU style syntax for options.
+CXXOpts is a C++ option parser library supporting some of the
+GNU-style syntax for options.
 
 %package devel
 Summary:        Development files for %{name}
 Requires:       libstdc++-devel
 
 %description devel
-CXXOpts is a lightweight C++ option parser library, supporting the standard
-GNU style syntax for options (development package).
+CXXOpts is a C++ option parser library supporting single-letter options
+with a single dash, and long options with a double-dash.
+(There are some corner cases in 3.0.0 where behavior is not exactly
+matching GNU getopt or POSIX mode.)
+It requires and makes use of C++11 <regex>.
 
 %prep
 %autosetup -p1
