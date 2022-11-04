@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov  3 08:56:18 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.7+kde0, rebased upstream:
+  * Fix crash when remoting QML objects with sub-objects
+
+-------------------------------------------------------------------
 Mon Sep 26 10:34:30 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.6+kde0, rebased upstream:
