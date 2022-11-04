@@ -27,7 +27,6 @@ Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
 BuildRequires:  cargo-packaging
-ExclusiveArch:  %{rust_tier1_arches}
 
 %description
 A simple, standalone tool that watches a path and runs a command

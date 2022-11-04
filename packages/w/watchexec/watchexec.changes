@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov  4 07:33:58 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Remove restriction to build only on Rust tier 1 archs.
+
+-------------------------------------------------------------------
 Mon Oct 31 10:05:48 UTC 2022 - david.anes@suse.com
 
 - Update to version 1.20.6:
