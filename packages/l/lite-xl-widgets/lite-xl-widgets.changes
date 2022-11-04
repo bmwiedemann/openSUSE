@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov 03 18:14:55 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version git20221023.648c067:
+  * textbox: fix get_gutter_width returning nil, fixes lite-xl/lite-xl#1158
+  * fontslist: allow new max of 10 fonts
+  * use new on_scale_change logic from lite-xl master
+  * fontslist: limit maximum fonts to 3
+  * textbox: add double and triple click selection
+  * Adaptation to newer scroll API
+
+-------------------------------------------------------------------
 Wed Oct  5 19:40:16 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Adjusting directory names from "widgets" to "widget"

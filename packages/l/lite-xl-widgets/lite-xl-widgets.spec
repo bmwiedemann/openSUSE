@@ -17,12 +17,13 @@
 
 %define programname lite-xl
 Name:           lite-xl-widgets
-Version:        git20220917.6d8c23d
+Version:        git20221023.648c067
 Release:        0
 Summary:        Widgets for %{programname}
 License:        MIT
 URL:            https://github.com/lite-xl/lite-xl-widgets
 Source0:        %{name}-%{version}.tar.gz
+Requires:       lite-xl
 BuildArch:      noarch
 
 %description
