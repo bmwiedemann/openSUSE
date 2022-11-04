@@ -1,19 +1,4 @@
 -------------------------------------------------------------------
-Tue Oct 11 15:39:35 UTC 2022 - Valentin Lefebvre <valentin.lefebvre@suse.com>
-
-- Added patches:
-  * refractors-uses-and-creation-of-temp-dirs-to-use-unified-api.patch
-    * Created from commit 00ea1181ded00196664379edffa3ce043cb27191
-    * This centralization allows unified control over temporary file & directory creation.
-      The goal is to drive all temp directory creation logic through a
-      set of common logical components. Doing so allows us to make our temp directory
-      usage relocatable.
-  * refractor-temporary-directory-usages.patch
-    * Created from commit 8c2f6b7db50ab071a289fb5c4cbb9b2125609105
-    * Refractor temporary directory usages to be safe
-  bsc#1184807 cve-2021-29428
-
--------------------------------------------------------------------
 Mon May 23 12:27:42 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
