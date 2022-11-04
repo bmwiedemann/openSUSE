@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Thu Nov 03 18:20:00 UTC 2022 - scott.bradnick@suse.com
+
+- Addressing https://github.com/lite-xl/lite-xl/issues/1185
+  * Removing 'lite-xl-[colors,plugins]' as "Recommends"
+  * Adding 'lite-xl-[colors,plugins,widgets]' as "Suggests"
+- Update to version 2.1.0+git20221103.03cc5ff:
+  * Add `config.keep_newline_whitespace` option (#1184)
+  * Don't sort in `Doc:get_selection_idx` with an invalid index
+  * Getting ready for 2.1. (#1181)
+  * Fixed small plugin header error.
+  * docview: support gutter click selection, fixes #1116 (#1169)
+  * Add more options to `Scrollbar` (#1174)
+  * Improvements to multicursor copy/paste (#1123)
+  * Make MacOS `core:restart` shortcut more in line with other platforms
+  * Fix horizontal scroll with shift+scroll on MacOS
+  * scripts build: properly detect if cross-compiling
+  * ci release: add macos arm64 support (#1179)
+  * Fix `drawwhitespace` drawing lines with different substitution kinds
+  * plugin autocomplete: update partial on manual trigger
+  * plugin api: added missing param on lua_dump
+  * Apply `doc` commands to anything that extends `DocView`
+  * resources: .desktop inode/directory mime type
+  * core syntax: strip the path from filename on syntax.get (#1168)
+  * docview: do not render newline fixes #1164
+  * plugin drawwhitespace: allow newline substitution
+  * Fixed the common idiom of setting a plugin to true. (#1152)
+  * make the default core.ignore_files more specific (#1160)
+  * core renderer: increased max font fallbacks to 10
+  * core renderer: fixed small issue introduced on #1145
+  * Fixup minor drawing issue.
+  * changelog: added latest changes
+  * Check if scrollbar is no longer hovered on mouse release
+  * Only consider left clicks on the scrollbar
+  * plugin lineguide: be strict on drawing to DocView
+  * Refactor scrollbar into its own file (#1124)
+  * Add IME support (#991)
+  * save a reference to the font when calling renderer.draw_text. (#1156)
+  * core utf8: fix license text
+  * dirmonitor: add watch to subdirs on file limit mode (#1155)
+  * allow defining the arch tuple via meson (#1153)
+  * Use the syntax with the longest match (#919)
+  * dirmonitor: added missing mutex initialization (#1150)
+  * Add on_scale_change event to View (#1146)
+  * dirwatch: exit coroutine if project not open anymore to properly gargage collect it (#1142)
+  * release: linux build in ubuntu 18.04 fixes #1147
+  * changelog: updated to include some of latest changes
+  * Add fsevents backend to dirmonitor (#1141)
+  * add parameter validation to checkcolor and f_font_group (#1145)
+  * draw lite-xl icon in TitleView (#1143)
+  * Changed workspace to accommodate other views. (#1121)
+  * Fixed process layer argument quoting; allows for strings with spaces. And added ability to specify a literal, in the style of python. (#1132)
+  * Use relative mouse position directly for drop event (#1140)
+  * Added in an additional ENVVAR for setting USERDIR, and also changed / to PATHSEP. (#1139)
+
+-------------------------------------------------------------------
 Wed Oct 05 13:57:04 UTC 2022 - scott.bradnick@suse.com
 
 - Update to version 2.1.0+git20221004.e34a3ca:

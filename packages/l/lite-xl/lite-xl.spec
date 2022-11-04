@@ -16,7 +16,7 @@
 #
 
 Name:           lite-xl
-Version:        2.1.0+git20221004.e34a3ca
+Version:        2.1.0+git20221103.03cc5ff
 Release:        0
 Summary:        A lightweight text editor written in Lua
 License:        MIT
@@ -29,8 +29,9 @@ BuildRequires:  pkgconfig(lua)
 BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(sdl2)
-Recommends:     %{name}-colors
-Recommends:     %{name}-plugins
+Suggests:       %{name}-colors
+Suggests:       %{name}-plugins
+Suggests:       %{name}-widgets
 
 %description
 Lite XL is derived from lite. It is a lightweight text editor written mostly in Lua — it aims to provide something practical, pretty, small and fast easy to modify and extend, or to use without doing either. The aim of Lite XL compared to lite is to be more user friendly, improve the quality of font rendering, and reduce CPU usage.
