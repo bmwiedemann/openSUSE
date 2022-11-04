@@ -675,4 +675,12 @@ Newer versions will have the correct headers.</comment>
     <comment>KDE Gear 22.08.2</comment>
     <requestid>1010718</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>b7f89d91f6960169a98c1c8060992f88</srcmd5>
+    <version>22.08.3</version>
+    <time>1667579565</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 22.08.3 (forwarded request 1032791 from cgiboudeaux)</comment>
+    <requestid>1033257</requestid>
+  </revision>
 </revisionlist>
