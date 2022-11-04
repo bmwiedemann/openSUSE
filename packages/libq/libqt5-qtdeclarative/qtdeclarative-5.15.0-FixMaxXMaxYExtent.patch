@@ -1,4 +1,4 @@
-From 6a07dafec274076303573555f256c27aaf309d7e Mon Sep 17 00:00:00 2001
+From b82b1954fd0ab4e1c8aff38dac7310f6c4f144e0 Mon Sep 17 00:00:00 2001
 From: David Redondo <qt@david-redondo.de>
 Date: Mon, 27 Jun 2022 15:31:10 +0200
 Subject: [PATCH] QQuickItemView: Fix max(X/Y)Extent()
@@ -19,20 +19,20 @@ Fixes: QTBUG-83890
 Pick-to: 5.15
 ---
  src/quick/items/qquickitemview.cpp            |   4 +-
- .../qquicklistview/tst_qquicklistview.cpp     |   6 +
+ .../qquicklistview/tst_qquicklistview.cpp     |   5 +
  .../quick/qquicklistview2/data/maxXExtent.qml |  54 +++++++++
  .../quick/qquicklistview2/data/maxYExtent.qml |  55 +++++++++
  .../quick/qquicklistview2/qquicklistview2.pro |  12 ++
  .../qquicklistview2/tst_qquicklistview2.cpp   | 114 ++++++++++++++++++
  tests/auto/quick/quick.pro                    |   1 +
- 7 files changed, 244 insertions(+), 2 deletions(-)
+ 7 files changed, 243 insertions(+), 2 deletions(-)
  create mode 100644 tests/auto/quick/qquicklistview2/data/maxXExtent.qml
  create mode 100644 tests/auto/quick/qquicklistview2/data/maxYExtent.qml
  create mode 100644 tests/auto/quick/qquicklistview2/qquicklistview2.pro
  create mode 100644 tests/auto/quick/qquicklistview2/tst_qquicklistview2.cpp
 
 diff --git a/src/quick/items/qquickitemview.cpp b/src/quick/items/qquickitemview.cpp
-index 010a0152e1..965beed7bc 100644
+index f8ad168a17..a797bec4ef 100644
 --- a/src/quick/items/qquickitemview.cpp
 +++ b/src/quick/items/qquickitemview.cpp
 @@ -1393,7 +1393,7 @@ qreal QQuickItemView::maxYExtent() const
@@ -54,7 +54,7 @@ index 010a0152e1..965beed7bc 100644
      if (d->hData.maxExtentDirty) {
          d->maxExtent = d->maxExtentForAxis(d->hData, true);
 diff --git a/tests/auto/quick/qquicklistview/tst_qquicklistview.cpp b/tests/auto/quick/qquicklistview/tst_qquicklistview.cpp
-index a7aefbe432..afe5c5ac1a 100644
+index b564fd3ba5..5f0aeb42f7 100644
 --- a/tests/auto/quick/qquicklistview/tst_qquicklistview.cpp
 +++ b/tests/auto/quick/qquicklistview/tst_qquicklistview.cpp
 @@ -73,6 +73,8 @@ public:
@@ -66,24 +66,23 @@ index a7aefbe432..afe5c5ac1a 100644
      void init();
      void cleanupTestCase();
      // Test QAbstractItemModel model types
-@@ -300,6 +302,8 @@ private slots:
-     void clickHeaderAndFooterWhenClip();
-     void animatedDelegate();
+@@ -303,6 +305,8 @@ private slots:
+     void dragDelegateWithMouseArea_data();
+     void isCurrentItem_DelegateModel();
  
 +    // WARNING: please add new tests to tst_qquicklistview2; this file is too slow to work with.
 +
  private:
      template <class T> void items(const QUrl &source);
      template <class T> void changed(const QUrl &source);
-@@ -10109,6 +10113,8 @@ void tst_QQuickListView::animatedDelegate()
+@@ -10200,6 +10204,7 @@ void tst_QQuickListView::dragDelegateWithMouseArea_data()
+         QTest::newRow(enumValueName) << static_cast<QQuickItemView::LayoutDirection>(layDir);
      }
  }
- 
 +// WARNING: please add new tests to tst_qquicklistview2; this file is too slow to work with.
-+
+ 
  QTEST_MAIN(tst_QQuickListView)
  
- #include "tst_qquicklistview.moc"
 diff --git a/tests/auto/quick/qquicklistview2/data/maxXExtent.qml b/tests/auto/quick/qquicklistview2/data/maxXExtent.qml
 new file mode 100644
 index 0000000000..3a50ae9edd
@@ -356,5 +355,5 @@ index 45bcf8a9ce..00f7d64d1e 100644
      qquickloader \
      qquickmousearea \
 -- 
-2.36.1
+2.38.0
 

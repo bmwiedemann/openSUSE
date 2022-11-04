@@ -650,4 +650,12 @@ depends on sr#251413</comment>
     <comment>Qt 5.15.6, untested. (forwarded request 1006197 from Vogtinator)</comment>
     <requestid>1006214</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>83ce26624645da79d5535ab69e61fd30</srcmd5>
+    <version>5.15.7+kde18</version>
+    <time>1667579513</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.7, untested (forwarded request 1033058 from favogt)</comment>
+    <requestid>1033098</requestid>
+  </revision>
 </revisionlist>

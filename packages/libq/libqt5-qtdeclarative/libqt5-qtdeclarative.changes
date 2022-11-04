@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Nov  3 08:53:44 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.7+kde18, rebased upstream:
+  * Revert "Fix ListView.isCurrentItem when used with DelegateModel"
+  * Stop using QHash::unite() in storage model manual test
+  * SaveableUnitPointer::saveToDisk restores flags incorrectly at cleanup
+  * Document that clearComponentCache() does not clear existing objects
+  * Doc: Replace return `0` with nullptr
+  * Doc: Fix QtQuick::Keys::forwardTo generic list type
+  * Doc: QQmlContext: make it more readable
+  * Fix ListView.isCurrentItem when used with DelegateModel
+  * Fix documentation on JavaScript imports
+  * doc: Remove bogus PinchHandler.minimumTouchPoints prop; improve actual
+  * tst_grabImage: Fix the cases were visually comparing invisible items
+  * Reinitialize shader data structure when effect changes
+  * Doc: mention that clipping can affect performance and link to page
+  * Ensure init of m_current_projection_matrix in single-clipped-item scene
+  * Canvas: Add a means to override the DPR used via an environment variable
+  * Fix regression in ListView/Flickable event delivery
+  * qquicktextinput: Clear pre-edit text after input method reset
+- Rebase qtdeclarative-5.15.0-FixMaxXMaxYExtent.patch
+
+-------------------------------------------------------------------
 Mon Sep 26 10:33:14 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.6+kde20, rebased upstream:
