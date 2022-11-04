@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov  4 06:06:53 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Change to Python 3 BuildRequires, as we already use it to build.
+
+-------------------------------------------------------------------
 Thu Apr 23 19:11:51 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.7.5 fixes the following issues:

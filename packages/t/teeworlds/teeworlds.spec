@@ -1,7 +1,7 @@
 #
 # spec file for package teeworlds
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@ Name:           teeworlds
 Version:        0.7.5
 Release:        0
 Summary:        A retro multiplayer jump-and-swing shooter
-License:        Zlib AND CC-BY-SA-3.0
+License:        CC-BY-SA-3.0 AND Zlib
 Group:          Amusements/Games/Action/Arcade
 URL:            http://www.teeworlds.com
 Source:         %{name}-%{version}.tar.xz
@@ -34,7 +34,7 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  libopenssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pnglite-devel
-BuildRequires:  python
+BuildRequires:  python3
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(freetype2)
