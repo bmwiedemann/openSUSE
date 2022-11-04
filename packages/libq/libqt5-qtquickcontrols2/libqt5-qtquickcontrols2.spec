@@ -21,11 +21,11 @@
 
 %define qt5_snapshot 1
 %define base_name libqt5
-%define real_version 5.15.6
-%define so_version 5.15.6
+%define real_version 5.15.7
+%define so_version 5.15.7
 %define tar_version qtquickcontrols2-everywhere-src-%{version}
 Name:           libqt5-qtquickcontrols2
-Version:        5.15.6+kde5
+Version:        5.15.7+kde6
 Release:        0
 Summary:        Qt 5 Quick Controls Addon
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
