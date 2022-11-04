@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov  3 08:56:57 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.7+kde1, rebased upstream:
+  * qdoc: Fix warnings about generatelist arguments
+  * qdoc: Fix Section::reduce() omitting sections with obsolete members
+  * macdeployqt: detect debug libs by using “_debug” suffix
+  * Fix extensions without leading period having first character dropped
+  * Doc: Remove mention of custom filters, part 2
+
+-------------------------------------------------------------------
 Mon Sep 26 10:34:58 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.6+kde1, rebased upstream:
