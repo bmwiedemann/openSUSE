@@ -31,7 +31,6 @@ Source1000:     baselibs.conf
 BuildRequires:  gcc-c++
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  yasm
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gstreamer-1.0) >= %{version}
