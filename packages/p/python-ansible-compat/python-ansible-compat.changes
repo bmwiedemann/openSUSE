@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Oct 31 13:04:54 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2.2.3:
+  * Bugfixes
+    - Correct offline cli arg support check (#178) @ssbarnea
+
+-------------------------------------------------------------------
+Mon Oct 31 11:52:08 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2.2.2:
+  * Bugfixes
+    - Add packaging to dependencies (#173) @ssbarnea
+    - Pass offline argument to galaxy command when needed (#172) @ssbarnea
+
+-------------------------------------------------------------------
 Sun Sep 25 12:50:57 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 2.2.1:
