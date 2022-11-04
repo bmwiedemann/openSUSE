@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 31 14:27:36 UTC 2022 - Egbert Eich <eich@suse.com>
+
+- Preparing pdsh for Slurm 22.05.
+  * No later version of Slurm builds on 32 bit.
+
+-------------------------------------------------------------------
 Thu Feb 25 14:02:28 UTC 2021 - Egbert Eich <eich@suse.com>
 
 - Add an explicit Conflicts: when pdsh is rebuilt for a

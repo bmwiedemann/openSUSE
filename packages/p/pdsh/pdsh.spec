@@ -1,7 +1,7 @@
 #
-# spec file for package pdsh
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,8 +28,8 @@
 %define have_slurm 1
 %define have_genders 1
 %endif
-%if 0%{?suse_version} >= 1550
- %ifarch %ix86 %arm ppc
+%if 0%{?suse_version} >= 1550 || "%{?slurm_version}" != "18_08"
+ %ifarch %ix86 %arm ppc s390
    %define have_slurm 0
  %endif
 %endif
@@ -86,9 +86,9 @@ Plugin for pdsh to determine nodes to run on by SLURM jobs or partitions.
 Summary:        Genders plugin for pdsh
 Group:          Productivity/Clustering/Computing
 Requires:       pdsh = %{version}
-Conflicts:      pdsh-netgroup
 Conflicts:      pdsh-dshgroup
 Conflicts:      pdsh-machines
+Conflicts:      pdsh-netgroup
 
 %description genders
 Plugin for pdsh to determine nodes to run on by genders attributes.
@@ -116,8 +116,8 @@ Plugin for pdsh to determine nodes from dsh-style "group" files
 Summary:        Netgroup plugin for pdsh
 Group:          Productivity/Clustering/Computing
 Requires:       pdsh = %{version}
-Conflicts:      pdsh-genders
 Conflicts:      pdsh-dshgroup
+Conflicts:      pdsh-genders
 
 %description netgroup
 Plugin for pdsh to determine nodes to run on from netgroups.
@@ -130,7 +130,7 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %configure \
 %if 0%{?_slurm_version:1}
         --without-exec \
-%else    
+%else
 	--with-readline \
 	--with-machines=%{_sysconfdir}/pdsh/machines \
 	--with-ssh \
@@ -140,7 +140,7 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
         --with-pam \
         %{?have_genders:--with-genders} \
         %{?have_munge:--with-mrsh} \
-%endif	
+%endif
         %{?have_slurm:--with-slurm} \
 	--without-rsh \
 	--disable-static
@@ -163,7 +163,7 @@ make check
 %doc README DISCLAIMER.* README.* NEWS TODO
 %license COPYING
 %attr(755, root, root) %{_bindir}/pdsh
-%attr(755, root, root) %{_bindir}/pdcp 
+%attr(755, root, root) %{_bindir}/pdcp
 %{_bindir}/dshbak
 %{_bindir}/rpdcp
 %{_mandir}/man1/pdsh.1.gz
