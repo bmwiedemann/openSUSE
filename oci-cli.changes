@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Wed Nov  2 12:08:03 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.20.0
+  * Database service
+    * Support for Clone from backup from last available timestamp
+      * ``oci db autonomous-database create-from-backup-timestamp
+        --use-latest-available-backup-time-stamp ``
+    * The required parameter --timestamp is now optional in the below command
+      * ``oci db autonomous-database create-from-backup-timestamp``
+    * The required parameter --display-name is now optional in the below command
+      * ``oci db autonomous-database-backup create``
+  * Support for agent settings parameter for specifying third-party Qualys scanner
+    when creating or updating a host scan recipe in the Vulnerability Scanning service
+    * ``oci vulnerability-scanning host scan recipe create --agent-settings ``
+    * ``oci vulnerability-scanning host scan recipe update --agent-settings ``
+  * Support for the below commands in the Logging Analytics service
+    * ``oci log-analytics storage list-encryption-key-info``
+    * ``oci log-analytics storage assign-encryption-key``
+  * Golden Gate service
+    * Support for Connections for Database Resources
+      * ``oci golden-gate connection``
+    * Support for the below new command
+      * ``oci goldengate deployment-type-collection list-deployment-types``
+    * Support for the parameters --assignable-connection-id, --assigned-connection-id
+      and --supported-connection-type in the below command
+      * ``oci goldengate deployment list``
+  * [BREAKING] The command oci organizations work-request-log-entry list has been
+    changed to oci organizations work-request-log list in the Organization service
+  * Improved CLI error message on incorrect JSON input
+- from version 3.19.0
+  * Support for Full Stack Disaster Recovery service
+    * ``oci disaster-recovery``
+  * The AI Language service
+    * Support for the Language custom models
+      * ``oci ai language project``
+      * ``oci ai language model``
+      * ``oci ai language endpoint``
+    * Support for the language translation
+      * ``oci ai language batch-language-translation``
+    * Support for new optional parameters in the batch service
+      * ``oci ai language batch-detect-entities --compartment-id --endpoint-id``
+      * ``oci ai language batch-detect-key-phrases --compartment-id``
+      * ``oci ai language batch-detect-language --compartment-id``
+      * ``oci ai language batch-detect-sentiments --compartment-id``
+      * ``oci ai language batch-detect-text-classification --compartment-id --endpoint-id``
+  * Data Flow Service
+    * Support for running code interactively with Session Applications using Statement resource
+      * ``oci data-flow statement create --code --run-id``
+      * ``oci data-flow statement delete --run-id --statement-id``
+      * ``oci data-flow statement get --run-id --statement-id``
+      * ``oci data-flow statement list --run-id``
+    * Support for new optional parameters
+      * ``oci data-flow application create --idle-timeout-in-minutes --max-duration-in-minutes``
+      * ``oci data-flow application update --idle-timeout-in-minutes --max-duration-in-minutes``
+      * ``oci data-flow run create --idle-timeout-in-minutes --max-duration-in-minutes``
+      * ``oci data-flow run submit --idle-timeout-in-minutes --max-duration-in-minutes``
+      * ``oci data-flow run update --idle-timeout-in-minutes --max-duration-in-minutes``
+  * Support for using combination of environment variable and other required
+    parameter in commands ,if config file is not present
+  * Fixed mismatched help text format when using ``--help``
+  * Dependency on click is upgraded to 8.0.4
+  * Data Flow Service
+    * [BREAKING] The parameter --file-url has been removed from the below command
+      * ``oci data-flow application create``
+    * [BREAKING] The parameters --defined-tags, --force, --freeform-tags, --if-match,
+      --max-wait-seconds, --wait-for-state, --wait-interval-seconds have been deleted
+      from the below command
+      * ``oci data-flow statement list``
+- Refresh patches for new version
+    + oc_relax-python-depends.patch
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Mon Oct 10 12:22:56 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.18.1
