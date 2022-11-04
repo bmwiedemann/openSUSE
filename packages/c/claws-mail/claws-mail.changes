@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri Oct 21 07:52:49 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.1.1:
+  * Marked messages in the Message List can now be displayed with bold
+    text by setting the hidden preference "bold_marked".
+  * The confirmation dialogue when saving all the attachments of a
+    message can now be disabled.
+  * The Message List tooltip for the From column now shows name and
+    address.
+  * OAuth2: various fixes and improvements.
+  * The user manuals have been updated.
+  * Updated translations: Brazilian Portuguese, Catalan, Czech, Dutch,
+    French, Polish, Russian, Slovak, Spanish, Swedish, Traditional
+    Chinese, Turkish.
+  * Build system: GLib version 2.50 or greater is required; autoconf
+    version 2.69 or greater is required; pkgconfig support for GPGME
+    and libgpg-error has been added; GnuTLS is required for OAuth2;
+    OAuth2 support can be removed with --disable-oauth2.
+  * bug 4547, '--enable-tests makes compilation fail'
+  * bug 4583, 'Compose window 'Discard message' dialog is
+  * even though draft is already saved'
+  * bug 4584, 'Compose window causing Claws to terminate
+  * '
+  * bug 4589, 'Edit Group Details panel wording unclear.'
+  * bug 4615, 'Compilation fails with --disable-gnutls'
+  * bug 4620, 'German translation of Content-Transfer-Encoding
+  * unwanted colon'
+  * bug 4628, 'typos in the README file'
+  * bug 4630, 'Fancy loads remote images when remote content
+  * disabled'
+  * bug 4636, 'Handle non-ascii characters in server response'
+  * AddressKeeper plugin: not saving addresses.
+  * Perl plugin: building with perl v5.35.2 or greater.
+  * AttRemover plugin: filenames would not be shown and corrupt
+  * output
+  * OAuth2: Use the user-configured timeout
+  * 'save all' dialogues' logic.
+  * Make custom headers compliant with RFC 2822 § 3.6.
+  * correctly set modified flag after auto-save
+  * NNTP account's SMTP server wasn't used
+  * building with older GLibs
+- Remove 5fee50c54a370fdfb5241bd4c4c16281a741762e.patch: contained
+
+-------------------------------------------------------------------
 Thu Jul 14 23:20:29 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
 - Backport 5fee50c54a370fdfb5241bd4c4c16281a741762e.patch:

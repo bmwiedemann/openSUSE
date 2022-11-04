@@ -38,14 +38,13 @@
 %endif
 
 Name:           claws-mail
-Version:        4.1.0
+Version:        4.1.1
 Release:        0
 Summary:        A configurable email client
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Email/Clients
 URL:            https://www.claws-mail.org/
 Source:         https://www.claws-mail.org/download.php?file=releases/%{name}-%{version}.tar.xz
-Patch0:         5fee50c54a370fdfb5241bd4c4c16281a741762e.patch
 BuildRequires:  compface-devel
 BuildRequires:  db-devel
 BuildRequires:  docbook-utils
@@ -135,7 +134,7 @@ License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       claws-mail = %{version}
 Requires:       enchant-devel
-Requires:       glib2-devel >= 2.28
+Requires:       glib2-devel >= 2.50
 Requires:       gnutls-devel
 Requires:       gpgme-devel
 Requires:       gtk3-devel
@@ -249,6 +248,8 @@ EOF
 %dir %{_libdir}/claws-mail/plugins
 %{_libdir}/claws-mail/plugins/*.so
 %{_libdir}/claws-mail/plugins/*.deps
+%dir %{_libdir}/claws-mail/plugins/web_extensions
+%{_libdir}/claws-mail/plugins/web_extensions/*.so
 %{_datadir}/applications/claws-mail.desktop
 %{_datadir}/icons/hicolor/*/apps/claws-mail.png
 %{_datadir}/pixmaps/claws-mail-64x64.png

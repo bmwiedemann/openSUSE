@@ -940,4 +940,12 @@ No changes entry, as it's just a correction of the last changes entry.</comment>
 - Switch package to autosetup.</comment>
     <requestid>989274</requestid>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>6f7520d3e07703cfdb587b835b3480ff</srcmd5>
+    <version>4.1.1</version>
+    <time>1667579856</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1033462</requestid>
+  </revision>
 </revisionlist>
