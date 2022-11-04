@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Oct 26 08:54:32 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- BR ca-certificates-mozilla for the testsuite
+- Have the devel package require the library
+- Drop qca-2.3.0-fixDSA.patch, that was fixed in 2014 already by
+  just disabling DSA
+- Add upstream change:
+  * 0001-hashunittest-run-sha384longtest-only-for-providers-t.patch
+
+-------------------------------------------------------------------
+Wed Oct 19 06:15:22 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 2.3.5
+  * find dependencies of Qca when the cmake package is used by a
+    project
+  * Handle openssl without case5 support
+  * Update rootcerts.pem
+  * SafeSocketNotifier: fix socket FD type and remove signal
+    argument
+- Drop patch, merged upstream:
+  * 0001-Make-filewatchunittest-much-quicker.patch
+
+-------------------------------------------------------------------
 Thu Oct 21 13:00:31 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Set LD_LIBRARY_PATH before running tests.

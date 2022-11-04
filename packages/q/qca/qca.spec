@@ -1,7 +1,7 @@
 #
 # spec file for package qca
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,7 +38,7 @@ ExclusiveArch:  do_not_build
 %define _soversion 2
 %bcond_without pkcs11
 Name:           qca%{pkgname_suffix}
-Version:        2.3.4
+Version:        2.3.5
 Release:        0
 Summary:        Qt Cryptographic Architecture 2
 License:        LGPL-2.1-or-later
@@ -46,11 +46,9 @@ URL:            https://userbase.kde.org/QCA
 Source0:        https://download.kde.org/stable/qca/%{version}/qca-%{version}.tar.xz
 Source1:        https://download.kde.org/stable/qca/%{version}/qca-%{version}.tar.xz.sig
 Source2:        qca.keyring
-# PATCH-FIX-OPENSUSE
-Patch0:         qca-2.3.0-fixDSA.patch
 # PATCH-FIX-UPSTREAM
-Patch1:         0001-Make-filewatchunittest-much-quicker.patch
-BuildRequires:  ca-certificates
+Patch0:         0001-hashunittest-run-sha384longtest-only-for-providers-t.patch
+BuildRequires:  ca-certificates-mozilla
 BuildRequires:  cmake
 BuildRequires:  gpg2
 BuildRequires:  libgcrypt-devel
@@ -104,6 +102,7 @@ The Qt cryptographic library.
 
 %package devel
 Summary:        Development files for the Qt Cryptographic Architecture 2
+Requires:       libqca-%{flavor}-%{_soversion} = %{version}
 %if 0%{?qt5}
 Requires:       cmake(Qt5Core) >= %{qt_min_version}
 Requires:       cmake(Qt5Network) >= %{qt_min_version}
@@ -147,7 +146,7 @@ echo > examples/CMakeLists.txt
 %cmake \
 %else
 %cmake_qt6 \
-  -DQT6=ON \
+  -DBUILD_WITH_QT6=ON \
 %endif
   -DBUILD_TESTS=ON \
   -DQCA_INSTALL_IN_QT_PREFIX=ON \
@@ -170,6 +169,13 @@ echo > examples/CMakeLists.txt
 
 %check
 export LD_LIBRARY_PATH=%{buildroot}%{_libdir}:$LD_LIBRARY_PATH
+%if 0%{?qt5}
+export QT_PLUGIN_PATH=%{buildroot}%{_libqt5_plugindir}:%{_libqt5_plugindir}
+%else
+export QT_PLUGIN_PATH=%{buildroot}%{_qt6_pluginsdir}:%{_qt6_pluginsdir}
+%endif
+# The 'PGP' test fails randomly
+%define _smp_mflags -j1
 %ctest
 
 %post -n libqca-%{flavor}-%{_soversion} -p /sbin/ldconfig
