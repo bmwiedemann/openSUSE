@@ -99,6 +99,7 @@ export CC=gcc-9
 export CXX=g++-9
 %endif
 %cmake \
+  -DFAT_RUNTIME=ON \
   -DCMAKE_INSTALL_DOCDIR=%{_defaultdocdir}/%{name} \
 %ifarch %{ix86} x86_64
   -DBUILD_AVX512=ON \
