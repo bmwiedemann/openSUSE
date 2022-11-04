@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov  3 08:57:16 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.7+kde49, rebased upstream:
+  * Hold surface read lock throughout QWaylandEglWindow::updateSurface
+  * Keep reference to buffer until it has been replaced
+  * Implement wp_viewporter support for video buffer formats
+  * Ignore viewporter buffer size when buffer is null
+
+-------------------------------------------------------------------
 Mon Sep 26 12:03:24 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.6+kde49, rebased upstream:
