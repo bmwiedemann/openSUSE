@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Unidecode
-Version:        1.3.5
+Version:        1.3.6
 Release:        0
 Summary:        ASCII transliterations of Unicode text
 License:        GPL-2.0-or-later
