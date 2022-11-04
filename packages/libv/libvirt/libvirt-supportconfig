@@ -11,7 +11,7 @@ RCFILE="/usr/lib/supportconfig/resources/scplugin.rc"
 LIBVIRTD_CONF_FILES="$(find -L /etc/libvirt/*.conf -type f | sort)"
 PERSISTENT_VM_CONF_FILES=""
 ACTIVE_VM_CONF_FILES=""
-LIBVIRTD_LOG_FILES="$(find -L /var/log/libvirt/ -name libvirtd.log -type f | sort)"
+LIBVIRTD_LOG_FILES="$(find -L /var/log/libvirt/*.log -type f | sort)"
 
 
 if [ -s $RCFILE ]; then

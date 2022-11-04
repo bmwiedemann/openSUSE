@@ -162,7 +162,7 @@
 
 Name:           libvirt
 URL:            http://libvirt.org/
-Version:        8.8.0
+Version:        8.9.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -192,7 +192,7 @@ Requires:       %{name}-libs = %{version}-%{release}
 # All build-time requirements. Run-time requirements are
 # listed against each sub-RPM
 BuildRequires:  gettext-tools
-BuildRequires:  meson >= 0.54.0
+BuildRequires:  meson >= 0.56.0
 BuildRequires:  ninja
 # Needed for virkmodtest in 'make check'
 BuildRequires:  modutils
@@ -759,6 +759,15 @@ Obsoletes:      libvirt-bash-completion < 7.3.0
 %description client
 The client binaries needed to access the virtualization
 capabilities of recent versions of Linux (and other OSes).
+
+%package client-qemu
+Summary:        Additional client side utilities for QEMU
+Requires:       %{name}-libs = %{version}-%{release}
+Requires:       python3-libvirt-python >= 5.1.0
+
+%description client-qemu
+The additional client binaries are used to interact
+with some QEMU specific features of libvirt.
 
 %package libs
 Summary:        Client side libraries for libvirt
@@ -1855,6 +1864,12 @@ fi
 %{_bindir}/virt-pki-validate
 %{_datadir}/bash-completion/completions/virsh
 %dir %{_libdir}/%{name}
+
+%if %{with_qemu}
+%files client-qemu
+%doc %{_mandir}/man1/virt-qemu-qmp-proxy.1*
+%{_bindir}/virt-qemu-qmp-proxy
+%endif
 
 %files libs -f %{name}.lang
 %dir %attr(0700, root, root) %{_sysconfdir}/%{name}/

@@ -4163,4 +4163,18 @@ StandardGroups in rpmlint package.
     <comment></comment>
     <requestid>1008231</requestid>
   </revision>
+  <revision rev="363" vrev="1">
+    <srcmd5>0fc8be7ea6eff158ab0363cf84981a70</srcmd5>
+    <version>8.9.0</version>
+    <time>1667579506</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to libvirt 8.9.0
+  - jsc#PED-620, jsc#PED-1540
+  - Add support for modular daemons to the supportconfig plugin
+  - New subpackage libvirt-client-qemu providing client utilities
+    to interact with QEMU-specific features of libvirt
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v8-9-0-2022-11-01</comment>
+    <requestid>1033076</requestid>
+  </revision>
 </revisionlist>

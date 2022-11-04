@@ -13,10 +13,10 @@ Signed-off-by: Jim Fehlig <jfehlig@suse.com>
  src/libxl/libxl_conf.c | 19 ++++++++++++++++++-
  1 file changed, 18 insertions(+), 1 deletion(-)
 
-Index: libvirt-8.8.0/src/libxl/libxl_conf.c
+Index: libvirt-8.9.0/src/libxl/libxl_conf.c
 ===================================================================
---- libvirt-8.8.0.orig/src/libxl/libxl_conf.c
-+++ libvirt-8.8.0/src/libxl/libxl_conf.c
+--- libvirt-8.9.0.orig/src/libxl/libxl_conf.c
++++ libvirt-8.9.0/src/libxl/libxl_conf.c
 @@ -942,6 +942,20 @@ libxlDiskSetDiscard(libxl_device_disk *x
  }
  
