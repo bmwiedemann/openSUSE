@@ -26,6 +26,7 @@
         <flavor>ContainerHost-RaspberryPi</flavor>
         <flavor>Vagrant</flavor>
         <flavor>ContainerHost-Vagrant</flavor>
+        <flavor>SelfInstall</flavor>
         <flavor>ContainerHost-SelfInstall</flavor>
         <flavor>DigitalOcean-Cloud</flavor>
 </multibuild>

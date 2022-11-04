@@ -534,4 +534,12 @@
     <comment>- Stop building Kubic and k3s flavours</comment>
     <requestid>980301</requestid>
   </revision>
+  <revision rev="56" vrev="56">
+    <srcmd5>3a6cfb1280cfc65fc8022c0c02da8de8</srcmd5>
+    <version>16.0.0</version>
+    <time>1667579505</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1033073</requestid>
+  </revision>
 </revisionlist>

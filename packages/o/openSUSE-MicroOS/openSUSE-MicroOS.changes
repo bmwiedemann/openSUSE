@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov  1 13:00:31 UTC 2022 - Moritz Volz <momivolz@gmail.com>
+
+- Add SelfInstall flavor without container runtime
+
+-------------------------------------------------------------------
 Wed Jun  1 07:43:26 UTC 2022 - Richard Brown <rbrown@suse.com>
 
 - Stop building Kubic and k3s flavours 
