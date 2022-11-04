@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 29 14:19:36 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to versino 1.7
+  * FIX: fix reading of long lines from stdin and refactor
+    slurp_file() in the process.
+  * NEW: Add option -o outfile for when not run from a shell and
+    redirect '>' is not an option.
+
+-------------------------------------------------------------------
 Wed Jan  5 16:14:18 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to versino 1.6
