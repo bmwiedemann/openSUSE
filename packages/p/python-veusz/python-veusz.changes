@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue Nov  1 19:48:13 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.5.2:
+  * Fix broken ChangeLog.
+- Changes from version 3.5.1:
+  * Fixes for EMF generating code (requires pyemf-3.1).
+- Changes from version 3.5.0:
+  * Improvements in fitting, including:
+    - Assume absolute errors by default.
+    - Introduce minimum and maximum fit ranges.
+    - Add setting to give default error value and type
+      (absolute/relative).
+  - Plugin fixes, renaming --plugin to --veusz-plugin option.
+  - Bug fix for broken axis drawing.
+  - Mirrored axis bug fix.
+  - More keyboard shortcuts.
+  - Fix build system to use sip-build, which works with recent SIP
+    versions.
+  - Change high DPI scaling policy.
+  - Support _FillValue and missing_data attributes in HDF5 files
+    for NetCDF.
+- Drop upstreamed patches:
+  * python-veusz-correct-platlib-dir.patch.
+  * veusz-sip65.patch.
+- New BuildRequires: python-tomli.
+- Re-work common data installation:
+  * Drop out-of-source icon veusz_256.png: Desktops now support
+    rendering svg icons directly.
+  * Split out a separate -common package for example, icon, and
+    test files common to all python flavours; install these to
+    %{_datadir}/veusz and symlink these to %python_sitearch dir as
+    veusz looks for these files in this location.
+  * Require veusz-common package from python flavours packages.
+  * Make updates from dir to symlinks possible by rm-ing dirs from
+    previous installs (%pre section).
+- Clean up trailing spaces from old changelog entries.
+- Run full gamut of tests for %check; needs BuildRequires:
+  xorg-x11-server-Xvfb.
+
+-------------------------------------------------------------------
 Sat Sep 24 18:42:31 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Restore multi flavour builds for all supported python3 flavours.
@@ -277,7 +317,7 @@ Fri Jul 15 16:47:03 UTC 2016 - badshah400@gmail.com
   only actualy python modules in the python-veusz pkg.
 - Hardlink icons from pixmaps/veusz to hicolor-icon-theme, as
   symlinked icons lead to appstream-builder being unable to
-  detect them and vetoes the application consequently. 
+  detect them and vetoes the application consequently.
 
 -------------------------------------------------------------------
 Sat May  7 19:31:32 UTC 2016 - badshah400@gmail.com
@@ -433,10 +473,10 @@ Sat Aug 30 21:58:22 UTC 2014 - badshah400@gmail.com
       edge
     - Fix function plotter in embedding
     - Fix astropy version checking
-    - Fix crash for error bar in CSV with blank previous column 
+    - Fix crash for error bar in CSV with blank previous column
 - Drop python-veusz-test-disable-contour_labels.patch; patch
   incorporated upstream.
- 
+
 -------------------------------------------------------------------
 Sun May  4 21:32:54 UTC 2014 - badshah400@gmail.com
 
@@ -473,7 +513,7 @@ Sun May  4 21:32:54 UTC 2014 - badshah400@gmail.com
     - Use end of text formatting string beyond format specifier
     - When writing SVG text as text, use xml:space="preserve" to
       avoid missing whitespace
-    - Embedding socket issue on Python 3.4+ 
+    - Embedding socket issue on Python 3.4+
 - Add python-veusz-test-disable-contour_labels.patch to disable a
   test that unnecessarily causes build failures; patch came from
   upstream.
@@ -514,12 +554,12 @@ Fri Jan 17 20:37:08 UTC 2014 - badshah400@gmail.com
   + Add 2D data CSV import
   + Allow safe renaming of linked datasets
   + Support importing text from FITS files
-  + Bug fixes: 
+  + Bug fixes:
     - When capturing data from a file/named pipe, do not stop
       when no more data are available
     - Fixes mangling of text in saved files using Windows binary
     - Fix encoding for standard file import
-    - Fix FITS import for python3 
+    - Fix FITS import for python3
 
 -------------------------------------------------------------------
 Fri Nov 29 02:37:58 UTC 2013 - badshah400@gmail.com
@@ -530,7 +570,7 @@ Fri Nov 29 02:37:58 UTC 2013 - badshah400@gmail.com
   + Implement label at-minimum/at-maximum for ternary plot
   + Add border and background fill settings for text label widget
   + Enable FITS support with astropy
-  + Bug fixes: 
+  + Bug fixes:
     - Fix broken drag and drop in documents
     - Fix deleted C/C++ object crash when using undo and in
       tutorial
@@ -538,7 +578,7 @@ Fri Nov 29 02:37:58 UTC 2013 - badshah400@gmail.com
     - Remove warning/error in compilation in gcc in SUSE
     - Add Python version classifiers
     - Fix document icons in Windows binary
-    - Error bars can be plotted incorrectly for histogrammed data 
+    - Error bars can be plotted incorrectly for histogrammed data
 - Drop python-veusz-fix-histogram-errorbars.patch; fix
   incorporated by upstream.
 
@@ -627,7 +667,7 @@ Tue Apr 16 02:24:50 UTC 2013 - badshah400@gmail.com
     - Fix Print dialog
     - Fix command-line "Print" command
     - Fix duplicate axes drawn in grid
-    - Fix crash adding empty polar plot 
+    - Fix crash adding empty polar plot
 
 -------------------------------------------------------------------
 Fri Mar 29 08:13:00 UTC 2013 - badshah400@gmail.com
@@ -651,7 +691,7 @@ Fri Mar 29 08:13:00 UTC 2013 - badshah400@gmail.com
     * Many crashes fixed
     * Fix width of key when using long titles/and or multiple
       columns
-    * Fix bold and italic output in SVG output 
+    * Fix bold and italic output in SVG output
 
 -------------------------------------------------------------------
 Wed Jan 23 19:29:35 UTC 2013 - badshah400@gmail.com
@@ -724,7 +764,7 @@ Mon Jul 10 11:18:26 UTC 2012 - badshah400@gmail.com
 -------------------------------------------------------------------
 Sun Jul  8 00:20:46 UTC 2012 - scorot@free.fr
 
-- fix build for SLE_11_SP2 
+- fix build for SLE_11_SP2
 
 -------------------------------------------------------------------
 Fri Apr  6 08:04:43 UTC 2012 - badshah400@gmail.com
@@ -765,14 +805,14 @@ Fri Apr  6 08:04:43 UTC 2012 - badshah400@gmail.com
 -------------------------------------------------------------------
 Sat Feb 25 22:05:00 UTC 2012 - scorot@free.fr
 
-- fix build for SLE-11 
+- fix build for SLE-11
 
 -------------------------------------------------------------------
 Tue Nov 29 09:59:16 UTC 2011 - badshah400@gmail.com
 
 - Minor spec file changes:
   + Use Name: python-veusz instead of Name: python-%{pyname}
-  + Modify License tag in accordance with spdx specifications 
+  + Modify License tag in accordance with spdx specifications
 
 -------------------------------------------------------------------
 Tue Nov 29 09:16:16 UTC 2011 - badshah400@gmail.com
@@ -810,7 +850,7 @@ Tue Nov 29 09:16:16 UTC 2011 - badshah400@gmail.com
     - Catch errors in example import plugin
     - Fix crash for non existent key symbols
     - Fix crash when mismatch of dataset sizes when combining 1D
-      datasets to make 2D dataset 
+      datasets to make 2D dataset
   + Minor changes (see
     http://home.gna.org/veusz/releasenotes/1.14.txt for a full
     list).

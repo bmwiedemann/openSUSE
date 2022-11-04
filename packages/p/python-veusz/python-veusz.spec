@@ -16,34 +16,34 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
+%define X_display ":98"
+
 %define         skip_python2  1
 %define         skip_python36 1
 Name:           python-veusz
-Version:        3.4
+Version:        3.5.2
 Release:        0
 Summary:        Scientific plotting library for Python
 # The entire source code is GPL-2.0+ except helpers/src/_nc_cntr.c which is Python-2.0
 License:        GPL-2.0-or-later AND Python-2.0
 URL:            https://veusz.github.io/
 Source0:        https://files.pythonhosted.org/packages/source/v/veusz/veusz-%{version}.tar.gz
-Source3:        veusz_256.png
-# PATCH-FIX-UPSTREAM veusz-sip65.patch gh#veusz/veusz#595 -- fix build with SIP 6.5
-Patch0:         veusz-sip65.patch
-# PATCH-FIX-UPSTREAM python-veusz-correct-platlib-dir.patch gh#veusz/veusz#627 badshah400@gmail.com -- Use sysconfig to get correct platlib location for all python3 flavours
-Patch1:         python-veusz-correct-platlib-dir.patch
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module qt5-devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sip-devel}
+BuildRequires:  %{python_module tomli}
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  man
 BuildRequires:  python-rpm-macros
 BuildRequires:  update-desktop-files
+BuildRequires:  xorg-x11-server-Xvfb
 Requires:       python-numpy
 Requires:       python-qt5
+Requires:       veusz-common
 Recommends:     python-astropy
 Recommends:     python-h5py
 Recommends:     veusz
@@ -65,6 +65,7 @@ multiple plots, contours, shapes and fitting data.
 %package     -n veusz
 Summary:        GUI scientific plotting package
 Requires:       python3-veusz = %{version}
+Requires:       veusz-common
 Requires(post): desktop-file-utils
 Requires(post): shared-mime-info
 Requires(postun):desktop-file-utils
@@ -80,6 +81,17 @@ widgets, allowing complex layouts to be designed. Veusz supports
 plotting functions, data with errors, keys, labels, stacked plots,
 multiple plots, contours, shapes and fitting data.
 
+%package -n veusz-common
+Summary:        Common example and icons for all python flavors of veusz
+BuildArch:      noarch
+
+%description -n veusz-common
+Veusz is a scientific plotting package, designed to create
+publication-ready Postscript/PDF/SVG output.
+
+This package provides datafiles, examples, and icons used by all
+python flavours of veusz.
+
 %prep
 %autosetup -p1 -n veusz-%{version}
 find -name \*~ | xargs rm -f
@@ -90,9 +102,19 @@ sed -E -i "/\#!\/usr\/bin\/env python/d" veusz/veusz_{listen,main}.py
 %build
 export CFLAGS="%{optflags}"
 %python_build
+%make_build -C Documents/ man
 
 %install
 %python_install
+
+# Copy common files to /usr/share/ and...
+mkdir -p %{buildroot}%{_datadir}/veusz
+cp -pr examples icons %{buildroot}%{_datadir}/veusz/
+
+%{python_expand # ...symlink them back into python_sitearch
+rm -fr %{buildroot}%{$python_sitearch}/veusz/{examples,icons}
+ln -s -t %{buildroot}%{$python_sitearch}/veusz/ %{_datadir}/veusz/{examples,icons}
+}
 
 # Install .desktop, mime and appdata files from upstream tarball
 install -Dm0644 support/veusz.appdata.xml %{buildroot}%{_datadir}/appdata/veusz.appdata.xml
@@ -102,20 +124,15 @@ desktop-file-install -m 0644 \
   --add-category=2DGraphics \
   support/veusz.desktop
 
-# move icon files to /usr/share/pixmaps/veusz
-%python_expand install -m 0644 %{SOURCE3} %{buildroot}%{$python_sitearch}/veusz/icons/veusz_256.png
-mkdir -p %{buildroot}%{_datadir}/pixmaps/veusz
-ln -s %{python3_sitearch}/veusz/icons %{buildroot}%{_datadir}/pixmaps/veusz
-
-# hardlink main veusz icon also into hicolor-icon-theme dir (for desktop file)
-for size in 16 32 48 64 128 256; do
+# link main veusz icon also into hicolor-icon-theme dir (for desktop file)
+for size in 16 32 48 64 128; do
     odir=%{buildroot}%{_datadir}/icons/hicolor/${size}x${size}/apps
     mkdir -p $odir
-    ln -s %{python3_sitearch}/veusz/icons/veusz_${size}.png ${odir}/veusz.png
+    ln -s %{_datadir}/veusz/icons/veusz_${size}.png ${odir}/veusz.png
 done
 odir=%{buildroot}%{_datadir}/icons/hicolor/scalable/apps
 mkdir -p $odir
-ln -s %{python3_sitearch}/veusz/icons/veusz.svg $odir/veusz.svg
+ln -s %{_datadir}/veusz/icons/veusz.svg $odir/veusz.svg
 
 # install man pages
 mkdir -p %{buildroot}%{_mandir}/man1
@@ -127,9 +144,19 @@ rm Documents/manual/html/.buildinfo
 %python_expand %fdupes %{buildroot}%{$python_sitearch}/veusz/
 
 %check
+export DISPLAY="%{X_display}"
+Xvfb %{X_display} >& Xvfb.log &
+trap "kill $! || true" EXIT
+sleep 5
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
-QT_QPA_PLATFORM=minimal $python -B tests/runselftest.py
+$python -B tests/runselftest.py
 }
+
+%pretrans
+# icons/examples/tests were dirs from previous installations, need to rm these first
+if [ $1 -gt 1 ]; then
+  %python_expand rm -fr %{$python_sitearch}/veusz/{examples,icons}
+fi
 
 %files %{python_files}
 %doc README.md AUTHORS ChangeLog
@@ -142,11 +169,14 @@ QT_QPA_PLATFORM=minimal $python -B tests/runselftest.py
 %license COPYING
 %{_bindir}/veusz
 %{_datadir}/applications/veusz.desktop
-%{_datadir}/pixmaps/veusz/
 %dir %{_datadir}/appdata
 %{_datadir}/appdata/veusz.appdata.xml
 %{_datadir}/icons/hicolor/*/apps/veusz.*
 %{_datadir}/mime/packages/veusz.xml
 %{_mandir}/man1/*
+
+%files -n veusz-common
+%license COPYING
+%{_datadir}/veusz/
 
 %changelog
