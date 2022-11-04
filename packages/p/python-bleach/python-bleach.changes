@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov  3 09:00:37 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove not needed python-six dependency
+- Remove python_module macro definition
+- More specific python_sitelib in files
+
+-------------------------------------------------------------------
 Thu Sep 29 06:58:58 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 5.0.1:

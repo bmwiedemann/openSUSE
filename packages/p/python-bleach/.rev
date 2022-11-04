@@ -150,4 +150,15 @@
 - Refresh de-vendor.patch, and convert to patch level 1</comment>
     <requestid>1006839</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>0c4aeabe1e57d91031d9e38b2988d300</srcmd5>
+    <version>5.0.1</version>
+    <time>1667579500</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove not needed python-six dependency
+- Remove python_module macro definition
+- More specific python_sitelib in files
+</comment>
+    <requestid>1033010</requestid>
+  </revision>
 </revisionlist>

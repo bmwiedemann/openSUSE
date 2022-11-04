@@ -17,7 +17,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-bleach
 Version:        5.0.1
 Release:        0
@@ -30,12 +29,10 @@ BuildRequires:  %{python_module html5lib >= 1.1}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six >= 1.9}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-html5lib >= 1.1
 Requires:       python-packaging
-Requires:       python-six >= 1.9
 BuildArch:      noarch
 %python_subpackages
 
@@ -72,6 +69,7 @@ rm -rf bleach/_vendor
 %files %{python_files}
 %license LICENSE
 %doc CHANGES README.rst
-%{python_sitelib}/*
+%{python_sitelib}/bleach
+%{python_sitelib}/bleach-%{version}*-info
 
 %changelog
