@@ -17,29 +17,26 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-bcrypt
-Version:        3.2.2
+Version:        4.0.1
 Release:        0
 Summary:        BSD type 2a and 2b password hashing
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/pyca/bcrypt/
-Source:         https://files.pythonhosted.org/packages/source/b/bcrypt/bcrypt-%{version}.tar.gz
-BuildRequires:  %{python_module cffi >= 1.1}
-BuildRequires:  %{python_module devel}
+Source0:        https://files.pythonhosted.org/packages/source/b/bcrypt/bcrypt-%{version}.tar.gz
+Source1:        vendor.tar.gz
+Source2:        cargo_config
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 3.2.1}
+BuildRequires:  %{python_module setuptools-rust}
+BuildRequires:  %{python_module wheel}
 # setuptools 40.8.0 is required by upstream only for a pip issue that doesn't
 # affect us, so we relax the requirement to build in SLE/Leap 15.2 with 40.5.0
 BuildRequires:  %{python_module setuptools >= 40.5.0}
-BuildRequires:  %{python_module six >= 1.4.1}
+BuildRequires:  cargo-packaging
 BuildRequires:  fdupes
-BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(libffi)
-Requires:       python-six >= 1.4.1
-%requires_eq    python-cffi
 Provides:       python-py-bcrypt = %{version}
 Obsoletes:      python-py-bcrypt < %{version}
 
@@ -50,14 +47,17 @@ This Python module supports creating (and verifying) password hashes
 using the BSD-originating hashing methods known as "2a" and "2b".
 
 %prep
-%setup -q -n bcrypt-%{version}
+%autosetup -p1 -a1 -n bcrypt-%{version}
+mkdir .cargo
+cp %{SOURCE2} .cargo/config
+mv Cargo.lock src/_bcrypt
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}/%{$python_sitearch}
 
 %check
@@ -67,6 +67,6 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %license LICENSE
 %doc README.rst
 %{python_sitearch}/bcrypt
-%{python_sitearch}/bcrypt-%{version}-py*.egg-info
+%{python_sitearch}/bcrypt-%{version}*-info
 
 %changelog

@@ -1,0 +1,16 @@
+<services>
+  <service mode="disabled" name="obs_scm">
+    <param name="url">https://github.com/pyca/bcrypt/</param>
+    <param name="versionformat">@PARENT_TAG@~@TAG_OFFSET@</param>
+    <param name="scm">git</param>
+    <param name="revision">4.0.1</param>
+  </service>
+  <service name="cargo_vendor" mode="disabled">
+     <param name="srcdir">bcrypt/src/_bcrypt</param>
+     <param name="compression">gz</param>
+     <param name="update">true</param>
+  </service>
+  <service name="cargo_audit" mode="disabled">
+     <param name="srcdir">bcrypt/src/_bcrypt</param>
+  </service>
+</services>
