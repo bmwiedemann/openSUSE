@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov  3 09:37:32 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Add rmaps-simplify-the-lookup-for-the-binding-object-and-fix-for-hwloc-2.0.patch
+  to fix compatibility with hwloc >= 2.0 (bsc#1204982)
+
+-------------------------------------------------------------------
 Wed Jul  6 12:29:12 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Enable libfabric on all arch

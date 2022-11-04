@@ -185,6 +185,7 @@ Patch8:         hwloc-updates-for-hwloc-2.0.x-API.patch
 Patch9:         pmix-pmix2x-Fix-the-PMIx-discovery-logic.patch
 Patch10:        pmix-Fix-detection-of-Externally-built-PMIx.patch
 Patch11:        btl-openib-Add-support-for-newer-hardware.patch
+Patch12:        rmaps-simplify-the-lookup-for-the-binding-object-and-fix-for-hwloc-2.0.patch
 Provides:       mpi
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
@@ -468,6 +469,7 @@ EOF
 %patch9
 %patch10
 %patch11
+%patch12
 
 # Live patch the VERSION file
 sed -i -e 's/^greek=.*$/greek=%{git_ver}/' -e 's/^repo_rev=.*$/repo_rev=%{version}%{git_ver}/' \

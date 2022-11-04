@@ -252,4 +252,12 @@
   newer RDMA hardware (ConnectX 4 and 5 VF, ConnectX6 PF + VF and Broadcom adapters)</comment>
     <requestid>1007181</requestid>
   </revision>
+  <revision rev="30" vrev="7">
+    <srcmd5>b1c79d4a80bb4946cc866b1f87652e88</srcmd5>
+    <version>3.1.6</version>
+    <time>1667579869</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1033476</requestid>
+  </revision>
 </revisionlist>
