@@ -10,9 +10,9 @@ local gitdiff = require "plugins.gitdiff_highlight.gitdiff"
 local _, MiniMap = pcall(require, "plugins.minimap")
 
 -- vscode defaults
-style.gitdiff_addition = {common.color "#587c0c"}
-style.gitdiff_modification = {common.color "#0c7d9d"}
-style.gitdiff_deletion = {common.color "#94151b"}
+style.gitdiff_addition = style.gitdiff_addition or {common.color "#587c0c"}
+style.gitdiff_modification = style.gitdiff_modification or {common.color "#0c7d9d"}
+style.gitdiff_deletion = style.gitdiff_deletion or {common.color "#94151b"}
 
 local function color_for_diff(diff)
 	if diff == "addition" then
@@ -24,7 +24,7 @@ local function color_for_diff(diff)
 	end
 end
 
-style.gitdiff_width = 3
+style.gitdiff_width = style.gitdiff_width or 3
 
 local last_doc_lines = 0
 
@@ -40,6 +40,10 @@ end
 
 local function init_diff(doc)
 	diffs[doc] = {is_in_repo = true}
+end
+
+local function gitdiff_padding(dv)
+	return style.padding.x * 1.5 + dv:get_font():get_width(#dv.doc.lines)
 end
 
 local function update_diff(doc)
@@ -80,11 +84,6 @@ local function update_diff(doc)
 	diffs[doc].is_in_repo = true
 end
 
-
-local function gitdiff_padding(dv)
-	return style.padding.x * 1.5 + dv:get_font():get_width(#dv.doc.lines)
-end
-
 local old_docview_gutter = DocView.draw_line_gutter
 local old_gutter_width = DocView.get_gutter_width
 function DocView:draw_line_gutter(idx, x, y, width)
@@ -104,12 +103,14 @@ function DocView:draw_line_gutter(idx, x, y, width)
 
 	-- add margin in between highlight and text
 	x = x + gitdiff_padding(self)
+
+
 	local yoffset = self:get_line_text_y_offset()
 	if diffs[self.doc][idx] ~= "deletion" then
 		renderer.draw_rect(x, y + yoffset, style.gitdiff_width, self:get_line_height(), color)
 		return
 	end
-	renderer.draw_rect(x, y + (yoffset * 4), style.gitdiff_width, self:get_line_height() / 2, color)
+	renderer.draw_rect(x - style.gitdiff_width * 2, y + yoffset, style.gitdiff_width * 4, 2, color)
 end
 
 function DocView:get_gutter_width()

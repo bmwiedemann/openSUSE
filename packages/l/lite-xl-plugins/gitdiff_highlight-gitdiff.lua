@@ -1,4 +1,3 @@
--- mod-version:1
 local gitdiff = {}
 
 -- liquidev is a genius

@@ -17,7 +17,7 @@
 
 %define programname lite-xl
 Name:           lite-xl-plugins
-Version:        git20221005.b1bc52f
+Version:        git20221101.0971a7a
 Release:        0
 Summary:        Additional plugins for %{programname}
 License:        MIT
@@ -32,8 +32,10 @@ Source3:        gitdiff_highlight-init.lua
 ### https://raw.githubusercontent.com/vincens2005/lite-xl-gitdiff-highlight/master/gitdiff.lua
 Source4:        gitdiff_highlight-gitdiff.lua
 Source5:        smb-addl-nonicons.txt
-Patch0:         nonicons-userdir.patch
+Patch0:         nonicons-userdir.diff
 Recommends:     words
+Requires:       lite-xl
+Requires:       lite-xl-widgets
 BuildArch:      noarch
 
 %description
