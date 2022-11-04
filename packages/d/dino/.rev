@@ -33,4 +33,14 @@
     <comment>- boo#1204259: Add dino-0.3.0-libsoup.patch</comment>
     <requestid>1031926</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>068681c4fb2b333b8b43318a4603e7a4</srcmd5>
+    <version>0.3.1</version>
+    <time>1667579865</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.1:
+  * Maintenance release for libsoup3 support and bug fixes
+- Remove dino-0.3.0-libsoup.patch</comment>
+    <requestid>1033469</requestid>
+  </revision>
 </revisionlist>
