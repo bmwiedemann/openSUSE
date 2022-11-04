@@ -33,7 +33,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  libqmmp-plugins <= %{qmmp_ver_max}
 BuildRequires:  libqmmp-plugins >= %{qmmp_ver_min}
 BuildRequires:  pkgconfig
-BuildRequires:  yasm
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(Qt6Network)
