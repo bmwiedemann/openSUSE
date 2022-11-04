@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6dd8297b74420e35fe7ee26f4205f6a2</srcmd5>
+    <version>6.02.00</version>
+    <time>1667579634</time>
+    <user>dimstar_suse</user>
+    <comment>* remove unecessary BuildRequired for libbobcat-light
+* Add conflicts between libbobcat-devel and libbobcat-light-devel</comment>
+    <requestid>1033082</requestid>
+  </revision>
+</revisionlist>
