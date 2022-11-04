@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov  2 14:30:29 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- updated to 1.7.0 (from a different supplier)
+  - openssl 3 support
+- dropped fipscheck-dont_generate_manpages.patch (not needed)
+- dropped fipscheck-fips.h_not_needed.patch (not needed)
+
+-------------------------------------------------------------------
 Fri Nov 20 09:50:32 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - move libs to %_libdir (boo#1029961)

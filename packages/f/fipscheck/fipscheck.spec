@@ -1,7 +1,7 @@
 #
 # spec file for package fipscheck
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,16 +20,14 @@
 %global soversion 1.2.1
 %global somajor 1
 Name:           fipscheck
-Version:        1.5.0
+Version:        1.7.0
 Release:        0
 Summary:        A library for integrity verification of FIPS validated modules
 License:        BSD-2-Clause
 Group:          Development/Libraries/C and C++
-URL:            https://releases.pagure.org/%{name}/
-Source0:        https://releases.pagure.org/fipscheck/%{name}-%{version}.tar.bz2
+URL:            https://github.com/LairdCP/fipscheck
+Source0:        fipscheck-%version.tar.bz2
 Source1:        baselibs.conf
-Patch1:         fipscheck-dont_generate_manpages.patch
-Patch2:         fipscheck-fips.h_not_needed.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -59,8 +57,6 @@ This package contains development files for %{name}.
 
 %prep
 %setup -q
-%patch1 -p1
-%patch2 -p1
 
 %build
 %configure --disable-static
