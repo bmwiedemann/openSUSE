@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov  3 08:55:09 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.7+kde1, rebased upstream:
+  * PulseAudio: Call pa_stream_flush() with PulseDaemonLocker lock held
+  * Fix incorrectly generated CMake files for the QNX audio plugin
+
+-------------------------------------------------------------------
 Mon Sep 26 10:34:14 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.6+kde1, rebased upstream:
