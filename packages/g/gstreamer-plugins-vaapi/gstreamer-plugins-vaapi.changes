@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov  3 17:58:47 UTC 2022 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- Remove unused buildrequires on yasm.
+- Add explicit buildrequires on glib, gmodule and x11.
+
+-------------------------------------------------------------------
 Sat Oct 22 09:05:41 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.20.4:

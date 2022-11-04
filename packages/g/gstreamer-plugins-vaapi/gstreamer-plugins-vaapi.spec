@@ -32,9 +32,10 @@ BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  meson >= 0.47.0
 BuildRequires:  pkgconfig
 BuildRequires:  vaapi-wayland-tools
-BuildRequires:  yasm
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(gl)
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gstreamer-1.0) >= %{version}
 BuildRequires:  pkgconfig(gstreamer-codecparsers-1.0) >= %{version}
 BuildRequires:  pkgconfig(gstreamer-plugins-bad-1.0) >= %{version}
@@ -53,6 +54,7 @@ BuildRequires:  pkgconfig(wayland-egl)
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.15
 BuildRequires:  pkgconfig(wayland-scanner)
 BuildRequires:  pkgconfig(wayland-server)
+BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xrender)
 ExclusiveArch:  %{ix86} x86_64 aarch64
