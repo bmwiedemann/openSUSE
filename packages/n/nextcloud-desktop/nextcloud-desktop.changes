@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov  4 11:41:37 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Split out the dbus service related files that provides
+  libcloudproviders integration for nextcloud desktop client into
+  a separate package; when this is installed, launching any
+  app supporting libowncloudproviders (e.g. nautilus on GNOME)
+  will automatically launch the desktop client -- which is rather
+  annoying to happen by default, esp. in cases where a user does
+  not even have a nextcloud account (gh#nextcloud/desktop#1982,
+  gh#nextcloud/desktop#2622).
+
+-------------------------------------------------------------------
 Sat Oct 22 14:36:06 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Add fix_nautilus_ext.patch: make the extension working again on Nautilus 43.

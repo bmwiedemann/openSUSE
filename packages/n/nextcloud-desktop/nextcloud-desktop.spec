@@ -66,6 +66,7 @@ BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(openssl) >= 1.1
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(zlib)
+Recommends:     cloudproviders-extension-nextcloud = %{version}
 Requires:       %{soname}%{sover} = %{version}
 Requires:       libqt5-qtgraphicaleffects
 Requires:       libqt5-qtquickcontrols2
@@ -164,6 +165,16 @@ BuildArch:      noarch
 This package provides overlay icons to visualise the
 synchronisation state in the Nemo file manager.
 
+%package -n cloudproviders-extension-nextcloud
+Summary:        Libcloudproviders integration for nextcloud-desktop
+Group:          Productivity/Networking/File-Sharing
+Requires:       %{name} = %{version}
+BuildArch:      noarch
+
+%description -n cloudproviders-extension-nextcloud
+This package provides libcloudproviders integration for the
+nextcloud desktop client.
+
 %package -n %{name}-dolphin
 Summary:        Dolphin overlay icons
 Group:          Productivity/Networking/File-Sharing
@@ -232,9 +243,6 @@ done
 %dir %{_datadir}/icons/hicolor/1024x1024/
 %dir %{_datadir}/icons/hicolor/1024x1024/apps/
 %{_datadir}/icons/hicolor/*/apps/Nextcloud*.*
-%dir %{_datadir}/cloud-providers/
-%{_datadir}/cloud-providers/com.nextcloudgmbh.Nextcloud.ini
-%{_datadir}/dbus-1/services/com.nextcloudgmbh.Nextcloud.service
 %{_datadir}/mime/packages/nextcloud.xml
 
 %files lang
@@ -277,6 +285,11 @@ done
 %dir %{_datadir}/nemo-python/extensions/__pycache__
 %{_datadir}/nemo-python/extensions/syncstate-Nextcloud.py*
 %{_datadir}/nemo-python/extensions/__pycache__/*
+
+%files -n cloudproviders-extension-nextcloud
+%dir %{_datadir}/cloud-providers/
+%{_datadir}/cloud-providers/com.nextcloudgmbh.Nextcloud.ini
+%{_datadir}/dbus-1/services/com.nextcloudgmbh.Nextcloud.service
 
 %files dolphin
 %{_libdir}/libnextclouddolphinpluginhelper.so
