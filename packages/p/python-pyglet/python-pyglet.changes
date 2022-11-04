@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov  4 06:47:54 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop config(Mesa) (Build)Requires: this is just a random provides
+  from the Mesa package that indicates it ships any conf file. The
+  Mesa package itself is an empty metadata package.
+
+-------------------------------------------------------------------
 Wed Oct 12 14:13:18 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 1.5.27 

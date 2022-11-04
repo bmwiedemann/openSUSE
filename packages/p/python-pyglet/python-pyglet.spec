@@ -52,7 +52,6 @@ Requires:       libxcb-glx0
 Requires:       python-Pillow
 Requires:       python-future
 Requires:       python-pypng
-Requires:       config(Mesa)
 Recommends:     alsa-lib
 Recommends:     fontconfig
 Recommends:     freetype
@@ -73,7 +72,6 @@ BuildRequires:  freetype
 BuildRequires:  gnu-free-fonts
 BuildRequires:  libopenal0
 BuildRequires:  xorg-x11-server
-BuildRequires:  config(Mesa)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(libpulse)
