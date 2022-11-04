@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov  4 13:40:20 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Adjust shebang of /usr/bin/busted to point to the correct lua
+  interpreter (boo#1199151).
+
+-------------------------------------------------------------------
 Thu Feb 18 15:48:32 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Use %lua_provides macro for default lua versioning

@@ -1,7 +1,7 @@
 #
-# spec file for package lua-busted
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2012 Togan Muftuoglu toganm@opensuse.org
 #
 # All modifications and additions to the file contributed by third parties
@@ -59,7 +59,7 @@ Requires:       curl
 Requires:       openssl
 Requires:       unzip
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %lua_provides
 %if "%{flavor}" == ""
@@ -90,7 +90,7 @@ language packs.
 
 %prep
 %setup -q -n %{mod_name}-%{version}
-sed -i 's|^#!%{_bindir}/env lua|#!%{_bindir}/lua|' bin/busted
+sed -i 's|^#!%{_bindir}/env lua|#!%{_bindir}/lua%{lua_version}|' bin/busted
 
 %build
 /bin/true
