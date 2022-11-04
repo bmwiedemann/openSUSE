@@ -335,4 +335,48 @@
 </comment>
     <requestid>1030968</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>0af55e9231ae1229daa17b7cab590e03</srcmd5>
+    <version>1.11.0</version>
+    <time>1667579495</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.11.0
+  * Update to fmt lib version 9.1.0 #2346, #2485, #2512, #2517 . Thanks @sylveon, @YunchengLiu, @tt4g, @tycho and @vitaut
+  * Fix template instantiation warning #2336 . Thanks @aengusjiang
+  * Event handlers improvements #2342, #2375 . Thanks @espkk and @kslattery
+  * Allow modifying the used Android buffer ID #2358. Thanks @tiolan
+  * Fix clone in async test #2364. Thanks @stkw0
+  * Custom formatter optimization #2365. Thanks @conr2d
+  * Fix C++14 builds for gcc 4.x (#2333) #2372 . Thanks @kslattery
+  * Add minor version to CMake's SOVERSION #2376
+  * Allow compilation with FMT_ENFORCE_COMPILE_STRING #2381. Thanks @john4744
+  * Fix pkg-config generation #2383. Thanks @alexshpilkin
+  * Remove unused code from null_mutex #2385. Thanks @panzhongxian
+  * Fix redundant std::move #2396. Thanks @polesapart
+  * Remove the empty file if in first period in hourly logger #2386. Thanks @panzhongxian
+  * Add reset_overrun_counter() function to the async logging #2399 Thanks @bergen4
+  * Set C++20 in CMake when SPDLOG_USE_STD_FORMAT option is turned on #2402. Thanks @cookcocck
+  * Fix mingw test #2415. Thanks @neheb
+  * Support for any std::chrono::duration type in flush_every(..) #2439. Thanks @LucasChollet
+  * Fix implicit casting of level_enum #2443. Thanks @ibmibmibm
+  * Comment fix #2445. Thanks @Hish15
+  * Fix gcc 4.x build #2449. Thanks @Simon-Janos
+  * Add openSUSE installation instructions #2468. Thanks @LorenDB
+  * Fixed missing include file in stopwatch.h #2434. Thanks @fabianbuettner
+  * Support for omitting source info by defining SPDLOG_NO_SOURCE_LOC #2476. Thanks @nigels-com
+  * Added SPDLOG_BUILD_PIC build option to CMake #2475. Thanks @nigels-com
+  * Fix include windows.h #2495. Thanks @panicgh
+  * Workaround gcc 12 warnings #2498, #2499 . Thanks @offa
+  * Migrate to Github Actions CI #2500. Thanks @offa
+  * Replace iterator difference with std::distance #2509 Thanks @kin4stat
+  * Export targets file to build directory at configure time #2514, #2515. Thanks @puneetmatharu
+  * MongoDB sink improvements #2519. Thanks @sandorzm
+  * Fix shadow warning in dist_sink #2431. Thanks @MohammadKanan for reporting.
+  * Fixed msvc warning C4800 in win_eventlog_sink
+  * Check IsDebuggerPresent() in msvc_sink before doing actual work #2408. To use old behavior pass false to the msvc_sink constructor. Thanks @DominikGrabiec and @sylveon
+- Removed e36b69a0ecbdfb51cc28087b11256fb88c360ba4.patch as [boo#1199306] is now integrated. 
+  * Updated baselibs.conf accordingly.
+</comment>
+    <requestid>1032966</requestid>
+  </revision>
 </revisionlist>
