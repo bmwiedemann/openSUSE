@@ -334,4 +334,12 @@
     <comment>Qt 5.15.6, untested. (forwarded request 1006197 from Vogtinator)</comment>
     <requestid>1006209</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>32e039fef795e7b3850939bbabf8cadb</srcmd5>
+    <version>5.15.7+kde6</version>
+    <time>1667579639</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.7, untested (forwarded request 1033058 from favogt)</comment>
+    <requestid>1033093</requestid>
+  </revision>
 </revisionlist>
