@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Nov  4 15:20:47 UTC 2022 - XinLiang <XLiang@suse.com>
+
+- bsc#1204530, set crypto_hash as "sha1" and set crypto_cipher as "aes256",
+- set transport as "udpu" by default,
+- set default values for mcastaddr/mcastport/bindnedaddr when cluster firstly configured
+- Set focus on "Generate Auth Key File" when secauth is true
+- Implement ValidateSecurity method
+- Set focus on memberaddr add when using udpu
+- Bump Version 4.5.1
+
+-------------------------------------------------------------------
 Wed Apr 06 13:24:58 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
 - Bump version to 4.5.0 (bsc#1198109)
