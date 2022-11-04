@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov  3 08:57:08 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.7+kde0, rebased upstream:
+  * Update simplified chinese translation
+  * update dutch translations
+  * Update Catalan translations for Qt 5.15.2
+
+-------------------------------------------------------------------
 Mon Sep 26 10:35:07 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.6+kde2, rebased upstream:
