@@ -36,7 +36,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  libgnutls-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  libyaml-devel
-BuildRequires:  python
 BuildRequires:  trousers-devel
 BuildRequires:  xz-devel
 ExcludeArch:    ppc ppc64 ppc64le riscv64 s390x
@@ -65,7 +64,8 @@ rm -f %{buildroot}%{_prefix}/default/vboot_reference
 rm -f %{buildroot}%{_prefix}/lib/pkgconfig/vboot_host.pc
 
 %files
-%doc README LICENSE
+%doc README
+%license LICENSE
 %{_bindir}/chromeos-tpm-recovery
 %{_bindir}/cgpt
 %{_bindir}/common_minimal.sh

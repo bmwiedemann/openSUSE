@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov  4 05:57:46 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded BuildRequires on python 2.
+- Mark LICENSE as one. 
+
+-------------------------------------------------------------------
 Sun Jun 26 14:34:06 UTC 2022 - Berthold Gunreben <azouhr@opensuse.org>
 
 - s390x is unsupported. Disable architecture. 
