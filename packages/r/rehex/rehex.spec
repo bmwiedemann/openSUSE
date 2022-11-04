@@ -17,7 +17,7 @@
 
 
 Name:           rehex
-Version:        0.4.1
+Version:        0.5.4
 Release:        0
 Summary:        Reverse Engineers' Hex Editor
 License:        GPL-2.0-only
@@ -27,15 +27,19 @@ BuildRequires:  dos2unix
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libunistring-devel
+BuildRequires:  lua-busted
+BuildRequires:  perl-Template-GD
+BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+BuildRequires:  zip
+BuildRequires:  pkgconfig(capstone)
+BuildRequires:  pkgconfig(jansson)
+BuildRequires:  pkgconfig(lua)
 %if 0%{?suse_version} > 1500
 BuildRequires:  wxWidgets-3_0-devel
 %else
 BuildRequires:  wxWidgets-devel
 %endif
-BuildRequires:  (pkgconfig(lua5.3) or pkgconfig(lua))
-BuildRequires:  pkgconfig(capstone)
-BuildRequires:  pkgconfig(jansson)
 
 %description
 A hex heditor with a number of features for analysing and annotating
@@ -68,5 +72,7 @@ export CXXFLAGS="$CFLAGS"
 %{_libdir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
+%dir %{_datadir}/rehex
+%{_datadir}/rehex/rehex.htb
 
 %changelog
