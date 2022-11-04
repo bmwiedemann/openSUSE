@@ -33,12 +33,10 @@ BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module geographiclib >= 1.49}
 BuildRequires:  %{python_module pytest >= 3.10}
 BuildRequires:  %{python_module pytz}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module xml}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-geographiclib >= 1.49
-Requires:       python-six
 Recommends:     python-pytz
 Recommends:     python-xml
 %ifpython2

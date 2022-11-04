@@ -176,4 +176,12 @@
     (e.g. to raise :class:`.exc.GeocoderQuotaExceeded` instead of (forwarded request 963687 from pgajdos)</comment>
     <requestid>963739</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>698048c7b875171a28b807c7ae427bae</srcmd5>
+    <version>2.2.0</version>
+    <time>1667579871</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1033505</requestid>
+  </revision>
 </revisionlist>
