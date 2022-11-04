@@ -768,4 +768,13 @@
   See https://github.com/shadow-maint/shadow/pull/588</comment>
     <requestid>1030965</requestid>
   </revision>
+  <revision rev="50" vrev="3">
+    <srcmd5>9b76f5fb7a5b01962282553b55aa1e38</srcmd5>
+    <version>4.12.3</version>
+    <time>1667579483</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1204811: Fix chage date format string regression
+  * Add shadow-chage-format.patch</comment>
+    <requestid>1032849</requestid>
+  </revision>
 </revisionlist>

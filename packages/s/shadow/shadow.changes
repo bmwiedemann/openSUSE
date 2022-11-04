@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov  2 10:59:16 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- bsc#1204811: Fix chage date format string regression
+  * Add shadow-chage-format.patch
+
+-------------------------------------------------------------------
 Mon Oct 24 22:04:41 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Add shadow-prefix-overflow.patch:
