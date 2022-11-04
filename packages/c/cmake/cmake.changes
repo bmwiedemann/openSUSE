@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov  2 16:09:11 UTC 2022 - Christoph G <foss@grueninger.de>
+
+- Update to 3.24.3
+  * LLVMFlang: Add support for mixed-language linking with Fortran
+  * FindMatlab: add R2022b 9.13 version map
+  * Intel/IntelLLVM: Fortran has distinct "-Werror"-like flag
+  * CUDA: Add support for the two new architectures in 11.8
+
+-------------------------------------------------------------------
 Sat Sep 17 05:39:34 UTC 2022 - Christoph G <foss@grueninger.de>
 
 - Update to 3.24.2:
