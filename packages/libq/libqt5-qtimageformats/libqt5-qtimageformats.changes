@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov  3 08:54:29 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.7+kde5, rebased upstream:
+  * Reject tiled tiffs with corrupt tile size early
+  * Update bundled libwebp to version 1.2.1
+
+-------------------------------------------------------------------
 Mon Sep 26 10:33:56 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.6+kde4, rebased upstream:
