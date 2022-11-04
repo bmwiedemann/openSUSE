@@ -1,7 +1,7 @@
 #
 # spec file for package python-weblate-schemas
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,16 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-weblate-schemas
-Version:        0.7
+Version:        2022.1
 Release:        0
 Summary:        A collection of schemas used by Weblate
 License:        MIT
 URL:            https://weblate.org/
 Source:         https://files.pythonhosted.org/packages/source/w/weblate_schemas/weblate_schemas-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/WeblateOrg/weblate_schemas/commit/1465933db1bd10dd34e7373b1f0b6693d708277e tests: fix invalid test data
+Patch0:         test-data.patch
 BuildRequires:  %{python_module jsonschema}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -39,6 +40,7 @@ This module contains schemas used in Weblate exports.
 
 %prep
 %setup -q -n weblate_schemas-%{version}
+%autopatch -p1
 sed -i -e '/pytest-runner/d' setup.py
 
 %build
@@ -54,6 +56,7 @@ sed -i -e '/pytest-runner/d' setup.py
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/weblate_schemas
+%{python_sitelib}/weblate_schemas-%{version}*-info
 
 %changelog

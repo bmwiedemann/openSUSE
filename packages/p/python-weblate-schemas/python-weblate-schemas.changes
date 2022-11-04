@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct 27 10:07:16 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Update to version 2022.1
+  * Added validate_schema API.
+  * Added caching to schema loading.
+  * Added timestamp validation.
+  * Switched to CalVer versioning.
+  * Added schema for component backups.
+  * Added schema for project backups.
+- Add upstream test-data.patch
+
+-------------------------------------------------------------------
 Thu Jul  1 13:55:43 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Update to version 0.7
