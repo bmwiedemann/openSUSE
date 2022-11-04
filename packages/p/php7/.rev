@@ -1285,4 +1285,17 @@ file with an '_' (PHP loads extensions in alphabetical order) (forwarded request
   https://www.php.net/ChangeLog-7.php#7.4.31</comment>
     <requestid>1006913</requestid>
   </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>6519ee8a31482cd094545bdb094c503b</srcmd5>
+    <version>7.4.33</version>
+    <time>1667579502</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.4.33
+  * This is security release that fixes an OOB read due to insufficient
+    input validation in imageloadfont(), and a buffer overflow in
+    hash_update() on long parameter.
+  * CVE-2022-37454 [bsc#1204577], CVE-2022-31630 [bsc#1204979]
+  https://www.php.net/ChangeLog-7.php#7.4.33</comment>
+    <requestid>1033030</requestid>
+  </revision>
 </revisionlist>

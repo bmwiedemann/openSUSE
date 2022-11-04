@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov  3 10:21:36 UTC 2022 - pgajdos@suse.com
+
+- version update to 7.4.33
+  * This is security release that fixes an OOB read due to insufficient
+    input validation in imageloadfont(), and a buffer overflow in
+    hash_update() on long parameter.
+  * CVE-2022-37454 [bsc#1204577], CVE-2022-31630 [bsc#1204979]
+  https://www.php.net/ChangeLog-7.php#7.4.33
+
+-------------------------------------------------------------------
 Thu Sep 29 10:17:46 UTC 2022 - pgajdos@suse.com
 
 - version update to 7.4.32
