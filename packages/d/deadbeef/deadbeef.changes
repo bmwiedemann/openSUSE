@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Nov  3 14:58:35 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.9.2:
+  * Fixed: Many race conditions, deadlocks and crashes
+  * Fixed: Crash when reading metadata of some .SPU files
+  * Fixed: Config file content was repeated twice
+  * Fixed: Default album art max file size increased to 40MB (Dakeryas)
+  * Fixed: Reading some DTS files which require a larger buffer when probing
+  * Fixed: Noise was played in the beginning of DTS files
+  * Fixed: Default cddb server changed to gnudb.gnudb.org:8880
+  * Fixed: Crash when playing certain .AY files
+  * Fixed: Playlist corruption when sorting by random
+  * Fixed: Crash in the sndfile plugin
+  * Fixed: Spectrum analyzer samplerate bug
+  * Fixed: Visualization buffer out-of-bounds access
+  * Fixed: Multichannel down-mixing bug
+  * Added: Notification displaying compatibility with KDE 5.23.5
+  * Added: GTKUI oscilloscope rendering with anti-aliasing
+  * Added: Selection Properties widget configurable to display metadata, properties, or both
+  * Added: Toggle Pause action in the Deadbeef.desktop file
+  * Added: Confirmation dialog when removing a playlist using hotkey
+  * Added: Improved Sort By -> Custom dialog
+- Add fix-warning.patch
+
+-------------------------------------------------------------------
 Mon Jul  4 12:03:46 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Sync ExcludeArch %ix86 with libdispatch: libdispatch is not being

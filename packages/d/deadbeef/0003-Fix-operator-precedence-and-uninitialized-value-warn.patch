@@ -8,11 +8,11 @@ Subject: [PATCH 3/3] Fix operator precedence and uninitialized value warnings
  plugins/sid/sidplay-libs/libsidplay/src/xsid/xsid.h             | 2 +-
  2 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/plugins/sid/sidplay-libs/libsidplay/include/sidplay/sidendian.h b/plugins/sid/sidplay-libs/libsidplay/include/sidplay/sidendian.h
-index 9fa8582d..d6d9c079 100644
---- a/plugins/sid/sidplay-libs/libsidplay/include/sidplay/sidendian.h
-+++ b/plugins/sid/sidplay-libs/libsidplay/include/sidplay/sidendian.h
-@@ -115,7 +115,7 @@ inline void endian_16hi8 (uint_least16_t &word, uint8_t byte)
+Index: deadbeef-1.9.2/plugins/sid/sidplay-libs/libsidplay/include/sidplay/sidendian.h
+===================================================================
+--- deadbeef-1.9.2.orig/plugins/sid/sidplay-libs/libsidplay/include/sidplay/sidendian.h
++++ deadbeef-1.9.2/plugins/sid/sidplay-libs/libsidplay/include/sidplay/sidendian.h
+@@ -115,7 +115,7 @@ inline void endian_16hi8 (uint_least16_t
  #endif
  }
  
@@ -21,7 +21,7 @@ index 9fa8582d..d6d9c079 100644
  inline uint8_t endian_16hi8 (uint_least16_t word)
  {
  #if defined(SID_OPTIMISE_MEMORY_ACCESS)
-@@ -141,7 +141,7 @@ inline void endian_16swap8 (uint_least16_t &word)
+@@ -141,7 +141,7 @@ inline void endian_16swap8 (uint_least16
  // Convert high-byte and low-byte to 16-bit word.
  inline uint_least16_t endian_16 (uint8_t hi, uint8_t lo)
  {
@@ -30,10 +30,10 @@ index 9fa8582d..d6d9c079 100644
      endian_16lo8 (word, lo);
      endian_16hi8 (word, hi);
      return word;
-diff --git a/plugins/sid/sidplay-libs/libsidplay/src/xsid/xsid.h b/plugins/sid/sidplay-libs/libsidplay/src/xsid/xsid.h
-index 98171d73..01799652 100644
---- a/plugins/sid/sidplay-libs/libsidplay/src/xsid/xsid.h
-+++ b/plugins/sid/sidplay-libs/libsidplay/src/xsid/xsid.h
+Index: deadbeef-1.9.2/plugins/sid/sidplay-libs/libsidplay/src/xsid/xsid.h
+===================================================================
+--- deadbeef-1.9.2.orig/plugins/sid/sidplay-libs/libsidplay/src/xsid/xsid.h
++++ deadbeef-1.9.2/plugins/sid/sidplay-libs/libsidplay/src/xsid/xsid.h
 @@ -197,7 +197,7 @@ private:
  
      // Compress address to not leave so many spaces
@@ -43,6 +43,3 @@ index 98171d73..01799652 100644
  
      void    reset    (void);
      uint8_t read     (uint_least8_t  addr)
--- 
-2.14.3
-

@@ -21,7 +21,7 @@
 %define _lto_cflags %{nil}
 %bcond_with restricted
 Name:           deadbeef
-Version:        1.9.1
+Version:        1.9.2
 Release:        0
 Summary:        GTK+ audio player
 License:        BSD-3-Clause AND GPL-2.0-or-later AND Zlib AND LGPL-2.1-or-later
@@ -34,6 +34,7 @@ Patch0:         0003-Fix-operator-precedence-and-uninitialized-value-warn.patch
 # PATCH-FIX-OPENSUSE deadbeef-drop-documents-installation.patch hillwood@opensuse.org -- Install documents by rpmbuild.
 Patch1:         %{name}-drop-documents-installation.patch
 Patch2:         %{name}-fix-includes.patch
+Patch3:         fix-warning.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  clang
@@ -128,6 +129,10 @@ export CFLAGS="%{optflags} -fno-strict-aliasing -Wno-unused-command-line-argumen
 export CXXFLAGS="$CFLAGS"
 %else
 export CFLAGS="%{optflags} -fno-strict-aliasing -Wno-unused-command-line-argument -Wno-unused-but-set-variable -fpie -fPIC"
+export CXXFLAGS="$CFLAGS"
+%endif
+%ifnarch x86_64
+export CFLAGS=$(echo "$CFLAGS -Wno-error=unused-variable")
 export CXXFLAGS="$CFLAGS"
 %endif
 export LDFLAGS="$LDFLAGS -pie"
