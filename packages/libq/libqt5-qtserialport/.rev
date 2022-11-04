@@ -376,4 +376,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment>Qt 5.15.6, untested. (forwarded request 1006197 from Vogtinator)</comment>
     <requestid>1006230</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>b684b01db410123592d14b966ef41e5d</srcmd5>
+    <version>5.15.7+kde0</version>
+    <time>1667579522</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.7, untested (forwarded request 1033058 from favogt)</comment>
+    <requestid>1033115</requestid>
+  </revision>
 </revisionlist>
