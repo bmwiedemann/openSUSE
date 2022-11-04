@@ -1567,4 +1567,29 @@ Man pages are disabled for this build, upstream disabled them for this release. 
 - simplify valgrind support ifdefery</comment>
     <requestid>1003300</requestid>
   </revision>
+  <revision rev="162" vrev="1">
+    <srcmd5>c35071eaed13530a0f7480664790f6db</srcmd5>
+    <version>2.4.114</version>
+    <time>1667579508</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.114
+  * amdgpu.ids: use consistent formatting for RID
+  * amdgpu.ids: sort the file
+  * amdgpu.ids: update to the latest marketing name
+  * amdgpu_ids: add MI marketing names
+  * amdgpu: Add a default marketing name if none is found
+  * meson: fast-fail on unsupported OSes
+  * include/drm/drm_fourcc.h: Update from Linux v6.0-rc7
+  * include/drm/i915_drm.h: Update from Linux v6.0-rc7
+  * tests/util: add imx-lcdif driver
+  * intel: move declarations to top in drm_intel_gem_bo_unreference()
+  * build: automatically disable Intel if pciaccess is not found
+  * xf86drm: handle DRM_FORMAT_BIG_ENDIAN in drmGetFormatName()
+  * amdgpu: silence uninitialized variable warning
+  * xf86drmMode: add helpers for dumb buffers
+  * modetest: drop unused offset field in struct bo
+  * modetest: use sized integers in struct bo
+  * modetest: use dumb buffer helpers</comment>
+    <requestid>1033089</requestid>
+  </revision>
 </revisionlist>

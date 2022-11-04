@@ -23,7 +23,7 @@
 %endif
 
 Name:           libdrm
-Version:        2.4.113
+Version:        2.4.114
 Release:        0
 Summary:        Userspace Interface for Kernel DRM Services
 License:        MIT
