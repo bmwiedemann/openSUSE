@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov  3 07:56:31 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Obsolete the -devel-static package
+
+-------------------------------------------------------------------
+Wed Nov  2 02:29:29 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Build embree as shared library, blender no longer requires a
+  static library build.
+- Reduce memory constraints, use limit_build to avoid build
+  failures due to OOM.
+- Fix build on ARM (gh#embree/embree#383, gh#embree/embree#410)
+
+-------------------------------------------------------------------
 Tue Oct 25 10:56:41 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Remove the cmake config tweaking

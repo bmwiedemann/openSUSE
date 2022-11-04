@@ -2,17 +2,7 @@
 <constraints>
   <hardware>
     <memory>
-      <size unit="G">32</size>
+      <size unit="G">6</size>
     </memory>
   </hardware>
-  <overwrite>
-    <conditions>
-      <arch>aarch64</arch>
-    </conditions>
-    <hardware>
-      <memory>
-        <size unit="G">8</size>
-      </memory>
-    </hardware>
-  </overwrite>
 </constraints>

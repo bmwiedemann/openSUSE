@@ -17,6 +17,8 @@
 #
 
 
+%define libname libembree3
+
 Name:           embree
 Version:        3.13.5
 Release:        0
@@ -28,11 +30,11 @@ Source:         %{name}-%{version}.tar.xz
 BuildRequires:  cmake >= 3.1.0
 BuildRequires:  gcc-c++
 BuildRequires:  ispc
+BuildRequires:  memory-constraints
 BuildRequires:  pkgconfig
-# can't build static with TBB 2021
-#BuildRequires:  tbb-devel
+BuildRequires:  tbb-devel
 BuildRequires:  pkgconfig(glfw3)
-# SSE2 is required: https://github.com/embree/embree#supported-platforms
+# SSE2 resp. NEON is required: https://github.com/embree/embree#supported-platforms
 ExclusiveArch:  x86_64 aarch64
 
 %description
@@ -41,33 +43,36 @@ at Intel. The target users of Intel Embree are graphics application engineers
 who want to improve the performance of their photo-realistic rendering
 application by leveraging Embree's ray tracing kernels.
 
-Note:
-This version is specifically dedicated to Blender Cycles, as it is using the
-build options that are required for it. In order to reduce the risk of
-incompatibilities, it is built as static libraries, which is also enforced by
-the Blender Cycles build for the time being.
-
-%package	devel-static
+%package devel
 Summary:        Development files for embree
 Group:          Development/Libraries/C and C++
-Provides:       %{name} = %{version}
+Requires:       %{libname} = %{version}
+Obsoletes:      %{name}-devel-static <= %{version}
 
-%description	devel-static
-This package contains the C++ header files and static libraries for %{name},
-specifically compiled for Blender Cycles needs.
+%description devel
+This package contains the C++ header and CMake config files.
+
+%package -n %{libname}
+Summary:        Shared library providing Embree raytracing kernels
+Group:          System/Libraries
+
+%description -n %{libname}
+Embree is a collection of ray tracing kernels.
+
+This package contains the shared library.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-# we need fat lto objects here
-%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-export CXXFLAGS="%{optflags}"
-# blender insists in using static embree
-# Tasking system: can't build static with TBB 2021 gh#embree#embree#348
+%limit_build -m 1700
+%ifarch aarch64
+# https://github.com/embree/embree/issues/410
+%global optflags %{optflags} -flax-vector-conversions
+%endif
 %cmake \
-    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-    -DEMBREE_STATIC_LIB=ON \
+    -DEMBREE_IGNORE_CMAKE_CXX_FLAGS=OFF \
+    -DEMBREE_STATIC_LIB=OFF \
     -DEMBREE_LIB_INSTALL_DIR=%{_libdir} \
     -DEMBREE_ISPC_SUPPORT=ON \
     -DEMBREE_TASKING_SYSTEM=INTERNAL \
@@ -76,6 +81,9 @@ export CXXFLAGS="%{optflags}"
     -DEMBREE_BACKFACE_CULLING=OFF \
 %ifarch x86_64
     -DEMBREE_MAX_ISA=AVX2 \
+%endif
+%ifarch aarch64
+    -DEMBREE_ARM=ON \
 %endif
     -DEMBREE_TUTORIALS=OFF
 
@@ -86,11 +94,17 @@ export CXXFLAGS="%{optflags}"
 rm -r %{buildroot}%{_mandir}
 rm -r %{buildroot}/usr/share/doc
 
-%files devel-static
+%post -n %{libname} -p /sbin/ldconfig
+%postun -n %{libname} -p /sbin/ldconfig
+
+%files -n %{libname}
+%{_libdir}/*.so.*
+
+%files devel
 %license LICENSE.txt
 %doc CHANGELOG.md README.md
 %{_includedir}/embree3
 %{_libdir}/cmake/%{name}-%{version}
-%{_libdir}/*.a
+%{_libdir}/*.so
 
 %changelog
