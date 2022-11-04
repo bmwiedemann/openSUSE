@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov  4 11:06:39 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to 0.86.0
+  * Features:
+    - Add Python 3.11 to the officially supported versions. PR #5587
+    - Enable tests for Python 3.11. PR #4881
+  * Fixes:
+    - Close FormData (uploaded files) after the request is done. PR #5465
+  * Docs:
+    - Fix typo in docs/en/docs/tutorial/security/oauth2-jwt.md. PR #5584
+    
+-------------------------------------------------------------------
 Wed Nov  2 10:35:31 UTC 2022 - David Anes <david.anes@suse.com>
 
 - Update to 0.85.2

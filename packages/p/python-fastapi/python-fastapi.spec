@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-fastapi
-Version:        0.85.2
+Version:        0.86.0
 Release:        0
 Summary:        FastAPI framework
 License:        MIT
