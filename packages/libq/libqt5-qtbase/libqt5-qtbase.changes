@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Thu Nov  3 08:50:33 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.7+kde167, rebased upstream:
+  * offer an opt out of automatic xdg-desktop-portal use
+  * Send string to Atspi DBus interface on name/description changed
+  * Send string to Atspi DBus interface on value changed for comboboxes
+  * iOS: Use generic simulator device for building apps via xcodebuild
+  * xcode: Allow automatic provisioning updates when calling xcodebuild
+  * Revert "[Android] Remove signal and slot mechanism to listen states in editor's"
+  * Android: fix error when signing bundles
+  * Doc: Fix notes in QObject
+  * Allow dragging of a floating dockwidget on macOS with a custom titlebar
+  * Http/2 - handle PADDED flag correctly
+  * QTlsBackend (OpenSSL) : detect incompatible versions
+  * Reduce the width of a hfw-widget if scrollbar would be flipping
+  * QCocoaWindow: Make window key if the app's modal window is hidden
+  * Doc: clarify case sensitivity in QCompleter
+  * Doc: Note that qmake's CONFIG values are case-sensitive
+  * Clear up QWindow::isActive() documentation
+  * QWinRtFunctions::await() - introduce early exit condition
+  * rhi: metal: Use the layer as the single source of truth
+  * Include <QHash> explicitly
+  * Update PCRE2 to 10.38
+  * Add testing of QPdfWriter output to QPainter lancelot test
+  * Update the COPYRIGHT.txt file
+  * QTranslator: Fix loading of meta catalogs from absolute .qm path
+  * tst_qtranslator: Simplify extraction of test data
+  * Cocoa: Don't call makeKeyAndOrderFront for native app-modal dialogs
+  * Fix querying font aliases that share name with other fonts
+  * Update bundled libjpeg-turbo to version 2.1.1
+  * macOS: Compute NSWindow background color without checking styleMask
+  * SQLite: Update SQLite to v3.36.0
+  * Android: Fix path of qmake_qmake_immediate.qrc in single_abi with qmake
+  * qmake: Print error when iOS simulator device could not be found
+  * Fix loading of OpenSSL on macOS versions that ship its own OpenSSL
+  * QWidgetWindow: Stabilize test on Xcb
+  * Blacklist flaky test
+  * Fix license information for libjpeg-turbo
+  * Don't unload libraries on Darwin-based operating systems
+  * QThreadPool: Fix restarting of expired threads
+  * Make test pass on machines with many cores
+  * Blacklist tst_QSocks5SocketEngine::simpleConnectToIMAP() because of flakiness
+  * Blacklist tst_qgl:closeAndThenShow() because of flakiness
+  * Update Android default SDK from 29 to 30
+  * Make clear why QTestLog::addB?XFail() don't add to counters
+  * Fix .qm file name calculation in lrelease.prf
+  * qmake/xcode: Do not create OBJECTS_DIR
+  * QSslCertificate(OpenSSL plugin): fix memory leaks in extension 'parser'
+  * OpenSSL: Let people opt-in to use TLS 1.3 PSK callback
+  * tst_http2: Fix flaky authentication test
+  * Cocoa: Make sure we can display multiple sheets for the same NSWindow
+  * Fix QTextCodec::canEncode() for ICU codec
+  * wasm: fix network data URI scheme
+  * Doc: add more notes about full screen windows on macOS
+  * macOS: Don't rely on invalidateCursorRectsForView when mouse is over view
+  * Doc: add note that hiding a window doesn't close a full screen space
+  * qlocale_win: Fix non-standalone month names
+  * androiddeployqt: Check if apk is already aligned
+  * Fix corner case in QTimeZonePrivate::dataForLocalTime()
+  * Improve lancelot test of dashed line painting
+  * qmake: Add support for C17/C18
+  * qmake/vcxproj: Read C language standard from QMAKE_CFLAGS
+  * qmake/vcxproj generator: Handle C standard compiler flags
+  * qmake: Make it possible to set CONFIG += c11 with MSVC 19.28
+  * qmake: Recognize MSVC 16.x as VS 2019 in the VS project generator
+  * Doc: Replace the example for QFileInfo::setFile
+  * QMetaEnum: avoid quadratic behavior in valueToKeys()
+  * QGraphicsProxyWidget: forward Window(De)Activate events
+  * QDashStroker: cap the number of repetitions of the pattern
+  * Fix bug with NoFontMerging when font does not support script
+  * Android: Fix unnecessary clipboard data access
+  * macOS: Don't wipe NSWindowStyleMaskFullSizeContentView if set manually
+  * Fix broken build when LTTng tracing is enabled
+  * Attempt to unwedge tst_QThread::wait3_slowDestructor()
+  * macOS: close popups on mousedown within the window frame
+  * Use a scope-guard to take care of process deletion in a test
+  * QVarLengthArray: add missing default-ctor documentation
+- Commits dropped by the rebase:
+  * Fix compile of tst_qimage in Qt5
+
+-------------------------------------------------------------------
+Fri Sep 30 10:12:11 UTC 2022 - fvogt@suse.com
+
+- Update to version 5.15.6+kde178:
+  * ANGLE: Fix compilation on GCC 11
+
+-------------------------------------------------------------------
 Mon Sep 26 11:59:50 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.6+kde177, rebased upstream:
