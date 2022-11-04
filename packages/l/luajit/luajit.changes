@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov  1 16:01:53 UTC 2022 - Michael Gorse <mgorse@suse.com>
+
+- Add ppc64 and ppc64le to ExcludeArch for now. This can be
+  removed if we rebase the ppc64 patch, but it is no longer being
+  maintained and seems unlikely to land upstream (bsc#1204557).
+
+-------------------------------------------------------------------
 Tue Oct  4 19:00:14 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - exclude luajit from building on riscv64 - not yet supported
