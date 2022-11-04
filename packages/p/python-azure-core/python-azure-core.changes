@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov  4 10:17:45 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 1.26.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+
+-------------------------------------------------------------------
 Thu Oct 27 11:10:06 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove python-six dependency. All references to this module in the azure-core
