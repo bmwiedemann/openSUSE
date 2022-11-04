@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Nov  3 23:14:45 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Re-activate test suite
+- Update to v0.1.13
+  * Implement browsers argument, allowing you to override the browser
+    names you want to use
+  * Fix browser listing of Internet Explorer and Edge
+  * Don't depend on w3schools.com anymore
+  * Clean-up data (temp) file format
+  * Update fallback cache server URL / use JSON Lines as file format
+  * Move to GitHub Actions instead of Travis
+  * Using black Python formatter in favour of Flake
+- from v0.1.12
+  * Project moved to https://github.com/fake-useragent/fake-useragent
+
+-------------------------------------------------------------------
 Wed Sep 15 10:31:22 UTC 2021 - pgajdos@suse.com
 
 - %check: note tests are online, do not run them
@@ -6,4 +22,4 @@ Wed Sep 15 10:31:22 UTC 2021 - pgajdos@suse.com
 -------------------------------------------------------------------
 Thu Apr  4 00:40:32 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
-- Initial version
+- Initial version for v0.1.11

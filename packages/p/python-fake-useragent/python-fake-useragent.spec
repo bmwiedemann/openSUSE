@@ -1,7 +1,7 @@
 #
 # spec file for package python-fake-useragent
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,20 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-fake-useragent
-Version:        0.1.11
+Version:        0.1.13
 Release:        0
 License:        Apache-2.0
 Summary:        Useragent faker package for Python
-URL:            https://github.com/hellysmile/fake-useragent
+URL:            https://github.com/fake-useragent/fake-useragent
 Group:          Development/Languages/Python
-Source:         https://github.com/hellysmile/fake-useragent/archive/%{version}.tar.gz#/fake-useragent-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/f/fake-useragent/fake-useragent-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pytest-cov}
 # /SECTION
 BuildArch:      noarch
 
@@ -41,6 +41,8 @@ Useragent faker with real world database.
 
 %prep
 %setup -q -n fake-useragent-%{version}
+# https://github.com/fake-useragent/fake-useragent/issues/140
+sed -i 's/import mock/import unittest.mock as mock/' tests/*.py
 
 %build
 %python_build
@@ -50,12 +52,13 @@ Useragent faker with real world database.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# online tests
-#%%pytest
+# Many tests depend on network
+# https://github.com/fake-useragent/fake-useragent/issues/139
+%pytest -k 'not (test_fake_user_agent or update or cache_server or test_utils_get or test_utils_load or test_fake_default_path or test_fake_safe_attrs)'
 
 %files %{python_files}
 %license LICENSE
-%doc AUTHORS README.rst
-%{python_sitelib}/*
+%doc README.md
+%{python_sitelib}/fake[-_]useragent*/
 
 %changelog
