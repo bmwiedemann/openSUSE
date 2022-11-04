@@ -17,7 +17,7 @@
 
 
 Name:           ibus-table-chinese
-Version:        1.8.9
+Version:        1.8.11
 Release:        0
 Summary:        Various Chinese input method table for the IBus framework
 License:        GPL-3.0-or-later

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov  3 20:26:51 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
+
+update: 1.8.9 -> 1.8.11
+- Improve punctuation support in cangjie5.txt, cangjie3.txt, cangjie-big.txt, quick5.txt, quick3.txt, quick-classic.txt
+- Improve punctuation support in jyutping.txt, cantonese.txt, cantonhk.txt, cantonyale.txt
+- Improve “improve_jyutping.py” to allow comments in the table
+- Update of jyutping.txt for Unicode 15.0.0 final release
+
+-------------------------------------------------------------------
 Mon Aug  1 04:34:18 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
  
 feat: use _service files to automate fetching sources
