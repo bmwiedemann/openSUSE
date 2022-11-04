@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov  3 08:55:55 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.7+kde1, rebased upstream:
+  * Doc: Add qmltype so Quaternion functions are collected by qdoc
+
+-------------------------------------------------------------------
 Mon Sep 26 11:44:29 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.6+kde1, rebased upstream:

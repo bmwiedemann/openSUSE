@@ -73,4 +73,12 @@
     <comment>Qt 5.15.6, untested. (forwarded request 1006197 from Vogtinator)</comment>
     <requestid>1006222</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>54ce3b13b4b4cf6411ee469daa756f60</srcmd5>
+    <version>5.15.7+kde1</version>
+    <time>1667579643</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.7, untested (forwarded request 1033058 from favogt)</comment>
+    <requestid>1033106</requestid>
+  </revision>
 </revisionlist>
