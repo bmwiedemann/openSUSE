@@ -17,9 +17,9 @@
 
 
 Name:           CoreFreq
-Version:        1.91.6
+Version:        1.92.3
 Release:        0
-Summary:        CPU monitoring software designed for 64-bits processors
+Summary:        CPU monitoring software for 64-bit processors
 License:        GPL-2.0-or-later
 URL:            https://github.com/cyring/CoreFreq
 Source:         %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -34,9 +34,10 @@ ExclusiveArch:  x86_64
 %kernel_module_package -x preempt
 
 %description
-A CPU monitoring software with BIOS like functionalities, is designed for the 64-bits
-Processors of architecture Intel Atom, Core2, Nehalem, SandyBridge and superiors;
-AMD Families 0Fh ... 17h (Zen), 18h (Hygon Dhyana)
+A CPU monitoring software with BIOS-like functionalities for
+64-bit processors like Intel Atom, Core2, Nehalem, SandyBridge
+and superiors, and AMD Families 0Fh–17h (Zen), 18h (Hygon
+Dhyana).
 
 %prep
 %setup -q

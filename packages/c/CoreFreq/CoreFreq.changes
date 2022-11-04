@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Fri Nov  4 14:32:03 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Repair deficient description grammar.
+
+-------------------------------------------------------------------
+Fri Nov  4 13:35:40 UTC 2022 - Michael Pujos <pujos.michael@gmail.com>
+
+- update to version 1.92.3
+  - Export CPUID bits Intel Sierra Forest, Grand Ridge, Granite Rapids
+    and completes AMD64 Fn0000_0007_ECX_x0
+  - [Features] WBNOINVD and CLZERO instructions
+  - Adding various Mitigation Mechanism aggregations:
+    IPRED_DIS_U, IPRED_DIS_S, RRSBA_DIS_U, RRSBA_DIS_S, BHI_DIS_S, MCDT_NO
+  - RDPID and UMIP capability fixed.
+  - [AMD] Perf. Mon. version based on CPUID_0x80000022.EAX.PerfMonV2
+  - [AMD][Zen3+][Rembrandt] Trigger UMC and IOMMU decoders
+  - [AMD][Ryzen 5 6600H] Found voltage VID @ SMU 0x6f010 and 0x6f014
+  - Introducing AMD Security Feature capabilities:
+    SKINIT, SEV, GMET, SEV-ES, SEV-SNP
+  - [AMD64] Non-architectural MSR: SPECULATIVE STORE BYPASS DISABLE
+  - [Intel][2nd & 3rd gen] Misc IMC optimizations
+  - [AMD][Rembrandt] Provides Vcore from a new formula.
+  - Dumping CPUID leaves from AMD64 Architecture Programmer’s Manual
+  - [Intel][HSW & BDW] Compute the DIMM banks
+  - [UI] Re-assigned keys to move or resize windows.
+  - [AMD][Zen] Uncore frequency: Improving the Memory Clock divisor
+  - [Intel][HSW & BDW][SKL] Make use of same function DimmWidthToRows 
+  - [AMD][Zen3+][Rembrandt] Provides the thermal sensor.
+  - [AMD/Zen2 & Zen3] Removed the HSMP capability.
+  - [Intel][CML][RKL][TGL] Compute the DIMM Rows from CH_WIDTH
+  - [AMD/EPYC] Adding the CPUID of Zen4 Genoa architecture
+  - [AMD/Zen2] Introducing Mendocino architecture
+  - Changed MeteorLake/N to CPUID 06_B5
+  - [Intel] Computes BIOS DRAM frequency based on PLL_REF100
+  - [Intel][SNB/IVB/HSW/BDW] Improved BIOS DRAM frequency
+  - [Intel][SNB/IVB] DRAM frequency based on RAM_Select and FSB_Select
+  - [Intel][IVB] IMC specifications and optimizations.
+  - [Intel][SNB,IVB] Computes the DIMM A from DAS bit in MAD register
+  - [Intel][SNB,IVB,HSW,BDW] Rolling back changes to the DIMM topology
+  - [Intel][BDW][HSW] Query the IMC Power Down Mode
+  - [Intel][IVB][SNB] Attempt to decode the IMC third timings 
+  - [AMD][Ryzen] Added AMD Ryzen 7 PRO 6860Z
+  - [AMD][F17h-F19h] Can toggle ON and OFF the Instruction Cache Unit 
+  - [AMD] Checking the Ryzen "OEM Only" processors
+  - [Intel] Specification of 12th Gen. MSR registers capability
+  - [Intel] Adding Raptor Lake-S with CPUID 06_BF
+  - [AMD] Introducing Zen 4 / Raphael architecture
+  - [Intel][SNB,IVB,HSW] Attempt to assign the Rank per DIMM slot
+  - [Intel][SNB,IVB,HSW] Attempt to fix the DIMM(s) topology layout
+  - ClockSource: TSC udelay() asm implementation builtin as a default
+  - [Intel][Alder Lake] Adding IMC entry for i5-12500 processor
+  - [Intel][Alder Lake] Added default case if Processor has only Pcores
+  - [Intel][Atom/Bonnell][IMC] Attempt to compute the DIMM geometry
+  - [UI][Custom view] Show the Uncore unit in watt or joule
+  - [UI] Display HWP or CPPC in footer for capable processors.
+  - [CLI] Added HWP Capabilities and HWP Request to the JSON export
+  - [CLI] Don't allow the HWP dialog box if feature is not available.
+  - [CPPC][Firmware] allows (de)activation of the feature.
+  - [CLI] Added CPU ratios to JSON export
+  - [CPPC] Improved scaling
+  - [CPPC] Build fixed down to Kernel version 3
+  - [Kernel/ACPI] Attempt to write CPPC registers
+
+-------------------------------------------------------------------
 Mon Aug 22 15:48:08 UTC 2022 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to version 1.91.6

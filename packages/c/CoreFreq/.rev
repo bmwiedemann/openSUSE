@@ -162,4 +162,13 @@ There are 4 months worth of complicated commit, and I cannot go through them all
 </comment>
     <requestid>998693</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a76195c38b4f0138b1bff6516037f613</srcmd5>
+    <version>1.92.3</version>
+    <time>1667579886</time>
+    <user>dimstar_suse</user>
+    <comment>- Repair deficient description grammar
+- update to version 1.92.3</comment>
+    <requestid>1033550</requestid>
+  </revision>
 </revisionlist>
