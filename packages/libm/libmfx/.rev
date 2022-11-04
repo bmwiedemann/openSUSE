@@ -232,4 +232,17 @@
       * mfxExtEncoderIPCMArea</comment>
     <requestid>987910</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c7466e404dcd299da445ce60a0106900</srcmd5>
+    <version>22.6.1</version>
+    <time>1667579533</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 22.6.1
+  * latest bugfix release 
+
+- No code changes
+- Update to version 22.4.4 was part of Intel oneVPL GPU Runtime
+  2022Q2 Release 22.4.4</comment>
+    <requestid>1033154</requestid>
+  </revision>
 </revisionlist>
