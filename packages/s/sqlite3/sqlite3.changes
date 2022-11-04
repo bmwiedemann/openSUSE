@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Nov  2 20:24:07 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.39.4:
+  * Fix a long-standing problem in the btree balancer that might,
+    in rare cases, cause database corruption if the application
+    uses an application-defined page cache
+  * Enhance SQLITE_DBCONFIG_DEFENSIVE so that it disallows
+    CREATE TRIGGER statements if one or more of the statements in
+    the body of the trigger write into shadow tables
+  * Fix a possible integer overflow in the size computation for a
+    memory allocation in FTS3.
+  * Fix a misuse of the sqlite3_set_auxdata() interface in the ICU
+    Extension
+
+-------------------------------------------------------------------
 Mon Sep  5 15:09:48 UTC 2022 - Reinhard Max <max@suse.com>
 
 - update to 3.39.3:
