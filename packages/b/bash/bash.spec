@@ -385,6 +385,7 @@ echo exit 0 > tests/read7.sub
 # cflags -fno-unwind-tables CFLAGS
 # cflags -fno-asynchronous-unwind-tables CFLAGS
 %endif
+  CFLAGS="$CFLAGS -DDEFAULT_LOADABLE_BUILTINS_PATH='\"%{_libdir}/%{name}\"'"
   CC_FOR_BUILD="$CC"
   CFLAGS_FOR_BUILD="$CFLAGS"
   export CC_FOR_BUILD CFLAGS_FOR_BUILD CFLAGS LDFLAGS CC

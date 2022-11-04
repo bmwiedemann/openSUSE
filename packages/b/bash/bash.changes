@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov  2 07:48:10 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Set DEFAULT_LOADABLE_BUILTINS_PATH to get BASH_LOADABLES_PATH
+  correct (boo#1204567) 
+
+-------------------------------------------------------------------
 Thu Oct 20 11:14:16 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Explicit require versioned libreadline8 as we face new ABI

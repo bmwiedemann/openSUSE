@@ -1825,4 +1825,13 @@ Upstream declares the bash license to be GPL-3.0+ - not GPL-2.0+ (forwarded requ
   functions used by the bash (boo#1204336)</comment>
     <requestid>1030166</requestid>
   </revision>
+  <revision rev="183" vrev="4">
+    <srcmd5>3017930541969adc3d4f0e63748ec62d</srcmd5>
+    <version>5.2.MACRO</version>
+    <time>1667579481</time>
+    <user>dimstar_suse</user>
+    <comment>- Set DEFAULT_LOADABLE_BUILTINS_PATH to get BASH_LOADABLES_PATH
+  correct (boo#1204567)</comment>
+    <requestid>1032788</requestid>
+  </revision>
 </revisionlist>
