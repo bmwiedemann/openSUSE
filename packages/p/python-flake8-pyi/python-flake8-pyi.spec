@@ -1,7 +1,7 @@
 #
 # spec file for package python-flake8-pyi
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,15 @@
 
 
 %define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-flake8-pyi
-Version:        20.10.0
+Version:        22.10.0
 Release:        0
 Summary:        A plugin for flake8 to enable linting .pyi files
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/ambv/flake8-pyi
 Source:         https://files.pythonhosted.org/packages/source/f/flake8-pyi/flake8-pyi-%{version}.tar.gz
-Source1:        https://raw.githubusercontent.com/ambv/flake8-pyi/master/LICENSE
+BuildRequires:  %{python_module ast-decompiler}
 BuildRequires:  %{python_module base >= 3.6.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
@@ -53,9 +52,8 @@ A plugin for Flake8 that provides specializations for type hinting stub
 files. Especially interesting for linting typeshed.
 
 %prep
-%setup -q -n flake8-pyi-%{version}
+%autosetup -p1 -n flake8-pyi-%{version}
 sed -i '1{\,^#!%{_bindir}/env python,d}' pyi.py
-cp %{SOURCE1} .
 
 %build
 %python_build
@@ -69,7 +67,7 @@ cp %{SOURCE1} .
 
 %files %{python_files}
 %license LICENSE
-%doc README.rst
+%doc README.md
 %{python_sitelib}/pyi.py*
 %{pycache_only %{python_sitelib}/__pycache__/pyi.*.py*}
 %{python_sitelib}/flake8_pyi-%{version}-*.egg-info
