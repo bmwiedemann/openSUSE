@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov  4 13:05:06 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add django-41-compat.patch to fix issues with django-4.1
+  gh#django-oscar/django-oscar#3908 
+- Remove python_module macro def
+- More specific python_sitelib in %files
+
+-------------------------------------------------------------------
 Mon Dec 20 10:56:31 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.1:

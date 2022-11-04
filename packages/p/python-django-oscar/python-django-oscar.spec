@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-django-oscar
@@ -27,6 +26,9 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/django-oscar/django-oscar
 Source:         https://github.com/django-oscar/django-oscar/archive/%{version}.tar.gz#/django-oscar-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE django-41-compat.patch to fix tests with django-4.1
+# gh#django-oscar/django-oscar#3908
+Patch:          django-41-compat.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -72,7 +74,7 @@ BuildRequires:  %{python_module sorl-thumbnail >= 12.4.1}
 A domain-driven e-commerce framework for Django.
 
 %prep
-%setup -q -n django-oscar-%{version}
+%autosetup -p1 -n django-oscar-%{version}
 sed -i "s/,<[0-9.]*'/'/" setup.py
 
 sed -i 's/^import factory/import factory, factory.django/;s/factory.DjangoModelFactory/factory.django.DjangoModelFactory/' src/oscar/test/factories/*.py
@@ -96,6 +98,7 @@ dont_test+=' or test_redirects_to_parent_list_after_creating_child_category or t
 %files %{python_files}
 %doc AUTHORS CHANGELOG.rst README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/oscar
+%{python_sitelib}/django_oscar-%{version}*-info
 
 %changelog

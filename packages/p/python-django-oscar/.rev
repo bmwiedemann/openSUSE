@@ -30,4 +30,16 @@
 </comment>
     <requestid>958289</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>2eecea73bc1cbc584e072c79cabb4516</srcmd5>
+    <version>3.1</version>
+    <time>1667595604</time>
+    <user>dimstar_suse</user>
+    <comment>- Add django-41-compat.patch to fix issues with django-4.1
+  gh#django-oscar/django-oscar#3908 
+- Remove python_module macro def
+- More specific python_sitelib in %files
+</comment>
+    <requestid>1033573</requestid>
+  </revision>
 </revisionlist>
