@@ -23,33 +23,29 @@
 %endif
 
 Name:           stellarium
-Version:        1.0
+Version:        1.1
 Release:        0
 Summary:        Astronomical Sky Simulator
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Astronomy
 URL:            https://stellarium.org/
-Source0:        https://github.com/Stellarium/stellarium/releases/download/v%{version}/stellarium-%{version}.tar.gz
-Source1:        https://github.com/Stellarium/stellarium/releases/download/v%{version}/stellarium-%{version}.tar.gz.asc
+Source0:        https://github.com/Stellarium/stellarium/releases/download/v%{version}/stellarium-%{version}.1.tar.gz#/stellarium-%{version}.tar.gz
+Source1:        https://github.com/Stellarium/stellarium/releases/download/v%{version}/stellarium-%{version}.1.tar.gz.asc#/stellarium-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
-# PATCH-FIX-UPSTREAM https://github.com/Stellarium/stellarium/issues/2709
-Patch0:         use-QString-instead-of-QByteArray.patch
-# PATCH-FEATURE-UPSTREAM https://github.com/Stellarium/stellarium/pull/2723
-Patch1:         make-support-XLSX-files-optional.patch
 BuildRequires:  cmake >= 3.16.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++ >= 7
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libnova-devel
 BuildRequires:  libxkbcommon-devel >= 0.5.0
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig
+BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(libindi)
 BuildRequires:  pkgconfig(zlib)
 %if %{with Qt5}
-BuildRequires:  libqt5-qtpaths
 BuildRequires:  libQt5Core-private-headers-devel >= 5.9.0
 BuildRequires:  libQt5Gui-private-headers-devel >= 5.9.0
+BuildRequires:  libqt5-qtpaths
 BuildRequires:  pkgconfig(Qt5Charts)
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Gui)

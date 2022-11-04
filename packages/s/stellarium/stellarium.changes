@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Oct 31 20:19:48 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 1.1:
+  * Added support OpenGL 3.3 Core profile
+  * Changed core: switch to use CalcMySky v0.2.1
+  * Changed GUI: allow user CSS
+  * Fixed compiling with Qt 6.4
+  * Fixed Telescope Control plugin
+  * Removed Dakota & Ojibwe sky cultures: this is on request of the
+    original contributors, and following a misunderstanding about
+    licensing.
+- Remove upstreamed patches
+  - use-QString-instead-of-QByteArray.patch
+  - make-support-XLSX-files-optional.patch
+
+-------------------------------------------------------------------
 Sun Oct  9 20:29:19 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 1.0:
