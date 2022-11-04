@@ -162,4 +162,12 @@ It does NOT conflict with python38 standard library (see upstream description)</
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>992111</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a83831cf48873b4dd47a1a17d11ece93</srcmd5>
+    <version>5.0.0</version>
+    <time>1667579491</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032185</requestid>
+  </revision>
 </revisionlist>
