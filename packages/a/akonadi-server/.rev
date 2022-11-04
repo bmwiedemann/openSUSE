@@ -839,4 +839,12 @@ Mainly intended for Leap 42.3 to prevent upgrade problems. (forwarded request 49
     <comment></comment>
     <requestid>1029950</requestid>
   </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>5458bbebbe3fb272fc1cd49b4ccbcde2</srcmd5>
+    <version>22.08.3</version>
+    <time>1667579542</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 22.08.3 (forwarded request 1032791 from cgiboudeaux)</comment>
+    <requestid>1033193</requestid>
+  </revision>
 </revisionlist>
