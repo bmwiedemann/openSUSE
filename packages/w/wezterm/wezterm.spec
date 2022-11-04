@@ -71,7 +71,7 @@ tic -vvv -x -o terminfo termwiz/data/%{name}.terminfo
 
 %build
 %if 0%{?suse_version} > 1500
-%{cargo_build}
+%{cargo_build} --all-features
 %else
 export CARGO_FEATURE_VENDORED=1
 export RUSTFLAGS='%{rustflags}'

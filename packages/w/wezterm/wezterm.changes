@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov  3 18:30:01 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Enable --all-features for suse>1500 builds:
+  contains --features distro-defaults, to stop phoning home
+  [boo#1205008]
+
+-------------------------------------------------------------------
 Wed Oct 26 22:28:40 UTC 2022 - socvirnyl.estela@gmail.com
 
 - Update to version 20220905.102802.7d4b8249+git147:
