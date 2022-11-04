@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Nov  4 09:10:44 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update tests to skip broken tests in i586. gh#scikit-hep/awkward#1862
+- Remove python_module macro definition
+
+-------------------------------------------------------------------
+Mon Oct 17 01:58:31 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.10.1:
+  * fix: support non-hashable parameter values in broadcasting
+  * feat: raise Error for Record.setattr
+  * fix: allow string arrays to merge without unions
+  * fix: carry parameters through broadcasting
+  * fix: don't project categorical in ak._v2.packed
+  * fix: reduce runtime dependency from setuptools to just packaging
+  * fix: ensure that __copy__ and __deepcopy__ are enabled.
+  * fix: pass memo to deepcopy
+  * perf: improve Array initialisation performance 
+  * fix: Removed bytemask() in favour of mask_as_bool()
+- Add importlib-resources to BuildRequires.
+- Drop patches:
+  * awkward-correct-includedir.patch
+  * awkward-import-packging-not-setuptools_external.patch
+- No longer attempt to skip 3.6.
+
+-------------------------------------------------------------------
 Wed Aug 24 03:17:19 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Copy the heaers ourselves now that setuptools does not.

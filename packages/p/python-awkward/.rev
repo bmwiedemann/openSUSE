@@ -79,4 +79,30 @@
     <comment>- Copy the heaers ourselves now that setuptools does not.</comment>
     <requestid>998940</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b02525e6883fd4970e5418568c120ee5</srcmd5>
+    <version>1.10.1</version>
+    <time>1667579873</time>
+    <user>dimstar_suse</user>
+    <comment>- Update tests to skip broken tests in i586. gh#scikit-hep/awkward#1862
+- Remove python_module macro definition
+- Update to 1.10.1:
+  * fix: support non-hashable parameter values in broadcasting
+  * feat: raise Error for Record.setattr
+  * fix: allow string arrays to merge without unions
+  * fix: carry parameters through broadcasting
+  * fix: don't project categorical in ak._v2.packed
+  * fix: reduce runtime dependency from setuptools to just packaging
+  * fix: ensure that __copy__ and __deepcopy__ are enabled.
+  * fix: pass memo to deepcopy
+  * perf: improve Array initialisation performance 
+  * fix: Removed bytemask() in favour of mask_as_bool()
+- Add importlib-resources to BuildRequires.
+- Drop patches:
+  * awkward-correct-includedir.patch
+  * awkward-import-packging-not-setuptools_external.patch
+- No longer attempt to skip 3.6.
+</comment>
+    <requestid>1033486</requestid>
+  </revision>
 </revisionlist>

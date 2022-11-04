@@ -16,12 +16,10 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global modname awkward
 %global skip_python2 1
-%global skip_python36 1
 Name:           python-awkward
-Version:        1.8.0
+Version:        1.10.1
 Release:        0
 Summary:        Manipulate arrays of complex data structures as easily as Numpy
 License:        BSD-3-Clause
@@ -29,10 +27,6 @@ URL:            https://awkward-array.org/
 Source:         https://files.pythonhosted.org/packages/source/a/awkward/awkward-%{version}.tar.gz
 # PATCH-FETAURE-OPENSUSE awkward-cmake-build-with-RelWithDebInfo.patch badshah400@gmail.com -- Set CMAKE_BUILD_TYPE to RelWithDebInfo by default instead of Release
 Patch0:         awkward-cmake-build-with-RelWithDebInfo.patch
-# PATCH-FEATURE-OPENSUSE awkward-correct-includedir.patch badshah400#gmail.com -- Make awkward.config return the correct includedir where we move the header files to
-Patch1:         awkward-correct-includedir.patch
-# PATCH-FEATURE-OPENSUSE awkward-import-packging-not-setuptools_external.patch badshah400@gmail.com -- Directly use packaging module instead of setuptools.extern
-Patch2:         awkward-import-packging-not-setuptools_external.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  cmake
@@ -46,6 +40,7 @@ Recommends:     python-numba
 Recommends:     python-pandas
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module importlib-resources}
 BuildRequires:  %{python_module numpy >= 1.13.1}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pandas}
@@ -104,9 +99,10 @@ cp -a build/lib.linux-*/awkward/include %{buildroot}%{_includedir}/awkward
 
 %check
 # test-cuda: we don't have python-cupy yet
-# test_0914 uses float128, not available on i586
+# test_numpy_complex_form breaks the interpreter with "realloc(): invalid next
+# size" gh#scikit-hep/awkward#1862
 %ifarch %ix86
-%pytest_arch --ignore tests-cuda/ -k 'not test_0914'
+%pytest_arch --ignore tests-cuda/ -k 'not test_numpy_complex_form'
 %else
 %pytest_arch --ignore tests-cuda/
 %endif
