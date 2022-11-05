@@ -39,4 +39,17 @@
     <comment></comment>
     <requestid>872871</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6330d8624633399364e46cfe7ee262c1</srcmd5>
+    <version>2.0.8</version>
+    <time>1667655989</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 2.0.8
+  * lot of changes, see
+    https://github.com/geventhttpclient/geventhttpclient/releases
+- do not require python-six
+- deleted patches
+  - remove_mock.patch (upstreamed)</comment>
+    <requestid>1033551</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-geventhttpclient
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-geventhttpclient
-Version:        1.4.5
+Version:        2.0.8
 Release:        0
 Summary:        HTTP client library for gevent
 License:        MIT
@@ -27,22 +26,21 @@ URL:            https://github.com/gwik/geventhttpclient
 Source:         https://files.pythonhosted.org/packages/source/g/geventhttpclient/geventhttpclient-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM remove_mock.patch gh#gwik/geventhttpclient#135 mcepl@suse.com
 # remove dependency on the external module mock
-Patch0:         remove_mock.patch
+BuildRequires:  %{python_module Brotli}
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module dpkt}
 BuildRequires:  %{python_module gevent}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 %if 0%{?suse_version} <= 1500
 BuildRequires:  python-mock
 %endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-Brotli
 Requires:       python-certifi
 Requires:       python-gevent
-Requires:       python-six
 %python_subpackages
 
 %description
@@ -74,7 +72,8 @@ sed -i '/sock.last_seen_sni/ d' src/geventhttpclient/tests/test_ssl.py
 
 %files %{python_files}
 %doc README.mdown
-%license LICENSE-MIT
-%{python_sitearch}/*
+%license LICENSE.txt
+%{python_sitearch}/geventhttpclient
+%{python_sitearch}/geventhttpclient-%{version}*-info
 
 %changelog

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov  4 10:52:22 UTC 2022 - pgajdos@suse.com
+
+- version update to 2.0.8
+  * lot of changes, see
+    https://github.com/geventhttpclient/geventhttpclient/releases
+- do not require python-six
+- deleted patches
+  - remove_mock.patch (upstreamed)
+
+-------------------------------------------------------------------
 Tue Feb 16 14:50:32 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.4.5
