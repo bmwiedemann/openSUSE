@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 27 09:12:12 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Require /usr/bin/pkexec instead of pkexec: allow the package to
+  install with polkit with split pkexec of non-split.
+
+-------------------------------------------------------------------
 Mon Jul 18 09:55:09 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - require pkexec which is now a standalone package
