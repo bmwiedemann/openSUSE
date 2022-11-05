@@ -6473,26 +6473,7 @@ unsorted:
   - gromit-mpx 
   - gromox 
   - gron 
-  - groovy 
-  - groovy-ant 
   - groovy-bootstrap 
-  - groovy-bsf 
-  - groovy-console 
-  - groovy-docgenerator 
-  - groovy-groovydoc 
-  - groovy-groovysh 
-  - groovy-jmx 
-  - groovy-json 
-  - groovy-jsr223 
-  - groovy-lib 
-  - groovy-nio 
-  - groovy-servlet 
-  - groovy-sql 
-  - groovy-swing 
-  - groovy-templates 
-  - groovy-test 
-  - groovy-testng 
-  - groovy-xml 
   - groovy18 
   - groovy18-javadoc 
   - groovy18-lib 
@@ -9799,7 +9780,7 @@ unsorted:
   - libalut0-32bit: [x86_64] 
   - libamd-doc 
   - libaml0 
-  - libamtk-5-0 
+  - libamtk-5-1 
   - libangelscript2_35_1 
   - libangelscript_addons2_35_1 
   - libanjuta-3-0 
@@ -11046,8 +11027,11 @@ unsorted:
   - libfpm_helper0 
   - libfpm_pb0 
   - libfprint-2-2-32bit: [x86_64] 
+  - libfprint-2-tod1 
+  - libfprint-2-tod1-32bit: [x86_64] 
   - libfprint-devel 
   - libfprint-doc 
+  - libfprint-tod-devel 
   - libframe6 
   - libframe6-32bit: [x86_64] 
   - libframecpp12 
@@ -11944,7 +11928,7 @@ unsorted:
   - libjackserver0-32bit: [x86_64] 
   - libjansson-devel 
   - libjasper-devel 
-  - libjasper6-32bit: [x86_64] 
+  - libjasper7-32bit: [x86_64] 
   - libjavamapscript 
   - libjavascriptcoregtk-4_0-18-32bit: [x86_64] 
   - libjavascriptcoregtk-4_1-0-32bit: [x86_64] 
@@ -14416,7 +14400,7 @@ unsorted:
   - libtelepathy-qt5-service1 
   - libtelepathy-qt5-service1-32bit: [x86_64] 
   - libtemplate_glib-1_0-0 
-  - libtepl-6-0 
+  - libtepl-6-1 
   - libteredo5 
   - libterminalwidget5-0 
   - libtermkey-devel 
@@ -16373,6 +16357,7 @@ unsorted:
   - mcqd 
   - mcstrans 
   - mda-lv2 
+  - mdbook 
   - mdbtools 
   - mdbtools-devel 
   - mdds-1_4-devel 
@@ -23185,6 +23170,7 @@ unsorted:
   - python310-dockerpty 
   - python310-docopt 
   - python310-docrepr 
+  - python310-docstring-to-markdown 
   - python310-docutils 
   - python310-docutils-ast-writer 
   - python310-dogslow 
@@ -24341,6 +24327,7 @@ unsorted:
   - python310-pylineclip 
   - python310-pylint 
   - python310-pylint-ignore 
+  - python310-pylint-venv 
   - python310-pylons-sphinx-themes 
   - python310-pylru 
   - python310-pyls-spyder 
@@ -24905,6 +24892,7 @@ unsorted:
   - python310-sphinxcontrib-autoprogram 
   - python310-sphinxcontrib-autoprogram-doc 
   - python310-sphinxcontrib-blockdiag 
+  - python310-sphinxcontrib-copybutton 
   - python310-sphinxcontrib-devhelp 
   - python310-sphinxcontrib-documentedlist 
   - python310-sphinxcontrib-fulltoc 
@@ -24970,6 +24958,7 @@ unsorted:
   - python310-svgwrite 
   - python310-svm 
   - python310-svneverever 
+  - python310-swagger-spec-validator 
   - python310-swapper 
   - python310-swifter 
   - python310-sybil 
@@ -26456,6 +26445,7 @@ unsorted:
   - python38-dockerpty 
   - python38-docopt 
   - python38-docrepr 
+  - python38-docstring-to-markdown 
   - python38-docutils 
   - python38-docutils-ast-writer 
   - python38-dogslow 
@@ -27661,6 +27651,7 @@ unsorted:
   - python38-pylineclip 
   - python38-pylint 
   - python38-pylint-ignore 
+  - python38-pylint-venv 
   - python38-pylons-sphinx-themes 
   - python38-pylru 
   - python38-pyls-spyder 
@@ -28248,6 +28239,7 @@ unsorted:
   - python38-sphinxcontrib-autoprogram 
   - python38-sphinxcontrib-autoprogram-doc 
   - python38-sphinxcontrib-blockdiag 
+  - python38-sphinxcontrib-copybutton 
   - python38-sphinxcontrib-devhelp 
   - python38-sphinxcontrib-documentedlist 
   - python38-sphinxcontrib-fulltoc 
@@ -28312,6 +28304,7 @@ unsorted:
   - python38-svgpathtools 
   - python38-svgwrite 
   - python38-svneverever 
+  - python38-swagger-spec-validator 
   - python38-swapper 
   - python38-swifter 
   - python38-sybil 
@@ -29798,6 +29791,7 @@ unsorted:
   - python39-dockerpty 
   - python39-docopt 
   - python39-docrepr 
+  - python39-docstring-to-markdown 
   - python39-docutils 
   - python39-docutils-ast-writer 
   - python39-dogslow 
@@ -31006,6 +31000,7 @@ unsorted:
   - python39-pylineclip 
   - python39-pylint 
   - python39-pylint-ignore 
+  - python39-pylint-venv 
   - python39-pylons-sphinx-themes 
   - python39-pylru 
   - python39-pyls-spyder 
@@ -31593,6 +31588,7 @@ unsorted:
   - python39-sphinxcontrib-autoprogram 
   - python39-sphinxcontrib-autoprogram-doc 
   - python39-sphinxcontrib-blockdiag 
+  - python39-sphinxcontrib-copybutton 
   - python39-sphinxcontrib-devhelp 
   - python39-sphinxcontrib-documentedlist 
   - python39-sphinxcontrib-fulltoc 
@@ -31657,6 +31653,7 @@ unsorted:
   - python39-svgpathtools 
   - python39-svgwrite 
   - python39-svneverever 
+  - python39-swagger-spec-validator 
   - python39-swapper 
   - python39-swifter 
   - python39-sybil 
@@ -34214,17 +34211,8 @@ unsorted:
   - terraform-provider-vsphere: [x86_64] 
   - terragrunt 
   - teseq 
-  - tesla-polyglot 
-  - tesla-polyglot-atom 
   - tesla-polyglot-common 
   - tesla-polyglot-common-javadoc 
-  - tesla-polyglot-groovy 
-  - tesla-polyglot-java 
-  - tesla-polyglot-javadoc 
-  - tesla-polyglot-maven-plugin 
-  - tesla-polyglot-translate-plugin 
-  - tesla-polyglot-xml 
-  - tesla-polyglot-yaml 
   - tesseract 
   - tesseract-data 
   - tesseract-ocr 
