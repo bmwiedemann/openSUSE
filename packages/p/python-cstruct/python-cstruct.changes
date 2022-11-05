@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov  4 19:12:43 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.0
+  * Add enum support to cstruct.parse
+  * Add typedef parsing
+
+-------------------------------------------------------------------
 Mon Oct 24 15:29:46 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.3

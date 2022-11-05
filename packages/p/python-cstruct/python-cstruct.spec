@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cstruct
-Version:        3.3
+Version:        4.0
 Release:        0
 Summary:        C-style structs for Python
 License:        MIT
