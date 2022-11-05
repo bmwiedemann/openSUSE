@@ -108,4 +108,12 @@
   openSUSE release</comment>
     <requestid>952037</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0f6a66d6ac6640cb133ce4748d7cac6b</srcmd5>
+    <version>4.5</version>
+    <time>1667656016</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1033607</requestid>
+  </revision>
 </revisionlist>

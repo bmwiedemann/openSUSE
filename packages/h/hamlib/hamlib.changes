@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Thu Nov  3 19:01:32 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 4.5 (2022-10-30)
+  * New rotator utility https://www.pianetaradio.it/blog/catrotator/
+  * Add FT-710
+  * Add Rohde&Schwartz EK89X receiver
+  * Add Xeigu X5105
+  * Add Gemini DX-1200 HF-1K Amplifiers
+  * Kenwood rigs should now support AI command packets
+  * Add FT-990UNI for older 990 ROMs 1.2 and earlier
+  * Add FT-650
+  * Add get_separator and set_separator and -S option for rigctld -- node-red applicability
+  * Add GRBLTRK rotor project -- two axis rotor
+  * enum meter_level_e is deprecated and will be removed in 4.6
+  * Add SDRPlay SDRUno rig -- can now use Data/Pkt in WSJTX
+  * Add ability to use cat_string to FLRig via the "w" and "W" commands
+  * Add -B/--mapa2b to rigctlcom
+    Allows rigctlcom to map set_freq on VFOA to VFOB instead
+    This will allow CW Skimmer to work with some rigs (e.g. IC7300) using FM
+    mode on VFOA and CW mode on VFOB and split mode transmit on VFOB.
+    Clicking on CW Skimmer will change VFOB instead of VFOA to allow
+    working dxpeditions where the fox is staying on frequency
+  * Add password capability to rigctld via -A switch. 
+    rigctld -A will produce a consistent shared key for any
+    specific password that can used in \password and rig_set_password
+    TBD The shared key can also be placed in .hamlib_settings 
+  * Asynchronous rig data output handling to support transceive
+    and spectrum data. Mikael, OH3BHX
+  * See new set_conf option async for some Icom rigs
+  * Multicast UDP packet output for asynchronous data. Mikael, OH3BHX
+  * Rig state poll routine to serve commonly used data like frequency
+    and mode from cache. Mikael, OH3BHX
+  * deprecated hamlib_port_t at front of rig_state structure -- new
+    one at end of structure
+  * New rig_send_raw to send/read raw command to rig
+  * New RIG_LEVEL_BAND_SELECT for Yaesu rigs
+  * New rig_get_conf2 to replace rig_get_conf buffer overflow potential
+  * New rot_get_conf2 to reaplce rot_get_conf buffer overflow potential
+  * Added Barrett 4050 -- not functional yet
+  * Added TCI 1.X -- not functional yet
+  * Added TM-V71(A)
+  * Added IC-F8101
+  * Added JRC JST-145 and JST-245
+  * Added Xiegu X108G, G90, and X6100
+  * Added CODAN Envoy and NGS
+  * Added Lab599 TX-500
+  * Added GOMSPACE GS100
+  * Deprecated: rigctl commands \set_trn (A) and \get_trn (a) as
+    they never worked as intended
+  * Deprecated: field rig_caps.transceive and RIG_TRN_* macros
+
+-------------------------------------------------------------------
 Mon Feb  7 07:24:30 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
 
 - Be less strict with required interpreters for tcl and perl

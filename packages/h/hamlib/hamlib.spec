@@ -18,13 +18,13 @@
 
 %define sover   4
 Name:           hamlib
-Version:        4.4
+Version:        4.5
 Release:        0
 Summary:        Run-time library to control radio transcievers and receivers
 License:        LGPL-2.1-only
 Group:          Productivity/Hamradio/Other
 URL:            https://hamlib.github.io/
-Source:         https://github.com/Hamlib/Hamlib/releases/download/%{version}/%{name}-%{version}.tar.gz
+Source:         https://github.com/Hamlib/Hamlib/archive/refs/tags/%{version}.tar.gz#/Hamlib-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE hamlib-3.0-perl_install.patch -- patch from Fedora
 Patch0:         hamlib-3.0-perl_install.patch
 BuildRequires:  fdupes
@@ -113,7 +113,7 @@ Hamlib provide a programming interface for controlling radios and
 other shack hardware.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n Hamlib-%{version}
 
 %build
 autoreconf -fiv
