@@ -195,6 +195,10 @@ Requires:       %{rubygem childprocess:4.1}
 Requires:       %{rubygem ed25519:1.3 >= 1.3.0}
 #  s.add_dependency "erubi"
 Requires:       %{rubygem erubi}
+#  s.add_dependency 'googleapis-common-protos-types', '~> 1.3'
+Requires:       %{rubygem googleapis-common-protos-types:1 >= 1.3}
+#  s.add_dependency "grpc"
+Requires:       %{rubygem grpc}
 #  s.add_dependency "i18n", "~> 1.8"
 Requires:       %{rubygem i18n:1 >= 1.8}
 #  s.add_dependency "listen", "~> 3.6"
@@ -221,6 +225,8 @@ Requires:       %{rubygem net-scp:4 }
 Requires:       %{rubygem rb-kqueue:0.2}
 #  s.add_dependency "rexml", "~> 3.2"
 Requires:       %{rubygem rexml:3 >= 3.2 }
+#  s.add_dependency "rgl", "~> 0.5.7"
+Requires:       %{rubygem rgl:0.5 >= 0.5.7}
 #  s.add_dependency "rubyzip", "~> 2.0"
 Requires:       %{rubygem rubyzip:2}
 #   s.add_dependency "wdm", "~> 0.1.0"

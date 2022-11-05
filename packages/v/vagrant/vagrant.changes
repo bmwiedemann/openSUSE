@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov  4 08:13:18 UTC 2022 - Dan Čermák <dcermak@suse.com>
+
+- Add missing requires to vagrant, fixes boo#1205020
+
+-------------------------------------------------------------------
 Tue Nov  1 13:29:55 UTC 2022 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 2.3.2
