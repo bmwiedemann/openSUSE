@@ -154,4 +154,21 @@
   * Update test vectors to match python-cryptography 38.0.1</comment>
     <requestid>1007101</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>8c22f088b729bddf282aec6f5ca86b33</srcmd5>
+    <version>38.0.3</version>
+    <time>1667655996</time>
+    <user>dimstar_suse</user>
+    <comment>GOES TOGETHER WITH SR#1033460
+
+- update to 38.0.3:
+  - Updated Windows, macOS, and Linux wheels to be compiled
+    with OpenSSL 3.0.7, which resolves CVE-2022-3602 and
+    CVE-2022-3786.
+- Update to 38.0.2: 
+  * This release was subsequently yanked from PyPI due to a regression in OpenSSL.
+  * Updated Windows, macOS, and Linux wheels to be compiled with OpenSSL 3.0.6.
+</comment>
+    <requestid>1033461</requestid>
+  </revision>
 </revisionlist>
