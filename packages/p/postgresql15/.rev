@@ -17,4 +17,16 @@
   * Reverting the &quot;optimized order of GROUP BY keys&quot; feature.</comment>
     <requestid>1008564</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1c1955188c4f2e3cfa1006964a9f58e2</srcmd5>
+    <version>15.0</version>
+    <time>1667656002</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 15.0:
+  * https://www.postgresql.org/about/news/p-2526/ 
+  * https://www.postgresql.org/docs/15/release-15.html
+- Move pg_upgrade from *-contrib to *-server.
+- Drop support for the 9.x versioning scheme.</comment>
+    <requestid>1033574</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct 13 14:03:27 UTC 2022 - Reinhard Max <max@suse.com>
+
+- Update to 15.0:
+  * https://www.postgresql.org/about/news/p-2526/ 
+  * https://www.postgresql.org/docs/15/release-15.html
+- Move pg_upgrade from *-contrib to *-server.
+- Drop support for the 9.x versioning scheme.
+
+-------------------------------------------------------------------
 Thu Oct  6 13:20:57 UTC 2022 - Reinhard Max <max@suse.com>
 
 - Update to 15~rc2
