@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Nov  4 17:49:31 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+  * Revert "Split kernel scriptlets into separate sub-package"
+   (that change broke some package builds on OBS)
+
+-------------------------------------------------------------------
+Fri Nov  4 17:24:09 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.25:
+  * 80-hotplug-cpu-mem.rules: restrict cpu rule to x86_64 (bsc#1204423)
+
+-------------------------------------------------------------------
+Fri Sep 23 10:40:07 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.24:
+  * Split kernel scriptlets into separate sub-package 
+    "suse-module-tools-scriptlets" on Tumbleweed
+    (gh#openSUSE/suse-module-tools#64)
+
+-------------------------------------------------------------------
 Mon Sep 12 15:28:13 UTC 2022 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 16.0.23:

@@ -601,4 +601,13 @@ source service setup which messed up my spec file.
   * driver-check.sh, unblacklist: convert egrep to grep -E (bsc#1203092) (forwarded request 1003009 from mwilck)</comment>
     <requestid>1003010</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>453f7535a85c03798551e92efa96b49a</srcmd5>
+    <version>16.0.26</version>
+    <time>1667656004</time>
+    <user>dimstar_suse</user>
+    <comment>* Revert &quot;Split kernel scriptlets into separate sub-package&quot;
+   (that change broke some package builds on OBS) (forwarded request 1033596 from mwilck)</comment>
+    <requestid>1033597</requestid>
+  </revision>
 </revisionlist>
