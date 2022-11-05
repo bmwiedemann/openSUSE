@@ -1,7 +1,7 @@
 #
 # spec file for package mbedtls
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define lib_crypto libmbedcrypto7
 %define lib_x509   libmbedx509-1
 Name:           mbedtls
-Version:        2.28.0
+Version:        2.28.1
 Release:        0
 Summary:        Libraries for crypto and SSL/TLS protocols
 License:        Apache-2.0
