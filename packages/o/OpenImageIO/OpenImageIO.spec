@@ -35,7 +35,7 @@
 %define so_ver 2_4
 %define major_minor_ver 2.4
 Name:           OpenImageIO
-Version:        2.4.4.2
+Version:        2.4.5.0
 Release:        0
 Summary:        Library for Reading and Writing Images
 License:        BSD-3-Clause
@@ -44,6 +44,8 @@ URL:            https://www.openimageio.org/
 Source0:        https://github.com/OpenImageIO/oiio/archive/refs/tags/v%{version}.tar.gz#/oiio-%{version}.tar.gz
 # this contains the actual test images, only used during build
 Source1:        oiio-images-%{images_ts}.tar.xz
+# PATCH-FIX-UPSTREAM -- Rebased https://patch-diff.githubusercontent.com/raw/OpenImageIO/oiio/pull/3651.patch#/Fix-OIIO_SUPPORTED_RELEASE.patch
+Patch0:         Fix-OIIO_SUPPORTED_RELEASE.patch
 # NOTE: Please don't uncomment a build requirement unless you have submitted the package to factory and it exists
 #BuildRequires:  Field3D-devel
 BuildRequires:  cmake >= 3.12
@@ -171,15 +173,18 @@ Group:          Development/Libraries/Python
 This package contains python bindings for OpenImageIO.
 
 %prep
-%setup -q -n oiio-%{version} -a 1
+%setup -q -n oiio-%{version} -b 1
 %autopatch -p1
+# CMake looks for images at <CMAKE_BINARY_DIR>/testsuite/oiio-images
+mkdir -p %{__builddir}/testsuite
+ln -sf %{_builddir}/oiio-images-%{images_ts} %{__builddir}/testsuite/oiio-images
 
 # Make sure that bundled libraries are not used
 rm -f src/include/pugiconfig.hpp \
       src/include/pugixml.hpp
 rm -rf src/include/tbb/
 
-for i in $(grep -rl "%{_bindir}/env python$"); do sed -i '1s@^#!.*@#!%{_bindir}/python3@' ${i}; done
+find . -iname \*.py -print -exec sed -i '1s@^#!.*@#!%{_bindir}/python3@' '{}' \;
 
 %build
 %cmake \
@@ -225,8 +230,7 @@ rm %{buildroot}%{_docdir}/%{name}/LICENSE*md
 %fdupes -s %{buildroot}
 
 %check
-# Make sure, testsuite can find required test images and fonts
-ln -sf $(pwd)/oiio-images-%{images_ts} build/testsuite/oiio-images
+# Make sure testsuite can find required fonts
 mkdir -p ~/fonts
 ln -sf $(pwd)/src/fonts/Droid_Serif/DroidSerif.ttf ~/fonts/DroidSerif.ttf
 ln -sf $(pwd)/src/fonts/Droid_Sans/DroidSans.ttf ~/fonts/DroidSans.ttf
