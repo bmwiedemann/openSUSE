@@ -2137,7 +2137,7 @@
     <package name="libjacknet0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libjackserver0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libjansson4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libjasper6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libjasper7" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libjavascriptcoregtk-4_0-18" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libjavascriptcoregtk-4_1-0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libjaylink" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
