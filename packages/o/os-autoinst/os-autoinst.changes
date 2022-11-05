@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Nov 05 02:58:36 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1667579802.62acb88:
+  * Disable merge commit message length check
+  * Don't lessen overall result badness via serial fail autodetect
+  * Move backend process logic into new class
+  * Move debugger logic into Utils
+  * Add clicktime to click_lastmatch() args
+
+-------------------------------------------------------------------
 Wed Nov 02 15:48:55 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1667404110.1bb28ec:
