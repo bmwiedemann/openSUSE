@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov  4 10:37:17 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Enhance completion that is add sed, gpg and rpm support as well
+  as extend some other commands
+
+-------------------------------------------------------------------
 Tue Oct  4 06:48:42 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Replace tcsh-6.24.01-bash52.dif with upstream fix

@@ -906,4 +906,13 @@
     <comment>- Replace tcsh-6.24.01-bash52.dif with upstream fix (forwarded request 1007809 from favogt)</comment>
     <requestid>1007813</requestid>
   </revision>
+  <revision rev="84" vrev="3">
+    <srcmd5>f3d8d4f9e41ab3602fd6a2d857b85a68</srcmd5>
+    <version>6.24.01</version>
+    <time>1667656002</time>
+    <user>dimstar_suse</user>
+    <comment>- Enhance completion that is add sed, gpg and rpm support as well
+  as extend some other commands</comment>
+    <requestid>1033495</requestid>
+  </revision>
 </revisionlist>

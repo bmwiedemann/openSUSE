@@ -442,7 +442,18 @@ skip_mh:
 
     # from George Cox
     complete acroread	'p/*/f:*.{pdf,fdf,PDF,FDF}/'
-    complete xpdf	'p/*/f:*.{pdf,fdf,PDF,FDF}/'
+    complete xpdf	c/-/"(z g remote raise quit cmap rgb papercolor \
+			eucjp t1lib freetype ps paperw paperh level1 \
+			upw fullscreen cmd q v h help)"/ \
+			n/-z/x:'<zoom (-5 .. +5) or "page" or "width">'/ \
+			n/-g/x:'<geometry>'/ n/-remote/x:'<name>'/ \
+			n/-rgb/x:'<number>'/ n/-papercolor/x:'<color>'/ \
+			n/-{t1lib,freetype}/x:'<font_type>'/ \
+			n/-ps/x:'<PS_file>'/ n/-paperw/x:'<width>'/ \
+			n/-paperh/x:'<height>'/ n/-upw/x:'<password>'/ \
+			n/-/f:*.{pdf,PDF}/ \
+			N/-{z,g,remote,rgb,papercolor,t1lib,freetype,ps,paperw,paperh,upw}/f:*.{pdf,PDF}/ \
+			N/-/x:'<page>'/ p/1/f:*.{pdf,PDF}/ p/2/x:'<page>'/
     complete kpdf	'p/*/f:*.{pdf,fdf,PDF,FDF}/'
     complete qpdf	'p/*/f:*.{pdf,fdf,PDF,FDF}/'
     complete evince	'p/*/f:*.{pdf,fdf,PDF,FDF}/'
@@ -536,7 +547,7 @@ skip_mh:
     complete {gmake,make} \
 			'c/{--directory,--include-dir}=/d/' 'c/{-C,-I}/d/' \
 			'c/{--assume-new,--assume-old,--makefile,--new-file,--what-if,--file}=/f/' \
-			'c/{-W,-o,-f}/f/' \
+			'c/{-W,-o,-f}/f/' 'c/*=/f/' \
 			'c/--/(assume-new= assume-old= debug directory= \
 			dry-run environment-overrides file= help \
 			ignore-errors include-dir= jobs[=N] just-print \
@@ -699,14 +710,72 @@ skip_mh:
 
     complete xhost	c/[+-]/\$hosts/ n/*/\$hosts/
 
-    complete emacs	c/-/"(batch d f funcall i insert kill l load \
-			no-init-file nw q t u user)"/ c/+/x:'<line_number>'/ \
-			n/-d/x:'<display>'/ n/-f/x:'<lisp_function>'/ n/-i/f/ \
-			n@-l@F:/usr/share/emacs/@ \
-			n/-t/x:'<terminal>'/ \
-			n/-u/u/ n/*/f:^*{[\#~],.dvi,.o,.gz,.Z,.z,.zip}/
+    complete tcsh	c/-D*=/'x:<value>'/ c/-D/'x:<name>'/ \
+			c/-/"(b c d D e f F i l m n q s t v V x X -version)"/ \
+			n/-c/c/ n/{-l,--version}/n/ n/*/'f:*.{,t}csh'/
 
-    complete zcat	c/--/"(force help license quiet version)"/ \
+    complete rpm	c/--/"(query verify nodeps nofiles nomd5 noscripts    \
+			    nogpg nopgp install upgrade freshen erase allmatches  \
+			    notriggers repackage test rebuild recompile initdb    \
+			    rebuilddb addsign resign querytags showrc setperms    \
+			    setugids all file group package querybynumber qf      \
+			    triggeredby whatprovides whatrequires changelog       \
+			    configfiles docfiles dump filesbypkg info last list   \
+			    provides queryformat requires scripts state triggers  \
+			    triggerscripts allfiles badreloc excludepath checksig \
+			    excludedocs force hash ignoresize ignorearch ignoreos \
+			    includedocs justdb noorder oldpackage percent prefix  \
+			    relocate replace-files replacepkgs buildroot clean    \
+			    nobuild rmsource rmspec short-circuit sign target     \
+			    help version quiet rcfile pipe dbpath root specfile)"/\
+			c/-/"(q V K i U F e ba bb bp bc bi bl bs ta tb tp tc  \
+			    ti tl ts a f g p c d l R s h ? v vv -)"/              \
+			n/{-f,--file}/f/ n/{-g,--group}/g/ n/--pipe/c/ n/--dbpath/d/  \
+			n/--querybynumber/x:'<number>'/ n/--triggeredby/x:'<package>'/\
+			n/--what{provides,requires}/x:'<capability>'/ n/--root/d/     \
+			n/--{qf,queryformat}/x:'<format>'/ n/--buildroot/d/           \
+			n/--excludepath/x:'<oldpath>'/  n/--prefix/x:'<newpath>'/     \
+			n/--relocate/x:'<oldpath=newpath>'/ n/--target/x:'<platform>'/\
+			n/--rcfile/x:'<filelist>'/ n/--specfile/x:'<specfile>'/       \
+			n/{-[iUFep],--{install,upgrade,freshen,erase,package}}/f:*.rpm/
+if (-X emacs) then
+    complete emacs	c/--/"(batch terminal display no-windows no-init-file \
+			    user debug-init unibyte multibyte version help \
+			    no-site-file funcall load eval insert kill)"/ \
+			c/-/"(t d nw q u f l -)"/ c/+/x:'<line_number>'/ \
+			n/{-t,--terminal}/x:'<terminal>'/ n/{-d,--display}/x:'<display>'/ \
+			n/{-u,--user}/u/ n/{-f,--funcall}/x:'<lisp_function>'/ \
+			n@{-l,--load}@F:/usr/share/emacs/@ \
+			n/--eval/x:'<expression>'/ n/--insert/f/ n/*/f:^*{[\#~],.dvi,.o}/
+endif
+if (-X gpg) then
+    set _gpg_hash=(`gpg --version | sed -rn '/^Supported algorithms:/,$ {:join; /,$/{N; s/\n//; b join};/^Hash:/{s/(,|.*: )//g;s/.*/\L&/p}}'`)
+    set _gpg_cipher=(`gpg --version | sed -rn '/^Supported algorithms:/,$ {:join; /,$/{N; s/\n//; b join};/^Cipher:/{s/(,|.*: )//g;s/.*/\L&/p}}'`)
+
+    complete gpg	c/--/'(sign clearsign detach-sign encrypt symmetric \
+			    store decrypt verify list-keys list-sigs check-sigs \
+			    fingerprint list-secret-keys gen-key delete-key \
+			    delete-secret-key sign-key lsign-key edit-key gen-revoke \
+			    export send-keys recv-keys import list-packets \
+			    export-ownertrust import-ownertrust update-trustdb \
+			    check-trustdb fix-trustdb dearmor enarmor print-md armor\
+			    recipient default-recipient default-recipient-self \
+			    local-user textmode output verbose quiet no-tty \
+			    force-v3-sigs force-mdc dry-run batch yes no keyring \
+			    secret-keyring default-key keyserver charset options \
+			    status-fd load-extension rfc1991 openpgp s2k-mode \
+			    s2k-digest-algo s2k-cipher-algo cipher-algo digest-algo \
+			    compress-algo throw-keyid notation-data help)'/ \
+			c/-/'(s b e c d a r u z o v q n N -)'/\
+			n/{-z,--s2k-mode,--compress-algo}/'(0 1 2 3 4 5 6 7 8 9)'/ \
+			n/{--digest-algo,--print-md,--s2k-digest-algo}/"($_gpg_hash)"/ \
+			n/{-u,--local-user}/u/ \
+			n/{--cipher-algo,--s2k-cipher-algo}/"($_gpg_cipher)"/ \
+			n/{--keyserver}/'<keyserver>'/
+    unset _gpg_cipher
+    unset _gpg_hash
+endif
+    complete {gzcat,zcat} c/--/"(force help license quiet version)"/ \
 			c/-/"(f h L q V -)"/ n/*/f:*.{gz,Z,z,zip}/
     complete gzip	c/--/"(stdout to-stdout decompress uncompress \
 			force help list license no-name quiet recurse \
@@ -738,6 +807,10 @@ skip_mh:
     complete zfile	n/*/f:*.{gz,Z,z,zip,taz,tgz}/
     complete ztouch	n/*/f:*.{gz,Z,z,zip,taz,tgz}/
     complete zforce	n/*/f:^*.{gz,taz,tgz}/
+
+    complete dcop	'p/1/`$:0`/ /' \
+			'p/2/`$:0 $:1 | awk \{print\ \$1\}`/ /' \
+			'p/3/`$:0 $:1 $:2 | sed "s%.* \(.*\)(.*%\1%"`/ /'
 
     complete grep	c/-*A/x:'<#_lines_after>'/ c/-*B/x:'<#_lines_before>'/ \
 			c/--/"(extended-regexp fixed-regexp basic-regexp \
@@ -772,6 +845,11 @@ skip_mh:
 			c/-/"(A a B b C c d E e F f G H h i L l n q r s U u V v w x)"/ \
 			p/1/x:'<fixed_string>'/ N/-*e/f/ \
 			n/-*e/x:'<fixed_string>'/ n/-*f/f/ n/*/f/
+
+    complete sed	c/--/"(quiet silent version help expression file)"/   \
+			c/-/"(n V e f -)"/ n/{-e,--expression}/x:'<script>'/  \
+			n/{-f,--file}/f:*.sed/ N/-{e,f,-{file,expression}}/f/ \
+			n/-/x:'<script>'/ N/-/f/ p/1/x:'<script>'/ p/2/f/
 
     complete users	c/--/"(help version)"/ p/1/x:'<accounting_file>'/
     complete who	c/--/"(heading mesg idle count help message version \
@@ -898,7 +976,15 @@ skip_mh:
     # there's no need to clutter the user's shell with these
     unset _maildir _ypdir _domain
 
-    if ( -r /etc/printcap ) then
+    if ( -X lpstat ) then
+	set printers=(`lpstat -p -d | sed -rn '/^printer/{ s/^printer ([^\s]+) .*/\1/p }'`)
+
+	complete lpr	'c/-P/$printers/'
+	complete lpq	'c/-P/$printers/'
+	complete lprm	'c/-P/$printers/'
+	complete dvips	'c/-P/$printers/' 'n/-o/f:*.{ps,PS}/' 'n/*/f:*.dvi/'
+	complete dvilj	'p/*/f:*.dvi/'
+    else if ( -r /etc/printcap ) then
 	set printers=(`sed -n -e '/^[^ 	#][^:]*:/{s/|.*:.*//p;}' /etc/printcap | sort -u`)
 
 	complete lpr	'c/-P/$printers/'
