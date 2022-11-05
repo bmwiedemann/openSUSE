@@ -19,7 +19,7 @@
 Name:           ouch
 Version:        0.3.1~0
 Release:        0
-Summary:        Compression and decompression utility for your terminal
+Summary:        Compression and decompression utility for the terminal
 License:        MIT
 Group:          Productivity/Archiving/Compression
 URL:            https://github.com/ouch-org/ouch
@@ -30,7 +30,8 @@ BuildRequires:  cargo-packaging
 ExclusiveArch:  %{rust_tier1_arches}
 
 %description
-ouch stands for Obvious Unified Compression Helper and is a CLI tool to help you compress and decompress files of several formats.
+The "Obvious Unified Compression Helper" is a CLI tool for
+compressing and decompressing files from and to several formats.
 
 %prep
 %autosetup -a1
