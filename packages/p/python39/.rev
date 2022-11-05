@@ -729,4 +729,16 @@
     <comment></comment>
     <requestid>1031408</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>8c264ce73f22da335847bf39d1287353</srcmd5>
+    <version>3.9.15</version>
+    <time>1667655991</time>
+    <user>dimstar_suse</user>
+    <comment>- Add CVE-2022-42919-loc-priv-mulitproc-forksrv.patch to avoid
+  CVE-2022-42919 (bsc#1204886) avoiding Linux specific local
+  privilege escalation via the multiprocessing forkserver start
+  method.
+</comment>
+    <requestid>1033552</requestid>
+  </revision>
 </revisionlist>
