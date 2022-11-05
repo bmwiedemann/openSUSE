@@ -1219,4 +1219,12 @@ This is a bug fix only release.
     <comment></comment>
     <requestid>1000604</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>51378d5d4fb109358d456aea4dfcbab3</srcmd5>
+    <version>1.2.1</version>
+    <time>1667656005</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1033616</requestid>
+  </revision>
 </revisionlist>

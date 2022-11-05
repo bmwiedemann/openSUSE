@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Nov  3 15:03:25 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.2.1:
+  * fix(modules): don't error if /proc/modules is missing (a1f091d)
+  * fix(readme): format optional <ver> (03e61f2)
+  * docs: add protocols to rich and zones (191cea4)
+  * docs(policy): add priority attribute to rule (616ed7c)
+  * fix(runtimeToPermanent): errors for interfaces not in zone (6b5a70b)
+  * fix(failsafe): log exception on fatal failure (af1b8f0)
+  * fix(ipset): defer native ipset creation if nftables (ae0ded4)
+  * fix(nftables): drop invalid packets before zone dispatch (dc972ae)
+  * fix(iptables): drop invalid packets before zone dispatch (83a4608)
+  * fix(policies): Splitting interfaces with wildcards (3806e79)
+  * fix(ipset): exception on overlap checking empty set (bfe827f)
+  * fix(bash): fix ipset commands autocompletion (742669b)
+  * docs(README): fix typo (e40b100)
+  * fix(treewide): misc typos (d121f0c)
+  * fix: firewalld.conf: trim trailing whitespace (21809ed)
+
+-------------------------------------------------------------------
 Thu Sep  1 07:55:30 UTC 2022 - Stefan Schubert <schubi@suse.com>
 
 - Migration to /usr/etc: Saving user changed configuration files
