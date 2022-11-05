@@ -17,7 +17,7 @@
 
 
 Name:           asar
-Version:        3.2.0
+Version:        3.2.2
 Release:        0
 Summary:        Creating atom-shell (electron) app packages
 License:        MIT and ISC
@@ -31,6 +31,7 @@ Source2:        prepare_vendor.sh
 BuildArch:      noarch
 
 BuildRequires:  fdupes
+BuildRequires:  jq
 BuildRequires:  nodejs-packaging
 BuildRequires:  npm
 
@@ -46,16 +47,22 @@ having random access support.
 %autosetup -p1 -a 1
 
 %build
-npm rebuild --verbose
+npm rebuild --verbose --foreground-scripts
 
 %install
-mkdir -pv %{buildroot}%{nodejs_sitearch}
+mkdir -pv %{buildroot}%{nodejs_sitelib}/@electron
 mkdir -pv %{buildroot}%{_bindir}
-cp -lr . %{buildroot}%{nodejs_sitearch}/asar
-ln -srv %{buildroot}%{nodejs_sitearch}/asar/bin/asar.js %{buildroot}%{_bindir}/asar
+cp -lr . %{buildroot}%{nodejs_sitelib}/@electron/asar
+ln -srv %{buildroot}%{nodejs_sitelib}/@electron/asar/bin/asar.js %{buildroot}%{_bindir}/asar
+# symlink old package name
+ln -srv %{buildroot}%{nodejs_sitelib}/{@electron/,}asar
 #fix shebang
-sed -i '1s/env //' %{buildroot}%{nodejs_sitearch}/asar/bin/asar.js
-cd %{buildroot}%{nodejs_sitearch}/asar
+sed -i '1s/env //' %{buildroot}%{nodejs_sitelib}/@electron/asar/bin/asar.js
+cd %{buildroot}%{nodejs_sitelib}/asar
+
+# Correct bogus version in package.json
+jq -cj '.version="%{version}"' package.json > new
+mv new package.json
 #Remove development garbage
 find -name example -print0 |xargs -r0 -- rm -rvf
 find -name test -print0 |xargs -r0 -- rm -rvf
@@ -85,6 +92,6 @@ find -name '.releaserc*' -type f -print -delete
 %doc CHANGELOG.md README.md
 %license LICENSE.md
 /usr/bin/asar
-%{nodejs_sitearch}
+%{nodejs_sitelib}
 
 %changelog
