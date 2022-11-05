@@ -3575,6 +3575,7 @@ unsorted:
   - falkon 
   - falkon-kde 
   - falkon-lang 
+  - farbfeld 
   - farsi-fonts 
   - farstream-devel 
   - fasd 
@@ -6402,7 +6403,6 @@ unsorted:
   - gr-iqbal-devel-doc 
   - gr-iqbal-grc 
   - grabpng 
-  - gradle 
   - gradle-bootstrap 
   - gradle-local 
   - grafana 
@@ -7078,8 +7078,6 @@ unsorted:
   - htop 
   - htscodecs-devel 
   - htsfile 
-  - http-builder 
-  - http-builder-javadoc 
   - http-parser-devel 
   - httpcomponents-asyncclient 
   - httpcomponents-asyncclient-cache 
