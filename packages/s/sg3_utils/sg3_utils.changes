@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Nov 03 20:15:14 UTC 2022 - mwilck@suse.com
+
+- Update to new upstream version 1.48~20221101.6d3bd26:
+  (pre-release sg3_utils-1.48 [20221101] [svn: r978])
+  * sg_read_block_limits: fix granularity value, add --mloi option; sg_lib: add sg_ll_read_block_limits_v2(); sg_logs: json work
+  * sg_stream_ctl: --get fix better; sg_rem_rest_elem: cleanup
+  * sg_stream_ctl: fix --get indexing; fix some './configure --enable-debug' issues
+  * sg_inq+sg_vpd: JSON updates
+  * rescan-scsi-bus: speed large multipath scans
+  * rescan-scsi-bus.sh speed testonline()
+  * rescan-scsi-bus.sh: add option --no-lip-scan
+  * rescan-scsi-bus: sgdevice26: do not traverse sg class if scsi_device isnot added
+  * rescan-scsi-bus.sh: fix handling of '-I <secs>' option
+  * Prepare for removing /proc/scsi from the Linux kernel
+  * sg_inq+sg_vpd: merge VPD page processing
+  * sg_get_elem_status: change '--maxlen=' option default to 1056 (was 32), other cleanups
+  * sg_rep_zones: add experimental --json[=JO] option and generation
+  * sg_logs: add --exclude and --undefined options
+  * zoned disk man page improvements
+  * sg_rep_zones: add --statistics option
+  * sg_read_buffer: add --eh_code= and --no_output options
+  * sg_format: allow disk formats on ZBC (zoned) disks
+  * sg_rep_zones: add --brief option and --find ZT option
+  * sg_rep_density: new utility for decoding the response of Report density support command [ssc (tape)]
+  * Zoned block device characteristics VPD page support
+
+-------------------------------------------------------------------
 Wed Jun 01 14:50:40 UTC 2022 - mwilck@suse.com
 
 - Update to version 1.47+5.d13bc56:

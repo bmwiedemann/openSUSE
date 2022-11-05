@@ -17,8 +17,8 @@
 
 
 Name:           sg3_utils
-Version:        1.47+5.d13bc56
-%global lname libsgutils2-%(echo %{version} | sed 'y/./_/;s/+.*//')-2
+Version:        1.48~20221101.6d3bd26
+%global lname libsgutils2-%(echo %{version} | sed 's/[~+].*//;y/./_/')-2
 Release:        0
 Summary:        A collection of tools that send SCSI commands to devices
 License:        BSD-3-Clause AND GPL-2.0-or-later
