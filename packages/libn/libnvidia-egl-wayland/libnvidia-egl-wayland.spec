@@ -20,7 +20,7 @@
 %define lname libnvidia-egl-wayland%{so_ver}
 %define rname egl-wayland
 Name:           libnvidia-egl-wayland
-Version:        1.1.9
+Version:        1.1.11
 Release:        0
 Summary:        The EGLStream-based Wayland external platform
 License:        MIT
@@ -28,15 +28,13 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/NVIDIA/egl-wayland
 Source0:        https://github.com/NVIDIA/egl-wayland/archive/%{version}/%{rname}-%{version}.tar.gz
 Source1:        baselibs.conf
-Patch1:         U_0001-wayland-Fail-eglGetDisplay-if-wl_drm-is-not-availabl.patch
-Patch2:         U_0002-generate-wayland-drm-client-protocol.h.patch
-Patch3:         U_0003-egl-wayland-retrieve-DRM-device-name-before-acquirin.patch
 BuildRequires:  gcc-c++
 BuildRequires:  meson >= 0.50
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(eglexternalplatform) >= 1.1
+BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-egl-backend) >= 3
 BuildRequires:  pkgconfig(wayland-protocols)

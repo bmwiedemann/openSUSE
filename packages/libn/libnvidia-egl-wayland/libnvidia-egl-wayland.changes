@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov  4 19:38:35 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to version 1.1.11
+  * latest bugfix release
+- supersedes 
+  * U_0001-wayland-Fail-eglGetDisplay-if-wl_drm-is-not-availabl.patch
+  * U_0002-generate-wayland-drm-client-protocol.h.patch
+  * U_0003-egl-wayland-retrieve-DRM-device-name-before-acquirin.patch
+
+-------------------------------------------------------------------
 Thu Apr 21 12:46:29 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - U_0001-wayland-Fail-eglGetDisplay-if-wl_drm-is-not-availabl.patch

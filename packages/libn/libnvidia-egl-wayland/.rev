@@ -68,4 +68,17 @@
   * add latest fixes (U_0003-egl-wayland ... fixes boo#1195598)</comment>
     <requestid>971815</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3c86498d1aae0af86a580b0d46c4011e</srcmd5>
+    <version>1.1.11</version>
+    <time>1667656006</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.1.11
+  * latest bugfix release
+- supersedes 
+  * U_0001-wayland-Fail-eglGetDisplay-if-wl_drm-is-not-availabl.patch
+  * U_0002-generate-wayland-drm-client-protocol.h.patch
+  * U_0003-egl-wayland-retrieve-DRM-device-name-before-acquirin.patch</comment>
+    <requestid>1033618</requestid>
+  </revision>
 </revisionlist>
