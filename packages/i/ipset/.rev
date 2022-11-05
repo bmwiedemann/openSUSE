@@ -363,4 +363,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>911409</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>6970dc1dade6d1f4ecfa1d35b866b98e</srcmd5>
+    <version>7.15</version>
+    <time>1667656000</time>
+    <user>dimstar_suse</user>
+    <comment>- Tumbleweed is not affected by the following SLE issues:
+  bsc#1122853 (forwarded request 1033480 from dspinella)</comment>
+    <requestid>1033484</requestid>
+  </revision>
 </revisionlist>
