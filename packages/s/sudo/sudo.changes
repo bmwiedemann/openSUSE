@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov  3 22:07:14 UTC 2022 - Jason Sikes <jsikes@suse.com>
+
+- Added sudo-CVE-2022-43995.patch
+  * CVE-2022-43995
+  * bsc#1204986
+  * Fixed a potential heap-based buffer over-read when entering a password
+    of seven characters or fewer and using the crypt() password backend.
+
+-------------------------------------------------------------------
 Tue Nov  1 22:04:32 UTC 2022 - Jason Sikes <jsikes@suse.com>
 
 - Modified sudo-sudoers.patch
