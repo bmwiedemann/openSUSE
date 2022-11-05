@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Nov 05 02:16:05 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1667577561.41a898b:
+  * Fix log upload from openQA jobs in case of read-only cache directory
+  * Add tests for SUSE branding
+  * Add button to insert marker for unblocking incident to OSD branding
+  * Allow customizing commenting tools via branding
+  * Use signatures in WebAPI::Controller::Main
+  * Use signatures in WebAPI::Controller::File
+  * Use signatures in WebAPI::Controller::Developer
+  * Use signatures in WebAPI::Controller::ApiKey
+
+-------------------------------------------------------------------
 Wed Nov 02 13:56:19 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1667397351.67490e1:
