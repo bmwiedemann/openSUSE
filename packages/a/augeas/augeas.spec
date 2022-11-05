@@ -17,22 +17,19 @@
 
 
 Name:           augeas
-Version:        1.12.0
+Version:        1.13.0
 Release:        0
 Summary:        An utility for changing configuration files
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 URL:            https://augeas.net/
-Source0:        http://download.augeas.net/augeas-%{version}.tar.gz
-Source1:        http://download.augeas.net/augeas-%{version}.tar.gz.sig
+Source0:        https://github.com/hercules-team/augeas/releases/download/release-%{version}/%{name}-%{version}.tar.gz
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
 Patch0:         augeas-modprobe-lense.patch
-Patch1:         gcc9-disable-broken-test.patch
-Patch2:         augeas-new_options_for_chrony.patch
-Patch3:         augeas-allow_printable_ASCII.patch
-Patch4:         remove-unportable-tests.patch
 # from https://patch-diff.githubusercontent.com/raw/hercules-team/augeas/pull/755.patch
-Patch5:         sysctl_parsing.patch
+Patch1:         sysctl_parsing.patch
+Patch2:         augeas-1.13.0-replace_security_context_t-patch
+Patch3:         gcc9-disable-broken-test.patch
 BuildRequires:  glibc-locale
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel

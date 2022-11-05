@@ -630,4 +630,12 @@ semicolon is ambiguous (forwarded request 137763 from babelworx)</comment>
     <comment></comment>
     <requestid>991496</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>0df8e7febf0f2131ec316c910aaa6e68</srcmd5>
+    <version>1.13.0</version>
+    <time>1667655994</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1033427</requestid>
+  </revision>
 </revisionlist>

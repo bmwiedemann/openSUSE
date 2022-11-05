@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Fri Nov  4 01:29:24 UTC 2022 - Jason Sikes <jsikes@suse.com>
+
+- Update to 1.13.0
+  * Fixes bsc#1204554
+  * Added augeas-1.13.0-replace_security_context_t-patch to fix a
+    syntax error.
+  * Rebased gcc9-disable-broken-test.patch
+  * Dropped the following patches since they are now upstreamed:
+    - augeas-new_options_for_chrony.patch
+    - augeas-allow_printable_ASCII.patch
+    - remove-unportable-tests.patch
+  * General changes/additions
+    - Add Dockerfile (Nicolas Gif) (Issue #650)
+    - augtool: Improved readline integration to handle quoting
+      issues (Pino Toscano)
+    - typechecker: Allow including '/' in keys and labels. Thanks
+      to felixdoerre for pointing out that this restriction was
+      unnecessary. See issue #668 for the discussion.
+    - Add function modified() to select nodes which are marked as
+      dirty (George Hansper) (Issue #691)
+    - Add CLI command 'preview' and API 'aug_preview' to preview
+      file contents (George Hansper) (#690)
+    - Add "else" operator to augeas path-filter expressions
+      (priority selector) (George Hansper) (#692)
+    - Add new axis 'seq' to allow /path/seq::*[expr] to match and
+      create numeric nodes, as idempotent alternative to
+      /path/*[expr] (George Hansper) (#706)
+  * Lens changes/additions
+    - Authinfo2: new lens to parse Authinfo2 format (Nicolas Gif)
+      (Issue #649)
+    - Chrony: add new options (Miroslav Lichvar) (Issue #698)
+    - Cmdline: New lens to parse /proc/cmdline (Thomas Weißschuh)
+    - Crypttab: support UUID in device and / in opt (Raphaël
+      Pinson) (#713)
+    - Fail2ban: new lens to parse Fail2ban format (Nicolas Gif)
+      (Issue #651)
+    - Grub: support '+' in kernel command line option names (Pino
+      Toscano) (Issue #647)
+    - Krb5: handle [plugins] subsection (Pino Toscano) (Issue #663)
+    - Limits: support colons in the domain pattern of the limits
+      lens (Xavier Mol) (Issue #645)
+    - Logrotate: add hourly schedule (Jason A. Smith) (Issue #655)
+    - Mke2fs: parse more common entries between [defaults] and the
+      tags in [fs_types], fix the type of few entries, handle the
+      [options] stanza (Pino Toscano) (Issue #642)
+    - support quoted values (Pino Toscano) (Issue #661)
+    - NetworkManager: allow # in values (mfilka) (#723)
+    - Opendkim: update to match current conffile format (Issue #644)
+    - Postfix_Master: Allow unix-dgram as type (Issue #635)
+    - Postfix_transport: Allow underscore (Anton Baranov) (Issue #678)
+    - Postgresql: Allow hyphen '-' in values that don't require quotes
+      (Marcin Barczyński) (Issues #700 #701)
+    - Properties: Allow "/" in property names (felixdoerre) (Issue #680)
+    - Redis: add incl path /etc/redis.conf (Raphaël Pinson) (#726)
+    - support "replicaof" (Raphaël Pinson) (#727)
+    - fix support for "sentinel" (Raphaël Pinson) (#728)
+    - Resolv: Support new options (Trevor Vaughan) (Issues #707 #708)
+    - Rsyslog: support multiple actions in filters and selectors (Issue
+      #653)
+    - Shellvars: exclude more tcsh profile scripts (Pino Toscano) (Issue
+      #627)
+    - Simplevars: add ocsinventory-agent.cfg (Pat Riehecky) (Issue #637)
+    - Sudoers: support new @include/@includedir directives (Pino
+      Toscano) (Issue #693)
+    - Sudoers: Allow AD groups (luchihoratiu) (Issue #696)
+    - Support negative integers (Ando David Roots) (#724)
+    - Ssh: add Match keyword support (granquet) (Issue #695)
+    - Sshd: support quotes in Match conditions (Issue #739)
+    - Systemd: fix parsing of envvars with spaces (Pino Toscano) (#659)
+    - Add incl paths according to 'systemd.network(5)' (chruetli) (#683)
+    - Tinc: new lens for Tinc VPN configuration files (Thomas Weißschuh)
+      (#718)
+    - Toml: support arrays (norec) in inline tables (Raphaël Pinson)
+      (#703)
+    - Tmpfiles: improvements to the types specification (Pino Toscano)
+      (Issue #694)
+
+-------------------------------------------------------------------
 Tue Jul 26 15:49:09 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Unset MALLOC_PERTURB_ to speed up %check significantly
