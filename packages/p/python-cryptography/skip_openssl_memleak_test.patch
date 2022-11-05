@@ -1,8 +1,10 @@
-Index: cryptography-3.0/tests/hazmat/backends/test_openssl_memleak.py
-===================================================================
---- cryptography-3.0.orig/tests/hazmat/backends/test_openssl_memleak.py
-+++ cryptography-3.0/tests/hazmat/backends/test_openssl_memleak.py
-@@ -153,10 +153,9 @@ def assert_no_memory_leaks(s, argv=[]):
+---
+ tests/hazmat/backends/test_openssl_memleak.py |    7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
+
+--- a/tests/hazmat/backends/test_openssl_memleak.py
++++ b/tests/hazmat/backends/test_openssl_memleak.py
+@@ -174,10 +174,9 @@ def assert_no_memory_leaks(s, argv=[]):
  
  
  def skip_if_memtesting_not_supported():
