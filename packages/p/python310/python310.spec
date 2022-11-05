@@ -172,6 +172,9 @@ Patch37:        CVE-2015-20107-mailcap-unsafe-filenames.patch
 # PATCH-FIX-UPSTREAM 98437-sphinx.locale._-as-gettext-in-pyspecific.patch gh#python/cpython#98366 mcepl@suse.com
 # this patch makes things totally awesome
 Patch38:        98437-sphinx.locale._-as-gettext-in-pyspecific.patch
+# PATCH-FIX-UPSTREAM CVE-2022-42919-loc-priv-mulitproc-forksrv.patch bsc#1204886 mcepl@suse.com
+# Avoid Linux specific local privilege escalation via the multiprocessing forkserver start method
+Patch39:        CVE-2022-42919-loc-priv-mulitproc-forksrv.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -442,6 +445,7 @@ other applications.
 %patch36 -p1
 %patch37 -p1
 %patch38 -p1
+%patch39 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
