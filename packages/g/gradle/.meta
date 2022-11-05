@@ -1,7 +1,0 @@
-<package name="gradle" project="openSUSE:Factory">
-  <title>Groovy-based build system</title>
-  <description>A flexible groovy-based build tool.
-  </description>
-  <devel project="Java:packages" package="gradle"/>
-  <url>http://www.gradle.org/</url>
-</package>
