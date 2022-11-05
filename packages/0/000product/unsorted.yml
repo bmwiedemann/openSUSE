@@ -2003,7 +2003,6 @@ unsorted:
   - cinnamon-theme-adapta 
   - cinnamon-theme-matcha 
   - cint-devel 
-  - citra: [x86_64] 
   - civetweb 
   - civetweb-devel 
   - cjs 
@@ -2080,6 +2079,7 @@ unsorted:
   - cloud-netconfig-azure 
   - cloud-netconfig-ec2 
   - cloud-netconfig-gce 
+  - cloudproviders-extension-nextcloud 
   - clthreads-devel 
   - clucene-core-devel 
   - clustduct 
@@ -3339,7 +3339,7 @@ unsorted:
   - emacs-poke 
   - emacs-scheme48 
   - emacs-semi 
-  - embree-devel-static: [x86_64] 
+  - embree-devel: [x86_64] 
   - emf2svg-conv 
   - emil 
   - emojione-color-font 
@@ -10054,6 +10054,10 @@ unsorted:
   - libbluray2-32bit: [x86_64] 
   - libbml-devel 
   - libbml1 
+  - libbobcat-devel 
+  - libbobcat-devel-static 
+  - libbobcat-light-devel-static 
+  - libbobcat6 
   - libboinc7 
   - libboost_atomic-devel 
   - libboost_atomic1_80_0 
@@ -10810,6 +10814,7 @@ unsorted:
   - libelf-devel 
   - libelf-devel-32bit: [x86_64] 
   - libelf1-32bit: [x86_64] 
+  - libembree3: [x86_64] 
   - libemf2svg-devel 
   - libemf2svg1 
   - libenca0 
@@ -14141,8 +14146,8 @@ unsorted:
   - libspatialindex6 
   - libspatialite-devel 
   - libspatialite7 
-  - libspdlog1_10 
-  - libspdlog1_10-32bit: [x86_64] 
+  - libspdlog1_11 
+  - libspdlog1_11-32bit: [x86_64] 
   - libspdylay7 
   - libspectre-devel 
   - libspeechd-devel 
@@ -14747,6 +14752,7 @@ unsorted:
   - libvips42 
   - libvirt 
   - libvirt-cim 
+  - libvirt-client-qemu 
   - libvirt-daemon-config-nwfilter 
   - libvirt-daemon-driver-lxc 
   - libvirt-daemon-driver-storage-gluster 
@@ -18496,11 +18502,6 @@ unsorted:
   - openhpi-devel 
   - openjade 
   - openjade-devel 
-  - openjfx 
-  - openjfx-devel 
-  - openjfx-javadoc 
-  - openjfx-jmods 
-  - openjfx-src 
   - openjfx8 
   - openjfx8-devel 
   - openjfx8-javadoc 
@@ -18823,6 +18824,7 @@ unsorted:
   - otpclient 
   - otter-browser 
   - otter-browser-lang 
+  - ouch: [x86_64] 
   - ovmf-tools: [x86_64] 
   - ovn 
   - ovn-central 
@@ -43614,6 +43616,7 @@ unsorted:
   - verilator-devel 
   - verilator-examples 
   - veusz: [x86_64] 
+  - veusz-common: [x86_64] 
   - veyon 
   - vfontas 
   - vgrabbj 
@@ -43822,7 +43825,7 @@ unsorted:
   - warzone2100-data 
   - wasi-libc 
   - wasm-pack: [x86_64] 
-  - watchexec: [x86_64] 
+  - watchexec 
   - watson 
   - watson-bash-completion 
   - watson-fish-completion 
