@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-Glances
-Version:        3.3.0.2
+Version:        3.3.0.3
 Release:        0
 Summary:        A cross-platform curses-based monitoring tool
 License:        LGPL-3.0-only
@@ -123,7 +122,8 @@ export LANG=en_US.UTF-8
 %doc NEWS.rst README.rst
 %python_alternative %{_bindir}/glances
 %python_alternative %{_mandir}/man1/glances.1%{?ext_man}
-%{python_sitelib}/*
+%{python_sitelib}/glances
+%{python_sitelib}/Glances-%{version}*-info
 
 %files -n glances-common
 %dir %{_prefix}/lib/firewalld

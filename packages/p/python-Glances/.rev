@@ -202,4 +202,14 @@
     <comment></comment>
     <requestid>1032518</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>cb915448e752bfbb76fbd88619a0f7cc</srcmd5>
+    <version>3.3.0.3</version>
+    <time>1667656009</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.3.0.3
+  * Refactor the Docker images factory
+</comment>
+    <requestid>1033549</requestid>
+  </revision>
 </revisionlist>
