@@ -31,10 +31,12 @@ BuildRequires:  make
 BuildRequires:  pkgconfig
 
 %description
-Tools for converting images into and from the suckles farbfeld format.
+Tools for converting images into and from the suckless.org farbfeld
+format, which is practically the same as the Netpbm P7 RGB_ALPHA
+format, only with a custom header.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %make_build
