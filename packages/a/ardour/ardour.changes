@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Nov  4 15:38:14 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 7.1.0. Bugfix release
+  * Ardour now has a Quick Audio Export feature
+  * Fixed a few more bugs that could be reproduced when creating
+    new MIDI regions or trimming existing one in the part of the
+    timeline where a tempo ramp is happening
+  * The Cue Markers ruler now has Clear All Cues command in the
+    context menu
+  * The folder where files from FreeSound are downloaded to is
+    now also listed in the clips list.
+  * Mixer Scenes Update
+  * Revamped the UI for external sends and returns (port inserts)
+  * Improved the readability of the X-axis units in the export
+    spectogram
+  * I/O Plugins ports are now listed separately in the connection
+    matrix, with dedicated I/O Pre and I/O Post tabs created
+    automatically when you add plugins
+  * Better Usability for Automation Editing
+  * Improvements in Tempo Map Editing
+  * Overall Usability Improvements
+  * Check https://ardour.org/whatsnew.html for the full list of
+    changes
+
+-------------------------------------------------------------------
+Sun Oct 16 14:11:34 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 7.0.0
+  * arrival of "clip launching" similar to the workflow present
+    in all major DAWs
+  * New download system to access additional audio / MIDI loops
+  * New cue markers rule
+  * New and different representation of time than previous versions
+  * 3 "ripple editing" modes
+  * Ardour can now be used to search and use samples from the
+    Freesound project
+  * Check https://ardour.org/whatsnew.html for the full list of
+    changes
+- Add a _constraints files
+
+-------------------------------------------------------------------
 Sat Oct 15 08:34:53 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Remove the source URL. There's no direct download address anymore

@@ -16,10 +16,9 @@
 #
 
 
-%define dirbase ardour6
-%define _fluid_maj %(rpm -q --qf "%%{version}" fluidsynth-devel | cut -d'.' -f1)
+%define dirbase ardour7
 Name:           ardour
-Version:        6.9.0
+Version:        7.1.0
 Release:        0
 Summary:        Multichannel Digital Audio Workstation
 # Legal: Ardour is a mix of GPL-2.0-or-later, [L]GPL-3.0-or-later and a couple copyleft
@@ -30,7 +29,7 @@ Source0:        Ardour-%{version}.tar.bz2
 Source99:       ardour-rpmlintrc
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  boost-devel >= 1.49.0
+BuildRequires:  boost-devel >= 1.56.0
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  fftw3-threads-devel
@@ -84,11 +83,11 @@ BuildRequires:  pkgconfig(pangomm-1.4) >= 2.28.4
 BuildRequires:  pkgconfig(raptor2) >= 2.0.6
 BuildRequires:  pkgconfig(rasqal) >= 0.9.28
 BuildRequires:  pkgconfig(redland) >= 1.0.15
-BuildRequires:  pkgconfig(rubberband) >= 1.8.1
+BuildRequires:  pkgconfig(rubberband)
 BuildRequires:  pkgconfig(samplerate) >= 0.1.8
 BuildRequires:  pkgconfig(serd-0)
 BuildRequires:  pkgconfig(sigc++-2.0) >= 2.2.10
-BuildRequires:  pkgconfig(sndfile) >= 1.0.25
+BuildRequires:  pkgconfig(sndfile) >= 1.0.18
 BuildRequires:  pkgconfig(sord-0)
 BuildRequires:  pkgconfig(soundtouch) >= 1.8.0
 BuildRequires:  pkgconfig(sratom-0)
@@ -170,19 +169,18 @@ find . -name wscript -o -name waf -o -name '*.py' \
 ./waf --destdir=%{buildroot} install -v
 
 # upstream installs in wrong places
-install -D -m 644 -t %{buildroot}%{_datadir}/metainfo %{buildroot}%{_datadir}/appdata/ardour6.appdata.xml
-install -D -m 644 -t %{buildroot}%{_datadir}/mime/packages %{buildroot}%{_datadir}/mime/application/ardour.xml
-rm -r %{buildroot}%{_datadir}/appdata %{buildroot}%{_datadir}/mime/application
+install -D -m 644 -t %{buildroot}%{_datadir}/metainfo %{buildroot}%{_datadir}/appdata/ardour7.appdata.xml
+rm -r %{buildroot}%{_datadir}/appdata
 
-%suse_update_desktop_file -i ardour6 AudioVideo Recorder
-%find_lang ardour6
-%find_lang gtk2_ardour6
+%suse_update_desktop_file -i ardour7 AudioVideo Recorder
+%find_lang ardour7
+%find_lang gtk2_ardour7
 %find_lang gtkmm2ext3
 
 # remove dupes
 %fdupes -s %{buildroot}%{_datadir}
 
-%files -f ardour6.lang -f gtk2_ardour6.lang -f gtkmm2ext3.lang
+%files -f ardour7.lang -f gtk2_ardour7.lang -f gtkmm2ext3.lang
 %license COPYING
 %doc doc README
 %dir %{_sysconfdir}/%{dirbase}
@@ -190,17 +188,16 @@ rm -r %{buildroot}%{_datadir}/appdata %{buildroot}%{_datadir}/mime/application
 %{_bindir}/%{dirbase}
 %{_bindir}/%{dirbase}-copy-mixer
 %{_bindir}/%{dirbase}-export
-%{_bindir}/%{dirbase}-fix_bbtppq
 %{_bindir}/%{dirbase}-lua
-%{_libdir}/%{dirbase}
-%{_datadir}/%{dirbase}
-%exclude %{_datadir}/%{dirbase}/templates/.stub
-%{_datadir}/icons/hicolor/*/apps/%{dirbase}.png
-%{_datadir}/applications/%{dirbase}.desktop
-%{_datadir}/mime/packages/ardour.xml
 %{_bindir}/%{dirbase}-new_empty_session
 %{_bindir}/%{dirbase}-new_session
-%{_datadir}/metainfo/ardour6.appdata.xml
+%{_datadir}/%{dirbase}/
+%{_datadir}/applications/%{dirbase}.desktop
+%{_datadir}/icons/hicolor/*/apps/%{dirbase}.png
+%{_datadir}/metainfo/ardour7.appdata.xml
+%{_datadir}/mime/packages/ardour.xml
+%{_libdir}/%{dirbase}/
+%exclude %{_datadir}/%{dirbase}/templates/.stub
 %exclude %{_libdir}/%{dirbase}/libhidapi.a
 
 %changelog

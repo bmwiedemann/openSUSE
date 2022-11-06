@@ -1,0 +1,43 @@
+<constraints>
+  <hardware>
+    <disk>
+      <size unit="G">3</size>
+    </disk>
+    <memory>
+      <size unit="G">3</size>
+    </memory>
+    <processors>4</processors>
+  </hardware>
+  <overwrite>
+    <conditions>
+      <arch>aarch64</arch>
+    </conditions>
+    <hardware>
+      <memory>
+        <size unit="G">4</size>
+      </memory>
+    </hardware>
+  </overwrite>
+  <!-- Memory usage varies a lot on TW/x86_64 -->
+  <overwrite>
+    <conditions>
+      <arch>x86_64</arch>
+    </conditions>
+    <hardware>
+      <memory>
+        <size unit="G">8</size>
+      </memory>
+    </hardware>
+  </overwrite>
+  <overwrite>
+    <conditions>
+      <arch>ppc64le</arch>
+      <arch>ppc64</arch>
+    </conditions>
+    <hardware>
+      <memory>
+        <size unit="M">6500</size>
+      </memory>
+    </hardware>
+  </overwrite>
+</constraints>
