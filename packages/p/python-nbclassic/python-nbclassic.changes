@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Nov  5 19:48:55 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.4.8:
+  * Enhancements made
+    + Playwright Testing Conversion #170 (@ericsnekbytes)
+  * Bugs fixed
+    + Handle async and sync contents managers #172 (@blink1073)
+  * Maintenance and upkeep improvements
+    + Playwright port #139 (@ericsnekbytes)
+  * Documentation improvements
+    + Documentation for the extensions configurator #174 (@echarles)
+    + Updating contributing docs for playwright tests #171 (@RRosio)
+  * Other merged PRs
+    + Update docs to remove install command #173 (@dleen)
+
+-------------------------------------------------------------------
 Sat Oct 22 03:38:13 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 0.4.7:
