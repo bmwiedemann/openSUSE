@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 19 14:48:49 UTC 2022 - Michael Gorse <mgorse@suse.com>
+
+- Add libsoup_2_and_3_support.patch: support libsoup 3.0
+  (boo#1204492).
+- Build against libsoup 3 on Tumbleweed.
+
+-------------------------------------------------------------------
 Mon Aug  8 15:29:00 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Set CMAKE_SKIP_RPATH to avoid writing bogus RUNPATH to

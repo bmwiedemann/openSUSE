@@ -29,6 +29,7 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
 URL:            https://www.remmina.org/
 Source0:        https://gitlab.com/Remmina/Remmina/-/archive/v%{version}/Remmina-v%{version}.tar.bz2
+Patch0:         libsoup_2_and_3_support.patch
 BuildRequires:  cmake
 BuildRequires:  cups-devel
 BuildRequires:  ed
@@ -54,7 +55,11 @@ BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gvnc-1.0)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libsecret-1)
+%if 0%{?sle_version} && 0%{?sle_version} <= 150500
 BuildRequires:  pkgconfig(libsoup-2.4)
+%else
+BuildRequires:  pkgconfig(libsoup-3.0)
+%endif
 BuildRequires:  pkgconfig(libssh)
 BuildRequires:  pkgconfig(libvncserver)
 BuildRequires:  pkgconfig(spice-client-gtk-3.0)
