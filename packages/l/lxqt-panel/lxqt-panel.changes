@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Nov  5 19:56:20 UTC 2022 - Shawn Dunn <sfalken@cloverleaf-linux.org>
+
+- Update to 1.2.0:
+  * Added context items to Quick Launch for reloading desktop entries.
+  * Set window flags of the volume popup explicitly (useful under Wayland).
+  * Fixed Quick Launch icons when there are multiple config files.
+
+-------------------------------------------------------------------
 Fri Apr 29 06:12:35 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.1.0:

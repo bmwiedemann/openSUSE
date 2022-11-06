@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-panel
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Desktop Panel for LXQt
 License:        GPL-2.0-or-later
@@ -73,6 +73,7 @@ Brand new desktop Panel for LXQt
 Summary:        Devel files for lxqt-panel
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
+BuildArch:      noarch
 
 %description devel
 LXQt panel development files and headers
@@ -84,7 +85,6 @@ LXQt panel development files and headers
 %define _lto_cflags %{nil}
 export CXXFLAGS="%{optflags} $(pkg-config --cflags xkbcommon-x11)"
 %cmake -DPULL_TRANSLATIONS=No -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now"
-%make_build
 
 %install
 %cmake_install
@@ -107,7 +107,7 @@ export CXXFLAGS="%{optflags} $(pkg-config --cflags xkbcommon-x11)"
 %{_libdir}/%{name}
 %{_datadir}/lxqt/lxqt-panel
 %{_mandir}/man1/lxqt-panel.1%{?ext_man}
-%{_sysconfdir}/xdg/autostart/lxqt-panel.desktop
+%config %{_sysconfdir}/xdg/autostart/lxqt-panel.desktop
 %{_datadir}/desktop-directories/lxqt-leave.directory
 %{_datadir}/desktop-directories/lxqt-settings.directory
 %{_datadir}/lxqt/panel.conf
