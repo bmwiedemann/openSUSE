@@ -17,7 +17,7 @@
 
 
 Name:           qps
-Version:        2.5.0
+Version:        2.6.0
 Release:        0
 Summary:        Visual Process Manager
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -56,7 +56,6 @@ processes.
 
 %build
 %cmake
-%make_build
 
 %install
 %cmake_install
