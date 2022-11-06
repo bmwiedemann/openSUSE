@@ -152,4 +152,40 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1007510</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>83fbd8193c136f993086612e9180606d</srcmd5>
+    <version>2.4.4</version>
+    <time>1667736354</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.4
+  * Added extra debug output when a zip extraction fails while on
+    GitHub Actions (#11148)
+  * Fixed cache write failures when the cache dir gets removed during
+    a composer run (#11076)
+  * Fixed 2.4.3 regression in loading Composer on SMB/network shares
+    (#11077)
+  * Fixed --dry-run flag missing from bump command (#11047)
+  * Fixed status command reporting differences when the source ref is
+    a tag (#11155)
+  * Fixed outdated command outputting legend on stdout instead of stderr
+  * Fixed URL sanitizer to handle new GitHub personal access tokens
+    format (#11137)
+- Update to version 2.4.3
+  * BC Break: The json format of audit command now has reportedAt as an
+    RFC3339 string instead of an object which was a mistake (#11120)
+  * Fixed json format of audit command which was missing affectedVersions
+    (#11120)
+  * Fixed plugin commands not being loaded during bash completions
+    (#11074)
+  * Fixed parsing of inline aliases within complex constraints with
+    || or , (#11086)
+  * Fixed min-php version check in autoload.php to avoid crashing sites
+    running on PHP 5.5 or below silently with a 200 (#11091)
+  * Fixed JsonFile reading files without checking if they are readable
+    first (#11077)
+  * Fixed require command with --dry-run failing when requiring a package
+    requiring stability flag extraction (#11112)
+</comment>
+    <requestid>1033851</requestid>
+  </revision>
 </revisionlist>
