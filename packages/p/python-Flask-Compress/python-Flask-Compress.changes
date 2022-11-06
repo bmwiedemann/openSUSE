@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Nov  5 19:31:38 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+  * use pytest
+
+- update to version 1.13:
+  * Re-enable compression for streaming, but hide it behind a new
+    option COMPRESS_STREAMS that defaults to True. See #36
+
+-------------------------------------------------------------------
 Sun Jun  5 04:37:02 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:
