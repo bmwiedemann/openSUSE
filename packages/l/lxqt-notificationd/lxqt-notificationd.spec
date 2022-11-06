@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-notificationd
-Version:        1.0.0
+Version:        1.2.0
 Release:        0
 Summary:        LXQt Notification daemon
 License:        LGPL-2.1-or-later
@@ -50,7 +50,6 @@ The LXQt Notification daemon
 
 %build
 %cmake -DPULL_TRANSLATIONS=No
-make %{?_smp_mflags}
 
 %install
 %cmake_install
@@ -64,9 +63,9 @@ make %{?_smp_mflags}
 %{_bindir}/%{name}
 %{_bindir}/lxqt-config-notificationd
 %{_datadir}/applications/lxqt-config-notificationd.desktop
-%{_sysconfdir}/xdg/autostart/lxqt-notifications.desktop
+%config %{_sysconfdir}/xdg/autostart/lxqt-notifications.desktop
 
-%files lang -f %{name}.lang 
+%files lang -f %{name}.lang
 %dir %{_datadir}/lxqt
 %dir %{_datadir}/lxqt/translations
 %dir %{_datadir}/lxqt/translations/lxqt-notificationd

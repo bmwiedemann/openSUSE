@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Nov  5 20:45:51 UTC 2022 - Shawn Dunn <sfalken@cloverleaf-linux.org>
+
+- Update to 1.2.0:
+  * Allow no focused widget inside notifications (useful under Wayland).
+  * Don't show default actions if nameless (no empty button, no
+    empty combo-box item).
+
+-------------------------------------------------------------------
 Fri Apr 29 05:53:01 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.1.0:
