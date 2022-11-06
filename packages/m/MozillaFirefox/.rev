@@ -5925,4 +5925,12 @@
   * Fixes for other platforms</comment>
     <requestid>1032848</requestid>
   </revision>
+  <revision rev="381" vrev="1">
+    <srcmd5>8ce8d54aec0bf870cc037a0037fed80e</srcmd5>
+    <version>106.0.5</version>
+    <time>1667734897</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1033697</requestid>
+  </revision>
 </revisionlist>

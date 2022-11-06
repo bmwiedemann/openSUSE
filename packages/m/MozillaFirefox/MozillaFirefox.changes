@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Nov  5 13:16:42 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 106.0.5:
+  * Addresses a crash experienced by users with Intel Gemini Lake
+    CPUs (bmo#1702019)
+- Mozilla Firefox 106.0.4:
+  * Fixed an issue with DRM Video playback (bmo#1797292)
+  * Fixed broken layout of datetime input when switching
+    types (bmo#1797139)
+
+-------------------------------------------------------------------
 Tue Nov  1 19:26:39 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Mozilla Firefox 106.0.3
