@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Nov  5 16:19:55 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 102.4.2
+  * "Address Book" button in Account Central will now create a
+    CardDAV address book instead of a local address book
+  * Bugfixes as described here
+    https://www.thunderbird.net/en-US/thunderbird/102.4.2/releasenotes
+
+-------------------------------------------------------------------
 Tue Oct 25 20:42:11 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 102.4.1

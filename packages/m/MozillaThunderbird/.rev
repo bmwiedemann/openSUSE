@@ -4559,4 +4559,16 @@ I cannot test locally unfortunately.
   * Various visual and UX improvements</comment>
     <requestid>1031395</requestid>
   </revision>
+  <revision rev="297" vrev="1">
+    <srcmd5>ac67cc386082835a6029c1357612ac86</srcmd5>
+    <version>102.4.2</version>
+    <time>1667734910</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird 102.4.2
+  * &quot;Address Book&quot; button in Account Central will now create a
+    CardDAV address book instead of a local address book
+  * Bugfixes as described here
+    https://www.thunderbird.net/en-US/thunderbird/102.4.2/releasenotes</comment>
+    <requestid>1033698</requestid>
+  </revision>
 </revisionlist>
