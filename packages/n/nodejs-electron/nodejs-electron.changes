@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Nov  5 18:03:39 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+- Conditionally add backported node-upgrade-llhttp-to-8.patch to adjust to LLHTTP api changes
+  * fixes FTBFS on Fedora Rawhide
+- Add disable-webspeech.patch ported from QtWebengine
+  * Remove some useless-in-Electron code which adds a dependency on libFLAC.
+
+-------------------------------------------------------------------
+Sat Nov  5 11:02:33 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+- New upstream release 21.2.2
+  * Remove symlinks from FileChooserImpl folder upload result (CVE-2022-3656)
+  * Updated Chromium to 106.0.5249.168.
+- Drop fix-no-ppapi-build.patch applied upstream.
+- Do not compile Chrome's HSTS list into the binary. It is huge, and Electron is not used to access arbitrary websites.
+
+-------------------------------------------------------------------
 Tue Nov  1 20:51:32 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
 - New upstream release 21.2.1
   * Fixed spurious promise rejection in webContents.loadURL when navigating to a hash.

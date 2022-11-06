@@ -177,6 +177,12 @@ BuildArch:      i686
 %bcond_with system_histogram
 %endif
 
+%if 0%{?fedora} >= 38
+%bcond_without llhttp_8
+%else
+%bcond_with llhttp_8
+%endif
+
 # Abseil is broken in Leap
 # enable this when boo#1203378 and boo#1203379 get fixed
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150600 || 0%{?fedora} >= 37
@@ -206,7 +212,7 @@ BuildArch:      i686
 
 
 Name:           nodejs-electron
-Version:        21.2.1
+Version:        21.2.2
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
 License:        AFL-2.0 AND Apache-2.0 AND blessing AND BSD-2-Clause AND BSD-3-Clause AND BSD-Protection AND BSD-Source-Code AND bzip2-1.0.6 AND IJG AND ISC AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND MIT-CMU AND MIT-open-group AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later) AND MPL-2.0 AND OpenSSL AND SGI-B-2.0 AND SUSE-Public-Domain AND X11
@@ -255,6 +261,8 @@ Patch69:        nasm-generate-debuginfo.patch
 Patch70:        disable-fuses.patch
 Patch71:        enable-jxl.patch
 Patch72:        electron-version-from-env.patch
+# https://code.qt.io/cgit/qt/qtwebengine-chromium.git/commit/?h=102-based&id=d617766b236a93749ddbb50b75573dd35238ffc9
+Patch73:        disable-webspeech.patch
 
 # PATCHES to use system libs
 Patch1002:      chromium-system-libusb.patch
@@ -306,7 +314,12 @@ Patch2029:      electron-16-webpack-fix-openssl-3.patch
 Patch2030:      v8-icu69-FormattedNumberRange-no-default-constructible.patch
 Patch2031:      partition_alloc-no-lto.patch
 Patch2032:      seccomp_bpf-no-lto.patch
-
+# adjust to llhttp 8 api changes
+%if %{with llhttp_8}
+Patch2033:       node-upgrade-llhttp-to-8.patch
+%else
+Source2033:      node-upgrade-llhttp-to-8.patch
+%endif
 
 # PATCHES that should be submitted upstream verbatim or near-verbatim
 Patch3016:      chromium-98-EnumTable-crash.patch
@@ -340,7 +353,6 @@ Patch3084:      swiftshader-Constants-Wstrict-aliasing.patch
 Patch3085:      half_float-Wstrict-aliasing.patch
 Patch3086:      unzip-Wsubobject-linkage.patch
 Patch3087:      v8_initializer-PageAllocator-fpermissive.patch
-Patch3088:      fix-no-ppapi-build.patch
 Patch3089:      ipcz-safe_math-Wuninitialized.patch
 Patch3090:      passwords_counter-Wsubobject-linkage.patch
 Patch3091:      vector_math_impl-Wstrict-aliasing.patch
@@ -396,7 +408,11 @@ BuildRequires:  libpng-devel
 BuildRequires:  libXNVCtrl-devel
 %endif
 %if %{with system_llhttp}
-BuildRequires:  llhttp-devel
+%if %{with llhttp_8}
+BuildRequires:  llhttp-devel >= 8
+%else
+BuildRequires:  llhttp-devel < 8
+%endif
 %endif
 %if %{with lld}
 BuildRequires:  lld
@@ -482,7 +498,6 @@ BuildRequires:  pkgconfig(dav1d) >= 1
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(dri)
 BuildRequires:  pkgconfig(expat)
-BuildRequires:  pkgconfig(flac++)
 %if %{with system_freetype}
 BuildRequires:  pkgconfig(freetype2)
 %endif
@@ -1090,6 +1105,8 @@ myconf_gn+=" enable_captive_portal_detection=false"
 myconf_gn+=" enable_browser_speech_service=false"
 myconf_gn+=" enable_speech_service=false"
 myconf_gn+=" enable_screen_ai_service=false"
+myconf_gn+=" include_transport_security_state_preload_list=false"
+myconf_gn+=" enable_web_speech=false"
 
 #Do not build Chromecast
 myconf_gn+=" enable_remoting=false"
