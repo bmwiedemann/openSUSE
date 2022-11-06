@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Nov  6 09:31:50 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.4.2
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * gitlab CI: add a basic build test
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * InputDriverRec: Resolve -Wmissing-field-initializers warning
+  * InitValuatorAxisStruct: Add missing line breaks
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * autogen.sh: use exec instead of waiting for configure to finish
+
+-------------------------------------------------------------------
 Thu Apr  9 16:45:32 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Remove Supplements: xorg-x11-server, which pulls in the package.

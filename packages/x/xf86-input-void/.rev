@@ -70,4 +70,21 @@
     <comment></comment>
     <requestid>792797</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>67efaae54c8af8d453814afb8c69f251</srcmd5>
+    <version>1.4.2</version>
+    <time>1667734979</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.2
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * gitlab CI: add a basic build test
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * InputDriverRec: Resolve -Wmissing-field-initializers warning
+  * InitValuatorAxisStruct: Add missing line breaks
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * autogen.sh: use exec instead of waiting for configure to finish</comment>
+    <requestid>1033830</requestid>
+  </revision>
 </revisionlist>
