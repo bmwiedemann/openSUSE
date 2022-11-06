@@ -11019,7 +11019,7 @@ unsorted:
   - libfm-qt-data 
   - libfm-qt-devel 
   - libfm-qt-lang 
-  - libfm-qt11 
+  - libfm-qt12 
   - libfm4 
   - libfmapi-devel 
   - libfmapi1 
@@ -20694,6 +20694,7 @@ unsorted:
   - php-composer 
   - php-composer2 
   - php-cs-fixer 
+  - php-mapscriptng 
   - php-pear-Auth_SASL 
   - php-pear-MDB2 
   - php-pear-MDB2_Driver_mysqli 
@@ -32899,6 +32900,8 @@ unsorted:
   - rofi 
   - rofi-calc 
   - rofi-devel 
+  - rofi-wayland 
+  - rofi-wayland-devel 
   - rollback-helper: [x86_64] 
   - rook: [x86_64] 
   - rook-ceph-helm-charts: [x86_64] 
