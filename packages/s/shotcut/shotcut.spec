@@ -25,7 +25,7 @@
 %global __requires_exclude qmlimport\\((Shotcut\\.Controls|org\\.shotcut\\.qml).*
 
 Name:           shotcut
-Version:        22.06.23
+Version:        22.10.25
 Release:        0
 # This package creates a build time version from the current date and uses it to check
 # for updates. See patch1 and prep/build section. For reproducible builds.
@@ -35,13 +35,13 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Video/Editors and Convertors
 URL:            http://www.shotcut.org/
 Source:         https://github.com/mltframework/shotcut/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch1:         shotcut-libdir.patch
+#Patch1:         shotcut-libdir.patch
+BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libqt5-qtdeclarative-private-headers-devel
 BuildRequires:  mc
-BuildRequires:  cmake
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Core) >= 5.9.0
@@ -130,6 +130,7 @@ pushd $basedir
 popd
 %suse_update_desktop_file -i org.%{name}.Shotcut
 chmod 0755 %{buildroot}/%{_datadir}/%{name}/qml/export-edl/rebuild.sh
+chmod 0755 %{buildroot}/%{_datadir}/%{name}/qml/export-chapters/rebuild.sh
 %fdupes -s %{buildroot}/%{_datadir}
 
 %post
@@ -155,7 +156,6 @@ chmod 0755 %{buildroot}/%{_datadir}/%{name}/qml/export-edl/rebuild.sh
 %{_datadir}/applications/org.%{name}.Shotcut.desktop
 %exclude %{_datadir}/%{name}/translations
 %{_libdir}/libCuteLogger.so
-
 
 %files lang -f %{name}.lang
 %defattr(-,root,root)

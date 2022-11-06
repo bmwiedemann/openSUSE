@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Sat Nov  5 14:58:07 UTC 2022 - Dave Plater <davejplater@gmail.com>
+
+- Update to 22.10.25
+- Delete incorporated patch shotcut-libdir.patch
+- Upstream changes:
+  *Bug Fixes:
+  *Fixed translations not updated.
+  *Fixed crash in Size, Position & Rotate filter when size approaches
+   zero, for example when editing a size numeric field.
+  *Fixed bitrate in some Export presets such as VP8, VP9, D10, and
+   XDCAM.
+  *Fixed Timeline > Lift and Delete not working with no clip selected.
+  *Fixed Transition > Properties resets the Invert and Softness options.
+  *Fixed an incorrect timecode appears at 2 minutes in 24 or 23.98 fps.
+  *Fixed Timeline > Select Clip Above and Select Clip Below not
+   working with no clip selected.
+  *Fixed incorrect resulting aspect ratio when changing
+   Export > Video > Resolution and pixel aspect ratio is not square.
+  *Fixed Properties > Measure Video Quality on Windows.
+  *Fixed Fade Out Video filter not working after trimming the in point.
+  *Fixed updating an animation Properties > Duration after changed
+   in Glaxnimate.
+  *Fixed ripple trim on the in point of a clip that is at the very
+   beginning (00:00:00:00) of the Timeline.
+  *Fixed adjusting keyframes of the second clip when a trimming the
+   in point of a transition.
+  *Fixed Keyframes UI when using
+   Timeline > Trim Clip In menu-item/action/shortcut.
+  *Fixed opening a MLT XML file with a % in its path or name.
+  *Fixed keyframes after an undo and redo upon making a transition
+   while trimming the in point of a clip.
+  *Improvements and Changes:
+  *Finished the menu technology updates (marker context, rich text editor)
+   that were mostly done in v22.09.23.
+  *Added icons for the 360 video filters.
+  *Performance improvement in Timeline for when there is opaque
+   clip on a track above another clip.
+  *Disallow allow adding Filters to a device or live input since
+   this is not working and could interfere with integrity of capture.
+  *Increased the maximum values in the Mask:
+   Simple Shape > Horizontal and Vertical video filter.
+  *Changing Timeline > Zoom no longer pauses playback.
+
+-------------------------------------------------------------------
 Wed Jun 29 00:09:40 UTC 2022 - Aaron Stern <ukbeast89@protonmail.com>
 
 - Update to 22.06.23
