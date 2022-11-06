@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-powermanagement
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Power Management and Auto-suspend
 License:        LGPL-2.1-or-later
@@ -63,7 +63,6 @@ LXQt daemon for power management and auto-suspend
 
 %build
 %cmake  -DPULL_TRANSLATIONS=No
-%make_build
 
 %install
 %cmake_install
@@ -77,7 +76,7 @@ LXQt daemon for power management and auto-suspend
 %{_bindir}/lxqt*
 %{_datadir}/applications/*.desktop
 %{_datadir}/icons/hicolor/scalable/devices/*.svg
-%{_sysconfdir}/xdg/autostart/lxqt-powermanagement.desktop
+%config %{_sysconfdir}/xdg/autostart/lxqt-powermanagement.desktop
 
 %files lang -f %{name}.lang
 %dir %{_datadir}/lxqt

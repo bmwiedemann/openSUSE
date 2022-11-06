@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Nov  5 20:38:42 UTC 2022 - Shawn Dunn <sfalken@cloverleaf-linux.org>
+
+- Update to 1.2.0:
+  * Better tray icon descriptions.
+  * Consider the stable state of battery (neither charging nor
+    discharging).
+  * Fixed the error message "QString::arg: Argument missing".
+
+
+-------------------------------------------------------------------
 Fri Apr 29 05:56:39 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.1.0:
