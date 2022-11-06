@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Sat Nov  5 20:41:28 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- rofi-wayland-devel should conflict rofi-devel.
+
+-------------------------------------------------------------------
+Mon Oct 31 13:04:53 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Switch back from SCM managed to plain old OBS package.
+- Update to 1.7.5+wayland1:
+  - just following the upstream
+    (https://github.com/davatorium/rofi) changes.
+- Add rofi-launcher provides to allow coexistence with
+  rofi-wayland.
+
+-------------------------------------------------------------------
+Sat Aug 20 17:25:18 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Rename package to rofi-wayland and conflict with the original one.
+- Make the package Wayland only.
+- Switch to Sourcehut upstream repo with my patches
+  (https://git.sr.ht/~mcepl/rofi)
+
+-------------------------------------------------------------------
+Sat Aug  6 13:21:18 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Conversion of the original project from
+  https://build.opensuse.org/package/show/home:h3o/Rofi-Wayland
+  (with updated build to have working submodules).
