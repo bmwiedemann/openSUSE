@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Nov  5 22:51:35 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 38:
+  * New features:
+    + .probe command updated (current and power measurements).
+    + Support of digital devices with U-instance models
+      (PSPICE compatible).
+    + Automatic generation of A/D and D/A bridging interfaces, when
+      mixed signal simulation (combining analog and event-based
+      digital) is used.
+    + Update to pow() function (LTSPICE compatible).
+    + For a list of all new features please have a look at the
+      NEWS feature in the ngspice tarball.
+  * Patches: Many developer and user provided patches and bug
+    fixes have been applied.
+
+-------------------------------------------------------------------
 Sat Jun 25 13:20:17 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 37:
