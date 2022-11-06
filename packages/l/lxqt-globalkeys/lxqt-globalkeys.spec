@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-globalkeys
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Global keyboard shortcuts registration
 License:        LGPL-2.1-or-later
@@ -80,7 +80,6 @@ UI system libraries for lxqt-globalkeys
 
 %build
 %cmake -DPULL_TRANSLATIONS=No
-make %{?_smp_mflags}
 
 %install
 %cmake_install
@@ -99,7 +98,7 @@ make %{?_smp_mflags}
 %{_bindir}/lxqt-globalkeysd
 %{_bindir}/lxqt-config-globalkeyshortcuts
 %{_datadir}/applications/lxqt-config-globalkeyshortcuts.desktop
-%{_sysconfdir}/xdg/autostart/lxqt-globalkeyshortcuts.desktop
+%config %{_sysconfdir}/xdg/autostart/lxqt-globalkeyshortcuts.desktop
 %{_datadir}/lxqt/globalkeyshortcuts.conf
 
 %files devel
