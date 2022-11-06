@@ -17,7 +17,7 @@
 
 
 Name:           verilator
-Version:        4.222
+Version:        4.228
 Release:        0
 Summary:        Compiling Verilog HDL simulator
 License:        Artistic-2.0 OR LGPL-3.0-only

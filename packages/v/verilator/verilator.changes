@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Sat Oct 29 13:07:54 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.228:
+  * Support some IEEE signal strengths 
+  * Add --main to generate main() C++
+  * Add --build-jobs, and rework arguments for -j 
+  * Rename --bin to --build-dep-bin
+  * Rename debug flags --dumpi-tree, --dumpi-graph, etc. 
+  * Fix thread saftey in SystemC VL_ASSIGN_SBW/WSB 
+  * Fix crash in gate optimization of circular logic 
+  * Fix arguments in non-static method call 
+  * Fix default --mod-prefix when --prefix is repeated 
+  * Fix calling trace() after open() segfault 
+  * Fix typedef'ed class conversion to boolean 
+  * Fix Verilation speed when disabled warnings 
+  * Add --future0 and --future1 options
+  * Support class parameters 
+  * Support wildcard index associative arrays 
+  * Support negated properties 
+  * Support $test$plusargs(expr)
+  * Rename trace rolloverSize()
+  * Improve Verilation speed with --threads on large designs. 
+  * Improve Verilation memory by reducing V3Number 
+  * Fix struct pattern assignment 
+  * Fix public combo propagation issues 
+  * Fix incorrect tristate logic (#3399) 
+  * Fix incorrect bit op tree optimization 
+  * Fix bisonpre for MSYS2
+  * Fix max memory usage 
+  * Fix empty string arguments to display 
+  * Fix table misoptimizing away display 
+  * Fix unique_ptr memory header for MinGW64
+  * Fix $dump systemtask with --output-split-cfuncs 
+  * Fix wrong bit op tree optimization 
+  * Fix nested default assignment for struct pattern 
+  * Fix sformat string incorrectly cleared 
+  * Fix segfault exporting non-existant package
+  * Fix void-cast queue pop_front or pop_back 
+  * Fix case statement comparing string literal 
+  * Fix === with some tristate constants 
+  * Fix converting subclasses to string 
+  * Fix --hierarchical with order-based pin connections 
+  * VCD tracing is now parallelized with --threads 
+  * Add -f<optimization> options to replace -O<letter> options
+  * Changed --no-merge-const-pool to -fno-merge-const-pool
+  * Changed --no-decoration to remove output whitespace 
+  * Support compile time trace signal selection with tracing_on/off 
+  * Support non-ANSI interface port declarations 
+  * Support concat assignment to packed array
+  * Improve conditional merging optimization 
+  * Define VM_TRACE_VCD when tracing in VCD format. 
+  * Add assert when VerilatedContext is mis-deleted 
+  * Internal prep work towards timing control. 
+  * Fix hang with large case statement optimization 
+  * Fix UNOPTFLAT warning from initial static var 
+  * Fix compile error when enable VL_LEAK_CHECKS 
+  * Fix cmake rules to support higher-level targets 
+  * Fix BLKANDNBLK on $readmem/$writemem 
+  * Fix 'with' operator with type casting 
+  * Fix incorrect conditional merging 
+  * Fix passing VL_TRACE_FST_WRITER_THREAD in CMake build. 
+  * Fix compile error under strict C++11 mode 
+  * Fix public unpacked input ports [Todd Strader] 
+
+-------------------------------------------------------------------
 Tue Jun  7 22:22:15 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to 4.222. For a list of changes, see included Changes or
