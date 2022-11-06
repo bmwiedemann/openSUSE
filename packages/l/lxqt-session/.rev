@@ -1349,4 +1349,12 @@ comply with openSUSE policy
     under LXQt Session (in near future).</comment>
     <requestid>975829</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>3e6dcbddc3ec106ca185291a5d9d7870</srcmd5>
+    <version>1.2.0</version>
+    <time>1667734955</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1033803</requestid>
+  </revision>
 </revisionlist>

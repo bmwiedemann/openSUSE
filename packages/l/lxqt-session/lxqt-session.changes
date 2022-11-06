@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Nov  5 19:15:26 UTC 2022 - Shawn Dunn <sfalken@cloverleaf-linux.org>
+
+- Update to 1.2.0:
+  * Fixed the core code when lxqt-session is started under Wayland.
+  * Reload mouse & touchpad settings when devices are reconnected.
+
+-------------------------------------------------------------------
 Mon May  9 11:30:35 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.1.1:

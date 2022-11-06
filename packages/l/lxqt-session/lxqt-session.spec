@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-session
-Version:        1.1.1
+Version:        1.2.0
 Release:        0
 Summary:        LXQt Session Manager
 License:        LGPL-2.1-or-later
@@ -47,7 +47,7 @@ BuildRequires:  pkgconfig(lxqt) >= 1.1.0
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(x11-xcb)
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Requires:       qtxdg-tools
 Recommends:     %{name}-lang
 Obsoletes:      lxqt-common <= 0.12.0
@@ -70,7 +70,6 @@ use when a user logs out and to restart them the next time the user logs in.
 
 %build
 %cmake -DPULL_TRANSLATIONS=No
-%make_build
 
 %install
 %cmake_install
@@ -103,12 +102,13 @@ ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadi
 %{_bindir}/startlxqt
 %{_mandir}/man1/startlxqt.1%{?ext_man}
 %{_datadir}/xsessions/lxqt.desktop
-%config %{_datadir}/lxqt/lxqt.conf
-%config %{_datadir}/lxqt/session.conf
-%config %{_datadir}/lxqt/windowmanagers.conf
+%{_datadir}/lxqt/lxqt.conf
+%{_datadir}/lxqt/session.conf
+%{_datadir}/lxqt/windowmanagers.conf
 
 # for default-xsession
 %ghost %{_sysconfdir}/alternatives/default-xsession.desktop
+%ghost %{_sysconfdir}/alternatives/default.desktop
 %{_datadir}/xsessions/*.desktop
 
 %files lang -f %{name}.lang
