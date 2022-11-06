@@ -18,7 +18,7 @@
 
 %define _name libqtxdg
 Name:           libqt5xdg
-Version:        3.9.1
+Version:        3.10.0
 Release:        0
 Summary:        Qt implementation of xdg specs for lxqt
 License:        GPL-3.0-only
@@ -84,7 +84,7 @@ Development files for QtXDG icon loader libraries used in LXQt
 
 %build
 %cmake
-%make_build
+%cmake_build
 
 %install
 %cmake_install
@@ -99,8 +99,8 @@ Development files for QtXDG icon loader libraries used in LXQt
 %license COPYING
 %doc AUTHORS
 %{_libdir}/libQt5Xdg.so.*
-%{_sysconfdir}/xdg/lxqt-qtxdg.conf
-%{_sysconfdir}/xdg/qtxdg.conf
+%config %{_sysconfdir}/xdg/lxqt-qtxdg.conf
+%config %{_sysconfdir}/xdg/qtxdg.conf
 
 %files devel
 %{_datadir}/cmake/qt5xdg

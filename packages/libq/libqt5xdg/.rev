@@ -433,4 +433,12 @@
   * The installation of config files has been made optional.</comment>
     <requestid>975830</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>6785fa817846ce3993cc4ec3a6ce7fea</srcmd5>
+    <version>3.10.0</version>
+    <time>1667734971</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1033820</requestid>
+  </revision>
 </revisionlist>
