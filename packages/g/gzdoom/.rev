@@ -215,4 +215,12 @@ and that one is GPL3.</comment>
     <comment>- Update gzdoom-vulkan.patch for glslang-11.12.</comment>
     <requestid>1030979</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>d2724b50b0c2e682b3b34aa02a96e32f</srcmd5>
+    <version>4.9.0</version>
+    <time>1667739417</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 4.9.0</comment>
+    <requestid>1033845</requestid>
+  </revision>
 </revisionlist>

@@ -5,22 +5,19 @@ Subject: [PATCH] Revert "- use static_assert to make 32 bit builds fail."
 
 This reverts commit 8c244f6f850eeb5a5dede7f887f3f1ba87b3d8bc.
 ---
- src/common/engine/i_interface.cpp | 2 --
+ src/common/engine/i_interface.cpp |    2 --
  1 file changed, 2 deletions(-)
 
-diff --git a/src/common/engine/i_interface.cpp b/src/common/engine/i_interface.cpp
-index 13d35a3a9..217f9212f 100644
---- a/src/common/engine/i_interface.cpp
-+++ b/src/common/engine/i_interface.cpp
-@@ -1,8 +1,6 @@
- #include "i_interface.h"
- #include "st_start.h"
+Index: gzdoom-g4.9.0/src/common/engine/i_interface.cpp
+===================================================================
+--- gzdoom-g4.9.0.orig/src/common/engine/i_interface.cpp
++++ gzdoom-g4.9.0/src/common/engine/i_interface.cpp
+@@ -5,8 +5,6 @@
+ #include "c_cvars.h"
+ #include "gstrings.h"
  
 -static_assert(sizeof(void*) == 8, "32 builds are not supported");
 -
  // Some global engine variables taken out of the backend code.
  FStartupScreen* StartWindow;
  SystemCallbacks sysCallbacks;
--- 
-2.36.1
-

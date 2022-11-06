@@ -17,7 +17,7 @@
 
 
 Name:           gzdoom
-Version:        4.8.2
+Version:        4.9.0
 Release:        0
 Summary:        A DOOM source port with graphic and modding extensions
 License:        GPL-3.0-only
@@ -28,10 +28,10 @@ URL:            https://zdoom.org/
 Source:         https://github.com/coelckers/gzdoom/archive/g%version.tar.gz
 Patch1:         gzdoom-waddir.patch
 Patch2:         gzdoom-lzma.patch
-Patch4:         gzdoom-sdlbug.patch
+Patch3:         0001-build-unbreak-compilation-on-Linux.patch
 Patch5:         gzdoom-vulkan.patch
 Patch6:         gzdoom-discord.patch
-Patch8:         0001-fix-gzdoom.pk3-not-found-error.patch
+Patch8:         0001-removed-some-32bit-only-CMake-code.patch
 Patch9:         0001-Revert-use-static_assert-to-make-32-bit-builds-fail.patch
 BuildRequires:  cmake >= 2.8.7
 BuildRequires:  discord-rpc-devel

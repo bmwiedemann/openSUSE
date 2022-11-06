@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Nov  5 19:55:42 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.9.0
+  * IQM bone model support
+  * Textured particles
+  * The SoftPoly renderer was removed
+- Delete gzdoom-sdlbug.patch (obsolete),
+  0001-fix-gzdoom.pk3-not-found-error.patch (merged)
+- Add 0001-build-unbreak-compilation-on-Linux.patch,
+  0001-removed-some-32bit-only-CMake-code.patch
+
+-------------------------------------------------------------------
 Mon Oct 24 23:24:06 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update gzdoom-vulkan.patch for glslang-11.12.
