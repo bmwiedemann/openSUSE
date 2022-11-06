@@ -17,7 +17,7 @@
 
 
 Name:           qtxdg-tools
-Version:        3.9.1
+Version:        3.10.0
 Release:        0
 Summary:        User tools for libqtxg
 License:        LGPL-2.1-or-later
@@ -45,7 +45,6 @@ It is maintained by the LXQt project and needed by LXQt Session, in order to be 
 
 %build
 %cmake
-%make_build
 
 %install
 %cmake_install
