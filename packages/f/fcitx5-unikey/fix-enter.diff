@@ -1,0 +1,16 @@
+diff --git a/src/unikey-im.cpp b/src/unikey-im.cpp
+index 232d686..5e05551 100644
+--- a/src/unikey-im.cpp
++++ b/src/unikey-im.cpp
+@@ -365,6 +365,11 @@ void UnikeyState::preedit(KeyEvent &keyEvent) {
+         (sym >= FcitxKey_Home && sym <= FcitxKey_Insert) ||
+         (sym >= FcitxKey_KP_Home && sym <= FcitxKey_KP_Delete)) {
+         handleIgnoredKey();
++
++        // workaround #23
++        keyEvent.filterAndAccept();
++        ic_->forwardKey(keyEvent.origKey(), keyEvent.isRelease(), keyEvent.time());
++
+         return;
+     } else if (state.test(KeyState::Super)) {
+         return;

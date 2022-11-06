@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Nov  5 01:02:57 UTC 2022 - Tranter Madi <trmdi@yandex.com>
+
+- Backport fix for github issues #23 and #24, add fix-enter.diff and
+  fix-uou.diff
+
+-------------------------------------------------------------------
+Tue Jul  5 11:29:24 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 5.0.11
+- Rename unikey.so to libunikey.so
+- Add new file libfcitx5-unikey-keymap-editor.so
+
+-------------------------------------------------------------------
 Wed Mar 16 11:48:19 UTC 2022 - Marguerite Su <i@marguerite.su>
 
 - update version 5.0.9

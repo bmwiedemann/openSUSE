@@ -17,12 +17,16 @@
 
 
 Name:           fcitx5-unikey
-Version:        5.0.9
+Version:        5.0.11
 Release:        0
 Summary:        Unikey engine support for Fcitx5
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 URL:            https://github.com/fcitx/fcitx5-unikey
 Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.xz
+# Backport https://github.com/fcitx/fcitx5-unikey/issues/24
+Patch1:         fix-uou.diff
+# Backport https://github.com/fcitx/fcitx5-unikey/issues/23
+Patch2:         fix-enter.diff
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fcitx5-devel
@@ -43,6 +47,8 @@ Chewing Wrapper for Fcitx5.
 
 %prep
 %setup -q
+%patch1 -p1
+%patch2 -p1
 
 %build
 %cmake
@@ -56,7 +62,8 @@ Chewing Wrapper for Fcitx5.
 %license LICENSES
 %doc README
 %dir %{_fcitx5_libdir}/qt5
-%{_fcitx5_libdir}/unikey.so
+%{_fcitx5_libdir}/libunikey.so
+%{_fcitx5_libdir}/qt5/libfcitx5-unikey-keymap-editor.so
 %{_fcitx5_addondir}/unikey.conf
 %{_fcitx5_imconfdir}/unikey.conf
 %{_datadir}/icons/hicolor/*/apps/fcitx-unikey*
