@@ -7,4 +7,30 @@
     <comment>New package (with libtool archives removed)</comment>
     <requestid>1004762</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b3729c2156fa973974f1554da6710415</srcmd5>
+    <version>0.14.4</version>
+    <time>1667734933</time>
+    <user>dimstar_suse</user>
+    <comment>update: 0.14.3 -&gt; 0.14.4
+- Features
+ * packages: Add boolean noleadingzeros option to counter formatter
+ * packages: Add new command \set-multilevel-counter
+- Bug Fixes
+ * classes: Always break out of hmode before processing \chapter headings
+ * core: A typo in a variable prevents using -u with a class
+ * languages: Make 'und' an exception to language name canonicalization 
+ * math: Fix insertion order of MathML children
+ * packages: Account for depth when calculating rotation center
+ * packages: Avoid forcing mirrored masters in twoside package
+ * packages: Combine \unichar'ed chars with same font only
+ * packages: Correct rotation origin calculation back to pre v0.10.0
+ * packages: Don't inhibit page breaking after switching masters mid-page
+ * packages: Make sure PDF initialized before rotate package directly calls it
+ * packages: Rework simple and multilevel counters
+ * packages: Textcase package name typo preventing using methods from code
+- Reverts
+ * Revert &quot;docs(packages): Fixup unichar documentation, work around known bug (#1549)&quot; (forwarded request 1033699 from Pi-Cla)</comment>
+    <requestid>1033700</requestid>
+  </revision>
 </revisionlist>

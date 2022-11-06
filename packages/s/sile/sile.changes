@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Nov  5 16:18:00 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
+
+update: 0.14.3 -> 0.14.4
+- Features
+ * packages: Add boolean noleadingzeros option to counter formatter
+ * packages: Add new command \set-multilevel-counter
+
+- Bug Fixes
+ * classes: Always break out of hmode before processing \chapter headings
+ * core: A typo in a variable prevents using -u with a class
+ * languages: Make 'und' an exception to language name canonicalization 
+ * math: Fix insertion order of MathML children
+ * packages: Account for depth when calculating rotation center
+ * packages: Avoid forcing mirrored masters in twoside package
+ * packages: Combine \unichar'ed chars with same font only
+ * packages: Correct rotation origin calculation back to pre v0.10.0
+ * packages: Don't inhibit page breaking after switching masters mid-page
+ * packages: Make sure PDF initialized before rotate package directly calls it
+ * packages: Rework simple and multilevel counters
+ * packages: Textcase package name typo preventing using methods from code
+
+- Reverts
+ * Revert "docs(packages): Fixup unichar documentation, work around known bug (#1549)"
+
+-------------------------------------------------------------------
 Fri Sep  2 14:16:40 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
 
 update: 0.14.2 -> 0.14.3

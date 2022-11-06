@@ -18,7 +18,7 @@
 
 %bcond_without  tests
 Name:           sile
-Version:        0.14.3
+Version:        0.14.4
 Release:        0
 Summary:        Simon’s Improved Layout Engine
 Group:          Productivity/Publishing
@@ -30,8 +30,8 @@ Source2:        LICENSE
 
 # Lua modules
 Requires:       lua54
-BuildRequires:  lua54-devel
 BuildRequires:  lua54-bit32
+BuildRequires:  lua54-devel
 Requires:       lua54-bit32
 BuildRequires:  lua54-cassowary
 Requires:       lua54-cassowary
