@@ -24,7 +24,7 @@
 %bcond_with libalternatives
 %endif
 Name:           python-qtconsole
-Version:        5.3.2
+Version:        5.4.0
 Release:        0
 Summary:        Jupyter Qt console
 License:        BSD-3-Clause
@@ -55,11 +55,11 @@ Conflicts:      python-traitlets = 5.2.1
 Conflicts:      python-traitlets = 5.2.2
 Provides:       python-jupyter_qtconsole = %{version}
 Obsoletes:      python-jupyter_qtconsole < %{version}
+BuildArch:      noarch
 %if "%{python_flavor}" == "%{primary_python}"
 Provides:       jupyter-qtconsole = %{version}-%{release}
 Obsoletes:      jupyter-qtconsole < %{version}-%{release}
 %endif
-BuildArch:      noarch
 %if %{with libalternatives}
 BuildRequires:  alts
 Requires:       alts

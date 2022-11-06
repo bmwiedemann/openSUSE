@@ -221,4 +221,12 @@ This needs to go into openSUSE:Factory:Staging:adi:49 with the other jupyter sub
   for every flavor</comment>
     <requestid>999724</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>124e7613398c4b2dfd6c86d8d1844644</srcmd5>
+    <version>5.4.0</version>
+    <time>1667734986</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1033841</requestid>
+  </revision>
 </revisionlist>
