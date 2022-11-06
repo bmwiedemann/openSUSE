@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-about
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        LXQt About Dialog
 # FIXME: use correct group or remove it, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"
