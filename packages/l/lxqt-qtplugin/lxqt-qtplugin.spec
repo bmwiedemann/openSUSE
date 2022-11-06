@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-qtplugin
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        LXQt platform integration plugin for Qt 5
 License:        LGPL-2.1-or-later
