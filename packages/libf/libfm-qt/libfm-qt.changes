@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Nov  5 16:46:43 UTC 2022 - Shawn Dunn <sfalken@cloverleaf-linux.org>
+
+- Update to 1.2.0:
+  * Support adding of pattern lists to entries of search dialog
+    (such lists are used by `pcmanfm-qt` for having a search history).
+  * Fixed crash with empty URI scheme of folder path.
+  * Silenced compilation warnings about deprecated GLib functions.
+  * Don't show a deletion prompt without a selection.
+  * Fixed infinite loop if a symlink that is created by DND
+    overwrites a non-empty directory.
+  * Allow remembering the result of execution prompt for multiple files.
+  * Added `Ctrl+D` to LXQt file dialog for deselecting all items.
+  * Allow selection by dragging mouse cursor inside non-name
+    columns in the detailed list mode.
+  * Corrected the position of drop menu under Wayland.
+  * Fixed crash with DND into side-pane under Wayland.
+  * Added nullity checks to `XdndWorkaround`.
+
+-------------------------------------------------------------------
 Wed Apr 27 19:26:08 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.1.0:

@@ -17,10 +17,10 @@
 
 
 Name:           libfm-qt
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Library providing components to build desktop file managers
-License:        LGPL-2.1-or-later AND BSD-3-Clause
+License:        BSD-3-Clause AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://lxqt.org
 Source:         https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
@@ -51,7 +51,7 @@ build desktop file managers.
 
 %{lang_package -r libfm-qt11}
 
-%package -n libfm-qt11
+%package -n libfm-qt12
 Summary:        Library providing components to build desktop file managers
 # Require data files read by the library. For parallel installed library versions, the newest one wins
 Group:          System/Libraries
@@ -60,7 +60,7 @@ Recommends:     %{name}-lang
 Conflicts:      pcmanfm <= 0.10.0
 Provides:       libfm-qt
 
-%description -n libfm-qt11
+%description -n libfm-qt12
 libfm-qt is the Qt port of libfm, a library providing components to
 build desktop file managers.
 
@@ -78,7 +78,7 @@ Provides data to be read by libfm-qt
 %package -n libfm-qt-devel
 Summary:        Development files for libfm-qt
 Group:          Development/Libraries/C and C++
-Requires:       libfm-qt11 >= %{version}
+Requires:       libfm-qt12 >= %{version}
 Requires:       pkgconfig
 # libfm-qt has an -I on a path from menu-cache-devel
 Requires:       pkgconfig(libmenu-cache) >= 0.4.0
@@ -98,10 +98,10 @@ Libfm-Qt libraries for development
 
 %find_lang %{name} --with-qt
 
-%post -n libfm-qt11 -p /sbin/ldconfig
-%postun -n libfm-qt11 -p /sbin/ldconfig
+%post -n libfm-qt12 -p /sbin/ldconfig
+%postun -n libfm-qt12 -p /sbin/ldconfig
 
-%files -n libfm-qt11
+%files -n libfm-qt12
 %license LICENSE LICENSE.BSD-3-Clause
 %doc README.md
 %{_libdir}/libfm-qt.so.*
