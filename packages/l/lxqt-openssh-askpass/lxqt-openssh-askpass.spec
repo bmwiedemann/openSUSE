@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-openssh-askpass
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        OpenSSH password tool
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -45,7 +45,6 @@ Tool that will prompt user for password when using OpenSSH in LXQt
 
 %build
 %cmake -DPULL_TRANSLATIONS=No
-%make_build
 
 %install
 %cmake_install
