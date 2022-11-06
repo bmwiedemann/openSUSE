@@ -179,7 +179,8 @@ libraries, routers, bridges and proxies. Proton is based on the AMQP
     -DNOBUILD_PHP=1 \
     -DSYSINSTALL_PERL=1 \
     -DSYSINSTALL_PYTHON=1 \
-    -DCHECK_SYSINSTALL_PYTHON=0
+    -DCHECK_SYSINSTALL_PYTHON=0 \
+    "-DCMAKE_C_FLAGS=$CFLAGS -Wno-deprecated-declarations"
 
 make %{?_smp_mflags} all docs
 # build from the created sdist for all enabled python flavors

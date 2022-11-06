@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov  4 14:15:58 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- Add -Wno-deprecated-declarations to allow building with openssl-3
+
+-------------------------------------------------------------------
 Tue Apr 26 13:55:52 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Move libqpid-proton-core to a different package to fix a rpmlint
