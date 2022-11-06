@@ -36,16 +36,21 @@ BuildRequires:  cmake
 BuildRequires:  clang-devel
 BuildRequires:  llvm-devel
 %else
- %if 0%{?sle_version} >= 150400
+ %if 0%{?sle_version} >= 150500
+BuildRequires:  clang15-devel
+BuildRequires:  llvm15-devel
+ %else
+  %if 0%{?sle_version} >= 150400
 BuildRequires:  clang13-devel
 BuildRequires:  llvm13-devel
- %else
-  %if 0%{?sle_version} >= 150300
+  %else
+   %if 0%{?sle_version} >= 150300
 BuildRequires:  clang11-devel
 BuildRequires:  llvm11-devel
-  %else
+   %else
 BuildRequires:  clang9-devel
 BuildRequires:  llvm9-devel
+   %endif
   %endif
  %endif
 %endif

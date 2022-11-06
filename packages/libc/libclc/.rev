@@ -179,4 +179,12 @@
     <comment></comment>
     <requestid>1011275</requestid>
   </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>63e333180113faf47c05f1b91f18df02</srcmd5>
+    <version>0.2.0+llvm15.0.0</version>
+    <time>1667734896</time>
+    <user>dimstar_suse</user>
+    <comment>- build with llvm15/clang15 on sle15-sp5/Leap 15.5</comment>
+    <requestid>1033682</requestid>
+  </revision>
 </revisionlist>
