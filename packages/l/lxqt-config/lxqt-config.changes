@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Nov  5 20:54:52 UTC 2022 - Shawn Dunn <sfalken@cloverleaf-linux.org>
+
+- Update to 1.2.0:
+  * Enhancements to theme list in appearance config dialog. Themes
+    are always sorted alphabetically, user themes are distinguished,
+    and theme folders can be opened by double clicking or by
+    using context menus.
+
+-------------------------------------------------------------------
 Mon Aug  8 04:06:58 UTC 2022 - Shawn Dunn <sfalken@cloverleaf-linux.org>
 
 - create /etc/ld.so.conf.d/lxqt-config.conf to fix private library issue [boo#1201772,boo#1196707] 

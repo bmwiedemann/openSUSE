@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-config
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        LXQt Control Center
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -71,8 +71,6 @@ System Configuration and Control Center for LXQt
 -DCMAKE_SKIP_RPATH:BOOL=Off \
 -DCMAKE_INSTALL_LIBDIR:PATH=%{_lib} \
 -DPULL_TRANSLATIONS=No
-
-%make_build
 
 %install
 %cmake_install
