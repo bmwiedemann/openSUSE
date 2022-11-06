@@ -17,7 +17,7 @@
 
 
 Name:           lximage-qt
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        LXQt Image Viewer
 License:        GPL-2.0-or-later
@@ -58,7 +58,6 @@ Image Viewer for LXQt and Thumbnail Generator for PCManFM-Qt
 %cmake \
     -DUSE_QT5=ON \
     -DPULL_TRANSLATIONS=OFF
-%make_build
 
 %install
 %cmake_install
