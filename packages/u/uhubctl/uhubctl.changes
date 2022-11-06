@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Nov  4 19:17:59 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5.0
+  * Added support for Linux sysfs based power switching provided
+    in Linux kernel 6.0+ - it allows to solve reliability issues
+    when turning power off on Linux.
+  * Added option --nodesc to skip querying device string
+    descriptors (necessary for some buggy devices which otherwise
+    would completely freeze).
+  * New simpler way to configure udev rules on Linux (one rule
+    works for any USB hub).
+  * Even more supported devices.
+
+-------------------------------------------------------------------
 Sun Feb 14 08:47:13 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.4.0

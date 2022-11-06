@@ -1,7 +1,7 @@
 #
 # spec file for package uhubctl
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           uhubctl
-Version:        2.4.0
+Version:        2.5.0
 Release:        0
 Summary:        USB hub per-port power control
 License:        GPL-2.0-only
