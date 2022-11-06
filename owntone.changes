@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Nov  6 09:33:57 UTC 2022 - Adrian Schröter <adrian@suse.de>
+
+- update to version 28.5
+  * French translation of web UI
+  * improved web UI loading of images
+  * add support for Airplay 2 password based auth
+  * fix some Airplay speakers turning on by themselves
+  * fix parsing of CRLF and NOT in smart playlists and allow larger sizes
+  * fix possible crash after Avahi restart
+  * fix for Remote - play item from 'up next' when stopped
+  * use configured bind_address to set mdns network interface
+  * fix broken Spotify after libspotify sunset
+  * remove antlr3 dependency, use bison/flex instead
+  * improve search by supporting diacritics and Unicode case folding
+  * add support for new output: Roku/Soundbridge RCP
+  * switch to MkDocs for documentation
+  * smart playlists fixups and new "this week" param
+  * fix 'add next' when in queue shuffle mode
+  * web UI improvements:
+  * migration to Vue 3 and Vite
+  * honor "radio_playlists" config setting
+  * display of search results for composers and playlists
+  * add album / track count to genre and composer pages
+  * fix incorrect sorting of album/artist searches
+  * minor UI fixes
+  * fix for Spotify config option album_override
+  * improved Spotify scan performance
+  * generic browse endpoints for the json api
+  * fix slow shutdown with some libwebsocket versions
+
+-------------------------------------------------------------------
 Mon Feb 14 17:53:40 UTC 2022 - Adrian Schröter <adrian@suse.de>
 
 - update to version 28.3
