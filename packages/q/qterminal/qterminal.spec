@@ -17,7 +17,7 @@
 
 
 Name:           qterminal
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        A Qt-based terminal emulator
 License:        GPL-2.0-only
@@ -35,6 +35,7 @@ BuildRequires:  qtermwidget-qt5-devel >= %{version}
 BuildRequires:  utf8proc-devel
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(Qt5LinguistTools)
+BuildRequires:  cmake(Qt5Test)
 BuildRequires:  pkgconfig(Qt5Core) >= 5.15.0
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Gui)
@@ -56,7 +57,6 @@ The lightweight Qt terminal emulator.
     -DUSE_QT5=ON \
     -DUSE_SYSTEM_QXT=OFF \
 	-DPULL_TRANSLATIONS=No
-%make_build
 
 %install
 %cmake_install
