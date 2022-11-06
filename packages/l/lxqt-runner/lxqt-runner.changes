@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Nov  5 19:01:29 UTC 2022 - Shawn Dunn <sfalken@cloverleaf-linux.org>
+
+- Update to 1.2.0:
+  * Force the correct position on the window after it is moved
+    from outside the app.
+  * Added an option for clearing the entry on launching apps.
+
+-------------------------------------------------------------------
 Fri Apr 29 06:21:35 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.1.0:

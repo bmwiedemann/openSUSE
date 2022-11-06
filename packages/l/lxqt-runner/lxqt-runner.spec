@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-runner
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        LXQt application launcher
 License:        LGPL-2.1-or-later
@@ -49,7 +49,6 @@ Tool to launch programs quickly, by typing their names
 
 %build
 %cmake -DPULL_TRANSLATIONS=No
-make %{?_smp_mflags}
 
 %install
 %cmake_install
@@ -62,7 +61,7 @@ install -Dm 0644 man/%{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
 %doc AUTHORS
 %{_bindir}/lxqt-runner
 %{_mandir}/man?/%{name}.?%{ext_man}
-%{_sysconfdir}/xdg/autostart/lxqt-runner.desktop
+%config %{_sysconfdir}/xdg/autostart/lxqt-runner.desktop
 
 %files lang -f %{name}.lang
 %dir %{_datadir}/lxqt
