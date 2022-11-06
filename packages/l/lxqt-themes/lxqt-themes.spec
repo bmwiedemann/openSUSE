@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-themes
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Themes, graphics and icons for LXQt
 # FIXME: use correct group or remove it, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"
@@ -42,7 +42,6 @@ Themes, graphics and icons for LXQt.
 
 %build
 %cmake
-%make_build
 
 %install
 %cmake_install
