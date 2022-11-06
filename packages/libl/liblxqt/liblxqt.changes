@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Nov  5 16:51:02 UTC 2022 - Shawn Dunn <sfalken@cloverleaf-linux.org>
+
+- Update to 1.2.0:
+  * Updated translations and bumped version to 1.2.0
+
+-------------------------------------------------------------------
 Wed Aug  3 13:32:34 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Require /usr/bin/pkexec instead of pkexec to not depend on
