@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Nov  4 15:33:42 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.2.36:
+  * Retired the XMLSec mailing list "xmlsec@aleksey.com" and the
+    XMLSec Online Signature Verifier.
+
+- Update to 1.2.35:
+  * Migration to OpenSSL 3.0 API (based on PR by @snargit). Note
+    that OpenSSL engines are disabled by default when XMLSec
+    library is compiled against OpenSSL 3.0. To re-enable OpenSSL
+    engines, use "--enable-openssl3-engines" configure flag (there
+    will be a lot of deprecation warnings).
+  * The OpenSSL before 1.1.0 and LibreSSL before 2.7.0 are now
+    deprecated and will be removed in the future versions of
+    XMLSec Library.
+  * Refactored all the integer casts to ensure cast-safety. Fixed
+    all warnings and enabled "-Werror" and "-pedantic" flags on
+    CI builds.
+  * Added configure flag to use size_t for xmlSecSize (currently
+    disabled by default for backward compatibility).
+  * Moved all CI builds to GitHub actions.
+
+-------------------------------------------------------------------
 Thu Sep  8 07:25:33 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add export CFLAGS/CXXFLAGS="-Wno-error=deprecated-declarations"
