@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Nov  5 18:21:33 UTC 2022 - Shawn Dunn <sfalken@cloverleaf-linux.org>
+
+- Update to 2.5.0:
+  * Fixed the screenshot of window and its decoration with multi-screen setups.
+  * Removed shared libraries.
+  * Removed fix-no-undefined-builderror.patch
+
+-------------------------------------------------------------------
 Sun Aug 28 18:27:32 UTC 2022 - Shawn Dunn <sfalken@cloverleaf-linux.org>
 
 - Add patch to correct failing build.  [gh#lxqt/screengrab#310]
