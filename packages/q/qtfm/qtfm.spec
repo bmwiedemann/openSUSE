@@ -37,11 +37,19 @@ BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Widgets)
+%if 0%{suse_version} >= 1550
+BuildRequires:  ffmpeg-4-libavcodec-devel
+BuildRequires:  ffmpeg-4-libavdevice-devel
+BuildRequires:  ffmpeg-4-libavformat-devel
+BuildRequires:  ffmpeg-4-libavutil-devel
+BuildRequires:  ffmpeg-4-libswscale-devel
+%else
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavdevice)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libswscale)
+%endif
 Recommends:     adwaita-icon-theme
 Recommends:     udisks2
 

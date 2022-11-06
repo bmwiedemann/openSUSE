@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov  5 10:21:27 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Explicitly use FFMpeg 4 to build qtfm. It doesn't support FFmpeg 5 yet.
+
+-------------------------------------------------------------------
 Tue Jun  8 06:28:58 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 6.2.1:
