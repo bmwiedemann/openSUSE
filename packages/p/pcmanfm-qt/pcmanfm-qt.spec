@@ -17,7 +17,7 @@
 
 
 Name:           pcmanfm-qt
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        File manager and desktop icon manager
 License:        GPL-2.0-or-later
@@ -28,8 +28,6 @@ Source1:        https://github.com/lxqt/%{name}/releases/download/%{version}/%{n
 Source2:        %{name}.keyring
 #bsc#1100208 - mvetter@suse.de - set default openSUSE wallpaper
 Patch0:         pcmanfm-qt-default-wallpaper.patch
-#gh#lxqt/pcmanfm-qt#1522 - sfalken@cloverleaf-linux.org - fix default terminal for lxqt desktop
-Patch1:         pcmanfm-qt-default-terminal.patch
 BuildRequires:  cmake >= 3.1.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -58,11 +56,9 @@ PCManFM-Qt is the Qt port of the LXDE file manager PCManFM
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p0
 
 %build
 %cmake -DPULL_TRANSLATIONS=No
-make %{?_smp_mflags}
 
 %install
 %cmake_install
