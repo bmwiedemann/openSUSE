@@ -27,7 +27,7 @@ Konsole code was rewritten entirely with using Qt only, and all \
 code dealing with user interface parts and session management was \
 removed.
 Name:           qtermwidget-qt5
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        %{pack_summ}
 License:        GPL-2.0-or-later
@@ -78,8 +78,6 @@ Development environment for qtermwidget library.
 
 %build
 %cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DPULL_TRANSLATIONS=no -DUSE_UTF8PROC=yes
-
-make V=1 %{?_smp_mflags}
 
 %install
 %cmake_install

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Nov  5 18:43:44 UTC 2022 - Shawn Dunn <sfalken@cloverleaf-linux.org>
+
+- Update to 1.2.0:
+  * Enabled Bidi rendering by default.
+  * Made text DND follow the settings for newline trimming and
+    multiline prompt.
+  * Allow `QTermWidget` to be used as a Qt Plugin.
+
+-------------------------------------------------------------------
 Tue Apr 26 16:17:25 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.1.0:
