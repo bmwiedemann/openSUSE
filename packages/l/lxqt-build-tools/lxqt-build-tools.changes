@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Nov  5 16:28:08 UTC 2022 - Shawn Dunn <sfalken@cloverleaf-linux.org>
+
+- Update to 0.12.0
+  * Support absolute `CMAKE_INSTALL_{INCLUDE,LIB}DIR` in
+    `LXQtCreatePkgConfigFile'
+  * Use `gdesktopappinfo.h` to find gio-unix-2.0 in
+    `FindGLIB.cmake`
+  * Drop use of `-Bsymbolic` in `LXQtCompilerSettings`
+- Remove lxqt-build-tools-symbolic.patch
+- Remove 4991811-fix-FindGLIB.cmake.patch
+
+-------------------------------------------------------------------
 Thu Sep 29 09:18:23 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add patch to fix libqt5xdg with latest glib-2.0:

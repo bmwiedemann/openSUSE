@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-build-tools
-Version:        0.11.0
+Version:        0.12.0
 Release:        0
 Summary:        Core build tools for LXQt
 License:        BSD-3-Clause
@@ -25,10 +25,6 @@ Group:          Development/Libraries/C and C++
 URL:            http://www.lxqt.org
 Source:         https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
-# PATCH-FIX-UPSTREAM lxqt-build-tools-symbolic.patch [bsc#1195421]
-Patch0:         lxqt-build-tools-symbolic.patch
-# PATCH-FIX-UPSTREAM 4991811-fix-FindGLIB.cmake.patch
-Patch1:         4991811-fix-FindGLIB.cmake.patch
 BuildRequires:  cmake >= 3.1.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(Qt5Core) >= 5.15
@@ -51,8 +47,6 @@ These tools used to be spread over the repositories of various other components 
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
 
 %build
 %cmake -DPULL_TRANSLATIONS=No
