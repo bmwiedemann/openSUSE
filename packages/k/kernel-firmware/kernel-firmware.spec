@@ -23,10 +23,10 @@
 %endif
 
 %define __ksyms_path ^%{_firmwaredir}
-%define version_unconverted 20221017
+%define version_unconverted 20221031
 
 Name:           kernel-firmware
-Version:        20221017
+Version:        20221031
 Release:        0
 Summary:        Linux kernel firmware files
 License:        GPL-2.0-only AND SUSE-Firmware AND GPL-2.0-or-later AND MIT
@@ -43,7 +43,6 @@ Source2:        ast_dp501_fw.bin
 Source8:        ql2600_fw.bin
 Source9:        ql2700_fw.bin
 Source10:       ql8300_fw.bin
-Source11:       cirrus-cs35l41-firmware.tar.xz
 Source99:       %{name}-rpmlintrc
 # temporary revert (bsc#1202152): taken from upstream commit 06acb465d80b
 Source100:      rtw8822c_fw.bin
@@ -65,8 +64,6 @@ Source1014:     README.build
 # workarounds
 Source1100:     qcom-post
 Source1101:     uncompressed-post
-# temporary fix
-Patch1:         cirrus-WHENCE-update.patch
 BuildRequires:  fdupes
 BuildRequires:  suse-module-tools
 Requires(post): /usr/bin/mkdir /usr/bin/touch
@@ -6265,8 +6262,7 @@ This package contains compressed kernel firmware files for
 various USB WiFi / Ethernet drivers.
 
 %prep
-%setup -q -a 11
-%patch1 -p1
+%setup -q
 # additional firmwares
 cat %{SOURCE1} >> WHENCE
 cp %{SOURCE2} %{SOURCE8} %{SOURCE9} %{SOURCE10} .

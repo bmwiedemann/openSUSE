@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Nov 04 11:24:49 UTC 2022 - tiwai@suse.com
+
+- Update to version 20221031 (git commit 8bb75626e9dd):
+  * linux-firmware: Add firmware for Cirrus CS35L41 on new ASUS Laptop
+  * iwlwifi: add new PNVM binaries from core74-44 release
+  * iwlwifi: add new FWs from core69-81 release
+  * qcom: update venus firmware files for VPU-2.0
+  * qcom: remove split SC7280 venus firmware images
+  * qcom: update venus firmware file for v5.4
+  * qcom: replace split SC7180 venus firmware images with symlink
+  * rtw89: 8852b: update fw to v0.27.32.1
+  * rtlwifi: update firmware for rtl8192eu to v35.7
+  * rtlwifi: Add firmware v4.0 for RTL8188FU
+  * i915: Add HuC 7.10.3 for DG2
+  * linux-firmware: Add firmware for Cirrus CS35L41 on ASUS Laptops
+  * linux-firmware: Add firmware for Cirrus CS35L41 on Lenovo Laptops
+  * linux-firmware: Add firmware for Cirrus CS35L41 on HP Laptops
+- Drop the CS35L41 firmware tarball that has been merged
+- Drop obsoleted cirrus-WHENCE-update.patch
+
+-------------------------------------------------------------------
 Sat Oct 22 08:08:47 UTC 2022 - tiwai@suse.com
 
 - Update to version 20221017 (git commit 48407ffd7adb):
@@ -49,7 +70,7 @@ Mon Oct 03 06:55:34 UTC 2022 - tiwai@suse.com
   * linux-firmware: update firmware for mediatek bluetooth chip (MT7921)
   * linux-firmware: update firmware for MT7922 WiFi device
   * linux-firmware: update firmware for MT7921 WiFi device
-  * cxgb4: Update firmware to revision 1.27.0.0
+  * cxgb4: Update firmware to revision 1.27.0.0 (jsc#PED-1501)
   * i915: Add versionless HuC files for current platforms
   * i915: Add GuC v70.5.1 for DG1, DG2, TGL and ADL-P
   * qca: Update firmware files for BT chip WCN3991.
