@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-sudo
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        GUI frontend for sudo
 License:        LGPL-2.1-only
@@ -51,7 +51,6 @@ and (after submit) the password is provided to sudo.
 
 %build
 %cmake -DPULL_TRANSLATIONS=No
-%make_build
 
 %install
 %cmake_install
