@@ -28,14 +28,14 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  rofi >= 1.5
+BuildRequires:  rofi-wayland-devel >= 1.5
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.40
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(rofi) >= 1.5
 Requires:       qalculate >= 2.0
-Requires:       rofi >= 1.5
+Requires:       rofi-launcher >= 1.5
 
 %description
 A rofi plugin that uses libqalculate's qalc to parse natural language

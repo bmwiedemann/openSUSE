@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov  1 08:58:01 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Modify the package dependencies, so that it can work both
+  with the original rofi (X11-based) as well with rofi-wayland
+  (Wayland-based).
+
+-------------------------------------------------------------------
 Fri Feb 11 07:46:31 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.1.0:

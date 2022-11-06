@@ -127,4 +127,12 @@
   * Correctly handle multiple equals signs emitted by qalc #80</comment>
     <requestid>953375</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>d754f8083f16241a6fa9e60048ff6c24</srcmd5>
+    <version>2.1.0</version>
+    <time>1667734926</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1033523</requestid>
+  </revision>
 </revisionlist>
