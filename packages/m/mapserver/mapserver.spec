@@ -18,14 +18,16 @@
 #
 
 
-%bcond_with php
 %bcond_without python
 %bcond_with ruby
 %define libname libmapserver2
 %define _cgibindir /srv/www/cgi-bin
 %if 0%{?suse_version} >= 1550
+# needs swig-4.1 for build
+%bcond_without php
 %define php_name    php8
 %else
+%bcond_with php
 %define php_name    php7
 %endif
 
@@ -38,8 +40,6 @@ Group:          Productivity/Networking/Web/Servers
 URL:            https://www.mapserver.org/
 Source:         https://download.osgeo.org/mapserver/%{name}-%{version}.tar.gz
 Source9:        %{name}-rpmlintrc
-# Known issues:
-# - swig 4.0 can't do php8, gotta wait for 4.1 so no php
 BuildRequires:  FastCGI-devel
 BuildRequires:  apache2-devel
 BuildRequires:  autoconf
@@ -73,11 +73,16 @@ BuildRequires:  postgresql-devel >= 9.1
 BuildRequires:  postgresql-server-devel >= 9.1
 %endif
 BuildRequires:  libprotobuf-c-devel
+BuildRequires:  php8-devel
 BuildRequires:  proj
 BuildRequires:  protobuf-c
 BuildRequires:  readline-devel
 BuildRequires:  rpm
+%if 0%{with php}
+BuildRequires:  swig >= 4.1
+%else
 BuildRequires:  swig
+%endif
 BuildRequires:  update-alternatives
 BuildRequires:  xorg-x11-libXpm-devel
 BuildRequires:  zlib-devel
@@ -100,13 +105,15 @@ Mapserver library for mapserver or mapscript module. you need this lib to run ma
 or any of the mapscript module (php, java, python, ruby)
 
 
+
+
 # We don't require apache2_mod-php8 users could have php5 running
 # with other modes (cgi, php-fpm, etc)
-%package -n php-mapscript
-Summary:        PHP/Mapscript map making extensions to PHP
+
+%package -n php-mapscriptng
+Summary:        PHP/MapscriptNG map making extensions to PHP
 Group:          Development/Libraries/Other
 Requires:       %{libname} = %{version}-%{release}
-Requires:       apache2
 Provides:       php-mapserver = %{version}-%{release}
 Obsoletes:      php-mapserver < %{version}-%{release}
 %if 0%{with php}
@@ -115,7 +122,7 @@ BuildRequires:  php-devel
 Requires:       php
 Requires:       php-gd
 
-%description -n php-mapscript
+%description -n php-mapscriptng
 The PHP/Mapscript extension provides full map customization capabilities within the PHP scripting language.
 
 %package -n perl-mapscript
@@ -233,7 +240,9 @@ cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
         -DWITH_MYSQL=TRUE \
         -DWITH_PERL=TRUE \
         -DCUSTOM_PERL_SITE_ARCH_DIR="%{perl_vendorarch}" \
-        -DWITH_PHPNG=FALSE \
+%if 0%{with php}
+	-DWITH_PHPNG=TRUE \
+%endif
         -DWITH_POSTGIS=TRUE \
         -DWITH_PROJ=TRUE \
         -DUSE_PROJ=TRUE \
@@ -290,10 +299,10 @@ cd ..
 
 %if 0%{with php}
 mkdir -p %{buildroot}%{_sysconfdir}/%{php_name}/conf.d/
-cat > %{buildroot}%{_sysconfdir}/%{php_name}/conf.d/mapscript.ini <<EOF
+cat > %{buildroot}%{_sysconfdir}/%{php_name}/conf.d/mapscriptng.ini <<EOF
 ; Enable %{name} extension module
 ; For 6.4 we name the symlink here
-extension=php_mapscript.so
+extension=php_mapscriptng.so
 EOF
 %endif
 
@@ -353,11 +362,8 @@ mv -v "%buildroot/%python3_sitelib"/* "%buildroot/%python3_sitearch/"
 %{_libdir}/libmapserver.so.*
 
 %if 0%{with php}
-%files -n php-mapscript
-%doc mapscript/php/README
-%doc mapscript/php/examples
-%config(noreplace) %{_sysconfdir}/%{php_name}/conf.d/mapscript.ini
-%{_libdir}/%{php_name}/extensions/mapscript.php
+%files -n php-mapscriptng
+%config(noreplace) %{_sysconfdir}/%{php_name}/conf.d/mapscriptng.ini
 %{_libdir}/%{php_name}/extensions/php_mapscriptng.so*
 %endif
 

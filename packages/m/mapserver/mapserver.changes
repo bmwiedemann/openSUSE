@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Nov  5 22:40:24 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Enable PHP8 module build in Tumbleweed again since newer SWIG
+  is available. New subpackage php-mapscriptng emitted as a result.
+  [boo#1204736]
+
+-------------------------------------------------------------------
 Sat Oct  8 20:50:04 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 8

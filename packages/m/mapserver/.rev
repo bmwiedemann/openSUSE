@@ -23,4 +23,14 @@
     <comment>- Update to release 8</comment>
     <requestid>1009075</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>0e8c72ce943615799a7abbe55d3b34a3</srcmd5>
+    <version>8.0.0</version>
+    <time>1667734935</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable PHP8 module build in Tumbleweed again since newer SWIG
+  is available. New subpackage php-mapscriptng emitted as a result.
+  [boo#1204736]</comment>
+    <requestid>1033752</requestid>
+  </revision>
 </revisionlist>
