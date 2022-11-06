@@ -17,7 +17,7 @@
 
 
 Name:           python-pick
-Version:        1.4.0
+Version:        2.1.0
 Release:        0
 Summary:        Curses-based interactive selection list module
 License:        MIT
@@ -53,7 +53,7 @@ interactive selection list in the terminal.
 
 %files %{python_files}
 %license LICENSE
-%doc README.rst
+%doc README.md
 %{python_sitelib}/*
 
 %changelog
