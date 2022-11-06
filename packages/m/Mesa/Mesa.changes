@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov  4 21:03:39 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- build against llvm15/clang15 on sle15-sp5/Leap 15.5 
+
+-------------------------------------------------------------------
 Wed Nov  2 16:56:33 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - u_nouveau-corrupted-colors-boo1203949.patch

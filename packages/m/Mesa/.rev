@@ -5048,4 +5048,12 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   radv driver specific conf was missing completely (boo#1204866)</comment>
     <requestid>1032970</requestid>
   </revision>
+  <revision rev="457" vrev="329">
+    <srcmd5>043be9ff9739d977eaa0a903282504a4</srcmd5>
+    <version>unknown</version>
+    <time>1667734894</time>
+    <user>dimstar_suse</user>
+    <comment>- build against llvm15/clang15 on sle15-sp5/Leap 15.5</comment>
+    <requestid>1033668</requestid>
+  </revision>
 </revisionlist>
