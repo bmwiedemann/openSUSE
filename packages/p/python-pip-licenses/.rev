@@ -66,4 +66,20 @@
   get_installed_distributions() method in modern pip.</comment>
     <requestid>957738</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c0426cf1dc12d752674cd2755e92748c</srcmd5>
+    <version>4.0.0</version>
+    <time>1667734941</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.0:
+  - Support for Python 3.11
+  - Dropped support Python 3.7
+  - Migrate Docker base image from Alpine to Debian 11-slim
+  - Breaking changes
+    - Does not work with PTable and depends on prettytable
+    - Depend on importlib_metadata rather than pip
+- Remove unnecessary no-pip-internal.patch.
+</comment>
+    <requestid>1033784</requestid>
+  </revision>
 </revisionlist>

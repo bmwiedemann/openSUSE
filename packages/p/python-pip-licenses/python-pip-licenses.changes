@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Nov  6 07:53:28 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 4.0.0:
+  - Support for Python 3.11
+  - Dropped support Python 3.7
+  - Migrate Docker base image from Alpine to Debian 11-slim
+  - Breaking changes
+    - Does not work with PTable and depends on prettytable
+    - Depend on importlib_metadata rather than pip
+- Remove unnecessary no-pip-internal.patch.
+
+-------------------------------------------------------------------
 Sat Feb 26 00:36:05 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.5.2:
