@@ -17,7 +17,7 @@
 
 
 Name:           xdg-desktop-portal-lxqt
-Version:        0.2.0
+Version:        0.3.0
 Release:        0
 Summary:        A backend implementation for xdg-desktop-portal
 License:        LGPL-2.1-or-later
@@ -48,7 +48,6 @@ functionality needed by nearly all of its components.
 
 %build
 %cmake
-%make_build
 
 %install
 %cmake_install
