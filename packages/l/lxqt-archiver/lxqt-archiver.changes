@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Nov  5 20:58:00 UTC 2022 - Shawn Dunn <sfalken@cloverleaf-linux.org>
+
+- Update to 0.7.0:
+  * Removed the redundant function `n_fields()` from `glib-utils`.
+  * Silenced some compilation warnings.
+
+-------------------------------------------------------------------
 Thu Apr 28 20:14:45 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.6.0:

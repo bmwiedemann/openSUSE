@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-archiver
-Version:        0.6.0
+Version:        0.7.0
 Release:        0
 Summary:        LXQt File Archiver
 License:        GPL-2.0-or-later
@@ -51,7 +51,6 @@ LXQt file archiver.
 
 %build
 %cmake
-%make_build
 
 %install
 %cmake_install
