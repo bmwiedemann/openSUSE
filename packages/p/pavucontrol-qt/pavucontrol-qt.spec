@@ -17,7 +17,7 @@
 
 
 Name:           pavucontrol-qt
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Qt port of pavucontrol
 License:        GPL-2.0-only
@@ -54,7 +54,6 @@ sed -i '/Name=/s/$/ Qt/' src/%{name}.desktop.in
 %build
 %cmake \
       -DPULL_TRANSLATIONS=OFF
-make %{?_smp_mflags}
 
 %install
 %cmake_install
@@ -67,7 +66,7 @@ make %{?_smp_mflags}
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 
-%files lang -f %{name}.lang 
+%files lang -f %{name}.lang
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/translations
 %{_datadir}/%{name}/translations/*
