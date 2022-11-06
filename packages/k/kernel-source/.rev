@@ -6074,4 +6074,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.0.6 &amp; 3 CVEs in PCMCIA &amp; ring buffer crash fix</comment>
     <requestid>1032782</requestid>
   </revision>
+  <revision rev="665" vrev="1">
+    <srcmd5>28f882ce9392939a395dfa1048267a10</srcmd5>
+    <version>6.0.7</version>
+    <time>1667734882</time>
+    <user>dimstar_suse</user>
+    <comment>6.0.7 &amp; brcmfmac CVE &amp; other fixes</comment>
+    <requestid>1033507</requestid>
+  </revision>
 </revisionlist>
