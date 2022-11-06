@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sun Nov  6 12:07:44 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.1.0
+  * Change the way scroll is handled.
+  version 2.0.2:
+  * Remove the additional space
+  version 2.0.1:
+  * Change multiselect symbols
+  * Bump pytest from 7.1.2 to 7.1.3
+  version 2.0.0:
+  * Add Option class
+  * Drop options_map_func
+  * Drop register_custom_handler
+  * Remove docstrings
+  * Add multiselect example gif
+  * Use markdown for README
+  version 1.6.0:
+  * Update multiselect mode style
+  * Add multiselect example
+  * Fix examples
+  * Bump pytest from 6.2.5 to 7.1.2
+  * Bump mypy from 0.961 to 0.971
+  version 1.5.0:
+  * Fix mypy call in ci
+  * Create dependabot.yml
+  * Add static type checking to ci
+  * Check static type with pytest
+  * Format code
+  * Change list to sequence for Picker.options
+  * Rename all_selected to selected_indexes
+
+-------------------------------------------------------------------
 Sun Jul 24 14:10:38 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.4.0
