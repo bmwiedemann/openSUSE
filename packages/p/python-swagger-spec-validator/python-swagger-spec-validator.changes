@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Fri Nov  4 23:43:44 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v3.0.3
+- from v3.0.2
+  * Fix location of py.typed file
+- from v3.0.1
+  * Add py.typed marker
+  * Enforce python_requires>=3.7
+- from v3.0.0
+  * Add type annotations
+  * Drop py2 and py36 support
+  * Drop simplejson
+
+-------------------------------------------------------------------
+Sun Sep  4 12:21:34 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Activate test suite
+- Update to v2.7.6
+  * unpin jsonschema
+- from v2.7.5
+  * pin jsonschema
+
+-------------------------------------------------------------------
+Thu Oct 28 17:30:31 UTC 2021 - Lars Vogdt <lars@linux-schulserver.de>
+
+- update to 2.7.4
+  + Use iteritems from six (#146)
+  + Make check for unique operation ids global instead of per tag (#145) 
+  + Drop python3.5
+  + Fixed build breakage due to zipp and python3.5 (#143) 
+
+-------------------------------------------------------------------
+Tue Mar 23 11:35:52 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- initial package
