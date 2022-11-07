@@ -1,3 +1,10 @@
+gpxsee (11.7) stable; urgency=low
+
+  * Added support for ENC charts.
+  * Improved IMG maps marine style.
+
+ -- Martin Tuma <tumic@cbox.cz>  Sun, 06 Nov 2022 18:19:12 +0100
+
 gpxsee (11.6) stable; urgency=low
 
   * Fixed tracks/routes line style configuration (introduced in
