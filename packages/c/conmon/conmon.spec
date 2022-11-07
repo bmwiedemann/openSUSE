@@ -24,6 +24,8 @@ License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/containers/conmon
 Source0:        %{name}-%{version}.tar.xz
+# https://github.com/containers/conmon/pull/364
+Patch1:         0001-Fix-tools-Makefile-with-GNU-make-4.4.patch
 BuildRequires:  pkgconfig
 BuildRequires:  golang(API) = 1.18
 BuildRequires:  pkgconfig(glib-2.0)
@@ -36,7 +38,7 @@ container manager (like podman or CRI-O) and an OCI runtime (like
 runc or crun) for a single container.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %make_build

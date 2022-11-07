@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov  4 14:35:09 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Add patch to fix build with make >= 4.4:
+  * 0001-Fix-tools-Makefile-with-GNU-make-4.4.patch
+
+-------------------------------------------------------------------
 Wed Aug 17 20:16:56 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.3:
