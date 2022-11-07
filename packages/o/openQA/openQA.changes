@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 07 10:16:40 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1667810206.2bf912d:
+  * Clean up git repository before rebase
+  * Use more signatures in OpenQA::CacheService
+
+-------------------------------------------------------------------
 Sat Nov 05 02:16:05 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1667577561.41a898b:
