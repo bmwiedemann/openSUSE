@@ -66,4 +66,13 @@
   * new bump from master branch</comment>
     <requestid>1032890</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>0b5f55df572fcb0a5c0ebca1ae4cb3b6</srcmd5>
+    <version>2023.0.0</version>
+    <time>1667832960</time>
+    <user>dimstar_suse</user>
+    <comment>- needed for jira#PED-1174 (Video decoding/encoding support 
+  (VA-API, ...) for Intel GPUs is outside of Mesa)</comment>
+    <requestid>1034196</requestid>
+  </revision>
 </revisionlist>
