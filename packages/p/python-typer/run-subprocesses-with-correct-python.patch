@@ -27,6 +27,7 @@ all of them.
  tests/test_completion/test_completion_show.py | 53 ++++++++++++++++---
  tests/test_others.py                          |  9 ++--
  tests/test_prog_name.py                       |  3 +-
+ tests/test_tracebacks.py                      |  7 +--
  .../test_default/test_tutorial001.py          |  3 +-
  .../test_default/test_tutorial002.py          |  3 +-
  .../test_envvar/test_tutorial001.py           |  3 +-
@@ -39,6 +40,7 @@ all of them.
  .../test_help/test_tutorial005.py             |  3 +-
  .../test_help/test_tutorial006.py             |  3 +-
  .../test_help/test_tutorial007.py             |  3 +-
+ .../test_help/test_tutorial008.py             |  3 +-
  .../test_optional/test_tutorial001.py         |  3 +-
  .../test_optional/test_tutorial002.py         |  3 +-
  .../test_arguments/test_tutorial001.py        |  3 +-
@@ -52,12 +54,22 @@ all of them.
  .../test_context/test_tutorial004.py          |  3 +-
  .../test_help/test_tutorial001.py             |  3 +-
  .../test_help/test_tutorial002.py             |  3 +-
+ .../test_help/test_tutorial003.py             |  3 +-
+ .../test_help/test_tutorial004.py             |  3 +-
+ .../test_help/test_tutorial005.py             |  3 +-
+ .../test_help/test_tutorial006.py             |  3 +-
+ .../test_help/test_tutorial007.py             |  3 +-
+ .../test_help/test_tutorial008.py             |  3 +-
  .../test_index/test_tutorial001.py            |  3 +-
  .../test_index/test_tutorial002.py            |  3 +-
  .../test_name/test_tutorial001.py             |  3 +-
  .../test_one_or_multiple/test_tutorial001.py  |  3 +-
  .../test_one_or_multiple/test_tutorial002.py  |  3 +-
  .../test_options/test_tutorial001.py          |  3 +-
+ .../test_exceptions/test_tutorial001.py       |  7 +--
+ .../test_exceptions/test_tutorial002.py       |  7 +--
+ .../test_exceptions/test_tutorial003.py       |  5 +-
+ .../test_exceptions/test_tutorial004.py       |  5 +-
  .../test_first_steps/test_tutorial001.py      |  3 +-
  .../test_first_steps/test_tutorial002.py      |  3 +-
  .../test_first_steps/test_tutorial003.py      |  3 +-
@@ -72,14 +84,9 @@ all of them.
  .../test_callback/test_tutorial001.py         |  3 +-
  .../test_callback/test_tutorial003.py         |  5 +-
  .../test_callback/test_tutorial004.py         |  5 +-
- .../test_completion/test_tutorial002.py       |  5 +-
- .../test_completion/test_tutorial003.py       |  5 +-
- .../test_completion/test_tutorial004.py       |  5 +-
- .../test_completion/test_tutorial007.py       |  5 +-
- .../test_completion/test_tutorial008.py       |  5 +-
- .../test_completion/test_tutorial009.py       |  5 +-
  .../test_help/test_tutorial001.py             |  3 +-
  .../test_help/test_tutorial002.py             |  3 +-
+ .../test_help/test_tutorial003.py             |  3 +-
  .../test_name/test_tutorial001.py             |  3 +-
  .../test_name/test_tutorial002.py             |  3 +-
  .../test_name/test_tutorial003.py             |  3 +-
@@ -90,6 +97,12 @@ all of them.
  .../test_prompt/test_tutorial003.py           |  3 +-
  .../test_required/test_tutorial002.py         |  3 +-
  .../test_version/test_tutorial003.py          |  5 +-
+ .../test_tutorial002.py                       |  5 +-
+ .../test_tutorial003.py                       |  5 +-
+ .../test_tutorial004.py                       |  5 +-
+ .../test_tutorial007.py                       |  5 +-
+ .../test_tutorial008.py                       |  5 +-
+ .../test_tutorial009.py                       |  5 +-
  .../test_bool/test_tutorial001.py             |  3 +-
  .../test_bool/test_tutorial002.py             |  3 +-
  .../test_bool/test_tutorial003.py             |  3 +-
@@ -136,7 +149,7 @@ all of them.
  .../test_tutorial/test_testing/test_app03.py  |  3 +-
  .../test_using_click/test_tutorial003.py      |  3 +-
  .../test_using_click/test_tutorial004.py      |  3 +-
- 117 files changed, 336 insertions(+), 156 deletions(-)
+ 130 files changed, 370 insertions(+), 177 deletions(-)
 
 diff --git a/tests/test_compat/test_option_get_help.py b/tests/test_compat/test_option_get_help.py
 index fb01a6d..41a9d52 100644
@@ -159,7 +172,7 @@ index fb01a6d..41a9d52 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_completion/test_completion.py b/tests/test_completion/test_completion.py
-index d7ec6d3..62265dd 100644
+index ee128a3..7f36547 100644
 --- a/tests/test_completion/test_completion.py
 +++ b/tests/test_completion/test_completion.py
 @@ -47,7 +47,7 @@ def test_install_completion():
@@ -381,7 +394,7 @@ index c221b69..bf5762c 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_completion/test_completion_install.py b/tests/test_completion/test_completion_install.py
-index 7862fb6..20cc966 100644
+index d7c96b9..0856b9b 100644
 --- a/tests/test_completion/test_completion_install.py
 +++ b/tests/test_completion/test_completion_install.py
 @@ -1,5 +1,6 @@
@@ -452,7 +465,7 @@ index 7862fb6..20cc966 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_completion/test_completion_show.py b/tests/test_completion/test_completion_show.py
-index 669815d..374dd34 100644
+index 6996fed..02e70cb 100644
 --- a/tests/test_completion/test_completion_show.py
 +++ b/tests/test_completion/test_completion_show.py
 @@ -1,12 +1,13 @@
@@ -460,7 +473,7 @@ index 669815d..374dd34 100644
  import subprocess
 +import sys
  
- from docs_src.first_steps import tutorial001 as mod
+ from docs_src.commands.index import tutorial001 as mod
  
  
  def test_completion_show_no_shell():
@@ -617,6 +630,43 @@ index 06dd8c8..58626c7 100644
      result = subprocess.run(
 -        ["coverage", "run", str(file_path), "--help"],
 +        [sys.executable, "-m", "coverage", "run", str(file_path), "--help"],
+         stdout=subprocess.PIPE,
+         stderr=subprocess.PIPE,
+         encoding="utf-8",
+diff --git a/tests/test_tracebacks.py b/tests/test_tracebacks.py
+index 06c91fe..0289e9c 100644
+--- a/tests/test_tracebacks.py
++++ b/tests/test_tracebacks.py
+@@ -1,12 +1,13 @@
+ import os
+ import subprocess
++import sys
+ from pathlib import Path
+ 
+ 
+ def test_traceback_no_rich():
+     file_path = Path(__file__).parent / "assets/type_error_no_rich.py"
+     result = subprocess.run(
+-        ["coverage", "run", str(file_path)],
++        [sys.executable, "-m", "coverage", "run", str(file_path)],
+         stdout=subprocess.PIPE,
+         stderr=subprocess.PIPE,
+         encoding="utf-8",
+@@ -26,7 +27,7 @@ def test_traceback_no_rich():
+ def test_traceback_no_rich_short_disable():
+     file_path = Path(__file__).parent / "assets/type_error_no_rich_short_disable.py"
+     result = subprocess.run(
+-        ["coverage", "run", str(file_path)],
++        [sys.executable, "-m", "coverage", "run", str(file_path)],
+         stdout=subprocess.PIPE,
+         stderr=subprocess.PIPE,
+         encoding="utf-8",
+@@ -46,7 +47,7 @@ def test_traceback_no_rich_short_disable():
+ def test_unmodified_traceback():
+     file_path = Path(__file__).parent / "assets/type_error_normal_traceback.py"
+     result = subprocess.run(
+-        ["coverage", "run", str(file_path)],
++        [sys.executable, "-m", "coverage", "run", str(file_path)],
          stdout=subprocess.PIPE,
          stderr=subprocess.PIPE,
          encoding="utf-8",
@@ -840,6 +890,25 @@ index 2fb6444..3c6eddd 100644
  import typer
  import typer.core
 @@ -28,7 +29,7 @@ def test_call_arg():
+ 
+ def test_script():
+     result = subprocess.run(
+-        ["coverage", "run", mod.__file__, "--help"],
++        [sys.executable, "-m", "coverage", "run", mod.__file__, "--help"],
+         stdout=subprocess.PIPE,
+         stderr=subprocess.PIPE,
+         encoding="utf-8",
+diff --git a/tests/test_tutorial/test_arguments/test_help/test_tutorial008.py b/tests/test_tutorial/test_arguments/test_help/test_tutorial008.py
+index ef560be..f26c6e7 100644
+--- a/tests/test_tutorial/test_arguments/test_help/test_tutorial008.py
++++ b/tests/test_tutorial/test_arguments/test_help/test_tutorial008.py
+@@ -1,4 +1,5 @@
+ import subprocess
++import sys
+ 
+ import typer
+ import typer.core
+@@ -41,7 +42,7 @@ def test_call_arg():
  
  def test_script():
      result = subprocess.run(
@@ -1095,6 +1164,120 @@ index dcadf53..f53b5fe 100644
          stdout=subprocess.PIPE,
          stderr=subprocess.PIPE,
          encoding="utf-8",
+diff --git a/tests/test_tutorial/test_commands/test_help/test_tutorial003.py b/tests/test_tutorial/test_commands/test_help/test_tutorial003.py
+index 2be8331..7d5f47f 100644
+--- a/tests/test_tutorial/test_commands/test_help/test_tutorial003.py
++++ b/tests/test_tutorial/test_commands/test_help/test_tutorial003.py
+@@ -1,4 +1,5 @@
+ import subprocess
++import sys
+ 
+ from typer.testing import CliRunner
+ 
+@@ -36,7 +37,7 @@ def test_call():
+ 
+ def test_script():
+     result = subprocess.run(
+-        ["coverage", "run", mod.__file__, "--help"],
++        [sys.executable, "-m", "coverage", "run", mod.__file__, "--help"],
+         stdout=subprocess.PIPE,
+         stderr=subprocess.PIPE,
+         encoding="utf-8",
+diff --git a/tests/test_tutorial/test_commands/test_help/test_tutorial004.py b/tests/test_tutorial/test_commands/test_help/test_tutorial004.py
+index 59e6779..47b90d9 100644
+--- a/tests/test_tutorial/test_commands/test_help/test_tutorial004.py
++++ b/tests/test_tutorial/test_commands/test_help/test_tutorial004.py
+@@ -1,4 +1,5 @@
+ import subprocess
++import sys
+ 
+ from typer.testing import CliRunner
+ 
+@@ -51,7 +52,7 @@ def test_delete():
+ 
+ def test_script():
+     result = subprocess.run(
+-        ["coverage", "run", mod.__file__, "--help"],
++        [sys.executable, "-m", "coverage", "run", mod.__file__, "--help"],
+         stdout=subprocess.PIPE,
+         stderr=subprocess.PIPE,
+         encoding="utf-8",
+diff --git a/tests/test_tutorial/test_commands/test_help/test_tutorial005.py b/tests/test_tutorial/test_commands/test_help/test_tutorial005.py
+index e9227fc..4299d83 100644
+--- a/tests/test_tutorial/test_commands/test_help/test_tutorial005.py
++++ b/tests/test_tutorial/test_commands/test_help/test_tutorial005.py
+@@ -1,4 +1,5 @@
+ import subprocess
++import sys
+ 
+ from typer.testing import CliRunner
+ 
+@@ -52,7 +53,7 @@ def test_delete():
+ 
+ def test_script():
+     result = subprocess.run(
+-        ["coverage", "run", mod.__file__, "--help"],
++        [sys.executable, "-m", "coverage", "run", mod.__file__, "--help"],
+         stdout=subprocess.PIPE,
+         stderr=subprocess.PIPE,
+         encoding="utf-8",
+diff --git a/tests/test_tutorial/test_commands/test_help/test_tutorial006.py b/tests/test_tutorial/test_commands/test_help/test_tutorial006.py
+index 91bd5a9..14f0815 100644
+--- a/tests/test_tutorial/test_commands/test_help/test_tutorial006.py
++++ b/tests/test_tutorial/test_commands/test_help/test_tutorial006.py
+@@ -1,4 +1,5 @@
+ import subprocess
++import sys
+ 
+ from typer.testing import CliRunner
+ 
+@@ -43,7 +44,7 @@ def test_call():
+ 
+ def test_script():
+     result = subprocess.run(
+-        ["coverage", "run", mod.__file__, "--help"],
++        [sys.executable, "-m", "coverage", "run", mod.__file__, "--help"],
+         stdout=subprocess.PIPE,
+         stderr=subprocess.PIPE,
+         encoding="utf-8",
+diff --git a/tests/test_tutorial/test_commands/test_help/test_tutorial007.py b/tests/test_tutorial/test_commands/test_help/test_tutorial007.py
+index 15fdb5c..3a75304 100644
+--- a/tests/test_tutorial/test_commands/test_help/test_tutorial007.py
++++ b/tests/test_tutorial/test_commands/test_help/test_tutorial007.py
+@@ -1,4 +1,5 @@
+ import subprocess
++import sys
+ 
+ from typer.testing import CliRunner
+ 
+@@ -47,7 +48,7 @@ def test_call():
+ 
+ def test_script():
+     result = subprocess.run(
+-        ["coverage", "run", mod.__file__, "--help"],
++        [sys.executable, "-m", "coverage", "run", mod.__file__, "--help"],
+         stdout=subprocess.PIPE,
+         stderr=subprocess.PIPE,
+         encoding="utf-8",
+diff --git a/tests/test_tutorial/test_commands/test_help/test_tutorial008.py b/tests/test_tutorial/test_commands/test_help/test_tutorial008.py
+index 5d6c7ef..b460d9c 100644
+--- a/tests/test_tutorial/test_commands/test_help/test_tutorial008.py
++++ b/tests/test_tutorial/test_commands/test_help/test_tutorial008.py
+@@ -1,4 +1,5 @@
+ import subprocess
++import sys
+ 
+ from typer.testing import CliRunner
+ 
+@@ -24,7 +25,7 @@ def test_call():
+ 
+ def test_script():
+     result = subprocess.run(
+-        ["coverage", "run", mod.__file__, "--help"],
++        [sys.executable, "-m", "coverage", "run", mod.__file__, "--help"],
+         stdout=subprocess.PIPE,
+         stderr=subprocess.PIPE,
+         encoding="utf-8",
 diff --git a/tests/test_tutorial/test_commands/test_index/test_tutorial001.py b/tests/test_tutorial/test_commands/test_index/test_tutorial001.py
 index ddebe83..fee5e76 100644
 --- a/tests/test_tutorial/test_commands/test_index/test_tutorial001.py
@@ -1201,6 +1384,140 @@ index d77ad3a..ce3307e 100644
  from typer.testing import CliRunner
  
 @@ -88,7 +89,7 @@ def test_init():
+ 
+ def test_script():
+     result = subprocess.run(
+-        ["coverage", "run", mod.__file__, "--help"],
++        [sys.executable, "-m", "coverage", "run", mod.__file__, "--help"],
+         stdout=subprocess.PIPE,
+         stderr=subprocess.PIPE,
+         encoding="utf-8",
+diff --git a/tests/test_tutorial/test_exceptions/test_tutorial001.py b/tests/test_tutorial/test_exceptions/test_tutorial001.py
+index 644f415..0a4590b 100644
+--- a/tests/test_tutorial/test_exceptions/test_tutorial001.py
++++ b/tests/test_tutorial/test_exceptions/test_tutorial001.py
+@@ -1,5 +1,6 @@
+ import os
+ import subprocess
++import sys
+ from pathlib import Path
+ 
+ from typer.testing import CliRunner
+@@ -12,7 +13,7 @@ runner = CliRunner()
+ def test_traceback_rich():
+     file_path = Path(mod.__file__)
+     result = subprocess.run(
+-        ["coverage", "run", str(file_path)],
++        [sys.executable, "-m", "coverage", "run", str(file_path)],
+         stdout=subprocess.PIPE,
+         stderr=subprocess.PIPE,
+         encoding="utf-8",
+@@ -34,7 +35,7 @@ def test_traceback_rich():
+ def test_standard_traceback_env_var():
+     file_path = Path(mod.__file__)
+     result = subprocess.run(
+-        ["coverage", "run", str(file_path)],
++        [sys.executable, "-m", "coverage", "run", str(file_path)],
+         stdout=subprocess.PIPE,
+         stderr=subprocess.PIPE,
+         encoding="utf-8",
+@@ -55,7 +56,7 @@ def test_standard_traceback_env_var():
+ 
+ def test_script():
+     result = subprocess.run(
+-        ["coverage", "run", mod.__file__, "--help"],
++        [sys.executable, "-m", "coverage", "run", mod.__file__, "--help"],
+         stdout=subprocess.PIPE,
+         stderr=subprocess.PIPE,
+         encoding="utf-8",
+diff --git a/tests/test_tutorial/test_exceptions/test_tutorial002.py b/tests/test_tutorial/test_exceptions/test_tutorial002.py
+index ff79d9b..66286e0 100644
+--- a/tests/test_tutorial/test_exceptions/test_tutorial002.py
++++ b/tests/test_tutorial/test_exceptions/test_tutorial002.py
+@@ -1,5 +1,6 @@
+ import os
+ import subprocess
++import sys
+ from pathlib import Path
+ 
+ from typer.testing import CliRunner
+@@ -12,7 +13,7 @@ runner = CliRunner()
+ def test_traceback_rich():
+     file_path = Path(mod.__file__)
+     result = subprocess.run(
+-        ["coverage", "run", str(file_path), "secret"],
++        [sys.executable, "-m", "coverage", "run", str(file_path), "secret"],
+         stdout=subprocess.PIPE,
+         stderr=subprocess.PIPE,
+         encoding="utf-8",
+@@ -34,7 +35,7 @@ def test_traceback_rich():
+ def test_standard_traceback_env_var():
+     file_path = Path(mod.__file__)
+     result = subprocess.run(
+-        ["coverage", "run", str(file_path), "secret"],
++        [sys.executable, "-m", "coverage", "run", str(file_path), "secret"],
+         stdout=subprocess.PIPE,
+         stderr=subprocess.PIPE,
+         encoding="utf-8",
+@@ -55,7 +56,7 @@ def test_standard_traceback_env_var():
+ 
+ def test_script():
+     result = subprocess.run(
+-        ["coverage", "run", mod.__file__, "--help"],
++        [sys.executable, "-m", "coverage", "run", mod.__file__, "--help"],
+         stdout=subprocess.PIPE,
+         stderr=subprocess.PIPE,
+         encoding="utf-8",
+diff --git a/tests/test_tutorial/test_exceptions/test_tutorial003.py b/tests/test_tutorial/test_exceptions/test_tutorial003.py
+index 54157e1..51cb170 100644
+--- a/tests/test_tutorial/test_exceptions/test_tutorial003.py
++++ b/tests/test_tutorial/test_exceptions/test_tutorial003.py
+@@ -1,5 +1,6 @@
+ import os
+ import subprocess
++import sys
+ from pathlib import Path
+ 
+ from typer.testing import CliRunner
+@@ -12,7 +13,7 @@ runner = CliRunner()
+ def test_traceback_rich_pretty_short_disable():
+     file_path = Path(mod.__file__)
+     result = subprocess.run(
+-        ["coverage", "run", str(file_path)],
++        [sys.executable, "-m", "coverage", "run", str(file_path)],
+         stdout=subprocess.PIPE,
+         stderr=subprocess.PIPE,
+         encoding="utf-8",
+@@ -33,7 +34,7 @@ def test_traceback_rich_pretty_short_disable():
+ 
+ def test_script():
+     result = subprocess.run(
+-        ["coverage", "run", mod.__file__, "--help"],
++        [sys.executable, "-m", "coverage", "run", mod.__file__, "--help"],
+         stdout=subprocess.PIPE,
+         stderr=subprocess.PIPE,
+         encoding="utf-8",
+diff --git a/tests/test_tutorial/test_exceptions/test_tutorial004.py b/tests/test_tutorial/test_exceptions/test_tutorial004.py
+index a9aa11f..bb575e4 100644
+--- a/tests/test_tutorial/test_exceptions/test_tutorial004.py
++++ b/tests/test_tutorial/test_exceptions/test_tutorial004.py
+@@ -1,5 +1,6 @@
+ import os
+ import subprocess
++import sys
+ from pathlib import Path
+ 
+ from typer.testing import CliRunner
+@@ -12,7 +13,7 @@ runner = CliRunner()
+ def test_rich_pretty_exceptions_disable():
+     file_path = Path(mod.__file__)
+     result = subprocess.run(
+-        ["coverage", "run", str(file_path)],
++        [sys.executable, "-m", "coverage", "run", str(file_path)],
+         stdout=subprocess.PIPE,
+         stderr=subprocess.PIPE,
+         encoding="utf-8",
+@@ -31,7 +32,7 @@ def test_rich_pretty_exceptions_disable():
  
  def test_script():
      result = subprocess.run(
@@ -1495,180 +1812,6 @@ index d41bcc9..473cd9d 100644
          stdout=subprocess.PIPE,
          stderr=subprocess.PIPE,
          encoding="utf-8",
-diff --git a/tests/test_tutorial/test_options/test_completion/test_tutorial002.py b/tests/test_tutorial/test_options/test_completion/test_tutorial002.py
-index 593f28b..dc468a5 100644
---- a/tests/test_tutorial/test_options/test_completion/test_tutorial002.py
-+++ b/tests/test_tutorial/test_options/test_completion/test_tutorial002.py
-@@ -1,5 +1,6 @@
- import os
- import subprocess
-+import sys
- 
- import typer
- from typer.testing import CliRunner
-@@ -14,7 +15,7 @@ app.command()(mod.main)
- 
- def test_completion():
-     result = subprocess.run(
--        ["coverage", "run", mod.__file__, " "],
-+        [sys.executable, "-m", "coverage", "run", mod.__file__, " "],
-         stdout=subprocess.PIPE,
-         stderr=subprocess.PIPE,
-         encoding="utf-8",
-@@ -38,7 +39,7 @@ def test_1():
- 
- def test_script():
-     result = subprocess.run(
--        ["coverage", "run", mod.__file__, "--help"],
-+        [sys.executable, "-m", "coverage", "run", mod.__file__, "--help"],
-         stdout=subprocess.PIPE,
-         stderr=subprocess.PIPE,
-         encoding="utf-8",
-diff --git a/tests/test_tutorial/test_options/test_completion/test_tutorial003.py b/tests/test_tutorial/test_options/test_completion/test_tutorial003.py
-index fccb867..c6be246 100644
---- a/tests/test_tutorial/test_options/test_completion/test_tutorial003.py
-+++ b/tests/test_tutorial/test_options/test_completion/test_tutorial003.py
-@@ -1,5 +1,6 @@
- import os
- import subprocess
-+import sys
- 
- import typer
- from typer.testing import CliRunner
-@@ -14,7 +15,7 @@ app.command()(mod.main)
- 
- def test_completion():
-     result = subprocess.run(
--        ["coverage", "run", mod.__file__, " "],
-+        [sys.executable, "-m", "coverage", "run", mod.__file__, " "],
-         stdout=subprocess.PIPE,
-         stderr=subprocess.PIPE,
-         encoding="utf-8",
-@@ -38,7 +39,7 @@ def test_1():
- 
- def test_script():
-     result = subprocess.run(
--        ["coverage", "run", mod.__file__, "--help"],
-+        [sys.executable, "-m", "coverage", "run", mod.__file__, "--help"],
-         stdout=subprocess.PIPE,
-         stderr=subprocess.PIPE,
-         encoding="utf-8",
-diff --git a/tests/test_tutorial/test_options/test_completion/test_tutorial004.py b/tests/test_tutorial/test_options/test_completion/test_tutorial004.py
-index 6ae5d9a..b9d3b8a 100644
---- a/tests/test_tutorial/test_options/test_completion/test_tutorial004.py
-+++ b/tests/test_tutorial/test_options/test_completion/test_tutorial004.py
-@@ -1,5 +1,6 @@
- import os
- import subprocess
-+import sys
- 
- import typer
- from typer.testing import CliRunner
-@@ -14,7 +15,7 @@ app.command()(mod.main)
- 
- def test_completion():
-     result = subprocess.run(
--        ["coverage", "run", mod.__file__, " "],
-+        [sys.executable, "-m", "coverage", "run", mod.__file__, " "],
-         stdout=subprocess.PIPE,
-         stderr=subprocess.PIPE,
-         encoding="utf-8",
-@@ -38,7 +39,7 @@ def test_1():
- 
- def test_script():
-     result = subprocess.run(
--        ["coverage", "run", mod.__file__, "--help"],
-+        [sys.executable, "-m", "coverage", "run", mod.__file__, "--help"],
-         stdout=subprocess.PIPE,
-         stderr=subprocess.PIPE,
-         encoding="utf-8",
-diff --git a/tests/test_tutorial/test_options/test_completion/test_tutorial007.py b/tests/test_tutorial/test_options/test_completion/test_tutorial007.py
-index 0976541..372d963 100644
---- a/tests/test_tutorial/test_options/test_completion/test_tutorial007.py
-+++ b/tests/test_tutorial/test_options/test_completion/test_tutorial007.py
-@@ -1,5 +1,6 @@
- import os
- import subprocess
-+import sys
- 
- import typer
- from typer.testing import CliRunner
-@@ -14,7 +15,7 @@ app.command()(mod.main)
- 
- def test_completion():
-     result = subprocess.run(
--        ["coverage", "run", mod.__file__, " "],
-+        [sys.executable, "-m", "coverage", "run", mod.__file__, " "],
-         stdout=subprocess.PIPE,
-         stderr=subprocess.PIPE,
-         encoding="utf-8",
-@@ -39,7 +40,7 @@ def test_1():
- 
- def test_script():
-     result = subprocess.run(
--        ["coverage", "run", mod.__file__, "--help"],
-+        [sys.executable, "-m", "coverage", "run", mod.__file__, "--help"],
-         stdout=subprocess.PIPE,
-         stderr=subprocess.PIPE,
-         encoding="utf-8",
-diff --git a/tests/test_tutorial/test_options/test_completion/test_tutorial008.py b/tests/test_tutorial/test_options/test_completion/test_tutorial008.py
-index 597d8f0..87683b7 100644
---- a/tests/test_tutorial/test_options/test_completion/test_tutorial008.py
-+++ b/tests/test_tutorial/test_options/test_completion/test_tutorial008.py
-@@ -1,5 +1,6 @@
- import os
- import subprocess
-+import sys
- 
- import typer
- from typer.testing import CliRunner
-@@ -14,7 +15,7 @@ app.command()(mod.main)
- 
- def test_completion():
-     result = subprocess.run(
--        ["coverage", "run", mod.__file__, " "],
-+        [sys.executable, "-m", "coverage", "run", mod.__file__, " "],
-         stdout=subprocess.PIPE,
-         stderr=subprocess.PIPE,
-         encoding="utf-8",
-@@ -41,7 +42,7 @@ def test_1():
- 
- def test_script():
-     result = subprocess.run(
--        ["coverage", "run", mod.__file__, "--help"],
-+        [sys.executable, "-m", "coverage", "run", mod.__file__, "--help"],
-         stdout=subprocess.PIPE,
-         stderr=subprocess.PIPE,
-         encoding="utf-8",
-diff --git a/tests/test_tutorial/test_options/test_completion/test_tutorial009.py b/tests/test_tutorial/test_options/test_completion/test_tutorial009.py
-index 8e52908..8c7869a 100644
---- a/tests/test_tutorial/test_options/test_completion/test_tutorial009.py
-+++ b/tests/test_tutorial/test_options/test_completion/test_tutorial009.py
-@@ -1,5 +1,6 @@
- import os
- import subprocess
-+import sys
- 
- import typer
- from typer.testing import CliRunner
-@@ -14,7 +15,7 @@ app.command()(mod.main)
- 
- def test_completion():
-     result = subprocess.run(
--        ["coverage", "run", mod.__file__, " "],
-+        [sys.executable, "-m", "coverage", "run", mod.__file__, " "],
-         stdout=subprocess.PIPE,
-         stderr=subprocess.PIPE,
-         encoding="utf-8",
-@@ -41,7 +42,7 @@ def test_1():
- 
- def test_script():
-     result = subprocess.run(
--        ["coverage", "run", mod.__file__, "--help"],
-+        [sys.executable, "-m", "coverage", "run", mod.__file__, "--help"],
-         stdout=subprocess.PIPE,
-         stderr=subprocess.PIPE,
-         encoding="utf-8",
 diff --git a/tests/test_tutorial/test_options/test_help/test_tutorial001.py b/tests/test_tutorial/test_options/test_help/test_tutorial001.py
 index f9f7d22..3e89d55 100644
 --- a/tests/test_tutorial/test_options/test_help/test_tutorial001.py
@@ -1699,6 +1842,25 @@ index e3d4b89..260d645 100644
  import typer
  from typer.testing import CliRunner
 @@ -36,7 +37,7 @@ def test_help():
+ 
+ def test_script():
+     result = subprocess.run(
+-        ["coverage", "run", mod.__file__, "--help"],
++        [sys.executable, "-m", "coverage", "run", mod.__file__, "--help"],
+         stdout=subprocess.PIPE,
+         stderr=subprocess.PIPE,
+         encoding="utf-8",
+diff --git a/tests/test_tutorial/test_options/test_help/test_tutorial003.py b/tests/test_tutorial/test_options/test_help/test_tutorial003.py
+index 3750612..f6a9826 100644
+--- a/tests/test_tutorial/test_options/test_help/test_tutorial003.py
++++ b/tests/test_tutorial/test_options/test_help/test_tutorial003.py
+@@ -1,4 +1,5 @@
+ import subprocess
++import sys
+ 
+ import typer
+ from typer.testing import CliRunner
+@@ -27,7 +28,7 @@ def test_help():
  
  def test_script():
      result = subprocess.run(
@@ -1904,6 +2066,180 @@ index cb5c62e..a5a7060 100644
      result = subprocess.run(
 -        ["coverage", "run", mod.__file__, " "],
 +        [sys.executable, "-m", "coverage", "run", mod.__file__, " "],
+         stdout=subprocess.PIPE,
+         stderr=subprocess.PIPE,
+         encoding="utf-8",
+diff --git a/tests/test_tutorial/test_options_autocompletion/test_tutorial002.py b/tests/test_tutorial/test_options_autocompletion/test_tutorial002.py
+index c9d1970..3dc81a7 100644
+--- a/tests/test_tutorial/test_options_autocompletion/test_tutorial002.py
++++ b/tests/test_tutorial/test_options_autocompletion/test_tutorial002.py
+@@ -1,5 +1,6 @@
+ import os
+ import subprocess
++import sys
+ 
+ from typer.testing import CliRunner
+ 
+@@ -10,7 +11,7 @@ runner = CliRunner()
+ 
+ def test_completion():
+     result = subprocess.run(
+-        ["coverage", "run", mod.__file__, " "],
++        [sys.executable, "-m", "coverage", "run", mod.__file__, " "],
+         stdout=subprocess.PIPE,
+         stderr=subprocess.PIPE,
+         encoding="utf-8",
+@@ -34,7 +35,7 @@ def test_1():
+ 
+ def test_script():
+     result = subprocess.run(
+-        ["coverage", "run", mod.__file__, "--help"],
++        [sys.executable, "-m", "coverage", "run", mod.__file__, "--help"],
+         stdout=subprocess.PIPE,
+         stderr=subprocess.PIPE,
+         encoding="utf-8",
+diff --git a/tests/test_tutorial/test_options_autocompletion/test_tutorial003.py b/tests/test_tutorial/test_options_autocompletion/test_tutorial003.py
+index 77fee38..e066523 100644
+--- a/tests/test_tutorial/test_options_autocompletion/test_tutorial003.py
++++ b/tests/test_tutorial/test_options_autocompletion/test_tutorial003.py
+@@ -1,5 +1,6 @@
+ import os
+ import subprocess
++import sys
+ 
+ from typer.testing import CliRunner
+ 
+@@ -10,7 +11,7 @@ runner = CliRunner()
+ 
+ def test_completion():
+     result = subprocess.run(
+-        ["coverage", "run", mod.__file__, " "],
++        [sys.executable, "-m", "coverage", "run", mod.__file__, " "],
+         stdout=subprocess.PIPE,
+         stderr=subprocess.PIPE,
+         encoding="utf-8",
+@@ -34,7 +35,7 @@ def test_1():
+ 
+ def test_script():
+     result = subprocess.run(
+-        ["coverage", "run", mod.__file__, "--help"],
++        [sys.executable, "-m", "coverage", "run", mod.__file__, "--help"],
+         stdout=subprocess.PIPE,
+         stderr=subprocess.PIPE,
+         encoding="utf-8",
+diff --git a/tests/test_tutorial/test_options_autocompletion/test_tutorial004.py b/tests/test_tutorial/test_options_autocompletion/test_tutorial004.py
+index f2d8dd3..1aaec9d 100644
+--- a/tests/test_tutorial/test_options_autocompletion/test_tutorial004.py
++++ b/tests/test_tutorial/test_options_autocompletion/test_tutorial004.py
+@@ -1,5 +1,6 @@
+ import os
+ import subprocess
++import sys
+ 
+ from typer.testing import CliRunner
+ 
+@@ -10,7 +11,7 @@ runner = CliRunner()
+ 
+ def test_completion():
+     result = subprocess.run(
+-        ["coverage", "run", mod.__file__, " "],
++        [sys.executable, "-m", "coverage", "run", mod.__file__, " "],
+         stdout=subprocess.PIPE,
+         stderr=subprocess.PIPE,
+         encoding="utf-8",
+@@ -34,7 +35,7 @@ def test_1():
+ 
+ def test_script():
+     result = subprocess.run(
+-        ["coverage", "run", mod.__file__, "--help"],
++        [sys.executable, "-m", "coverage", "run", mod.__file__, "--help"],
+         stdout=subprocess.PIPE,
+         stderr=subprocess.PIPE,
+         encoding="utf-8",
+diff --git a/tests/test_tutorial/test_options_autocompletion/test_tutorial007.py b/tests/test_tutorial/test_options_autocompletion/test_tutorial007.py
+index c8bc089..9af6681 100644
+--- a/tests/test_tutorial/test_options_autocompletion/test_tutorial007.py
++++ b/tests/test_tutorial/test_options_autocompletion/test_tutorial007.py
+@@ -1,5 +1,6 @@
+ import os
+ import subprocess
++import sys
+ 
+ from typer.testing import CliRunner
+ 
+@@ -10,7 +11,7 @@ runner = CliRunner()
+ 
+ def test_completion():
+     result = subprocess.run(
+-        ["coverage", "run", mod.__file__, " "],
++        [sys.executable, "-m", "coverage", "run", mod.__file__, " "],
+         stdout=subprocess.PIPE,
+         stderr=subprocess.PIPE,
+         encoding="utf-8",
+@@ -35,7 +36,7 @@ def test_1():
+ 
+ def test_script():
+     result = subprocess.run(
+-        ["coverage", "run", mod.__file__, "--help"],
++        [sys.executable, "-m", "coverage", "run", mod.__file__, "--help"],
+         stdout=subprocess.PIPE,
+         stderr=subprocess.PIPE,
+         encoding="utf-8",
+diff --git a/tests/test_tutorial/test_options_autocompletion/test_tutorial008.py b/tests/test_tutorial/test_options_autocompletion/test_tutorial008.py
+index 06a82af..78a787a 100644
+--- a/tests/test_tutorial/test_options_autocompletion/test_tutorial008.py
++++ b/tests/test_tutorial/test_options_autocompletion/test_tutorial008.py
+@@ -1,5 +1,6 @@
+ import os
+ import subprocess
++import sys
+ 
+ from typer.testing import CliRunner
+ 
+@@ -10,7 +11,7 @@ runner = CliRunner()
+ 
+ def test_completion():
+     result = subprocess.run(
+-        ["coverage", "run", mod.__file__, " "],
++        [sys.executable, "-m", "coverage", "run", mod.__file__, " "],
+         stdout=subprocess.PIPE,
+         stderr=subprocess.PIPE,
+         encoding="utf-8",
+@@ -37,7 +38,7 @@ def test_1():
+ 
+ def test_script():
+     result = subprocess.run(
+-        ["coverage", "run", mod.__file__, "--help"],
++        [sys.executable, "-m", "coverage", "run", mod.__file__, "--help"],
+         stdout=subprocess.PIPE,
+         stderr=subprocess.PIPE,
+         encoding="utf-8",
+diff --git a/tests/test_tutorial/test_options_autocompletion/test_tutorial009.py b/tests/test_tutorial/test_options_autocompletion/test_tutorial009.py
+index 692da7e..ee7918d 100644
+--- a/tests/test_tutorial/test_options_autocompletion/test_tutorial009.py
++++ b/tests/test_tutorial/test_options_autocompletion/test_tutorial009.py
+@@ -1,5 +1,6 @@
+ import os
+ import subprocess
++import sys
+ 
+ from typer.testing import CliRunner
+ 
+@@ -10,7 +11,7 @@ runner = CliRunner()
+ 
+ def test_completion():
+     result = subprocess.run(
+-        ["coverage", "run", mod.__file__, " "],
++        [sys.executable, "-m", "coverage", "run", mod.__file__, " "],
+         stdout=subprocess.PIPE,
+         stderr=subprocess.PIPE,
+         encoding="utf-8",
+@@ -37,7 +38,7 @@ def test_1():
+ 
+ def test_script():
+     result = subprocess.run(
+-        ["coverage", "run", mod.__file__, "--help"],
++        [sys.executable, "-m", "coverage", "run", mod.__file__, "--help"],
          stdout=subprocess.PIPE,
          stderr=subprocess.PIPE,
          encoding="utf-8",
@@ -2611,7 +2947,7 @@ index d6f32f3..3e1607d 100644
          stderr=subprocess.PIPE,
          encoding="utf-8",
 diff --git a/tests/test_tutorial/test_subcommands/test_tutorial003.py b/tests/test_tutorial/test_subcommands/test_tutorial003.py
-index 3b3aeb7..4db168b 100644
+index 770da97..f31e46d 100644
 --- a/tests/test_tutorial/test_subcommands/test_tutorial003.py
 +++ b/tests/test_tutorial/test_subcommands/test_tutorial003.py
 @@ -1,4 +1,5 @@
@@ -2620,7 +2956,7 @@ index 3b3aeb7..4db168b 100644
  
  import pytest
  from typer.testing import CliRunner
-@@ -138,7 +139,7 @@ def test_scripts(mod):
+@@ -159,7 +160,7 @@ def test_scripts(mod):
  
      for module in [mod, items, lands, reigns, towns, users]:
          result = subprocess.run(

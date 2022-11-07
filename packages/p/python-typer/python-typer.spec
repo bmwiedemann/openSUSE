@@ -19,7 +19,7 @@
 
 %define skip_python2 1
 Name:           python-typer
-Version:        0.6.1
+Version:        0.7.0
 Release:        0
 Summary:        Typer, build great CLIs. Easy to code. Based on Python type hints
 License:        MIT
