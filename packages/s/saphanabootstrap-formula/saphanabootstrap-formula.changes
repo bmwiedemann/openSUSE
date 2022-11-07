@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Mon Nov  7 08:59:19 UTC 2022 - Steven Stringer <steven.stringer@suse.com>
+
+- Version bump 0.13.1
+  * revert changes to spec file to re-enable SLES RPM builds
+  
+-------------------------------------------------------------------
+Mon Aug 15 08:29:52 UTC 2022 - Eike Waldt <waldt@b1-systems.de>
+
+- Version bump 0.13.0
+  * pass sid to sudoers in a SLES12 compatible way
+  * add location constraint to gcp_stonith
+
+-------------------------------------------------------------------
+Thu Aug 11 09:19:38 UTC 2022 - Christian Schneemann <schneemann@b1-systems.de>
+
+- Version bump 0.12.1
+  * moved templates dir into hana dir in repository to be gitfs compatible
+
+-------------------------------------------------------------------
+Thu Jul 28 10:03:12 UTC 2022 - Eike Waldt <waldt@b1-systems.de>
+
+- Version bump 0.12.0
+  * add SAPHanaSR takeover blocker
+
+-------------------------------------------------------------------
+Thu Jul 19 11:47:52 UTC 2022 - Eike Waldt <waldt@b1-systems.de>
+
+- Version bump 0.11.0
+  * use check_cmd instead of tmp sudoers file
+  * make sudoers rules more secure
+  * migrate sudoers to template file
+
+-------------------------------------------------------------------
+Thu Jun 06 18:31:32 UTC 2022 - Eike Waldt <waldt@b1-systems.de>
+
+- Version bump 0.10.1
+  * fix hook removal conditions
+  * fix majority_maker code on case grain is empty
+
+-------------------------------------------------------------------
+Thu May 13 08:16:24 UTC 2022 - Eike Waldt <waldt@b1-systems.de>
+
+- Version bump 0.10.0
+  * allow to disable shared HANA basepath and rework add_hosts code
+    (enables HANA scale-out on AWS)
+  * do not edit global.ini directly (if not needed)
+
+-------------------------------------------------------------------
+
+Thu May 05 20:18:52 UTC 2022 - Eike Waldt <waldt@b1-systems.de>
+
+- Version bump 0.9.1
+  * fix majority_maker code on case grain is empty
+
+-------------------------------------------------------------------
+Thu Nov 17 13:52:34 UTC 2021 - Eike Waldt <waldt@b1-systems.de>
+
+- Version bump 0.9.0
+  * define vip_mechanism for every provider and reorder resources
+    (same schema for all SAP related formulas)
+
+-------------------------------------------------------------------
+Thu Nov 11 15:08:11 UTC 2021 - Eike Waldt <waldt@b1-systems.de>
+
+- Version bump 0.8.1
+  * use multi-target Hook on HANA scale-out
+
+-------------------------------------------------------------------
+Thu Jul 29 13:21:45 UTC 2021 - Eike Waldt <waldt@b1-systems.de>
+
+- Version bump 0.8.0
+  * add HANA scale-out support
+  * add idempotence to not affect a running HANA and cluster
+
+-------------------------------------------------------------------
 Thu Jun 17 13:56:06 UTC 2021 - Eike Waldt <waldt@b1-systems.de>
 
 - Version bump 0.7.2
@@ -180,7 +255,7 @@ Fri Apr 17 08:14:08 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
 Tue Apr 14 13:28:03 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
 
 - Version 0.5.6
-  * Update anyting socat resource by azure-lb as recommended in
+  * Update anything socat resource by azure-lb as recommended in
   the updated best practices guide
 
 -------------------------------------------------------------------
@@ -323,7 +398,7 @@ Mon Jul 22 08:26:16 UTC 2019 - Xabier Arbulu Insausti <xarbulu@suse.com>
 Mon Jul  8 11:49:55 UTC 2019 - Dario Maiocchi <dmaiocchi@suse.com>
 
 - Version bump 0.2.6
-  * Retry pkg.install multiple times, in case a pkg installtion fails
+  * Retry pkg.install multiple times, in case a pkg installation fails
   for having a more resilient installation.
 
 -------------------------------------------------------------------

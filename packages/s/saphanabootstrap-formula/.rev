@@ -318,4 +318,12 @@
     <comment>New version of saphanabootstrap-formula released</comment>
     <requestid>902936</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>b88c9ab7a7b2ce930d001194f6b4866e</srcmd5>
+    <version>0.13.1+git.1667812208.4db963e</version>
+    <time>1667825512</time>
+    <user>dimstar_suse</user>
+    <comment>New version of saphanabootstrap-formula released</comment>
+    <requestid>1034109</requestid>
+  </revision>
 </revisionlist>

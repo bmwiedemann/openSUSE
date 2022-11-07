@@ -19,7 +19,7 @@
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 
 Name:           saphanabootstrap-formula
-Version:        0.7.2+git.1624949405.ab53030
+Version:        0.13.1+git.1667812208.4db963e
 Release:        0
 Summary:        SAP HANA platform deployment formula
 License:        Apache-2.0
@@ -61,7 +61,6 @@ module, which can be added running the `SUSEConnect -p sle-module-adv-systems-ma
 mkdir -p %{buildroot}%{fdir}/states/%{fname}
 mkdir -p %{buildroot}%{fdir}/metadata/%{fname}
 cp -R %{fname} %{buildroot}%{fdir}/states
-cp -R %{ftemplates} %{buildroot}%{fdir}/states/%{fname}
 cp -R form.yml pillar.example %{buildroot}%{fdir}/metadata/%{fname}
 if [ -f metadata.yml ]
 then
