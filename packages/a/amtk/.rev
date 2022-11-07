@@ -92,4 +92,12 @@
     <comment>Update to 5.4.1 (forwarded request 984701 from dimstar)</comment>
     <requestid>984838</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b9bfd3d8cbf4fff2ae13690eb4c96063</srcmd5>
+    <version>5.6.0</version>
+    <time>1667825537</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 1033631 from iznogood)</comment>
+    <requestid>1034160</requestid>
+  </revision>
 </revisionlist>

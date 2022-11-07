@@ -18,15 +18,15 @@
 
 
 %define api_ver 5
-%define libamtk libamtk-%{api_ver}-0
+%define libamtk libamtk-%{api_ver}-1
 Name:           amtk
-Version:        5.4.1
+Version:        5.6.0
 Release:        0
 Summary:        An Actions, Menus and Toolbars Kit
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/GNOME
-URL:            https://gitlab.gnome.org/swilmet/amtk/
-Source0:        https://download.gnome.org/sources/amtk/5.4/%{name}-%{version}.tar.xz
+URL:            https://gitlab.gnome.org/World/amtk
+Source0:        https://download.gnome.org/sources/amtk/5.6/%{name}-%{version}.tar.xz
 
 BuildRequires:  gobject-introspection-devel >= 1.42.0
 BuildRequires:  gtk-doc >= 1.25
@@ -93,11 +93,10 @@ with AMTK.
 %meson_install
 %find_lang %{name}-%{api_ver}
 
+%ldconfig_scriptlets -n %{libamtk}
+
 %check
 %meson_test
-
-%post   -n %{libamtk} -p /sbin/ldconfig
-%postun -n %{libamtk} -p /sbin/ldconfig
 
 %files -n %{libamtk}
 %license LICENSES/*
