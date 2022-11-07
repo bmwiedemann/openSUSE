@@ -94,11 +94,19 @@ BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  cmake(Qt5XmlPatterns)
 BuildRequires:  cmake(libheif)
 BuildRequires:  pkgconfig(Magick++)
+%if 0%{suse_version} >= 1550
+BuildRequires:  ffmpeg-4-libavcodec-devel
+BuildRequires:  ffmpeg-4-libavdevice-devel
+BuildRequires:  ffmpeg-4-libavfilter-devel
+BuildRequires:  ffmpeg-4-libavformat-devel
+BuildRequires:  ffmpeg-4-libavutil-devel
+%else
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavdevice)
 BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
+%endif
 BuildRequires:  pkgconfig(libgphoto2) >= 2.4.0
 BuildRequires:  pkgconfig(libswscale)
 Requires:       %{name}-plugins

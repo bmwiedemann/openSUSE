@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov  7 07:49:32 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Explicitly use FFmpeg 4 to build Digikam for the moment
+
+-------------------------------------------------------------------
 Tue Sep  6 10:53:35 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 7.8.0
