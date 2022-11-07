@@ -20,7 +20,7 @@
 %global __builddir obs_build
 
 Name:           jasper
-Version:        3.0.6
+Version:        4.0.0
 Release:        0
 Summary:        An Implementation of the JPEG-2000 Standard, Part 1
 License:        JasPer-2.0
@@ -28,7 +28,6 @@ Group:          Productivity/Graphics/Convertors
 URL:            https://jasper-software.github.io/jasper
 Source:         https://github.com/jasper-software/jasper/archive/version-%{version}.tar.gz
 Source1:        baselibs.conf
-Patch0:         jasper-CVE-2022-2963.patch
 BuildRequires:  Mesa-libGL-devel
 BuildRequires:  cmake
 BuildRequires:  doxygen
@@ -47,18 +46,18 @@ This package contains an implementation of the image compression
 standard, JPEG-2000, Part 1. It consists of tools for conversion to and
 from the JP2 and JPC formats.
 
-%package -n libjasper6
+%package -n libjasper7
 Summary:        JPEG-2000 library
 Group:          Productivity/Graphics/Convertors
 
-%description -n libjasper6
+%description -n libjasper7
 This package contains libjasper, a library implementing the JPEG-2000
 image compression standard Part 1.
 
 %package -n libjasper-devel
 Summary:        Development files for libjasper, a JPEG-2000 library
 Group:          Productivity/Graphics/Convertors
-Requires:       libjasper6 = %{version}
+Requires:       libjasper7 = %{version}
 Requires:       libjpeg-devel
 
 %description -n libjasper-devel
@@ -67,7 +66,6 @@ image compression standard Part 1.
 
 %prep
 %setup -q -n %{name}-version-%{version}
-%patch0 -p1
 
 %build
 export CFLAGS="%{optflags} -Wall -std=c99 -D_BSD_SOURCE"
@@ -79,8 +77,8 @@ export CFLAGS="%{optflags} -Wall -std=c99 -D_BSD_SOURCE"
 
 %fdupes -s %{buildroot}/%{_docdir}/%{name}
 
-%post -n libjasper6 -p /sbin/ldconfig
-%postun -n libjasper6 -p /sbin/ldconfig
+%post -n libjasper7 -p /sbin/ldconfig
+%postun -n libjasper7 -p /sbin/ldconfig
 
 %files
 %license LICENSE.txt
@@ -94,7 +92,7 @@ export CFLAGS="%{optflags} -Wall -std=c99 -D_BSD_SOURCE"
 %{_bindir}/jiv
 %{_mandir}/man*/*
 
-%files -n libjasper6
+%files -n libjasper7
 %{_libdir}/libjasper*.so.*
 
 %files -n libjasper-devel

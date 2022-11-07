@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Nov  6 09:19:20 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.0.0:
+  * Improve static linking (##336).
+  * Fix path relocation in mingw environment (#335).
+  * Improve logging and build scripts.
+  * Improve JPEG-2000 conformance test results.
+  * Enable PIC by default.
+  * Fix memory leaks in function cmdopts_parse (#332) (CVE-2022-2963).
+  * imgcmp:
+    + Add quiet (-q) option.
+    + Add debug-level option.
+    + Fix memory leak.
+    imginfo:
+    + Add quiet (-q) option.
+  * Fix bug in parsing PGX header.
+  * Fix integer overflow bug (#345) (CVE-2022-40755).
+- Remove jasper-CVE-2022-2963.patch
+
+-------------------------------------------------------------------
 Fri Sep 16 11:34:42 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - security update:

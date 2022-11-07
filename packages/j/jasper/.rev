@@ -237,4 +237,27 @@
     + jasper-CVE-2022-2963.patch</comment>
     <requestid>1004089</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>d5686e3d22c1a8d56bd50d0ef81fb998</srcmd5>
+    <version>4.0.0</version>
+    <time>1667825481</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.0:
+  * Improve static linking (##336).
+  * Fix path relocation in mingw environment (#335).
+  * Improve logging and build scripts.
+  * Improve JPEG-2000 conformance test results.
+  * Enable PIC by default.
+  * Fix memory leaks in function cmdopts_parse (#332) (CVE-2022-2963).
+  * imgcmp:
+    + Add quiet (-q) option.
+    + Add debug-level option.
+    + Fix memory leak.
+    imginfo:
+    + Add quiet (-q) option.
+  * Fix bug in parsing PGX header.
+  * Fix integer overflow bug (#345) (CVE-2022-40755).
+- Remove jasper-CVE-2022-2963.patch</comment>
+    <requestid>1033833</requestid>
+  </revision>
 </revisionlist>
