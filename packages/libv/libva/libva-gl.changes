@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov  7 12:52:38 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- needed for jira#PED-1174 (Video decoding/encoding support 
+  (VA-API, ...) for Intel GPUs is outside of Mesa)
+
+-------------------------------------------------------------------
 Thu Sep 29 19:17:18 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.16.0:
