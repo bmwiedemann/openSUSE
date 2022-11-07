@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sun Nov  6 14:56:14 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.4.0
+  ## New features
+  * Now the Code Analysis/Pylint plugin uses the current custom
+    interpreter/environment if set
+  * Option to show user environment variables extended to all
+    operative systems (previously available only for Windows)
+  ## Important fixes
+  * Improve Outline Explorer plugin performance and fix updating
+    process when it becomes visible
+  * Improvements to colors on the dependencies dialog and IPython
+    console
+  * Fix IPython console issues on the Matplotlib TkInter backend
+    with debugging and an increase of CPU and memory usage while in
+    an idle state
+  * Fix IPython console memory leak when using the Matplotlib Qt
+    ackend
+  * Fix IPython console input() issue on MacOS
+  * Fix IPython console kernel error regarding environment path as
+    unexpected argument
+  * Fix Spyder 3 icon theme load on Windows with untrusted fonts
+    security restrictions
+  * Fix the Autoformat files on save functionality to not hang with
+    non-Python files
+  * Some fixes for cell execution on Python 3.11
+  * Some fixes to shortcuts (Switch to Editor, Find Next, Find
+    Previous)
+  * Some fixes to improve compatibility with PySide2
+  * Some fixes to prevent blurry SVG icons
+
+-------------------------------------------------------------------
 Wed Aug 31 10:48:32 UTC 2022 - andy great <andythe_great@pm.me>
 
 - Update to 5.3.3.

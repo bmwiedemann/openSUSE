@@ -553,4 +553,40 @@ rename the package from spyder3 to spyder.
     * Improve Find and Replace speed on the Editor.</comment>
     <requestid>1001154</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>1a1f584c824871a363781c75efd39214</srcmd5>
+    <version>5.4.0</version>
+    <time>1667825529</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.4.0
+  ## New features
+  * Now the Code Analysis/Pylint plugin uses the current custom
+    interpreter/environment if set
+  * Option to show user environment variables extended to all
+    operative systems (previously available only for Windows)
+  ## Important fixes
+  * Improve Outline Explorer plugin performance and fix updating
+    process when it becomes visible
+  * Improvements to colors on the dependencies dialog and IPython
+    console
+  * Fix IPython console issues on the Matplotlib TkInter backend
+    with debugging and an increase of CPU and memory usage while in
+    an idle state
+  * Fix IPython console memory leak when using the Matplotlib Qt
+    ackend
+  * Fix IPython console input() issue on MacOS
+  * Fix IPython console kernel error regarding environment path as
+    unexpected argument
+  * Fix Spyder 3 icon theme load on Windows with untrusted fonts
+    security restrictions
+  * Fix the Autoformat files on save functionality to not hang with
+    non-Python files
+  * Some fixes for cell execution on Python 3.11
+  * Some fixes to shortcuts (Switch to Editor, Find Next, Find
+    Previous)
+  * Some fixes to improve compatibility with PySide2
+  * Some fixes to prevent blurry SVG icons
+</comment>
+    <requestid>1034142</requestid>
+  </revision>
 </revisionlist>
