@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Nov  1 10:58:47 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 4.1.5
+ * src/browser.c          Corrected deferred
+ * utils/Makefile.am      Added manifier to the distro
+ * src/browser.c          Made all threads cancel deferred 
+ * src/ftp.c              Catch 421: server accepts but doesn't handle
+ * src/timer.c            Added a second to account for spool up
+ * src/memory.c           Added xstrncpy, xstrncat
+ * src/memory.h           Added xstrncpy, xstrncat
+ * src/cookies.c          Implemented new x* functions
+ * src/ssl.c              Silenced compiler warning
+ * src/main.c             Added xstrncpy to silence warnings
+ * doc/siege.pod          Fixed a typo in the man page
+ * src/parser.c           Refined match for META redirect 
+ * src/browser.c          Fixed typos
+ * src/date.c             Fixed typos
+ * src/url.c              Fixed typos
+ * utils/siege2csv.in     Fixed typos
+ * src/main.c             Silenced statistics output on -g/--get
+ * src/cookies.c          Improved domain matching, added my.get 
+ * src/ssl.c              Silenced a compiler warning
+ * src/browser.c          Added HTTP response 201 handler
+ * src/response.c         Added Content-Location handler
+ * src/response.h         Added CONTENT_LOCATION value
+ * src/http.c             Added Content-Location parser
+ * src/cfg.c              Added an escape handler for $ in URLs
+ * src/eval.c             Added function escape(str) to remove '\'
+ * src/ssl.c              Put ERR_remove_state inside ssl version
+ * src/url.c              Added fix for null path checking
+ * src/util.c             Fixed np_phtread_usleep for Solaris
+ * src/url.c              Removed leading / from ftp paths
+ * src/browser.c          fixed: "--reps=once" 
+ * src/main.c             fixed: "--reps=once" 
+ * src/init.c             Fixed password parsing # can be in pwd
+ * src/auth.c             Prettified credentials output for siege -C
+
+-------------------------------------------------------------------
 Wed May 19 19:13:49 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 4.0.9
