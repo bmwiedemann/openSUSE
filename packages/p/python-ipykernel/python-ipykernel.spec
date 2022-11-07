@@ -17,7 +17,7 @@
 
 
 Name:           python-ipykernel
-Version:        6.16.2
+Version:        6.17.0
 Release:        0
 Summary:        IPython Kernel for Jupyter
 License:        BSD-3-Clause
@@ -35,7 +35,7 @@ Provides:       %{python_module jupyter-ipykernel-doc = %{version}}
 Obsoletes:      %{python_module jupyter-ipykernel-doc < %{version}}
 BuildArch:      noarch
 # SECTION build-system
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatchling >= 1.4}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
