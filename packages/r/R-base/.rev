@@ -1789,4 +1789,41 @@ CHANGES IN R 3.4.2:
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>986019</requestid>
   </revision>
+  <revision rev="86" vrev="43">
+    <srcmd5>b67c4fd2756cda091bdbe2cfd33035a3</srcmd5>
+    <version>unknown</version>
+    <time>1667825492</time>
+    <user>dimstar_suse</user>
+    <comment>- CHANGES IN R 4.2.2:
+  NEW FEATURES:
+    * tools::Rdiff(useDiff = TRUE) checks for the presence of an
+      external diff command and switches to useDiff = FALSE if none is
+      found.  This allows R CMD Rdiff to always work.
+    * On Windows, environment variable R_LIBCURL_SSL_REVOKE_BEST_EFFORT
+      can be used to switch to only 'best-effort' SSL certificate
+      revocation checks with the default &quot;libcurl&quot; download method.
+      This reduces security, but may be needed for downloads to work
+      with MITM proxies (PR#18379).
+    * (macOS) The run-time check for libraries from XQuartz for X11 and
+      Tcl/Tk no longer uses otool from the Apple Developer Tools
+      (PR#18400).
+    * The LaTeX style for producing the PDF manuals, Rd.sty, now loads
+      the standard amsmath, amsfonts and amssymb packages for greater
+      coverage of math commands in the Rd \eqn and \deqn macros.  The
+      \mathscr LaTeX command is also provided (via the mathrsfs
+      package, if available, or the amsfonts bundle otherwise),
+      fulfilling the wish of PR#18398.
+    * (Windows) The default format of readClipboard() and
+      writeClipboard() has been changed to 13 (CF_UNICODETEXT).
+  INSTALLATION on a UNIX-ALIKE:
+    * The PDF manuals (if built) can be compacted by the new target
+      make compact-pdf (at the top level or in directory doc/manual).
+    * There is now configure support for LLVM clang 15 on Linux, which
+      defaults to position-independent (PIE) executables whereas
+      gfortran does not.
+    * Many small changes to ease compilation (and suppress warnings)
+      with LLVM clang 15.
+  BUG FIXES:</comment>
+    <requestid>1033874</requestid>
+  </revision>
 </revisionlist>

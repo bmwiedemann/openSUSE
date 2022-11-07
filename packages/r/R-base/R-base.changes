@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Mon Oct 31 18:56:44 UTC 2022 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- CHANGES IN R 4.2.2:
+
+  NEW FEATURES:
+
+    * tools::Rdiff(useDiff = TRUE) checks for the presence of an
+      external diff command and switches to useDiff = FALSE if none is
+      found.  This allows R CMD Rdiff to always work.
+
+    * On Windows, environment variable R_LIBCURL_SSL_REVOKE_BEST_EFFORT
+      can be used to switch to only 'best-effort' SSL certificate
+      revocation checks with the default "libcurl" download method.
+      This reduces security, but may be needed for downloads to work
+      with MITM proxies (PR#18379).
+
+    * (macOS) The run-time check for libraries from XQuartz for X11 and
+      Tcl/Tk no longer uses otool from the Apple Developer Tools
+      (PR#18400).
+
+    * The LaTeX style for producing the PDF manuals, Rd.sty, now loads
+      the standard amsmath, amsfonts and amssymb packages for greater
+      coverage of math commands in the Rd \eqn and \deqn macros.  The
+      \mathscr LaTeX command is also provided (via the mathrsfs
+      package, if available, or the amsfonts bundle otherwise),
+      fulfilling the wish of PR#18398.
+
+    * (Windows) The default format of readClipboard() and
+      writeClipboard() has been changed to 13 (CF_UNICODETEXT).
+
+  INSTALLATION on a UNIX-ALIKE:
+
+    * The PDF manuals (if built) can be compacted by the new target
+      make compact-pdf (at the top level or in directory doc/manual).
+
+    * There is now configure support for LLVM clang 15 on Linux, which
+      defaults to position-independent (PIE) executables whereas
+      gfortran does not.
+
+    * Many small changes to ease compilation (and suppress warnings)
+      with LLVM clang 15.
+
+  BUG FIXES:
+
+    * Rscript -e would fail if stdin were closed (Reported by Henrik
+      Bengtsson.)
+
+    * qt(*, log.p=TRUE) in outer tails no longer produces NaN in its
+      final steps, thus fixing PR#18360.
+
+    * tools::Rd2latex() now escapes hashes and ampersands when writing
+      URLs, fixing LaTeX errors with such URLs in \tabular.
+
+    * When isGeneric(f, fdef=*) is used with mismatching names, the
+      warning is better understandable; reported (with fix) in PR#18370
+      by Gabe Becker.
+
+    * poly(x, n) now works again (and is now documented) when x is a
+      "Date" or "POSIXct" object, or of another class while fulfilling
+      mode(x) == "numeric".  This also enables poly(x, *, raw=TRUE) for
+      such variables.  Reported by Michael Chirico to R-devel.
+
+    * write.table(), write.csv() and write.csv2() restore their
+      numerical precision (internal equivalent of digits = 15) after an
+      interrupt (PR#18384).
+
+    * One can now read also byte FF from a clipboard connection
+      (PR#18385).
+
+    * source("") and source(character()) now give more helpful error
+      messages.
+
+    * R CMD check --as-cran set _R_CHECK_TIMINGS_ too late to have the
+      intended effect.
+
+    * as.POSIXlt(x) now also works with very large dates x, fixing
+      PR#18401 reported by Hannes M"uhleisen.
+
+    * Files can now be extracted even from very large zip archives
+      (PR#18390, thanks to Martin Jakt).
+
+    * Non-finite objects of class "POSIXlt" are now correctly coerced
+      to classes "Date" and "POSIXct"; following up on the extension to
+      format() them correctly.
+
+    * Added methods for is.finite(), is.infinite() and is.nan() for
+      "POSIXlt" date-time objects.
+
+-------------------------------------------------------------------
 Thu Jun 23 08:40:01 UTC 2022 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - CHANGES IN R 4.2.1:

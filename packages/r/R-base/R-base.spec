@@ -23,7 +23,7 @@
 %define release 1
 
 Name:           R-base
-Version:        4.2.1
+Version:        4.2.2
 Release:        %release
 %define Rversion %{version}
 Source0:        R-%{version}.tar.xz
@@ -1202,7 +1202,7 @@ This packages provides R-class, one of the recommended packages.
 
 %package -n R-cluster
 Summary:        Package provides recommended R-cluster
-Version:        2.1.3
+Version:        2.1.4
 Release:        %release
 Requires:       R-base
 
@@ -1257,7 +1257,7 @@ This packages provides R-codetools, one of the recommended packages.
 
 %package -n R-foreign
 Summary:        Package provides recommended R-foreign
-Version:        0.8.82
+Version:        0.8.83
 Release:        %release
 Requires:       R-base
 
@@ -1349,7 +1349,7 @@ This packages provides R-lattice, one of the recommended packages.
 
 %package -n R-MASS
 Summary:        Package provides recommended R-MASS
-Version:        7.3.57
+Version:        7.3.58
 Release:        %release
 Requires:       R-base
 
@@ -1382,7 +1382,7 @@ This packages provides R-MASS, one of the recommended packages.
 
 %package -n R-Matrix
 Summary:        Package provides recommended R-Matrix
-Version:        1.4.1
+Version:        1.5.1
 Release:        %release
 Requires:       R-base
 Obsoletes:      R-Matrix-devel <= 1.3.2
@@ -1430,7 +1430,7 @@ This packages provides R-Matrix, one of the recommended packages.
 
 %package -n R-mgcv
 Summary:        Package provides recommended R-mgcv
-Version:        1.8.40
+Version:        1.8.41
 Release:        %release
 Requires:       R-base
 
@@ -1460,7 +1460,7 @@ This packages provides R-mgcv, one of the recommended packages.
 
 %package -n R-nlme
 Summary:        Package provides recommended R-nlme
-Version:        3.1.157
+Version:        3.1.160
 Release:        %release
 Requires:       R-base
 
@@ -1492,7 +1492,7 @@ This packages provides R-nlme, one of the recommended packages.
 
 %package -n R-nnet
 Summary:        Package provides recommended R-nnet
-Version:        7.3.17
+Version:        7.3.18
 Release:        %release
 Requires:       R-base
 
@@ -1523,7 +1523,7 @@ This packages provides R-nnet, one of the recommended packages.
 
 %package -n R-rpart
 Summary:        Package provides recommended R-rpart
-Version:        4.1.16
+Version:        4.1.19
 Release:        %release
 Requires:       R-base
 
@@ -1588,7 +1588,7 @@ This packages provides R-spatial, one of the recommended packages.
 
 %package -n R-survival
 Summary:        Package provides recommended R-survival
-Version:        3.3.1
+Version:        3.4.0
 Release:        %release
 Requires:       R-base
 
