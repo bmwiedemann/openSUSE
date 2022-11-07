@@ -17,7 +17,7 @@
 
 
 Name:           retroarch
-Version:        1.10.3
+Version:        1.12.0
 Release:        0
 Summary:        Emulator frontend
 License:        GPL-3.0-only
@@ -92,7 +92,6 @@ export CXXFLAGS="$CFLAGS"
     --enable-materialui \
     --enable-xmb \
     --enable-sdl2 \
-    --enable-libusb \
     --enable-udev \
     --enable-threads \
     --enable-thread_storage \
