@@ -541,4 +541,15 @@
     <comment></comment>
     <requestid>1001138</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>6a46014ee19686eac8ddb20c986fd9bc</srcmd5>
+    <version>2.4.0</version>
+    <time>1667825528</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to verison 2.4.0
+  * Add support for Python 3.11
+  * Flush standard streams after execution.
+</comment>
+    <requestid>1034141</requestid>
+  </revision>
 </revisionlist>
