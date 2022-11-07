@@ -1341,4 +1341,11 @@ Look at the license file (forwarded request 143855 from babelworx)</comment>
     <comment></comment>
     <requestid>1033644</requestid>
   </revision>
+  <revision rev="137" vrev="4">
+    <srcmd5>bffc3bfc7ed6a8b0fe458af8bcc8f21a</srcmd5>
+    <version>1.9.12</version>
+    <time>1667809211</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.suse.com/show_bug.cgi?id=1205094</comment>
+  </revision>
 </revisionlist>
