@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Nov  6 20:32:55 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.10.0
+  * Allow server side copy across different shares on the same
+    server.
+  * Improve DFS file opens.
+  * Fix rename operations for a DFS path.
+  * Fix negotiate request context padding.
+
+-------------------------------------------------------------------
 Fri Oct 21 13:19:59 UTC 2022 - pgajdos@suse.com
 
 - python-six is not required 

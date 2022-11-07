@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-smbprotocol
-Version:        1.9.0
+Version:        1.10.0
 Release:        0
 Summary:        SMBv2/v3 client for Python 2 and 3
 License:        MIT
@@ -72,6 +72,8 @@ Features
 %files %{python_files}
 %license LICENSE
 %doc CHANGELOG.md README.md
-%{python_sitelib}/*
+%{python_sitelib}/smbclient
+%{python_sitelib}/smbprotocol
+%{python_sitelib}/smbprotocol-%{version}-py%{python_version}.egg-info
 
 %changelog
