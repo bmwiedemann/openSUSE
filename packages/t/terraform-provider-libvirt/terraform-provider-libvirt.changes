@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Nov 04 10:08:25 UTC 2022 - ralf@h4kamp.de
+
+- Update to version 0.7.0+git.1665231569.07cb1ec:
+  * fix golangci-lint setup
+  * remove go-version option from golangci-lint
+  * use go 1.18
+  * fix gorelease error
+  * port to v2 sdk (#969)
+  * SCSI use the `sd*` prefix and not the `vd*` prefix (#964)
+  * update go-getter
+  * update golangci-lint action
+  * Update reference to Kubitect project (#966)
+  * Rework NetworkUpdate workaround (#950)
+  * fix(error_msg): typo in destroy network error msg (#955)
+  * Fix `networkRange` race condition and global state corruption (#945)
+
+-------------------------------------------------------------------
 Wed Jun 29 10:06:14 UTC 2022 - ralf@h4kamp.de
 
 - Update to version 0.6.14+git.1643667786.ed8e2bbb:
