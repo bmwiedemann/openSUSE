@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c738b95aa8acde3113dee3f3ea0700df</srcmd5>
+    <version>2.3.0</version>
+    <time>1667825524</time>
+    <user>dimstar_suse</user>
+    <comment>Make pylint respect virtualenvs.</comment>
+    <requestid>1034133</requestid>
+  </revision>
+</revisionlist>

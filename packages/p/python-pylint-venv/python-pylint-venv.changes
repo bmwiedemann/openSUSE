@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Sun Nov  6 15:29:38 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Initial specfile for v2.3.0
+- Add pylint-venv-pr13-fixinclude.patch gh#jgosmann/pylint-venv#13
+- Required by spyder
