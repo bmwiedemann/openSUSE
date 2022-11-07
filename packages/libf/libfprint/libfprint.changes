@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Nov  6 10:42:36 UTC 2022 - Florian "spirit" <packaging@sp1rit.anonaddy.me>
+
+- Move to libfprint-tod fork:
+  This fork allows loading of external modules (typically non-free)
+  located in /usr/lib64/libfprint-2/tod-1/. This is neccessary for
+  fingerprint sensors that do on-device verifaction.
+  These non-free modules shall be included in Packman repositories.
+
+-------------------------------------------------------------------
 Sat Oct 29 11:47:08 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.94.5:
