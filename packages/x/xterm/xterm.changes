@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Nov  5 19:20:27 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 375:
+  * improve error-recovery when setting a bitmap font for the VT100
+    window, e.g., in case OSC 50 failed, restoring the most recent
+    valid font so that a subsequent OSC 50 reports this correctly 
+  * exclude MC_XDG_OPEN from environment variables trimmed on
+    startup
+  * check for null pointer in isSelect()
+- includes changes from 374:
+  * change default for sixelScrolling resource to better match
+    VT330/VT340 DECSDM setting 
+  * fix some gcc and coverity warnings.
+  * improve memory usage for OSC 52
+  * fix regression in xterm-373 change adding resources
+    xftTrackMemUsage to xftMaxGlyphMemory, which did not first
+    cache the server's resource-settings
+  * fix regression in xterm-373 change for status-line vs
+    alternate screen
+  * modify configure checks for egrep/fgrep aliases to work around
+    warning messages from GNU grep 3.8 boo#1203092
+
+-------------------------------------------------------------------
 Tue Sep 27 21:01:45 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 373:
