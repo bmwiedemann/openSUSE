@@ -113,4 +113,13 @@
 - supersedes u_libva-2.16.0.patch</comment>
     <requestid>1033156</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>39e78549d8da0c1c3fe7ab556381d72b</srcmd5>
+    <version>22.6.1</version>
+    <time>1667832958</time>
+    <user>dimstar_suse</user>
+    <comment>- needed for jira#PED-1174 (Video decoding/encoding support 
+  (VA-API, ...) for Intel GPUs is outside of Mesa)</comment>
+    <requestid>1034194</requestid>
+  </revision>
 </revisionlist>
