@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Nov  4 15:23:00 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 3.0.1
+  * point release that addresses an issue with runtime dependencies
+- Add patches for test suite:
+  * bokeh-remove-mock.patch gh#bokeh/bokeh#12561
+  * bokeh-sys-executable.patch gh#bokeh/bokeh#12563
+
+-------------------------------------------------------------------
+Mon Oct 31 11:39:10 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 3.0.0
+  * Bokeh Version 3.0.0 is a major milestone of Bokeh project.
+  ## Major changes
+  * Support for legacy web browser (e.g. IE, non-ES6 compliant) was
+    removed
+  * Official support for Python 3.7 was removed and for 3.10 added
+  * Layout and CSS interoperability was redesigned and greatly
+    improved
+  * Serialization protocol was redesigned and vastly improved
+  * CSS was modularized and all UI components are now Web
+    components
+  * Django integration was moved to
+    https://github.com/bokeh/bokeh-django
+  ## Minor changes
+  * Support added for favicon.ico files
+  * Initial import times reduced
+  * Support added for new selection policy NodesAndAdjacentNodes
+  * Plot.remove_tools() function added
+- Drop bokeh-pr12218-Pillow9.2.patch
+
+-------------------------------------------------------------------
 Thu Jul  7 17:32:06 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Add bokeh-pr12218-Pillow9.2.patch for fixing failures with
