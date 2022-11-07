@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov  4 10:06:29 UTC 2022 - pgajdos@suse.com
+
+- python-six is not required
+
+-------------------------------------------------------------------
 Tue Jan 11 21:01:09 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add python-rpm-macros dependency 

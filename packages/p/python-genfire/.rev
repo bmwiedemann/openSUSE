@@ -31,4 +31,12 @@
     <comment>- add python-rpm-macros dependency</comment>
     <requestid>945677</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>32a6e3316c0c1fec926da876213e443d</srcmd5>
+    <version>1.1.11</version>
+    <time>1667825502</time>
+    <user>dimstar_suse</user>
+    <comment>- python-six is not required</comment>
+    <requestid>1033946</requestid>
+  </revision>
 </revisionlist>

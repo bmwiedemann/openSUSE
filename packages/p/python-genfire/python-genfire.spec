@@ -17,9 +17,6 @@
 
 
 %define packagename genfire
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-# NEP 29: python36-numpy and -scipy are no longer available in TW
-%define skip_python36 1
 Name:           python-genfire
 Version:        1.1.11
 Release:        0
@@ -35,7 +32,6 @@ BuildRequires:  %{python_module pyFFTW}
 BuildRequires:  %{python_module pyparsing >= 2.2.0}
 BuildRequires:  %{python_module scipy >= 0.19.0}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six >= 1.10.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Pillow >= 4.1.1
@@ -45,7 +41,6 @@ Requires:       python-pyFFTW
 Requires:       python-pyparsing >= 2.2.0
 Requires:       python-scipy >= 0.19.0
 Requires:       python-setuptools
-Requires:       python-six >= 1.10.0
 BuildArch:      noarch
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -79,6 +74,7 @@ oriented projection images
 %files %{python_files}
 %doc README.md
 %python_alternative %{_bindir}/genfire
-%{python_sitelib}/*
+%{python_sitelib}/genfire
+%{python_sitelib}/genfire-%{version}*-info
 
 %changelog
