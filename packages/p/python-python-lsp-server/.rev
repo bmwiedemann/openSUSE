@@ -143,4 +143,22 @@
     <comment></comment>
     <requestid>999569</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>37913e79238057c141d9d9eae6f23f67</srcmd5>
+    <version>1.6.0</version>
+    <time>1667825527</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.0
+  * Migrate to MarkupContent and convert docstrings to Markdown by
+    default.
+  * Add support for flake8 version 5.
+  * Add function objects to Jedi completions.
+  * Don't include class and functions objects by default in Jedi
+    completions.
+- Drop patches
+  * python-lsp-server-advanceflake8.patch
+  * python-lsp-server-pylint-syntax-error.patch
+</comment>
+    <requestid>1034140</requestid>
+  </revision>
 </revisionlist>

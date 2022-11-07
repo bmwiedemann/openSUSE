@@ -17,16 +17,12 @@
 
 
 Name:           python-python-lsp-server
-Version:        1.5.0
+Version:        1.6.0
 Release:        0
 Summary:        Python Language Server for the Language Server Protocol
 License:        MIT
 URL:            https://github.com/python-lsp/python-lsp-server
 Source:         https://files.pythonhosted.org/packages/source/p/python-lsp-server/python-lsp-server-%{version}.tar.gz
-# PATCH-FEATURE-UPSTREAM python-lsp-server-advanceflake8.patch gh#python-lsp/python-lsp-server#257
-Patch0:         python-lsp-server-advanceflake8.patch
-# PATCH-FEATURE-UPSTREAM python-lsp-server-pylint-syntax-error.patch gh#python-lsp/python-lsp-server#258
-Patch1:         python-lsp-server-pylint-syntax-error.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 61.2}
@@ -35,9 +31,9 @@ BuildRequires:  %{python_module tomli}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros >= 20210628
 # SECTION test requirements
+BuildRequires:  %{python_module docstring-to-markdown}
 BuildRequires:  %{python_module PyQt5}
 BuildRequires:  %{python_module autopep8 >= 1.6.0 with %python-autopep8 < 1.7.0}
-# flake8 and its dependencies in a particular range, see Patch0
 BuildRequires:  %{python_module flake8 >= 5.0.0 with %python-flake8 < 5.1.0}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module jedi >= 0.17.2 with %python-jedi < 0.19.0}
@@ -55,6 +51,7 @@ BuildRequires:  %{python_module whatthepatch}
 BuildRequires:  %{python_module yapf}
 # /SECTION
 BuildRequires:  fdupes
+Requires:       python-docstring-to-markdown
 Requires:       python-pluggy >= 1.0.0
 Requires:       python-python-lsp-jsonrpc >= 1.0.0
 Requires:       python-setuptools >= 39.0.0
@@ -67,7 +64,7 @@ Suggests:       python-pylint >= 2.5.0
 Suggests:       python-rope >= 0.10.5
 Suggests:       python-yapf
 Suggests:       python-whatthepatch
-# SECTION flake8 pins -- see Patch0
+# SECTION flake8 pins
 Suggests:       python-flake8 >= 5.0.0
 Conflicts:      python-flake8 >= 5.1.0
 Suggests:       python-mccabe >= 0.7.0
@@ -76,7 +73,7 @@ Suggests:       python-pycodestyle >= 2.9.0
 Conflicts:      python-pycodestyle >= 2.10.0
 Suggests:       python-pyflakes >= 2.5.0
 Conflicts:      python-pyflakes >= 2.6.0
-# SECTION
+# /SECTION
 BuildArch:      noarch
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
