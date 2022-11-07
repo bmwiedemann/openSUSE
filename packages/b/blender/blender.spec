@@ -209,7 +209,7 @@ BuildRequires:  alembic-devel
 BuildRequires:  openCOLLADA-devel
 %endif
 %if %{with embree}
-BuildRequires:  embree-devel-static
+BuildRequires:  embree-devel
 %endif
 %if %{with oidn}
 BuildRequires:  OpenImageDenoise-devel
