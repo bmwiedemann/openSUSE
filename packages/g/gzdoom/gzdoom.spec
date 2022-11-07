@@ -67,8 +67,6 @@ Provides:       bundled(xbrz) = 1.7
 GZDoom is a port (a modification) of the original Doom source code, featuring:
 * an OpenGL renderer, HQnX/xBRZ rescaling, 3D floor and model support
 * Truecolor software rendering, extending the classic 8-bit palette
-* a three-point projection software renderer, extending the classic
-  2-point projection
 * Heretic, Hexen and Strife game modes and support for a lot of
   additional IWADs.
 * Boom and Hexen map extension support, scriptability with ACS and
