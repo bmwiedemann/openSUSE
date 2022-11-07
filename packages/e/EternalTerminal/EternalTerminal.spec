@@ -30,7 +30,7 @@ BuildRequires:  cmake
 BuildRequires:  curl-devel
 BuildRequires:  firewall-macros
 BuildRequires:  firewalld
-%if 0%{?sle_version} == 150400 || 0%{?sle_version} == 150300
+%if 0%{?sle_version} >= 150300
 BuildRequires:  gcc10-c++
 %define forced_gcc_version -10
 %else

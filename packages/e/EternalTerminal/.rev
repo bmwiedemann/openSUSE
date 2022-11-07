@@ -177,4 +177,12 @@
   * CVE-2022-24952 [bsc#1202432]</comment>
     <requestid>997668</requestid>
   </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>26dc5392e740170556b7da0c6389948b</srcmd5>
+    <version>6.2.1</version>
+    <time>1667825510</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1034108</requestid>
+  </revision>
 </revisionlist>
