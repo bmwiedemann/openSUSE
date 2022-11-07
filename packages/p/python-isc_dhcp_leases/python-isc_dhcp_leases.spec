@@ -1,7 +1,7 @@
 #
 # spec file for package python-isc_dhcp_leases
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-isc_dhcp_leases
 Version:        0.9.1
 Release:        0
@@ -25,14 +24,14 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/MartijnBraam/python-isc-dhcp-leases
 Source:         https://github.com/MartijnBraam/python-isc-dhcp-leases/archive/%{version}.tar.gz#/isc_dhcp_leases-%{version}.tar.gz
+# https://github.com/MartijnBraam/python-isc-dhcp-leases/issues/38
+Patch0:         python-isc_dhcp_leases-remove-unused-code.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module freezegun}
-BuildRequires:  %{python_module six}
 # /SECTION
-Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
 
@@ -43,6 +42,7 @@ running in IPv6 mode.
 
 %prep
 %setup -q -n python-isc-dhcp-leases-%{version}
+%patch0 -p1
 
 %build
 %python_build
