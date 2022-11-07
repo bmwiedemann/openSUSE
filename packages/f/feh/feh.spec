@@ -34,6 +34,8 @@ Patch1:         feh-makefile_optflags.patch
 Patch2:         feh-fix_pointer_arithmetics.patch
 # PATCH-FIX-UPSTREAM https://github.com/derf/feh/pull/337
 Patch6:         feh-makefile_app.patch
+
+Patch7:         feh-add_jxl_support.patch
 BuildRequires:  curl-devel
 BuildRequires:  libpng-devel
 BuildRequires:  pkgconfig

@@ -6,6 +6,12 @@ Sun Sep 18 09:02:18 UTC 2022 - Dirk Müller <dmueller@suse.com>
     user agent.
 
 -------------------------------------------------------------------
+Thu Aug 11 16:57:29 UTC 2022 - Enrico Belleri <idesmi@protonmail.com>
+
+- Add feh-add_jxl_support.patch for the image/jxl MimeType to be
+  supported.
+
+-------------------------------------------------------------------
 Mon Jul  4 07:12:43 UTC 2022 - Enrico Belleri <idesmi@protonmail.com>
 
 - Update to version 3.9:
