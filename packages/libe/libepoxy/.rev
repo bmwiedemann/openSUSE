@@ -161,4 +161,13 @@
     <comment></comment>
     <requestid>962925</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>b1d03f27340a0f7213ebd72edd60d3fb</srcmd5>
+    <version>1.5.10</version>
+    <time>1667832956</time>
+    <user>dimstar_suse</user>
+    <comment>- needed by jira#PED-1174 (Mesa needs sync with Xserver, which
+  then needs updated libepoxy)</comment>
+    <requestid>1034185</requestid>
+  </revision>
 </revisionlist>
