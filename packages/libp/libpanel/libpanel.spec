@@ -19,7 +19,7 @@
 %define libname %{name}1-1
 
 Name:           libpanel
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 Summary:        IDE paneling library for GTK
 License:        LGPL-3.0-or-later
