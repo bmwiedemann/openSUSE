@@ -17,7 +17,6 @@
 
 
 %bcond_with rootio
-%bcond_without pythia
 
 %define so_main 3
 %define libmain libHepMC3-%{so_main}
@@ -33,6 +32,8 @@ Patch0:         HepMC-disable-doxygen-html-timestamp.patch
 License:        GPL-3.0-or-later
 URL:            http://hepmc.web.cern.ch/hepmc/
 Source:         http://hepmc.web.cern.ch/hepmc/releases/%{name}3-%{version}.tar.gz
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pybind11-devel >= 2.6.0}
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -41,11 +42,6 @@ BuildRequires:  gcc-fortran
 BuildRequires:  ghostscript-fonts-std
 BuildRequires:  graphviz-gd
 BuildRequires:  python-rpm-macros
-%if %{with pythia}
-BuildRequires:  pythia-devel
-%endif
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module pybind11-devel >= 2.6.0}
 BuildRequires:  pkgconfig(zlib)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -121,6 +117,7 @@ cp -pr ./ ../${PYTHON}_build
 pushd ../${PYTHON}_build
 %cmake -DHEPMC3_ENABLE_ROOTIO:BOOL=%{?with_rootio:ON}%{!?with_rootio:OFF} \
        -DHEPMC3_BUILD_STATIC_LIBS:BOOL=OFF \
+       -DHEPMC3_INSTALL_INTERFACES:BOOL=ON \
        -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%{name}3 \
        -DHEPMC3_PYTHON_VERSIONS:STRING="%{$python_version}" \
        -DCMAKE_SKIP_RPATH:BOOL=OFF \
