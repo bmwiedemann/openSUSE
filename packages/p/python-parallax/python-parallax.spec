@@ -18,18 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-parallax
-Version:        1.0.6
+Version:        1.0.8
 Release:        0
 Summary:        Python module for multi-node SSH command execution and file copy
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/krig/parallax/
 Source:         https://files.pythonhosted.org/packages/source/p/parallax/parallax-%{version}.tar.gz
-Patch1:         0001-Add-ssh_key-option-used-by-i-option-of-ssh-scp.patch
-Patch2:         0002-Change-format-of-scp-command-for-ipv6-compatible.patch
-Patch3:         0003-Fix-task-Don-t-use-ssh-if-command-running-on-local-b.patch
-Patch4:         0004-Fix-Error-inherit-from-Exception-instead-of-BaseExce.patch
-Patch5:         0005-Dev-add-parallax.run-to-return-non-zero-rc-without-r.patch
 
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -54,11 +49,6 @@ multiple nodes using SCP.
 
 %prep
 %setup -q -n parallax-%{version}
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
 
 %build
 %python_build

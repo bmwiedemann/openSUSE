@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Nov  7 02:18:35 UTC 2022 - XinLiang <XLiang@suse.com>
+
+- Fix: manager: file descriptor leakage
+- Release 1.0.8 
+
+-------------------------------------------------------------------
+Thu Nov  3 02:16:52 UTC 2022 - XinLiang <XLiang@suse.com>
+
+- Release 1.0.7
+- Remove patches since already included:
+  Remove patch 0001-Add-ssh_key-option-used-by-i-option-of-ssh-scp.patch
+  Remove patch 0002-Change-format-of-scp-command-for-ipv6-compatible.patch
+  Remove patch 0003-Fix-task-Don-t-use-ssh-if-command-running-on-local-b.patch
+  Remove patch 0004-Fix-Error-inherit-from-Exception-instead-of-BaseExce.patch
+  Remove patch 0005-Dev-add-parallax.run-to-return-non-zero-rc-without-r.patch
+
+-------------------------------------------------------------------
 Wed Sep 28 02:34:51 UTC 2022 - Nicholas Yang <nicholas.yang@suse.com>
 
 - Dev: add parallax.run() to return non-zero rc without raising exceptions
