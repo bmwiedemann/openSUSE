@@ -32,7 +32,7 @@
 # extra tests are skipped automatically, don't require these packages for Ring1
 %bcond_with localtest
 Name:           python-ipython%{psuffix}
-Version:        8.5.0
+Version:        8.6.0
 Release:        0
 Summary:        Rich architecture for interactive computing with Python
 License:        BSD-3-Clause
@@ -82,7 +82,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module curio}
 BuildRequires:  %{python_module ipython = %{version}}
 BuildRequires:  %{python_module matplotlib}
-BuildRequires:  %{python_module numpy >= 1.19}
+BuildRequires:  %{python_module numpy >= 1.20}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pygments >= 2.4.0}
 BuildRequires:  %{python_module pytest-asyncio}
