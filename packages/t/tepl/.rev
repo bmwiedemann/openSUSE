@@ -104,4 +104,12 @@
     <comment>Scripted push from GNOME:Next (forwarded request 980351 from dimstar)</comment>
     <requestid>981302</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>50bbb0f2cafb3dbb2f9a76133ef3d835</srcmd5>
+    <version>6.2.0</version>
+    <time>1667825538</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 1033633 from iznogood)</comment>
+    <requestid>1034162</requestid>
+  </revision>
 </revisionlist>

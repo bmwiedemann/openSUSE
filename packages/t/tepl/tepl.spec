@@ -17,23 +17,26 @@
 
 
 %define api_ver 6
-%define lib_ver %{api_ver}-0
+%define lib_ver %{api_ver}-1
+
 Name:           tepl
-Version:        6.0.2
+Version:        6.2.0
 Release:        0
 Summary:        Text Editor Product Line
 License:        LGPL-3.0-or-later
 Group:          Productivity/Text/Editors
 URL:            https://wiki.gnome.org/Projects/Tepl
-Source:         https://download.gnome.org/sources/tepl/6.0/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/tepl/6.2/%{name}-%{version}.tar.xz
+
 BuildRequires:  gobject-introspection-devel >= 1.42.0
 BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.53
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(amtk-5) >= 5.0
 BuildRequires:  pkgconfig(gio-2.0) >= 2.64
+BuildRequires:  pkgconfig(gsettings-desktop-schemas)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
-BuildRequires:  pkgconfig(gtksourceview-4) >= 4.0
+BuildRequires:  pkgconfig(gtksourceview-4)
 BuildRequires:  pkgconfig(icu-i18n)
 BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(uchardet)
@@ -89,8 +92,7 @@ applications that want to make use of tepl.
 %meson_install
 %find_lang %{name}-%{api_ver}
 
-%post   -n libtepl-%{lib_ver} -p /sbin/ldconfig
-%postun -n libtepl-%{lib_ver} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libtepl-%{lib_ver}
 
 %files -n libtepl-%{lib_ver}
 %doc LICENSES/LGPL-3.0-or-later.txt

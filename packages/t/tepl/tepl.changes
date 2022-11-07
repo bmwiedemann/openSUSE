@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Nov  4 20:49:12 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 6.2.0:
+  + Remove deprecated API.
+  + Add some new API (see the reference documentation).
+  + Small improvements.
+- Bump lib_ver define to 1 following upstream changes.
+- Use ldconfig_scriptlets macro for post(un) handling.
+
+-------------------------------------------------------------------
+Tue Sep  6 16:35:09 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 6.1.2:
+  + API stability is no longer guaranteed.
+  + New features/API: see the index of new symbols in the reference
+    documentation (generated with gtk-doc).
+  + Documentation improvements.
+- Changes from version 6.1.1:
+  + New features/API: see the index of new symbols in the reference
+    documentation (generated with gtk-doc).
+  + Documentation improvements.
+- Add pkgconfig(gsettings-desktop-schemas) build requirement. This
+  is a new private dependency.
+
+-------------------------------------------------------------------
 Wed Jun  1 09:29:20 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 6.0.2:
