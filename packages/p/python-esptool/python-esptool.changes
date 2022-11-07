@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Nov  6 11:27:28 UTC 2022 - Adrian Schröter <adrian@suse.de>
+
+- update to 3.3.2
+  * New Features
+    - write_flash: Added the ability to recover from serial errors when flashing,
+                   effectively making data transfers more robust (#182)
+    - Added more memory density definitions to cover known flash chips (#769)
+    - Added parsing of stub flasher error definitions in esptool messages
+    - espefuse.py
+    - Added XTS_AES_256 key_purpose on ESP32-S3-beta2
+    - burn_efuse: Improved error messages when a new data value is incorrect (#760)
+  * Bug Fixes
+    - load_extended_header: Load the minimum chip revision min_rev field
+    - Fixed faulty hard_reset() with RTS pin for ESP32-S2/S3 in slower environments
+    - get_default_connected_device: Fixed closing unused ports
+    - espefuse.py
+    - Corrected eFuse tables
+    - Removed XTS_AES_256 key purposes on ESP32-C3
+    - Fixed location of FAIL_BIT and NUM_BITS on ESP32-C3
+    - Added a warning to specify the --port/-p argument if connection fails (#744)
+    - espsecure.py
+    - _microecc_format: Pad zeroes to curve length
+    - Fixed argparse Secure Boot key generation command to work with both V1 and V2
+
+
+-------------------------------------------------------------------
 Tue Jun 28 19:02:14 UTC 2022 - Torsten Gruner <simmphomnie@opensuse.org>
 
 - update to 3.3.1
