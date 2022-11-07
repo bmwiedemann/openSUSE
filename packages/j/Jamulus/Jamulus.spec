@@ -21,10 +21,10 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 
-%define tarball_version 3_9_0
+%define tarball_version 3_9_1
 
 Name:           Jamulus
-Version:        3.9.0
+Version:        3.9.1
 Release:        0
 Summary:        Low-latency internet connection tool for real-time jam sessions
 License:        GPL-2.0-or-later
@@ -45,7 +45,7 @@ BuildRequires:  firewall-macros
 BuildRequires:  firewalld
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  jack-devel
+BuildRequires:  jack-devel >= 1.9.21
 BuildRequires:  pkgconfig
 BuildRequires:  pwdutils
 BuildRequires:  systemd-rpm-macros
@@ -56,7 +56,7 @@ BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(opus)
-Requires:       jack
+Requires:       jack >= 1.9.21
 Requires(pre):  shadow
 Requires(pre):  %fillup_prereq
 Requires(pre):  group(nogroup)
@@ -116,9 +116,9 @@ install -d -m0755 %{buildroot}%{_sbindir}
 ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rcjamulus-togglerec
 
 # desktop file
-sed -i -e 's|$$TARGET|Jamulus|g' distributions/jamulus.desktop.in
-sed -i -e 's|Icon=jamulus|Icon=Jamulus|g' distributions/jamulus.desktop.in
-install -D -m 0644 distributions/jamulus.desktop.in %{buildroot}%{_datadir}/applications/%{name}.desktop
+sed -i -e 's|$$TARGET|Jamulus|g' linux/jamulus.desktop.in
+sed -i -e 's|Icon=jamulus|Icon=Jamulus|g' linux/jamulus.desktop.in
+install -D -m 0644 linux/jamulus.desktop.in %{buildroot}%{_datadir}/applications/%{name}.desktop
 %suse_update_desktop_file %{name}
 
 %fdupes %{buildroot}%{_datadir}
