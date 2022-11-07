@@ -597,4 +597,13 @@ last submission had wrong tar ball for unknown reason</comment>
   * add quotes around BASE to avoid shell expansion</comment>
     <requestid>1031992</requestid>
   </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>449e8b28b4509fead14589bd71e71c65</srcmd5>
+    <version>0.28</version>
+    <time>1667825513</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.28:
+  * Add ignore list</comment>
+    <requestid>1034112</requestid>
+  </revision>
 </revisionlist>
