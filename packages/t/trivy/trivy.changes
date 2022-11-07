@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Oct 31 11:51:38 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.34.0:
+  * feat(vuln): support dependency graph for RHEL/CentOS (#3094)
+  * feat(vuln): support dependency graph for dpkg and apk (#3093)
+  * perf(license): enable license classifier only with "--license-full" (#3086)
+  * feat(report): add secret scanning to ASFF template (#2860)
+  * feat: Allow override of containerd namespace (#3060)
+  * fix(vuln): In alpine use Name as SrcName (#3079)
+  * fix(secret): Alibaba AccessKey ID (#3083)
+
+-------------------------------------------------------------------
 Wed Oct 26 05:22:55 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.33.0:
