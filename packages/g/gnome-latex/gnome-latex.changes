@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Fri Nov  4 22:15:20 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.42.0:
+  + A few minor improvements.
+- Changes from version 3.41.2:
+  + User-visible changes:
+    - Preferences dialog:
+      . Some changes in the presentation of the options (still the
+        same set of options).
+      . Better i18n/l10n support by avoiding splitting sentences
+        with a spin-button in-between (for example to choose the
+        number of minutes for the auto-save interval).
+    - PostProcessorLatexmk: parse xelatex output within latexmk.
+  + Under the hood changes:
+   - Construct the Preferences dialog differently, by moving some
+     functionality to Tepl, without using a *.ui file, and do a
+     maximum in C (not Vala). More work in that area would be
+     possible, but it was done incrementally (in a releasable state
+     all the time).
+  + For packagers: A precise version of Tepl is required because
+    Tepl API stability is no longer guaranteed.
+- Changes 3.41.1:
+  + User-visible changes:
+    - Build Tools preferences dialog: add a note about restarting
+      the application.
+    - Minor bug fix to directly update the GUI if the system fixed
+      width font is modified.
+  + Under the hood changes:
+    - Continue to move more features (and improve them) to the Amtk
+      and Tepl libraries.
+    - Simplify / refresh some parts of the code.
+  + Build system: many improvements and simplifications.
+  + For the Vala code, use the *.gir file of GtkSourceView (instead
+    of the *.vapi file). And no longer generate latexila.vapi for
+    the internal library.
+  + Migrate from Intltool to pure gettext.
+  + But the *.desktop file and AppData are no longer translated,
+    need to find a better solution.
+  + Better support MSYS2/MINGW (Windows), normally no patches are
+    required anymore:
+    - liblatexila: add latexila_dirs functions, inspired by
+      gedit_dirs.
+    - Other small tweak.
+  + Documentation: many improvements to the contributors' docs.
+  + Other small improvements here and there.
+- Changes from version  3.40.0:
+  + Documentation improvement.
+- Changes from version 3.39.1:
+  + The project is now hosted at:
+    https://gitlab.gnome.org/swilmet/gnome-latex
+  + Port to the development version of Tepl 6.
+  + Build system update.
+  + Have everything in git repositories, no longer use the GNOME
+    wiki.
+  + Updated translations.
+- Add explicit pkgconfig(amtk-5) BuildRequires following upstreams
+  changes.
+- Drop e1b01186f8a.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Mon Sep 20 19:48:33 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove obsolete translation-update-upstream support

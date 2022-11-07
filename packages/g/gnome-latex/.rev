@@ -76,4 +76,12 @@
   (jsc#SLE-21105). (forwarded request 920406 from sbrabec)</comment>
     <requestid>920573</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7c5dc826d8b81a6a8f0f8d5797bcc4a2</srcmd5>
+    <version>3.42.0</version>
+    <time>1667825539</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 1033636 from iznogood)</comment>
+    <requestid>1034165</requestid>
+  </revision>
 </revisionlist>
