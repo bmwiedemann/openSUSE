@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Nov  7 10:50:41 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.26.5:
+  * Splits layout: Add a new mappable action to move the active
+    window to the screen edge (#5643)
+  * ssh kitten: Allow using absolute paths for the location of
+    transferred data (#5607)
+  * Fix a regression in the previous release that caused a
+    resize_draw_strategy of static to not work (#5601)
+  * Wayland KDE: Fix abort when pasting into Firefox (#5603)
+  * Wayland GNOME: Fix ghosting when using background_tint (#5605)
+  * Fix cursor position at x=0 changing to x=1 on resize (#5635)
+  * Wayland GNOME: Fix incorrect window size in some circumstances
+    when switching between windows with window decorations disabled (#4802)
+  * Wayland: Fix high CPU usage when using some input methods (#5369)
+  * Remote control: When matching window by state:focused and no window
+    currently has keyboard focus, match the window belonging to the OS
+    window that was last focused (#5602)
+
+-------------------------------------------------------------------
 Tue Oct 18 12:14:04 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.26.4:
