@@ -414,4 +414,12 @@ now with changed patch tag, even though the patch might be accepted by upstream 
 - jobserver-fifo.patch: Add support for jobserver using named pipes (forwarded request 998857 from Andreas_Schwab)</comment>
     <requestid>998858</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>28c62a9b6796205b583a645837b55a5f</srcmd5>
+    <version>4.4</version>
+    <time>1667825479</time>
+    <user>dimstar_suse</user>
+    <comment>- reset-sigpipe.patch: Reset SIGPIPE in children (forwarded request 1032929 from Andreas_Schwab)</comment>
+    <requestid>1032930</requestid>
+  </revision>
 </revisionlist>

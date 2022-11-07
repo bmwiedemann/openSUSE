@@ -17,7 +17,7 @@
 
 
 Name:           make
-Version:        4.3
+Version:        4.4
 Release:        0
 Summary:        GNU make
 License:        GPL-2.0-or-later
@@ -27,15 +27,8 @@ Source:         https://ftp.gnu.org/gnu/make/make-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/gnu/make/make-%{version}.tar.gz.sig
 # keyring downloaded from https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=make&download=1
 Source2:        %{name}.keyring
-Patch1:         make-testcases_timeout.diff
-Patch2:         fix-57962.patch
-Patch3:         jobserver-noinherit.patch
-Patch4:         jobserver-fifo.patch
-Patch5:         test-driver.patch
+Patch:          reset-sigpipe.patch
 Patch64:        make-library-search-path.diff
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  makeinfo
 BuildRequires:  pkgconfig
 Requires(post): %{install_info_prereq}
 Requires(preun):%{install_info_prereq}
@@ -48,23 +41,17 @@ The GNU make command with extensive documentation.
 
 %prep
 %setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
+%patch -p1
 if [ %{_lib} = lib64 ]; then
 %patch64 -p1
 fi
 
 %build
-autoreconf -fi
-export CFLAGS="%{optflags}"
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %check
-make %{?_smp_mflags} check || {
+%make_build check || {
   for f in tests/work/*/*.diff; do
     test -f "$f" || continue
     printf "++++++++++++++ %s ++++++++++++++\n" "${f##*/}"

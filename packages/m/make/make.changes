@@ -1,4 +1,116 @@
 -------------------------------------------------------------------
+Wed Nov  2 15:39:46 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- reset-sigpipe.patch: Reset SIGPIPE in children
+
+-------------------------------------------------------------------
+Mon Oct 31 13:31:57 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Update to make 4.4
+  * WARNING: Future backward-incompatibility!
+    In the NEXT release of GNU Make, pattern rules will implement the same
+    behavior change for multiple targets as explicit grouped targets
+  * WARNING: Backward-incompatibility!
+    GNU Make now uses temporary files in more situations than previous releases.
+  * WARNING: Backward-incompatibility!
+    Previously each target in a explicit grouped target rule was considered
+    individually: if the targets needed by the build were not out of date the
+    recipe was not run even if other targets in the group were out of date.  Now
+    if any of the grouped targets are needed by the build, then if any of the
+    grouped targets are out of date the recipe is run and all targets in the
+    group are considered updated.
+  * WARNING: Backward-incompatibility!
+    Previously if --no-print-directory was seen anywhere in the environment or
+    command line it would take precedence over any --print-directory.  Now, the
+    last setting of directory printing options seen will be used, so a command
+    line such as "--no-print-directory -w" _will_ show directory entry/exits.
+  * WARNING: Backward-incompatibility!
+    Previously the order in which makefiles were remade was not explicitly
+    stated, but it was (roughly) the inverse of the order in which they were
+    processed by make.  In this release, the order in which makefiles are
+    rebuilt is the same order in which make processed them, and this is defined
+    to be true in the GNU Make manual.
+  * WARNING: Backward-incompatibility!
+    Previously only simple (one-letter) options were added to the MAKEFLAGS
+    variable that was visible while parsing makefiles.  Now, all options are
+    available in MAKEFLAGS.  If you want to check MAKEFLAGS for a one-letter
+    option, expanding "$(firstword -$(MAKEFLAGS))" is a reliable way to return
+    the set of one-letter options which can be examined via findstring, etc.
+  * WARNING: Backward-incompatibility!
+    Previously makefile variables marked as export were not exported to commands
+    started by the $(shell ...) function.  Now, all exported variables are
+    exported to $(shell ...).  If this leads to recursion during expansion, then
+    for backward-compatibility the value from the original environment is used.
+    To detect this change search for 'shell-export' in the .FEATURES variable.
+  * WARNING: New build requirement
+    GNU Make utilizes facilities from GNU Gnulib: Gnulib requires certain C99
+    features in the C compiler and so these features are required by GNU Make:
+    https://www.gnu.org/software/gnulib/manual/html_node/C99-features-assumed.html
+    The configure script should verify the compiler has these features.
+  * New feature: The .WAIT special target
+    If the .WAIT target appears between two prerequisites of a target, then
+    GNU Make will wait for all of the targets to the left of .WAIT in the list
+    to complete before starting any of the targets to the right of .WAIT.
+  * New feature: .NOTPARALLEL accepts prerequisites
+    If the .NOTPARALLEL special target has prerequisites then all prerequisites
+    of those targets will be run serially (as if .WAIT was specified between
+    each prerequisite).
+  * New feature: The .NOTINTERMEDIATE special target
+    .NOTINTERMEDIATE disables intermediate behavior for specific files, for all
+    files built using a pattern, or for the entire makefile.
+  * New feature: The $(let ...) function
+    This function allows user-defined functions to define a set of local
+    variables: values can be assigned to these variables from within the
+    user-defined function and they will not impact global variable assignments.
+  * New feature: The $(intcmp ...) function
+    This function allows conditional evaluation controlled by a numerical
+    comparison.
+  * New feature: Improved support for -l / --load-average
+    On systems that provide /proc/loadavg (Linux), GNU Make will use it to
+    determine the number of runnable jobs and use this as the current load,
+    avoiding the need for heuristics.
+  * New feature: The --shuffle command line option
+    This option reorders goals and prerequisites to simulate non-determinism
+    that may be seen using parallel build.  Shuffle mode allows a form of "fuzz
+    testing" of parallel builds to verify that all prerequisites are correctly
+    described in the makefile.
+  * New feature: The --jobserver-style command line option and named pipes
+    A new jobserver method is used on systems where mkfifo(3) is supported.
+  * GNU Make has sometimes chosen unexpected, and sub-optimal, chains of
+    implicit rules due to the definition of "ought to exist" in the implicit
+    rule search algorithm, which considered any prerequisite mentioned in the
+    makefile as "ought to exist".  This algorithm has been modified to prefer
+    prerequisites mentioned explicitly in the target being built and only if
+    that results in no matching rule, will GNU Make consider prerequisites
+    mentioned in other targets as "ought to exist".
+  * GNU Make was performing secondary expansion of all targets, even targets
+    which didn't need to be considered during the build.  In this release
+    only targets which are considered will be secondarily expanded.
+  * If the MAKEFLAGS variable is modified in a makefile, it will be re-parsed
+    immediately rather than after all makefiles have been read.
+  * The -I option accepts an argument "-" (e.g., "-I-") which means "reset the
+    list of search directories to empty".
+  * New debug option "print" will show the recipe to be run, even when silent
+    mode is set, and new debug option "why" will show why a target is rebuilt
+    (which prerequisites caused the target to be considered out of date).
+  * The existing --trace option is made equivalent to --debug=print,why
+  * Target-specific variables can now be marked "unexport".
+  * Exporting / unexporting target-specific variables is handled correctly, so
+    that the attribute of the most specific variable setting is used.
+  * Special targets like .POSIX are detected upon definition, ensuring that any
+    change in behavior takes effect immediately, before the next line is parsed.
+  * When the pipe-based jobserver is enabled and GNU Make decides it is invoking
+    a non-make sub-process and closes the jobserver pipes, it will now add a new
+    option to the MAKEFLAGS environment variable that disables the jobserver.
+  * A long-standing issue with the directory cache has been resolved: changes
+    made as a side-effect of some other target's recipe are now noticed as
+    expected.
+- jobserver-noinherit.patch, jobserver-fifo.patch: Removed
+- test-driver.patch: Removed
+- fix-57962.patch: Removed
+- make-testcases_timeout.diff: Removed
+
+-------------------------------------------------------------------
 Wed Aug 17 15:05:38 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - jobserver-noinherit.patch: Disable inheritance of jobserver FDs for
