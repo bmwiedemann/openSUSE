@@ -3811,4 +3811,34 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
   * Add workaround to support ofdrm</comment>
     <requestid>1032921</requestid>
   </revision>
+  <revision rev="412" vrev="4">
+    <srcmd5>2036a9ef65d82100cba4e0f84a519781</srcmd5>
+    <version>21.1.4</version>
+    <time>1667832955</time>
+    <user>dimstar_suse</user>
+    <comment>- Release 21.1 supersedes the following patches still used with
+  xorg-x11-server 1.20.3 on sle15-sp4/Leap 15.4:
+  * U_0002-DRI2-Add-another-Coffeelake-PCI-ID.patch
+  * U_0002-Fix-crash-on-XkbSetMap.patch
+  * U_0003-Fix-crash-on-XkbSetMap.patch
+  * U_0003-dri2-Sync-i965_pci_ids.h-from-mesa.patch
+  * U_0004-dri2-Set-fallback-driver-names-for-Intel-and-AMD-chi.patch
+  * U_0005-dri2-Sync-i965_pci_ids.h-from-mesa-iris_pci_ids.h.patch
+  * U_build-glx-Lower-gl-version-to-work-with-libglvnd.patch
+  * U_glamor-Make-pixmap-exportable-from-gbm_bo_from_pixma.patch
+  * U_hw_do-not-include-sys-io-with-glibc.patch
+  * U_meson-Fix-another-reference-to-gl-9.2.0.patch
+  * U_modesetting-Fix-broken-manpage-in-autoconf-build.patch
+  * U_present-wnmd-Fix-use-after-free-on-CRTC-removal.patch
+  * U_present-wnmd-Relax-assertion-on-CRTC-on-abort_vblank.patch
+  * U_xfree86-Change-displays-array-to-pointers-array-to-f.patch
+  * U_xfree86-Fix-NULL-pointer-dereference-crash.patch
+  * U_xkbsetdeviceinfo.patch
+  * u_sync-pci-ids-with-Mesa-21.2.4.patch
+  * u_xf86-Accept-devices-with-the-simpledrm-driver.patch
+  * u_xichangehierarchy-CVE-2020-14346.patch
+  * u_xkb-CVE-2020-14345.patch
+  * u_xkb-CVE-2020-14360.patch</comment>
+    <requestid>1034184</requestid>
+  </revision>
 </revisionlist>
