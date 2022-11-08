@@ -19,7 +19,8 @@
 %define texlive_version  2022
 %define texlive_previous 2021
 %define texlive_release  20220321
-%define texlive_noarch   195
+%define texlive_noarch   196
+%define biber_version    2.17
 
 #!BuildIgnore:          texlive
 #!BuildIgnore:          texlive-scripts
@@ -65,7 +66,7 @@ BuildRequires:  texlive-filesystem
 BuildRequires:  xz
 BuildArch:      noarch
 Summary:        Meta package for a
-License:        Apache-1.0 AND BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later AND LPPL-1.0 AND LPPL-1.3c AND OFL-1.1 AND SUSE-Public-Domain AND SUSE-TeX
+License:        Apache-1.0 and BSD-3-Clause and GPL-2.0-or-later and LGPL-2.1-or-later and LPPL-1.0 and LPPL-1.3c and OFL-1.1 and SUSE-Public-Domain and SUSE-TeX
 URL:            https://build.opensuse.org/package/show/Publishing:TeXLive/Meta
 Group:          Productivity/Publishing/TeX/Base
 Source0:        texlive-specs-a-rpmlintrc
@@ -79,7 +80,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Generalising mathematical index sets
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -124,7 +125,7 @@ Release:        0
 Summary:        Documentation for texlive-12many
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-12many-doc
 This package includes the documentation for texlive-12many
@@ -161,7 +162,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Macros to print two-up
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -201,7 +202,7 @@ Release:        0
 Summary:        Documentation for texlive-2up
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-2up-doc
 This package includes the documentation for texlive-2up
@@ -241,7 +242,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Support for designing posters on large paper
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -284,7 +285,7 @@ Release:        0
 Summary:        Documentation for texlive-a0poster
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Provides:       locale(texlive-a0poster-doc:de;en)
 
 %description -n texlive-a0poster-doc
@@ -325,7 +326,7 @@ Release:        0
 License:        GPL-2.0-or-later
 Summary:        Advanced PS, PDF, EPS converter
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-a2ping-bin >= %{texlive_version}
 #!BuildIgnore: texlive-a2ping-bin
 Requires(pre):  texlive-filesystem >= %{texlive_version}
@@ -375,7 +376,7 @@ Release:        0
 Summary:        Documentation for texlive-a2ping
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Provides:       man(a2ping.1)
 
 %description -n texlive-a2ping-doc
@@ -413,7 +414,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        "Wide" a4 layout
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -455,7 +456,7 @@ Release:        0
 Summary:        Documentation for texlive-a4wide
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-a4wide-doc
 This package includes the documentation for texlive-a4wide
@@ -492,7 +493,7 @@ Release:        0
 License:        SUSE-Public-Domain
 Summary:        Support for a5 paper sizes
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -529,7 +530,7 @@ Release:        0
 Summary:        Documentation for texlive-a5comb
 License:        SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-a5comb-doc
 This package includes the documentation for texlive-a5comb
@@ -566,7 +567,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        BibTeX style for AAAI
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -622,7 +623,7 @@ Release:        0
 License:        GPL-2.0-or-later
 Summary:        LaTeX class file for the Marathi journal 'Aalok'
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -680,7 +681,7 @@ Release:        0
 Summary:        Documentation for texlive-aalok
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Provides:       locale(texlive-aalok-doc:mr)
 
 %description -n texlive-aalok-doc
@@ -720,7 +721,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Macros for Manuscript Preparation for AAS Journals
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -772,7 +773,7 @@ Release:        0
 Summary:        Documentation for texlive-aastex
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-aastex-doc
 This package includes the documentation for texlive-aastex
@@ -823,7 +824,7 @@ Release:        0
 License:        SUSE-Public-Domain
 Summary:        Simple macros supporting abreviations for Plain and LaTeX
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -863,7 +864,7 @@ Release:        0
 Summary:        Documentation for texlive-abbr
 License:        SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-abbr-doc
 This package includes the documentation for texlive-abbr
@@ -899,7 +900,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Support ABC music notation in LaTeX
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -947,7 +948,7 @@ Release:        0
 Summary:        Documentation for texlive-abc
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-abc-doc
 This package includes the documentation for texlive-abc
@@ -990,7 +991,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Typesetting academic works according to ABNT rules
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -1039,7 +1040,7 @@ Release:        0
 Summary:        Documentation for texlive-abnt
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-abnt-doc
 This package includes the documentation for texlive-abnt
@@ -1077,7 +1078,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Typeset technical and scientific Brazilian documents based on ABNT rules
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -1134,7 +1135,7 @@ Release:        0
 Summary:        Documentation for texlive-abntex2
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Provides:       locale(texlive-abntex2-doc:pt_BR)
 
 %description -n texlive-abntex2-doc
@@ -1205,7 +1206,7 @@ Release:        0
 License:        OFL-1.1
 Summary:        A late medieval OpenType cursive font
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -1258,7 +1259,7 @@ Release:        0
 Summary:        Documentation for texlive-aboensis
 License:        OFL-1.1
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-aboensis-doc
 This package includes the documentation for texlive-aboensis
@@ -1268,7 +1269,7 @@ Version:        %{texlive_version}.%{texlive_noarch}.svn60059
 Release:        0
 Summary:        Severed fonts for texlive-aboensis
 License:        OFL-1.1
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
@@ -1382,7 +1383,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Asymmetric over-/underbraces in maths
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -1422,7 +1423,7 @@ Release:        0
 Summary:        Documentation for texlive-abraces
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-abraces-doc
 This package includes the documentation for texlive-abraces
@@ -1460,7 +1461,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Control the typesetting of the abstract environment
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -1499,7 +1500,7 @@ Release:        0
 Summary:        Documentation for texlive-abstract
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-abstract-doc
 This package includes the documentation for texlive-abstract
@@ -1536,7 +1537,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Adaptable BibTeX styles
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -1576,7 +1577,7 @@ Release:        0
 Summary:        Documentation for texlive-abstyles
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Provides:       locale(texlive-abstyles-doc:de)
 
 %description -n texlive-abstyles-doc
@@ -1630,7 +1631,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Font containing high quality icons of online academic profiles
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -1689,7 +1690,7 @@ Release:        0
 Summary:        Documentation for texlive-academicons
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-academicons-doc
 This package includes the documentation for texlive-academicons
@@ -1699,7 +1700,7 @@ Version:        %{texlive_version}.%{texlive_noarch}.1.9.1_2svn62622
 Release:        0
 Summary:        Severed fonts for texlive-academicons
 License:        LPPL-1.0
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
@@ -1757,7 +1758,7 @@ Release:        0
 License:        GPL-2.0-or-later
 Summary:        Accanthis fonts, with LaTeX support
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -1885,7 +1886,7 @@ Release:        0
 Summary:        Documentation for texlive-accanthis
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Provides:       locale(texlive-accanthis-doc:fr)
 
 %description -n texlive-accanthis-doc
@@ -1896,7 +1897,7 @@ Version:        %{texlive_version}.%{texlive_noarch}.svn32089
 Release:        0
 Summary:        Severed fonts for texlive-accanthis
 License:        GPL-2.0-or-later
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
@@ -2051,7 +2052,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Multiple mathematical accents
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -2090,7 +2091,7 @@ Release:        0
 Summary:        Documentation for texlive-accents
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-accents-doc
 This package includes the documentation for texlive-accents
@@ -2128,7 +2129,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Create tagged and structured PDF files
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -2181,7 +2182,7 @@ Release:        0
 Summary:        Documentation for texlive-accessibility
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Provides:       locale(texlive-accessibility-doc:de;en)
 
 %description -n texlive-accessibility-doc
@@ -2221,7 +2222,7 @@ Release:        0
 License:        GPL-2.0-or-later
 Summary:        Utilities to derive new fonts from existing ones
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-accfonts-bin >= %{texlive_version}
 #!BuildIgnore: texlive-accfonts-bin
 Requires(pre):  texlive-filesystem >= %{texlive_version}
@@ -2280,7 +2281,7 @@ Release:        0
 Summary:        Documentation for texlive-accfonts
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-accfonts-doc
 This package includes the documentation for texlive-accfonts
@@ -2325,7 +2326,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Better accessibility support for PDF files
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -2376,7 +2377,7 @@ Release:        0
 Summary:        Documentation for texlive-accsupp
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-accsupp-doc
 This package includes the documentation for texlive-accsupp
@@ -2419,7 +2420,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Support for American Chemical Society journal submissions
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -2540,7 +2541,7 @@ Release:        0
 Summary:        Documentation for texlive-achemso
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-achemso-doc
 This package includes the documentation for texlive-achemso
@@ -2660,7 +2661,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Class for typesetting publications of ACM
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -2734,7 +2735,7 @@ Release:        0
 Summary:        Documentation for texlive-acmart
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-acmart-doc
 This package includes the documentation for texlive-acmart
@@ -2806,7 +2807,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Class for ACM conference proceedings
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -2849,7 +2850,7 @@ Release:        0
 Summary:        Documentation for texlive-acmconf
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-acmconf-doc
 This package includes the documentation for texlive-acmconf
@@ -2896,7 +2897,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Typeset acronyms
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires:       texlive-etoolbox >= %{texlive_version}
 #!BuildIgnore: texlive-etoolbox
 Requires:       texlive-l3kernel >= %{texlive_version}
@@ -2957,7 +2958,7 @@ Release:        0
 Summary:        Documentation for texlive-acro
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-acro-doc
 This package includes the documentation for texlive-acro
@@ -3023,7 +3024,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Expand acronyms at least once
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -3067,7 +3068,7 @@ Release:        0
 Summary:        Documentation for texlive-acronym
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-acronym-doc
 This package includes the documentation for texlive-acronym
@@ -3106,7 +3107,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Manage and index acronyms and terms
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -3147,7 +3148,7 @@ Release:        0
 Summary:        Documentation for texlive-acroterm
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-acroterm-doc
 This package includes the documentation for texlive-acroterm
@@ -3184,7 +3185,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Class for typesetting ACTIVE conference papers
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -3240,7 +3241,7 @@ Release:        0
 Summary:        Documentation for texlive-active-conf
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-active-conf-doc
 This package includes the documentation for texlive-active-conf
@@ -3281,7 +3282,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Angle symbol denoting a duration in actuarial and financial notation
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -3323,7 +3324,7 @@ Release:        0
 Summary:        Documentation for texlive-actuarialangle
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-actuarialangle-doc
 This package includes the documentation for texlive-actuarialangle
@@ -3360,7 +3361,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Actuarial symbols of life contingencies and financial mathematics
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -3409,7 +3410,7 @@ Release:        0
 Summary:        Documentation for texlive-actuarialsymbol
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-actuarialsymbol-doc
 This package includes the documentation for texlive-actuarialsymbol
@@ -3447,7 +3448,7 @@ Release:        0
 License:        GPL-2.0-or-later
 Summary:        Easier use of fonts without LaTeX support
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -3493,7 +3494,7 @@ Release:        0
 Summary:        Documentation for texlive-addfont
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-addfont-doc
 This package includes the documentation for texlive-addfont
@@ -3532,7 +3533,7 @@ Release:        0
 License:        SUSE-Public-Domain
 Summary:        Access basic ligatures in legacy TrueType fonts
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -3571,7 +3572,7 @@ Release:        0
 Summary:        Documentation for texlive-addliga
 License:        SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-addliga-doc
 This package includes the documentation for texlive-addliga
@@ -3609,7 +3610,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        A user-friendly wrapper around \enlargethispage
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -3652,7 +3653,7 @@ Release:        0
 Summary:        Documentation for texlive-addlines
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-addlines-doc
 This package includes the documentation for texlive-addlines
@@ -3689,7 +3690,7 @@ Release:        0
 License:        SUSE-Public-Domain
 Summary:        Australian Defence Force Academy thesis format
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -3728,7 +3729,7 @@ Release:        0
 Summary:        Documentation for texlive-adfathesis
 License:        SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-adfathesis-doc
 This package includes the documentation for texlive-adfathesis
@@ -3767,7 +3768,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        OrnementsADF font with TeX/LaTeX support
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -3825,7 +3826,7 @@ Release:        0
 Summary:        Documentation for texlive-adforn
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-adforn-doc
 This package includes the documentation for texlive-adforn
@@ -3835,7 +3836,7 @@ Version:        %{texlive_version}.%{texlive_noarch}.1.1bsvn54512
 Release:        0
 Summary:        Severed fonts for texlive-adforn
 License:        LPPL-1.0
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
@@ -3902,7 +3903,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        SymbolsADF with TeX/LaTeX support
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -3963,7 +3964,7 @@ Release:        0
 Summary:        Documentation for texlive-adfsymbols
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-adfsymbols-doc
 This package includes the documentation for texlive-adfsymbols
@@ -3973,7 +3974,7 @@ Version:        %{texlive_version}.%{texlive_noarch}.1.2bsvn54512
 Release:        0
 Summary:        Severed fonts for texlive-adfsymbols
 License:        LPPL-1.0
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
@@ -4049,7 +4050,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        '\listfiles' entries from the command line
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-adhocfilelist-bin >= %{texlive_version}
 #!BuildIgnore: texlive-adhocfilelist-bin
 Requires(pre):  texlive-filesystem >= %{texlive_version}
@@ -4091,7 +4092,7 @@ Release:        0
 Summary:        Documentation for texlive-adhocfilelist
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-adhocfilelist-doc
 This package includes the documentation for texlive-adhocfilelist
@@ -4133,7 +4134,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Augmenting directed graphs
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -4179,7 +4180,7 @@ Release:        0
 Summary:        Documentation for texlive-adigraph
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-adigraph-doc
 This package includes the documentation for texlive-adigraph
@@ -4226,7 +4227,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Adjusting margins for multicolumn and single column output
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -4267,7 +4268,7 @@ Release:        0
 Summary:        Documentation for texlive-adjmulticol
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-adjmulticol-doc
 This package includes the documentation for texlive-adjmulticol
@@ -4307,7 +4308,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Graphics package-alike macros for "general" boxes
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -4370,7 +4371,7 @@ Release:        0
 Summary:        Documentation for texlive-adjustbox
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-adjustbox-doc
 This package includes the documentation for texlive-adjustbox
@@ -4424,7 +4425,7 @@ Release:        0
 License:        BSD-3-Clause
 Summary:        Adobe cmap and pdfmapping files
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -4726,7 +4727,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        BibTeX styles to implement an address database
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -4770,7 +4771,7 @@ Release:        0
 Summary:        Documentation for texlive-adrconv
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Provides:       locale(texlive-adrconv-doc:de)
 
 %description -n texlive-adrconv-doc
@@ -4826,7 +4827,7 @@ Release:        0
 License:        GPL-2.0-or-later
 Summary:        Macros for drawing adpositional trees
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -4867,7 +4868,7 @@ Release:        0
 Summary:        Documentation for texlive-adtrees
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-adtrees-doc
 This package includes the documentation for texlive-adtrees
@@ -4905,7 +4906,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Print a date relative to "today"
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -4946,7 +4947,7 @@ Release:        0
 Summary:        Documentation for texlive-advdate
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-advdate-doc
 This package includes the documentation for texlive-advdate
@@ -4984,7 +4985,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Virtual fonts for T1 encoded CMR-fonts
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -5208,7 +5209,7 @@ Release:        0
 Summary:        Documentation for texlive-ae
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-ae-doc
 This package includes the documentation for texlive-ae
@@ -5359,7 +5360,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Add several kinds of guillemets to the ae fonts
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -5403,7 +5404,7 @@ Release:        0
 Summary:        Documentation for texlive-aeguill
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-aeguill-doc
 This package includes the documentation for texlive-aeguill
@@ -5444,7 +5445,7 @@ Release:        0
 License:        LPPL-1.3c
 Summary:        Special support for the ae character
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -5540,7 +5541,7 @@ Release:        0
 Summary:        Documentation for texlive-aesupp
 License:        LPPL-1.3c
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-aesupp-doc
 This package includes the documentation for texlive-aesupp
@@ -5550,7 +5551,7 @@ Version:        %{texlive_version}.%{texlive_noarch}.1svn58253
 Release:        0
 Summary:        Severed fonts for texlive-aesupp
 License:        LPPL-1.3c
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
@@ -5732,7 +5733,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Convert AFM to TeX property list (.pl) metrics
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-afm2pl-bin >= %{texlive_version}
 #!BuildIgnore: texlive-afm2pl-bin
 Requires(pre):  texlive-filesystem >= %{texlive_version}
@@ -5776,7 +5777,7 @@ Release:        0
 Summary:        Documentation for texlive-afm2pl
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Provides:       man(afm2pl.1)
 
 %description -n texlive-afm2pl-doc
@@ -5828,7 +5829,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Typesetting articles for Archives of Forensic Psychology
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -5875,7 +5876,7 @@ Release:        0
 Summary:        Documentation for texlive-afparticle
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-afparticle-doc
 This package includes the documentation for texlive-afparticle
@@ -5917,7 +5918,7 @@ Release:        0
 License:        SUSE-Public-Domain
 Summary:        Air Force Institute of Technology thesis class
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -5961,7 +5962,7 @@ Release:        0
 Summary:        Documentation for texlive-afthesis
 License:        SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-afthesis-doc
 This package includes the documentation for texlive-afthesis
@@ -6005,7 +6006,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Styles for American Geophysical Union
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -6049,7 +6050,7 @@ Release:        0
 Summary:        Documentation for texlive-aguplus
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-aguplus-doc
 This package includes the documentation for texlive-aguplus
@@ -6098,7 +6099,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Typeset AIAA conference papers
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -6146,7 +6147,7 @@ Release:        0
 Summary:        Documentation for texlive-aiaa
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-aiaa-doc
 This package includes the documentation for texlive-aiaa
@@ -6212,7 +6213,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Bibliography style file for the AIChE Journal
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -6269,7 +6270,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        BibTeX style for AJL
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -6325,7 +6326,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        A collection of packages and classes
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -6413,7 +6414,7 @@ Release:        0
 Summary:        Documentation for texlive-akktex
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-akktex-doc
 This package includes the documentation for texlive-akktex
@@ -6475,7 +6476,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Comprehensive letter support
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -6523,7 +6524,7 @@ Release:        0
 Summary:        Documentation for texlive-akletter
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Provides:       locale(texlive-akletter-doc:de;en)
 
 %description -n texlive-akletter-doc
@@ -6568,7 +6569,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Support for syllables in the Devanagari script
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -6607,7 +6608,7 @@ Release:        0
 Summary:        Documentation for texlive-akshar
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-akshar-doc
 This package includes the documentation for texlive-akshar
@@ -6644,7 +6645,7 @@ Release:        0
 License:        BSD-3-Clause
 Summary:        Find fonts that contain a given glyph
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-albatross-bin >= %{texlive_version}
 #!BuildIgnore: texlive-albatross-bin
 Requires(pre):  texlive-filesystem >= %{texlive_version}
@@ -6685,7 +6686,7 @@ Release:        0
 Summary:        Documentation for texlive-albatross
 License:        BSD-3-Clause
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Provides:       man(albatross.1)
 
 %description -n texlive-albatross-doc
@@ -6727,7 +6728,7 @@ Release:        0
 License:        OFL-1.1
 Summary:        Alegreya fonts with LaTeX support
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -11244,7 +11245,7 @@ Release:        0
 Summary:        Documentation for texlive-alegreya
 License:        OFL-1.1
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-alegreya-doc
 This package includes the documentation for texlive-alegreya
@@ -11254,7 +11255,7 @@ Version:        %{texlive_version}.%{texlive_noarch}.svn54512
 Release:        0
 Summary:        Severed fonts for texlive-alegreya
 License:        OFL-1.1
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
@@ -15961,7 +15962,7 @@ Release:        0
 License:        GPL-2.0-or-later
 Summary:        Extended TeX
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-aleph-bin >= %{texlive_version}
 #!BuildIgnore: texlive-aleph-bin
 Requires:       texlive-cm >= %{texlive_version}
@@ -16079,7 +16080,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Alert messages for LaTeX
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -16123,7 +16124,7 @@ Release:        0
 Summary:        Documentation for texlive-alertmessage
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-alertmessage-doc
 This package includes the documentation for texlive-alertmessage
@@ -16164,7 +16165,7 @@ Release:        0
 License:        OFL-1.1
 Summary:        The Alfa Slab One font face with support for LaTeX and pdfLaTeX
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -16253,7 +16254,7 @@ Release:        0
 Summary:        Documentation for texlive-alfaslabone
 License:        OFL-1.1
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-alfaslabone-doc
 This package includes the documentation for texlive-alfaslabone
@@ -16263,7 +16264,7 @@ Version:        %{texlive_version}.%{texlive_noarch}.0.0.0.1svn57452
 Release:        0
 Summary:        Severed fonts for texlive-alfaslabone
 License:        OFL-1.1
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
@@ -16359,7 +16360,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        LaTeX environments for typesetting algorithms
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -16403,7 +16404,7 @@ Release:        0
 Summary:        Documentation for texlive-alg
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-alg-doc
 This package includes the documentation for texlive-alg
@@ -16439,7 +16440,7 @@ Release:        0
 License:        GPL-2.0-or-later
 Summary:        Typeset Algobox programs
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -16489,7 +16490,7 @@ Release:        0
 Summary:        Documentation for texlive-algobox
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-algobox-doc
 This package includes the documentation for texlive-algobox
@@ -16527,7 +16528,7 @@ Release:        0
 License:        OFL-1.1
 Summary:        A revival of Frutiger's Algol alphabet
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -16761,7 +16762,7 @@ Release:        0
 Summary:        Documentation for texlive-algolrevived
 License:        OFL-1.1
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-algolrevived-doc
 This package includes the documentation for texlive-algolrevived
@@ -16771,7 +16772,7 @@ Version:        %{texlive_version}.%{texlive_noarch}.1.052svn56864
 Release:        0
 Summary:        Severed fonts for texlive-algolrevived
 License:        OFL-1.1
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
@@ -17021,7 +17022,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Floating algorithm environment with algorithmic keywords
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -17073,7 +17074,7 @@ Release:        0
 Summary:        Documentation for texlive-algorithm2e
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-algorithm2e-doc
 This package includes the documentation for texlive-algorithm2e
@@ -17127,7 +17128,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        The algorithmic style you always wanted
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -17175,7 +17176,7 @@ Release:        0
 Summary:        Documentation for texlive-algorithmicx
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-algorithmicx-doc
 This package includes the documentation for texlive-algorithmicx
@@ -17218,7 +17219,7 @@ Release:        0
 License:        LGPL-2.1-or-later
 Summary:        A suite of tools for typesetting algorithms in pseudo-code
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -17263,7 +17264,7 @@ Release:        0
 Summary:        Documentation for texlive-algorithms
 License:        LGPL-2.1-or-later
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Provides:       locale(texlive-algorithms-doc:en)
 
 %description -n texlive-algorithms-doc
@@ -17304,7 +17305,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Package for typesetting pseudocode
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -17355,7 +17356,7 @@ Release:        0
 Summary:        Documentation for texlive-algpseudocodex
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-algpseudocodex-doc
 This package includes the documentation for texlive-algpseudocodex
@@ -17393,7 +17394,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Support multiple lines pseudocode
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -17440,7 +17441,7 @@ Release:        0
 Summary:        Documentation for texlive-algxpar
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-algxpar-doc
 This package includes the documentation for texlive-algxpar
@@ -17477,7 +17478,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Fix alignment at \overset or \underset
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -17520,7 +17521,7 @@ Release:        0
 Summary:        Documentation for texlive-aligned-overset
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-aligned-overset-doc
 This package includes the documentation for texlive-aligned-overset
@@ -17557,7 +17558,7 @@ Release:        0
 License:        OFL-1.1
 Summary:        A font for Arabic-based writing systems in Nigeria and Niger
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -17595,7 +17596,7 @@ Release:        0
 Summary:        Documentation for texlive-alkalami
 License:        OFL-1.1
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-alkalami-doc
 This package includes the documentation for texlive-alkalami
@@ -17605,7 +17606,7 @@ Version:        %{texlive_version}.%{texlive_noarch}.1.000svn44497
 Release:        0
 Summary:        Severed fonts for texlive-alkalami
 License:        OFL-1.1
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
@@ -17665,7 +17666,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Fonts and LaTeX package for almost all runes
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -17725,7 +17726,7 @@ Release:        0
 Summary:        Documentation for texlive-allrunes
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-allrunes-doc
 This package includes the documentation for texlive-allrunes
@@ -17735,7 +17736,7 @@ Version:        %{texlive_version}.%{texlive_noarch}.2.1.1svn42221
 Release:        0
 Summary:        Severed fonts for texlive-allrunes
 License:        LPPL-1.0
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
@@ -18454,7 +18455,7 @@ Release:        0
 License:        OFL-1.1
 Summary:        Almendra fonts with LaTeX support
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -18589,7 +18590,7 @@ Release:        0
 Summary:        Documentation for texlive-almendra
 License:        OFL-1.1
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-almendra-doc
 This package includes the documentation for texlive-almendra
@@ -18599,7 +18600,7 @@ Version:        %{texlive_version}.%{texlive_noarch}.svn56035
 Release:        0
 Summary:        Severed fonts for texlive-almendra
 License:        OFL-1.1
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
@@ -18752,7 +18753,7 @@ Release:        0
 License:        LPPL-1.3c
 Summary:        Arabic-Latin Modern Fixed extends TeX-Gyre Latin Modern Mono 10 Regular to full Arabic Unicode support
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -18809,7 +18810,7 @@ Release:        0
 Summary:        Documentation for texlive-almfixed
 License:        LPPL-1.3c
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-almfixed-doc
 This package includes the documentation for texlive-almfixed
@@ -18819,7 +18820,7 @@ Version:        %{texlive_version}.%{texlive_noarch}.0.0.92svn35065
 Release:        0
 Summary:        Severed fonts for texlive-almfixed
 License:        LPPL-1.3c
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
@@ -18890,7 +18891,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Alphanumeric section numbering
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -18933,7 +18934,7 @@ Release:        0
 Summary:        Documentation for texlive-alnumsec
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-alnumsec-doc
 This package includes the documentation for texlive-alnumsec
@@ -18970,7 +18971,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Persian version of alpha.bst
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -19008,7 +19009,7 @@ Release:        0
 Summary:        Documentation for texlive-alpha-persian
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Provides:       locale(texlive-alpha-persian-doc:fa)
 
 %description -n texlive-alpha-persian-doc
@@ -19080,7 +19081,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Convert numbers to letters
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -19123,7 +19124,7 @@ Release:        0
 Summary:        Documentation for texlive-alphalph
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-alphalph-doc
 This package includes the documentation for texlive-alphalph
@@ -19160,7 +19161,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Multiple choice questionnaires in two column tables
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -19208,7 +19209,7 @@ Release:        0
 Summary:        Documentation for texlive-alterqcm
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Provides:       locale(texlive-alterqcm-doc:en)
 
 %description -n texlive-alterqcm-doc
@@ -19286,7 +19287,7 @@ Release:        0
 License:        GPL-2.0-or-later
 Summary:        Alternative font handling in LaTeX
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -19330,7 +19331,7 @@ Release:        0
 Summary:        Documentation for texlive-altfont
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-altfont-doc
 This package includes the documentation for texlive-altfont
@@ -19371,7 +19372,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Subscripts and superscripts with square brackets
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -19412,7 +19413,7 @@ Release:        0
 Summary:        Documentation for texlive-altsubsup
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-altsubsup-doc
 This package includes the documentation for texlive-altsubsup
@@ -19451,7 +19452,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Official American Meteorological Society LaTeX Template
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -19510,7 +19511,7 @@ Release:        0
 Summary:        Documentation for texlive-ametsoc
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-ametsoc-doc
 This package includes the documentation for texlive-ametsoc
@@ -19550,7 +19551,7 @@ Release:        0
 License:        OFL-1.1
 Summary:        A classical Arabic typeface, Naskh style
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -19594,7 +19595,7 @@ Release:        0
 Summary:        Documentation for texlive-amiri
 License:        OFL-1.1
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Provides:       locale(texlive-amiri-doc:ar)
 
 %description -n texlive-amiri-doc
@@ -19605,7 +19606,7 @@ Version:        %{texlive_version}.%{texlive_noarch}.0.0.113svn55403
 Release:        0
 Summary:        Severed fonts for texlive-amiri
 License:        OFL-1.1
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
@@ -19675,7 +19676,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        How to install AmiWeb2c
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -19737,7 +19738,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Alter the position of affiliations in amsart
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -19778,7 +19779,7 @@ Release:        0
 Summary:        Documentation for texlive-amsaddr
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-amsaddr-doc
 This package includes the documentation for texlive-amsaddr
@@ -19815,7 +19816,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Enhanced commutative diagrams
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -19868,7 +19869,7 @@ Release:        0
 Summary:        Documentation for texlive-amscdx
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-amscdx-doc
 This package includes the documentation for texlive-amscdx
@@ -19905,7 +19906,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        AMS document classes for LaTeX
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -20004,7 +20005,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        User documentation for AMS document classes
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -20107,7 +20108,7 @@ Release:        0
 License:        OFL-1.1
 Summary:        TeX fonts from the American Mathematical Society
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -20279,7 +20280,7 @@ Release:        0
 Summary:        Documentation for texlive-amsfonts
 License:        OFL-1.1
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-amsfonts-doc
 This package includes the documentation for texlive-amsfonts
@@ -20289,7 +20290,7 @@ Version:        %{texlive_version}.%{texlive_noarch}.3.04svn61937
 Release:        0
 Summary:        Severed fonts for texlive-amsfonts
 License:        OFL-1.1
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
@@ -21112,7 +21113,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Getting up and running with AMS-LaTeX
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -21179,7 +21180,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Italian translation of amsldoc
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -21235,7 +21236,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Vietnamese translation of AMSLaTeX documentation
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -21297,7 +21298,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        AMS mathematical facilities for LaTeX
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -21353,7 +21354,7 @@ Release:        0
 Summary:        Documentation for texlive-amsmath
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Provides:       locale(texlive-amsmath-doc:en)
 
 %description -n texlive-amsmath-doc
@@ -21418,7 +21419,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Italian translations of some old amsmath documents
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -21476,7 +21477,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        A LaTeX-based replacement for BibTeX
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -21526,7 +21527,7 @@ Release:        0
 Summary:        Documentation for texlive-amsrefs
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-amsrefs-doc
 This package includes the documentation for texlive-amsrefs
@@ -21589,7 +21590,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        American Mathematical Society plain TeX macros
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires:       texlive-amsfonts >= %{texlive_version}
 #!BuildIgnore: texlive-amsfonts
 Requires(pre):  texlive-amstex-bin >= %{texlive_version}
@@ -21676,7 +21677,7 @@ Release:        0
 Summary:        Documentation for texlive-amstex
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Provides:       man(amstex.1)
 
 %description -n texlive-amstex-doc
@@ -21763,7 +21764,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Italian translation of amsthdoc: Using the amsthm package
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -21820,7 +21821,7 @@ Release:        0
 License:        OFL-1.1
 Summary:        Andika fonts with support for all LaTeX engines
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -22018,7 +22019,7 @@ Release:        0
 Summary:        Documentation for texlive-andika
 License:        OFL-1.1
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-andika-doc
 This package includes the documentation for texlive-andika
@@ -22028,7 +22029,7 @@ Version:        %{texlive_version}.%{texlive_noarch}.6.101svn62157
 Release:        0
 Summary:        Severed fonts for texlive-andika
 License:        OFL-1.1
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
@@ -22265,7 +22266,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Create PDF and SVG animations from graphics files and inline graphics
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -22315,7 +22316,7 @@ Release:        0
 Summary:        Documentation for texlive-animate
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-animate-doc
 This package includes the documentation for texlive-animate
@@ -22353,7 +22354,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Automatically typeset the academic year (French way)
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -22397,7 +22398,7 @@ Release:        0
 Summary:        Documentation for texlive-annee-scolaire
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Provides:       locale(texlive-annee-scolaire-doc:fr)
 
 %description -n texlive-annee-scolaire-doc
@@ -22441,7 +22442,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        A bibliography style with annotations
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -22498,7 +22499,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Make chapters be typeset like sections
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -22539,7 +22540,7 @@ Release:        0
 Summary:        Documentation for texlive-anonchap
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-anonchap-doc
 This package includes the documentation for texlive-anonchap
@@ -22576,7 +22577,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Typeset anonymous versions for ACM articles
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -22621,7 +22622,7 @@ Release:        0
 Summary:        Documentation for texlive-anonymous-acm
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-anonymous-acm-doc
 This package includes the documentation for texlive-anonymous-acm
@@ -22659,7 +22660,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Use AnonymousPro fonts with LaTeX
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -22767,7 +22768,7 @@ Release:        0
 Summary:        Documentation for texlive-anonymouspro
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-anonymouspro-doc
 This package includes the documentation for texlive-anonymouspro
@@ -22777,7 +22778,7 @@ Version:        %{texlive_version}.%{texlive_noarch}.2.2svn51631
 Release:        0
 Summary:        Severed fonts for texlive-anonymouspro
 License:        LPPL-1.0
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
@@ -22922,7 +22923,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Setting questions (or exercises) and answers
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -22961,7 +22962,7 @@ Release:        0
 Summary:        Documentation for texlive-answers
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-answers-doc
 This package includes the documentation for texlive-answers
@@ -22997,7 +22998,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Generate sentences in the style of "Amici miei"
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -23038,7 +23039,7 @@ Release:        0
 Summary:        Documentation for texlive-antanilipsum
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-antanilipsum-doc
 This package includes the documentation for texlive-antanilipsum
@@ -23075,7 +23076,7 @@ Release:        0
 License:        GPL-2.0-or-later
 Summary:        URW Antiqua condensed font, for use with TeX
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -23148,7 +23149,7 @@ Release:        0
 Summary:        Documentation for texlive-antiqua
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-antiqua-doc
 This package includes the documentation for texlive-antiqua
@@ -23158,7 +23159,7 @@ Version:        %{texlive_version}.%{texlive_noarch}.001.003svn24266
 Release:        0
 Summary:        Severed fonts for texlive-antiqua
 License:        GPL-2.0-or-later
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
@@ -23241,7 +23242,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Alternative language support for Omega/Lambda
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires:       texlive-omega >= %{texlive_version}
 #!BuildIgnore: texlive-omega
 Requires(pre):  texlive-filesystem >= %{texlive_version}
@@ -23311,7 +23312,7 @@ Release:        0
 Summary:        Documentation for texlive-antomega
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-antomega-doc
 This package includes the documentation for texlive-antomega
@@ -23447,7 +23448,7 @@ Release:        0
 License:        LPPL-1.3c
 Summary:        Antykwa Torunska: a Type 1 family of a Polish traditional type
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -23932,7 +23933,7 @@ Release:        0
 Summary:        Documentation for texlive-antt
 License:        LPPL-1.3c
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Provides:       locale(texlive-antt-doc:en;pl)
 
 %description -n texlive-antt-doc
@@ -23943,7 +23944,7 @@ Version:        %{texlive_version}.%{texlive_noarch}.2.08svn18651
 Release:        0
 Summary:        Severed fonts for texlive-antt
 License:        LPPL-1.3c
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
@@ -24527,7 +24528,7 @@ Release:        0
 License:        GPL-2.0-or-later
 Summary:        LaTeX document shell for ANU final exam
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -24585,7 +24586,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Select any font size in LaTeX
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -24629,7 +24630,7 @@ Release:        0
 Summary:        Documentation for texlive-anyfontsize
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-anyfontsize-doc
 This package includes the documentation for texlive-anyfontsize
@@ -24667,7 +24668,7 @@ Release:        0
 License:        SUSE-Public-Domain
 Summary:        A simple package to set up document margins
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -24706,7 +24707,7 @@ Release:        0
 Summary:        Documentation for texlive-anysize
 License:        SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-anysize-doc
 This package includes the documentation for texlive-anysize
@@ -24744,7 +24745,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        TikZ styles for creating overlaid pictures in beamer
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -24785,7 +24786,7 @@ Release:        0
 Summary:        Documentation for texlive-aobs-tikz
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-aobs-tikz-doc
 This package includes the documentation for texlive-aobs-tikz
@@ -24823,7 +24824,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Typeset articles for the Annals of Mathematics
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -24869,7 +24870,7 @@ Release:        0
 Summary:        Documentation for texlive-aomart
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-aomart-doc
 This package includes the documentation for texlive-aomart
@@ -24917,7 +24918,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        American Psychological Association format
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -24976,7 +24977,7 @@ Release:        0
 Summary:        Documentation for texlive-apa
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-apa-doc
 This package includes the documentation for texlive-apa
@@ -25024,7 +25025,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Format documents in APA style (6th edition)
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -25095,7 +25096,7 @@ Release:        0
 Summary:        Documentation for texlive-apa6
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-apa6-doc
 This package includes the documentation for texlive-apa6
@@ -25148,7 +25149,7 @@ Release:        0
 License:        BSD-3-Clause
 Summary:        Format manuscripts to APA 6th edition guidelines
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -25199,7 +25200,7 @@ Release:        0
 Summary:        Documentation for texlive-apa6e
 License:        BSD-3-Clause
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-apa6e-doc
 This package includes the documentation for texlive-apa6e
@@ -25236,7 +25237,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Format documents in APA style (7th edition)
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -25308,7 +25309,7 @@ Release:        0
 Summary:        Documentation for texlive-apa7
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-apa7-doc
 This package includes the documentation for texlive-apa7
@@ -25363,7 +25364,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Citation style following the rules of the APA
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -25412,7 +25413,7 @@ Release:        0
 Summary:        Documentation for texlive-apacite
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-apacite-doc
 This package includes the documentation for texlive-apacite
@@ -25466,7 +25467,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        A BibTeX style file for the European Journal of Operational Research
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -25507,7 +25508,7 @@ Release:        0
 Summary:        Documentation for texlive-apalike-ejor
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-apalike-ejor-doc
 This package includes the documentation for texlive-apalike-ejor
@@ -25547,7 +25548,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        A copy of apalike.bst with German localization
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -25584,7 +25585,7 @@ Release:        0
 Summary:        Documentation for texlive-apalike-german
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-apalike-german-doc
 This package includes the documentation for texlive-apalike-german
@@ -25621,7 +25622,7 @@ Release:        0
 License:        SUSE-TeX
 Summary:        Bibliography style that approaches APA requirements
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -25677,7 +25678,7 @@ Release:        0
 License:        SUSE-Public-Domain
 Summary:        Arbitrary precision numbers implemented by TeX macros
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -25724,7 +25725,7 @@ Release:        0
 Summary:        Documentation for texlive-apnum
 License:        SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-apnum-doc
 This package includes the documentation for texlive-apnum
@@ -25762,7 +25763,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Extra control of appendices
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -25808,7 +25809,7 @@ Release:        0
 Summary:        Documentation for texlive-appendix
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-appendix-doc
 This package includes the documentation for texlive-appendix
@@ -25845,7 +25846,7 @@ Release:        0
 License:        GPL-2.0-or-later
 Summary:        Manage frame numbering in appendixes in beamer
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -25889,7 +25890,7 @@ Release:        0
 Summary:        Documentation for texlive-appendixnumberbeamer
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-appendixnumberbeamer-doc
 This package includes the documentation for texlive-appendixnumberbeamer
@@ -25926,7 +25927,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        The book "Apprendre a programmer en TeX"
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -26001,7 +26002,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Apprends LaTeX!
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -26085,7 +26086,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Tools for customising appendices
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -26126,7 +26127,7 @@ Release:        0
 Summary:        Documentation for texlive-apptools
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-apptools-doc
 This package includes the documentation for texlive-apptools
@@ -26163,7 +26164,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Proofs in appendix
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -26219,7 +26220,7 @@ Release:        0
 Summary:        Documentation for texlive-apxproof
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-apxproof-doc
 This package includes the documentation for texlive-apxproof
@@ -26258,7 +26259,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        (La)TeX support for Arabic and Farsi, compliant with Babel
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -26475,7 +26476,7 @@ Release:        0
 Summary:        Documentation for texlive-arabi
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-arabi-doc
 This package includes the documentation for texlive-arabi
@@ -26485,7 +26486,7 @@ Version:        %{texlive_version}.%{texlive_noarch}.1.1svn44662
 Release:        0
 Summary:        Severed fonts for texlive-arabi
 License:        LPPL-1.0
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
@@ -26781,7 +26782,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Using hyperref and bookmark packages with arabic and farsi languages
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -26827,7 +26828,7 @@ Release:        0
 Summary:        Documentation for texlive-arabi-add
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-arabi-add-doc
 This package includes the documentation for texlive-arabi-add
@@ -26865,7 +26866,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        An Arabic book class
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -26932,7 +26933,7 @@ Release:        0
 Summary:        Documentation for texlive-arabic-book
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-arabic-book-doc
 This package includes the documentation for texlive-arabic-book
@@ -26972,7 +26973,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Frontmatter with arabic page numbers
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -27014,7 +27015,7 @@ Release:        0
 Summary:        Documentation for texlive-arabicfront
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-arabicfront-doc
 This package includes the documentation for texlive-arabicfront
@@ -27050,7 +27051,7 @@ Release:        0
 License:        GPL-2.0-or-later
 Summary:        ArabTeX for LuaLaTeX
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -27112,7 +27113,7 @@ Release:        0
 Summary:        Documentation for texlive-arabluatex
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-arabluatex-doc
 This package includes the documentation for texlive-arabluatex
@@ -27161,7 +27162,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Macros and fonts for typesetting Arabic
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -27308,7 +27309,7 @@ Release:        0
 Summary:        Documentation for texlive-arabtex
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-arabtex-doc
 This package includes the documentation for texlive-arabtex
@@ -27318,7 +27319,7 @@ Version:        %{texlive_version}.%{texlive_noarch}.3.17svn59150
 Release:        0
 Summary:        Severed fonts for texlive-arabtex
 License:        LPPL-1.0
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
@@ -27535,7 +27536,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        An ArabTeX-like interface for XeLaTeX
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -27625,7 +27626,7 @@ Release:        0
 Summary:        Documentation for texlive-arabxetex
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-arabxetex-doc
 This package includes the documentation for texlive-arabxetex
@@ -27743,7 +27744,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Fonts and LaTeX for Syriac written in Serto
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -27808,7 +27809,7 @@ Release:        0
 Summary:        Documentation for texlive-aramaic-serto
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-aramaic-serto-doc
 This package includes the documentation for texlive-aramaic-serto
@@ -27818,7 +27819,7 @@ Version:        %{texlive_version}.%{texlive_noarch}.1.0svn30042
 Release:        0
 Summary:        Severed fonts for texlive-aramaic-serto
 License:        LPPL-1.0
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
@@ -27911,7 +27912,7 @@ Release:        0
 License:        BSD-3-Clause
 Summary:        Automation of LaTeX compilation
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-arara-bin >= %{texlive_version}
 #!BuildIgnore: texlive-arara-bin
 Requires(pre):  texlive-filesystem >= %{texlive_version}
@@ -27955,7 +27956,7 @@ Release:        0
 Summary:        Documentation for texlive-arara
 License:        BSD-3-Clause
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Provides:       man(arara.1)
 
 %description -n texlive-arara-doc
@@ -28098,7 +28099,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        A citation-style which covers rules of the German Archaeological Institute
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -28146,7 +28147,7 @@ Release:        0
 Summary:        Documentation for texlive-archaeologie
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-archaeologie-doc
 This package includes the documentation for texlive-archaeologie
@@ -28196,7 +28197,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        A collection of archaic fonts
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -28331,7 +28332,7 @@ Release:        0
 Summary:        Documentation for texlive-archaic
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-archaic-doc
 This package includes the documentation for texlive-archaic
@@ -28341,7 +28342,7 @@ Version:        %{texlive_version}.%{texlive_noarch}.svn38005
 Release:        0
 Summary:        Severed fonts for texlive-archaic
 License:        LPPL-1.0
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
@@ -28594,7 +28595,7 @@ Release:        0
 License:        OFL-1.1
 Summary:        The Archivo font face with support for LaTeX and pdfLaTeX
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -29059,7 +29060,7 @@ Release:        0
 Summary:        Documentation for texlive-archivo
 License:        OFL-1.1
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-archivo-doc
 This package includes the documentation for texlive-archivo
@@ -29069,7 +29070,7 @@ Version:        %{texlive_version}.%{texlive_noarch}.0.0.0.2svn57283
 Release:        0
 Summary:        Severed fonts for texlive-archivo
 License:        OFL-1.1
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
@@ -29571,7 +29572,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Draw arcs over and under text
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -29612,7 +29613,7 @@ Release:        0
 Summary:        Documentation for texlive-arcs
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-arcs-doc
 This package includes the documentation for texlive-arcs
@@ -29650,7 +29651,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        Fonts and LaTeX support files for Arev Sans
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -29765,7 +29766,7 @@ Release:        0
 Summary:        Documentation for texlive-arev
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-arev-doc
 This package includes the documentation for texlive-arev
@@ -29775,7 +29776,7 @@ Version:        %{texlive_version}.%{texlive_noarch}.svn15878
 Release:        0
 Summary:        Severed fonts for texlive-arev
 License:        LPPL-1.0
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
@@ -29906,7 +29907,7 @@ Release:        0
 License:        Apache-1.0
 Summary:        Arimo sans serif fonts with LaTeX support
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -30005,7 +30006,7 @@ Release:        0
 Summary:        Documentation for texlive-arimo
 License:        Apache-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 
 %description -n texlive-arimo-doc
 This package includes the documentation for texlive-arimo
@@ -30015,7 +30016,7 @@ Version:        %{texlive_version}.%{texlive_noarch}.svn42880
 Release:        0
 Summary:        Severed fonts for texlive-arimo
 License:        Apache-1.0
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
@@ -30132,7 +30133,7 @@ Release:        0
 License:        LPPL-1.0
 Summary:        A system for writing Armenian with TeX and LaTeX
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -30210,7 +30211,7 @@ Release:        0
 Summary:        Documentation for texlive-armtex
 License:        LPPL-1.0
 Group:          Productivity/Publishing/TeX/Base
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Provides:       locale(texlive-armtex-doc:en;hy)
 
 %description -n texlive-armtex-doc
@@ -30221,7 +30222,7 @@ Version:        %{texlive_version}.%{texlive_noarch}.3.0_beta3svn33894
 Release:        0
 Summary:        Severed fonts for texlive-armtex
 License:        LPPL-1.0
-URL:            http://www.tug.org/texlive/
+URL:            https://www.tug.org/texlive/
 Group:          Productivity/Publishing/TeX/Fonts
 %reconfigure_fonts_prereq
 Requires(posttrans):fontconfig
