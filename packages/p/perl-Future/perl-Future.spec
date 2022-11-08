@@ -18,10 +18,10 @@
 
 %define cpan_name Future
 Name:           perl-Future
-Version:        0.48
+Version:        0.49
 Release:        0
-Summary:        Represent an operation awaiting completion
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Represent an operation awaiting completion
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/P/PE/PEVANS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml

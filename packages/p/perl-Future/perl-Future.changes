@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Oct 18 03:06:53 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.49
+   see /usr/share/doc/packages/perl-Future/Changes
+
+  0.49    2022-10-17
+          [CHANGES]
+           * Big reshuffle to move most code into Future/PP.pm in order to
+             support an optional Future-XS distribution too
+           * Attempt to load Future::XS by preference if it is available
+           * Additional unit tests for cornercases of XS implementation
+           * Remember to provide the AWAIT_WAIT API method
+           * Migrated Future::Queue out into its own distribution
+
+          [BUGFIXES]
+           * Bugfixes and unit tests for convergents on pre-cancelled futures
+             (RT144459)
+
+-------------------------------------------------------------------
 Thu Jan 27 03:07:34 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.48
