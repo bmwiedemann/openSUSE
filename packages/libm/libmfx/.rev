@@ -245,4 +245,13 @@
   2022Q2 Release 22.4.4</comment>
     <requestid>1033154</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>bc4fed852f9d736205e4b839e199950e</srcmd5>
+    <version>22.6.1</version>
+    <time>1667901211</time>
+    <user>dimstar_suse</user>
+    <comment>- needed for jira#PED-1174 (Video decoding/encoding support 
+  (VA-API, ...) for Intel GPUs is outside of Mesa)</comment>
+    <requestid>1034189</requestid>
+  </revision>
 </revisionlist>
