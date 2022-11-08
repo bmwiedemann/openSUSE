@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Nov  7 22:57:32 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.5.0:
+  * The most significant addition for this release is H.264 encoding
+    via the Open H.264 RFB protocol extension. Clients that have
+    implemented Open H.264 at this time are TigerVNC and wlvncc,
+    of which only the latter uses hardware accelerated decoding.
+    H.264 encoding is hardware accelerated and requires the --gpu
+    command line flag to be enabled. It isn't particularly useful
+    without hardware acceleration, so it's better to stick with
+    "Tight" encoding if you don't have GPU rendering.
+  * Input can now be disabled
+  * UNIX Sockets
+  * Screen-capturing via DMA-BUF is now a command line flag (--gpu)
+  * Improved logging and error messages
+
+-------------------------------------------------------------------
 Mon Jan 24 22:04:43 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.4.1:
