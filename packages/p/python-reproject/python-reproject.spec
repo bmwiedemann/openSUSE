@@ -16,34 +16,39 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-reproject
-Version:        0.8
+Version:        0.9.1
 Release:        0
 Summary:        Reproject astronomical images
 License:        BSD-3-Clause
 URL:            https://reproject.readthedocs.io
-Source:         https://files.pythonhosted.org/packages/source/r/reproject/reproject-%{version}.tar.gz
+# Repo-URL:     https://github.com/astropy/reproject
+Source:         https://github.com/astropy/reproject/archive/refs/tags/v%{version}.tar.gz#/reproject-%{version}-gh.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module extension-helpers}
-BuildRequires:  %{python_module numpy-devel >= 1.14}
+BuildRequires:  %{python_module numpy-devel >= 1.17}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-astropy >= 3.2
+Requires:       python-astropy >= 4
 Requires:       python-astropy-healpix >= 0.6
-Requires:       python-numpy >= 1.14
-Requires:       python-scipy >= 1.1
+Requires:       python-numpy >= 1.17
+Requires:       python-scipy >= 1.3
 # SECTION test requirements
-BuildRequires:  %{python_module astropy >= 3.2}
+BuildRequires:  %{python_module astropy >= 4}
+BuildRequires:  %{python_module Shapely}
+BuildRequires:  %{python_module asdf}
 BuildRequires:  %{python_module astropy-healpix >= 0.6}
-BuildRequires:  %{python_module pytest-arraydiff}
+BuildRequires:  %{python_module gwcs}
+BuildRequires:  %{python_module pytest-arraydiff >= 0.5}
 BuildRequires:  %{python_module pytest-astropy}
 BuildRequires:  %{python_module pytest-doctestplus}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module scipy >= 1.1}
+BuildRequires:  %{python_module scipy >= 1.3}
 # /SECTION
 %python_subpackages
 
@@ -55,10 +60,11 @@ Reproject astronomical images
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %{python_expand #
 rm -r %{buildroot}%{$python_sitearch}/reproject/spherical_intersect/*.h
 %fdupes %{buildroot}%{$python_sitearch}
@@ -66,8 +72,9 @@ rm -r %{buildroot}%{$python_sitearch}/reproject/spherical_intersect/*.h
 
 %check
 mkdir cleantestdir
+cp setup.cfg cleantestdir
 cd cleantestdir
-%pytest_arch --arraydiff --arraydiff-default-format=fits --pyargs reproject
+%pytest_arch --pyargs reproject
 
 %files %{python_files}
 %doc CHANGES.md README.rst
