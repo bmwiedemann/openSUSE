@@ -28,7 +28,7 @@
 %bcond_with qtwebengine
 %endif
 Name:           rkward
-Version:        0.7.4
+Version:        0.7.5
 Release:        0
 Summary:        Graphical frontend for R language
 Summary(fr):    Interface graphique pour le langage R
