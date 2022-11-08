@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 25 13:46:45 UTC 2022 - Reinhard Max <max@suse.com>
+
+- Version 8.4.4 presents itself as being 8.6 internally. Adjust
+  installation path, so that it can still be loaded.
+
+-------------------------------------------------------------------
 Tue May 18 16:08:33 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 8.4.4

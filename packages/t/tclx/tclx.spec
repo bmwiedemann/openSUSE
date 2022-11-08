@@ -1,7 +1,7 @@
 #
 # spec file for package tclx
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,14 +20,14 @@ Name:           tclx
 Version:        8.4.4
 Release:        0
 Summary:        TclX - Extended Tcl
-License:        SUSE-Permissive and BSD-3-Clause
+License:        BSD-3-Clause AND SUSE-Permissive
 URL:            http://tclx.sourceforge.net/
 Group:          Development/Languages/Tcl
 Source0:        https://github.com/flightaware/tclx/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  tcl-devel
 
-%description 
+%description
 Extended Tcl is a superset of standard Tcl. Extended Tcl has three
 basic functional areas: A set of new commands, a Tcl shell (a Unix
 shell-style command line and interactive environment), and a
@@ -49,14 +49,14 @@ export CFLAGS="%optflags -fno-strict-aliasing"
 %make_build
 
 %install
-%make_install pkglibdir=%tcl_archdir/%{name}8.4
+%make_install pkglibdir=%tcl_archdir/%{name}8.6
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
 %files
 %doc README.md
-%tcl_archdir/%{name}8.4
+%tcl_archdir/%{name}8.6
 %_mandir/mann/*
 %_includedir/*
 

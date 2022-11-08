@@ -116,4 +116,13 @@
     <comment></comment>
     <requestid>894563</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>ee21c1750c70eb896af35d14d365a857</srcmd5>
+    <version>8.4.4</version>
+    <time>1667901295</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 8.4.4 presents itself as being 8.6 internally. Adjust
+  installation path, so that it can still be loaded.</comment>
+    <requestid>1034354</requestid>
+  </revision>
 </revisionlist>
