@@ -485,4 +485,12 @@ Replaces sr#890404</comment>
     <comment></comment>
     <requestid>1031168</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>f49243174c43eb6bd2f5aee9813a1be5</srcmd5>
+    <version>2.86.5</version>
+    <time>1667904448</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1034280</requestid>
+  </revision>
 </revisionlist>

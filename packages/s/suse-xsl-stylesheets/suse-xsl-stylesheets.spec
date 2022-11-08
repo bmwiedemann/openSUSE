@@ -17,7 +17,7 @@
 
 
 Name:           suse-xsl-stylesheets
-Version:        2.86.4
+Version:        2.86.5
 Release:        0
 
 %define reponame          suse-xsl

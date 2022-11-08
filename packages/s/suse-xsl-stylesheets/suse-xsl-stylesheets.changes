@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 28 06:19:00 UTC 2022 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.86.5
+
+- Update 2.86.5
+  Related to #493/#504: Fix smaller layout issues
+  - subtitle overlaps with title
+  - book titles: add missing icons
+  - article titles: report bug link leads to empty title "" in Bugzilla
+
+
+-------------------------------------------------------------------
 Tue Oct 25 13:01:00 UTC 2022 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.86.4
 
 - Update 2.86.4
