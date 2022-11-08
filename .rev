@@ -927,4 +927,12 @@
   * U_Handle-pending-data-in-TLS-buffers.patch</comment>
     <requestid>1034183</requestid>
   </revision>
+  <revision rev="94" vrev="8">
+    <srcmd5>61bbd7f9004d74e030a0de9246a3c055</srcmd5>
+    <version>1.12.0</version>
+    <time>1667901222</time>
+    <user>dimstar_suse</user>
+    <comment>- Release 1.12.0 covers bugfixes for bsc#1197119,bsc#1199477</comment>
+    <requestid>1034266</requestid>
+  </revision>
 </revisionlist>
