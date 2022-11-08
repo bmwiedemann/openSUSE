@@ -470,4 +470,12 @@
 - Move dtk-logos.sty from doc tree into load tree</comment>
     <requestid>972656</requestid>
   </revision>
+  <revision rev="48" vrev="51">
+    <srcmd5>ae4d28ac7bec6a99f74ae5fa1be9ed4b</srcmd5>
+    <version>unknown</version>
+    <time>1667904454</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1034287</requestid>
+  </revision>
 </revisionlist>
