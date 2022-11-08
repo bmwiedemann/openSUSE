@@ -748,4 +748,12 @@ No GPL licensed files found in the package (forwarded request 136251 from babelw
   Out-of-memory in openexr_exrcheck_fuzzer (forwarded request 974389 from dirkmueller)</comment>
     <requestid>974400</requestid>
   </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>e2047dbb7abd7ac8ed029a52522f0e48</srcmd5>
+    <version>3.1.5</version>
+    <time>1667901189</time>
+    <user>dimstar_suse</user>
+    <comment>- Add _constraints: 6000 MiB memory (forwarded request 1033680 from frispete)</comment>
+    <requestid>1033911</requestid>
+  </revision>
 </revisionlist>
