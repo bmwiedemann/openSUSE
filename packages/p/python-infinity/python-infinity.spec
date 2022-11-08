@@ -1,7 +1,7 @@
 #
 # spec file for package python-infinity
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without  test
 Name:           python-infinity
 Version:        1.5
@@ -24,16 +23,18 @@ Release:        0
 Summary:        All-in-one infinity value for Python
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Url:            https://github.com/kvesteri/infinity
+URL:            https://github.com/kvesteri/infinity
 Source:         https://files.pythonhosted.org/packages/source/i/infinity/infinity-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+# https://github.com/kvesteri/infinity/issues/7
+Patch0:         python-infinity-no-six.patch
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %if %{with test}
 BuildRequires:  %{python_module flake8 >= 2.4.0}
 BuildRequires:  %{python_module isort >= 4.2.2}
 BuildRequires:  %{python_module pytest >= 2.2.3}
-BuildRequires:  %{python_module six >= 1.4.1}
 %endif
 BuildArch:      noarch
 
@@ -43,23 +44,25 @@ BuildArch:      noarch
 All-in-one infinity value for Python. Can be compared to any object.
 
 %prep
-%setup -q -n infinity-%{version}
+%autosetup -p1 -n infinity-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %if %{with test}
 %check
-%python_exec test_infinity.py
+%pytest
 %endif
 
 %files %{python_files}
 %doc CHANGES.rst README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/__pycache__/infinity*.pyc
+%{python_sitelib}/infinity.py
+%{python_sitelib}/infinity-%{version}*-info
 
 %changelog
