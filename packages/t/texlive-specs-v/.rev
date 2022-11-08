@@ -506,4 +506,12 @@ Adding the LPPL as many files are licensed under this license (forwarded request
 - Move dtk-logos.sty from doc tree into load tree</comment>
     <requestid>972676</requestid>
   </revision>
+  <revision rev="52" vrev="55">
+    <srcmd5>b356d0343b229f5b63b504dc8a769476</srcmd5>
+    <version>unknown</version>
+    <time>1667904481</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1034306</requestid>
+  </revision>
 </revisionlist>
