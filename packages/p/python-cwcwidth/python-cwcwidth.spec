@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cwcwidth
-Version:        0.1.7
+Version:        0.1.8
 Release:        0
 Summary:        Python bindings for wc(s)width
 License:        MIT
