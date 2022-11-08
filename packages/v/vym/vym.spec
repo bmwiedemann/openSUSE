@@ -17,7 +17,7 @@
 
 
 Name:           vym
-Version:        2.8.41
+Version:        2.8.43
 Release:        0
 Summary:        Tool to generate and manipulate thought maps
 License:        GPL-2.0-only

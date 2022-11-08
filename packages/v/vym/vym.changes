@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 28 10:54:11 UTC 2022 - Uwe Drechsel <vym@insilmaril.de>
+
+- Update to upstream Version 2.8.43
+- Bugfix for setting URL after retrieving data from Jira
+
+-------------------------------------------------------------------
 Thu Sep  8 12:09:50 UTC 2022 - Uwe Drechsel <vym@insilmaril.de>
 
 - Update to upstream version 2.8.41
