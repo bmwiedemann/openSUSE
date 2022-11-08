@@ -17,17 +17,17 @@
 
 
 Name:           onefetch
-Version:        2.11.0
+Version:        2.13.2~0
 Release:        0
 Summary:        Git repository summary on your terminal
 License:        GPL-2.0-only AND MIT
 Group:          System/X11/Terminals
 URL:            https://github.com/o2sh/onefetch
-Source0:        https://github.com/o2sh/onefetch/archive/v%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
-# PATCH-FIX-UPSTREAM https://github.com/o2sh/onefetch/commit/2c1f2f0b2c666f6ce94af0299f88048dd1d83484
-Patch0:         onefetch-fix-test.patch
-BuildRequires:  cargo
+Source2:        cargo_config
+BuildRequires:  cargo-packaging
+BuildRequires:  cmake
 BuildRequires:  rust
 
 %description
@@ -36,15 +36,8 @@ Onefetch is a command line tool that displays information about your Git reposit
 %prep
 %setup -q
 %setup -q -D -T -a 1
-%patch0 -p1
 mkdir -p .cargo
-cat >.cargo/config <<EOF
-[source.crates-io]
-registry = 'https://github.com/rust-lang/crates.io-index'
-replace-with = 'vendored-sources'
-[source.vendored-sources]
-directory = './vendor'
-EOF
+cp %{SOURCE2} .cargo/config
 
 %build
 # bypass error https://bugzilla.opensuse.org/show_bug.cgi?id=1175502
@@ -59,13 +52,11 @@ if [[ -f $cfgguess ]] && [[ -f $chkjson ]]; then
   grep -q $guessname $chkjson && grep -q $chksum $chkjson || sed -i -e "s#\($guessname.:.\)[0-9a-f]*#\1$chksum#" $chkjson
 fi
 %endif
-cargo build --release %{?_smp_mflags}
-
-%check
-cargo test --release %{?_smp_mflags}
+%{cargo_build}
 
 %install
-install -Dm0755 target/release/onefetch %{buildroot}%{_bindir}/onefetch
+#install -Dm0755 target/release/onefetch %{buildroot}%{_bindir}/onefetch
+%{cargo_install}
 
 %files
 %license LICENSE.md

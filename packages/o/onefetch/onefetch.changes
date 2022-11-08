@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Mon Nov  7 21:51:20 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Disable tests: they break the build by needing an internet
+  connection
+
+-------------------------------------------------------------------
+Mon Oct 31 07:51:02 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.13.2:
+  * [fix] Repo without remote should not fail #841
+  * [chore] Add integration tests with snapshot testing for Info struct #827
+  * [chore] Refactor test expressions #831
+
+-------------------------------------------------------------------
+Thu Oct 27 10:33:18 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.13.1:
+  * [ci/cd] fix Snapcraft release
+  * [misc] fix Cargo.lock
+
+-------------------------------------------------------------------
+Thu Oct 27 10:32:44 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.13.0:
+  * [chore] reducing allocations and switching to gitoxide from libgit2 #635
+  * [docs] add README translation for Spanish #631
+  * [docs] add Changelog generated using cargo-smart-release #637
+  * [cli] add --completion option #657
+  * [language] update PHP colors #664
+  * [misc] switch to actions/stale #666
+  * [misc] add github issue forms #667
+  * [ci/cd] generate Windows installer from CD #668
+  * [ci/cd] create WinGet workflow for auto publishing #673
+  * [language] update logo: shell #677
+  * [docs] adding french documentation support #693
+  * [chore] extract language definitions into data file #699
+  * [ci/cd] add codecov + tarpaulin in ci
+  * [misc] create Vercel app for onefetch with ASCII preview #701
+  * [docs] update the README in Russian #736
+  * [chore] turn InfoField into a trait (big refactoring) #755
+  * [language] Improve JSX ASCII logo #784
+  * [language] Improve TSX ASCII logo #785
+  * [language] added support for verilog #789
+  * [language] improve ruby logo #786
+  * [language] added support for xsl #798
+  * [language] added support for systemverilog #797
+  * [test] add unit tests to src/info/info_field.rs #810
+  * [ci/cd] automate publish to crates.io #800
+  * [language] added support for ABNF #811
+  * [test] add unit tests src/info/repo/commits.rs #813
+  * [test] add unit tests src/info/repo/contributors.rs #814
+  * [language] added support for ABAP #821@atluft
+  * [test] testing get_git_username using git-testtools for #812
+  * [language] improve bash logo
+  * [language] improve assembly logo
+  * [test] add unit tests for author.rs #829
+
+-------------------------------------------------------------------
+Thu Oct 27 10:32:09 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.12.0:
+  * [language] added support for Ren'Py #560
+  * [info] added language bar distribution #585
+  * [misc] granted read access to onefetch snap to gitconfig files #588
+  * [language] added support for Ceylon #602
+  * [misc] default to terminal foreground color for tilde, underline, colon and info #604
+  * [language] fix Lua logo so that it can be read even without color #610
+  * [misc] replace colored crate with owo-colors #620
+  * [misc] remap White ANSI color to Default #625
+  * [language] added support for Wolfram #609
+  * [misc] match circle color with github linguist #630
+  * [language] added support for VHDL #632
+- Remove onefetch-fix-test.patch
+
+-------------------------------------------------------------------
+Thu Oct 27 10:12:23 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Port to cargo_build macros and better _service file
+
+-------------------------------------------------------------------
 Thu Apr  7 13:28:06 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add onefetch-fix-test.patch to fix build

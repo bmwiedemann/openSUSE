@@ -214,4 +214,41 @@
     <comment></comment>
     <requestid>967704</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>82632ad0acd94c2326897f3614f9bf4b</srcmd5>
+    <version>2.13.2~0</version>
+    <time>1667901277</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable tests: they break the build by needing an internet
+  connection
+
+- Update to 2.13.2:
+  * [fix] Repo without remote should not fail #841
+  * [chore] Add integration tests with snapshot testing for Info struct #827
+  * [chore] Refactor test expressions #831
+
+- Update to 2.13.1:
+  * [ci/cd] fix Snapcraft release
+  * [misc] fix Cargo.lock
+
+- Update to 2.13.0:
+  * [chore] reducing allocations and switching to gitoxide from libgit2 #635
+  * [docs] add README translation for Spanish #631
+  * [docs] add Changelog generated using cargo-smart-release #637
+  * [cli] add --completion option #657
+  * [language] update PHP colors #664
+  * [misc] switch to actions/stale #666
+  * [misc] add github issue forms #667
+  * [ci/cd] generate Windows installer from CD #668
+  * [ci/cd] create WinGet workflow for auto publishing #673
+  * [language] update logo: shell #677
+  * [docs] adding french documentation support #693
+  * [chore] extract language definitions into data file #699
+  * [ci/cd] add codecov + tarpaulin in ci
+  * [misc] create Vercel app for onefetch with ASCII preview #701
+  * [docs] update the README in Russian #736
+  * [chore] turn InfoField into a trait (big refactoring) #755
+  * [language] Improve JSX ASCII logo #784</comment>
+    <requestid>1034383</requestid>
+  </revision>
 </revisionlist>
