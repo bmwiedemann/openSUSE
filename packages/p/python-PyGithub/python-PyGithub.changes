@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Nov  7 20:16:09 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 1.57 
+  Breaking Changes
+  * Add support for Python 3.11, drop support for Python 3.6 (#2332) (1e2f10d)
+  Bug Fixes & Improvements
+  * Speed up get requested reviewers and teams for pr (#2349) (6725ece)
+  * [WorkflowRun] - Add missing attributes (run_started_at & run_attempt), remove deprecated unicode type (#2273) (3a6235b)
+  * Add support for repository autolink references (#2016) (0fadd6b)
+  * Add retry and pool_size to typing (#2151) (784a3ef)
+  * Fix/types for repo topic team (#2341) (db9337a)
+  * Add class Artifact (#2313) (#2319) (437ff84)
+
+-------------------------------------------------------------------
 Thu Oct 27 19:48:01 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 1.56 
