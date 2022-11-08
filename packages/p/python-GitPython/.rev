@@ -361,4 +361,15 @@
 </comment>
     <requestid>863126</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>2516bd0c02209a4709144f35d858d6fd</srcmd5>
+    <version>3.1.12.1610074031.f653af66</version>
+    <time>1667901225</time>
+    <user>dimstar_suse</user>
+    <comment>- Setting proper configuration variable allows to run previously
+  skipped tests.
+- Skip failing tests (gh#gitpython-developers/GitPython#1511).
+</comment>
+    <requestid>1034394</requestid>
+  </revision>
 </revisionlist>

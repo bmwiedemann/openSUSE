@@ -1,7 +1,7 @@
 #
 # spec file for package python-GitPython
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-GitPython
 Version:        3.1.12.1610074031.f653af66
@@ -75,10 +74,11 @@ export TRAVIS=true
 export LANG=en_US.UTF-8
 export GIT_PYTHON_TEST_GIT_REPO_BASE=${PWD}
 
+git config --global protocol.file.allow "always"
 git config --global user.email "you@example.com"
 git config --global user.name "Your Name"
 
-%pytest -k 'not test_installation' test 
+%pytest -k 'not test_installation' test
 
 %files %{python_files}
 %license LICENSE
