@@ -1,7 +1,7 @@
 #
 # spec file for package yasm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ Source:         http://www.tortall.net/projects/yasm/releases/yasm-%{version}.ta
 Patch0:         %{name}-no-build-date.patch
 Patch1:         %{name}-no-rpm-opt-flags.patch
 Patch2:         yasm-re2c-nogendate.patch
+Patch3:         yasm-Update-elf-objfmt.c.patch
 BuildRequires:  python3-devel
 BuildRequires:  xmlto
 
@@ -51,6 +52,7 @@ libyasm.
 %patch0 -p1
 %patch1
 %patch2 -p1
+%patch3 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
