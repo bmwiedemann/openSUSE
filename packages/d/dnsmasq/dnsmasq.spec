@@ -22,7 +22,7 @@
 %bcond_with tftp_user_package
 %endif
 Name:           dnsmasq
-Version:        2.86
+Version:        2.87
 Release:        0
 Summary:        DNS Forwarder and DHCP Server
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -37,8 +37,6 @@ Source5:        rc.dnsmasq-suse
 Source6:        system-user-dnsmasq.conf
 Source8:        %{name}-rpmlintrc
 Patch0:         dnsmasq-groups.patch
-Patch1:         dnsmasq-resolv-conf.patch
-Patch2:         dnsmasq-CVE-2022-0934.patch
 BuildRequires:  dbus-1-devel
 BuildRequires:  dos2unix
 BuildRequires:  libidn2-devel
@@ -76,8 +74,6 @@ server's leases.
 %prep
 %setup -q
 %patch0
-%patch1
-%patch2
 
 # Remove the executable bit from python example files to
 # avoid unwanted automatic dependencies

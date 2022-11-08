@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Wed Oct 26 09:21:37 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.87 (bsc#1197872, CVE-2022-0934):
+  * Allow arbitrary prefix lengths in --rev-server and
+    --domain=....,local
+  * Replace --address=/#/..... functionality which got
+    missed in the 2.86 domain search rewrite.
+  * Add --nftset option, like --ipset but for the newer nftables.
+  * Add --filter-A and --filter-AAAA options, to remove IPv4 or IPv6
+    addresses from DNS answers.
+  * Fix crash doing netbooting when --port is set to zero
+    to disable the DNS server. Thanks to Drexl Johannes
+    for the bug report.
+  * Generalise --dhcp-relay. Sending via broadcast/multicast is
+    now supported for both IPv4 and IPv6 and the configuration
+    syntax made easier (but backwards compatible).
+  * Add snooping of IPv6 prefix-delegations to the DHCP-relay system.
+  * Finesse parsing of --dhcp-remoteid and --dhcp-subscrid. To be treated
+    as hex, the pattern must consist of only hex digits AND contain
+    at least one ':'. Thanks to Bengt-Erik Sandstrom who tripped
+    over a pattern consisting of a decimal number which was interpreted
+    surprisingly.
+  * Include client address in TFTP file-not-found error reports.
+    Thanks to Stefan Rink for the initial patch, which has been
+    re-worked by me (srk). All bugs mine.
+  * Note in manpage the change in behaviour of -address. This behaviour
+    actually changed in v2.86, but was undocumented there. From 2.86 on,
+    (eg) --address=/example.com/1.2.3.4 ONLY applies to A queries. All other
+    types of query will be sent upstream. Pre 2.86, that would catch the
+    whole example.com domain and queries for other types would get
+    a local NODATA answer. The pre-2.86 behaviour is still available,
+    by configuring --address=/example.com/1.2.3.4 --local=/example.com/
+  * Fix problem with binding DHCP sockets to an individual interface.
+    Despite the fact that the system call tales the interface _name_ as
+    a parameter, it actually, binds the socket to interface _index_.
+    Deleting the interface and creating a new one with the same name
+    leaves the socket bound to the old index. (Creating new sockets
+    always allocates a fresh index, they are not reused). We now
+    take this behaviour into account and keep up with changing indexes.
+  * Add --conf-script configuration option.
+  * Enhance --domain to accept, for instance,
+    --domain=net2.thekelleys.org.uk,eth2 so that hosts get a domain
+    which relects the interface they are attached to in a way which
+    doesn't require hard-coding addresses. Thanks to Sten Spans for
+    the idea.
+  * Fix write-after-free error in DHCPv6 server code.
+    CVE-2022-0934 refers.
+  * Add the ability to specify destination port in
+    DHCP-relay mode. This change also removes a previous bug
+    where --dhcp-alternate-port would affect the port used
+    to relay _to_ as well as the port being listened on.
+    The new feature allows configuration to provide bug-for-bug
+    compatibility, if required. Thanks to Damian Kaczkowski 
+    for the feature suggestion.
+  * Bound the value of UDP packet size in the EDNS0 header of
+    forwarded queries to the configured or default value of
+    edns-packet-max. There's no point letting a client set a larger
+    value if we're unable to return the answer. Thanks to Bertie
+    Taylor for pointing out the problem and supplying the patch.
+- drop dnsmasq-CVE-2022-0934.patch, dnsmasq-resolv-conf.patch (upstream)
+
+-------------------------------------------------------------------
 Fri Sep  9 11:00:25 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Ensure the dnsmasq user's group is used
