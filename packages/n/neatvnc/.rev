@@ -39,4 +39,38 @@
     <comment></comment>
     <requestid>875904</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e07059d91f34317181e5fd8924341e84</srcmd5>
+    <version>0.5.4</version>
+    <time>1667901297</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.4:
+  * This fixes stalling during h264 encoding. The FFmpeg devs
+    seem to think that it's normal to change the default behaviour
+    of their code, so this needs to be fixed here instead.
+
+- Update to 0.5.3:
+  * Revert &quot;h264-encoder: Add 30 bit color depth formats&quot;
+  * server: Fix encoding selection for sw frames
+
+- Update to 0.5.2:
+  * stream: Remove stray ampersand in tls handshake failure code path
+  * resampler: Use transformed width as destination stride
+
+- Update to 0.5.1:
+  * meson: Use partial_dependency() for libdrm cflags
+  * test: meson: Add missing libdrm_inc dependency
+  * server: add missing header after f20ffb5e1efe
+
+- Update to 0.5.0:
+  * H.264 Encoding
+  * UNIX Sockets
+  * New framebuffer submission API
+  * Automatic buffer transforms
+  * Client side cursor rendering
+  * Now accepts DMA-BUFs
+  * Presentation time stamps
+  * New internal encoder abstraction layer</comment>
+    <requestid>1034388</requestid>
+  </revision>
 </revisionlist>

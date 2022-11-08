@@ -1,7 +1,7 @@
 #
 # spec file for package neatvnc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           neatvnc
-Version:        0.4.0
+Version:        0.5.4
 Release:        0
 Summary:        A VNC server library
 License:        ISC
@@ -25,7 +25,11 @@ Group:          System/GUI/Other
 URL:            https://github.com/any1/neatvnc
 Source0:        https://github.com/any1/neatvnc/archive/v%{version}.tar.gz
 BuildRequires:  aml-devel
+BuildRequires:  cmake
+BuildRequires:  ffmpeg-4-libavcodec-devel
+BuildRequires:  ffmpeg-4-libavfilter-devel
 BuildRequires:  libdrm-devel
+BuildRequires:  libgbm-devel
 BuildRequires:  libgnutls-devel
 BuildRequires:  libjpeg8-devel
 BuildRequires:  libpixman-1-0-devel
