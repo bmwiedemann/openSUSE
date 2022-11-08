@@ -3841,4 +3841,12 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
   * u_xkb-CVE-2020-14360.patch</comment>
     <requestid>1034184</requestid>
   </revision>
+  <revision rev="413" vrev="5">
+    <srcmd5>ab2b25c4e3d186c4d336b6d563a7bd88</srcmd5>
+    <version>21.1.4</version>
+    <time>1667901223</time>
+    <user>dimstar_suse</user>
+    <comment>- Release 21.1 covers bugfixes and JIRA tickets for bsc#1176015,bsc#1182510,bsc#1182884,bsc#1184072,bsc#1184543,bsc#1184906,bsc#1186092,bsc#1188970,bsc#1194159,bsc#1196577,bsc#1197046,bsc#1197269,bsc#1200076,fdo#574,jsc#SLE-18653,jsc#SLE-8470</comment>
+    <requestid>1034269</requestid>
+  </revision>
 </revisionlist>
