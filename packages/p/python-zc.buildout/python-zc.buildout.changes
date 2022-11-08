@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct 29 18:02:10 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 2.13.8 
+  * Support python310-315 in conditional section expressions.
+
+-------------------------------------------------------------------
 Fri Sep 16 23:22:55 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - update to version 2.13.7: 
