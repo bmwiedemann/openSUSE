@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Oct 30 12:11:53 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v16.3.6
+  * Changes of version 16.3.6
+    = Fix shape of y-ogonek (used by Elfdalian) (#1437).
+
+-------------------------------------------------------------------
+Sat Oct 29 15:58:22 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v16.3.5
+  * Changes of version 16.3.5
+    = Update Powerline line number and column number symbol
+     (U+E0A1, U+E0A2) to follow other fonts’ design.
+
+-------------------------------------------------------------------
 Sun Oct 16 01:21:53 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v16.3.4
