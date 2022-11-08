@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov  3 07:05:00 UTC 2022 - Amit Chaudhary <amit.chaudhary@suse.com>
+
+- killed lvmlockd doesn't clear/adopt locks leading to inability to start volume group (bsc#1203216)
+  - bug-1203216_lvmlockd-purge-the-lock-resources-left-in-previous-l.patch
+
+-------------------------------------------------------------------
 Mon Oct 31 12:11:00 UTC 2022 - Heming Zhao <heming.zhao@suse.com>
 
 - dracut-initqueue timeouts with 5.3.18-150300.59.63 kernel on ppc64le (bsc#1199074)

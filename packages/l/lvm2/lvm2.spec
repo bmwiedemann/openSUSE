@@ -1,5 +1,5 @@
 #
-# spec file for package lvm2
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -85,6 +85,7 @@ Patch0011:      0011-devices-drop-double-from-sysfs-path.patch
 Patch0012:      0012-devices-file-fix-pvcreate-uuid-matching-pvid-entry-w.patch
 Patch0013:      0013-vgimportdevices-change-result-when-devices-are-not-a.patch
 Patch0014:      0014-vgimportdevices-fix-locking-when-creating-devices-fi.patch
+Patch0015:      bug-1203216_lvmlockd-purge-the-lock-resources-left-in-previous-l.patch
 # SUSE patches: 1000+ for LVM
 # Never upstream
 Patch1001:      cmirrord_remove_date_time_from_compilation.patch
@@ -159,6 +160,7 @@ Volume Manager.
 %patch0012 -p1
 %patch0013 -p1
 %patch0014 -p1
+%patch0015 -p1
 %patch1001 -p1
 %patch1002 -p1
 %patch1003 -p1
