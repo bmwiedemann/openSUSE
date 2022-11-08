@@ -1,7 +1,7 @@
 #
-# spec file for package python-pytest-arraydiff-test
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,27 +25,27 @@
 %bcond_with test
 %endif
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python36 1
 Name:           python-pytest-arraydiff%{psuffix}
-Version:        0.3
+Version:        0.5.0
 Release:        0
 Summary:        Pytest plugin to help with comparing array output from tests
 License:        BSD-2-Clause
 URL:            https://github.com/astropy/pytest-arraydiff
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-arraydiff/pytest-arraydiff-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy
-Requires:       python-pytest
-Requires:       python-six
+Requires:       python-pytest >= 4.6
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module astropy if %python-base > 3}
+BuildRequires:  %{python_module astropy}
 BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module pytest >= 4.6}
 %endif
 %python_subpackages
 
@@ -68,27 +68,20 @@ At the moment, the supported file formats for the reference files are:
 %prep
 %setup -q -n pytest-arraydiff-%{version}
 
+%if !%{with test}
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
 %if %{with test}
 %check
-%{python_expand # u-a controlled pytest executable for nested pytest calls within tests
-mkdir -p build/bin
-ln -sf %{_bindir}/pytest-%{$python_bin_suffix} build/bin/pytest
-}
-export PATH="$PWD/build/bin:$PATH"
 # not installed in :test multiflavor
 export PYTHONPATH="$PWD"
-# generate, default_format, test_fails, test_succeeds_func_fits_hdu tests need astropy that is python3 only, so skip
-python2_donttest=" or test_generate or test_default_format or test_fails or test_succeeds_func_fits_hdu"
-%pytest -k "not (donttestdummyprefix ${$python_donttest})"
+%pytest
 %endif
 
 %if !%{with test}

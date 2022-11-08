@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov  7 19:03:45 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to v0.5.0
+  * Remove astropy dependency by @olebole in #31
+  * Register array_compare as pytest marker.
+- Release v0.4.0
+  * Minimum Python version is now 3.7. [#30]
+  * Various infrastructure updates.
+
+-------------------------------------------------------------------
 Tue Apr 27 09:52:52 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Do not build the package for python36 either
