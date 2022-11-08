@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Oct 28 23:31:49 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.32.0:
+  * BREAKING CHANGE: switch config/layout/theme language to KDL (https://github.com/zellij-org/zellij/pull/1759)
+  * debugging: Improve error handling in screen thread (https://github.com/zellij-org/zellij/pull/1670)
+  * fix: Server exits when client panics (https://github.com/zellij-org/zellij/pull/1731)
+  * fix: Server panics when writing to suppressed pane (https://github.com/zellij-org/zellij/pull/1749)
+  * debugging: Improve error handling in screen thread private functions (https://github.com/zellij-org/zellij/pull/1770)
+  * fix(nix): add DiskArbitration and Foundation to darwin builds (https://github.com/zellij-org/zellij/pull/1724)
+  * debugging: Remove calls to `panic` in server/tab (https://github.com/zellij-org/zellij/pull/1748)
+  * debugging: Improve error format in server/thread_bus (https://github.com/zellij-org/zellij/pull/1775)
+  * feat: command pane - send commands to Zellij and re-run them with ENTER (https://github.com/zellij-org/zellij/pull/1787)
+  * fix: escape quotes and backslashes when converting YAML to KDL (https://github.com/zellij-org/zellij/pull/1790)
+  * fix: frameless pane wrong size after closing other panes (https://github.com/zellij-org/zellij/pull/1776)
+  * fix: error on mixed nodes in layouts (https://github.com/zellij-org/zellij/pull/1791)
+  * fix: error on duplicate pane_template / tab_template definitions in layouts (https://github.com/zellij-org/zellij/pull/1792)
+  * fix: accept session-name through the cli properly (https://github.com/zellij-org/zellij/pull/1793)
+  * fix: Prevent recursive sessions from layout files (https://github.com/zellij-org/zellij/pull/1766)
+  * fix: better error messages and recovery from layout issues (https://github.com/zellij-org/zellij/pull/1797)
+  * feat: allow layouts to have a global cwd (https://github.com/zellij-org/zellij/pull/1798)
+  * feat: edit panes in layouts (https://github.com/zellij-org/zellij/pull/1799)
+  * debugging: Log `thread_bus` IPC messages only in debug mode (https://github.com/zellij-org/zellij/pull/1800)
+  * feat: improve zellij run CLI (https://github.com/zellij-org/zellij/pull/1804)
+  * docs: Add tips for code contributions to CONTRIBUTING (https://github.com/zellij-org/zellij/pull/1805)
+  * feat: change floating panes to be grouped rather than scattered (https://github.com/zellij-org/zellij/pull/1810)
+  * fix: default to vi editor when we can't an editor in EDITOR or VISUAL and none is configured (https://github.com/zellij-org/zellij/pull/1811)
+  * deps: upgrade log4rs to 1.2.0 (https://github.com/zellij-org/zellij/pull/1814)
+  * feat: allow `DumpScreen` to dump the viewport by default (https://github.com/zellij-org/zellij/pull/1794)
+  * Terminal compatibility: clear scroll region when terminal pane is cleared (https://github.com/zellij-org/zellij/pull/1826)
+  * feat: allow defining tab cwd in layouts (https://github.com/zellij-org/zellij/pull/1828)
+  * debugging: Remove calls to `unwrap` from plugin WASM VM (https://github.com/zellij-org/zellij/pull/1827)
+  * debugging: Improve error handling in `server/route` (https://github.com/zellij-org/zellij/pull/1808)
+  * debugging: Detect plugin version mismatches (https://github.com/zellij-org/zellij/pull/1838)
+  * feat: add help to cli options (https://github.com/zellij-org/zellij/pull/1839)
+
+-------------------------------------------------------------------
 Sat Oct 15 00:32:25 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Install zellij.desktop and zellij.png.

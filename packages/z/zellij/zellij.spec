@@ -18,12 +18,12 @@
 
 %bcond_with     test
 Name:           zellij
-Version:        0.31.4
+Version:        0.32.0
 Release:        0
 Summary:        Terminal workspace with batteries included
 License:        MIT
 URL:            https://github.com/zellij-org/zellij
-Source0:        https://github.com/zellij-org/zellij/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/zellij-org/zellij/archive/refs/tags/v%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        cargo_config
 Source3:        README.suse-maint.md
