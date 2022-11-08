@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 28 13:04:18 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.8.27
+  * Fix a stuck issue 
+
+-------------------------------------------------------------------
 Thu Oct 27 09:11:09 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Require /usr/bin/pkexec instead of pkexec (the package name):
@@ -11,6 +17,14 @@ Mon Jul 18 09:49:45 UTC 2022 - Marcus Meissner <meissner@suse.com>
 - require pkexec for pkexec binary
 
 -------------------------------------------------------------------
+Sun Jul  3 03:43:12 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.8.26
+  * Optimize performance
+  * Fix bug
+  * Update translations 
+
+-------------------------------------------------------------------
 Wed Apr 20 03:17:58 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.8.22
@@ -19,7 +33,7 @@ Wed Apr 20 03:17:58 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 -------------------------------------------------------------------
 Thu Apr  7 06:21:10 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
-- Fix build on Tumbleweed 
+- Fix build on Tumbleweed
 
 -------------------------------------------------------------------
 Tue Mar 15 13:00:59 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
