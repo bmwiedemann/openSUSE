@@ -452,4 +452,12 @@ Reflect all of the licenses of the various components in the spec file license (
 - Move dtk-logos.sty from doc tree into load tree</comment>
     <requestid>972675</requestid>
   </revision>
+  <revision rev="48" vrev="51">
+    <srcmd5>5458f6bc78525ec5be993888b235d3a8</srcmd5>
+    <version>unknown</version>
+    <time>1667904480</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1034305</requestid>
+  </revision>
 </revisionlist>
