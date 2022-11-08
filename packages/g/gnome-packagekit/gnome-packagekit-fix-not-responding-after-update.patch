@@ -1,8 +1,8 @@
-Index: gnome-packagekit-3.20.0/src/gpk-update-viewer.c
+Index: gnome-packagekit-43.0/src/gpk-update-viewer.c
 ===================================================================
---- gnome-packagekit-3.20.0.orig/src/gpk-update-viewer.c
-+++ gnome-packagekit-3.20.0/src/gpk-update-viewer.c
-@@ -1003,6 +1003,7 @@ gpk_update_viewer_progress_cb (PkProgres
+--- gnome-packagekit-43.0.orig/src/gpk-update-viewer.c
++++ gnome-packagekit-43.0/src/gpk-update-viewer.c
+@@ -929,6 +929,7 @@ gpk_update_viewer_progress_cb (PkProgres
  		window = gtk_widget_get_window (widget);
  		if (status == PK_STATUS_ENUM_FINISHED) {
  			gdk_window_set_cursor (window, NULL);

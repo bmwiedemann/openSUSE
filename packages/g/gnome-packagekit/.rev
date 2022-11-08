@@ -1057,4 +1057,12 @@ Also for 12.3 (optical only / making the launchers 'findable')</comment>
   error to make it work as before(bsc#1198801). (forwarded request 975520 from JonathanKang)</comment>
     <requestid>975773</requestid>
   </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>a2e2472796845ff8206b31385a8cdd8a</srcmd5>
+    <version>43.0</version>
+    <time>1667901209</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 1033637 from iznogood)</comment>
+    <requestid>1034166</requestid>
+  </revision>
 </revisionlist>

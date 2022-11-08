@@ -5,10 +5,10 @@ Subject: [PATCH] gpk-update-viewer: offer to install signatures if needed
 
 https://bugzilla.gnome.org/show_bug.cgi?id=756991
 ---
-Index: gnome-packagekit-3.32.0/src/gpk-update-viewer.c
+Index: gnome-packagekit-43.0/src/gpk-update-viewer.c
 ===================================================================
---- gnome-packagekit-3.32.0.orig/src/gpk-update-viewer.c
-+++ gnome-packagekit-3.32.0/src/gpk-update-viewer.c
+--- gnome-packagekit-43.0.orig/src/gpk-update-viewer.c
++++ gnome-packagekit-43.0/src/gpk-update-viewer.c
 @@ -60,6 +60,7 @@ static	GCancellable		*cancellable = NULL
  static	GSettings		*settings = NULL;
  static	GPtrArray		*update_array = NULL;
@@ -28,7 +28,7 @@ Index: gnome-packagekit-3.32.0/src/gpk-update-viewer.c
  
  enum {
  	GPK_UPDATES_COLUMN_TEXT,
-@@ -2294,6 +2299,168 @@ gpk_update_viewer_packages_to_ids (GPtrA
+@@ -2296,6 +2301,168 @@ gpk_update_viewer_packages_to_ids (GPtrA
  }
  
  static void
@@ -197,7 +197,7 @@ Index: gnome-packagekit-3.32.0/src/gpk-update-viewer.c
  gpk_update_viewer_get_updates_cb (PkClient *client, GAsyncResult *res, gpointer user_data)
  {
  	g_autoptr(PkResults) results = NULL;
-@@ -2313,6 +2480,7 @@ gpk_update_viewer_get_updates_cb (PkClie
+@@ -2315,6 +2482,7 @@ gpk_update_viewer_get_updates_cb (PkClie
  	g_autoptr(PkError) error_code = NULL;
  	GtkWindow *window;
  	PkInfoEnum info;
@@ -205,7 +205,7 @@ Index: gnome-packagekit-3.32.0/src/gpk-update-viewer.c
  
  	/* get the results */
  	results = pk_client_generic_finish (client, res, &error);
-@@ -2322,6 +2490,14 @@ gpk_update_viewer_get_updates_cb (PkClie
+@@ -2324,6 +2492,14 @@ gpk_update_viewer_get_updates_cb (PkClie
  		return;
  	}
  
@@ -220,7 +220,7 @@ Index: gnome-packagekit-3.32.0/src/gpk-update-viewer.c
  	/* check error code */
  	error_code = pk_results_get_error_code (results);
  	if (error_code != NULL) {
-@@ -2674,6 +2850,7 @@ gpk_update_viewer_get_distro_upgrades_cb
+@@ -2667,6 +2843,7 @@ gpk_update_viewer_get_distro_upgrades_cb
  	GtkWidget *widget;
  	g_autoptr(PkError) error_code = NULL;
  	GtkWindow *window;
@@ -228,7 +228,7 @@ Index: gnome-packagekit-3.32.0/src/gpk-update-viewer.c
  
  	/* get the results */
  	results = pk_client_generic_finish (client, res, &error);
-@@ -2683,6 +2860,14 @@ gpk_update_viewer_get_distro_upgrades_cb
+@@ -2676,6 +2853,14 @@ gpk_update_viewer_get_distro_upgrades_cb
  		return;
  	}
  
@@ -243,7 +243,7 @@ Index: gnome-packagekit-3.32.0/src/gpk-update-viewer.c
  	/* check error code */
  	error_code = pk_results_get_error_code (results);
  	if (error_code != NULL) {
-@@ -2766,6 +2951,53 @@ gpk_update_viewer_activate_cb (GtkApplic
+@@ -2759,6 +2944,53 @@ gpk_update_viewer_activate_cb (GtkApplic
  }
  
  static void
@@ -297,7 +297,7 @@ Index: gnome-packagekit-3.32.0/src/gpk-update-viewer.c
  gpk_update_viewer_application_startup_cb (GtkApplication *_application, gpointer user_data)
  {
  	GtkWidget *main_window;
-@@ -2816,6 +3048,8 @@ gpk_update_viewer_application_startup_cb
+@@ -2809,6 +3041,8 @@ gpk_update_viewer_application_startup_cb
  		return;
  	}
  

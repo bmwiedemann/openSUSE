@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-packagekit
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,16 +19,14 @@
 # Easy switching on/off of systemd integration
 %define with_systemd 1
 Name:           gnome-packagekit
-Version:        3.32.0
+Version:        43.0
 Release:        0
 Summary:        Applications for the PackageKit API
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            http://packagekit.org/
-Source0:        https://download.gnome.org/sources/gnome-packagekit/3.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-packagekit/43/%{name}-%{version}.tar.xz
 
-# PATCH-FIX-UPSTREAM gnome-packagekit-displaysize.patch bgo#770640 dimstar@opensuse.org -- Never expand over 90% of the screen size,
-Patch0:         gnome-packagekit-displaysize.patch
 # PATCH-FEATURE-OPENSUSE -- Only show gnome-packagekit in gnome.
 Patch1:         gnome-packagekit-OnlyShowIn.patch
 # PATCH-FIX-SLE bnc#881245-update-test-affects-package-manager-should-restart-gpk-update-viewer.patch rlmu@suse.com -- Restart gpk-update-viewer after certain update.
@@ -39,25 +37,18 @@ Patch3:         bnc-946886-install-signatures-in-viewer.patch
 Patch4:         bnc#939278-gnome-packagekit-asks-for-reboot-password-too-early.patch
 # PATCH-FIX-UPSTREAM gnome-packagekit-fix-not-responding-after-update.patch bgo#782673, bsc#1036542 sckang@suse.com -- Fix gpk-update-viewer not responding after installing available updates.
 Patch5:         gnome-packagekit-fix-not-responding-after-update.patch
-# PATCH-FIX-UPSTREAM gnome-packagekit-bring-back-logout-support.patch glgo#GNOME/gnome-packagekit!2, bsc#1180247 sckang@suse.com -- Add back logout support.
-Patch6:         gnome-packagekit-bring-back-logout-support.patch
-# PATCH-FIX-UPSTREAM gnome-packagekit-define-HAVE_SYSTEMD.patch glgo#GNOME/gnome-packagekit!3, bsc#1134544 sckang@suse.com -- define HAVE_SYSTEMD macro if systemd if found.
-Patch7:         gnome-packagekit-define-HAVE_SYSTEMD.patch
-# PATCH-FIX-UPSTREAM gnome-packagekit-drop-NEWEST-on-get-updates.patch glgo#GNOME/gnome-packagekit!3, bsc#1190330 sckang@suse.com -- Don't use PK_FILTER_ENUM_NEWEST filter when getting updates
-Patch8:         gnome-packagekit-drop-NEWEST-on-get-updates.patch
 
 BuildRequires:  PackageKit-devel
-BuildRequires:  desktop-file-utils
 BuildRequires:  docbook-utils-minimal
 BuildRequires:  gettext-devel
-BuildRequires:  gnome-menus-devel
 BuildRequires:  meson >= 0.46.0
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(dbus-glib-1)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.15.3
+BuildRequires:  pkgconfig(gio-2.0) >= 2.56
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24
 BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(libcanberra-gtk3)
 BuildRequires:  pkgconfig(libnotify)
@@ -102,9 +93,6 @@ YaST Software Management.
 %meson_install
 %find_lang %{name} %{?no_lang_C}
 %suse_update_desktop_file org.gnome.Packages
-# gpk-install-local-file is no longer part of gpk, see boo#941862
-rm %{buildroot}%{_datadir}/applications/gpk-install-local-file.desktop
-#suse_update_desktop_file gpk-install-local-file
 %suse_update_desktop_file gpk-log Settings
 %suse_update_desktop_file gpk-prefs X-GNOME-SystemSettings
 %suse_update_desktop_file org.gnome.PackageUpdater
@@ -118,9 +106,7 @@ rm %{buildroot}%{_datadir}/applications/gpk-install-local-file.desktop
 %dir %{_datadir}/GConf/gsettings
 %{_datadir}/GConf/gsettings/org.gnome.packagekit.gschema.migrate
 %dir %{_datadir}/metainfo
-%{_datadir}/metainfo/org.gnome.PackageUpdater.appdata.xml
-# do not ship dysfunctional handler for x-rpm mime type
-#{_datadir}/applications/gpk-install-local-file.desktop
+%{_datadir}/metainfo/org.gnome.PackageUpdater.metainfo.xml
 %{_datadir}/applications/gpk-prefs.desktop
 %{_datadir}/applications/org.gnome.PackageUpdater.desktop
 %{_datadir}/glib-2.0/schemas/org.gnome.packagekit.gschema.xml
@@ -136,7 +122,7 @@ rm %{buildroot}%{_datadir}/applications/gpk-install-local-file.desktop
 %files extras
 %{_bindir}/gpk-application
 %{_bindir}/gpk-log
-%{_datadir}/metainfo/org.gnome.Packages.appdata.xml
+%{_datadir}/metainfo/org.gnome.Packages.metainfo.xml
 %{_datadir}/applications/org.gnome.Packages.desktop
 %{_datadir}/applications/gpk-log.desktop
 %{_mandir}/man1/gpk-application.1%{?ext_man}

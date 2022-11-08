@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Nov  4 18:22:55 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.0:
+  + Add icon for critical updates.
+  + Fix smallscreen support.
+  + Add back logout support.
+  + Automatically remove unused dependencies by default.
+- Add explicit  pkgconfig(gio-2.0) BuildRequires, as meson checks
+  for it.
+- Drop desktop-file-utils and gnome-menus-devel BuildRequires, no
+  longer needed.
+- Drop patches fixed upstream:
+  + gnome-packagekit-displaysize.patch
+  + gnome-packagekit-bring-back-logout-support.patch
+  + gnome-packagekit-define-HAVE_SYSTEMD.patch
+  + gnome-packagekit-drop-NEWEST-on-get-updates.patch
+- Rebase patches with quilt.
+
+-------------------------------------------------------------------
 Sat May  7 08:47:21 UTC 2022 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Modify bnc-946886-install-signatures-in-viewer.patch: Fix runtime
