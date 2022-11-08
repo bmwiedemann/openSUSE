@@ -31,9 +31,9 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           %{php_name}-%{pkg_name}
-Version:        5.0.2
+Version:        5.1.0
 Release:        0
-Summary:        PHP7 Extension Module
+Summary:        PHP Extension Module
 License:        BSD-3-Clause
 Group:          Development/Libraries/PHP
 URL:            https://pecl.php.net/package/%{pkg_name}
@@ -46,10 +46,10 @@ BuildRequires:  %{php_name}-psr >= 0.7.0
 BuildRequires:  gcc
 %if "%{php_name}" == "php7"
 BuildRequires:  %{php_name}-json
-BuildRequires:  php >= 7.4.1
+BuildRequires:  %{php_name} >= 7.4.1
 %endif
 %if "%{php_name}" == "php8"
-BuildRequires:  php < 8.2.0
+BuildRequires:  %{php_name} < 8.2.0
 %endif
 
 Requires:       %{php_name}-mysql

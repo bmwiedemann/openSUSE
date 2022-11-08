@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Sat Nov  5 21:13:25 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 5.1.0
+  * Fixed `Phalcon\Mvc\View\Engine\Volt\Compiler::isTagFactory` to
+    correctly detect a `TagFactory` object without throwing an error
+    [#16097]
+  * Fixed default values for `Phalcon\Cli`, `Phalcon\Dispatcher` and
+    `Phalcon\Application` components to ensure not `null` values are
+     passed to methods [#16186]
+  * Fixed `Phalcon\Form::clear` to correctly clear the elements and not
+    recurse [#15956]
+  * Added `Phalcon\Http\Request::getPatch()` to get a value from a
+    PATCH request [#16188]
+  * Added `Phalcon\Http\Request::getFilteredPatch()` to get a value
+    filtered from a PATCH request [#16188]
+  * Added `Phalcon\Http\Request::hasPatch()` to check if a value exist
+    in a PATCH request [#16188]
+
+- update to 5.0.5
+  * Fixed `Phalcon\Config\Config::setData` to pass the `insensitive`
+    flag to child objects [#16171]
+  * Fixed `Phalcon\Config\Adapter\Groupped::__construct` to pass the
+    `insensitive` flag to child objects [#16171]
+  * Fixed `Phalcon\Session\Manager::setName`, removing the regex check
+    for the name for custom adapters to work with `create_sid()`
+    [#16170]
+  * Fixed `PdoResult::fetchAll` when passed class name in 2nd argument
+    [#16177]
+  * Fixed `Forms\Form::label` to accept an array as a default variable
+    [#16180]
+
+- update to 5.0.4
+  * Fixed `Phalcon\Encryption\Security` to take into account the
+    `workFactor` in the cost calculation [#16153]
+  * Removed double unserializing during Model caching [#16035]
+  * Fixed `Phalcon\Db\Adapter\Pdo\Mysql::describeIndexes` to assign an
+    empty string in the index type of `null` and remove warnings
+    [#16157]
+  * Fixed `Phalcon\Db\Adapter\Pdo\Sqlite::describeIndexes` to assign an
+    empty string in the index type of `null` and remove warnings
+    [#16157]
+  * Fixed `Phalcon\Mvc\Model\Manager::notifyEvent` to return `true`
+    instead of `null` on success [#16161]
+  * Fixed `Phalcon\Encryption\Security\JWT\Validator::validateExpiration`
+    to correctly validate the `exp` claim [#16166]
+
+-------------------------------------------------------------------
+Mon Oct 17 20:37:00 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 5.0.3
+  * Fixed `Phalcon\Filter\Sanitize\StringVal` to accept flags for
+    `htmlspecialchars()` [#16135]
+  * Fixed `Phalcon\Html\Escaper::attributes()` to honor the `$flags`
+    set for `htmlspecialchars()` [#16134]
+
+-------------------------------------------------------------------
 Fri Sep 30 18:11:23 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to 5.0.2
