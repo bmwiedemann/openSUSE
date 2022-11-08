@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-asyncpg
-Version:        0.26.0
+Version:        0.27.0
 Release:        0
 Summary:        Python asyncio PosgtreSQL driver
 License:        Apache-2.0

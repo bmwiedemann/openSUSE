@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Nov  7 20:50:09 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 0.27.0 
+  Support Python 3.11 and PostgreSQL 15. This release also drops support
+  for Python 3.6.
+  * Changes
+  Add arm64 mac and linux wheels
+  Add Python 3.11 to the test matrix
+  Exclude .venv from flake8 (#958)
+  Upgrade to flake8 5.0.4 (from 3.9.2) (#961)
+  Show an example of a custom Record class (#960)
+  Use the exact type name in Record.repr (#959)
+  Drop Python 3.6 support (#940)
+  Test on Python 3.11 and PostgreSQL 15, fix workflow deprecations (#968)
+
+-------------------------------------------------------------------
 Fri Oct 14 07:33:54 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Disable failing test test_executemany_uvloop_ssl_issue_700, because
