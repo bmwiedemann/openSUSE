@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct 20 03:06:12 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.46
+   see /usr/share/doc/packages/perl-Clone/Changes
+
+  0.46 2022-10-18 20:23:00 garu
+    - fix backwards compatibility with older perls (haarg)
+    - bump MANIFEST to include extra tests
+
+-------------------------------------------------------------------
 Fri Apr 24 03:08:49 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 0.45
