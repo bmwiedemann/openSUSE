@@ -75,4 +75,12 @@
   (VA-API, ...) for Intel GPUs is outside of Mesa)</comment>
     <requestid>1034196</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>70248bb5a1a38551d4f84c50b86b59e5</srcmd5>
+    <version>2023.0.0</version>
+    <time>1667903454</time>
+    <user>dimstar_suse</user>
+    <comment>- limit build again to x86_64 on older products than factory</comment>
+    <requestid>1034455</requestid>
+  </revision>
 </revisionlist>

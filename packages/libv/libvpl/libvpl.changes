@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov  8 09:19:49 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- limit build again to x86_64 on older products than factory
+
+-------------------------------------------------------------------
 Mon Nov  7 12:57:38 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - needed for jira#PED-1174 (Video decoding/encoding support 
