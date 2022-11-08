@@ -23,8 +23,9 @@ Summary:        GNOME Music Management Application
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://wiki.gnome.org/Apps/Rhythmbox
-Source:         https://download.gnome.org/sources/rhythmbox/3.4/%{name}-%{version}.tar.xz
-
+Source0:        https://download.gnome.org/sources/rhythmbox/3.4/%{name}-%{version}.tar.xz
+Source1:        %{name}-remote-control.xml
+Source2:        daap-server.xml
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  lirc-devel
@@ -102,6 +103,10 @@ export PYTHON=%{_bindir}/python3
 %install
 %meson_install
 
+mkdir -p %{buildroot}%{_prefix}/lib/firewalld/services
+install -m 0644 %{SOURCE1} %{buildroot}%{_prefix}/lib/firewalld/services/
+install -m 0644 %{SOURCE2} %{buildroot}%{_prefix}/lib/firewalld/services/
+
 %find_lang %{name} %{?no_lang_C}
 find %{buildroot} -type f -name "*.la" -delete -print
 # Disabled as it pulls old webkit, needs fixing upstream
@@ -160,6 +165,9 @@ rm -rf %{buildroot}%{_libdir}/rhythmbox/plugins/rbzeitgeist/
 %{_libdir}/rhythmbox/plugins/replaygain/
 %{_libdir}/rhythmbox/plugins/webremote/
 %{_libexecdir}/rhythmbox-metadata
+%dir %{_prefix}/lib/firewalld
+%dir %{_prefix}/lib/firewalld/services
+%{_prefix}/lib/firewalld/services/*.xml
 %{_mandir}/man1/rhythmbox.1%{ext_man}
 %{_mandir}/man1/rhythmbox-client.1%{ext_man}
 

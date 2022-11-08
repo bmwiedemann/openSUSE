@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+  <short>daap-server</short>
+  <description>Share music and play shared music on your local network</description>
+  <port protocol="tcp" port="3698"/>
+  <port protocol="tcp" port="46135"/>
+</service>

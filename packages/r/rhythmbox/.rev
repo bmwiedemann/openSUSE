@@ -789,4 +789,12 @@
     <comment> (forwarded request 984395 from iznogood)</comment>
     <requestid>984680</requestid>
   </revision>
+  <revision rev="102" vrev="2">
+    <srcmd5>461b064977ba30cd1f06ddd6663d2598</srcmd5>
+    <version>3.4.6</version>
+    <time>1667909864</time>
+    <user>dimstar_suse</user>
+    <comment>- Add firewalld profiles for DAAP and Remote Control plugins (forwarded request 1034435 from hillwood)</comment>
+    <requestid>1034490</requestid>
+  </revision>
 </revisionlist>

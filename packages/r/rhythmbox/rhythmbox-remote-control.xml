@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+  <short>rhythmbox-remote-control</short>
+  <description>Control Rhythmbox from a web browser</description>
+  <port protocol="tcp" port="37111"/>
+</service>
