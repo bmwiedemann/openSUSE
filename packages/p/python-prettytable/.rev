@@ -44,4 +44,12 @@
   * Add option to specify line break character used in pagination</comment>
     <requestid>1004265</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3239f765ac379db36d62575e938aecf0</srcmd5>
+    <version>3.5.0</version>
+    <time>1667901197</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1034129</requestid>
+  </revision>
 </revisionlist>

@@ -17,10 +17,9 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-prettytable
-Version:        3.4.1
+Version:        3.5.0
 Release:        0
 Summary:        Library for displaying tabular data in formatted fashion
 License:        BSD-2-Clause
@@ -28,10 +27,11 @@ URL:            https://github.com/jazzband/prettytable
 Source0:        https://files.pythonhosted.org/packages/source/p/prettytable/prettytable-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module importlib-metadata if %python-base < 3.8}
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module hatch_vcs}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-lazy-fixture}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wcwidth}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
@@ -57,10 +57,10 @@ centred) and printing of "sub-tables" by specifying a row range.
 sed -i '1 {/env python/d}' src/prettytable/prettytable.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
