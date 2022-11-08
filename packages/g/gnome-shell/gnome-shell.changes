@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Nov  4 17:56:28 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.1:
+  + Fix default keyboard layout during initial setup.
+  + Show Bluetooth switch in more cases.
+  + Include origin in sound device switcher.
+  + Fix remembering inhibit-shortcut permission for multiple apps.
+  + Forward TERMINAL input purpose to ibus.
+  + Fix style glitches.
+  + Fix tracking of newly installed apps.
+  + Fix space key getting stuck in on-screen keyboard.
+  + Fix showing passwords as on-screen keyboard suggestions.
+  + Fix network portal regression.
+  + Fix possible freeze during initialization.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Oct 28 08:03:22 UTC 2022 - Milachew <milachew@mail.lv>
 
 - Add gnome-shell-disable-offline-update-dialog.patch :
