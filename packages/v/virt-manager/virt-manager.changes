@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Nov  7 05:32:57 MST 2022 - carnold@suse.com
+
+- Refresh test skips
+- Drop the very old "Obsoletes: python-virtinst <= 0.600.4"
+  virt-manager.spec
+
+-------------------------------------------------------------------
+Fri Nov  4 11:01:28 MDT 2022 - carnold@suse.com
+
+- Upstream bug fixes (bsc#1027942)
+  11a887ec-cli-disk-Add-driver.metadata_cache-options.patch
+  7295ebfb-tests-cli-Fix-test-output-after-previous-commit.patch
+  58f5e36d-fsdetails-Fix-an-error-with-source.socket-of-virtiofs.patch
+  c22a876e-tests-Add-a-compat-check-for-linux2020-in-amd-sev-test-case.patch
+  fbdf0516-cli-cpu-Add-maxphysaddr.mode-bits-options.patch
+  b0d05167-cloner-Sync-uuid-and-sysinfo-system-uuid.patch
+  999ccb85-virt-install-unattended-and-cloud-init-conflict.patch
+
+-------------------------------------------------------------------
 Tue Oct  4 14:00:46 MDT 2022 - carnold@suse.com
 
 - jsc#PED-2113 [Virt Tools] Refresh Virtualization Tools for Xen

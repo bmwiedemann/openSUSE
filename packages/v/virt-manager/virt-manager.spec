@@ -42,6 +42,13 @@ Source2:        virt-install.desktop
 Source3:        virt-manager-supportconfig
 # Upstream Patches
 Patch1:         revert-363fca41-virt-install-Require-osinfo-for-non-x86-HVM-case-too.patch
+Patch2:         11a887ec-cli-disk-Add-driver.metadata_cache-options.patch
+Patch3:         7295ebfb-tests-cli-Fix-test-output-after-previous-commit.patch
+Patch4:         58f5e36d-fsdetails-Fix-an-error-with-source.socket-of-virtiofs.patch
+Patch5:         c22a876e-tests-Add-a-compat-check-for-linux2020-in-amd-sev-test-case.patch
+Patch6:         fbdf0516-cli-cpu-Add-maxphysaddr.mode-bits-options.patch
+Patch7:         b0d05167-cloner-Sync-uuid-and-sysinfo-system-uuid.patch
+Patch8:         999ccb85-virt-install-unattended-and-cloud-init-conflict.patch
 # SUSE Only
 Patch70:        virtman-desktop.patch
 Patch71:        virtman-kvm.patch
@@ -162,7 +169,6 @@ Requires:       virt-manager-common = %{verrel}
 Requires:       python3-requests
 Provides:       python3-virtinst
 Provides:       virt-clone
-Obsoletes:      python-virtinst <= 0.600.4
 Supplements:    virt-manager
 
 %description -n virt-install
@@ -210,23 +216,32 @@ donttest="test_disk_numtotarget"
 donttest="$donttest or testCLI0001virt_install_many_devices"
 donttest="$donttest or testCLI0110virt_install_reinstall_cdrom"
 donttest="$donttest or testCLI0284virt_xml_build_pool_logical_disk"
+donttest="$donttest or testCLI0285virt_xml_build_pool_logical_disk"
 donttest="$donttest or testCLI0276virt_xml_build_disk_domain"
+donttest="$donttest or testCLI0277virt_xml_build_disk_domain"
 donttest="$donttest or testCLI0371virt_xml_add_disk_create_storage_start"
+donttest="$donttest or testCLI0372virt_xml_add_disk_create_storage_start"
 # depends on osc/obs host cpu?
 donttest="$donttest or testCLI0003virt_install_singleton_config_2"
 donttest="$donttest or testCLI0283virt_xml_edit_cpu_host_copy"
+donttest="$donttest or testCLI0284virt_xml_edit_cpu_host_copy"
 # RuntimeError: SEV launch security requires a Q35 machine -- due to patch for bsc#1196806, jsc#SLE-18834 ?
 donttest="$donttest or testCLI0162virt_install"
 # Expectsion <video> element
 donttest="$donttest or testCLI0168virt_install_s390x_cdrom"
+donttest="$donttest or testCLI0169virt_install_s390x_cdrom"
 # missing <boot> element, extra <kernel> element
 donttest="$donttest or testCLI0189virt_install_xen_default"
+donttest="$donttest or testCLI0190virt_install_xen_default"
 donttest="$donttest or testCLI0190virt_install_xen_pv"
+donttest="$donttest or testCLI0191virt_install_xen_pv"
 # different <emulator> additional <model> in <interface>
 donttest="$donttest or testCLI0191virt_install_xen_hvm"
 donttest="$donttest or testCLI0192virt_install_xen_hvm"
+donttest="$donttest or testCLI0193virt_install_xen_hvm"
 # different source image format
 donttest="$donttest or testCLI0199virt_install_bhyve_default_f27"
+donttest="$donttest or testCLI0200virt_install_bhyve_default_f27"
 # Due to the above skips:
 # "there are XML properties that are untested in the test suite"
 donttest="$donttest or testCheckXMLBuilderProps"

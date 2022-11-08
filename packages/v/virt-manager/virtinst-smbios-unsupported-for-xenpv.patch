@@ -1,10 +1,10 @@
 References: bsc#1180069
 
-Index: virt-manager-4.0.0/virtinst/guest.py
+Index: virt-manager-4.1.0/virtinst/guest.py
 ===================================================================
---- virt-manager-4.0.0.orig/virtinst/guest.py
-+++ virt-manager-4.0.0/virtinst/guest.py
-@@ -689,6 +689,8 @@ class Guest(XMLBuilder):
+--- virt-manager-4.1.0.orig/virtinst/guest.py
++++ virt-manager-4.1.0/virtinst/guest.py
+@@ -706,6 +706,8 @@ class Guest(XMLBuilder):
              self.type != "kvm"):
              log.warning(  # pragma: no cover
                      "KVM acceleration not available, using '%s'", self.type)

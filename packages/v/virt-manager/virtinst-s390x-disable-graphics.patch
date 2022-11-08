@@ -1,10 +1,10 @@
 Reference: bnc#869024
 Disable graphics on s390x
-Index: virt-manager-4.0.0/virtinst/guest.py
+Index: virt-manager-4.1.0/virtinst/guest.py
 ===================================================================
---- virt-manager-4.0.0.orig/virtinst/guest.py
-+++ virt-manager-4.0.0/virtinst/guest.py
-@@ -200,7 +200,10 @@ class Guest(XMLBuilder):
+--- virt-manager-4.1.0.orig/virtinst/guest.py
++++ virt-manager-4.1.0/virtinst/guest.py
+@@ -208,7 +208,10 @@ class Guest(XMLBuilder):
          self.skip_default_channel = False
          self.skip_default_sound = False
          self.skip_default_usbredir = False
@@ -16,7 +16,7 @@ Index: virt-manager-4.0.0/virtinst/guest.py
          self.skip_default_rng = False
          self.skip_default_tpm = False
          self.x86_cpu_default = self.cpu.SPECIAL_MODE_APP_DEFAULT
-@@ -349,7 +352,7 @@ class Guest(XMLBuilder):
+@@ -358,7 +361,7 @@ class Guest(XMLBuilder):
          if not os_support:
              return False
  
@@ -25,7 +25,7 @@ Index: virt-manager-4.0.0/virtinst/guest.py
              return True
  
          return False  # pragma: no cover
-@@ -935,7 +938,7 @@ class Guest(XMLBuilder):
+@@ -952,7 +955,7 @@ class Guest(XMLBuilder):
          self.add_device(dev)
  
      def _add_default_video_device(self):

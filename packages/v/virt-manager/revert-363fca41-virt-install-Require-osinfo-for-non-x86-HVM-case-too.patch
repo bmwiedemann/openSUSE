@@ -29,7 +29,7 @@ Signed-off-by: Cole Robinson <crobinso@redhat.com>
  VIRTINSTALL_OSINFO_DISABLE_REQUIRE=1.
 --- a/tests/test_cli.py
 +++ b/tests/test_cli.py
-@@ -1162,7 +1162,6 @@ c.add_compare("--connect %(URI-KVM-ARMV7
+@@ -1169,7 +1169,6 @@ c.add_compare("--connect %(URI-KVM-ARMV7
  #################
  
  c.add_valid("--arch aarch64 --osinfo fedora19 --nodisks --pxe --connect " + utils.URIs.kvm_x86_nodomcaps, grep="Libvirt version does not support UEFI")  # attempt to default to aarch64 UEFI, but it fails, but should only print warnings
