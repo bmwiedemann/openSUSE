@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov  7 13:25:43 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.4
+  - Provide service to send mails about systemd service status 
+
+-------------------------------------------------------------------
 Fri Nov  4 07:36:37 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 1.3

@@ -17,11 +17,11 @@
 
 
 %if ! %{defined _distconfdir}
-  %define _distconfdir %{_datadir}
+  %define _distconfdir %{_sysconfdir}
 %endif
 
 Name:           os-update
-Version:        1.3
+Version:        1.4
 Release:        0
 Summary:        Updates the system regular to stay current and safe
 License:        GPL-2.0-or-later
@@ -32,12 +32,24 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(systemd)
 Requires:       zypper-needs-restarting
 Recommends:     rebootmgr
+Recommends:     systemd-status-mail
 BuildArch:      noarch
 
 %description
-Service to keep an OS update to date and secure. It's run by a
+Service to keep an OS update to date and secure. It is run by a
 systemd.timer daily and can inform rebootmgrd that the update
 requires a reboot.
+
+%package -n systemd-status-mail
+Summary:        Send a mail if a systemd.timer fails and/or succeeds
+Requires:       (/usr/sbin/sendmail or mailx)
+
+%description -n systemd-status-mail
+systemd-mail-status is called by systemd-status-mail@.service if the
+service is configured for the OnFailure and/or OnSuccess case of a
+systemd unit. It sends an email to a configureable address with the name
+of the service, the hostname and the output of
+"systemctl status --full <service>".
 
 %prep
 %setup -q
@@ -48,6 +60,7 @@ requires a reboot.
 
 %install
 %make_install
+install -m 644 -D etc/default/systemd-status-mail %{buildroot}%{_distconfdir}/default/systemd-status-mail
 
 %pre
 %service_add_pre os-update.timer
@@ -69,5 +82,14 @@ requires a reboot.
 %{_prefix}/lib/systemd/system/os-update.service
 %{_prefix}/lib/systemd/system/os-update.timer
 %{_mandir}/man8/os-update.8%{?ext_man}
+
+%files -n systemd-status-mail
+%license COPYING
+%{_distconfdir}/default/systemd-status-mail
+%{_libexecdir}/systemd-status-mail
+%{_prefix}/lib/systemd/system/systemd-status-mail@.service
+%{_mandir}/man8/systemd-status-mail.8%{?ext_man}
+%dir %{_datadir}/systemd-status-mail
+%{_datadir}/systemd-status-mail/status-mail.conf
 
 %changelog

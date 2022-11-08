@@ -27,4 +27,13 @@
 - Require zypper-needs-restarting</comment>
     <requestid>1033455</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7c5bfac3a35d235b07a3895e69b315b3</srcmd5>
+    <version>1.4</version>
+    <time>1667901239</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4
+  - Provide service to send mails about systemd service status</comment>
+    <requestid>1034264</requestid>
+  </revision>
 </revisionlist>
