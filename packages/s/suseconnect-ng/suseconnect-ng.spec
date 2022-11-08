@@ -23,11 +23,11 @@
 %bcond_with hwinfo
 
 Name:           suseconnect-ng
-Version:        0.0.10~git2.ee561b8
+Version:        1.0.0~git0.60e48564a714
 Release:        0
 URL:            https://github.com/SUSE/connect-ng
-Summary:        Utility to register a system with the SUSE Customer Center
 License:        LGPL-2.1-or-later
+Summary:        Utility to register a system with the SUSE Customer Center
 Group:          System/Management
 Source:         connect-ng-%{version}.tar.xz
 Source1:        %name-rpmlintrc
@@ -47,8 +47,8 @@ BuildRequires:  s390-tools
 BuildRequires:  systemd
 %endif
 
-Obsoletes:      SUSEConnect < 0.3.99
-Provides:       SUSEConnect = 0.3.99
+Obsoletes:      SUSEConnect < 1.0.0
+Provides:       SUSEConnect = 1.0.0
 Obsoletes:      zypper-migration-plugin < 0.99
 Provides:       zypper-migration-plugin = 0.99
 Obsoletes:      zypper-search-packages-plugin < 0.99
@@ -86,8 +86,8 @@ replaced SUSEConnect.
 
 %package -n libsuseconnect
 Summary:        C interface to suseconnect-ng
-# the CLI is not used by libsuseconnect but it has the same dependencies and it's easier to keep one list above
 Group:          System/Management
+# the CLI is not used by libsuseconnect but it has the same dependencies and it's easier to keep one list above
 Requires:       suseconnect-ng
 
 %description -n libsuseconnect
