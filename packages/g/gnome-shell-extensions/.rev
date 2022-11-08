@@ -2302,4 +2302,12 @@
 </comment>
     <requestid>1005867</requestid>
   </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>eb0399a58e3a2c2ece8c84ac37eef478</srcmd5>
+    <version>43.1</version>
+    <time>1667901206</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 1033603 from iznogood)</comment>
+    <requestid>1034159</requestid>
+  </revision>
 </revisionlist>
