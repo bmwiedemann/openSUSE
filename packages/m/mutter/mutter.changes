@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Nov  4 17:40:18 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.1:
+  + Add quirk to work around issue with Mali GPUs.
+  + Notify changes to night-light support over D-Bus.
+  + Fix always-on-top windows unexpectedly taking focus.
+  + Fix accidental direct scanout.
+  + Disable client modifiers with amdgpu driver.
+  + Cancel pointer gesture on wl_pointer.leave.
+  + Add black padding to fixed-size wayland fullscreen windows.
+  + Stop sending frame callbacks to minimized clients.
+  + Fix scrolling in clients with no hi-res scroll support in RDP.
+  + Fix skipped low-res scroll events with some high-res mice.
+  + Throttle interactive move and resize updates.
+  + wayland-keyboard: Send pressed keys on enter.
+  + Fix some X11 windows getting unredirected erroneously.
+  + Fix Flatpak applications bypassing X11 permission.
+  + Fix always visible cursor in virtual streams.
+  + Fixed crashes.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+- Drop b81429ac.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Sun Sep 18 07:37:08 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.0:
