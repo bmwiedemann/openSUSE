@@ -134,4 +134,19 @@
     <comment></comment>
     <requestid>943931</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>586cc59a768cad60e7b22767401633d6</srcmd5>
+    <version>3.1.4</version>
+    <time>1667901316</time>
+    <user>dimstar_suse</user>
+    <comment>- Use pml/ob1 for tests
+- Update to 3.1.4
+  * Rebuild C sources with Cython 0.29.32 to support Python 3.11.
+  * Fix contiguity check for DLPack and CAI buffers.
+  * Workaround build failures with setuptools v60.
+- Add patch support-numpy-1.22.patch:
+  * Support NumPy 1.22+ 
+</comment>
+    <requestid>1034457</requestid>
+  </revision>
 </revisionlist>

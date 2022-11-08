@@ -21,11 +21,11 @@
 %define skip_python36 1
 
 Name:           python-mpi4py
-Version:        3.1.3
+Version:        3.1.4
 Release:        0
 Summary:        MPI for Python
 License:        BSD-2-Clause
-URL:            https://bitbucket.org/mpi4py/mpi4py
+URL:            https://github.com/mpi4py/mpi4py
 Source:         https://files.pythonhosted.org/packages/source/m/mpi4py/mpi4py-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
@@ -34,6 +34,9 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  openmpi-macros-devel
 BuildRequires:  python-rpm-macros
+# Test dependencies
+BuildRequires:  %{python_module cffi}
+BuildRequires:  %{python_module PyYAML}
 %openmpi_requires
 
 %python_subpackages
@@ -97,7 +100,7 @@ Provides:       %{python_module mpi4py-doc = %{version}}
 Documentation files and demos for %{name}.
 
 %prep
-%setup -q -n mpi4py-%{version}
+%autosetup -p1 -n mpi4py-%{version}
 rm demo/*/runtests.bat docs/source/usrman/make.bat docs/source/usrman/.gitignore
 sed -i 's/\r$//' docs/usrman/objects.inv
 sed -i '1!b;/^#!\/usr\/bin\/python/d' demo/python-config
@@ -144,7 +147,7 @@ rm -rf build _build.*
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
 rm -rf build _build.*
 %setup_openmpi
-%{openmpi_prefix}/bin/mpiexec --use-hwthread-cpus --mca btl tcp,self -n 1  $python -B test/runtests.py -v --exclude="$donttest"
+%{openmpi_prefix}/bin/mpiexec --use-hwthread-cpus --mca pml ob1 --mca btl tcp,self -n 1  $python -B test/runtests.py -v --exclude="$donttest"
 }
 
 %files %{python_files}
