@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov  7 12:23:32 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.2:
+  * avoid coredump on build_one_dev_entry()
+  * avoid double free on deinit_thermal()
+  * change the log level in thermal.c
+  * fix a minor typo
+- drop Avoid-double-free-on-deinit_thermal.patch, uninitialized.patch: (upstream)
+
+-------------------------------------------------------------------
 Tue Oct 25 21:09:07 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - run tests
