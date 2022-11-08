@@ -29,7 +29,7 @@ Patterntype: rpm-md ymp
   Patterntype: none
   Prefer: openSUSE-release-ftp
   Support: release-compare
-  BuildFlags: obsgendiff
+# BuildFlags: obsgendiff
 %endif
 
 %if "%_repository" == "containerfile"
