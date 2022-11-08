@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Nov  5 09:36:17 UTC 2022 - munix9@googlemail.com
+
+- Update to version 33.0.3p1
+  * Fixed mkbootimg (see #78)
+  * Added avbtool (see #79)
+  * Fix for compatibility with Linux >= 6.0 (see #74)
+  * Removal of several obsolete patches
+
+- Remove fix-mkbootimg-gki-path.patch (fixed upstream)
+- Remove fix-lpmake-help-segfault.patch (fixed upstream)
+
+-------------------------------------------------------------------
 Sun Oct 16 10:32:42 UTC 2022 - Andreas Schwab <schwab@linux-m68k.org>
 
 - Use python3.10 for 15.4

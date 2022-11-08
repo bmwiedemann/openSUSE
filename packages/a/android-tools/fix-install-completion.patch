@@ -1,8 +1,8 @@
 diff -ruN a/CMakeLists.txt b/CMakeLists.txt
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -6,8 +6,7 @@
- include(GNUInstallDirs)
+@@ -11,8 +11,7 @@
+ option(ANDROID_TOOLS_PATCH_VENDOR "Patch vendor projects using patches directory" ON)
  
  # Install bash/zsh completion files.
 -set(COMPLETION_COMMON_DIR "${CMAKE_INSTALL_FULL_DATADIR}/android-tools/completions")

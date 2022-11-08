@@ -30,7 +30,7 @@
 %endif
 
 Name:           android-tools
-Version:        33.0.3
+Version:        33.0.3p1
 Release:        0
 Summary:        Android platform tools
 License:        Apache-2.0 AND MIT
@@ -40,21 +40,17 @@ Source1:        vendor.tar.gz
 Source2:        man-pages.tar.gz
 # PATCH-FIX-OPENSUSE fix-install-completion.patch boo#1185883 munix9@googlemail.com -- Simplify completion
 Patch0:         fix-install-completion.patch
-# PATCH-FIX-OPENSUSE fix-mkbootimg-gki-path.patch munix9@googlemail.com -- Set gki path in mkbootimg.py
-Patch1:         fix-mkbootimg-gki-path.patch
-# PATCH-FIX-UPSTREAM fix-lpmake-help-segfault.patch gh#nmeum/android-tools#73
-Patch2:         fix-lpmake-help-segfault.patch
 BuildRequires:  clang
 BuildRequires:  cmake >= 3.12
 BuildRequires:  go
 BuildRequires:  gtest
 BuildRequires:  llvm-gold
 BuildRequires:  ninja
-BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python%{_pyn}
 BuildRequires:  pkgconfig(libbrotlicommon)
 BuildRequires:  pkgconfig(liblz4)
+BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(libunwind-generic)
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(libzstd)
@@ -67,7 +63,6 @@ Provides:       %{name}-python3 = %{version}-%{release}
 Obsoletes:      %{name}-python3 < %{version}-%{release}
 ExcludeArch:    s390x
 %if 0%{?suse_version} <= 1500
-BuildRequires:  gcc11
 BuildRequires:  gcc11-c++
 %endif
 
@@ -108,26 +103,24 @@ tar xf %{SOURCE1} -C vendor/boringssl
 # fix env-script-interpreter
 sed -e '1s|^#!.*|#!/usr/bin/python%{_pyd}|' -i vendor/avb/avbtool.py \
 	vendor/mkbootimg/{mk,repack_,unpack_}bootimg.py \
-	vendor/mkbootimg/gki/generate_gki_certificate.py
+	vendor/mkbootimg/gki/generate_gki_certificate.py \
+	vendor/libufdt/utils/src/mkdtboimg.py
 
 %build
 %define __builder ninja
-export CC=clang
-export CXX=clang++
 export GOFLAGS="-mod=vendor -buildmode=pie -trimpath"
 
-%cmake -DBUILD_SHARED_LIBS:BOOL=OFF
+%cmake \
+	-DBUILD_SHARED_LIBS=OFF		\
+	-DCMAKE_C_COMPILER=clang	\
+	-DCMAKE_CXX_COMPILER=clang++
 %cmake_build
 
 %install
 %cmake_install
 
-# avbtool
-cp -pd vendor/avb/avbtool{,.py} %{buildroot}%{_bindir}
-
-# mkbootimg/gki
-install -d -m 0755 %{buildroot}%{_prefix}/lib/%{name}
-cp -a vendor/mkbootimg/gki %{buildroot}%{_prefix}/lib/%{name}
+# fix non-executable-script
+chmod 0755 %{buildroot}%{_datadir}/%{name}/mkbootimg/gki/generate_gki_certificate.py
 
 # man pages
 install -d -m 0755 %{buildroot}%{_mandir}
@@ -136,17 +129,16 @@ cp -a man/man1 %{buildroot}%{_mandir}
 %check
 # call some tools to test python3 compatibility
 export PATH=%{buildroot}%{_bindir}:$PATH
-export PYTHONPATH=%{buildroot}%{_prefix}/lib/%{name}:$PYTHONPATH
+export PYTHONDONTWRITEBYTECODE=1
 avbtool version
 mkbootimg --help
-rm -r %{buildroot}%{_prefix}/lib/%{name}/gki/__pycache__
 
 %files
 %license LICENSE
 %doc README.md
 %{_bindir}/adb
 %{_bindir}/append2simg
-%{_bindir}/avbtool{,.py}
+%{_bindir}/avbtool
 %{_bindir}/e2fsdroid
 %{_bindir}/ext2simg
 %{_bindir}/fastboot
@@ -160,9 +152,10 @@ rm -r %{buildroot}%{_prefix}/lib/%{name}/gki/__pycache__
 %files mkbootimg
 %license LICENSE
 %{_bindir}/{mk,repack_,unpack_}bootimg
+%{_bindir}/mkdtboimg
 %{_mandir}/man1/{mk,repack_,unpack_}bootimg.1%{?ext_man}
-%dir %{_prefix}/lib/%{name}
-%{_prefix}/lib/%{name}/gki
+%dir %{_datadir}/%{name}
+%{_datadir}/%{name}/mkbootimg
 
 %files partition
 %license LICENSE
