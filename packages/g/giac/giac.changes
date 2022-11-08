@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Nov  2 13:56:07 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.9.0.23:
+  + English documentation new layout/fixes.
+  + improvements mainly in nlpsolve (implements now a fast and
+    robust interior-point algorithm, alongside Nelder-Mead and
+    differential evolution methods for derivative-free
+    optimization) and global minimization of a continuous function
+    on a segment (find_minimum).
+  + Integration of the 3d renderer for calculators, gives now a
+    simpler alternative to OpenGL (useful if OpenGL inside Xcas
+     raises bugs like black screen).
+  + compatibility with new Numworks calculator bootloader.
+
+-------------------------------------------------------------------
 Wed Feb  2 10:12:50 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Update to version 1.7.0.43
