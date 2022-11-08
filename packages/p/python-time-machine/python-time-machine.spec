@@ -19,7 +19,7 @@
 %define skip_python2 1
 Name:           python-time-machine
 Group:          Development/Languages/Python
-Version:        2.8.1
+Version:        2.8.2
 Release:        0
 Summary:        Travel through time in your tests
 License:        MIT
