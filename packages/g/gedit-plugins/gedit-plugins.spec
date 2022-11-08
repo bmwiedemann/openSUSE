@@ -18,13 +18,13 @@
 
 
 Name:           gedit-plugins
-Version:        42.1
+Version:        43.1
 Release:        0
 Summary:        A collection of plugins for gedit
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Editors
 URL:            https://wiki.gnome.org/Apps/Gedit/PluginsLists
-Source0:        https://download.gnome.org/sources/gedit-plugins/42/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gedit-plugins/43/%{name}-%{version}.tar.xz
 Source1:        gedit-plugins.SUSE
 # PATCH-FIX-UPSTREAM bracketcompletion-use-key-release-event-to-work-wi.patch boo#1027448 bgo#778737 hillwood@opensuse.org -- Switch to use key release event for ibus pinyin input method
 Patch0:         bracketcompletion-use-key-release-event-to-work-wi.patch
@@ -39,7 +39,7 @@ BuildRequires:  vala >= 0.28.0
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(appstream-glib)
 BuildRequires:  pkgconfig(dbus-python) >= 0.82
-BuildRequires:  pkgconfig(gedit) >= 40.0
+BuildRequires:  pkgconfig(gedit) >= 43.0
 BuildRequires:  pkgconfig(gio-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.9.0
@@ -48,7 +48,7 @@ BuildRequires:  pkgconfig(libgit2-glib-1.0) >= 0.0.6
 BuildRequires:  pkgconfig(libpeas-1.0) >= 1.7.0
 BuildRequires:  pkgconfig(libpeas-gtk-1.0) >= 1.7.0
 BuildRequires:  pkgconfig(vte-2.91)
-Requires:       gedit >= 3.36
+Requires:       gedit >= 43.0
 Recommends:     %{name}-data
 Suggests:       gedit-plugin-bookmarks
 Suggests:       gedit-plugin-bracketcompletion
@@ -56,9 +56,7 @@ Suggests:       gedit-plugin-charmap
 Suggests:       gedit-plugin-codecomment
 Suggests:       gedit-plugin-colorpicker
 Suggests:       gedit-plugin-colorschemer
-Suggests:       gedit-plugin-commander
 Suggests:       gedit-plugin-drawspaces
-Suggests:       gedit-plugin-findinfiles
 Suggests:       gedit-plugin-git
 Suggests:       gedit-plugin-joinlines
 Suggests:       gedit-plugin-multiedit
@@ -152,15 +150,6 @@ Provides:       gedit-plugins:%{_libdir}/gedit/plugins/colorschemer.plugin
 %description -n gedit-plugin-colorschemer
 The gedit colorschemer plugin.
 
-%package -n gedit-plugin-commander
-Summary:        Gedit commander plugin
-Group:          Productivity/Text/Editors
-Requires:       %{name}-data = %{version}
-Provides:       gedit-plugins:%{_libdir}/gedit/plugins/commander.plugin
-
-%description -n gedit-plugin-commander
-The gedit commander plugin.
-
 %package -n gedit-plugin-drawspaces
 Summary:        Gedit drawspaces plugin
 Group:          Productivity/Text/Editors
@@ -169,14 +158,6 @@ Provides:       gedit-plugins:%{_libdir}/gedit/plugins/drawspaces.plugin
 
 %description -n gedit-plugin-drawspaces
 The gedit drawspaces plugin.
-
-%package -n gedit-plugin-findinfiles
-Summary:        Gedit Find In Files plugin
-Group:          Productivity/Text/Editors
-Requires:       %{name}-data = %{version}
-
-%description -n gedit-plugin-findinfiles
-The gedit Find In Files plugin.
 
 %package -n gedit-plugin-git
 Summary:        Gedit git plugin
@@ -256,15 +237,6 @@ Group:          Productivity/Text/Editors
 Requires:       %{name}-data = %{version}
 Provides:       gedit-plugins:%{_libdir}/gedit/plugins/wordcompletion.plugin
 
-%package -n gedit-plugin-translate
-Summary:        Gedit translate plugin
-Group:          Productivity/Text/Editors
-Requires:       %{name}-data = %{version}
-Provides:       gedit-plugins:%{_libdir}/gedit/plugins/translate.plugin
-
-%description -n gedit-plugin-translate
-The gedit translate plugin
-
 %description -n gedit-plugin-wordcompletion
 The gedit wordcompletion plugin
 
@@ -333,25 +305,12 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/gedit/plugins/colorschemer/
 %{_libdir}/gedit/plugins/colorschemer/
 
-%files -n gedit-plugin-commander
-# commander
-%{_datadir}/metainfo/gedit-commander.metainfo.xml
-%{_libdir}/gedit/plugins/commander.plugin
-%{_libdir}/gedit/plugins/commander/
-%{_datadir}/gedit/plugins/commander/
-
 %files -n gedit-plugin-drawspaces
 # drawspaces
 %{_datadir}/metainfo/gedit-drawspaces.metainfo.xml
 %{_libdir}/gedit/plugins/drawspaces.plugin
 %{_libdir}/gedit/plugins/libdrawspaces.so
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.drawspaces.gschema.xml
-
-%files -n gedit-plugin-findinfiles
-# Find in Files
-%{_datadir}/metainfo/gedit-findinfiles.metainfo.xml
-%{_libdir}/gedit/plugins/findinfiles.plugin
-%{_libdir}/gedit/plugins/libfindinfiles.so
 
 %files -n gedit-plugin-git
 # git
@@ -401,14 +360,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/metainfo/gedit-textsize.metainfo.xml
 %{_libdir}/gedit/plugins/textsize.plugin
 %{_libdir}/gedit/plugins/textsize/
-
-%files -n gedit-plugin-translate
-# translate
-%{_datadir}/metainfo/gedit-translate.metainfo.xml
-%{_libdir}/gedit/plugins/translate.plugin
-%{_libdir}/gedit/plugins/translate/
-%{_datadir}/gedit/plugins/translate/
-%{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.translate.gschema.xml
 
 %files -n gedit-plugin-wordcompletion
 # wordcompletion

@@ -509,4 +509,12 @@
     <comment>GNOME 42.2 (forwarded request 979886 from dimstar)</comment>
     <requestid>980024</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>643c75966a4038c02dd5a8a6cdb055eb</srcmd5>
+    <version>43.1</version>
+    <time>1667901233</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 1033635 from iznogood)</comment>
+    <requestid>1034164</requestid>
+  </revision>
 </revisionlist>
