@@ -218,4 +218,12 @@ We need to take a look at this:
     <comment>GNOME 42 - ready for impact</comment>
     <requestid>963615</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>ab662cd5a7b566343f3a51cdcd33c609</srcmd5>
+    <version>4.8.4</version>
+    <time>1667901207</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 1033632 from iznogood)</comment>
+    <requestid>1034161</requestid>
+  </revision>
 </revisionlist>

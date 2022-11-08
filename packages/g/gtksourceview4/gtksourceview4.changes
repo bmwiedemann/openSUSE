@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Nov  4 20:56:31 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.8.4:
+  + Style updates to kate, classic, tango.
+  + Language updates to vala, python3, c, cuda, latex.
+  + Add unit tests for language specs.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Mar 20 09:20:43 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 4.8.3:
