@@ -522,7 +522,6 @@ unsorted:
   - amsynth-plugin-dssi 
   - amsynth-plugin-lv2 
   - amsynth-plugin-vst 
-  - amtk-5-lang 
   - amtk-devel 
   - amtterm 
   - amtterm-gtk 
@@ -1798,11 +1797,13 @@ unsorted:
   - cargo 
   - cargo-audit: [x86_64] 
   - cargo-audit-advisory-db: [x86_64] 
+  - cargo-auditable 
   - cargo-c 
   - cargo-packaging 
   - cargo1.62 
   - cargo1.63 
   - cargo1.64 
+  - cargo1.65 
   - caribou 
   - caribou-common 
   - caribou-devel 
@@ -4311,10 +4312,8 @@ unsorted:
   - gedit-plugin-codecomment 
   - gedit-plugin-colorpicker 
   - gedit-plugin-colorschemer 
-  - gedit-plugin-commander 
   - gedit-plugin-devhelp 
   - gedit-plugin-drawspaces 
-  - gedit-plugin-findinfiles 
   - gedit-plugin-git 
   - gedit-plugin-joinlines 
   - gedit-plugin-latex 
@@ -4324,7 +4323,6 @@ unsorted:
   - gedit-plugin-synctex 
   - gedit-plugin-terminal 
   - gedit-plugin-textsize 
-  - gedit-plugin-translate 
   - gedit-plugin-wordcompletion 
   - gedit-plugins 
   - gedit-plugins-data 
@@ -5775,6 +5773,10 @@ unsorted:
   - git-bug-fish-completion 
   - git-bug-zsh-completion 
   - git-bz 
+  - git-cliff 
+  - git-cliff-bash-completion 
+  - git-cliff-fish-completion 
+  - git-cliff-zsh-completion 
   - git-cola 
   - git-credential-gnome-keyring 
   - git-credential-libsecret 
@@ -6359,7 +6361,6 @@ unsorted:
   - gp2c 
   - gpa 
   - gpa-lang 
-  - gpars 
   - gpars-bootstrap 
   - gparted 
   - gparted-lang 
@@ -9780,7 +9781,6 @@ unsorted:
   - libalut0-32bit: [x86_64] 
   - libamd-doc 
   - libaml0 
-  - libamtk-5-1 
   - libangelscript2_35_1 
   - libangelscript_addons2_35_1 
   - libanjuta-3-0 
@@ -14400,7 +14400,6 @@ unsorted:
   - libtelepathy-qt5-service1 
   - libtelepathy-qt5-service1-32bit: [x86_64] 
   - libtemplate_glib-1_0-0 
-  - libtepl-6-1 
   - libteredo5 
   - libterminalwidget5-0 
   - libtermkey-devel 
@@ -23458,6 +23457,7 @@ unsorted:
   - python310-hetzner 
   - python310-hetznercloud 
   - python310-hexdump 
+  - python310-hid-parser 
   - python310-hijri-converter 
   - python310-hiredis: [i586] 
   - python310-hkdf 
@@ -26745,6 +26745,7 @@ unsorted:
   - python38-hetzner 
   - python38-hetznercloud 
   - python38-hexdump 
+  - python38-hid-parser 
   - python38-hijri-converter 
   - python38-hiredis 
   - python38-hkdf 
@@ -30091,6 +30092,7 @@ unsorted:
   - python39-hetzner 
   - python39-hetznercloud 
   - python39-hexdump 
+  - python39-hid-parser 
   - python39-hijri-converter 
   - python39-hiredis 
   - python39-hkdf 
@@ -33037,6 +33039,7 @@ unsorted:
   - rust1.62 
   - rust1.63 
   - rust1.64 
+  - rust1.65 
   - rustscan 
   - rustup: [x86_64] 
   - rxp 
@@ -34053,6 +34056,7 @@ unsorted:
   - systemd-mini-doc 
   - systemd-network 
   - systemd-portable 
+  - systemd-status-mail 
   - systemd-sysvcompat 
   - systemd-testsuite 
   - systemd-ui 
@@ -34180,7 +34184,6 @@ unsorted:
   - tennebon-dynamic-wallpaper 
   - tensorflow-lite: [x86_64] 
   - tensorflow-lite-devel: [x86_64] 
-  - tepl-6-lang 
   - tepl-devel 
   - termcap 
   - termcap-32bit: [x86_64] 
@@ -44713,6 +44716,7 @@ unsorted:
   - zoxide 
   - zp 
   - zpaq 
+  - zps 
   - zram-generator 
   - zsh-htmldoc 
   - zsh-sh 
