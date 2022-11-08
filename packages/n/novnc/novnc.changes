@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 29 09:31:34 UTC 2022 - Software System <opensuse@wolke7.net>
+
+- add "Requires: which" in case of missing running requirements
+  in container environment.
+  see https://github.com/novnc/noVNC/blob/f59be0586f675394514003784b7ffffbb845cc2b/utils/novnc_proxy#L170 
+
+-------------------------------------------------------------------
 Fri Oct 22 14:28:42 UTC 2021 - Manu Maier <mmanu84@outlook.de>
 
 - Update to 1.3.0

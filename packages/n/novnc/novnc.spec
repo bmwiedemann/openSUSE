@@ -1,7 +1,7 @@
 #
 # spec file for package novnc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ Source0:        noVNC-%{version}.tar.gz
 Patch1:         novnc-0.3-manpage.patch
 Patch2:         novnc-1.3.0-fix-interpreter.patch
 Requires:       python3-websockify >= 0.9.0
+Requires:       which
 BuildArch:      noarch
 
 %description
