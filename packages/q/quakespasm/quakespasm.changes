@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Nov  5 13:29:38 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.95.1
+  * Allow mixing lit and unlit textures in the same map.
+  * Water texture mipmapping support - fixes glistening effect on
+    distant water.
+  * Fix screen flashes in some maps with AMD's new drivers.
+  * Defend against zero-sized textures, e.g. __TB_empty
+    in qbj_grue.bsp
+  * Fix possible file pointer leak in game load code.
+  * Minor code cleanups.
+
+-------------------------------------------------------------------
 Thu Sep 15 19:19:21 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.95.0
