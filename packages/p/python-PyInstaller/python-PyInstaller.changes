@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov  7 20:29:32 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 5.6.2
+  * Bugfix
+   (Linux, macOS) Fix the regression in shared library collection, where the shared library would end up collected under its fully-versioned .
+   so name (e.g., libsomething.so.1.2.3) instead of its originally referenced name (e.g., libsomething.so.1) due to accidental symbolic link resolution. (#7189)
+
+- Update to 5.6.1 
+  Bugfix
+  * (macOS) Fix regression in macOS app bundle signing caused by a typo made in #7180. (#7184)
+
+-------------------------------------------------------------------
 Thu Oct 27 20:51:42 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 5.6
