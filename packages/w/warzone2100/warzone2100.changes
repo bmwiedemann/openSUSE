@@ -1,4 +1,195 @@
 -------------------------------------------------------------------
+Thu Nov  3 15:46:50 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Updated to 4.3.1
+  * General:
+    * Fix: Crashes caused by certain old config file settings
+- Changes in 4.3.0
+  * General:
+    * Fix: Improve classic ("exclusive") fullscreen mode switching,
+      additional Video Options
+    * Fix: Give Hardcrete Gate a research message
+    * Fix: Add missing terminating entry
+    * Fix: Truncating audio streams, buffer leaks
+    * Fix: Move favorite structures to a JSON file
+    * Fix: Mobile repair turrets prioritize distant heal targets
+      over closer ones
+    * Fix: Improve fixed hotkey display
+    * Fix: Redundant components becoming available
+    * Fix: Autorating tooltip requests
+- Changes in 4.3.0-beta3
+  * General:
+    * Add: "LOD Distance" Graphics option, to adjust texture
+      sharpness at distance - set default to "High"
+    * Fix: Nickname selection in lobby
+    * Fix: Cancel RTR when fully repaired, and there are no
+      repair stations
+    * Fix: Build status for trucks in helping mode
+    * Fix: Various potential crashes
+  * Graphics:
+    * Fix: Keep aspect ratio for sequences in full screen
+    * Fix: Garbage first frame of video
+    * Fix: Auto-adjust menu item font size to better fit long
+      strings
+    * Fix: Properly render multi-level structure models
+    * Fix: Faction model lookup for multi-level models
+    * Fix: Retribution body clipping into Hover propulsion
+    * Fix: Flicker with VTOL Assault Gun
+    * Fix: Returned and redesigned classic models for wheeled
+      propulsion, light and medium half-tracks
+    * Fix: Update VTOL rearming pad model
+    * Fix: Tank factory model fixes
+    * Fix: Combine propulsion models
+    * Fix: Add warning for outdated propulsion models in stats
+      files
+  * Other:
+    * Fix: Always update the base.wz and mp.wz when building
+    * Fix: NSIS installer: Add warning when running ARM64
+      installer on x86/x64
+- Changes in 4.3.0-beta2:
+  * Other:
+    * Fix: Release automation issues
+- Changes in 4.3.0-beta1:
+  * General:
+    * Add: Add console message when limits change
+    * Add: Convert language selector to dropdown with flags
+    * Add: OPUS format support, convert all music tracks to opus
+      format. New "Aftermath" soundtrack added.
+    * Add: Add support for bidirectional text using fribidi
+    * Add: Basic per-script font support, add CJK font
+    * Add: Show the rank a unit will have if it were produced next
+    * Add: Various refactoring / prep-work for future
+      Emscripten builds
+    * Add: Basic texture compression support
+    * Add: Go Back functions better by backing out 1 in-game menu
+      instead of going back to the initial ESC options menu
+    * Change: Make save name suggestion easy to understand
+    * Change: Various Vulkan improvements
+    * Fix: Various potential crashes
+    * Fix: Disable the auto button in the replay load menus
+    * Fix: Fix longstanding save related research state issue
+      where incomplete research topics could disappear
+    * Fix: Speed up headless replay loading
+    * Fix: Make artillery fire over walls
+    * Fix: Direct weapon: Don't fire when blocked by defense
+      hardpoint
+    * Fix: Simplify repairs logic, prevent "stuck" repair stations
+  * Graphics:
+    * Change: Make sliders a bit slim to look better
+    * Change: Fix team chooser being off by 1 pixel, and merge
+      factions into the color chooser
+    * Fix: Fix vertex indexing on cyclone flak
+    * Fix: Fix OpenGL antialiasing only working at 2x
+    * Fix: [Vulkan] Prefer integrated GPUs over CPU device types
+      and ensure llvmpipe is selected last
+    * Fix: Improve one of the scavenger cranes, fix model errors
+    * Fix: Make the wrecked tanker cast a shadow by correcting
+      its type
+    * Fix: Fix some water pipe feature models
+    * Fix: Prevent Howitzer/Mortar mount model causing glitchy
+      rendering on the back of the tray
+    * Fix: Overhaul all mortar models. Fixes missing backside of
+      Pepperpot, missing top section of EMP mortar, centered hole
+      texture location, smaller mount model
+    * Fix: Change Cyborg and Super Cyborg model to fix
+      shadow issues
+    * Fix: Improve a bottleneck in shadow calculations
+    * Fix: Rendering improvements for text and translucent effects
+  * Campaign:
+    * Add: New Super Easy difficulty for campaign
+    * Change: Increase difficulty of later Beta missions
+    * Change: Improvements to campaign library script documentation
+    * Change: Make Beta-end even harder to survive in general by
+      only choosing powerful VTOL weapons
+    * Change: Start the northern most scavenger factory upon
+      triggering the 2nd LZ on Alpha 6, for this ever so elusive
+      scavenger base
+    * Fix: Fix the balance of FastPlay since the merging
+      of camBalance
+    * Fix: Prevent building something on the future LZ of Gamma 9
+      on the couple missions prior
+    * Fix: Transporters when starting Beta/Gamma from the main
+      menu no longer block structures an extra tile more than
+      they should at the LZ for the player
+    * Fix: Prevent warning about removing timers related to enemy
+      trucks before they exist
+    * Fix: Make the western scavenger factory in Alpha 2 use a
+      patrol order to prevent amassing units in one spot
+    * Fix: Make Gamma 2 factory use patrol behavior to prevent
+      tanks clogging up the base
+  * Multiplayer:
+    * Change: Push back Ultimate Scavengers Helicopter appearance
+      times
+    * Fix: Fix names sometimes being set to "Commander" in
+      multiplayer
+    * Fix: Do not form alliances with scavengers when starting games
+    * Fix: Add a research message for Stormbringer, fix
+      auto-cannon cyborg research message
+    * Fix: Merge skirmish/multiplayer score/kill structure;
+      Save/load recent score/kills for skirmish saves, and prevent
+      this skirmish data showing for players in multiplayer too
+    * Fix: Prevent 32-bit builds from appearing to freeze if a
+      really long chat message is entered
+    * Fix: Check human player designs to be legal during MP and
+      desync the modded client player if they try to circumvent
+      this check further
+    * Fix: Chat message is sent upon clicking anywhere outside of
+      chat widget
+  * AI:
+    * Change: Improve Cobra AI yet again, balances against
+      defensive/system research when 1v1 on high oil maps
+  * Scripting:
+    * Fix: Use unit propulsion for pickStructureLocation()
+    * Fix: Make derrick positions unique
+  * Balance MP:
+    * Change: Revamp machinegun AA weapons to use machinegun
+      research requirements instead of cannons
+  * Change: HVC ROF Rollback for tank and cyborg
+    * Change: Boost flamers: add 1 tile of range to Inferno, 0.5
+      tiles of range to Thermite cyborg, and reduce Plasmite Flamer
+      weight 5000->1000 and give it a small increase to HP
+      from 75->100
+    * Change: Make Needle require two cannon accuracy upgrades
+      since Scourge Missile requires two rocket accuracy upgrades
+    * Change: Make ~T2 MG damage upgrades take less time to research
+      to help keep MGs relevant before Flashlight
+    * Change: Increase Heavy Cannon long range by 0.5 tiles making
+      it reach 9 tiles
+    * Change: Condense Reinforced Base Structure Materials upgrades
+      into 3 upgrades
+  * Other:
+    * Add: Add difficulty selector to debug menu AI attach option
+    * Change: Chop off the ".gam" extension when showing saves in
+      the console area
+    * Change: Allow game speed modifier of 2x outside of debug mode
+    * Change: Make use of sequence factory.ogg in the tutorial when
+      a Viper Machinegun Wheels is first manufactured
+    * Change: Improve metainfo / appstream data
+    * Fix: Fixed hotkey doesn't count selected units correctly
+    * Fix: Disable ground retexture after destroying skyscrapers on
+      non-Urban maps
+    * Fix: Tweak autorating level field behaviour to show a correct
+      image
+    * Fix: Major enhancements and fixes to wzmaplib and the
+      maptools CLI tool, new "flat" map archive format added
+    * Fix: Make the Command Relay intel message accurate yet again
+    * Fix: Do not ever skip loading droid save data
+      (if it ever did at all)
+    * Fix: Improve autorating requesting and attempt to put data
+      into tooltip
+    * Fix: Make Blender PIE plugin work on Blender 3.2
+    * Fix: Prevent (potentially endless) "over-shooting" in
+      ValueTracker on low-perf system affecting blueprints,
+      rotation of camera, etc.
+    * Fix: Improve autorating request policy
+- Drop warzone2100-silence-gcc12-warning.patch and 
+  warzone2100-temporarily-disable-Wnull-dereference-on-gcc12.patch,
+  fixed in upstream
+- Add BuildRequires pkgconfig(opus)
+- Add build option DWZ_APPSTREAM_ID=warzone2100
+- Drop remove .portable file, it is removed upstream
+  
+-------------------------------------------------------------------
 Mon May 23 04:41:54 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
 
 - Add warzone2100-temporarily-disable-Wnull-dereference-on-gcc12.patch

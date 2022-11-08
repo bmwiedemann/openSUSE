@@ -24,7 +24,7 @@
 %bcond_with vulkan
 %endif
 Name:           warzone2100
-Version:        4.2.7
+Version:        4.3.1
 Release:        0
 Summary:        Innovative 3D real-time strategy
 License:        BSD-3-Clause AND CC-BY-SA-3.0 AND GPL-3.0-or-later AND CC0-1.0 AND LGPL-2.1-only
@@ -32,10 +32,6 @@ Group:          Amusements/Games/Strategy/Real Time
 URL:            http://wz2100.net/
 Source:         https://github.com/Warzone2100/warzone2100/releases/download/%{version}/warzone2100_src.tar.xz
 Source99:       %{name}.changes
-# PATCH-FIX-UPSTREAM warzone2100-temporarily-disable-Wnull-dereference-on-gcc12.patch -- Fix building with gcc12 -- https://github.com/Warzone2100/warzone2100/commit/3128eee
-Patch0:         warzone2100-temporarily-disable-Wnull-dereference-on-gcc12.patch
-# PATCH-FIX-UPSTREAM warzone2100-silence-gcc12-warning.patch -- Fix building with gcc12 -- https://github.com/Warzone2100/warzone2100/commit/5d71117
-Patch1:         warzone2100-silence-gcc12-warning.patch
 BuildRequires:  asciidoc
 BuildRequires:  cmake >= 3.5
 BuildRequires:  fdupes
@@ -56,6 +52,7 @@ BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libsodium)
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(openal)
+BuildRequires:  pkgconfig(opus)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(sqlite3) >= 3.14
 BuildRequires:  pkgconfig(theora)
@@ -112,8 +109,6 @@ This package provides the game data for Warzone 2100.
 
 %prep
 %setup -q -n %{name}
-%patch0 -p1
-%patch1 -p1
 
 # constant timestamp for reproducible builds
 modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{SOURCE99}")"
@@ -126,7 +121,8 @@ find .  -name '*.cpp' | xargs sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g"
 %if %{without vulkan}
         -DWZ_ENABLE_BACKEND_VULKAN=Off \
 %endif
-        -DBUILD_SHARED_LIBS:BOOL=OFF
+        -DBUILD_SHARED_LIBS:BOOL=OFF \
+        -DWZ_APPSTREAM_ID=warzone2100
 %cmake_build
 
 %install
@@ -147,9 +143,6 @@ rm %{buildroot}%{_datadir}/doc/%{name}/COPYING
 rm %{buildroot}%{_datadir}/doc/%{name}/COPYING.NONGPL
 rm %{buildroot}%{_datadir}/doc/%{name}/COPYING.README
 rm %{buildroot}%{_datadir}/doc/%{name}/README.md
-
-# remove .portable file - removing or renaming this file will disable Portable mode
-rm %{buildroot}%{_bindir}/.portable
 
 %fdupes %{buildroot}%{_datadir}
 
