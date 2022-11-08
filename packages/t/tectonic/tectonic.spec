@@ -17,13 +17,13 @@
 
 
 Name:           tectonic
-Version:        0.11.0
+Version:        0.12.0
 Release:        0
 Summary:        Modernized self-contained TeX and LaTeX engine
 License:        (Apache-2.0 OR MIT) AND BSD-3-Clause ) AND ( 0BSD OR MIT OR Apache-2.0 ) AND ( Apache-2.0 OR BSL-1.0 ) AND ( Apache-2.0 OR MIT ) AND ( Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT ) AND ( MIT OR Apache-2.0 AND BSD-2-Clause ) AND ( MIT OR Apache-2.0 OR Zlib ) AND ( MIT OR Zlib OR Apache-2.0 ) AND ( Unlicense OR MIT ) AND ( Zlib OR Apache-2.0 OR MIT ) AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND CC0-1.0 AND ISC AND MIT AND WTFPL
 Group:          Productivity/Publishing/TeX/Utilities
 URL:            https://tectonic-typesetting.github.io
-Source0:        %{name}-%{version}.tar.gz
+Source0:        https://github.com/tectonic-typesetting/tectonic/archive/refs/tags/%{name}@%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        cargo_config
 BuildRequires:  c++_compiler
@@ -44,7 +44,7 @@ Tectonic is a complete self-contained TeX/LaTeX engine powered by
 XeTeX and TeXLive.
 
 %prep
-%autosetup -a1
+%autosetup -a1 -n %{name}-%{name}-%{version}
 mkdir -p .cargo
 cp %{SOURCE2} .cargo/config
 
