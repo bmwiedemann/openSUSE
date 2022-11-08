@@ -7,4 +7,16 @@
     <comment>nodejs19 to Factory ... :-)</comment>
     <requestid>1030412</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b9c89fed7e83f63b6f57d1cd123a1617</srcmd5>
+    <version>19.0.1</version>
+    <time>1667901217</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix migration to openssl-3 (bsc#1205042)
+
+- Update to version 19.0.1:
+  * inspector: DNS rebinding in --inspect via invalid octal IP
+    (bsc#1205119, CVE-2022-43548)</comment>
+    <requestid>1034212</requestid>
+  </revision>
 </revisionlist>

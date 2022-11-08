@@ -31,7 +31,7 @@
 %endif
 
 Name:           nodejs19
-Version:        19.0.0
+Version:        19.0.1
 Release:        0
 
 # Double DWZ memory limits
@@ -268,7 +268,7 @@ BuildRequires:  group(nobody)
 BuildRequires:  pkgconfig(openssl) >= %{openssl_req_ver}
 
 # require patched openssl library on SLES for nodejs16
-%if 0%{?suse_version}
+%if 0%{?suse_version} && "%{pkg_version openssl-1_1}" != "~~~"
 %if %node_version_number >= 16 && 0%{suse_version} <= 1500 && %{pkg_vcmp openssl-1_1 < '1.1.1e' } && 0%{with openssl_RSA_get0_pss_params}
 BuildRequires:  openssl-has-RSA_get0_pss_params
 Requires:       openssl-has-RSA_get0_pss_params
@@ -292,7 +292,7 @@ BuildRequires:  openssl >= %{openssl_req_ver}
 
 %else
 %if %node_version_number <= 12 && 0%{?suse_version} == 1315 && 0%{?sle_version} < 120400
-Provides:       bundled(openssl) = 3.0.5
+Provides:       bundled(openssl) = 3.0.7
 %else
 BuildRequires:  bundled_openssl_should_not_be_required
 %endif
@@ -682,7 +682,7 @@ find -name \*~ -print0 -delete
 find \( -name \*.js.orig -or -name \*.md.orig -or -name \*.1.orig \) -delete
 
 # downgrade node-gyp to last version that supports python 3.4 for SLE12
-%if 0%{?use_version} && 0%{?suse_version} < 1500
+%if 0%{?suse_version} && 0%{?suse_version} < 1500 && 0%{node_version_number} > 16
 rm -r  deps/npm/node_modules/node-gyp
 mkdir deps/npm/node_modules/node-gyp
 tar -C deps/npm/node_modules/node-gyp Jxf %{SOURCE5}
