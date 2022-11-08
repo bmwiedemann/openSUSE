@@ -19,20 +19,19 @@
 %define so_ver	7
 
 Name:           intel-media-driver
-Version:        22.4.4
+Version:        22.6.1
 Release:        0
 Summary:        Intel Media Driver for VAAPI
 License:        BSD-3-Clause AND MIT
 Group:          System/Libraries
 URL:            https://github.com/intel/media-driver
-Source:         %{url}/archive/intel-media-%{version}.tar.gz
+Source0:        %{url}/archive/refs/tags/intel-media-%{version}.tar.gz
 Source1:        generate-supplements.sh
 Source2:        supplements.inc
 Source3:        baselibs.conf
-Patch0:         u_libva-2.16.0.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake >= 3.5
-BuildRequires:  gmmlib-devel >= 22.1.2
+BuildRequires:  gmmlib-devel >= 22.2.0
 BuildRequires:  pkgconfig
 #Note this is NOT libva library version!
 BuildRequires:  pkgconfig(libva) >= 1.14.0
@@ -69,9 +68,6 @@ libigfxcmrt%{so_ver}.
 %setup -q -c -a 0
 mv media-driver-* media-driver
 chmod -x media-driver/*.md
-pushd media-driver
-%patch0 -p0
-popd
 %define __sourcedir media-driver
 #sed -i -e 's,-Werror,,' media-driver/cmrtlib/linux/CMakeLists.txt
 

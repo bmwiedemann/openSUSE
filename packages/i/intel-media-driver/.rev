@@ -273,4 +273,30 @@ versions of libva(2)</comment>
   2022Q2 Release 22.4.4</comment>
     <requestid>1007532</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>7464f1484d3148521c458930e5884a84</srcmd5>
+    <version>22.6.1</version>
+    <time>1667901231</time>
+    <user>dimstar_suse</user>
+    <comment>- needed for jira#PED-1174 (Video decoding/encoding support 
+  (VA-API, ...) for Intel GPUs is outside of Mesa)
+
+- Update to version 2.6.1
+  * Revert &quot;[Decode] Legacy MI interface removal&quot; 
+- specfile cleanup
+- updated Supplements
+
+- Update to version 2.6.0:
+  * Revert &quot;[Decode] Virtual Node Assign Policy Optimization&quot;
+- Code changes from version 2.5.4:
+  * Enabled Memory Decompression for ADLS and ADLN.
+  * Fixed MPEG2 decode crash issue.
+  * Fixed AV1 decode film grain hang issue.
+  * Fixed color fill corruption issue.
+  * Fixed first VPP operation color artifacts.
+  * Enhanced I420 and UYVY format support in creating surface and derive image.
+  * Fixed aux table l2 page fault
+- Remove u_libva-2.16.0.patch</comment>
+    <requestid>1034188</requestid>
+  </revision>
 </revisionlist>
