@@ -17,8 +17,10 @@
 
 
 %bcond_without  python_bindings
+%define api_ver 3.38
+
 Name:           gedit
-Version:        43.alpha
+Version:        43.1
 Release:        0
 Summary:        UTF-8 text editor
 License:        GPL-2.0-or-later
@@ -39,6 +41,7 @@ BuildRequires:  meson >= 0.53
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base >= 3.2.3
 BuildRequires:  yelp-tools
+BuildRequires:  pkgconfig(amtk-5) >= 5.6
 BuildRequires:  pkgconfig(gio-2.0) >= 2.64
 BuildRequires:  pkgconfig(glib-2.0) >= 2.64
 BuildRequires:  pkgconfig(gmodule-2.0)
@@ -49,6 +52,7 @@ BuildRequires:  pkgconfig(gtksourceview-4) >= 4.0.2
 BuildRequires:  pkgconfig(libpeas-1.0) >= 1.14.1
 BuildRequires:  pkgconfig(libpeas-gtk-1.0) >= 1.14.1
 BuildRequires:  pkgconfig(pygobject-3.0) >= 3.0.0
+BuildRequires:  pkgconfig(tepl-6)
 BuildRequires:  pkgconfig(vapigen) >= 0.25.1
 BuildRequires:  pkgconfig(x11)
 Requires:       python3-cairo
@@ -109,7 +113,7 @@ This subpackage contains the header files for creating gedit plugins.
 
 %build
 %meson \
-	-Dgtk_doc=true \
+	-D gtk_doc=true \
 	%{nil}
 %meson_build
 
@@ -140,8 +144,7 @@ This subpackage contains the header files for creating gedit plugins.
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.time.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.time.gschema.xml
 %dir %{_libdir}/gedit/
-#%%{_libdir}/gedit/libgedit-%%{version}.so
-%{_libdir}/gedit/libgedit-41.so
+%{_libdir}/gedit/libgedit-%{api_ver}.so
 %{_libdir}/gedit/girepository-1.0/
 %dir %{_libdir}/gedit/plugins/
 # Explicitly list plugins so we know when we miss one
@@ -153,8 +156,6 @@ This subpackage contains the header files for creating gedit plugins.
 %{_libdir}/gedit/plugins/libfilebrowser.so
 %{_libdir}/gedit/plugins/modelines.plugin
 %{_libdir}/gedit/plugins/libmodelines.so
-%{_libdir}/gedit/plugins/libopenlinks.so
-%{_libdir}/gedit/plugins/openlinks.plugin
 %{_libdir}/gedit/plugins/pythonconsole/
 %{_libdir}/gedit/plugins/pythonconsole.plugin
 %{_libdir}/gedit/plugins/quickopen/
