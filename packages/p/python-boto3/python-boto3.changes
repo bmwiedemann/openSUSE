@@ -1,4 +1,106 @@
 -------------------------------------------------------------------
+Fri Nov  4 12:14:56 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.26.2
+  * api-change:``memorydb``: [``botocore``] Adding support for r6gd instances for MemoryDB Redis with
+    data tiering. In a cluster with data tiering enabled, when available memory capacity is exhausted,
+    the least recently used data is automatically tiered to solid state drives for cost-effective
+    capacity scaling with minimal performance impact.
+  * api-change:``sagemaker``: [``botocore``] Amazon SageMaker now supports running training jobs on
+    ml.trn1 instance types.
+  * api-change:``endpoint-rules``: [``botocore``] Update endpoint-rules client to latest version
+- from version 1.26.1
+  * api-change:``iotsitewise``: [``botocore``] This release adds the ListAssetModelProperties and
+    ListAssetProperties APIs. You can list all properties that belong to a single asset model or asset
+    using these two new APIs.
+  * api-change:``s3control``: [``botocore``] S3 on Outposts launches support for Lifecycle
+    configuration for Outposts buckets. With S3 Lifecycle configuration, you can mange objects so they
+    are stored cost effectively. You can manage objects using size-based rules and specify how many
+    noncurrent versions bucket will retain.
+  * api-change:``sagemaker``: [``botocore``] This release updates Framework model regex for
+    ModelPackage to support new Framework version xgboost, sklearn.
+  * api-change:``ssm-incidents``: [``botocore``] Adds support for tagging replication-set on creation.
+- from version 1.26.0
+  * feature:Endpoints: [``botocore``] Migrate all services to use new AWS Endpoint Resolution
+    framework
+  * Enhancement:Endpoints: [``botocore``] Discontinued use of `sslCommonName` hosts as detailed in
+    1.27.0 (see `#2705 <https://github.com/boto/botocore/issues/2705>`__ for more info)
+  * api-change:``rds``: [``botocore``] Relational Database Service - This release adds support for
+    configuring Storage Throughput on RDS database instances.
+  * api-change:``textract``: [``botocore``] Add ocr results in AnalyzeIDResponse as blocks
+- from version 1.25.5
+  * api-change:``apprunner``: [``botocore``] This release adds support for private App Runner
+    services. Services may now be configured to be made private and only accessible from a VPC. The
+    changes include a new VpcIngressConnection resource and several new and modified APIs.
+  * api-change:``connect``: [``botocore``] Amazon connect now support a new API DismissUserContact to
+    dismiss or remove terminated contacts in Agent CCP
+  * api-change:``ec2``: [``botocore``] Elastic IP transfer is a new Amazon VPC feature that allows
+    you to transfer your Elastic IP addresses from one AWS Account to another.
+  * api-change:``iot``: [``botocore``] This release adds the Amazon Location action to IoT Rules
+    Engine.
+  * api-change:``logs``: [``botocore``] SDK release to support tagging for destinations and log
+    groups with TagResource. Also supports tag on create with PutDestination.
+  * api-change:``sesv2``: [``botocore``] This release includes support for interacting with the
+    Virtual Deliverability Manager, allowing you to opt in/out of the feature and to retrieve
+    recommendations and metric data.
+  * api-change:``textract``: [``botocore``] This release introduces additional support for 30+
+    normalized fields such as vendor address and currency. It also includes OCR output in the response
+    and accuracy improvements for the already supported fields in previous version
+- from version 1.25.4
+  * api-change:``apprunner``: [``botocore``] AWS App Runner adds .NET 6, Go 1, PHP 8.1 and Ruby 3.1
+    runtimes.
+  * api-change:``appstream``: [``botocore``] This release includes CertificateBasedAuthProperties in
+    CreateDirectoryConfig and UpdateDirectoryConfig.
+  * api-change:``cloud9``: [``botocore``] Update to the documentation section of the Cloud9 API
+    Reference guide.
+  * api-change:``cloudformation``: [``botocore``] This release adds more fields to improves
+    visibility of AWS CloudFormation StackSets information in following APIs: ListStackInstances,
+    DescribeStackInstance, ListStackSetOperationResults, ListStackSetOperations,
+    DescribeStackSetOperation.
+  * api-change:``gamesparks``: [``botocore``] Add LATEST as a possible GameSDK Version on snapshot
+  * api-change:``mediatailor``: [``botocore``] This release introduces support for SCTE-35
+    segmentation descriptor messages which can be sent within time signal messages.
+- from version 1.25.3
+  * api-change:``ec2``: [``botocore``] Feature supports the replacement of instance root volume using
+    an updated AMI without requiring customers to stop their instance.
+  * api-change:``fms``: [``botocore``] Add support NetworkFirewall Managed Rule Group Override flag
+    in GetViolationDetails API
+  * api-change:``glue``: [``botocore``] Added support for custom datatypes when using custom csv
+    classifier.
+  * api-change:``redshift``: [``botocore``] This release clarifies use for the ElasticIp parameter of
+    the CreateCluster and RestoreFromClusterSnapshot APIs.
+  * api-change:``sagemaker``: [``botocore``] This change allows customers to provide a custom
+    entrypoint script for the docker container to be run while executing training jobs, and provide
+    custom arguments to the entrypoint script.
+  * api-change:``wafv2``: [``botocore``] This release adds the following: Challenge rule action, to
+    silently verify client browsers; rule group rule action override to any valid rule action, not just
+    Count; token sharing between protected applications for challenge/CAPTCHA token; targeted rules
+    option for Bot Control managed rule group.
+- from version 1.25.2
+  * api-change:``iam``: [``botocore``] Doc only update that corrects instances of CLI not using an
+    entity.
+  * api-change:``kafka``: [``botocore``] This release adds support for Tiered Storage. UpdateStorage
+    allows you to control the Storage Mode for supported storage tiers.
+  * api-change:``neptune``: [``botocore``] Added a new cluster-level attribute to set the capacity
+    range for Neptune Serverless instances.
+  * api-change:``sagemaker``: [``botocore``] Amazon SageMaker Automatic Model Tuning now supports
+    specifying Grid Search strategy for tuning jobs, which evaluates all hyperparameter combinations
+    exhaustively based on the categorical hyperparameters provided.
+- from version 1.25.1
+  * api-change:``accessanalyzer``: [``botocore``] This release adds support for six new resource
+    types in IAM Access Analyzer to help you easily identify public and cross-account access to your
+    AWS resources. Updated service API, documentation, and paginators.
+  * api-change:``location``: [``botocore``] Added new map styles with satellite imagery for map
+    resources using HERE as a data provider.
+  * api-change:``mediatailor``: [``botocore``] This release is a documentation update
+  * api-change:``rds``: [``botocore``] Relational Database Service - This release adds support for
+    exporting DB cluster data to Amazon S3.
+  * api-change:``workspaces``: [``botocore``] This release adds new enums for supporting Workspaces
+    Core features, including creating Manual running mode workspaces, importing regular Workspaces Core
+    images and importing g4dn Workspaces Core images.
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Tue Oct 25 08:04:28 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.25.0
