@@ -152,4 +152,20 @@
   split out or not. (forwarded request 1031500 from dimstar)</comment>
     <requestid>1031671</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>55a10e095a88860ef0dce3d0c94fd4ca</srcmd5>
+    <version>5.8.27</version>
+    <time>1667901237</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.8.27
+  * Fix a stuck issue 
+
+- Update version to 5.8.26
+  * Optimize performance
+  * Fix bug
+  * Update translations 
+
+- Fix build on Tumbleweed (forwarded request 1034186 from hillwood)</comment>
+    <requestid>1034205</requestid>
+  </revision>
 </revisionlist>
