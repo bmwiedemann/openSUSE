@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov  8 07:00:33 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
+
+- add salt-syntax-avoid-multiline-lets.patch (bsc#1205034)
+- update
+  * NERDcommenter  2.7.0
+
+-------------------------------------------------------------------
 Thu Oct 20 06:36:04 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
 
 - update

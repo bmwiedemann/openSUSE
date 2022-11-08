@@ -393,4 +393,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1031458</requestid>
   </revision>
+  <revision rev="45" vrev="52">
+    <srcmd5>f7d0e98baafa5b759d60125cc84fd9dd</srcmd5>
+    <version>unknown</version>
+    <time>1667901310</time>
+    <user>dimstar_suse</user>
+    <comment>- add salt-syntax-avoid-multiline-lets.patch (bsc#1205034)
+- update
+  * NERDcommenter  2.7.0</comment>
+    <requestid>1034424</requestid>
+  </revision>
 </revisionlist>

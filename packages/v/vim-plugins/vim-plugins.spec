@@ -39,7 +39,7 @@
 %define minibufexpl_version	6.3.2
 %define multiplesearch_version	1.3
 %define neomutt_version		20220612
-%define NERDcommenter_version	2.6.0
+%define NERDcommenter_version	2.7.0
 %define NERDtree_version	6.10.16
 %define project_version		1.4.1
 %define quilt_version		0.9.7
@@ -108,6 +108,7 @@ Source104:      vim-latex-%{latex_version}.tar.xz
 Source200:      gitrebase.vim
 Source1000:     https://raw.githubusercontent.com/openSUSE/pack-tools/master/contrib/vim/spec.snippets
 Source1001:     check_for_updates.pl
+Patch0:         salt-syntax-avoid-multiline-lets.patch
 Patch1:         locateopen-1.3-locate-support.patch
 Patch2:         showmarks-signs.patch
 Patch3:         file-line-Fix-other-plugins-loading.patch
@@ -663,6 +664,9 @@ Usage:
 
 %prep
 %setup -q -c -n %{name} -a1 -a2 -a3 -a4 -a5 -a6 -a7 -a9 -a10 -a11 -a12 -a13 -a14 -a15 -a16 -a17 -a18 -a19 -a20 -a21 -a22 -a23 -a24 -a26 -a27 -a28 -a30 -a31 -a32 -a33 -a34 -a35 -a100 -a101 -a102 -a103 -a104
+pushd salt-vim-%{salt_version}
+%patch0 -p1
+popd
 # ------- patch locateopen ------
 pushd LocateOpen-%locateopen_version
 %patch1
