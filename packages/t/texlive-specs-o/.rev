@@ -467,4 +467,12 @@
 - Do not bail out if local ls-R is not writable (boo#1194496)</comment>
     <requestid>972669</requestid>
   </revision>
+  <revision rev="47" vrev="50">
+    <srcmd5>ee9147e897c91041c2ed28c456a7541a</srcmd5>
+    <version>unknown</version>
+    <time>1667904471</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1034299</requestid>
+  </revision>
 </revisionlist>
