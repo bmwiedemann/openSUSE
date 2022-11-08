@@ -56,7 +56,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           bind
-Version:        9.18.7
+Version:        9.18.8
 Release:        0
 Summary:        Domain Name System (DNS) Server (named)
 License:        MPL-2.0
@@ -75,10 +75,6 @@ Source70:       bind.conf
 # configuation file for systemd-sysusers
 Source72:       named.conf
 Patch56:        bind-ldapdump-use-valid-host.patch
-# PATCH-FIX-UPSTREAM fix_documentation-Sphinx.patch mcepl@suse.com
-# See https://gitlab.isc.org/isc-projects/bind9/-/issues/3572
-# Make :any: reference unequivocal.
-Patch99:        fix_documentation-Sphinx.patch
 BuildRequires:  libcap-devel
 BuildRequires:  libopenssl-devel
 BuildRequires:  libtool
