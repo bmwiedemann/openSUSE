@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov  7 10:48:57 UTC 2022 - Daike Yu <yu.daike@suse.com>
+
+- Add xrdp-update-pam.d-path.patch (bsc#1203468)
+  + Update pam.d path in install scripts to allow correct rule 
+    guess. 
+
+-------------------------------------------------------------------
 Tue Oct 25 19:11:59 UTC 2022 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 0.9.20

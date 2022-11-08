@@ -52,6 +52,8 @@ Patch12:        xrdp-filter-tab-from-mstsc-on-focus-change.patch
 Patch13:        xrdp-bsc965647-allow-admin-choose-desktop.patch
 # PATCH-FEATURE-SLE xrdp-fate318398-change-expired-password.patch fate#318398 - fezhang@suse.com -- enable user to update expired password via PAM
 Patch14:        xrdp-fate318398-change-expired-password.patch
+# PATCH-FIX-UPSTREAM xrdp-update-pam.d-path.patch bsc#1203468 - yu.daike@suse.com -- update install script to accommodate with pam.d path move
+Patch15:        xrdp-update-pam.d-path.patch
 
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -109,6 +111,7 @@ This package contains libraries for the JPEG2000 codec for RDP.
 %patch12 -p1
 %patch13 -p1
 %patch14 -p1
+%patch15 -p1
 %endif
 
 %build
