@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Nov  7 15:45:30 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.0.3:
+  * avoid error in paperconfig
+  * paperinit: fix a space leak in case of error parsing paperspecs
+  * paper.c: make unit_list const char *, to fix a warning
+  * paper.c: fix a trivial leak
+  * fix segfault when HOME is unset (thanks, Werner Fink)
+  * fix a segfault in systempapername() (fix from Werner Fink, thanks!)
+  * hardwire papersize configuration filename to ‘papersize’
+- Remove upstreamed libpaper-foul.patch
+
+-------------------------------------------------------------------
 Wed Aug 24 11:55:26 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Do not assume that HOME is set in the environment 

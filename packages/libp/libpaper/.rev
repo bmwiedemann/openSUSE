@@ -7,4 +7,21 @@
     <comment>OK ... it works even without any HOME set</comment>
     <requestid>999056</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6ed7f9a35941882f1256cdcb6e581d75</srcmd5>
+    <version>2.0.3</version>
+    <time>1667904447</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.3:
+  * avoid error in paperconfig
+  * paperinit: fix a space leak in case of error parsing paperspecs
+  * paper.c: make unit_list const char *, to fix a warning
+  * paper.c: fix a trivial leak
+  * fix segfault when HOME is unset (thanks, Werner Fink)
+  * fix a segfault in systempapername() (fix from Werner Fink, thanks!)
+  * hardwire papersize configuration filename to ‘papersize’
+- Remove upstreamed libpaper-foul.patch
+</comment>
+    <requestid>1034277</requestid>
+  </revision>
 </revisionlist>

@@ -16,17 +16,16 @@
 #
 
 
-%define sover 1
+%define sover 2
 
 Name:           libpaper
-Version:        1.2.2
+Version:        2.0.3
 Release:        0
 Summary:        Enables users to indicate their preferred paper size
 License:        GPL-3.0-or-later
 URL:            https://github.com/rrthomas/libpaper
 Source:         %{url}/releases/download/v%{version}/libpaper-%{version}.tar.gz
-Patch0:         libpaper-foul.patch
-BuildRequires:  autoconf
+BuildRequires:  autoconf >= 2.71
 BuildRequires:  automake
 BuildRequires:  help2man
 BuildRequires:  perl
@@ -59,7 +58,7 @@ Provides:       libpaper-utils = 2.4
 Obsoletes:      libpaper-utils <= 2.3
 
 %description -n %{name}-tools
-This package provides the 'paper' and 'paperconfig' binaries
+This package provides the 'paper' binary
 
 %package devel
 Summary:        This package contains the development files needed by libpaper
@@ -92,9 +91,7 @@ find %{buildroot}%{_libdir} -name *libpaper.la -delete
 
 %files -n %{name}-tools
 %{_bindir}/paper
-%{_sbindir}/paperconfig
 %{_mandir}/man1/paper.1.gz
-%{_mandir}/man8/paperconfig.8.gz
 
 %files -n %{name}%{sover}
 %{_libdir}/libpaper.so.%{sover}
