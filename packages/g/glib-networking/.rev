@@ -663,4 +663,16 @@ a newer version not fitting</comment>
 </comment>
     <requestid>1004784</requestid>
   </revision>
+  <revision rev="82" vrev="2">
+    <srcmd5>f3fbf10e249eff2b1e064daac55ae522</srcmd5>
+    <version>2.74.0</version>
+    <time>1667901213</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build with gnutls 3.7.8:
+  * tests: skip tls-exporter test for TLS 1.2
+  * https://gitlab.gnome.org/GNOME/glib-networking/-/issues/201
+  * Add glib-networking-gnutls-tls-exporter-tls12.patch
+</comment>
+    <requestid>1034190</requestid>
+  </revision>
 </revisionlist>

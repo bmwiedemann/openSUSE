@@ -26,7 +26,8 @@ Group:          Development/Libraries/C and C++
 URL:            https://www.gnome.org
 Source0:        https://download.gnome.org/sources/glib-networking/2.74/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
-
+# PATCH-FIX-UPSTREAM glib-networking-gnutls-tls-exporter-tls12.patch glgo#GNOME/glib-networking#201 pmonreal@suse.com -- Fix build with gnutls 3.7.8
+Patch0:         glib-networking-gnutls-tls-exporter-tls12.patch
 BuildRequires:  ca-certificates-mozilla
 # For directory ownership
 BuildRequires:  dbus-1

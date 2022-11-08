@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 26 10:22:12 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix build with gnutls 3.7.8:
+  * tests: skip tls-exporter test for TLS 1.2
+  * https://gitlab.gnome.org/GNOME/glib-networking/-/issues/201
+  * Add glib-networking-gnutls-tls-exporter-tls12.patch
+
+-------------------------------------------------------------------
 Thu Sep 15 16:18:01 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.74.0:
