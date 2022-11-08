@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Oct 15 03:06:56 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.881
+   see /usr/share/doc/packages/perl-MCE/Changes
+
+  1.881 Thu Oct 13 23:45:00 EST 2022
+
+    * Improved the private _parse_chunk_size function. For better
+      utilization of CPU cores in MCE::Grep, MCE::Map, and MCE::Stream,
+      processing small input sizes.
+
+      Previously, chunk_size => 'auto' equals 2 minimally.
+      Starting with MCE v1.881, 'auto' equals 1 minimally.
+
+-------------------------------------------------------------------
 Tue Oct 11 03:06:27 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.880
