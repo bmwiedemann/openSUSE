@@ -17,7 +17,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-IMAPClient
 Version:        2.3.1
 Release:        0
@@ -26,12 +25,12 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/mjs/imapclient/
 Source0:        https://github.com/mjs/imapclient/archive/%{version}.tar.gz
+# https://github.com/mjs/imapclient/commit/6e6ec34b0e71975134d9492add22361ce4beb2a0
+Patch0:         python-IMAPClient-no-python2.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools >= 20.5}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
 
@@ -52,8 +51,10 @@ functional tests that can be run against a live IMAP server.
 
 %prep
 %setup -q -n imapclient-%{version}
+%patch0 -p1
 
 %build
+sed -i 's:#!::' imapclient/interact.py
 %python_build
 
 %install
@@ -67,6 +68,7 @@ functional tests that can be run against a live IMAP server.
 %files %{python_files}
 %doc README.rst
 %license COPYING
-%{python_sitelib}/*
+%{python_sitelib}/IMAPClient-*-info
+%{python_sitelib}/imapclient
 
 %changelog
