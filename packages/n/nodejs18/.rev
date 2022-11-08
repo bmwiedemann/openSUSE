@@ -71,4 +71,16 @@
   * util: add default value option to parsearg</comment>
     <requestid>1031990</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f41bf52029d831a276d98d8eb1f43086</srcmd5>
+    <version>18.12.1</version>
+    <time>1667901215</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix migration to openssl-3 (bsc#1205042)
+
+- Update to NodeJS 18.12.1 LTS:
+  * inspector: DNS rebinding in --inspect via invalid octal IP
+    (bsc#1205119, CVE-2022-43548)</comment>
+    <requestid>1034211</requestid>
+  </revision>
 </revisionlist>
