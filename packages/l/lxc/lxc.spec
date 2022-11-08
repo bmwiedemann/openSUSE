@@ -34,6 +34,8 @@ Source1:        https://linuxcontainers.org/downloads/%{name}/%{name}-%{version}
 Source2:        %{name}.keyring
 Source3:        lxc-createconfig.in
 Source90:       openSUSE-apparmor.conf
+# PATCH-FIX-UPSTREAM - https://github.com/lxc/lxc/pull/4187
+Patch1:         UPSTREAM-4187.patch
 # Backport of <https://github.com/lxc/lxc/pull/4215>.
 Patch10:        OPENSUSE-0001-meson.build-allow-explicit-distrosysconfdir.patch
 Patch11:        OPENSUSE-0002-build-detect-where-struct-mount_attr-is-declared.patch

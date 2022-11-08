@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov  7 09:43:54 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch to fix build on Arm:
+  * UPSTREAM-4187.patch
+- Refresh OPENSUSE-0005-build-fix-handling-of-dependancies-to-fix-build-on-o.patch
+  due to the new patch
+
+-------------------------------------------------------------------
 Fri Oct 28 12:30:43 UTC 2022 - Aleksa Sarai <asarai@suse.com>
 
 - Update to LXC 5.0.1. boo#1204842

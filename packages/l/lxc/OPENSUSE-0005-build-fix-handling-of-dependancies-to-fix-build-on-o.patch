@@ -46,15 +46,6 @@ index c804b6f6ac6a..0765c9b02cd3 100644
  
      srcconf.set10('HAVE_LIBURING', true)
  else
-@@ -289,7 +294,7 @@ if not want_sd_bus.disabled()
-         has_sd_bus = false
-     endif
- 
--    if not cc.has_function('sd_bus_call_method_asyncv', prefix: '#include <systemd/sd-bus.h>', dependencies: libsystemd) 
-+    if not cc.has_function('sd_bus_call_method_asyncv', prefix: '#include <systemd/sd-bus.h>', dependencies: libsystemd)
-         if not sd_bus_optional
-             error('libsystemd misses required sd_bus_call_method_asyncv function')
-         endif
 @@ -297,6 +302,13 @@ if not want_sd_bus.disabled()
          has_sd_bus = false
      endif
