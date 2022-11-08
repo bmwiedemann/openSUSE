@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Nov  1 20:55:50 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- disable tests on s390x (check-chainlint)
+
+-------------------------------------------------------------------
+Wed Oct 26 19:57:18 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.38.1 (bsc#1204455, CVE-2022-39253, bsc#1204456, CVE-2022-39260):
+  * CVE-2022-39253:
+    When relying on the `--local` clone optimization, Git dereferences
+    symbolic links in the source repository before creating hardlinks
+    (or copies) of the dereferenced link in the destination repository.
+    This can lead to surprising behavior where arbitrary files are
+    present in a repository's `$GIT_DIR` when cloning from a malicious
+    repository.
+    Git will no longer dereference symbolic links via the `--local`
+    clone mechanism, and will instead refuse to clone repositories that
+    have symbolic links present in the `$GIT_DIR/objects` directory.
+    Additionally, the value of `protocol.file.allow` is changed to be
+    "user" by default.
+  * CVE-2022-39260:
+    An overly-long command string given to `git shell` can result in
+    overflow in `split_cmdline()`, leading to arbitrary heap writes and
+    remote code execution when `git shell` is exposed and the directory
+    `$HOME/git-shell-commands` exists.
+    `git shell` is taught to refuse interactive commands that are
+    longer than 4MiB in size. `split_cmdline()` is hardened to reject
+    inputs larger than 2GiB.
+
+-------------------------------------------------------------------
 Thu Oct  6 19:29:30 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - git 2.38.0:

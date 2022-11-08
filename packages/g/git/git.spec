@@ -36,7 +36,7 @@
 %bcond_with    asciidoctor
 %endif
 Name:           git
-Version:        2.38.0
+Version:        2.38.1
 Release:        0
 Summary:        Fast, scalable, distributed revision control system
 License:        GPL-2.0-only
@@ -460,7 +460,10 @@ cat %{name}.lang >>bin-man-doc-files
 %fdupes -s %{buildroot}
 
 %check
+# https://public-inbox.org/git/f1a5f758-d81f-5985-9b5d-2f0dbfaac071@opensuse.org/
+%ifnarch s390x
 ./.make %{?_smp_mflags} test
+%endif
 
 %if 0%{?suse_version} >= 1500
 %pre daemon -f git-daemon.pre
