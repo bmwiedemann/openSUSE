@@ -5056,4 +5056,12 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
     <comment>- build against llvm15/clang15 on sle15-sp5/Leap 15.5</comment>
     <requestid>1033668</requestid>
   </revision>
+  <revision rev="458" vrev="330">
+    <srcmd5>08d99068d3b5328350b457024944370a</srcmd5>
+    <version>unknown</version>
+    <time>1667901224</time>
+    <user>dimstar_suse</user>
+    <comment>- Release 22.2.2 covers bugfixes for bsc#1197045,bsc#1197046,bsc#1200965,bsc#1202850</comment>
+    <requestid>1034271</requestid>
+  </revision>
 </revisionlist>

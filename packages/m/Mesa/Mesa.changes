@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov  7 15:28:21 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Release 22.2.2 covers bugfixes for bsc#1197045,bsc#1197046,bsc#1200965,bsc#1202850
+
+-------------------------------------------------------------------
 Fri Nov  4 21:03:39 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - build against llvm15/clang15 on sle15-sp5/Leap 15.5 
@@ -50,7 +55,7 @@ Mon Oct  3 10:29:51 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 -------------------------------------------------------------------
 Thu Sep 29 10:00:03 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
-- re-disable video codecs due to possible patent issues
+- re-disable video codecs
   https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/15258
 
 -------------------------------------------------------------------
