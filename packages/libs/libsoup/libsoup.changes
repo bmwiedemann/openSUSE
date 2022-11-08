@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov  3 11:06:38 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.2.2:
+  + Various HTTP/2 Fixes:
+    - Fix `content-sniffed` not being emitted for resources without
+      content.
+    - Fix leak of SoupServerConnection when stolen.
+- Enable tests on 32-bit again, fixed upstream.
+
+-------------------------------------------------------------------
 Wed Oct 12 09:29:29 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.2.1:
