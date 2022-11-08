@@ -17,7 +17,7 @@
 
 
 Name:           gtklock
-Version:        1.3.4
+Version:        2.0.1
 Release:        0
 Summary:        GTK-based lockscreen for Wayland
 License:        GPL-3.0-only
@@ -41,7 +41,7 @@ gtklock is a lockscreen based on gtkgreet. It uses the wlr-layer-shell and wlr-i
 %make_build
 
 %install
-PREFIX=%{_prefix} %make_install
+%make_install PREFIX="%{_prefix}"
 # distro provided pam files should be in _pam_vendordir
 mkdir -p %{buildroot}%{_pam_vendordir}
 mv %{buildroot}%{_sysconfdir}/pam.d/* %{buildroot}%{_pam_vendordir}/

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Nov  8 07:38:43 UTC 2022 - Josh <jsmithfpv@gmail.com>
+
+- Update to 2.0.1:
+  New features:
+  * Add more CSS customization options
+  * Add --version command-line flag
+  * Add caps lock warning
+  * Modules are now checked for major and minor version
+  Changes:
+  * Allow modules to add widgets over UI
+  * UI reworked to be XML-based.
+  * Fixed regression related to crashing when disabling displays.
+
+-------------------------------------------------------------------
 Fri Aug 26 08:34:43 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Install pam file to %{_pam_vendordir}/gtklock instead of

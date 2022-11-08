@@ -7,4 +7,21 @@
     <comment></comment>
     <requestid>999371</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>05982ab19c2873a36d6cbadd465f20b5</srcmd5>
+    <version>2.0.1</version>
+    <time>1667901313</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.1:
+  New features:
+  * Add more CSS customization options
+  * Add --version command-line flag
+  * Add caps lock warning
+  * Modules are now checked for major and minor version
+  Changes:
+  * Allow modules to add widgets over UI
+  * UI reworked to be XML-based.
+  * Fixed regression related to crashing when disabling displays.</comment>
+    <requestid>1034451</requestid>
+  </revision>
 </revisionlist>
