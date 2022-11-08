@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Oct 30 10:06:49 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 4.3.1:
+  * Do not crash with a stack overflow when trying to load packages with many internal dependencies
+  * Normalize drive letters of all document URIs
+  * Fix parsing commands that take file paths as arguments
+  * Use the correct working directory and command line arguments when calling `latexindent`
+  * Fix publishing to CTAN
+
+-------------------------------------------------------------------
 Fri Oct 14 12:38:47 UTC 2022 - socvirnyl.estela@gmail.com
 
 - Update to version 4.3.0:

@@ -1,27 +1,8 @@
 <services>
-  <service mode="disabled" name="obs_scm">
-    <param name="url">https://github.com/latex-lsp/texlab</param>
-    <param name="versionformat">@PARENT_TAG@</param>
-    <param name="scm">git</param>
-    <param name="revision">26fec86</param>
-    <param name="versionrewrite-pattern">v(.*)</param>
-    <param name="versionrewrite-replacement">\1</param>
-    <param name="changesgenerate">enable</param>
-    <param name="changesauthor">socvirnyl.estela@gmail.com</param>
-  </service>
-  <service mode="disabled" name="tar" />
-  <service mode="disabled" name="recompress">
-    <param name="file">*.tar</param>
-    <param name="compression">xz</param>
-  </service>
-  <service mode="disabled" name="set_version"/>
   <service name="cargo_vendor" mode="disabled">
-     <param name="srcdir">texlab</param>
-     <param name="compression">xz</param>
+     <param name="srctar">v4.3.1.tar.gz</param>
+     <param name="compression">gz</param>
      <param name="update">true</param>
   </service>
-  <service name="cargo_audit" mode="disabled">
-     <param name="srcdir">texlab</param>
-  </service>
+  <service name="cargo_audit" mode="disabled" />
 </services>
-
