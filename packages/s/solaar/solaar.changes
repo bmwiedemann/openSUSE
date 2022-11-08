@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Nov 03 11:26:24 UTC 2022 - asn@cryptomilk.org
+
+- Update to version 1.1.7:
+  * install: add depdendency on typing_extensions
+  * doc: add Wireless All-in-One Keyboard TK820
+  * release 1.1.7rc2
+  * relese 1.1.7rc2
+  * cli: don't defer saves in cli and don't require gtk in cli
+  * Update hr.po
+  * Update Croatian translation
+  * hidapi: be more permissive when recognizing HID++ report descriptors
+  * po: update Polish translation
+  * release 1.1.7rc1
+  * settings: set minimum ratchet speed to 1, not 0
+  * device: switch scroll ratcheting setting in response to scroll ratchet key notification
+  * settings: add setting to turn scroll ratchet on and off
+  * ui: eliminate visual glitch when updating range settings
+  * solaar: make hid-parser an optional dependency
+
+-------------------------------------------------------------------
 Tue Oct 25 05:42:18 UTC 2022 - asn@cryptomilk.org
 
 - Update to version 1.1.6:

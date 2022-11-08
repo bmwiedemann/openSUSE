@@ -21,7 +21,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           solaar
-Version:        1.1.6
+Version:        1.1.7
 Release:        0
 Summary:        Linux devices manager for the Logitech Unifying Receiver
 License:        GPL-2.0-or-later
@@ -39,6 +39,7 @@ BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module python-xlib}
 BuildRequires:  %{python_module pyudev}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module typing_extensions}
 #
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -55,6 +56,7 @@ Requires:       python3-gobject-Gdk
 Requires:       python3-psutil
 Requires:       python3-python-xlib
 Requires:       python3-pyudev
+Requires:       python3-typing_extensions
 #
 Requires:       solaar-udev >= %{version}
 Requires:       typelib-1_0-Gtk-3_0
@@ -129,7 +131,6 @@ ln -s solaar %{buildroot}%{_bindir}/solaar-cli
 %{_datadir}/icons/hicolor/scalable/apps/solaar.svg
 %{_datadir}/metainfo/io.github.pwr_solaar.solaar.metainfo.xml
 %{python_sitelib}/hidapi
-%{python_sitelib}/hid_parser
 %{python_sitelib}/logitech_receiver
 %{python_sitelib}/keysyms
 %{python_sitelib}/solaar
