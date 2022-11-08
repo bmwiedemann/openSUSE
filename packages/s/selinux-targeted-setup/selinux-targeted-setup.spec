@@ -1,7 +1,7 @@
 #
 # spec file for package selinux-targeted-setup
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 Name:           selinux-targeted-setup
 Version:        20201215
 Release:        0
-Summary:        Metapackage that enables a targeted SELinux policy
+Summary:        Helper package for transactional-update with SELinux
 License:        GPL-2.0-or-later
 Group:          System/Management
 BuildArch:      noarch
@@ -31,7 +31,9 @@ Recommends:     container-selinux
 %{update_bootloader_requires}
 
 %description
-Metapackage that enables a targeted SELinux policy.
+Helper package for transactional-update to enable SELinux.
+This package should NEVER be installed alone, only by
+transactional-update if required!
 
 %prep
 

@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>870628</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>81e5079f1230505f116817db3d97751b</srcmd5>
+    <version>20201215</version>
+    <time>1667905066</time>
+    <user>dimstar_suse</user>
+    <comment>- Enhance description to make sure people don't install it by
+  accident.</comment>
+    <requestid>1034480</requestid>
+  </revision>
 </revisionlist>
