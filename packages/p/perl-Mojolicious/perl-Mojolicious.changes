@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 15 03:07:52 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 9.28
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+
+  9.28  2022-09-12
+    - Fixed a bug where async/await use could result in unhandled promise warnings. (batman)
+
+-------------------------------------------------------------------
 Tue Sep 13 03:06:38 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 9.27
