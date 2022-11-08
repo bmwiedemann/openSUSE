@@ -137,6 +137,8 @@ PATH=/sbin:$PATH ./configure \
 rm -rf %{buildroot}%{_sysconfdir}/xen
 %endif
 
+rm -rf %{buildroot}%{libdir}/drbd/crm-*fence-peer.sh     # bsc#1204276
+
 %pre
 %service_add_pre %{services}
 

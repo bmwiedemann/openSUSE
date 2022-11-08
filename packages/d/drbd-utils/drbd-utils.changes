@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 14 06:37:53 UTC 2022 - Roger Zhou <zzhou@suse.com>
+
+- bsc#1204276 remove crm-fence-peer.sh for drbd8 to avoid confusion with v9 
+
+-------------------------------------------------------------------
 Wed Sep 21 13:11:34 UTC 2022 - Roger Zhou <zzhou@suse.com>
 
 - drbd-utils.spec force _localstatedir to use /var/lib in runtime (bsc#1203220) 
@@ -35,7 +40,7 @@ Fri Sep 17 08:05:56 UTC 2021 - nick wang <nwang@suse.com>
 -------------------------------------------------------------------
 Wed Jul 21 07:20:21 UTC 2021 - nick wang <nwang@suse.com>
 
-- Update to 9.18.0
+- Update to 9.18.0 (bsc#1189363)
  * build: remove rpm related targets
  * drbdsetup,v84: fix minor compile warnings
  * systemd: resource specific activation
@@ -72,7 +77,7 @@ Wed Apr 21 10:15:08 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
   The Makefile explicitly passes -fPIC, thereby breaking our gcc-PIE profile.
   In addition the Makefile also ignores CXXFLAGS and LDFLAGS passed via the
   environment. Therefore fix it with this patch. This makes drbdmon a PIE
-  binary (bsc#1184122).
+  binary (bsc#1184122, bsc#1185132).
 
 -------------------------------------------------------------------
 Tue Nov 17 16:01:34 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
