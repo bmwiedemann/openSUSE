@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 28 09:55:07 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Make it build even ol ppc64le 
+
+-------------------------------------------------------------------
 Mon Jul 25 10:43:31 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - exclude all powerpc and riscv64 from luajit usage

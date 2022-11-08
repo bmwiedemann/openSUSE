@@ -1011,4 +1011,12 @@
   defective patch</comment>
     <requestid>991003</requestid>
   </revision>
+  <revision rev="83" vrev="86">
+    <srcmd5>e14d47cb82f798db79d6ca25786928cf</srcmd5>
+    <version>unknown</version>
+    <time>1667904449</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1034285</requestid>
+  </revision>
 </revisionlist>
