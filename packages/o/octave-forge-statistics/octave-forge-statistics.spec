@@ -18,17 +18,17 @@
 
 %define octpkg  statistics
 Name:           octave-forge-%{octpkg}
-Version:        1.4.3
+Version:        1.5.0
 Release:        0
 Summary:        Additional statistics functions for Octave
 License:        GPL-3.0-or-later AND SUSE-Public-Domain
 Group:          Productivity/Scientific/Math
-URL:            https://octave.sourceforge.io
-Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
-BuildArch:      noarch
+URL:            https://gnu-octave.github.io/packages/%{octpkg}/
+Source0:        https://github.com/gnu-octave/%{octpkg}/archive/refs/tags/release-%{version}.tar.gz#/%{octpkg}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM
+Patch0:         https://github.com/gnu-octave/statistics/commit/ea699ce91a37c3422ee504fa0061d2aa724f63fc.patch#/fix-pkgadd.patch
 BuildRequires:  octave-devel
-Requires:       octave-cli >= 4.0.0
-Requires:       octave-forge-io >= 1.0.18
+Requires:       octave-cli >= 6.1.0
 
 %description
 Additional statistics functions.
@@ -55,5 +55,6 @@ This is part of Octave-Forge project.
 
 %files
 %{octpackages_dir}/%{octpkg}-%{version}
+%{octlib_dir}/%{octpkg}-%{version}
 
 %changelog
