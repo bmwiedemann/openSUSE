@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Nov  8 10:20:01 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Fix dependencies
+
+-------------------------------------------------------------------
+Tue Nov  8 00:29:24 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 3.8 
+  A project name containing hyphens is now automatically translated to use underscores for the import name (PR #566).
+  New option flit install --only-deps to install the dependencies of the package, but not the package itself.
+  Add support for recursive globbing (**) in sdist includes and excludes (PR #550).
+  Python’s bytecode cache files (__pycache__ folders and .pyc files) are now always excluded from sdists (PR #581).
+  Use tomllib in Python 3.11, rather than tomli (PR #573, PR #604).
+  Fix crash when unable to get a password from keyring (PR #567).
+  Fix including modified files in sdist when using Mercurial (PR #541).
+  Fix for some cases of determining whether a package supports Python 2 or not (PR #593).
+  Fix parsing version number from code using multiple assignments (PR #474).
+  Document how to use a PyPI token with FLIT_PASSWORD (PR #602).
+  Fix link to information about environment variables for pip (PR #576).
+  Link to the docs for the latest stable version in package metadata (PR #589).
+  Remove a mention of the toml package, which is no longer needed, from the Developing Flit page (PR #601).
+  The bootstrap install script for flit_core accepts a new --install-root option.
+  Ensure the license file is included in packages on PyPI (PR #603).
+
+-------------------------------------------------------------------
 Fri Mar 25 12:11:30 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 3.7.1
