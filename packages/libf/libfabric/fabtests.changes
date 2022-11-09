@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  8 11:46:56 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Add prov-net-fix-error-path-in-xnet_enable_rdm.patch to fix a deadlock
+  when no network interfaces are available (bsc#1205139)
+
+-------------------------------------------------------------------
 Mon Oct 10 06:47:42 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to 1.16.1
