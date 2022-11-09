@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 22 03:06:29 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.57
+   see /usr/share/doc/packages/perl-Log-Log4perl/Changes
+
+  1.57 2022-10-21
+  - fix tests so work on Perl 5.37.3 - thanks @tonycoz
+
+-------------------------------------------------------------------
 Sat Sep  3 03:07:24 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.56
