@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov  7 20:52:13 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to v0.9.0 
+  * Hide a Python 3.11.0 unavoidable warning with venv (PR #527)
+  * Fix infinite recursion error in check_dependency with circular dependencies (PR #512, Fixes #511)
+  * Only import colorama on Windows (PR #494, Fixes #493)
+  * Flush output more often to reduce interleaved output (PR #494)
+  * Small API cleanup, like better __all__ and srcdir being read only. (PR #477)
+  * Only use importlib_metadata when needed (PR #401)
+  * Clarify in printout when build dependencies are being installed (PR #514)
+
+-------------------------------------------------------------------
 Wed Jul 13 11:24:00 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to v0.8.0

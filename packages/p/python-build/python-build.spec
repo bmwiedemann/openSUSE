@@ -27,7 +27,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-build%{psuffix}
-Version:        0.8.0
+Version:        0.9.0
 Release:        0
 Summary:        Simple PEP517 package builder
 License:        MIT
