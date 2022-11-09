@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Nov  1 03:07:25 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.044
+   see /usr/share/doc/packages/perl-Sub-HandlesVia/Changes
+
+  0.044	2022-10-31
+   [ Documentation ]
+   - Moved a lot of pod out of Sub::HandlesVia and into
+     Sub::HandlesVia::Manual::*.
+  0.043	2022-10-31
+   - Added: Sub::HandlesVia::HandlerLibrary methods: handler_names,
+     has_handler, and get_handler.
+   - Added: Sub::HandlesVia::HandlerLibrary::Blessed.
+  0.042	2022-10-30
+   - Added: Sub::HandlesVia::Declare for compile-time declaration of
+     Sub::HandlesVia delegations.
+   - Improved support for Object::Pad, including support for non-scalar
+     fields.
+  0.041	2022-10-29
+   - Added: Experimental support for Object::Pad.
+  0.040	2022-10-27
+   [ Bug Fixes ]
+   - Stricter detection of Moo::Role roles to prevent some false positives
+     when given Mouse::Role and Moose::Role roles.
+     Bartosz Jarzyna++
+   [ Test Suite ]
+   - Add a test using Sub::HandlesVia when Beam::Wire is loaded.
+     Bartosz Jarzyna++
+  0.039	2022-10-26
+   [ Bug Fixes ]
+   - Fix application of Sub::HandlesVia Moose/Mouse traits to metaobjects
+     that have other traits applied to them.
+     Bartosz Jarzyna++
+   [ Test Suite ]
+   - Mite has supported Perl 5.8.x for a while now, so Mite-related tests
+     shouldn't be restricted to running on Perl 5.10.1+.
+  0.038	2022-10-21
+   [ Documentation ]
+   - Minor changes to documentation for Hash:accessor and Array:accessor.
+
+-------------------------------------------------------------------
 Tue Sep 27 03:08:13 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.037

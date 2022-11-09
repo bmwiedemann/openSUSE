@@ -18,7 +18,7 @@
 
 %define cpan_name Sub-HandlesVia
 Name:           perl-Sub-HandlesVia
-Version:        0.037
+Version:        0.044
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Alternative handles_via implementation
@@ -55,12 +55,41 @@ Why re-invent the wheel? Well, this is an implementation that should work
 okay with Moo, Moose, Mouse, and any other OO toolkit you throw at it. One
 ring to rule them all, so to speak.
 
-Also, unlike MooX::HandlesVia, it honours type constraints, plus it doesn't
-have the limitation that it can't mutate non-reference values.
+For details of how to use it, see the manual.
 
-Note: as Sub::HandlesVia needs to detect whether you're using Moo, Moose,
-or Mouse, and often needs to detect whether your package is a class or a
-role, it needs to be loaded _after_ Moo/Moose/Mouse.
+* Sub::HandlesVia::Manual::WithMoo
+
+How to use Sub::HandlesVia with Moo and Moo::Role.
+
+* Sub::HandlesVia::Manual::WithMoose
+
+How to use Sub::HandlesVia with Moose and Moose::Role.
+
+* Sub::HandlesVia::Manual::WithMouse
+
+How to use Sub::HandlesVia with Mouse and Mouse::Role.
+
+* Sub::HandlesVia::Manual::WithMite
+
+How to use Sub::HandlesVia with Mite.
+
+* Sub::HandlesVia::Manual::WithClassTiny
+
+How to use Sub::HandlesVia with Class::Tiny.
+
+* Sub::HandlesVia::Manual::WithObjectPad
+
+How to use Sub::HandlesVia with Object::Pad classes.
+
+* Sub::HandlesVia::Manual::WithGeneric
+
+How to use Sub::HandlesVia with other OO toolkits, and hand-written Perl
+classes.
+
+Note: as Sub::HandlesVia needs to detect which toolkit you are using, and
+often needs to detect whether your package is a class or a role, it needs
+to be loaded _after_ Moo/Moose/Mouse/etc. Your 'use Moo' or 'use
+Moose::Role' or whatever needs to be _before_ your 'use Sub::HandlesVia'.
 
 %prep
 %autosetup  -n %{cpan_name}-%{version}
