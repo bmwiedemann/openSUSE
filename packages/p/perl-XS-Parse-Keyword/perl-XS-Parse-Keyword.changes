@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Nov  1 03:08:08 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.27
+   see /usr/share/doc/packages/perl-XS-Parse-Keyword/Changes
+
+  0.27    2022-10-31
+          [CHANGES]
+           * Updates to XS::Parse::Infix for latest `infix-plugin` perl5 branch
+              + parsedata field is now an SV **, not an ANY *
+           * Expose parse_infix() as a real ABI function, allowing infix
+             operators to be hyper-operators and parse other operator names
+
+  0.26    2022-10-24
+          [CHANGES]
+           * Updates to XS::Parse::Infix for latest `infix-plugin` perl5 branch
+              + Requires classification to set the operator precedence
+              + No longer need XPI_OPERAND_ARITH or XPI_OPERAND_TERM; most of
+                .lhs_flags and .rhs_flags are redundant now
+              + No longer support XPI_OPERAND_CUSTOM
+              + Optional `parse` phase for parametric/hyper-operators
+           * Bump XS::Parse::Infix ABI version to 2
+           * Declare XPI ABI v0 as deprecated, soon to be removed
+
+-------------------------------------------------------------------
 Wed Jul 27 03:09:17 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.25
