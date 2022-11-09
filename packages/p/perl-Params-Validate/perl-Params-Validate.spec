@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Params-Validate
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,15 @@
 #
 
 
-Name:           perl-Params-Validate
-Version:        1.30
-Release:        0
 %define cpan_name Params-Validate
-Summary:        Validate method/function parameters
+Name:           perl-Params-Validate
+Version:        1.31
+Release:        0
 License:        Artistic-2.0
-Group:          Development/Libraries/Perl
+Summary:        Validate method/function parameters
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Module::Build) >= 0.422700
@@ -53,7 +51,7 @@ that it is an object of a certain class hierarchy, that it possesses
 certain methods, or applying validation callbacks to arguments.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
 perl Build.PL installdirs=vendor optimize="%{optflags}"
@@ -67,7 +65,6 @@ perl Build.PL installdirs=vendor optimize="%{optflags}"
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc azure-pipelines.yml Changes CODE_OF_CONDUCT.md CONTRIBUTING.md README.md TODO
 %license LICENSE
 
