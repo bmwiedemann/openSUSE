@@ -33,6 +33,10 @@ Source1:        gpl-3.0.txt
 Patch0:         reproducible.patch
 # PATCH-FIX-UPSTREAM -- https://sourceforge.net/p/dvdstyler/discussion/318795/thread/b40e1d871f/993d/attachment/fix.patch
 Patch1:         fix.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-fixed-encoding-of-silent-audio-file.patch
+# FFmpeg5 support
+Patch3:         dvdstyler-ffmpeg5.patch
 BuildRequires:  bison
 #!BuildIgnore:  wxWidgets-3_2-devel
 BuildRequires:  dvd+rw-tools

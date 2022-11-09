@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Nov  5 09:51:47 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream changes to allow building DVDStyler with FFmpeg5:
+  * 0001-fixed-encoding-of-silent-audio-file.patch
+  * dvdstyler-ffmpeg5.patch
+
+-------------------------------------------------------------------
 Mon Aug  1 09:13:00 UTC 2022 - Dave Plater <davejplater@gmail.com>
 
 - Update to 3.2.1 and build with wxGTK3-3_2-devel.
