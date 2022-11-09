@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  8 14:17:52 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Buildrequire lxqt-build-tools >= 0.12.0
+- Update version in lang package requirement
+
+-------------------------------------------------------------------
 Sat Nov  5 16:46:43 UTC 2022 - Shawn Dunn <sfalken@cloverleaf-linux.org>
 
 - Update to 1.2.0:

@@ -30,7 +30,7 @@ BuildRequires:  cmake >= 3.1.0
 # Needs private headers, see xdndworkaround.cpp
 BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  libqt5-qttools-devel
-BuildRequires:  lxqt-build-tools-devel >= 0.11.0
+BuildRequires:  lxqt-build-tools-devel >= 0.12.0
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(Qt5LinguistTools)
@@ -49,7 +49,7 @@ BuildRequires:  pkgconfig(x11)
 libfm-qt is the Qt port of libfm, a library providing components to
 build desktop file managers.
 
-%{lang_package -r libfm-qt11}
+%{lang_package -r libfm-qt12}
 
 %package -n libfm-qt12
 Summary:        Library providing components to build desktop file managers

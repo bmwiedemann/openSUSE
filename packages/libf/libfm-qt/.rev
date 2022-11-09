@@ -281,4 +281,13 @@
     <comment></comment>
     <requestid>1033817</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>679bf357320ed56a596cd30b09994aa7</srcmd5>
+    <version>1.2.0</version>
+    <time>1667995036</time>
+    <user>dimstar_suse</user>
+    <comment>- Buildrequire lxqt-build-tools &gt;= 0.12.0
+- Update version in lang package requirement</comment>
+    <requestid>1034551</requestid>
+  </revision>
 </revisionlist>
