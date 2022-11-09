@@ -1,16 +1,4 @@
 -------------------------------------------------------------------
-Tue Nov  8 10:50:46 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
-
-- Update to version 1.30.0:
-  + wifi: change description for wpa-psk to include also WPA3.
-  + editor: remove unused fields from wifi page.
-  + applet: replace libnotify with GNotification.
-  + gschema: bring back org.gnome.nm-applet schema.
-  + Updated translations.
-- Drop pkgconfig(libnotify) BuildRequires: no longer needed.
-- Rebase feature-app-indicator-desktop-file.patch.
-
--------------------------------------------------------------------
 Wed Jun  8 15:05:04 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.28.0:

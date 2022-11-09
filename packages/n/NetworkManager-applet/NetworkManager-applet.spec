@@ -19,13 +19,13 @@
 %define _name   network-manager-applet
 
 Name:           NetworkManager-applet
-Version:        1.30.0
+Version:        1.28.0
 Release:        0
 Summary:        GTK+ tray applet for use with NetworkManager
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://gnome.org/projects/NetworkManager
-Source0:        https://download.gnome.org/sources/network-manager-applet/1.30/%{_name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/network-manager-applet/1.28/%{_name}-%{version}.tar.xz
 
 # PATCH-FIX-UPSTREAM feature-app-indicator-desktop-file.patch sflees@suse.com --  nm-applet needs to be launched with --indicator and needs a startup delay incase its started before the systray
 Patch1:         feature-app-indicator-desktop-file.patch
@@ -37,14 +37,15 @@ BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(appindicator3-0.1)
 BuildRequires:  pkgconfig(dbusmenu-gtk3-0.4) >= 16.04.0
-BuildRequires:  pkgconfig(gio-2.0) >= 2.40
+BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gmodule-export-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.10
 BuildRequires:  pkgconfig(gudev-1.0) >= 147
 BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(jansson) >= 2.3
-BuildRequires:  pkgconfig(libnm) >= 1.15
+BuildRequires:  pkgconfig(libnm) >= 1.7
 BuildRequires:  pkgconfig(libnma) >= 1.8.28
+BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libsecret-1) >= 0.18
 BuildRequires:  pkgconfig(mm-glib)
 BuildRequires:  pkgconfig(mobile-broadband-provider-info)
@@ -99,14 +100,13 @@ connection settings.
 %files
 %license COPYING
 %doc CONTRIBUTING NEWS
+%{_sysconfdir}/xdg/autostart/nm-applet.desktop
 %{_bindir}/nm-applet
-%{_datadir}/GConf/gsettings/nm-applet.convert
 %{_datadir}/applications/nm-applet.desktop
-%{_datadir}/glib-2.0/schemas/org.gnome.nm-applet.gschema.xml
 %{_datadir}/icons/hicolor/*/apps/*.png
 %{_datadir}/icons/hicolor/*/apps/*.svg
 %{_mandir}/man1/nm-applet.1%{?ext_man}
-%{_sysconfdir}/xdg/autostart/nm-applet.desktop
+%{_datadir}/GConf/gsettings/nm-applet.convert
 
 %files lang -f nm-applet.lang
 
