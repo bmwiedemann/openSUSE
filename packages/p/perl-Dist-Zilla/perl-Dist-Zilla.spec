@@ -18,7 +18,7 @@
 
 %define cpan_name Dist-Zilla
 Name:           perl-Dist-Zilla
-Version:        6.025
+Version:        6.027
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Distribution builder; installer not included!
@@ -101,7 +101,6 @@ BuildRequires:  perl(Try::Tiny)
 BuildRequires:  perl(YAML::Tiny)
 BuildRequires:  perl(autodie)
 BuildRequires:  perl(experimental)
-BuildRequires:  perl(feature)
 BuildRequires:  perl(namespace::autoclean)
 BuildRequires:  perl(parent)
 BuildRequires:  perl(version)
@@ -171,7 +170,6 @@ Requires:       perl(Try::Tiny)
 Requires:       perl(YAML::Tiny)
 Requires:       perl(autodie)
 Requires:       perl(experimental)
-Requires:       perl(feature)
 Requires:       perl(namespace::autoclean)
 Requires:       perl(parent)
 Requires:       perl(version)

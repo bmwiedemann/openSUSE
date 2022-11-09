@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov  7 03:06:30 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.027
+   see /usr/share/doc/packages/perl-Dist-Zilla/Changes
+
+  6.027     2022-11-06 17:52:20-05:00 America/New_York
+          - if DZIL_COLOR is set to 0, override auto-detection
+
+-------------------------------------------------------------------
 Sun May 29 03:07:33 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.025
