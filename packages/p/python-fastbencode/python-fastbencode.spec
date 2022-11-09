@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python3-%{**}}
 Name:           python-fastbencode
-Version:        0.0.12
+Version:        0.1
 Release:        0
 Summary:        Implementation of the bencode serialization format
 License:        GPL-2.0-or-later
