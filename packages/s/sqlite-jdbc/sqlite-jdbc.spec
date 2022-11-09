@@ -17,8 +17,8 @@
 
 
 %{!?make_build:%global make_build make %{?_smp_mflags}}
-%global version 3.39.3.0
-%global amalgamation_version 3390300
+%global version 3.39.4.0
+%global amalgamation_version 3390400
 %global debug_package %{nil}
 Name:           sqlite-jdbc
 Version:        %{version}
@@ -36,6 +36,7 @@ BuildRequires:  maven-local
 BuildRequires:  unzip
 BuildRequires:  xmvn
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
+BuildRequires:  mvn(org.apache.maven.plugins:maven-enforcer-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-javadoc-plugin)
 BuildRequires:  mvn(org.hamcrest:hamcrest-all)
 BuildRequires:  mvn(org.junit.jupiter:junit-jupiter-api)

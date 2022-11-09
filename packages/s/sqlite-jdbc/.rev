@@ -310,4 +310,64 @@
 </comment>
     <requestid>1002293</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>79b6869c2dbe93d4cf10a43da2e220af</srcmd5>
+    <version>3.39.4.0</version>
+    <time>1667995064</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v3.39.4.0
+  * Features
+    ~ 8bcba01 jdbc: implement ResultSet#getObject with requested
+      type
+    ~ 9e9d144 allow override of detected architecture
+    ~ 7f03781 update SQLite to 3.39.4
+    ~ fcb321e jdbc: DatabaseMetaData.getTypeInfo() returns more
+      accurate values
+    ~ be935e1 jdbc: add support for
+      DatabaseMetaData#getSearchStringEscape
+  * Fixes
+    ~ f178b4e jdbc: ResultSet#isNullable() now checks for
+      nullability instead of primary key
+    ~ fe8f8d0 jdbc: simplify ResultSet#getBigDecimal
+    ~ e8ba9dc jdbc: ResultSet#getBigDecimal could return 0 instead
+      of null in some conditions
+    ~ 58858f7 jdbc: Statement#getUpdateCount could return incorrect
+      result when used concurrently
+    ~ 8361efa jdbc: incorrect SQL could be generated in
+      DatabaseMetaData#getImportedKeys
+    ~ c8e86ae jdbc: DatabaseMetaData.getTables() shows all types if
+      no type is provided
+    ~ da570ba jdbc: DatabaseMetaData.getTables() returns
+      sqlite_schema as SYSTEM TABLE
+    ~ 8c78a66 jdbc: add missing description for DriverPropertyInfo
+  * Changes
+    ~ 22720f1 use SQLFeatureNotSupportedException when possible
+  * Build
+    ~ 3a115b0 bump nexus-staging-maven-plugin from 1.6.8 to 1.6.13
+    ~ accc542 bump jreleaser-maven-plugin from 1.1.0 to 1.3.1
+    ~ cd9a36a bump maven-gpg-plugin from 1.6 to 3.0.1
+    ~ 574da41 bump maven-javadoc-plugin from 3.2.0 to 3.4.1
+    ~ 47bf67d bump maven-bundle-plugin from 2.4.0 to 5.1.8
+    ~ 507c718 bump maven-jar-plugin from 3.2.0 to 3.3.0
+    ~ 5a3c89e bump maven-compiler-plugin from 3.1 to 3.10.1
+    ~ f13f53d bump maven-help-plugin from 3.2.0 to 3.3.0
+    ~ efcde7c bump spotless-maven-plugin from 2.12.3 to 2.27.2
+    ~ fd60f9b bump mockito-core from 4.8.0 to 4.8.1
+    ~ eaae213 add maven-enforcer-plugin
+    ~ 4238573 add versions-maven-plugin
+    ~ ee7a5a9 disable test_graalvm
+    ~ 5565528 exclude architecture tests from native
+    ~ af1ae47 add test architecture tests
+    ~ 9a19b8a add architecture tests
+    ~ bad80f2 deps: bump JUnit Pioneer from 1.4.2 to 1.7.1
+    ~ ec066ac deps: bump JUnit from 5.7.2 to 5.9.1
+    ~ c61c028 jdbc: add numeric types tests for ResultSet
+    ~ 8c5cd18 typo in workflow descriptions [skip ci]
+  * Documentation
+    ~ 7912b6b document usage for Android applications
+- Add build dependency on
+  mvn(org.apache.maven.plugins:maven-enforcer-plugin)
+</comment>
+    <requestid>1034637</requestid>
+  </revision>
 </revisionlist>
