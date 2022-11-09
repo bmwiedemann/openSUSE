@@ -17,7 +17,7 @@
 
 
 Name:           geeqie
-Version:        2.0
+Version:        2.0.1
 Release:        0
 Summary:        Lightweight Gtk+ based image viewer
 License:        GPL-2.0-or-later
@@ -26,7 +26,8 @@ URL:            http://www.geeqie.org
 Source0:        https://github.com/BestImageViewer/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz
 Source1:        https://github.com/BestImageViewer/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        geeqie.keyring
-
+Patch0:         https://github.com/BestImageViewer/geeqie/commit/eb9d0e10.patch
+Patch1:         https://github.com/BestImageViewer/geeqie/commit/6c4226ff.patch
 BuildRequires:  c++_compiler
 BuildRequires:  docbook_4
 BuildRequires:  doxygen
@@ -92,6 +93,7 @@ rm %{buildroot}%{_docdir}/%{name}/COPYING
 %doc %{_docdir}/%{name}/html
 %{_bindir}/geeqie
 %{_datadir}/applications/geeqie.desktop
+%{_datadir}/icons/hicolor/scalable/apps/geeqie.svg
 %{_datadir}/geeqie/
 %{_datadir}/pixmaps/geeqie.png
 %{_datadir}/metainfo/org.geeqie.Geeqie.appdata.xml

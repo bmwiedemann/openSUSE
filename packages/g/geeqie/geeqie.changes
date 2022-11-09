@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov  8 14:19:08 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.0.1:
+  + Exclude build directories from release tar.
+- Add eb9d0e10.patch: Fix appdata and icon installation.
+- Add 6c4226ff.patch: Fix appstream validation.
+
+-------------------------------------------------------------------
 Thu Sep  1 15:17:41 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 2.0
