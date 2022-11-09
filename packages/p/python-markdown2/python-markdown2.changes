@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov  8 17:20:43 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to versino 2.4.6 
+  [pull #477] Feature wavedrom support
+  [pull #480] Fix mixing ordered and un-ordered lists combining into single list type
+
+-------------------------------------------------------------------
 Thu Sep 29 15:51:26 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - python-markdown2 2.4.5
