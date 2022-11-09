@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Mon Nov  7 09:48:18 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20221105
+  + regenerate configure scripts with autoconf 2.52.20221009
+  + modify "--with-manpage-format" to support bzip2 and xz compression
+    (prompted by discussion with Sam James).
+  + modify make-tar.sh scripts to make timestamps more predictable.
+
+-------------------------------------------------------------------
+Wed Nov  2 10:35:14 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20221029
+  + improve curs_slk.3x discussion of extensions and portability (report
+    by Bill Gray).
+
+-------------------------------------------------------------------
+Mon Oct 24 07:56:19 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20221023
+  + change man_db.renames to template, to handle ncurses*-config script
+    with the extra-suffix configure option.
+
+-------------------------------------------------------------------
+Mon Oct 17 06:53:35 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20221015
+  + fix another memory-leak in tic.
+  + update install-sh script from autoconf, to fix install problem for
+    Ada95 with Arch; as noted in
+    https://lists.gnu.org/archive/html/automake/2018-09/msg00005.html
+    there are unaddressed issues.
+  + update CF_XOPEN_SOURCE, adding GNU libc suffixes for abi64, abin32,
+    x32 (report by Sven Joachim):
+  + correct ifdef's for _nc_set_read_thread() (patch by Mikhail Korolev,
+    cf: 20220813).
+
+-------------------------------------------------------------------
+Mon Oct 10 06:17:07 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20221008
+  + correct a switch-statement case in configure script to allow for test
+    builds with ABI=7.
+  + modify misc/gen-pkgconfig.in to allow for the case where the library
+    directory does not yet exist, since this is processed before doing an
+    install (report by Michal Liszcz).
+
+-------------------------------------------------------------------
 Tue Oct  4 06:27:40 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20221001

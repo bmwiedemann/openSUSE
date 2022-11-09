@@ -3850,4 +3850,41 @@
     TRACE_ORDINARY, DEBUG_LEVEL(3).</comment>
     <requestid>1007806</requestid>
   </revision>
+  <revision rev="226" vrev="30">
+    <srcmd5>f47f278b6f59e4231c5577924fdb6d1f</srcmd5>
+    <version>6.3.MACRO</version>
+    <time>1667994953</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ncurses patch 20221105
+  + regenerate configure scripts with autoconf 2.52.20221009
+  + modify &quot;--with-manpage-format&quot; to support bzip2 and xz compression
+    (prompted by discussion with Sam James).
+  + modify make-tar.sh scripts to make timestamps more predictable.
+
+- Add ncurses patch 20221029
+  + improve curs_slk.3x discussion of extensions and portability (report
+    by Bill Gray).
+
+- Add ncurses patch 20221023
+  + change man_db.renames to template, to handle ncurses*-config script
+    with the extra-suffix configure option.
+
+- Add ncurses patch 20221015
+  + fix another memory-leak in tic.
+  + update install-sh script from autoconf, to fix install problem for
+    Ada95 with Arch; as noted in
+    https://lists.gnu.org/archive/html/automake/2018-09/msg00005.html
+    there are unaddressed issues.
+  + update CF_XOPEN_SOURCE, adding GNU libc suffixes for abi64, abin32,
+    x32 (report by Sven Joachim):
+  + correct ifdef's for _nc_set_read_thread() (patch by Mikhail Korolev,
+    cf: 20220813).
+
+- Add ncurses patch 20221008
+  + correct a switch-statement case in configure script to allow for test
+    builds with ABI=7.
+  + modify misc/gen-pkgconfig.in to allow for the case where the library
+    directory does not yet exist, since this is processed before doing an</comment>
+    <requestid>1034125</requestid>
+  </revision>
 </revisionlist>
