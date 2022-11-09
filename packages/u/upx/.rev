@@ -142,4 +142,13 @@
   * 0001-Silence-yet-some-more-compilation-warnings.patch</comment>
     <requestid>896605</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>4b46d5452250677df0b9fd15c2bd9e18</srcmd5>
+    <version>4.0.0</version>
+    <time>1667995001</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 4.0
+  * Add support for EFI files</comment>
+    <requestid>1034536</requestid>
+  </revision>
 </revisionlist>
