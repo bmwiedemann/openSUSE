@@ -27,7 +27,11 @@ Source0:        https://github.com/alemart/opensurge/archive/v%{version}.tar.gz#
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
+%if 0%{?suse_version} <= 1500
+BuildRequires:  gcc10-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(OpenAL)
 BuildRequires:  pkgconfig(allegro-5)
@@ -50,6 +54,11 @@ world from the evil Gimacian the Dark.
 %autosetup
 
 %build
+%if 0%{?suse_version} <= 1500
+export CC=gcc-10
+export CXX=g++-10
+%endif
+
 %cmake \
     -DGAME_BINDIR="%{_bindir}" \
     -DGAME_DATADIR="%{_datadir}/%{name}"
