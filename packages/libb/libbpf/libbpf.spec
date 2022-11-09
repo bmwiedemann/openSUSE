@@ -26,6 +26,10 @@ License:        LGPL-2.1-only
 URL:            https://github.com/libbpf/libbpf
 Source:         https://github.com/libbpf/libbpf/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
+Patch1:         libbpf-Fix-use-after-free-in-btf_dump_name_dups.patch
+Patch2:         libbpf-Fix-memory-leak-in-parse_usdt_arg.patch
+Patch3:         libbpf-Use-elf_getshdrnum-instead-of-e_shnum.patch
+Patch4:         libbpf-Fix-null-pointer-dereference-in-find_prog_by_.patch
 BuildRequires:  libelf-devel
 BuildRequires:  linux-glibc-devel >= 4.5
 BuildRequires:  zlib-devel
@@ -57,7 +61,7 @@ Requires:       linux-glibc-devel >= 5.16
 libbpf is a C library which provides API for managing eBPF programs and maps.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects

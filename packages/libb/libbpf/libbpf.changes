@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov  8 06:03:55 UTC 2022 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Fix out-of-bound heap write (boo#1194248 boo#1194249 CVE-2021-45940 CVE-2021-45941)
+  + libbpf-Use-elf_getshdrnum-instead-of-e_shnum.patch
+- Fix use-after-free in btf_dump_name_dups (boo#1204391 CVE-2022-3534)
+  + libbpf-Fix-use-after-free-in-btf_dump_name_dups.patch
+- Fix memory leak in parse_usdt_arg() (boo#1204393 CVE-2022-3533)
+  + libbpf-Fix-memory-leak-in-parse_usdt_arg.patch
+- Fix null pointer dereference in find_prog_by_sec_insn() (boo#1204502 CVE-2022-3606)
+  + libbpf-Fix-null-pointer-dereference-in-find_prog_by_.patch
+
+-------------------------------------------------------------------
 Tue Oct  4 17:22:08 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.1:
