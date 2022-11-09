@@ -1,7 +1,7 @@
-Index: seafile-client-8.0.7/CMakeLists.txt
+Index: seafile-client-8.0.9/CMakeLists.txt
 ===================================================================
---- seafile-client-8.0.7.orig/CMakeLists.txt
-+++ seafile-client-8.0.7/CMakeLists.txt
+--- seafile-client-8.0.9.orig/CMakeLists.txt
++++ seafile-client-8.0.9/CMakeLists.txt
 @@ -133,7 +133,7 @@ ENDIF()
  ####################
  ###### BEGIN: QT configuration
