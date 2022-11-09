@@ -18,10 +18,10 @@
 
 %define cpan_name PerlIO-utf8_strict
 Name:           perl-PerlIO-utf8_strict
-Version:        0.009
+Version:        0.010
 Release:        0
-Summary:        Fast and correct UTF-8 IO
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Fast and correct UTF-8 IO
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/L/LE/LEONT/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml

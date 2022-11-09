@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct 27 03:09:05 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.010
+   see /usr/share/doc/packages/perl-PerlIO-utf8_strict/Changes
+
+  0.010     2022-10-26 18:57:45+02:00 Europe/Amsterdam
+            - Re-release with updated pport.h for 5.8.5 compatibility
+
+-------------------------------------------------------------------
 Sun Jan  9 03:08:25 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.009
