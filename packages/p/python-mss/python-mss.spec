@@ -1,7 +1,7 @@
 #
 # spec file for package python-mss
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-mss
-Version:        6.1.0
+Version:        7.0.1
 Release:        0
 Summary:        Python multiple screenshots module
 License:        MIT
@@ -36,7 +36,7 @@ BuildRequires:  xrandr
 BuildRequires:  xvfb-run
 Requires:       xrandr
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -64,7 +64,7 @@ An ultra fast cross-platform multiple screenshots module in pure Python using ct
 export LANG=en_US.UTF-8
 # test_region_out_of_monitor_bounds fails on ppc64 only
 echo '
-%pytest --ignore mss/tests/test_setup.py -k "not test_region_out_of_monitor_bounds" 
+%pytest --ignore mss/tests/test_setup.py -k "not test_region_out_of_monitor_bounds"
 '> pytest_script.sh
 # need explicitly set up screen.
 xvfb-run --server-args "-screen 0 1920x1080x24" sh pytest_script.sh
