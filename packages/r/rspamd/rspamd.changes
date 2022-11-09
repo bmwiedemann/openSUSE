@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov  1 21:41:46 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.4
+  - Fix metadata_exporter with many recipients by @yo000 in #4294
+  - [Fix] Fix favicon.ico Content-Type header by @moisseev in #4302
+  - [Minor] Fix copy-paste error by @moisseev in #4305
+  - Add basic auth to metadata_exporter http pusher by @yo000 in
+    #4300
+  - [Enhancement] Add composite rule against AFF involving
+    freemailers by @twesterhever in #4304
+  - Penalize bounce spam by @frederikbosch in #4308
+
+-------------------------------------------------------------------
 Tue Oct  4 12:27:58 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
 - added fix_missing_return.patch:
