@@ -1,7 +1,7 @@
 #
 # spec file for package zim
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2012 Matthias Propst.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define skip_python2 1
 
 Name:           zim
-Version:        0.74.3
+Version:        0.75.1
 Release:        0
 Summary:        A Desktop Wiki
 License:        GPL-2.0-or-later
@@ -32,7 +32,7 @@ BuildRequires:  fdupes
 BuildRequires:  %{python_module gobject >= 3.2}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  python3
+BuildRequires:  python3 >= 3.6.0
 BuildRequires:  typelib-1_0-Gtk-3_0
 BuildRequires:  update-desktop-files
 Requires:       python3-gobject-Gdk

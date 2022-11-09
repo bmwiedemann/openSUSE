@@ -95,4 +95,51 @@
     <comment></comment>
     <requestid>940164</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e446be5e95e36db41b643889b486c4d4</srcmd5>
+    <version>0.75.1</version>
+    <time>1667995107</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.75.1:
+  * Fix bug with relative path notebook icon
+  * Fix bug with icons in notebookdialog
+  * Fix bug with loading sub-notebooks via &quot;notebook.zim&quot;
+  * Fix bug with &quot;--list&quot; commandline
+  * Fix issue opening unicode attachements on win32
+  * Fix saving preferences for edit bar
+  * Fix link visibility in TableEditor
+  * Use flatpak locale directory in flatpak
+  * Upgrade Python version requirement to &gt;= 3.6
+  * Complete porting all modules to `zim.newfs` and deprecate `zim.fs`
+  * Refactor APIs to deal with tokens instead of `etree` interface
+  * Add framework for imagegenerators with inline data
+  * Refactored ther user interface of the tasklist plugin
+  * Make tasklist window persistent
+  * Let tasklist window also show closed tasks
+  * Let tasks inherit all modifiers from list heading
+  * Let &quot;Go to Today&quot; use anchor id for current day
+  * Update LinkMap with new options
+  * Refactor preference for custom window decoration &amp; toolbar plugin
+  * Enables distinct shortcuts for en and em dashes in symbol list
+  * Add unicode 8757 (&quot;because&quot;) in symbol list
+  * Move Selected Text: add preference for short links &amp; save bounds
+  * Extend ToC pane context menu
+  * Score editor: add check for convert-ly
+  * Source View plugin: Don't show hidden languages
+  * Export code blocks in markdown as fenced blocks
+  * Fix loading GIF images
+  * Fix to let the &quot;insert link&quot; dialog allow anchors
+  * Allow sidepane focus key to be configured
+  * Added action to collapse and expand in PageIndex
+  * Add action for &quot;move text&quot; to allow keybinding
+  * Support closing an open 'find bar' by pressing ESC in the page view widget
+  * Allow cancelling ImageGeneratorDialog using Escape key
+  * Version control: fix fossil
+  * Fix KDE drag-n-drop bug
+  * Fix export with formatting in heading
+  * Minimal support for &quot;Terminal&quot; option in desktop files
+  * Add preference for not prompting on new folder
+</comment>
+    <requestid>1034817</requestid>
+  </revision>
 </revisionlist>
