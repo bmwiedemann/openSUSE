@@ -18,18 +18,15 @@
 
 %define octpkg  ltfat
 Name:           octave-forge-%{octpkg}
-Version:        2.4.0
+Version:        2.5.0
 Release:        0
 Summary:        The Large Time-Frequency Analysis Toolbox for Octave
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
-URL:            https://octave.sourceforge.io/%{octpkg}/index.html
-# Release 2.4.0 currently missing on octave-forge
-# Source0:      https://downloads.sourceforge.net/octave/%%{octpkg}-%%{version}.tar.gz
-Source0:        https://github.com/ltfat/ltfat/releases/download/2.4.0/ltfat-2.4.0-of.tar.gz
-# PATCH-FIX-UPSTREAM ltfat-nsdgt_m-syntax-error.patch gh#ltfat/ltfat#115 badshah400@gmail.com -- Fix syntax error in nsdgt.m to build against octave >= 6; patch taken from upstream git commit
-Patch0:         ltfat-nsdgt_m-syntax-error.patch
-Patch1:         ltfat-sourcetarget.patch
+URL:            https://ltfat.org/
+Source0:        https://github.com/ltfat/ltfat/releases/download/v%{version}/ltfat-%{version}-of.tar.gz
+# PATCH-FIX-UPSTREAM
+Patch0:         ltfat-sourcetarget.patch
 BuildRequires:  fdupes
 BuildRequires:  fftw3-devel
 BuildRequires:  fftw3-threads-devel

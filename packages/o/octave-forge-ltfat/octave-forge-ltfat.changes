@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Nov  8 16:20:32 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 2.5.0:
+  * Improved precison of Daubechies wavelet filters for 'db1'-'db38'
+  * Added internal reset condition to 'multidgtrealmp'
+  * New filterbank-generating function 'waveletfilters'
+  * Extended filterbankdual and filterbankrealdual with an
+    'economize_filters' option
+  * Addition of 'comp_fblowpassfilters'
+  * Extended wavelet function generator (supported Morlet and
+    several others)
+    freqwavelet, determine_freqatheight, arg_freqwavelet,
+    wpghi_findalpha, helper_waveletgeneratorfunc
+    + New demo_dgt_parametrize
+  * rms accepts now 'dim' as an input
+  * frana accepts now row vectors as input signals
+  * expchirp optional fade-in and fade-out
+  * Bug fixes and minor changes:
+    + nsdgt
+    + normalize, filterbankrealbounds, cqtfilters, firkaiser,
+      gabwin, comp_frana_tensor
+  * Deprecated: normalize - replaced by setnorm
+- Drop upstream patch:
+  * ltfat-nsdgt_m-syntax-error.patch
+
+-------------------------------------------------------------------
 Fri Apr  8 14:01:35 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
