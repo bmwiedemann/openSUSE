@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 # requires some unavailable modules
 %bcond_with docs
@@ -27,42 +26,46 @@ Summary:        Asynchronous HTTP client/server framework
 License:        Apache-2.0
 URL:            https://github.com/aio-libs/aiohttp
 Source:         https://files.pythonhosted.org/packages/source/a/aiohttp/aiohttp-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE ignore-pytest-deprecationwarning.patch -- gh#aio-libs/aiohttp#6663
-Patch0:         ignore-pytest-deprecationwarning.patch
+# PATCH-FIX-UPSTREAM aiohttp-pr7057-bump-charset-normalizer.patch gh#aio-libs/aiohttp#7057
+Patch0:         aiohttp-pr7057-bump-charset-normalizer.patch
+# SECTION build requirements
 BuildRequires:  %{python_module Cython}
-BuildRequires:  %{python_module aiosignal >= 1.1.2}
-BuildRequires:  %{python_module async_timeout >= 4.0}
-BuildRequires:  %{python_module asynctest = 0.13.0 if %python-base < 3.8}
-BuildRequires:  %{python_module attrs >= 17.3.0}
-BuildRequires:  %{python_module charset-normalizer >= 2.0}
 BuildRequires:  %{python_module devel >= 3.6}
-BuildRequires:  %{python_module frozenlist >= 1.1.1}
-BuildRequires:  %{python_module idna_ssl >= 1.0 if %python-base < 3.7}
-BuildRequires:  %{python_module multidict >= 4.5}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module typing_extensions >= 3.7.4 if %python-base < 3.8}
-BuildRequires:  %{python_module yarl >= 1.0}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  http-parser-devel
 BuildRequires:  python-rpm-macros
-Requires:       python >= 3.6
+# /SECTION
+# SECTION install requirements
+BuildRequires:  %{python_module aiosignal >= 1.1.2}
+BuildRequires:  %{python_module async_timeout >= 4.0 with %python-async_timeout < 5}
+BuildRequires:  %{python_module asynctest = 0.13.0 if %python-base < 3.8}
+BuildRequires:  %{python_module attrs >= 17.3.0}
+BuildRequires:  %{python_module charset-normalizer >= 2.0 with %python-charset-normalizer < 4}
+BuildRequires:  %{python_module frozenlist >= 1.1.1}
+BuildRequires:  %{python_module idna_ssl >= 1.0 if %python-base < 3.7}
+BuildRequires:  %{python_module multidict >= 4.5 with %python-multidict < 7}
+BuildRequires:  %{python_module typing_extensions >= 3.7.4 if %python-base < 3.8}
+BuildRequires:  %{python_module yarl >= 1.0 with %python-yarl < 2}
+# /SECTION
 Requires:       python-aiosignal >= 1.1.2
-Requires:       python-async_timeout >= 4.0
 Requires:       python-attrs >= 17.3.0
-Requires:       python-charset-normalizer >= 2.0
 Requires:       python-frozenlist >= 1.1.1
-Requires:       python-multidict >= 4.5
-Requires:       python-yarl >= 1.0
+Requires:       (python-async_timeout >= 4.0 with python-async_timeout < 5)
 Requires:       (python-asynctest = 0.13.0 if python-base < 3.8)
+Requires:       (python-charset-normalizer >= 2.0 with python-charset-normalizer < 4)
 Requires:       (python-idna_ssl >= 1.0 if python-base < 3.7)
+Requires:       (python-multidict >= 4.5 with python-multidict < 7)
 Requires:       (python-typing_extensions >= 3.7.4 if python-base < 3.8)
+Requires:       (python-yarl >= 1.0 with python-yarl < 2)
 Recommends:     python-aiodns
 Recommends:     python-brotlipy
 Recommends:     python-cChardet
 Suggests:       %{name}-doc
 # SECTION test requirements
 BuildRequires:  %{python_module aiodns}
-BuildRequires:  %{python_module async_generator}
 BuildRequires:  %{python_module brotlipy}
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module gunicorn}
@@ -109,7 +112,7 @@ sed -i '/--cov/d' setup.cfg
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 %if %{with docs}
 pushd docs
 %make_build html
@@ -118,7 +121,7 @@ popd
 %endif
 
 %install
-%python_install
+%pyproject_install
 %{python_expand %fdupes %{buildroot}%{$python_sitearch}
 find %{buildroot}%{$python_sitearch} -name '*.[ch]' -delete
 rm -r %{buildroot}%{$python_sitearch}/aiohttp/.hash

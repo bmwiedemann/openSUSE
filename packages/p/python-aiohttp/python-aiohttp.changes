@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov  7 17:49:50 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Drop ignore-pytest-deprecationwarning.patch
+- Add aiohttp-pr7057-bump-charset-normalizer.patch
+  * gh#aio-libs/aiohttp#7057
+  * Sync requirement with rpm specs
+
+-------------------------------------------------------------------
 Tue Oct  4 20:31:56 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - skip more tests 
