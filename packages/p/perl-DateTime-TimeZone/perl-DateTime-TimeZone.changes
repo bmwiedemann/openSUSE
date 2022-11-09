@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Oct 30 03:07:02 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.56
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+
+  2.56    2022-10-28
+
+  - This release is based on version 2022f of the Olson database. This release
+    includes contemporary changes for Fiji and Mexico.
+
+-------------------------------------------------------------------
 Thu Oct 13 03:06:15 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.55
