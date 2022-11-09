@@ -1,0 +1,50 @@
+From 10cd68e0f04b48363eb32d2c6e168b358fb27810 Mon Sep 17 00:00:00 2001
+From: Samanta Navarro <ferivoz@riseup.net>
+Date: Sun, 4 Sep 2022 11:58:03 +0000
+Subject: [PATCH] copy_tree: do not block on fifos
+
+Fixes regression introduced in faeab50e710131816b261de66141524898c2c487.
+
+If a directory contains fifos, then openat blocks until the other side
+of the fifo is connected as well.
+
+This means that users can prevent "usermod -m" from completing if their
+home directories contain at least one fifo.
+---
+ libmisc/copydir.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/libmisc/copydir.c b/libmisc/copydir.c
+index b6025f4c7..5fb47da01 100644
+--- a/libmisc/copydir.c
++++ b/libmisc/copydir.c
+@@ -126,12 +126,12 @@ static int perm_copy_path(const struct path_info *src,
+ {
+ 	int src_fd, dst_fd, ret;
+ 
+-	src_fd = openat(src->dirfd, src->name, O_RDONLY | O_NOFOLLOW | O_CLOEXEC);
++	src_fd = openat(src->dirfd, src->name, O_RDONLY | O_NOFOLLOW | O_NONBLOCK | O_CLOEXEC);
+ 	if (src_fd < 0) {
+ 		return -1;
+ 	}
+ 
+-	dst_fd = openat(dst->dirfd, dst->name, O_RDONLY | O_NOFOLLOW | O_CLOEXEC);
++	dst_fd = openat(dst->dirfd, dst->name, O_RDONLY | O_NOFOLLOW | O_NONBLOCK | O_CLOEXEC);
+ 	if (dst_fd < 0) {
+ 		(void) close (src_fd);
+ 		return -1;
+@@ -152,12 +152,12 @@ static int attr_copy_path(const struct path_info *src,
+ {
+ 	int src_fd, dst_fd, ret;
+ 
+-	src_fd = openat(src->dirfd, src->name, O_RDONLY | O_NOFOLLOW | O_CLOEXEC);
++	src_fd = openat(src->dirfd, src->name, O_RDONLY | O_NOFOLLOW | O_NONBLOCK | O_CLOEXEC);
+ 	if (src_fd < 0) {
+ 		return -1;
+ 	}
+ 
+-	dst_fd = openat(dst->dirfd, dst->name, O_RDONLY | O_NOFOLLOW | O_CLOEXEC);
++	dst_fd = openat(dst->dirfd, dst->name, O_RDONLY | O_NOFOLLOW | O_NONBLOCK | O_CLOEXEC);
+ 	if (dst_fd < 0) {
+ 		(void) close (src_fd);
+ 		return -1;

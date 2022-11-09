@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov  7 11:20:36 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Add shadow-copytree-usermod-fifo.patch:
+  Fix regression that prevented `usermod -m` to work when their
+  home directory contained at least one fifo
+  See https://github.com/shadow-maint/shadow/pull/565
+
+-------------------------------------------------------------------
 Wed Nov  2 10:59:16 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - bsc#1204811: Fix chage date format string regression

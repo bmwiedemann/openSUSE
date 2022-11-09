@@ -777,4 +777,15 @@
   * Add shadow-chage-format.patch</comment>
     <requestid>1032849</requestid>
   </revision>
+  <revision rev="51" vrev="4">
+    <srcmd5>eb5fc1a9eda57ac901a517e5df818f88</srcmd5>
+    <version>4.12.3</version>
+    <time>1667994954</time>
+    <user>dimstar_suse</user>
+    <comment>- Add shadow-copytree-usermod-fifo.patch:
+  Fix regression that prevented `usermod -m` to work when their
+  home directory contained at least one fifo
+  See https://github.com/shadow-maint/shadow/pull/565</comment>
+    <requestid>1034152</requestid>
+  </revision>
 </revisionlist>

@@ -63,6 +63,8 @@ Patch9:         disable_new_audit_function.patch
 Patch10:        https://github.com/shadow-maint/shadow/commit/eaebea55a495a56317ed85e959b3599f73c6bdf2.patch#/shadow-prefix-overflow.patch
 # PATCH-FIX-UPSTREAM shadow-chage-format.patch mvetter@suse.com -- Fix chage format string
 Patch11:        https://github.com/shadow-maint/shadow/commit/e503fd574b7dbf6b21b1168e20938f0922807916.patch#/shadow-chage-format.patch
+# PATCH-FIX-UPSTREAM shadow-copytree-usermod-fifo.patch mvetter@suse.com -- Fix regression when openat blocks
+Patch12:        https://github.com/shadow-maint/shadow/commit/10cd68e0f04b48363eb32d2c6e168b358fb27810.patch#/shadow-copytree-usermod-fifo.patch
 BuildRequires:  audit-devel > 2.3
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -135,6 +137,7 @@ Development files for libsubid4.
 %endif
 %patch10 -p1
 %patch11 -p1
+%patch12 -p1
 
 iconv -f ISO88591 -t utf-8  doc/HOWTO > doc/HOWTO.utf8
 mv -v doc/HOWTO.utf8 doc/HOWTO
