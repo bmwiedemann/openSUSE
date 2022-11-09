@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct 26 03:10:29 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.029
+   see /usr/share/doc/packages/perl-experimental/Changes
+
+  0.029     2022-10-25 23:22:21+02:00 Europe/Amsterdam
+            - Fix handling of warning categories that have been removed
+
+-------------------------------------------------------------------
 Tue Apr 26 03:08:28 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.028
