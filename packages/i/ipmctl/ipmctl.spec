@@ -1,7 +1,7 @@
 #
 # spec file for package ipmctl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define vgit    %{nil}
 
 Name:           ipmctl
-Version:        03.00.00.0423
+Version:        03.00.00.0468
 Release:        0
 Summary:        Utility for managing Intel Optane persistent memory modules
 License:        BSD-3-Clause

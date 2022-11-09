@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Oct 31 15:55:48 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 03.00.00.0468:
+  + Connect namespace controllers during re-enumeration.
+  + Set default value of PcdInvalid to False.
+  + Fix memory resources info error.
+  + Remove call MemoryResources function to reload namespace
+    information.
+  + Correct link removal behavior for preferences file.
+  + Correct multiple NVM API behavior deficiencies.
+  + Make ipmctl more resilient to unhealthy PMem modules.
+  + Don't always create a preferences file in current directory.
+  + Reduce ipmctl version firmware calls to only minimum necessary.
+  + Check pointer for NULL before using to prevent seg fault.
+
+-------------------------------------------------------------------
 Mon Jan 17 13:29:39 UTC 2022 - rw@suse.com
 
 - Update to version 03.00.00.0423
