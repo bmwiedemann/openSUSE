@@ -103,7 +103,7 @@ Requires:       %{mypython}-SQLAlchemy >= 1.2.3
 Requires:       %{mypython}-aiosmtpd >= 1.4.1
 Requires:       %{mypython}-alembic
 Requires:       %{mypython}-atpublic
-Requires:       %{mypython}-authheaders >= 0.9.2
+Requires:       %{mypython}-authheaders >= 0.14.0
 Requires:       %{mypython}-authres >= 1.0.1
 Requires:       %{mypython}-click >= 7.0
 Requires:       %{mypython}-dnspython >= 1.14.0
