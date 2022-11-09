@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Nov  7 08:38:51 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update to version 0.188:
+  * readelf: Add -D, --use-dynamic option.
+  * debuginfod-client: Add $DEBUGINFOD_HEADERS_FILE setting to supply
+    outgoing debuginfod_find_section.
+  * debuginfod: Add --disable-source-scan option.
+  * libdwfl: Add new function dwfl_get_debuginfod_client.
+             Add new function dwfl_frame_reg.
+             Add new function dwfl_report_offline_memory.
+- Remove upstreamed patches:
+  * 0001-libelf-Sync-elf.h-from-glibc.patch
+  * 0002-backends-Handle-new-RISC-V-specific-definitions.patch
+  * 0003-elflint-Allow-zero-p_memsz-for-PT_RISCV_ATTRIBUTES.patch
+  * 0004-readelf-Handle-SHT_RISCV_ATTRIBUTES-like-SHT_GNU_ATT.patch
+  * PR29474-debuginfod.patch
+  * config-Move-the-2-dev-null-inside-the-sh-c-quotes-fo.patch
+  * support-nullglob-in-profile.-.in-files.patch
+
+-------------------------------------------------------------------
 Wed Aug 17 11:42:11 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Use %ghost for debuginfod.sqlite file.

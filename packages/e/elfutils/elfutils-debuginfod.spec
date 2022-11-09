@@ -17,7 +17,7 @@
 
 
 Name:           elfutils-debuginfod
-Version:        0.187
+Version:        0.188
 Release:        0
 Summary:        Debuginfod server provided by elfutils
 License:        GPL-3.0-or-later
@@ -30,9 +30,6 @@ Source2:        elfutils.changes
 Source3:        elfutils.keyring
 Source4:        %{name}.sysusers
 Patch1:         harden_debuginfod.service.patch
-Patch2:         config-Move-the-2-dev-null-inside-the-sh-c-quotes-fo.patch
-Patch3:         PR29474-debuginfod.patch
-Patch4:         support-nullglob-in-profile.-.in-files.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -194,6 +191,7 @@ export XFAIL_TESTS="dwfl-proc-attach run-backtrace-dwarf.sh run-backtrace-native
 %{_mandir}/man8/debuginfod.8*
 %{_fillupdir}/sysconfig.debuginfod
 %{_sysusersdir}/%{name}.conf
+%{_mandir}/man8/debuginfod.service.8.*
 
 %dir %attr(0700,debuginfod,debuginfod) %{_localstatedir}/cache/debuginfod
 %ghost %attr(0600,debuginfod,debuginfod) %{_localstatedir}/cache/debuginfod/debuginfod.sqlite

@@ -17,7 +17,7 @@
 
 
 Name:           elfutils
-Version:        0.187
+Version:        0.188
 Release:        0
 Summary:        Higher-level library to access ELF files
 License:        GPL-3.0-or-later
@@ -40,10 +40,6 @@ BuildRequires:  libzstd-devel
 BuildRequires:  xz-devel
 BuildRequires:  zlib-devel
 
-Patch24300:     0001-libelf-Sync-elf.h-from-glibc.patch
-Patch24301:     0002-backends-Handle-new-RISC-V-specific-definitions.patch
-Patch24302:     0003-elflint-Allow-zero-p_memsz-for-PT_RISCV_ATTRIBUTES.patch
-Patch24303:     0004-readelf-Handle-SHT_RISCV_ATTRIBUTES-like-SHT_GNU_ATT.patch
 Patch24304:     0005-backends-Add-RISC-V-object-attribute-printing.patch
 
 %description

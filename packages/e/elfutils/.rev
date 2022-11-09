@@ -987,4 +987,41 @@ Fixes CVE-2018-18310, CVE-2018-18520 and CVE-2018-18521.
     <comment></comment>
     <requestid>1010631</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>2adba66060b5b526b1bd5c71e3409f8c</srcmd5>
+    <version>0.188</version>
+    <time>1667994952</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.188:
+  * readelf: Add -D, --use-dynamic option.
+  * debuginfod-client: Add $DEBUGINFOD_HEADERS_FILE setting to supply
+    outgoing debuginfod_find_section.
+  * debuginfod: Add --disable-source-scan option.
+  * libdwfl: Add new function dwfl_get_debuginfod_client.
+             Add new function dwfl_frame_reg.
+             Add new function dwfl_report_offline_memory.
+- Remove upstreamed patches:
+  * 0001-libelf-Sync-elf.h-from-glibc.patch
+  * 0002-backends-Handle-new-RISC-V-specific-definitions.patch
+  * 0003-elflint-Allow-zero-p_memsz-for-PT_RISCV_ATTRIBUTES.patch
+  * 0004-readelf-Handle-SHT_RISCV_ATTRIBUTES-like-SHT_GNU_ATT.patch
+  * PR29474-debuginfod.patch
+  * config-Move-the-2-dev-null-inside-the-sh-c-quotes-fo.patch
+  * support-nullglob-in-profile.-.in-files.patch
+
+- Update to version 0.188:
+  * readelf: Add -D, --use-dynamic option.
+  * debuginfod-client: Add $DEBUGINFOD_HEADERS_FILE setting to supply
+    outgoing debuginfod_find_section.
+  * debuginfod: Add --disable-source-scan option.
+  * libdwfl: Add new function dwfl_get_debuginfod_client.
+             Add new function dwfl_frame_reg.
+             Add new function dwfl_report_offline_memory.
+- Remove upstreamed patches:
+  * 0001-libelf-Sync-elf.h-from-glibc.patch
+  * 0002-backends-Handle-new-RISC-V-specific-definitions.patch
+  * 0003-elflint-Allow-zero-p_memsz-for-PT_RISCV_ATTRIBUTES.patch
+  * 0004-readelf-Handle-SHT_RISCV_ATTRIBUTES-like-SHT_GNU_ATT.patch</comment>
+    <requestid>1034105</requestid>
+  </revision>
 </revisionlist>
