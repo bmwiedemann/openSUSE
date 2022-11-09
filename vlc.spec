@@ -120,6 +120,9 @@ BuildRequires:  speex-devel >= 1.0.5
 BuildRequires:  update-desktop-files
 BuildRequires:  vcdimager-devel
 BuildRequires:  xosd-devel
+BuildRequires:  (pkgconfig(libavcodec) >= 57.37.100 with pkgconfig(libavcodec) < 59)
+BuildRequires:  (pkgconfig(libavformat) >= 53.21.0 with pkgconfig(libavformat) < 59)
+BuildRequires:  (pkgconfig(libavutil) >= 52.4.0 with pkgconfig(libavutil) < 57)
 BuildRequires:  pkgconfig(Qt5Core) >= 5.5.0
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Svg)
@@ -132,9 +135,6 @@ BuildRequires:  pkgconfig(dvdread) > 4.9.0
 BuildRequires:  pkgconfig(gnutls) >= 3.2.0
 BuildRequires:  pkgconfig(libarchive) >= 3.1.0
 BuildRequires:  pkgconfig(libass) >= 0.9.8
-BuildRequires:  pkgconfig(libavcodec) >= 57.37.100
-BuildRequires:  pkgconfig(libavformat) >= 53.21.0
-BuildRequires:  pkgconfig(libavutil) >= 52.4.0
 BuildRequires:  pkgconfig(libbluray) >= 0.6.2
 BuildRequires:  pkgconfig(libgme)
 #BuildRequires:  pkgconfig(libmodplug) >= 0.8.9
@@ -143,11 +143,11 @@ BuildRequires:  pkgconfig(libmtp) >= 1.0.0
 %if 0%{?suse_version} >= 1500
 BuildRequires:  pkgconfig(libnfs)
 %endif
+BuildRequires:  (pkgconfig(libswscale) with pkgconfig(libswscale) < 6)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libpostproc)
 BuildRequires:  pkgconfig(libpulse) >= 1.0
 BuildRequires:  pkgconfig(libsecret-1) >= 0.18
-BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(libva-x11)
