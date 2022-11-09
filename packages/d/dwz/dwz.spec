@@ -42,7 +42,7 @@ ExclusiveArch:  do_not_build
 %endif
 
 Name:           dwz%{name_suffix}
-Version:        0.14
+Version:        0.15
 Release:        0
 %if %{build_main}
 Summary:        DWARF optimization and duplicate removal tool
@@ -60,6 +60,7 @@ Source:         dwz-%{version}.tar.xz
 URL:            https://sourceware.org/dwz/
 BuildRequires:  gcc-c++
 BuildRequires:  libelf-devel
+BuildRequires:  xxhash-devel
 BuildRequires:  xz
 %if %{build_testsuite}
 BuildRequires:  dejagnu
@@ -78,12 +79,8 @@ NoSource:       0
 Source1:        dwz-rpmlintrc
 Source2:        tramp3d-v4.cpp.xz
 
-Patch1:         dwz-fix-another-reference-from-pu-to-cu-for-odr.patch
-Patch2:         dwz-handle-reordered-dup-chains-in-create-import-tree.patch
-Patch3:         dwz-enable-odr-by-default.patch
-Patch4:         dwz-testsuite-fix-pr27463.sh-on-riscv64.patch
-Patch5:         dwz-remove-odr-struct-multifile.sh.patch
-Patch6:         dwz-use-grep-E-instead-of-egrep.patch
+Patch1:         dwz-enable-odr-by-default.patch
+Patch2:         dwz-remove-odr-struct-multifile.sh.patch
 
 %if %{build_main}
 %description
@@ -114,10 +111,6 @@ This package contains the testsuite results from DWZ.
 %setup -q -n dwz
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
 cp ../../SOURCES/tramp3d-v4.cpp.xz .
 xz -d tramp3d-v4.cpp.xz
 

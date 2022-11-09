@@ -169,4 +169,27 @@
     <comment></comment>
     <requestid>1002177</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>7c45647256cdeacef5380bb9d95e84cc</srcmd5>
+    <version>0.15</version>
+    <time>1667994951</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.15 release:
+  * Uses xxHash hashing algorithm. A 8% ~ 14% speedup.
+  * Set endianity of multifile using -e, --multifile-endian.
+  * Set pointer size of multifile using -p, --multifile-pointer-size
+  * Process files in parallel using -j N --jobs N. The default is
+    processors / 2.  Disabled when multifile is used.
+  * Prints abbrev or DIE offset for Unknown DWARF error messages.
+  * All testcases have been updated to work against the binutils 2.39.
+- Remove upstreamed patches:
+  * dwz-fix-another-reference-from-pu-to-cu-for-odr.patch
+  * dwz-handle-reordered-dup-chains-in-create-import-tree.patch
+  * dwz-testsuite-fix-pr27463.sh-on-riscv64.patch
+  * dwz-use-grep-E-instead-of-egrep.patch
+- Rebased patches:
+  * dwz-remove-odr-struct-multifile.sh.patch
+  * dwz-enable-odr-by-default.patch</comment>
+    <requestid>1034029</requestid>
+  </revision>
 </revisionlist>
