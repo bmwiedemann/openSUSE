@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov  3 03:08:48 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 5.17
+   see /usr/share/doc/packages/perl-URI/Changes
+
+  5.17      2022-11-02 17:03:48Z
+      - Updated RFC references in the pod documentation for URI::file (GH#117)
+        (Håkon Hgland)
+      - Fix SIP URI encoder/decoder (GH#118) (ryankereliuk)
+
+-------------------------------------------------------------------
 Thu Oct 13 03:10:10 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 5.16
