@@ -234,4 +234,12 @@
     <comment>New upstream release (forwarded request 993247 from iznogood)</comment>
     <requestid>993938</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>f771740809ba97424fdfff9d0768c426</srcmd5>
+    <version>20221107</version>
+    <time>1667994991</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1034539</requestid>
+  </revision>
 </revisionlist>

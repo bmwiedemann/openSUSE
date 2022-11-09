@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Nov 08 10:21:25 UTC 2022 - dimstar@opensuse.org
+
+- Update to version 20221107:
+  * build:
+    - Fix regex in make check
+    - reject and whitespace in XML via unit test
+    - use $(SP_XML_DB) in Makefile.am
+  * de: telekom: give names to plan entries
+  * dtd: allow "mms-internet-hipri" and "mms-internet-hipri-fota"
+    types
+  * fr: include voice mail and balance check for Free Mobile
+  * in: add Airtel Kerala network-id
+  * ui: collapse Orange and T-Mobile into EE, fix APNs
+  * us: add support for Ting USA VVM
+  * us: update AT&T APNs and APN usages
+
+-------------------------------------------------------------------
 Fri Aug 05 07:34:47 UTC 2022 - bjorn.lie@gmail.com
 
 - Update to version 20220725:
