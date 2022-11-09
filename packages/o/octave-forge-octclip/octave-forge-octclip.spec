@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-octclip
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define octpkg  octclip
 Name:           octave-forge-%{octpkg}
-Version:        2.0.1
+Version:        2.0.3
 Release:        0
 Summary:        Octave clipping polygons tool
 License:        GPL-3.0-or-later AND BSD-3-Clause
 Group:          Productivity/Scientific/Math
-URL:            https://octave.sourceforge.io
-Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
+URL:            https://gnu-octave.github.io/packages/%{octpkg}/
+Source0:        https://bitbucket.org/jgpallero/octclip/downloads/%{octpkg}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM octclip-openmp.patch -- Fix build with OpenMP
 Patch0:         octclip-openmp.patch
 %if 0%{suse_version} >= 1550

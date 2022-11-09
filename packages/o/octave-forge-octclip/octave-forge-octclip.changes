@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov  8 17:04:43 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 2.0.3:
+  * Correct bugs pointed out in Savannah (none of them related
+    with computations)
+- Update to version 2.0.2:
+  * Bug correction pointed out by Vladimir Spevak
+
+-------------------------------------------------------------------
 Sat Jun 13 22:44:57 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 2.0.1:
