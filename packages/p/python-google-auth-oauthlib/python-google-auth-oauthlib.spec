@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-google-auth-oauthlib
-Version:        0.5.3
+Version:        0.7.1
 Release:        0
 Summary:        Google authentication library
 License:        Apache-2.0
@@ -30,7 +30,7 @@ Patch0:         python-google-auth-oauthlib-no-mock.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-google-auth
+Requires:       python-google-auth >= 2.14.0
 Requires:       python-requests-oauthlib >= 0.7.0
 Requires:       python-six
 Requires(post): update-alternatives

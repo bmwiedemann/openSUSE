@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Nov  7 17:14:38 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.7.1
+  * Include updates to properties from Google Auth lib (#249)
+- from version 0.7.0
+  * **setup.py:** increase required google-auth version to >= 2.13.0 (f8a15f7)
+- from version 0.6.0
+  * Update to allow for 3PI credentials (#240)
+  * Add timeout to run_local_server when waiting for response (#245)
+  * Update readme to point to current docs url (#241)
+- Refresh patches for new version
+  * python-google-auth-oauthlib-no-mock.patch
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
 Wed Oct 12 03:29:53 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 0.5.3 

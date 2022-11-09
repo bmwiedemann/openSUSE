@@ -1,7 +1,7 @@
-diff -upr google-auth-oauthlib-0.5.1.orig/tests/unit/test_flow.py google-auth-oauthlib-0.5.1/tests/unit/test_flow.py
---- google-auth-oauthlib-0.5.1.orig/tests/unit/test_flow.py	2022-06-08 13:49:08.899236362 +0200
-+++ google-auth-oauthlib-0.5.1/tests/unit/test_flow.py	2022-06-08 13:49:08.903236386 +0200
-@@ -21,7 +21,7 @@ import re
+diff -Nru google-auth-oauthlib-0.7.1.orig/tests/unit/test_flow.py google-auth-oauthlib-0.7.1/tests/unit/test_flow.py
+--- google-auth-oauthlib-0.7.1.orig/tests/unit/test_flow.py	2022-11-03 18:27:07.000000000 +0100
++++ google-auth-oauthlib-0.7.1/tests/unit/test_flow.py	2022-11-07 18:14:12.871489341 +0100
+@@ -21,7 +21,7 @@
  import random
  import socket
  
@@ -10,10 +10,10 @@ diff -upr google-auth-oauthlib-0.5.1.orig/tests/unit/test_flow.py google-auth-oa
  import pytest
  import requests
  import urllib
-diff -upr google-auth-oauthlib-0.5.1.orig/tests/unit/test_helpers.py google-auth-oauthlib-0.5.1/tests/unit/test_helpers.py
---- google-auth-oauthlib-0.5.1.orig/tests/unit/test_helpers.py	2022-06-08 13:49:08.899236362 +0200
-+++ google-auth-oauthlib-0.5.1/tests/unit/test_helpers.py	2022-06-08 13:49:08.903236386 +0200
-@@ -16,7 +16,7 @@ import datetime
+diff -Nru google-auth-oauthlib-0.7.1.orig/tests/unit/test_helpers.py google-auth-oauthlib-0.7.1/tests/unit/test_helpers.py
+--- google-auth-oauthlib-0.7.1.orig/tests/unit/test_helpers.py	2022-11-03 18:27:07.000000000 +0100
++++ google-auth-oauthlib-0.7.1/tests/unit/test_helpers.py	2022-11-07 18:14:12.867489297 +0100
+@@ -16,7 +16,7 @@
  import json
  import os
  
@@ -21,10 +21,10 @@ diff -upr google-auth-oauthlib-0.5.1.orig/tests/unit/test_helpers.py google-auth
 +from unittest import mock
  import pytest
  
- from google_auth_oauthlib import helpers
-diff -upr google-auth-oauthlib-0.5.1.orig/tests/unit/test_interactive.py google-auth-oauthlib-0.5.1/tests/unit/test_interactive.py
---- google-auth-oauthlib-0.5.1.orig/tests/unit/test_interactive.py	2022-06-08 13:49:08.899236362 +0200
-+++ google-auth-oauthlib-0.5.1/tests/unit/test_interactive.py	2022-06-08 13:49:08.903236386 +0200
+ from google.auth import external_account_authorized_user
+diff -Nru google-auth-oauthlib-0.7.1.orig/tests/unit/test_interactive.py google-auth-oauthlib-0.7.1/tests/unit/test_interactive.py
+--- google-auth-oauthlib-0.7.1.orig/tests/unit/test_interactive.py	2022-11-03 18:27:07.000000000 +0100
++++ google-auth-oauthlib-0.7.1/tests/unit/test_interactive.py	2022-11-07 18:14:12.867489297 +0100
 @@ -14,7 +14,7 @@
  
  import socket
@@ -34,10 +34,10 @@ diff -upr google-auth-oauthlib-0.5.1.orig/tests/unit/test_interactive.py google-
  import pytest
  
  
-diff -upr google-auth-oauthlib-0.5.1.orig/tests/unit/test_tool.py google-auth-oauthlib-0.5.1/tests/unit/test_tool.py
---- google-auth-oauthlib-0.5.1.orig/tests/unit/test_tool.py	2022-06-08 13:49:08.899236362 +0200
-+++ google-auth-oauthlib-0.5.1/tests/unit/test_tool.py	2022-06-08 13:49:08.903236386 +0200
-@@ -19,7 +19,7 @@ import tempfile
+diff -Nru google-auth-oauthlib-0.7.1.orig/tests/unit/test_tool.py google-auth-oauthlib-0.7.1/tests/unit/test_tool.py
+--- google-auth-oauthlib-0.7.1.orig/tests/unit/test_tool.py	2022-11-03 18:27:07.000000000 +0100
++++ google-auth-oauthlib-0.7.1/tests/unit/test_tool.py	2022-11-07 18:14:12.863489253 +0100
+@@ -19,7 +19,7 @@
  
  import click.testing
  import google.oauth2.credentials
