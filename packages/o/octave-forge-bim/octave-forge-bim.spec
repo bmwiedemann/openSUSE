@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-bim
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define octpkg  bim
 Name:           octave-forge-%{octpkg}
-Version:        1.1.5
+Version:        1.1.6
 Release:        0
 Summary:        PDE Solver using a Finite Element/Finite Volume approach
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
-Url:            http://octave.sourceforge.net
-Source0:        http://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
+URL:            https://gnu-octave.github.io/packages/%{octpkg}/
+Source0:        https://github.com/carlodefalco/bim/archive/refs/tags/v%{version}.tar.gz#/%{octpkg}-%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  octave-devel
 Requires:       octave-cli >= 3.8.0
@@ -56,8 +56,7 @@ cp %{octpkg}-%{version}/COPYING .
 %octave --eval "pkg rebuild"
 
 %files
-%defattr(-,root,root)
-%doc COPYING
+%license COPYING
 %{octpackages_dir}/%{octpkg}-%{version}
 
 %changelog
