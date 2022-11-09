@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov  8 17:34:16 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Fix building for openSUSE Leap: using gcc10
+
+-------------------------------------------------------------------
 Fri Sep 30 20:53:50 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.6.0.3
