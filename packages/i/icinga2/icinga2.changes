@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov  8 15:21:48 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.13.6
+  * Bugfixes
+    - Improve the throughput of the Icinga DB feature. #9550
+    - Multiple changes to speed up evaluation of apply rules. #9559 #9565 #9558
+    - Fix a possible crash on config loading related to ignore_on_error. #9560
+    - Check API user permission on objects returned by joins. #9561
+    - Windows: update bundled Boost and OpenSSL versions. #9562 #9567
+
+-------------------------------------------------------------------
 Thu Aug 11 15:02:36 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.13.5
