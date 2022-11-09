@@ -1,0 +1,64 @@
+From 1a746c6d01eff4863c116e279756a1035fd5feb0 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Mat=C4=9Bj=20Cepl?= <mcepl@cepl.eu>
+Date: Mon, 22 Nov 2021 23:05:41 +0100
+Subject: [PATCH] Use OpenSSL_version_num() instead of unrealiable parsing of
+ .h file.
+
+Fixes #302
+---
+ setup.py | 39 ++++++++++++++++++++++++---------------
+ 1 file changed, 24 insertions(+), 15 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index a1d58f25..04ac8c77 100644
+--- a/setup.py
++++ b/setup.py
+@@ -75,21 +75,30 @@ def openssl_version(ossldir, req_ver, required=False):
+     :return: Boolean indicating whether the satisfying version of
+              OpenSSL has been installed.
+     """
+-    ver = None
+-    file = os.path.join(ossldir, 'include', 'openssl', 'opensslv.h')
+-
+-    with open(file) as origin_file:
+-        for line in origin_file:
+-            m = re.match(
+-                r'^# *define  *OPENSSL_VERSION_NUMBER  *(0x[0-9a-fA-F]*)',
+-                line)
+-            if m:
+-                log.debug('found version number: %s\n', m.group(1))
+-                ver = int(m.group(1), base=16)
+-                break
+-
+-    if ver is None:
+-        raise OSError('Unknown format of file %s\n' % file)
++    try:
++        import ctypes
++        libssl = ctypes.cdll.LoadLibrary("libssl.so")
++        ver = libssl.OpenSSL_version_num()
++        log.debug("ctypes: ver = %s", hex(ver))
++    # for OpenSSL < 1.1.0
++    except AttributeError:
++        ver = None
++        file = os.path.join(ossldir, 'include', 'openssl', 'opensslv.h')
++
++        with open(file) as origin_file:
++            for line in origin_file:
++                m = re.match(
++                    r'^# *define  *OPENSSL_VERSION_NUMBER  *(0x[0-9a-fA-F]*)',
++                    line)
++                if m:
++                    log.debug('found version number: %s\n', m.group(1))
++                    ver = int(m.group(1), base=16)
++                    break
++
++        log.debug("parsing header file: ver = %s", hex(ver))
++
++        if ver is None:
++            raise OSError('Unknown format of file %s\n' % file)
+ 
+     if required:
+         return ver >= req_ver
+-- 
+GitLab
+

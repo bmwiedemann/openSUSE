@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov  7 20:14:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add openssl-stop-parsing-header.patch (bsc#1205042) 
+- add m2crypto-0.38-ossl3-tests.patch
+
+-------------------------------------------------------------------
 Wed Aug  3 16:48:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update CVE-2020-25657-Bleichenbacher-attack.patch to actually

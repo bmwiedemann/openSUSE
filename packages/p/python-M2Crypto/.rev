@@ -696,4 +696,13 @@ Update to 0.36.0:
   bsc#1178829)</comment>
     <requestid>992616</requestid>
   </revision>
+  <revision rev="45" vrev="5">
+    <srcmd5>1f23011017fc0592bcaaeb8255ba3099</srcmd5>
+    <version>0.38.0</version>
+    <time>1667994962</time>
+    <user>dimstar_suse</user>
+    <comment>- add openssl-stop-parsing-header.patch (bsc#1205042) 
+- add m2crypto-0.38-ossl3-tests.patch</comment>
+    <requestid>1034366</requestid>
+  </revision>
 </revisionlist>

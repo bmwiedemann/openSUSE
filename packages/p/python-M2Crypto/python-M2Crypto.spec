@@ -31,6 +31,10 @@ Source99:       python-M2Crypto.keyring
 # PATCH-FIX-UPSTREAM CVE-2020-25657-Bleichenbacher-attack.patch bsc#1178829 mcepl@suse.com
 # Mitigate the Bleichenbacher timing attacks in the RSA decryption API
 Patch0:         CVE-2020-25657-Bleichenbacher-attack.patch
+# PATCH-FIX-UPSTREAM https://gitlab.com/m2crypto/m2crypto/-/merge_requests/271
+Patch1:         openssl-stop-parsing-header.patch
+# Patch-FIX-OPENSUSE add test skips for openssl 3.x
+Patch2:         https://src.fedoraproject.org/rpms/m2crypto/raw/d7be0dd83ee5a414544d99dcc62cde4ad5998f0c/f/m2crypto-0.38-ossl3-tests.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module parameterized}
 BuildRequires:  %{python_module pytest}
