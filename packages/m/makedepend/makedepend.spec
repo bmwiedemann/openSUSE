@@ -1,7 +1,7 @@
 #
 # spec file for package makedepend
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           makedepend
-Version:        1.0.6
+Version:        1.0.7
 Release:        0
 Summary:        Utility to create dependencies in makefiles
 License:        MIT
 Group:          Development/Tools/Building
 URL:            http://xorg.freedesktop.org/
-Source0:        http://xorg.freedesktop.org/releases/individual/util/%{name}-%{version}.tar.bz2
+Source0:        http://xorg.freedesktop.org/releases/individual/util/%{name}-%{version}.tar.xz
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(xproto) >= 7.0.17
 # This was part of the xorg-x11-util-devel package up to version 7.6
