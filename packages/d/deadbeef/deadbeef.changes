@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Nov  6 10:56:06 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add fix-ffmpeg-5-support.patch: Fix build against ffmpeg 5.0x
+
+-------------------------------------------------------------------
 Thu Nov  3 14:58:35 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.9.2:

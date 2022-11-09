@@ -35,6 +35,8 @@ Patch0:         0003-Fix-operator-precedence-and-uninitialized-value-warn.patch
 Patch1:         %{name}-drop-documents-installation.patch
 Patch2:         %{name}-fix-includes.patch
 Patch3:         fix-warning.patch
+# PATCH-FIX-UPSTREAM fix-ffmpeg-5-support.patch -- Fix build against ffmpeg 5.0x
+Patch4:         fix-ffmpeg-5-support.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  clang
