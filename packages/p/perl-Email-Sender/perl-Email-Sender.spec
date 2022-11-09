@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Email-Sender
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Email-Sender
 Name:           perl-Email-Sender
-Version:        2.500
+Version:        2.600
 Release:        0
-Summary:        Library for sending email
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Library for sending email
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
@@ -30,7 +30,7 @@ BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Capture::Tiny) >= 0.08
 BuildRequires:  perl(Email::Abstract) >= 3.006
-BuildRequires:  perl(Email::Address)
+BuildRequires:  perl(Email::Address::XS)
 BuildRequires:  perl(Email::Simple) >= 1.998
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.78
 BuildRequires:  perl(File::Path) >= 2.060000
@@ -47,7 +47,7 @@ BuildRequires:  perl(Test::More) >= 0.96
 BuildRequires:  perl(Throwable::Error) >= 0.200003
 BuildRequires:  perl(Try::Tiny)
 Requires:       perl(Email::Abstract) >= 3.006
-Requires:       perl(Email::Address)
+Requires:       perl(Email::Address::XS)
 Requires:       perl(Email::Simple) >= 1.998
 Requires:       perl(File::Path) >= 2.060000
 Requires:       perl(List::Util) >= 1.45
