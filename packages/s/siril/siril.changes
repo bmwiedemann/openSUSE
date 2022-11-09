@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Oct 18 09:25:14 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.0.6:
+  * When an empty or malformed SER file was in the directory,
+    previewing it would crash siril.
+  * Saving an image as TIFF could crash siril.
+  * Extracting the polynomial background gradient could crash
+    siril when not enough samples were set.
+  * The iif command of Pixel Math had a problem.
+    Also, PixelMath mishandled some negative values.
+  * Cropping a sequence with images of different sizes
+    would crash if the selected area was not common to all
+    the frames of the sequence.
+  * Command seqstat could crash on large sequences when some
+    images were not selected.
+  * Siril could crash when a large star was close to border
+    during star detection.
+  * Asinh tool had bad behaviour with the black point for
+    monochrome and 32bits images.
+  * Searching for a sky object in SIMBAD containing a ‘+’ character
+    in its named failed.
+
+-------------------------------------------------------------------
 Fri Sep 23 07:08:23 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.0.5:
