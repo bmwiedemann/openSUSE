@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Nov  7 21:15:24 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 1.1.3 
+  New features:
+  * Add support for fractional units (#876)
+  Improvements:
+  * Fix the returned datetime skipping a day with time+timezone input and PREFER_DATES_FROM = 'future' (#1002)
+  * Fix input translation breaking keep_formatting (#720)
+  * English: support "till date" (#1005)
+  * English: support “after” and “before” in relative dates (#1008)
+  Cleanups:
+  * Reorganize internal data (#1090)
+  * CI updates (#1088
+
+-------------------------------------------------------------------
 Thu Oct 27 22:51:58 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 1.1.2 
