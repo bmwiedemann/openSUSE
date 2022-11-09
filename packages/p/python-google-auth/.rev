@@ -248,4 +248,25 @@
     <comment></comment>
     <requestid>1010915</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>c1c819ff4c827818fd7ab5d0db67a93e</srcmd5>
+    <version>2.14.0</version>
+    <time>1667994974</time>
+    <user>dimstar_suse</user>
+    <comment>- Clean up SPEC file, make rpmlint happy.
+- Update to 2.14.0
+  * Add token_info_url to external account credentials (#1168)
+  * Read Quota Project from Environment Variable (#1163)
+  * Adding more properties to external_account_authorized_user (#1169)
+- from version 2.13.0
+  * Adds new external account authorized user credentials (#1160)
+  * Implement pluggable auth interactive mode (#1131)
+  * Introduce the functionality to override token_uri in credentials (#1159)
+  * Adding one more pattern to relax the regex check for sts and
+    impersonation url endpoints (#1158)
+- Refresh patches for new version
+  * python-google-auth-no-mock.patch
+</comment>
+    <requestid>1034434</requestid>
+  </revision>
 </revisionlist>

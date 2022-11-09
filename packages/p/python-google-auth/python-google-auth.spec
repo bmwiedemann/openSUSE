@@ -17,9 +17,8 @@
 
 
 %define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-google-auth
-Version:        2.12.0
+Version:        2.14.0
 Release:        0
 Summary:        Google Authentication Library
 License:        Apache-2.0
@@ -63,9 +62,7 @@ BuildArch:      noarch
 This library simplifies using Google’s various server-to-server authentication mechanisms to access Google APIs.
 
 %prep
-%setup -q -n google-auth-%{version}
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n google-auth-%{version}
 
 %build
 %python_build

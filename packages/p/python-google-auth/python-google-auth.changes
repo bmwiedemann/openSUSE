@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Nov  8 07:19:56 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Clean up SPEC file, make rpmlint happy.
+
+-------------------------------------------------------------------
+Mon Nov  7 13:59:22 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.14.0
+  * Add token_info_url to external account credentials (#1168)
+  * Read Quota Project from Environment Variable (#1163)
+  * Adding more properties to external_account_authorized_user (#1169)
+- from version 2.13.0
+  * Adds new external account authorized user credentials (#1160)
+  * Implement pluggable auth interactive mode (#1131)
+  * Introduce the functionality to override token_uri in credentials (#1159)
+  * Adding one more pattern to relax the regex check for sts and
+    impersonation url endpoints (#1158)
+- Refresh patches for new version
+  * python-google-auth-no-mock.patch
+
+-------------------------------------------------------------------
 Fri Oct 14 09:30:55 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.12.0
