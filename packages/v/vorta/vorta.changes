@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Tue Nov  8 21:11:16 UTC 2022 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to 0.8.9
+  * Supply repository and archive name to borg in BorgListArchiveJob.
+  * Add missing brackets fixing BorgListArchiveJob.
+  * Add Dutch language update
+  * Pin pyobjc to v8 branch
+- Update to 0.8.8
+  * This version adds compatibility for Borg v1.2.2 and addresses several
+    smaller UI bugs.
+  * Fix sorting of diff results.
+  * Remove legacy tree_view (tree model) implementation.
+  * Remove unset repository value from combobox when a repo is selected.
+  * Replace --prefix with -a for borg v1.2.2 also.
+  * Use isomtime instead of mtime from borg v1.2.2 on.
+  * Add compatibility feature V122.
+  * Link to report form chooser for critical errors. (#1451)
+  * (real-yfprojects/profile-sidebar, real-yfprojects/master) Update
+    actions/checkout to v3. (#1433)
+  * Add default unset value to repo combobox. By @real-yfprojects (#1429)
+  * Enhance community docs and bug reporting. By @real-yfprojects (#1419)
+  * Add pull request template.
+  * Add CONTRIBUTING file.
+  * Create feature_request.md
+  * Create bug_form.yaml
+  * Create config.yml
+  * Update bug_report.md
+  * Log the error when parsing a file in ~/.ssh fails. (#1410)
+  * Hide SSH dropdown for local repos. By @real-yfprojects (#1407)
+  * Add badges to README.md. (#1406)
+  * Improve tooltips in archive tab. By @real-yfprojects (#1401)
+  * Run hooks on the code base.
+  * Configure pre-commit hooks and configure black for tests also.
+  * Create .git-blame-ignore-revs (#1395)
+  * Move linting to the top in test.yml (#1391)
+  * Apply automatic formatting
+  * Add config files for autmatic formatting
+  * Cleanup temp files. By @marco44 (#1384)
+  * Add spaces after assert and enhance git py diff. By @real-yfprojects (#1385)
+  * Improve the extract and diff dialog. By @real-yfprojects (#1219)
+  * (real-yfprojects/sort-diff-result, sort-diff-result-2) Add icons to display
+    mode combobox.
+  * Add icon for folder on top button.
+  * Improve extract dialog GUI.
+  * Add sorting to ExtractDialog.
+  * Implement extracting exactly the selected files.
+  * Use new treemodel for extract dialog.
+  * Keep GUI responsive while processing diff results.
+  * Open DiffResultDialog as a normal dialog instead of a sheet.
+  * Update diffresult.ui with new features and prettyfy it.
+  * Use new treemodel for diff view.
+  * Implement fresh TreeModel for TreeViews.
+  * Add missing Qt dependency for tests (#1376)
+  * Fix seconds and microseconds for fixed schedule and fix scheduling for the same day. (#1368)
+  * Log json diff line parsing errors. By @real-yfprojects (#1369)
+
+-------------------------------------------------------------------
 Wed Jun 22 05:54:02 UTC 2022 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update to 0.8.7
