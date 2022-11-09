@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  8 14:49:10 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Limit to ffmpeg 4: we're also linking opencv3 which does not use
+  ffmpeg 5.
+
+-------------------------------------------------------------------
 Wed Sep  7 12:10:08 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Make vlc-vdpau supplement vlc, not vlc-noX: vdpau itself is based
