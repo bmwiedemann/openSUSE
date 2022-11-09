@@ -80,4 +80,14 @@
     <comment>- Re-add missing BuildRequires on six.</comment>
     <requestid>1011284</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c8219fc3e896dd8f5fc07aa1a73e83b2</srcmd5>
+    <version>1.0.1</version>
+    <time>1667995103</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.1 
+  * Added support for Python 3.11
+</comment>
+    <requestid>1034806</requestid>
+  </revision>
 </revisionlist>

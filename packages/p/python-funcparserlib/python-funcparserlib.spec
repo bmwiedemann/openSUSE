@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-funcparserlib
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        Recursive descent parsing library based on functional combinators
 License:        MIT

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  8 00:46:46 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 1.0.1 
+  * Added support for Python 3.11
+
+-------------------------------------------------------------------
 Mon Oct 17 00:40:42 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Re-add missing BuildRequires on six. 
