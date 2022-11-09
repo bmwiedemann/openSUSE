@@ -55,4 +55,15 @@
 </comment>
     <requestid>975836</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>cfcdf09bc0915e9fed50565f89a29b1a</srcmd5>
+    <version>3.3.0.20220902</version>
+    <time>1667995005</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.3.0.20220902:
+  * Filter rpc slow log include password.
+  * Add C++ support.
+</comment>
+    <requestid>1034487</requestid>
+  </revision>
 </revisionlist>

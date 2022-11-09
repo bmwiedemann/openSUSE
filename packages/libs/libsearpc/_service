@@ -3,11 +3,11 @@
     <param name="url">https://github.com/haiwen/libsearpc.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v3.2-latest</param>
+    <param name="revision">v3.3-latest</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">v(.*)</param>
-    <param name="versionprefix">3.2.0</param>
+    <param name="versionprefix">3.3.0</param>
     <param name="versionformat">%cd</param>
   </service>
   <service name="set_version" mode="disabled">

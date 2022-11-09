@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov  7 16:10:47 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.3.0.20220902:
+  * Filter rpc slow log include password.
+  * Add C++ support.
+
+-------------------------------------------------------------------
 Mon May  9 12:47:06 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.2.0.20220425, no changelog
