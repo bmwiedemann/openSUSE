@@ -1,5 +1,5 @@
 #
-# spec file for package gromacs
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2015-2019 Christoph Junghans <junghans@votca.org>
@@ -17,14 +17,42 @@
 #
 
 
-Name:           gromacs
-Version:        2021.2
+%global flavor @BUILD_FLAVOR@%{nil}
+
+%if "%flavor" == ""
+ExclusiveArch:  do_not_build
+%endif
+
+%if "%flavor" == "openmpi"
+%{bcond_without mpi}
+%else
+%{bcond_with    mpi}
+%endif
+
+%if %{with mpi}
+%define libname_gromacs libgromacs_mpi7
+%define libname_gmxapi libgmxapi_mpi0
+%else
+%define libname_gromacs libgromacs7
+%define libname_gmxapi libgmxapi0
+%endif
+%define libname_nblib_gmx libnblib_gmx0
+
+%ifarch x86_64
+%bcond_without opencl
+%else
+%bcond_with    opencl
+%endif
+%bcond_with tinyxml2
+
+Name:           gromacs%{?with_mpi:-openmpi}
+Version:        2022.3
 Release:        0
 %define uversion %{version}
 Summary:        Molecular Dynamics Package
 License:        Apache-2.0 AND LGPL-2.1-or-later AND BSD-3-Clause
 Group:          Productivity/Scientific/Chemistry
-URL:            http://www.gromacs.org
+URL:            https://www.gromacs.org
 Source0:        ftp://ftp.gromacs.org/pub/gromacs/gromacs-%{uversion}.tar.gz
 Source1:        ftp://ftp.gromacs.org/pub/manual/manual-%{uversion}.pdf
 Source2:        ftp://ftp.gromacs.org/regressiontests/regressiontests-%{uversion}.tar.gz
@@ -33,11 +61,22 @@ BuildRequires:  cmake >= 3.13.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  lapack-devel
+%if %{with opencl}
 BuildRequires:  ocl-icd-devel
 BuildRequires:  opencl-headers
+%endif
+%if %{with mpi}
+BuildRequires:  openmpi-devel
 BuildRequires:  openmpi-macros-devel
+%endif
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(fftw3)
+BuildRequires:  pkgconfig(muparser)
+BuildRequires:  pkgconfig(zlib)
+%if %{with tinyxml2}
+BuildRequires:  (pkgconfig(tinyxml2) > 3.0 with pkgconfig(tinyxml2) < 7)
+%endif
+Requires:       gromacs-data = %{version}
 
 %description
 GROMACS is a package to perform molecular dynamics computer
@@ -48,11 +87,11 @@ like polymer chemistry and solid state physics.
 %package devel
 Summary:        Molecular dynamics package
 Group:          Development/Libraries/C and C++
-Requires:       libgmxapi0 = %{version}-%{release}
-Requires:       libgromacs6 = %{version}-%{release}
+Requires:       %{libname_gmxapi} = %{version}-%{release}
+Requires:       %{libname_gromacs} = %{version}-%{release}
+Requires:       %{libname_nblib_gmx} = %{version}-%{release}
 # cmake files refer to /usr/bin/gmx, too
 Requires:       %{name} = %{version}-%{release}
-Requires:       libnblib0 = %{version}-%{release}
 
 %description devel
 GROMACS is a package to perform molecular dynamics computer
@@ -60,34 +99,31 @@ simulations.
 
 This package contains development libraries and header for GROMACS
 
-%package -n libgromacs6
+%package -n %{libname_gromacs}
 Summary:        Libraries for Gromacs
 Group:          System/Libraries
-Conflicts:      libgromacs4
 
-%description -n libgromacs6
+%description -n %{libname_gromacs}
 GROMACS is a package to perform molecular dynamics computer
 simulations.
 
 This package contains libraries for Gromacs
 
-%package -n libgmxapi0
+%package -n %{libname_gmxapi}
 Summary:        Libraries for Gromacs
 Group:          System/Libraries
-Conflicts:      libgromacs4
 
-%description -n libgmxapi0
+%description -n %{libname_gmxapi}
 GROMACS is a package to perform molecular dynamics computer
 simulations.
 
 This package contains libraries for Gromacs.
 
-%package -n libnblib0
+%package -n %{libname_nblib_gmx}
 Summary:        Libraries for Gromacs
 Group:          System/Libraries
-Conflicts:      libgromacs4
 
-%description -n libnblib0
+%description -n %{libname_nblib_gmx}
 GROMACS is a package to perform molecular dynamics computer
 simulations.
 
@@ -96,7 +132,8 @@ This package contains libraries for Gromacs.
 %package bash-completion
 Summary:        Bash completion for Gromacs
 Group:          Productivity/Other
-Supplements:    (bash-completion and %{name})
+Supplements:    (bash-completion and gromacs)
+Supplements:    (bash-completion and gromacs-openmpi)
 BuildArch:      noarch
 Provides:       %{name}-bash = %{version}
 Obsoletes:      %{name}-bash < %{version}
@@ -118,40 +155,35 @@ simulations.
 
 This package contains documentation for gromacs.
 
-%package openmpi
-Summary:        Molecular dynamics package
+%package data
+Summary:        Data files for Gromacs
 Group:          Productivity/Scientific/Chemistry
-Requires:       %{name} = %{version}
-%openmpi_requires
+# Package split
+Provides:       gromacs:%{_datadir}/gromacs/README.tutor
+Conflicts:      gromacs < %{version}-%{release}
+BuildArch:      noarch
 
-%description openmpi
+%description data
 GROMACS is a package to perform molecular dynamics computer
-simulations and subsequent trajectory analysis. It is developed for
-biomolecules like proteins, but it can be used in several other field
-like polymer chemistry and solid state physics.
+simulations.
 
-This package contains the openmpi version of GROMACS.
+This package contains data files for gromacs.
 
 %prep
-%autosetup -n %{name}-%{uversion}
+%autosetup -n gromacs-%{uversion}
 tar -xzf %{S:2}
 
 %build
+%if %{with mpi}
 %setup_openmpi
-
-# save some memory
-%ifarch ppc64le
-%global _smp_mflags -j1
 %endif
 
 %ifarch %x86 x86_64
-#increse to SSE4.1, AVX_128_FMA, AVX_256 when possible
+#increase to SSE4.1, AVX_128_FMA, AVX_256 when possible
 %define acce SSE2
 %else
 %define acce None
 %endif
-mkdir nompi
-cd nompi
 
 # regression are currently broken on i686, https://redmine.gromacs.org/issues/2584
 # and cannot be used with GMX_BUILD_MDRUN_ONLY=ON
@@ -164,104 +196,107 @@ cd nompi
   -DCMAKE_CXX_FLAGS_RELEASE:STRING="%{optflags}" \
   -DCMAKE_SKIP_RPATH=OFF \
   -DCMAKE_SKIP_INSTALL_RPATH=ON \
+  -DGMX_BUILD_UNITTESTS:BOOL=ON \
+  -DGMX_EXTERNAL_TINYXML2:BOOL=OFF \
+  -DGMX_EXTERNAL_ZLIB:BOOL=ON \
+  -DGMX_USE_MUPARSER=EXTERNAL \
   -DGMX_SIMD=%{acce} \
+%if %{with mpi}
+  -DGMX_MPI=ON \
+%else
   -DGMX_MPI=OFF \
   -DGMX_THREAD_MPI=ON \
-%ifarch x86_64
+%endif
+%if %{with opencl}
   -DGMX_GPU=OpenCL \
 %endif
   -DGMX_OPENMP=ON \
   -DGMX_INSTALL_LEGACY_API=ON \
-%ifnarch i586 %arm # regressiontest are not support on 32-bit archs: http://redmine.gromacs.org/issues/2584#note-35
-  -DREGRESSIONTEST_PATH="$PWD/../../regressiontests-%{uversion}" \
+%ifnarch %{ix86} %{arm}
+  -DREGRESSIONTEST_PATH="%{_builddir}/gromacs-%{uversion}/regressiontests-%{uversion}" \
+  -DGMX_TEST_NUMBER_PROCS=$(( %_smp_build_ncpus / 2 )) \
 %endif
-  ../../
+  %{nil}
 %cmake_build
-
-cd ../..
-mkdir openmpi
-cd openmpi
-%{cmake} \
-  -DGMX_VERSION_STRING_OF_FORK=openSUSE \
-  -DCMAKE_INSTALL_PREFIX=/usr \
-  -DCMAKE_VERBOSE_MAKEFILE=TRUE \
-  -DCMAKE_BUILD_TYPE=Release \
-  -DCMAKE_C_FLAGS_RELEASE:STRING="%{optflags} -fno-strict-aliasing" \
-  -DCMAKE_CXX_FLAGS_RELEASE:STRING="%{optflags}" \
-  -DCMAKE_SKIP_RPATH=OFF \
-  -DCMAKE_SKIP_INSTALL_RPATH=ON \
-  -DGMX_SIMD=%{acce} \
-  -DGMX_BUILD_MDRUN_ONLY=ON \
-  -DBUILD_SHARED_LIBS=OFF \
-  -DGMX_MPI=ON \
-%ifarch x86_64
-  -DGMX_GPU=OpenCL \
-%endif
-  -DGMX_OPENMP=ON \
-  -DGMX_INSTALL_LEGACY_API=ON \
-  ../../
-%cmake_build
+%cmake_build tests
 
 %install
-cd nompi
 %cmake_install
-cd ../openmpi
-%cmake_install
-cd ..
 
 #no need when installed in /usr
 rm -f %{buildroot}%{_bindir}/GMXRC*
+
+%if %{without mpi}
 # Move bash completion file to correct location
 mkdir -p %{buildroot}%{_datadir}/bash_completion.d
 #concatenate all gmx-completion*, starting with gmx-completion.bash (fct defs)
 cat %{buildroot}%{_bindir}/gmx-completion{,?*}.bash > %{buildroot}%{_datadir}/bash_completion.d/gromacs
-rm -f %{buildroot}%{_bindir}/gmx-completion*
 
 cp %{S:1} %{buildroot}%{_datadir}/gromacs
+
+%else
+rm -f %{buildroot}%{_bindir}/*.pl
+rm -Rf %{buildroot}%{_datadir}/gromacs/*
+# nblib_gmx is the same for MPI and non-MPI builds
+rm -f %{buildroot}%{_libdir}/libnblib_gmx*
+rm -f %{buildroot}%{_mandir}/man1/*
+# TODO: Some parts of the devel files are MPI dependent
+rm -Rf %{buildroot}%{_datadir}/cmake
+rm -Rf %{buildroot}%{_includedir}/*
+rm -f %{buildroot}%{_libdir}/*.so
+rm -Rf %{buildroot}%{_libdir}/pkgconfig/*
+rm -Rf %{buildroot}%{_datadir}/gromacs/opencl
+%endif
+
+rm -f %{buildroot}%{_bindir}/gmx-completion*
 
 %fdupes -s %{buildroot}
 
 %check
 #s390x is too slow for tests
 # gmock based tests don't work on i586
-%ifnarch s390x i586
-%make_build -C nompi/build check
-%make_build -C openmpi/build check
+%ifnarch s390x %{ix86}
+%ctest --exclude-regex 'physicalvalidationtests|regression|2Rank|TwoRanks' %{?with_mpi:--parallel 1}
+# Each OneRank/TwoRanks test pair uses the same temporary files, run separately
+%ctest --tests-regex '2Rank|TwoRanks' %{?with_mpi:--parallel 1}
+%ctest --tests-regex regression --parallel 1
 %endif
 
-%post   -n libgromacs6 -p /sbin/ldconfig
-%postun -n libgromacs6 -p /sbin/ldconfig
-%post   -n libgmxapi0 -p /sbin/ldconfig
-%postun -n libgmxapi0 -p /sbin/ldconfig
+%post   -n %{libname_gromacs} -p /sbin/ldconfig
+%postun -n %{libname_gromacs} -p /sbin/ldconfig
+%post   -n %{libname_gmxapi} -p /sbin/ldconfig
+%postun -n %{libname_gmxapi} -p /sbin/ldconfig
+%post   -n %{libname_nblib_gmx} -p /sbin/ldconfig
+%postun -n %{libname_nblib_gmx} -p /sbin/ldconfig
 
 %files
+%if %{without mpi}
 %{_bindir}/gmx
 %{_bindir}/*.pl
+%else
+%{_bindir}/gmx_mpi
+%endif
+
+%files -n %{libname_gromacs}
+%{_libdir}/libgromacs*.so.*
+
+%files -n %{libname_gmxapi}
+%{_libdir}/libgmxapi*.so.*
+
+%if %{without mpi}
+%files -n %{libname_nblib_gmx}
+%{_libdir}/libnblib_gmx.so.*
+
+%files data
 %dir %{_datadir}/gromacs
 %{_datadir}/gromacs/top
-%ifarch x86_64
-%{_datadir}/gromacs/opencl
-%exclude %{_datadir}/gromacs/opencl/gromacs/*/*.h
-%exclude %{_datadir}/gromacs/opencl/gromacs/*/*/*.h
-%endif
-%{_mandir}/man1/*
-
-%files -n libgromacs6
-%{_libdir}/libgromacs.so.*
-
-%files -n libgmxapi0
-%{_libdir}/libgmxapi.so.*
-
-%files -n libnblib0
-%{_libdir}/libnblib.so.*
+%doc %{_mandir}/man1/*
 
 %files doc
+%dir %{_datadir}/gromacs
 %doc %{_datadir}/gromacs/*.pdf
 %doc %{_datadir}/gromacs/README*
 %doc %{_datadir}/gromacs/COPYING
-
-%files openmpi
-%{_bindir}/*_mpi
 
 %files devel
 %{_datadir}/gromacs/template
@@ -271,14 +306,14 @@ cp %{S:1} %{buildroot}%{_datadir}/gromacs
 %{_includedir}/nblib/
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*
-%ifarch x86_64
+%if %{with opencl}
 %dir %{_datadir}/gromacs/opencl
-%{_datadir}/gromacs/opencl/gromacs/*/*.h
-%{_datadir}/gromacs/opencl/gromacs/*/*/*.h
+%{_datadir}/gromacs/opencl/gromacs
 %endif
 
 %files bash-completion
 %dir %{_datadir}/bash_completion.d
 %{_datadir}/bash_completion.d/gromacs
+%endif
 
 %changelog

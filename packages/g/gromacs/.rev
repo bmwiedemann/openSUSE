@@ -473,4 +473,19 @@
     <comment></comment>
     <requestid>974972</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>a1947868debbbb1c88fcbc4ec7cd9005</srcmd5>
+    <version>2022.3</version>
+    <time>1667995017</time>
+    <user>dimstar_suse</user>
+    <comment>(Note that openmpi flavor build failure is un-related and is due to boo#1205139)
+
+- Use system muparser package, drop libmuparser2 subpackage
+- Use system zlib
+- Remove bogus/broken library package obsoletes and provides
+- Build openmpi version in separate _multibuild
+- Update to 2022.3
+</comment>
+    <requestid>1034513</requestid>
+  </revision>
 </revisionlist>

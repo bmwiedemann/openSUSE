@@ -2,10 +2,10 @@
 <constraints>
   <hardware>
     <physicalmemory>
-      <size unit="G">2</size>
+      <size unit="G">8</size>
     </physicalmemory>
     <disk>
-      <size unit="G">6</size>
+      <size unit="G">20</size>
     </disk>
   </hardware>
   <sandbox>kvm</sandbox>
