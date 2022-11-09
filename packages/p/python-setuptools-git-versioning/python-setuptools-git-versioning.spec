@@ -24,8 +24,8 @@ License:        MIT
 URL:            https://setuptools-git-versioning.readthedocs.io
 # no sdist on PyPI, needs full git metadata for bootstrap, run osc service runall to update
 Source:         setuptools-git-versioning-%{version}.tar.xz
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -65,13 +65,8 @@ version number according PEP440.
 %prep
 %setup -q -n setuptools-git-versioning-%{version}
 # avoid dirty version
-echo _build* >> .gitignore
-echo _current_flavor >> .gitignore
-git add .gitignore
-git config user.email "abuild@obs.local"
-git config user.name "abuild on obs"
-git commit -m "stay clean"
-git tag --force v%{version}
+echo '_build*' >> .git/info/exclude
+echo _current_flavor >> .git/info/exclude
 
 %build
 %pyproject_wheel
