@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 31 03:07:15 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.101246
+   see /usr/share/doc/packages/perl-String-Flogger/Changes
+
+  1.101246  2022-10-29 21:51:45-04:00 America/New_York
+          - add some tests
+          - update to require newer perl
+          - update package metadata
+
+-------------------------------------------------------------------
 Tue Apr 14 21:17:45 UTC 2015 - coolo@suse.com
 
 - updated to 1.101245
