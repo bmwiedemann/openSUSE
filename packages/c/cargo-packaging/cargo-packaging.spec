@@ -17,32 +17,53 @@
 
 
 Name:           cargo-packaging
-Version:        1.0.0~git8.6919af0
+Version:        1.1.0+0
 Release:        0
-BuildArch:      noarch
-Summary:        Some macros to assist with cargo and rust packaging
+Summary:        Macros and tools to assist with cargo and rust packaging
 License:        MPL-2.0
 Group:          Development/Languages/Rust
 URL:            https://github.com/Firstyear/cargo-packaging
 Source0:        %{name}-%{version}.tar.xz
+Source1:        vendor.tar.xz
+Source2:        cargo_config
 Requires:       cargo
+Requires:       cargo-auditable
 Requires:       zstd
+BuildRequires:  cargo
+BuildRequires:  zstd
 
 Conflicts:      rust-packaging
 
 %description
-A set of macros to assist with cargo and rust packaging, written in a manner
-that follows rust's best practices.
+A set of macros and tools to assist with cargo and rust packaging, written in a manner
+that follows upstream rust's best practices.
 
 %prep
-%autosetup
+%autosetup -a1
+mkdir .cargo
+cp %{SOURCE2} .cargo/config
 
 %build
+cargo build --offline --release
 
 %install
+install -D -p -m 0644 -t %{buildroot}%{_fileattrsdir} %{_builddir}/%{name}-%{version}/rust.attr
 install -D -p -m 0644 -t %{buildroot}%{_rpmconfigdir}/macros.d %{_builddir}/%{name}-%{version}/macros.cargo
 
+install -D -p -m 0755 -t %{buildroot}%{_rpmconfigdir} %{_builddir}/%{name}-%{version}/target/release/rust-rpm-prov
+
+install -D -p -m 0755 -t %{buildroot}%{_sysconfdir}/zsh_completion.d %{_builddir}/%{name}-%{version}/target/release/build/completions/_rust-rpm-prov
+install -D -p -m 0755 -t %{buildroot}%{_sysconfdir}/bash_completion.d %{_builddir}/%{name}-%{version}/target/release/build/completions/rust-rpm-prov.bash
+
 %files
+
+%{_fileattrsdir}/rust.attr
 %{_rpmconfigdir}/macros.d/macros.cargo
+%{_rpmconfigdir}/rust-rpm-prov
+
+%dir %{_sysconfdir}/zsh_completion.d
+%dir %{_sysconfdir}/bash_completion.d
+%{_sysconfdir}/zsh_completion.d/*
+%{_sysconfdir}/bash_completion.d/*
 
 %changelog

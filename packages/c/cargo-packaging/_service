@@ -1,7 +1,7 @@
 <services>
   <service mode="disabled" name="obs_scm">
     <param name="url">https://github.com/Firstyear/cargo-packaging.git</param>
-    <param name="versionformat">@PARENT_TAG@~git@TAG_OFFSET@.%h</param>
+    <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="scm">git</param>
     <param name="revision">main</param>
     <param name="match-tag">v*</param>
@@ -16,5 +16,13 @@
     <param name="compression">xz</param>
   </service>
   <service mode="disabled" name="set_version"/>
+  <service name="cargo_vendor" mode="disabled">
+     <param name="srcdir">cargo-packaging</param>
+     <param name="compression">xz</param>
+     <param name="update">true</param>
+  </service>
+  <service name="cargo_audit" mode="disabled">
+     <param name="srcdir">cargo-packaging</param>
+  </service>
 </services>
 

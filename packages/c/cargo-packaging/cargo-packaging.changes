@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 03 22:47:05 UTC 2022 - william.brown@suse.com
+
+- Update to version 1.1.0
+  * Improve support for bundle metadata in rpm provides
+
+-------------------------------------------------------------------
 Mon May 23 02:15:30 UTC 2022 - william.brown@suse.com
 
 - Update to version 1.0.0~git8.6919af0:

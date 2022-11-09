@@ -47,4 +47,16 @@
     <comment></comment>
     <requestid>1006292</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f2b6b61de8e7f89f0849949e95ee46b4</srcmd5>
+    <version>1.1.0+0</version>
+    <time>1667994965</time>
+    <user>dimstar_suse</user>
+    <comment>Relies on cargo-auditable, this adds the ability to extract metadata into rpm
+provides from elf metadata of vendored deps
+
+- Update to version 1.1.0
+  * Improve support for bundle metadata in rpm provides</comment>
+    <requestid>1034398</requestid>
+  </revision>
 </revisionlist>
