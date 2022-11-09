@@ -16,13 +16,13 @@
 #
 
 
-%define libver 4_10
+%define libver 4_11
 %bcond_with static_lib
 %bcond_with pdf_doc
 # julia dropped from oS:Factory [2022-06-10 13:57:27]
 %bcond_with julia
 Name:           gmsh
-Version:        4.10.5
+Version:        4.11.0
 Release:        0
 Summary:        A three-dimensional finite element mesh generator
 License:        GPL-2.0-or-later
@@ -183,6 +183,7 @@ chmod 755 %{buildroot}/%{_bindir}/*
 # mv python API into python's search path, dito for julia
 mkdir -p %{buildroot}%{python3_sitelib}
 mv %{buildroot}%{_libdir}/gmsh.py %{buildroot}%{python3_sitelib}/gmsh.py
+mv %{buildroot}%{_libdir}/gmsh-*.dist-info %{buildroot}%{python3_sitelib}/
 
 %if %{with julia}
 mkdir -p %{buildroot}%{_datadir}/julia
@@ -221,6 +222,7 @@ rm -Rf %{buildroot}%{_docdir}/%{name}/tutorials/julia
 
 %files -n python3-gmsh
 %{python3_sitelib}/gmsh.py
+%{python3_sitelib}/gmsh-*.dist-info
 
 %files devel
 %{_includedir}/gmsh*
@@ -234,6 +236,7 @@ rm -Rf %{buildroot}%{_docdir}/%{name}/tutorials/julia
 %files doc
 %dir %{_docdir}/%{name}
 %doc %{_docdir}/%{name}/*.txt
+%doc %{_docdir}/%{name}/images
 %doc %{_docdir}/%{name}/gmsh.html
 
 %files demos
