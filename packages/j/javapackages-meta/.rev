@@ -23,4 +23,12 @@
     <comment>Fix requires</comment>
     <requestid>821747</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9b816af9aeb03b8d563927b1e5a1d6b5</srcmd5>
+    <version>6.1.0</version>
+    <time>1668003652</time>
+    <user>dimstar_suse</user>
+    <comment>Removal of gradle-local sub-package that is not needed and does not have dependencies</comment>
+    <requestid>1034836</requestid>
+  </revision>
 </revisionlist>

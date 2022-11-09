@@ -1,7 +1,7 @@
 #
 # spec file for package javapackages-meta
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           javapackages-meta
 # Sync the version with javapackages-tools package
-Version:        5.3.0
+Version:        6.1.0
 Release:        0
 Summary:        Meta-packages for different local modes of Java builds
 License:        BSD-3-Clause
@@ -28,22 +28,8 @@ Source100:      %{name}-rpmlintrc
 BuildArch:      noarch
 
 %description
-This package provides a set of meta-packages needed by local modes for
-Gradle, Ivy and Maven. These local modes allow artifact resolution
-using XMvn resolver.
-
-%package -n gradle-local
-Summary:        Local mode for Gradle
-Group:          Development/Languages/Java
-Requires:       gradle >= 2.2.1
-Requires:       javapackages-gradle >= %{version}
-Requires:       xmvn-connector-gradle
-Requires:       xmvn-install
-Requires:       xmvn-resolve
-
-%description -n gradle-local
-This meta-package pulls in macros, scripts and dependencies
-implementing local mode for Gradle, which allows artifact
+This package provides a set of meta-packages needed by local
+modes for Ivy and Maven. These local modes allow artifact
 resolution using XMvn resolver.
 
 %package -n ivy-local
@@ -95,8 +81,6 @@ resolution using XMvn resolver.
 %build
 
 %install
-
-%files -n gradle-local
 
 %files -n ivy-local
 

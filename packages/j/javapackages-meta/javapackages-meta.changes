@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov  9 08:41:16 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- The gradle-local meta-package is not needed any more
+- Syncing the version with current javapackages-tools
+
+-------------------------------------------------------------------
 Thu Jul 16 07:30:27 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Fix requires not to have to redo the package on each
