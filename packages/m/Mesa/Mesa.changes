@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov  8 12:24:26 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- third bugfix release
+  * some regressions in CI worked out
+  * a bit of everything, and nothing too crazy
+- supersedes u_0001-gallivm-Fix-LLVM-optimization-with-the-new-pass-mana.patch
+- supersedes u_nouveau-corrupted-colors-boo1203949.patch
+- get rid of Mesa-libVulkan-devel(-32bit) package, which is no
+  longer needed at all by providing/obsoleting it by
+  libvulkan_intel
+
+-------------------------------------------------------------------
 Mon Nov  7 15:28:21 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Release 22.2.2 covers bugfixes for bsc#1197045,bsc#1197046,bsc#1200965,bsc#1202850

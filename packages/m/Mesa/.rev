@@ -5064,4 +5064,19 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
     <comment>- Release 22.2.2 covers bugfixes for bsc#1197045,bsc#1197046,bsc#1200965,bsc#1202850</comment>
     <requestid>1034271</requestid>
   </revision>
+  <revision rev="459" vrev="331">
+    <srcmd5>c862f3210c4ba2f345abb5d63f75833d</srcmd5>
+    <version>unknown</version>
+    <time>1667994994</time>
+    <user>dimstar_suse</user>
+    <comment>- third bugfix release
+  * some regressions in CI worked out
+  * a bit of everything, and nothing too crazy
+- supersedes u_0001-gallivm-Fix-LLVM-optimization-with-the-new-pass-mana.patch
+- supersedes u_nouveau-corrupted-colors-boo1203949.patch
+- get rid of Mesa-libVulkan-devel(-32bit) package, which is no
+  longer needed at all by providing/obsoleting it by
+  libvulkan_intel</comment>
+    <requestid>1034565</requestid>
+  </revision>
 </revisionlist>
