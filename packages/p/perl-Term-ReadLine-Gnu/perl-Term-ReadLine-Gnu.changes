@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov  7 03:08:07 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.44
+   see /usr/share/doc/packages/perl-Term-ReadLine-Gnu/Changes
+
+  1.44  2022-11-06
+  	- change the TERM check as bash does (#11)
+  	    - Use `Term::ReadLine::Stub` if the environment variable `TERM` is
+  	      set to `"emacs"` or the environment variable `INSIDE_EMACS` or
+  	      `EMACS` is defined.
+
+-------------------------------------------------------------------
 Sun Oct  2 03:07:18 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.43
