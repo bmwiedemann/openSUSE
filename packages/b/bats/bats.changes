@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Nov  8 09:29:03 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.8.2:
+  * fix non zero return code on successful retried tests
+  * avoid kernel warning flood/hang with CTRL+C on Bash 5.2 RC
+  * Fix infinite wait with (invalid) -j<n> (without space) 
+  * using external formatters via --formatter <absolute path> (also works for --report-formatter)
+  * running only tests that failed in the last run via --filter-status failed
+  * variable BATS_TEST_RETRIES that specifies how often a test should be reattempted before it is considered failed
+  * BATS_TEST_TIMEOUT variable to force a timeout on test (including setup())
+  * test_tags=<tag list>/# bats file_tags=<tag list> and --filter-tags <tag list> for tagging tests 
+  * add documentation for bats_require_minimum_version, setup_suite, fix typos
+  * improve documentation about setup_suite
+  * allow --gather-test-outputs-in <directory> to work with existing, empty directories
+  * fix load in teardown marking failed tests as not run
+  * add /usr/lib/bats as default value for BATS_LIB_PATH
+  * fix unset variable in bats-formatter-junit when setup_file fails
+  * unify error behavior of teardown/teardown_file/teardown_suite functions: only fail via return code, not via ERREXIT
+  * only print setup_suite's stderr on errors
+
+-------------------------------------------------------------------
 Wed Jun 15 18:28:08 UTC 2022 - Olav Reinert <seroton10@gmail.com>
 
 - Update to version 1.7.0:
