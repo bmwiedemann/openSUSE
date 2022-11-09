@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Nov  8 14:13:25 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.9.2:
+  * Add annotation "pv.kubernetes.io/migrated-to" for CSI checking.
+  * Fix CVE-2022-1962 by bumping up golang version to 1.17.13
+  * Improvement to the CSI plugin in plugin v0.3.0
+  * Skip registering "crd-remap-version" plugin when feature flag "EnableAPIGroupVersions" is set
+  * Refactored the controllers using Kubebuilder v3
+  * Optionally restore status on selected resources
+    The restoreStatus option has been added to the CLI and Restore spec to enable 
+    you to control the group of resources whose status will be restored.
+  * ExistingResourcePolicy in the restore API
+  * Upgrade integrated Restic version and add skip TLS validation in Restic command
+
+Breaking changes
+With bumping up the API to v1 in CSI plugin, the v0.3.0 CSI plugin will only work for Kubernetes v1.20+.
+
+Upgrading:
+https://velero.io/docs/v1.9/upgrade-to-1.9/
+
+-------------------------------------------------------------------
 Thu Mar 17 13:42:20 UTC 2022 - jenting.hsiao@suse.com
 
 - Update to version 1.8.1:

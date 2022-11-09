@@ -21,7 +21,7 @@
 %define gitstate clean
 
 Name:           velero
-Version:        1.8.1
+Version:        1.9.2
 Release:        0
 Summary:        Backup program with deduplication and encryption
 License:        Apache-2.0
@@ -30,7 +30,7 @@ URL:            https://velero.io
 Source0:        https://github.com/vmware-tanzu/velero/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) = 1.16
+BuildRequires:  golang(API) = 1.17
 
 %description
 velero is a backup program. It supports verification, encryption,
