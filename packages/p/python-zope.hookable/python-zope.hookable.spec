@@ -2,7 +2,7 @@
 # spec file
 #
 # Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2013 LISA GmbH, Bingen, Germany.
+# Copyright (c) 2013-2022 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -27,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-zope.hookable%{psuffix}
-Version:        5.2
+Version:        5.3
 Release:        0
 Summary:        Zope hookable
 License:        ZPL-2.1
@@ -62,6 +61,7 @@ that imported it, will see the change.
 %package     -n %{name}-doc
 Summary:        Zope hookable
 Provides:       %{python_module zope.hookable-doc = %{version}}
+BuildArch:      noarch
 
 %description -n %{name}-doc
 This package contains documentation files for %{name}.
@@ -94,7 +94,10 @@ pushd src
 %files %{python_files}
 %license LICENSE.txt
 %doc CHANGES.rst COPYRIGHT.txt README.rst
-%{python_sitearch}/*
+%dir %{python_sitearch}/zope
+%{python_sitearch}/zope/hookable
+%{python_sitearch}/zope.hookable-%{version}*-info
+%{python_sitearch}/zope.hookable-%{version}*-nspkg.pth
 %endif
 
 %if !%{with test}

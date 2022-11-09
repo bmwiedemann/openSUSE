@@ -91,4 +91,16 @@ New dependency of python-Pyramid</comment>
     <comment></comment>
     <requestid>1010318</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8ebb86a8ce88f453676ab5b6ac57b20c</srcmd5>
+    <version>5.3</version>
+    <time>1667994967</time>
+    <user>dimstar_suse</user>
+    <comment>- Clean up SPEC file, make rpmlint happy.
+- -doc subpackage should be noarch.
+- Update to version 5.3
+  * Add support for the final release of Python 3.11.
+</comment>
+    <requestid>1034425</requestid>
+  </revision>
 </revisionlist>
