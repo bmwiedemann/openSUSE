@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cmarkgfm
-Version:        0.8.0
+Version:        2022.10.27
 Release:        0
 Summary:        Minimal bindings to GitHub's fork of cmark
 License:        MIT
