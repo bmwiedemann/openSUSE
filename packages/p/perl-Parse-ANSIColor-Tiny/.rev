@@ -7,4 +7,12 @@
     <comment>new potential dependency for openQA, see https://progress.opensuse.org/issues/92746</comment>
     <requestid>894044</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5d1a075e39653d7b2da519e075386036</srcmd5>
+    <version>0.700</version>
+    <time>1667995022</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1034520</requestid>
+  </revision>
 </revisionlist>

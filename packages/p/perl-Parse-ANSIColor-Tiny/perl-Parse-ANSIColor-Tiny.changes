@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Oct 23 03:11:40 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.700
+   see /usr/share/doc/packages/perl-Parse-ANSIColor-Tiny/Changes
+
+  0.700     2022-10-22T17:50:58Z
+
+    - Fix reset_foreground/reset_background to work with the 256 set of colors.
+
+-------------------------------------------------------------------
 Thu Sep  7 05:59:07 UTC 2017 - coolo@suse.com
 
 - updated to 0.601
