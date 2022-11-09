@@ -17,7 +17,7 @@
 
 
 Name:           erldash
-Version:        0.1.0~0
+Version:        0.1.2~0
 Release:        0
 Summary:        A simple, terminal-based Erlang dashboard
 License:        MIT

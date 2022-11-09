@@ -8,4 +8,17 @@
 </comment>
     <requestid>975176</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>81c14a23d32300f408bd26f63e18835f</srcmd5>
+    <version>0.1.2~0</version>
+    <time>1667995012</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.1.2:
+  * Fix typo: s/processe_count/process_count/ #2
+- Configure cargo_audit
+
+- Update to 0.1.1:
+  * Fix a bug during average calculation #1</comment>
+    <requestid>1034489</requestid>
+  </revision>
 </revisionlist>

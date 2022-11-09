@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov  8 09:55:53 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.1.2:
+  * Fix typo: s/processe_count/process_count/ #2
+- Configure cargo_audit
+
+-------------------------------------------------------------------
+Tue Nov  8 09:55:31 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.1.1:
+  * Fix a bug during average calculation #1
+
+-------------------------------------------------------------------
 Thu May  5 10:21:58 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Initial package of erldash 0.1.0 for openSUSE
