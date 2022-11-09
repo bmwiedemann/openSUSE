@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 26 15:51:25 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Modify detect-lib-with-py3.patch to be more robust.
+
+-------------------------------------------------------------------
 Wed Oct 26 09:14:38 UTC 2022 - mcepl@cepl.eu
 
 - Update to version 3.12.2+git.1666757106.e6ab5bc:
