@@ -17,7 +17,7 @@
 
 
 Name:           fd
-Version:        8.4.0
+Version:        8.5.0
 Release:        0
 Summary:        An alternative to the "find" utility
 License:        Apache-2.0 AND MIT
@@ -145,14 +145,15 @@ cp %{SOURCE2} .cargo/config
 
 %build
 %{cargo_build}
+make completions
 
 %install
 %{cargo_install}
 
 # install shell completions and man page
-install -Dm644 target/release/build/fd-find-*/out/fd.bash %{buildroot}%{_datadir}/bash-completion/completions/fd
-install -Dm644 target/release/build/fd-find-*/out/fd.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/fd.fish
-install -Dm644 contrib/completion/_fd %{buildroot}%{_datadir}/zsh/site-functions/_fd
+install -Dm644 autocomplete/fd.bash %{buildroot}%{_datadir}/bash-completion/completions/fd
+install -Dm644 autocomplete/fd.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/fd.fish
+install -Dm644 autocomplete/_fd %{buildroot}%{_datadir}/zsh/site-functions/_fd
 install -Dm644 doc/fd.1 %{buildroot}%{_mandir}/man1/fd.1
 
 %files

@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Nov 02 07:05:31 UTC 2022 - sebix+novell.com@sebix.at
+
+- Update to version 8.5.0:
+ - Features
+  - --type executable/-t now works on Windows, see #1051 and #1061
+ - Bugfixes
+  - Fixed differences between piped / non-piped output. This changes fds behavior back to what we
+  - had before 8.3.0, i.e. there will be no leading ./ prefixes, unless --exec/-x,
+  - --exec-batch/-X, or --print0/-0 are used. --strip-cwd-prefix can be used to strip that
+  - prefix in those cases. See #1046, #1115, and #1121
+  - fd could previously crash with a panic due to a race condition in Rusts standard library
+  - (see rust-lang/rust#39364). This has been fixed by switching to a different
+  - message passing implementation, see #1060 and #1146
+  - fds memory usage will not grow unboundedly on huge directory trees, see #1146
+  - fd returns an error when current working directory does not exist while a search path is
+  - specified, see #1072
+  - Improved "command not found" error message, see #1083 and #1109
+  - Preserve command exit codes when using --exec-batch, see #1136 and #1137
+ - Changes
+  - No leading ./ prefix for non-interactive results, see above.
+  - fd now colorizes paths in parallel, significantly improving performance, see #1148
+  - fd can now avoid stat syscalls even when colorizing paths, as long as the color scheme doesn't
+  - require metadata, see #1148
+  - The statically linked musl versions of fd now use jmalloc, leading to a significant performance
+  - improvement, see #1062
+ - Other
+  - Added link back to GitHub in man page and --help text, see #1086
+  - Major update in how fd handles command line options internally, see #1067
+
+-------------------------------------------------------------------
 Wed Jun 08 08:57:36 UTC 2022 - sebix+novell.com@sebix.at
 
 - Update to version 8.4.0:
