@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov  7 20:35:15 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to v2.7.1 
+  * Relaxed the restriction introduced in 2.6.2 so that the Proxy-Authentication header can again be set explicitly in certain cases,
+    restoring compatibility with scrapy-zyte-smartproxy 2.1.0 and older
+  Bug fixes
+  * full change-log https://docs.scrapy.org/en/latest/news.html#scrapy-2-7-1-2022-11-02
+
+-------------------------------------------------------------------
 Thu Oct 27 21:15:45 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to v2.7.0 
