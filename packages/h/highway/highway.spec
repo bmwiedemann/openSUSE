@@ -78,9 +78,12 @@ export CXX=g++-10
 %endif
 
 %cmake \
-	-DCMAKE_SKIP_RPATH=OFF        \
-	-DCMAKE_SKIP_INSTALL_RPATH=ON \
-	-DHWY_SYSTEM_GTEST=ON
+%ifarch %arm
+	-DHWY_CMAKE_ARM7:BOOL=ON \
+%endif
+	-DCMAKE_SKIP_RPATH:BOOL=OFF \
+	-DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON \
+	-DHWY_SYSTEM_GTEST:BOOL=ON
 %cmake_build
 
 %install
