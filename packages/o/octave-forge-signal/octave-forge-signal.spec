@@ -18,12 +18,12 @@
 
 %define octpkg  signal
 Name:           octave-forge-%{octpkg}
-Version:        1.4.2
+Version:        1.4.3
 Release:        0
 Summary:        Signal processing tools for Octave
 License:        GPL-3.0-or-later AND SUSE-Public-Domain
 Group:          Productivity/Scientific/Math
-URL:            https://octave.sourceforge.io
+URL:            https://gnu-octave.github.io/packages/%{octpkg}/
 Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  hdf5-devel

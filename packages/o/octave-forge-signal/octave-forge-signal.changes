@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov  8 17:08:13 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 1.4.3:
+ * Minor bug fixes and documentation improvements have been made to
+   the following functions:
+      fir2       remez       residuez
+      sos2tf     sos2zp      xcorr
+      zp2sos
+
+-------------------------------------------------------------------
 Fri May  6 18:14:43 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.4.2:
