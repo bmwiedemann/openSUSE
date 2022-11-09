@@ -1,0 +1,32 @@
+From 86fe3bbbf75e62387cc9842654fd6c852e9457a6 Mon Sep 17 00:00:00 2001
+From: Glenn Washburn <development@efficientek.com>
+Date: Thu, 9 Dec 2021 11:14:52 -0600
+Subject: [PATCH 03/14] cryptodisk: Return failure in cryptomount when no
+ cryptodisk modules are loaded
+
+This displays an error notifying the user that they'll want to load
+a backend module to make cryptomount useful.
+
+Signed-off-by: Glenn Washburn <development@efficientek.com>
+Reviewed-by: Daniel Kiper <daniel.kiper@oracle.com>
+---
+ grub-core/disk/cryptodisk.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/grub-core/disk/cryptodisk.c b/grub-core/disk/cryptodisk.c
+index 9df3d310fe..27491871a5 100644
+--- a/grub-core/disk/cryptodisk.c
++++ b/grub-core/disk/cryptodisk.c
+@@ -1125,6 +1125,9 @@ grub_cmd_cryptomount (grub_extcmd_context_t ctxt, int argc, char **args)
+   if (argc < 1 && !state[1].set && !state[2].set)
+     return grub_error (GRUB_ERR_BAD_ARGUMENT, "device name required");
+ 
++  if (grub_cryptodisk_list == NULL)
++    return grub_error (GRUB_ERR_BAD_MODULE, "no cryptodisk modules loaded");
++
+   if (state[0].set)
+     {
+       int found_uuid;
+-- 
+2.34.1
+

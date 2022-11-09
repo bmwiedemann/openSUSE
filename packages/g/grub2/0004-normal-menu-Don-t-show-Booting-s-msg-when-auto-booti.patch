@@ -1,0 +1,93 @@
+From d4eb747f831d8b011c712f4335f12b572d6f32d9 Mon Sep 17 00:00:00 2001
+From: Hans de Goede <hdegoede@redhat.com>
+Date: Fri, 28 Jan 2022 11:30:32 +0100
+Subject: [PATCH 04/10] normal/menu: Don't show "Booting `%s'" msg when
+ auto-booting with TIMEOUT_STYLE_HIDDEN
+
+When the user has asked the menu code to be hidden/quiet and the current
+entry is being autobooted because the timeout has expired don't show
+the "Booting `%s'" msg.
+
+This is necessary to let flicker-free boots really be flicker free,
+otherwise the "Booting `%s'" msg will kick the EFI fb into text mode
+and show the msg, breaking the flicker-free experience.
+
+Signed-off-by: Hans de Goede <hdegoede@redhat.com>
+---
+ grub-core/normal/menu.c | 24 ++++++++++++++++--------
+ 1 file changed, 16 insertions(+), 8 deletions(-)
+
+diff --git a/grub-core/normal/menu.c b/grub-core/normal/menu.c
+index 47fc12551f..470bfc839b 100644
+--- a/grub-core/normal/menu.c
++++ b/grub-core/normal/menu.c
+@@ -651,13 +651,15 @@ workaround_snapshot_menu_default_entry (grub_menu_t menu, const char *name, int
+    entry to be executed is a result of an automatic default selection because
+    of the timeout.  */
+ static int
+-run_menu (grub_menu_t menu, int nested, int *auto_boot)
++run_menu (grub_menu_t menu, int nested, int *auto_boot, int *notify_boot)
+ {
+   grub_uint64_t saved_time;
+   int default_entry, current_entry;
+   int timeout;
+   enum timeout_style timeout_style;
+ 
++  *notify_boot = 1;
++
+   default_entry = get_entry_number (menu, "default");
+ 
+   workaround_snapshot_menu_default_entry (menu, "default", &default_entry);
+@@ -734,6 +736,7 @@ run_menu (grub_menu_t menu, int nested, int *auto_boot)
+   if (timeout == 0)
+     {
+       *auto_boot = 1;
++      *notify_boot = timeout_style != TIMEOUT_STYLE_HIDDEN;
+       return default_entry;
+     }
+ 
+@@ -894,12 +897,16 @@ run_menu (grub_menu_t menu, int nested, int *auto_boot)
+ 
+ /* Callback invoked immediately before a menu entry is executed.  */
+ static void
+-notify_booting (grub_menu_entry_t entry,
+-		void *userdata __attribute__((unused)))
++notify_booting (grub_menu_entry_t entry, void *userdata)
+ {
+-  grub_printf ("  ");
+-  grub_printf_ (N_("Booting `%s'"), entry->title);
+-  grub_printf ("\n\n");
++  int *notify_boot = userdata;
++
++  if (*notify_boot)
++    {
++      grub_printf ("  ");
++      grub_printf_ (N_("Booting `%s'"), entry->title);
++      grub_printf ("\n\n");
++    }
+ }
+ 
+ /* Callback invoked when a default menu entry executed because of a timeout
+@@ -947,8 +954,9 @@ show_menu (grub_menu_t menu, int nested, int autobooted)
+       int boot_entry;
+       grub_menu_entry_t e;
+       int auto_boot;
++      int notify_boot;
+ 
+-      boot_entry = run_menu (menu, nested, &auto_boot);
++      boot_entry = run_menu (menu, nested, &auto_boot, &notify_boot);
+       if (boot_entry < 0)
+ 	break;
+ 
+@@ -960,7 +968,7 @@ show_menu (grub_menu_t menu, int nested, int autobooted)
+ 
+       if (auto_boot)
+ 	grub_menu_execute_with_fallback (menu, e, autobooted,
+-					 &execution_callback, 0);
++					 &execution_callback, &notify_boot);
+       else
+ 	grub_menu_execute_entry (e, 0);
+       if (autobooted)
+-- 
+2.34.1
+

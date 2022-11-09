@@ -407,6 +407,65 @@ Patch881:       0029-fs-btrfs-Fix-several-fuzz-issues-with-invalid-dir-it.patch
 Patch882:       0030-fs-btrfs-Fix-more-ASAN-and-SEGV-issues-found-with-fu.patch
 Patch883:       0031-fs-btrfs-Fix-more-fuzz-issues-related-to-chunks.patch
 Patch884:       0032-Use-grub_loader_set_ex-for-secureboot-chainloader.patch
+Patch885:       0001-luks2-Add-debug-message-to-align-with-luks-and-geli-.patch
+Patch886:       0002-cryptodisk-Refactor-to-discard-have_it-global.patch
+Patch887:       0003-cryptodisk-Return-failure-in-cryptomount-when-no-cry.patch
+Patch888:       0004-cryptodisk-Improve-error-messaging-in-cryptomount-in.patch
+Patch889:       0005-cryptodisk-Improve-cryptomount-u-error-message.patch
+Patch890:       0006-cryptodisk-Add-infrastructure-to-pass-data-from-cryp.patch
+Patch891:       0007-cryptodisk-Refactor-password-input-out-of-crypto-dev.patch
+Patch892:       0008-cryptodisk-Move-global-variables-into-grub_cryptomou.patch
+Patch893:       0009-cryptodisk-Improve-handling-of-partition-name-in-cry.patch
+Patch894:       0010-protectors-Add-key-protectors-framework.patch
+Patch895:       0011-tpm2-Add-TPM-Software-Stack-TSS.patch
+Patch896:       0012-protectors-Add-TPM2-Key-Protector.patch
+Patch897:       0013-cryptodisk-Support-key-protectors.patch
+Patch898:       0014-util-grub-protect-Add-new-tool.patch
+Patch899:       fix-tpm2-build.patch
+Patch900:       0001-crytodisk-fix-cryptodisk-module-looking-up.patch
+# fde
+Patch901:       0001-devmapper-getroot-Have-devmapper-recognize-LUKS2.patch
+Patch902:       0002-devmapper-getroot-Set-up-cheated-LUKS2-cryptodisk-mo.patch
+Patch903:       0003-disk-cryptodisk-When-cheatmounting-use-the-sector-in.patch
+Patch904:       0004-normal-menu-Don-t-show-Booting-s-msg-when-auto-booti.patch
+Patch905:       0005-EFI-suppress-the-Welcome-to-GRUB-message-in-EFI-buil.patch
+Patch906:       0006-EFI-console-Do-not-set-colorstate-until-the-first-te.patch
+Patch907:       0007-EFI-console-Do-not-set-cursor-until-the-first-text-o.patch
+Patch908:       0008-linuxefi-Use-common-grub_initrd_load.patch
+Patch909:       0009-Add-crypttab_entry-to-obviate-the-need-to-input-pass.patch
+Patch910:       0010-templates-import-etc-crypttab-to-grub.cfg.patch
+Patch911:       grub-read-pcr.patch
+Patch912:       efi-set-variable-with-attrs.patch
+Patch913:       tpm-record-pcrs.patch
+Patch914:       tpm-protector-dont-measure-sealed-key.patch
+Patch915:       tpm-protector-export-secret-key.patch
+Patch916:       grub-install-record-pcrs.patch
+Patch917:       grub-unseal-debug.patch
+# efi mm
+Patch918:       0001-tpm-Disable-tpm-verifier-if-tpm-is-not-present.patch
+Patch919:       0001-mm-Allow-dynamically-requesting-additional-memory-re.patch
+Patch920:       0002-kern-efi-mm-Always-request-a-fixed-number-of-pages-o.patch
+Patch921:       0003-kern-efi-mm-Extract-function-to-add-memory-regions.patch
+Patch922:       0004-kern-efi-mm-Pass-up-errors-from-add_memory_regions.patch
+Patch923:       0005-kern-efi-mm-Implement-runtime-addition-of-pages.patch
+Patch924:       0001-kern-efi-mm-Enlarge-the-default-heap-size.patch
+Patch925:       0002-mm-Defer-the-disk-cache-invalidation.patch
+# powerpc-ieee1275
+Patch926:       0001-grub-install-set-point-of-no-return-for-powerpc-ieee1275.patch
+Patch927:       safe_tpm_pcr_snapshot.patch
+Patch928:       0001-linux-fix-efi_relocate_kernel-failure.patch
+# (PED-996) NVMeoFC support on Grub (grub2)
+Patch929:       0001-ieee1275-add-support-for-NVMeoFC.patch
+Patch930:       0002-ieee1275-ofpath-enable-NVMeoF-logical-device-transla.patch
+Patch931:       0003-ieee1275-change-the-logic-of-ieee1275_get_devargs.patch
+Patch932:       0004-ofpath-controller-name-update.patch
+# (PED-1265) TDX: Enhance grub2 measurement to TD RTMR
+Patch933:       0001-commands-efi-tpm-Refine-the-status-of-log-event.patch
+Patch934:       0002-commands-efi-tpm-Use-grub_strcpy-instead-of-grub_mem.patch
+Patch935:       0003-efi-tpm-Add-EFI_CC_MEASUREMENT_PROTOCOL-support.patch
+# (PED-1990) GRUB2: Measure the kernel on POWER10 and extend TPM PCRs
+Patch936:       0001-ibmvtpm-Add-support-for-trusted-boot-using-a-vTPM-2..patch
+Patch937:       0002-ieee1275-implement-vec5-for-cas-negotiation.patch
 
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140
@@ -673,11 +732,11 @@ CD_MODULES="all_video boot cat configfile echo true \
 		font gfxmenu gfxterm gzio halt iso9660 \
 		jpeg minicmd normal part_apple part_msdos part_gpt \
 		password password_pbkdf2 png reboot search search_fs_uuid \
-		search_fs_file search_label sleep test video fat loadenv"
+		search_fs_file search_label sleep test video fat loadenv loopback"
 PXE_MODULES="tftp http"
-CRYPTO_MODULES="luks gcry_rijndael gcry_sha1 gcry_sha256"
+CRYPTO_MODULES="luks luks2 gcry_rijndael gcry_sha1 gcry_sha256 gcry_sha512 crypttab"
 %ifarch %{efi}
-CD_MODULES="${CD_MODULES} chain efifwsetup efinet read"
+CD_MODULES="${CD_MODULES} chain efifwsetup efinet read tpm tpm2"
 PXE_MODULES="${PXE_MODULES} efinet"
 %else
 CD_MODULES="${CD_MODULES} net"
@@ -715,10 +774,6 @@ echo "grub.%{sbat_distro},%{sbat_generation},%{sbat_distro_summary},%{name},%{ve
 
 ./grub-mkimage -O %{grubefiarch} -o grub.efi --prefix= %{?sbat_generation:--sbat sbat.csv} \
 		-d grub-core ${GRUB_MODULES}
-%ifarch x86_64
-./grub-mkimage -O %{grubefiarch} -o grub-tpm.efi --prefix= %{?sbat_generation:--sbat sbat.csv} \
-		-d grub-core ${GRUB_MODULES} tpm
-%endif
 
 %ifarch x86_64 aarch64
 if test -e %{_sourcedir}/_projectcert.crt ; then
@@ -898,7 +953,7 @@ cd build-efi
 %make_install
 install -m 644 grub.efi %{buildroot}/%{_datadir}/%{name}/%{grubefiarch}/.
 %ifarch x86_64
-install -m 644 grub-tpm.efi %{buildroot}/%{_datadir}/%{name}/%{grubefiarch}/.
+ln -srf %{buildroot}/%{_datadir}/%{name}/%{grubefiarch}/grub.efi %{buildroot}/%{_datadir}/%{name}/%{grubefiarch}/grub-tpm.efi
 %endif
 
 # Create grub.efi link to system efi directory
@@ -920,9 +975,6 @@ EoM
 
 %ifarch x86_64 aarch64
 export BRP_PESIGN_FILES="%{_datadir}/%{name}/%{grubefiarch}/grub.efi"
-%ifarch x86_64
-BRP_PESIGN_FILES="${BRP_PESIGN_FILES} %{_datadir}/%{name}/%{grubefiarch}/grub-tpm.efi"
-%endif
 install -m 444 grub.der %{buildroot}/%{sysefidir}/
 %endif
 
@@ -1205,6 +1257,7 @@ fi
 %dir %{_sysconfdir}/grub.d
 %{_sysconfdir}/grub.d/README
 %config(noreplace) %{_sysconfdir}/grub.d/00_header
+%config(noreplace) %{_sysconfdir}/grub.d/05_crypttab
 %config(noreplace) %{_sysconfdir}/grub.d/10_linux
 %config(noreplace) %{_sysconfdir}/grub.d/20_linux_xen
 %config(noreplace) %{_sysconfdir}/grub.d/30_uefi-firmware
@@ -1249,6 +1302,7 @@ fi
 %{_bindir}/%{name}-render-label
 %{_bindir}/%{name}-script-check
 %{_bindir}/%{name}-syslinux2cfg
+%{_bindir}/%{name}-protect
 %if 0%{?has_systemd:1}
 %{_unitdir}/grub2-once.service
 %endif

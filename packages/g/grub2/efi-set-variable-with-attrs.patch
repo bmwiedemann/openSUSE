@@ -1,0 +1,51 @@
+Index: grub-2.06/include/grub/efi/efi.h
+===================================================================
+--- grub-2.06.orig/include/grub/efi/efi.h
++++ grub-2.06/include/grub/efi/efi.h
+@@ -86,6 +86,11 @@ grub_efi_status_t EXPORT_FUNC (grub_efi_
+ 						       const grub_efi_guid_t *guid,
+ 						       grub_size_t *datasize_out,
+ 						       void **data_out);
++grub_err_t EXPORT_FUNC (grub_efi_set_variable_with_attributes) (const char *var,
++				     const grub_efi_guid_t *guid,
++				     grub_efi_uint32_t attributes,
++				     void *data,
++				     grub_size_t datasize);
+ grub_err_t
+ EXPORT_FUNC (grub_efi_set_variable) (const char *var,
+ 				     const grub_efi_guid_t *guid,
+Index: grub-2.06/grub-core/kern/efi/efi.c
+===================================================================
+--- grub-2.06.orig/grub-core/kern/efi/efi.c
++++ grub-2.06/grub-core/kern/efi/efi.c
+@@ -196,6 +196,17 @@ grub_err_t
+ grub_efi_set_variable(const char *var, const grub_efi_guid_t *guid,
+ 		      void *data, grub_size_t datasize)
+ {
++  return grub_efi_set_variable_with_attributes(var, guid, 
++					       (GRUB_EFI_VARIABLE_NON_VOLATILE
++					        | GRUB_EFI_VARIABLE_BOOTSERVICE_ACCESS
++					        | GRUB_EFI_VARIABLE_RUNTIME_ACCESS),
++					       data, datasize);
++}
++
++grub_err_t
++grub_efi_set_variable_with_attributes(const char *var, const grub_efi_guid_t *guid, grub_efi_uint32_t attributes,
++				      void *data, grub_size_t datasize)
++{
+   grub_efi_status_t status;
+   grub_efi_runtime_services_t *r;
+   grub_efi_char16_t *var16;
+@@ -211,10 +222,8 @@ grub_efi_set_variable(const char *var, c
+ 
+   r = grub_efi_system_table->runtime_services;
+ 
+-  status = efi_call_5 (r->set_variable, var16, guid, 
+-		       (GRUB_EFI_VARIABLE_NON_VOLATILE
+-			| GRUB_EFI_VARIABLE_BOOTSERVICE_ACCESS
+-			| GRUB_EFI_VARIABLE_RUNTIME_ACCESS),
++  status = efi_call_5 (r->set_variable, var16, guid,
++		       attributes,
+ 		       datasize, data);
+   grub_free (var16);
+   if (status == GRUB_EFI_SUCCESS)

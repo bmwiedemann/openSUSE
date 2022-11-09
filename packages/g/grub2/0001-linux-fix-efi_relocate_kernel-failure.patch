@@ -1,0 +1,182 @@
+From 80487d82ee1c179c01fad1a23f26fcca79c0ace5 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Mon, 26 Sep 2022 12:04:41 +0800
+Subject: [PATCH] linux: fix efi_relocate_kernel failure
+
+With the dynamic allocated heap in new memory manager, it could use up all
+usable memory with no reservation on subsequent kernel loading leading to
+following error:
+
+  EFI stub: ERROR: Failed to allocate usable memory for kernel
+  EFI stub: ERROR: efi_relocate_kernel() failed!
+  EFI stub: ERROR: efi_main failed!
+
+The patch tries to returning the memory pages allocated by grub to the firmware
+before handing over to linux kernel. This could eliminate the worry that we
+have no limited amount of memory exclusively set for grub to guarentee the
+memory requirement for booting subsequent component can be met.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/Makefile.am             |  7 +++++++
+ grub-core/Makefile.core.def       |  2 +-
+ grub-core/loader/efi/linux.c      | 16 ++++++++++++++++
+ grub-core/loader/i386/efi/linux.c | 13 ++++++++++---
+ 4 files changed, 34 insertions(+), 4 deletions(-)
+
+diff --git a/grub-core/Makefile.am b/grub-core/Makefile.am
+index dc07ba6f8..3b1f101fd 100644
+--- a/grub-core/Makefile.am
++++ b/grub-core/Makefile.am
+@@ -124,6 +124,7 @@ if COND_i386_efi
+ KERNEL_HEADER_FILES += $(top_builddir)/include/grub/machine/kernel.h
+ KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/efi/efi.h
+ KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/efi/disk.h
++KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/efi/linux.h
+ KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/i386/tsc.h
+ KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/acpi.h
+ KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/pci.h
+@@ -185,6 +186,7 @@ if COND_x86_64_efi
+ KERNEL_HEADER_FILES += $(top_builddir)/include/grub/machine/kernel.h
+ KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/efi/efi.h
+ KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/efi/disk.h
++KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/efi/linux.h
+ KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/i386/tsc.h
+ KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/pci.h
+ KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/acpi.h
+@@ -194,6 +196,7 @@ endif
+ if COND_ia64_efi
+ KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/efi/efi.h
+ KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/efi/disk.h
++KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/efi/linux.h
+ KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/acpi.h
+ endif
+ 
+@@ -281,6 +284,7 @@ endif
+ if COND_arm_efi
+ KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/efi/efi.h
+ KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/efi/disk.h
++KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/efi/linux.h
+ KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/arm/system.h
+ KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/acpi.h
+ endif
+@@ -288,18 +292,21 @@ endif
+ if COND_arm64_efi
+ KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/efi/efi.h
+ KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/efi/disk.h
++KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/efi/linux.h
+ KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/acpi.h
+ endif
+ 
+ if COND_riscv32_efi
+ KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/efi/efi.h
+ KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/efi/disk.h
++KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/efi/linux.h
+ KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/acpi.h
+ endif
+ 
+ if COND_riscv64_efi
+ KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/efi/efi.h
+ KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/efi/disk.h
++KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/efi/linux.h
+ KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/acpi.h
+ endif
+ 
+diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
+index 211d2166b..a8c5684dd 100644
+--- a/grub-core/Makefile.core.def
++++ b/grub-core/Makefile.core.def
+@@ -392,6 +392,7 @@ kernel = {
+   extra_dist = kern/i386/realmode.S;
+   extra_dist = boot/i386/pc/lzma_decode.S;
+   extra_dist = kern/mips/cache_flush.S;
++  efi = loader/efi/linux.c;
+ };
+ 
+ program = {
+@@ -1855,7 +1856,6 @@ module = {
+   riscv64 = loader/riscv/linux.c;
+   emu = loader/emu/linux.c;
+   common = loader/linux.c;
+-  efi = loader/efi/linux.c;
+ };
+ 
+ module = {
+diff --git a/grub-core/loader/efi/linux.c b/grub-core/loader/efi/linux.c
+index 9265cf420..6ee0ca966 100644
+--- a/grub-core/loader/efi/linux.c
++++ b/grub-core/loader/efi/linux.c
+@@ -23,6 +23,8 @@
+ #include <grub/efi/efi.h>
+ #include <grub/efi/pe32.h>
+ #include <grub/efi/linux.h>
++#include <grub/kernel.h>
++#include <grub/loader.h>
+ 
+ #pragma GCC diagnostic push
+ #pragma GCC diagnostic ignored "-Wcast-align"
+@@ -38,6 +40,8 @@ grub_efi_linux_boot (void *kernel_addr, grub_off_t handover_offset,
+   int offset = 0;
+ 
+ #ifdef __x86_64__
++  grub_efi_simple_text_output_interface_t *o;
++  o = grub_efi_system_table->con_out;
+   offset = 512;
+ #endif
+ 
+@@ -55,9 +59,21 @@ grub_efi_linux_boot (void *kernel_addr, grub_off_t handover_offset,
+   grub_dprintf ("linux", "kernel_addr: %p handover_offset: %p params: %p\n",
+ 		kernel_addr, (void *)(grub_efi_uintn_t)handover_offset, kernel_params);
+   hf = (handover_func)((char *)kernel_addr + handover_offset + offset);
++#ifdef __x86_64__
++  grub_machine_fini (GRUB_LOADER_FLAG_NORETURN);
++#endif
+   hf (grub_efi_image_handle, grub_efi_system_table, kernel_params);
+ 
++#ifdef __x86_64__
++  efi_call_2 (o->output_string, o, L"cannot boot linux kernel via efi handover\r\n"
++	      L"rebooting in 5 seconds... *\r\n");
++  efi_call_1 (grub_efi_system_table->boot_services->stall, 5000000);
++  efi_call_4 (grub_efi_system_table->runtime_services->reset_system,
++	      GRUB_EFI_RESET_COLD, GRUB_EFI_SUCCESS, 0, NULL);
++  for (;;) ;
++#else
+   return GRUB_ERR_BUG;
++#endif
+ }
+ 
+ #pragma GCC diagnostic pop
+diff --git a/grub-core/loader/i386/efi/linux.c b/grub-core/loader/i386/efi/linux.c
+index 6b06a8f2f..b9b0d4a5f 100644
+--- a/grub-core/loader/i386/efi/linux.c
++++ b/grub-core/loader/i386/efi/linux.c
+@@ -90,6 +90,8 @@ kernel_alloc(grub_efi_uintn_t size, const char * const errmsg)
+     {
+       grub_uint64_t max = max_addresses[i].addr;
+       grub_efi_uintn_t pages;
++      grub_efi_status_t status;
++      grub_efi_boot_services_t *b;
+ 
+       /*
+        * When we're *not* loading the kernel, or >4GB allocations aren't
+@@ -104,9 +106,14 @@ kernel_alloc(grub_efi_uintn_t size, const char * const errmsg)
+ 		    pages, (void *)(grub_addr_t)max);
+ 
+       prev_max = max;
+-      addr = grub_efi_allocate_pages_real (max, pages,
+-					   max_addresses[i].alloc_type,
+-					   GRUB_EFI_LOADER_DATA);
++      b = grub_efi_system_table->boot_services;
++      status = efi_call_4 (b->allocate_pages, max_addresses[i].alloc_type, GRUB_EFI_LOADER_DATA, pages, &max);
++      if (status != GRUB_EFI_SUCCESS)
++	{
++	  grub_error (GRUB_ERR_OUT_OF_MEMORY, N_("out of memory"));
++	  max = 0;
++	}
++      addr = (void *) ((grub_addr_t) max);
+       if (addr)
+ 	grub_dprintf ("linux", "Allocated at %p\n", addr);
+     }
+-- 
+2.37.3
+

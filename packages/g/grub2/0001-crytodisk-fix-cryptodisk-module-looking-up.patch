@@ -1,0 +1,33 @@
+From 822f71318a69c150da3ad7df5fe8667dfa6e8069 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Thu, 31 Mar 2022 15:45:35 +0800
+Subject: [PATCH] crytodisk: fix cryptodisk module looking up
+
+The error "no cryptodisk module can handle this device" may happen even
+encrypted disk were correctly formatted and required modules were loaded.
+
+It is casued by missing break to the loop in which cryptodisk modules are
+iterated to find the one matching target's disk format. With the break
+statement, the loop will be always ended with testing last cryptodisk module on
+the list that may not be able to handle the format of encrypted disk's.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/disk/cryptodisk.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/grub-core/disk/cryptodisk.c b/grub-core/disk/cryptodisk.c
+index 00c44773fb..6d22bf871c 100644
+--- a/grub-core/disk/cryptodisk.c
++++ b/grub-core/disk/cryptodisk.c
+@@ -1021,6 +1021,7 @@ grub_cryptodisk_scan_device_real (const char *name,
+     if (!dev)
+       continue;
+     crd = cr;
++    break;
+   }
+ 
+   if (!dev)
+-- 
+2.34.1
+

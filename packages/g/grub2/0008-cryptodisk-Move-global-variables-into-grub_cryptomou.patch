@@ -1,0 +1,248 @@
+From 5323778d84a7289acba0e50d84fb1afd45fff596 Mon Sep 17 00:00:00 2001
+From: Glenn Washburn <development@efficientek.com>
+Date: Thu, 9 Dec 2021 11:14:57 -0600
+Subject: [PATCH 08/14] cryptodisk: Move global variables into
+ grub_cryptomount_args struct
+
+Note that cargs.search_uuid does not need to be initialized in various parts
+of the cryptomount argument parsing, just once when cargs is declared with
+a struct initializer. The previous code used a global variable which would
+retain the value across cryptomount invocations.
+
+Signed-off-by: Glenn Washburn <development@efficientek.com>
+Reviewed-by: Daniel Kiper <daniel.kiper@oracle.com>
+---
+ grub-core/disk/cryptodisk.c | 24 +++++++++---------------
+ grub-core/disk/geli.c       |  9 ++++-----
+ grub-core/disk/luks.c       |  9 ++++-----
+ grub-core/disk/luks2.c      |  8 ++++----
+ include/grub/cryptodisk.h   |  9 +++++++--
+ 5 files changed, 28 insertions(+), 31 deletions(-)
+
+diff --git a/grub-core/disk/cryptodisk.c b/grub-core/disk/cryptodisk.c
+index d12368a1f7..7ca880402d 100644
+--- a/grub-core/disk/cryptodisk.c
++++ b/grub-core/disk/cryptodisk.c
+@@ -984,9 +984,6 @@ grub_util_cryptodisk_get_uuid (grub_disk_t disk)
+ 
+ #endif
+ 
+-static int check_boot;
+-static char *search_uuid;
+-
+ static void
+ cryptodisk_close (grub_cryptodisk_t dev)
+ {
+@@ -1014,7 +1011,7 @@ grub_cryptodisk_scan_device_real (const char *name,
+ 
+   FOR_CRYPTODISK_DEVS (cr)
+   {
+-    dev = cr->scan (source, search_uuid, check_boot);
++    dev = cr->scan (source, cargs);
+     if (grub_errno)
+       return NULL;
+     if (!dev)
+@@ -1077,6 +1074,7 @@ grub_cryptodisk_cheat_mount (const char *sourcedev, const char *cheat)
+   grub_cryptodisk_t dev;
+   grub_cryptodisk_dev_t cr;
+   grub_disk_t source;
++  struct grub_cryptomount_args cargs = {0};
+ 
+   /* Try to open disk.  */
+   source = grub_disk_open (sourcedev);
+@@ -1093,7 +1091,7 @@ grub_cryptodisk_cheat_mount (const char *sourcedev, const char *cheat)
+ 
+   FOR_CRYPTODISK_DEVS (cr)
+   {
+-    dev = cr->scan (source, search_uuid, check_boot);
++    dev = cr->scan (source, &cargs);
+     if (grub_errno)
+       return grub_errno;
+     if (!dev)
+@@ -1136,7 +1134,7 @@ grub_cryptodisk_scan_device (const char *name,
+   dev = grub_cryptodisk_scan_device_real (name, source, cargs);
+   if (dev)
+     {
+-      ret = (search_uuid != NULL && grub_strcasecmp (search_uuid, dev->uuid) == 0);
++      ret = (cargs->search_uuid != NULL && grub_strcasecmp (cargs->search_uuid, dev->uuid) == 0);
+       goto cleanup;
+     }
+ 
+@@ -1147,7 +1145,7 @@ grub_cryptodisk_scan_device (const char *name,
+   if (grub_errno == GRUB_ERR_BAD_MODULE)
+     grub_error_pop ();
+ 
+-  if (search_uuid != NULL)
++  if (cargs->search_uuid != NULL)
+     /* Push error onto stack to save for cryptomount. */
+     grub_error_push ();
+   else
+@@ -1189,10 +1187,9 @@ grub_cmd_cryptomount (grub_extcmd_context_t ctxt, int argc, char **args)
+ 	  return GRUB_ERR_NONE;
+ 	}
+ 
+-      check_boot = state[2].set;
+-      search_uuid = args[0];
++      cargs.check_boot = state[2].set;
++      cargs.search_uuid = args[0];
+       found_uuid = grub_device_iterate (&grub_cryptodisk_scan_device, &cargs);
+-      search_uuid = NULL;
+ 
+       if (found_uuid)
+ 	return GRUB_ERR_NONE;
+@@ -1210,10 +1207,8 @@ grub_cmd_cryptomount (grub_extcmd_context_t ctxt, int argc, char **args)
+     }
+   else if (state[1].set || (argc == 0 && state[2].set)) /* -a|-b */
+     {
+-      search_uuid = NULL;
+-      check_boot = state[2].set;
++      cargs.check_boot = state[2].set;
+       grub_device_iterate (&grub_cryptodisk_scan_device, &cargs);
+-      search_uuid = NULL;
+       return GRUB_ERR_NONE;
+     }
+   else
+@@ -1224,8 +1219,7 @@ grub_cmd_cryptomount (grub_extcmd_context_t ctxt, int argc, char **args)
+       char *disklast = NULL;
+       grub_size_t len;
+ 
+-      search_uuid = NULL;
+-      check_boot = state[2].set;
++      cargs.check_boot = state[2].set;
+       diskname = args[0];
+       len = grub_strlen (diskname);
+       if (len && diskname[0] == '(' && diskname[len - 1] == ')')
+diff --git a/grub-core/disk/geli.c b/grub-core/disk/geli.c
+index 7299a47d19..23789c43f3 100644
+--- a/grub-core/disk/geli.c
++++ b/grub-core/disk/geli.c
+@@ -240,8 +240,7 @@ grub_util_get_geli_uuid (const char *dev)
+ #endif
+ 
+ static grub_cryptodisk_t
+-configure_ciphers (grub_disk_t disk, const char *check_uuid,
+-		   int boot_only)
++configure_ciphers (grub_disk_t disk, grub_cryptomount_args_t cargs)
+ {
+   grub_cryptodisk_t newdev;
+   struct grub_geli_phdr header;
+@@ -289,7 +288,7 @@ configure_ciphers (grub_disk_t disk, const char *check_uuid,
+       return NULL;
+     }
+ 
+-  if (boot_only && !(grub_le_to_cpu32 (header.flags) & GRUB_GELI_FLAGS_BOOT))
++  if (cargs->check_boot && !(grub_le_to_cpu32 (header.flags) & GRUB_GELI_FLAGS_BOOT))
+     {
+       grub_dprintf ("geli", "not a boot volume\n");
+       return NULL;
+@@ -302,9 +301,9 @@ configure_ciphers (grub_disk_t disk, const char *check_uuid,
+       return NULL;
+     }
+ 
+-  if (check_uuid && grub_strcasecmp (check_uuid, uuid) != 0)
++  if (cargs->search_uuid != NULL && grub_strcasecmp (cargs->search_uuid, uuid) != 0)
+     {
+-      grub_dprintf ("geli", "%s != %s\n", uuid, check_uuid);
++      grub_dprintf ("geli", "%s != %s\n", uuid, cargs->search_uuid);
+       return NULL;
+     }
+ 
+diff --git a/grub-core/disk/luks.c b/grub-core/disk/luks.c
+index 39a7af6a43..f0feb38447 100644
+--- a/grub-core/disk/luks.c
++++ b/grub-core/disk/luks.c
+@@ -63,8 +63,7 @@ gcry_err_code_t AF_merge (const gcry_md_spec_t * hash, grub_uint8_t * src,
+ 			  grub_size_t blocknumbers);
+ 
+ static grub_cryptodisk_t
+-configure_ciphers (grub_disk_t disk, const char *check_uuid,
+-		   int check_boot)
++configure_ciphers (grub_disk_t disk, grub_cryptomount_args_t cargs)
+ {
+   grub_cryptodisk_t newdev;
+   const char *iptr;
+@@ -76,7 +75,7 @@ configure_ciphers (grub_disk_t disk, const char *check_uuid,
+   char hashspec[sizeof (header.hashSpec) + 1];
+   grub_err_t err;
+ 
+-  if (check_boot)
++  if (cargs->check_boot)
+     return NULL;
+ 
+   /* Read the LUKS header.  */
+@@ -103,9 +102,9 @@ configure_ciphers (grub_disk_t disk, const char *check_uuid,
+     }
+   *optr = 0;
+ 
+-  if (check_uuid && grub_strcasecmp (check_uuid, uuid) != 0)
++  if (cargs->search_uuid != NULL && grub_strcasecmp (cargs->search_uuid, uuid) != 0)
+     {
+-      grub_dprintf ("luks", "%s != %s\n", uuid, check_uuid);
++      grub_dprintf ("luks", "%s != %s\n", uuid, cargs->search_uuid);
+       return NULL;
+     }
+ 
+diff --git a/grub-core/disk/luks2.c b/grub-core/disk/luks2.c
+index 09740b53f9..ccfacb63a3 100644
+--- a/grub-core/disk/luks2.c
++++ b/grub-core/disk/luks2.c
+@@ -346,14 +346,14 @@ luks2_read_header (grub_disk_t disk, grub_luks2_header_t *outhdr)
+ }
+ 
+ static grub_cryptodisk_t
+-luks2_scan (grub_disk_t disk, const char *check_uuid, int check_boot)
++luks2_scan (grub_disk_t disk, grub_cryptomount_args_t cargs)
+ {
+   grub_cryptodisk_t cryptodisk;
+   grub_luks2_header_t header;
+   char uuid[sizeof (header.uuid) + 1];
+   grub_size_t i, j;
+ 
+-  if (check_boot)
++  if (cargs->check_boot)
+     return NULL;
+ 
+   if (luks2_read_header (disk, &header))
+@@ -367,9 +367,9 @@ luks2_scan (grub_disk_t disk, const char *check_uuid, int check_boot)
+       uuid[j++] = header.uuid[i];
+   uuid[j] = '\0';
+ 
+-  if (check_uuid && grub_strcasecmp (check_uuid, uuid) != 0)
++  if (cargs->search_uuid != NULL && grub_strcasecmp (cargs->search_uuid, uuid) != 0)
+     {
+-      grub_dprintf ("luks2", "%s != %s\n", uuid, check_uuid);
++      grub_dprintf ("luks2", "%s != %s\n", uuid, cargs->search_uuid);
+       return NULL;
+     }
+ 
+diff --git a/include/grub/cryptodisk.h b/include/grub/cryptodisk.h
+index 5bd970692f..c6524c9ea9 100644
+--- a/include/grub/cryptodisk.h
++++ b/include/grub/cryptodisk.h
+@@ -69,7 +69,13 @@ typedef gcry_err_code_t
+ 
+ struct grub_cryptomount_args
+ {
++  /* scan: Flag to indicate that only bootable volumes should be decrypted */
++  grub_uint32_t check_boot : 1;
++  /* scan: Only volumes matching this UUID should be decrpyted */
++  char *search_uuid;
++  /* recover_key: Key data used to decrypt voume */
+   grub_uint8_t *key_data;
++  /* recover_key: Length of key_data */
+   grub_size_t key_len;
+ };
+ typedef struct grub_cryptomount_args *grub_cryptomount_args_t;
+@@ -125,8 +131,7 @@ struct grub_cryptodisk_dev
+   struct grub_cryptodisk_dev *next;
+   struct grub_cryptodisk_dev **prev;
+ 
+-  grub_cryptodisk_t (*scan) (grub_disk_t disk, const char *check_uuid,
+-			     int boot_only);
++  grub_cryptodisk_t (*scan) (grub_disk_t disk, grub_cryptomount_args_t cargs);
+   grub_err_t (*recover_key) (grub_disk_t disk, grub_cryptodisk_t dev, grub_cryptomount_args_t cargs);
+ };
+ typedef struct grub_cryptodisk_dev *grub_cryptodisk_dev_t;
+-- 
+2.34.1
+

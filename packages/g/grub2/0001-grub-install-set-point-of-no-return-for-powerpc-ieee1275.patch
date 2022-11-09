@@ -1,0 +1,32 @@
+From grub-devel-bounces@gnu.org Thu Aug 25 08:11:08 2022
+From: Michael Chang <mchang@suse.com>
+Date: Thu, 25 Aug 2022 14:05:01 +0800
+Subject: [PATCH] grub-install: set point of no return for powerpc-ieee1275
+ install
+
+The point of no return is used to define a point where no change should
+be reverted in a wake of fatal error that consequently aborts the
+process. The powerpc-ieee1275 install apparently missed this point of no
+return defintion that newly installed modules could be inadvertently
+reverted after successful image embedding so that boot failure is
+incurred due to inconsistent state.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+[iluceno@suse.de: Backported to SLES-15-SP4]
+Signed-off-by: Ismael Luceno <iluceno@suse.de>
+---
+ util/grub-install.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+Index: grub-2.06/util/grub-install.c
+===================================================================
+--- grub-2.06.orig/util/grub-install.c
++++ grub-2.06/util/grub-install.c
+@@ -2160,6 +2160,7 @@ main (int argc, char *argv[])
+ 	    {
+ 	      grub_util_error ("%s", _("failed to copy Grub to the PReP partition"));
+ 	    }
++	  grub_set_install_backup_ponr ();
+ 
+ 	  if ((signed_grub_mode >= SIGNED_GRUB_FORCE) || ((signed_grub_mode == SIGNED_GRUB_AUTO) && (ppc_sb_state > 0)))
+ 	    {

@@ -1,0 +1,88 @@
+From 12378be5243c1c02ce28de2e5703e87197c69157 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Mon, 29 Aug 2022 11:28:28 +0800
+Subject: [PATCH] tpm: Disable tpm verifier if tpm is not present
+
+This helps to prevent out of memory error when reading large files via disablig
+tpm device as verifier has to read all content into memory in one chunk to
+measure the hash and extend to tpm.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/commands/efi/tpm.c |   37 +++++++++++++++++++++++++++++++++++++
+ grub-core/commands/tpm.c     |    4 ++++
+ include/grub/tpm.h           |    1 +
+ 3 files changed, 42 insertions(+)
+
+--- a/grub-core/commands/efi/tpm.c
++++ b/grub-core/commands/efi/tpm.c
+@@ -349,3 +349,40 @@
+ 
+   return result;
+ }
++
++int
++grub_tpm_present ()
++{
++  grub_efi_handle_t tpm_handle;
++  grub_efi_uint8_t protocol_version;
++
++  if (!grub_tpm_handle_find (&tpm_handle, &protocol_version))
++    return 0;
++
++  if (protocol_version == 1)
++    {
++      grub_efi_tpm_protocol_t *tpm;
++
++      tpm = grub_efi_open_protocol (tpm_handle, &tpm_guid,
++				    GRUB_EFI_OPEN_PROTOCOL_GET_PROTOCOL);
++      if (!tpm)
++	{
++	  grub_dprintf ("tpm", "Cannot open TPM protocol\n");
++	  return 0;
++	}
++      return grub_tpm1_present (tpm);
++    }
++  else
++    {
++      grub_efi_tpm2_protocol_t *tpm;
++
++      tpm = grub_efi_open_protocol (tpm_handle, &tpm2_guid,
++				    GRUB_EFI_OPEN_PROTOCOL_GET_PROTOCOL);
++      if (!tpm)
++	{
++	  grub_dprintf ("tpm", "Cannot open TPM protocol\n");
++	  return 0;
++	}
++      return grub_tpm2_present (tpm);
++    }
++}
+--- a/grub-core/commands/tpm.c
++++ b/grub-core/commands/tpm.c
+@@ -291,6 +291,8 @@
+ 
+ GRUB_MOD_INIT (tpm)
+ {
++  if (!grub_tpm_present())
++    return;
+   grub_verifier_register (&grub_tpm_verifier);
+ 
+   cmd = grub_register_extcmd ("tpm_record_pcrs", grub_tpm_record_pcrs, 0,
+@@ -301,6 +303,8 @@
+ 
+ GRUB_MOD_FINI (tpm)
+ {
++  if (!grub_tpm_present())
++    return;
+   grub_verifier_unregister (&grub_tpm_verifier);
+   grub_unregister_extcmd (cmd);
+ }
+--- a/include/grub/tpm.h
++++ b/include/grub/tpm.h
+@@ -44,5 +44,6 @@
+ 			     grub_uint8_t pcr, const char *description);
+ struct grub_tpm_digest *grub_tpm_read_pcr (grub_uint8_t index, const char *algo);
+ void grub_tpm_digest_free (struct grub_tpm_digest *d);
++int grub_tpm_present (void);
+ 
+ #endif

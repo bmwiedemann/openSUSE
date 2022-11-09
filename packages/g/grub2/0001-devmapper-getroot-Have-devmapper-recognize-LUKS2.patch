@@ -1,0 +1,53 @@
+From ebe4ac49e800b18b539564169593ab1c6f163378 Mon Sep 17 00:00:00 2001
+From: Josselin Poiret via Grub-devel <grub-devel@gnu.org>
+Date: Tue, 14 Jun 2022 15:47:29 +0200
+Subject: [PATCH 01/10] devmapper/getroot: Have devmapper recognize LUKS2
+
+Changes UUID comparisons so that LUKS1 and LUKS2 are both recognized
+as being LUKS cryptodisks.
+---
+ grub-core/osdep/devmapper/getroot.c | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
+
+diff --git a/grub-core/osdep/devmapper/getroot.c b/grub-core/osdep/devmapper/getroot.c
+index 9ba5c98655..2bf4264cf0 100644
+--- a/grub-core/osdep/devmapper/getroot.c
++++ b/grub-core/osdep/devmapper/getroot.c
+@@ -138,7 +138,8 @@ grub_util_get_dm_abstraction (const char *os_dev)
+       grub_free (uuid);
+       return GRUB_DEV_ABSTRACTION_LVM;
+     }
+-  if (strncmp (uuid, "CRYPT-LUKS1-", 12) == 0)
++  if (strncmp (uuid, "CRYPT-LUKS1-", sizeof ("CRYPT-LUKS1-") - 1) == 0
++      || strncmp (uuid, "CRYPT-LUKS2-", sizeof ("CRYPT-LUKS2-") - 1) == 0)
+     {
+       grub_free (uuid);
+       return GRUB_DEV_ABSTRACTION_LUKS;
+@@ -179,7 +180,9 @@ grub_util_pull_devmapper (const char *os_dev)
+ 	  grub_util_pull_device (subdev);
+ 	}
+     }
+-  if (uuid && strncmp (uuid, "CRYPT-LUKS1-", sizeof ("CRYPT-LUKS1-") - 1) == 0
++  if (uuid
++      && (strncmp (uuid, "CRYPT-LUKS1-", sizeof ("CRYPT-LUKS1-") - 1) == 0
++          || strncmp (uuid, "CRYPT-LUKS2-", sizeof ("CRYPT-LUKS2-") - 1) == 0)
+       && lastsubdev)
+     {
+       char *grdev = grub_util_get_grub_dev (lastsubdev);
+@@ -253,11 +256,11 @@ grub_util_get_devmapper_grub_dev (const char *os_dev)
+       {
+ 	char *dash;
+ 
+-	dash = grub_strchr (uuid + sizeof ("CRYPT-LUKS1-") - 1, '-');
++	dash = grub_strchr (uuid + sizeof ("CRYPT-LUKS*-") - 1, '-');
+ 	if (dash)
+ 	  *dash = 0;
+ 	grub_dev = grub_xasprintf ("cryptouuid/%s",
+-				   uuid + sizeof ("CRYPT-LUKS1-") - 1);
++				   uuid + sizeof ("CRYPT-LUKS*-") - 1);
+ 	grub_free (uuid);
+ 	return grub_dev;
+       }
+-- 
+2.34.1
+

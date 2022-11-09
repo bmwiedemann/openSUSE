@@ -1,0 +1,62 @@
+From 1729400ab816804a28ebf50cb1310607b2c4b75e Mon Sep 17 00:00:00 2001
+From: Diego Domingos <diegodo@br.ibm.com>
+Date: Fri, 25 Feb 2022 12:49:51 -0500
+Subject: [PATCH 3/4] ieee1275: change the logic of ieee1275_get_devargs()
+
+Usually grub will parse the PFW arguments by searching for the first occurence of the character ':'.
+However, we can have this char more than once on NQN.
+This patch changes the logic to find the last occurence of this char so we can get the proper values
+for NVMeoFC
+---
+ grub-core/kern/ieee1275/openfw.c | 21 ++++++++++++++++++++-
+ 1 file changed, 20 insertions(+), 1 deletion(-)
+
+diff --git a/grub-core/kern/ieee1275/openfw.c b/grub-core/kern/ieee1275/openfw.c
+index f819bd106..655a71310 100644
+--- a/grub-core/kern/ieee1275/openfw.c
++++ b/grub-core/kern/ieee1275/openfw.c
+@@ -354,6 +354,13 @@ static char *
+ grub_ieee1275_get_devargs (const char *path)
+ {
+   char *colon = grub_strchr (path, ':');
++  char *colon_check = colon;
++
++  /* Find the last occurence of colon */
++  while(colon_check){
++    colon = colon_check;
++    colon_check = grub_strchr (colon+1, ':');
++  }
+ 
+   if (! colon)
+     return 0;
+@@ -368,6 +375,18 @@ grub_ieee1275_get_devname (const char *path)
+   char *colon = grub_strchr (path, ':');
+   int pathlen = grub_strlen (path);
+   struct grub_ieee1275_devalias curalias;
++
++  /* Check some special cases */
++  if(grub_strstr(path, "nvme-of")){
++    char *namespace_split = grub_strstr(path,"/namespace@");
++    if(namespace_split){
++      colon = grub_strchr (namespace_split, ':');
++    } else {
++      colon = NULL;
++    }
++
++  }
++
+   if (colon)
+     pathlen = (int)(colon - path);
+ 
+@@ -693,7 +712,7 @@ grub_ieee1275_get_boot_dev (void)
+       return NULL;
+     }
+ 
+-  bootpath = (char *) grub_malloc ((grub_size_t) bootpath_size + 64);
++  bootpath = (char *) grub_malloc ((grub_size_t) bootpath_size + 64 + 256);
+   if (! bootpath)
+     {
+       grub_print_error ();
+-- 
+2.35.3
+

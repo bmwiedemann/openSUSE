@@ -1,0 +1,31 @@
+From 9ef619a7c1d38988f6d91496ea5c59062dcf6013 Mon Sep 17 00:00:00 2001
+From: Glenn Washburn <development@efficientek.com>
+Date: Thu, 9 Dec 2021 11:14:54 -0600
+Subject: [PATCH 05/14] cryptodisk: Improve cryptomount -u error message
+
+When a cryptmount is specified with a UUID, but no cryptodisk backends find
+a disk with that UUID, return a more detailed message giving telling the
+user that they might not have a needed cryptobackend module loaded.
+
+Signed-off-by: Glenn Washburn <development@efficientek.com>
+Reviewed-by: Daniel Kiper <daniel.kiper@oracle.com>
+---
+ grub-core/disk/cryptodisk.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/grub-core/disk/cryptodisk.c b/grub-core/disk/cryptodisk.c
+index 3a896c6634..5a9780b14c 100644
+--- a/grub-core/disk/cryptodisk.c
++++ b/grub-core/disk/cryptodisk.c
+@@ -1159,7 +1159,7 @@ grub_cmd_cryptomount (grub_extcmd_context_t ctxt, int argc, char **args)
+ 	   */
+ 	  grub_error_pop ();
+ 	  if (grub_errno == GRUB_ERR_NONE)
+-	    return grub_error (GRUB_ERR_BAD_ARGUMENT, "no such cryptodisk found");
++	    return grub_error (GRUB_ERR_BAD_ARGUMENT, "no such cryptodisk found, perhaps a needed disk or cryptodisk module is not loaded");
+ 	}
+       return grub_errno;
+     }
+-- 
+2.34.1
+

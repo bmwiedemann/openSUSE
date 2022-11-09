@@ -1,0 +1,68 @@
+From 4284d40799aaf5aab11c690f232ce0a191dcfbdb Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Fri, 16 Sep 2022 10:59:55 +0800
+Subject: [PATCH 2/2] mm: Defer the disk cache invalidation
+
+When the heap memory is used up, the memory management code invalidates
+the disk caches first and then requests the additional memory regioins.
+Although this could minimize the memory usage, it hurts the loading time
+since the disk caches may always miss.
+
+This patch defers the disk cache invalidation to avoid the possible
+delays.
+
+Signen-off-by: Gary Lin <glin@suse.com>
+---
+ grub-core/kern/mm.c | 22 +++++++---------------
+ 1 file changed, 7 insertions(+), 15 deletions(-)
+
+diff --git a/grub-core/kern/mm.c b/grub-core/kern/mm.c
+index 0bd9f75..5280e8c 100644
+--- a/grub-core/kern/mm.c
++++ b/grub-core/kern/mm.c
+@@ -355,20 +355,6 @@ grub_memalign (grub_size_t align, grub_size_t size)
+   switch (count)
+     {
+     case 0:
+-      /* Invalidate disk caches.  */
+-      grub_disk_cache_invalidate_all ();
+-      count++;
+-      goto again;
+-
+-#if 0
+-    case 1:
+-      /* Unload unneeded modules.  */
+-      grub_dl_unload_unneeded ();
+-      count++;
+-      goto again;
+-#endif
+-
+-    case 1:
+       /* Request additional pages, contiguous */
+       count++;
+ 
+@@ -378,7 +364,7 @@ grub_memalign (grub_size_t align, grub_size_t size)
+ 
+       /* fallthrough  */
+ 
+-    case 2:
++    case 1:
+       /* Request additional pages, anything at all */
+       count++;
+ 
+@@ -394,6 +380,12 @@ grub_memalign (grub_size_t align, grub_size_t size)
+ 
+       /* fallthrough */
+ 
++    case 2:
++      /* Invalidate disk caches.  */
++      grub_disk_cache_invalidate_all ();
++      count++;
++      goto again;
++
+     default:
+       break;
+     }
+-- 
+2.35.3
+

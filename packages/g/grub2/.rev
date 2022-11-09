@@ -2350,4 +2350,12 @@ pretty much the same. The main user visible changes are
     <user>RBrownFactory</user>
     <comment>Revert to revision 268, boo#1202438</comment>
   </revision>
+  <revision rev="272" vrev="29">
+    <srcmd5>ff20af713dad81a97b31f993d5ed772f</srcmd5>
+    <version>2.06</version>
+    <time>1667995000</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1032598</requestid>
+  </revision>
 </revisionlist>
