@@ -82,4 +82,16 @@ New dependecy of python-Pyramid</comment>
     <comment></comment>
     <requestid>925648</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>627c0ada91c7b1ff46e891759e184a53</srcmd5>
+    <version>5.1.0</version>
+    <time>1667994969</time>
+    <user>dimstar_suse</user>
+    <comment>- Clean up SPEC file, make rpmlint happy.
+- -doc subpackage should be noarch.
+- update to version 5.1.0
+  * Added support for Python 3.9, 3.10 and 3.11.
+</comment>
+    <requestid>1034426</requestid>
+  </revision>
 </revisionlist>

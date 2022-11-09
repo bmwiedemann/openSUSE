@@ -1,8 +1,8 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2013 LISA GmbH, Bingen, Germany.
+# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2013-2022 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -27,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-zope.i18nmessageid%{psuffix}
-Version:        5.0.1
+Version:        5.1.0
 Release:        0
 Summary:        Zope Location
 License:        ZPL-2.1
@@ -54,6 +53,7 @@ In Zope3, i18nmessageid are special objects that has a structural i18nmessageid.
 %package     -n %{name}-doc
 Summary:        Zope Location
 Provides:       %{python_module zope.i18nmessageid-doc = %{version}}
+BuildArch:      noarch
 
 %description -n %{name}-doc
 This package contains documentation files for %{name}.
@@ -86,7 +86,10 @@ python3 setup.py build_sphinx && rm build/sphinx/html/.buildinfo build/sphinx/ht
 %files %{python_files}
 %license LICENSE.txt
 %doc CHANGES.rst COPYRIGHT.txt README.rst
-%{python_sitearch}/*
+%dir %{python_sitearch}/zope
+%{python_sitearch}/zope/i18nmessageid
+%{python_sitearch}/zope.i18nmessageid-%{version}*-info
+%{python_sitearch}/zope.i18nmessageid-%{version}*-nspkg.pth
 %endif
 
 %if !%{with test}

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov  8 07:10:23 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Clean up SPEC file, make rpmlint happy.
+- -doc subpackage should be noarch.
+
+-------------------------------------------------------------------
+Sun Nov  6 17:57:02 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- update to version 5.1.0
+  * Added support for Python 3.9, 3.10 and 3.11.
+
+-------------------------------------------------------------------
 Wed Oct 13 09:10:40 UTC 2021 - pgajdos@suse.com
 
 - %check: use %pyunittest rpm macro
