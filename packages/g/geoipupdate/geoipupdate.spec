@@ -18,7 +18,7 @@
 
 # Common info
 Name:           geoipupdate
-Version:        4.9.0
+Version:        4.10.0
 Release:        0
 Summary:        GeoIP update client code
 License:        Apache-2.0 OR MIT
@@ -57,6 +57,7 @@ Script for updating data in GeoIP Legacy format.
 
 
 # Preparation step (unpackung and patching if necessary)
+
 %prep
 %setup -q -a1
 %patch0 -p1

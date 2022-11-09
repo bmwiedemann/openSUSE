@@ -161,4 +161,18 @@ variables: GEOIPUPDATE_CONF_FILE and GEOIPUPDATE_DB_DIR
 </comment>
     <requestid>958302</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>10afc8d441c1a4cdd0137e0700c5c964</srcmd5>
+    <version>4.10.0</version>
+    <time>1667995104</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.10.0:
+  * HTTPS proxies are now supported.
+  * An HTTP request to get the filename for the edition ID
+    has been removed. This was previously required as the GeoIP
+    Legacy edition IDs bore little relation to the name of
+    the database on disk.
+</comment>
+    <requestid>1034814</requestid>
+  </revision>
 </revisionlist>
