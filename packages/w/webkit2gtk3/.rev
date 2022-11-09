@@ -1340,4 +1340,12 @@
     <comment></comment>
     <requestid>1030949</requestid>
   </revision>
+  <revision rev="154" vrev="1">
+    <srcmd5>fc4046943e5382027d8a15a725491a6c</srcmd5>
+    <version>2.38.2</version>
+    <time>1667994972</time>
+    <user>dimstar_suse</user>
+    <comment>Resub, tweaked .changes from the past (forwarded request 1034358 from iznogood)</comment>
+    <requestid>1034432</requestid>
+  </revision>
 </revisionlist>

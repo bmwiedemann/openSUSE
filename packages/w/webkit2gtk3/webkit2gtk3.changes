@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov  7 15:20:15 UTC 2022 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.38.2 (boo#1205120 boo#1205123 boo#1205124):
+  + Fix scrolling issues in some sites having fixed background.
+  + Fix prolonged buffering during progressive live playback.
+  + Fix the build with accessibility disabled.
+  + Fix several crashes and rendering issues.
+  + Security fixes: CVE-2022-42799, CVE-2022-42823, CVE-2022-42824.
+
+-------------------------------------------------------------------
 Mon Oct 24 17:47:17 UTC 2022 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 2.38.1:
@@ -21,7 +31,7 @@ Mon Oct 24 17:47:17 UTC 2022 - Michael Gorse <mgorse@suse.com>
 -------------------------------------------------------------------
 Fri Sep 16 22:44:55 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
-- Update to version 2.38.0 (boo#1203530):
+- Update to version 2.38.0 (boo#1203530 boo#1205121 boo#1205122):
   + New media controls UI style.
   + Add new API to set WebView’s Content-Security-Policy for web
     extensions support.
@@ -30,7 +40,8 @@ Fri Sep 16 22:44:55 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
   + MediaSession is enabled by default, allowing remote media
     control using MPRIS.
   + Add support for PDF documents using PDF.js.
-+ Security fixes: CVE-2022-32886, CVE-2022-32912.
++ Security fixes: CVE-2022-32886, CVE-2022-32888, CVE-2022-32912,
+  CVE-2022-32923.
 
 -------------------------------------------------------------------
 Mon Sep  5 06:25:57 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
@@ -120,8 +131,8 @@ Fri Jul 29 15:09:20 UTC 2022 - Michael Gorse <mgorse@suse.com>
 Tue Jul  5 15:16:48 UTC 2022 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 2.36.4 (boo#1201221):
-  + Fix the new ATSPI accessibility implementation to add the missing
-    Collection interface for the loaded document.
+  + Fix the new ATSPI accessibility implementation to add the
+    missing Collection interface for the loaded document.
   + Fix the MediaSession implementation to make the MPRIS object
     names more sandbox friendly, which plays better with Flatpak
     and WebKit's own Bubblwrap-based sandboxing.
@@ -165,7 +176,8 @@ Fri May 20 16:02:05 UTC 2022 - Michael Gorse <mgorse@suse.com>
 Mon May  2 08:24:28 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Remove dependency on binutils-gold as the package will be removed
-  in the future. Gold linker is unmaintained by the upstream project. 
+  in the future. Gold linker is unmaintained by the upstream
+  project.
 
 -------------------------------------------------------------------
 Thu Apr 21 19:05:39 UTC 2022 - Michael Gorse <mgorse@suse.com>
@@ -295,7 +307,7 @@ Wed Feb  9 18:14:24 UTC 2022 - Michael Gorse <mgorse@suse.com>
     older ones as included e.g. in Ubuntu 18.04.
   + Fix the build with ICU 60, version 61 is no longer required.
   + Fix several crashes and rendering issues.
-  + Security fixes: CVE-2022-22589, CVE-2022-22590, CVE-2022-22592,.
+  + Security fixes: CVE-2022-22589, CVE-2022-22590, CVE-2022-22592.
   + Drop webkit2gtk3-gcc12.patch: fixed upstream.
 
 -------------------------------------------------------------------
