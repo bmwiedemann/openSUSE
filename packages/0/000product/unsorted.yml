@@ -6405,7 +6405,6 @@ unsorted:
   - gr-iqbal-grc 
   - grabpng 
   - gradle-bootstrap 
-  - gradle-local 
   - grafana 
   - grafana-ha-cluster-dashboards 
   - grafana-piechart-panel 
@@ -6468,6 +6467,7 @@ unsorted:
   - groff-doc 
   - gromacs 
   - gromacs-bash-completion 
+  - gromacs-data 
   - gromacs-devel 
   - gromacs-doc 
   - gromacs-openmpi 
@@ -8390,7 +8390,6 @@ unsorted:
   - kiwi-systemdeps-filesystems 
   - kiwi-systemdeps-image-validation 
   - kiwi-systemdeps-iso-media 
-  - kiwi-templates-JeOS 
   - kiwi-templates-Minimal 
   - kiwi-tools 
   - kjobwidgets-devel 
@@ -11293,8 +11292,9 @@ unsorted:
   - libgmime-3_0-0-32bit: [x86_64] 
   - libgmpxx4 
   - libgmpxx4-32bit: [x86_64] 
-  - libgmsh4_10 
+  - libgmsh4_11 
   - libgmxapi0 
+  - libgmxapi_mpi0 
   - libgnome-bluetooth13 
   - libgnome-desktop-3-devel 
   - libgnome-desktop-4-devel 
@@ -11378,7 +11378,8 @@ unsorted:
   - libgraphene-1_0-0-32bit: [x86_64] 
   - libgraphene-devel 
   - libgravatar-devel 
-  - libgromacs6 
+  - libgromacs7 
+  - libgromacs_mpi7 
   - libgrpc++1_50 
   - libgrpc28 
   - libgrpc_plugin_support1_50 
@@ -12579,7 +12580,7 @@ unsorted:
   - libnbd-bash-completion 
   - libnbd-devel 
   - libnbd0: [i586] 
-  - libnblib0 
+  - libnblib_gmx0 
   - libnco-5_1_0 
   - libnco-devel 
   - libnco_c++-5_1_0 
@@ -14314,7 +14315,7 @@ unsorted:
   - libsuseconnect 
   - libsvm-devel 
   - libsvm-java 
-  - libsvm2 
+  - libsvm3 
   - libsword-1_8_1 
   - libswresample3_9-32bit: [x86_64] 
   - libswresample4: [i586] 
