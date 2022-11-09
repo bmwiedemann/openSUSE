@@ -46,7 +46,7 @@ ExclusiveArch:  do-not-build
 %bcond_with test
 %endif
 Name:           %{pprefix}-flit-core%{?psuffix}
-Version:        3.7.1
+Version:        3.8.0
 Release:        0
 Summary:        Distribution-building parts of Flit
 License:        BSD-3-Clause AND MIT
