@@ -1,7 +1,7 @@
 #
 # spec file for package libsvm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,18 @@
 #
 
 
+%define libname libsvm3
+%define fileversion 3.3
+
 Summary:        A Library for Support Vector Machines
 License:        BSD-3-Clause
 Group:          Development/Languages/Other
 Name:           libsvm
-Version:        3.24
+Version:        3.30
 Release:        0
 URL:            https://www.csie.ntu.edu.tw/~cjlin/libsvm/
-Source0:        https://www.csie.ntu.edu.tw/~cjlin/libsvm/%{name}-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Source0:        https://www.csie.ntu.edu.tw/~cjlin/libsvm/%{name}-%{fileversion}.tar.gz
 BuildRequires:  %{python_module devel}
-BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  java-devel
 BuildRequires:  javapackages-tools
@@ -47,11 +48,11 @@ LIBSVM is an integrated software for support vector classification,
 (C-SVC, nu-SVC), regression (epsilon-SVR, nu-SVR) and distribution
 estimation (one-class SVM). It supports multi-class classification.
 
-%package -n libsvm2
+%package -n %{libname}
 Summary:        A Library for Support Vector Machines
 Group:          System/Libraries
 
-%description -n libsvm2
+%description -n %{libname}
 LIBSVM is an integrated software for support vector classification,
 (C-SVC, nu-SVC), regression (epsilon-SVR, nu-SVR) and distribution
 estimation (one-class SVM). It supports multi-class classification.
@@ -59,7 +60,7 @@ estimation (one-class SVM). It supports multi-class classification.
 %package	devel
 Summary:        C headers for developing programs with libsvm
 Group:          Development/Libraries/C and C++
-Requires:       libsvm2 = %{version}
+Requires:       %{libname} = %{version}
 # VPP provides a libsvm.so installed in _libdir as well
 Conflicts:      vpp-devel
 
@@ -82,9 +83,9 @@ This package contains the Python bindings for libsvm.
 %package java
 Summary:        Java bindings for libsvm
 Group:          Development/Libraries/Java
+Requires:       %{libname} = %{version}
 Requires:       java >= 1.6.0
 Requires:       javapackages-tools
-Requires:       libsvm2 = %{version}
 Requires(post): javapackages-tools
 Requires(postun):javapackages-tools
 BuildArch:      noarch
@@ -93,7 +94,7 @@ BuildArch:      noarch
 This package contains the Java bindings for libsvm.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{fileversion}
 
 %build
 # We can't override CFLAGS, we have to patch the Makefile.
@@ -120,8 +121,8 @@ install -m 755 ./tools/grid.py %{buildroot}%{_bindir}/svm-grid
 install -m 755 ./tools/subset.py %{buildroot}%{_bindir}/svm-subset
 install -m 755 ./tools/easy.py %{buildroot}%{_bindir}/svm-easy
 install -m 644 svm.h %{buildroot}%{_includedir}/libsvm/
-install -m 755 libsvm.so.2 %{buildroot}%{_libdir}
-ln -s %{_libdir}/libsvm.so.2 %{buildroot}%{_libdir}/libsvm.so
+install -m 755 libsvm.so.3 %{buildroot}%{_libdir}
+ln -s %{_libdir}/libsvm.so.3 %{buildroot}%{_libdir}/libsvm.so
 mv ./python/README README-python
 mv ./tools/README README-python-tools
 
@@ -130,20 +131,15 @@ mv ./tools/README README-python-tools
 sed -i '1s|/usr/bin/env *|%{_bindir}/|;1s|/usr/bin/python$|%{_bindir}/python%python_bin_suffix|' \
     %{buildroot}%{_bindir}/svm-*
 
-install -m 644 ./python/svm.py %{buildroot}%{python_sitelib}/svm
-install -m 644 ./python/svmutil.py %{buildroot}%{python_sitelib}/svm
-touch %{buildroot}%{python_sitelib}/svm/__init__.py
+install -m 644 -t %{buildroot}%{python_sitelib}/svm ./python/libsvm/*.py
 
 # Remove unnecessary shebangs.
-sed -i '/^#!\/usr\/bin\/env .*$/d' %{buildroot}%{python_sitelib}/svm/*
+sed -i '/^#!\/usr\/bin\/env .*$/ d' %{buildroot}%{python_sitelib}/svm/*
 
 install -m 755 ./java/%{name}.jar %{buildroot}%{_javadir}/%{name}.jar
 
-%fdupes -s %{buildroot}
-
-%post -n libsvm2 -p /sbin/ldconfig
-
-%postun -n libsvm2 -p /sbin/ldconfig
+%post -n %{libname} -p /sbin/ldconfig
+%postun -n %{libname} -p /sbin/ldconfig
 
 %files -n svm-tools
 %doc FAQ.html README
@@ -151,9 +147,9 @@ install -m 755 ./java/%{name}.jar %{buildroot}%{_javadir}/%{name}.jar
 %{_bindir}/svm-scale
 %{_bindir}/svm-predict
 
-%files -n libsvm2
+%files -n %{libname}
 %license COPYRIGHT
-%{_libdir}/libsvm.so.2
+%{_libdir}/libsvm.so.3
 
 %files devel
 %{_includedir}/libsvm

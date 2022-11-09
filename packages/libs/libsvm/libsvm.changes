@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  8 23:02:48 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to version 3.30
+  * Probabilistic outputs for one-class SVM are now supported.
+
+-------------------------------------------------------------------
 Tue Mar 16 23:03:23 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net> 
 
 - Fix build by adding missing python-rpm-macros dependency.
