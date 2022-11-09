@@ -99,4 +99,12 @@
   * A new selector method, canonical, returns the CSS expression of the selector, as a string.</comment>
     <requestid>732109</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>5452d504d4382509c5898e8115a93dec</srcmd5>
+    <version>1.2.0</version>
+    <time>1667994985</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1034465</requestid>
+  </revision>
 </revisionlist>
