@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global skip_python2 1
 Name:           python-plyvel
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        Python interface to LevelDB
 License:        BSD-3-Clause
