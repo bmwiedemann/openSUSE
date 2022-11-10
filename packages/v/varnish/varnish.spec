@@ -25,7 +25,7 @@
 %define _fillupdir %_localstatedir/adm/fillup-templates
 %endif
 Name:           varnish
-Version:        7.2.0
+Version:        7.2.1
 Release:        0
 Summary:        Accelerator for HTTP services
 License:        BSD-2-Clause
