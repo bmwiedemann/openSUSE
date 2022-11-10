@@ -32,6 +32,7 @@ URL:            https://www.alsa-project.org
 Source:         https://www.alsa-project.org/files/pub/plugins/alsa-plugins-%{version}.tar.bz2
 Source1:        https://www.alsa-project.org/files/pub/plugins/alsa-plugins-%{version}.tar.bz2.sig
 Source2:        baselibs.conf
+Source3:        %{name}.keyring
 BuildRequires:  libtool
 BuildRequires:  pkgconfig(alsa) >= 1.2.5
 %if %{build_aaf}
