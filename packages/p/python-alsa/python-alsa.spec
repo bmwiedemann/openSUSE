@@ -28,6 +28,7 @@ Source:         %{url}/files/pub/pyalsa/pyalsa-%{version}.tar.bz2
 Source1:        %{url}/files/pub/pyalsa/pyalsa-%{version}.tar.bz2.sig
 Source2:        COPYING
 Source3:        COPYING.LIB
+Source4:        %{name}.keyring
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  alsa-devel
