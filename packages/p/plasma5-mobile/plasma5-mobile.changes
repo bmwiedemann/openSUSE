@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov  8 17:25:24 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.3
+- Changes since 5.26.2:
+  * homescreens/halcyon: Fix horizontal scrollbar being shown on app list
+  * lockscreen: Refactor and cleanup keypad
+  * components: Fix MarqueeLabel behaviour with new line characters
+  * statusbar: Don't use fractional font sizes
+  * lockscreen: Use bold text for clock to improve contrast
+  * shell: Fix accent color from wallpaper not working
+
+-------------------------------------------------------------------
 Wed Oct 26 14:16:16 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.26.2
