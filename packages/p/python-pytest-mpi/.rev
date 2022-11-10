@@ -50,4 +50,23 @@
     <comment></comment>
     <requestid>942849</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>80c50886c036c10f3ed787ec9cd27959</srcmd5>
+    <version>0.6</version>
+    <time>1668097989</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove pml/ob1 option for tests, bsc#1205139
+
+- Disable test_fixtures that produces a Segmentation fault in i586
+
+- Use pml ob1 to run tests
+
+- Remove pytest-mpi-pr37-sybil3.patch, not needed anymore
+- Update to 0.6:
+  * Again no codebase changes, testing/CI and packaging fixes only.
+  * Update Azure Pipelines to use latest images (so CI runs again)
+  * Update versioneer to work on future Python versions.
+  * Fix doctests infrastructure</comment>
+    <requestid>1035099</requestid>
+  </revision>
 </revisionlist>
