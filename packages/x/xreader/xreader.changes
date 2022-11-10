@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov  9 14:39:31 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 3.4.5
+  * Allow adding Highlight annotations from text selection
+  * Search: Add a close button
+  * l10n: Update translations
+  * epub: Fix index loading for certain documents - look for epub:type instead of epub:id.
+  * epub: Free the document when we leave early because of a bad toc file.
+
+-------------------------------------------------------------------
 Fri Apr 22 00:31:38 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 3.3.0
