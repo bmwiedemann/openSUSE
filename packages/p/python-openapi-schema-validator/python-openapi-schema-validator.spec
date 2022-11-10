@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-openapi-schema-validator
-Version:        0.3.3
+Version:        0.3.4
 Release:        0
 Summary:        OpenAPI schema validator for Python
 License:        BSD-3-Clause
