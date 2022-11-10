@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Nov  9 15:24:53 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 3.7.1:
+  * core: add option -save in command /upgrade
+  * core: add option weechat.look.highlight_disable_regex and buffer property "highlight_disable_regex" 
+  * core: sort filters by name 
+  * core: add key Alt+Backspace to delete previous word, change key Ctrl+w to delete previous word until whitespace
+  * core: fix wrong terminal title on terminal resize, fix page scroll in bare display
+  * api: rename function string_build_with_split_string to string_rebuild_split_string, 
+         add arguments "index_start" and "index_end"
+  * irc: display SETNAME command in channels and private buffers, 
+    add options irc.color.message_setname and irc.look.smart_filter_setname
+  * trigger: add elapsed time for trigger execution on monitor buffer when trigger debug is set, 
+    add option trigger.color.identifier, add variable ${tg_hook_type}
+
+-------------------------------------------------------------------
 Sun Jul 17 16:10:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.6:
