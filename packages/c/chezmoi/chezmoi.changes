@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Nov 09 18:01:27 UTC 2022 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.27.0:
+    feat: Suppress newlines from onepasswordRead
+    feat: Allow modify_ scripts to be executed as templates
+    chore: Blacklist buggy version of github.com/bmatcuk/doublestar/v4
+    feat: Add line ending template directive
+    feat: Add setValueAtPath template function
+    fix: Don't merge non-files in merge-all command
+    feat: Add --script-contents flag to diff command
+    chore: Better handle errors when globbing
+    feat: Add cat-config and dump-config commands
+    chore: Remove unused field
+    chore: Refactor handling of annotations
+    feat: Allow prompt*Once template functions to take paths
+    fix: Fix exclusion of externals
+    chore: Update dependencies
+    feat: Add completion template function
+
+-------------------------------------------------------------------
 Wed Nov 02 10:28:25 UTC 2022 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.26.0:
