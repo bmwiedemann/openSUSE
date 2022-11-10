@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov  8 22:31:34 UTC 2022 - Jason Sikes <jsikes@suse.com>
+
+- Added CVE-2022-32323.patch
+  * [bsc#1201529, CVE-2022-32323]
+  * Fixes Heap overflow in ReadImage()
+
+-------------------------------------------------------------------
 Fri May 13 16:01:02 UTC 2022 - Stanislav Brabec <sbrabec@suse.com>
 
 - biWidth*biBitCnt integer overflow fix (bsc#1182158,

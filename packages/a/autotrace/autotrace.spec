@@ -35,6 +35,8 @@ Patch1:         0001-fix_input_png.patch
 Patch2:         CVE-2019-19004.patch
 # PATCH-FIX-SECURITY CVE-2019-19005.patch bsc1182159 CVE-2019-19005 CVE-2017-9182, CVE-2017-9190 -- bitmap double free fix
 Patch3:         CVE-2019-19005.patch
+# PATCH-FIX-SECURITY CVE-2022-32323.patch bsc1201529 -- Heap overflow
+Patch4:         CVE-2022-32323.patch
 URL:            http://autotrace.sourceforge.net/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  ImageMagick-devel
@@ -81,6 +83,7 @@ platform using GCC.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 export CFLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing -fno-tree-sra"
