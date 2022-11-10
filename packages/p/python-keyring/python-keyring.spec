@@ -25,7 +25,7 @@
 %bcond_with test
 %endif
 Name:           python-keyring%{psuffix}
-Version:        23.9.3
+Version:        23.11.0
 Release:        0
 Summary:        System keyring service access from Python
 License:        MIT AND Python-2.0
@@ -41,8 +41,8 @@ BuildRequires:  python-rpm-macros
 Requires:       python-SecretStorage >= 3.2
 Requires:       python-jaraco.classes
 Requires:       python-jeepney >= 0.4.2
-%if 0%{python_version_nodots} < 310
-Requires:       python-importlib-metadata >= 3.6
+%if 0%{python_version_nodots} < 312
+Requires:       python-importlib-metadata >= 4.11.4
 %endif
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -77,8 +77,6 @@ sed -i '/^#!/d' keyring/cli.py
 
 %if %{with test}
 %check
-# https://github.com/jaraco/keyring/issues/526
-rm -r keyring.egg-info
 %pytest
 %endif
 
