@@ -19,7 +19,7 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define min_kernel_version 4.5
-%define archive_version +suse.36.gc212388f7d
+%define archive_version +suse.38.g9cdd785850
 
 %define _testsuitedir /usr/lib/systemd/tests
 %define xinitconfdir %{?_distconfdir}%{!?_distconfdir:%{_sysconfdir}}/X11/xinit
@@ -72,7 +72,7 @@
 
 Name:           systemd%{?mini}
 URL:            http://www.freedesktop.org/wiki/Software/systemd
-Version:        251.7
+Version:        251.8
 Release:        0
 Summary:        A System and Session Manager
 License:        LGPL-2.1-or-later
@@ -639,6 +639,11 @@ Have fun (at your own risk).
 %autosetup -p1 -n systemd-v%{version}%{archive_version}
 
 %build
+# Disable _FORTIFY_SOURCE=3 as it get confused by the use of
+# malloc_usable_size() (bsc#1200819). There used to be a workaround but it was
+# reverted, see 2cfb790391958ada34284290af1f9ab863a515c7 for the details.
+export CFLAGS="%{optflags} -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2"
+
 %meson \
         -Dmode=release \
         -Dversion-tag=%{version}%{archive_version} \

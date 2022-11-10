@@ -6161,4 +6161,14 @@ handle manual pages that consist only of a .so directive such as
 - specfile: reindent comments</comment>
     <requestid>1031048</requestid>
   </revision>
+  <revision rev="368" vrev="1">
+    <srcmd5>4721422531eaf67d376b13de4941a633</srcmd5>
+    <version>251.8</version>
+    <time>1668086474</time>
+    <user>dimstar_suse</user>
+    <comment>- Import commit 9cdd78585069b133bebcd479f3a204057ad25d76 (merge of v251.8)
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/c212388f7de8d22a3f7c22b19553548ccc0cdd15...9cdd78585069b133bebcd479f3a204057ad25d76</comment>
+    <requestid>1034593</requestid>
+  </revision>
 </revisionlist>

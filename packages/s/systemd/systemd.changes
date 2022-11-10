@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov  8 16:33:26 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Import commit 9cdd78585069b133bebcd479f3a204057ad25d76 (merge of v251.8)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/c212388f7de8d22a3f7c22b19553548ccc0cdd15...9cdd78585069b133bebcd479f3a204057ad25d76
+
+-------------------------------------------------------------------
 Tue Oct 25 07:19:15 UTC 2022 - Franck Bui <fbui@suse.com>
 
 - Import commit c212388f7de8d22a3f7c22b19553548ccc0cdd15 (merge of v251.7)
