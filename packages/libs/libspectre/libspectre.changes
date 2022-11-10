@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  8 23:14:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.2.11:
+  * Avoid possible crash when loading a document 
+
+-------------------------------------------------------------------
 Sun Mar 20 19:41:55 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.2.10:

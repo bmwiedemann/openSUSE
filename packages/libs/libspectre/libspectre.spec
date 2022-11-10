@@ -18,7 +18,7 @@
 
 %define debug_package_requires libspectre1 = %{version}-%{release}
 Name:           libspectre
-Version:        0.2.10
+Version:        0.2.11
 Release:        0
 Summary:        Library for Rendering PostScript Documents
 License:        GPL-2.0-or-later
