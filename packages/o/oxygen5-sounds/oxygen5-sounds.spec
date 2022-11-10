@@ -19,7 +19,8 @@
 %bcond_without released
 
 Name:           oxygen5-sounds
-Version:        5.26.2
+Version:        5.26.3.1
+%global _plasma5_bugfix 5.26.3
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -29,9 +30,9 @@ Summary:        Oxygen sounds
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/oxygen-sounds-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/5.26.3/oxygen-sounds-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/oxygen-sounds-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/5.26.3/oxygen-sounds-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= 5.89.0
