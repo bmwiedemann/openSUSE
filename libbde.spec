@@ -18,7 +18,7 @@
 
 %define lname	libbde1
 Name:           libbde
-Version:        20220807
+Version:        20221031
 Release:        0
 Summary:        Library and tools to access Microsoft Bitlocker Disk Encrypted partitions
 License:        GFDL-1.1-or-later AND LGPL-3.0-or-later AND GFDL-1.3-or-later
@@ -36,7 +36,7 @@ BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(fuse) >= 2.6
-BuildRequires:  pkgconfig(libbfio) >= 20220120
+BuildRequires:  pkgconfig(libbfio) >= 20221025
 BuildRequires:  pkgconfig(libcaes) >= 20220529
 BuildRequires:  pkgconfig(libcdata) >= 20220115
 BuildRequires:  pkgconfig(libcerror) >= 20220101
@@ -55,37 +55,36 @@ BuildRequires:  pkgconfig(libuna) >= 20220611
 %python_subpackages
 
 %description
-libbde is a library and tools to access the BitLocker Drive Encryption (BDE) format. The BDE format is used by Windows, as of Vista, to encrypt data on a storage media volume.
-
-Supported BDE formats:
-
-BitLocker Windows Vista
-BitLocker Windows 7
-BitLocker Windows 8 (Consumer Preview)
-BitLocker To Go
-Supported protection methods:
-
-clear key
-password
-recovery password
-start-up key
-FKEV and/or TWEAK key data
-Additional features:
-
-support for partial encrypted volumes
-zeros out the BDE metadata, matches behavior seen on Windows
-Work in progress:
-
-Dokan library support
-Multi-threading support
-
+libbde is a library to access the BitLocker Drive Encryption (BDE)
+format. The BDE format is used by Windows, as of Vista, to encrypt
+data on a storage media volume.
 %package -n %{lname}
 Summary:        Library to access Microsoft Bitlocker Drive Encrypted volumes
 License:        LGPL-3.0-or-later
 Group:          System/Libraries
 
 %description -n %{lname}
-libbde is a library to access the BitLocker Drive Encryption (BDE) format. The BDE format is used by Windows, as of Vista, to encrypt data on a storage media volume.
+libbde is a library and tools to access the BitLocker Drive Encryption (BDE) format. The BDE format is used by Windows, as of Vista, to encrypt data on a storage media volume.
+
+Supported BDE formats:
+
+* BitLocker Windows Vista
+* BitLocker Windows 7
+* BitLocker Windows 8 (Consumer Preview)
+* BitLocker To Go
+
+Supported protection methods:
+
+* clear key
+* password
+* recovery password
+* start-up key
+* FKEV and/or TWEAK key data
+
+Additional features:
+
+* support for partial encrypted volumes
+* zeros out the BDE metadata, matches behavior seen on Windows
 
 %package tools
 Summary:        Tools to access Microsoft Bitlocker Drive Encrypted volumes
@@ -93,7 +92,9 @@ License:        LGPL-3.0-or-later
 Group:          Productivity/File utilities
 
 %description tools
-Tools to access the BitLocker Drive Encryption (BDE) format. The BDE format is used by Windows, as of Vista, to encrypt data on a storage media volume.
+Tools to access the BitLocker Drive Encryption (BDE) format. The BDE
+format is used by Windows, as of Vista, to encrypt data on a storage
+media volume.
 
 %package devel
 Summary:        Development files for libbde, used to access Bitlocker Drive Encrypted Volumes
@@ -102,7 +103,9 @@ Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
 
 %description devel
-libbde is a library to access the BitLocker Drive Encryption (BDE) format. The BDE format is used by Windows, as of Vista, to encrypt data on a storage media volume.
+libbde is a library to access the BitLocker Drive Encryption (BDE)
+format. The BDE format is used by Windows, as of Vista, to encrypt
+data on a storage media volume.
 
 This subpackage contains libraries and header files for developing
 applications that want to make use of libbde.
@@ -127,10 +130,10 @@ echo "V_%version { global: *; };" >v.sym
 }
 
 %install
-mv %_builddir/rt/* %buildroot/
-find %{buildroot} -type f -name "*.la" -delete -print
+mv "%_builddir/rt"/* "%buildroot/"
+find "%buildroot" -type f -name "*.la" -delete -print
 # we have static libs for some reason, trash them
-find %{buildroot} -name "*.a" -print -delete
+find "%buildroot" -name "*.a" -print -delete
 
 %post   -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
