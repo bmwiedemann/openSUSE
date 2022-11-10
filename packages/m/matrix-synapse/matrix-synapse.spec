@@ -20,8 +20,8 @@
 
 # NOTE: Keep this is in the same order as pyproject.toml.
 %if %{with use_poetry_for_dependencies}
-%global Jinja2_version                3.0.3
-%global Pillow_version                9.0.1
+%global Jinja2_version                3.1.2
+%global Pillow_version                9.2.0
 %global PyYAML_version                6.0
 %global Twisted_version               22.4.0
 %global attrs_version                 21.4.0
@@ -39,7 +39,7 @@
 %global msgpack_version               1.0.3
 %global netaddr_version               0.8.0
 %global phonenumbers_version          8.12.44
-%global prometheus_client_version     0.14.0
+%global prometheus_client_version     0.15.0
 %global psutil_version                2.0.0
 %global pyOpenSSL_version             22.0.0
 %global pyasn1_version                0.4.8
@@ -55,11 +55,11 @@
 %global unpaddedbase64_version        2.1.0
 %global matrix_synapse_ldap3_version  0.2.1
 %global packaging_version             21.3
-%global psycopg2_version              2.9.3
-%global pysaml2_version               7.1.2
+%global psycopg2_version              2.9.5
+%global pysaml2_version               7.2.1
 %global Authlib_version               0.15.5
 %global lxml_version                  4.8.0
-%global sentry_sdk_version            1.5.11
+%global sentry_sdk_version            1.10.1
 %global PyJWT_version                 2.4.0
 %global jaeger_client_version         4.8.0
 %global opentracing_version           2.4.0
@@ -106,7 +106,7 @@
 %global packaging_version             16.1
 %global psycopg2_version              2.8
 %global pysaml2_version               4.5.0
-%global Authlib_version               0.14.0
+%global Authlib_version               0.15.1
 %global lxml_version                  4.8.0
 %global sentry_sdk_version            1.5.11
 %global PyJWT_version                 1.6.4
@@ -153,7 +153,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.69.0
+Version:        1.71.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        Apache-2.0
@@ -173,7 +173,6 @@ Source51:       matrix-synapse-generate-config.sh
 Source99:       series
 Patch:          matrix-synapse-1.4.1-paths.patch
 Patch1:         bump-dependencies.patch
-Patch2:         14221.patch
 # https://github.com/matrix-org/synapse/pull/10719
 # disable by marking as source until we get a decision upstream
 Source100:      10719-Fix-instert-of-duplicate-key-into-event_json.patch

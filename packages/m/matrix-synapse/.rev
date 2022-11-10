@@ -627,4 +627,12 @@ mostly-working synapse than nothing at all) and the package has been update to
     - Experimental implementation of MSC3882 to allow an existing</comment>
     <requestid>1030137</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>3a17fa8ee49b8cbb0160e47e572dc758</srcmd5>
+    <version>1.71.0</version>
+    <time>1668086506</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.71.0</comment>
+    <requestid>1034845</requestid>
+  </revision>
 </revisionlist>
