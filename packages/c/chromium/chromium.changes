@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov  9 17:03:58 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 107.0.5304.110 (boo#1205221)
+  * CVE-2022-3885: Use after free in V8
+  * CVE-2022-3886: Use after free in Speech Recognition
+  * CVE-2022-3887: Use after free in Web Workers
+  * CVE-2022-3888: Use after free in WebCodecs
+  * CVE-2022-3889: Type Confusion in V8
+  * CVE-2022-3890: Heap buffer overflow in Crashpad
+
+-------------------------------------------------------------------
 Fri Oct 28 08:35:09 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 107.0.5304.87 (boo#1204819)

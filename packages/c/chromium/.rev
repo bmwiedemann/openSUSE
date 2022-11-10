@@ -4310,4 +4310,19 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
 - Chromium 107.0.5304.68 (boo#1204732)</comment>
     <requestid>1031906</requestid>
   </revision>
+  <revision rev="357" vrev="1">
+    <srcmd5>ef002e6dc139acd62fdb9f6416564d12</srcmd5>
+    <version>107.0.5304.110</version>
+    <time>1668086519</time>
+    <user>dimstar_suse</user>
+    <comment>- Chromium 107.0.5304.110 (boo#1205221)
+  * CVE-2022-3885: Use after free in V8
+  * CVE-2022-3886: Use after free in Speech Recognition
+  * CVE-2022-3887: Use after free in Web Workers
+  * CVE-2022-3888: Use after free in WebCodecs
+  * CVE-2022-3889: Type Confusion in V8
+  * CVE-2022-3890: Heap buffer overflow in Crashpad
+</comment>
+    <requestid>1034894</requestid>
+  </revision>
 </revisionlist>
