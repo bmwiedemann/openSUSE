@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov  9 19:10:36 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 3.6 
+  * Added read0 flag to enable reading 0 bytes after transfer to lower CS when cshigh == True
+
+-------------------------------------------------------------------
 Tue Jul 28 08:43:38 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 3.5

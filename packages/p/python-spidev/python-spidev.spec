@@ -1,7 +1,7 @@
 #
 # spec file for package python-spidev
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-spidev
-Version:        3.5
+Version:        3.6
 Release:        0
 Summary:        Python module for interfacing with SPI devices
 License:        MIT
