@@ -218,4 +218,12 @@ please use same ADI as https://build.opensuse.org/request/show/902766</comment>
     <comment>version update</comment>
     <requestid>1032932</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>12d2021571001c0aecec6cf2c78028ba</srcmd5>
+    <version>1.11.13</version>
+    <time>1668086519</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1034890</requestid>
+  </revision>
 </revisionlist>

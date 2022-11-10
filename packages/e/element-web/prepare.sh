@@ -37,7 +37,7 @@ rm -r package
 # fill sentry-cli cache with mock binaries for all architecutres
 cd sentry-cli
 sentry_cli_version=$(ls ../@sentry-cli-*.tgz | sed -e 's/.*cli-//' -e 's/.tgz//')
-for arch in i686 x86_64 aarch64 armv7 riscv64 ppc64 ppc64le; do
+for arch in i686 x86_64 aarch64 armv7 riscv64 ppc64 ppc64le s390x; do
 	url="https://downloads.sentry-cdn.com/sentry-cli/${sentry_cli_version}/sentry-cli-Linux-${arch}"
 	filehash=$(echo -n "$url" | md5sum | cut -c1-6)
 	target="${filehash}-sentry-cli-Linux-${arch/_/-}"
