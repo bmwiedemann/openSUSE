@@ -1425,4 +1425,12 @@ which haven't landed upstream yet
   (jsc#SLE-24761, bsc#1193566) (forwarded request 1004742 from colyli)</comment>
     <requestid>1004871</requestid>
   </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>80b5541c301871aaaa262b7cdad10d15</srcmd5>
+    <version>4.2</version>
+    <time>1668086423</time>
+    <user>dimstar_suse</user>
+    <comment>Update mdadm package to latest mdadm since mdadm-4.2 (jsc#PED-1009) (forwarded request 1033139 from colyli)</comment>
+    <requestid>1033420</requestid>
+  </revision>
 </revisionlist>

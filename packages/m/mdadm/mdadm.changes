@@ -1,4 +1,283 @@
 -------------------------------------------------------------------
+Thu Nov  3 15:58:38 UTC 2022 - Coly Li <colyli@suse.com>
+
+- Update mdadm package to latest mdadm since mdadm-4.2
+  (jsc#PED-1009)
+  * Only patches directly change runtime programs included,
+  - Unify error message.
+    0001-Unify-error-message.patch
+  - mdadm: Fix double free
+    0002-mdadm-Fix-double-free.patch
+  - Grow_reshape: Add r0 grow size error message and update
+    0003-Grow_reshape-Add-r0-grow-size-error-message-and-upda.patch
+  - udev: adapt rules to systemd v247
+    0004-udev-adapt-rules-to-systemd-v247.patch
+  - Replace error prone signal() with sigaction()
+    0005-Replace-error-prone-signal-with-sigaction.patch
+  - mdadm: Respect config file location in man
+    0006-mdadm-Respect-config-file-location-in-man.patch
+  - mdadm: Update ReadMe
+    0007-mdadm-Update-ReadMe.patch
+  - mdadm: Update config man regarding default files and
+    0008-mdadm-Update-config-man-regarding-default-files-and-.patch
+  - mdadm: Update config manual
+    0009-mdadm-Update-config-manual.patch
+  - Create, Build: use default_layout()
+    0010-Create-Build-use-default_layout.patch
+  - mdadm: add map_num_s()
+    0011-mdadm-add-map_num_s.patch
+  - mdmon: Stop parsing duplicate options
+    0012-mdmon-Stop-parsing-duplicate-options.patch
+  - Grow: block -n on external volumes.
+    0013-Grow-block-n-on-external-volumes.patch
+  - Incremental: Fix possible memory and resource leaks
+    0014-Incremental-Fix-possible-memory-and-resource-leaks.patch
+  - Mdmonitor: Fix segfault
+    0015-Mdmonitor-Fix-segfault.patch
+  - Mdmonitor: Improve logging method
+    0016-Mdmonitor-Improve-logging-method.patch
+  - Fix possible NULL ptr dereferences and memory leaks
+    0017-Fix-possible-NULL-ptr-dereferences-and-memory-leaks.patch
+  - imsm: Remove possibility for get_imsm_dev to return
+    0018-imsm-Remove-possibility-for-get_imsm_dev-to-return-N.patch
+  - Revert "mdadm: fix coredump of mdadm --monitor -r"
+    0019-Revert-mdadm-fix-coredump-of-mdadm-monitor-r.patch
+  - util: replace ioctl use with function
+    0020-util-replace-ioctl-use-with-function.patch
+  - mdadm/super1: restore commit 45a87c2f31335 to fix
+    0021-mdadm-super1-restore-commit-45a87c2f31335-to-fix-clu.patch
+  - imsm: introduce get_disk_slot_in_dev()
+    0022-imsm-introduce-get_disk_slot_in_dev.patch
+  - imsm: use same slot across container
+    0023-imsm-use-same-slot-across-container.patch
+  - imsm: block changing slots during creation
+    0024-imsm-block-changing-slots-during-creation.patch
+  - mdadm: block update=ppl for non raid456 levels
+    0025-mdadm-block-update-ppl-for-non-raid456-levels.patch
+  - mdadm: Fix array size mismatch after grow
+    0026-mdadm-Fix-array-size-mismatch-after-grow.patch
+  - mdadm: Remove dead code in imsm_fix_size_mismatch
+    0027-mdadm-Remove-dead-code-in-imsm_fix_size_mismatch.patch
+  - Monitor: use devname as char array instead of pointer
+    0028-Monitor-use-devname-as-char-array-instead-of-pointer.patch
+  - Monitor: use snprintf to fill device name
+    0029-Monitor-use-snprintf-to-fill-device-name.patch
+  - Makefile: Don't build static build with everything and
+    0030-Makefile-Don-t-build-static-build-with-everything-an.patch
+  - DDF: Cleanup validate_geometry_ddf_container()
+    0031-DDF-Cleanup-validate_geometry_ddf_container.patch
+  - DDF: Fix NULL pointer dereference in
+    0032-DDF-Fix-NULL-pointer-dereference-in-validate_geometr.patch
+  - mdadm/Grow: Fix use after close bug by closing after
+    0033-mdadm-Grow-Fix-use-after-close-bug-by-closing-after-.patch
+  - monitor: Avoid segfault when calling NULL
+    0034-monitor-Avoid-segfault-when-calling-NULL-get_bad_blo.patch
+  - mdadm: Fix mdadm -r remove option regression
+    0035-mdadm-Fix-mdadm-r-remove-option-regression.patch
+  - mdadm: Fix optional --write-behind parameter
+    0036-mdadm-Fix-optional-write-behind-parameter.patch
+  - mdadm: Replace obsolete usleep with nanosleep
+    0037-mdadm-Replace-obsolete-usleep-with-nanosleep.patch
+  - mdadm: remove symlink option
+    0038-mdadm-remove-symlink-option.patch
+  - mdadm: move data_offset to struct shape
+    0039-mdadm-move-data_offset-to-struct-shape.patch
+  - mdadm: Don't open md device for CREATE and ASSEMBLE
+    0040-mdadm-Don-t-open-md-device-for-CREATE-and-ASSEMBLE.patch
+  - Grow: Split Grow_reshape into helper function
+    0041-Grow-Split-Grow_reshape-into-helper-function.patch
+  - Assemble: check if device is container before
+    0042-Assemble-check-if-device-is-container-before-schedul.patch
+  - super1: report truncated device
+    0043-super1-report-truncated-device.patch
+  - mdadm: Correct typos, punctuation and grammar in man
+    0044-mdadm-Correct-typos-punctuation-and-grammar-in-man.patch
+  - Manage: Block unsafe member failing
+    0045-Manage-Block-unsafe-member-failing.patch
+  - Monitor: Fix statelist memory leaks
+    0046-Monitor-Fix-statelist-memory-leaks.patch
+  - mdadm: added support for Intel Alderlake RST on VMD
+    0047-mdadm-added-support-for-Intel-Alderlake-RST-on-VMD-p.patch
+  - mdadm: Add Documentation entries to systemd services
+    0048-mdadm-Add-Documentation-entries-to-systemd-services.patch
+  - ReadMe: fix command-line help
+    0049-ReadMe-fix-command-line-help.patch
+  - mdadm: replace container level checking with inline
+    0050-mdadm-replace-container-level-checking-with-inline.patch
+  - Mdmonitor: Omit non-md devices
+    0051-Mdmonitor-Omit-non-md-devices.patch
+
+- Remove the following in house patch
+  1004-mdadm-super1-restore-commit-45a87c2f31335-to-fix-clu.patch
+  because upstream merged version added in as
+  0021-mdadm-super1-restore-commit-45a87c2f31335-to-fix-clu.patch
+- Rename 0000-Makefile-install-mdadm_env.sh-to-usr-lib-mdadm.patch
+  to 1004-Makefile-install-mdadm_env.sh-to-usr-lib-mdadm.patch. 
+
+- Update mdadm package to mdadm-4.2 (jsc#PED-1009)
+  All important modifications since previous update to mdadm-4.2
+  are listed here.
+  * The patches about Intel Matrix Storage Manager (including
+    VROC support),
+  - super-intel.c: Handle errors from calls to get_dev_sector_size()
+  - imsm: change wrong size verification
+  - imsm: add generic method to resolve "device" links
+  - imsm: add devpath_to_char method
+  - imsm: Limit support to the lowest namespace
+  - imsm: correct offset for 4k disks in --examine output
+  - imsm: Fix possible memory leaks and refactor freeing struct dl
+  - imsm: fix num_data_stripes after raid0 takeover
+  - imsm: introduce helpers to manage file descriptors
+  - imsm: free allocated memory in imsm_fix_size_mismatch
+  - imsm: assert if there is migration but prev_map doesn't exist
+  * The patches to fix program issues,
+  - mdadm/super1: It needs to specify int32 for bitmap_offset
+  - Fix memory leak after "mdadm --detail"
+  - Utils: Change sprintf to snprintf
+  - mdadm: fix coredump of mdadm --monitor -r
+  - Fix error message when creating raid 4, 5 and 10
+  - Fix buffer size warning for strcp
+  - Fix potential overlap dest buffer
+  - Correct checking if file descriptors are valid
+  - Monitor: print message before quit for no array to monitor
+  * Improvement or bug fixes for mdadm itself,
+  - Assemble: skip devices that don't match uuid instead of aborting the
+    assembly.
+  - Assemble: apply sysfs rules
+  - Assemble: start dirty and degraded array.
+  - Incremental: Close unclosed mdfd in IncrementalScan()
+  - Monitor: make libudev dependency optional 
+  - Manage: Call validate_geometry when adding drive to external
+    container
+  - Remove Spare drives line from details for external metadata
+  - Don't associate spares with other arrays during RAID Examine
+  - Add error handling for chunk size in RAID1
+  - Add monitor delay parameter to mdadm.conf
+  - disallow create or grow clustered bitmap with writemostly set
+  - mdadm/Detail: Can't show container name correctly when unpluging disks
+  - mdadm: block creation with long names
+  - mdadm: fix growing containers
+
+- Remove the following patches because they are all included
+  in mdadm-4.2,
+  - 0001-Assemble-keep-MD_DISK_FAILFAST-and-MD_DISK_WRITEMOST.patch
+  - 0002-Document-PART-POLICY-lines.patch
+  - 0003-policy-support-devices-with-multiple-paths.patch
+  - 0004-mdcheck-add-systemd-unit-files-to-run-mdcheck.patch
+  - 0005-Monitor-add-system-timer-to-run-oneshot-periodically.patch
+  - 0006-imsm-update-metadata-correctly-while-raid10-double-d.patch
+  - 0007-Assemble-mask-FAILFAST-and-WRITEMOSTLY-flags-when-fi.patch
+  - 0008-Grow-avoid-overflow-in-compute_backup_blocks.patch
+  - 0009-Grow-report-correct-new-chunk-size.patch
+  - 0010-policy.c-prevent-NULL-pointer-referencing.patch
+  - 0012-policy.c-Fix-for-compiler-error.patch
+  - 0013-imsm-finish-recovery-when-drive-with-rebuild-fails.patch
+  - 0014-imsm-fix-reshape-for-2TB-drives.patch
+  - 0015-Fix-spelling-typos.patch
+  - 0016-Detail.c-do-not-skip-first-character-when-calling-xs.patch
+  - 0018-Fix-reshape-for-decreasing-data-offset.patch
+  - 0019-mdadm-tests-add-one-test-case-for-failfast-of-raid1.patch
+  - 0020-mdmon-don-t-attempt-to-manage-new-arrays-when-termin.patch
+  - 0021-mdmon-wait-for-previous-mdmon-to-exit-during-takeove.patch
+  - 0022-Assemble-Fix-starting-array-with-initial-reshape-che.patch
+  - 0023-add-missing-units-to-examine.patch
+  - 0024-imsm-fix-spare-activation-for-old-matrix-arrays.patch
+  - 0025-Create-Block-rounding-size-to-max.patch
+  - 0026-udev-Add-udev-rules-to-create-by-partuuid-for-md-dev.patch
+  - 0027-mdmon-fix-wrong-array-state-when-disk-fails-during-m.patch
+  - 0028-Enable-probe_roms-to-scan-more-than-6-roms.patch
+  - 0029-super-intel-Fix-issue-with-abs-being-irrelevant.patch
+  - 0030-mdadm.h-Introduced-unaligned-get-put-_unaligned-16-3.patch
+  - 0031-super-intel-Use-put_unaligned-in-split_ull.patch
+  - 0032-mdadm-load-default-sysfs-attributes-after-assemblati.patch
+  - 0033-mdadm.h-include-sysmacros.h-unconditionally.patch
+  - 0034-mdadm-add-no-devices-to-avoid-component-devices-deta.patch
+  - 0035-udev-add-no-devices-option-for-calling-mdadm-detail.patch
+  - 0036-imsm-close-removed-drive-fd.patch
+  - 0037-mdadm-check-value-returned-by-snprintf-against-error.patch
+  - 0038-mdadm-Introduce-new-array-state-broken-for-raid0-lin.patch
+  - 0039-mdadm-force-a-uuid-swap-on-big-endian.patch
+  - 0040-mdadm-md.4-add-the-descriptions-for-bitmap-sysfs-nod.patch
+  - 0041-Init-devlist-as-an-array.patch
+  - 0042-Don-t-need-to-check-recovery-after-re-add-when-no-I-.patch
+  - 0043-udev-allow-for-udev-attribute-reading-bug.patch
+  - 0044-imsm-save-current_vol-number.patch
+  - 0045-imsm-allow-to-specify-second-volume-size.patch
+  - 0046-mdcheck-when-mdcheck_start-is-enabled-enable-mdcheck.patch
+  - 0050-mdcheck-use-to-pass-variable-to-mdcheck.patch
+  - 0051-SUSE-mdadm_env.sh-handle-MDADM_CHECK_DURATION.patch
+  - 0052-super-intel-don-t-mark-structs-packed-unnecessarily.patch
+  - 0053-Manage-Remove-the-legacy-code-for-md-driver-prior-to.patch
+  - 0054-Remove-last-traces-of-HOT_ADD_DISK.patch
+  - 0055-Fix-up-a-few-formatting-issues.patch
+  - 0056-Remove-unused-code.patch
+  - 0057-imsm-return-correct-uuid-for-volume-in-detail.patch
+  - 0058-imsm-Change-the-way-of-printing-nvme-drives-in-detai.patch
+  - 0059-Create-add-support-for-RAID0-layouts.patch
+  - 0060-Assemble-add-support-for-RAID0-layouts.patch
+  - 0061-Respect-CROSS_COMPILE-when-CC-is-the-default.patch
+  - 0062-Change-warning-message.patch
+  - 0063-mdcheck-service-can-t-start-succesfully-because-of-s.patch
+  - 0064-imsm-Update-grow-manual.patch
+  - 0065-Add-support-for-Tebibytes.patch
+  - 0066-imsm-fill-working_disks-according-to-metadata.patch
+  - 0067-mdadm.8-add-note-information-for-raid0-growing-opera.patch
+  - 0068-Remove-the-legacy-whitespace.patch
+  - 0069-imsm-pass-subarray-id-to-kill_subarray-function.patch
+  - 0070-imsm-Remove-dump-restore-implementation.patch
+  - 0071-Monitor-improve-check_one_sharer-for-checking-duplic.patch
+  - 0072-Detail-adding-sync-status-for-cluster-device.patch
+  - 0073-imsm-Correct-minimal-device-size.patch
+  - 0074-Detail-show-correct-bitmap-info-for-cluster-raid-dev.patch
+  - 0075-imsm-support-the-Array-Creation-Time-field-in-metada.patch
+  - 0076-imsm-show-Subarray-and-Volume-ID-in-examine-output.patch
+  - 0077-udev-Ignore-change-event-for-imsm.patch
+  - 0078-Manage-imsm-Write-metadata-before-add.patch
+  - 0079-Assemble-print-error-message-if-mdadm-fails-assembli.patch
+  - 0080-clean-up-meaning-of-small-typo.patch
+  - 0081-Assemble.c-respect-force-flag.patch
+  - 0082-mdcheck-Log-when-done.patch
+  - 0083-Makefile-add-EXTRAVERSION-support.patch
+  - 0084-uuid.c-split-uuid-stuffs-from-util.c.patch
+  - 0085-Include-count-for-0-character-when-using-strncpy-to-.patch
+  - 0086-restripe-fix-ignoring-return-value-of-read-and-lseek.patch
+  - 0087-Block-overwriting-existing-links-while-manual-assemb.patch
+  - 0088-Detect-too-small-device-error-rather-than-underflow-.patch
+  - 0089-Use-more-secure-HTTPS-URLs.patch
+  - 0090-Update-link-to-Intel-page-for-IMSM.patch
+  - 0091-mdadm-Grow-prevent-md-s-fd-from-being-occupied-durin.patch
+  - 0092-Specify-nodes-number-when-updating-cluster-nodes.patch
+  - 0093-mdadm-md.4-update-path-to-in-kernel-tree-documentati.patch
+  - 0094-manual-update-examine-badblocks.patch
+  - 0095-Detail-show-correct-raid-level-when-the-array-is-ina.patch
+  - 0096-Don-t-create-bitmap-for-raid5-with-journal-disk.patch
+  - 0097-Monitor-refresh-mdstat-fd-after-select.patch
+  - 0098-Monitor-stop-notifing-about-containers.patch
+  - 0099-mdmonitor-set-small-delay-once.patch
+  - 0100-Check-if-other-Monitor-instance-running-before-fork.patch
+  - 0101-Super1-allow-RAID0-layout-setting-to-be-removed.patch
+  - 0102-Detail-fix-segfault-during-IMSM-raid-creation.patch
+  - 0103-Create.c-close-mdfd-and-generate-uevent.patch
+  - 0104-imsm-update-num_data_stripes-according-to-dev_size.patch
+  - 0105-imsm-remove-redundant-calls-to-imsm_get_map.patch
+  - 0106-Monitor-don-t-use-default-modes-when-creating-a-file.patch
+  - 0107-imsm-limit-support-to-first-NVMe-namespace.patch
+  - 0108-mdadm-Unify-forks-behaviour.patch
+  - 0109-mdadm-Detail-show-correct-state-for-clustered-array.patch
+  - 0110-Make-target-to-install-binaries-only.patch
+  - 0111-udev-start-grow-service-automatically.patch
+  - 0112-Incremental-Remove-redundant-spare-movement-logic.patch
+  - 0113-Dump-get-stat-from-a-wrong-metadata-file-when-restor.patch
+  - 0114-super1-fix-Floating-point-exception.patch
+  - 0115-super1.c-avoid-useless-sync-when-bitmap-switches-fro.patch
+  - 0116-imsm-nvme-multipath-support.patch
+  - 0117-Grow-be-careful-of-corrupt-dev_roles-list.patch
+  - 0118-Remove-Spare-drives-line-from-details-for-external-m.patch
+  - 0119-Don-t-associate-spares-with-other-arrays-during-RAID.patch
+  - 0120-udev-md-raid-assembly.rules-skip-if-DM_UDEV_DISABLE_.patch
+  - 0121-imsm-support-for-third-Sata-controller.patch
+
+-------------------------------------------------------------------
 Mon Sep 19 14:18:41 CST 2022 - Coly Li <colyli@suse.com>
 
 - mdadm.spec: add EXTRAVERSION string to make command line

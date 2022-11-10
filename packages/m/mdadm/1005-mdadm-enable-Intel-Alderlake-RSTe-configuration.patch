@@ -16,18 +16,19 @@ Acked-by: Coly Li <colyli@suse.de>
  platform-intel.c | 8 ++++++--
  1 file changed, 6 insertions(+), 2 deletions(-)
 
-diff --git a/platform-intel.c b/platform-intel.c
-index 5a8729e7..a4d55a38 100644
---- a/platform-intel.c
-+++ b/platform-intel.c
-@@ -512,12 +512,14 @@ static const struct imsm_orom *find_imsm_hba_orom(struct sys_dev *hba)
+Index: mdadm-4.2/platform-intel.c
+===================================================================
+--- mdadm-4.2.orig/platform-intel.c
++++ mdadm-4.2/platform-intel.c
+@@ -512,6 +512,7 @@ static const struct imsm_orom *find_imsm
  #define AHCI_PROP "RstSataV"
  #define AHCI_SSATA_PROP "RstsSatV"
  #define AHCI_TSATA_PROP "RsttSatV"
 +#define AHCI_RST_PROP "RstVmdV"
- #define VMD_PROP "RstUefiV"
+ #define VROC_VMD_PROP "RstUefiV"
+ #define RST_VMD_PROP "RstVmdV"
  
- #define VENDOR_GUID \
+@@ -519,6 +520,7 @@ static const struct imsm_orom *find_imsm
  	EFI_GUID(0x193dfefa, 0xa445, 0x4302, 0x99, 0xd8, 0xef, 0x3a, 0xad, 0x1a, 0x04, 0xc6)
  
  #define PCI_CLASS_RAID_CNTRL 0x010400
@@ -35,17 +36,17 @@ index 5a8729e7..a4d55a38 100644
  
  static int read_efi_var(void *buffer, ssize_t buf_size,
  			const char *variable_name, struct efi_guid guid)
-@@ -604,7 +606,8 @@ const struct imsm_orom *find_imsm_efi(struct sys_dev *hba)
+@@ -605,7 +607,8 @@ const struct imsm_orom *find_imsm_efi(st
  	struct imsm_orom orom;
  	struct orom_entry *ret;
  	static const char * const sata_efivars[] = {AHCI_PROP, AHCI_SSATA_PROP,
 -						    AHCI_TSATA_PROP};
 +						    AHCI_TSATA_PROP,
 +						    AHCI_RST_PROP};
+ 	static const char * const vmd_efivars[] = {VROC_VMD_PROP, RST_VMD_PROP};
  	unsigned long i;
  
- 	if (check_env("IMSM_TEST_AHCI_EFI") || check_env("IMSM_TEST_SCU_EFI"))
-@@ -622,7 +625,8 @@ const struct imsm_orom *find_imsm_efi(struct sys_dev *hba)
+@@ -624,7 +627,8 @@ const struct imsm_orom *find_imsm_efi(st
  
  		return NULL;
  	case SYS_DEV_SATA:
@@ -55,6 +56,3 @@ index 5a8729e7..a4d55a38 100644
  			return NULL;
  
  		for (i = 0; i < ARRAY_SIZE(sata_efivars); i++) {
--- 
-2.35.3
-
