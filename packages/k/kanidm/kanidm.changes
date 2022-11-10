@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 09 21:48:25 UTC 2022 - william.brown@suse.com
+
+- Update to version 1.1.0~alpha10~git2.4a03ca5:
+  * Add tools container support (#1178)
+  * Improve handling of openssl3 in md4 tests (#1171)
+
+-------------------------------------------------------------------
 Tue Nov  1 04:31:58 UTC 2022 - William Brown <william.brown@suse.com>
 
 - Update to kanidm 1.1.0-alpha.10
