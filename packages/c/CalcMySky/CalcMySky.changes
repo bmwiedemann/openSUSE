@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Wed Nov  9 10:46:10 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.2.1:
+  * ShowMySky library now has soname;
+  * ShowMySky library name depends on major version of Qt,
+    so that the versions for Qt5 and for Qt6 can be installed simultaneously;
+  * The library can now be used via CMake's CPM without installing;
+  * Fixed error handling on macOS (ShowMySky used to crash on any errors);
+  * Various OpenGL state management fixes;
+  * Rendering the Sun in zero order scattering now correctly takes
+    custom Solar spectrum into account.
+
+-------------------------------------------------------------------
+Mon Oct  3 14:37:05 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Initial OBS release.
