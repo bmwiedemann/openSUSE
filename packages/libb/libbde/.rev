@@ -128,4 +128,12 @@
     <comment>update</comment>
     <requestid>999944</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>fb9043c93ec96d626ebfd9e5b5773d0a</srcmd5>
+    <version>20221031</version>
+    <time>1668086508</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1034842</requestid>
+  </revision>
 </revisionlist>
