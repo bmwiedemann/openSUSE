@@ -40,4 +40,12 @@
     <comment>Sync with SLE15-SP5 changelog and spec file.</comment>
     <requestid>1031598</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f740db64d92dd2fa62211bfd4f2de6cf</srcmd5>
+    <version>1.42.3</version>
+    <time>1668086583</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1034957</requestid>
+  </revision>
 </revisionlist>
