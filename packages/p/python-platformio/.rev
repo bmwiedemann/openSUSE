@@ -89,4 +89,22 @@
     <comment></comment>
     <requestid>1008696</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7b8fafc5fe6a64badb84b82de7508fd3</srcmd5>
+    <version>6.1.5</version>
+    <time>1668094835</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to wheel build/install, move scripts/ directory to the
+  packages's namespace (see
+  https://community.platformio.org/t/installs-scripts-directory-to-the-global-namespace/30396).
+- Add python-platformio.rpmlintrc to avoid false positives.
+- Update to versino 6.1.5 
+  * Added a new enable_proxy_strict_ssl setting to disable the proxy server certificate verification (issue #4432)
+  * Documented PlatformIO Core Proxy Configuration
+  * Speeded up device port finder by avoiding loading board HWIDs from development platforms
+  * Improved caching of build metadata in debug mode
+  * Fixed an issue when pio pkg install --storage-dir command requires PlatformIO project (issue #4410)
+</comment>
+    <requestid>1035075</requestid>
+  </revision>
 </revisionlist>

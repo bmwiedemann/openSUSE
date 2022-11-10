@@ -16,17 +16,18 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-platformio
-Version:        6.1.4
+Version:        6.1.5
 Release:        0
 Summary:        New Generation Ecosystem for Embedded Development
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://platformio.org
-Source:         https://files.pythonhosted.org/packages/source/p/platformio/platformio-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
+URL:            https://github.com/platformio/platformio-core
+Source0:        https://files.pythonhosted.org/packages/source/p/platformio/platformio-%{version}.tar.gz
+Source99:       python-platformio.rpmlintrc
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -61,11 +62,14 @@ who write applications for embedded products.
 %setup -q -n platformio-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%pyproject_install
+# mv because of https://community.platformio.org/t/installs-scripts-directory-to-the-global-namespace/30396
+%{python_expand mv %{buildroot}%{$python_sitelib}/scripts %{buildroot}%{$python_sitelib}/platformio
+%fdupes %{buildroot}%{$python_sitelib}
+}
 
 %python_clone -a %{buildroot}%{_bindir}/pio
 %python_clone -a %{buildroot}%{_bindir}/piodebuggdb
@@ -81,6 +85,7 @@ who write applications for embedded products.
 %python_alternative %{_bindir}/pio
 %python_alternative %{_bindir}/piodebuggdb
 %python_alternative %{_bindir}/platformio
-%{python_sitelib}/*
+%{python_sitelib}/platformio
+%{python_sitelib}/platformio-%{version}*-info
 
 %changelog

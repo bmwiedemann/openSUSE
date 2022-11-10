@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Nov 10 12:07:39 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Switch to wheel build/install, move scripts/ directory to the
+  packages's namespace (see
+  https://community.platformio.org/t/installs-scripts-directory-to-the-global-namespace/30396).
+- Add python-platformio.rpmlintrc to avoid false positives.
+
+-------------------------------------------------------------------
+Wed Nov  9 16:27:43 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to versino 6.1.5 
+  * Added a new enable_proxy_strict_ssl setting to disable the proxy server certificate verification (issue #4432)
+  * Documented PlatformIO Core Proxy Configuration
+  * Speeded up device port finder by avoiding loading board HWIDs from development platforms
+  * Improved caching of build metadata in debug mode
+  * Fixed an issue when pio pkg install --storage-dir command requires PlatformIO project (issue #4410)
+
+-------------------------------------------------------------------
 Tue Oct  4 23:08:41 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 6.1.4 (2022-08-12)
