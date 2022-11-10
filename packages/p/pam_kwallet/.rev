@@ -924,4 +924,12 @@ This version removes the unneeded ldconfig call.</comment>
     <comment>Plasma 5.26.2, untested but now with kwin scaling fix (forwarded request 1031457 from Vogtinator)</comment>
     <requestid>1031876</requestid>
   </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>2bfcce17b3c52bc1ff052cf7091a686a</srcmd5>
+    <version>5.26.3</version>
+    <time>1668086493</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.26.3(.1), untested as usual (forwarded request 1034741 from Vogtinator)</comment>
+    <requestid>1034773</requestid>
+  </revision>
 </revisionlist>
