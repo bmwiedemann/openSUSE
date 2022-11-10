@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Nov 07 20:02:37 UTC 2022 - bjorn.lie@gmail.com
+
+- Update to version 3.46.4:
+  * all: backport: Implement xdg-terminal-exec support.
+  * docs:
+    - Fix some wrong info in README.
+    - Fix some typos in README.
+  * Updated translations.
+- Add f06e6e5.patch: util: Fix interpretation of TryExec desktop
+  entry key.
+- Add appstream-glib and desktop-file-utils BuildRequires and a
+  check section with meson_test macro, validate appdata and desktop
+  files and run tests during build.
+
+-------------------------------------------------------------------
 Thu Oct 27 11:11:44 UTC 2022 - bjorn.lie@gmail.com
 
 - Update to version 3.46.3:

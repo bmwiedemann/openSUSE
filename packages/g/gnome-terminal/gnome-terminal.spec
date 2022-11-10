@@ -18,14 +18,18 @@
 
 %bcond_without  nautilus_extension
 Name:           gnome-terminal
-Version:        3.46.3
+Version:        3.46.4
 Release:        0
 Summary:        GNOME Terminal
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          System/X11/Terminals
 URL:            https://wiki.gnome.org/Apps/Terminal
 Source0:        %{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM f06e6e5.patch -- util: Fix interpretation of TryExec desktop entry key
+Patch0:         https://gitlab.gnome.org/GNOME/gnome-terminal/-/commit/f06e6e5.patch
 
+BuildRequires:  appstream-glib
+BuildRequires:  desktop-file-utils
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -101,6 +105,13 @@ rm %{buildroot}/usr/share/metainfo/org.gnome.Terminal.Nautilus.metainfo.xml
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_datadir}
 
+%check
+appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/org.gnome.Terminal*.metainfo.xml
+desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Terminal.desktop
+desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Terminal.Preferences.desktop
+desktop-file-validate %{buildroot}%{_datadir}/xdg-terminals/org.gnome.Terminal.desktop
+%meson_test
+
 %files
 %license COPYING
 %doc %{_datadir}/help/C/%{name}/
@@ -108,6 +119,8 @@ rm %{buildroot}/usr/share/metainfo/org.gnome.Terminal.Nautilus.metainfo.xml
 %{_datadir}/metainfo/org.gnome.Terminal.metainfo.xml
 %{_datadir}/applications/org.gnome.Terminal.desktop
 %{_datadir}/applications/org.gnome.Terminal.Preferences.desktop
+%dir %{_datadir}/xdg-terminals
+%{_datadir}/xdg-terminals/org.gnome.Terminal.desktop
 %{_libexecdir}/gnome-terminal-server
 %{_datadir}/dbus-1/services/org.gnome.Terminal.service
 %{_datadir}/glib-2.0/schemas/org.gnome.Terminal.gschema.xml

@@ -2376,4 +2376,12 @@
     <comment>New stable release (forwarded request 1031530 from iznogood)</comment>
     <requestid>1032383</requestid>
   </revision>
+  <revision rev="147" vrev="1">
+    <srcmd5>32571849b5e27842c7538565a3724550</srcmd5>
+    <version>3.46.4</version>
+    <time>1668086370</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1034862</requestid>
+  </revision>
 </revisionlist>
