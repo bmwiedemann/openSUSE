@@ -80,7 +80,7 @@
 %define build_opensbi_firmware 1
 %endif
 
-%ifarch %ix86 x86_64 ppc ppc64 ppc64le s390x armv7hl aarch64
+%ifarch %ix86 x86_64 ppc ppc64 ppc64le s390x armv7hl aarch64 riscv64
 %define kvm_available 1
 %define with_uring 1
 %define liburing_min_version 1.0
@@ -311,6 +311,11 @@ Suggests:       qemu-s390x
 Requires:       qemu-arm
 %else
 Suggests:       qemu-arm
+%endif
+%ifarch riscv64
+Requires:       qemu-extra
+%else
+Suggests:       qemu-extra
 %endif
 Requires(post): acl
 Requires(post): udev
