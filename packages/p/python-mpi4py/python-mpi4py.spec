@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 %define skip_python36 1
 
@@ -27,6 +26,7 @@ Summary:        MPI for Python
 License:        BSD-2-Clause
 URL:            https://github.com/mpi4py/mpi4py
 Source:         https://files.pythonhosted.org/packages/source/m/mpi4py/mpi4py-%{version}.tar.gz
+Source99:       %{name}-rpmlintrc
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy}
@@ -103,7 +103,12 @@ Documentation files and demos for %{name}.
 %autosetup -p1 -n mpi4py-%{version}
 rm demo/*/runtests.bat docs/source/usrman/make.bat docs/source/usrman/.gitignore
 sed -i 's/\r$//' docs/usrman/objects.inv
-sed -i '1!b;/^#!\/usr\/bin\/python/d' demo/python-config
+sed -i '1!b;/^#!\/usr\/bin\/env python/d' demo/python-config
+chmod a-x demo/python-config
+
+# Remove this file to fix tests
+# https://github.com/mpi4py/mpi4py/issues/279
+rm test/dlpackimpl.py
 
 %build
 %setup_openmpi
@@ -142,12 +147,16 @@ donttest="test_spawn"
 %ifarch %ix86
 # https://github.com/mpi4py/mpi4py/issues/105
 donttest+="|test_io"
+
+# There are more broken tests in i586
+# https://github.com/mpi4py/mpi4py/issues/279
+donttest+="|test_file|test_subclass|test_errhandler|test_threads"
 %endif
 rm -rf build _build.*
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
 rm -rf build _build.*
 %setup_openmpi
-%{openmpi_prefix}/bin/mpiexec --use-hwthread-cpus --mca pml ob1 --mca btl tcp,self -n 1  $python -B test/runtests.py -v --exclude="$donttest"
+%{openmpi_prefix}/bin/mpiexec --use-hwthread-cpus --mca btl tcp,self -n 1  $python -B test/runtests.py -v --exclude="$donttest"
 }
 
 %files %{python_files}

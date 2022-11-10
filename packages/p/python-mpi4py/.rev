@@ -149,4 +149,23 @@
 </comment>
     <requestid>1034457</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>2b7421fd7444e4d0a5ae6394366407f1</srcmd5>
+    <version>3.1.4</version>
+    <time>1668097988</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable current broken tests for i586. gh#mpi4py/mpi4py#279
+- Increase memory size in constraints
+
+- Add rpmlintrc as source in the spec file
+
+- Remove exec perms from demo/python-config
+- Add python-mpi4py-rpmlintrc to filter no-binary erros for devel, common-devel
+  and doc subpackages
+
+- Remove pml/ob1 option for tests, bsc#1205139
+- Remove python_module macro definition
+- Update shebang string replacement</comment>
+    <requestid>1035092</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Nov 10 11:56:43 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Disable current broken tests for i586. gh#mpi4py/mpi4py#279
+- Increase memory size in constraints
+
+-------------------------------------------------------------------
+Thu Nov 10 08:49:41 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add rpmlintrc as source in the spec file
+
+-------------------------------------------------------------------
+Thu Nov 10 08:42:14 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove exec perms from demo/python-config 
+- Add python-mpi4py-rpmlintrc to filter no-binary erros for devel, common-devel
+  and doc subpackages
+
+-------------------------------------------------------------------
+Tue Nov  8 12:27:26 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove pml/ob1 option for tests, bsc#1205139
+- Remove python_module macro definition
+- Update shebang string replacement
+
+-------------------------------------------------------------------
 Mon Nov  7 16:19:58 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Use pml/ob1 for tests
