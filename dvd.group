@@ -2090,6 +2090,7 @@
     <package name="libharfbuzz-subset0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libharfbuzz0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libhavege2" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libhd22" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="libheif1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libhidapi-hidraw0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libhogweed6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -3260,7 +3261,7 @@
     <package name="perl-Bootloader" supportstatus="unsupported"/> <!-- reason: dvd:shim -->
     <package name="perl-CDDB_get" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="perl-CGI" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="perl-Clone" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="perl-Clone" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-Config-General" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="perl-Convert-ASN1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Convert-BinHex" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
