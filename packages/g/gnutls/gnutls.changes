@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Tue Nov  8 12:52:18 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- Verify only the libgnutls library HMAC [bsc#1199881]
+  * Do not use the brp-50-generate-fips-hmac script as this
+    is now calculated with the internal fipshmac tool.
+  * Add gnutls-verify-library-HMAC.patch
+
+-------------------------------------------------------------------
+Wed Nov  2 20:51:43 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- Temporarily revert the jitterentropy patches in s390 and s390x
+  architectures until a fix is provided [bsc#1204937]
+- Disable flaky test that fails in s390x architecture:
+  * Add gnutls-disable-flaky-test-dtls-resume.patch
+
+-------------------------------------------------------------------
+Fri Oct 14 11:35:33 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- Consolidate the FIPS hmac files [bsc#1203245]
+  * Use the gnutls fipshmac tool instead of the brp-check-suse
+    and rename it to reflect on the library version.
+  * Remove not needed gnutls-FIPS-Run-CFB8-without-offset.patch
+- Add a gnutls.rpmlintrc file to remove a hidden-file-or-dir false
+  positive for the FIPS hmac calculation.
+
+-------------------------------------------------------------------
+Sun Oct  9 12:53:27 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 3.7.8:
+  * libgnutls: In FIPS140 mode, RSA signature verification is an
+    approved operation if the key has modulus with known sizes
+    (1024, 1280, 1536, and 1792 bits), in addition to any modulus
+    sizes larger than 2048 bits, according to SP800-131A rev2.
+  * libgnutls: gnutls_session_channel_binding performs additional
+    checks when GNUTLS_CB_TLS_EXPORTER is requested. According to
+    RFC9622 4.2, the "tls-exporter" channel binding is only usable
+    when the handshake is bound to a unique master secret (i.e.,
+    either TLS 1.3 or extended master secret extension is
+    negotiated). Otherwise the function now returns error.
+  * libgnutls: usage of the following functions, which are designed
+    to loosen restrictions imposed by allowlisting mode of
+    configuration, has been additionally restricted. Invoking
+    them is now only allowed if system-wide TLS priority string
+    has not been initialized yet:
+      - gnutls_digest_set_secure
+      - gnutls_sign_set_secure
+      - gnutls_sign_set_secure_for_certs
+      - gnutls_protocol_set_enabled
+  * Delete gnutls-3.6.6-set_guile_site_dir.patch and use the
+    --with-guile-extension-dir configure option to properly
+    handle the guile extension directory.
+  * Rebase gnutls-Make-XTS-key-check-failure-not-fatal.patch
+  * Update gnutls.keyring
+  * Add a build depencency on gtk-doc required by autoreconf
+
+-------------------------------------------------------------------
+Fri Oct  7 09:30:44 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
+
+- FIPS: Set error state when jent init failed in FIPS mode [bsc#1202146]
+  * Add patch gnutls-FIPS-Set-error-state-when-jent-init-failed.patch
+
+-------------------------------------------------------------------
+Tue Oct  4 13:05:27 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
+
+- FIPS: Make XTS key check failure not fatal [bsc#1203779]
+  * Add gnutls-Make-XTS-key-check-failure-not-fatal.patch
+
+-------------------------------------------------------------------
 Wed Sep 14 15:25:46 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
 
 - FIPS: Run the CFB8 cipher selftest without offset [bsc#1203245]

@@ -36,7 +36,7 @@
 %bcond_with tpm
 %bcond_without guile
 Name:           gnutls
-Version:        3.7.7
+Version:        3.7.8
 Release:        0
 Summary:        The GNU Transport Layer Security Library
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -44,27 +44,37 @@ Group:          Productivity/Networking/Security
 URL:            https://www.gnutls.org/
 Source0:        https://www.gnupg.org/ftp/gcrypt/gnutls/v3.7/%{name}-%{version}.tar.xz
 Source1:        https://www.gnupg.org/ftp/gcrypt/gnutls/v3.7/%{name}-%{version}.tar.xz.sig
+# https://gnutls.org/gnutls-release-keyring.gpg
 Source2:        gnutls.keyring
 Source3:        baselibs.conf
+# Suppress a false positive on the .hmac file
+Source4:        gnutls.rpmlintrc
 Patch0:         gnutls-3.5.11-skip-trust-store-tests.patch
-Patch1:         gnutls-3.6.6-set_guile_site_dir.patch
-Patch2:         gnutls-FIPS-TLS_KDF_selftest.patch
-Patch3:         gnutls-FIPS-disable-failing-tests.patch
-Patch4:         gnutls_ECDSA_signing.patch
+Patch1:         gnutls-FIPS-TLS_KDF_selftest.patch
+Patch2:         gnutls-FIPS-disable-failing-tests.patch
+Patch3:         gnutls_ECDSA_signing.patch
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
+%ifnarch s390 s390x
 #PATCH-FIX-SUSE bsc#1202146 FIPS: Port gnutls to use jitterentropy
-Patch5:         gnutls-FIPS-jitterentropy.patch
+Patch4:         gnutls-FIPS-jitterentropy.patch
+#PATCH-FIX-SUSE bsc#1202146 FIPS: Set error state when jent init failed in FIPS mode
+Patch5:         gnutls-FIPS-Set-error-state-when-jent-init-failed.patch
+%endif
 %endif
 #PATCH-FIX-SUSE bsc#1190698 FIPS: SLI gnutls_pbkdf2: verify keylengths and allow SHA only
 Patch6:         gnutls-FIPS-SLI-pbkdf2-verify-keylengths-only-SHA.patch
-#PATCH-FIX-SUSE bsc#1203245 FIPS: Run the CFB8 cipher selftests without offset
-Patch7:         gnutls-FIPS-Run-CFB8-without-offset.patch
+#PATCH-FIX-UPSTREAM bsc#1203779 Make XTS key check failure not fatal
+Patch7:         gnutls-Make-XTS-key-check-failure-not-fatal.patch
+Patch8:         gnutls-disable-flaky-test-dtls-resume.patch
+#PATCH-FIX-OPENSUSE bsc#1199881 Verify only the libgnutls library HMAC
+Patch9:         gnutls-verify-library-HMAC.patch
 BuildRequires:  autogen
 BuildRequires:  automake
 BuildRequires:  datefudge
 BuildRequires:  fdupes
 BuildRequires:  fipscheck
 BuildRequires:  gcc-c++
+BuildRequires:  gtk-doc
 # The test suite calls /usr/bin/ss from iproute2. It's our own duty to ensure we have it present
 BuildRequires:  iproute2
 BuildRequires:  libidn2-devel
@@ -218,7 +228,11 @@ echo "SYSTEM=NORMAL" >> tests/system.prio
 export LDFLAGS="-pie -Wl,-z,now -Wl,-z,relro"
 export CFLAGS="%{optflags} -fPIE"
 export CXXFLAGS="%{optflags} -fPIE"
-#autoreconf -fiv
+autoreconf -fiv
+
+# Rename the internal .hmac file to include the so library version
+sed -i "s/\.gnutls\.hmac/\.libgnutls\.so\.%{gnutls_sover}\.hmac/g" lib/Makefile.am lib/Makefile.in lib/fips.c
+
 %configure \
         gl_cv_func_printf_directive_n=yes \
         gl_cv_func_printf_infinite_long_double=yes \
@@ -241,6 +255,7 @@ export CXXFLAGS="%{optflags} -fPIE"
 %endif
 %if %{with guile}
         --enable-guile \
+        --with-guile-extension-dir=%{_libdir}/guile/3.0 \
 %else
         --disable-guile \
 %endif
@@ -252,12 +267,31 @@ export CXXFLAGS="%{optflags} -fPIE"
 
 %install
 %make_install
+
+# Compute the FIPS hmac using the brp-50-generate-fips-hmac script
+# export BRP_FIPSHMAC_FILES=%%{buildroot}%%{_libdir}/libgnutls.so.%%{gnutls_sover}
+
+# the hmac hashes:
+#
+# this is a hack that re-defines the __os_install_post macro
+# for a simple reason: the macro strips the binaries and thereby
+# invalidates a HMAC that may have been created earlier.
+# solution: create the hashes _after_ the macro runs.
+#
+# this shows up earlier because otherwise the %%expand of
+# the macro is too late.
+# remark: This is the same as running
+#   openssl dgst -sha256 -hmac 'orboDeJITITejsirpADONivirpUkvarP'
+# note: The FIPS hmac is now calculated with an internal tool since
+#   commit a86c8e87189e23920ae622da5e572cb4e1a6e0ed
+%{expand:%%global __os_install_post {%__os_install_post
+./lib/fipshmac "%{buildroot}%{_libdir}/libgnutls.so.%{gnutls_sover}" > %{buildroot}%{_libdir}/.libgnutls.so.%{gnutls_sover}.hmac
+sed -i "s^%{buildroot}/usr^^" %{buildroot}%{_libdir}/.libgnutls.so.%{gnutls_sover}.hmac
+}}
+
 rm -rf %{buildroot}%{_datadir}/locale/en@{,bold}quot
 # Do not package static libs and libtool files
 find %{buildroot} -type f -name "*.la" -delete -print
-
-# Compute FIPS hmac using the brp-50-generate-fips-hmac script
-export BRP_FIPSHMAC_FILES=%{buildroot}%{_libdir}/libgnutls.so.%{gnutls_sover}
 
 # install docs
 mkdir -p %{buildroot}%{_docdir}/libgnutls-devel/
@@ -379,7 +413,7 @@ GNUTLS_FORCE_FIPS_MODE=1 make check %{?_smp_mflags} GNUTLS_SYSTEM_PRIORITY_FILE=
 %files guile
 %license LICENSE
 %{_libdir}/guile/*
-%{_datadir}/guile/gnutls*
+%{_datadir}/guile/site/*
 %endif
 
 %changelog
