@@ -66,8 +66,10 @@ export CXXFLAGS="-Wno-error=maybe-uninitialized -Wno-error=mismatched-new-delete
 %install
 %cmake_install
 chmod +x %{buildroot}%{_libdir}/intel-opencl/libigdrcl.so
+%if 0%{?suse_version} > 1500
 mkdir -p %{buildroot}/%{_datadir}/OpenCL/vendors
 mv %{buildroot}/%{_sysconfdir}/OpenCL/vendors/intel.icd %{buildroot}/%{_datadir}/OpenCL/vendors/
+%endif
 rm -Rf %{buildroot}%{_prefix}/lib/debug
 
 %post -p /sbin/ldconfig
@@ -77,10 +79,16 @@ rm -Rf %{buildroot}%{_prefix}/lib/debug
 %{_libdir}/intel-opencl/libigdrcl.so
 %{_libdir}/libocloc.so
 %{_bindir}/ocloc
-%{_datadir}/OpenCL/vendors/intel.icd
 %{_libdir}/intel-opencl
+%if 0%{?suse_version} > 1500
 %{_datadir}/OpenCL
 %{_datadir}/OpenCL/vendors
+%{_datadir}/OpenCL/vendors/intel.icd
+%else
+%{_sysconfdir}/OpenCL
+%{_sysconfdir}/OpenCL/vendors
+%{_sysconfdir}/OpenCL/vendors/intel.icd
+%endif
 
 %files devel
 %{_includedir}/ocloc_api.h
