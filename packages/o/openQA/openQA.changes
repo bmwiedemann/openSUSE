@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Nov 09 18:16:06 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1667998549.1a9c56e:
+  * Handle concurrent job deletion when updating job result size
+  * Sort vars.json by key
+  * Dependency cron 2022-11-08
+  * Use signatures in OpenQA::Scheduler
+  * Add an API endpoint to find jobs with certain job settings
+  * Restore formatting of `vars.json` after a523306
+  * Remove likely unneeded code in WebAPI::Plugin::REST
+  * Use signatures in OpenQA::WebAPI::Plugin::REST
+
+-------------------------------------------------------------------
 Mon Nov 07 10:16:40 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1667810206.2bf912d:
