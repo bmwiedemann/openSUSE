@@ -1,7 +1,7 @@
 #
 # spec file for package hwinfo
 #
-# Copyright (c) 2022 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,11 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           hwinfo
+Version:        22.1
+%define lname	libhd%(echo "%version" | perl -pe 's{\\D.*}{}')
+Release:        0
+Summary:        Hardware Library
+License:        GPL-2.0-or-later
+Group:          Hardware/Other
+# Until migration to github this should be correct url
+URL:            https://github.com/opensuse/hwinfo
+Source:         %{name}-%{version}.tar.xz
 BuildRequires:  doxygen
 BuildRequires:  flex
 BuildRequires:  perl-XML-Parser
@@ -29,31 +38,28 @@ BuildRequires:  perl-XML-Writer
 %ifarch %ix86 x86_64
 BuildRequires:  libx86emu-devel
 %endif
-Provides:       libhd
-Obsoletes:      libhd
-PreReq:         /sbin/ldconfig
-Summary:        Hardware Library
-# Until migration to github this should be correct url
-License:        GPL-2.0-or-later
-Group:          Hardware/Other
-Url:            http://gitorious.org/opensuse/hwinfo
-Version:        22.1
-Release:        0
-Source:         %{name}-%{version}.tar.xz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
-A simple program that lists results from the hardware detection
+A program that lists results from the hardware detection
 library.
 
+%package -n %lname
+Summary:        Hardware detection library
+Group:          System/Libraries
+Provides:       libhd
+Obsoletes:      libhd
+Conflicts:      hwinfo < %{version}-%{release}
 
+%description -n %lname
+This library collects information about the hardware installed on a
+system.
 
 %package      devel
-Summary:        Hardware Detection Library
+Summary:        Headers for the Hardware Detection Library
 Group:          Development/Libraries/C and C++
 Provides:       libhddev
 Obsoletes:      libhddev
-Requires:       %name = %version
+Requires:       %lname = %version
 Requires:       perl-XML-Parser
 Requires:       udev
 Requires:       wireless-tools
@@ -70,22 +76,20 @@ Requires:       expat-devel
 This library collects information about the hardware installed on a
 system.
 
-
-
 %prep
-%setup
+%autosetup
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-  make static
+  %make_build -j1 static
   # make copy of static library for installation
   cp src/libhd.a .
-  make clean
-  make LIBDIR=%{_libdir}
-  make doc
+  %make_build -j1 clean
+  %make_build -j1 LIBDIR=%{_libdir}
+  %make_build -j1 doc
 
 %install
-  make install DESTDIR=%{buildroot} LIBDIR=%{_libdir}
+  %make_install -j1 LIBDIR=%{_libdir}
   install -m 644 libhd.a %{buildroot}%{_libdir}
   install -d -m 755 %{buildroot}%{_mandir}/man8/
   install -d -m 755 %{buildroot}%{_mandir}/man1/
@@ -96,19 +100,13 @@ system.
   install -m 644 doc/hwinfo.8 %{buildroot}%{_mandir}/man8/
   mkdir -p %{buildroot}/var/lib/hardware/udi
 
-%clean 
-rm -rf %{buildroot}
-
-%post -p /sbin/ldconfig
-
-%postun -p /sbin/ldconfig
+%post   -n %{lname} -p /sbin/ldconfig
+%postun -n %{lname} -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 /usr/sbin/hwinfo
 /usr/sbin/mk_isdnhwdb
 /usr/sbin/getsysinfo
-%{_libdir}/libhd.so.*
 %doc *.md
 %doc %{_mandir}/man1/getsysinfo.1*
 %doc %{_mandir}/man1/mk_isdnhwdb.1*
@@ -118,8 +116,10 @@ rm -rf %{buildroot}
 %dir /usr/share/hwinfo
 /usr/share/hwinfo/*
 
+%files -n %lname
+%{_libdir}/libhd.so.*
+
 %files devel
-%defattr(-,root,root)
 /usr/sbin/check_hd
 /usr/sbin/convert_hd
 %doc %{_mandir}/man1/convert_hd.1*

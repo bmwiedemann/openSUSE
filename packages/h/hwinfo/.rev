@@ -1389,4 +1389,15 @@
     <comment>submitted by snwint via jenkins</comment>
     <requestid>994151</requestid>
   </revision>
+  <revision rev="189" vrev="2">
+    <srcmd5>403d724555452f616d46031e44eaefdc</srcmd5>
+    <version>22.1</version>
+    <time>1668086366</time>
+    <user>dimstar_suse</user>
+    <comment>automatic %lname now
+
+- Implement shared library packaging guideline.
+- Modernize specfile. (forwarded request 1034843 from jengelh)</comment>
+    <requestid>1034844</requestid>
+  </revision>
 </revisionlist>
