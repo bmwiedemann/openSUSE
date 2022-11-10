@@ -47,14 +47,30 @@ else
     echo "no emacs binary found"
     exit 1
 fi
+if [[ "$1" =~ .*-nox ]] ; then
+    exec -a $arg0 ${1+"$@"} "${argv[@]}"
+fi
 dbusdaemon=$(type -p dbus-daemon 2>/dev/null)
 #
 # Now check for valid dbus, e.g. after su/sudo/slogin
 #
 if test -n "$dbusdaemon" ; then
+    #
+    # Workaround for boo#1205109
+    #
+    if test "$EUID" = 0 -a "$XDG_RUNTIME_DIR" != /run/user/0; then
+	unset XDG_CONFIG_HOME XDG_CACHE_HOME XDG_DESKTOP_DIR XDG_RUNTIME_DIR XDG_DATA_DIRS
+#	unset DBUS_SESSION_BUS_ADDRESS
+	if test ! -d /run/user/0; then 
+	    systemctl start user@0 >/dev/null 2>&1
+	fi
+	if test -S /run/user/0/bus; then
+	    DBUS_SESSION_BUS_ADDRESS=unix:/run/user/0/bus
+	fi
+    fi
 
     # Standard on modern systems
-    : ${XDG_RUNTIME_DIR:=/run/user/${UID}}
+    : ${XDG_RUNTIME_DIR:=/run/user/${EUID}}
     export XDG_RUNTIME_DIR
 
     # Oops ... no dbus-daemon then launch a new session

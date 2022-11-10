@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov  9 13:46:06 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add workaround for boo#1205109, that is started with sudo there
+  is maybe no active user session for root hence no dbus 
+
+-------------------------------------------------------------------
 Wed Oct 26 11:56:36 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - Fix typos in etags manpage
