@@ -435,4 +435,12 @@ __init__.py contains code derived from a Google owned Apache project. cacerts.tx
   Tests compatible with Python3.10 and recent pytest.</comment>
     <requestid>954680</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>f0775e31ed5dbb88418cfe908c8a9adb</srcmd5>
+    <version>0.21.0</version>
+    <time>1668086483</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1034614</requestid>
+  </revision>
 </revisionlist>
