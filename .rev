@@ -59,4 +59,16 @@
   * Use absolut URL for logo (forwarded request 1031054 from kukuk)</comment>
     <requestid>1031057</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6af9cfbcfe74122065d6f0fc2aede3fa</srcmd5>
+    <version>20221108.e2b9545</version>
+    <time>1668086517</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20221108.e2b9545:
+  * Replace documentation with manpages
+  * Create issues from TODO list
+  * Generate profile data
+  * Add about.html content</comment>
+    <requestid>1034861</requestid>
+  </revision>
 </revisionlist>
