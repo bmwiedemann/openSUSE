@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 26 12:25:06 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.0
+  - Remove outdated etcd code
+  - Fix issue#10:
+    Reboots happen at the first moment of the maintenance window
+
+-------------------------------------------------------------------
 Wed Mar 10 15:17:01 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 1.3.1

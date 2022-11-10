@@ -199,4 +199,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>970203</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>bcdc986e210030621cf26eac42e3b99f</srcmd5>
+    <version>2.0</version>
+    <time>1668086344</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0
+  - Remove outdated etcd code
+  - Fix issue#10:
+    Reboots happen at the first moment of the maintenance window (forwarded request 1031336 from kukuk)</comment>
+    <requestid>1031337</requestid>
+  </revision>
 </revisionlist>
