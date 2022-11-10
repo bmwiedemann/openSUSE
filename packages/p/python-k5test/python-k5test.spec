@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-k5test
-Version:        0.10.1
+Version:        0.10.3
 Release:        0
 Summary:        A library for testing Python applications in krb5 environments
 License:        MIT
