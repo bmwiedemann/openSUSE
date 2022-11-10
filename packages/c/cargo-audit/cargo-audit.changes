@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Nov 09 00:01:18 UTC 2022 - william.brown@suse.com
+
+- Update to version 0.17.4~git0.0b05e18:
+  * Set 0.17.4 date in changelog
+  * Bump `cargo-audit` to 0.17.4
+  * Update documentation for 0.17.4; `cargo audit bin` is now officially enabled by default
+  * Fix homepage style on mobile (#755)
+  * Add comment
+  * Only attempt to check for yanked crates for crates coming from crates.io
+  * Remove an unused inport
+  * placate Clippy
+  * cargo fmt
+  * Fix #747 in `cargo-audit instead, and don't silence errors that occur during checking for yanked crates`
+  * Revert "Only check if a package is yanked if it comes from crates.io; fixes #747" This is a significant behavioral change that should only come with a semver bump
+  * Add tests validating yank behavior so that #747 can't regress again
+  * Only check if a package is yanked if it comes from crates.io; fixes #747
+  * Add a test fixture depending on a yanked crate
+  * Consolidate CODE_OF_CONDUCT.d files into one; switch to Rust code of conduct (#751)
+  * Release rustsec-admit 0.8.3
+  * fix links in admin/CHANGELOG.md
+  * bump `platforms` to 3.0.2
+  * regenerate `platforms` crate
+  * Prepare rustsec-admin release
+
+-------------------------------------------------------------------
 Tue Nov 01 22:30:54 UTC 2022 - william.brown@suse.com
 
 - Update to version 0.17.3~git0.fdb9752:
