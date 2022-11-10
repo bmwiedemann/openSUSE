@@ -36,4 +36,14 @@
   - Provide service to send mails about systemd service status</comment>
     <requestid>1034264</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4f396d34aa79a900373f4f34317e973c</srcmd5>
+    <version>1.4.1</version>
+    <time>1668097990</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.1
+  - Increase limit of lines from log in status mail to 500
+  - Fix syntax error in systemd-status-mail manual page source</comment>
+    <requestid>1035100</requestid>
+  </revision>
 </revisionlist>

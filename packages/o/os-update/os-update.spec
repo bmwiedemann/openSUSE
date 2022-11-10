@@ -21,7 +21,7 @@
 %endif
 
 Name:           os-update
-Version:        1.4
+Version:        1.4.1
 Release:        0
 Summary:        Updates the system regular to stay current and safe
 License:        GPL-2.0-or-later
@@ -43,6 +43,7 @@ requires a reboot.
 %package -n systemd-status-mail
 Summary:        Send a mail if a systemd.timer fails and/or succeeds
 Requires:       (/usr/sbin/sendmail or mailx)
+Suggests:       mailx
 
 %description -n systemd-status-mail
 systemd-mail-status is called by systemd-status-mail@.service if the

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 10 15:25:52 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.4.1
+  - Increase limit of lines from log in status mail to 500
+  - Fix syntax error in systemd-status-mail manual page source
+
+-------------------------------------------------------------------
 Mon Nov  7 13:25:43 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 1.4
