@@ -19,7 +19,7 @@
 Name:           libyui-ncurses-pkg
 
 # DO NOT manually bump the version here; instead, use rake version:bump
-Version:        4.4.4
+Version:        4.4.6
 Release:        0
 
 %define         so_version 16
@@ -42,7 +42,6 @@ Source:         libyui-%{version}.tar.bz2
 %description
 This package contains the package selector for the text based (NCurses) user
 interface component for libyui.
-
 
 %package -n %{bin_name}
 Summary:        Libyui - yast2 package selector widget for the NCurses UI
@@ -70,7 +69,6 @@ Requires:       libzypp >= 17.21.0
 This package contains the NCurses (text based) package selector
 component for libyui.
 
-
 %package devel
 Summary:        Libyui-ncurses-pkg header files
 
@@ -85,7 +83,6 @@ Requires:       libyui-ncurses-devel >= %{version}
 
 This package contains the header files for the NCurses (text based)
 package selector component for libyui.
-
 
 %prep
 %setup -q -n libyui-%{version}

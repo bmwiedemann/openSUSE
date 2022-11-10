@@ -19,7 +19,7 @@
 Name:           libyui
 
 # DO NOT manually bump the version here; instead, use rake version:bump
-Version:        4.4.4
+Version:        4.4.6
 Release:        0
 
 %define         so_version 16
@@ -45,7 +45,6 @@ Originally developed for YaST, it can also be used independently of
 YaST for generic (C++) applications. This package has very few
 dependencies.
 
-
 %package -n %{bin_name}
 Summary:        Libyui - GUI abstraction library
 
@@ -65,7 +64,6 @@ Originally developed for YaST, it can also be used independently of
 YaST for generic (C++) applications. This package has very few
 dependencies.
 
-
 %package devel
 Summary:        Libyui header files and examples
 
@@ -80,7 +78,6 @@ This package contains header files and examples for developing C++
 applications based on libyui, the user interface engine that provides
 the abstraction from graphical user interfaces (Qt, Gtk) and text
 based user interfaces (ncurses).
-
 
 %prep
 %setup -q -n %{name}-%{version}

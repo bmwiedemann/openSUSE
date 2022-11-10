@@ -19,7 +19,7 @@
 Name:           libyui-qt-graph
 
 # DO NOT manually bump the version here; instead, use   rake version:bump
-Version:        4.4.4
+Version:        4.4.6
 Release:        0
 
 %define         so_version 16
@@ -48,7 +48,6 @@ Source:         libyui-%{version}.tar.bz2
 %description
 This package contains the Qt graph component for libyui.
 
-
 %package -n %{bin_name}
 Summary:        Libyui - Qt graph widget
 Requires:       libyui%{so_version}
@@ -68,7 +67,6 @@ This is a special widget to visualize graphs such as the
 storage device hierarchy (disks, partitions, subvolumes
 etc.).  and similar graphviz-generated graphs.
 
-
 %package devel
 Summary:        Libyui - Header files for the Qt graph widget
 Requires:       %{bin_name} = %{version}
@@ -77,7 +75,6 @@ Requires:       libyui-qt-devel >= %{version}
 %description devel
 This package contains the header files for the Qt graph component
 for libyui.
-
 
 %prep
 %setup -q -n libyui-%{version}

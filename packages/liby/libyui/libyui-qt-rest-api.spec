@@ -19,7 +19,7 @@
 Name:           libyui-qt-rest-api
 
 # DO NOT manually bump the version here; instead, use rake version:bump
-Version:        4.4.4
+Version:        4.4.6
 Release:        0
 
 %define         so_version 16
@@ -50,7 +50,6 @@ This package provides a libyui REST API plugin for the Qt frontend.
 It allows inspecting and controlling the UI remotely via
 an HTTP REST API. This is designed for automated tests.
 
-
 %package -n %{bin_name}
 Summary:        Libyui - The REST API plugin for the Qt frontend
 
@@ -66,7 +65,6 @@ This package provides a libyui REST API plugin for the Qt frontend.
 
 It allows inspecting and controlling the UI remotely via
 an HTTP REST API. This is designed for automated tests.
-
 
 %package devel
 Summary:        Libyui - Header files for the Qt REST API plugin
@@ -84,7 +82,6 @@ This package contains the header files for the plugin.
 
 This is not needed for using the REST API, only for developing
 extensions for it.
-
 
 %prep
 %setup -q -n libyui-%{version}

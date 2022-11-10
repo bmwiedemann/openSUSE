@@ -19,7 +19,7 @@
 Name:           libyui-qt
 
 # DO NOT manually bump the version here; instead, use rake version:bump
-Version:        4.4.4
+Version:        4.4.6
 Release:        0
 
 %define         so_version 16
@@ -49,7 +49,6 @@ Source:         libyui-%{version}.tar.bz2
 This package contains the Qt (graphical) user interface component
 for libyui.
 
-
 %package -n %{bin_name}
 Summary:        Libyui - Qt (graphical) user interface
 
@@ -64,7 +63,6 @@ Obsoletes:      %{name}-doc < %{version}
 This package contains the Qt (graphical) user interface component
 for libyui.
 
-
 %package devel
 Summary:        Libyui - Header files for the Qt (graphical) user interface
 
@@ -78,7 +76,6 @@ user interface component for libyui.
 
 This package is not needed to develop libyui-based applications,
 only to develop extensions for libyui-qt.
-
 
 %prep
 %setup -q -n libyui-%{version}
