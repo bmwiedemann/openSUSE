@@ -18,7 +18,7 @@
 
 %define cpan_name HTTP-Message
 Name:           perl-HTTP-Message
-Version:        6.41
+Version:        6.44
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        HTTP style message (base class)
@@ -28,8 +28,9 @@ Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(Clone) >= 0.46
 BuildRequires:  perl(Compress::Raw::Bzip2)
-BuildRequires:  perl(Compress::Raw::Zlib)
+BuildRequires:  perl(Compress::Raw::Zlib) >= 2.062
 BuildRequires:  perl(Encode) >= 3.01
 BuildRequires:  perl(Encode::Locale) >= 1
 BuildRequires:  perl(HTTP::Date) >= 6
@@ -37,8 +38,6 @@ BuildRequires:  perl(IO::Compress::Bzip2) >= 2.021
 BuildRequires:  perl(IO::Compress::Deflate)
 BuildRequires:  perl(IO::Compress::Gzip)
 BuildRequires:  perl(IO::HTML)
-BuildRequires:  perl(IO::Uncompress::Bunzip2) >= 2.021
-BuildRequires:  perl(IO::Uncompress::Gunzip)
 BuildRequires:  perl(IO::Uncompress::Inflate)
 BuildRequires:  perl(IO::Uncompress::RawInflate)
 BuildRequires:  perl(LWP::MediaTypes) >= 6
@@ -48,8 +47,9 @@ BuildRequires:  perl(Try::Tiny)
 BuildRequires:  perl(URI) >= 1.10
 BuildRequires:  perl(URI::URL)
 BuildRequires:  perl(parent)
+Requires:       perl(Clone) >= 0.46
 Requires:       perl(Compress::Raw::Bzip2)
-Requires:       perl(Compress::Raw::Zlib)
+Requires:       perl(Compress::Raw::Zlib) >= 2.062
 Requires:       perl(Encode) >= 3.01
 Requires:       perl(Encode::Locale) >= 1
 Requires:       perl(HTTP::Date) >= 6
@@ -57,8 +57,6 @@ Requires:       perl(IO::Compress::Bzip2) >= 2.021
 Requires:       perl(IO::Compress::Deflate)
 Requires:       perl(IO::Compress::Gzip)
 Requires:       perl(IO::HTML)
-Requires:       perl(IO::Uncompress::Bunzip2) >= 2.021
-Requires:       perl(IO::Uncompress::Gunzip)
 Requires:       perl(IO::Uncompress::Inflate)
 Requires:       perl(IO::Uncompress::RawInflate)
 Requires:       perl(LWP::MediaTypes) >= 6

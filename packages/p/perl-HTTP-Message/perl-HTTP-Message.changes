@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Oct 27 03:07:31 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.44
+   see /usr/share/doc/packages/perl-HTTP-Message/Changes
+
+  6.44      2022-10-26 20:49:00Z
+      - Made the Clone module a hard requirement, so we don't have to
+        provide a fallback function for HTTP::Headers::clone().
+        We require at least Clone 0.46, as that release now supports
+        Perl back to 5.8.1, just like us. (GH#184) (Neil Bowers)
+      - Import clone from Clone rather than inheriting (GH#189) (Graham Knop)
+      - Made the Compress::Raw::Zlib 2.062 module minimal required
+        version. (GH#190) (Jakub 'q84fh' Skory)
+
+  6.43      2022-10-22 14:50:35Z
+      - Remove dependency to IO::Uncompress::Bunzip2. (Michal Josef Spacek)
+      - Remove dependency to IO::Uncompress::Gunzip. (Michal Josef Spacek)
+
+  6.42      2022-10-18 13:53:22Z
+      - We now don't consider the Content-Location header when asked
+        for the base URI. RFC 7231 says we shouldn't. (GH#51) (Neil Bowers)
+      - Increased the (max) buffer size for read() when processing form data,
+        from 2048 to 8192. This was suggested in RT#105184, as it improved
+        performance for them. (GH#59) (Neil Bowers)
+
+-------------------------------------------------------------------
 Thu Oct 13 03:08:25 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.41
