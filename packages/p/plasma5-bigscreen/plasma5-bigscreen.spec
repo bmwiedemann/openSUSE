@@ -23,7 +23,7 @@
 
 %bcond_without released
 Name:           plasma5-bigscreen
-Version:        5.26.2
+Version:        5.26.3
 Release:        0
 # Full Plasma 5 version (e.g. 5.9.3)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -42,24 +42,24 @@ BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  cmake(KF5Activities) >= %{kf5_version}
 BuildRequires:  cmake(KF5ActivitiesStats) >= %{kf5_version}
-BuildRequires:  cmake(KF5Plasma) >= %{kf5_version}
-BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
-BuildRequires:  cmake(KF5Kirigami2) >= %{kf5_version}
 BuildRequires:  cmake(KF5Declarative) >= %{kf5_version}
+BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
 BuildRequires:  cmake(KF5KCMUtils) >= %{kf5_version}
-BuildRequires:  cmake(KF5Notifications) >= %{kf5_version}
-BuildRequires:  cmake(KF5PlasmaQuick) >= %{kf5_version}
 BuildRequires:  cmake(KF5KIO) >= %{kf5_version}
+BuildRequires:  cmake(KF5Kirigami2) >= %{kf5_version}
+BuildRequires:  cmake(KF5Notifications) >= %{kf5_version}
+BuildRequires:  cmake(KF5Plasma) >= %{kf5_version}
+BuildRequires:  cmake(KF5PlasmaQuick) >= %{kf5_version}
 BuildRequires:  cmake(KF5Wayland) >= %{kf5_version}
 BuildRequires:  cmake(KF5WindowSystem) >= %{kf5_version}
-BuildRequires:  cmake(LibKWorkspace)
 BuildRequires:  cmake(KPipeWire)
+BuildRequires:  cmake(LibKWorkspace)
 BuildRequires:  cmake(Qt5Core) >= 5.15.0
+BuildRequires:  cmake(Qt5DBus)
+BuildRequires:  cmake(Qt5Multimedia)
+BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Qml)
 BuildRequires:  cmake(Qt5Quick)
-BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5Network)
-BuildRequires:  cmake(Qt5Multimedia)
 Requires:       plasma5-workspace >= %{_plasma5_bugfix}
 
 %description
