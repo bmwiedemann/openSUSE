@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov  9 10:26:11 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop recommends on vmaf-data, the package is gone since vmaf 2.x.
+  Build model data into the library, since `make install` does not
+  do anything by default. [boo#1189023]
+
+-------------------------------------------------------------------
 Mon Apr 11 19:21:40 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.3.1

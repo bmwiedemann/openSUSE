@@ -47,4 +47,14 @@
     <comment>- Update to release 2.3.1</comment>
     <requestid>969285</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>db7ca8d72d033b0043190f608c9f8651</srcmd5>
+    <version>2.3.1</version>
+    <time>1668086359</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop recommends on vmaf-data, the package is gone since vmaf 2.x.
+  Build model data into the library, since `make install` does not
+  do anything by default. [boo#1189023]</comment>
+    <requestid>1034811</requestid>
+  </revision>
 </revisionlist>

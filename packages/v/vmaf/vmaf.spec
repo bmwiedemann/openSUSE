@@ -43,7 +43,6 @@ VMAF is a perceptual video quality assessment algorithm.
 %package -n %lname
 Summary:        Perceptual video quality assessment algorithm
 Group:          System/Libraries
-Recommends:     %name-data
 
 %description -n %lname
 VMAF is a perceptual video quality assessment algorithm.
@@ -64,7 +63,7 @@ This package contains the library API definitions.
 %build
 rm -rf third_party
 pushd libvmaf/
-%meson
+%meson -Dbuilt_in_models=true -Denable_float=true
 %meson_build
 popd
 
