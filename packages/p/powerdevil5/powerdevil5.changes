@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov  8 17:26:07 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.3
+- Changes since 5.26.2:
+  * powerprofileconfig: Use proper signal for detecting user interaction
+
+-------------------------------------------------------------------
 Wed Oct 26 14:16:39 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.26.2
