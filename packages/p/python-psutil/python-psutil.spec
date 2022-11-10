@@ -24,7 +24,7 @@
 %endif
 %bcond_without python2
 Name:           python-psutil
-Version:        5.9.3
+Version:        5.9.4
 Release:        0
 Summary:        A process utilities module for Python
 License:        BSD-3-Clause
