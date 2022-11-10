@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov  9 18:31:23 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add CVE-2022-45061-DoS-by-IDNA-decode.patch to avoid
+  CVE-2022-45061 (bsc#1205244) allowing DoS by IDNA decoding
+  extremely long domain names.
+
+-------------------------------------------------------------------
 Tue Oct 25 08:39:47 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.11.0 (overall changes from 3.10.*):

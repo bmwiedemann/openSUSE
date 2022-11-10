@@ -310,4 +310,15 @@ C API
     <comment></comment>
     <requestid>1031405</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>fbad9129402e03fe9085896b7ad63460</srcmd5>
+    <version>3.11.0</version>
+    <time>1668086585</time>
+    <user>dimstar_suse</user>
+    <comment>- Add CVE-2022-45061-DoS-by-IDNA-decode.patch to avoid
+  CVE-2022-45061 (bsc#1205244) allowing DoS by IDNA decoding
+  extremely long domain names.
+</comment>
+    <requestid>1034963</requestid>
+  </revision>
 </revisionlist>
