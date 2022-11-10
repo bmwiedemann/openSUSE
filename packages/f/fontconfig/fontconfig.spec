@@ -18,7 +18,7 @@
 
 Name:           fontconfig
 %define lname   libfontconfig1
-Version:        2.14.0
+Version:        2.14.1
 Release:        0
 Summary:        Library for Font Configuration
 License:        MIT
@@ -32,11 +32,11 @@ BuildRequires:  automake >= 1.11
 BuildRequires:  gperf
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
+BuildRequires:  python3-base
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(json-c)
 BuildRequires:  pkgconfig(uuid)
-BuildRequires:  python3-base
 Provides:       ipa-fonts-config = 003.02
 Obsoletes:      ipa-fonts-config < 003.02
 Provides:       IPA-fonts-config = 003.02
