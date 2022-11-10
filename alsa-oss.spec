@@ -1,7 +1,7 @@
 #
 # spec file for package alsa-oss
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,9 @@ License:        GPL-2.0-or-later
 Group:          System/Libraries
 URL:            https://www.alsa-project.org
 Source:         %{url}/files/pub/oss-lib/alsa-oss-%{version}.tar.bz2
+Source1:        %{url}/files/pub/oss-lib/alsa-oss-%{version}.tar.bz2.sig
 Source2:        baselibs.conf
+Source3:        %{name}.keyring
 BuildRequires:  alsa-devel
 BuildRequires:  libtool
 
