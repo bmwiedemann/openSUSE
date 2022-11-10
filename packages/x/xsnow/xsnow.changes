@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Wed Nov  9 18:34:11 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 3.5.3
+  * main.c: drawit(): do now draw the first second or so to hide
+    unstable configurations of scenery, stars, etc.
+    fallensnow.c, birds.c, aurora.c: make them C++ compliant by
+    rewriting goto and typecast pointer assignment
+    meteor.c: rewrite goto
+    santa.c: continue Santa animation, irrespective of His speed
+    fallensnow.c: paint fallensnow one pixel higher
+    fallensnow.c: generate more snow when Santa is ploughing
+  * loadmeasure.c: maximum 5 warnings about to busy system
+  * doit.h: change defaults for aurora_width/height to 60/30
+- Changes in 3.5.2
+  * fallensnow.c: draw fallensnow only on regions where
+    fallensnow is present, to prevent a continuously present line
+    on regions where there is no fallensnow (yet)
+  * main.c: when user changes offsety, call 
+    UpdateFallenSnowRegionsWithLock() in stead of
+    UpdateFallenSnowRegions().
+    fallensnow.c: on change of MaxScrSnowDepth, call
+    SetMaxScreenSnowDepthWithLock() in stead of
+    SetMaxScreenSnowDepth().
+    snow.c: set fallensnow lock when examining fallensnow regions
+    thus preventing prevents random crashes
+    fallensnow.h a.o: create and use macros for semaphores to
+    facilitate debugging
+- Changes in 3.5.1
+  * configure.ac: reproducible build is now complete, it seems, also
+    when building outside the xsnow-tree
+  * aurora.c, spline_interpol.c: use steffen's method for splines
+    aurora.c: small correction in determining the points to
+    evaluate the splne at
+  * spline_interpol.{h,c}, aurora.c: use macro SPLINE_INTERP to choose
+    for spline type (steffen, cspline)
+  * change some meteor code: other call-back logic, other
+    names for variables (meteorite -> meteor)
+  * change filenames meteo.c, meteo.h into meteor.c, meteor.h
+    change flags -meteorites, -nometeorites into -meteors, -nometeors
+    meteor.c: some minor changes, including different colors
+  * snow.c: do_UpdateSnowFlake(): fix non-fatal bug in updating
+    horizontal speed of flakes
+  * xsnow.c, snow.c: change some parameters for a more dramatic
+    dependency from wind on flakes
+    flag 'auroraheight' is now height of aurora
+    flag 'aurorabase' determines the vertical placement of the aurora
+  * fallensnow.c, treesnow.c: use random flake for blowoff snow
+    fallensnow.c: change initial velocity and position of blowoff snow
+  * fallensnow.c: use spline for desh shape of bottom fallensnow
+    main.c: correct non-fatal bug in using srand48() for 32 bit systems
+    snow.c: correct not-fatal bug: compare acth[] with desh[] in stead
+    of h
+    xsnow.h: change time_change_bottom to 10 minutes
+  * use splines to paint fallensnow 
+  * try pthreads for computing fallensnow
+  * finish pthreads for fallensnow
+  * aurora.c: do not use mutexes, use semaphores
+    fix bug that caused creation of new threads after
+    resizing of corona
+  * fallensnow.c: use splines for fallensnow also on windows
+  * birds.c: make birds multithreading
+  * fallensnow.c, utils.{c,h}: check on availability of traceback()
+    fallensnow.h: threads.h -> pthread.h
+
+-------------------------------------------------------------------
 Fri Apr 22 01:14:30 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 3.5.0
