@@ -32,7 +32,7 @@ Name:           azure-cli
 Name:           azure-cli%{?name_ext}
 %endif
 %define         short_name azure-cli
-Version:        2.41.0
+Version:        2.42.0
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
@@ -54,6 +54,7 @@ Requires:       azure-cli-core = %{version}
 Requires:       azure-cli-nspkg >= 3.0.3
 Requires:       python3-Fabric >= 2.4
 Requires:       python3-PyGithub >= 1.38
+Requires:       python3-PyMySQL >= 1.0.2
 Requires:       python3-PyNaCl >= 1.5.0
 Requires:       python3-PyYAML >= 5.1
 Requires:       python3-antlr4-python3-runtime >= 4.9.3
@@ -77,12 +78,12 @@ Requires:       python3-azure-mgmt-batchai >= 7.0.0b1
 Requires:       python3-azure-mgmt-billing >= 6.0.0
 Requires:       python3-azure-mgmt-botservice >= 2.0.0b3
 Requires:       python3-azure-mgmt-cdn >= 12.0.0
-Requires:       python3-azure-mgmt-cognitiveservices >= 13.2.0
-Requires:       python3-azure-mgmt-compute >= 28.0.0
+Requires:       python3-azure-mgmt-cognitiveservices >= 13.3.0
+Requires:       python3-azure-mgmt-compute >= 29.0.0
 Requires:       python3-azure-mgmt-consumption >= 2.0
 Requires:       python3-azure-mgmt-containerinstance >= 9.1.0
 Requires:       python3-azure-mgmt-containerregistry >= 10.0.0
-Requires:       python3-azure-mgmt-containerservice >= 20.3.0
+Requires:       python3-azure-mgmt-containerservice >= 20.6.0
 Requires:       python3-azure-mgmt-cosmosdb >= 8.0.0
 Requires:       python3-azure-mgmt-databoxedge >= 1.0.0
 Requires:       python3-azure-mgmt-datalake-analytics >= 0.2.1
@@ -109,7 +110,7 @@ Requires:       python3-azure-mgmt-marketplaceordering >= 1.1.0
 Requires:       python3-azure-mgmt-media >= 9.0
 Requires:       python3-azure-mgmt-monitor >= 5.0.0
 Requires:       python3-azure-mgmt-msi >= 6.1.0
-Requires:       python3-azure-mgmt-netapp >= 9.0.0
+Requires:       python3-azure-mgmt-netapp >= 9.0.1
 Requires:       python3-azure-mgmt-network >= 21.0.1
 Requires:       python3-azure-mgmt-policyinsights >= 1.1.0b2
 Requires:       python3-azure-mgmt-privatedns >= 1.0.0
@@ -128,16 +129,16 @@ Requires:       python3-azure-mgmt-servicefabric >= 1.0.0
 Requires:       python3-azure-mgmt-servicefabricmanagedclusters >= 1.0.0
 Requires:       python3-azure-mgmt-servicelinker >= 1.0.0
 Requires:       python3-azure-mgmt-signalr >= 1.1.0
-Requires:       python3-azure-mgmt-sql >= 4.0.0b3
+Requires:       python3-azure-mgmt-sql >= 4.0.0b4
 Requires:       python3-azure-mgmt-sqlvirtualmachine >= 1.0.0b3
 Requires:       python3-azure-mgmt-storage >= 20.1.0
-Requires:       python3-azure-mgmt-synapse >= 2.1.0
+Requires:       python3-azure-mgmt-synapse >= 2.1.0b5
 Requires:       python3-azure-mgmt-trafficmanager >= 1.0.0
 Requires:       python3-azure-mgmt-web >= 7.0.0
 Requires:       python3-azure-multiapi-storage >= 0.10.0
 Requires:       python3-azure-storage-common >= 1.4
 Requires:       python3-azure-synapse-accesscontrol >= 0.5.0
-Requires:       python3-azure-synapse-artifacts >= 0.13.0
+Requires:       python3-azure-synapse-artifacts >= 0.14.0
 Requires:       python3-azure-synapse-managedprivateendpoints >= 0.3.0
 Requires:       python3-azure-synapse-spark >= 0.2.0
 Requires:       python3-chardet >= 3.0.4
@@ -145,7 +146,6 @@ Requires:       python3-colorama >= 0.4.4
 Requires:       python3-distro
 Requires:       python3-javaproperties >= 0.5.1
 Requires:       python3-jsondiff >= 2.0.0
-Requires:       python3-mycli >= 1.22.2
 Requires:       python3-packaging >= 20.9
 Requires:       python3-pydocumentdb >= 2.0.1
 Requires:       python3-pygments >= 2.4
