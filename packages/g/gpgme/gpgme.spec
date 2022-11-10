@@ -49,6 +49,8 @@ Patch3:         gpgme-D545-python310.patch
 Patch4:         gpgme-D546-python310.patch
 # PATCH-FIX-UPSTREAM fix qt tests -- https://dev.gnupg.org/T6137
 Patch5:         gpgme-1.18.0-T6137-qt_test.patch
+# PATCH-FIX-OPENSUSE gpgme-suse-nobetasuffix.patch code@bnavigator.de -- remove "-unknown" betasuffix boo#1205197
+Patch6:         gpgme-suse-nobetasuffix.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -71,6 +73,7 @@ BuildRequires:  pkgconfig(Qt5Test)
 %python_subpackages
 %else
 %define python_sitearch %python3_sitearch
+%define python_version %python3_version
 %define python_files() -n python3-%{**}
 %endif
 
@@ -216,6 +219,7 @@ This package contains the bindings to use the library in Qt C++ applications.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 %build
 ./autogen.sh
@@ -309,13 +313,15 @@ rm -r %{buildroot}%{_libdir}/pkgconfig/gpgme*
 %if %{with python2} && ! 0%{?python_subpackage_only}
 %files -n python2-gpg
 %license COPYING COPYING.LESSER LICENSES
-%{python_sitearch}/gpg*
+%{python2_sitearch}/gpg
+%{python2_sitearch}/gpg-%{version}-py%{python2_version}.egg-info
 %endif
 
 %if %{with python3} || ( 0%{?python_subpackage_only} && %{with python2} )
 %files %{python_files gpg}
 %license COPYING COPYING.LESSER LICENSES
-%{python_sitearch}/gpg*
+%{python_sitearch}/gpg
+%{python_sitearch}/gpg-%{version}-py%{python_version}.egg-info
 %endif
 
 %if %{with qt}

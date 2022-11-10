@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov  8 18:35:11 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Add gpgme-suse-nobetasuffix.patch
+  * remove "-unknown" suffix from version string
+  * boo#1205197
+
+-------------------------------------------------------------------
 Thu Aug 18 20:30:13 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - gpgme 1.18.0
