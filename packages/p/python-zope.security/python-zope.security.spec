@@ -2,7 +2,7 @@
 # spec file
 #
 # Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2013 LISA GmbH, Bingen, Germany.
+# Copyright (c) 2013-2022 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %bcond_with test
 %endif
 Name:           python-zope.security%{psuffix}
-Version:        5.4
+Version:        5.5
 Release:        0
 Summary:        Zope Security Framework
 License:        ZPL-2.1
