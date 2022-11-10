@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov  8 17:24:36 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.3
+- Changes since 5.26.2:
+  * Remove top margin caused by empty header on UpdatesPage
+  * Notifier: Fix notification logic
+  * pk/?: Fix problem when using faulty URL
+
+-------------------------------------------------------------------
 Wed Oct 26 14:15:27 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.26.2
