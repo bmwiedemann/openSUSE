@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov  9 10:07:50 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- skip extra tests for qemu based builds 
+
+-------------------------------------------------------------------
 Thu Aug  5 12:42:51 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Remove executable flag from examples/*.py: since we already patch

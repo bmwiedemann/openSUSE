@@ -1,7 +1,7 @@
 #
 # spec file for package python-pexpect
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -66,7 +66,7 @@ export LANG=en_US.UTF-8
 # test_bash https://github.com/pexpect/pexpect/issues/568
 # test_large_stdout_stream - random
 # test_pager_as_cat - needs manpages that would pull extra deps
-%pytest -k 'not test_bash and not test_large_stdout_stream and not test_pager_as_cat'
+%pytest -k "not test_bash and not test_large_stdout_stream and not test_pager_as_cat %{?qemu_user_space_build: and not test_spawn_uses_env}"
 
 %files %{python_files}
 %license LICENSE
