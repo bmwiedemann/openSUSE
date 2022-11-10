@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov  9 06:48:12 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.1.13
+  * Fixed possible mutex and threading issues
+
+-------------------------------------------------------------------
 Fri Jun 24 08:14:05 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 1.1.12

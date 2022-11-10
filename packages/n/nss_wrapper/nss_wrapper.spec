@@ -23,7 +23,7 @@
 #
 ############################# NOTE ##################################
 Name:           nss_wrapper
-Version:        1.1.12
+Version:        1.1.13
 Release:        0
 Summary:        A wrapper for the user, group and hosts NSS API
 License:        BSD-3-Clause

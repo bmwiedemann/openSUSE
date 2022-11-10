@@ -194,4 +194,14 @@
 </comment>
     <requestid>984842</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>f3e4dd068ceaaba9ebae736863de9f30</srcmd5>
+    <version>1.1.13</version>
+    <time>1668086352</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.13
+  * Fixed possible mutex and threading issues
+</comment>
+    <requestid>1034765</requestid>
+  </revision>
 </revisionlist>
