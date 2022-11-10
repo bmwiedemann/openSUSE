@@ -1,4 +1,18 @@
 --------------------------------------------------------------------
+Wed Nov 9 16:04:55 UTC 2022 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#903
+- fixed typo
+- 4.5.50
+
+--------------------------------------------------------------------
+Wed Nov 9 13:43:22 UTC 2022 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#902
+- ignore chunk size for RAID1 (bsc#1205172)
+- 4.5.49
+
+--------------------------------------------------------------------
 Fri Oct 28 10:32:37 UTC 2022 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#901
