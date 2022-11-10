@@ -25,4 +25,16 @@
     <comment></comment>
     <requestid>1009891</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>649e2f2b90b45c176e4369133491089a</srcmd5>
+    <version>2.1.0</version>
+    <time>1668086593</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.0 
+  * Drop support for Python 3.6
+  * Support Python 3.11
+  * Use tomllib on Python 3.11
+</comment>
+    <requestid>1034977</requestid>
+  </revision>
 </revisionlist>
