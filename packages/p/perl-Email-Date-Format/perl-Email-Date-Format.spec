@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Email-Date-Format
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,24 +18,18 @@
 
 %define cpan_name Email-Date-Format
 Name:           perl-Email-Date-Format
-Version:        1.005
+Version:        1.006
 Release:        0
-Summary:        Produce RFC 2822 date strings
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
+Summary:        Produce RFC 2822 date strings
 URL:            https://metacpan.org/release/%{cpan_name}
-Source:         https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{version}.tar.gz
-Patch0:         fix-time-local.patch
+Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{version}.tar.gz
+Source1:        cpanspec.yml
+BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(ExtUtils::MakeMaker)
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.78
 BuildRequires:  perl(Test::More) >= 0.96
-BuildRequires:  perl(Test::Pod) >= 1.41
-Requires:       perl(Exporter) >= 5.57
-Requires:       perl(Time::Local)
-Requires:       perl(strict)
-Requires:       perl(warnings)
-BuildArch:      noarch
 %{perl_requires}
 
 %description
@@ -44,15 +38,14 @@ datetime string. (In case you care, they're not RFC 822 dates, because they
 use a four digit year, which is not allowed in RFC 822.)
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-%patch0 -p1
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
-make %{?_smp_mflags} test
+make test
 
 %install
 %perl_make_install
@@ -60,8 +53,7 @@ make %{?_smp_mflags} test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%license LICENSE
 %doc Changes README
+%license LICENSE
 
 %changelog

@@ -179,4 +179,18 @@
     <comment></comment>
     <requestid>709098</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>5092b2b2e9099eda17d66f06f2fb72e9</srcmd5>
+    <version>1.006</version>
+    <time>1668086517</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.006
+   see /usr/share/doc/packages/perl-Email-Date-Format/Changes
+  1.006     2022-10-22 16:01:01-04:00 America/New_York
+          - update packaging
+          - avoid using ambiguous 2 digit years (thanks, bitcardbmw@lsmod.de)
+- drop fix-time-local.patch (upstream)
+</comment>
+    <requestid>1034883</requestid>
+  </revision>
 </revisionlist>
