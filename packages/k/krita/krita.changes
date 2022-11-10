@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Wed Nov  9 09:50:24 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.1.3
+  * Fix using the Global Menu in the Plasma desktop when using
+    distribution packages. (kde#408015)
+  * JPEG-XL, HEIF: Fix import/export of HDR Alpha
+    Channels. (kde#460380)
+  * JPEG-XL, HEIF: Fix clamping of normalized HDR values
+  * JPEG XL, HEIF: Fix saving OOTF removal if it’s enabled
+  * JPEG XL: Fix enabling HLG correction options
+  * JPEG-XL: Work around linear profiles having an undefined
+    transfer function
+  * JPEG-XL: Optimize HDR export
+  * JPEG-XL: Improve compatibility with the currently experimental
+    JPEG-XL support in Chrome
+  * Fix handling creating an image from clipboard when the
+    clipboard is empty. (kde#459800)
+  * Fix loading CSV animation files
+  * Fix paste outside of image boundaries. (kde#459111)
+  * Fix aliasing of brush tips at small brush sizes.
+  * Fix issues with the Line tool. (kde#460461)
+  * Fix a crash on selecting and cutting/copying in a new
+    document. (kde#457475, kde#460954)
+  * Android: fix long-press producing a right-click event
+  * Android: handle touch events for Mirror decorations
+  * Fix a crash in the pattern fill layer. (kde#459906)
+  * Fix foreground to background color switching of vector
+    objects. (kde#458913)
+  * Fix several issues in TIFF file export. (kde#459840)
+  * Fix issues when changing color theme
+  * Fix saving files with extreme aspect ratios. (kde#460624)
+  * Fix issues in the path selection tool
+  * Implement right-click to undo adding a point for the
+    polyline tool
+  * Fix copy/paste with animated layers. (kde#457319, kde#459763)
+  * Make it possible to import more than one bundle at a time
+  * Make it possible to run Krita on Linux when SELinux is
+    enabled. (kde#459490)
+  * Fix a crash on startup when there is a PSD file with
+    layer styles in the recent files list. (kde#459512)
+  * Make it possible to run Python scripts if there is no
+    paintable layer. (kde#459495)
+  * Fix the Ten Scripts plugin to actually remember the selected
+    scripts. (kde#421231)
+  * Add an option to PNG export to convert to 8 bit on
+    saving. (kde#459415)
+  * Fix artifacts when hovering over reference images in HiDPI
+    mode. (kde#441216)
+  * Fix thumbnails for pass-through layers being created
+    (they shouldn’t…) (kde#440960)
+  * Make the OpenGL workaround available for all
+    platforms. (kde#401940)
+  * PSD: fix reading of layer blending ranges. (kde#459307)
+  * Fix a lot of small memory leaks
+  * Fix copy-paste operation not working after using the move
+    tool. (kde#458764)
+  * Show all loaded python plugins in the Help->System Info
+    dialog
+  * Show a busy cursor when saving a reference image
+    set. (kde#427546)
+  * Add Document::setModified to the scripting API. (kde#425066)
+  * Fix a crash when trying to save an image with a fill
+    layer. (kde#459252)
+  * Fix a crash when copy/paste a shape or fill layer or a
+    selection mask. (kde#458115)
+  * Fix layer thumbnails when loading a 512×512 PSD
+    file. (kde#458887)
+  * Fix a crash when trying to copy-paste the background layer.
+    (kde#458890, kde#458857, kde#458248, kde#458941)
+  * Don’t highlight a layer with a color label on
+    mouse-over. (kde#459153)
+  * Fix creating numbered backups for files with names that
+    contain [ and ]. (kde#445500)
+  * Add middle handles to perspective transform
+  * Fix dab inaccuracy of Sharpness brushes when outline preview
+    snapping is disabled. (kde#458361)
+
+-------------------------------------------------------------------
 Sat Sep 17 13:55:41 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.1.1
