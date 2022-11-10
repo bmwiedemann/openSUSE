@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Nov  8 17:25:03 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.3
+- Changes since 5.26.2.1:
+  * wayland: Prevent matching dnd actions after drop
+  * Screencast: Fix inverted screencast on OpenGLES and memfd
+  * screencasting: Make sure we are reporting properly scaled damage values
+  * plugins/screencast: centralize format querying into the RenderBackend (kde#460563)
+  * backends/drm: fix format sorting
+  * Fix blur/contrast for X11 window if Xwayland is not scaled. (kde#461021)
+  * [effects/windowview] Don't allow setting non-global shortcuts
+  * [effects/overview] Don't allow setting non-global shortcuts
+  * backends/drm: fix common mode generation
+  * nightcolormanager: Emit timing change only when they have actually changed
+  * x11: Don't force QT_NO_GLIB=1 (kde#460980)
+  * x11: Don't force QT_QPA_PLATFORM=xcb
+  * x11window: revert more from 3a28c02f (kde#461032)
+- Drop patches, now upstream:
+  * 0001-x11window-revert-more-from-3a28c02f.patch
+
+-------------------------------------------------------------------
 Thu Oct 27 06:53:03 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix redraw issues with window scaling (kde#461032):
