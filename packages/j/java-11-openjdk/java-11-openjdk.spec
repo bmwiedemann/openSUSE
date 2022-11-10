@@ -284,6 +284,7 @@ BuildRequires:  pkgconfig(gthread-2.0)
 Requires:       %{name}-headless = %{version}-%{release}
 Requires:       fontconfig
 Requires(post): file
+ExcludeArch:    s390
 %if 0%{?suse_version} > 1315 || 0%{?java_bootstrap}
 # Standard JPackage base provides.
 Provides:       java = %{javaver}
