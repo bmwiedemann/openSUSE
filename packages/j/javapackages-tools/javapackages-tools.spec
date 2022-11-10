@@ -94,16 +94,6 @@ This package provides some basic directories into which Java packages
 install their content.
 
 %if %{with python}
-%package -n javapackages-gradle
-Summary:        Local mode for Gradle (files)
-Group:          Development/Languages/Java
-Requires:       javapackages-local = %{version}
-Requires:       javapackages-tools = %{version}
-
-%description -n javapackages-gradle
-This package contains files needed by local mode for Gradle, which
-allows artifact resolution using XMvn resolver.
-
 %package -n javapackages-ivy
 Summary:        Local mode for Apache Ivy (files)
 Group:          Development/Languages/Java
@@ -207,6 +197,9 @@ files="
 %{_mandir}/man1/find-jar.1
 %{_datadir}/maven-metadata/javapackages-metadata.xml
 %{_datadir}/xmvn/configuration.xml
+%{_bindir}/gradle-local
+%{_datadir}/gradle-local
+%{_mandir}/man7/gradle_build.7
 "
 for i in $files; do
     rm -rf %{buildroot}/$i
@@ -247,9 +240,6 @@ popd
 
 %files -n javapackages-local -f files-common -f files-extra -f files-compat -f files-generators
 %dir %{_datadir}/java-utils
-
-%files -n javapackages-gradle -f files-gradle
-%dir %{_datadir}/gradle-local
 
 %files -n javapackages-ivy -f files-ivy
 %dir %{_sysconfdir}/ant.d
