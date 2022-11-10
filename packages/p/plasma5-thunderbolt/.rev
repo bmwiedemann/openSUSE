@@ -471,4 +471,12 @@
     <comment>Plasma 5.26.2, untested but now with kwin scaling fix (forwarded request 1031457 from Vogtinator)</comment>
     <requestid>1031891</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>08c58f9241ff512abebf8d7a1373dd7e</srcmd5>
+    <version>5.26.3</version>
+    <time>1668086499</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.26.3(.1), untested as usual (forwarded request 1034741 from Vogtinator)</comment>
+    <requestid>1034789</requestid>
+  </revision>
 </revisionlist>
