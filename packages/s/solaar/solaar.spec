@@ -35,6 +35,7 @@ BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module evdev}
 BuildRequires:  %{python_module gobject-Gdk}
 BuildRequires:  %{python_module gobject}
+BuildRequires:  %{python_module hid-parser}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module python-xlib}
 BuildRequires:  %{python_module pyudev}
@@ -53,6 +54,7 @@ Requires:       python3-dataclasses
 Requires:       python3-evdev
 Requires:       python3-gobject
 Requires:       python3-gobject-Gdk
+Requires:       python3-hid-parser
 Requires:       python3-psutil
 Requires:       python3-python-xlib
 Requires:       python3-pyudev

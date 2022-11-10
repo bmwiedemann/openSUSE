@@ -462,4 +462,13 @@
 </comment>
     <requestid>1034263</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>fa66756040118aa80796c84998ad925c</srcmd5>
+    <version>1.1.7</version>
+    <time>1668094834</time>
+    <user>dimstar_suse</user>
+    <comment>- Add require to python-hid-parser
+</comment>
+    <requestid>1035072</requestid>
+  </revision>
 </revisionlist>
