@@ -1022,4 +1022,12 @@ https://cgit.kde.org/breeze-gtk.git/commit/COPYING.LIB?id=499226afa44cafb342546d
     <comment>Plasma 5.26.2, untested but now with kwin scaling fix (forwarded request 1031457 from Vogtinator)</comment>
     <requestid>1031848</requestid>
   </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>7dd59b6bd55098c66e23c30327aac8fb</srcmd5>
+    <version>5.26.3</version>
+    <time>1668086433</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.26.3(.1), untested as usual (forwarded request 1034741 from Vogtinator)</comment>
+    <requestid>1034745</requestid>
+  </revision>
 </revisionlist>
