@@ -7,4 +7,12 @@
     <comment>Initial packaging of appx-util to replace fb-util-for-appx</comment>
     <requestid>903086</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1912a3f0b9014bd21dbbfa155d515975</srcmd5>
+    <version>0.4</version>
+    <time>1668086362</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1034832</requestid>
+  </revision>
 </revisionlist>
