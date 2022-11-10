@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Wed Nov 09 19:24:01 UTC 2022 - marix@marix.org - 0.17
+
+- Update to version 0.17:
+  * Completely new driver for ASUS devices.
+  * Sinowealth driver now supports changing report rate, button
+    assignments and macros.
+  * New compatible devices:
+    + ASUS ROG Chakram
+    + ASUS ROG GX860 Buzzard Mouse
+    + ASUS ROG Gladius II
+    + ASUS ROG Gladius II Origin
+    + ASUS ROG Gladius II Origin PNK LTD
+    + ASUS ROG Keris Wireless
+    + ASUS ROG Pugio
+    + ASUS ROG Strix Carry
+    + ASUS ROG Strix Impact
+    + ASUS ROG Strix Impact II Wireless
+    + DreamMachines DM5 Blink
+    + G-Wolves Hati HT-M Wired
+    + Genesys Xenon 770
+    + Glorious Model O (with older firmware)
+    + Logitech G502 X
+    + Logitech G502 X Wireless
+    + Logitech G635
+    + Logitech G733
+    + Logitech MX Anywhere 3B
+    + Machenike M620
+    + Marvo Scorpion G961
+    + More SteelSeries Rival variations
+    + Roccat Kone EMP
+    + SteelSeries Rival 100/105
+  * Report rate changing now works on older SteelSeries mice.
+  * Fix multiple configurable devices being shown for one
+    connected SteelSeries mouse.
+  * Fix setting onboard profile mode in HID++2.0 driver.
+  * Fix active resolution slot reading and writing in Sinowealth driver.
+  * Fix report rates which are not multiples of 100 not applying.
+- Require Meson >= 0.50.0 for build
+
+-------------------------------------------------------------------
 Fri Oct 15 07:05:09 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
