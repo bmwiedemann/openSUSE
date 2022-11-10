@@ -26,6 +26,8 @@ unsorted:
   - CSXCAD-devel 
   - CSXCAD-matlab 
   - Cadence 
+  - CalcMySky 
+  - CalcMySky-devel 
   - CastXML-devel 
   - Catch2-2-devel 
   - Catch2-devel 
@@ -6361,7 +6363,6 @@ unsorted:
   - gp2c 
   - gpa 
   - gpa-lang 
-  - gpars-bootstrap 
   - gparted 
   - gparted-lang 
   - gpaste 
@@ -6404,7 +6405,6 @@ unsorted:
   - gr-iqbal-devel-doc 
   - gr-iqbal-grc 
   - grabpng 
-  - gradle-bootstrap 
   - grafana 
   - grafana-ha-cluster-dashboards 
   - grafana-piechart-panel 
@@ -6474,7 +6474,6 @@ unsorted:
   - gromit-mpx 
   - gromox 
   - gron 
-  - groovy-bootstrap 
   - groovy18 
   - groovy18-javadoc 
   - groovy18-lib 
@@ -7684,7 +7683,6 @@ unsorted:
   - javahelp2-manual 
   - javamail 
   - javamail-javadoc 
-  - javapackages-gradle 
   - javapackages-ivy 
   - javapackages-local 
   - javaparser 
@@ -9533,6 +9531,8 @@ unsorted:
   - libSavitar-devel 
   - libSavitar0 
   - libSciTokens0 
+  - libShowMySky-Qt6-14 
+  - libShowMySky-Qt6-14-devel 
   - libSimGearCore-2020_3_13 
   - libSoQt20 
   - libSoapyOsmoSDR0 
@@ -19832,6 +19832,7 @@ unsorted:
   - perl-LaTeXML 
   - perl-Lexical-Persistence 
   - perl-Lexical-SealRequireHints 
+  - perl-Libssh-Session 
   - perl-Lingua-EN-FindNumber 
   - perl-Lingua-EN-Inflect 
   - perl-Lingua-EN-Inflect-Number 
@@ -44338,8 +44339,6 @@ unsorted:
   - xmvn 
   - xmvn-api 
   - xmvn-connector 
-  - xmvn-connector-gradle 
-  - xmvn-connector-gradle-javadoc 
   - xmvn-connector-ivy 
   - xmvn-connector-ivy-javadoc 
   - xmvn-connector-javadoc 
