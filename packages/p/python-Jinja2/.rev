@@ -474,4 +474,52 @@
     <comment></comment>
     <requestid>931805</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>683175276a2ac025d9ed728feba9ee5b</srcmd5>
+    <version>3.1.2</version>
+    <time>1668086363</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.1.2:
+  * Add parameters to ``Environment.overlay`` to match ``__init__``.
+  * Handle race condition in ``FileSystemBytecodeCache``. :issue:`1654`
+- specfile:
+  * update copyright year
+  * require python-base &gt;= 3.7
+- update to version 3.1.1:
+  * The template filename on Windows uses the primary path separator.
+    :issue:`1637`
+- changes from version 3.1.0:
+  * Drop support for Python 3.6. :pr:`1534`
+  * Remove previously deprecated code. :pr:`1544`
+    + &quot;WithExtension&quot; and &quot;AutoEscapeExtension&quot; are built-in now.
+    + &quot;contextfilter&quot; and &quot;contextfunction&quot; are replaced by
+        &quot;pass_context&quot;. &quot;evalcontextfilter&quot; and &quot;evalcontextfunction&quot;
+        are replaced by &quot;pass_eval_context&quot;.  &quot;environmentfilter&quot; and
+        &quot;environmentfunction&quot; are replaced by &quot;pass_environment&quot;.
+    + &quot;Markup&quot; and &quot;escape&quot; should be imported from MarkupSafe.
+    + Compiled templates from very old Jinja versions may need to be
+        recompiled.
+    + Legacy resolve mode for &quot;Context&quot; subclasses is no longer
+        supported. Override &quot;resolve_or_missing&quot; instead of &quot;resolve&quot;.
+    + &quot;unicode_urlencode&quot; is renamed to &quot;url_quote&quot;.
+  * Add support for native types in macros. :issue:`1510`
+  * The &quot;{% trans %}&quot; tag can use &quot;pgettext&quot; and &quot;npgettext&quot; by
+      passing a context string as the first token in the tag, like &quot;{%
+      trans &quot;title&quot; %}&quot;. :issue:`1430`
+  * Update valid identifier characters from Python 3.6 to 3.7.
+      :pr:`1571`
+  * Filters and tests decorated with &quot;@async_variant&quot; are pickleable.
+      :pr:`1612`
+  * Add &quot;items&quot; filter. :issue:`1561`
+  * Subscriptions (&quot;[0]&quot;, etc.) can be used after filters, tests, and
+      calls when the environment is in async mode. :issue:`1573`
+  * The &quot;groupby&quot; filter is case-insensitive by default, matching
+      other comparison filters. Added the &quot;case_sensitive&quot; parameter
+      to control this. :issue:`1463`
+  * Windows drive-relative path segments in template names will not
+      result in &quot;FileSystemLoader&quot; and &quot;PackageLoader&quot; loading from
+      drive-relative paths. :pr:`1621`
+</comment>
+    <requestid>1034833</requestid>
+  </revision>
 </revisionlist>

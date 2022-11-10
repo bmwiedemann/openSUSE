@@ -1,7 +1,7 @@
 #
 # spec file for package python-Jinja2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 %ifarch %{ix86} armv7l
 %bcond_with test
@@ -24,13 +23,14 @@
 %bcond_without test
 %endif
 Name:           python-Jinja2
-Version:        3.0.3
+Version:        3.1.2
 Release:        0
 Summary:        A template engine written in pure Python
 License:        BSD-3-Clause
 URL:            https://jinja.palletsprojects.com
 Source:         https://files.pythonhosted.org/packages/source/J/Jinja2/Jinja2-%{version}.tar.gz
 BuildRequires:  %{python_module MarkupSafe >= 0.23}
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  dos2unix
