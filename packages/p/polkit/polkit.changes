@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 09 07:39:53 CET 2022 - aschnell@suse.com
+
+- read actions also from /etc/polkit-1/actions (jsc#PED-1405)
+  added polkit-actions-in-etc.patch
+
+-------------------------------------------------------------------
 Thu Sep 15 13:26:34 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - obsolete libpolkit0 also from baselibs.

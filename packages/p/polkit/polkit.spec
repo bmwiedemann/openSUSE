@@ -50,6 +50,8 @@ Patch4:         polkit-adjust-libexec-path.patch
 # PATCH-FIX-UPSTREAM polkit-fix-pam-prefix.patch luc14n0@opensuse.org -- Make
 # intended use of pam_prefix meson option rather than hard-coded path
 Patch5:         polkit-fix-pam-prefix.patch
+# Read actions also from /etc/polkit-1/actions
+Patch6:         polkit-actions-in-etc.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  gettext
@@ -204,6 +206,9 @@ mv %{buildroot}%{_sysconfdir}/polkit-1/rules.d/50-default.rules \
 mkdir -p %{buildroot}%{_sysusersdir}
 install -m0644 %{SOURCE3} %{buildroot}%{_sysusersdir}/
 
+# create actions dir in /etc
+mkdir %{buildroot}/%{_sysconfdir}/polkit-1/actions
+
 %pre -f polkit.pre
 %service_add_pre polkit.service
 
@@ -264,6 +269,7 @@ install -m0644 %{SOURCE3} %{buildroot}%{_sysusersdir}/
 %{_pam_vendordir}/polkit-1
 %dir %{_sysconfdir}/polkit-1
 %attr(0700,polkitd,root) %dir %{_sysconfdir}/polkit-1/rules.d
+%dir %{_sysconfdir}/polkit-1/actions
 %{_bindir}/pkaction
 %{_bindir}/pkcheck
 %{_bindir}/pkttyagent

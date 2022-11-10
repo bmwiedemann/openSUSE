@@ -1,0 +1,227 @@
+diff --git a/docs/man/polkit.xml b/docs/man/polkit.xml
+index 90715a5..10dd217 100644
+--- a/docs/man/polkit.xml
++++ b/docs/man/polkit.xml
+@@ -104,6 +104,7 @@ System Context         |                        |
+ +------------------+          |
+           ^                   |
+           |            +--------------------------------------+
++          |            | /etc/polkit-1/actions/*.policy       |
+           |            | /usr/share/polkit-1/actions/*.policy |
+           |            +--------------------------------------+
+           |
+diff --git a/src/polkitbackend/polkitbackendactionpool.c b/src/polkitbackend/polkitbackendactionpool.c
+index 3894fe9..17652e6 100644
+--- a/src/polkitbackend/polkitbackendactionpool.c
++++ b/src/polkitbackend/polkitbackendactionpool.c
+@@ -91,8 +91,10 @@ typedef struct
+ {
+   /* directory with .policy files, e.g. /usr/share/polkit-1/actions */
+   GFile *directory;
++  GFile *directory_alt;
+ 
+   GFileMonitor *dir_monitor;
++  GFileMonitor *dir_monitor_alt;
+ 
+   /* maps from action_id to a ParsedAction struct */
+   GHashTable *parsed_actions;
+@@ -109,6 +111,8 @@ enum
+ {
+   PROP_0,
+   PROP_DIRECTORY,
++  /* TODO combine into PROP_DIRECTORIES? */
++  PROP_DIRECTORY_ALT,
+ };
+ 
+ #define POLKIT_BACKEND_ACTION_POOL_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), POLKIT_BACKEND_TYPE_ACTION_POOL, PolkitBackendActionPoolPrivate))
+@@ -153,9 +157,15 @@ polkit_backend_action_pool_finalize (GObject *object)
+   if (priv->directory != NULL)
+     g_object_unref (priv->directory);
+ 
++  if (priv->directory_alt != NULL)
++    g_object_unref (priv->directory_alt);
++
+   if (priv->dir_monitor != NULL)
+     g_object_unref (priv->dir_monitor);
+ 
++  if (priv->dir_monitor_alt != NULL)
++    g_object_unref (priv->dir_monitor_alt);
++
+   if (priv->parsed_actions != NULL)
+     g_hash_table_unref (priv->parsed_actions);
+ 
+@@ -183,6 +193,10 @@ polkit_backend_action_pool_get_property (GObject     *object,
+       g_value_set_object (value, priv->directory);
+       break;
+ 
++    case PROP_DIRECTORY_ALT:
++      g_value_set_object (value, priv->directory_alt);
++      break;
++
+     default:
+       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+       break;
+@@ -274,6 +288,28 @@ polkit_backend_action_pool_set_property (GObject       *object,
+         }
+       break;
+ 
++    case PROP_DIRECTORY_ALT:
++      priv->directory_alt = g_value_dup_object (value);
++
++      error = NULL;
++      priv->dir_monitor_alt = g_file_monitor_directory (priv->directory_alt,
++                                                    G_FILE_MONITOR_NONE,
++                                                    NULL,
++                                                    &error);
++      if (priv->dir_monitor_alt == NULL)
++        {
++          g_warning ("Error monitoring actions alt directory: %s", error->message);
++          g_error_free (error);
++        }
++      else
++        {
++          g_signal_connect (priv->dir_monitor_alt,
++                            "changed",
++                            (GCallback) dir_monitor_changed,
++                            pool);
++        }
++      break;
++
+     default:
+       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+       break;
+@@ -308,6 +344,18 @@ polkit_backend_action_pool_class_init (PolkitBackendActionPoolClass *klass)
+                                                         G_PARAM_STATIC_NICK |
+                                                         G_PARAM_STATIC_BLURB));
+ 
++  g_object_class_install_property (gobject_class,
++                                   PROP_DIRECTORY_ALT,
++                                   g_param_spec_object ("directoryalt",
++                                                        "DirectoryAlt",
++                                                        "Alternative directory to load action description files from",
++                                                        G_TYPE_FILE,
++                                                        G_PARAM_READWRITE |
++                                                        G_PARAM_CONSTRUCT_ONLY |
++                                                        G_PARAM_STATIC_NAME |
++                                                        G_PARAM_STATIC_NICK |
++                                                        G_PARAM_STATIC_BLURB));
++
+   /**
+    * PolkitBackendActionPool::changed:
+    * @action_pool: A #PolkitBackendActionPool.
+@@ -334,12 +382,13 @@ polkit_backend_action_pool_class_init (PolkitBackendActionPoolClass *klass)
+  * Returns: A #PolkitBackendActionPool. Free with g_object_unref().
+  **/
+ PolkitBackendActionPool *
+-polkit_backend_action_pool_new (GFile *directory)
++polkit_backend_action_pool_new (GFile *directory, GFile *directory_alt)
+ {
+   PolkitBackendActionPool *pool;
+ 
+   pool = POLKIT_BACKEND_ACTION_POOL (g_object_new (POLKIT_BACKEND_TYPE_ACTION_POOL,
+                                                    "directory", directory,
++                                                   "directoryalt", directory_alt,
+                                                    NULL));
+ 
+   return pool;
+@@ -505,12 +554,14 @@ ensure_all_files (PolkitBackendActionPool *pool)
+ {
+   PolkitBackendActionPoolPrivate *priv;
+   GFileEnumerator *e;
++  GFileEnumerator *e_alt;
+   GFileInfo *file_info;
+   GError *error;
+ 
+   priv = POLKIT_BACKEND_ACTION_POOL_GET_PRIVATE (pool);
+ 
+   e = NULL;
++  e_alt = NULL;
+ 
+   if (priv->has_loaded_all_files)
+     goto out;
+@@ -548,12 +599,48 @@ ensure_all_files (PolkitBackendActionPool *pool)
+ 
+     } /* for all files */
+ 
++  /* TODO priority for files in /etc */
++
++  e_alt = g_file_enumerate_children (priv->directory_alt,
++				     "standard::name",
++				     G_FILE_QUERY_INFO_NONE,
++				     NULL,
++				     &error);
++  if (error != NULL)
++    {
++      g_warning ("Error enumerating files: %s", error->message);
++      goto out;
++    }
++
++  while ((file_info = g_file_enumerator_next_file (e_alt, NULL, &error)) != NULL)
++    {
++      const gchar *name;
++
++      name = g_file_info_get_name (file_info);
++      /* only consider files with the right suffix */
++      if (g_str_has_suffix (name, ".policy"))
++        {
++          GFile *file;
++
++          file = g_file_get_child (priv->directory_alt, name);
++
++          ensure_file (pool, file);
++
++          g_object_unref (file);
++        }
++
++      g_object_unref (file_info);
++
++    } /* for all files */
++
+   priv->has_loaded_all_files = TRUE;
+ 
+  out:
+ 
+   if (e != NULL)
+     g_object_unref (e);
++  if (e_alt != NULL)
++    g_object_unref (e_alt);
+ }
+ 
+ /* ---------------------------------------------------------------------------------------------------- */
+diff --git a/src/polkitbackend/polkitbackendactionpool.h b/src/polkitbackend/polkitbackendactionpool.h
+index e992eea..9ccb526 100644
+--- a/src/polkitbackend/polkitbackendactionpool.h
++++ b/src/polkitbackend/polkitbackendactionpool.h
+@@ -64,7 +64,7 @@ struct _PolkitBackendActionPoolClass
+ };
+ 
+ GType                    polkit_backend_action_pool_get_type         (void) G_GNUC_CONST;
+-PolkitBackendActionPool *polkit_backend_action_pool_new              (GFile *directory);
++PolkitBackendActionPool *polkit_backend_action_pool_new              (GFile *directory, GFile *directory_alt);
+ GList                   *polkit_backend_action_pool_get_all_actions  (PolkitBackendActionPool  *pool,
+                                                                       const gchar              *locale);
+ 
+diff --git a/src/polkitbackend/polkitbackendinteractiveauthority.c b/src/polkitbackend/polkitbackendinteractiveauthority.c
+index 1cfc88e..a975cac 100644
+--- a/src/polkitbackend/polkitbackendinteractiveauthority.c
++++ b/src/polkitbackend/polkitbackendinteractiveauthority.c
+@@ -292,6 +292,7 @@ polkit_backend_interactive_authority_init (PolkitBackendInteractiveAuthority *au
+ {
+   PolkitBackendInteractiveAuthorityPrivate *priv;
+   GFile *directory;
++  GFile *directory_alt;
+   GError *error;
+ 
+   /* Force registering error domain */
+@@ -300,8 +301,10 @@ polkit_backend_interactive_authority_init (PolkitBackendInteractiveAuthority *au
+   priv = POLKIT_BACKEND_INTERACTIVE_AUTHORITY_GET_PRIVATE (authority);
+ 
+   directory = g_file_new_for_path (PACKAGE_DATA_DIR "/polkit-1/actions");
+-  priv->action_pool = polkit_backend_action_pool_new (directory);
++  directory_alt = g_file_new_for_path (PACKAGE_SYSCONF_DIR "/polkit-1/actions");
++  priv->action_pool = polkit_backend_action_pool_new (directory, directory_alt);
+   g_object_unref (directory);
++  g_object_unref (directory_alt);
+   g_signal_connect (priv->action_pool,
+                     "changed",
+                     (GCallback) action_pool_changed,
