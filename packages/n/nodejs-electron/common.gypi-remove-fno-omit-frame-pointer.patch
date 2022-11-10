@@ -1,0 +1,16 @@
+Do not inject a pessimizing cflag into downstream buildscripts.
+It fails to get overriden by optflags and we don't need it for debugging
+since we compile everything with -fasynchronous-unwind-tables anyway.
+
+--- src/third_party/electron_node/common.gypi.old	2022-11-09 21:21:10.595238137 +0100
++++ src/third_party/electron_node/common.gypi	2022-11-09 22:07:29.480041964 +0100
+@@ -243,9 +243,6 @@
+             # increase performance, number from experimentation
+             'cflags': [ '-qINLINE=::150:100000' ]
+           }],
+-          ['OS!="mac" and OS!="win" and OS!="zos"', {
+-            'cflags': [ '-fno-omit-frame-pointer' ],
+-          }],
+           ['OS=="linux"', {
+             'conditions': [
+               ['enable_pgo_generate=="true"', {

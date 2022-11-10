@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov  9 21:11:43 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+- New upstream release 21.2.3
+  * No user-visible changes.
+- Remove upstream's tinkering with optlevel of modules compiled against nodejs-electron-devel.
+  * add common.gypi-remove-fno-omit-frame-pointer.patch
+
+-------------------------------------------------------------------
 Sat Nov  5 18:03:39 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
 - Conditionally add backported node-upgrade-llhttp-to-8.patch to adjust to LLHTTP api changes
   * fixes FTBFS on Fedora Rawhide
