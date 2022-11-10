@@ -22,7 +22,7 @@
 %global version_previous 1.64.0
 # This has to be kept lock step to the rust version.
 %global llvm_version 15
-%if 0%{?sle_version} <= 150300 && 0%{?suse_version} < 1599
+%if 0%{?sle_version} <= 150500 && 0%{?suse_version} < 1599
 # We may need a minimum gcc version for some linker flags
 # This is especially true on leap/sle
 #
@@ -428,29 +428,6 @@ free -h
 df -h
 
 %build
-
-# There are some crates forked in github.  Use the vendored version to
-# stop trying `cargo` to access internet.
-#
-# https://github.com/rust-lang/rust/issues/90764
-mkdir -p .cargo
-cat > .cargo/config <<EOF
-[source.crates-io]
-replace-with = 'vendored-sources'
-registry = 'https://example.com'
-
-[source.vendored-sources]
-directory = '$(pwd)/vendor'
-
-[source."https://github.com/bjorn3/rust-ar.git"]
-git = "https://github.com/bjorn3/rust-ar.git"
-branch = "do_not_remove_cg_clif_ranlib"
-replace-with = "vendored-sources"
-
-[source."https://github.com/bytecodealliance/wasmtime.git"]
-git = "https://github.com/bytecodealliance/wasmtime.git"
-replace-with = "vendored-sources"
-EOF
 
 # Create exports file
 # Keep all the "export VARIABLE" together here, so they can be

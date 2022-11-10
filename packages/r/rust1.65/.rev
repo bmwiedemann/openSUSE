@@ -7,4 +7,12 @@
     <comment>Update to rust1.65 for Factory</comment>
     <requestid>1034395</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cdef8eb49bd0c1bcb0d10e26526c98cb</srcmd5>
+    <version>1.65.0</version>
+    <time>1668086375</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1034955</requestid>
+  </revision>
 </revisionlist>
