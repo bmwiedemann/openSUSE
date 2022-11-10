@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Nov  8 17:25:36 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.3
+- Changes since 5.26.2:
+  * Notifications: Use String "0" for null percent
+  * Revert apples/kicker: fix timer in triangular mouse filter (kde#461395)
+  * runners/services: Do not parse exec of flatpaks (kde#461241)
+  * kcms/regionandlanguage: convert ASCII unicode symbol to QChar (kde#460704)
+  * startplasma-wayland: Don't set GDK_SCALE and GDK_DPI_SCALE (kde#443215)
+  * runners/services: Do not match exec values of PWAs (kde#460796)
+  * runners/servicerunner: increase match type when query exactly matches service name (kde#459516)
+  * runners/recentdocuments: more fine-grained relevance and type assignment
+  * runners/baloo: increase match type when query exactly matches file name
+  * runners/locations: decrease match type when not a known existing file
+  * wallpapers/image: always try to remove a path in `ImageBackend::removeSlidePath` (kde#461003)
+
+-------------------------------------------------------------------
 Wed Oct 26 14:16:26 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.26.2
