@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu Nov 10 09:13:50 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 4.4.0:
+  * New prime number functions: primePi(), primes(), nthprime(),
+    nextprime(), prevprime(), and isprime()
+  * New functions for intervals and uncertainties: upperEndpoint(),
+    lowerEndpoint(), midpoint(), and errorPart()
+  * Add meter of water and related pressure units, and more
+    derived flow rate units 
+  * Support for vectors and matrices in uncertainty propagation
+    calculation
+  * Proper support for uncertainty propagation in total(), sum(),
+    product(), and for() functions
+  * Simplify display of parsed expression (primarily for quantities
+    with units)
+  * Avoid parsing of implicit multiplication as nested
+    multiplication
+  * Include +/- statement in function argument without parentheses
+  * Return values for approximate variables in exact mode in
+    dimension() and elements()
+  * Improve parsing of quotation marks as feet/inch or
+    arcmin/arcsec (e.g. do not parse s" as sin)
+  * Fix exact calculation of re((a*i)^(n/2))
+    (wrong sign in some cases)
+  * Fix erroneous calculation in some cases with physical constants
+    both outside and inside unit relations when interval
+    calculation is set to interval arithmetic
+  * Fix segfaults in some corner cases
+  * Fix use of random numbers in iterative functions 
+  * Fix writing beyond end of array during exchange rates check
+    in some cases (results in activation of old style matrices)
+  * Fix automatic reactivation of deactivated global object
+    if a function with the same name exists
+  * Do not convert function arguments which do not allow units
+    (fixes "arcsin(0.5+/-0.1) to deg")
+  * Fix prefix after conversion to optimal unit when the optimal
+    unit includes a prefix
+  * Fix exact calculation when function argument is an approximate
+    vector variable (fail)
+  * Minor bug fixes and feature enhancements
+
+-------------------------------------------------------------------
 Fri Oct 14 17:30:48 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to 4.3.0:
