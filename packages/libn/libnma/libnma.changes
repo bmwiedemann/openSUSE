@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov  8 16:21:07 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.10.4:
+  + Split org.gnome.nm-applet.eap GSchema from org.gnome.nm-applet,
+    so that the latter can be provided by network-manager-applet
+    again (where it belongs).
+  + build: unbreak build with gcr-3.92.
+- split out schema file from the library package: adhere to the
+  shared library policy. The library requires the new
+  libnma-glib-schema package.
+- Drop fix-dependency-pc-name.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Fri Sep  9 14:27:01 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.10.2:

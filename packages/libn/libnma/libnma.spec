@@ -20,14 +20,12 @@
 %define base_ver 1.10
 
 Name:           libnma
-Version:        1.10.2
+Version:        1.10.4
 Release:        0
 Summary:        Shared library for NetworkManager-applet
 License:        GPL-2.0-or-later
 URL:            https://gitlab.gnome.org/GNOME/libnma
 Source0:        https://download.gnome.org/sources/%{name}/%{base_ver}/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM fix-dependency-pc-name.patch -- Update .pc name to new form
-Patch0:         fix-dependency-pc-name.patch
 
 BuildRequires:  gtk-doc
 BuildRequires:  meson
@@ -58,10 +56,19 @@ Obsoletes:      nma-data < %{version}
 Provides:       nma-data = %{version}
 Obsoletes:      libnma-data < %{version}
 Provides:       libnma-data = %{version}
+Requires:       %{name}-glib-schema >= %{version}
 Requires:       mobile-broadband-provider-info
 
 %description -n %{name}%{sover}
 Shared library for NetworkManager-applet.
+
+%package glib-schema
+Summary:        glib-schema org.gnome.nm-applet.eap
+
+%description glib-schema
+The glib-schema allows libnma to be configured wia dconf
+
+It is required by libnma
 
 %package -n     %{name}-gtk4-%{sover}
 Summary:        Shared library for NetworkManager-applet. Gtk4 version
@@ -116,13 +123,15 @@ Documentation files for %{name}.
 %meson \
 	-D b_lto=true \
 	-D libnma_gtk4=true \
-	-D gcr_gtk4=true \
+	-D gcr=true \
 	%{nil}
 %meson_build
 
 %install
 %meson_install
 %find_lang %{name} %{?no_lang_C}
+# this file lives in NetworkManager-applet since 1.30.0
+rm %{buildroot}%{_datadir}/glib-2.0/schemas/org.gnome.nm-applet.gschema.xml
 
 %ldconfig_scriptlets -n %{name}%{sover}
 %ldconfig_scriptlets -n %{name}-gtk4-%{sover}
@@ -131,7 +140,9 @@ Documentation files for %{name}.
 %license COPYING
 %doc NEWS
 %{_libdir}/%{name}.so.*
-%{_datadir}/glib-2.0/schemas/org.gnome.nm-applet.gschema.xml
+
+%files glib-schema
+%{_datadir}/glib-2.0/schemas/org.gnome.nm-applet.eap.gschema.xml
 
 %files -n %{name}-gtk4-%{sover}
 %{_libdir}/%{name}-gtk4.so.*
