@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Nov 10 05:43:44 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 4.3.2
+  * General:
+    * Fix: Various potential crashes
+    * Fix: Restoring window sometimes shows black screen in
+      OpenGL mode
+    * Fix: Possible high CPU usage when minimizing window in
+      Vulkan mode
+    * Fix: Default fullscreen dimensions should match the
+      current resolution
+    * Fix: PNG files should take precedence over KTX2 files,
+      to support mods
+  * Graphics:
+    * Fix: Missing top section on cyborg repair turret
+    * Fix: Update generic design tank
+  * Balance MP:
+    * Change: Buff Flashlight for tanks, increase HP 100->180
+      and add 1 tile of range 12->13
+    * Change: Reduce periodical damage on Incendiary Mortar 26-24
+    * Change: Remove MGAA specific research, Whirlwind requires
+      all MG ROF upgrades and Hurricane, AG and Hurricane need
+      MG ROF2, MG ROF3 require Assault Gun
+    * Change: Reduce price of Hellstorm from 450->400 and weight
+      from 20000->10000, Pepperpot price reduced from 200->175
+      and build time from 900->800
+
+-------------------------------------------------------------------
 Thu Nov  3 15:46:50 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
 
 - Updated to 4.3.1
