@@ -43,7 +43,8 @@ BuildRequires:  pkgconfig(gobject-2.0) >= 2.10.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.4.0
 BuildRequires:  pkgconfig(pygobject-3.0) >= 3.8.0
-BuildRequires:  pkgconfig(webkit2gtk-4.0) >= 2.28.0
+# Disable webkitgtk catalog support - pulls in soup2
+#BuildRequires:  pkgconfig(webkit2gtk-4.0) >= 2.28.0
 
 %description
 Glade is a RAD tool to develop user interfaces for the Gtk+ 3 toolkit
@@ -100,7 +101,8 @@ This package contains the documentation for Glade.
 
 %build
 %meson \
-	-Dgtk_doc=true \
+	-D gtk_doc=true \
+	-D webkit2gtk=disabled \
 	%{nil}
 %meson_build
 
@@ -127,7 +129,8 @@ This package contains the documentation for Glade.
 %{_libdir}/glade/modules/libgladegjs.so
 %{_libdir}/glade/modules/libgladegtk.so
 %{_libdir}/glade/modules/libgladepython.so
-%{_libdir}/glade/modules/libgladewebkit2gtk.so
+# Disable webkitgtk catalog support - pulls in soup2
+#%%{_libdir}/glade/modules/libgladewebkit2gtk.so
 %{_mandir}/man1/glade-previewer.1%{?ext_man}
 %{_mandir}/man1/glade.1%{?ext_man}
 

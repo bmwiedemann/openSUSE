@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 21 07:14:05 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Disable webkitgtk catalog support, as it pulls in soup2. Disable
+  pkgconfig(webkit2gtk-4.0) BuildRequires and pass
+  webkit2gtk=disabled to meson.
+
+-------------------------------------------------------------------
 Thu Aug 25 16:09:37 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.40.0:
