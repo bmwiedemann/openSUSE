@@ -442,4 +442,12 @@ But since we have been since august, I'm subbing the next version also. Should y
   + Lots of other fixes (forwarded request 795673 from polslinux)</comment>
     <requestid>798328</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>17fe2a759a60ad6fc1f7f028ede5293b</srcmd5>
+    <version>0.42.2</version>
+    <time>1668173786</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1035118</requestid>
+  </revision>
 </revisionlist>

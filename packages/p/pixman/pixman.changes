@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov  4 17:12:49 UTC 2022 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 0.42.2 (boo#1205033 CVE-2022-44638):
+  + This version contains a fix for a heap overflow.
+- Update URL, and tweak source URI.
+
+-------------------------------------------------------------------
 Mon Apr 20 07:11:07 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
-- Update to versio 0.40.0:
+- Update to version 0.40.0:
   + Meson build system improvements
   + Supporting optimizations on Hygon Dhyana processors
     to match what is enabled for Intel/AMD CPUs.
