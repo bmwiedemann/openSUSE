@@ -47,6 +47,13 @@
 %define tests_meson_opt no
 %endif
 
+# NetworkManager uses netconfig in SLES products only.
+%if 0%{?suse_version} > 1500
+%define with_netconfig 0
+%else
+%define with_netconfig 1
+%endif
+
 # Libaudit: yes-disabled-by-default enables support, but disables
 # it unless explicitly configured via NetworkManager.conf
 %bcond_without LIBAUDIT
@@ -131,7 +138,9 @@ BuildRequires:  pkgconfig(audit)
 ##
 Requires:       NetworkManager-branding
 Requires:       mozilla-nss
+%if %{with_netconfig}
 Requires:       sysconfig-netconfig >= 0.80.5
+%endif
 Requires:       wpa_supplicant >= 0.6.4
 Recommends:     dnsmasq
 Recommends:     iproute2
