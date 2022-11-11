@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Nov 11 11:17:04 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2022.11.11
+  * Merge youtube-dl code up to 20221104
+  * Do more processing in --flat-playlist
+  * Fix --list options not implying -s in some cases
+  * downloader: let HLS continue without first fragment
+
+-------------------------------------------------------------------
 Tue Oct  4 05:44:38 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2022.10.04

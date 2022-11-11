@@ -127,4 +127,12 @@
     <comment>- Update to release 2022.10.04</comment>
     <requestid>1007803</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>2f0c7b1ba725e601d367b846924f6334</srcmd5>
+    <version>2022.11.11</version>
+    <time>1668173817</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2022.11.11</comment>
+    <requestid>1035225</requestid>
+  </revision>
 </revisionlist>
