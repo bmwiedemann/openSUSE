@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Nov 10 18:58:04 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.6.2
+  - [stable-3.6] Fix call notification dialog buttons by @backportbot-nextcloud in #5075
+  - [stable-3.6] emit missing signal to update folder sync status icon by @backportbot-nextcloud in #5090
+  - [stable-3.6] Fix macOS autoupdater settings by @backportbot-nextcloud in #5103
+  - [stable-3.6] Validate and sanitise edit locally token and relpath
+    before sending to server by @backportbot-nextcloud in #5106
+  - [stable-3.6] Fix compatibility with newer python3-nautilus by @backportbot-nextcloud in #5112
+  - [stable-3.6] Refactor FolderMan's "Edit Locally" capabilities
+    as separate class by @backportbot-nextcloud in #5111
+  - [stable-3.6] use new public API to open an edit locally URL by @backportbot-nextcloud in #5117
+  - [stable-3.6] Use separate variable for cfg file name in CMAKE. by @backportbot-nextcloud in #5140
+  - Fix stable-3.6 compile on macOS by @claucambra in #5154
+  - Fix bad backport of CustomButton changes in Stable-3.6 by @claucambra in #5155
+  - Backport/5067/stable 3.6 by @allexzander in #5153
+  - Backport/5092/stable 3.6 by @allexzander in #5156
+  - [stable-3.6] properly escape a path when creating a test file during tests by @backportbot-nextcloud in #5158
+- Drop fix_nautilus_ext.patch because now in upstream.
+
+-------------------------------------------------------------------
 Fri Nov  4 11:41:37 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Split out the dbus service related files that provides
