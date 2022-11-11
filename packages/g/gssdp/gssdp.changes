@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov 10 13:31:35 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.6.1:
+  + Potential fix for sending discovery responses with the wrong
+    location.
+  + Properly parse netlink messages in neighbour discovery.
+  + Do not leak the host mask if it was alreay provided on object
+    client creation.
+  + Fix install path for generated documentation.
+  + Fix warning message for link-local v4 addresses.
+
+-------------------------------------------------------------------
 Sat Sep 17 11:47:16 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.6.0:
