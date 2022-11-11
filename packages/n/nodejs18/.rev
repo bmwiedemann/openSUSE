@@ -83,4 +83,12 @@
     (bsc#1205119, CVE-2022-43548)</comment>
     <requestid>1034211</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>86d206a56b93073448187d7042c90c2c</srcmd5>
+    <version>18.12.1</version>
+    <time>1668173769</time>
+    <user>dimstar_suse</user>
+    <comment>- icu721_fixes.patch: fixes compatibility with ICU 72.1 (bsc#1205236)</comment>
+    <requestid>1035028</requestid>
+  </revision>
 </revisionlist>
