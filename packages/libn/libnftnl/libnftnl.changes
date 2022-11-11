@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 10 15:47:31 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.4
+  * rule, set_elem: remove trailing \n in userdata snprintf
+  * libnftnl: Fix res_id byte order
+
+-------------------------------------------------------------------
 Tue Aug  9 19:35:17 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.2.3
