@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov 10 09:17:00 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 4.4.0:
+  * Add "Clear history" to available keyboard shortcut and
+    button actions
+  * Show exchange rates source, and update time, for current
+    calculation in tooltip
+  * Fix "Set Prefix" for auto-calculated result
+  * Fix copying of result during delay before calculate-as-you-type
+    result is added to history
+  * Allow use of curly brackets as alternative parentheses
+
+-------------------------------------------------------------------
 Fri Oct 14 17:37:21 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to 4.3.0:
