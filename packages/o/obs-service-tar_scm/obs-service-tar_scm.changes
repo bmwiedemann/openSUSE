@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 03 09:09:46 UTC 2022 - FSchreiner@suse.com
+
+- Update to version 0.10.34.1667392550.026bf0e:
+  * Fix testing in GH actions
+  * make linters happy again
+  * new find_latest_signed_commit algorithm
+
+-------------------------------------------------------------------
 Wed Sep 28 06:05:02 UTC 2022 - FSchreiner@suse.com
 
 - Update to version 0.10.33.1664344889.48d1960:
