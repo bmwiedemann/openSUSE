@@ -28,8 +28,6 @@ Source0:        https://download.gnome.org/sources/nautilus/43/%{name}-%{version
 Source1:        mount-archive.desktop
 Source2:        set_trusted.desktop
 Source3:        set_trusted.sh
-# PATCH-FIX-UPSTREAM nautilus-revert-extra-large-thumbnails.patch glgo#GNOME/nautilus#2487 boo#1203697 badshah400@gmail.com -- Revert "thumbnails: Create larger thumbnails for higher density displays"; patch taken from upstream merge request
-Patch0:         https://gitlab.gnome.org/GNOME/nautilus/-/merge_requests/977.patch#/nautilus-revert-extra-large-thumbnails.patch
 # needed for directory ownership
 BuildRequires:  dbus-1
 BuildRequires:  fdupes
