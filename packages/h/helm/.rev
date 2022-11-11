@@ -438,4 +438,15 @@ See changelog in:
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1030112</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>dc979bb90c2aa537ec3689051af32827</srcmd5>
+    <version>3.10.2</version>
+    <time>1668173790</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.10.2:
+  * fix a few function names on comments
+  * redirect registry client output to stderr
+  * Readiness &amp; liveness probes correct port</comment>
+    <requestid>1035138</requestid>
+  </revision>
 </revisionlist>

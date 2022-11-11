@@ -19,9 +19,8 @@
 %define goipath helm.sh/helm/v3
 %define git_commit d506314abfb5d21419df8c7e7e68012379db2354
 %define git_dirty clean
-
 Name:           helm
-Version:        3.10.1
+Version:        3.10.2
 Release:        0
 Summary:        The Kubernetes Package Manager
 License:        Apache-2.0
@@ -40,7 +39,7 @@ Helm is a tool for managing Kubernetes charts. Charts are packages of pre-config
 Summary:        Bash Completion for %{name}
 Group:          System/Shells
 Requires:       %{name} = %{version}
-Supplements:    packageand(%{name}:bash-completion)
+Supplements:    (%{name} and bash-completion)
 BuildArch:      noarch
 
 %description bash-completion
@@ -50,7 +49,7 @@ Bash command line completion support for %{name}.
 Summary:        Zsh Completion for %{name}
 Group:          System/Shells
 Requires:       %{name} = %{version}
-Supplements:    packageand(%{name}:zsh)
+Supplements:    (%{name} and zsh)
 BuildArch:      noarch
 
 %description zsh-completion
@@ -60,7 +59,7 @@ Zsh command line completion support for %{name}.
 Summary:        Fish Completion for %{name}
 Group:          System/Shells
 Requires:       %{name} = %{version}
-Supplements:    packageand(%{name}:fish)
+Supplements:    (%{name} and fish)
 BuildArch:      noarch
 
 %description fish-completion
