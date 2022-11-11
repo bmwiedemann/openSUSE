@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 11 05:15:19 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
+
+update: 1.16.13 -> 1.16.14
+- Fix a problem in C/POSIX and invalid locales: Use lower() on LC_MESSAGES only if it is a string and not None
+
+-------------------------------------------------------------------
 Thu Nov  3 20:19:55 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
 
 update: 1.16.12 -> 1.16.13

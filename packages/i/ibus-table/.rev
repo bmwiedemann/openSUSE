@@ -380,4 +380,13 @@ feat: use _service files to automate fetching sources</comment>
     <comment></comment>
     <requestid>1033165</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>aa70d84184c1c00ab6d9b9ea615b1b40</srcmd5>
+    <version>1.16.14</version>
+    <time>1668173794</time>
+    <user>dimstar_suse</user>
+    <comment>update: 1.16.13 -&gt; 1.16.14
+- Fix a problem in C/POSIX and invalid locales: Use lower() on LC_MESSAGES only if it is a string and not None (forwarded request 1035154 from Pi-Cla)</comment>
+    <requestid>1035155</requestid>
+  </revision>
 </revisionlist>
