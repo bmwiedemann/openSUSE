@@ -20,7 +20,7 @@
 %bcond_without libmpeg2
 %bcond_without mad
 Name:           scummvm
-Version:        2.6.0
+Version:        2.6.1
 Release:        0
 Summary:        Interpreter for several adventure games
 License:        GPL-3.0-or-later
@@ -39,7 +39,6 @@ BuildRequires:  pkgconfig(fluidsynth)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(libpng) >= 1.2.8
 BuildRequires:  pkgconfig(ogg)
-BuildRequires:  pkgconfig(sdl) >= 1.2.2
 BuildRequires:  pkgconfig(theoradec) >= 1.0
 BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(vorbisfile)
@@ -62,10 +61,10 @@ BuildRequires:  fdupes
 BuildRequires:  fribidi-devel
 BuildRequires:  giflib-devel
 BuildRequires:  glew-devel
-BuildRequires:  libSDL2_net-devel
 BuildRequires:  liba52-devel
 BuildRequires:  libcurl-devel
 BuildRequires:  libspeechd-devel
+BuildRequires:  pkgconfig(SDL2_net)
 
 %description
 ScummVM is an interpreter that will play graphic adventure games written for

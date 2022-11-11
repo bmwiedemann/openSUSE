@@ -262,4 +262,12 @@ SPDX format - plus it appears as though only one license relevant binary is crea
     <comment></comment>
     <requestid>993779</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>4d070e0d8a170ad16a1e9e6eefd41b07</srcmd5>
+    <version>2.6.1</version>
+    <time>1668173795</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1035173</requestid>
+  </revision>
 </revisionlist>
