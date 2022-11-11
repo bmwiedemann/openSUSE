@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Nov 10 19:14:54 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- tor 0.4.7.11:
+  * Improve security of DNS cache by randomly clipping the TTL
+    value (boo#1205307, TROVE-2021-009)
+  * Improved defenses against network-wide DoS, multiple counters
+    and metrics added to MetricsPorts
+  * Apply circuit creation anti-DoS defenses if the outbound
+    circuit max cell queue size is reached too many times. This
+    introduces two new consensus parameters to control the queue
+    size limit and number of times allowed to go over that limit.
+  * Directory authority updates
+  * IPFire database and geoip updates
+  * Bump the maximum amount of CPU that can be used from 16 to 128.
+    The NumCPUs torrc option overrides this hardcoded maximum.
+  * onion service: set a higher circuit build timeout for opened
+    client rendezvous circuit to avoid timeouts and retry load
+  * Make the service retry a rendezvous if the circuit is being
+    repurposed for measurements
+  
+-------------------------------------------------------------------
 Fri Aug 12 15:52:53 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - tor 0.4.7.10
