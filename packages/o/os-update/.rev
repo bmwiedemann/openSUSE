@@ -46,4 +46,14 @@
   - Fix syntax error in systemd-status-mail manual page source</comment>
     <requestid>1035100</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5470263cb6f90da0795cec51becd47dc</srcmd5>
+    <version>1.4.2</version>
+    <time>1668173812</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.2
+  - Fixes for openSUSE Leap
+  - Add docu URLs to service files</comment>
+    <requestid>1035206</requestid>
+  </revision>
 </revisionlist>
