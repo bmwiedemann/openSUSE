@@ -245,7 +245,7 @@
     <package name="busybox-bzip2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="busybox-coreutils" supportstatus="unsupported"/> <!-- reason: dvd:grub2-systemd-sleep-plugin -->
     <package name="busybox-ed" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="busybox-findutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_internet -->
+    <package name="busybox-findutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="busybox-gawk" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="busybox-grep" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="busybox-gzip" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
@@ -254,7 +254,7 @@
     <package name="busybox-sendmail" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_utilities -->
     <package name="busybox-static" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="busybox-tar" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
-    <package name="busybox-util-linux" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_internet -->
+    <package name="busybox-util-linux" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="busybox-xz" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="bzip2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="ca-certificates" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2322,6 +2322,7 @@
     <package name="libnl-config" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libnl3-200" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libnm0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libnma-glib-schema" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libnma-gtk4-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libnma-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libnma0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -4273,8 +4274,8 @@
     <package name="swtpm-selinux" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="syntax-highlighting" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="syntax-highlighting-imports" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="sysconfig" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="sysconfig-netconfig" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="sysconfig" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
+    <package name="sysconfig-netconfig" supportstatus="unsupported"/> <!-- reason: dvd:wicked -->
     <package name="syslinux" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="syslog-service" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="system-config-printer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
