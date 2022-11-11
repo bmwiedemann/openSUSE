@@ -1,7 +1,7 @@
 #
-# spec file for package obs-service-replace_with_package_version
+# spec file
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,27 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
+
 %define service replace_using_package_version
 
 Name:           obs-service-%{service}
-Version:        0.0.3
+Version:        0.0.6
 Release:        0
 Summary:        An OBS service: Replaces a regex  with the version value of a package
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Building
-Url:            https://github.com/openSUSE/obs-service-%{service}
-Source0:        %{service}.tar
-%if 0%{?suse_version} > 1315
-BuildRequires:  python3-setuptools
-Requires:       python3-setuptools
+URL:            https://github.com/openSUSE/obs-service-%{service}
+Source0:        %{service}.py
+Source1:        %{service}.service
+Source2:        LICENSE
+BuildRequires:  sed
 Requires:       python3-docopt
-%else
-BuildRequires:  python-setuptools
-Requires:       python-setuptools
-Requires:       python-docopt
-%endif
+Requires:       python3-setuptools
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
@@ -42,40 +40,23 @@ a given package. Can be used to align the version of you package or image
 to the version of another package.
 
 %prep
-%setup -q -n %{service}
+cp %{S:0} .
+cp %{S:1} .
+cp %{S:2} .
 
 %build
-%if 0%{?suse_version} > 1315
-# Build Python 3 version
-python3 setup.py build
-%else
-# Build Python 2 version
-python2 setup.py build
-%endif
+sed -i "s|#!/usr/bin/env python3|#!/usr/bin/python3|g" %{service}.py
 
 %install
-%if 0%{?suse_version} > 1315
-# Install Python 3 version
-python3 setup.py install --root %{buildroot} \
-    --install-script %{_prefix}/lib/obs/service \
-    --install-data %{_prefix}/lib/obs/service
-%else
-# Install Python 2 version
-python2 setup.py install --root %{buildroot} \
-    --install-script %{_prefix}/lib/obs/service \
-    --install-data %{_prefix}/lib/obs/service
-%endif
+
+install -D -m 755 %{service}.py %{buildroot}%{_prefix}/lib/obs/service/%{service}
+install -D -m 644 %{service}.service %{buildroot}%{_prefix}/lib/obs/service/%{service}.service
 
 %files
 %defattr(-,root,root)
 %dir %{_prefix}/lib/obs
 %dir %{_prefix}/lib/obs/service
 %{_prefix}/lib/obs/service
-
-%if 0%{?suse_version} < 1500
-%doc LICENSE
-%else
 %license LICENSE
-%endif
 
 %changelog
