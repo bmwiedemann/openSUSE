@@ -171,6 +171,7 @@ Patch200:       versioned.patch
 
 Patch304:       new_python3.patch
 Patch305:       qemu_timeouts_arches.patch
+Patch306:       icu721_fixes.patch
 
 BuildRequires:  pkg-config
 BuildRequires:  fdupes
@@ -240,6 +241,7 @@ BuildRequires:  gcc-c++
 
 %if 0%{?suse_version} && 0%{?suse_version} < 1500
 BuildRequires:  python36
+%define forced_python_version 3.6m
 %else
 BuildRequires:  python3
 %endif
@@ -668,6 +670,7 @@ tar Jxf %{SOURCE11}
 
 %patch304 -p1
 %patch305 -p1
+%patch306 -p1
 
 %if %{node_version_number} <= 12
 # minimist security update - patch50
@@ -682,10 +685,10 @@ find -name \*~ -print0 -delete
 find \( -name \*.js.orig -or -name \*.md.orig -or -name \*.1.orig \) -delete
 
 # downgrade node-gyp to last version that supports python 3.4 for SLE12
-%if 0%{?suse_version} && 0%{?suse_version} < 1500 && 0%{node_version_number} > 16
+%if 0%{?suse_version} && 0%{?suse_version} < 1500 && 0%{node_version_number} >= 16
 rm -r  deps/npm/node_modules/node-gyp
 mkdir deps/npm/node_modules/node-gyp
-tar -C deps/npm/node_modules/node-gyp Jxf %{SOURCE5}
+tar -C deps/npm/node_modules/node-gyp -Jxf %{SOURCE5}
 %endif
 
 
@@ -896,6 +899,12 @@ export NODE_TEST_NO_INTERNET=1
 
 %if %{node_version_number} >= 12
 find test \( -name \*.out -or -name \*.js \) -exec sed -i 's,Use `node ,Use `node%{node_version_number} ,' {} \;
+%endif
+
+# Update the python3 executable name to point at forced python version
+# needed to fix build on SLE12 SP5
+%if 0%{?forced_python_version:1}
+sed -i -e "s,'python3','python%{forced_python_version}'," test/parallel/test-child-process-set-blocking.js
 %endif
 
 ln addon-rpm.gypi deps/npm/node_modules/node-gyp/addon-rpm.gypi

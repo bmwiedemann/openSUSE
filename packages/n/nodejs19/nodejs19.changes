@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 10 08:19:06 UTC 2022 - Adam Majer <adam.majer@suse.de>
+
+- icu721_fixes.patch: fixes compatibility with ICU 72.1 (bsc#1205236)
+
+-------------------------------------------------------------------
 Mon Nov  7 14:00:54 UTC 2022 - Adam Majer <adam.majer@suse.de>
 
 - Fix migration to openssl-3 (bsc#1205042)
