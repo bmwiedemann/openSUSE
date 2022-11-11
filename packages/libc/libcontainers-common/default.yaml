@@ -24,3 +24,8 @@ default-docker:
 #    sigstore: http://privateregistry.com/sigstore/
 #    sigstore-staging: /mnt/nfs/privateregistry/sigstore
 
+docker:
+  registry.suse.com:
+    use-sigstore-attachments: true
+  registry.suse.de:
+    use-sigstore-attachments: true

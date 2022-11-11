@@ -418,4 +418,12 @@
   add 000-shortnames.conf to it.</comment>
     <requestid>993956</requestid>
   </revision>
+  <revision rev="49" vrev="12">
+    <srcmd5>f9e949db0c177942e5fe1730322aad77</srcmd5>
+    <version>20210626</version>
+    <time>1668173778</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1035057</requestid>
+  </revision>
 </revisionlist>

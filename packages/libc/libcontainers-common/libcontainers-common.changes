@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 25 10:40:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- set detached sigstore attachments for the SUSE controlled registries
+
+-------------------------------------------------------------------
 Tue Aug  9 08:49:18 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Fix obvious typo in containers.conf
