@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Nov 10 10:10:41 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Update to 4.14.1
+  * Changed behavior of updating language names.
+  * Added pagination to projects listing.
+  * API for creating new units now returns information about newly
+  * created unit.
+  * Component discovery now supports configuring an intermediate
+  * language.
+  * Added fixed encoding variants to CSV formats.
+  * Changed handling of context and location for some formats to better
+  * fit underlying implementation.
+  * Added support for ResourceDictionary format.
+  * Improved progress bar colors for color blind.
+  * Fixed variants cleanup on string removal.
+  * Compatibility with Django 4.1.
+  * Added support for storing escaped XML elements in XLIFF.
+  * Improved formatting of placeholder check errors.
+  * Redirect /.well-known/change-password to /accounts/password/.
+  * Machine translation services are now configurable per project.
+  * Added separate permission for resolving comments and grant it to the
+  * Review strings{.interpreted-text role="guilabel"} role.
+  * Added support for storing alternative translations in the CSV file.
+  * The placeholders check can now be case-insensitive as well.
+  * Track add-on changes in a history.
+  * Fixed parsing translation from Windows RC, HTML and text files.
+  * Extended language code style configuration options.
+  * Added support for pluralse updated in recent CLDR releases.
+  * Reduced memory usage while updating components with a lot of
+  * translations.
+  * Added support for translation domain in SAP Translation Hub.
+  * Allow absolute links in source string locations.
+  * Improved operation behind some reverse proxies.
+  * Exteded API to cover translation memory.
+  * Improved document translation workflow.
+  * Improved reliability of HTML and text files translation.
+  * Added support for project level backups.
+  * Improved performance and memory usage of translation memory lookups.
+
+-------------------------------------------------------------------
 Tue May 17 11:00:31 UTC 2022 - Markéta Machová <mmachova@suse.com>
 
 - Update to 4.12.2
