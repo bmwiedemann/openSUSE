@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov  9 16:18:18 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 0.2.7 
+  * Make C extension mandatory when running in cibuildwheel.
+  * Use more metadata to setup.cfg, use standard optional flag.
+  * Fix path.
+  * Remove other unused dependencies from pyproject.toml
+  * Remove redundant wheel dep from pyproject.toml
+
+-------------------------------------------------------------------
 Fri Oct 28 18:39:37 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 0.2.6
