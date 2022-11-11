@@ -393,4 +393,12 @@
     <user>dimstar_suse</user>
     <comment>File conflict with libnma - needs to be updated in coordination</comment>
   </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>b6ca7575ae40dc7dda928c0841ee28d6</srcmd5>
+    <version>1.30.0</version>
+    <time>1668173788</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1035114</requestid>
+  </revision>
 </revisionlist>
