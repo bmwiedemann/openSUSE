@@ -116,6 +116,7 @@ BuildRequires:  gpg2
 BuildRequires:  libacl-devel
 BuildRequires:  libapparmor-devel
 BuildRequires:  libbz2-devel
+BuildRequires:  libopenssl-1_1-devel
 BuildRequires:  libtidy-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  libtool
@@ -146,7 +147,6 @@ BuildRequires:  pkgconfig(libxslt) >= 1.1.0
 BuildRequires:  pkgconfig(libzip) >= 0.11
 BuildRequires:  pkgconfig(odbc)
 BuildRequires:  pkgconfig(oniguruma)
-BuildRequires:  pkgconfig(openssl) >= 1.0.1
 BuildRequires:  pkgconfig(sqlite3) > 3.7.4
 BuildRequires:  pkgconfig(zlib) >= 1.2.0.4
 %if %{build_firebird}

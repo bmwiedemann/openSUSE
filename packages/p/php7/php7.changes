@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 10 09:57:02 UTC 2022 - pgajdos@suse.com
+
+- hardcode openssl version, openssl3 will not be supported
+  https://www.php.net/manual/en/openssl.requirements.php
+
+-------------------------------------------------------------------
 Thu Nov  3 10:21:36 UTC 2022 - pgajdos@suse.com
 
 - version update to 7.4.33

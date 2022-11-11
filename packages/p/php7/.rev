@@ -1298,4 +1298,13 @@ file with an '_' (PHP loads extensions in alphabetical order) (forwarded request
   https://www.php.net/ChangeLog-7.php#7.4.33</comment>
     <requestid>1033030</requestid>
   </revision>
+  <revision rev="119" vrev="2">
+    <srcmd5>c178cb336963c24752ac8ed59aacb4b3</srcmd5>
+    <version>7.4.33</version>
+    <time>1668173773</time>
+    <user>dimstar_suse</user>
+    <comment>- hardcode openssl version, openssl3 will not be supported
+  https://www.php.net/manual/en/openssl.requirements.php</comment>
+    <requestid>1035032</requestid>
+  </revision>
 </revisionlist>
