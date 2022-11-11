@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Nov  9 17:18:38 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 2022.1.3 
+  * Improve sidebar help
+  * Bump version to 2022.1.3
+  * Remove reference to py.test in favor of pytest
+  * Bump versions of various github actions components
+  * Fix the midnight theme (#508)
+  * Remove old reference to master
+  * Implement "--continue" CLI arg (alias "-c") (#559)
+  * Save cwd and use for restart
+  * Fix setting of sys.path from name of script (closes gh-557)
+  * Fix zsh completion of `--pre-run` (#554)
+  * Support more shells by shtab
+  * Ignore B024 for abstract base classes with in var_view
+  * Add zsh completion support for `--pre-run`
+  * Generate zsh completion script automatically
+  * Fix test_executable_lines for Python 3.11
+  * Fix critical bug when re-entering IPython 8.0.0 (and later) external shell (#533)
+  * Get terminal size using os.get_terminal_size() (#536)
+  * Close tty file when dne querying terminal info
+  * Close history file after reading
+  * makedirs(exist_ok=True) during config path finding
+
+-------------------------------------------------------------------
 Wed Oct 12 14:04:37 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 2022.1.2 

@@ -22,7 +22,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pudb
-Version:        2022.1.2
+Version:        2022.1.3
 Release:        0
 Summary:        A full-screen, console-based Python debugger
 License:        MIT
