@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 %define plainpython python
 %ifarch x86_64
@@ -120,6 +119,8 @@ SKIPPED_TESTS+=" or test_log"
 # tries to open a network connection on older distributions
 SKIPPED_TESTS+=" or test_null or test_int_sockopts"
 %endif
+# temporarily disable to build with OpenSSL 3.0 bsc#1205042
+SKIPPED_TESTS+=" or test_on_recv_basic"
 mkdir cleantest
 pushd cleantest
 %pytest_arch --pyargs zmq -k "not (${SKIPPED_TESTS:4})" --timeout 1200
@@ -129,7 +130,7 @@ popd
 %files %{python_files}
 %license COPYING.BSD COPYING.LESSER
 %doc AUTHORS.md README.md examples
-%{python_sitearch}/zmq/
+%{python_sitearch}/zmq
 %{python_sitearch}/pyzmq-%{version}-py*.egg-info
 %exclude %{python_sitearch}/zmq/utils/*.h
 %exclude %{python_sitearch}/zmq/backend/cffi/_cdefs.h

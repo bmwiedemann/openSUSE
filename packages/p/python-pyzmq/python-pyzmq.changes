@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov  9 11:44:45 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix build with OpenSSL 3.0 [bsc#1205042]
+  * Temporarily disable test_on_recv_basic
+
+-------------------------------------------------------------------
 Sun Sep 25 20:35:28 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 24.0.1:

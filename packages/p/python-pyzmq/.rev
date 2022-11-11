@@ -454,4 +454,13 @@ the core is LGPL-3.0+ but most of what is outside the code is BSD-3-Clause (forw
     <comment></comment>
     <requestid>1005981</requestid>
   </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>32faf720ad271bf9688e1f45bd84bc8a</srcmd5>
+    <version>24.0.1</version>
+    <time>1668173768</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build with OpenSSL 3.0 [bsc#1205042]
+  * Temporarily disable test_on_recv_basic</comment>
+    <requestid>1035017</requestid>
+  </revision>
 </revisionlist>
