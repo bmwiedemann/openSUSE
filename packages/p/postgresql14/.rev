@@ -103,4 +103,15 @@ Also for older PostgreSQL versions to keep the packaging consistent.</comment>
 - Disable LLVM JIT on riscv64</comment>
     <requestid>1006977</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fdba887f827f8c26f5fc7f71b6775d24</srcmd5>
+    <version>14.6</version>
+    <time>1668271242</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1205300: Update to 14.6:
+  * https://www.postgresql.org/about/news/2543/
+  * https://www.postgresql.org/docs/14/release-14-6.html
+- Sync spec file with postgresql15.</comment>
+    <requestid>1035222</requestid>
+  </revision>
 </revisionlist>
