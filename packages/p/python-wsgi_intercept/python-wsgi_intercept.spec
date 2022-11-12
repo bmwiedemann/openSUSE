@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-wsgi_intercept
-Version:        1.10.0
+Version:        1.11.0
 Release:        0
 Summary:        Library for installing a WSGI application in place of a real URI for testing
 License:        MIT
