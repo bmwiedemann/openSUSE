@@ -15,23 +15,24 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define skip_python38 1
 Name:           python-specfile
-Version:        0.8.0
+Version:        0.9.0
 Release:        0
 Summary:        A library for parsing and manipulating RPM spec files
 License:        MIT
 URL:            https://github.com/packit/specfile
 Source:         https://files.pythonhosted.org/packages/source/s/specfile/specfile-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools_scm_git_archive}
+BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module rpm}
-BuildRequires:  %{python_module typing-extensions}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module flexmock}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module typing-extensions}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-rpm
