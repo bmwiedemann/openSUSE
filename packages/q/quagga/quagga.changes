@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov 11 09:07:22 UTC 2022 - Marius Tomaschewski <mt@suse.com>
+
+- Remove attempts to correct configuration file ownership and
+  permissions in service files, that may lead to local privilege
+  escalation from quagga to root (bsc#1191890,CVE-2021-44038).
+  [+ remove-chown-chmod.service.patch]
+- Correct hardening patches adding ReadWritePaths=/etc/quagga
+- Add update-messages that quagga is not developed for years,
+  is about to get dropped from Factory/Tumbleweed soon and
+  users should migrate to FRR (https://frrouting.org/).
+
+-------------------------------------------------------------------
 Thu Sep  1 07:10:01 UTC 2022 - Stefan Schubert <schubi@suse.com>
 
 - Migration to /usr/etc: Saving user changed configuration files

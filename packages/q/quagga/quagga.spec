@@ -63,6 +63,7 @@ Patch7:         harden_ospfd.service.patch
 Patch8:         harden_ripd.service.patch
 Patch9:         harden_ripngd.service.patch
 Patch10:        harden_zebra.service.patch
+Patch11:        remove-chown-chmod.service.patch
 BuildRequires:  autoconf >= 2.6
 BuildRequires:  automake >= 1.6
 BuildRequires:  c-ares-devel
@@ -159,6 +160,7 @@ This subpackage contains the headers for the Quagga libraries.
 %patch8 -p1
 %patch9 -p1
 %patch10 -p1
+%patch11 -p1
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
@@ -265,13 +267,23 @@ for i in logrotate.d/quagga ; do
 done
 %endif
 
-%if 0%{?suse_version} > 1500
 %posttrans
+%if 0%{?suse_version} > 1500
 # Migration to /usr/etc, restore just created .rpmsave
 for i in logrotate.d/quagga ; do
    test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
 done
 %endif
+cat > /var/adm/update-messages/%{name}-%{version}-%{release} << __EOF__
+Quagga has not been developed further since 2018, we are about to
+remove it from openSUSE:Factory / Tumbleweed soon.
+
+Please migrate to FRR which has its roots in the Quagga project:
+
+   https://frrouting.org/
+
+The frr package is available since SLE 15-SP3 and openSUSE Leap 15.3.
+__EOF__
 
 %post
 %if %{with systemd}

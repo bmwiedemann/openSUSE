@@ -2,7 +2,7 @@ Index: quagga-1.2.4/redhat/zebra.service
 ===================================================================
 --- quagga-1.2.4.orig/redhat/zebra.service
 +++ quagga-1.2.4/redhat/zebra.service
-@@ -6,6 +6,17 @@ ConditionPathExists=/etc/quagga/zebra.co
+@@ -6,6 +6,18 @@
  Documentation=man:zebra
  
  [Service]
@@ -16,6 +16,7 @@ Index: quagga-1.2.4/redhat/zebra.service
 +ProtectKernelLogs=true
 +ProtectControlGroups=true
 +RestrictRealtime=true
++ReadWritePaths=/etc/quagga
 +# end of automatic additions 
  Type=forking
  PIDFile=/run/quagga/zebra.pid

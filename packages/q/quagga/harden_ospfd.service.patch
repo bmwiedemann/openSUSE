@@ -2,7 +2,7 @@ Index: quagga-1.2.4/redhat/ospfd.service
 ===================================================================
 --- quagga-1.2.4.orig/redhat/ospfd.service
 +++ quagga-1.2.4/redhat/ospfd.service
-@@ -8,6 +8,17 @@ ConditionPathExists=/etc/quagga/ospfd.co
+@@ -8,6 +8,18 @@
  Documentation=man:ospfd
  
  [Service]
@@ -16,6 +16,7 @@ Index: quagga-1.2.4/redhat/ospfd.service
 +ProtectKernelLogs=true
 +ProtectControlGroups=true
 +RestrictRealtime=true
++ReadWritePaths=/etc/quagga
 +# end of automatic additions 
  Type=forking
  PIDFile=/run/quagga/ospfd.pid

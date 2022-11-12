@@ -2,7 +2,7 @@ Index: quagga-1.2.4/redhat/ripd.service
 ===================================================================
 --- quagga-1.2.4.orig/redhat/ripd.service
 +++ quagga-1.2.4/redhat/ripd.service
-@@ -8,6 +8,17 @@ ConditionPathExists=/etc/quagga/ripd.con
+@@ -8,6 +8,18 @@
  Documentation=man:ripd
  
  [Service]
@@ -16,6 +16,7 @@ Index: quagga-1.2.4/redhat/ripd.service
 +ProtectKernelLogs=true
 +ProtectControlGroups=true
 +RestrictRealtime=true
++ReadWritePaths=/etc/quagga
 +# end of automatic additions 
  Type=forking
  PIDFile=/run/quagga/ripd.pid
