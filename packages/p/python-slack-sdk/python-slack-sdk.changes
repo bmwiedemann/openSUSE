@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov  9 18:59:46 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 3.19.2 
+  #1282 Add request_file_info arg to files_upload_v2 method - Thanks @seratch @eddyg
+  #1278 Improve clarity of 'content' error message for files_upload_v2 - Thanks @eddyg
+  #1283 Improve typing when using 'get' on an API response - Thanks @eddyg
+  #1284 Add Python 3.11 support - Thanks @seratch
+  #1281 Fix selected_option type hint - Thanks @taekop
+  All issues/pull requests: https://github.com/slackapi/python-slack-sdk/milestone/71?closed=1
+
+-------------------------------------------------------------------
 Sat Oct 29 00:57:35 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 3.19.1
