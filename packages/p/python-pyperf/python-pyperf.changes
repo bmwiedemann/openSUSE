@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov  9 18:34:02 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 2.5.0 
+  * Recognize new name of Graal-based Python as jitted by @timfel in #139
+  * Collect specialization statistics from running benchmarks by @mdboom in #140
+  * Add support for Python 3.11 by @hugovk in #142
+
+-------------------------------------------------------------------
 Thu Oct  6 21:53:01 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - version update to 2.4.1 
