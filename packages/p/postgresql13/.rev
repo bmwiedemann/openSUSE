@@ -235,4 +235,15 @@
 </comment>
     <requestid>1006684</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>96d7a985ed9ff7fc38bf9f24cfd42d54</srcmd5>
+    <version>13.9</version>
+    <time>1668271240</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1205300: Update to 13.9:
+  * https://www.postgresql.org/about/news/2543/
+  * https://www.postgresql.org/docs/13/release-13-9.html
+- Sync spec file with postgresql15.</comment>
+    <requestid>1035217</requestid>
+  </revision>
 </revisionlist>
