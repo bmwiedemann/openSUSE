@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -40,19 +39,15 @@ BuildRequires:  python-rpm-macros
 Requires:       python-extras >= 1.0.0
 Requires:       python-pbr >= 0.11
 Requires:       python-python-mimeparse
-Requires:       python-six >= 1.4.0
 Requires:       python-traceback2
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module extras >= 1.0.0}
 BuildRequires:  %{python_module python-mimeparse}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module testscenarios}
 BuildRequires:  %{python_module traceback2}
 %endif
-%if 0%{?suse_version} >= 1000 || 0%{?fedora_version} >= 24
 Recommends:     python-fixtures >= 1.3.0
-%endif
 %python_subpackages
 
 %description
