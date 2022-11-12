@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Nov  9 18:41:29 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to v3.11.0 
+  Feature
+  * build: Officially support Python 3.11 (74f66c7)
+  * api: Add support for topics merge API (9a6d197)
+  Fix
+  * Remove project.approvals.set_approvals() method (91f08f0)
+  * Use epic id instead of iid for epic notes (97cae38)
+  * cli: Handle list response for json/yaml output (9b88132)
+  * Intermittent failure in test_merge_request_reset_approvals (3dde36e)
+  Documentation
+  * advanced: Add hint on type narrowing (a404152)
+  * Add minimal docs about the enable_debug() method (b4e9ab7)
+  commits: Fix commit create example for binary content (bcc1eb4)
+  * readme: Add a basic feature list (b4d53f1)
+  * api: Describe use of lower-level methods (b7a6874)
+  * api: Describe the list() and all() runners' functions (b6cc3f2)
+  * api: Update merge_requests.rst: mr_id to mr_iid (b32234d)
+
+-------------------------------------------------------------------
 Fri Oct 28 20:36:42 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to v3.10.0 (2022-09-28)
