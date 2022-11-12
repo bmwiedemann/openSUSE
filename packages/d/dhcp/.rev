@@ -1219,4 +1219,12 @@ a dhcpv6 server assert crash (bnc#767661), and other bugs
   DHCP memory leak</comment>
     <requestid>1008224</requestid>
   </revision>
+  <revision rev="136" vrev="12">
+    <srcmd5>491d3a4bf111aa091706c0c4b3772352</srcmd5>
+    <version>4.4.2.P1</version>
+    <time>1668271232</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1035207</requestid>
+  </revision>
 </revisionlist>

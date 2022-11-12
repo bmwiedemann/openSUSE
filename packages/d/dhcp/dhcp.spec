@@ -257,13 +257,13 @@ export CFLAGS LDFLAGS FFLAGS CXXFLAGS
 	--enable-binary-leases \
 	--with-ldap \
 	--with-ldapcrypto \
-	--with-cli-pid-file=%{_localstatedir}/run/dhclient.pid \
+	--with-cli-pid-file=%{_rundir}/dhclient.pid \
 	--with-cli-lease-file=%{_localstatedir}/lib/dhcp/dhclient.leases \
-	--with-cli6-pid-file=%{_localstatedir}/run/dhclient6.pid \
+	--with-cli6-pid-file=%{_rundir}/dhclient6.pid \
 	--with-cli6-lease-file=%{_localstatedir}/lib/dhcp6/dhclient.leases \
-	--with-srv-pid-file=%{_localstatedir}/run/dhcpd.pid \
+	--with-srv-pid-file=%{_rundir}/dhcpd.pid \
 	--with-srv-lease-file=%{_localstatedir}/lib/dhcp/db/dhcpd.leases \
-	--with-srv6-pid-file=%{_localstatedir}/run/dhcpd6.pid \
+	--with-srv6-pid-file=%{_rundir}/dhcpd6.pid \
 	--with-srv6-lease-file=%{_localstatedir}/lib/dhcp6/db/dhcpd6.leases
 #
 : building bind sources
