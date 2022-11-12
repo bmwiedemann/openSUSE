@@ -17,4 +17,12 @@
 - drop fix-encoding.patch: obsolete</comment>
     <requestid>894047</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>216490cb944da06ddfdb9d00728125c4</srcmd5>
+    <version>0.6.4</version>
+    <time>1668271269</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1035268</requestid>
+  </revision>
 </revisionlist>
