@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu Nov  3 17:11:29 UTC 2022 - Victorhck <victorhck@opensuse.org>
+
+- Update to version 3.2.0:
+  * Fix for fullscreen wine programs where taskbar would not hide.
+  * Ensure KeySysWinNext and KeySysWinPrev always work 
+    for rolled up windows which use the Globally Active focus model.
+  * Give the Alt+Tab a 30 second history.
+  * The next Alt+Tab will continue where the previous one left off.
+  * Add "tabto" command to icesh move windows as tabs to a new frame.
+  * Add "untab" command to icesh to move each tab to its own frame.
+  * Add "stacking" and "reverse" commands to icesh.
+  * Let icesh check all atoms in the -Property filter.
+  * Support edge switching when dragging a window.
+  * When switching to a tab with size limitations, adapt the frame geometry.
+  * Fix maximize and fullscreen for tabs with different normal sizes.
+  * Prevent the flashing when switching tabs.
+  * Only popup the grouping menu on a task button on the first button click
+    without key modifiers. This makes it easier to immediately select or 
+    minimize the active application by using the shift or control modifier.
+  * Update the title bar shape when changing tabs.
+  * Set common properties when adding another tab to a frame.
+  * Always update the window list and _NET_CLIENT_LIST when adding more tabs.
+  * Add special filtered view and flat rendering options to icewm-menu-fdo.
+  * Updated translations.
+  
+- from version 3.1.0:
+  * Add a winoption "frame" to automatically group application windows
+    with the same "frame" value as tabs in a single frame.
+  * Show indicators for the presence of tabs on the title bar.
+  * Click on the title bar tab indicators to change tabs.
+  * Give each tab its own set of winoptions.
+  * Fix for merging a transient window as a tab to its owner window.
+  * Preserve tray hints across restarts.
+  * Preserve tabs across restarts.
+  * Improve the Alt+Tab for tabbed frames.
+  * When switching tabs, ensure that focus is preserved.
+  * Add a MouseWinTabbing preference to merge tabs.
+  * Let the window list support tabs.
+  * Various improvements to the CMake build.
+  * Updated translations.
+
+-------------------------------------------------------------------
 Sat Oct  8 16:36:29 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.0.1:
