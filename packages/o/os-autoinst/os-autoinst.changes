@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov 10 19:37:58 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1668109069.7a0df62:
+  * Move check_asserted_screen into CommandHandler
+  * Disable merge commit message length check
+  * Don't lessen overall result badness via serial fail autodetect
+  * Move backend process logic into new class
+  * Move debugger logic into Utils
+
+-------------------------------------------------------------------
 Sat Nov 05 02:58:36 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1667579802.62acb88:
