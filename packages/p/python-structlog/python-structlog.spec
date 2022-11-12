@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 # because of acyncio for tests
 %define skip_python2 1
 Name:           python-structlog
@@ -38,10 +37,8 @@ BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module python-rapidjson}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module simplejson}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
 
@@ -69,6 +66,7 @@ like the standard library’s logging module.
 %files %{python_files}
 %doc CHANGE* README*
 %license LICENSE*
-%{python_sitelib}/*
+%{python_sitelib}/structlog
+%{python_sitelib}/structlog*-info
 
 %changelog
