@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Nov 12 00:46:04 UTC 2022 - Joey Lee <jlee@suse.com>
+
+- Change the size of ovmf-x86_64 back to 2MB, and remove EFI shell to
+  reduce the fv image size.
+    - Originally the reason of changing the size of ovmf-x86_64 to 4MB is for
+      preventing OBS exposes the following error:
+
+        [  266s] GenFv: ERROR 3000: Invalid
+        [  266s]   the required fv image size 0x1afed8 exceeds the set fv image size 0x1ac000
+
+      The fv image size is too big. But we found that change ovmf-x86_64 to 4MB causes
+      live migration problem on qemu. (bsc#1204220)
+    - So let's change the size of ovmf_x86_64 back to 2MB and remove EFI shell
+      to reduce the fv image size. If user wants to use EFI shell, they should move to
+      ovmf-x86_64-4m image. So we add the "-D EXCLUDE_SHELL" build option to ovmf-x86_64
+      flavor in ovmf.spec. (bsc#1204220)
+
+-------------------------------------------------------------------
 Thu Oct 13 04:25:28 UTC 2022 - Joey Lee <jlee@suse.com>
 
 - Update to edk2-stable202208 (jsc#PED-1410)
