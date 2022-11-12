@@ -26,10 +26,10 @@ URL:            https://sourceware.org/elfutils/
 #Git-Clone:	git://sourceware.org/git/elfutils
 Source:         https://fedorahosted.org/releases/e/l/elfutils/%{version}/elfutils-%{version}.tar.bz2
 Source1:        https://fedorahosted.org/releases/e/l/elfutils/%{version}/elfutils-%{version}.tar.bz2.sig
-Source2:        elfutils.changes
 Source3:        elfutils.keyring
 Source4:        %{name}.sysusers
 Patch1:         harden_debuginfod.service.patch
+Patch2:         0005-backends-Add-RISC-V-object-attribute-printing.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -114,17 +114,7 @@ URL for a distribution.
 
 %build
 %sysusers_generate_pre %{SOURCE4} %{name} %{name}.conf
-# Change DATE/TIME macros to use last change time of elfutils.changes
-# See http://lists.opensuse.org/opensuse-factory/2011-05/msg00304.html
-modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{_sourcedir}/%{name}.changes")"
-DATE="\"$(date -d "${modified}" "+%%b %%e %%Y")\""
-TIME="\"$(date -d "${modified}" "+%%R")\""
-find . -type f -regex ".*\.c\|.*\.cpp\|.*\.h" -exec sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g" {} +
-# Set modversion used to verify dynamically loaded ebl backend matches to
-# similarly predictable value [upstream default is hostname + date]
-MODVERSION="suse-build `eval echo ${DATE} ${TIME}`"
-sed --in-place "s/^MODVERSION=.*\$/MODVERSION=\"${MODVERSION}\"/" configure.ac
-export CFLAGS="%optflags"
+export CFLAGS="%optflags -Werror=date-time"
 CFLAGS+=" -g" # tests need debug info enabled (boo#1031556)
 %ifarch %sparc
 # Small PIC model not sufficient

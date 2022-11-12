@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov  9 15:31:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- align patches section
+- remove date/time handling weirdness, elfutils does no longer
+  use __DATE__ or __TIME__ (as proven by the newly added -Werror=date-time) 
+
+-------------------------------------------------------------------
 Mon Nov  7 08:38:51 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Update to version 0.188:
