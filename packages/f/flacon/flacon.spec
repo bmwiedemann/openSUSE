@@ -1,7 +1,7 @@
 #
 # spec file for package flacon
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2014-2018 Alexander Evseev <aevseev@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           flacon
-Version:        7.0.1
+Version:        9.4.0
 Release:        0
 Summary:        Audio File Encoder
 License:        LGPL-2.1-or-later
@@ -33,6 +33,7 @@ BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  pkgconfig(taglib)
 BuildRequires:  pkgconfig(uchardet)
 Recommends:     faac
 Recommends:     flac

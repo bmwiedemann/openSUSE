@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Nov 10 14:19:24 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 9.4.0
+  * fix to work with CUE files containing multiple audio file tags
+  * Translations updated
+  * The program gives a clear error message if the necessary utilities (sox, encoders, etc.) are missing
+  * Improved algorithm of cover auto selection. Square pictures have a priority over other.
+  * Fixed a bug with text color on tooltips in Linux. 
+  * You can now get tags from MusicBrainz and Discogs.
+  * Support for CUE files with gaps appended to the end of the previous track
+  * Added support for ALAC output files, Sony Wave64 input files.
+  * Added the ability to embed the cover in the output ALAC, AAC, MP3, Opus and WavPack files.
+  * Fix: If the CUE file contains two discs, then the program incorrectly calculated the duration of the tracks.
+  * The program automatically calculates the number of threads to encode. You can change this in the preferences dialog.
+  * The program can split huge FLAC files (more than 4GB)
+  * You can not only copy the cover image to a file, but also embed it in the output FLAC files.
+  * Improved the preferences dialog. The settings are divided into separate tabs.
+  * Added support for pre-emphasis CD images.
+
+-------------------------------------------------------------------
 Tue Apr 27 10:37:21 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 7.0.1
