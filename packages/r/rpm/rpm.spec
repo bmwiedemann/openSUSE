@@ -111,6 +111,7 @@ Patch123:       nextiteratorheaderblob.diff
 Patch131:       posttrans.diff
 Patch133:       zstdpool.diff
 Patch134:       zstdthreaded.diff
+Patch135:       selinux_transactional_update.patch
 # touches a generated file
 Patch180:       whatrequires-doc.diff
 Patch6464:      auto-config-update-aarch64-ppc64le.diff
@@ -222,6 +223,7 @@ rm -rf sqlite
 %patch -P 100        -P 102 -P 103
 %patch                                                  -P 117
 %patch -P 122 -P 123               -P 131        -P 133 -P 134
+%patch -p1 -P 135
 %patch -P 180
 
 %ifarch aarch64 ppc64le riscv64

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 25 12:15:12 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
+
+- Add selinux_transactional_update.patch to ignore errors when setting
+  file labels during transactional updates. They will be set upon
+  reboot once the new policy is loaded (bsc#1204605)
+
+-------------------------------------------------------------------
 Fri Sep 23 11:06:06 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 - Update the macros file to simplify the debuginfo installation
