@@ -51,7 +51,6 @@ BuildRequires:  %{python_module packaging >= 20.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyparsing > 2.2.1}
 BuildRequires:  %{python_module pytz}
-BuildRequires:  %{python_module setuptools_scm_git_archive}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  c++_compiler
@@ -248,6 +247,10 @@ find examples lib/matplotlib lib/mpl_toolkits/mplot3d -type f -name "*.py" -exec
 cp %{SOURCE1} mplsetup.cfg
 # The setup procedure wants certifi to download packages over https. Not applicable here.
 sed -i '/"certifi>=.*"/ d' setup.py
+# To make it work with setuptools_scm >= 7
+# https://discourse.matplotlib.org/t/matplotlib-announce-amm-matplotlib-3-5-3/23046
+sed -i 's/setuptools_scm>=4,<7/setuptools_scm>=4/' setup.py
+sed -i '/"setuptools_scm_git_archive"/ d' setup.py
 
 %build
 %if !%{with test}

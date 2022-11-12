@@ -838,4 +838,16 @@ http://forums.opensuse.org/showthread.php/416182-Python-matplolib (forwarded req
     + incorrect DPI when HiDPI screens</comment>
     <requestid>998238</requestid>
   </revision>
+  <revision rev="96" vrev="2">
+    <srcmd5>75e7ac09c7ce602a01ed12d09092ed72</srcmd5>
+    <version>3.5.3</version>
+    <time>1668271212</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove also setuptools_scm_git_archive dependency as it's suggested in the
+  release post
+  https://discourse.matplotlib.org/t/matplotlib-announce-amm-matplotlib-3-5-3/23046
+
+- Allow build with setuptools_scm&gt;=7</comment>
+    <requestid>1035220</requestid>
+  </revision>
 </revisionlist>
