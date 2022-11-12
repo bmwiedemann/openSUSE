@@ -1,7 +1,7 @@
 #
 # spec file for package homeshick
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ Source0:        https://github.com/andsens/homeshick/archive/v%{version}.tar.gz
 Source1:        README-openSUSE.md
 Source99:       homeshick.rpmlintrc
 Patch0:         suse-packaging.patch
+Patch1:         git-protocol-file-allow.patch
 BuildRequires:  expect
 BuildRequires:  git >= 1.5
 BuildRequires:  iputils
@@ -52,6 +53,7 @@ frameworks, such as oh-my-zsh, found on sites like https://dotfiles.github.io/.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 

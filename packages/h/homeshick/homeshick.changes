@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 11 21:45:19 UTC 2022 - Olav Reinert <seroton10@gmail.com>
+
+- Fix build issue against Factory:
+  * Add patch git-protocol-file-allow.patch
+
+-------------------------------------------------------------------
 Sat May 16 11:59:00 UTC 2020 - Olav Reinert <seroton10@gmail.com>
 
 - Upgrade to version 2.0.0:
