@@ -180,6 +180,9 @@ Patch38:        98437-sphinx.locale._-as-gettext-in-pyspecific.patch
 # Fix original buffer overflow
 # Originally from gh#python/cpython#98528
 Patch39:        CVE-2022-37454-sha3-buffer-overflow.patch
+# PATCH-FIX-UPSTREAM CVE-2022-45061-DoS-by-IDNA-decode.patch bsc#1205244 mcepl@suse.com
+# Avoid DoS by decoding IDNA for too long domain names
+Patch40:        CVE-2022-45061-DoS-by-IDNA-decode.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -449,6 +452,7 @@ other applications.
 %patch37 -p1
 %patch38 -p1
 %patch39 -p1
+%patch40 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
