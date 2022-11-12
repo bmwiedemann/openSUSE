@@ -741,4 +741,15 @@
 </comment>
     <requestid>1033552</requestid>
   </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>83b67abf3cc63ce3bafc6d1b8733b5c3</srcmd5>
+    <version>3.9.15</version>
+    <time>1668271198</time>
+    <user>dimstar_suse</user>
+    <comment>- Add CVE-2022-45061-DoS-by-IDNA-decode.patch to avoid
+  CVE-2022-45061 (bsc#1205244) allowing DoS by IDNA decoding
+  extremely long domain names.
+</comment>
+    <requestid>1034968</requestid>
+  </revision>
 </revisionlist>

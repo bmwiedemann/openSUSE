@@ -167,6 +167,9 @@ Patch37:        98437-sphinx.locale._-as-gettext-in-pyspecific.patch
 # PATCH-FIX-UPSTREAM CVE-2022-42919-loc-priv-mulitproc-forksrv.patch bsc#1204886 mcepl@suse.com
 # Avoid Linux specific local privilege escalation via the multiprocessing forkserver start method
 Patch38:        CVE-2022-42919-loc-priv-mulitproc-forksrv.patch
+# PATCH-FIX-UPSTREAM CVE-2022-45061-DoS-by-IDNA-decode.patch bsc#1205244 mcepl@suse.com
+# Avoid DoS by decoding IDNA for too long domain names
+Patch39:        CVE-2022-45061-DoS-by-IDNA-decode.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -428,6 +431,7 @@ other applications.
 %patch36 -p1
 %patch37 -p1
 %patch38 -p1
+%patch39 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
