@@ -1,7 +1,7 @@
 #
 # spec file for package python-tesserocr
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-tesserocr
 Version:        2.5.2
 Release:        0
@@ -30,7 +29,6 @@ BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -68,6 +66,7 @@ GIL while processing an image in tesseract.
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitearch}/*
+%{python_sitearch}/tesserocr.cpython*.so
+%{python_sitearch}/tesserocr*egg-info
 
 %changelog

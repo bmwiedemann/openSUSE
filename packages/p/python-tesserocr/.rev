@@ -112,4 +112,12 @@
   * Create pix from a BMP image bytes (gh#sirfz/tesserocr#156)</comment>
     <requestid>901578</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>0d3a299778fb3b7dc6383cede959e59e</srcmd5>
+    <version>2.5.2</version>
+    <time>1668271274</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1035283</requestid>
+  </revision>
 </revisionlist>
