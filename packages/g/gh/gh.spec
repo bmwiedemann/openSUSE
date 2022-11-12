@@ -19,7 +19,7 @@
 %define goflags "-buildmode=pie -trimpath -mod=vendor -modcacherw"
 %define sname cli
 Name:           gh
-Version:        2.14.2
+Version:        2.20.0
 Release:        0
 Summary:        The official CLI for GitHub
 License:        MIT
@@ -32,7 +32,7 @@ BuildRequires:  fish
 BuildRequires:  zsh
 # Build/Test requirements
 BuildRequires:  git-core
-BuildRequires:  golang(API) >= 1.16
+BuildRequires:  golang(API) >= 1.18
 Requires:       git-core
 
 %description
@@ -40,6 +40,7 @@ Official CLI client for GitHub written in Go
 
 %package bash-completion
 Summary:        Bash Completion for %{name}
+Group:          Development/Tools/Other
 Requires:       %{name} = %{version}
 Requires:       bash-completion
 %if 0%{?suse_version} == 1315
@@ -54,6 +55,7 @@ Bash command line completion support for %{name}.
 
 %package zsh-completion
 Summary:        ZSH Completion for %{name}
+Group:          Development/Tools/Other
 Requires:       %{name} = %{version}
 %if 0%{?suse_version} == 1315
 Supplements:    packageand(gh:zsh)
@@ -67,6 +69,7 @@ ZSH command line completion support for %{name}.
 
 %package fish-completion
 Summary:        Fish completion for %{name}
+Group:          Development/Tools/Other
 Requires:       %{name} = %{version}
 %if 0%{?suse_version} == 1315
 Supplements:    packageand(gh:fish)
