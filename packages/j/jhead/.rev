@@ -210,4 +210,12 @@
   * Added patch jhead-CVE-2022-41751-2.patch (forwarded request 1031580 from david.anes)</comment>
     <requestid>1032523</requestid>
   </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>c6d9fe816f0810ce7eb9a3db71b7d1ed</srcmd5>
+    <version>3.06.0.1</version>
+    <time>1668271276</time>
+    <user>dimstar_suse</user>
+    <comment>CVE fix! Enjoy. (forwarded request 1034639 from jsikes)</comment>
+    <requestid>1035276</requestid>
+  </revision>
 </revisionlist>

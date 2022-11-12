@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov  8 21:17:41 UTC 2022 - Jason Sikes <jsikes@suse.com>
+
+- Added jhead-CVE-2021-34055.patch
+  * Fix out of bounds write in ClearOrientation() due to unchecked error
+  * [bsc#1205167]
+  * CVE-2021-34055
+
+-------------------------------------------------------------------
 Thu Oct 27 16:07:11 UTC 2022 - David Anes <david.anes@suse.com>
 
 - security fix [bsc#1204409, CVE-2022-41751]

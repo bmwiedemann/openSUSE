@@ -31,6 +31,9 @@ Patch0:         jhead-CVE-2022-41751-1.patch
 # PATCH FIX UPSTREAM arbitrary OS commands by placing them in a JPEG filename
 # https://github.com/Matthias-Wandel/jhead/commit/ec67262b8e5a4b05d8ad6898a09f1dc3fc032062
 Patch1:         jhead-CVE-2022-41751-2.patch
+# PATCH FIX UPSTREAM heap-buffer-overflow of exif.c in function Put16u
+# https://github.com/Matthias-Wandel/jhead/commit/f0a884210cc46830b176f71fd61569adc8f230a7
+Patch2:         jhead-CVE-2021-34055.patch
 Requires:       %{_bindir}/jpegtran
 Requires:       %{_bindir}/mogrify
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
