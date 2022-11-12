@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov  9 19:45:34 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 10.4 
+  New features
+  * Validated compatibility with Python 3.11.
+  * Added the latency property to protocols.
+  * Changed ping to return the latency of the connection.
+  * Supported overriding or removing the User-Agent header in clients and the Server header in servers.
+  * Added deployment guides for more Platform as a Service providers.
+
+-------------------------------------------------------------------
 Sat Sep 24 16:17:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 10.3:
