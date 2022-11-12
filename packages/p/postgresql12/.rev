@@ -290,4 +290,15 @@ Upgrade to version 12.6:
 </comment>
     <requestid>1006685</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>511c60765829bc1c6b8d3f3fade13ff3</srcmd5>
+    <version>12.13</version>
+    <time>1668271239</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1205300: Update to 12.13:
+  * https://www.postgresql.org/about/news/2543/
+  * https://www.postgresql.org/docs/12/release-12-13.html
+- Sync spec file with postgresql15.</comment>
+    <requestid>1035216</requestid>
+  </revision>
 </revisionlist>
