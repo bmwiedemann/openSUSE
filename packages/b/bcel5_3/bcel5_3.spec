@@ -1,7 +1,7 @@
 #
 # spec file for package bcel5_3
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,12 +23,14 @@ Release:        0
 Summary:        Byte Code Engineering Library
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-Url:            http://jakarta.apache.org/bcel/
+URL:            http://jakarta.apache.org/bcel/
 # svn co -r417157 http://svn.apache.org/repos/asf/jakarta/bcel/trunk bcel
 Source0:        http://www.apache.org/dist/jakarta/bcel/source/bcel.tar.bz2
 # from bcel package
 Source1000:     build.xml
 Source1001:     manifest.txt
+#PATCH-FIX-UPSTREAM bsc#1205125 CVE-2022-42920 Out-of-bounds writing issue
+Patch0:         bcel-CVE-2022-42920.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
@@ -74,7 +76,8 @@ optimizers, obsfuscators and analysis tools, the most popular probably
 being the Xalan XSLT processor at Apache.
 
 %prep
-%setup -q -n bcel
+%autosetup -p1 -n bcel
+
 chmod -x NOTICE.txt
 
 cp %{SOURCE1000} %{SOURCE1001} .
@@ -82,9 +85,9 @@ cp %{SOURCE1000} %{SOURCE1001} .
 %build
 ant -Dbuild.dest=target/classes -Dbuild.dir=target -Dsrc.dir=src/main/java \
     -Dexamples.dir=src/examples -Dname=bcel-%{version} -Dapidocs.dir=target/site/apidocs \
-        -Ddocs.src=xdocs -Djakarta.site2=jakarta-site2 -Djdom.jar=jdom.jar \
-        -Dant.build.javac.source=8 -Dant.build.javac.target=8 \
-        compile jar apidocs
+    -Ddocs.src=xdocs -Djakarta.site2=jakarta-site2 -Djdom.jar=jdom.jar \
+    -Dant.build.javac.source=8 -Dant.build.javac.target=8 \
+    compile jar apidocs
 
 %install
 # jars
@@ -101,7 +104,8 @@ rm -rf docs/api
 %fdupes %{buildroot}%{_javadocdir}
 
 %files
-%doc LICENSE.txt NOTICE.txt README.txt RELEASE-NOTES.txt TODO.JustIce
+%license LICENSE.txt
+%doc NOTICE.txt README.txt RELEASE-NOTES.txt TODO.JustIce
 %{_javadir}/*
 
 %files javadoc
