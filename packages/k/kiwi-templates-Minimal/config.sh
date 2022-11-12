@@ -62,25 +62,20 @@ suseImportBuildKey
 systemctl enable sshd.service
 
 if [ -e /etc/cloud/cloud.cfg ]; then
-        # not useful for cloud
-        systemctl mask systemd-firstboot.service
-
         systemctl enable cloud-init-local
         systemctl enable cloud-init
         systemctl enable cloud-config
         systemctl enable cloud-final
 fi
 
-if [ "$kiwi_profiles" != "OpenStack-Cloud" ]; then
-    # Enable jeos-firstboot
-    mkdir -p /var/lib/YaST2
-    touch /var/lib/YaST2/reconfig_system
+# Enable jeos-firstboot
+mkdir -p /var/lib/YaST2
+touch /var/lib/YaST2/reconfig_system
 
-    systemctl mask systemd-firstboot.service
-    systemctl enable jeos-firstboot.service
-fi
+systemctl mask systemd-firstboot.service
+systemctl enable jeos-firstboot.service
 
-# Enable firewalld if installed
+# Enable firewalld if installed except on VMware
 if [ -x /usr/sbin/firewalld ]  && [ "$kiwi_profiles" != "VMware" ]; then
         systemctl enable firewalld.service
 fi

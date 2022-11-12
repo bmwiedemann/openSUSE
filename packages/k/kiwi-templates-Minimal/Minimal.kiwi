@@ -12,7 +12,7 @@
         <profile name="kvm-and-xen" description="Minimal Image for KVM and Xen" arch="aarch64,x86_64"/>
         <profile name="VMware" description="Minimal Image for VMware" arch="x86_64"/>
         <profile name="MS-HyperV" description="Minimal Image for Hyper-V" arch="aarch64,x86_64"/>
-        <profile name="OpenStack-Cloud" description="Minimal Image for OpenStack Cloud" arch="x86_64"/>
+        <profile name="Cloud" description="Minimal Image for Cloud" arch="x86_64"/>
         <profile name="RaspberryPi" description="Minimal Image for the Raspberry Pi" arch="aarch64"/>
     </profiles>
     <preferences profiles="kvm-and-xen" arch="x86_64">
@@ -119,7 +119,7 @@
         </type>
     </preferences>
 
-    <preferences profiles="OpenStack-Cloud">
+    <preferences profiles="Cloud">
         <version>1.0.0</version>
         <packagemanager>zypper</packagemanager>
         <bootloader-theme>openSUSE</bootloader-theme>
@@ -291,7 +291,7 @@
         <package name="zypper-needs-restarting"/> <!-- Some deployment script use this (bsc#1173548) -->
     </packages>
 
-    <!-- Not needed in OpenStack as it uses XFS and cloud-init -->
+    <!-- Not needed in Cloud as it uses XFS and cloud-init -->
     <packages type="image" profiles="kvm-and-xen,VMware,MS-HyperV,RaspberryPi">
         <!-- Only for btrfs -->
         <package name="btrfsprogs"/>
@@ -305,7 +305,7 @@
         <package name="jeos-firstboot &gt;= 1.2.0.0"/>
         <package name="fbiterm"/> <!-- Optionally used by jeos-firstboot for non-latin fonts -->
 
-        <!-- Not useful with OpenStack --> 
+        <!-- Not useful with Cloud --> 
         <package name="firewalld"/>
     </packages>
 
@@ -314,7 +314,7 @@
         <package name="NetworkManager"/>
     </packages>
 
-    <packages type="image" profiles="kvm-and-xen,VMware,MS-HyperV,OpenStack-Cloud">
+    <packages type="image" profiles="kvm-and-xen,VMware,MS-HyperV,Cloud">
         <!-- Shim for secure boot everywhere except for RPi -->
         <package name="shim" arch="aarch64,x86_64"/>
     </packages>
@@ -324,7 +324,7 @@
         <package name="xen-libs"/>
         <package name="kernel-default-base"/>
     </packages>
-    <packages type="image" profiles="kvm-and-xen,OpenStack-Cloud">
+    <packages type="image" profiles="kvm-and-xen,Cloud">
         <package name="qemu-guest-agent"/>
     </packages>
     <packages type="image" profiles="VMware">
@@ -333,9 +333,11 @@
         <package name="open-vm-tools" arch="x86_64"/>
         <package name="kernel-default-base"/>
     </packages>
-    <packages type="image" profiles="OpenStack-Cloud">
+    <packages type="image" profiles="Cloud">
         <package name="cloud-init"/>
         <package name="cloud-init-config-suse" />
+        <package name="jeos-firstboot"/>
+        <package name="fbiterm"/> 
         <package name="xfsprogs"/>
         <package name="kernel-default-base"/>
     </packages>
@@ -374,7 +376,7 @@
     <packages type="bootstrap" profiles="kvm-and-xen">
         <package name="openSUSE-release-appliance-kvm"/>
     </packages>
-    <packages type="bootstrap" profiles="OpenStack-Cloud">
+    <packages type="bootstrap" profiles="Cloud">
         <package name="openSUSE-release-appliance-openstack"/>
     </packages>
     <packages type="bootstrap" profiles="MS-HyperV">

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 10 15:52:38 UTC 2022 - Guilherme Moro <gmoro@suse.com>
+
+- Rename OpenStack-Cloud to Cloud (jsc#PED-1849)
+- Enable jeos-firstboot on Cloud image 
+
+-------------------------------------------------------------------
 Thu Aug 25 13:59:00 UTC 2022 - Guilherme Moro <gmoro@suse.com>
 
 - Add cloud-init to VMware image (jsc#SLE-7254)
