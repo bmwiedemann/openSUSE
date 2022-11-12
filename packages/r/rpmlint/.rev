@@ -4122,4 +4122,17 @@ oddjob-gpupdate isn't blocked)</comment>
   * update checkout action to v3</comment>
     <requestid>1031936</requestid>
   </revision>
+  <revision rev="422" vrev="1">
+    <srcmd5>9831488705078d1fa6d829f320cfbcb7</srcmd5>
+    <version>2.4.0+git20221110.f8919c6</version>
+    <time>1668271209</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.0+git20221110.f8919c6:
+  * Set DuplicatesMinSize default value to 2
+  * dump_stats.py: add one more category for filtering
+  * Do not consider files-duplicate for SMALL files
+  * SpecCheck: Add python_sitelib glob check
+  * remove bugbear exception (B023)</comment>
+    <requestid>1035097</requestid>
+  </revision>
 </revisionlist>

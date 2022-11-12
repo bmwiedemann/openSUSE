@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov 10 15:17:32 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.4.0+git20221110.f8919c6:
+  * Set DuplicatesMinSize default value to 2
+  * dump_stats.py: add one more category for filtering
+  * Do not consider files-duplicate for SMALL files
+  * SpecCheck: Add python_sitelib glob check
+  * remove bugbear exception (B023)
+
+-------------------------------------------------------------------
 Fri Oct 28 11:44:25 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.4.0+git20221028.5eac7b1:
