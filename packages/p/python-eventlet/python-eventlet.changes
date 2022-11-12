@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov  9 10:52:49 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix build with OpenSSL 3.0 [bsc#1205042]
+  * Temporarily disable test_017_ssl_zeroreturnerror
+
+-------------------------------------------------------------------
 Wed Aug 17 06:46:05 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
 
 - disable test_018b_http_10_keepalive_framing (bsc#1202188)
