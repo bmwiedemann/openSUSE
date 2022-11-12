@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Nov 12 02:16:10 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1668162974.2b84746:
+  * Add distinct set of limits for assets
+  * Limit implementation for sub list_scheduled_ajax
+  * Limit implementation for sub list in Jobs.pm
+  * Limit implementation for sub list in Worker.pm
+  * Limit implementation for sub list in Table.pm
+  * Limit implementation for sub list in Comment.pm
+  * Limit implementation for sub list in Bug.pm
+  * Limit implementation for sub list in Asset.pm
+  * Initialize generic default and max limits
+  * Add unit test for scheduled jobs limiting
+  * Add unit test for jobs limiting (api call)
+  * Add unit test for workers limiting (api call)
+  * Add unit test for products limiting (api call)
+  * Add unit test for machines limiting (api call)
+  * Add unit test for comments limiting (api call)
+  * Add unit test for bugs limiting (api call)
+  * Add unit test for assets limiting (api call)
+
+-------------------------------------------------------------------
 Wed Nov 09 18:16:06 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1667998549.1a9c56e:
