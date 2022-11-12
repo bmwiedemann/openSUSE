@@ -1,7 +1,7 @@
 #
 # spec file for package avr-libc
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -32,21 +32,23 @@
 %{!?gcc_version: %define gcc_version 7}
 
 Name:           avr-libc
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        The C Runtime Library for AVR Microcontrollers
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-Url:            http://savannah.nongnu.org/projects/avr-libc
+URL:            http://savannah.nongnu.org/projects/avr-libc
 Source:         http://savannah.nongnu.org/download/%{name}/%{name}-%{version}.tar.bz2
 Source1:        http://savannah.nongnu.org/download/%{name}/%{name}-%{version}.tar.bz2.sig
 Source2:        http://savannah.nongnu.org/download/%{name}/%{name}-manpages-%{doc_vers}.tar.bz2
 Source3:        http://savannah.nongnu.org/download/%{name}/%{name}-manpages-%{doc_vers}.tar.bz2.sig
 Source4:        http://savannah.nongnu.org/download/%{name}/%{name}-user-manual-%{doc_vers}.tar.bz2
-Source5:        http://savannah.nongnu.org/download/%{name}/%{name}-user-manual-%{doc_vers}.tar.bz2.sig
+# fails gpg check Source5:        http://savannah.nongnu.org/download/%{name}/%{name}-user-manual-%{doc_vers}.tar.bz2.sig
 Source6:        http://savannah.nongnu.org/download/%{name}/%{name}-user-manual-%{doc_vers}.pdf.bz2
 Source7:        http://savannah.nongnu.org/download/%{name}/%{name}-user-manual-%{doc_vers}.pdf.bz2.sig
+# from http://pgp.mit.edu/pks/lookup?op=vindex&search=0x7E9EADC3030D34EB (Joerg Wunsch)
 Source8:        %{name}.keyring
+# from ?? - poor man's logic analyzer by 'jw'
 Source9:        logicp-1.02.tgz
 Source100:      %{name}-rpmlintrc
 BuildRequires:  cross-avr-binutils
