@@ -115,4 +115,12 @@
   * Fix a rendering issue of tables inside arrays or inline tables.</comment>
     <requestid>1007720</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3f20cd9ea2aea8847e56c41125bf0fe2</srcmd5>
+    <version>0.11.6</version>
+    <time>1668271220</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1035274</requestid>
+  </revision>
 </revisionlist>
