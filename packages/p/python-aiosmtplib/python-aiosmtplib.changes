@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Nov 10 16:08:50 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to v2.0.0 
+  * BREAKING: Drop Python 3.5 and 3.6 support.
+  * BREAKING: On connect, if the server supports STARTTLS, automatically try to upgrade the connection.
+    STARTTLS after connect can be turned on or off explicitly by passing start_tls=True or start_tls=False respectively.
+  * BREAKING: Remove deprecated loop keyword argument for the SMTP class.
+  * Change: The source_address argument now takes a (addr, port) tuple that is passed as the local_addr param to asyncio.create_connection,
+    allowing for binding to a specific IP. The new local_hostname argument that takes the value to be sent to the server with the EHLO/HELO message.
+    This behaviour more closely matches smtplib.
+  * In order to not break existing usage, passing a string instead of a tuple to source_address will give a DeprecationWarning,
+    and use the value as it if had been passed for local_hostname.
+  * Thanks @rafaelrds and @davidmcnabnz for raising and contributing work on this issue.
+  * Bugfix: the mail_options and rcpt_options arguments to the send coroutine no longer cause errors
+  * Cleanup: Refactored SMTP parent classes to remove complex inheritance structure.
+  * Cleanup: Switched to asyncio.run for sync client methods.
+  * Cleanup: Don't use private email.message.Message policy attribute (instead, set an appropriate policy based on message class)
+
+- Update to v1.1.7
+  * Security: Fix a possible injection vulnerability (a variant of https://consensys.net/diligence/vulnerabilities/python-smtplib-multiple-crlf-injection/)
+  * Note that in order to exploit this vulnerability in aiosmtplib, the attacker would need control of the hostname or source_address parameters.
+    Thanks Sam Sanoop @ Snyk for bringing this to my attention.
+  * Bugfix: include CHANGLOG in sdist release
+  * Type hints: fix type hints for async context exit (credit @JelleZijlstra)
+
+-------------------------------------------------------------------
 Sat Jan 15 17:24:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.6:

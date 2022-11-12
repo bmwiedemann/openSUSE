@@ -20,14 +20,16 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-aiosmtplib
-Version:        1.1.6
+Version:        2.0.0
 Release:        0
 Summary:        Python asyncio SMTP client
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/cole/aiosmtplib
 Source:         https://files.pythonhosted.org/packages/source/a/aiosmtplib/aiosmtplib-%{version}.tar.gz
+BuildRequires:  %{python_module exceptiongroup}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module trustme}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Suggests:       python-aiosmtpd
@@ -54,7 +56,7 @@ Python asyncio SMTP client.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -rs -k 'not (test_qq_login or test_starttls_gmail)'
+%pytest -rs
 
 %files %{python_files}
 %doc README.rst docs/*.rst
