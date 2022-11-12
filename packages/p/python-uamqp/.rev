@@ -165,4 +165,15 @@
     <comment></comment>
     <requestid>999405</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>f0022bf998ec56b6762b7d267c9cfb9c</srcmd5>
+    <version>1.6.3</version>
+    <time>1668271284</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.6.3
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package (forwarded request 1035175 from glaubitz)</comment>
+    <requestid>1035303</requestid>
+  </revision>
 </revisionlist>
