@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Nov 10 12:33:10 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.8.7:
+  + This release adds the following features:
+    - Add a new HSI check for the leaked Lenovo 'Key Manifest'
+      hashes
+    - Measure system integrity when installing UEFI updates
+    - Record more host DMI data when submitting a report for dbx
+      failures
+    -  Use xz-compressed metadata to reduce bandwidth used by ~25%
+  + This release fixes the following bugs:
+    - Add documentation for three existing HSI attributes
+    - Add re-insert requirement for Analogix devices
+    - Allow parsing metadata more than 1MB in size
+    - Do not follow symlinks when searching for ESP devices
+    - Ensure the config file permission is correct for built-in
+      plugins
+    - Fix a compile failure when compiling without efiboot
+    - Fix a regression when using fwuptool install-blob with FMAP
+      firmware
+    - Only count the Microsoft hashes when getting the dbx version
+    - Only use the IFD when the system is Intel-based
+    - Support loading CoSWID when only one role has been set
+  + This release adds support for the following hardware:
+    - Anker Thunderbolt 4 Mini Hub
+    - ELAN haptic hardware
+    - Fingerprint lenfy devices
+    - Goodix GF3258WNC
+    - Intel discrete GPUs (experimental)
+    - More Star Labs laptops
+    - QSI Godzilla Creek Reference Hub
+- Stop passing conditional plugin_amt=disabled, no longer needed,
+  nor recognized.
+
+-------------------------------------------------------------------
 Thu Nov  3 07:03:49 UTC 2022 - Tseng <dennis.tseng@suse.com>
 
 - For pushing fwupd-1.8.6 to 15-SP5 (fwupd-1.7.3), sync change log:

@@ -39,7 +39,7 @@
 %define shlib_sover  2
 
 Name:           fwupd
-Version:        1.8.6
+Version:        1.8.7
 Release:        0
 Summary:        Device firmware updater daemon
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -70,7 +70,7 @@ BuildRequires:  gpgme-devel
 BuildRequires:  help2man
 BuildRequires:  intltool
 BuildRequires:  libelf-devel
-BuildRequires:  meson >= 0.47.0
+BuildRequires:  meson >= 0.61.0
 BuildRequires:  pkgconfig
 BuildRequires:  procps
 BuildRequires:  python3-Pillow
@@ -247,7 +247,6 @@ export CFLAGS="%{optflags} -D_GNU_SOURCE"
   -Dplugin_synaptics_mst=disabled \
 %endif
 %ifnarch %{ix86} x86_64
-  -Dplugin_amt=disabled \
   -Dplugin_synaptics_rmi=disabled \
 %endif
   -Dplugin_nvme=enabled \
@@ -371,7 +370,9 @@ rm -fr %{buildroot}%{_datadir}/fish
 %{_prefix}/lib/systemd/system-shutdown/fwupd.shutdown
 %{_prefix}/lib/systemd/system-preset/fwupd-refresh.preset
 %dir %{_libdir}/fwupd-%{version}
+%ifnarch s390x ppc64le
 %{_libdir}/fwupd-%{version}/libfu_plugin_flashrom.so
+%endif
 %{_libdir}/fwupd-%{version}/libfu_plugin_modem_manager.so
 %{_libdir}/fwupd-%{version}/libfwupdengine.so
 %{_libdir}/fwupd-%{version}/libfwupdplugin.so
