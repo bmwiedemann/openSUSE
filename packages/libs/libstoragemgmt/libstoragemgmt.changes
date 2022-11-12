@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 11 15:52:38 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.9.6:
+  * Update the systemd run directory
+- Refresh move_to_run.patch
+
+-------------------------------------------------------------------
 Tue Oct 18 12:10:13 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.9.5:
