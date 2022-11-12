@@ -25,11 +25,13 @@ Summary:        Hatch plugin for versioning with your preferred VCS
 License:        MIT
 URL:            https://github.com/ofek/hatch-vcs
 Source:         https://files.pythonhosted.org/packages/source/h/hatch_vcs/hatch_vcs-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix-tests-setuptools-scm7.patch gh#ofek/hatch-vcs#9
+Patch0:         fix-tests-setuptools-scm7.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
 Requires:       python-hatchling >= 0.21.0
 # https://github.com/ofek/hatch-vcs/issues/8
-Requires:       (python-setuptools_scm >= 6.4.0 with python-setuptools_scm < 7)
+Requires:       (python-setuptools_scm >= 6.4.0)
 Provides:       python-hatch-vcs = %{version}-%{info}
 BuildArch:      noarch
 # SECTION build
@@ -37,7 +39,7 @@ BuildRequires:  %{python_module hatchling >= 0.21.0}
 BuildRequires:  %{python_module pip}
 # /SECTION
 # SECTION test
-BuildRequires:  %{python_module setuptools_scm >= 6.4.0 with %python-setuptools_scm < 7}
+BuildRequires:  %{python_module setuptools_scm >= 6.4.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  git
 # /SECTION
@@ -47,7 +49,7 @@ BuildRequires:  git
 This provides a plugin for Hatch that uses your preferred version control system (like Git) to determine project versions.
 
 %prep
-%setup -q -n hatch_vcs-%{version}
+%autosetup -p1 -n hatch_vcs-%{version}
 
 %build
 %pyproject_wheel

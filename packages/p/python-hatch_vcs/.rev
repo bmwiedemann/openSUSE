@@ -7,4 +7,13 @@
     <comment>required by python-jsonschema</comment>
     <requestid>990406</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d98e6cc1b5a625ed3ab16f658e6eb0dd</srcmd5>
+    <version>0.2.0</version>
+    <time>1668271214</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-tests-setuptools-scm7.patch upstream patch to support setuptools_scm
+  7 gh#ofek/hatch-vcs#9</comment>
+    <requestid>1035229</requestid>
+  </revision>
 </revisionlist>

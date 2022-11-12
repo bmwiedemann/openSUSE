@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 11 12:02:43 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add fix-tests-setuptools-scm7.patch upstream patch to support setuptools_scm
+  7 gh#ofek/hatch-vcs#9
+
+-------------------------------------------------------------------
 Wed Jul 20 11:44:34 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Cleanup spec file even more
