@@ -1,5 +1,5 @@
 #
-# spec file for package python-pyinstaller-hooks-contrib
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-pyinstaller-hooks-contrib%{psuffix}
-Version:        2022.10
+Version:        2022.12
 Release:        0
 Summary:        Community maintained hooks for PyInstaller
 License:        Apache-2.0 OR GPL-2.0-only

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Nov  9 18:30:17 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 2022.12 
+  New hooks
+  * Add hook for discid. (#506)
+  * Add hook for exchangelib. (#508)
+
+- Update to versino 2022.11
+  * New hooks
+  Add a hook for spiceypy, which has binary files. (#482)
+  Added a hook for ldfparser. (#483)
+  * Updated hooks
+  Extend the sounddevice and soundfile hooks to collect system-installed shared libraries in cases when the libraries are
+  not bundled with the package (i.e., linux PyPI wheels, Anaconda on all OSes). (#487)
+  Fix a TypeError raised by the clr hook when pythonnet dist lacks the file list metadata. (#486)
+  Have clr hook check for availability of the pythonnet before trying to query its metadata. Fixes an importlib.metadata.PackageNotFoundError
+  raised by the clr hook when the hook is triggered by a module or a package named clr other than the clr extension module from pythonnet. (#486)
+  Have the pyqtgraph hook collect the colormap files and their license files from the package. (#501)
+  Implement preliminary support for handling subprocesses used by pyqtgraph.multiprocess, for example in pyqtgraph RemoteGraphicsView widget.
+  The user is still required to ensure that stdlib's multiprocessing.freeze_support is called in the entry-point script before using pyqtgraph.
+  In addition, with onefile builds, the user must set the _MEIPASS2 environment variable to the value of sys._MEIPASS before using pyqtgraph. (#501)
+  In clr hook for pythonnet collect the Python.Runtime.dll as a data file on non-Windows OSes to prevent errors during binary dependency analysis. (#500)
+
+-------------------------------------------------------------------
 Thu Sep 22 04:48:18 UTC 2022 - Markéta Machová <mmachova@suse.com>
 
 - Initial packaging (v2022.10), needed by python-PyInstaller
