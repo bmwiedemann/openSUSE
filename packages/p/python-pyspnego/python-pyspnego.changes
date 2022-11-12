@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Nov  9 18:35:52 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 0.6.3
+  * Ignore GSS_S_NO_CONTEXT errors on GSSAPI after stepping through the token exchange before the context is complete
+    This is raised by MIT krb5 before 1.14.x and can be ignored
+
+- Update to 0.6.2
+  * Fix up sdist and wheels to include py.typed type annotation marker
+
+- Update to 0.6.1  
+  * Added Python 3.11 wheel
+
+-------------------------------------------------------------------
 Fri Oct 28 20:23:03 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 0.6.0 
