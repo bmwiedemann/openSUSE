@@ -153,4 +153,14 @@
     exists, and set it as the sample_dir, if so.</comment>
     <requestid>1032796</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>85fe5e2e79a61c8f63b2d4f95d95a4cf</srcmd5>
+    <version>1.9.7</version>
+    <time>1668271281</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.7:
+  * Fixed regression introduced in #166, that caused a mess in
+    the ./azotebg file. Closes #169.</comment>
+    <requestid>1035298</requestid>
+  </revision>
 </revisionlist>

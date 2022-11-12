@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 11 16:00:22 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.9.7:
+  * Fixed regression introduced in #166, that caused a mess in
+    the ./azotebg file. Closes #169.
+
+-------------------------------------------------------------------
 Wed Nov  2 08:38:18 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.9.6:
