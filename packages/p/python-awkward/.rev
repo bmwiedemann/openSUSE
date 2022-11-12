@@ -105,4 +105,27 @@
 </comment>
     <requestid>1033486</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>579a976c1bb40a373cca1b05b540ba4c</srcmd5>
+    <version>1.10.2</version>
+    <time>1668271248</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove not needed tests filter
+- Update to 1.10.2:
+  # New features
+   * feat: add RegularArray._reduce_next implementation (backport) by @agoose77
+     in #1813
+  # Bug-fixes and performance
+   * fix: don't assume trailing . for module name in is_XXX_buffer (backport)
+     by @agoose77 in #1746
+   * fix: use proper lengths in ByteMaskedArray.mergemany (backport) by
+     @agoose77 in #1750
+   * fix: simplify ListOffsetArray_reduce_nonlocal_outstartsstops (backport) by
+     @agoose77 in #1797
+  # Other
+   * chore: remove v2 Python highlevel LayoutBuilder from main-v1. by
+     @jpivarski in #1863
+</comment>
+    <requestid>1035176</requestid>
+  </revision>
 </revisionlist>

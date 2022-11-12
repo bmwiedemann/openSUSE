@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Nov 11 08:52:09 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Rvert the devel package requirement, python-awkward is not provided by any of
+  subpackages, the real package provided is python3-awkward.
+
+-------------------------------------------------------------------
+Thu Nov 10 09:04:56 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove not needed tests filter
+- Improve devel package requirement to use the package name variable instead of
+  python3-awkward
+- Update to 1.10.2:
+  # New features
+   * feat: add RegularArray._reduce_next implementation (backport) by @agoose77
+     in #1813
+
+  # Bug-fixes and performance
+   * fix: don't assume trailing . for module name in is_XXX_buffer (backport)
+     by @agoose77 in #1746
+   * fix: use proper lengths in ByteMaskedArray.mergemany (backport) by
+     @agoose77 in #1750
+   * fix: simplify ListOffsetArray_reduce_nonlocal_outstartsstops (backport) by
+     @agoose77 in #1797
+
+  # Other
+   * chore: remove v2 Python highlevel LayoutBuilder from main-v1. by
+     @jpivarski in #1863
+
+-------------------------------------------------------------------
 Fri Nov  4 09:10:44 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update tests to skip broken tests in i586. gh#scikit-hep/awkward#1862

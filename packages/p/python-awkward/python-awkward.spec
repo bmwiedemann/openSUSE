@@ -19,7 +19,7 @@
 %global modname awkward
 %global skip_python2 1
 Name:           python-awkward
-Version:        1.10.1
+Version:        1.10.2
 Release:        0
 Summary:        Manipulate arrays of complex data structures as easily as Numpy
 License:        BSD-3-Clause
@@ -99,13 +99,7 @@ cp -a build/lib.linux-*/awkward/include %{buildroot}%{_includedir}/awkward
 
 %check
 # test-cuda: we don't have python-cupy yet
-# test_numpy_complex_form breaks the interpreter with "realloc(): invalid next
-# size" gh#scikit-hep/awkward#1862
-%ifarch %ix86
-%pytest_arch --ignore tests-cuda/ -k 'not test_numpy_complex_form'
-%else
 %pytest_arch --ignore tests-cuda/
-%endif
 
 %files %{python_files}
 %doc README.md
