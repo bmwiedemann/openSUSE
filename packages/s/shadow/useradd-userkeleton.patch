@@ -100,7 +100,7 @@ Index: src/useradd.c
  
  	if (!out_create_mail_spool)
  		fprintf (ofp, DCREATE_MAIL_SPOOL "%s\n", def_create_mail_spool);
-@@ -2756,6 +2791,8 @@ int main (int argc, char **argv)
+@@ -2758,6 +2793,8 @@ int main (int argc, char **argv)
  		if (home_added) {
  			copy_tree (def_template, prefix_user_home, false, true,
  			           (uid_t)-1, user_id, (gid_t)-1, user_gid);
@@ -113,7 +113,7 @@ Index: libmisc/copydir.c
 ===================================================================
 --- libmisc/copydir.c.orig
 +++ libmisc/copydir.c
-@@ -453,6 +453,14 @@ static int copy_entry (const struct path
+@@ -449,6 +449,14 @@ static int copy_entry (const struct path
  		}
  
  		/*
@@ -128,7 +128,7 @@ Index: libmisc/copydir.c
  		 * Copy any symbolic links
  		 */
  
-@@ -511,6 +519,7 @@ static int copy_dir (const struct path_i
+@@ -507,6 +515,7 @@ static int copy_dir (const struct path_i
                       gid_t old_gid, gid_t new_gid)
  {
  	int err = 0;
@@ -136,11 +136,10 @@ Index: libmisc/copydir.c
  
  	/*
  	 * Create a new target directory, make it owned by
-@@ -522,6 +531,16 @@ static int copy_dir (const struct path_i
+@@ -518,6 +527,15 @@ static int copy_dir (const struct path_i
  		return -1;
  	}
  #endif				/* WITH_SELINUX */
-+
 +        /*
 +         * If the destination is already a directory, don't change it
 +         * but copy into it (recursively).
@@ -150,6 +149,6 @@ Index: libmisc/copydir.c
 +                           old_uid, new_uid, old_gid, new_gid) != 0);
 +        }
 +
- 	if (   (mkdirat (dst->dirfd, dst->name, statp->st_mode) != 0)
+ 	if (   (mkdirat (dst->dirfd, dst->name, 0700) != 0)
  	    || (chownat_if_needed (dst, statp,
  	                         old_uid, new_uid, old_gid, new_gid) != 0)

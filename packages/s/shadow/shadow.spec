@@ -22,7 +22,7 @@
   %define no_config 1
 %endif
 Name:           shadow
-Version:        4.12.3
+Version:        4.13
 Release:        0
 Summary:        Utilities to Manage User and Group Accounts
 License:        BSD-3-Clause AND GPL-2.0-or-later
@@ -45,26 +45,18 @@ Patch0:         shadow-login_defs-unused-by-pam.patch
 Patch1:         userdel-script.patch
 # PATCH-FEATURE-SUSE useradd-script.patch kukuk@suse.com -- Add support for USERADD_CMD.
 Patch2:         useradd-script.patch
-# PATCH-FEATURE-SUSE chkname-regex.patch kukuk@suse.com -- Username restriction by regex.
-Patch3:         chkname-regex.patch
 # PATCH-FEATURE-SUSE useradd-default.patch kukuk@suse.com -- Change useradd defaults group to 1000.
-Patch4:         useradd-default.patch
+Patch3:         useradd-default.patch
 # PATCH-FEATURE-SUSE shadow-util-linux.patch sbrabec@suse.com -- Add support for util-linux specific variables, delete shadow login, su runuser specific.
-Patch5:         shadow-util-linux.patch
+Patch4:         shadow-util-linux.patch
 # PATCH-FEATURE-SUSE shadow-login_defs-comments.patch kukuk@suse.com -- Adjust login.defs comments.
-Patch6:         shadow-login_defs-comments.patch
+Patch5:         shadow-login_defs-comments.patch
 # PATCH-FEATURE-SUSE shadow-login_defs-suse.patch kukuk@suse.com -- Customize login.defs.
-Patch7:         shadow-login_defs-suse.patch
+Patch6:         shadow-login_defs-suse.patch
 # PATCH-FEATURE-SUSE Copy also skeleton files from /usr/etc/skel (boo#1173321)
-Patch8:         useradd-userkeleton.patch
+Patch7:         useradd-userkeleton.patch
 # PATCH-FIX-SUSE disable_new_audit_function.patch adam.majer@suse.de -- Disable newer libaudit functionality for older distributions.
-Patch9:         disable_new_audit_function.patch
-# PATCH-FIX-UPSTREAM shadow-prefix-overflow.patch mvetter@suse.com -- Fix buffer overflow when using --prefix in useradd
-Patch10:        https://github.com/shadow-maint/shadow/commit/eaebea55a495a56317ed85e959b3599f73c6bdf2.patch#/shadow-prefix-overflow.patch
-# PATCH-FIX-UPSTREAM shadow-chage-format.patch mvetter@suse.com -- Fix chage format string
-Patch11:        https://github.com/shadow-maint/shadow/commit/e503fd574b7dbf6b21b1168e20938f0922807916.patch#/shadow-chage-format.patch
-# PATCH-FIX-UPSTREAM shadow-copytree-usermod-fifo.patch mvetter@suse.com -- Fix regression when openat blocks
-Patch12:        https://github.com/shadow-maint/shadow/commit/10cd68e0f04b48363eb32d2c6e168b358fb27810.patch#/shadow-copytree-usermod-fifo.patch
+Patch8:         disable_new_audit_function.patch
 BuildRequires:  audit-devel > 2.3
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -131,13 +123,9 @@ Development files for libsubid4.
 %patch5
 %patch6
 %patch7
-%patch8
 %if 0%{?suse_version} < 1330
-%patch9 -p1
+%patch8 -p1
 %endif
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
 
 iconv -f ISO88591 -t utf-8  doc/HOWTO > doc/HOWTO.utf8
 mv -v doc/HOWTO.utf8 doc/HOWTO

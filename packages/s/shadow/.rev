@@ -788,4 +788,41 @@
   See https://github.com/shadow-maint/shadow/pull/565</comment>
     <requestid>1034152</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>9ee398e9199ee774965440fd344457bd</srcmd5>
+    <version>4.13</version>
+    <time>1668271188</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.13:
+  * useradd.8: fix default group ID
+  * Revert drop of subid_init()
+  * Georgian translation
+  * useradd: Avoid taking unneeded space: do not reset non-existent data
+    in lastlog
+  * relax username restrictions
+  * selinux: check MLS enabled before setting serange
+  * copy_tree: use fchmodat instead of chmod
+  * copy_tree: don't block on FIFOs
+  * add shell linter
+  * copy_tree: carefully treat permissions
+  * lib/commonio: make lock failures more detailed
+  * lib: use strzero and memzero where applicable
+  * Update Dutch translation
+  * Don't test for NULL before calling free
+  * Use libc MAX() and MIN()
+  * chage: Fix regression in print_date
+  * usermod: report error if homedir does not exist
+  * libmisc: minimum id check for system accounts
+  * fix usermod -rG x y wrongly adding a group
+  * man: add missing space in useradd.8.xml
+  * lastlog: check for localtime() return value
+  * Raise limit for passwd and shadow entry length
+  * Remove adduser-old.c
+  * useradd: Fix buffer overflow when using a prefix
+  * Don't warn when failed to open /etc/nsswitch.conf
+- Remove patches we took from upstream pre-release:
+  * shadow-copytree-usermod-fifo.patch
+  * shadow-chage-format.patch</comment>
+    <requestid>1034857</requestid>
+  </revision>
 </revisionlist>
