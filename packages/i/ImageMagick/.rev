@@ -3473,4 +3473,16 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   * prevent divide by zero exception (forwarded request 1031300 from dirkmueller)</comment>
     <requestid>1031316</requestid>
   </revision>
+  <revision rev="260" vrev="1">
+    <srcmd5>6fd46944fda550933a9f5d3f71707cac</srcmd5>
+    <version>7.1.0.52</version>
+    <time>1668271245</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.1.0.52:
+  * coders: Enable opening https files in mingw #5727
+  * utilities: Enable support for unicode paths in mingw #5713
+  upstream changelog:
+  https://github.com/ImageMagick/Website/blob/main/ChangeLog.md#710-52---2022-11-06 (forwarded request 1034627 from dirkmueller)</comment>
+    <requestid>1035280</requestid>
+  </revision>
 </revisionlist>

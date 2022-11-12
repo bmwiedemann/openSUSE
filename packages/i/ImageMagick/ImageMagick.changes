@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov  8 22:36:55 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.1.0.52:
+  * coders: Enable opening https files in mingw #5727
+  * utilities: Enable support for unicode paths in mingw #5713
+  upstream changelog:
+  https://github.com/ImageMagick/Website/blob/main/ChangeLog.md#710-52---2022-11-06
+
+-------------------------------------------------------------------
 Wed Oct 26 09:27:50 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.1.0.51:
