@@ -30,6 +30,8 @@ URL:            https://github.com/Irqbalance/irqbalance
 Source:         https://github.com/Irqbalance/irqbalance/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source3:        sysconfig.irqbalance
 Patch1:         Set-fd-limit.patch
+# PATCH-FIX-UPSTREAM: https://github.com/Irqbalance/irqbalance/pull/250
+Patch2:         irqbalance-systemd-netlink.patch
 BuildRequires:  libcap-ng-devel
 BuildRequires:  libtool
 BuildRequires:  ncurses-devel

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 11 09:44:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add irqbalance-systemd-netlink.patch (related to bsc#1205308)
+
+-------------------------------------------------------------------
 Mon Nov  7 12:23:32 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.9.2:
