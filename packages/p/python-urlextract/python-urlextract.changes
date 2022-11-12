@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov  9 19:35:06 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to v1.7.1 
+  * fixes urlextract without authority causes AttributeError
+
+-------------------------------------------------------------------
 Sat Oct 29 16:25:27 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to v1.7.0
