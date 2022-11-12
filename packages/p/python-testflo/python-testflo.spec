@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python36 1
 Name:           python-testflo
 Version:        1.4.9
@@ -27,11 +26,9 @@ Group:          Development/Languages/Python
 URL:            https://github.com/OpenMDAO/testflo
 Source:         https://files.pythonhosted.org/packages/source/t/testflo/testflo-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
-Requires:       python-six
 Requires(post): update-alternatives
 Requires(preun):update-alternatives
 Recommends:     python-coverage
@@ -70,13 +67,14 @@ using unittest.TestCase objects that they are familiar with.
 %post
 %python_install_alternative testflo
 
-%preun
+%postun
 %python_uninstall_alternative testflo
 
 %files %{python_files}
 %license LICENSE.txt
 %doc README.md
 %python_alternative %{_bindir}/testflo
-%{python_sitelib}/*
+%{python_sitelib}/testflo
+%{python_sitelib}/testflo-*.egg-info
 
 %changelog
