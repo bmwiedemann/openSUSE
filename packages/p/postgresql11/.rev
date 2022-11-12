@@ -326,4 +326,15 @@ Upgrade to version 11.11:
 </comment>
     <requestid>1006686</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>80c976eef3e03e10931f22971fe5f967</srcmd5>
+    <version>11.18</version>
+    <time>1668271237</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1205300: Update to 11.18:
+  * https://www.postgresql.org/about/news/2543/
+  * https://www.postgresql.org/docs/11/release-11-18.html
+- Sync spec file with postgresql15.</comment>
+    <requestid>1035215</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 10 16:30:04 UTC 2022 - Reinhard Max <max@suse.com>
+
+- bsc#1205300: Update to 11.18:
+  * https://www.postgresql.org/about/news/2543/
+  * https://www.postgresql.org/docs/11/release-11-18.html
+- Sync spec file with postgresql15.
+
+-------------------------------------------------------------------
 Thu Sep 22 21:26:36 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Create mechanism to specify the latest supported LLVM version.
