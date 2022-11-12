@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Nov  9 19:13:31 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 2.21.0 
+  Added
+  * Added market parameter to album and albums to address #753
+  * Added 'show_featured_artists.py' to 'examples'.
+  * Expanded contribution and license sections of the documentation.
+  * Added FlaskSessionCacheHandler, a cache handler that stores the token info in a flask session.
+  * Added Python 3.10 in GitHub Actions
+  Fixed
+  * Updated the documentation to specify ISO-639-1 language codes.
+  * Fix AttributeError for text attribute of the Response object
+  * Require redis v3 if python2.7 (fixes readthedocs)
+
+-------------------------------------------------------------------
 Thu Sep 29 13:02:28 UTC 2022 - Adrian Schröter <adrian@suse.de>
 
 - update to version 2.20.0
