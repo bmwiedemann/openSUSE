@@ -1,7 +1,66 @@
 -------------------------------------------------------------------
+Fri Nov 11 13:21:11 UTC 2022 - pgajdos@suse.com
+
+- silent rpmlint
+
+-------------------------------------------------------------------
+Fri Nov 11 11:38:22 UTC 2022 - pgajdos@suse.com
+
+- python-six is not required
+
+-------------------------------------------------------------------
+Wed Nov  9 19:19:10 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 8.1.0 (included changes also from 8.0.1, 8.0.0, 7.0.0)
+  * feat: Add retry_if_exception_cause_type (#362)
+  * Support `datetime.timedelta` as a valid wait unit type (#342)
+  * Show All Exception Predicates in Docs (#332)
+  * Implement a wait.wait_exponential_jitter per Google's storage guide (#351)
+  * Define a ClientError to fix Sphinx build errors (#352)
+  * Merge pull request #340 from jd/fix-mergify
+  * ci: fix Mergify config
+  * Merge pull request #337 from william-silversmith/master
+  * docs: show how to use retry_if_not_exception_type
+  * Rickroll a function name in one of the examples (#331)
+  * Fix after_log logger format (#317)
+  * Drop `py2` tag from the wheel name (#320)
+  * Add a __repr__ method to RetryCallState objects (#302)
+  * Add type annotations to cover all code. (#315)
+  * Fix #307 : Drop deprecated APIs (#314)
+  * Fix DeprecationWarnings in tests (#313)
+  * Do not package tests with tenacity (#308)
+  * Fix issue #288 : __name__ and other attributes for async functions (#312)
+  * Use f-strings instead of `str.format` as faster and easier to read (#311)
+  * Replace abc.ABCMeta with abc.ABC (#310)
+  * Remove encoding declarations (#309)
+  * Merge pull request #306 from penguinolog/black_full_ci
+  * Use black instead of "flake8-black" on CI.
+  * Fix #291: drop python < 3.6 (#304)
+  * Merge pull request #293 from and-semakin/drop_deprecated_pythons
+  * Drop support for deprecated Python versions (2.7 and 3.5)
+  * Add retry_if_not_exception_type() (#300)
+  * Make logger more compatible (#294)
+  * ci: fix pep8 error (#297)
+  * Merge pull request #286 from jd/reno-mergify
+  * Add Python 3.8 in tox.ini
+  * Fix upload job
+  * Merge pull request #202 from jd/release-auto
+  * Release via CircleCI
+  * Merge pull request #191 from bersace/context-manager
+  * Merge branch 'master' into context-manager
+  * Merge pull request #201 from bersace/async
+  * Ensure coroutine passes asyncio.iscoroutinefunction
+  * Test async keyword
+  * Retry code block with context manager
+  * Merge pull request #200 from Dectinc/master
+  * Fix setup.cfg typo
+  * Merge pull request #198 from BATS/py2-compatability-for-_asyncio-module
+  * Ensure that the _asyncio.py module can be compiled, even on Python 2
+
+-------------------------------------------------------------------
 Tue Oct 11 15:50:50 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 8.1.0 
+- Update to version 8.0.1 
  * no upstream changelog
 
 -------------------------------------------------------------------

@@ -17,7 +17,7 @@
 
 
 Name:           python-tenacity
-Version:        8.0.1
+Version:        8.1.0
 Release:        0
 Summary:        Python module for retrying code until it succeeeds
 License:        Apache-2.0
@@ -27,13 +27,11 @@ Source:         https://files.pythonhosted.org/packages/source/t/tenacity/tenaci
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six >= 1.9.0}
 BuildRequires:  %{python_module tornado}
 BuildRequires:  %{python_module typeguard}
 BuildRequires:  %{python_module typing-extensions}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-six >= 1.9.0
 Recommends:     python-tornado
 BuildArch:      noarch
 %python_subpackages
@@ -66,6 +64,7 @@ Features
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/tenacity
+%{python_sitelib}/tenacity-*egg-info
 
 %changelog
