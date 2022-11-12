@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 31 14:17:46 UTC 2022 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Do not include source code
+- Update to Go 1.18
+
+-------------------------------------------------------------------
 Tue Sep 27 12:37:42 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - switch to go1.17 as upstream does (see https://github.com/prometheus/promu/blob/v0.13.0/.promu.yml)

@@ -34,7 +34,7 @@ ExcludeArch:    s390
 %undefine _missing_build_ids_terminate_build
 BuildRequires:  golang >= 1.17
 %else
-BuildRequires:  golang(API) = 1.17
+BuildRequires:  golang(API) = 1.18
 %endif
 
 %description
@@ -55,11 +55,8 @@ go build \
 
 %install
 install -D -m 0755 promu "%{buildroot}/%{_bindir}/promu"
-%{gosrc}
 
-%{gofilelist}
-
-%files -f file.lst
+%files
 %doc README.md
 %license LICENSE
 %{_bindir}/promu
