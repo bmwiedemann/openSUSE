@@ -1,7 +1,7 @@
 #
 # spec file for package python-py-cpuinfo
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without tests
 Name:           python-py-cpuinfo
-Version:        8.0.0
+Version:        9.0.0
 Release:        0
 Summary:        Python library and tool to get CPU info
 License:        MIT
@@ -30,7 +29,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -53,6 +52,8 @@ These approaches are used for getting info:
 
 %prep
 %setup -q -n py-cpuinfo-%{version}
+# remove shebang
+sed -i '1{ /^#!/d; }' cpuinfo/*.py
 
 %build
 %python_build
@@ -72,13 +73,14 @@ These approaches are used for getting info:
 %post
 %python_install_alternative cpuinfo
 
-%preun
+%postun
 %python_uninstall_alternative cpuinfo
 
 %files %{python_files}
 %license LICENSE
 %doc README.rst ChangeLog
 %python_alternative %{_bindir}/cpuinfo
-%{python_sitelib}/*
+%{python_sitelib}/cpuinfo
+%{python_sitelib}/py_cpuinfo-%{version}*-info
 
 %changelog

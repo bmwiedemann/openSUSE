@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Nov 11 09:43:10 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove rpmlint errors:
+  * Use postun instead of preun for update-alternatives
+  * Remove shebang from py files
+  * More specific python_sitelib in %files
+  * Remove python_module macro definition
+
+-------------------------------------------------------------------
+Wed Nov  9 18:28:08 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to Release 9.0.0
+  * Fixed Bug #178: Changes to lscpu breaks parsing of cache info
+  * Fixed Bug #152: CPU stepping, model, and family values are blank if 0
+  * Fixed Bug #177: Officially drop support for Python 2
+  * Fixed Bug #171: Replace Python 3.11 deprecated unittest.makeSuite
+  * Fixed Bug #173: Fix lgtm.com alerts
+  * Fixed Bug #165: Support Wheel
+  * Fixed Bug #167: Add support for RISC-V 
+
+-------------------------------------------------------------------
 Sun Jun  6 11:53:50 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.0.0:

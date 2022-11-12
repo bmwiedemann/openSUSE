@@ -72,4 +72,25 @@
   * Fixed Bug #157: Remove multiple checks for sestatus</comment>
     <requestid>897832</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8a03aca7e6f72eca68e134d207f11645</srcmd5>
+    <version>9.0.0</version>
+    <time>1668271227</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove rpmlint errors:
+  * Use postun instead of preun for update-alternatives
+  * Remove shebang from py files
+  * More specific python_sitelib in %files
+  * Remove python_module macro definition
+- Update to Release 9.0.0
+  * Fixed Bug #178: Changes to lscpu breaks parsing of cache info
+  * Fixed Bug #152: CPU stepping, model, and family values are blank if 0
+  * Fixed Bug #177: Officially drop support for Python 2
+  * Fixed Bug #171: Replace Python 3.11 deprecated unittest.makeSuite
+  * Fixed Bug #173: Fix lgtm.com alerts
+  * Fixed Bug #165: Support Wheel
+  * Fixed Bug #167: Add support for RISC-V 
+</comment>
+    <requestid>1035192</requestid>
+  </revision>
 </revisionlist>
