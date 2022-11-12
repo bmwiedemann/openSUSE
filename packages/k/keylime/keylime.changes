@@ -1,15 +1,40 @@
 -------------------------------------------------------------------
-Wed Nov 02 15:38:00 UTC 2022 - aplanas@suse.com
+Fri Nov 11 09:40:46 UTC 2022 - aplanas@suse.com
 
-- Update to version v6.5.3:
+- Update to version v6.5.2:
+  * cloud_verifier: This is the first PR to address the scalability problems uncovered in #1167, starting with `agent` status.
+  * Bump version number
+  * Add --retry 5 parameter to curl
+  * create_mb_refstate: Check tpm2-tools version before running
+  * create_mb_refstate: Print error messages
+  * test_tpm: Skip event log parsing test if tpm2-tools is too old
+  * installer: Enable installation on RHEL-9
+  * Move the execution of external EK check script to cert_utils
+  * Move EK cert verification to cert_utils
+  * Make the tpm cert store path configurable
+  * ima-policy-converter: Implement a basic test suite for conversion script
+  * ima-policy-converter: Implement IMA policy conversion script
+  * ima-policy-converter: Add empty reference IMA policy
+  * ima: Accept x509 certificates if no Subject Key Identifier is available
+  * test_tpm: Use doc strings for tests description
+  * Test binary measured boot event log parsing
+  * alpha renaming
+  * shallow type fixes
+  * ima_emulator_adapter: Print readable error if reading a PCR fails
+  * tpm: Check whether hash_alg is in jsonout
+  * Very limited code fixup/cleanup on keylime_tenant CLI
+  * Set permissions of keylime_agent_secure.mount to 664
+  * Disable dnf-makecache.timer to save RAM
+  * tpm_bootlog_enrich: Get DevicePath length from LengthOfDevicePath
+  * Disable dnf-makecache.service to save RAM
+  * Fix for writing the same allow list twice during agent activation (#1150)
+  * Fix improper handling of IMA policy bundle when none is provided
+  * ima: Fix log evaluation on quick-succession execution of scripts
+  * Add new tests to packit CI
+  * Remove semantic-release action to stop erroneous releases
   * crypto: Provide input as bytes to encrypt
   * Revert "Revert "Revert "tenant: open file to send utf-8 encoded" (#1136)" (#1141)"
   * Update runtime_ima.rst
-
--------------------------------------------------------------------
-Wed Oct 26 14:10:21 UTC 2022 - aplanas@suse.com
-
-- Update to version v6.5.2:
   * Back to 6.5.1
   * This PR fixes a bug that prevented 6.5.x verifiers from interacting with 6.2. agents
   * Revert "Revert "tenant: open file to send utf-8 encoded" (#1136)" (#1141)

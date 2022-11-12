@@ -27,7 +27,7 @@
   %define _config_norepl %config(noreplace)
 %endif
 Name:           keylime
-Version:        6.5.3
+Version:        6.5.2
 Release:        0
 Summary:        Open source TPM software for Bootstrapping and Maintaining Trust
 License:        Apache-2.0 AND MIT
@@ -181,6 +181,7 @@ patch -s --fuzz=0 config/verifier.conf < %{SOURCE12}
 %python_clone -a %{buildroot}%{_bindir}/%{srcname}_migrations_apply
 %python_clone -a %{buildroot}%{_bindir}/%{srcname}_userdata_encrypt
 %python_clone -a %{buildroot}%{_bindir}/%{srcname}_ima_emulator
+%python_clone -a %{buildroot}%{_bindir}/%{srcname}_convert_ima_policy
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -215,6 +216,7 @@ cp -r ./tpm_cert_store %{buildroot}%{_sharedstatedir}/%{srcname}/
 %python_install_alternative %{srcname}_migrations_apply
 %python_install_alternative %{srcname}_userdata_encrypt
 %python_install_alternative %{srcname}_ima_emulator
+%python_install_alternative %{srcname}_convert_ima_policy
 
 %postun
 %python_uninstall_alternative %{srcname}_verifier
@@ -225,6 +227,7 @@ cp -r ./tpm_cert_store %{buildroot}%{_sharedstatedir}/%{srcname}/
 %python_uninstall_alternative %{srcname}_migrations_apply
 %python_uninstall_alternative %{srcname}_userdata_encrypt
 %python_uninstall_alternative %{srcname}_ima_emulator
+%python_uninstall_alternative %{srcname}_convert_ima_policy
 
 %post -n %{srcname}-firewalld
 %firewalld_reload
@@ -285,6 +288,7 @@ cp -r ./tpm_cert_store %{buildroot}%{_sharedstatedir}/%{srcname}/
 %python_alternative %{_bindir}/%{srcname}_migrations_apply
 %python_alternative %{_bindir}/%{srcname}_userdata_encrypt
 %python_alternative %{_bindir}/%{srcname}_ima_emulator
+%python_alternative %{_bindir}/%{srcname}_convert_ima_policy
 %{python_sitelib}/*
 
 %files -n %{srcname}-config

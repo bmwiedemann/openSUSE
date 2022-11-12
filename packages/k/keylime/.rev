@@ -215,4 +215,15 @@
     <comment></comment>
     <requestid>1032920</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>e161e75632d4986e32941b652ec21e26</srcmd5>
+    <version>6.5.2</version>
+    <time>1668271228</time>
+    <user>dimstar_suse</user>
+    <comment>* Update to a re-released version v6.5.2
+* The old versions 6.5.2 and 6.5.3, already published in Factory, are now yanked, and a new 6.5.2 has been released.
+* This version includes the old changes, plus other that fix some security bugs
+* The changes file is partially rewrite to remove references to the old yanked versions</comment>
+    <requestid>1035197</requestid>
+  </revision>
 </revisionlist>
