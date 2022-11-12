@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov 11 09:05:09 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.8.2
+  * This is primarily a bug fix release, including further work on
+    improving the thread-safety-constructor and making it work with
+    software which had incorrectly called libX11 functions from
+    inside X*IfEvent() calls.
+- supersedes U_fix-a-memory-leak-in-XRegisterIMInstantiateCallback.patch
+
+-------------------------------------------------------------------
 Wed Oct 19 08:45:08 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - U_fix-a-memory-leak-in-XRegisterIMInstantiateCallback.patch

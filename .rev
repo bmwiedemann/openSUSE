@@ -457,4 +457,17 @@ additions, including new UTF-8 compose sequences for:
   * security update for CVE-2022-3554 (bsc#1204422)</comment>
     <requestid>1029940</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>b1656c30e31b1218a48f26476f1ca4e1</srcmd5>
+    <version>1.8.2</version>
+    <time>1668271230</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8.2
+  * This is primarily a bug fix release, including further work on
+    improving the thread-safety-constructor and making it work with
+    software which had incorrectly called libX11 functions from
+    inside X*IfEvent() calls.
+- supersedes U_fix-a-memory-leak-in-XRegisterIMInstantiateCallback.patch</comment>
+    <requestid>1035199</requestid>
+  </revision>
 </revisionlist>
