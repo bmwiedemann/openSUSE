@@ -20,7 +20,7 @@
 # python_requires='>=3.6'
 %define skip_python2 1
 Name:           python-python-box
-Version:        6.0.2
+Version:        6.1.0
 Release:        0
 Summary:        Advanced Python dictionaries with dot notation access
 License:        MIT
