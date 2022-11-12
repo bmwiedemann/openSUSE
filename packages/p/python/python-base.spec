@@ -134,6 +134,9 @@ Patch70:        CVE-2015-20107-mailcap-unsafe-filenames.patch
 # Coerce // to / in Lib/BaseHTTPServer.py
 Patch71:        CVE-2021-28861-double-slash-path.patch
 Patch72:        bpo34990-2038-problem-compileall.patch
+# PATCH-FIX-UPSTREAM CVE-2022-45061-DoS-by-IDNA-decode.patch bsc#1205244 mcepl@suse.com
+# Avoid DoS by decoding IDNA for too long domain names
+Patch73:        CVE-2022-45061-DoS-by-IDNA-decode.patch
 # COMMON-PATCH-END
 %define         python_version    %(echo %{tarversion} | head -c 3)
 BuildRequires:  automake
@@ -272,6 +275,7 @@ other applications.
 %patch70 -p1
 %patch71 -p1
 %patch72 -p1
+%patch73 -p1
 
 # For patch 66
 cp -v %{SOURCE66} Lib/test/recursion.tar

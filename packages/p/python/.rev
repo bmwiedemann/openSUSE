@@ -2745,4 +2745,21 @@ However, upstream development now focuses on 3.x series.
     <comment></comment>
     <requestid>1003718</requestid>
   </revision>
+  <revision rev="174" vrev="25">
+    <srcmd5>26fc3e4fa1f082ff18fe433dcb4efde0</srcmd5>
+    <version>2.7.18</version>
+    <time>1668271203</time>
+    <user>dimstar_suse</user>
+    <comment>- Add CVE-2022-45061-DoS-by-IDNA-decode.patch to avoid
+  CVE-2022-45061 (bsc#1205244) allowing DoS by IDNA decoding
+  extremely long domain names.
+- Add CVE-2022-45061-DoS-by-IDNA-decode.patch to avoid
+  CVE-2022-45061 (bsc#1205244) allowing DoS by IDNA decoding
+  extremely long domain names.
+- Add CVE-2022-45061-DoS-by-IDNA-decode.patch to avoid
+  CVE-2022-45061 (bsc#1205244) allowing DoS by IDNA decoding
+  extremely long domain names.
+</comment>
+    <requestid>1035107</requestid>
+  </revision>
 </revisionlist>
