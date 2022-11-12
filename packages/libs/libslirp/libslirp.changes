@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 11 09:30:22 UTC 2022 - pgajdos@suse.com
+
+- added patches
+  fix https://gitlab.freedesktop.org/slirp/libslirp/-/issues/64
+  + libslirp-semicolon.patch
+
+-------------------------------------------------------------------
 Mon Jul 18 14:50:16 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 4.7.0+44 (current git master):

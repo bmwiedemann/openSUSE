@@ -26,6 +26,8 @@ License:        MIT
 Group:          System/Libraries
 URL:            https://gitlab.freedesktop.org/slirp/%{name}
 Source0:        %{name}-%{version}.tar.xz
+# https://gitlab.freedesktop.org/slirp/libslirp/-/issues/64
+Patch0:         libslirp-semicolon.patch
 BuildRequires:  gcc
 BuildRequires:  git-core
 BuildRequires:  glib2-devel
@@ -53,7 +55,7 @@ The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
 %prep
-%autosetup -n %{name}-%{version}
+%autosetup -p1 -n %{name}-%{version}
 
 %build
 %meson
