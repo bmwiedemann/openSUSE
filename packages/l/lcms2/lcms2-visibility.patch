@@ -1,7 +1,7 @@
-Index: lcms2-2.13/src/lcms2_internal.h
+Index: b/src/lcms2_internal.h
 ===================================================================
---- lcms2-2.13.orig/src/lcms2_internal.h
-+++ lcms2-2.13/src/lcms2_internal.h
+--- a/src/lcms2_internal.h	2022-11-01 12:13:11.000000000 +0200
++++ b/src/lcms2_internal.h	2022-11-11 14:17:12.797708563 +0200
 @@ -37,6 +37,7 @@
  // assert macro is part of C99 as per 7.2
  #include <assert.h>
@@ -10,7 +10,7 @@ Index: lcms2-2.13/src/lcms2_internal.h
  // Some needed constants
  #ifndef M_PI
  #       define M_PI        3.14159265358979323846
-@@ -1122,4 +1123,5 @@ cmsBool   _cmsBuildRGB2XYZtransferMatrix
+@@ -1149,4 +1150,5 @@ cmsBool   _cmsBuildRGB2XYZtransferMatrix
  cmsBool _cmsGetTime(struct tm* ptr_time);
  
  #define _lcms_internal_H

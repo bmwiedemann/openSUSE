@@ -1,7 +1,8 @@
-diff -Naur lcms2-2.11.orig/src/cmscgats.c lcms2-2.11/src/cmscgats.c
---- lcms2-2.11.orig/src/cmscgats.c	2020-08-05 15:14:07.488229633 +0200
-+++ lcms2-2.11/src/cmscgats.c	2020-08-05 15:16:41.214899028 +0200
-@@ -930,7 +930,7 @@
+Index: b/src/cmscgats.c
+===================================================================
+--- a/src/cmscgats.c	2022-11-01 12:13:11.000000000 +0200
++++ b/src/cmscgats.c	2022-11-11 14:16:56.842380821 +0200
+@@ -1017,7 +1017,7 @@ void InSymbol(cmsIT8* it8)
                      return;
                  }
  
@@ -10,7 +11,7 @@ diff -Naur lcms2-2.11.orig/src/cmscgats.c lcms2-2.11/src/cmscgats.c
                  if (FileNest->Stream == NULL) {
  
                          SynError(it8, "File %s not found", FileNest->FileName);
-@@ -1773,7 +1773,7 @@
+@@ -1912,7 +1912,7 @@ cmsBool CMSEXPORT cmsIT8SaveToFile(cmsHA
  
      memset(&sd, 0, sizeof(sd));
  
@@ -19,7 +20,7 @@ diff -Naur lcms2-2.11.orig/src/cmscgats.c lcms2-2.11/src/cmscgats.c
      if (!sd.stream) return FALSE;
  
      for (i=0; i < it8 ->TablesCount; i++) {
-@@ -2266,7 +2266,7 @@
+@@ -2423,7 +2423,7 @@ cmsBool IsMyFile(const char* FileName)
     cmsUInt32Number Size;
     cmsUInt8Number Ptr[133];
  
@@ -28,7 +29,7 @@ diff -Naur lcms2-2.11.orig/src/cmscgats.c lcms2-2.11/src/cmscgats.c
     if (!fp) {
         cmsSignalError(0, cmsERROR_FILE, "File '%s' not found", FileName);
         return FALSE;
-@@ -2349,7 +2349,7 @@
+@@ -2506,7 +2506,7 @@ cmsHANDLE  CMSEXPORT cmsIT8LoadFromFile(
       if (!hIT8) return NULL;
  
  

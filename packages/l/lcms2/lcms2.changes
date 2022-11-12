@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Nov 11 13:40:18 UTC 2022 - Dave Plater <davejplater@gmail.com>
+
+- Added reverse-0001-fix-memory-leaks-on-testbed.patch to fix
+  colord's i586 build failure
+
+-------------------------------------------------------------------
+Tue Nov  8 08:12:31 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 2.14:
+  * lcms2 now implements ICC specification 4.4
+  * New multi-threaded plug-in
+  * Several fixes to keep fuzzers happy
+  * Removed check on DLL when CMS_NO_REGISTER_KEYWORD is used
+  * Added more validation against broken profiles
+  * Added more help to several tools
+  * Revised documentation
+
+-------------------------------------------------------------------
 Mon Feb 14 23:13:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.13.1:

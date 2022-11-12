@@ -17,16 +17,19 @@
 
 
 Name:           lcms2
-Version:        2.13.1
+Version:        2.14
 Release:        0
-Summary:        Little CMS Engine - A color managment library and tools
+Summary:        Little CMS Engine - A color management library and tools
 License:        MIT
 Group:          Productivity/Graphics/Other
 URL:            https://www.littlecms.com/
 Source0:        https://github.com/mm2/Little-CMS/releases/download/lcms%{version}/lcms2-%{version}.tar.gz
 Source1:        baselibs.conf
-Patch1:         lcms2-ocloexec.patch
-Patch2:         lcms2-visibility.patch
+Patch0:         lcms2-ocloexec.patch
+Patch1:         lcms2-visibility.patch
+%ifarch i586
+Patch2:         reverse-0001-fix-memory-leaks-on-testbed.patch
+%endif
 %if 0%{?suse_version}
 BuildRequires:  autoconf
 BuildRequires:  glibc-devel
@@ -64,7 +67,7 @@ Summary:        Libraries for the Little CMS Engine
 Group:          System/Libraries
 
 %description -n liblcms2-2
-Little CMS Engine - A color managment library and tools.
+Little CMS Engine - A color management library and tools.
 
 %package -n liblcms2-devel
 Summary:        Include Files and Libraries Mandatory for Development
@@ -79,9 +82,7 @@ to develop applications that require these.
 %package -n liblcms2-doc
 Summary:        User and developer documentation for lcms2
 Group:          Documentation/Other
-%if 0%{?suse_version} >= 1120
 BuildArch:      noarch
-%endif
 
 %description -n liblcms2-doc
 This package contains user and developer documentation for lcms2.
@@ -103,9 +104,8 @@ export CXXFLAGS="%{optflags} -fno-strict-aliasing"
 %make_build
 
 %check
-# FIXME before submitting to factory
- %make_build check || true
- %make_build utils
+%make_build check
+%make_build utils
 
 %install
 %make_install

@@ -279,4 +279,14 @@
     <comment></comment>
     <requestid>955046</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>d4ea1e5c90e47bda5f8f0a0f40be5443</srcmd5>
+    <version>2.14</version>
+    <time>1668271246</time>
+    <user>dimstar_suse</user>
+    <comment>- Added reverse-0001-fix-memory-leaks-on-testbed.patch to fix
+  colord's i586 build failure
+- Update to 2.14</comment>
+    <requestid>1035290</requestid>
+  </revision>
 </revisionlist>
