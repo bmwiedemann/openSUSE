@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-regex
-Version:        2022.9.13
+Version:        2022.10.31
 Release:        0
 Summary:        Alternative regular expression module for Python
 License:        Apache-2.0
