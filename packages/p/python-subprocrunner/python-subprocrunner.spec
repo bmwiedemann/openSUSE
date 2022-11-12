@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-subprocrunner
 Version:        2.0.0
@@ -31,7 +30,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-loguru >= 0.4.1
 Requires:       python-mbstrdecoder >= 1.0.0
-Requires:       python-six
 Requires:       python-typepy
 BuildArch:      noarch
 # SECTION test requirements
@@ -40,7 +38,6 @@ BuildRequires:  %{python_module loguru >= 0.4.1}
 BuildRequires:  %{python_module mbstrdecoder >= 1.0.0}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module typepy}
 # /SECTION
 %python_subpackages
