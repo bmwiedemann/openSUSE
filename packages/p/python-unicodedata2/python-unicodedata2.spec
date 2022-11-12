@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-unicodedata2
-Version:        14.0.0
+Version:        15.0.0
 Release:        0
 Summary:        Python unicodedata backport/updates
 License:        Apache-2.0 AND Python-2.0
