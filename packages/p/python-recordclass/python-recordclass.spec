@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-recordclass
-Version:        0.17.5
+Version:        0.18.0.1
 Release:        0
 Summary:        Library implementing a mutable variant of namedtuple
 License:        MIT

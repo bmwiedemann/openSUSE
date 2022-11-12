@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Nov  9 18:53:20 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 0.18.0.1
+  * Exclude test_dataobject_match.py (for testing match statement) for python < 3.10.
+
+- Update to 0.18
+  * Python 3.11 support.
+  * Adapt data object to take benefit from bytecode specialization in 3.11.
+  * Fix issue for argument with default value in __new__, which havn't __repr__ that can be interpreted as valid python expression for creation of the default value.
+  * Add support for typing.ClassVar.
+  * Add Py_TPFLAGS_SEQUENCE and Py_TPFLAGS_MAPPING.
+  * Add __match_args__ to support match protocol for dataobject-based subclasses. 
+
+-------------------------------------------------------------------
 Fri Oct  7 03:49:55 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - 0.17.5
