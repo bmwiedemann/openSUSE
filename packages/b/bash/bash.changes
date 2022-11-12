@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Nov  9 15:10:07 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add upstream patches
+  * bash52-003
+    Command substitutions need to preserve newlines instead of replacing them
+    with semicolons, especially in the presence of multiple here-documents.
+  * bash52-004
+    Bash needs to keep better track of nested brace expansions to avoid problems
+    with quoting and POSIX semantics.
+  * bash52-005
+    Null pattern substitution replacement strings can cause a crash.
+  * bash52-006
+    In interactive shells, interrupting the shell while entering a command
+    substitution can inhibit alias expansion.
+  * bash52-007
+    This patch fixes several problems with alias expansion inside command
+    substitutions when in POSIX mode.
+  * bash52-008
+    Array subscript expansion can inappropriately quote brackets if the expression
+    contains < or >.
+  * bash52-009
+    Bash arithmetic expansion should allow `@' and `*' to be used as associative
+    array keys in expressions.
+
+-------------------------------------------------------------------
 Wed Nov  2 07:48:10 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Set DEFAULT_LOADABLE_BUILTINS_PATH to get BASH_LOADABLES_PATH
