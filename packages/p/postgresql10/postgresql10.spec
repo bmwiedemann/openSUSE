@@ -16,15 +16,15 @@
 #
 
 
-%define pgversion 10.22
+%define pgversion 10.23
 %define pgmajor 10
 %define pgsuffix %pgmajor
 %define buildlibs 0
 %define tarversion %{pgversion}
+%define latest_supported_llvm_ver 14
 
 ### CUT HERE ###
-%define pgname postgresql%pgsuffix
-%define priority %pgsuffix
+%define pgname postgresql%pgmajor
 %define libpq libpq5
 %define libecpg libecpg6
 %define libpq_so libpq.so.5
@@ -51,12 +51,20 @@ Name:           %pgname
 %define mini 0
 %endif
 
-# Use Python 2 for PostgreSQL 9.x on all platforms and for PostgreSQL 10 on SLE12.
+# Use Python 2 for for PostgreSQL 10 on SLE12.
 # Use Python 3 for everything else.
-%if %pgsuffix < 90 && ( 0%{?is_opensuse} || 0%{?sle_version} >= 150000 || %pgsuffix > 10 )
+%if 0%{?is_opensuse} || 0%{?sle_version} >= 150000 || %pgmajor > 10
 %define python python3
 %else
 %define python python
+%endif
+
+%if 0%{?suse_version} >= 1500
+%bcond_without liblz4
+%endif
+
+%if 0%{?sle_version} >= 150100 || 0%{?suse_version} >= 1550
+%bcond_without libzstd
 %endif
 
 %if %mini
@@ -73,6 +81,14 @@ BuildRequires:  readline-devel
 BuildRequires:  tcl-devel
 BuildRequires:  timezone
 BuildRequires:  zlib-devel
+%if %{with liblz4}
+BuildRequires:  pkgconfig(liblz4)
+%endif
+
+%if %{with libzstd}
+BuildRequires:  pkgconfig(libzstd)
+%endif
+
 %bcond_without  selinux
 %bcond_without  icu
 %if  !%buildlibs
@@ -87,8 +103,12 @@ BuildRequires:  %libpq
 %bcond_with     systemd_notify
 %endif
 
-%if 0%{?suse_version} >= 1500 && %pgsuffix >= 11 && %pgsuffix < 90
+%if 0%{?suse_version} >= 1500 && %pgmajor >= 11
+%ifarch riscv64
+%bcond_with     llvm
+%else
 %bcond_without  llvm
+%endif
 %else
 %bcond_with     llvm
 %endif
@@ -100,7 +120,7 @@ BuildRequires:  %libpq
 %bcond_with     check
 %endif
 
-%if ( %pgsuffix >= 11 && %pgsuffix < 90 ) || %mini
+%if %pgmajor >= 11 || %mini
 %bcond_without server_devel
 %else
 %bcond_with server_devel
@@ -114,9 +134,14 @@ BuildRequires:  libicu-devel
 BuildRequires:  libselinux-devel
 %endif
 %if %{with llvm}
-BuildRequires:  clang
 BuildRequires:  gcc-c++
+%if 0%{?product_libs_llvm_ver} > %{latest_supported_llvm_ver}
+BuildRequires:  clang%{latest_supported_llvm_ver}
+BuildRequires:  llvm%{latest_supported_llvm_ver}-devel
+%else
+BuildRequires:  clang
 BuildRequires:  llvm-devel
+%endif
 %endif
 BuildRequires:  libxslt-devel
 BuildRequires:  openldap2-devel
@@ -137,8 +162,8 @@ License:        PostgreSQL
 Group:          Productivity/Databases/Tools
 Version:        %pgversion
 Release:        0
-Source0:        https://ftp.postgresql.org/pub/source/v%{version}/postgresql-%{tarversion}.tar.bz2
-Source1:        https://ftp.postgresql.org/pub/source/v%{version}/postgresql-%{tarversion}.tar.bz2.sha256
+Source0:        https://ftp.postgresql.org/pub/source/v%{tarversion}/postgresql-%{tarversion}.tar.bz2
+Source1:        https://ftp.postgresql.org/pub/source/v%{tarversion}/postgresql-%{tarversion}.tar.bz2.sha256
 Source2:        baselibs.conf
 Source3:        postgresql-README.SUSE
 Source17:       postgresql-rpmlintrc
@@ -275,7 +300,7 @@ types and functions.
 
 This package contains the header files and libraries needed to compile
 C extensions that link into the PostgreSQL server. For building client
-applications, see the postgresql%pgsuffix-devel package.
+applications, see the postgresql%pgmajor-devel package.
 %endif
 
 %description %devel
@@ -291,7 +316,7 @@ need to install this package if you want to develop applications in C
 which will interact with a PostgreSQL server.
 
 For building PostgreSQL server extensions, see the
-postgresql%pgsuffix-server-devel package.
+postgresql%pgmajor-server-devel package.
 
 %package server
 Summary:        The Programs Needed to Create and Run a PostgreSQL Server
@@ -398,8 +423,8 @@ Summary:        Contributed Extensions and Additions to PostgreSQL
 Group:          Productivity/Databases/Tools
 Provides:       postgresql-contrib-implementation = %version-%release
 Requires:       postgresql-contrib-noarch >= %pgmajor
-Requires(post): %pgname >= %pgmajor
-Requires:       %pgname >= %pgmajor
+Requires(post): %pgname >= %{version}
+Requires:       %pgname >= %{version}
 PreReq:         %pgname-server = %version-%release
 
 %description contrib
@@ -516,6 +541,12 @@ PACKAGE_TARNAME=%pgname %configure \
         --with-uuid=e2fs \
         --with-libxml \
         --with-libxslt \
+%if %{with liblz4}
+        --with-lz4 \
+%endif
+%if %{with libzstd}
+        --with-zstd \
+%endif
 %if %{with systemd_notify}
         --with-systemd \
 %endif
@@ -578,7 +609,7 @@ mkdir -p %buildroot%pgtestdir/regress
 install -sm 0755 contrib/spi/{refint.so,autoinc.so} %buildroot%pgtestdir/regress
 install -sm 0755 src/test/regress/{pg_regress,regress.so} %buildroot%pgtestdir/regress
 for i in  src/test/regress/{data,expected,input,output,sql}; do
-	cp -r $i %buildroot%pgtestdir/regress/
+	test -d $i && cp -r $i %buildroot%pgtestdir/regress/
 done
 install -m 0644 src/test/regress/*_schedule %buildroot%pgtestdir/regress
 # }}}
@@ -613,7 +644,7 @@ cp doc/KNOWN_BUGS doc/MISSING_FEATURES COPYRIGHT \
 cp -a %SOURCE3 %buildroot%pgdocdir/README.SUSE
 # Use versioned names for the man pages:
 for f in %buildroot%pgmandir/man*/*; do
-        mv $f ${f}pg%pgsuffix
+        mv $f ${f}pg%pgmajor
 done
 %endif
 
@@ -680,6 +711,9 @@ genlists server \
 	pg_resetwal \
 	pg_waldump \
 	pg_resetxlog \
+%if %pgmajor >= 15
+	pg_upgrade \
+%endif
 	postgres \
 	postmaster
 
@@ -690,7 +724,9 @@ genlists contrib \
 	pg_amcheck \
 	pg_standby \
 	pg_test_fsync \
+%if %pgmajor < 15
 	pg_upgrade \
+%endif
         pgbench \
 	vacuumlo \
 	pg_test_timing
@@ -720,7 +756,7 @@ done
 popd
 
 mkdir -p %buildroot%pgmandir/man1
-cp -a doc/src/sgml/man1/ecpg.1 %buildroot%pgmandir/man1/ecpg.1pg%pgsuffix
+cp -a doc/src/sgml/man1/ecpg.1 %buildroot%pgmandir/man1/ecpg.1pg%pgmajor
 %find_lang ecpg-$VLANG devel.files
 ln -s %pgbindir/ecpg %buildroot%_bindir/ecpg
 
@@ -760,25 +796,25 @@ awk -v P=%buildroot '/^(%lang|[^%])/{print P $NF}' libpq.files libecpg.files | x
 %if %{with server_devel}
 %post server-devel
 %endif
-/usr/share/postgresql/install-alternatives %priority
+/usr/share/postgresql/install-alternatives %pgmajor
 
 %postun %devel
 /sbin/ldconfig
 %if %{with server_devel}
 %postun server-devel
 %endif
-/usr/share/postgresql/install-alternatives %priority
+/usr/share/postgresql/install-alternatives %pgmajor
 
 %if !%mini
 
 %postun
-/usr/share/postgresql/install-alternatives %priority
+/usr/share/postgresql/install-alternatives %pgmajor
 
 %post
-/usr/share/postgresql/install-alternatives %priority
+/usr/share/postgresql/install-alternatives %pgmajor
 
 %post server
-/usr/share/postgresql/install-alternatives %priority
+/usr/share/postgresql/install-alternatives %pgmajor
 
 %preun server
 # Stop only when we are uninstalling the currently running version
@@ -801,7 +837,7 @@ if [ "$FIRST_ARG" -eq 0 ]; then
 fi
 
 %postun server
-/usr/share/postgresql/install-alternatives %priority
+/usr/share/postgresql/install-alternatives %pgmajor
 # Restart only when we are updating the currently running version
 # or from the old packaging scheme
 test -n "$FIRST_ARG" || FIRST_ARG="$1"
@@ -825,10 +861,10 @@ if [ "$FIRST_ARG" -ge 1 ]; then
 fi
 
 %post contrib
-/usr/share/postgresql/install-alternatives %priority
+/usr/share/postgresql/install-alternatives %pgmajor
 
 %postun contrib
-/usr/share/postgresql/install-alternatives %priority
+/usr/share/postgresql/install-alternatives %pgmajor
 
 %if %buildlibs
 %post -n %libpq -p /sbin/ldconfig
@@ -875,9 +911,7 @@ fi
 %dir %pgbasedir
 %dir %pgextensiondir
 %dir %pglibdir
-%if %pgsuffix < 90
 %pglibdir/pgoutput.so
-%endif
 %pglibdir/plpgsql.so
 %pglibdir/dict_snowball.so
 %pgdatadir/tsearch_data
@@ -887,9 +921,6 @@ fi
 %pgdatadir/*.*
 %if %buildlibs
 %exclude %pgdatadir/pg_service.conf.sample
-%endif
-%if %pgsuffix > 90
-%exclude %pgdatadir/*.pltcl
 %endif
 %pglibdir/*_and_*.so
 %pglibdir/euc2004_sjis2004.so
@@ -913,10 +944,6 @@ fi
 %defattr(-,root,root)
 %pgextensiondir/pltcl*
 %pglibdir/pltcl.so
-%if %pgsuffix > 90
-%pgdatadir/*.pltcl
-%pgbindir/pltcl*
-%endif
 
 %files plperl -f plperl.lang
 %defattr(-,root,root)
