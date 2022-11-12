@@ -28,7 +28,7 @@
 %global modname zope.interface
 %define oldpython python
 Name:           python-zope.interface%{psuffix}
-Version:        5.5.0
+Version:        5.5.1
 Release:        0
 Summary:        Interfaces for Python
 License:        ZPL-2.1
