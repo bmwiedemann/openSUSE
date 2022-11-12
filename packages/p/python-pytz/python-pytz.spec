@@ -29,7 +29,7 @@
     } }
 
 Name:           python-pytz
-Version:        2022.5
+Version:        2022.6
 Release:        0
 Summary:        World timezone definitions, modern and historical
 License:        MIT

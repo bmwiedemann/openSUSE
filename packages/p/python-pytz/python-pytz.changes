@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov  9 18:43:04 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 2022.6 
+  * IANA 2022f
+  * Squashed 'tz/' changes from c4eb3fcf2..623631d84
+  * Upgrade unittest asserts
+  * Bump GitHub Actions
+  * Add support for Python 3.11
+
+-------------------------------------------------------------------
 Fri Oct 28 20:55:25 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 2022.5 
