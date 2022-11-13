@@ -4177,4 +4177,14 @@ StandardGroups in rpmlint package.
     https://libvirt.org/news.html#v8-9-0-2022-11-01</comment>
     <requestid>1033076</requestid>
   </revision>
+  <revision rev="364" vrev="2">
+    <srcmd5>1927e9ac3de5159ed324b5813d9081ea</srcmd5>
+    <version>8.9.0</version>
+    <time>1668359329</time>
+    <user>dimstar_suse</user>
+    <comment>- tests: Fix libxlxml2domconfigtest
+  f81ee7b5-tests-Fix-libxlxml2domconfigtest.patch
+  bsc#1205204</comment>
+    <requestid>1035317</requestid>
+  </revision>
 </revisionlist>

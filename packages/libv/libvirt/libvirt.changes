@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 11 16:23:28 UTC 2022 - James Fehlig <jfehlig@suse.com>
+
+- tests: Fix libxlxml2domconfigtest
+  f81ee7b5-tests-Fix-libxlxml2domconfigtest.patch
+  bsc#1205204
+
+-------------------------------------------------------------------
 Tue Nov  1 18:49:11 UTC 2022 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 8.9.0
