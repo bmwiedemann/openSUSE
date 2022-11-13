@@ -107,4 +107,75 @@
 </comment>
     <requestid>1035075</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>c8f46138966e453cc1c1e688bb4fde70</srcmd5>
+    <version>6.1.5</version>
+    <time>1668359338</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to wheel build/install, move scripts/ directory to the
+  packages's namespace (see gh#platformio/platformio-core#4458).
+- Add python-platformio.rpmlintrc to avoid false positives.
+- Update to versino 6.1.5 
+  * Added a new enable_proxy_strict_ssl setting to disable the proxy server certificate verification (issue #4432)
+  * Documented PlatformIO Core Proxy Configuration
+  * Speeded up device port finder by avoiding loading board HWIDs from development platforms
+  * Improved caching of build metadata in debug mode
+  * Fixed an issue when pio pkg install --storage-dir command requires PlatformIO project (issue #4410)
+- Update to version 6.1.4 (2022-08-12)
+  Added support for accepting the original FileNode environment in a “callback” function when using Build Middlewares (pull #4380)
+  Improved device port finder when using dual channel UART converter (issue #4367)
+  Improved project dependency resolving when using the pio project init --ide command
+  Upgraded build engine to the SCons 4.4.0 (release notes)
+  Keep custom “unwantedRecommendations” when generating projects for VSCode (issue #4383)
+  Do not resolve project dependencies for the cleanall target (issue #4344)
+  Warn about calling “env.BuildSources” in a POST-type script (issue #4385)
+  Fixed an issue when escaping macros/defines for IDE integration (issue #4360)
+  Fixed an issue when the “cleanall” target removes dependencies from all working environments (issue #4386) 
+- Remove less-than Requires … it is just asking for pain without
+  any good reason.
+- update to 6.1.3:
+  * full list of changes beginning from version 5.2.1 at
+    https://github.com/platformio/platformio-core/blob/v5.2.5/HISTORY.rst
+  * full list of changes beginning from version 5.2.5 at
+    https://docs.platformio.org/en/latest/core/history.html
+- updated dependency versions according to setup.py
+- update to 5.2.1:
+  * Clean a build environment and installed library dependencies using a new
+    cleanall target
+  * Override a default library builder via a new builder field in a build group
+    of library.json manifest
+  * Updated Cppcheck v2.6 with new checks, increased reliability of advanced
+    addons (MISRA/CERT) and various improvements
+  * Handle the &quot;test&quot; folder as a part of CLion project
+  * Improved handling of a library root based on &quot;Conan&quot; or &quot;CMake&quot; build systems
+  * Fixed a &quot;KeyError: Invalid board option 'build.cpu'&quot; when using a
+    precompiled library with a board that does not have a CPU field in the
+    manifest
+  * Fixed a &quot;FileExist&quot; error when the platformio ci command is used in pair
+    with the --keep-build-dir option (issue #4011)
+  * Fixed an issue with draft values of C++ language standards that broke
+    static analysis via Cppcheck
+- update to 5.0.2:
+  * Improved “core.call” RPC for PlatformIO Home
+  * Fixed a “KeyError: ‘versions’” when dependency does not exist in the
+  registry
+  * Fixed an issue with GCC linker when “native” dev-platform is used in pair
+  with library dependencies
+  * Fixed an “AssertionError: ensure_dir_exists” when checking library updates
+  from simultaneous subprocesses
+  * Fixed an issue when pio package publish command removes original archive
+  after submitting to the registry
+  * Fixed an issue when multiple pio lib install command with the same local
+  library results in duplicates in lib_deps (issue #3715) Fixed an issue with
+  a “wrong” timestamp in device monitor output using “time” filter
+- update to 5.0.1:
+  * Integration with the new PlatformIO Trusted Registry
+  * Integration with the new Account Management System
+  * New Package Management System
+  * see https://docs.platformio.org/page/core/migration.html  for migrating from 4.x
+  * full list of changes at https://docs.platformio.org/en/latest/core/history.html
+- Initial package (4.3.4) 
+</comment>
+    <requestid>1035453</requestid>
+  </revision>
 </revisionlist>

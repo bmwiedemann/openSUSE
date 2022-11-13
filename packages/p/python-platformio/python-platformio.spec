@@ -66,7 +66,7 @@ who write applications for embedded products.
 
 %install
 %pyproject_install
-# mv because of https://community.platformio.org/t/installs-scripts-directory-to-the-global-namespace/30396
+# mv because of gh#platformio/platformio-core#4458
 %{python_expand mv %{buildroot}%{$python_sitelib}/scripts %{buildroot}%{$python_sitelib}/platformio
 %fdupes %{buildroot}%{$python_sitelib}
 }

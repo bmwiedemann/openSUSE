@@ -2,8 +2,7 @@
 Thu Nov 10 12:07:39 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Switch to wheel build/install, move scripts/ directory to the
-  packages's namespace (see
-  https://community.platformio.org/t/installs-scripts-directory-to-the-global-namespace/30396).
+  packages's namespace (see gh#platformio/platformio-core#4458).
 - Add python-platformio.rpmlintrc to avoid false positives.
 
 -------------------------------------------------------------------
