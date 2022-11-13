@@ -707,4 +707,18 @@
     (gl#saalen/highlight!137).</comment>
     <requestid>1006769</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>85121b4f90139f35b5fe43ba4da63286</srcmd5>
+    <version>4.4</version>
+    <time>1668359336</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.4:
+  * Added support for Zig.
+  * Added `Legacy` option in lsp.conf to add support for LSP
+    servers without capabilities report.
+  * Removed apidocs target in makefile (gl#saalen/highlight#213).
+  * CLI: Added `--ls-legacy` option.
+  * GUI: Added legacy checkbox in the LSP section.</comment>
+    <requestid>1035466</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Nov 12 17:14:40 UTC 2022 - antoine.belvire@opensuse.org
+
+- Update to version 4.4:
+  * Added support for Zig.
+  * Added `Legacy` option in lsp.conf to add support for LSP
+    servers without capabilities report.
+  * Removed apidocs target in makefile (gl#saalen/highlight#213).
+  * CLI: Added `--ls-legacy` option.
+  * GUI: Added legacy checkbox in the LSP section.
+
+-------------------------------------------------------------------
 Wed Sep 28 18:34:00 UTC 2022 - antoine.belvire@opensuse.org
 
 - Update to version 4.3:
