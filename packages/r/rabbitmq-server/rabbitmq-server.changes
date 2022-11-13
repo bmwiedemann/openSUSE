@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Nov  9 16:03:30 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 3.11.3
+  + Core Server
+    * Stream unsubscription leaked metric counters.
+    * Stream could become unavailable in certain node or network
+      failure scenarios.
+    * It is now possible to pre-configure virtual host limits for
+      groups of virtual hosts.
+    * Quorum queue replicas no longer try to contact their unreachable
+      peers for metrics.
+  + CLI Tools
+    * rabbitmq-diagnostics status now handles server responses where
+      free disk space is not yet computed.
+    * All enabled (explicitly or as a dependency) plugins are scanned.
+    * rabbitmq-diagnostics memory_breakdown now returns results much
+      faster in environments with a large number of quorum queues.
+
+-------------------------------------------------------------------
 Wed Oct 26 12:41:16 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.10.10:

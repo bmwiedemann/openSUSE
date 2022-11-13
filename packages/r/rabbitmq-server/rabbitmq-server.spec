@@ -39,7 +39,7 @@
 %define _rabbitmq_group rabbitmq
 
 Name:           rabbitmq-server
-Version:        3.10.10
+Version:        3.11.3
 Release:        0
 Summary:        A message broker supporting AMQP, STOMP and MQTT
 License:        MPL-2.0
@@ -55,7 +55,7 @@ Source7:        https://raw.githubusercontent.com/rabbitmq/rabbitmq-packaging/v%
 Source8:        README.SUSE
 BuildRequires:  elixir
 # https://www.rabbitmq.com/which-erlang.html
-BuildRequires:  erlang >= 23.2
+BuildRequires:  erlang >= 25.0
 BuildRequires:  erlang-src
 BuildRequires:  fdupes
 # BuildRequires:  libxslt
@@ -65,7 +65,7 @@ BuildRequires:  unzip
 BuildRequires:  xmlto
 BuildRequires:  xz
 BuildRequires:  zip
-Requires:       erlang >= 23.2
+Requires:       erlang >= 25.0
 Requires:       erlang-epmd
 Requires:       logrotate
 Provides:       AMQP-server
