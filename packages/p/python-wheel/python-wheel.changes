@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sat Nov  5 20:12:16 UTC 2022 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * require python >= 3.7
+
+- update to version 0.38.2:
+  * Fixed regression introduced in v0.38.1 which broke parsing of
+    wheel file names with multiple platform tags
+
+- changes from version 0.38.1:
+  * Removed install dependency on setuptools
+  * The future-proof fix in 0.36.0 for converting PyPy's SOABI into a
+    abi tag was faulty. Fixed so that future changes in the SOABI will
+    not change the tag.
+
+- changes from version 0.38.0:
+  * Dropped support for Python < 3.7
+  * Updated vendored "packaging" to 21.3
+  * Replaced all uses of "distutils" with "setuptools"
+  * The handling of "license_files" (including glob patterns and
+    default values) is now delegated to "setuptools>=57.0.0" (#466).
+    The package dependencies were updated to reflect this change.
+  * Fixed potential DoS attack via the "WHEEL_INFO_RE" regular
+    expression
+  * Fixed "ValueError: ZIP does not support timestamps before 1980"
+    when using "SOURCE_DATE_EPOCH=0" or when on-disk timestamps are
+    earlier than 1980-01-01. Such timestamps are now changed to the
+    minimum value before packaging.
+
+-------------------------------------------------------------------
 Sat Oct 29 15:57:58 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Revert to 0.37.1
