@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Nov 12 14:21:37 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.0.70
+  * Change license to LGPL-3.0+
+  * Fix bugs
+- Fix build on Qt 5.15.7
+
+-------------------------------------------------------------------
 Fri Oct  7 14:11:57 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.0.69

@@ -88,4 +88,15 @@
   * Fix a bug (forwarded request 1008942 from hillwood)</comment>
     <requestid>1008943</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d68ef8428a6d41f08aaad2f00f69849d</srcmd5>
+    <version>5.0.70</version>
+    <time>1668359340</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.0.70
+  * Change license to LGPL-3.0+
+  * Fix bugs
+- Fix build on Qt 5.15.7 (forwarded request 1035457 from hillwood)</comment>
+    <requestid>1035458</requestid>
+  </revision>
 </revisionlist>
