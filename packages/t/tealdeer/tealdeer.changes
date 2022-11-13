@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Nov 06 01:28:46 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 1.6.1:
+  * Run cargo update (#299)
+  * Fix path source for custom pages dir (#297)
+  * Docs: improve grammar (#296)
+  * Run cargo update (#291)
+  * Remove deprecated -m/--markdown command
+  * Remove deprecated -o/--os command
+  * Remove deprecated --config-path command
+
+-------------------------------------------------------------------
 Wed Oct 05 22:00:05 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Enable changesgenerate in _service.

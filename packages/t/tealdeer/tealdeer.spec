@@ -17,7 +17,7 @@
 
 
 Name:           tealdeer
-Version:        1.6.0
+Version:        1.6.1
 Release:        0
 Summary:        An implementation of tldr in Rust
 License:        Apache-2.0 OR MIT
