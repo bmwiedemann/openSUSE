@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Nov 11 16:18:42 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Update to version 12.6.1:
+	* Fix possible overflow in sa_common.c (GHSL-2022-074).
+	* sa_conv.c: Make size of statistics structures from older sysstat
+	  versions immutable.
+	* Declare sadc dependency on libsyscom.a.
+	* Fix gcc v11.2 warnings.
+	* Various cosmetic fixes.
+	* sar: Remove `-I int_list` from man-page and help.
+	* Consolidate systemctl commands in README file.
+	* Remove whitespace characters at the end of lines.
+
+-------------------------------------------------------------------
 Thu Sep 15 14:49:20 UTC 2022 - David Anes <david.anes@suse.com>
 
 - Add support for PCP (Performance Co-Pilot). [bsc#1203065]
