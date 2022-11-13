@@ -1325,4 +1325,12 @@ Fixes a major regression in the gui and some other bugs. As always: A lot of oth
     <comment></comment>
     <requestid>1009316</requestid>
   </revision>
+  <revision rev="151" vrev="1">
+    <srcmd5>254d1ff87ad18198c601cf600c7ccb48</srcmd5>
+    <version>72.0.0</version>
+    <time>1668359355</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1035521</requestid>
+  </revision>
 </revisionlist>
