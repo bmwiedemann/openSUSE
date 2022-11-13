@@ -1,17 +1,51 @@
 [source.crates-io]
 replace-with = "vendored-sources"
 
-[source."https://github.com/Liberatys/tree-sitter-ruby.git"]
-git = "https://github.com/Liberatys/tree-sitter-ruby.git"
-branch = "chore/allow-range-of-tree-sitter"
+[source."https://github.com/6cdh/tree-sitter-scheme.git"]
+git = "https://github.com/6cdh/tree-sitter-scheme.git"
+branch = "main"
+replace-with = "vendored-sources"
+
+[source."https://github.com/Himujjal/tree-sitter-svelte"]
+git = "https://github.com/Himujjal/tree-sitter-svelte"
+branch = "master"
 replace-with = "vendored-sources"
 
 [source."https://github.com/MDeiml/tree-sitter-markdown.git"]
 git = "https://github.com/MDeiml/tree-sitter-markdown.git"
+branch = "split_parser"
+replace-with = "vendored-sources"
+
+[source."https://github.com/RenjiSann/tree-sitter-xml"]
+git = "https://github.com/RenjiSann/tree-sitter-xml"
+branch = "main"
+replace-with = "vendored-sources"
+
+[source."https://github.com/VixieTSQ/tree-sitter-glimmer"]
+git = "https://github.com/VixieTSQ/tree-sitter-glimmer"
+replace-with = "vendored-sources"
+
+[source."https://github.com/VixieTSQ/tree-sitter-hcl"]
+git = "https://github.com/VixieTSQ/tree-sitter-hcl"
+replace-with = "vendored-sources"
+
+[source."https://github.com/VixieTSQ/tree-sitter-scss"]
+git = "https://github.com/VixieTSQ/tree-sitter-scss"
+branch = "patch-1"
+replace-with = "vendored-sources"
+
+[source."https://github.com/WhatsApp/tree-sitter-erlang"]
+git = "https://github.com/WhatsApp/tree-sitter-erlang"
+branch = "main"
 replace-with = "vendored-sources"
 
 [source."https://github.com/elixir-lang/tree-sitter-elixir.git"]
 git = "https://github.com/elixir-lang/tree-sitter-elixir.git"
+replace-with = "vendored-sources"
+
+[source."https://github.com/fwcd/tree-sitter-kotlin"]
+git = "https://github.com/fwcd/tree-sitter-kotlin"
+branch = "main"
 replace-with = "vendored-sources"
 
 [source."https://github.com/lapce/druid"]
@@ -36,6 +70,10 @@ git = "https://github.com/lapce/piet-wgpu"
 branch = "shell_opengl"
 replace-with = "vendored-sources"
 
+[source."https://github.com/lapce/psp-types"]
+git = "https://github.com/lapce/psp-types"
+replace-with = "vendored-sources"
+
 [source."https://github.com/lapce/structdesc"]
 git = "https://github.com/lapce/structdesc"
 replace-with = "vendored-sources"
@@ -44,16 +82,112 @@ replace-with = "vendored-sources"
 git = "https://github.com/lapce/swash"
 replace-with = "vendored-sources"
 
-[source."https://github.com/lapce/xi-editor"]
-git = "https://github.com/lapce/xi-editor"
+[source."https://github.com/lapce/wasi-experimental-http"]
+git = "https://github.com/lapce/wasi-experimental-http"
+replace-with = "vendored-sources"
+
+[source."https://github.com/latex-lsp/tree-sitter-latex"]
+git = "https://github.com/latex-lsp/tree-sitter-latex"
+branch = "master"
+replace-with = "vendored-sources"
+
+[source."https://github.com/maxxnino/tree-sitter-zig"]
+git = "https://github.com/maxxnino/tree-sitter-zig"
+branch = "main"
+replace-with = "vendored-sources"
+
+[source."https://github.com/oknozor/tree-sitter-sql"]
+git = "https://github.com/oknozor/tree-sitter-sql"
+branch = "main"
+replace-with = "vendored-sources"
+
+[source."https://github.com/panekj/tree-sitter-dockerfile"]
+git = "https://github.com/panekj/tree-sitter-dockerfile"
+branch = "queries"
+replace-with = "vendored-sources"
+
+[source."https://github.com/panekj/tree-sitter-nix"]
+git = "https://github.com/panekj/tree-sitter-nix"
+branch = "master"
+replace-with = "vendored-sources"
+
+[source."https://github.com/panekj/tree-sitter-yaml"]
+git = "https://github.com/panekj/tree-sitter-yaml"
+branch = "master"
+replace-with = "vendored-sources"
+
+[source."https://github.com/syntacti/tree-sitter-bash"]
+git = "https://github.com/syntacti/tree-sitter-bash"
+branch = "master"
+replace-with = "vendored-sources"
+
+[source."https://github.com/syntacti/tree-sitter-css"]
+git = "https://github.com/syntacti/tree-sitter-css"
+branch = "master"
+replace-with = "vendored-sources"
+
+[source."https://github.com/syntacti/tree-sitter-d"]
+git = "https://github.com/syntacti/tree-sitter-d"
+branch = "master"
+replace-with = "vendored-sources"
+
+[source."https://github.com/syntacti/tree-sitter-dart"]
+git = "https://github.com/syntacti/tree-sitter-dart"
+branch = "master"
+replace-with = "vendored-sources"
+
+[source."https://github.com/syntacti/tree-sitter-lua"]
+git = "https://github.com/syntacti/tree-sitter-lua"
+branch = "main"
+replace-with = "vendored-sources"
+
+[source."https://github.com/szebniok/tree-sitter-wgsl"]
+git = "https://github.com/szebniok/tree-sitter-wgsl"
+branch = "master"
+replace-with = "vendored-sources"
+
+[source."https://github.com/tree-sitter/tree-sitter-c-sharp"]
+git = "https://github.com/tree-sitter/tree-sitter-c-sharp"
+branch = "master"
+replace-with = "vendored-sources"
+
+[source."https://github.com/tree-sitter/tree-sitter-haskell"]
+git = "https://github.com/tree-sitter/tree-sitter-haskell"
 replace-with = "vendored-sources"
 
 [source."https://github.com/tree-sitter/tree-sitter-java.git"]
 git = "https://github.com/tree-sitter/tree-sitter-java.git"
 replace-with = "vendored-sources"
 
+[source."https://github.com/tree-sitter/tree-sitter-json.git"]
+git = "https://github.com/tree-sitter/tree-sitter-json.git"
+rev = "11e2cc12d9b267766fb11a06e52952792fd8e3f0"
+replace-with = "vendored-sources"
+
+[source."https://github.com/tree-sitter/tree-sitter-ocaml"]
+git = "https://github.com/tree-sitter/tree-sitter-ocaml"
+replace-with = "vendored-sources"
+
 [source."https://github.com/tree-sitter/tree-sitter-php.git"]
 git = "https://github.com/tree-sitter/tree-sitter-php.git"
+replace-with = "vendored-sources"
+
+[source."https://github.com/tree-sitter/tree-sitter-ql"]
+git = "https://github.com/tree-sitter/tree-sitter-ql"
+replace-with = "vendored-sources"
+
+[source."https://github.com/tree-sitter/tree-sitter-ruby.git"]
+git = "https://github.com/tree-sitter/tree-sitter-ruby.git"
+rev = "656abef"
+replace-with = "vendored-sources"
+
+[source."https://github.com/vantreeseba/tree-sitter-haxe"]
+git = "https://github.com/vantreeseba/tree-sitter-haxe"
+replace-with = "vendored-sources"
+
+[source."https://github.com/varlad/tree-sitter-julia"]
+git = "https://github.com/varlad/tree-sitter-julia"
+branch = "master"
 replace-with = "vendored-sources"
 
 [source.vendored-sources]

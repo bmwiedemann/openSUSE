@@ -17,25 +17,26 @@
 
 
 Name:           lapce
-Version:        0.1.2~0
+Version:        0.2.2
 Release:        0
 Summary:        Lightning-fast and Powerful Code Editor written in Rust
 URL:            https://github.com/lapce/lapce
 License:        (0BSD OR Apache-2.0 OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR ISC OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR MIT OR Zlib) AND MIT AND (Artistic-2.0 OR CC0-1.0) AND BSD-2-Clause AND BSD-3-Clause AND BSL-1.0 AND CC0-1.0 AND ISC AND MIT AND (MIT OR Unlicense) AND MPL-2.0 AND MPL-2.0+ AND Zlib AND zlib-acknowledgement AND Apache-2.0
 Group:          Productivity/Text/Editors
-Source0:        %{name}-%{version}.tar.xz
-Source1:        vendor.tar.xz
+Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz
+Source1:        vendor.tar.gz
 Source2:        cargo_config
-Source3:        lapce.desktop
-Source4:        lapce.sh
+BuildRequires:  c++_compiler
+BuildRequires:  c_compiler
 BuildRequires:  cargo-packaging
 BuildRequires:  cmake
-BuildRequires:  gcc-c++
-BuildRequires:  libgcc_s1
 BuildRequires:  pkgconfig
 BuildRequires:  python3
+BuildRequires:  rust >= 1.62
 BuildRequires:  pkgconfig(atk) >= 2.18
 BuildRequires:  pkgconfig(cairo) >= 1.14
+BuildRequires:  pkgconfig(cairo-gobject)
+BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gdk-3.0) >= 3.22
@@ -57,20 +58,22 @@ mkdir .cargo
 cp %{SOURCE2} .cargo/config
 
 %build
-%{cargo_build}
+%{cargo_build} --all-features
 
 %install
 install -Dm 0755 %{_builddir}/%{name}-%{version}/target/release/%{name} %{buildroot}%{_bindir}/%{name}
-install -Dm 0755 %{SOURCE4} %{buildroot}%{_bindir}/lapce.sh
-install -Dm 0644 extra/images/logo.svg %{buildroot}%{_datadir}/pixmaps/lapce.svg
-install -Dm 0644 %{SOURCE3} %{buildroot}%{_datadir}/applications/%{name}.desktop
+install -Dm 0755 %{_builddir}/%{name}-%{version}/target/release/%{name} %{buildroot}%{_bindir}/%{name}-proxy
+install -Dm 0644 %{_builddir}/%{name}-%{version}/extra/linux/dev.%{name}.%{name}.metainfo.xml %{buildroot}%{_datadir}/metainfo/dev.%{name}.%{name}.metainfo.xml
+install -Dm 0644 %{_builddir}/%{name}-%{version}/extra/linux/dev.%{name}.%{name}.desktop %{buildroot}%{_datadir}/applications/dev.%{name}.%{name}.desktop
+install -Dm 0644 %{_builddir}/%{name}-%{version}/extra/images/logo.png %{buildroot}%{_datadir}/pixmaps/dev.%{name}.%{name}.png
 
 %files
 %license LICENSE
-%doc README.md
+%doc README.md docs
 %{_bindir}/lapce
-%{_bindir}/lapce.sh
-%{_datadir}/applications/lapce.desktop
-%{_datadir}/pixmaps/lapce.svg
+%{_bindir}/lapce-proxy
+%{_datadir}/metainfo/dev.lapce.lapce.metainfo.xml
+%{_datadir}/applications/dev.lapce.lapce.desktop
+%{_datadir}/pixmaps/dev.lapce.lapce.png
 
 %changelog
