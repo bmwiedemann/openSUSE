@@ -2767,4 +2767,14 @@
   * bmo#1771100 - Update BoGo tests to recent BoringSSL version</comment>
     <requestid>1029751</requestid>
   </revision>
+  <revision rev="195" vrev="1">
+    <srcmd5>5069f32b8da4098d823a3a27c7e74715</srcmd5>
+    <version>3.84</version>
+    <time>1668359333</time>
+    <user>dimstar_suse</user>
+    <comment>- update to NSS 3.84
+  * bmo#1791699 - Bump minimum NSPR version to 4.35
+  * bmo#1792103 - Add a flag to disable building libnssckbi.</comment>
+    <requestid>1035465</requestid>
+  </revision>
 </revisionlist>
