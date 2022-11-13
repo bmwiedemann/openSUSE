@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov  9 04:59:17 UTC 2022 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Update to version 4.16.4
+  * Escape characters which do not belong into an URI/URL (gxo#xfce/xfce4-settings#390)
+  * Prefer full command when basic command is env (gxo#xfce/xfce4-settings#358)
+
+-------------------------------------------------------------------
 Tue Jul  5 16:00:31 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 4.16.3
