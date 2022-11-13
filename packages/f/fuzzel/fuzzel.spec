@@ -17,7 +17,7 @@
 
 
 Name:           fuzzel
-Version:        1.8.1
+Version:        1.8.2
 Release:        0
 Summary:        A Wayland-native application launcher, similar to rofi's drun mode
 License:        MIT
@@ -54,6 +54,16 @@ Requires:       zsh
 %description    zsh-completion
 Zsh command-line completion support for %{name}
 
+%package        fish-completion
+Summary:        Fish Completion for %{name}
+Group:          System/Shells
+Supplements:    (%{name} and fish)
+Requires:       fish
+BuildArch:      noarch
+
+%description    fish-completion
+Fish command-line completion support for %{name}.
+
 %build
 export CFLAGS="%{optflags}"
 %if 0%{?sle_version} == 150400 && 0%{?is_opensuse}
@@ -87,5 +97,10 @@ export CFLAGS="%{optflags}"
 %dir %{_datadir}/zsh/
 %dir %{_datadir}/zsh/site-functions
 %{_datadir}/zsh/site-functions/_%{name}
+
+%files fish-completion
+%dir %{_datadir}/fish
+%dir %{_datadir}/fish/vendor_completions.d
+%{_datadir}/fish/vendor_completions.d/fuzzel.fish
 
 %changelog

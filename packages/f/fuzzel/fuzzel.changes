@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Nov  5 23:22:10 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 1.8.2:
+  - Added:
+    * Fish completions
+  - Fixed:
+    * Unsupported icon formats not being skipped when loading application icons.
+    * Wrong size of PNG icons selected (#182)
+
+-------------------------------------------------------------------
 Fri Oct 28 12:11:39 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 1.8.1:
