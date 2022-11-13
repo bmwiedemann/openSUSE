@@ -514,7 +514,6 @@ unsorted:
   - alure 
   - alure-devel 
   - amanda 
-  - amarok: [i586] # suggested by dvd:suggested:patterns-kde-kde_multimedia 
   - amarok-lang 
   - amazon-ecs-init: [x86_64] 
   - amazon-ssm-agent: [x86_64] 
@@ -5774,6 +5773,10 @@ unsorted:
   - git-bug-bash-completion 
   - git-bug-fish-completion 
   - git-bug-zsh-completion 
+  - git-buildpackage 
+  - git-buildpackage-common 
+  - git-buildpackage-doc 
+  - git-buildpackage-rpm 
   - git-bz 
   - git-cliff 
   - git-cliff-bash-completion 
@@ -11367,9 +11370,6 @@ unsorted:
   - libgpm2-32bit: [x86_64] 
   - libgpod-devel 
   - libgpod-doc 
-  - libgpod-lang: [i586] 
-  - libgpod-tools: [i586] 
-  - libgpod4: [i586] 
   - libgpod4-32bit: [x86_64] 
   - libgrail6 
   - libgrail6-32bit: [x86_64] 
@@ -12096,7 +12096,6 @@ unsorted:
   - liblasso-devel 
   - liblasso3 
   - liblastfm-qt5-devel 
-  - liblastfm5-1: [i586] 
   - liblastfm5-1-32bit: [x86_64] 
   - liblastfm_fingerprint5-1 
   - liblastfm_fingerprint5-1-32bit: [x86_64] 
@@ -12276,7 +12275,6 @@ unsorted:
   - libmariadb3-32bit: [x86_64] 
   - libmariadb_plugins 
   - libmariadbd-devel 
-  - libmariadbd19: [i586] 
   - libmariadbprivate 
   - libmarisa0 
   - libmarisa0-32bit: [x86_64] 
@@ -12561,7 +12559,6 @@ unsorted:
   - libmwaw-devel-doc 
   - libmwaw-tools 
   - libmxml1-32bit: [x86_64] 
-  - libmygpo-qt5-1: [i586] 
   - libmygpo-qt5-devel 
   - libmypaint-devel 
   - libmypaint-gegl-devel 
@@ -12787,7 +12784,6 @@ unsorted:
   - libodraw-tools 
   - libodraw1 
   - libofa-devel 
-  - libofa0: [i586] 
   - libofa0-32bit: [x86_64] 
   - libofx 
   - libofx-devel 
@@ -14354,7 +14350,6 @@ unsorted:
   - libtachyon-0_99_5 
   - libtag-devel 
   - libtag-doc 
-  - libtag-extras1: [i586] 
   - libtag1-32bit: [x86_64] 
   - libtag_c0-32bit: [x86_64] 
   - libtaginfo-devel 
@@ -32015,6 +32010,7 @@ unsorted:
   - qalculate 
   - qalculate-gtk 
   - qalculate-gtk-lang 
+  - qalculate-qt 
   - qatengine: [x86_64] 
   - qatlib: [x86_64] 
   - qatlib-devel: [x86_64] 
