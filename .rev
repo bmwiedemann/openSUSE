@@ -45,4 +45,26 @@
     configuration, &amp; docs.</comment>
     <requestid>303782</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1d41b9c461bd8b7d69609ada32ab192e</srcmd5>
+    <version>1.1.5</version>
+    <time>1668432533</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.5
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * gitlab CI: add a basic build test
+  * man page: remove out-of-date COPYRIGHT section
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * Variable scope reduction as suggested by cppcheck
+  * Rename shadowed variables
+  * cfgscan: check if character is EOF before calling isalpha or isdigit
+  * xkbevd.c: Update default DFLT_XKB_CONFIG_ROOT path
+  * eventTypeToString: remove unnecessary strcpy to static buffer
+  * Add .git-blame-ignore-revs to hide whitespace commits from git blame
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * autogen.sh: use exec instead of waiting for configure to finish</comment>
+    <requestid>1035538</requestid>
+  </revision>
 </revisionlist>
