@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 11 20:24:22 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.16
+  * Do not use 00:00:00:00:00:00 as chassis ID.
+  * Do not busy loop when an interface with a neighbor disappears.
+
+-------------------------------------------------------------------
 Mon Aug 29 10:08:48 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.0.15
