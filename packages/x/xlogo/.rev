@@ -59,4 +59,18 @@
     <comment></comment>
     <requestid>935483</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>562e2fc30e111e83b2948d6aa250d4db</srcmd5>
+    <version>1.0.6</version>
+    <time>1668432534</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.6
+  * gitlab CI: add a basic build test
+  * configure: make --with-render help string match the accepted option name
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * Use _CONST_X_STRING to make libXt declare String as const char *
+  * Fix -Wmissing-field-initializers warning
+  * Add configure check and --with-xkb option for use of XkbStdBell</comment>
+    <requestid>1035540</requestid>
+  </revision>
 </revisionlist>

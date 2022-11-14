@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Nov 13 20:32:20 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.6
+  * gitlab CI: add a basic build test
+  * configure: make --with-render help string match the accepted option name
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * Use _CONST_X_STRING to make libXt declare String as const char *
+  * Fix -Wmissing-field-initializers warning
+  * Add configure check and --with-xkb option for use of XkbStdBell
+
+-------------------------------------------------------------------
 Fri Dec  3 14:43:46 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - modernize spec file (move license to licensedir)
