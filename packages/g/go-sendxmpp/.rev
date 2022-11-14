@@ -62,4 +62,16 @@
   * Improve interactive mode.</comment>
     <requestid>1029733</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d8f3b585083e4674b240504875a8f52e</srcmd5>
+    <version>0.5.6</version>
+    <time>1668432537</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.6:
+  Added:
+  * Add short option -h for http-upload.
+  Changed:
+  * Fix Ox key generation.</comment>
+    <requestid>1035535</requestid>
+  </revision>
 </revisionlist>

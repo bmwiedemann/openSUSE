@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Nov 13 20:12:18 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.5.6:
+  Added:
+  * Add short option -h for http-upload.
+  Changed:
+  * Fix Ox key generation.
+
+-------------------------------------------------------------------
 Tue Oct 18 12:00:03 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.5.5:
