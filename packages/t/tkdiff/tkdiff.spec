@@ -17,8 +17,8 @@
 
 
 Name:           tkdiff
-Version:        5.4
-%define _version 5-4
+Version:        5.6
+%define _version 5-6
 Release:        0
 Summary:        2 and 3-way diff/merge tool
 License:        GPL-2.0-or-later

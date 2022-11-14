@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Mon Nov 14 07:58:38 UTC 2022  - hsk17@mail.de
+
+- for release info see also https://sourceforge.net/p/tkdiff/news/
+- Update to 5.6
+  * Repairs a significant display failure of the optional merge-preview
+    window not properly responding to jump-scroll requests. While not a
+    crash, it would continually report TK errors (AND not scroll)!
+  * Additionally, it is now possible to request an entire directory
+    TREE of files (of the current SCM sandbox) against a designated (or
+    defaulted) revision.
+- Update to 5.5.3
+  * A quick-fix release to repair a syntax-typo CRASH involving the
+    OPTIONALLY configured "-P file" commandline parameter.
+  * Additionally, revised a prior (V5.5.2) change which attempted to
+    repair mishandled VPATH Revision specifications originally created in
+    V5.5. ALL variants of this code, until now, had been incorrect in one
+    or more aspects.
+- Update to 5.5.2
+  * A quick-fix release to repair the inquiry mode of designated
+    SCMs to self identify the set of files currently recognized as
+    modified. Missing/lost initializations were causing spurious "unknown
+    variable" crashes to occur.
+- Update to 5.5.1
+  * A quick-fix release to address minor oversights in the (now
+    formalized) preference conversion logic that attempts to utilize an
+    older Prefs-File in the CURRENT release. Sadly, these oversights CAN
+    cause a script syntax CRASH - warranting this point release.
+- Update to 5.5
+  * CRITICAL logic repair to 'blanks' suppression support for INLINE hilite!
+  * Revised coding to fix random (Mac observed) race-condition bug
+    w/combobox mis-creation.
+  * Repaired preference 'change' detection, resulting in a simplification
+    and better rigor.
+  * Popup menu now disables "Edit" (file) when POP occurs over DiffMap
+    (not a L/R window).
+  * Popup menu 'Find Nearest' when over DiffMap SCALES its search position
+    based on POP location.
+  * Added status display of how many merge choices are presently targetted
+    as pure Left or Right
+  * Internal: Preference evolution of older settings now tied to explicit
+    versioning data
+  * Created a "Engine config" Prefs tab - allows access to other Diff
+    engines having ?better? algorithms
+    - Also codifies what we need/expect FROM that underlying engine and
+      HOW it is accessed.
+    - Still permits ad-hoc specifications AND cmdline pass-thru.
+    - Former diffcmd Pref now DERIVES from engine settings (remains for
+      reference purposes)
+    - Former ignoreblanks Pref (on/off) renamed and refers to multiple
+      (indiv.) engine settings
+    - Primary engine options (suppressions) specifically delineated AND
+      configurable
+    - Options shared among Diff and DiffSrch if command(s) 1st word matches,
+      else distinct.
+    - Visual feedback of IMPLIED Diff execution PRIOR to invocation
+      (user notification).
+  * Diff outputs NOT in "Normal" form, are now re-Evaluated for "Unified"
+    format before giving up
+  * Added warning HILITE to Preference actions that result in FORCING a
+    new Diff invocation.
+  * Internal: Dbg messaging CAN suspend arg-EVAL until KNOWN they are needed
+    (lighter weight).
+  * Handful of spelling typos, internal naming and code consolidations,
+    as always- updated Help.
+
+-------------------------------------------------------------------
 Mon May 30 14:02:46 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not use %() constructs in Version and URL: these are used by
