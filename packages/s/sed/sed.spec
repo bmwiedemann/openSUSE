@@ -1,7 +1,7 @@
 #
 # spec file for package sed
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           sed
-Version:        4.8
+Version:        4.9
 Release:        0
 Summary:        A Stream-Oriented Non-Interactive Text Editor
 License:        GPL-3.0-or-later
@@ -26,13 +26,8 @@ URL:            https://www.gnu.org/software/sed/
 Source0:        https://ftp.gnu.org/gnu/sed/%{name}-%{version}.tar.xz
 Source1:        https://ftp.gnu.org/gnu/sed/%{name}-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
-# PATCH-FIX-SLE sed-dont_close_twice.patch bnc@880817 tcech@suse.cz -- Fix double close.
-Patch0:         sed-dont_close_twice.patch
-Patch1:         gnulib-test-avoid-FP-perror-strerror.patch
 BuildRequires:  libacl-devel
 BuildRequires:  libselinux-devel
-Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
 Provides:       base:/bin/sed
 
 %description
@@ -44,9 +39,7 @@ occurrences of a string within a file.
 %lang_package
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1
+%autosetup -p1
 
 %build
 %define warn_flags -Wall -Wstrict-prototypes -Wpointer-arith -Wformat-security
@@ -54,15 +47,7 @@ export CFLAGS="%{optflags} %{warn_flags} -fPIE"
 export LDFLAGS="-pie"
 %configure \
   --without-included-regex
-%if 0%{?do_profiling}
-  make %{?_smp_mflags} CFLAGS="$CFLAGS %{cflags_profile_generate}" V=1
-  make %{?_smp_mflags} CFLAGS="$CFLAGS %{cflags_profile_generate}" check
-  make %{?_smp_mflags} clean
-  make %{?_smp_mflags} CFLAGS="$CFLAGS %{cflags_profile_feedback}" V=1
-%else
-  make %{?_smp_mflags} V=1
-%endif
-make %{?_smp_mflags} check
+%make_build
 
 %install
 %make_install
@@ -73,14 +58,7 @@ ln -s %{_bindir}/sed %{buildroot}/bin/sed
 %find_lang %{name}
 
 %check
-# run check once more with final binaries
-make %{?_smp_mflags} check
-
-%post
-%install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info%{ext_info}
-
-%preun
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info%{ext_info}
+%make_build check
 
 %files
 %license COPYING*
@@ -93,5 +71,6 @@ make %{?_smp_mflags} check
 %{_infodir}/sed.info*%{ext_info}
 
 %files lang -f %{name}.lang
+%license COPYING*
 
 %changelog
