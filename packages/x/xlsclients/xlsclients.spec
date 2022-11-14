@@ -17,13 +17,13 @@
 
 
 Name:           xlsclients
-Version:        1.1.4
+Version:        1.1.5
 Release:        0
 Summary:        Utility to list client applications running on a X11 server
 License:        X11
 Group:          System/X11/Utilities
 URL:            https://xorg.freedesktop.org/
-Source0:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.bz2
+Source0:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(xcb) >= 1.6
 BuildRequires:  pkgconfig(xorg-macros) >= 1.8
@@ -46,7 +46,7 @@ applications running on a X11 server.
 
 %files
 %license COPYING
-%doc ChangeLog README
+%doc ChangeLog README.md
 %{_bindir}/xlsclients
 %{_mandir}/man1/xlsclients.1%{?ext_man}
 
