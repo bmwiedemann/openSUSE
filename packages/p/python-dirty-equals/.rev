@@ -15,4 +15,12 @@
     <comment>- Correct a Requires into a BuildRequires, as was meant.</comment>
     <requestid>1000358</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0ebd5e204fe5b184a4789736e1ac2028</srcmd5>
+    <version>0.5.0</version>
+    <time>1668432539</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1035577</requestid>
+  </revision>
 </revisionlist>

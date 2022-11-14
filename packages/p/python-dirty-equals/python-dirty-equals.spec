@@ -17,13 +17,14 @@
 
 
 Name:           python-dirty-equals
-Version:        0.4
+Version:        0.5.0
 Release:        0
 Summary:        Doing dirty (but useful) things with equals
 License:        MIT
 URL:            https://dirty-equals.helpmanual.io
 Source:         https://github.com/samuelcolvin/dirty-equals/archive/refs/tags/v%{version}.tar.gz#/dirty-equals-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module pytest-mock}
