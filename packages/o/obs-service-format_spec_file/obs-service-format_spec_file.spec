@@ -1,7 +1,7 @@
 #
 # spec file for package obs-service-format_spec_file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           obs-service-format_spec_file
-Version:        20211115
+Version:        20221113
 Release:        0
 Summary:        An OBS source service: reformats a spec file to SUSE standard
 License:        GPL-2.0-only

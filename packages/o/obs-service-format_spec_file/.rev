@@ -743,4 +743,15 @@
   (for boo#1160801 Update SUSE copyright string) (forwarded request 940673 from alarrosa)</comment>
     <requestid>940684</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>f07dd25244b513fd6bb2bc4e8817dd22</srcmd5>
+    <version>20221113</version>
+    <time>1668432528</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20221113:
+  * licences_exceptions.txt: rename to licenses_exceptions.txt
+  * Fetch updated licenses
+  * Add test case for bsc#1194504</comment>
+    <requestid>1035530</requestid>
+  </revision>
 </revisionlist>

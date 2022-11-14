@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov 13 18:25:14 UTC 2022 - coolo@suse.com
+
+- Update to version 20221113:
+  * licences_exceptions.txt: rename to licenses_exceptions.txt
+  * Fetch updated licenses
+  * Add test case for bsc#1194504
+
+-------------------------------------------------------------------
 Mon Nov 15 08:42:31 UTC 2021 - coolo@suse.com
 
 - Update to version 20211115:
