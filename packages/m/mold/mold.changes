@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Nov 14 11:12:19 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update to version 1.7.0
+  * [m68k] mold now supports the Motorola 68000 series microprocessors. Yes, it's
+    the processor in the original Mac or Sun workstations in the 80s. This work is
+    sponsored by m68k hobbyist communities.
+  * We fixed a few issues for Facebook/Meta's BOLT optimizer (#789). Starting from
+    the next LLVM release (we need llvm/llvm-project@20204db), BOLT should work on
+    mold-generated executables out of the box.
+  * We fixed a long-standing symbol resolution issue involving GNU UNIQUE symbols
+    which caused a link failure for a few programs. (730e970)
+  * Previously, if a version script contains a "C++" directive, and a symbol matches
+    a non-C++ version pattern and a C++ version pattern, a wrong version could be
+    assigned to the symbol. This has been fixed so that the mold's behavior matches
+    with GNU ld. (9875150)
+
+-------------------------------------------------------------------
 Wed Oct 19 08:20:22 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Update to version 1.6.0

@@ -353,4 +353,24 @@
 - Exclude ppc architecture as it is not supported right now.</comment>
     <requestid>1029962</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>0459bdeafc8a5a20503d2b2b834619d3</srcmd5>
+    <version>1.7.0</version>
+    <time>1668432557</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7.0
+  * [m68k] mold now supports the Motorola 68000 series microprocessors. Yes, it's
+    the processor in the original Mac or Sun workstations in the 80s. This work is
+    sponsored by m68k hobbyist communities.
+  * We fixed a few issues for Facebook/Meta's BOLT optimizer (#789). Starting from
+    the next LLVM release (we need llvm/llvm-project@20204db), BOLT should work on
+    mold-generated executables out of the box.
+  * We fixed a long-standing symbol resolution issue involving GNU UNIQUE symbols
+    which caused a link failure for a few programs. (730e970)
+  * Previously, if a version script contains a &quot;C++&quot; directive, and a symbol matches
+    a non-C++ version pattern and a C++ version pattern, a wrong version could be
+    assigned to the symbol. This has been fixed so that the mold's behavior matches
+    with GNU ld. (9875150)</comment>
+    <requestid>1035624</requestid>
+  </revision>
 </revisionlist>
