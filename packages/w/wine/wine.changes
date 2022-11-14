@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov 14 08:18:08 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- updated to 7.21 development release
+  - OpenGL library converted to PE.
+  - Support for multi-architecture PE builds.
+  - More preparation work for Vulkan 32-on-64 support.
+  - Support for creating import libraries without dlltool.
+  - Locale data updates.
+  - Various bug fixes.
+- update staging to 7.21 release
+
+-------------------------------------------------------------------
 Tue Nov  1 11:19:47 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - updated to 7.20 development release
