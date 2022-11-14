@@ -33,7 +33,17 @@ Wed Mar 23 13:36:44 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 Wed Jan 12 15:40:40 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to 1.35.0
-  - Adjust busybox.config for new features in find, date and cpio 
+  - awk: fix printf %%, fix read beyond end of buffer
+  - chrt: silence analyzer warning
+  - libarchive: remove duplicate forward declaration
+  - mount: "mount -o rw ...." should not fall back to RO mount
+  - ps: fix -o pid=PID,args interpreting entire "PID,args" as header
+  - tar: prevent malicious archives with long name sizes causing OOM
+  - udhcpc6: fix udhcp_find_option to actually find DHCP6 options
+  - xxd: fix -p -r
+  - support for new optoins added to basename, cpio, date, find, 
+    mktemp, wget and others
+- Adjust busybox.config for new features in find, date and cpio 
 
 -------------------------------------------------------------------
 Thu Jan  6 06:37:24 UTC 2022 - Radoslav Kolev <radoslav.kolev@suse.com>
