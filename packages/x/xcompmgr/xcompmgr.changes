@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Nov 13 20:03:19 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.1.9
+  * gitlab CI: add a basic build test
+  * xcompmgr.man: Update bug reporting URL from bugzilla to gitlab
+  * Reduce variable scope as suggested by cppcheck
+  * Remove obsolete casts on malloc & free calls
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * Resolve -Wshadow warnings
+  * Mark usage() as _X_COLD _X_NORETURN
+  * Remove unused macros
+
+-------------------------------------------------------------------
 Mon Mar 25 14:44:21 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.1.8

@@ -52,4 +52,20 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>705954</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d0e4a02992b15f709fbefa1da06e4285</srcmd5>
+    <version>1.1.9</version>
+    <time>1668432532</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.9
+  * gitlab CI: add a basic build test
+  * xcompmgr.man: Update bug reporting URL from bugzilla to gitlab
+  * Reduce variable scope as suggested by cppcheck
+  * Remove obsolete casts on malloc &amp; free calls
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * Resolve -Wshadow warnings
+  * Mark usage() as _X_COLD _X_NORETURN
+  * Remove unused macros</comment>
+    <requestid>1035534</requestid>
+  </revision>
 </revisionlist>
