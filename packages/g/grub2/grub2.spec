@@ -453,7 +453,6 @@ Patch925:       0002-mm-Defer-the-disk-cache-invalidation.patch
 # powerpc-ieee1275
 Patch926:       0001-grub-install-set-point-of-no-return-for-powerpc-ieee1275.patch
 Patch927:       safe_tpm_pcr_snapshot.patch
-Patch928:       0001-linux-fix-efi_relocate_kernel-failure.patch
 # (PED-996) NVMeoFC support on Grub (grub2)
 Patch929:       0001-ieee1275-add-support-for-NVMeoFC.patch
 Patch930:       0002-ieee1275-ofpath-enable-NVMeoF-logical-device-transla.patch

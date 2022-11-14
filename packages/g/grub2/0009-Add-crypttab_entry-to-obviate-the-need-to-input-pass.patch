@@ -22,11 +22,11 @@ can also be used multiple times to specify encrypted volumes unlocked by
 Signed-off-by: Michael Chang <mchang@suse.com>
 ---
  grub-core/Makefile.core.def   |    5 +
- grub-core/commands/crypttab.c |   42 ++++++++++++
+ grub-core/commands/crypttab.c |   47 ++++++++++++++
  grub-core/disk/cryptodisk.c   |    6 +
  grub-core/loader/linux.c      |  137 ++++++++++++++++++++++++++++++++++++++++--
  include/grub/linux.h          |    3 
- 5 files changed, 188 insertions(+), 5 deletions(-)
+ 5 files changed, 193 insertions(+), 5 deletions(-)
  create mode 100644 grub-core/commands/crypttab.c
 
 --- a/grub-core/Makefile.core.def
@@ -42,7 +42,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
 +};
 --- /dev/null
 +++ b/grub-core/commands/crypttab.c
-@@ -0,0 +1,42 @@
+@@ -0,0 +1,47 @@
 +
 +#include <grub/dl.h>
 +#include <grub/command.h>
@@ -57,13 +57,18 @@ Signed-off-by: Michael Chang <mchang@suse.com>
 +	       int argc, char **argv)
 +{
 +  char buf[64];
-+  const char *path = argv[2];
++  const char *path = NULL;
 +
-+  if (argc != 3)
-+    return grub_error (GRUB_ERR_BAD_ARGUMENT, N_("three arguments expected"));
++  if (argc == 2)
++    path = NULL;
++  else if (argc == 3)
++    path = argv[2];
++  else
++    return grub_error (GRUB_ERR_BAD_ARGUMENT, N_("two or three arguments expected"));
 +
-+  if (grub_strcmp (argv[2], "none") == 0
-+      || grub_strcmp (argv[2], "-") == 0)
++  if (!path
++      || grub_strcmp (path, "none") == 0
++      || grub_strcmp (path, "-") == 0)
 +    {
 +      grub_snprintf (buf, sizeof (buf), "/etc/cryptsetup-keys.d/%s.key", argv[0]);
 +      path = buf;

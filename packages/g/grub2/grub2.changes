@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov 14 09:54:16 UTC 2022 - Michael Chang <mchang@suse.com>
+
+- Removed 0001-linux-fix-efi_relocate_kernel-failure.patch as reported
+  regression in some hardware being stuck in initrd loading (bsc#1205380)
+
+-------------------------------------------------------------------
+Mon Nov 14 03:03:35 UTC 2022 - Michael Chang <mchang@suse.com>
+
+- Fix password asked twice if third field in crypttab not present (bsc#1205312)
+  * 0009-Add-crypttab_entry-to-obviate-the-need-to-input-pass.patch
+
+-------------------------------------------------------------------
 Fri Oct 28 04:58:28 UTC 2022 - Michael Chang <mchang@suse.com>
 
 - NVMeoFC support on grub (jsc#PED-996)
