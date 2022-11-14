@@ -17,9 +17,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cstruct
-Version:        4.0
+Version:        5.0
 Release:        0
 Summary:        C-style structs for Python
 License:        MIT
@@ -52,7 +51,6 @@ a string.
 %install
 %python_install
 %python_expand find %{buildroot}%{$python_sitelib} -name "*.py" -exec sed -i -e '/^#!\//, 1d' {} \;
-%python_expand rm -R %{buildroot}%{$python_sitelib}/tests/
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -61,6 +59,7 @@ a string.
 %files %{python_files}
 %license LICENSE
 %doc changelog.txt README.md
-%{python_sitelib}/cstruct*
+%{python_sitelib}/cstruct
+%{python_sitelib}/cstruct-%{version}*-info
 
 %changelog

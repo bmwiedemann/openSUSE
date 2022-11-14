@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Nov 12 11:16:08 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.0
+  * Add support for enums
+  * Add support for multiple definition to cstruct.parse
+  * Add inspect method
+
+-------------------------------------------------------------------
 Fri Nov  4 19:12:43 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.0
