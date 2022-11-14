@@ -16,7 +16,7 @@
 #
 
 
-%define libname libwlroots10
+%define libname libwlroots11
 %bcond_without  drm_backend
 %bcond_without  libinput_backend
 %bcond_without  x11_backend
@@ -24,25 +24,25 @@
 %bcond_without  xcb_errors
 
 Name:           wlroots
-Version:        0.15.1
+Version:        0.16.0
 Release:        0
 Summary:        Modular Wayland compositor library
 License:        MIT
 Group:          System/GUI/Other
 URL:            https://gitlab.freedesktop.org/wlroots/wlroots
 Source0:        https://gitlab.freedesktop.org/wlroots/wlroots/-/releases/%{version}/downloads/%{name}-%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         https://gitlab.freedesktop.org/wlroots/wlroots/-/merge_requests/3456.patch
 BuildRequires:  glslang-devel
-BuildRequires:  meson >= 0.58.1
+BuildRequires:  meson >= 0.59.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(freerdp2)
 BuildRequires:  pkgconfig(gbm) >= 17.1.0
 BuildRequires:  pkgconfig(glesv2)
+BuildRequires:  pkgconfig(hwdata)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
-BuildRequires:  pkgconfig(libdrm) >= 2.4.109
+BuildRequires:  pkgconfig(libdrm) >= 2.4.113
 %if %{with libinput_backend}
 BuildRequires:  pkgconfig(libinput) >= 1.14.0
 %endif
@@ -53,8 +53,8 @@ BuildRequires:  pkgconfig(pixman-1)
 BuildRequires:  pkgconfig(vulkan) >= 1.2.182
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-egl)
-BuildRequires:  pkgconfig(wayland-protocols) >= 1.24
-BuildRequires:  pkgconfig(wayland-server) >= 1.20
+BuildRequires:  pkgconfig(wayland-protocols) >= 1.25
+BuildRequires:  pkgconfig(wayland-server) >= 1.21
 BuildRequires:  pkgconfig(xkbcommon)
 %if %{with x11_backend} || %{with xwayland}
 BuildRequires:  xorg-x11-server-wayland

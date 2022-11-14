@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Nov 14 08:21:02 UTC 2022 - llyyr <llyyr.public@gmail.com>
+
+- Update to 0.16.0:
+  * Support for the new ext-session-lock-v1, idle-notify-v1 and
+    single-pixel-buffer-v1 protocols has been added.
+  * The scene-graph API has many new features and optimizations.
+  * CPU readback for Vulkan renderer is now implemented. The Vulkan renderer
+    should be more stable.
+  * The input device API has been reworked.
+  * A new `wlr_damage_ring` helper supersedes wlr_output_damage without being
+    as invasive.
+  * Minor version 5 of xdg-shell has been implemented, adding support for popup
+    repositioning, configure bounds and WM capabilities.
+  * High-res scroll wheel events are now supported.
+  * Minor version 4 of wlr_output_management-v1 has been implemented, adding
+    support for managing adaptive sync (VRR).
+  * Internal refactoring of the wl_surface and DRM backend code.
+- Remove 3456.patch: Merged upstream.
+
+-------------------------------------------------------------------
 Tue Jul 12 20:21:23 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 3456.patch: Fix build with ffmpeg 5. Patch from upstream git.
