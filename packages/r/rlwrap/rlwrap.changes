@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov  8 16:55:32 UTC 2022 - Daniel Donisa <daniel.donisa@suse.com>
+
+- Update to 0.46.1
+
+  * Bug fix
+
+  - When compiled with readline-8.2, correctly handle echo'ed user input when accepting a line (see #168)
+  - This will disable bracketed-paste when compiled with readline-8.1 or earlier. 
+
+-------------------------------------------------------------------
 Fri Oct 21 08:28:23 UTC 2022 - Daniel Donisa <daniel.donisa@suse.com>
 
 - Update to 0.46
