@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Nov 13 20:13:58 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.6.2:
+  New features:
+  * Add tooltips to node handles
+  * Set handle background color based on node color
+  * Light or dark text edit highlight based on node color
+  Bug fixes:
+  * Fix GitHub issue #224: Tests fail when compiled with UBSan
+  * Fix GitHub Issue #226: Attached node background images not loading
+  * Decode images in memory without exporting into a file first
+  Other:
+  * Add timestamp to log file name
+  * Save immediately when autosave enabled
+
+-------------------------------------------------------------------
 Thu Sep 22 11:09:46 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 3.6.1:
