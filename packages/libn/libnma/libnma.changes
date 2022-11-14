@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 14 08:10:30 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add libnma-schema-without-path.patch: Do not specify path in
+  nm-applet.eap schema (glgo#GNOME/libnma!18, boo#1205362).
+
+-------------------------------------------------------------------
 Tue Nov  8 16:21:07 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.10.4:

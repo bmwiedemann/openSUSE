@@ -26,7 +26,8 @@ Summary:        Shared library for NetworkManager-applet
 License:        GPL-2.0-or-later
 URL:            https://gitlab.gnome.org/GNOME/libnma
 Source0:        https://download.gnome.org/sources/%{name}/%{base_ver}/%{name}-%{version}.tar.xz
-
+# PATCH-FIX-UPSTREAM libnma-schema-without-path.patch dimstar@opensuse.org -- Do not add path to schema
+Patch0:         libnma-schema-without-path.patch
 BuildRequires:  gtk-doc
 BuildRequires:  meson
 BuildRequires:  pkgconfig
