@@ -1,3 +1,25 @@
+
+Sun Nov 13 20:17:11 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.12.4:
+  * MS Windows: Added support for Unicode command-line arguments.
+  * MS Windows: Enabled support for building a DLL.
+  * Improved quality of accelerated symbol picking (the default
+    with -w 6 and lower), especially along sharp edges.
+  * The XWD loader now supports unaligned image data, which can
+    occur when the header is of an uneven length. Such images
+    will no longer be rejected.
+  * Bug fixes:
+    - #100[1] Reading image data from stdin fails on Windows
+    - #104[3] Artifacts with transparent animations on Kitty
+    - #108[5] Bad interaction with lolcat
+    - #112[7] Bad documentation for -c default
+    - #113[9] Autogen/build fails on CentOS 7 (partial solution)
+    - huntr.dev: Uncontrolled memory allocation in lodepng
+    - [unfiled] -lm should not be in pkg-config Libs: list
+    - [unfiled] The --watch switch was broken with the
+      introduction of --animate.
+
 -------------------------------------------------------------------
 Mon Jul  4 11:52:17 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
