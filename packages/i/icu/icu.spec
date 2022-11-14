@@ -16,9 +16,9 @@
 #
 
 
-%define lname	libicu71
-%define amajor   71
-%define aversion 71
+%define lname	libicu72
+%define amajor   72
+%define aversion 72
 %ifarch %armb hppa mips mips64 ppc ppc64 %sparc s390 s390x m68k
 %define be_platform 1
 %else
@@ -26,17 +26,16 @@
 %endif
 # icu-versioning.diff needs update for new Version too
 Name:           icu
-Version:        71.1
+Version:        72.1
 Release:        0
 Summary:        International Components for Unicode
 License:        ICU
 Group:          Development/Libraries/C and C++
 URL:            https://icu.unicode.org/
-Source:         https://github.com/unicode-org/icu/releases/download/release-71-1/icu4c-71_1-src.tgz
-Source2:        https://github.com/unicode-org/icu/releases/download/release-71-1/icu4c-71_1-src.tgz.asc
-Source3:        https://github.com/unicode-org/icu/releases/download/release-71-1/icu4c-71_1-docs.zip
-Source4:        https://github.com/unicode-org/icu/releases/download/release-71-1/icu4c-71_1-docs.zip.asc
-Source99:       icu.keyring
+Source:         https://github.com/unicode-org/icu/releases/download/release-72-1/icu4c-72_1-src.tgz
+Source2:        https://github.com/unicode-org/icu/releases/download/release-72-1/icu4c-72_1-src.tgz.asc
+Source3:        https://github.com/unicode-org/icu/releases/download/release-72-1/icu4c-72_1-docs.zip
+Source4:        https://github.com/unicode-org/icu/releases/download/release-72-1/icu4c-72_1-docs.zip.asc
 Source100:      baselibs.conf
 Patch4:         icu-fix-install-mode-files.diff
 Patch6:         icu-error-reporting.diff
@@ -48,7 +47,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
 BuildRequires:  python3-base
 BuildRequires:  unzip
-Provides:       bundled(timezone) = 2021b
+Provides:       bundled(timezone) = 2022e
 
 %description
 ICU is a set of C and C++ libraries that provide extensive Unicode and locale
@@ -64,9 +63,6 @@ This subpackage contains the runtime programs for interacting with ICU.
 Summary:        International Components for Unicode
 Group:          System/Libraries
 Requires:       timezone
-%if "%lname" == "libicu71"
-Conflicts:      libicu70 = 71.1
-%endif
 Provides:       libicu = %version
 %if %be_platform
 Requires:       libicu%aversion-bedata = %version

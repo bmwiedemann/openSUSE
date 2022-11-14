@@ -48,10 +48,10 @@ Index: icu/source/tools/toolutil/writesrc.cpp
 +#include <errno.h>
  #include <stdio.h>
 +#include <string.h>
+ #include <inttypes.h>
  #include <time.h>
  #include "unicode/utypes.h"
- #include "unicode/putil.h"
-@@ -65,8 +67,8 @@ usrc_createWithHeader(const char *path,
+@@ -66,8 +68,8 @@ usrc_createWithoutHeader(const char *pat
      if (f==NULL) {
          fprintf(
              stderr,

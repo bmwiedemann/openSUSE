@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct 19 11:22:26 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 72.1
+  * Support for Unicode 15, including new characters, scripts,
+    emoji, and corresponding API constants.
+  * Support for CLDR 42 locale data with various additions and
+    corrections.
+  * Shift to tzdb 2022e. Pre-1970 data for a number of timezones
+    has been removed.
+
+-------------------------------------------------------------------
 Mon Apr 25 14:21:31 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
 - bump library packagename to libicu71 to match the version.

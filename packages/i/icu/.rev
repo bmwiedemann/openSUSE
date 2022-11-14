@@ -686,4 +686,12 @@ Jan added the patch name of all changed patches.</comment>
     <comment>- bump library packagename to libicu71 to match the version.</comment>
     <requestid>972644</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>0676d7e8bdfeca16f01df0efaf521188</srcmd5>
+    <version>72.1</version>
+    <time>1668432525</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1031330</requestid>
+  </revision>
 </revisionlist>
