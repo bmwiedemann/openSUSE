@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Mon Nov 14 10:31:58 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.18.1.2:
+  * build: prepare v0.18.1.2
+  * Github workflow android: remove obsolete docker layers
+  * Use different colors for different subaccounts
+  * Android: disable asking for desktop entry
+  * Docker android: update Qt to 5.15.6 (and API level to 29)
+  * workflows: fix windows ci deploy
+  * Fix behavior when switching nodes
+  * Docker android: upgrade base image
+  * Docker android: bump libraries
+  * Docker android: update SDK and NDK
+  * translations from webalte
+  * build: prepare v0.18.1.1
+  * installer: allow to install on arm64
+  * docker: update qt to 5.15.6
+  * cmake: update libicu dll version
+  * main: add --no-igd to simple mode flags
+  * docker: update linux dependencies
+  * repo: remove ldns leftovers
+  * Dockerfile: fix hash
+  * build: prepare v0.18.1.0
+  * main: only check mining status when using local node
+  * libwalletqt: refresh once on wallet opening
+  * trim restore height at info -> change height input
+  * Windows installer: Welcome image for 0.18
+  * TxUtils: don't show resolve for float
+  * README: Update copyright to 2022
+  * build: prepare v0.18.0.0
+  * docker: update linux and android openssl
+  * docker: fix linux build
+  * display wallet files with "." in name
+  * Updated to p2pool v2.2.1
+  * convert nettype to int to return correct rpc port
+  * WizardRestoreWallet1: trim whitespaces from seed
+  * Updated to p2pool v2.2
+  * DaemonManagerDialog: close dialog when GUI is connected
+  * oshelper: fix openContainingFolder on Linux
+  * Transfer: don't create offline tx before wallet is synced
+  * docker: update Qt to 5.15.5
+  * translations from weblate
+  * Mining: add info to start gui as admin for p2pool installation
+  * Use `p2pool` folder for p2pool on Windows
+  * Mining: save selected dropdown index
+  * SettingsWallet: add scan transaction option
+  * libwallet: add scanTransactions function
+  * docker: qt 5.15.4
+  * Only kill p2pool if we started it
+  * qt: replace QRegExp with QRegularExpression
+  * qt: remove QTextCodec
+  * main: disable setting -platformpluginpath
+  * History: fix payment proof button
+  * workflows: add caching for docker android
+  * js: minimize frameless window when clicking on taskbar icon
+  * main: add compile time option to disable updates
+  * WizardModeSelection: disable simple mode on Tails
+  * Makefile: set CMAKE_BUILD_TYPE to debug for debug target
+  * images: update mac icon
+  * WizardCreateDevice1: add Ledger Nano S Plus
+  * WizardCreateDevice1: set default restore height to 1
+  * Wizard: fix stagenet approx blockheight
+  * Settings: option to skip stop local node screen
+  * main: remove outdated code
+
+-------------------------------------------------------------------
 Thu Jun 16 12:49:03 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update _constraints for aarch64 to avoid OOM
