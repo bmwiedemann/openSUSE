@@ -38,7 +38,6 @@ BuildRequires:  %{python_module patsy}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy >= 1.0.1}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module statsmodels}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -47,7 +46,6 @@ Requires:       python-matplotlib >= 2.1.2
 Requires:       python-numpy >= 1.13.3
 Requires:       python-pandas >= 0.22.0
 Requires:       python-scipy >= 1.0.1
-Requires:       python-six
 Recommends:     python-Pillow
 Recommends:     python-fastcluster
 Recommends:     python-patsy
