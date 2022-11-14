@@ -1,4 +1,654 @@
 -------------------------------------------------------------------
+Mon Nov 14 10:29:00 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.18.1.2:
+  * build: prepare v0.18.1.2
+  * Move update_checkpoints() to a later stage
+  * wallet2: fail to establish daemon cxn == "Disconnected" cxn status
+  * add an option to force-update multisig key exchange under some circumstances
+  * repo: remove ldns leftovers
+  * depends: remove unused Qt package
+  * Second thread pool for IO
+  * wallet2: check wallet compatibility with daemon's hard fork version
+  * wallet2: ensure imported outputs subaddresses are created
+  * wallet2: better test on whether to allow output import
+  * allow exporting outputs in chunks
+  * Fix segfault restoring encrypted multisig seed
+  * Fix missing semi-colon in error message
+  * wallet2: fixes for export/import output flow
+  * rpc: skip bootstrap nodes that are lower than last checkpoint
+  * wallet2: do not assume imported outputs must be non empty
+  * wallet2: prevent importing outputs in a hot wallet
+  * wallet2: fix missing subaddress indices in "light" exported outputs
+  * build: prepare v0.18.1.1
+  * Require user ack multisig is experimental to restore
+  * Windows: fix unicode file path support
+  * multisig: fix #8537 seed restore (suggestions by @UkoeHB)
+  * Bump Gitian build instructions to v0.18.1.0 [Release Branch]
+  * ledger support for hf 15 (BP+, view tags)
+  * feat(trezor): add HF15 support, BP+
+  * build: prepare v0.18.1.0
+  * continue pool pruning even if a tx can't be found
+  * device: set ledger min app version
+  * randomx: update submodule
+  * Fixed get_block_template_backlog performance
+  * Fix use of rtxn without a mdb_txn_safe wrapper
+  * Publish submitted txs via zmq
+  * Template hash func to fix compiler error on < gcc-6
+  * build: prepare v0.18.0.0
+  * derive multisig tx secret keys from an entropy source plus the tx inputs' key images
+  * address PR comments
+  * connection: fix implementation
+  * connection: add segfault and deadlocks demo
+  * wallet2: prevent crash when reading tx w/fewer outputs than expected
+  * hardforks: set mainnet and stagenet v15/16 fork height
+  * utils: add fish shell completions
+  * multisig: fix critical vulnerabilities in signing
+  * README: depends has only been tested on ubuntu 18.04 and 20.04
+  * (fix): Confusingly named CI-Job
+  * wallet2: don't use DNS to obtain segregation heights
+  * Chunk /gettransactions to avoid hitting restricted RPC limit
+  * wallet2: force using output distribution for ringct outs
+  * wallet2: remove obsolete rpc version check
+  * Depends: Unbound disable getentropy()/reallocarray() (glibc < 2.26)
+  * cryptonote_basic: catch crypto api errors
+  * simplewallet: print usage when given no args
+  * Revert "Merge pull request #7937"
+  * Gitian: refresh the stale Monero dir via --setup switch
+  * ITS#9385 fix using MDB_NOSUBDIR with nonexistent file
+  * Remove check is_directory check on lmdb path
+  * Revert "db_lmdb: test for mmap support at init time"
+  * Silence spurious fallthru warning
+  * Fix rawpart flag collision
+  * More RAWPART support
+  * Preliminary raw partition support
+  * Remove erraneous commas
+  * Improve consistency between on_money_received and on_money_received_unconfirmed
+  * clang warning fix for #8338
+  * README.md: Add v15/v16 network upgrade
+  * wallet_api: add scanTransactions function
+  * Windows build: fix narrowing error for WaitForSingleObject
+  * Don't exclusively drop tor/i2p outgoing cxns in idle loop
+  * unit_tests: add more sha256sum test cases
+  * common: update sha256sum to use OpenSSL 3.0 API
+  * disable multisig by default
+  * GCC: Fix -Wstringop-overflow= warnings
+  * src, epee: fix a couple compiler warnings
+  * wallet2: fix spurious reorg detection with untrusted nodes
+  * wallet2: speedup large tx construction: reserve vector memory
+  * wallet2: speedup large tx construction: batch ringdb lookups
+  * wallet2: speedup large tx construction: no pointless clsag generation
+  * wallet2: speedup large tx construction: batch ringdb updates
+  * wallet2: speedup large tx construction: cache public key validity
+  * Ignore gitian build files
+  * fix backoff delay logic when re-relaying txs
+  * Don't send peerlist larger than max allowed
+  * depends: Package cleanup
+  * Update randomx: fix Mac linking error
+  * Set hf v15 testnet fork heights
+  * Update CI for aarch64 mac build
+  * Make Mac SDK into a regular depends package
+  * Silence some protobuf link warnings
+  * utils: delete outdated windows build script
+  * readme: arch/fedora deps + small fixes
+  * Fix arm64 darwin package defs
+  * Boost 1.64 doesn't recognize arm64 darwin
+  * more... update to clang 9.0.0
+  * Split native_clang out of native_cctools
+  * Update native_cctools for newer SDK support
+  * Give better error messages when missing SSL files
+  * Update to MacOSX SDK 11.1, add Mac M1
+  * Changes to PORTABLE_STORAGE.md
+  * wallet2: fix a couple unused variable warnings
+  * Remove src/serialization/list.h
+  * More tests for view tags
+  * multisig: add post-kex verification round to check that all participants have completed the multisig address
+  * Update copyright to 2022 for Hardfork files
+  * Doxygen: Hide anonymous namespaces from documentation by default
+  * Change "Github" to "GitHub"
+  * refactor(bp+): save one inversion, use sc_muladd
+  * Docs: Add documentation for EPEE Portable Storage
+  * EPEE: Remove gzip_encoding.h
+  * EPEE: Remove hmac-md5
+  * Preserve commitment format inside transactions
+  * add a sanity check to RPC input data size
+  * readme: small fixes
+  * depends: update unbound to 1.15.0
+  * Bump ring size to 16 for v15 & remove set default in wallet cli
+  * "Change C-cast to static_cast in net_peerlist.h"
+  * Change C-style-casts to static_cast in time_helper.h
+  * Remove the only 4 non-UTF8 characters in codebase
+  * Factor out move_it_backward from misc_language.h
+  * Move copyable_atomic into connection_context
+  * Refactor out to_nonconst_iterator.h
+  * Refactor out pragma_comp_defs
+  * Merge functionality of misc_os_dependent into time_helper.h
+  * Add Include statements
+  * Trimming Fat
+  * Boring Old Deletes
+  * Optimized keccak implementation
+  * Add view tags to outputs to reduce wallet scanning time
+  * Tiny: add .vscode/ to .gitignore
+  * wallet2: use BP+ for cold signing
+  * CMake: Add missing BUILD_SHARED_LIBS option
+  * Fee changes from ArticMine
+  * epee: allow copying a rolling_median_t object
+  * Remove /include
+  * Remove serialization/enableable
+  * Makefile: fix spelling of CMAKE_BUILD_TYPE value
+  * simplewallet: fix integrated_address output string
+  * tests: integrated_address: remove missing payment id assertion
+  * CMake: Add missing headers via monero_find_all_headers macro
+  * randomx: update submodule
+  * Make RPC server functions that read db thread safe
+  * bulletproofs+: some minor cleanup from vtnerd's review
+  * store outPk/8 in the tx for speed
+  * ringct: port some of vtnerd's review changes from BP+ to BP
+  * ringct: a few minor optimizations from review
+  * plug bulletproofs plus into consensus
+  * Updates from security audit
+  * Precompute initial transcript hash
+  * Bulletproofs+
+  * Added support for Ledger Nano S Plus
+  * Remove dead code from parserse_base_utils and fix unit tests
+  * Eliminate dependence on boost::interprocess #8223
+  * wallet2: decrease the amount of data exchanged for output export
+  * Fix typo: SERIALIZE_TYPE_DUOBLE
+  * wallet_rpc_server: support regex for get_accounts tag
+  * replace erciccione's seednode with one on haveno's infrastructure
+  * wallet_rpc_server: fix make_integrated_address with no payment id
+  * Remove footgun doc comment in miner TX validation
+  * Make the wallet name optional when locked.
+  * Compil. time: cryptonote_core minus portable_storage header
+  * Copyright: Update to 2022
+  * wallet2: update stagenet rollback blocks
+  * simplewallet: add option for exporting tx keys
+  * multisig key exchange update and refactor
+  * Fixes: Don't require --rpc-login with --rpc-access-control-origins #8168
+  * crypto: fix constant randomx exceptions in large page allocator
+  * Undefined behaviour fixes
+  * systemd: remove outdated torsocks example
+  * rpc: add explicit restricted flag to /get_info
+  * Balance includes unconfirmed transfers to self
+  * Fix typos in docs
+  * fix ge_p3_is_point_at_infinity(), which is evaluating field elements that haven't been reduced by the field order
+  * support authentication in monero-wallet-rpc set_daemon
+  * Update Copyright year in README.md
+  * Update net_node.inl
+  * Use CMD in Dockerfile
+  * wallet inits cache if file and blob missing
+  * cmake: enable build on riscv{64, 32}
+  * Fixed warnings for Clang (used as CMAKE_CXX compiler)
+  * functional_tests: update uri test with external pid
+  * Fix docker instructions to account for non-root user
+  * Add copy commands for compiled binaries
+  * Add archive details to post-build section
+  * Add git clone and cd commands for initial prep
+  * Add note on adding SSH keys for Github
+  * Update DOCKRUN.md
+  * Bump versions in DOCKRUN.md and add log commands
+  * `make_uri` disallows standalone payment ids
+  * Fix Android OpenSSL build
+  * Add python method
+  * Add calcpow RPC
+  * Update RandomX
+  * cmake: find readline on macOS ARM
+  * cryptonote_core: fix unused lambda warning
+  * device_ledger: fix incorrect macro
+  * depends: bump hidapi to 0.11.0
+  * cmake: fix incorrect else syntax
+  * account info text alignment
+  * Update RandomX to v1.1.10
+  * Avoid unnecessary 'Invalid hashing blob' error message
+  * Fix typos
+  * device: fix ledger error strings, add human friendly messages
+  * tx_pool: full tx revalidation on fork boundaries
+  * slow_hash: don't blow out Mac stack on ARM64
+  * crypto: fix typo in ifdef
+  * cmake: remove including non-existent directory
+  * rpc: fix DoS vector in get_output_distribution
+  * depends: openssl 1.1.1k -> 1.1.1l
+  * socks: ignore any exceptions in shutdown/close
+  * wallet_api: enable set_strict_default_file_permissions
+  * epee: add missing header
+  * protocol: fix spurious rejection of downloaded blocks
+  * wallet2: remove 2 unused variables
+  * epee: avoid ADL selecting C++14 std::quoted
+  * wallet2: fix key encryption when changing ask-password from 0/1 to 2
+  * cmake: use CMAKE_CURRENT_LIST_DIR for git version
+  * Add README to release archives
+  * README v12 fork occurred on 2019-11-30 as expected
+  * blockchain: fix pedantic assert
+  * simplewallet: fix incoming_transfers index error
+  * download: fix leak
+  * ARMv8: detect AES support dynamically
+  * depends: update zeromq package to 4.3.4
+  * Ledger: member 'mode' was shadowing that of base class
+  * Decrease the "recent spend window" in gamma re-select to 15 blocks
+  * cmake: don't optimize debug build
+  * wallet2: keep around transaction prefix for confirmed transfers
+  * workflows: add missing dependency, fix mac build
+  * gitian: cleanup more unused packages
+  * gitian: omit ccache from gitian builds
+  * cmake: fix copy/paste typo
+  * cmake: set cpp14 standard
+  * easylogging++: fix missing logs
+  * LMDB: fix deadlock in resized detection
+  * rpc: Fix get_transactions failing when not found
+  * node_server: fix race condition
+  * node_server: add race condition demo
+  * Doc: building gtest on Debian and Ubuntu
+  * cmake: set required C/C++ standard to 11
+  * CI: ccache common settings variable and apt settings tidying
+  * rpc: don't set error code as status string
+  * unbound: remove leftovers
+  * Mac: UT node server fix IP localhost by aliasing
+  * Fix precision of average_output_time
+  * Dockerfile: use depends
+  * depends: update unwind, fix build with ubuntu 21.04
+  * RPC and ZeroMQ APIs to support p2pool
+  * update readme research section contacts
+  * UB: virtual methods in destructor at Trezor
+  * LMDB: protection against UB, by not calling virtual methods from destructor
+  * unit_tests: fix use after free in serialization test
+  * UB: Not calling virtual method in destructor of WalletImpl
+  * Add simple script for running gitian-build
+  * external: remove unbound submodule
+  * CMake: Add missing SANITIZE option
+  * Fix parallel make of OpenSSL
+  * wallet: fix unused lambda capture warning
+  * wallet_rpc_server: fix help text remaining bold
+  * Wallet2: fix optimize-coinbase for p2pool payouts
+  * daemon: allow proxy configuration
+  * support cors wildcard
+  * monero-wallet-rpc: Prevent --password-file from being used with --wallet-dir
+  * Protect client from divide by 0 caused by integer truncation
+  * Apply gamma distr from chain tip when selecting decoys
+  * ringct: silence unused variable warning
+  * Device: remove unused and incorrect non-default constructor
+  * epee: link with Boost_SYSTEM_LIBRARY
+  * core_tests: remove unused typedef, fix warning
+  * wallet_api: add make_uri
+  * fix median overflow bug
+  * CI: use runner.os instead of OS labels
+  * CMake: document -Werror for add_c_flag_if_supported() from #7718
+  * epee: tidying post-incrementation -> pre-incrementation
+  * Make sure node returns to wallet that real output is unlocked
+  * p2p: remove blocked addresses/hosts from peerlist
+  * CMake: ccache fix for FreeBSD at 'depends'
+  * EasyLogging++: new anti-UB test and propagating exception
+  * trezor: try empty passphrase first
+  * Fix describe_transfer for multiple txes in a txset
+  * cmake: bodge cmake failure on OSS-Fuzz
+  * CI: Ubuntu-Test reuses Ubuntu-Build cache and building static libs
+  * Quicker resource cleanup on p2p socks timeout
+  * unit_tests: fix broken tests
+  * cmake: fix double build
+  * cmake: don't forbid undefined symbols on openbsd
+  * blocks: fix cmake syntax
+  * Make SSL key/cert storage backward-compatible
+  * Daemon: Update average block size table
+  * utils/health: separate Clang Tidy tests for C & C++
+  * Doxygen: Exclude build directories
+  * wallet_api: expose offline mode status
+  * Fixed json serialization of rct::RCTTypeNull
+  * wallet2: chunk get_outs.bin calls to avoid sanity limits
+  * cmake: test is a reserved keyword
+  * rpc: source file extensions must be explicit (cmake warning)
+  * wallet2: Don't auto lock device on process parsed blocks
+  * wallet: rephrase error message on invalid device address
+  * fix #7784 - deinit wallet in wallet dtor
+  * cmake: export all symbols
+  * cmake: fix undefined symbols and multiple definitions
+  * cmake: forbid undefined symbols
+  * CI: add Ubuntu 18.04 for back. compat. test
+  * device_trezor_base: fix typo
+  * Workflows: depends cache (static) separated from ccache (volatile)
+  * Remove obsolete android dockerfiles
+  * workflows: fix libwallet ci test
+  * Doc: Update blockchain stats with review comments
+  * EasyLogging++: Add UTests, that protect against regressions
+  * wallet_api: getPassword
+  * depends: add getmonero package mirror
+  * trezor: add #if for ByteSizeLong
+  * wallet_api: get bytes sent/received
+  * simplewallet: don't truncate integ. address in export_transfers
+  * wallet_api: fix typo in exportKeyImages
+  * Include Libusb and hidapi on android
+  * protocol: fix delayed "you are now synchronized..." message
+  * workflows: don't build PRs if only docs and READMEs are being changed
+  * doc: update IRC references to Libera
+  * add singapore.node.xmr.pm to seed nodes
+  * provide key images of spent outputs in wallet rpc
+  * Compil time: move epee storages/parserse_base_utils.h to parserse_base_utils.cpp
+  * CMake: strip targets (optional) with -D STRIP_TARGETS=ON
+  * unit_tests: check for ge_frombytes_vartime failure
+  * easylogging++: do not delete uninitialized objects
+  * trezor: fix potential use of uninitialized memory
+  * python-rpc: add missing python api for new freeze/thaw/frozen RPC
+  * wallet/api: remove Bitmonero namespace alias
+  * wallet_api: address_book: don't lose pid on setDescription
+  * wallet2: refresh: check error and throw before potentially breaking out of loop
+  * wallet_api: signMessage: add sign with subaddress
+  * ledger: don't lock for software device
+  * wallet_api: reconnectDevice
+  * ledger: use software device if we have view key
+  * wallet: Reset RPC Pay ID on node switch
+  * wallet_api: move adjust_mixin call within try block
+  * README: freenode -> libera
+  * Fix boost 1.76.0 compatibility
+  * randomx: bump submodule to v1.1.9
+  * support freeze, thaw, and frozen in wallet rpc
+  * CMake: add *.inl to monero_find_all_headers() glob, along *.h*
+  * CMake: glob missing headers for wallet2
+  * CMake: glob missing headers for easylogging
+  * Doc: funtional_tests add new mining env vars and how to use them
+  * trezor: deprecated ByteSize -> ByteSizeLong
+  * cmake: treat warnings as error in compiler flag tests
+  * cmake: fix check_linker_flag
+  * Warnings: unused var in core_tests:chaingen.h
+  * cmake: use CMAKE_CURRENT_LIST_DIR in FindLibUSB
+  * epee: include public openssl header in cmake
+  * CI: depends downloads relax retries
+  * Warnings: unused variable in core/blockchain.cpp
+  * Warnings: unused var at cryptonote_tx_utils.cpp
+  * translations: use full path in cmake
+  * cmake: fix non portable code
+  * cmake: set xcode file type
+  * clang: fix -Wpessimizing-move warning
+  * cmake: wallet_api doesn't need wallet_merged
+  * cmake: set 3.5 as minimum version
+  * depends, docker: fix bintray links
+  * clang: fix -pie flag
+  * Tests: Mining test uses a parametric path for finding the calculation app
+  * clang: fix -Wrange-loop-analysis warnings
+  * blockchain: speed up repeated pops (mostly in tests)
+  * Wallet2: Update 'approximate_testnet_rolled_back_blocks'
+  * epee linkage dynamic; move monero_add_library to main CMakeLists.txt
+  * wallet2: Fix rescan_bc keep_ki option
+  * wallet_api: import / export output function
+  * add documentation for monero-blockchain-stats
+  * workflows: upload source archive artifact
+  * protocol: remove unreachable code
+  * Add mj-xmr GPG key
+  * Doc: Compiling, debugging and testing efficiently see docs/COMPILING_DEBUGGING_TESTING.md
+  * Split epee/string_tools.h and encapsulate boost::lexical_cast
+  * Revert "Merge pull request #7136"
+  * CMake: new macro - finding all headers (extract from epee)
+  * net_node: add seed node
+  * CI: Actions' build.yaml uses variables instead of repetitions
+  * rpc: send confirmations in get_transactions result
+  * Doc: Update Gitian (Reproducible Builds) with small code snippets and fixes
+  * ITS#9496 fix mdb_env_open bug from #8704
+  * unit_tests: fix boost 1.58 compatibility
+  * gitian: remove osslsigncode
+  * monero-wallet-cli: improve error message when tx amount is zero
+  * CI: ccache for ubuntu-test; Using "Default" architecture The cmake logic is in workflows/build.yml
+  * readme: Add note regarding submodule sync and update
+  * expose set_offline to wallet api
+  * Tests: Fix test node_server.bind_same_p2p_port from randomly crashing
+  * Test: Enable coverage for external repositories
+  * Add base Monero address which is needed to view wallet
+  * p2p: allow CIDR notation in DNS blocklist
+  * Doc: Add ccache to README.md and Brewfile
+  * [CI] Adaptive mining timeout, depending on available CPU power Printing also available RAM. Add comprehensive description.
+  * easylogging++: in place log sanitization
+  * Reduce compilation time of epee/portable_storage_template_helper.h
+  * Warnings: fix ut/levin.cpp missing braces
+  * depends: openssl 1.1.1i -> 1.1.1k
+  * wallet2: fix unlocked mixup in light wallet mode
+  * db_lmdb: catch exceptions testing for mmap support
+  * cmake: Don't default to -march=native on OpenBSD
+  * blockchain_db: harden code against invalid input types
+  * ITS#9500 fix regression from ITS#8662
+  * cryptonote_protocol_handler: fix race condition
+  * cryptonote_protocol_handler: add race condition demo
+  * python-rpc: add function for new scan_tx RPC
+  * [CI] Use Python3 for funcional tests, instead of Python2
+  * blockchain_import: fix wrong reported block/tx hashes on error
+  * core: speed up print_coinbase_tx_sum
+  * cmake: fix ccache detection
+  * Doc: add only the required boost libraries instead of all of them
+  * wallet_api: add isDeterministic()
+  * wallet_api: add seed_offset param to seed()
+  * async_protocol_handler_config: fix deadlock
+  * async_protocol_handler_config: add deadlock demo
+  * README: step by step detail for rpi setup commands
+  * Warnings: add warnings as errors: 'switch' & 'return-type'
+  * dependencies in openSUSE
+  * Mac: Enable on ARM, by not enforcing x86_64
+  * wallet_rpc_server: set seed language in generate_from_keys
+  * fix serialization being different on mac
+  * return output key for incoming transfers
+  * added link to moneropedia to pruning in README.md
+  * Update size figures on the pruning section of README.md
+  * trezor: simplify recognition of integrated addresses
+  * Make pruning section more consistent in README.md
+  * wallet_rpc: add scan_tx
+  * Epee: add headers to project files (via glob), to be able to search for them easily.
+  * functional_tests: hide check_missing_rpc_methods behind requests check
+  * README: update libzmq minimum version to 4.2.0 for zmq_send_const
+  * epee: return HTTP error 400 (Bad request) on deserialization error
+  * python-rpc: adapt urlparse for python3
+  * Fix compiler warning for in keyvalue_serialization.h
+  * wallet_rpc_payments: implement multithreading
+  * gpg_keys: add anon
+  * async_protocol_handler_config: remove connection correctly
+  * async_protocol_handler_config: add segfault demo
+  * monero-wallet-cli: Added command scan_tx
+  * [CI] Add ccache to Windows build
+  * [CI] MacOSX ccache: Proper ccache directory used of /Users/runner/Library/Caches/ccache
+  * easylogging++: fix potential memory corruption
+  * p2p: add --max-connections-per-ip daemon option
+  * rpc: fix some error return codes/status
+  * Store RPC SSL key/cert for consistent authentication between runs
+  * Honor LARGE_PAGES flag in randomx umask
+  * Increase timeout for the mining test 4 times (to 240s)
+  * Formatted markdown in readme.md
+  * New add_aux_pow RPC to support merge mining
+  * Remove unused variables in monero codebase
+  * Reduce compilation time of epee/portable_storage.h
+  * ITS#9007 don't free loose writemap pages
+  * Remove copies from foreach loops (thanks to Clang)
+  * Removing unused namespace alias
+  * Fix monerod --rpc-ssl disabled
+  * unit_tests: fix wipeable_string parse_hexstr test with latest gtest
+  * Dockerfile: bump openssl version to 1.1.1i
+  * Attempt to carve the fee from a partial payment early
+  * Stop adding more outputs than bulletproof allows
+  * Improve cryptonote (block and tx) binary read performance
+  * Simplewallet.cpp: Add export_outputs help
+  * docs: Remove outdated bits about anonymity network seed nodes
+  * bootstrap_daemon: proxy configuration support
+  * device_trezor: add redundant check
+  * device_trezor: wipe string fields properly
+  * Updated copyright date in README.md
+  * boosted_tcp_server: fix connection lifetime
+  * boosted_tcp_server: add segfault demo
+  * Remove unnecessary atomic operations in levin code
+  * Remove payload copy in all outgoing p2p messages
+  * console: fix syntax for python3
+  * Reduced executable size; reduced call sequence to "allowed" log function
+  * Remove payload copy in all outgoing p2p messages
+  * build: omit '-pie' linker flag in native non static WIN32 GCC builds
+  * simplewallet: allow setting --restore-height 0
+  * miniupnp: set submodule to upstream, disable install
+  * Revert "fix accessing an network address in a deleted context"
+  * remove obsolete pruning debug code
+  * storages: overridable limits for loading portable_storage from binary
+  * Run Valgrind checks for any binary in a list
+  * wallet_rpc_server: don't abort on initial refresh failure
+  * epee: also limit number of strings in portable_storage
+  * p2p: make REQUEST_SUPPORT_FLAGS optional, pass flags in node data
+  * epee: don't log raw packet data
+  * add a max levin packet size by command type
+  * fix accessing an network address in a deleted context
+  * Only INFO log for short seed words with ALLOW_SHORT_WORDS active
+  * cmake: Use CMAKE_COMMAND.
+  * blockchain: lock access to m_blocks_hash_of_hashes
+  * protocol: handle receiving a block hash we've not added yet
+  * wallet_api: store fee for incoming txs in history
+  * portable_storage: better sanity checking
+  * p2p: only log to global when a blocked IP is not already blocked
+  * p2p: fix cubic selection in filtered peer list
+  * p2p: ignore empty IP from DNS block list
+  * Split fuzz tests during fuzz build
+  * Header row for peer list in sync_info
+  * protocol: more sanity checks in new chain block hashes
+  * portable_storage: check object limit where appropriate
+  * simplewallet: Add input file parameter to sign_transfer
+  * p2p: fix set_peer_just_seen ignoring last_seen
+  * p2p: fix deadlock banning while updating peer lists
+  * protocol: fix wrong command in logs
+  * protocol: don't reset last request time on an idle timer
+  * rpc: limit the number of txes for get_blocks.bin
+  * portable_storage: forbid unnamed sections
+  * portable_storage: remove array element limit
+  * ssl: buffered handshake detection
+  * Clang IWYU header checker script
+  * protocol: fix false positives dropping peers
+  * Update repo copyright year to 2021
+  * portable_storage: remove overly aggressive cutoff
+  * Revert "Reject existing claimed blocks in sync mode"
+  * cryptonote_basic: guess what got lost porting patches to branches again
+  * simplewallet: add "address mnew" command
+  * epee: fix some issues using connections after shutdown
+  * portable_storage: add some sanity checks on data size
+  * protocol: drop nodes if they claim new data but only give stale data
+  * wallet api: allow wallet to fetch all key images via api
+  * restrict public node checks a little
+  * Command max_bytes moved from dynamic map to static switch
+  * edited readme version table to include v0.17.1.7
+  * ban lists may now include subnets
+  * apt update before installing
+  * Restrict duplicate keys in epee binary format
+  * Optional DNS based blocklist
+  * rpc: add a busy_syncing field to get_info
+  * protocol: reject claimed block hashes that already are in the chain
+  * Add aggressive restrictions to pre-handshake p2p buffer limit
+  * protocol: drop peers we can't download anything from in sync mode
+  * protocol: remove unused (and cunningly uninitialized) field
+  * p2p: ifx getting seed nodes for uncommon cases
+  * Fix byte_stream::put_n
+  * fuzz_tests: add a test for utf8canonical
+  * daemon: the ban command can now load IPs from a file (ban @filename)
+  * p2p: remove peers from grey and anchors lists when blocked
+  * p2p: ignore incoming peer list entries when we have them blocked
+  * readline_buffer: Avoid consecutive duplicates in the history
+  * protocol: include first new block in chain entry response
+  * protocol: stricter checks on received chain hash list
+  * workflows: add ccache support
+  * protocol: revert incoming chain height check against local chain
+  * protocol: one more sanity check on usable data from a peer
+  * protocol: drop origin IP if a block fails to verify in sync mode
+  * protocol: add calls to reserve where appropriate
+  * protocol: add a sanity check to the number of block hashes sent
+  * protocol: fix asking for pruned blocks for v10
+  * simplewallet: don't complain about connecting to the daemon when offline
+  * protocol: more restrictive checks on chain entry response
+  * rpc: report target height as 0 when synced
+  * protocol: fix switchting to adding blocks if noone's adding the next span
+  * travis: remove from repo
+  * workflows: add depends workflow, upload binaries
+  * workflows: shorten name
+  * cmake: fix "release" version string on tagged releases
+  * depends: Update OpenSSL to 1.1.1i
+  * Add command to sign freebsd assert file for gitian
+  * Fixed issues found by static analysis
+  * Add ClangBuildAnalyzer under utils/health for analyzing build times
+  * protocol: drop peers that don't reply to queries
+  * p2p: fix race condition accessing a deleted context
+  * db_lmdb: move spammy "not found in db" message to TRACE
+  * bump my key expiration date by 2 more years
+  * p2p: drop peers that spam peer lists
+  * add -framework AppKit for Apple
+  * keep only the last seen node on a given host in the white list
+  * protocol: drop peers that decrease claimed height
+  * protocol: add scoring system to drop peers that don't behave
+  * crypto: fix non zero scalar being 0 after reducing
+  * p2p: add a tor seed node
+  * wallet2: set propagation timeout to current max timeout
+  * p2p: fix endianness when checking IPv6 addresses mapping to IPv4
+  * p2p: make this work with boost <= 1.65 (pffff)
+  * p2p: rewrite boost's make_address_v4 to cater for < 1.66
+  * Clang-tidy integrated into CMakeLists.txt
+  * p2p: give all hosts the same chance of being picked for connecting
+  * net_node: add tor / i2p seed nodes
+  * Allow tx note edits via TransactionHistory object in wallet/api
+  * cryptonote_core: dandelion - use local height or median height if syncing
+  * wallet2: check imported multisig curve points are in main subgroup
+  * rpc: get_info - add 'synchronized' field
+  * Change Dandelion++ fluff probability to 20%, and embargo timeout to 39s
+  * rpc: skip non-synced bootstrap daemons in --no-sync mode too
+  * Better log message for unusable anon networks
+  * Fix timeout checks for forwarded and Dandelion++ stem txes
+  * rpc: on_send_raw_tx (bootstrap) - send to bootstrap daemon and P2P
+  * wallet_api: TransactionHistory - fill unconfirmed out payments dests
+  * Silence stupid warnings
+  * epee: tighten the URL parsing regexp a little
+  * epee: readline_buffer - fix thread safety, fix sync() after stop()
+  * Balance includes unconfirmed payments
+  * workflows: bump msys2 action to v2
+  * Switch to Dandelion++ fluff mode if no out connections for stem mode
+  * protocol: reject empty incoming block messages
+  * p2p: use /16 filtering on IPv4-within-IPv6 addresses
+  * Doxy - scan whole repo, create subdirs, don't generate LaTeX - mj-xmr
+  * Fix CLI and unrestricted RPC relay_tx with stempool
+  * Add rpc-restricted-bind-ip option
+  * add a convenience script to start monero with inbound tor
+  * Add RELINK_TARGETS, monero_add_target_no_relink and use monero_add_executable/monero_add_library where possible (mj-xmr) Add monero_add_minimal_executable and use in tests
+  * p2p: remove banned peers from the white list
+  * functional_tests: inrease mining timeout
+  * net_node: add --ban-list option
+  * blockchain: remove some dead code
+  * util: fix escaping more than one ?* in glob_to_regex
+  * Make Blockchain::get_fee_quantization_mask() compile time
+  * cryptonote_core: Fix missing override warnings
+  * Add support for i2p and tor seed nodes
+  * Force CMAKE_SKIP_RPATH=ON
+  * README: update fork table recommended version
+  * wallet2: wait for propagation timeout before marking tx as failed
+  * bump default number of connections from 8 to 12
+  * Allow setting start block on export
+  * blockchain: fix sync at v14 boundary
+  * README: add OSS-fuzz status banner
+  * wallet2_api: implement stop() to interrupt refresh() loop once
+  * Do not use peer_id tracking method over i2p/tor
+  * add more updates domains and make the voting generic, not just 2/3
+  * device: Ledger - update status codes
+  * wallet2: skip reorgs exceeding max-reorg-depth wallet setting
+  * Change to more efficient allocation strategy in byte_stream
+  * Allow byte_stream->byte_slice conversion to shrink unused buffer space
+  * fix next_seed_height regression in getblocktemplate rpc
+  * core_rpc_server: on_send_raw_tx - fix bootstrap daemon mode check
+  * README: recommend v0.17.1.0
+  * wallet2: fix missing m_state field in wallet serialization
+  * tx_pool: silence spammy harmless warning till we fix the bug
+  * Dandelion++: skip desynced peers in stem phase
+  * Change epee binary output from std::stringstream to byte_stream
+  * Update README.md
+  * README: update sponsors
+  * Add TLSA support to DNSSEC fetching
+  * Fix lgamma/signgam dependency
+  * Fix tx flush callback queueing
+  * docs: Add release checklist
+  * Move documentation files to their own directory
+  * Unit Tests: Remove block reward upper bound size checks
+  * workflows: don't brew update
+  * rpc_private_headers declaration fix
+  * functional_tests: rewrite mining code, clearer timeout info
+  * fix a couple bugs found by OSS-fuzz
+  * fuzz_tests: fix build error in signature fuzz test
+  * build: ARM - disable stack trace due to segfault in libunwind
+  * Extend TransactionInfo with coinbase and description attributes in wallet/api
+  * Allow AddressBook description edits via wallet/api interface
+  * Update error messages in daemon
+  * link libzmq against libgssapi_krb5 if found
+  * Depends: Bump qt to 5.15.1
+  * systemd: Don't use Type=forking
+  * cmake: Use job pool feature to limit concurrent jobs
+
+-------------------------------------------------------------------
 Fri May 13 06:10:28 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.17.3.2:

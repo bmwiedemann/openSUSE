@@ -138,4 +138,41 @@
   * Update net_node.inl to to replace seed node</comment>
     <requestid>976977</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e1ab4198cd17c84ac0cf3212a6a9c4dc</srcmd5>
+    <version>0.18.1.2</version>
+    <time>1668432550</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.18.1.2:
+  * build: prepare v0.18.1.2
+  * Move update_checkpoints() to a later stage
+  * wallet2: fail to establish daemon cxn == &quot;Disconnected&quot; cxn status
+  * add an option to force-update multisig key exchange under some circumstances
+  * repo: remove ldns leftovers
+  * depends: remove unused Qt package
+  * Second thread pool for IO
+  * wallet2: check wallet compatibility with daemon's hard fork version
+  * wallet2: ensure imported outputs subaddresses are created
+  * wallet2: better test on whether to allow output import
+  * allow exporting outputs in chunks
+  * Fix segfault restoring encrypted multisig seed
+  * Fix missing semi-colon in error message
+  * wallet2: fixes for export/import output flow
+  * rpc: skip bootstrap nodes that are lower than last checkpoint
+  * wallet2: do not assume imported outputs must be non empty
+  * wallet2: prevent importing outputs in a hot wallet
+  * wallet2: fix missing subaddress indices in &quot;light&quot; exported outputs
+  * build: prepare v0.18.1.1
+  * Require user ack multisig is experimental to restore
+  * Windows: fix unicode file path support
+  * multisig: fix #8537 seed restore (suggestions by @UkoeHB)
+  * Bump Gitian build instructions to v0.18.1.0 [Release Branch]
+  * ledger support for hf 15 (BP+, view tags)
+  * feat(trezor): add HF15 support, BP+
+  * build: prepare v0.18.1.0
+  * continue pool pruning even if a tx can't be found
+  * device: set ledger min app version
+  * randomx: update submodule</comment>
+    <requestid>1035610</requestid>
+  </revision>
 </revisionlist>
