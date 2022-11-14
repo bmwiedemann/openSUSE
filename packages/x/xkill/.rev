@@ -66,4 +66,18 @@
   * autogen.sh: use exec instead of waiting for configure to finish</comment>
     <requestid>593596</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>52ef7780fe6bd932df7386216f74de39</srcmd5>
+    <version>1.0.6</version>
+    <time>1668432533</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.6
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * gitlab CI: add a basic build test
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * Variable scope reductions as recommended by cppcheck
+  * gitlab CI: explictly list GNU make to be installed in build environment</comment>
+    <requestid>1035539</requestid>
+  </revision>
 </revisionlist>

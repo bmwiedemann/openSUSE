@@ -1,7 +1,7 @@
 #
 # spec file for package xkill
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           xkill
-Version:        1.0.5
+Version:        1.0.6
 Release:        0
 Summary:        Utility to kill a client by its X resource
 License:        X11
 Group:          System/X11/Utilities
-Url:            http://xorg.freedesktop.org/
-Source0:        http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.bz2
+URL:            http://xorg.freedesktop.org/
+Source0:        http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
 Source1:        xkill.desktop
 BuildRequires:  pkg-config
 BuildRequires:  update-desktop-files
@@ -54,7 +54,7 @@ make %{?_smp_mflags}
 
 %files
 %defattr(-,root,root)
-%doc ChangeLog COPYING README
+%doc ChangeLog COPYING README.md
 %{_bindir}/xkill
 %{_datadir}/applications/xkill.desktop
 %{_mandir}/man1/xkill.1%{?ext_man}
