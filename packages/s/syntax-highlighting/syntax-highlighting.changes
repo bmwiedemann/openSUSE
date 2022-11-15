@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Nov  8 08:35:36 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.100.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.100.0
+- Too many changes since 5.99.0, only listing bugfixes:
+  * Jira: fix Bold and Stroked Out highlight at start of line (kde#431268)
+  * CMake: fix nested parentheses highlinthing (kde#461151)
+  * CMake: add Control Flow style for if, else, while, etc (kde#460596)
+  * Alerts: add NO-BREAK SPACE (nbsp) as keyword deliminator (kde#459972)
+  * Bash/Zsh: fix group command with coproc statement (kde#460301)
+
+-------------------------------------------------------------------
 Sat Oct  1 15:56:20 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.99.0
