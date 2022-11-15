@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov  8 08:35:20 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.100.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.100.0
+- Changes since 5.99.0:
+  * browserrun enum used as bool
+  * [partloader] Remove references to KPluginLoader from docs
+  * Add Qt6 windows CI support
+  * Ignore "templates" folder for cppcheck CI
+  * Don't install service type definitions when building without deprecated stuff
+  * Add new functions to instantiate parts
+
+-------------------------------------------------------------------
 Sat Oct  1 15:56:00 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.99.0
