@@ -168,4 +168,33 @@
     <comment>Fix build with jdk17</comment>
     <requestid>964692</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>19cff5db67dd5ed2278f65ffc9f5bc99</srcmd5>
+    <version>2.5.1</version>
+    <time>1668514686</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to version 2.5.1 (bsc#1205142, bsc#1205138)
+  * Breaking: 
+    + Removed old fr\jayasoft\ivy\ant\antlib.xml AntLib definition 
+      file.
+  * Fixes:
+    + CVE-2022-37865 allow create/overwrite any file on the system.
+      (see https://ant.apache.org/ivy/security.html)
+    + CVE-2022-37866 Path traversal in patterns.
+      (see https://ant.apache.org/ivy/security.html)
+    + ResolveEngine resets dictator resolver to null in the global 
+      configuration.
+    + ConcurrentModificationException in 
+      MessageLoggerHelper.sumupProblems.
+    + useOrigin=&quot;true&quot; fails with file-based ibiblio.
+    + ivy:retrieve Ant task didn’t create an empty fileset when no 
+      files were retrieved to a non-empty directory.
+    + ivy:retrieve Ant task relied on the default HTTP header 
+      &quot;Accept&quot; which caused problems with servers that interpret it 
+      strictly (e.g. AWS CodeArtifact).
+  * Improvements:
+    + Ivy command now accepts a URL for the -settings option.
+</comment>
+    <requestid>1035296</requestid>
+  </revision>
 </revisionlist>

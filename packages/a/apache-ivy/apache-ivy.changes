@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Nov  7 08:10:54 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Upgrade to version 2.5.1 (bsc#1205142, bsc#1205138)
+  * Breaking: 
+    + Removed old fr\jayasoft\ivy\ant\antlib.xml AntLib definition 
+      file.
+  * Fixes:
+    + CVE-2022-37865 allow create/overwrite any file on the system.
+      (see https://ant.apache.org/ivy/security.html)
+    + CVE-2022-37866 Path traversal in patterns.
+      (see https://ant.apache.org/ivy/security.html)
+    + ResolveEngine resets dictator resolver to null in the global 
+      configuration.
+    + ConcurrentModificationException in 
+      MessageLoggerHelper.sumupProblems.
+    + useOrigin="true" fails with file-based ibiblio.
+    + ivy:retrieve Ant task didn’t create an empty fileset when no 
+      files were retrieved to a non-empty directory.
+    + ivy:retrieve Ant task relied on the default HTTP header 
+      "Accept" which caused problems with servers that interpret it 
+      strictly (e.g. AWS CodeArtifact).
+  * Improvements:
+    + Ivy command now accepts a URL for the -settings option.
+
+-------------------------------------------------------------------
 Sat Mar 19 13:22:59 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 2.5.0

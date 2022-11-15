@@ -21,7 +21,7 @@
 %bcond_without  sftp
 %bcond_without  vfs
 Name:           apache-ivy
-Version:        2.5.0
+Version:        2.5.1
 Release:        0
 Summary:        Java-based dependency manager
 License:        Apache-2.0
