@@ -599,7 +599,6 @@
       <repopackage name="glibc-locale"/>
       <repopackage name="glibc-locale-base"/>
       <repopackage name="gmenudbusmenuproxy"/>
-      <repopackage name="gnome-backgrounds"/>
       <repopackage name="gnome-bluetooth"/>
       <repopackage name="gnome-bluetooth-lang"/>
       <repopackage name="gnome-browser-connector"/>
@@ -2136,7 +2135,6 @@
       <repopackage name="liblilv-0-0"/>
       <repopackage name="liblirc_client0"/>
       <repopackage name="libliveMedia107"/>
-      <repopackage name="libLLVM14"/>
       <repopackage name="libLLVM15"/>
       <repopackage name="liblmdb-0_9_29"/>
       <repopackage name="libloader"/>
@@ -3543,11 +3541,9 @@
       <repopackage name="postfix"/>
       <repopackage name="postgresql"/>
       <repopackage name="postgresql-contrib"/>
-      <repopackage name="postgresql-llvmjit"/>
       <repopackage name="postgresql-server"/>
       <repopackage name="postgresql15"/>
       <repopackage name="postgresql15-contrib"/>
-      <repopackage name="postgresql15-llvmjit"/>
       <repopackage name="postgresql15-server"/>
       <repopackage name="pothana2000-fonts"/>
       <repopackage name="power-profiles-daemon"/>
@@ -4621,7 +4617,6 @@
       <repopackage name="WebKit2GTK-4.1-lang"/>
       <repopackage name="webkit2gtk-4_0-injected-bundles"/>
       <repopackage name="webkit2gtk-4_1-injected-bundles"/>
-      <repopackage name="webp-pixbuf-loader"/>
       <repopackage name="wget"/>
       <repopackage name="wget-lang"/>
       <repopackage name="which"/>
