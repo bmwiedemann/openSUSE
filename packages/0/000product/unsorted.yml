@@ -5974,6 +5974,7 @@ unsorted:
   - gnome-2048 
   - gnome-2048-lang 
   - gnome-autoar-devel 
+  - gnome-backgrounds 
   - gnome-bluetooth-1 
   - gnome-bluetooth-1-devel 
   - gnome-bluetooth-1-lang 
@@ -9120,6 +9121,7 @@ unsorted:
   - libLLVM12-32bit: [x86_64] 
   - libLLVM13 
   - libLLVM13-32bit: [x86_64] 
+  - libLLVM14 
   - libLLVM14-32bit: [x86_64] 
   - libLLVM15-32bit: [x86_64] 
   - libLTO11 
@@ -15417,7 +15419,7 @@ unsorted:
   - lldb13: [x86_64] 
   - lldb13-devel: [x86_64] 
   - lldb14: [x86_64] 
-  - lldb14-devel: [x86_64] # devel package of dvd:libLLVM14 
+  - lldb14-devel: [x86_64] 
   - lldb15: [x86_64] 
   - lldb15-devel: [x86_64] # devel package of common_locks:libLLVM15 
   - lldpd 
@@ -15470,9 +15472,9 @@ unsorted:
   - llvm14-devel 
   - llvm14-doc 
   - llvm14-gold 
-  - llvm14-libc++-devel: [x86_64] # devel package of dvd:libLLVM14 
+  - llvm14-libc++-devel: [x86_64] 
   - llvm14-libc++1: [x86_64] 
-  - llvm14-libc++abi-devel: [x86_64] # devel package of dvd:libLLVM14 
+  - llvm14-libc++abi-devel: [x86_64] 
   - llvm14-libc++abi1: [x86_64] 
   - llvm14-libclang13 
   - llvm14-opt-viewer 
@@ -21158,6 +21160,7 @@ unsorted:
   - postgresql-docs 
   - postgresql-jdbc 
   - postgresql-jdbc-javadoc 
+  - postgresql-llvmjit 
   - postgresql-llvmjit-devel 
   - postgresql-plperl 
   - postgresql-plpython 
@@ -21266,6 +21269,7 @@ unsorted:
   - postgresql15-devel 
   - postgresql15-devel-mini 
   - postgresql15-docs 
+  - postgresql15-llvmjit 
   - postgresql15-llvmjit-devel 
   - postgresql15-plperl 
   - postgresql15-plpython 
@@ -43880,6 +43884,7 @@ unsorted:
   - webkit2gtk4-minibrowser 
   - weblate: [x86_64] 
   - weblate-doc: [x86_64] 
+  - webp-pixbuf-loader 
   - websocketpp-devel 
   - weechat 
   - weechat-devel 
