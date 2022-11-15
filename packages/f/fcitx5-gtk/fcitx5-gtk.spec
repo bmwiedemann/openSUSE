@@ -24,6 +24,7 @@ License:        LGPL-2.1-or-later
 Group:          System/I18n/Chinese
 URL:            https://github.com/fcitx/fcitx5-gtk
 Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.xz
+Patch:          backport-c772576.diff
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fcitx5-devel
@@ -101,6 +102,7 @@ This package provides the GObject Introspection bindings for fcitx5.
 
 %prep
 %setup -q
+%patch -p1
 
 %build
 %if 0%{?suse_version} < 1550

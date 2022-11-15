@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov 13 05:40:53 UTC 2022 - Tranter Madi <trmdi@yandex.com>
+
+- backport bugfix from upstream
+  * fix a bug when press Enter in Firefox.
+    See https://github.com/fcitx/fcitx5-gtk/issues/22
+  * add backport-c772576.diff
+
+-------------------------------------------------------------------
 Sat Oct  1 13:19:07 UTC 2022 - Marguerite Su <i@marguerite.su>
 
 - update version 5.0.19
