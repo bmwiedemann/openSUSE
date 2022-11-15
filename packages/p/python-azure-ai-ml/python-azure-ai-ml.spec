@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-ai-ml
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Microsoft Azure Machine Learning Client Library for Python
 License:        MIT
@@ -29,9 +29,10 @@ Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
 Source:         https://files.pythonhosted.org/packages/source/a/azure-ai-ml/azure-ai-ml-%{version}.zip
 Source1:        LICENSE.txt
-BuildRequires:  %{python_module azure-ai-nspkg >= 1.0.0}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module PyJWT}
+BuildRequires:  %{python_module PyYAML >= 5.1.0}
 BuildRequires:  %{python_module applicationinsights}
+BuildRequires:  %{python_module azure-ai-nspkg >= 1.0.0}
 BuildRequires:  %{python_module azure-common >= 1.1}
 BuildRequires:  %{python_module azure-core >= 1.8.0}
 BuildRequires:  %{python_module azure-identity}
@@ -39,24 +40,26 @@ BuildRequires:  %{python_module azure-mgmt-core >= 1.3.0}
 BuildRequires:  %{python_module azure-storage-blob >= 12.10.0}
 BuildRequires:  %{python_module azure-storage-file-datalake}
 BuildRequires:  %{python_module azure-storage-file-share}
-BuildRequires:  %{python_module colorama}
+BuildRequires:  %{python_module colorama < 0.5.0}
 BuildRequires:  %{python_module docker}
 BuildRequires:  %{python_module isodate}
 BuildRequires:  %{python_module jsonschema >= 4.0.0}
 BuildRequires:  %{python_module marshmallow >= 3.5}
 BuildRequires:  %{python_module msrest >= 0.6.18}
+BuildRequires:  %{python_module opencensus-ext-azure < 2.0.0}
 BuildRequires:  %{python_module pathspec >= 0.9.0}
 BuildRequires:  %{python_module pydash}
-BuildRequires:  %{python_module PyJWT}
-BuildRequires:  %{python_module PyYAML >= 5.1.0}
-BuildRequires:  %{python_module strictyaml}
-BuildRequires:  %{python_module tqdm >= 4.63.0}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module strictyaml < 2.0.0}
+BuildRequires:  %{python_module tqdm < 5.0.0}
 BuildRequires:  %{python_module typing-extensions >= 4.0.1}
-BuildRequires:  unzip
-BuildRequires:  python-rpm-macros
 BuildRequires:  fdupes
-Requires:       python-azure-ai-nspkg >= 1.0.0
+BuildRequires:  python-rpm-macros
+BuildRequires:  unzip
+Requires:       python-PyJWT < 3.0.0
+Requires:       python-PyYAML >= 5.1.0
 Requires:       python-applicationinsights <= 0.11.10
+Requires:       python-azure-ai-nspkg >= 1.0.0
 Requires:       python-azure-common >= 1.1
 Requires:       python-azure-core >= 1.8.0
 Requires:       python-azure-identity
@@ -72,8 +75,6 @@ Requires:       python-marshmallow >= 3.5
 Requires:       python-msrest >= 0.6.18
 Requires:       python-pathspec >= 0.9.0
 Requires:       python-pydash
-Requires:       python-PyJWT < 3.0.0
-Requires:       python-PyYAML >= 5.1.0
 Requires:       python-strictyaml
 Requires:       python-tqdm
 Requires:       python-typing-extensions >= 4.0.1
