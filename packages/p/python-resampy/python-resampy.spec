@@ -1,7 +1,7 @@
 #
 # spec file for package python-resampy
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,10 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 %define         skip_python36 1
 Name:           python-resampy
-Version:        0.2.2
+Version:        0.4.2
 Release:        0
 Summary:        Signal resampling in Python
 License:        ISC
@@ -28,23 +27,23 @@ Group:          Development/Languages/Python
 URL:            https://github.com/bmcfee/resampy
 # The GitHub archive includes the tests
 Source:         https://github.com/bmcfee/resampy/archive/refs/tags/%{version}.tar.gz#/resampy-%{version}-gh.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-numba >= 0.32
-Requires:       python-numpy >= 1.10
-Requires:       python-scipy >= 0.13
-Requires:       python-six >= 1.3
+Requires:       python-numba >= 0.53
+Requires:       python-numpy >= 1.17
+Requires:       python-scipy >= 1.0
 Suggests:       python-numpydoc
 Suggests:       python-sphinx
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module numba >= 0.32}
-BuildRequires:  %{python_module numpy >= 1.10}
+BuildRequires:  %{python_module numba >= 0.53}
+BuildRequires:  %{python_module numpy >= 1.17}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module scipy >= 0.13}
-BuildRequires:  %{python_module six >= 1.3}
+BuildRequires:  %{python_module scipy >= 1.0}
 # /SECTION
 %python_subpackages
 
@@ -63,10 +62,10 @@ http://ccrma.stanford.edu/~jos/resample/.
 sed -i -e '/^#!\//, 1d' */*.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -74,7 +73,7 @@ sed -i -e '/^#!\//, 1d' */*.py
 
 %files %{python_files}
 %doc README.md
-%license LICENSE
+%license LICENSE.md
 %{python_sitelib}/resampy*
 
 %changelog
