@@ -258,4 +258,12 @@
     <comment>Factory Ready (forwarded request 1029875 from jrecord)</comment>
     <requestid>1029876</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>a2f53e48a6bd611f30146e3118a36404</srcmd5>
+    <version>3.1.21</version>
+    <time>1668514727</time>
+    <user>dimstar_suse</user>
+    <comment>Missed clear text passwords for VUL-0 bsc#1203818 (forwarded request 1035668 from jrecord)</comment>
+    <requestid>1035669</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Nov 11 18:01:33 UTC 2022 - jason.record@suse.com
+
+- Changes to supportconfig version 3.1.11-46.3
+  + Added missed sanitation check on crash.txt (bsc#1203818)
+- Changes to supportconfig.rc version 3.1.11-30
+  + Added check to _sanitize_file
+  + Using variable for replement text in _sanitize_file
+
+-------------------------------------------------------------------
 Tue Oct 18 18:14:07 UTC 2022 - jason.record@suse.com
 
 - Added lifecycle information (issue#140)
