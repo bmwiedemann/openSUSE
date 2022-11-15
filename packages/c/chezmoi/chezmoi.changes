@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 14 17:42:41 UTC 2022 - filippo.bonazzi@suse.com
+
+- Update to version 2.27.1:
+  * chore: Make generation of versioninfo.json work without tags or git repo
+  * feat: Remember HTTP username in URL in init command
+  * fix: Don't show always scripts in apply --verbose when excluded from diffs
+
+-------------------------------------------------------------------
 Wed Nov 09 18:01:27 UTC 2022 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.27.0:
