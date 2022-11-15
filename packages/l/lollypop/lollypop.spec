@@ -17,13 +17,15 @@
 
 
 Name:           lollypop
-Version:        1.4.35
+Version:        1.4.36
 Release:        0
 Summary:        GNOME music playing application
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://wiki.gnome.org/Apps/Lollypop
 Source0:        %{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM lollypop-1.4.36-libsoup3.patch -- glgo#World/lollypop#2959
+Patch0:         lollypop-1.4.36-libsoup3.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  intltool
 BuildRequires:  itstool
@@ -32,7 +34,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.35.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
-BuildRequires:  pkgconfig(libsoup-2.4)
+BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(pygobject-3.0) >= 3.29.1
 Requires:       dbus-1-python3
 Requires:       gstreamer-plugins-base
@@ -44,7 +46,7 @@ Requires:       python3-gobject-Gdk
 Requires:       python3-gst
 Recommends:     easytag
 Recommends:     kid3-cli
-Recommends:     youtube-dl
+Recommends:     yt-dlp
 Suggests:       python3-textblob
 BuildArch:      noarch
 

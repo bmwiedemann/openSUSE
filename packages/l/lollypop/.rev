@@ -1818,4 +1818,20 @@
     (glgo#World/lollypop#2927).</comment>
     <requestid>997417</requestid>
   </revision>
+  <revision rev="164" vrev="1">
+    <srcmd5>e20a65b0fbc1f38284fe32b63c0a9506</srcmd5>
+    <version>1.4.36</version>
+    <time>1668514738</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.36:
+  * Switch from libsoup2 to libsoup3 (glgo#World/lollypop#2945).
+  * Switch from youtube-dl to yt-dlp.
+  * Fix irregular spacing in artist information panel
+    (glgo#World/lollypop#2958).
+  * Use original date instead of date for sorting
+    (glgo#World/lollypop#2833).
+- Add lollypop-1.4.36-libsoup3.patch (glgo#World/lollypop#2959).
+</comment>
+    <requestid>1035714</requestid>
+  </revision>
 </revisionlist>
