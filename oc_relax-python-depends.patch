@@ -1,6 +1,6 @@
-diff -Nru oci-cli-3.20.0.orig/requirements.txt oci-cli-3.20.0/requirements.txt
---- oci-cli-3.20.0.orig/requirements.txt	2022-11-01 20:08:18.000000000 +0100
-+++ oci-cli-3.20.0/requirements.txt	2022-11-02 12:39:46.299912638 +0100
+diff -Nru oci-cli-3.20.1.orig/requirements.txt oci-cli-3.20.1/requirements.txt
+--- oci-cli-3.20.1.orig/requirements.txt	2022-11-08 08:43:52.000000000 +0100
++++ oci-cli-3.20.1/requirements.txt	2022-11-14 11:48:15.603353504 +0100
 @@ -2,41 +2,41 @@
  # (https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format),
  # you may need to use the --extra-index-url option instead.
@@ -10,7 +10,7 @@ diff -Nru oci-cli-3.20.0.orig/requirements.txt oci-cli-3.20.0/requirements.txt
  arrow>=1.0.0
  certifi
  cffi>=1.9.1
--click==8.0.4
+-click==7.1.2
 -coverage==4.5.2
 -cryptography>=3.2.1,<=37.0.2
 -httpsig-cffi==15.0.0
@@ -18,7 +18,7 @@ diff -Nru oci-cli-3.20.0.orig/requirements.txt oci-cli-3.20.0/requirements.txt
 -jmespath==0.10.0
 -ndg-httpsclient==0.4.2
 -mock==2.0.0
--oci==2.87.0
+-oci==2.88.0
 -packaging==20.2
 -pluggy==0.13.0
 -py==1.10.0
@@ -29,7 +29,7 @@ diff -Nru oci-cli-3.20.0.orig/requirements.txt oci-cli-3.20.0/requirements.txt
 -pytest==3.2.3
 -pytest-cov==2.5.1
 -python-dateutil>=2.5.3,<3.0.0
-+click>=8.0.4
++click>=7.1.2
 +coverage>=4.5.2
 +cryptography>=3.2.1
 +httpsig-cffi>=15.0.0
@@ -37,7 +37,7 @@ diff -Nru oci-cli-3.20.0.orig/requirements.txt oci-cli-3.20.0/requirements.txt
 +jmespath>=0.10.0
 +ndg-httpsclient>=0.4.2
 +mock>=2.0.0
-+oci>=2.87.0
++oci>=2.88.0
 +packaging>=20.2
 +pluggy>=0.13.0
 +py>=1.10.0
@@ -75,22 +75,22 @@ diff -Nru oci-cli-3.20.0.orig/requirements.txt oci-cli-3.20.0/requirements.txt
 +PyYAML>=5.4
 +docutils>=0.15.2
 +prompt-toolkit>=3.0.29
-diff -Nru oci-cli-3.20.0.orig/setup.py oci-cli-3.20.0/setup.py
---- oci-cli-3.20.0.orig/setup.py	2022-11-01 20:08:18.000000000 +0100
-+++ oci-cli-3.20.0/setup.py	2022-11-02 12:39:12.087779814 +0100
+diff -Nru oci-cli-3.20.1.orig/setup.py oci-cli-3.20.1/setup.py
+--- oci-cli-3.20.1.orig/setup.py	2022-11-08 08:43:52.000000000 +0100
++++ oci-cli-3.20.1/setup.py	2022-11-14 11:47:37.807302313 +0100
 @@ -29,23 +29,23 @@
      readme = f.read()
  
  requires = [
--    'oci==2.87.0',
-+    'oci>=2.87.0',
+-    'oci==2.88.0',
++    'oci>=2.88.0',
      'arrow>=1.0.0',
      'certifi',
--    'click==8.0.4',
+-    'click==7.1.2',
 -    'cryptography>=3.2.1,<=37.0.2',
 -    'jmespath==0.10.0',
 -    'python-dateutil>=2.5.3,<3.0.0',
-+    'click>=8.0.4',
++    'click>=7.1.2',
 +    'cryptography>=3.2.1',
 +    'jmespath>=0.10.0',
 +    'python-dateutil>=2.5.3',
