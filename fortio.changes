@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Nov 15 09:21:44 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.38.4:
+  * added test for #652, stepped on #653 while testing the test, added test for that too (#654)
+
+-------------------------------------------------------------------
+Tue Nov 15 09:19:08 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 1.38.3:
+  * support User-Agent change and deletion from -H, simplify UI for headers (#649)
+  * codeql v2 and a lot of github actions update, sha pinning in dockerfile etc (#647)
+  * Bump docker/setup-buildx-action from 1.7.0 to 2.2.1 (#646)
+  * Bump docker/setup-qemu-action from 1.2.0 to 2.1.0 (#645)
+  * Bump docker/login-action from 1.10.0 to 2.1.0 (#644)
+  * Bump docker/build-push-action from 2.5.0 to 3.2.0 (#643)
+  * bump build image (go 1.19.3), added govulncheck, fix permissions in /go - also stop using /go/src (#641)
+  * README formatting and links correction (#636)
+
+-------------------------------------------------------------------
 Tue Oct 25 18:45:32 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 1.38.2:
