@@ -25,6 +25,8 @@ Group:          Development/Libraries/GNOME
 URL:            https://git.gnome.org/browse/libwnck
 Source0:        https://download.gnome.org/sources/libwnck/43/%{name}-%{version}.tar.xz
 Source98:       baselibs.conf
+# PATCH-FIX-UPSTREAM handle-avoid-segfault-in-invalidate-icons.patch glgo#GNOME/libwnck#46 -- avoid segfault in invalidate_icons
+Patch0:         handle-avoid-segfault-in-invalidate-icons.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gettext
