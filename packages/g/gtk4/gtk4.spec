@@ -69,7 +69,7 @@ BuildRequires:  pkgconfig(epoxy) >= 1.4
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.30.0
 BuildRequires:  pkgconfig(gi-docgen)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.65.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.66.0
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.53.7
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.39.0
@@ -83,11 +83,11 @@ BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libtiff-4)
-BuildRequires:  pkgconfig(pango) >= 1.49.0
+BuildRequires:  pkgconfig(pango) >= 1.50.0
 BuildRequires:  pkgconfig(pangocairo) >= 1.14.0
 BuildRequires:  pkgconfig(pangoft2)
 BuildRequires:  pkgconfig(tracker-sparql-3.0)
-BuildRequires:  pkgconfig(wayland-client) >= 1.14.91
+BuildRequires:  pkgconfig(wayland-client) >= 1.21.0
 BuildRequires:  pkgconfig(wayland-cursor) >= 1.9.91
 BuildRequires:  pkgconfig(wayland-egl)
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.25
