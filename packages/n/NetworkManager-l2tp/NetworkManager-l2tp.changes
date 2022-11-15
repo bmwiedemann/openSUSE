@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Nov 13 19:59:00 UTC 2022 - doug@uq.edu.au
+
+- Update to version 1.20.6:
+  * Fix for Libreswan 4.9 and later detection.
+  * Fix for ipsec-psk-flags setting not being saved.
+  * Add getenv NM_L2TP_XL2TPD_MAX_RETRIES to allow setting the
+    xl2tpd max retries value.
+  * Increase IPsec and L2TP daemon wait timeouts for potentially
+    better debugging.
+  * Updated translations.
+- Changes from version 1.20.4:
+  * Security fix - properly detect that strongswan CHILD_SA
+    connection has been established.
+  * Fix for libreswan "cannot route template policy" error.
+
+-------------------------------------------------------------------
 Mon Apr 25 04:55:00 UTC 2022 - doug@uq.edu.au
 
 - Update to version 1.20.2:

@@ -111,4 +111,12 @@
 - Adds compatibility for Gtk4 gnome-control-center (forwarded request 972432 from dkosovic)</comment>
     <requestid>972518</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4442ebd4d1e7e2c76f62441b9700ca08</srcmd5>
+    <version>1.20.6</version>
+    <time>1668514697</time>
+    <user>dimstar_suse</user>
+    <comment>New upstream release</comment>
+    <requestid>1035613</requestid>
+  </revision>
 </revisionlist>
