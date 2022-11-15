@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5NewStuff5
-%define _tar_path 5.99
+%define _tar_path 5.100
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           knewstuff
-Version:        5.99.0
+Version:        5.100.0
 Release:        0
 Summary:        Framework for downloading and sharing additional application data
 License:        LGPL-2.1-or-later
@@ -56,6 +56,7 @@ BuildRequires:  cmake(KF5XmlGui) >= %{_kf5_bugfix_version}
 BuildRequires:  cmake(Qt5Core) >= 5.15.0
 BuildRequires:  cmake(Qt5Qml) >= 5.15.0
 BuildRequires:  cmake(Qt5Quick) >= 5.15.0
+BuildRequires:  cmake(Qt5UiPlugin) >= 5.15.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.15.0
 BuildRequires:  cmake(Qt5Xml) >= 5.15.0
 
@@ -207,6 +208,8 @@ specification. Development files.
 %{_kf5_libdir}/libKF5NewStuff.so
 %{_kf5_libdir}/libKF5NewStuffWidgets.so
 %{_kf5_libdir}/cmake/KF5NewStuff/
+%dir %{_kf5_plugindir}/designer
+%{_kf5_plugindir}/designer/knewstuffwidgets.so
 %dir %{_kf5_includedir}/KNewStuff3/
  %{_kf5_includedir}/KNewStuff3/knewstuff_version.h
 %{_kf5_includedir}/KMoreTools/
