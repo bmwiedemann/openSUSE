@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov  8 08:34:47 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.100.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.100.0
+- Changes since 5.99.0:
+  * [TermGeneratorTest] Reduce code duplication
+  * Correct and simplify OrpostingIterator constructor
+  * Convert kded metadata to JSON
+
+-------------------------------------------------------------------
 Sat Oct  1 15:55:22 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.99.0
