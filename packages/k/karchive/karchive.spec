@@ -17,7 +17,7 @@
 
 
 %define lname   libKF5Archive5
-%define _tar_path 5.99
+%define _tar_path 5.100
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without released
 Name:           karchive
-Version:        5.99.0
+Version:        5.100.0
 Release:        0
 Summary:        Qt 5 addon providing access to numerous types of archives
 License:        LGPL-2.0-or-later
@@ -41,6 +41,7 @@ BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt5Core) >= 5.15.0
+BuildRequires:  cmake(Qt5LinguistTools) > 5.15.0
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(zlib)
@@ -64,6 +65,8 @@ KArchive provides classes for easy reading, creation and manipulation of
 
 If also provides transparent compression and decompression of data, like the
 GZip format, via a subclass of QIODevice.
+
+%lang_package -n %{lname}
 
 %package devel
 Summary:        Qt 5 addon providing access to numerous types of archives: Build Environment
@@ -90,6 +93,8 @@ GZip format, via a subclass of QIODevice. Development files
 %kf5_makeinstall -C build
 %fdupes %{buildroot}
 
+%find_lang karchive5 --with-man --all-name --with-qt
+
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
 
@@ -99,6 +104,8 @@ GZip format, via a subclass of QIODevice. Development files
 %{_kf5_debugdir}/karchive.categories
 %{_kf5_debugdir}/*.renamecategories
 %{_kf5_libdir}/libKF5Archive.so.*
+
+%files -n %{lname}-lang -f karchive5.lang
 
 %files devel
 %{_kf5_includedir}/
