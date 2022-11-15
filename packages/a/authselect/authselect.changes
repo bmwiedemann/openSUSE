@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 15 19:49:56 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- avoid bashism in post scripts (bsc#1195391) 
+
+-------------------------------------------------------------------
 Fri Aug  5 19:39:16 UTC 2022 - Mathias Homann <Mathias.Homann@opensuse.org>
 
 - added authselect-usrmerge.patch to adapt authselect for the /etc - /usr/etc merge

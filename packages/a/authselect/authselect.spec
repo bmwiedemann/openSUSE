@@ -307,7 +307,7 @@ CURRENT=`%{_bindir}/authselect current --raw 2> /dev/null`
 if [ $? -eq 0 ]; then
     PROFILE=`echo $CURRENT | gawk '{print $1;}'`
 
-    if [ $PROFILE == "sssd" ] ; then
+    if [ "$PROFILE" = "sssd" ] ; then
         if grep -E "services[[:blank:]]*=[[:blank:]]*.*sudo" %{_sysconfdir}/sssd/sssd.conf &> /dev/null ; then
             %{_bindir}/authselect enable-feature with-sudo &> /dev/null
         elif systemctl is-active sssd-sudo.service sssd-sudo.socket --quiet || systemctl is-enabled sssd-sudo.socket --quiet ; then
