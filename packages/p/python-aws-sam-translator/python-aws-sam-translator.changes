@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Oct 27 09:58:47 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 1.53.0
+  * Verify profile variables have been replaced (#264)
+  * Fix integ tests for feature toggle related to custom domain (#266)
+  * feat: Event filtering for MQ, MSK, SMK (#134) (#265)
+  * Fixed indentation in custom_domains_edge yaml file (#273)
+  * Always copy profile (#274)
+  * Increase api_with_authorizer retry delay (#275)
+  * Add retry-once to connector tests (#276)
+  * Use node14 runtime in connector integ tests (#278)
+  * add a step to clean up unused network interfaces in the precreated subnets
+  * Do not retry on SkipTest (#280)
+- Update to 1.52.0
+  * fix: Update Slack Invite link by @jfuss in #2490
+  * feat: adding support for SSM Parameters (string) as Type by @LautaroJayat
+    in #2469
+  * chore: Updated maintainers by @lucashuy in #2494
+  * Release 1.51.0 (to develop) by @aws-sam-cli-bot in #2500
+  * docs: update README by @hoffa in #2501
+  * feat: Add State Property to EventBridgeRule EventSource in Function by
+    @nallenscott in #2497
+  * feat: Added UserAttributeUpdateSettings to Cognito by @lucashuy in #2503
+  * chore: Use pre-created SAR app during integration tests by @mndeveci in
+    #2507
+  * chore: Add test name to request logging and remove default region from
+    pytest.ini by @qingchm in #2513
+  * chore: Only do request logging when internal flag is provided by @qingchm
+    in #2514
+
+-------------------------------------------------------------------
 Tue Sep 20 13:22:01 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.51.0

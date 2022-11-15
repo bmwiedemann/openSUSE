@@ -28,7 +28,7 @@
 %define skip_python2 1
 %endif
 Name:           python-aws-sam-translator
-Version:        1.51.0
+Version:        1.53.0
 Release:        0
 Summary:        AWS SAM template to AWS CloudFormation template translator
 License:        Apache-2.0
@@ -38,11 +38,8 @@ Patch0:         skip-tests-require-network.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-PyYAML >= 4.2
-Requires:       python-boto3 >= 1.5
-Requires:       python-docopt >= 0.6.2
-Requires:       python-jsonschema >= 3.0
-Requires:       python-six >= 1.11
+Requires:       python-boto3 >= 1.19.5
+Requires:       python-jsonschema >= 3.2
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
@@ -50,23 +47,15 @@ BuildArch:      noarch
 BuildRequires:  python
 %endif
 # SECTION test requirements
-BuildRequires:  %{python_module PyYAML >= 5.1}
-BuildRequires:  %{python_module boto3 >= 1.5}
-BuildRequires:  %{python_module coverage >= 4.4.0}
+BuildRequires:  %{python_module PyYAML >= 5.4}
+BuildRequires:  %{python_module boto3 >= 1.19.5}
+BuildRequires:  %{python_module coverage >= 5.3}
 BuildRequires:  %{python_module docopt >= 0.6.2}
-BuildRequires:  %{python_module jsonschema >= 3.0}
-BuildRequires:  %{python_module parameterized >= 0.6.1}
+BuildRequires:  %{python_module jsonschema >= 3.2}
+BuildRequires:  %{python_module parameterized >= 0.7.4}
 BuildRequires:  %{python_module pytest >= 3.0.7}
-BuildRequires:  %{python_module pytest-cov >= 2.4.0}
-BuildRequires:  %{python_module requests >= 2.20.0}
-BuildRequires:  %{python_module six >= 1.11}
-%if %{with python2}
-BuildRequires:  python-enum34 >= 1.1
-%endif
-# /SECTION
-%ifpython2
-Requires:       python-enum34 >= 1.1
-%endif
+BuildRequires:  %{python_module pytest-cov >= 2.10.1}
+BuildRequires:  %{python_module requests >= 2.24.0}
 %python_subpackages
 
 %description
@@ -74,8 +63,7 @@ AWS SAM Translator is a library that transform SAM
 templates into AWS CloudFormation templates
 
 %prep
-%setup -q -n serverless-application-model-%{version}
-%patch0 -p1
+%autosetup -p1 -n serverless-application-model-%{version}
 sed -i -e 's:~=:>=:g' requirements/base.txt
 
 %build
@@ -109,6 +97,7 @@ export LANG=en_US.UTF8
 %doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/sam-translate
-%{python_sitelib}/*
+%{python_sitelib}/samtranslator
+%{python_sitelib}/aws_sam_translator-%{version}*-info
 
 %changelog
