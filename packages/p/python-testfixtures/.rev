@@ -239,4 +239,19 @@
     pytest 7.</comment>
     <requestid>1008127</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>9154df1150c8afb96a05bbada37d5230</srcmd5>
+    <version>7.0.3</version>
+    <time>1668514692</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.0.3 (3 Nov 2022)
+  * Further bugfixes around self-referential datastructures and :func:`compare`.
+- Update to 7.0.2 (1 Nov 2022)
+  * Reinstate support for self-referential data structures in :func:`compare`. The new implementation provides more clarity about
+    what's going on and also ignores more immutable data types.
+- Update to 7.0.1 (1 Nov 2022)
+  * Remove non-functional support for self-referential data structures in :func:`compare`. The functionality didn't work but did cause
+    erroneous reported equality of values in dictionaries that were actually not equal.</comment>
+    <requestid>1035575</requestid>
+  </revision>
 </revisionlist>
