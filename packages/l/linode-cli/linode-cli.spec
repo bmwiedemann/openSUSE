@@ -20,7 +20,7 @@
 %bcond_without python2
 
 Name:           linode-cli
-Version:        5.19.0
+Version:        5.25.0
 Release:        0
 Summary:        The Linode command-line interface
 License:        BSD-3-Clause

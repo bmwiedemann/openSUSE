@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov 10 14:57:20 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 5.25.0
+  * refreshed openapi specs
+  * Link to endpoint documentation in command help page
+  * output: print default values being used
+  * Add support for action aliasing
+  * Add support for autocompletion
+  * Accepted integer chunk_size instead of float
+  * Refactor for Python 3 
+
+- refreshed the patch used to remove shebang line in __init__.py 
+
+-------------------------------------------------------------------
 Tue May 03 12:52:14 UTC 2022 - rombert@apache.org
 
 - Update to version 5.19.0:
