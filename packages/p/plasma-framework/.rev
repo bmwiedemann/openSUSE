@@ -1225,4 +1225,12 @@
   * Port away from deprecated QSGSimpleMaterialShader</comment>
     <requestid>1009187</requestid>
   </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>2b2a182df84b0ba586756210fe3de577</srcmd5>
+    <version>5.100.0</version>
+    <time>1668514676</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.100.0 (forwarded request 1034604 from cgiboudeaux)</comment>
+    <requestid>1035433</requestid>
+  </revision>
 </revisionlist>
