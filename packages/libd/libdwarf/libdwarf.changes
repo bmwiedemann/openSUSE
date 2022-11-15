@@ -10,7 +10,7 @@ Mon Oct  3 15:23:25 UTC 2022 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Fri Jul 15 19:11:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- update to 0.4.1:
+- update to 0.4.1 (bsc#1200899, CVE-2022-34299):
   * Two places where a carefully corrupted object file
     could result in libdwarf crashing a caller due to
     referencing memory outside the intended read area

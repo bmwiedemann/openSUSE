@@ -309,4 +309,12 @@
     documented in libdwarf.pdf and in the on-line html.</comment>
     <requestid>1007710</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>9d14c75383e20dd6a1befa839a2543ff</srcmd5>
+    <version>0.4.2</version>
+    <time>1668514627</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.1 (bsc#1200899, CVE-2022-34299):</comment>
+    <requestid>1035677</requestid>
+  </revision>
 </revisionlist>
