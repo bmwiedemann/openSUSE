@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Nov  8 08:35:25 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.100.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.100.0
+- Too many changes since 5.99.0, only listing bugfixes:
+  * CamelCursor: Improve complex unicode handling (kde#461239)
+  * remove file name for saveas only for remote files (kde#461161)
+  * Fix tab order in search (kde#440888)
+  * fix clipboard selection update on shift mouse click (kde#443642)
+  * Ensure to set highlight on reload when file type was set by user (kde#454715)
+
+-------------------------------------------------------------------
 Sat Oct  1 15:56:06 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.99.0
