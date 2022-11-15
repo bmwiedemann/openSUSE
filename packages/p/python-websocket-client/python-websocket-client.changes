@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov  9 19:43:22 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 1.4.2 
+  - create_dispatcher is determined by URL ws/wss, NOT by presence of sslopt args, to maintain consistency (#875)
+  - Remove redundant key generation line (#864)
+  - Updated docs to fix old links and updated CI to include Python 3.11
+
+-------------------------------------------------------------------
 Tue Oct 11 17:11:02 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 1.4.1 

@@ -25,7 +25,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-websocket-client
-Version:        1.4.1
+Version:        1.4.2
 Release:        0
 Summary:        WebSocket client implementation
 License:        LGPL-2.1-only
