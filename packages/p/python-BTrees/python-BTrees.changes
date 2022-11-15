@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Nov  6 17:30:11 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- version update to 4.11.0 (2022-11-03):
+  * Add support for Python 3.11.
+- version update to 4.10.1 (2022-09-12):
+  * Disable unsafe math optimizations in C code. (#184)
+- version update to 4.10.0 (2022-03-09):
+  * Add support for Python 3.10.
+- version update to 4.9.2 (2021-06-09):
+  * Fix fsBTree.TreeSet and fsBTree.BTree raising SystemError. See
+    issue 170.
+  * Fix all the fsBTree objects to provide the correct interfaces
+    and be instances of the appropriate collection ABCs. This was
+    done for the other modules in release 4.8.0.
+  * Fix the multiunion, union, intersection, and difference
+    functions when used with arbitrary iterables. Previously, the
+    iterable had to be pre-sorted, meaning only sequences like list
+    and tuple could reliably be used; this was not documented
+    though. If the iterable wasn’t sorted, the function would
+    produce garbage output. Now, if the function detects an
+    arbitrary iterable, it automatically sorts a copy.
+- version update to 4.9.1 (2021-05-27):
+  * Fix setting unknown class attributes on subclasses of BTrees
+    when using the C extension. This prevented subclasses from
+    being decorated with @component.adapter(). See issue 168.
+- version update to 4.9.0 (2021-05-26):
+  * Fix the C implementation to match the Python implementation and
+    allow setting custom node sizes for an entire application
+    directly by changing BTree.max_leaf_size and
+    BTree.max_internal_size attributes, without having to create a
+    new subclass. These attributes can now also be read from the
+    classes in the C implementation. See issue 166.
+  * Add various small performance improvements for storing
+    zope.interface attributes on BTree and TreeSet as well as
+    deactivating persistent objects from this package.
+- disable more tests, that suffer from the same problem as 
+  testPurePython
+
+-------------------------------------------------------------------
 Thu Jan 13 07:09:07 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Add missing Provides
