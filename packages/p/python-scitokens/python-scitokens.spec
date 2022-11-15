@@ -27,6 +27,8 @@ Summary:        SciToken reference implementation library
 License:        Apache-2.0
 URL:            https://scitokens.org
 Source:         https://github.com/scitokens/scitokens/archive/refs/tags/v%{version}.tar.gz#/%{bname}-%{version}.tar.gz
+# https://github.com/scitokens/scitokens/issues/169
+Patch0:         python-scitokens-no-six.patch
 BuildRequires:  %{python_module PyJWT}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -49,6 +51,7 @@ want to delegate trust for an issuer for managing a storage allocation.
 
 %prep
 %setup -q -n scitokens-%{version}
+%patch0 -p1
 
 %build
 %python_build
