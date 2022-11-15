@@ -1,4 +1,198 @@
 -------------------------------------------------------------------
+Wed Nov  2 12:32:50 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Release 0.19 (2022-07-05)
+  - General
+    - Dropped support for Python 2.7, 3.5, and 3.6. and removed
+      compatibility hacks from code and tests.
+    - Code cleanup, check PEP 8 conformity with flake8
+      (exceptions in file tox.ini).
+    - New module. Support for python -m docutils. Also used for
+      the docutils console script entry point.
+    - Let Publisher.publish() print info and prompt
+      when waiting for input from a terminal (cf.
+      https://clig.dev/#interactivity).
+    - Respect "input_encoding_error_handler" setting when opening
+      a source.
+    - New function error_string() obsoletes
+      utils.error_reporting.ErrorString.
+    - Class ErrorOutput moved here from utils/error_reporting.
+    - Use "utf-8-sig" instead of Python's default encoding if the
+      "input_encoding" setting is None.
+    - Fix error when reading of UTF-16 encoded source without
+      trailing newline.
+    - Aliases "markdown" and "commonmark" point to
+      "commonmark_wrapper".
+    - Alias for the "myst" parser
+      (https://pypi.org/project/myst-docutils).
+    - Use absolute module names in _parser_aliases instead
+      of two import attempts. (Keeps details if the
+      recommonmark_wrapper.py module raises an ImportError.)
+    - Prepend parser name to ImportError if importing a parser
+      class fails.
+    - New module for parsing CommonMark input. Selects a
+      locally installed 3rd-party parser (pycmark, myst, or
+      recommonmark).
+    - Raise ImportError, if import of the upstream parser
+      module fails. If called from an "include" directive, the
+      system-message now has source/line info.
+    - Adapt to and test with "recommonmark" versions 0.6.0 and
+      0.7.1.
+    - Update PEP base URL (fixes bug #445), use "https:" scheme
+      in RFC base URL.
+    - Add reporter to Directive class attributes.
+    - parser_name() keeps details if converting ImportError to
+      ValueError.
+    - Don't use mutable default values for function
+      arguments. Fixes bug #430.
+    - Fix bug #435: invalid references in problematic nodes with
+      report_level=4.
+    - decode_path() returns str instance instead of
+      nodes.reprunicode.
+    - Add deprecation warning.
+    - Add "html writers" to config_section_dependencies. Fixes
+      bug #443.
+    - Write table column widths with 3 digits precision. Fixes
+      bug #444.
+    - Add space before "charset" meta tag closing sequence.
+    - Remove class value "controls" from an image node with video
+      content after converting it to a "control" attribute of the
+      <video> tag.
+    - Wrap groups of footnotes in an <aside> for easier styling.
+    - Use "https:" scheme in "python_home" URL default.
+    - Fix links in template.txt.
+    - New "docutils" console script entry point. Fixes bug #447.
+    - Always encode the log file "alltests.out" using 'utf-8'.
+    - exception_data() now returns None if no exception was
+      raised.
+    - recommonmark_wrapper only imported if upstream parser is
+      present.
+    - Fix bug #436: Null char valid in CSV since Python 3.11.
+    - Allow 3rd-party drop-in components for reader and parser,
+      too.
+    - Fix help output.
+    - Actual code moved to docutils.__main__.py.
+    - Options -h and --help print short usage message.
+- Release 0.18.1 (2021-11-23)
+    - Node.traverse() returns a list again to restore backwards
+      compatibility. Fixes bug #431.
+    - New method Node.findall(): like Node.traverse() but returns
+      an iterator. Obsoletes Node.traverse().
+    - Fix behaviour of get_stylesheet_list(): do not look up
+      stylesheets given as "stylesheet" setting. Cf. bug #434.
+    - Fix handling of footnote_backlinks==False (report Alan G
+      Isaac).
+    - Fix typo (bug #432).
+    - Fix spurious output with Windows (bug #350).
+    - Fix a false positive (bug #434).
+- Release 0.18 (2021-10-26)
+    - mark as provisional (will switch from using "optparse" to
+      "argparse").
+    - remove hack for the now obsolete "mod_python" Apache
+      module.
+    - new function get_default_settings()
+    - Don't change a list while looping over it (in
+      document.set_name_id_map()). Thanks to Mickey Endito.
+    - Test and update to work with recommonmark version
+      0.6.0. Still provisional.
+    - Unfortunately, recommonmark is no longer maintained.
+    - Fix bug #424 Wrong circular inclusion detection. Use a
+      "magic" comment instead of line numbers to keep a log of
+      recursive inclusions.
+    - Use a "magic" comment to update the log of recursive
+      inclusions.
+    - New option `image_loading`_. Support "lazy" loading of
+      images. Obsoletes "embed_images".
+    - Fix spelling of option "detailed".
+    - Read settings from standard configuration files.
+- Release 0.18b1 (2021-10-05)
+  - The default value for the "auto_id_prefix" setting changed to
+    "%": auto-generated IDs use the tag name as prefix.
+  - Make meta a standard Docutils doctree node. Writers may
+    ignore "meta" nodes if they are not supported by the output
+    format.
+  - document.make_id(): Do not strip leading number and hyphen
+    characters from name if the id_prefix setting is non-empty.
+  - Node.traverse() returns an iterator instead of a list.
+  - Removed. (Meta directive moved to misc.py.)
+  - Meta directive class (moved from html.py) inserts meta
+    (instead of pending) nodes.
+  - Add class option to Raw directive.
+  - Unify behaviour of "widths" option: check that the length of
+    an integer list equals the number of table columns also for
+    the "table" directive.
+  - Fork from elyxer and remove code that is not required for
+    math conversion.
+  - Scale variable sized operators and big delimiters with CSS
+  - Support more commands, fix mapping of commands to Unicode
+    characters (cf. LaTeX syntax for mathematics).
+  - Fix bug #244 Wrong subscript/superscript order.
+  - Don't use <tt> element (deprecated in HTML5).
+  - Use STIX fonts if available.
+  - Fix source location (line number) for attribution
+    elements. Patch by Mickey Endito.
+  - Add line, source, and rawsource internal attributes for
+    blockquote elements. Patch by Mickey Endito.
+  - Skip system_messages when propagating targets. Fixes bug
+    #425.
+  - Removed unique_combinations() (obsoleted by
+    itertools.combinations()).
+  - Major update (fixes and support for additional commands and
+    symbols). Fixes bug #407.
+  - Write footnote brackets and field term colons to HTML, so
+    that they are present also without CSS and when copying
+    text. Adapt minimal.css.
+  - Use semantic tags <aside> for footnote text, topics,
+    admonitions, and system-messages and <nav> for the table of
+    contents. Use <div> for citations.
+  - Only specify table column widths, if the "widths" option
+    is set and is not "auto" (fixes bug #426). The table_style
+    setting "colwidths-grid" restores the current default.
+  - Use ARIA roles to enable accessible HTML for abstract,
+    dedication, the table of contents, footnote, references,
+    footnotes, citations, and backlinks.
+  - Use "aria-level" attribute instead of invalid tags <h7>,
+    <h8>, ... for headings of deeply nested sections.
+  - Do not set classes "compound-first", "compound-middle",
+    or "compound-last" to elements nested in a compound. Use
+    class value "backrefs" instead of "fn-backref" for a span of
+    back-references.
+  - Do not write class values handled by the HTML writer
+    ("colwidths-auto", "colwidths-given", "colwidths-grid") to
+    the output.
+  - Move space character between section number and heading into
+    "sectnum" span.
+  - Removed attribute HTMLTranslator.topic_classes
+  - Items of a definition list with class argument "details" are
+    converted to details disclosure elements.
+  - Overwrite methods in _html_base.HTMLTranslator that use
+    HTML5 tags (details, aside, nav, ...) and attributes (role,
+    aria-level).
+  - The setting legacy_class_functions now defaults to
+    "False". Adapt stylesheets modifying \DUadmonition and/or
+    \DUtitle.
+  - Apply patch #181 "Fix tocdepth when chapter/part in use" by
+    John Thorvald Wodder II.
+  - Fix newlines after/before ids_to_labels() (cf. patch #183).
+  - Refactor/revise ToC writing.
+  - Don't add \phantomsection to labels in math-blocks.
+  - Improve spacing and allow customization of Docutils-generated
+    table of contents.
+  - New algorithm for table column widths. Fixes bug #422. New
+    configuration setting legacy_column_widths.
+  - Table.set_table_style() arguments changed.
+  - Only write "continued on next page..." if it fits without
+    making the table columns wider.
+  - Table width option overrides conflicting "auto" column
+    widths.
+  - Fix excessive padding above sidebar titles.
+  - Fix option "detailed" under Python 2.7.
+  - Remove IE 6 compatibility workarounds iepngfix.htc and
+    blank.gif (fixes bug #169).
+  - Fix: double quotes need to be escaped on macro
+    invocation. Done everywhere.
+
+-------------------------------------------------------------------
 Sat Oct 16 21:09:06 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.17.1:

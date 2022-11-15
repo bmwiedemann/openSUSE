@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,16 +24,17 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-docutils%{psuffix}
-Version:        0.17.1
+Version:        0.19
 Release:        0
 Summary:        Python Documentation Utilities
 License:        BSD-2-Clause AND Python-2.0 AND GPL-2.0-or-later AND GPL-3.0-or-later AND SUSE-Public-Domain
 URL:            https://pypi.python.org/pypi/docutils/
 Source:         https://files.pythonhosted.org/packages/source/d/docutils/docutils-%{version}.tar.gz
 Source99:       python-docutils-rpmlintrc
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module xml}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -65,42 +66,51 @@ easy-to-read, what-you-see-is-what-you-get plaintext markup syntax.
 # Remove useless ".py" ending from executables:
 for i in tools/rst*; do mv "$i" "${i/.py}"; done
 sed -i "s|'tools/\(rst.*\)\.py'|'tools/\1'|" setup.py
-# Remove shebang from non-executable files
-for i in {'code_analyzer','error_reporting','punctuation_chars','smartquotes','math/latex2mathml','math/math2html','math/tex2mathml_extern'}; do
-sed -i -e "1d" "docutils/utils/$i.py"
-done
-sed -i -e "1d" "docutils/writers/xetex/__init__.py" "docutils/writers/_html_base.py"
-rm ./docs/dev/.release.txt.swp
+find . -name \*.mp4 -print -exec chmod -x '{}' \;
+
+# Actually seems to work with Python 3.6
+sed -i -e '/python_requires/s/7/6/' setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
-for binary in rst2html rst2latex rst2man rst2odt rst2odt_prepstyles rst2pseudoxml rst2s5 rst2xetex rst2xml rstpep2html rst2html4 rst2html5 ; do
+%pyproject_install
+for binary in docutils rst2html rst2latex rst2man rst2odt rst2odt_prepstyles rst2pseudoxml rst2s5 rst2xetex rst2xml rstpep2html rst2html4 rst2html5 ; do
     %python_clone -a %{buildroot}%{_bindir}/$binary
 done
+%{python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+# Remove shebang from non-executable files
+for i in code_analyzer error_reporting punctuation_chars smartquotes math/latex2mathml math/math2html math/tex2mathml_extern ; do
+    sed -i -e '1{\@^#! *%{_bindir}.*python@d}' %{buildroot}%{$python_sitelib}/docutils/utils/$i.py
+done
+for i in writers/xetex/__init__ writers/_html_base __main__ parsers/commonmark_wrapper parsers/recommonmark_wrapper ; do
+    sed -i -e '1{\@^#! *%{_bindir}.*python@d}' %{buildroot}%{$python_sitelib}/docutils/$i.py
+done
+}
+
 %endif
 
 %check
 %if %{with test}
-%python_exec test/alltests.py
+%python_exec test/alltests.py -v
 %endif
 
 %if !%{with test}
 %post
-%{python_install_alternative rst2html rst2latex rst2man rst2odt rst2odt_prepstyles rst2pseudoxml rst2s5 rst2xetex rst2xml rstpep2html rst2html4 rst2html5}
+%{python_install_alternative docutils rst2html rst2latex rst2man rst2odt rst2odt_prepstyles rst2pseudoxml rst2s5 rst2xetex rst2xml rstpep2html rst2html4 rst2html5}
 
 %postun
-%{python_uninstall_alternative rst2html rst2latex rst2man rst2odt rst2odt_prepstyles rst2pseudoxml rst2s5 rst2xetex rst2xml rstpep2html rst2html4 rst2html5}
+%{python_uninstall_alternative docutils rst2html rst2latex rst2man rst2odt rst2odt_prepstyles rst2pseudoxml rst2s5 rst2xetex rst2xml rstpep2html rst2html4 rst2html5}
 %endif
 
 %if !%{with test}
 %files %{python_files}
 %license COPYING.txt licenses/*.txt
 %doc FAQ.txt HISTORY.txt README.txt THANKS.txt BUGS.txt docs/*
+%python_alternative %{_bindir}/docutils
 %python_alternative %{_bindir}/rst2html
 %python_alternative %{_bindir}/rst2latex
 %python_alternative %{_bindir}/rst2man
@@ -114,7 +124,7 @@ done
 %python_alternative %{_bindir}/rst2html4
 %python_alternative %{_bindir}/rst2html5
 %{python_sitelib}/docutils/
-%{python_sitelib}/docutils-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/docutils-%{version}*-info
 %endif
 
 %changelog
