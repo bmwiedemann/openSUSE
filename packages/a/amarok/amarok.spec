@@ -17,14 +17,13 @@
 
 
 Name:           amarok
-Version:        2.9.75git.20220614T014846~dc55a00143
+Version:        2.9.75git.20221114T020258~457db492b4
 Release:        0
 Summary:        Media Player
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://amarok.kde.org/
 Source0:        %{name}-%{version}.tar.xz
-Source1:        %{name}-lang.tar.xz
 # PATCH-FIX-OPENSUSE flac_mimetype_bnc671581.diff bnc#671581 ctrippe@gmx.net -- Support for the changed mimetype for flac files
 Patch1:         flac_mimetype_bnc671581.diff
 # PATCH-FIX-OPENSUSE
@@ -110,7 +109,6 @@ BuildRequires:  pkgconfig(zlib)
 Requires:       kirigami2
 Requires:       libqt5-qtquickcontrols2
 Requires:       libtag-extras1 >= 1.0
-Recommends:     %{name}-lang = %{version}
 Recommends:     moodbar
 Recommends:     (gstreamer-plugins-ugly if phonon4qt5-backend-gstreamer)
 
@@ -122,10 +120,7 @@ Vorbis, audio CDs, podcasts and streams. Play lists can be stored in
 %lang_package
 
 %prep
-%autosetup -p1 -a1
-cat >> CMakeLists.txt << EOF
-ki18n_install(po)
-EOF
+%autosetup -p1
 
 %build
 %ifarch ppc ppc64
@@ -137,9 +132,7 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %install
 %kf5_makeinstall -C build
 
-%find_lang amarok %{name}.lang
-%find_lang amarokcollectionscanner_qt %{name}.lang
-%find_lang amarokpkg %{name}.lang
+%find_lang %{name} --all-name --with-qt
 
 %suse_update_desktop_file  org.kde.amarok
 %suse_update_desktop_file  org.kde.amarok_containers

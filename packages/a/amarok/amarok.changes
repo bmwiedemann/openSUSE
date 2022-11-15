@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Nov 14 11:53:34 UTC 2022 - christophe@krop.fr
+
+- Update to version 2.9.75git.20221114T020258~457db492b4:
+  * Use VERSION_LESS to compare versions, not STRLESS
+  * remove test for ecm version which breaks on 5.100 and just
+    depend on newer ecm version
+  * Install translations
+  * Added mandatory AppStream metadata
+  * Remove CTest/CDash config again
+  * KDE CI: fix phonon reference
+  * Use non-deprecated KDEInstallDirs variables
+  * Complete port away from QTEST_KDEMAIN
+  * Use more nullptr
+  * Mark include directories for libraries as SYSTEM
+  * Port away from deprecated KMessageBox::sorry
+  * Change org.kde.amarok.desktop in order to use "true" instead of
+    "True"
+
+-------------------------------------------------------------------
 Sat Oct  1 07:24:56 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Use FFmpeg 4 to build amarok on Tumbleweed. The FFmpeg 5 port

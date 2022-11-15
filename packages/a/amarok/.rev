@@ -1213,4 +1213,12 @@ https://git.reviewboard.kde.org/r/104878/ (forwarded request 116659 from StefanB
   needs more work.</comment>
     <requestid>1007389</requestid>
   </revision>
+  <revision rev="134" vrev="1">
+    <srcmd5>b99f560f426d75cf1f09ca3bd39ba35c</srcmd5>
+    <version>2.9.75git.20221114T020258~457db492b4</version>
+    <time>1668514683</time>
+    <user>dimstar_suse</user>
+    <comment>New snapshot</comment>
+    <requestid>1035634</requestid>
+  </revision>
 </revisionlist>
