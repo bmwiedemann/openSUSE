@@ -10306,10 +10306,10 @@ unsorted:
   - libcelt-devel-32bit: [x86_64] 
   - libcelt0-2-32bit: [x86_64] 
   - libcelt051-0 
-  - libcephfs-devel: [x86_64] # devel package of dvd:librados2 
+  - libcephfs-devel: [x86_64] # devel package of dvd:librbd1 
   - libcephfs2: [x86_64] 
   - libcephsqlite: [x86_64] 
-  - libcephsqlite-devel: [x86_64] # devel package of dvd:librados2 
+  - libcephsqlite-devel: [x86_64] # devel package of dvd:librbd1 
   - libceres-devel 
   - libceres2 
   - libcerf-devel 
@@ -11788,8 +11788,8 @@ unsorted:
   - libicu-devel 
   - libicu-devel-32bit: [x86_64] 
   - libicu-doc 
-  - libicu71-32bit: [x86_64] 
-  - libicu71-bedata 
+  - libicu72-32bit: [x86_64] 
+  - libicu72-bedata 
   - libid3-3_8-3 
   - libid3tag-devel 
   - libidl-devel 
@@ -13616,8 +13616,8 @@ unsorted:
   - librabbitmq-devel 
   - librabbitmq4 
   - libradcli5 
-  - librados-devel: [x86_64] # devel package of dvd:librados2 
-  - libradospp-devel: [x86_64] # devel package of dvd:librados2 
+  - librados-devel: [x86_64] # devel package of dvd:librbd1 
+  - libradospp-devel: [x86_64] # devel package of dvd:librbd1 
   - libraft2 
   - libraptor-devel 
   - libraptor2-0-32bit: [x86_64] 
@@ -13640,7 +13640,7 @@ unsorted:
   - libraw1394-tools 
   - libraw20-32bit: [x86_64] 
   - libraylib420 
-  - librbd-devel: [x86_64] # devel package of dvd:librados2 
+  - librbd-devel: [x86_64] # devel package of dvd:librbd1 
   - librbio2 
   - librbl1 
   - librcc-devel 
@@ -13827,7 +13827,7 @@ unsorted:
   - librevenge-doc 
   - librevenge-generators-0_0-0 
   - librfxencode0 
-  - librgw-devel: [x86_64] # devel package of dvd:librados2 
+  - librgw-devel: [x86_64] # devel package of dvd:librbd1 
   - librgw2: [x86_64] 
   - librhash0 
   - librime-devel 
@@ -14875,7 +14875,7 @@ unsorted:
   - libwind0 
   - libwireshark16 
   - libwiretap13 
-  - libwlroots10 
+  - libwlroots11 
   - libwmf-0_2-7-32bit: [x86_64] 
   - libwmf-devel 
   - libwmf-gnome 
@@ -24667,7 +24667,6 @@ unsorted:
   - python310-rapidfuzz 
   - python310-rarfile 
   - python310-rarfile-doc 
-  - python310-ravello-sdk 
   - python310-rawkit 
   - python310-rcssmin 
   - python310-rdflib 
@@ -28001,7 +28000,6 @@ unsorted:
   - python38-rapidfuzz 
   - python38-rarfile 
   - python38-rarfile-doc 
-  - python38-ravello-sdk 
   - python38-rawkit 
   - python38-rcssmin 
   - python38-rdflib 
@@ -31351,7 +31349,6 @@ unsorted:
   - python39-rapidfuzz 
   - python39-rarfile 
   - python39-rarfile-doc 
-  - python39-ravello-sdk 
   - python39-rawkit 
   - python39-rcssmin 
   - python39-rdflib 
@@ -32645,7 +32642,7 @@ unsorted:
   - radcli-devel 
   - radeontop 
   - radeontop-lang 
-  - rados-objclass-devel: [x86_64] # devel package of dvd:librados2 
+  - rados-objclass-devel: [x86_64] # devel package of dvd:librbd1 
   - raft-devel 
   - rage 
   - rage-encryption: [x86_64] 
