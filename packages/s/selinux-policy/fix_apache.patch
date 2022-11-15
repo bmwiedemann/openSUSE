@@ -1,10 +1,10 @@
-Index: fedora-policy-20220428/policy/modules/contrib/apache.if
+Index: fedora-policy-20221019/policy/modules/contrib/apache.if
 ===================================================================
---- fedora-policy-20220428.orig/policy/modules/contrib/apache.if
-+++ fedora-policy-20220428/policy/modules/contrib/apache.if
-@@ -1989,3 +1989,25 @@ interface(`apache_ioctl_stream_sockets',
+--- fedora-policy-20221019.orig/policy/modules/contrib/apache.if
++++ fedora-policy-20221019/policy/modules/contrib/apache.if
+@@ -2007,3 +2007,25 @@ interface(`apache_read_semaphores',`
  
-     allow $1 httpd_t:unix_stream_socket ioctl;
+ 	allow $1 httpd_t:sem r_sem_perms;
  ')
 +
 +#######################################
