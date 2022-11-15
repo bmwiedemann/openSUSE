@@ -36,6 +36,10 @@ Patch1:         tiff-4.0.3-compress-warning.patch
 Patch2:         tiff-CVE-2022-2056,CVE-2022-2057,CVE-2022-2058.patch
 Patch3:         tiff-CVE-2022-34526.patch
 Patch4:         tiff-CVE-2022-2519,CVE-2022-2520,CVE-2022-2521.patch
+Patch5:         tiff-CVE-2022-3597,CVE-2022-3626,CVE-2022-3627.patch
+Patch6:         tiff-CVE-2022-3599.patch
+Patch7:         tiff-CVE-2022-3598.patch
+Patch8:         tiff-CVE-2022-3970.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libjbig-devel
 BuildRequires:  libjpeg-devel
@@ -78,6 +82,10 @@ the libtiff library.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
+%patch6 -p1
+%patch7 -p1
+%patch8 -p1
 
 %build
 CFLAGS="%{optflags} -fPIE"

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Nov 14 11:54:03 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- security update:
+  * CVE-2022-3970 [bsc#1205392]
+    + tiff-CVE-2022-3970.patch
+
+-------------------------------------------------------------------
+Sun Nov 13 20:42:25 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- security update:
+  * CVE-2022-3597 [bsc#1204641]
+  * CVE-2022-3626 [bsc#1204644]
+  * CVE-2022-3627 [bsc#1204645]
+    + tiff-CVE-2022-3597,CVE-2022-3626,CVE-2022-3627.patch
+  * CVE-2022-3599 [bsc#1204643]
+    + tiff-CVE-2022-3599.patch
+  * CVE-2022-3598 [bsc#1204642]
+    + tiff-CVE-2022-3598.patch
+
+-------------------------------------------------------------------
 Mon Oct 17 11:40:27 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - security update:
