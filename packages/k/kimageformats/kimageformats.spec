@@ -25,7 +25,7 @@
 %if 0%{?suse_version} > 1500 || (0%{?is_opensuse} && 0%{?sle_version} > 150400)
 %define with_jxl 1
 %endif
-%define _tar_path 5.99
+%define _tar_path 5.100
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -33,7 +33,7 @@
 # Only needed for the package signature condition
 %bcond_without released
 Name:           kimageformats
-Version:        5.99.0
+Version:        5.100.0
 Release:        0
 Summary:        Image format plugins for Qt
 License:        LGPL-2.1-or-later
@@ -44,11 +44,6 @@ Source:         %{name}-%{version}.tar.xz
 Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-# PATCH-FIX-UPSTREAM -- Recommended patches for kimageformats 5.99
-Patch0:         0001-avif-return-false-in-canRead-when-imageIndex-imageCo.patch
-Patch1:         0001-avif-always-indicate-endless-loop.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         0001-avif-revert-9ac923ad09316dcca0fc11e0be6b3dfc6cce6ca0.patch
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
@@ -155,5 +150,6 @@ environments.
 %dir %{_kf5_servicesdir}/qimageioplugins
 %{_kf5_plugindir}/imageformats/kimg_eps.so
 %{_kf5_servicesdir}/qimageioplugins/eps.desktop
+%{_kf5_plugindir}/imageformats/kimg_eps.so
 
 %changelog

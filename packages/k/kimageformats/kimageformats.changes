@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Nov  8 08:35:11 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.100.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.100.0
+- Changes since 5.99.0:
+  * Don't install desktop files for image formats when building against Qt6
+  * raw: Don't seek back if we were asked to read too much
+  * jxl: indicate when all frames have been read
+  * avif: minor fixes
+  * avif: indicate when all frames have been read
+  * avif: always indicate endless loop
+  * avif: return `false` in `canRead()` when `imageIndex >= imageCount` (kde#460085)
+  * Add JXL test files corresponding to 8 EXIF orientation values
+  * Add AVIF test files with rotation and mirror operations
+  * Auto-rotate input images in readtest
+  * jxl: remove C-style casts
+  * avif: Use reinterpret_cast instead C cast
+  * avif: revert 9ac923a commit
+  * heif: replace C cast with static_cast
+  * heif: use heif_init/heif_deinit with libheif 1.13.0+
+  * FindLibRaw: fix include dir, should not contain prefix libraw/ (kde#460105)
+  * Fix duplicated tests
+  * ANI partial test and PIC test added
+  * PSD: impreved support to sequential access device
+  * Fix messages
+  * CMakeLists: enable EXR test
+  * Added EXR test image
+  * Fixes for sequential devices
+- Drop patches, merged upstream:
+  * 0001-avif-return-false-in-canRead-when-imageIndex-imageCo.patch
+  * 0001-avif-always-indicate-endless-loop.patch
+  * 0001-avif-revert-9ac923ad09316dcca0fc11e0be6b3dfc6cce6ca0.patch
+
+-------------------------------------------------------------------
 Wed Oct 19 09:50:52 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add upstream changes:

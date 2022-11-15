@@ -918,4 +918,12 @@
     <comment>Add upstream fixes</comment>
     <requestid>1029945</requestid>
   </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>ff2479cfb932e8d09faad3f3e8600f1b</srcmd5>
+    <version>5.100.0</version>
+    <time>1668514644</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.100.0 (forwarded request 1034604 from cgiboudeaux)</comment>
+    <requestid>1035399</requestid>
+  </revision>
 </revisionlist>
