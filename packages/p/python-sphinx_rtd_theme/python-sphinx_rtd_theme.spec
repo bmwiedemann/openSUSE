@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-sphinx_rtd_theme%{psuffix}
-Version:        1.0.0
+Version:        1.1.1
 Release:        0
 Summary:        ReadTheDocs.org theme for Sphinx
 License:        Apache-2.0 AND MIT AND OFL-1.1
@@ -41,7 +41,8 @@ Requires:       python-Sphinx
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module Sphinx}
-BuildRequires:  %{python_module docutils < 0.18}
+# as per https://github.com/readthedocs/sphinx_rtd_theme/pull/1336 no changes are needed for the new docutils to work
+BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module readthedocs-sphinx-ext}
 %endif

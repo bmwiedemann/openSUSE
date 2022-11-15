@@ -119,4 +119,23 @@
 - drop sphinx41.patch: upstream</comment>
     <requestid>930211</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>68d6c32ffae4422ebefa93914ecc3fc2</srcmd5>
+    <version>1.1.1</version>
+    <time>1668514705</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.1
+  * Docs: Add upgrade instructions and simplify conf.py (#1365)
+  * Update versioning docs to be explicit about our versioning workflow (#1373)
+- Update to 1.1.0 release (#1372)
+  * Do not overflow object cross references (#1369)
+  * Remove Jinja2 dependency (#1360)
+  * Move context logic for layout.html to jinja (#1356)
+  * Additions to Tox and Circle CI matrix (#1349)
+  * Translation updates: Pull translations from transifex, push new sources (#1354)
+  * Update layout.html to support a sphinx version that is not three-integers (#1345)
+  * Add sphinx 5.2 to test matrix (#1348)
+</comment>
+    <requestid>1035676</requestid>
+  </revision>
 </revisionlist>
