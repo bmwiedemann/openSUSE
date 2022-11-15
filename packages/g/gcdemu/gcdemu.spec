@@ -1,7 +1,7 @@
 #
 # spec file for package gcdemu
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define __requires_exclude typelib\\(AppIndicator(|3)\\)
 Name:           gcdemu
-Version:        3.2.5
+Version:        3.2.6
 Release:        0
 Summary:        GTK+ application for controlling CDEmu daemon
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/GUI/Other
-Url:            https://cdemu.sourceforge.io/
+URL:            https://cdemu.sourceforge.io/
 Source0:        https://sourceforge.net/projects/cdemu/files/gcdemu/gcdemu-%{version}.tar.xz
-BuildRequires:  gdk-pixbuf
 BuildRequires:  cmake >= 3.7
+BuildRequires:  gdk-pixbuf
 BuildRequires:  gettext >= 0.15
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  intltool >= 0.21
