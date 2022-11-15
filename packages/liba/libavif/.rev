@@ -196,4 +196,12 @@ This lib uses rav1e and dav1d for encoding and decoding.</comment>
     <comment></comment>
     <requestid>1032374</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>c5710926a99b5ddd54be6a50f4d3a434</srcmd5>
+    <version>0.11.1</version>
+    <time>1668514703</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1035657</requestid>
+  </revision>
 </revisionlist>
