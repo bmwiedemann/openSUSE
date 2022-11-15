@@ -24,4 +24,12 @@
   fix-uou.diff (forwarded request 1033782 from hillwood)</comment>
     <requestid>1033783</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>6abee6d57181efeb650c5af387f1a31e</srcmd5>
+    <version>5.0.11</version>
+    <time>1668514718</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1035667</requestid>
+  </revision>
 </revisionlist>

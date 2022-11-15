@@ -1,5 +1,5 @@
 diff --git a/unikey/ukengine.cpp b/unikey/ukengine.cpp
-index e7b6176..55cc1dc 100644
+index e7b6176..4938f03 100644
 --- a/unikey/ukengine.cpp
 +++ b/unikey/ukengine.cpp
 @@ -1267,10 +1267,13 @@ int UkEngine::processHookWithUO(UkKeyEvent &ev) {
@@ -12,9 +12,9 @@ index e7b6176..55cc1dc 100644
 -                    m_buffer[m_current].form == vnw_cv &&
 -                    m_buffer[m_current - 2].cseq == cs_th) {
 +                    ((m_buffer[m_current].form == vnw_cv &&
-+                        (m_buffer[m_current - 2].cseq == cs_h  ||
-+                         m_buffer[m_current - 2].cseq == cs_kh ||
-+                         m_buffer[m_current - 2].cseq == cs_th   )) ||
++                      (m_buffer[m_current - 2].cseq == cs_h ||
++                       m_buffer[m_current - 2].cseq == cs_kh ||
++                       m_buffer[m_current - 2].cseq == cs_th)) ||
 +                     m_buffer[m_current].form == vnw_v)) {
                      newVs = vs_uoh;
                      markChange(vStart + 1);
@@ -38,7 +38,7 @@ index e7b6176..55cc1dc 100644
  
 +        // u+o/uo+ + u/i -> u+o+ + u/i
 +        if ((vs == vs_uoh || vs == vs_uho) &&
-+             (lowerSym == vnl_i || lowerSym == vnl_u)) {
++            (lowerSym == vnl_i || lowerSym == vnl_u)) {
 +            if (vs == vs_uho) {
 +                markChange(m_current - 1);
 +                prev.vnSym = vnl_oh;

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov 14 02:24:33 UTC 2022 - Tranter Madi <trmdi@yandex.com>
+
+- Remove: fix-enter.diff, fix-uou.diff
+- Backport fix:
+  * Add backport-commit-on-switchingIM.diff
+  * Add backport-rebuild-surrounding-state.diff
+  * Add backport-allow-uoh.diff
+
+-------------------------------------------------------------------
 Sat Nov  5 01:02:57 UTC 2022 - Tranter Madi <trmdi@yandex.com>
 
 - Backport fix for github issues #23 and #24, add fix-enter.diff and

@@ -23,10 +23,13 @@ Summary:        Unikey engine support for Fcitx5
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 URL:            https://github.com/fcitx/fcitx5-unikey
 Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.xz
-# Backport https://github.com/fcitx/fcitx5-unikey/issues/24
-Patch1:         fix-uou.diff
-# Backport https://github.com/fcitx/fcitx5-unikey/issues/23
-Patch2:         fix-enter.diff
+# Backport from git
+#e352da5
+Patch1:         backport-commit-on-switchingIM.diff
+#b5f70ed
+Patch2:         backport-rebuild-surrounding-state.diff
+#0eac455
+Patch3:         backport-allow-uoh.diff
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fcitx5-devel
@@ -49,6 +52,7 @@ Chewing Wrapper for Fcitx5.
 %setup -q
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 %cmake
