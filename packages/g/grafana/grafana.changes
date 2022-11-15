@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov 11 09:06:30 UTC 2022 - witold.bedyk@suse.com
+
+- Update to version 8.5.14 (jsc#PED-2617):
+  * Security: Fix do not forward login cookie in outgoing requests
+    (bsc#1204303, CVE-2022-39201)
+  * Security: Make proxy endpoints not leak sensitive HTTP headers
+    (bsc#1204305, CVE-2022-31130)
+  * Security: Fix plugin signature bypass (bsc#1204302, CVE-2022-31123)
+  * Security: Fix blocknig other users from signing in (bsc#1204304,
+    CVE-2022-39229)
+
+-------------------------------------------------------------------
 Wed Sep 21 11:37:55 UTC 2022 - witold.bedyk@suse.com
 
 - Update to version 8.5.13 (jsc#PED-2145):
