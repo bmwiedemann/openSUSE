@@ -17,7 +17,7 @@
 
 
 %define lname   libKF5GuiAddons5
-%define _tar_path 5.99
+%define _tar_path 5.100
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without released
 Name:           kguiaddons
-Version:        5.99.0
+Version:        5.100.0
 Release:        0
 Summary:        Utilities for graphical user interfaces
 License:        LGPL-2.1-or-later
@@ -42,6 +42,7 @@ BuildRequires:  kf5-filesystem
 BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt5Gui) >= 5.15.0
+BuildRequires:  cmake(Qt5DBus) >= 5.15.0
 BuildRequires:  cmake(Qt5Test) >= 5.15.0
 BuildRequires:  cmake(Qt5WaylandClient) >= 5.15.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.15.0
