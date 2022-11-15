@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Nov 14 15:19:03 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.11.0
+  - NEW: Support for MongoDB (#1590)
+    Queries to MongoDB are now instrumented!
+    See https://docs.sentry.io/platforms/python/guides/pymongo/
+    for more information.
+  - Profiling: Do not error if already setup (#1731)
+  - Profiling: Use sleep scheduler by default (#1729)
+  - Profiling: Extract more frame info (#1702)
+  - Profiling: Tune the sample profile generation code for performance (#1694)
+  - Fix: Reading FastAPI request body twice. (#1724)
+  - Fix: Django signals problem on sentry.io (#1732)
+  - Fix: Performance optimizations for Django signals (#1725)
+  - Fix: Move relay to port 5333 to avoid collisions (#1716)
+  - Fix: strip_string() checks text length counting bytes not chars (#1711)
+  - Chore: remove jira workflow (#1707)
+  - Update actions/upload-artifact to v3.1.1 (#1718)
+  - Update checkouts/data-schemas from a214fbc to 20ff3b9 (#1703)
+
+-------------------------------------------------------------------
 Sun Oct 23 10:40:00 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v1.10.1

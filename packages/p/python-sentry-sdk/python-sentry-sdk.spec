@@ -21,7 +21,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-sentry-sdk
-Version:        1.10.1
+Version:        1.11.0
 Release:        0
 Summary:        Python SDK for Sentry.io
 License:        BSD-2-Clause
@@ -63,8 +63,10 @@ BuildRequires:  %{python_module tox}
 #BuildRequires:  %%{python_module pyspark >= 2.4.4}
 #BuildRequires:  %%{python_module Django >= 1.8}
 #BuildRequires:  %%{python_module apache-beam >= 2.12}
-#BuildRequires:  %%{python_module chalice >= 1.16.0}
 #BuildRequires:  %%{python_module pure_eval}
+#BuildRequires:  %%{python_module chalice >= 1.16.0}
+#BuildRequires:  %%{python_module starlette >= 0.19.1}
+#BuildRequires:  %%{python_module fastapi >= 0.79.0}
 #BuildRequires:  %%{python_module quart >= 1.16.1}
 #BuildRequires:  %%{python_module sanic >= 0.8}
 # /SECTION
@@ -90,6 +92,9 @@ Requires:       python-urllib3 >= 1.10.0
 #Requires:       python-pyspark >= 2.4.4
 #Requires:       python-pure_eval
 #Requires:       python-chalice >= 1.16.0
+#Requires:       python-starlette >= 0.19.1
+#Requires:       python-fastapi >= 0.79.0
+
 # /SECTION
 BuildArch:      noarch
 %python_subpackages
