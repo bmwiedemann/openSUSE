@@ -1,5 +1,14 @@
 --- build.xml.sav	2006-11-02 18:44:02.000000000 +0200
 +++ build.xml	2011-12-15 13:36:38.630460824 +0200
+@@ -2,7 +2,7 @@
+ 	name="ant-contrib"
+ 	default="dist"
+ 	basedir="."
+-	xmlns:ivy="antlib:fr.jayasoft.ivy.ant">
++	xmlns:ivy="antlib:org.apache.ivy.ant">
+ 
+ 	<property file="build.properties" />
+ 	
 @@ -20,22 +20,7 @@
  	<property name="dist.dir" location="dist" />
  	<property name="target.stage.dir" location="${target.dir}/stage" />

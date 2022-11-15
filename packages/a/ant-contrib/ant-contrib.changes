@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov  8 08:48:39 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * local-ivy.patch
+    + fix build with apache-ivy 2.5.1
+
+-------------------------------------------------------------------
 Tue May 15 05:45:46 UTC 2018 - fstrba@suse.com
 
 - Build with source and target 8 to prepare for a possible removal
