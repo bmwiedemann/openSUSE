@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Nov 14 14:16:01 UTC 2022 - Mia Herkt <mia@0x0.st>
+
+- Update to version 10
+  * picom now needs libEGL to build
+Notable changes:
+  * experimental-backends is now the default. Everything should
+    keep working, except the --glx-fshader-win option. The old
+    window shader support has been replaced by --window-shader-fd.
+    This new shader support has a different interface, so you have
+    to adapt your existing shaders.
+    gh#yshui/picom#875
+  * legacy-backends option has been added so you can go back to the
+    old backends, which will eventually be removed.
+  * picom.desktop is installed to /etc/xdg/autostart/.
+    picom should autostart now.
+    gh#yshui/picom#791
+  * Shadows and blur now match the shape of the window.
+    This includes windows using the XShape extension, and windows
+    with rounded corners.
+    gh#yshui/picom#882
+  * New option: --transparent-clipping-exclude, for excluding
+    windows that doesn't play well with transparent-clipping,
+    such as screenshot tool windows.
+    gh#yshui/picom#663
+    gh#yshui/picom#738
+  * New backend: egl. It should behave exactly the same as the glx
+    backend. Give it a try!
+    gh#yshui/picom#878
+Other changes:
+  * --help messages have been refactored, leading to clearer code.
+    gh#yshui/picom#877
+  * picom tries to detect and act on GPU resets. But because of the
+    limitation of the X server, this ended up not being very
+    useful.
+
+-------------------------------------------------------------------
 Sat May 28 13:55:33 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 9.1:

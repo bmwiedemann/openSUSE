@@ -17,14 +17,13 @@
 
 
 Name:           picom
-Version:        9.1
+Version:        10
 Release:        0
 Summary:        Stand-alone compositor for X11
 License:        MIT AND MPL-2.0
 Group:          System/X11/Utilities
 URL:            https://github.com/yshui/picom
 Source0:        https://github.com/yshui/picom/archive/v%{version}.tar.gz
-Source1:        picom.desktop
 BuildRequires:  asciidoc
 BuildRequires:  c_compiler
 BuildRequires:  hicolor-icon-theme
@@ -32,8 +31,10 @@ BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  uthash-devel
 BuildRequires:  pkgconfig(dbus-1)
+BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(libconfig)
+BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libev)
 BuildRequires:  pkgconfig(libpcre)
 BuildRequires:  pkgconfig(libxdg-basedir)
@@ -52,7 +53,6 @@ BuildRequires:  pkgconfig(xcb-sync)
 BuildRequires:  pkgconfig(xcb-xfixes)
 BuildRequires:  pkgconfig(xcb-xinerama)
 BuildRequires:  pkgconfig(xext)
-Requires:       hicolor-icon-theme
 Obsoletes:      compton <= 0.1.0
 Provides:       compton = %{version}
 
@@ -65,23 +65,26 @@ and fade animations.
 %setup -q
 
 %build
-%meson -Dwith_docs=true
+%meson -Dwith_docs=true -Dcompton=false -Dvsync_drm=true
 %meson_build
 
 %install
 %meson_install
-mv %{buildroot}%{_datadir}/icons/hicolor/48x48/apps/compton.png %{buildroot}%{_datadir}/icons/hicolor/48x48/apps/%{name}.png
-mv %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/compton.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
-rm %{buildroot}%{_datadir}/applications/compton.desktop
+install -d %{buildroot}%{_datadir}/icons/hicolor/{48x48,scalable}/apps
+install -m644 media/icons/48x48/compton.png %{buildroot}%{_datadir}/icons/hicolor/48x48/apps/%{name}.png
+install -m644 media/compton.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 
-cp %{SOURCE1} %{buildroot}%{_datadir}/applications/%{name}.desktop
+%check
+%meson --reconfigure -Dunittest=true
+%meson_test
 
 %files
 %license LICENSES/MPL-2.0 LICENSES/MIT COPYING
-%doc CONTRIBUTORS README.md README_orig.md picom.sample.conf
+%doc CONTRIBUTORS README.md picom.sample.conf
 %{_bindir}/*
 %{_datadir}/icons/hicolor/*/apps/%{name}*
 %{_datadir}/applications/%{name}.desktop
+%config %{_sysconfdir}/xdg/autostart/%{name}.desktop
 %{_mandir}/man1/%{name}.1%{?ext_man}
 %{_mandir}/man1/%{name}-trans.1%{?ext_man}
 
