@@ -16,22 +16,28 @@
 #
 
 
-%{bcond_with docs}
-
+%bcond_with docs
 Name:           exiv2
 Version:        0.27.5
 Release:        0
 Summary:        Tool to access image Exif metadata
 License:        BSD-3-Clause AND GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
-URL:            http://www.exiv2.org/
+URL:            https://exiv2.org/
 Source0:        https://github.com/Exiv2/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 Patch0:         exiv2-build-date.patch
+Patch1:         CVE-2022-3953.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel
+BuildRequires:  libcurl-devel
+BuildRequires:  libexpat-devel
+BuildRequires:  libxslt
+BuildRequires:  python3-base
+BuildRequires:  zlib-devel
+Recommends:     %{name}-lang = %{version}
 %if %{with docs}
 BuildRequires:  doxygen
 # doxygen likes to have this
@@ -41,12 +47,6 @@ BuildRequires:  graphviz-gd
 %else
 Obsoletes:      libexiv2-doc < %{version}-%{release}
 %endif
-BuildRequires:  libcurl-devel
-BuildRequires:  libexpat-devel
-BuildRequires:  libxslt
-BuildRequires:  python3-base
-BuildRequires:  zlib-devel
-Recommends:     %{name}-lang = %{version}
 # there is a test failure on ARM & PPC
 # upstream issue: https://github.com/Exiv2/exiv2/issues/933
 %ifarch x86_64
@@ -146,7 +146,7 @@ export CFLAGS="%{optflags} $(getconf LFS_CFLAGS)"
 %if %{with tests}
 %check
 pushd build
-make tests
+%make_build tests
 popd
 
 for t in \

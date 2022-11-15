@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 14 11:59:46 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- spec-cleaner run
+- add CVE-2022-3953.patch (CVE-2022-3953, bsc#1205391)
+
+-------------------------------------------------------------------
 Wed Sep 28 15:24:59 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add tracker for SLE (jsc#PED-1393)
@@ -10,7 +16,9 @@ Sat Nov 13 12:08:13 UTC 2021 - Dirk Müller <dmueller@suse.com>
                     bsc#1189333, CVE-2021-37621,
                     bsc#1189334, CVE-2021-37622,
                     bsc#1189338, CVE-2021-34334, 
-                    bsc#1189335, CVE-2021-37623):
+                    bsc#1189335, CVE-2021-37623,
+                    bsc#1189337, CVE-2021-32815, 
+                    bsc#1189340, CVE-2021-34335):
   * BMFF bug fixes including CR3 previews
   * Security fixes
   * libFuzzer target

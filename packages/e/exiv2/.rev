@@ -685,4 +685,17 @@
                     bsc#1185913, CVE-2021-29463):</comment>
     <requestid>1030698</requestid>
   </revision>
+  <revision rev="67" vrev="7">
+    <srcmd5>0e792caccb3e0c02636701d30dbc39d0</srcmd5>
+    <version>0.27.5</version>
+    <time>1668514709</time>
+    <user>dimstar_suse</user>
+    <comment>- spec-cleaner run
+- add CVE-2022-3953.patch (CVE-2022-3953, bsc#1205391)
+
+                    bsc#1189335, CVE-2021-37623,
+                    bsc#1189337, CVE-2021-32815, 
+                    bsc#1189340, CVE-2021-34335):</comment>
+    <requestid>1035724</requestid>
+  </revision>
 </revisionlist>
