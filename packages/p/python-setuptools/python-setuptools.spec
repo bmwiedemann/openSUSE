@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
@@ -38,15 +37,13 @@
 # in order to avoid rewriting for subpackage generator
 %define mypython python
 Name:           python-setuptools%{psuffix}
-Version:        65.5.0
+Version:        65.5.1
 Release:        0
 Summary:        Download, build, install, upgrade, and uninstall Python packages
 License:        Apache-2.0 AND MIT AND BSD-2-Clause AND Python-2.0
 URL:            https://github.com/pypa/setuptools
 Source:         https://files.pythonhosted.org/packages/source/s/setuptools/setuptools-%{version}.tar.gz
 Patch0:         sort-for-reproducibility.patch
-# PATCH-FIX-OPENSUSE remove_mock.patch mcepl@suse.com
-Patch1:         remove_mock.patch
 # PATCH-FIX-OPENSUSE fix-get-python-lib-python38.patch bsc#1204395
 Patch2:         fix-get-python-lib-python38.patch
 BuildRequires:  %{python_module base >= 3.7}
@@ -68,6 +65,7 @@ BuildRequires:  %{python_module jaraco.path >= 3.2.0}
 BuildRequires:  %{python_module pip >= 19.1}
 BuildRequires:  %{python_module pip-run >= 8.8}
 BuildRequires:  %{python_module pytest >= 6}
+BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module setuptools = %{version}}
 BuildRequires:  %{python_module tomli-w >= 1.0.0}

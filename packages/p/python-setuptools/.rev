@@ -989,4 +989,16 @@
 </comment>
     <requestid>1029961</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>4e0258ad27a28c090e3caa08615cd6f4</srcmd5>
+    <version>65.5.1</version>
+    <time>1668514699</time>
+    <user>dimstar_suse</user>
+    <comment>- Delete remove_mock.patch, that's not needed anymore, it's upstreamed
+- Update to 65.5.1:
+  * #3638: Drop a test dependency on the mock package, always use
+    :external+python:py:mod:`unittest.mock` -- by :user:`hroncok`
+  * #3659: Fixed REDoS vector in package_index.</comment>
+    <requestid>1035638</requestid>
+  </revision>
 </revisionlist>

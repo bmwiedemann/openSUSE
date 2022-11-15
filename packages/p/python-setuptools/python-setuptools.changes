@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov 14 09:53:11 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Delete remove_mock.patch, that's not needed anymore, it's upstreamed
+- Update to 65.5.1:
+  * #3638: Drop a test dependency on the mock package, always use
+    :external+python:py:mod:`unittest.mock` -- by :user:`hroncok`
+  * #3659: Fixed REDoS vector in package_index.
+
+-------------------------------------------------------------------
 Wed Oct 19 09:28:07 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Skip test_pbr_integration because it tries to install pbr using pip from
