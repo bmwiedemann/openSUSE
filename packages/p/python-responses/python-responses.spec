@@ -35,11 +35,9 @@ BuildRequires:  %{python_module pytest-localserver}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.0}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-requests >= 2.0
-Requires:       python-six
 Suggests:       python-pytest
 BuildArch:      noarch
 %python_subpackages
