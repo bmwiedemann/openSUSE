@@ -1999,4 +1999,12 @@ Tue Sep 23 20:24:35 UTC 2014 - hrvoje.senjan@gmail.com
     <comment>Plasma 5.26.3(.1), untested as usual (forwarded request 1034741 from Vogtinator)</comment>
     <requestid>1034790</requestid>
   </revision>
+  <revision rev="202" vrev="2">
+    <srcmd5>d9bea743f6945e472ff3a217a449210a</srcmd5>
+    <version>5.26.3</version>
+    <time>1668514609</time>
+    <user>dimstar_suse</user>
+    <comment>- Update the build constraints</comment>
+    <requestid>1035356</requestid>
+  </revision>
 </revisionlist>
