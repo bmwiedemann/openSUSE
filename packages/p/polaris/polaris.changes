@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 15 09:21:33 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 7.2.0:
+  * FWI-2719: Enable new RBAC / sensitive content / Pod exec checks, add `hasPrefix` and `hasSuffix` functions to the GO template, exempt `system:` name prefixes for RBAC checks, sensitive content checks ignore `valueFrom`, (#832)
+  * Managed by Terraform
+  * update dependencies (#867)
+  * Bump k8s.io/api from 0.25.0 to 0.25.3 (#862)
+  * FWI-2912: Add logging to improve debugging of JSON Schema (#859)
+  * Fix CI tag filters and re-enable docs (#852)
+
+-------------------------------------------------------------------
 Sun Sep 25 07:04:04 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 7.1.5:
