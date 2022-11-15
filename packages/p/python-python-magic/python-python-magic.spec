@@ -33,10 +33,16 @@ BuildRequires:  fdupes
 BuildRequires:  file
 BuildRequires:  python-rpm-macros
 Requires:       file
-Provides:       python-magic
+# python-python-magic and python-magic use the same namespace (ie. filename)
+# and have a very similar functionality but are incompatible to each other.
+#  https://github.com/ahupp/python-magic/issues/21
+Conflicts:      python-magic
 BuildArch:      noarch
 %ifpython2
-Provides:       %{oldpython}-magic
+# python-python-magic and python-magic use the same namespace (ie. filename)
+# and have a very similar functionality but are incompatible to each other.
+#  https://github.com/ahupp/python-magic/issues/21
+Conflicts:      %{oldpython}-magic
 %endif
 %python_subpackages
 

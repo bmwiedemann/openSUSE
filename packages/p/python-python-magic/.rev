@@ -116,4 +116,12 @@
   - Fix use of pytest, use it via tox</comment>
     <requestid>1009307</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>7347a1386559c6a9cd5a413e7d1288cc</srcmd5>
+    <version>0.4.27</version>
+    <time>1668514709</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1035694</requestid>
+  </revision>
 </revisionlist>
