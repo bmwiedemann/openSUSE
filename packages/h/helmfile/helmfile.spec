@@ -17,9 +17,9 @@
 #
 
 
-%define git_commit ad257554c9fdd9e9cb036939dcea191540003517
+%define git_commit f09ec18aa9d555f6c8f668bfbcf084a6e5e8ee6b
 Name:           helmfile
-Version:        0.147.0
+Version:        0.148.1
 Release:        0
 Summary:        Deploy Kubernetes Helm Charts
 License:        MIT
@@ -33,8 +33,6 @@ BuildRequires:  xz
 BuildRequires:  golang(API) >= 1.19
 Obsoletes:      %{name}-bash-completion < %{version}
 Obsoletes:      %{name}-zsh-completion < %{version}
-%{go_nostrip}
-%{go_provides}
 
 %description
 Helmfile is a declarative spec for deploying helm charts. It lets you...
@@ -50,9 +48,16 @@ delegates to helm - as a result, helm must be installed.
 %setup -qa1
 
 %build
+modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{_sourcedir}/%{name}.changes")"
+SOURCE_DATE_EPOCH=$(date -u -d "${modified}" "+%s")
+export SOURCE_DATE_EPOCH
+rm -f source_date_epoch
+echo SOURCE_DATE_EPOCH=$SOURCE_DATE_EPOCH > source_date_epoch
 go build -mod=vendor -buildmode=pie
 
 %install
+. ./source_date_epoch
+export SOURCE_DATE_EPOCH
 make TAG=v%{version} install
 mkdir -p %{buildroot}%{_bindir}
 install -m755 ${HOME}/go/bin/helmfile %{buildroot}/%{_bindir}/helmfile

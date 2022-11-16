@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Tue Nov 15 09:53:14 UTC 2022 - manfred.h@gmx.net
+
+- Remove incorrectly added go_provides and go_nostrip macros
+- Add definition for SOURCE_DATE_EPOCH to enable reproducible builds
+
+-------------------------------------------------------------------
+Tue Nov 15 09:44:47 UTC 2022 - manfred.h@gmx.net
+
+- Update to version 0.148.1:
+  What's Changed
+  * Introduce a new test helper for easier log snapshot testing by
+    @mumoshu in #514
+  * fix: helmfile template fails when selector matches a chart
+    fetched with go-getter by @yxxhero in #499
+
+- Update to version 0.148.0:
+  What's Changed
+  * fix: child process not exit when recive term signal by @yxxhero
+    in #418
+  * deps: build with go1.19 by @chenrui333 in #420
+  * Update ci.yaml by @mumoshu in #422
+  * fix helmfile version issue in docker image by @yxxhero in #427
+  * Prevent excessive log in tests by @mumoshu in #424
+  * Fix preapply hook behavior by @mumoshu in #423
+  * build(deps): bump github.com/spf13/cobra from 1.5.0 to 1.6.0 by
+    @dependabot in #433
+  * deps: update dockerfile dependencies by @chenrui333 in #421
+  * feat: add helm-diff and kustomize in ci matrix by @yxxhero
+    in #434
+  * build(deps): bump helm.sh/helm/v3 from 3.10.0 to 3.10.1 by
+    @dependabot in #436
+  * build(deps): bump k8s.io/apimachinery from 0.25.2 to 0.25.3
+    by @dependabot in #439
+  * fix: issue path in test on windows by @yxxhero in #449
+  * fix: fix deps args by @yxxhero in #446
+  * fix helmfile diff error in window platform by @yxxhero in #451
+  * move HELMFILE_UPGRADE_NOTICE_DISABLED into envvar file by
+    @yxxhero in #441
+  * Add --skip-refresh flag to the build command by @indrekj in #444
+  * fix: needs logic in chart stage by @yxxhero in #458
+  * fix typo by @yxxhero in #461
+  * build(deps): bump github.com/stretchr/testify from 1.8.0 to
+    1.8.1 by @dependabot in #462
+  * fix --debug flag by @yxxhero in #465
+  * use curl instead of wget & update helm to 3.10.1 by @itscaro
+    in #467
+  * add basepath along with filepath into yaml comment by @itscaro
+    in #460
+  * build(deps): bump github.com/spf13/cobra from 1.6.0 to 1.6.1
+    by @dependabot in #470
+  * Fix OCI example by @itscaro in #476
+  * fix chart needs test issue by @yxxhero in #480
+  * use fs.Getwd() to get working dir for sub helmfile by @itscaro
+    in #471
+  * Document git for windows env auto-prefix #481 by @strainovic
+    in #487
+  * fix oci:// chart by @itscaro in #477
+  * Allow to override build date with SOURCE_DATE_EPOCH by
+    @bmwiedemann in #486
+  * Add subcommand init for checks and installs helmfile deps by
+    @xiaomudk in #389
+  * split run.sh to make run.sh be more clear. by @yxxhero in #485
+  * remove hooks dir by @yxxhero in #484
+  * fix: args parse issue by @yxxhero in #457
+  * fix deps issues by @yxxhero in #492
+  * test: add template anchors merge e2e test by @yxxhero in #494
+  * feat: add go test total cover by @yxxhero in #495
+  * Add --output-dir-template flag to the fetch command by
+    @elchenberg in #456
+  * build(deps): bump helm.sh/helm/v3 from 3.10.1 to 3.10.2 by
+    @dependabot in #511
+  * bump: helm to 3.10.2 by @yxxhero in #512
+  * build(deps): bump k8s.io/apimachinery from 0.25.3 to 0.25.4 by
+    @dependabot in #513
+  * Add the ability to specify a lock file by @lassizci in #432
+
+-------------------------------------------------------------------
 Sun Oct 30 08:55:27 UTC 2022 - manfred.h@gmx.net
 
 - go1.19 is required for building.
