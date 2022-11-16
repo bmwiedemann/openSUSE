@@ -342,7 +342,7 @@ install -m 0644 %SOURCE6 %{buildroot}%{_datadir}/applications/
 install -m 0755 %SOURCE2 %{buildroot}%{_bindir}/
 mv %{buildroot}/%{_mandir}/de.UTF-8 %{buildroot}/%{_mandir}/de
 mv %{buildroot}/%{_mandir}/fr.UTF-8 %{buildroot}/%{_mandir}/fr
-%ifnarch x86_64 aarch64
+%ifnarch x86_64
 mv %{buildroot}/%{_mandir}/pl.UTF-8 %{buildroot}/%{_mandir}/pl
 %endif
 
@@ -429,12 +429,12 @@ chmod 755 %winedir/my-find-requires.sh
 %{_bindir}/wineserver
 %{_bindir}/wisotool
 %{_datadir}/wine
-%ifnarch x86_64 aarch64
+%ifnarch x86_64
 %doc %{_mandir}/man1/wine.1*
 %endif
 %doc %{_mandir}/man1/winedbg.1*
 %doc %{_mandir}/man1/wineserver.1*
-%ifnarch x86_64 aarch64
+%ifnarch x86_64
 %doc %dir %doc %{_mandir}/pl
 %doc %dir %doc %{_mandir}/pl/man1
 %doc %{_mandir}/*/man1/wine.1*
@@ -462,14 +462,14 @@ chmod 755 %winedir/my-find-requires.sh
 %dir %{_datadir}/icons/hicolor/scalable
 %dir %{_datadir}/icons/hicolor/scalable/apps
 %{_datadir}/icons/hicolor/scalable/apps/*.svg
-%ifarch %ix86
+%ifarch %ix86 aarch64
 %{_bindir}/wine
 %{_bindir}/wine-preloader
 %endif
 %ifarch ppc %arm
 %{_bindir}/wine
 %endif
-%ifarch x86_64 aarch64
+%ifarch x86_64
 %{_bindir}/wine64
 %{_bindir}/wine64-preloader
 %endif
