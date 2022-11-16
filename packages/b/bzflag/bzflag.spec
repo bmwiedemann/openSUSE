@@ -41,7 +41,7 @@ BuildRequires:  curl-devel
 BuildRequires:  fdupes
 BuildRequires:  freeglut-devel
 BuildRequires:  gcc-c++
-BuildRequires:  libSDL2-devel
+BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  libcares-devel
 BuildRequires:  libdrm-devel
 BuildRequires:  ncurses-devel

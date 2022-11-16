@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov  9 05:52:13 UTC 2022 - Dmitriy Perlow <dap.darkness@gmail.com>
+
+- BuildRequre sdl2 stuff via pkgconfig(*).
+
+-------------------------------------------------------------------
 Sat Mar 12 15:18:37 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 2.4.24
