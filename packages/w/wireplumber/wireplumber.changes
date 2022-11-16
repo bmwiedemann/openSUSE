@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 15 08:21:15 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from upstream to work around a problem when a link is
+  not activated:
+  * 0001-policy-node-wait-for-unactivated-links-instead-of-removing.patch
+
+- Add patch from upstream to fix handling null devices which result
+  in lua exceptions:
+  * 0001-alsa.lua-remove-the-disabled-entities-from-the-names-table.patch
+
+-------------------------------------------------------------------
 Tue Oct  4 13:01:17 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 0.4.12:
