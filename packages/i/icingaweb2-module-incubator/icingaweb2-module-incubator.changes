@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov 16 10:28:33 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.19.0
+  - improved ProcessInfo serialization
+  - allow to use Cli\Screen w/o CLI
+  - curl: fix PHP 8.1 support in specific error conditions
+  - InfluxDB: fix v2 support
+  - InfluxDB: body compression
+  - InfluxDB: add header for debugging purposes
+
+-------------------------------------------------------------------
 Wed Sep 21 11:23:08 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 0.18.0

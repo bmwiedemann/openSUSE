@@ -20,7 +20,7 @@
 %define basedir	%{_datadir}/icingaweb2
 %define module_name incubator
 Name:           icingaweb2-module-%{module_name}
-Version:        0.18.0
+Version:        0.19.0
 Release:        0
 Summary:        Bleeding edge Icinga Web 2 libraries
 License:        MIT
