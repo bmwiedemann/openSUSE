@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Nov 14 12:26:57 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2022.2:
+  + Use const.*.html instead of constant.*.html for search index
+    links
+  + Remove "terms" from index.json, rewrite commandline search to
+    work without it
+  + Add interface type description
+  + Fix failure to generate link to error domain
+  + Make log.log() thread safe
+  + Quote string constant values
+  + Set the license of the generated documentation
+  + Support (scope forever)
+  + Add a way to frame images
+  + Use the appropriate namespace for indices
+  + Fix type annotations for Repository packages and c_includes
+  + Add py.typed to comply with PEP561
+  + Add links to external classes in the hierarchy
+  + Use definition lists for callable arguments
+  + Improve styles
+  + Use definition lists for callable arguments
+  + Clarify generated description for GError arguments
+  + Clarify generated description for nullable in/out arguments
+  + Add emblems for versions and stability
+  + Require a sufficient minimum dependency of markdown
+  + Add a "serve" command
+
+-------------------------------------------------------------------
 Sat Feb 12 18:38:36 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2022.1:

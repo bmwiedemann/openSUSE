@@ -18,7 +18,7 @@
 
 %define pythons python3
 Name:           python-gi-docgen
-Version:        2022.1
+Version:        2022.2
 Release:        0
 Summary:        Documentation tool for GObject-based libraries
 License:        Apache-2.0 AND GPL-3.0-or-later AND CC0-1.0
