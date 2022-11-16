@@ -17,7 +17,7 @@
 
 
 Name:           utfcpp
-Version:        3.2.1
+Version:        3.2.2
 Release:        0
 Summary:        A library for handling UTF-8 encoded strings
 License:        BSL-1.0
