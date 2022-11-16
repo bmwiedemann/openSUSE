@@ -24,14 +24,13 @@ License:        GPL-3.0-only
 Group:          Amusements/Games/Action/Other
 URL:            http://naev.org/
 Source:         %{name}-%{version}-source.tar.xz
-BuildRequires:  SDL2-devel
 BuildRequires:  fdupes
 BuildRequires:  freetype2-devel
 BuildRequires:  glpk-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
-BuildRequires:  libSDL2_image-devel
-BuildRequires:  libSDL2_mixer-devel
+BuildRequires:  pkgconfig(SDL2_image)
+BuildRequires:  pkgconfig(SDL2_mixer)
 BuildRequires:  libphysfs-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libunibreak-devel
