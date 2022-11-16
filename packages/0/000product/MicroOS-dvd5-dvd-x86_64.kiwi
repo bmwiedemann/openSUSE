@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20221115" schemaversion="4.1">
+<image name="OBS__MicroOS___20221116" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20221115</productvar>
+      <productvar name="VERSION">20221116</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20221115,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20221116,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20221115/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20221116/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -84,8 +84,8 @@
       <repopackage name="amtk-5-lang" arch="x86_64"/>
       <repopackage name="apache-commons-logging"/>
       <repopackage name="apparmor-abstractions" arch="x86_64"/>
-      <repopackage name="apparmor-parser" arch="x86_64"/>
-      <repopackage name="apparmor-parser-lang" arch="x86_64"/>
+      <repopackage name="apparmor-parser"/>
+      <repopackage name="apparmor-parser-lang"/>
       <repopackage name="apparmor-profiles" arch="x86_64"/>
       <repopackage name="apparmor-utils" arch="x86_64"/>
       <repopackage name="apparmor-utils-lang" arch="x86_64"/>
@@ -161,7 +161,7 @@
       <repopackage name="busybox"/>
       <repopackage name="busybox-coreutils" arch="x86_64"/>
       <repopackage name="busybox-gawk"/>
-      <repopackage name="busybox-grep" arch="x86_64"/>
+      <repopackage name="busybox-grep"/>
       <repopackage name="busybox-gzip"/>
       <repopackage name="busybox-hostname" arch="x86_64"/>
       <repopackage name="busybox-sed" arch="x86_64"/>
@@ -175,7 +175,7 @@
       <repopackage name="calligra-extras-filemanagertemplates" arch="x86_64"/>
       <repopackage name="canberra-gtk-play" arch="x86_64"/>
       <repopackage name="cantarell-fonts"/>
-      <repopackage name="catatonit" arch="x86_64"/>
+      <repopackage name="catatonit"/>
       <repopackage name="checkmedia" arch="x86_64"/>
       <repopackage name="checkpolicy" arch="x86_64"/>
       <repopackage name="chewing-data"/>
@@ -199,6 +199,7 @@
       <repopackage name="compat-usrmerge-tools"/>
       <repopackage name="conmon" arch="x86_64"/>
       <repopackage name="container-selinux" arch="x86_64"/>
+      <repopackage name="containerd"/>
       <repopackage name="containers-systemd" arch="x86_64"/>
       <repopackage name="coreutils"/>
       <repopackage name="coreutils-doc" arch="x86_64"/>
@@ -272,6 +273,8 @@
       <repopackage name="dnsmasq" arch="x86_64"/>
       <repopackage name="docbook-xsl-stylesheets" arch="x86_64"/>
       <repopackage name="docbook_4" arch="x86_64"/>
+      <repopackage name="docker"/>
+      <repopackage name="docker-bash-completion" arch="x86_64"/>
       <repopackage name="dolphin" arch="x86_64"/>
       <repopackage name="dolphin-part" arch="x86_64"/>
       <repopackage name="dolphin-part-lang" arch="x86_64"/>
@@ -397,6 +400,7 @@
       <repopackage name="ghostscript-x11" arch="x86_64"/>
       <repopackage name="gio-branding-openSUSE"/>
       <repopackage name="girepository-1_0"/>
+      <repopackage name="git-core"/>
       <repopackage name="gjs" arch="x86_64"/>
       <repopackage name="glib-networking"/>
       <repopackage name="glib-networking-lang"/>
@@ -641,7 +645,7 @@
       <repopackage name="ipa-uigothic-fonts"/>
       <repopackage name="iproute2"/>
       <repopackage name="iproute2-bash-completion" arch="x86_64"/>
-      <repopackage name="iptables" arch="x86_64"/>
+      <repopackage name="iptables"/>
       <repopackage name="iputils"/>
       <repopackage name="irqbalance" arch="x86_64"/>
       <repopackage name="irqbalance-ui" arch="x86_64"/>
@@ -812,7 +816,7 @@
       <repopackage name="kwin5-lang" arch="x86_64"/>
       <repopackage name="kwrited5" arch="x86_64"/>
       <repopackage name="layer-shell-qt5" arch="x86_64"/>
-      <repopackage name="less" arch="x86_64"/>
+      <repopackage name="less"/>
       <repopackage name="libabsl2206_0_0"/>
       <repopackage name="libabw-0_1-1"/>
       <repopackage name="libaccounts-glib0" arch="x86_64"/>
@@ -1209,7 +1213,7 @@
       <repopackage name="libinput-udev"/>
       <repopackage name="libinput10"/>
       <repopackage name="libip4tc2"/>
-      <repopackage name="libip6tc2" arch="x86_64"/>
+      <repopackage name="libip6tc2"/>
       <repopackage name="libiptcdata" arch="x86_64"/>
       <repopackage name="libiptcdata-lang" arch="x86_64"/>
       <repopackage name="libiptcdata0" arch="x86_64"/>
@@ -1431,15 +1435,15 @@
       <repopackage name="libndp0" arch="x86_64"/>
       <repopackage name="libneon27"/>
       <repopackage name="libnet9" arch="x86_64"/>
-      <repopackage name="libnetfilter_conntrack3" arch="x86_64"/>
+      <repopackage name="libnetfilter_conntrack3"/>
       <repopackage name="libnetpbm11" arch="x86_64"/>
       <repopackage name="libnettle8"/>
       <repopackage name="libnewt0_52" arch="x86_64"/>
-      <repopackage name="libnfnetlink0" arch="x86_64"/>
+      <repopackage name="libnfnetlink0"/>
       <repopackage name="libnfs14"/>
       <repopackage name="libnfsidmap1"/>
       <repopackage name="libnftables1" arch="x86_64"/>
-      <repopackage name="libnftnl11" arch="x86_64"/>
+      <repopackage name="libnftnl11"/>
       <repopackage name="libnghttp2-14"/>
       <repopackage name="libnice10"/>
       <repopackage name="libnl-config"/>
@@ -1536,7 +1540,7 @@
       <repopackage name="libportaudio2"/>
       <repopackage name="libpostproc55_9" arch="x86_64"/>
       <repopackage name="libpresage1"/>
-      <repopackage name="libprocps8" arch="x86_64"/>
+      <repopackage name="libprocps8"/>
       <repopackage name="libprotobuf-c1" arch="x86_64"/>
       <repopackage name="libprotobuf-lite3_21_9" arch="x86_64"/>
       <repopackage name="libprotobuf3_21_9" arch="x86_64"/>
@@ -1680,6 +1684,7 @@
       <repopackage name="libserd-0-0"/>
       <repopackage name="libserializer"/>
       <repopackage name="libsgutils2-1_48-2" arch="x86_64"/>
+      <repopackage name="libsha1detectcoll1"/>
       <repopackage name="libsigc-2_0-0" arch="x86_64"/>
       <repopackage name="libsignon-qt5-1" arch="x86_64"/>
       <repopackage name="libslang2" arch="x86_64"/>
@@ -2281,8 +2286,8 @@
       <repopackage name="prison-qt5-imports" arch="x86_64"/>
       <repopackage name="procinfo" arch="x86_64"/>
       <repopackage name="procmail" arch="x86_64"/>
-      <repopackage name="procps" arch="x86_64"/>
-      <repopackage name="procps-lang" arch="x86_64"/>
+      <repopackage name="procps"/>
+      <repopackage name="procps-lang"/>
       <repopackage name="psmisc" arch="x86_64"/>
       <repopackage name="psmisc-lang" arch="x86_64"/>
       <repopackage name="psutils" arch="x86_64"/>
@@ -2458,7 +2463,7 @@
       <repopackage name="ruby3.1-rubygem-simpleidn" arch="x86_64"/>
       <repopackage name="ruby3.1-rubygem-unf" arch="x86_64"/>
       <repopackage name="ruby3.1-rubygem-unf_ext" arch="x86_64"/>
-      <repopackage name="runc" arch="x86_64"/>
+      <repopackage name="runc"/>
       <repopackage name="rust-keylime" arch="x86_64"/>
       <repopackage name="sac"/>
       <repopackage name="samba" arch="x86_64"/>
@@ -2572,9 +2577,9 @@
       <repopackage name="systemsettings5-lang" arch="x86_64"/>
       <repopackage name="sysuser-shadow"/>
       <repopackage name="sysvinit-tools" arch="x86_64"/>
-      <repopackage name="tar" arch="x86_64"/>
-      <repopackage name="tar-lang" arch="x86_64"/>
-      <repopackage name="tar-rmt" arch="x86_64"/>
+      <repopackage name="tar"/>
+      <repopackage name="tar-lang"/>
+      <repopackage name="tar-rmt"/>
       <repopackage name="tcl" arch="x86_64"/>
       <repopackage name="tepl-6-lang" arch="x86_64"/>
       <repopackage name="terminfo" arch="x86_64"/>
@@ -2790,7 +2795,7 @@
       <repopackage name="xset" arch="x86_64"/>
       <repopackage name="xsetroot" arch="x86_64"/>
       <repopackage name="xsettingsd" arch="x86_64"/>
-      <repopackage name="xtables-plugins" arch="x86_64"/>
+      <repopackage name="xtables-plugins"/>
       <repopackage name="xterm" arch="x86_64"/>
       <repopackage name="xterm-bin" arch="x86_64"/>
       <repopackage name="xterm-resize" arch="x86_64"/>
