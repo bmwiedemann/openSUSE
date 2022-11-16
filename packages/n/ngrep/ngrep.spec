@@ -1,7 +1,7 @@
 #
 # spec file for package ngrep
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,10 +23,12 @@ Release:        0
 Summary:        Network grep
 License:        BSD-4-Clause
 Group:          Productivity/Networking/Diagnostic
-Url:            https://github.com/jpr5/ngrep
+URL:            https://github.com/jpr5/ngrep
 Source:         https://github.com/jpr5/ngrep/archive/V%{tarver}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM: Switch from PCRE to PCRE2 (https://github.com/jpr5/ngrep/pull/27)
+Patch0:         27.patch
 BuildRequires:  libpcap-devel
-BuildRequires:  pcre-devel
+BuildRequires:  pcre2-devel
 
 %description
 ngrep strives to provide most of GNU grep's common features, applying them
@@ -39,10 +41,11 @@ sniffing tools, such as tcpdump and snoop.
 
 %prep
 %setup -q -n %{name}-%{tarver}
+%patch0 -p1
 
 %build
 %configure \
-    --enable-pcre \
+    --enable-pcre2 \
     --enable-ipv6 \
     --with-pcap-includes=%{_includedir}/pcap
 

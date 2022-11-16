@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 23 06:11:48 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+- Cherry picking PR 27.patch from github to switch to PCRE2 (project
+  seems dead unfortunately) - rebased though
+
+-------------------------------------------------------------------
 Sun Dec 31 22:47:39 UTC 2017 - avindra@opensuse.org
 
 - Update to version 1.47
