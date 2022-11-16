@@ -103,6 +103,7 @@ Patch4:         ffmpeg-4.2-dlopen-fdk_aac.patch
 Patch5:         work-around-abi-break.patch
 Patch9:         ffmpeg-4.4-CVE-2020-22046.patch
 Patch10:        ffmpeg-chromium.patch
+Patch11:        ffmpeg-CVE-2022-3964.patch
 Patch91:        ffmpeg-dlopen-openh264.patch
 
 %if %{with amf_sdk}

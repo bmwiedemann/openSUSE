@@ -64,4 +64,13 @@
   * Source: ffmpeg_get_dlopen_headers.sh (forwarded request 1011140 from Pharaoh_Atem)</comment>
     <requestid>1011142</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>d28cbd4455aa88773ae0db5e45b3d289</srcmd5>
+    <version>5.1.2</version>
+    <time>1668609855</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ffmpeg-CVE-2022-3964.patch: Backport from upstream to fix
+  out of bounds read in update_block_in_prev_frame() (bsc#1205388).</comment>
+    <requestid>1036209</requestid>
+  </revision>
 </revisionlist>

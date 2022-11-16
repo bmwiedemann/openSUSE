@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 16 01:32:19 UTC 2022 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add ffmpeg-CVE-2022-3964.patch: Backport from upstream to fix
+  out of bounds read in update_block_in_prev_frame() (bsc#1205388).
+
+-------------------------------------------------------------------
 Sat Oct 15 17:22:52 UTC 2022 - Neal Gompa <ngompa@opensuse.org>
 
 - Refresh Fedora OpenH264 dlopen patch and sources for OpenH264 2.3.1
