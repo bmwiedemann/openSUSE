@@ -26,7 +26,7 @@ License:        MIT
 Group:          Metapackages
 URL:            http://en.opensuse.org/Patterns
 Source0:        %name-rpmlintrc
-ExclusiveArch:  x86_64 armv7l armv7hl aarch64 ppc64le s390x
+ExclusiveArch:  x86_64 %arm32 aarch64 ppc64le s390x riscv64
 
 %description
 This is an internal package that is used to create the patterns as part
@@ -389,6 +389,10 @@ Requires:       upower
 Requires:       wget
 Requires:       xdg-utils
 
+# Support ntfs drives
+Requires:       ntfs-3g
+Requires:       ntfsprogs
+
 # More "comfortable" base package versions
 Requires:       gzip
 Requires:       hostname
@@ -480,6 +484,7 @@ Requires:       nautilus-extension-seahorse
 Requires:       seahorse-daemon
 # So Trash and mounting USB sticks work in Nautilus
 Requires:       gvfs-backends
+Requires:       gvfs-fuse
 # We need the icons to work
 Requires:       adwaita-icon-theme
 # We need this for accessability and the lack of it causes big performance issues (boo#1204564)
@@ -501,10 +506,20 @@ Requires:       noto-sans-fonts
 # So that GNOME keyring works
 Requires:       gcr-ssh-askpass
 Requires:       gcr3-ssh-askpass
+# So that GNOME prompt for ssh password works
+Requires:       openssh-askpass-gnome
+# So that GNOME pinentry works
+Requires:       pinentry-gnome3
+Requires:       gvfs-backend-samba
 Requires:       samba
+# So that GNOME builtin screen recorder works
+Requires:       gstreamer-plugins-bad
+Requires:       gstreamer-plugins-good
 # #509829
 Requires:       xdg-user-dirs-gtk
 Requires:       yelp
+# Polkit integration with GNOME
+Requires:       polkit-gnome
 # https://build.opensuse.org/request/show/921373
 Requires:       xdg-desktop-portal-gnome
 # ensure laptop power support is there
@@ -578,6 +593,7 @@ Requires:       plasma5-defaults-openSUSE
 Requires:       purpose
 Requires:       qqc2-desktop-style
 Requires:       sddm-theme-openSUSE
+Requires:       xdg-desktop-portal-gnome
 Requires:       xdg-desktop-portal-kde
 # Recommended by powerdevil5, but allow tlp as alternative
 Requires:       (power-profiles-daemon or tlp)
@@ -674,97 +690,78 @@ done
 %{_docdir}/patterns-microos/basesystem.txt
 
 %files base
-%defattr(-,root,root)
 %dir %{_docdir}/patterns-microos
 %{_docdir}/patterns-microos/base.txt
 
 %files base-zypper
-%defattr(-,root,root)
 %dir %{_docdir}/patterns-microos
 %{_docdir}/patterns-microos/base_zypper.txt
 
 %files base-microdnf
-%defattr(-,root,root)
 %dir %{_docdir}/patterns-microos
 %{_docdir}/patterns-microos/base_microdnf.txt
 
 %files base-packagekit
-%defattr(-,root,root)
 %dir %{_docdir}/patterns-microos
 %{_docdir}/patterns-microos/base_packagekit.txt
 
 %files defaults
-%defattr(-,root,root)
 %dir %{_docdir}/patterns-microos
 %{_docdir}/patterns-microos/defaults.txt
 
 %files hardware
-%defattr(-,root,root)
 %dir %{_docdir}/patterns-microos
 %{_docdir}/patterns-microos/hardware.txt
 
 %files sssd_ldap
-%defattr(-,root,root)
 %dir %{_docdir}/patterns-microos
 %{_docdir}/patterns-microos/sssd_ldap.txt
 
 %files ima_evm
-%defattr(-,root,root)
 %dir %{_docdir}/patterns-microos
 %{_docdir}/patterns-microos/ima_evm.txt
 
 %files ra_agent
-%defattr(-,root,root)
 %dir %{_docdir}/patterns-microos
 %{_docdir}/patterns-microos/ra_agent.txt
 
 %files ra_verifier
-%defattr(-,root,root)
 %dir %{_docdir}/patterns-microos
 %{_docdir}/patterns-microos/ra_verifier.txt
 
 %files apparmor
-%defattr(-,root,root)
 %dir %{_docdir}/patterns-microos
 %{_docdir}/patterns-microos/apparmor.txt
 
 %files selinux
-%defattr(-,root,root)
 %dir %{_docdir}/patterns-microos
 %{_docdir}/patterns-microos/selinux.txt
 
 %files cockpit
-%defattr(-,root,root)
 %dir %{_docdir}/patterns-microos
 %{_docdir}/patterns-microos/cockpit.txt
 
 %files cloud
-%defattr(-,root,root)
 %dir %{_docdir}/patterns-microos
 %{_docdir}/patterns-microos/cloud.txt
 
 %files desktop-common
-%defattr(-,root,root)
 %dir %{_docdir}/patterns-microos
 %{_docdir}/patterns-microos/desktop-common.txt
 
 %files desktop-gnome
-%defattr(-,root,root)
 %dir %{_docdir}/patterns-microos
 %{_docdir}/patterns-microos/desktop-gnome.txt
 
 %files desktop-kde
-%defattr(-,root,root)
 %dir %{_docdir}/patterns-microos
 %{_docdir}/patterns-microos/desktop-kde.txt
 
 %files onlyDVD
-%defattr(-,root,root)
 %dir %{_docdir}/patterns-microos
 %{_docdir}/patterns-microos/onlyDVD.txt
 
 %files alt_onlyDVD
-%defattr(-,root,root)
 %dir %{_docdir}/patterns-microos
 %{_docdir}/patterns-microos/alt_onlyDVD.txt
 

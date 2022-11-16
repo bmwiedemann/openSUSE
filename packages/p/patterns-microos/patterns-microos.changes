@@ -1,18 +1,40 @@
 -------------------------------------------------------------------
+Mon Nov  16 10:55:15 UTC 2022 - Luca Di Maio <luca.dimaio1@gmail.com>
+
+- Add gstreamer-plusing-bad and gstreamer-plugins-good to ensure GNOME's builtin
+  screen recorder works correctly.
+
+-------------------------------------------------------------------
+Mon Nov  14 23:55:15 UTC 2022 - Luca Di Maio <luca.dimaio1@gmail.com>
+
+- Add gvfs-fuse
+- Add gvfs-backend-samba
+- Add ntfs support (useful for external drives and such)
+- Add openssh-askpass-gnome and pinentry-gnome3 to have working prompts on GNOME
+- Add polkit-gnome for polkit integration
+
+-------------------------------------------------------------------
+Sat Nov 12 00:58:48 UTC 2022 - Shawn Dunn <sfalken@cloverleaf-linux.org>
+
+- Add xdg-desktop-portal-gnome to -kde install pattern, to correct
+  for mangled fonts, and theming, while using GTK apps on MicroOS
+  KDE (boo#1205631)
+
+-------------------------------------------------------------------
 Wed Nov  2 10:12:15 UTC 2022 - Richard Brown <rbrown@suse.com>
 
 - cups-pk-helper shouldn't be linked to PackageKit, as "pk" stands
-  for PolicyKit in this case (boo#1204949) 
+  for PolicyKit in this case (boo#1204949)
 
 -------------------------------------------------------------------
 Thu Oct 27 09:02:25 UTC 2022 - Richard Brown <rbrown@suse.com>
 
-- Add gcr3-ssh-askpass as it's also needed with latest GNOME 
+- Add gcr3-ssh-askpass as it's also needed with latest GNOME
 
 -------------------------------------------------------------------
 Fri Oct 21 08:19:01 UTC 2022 - Richard Brown <rbrown@suse.com>
 
-- Require at-spi2-core else risk major performance issues (boo#1204564) 
+- Require at-spi2-core else risk major performance issues (boo#1204564)
 
 -------------------------------------------------------------------
 Wed Oct 19 07:05:42 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
@@ -36,6 +58,12 @@ Fri Sep 30 13:24:38 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Pull in power-profiles-daemon in the Plasma pattern as well
 - Allow tlp as alternative to power-profiles-daemon (boo#1198549)
+
+-------------------------------------------------------------------
+Fri Sep 30 12:37:53 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- enable build for RISCV64
+- spec cleanups
 
 -------------------------------------------------------------------
 Tue Sep 27 15:59:38 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
@@ -67,12 +95,12 @@ Thu Jul 25 22:50:09 UTC 2022 - Syds Bearda <opensuse@syds.eu>
 -------------------------------------------------------------------
 Thu Jul 21 21:57:05 UTC 2022 - Shawn Dunn <sfalken@cloverleaf-linux.org>
 
-- Add plasma-branding-MicroOS to the default install for MicroOS-KDE 
+- Add plasma-branding-MicroOS to the default install for MicroOS-KDE
 
 -------------------------------------------------------------------
 Thu Jun 30 16:24:11 UTC 2022 - Richard Brown <rbrown@suse.com>
 
-- Use gnome-initial-setup for configuring user on firstboot of MicroOS Desktop 
+- Use gnome-initial-setup for configuring user on firstboot of MicroOS Desktop
 
 -------------------------------------------------------------------
 Tue Jun 21 14:10:02 UTC 2022 - Fabian Vogt <fvogt@suse.com>
@@ -105,7 +133,7 @@ Mon May 30 12:30:40 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
 -------------------------------------------------------------------
 Thu May 19 12:47:00 UTC 2022 - Syds Bearda <opensuse@syds.eu>
 
-- NetworkManager 1.38.0 is split into different packages and doesn't 
+- NetworkManager 1.38.0 is split into different packages and doesn't
   require the wifi and wwan module, therefore added here as required.
   added NetworkManager-wifi to common and NetworkManager-wwan to DVD
 
@@ -125,7 +153,7 @@ Tue Apr 12 10:58:06 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
 -------------------------------------------------------------------
 Fri Feb  4 10:06:07 UTC 2022 - Richard Brown <rbrown@suse.com>
 
-- Do not include wicked in base pattern, NetworkManager instead 
+- Do not include wicked in base pattern, NetworkManager instead
 
 -------------------------------------------------------------------
 Thu Feb  3 10:50:05 UTC 2022 - Fabian Vogt <fvogt@suse.com>
@@ -170,7 +198,7 @@ Wed Oct 27 08:40:21 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
 -------------------------------------------------------------------
 Fri Oct 22 14:59:42 UTC 2021 - Richard Brown <rbrown@suse.com>
 
-- Add NetworkManager-openvpn-gnome to gnome pattern 
+- Add NetworkManager-openvpn-gnome to gnome pattern
 
 -------------------------------------------------------------------
 Thu Oct  7 19:32:06 UTC 2021 - Teoh Han Hui <teohhanhui@gmail.com>
@@ -294,7 +322,7 @@ Sat Apr 10 13:52:51 UTC 2021 - Dario Faggioli <dfaggioli@suse.com>
 Mon Mar 22 16:05:37 UTC 2021 - Richard Brown <rbrown@suse.com>
 
 - Remove gnome-calculator and add gnome-branding-MicroOS to MicroOS
-  GNOME Desktop 
+  GNOME Desktop
 
 -------------------------------------------------------------------
 Mon Mar 22 09:52:25 UTC 2021 - Richard Brown <rbrown@suse.com>
@@ -545,7 +573,7 @@ Wed Feb 12 15:04:18 UTC 2020 - Frederic Crozat <fcrozat@suse.com>
 -------------------------------------------------------------------
 Wed Feb 12 09:48:30 UTC 2020 - Richard Brown <rbrown@suse.com>
 
-- Introduce MicroOS Desktop patterns [boo#1163453] 
+- Introduce MicroOS Desktop patterns [boo#1163453]
 
 -------------------------------------------------------------------
 Tue Nov 26 10:29:21 UTC 2019 - Thorsten Kukuk <kukuk@suse.com>
@@ -603,22 +631,22 @@ Mon May  6 16:29:46 CEST 2019 - kukuk@suse.de
 Fri Apr 26 13:48:16 UTC 2019 - Richard Brown <rbrown@suse.com>
 
 - Remove salt-master and -minion from onlyDVD pattern
-  Not needed for MicroOS, will be used in Kubic via system_roles 
+  Not needed for MicroOS, will be used in Kubic via system_roles
 
 -------------------------------------------------------------------
 Thu Apr 11 12:04:28 UTC 2019 - Richard Brown <rbrown@suse.com>
 
-- Correctly obsolete patterns-caasp-* version 4.0 
+- Correctly obsolete patterns-caasp-* version 4.0
 
 -------------------------------------------------------------------
 Thu Apr  4 13:40:39 UTC 2019 - Richard Brown <rbrown@suse.com>
 
-- Require tftpboot-installation for MicroOS, not Tumbleweed-Kubic 
+- Require tftpboot-installation for MicroOS, not Tumbleweed-Kubic
 
 -------------------------------------------------------------------
 Wed Apr  3 13:10:25 UTC 2019 - Richard Brown <rbrown@suse.com>
 
-- Add pattern-microos-basesystem pattern to provide pattern() = basesystem 
+- Add pattern-microos-basesystem pattern to provide pattern() = basesystem
 
 -------------------------------------------------------------------
 Tue Apr  2 09:25:36 UTC 2019 - Fabian Vogt <fvogt@suse.com>
@@ -629,7 +657,7 @@ Tue Apr  2 09:25:36 UTC 2019 - Fabian Vogt <fvogt@suse.com>
 -------------------------------------------------------------------
 Mon Apr  1 12:37:26 UTC 2019 - Richard Brown <rbrown@suse.com>
 
-- onlyDVD patterns no longer require container runtime patterns 
+- onlyDVD patterns no longer require container runtime patterns
 
 -------------------------------------------------------------------
 Wed Mar 27 14:13:02 CET 2019 - kukuk@suse.de

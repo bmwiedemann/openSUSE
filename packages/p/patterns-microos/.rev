@@ -547,4 +547,12 @@ Tue Jan  20 02:29:11 UTC 2021 - Syds Bearda &lt;sydsb@opensuse.org&gt;
   for PolicyKit in this case (boo#1204949)</comment>
     <requestid>1032822</requestid>
   </revision>
+  <revision rev="57" vrev="57">
+    <srcmd5>132fe35d28419fcf54f0e5bbbb85fe46</srcmd5>
+    <version>5.0</version>
+    <time>1668609757</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1036181</requestid>
+  </revision>
 </revisionlist>
