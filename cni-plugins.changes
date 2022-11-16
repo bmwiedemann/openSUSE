@@ -107,7 +107,7 @@ Tue Mar 29 10:08:13 UTC 2022 - fvogt@suse.com
   * bridge: simplify version-based testcase code
   * testutils: add test utilities for spec version features
   * plugins: update to spec version 1.0.0
-  * vendor: bump CNI to 1.0.0-pre @ 62e54113
+  * vendor: bump CNI to 1.0.0-pre @ 62e54113 (fixes bsc#1181961 aka CVE-2021-20206)
 - Drop %go_nostrip
 
 -------------------------------------------------------------------
