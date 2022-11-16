@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-batch
-Version:        12.0.0
+Version:        13.0.0
 Release:        0
 Summary:        Microsoft Azure Batch Client Library
 License:        MIT
@@ -37,7 +37,6 @@ BuildRequires:  unzip
 Requires:       python-azure-common < 2.0.0
 Requires:       python-azure-common >= 1.1
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       python-msrest >= 0.6.21
 Requires:       python-msrestazure < 2.0.0
 Requires:       python-msrestazure >= 0.4.32
 Conflicts:      python-azure-sdk <= 2.0.0
