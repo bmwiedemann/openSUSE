@@ -78,7 +78,11 @@ Provides:       httpd
 BuildRequires:  postgresql-server-devel
 %endif
 %if 0%{?suse_version} >= 1330
+%if 0%{?suse_version} >= 1550
+BuildRequires:  php8-fastcgi
+%else
 BuildRequires:  php7-fastcgi
+%endif
 %else
 BuildRequires:  php5-fastcgi
 %endif
@@ -299,6 +303,7 @@ chmod -x doc/scripts/spawn-php.sh doc/scripts/rrdtool-graph.sh
 %service_del_postun %{name}.service
 
 %files
+%license COPYING
 %{_sbindir}/*
 %{_unitdir}/%{name}.service
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
@@ -329,6 +334,7 @@ chmod -x doc/scripts/spawn-php.sh doc/scripts/rrdtool-graph.sh
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/deflate.conf
 
 # modules
+%license COPYING
 %dir %{_libdir}/%{name}
 %{_libdir}/%{name}/mod_access.so
 %{_libdir}/%{name}/mod_accesslog.so
@@ -401,46 +407,58 @@ chmod -x doc/scripts/spawn-php.sh doc/scripts/rrdtool-graph.sh
 %dir %attr(750,%{name},%{name}) %{_var}/log/%{name}/
 
 %files mod_magnet
+%license COPYING
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/magnet.conf
 %{_libdir}/%{name}/mod_magnet.so
 %doc doc/outdated/magnet.txt
 
 %files mod_vhostdb_dbi
+%license COPYING
 %{_libdir}/%{name}/mod_vhostdb_dbi.so
 
 %files mod_vhostdb_ldap
+%license COPYING
 %{_libdir}/%{name}/mod_vhostdb_ldap.so
 
 %files mod_vhostdb_mysql
+%license COPYING
 %{_libdir}/%{name}/mod_vhostdb_mysql.so
 
 %files mod_vhostdb_pgsql
+%license COPYING
 %{_libdir}/%{name}/mod_vhostdb_pgsql.so
 
 %files mod_rrdtool
+%license COPYING
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/rrdtool.conf
 %doc doc/outdated/rrdtool.txt
 %doc doc/scripts/rrdtool-graph.sh
 %{_libdir}/%{name}/mod_rrdtool.so
 
 %files mod_maxminddb
+%license COPYING
 %{_libdir}/%{name}/mod_maxminddb.so
 
 %files mod_webdav
+%license COPYING
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/webdav.conf
 %{_libdir}/%{name}/mod_webdav.so
 %doc doc/outdated/webdav.txt
 
 %files mod_authn_gssapi
+%license COPYING
 %{_libdir}/%{name}/mod_authn_gssapi.so
 
 %files mod_authn_ldap
+%license COPYING
 %{_libdir}/%{name}/mod_authn_ldap.so
 
 %files mod_authn_sasl
+%license COPYING
 %{_libdir}/%{name}/mod_authn_sasl.so
 
 %files mod_authn_pam
+%license COPYING
 %{_libdir}/%{name}/mod_authn_pam.so
 
 %changelog

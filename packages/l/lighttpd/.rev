@@ -523,4 +523,13 @@ bsc#1181400</comment>
     <comment>boo#1203872 CVE-2022-41556</comment>
     <requestid>1006862</requestid>
   </revision>
+  <revision rev="56" vrev="3">
+    <srcmd5>2f586698d521cfd10bb028cb7fbaa597</srcmd5>
+    <version>1.4.67</version>
+    <time>1668609858</time>
+    <user>dimstar_suse</user>
+    <comment>- package license file
+- build with php8 on current releases</comment>
+    <requestid>1036227</requestid>
+  </revision>
 </revisionlist>
