@@ -26,12 +26,15 @@
 %bcond_with test
 %endif
 Name:           python-pdm%{psuffix}
-Version:        2.1.5
+Version:        2.2.1
 Release:        0
 Summary:        Python Development Master
 License:        MIT
 URL:            https://github.com/pdm-project/pdm/
 Source0:        https://files.pythonhosted.org/packages/source/p/pdm/pdm-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM findpython-022.patch gh#pdm-project/pdm#1516 mcepl@suse.com
+# Makes the module work with findpython 0.2.2
+Patch0:         findpython-022.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pdm-pep517 >= 1.0}
 BuildRequires:  %{python_module pip}
@@ -40,7 +43,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-blinker
 Requires:       python-cachecontrol >= 0.12.11
 Requires:       python-certifi
-Requires:       python-findpython >= 0.2.0
+Requires:       python-findpython >= 0.2.2
 Requires:       python-packaging >= 20.9
 Requires:       python-pep517 >= 0.11.0
 Requires:       python-platformdirs
