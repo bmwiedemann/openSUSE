@@ -1,7 +1,7 @@
 #
 # spec file for package acpid
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           acpid
-Version:        2.0.33
+Version:        2.0.34
 Release:        0
 Summary:        Daemon to execute actions on ACPI events
 License:        GPL-2.0-or-later

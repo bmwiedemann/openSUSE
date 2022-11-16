@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 15 14:01:40 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.0.34:
+  - Add MSG_CMSG_CLOEXEC for systems that are missing it.
+  - Fix a bug with input layer event table not working on 32-bit
+    builds with 64-bit time types.
+  - Use binary search to find input layer events in the table.
+  - Use AC_PROG_CC instead of the obsolete AC_PROG_CC_STDC.
+  - Add support for more input layer events.
+
+-------------------------------------------------------------------
 Sat Oct 16 12:54:21 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.33:
