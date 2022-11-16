@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Nov 15 17:12:47 UTC 2022 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.5.1
+   * Add support of
+     - Access IS ATR220 with idProduct: 0x0184
+     - Alcor Link AK9567
+     - Alcor Link AK9572
+     - BLUTRONICS TAURUS NFC
+     - CHERRY SmartTerminal ST-1144
+     - CREATOR CRT-603(CZ1) CCR
+     - Dexon Tecnologias Digitais LTDA DXToken
+     - ESMART Reader ER433x ICC
+     - ESMART Reader ER773x Dual & 1S
+     - Flight system consulting Incredist
+     - Ledger Nano S
+     - Ledger Nano S Plus
+     - Ledger Nano SP
+     - Ledger Nano X
+     - SafeNet eToken Fusion
+     - Sensyl SSC-NFC Reader
+   * Adjust USB drivers path at run-time via environment variable PCSCLITE_HP_DROPDIR
+   * configure.ac: add --enable-strict option
+   * Fix a problem with AUTO PPS readers and ATR convention inverse cards
+   * examples/scardcontrol:
+    - add support of 6A xx error codes
+    - check WinSCard error early
+    - parse wLcdLayout & bEntryValidationCondition
+   * macOS: log non sensitive strings as "%{public}s"
+   * Some other minor improvements
+
+-------------------------------------------------------------------
 Thu Jan 27 13:18:58 UTC 2022 - Axel Braun <axel.braun@gmx.de>
 
 - verson 1.5.0
