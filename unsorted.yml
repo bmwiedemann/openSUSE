@@ -192,7 +192,6 @@ unsorted:
   - PDAL-bash-completion 
   - PDAL-devel 
   - PDAL-doc 
-  - PackageKit-backend-dnf: [i586] 
   - PackageKit-branding-upstream 
   - PackageKit-devel 
   - PgTcl 
@@ -739,7 +738,6 @@ unsorted:
   - appres 
   - appstream-glib-devel 
   - apptainer 
-  - appx-util 
   - apr-devel 
   - apr-util-devel 
   - apulse: [i586] 
@@ -1222,8 +1220,6 @@ unsorted:
   - bcunit-doc 
   - bdfresize 
   - bdftopcf 
-  - bea-stax 
-  - bea-stax-api 
   - bean-validation-api 
   - bean-validation-api-javadoc 
   - beansbinding 
@@ -1828,7 +1824,6 @@ unsorted:
   - caslon-fonts 
   - casync 
   - catalan-pos-dict 
-  - catatonit: [i586] 
   - catcodec 
   - catimg 
   - catimg-zsh-completion 
@@ -2133,10 +2128,8 @@ unsorted:
   - cmus-plugin-vorbis 
   - cmus-plugin-wavpack 
   - cmus-plugins-all 
-  - cni: [i586] 
   - cni-plugin-dnsname 
   - cni-plugin-flannel 
-  - cni-plugins: [i586] 
   - cntlm 
   - cobbler 
   - cobbler-tests 
@@ -2270,7 +2263,6 @@ unsorted:
   - conky 
   - conky-doc 
   - conman 
-  - conmon: [i586] 
   - connman 
   - connman-client 
   - connman-devel 
@@ -2306,7 +2298,6 @@ unsorted:
   - container-diff 
   - container-registry-systemd 
   - container-support-utils 
-  - containerd 
   - containerd-ctr 
   - containerized-data-importer-api: [x86_64] 
   - containerized-data-importer-cloner: [x86_64] 
@@ -2428,7 +2419,7 @@ unsorted:
   - cri-o: [x86_64] 
   - cri-o-kubeadm-criconfig: [x86_64] 
   - cri-tools 
-  - criu-devel: [x86_64] # devel package of opensuse_microos:criu 
+  - criu-devel: [x86_64] # devel package of dvd:criu 
   - criu-plugin-amdgpu: [x86_64] 
   - crmsh 
   - crmsh-scripts 
@@ -2797,7 +2788,6 @@ unsorted:
   - deal_II-openmpi3-devel: [x86_64] 
   - deal_II-openmpi4-devel: [x86_64] 
   - debhelper 
-  - debootstrap 
   - debugedit 
   - debuginfod-client 
   - debuginfod-dummy-client 
@@ -3018,12 +3008,7 @@ unsorted:
   - dmlc-core-devel 
   - dmraid-devel 
   - dmz-icon-theme-cursors 
-  - dnf 
   - dnf-automatic 
-  - dnf-data: [i586] 
-  - dnf-lang 
-  - dnf-plugins-core 
-  - dnf-plugins-core-lang 
   - dns24-update 
   - dnscrypt-proxy 
   - dnsdiag 
@@ -3046,8 +3031,6 @@ unsorted:
   - docbook_3 
   - docbook_5 
   - docbook_5-doc 
-  - docker 
-  - docker-bash-completion 
   - docker-bench-security 
   - docker-buildx 
   - docker-client-java 
@@ -3062,7 +3045,6 @@ unsorted:
   - docker-kubic-zsh-completion: [x86_64] 
   - docker-lock 
   - docker-machine-driver-kvm2: [x86_64] 
-  - docker-zsh-completion 
   - docker_auth 
   - docparser-devel 
   - docserv-auxserver 
@@ -3112,9 +3094,7 @@ unsorted:
   - dpdk-tools: [x86_64] 
   - dpic 
   - dpic-doc 
-  - dpkg 
   - dpkg-devel 
-  - dpkg-lang 
   - dqlite-devel 
   - dracula-gtk-theme 
   - dracut-extra 
@@ -4088,7 +4068,6 @@ unsorted:
   - fuse-doc 
   - fuse-exfat 
   - fuse-oscfs 
-  - fuse-overlayfs: [i586] 
   - fuse2fs 
   - fuse3-devel 
   - fuse3-doc 
@@ -4421,11 +4400,9 @@ unsorted:
   - gflags-devel 
   - gflags-devel-static 
   - gfs2-utils 
-  - gfxboot 
   - gfxboot-branding-KDE 
   - gfxboot-branding-SLED 
   - gfxboot-branding-SLES 
-  - gfxboot-branding-openSUSE 
   - gfxboot-branding-upstream 
   - gfxboot-devel 
   - gh 
@@ -6810,7 +6787,6 @@ unsorted:
   - hactool 
   - haguichi 
   - haguichi-lang 
-  - hamcrest 
   - hamcrest-javadoc 
   - hamlib 
   - hamlib-devel 
@@ -6837,7 +6813,6 @@ unsorted:
   - hashlink-devel 
   - hashlink-hdlls 
   - haveged-devel 
-  - hawkey-man 
   - hawknl-devel 
   - hawknl-libs 
   - haxe 
@@ -7468,7 +7443,6 @@ unsorted:
   - isl-devel-32bit: [x86_64] 
   - iso-codes-devel 
   - iso-country-flags-png 
-  - isorelax 
   - ispc: [x86_64] 
   - ispc-devel: [x86_64] 
   - ispell-bulgarian 
@@ -7866,7 +7840,6 @@ unsorted:
   - jikes 
   - jimtcl 
   - jimtcl-devel 
-  - jing 
   - jing-javadoc 
   - jira-cli 
   - jisp2 
@@ -7987,7 +7960,6 @@ unsorted:
   - jul-to-slf4j 
   - juliaup 
   - julius 
-  - junit 
   - junit-javadoc 
   - junit-manual 
   - junit5 
@@ -8383,17 +8355,6 @@ unsorted:
   - kiten-devel 
   - kitinerary-devel 
   - kitty 
-  - kiwi-man-pages 
-  - kiwi-systemdeps 
-  - kiwi-systemdeps-bootloaders 
-  - kiwi-systemdeps-containers 
-  - kiwi-systemdeps-core 
-  - kiwi-systemdeps-disk-images 
-  - kiwi-systemdeps-filesystems 
-  - kiwi-systemdeps-image-validation 
-  - kiwi-systemdeps-iso-media 
-  - kiwi-templates-Minimal 
-  - kiwi-tools 
   - kjobwidgets-devel 
   - kjots 
   - kjots-lang 
@@ -10446,7 +10407,6 @@ unsorted:
   - libcompizconfig-devel 
   - libcomps-devel 
   - libcomps-doc 
-  - libcomps0 
   - libconfig++-devel 
   - libconfig++11 
   - libconfig++11-32bit: [x86_64] 
@@ -10458,7 +10418,6 @@ unsorted:
   - libconfuse-devel 
   - libconfuse-lang 
   - libconfuse2 
-  - libcontainers-common: [i586] 
   - libcorosync-devel 
   - libcorosync_common4-32bit: [x86_64] 
   - libcorrect-devel 
@@ -10689,8 +10648,6 @@ unsorted:
   - libdnet1 
   - libdnf-devel 
   - libdnf-plugin-txnupd: [i586] 
-  - libdnf-repo-config-zypp: [i586] 
-  - libdnf2: [i586] 
   - libdnnl2: [x86_64] 
   - libdns_sd 
   - libdns_sd-32bit: [x86_64] 
@@ -12549,8 +12506,8 @@ unsorted:
   - libmunge2 
   - libmunge2-32bit: [x86_64] 
   - libmunit0suse0 
-  - libmuparser2_3_3 
-  - libmuparser2_3_3-32bit: [x86_64] 
+  - libmuparser2_3_4 
+  - libmuparser2_3_4-32bit: [x86_64] 
   - libmuparserx4_0_11 
   - libmupen64plus-devel 
   - libmupen64plus2 
@@ -13809,7 +13766,6 @@ unsorted:
   - libreplaygain-devel 
   - libreplaygain1 
   - librepo-devel 
-  - librepo0: [i586] 
   - librepository-javadoc 
   - librepute1 
   - libresprite 
@@ -16467,7 +16423,6 @@ unsorted:
   - miao-fonts 
   - micro-editor 
   - microcom 
-  - microdnf: [i586] 
   - microos-devel-tools 
   - micropython: [x86_64] 
   - miller 
@@ -18703,6 +18658,7 @@ unsorted:
   - optipng 
   - opus-tools 
   - opusfile-devel 
+  - oqs-provider 
   - orage 
   - orage-lang 
   - orc 
@@ -19013,7 +18969,6 @@ unsorted:
   - password-store 
   - password-store-dmenu 
   - pasystray 
-  - patch 
   - patch2mail 
   - patchelf 
   - patchutils 
@@ -19659,7 +19614,6 @@ unsorted:
   - perl-File-Copy-Recursive 
   - perl-File-Copy-Recursive-Reduced 
   - perl-File-DesktopEntry 
-  - perl-File-FcntlLock 
   - perl-File-Find-Object 
   - perl-File-Find-Rule 
   - perl-File-Find-Rule-Perl 
@@ -21113,8 +21067,6 @@ unsorted:
   - pocl-devel 
   - poco-cpspc 
   - poco-devel 
-  - podman: [i586] 
-  - podman-cni-config: [i586] 
   - podman-docker 
   - podman-remote 
   - podofo 
@@ -21832,7 +21784,6 @@ unsorted:
   - python3-debtcollector 
   - python3-deltarpm 
   - python3-designateclient 
-  - python3-dnf 
   - python3-dnf-plugin-kickstart 
   - python3-dnf-plugin-leaves 
   - python3-dnf-plugin-local 
@@ -21841,12 +21792,9 @@ unsorted:
   - python3-dnf-plugin-rpmconf 
   - python3-dnf-plugin-show-leaves 
   - python3-dnf-plugin-showvars 
-  - python3-dnf-plugin-snapper 
   - python3-dnf-plugin-system-upgrade 
   - python3-dnf-plugin-torproxy 
   - python3-dnf-plugin-versionlock 
-  - python3-dnf-plugins-core 
-  - python3-dnf-plugins-extras-common 
   - python3-dogpile.cache 
   - python3-ec2imgutils 
   - python3-ec2metadata 
@@ -21874,7 +21822,6 @@ unsorted:
   - python3-gpsd 
   - python3-gr-iqbal 
   - python3-gv 
-  - python3-hawkey 
   - python3-heatclient 
   - python3-hivex 
   - python3-imobiledevice 
@@ -21886,7 +21833,6 @@ unsorted:
   - python3-keystoneauth1 
   - python3-keystoneclient 
   - python3-keystonemiddleware 
-  - python3-kiwi 
   - python3-ktoblzcheck 
   - python3-lash 
   - python3-lasso 
@@ -21898,12 +21844,9 @@ unsorted:
   - python3-libblockdev 
   - python3-libbytesize 
   - python3-libcec 
-  - python3-libcomps 
-  - python3-libdnf 
   - python3-libftdi1 
   - python3-libguestfs: [x86_64] 
   - python3-libixion 
-  - python3-libmodulemd 
   - python3-libmount 
   - python3-libnbd 
   - python3-libnvme 
@@ -22050,7 +21993,6 @@ unsorted:
   - python3-tvtk 
   - python3-tvtk-doc 
   - python3-uhd 
-  - python3-unbound 
   - python3-upm 
   - python3-vapoursynth 
   - python3-virt-bootstrap: [x86_64] 
@@ -22164,6 +22106,7 @@ unsorted:
   - python310-MouseInfo 
   - python310-MulticoreTSNE 
   - python310-Nuitka 
+  - python310-OSMPythonTools 
   - python310-OWSLib 
   - python310-PGet 
   - python310-PTable 
@@ -22516,6 +22459,7 @@ unsorted:
   - python310-azure-data-nspkg 
   - python310-azure-data-tables 
   - python310-azure-datalake-store 
+  - python310-azure-developer-loadtesting 
   - python310-azure-digitaltwins-core 
   - python310-azure-digitaltwins-nspkg 
   - python310-azure-eventgrid 
@@ -22534,6 +22478,7 @@ unsorted:
   - python310-azure-keyvault-nspkg 
   - python310-azure-keyvault-secrets 
   - python310-azure-loganalytics 
+  - python310-azure-maps-route 
   - python310-azure-media-nspkg 
   - python310-azure-media-videoanalyzer-edge 
   - python310-azure-messaging-nspkg 
@@ -22545,6 +22490,7 @@ unsorted:
   - python310-azure-mgmt-alertsmanagement 
   - python310-azure-mgmt-apimanagement 
   - python310-azure-mgmt-app 
+  - python310-azure-mgmt-appcomplianceautomation 
   - python310-azure-mgmt-appconfiguration 
   - python310-azure-mgmt-appcontainers 
   - python310-azure-mgmt-applicationinsights 
@@ -22603,6 +22549,7 @@ unsorted:
   - python310-azure-mgmt-dynatrace 
   - python310-azure-mgmt-edgegateway 
   - python310-azure-mgmt-edgeorder 
+  - python310-azure-mgmt-education 
   - python310-azure-mgmt-elastic 
   - python310-azure-mgmt-elasticsan 
   - python310-azure-mgmt-eventgrid 
@@ -22718,6 +22665,7 @@ unsorted:
   - python310-azure-purview-nspkg 
   - python310-azure-purview-scanning 
   - python310-azure-schemaregistry 
+  - python310-azure-schemaregistry-avroencoder 
   - python310-azure-schemaregistry-avroserializer 
   - python310-azure-sdk 
   - python310-azure-search-documents 
@@ -23166,7 +23114,6 @@ unsorted:
   - python310-docker-compose 
   - python310-docker-pycreds 
   - python310-dockerpty 
-  - python310-docopt 
   - python310-docrepr 
   - python310-docstring-to-markdown 
   - python310-docutils 
@@ -23397,7 +23344,6 @@ unsorted:
   - python310-google-resumable-media 
   - python310-googleapis-common-protos 
   - python310-googlemaps 
-  - python310-gpg: [i586] 
   - python310-gpgme 
   - python310-gphoto2 
   - python310-gprof2dot 
@@ -24523,7 +24469,6 @@ unsorted:
   - python310-python-crontab 
   - python310-python-daemon 
   - python310-python-datamatrix 
-  - python310-python-dateutil: [i586] 
   - python310-python-dbusmock 
   - python310-python-debian 
   - python310-python-docs-theme 
@@ -24619,7 +24564,6 @@ unsorted:
   - python310-pywebpush 
   - python310-pywinrm 
   - python310-pywlroots 
-  - python310-pyxattr 
   - python310-pyxdg 
   - python310-pyyaml_env_tag 
   - python310-pyzmq-devel 
@@ -25409,6 +25353,7 @@ unsorted:
   - python38-MouseInfo 
   - python38-MulticoreTSNE 
   - python38-Nuitka 
+  - python38-OSMPythonTools 
   - python38-OWSLib 
   - python38-PGet 
   - python38-PTable 
@@ -25771,6 +25716,7 @@ unsorted:
   - python38-azure-data-nspkg 
   - python38-azure-data-tables 
   - python38-azure-datalake-store 
+  - python38-azure-developer-loadtesting 
   - python38-azure-digitaltwins-core 
   - python38-azure-digitaltwins-nspkg 
   - python38-azure-eventgrid 
@@ -25789,6 +25735,7 @@ unsorted:
   - python38-azure-keyvault-nspkg 
   - python38-azure-keyvault-secrets 
   - python38-azure-loganalytics 
+  - python38-azure-maps-route 
   - python38-azure-media-nspkg 
   - python38-azure-media-videoanalyzer-edge 
   - python38-azure-messaging-nspkg 
@@ -25800,6 +25747,7 @@ unsorted:
   - python38-azure-mgmt-alertsmanagement 
   - python38-azure-mgmt-apimanagement 
   - python38-azure-mgmt-app 
+  - python38-azure-mgmt-appcomplianceautomation 
   - python38-azure-mgmt-appconfiguration 
   - python38-azure-mgmt-appcontainers 
   - python38-azure-mgmt-applicationinsights 
@@ -25858,6 +25806,7 @@ unsorted:
   - python38-azure-mgmt-dynatrace 
   - python38-azure-mgmt-edgegateway 
   - python38-azure-mgmt-edgeorder 
+  - python38-azure-mgmt-education 
   - python38-azure-mgmt-elastic 
   - python38-azure-mgmt-elasticsan 
   - python38-azure-mgmt-eventgrid 
@@ -25973,6 +25922,7 @@ unsorted:
   - python38-azure-purview-nspkg 
   - python38-azure-purview-scanning 
   - python38-azure-schemaregistry 
+  - python38-azure-schemaregistry-avroencoder 
   - python38-azure-schemaregistry-avroserializer 
   - python38-azure-sdk 
   - python38-azure-search-documents 
@@ -28759,6 +28709,7 @@ unsorted:
   - python39-MouseInfo 
   - python39-MulticoreTSNE 
   - python39-Nuitka 
+  - python39-OSMPythonTools 
   - python39-OWSLib 
   - python39-PGet 
   - python39-PTable 
@@ -29121,6 +29072,7 @@ unsorted:
   - python39-azure-data-nspkg 
   - python39-azure-data-tables 
   - python39-azure-datalake-store 
+  - python39-azure-developer-loadtesting 
   - python39-azure-digitaltwins-core 
   - python39-azure-digitaltwins-nspkg 
   - python39-azure-eventgrid 
@@ -29139,6 +29091,7 @@ unsorted:
   - python39-azure-keyvault-nspkg 
   - python39-azure-keyvault-secrets 
   - python39-azure-loganalytics 
+  - python39-azure-maps-route 
   - python39-azure-media-nspkg 
   - python39-azure-media-videoanalyzer-edge 
   - python39-azure-messaging-nspkg 
@@ -29150,6 +29103,7 @@ unsorted:
   - python39-azure-mgmt-alertsmanagement 
   - python39-azure-mgmt-apimanagement 
   - python39-azure-mgmt-app 
+  - python39-azure-mgmt-appcomplianceautomation 
   - python39-azure-mgmt-appconfiguration 
   - python39-azure-mgmt-appcontainers 
   - python39-azure-mgmt-applicationinsights 
@@ -29208,6 +29162,7 @@ unsorted:
   - python39-azure-mgmt-dynatrace 
   - python39-azure-mgmt-edgegateway 
   - python39-azure-mgmt-edgeorder 
+  - python39-azure-mgmt-education 
   - python39-azure-mgmt-elastic 
   - python39-azure-mgmt-elasticsan 
   - python39-azure-mgmt-eventgrid 
@@ -29323,6 +29278,7 @@ unsorted:
   - python39-azure-purview-nspkg 
   - python39-azure-purview-scanning 
   - python39-azure-schemaregistry 
+  - python39-azure-schemaregistry-avroencoder 
   - python39-azure-schemaregistry-avroserializer 
   - python39-azure-sdk 
   - python39-azure-search-documents 
@@ -32761,7 +32717,6 @@ unsorted:
   - reiser4progs-devel 
   - reiserfs 
   - rekor 
-  - relaxngDatatype 
   - relaxngcc 
   - relaxngcc-javadoc 
   - release-compare 
@@ -33029,7 +32984,6 @@ unsorted:
   - rubygem-passenger-nginx 
   - runawk 
   - runawk-examples 
-  - runc: [i586] 
   - rungetty 
   - ruqola 
   - ruqola-lang 
@@ -33128,11 +33082,9 @@ unsorted:
   - saxon8-sql 
   - saxon8-xom 
   - saxon8-xpath 
-  - saxon9 
   - saxon9-demo 
   - saxon9-javadoc 
   - saxon9-manual 
-  - saxon9-scripts 
   - saxpath 
   - sbc-devel 
   - sbcl 
@@ -33483,7 +33435,6 @@ unsorted:
   - skinlf-demo 
   - skinlf-javadoc 
   - skkdic-extra 
-  - skopeo 
   - skopeo-bash-completion 
   - skrooge 
   - skrooge-lang 
@@ -33502,7 +33453,6 @@ unsorted:
   - slf4j-reload4j 
   - slf4j-sources 
   - slib 
-  - slirp4netns: [i586] 
   - slop 
   - slop-devel 
   - sluice 
@@ -34133,6 +34083,7 @@ unsorted:
   - tcpd 
   - tcpd-devel 
   - tcpflow 
+  - tcping 
   - tcpreplay 
   - tcpser 
   - tcsh 
@@ -43246,7 +43197,6 @@ unsorted:
   - typelib-1_0-Matekbd-1_0 
   - typelib-1_0-Mbim-1_0 
   - typelib-1_0-ModemManager-1_0 
-  - typelib-1_0-Modulemd-2_0 
   - typelib-1_0-Muffin-0_0 
   - typelib-1_0-NMA4-1_0 
   - typelib-1_0-Nautilus-4_0 
@@ -43376,7 +43326,6 @@ unsorted:
   - ulogd-sqlite3 
   - ultimatestunts 
   - ultimatestunts-data 
-  - umoci 
   - umockdev 
   - umockdev-devel 
   - unbound-devel 
@@ -44022,7 +43971,6 @@ unsorted:
   - x3270 
   - x86info 
   - xalan-c 
-  - xalan-j2 
   - xalan-j2-demo 
   - xalan-j2-manual 
   - xalan-j2-xsltc 
@@ -44120,7 +44068,6 @@ unsorted:
   - xengine 
   - xerces-c 
   - xerces-c-doc 
-  - xerces-j2 
   - xerces-j2-demo 
   - xerces-j2-javadoc 
   - xev 
@@ -44274,7 +44221,6 @@ unsorted:
   - xml-commons-apis-bootstrap 
   - xml-commons-apis-javadoc 
   - xml-commons-apis-manual 
-  - xml-commons-resolver 
   - xml-commons-resolver-bootstrap 
   - xml-commons-resolver-javadoc 
   - xml-commons-which-bootstrap 
@@ -44632,7 +44578,6 @@ unsorted:
   - yubikey-manager-qt 
   - yubioath-desktop 
   - yudit 
-  - yum 
   - yum-utils 
   - z 
   - z3 
