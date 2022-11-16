@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Oct 31 13:00:11 CST 2022 - Coly Li <colyli@suse.de>
+
+- Synchronize pcm package from openSUSE to SLES15-SP* supported
+  produces (jsc#PED-395, jsc#PED-1004)
+
+- Update to version 202210:
+  * Add simdjson submodule and move simdjson lib to version 2.0.4
+  * Add  SNR register definitions
+  * Fix some build related issues
+  * Improvement on printing error messages
+  * Fix sporadic crashes
+  * Fix top-down events on some Linux kernels
+  * Remove 32 bit code from DriverInterface
+  * Remove public header file and remove header files from installation
+  * Add IOUserClient class to CMake builds, and add fields in kernel
+    topology structure to match userland structure
+  * Remove of use of volatile and make memory allocation only for the
+    lifetime of a function that needs it
+  * Move DriverInterface code into MSRAccessor
+  * Expand custom counter memory for PCM-Service
+  * Removing of potentially existed files (symlinks) before writing
+  * pcm-memory: option to enforce output flush
+  * Implement RPL support
+  * Introduce Raptor Lake IDs
+
+-------------------------------------------------------------------
 Tue Jul 26 08:27:00 UTC 2022 - Roman Dementiev <roman.dementiev@intel.com>
 
 - Update to version 202207:
