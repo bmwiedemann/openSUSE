@@ -56,4 +56,12 @@
     <comment>- added also shader library to baselibs.conf (bsc#1176894)</comment>
     <requestid>836446</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>55f7d966241090fb2228ef3d8407748a</srcmd5>
+    <version>1.5</version>
+    <time>1668609798</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1035884</requestid>
+  </revision>
 </revisionlist>

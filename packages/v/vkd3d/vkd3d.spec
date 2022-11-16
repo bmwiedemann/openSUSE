@@ -1,7 +1,7 @@
 #
 # spec file for package vkd3d
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,10 +19,13 @@
 %define major 1
 
 Name:           vkd3d
+BuildRequires:  bison
 BuildRequires:  fdupes
+BuildRequires:  flex
 BuildRequires:  spirv-headers
-BuildRequires:  spirv-tools
 BuildRequires:  xcb-util-keysyms-devel
+BuildRequires:  pkgconfig(SPIRV-Tools)
+BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcb-event)
@@ -31,7 +34,7 @@ URL:            https://winehq.org/
 Summary:        Direct3D 12 to Vulkan translation library
 License:        LGPL-2.1-or-later
 Group:          System/X11/Utilities
-Version:        1.2
+Version:        1.5
 Release:        0
 Source0:        https://dl.winehq.org/vkd3d/source/vkd3d-%version.tar.xz
 Source1:        https://dl.winehq.org/vkd3d/source/vkd3d-%version.tar.xz.sign
@@ -78,7 +81,12 @@ These are its development libraries and headers.
 %setup -q
 
 %build
-%configure --disable-static
+%configure \
+	--disable-static \
+	--disable-tests \
+	--with-xcb \
+	--with-spirv-tools
+
 make %{?_smp_mflags}
 
 %check

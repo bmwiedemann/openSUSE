@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Oct 27 16:51:39 UTC 2022 - Tobias Klausmann <tobias.klausmann@freenet.de>
+
+- Update to version 1.5:
+  - Support for various HLSL features and intrinsics.
+  - Typed unordered access view loads of multicomponent formats.
+  - Miscellaneous bug fixes.
+- Packaging changes:
+  - Disable test until they are fixed
+
+-------------------------------------------------------------------
+Thu Jun 23 07:00:31 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- updated to 1.4
+  - Many improvements to the HLSL compiler.
+  - A new descriptor heap implementation using the VK_EXT_descriptor_indexing
+    extension.
+  - A new fence implementation using the VK_KHR_timeline_semaphore extension.
+- updated to 1.3
+  - Initial HLSL compilation support.
+  - Shader model 5.1 descriptor array support.
+  - Support for disassembling Direct3D shaders.
+
+-------------------------------------------------------------------
 Thu Sep 24 06:29:15 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - added also shader library to baselibs.conf (bsc#1176894)
