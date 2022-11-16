@@ -1,6 +1,8 @@
---- a/templates/lib/CMakeLists.txt	2019-12-18 20:57:28.000000000 +0100
-+++ b/templates/lib/CMakeLists.txt	2019-12-19 00:53:23.253568027 +0100
-@@ -125,7 +125,7 @@
+Index: grantlee-5.3.1/templates/lib/CMakeLists.txt
+===================================================================
+--- grantlee-5.3.1.orig/templates/lib/CMakeLists.txt
++++ grantlee-5.3.1/templates/lib/CMakeLists.txt
+@@ -137,7 +137,7 @@ install(TARGETS Grantlee_Templates EXPOR
    RUNTIME DESTINATION bin COMPONENT Templates
    LIBRARY DESTINATION ${LIB_INSTALL_DIR} COMPONENT Templates
    ARCHIVE DESTINATION ${LIB_INSTALL_DIR} COMPONENT Templates
@@ -9,7 +11,7 @@
  )
  
  install(FILES
-@@ -152,10 +152,10 @@
+@@ -164,10 +164,10 @@ install(FILES
    token.h
    util.h
    variable.h
@@ -22,9 +24,11 @@
 -  DESTINATION include COMPONENT Templates
 +  DESTINATION include/grantlee5 COMPONENT Templates
  )
---- a/textdocument/lib/CMakeLists.txt	2019-12-18 20:57:28.000000000 +0100
-+++ b/textdocument/lib/CMakeLists.txt	2019-12-19 00:54:55.780989914 +0100
-@@ -48,7 +48,7 @@
+Index: grantlee-5.3.1/textdocument/lib/CMakeLists.txt
+===================================================================
+--- grantlee-5.3.1.orig/textdocument/lib/CMakeLists.txt
++++ grantlee-5.3.1/textdocument/lib/CMakeLists.txt
+@@ -54,7 +54,7 @@ install(TARGETS Grantlee_TextDocument EX
    RUNTIME DESTINATION bin COMPONENT TextDocument
    LIBRARY DESTINATION ${LIB_INSTALL_DIR} COMPONENT TextDocument
    ARCHIVE DESTINATION ${LIB_INSTALL_DIR} COMPONENT TextDocument
@@ -33,7 +37,7 @@
  )
  
  install(FILES
-@@ -59,10 +59,10 @@
+@@ -65,10 +65,10 @@ install(FILES
    texthtmlbuilder.h
    mediawikimarkupbuilder.h
    ${CMAKE_CURRENT_BINARY_DIR}/grantlee_textdocument_export.h

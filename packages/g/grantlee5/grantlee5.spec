@@ -1,7 +1,7 @@
 #
 # spec file for package grantlee5
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,18 +22,21 @@
 %{?!cmake_install:%global cmake_install() DESTDIR=%{buildroot} make install}
 
 Name:           grantlee5
-Version:        5.2.0
+Version:        5.3.1
 Release:        0
 Summary:        Qt string template library
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
-URL:            http://grantlee.org/
-Source:         http://www.grantlee.org/downloads/grantlee-%{version}.tar.gz
+URL:            https://github.com/steveire/grantlee
+Source:         https://github.com/steveire/grantlee/releases/download/v%{version}/grantlee-%{version}.tar.gz
 Source2:        baselibs.conf
+Source3:        grantlee5.keyring
 # PATCH-FIX-OPENSUSE includes.diff -- since upstream doesn't provide a way to install to custom directory, we cheat!
 Patch0:         includes.diff
 # PATCH-FIX-OPENSUSE grantlee-5.2.0-fix-ctest-ld-library-path.patch -- set ld library path for tests
 Patch1:         grantlee-5.2.0-fix-ctest-ld-library-path.patch
+# PATCH-FIX-UPSTREAM https://github.com/steveire/grantlee/pull/86/
+Patch2:         fix-i586-precision.patch
 BuildRequires:  cmake >= 3.5
 BuildRequires:  cmake(Qt5Core) >= 5.3
 BuildRequires:  cmake(Qt5Gui) >= 5.3

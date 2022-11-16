@@ -1,0 +1,40 @@
+From 13094b78a790786030a468453c2b3ead4c7fd9cf Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Sun, 13 Nov 2022 14:01:21 +0100
+Subject: [PATCH] Fix formatting of some larger file sizes on 32bit x86
+
+With the x87 FPU available, GCC uses long double precision for some variables.
+Due to the function call passing a double, some comparisons break down.
+That resulted in "1.00 YB" being printed as "1000.00 ZB" instead.
+
+Fixes #85
+---
+ templates/lib/util.cpp | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/templates/lib/util.cpp b/templates/lib/util.cpp
+index 504674a7..a0381c59 100644
+--- a/templates/lib/util.cpp
++++ b/templates/lib/util.cpp
+@@ -23,6 +23,7 @@
+ #include "metaenumvariable_p.h"
+ #include "metatype.h"
+
++#include <cfloat>
+ #include <QtCore/QStringList>
+
+ QString Grantlee::unescapeStringLiteral(const QString &input)
+@@ -212,7 +213,13 @@ std::pair<qreal, QString> Grantlee::calcFileSize(qreal size, int unitSystem,
+   bool found = false;
+   int count = 0;
+   const qreal baseVal = (_unitSystem == 10) ? 1000.0F : 1024.0F;
++#if FLT_EVAL_METHOD == 2
++  // Avoid that this is treated as long double, as the increased
++  // precision breaks the comparison below.
++  volatile qreal current = 1.0F;
++#else
+   qreal current = 1.0F;
++#endif
+   int units = decimalUnits.size();
+   while (!found && (count < units)) {
+     current *= baseVal;
