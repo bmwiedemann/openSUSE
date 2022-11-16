@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Nov 15 09:53:01 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.40.2:
+  * Bump `golang.org/x/text` and `golang.org/x/net` (#2341)
+  * #2331 - fix(docs): Fixes azs in the quick start example (#2340)
+
+-------------------------------------------------------------------
+Tue Nov 15 09:49:04 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.40.1:
+  * fix: protect sops cache from multiple parallel writes (#2352)
+
+-------------------------------------------------------------------
+Tue Nov 15 09:44:02 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.40.0:
+  * Add support for Terraform 1.3 (#2308)
+  * Fix installation of goimports (#2339)
+  * fix: modified single quotes to back quotes. (#2310)
+
+-------------------------------------------------------------------
 Tue Oct 18 05:10:42 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.39.2:
