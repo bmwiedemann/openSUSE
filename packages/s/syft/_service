@@ -3,7 +3,7 @@
     <param name="url">https://github.com/anchore/syft</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v0.59.0</param>
+    <param name="revision">v0.60.3</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">v(.*)</param>
@@ -16,6 +16,6 @@
     <param name="compression">gz</param>
   </service>
   <service name="go_modules" mode="disabled">
-    <param name="archive">syft-0.59.0.tar.gz</param>
+    <param name="archive">syft-0.60.3.tar.gz</param>
   </service>
 </services>

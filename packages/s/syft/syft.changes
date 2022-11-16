@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Tue Nov 15 09:52:45 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.60.3:
+  * javascript cataloger: node binary: nil pointer dereference (#1313)
+  * Fix: Include version information in binary cataloger CPEs (#1310)
+  * fix: only generate PURL on empty string (#1312)
+  * add s3 credentials to release (#1309)
+  * port javascript cataloger to new generic cataloger pattern (#1308)
+
+-------------------------------------------------------------------
+Tue Nov 15 09:44:11 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.60.2:
+  * chore: update goreleaser brew token (#1306)
+  * fix: Decode binary and unknown metadata (#1307)
+
+-------------------------------------------------------------------
+Tue Nov 15 09:39:47 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.60.1:
+  * chore: update github token permissions for goreleaser (#1305)
+
+-------------------------------------------------------------------
+Tue Nov 15 09:29:12 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.60.0:
+  * fix: update ci secret to use new password (#1304)
+  * fix: update secret value to use new cert cahin (#1303)
+  * fix: verbose quill release failures (#1302)
+  * fix: unterminated quoted string (#1300)
+  * fix: update Makefile to remove old signing arch (#1299)
+  * feat: add nodejs-binary package classifier (#1296)
+  * update go-rpmdb to improve parsing of installed files (#1297)
+  * docs: update attestation directions with new cosign changes
+  * fix: Continue parsing Python RECORD files when bad lines encountered (#1295)
+  * Fix #1245 Update SPDX license list to 3.18 (#1259)
+  * fix: Resolve Maven POM expressions (#1251) (#1278)
+  * port haskell cataloger to new generic cataloger pattern (#1290)
+  * port golang cataloger to new generic cataloger pattern (#1289)
+  * port deb/dpkg cataloger to new generic cataloger pattern (#1288)
+  * update cataloger tests to use pkgtest utils (#1287)
+  * port dotnet cataloger to new generic cataloger pattern (#1286)
+  * port dart cataloger to new generic cataloger pattern (#1285)
+  * port conan cataloger to new generic cataloger pattern (#1284)
+  * port apk cataloger to new generic cataloger pattern (#1283)
+  * replace signing tooling with quill (#1280)
+  * Upgrade generic cataloger (#1281)
+  * Update syft bootstrap tools to latest versions. (#1282)
+  * replace logger interface with anchore/go-logger (#1279)
+  * Update syft bootstrap tools to latest versions. (#1267)
+  * Add go binary h1 digest to SPDX (#1265)
+  * fix: move reproduction to top of issue (#1264)
+  * fix: update syftjson ID to match major schema version (#1274)
+  * Use in-toto CycloneDX predicate to be compatible with cosign (#1270)
+  * chore: handle deprecated SPDX license: StandardML-NJ (#1266)
+
+-------------------------------------------------------------------
 Tue Oct 18 05:11:08 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.59.0:
