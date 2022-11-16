@@ -11,3 +11,13 @@ rkhunter.cron is a file that can be placed in a directory read by cron to
 enable automatic scans. This has some security implications, for details
 please read
 https://bugzilla.suse.com/show_bug.cgi?id=1150553
+
+SYSTEMD
+rkhunter.timer and rkhunter.service are files that can be placed in 
+/etc/systemd/system and enabled with:
+  systemctl enable rkhunter.timer
+  systemctl start rkhunter.timer
+It will start rkhunter 15minutes after boot and every 2 days after that.  
+Like with the cron option his as some security implications, for details
+please read
+https://bugzilla.suse.com/show_bug.cgi?id=1150553

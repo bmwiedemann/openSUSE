@@ -1,0 +1,7 @@
+[Unit]
+Description=rkhunter sevice
+Wants=rkhunter.timer
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/rkhunter --propupd

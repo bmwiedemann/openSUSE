@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 28 16:38:30 UTC 2022 - Alexander van Kaam <alexvkaam@gmail.com>
+
+- added systemd timer and service file
+  fix boo#1115455
+
+-------------------------------------------------------------------
 Mon May 23 13:28:50 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - Use correct SCRIPTDIR

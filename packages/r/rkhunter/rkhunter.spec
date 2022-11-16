@@ -36,6 +36,8 @@ Source3:        %{name}.cron
 Source5:        %{name}-README.SUSE
 Source6:        %{name}.logrotate
 Source7:        %{name}.keyring
+Source8:        %{name}.timer
+Source9:        %{name}.service
 # PATCH-FIX-OPENSUSE -- saigkill@opensuse.org - Fix Pathes2
 Patch0:         %{name}-installer-fix.patch
 # PATCH-FIX-UPSTREAM -- bmwiedemann - boo#968578
@@ -88,6 +90,8 @@ install -d %{buildroot}/%{_docdir}/%{name}-%{version}
 install -m644 %{SOURCE5} %{buildroot}/%{_docdir}/%{name}-%{version}/README.SUSE
 install -D -m640 %{SOURCE6} %{buildroot}/%{_sysconfdir}/logrotate.d/%{name}
 install -m644 %{SOURCE3} %{buildroot}/%{_docdir}/%{name}-%{version}/%{name}.cron
+install -m644 %{SOURCE8} %{buildroot}/%{_docdir}/%{name}-%{version}/%{name}.timer
+install -m644 %{SOURCE9} %{buildroot}/%{_docdir}/%{name}-%{version}/%{name}.service
 # adapt the default config for using in openSUSE
 sed "s|^PREFIX*|PREFIX="%{_prefix}"|g; \
      s|^#SCRIPTDIR=.*|SCRIPTDIR=%{_libdir}/%{name}/scripts|g; \
