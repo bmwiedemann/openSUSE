@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 16 13:14:08 UTC 2022 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20221116.d3d7bc7:
+  * Use zypp style variable for DIST_ARCH boo#1205460
+  * Remove service generated service file on uninstall
+
+-------------------------------------------------------------------
 Wed Nov 02 23:15:01 UTC 2022 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20221103.b904c44:

@@ -61,7 +61,7 @@ Name:           openSUSE-repos
 %else
 Name:           openSUSE-repos-%{theme}
 %endif
-Version:        20221103.b904c44
+Version:        20221116.d3d7bc7
 Release:        0
 Summary:        openSUSE package repositories
 License:        MIT
@@ -95,6 +95,7 @@ Definitions for openSUSE repository management via zypp-services
 %dir %{_datadir}/zypp/local/service/openSUSE
 %dir %{_datadir}/zypp/local/service/openSUSE/repo
 %ghost %{_datadir}/zypp/local/service/openSUSE/repo/repoindex.xml
+%ghost %{_sysconfdir}/zypp/services.d/openSUSE.service
 %{_sysconfdir}/zypp/vars.d/DIST_ARCH
 
 %if "%{theme}" == "Tumbleweed"
