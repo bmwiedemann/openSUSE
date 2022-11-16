@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 15 13:56:13 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Homepage link http://loop-aes.sourceforge.net/ is a permanent
+  redirect to its HTTPS counterpart https://loop-aes.sourceforge.net/
+
+-------------------------------------------------------------------
 Thu Oct 21 06:06:20 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Re-enable LTO, but disable strict aliasing - boo#1187352
