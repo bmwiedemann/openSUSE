@@ -22,7 +22,7 @@
 %endif
 
 # drop this with next release when doc tarball version lines up
-%define rsyslog_major 8.2208
+%define rsyslog_major 8.2210
 %define rsyslog_patch 0
 Name:           rsyslog
 Summary:        The enhanced syslogd for Linux and Unix
