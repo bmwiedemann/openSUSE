@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 15 13:25:56 UTC 2022 - antonio.feijoo@suse.com
+
+- Update to version 057+suse.344.g021aead9:
+  * fix(dracut-systemd): run systemctl daemon-reload after remove_hostonly_files
+  * fix(dracut.sh): improve detection of installed kernel versions (bsc#1205175)
+  * fix(network-manager): always install the library plugins directory (bsc#1202014)
+  * feat(dracut-init.sh): add inst_libdir_dir() helper (bsc#1202014)
+
+-------------------------------------------------------------------
 Thu Oct 13 13:25:31 UTC 2022 - antonio.feijoo@suse.com
 
 - Update to version 057+suse.337.g4162a70e:

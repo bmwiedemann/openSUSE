@@ -14,4 +14,7 @@
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>
+  <service name="cargo_audit" mode="disabled">
+    <param name="srcdir">src/dracut-cpio</param>
+  </service>
 </services>
