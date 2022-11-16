@@ -26,7 +26,7 @@ BuildRequires:  gpm-devel
 %else
 BuildRequires:  gpm
 %endif
-URL:            http://aa-project.sourceforge.net/
+URL:            https://aa-project.sourceforge.net/
 # bug437293
 %ifarch ppc64
 Obsoletes:      aalib-64bit
