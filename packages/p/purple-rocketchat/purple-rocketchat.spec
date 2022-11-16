@@ -1,7 +1,7 @@
 #
 # spec file for package purple-rocketchat
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _name   rocketchat
 Name:           purple-rocketchat
-Version:        0.0+git20210119
+Version:        0.0+git20220925
 Release:        0
 Summary:        RocketChat protocol plugin for libpurple
 License:        GPL-2.0-or-later

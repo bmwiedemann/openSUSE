@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 15 15:33:05 UTC 2022 - zero mind <zeromind@gmx.com>
+
+- Update to version 0.0+git20220925 (changes since 0.0+git20210219):
+  * compatibility with rocketchat server 4.x
+  * fix various memory leaks
+  * handle http connection errors when building against Purple 2.x
+  * only start the actual login process when api/me could be reached
+
+-------------------------------------------------------------------
 Thu Jan 21 14:09:59 UTC 2021 - Christian Goll <cgoll@suse.com>
 
 - Update to version 0.0+git20210219 (changes since 0.0+git20201219 
