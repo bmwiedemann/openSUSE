@@ -1,0 +1,31 @@
+From: Egbert Eich <eich@suse.com>
+Date: Thu Sep 29 13:47:30 2022 +0200
+Subject: When evicting driver info block, NULL the corresponding entry
+Patch-mainline: Not yet
+Git-repo: ssh://eich@192.168.122.1:/home/eich/sources/HPC/hdf5
+Git-commit: 6d5496f17ed5aa65cbb0498e0bf70b0d599dc336
+References: 
+
+This prevents it from another attempt to unpin it in H5F__dest() which may
+happen due to malformed hdf5 files which leads to a segfault.
+
+This fixes CVE-2021-46242
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ src/H5Fsuper.c | 2 ++
+ 1 file changed, 2 insertions(+)
+diff --git a/src/H5Fsuper.c b/src/H5Fsuper.c
+index 60b045ae29..1283790c57 100644
+--- a/src/H5Fsuper.c
++++ b/src/H5Fsuper.c
+@@ -1044,6 +1044,8 @@ done:
+             /* Evict the driver info block from the cache */
+             if (sblock && H5AC_expunge_entry(f, H5AC_DRVRINFO, sblock->driver_addr, H5AC__NO_FLAGS_SET) < 0)
+                 HDONE_ERROR(H5E_FILE, H5E_CANTEXPUNGE, FAIL, "unable to expunge driver info block")
++
++            f->shared->drvinfo = NULL;
+         } /* end if */
+ 
+         /* Unpin & discard superblock */

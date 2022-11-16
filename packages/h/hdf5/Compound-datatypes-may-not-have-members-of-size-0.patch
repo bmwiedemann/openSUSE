@@ -1,0 +1,51 @@
+From: Egbert Eich <eich@suse.com>
+Date: Wed Oct 5 15:47:54 2022 +0200
+Subject: Compound datatypes may not have members of size 0
+Patch-mainline: Not yet
+Git-repo: ssh://eich@192.168.122.1:/home/eich/sources/HPC/hdf5
+Git-commit: 88ea94d38fdfecba173dbea18502a5f82a46601b
+References: 
+
+A member size of 0 may lead to an FPE later on as reported in
+CVE-2021-46244. To avoid this, check for this as soon as the
+member is decoded.
+This should probably be done in H5O_dtype_decode_helper() already,
+however it is not clear whether all sizes are expected to be != 0.
+This fixes CVE-2021-46244.
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ src/H5Odtype.c | 6 ++++++
+ src/H5T.c      | 2 ++
+ 2 files changed, 8 insertions(+)
+diff --git a/src/H5Odtype.c b/src/H5Odtype.c
+index 9af79f4e9a..d35fc65322 100644
+--- a/src/H5Odtype.c
++++ b/src/H5Odtype.c
+@@ -333,6 +333,12 @@ H5O__dtype_decode_helper(unsigned *ioflags /*in,out*/, const uint8_t **pp, H5T_t
+                     H5MM_xfree(dt->shared->u.compnd.memb);
+                     HGOTO_ERROR(H5E_DATATYPE, H5E_CANTDECODE, FAIL, "unable to decode member type")
+                 } /* end if */
++                if (temp_type->shared->size == 0) {
++                    for (j = 0; j <= i; j++)
++                        H5MM_xfree(dt->shared->u.compnd.memb[j].name);
++                  H5MM_xfree(dt->shared->u.compnd.memb);
++                  HGOTO_ERROR(H5E_DATATYPE, H5E_CANTDECODE, FAIL, "invalid field size in member type")
++		}
+ 
+                 /* Upgrade the version if we can and it is necessary */
+                 if (can_upgrade && temp_type->shared->version > version) {
+diff --git a/src/H5T.c b/src/H5T.c
+index 3bb220ac26..04b96c5676 100644
+--- a/src/H5T.c
++++ b/src/H5T.c
+@@ -3591,6 +3591,8 @@ H5T__complete_copy(H5T_t *new_dt, const H5T_t *old_dt, H5T_shared_t *reopened_fo
+                     if (new_dt->shared->u.compnd.memb[i].type->shared->size !=
+                         old_dt->shared->u.compnd.memb[old_match].type->shared->size) {
+                         /* Adjust the size of the member */
++                        if (old_dt->shared->u.compnd.memb[old_match].size == 0)
++                            HGOTO_ERROR(H5E_DATATYPE, H5E_BADVALUE, FAIL, "invalid field size in datatype")
+                         new_dt->shared->u.compnd.memb[i].size =
+                             (old_dt->shared->u.compnd.memb[old_match].size * tmp->shared->size) /
+                             old_dt->shared->u.compnd.memb[old_match].type->shared->size;

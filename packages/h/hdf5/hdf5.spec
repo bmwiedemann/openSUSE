@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package hdf5
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -436,8 +436,21 @@ Patch6:         hdf5-Remove-timestamps-from-binaries.patch
 # Could be ported but it's unknown if it's still needed
 Patch7:         hdf5-mpi.patch
 Patch8:         Disable-phdf5-tests.patch
+Patch9:         Fix-error-message-not-the-name-but-the-link-information-is-parsed.patch
 # Imported from Fedora, strip flags from h5cc wrapper
 Patch10:        hdf5-wrappers.patch
+Patch101:       H5O_fsinfo_decode-Make-more-resilient-to-out-of-bounds-read.patch
+Patch102:       H5O__pline_decode-Make-more-resilient-to-out-of-bounds-read.patch
+Patch103:       H5O_dtype_decode_helper-Parent-of-enum-needs-to-have-same-size-as-enum-itself.patch
+Patch104:       Report-error-if-dimensions-of-chunked-storage-in-data-layout-2.patch
+Patch105:       When-evicting-driver-info-block-NULL-the-corresponding-entry.patch
+Patch106:       Pass-compact-chunk-size-info-to-ensure-requested-elements-are-within-bounds.patch
+Patch107:       Validate-location-offset-of-the-accumulated-metadata-when-comparing.patch
+Patch108:       Make-sure-info-block-for-external-links-has-at-least-3-bytes.patch
+Patch109:       Hot-fix-for-CVE-2020-10812.patch
+Patch110:       Compound-datatypes-may-not-have-members-of-size-0.patch
+Patch111:       H5IMget_image_info-H5Sget_simple_extent_dims-does-not-exceed-array-size.patch
+
 BuildRequires:  fdupes
 %if 0%{?use_sz2}
 BuildRequires:  libsz2-devel
@@ -678,7 +691,19 @@ library packages.
 %patch6 -p1
 # %%patch7 -p1
 %patch8 -p1
+%patch9 -p1
 %patch10 -p1
+%patch101 -p1
+%patch102 -p1
+%patch103 -p1
+%patch104 -p1
+%patch105 -p1
+%patch106 -p1
+%patch107 -p1
+%patch108 -p1
+%patch109 -p1
+%patch110 -p1
+%patch111 -p1
 
 %if %{without hpc}
 # baselibs looks different for different flavors - generate it on the fly

@@ -1,0 +1,76 @@
+From: Egbert Eich <eich@suse.com>
+Date: Wed Oct 5 07:17:24 2022 +0200
+Subject: H5O_fsinfo_decode() Make more resilient to out-of-bounds read
+Patch-mainline: Not yet
+Git-repo: ssh://eich@192.168.122.1:/home/eich/sources/HPC/hdf5
+Git-commit: 8aee14b3a19858a08e3fabdef6ff925b47d4ce2c
+References: 
+
+Malformed hdf5 files may have trunkated content which does not match
+the expected size. This function attempts to decode these it will read
+past the end of the allocated space which may lead to a crash. Make sure
+each element is within bounds before reading.
+
+This fixes CVE-2021-45830.
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+Additions
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ src/H5Ofsinfo.c | 14 +++++++++++++-
+ 1 file changed, 13 insertions(+), 1 deletion(-)
+diff --git a/src/H5Ofsinfo.c b/src/H5Ofsinfo.c
+index 9f6514a291..15cbb5ae7b 100644
+--- a/src/H5Ofsinfo.c
++++ b/src/H5Ofsinfo.c
+@@ -88,6 +88,13 @@ H5FL_DEFINE_STATIC(H5O_fsinfo_t);
+  *
+  *-------------------------------------------------------------------------
+  */
++static char err[] = "ran off end of input buffer while decoding";
++#define VERIFY_LIMIT(p,s,l)					  \
++  if (p + s - 1 > l) {                                            \
++    HCOMMON_ERROR(H5E_RESOURCE, H5E_NOSPACE, err);                \
++    HGOTO_DONE(NULL)                                              \
++  }
++
+ static void *
+ H5O__fsinfo_decode(H5F_t *f, H5O_t H5_ATTR_UNUSED *open_oh, unsigned H5_ATTR_UNUSED mesg_flags,
+                    unsigned H5_ATTR_UNUSED *ioflags, size_t p_size, const uint8_t *p)
+@@ -112,6 +119,7 @@ H5O__fsinfo_decode(H5F_t *f, H5O_t H5_ATTR_UNUSED *open_oh, unsigned H5_ATTR_UNU
+         fsinfo->fs_addr[ptype - 1] = HADDR_UNDEF;
+ 
+     /* Version of message */
++    VERIFY_LIMIT(p,1,p_end)
+     vers = *p++;
+ 
+     if (vers == H5O_FSINFO_VERSION_0) {
+@@ -125,6 +133,7 @@ H5O__fsinfo_decode(H5F_t *f, H5O_t H5_ATTR_UNUSED *open_oh, unsigned H5_ATTR_UNU
+         fsinfo->pgend_meta_thres    = H5F_FILE_SPACE_PGEND_META_THRES;
+         fsinfo->eoa_pre_fsm_fsalloc = HADDR_UNDEF;
+ 
++        VERIFY_LIMIT(p, 1 + H5F_SIZEOF_SIZE(f), p_end);
+         strategy = (H5F_file_space_type_t)*p++; /* File space strategy */
+         H5F_DECODE_LENGTH(f, p, threshold);     /* Free-space section threshold */
+ 
+@@ -170,6 +179,7 @@ H5O__fsinfo_decode(H5F_t *f, H5O_t H5_ATTR_UNUSED *open_oh, unsigned H5_ATTR_UNU
+         HDassert(vers >= H5O_FSINFO_VERSION_1);
+ 
+         fsinfo->version  = vers;
++        VERIFY_LIMIT(p, 1 + 1 + 2 * H5F_SIZEOF_SIZE(f) + 2 + H5F_SIZEOF_ADDR(f), p_end);
+         fsinfo->strategy = (H5F_fspace_strategy_t)*p++; /* File space strategy */
+         fsinfo->persist  = *p++;                        /* Free-space persist or not */
+         H5F_DECODE_LENGTH(f, p, fsinfo->threshold);     /* Free-space section threshold */
+@@ -181,9 +191,11 @@ H5O__fsinfo_decode(H5F_t *f, H5O_t H5_ATTR_UNUSED *open_oh, unsigned H5_ATTR_UNU
+ 
+         /* Decode addresses of free space managers, if persisting */
+         if (fsinfo->persist)
+-            for (ptype = H5F_MEM_PAGE_SUPER; ptype < H5F_MEM_PAGE_NTYPES; ptype++)
++	     for (ptype = H5F_MEM_PAGE_SUPER; ptype < H5F_MEM_PAGE_NTYPES; ptype++) {
++                VERIFY_LIMIT(p, H5F_SIZEOF_SIZE(f), p_end);
+                 H5F_addr_decode(f, &p, &(fsinfo->fs_addr[ptype - 1]));
+ 
++            }
+         fsinfo->mapped = FALSE;
+     }
+ 

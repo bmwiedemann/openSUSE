@@ -1,0 +1,48 @@
+From: Egbert Eich <eich@suse.com>
+Date: Wed Sep 28 19:11:16 2022 +0200
+Subject: Report error if dimensions of chunked storage in data layout < 2
+Patch-mainline: Not yet
+Git-repo: ssh://eich@192.168.122.1:/home/eich/sources/HPC/hdf5
+Git-commit: 34b621424504265cff3c33cf634a70efb52db180
+References: 
+
+For Data Layout Messages version 1 & 2 the specification state
+that the value stored in the data field is 1 greater than the
+number of dimensions in the dataspace. For version 3 this is
+not explicitly stated but the implementation suggests it to be
+the case.
+Thus the set value needs to be at least 2. For dimensionality
+< 2 an out-of-bounds access occurs as in CVE-2021-45833.
+
+This fixes CVE-2021-45833.
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ src/H5Olayout.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+diff --git a/src/H5Olayout.c b/src/H5Olayout.c
+index c939e72744..9fa9e36e8c 100644
+--- a/src/H5Olayout.c
++++ b/src/H5Olayout.c
+@@ -168,6 +168,10 @@ H5O__layout_decode(H5F_t *f, H5O_t H5_ATTR_UNUSED *open_oh, unsigned H5_ATTR_UNU
+             p += ndims * 4; /* Skip over dimension sizes (32-bit quantities) */
+         }                   /* end if */
+         else {
++            if (ndims < 2)
++                HGOTO_ERROR(H5E_OHDR, H5E_CANTLOAD, NULL,
++                            "bad dimensions for chunked storage")
++
+             mesg->u.chunk.ndims = ndims;
+             for (u = 0; u < ndims; u++)
+                 UINT32DECODE(p, mesg->u.chunk.dim[u]);
+@@ -241,6 +245,9 @@ H5O__layout_decode(H5F_t *f, H5O_t H5_ATTR_UNUSED *open_oh, unsigned H5_ATTR_UNU
+                     mesg->u.chunk.ndims = *p++;
+                     if (mesg->u.chunk.ndims > H5O_LAYOUT_NDIMS)
+                         HGOTO_ERROR(H5E_OHDR, H5E_CANTLOAD, NULL, "dimensionality is too large")
++                    if (mesg->u.chunk.ndims < 2)
++                        HGOTO_ERROR(H5E_OHDR, H5E_CANTLOAD, NULL,
++                                    "bad dimensions for chunked storage")
+ 
+                     /* B-tree address */
+                     H5F_addr_decode(f, &p, &(mesg->storage.u.chunk.idx_addr));

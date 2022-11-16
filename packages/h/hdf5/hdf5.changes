@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Nov 15 04:52:12 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add to specfile missing patch:
+  Fix-error-message-not-the-name-but-the-link-information-is-parsed.patch
+
+-------------------------------------------------------------------
+Sat Oct 15 13:29:22 UTC 2022 - Egbert Eich <eich@suse.com>
+
+- Fix CVEs:
+  * CVE-2021-46244 (bsc#1195215)
+    Compound-datatypes-may-not-have-members-of-size-0.patch
+  * CVE-2018-13867 (bsc#1101906)
+    Validate-location-offset-of-the-accumulated-metadata-when-comparing.patch
+  * CVE-2018-16438 (bsc#1107069)
+    Make-sure-info-block-for-external-links-has-at-least-3-bytes.patch
+  * CVE-2020-10812 (bsc#1167400)
+    Hot-fix-for-CVE-2020-10812.patch
+  * CVE-2021-45830 (bsc#1194375)
+    H5O_fsinfo_decode-Make-more-resilient-to-out-of-bounds-read.patch
+  * CVE-2019-8396 (bsc#1125882)
+    H5O__pline_decode-Make-more-resilient-to-out-of-bounds-read.patch
+  * CVE-2018-11205 (bsc#1093663)
+    Pass-compact-chunk-size-info-to-ensure-requested-elements-are-within-bounds.patch
+  * CVE-2021-46242 (bsc#1195212)
+    When-evicting-driver-info-block-NULL-the-corresponding-entry.patch
+  * CVE-2021-45833 (bsc#1194366)
+    Report-error-if-dimensions-of-chunked-storage-in-data-layout-2.patch
+  * CVE-2018-14031 (bsc#1101475)
+    H5O_dtype_decode_helper-Parent-of-enum-needs-to-have-same-size-as-enum-itself.patch
+  * CVE-2018-17439 (bsc#1111598)
+    H5IMget_image_info-H5Sget_simple_extent_dims-does-not-exceed-array-size.patch
+- Fix an error message:
+    Fix-error-message-not-the-name-but-the-link-information-is-parsed.patch
+
+-------------------------------------------------------------------
 Wed Sep 21 01:09:47 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Remove timestamp/buildhost/kernel version from libhdf5.settings
