@@ -1,0 +1,8 @@
+<services>
+  <service name="download_files" mode="disabled" />
+  <service mode="disabled" name="set_version">
+    <param name="basename">tcping</param>
+  </service>
+  <service name="go_modules" mode="disabled">
+  </service>
+</services>
