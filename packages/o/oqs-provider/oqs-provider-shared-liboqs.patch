@@ -1,0 +1,13 @@
+Index: oqs-provider-0.3.0/CMakeLists.txt
+===================================================================
+--- oqs-provider-0.3.0.orig/CMakeLists.txt
++++ oqs-provider-0.3.0/CMakeLists.txt
+@@ -14,7 +14,7 @@ message("-- Looking for liboqs include d
+ find_path(liboqs_INCLUDE_DIR NAMES oqs/oqs.h REQUIRED)
+ message("-- Looking for liboqs include directory - found ${liboqs_INCLUDE_DIR}")
+ message("-- Looking for liboqs library")
+-find_library(liboqs_LIBRARY NAMES liboqs.a REQUIRED)
++find_library(liboqs_LIBRARY NAMES liboqs.so REQUIRED)
+ message("-- Looking for liboqs library - found ${liboqs_LIBRARY}")
+ include_directories(${liboqs_INCLUDE_DIR})
+ 

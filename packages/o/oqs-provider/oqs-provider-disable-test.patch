@@ -1,0 +1,12 @@
+Index: oqs-provider-0.3.0/CMakeLists.txt
+===================================================================
+--- oqs-provider-0.3.0.orig/CMakeLists.txt
++++ oqs-provider-0.3.0/CMakeLists.txt
+@@ -22,5 +22,5 @@ include_directories(${liboqs_INCLUDE_DIR
+ add_subdirectory(oqsprov)
+ 
+ # Testing
+-enable_testing()
+-add_subdirectory(test)
++#enable_testing()
++#add_subdirectory(test)
