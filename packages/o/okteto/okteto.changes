@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Nov 15 09:25:11 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.9.0:
+  * Hold "okteto up" if the cluster is scaling up (#3207)
+  * Fix error logging crash on context load failure (#3193)
+  * Fix divert at scale (#3198)
+  * Make AskYesNo function support default answers (#3192)
+  * Code cleanup in pkg/okteto/context.go (#3199)
+  * Make the channel setting configurable with an environment variable (#3201)
+  * fix: add error on init container volume full (#3189)
+  * Module refactor (#3130)
+  * feat: add specific timeout to dependencies (#3190)
+  * Support both string and sequence of string in a manifest's `cache_from` property (#3162)
+  * Updated error messaging when ctx use/update is used for vanilla clusters (#3191)
+  * logs: add logs to syncthing terminating process (#3184)
+  * [StepSecurity] ci: Harden GitHub Actions (#3143)
+  * Revert "fix: volumes not being deleted (#2955)" (#3176)
+  * fix: use the correct param on the API call (#3172)
+  * fix: panic on pipeline fallback to preview (#3169)
+  * Add option to display message if build section is not defined in okte… (#3159)
+  * fix patch in release-branch (#2961) (#3164)
+  * fix build when is buildv1 but dockerfile need to be inferred (#3158)
+  * Update message for untrusted certificates (#3154)
+  * Removing the docker version pin for setup_remote_docker in ci. (#3153)
+
+-------------------------------------------------------------------
 Fri Oct 21 10:55:46 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 2.8.2:
