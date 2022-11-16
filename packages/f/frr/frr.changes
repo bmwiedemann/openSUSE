@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Fri Nov 11 13:04:52 UTC 2022 - Marius Tomaschewski <mt@suse.com>
+
+- Migration to /usr/etc: Conditionally moved /etc/logrotate.d/frr
+  file to vendor specific directory /usr/etc/logrotate.d and added
+  saving of user changed configuration files in /etc and restoring
+  them while an RPM update.
+- Declare root as sufficient also in the pam account verification;
+  without vtysh use causes to log a pam frr:account warnings
+  (https://github.com/FRRouting/frr/pull/12308)
+  [+ 0005-root-ok-in-account-frr.pam.patch]
+- Applied fix removing a not needed backslash causing to log a warning
+  (https://github.com/FRRouting/frr/pull/12307)
+  [+ 0004-tools-remove-backslash-from-declare-check-regex.patch]
+- Applied upstream fixes for frrinit.sh to avoid a privilege escalation
+  from frr to root in frr config creation (bsc#1204124,CVE-2022-42917,
+  https://github.com/FRRouting/frr/pull/12157).
+  [+ 0003-tools-Run-as-FRR_USER-install-chown-commands-to-avoi.patch]
+- Removed obsolete patches provided in the 8.4 source archive:
+  [- 0003-babeld-fix-10487-by-adding-a-check-on-packet-length.patch,
+   - 0004-babeld-fix-10502-10503-by-repairing-the-checks-on-le.patch,
+   - 0005-isisd-fix-router-capability-TLV-parsing-issues.patch,
+   - 0006-isisd-fix-10505-using-base64-encoding.patch,
+   - 0007-bgpd-Make-sure-hdr-length-is-at-a-minimum-of-what-is.patch,
+   - 0008-isisd-Ensure-rcap-is-freed-in-error-case.patch]
+- Update to version 8.4, see https://frrouting.org/release/8.4/
+  * New BGP command (neighbor PEER soo) to configure SoO to prevent
+    routing loops and suboptimal routing on dual-homed sites.
+  * Command debug bgp allow-martian replaced to bgp allow-martian-nexthop
+    because previously we allowed using martian next-hops when debug is
+    turned on.
+  * Implement BGP Prefix Origin Validation State Extended Community rfc8097
+  *  Implement Route Leak Prevention and Detection Using Roles in UPDATE
+     and OPEN Messages rfc9234
+  * BMP L3VPN support
+  * PIMv6 support
+  * MLD support
+  * New command to enable using reserved IPv4 ranges as normal addresses
+    for BGP next-hops, interface addresses, etc.
+  * As usual, lots of bugs and memory leaks were fixed \m/
+    such as a fix for a possible use-after-free due to a race
+    condition related to bgp_notify_send_with_data() and
+    bgp_process_packet() in bgp_packet.c. This could lead to
+    Remote Code Execution or Information Disclosure by sending
+    crafted BGP packets (CVE-2022-37035,bsc#1202085).
+- Update to version 8.3, see https://frrouting.org/release/8.3/
+  * Notification Message support for BGP Graceful Restart
+  * BGP Cease Notification Subcode For BFD
+  * Send Hold Timer for BGP
+  * RFC5424 syslog support
+  * PIM passive command
+- Update to version 8.2.2, see https://frrouting.org/release/8.2.2/
+  * BGP Long-lived graceful restart capability
+  * BGP Extended Optional Parameters Length for BGP OPEN Message
+  * BGP Extended BGP Administrative Shutdown Communication
+  * IS-IS Link State Traffic Engineering support
+  * OSPFv3 Support for NSSA Type-7 address ranges
+  * PBR VLAN actions support
+
+-------------------------------------------------------------------
 Mon Sep  5 11:48:25 UTC 2022 - Marius Tomaschewski <mt@suse.com>
 
 - Apply upstream fix for out-of-bounds read in the BGP daemon

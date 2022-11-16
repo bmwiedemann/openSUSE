@@ -1,0 +1,93 @@
+From 401053f3ccc7be3a6a976f6f7f1674bdeb3c983e Mon Sep 17 00:00:00 2001
+From: Donatas Abraitis <donatas@opensourcerouting.org>
+Date: Thu, 20 Oct 2022 09:10:22 +0300
+References: bsc#1204124,CVE-2022-42917,https://github.com/FRRouting/frr/pull/12157
+Upstream: submitted
+Subject: [PATCH] tools: Run as FRR_USER `install/chown` commands to avoid race
+ conditions
+
+This is due to CVE-2022-42917: https://bugzilla.suse.com/show_bug.cgi?id=1204124
+
+install/chown is in most cases (as I tested) is enough, but still, can be racy.
+
+Tested on Linux/OpenBSD/NetBSD/FreeBSD, seems a unified way to do this.
+
+For Linux `runuser` can be used, but *BSD do not have this command.
+
+Proof of concept:
+
+```
+% sudo su - frr
+[sudo] password for donatas:
+su: warning: cannot change directory to /nonexistent: No such file or directory
+frr@donatas-laptop:/home/donatas$ cd /etc/frr/
+frr@donatas-laptop:/etc/frr$ rm -f zebra.conf; inotifywait -e CREATE .; rm -f zebra.conf; ln -s /etc/shadow zebra.conf
+Setting up watches.
+Watches established.
+./ CREATE zebra.conf
+frr@donatas-laptop:/etc/frr$ ls -la zebra.conf
+lrwxrwxrwx 1 frr frr 11 spal.  20 09:25 zebra.conf -> /etc/shadow
+frr@donatas-laptop:/etc/frr$ cat zebra.conf
+cat: zebra.conf: Permission denied
+frr@donatas-laptop:/etc/frr$
+```
+
+On the other terminal do:
+
+```
+/usr/lib/frr/frrinit.sh restart
+```
+
+Signed-off-by: Donatas Abraitis <donatas@opensourcerouting.org>
+
+diff --git a/tools/frr.in b/tools/frr.in
+index e9f1122834..5f3f425a1e 100755
+--- a/tools/frr.in
++++ b/tools/frr.in
+@@ -96,10 +96,10 @@ check_daemon()
+ 		# check for config file
+ 		if [ -n "$2" ]; then
+ 			if [ ! -r "$C_PATH/$1-$2.conf" ]; then
+-				install -g "$FRR_GROUP" -o "$FRR_USER" -m "$FRR_CONFIG_MODE" /dev/null "$C_PATH/$1-$2.conf"
++				su - "${FRR_USER}" -c "install -g \"$FRR_GROUP\" -o \"$FRR_USER\" -m \"$FRR_CONFIG_MODE\" /dev/null \"$C_PATH/$1-$2.conf\""
+ 			fi
+ 		elif [ ! -r "$C_PATH/$1.conf" ]; then
+-			install -g "$FRR_GROUP" -o "$FRR_USER" -m "$FRR_CONFIG_MODE" /dev/null "$C_PATH/$1.conf"
++			su - "${FRR_USER}" -c "install -g \"$FRR_GROUP\" -o \"$FRR_USER\" -m \"$FRR_CONFIG_MODE\" /dev/null \"$C_PATH/$1.conf\""
+ 		fi
+ 	fi
+ 	return 0
+@@ -524,7 +524,7 @@ convert_daemon_prios
+ 
+ if [ ! -d $V_PATH ]; then
+ 	echo "Creating $V_PATH"
+-	install -g "$FRR_GROUP" -o "$FRR_USER" -m "$FRR_CONFIG_MODE" -d "$V_PATH"
++	su - "${FRR_USER}" -c "install -g \"$FRR_GROUP\" -o \"$FRR_USER\" -m \"$FRR_CONFIG_MODE\" -d \"$V_PATH\""
+ 	chmod gu+x "${V_PATH}"
+ fi
+ 
+diff --git a/tools/frrcommon.sh.in b/tools/frrcommon.sh.in
+index 61f1abb378..4d5d688d57 100755
+--- a/tools/frrcommon.sh.in
++++ b/tools/frrcommon.sh.in
+@@ -143,7 +143,7 @@ daemon_prep() {
+ 
+ 	cfg="$C_PATH/$daemon${inst:+-$inst}.conf"
+ 	if [ ! -r "$cfg" ]; then
+-		install -g "$FRR_GROUP" -o "$FRR_USER" -m "$FRR_CONFIG_MODE" /dev/null "$cfg"
++		su - "${FRR_USER}" -c "install -g \"$FRR_GROUP\" -o \"$FRR_USER\" -m \"$FRR_CONFIG_MODE\" /dev/null \"$cfg\""
+ 	fi
+ 	return 0
+ }
+@@ -161,7 +161,7 @@ daemon_start() {
+ 	[ "$MAX_FDS" != "" ] && ulimit -n "$MAX_FDS" > /dev/null 2> /dev/null
+ 	daemon_prep "$daemon" "$inst" || return 1
+ 	if test ! -d "$V_PATH"; then
+-		install -g "$FRR_GROUP" -o "$FRR_USER" -m "$FRR_CONFIG_MODE" -d "$V_PATH"
++		su - "${FRR_USER}" -c "install -g \"$FRR_GROUP\" -o \"$FRR_USER\" -m \"$FRR_CONFIG_MODE\" -d \"$V_PATH\""
+ 		chmod gu+x "${V_PATH}"
+ 	fi
+ 
+-- 
+2.35.3
+

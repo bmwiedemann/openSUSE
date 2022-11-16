@@ -30,23 +30,20 @@
 %define frr_daemondir %{_prefix}/lib/frr
 
 Name:           frr
-Version:        8.1
+Version:        8.4
 Release:        0
 Summary:        FRRouting Routing daemon
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Networking/System
 URL:            https://www.frrouting.org
 #Git-Clone:     https://github.com/FRRouting/frr.git
-Source:         https://github.com/FRRouting/frr/archive/%{name}-%{version}.tar.gz
+Source:         https://github.com/FRRouting/frr/archive/refs/tags/%{name}-%{version}.tar.gz
 Source1:        %{name}-tmpfiles.d
 Patch1:         0001-disable-zmq-test.patch
 Patch2:         harden_frr.service.patch
-Patch3:         0003-babeld-fix-10487-by-adding-a-check-on-packet-length.patch
-Patch4:         0004-babeld-fix-10502-10503-by-repairing-the-checks-on-le.patch
-Patch5:         0005-isisd-fix-router-capability-TLV-parsing-issues.patch
-Patch6:         0006-isisd-fix-10505-using-base64-encoding.patch
-Patch7:         0007-bgpd-Make-sure-hdr-length-is-at-a-minimum-of-what-is.patch
-Patch8:         0008-isisd-Ensure-rcap-is-freed-in-error-case.patch
+Patch3:         0003-tools-Run-as-FRR_USER-install-chown-commands-to-avoi.patch
+Patch4:         0004-tools-remove-backslash-from-declare-check-regex.patch
+Patch5:         0005-root-ok-in-account-frr.pam.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison >= 2.7
@@ -189,12 +186,7 @@ developing OSPF-API and frr applications.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
-gzip -d tests/isisd/test_fuzz_isis_tlv_tests.h.gz
 %patch5 -p1
-gzip -9 tests/isisd/test_fuzz_isis_tlv_tests.h
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
 
 %build
 # GCC LTO objects must be "fat" to avoid assembly errors
@@ -284,7 +276,11 @@ install -D -m 0644 tools%{_sysconfdir}/frr/daemons %{buildroot}%{_sysconfdir}/fr
 sed -i -e 's/^\(bgpd_options=\)\(.*\)\(".*\)/\1\2 -M rpki\3/' %{buildroot}%{_sysconfdir}/frr/daemons
 
 install -D -m 0644 redhat/frr.pam %{buildroot}%{_sysconfdir}/pam.d/frr
+%if 0%{?suse_version} > 1500
+install -D -m 0644 redhat/frr.logrotate %{buildroot}%{_distconfdir}/logrotate.d/frr
+%else
 install -D -m 0644 redhat/frr.logrotate %{buildroot}%{_sysconfdir}/logrotate.d/frr
+%endif
 
 install -d -m 0750 %{buildroot}%{rundir}
 install -d -m 0750 %{buildroot}%{_localstatedir}/log/frr
@@ -317,6 +313,20 @@ getent group %{frrvty_group} >/dev/null || groupadd -r %{frrvty_group}
 getent passwd %{frr_user} >/dev/null || useradd -r -g %{frr_group} -G %{frrvty_group} -d %{frr_home} -s /sbin/nologin -c "FRRouting suite" %{frr_user}
 
 %service_add_pre %{name}.service
+%if 0%{?suse_version} > 1500
+# Prepare for migration to /usr/etc; save any old .rpmsave
+for i in logrotate.d/frr ; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
+%endif
+
+%posttrans
+%if 0%{?suse_version} > 1500
+# Migration to /usr/etc, restore just created .rpmsave
+for i in logrotate.d/frr ; do
+   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+%endif
 
 %post
 %service_add_post %{name}.service
@@ -366,7 +376,11 @@ getent passwd %{frr_user} >/dev/null || useradd -r -g %{frr_group} -G %{frrvty_g
 %config(noreplace) %attr(640,%{frr_user},%{frrvty_group}) %{_sysconfdir}/%{name}/vtysh.conf
 %config(noreplace) %%attr(640,%{frr_user},%{frr_group}) %{_sysconfdir}/%{name}/daemons
 %config(noreplace) %{_sysconfdir}/pam.d/frr
+%if 0%{?suse_version} > 1500
+%{_distconfdir}/logrotate.d/frr
+%else
 %config(noreplace) %{_sysconfdir}/logrotate.d/frr
+%endif
 %{_infodir}/frr.info%{?ext_info}
 %{_mandir}/man?/*
 %{_docdir}/%{name}/html
@@ -389,11 +403,13 @@ getent passwd %{frr_user} >/dev/null || useradd -r -g %{frr_group} -G %{frrvty_g
 %{frr_daemondir}/frr
 %{frr_daemondir}/frr-reload
 %{frr_daemondir}/frr-reload.py
+%{frr_daemondir}/frr_babeltrace.py
 %{frr_daemondir}/frrcommon.sh
 %{frr_daemondir}/frrinit.sh
 %{frr_daemondir}/isisd
 %{frr_daemondir}/ldpd
 %{frr_daemondir}/nhrpd
+%{frr_daemondir}/ospfclient.py
 %{frr_daemondir}/ospf6d
 %{frr_daemondir}/ospfd
 %{frr_daemondir}/pathd
