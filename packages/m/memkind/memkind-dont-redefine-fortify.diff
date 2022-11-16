@@ -1,6 +1,8 @@
---- configure.ac.mm	2022-06-23 11:48:44.233079355 +0200
-+++ configure.ac	2022-06-23 11:50:42.223101729 +0200
-@@ -142,6 +142,9 @@ if test "x$enable_secure" = "x1" ; then
+Index: configure.ac
+===================================================================
+--- configure.ac.orig
++++ configure.ac
+@@ -158,6 +158,9 @@ if test "x$enable_secure" = "x1" ; then
  
    if test "$CFLAGS" != "${CFLAGS%-O0*}" ; then # if CFLAGS contains -O0
        echo "WARNING: Could not apply FORTIFY_SOURCE=2 due to lack of optimization (-O0)"

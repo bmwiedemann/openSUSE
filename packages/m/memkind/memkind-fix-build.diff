@@ -10,11 +10,11 @@ Date:   Tue Aug 18 10:42:17 2020 +0200
     
     Signed-off-by: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
-diff --git Makefile.am Makefile.am
-index 3f1f5791bb46..80918c5b2ac9 100644
---- Makefile.am
+Index: Makefile.am
+===================================================================
+--- Makefile.am.orig
 +++ Makefile.am
-@@ -477,7 +477,7 @@ memkind-$(VERSION).spec:
+@@ -672,7 +672,7 @@ memkind-$(VERSION).spec:
  rpm: dist
  	$(MAKE) version="$(VERSION)" -f memkind.spec.mk $@
  

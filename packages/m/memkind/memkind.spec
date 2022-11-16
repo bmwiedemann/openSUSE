@@ -1,7 +1,7 @@
 #
 # spec file for package memkind
 #
-# Copyright (c) 2022 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@ Name:           memkind
 Summary:        User Extensible Heap Manager
 License:        BSD-2-Clause
 Group:          Development/Libraries/C and C++
-Version:        1.12.0
+Version:        1.14.0
 Release:        0
 URL:            http://memkind.github.io/memkind
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -121,8 +121,11 @@ rm -f %{buildroot}/%{_mandir}/man7/memtier.*
 %dir %{_docdir}/%{namespace}
 %{_bindir}/%{namespace}-hbw-nodes
 %{_bindir}/%{namespace}-auto-dax-kmem-nodes
+%{_bindir}/memtier
 %{_mandir}/man1/memkind-hbw-nodes.1.*
 %{_mandir}/man1/memkind-auto-dax-kmem-nodes.1.*
+%{_mandir}/man1/memtier.1.*
+%{_mandir}/man7/libmemtier.7.*
 
 %files -n libmemkind0
 %{_libdir}/lib%{namespace}.so.*
@@ -134,6 +137,8 @@ rm -f %{buildroot}/%{_mandir}/man7/memtier.*
 %{_includedir}/memkind_deprecated.h
 %{_includedir}/memkind_allocator.h
 %{_includedir}/pmem_allocator.h
+%{_includedir}/memkind_memtier.h
+%{_includedir}/fixed_allocator.h
 %{_libdir}/lib%{namespace}.so
 %{_libdir}/pkgconfig/memkind.pc
 %{_includedir}/%{namespace}.h
@@ -141,5 +146,7 @@ rm -f %{buildroot}/%{_mandir}/man7/memtier.*
 %{_mandir}/man3/hbwallocator.3.*
 %{_mandir}/man3/%{namespace}*.3.*
 %{_mandir}/man3/pmemallocator.3.*
+%{_mandir}/man3/fixedallocator.3.*
+%{_mandir}/man3/libmemtier.3.*
 
 %changelog
