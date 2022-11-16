@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 18 19:15:36 UTC 2022 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Enable unit test at package build
+- Declare -devel and -doc packages as noarch
+    - Drop fix_cmake_install_directory.patch
+
+-------------------------------------------------------------------
 Sun Jul 17 19:17:39 UTC 2022 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Version 0.7.4

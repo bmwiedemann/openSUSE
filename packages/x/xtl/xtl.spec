@@ -24,9 +24,8 @@ License:        BSD-3-Clause
 Group:          Development/Languages/C and C++
 URL:            https://github.com/xtensor-stack/xtl
 Source0:        https://github.com/xtensor-stack/xtl/archive/refs/tags/%{version}/xtl-%{version}.tar.gz
-#PATCH-FIX-OPENSUSE fix_cmake_install_directory.patch change install directories of cmake and pkgconfig files
-Patch0:         fix_cmake_install_directory.patch
 BuildRequires:  cmake
+BuildRequires:  doctest-devel
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 BuildRequires:  make
@@ -37,11 +36,28 @@ BuildRequires:  cmake(nlohmann_json)
 %description
 Basic tools (containers, algorithms) used by other quantstack packages.
 
+%package        devel
+Summary:        The x template library
+Group:          Development/Languages/C and C++
+Requires:       cmake(nlohmann_json)
+BuildArch:      noarch
+
+%description    devel
+Basic tools (containers, algorithms) used by other quantstack packages.
+
+%package        doc
+Summary:        Documentation for xtl
+Group:          Documentation/HTML
+BuildArch:      noarch
+
+%description    doc
+Basic tools (containers, algorithms) used by other quantstack packages.
+
 %prep
 %autosetup
 
 %build
-%cmake
+%cmake -DBUILD_TESTS:BOOL=ON
 %cmake_build
 
 #build documentation
@@ -55,27 +71,15 @@ make html
 mkdir -p %{buildroot}/%{_docdir}/%{name}
 cp -r %{_builddir}/%{name}-%{version}/docs/build/html/* %{buildroot}/%{_docdir}/%{name}
 
-%package        devel
-Summary:        The x template library
-Group:          Development/Languages/C and C++
-Requires:       cmake(nlohmann_json)
-
-%description    devel
-Basic tools (containers, algorithms) used by other quantstack packages.
+%check
+%ctest
 
 %files devel
 %license LICENSE
 %doc README.md
 %{_includedir}/xtl/
-%{_libdir}/cmake/xtl/
-%{_libdir}/pkgconfig/xtl.pc
-
-%package        doc
-Summary:        Documentation for xtl
-Group:          Documentation/HTML
-
-%description    doc
-Basic tools (containers, algorithms) used by other quantstack packages.
+%{_datadir}/cmake/xtl/
+%{_datadir}/pkgconfig/xtl.pc
 
 %files doc
 %doc %{_docdir}/%{name}
