@@ -17,7 +17,7 @@
 
 
 Name:           perl-Mail-SpamAssassin-Plugin-dqs
-Version:        1.2.0
+Version:        1.2.2
 Release:        0
 Summary:        SpamAssassin plugin for Spamhaus Data Query Service (DQS)
 License:        Apache-2.0

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 16 10:28:49 UTC 2022 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- spamassassin-dqs version 1.2.2
+
+  * Removed useless syslog functions and made the plugin compatible with MDaemon
+  * Minor fixes
+
+-------------------------------------------------------------------
 Sun Feb  6 09:02:01 UTC 2022 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - spamassassin-dqs version 1.2.0
