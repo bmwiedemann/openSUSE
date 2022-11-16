@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Nov 14 16:33:07 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.5.18:
+  + Add <launchable/>  into the .appdata.xml file.
+  + Accessiblity improvements.
+  + system-config-printer couldn't be uninstalled via GNOME
+    Software.
+  + system-config-printer crashes due missing libhandy.
+  + Updated config.sub and config.guess to fix configuration error
+    on RiSC.
+  + Use pkg-config or --with-cups-serverbin-dir for finding
+    SERVERBIN.
+
+-------------------------------------------------------------------
 Thu Aug 11 20:29:09 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Move all dbus-1 system.d files to /usr (bsc#1202340)

@@ -19,7 +19,7 @@
 %define _icontheme adwaita
 %define _iconlocation Adwaita
 Name:           system-config-printer
-Version:        1.5.16
+Version:        1.5.18
 Release:        0
 Summary:        A printer administration tool
 License:        GPL-2.0-or-later
