@@ -23,7 +23,7 @@
 %bcond_with hwinfo
 
 Name:           suseconnect-ng
-Version:        1.0.0~git0.60e48564a714
+Version:        1.0.0~git0.faee7c196dc1
 Release:        0
 URL:            https://github.com/SUSE/connect-ng
 License:        LGPL-2.1-or-later
