@@ -82,6 +82,7 @@ Patch157:       virtman-fix-restore-vm-menu-selection.patch
 Patch158:       virtman-disallow-adding-floppy-disk.patch
 Patch159:       virtman-register-delete-event-for-details-dialog.patch
 Patch160:       virtman-revert-use-of-AyatanaAppIndicator3.patch
+Patch161:       virtman-fix-uninitialized-controller-index.patch
 Patch170:       virtinst-xen-drive-type.patch
 Patch171:       virtinst-xenbus-disk-index-fix.patch
 Patch172:       virtinst-refresh_before_fetch_pool.patch

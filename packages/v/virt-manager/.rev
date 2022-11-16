@@ -1878,4 +1878,12 @@
     <comment>Along with upstream bug fixes and enhancements, cleanup tests and an old Obsolete.</comment>
     <requestid>1034192</requestid>
   </revision>
+  <revision rev="238" vrev="4">
+    <srcmd5>17bf30d5f6b39ece5f3dbee190841a65</srcmd5>
+    <version>4.1.0</version>
+    <time>1668609750</time>
+    <user>dimstar_suse</user>
+    <comment>Fix for bsc#1203252 - virt-manager cannot add second virtio-scsi controller</comment>
+    <requestid>1035877</requestid>
+  </revision>
 </revisionlist>

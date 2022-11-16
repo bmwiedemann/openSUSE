@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 15 07:51:46 MST 2022 - carnold@suse.com
+
+- bsc#1203252 - virt-manager regression - cannot add second
+  virtio-scsi controller
+  virtman-fix-uninitialized-controller-index.patch
+
+-------------------------------------------------------------------
 Mon Nov  7 05:32:57 MST 2022 - carnold@suse.com
 
 - Refresh test skips

@@ -1,0 +1,13 @@
+References: bsc#1203252
+
+--- virt-manager-4.1.0/virtManager/addhardware.py.orig	2022-11-15 07:49:08.318413181 -0700
++++ virt-manager-4.1.0/virtManager/addhardware.py	2022-11-15 07:49:48.126414130 -0700
+@@ -1570,6 +1570,8 @@ class vmmAddHardware(vmmGObjectUI):
+         if len(controller_num) > 0:
+             index_new = max([x.index for x in controller_num]) + 1
+             dev.index = index_new
++        else:
++            dev.index = 0
+ 
+         dev.type = controller_type
+ 
