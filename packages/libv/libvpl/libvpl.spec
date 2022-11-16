@@ -20,11 +20,13 @@
   %define _distconfdir %{_prefix}%{_sysconfdir}
 %endif
 
+%if 0%{?suse_version} >= 1550
 # Legacy tools use x86 asm, https://github.com/oneapi-src/oneVPL/issues/69
 %ifarch x86_64 %{ix86}
 %bcond_without tools
 %else
 %bcond_with tools
+%endif
 %endif
 
 %global sover 2

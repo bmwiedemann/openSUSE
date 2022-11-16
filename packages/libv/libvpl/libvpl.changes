@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 15 12:14:20 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- missed part of specfile to limit build to x86_64 on older
+  products than factory 
+
+-------------------------------------------------------------------
 Tue Nov  8 09:19:49 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - limit build again to x86_64 on older products than factory

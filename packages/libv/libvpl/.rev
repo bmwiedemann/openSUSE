@@ -83,4 +83,13 @@
     <comment>- limit build again to x86_64 on older products than factory</comment>
     <requestid>1034455</requestid>
   </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>762fc0ce2acbc034f5a695dc33581d93</srcmd5>
+    <version>2023.0.0</version>
+    <time>1668609772</time>
+    <user>dimstar_suse</user>
+    <comment>- missed part of specfile to limit build to x86_64 on older
+  products than factory</comment>
+    <requestid>1035830</requestid>
+  </revision>
 </revisionlist>
