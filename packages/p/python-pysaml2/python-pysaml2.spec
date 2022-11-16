@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global modname pysaml2
 %global skip_python2 1
 Name:           python-pysaml2
@@ -30,7 +29,7 @@ Source:         https://github.com/IdentityPython/pysaml2/archive/v%{version}.ta
 # gh#IdentityPython/pysaml2#843
 Patch0:         pymongo-4-support.patch
 BuildRequires:  %{python_module Paste}
-BuildRequires:  %{python_module cryptography >= 1.4}
+BuildRequires:  %{python_module cryptography >= 3.1}
 BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module defusedxml}
 BuildRequires:  %{python_module importlib-resources}
@@ -44,7 +43,7 @@ BuildRequires:  %{python_module requests >= 1.0.0}
 BuildRequires:  %{python_module responses}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
-BuildRequires:  %{python_module xmlschema}
+BuildRequires:  %{python_module xmlschema >= 1.2.1}
 BuildRequires:  %{python_module zope.interface}
 BuildRequires:  fdupes
 # This is needed as xmlsec itself does not pull any backend by default
@@ -54,7 +53,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  update-alternatives
 BuildRequires:  xmlsec1
 Requires:       python-Paste
-Requires:       python-cryptography >= 1.4
+Requires:       python-cryptography >= 3.1
 Requires:       python-defusedxml
 Requires:       python-importlib-resources
 Requires:       python-pyOpenSSL
@@ -63,7 +62,7 @@ Requires:       python-pytz
 Requires:       python-repoze.who
 Requires:       python-requests >= 1.0.0
 Requires:       python-six
-Requires:       python-xmlschema
+Requires:       python-xmlschema >= 1.2.1
 Requires:       python-zope.interface
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -118,6 +117,7 @@ sed -i 's:mock.mock:unittest.mock:' tests/test_52_default_sign_alg.py
 %python_alternative %{_bindir}/parse_xsd2.py
 %python_alternative %{_bindir}/mdexport.py
 %python_alternative %{_bindir}/merge_metadata.py
-%{python_sitelib}/*
+%{python_sitelib}/saml2
+%{python_sitelib}/pysaml2-%{version}*-info
 
 %changelog

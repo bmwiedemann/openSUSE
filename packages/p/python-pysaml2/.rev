@@ -320,4 +320,12 @@
     <comment></comment>
     <requestid>1008686</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>26642a124775f691dfb5c13ad3f1a20b</srcmd5>
+    <version>7.2.1</version>
+    <time>1668609804</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix dependencies according to upstream setup.cfg</comment>
+    <requestid>1035909</requestid>
+  </revision>
 </revisionlist>
