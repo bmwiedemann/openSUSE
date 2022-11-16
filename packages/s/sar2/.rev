@@ -49,4 +49,12 @@
   * Honor wheel brake coefficient.</comment>
     <requestid>816168</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>c29c99271b9ac0b6b31f77b2d4e1a6da</srcmd5>
+    <version>2.5.0</version>
+    <time>1668609829</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1035955</requestid>
+  </revision>
 </revisionlist>

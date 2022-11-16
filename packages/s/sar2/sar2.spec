@@ -1,7 +1,7 @@
 #
 # spec file for package sar2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@ BuildRequires:  Mesa-devel
 BuildRequires:  fdupes
 BuildRequires:  freealut-devel
 BuildRequires:  gcc-c++
-BuildRequires:  libSDL2-devel
+BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  libXxf86vm-devel
 BuildRequires:  libvorbis-devel
 BuildRequires:  openal-soft-devel
