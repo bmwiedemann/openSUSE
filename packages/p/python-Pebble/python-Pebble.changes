@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 15 21:50:22 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update to 5.0.3
+  * issue #111: reinstate `Pool.schedule` function in place of
+    `Pool.submit`.
+
+-------------------------------------------------------------------
 Mon Oct 10 11:29:15 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Update to 5.0.2
