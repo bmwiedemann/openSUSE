@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Nov  7 11:44:38 UTC 2022 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Ugraded to freerdp 2.8.1
+  * Fixed CVE-2022-39282 - boo#1204258
+    using the `/parallel` command line switch might read uninitialized data
+  * Fixed CVE-2022-39283 - boo#1204257
+    using the `/video` command line switch might read uninitialized data
+  * Added missing commit for backported #gh:FreeRDP/FreeRDP#8041:
+    Remove ALAW/ULAW codecs from linux backends (unreliable)
+  * Added hash checks for android build script dependencies
+
+- Fixed issues:
+  * #gh:FreeRDP/FreeRDP#8190: Fix build break with newer FFMPEG versions
+  * #gh:FreeRDP/FreeRDP#8234: Updated flatpak with build script
+  * #gh:FreeRDP/FreeRDP#8210: Better execinfo support check for android
+  * #gh:FreeRDP/FreeRDP#7708: Header now defines DumpThreadHandles
+  * #gh:FreeRDP/FreeRDP#8176: Check fullscreen state and not setting
+  * #gh:FreeRDP/FreeRDP#8236: Send resize on window state change
+  * #gh:FreeRDP/FreeRDP#7611: Audin macOS monterey fix
+  * #gh:FreeRDP/FreeRDP#8291: Android build script update
+  * Fix length checks and initialization in the deprecated
+    (disabled per default) tsmf channel
+
+-------------------------------------------------------------------
 Mon Aug  8 09:55:40 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Ugraded to freerdp 2.8.0
