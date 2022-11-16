@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Wed Nov 16 03:54:57 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.1+20221116.4faefec3:
+  * Dev: run-functional-tests: get index of test case in github action
+  * Dev: run-functional-tests: Set stonith-enabled=false after setup cluster
+  * Dev: run-functional-tests: Deploy and remove containers in parallel
+
+-------------------------------------------------------------------
+Tue Nov 15 08:15:12 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.1+20221115.10733d98:
+  * Dev: behave: stop sshd.service in test case
+
+-------------------------------------------------------------------
+Tue Nov 15 05:55:02 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.1+20221115.a52067ac:
+  * Dev: crm: Improve error hints when starting crmsh
+
+-------------------------------------------------------------------
+Sat Nov 12 12:49:20 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.1+20221112.1eecda84:
+  * Dev: behave: Add functional test to verify report collect trace ra logs
+  * Dev: report: collect ra trace files from specified directories
+
+-------------------------------------------------------------------
+Fri Nov 11 00:39:18 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.1+20221111.e52b7fa2:
+  * Dev: behave: Add functional test for tracing ra with specific directory
+  * Dev: Dockerfile: update resource-agents with latest version
+
+-------------------------------------------------------------------
+Wed Nov 09 02:28:03 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.1+20221109.3640f356:
+  * Dev: ui_resource: trace directory in log info should be changed dynamically
+
+-------------------------------------------------------------------
+Tue Nov 08 03:36:20 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.1+20221108.c4182bc4:
+  * Dev: testcases: Adjust origin regression test based on previous changes
+  * Dev: unittest: Adjust unit test based on previous changes
+  * Dev: parse: cli_to_xml: populate advised monitor/start/stop operations values
+
+-------------------------------------------------------------------
+Mon Nov 07 03:58:15 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.1+20221107.0c91f0d3:
+  * code
+  * Dev: behave: Add functional test for parallax OSError: [Errno 24] Too many open files
+
+-------------------------------------------------------------------
 Thu Oct 27 05:09:14 UTC 2022 - XLiang@suse.com
 
 - Update to version 4.4.1+20221027.e42809ff:
