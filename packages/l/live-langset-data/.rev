@@ -150,4 +150,13 @@
     <comment>- Parse lang=/keytable= options more explicitly (boo#1202925)</comment>
     <requestid>1006120</requestid>
   </revision>
+  <revision rev="18" vrev="16">
+    <srcmd5>8ffa565880d1a1f670e3892b311e45bc</srcmd5>
+    <version>2.0</version>
+    <time>1668609758</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop support for /etc/sysconfig/language (12.x), it was activated
+  in staging projects by accident (&quot;Tumbleweed 1&quot;)</comment>
+    <requestid>1035815</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 15 10:57:55 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Drop support for /etc/sysconfig/language (12.x), it was activated
+  in staging projects by accident ("Tumbleweed 1")
+
+-------------------------------------------------------------------
 Mon Sep 26 13:54:57 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Parse lang=/keytable= options more explicitly (boo#1202925)

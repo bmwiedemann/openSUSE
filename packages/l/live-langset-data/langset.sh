@@ -60,7 +60,6 @@ set_vconsole_option() {
 
 # set_sysconfig_option KEY value
 set_sysconfig_option() {
-	sed -i -e "s#$1=\".*#$1=\"$2\"#" /etc/sysconfig/language
 	sed -i -e "s#$1=\".*#$1=\"$2\"#" /etc/sysconfig/keyboard
 	sed -i -e "s#$1=\".*#$1=\"$2\"#" /etc/sysconfig/console
 }
@@ -69,15 +68,6 @@ set_sysconfig_option() {
 [ -z "$CONSOLE_FONT" ] || set_sysconfig_option CONSOLE_FONT "$CONSOLE_FONT"
 [ -z "$CONSOLE_SCREENMAP" ] || set_sysconfig_option CONSOLE_SCREENMAP "$CONSOLE_SCREENMAP"
 [ -z "$CONSOLE_UNICODEMAP" ] || set_sysconfig_option CONSOLE_UNICODEMAP "$CONSOLE_UNICODEMAP"
-
-# If those are set, locale.conf is ignored - so only set them if necessary (i.e. <= 12 base)
-# bsc#1119420
-[ -f /usr/lib/os-release ] && . /usr/lib/os-release
-[ -f /etc/os-release ] && . /etc/os-release
-if [ -n "$VERSION_ID" ] && [ "${VERSION_ID%%.*}" -le 12 ]; then
-    [ -z "$RC_LANG" ] || set_sysconfig_option RC_LANG "$RC_LANG"
-    [ -z "$RC_LC_MESSAGES" ] || set_sysconfig_option RC_LC_MESSAGES "$RC_LC_MESSAGES"
-fi
 
 [ -z "$KEYTABLE" ] || set_sysconfig_option KEYTABLE "$KEYTABLE"
 [ -z "$COMPOSETABLE" ] || set_sysconfig_option COMPOSETABLE "$COMPOSETABLE"

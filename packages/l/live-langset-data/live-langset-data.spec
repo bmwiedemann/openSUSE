@@ -32,6 +32,10 @@ BuildRequires:  systemd-rpm-macros
 BuildRequires:  yast2-country
 # Needed for X11 keyboard data
 BuildRequires:  yast2-x11
+# Support for /etc/sysconfig/language was dropped
+%if 0%{?suse_version} < 1500
+BuildRequires:  newer-distro
+%endif
 Requires:       sed
 Requires:       systemd
 BuildArch:      noarch
