@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Nov 14 13:52:05 UTC 2022 - tiwai@suse.com
+
+- Update to version 20221109 (git commit 60310c2deb8c):
+  * linux-firmware: Update firmware file for Intel Bluetooth 9462
+  * linux-firmware: Update firmware file for Intel Bluetooth 9462
+  * linux-firmware: Update firmware file for Intel Bluetooth 9560
+  * linux-firmware: Update firmware file for Intel Bluetooth 9560
+  * linux-firmware: Update firmware file for Intel Bluetooth AX201
+  * linux-firmware: Update firmware file for Intel Bluetooth AX201
+  * linux-firmware: Update firmware file for Intel Bluetooth AX211
+  * linux-firmware: Update firmware file for Intel Bluetooth AX211
+  * linux-firmware: Update firmware file for Intel Bluetooth AX210
+  * linux-firmware: Update firmware file for Intel Bluetooth AX200
+  * linux-firmware: Update firmware file for Intel Bluetooth AX201
+  * amdgpu: update DMCUB firmware for DCN 3.1.6
+  * rtl_bt: Update RTL8822C BT UART firmware to 0xFFB8_ABD6
+  * rtl_bt: Update RTL8822C BT USB firmware to 0xFFB8_ABD3
+  * WHENCE: mrvl: prestera: Add WHENCE entries for newly updated 4.1 FW images
+  * mrvl: prestera: Update Marvell Prestera Switchdev FW to v4.1
+  * iwlwifi: add new FWs from core74_pv-60 release
+  * qcom: drop split a530_zap firmware file
+  * qcom/vpu-1.0: drop split firmware in favour of the mbn file
+  * qcom/venus-4.2: drop split firmware in favour of the mbn file
+  * qcom/venus-4.2: replace split firmware with the mbn file
+  * qcom/venus-1.8: replace split firmware with the mbn file
+
+-------------------------------------------------------------------
 Fri Nov 04 11:24:49 UTC 2022 - tiwai@suse.com
 
 - Update to version 20221031 (git commit 8bb75626e9dd):
