@@ -33,14 +33,19 @@
     else
 	set _manpath="/usr{{/X11/man,/openwin/man}/{man,cat},{/man/{man,cat}}}"
     endif
-
+if ( -d /usr/lib/ispell/ ) then
+    set _hash=(`\ls -1fUA /usr/lib/ispell/|&\sed -rn \\%.\*\\.hash%{s%\.hash%%p}`)
+else
+    set _hash=(english deutsch)
+endif
     complete ispell	c/-/"(a A b B C d D e ee f L m M p s S T v vv w W)"/ \
-			n/-d/"(english deutsch)"/ \
-			n/-T/"(tex plaintex nroff latin1 ascii atari)"/ \
+			n@-d@"(${_hash})"@ \
+			n/-T/"(utf8 tex plaintex nroff latin1 ascii atari)"/ \
 			n@-p@'`ls -1 "$HOME"/.ispell_*`'@ \
 			n/-W/"(1 2 3 4 5)"/ \
 			n/-L/x:'ispell -L <number>'/ \
 			n/-f/t/ n/*/f:^*.{dvi,ps,a,o,gz,z,Z}/
+    unset _hash
     complete ywho	n/*/\$hosts/	# argument from list in $hosts
     complete {r,s}sh	p/1/\$hosts/ c/-/"(l n)"/   n/-l/u/ N/-l/c/ n/-/c/ p/2/c/ p/*/f/
     complete xrsh	p/1/\$hosts/ c/-/"(l 8 e)"/ n/-l/u/ N/-l/c/ n/-/c/ p/2/c/ p/*/f/
@@ -698,6 +703,7 @@ skip_mh:
 
     complete man	n@[0-9n]@'`\ls -1fUA ${_manpath}$:-1/|&\sed \\%.\*:%d\;s%\\.$:-1.\*\$%%|\sort -u`'@ \
 			c/-/"(- f k s t l)"/ n/-f/c/ n/-k/x:'<keyword>'/ n/-l/f/ C@./*@f@ n/*/c/
+    unset _manpath
 
     complete ps		c/-t/x:'<tty>'/ c/-/"(a c C e g k l S t u v w x)"/ \
 			n/-k/x:'<kernel>'/ N/-k/x:'<core_file>'/ n/*/x:'<PID>'/
@@ -753,7 +759,7 @@ if (-X gpg) then
     set _gpg_cipher=(`gpg --version | sed -rn '/^Supported algorithms:/,$ {:join; /,$/{N; s/\n//; b join};/^Cipher:/{s/(,|.*: )//g;s/.*/\L&/p}}'`)
 
     complete gpg	c/--/'(sign clearsign detach-sign encrypt symmetric \
-			    store decrypt verify list-keys list-sigs check-sigs \
+			    store decrypt verify search-keys list-keys list-sigs check-sigs \
 			    fingerprint list-secret-keys gen-key delete-key \
 			    delete-secret-key sign-key lsign-key edit-key gen-revoke \
 			    export send-keys recv-keys import list-packets \
@@ -977,7 +983,7 @@ endif
     unset _maildir _ypdir _domain
 
     if ( -X lpstat ) then
-	set printers=(`lpstat -p -d | sed -rn '/^printer/{ s/^printer ([^\s]+) .*/\1/p }'`)
+	set printers=(`lpstat -p -d |& sed -rn '/^printer/{ s/^printer ([^\s]+) .*/\1/p }'`)
 
 	complete lpr	'c/-P/$printers/'
 	complete lpq	'c/-P/$printers/'

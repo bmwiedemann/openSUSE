@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 15 13:32:26 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add search-lists to gpg completions, extend ispell completions
+
+-------------------------------------------------------------------
 Fri Nov  4 10:37:17 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Enhance completion that is add sed, gpg and rpm support as well
