@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Mon Nov 14 16:06:44 UTC 2022 - Andrei Dziahel <develop7@develop7.info>
+
+- Update to Mercurial 6.3.0
+  + New Features
+    * testlib: add `--raw-sha1` option to `f`
+    * rhg: add `config.rhg` helptext
+    * config: add alias from `hg help rhg` to `hg help rust`
+    * rhg: add a config option to fall back immediately
+    * bundle: introduce a --exact option
+    * perf-bundle: add a new command to benchmark bundle creation time
+    * perf-bundle: accept --rev arguments
+    * perf-bundle: accept --type argument
+    * perf-unbundle: add a perf command to time the unbundle operation
+    * perf: introduce a benchmark for delta-find
+    * contrib: add support for rhel9
+    * phase-shelve: Implement a 'shelve.store' experimental config
+    * debug-delta-find: introduce a quiet mode
+    * sort-revset: introduce a `random` variant
+    * phase: introduce a dedicated requirement for the `archived` phase
+    * rebase: add boolean config item rebase.store-source
+    * rhg: make [rhg status -v] work when it needs no extra output
+    * rhg: support "!" syntax for disabling extensions
+    * rhg: add debugrhgsparse command to help figure out bugs in rhg
+    * rhg: add sparse support
+    * rhg-status: add support for narrow clones
+    * templates: add filter to reverse list
+    * contrib: add pull_logger extension
+    * revset: handle wdir() in `roots()`
+    * revset: handle wdir() in `sort(..., -topo)`
+    * rhg: support tweakdefaults
+    * rhg: parallellize computation of [unsure_is_modified]
+  
+  + Bug Fixes
+    * shelve: demonstrate that the state is different across platforms (issue6735)
+    * shelve: in test for trailing whitespace, strip commit (issue6735)
+    * shelve: remove strip and rely on prior state (issue6735)
+    * tests: fix http-bad-server expected errors for python 3.10 (issue6643)
+    * status: let `--no-copies` override `ui.statuscopies`
+    * releasenotes: use re.MULTILINE mode when checking admonitions
+    * rhg: fallback to slow path on invalid patterns in hgignore
+    * Fix a bunch of leftover str/bytes issues from Python 3 migration
+    * keepalive: ensure `close_all()` actually closes all cached connections
+    * lfs: fix blob corruption when tranferring with workers on posix
+    * lfs: avoid closing connections when the worker doesn't fork
+    * dirstate-v2: update constant that wasn't kept in sync
+    * dirstate-v2: fix edge case where entries aren't sorted
+    * upgrade: no longer keep all revlogs in memory at any point
+    * rust-status: save new dircache even if just invalidated
+    * dirstate-v2: hash the source of the ignore patterns as well
+    * rhg: fallback when encountering ellipsis revisions
+    * shelve: handle empty parents and nodestoremove in shelvedstate (issue6748)
+    * profile: prevent a crash when line number is unknown
+    * tags-fnode-cache: do not repeatedly open the filelog in a loop
+    * tags-fnode-cache: skip building a changectx in getfnode
+    * rust: create wrapper struct to reduce `regex` contention issues
+  
+  + Backwards Compatibility Changes 
+    * chg worker processes will now correctly load per-repository configuration
+     when given a both a relative `--repository` path and an alternate working
+     directory via `--cwd`. A side-effect of this change is that these workers
+     will now return an error if hg cannot find the current working directory,
+     even when a different directory is specified via `--cwd`.
+    * phase: rename the requirement for internal-phase from `internal-phase` 
+      to `use-internal-phase` (see 74fb1842f8b962cf03d7cd5b841dbcf2ae065587)
+
+  + Miscellaneous
+    * sslutil: use proper attribute to select python 3.7+
+    * typing: suppress a few pyi-errors with more recent pytype
+    * ci: bump pytype to 2022.03.29
+    * bundlespec: add documentation about existing option
+    * subrepo: avoid opening console window for non-native subrepos on Windows
+    * setup: unconditionally enable the `long-paths-support` option on Windows
+    * setup: use the full executable manifest from `python.exe`
+    * tests: work around libmagic bug in svn subrepo tests
+    * packagelib: use python3 by default
+    * Improve `hg bisect` performance
+    * perf: properly process formatter option in perf::unbundle
+    * compare-disco: miscellaneous display improvements
+    * fsmonitor: better compatibility with newer Pythons
+    * revlog: finer computation of "issnapshot"
+    * rhg: don't fallback if `strip` or `rebase` are activated
+    * perf: make perf::bundle compatible before 61ba04693d65
+    * perf: make perf::bundle compatible down to 5.2
+    * perf-unbundle: improve compatibility
+    * run-tests: display the time it took to install Mercurial
+    * mergetools: don't let meld open all changed files on startup
+    * dirstate-v2: skip evaluation of hgignore regex on cached directories
+
+-------------------------------------------------------------------
 Mon Oct 10 07:59:43 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.2.3:
