@@ -17,12 +17,12 @@
 
 
 Name:           ddnet
-Version:        16.2.2
+Version:        16.5
 Release:        0
 Summary:        DDraceNetwork, a cooperative racing mod of Teeworlds
 License:        Apache-2.0 AND CC-BY-SA-3.0 AND Zlib AND MIT AND SUSE-Public-Domain
 Group:          Amusements/Games/Action/Race
-URL:            https://ddnet.tw/
+URL:            https://ddnet.org/
 Source:         https://github.com/ddnet/ddnet/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  appstream-glib
@@ -41,6 +41,7 @@ BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(gtest)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libnotify)
+BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(opus)

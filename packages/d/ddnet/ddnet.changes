@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Nov  8 17:43:00 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 16.5:
+  * [Client] Add favorite skins
+  * [Client] Support multiple values to search/exclude in 
+    serverbrowser (using ;)
+  * [Client] Improved crash reports with more information
+  * [Client] Tweak running visuals
+  * [Client] Only announce servers using Steam/Discord integration
+    which are registered
+  * [Client] Add help text at bottom left ingame when menu is open
+  * [Client] Fix config_directory.bat (whitespaces in the path)
+  * [Client] Refresh serverbrowser when disconnecting / abort
+  * [Client] Laser menu tweaks; Changed some default colors
+  * [Client] Fix unknown command handler for filenames containing
+    spaces
+  * [Client] Fix UI elements behind color picker background being
+    selectable
+  * [Client] Remove cl_http_map_download
+  * [Client] Fix client crash when server does not send gameinfo
+  * [Client&Server] Fix receiving IPv6 packets after IPv4 ones
+    on Linux
+  * [Client&Server] Handle non-default Windows directory
+    in os_version_str, print the operating system version on
+    client/server launch
+  * [Editor] Fix map file argument not opening editor with
+    absolute paths
+  * [Server] Enable antispoof for vanilla by default
+  * [Server] Remove support for legacy 64 player info protocol
+  * [Server] Only start registering once the server is
+    fully started
+  * [Server] Update move_sqlite.py to use sqlite3mysql
+  * [Server] Respect reserved slots in old serverinfo
+  * [Tooling] Code coverage reports on Github
+  * [Tooling] Make submodules shallow by default
+  * Plus many bug fixes listed at https://ddnet.org/downloads/
+- Add BuildRequires pkgconfig(libpng)
+
+-------------------------------------------------------------------
 Sun Jul 17 23:56:01 UTC 2022 - Timothy Brown <stimut@gmail.com>
 
 - Update to version 16.2.2:
