@@ -25,7 +25,7 @@
 %define selinux_variants mls targeted
 %endif
 Name:           icinga-l10n
-Version:        1.1.0
+Version:        1.2.0
 Release:        %{revision}%{?dist}
 Summary:        Icinga L10n
 License:        GPL-2.0-or-later
@@ -84,7 +84,7 @@ BuildRequires:  checkpolicy
 BuildRequires:  selinux-policy-devel
 Requires:       %{name} = %{version}-%{release}
 Requires(post): policycoreutils
-Requires(postun): policycoreutils
+Requires(postun):policycoreutils
 
 %description selinux
 SELinux policy for Icinga L10n
@@ -111,6 +111,5 @@ fi
 %{_datadir}/selinux/*/icinga-l10n.pp
 
 %endif
-
 
 %changelog
