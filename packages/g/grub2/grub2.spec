@@ -22,7 +22,7 @@
 %if %{defined sbat_distro}
 # SBAT metadata
 %define sbat_generation 1
-%define sbat_generation_grub 2
+%define sbat_generation_grub 3
 %else
 %{error please define sbat_distro, sbat_distro_summary and sbat_distro_url}
 %endif
@@ -465,6 +465,18 @@ Patch935:       0003-efi-tpm-Add-EFI_CC_MEASUREMENT_PROTOCOL-support.patch
 # (PED-1990) GRUB2: Measure the kernel on POWER10 and extend TPM PCRs
 Patch936:       0001-ibmvtpm-Add-support-for-trusted-boot-using-a-vTPM-2..patch
 Patch937:       0002-ieee1275-implement-vec5-for-cas-negotiation.patch
+Patch938:       0001-font-Reject-glyphs-exceeds-font-max_glyph_width-or-f.patch
+Patch939:       0002-font-Fix-size-overflow-in-grub_font_get_glyph_intern.patch
+Patch940:       0003-font-Fix-several-integer-overflows-in-grub_font_cons.patch
+Patch941:       0004-font-Remove-grub_font_dup_glyph.patch
+Patch942:       0005-font-Fix-integer-overflow-in-ensure_comb_space.patch
+Patch943:       0006-font-Fix-integer-overflow-in-BMP-index.patch
+Patch944:       0007-font-Fix-integer-underflow-in-binary-search-of-char-.patch
+Patch945:       0008-fbutil-Fix-integer-overflow.patch
+Patch946:       0009-font-Fix-an-integer-underflow-in-blit_comb.patch
+Patch947:       0010-font-Harden-grub_font_blit_glyph-and-grub_font_blit_.patch
+Patch948:       0011-font-Assign-null_font-to-glyphs-in-ascii_font_glyph.patch
+Patch949:       0012-normal-charset-Fix-an-integer-overflow-in-grub_unico.patch
 
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140

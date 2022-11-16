@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Nov 16 02:36:23 UTC 2022 - Michael Chang <mchang@suse.com>
+
+- Security fixes and hardenings
+  * 0001-font-Reject-glyphs-exceeds-font-max_glyph_width-or-f.patch
+  * 0002-font-Fix-size-overflow-in-grub_font_get_glyph_intern.patch
+- Fix CVE-2022-2601 (bsc#1205178)
+  * 0003-font-Fix-several-integer-overflows-in-grub_font_cons.patch
+  * 0004-font-Remove-grub_font_dup_glyph.patch
+  * 0005-font-Fix-integer-overflow-in-ensure_comb_space.patch
+  * 0006-font-Fix-integer-overflow-in-BMP-index.patch
+  * 0007-font-Fix-integer-underflow-in-binary-search-of-char-.patch
+  * 0008-fbutil-Fix-integer-overflow.patch
+- Fix CVE-2022-3775 (bsc#1205182)
+  * 0009-font-Fix-an-integer-underflow-in-blit_comb.patch
+  * 0010-font-Harden-grub_font_blit_glyph-and-grub_font_blit_.patch
+  * 0011-font-Assign-null_font-to-glyphs-in-ascii_font_glyph.patch
+  * 0012-normal-charset-Fix-an-integer-overflow-in-grub_unico.patch
+- Bump upstream SBAT generation to 3
+
+-------------------------------------------------------------------
 Mon Nov 14 09:54:16 UTC 2022 - Michael Chang <mchang@suse.com>
 
 - Removed 0001-linux-fix-efi_relocate_kernel-failure.patch as reported
