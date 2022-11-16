@@ -5,7 +5,7 @@
     <param name="exclude">.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
-    <param name="revision">v0.19.0</param>
+    <param name="revision">v0.19.1</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="recompress" mode="disabled">
@@ -16,6 +16,10 @@
     <param name="basename">kubie</param>
   </service>
   <service name="cargo_vendor" mode="disabled">
+    <param name="update">true</param>
     <param name="srcdir">kubie</param>
+  </service>
+  <service name="cargo_audit" mode="disabled">
+     <param name="srcdir">kubie</param>
   </service>
 </services>

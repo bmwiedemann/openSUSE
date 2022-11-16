@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 15 15:43:11 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.19.1:
+  * Version 0.19.1
+  * Update dependencies
+  * Update skim to 0.10.1, fix security alerts
+  * Update attohttpc and use native certs with rustls
+
+-------------------------------------------------------------------
 Wed Sep 07 05:36:12 UTC 2022 - kastl@b1-systems.de
 
 - follow the build instructions from the README to exclude
