@@ -34,4 +34,13 @@
 - Spec cleanup</comment>
     <requestid>986343</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>826fc2f84837db83abe1243946551efb</srcmd5>
+    <version>0.7.1</version>
+    <time>1668609838</time>
+    <user>dimstar_suse</user>
+    <comment>- Ship the README.md mentioned in the description.
+- Compact descriptions. (forwarded request 1035901 from jengelh)</comment>
+    <requestid>1036160</requestid>
+  </revision>
 </revisionlist>

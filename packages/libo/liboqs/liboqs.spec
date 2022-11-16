@@ -34,28 +34,25 @@ BuildRequires:  doxygen
 BuildRequires:  libopenssl-devel
 
 %description
-liboqs is an open source C library for quantum-resistant cryptographic
-algorithms. Details about liboqs can be found in README.md. See in
-particular limitations on intended use.
+liboqs is a C library for quantum-resistant cryptographic algorithms.
+See the bundled README.md for particular limitations on intended use.
 
 %package -n liboqs0
 Summary:        C library for quantum-resistant cryptographic algorithms
 Group:          System/Libraries
 
 %description -n liboqs0
-liboqs is a C library for quantum-resistant cryptographic
-algorithms. Details about liboqs can be found in README.md. See in
-particular limitations on intended use.
+liboqs is a C library for quantum-resistant cryptographic algorithms.
+See the bundled README.md for particular limitations on intended use.
 
 %package devel
-Summary:        Open source C library for quantum-resistant cryptographic algorithms
+Summary:        Headers for liboqs, a library for quantum-resistant cryptography
 Group:          Development/Languages/C and C++
 Requires:       liboqs0 = %{version}
 
 %description devel
-liboqs is an open source C library for quantum-resistant cryptographic
-algorithms. Details about liboqs can be found in README.md. See in
-particular limitations on intended use.
+liboqs is a C library for quantum-resistant cryptographic algorithms.
+See the bundled README.md for particular limitations on intended use.
 
 %prep
 %autosetup -p1
@@ -89,6 +86,7 @@ rmdir %{buildroot}%{_prefix}/local/
 %files -n liboqs0
 %license LICENSE.txt
 %{_libdir}/liboqs.so.0*
+%doc README.md
 
 %files devel
 %license LICENSE.txt
