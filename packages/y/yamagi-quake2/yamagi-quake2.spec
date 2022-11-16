@@ -32,7 +32,7 @@ BuildRequires:  ImageMagick
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libSDL2-devel
+BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  libcurl-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libvorbis-devel
