@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 14 14:44:56 UTC 2022 - pgajdos@suse.com
+
+- php8 support was added in swig 4.1.0
+
+-------------------------------------------------------------------
 Wed Oct 19 10:40:10 UTC 2022 - Klaus Kämpf <kkaempf@suse.com>
 
 - add swig-4.1.0.patch to work around graphviz's incompatibility

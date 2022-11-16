@@ -36,7 +36,10 @@
 %bcond_with    ocaml
 %if "%{flavor}" == "addons"
 # PHP7 requires swig >= 3.0.11, not available on Leap 42.x
-%if 0%{?suse_version} >= 1500
+# PHP8 requires swig >= 4.1.0, https://github.com/swig/swig/commit/56d74355735f3661406d69d04d89d1bdb4ca96f9
+%if 0%{?suse_version} >= 1599
+%define php_version 8
+%elif 0%{?suse_version} >= 1500
 %define php_version 7
 %else
 %define php_version 5
@@ -109,7 +112,10 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libwebp-devel
 BuildRequires:  perl
-%if %{php_version} == 7
+%if %{php_version} == 8
+BuildRequires:  php8-devel
+BuildRequires:  swig >= 4.1.0
+%elif %{php_version} == 7
 BuildRequires:  php7-devel
 BuildRequires:  swig >= 3.0.11
 %else
