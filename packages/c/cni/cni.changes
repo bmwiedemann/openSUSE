@@ -15,7 +15,7 @@ Fri Mar 26 11:05:40 UTC 2022 - Enrico Belleri <idesmi@protonmail.com>
 Mon May 31 10:38:40 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.8.1:
-  * This is a security release that fixes a single bug: bsc#1181961
+  * This is a security release that fixes a single bug: bsc#1181961 aka CVE-2021-20206
     - Tighten up plugin-finding logic (#811).
 
 -------------------------------------------------------------------
