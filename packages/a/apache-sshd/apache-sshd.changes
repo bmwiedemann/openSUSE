@@ -1,4 +1,123 @@
 -------------------------------------------------------------------
+Wed Nov 16 11:36:21 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 2.9.2 (bsc#1205463, CVE-2022-45047)
+- Changes in version 2.8.0
+  * Bug
+    + Wrong server key algorithm choose
+    + Expiration of OpenSshCertificates needs to compare timestamps
+      as unsigned long
+    + SFTP Get downloads empty file from servers which supports EOF
+      indication after data
+    + skip() doesn't work properly in SftpInputStreamAsync
+    + OpenMode and CopyMode is not honored as expected in
+      version > 4 of SFTP api
+    + SftpTransferTest sometimes hangs (failure during rekeying)
+    + Race condition in KEX
+    + Fix the ciphers supported documentation
+    + Update tarLongFileMode to use POSIX
+    + WinsCP transfer failure to Apache SSHD Server
+    + Pubkey auth: keys from ssh-agent are used even if
+      HostConfigEntry.isIdentitiesOnly() is true
+    + Support RSA SHA2 signatures via SSH agent
+    + NOTICE: wrong copyright year range
+    + Wrong creationTime in writeAttrs for SFTP
+    + sshd-netty logs all traffic on INFO level
+  * New Feature
+    + Add support for chacha20-poly1305@openssh.com
+    + Parsing of ~/.ssh/config Host patterns fails with extra
+      whitespace
+    + Support generating OpenSSH client certificates
+  * Improvement
+    + Add support for curve25519-sha256@libssh.org key exchange
+    + OpenSSH certificates: check certificate type
+    + OpenSSHCertificatesTest: certificates expire in 2030
+    + Display IdleTimeOut in more user-friendly format
+    + sendChunkIfRemoteWindowIsSmallerThanPacketSize flag in
+      ChannelAsyncOutputStream constructor configurable from
+      outside using variable/config file
+    + Intercepting the server exception message from server in SSHD
+      client
+    + Implement RFC 8332 server-sig-algs on the server
+    + Slow performance listing huge number of files on Apache SSHD
+      server
+    + SFTP: too many LSTAT calls
+    + Support key constraints when adding a key to an SSH agent
+    + Add SFTP server side file custom attributes hook
+  * Task
+    + Make sure the project is built using a <release>1.8</release>
+  * Question
+    + UserInteraction Problem
+- Changes of vesion 2.9.0
+  * Bug
+    + Deadlock on disconnection at the end of key-exchange
+    + Remote port forwarding mode does not handle EOF properly
+    + Public key authentication: wrong signature algorithm used
+      (ed25519 key with ssh-rsa signature)
+    + Client fails window adjust above Integer.MAX_VALUE
+    + class loader fails to load
+      org.apache.sshd.common.cipher.BaseGCMCipher
+    + Shell is not getting closed if the command has already closed
+      the OutputStream it is using.
+    + Sometimes async write listener is not called
+    + Unhandled SSH_MSG_CHANNEL_WINDOW_ADJUST leeds to
+      SocketTimeoutException
+    + different host key algorithm used on rekey than used for the
+      initial connection
+    + OpenSSH certificate is not properly encoded when critical
+      options are included
+    + TCP/IP remote port forwarding with wildcard IP addresses
+      doesn't work with OpenSSH
+    + UserAuthPublicKey: uses ssh-rsa signatures for RSA keys from
+      an agent
+  * New Feature
+    + Add support for Argon2 encrypted PUTTY key files
+    + Add support for merged inverted output and error streams of
+      remote process
+  * Improvement
+    + Add support for "limits@openssh.com" SFTP extension
+    + Support host-based pubkey authentication in the client
+    + Send environment variable and open subsystem at the same time
+      for SSH session
+- Changes of version 2.9.1
+  * Bug
+    + ClientSession.auth().verify() is terminated with timeout
+    + 2.9.0 release broken on Java 8
+    + Infinite loop in
+      org.apache.sshd.sftp.client.impl.SftpInputStreamAsync#doRead
+    + Deadlock during session exit
+    + Race condition is logged in ChannelAsyncOutputStream
+- Changes of version 2.9.2
+  * Bug
+    + SFTP worker threads got stuck while processing PUT methods
+      against one specific SFTP server
+    + Use the maximum packet size of the communication partner
+    + ExplicitPortForwardingTracker does not unbind auto-allocated
+      one
+    + Default SshClient FD leak because Selector not closed
+    + Reading again from exhausted ChannelExec#getInvertedOut()
+      throws IOException instead of returning -1
+    + Keeping error streams and input streams separate after
+      ChannelExec#setRedirectErrorStream(true) is called
+    + Nio2Session.shutdownOutput() should wait for writes in
+      progress
+  * Test
+    + Research intermittent failure in unit tests using various I/O
+      service factories
+- Modified patch:
+  * 0001-Avoid-optional-dependency-on-native-tomcat-APR-libra.patch
+    + rediff to changed context
+- Removed patches:
+  * 0002-Fix-manifest-generation.patch
+    + not needed any more in this version
+  * apache-sshd-2.7.0-java8.patch
+    + not needed since the Java 8 compatibility is handled by the
+      --release option
+- Added patch:
+  * apache-sshd-javadoc.patch
+    + Fix different warnings in javadoc generation
+
+-------------------------------------------------------------------
 Fri Jul 30 08:13:19 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 2.7.0

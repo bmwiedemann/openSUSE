@@ -1,7 +1,7 @@
 #
 # spec file for package apache-sshd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           apache-sshd
-Version:        2.7.0
+Version:        2.9.2
 Release:        0
 Summary:        Apache SSHD
 # One file has ISC licensing:
@@ -27,14 +27,12 @@ URL:            https://mina.apache.org/sshd-project
 Source0:        https://archive.apache.org/dist/mina/sshd/%{version}/apache-sshd-%{version}-src.tar.gz
 # Avoid optional dep on tomcat native APR library
 Patch0:         0001-Avoid-optional-dependency-on-native-tomcat-APR-libra.patch
-Patch1:         0002-Fix-manifest-generation.patch
-Patch2:         apache-sshd-2.7.0-java8.patch
+Patch1:         apache-sshd-javadoc.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(junit:junit)
 BuildRequires:  mvn(net.i2p.crypto:eddsa)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-antrun-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-clean-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-dependency-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-remote-resources-plugin)
@@ -46,6 +44,7 @@ BuildRequires:  mvn(org.bouncycastle:bcpg-jdk15on)
 BuildRequires:  mvn(org.bouncycastle:bcpkix-jdk15on)
 BuildRequires:  mvn(org.codehaus.mojo:build-helper-maven-plugin)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-archiver)
+BuildRequires:  mvn(org.slf4j:jcl-over-slf4j)
 BuildRequires:  mvn(org.slf4j:slf4j-api)
 BuildArch:      noarch
 
@@ -65,13 +64,12 @@ This package provides %{name}.
 # Avoid optional dep on tomcat native APR library
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 rm -rf sshd-core/src/main/java/org/apache/sshd/agent/unix
 
 # Avoid unnecessary dep on spring framework
 %pom_remove_dep :spring-framework-bom
-%pom_remove_dep :testcontainers-bom sshd-sftp
+%pom_remove_dep :testcontainers-bom sshd-sftp sshd-core
 
 # Build the core modules only
 %pom_disable_module assembly
@@ -101,7 +99,11 @@ rm -rf sshd-core/src/main/java/org/apache/sshd/agent/unix
 
 %build
 # Can't run tests, they require ch.ethz.ganymed:ganymed-ssh2
-%{mvn_build} -f -- -Dworkspace.root.dir=$(pwd) -Dsource=8
+%{mvn_build} -f -- -Dworkspace.root.dir=$(pwd) \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+    -Dmaven.compiler.release=8 \
+%endif
+    -Dsource=8
 
 %install
 %mvn_install

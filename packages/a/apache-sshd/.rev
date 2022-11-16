@@ -23,4 +23,12 @@
     <comment>Upgrade to 2.7.0</comment>
     <requestid>909404</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e8650ea0161637f772ad6ec3a5af7f49</srcmd5>
+    <version>2.9.2</version>
+    <time>1668609852</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1205463, CVE-2022-45047</comment>
+    <requestid>1036214</requestid>
+  </revision>
 </revisionlist>
