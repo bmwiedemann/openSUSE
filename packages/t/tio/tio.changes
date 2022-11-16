@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Nov  6 19:04:02 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.3
+  * Add mute feature
+  * Deprecate tty config keyword but keep it around for now
+  * Update show config
+  * Update example tiorc
+
+-------------------------------------------------------------------
 Thu Oct 20 17:53:12 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.2
