@@ -1,0 +1,672 @@
+From 0eb07e11b20680200d3ce9c5bc59299121a75388 Mon Sep 17 00:00:00 2001
+From: Chris Coulson <chris.coulson@canonical.com>
+Date: Tue, 31 May 2022 22:21:26 +0100
+Subject: [PATCH 01/12] Make SBAT variable payload introspectable
+
+Given a set of EFI variables and boot assets, it should be possible
+to compute what the value of PCR 7 will be on the next boot.
+
+As shim manages the contents of the SbatLevel variable and this is
+measured to PCR 7, export the payloads that shim contains in a new
+COFF section (.sbatlevel) so that it can be introspected by code
+outside of shim.
+
+The new section works a bit like .vendor_cert - it contains a header
+and then the payload. In this case, the header contains no size fields
+because the strings are NULL terminated. Shim uses this new section
+internally in set_sbat_uefi_variable.
+
+The .sbatlevel section starts with a 4 byte version field which is
+not used by shim but may be useful for external auditors if the
+format of the section contents change in the future.
+
+Signed-off-by: Chris Coulson <chris.coulson@canonical.com>
+---
+ Makefile                |  7 ++++---
+ elf_aarch64_efi.lds     |  4 ++++
+ elf_ia32_efi.lds        |  4 ++++
+ elf_ia64_efi.lds        |  4 ++++
+ elf_x86_64_efi.lds      |  4 ++++
+ include/sbat.h          | 32 --------------------------------
+ include/sbat_var_defs.h | 38 ++++++++++++++++++++++++++++++++++++++
+ include/test.mk         |  2 +-
+ sbat.c                  | 21 ++++++++++++++++-----
+ sbat_var.S              | 20 ++++++++++++++++++++
+ shim.h                  |  1 +
+ 11 files changed, 96 insertions(+), 41 deletions(-)
+ create mode 100644 include/sbat_var_defs.h
+ create mode 100644 sbat_var.S
+
+diff --git a/Makefile b/Makefile
+index 24ac314..866611c 100644
+--- a/Makefile
++++ b/Makefile
+@@ -38,9 +38,9 @@ CFLAGS += -DENABLE_SHIM_CERT
+ else
+ TARGETS += $(MMNAME) $(FBNAME)
+ endif
+-OBJS	= shim.o globals.o mok.o netboot.o cert.o replacements.o tpm.o version.o errlog.o sbat.o sbat_data.o pe.o httpboot.o csv.o load-options.o
++OBJS	= shim.o globals.o mok.o netboot.o cert.o replacements.o tpm.o version.o errlog.o sbat.o sbat_data.o sbat_var.o pe.o httpboot.o csv.o load-options.o
+ KEYS	= shim_cert.h ocsp.* ca.* shim.crt shim.csr shim.p12 shim.pem shim.key shim.cer
+-ORIG_SOURCES	= shim.c globals.c mok.c netboot.c replacements.c tpm.c errlog.c sbat.c pe.c httpboot.c shim.h version.h $(wildcard include/*.h) cert.S
++ORIG_SOURCES	= shim.c globals.c mok.c netboot.c replacements.c tpm.c errlog.c sbat.c pe.c httpboot.c shim.h version.h $(wildcard include/*.h) cert.S sbat_var.S
+ MOK_OBJS = MokManager.o PasswordCrypt.o crypt_blowfish.o errlog.o sbat_data.o globals.o
+ ORIG_MOK_SOURCES = MokManager.c PasswordCrypt.c crypt_blowfish.c shim.h $(wildcard include/*.h)
+ FALLBACK_OBJS = fallback.o tpm.o errlog.o sbat_data.o globals.o
+@@ -253,7 +253,7 @@ endif
+ 	$(OBJCOPY) -D -j .text -j .sdata -j .data -j .data.ident \
+ 		-j .dynamic -j .rodata -j .rel* \
+ 		-j .rela* -j .dyn -j .reloc -j .eh_frame \
+-		-j .vendor_cert -j .sbat \
++		-j .vendor_cert -j .sbat -j .sbatlevel \
+ 		$(FORMAT) $< $@
+ 	./post-process-pe -vv $@
+ 
+@@ -269,6 +269,7 @@ endif
+ 	$(OBJCOPY) -D -j .text -j .sdata -j .data \
+ 		-j .dynamic -j .rodata -j .rel* \
+ 		-j .rela* -j .dyn -j .reloc -j .eh_frame -j .sbat \
++		-j .sbatlevel \
+ 		-j .debug_info -j .debug_abbrev -j .debug_aranges \
+ 		-j .debug_line -j .debug_str -j .debug_ranges \
+ 		-j .note.gnu.build-id \
+diff --git a/elf_aarch64_efi.lds b/elf_aarch64_efi.lds
+index 60c55ba..0861f5e 100644
+--- a/elf_aarch64_efi.lds
++++ b/elf_aarch64_efi.lds
+@@ -34,6 +34,10 @@ SECTIONS
+   .data.ident : {
+     *(.data.ident)
+   }
++  . = ALIGN(4096);
++  .sbatlevel : {
++    *(.sbatlevel)
++  }
+ 
+   . = ALIGN(4096);
+   .data :
+diff --git a/elf_ia32_efi.lds b/elf_ia32_efi.lds
+index 497a3a1..e8da91b 100644
+--- a/elf_ia32_efi.lds
++++ b/elf_ia32_efi.lds
+@@ -28,6 +28,10 @@ SECTIONS
+   .data.ident : {
+     *(.data.ident)
+   }
++  . = ALIGN(4096);
++  .sbatlevel : {
++    *(.sbatlevel)
++  }
+ 
+   . = ALIGN(4096);
+   .data :
+diff --git a/elf_ia64_efi.lds b/elf_ia64_efi.lds
+index 2669b85..a219560 100644
+--- a/elf_ia64_efi.lds
++++ b/elf_ia64_efi.lds
+@@ -34,6 +34,10 @@ SECTIONS
+   .data.ident : {
+     *(.data.ident)
+   }
++  . = ALIGN(4096);
++  .sbatlevel : {
++    *(.sbatlevel)
++  }
+ 
+   . = ALIGN(4096);
+   .data :
+diff --git a/elf_x86_64_efi.lds b/elf_x86_64_efi.lds
+index bcc6527..39aff6b 100644
+--- a/elf_x86_64_efi.lds
++++ b/elf_x86_64_efi.lds
+@@ -35,6 +35,10 @@ SECTIONS
+   .data.ident : {
+     *(.data.ident)
+   }
++  . = ALIGN(4096);
++  .sbatlevel : {
++    *(.sbatlevel)
++  }
+ 
+   . = ALIGN(4096);
+   .data :
+diff --git a/include/sbat.h b/include/sbat.h
+index aca4359..c94c4fb 100644
+--- a/include/sbat.h
++++ b/include/sbat.h
+@@ -6,38 +6,6 @@
+ #ifndef SBAT_H_
+ #define SBAT_H_
+ 
+-#define SBAT_VAR_SIG "sbat,"
+-#define SBAT_VAR_VERSION "1,"
+-#define SBAT_VAR_ORIGINAL_DATE "2021030218"
+-#define SBAT_VAR_ORIGINAL \
+-	SBAT_VAR_SIG SBAT_VAR_VERSION SBAT_VAR_ORIGINAL_DATE "\n"
+-
+-#if defined(ENABLE_SHIM_DEVEL)
+-#define SBAT_VAR_PREVIOUS_DATE "2022020101"
+-#define SBAT_VAR_PREVIOUS_REVOCATIONS "component,2\n"
+-#define SBAT_VAR_PREVIOUS \
+-	SBAT_VAR_SIG SBAT_VAR_VERSION SBAT_VAR_PREVIOUS_DATE "\n" \
+-	SBAT_VAR_PREVIOUS_REVOCATIONS
+-
+-#define SBAT_VAR_LATEST_DATE "2022050100"
+-#define SBAT_VAR_LATEST_REVOCATIONS "component,2\nothercomponent,2\n"
+-#define SBAT_VAR_LATEST \
+-	SBAT_VAR_SIG SBAT_VAR_VERSION SBAT_VAR_LATEST_DATE "\n" \
+-	SBAT_VAR_LATEST_REVOCATIONS
+-#else /* !ENABLE_SHIM_DEVEL */
+-#define SBAT_VAR_PREVIOUS_DATE SBAT_VAR_ORIGINAL_DATE
+-#define SBAT_VAR_PREVIOUS_REVOCATIONS
+-#define SBAT_VAR_PREVIOUS \
+-	SBAT_VAR_SIG SBAT_VAR_VERSION SBAT_VAR_PREVIOUS_DATE "\n" \
+-	SBAT_VAR_PREVIOUS_REVOCATIONS
+-
+-#define SBAT_VAR_LATEST_DATE "2022052400"
+-#define SBAT_VAR_LATEST_REVOCATIONS "shim,2\ngrub,2\n"
+-#define SBAT_VAR_LATEST \
+-	SBAT_VAR_SIG SBAT_VAR_VERSION SBAT_VAR_LATEST_DATE "\n" \
+-	SBAT_VAR_LATEST_REVOCATIONS
+-#endif /* ENABLE_SHIM_DEVEL */
+-
+ #define UEFI_VAR_NV_BS \
+ 	(EFI_VARIABLE_NON_VOLATILE | EFI_VARIABLE_BOOTSERVICE_ACCESS)
+ #define UEFI_VAR_NV_BS_RT                                              \
+diff --git a/include/sbat_var_defs.h b/include/sbat_var_defs.h
+new file mode 100644
+index 0000000..c656b56
+--- /dev/null
++++ b/include/sbat_var_defs.h
+@@ -0,0 +1,38 @@
++// SPDX-License-Identifier: BSD-2-Clause-Patent
++
++#ifndef SBAT_VAR_DEFS_H_
++#define SBAT_VAR_DEFS_H_
++
++#define SBAT_VAR_SIG "sbat,"
++#define SBAT_VAR_VERSION "1,"
++#define SBAT_VAR_ORIGINAL_DATE "2021030218"
++#define SBAT_VAR_ORIGINAL \
++	SBAT_VAR_SIG SBAT_VAR_VERSION SBAT_VAR_ORIGINAL_DATE "\n"
++
++#if defined(ENABLE_SHIM_DEVEL)
++#define SBAT_VAR_PREVIOUS_DATE "2022020101"
++#define SBAT_VAR_PREVIOUS_REVOCATIONS "component,2\n"
++#define SBAT_VAR_PREVIOUS \
++	SBAT_VAR_SIG SBAT_VAR_VERSION SBAT_VAR_PREVIOUS_DATE "\n" \
++	SBAT_VAR_PREVIOUS_REVOCATIONS
++
++#define SBAT_VAR_LATEST_DATE "2022050100"
++#define SBAT_VAR_LATEST_REVOCATIONS "component,2\nothercomponent,2\n"
++#define SBAT_VAR_LATEST \
++	SBAT_VAR_SIG SBAT_VAR_VERSION SBAT_VAR_LATEST_DATE "\n" \
++	SBAT_VAR_LATEST_REVOCATIONS
++#else /* !ENABLE_SHIM_DEVEL */
++#define SBAT_VAR_PREVIOUS_DATE SBAT_VAR_ORIGINAL_DATE
++#define SBAT_VAR_PREVIOUS_REVOCATIONS
++#define SBAT_VAR_PREVIOUS \
++	SBAT_VAR_SIG SBAT_VAR_VERSION SBAT_VAR_PREVIOUS_DATE "\n" \
++	SBAT_VAR_PREVIOUS_REVOCATIONS
++
++#define SBAT_VAR_LATEST_DATE "2022052400"
++#define SBAT_VAR_LATEST_REVOCATIONS "shim,2\ngrub,2\n"
++#define SBAT_VAR_LATEST \
++	SBAT_VAR_SIG SBAT_VAR_VERSION SBAT_VAR_LATEST_DATE "\n" \
++	SBAT_VAR_LATEST_REVOCATIONS
++#endif /* ENABLE_SHIM_DEVEL */
++
++#endif /* !SBAT_VAR_DEFS_H_ */
+diff --git a/include/test.mk b/include/test.mk
+index e965c60..c0e2409 100644
+--- a/include/test.mk
++++ b/include/test.mk
+@@ -92,7 +92,7 @@ test-mock-variables: CFLAGS+=-DHAVE_SHIM_LOCK_GUID
+ test-mok-mirror_FILES = mok.c globals.c tpm.c lib/guid.c lib/variables.c mock-variables.c
+ test-mok-mirror: CFLAGS+=-DHAVE_START_IMAGE -DHAVE_SHIM_LOCK_GUID
+ 
+-test-sbat_FILES = csv.c lib/variables.c lib/guid.c
++test-sbat_FILES = csv.c lib/variables.c lib/guid.c sbat_var.S
+ test-sbat :: CFLAGS+=-DHAVE_GET_VARIABLE -DHAVE_GET_VARIABLE_ATTR -DHAVE_SHIM_LOCK_GUID
+ 
+ test-str_FILES = lib/string.c
+diff --git a/sbat.c b/sbat.c
+index f1d6e98..a08c5b2 100644
+--- a/sbat.c
++++ b/sbat.c
+@@ -5,6 +5,11 @@
+ 
+ #include "shim.h"
+ 
++extern struct {
++	UINT32 previous_offset;
++	UINT32 latest_offset;
++} sbat_var_payload_header;
++
+ EFI_STATUS
+ parse_sbat_section(char *section_base, size_t section_size,
+ 		   size_t *n_entries,
+@@ -399,6 +404,9 @@ set_sbat_uefi_variable(void)
+ 	EFI_STATUS efi_status = EFI_SUCCESS;
+ 	UINT32 attributes = 0;
+ 
++	char *sbat_var_previous;
++	char *sbat_var_latest;
++
+ 	UINT8 *sbat = NULL;
+ 	UINT8 *sbat_policy = NULL;
+ 	UINTN sbatsize = 0;
+@@ -407,27 +415,30 @@ set_sbat_uefi_variable(void)
+ 	char *sbat_var = NULL;
+ 	bool reset_sbat = false;
+ 
++	sbat_var_previous = (char *)&sbat_var_payload_header + sbat_var_payload_header.previous_offset;
++	sbat_var_latest = (char *)&sbat_var_payload_header + sbat_var_payload_header.latest_offset;
++
+ 	efi_status = get_variable_attr(SBAT_POLICY, &sbat_policy,
+ 				       &sbat_policysize, SHIM_LOCK_GUID,
+ 				       &attributes);
+ 	if (EFI_ERROR(efi_status)) {
+ 		dprint("Default sbat policy: previous\n");
+-		sbat_var = SBAT_VAR_PREVIOUS;
++		sbat_var = sbat_var_previous;
+ 	} else {
+ 		switch (*sbat_policy) {
+ 			case SBAT_POLICY_LATEST:
+ 				dprint("Custom sbat policy: latest\n");
+-				sbat_var = SBAT_VAR_LATEST;
++				sbat_var = sbat_var_latest;
+ 				clear_sbat_policy();
+ 				break;
+ 			case SBAT_POLICY_PREVIOUS:
+ 				dprint("Custom sbat policy: previous\n");
+-				sbat_var = SBAT_VAR_PREVIOUS;
++				sbat_var = sbat_var_previous;
+ 				break;
+ 			case SBAT_POLICY_RESET:
+ 				if (secure_mode()) {
+ 					console_print(L"Cannot reset SBAT policy: Secure Boot is enabled.\n");
+-					sbat_var = SBAT_VAR_PREVIOUS;
++					sbat_var = sbat_var_previous;
+ 				} else {
+ 					dprint(L"Custom SBAT policy: reset OK\n");
+ 					reset_sbat = true;
+@@ -438,7 +449,7 @@ set_sbat_uefi_variable(void)
+ 			default:
+ 				console_error(L"SBAT policy state %llu is invalid",
+ 					      EFI_INVALID_PARAMETER);
+-				sbat_var = SBAT_VAR_PREVIOUS;
++				sbat_var = sbat_var_previous;
+ 				clear_sbat_policy();
+ 				break;
+ 		}
+diff --git a/sbat_var.S b/sbat_var.S
+new file mode 100644
+index 0000000..a115077
+--- /dev/null
++++ b/sbat_var.S
+@@ -0,0 +1,20 @@
++// SPDX-License-Identifier: BSD-2-Clause-Patent
++
++#include "include/sbat_var_defs.h"
++
++	.section .sbatlevel, "a", %progbits
++	.balignl 4, 0
++	.4byte  0 /* format version for external parsers */
++	.globl  sbat_var_payload_header
++	.type   sbat_var_payload_header, %object
++	.size   sbat_var_payload_header, .Lsbat_var_payload_header_end - sbat_var_payload_header
++sbat_var_payload_header:
++	.4byte  .Lsbat_var_previous - sbat_var_payload_header
++	.4byte  .Lsbat_var_latest - sbat_var_payload_header
++.Lsbat_var_payload_header_end:
++	.balign	1, 0
++.Lsbat_var_previous:
++	.asciz SBAT_VAR_PREVIOUS
++	.balign	1, 0
++.Lsbat_var_latest:
++	.asciz SBAT_VAR_LATEST
+diff --git a/shim.h b/shim.h
+index b5272b9..7e9d10e 100644
+--- a/shim.h
++++ b/shim.h
+@@ -179,6 +179,7 @@
+ #include "include/pe.h"
+ #include "include/replacements.h"
+ #include "include/sbat.h"
++#include "include/sbat_var_defs.h"
+ #if defined(OVERRIDE_SECURITY_POLICY)
+ #include "include/security_policy.h"
+ #endif
+-- 
+2.35.3
+
+
+From 092c2b2bbed950727e41cf450b61c794881c33e7 Mon Sep 17 00:00:00 2001
+From: Eric Snowberg <eric.snowberg@oracle.com>
+Date: Fri, 17 Jun 2022 12:37:28 -0400
+Subject: [PATCH 02/12] Reference MokListRT instead of MokList
+
+When calling back into shim from grub, the MokListRT may contain additional
+entries not available in the original MokList, an example being the certs
+included via user_cert. Use the MokListRT instead when calling check_db_cert
+and check_db_hash.
+
+Signed-off-by: Eric Snowberg <eric.snowberg@oracle.com>
+---
+ shim.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/shim.c b/shim.c
+index fdd205e..27b74ce 100644
+--- a/shim.c
++++ b/shim.c
+@@ -397,22 +397,22 @@ static EFI_STATUS check_allowlist (WIN_CERTIFICATE_EFI_PKCS *cert,
+ 	}
+ #endif
+ 
+-	if (check_db_hash(L"MokList", SHIM_LOCK_GUID, sha256hash,
++	if (check_db_hash(L"MokListRT", SHIM_LOCK_GUID, sha256hash,
+ 			  SHA256_DIGEST_SIZE, EFI_CERT_SHA256_GUID)
+ 				== DATA_FOUND) {
+ 		verification_method = VERIFIED_BY_HASH;
+ 		update_verification_method(VERIFIED_BY_HASH);
+ 		return EFI_SUCCESS;
+ 	} else {
+-		LogError(L"check_db_hash(MokList, sha256hash) != DATA_FOUND\n");
++		LogError(L"check_db_hash(MokListRT, sha256hash) != DATA_FOUND\n");
+ 	}
+-	if (cert && check_db_cert(L"MokList", SHIM_LOCK_GUID, cert, sha256hash)
++	if (cert && check_db_cert(L"MokListRT", SHIM_LOCK_GUID, cert, sha256hash)
+ 			== DATA_FOUND) {
+ 		verification_method = VERIFIED_BY_CERT;
+ 		update_verification_method(VERIFIED_BY_CERT);
+ 		return EFI_SUCCESS;
+ 	} else if (cert) {
+-		LogError(L"check_db_cert(MokList, sha256hash) != DATA_FOUND\n");
++		LogError(L"check_db_cert(MokListRT, sha256hash) != DATA_FOUND\n");
+ 	}
+ 
+ 	update_verification_method(VERIFIED_BY_NOTHING);
+-- 
+2.35.3
+
+
+From 14d63398298c8de23036a4cf61594108b7345863 Mon Sep 17 00:00:00 2001
+From: Robbie Harwood <rharwood@redhat.com>
+Date: Tue, 23 Aug 2022 12:07:16 -0400
+Subject: [PATCH 05/12] Discard load-options that start with a NUL
+
+In 6c8d08c0af4768c715b79c8ec25141d56e34f8b4 ("shim: Ignore UEFI
+LoadOptions that are just NUL characters."), a check was added to
+discard load options that are entirely NUL.  We now see some firmwares
+that start LoadOptions with a NUL, and then follow it with garbage (path
+to directory containing loaders).  Widen the check to just discard
+anything that starts with a NUL.
+
+Resolves: #490
+Related: #95
+See-also: https://bugzilla.redhat.com/show_bug.cgi?id=2113005
+Signed-off-by: Robbie Harwood <rharwood@redhat.com>
+---
+ include/ucs2.h | 18 ------------------
+ load-options.c |  7 ++++++-
+ 2 files changed, 6 insertions(+), 19 deletions(-)
+
+diff --git a/include/ucs2.h b/include/ucs2.h
+index ee038ce..87eab32 100644
+--- a/include/ucs2.h
++++ b/include/ucs2.h
+@@ -63,22 +63,4 @@ StrCSpn(const CHAR16 *s, const CHAR16 *reject)
+ 	return ret;
+ }
+ 
+-/*
+- * Test if an entire buffer is nothing but NUL characters.  This
+- * implementation "gracefully" ignores the difference between the
+- * UTF-8/ASCII 1-byte NUL and the UCS-2 2-byte NUL.
+- */
+-static inline bool
+-__attribute__((__unused__))
+-is_all_nuls(UINT8 *data, UINTN data_size)
+-{
+-	UINTN i;
+-
+-	for (i = 0; i < data_size; i++) {
+-		if (data[i] != 0)
+-			return false;
+-	}
+-	return true;
+-}
+-
+ #endif /* SHIM_UCS2_H */
+diff --git a/load-options.c b/load-options.c
+index c6bb742..a8c6e1a 100644
+--- a/load-options.c
++++ b/load-options.c
+@@ -404,8 +404,13 @@ parse_load_options(EFI_LOADED_IMAGE *li)
+ 
+ 	/*
+ 	 * Apparently sometimes we get L"\0\0"?  Which isn't useful at all.
++	 *
++	 * Possibly related, but some boards have additional data before the
++	 * size which is garbage (it's a weird path to the directory
++	 * containing the loaders).  Known boards that do this: Kontron VX3040
++	 * (AMI), ASUS B85M-E, and at least one "older Dell laptop".
+ 	 */
+-	if (is_all_nuls(li->LoadOptions, li->LoadOptionsSize))
++	if (((CHAR16 *)li->LoadOptions)[0] == 0)
+ 		return EFI_SUCCESS;
+ 
+ 	/*
+-- 
+2.35.3
+
+
+From 5c537b3d0cf8c393dad2e61d49aade68f3af1401 Mon Sep 17 00:00:00 2001
+From: dann frazier <dann.frazier@canonical.com>
+Date: Tue, 6 Sep 2022 09:28:22 -0600
+Subject: [PATCH 06/12] shim: Flush the memory region from i-cache before
+ execution
+
+We've seen crashes in early GRUB code on an ARM Cortex-A72-based
+platform that point at seemingly harmless instructions. Flushing
+the i-cache of those instructions prior to executing has been
+shown to avoid the problem, which has parallels with this story:
+  https://www.mail-archive.com/osv-dev@googlegroups.com/msg06203.html
+
+Add a cache flushing utility function and provide an implementation
+using a GCC intrinsic. This will need to be extended to support other
+compilers. Note that this intrinsic is a no-op for x86 platforms.
+
+This fixes issue #498.
+
+Signed-off-by: dann frazier <dann.frazier@canonical.com>
+---
+ include/compiler.h | 6 ++++++
+ pe.c               | 3 +++
+ 2 files changed, 9 insertions(+)
+
+diff --git a/include/compiler.h b/include/compiler.h
+index b4bf103..b0d595f 100644
+--- a/include/compiler.h
++++ b/include/compiler.h
+@@ -192,5 +192,11 @@
+  */
+ #define unreachable() __builtin_unreachable()
+ 
++#if defined(__GNUC__)
++#define cache_invalidate(begin, end)  __builtin___clear_cache(begin, end)
++#else /* __GNUC__ */
++#error shim has no cache_invalidate() implementation for this compiler
++#endif /* __GNUC__ */
++
+ #endif /* !COMPILER_H_ */
+ // vim:fenc=utf-8:tw=75:et
+diff --git a/pe.c b/pe.c
+index ba3e2bb..f94530a 100644
+--- a/pe.c
++++ b/pe.c
+@@ -1196,6 +1196,9 @@ handle_image (void *data, unsigned int datasize,
+ 
+ 	CopyMem(buffer, data, context.SizeOfHeaders);
+ 
++	/* Flush the instruction cache for the region holding the image */
++	cache_invalidate(buffer, buffer + context.ImageSize);
++
+ 	*entry_point = ImageAddress(buffer, context.ImageSize, context.EntryPoint);
+ 	if (!*entry_point) {
+ 		perror(L"Entry point is invalid\n");
+-- 
+2.35.3
+
+
+From 2d4ebb5a798aafd3b06d2c3cb9c9840c1caa41ef Mon Sep 17 00:00:00 2001
+From: Eric Snowberg <eric.snowberg@oracle.com>
+Date: Wed, 2 Nov 2022 10:39:43 -0600
+Subject: [PATCH 07/12] load_cert_file: Fix stack issue
+
+0214cd9cef5a fixes a NULL pointer dereference problem, it introduces two
+new problems.  First it incorrectly assumes li.FilePath is a string.
+Second, it puts EFI_LOADED_IMAGE li on the stack. It has been found
+that not all archectures can handle this being on the stack.
+
+The shim_li variable will be setup properly from the read_image
+call. Use the global shim_li variable instead when calling
+verify_image.
+
+Signed-off-by: Eric Snowberg <eric.snowberg@oracle.com>
+---
+ shim.c | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/shim.c b/shim.c
+index 27b74ce..0d919ce 100644
+--- a/shim.c
++++ b/shim.c
+@@ -1395,7 +1395,6 @@ EFI_STATUS
+ load_cert_file(EFI_HANDLE image_handle, CHAR16 *filename, CHAR16 *PathName)
+ {
+ 	EFI_STATUS efi_status;
+-	EFI_LOADED_IMAGE li;
+ 	PE_COFF_LOADER_IMAGE_CONTEXT context;
+ 	EFI_IMAGE_SECTION_HEADER *Section;
+ 	EFI_SIGNATURE_LIST *certlist;
+@@ -1410,10 +1409,7 @@ load_cert_file(EFI_HANDLE image_handle, CHAR16 *filename, CHAR16 *PathName)
+ 	if (EFI_ERROR(efi_status))
+ 		return efi_status;
+ 
+-	memset(&li, 0, sizeof(li));
+-	memcpy(&li.FilePath[0], filename, MIN(StrSize(filename), sizeof(li.FilePath)));
+-
+-	efi_status = verify_image(data, datasize, &li, &context);
++	efi_status = verify_image(data, datasize, shim_li, &context);
+ 	if (EFI_ERROR(efi_status))
+ 		return efi_status;
+ 
+-- 
+2.35.3
+
+
+From ea4911c2f3ce8f8f703a1476febac86bb16b00fd Mon Sep 17 00:00:00 2001
+From: Eric Snowberg <eric.snowberg@oracle.com>
+Date: Wed, 2 Nov 2022 10:45:23 -0600
+Subject: [PATCH 08/12] load_cert_file: Use EFI RT memory function
+
+Use the EFI RT memory function CopyMem instead of memcpy in load_cert_file.
+
+Signed-off-by: Eric Snowberg <eric.snowberg@oracle.com>
+---
+ shim.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/shim.c b/shim.c
+index 0d919ce..4437898 100644
+--- a/shim.c
++++ b/shim.c
+@@ -1429,8 +1429,8 @@ load_cert_file(EFI_HANDLE image_handle, CHAR16 *filename, CHAR16 *PathName)
+ 			user_cert_size += certlist->SignatureListSize;;
+ 			user_cert = ReallocatePool(user_cert, original,
+ 						   user_cert_size);
+-			memcpy(user_cert + original, pointer,
+-			       certlist->SignatureListSize);
++			CopyMem(user_cert + original, pointer,
++			        certlist->SignatureListSize);
+ 		}
+ 	}
+ 	FreePool(data);
+-- 
+2.35.3
+
+
+From 0cf43ac6d78c6f47f8b91210639ac1aa63665f0b Mon Sep 17 00:00:00 2001
+From: Nicholas Bishop <nicholasbishop@google.com>
+Date: Thu, 6 Oct 2022 16:08:56 -0400
+Subject: [PATCH 09/12] Add -malign-double to IA32 compiler flags
+
+This changes the alignment of UINT64 data to 8 bytes on IA32, which
+matches EDK2's understanding of alignment. In particular this change
+affects the offset where shim writes `EFI_LOADED_IMAGE.ImageSize`.
+
+Fixes https://github.com/rhboot/shim/issues/515
+
+Signed-off-by: Nicholas Bishop <nicholasbishop@google.com>
+---
+ Make.defaults | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Make.defaults b/Make.defaults
+index dfed9c4..c46164a 100644
+--- a/Make.defaults
++++ b/Make.defaults
+@@ -71,7 +71,7 @@ ifeq ($(ARCH),x86_64)
+ endif
+ ifeq ($(ARCH),ia32)
+ 	ARCH_CFLAGS		?= -mno-mmx -mno-sse -mno-red-zone -nostdinc \
+-				   $(CLANG_BUGS) -m32 \
++				   $(CLANG_BUGS) -m32 -malign-double \
+ 				   -DMDE_CPU_IA32 -DPAGE_SIZE=4096
+ 	ARCH_GNUEFI		?= ia32
+ 	ARCH_SUFFIX		?= ia32
+-- 
+2.35.3
+
+
+From aa1b289a1a16774afc3143b8948d97261f0872d0 Mon Sep 17 00:00:00 2001
+From: Arthur Gautier <arthur.gautier@arista.com>
+Date: Fri, 21 Oct 2022 13:20:45 -0700
+Subject: [PATCH 12/12] mok: remove MokListTrusted from PCR 7
+
+MokListTrusted was added by mistake to PCR 7 in 4e513405. The value of
+MokListTrusted does not alter the behavior of secure boot so, as per
+https://trustedcomputinggroup.org/wp-content/uploads/TCG_PCClient_PFP_r1p05_v23_pub.pdf#page=36
+(section 3.3.4 PCR usage) so it should not be factored in the value of
+PCR 7.
+
+See:
+  https://github.com/rhboot/shim/pull/423
+  https://github.com/rhboot/shim/commit/4e513405b4f1641710115780d19dcec130c5208f
+
+Fixes https://github.com/rhboot/shim/issues/484
+Fixes https://github.com/rhboot/shim/issues/492
+
+Signed-off-by: Arthur Gautier <arthur.gautier@arista.com>
+---
+ mok.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/mok.c b/mok.c
+index 63ddfca..9811b35 100644
+--- a/mok.c
++++ b/mok.c
+@@ -178,7 +178,6 @@ struct mok_state_variable mok_state_variable_data[] = {
+ 		     EFI_VARIABLE_NON_VOLATILE,
+ 	 .no_attr = EFI_VARIABLE_RUNTIME_ACCESS,
+ 	 .flags = MOK_MIRROR_DELETE_FIRST |
+-		  MOK_VARIABLE_MEASURE |
+ 		  MOK_VARIABLE_INVERSE |
+ 		  MOK_VARIABLE_LOG,
+ 	 .pcr = 14,
+-- 
+2.35.3
+

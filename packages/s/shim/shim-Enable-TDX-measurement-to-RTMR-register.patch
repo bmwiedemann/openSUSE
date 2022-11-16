@@ -1,0 +1,240 @@
+From 4fd484e4c29364b4fdf4d043556fa0a210c5fdfc Mon Sep 17 00:00:00 2001
+From: Lu Ken <ken.lu@intel.com>
+Date: Sun, 22 May 2022 16:02:20 +0800
+Subject: [PATCH] Enable TDX measurement to RTMR register
+
+Intel Trust Domain Extensions (Intel TDX) extends Virtual Machine
+Extensions (VMX) and Multi-Key Total Memory Encryption (MK-TME) with a
+new kind of virtual machine guest called a Trust Domain(TD)[1].  A TD
+runs in a CPU mode that is designed to protect the confidentiality of
+its memory contents and its CPU state from any other software, including
+the hosting Virtual Machine Monitor (VMM).
+
+Trust Domain Virtual Firmware (TDVF) is required to provide Intel TDX
+implementation and service for EFI_CC_MEASUREMENT_PROTOCOL[2]. The bugzilla
+for TDVF is at https://bugzilla.tianocore.org/show_bug.cgi?id=3625.
+
+To support CC measurement/attestation with Intel TDX technology, these 4
+RTMR registers will be extended by TDX service like TPM/TPM2 PCR:
+
+- RTMR[0] for TDVF configuration
+- RTMR[1] for the TD OS loader and kernel
+- RTMR[2] for the OS application
+- RTMR[3] reserved for special usage only
+
+Add a TDX Implementation for CC Measurement protocol along with
+TPM/TPM2 protocol.
+
+References:
+[1] https://software.intel.com/content/dam/develop/external/us/en/documents/tdx-whitepaper-v4.pdf
+[2] https://software.intel.com/content/dam/develop/external/us/en/documents/tdx-virtual-firmware-design-guide-rev-1.pdf
+[3] https://software.intel.com/content/dam/develop/external/us/en/documents/intel-tdx-guest-hypervisor-communication-interface-1.0-344426-002.pdf
+
+Signed-off-by: Lu Ken <ken.lu@intel.com>
+[rharwood: style pass on code and commit message]
+Signed-off-by: Robbie Harwood <rharwood@redhat.com>
+---
+ include/cc.h   | 85 ++++++++++++++++++++++++++++++++++++++++++++++++++
+ include/guid.h |  1 +
+ lib/guid.c     |  1 +
+ shim.h         |  1 +
+ tpm.c          | 48 ++++++++++++++++++++++++++++
+ 5 files changed, 136 insertions(+)
+ create mode 100644 include/cc.h
+
+diff --git a/include/cc.h b/include/cc.h
+new file mode 100644
+index 0000000..8b12720
+--- /dev/null
++++ b/include/cc.h
+@@ -0,0 +1,85 @@
++// SPDX-License-Identifier: BSD-2-Clause-Patent
++
++#ifndef SHIM_CC_H
++#define SHIM_CC_H
++
++typedef struct {
++	uint8_t Major;
++	uint8_t Minor;
++} EFI_CC_VERSION;
++
++#define EFI_CC_TYPE_NONE 0
++#define EFI_CC_TYPE_SEV  1
++#define EFI_CC_TYPE_TDX  2
++
++typedef struct {
++	uint8_t Type;
++	uint8_t SubType;
++} EFI_CC_TYPE;
++
++typedef uint32_t EFI_CC_EVENT_LOG_BITMAP;
++typedef uint32_t EFI_CC_EVENT_LOG_FORMAT;
++typedef uint32_t EFI_CC_EVENT_ALGORITHM_BITMAP;
++typedef uint32_t EFI_CC_MR_INDEX;
++
++#define TDX_MR_INDEX_MRTD  0
++#define TDX_MR_INDEX_RTMR0 1
++#define TDX_MR_INDEX_RTMR1 2
++#define TDX_MR_INDEX_RTMR2 3
++#define TDX_MR_INDEX_RTMR3 4
++
++#define EFI_CC_EVENT_LOG_FORMAT_TCG_2 0x00000002
++#define EFI_CC_BOOT_HASH_ALG_SHA384   0x00000004
++#define EFI_CC_EVENT_HEADER_VERSION   1
++
++typedef struct tdEFI_CC_EVENT_HEADER {
++	uint32_t HeaderSize;
++	uint16_t HeaderVersion;
++	EFI_CC_MR_INDEX MrIndex;
++	uint32_t EventType;
++} __attribute__((packed)) EFI_CC_EVENT_HEADER;
++
++typedef struct tdEFI_CC_EVENT {
++	uint32_t Size;
++	EFI_CC_EVENT_HEADER Header;
++	uint8_t Event[1];
++} __attribute__((packed)) EFI_CC_EVENT;
++
++typedef struct tdEFI_CC_BOOT_SERVICE_CAPABILITY {
++	uint8_t Size;
++	EFI_CC_VERSION StructureVersion;
++	EFI_CC_VERSION ProtocolVersion;
++	EFI_CC_EVENT_ALGORITHM_BITMAP HashAlgorithmBitmap;
++	EFI_CC_EVENT_LOG_BITMAP SupportedEventLogs;
++	EFI_CC_TYPE CcType;
++} EFI_CC_BOOT_SERVICE_CAPABILITY;
++
++struct efi_cc_protocol
++{
++	EFI_STATUS (EFIAPI *get_capability) (
++		struct efi_cc_protocol *this,
++		EFI_CC_BOOT_SERVICE_CAPABILITY *ProtocolCapability);
++	EFI_STATUS (EFIAPI *get_event_log) (
++		struct efi_cc_protocol *this,
++		EFI_CC_EVENT_LOG_FORMAT EventLogFormat,
++		EFI_PHYSICAL_ADDRESS *EventLogLocation,
++		EFI_PHYSICAL_ADDRESS *EventLogLastEntry,
++		BOOLEAN *EventLogTruncated);
++	EFI_STATUS (EFIAPI *hash_log_extend_event) (
++		struct efi_cc_protocol *this,
++		uint64_t Flags,
++		EFI_PHYSICAL_ADDRESS DataToHash,
++		uint64_t DataToHashLen,
++		EFI_CC_EVENT *EfiCcEvent);
++	EFI_STATUS (EFIAPI *map_pcr_to_mr_index) (
++		struct efi_cc_protocol *this,
++		uint32_t PcrIndex,
++		EFI_CC_MR_INDEX *MrIndex);
++};
++
++typedef struct efi_cc_protocol efi_cc_protocol_t;
++
++#define EFI_CC_FLAG_PE_COFF_IMAGE 0x0000000000000010
++
++#endif /* SHIM_CC_H */
++// vim:fenc=utf-8:tw=75
+diff --git a/include/guid.h b/include/guid.h
+index d9910ff..dad63f0 100644
+--- a/include/guid.h
++++ b/include/guid.h
+@@ -29,6 +29,7 @@ extern EFI_GUID EFI_IP6_CONFIG_GUID;
+ extern EFI_GUID EFI_LOADED_IMAGE_GUID;
+ extern EFI_GUID EFI_TPM_GUID;
+ extern EFI_GUID EFI_TPM2_GUID;
++extern EFI_GUID EFI_CC_MEASUREMENT_PROTOCOL_GUID;
+ extern EFI_GUID EFI_SECURE_BOOT_DB_GUID;
+ extern EFI_GUID EFI_SIMPLE_FILE_SYSTEM_GUID;
+ extern EFI_GUID SECURITY_PROTOCOL_GUID;
+diff --git a/lib/guid.c b/lib/guid.c
+index e100c92..904629e 100644
+--- a/lib/guid.c
++++ b/lib/guid.c
+@@ -28,6 +28,7 @@ EFI_GUID EFI_IP6_CONFIG_GUID = { 0x937fe521, 0x95ae, 0x4d1a, {0x89, 0x29, 0x48,
+ EFI_GUID EFI_LOADED_IMAGE_GUID = EFI_LOADED_IMAGE_PROTOCOL_GUID;
+ EFI_GUID EFI_TPM_GUID = { 0xf541796d, 0xa62e, 0x4954, {0xa7, 0x75, 0x95, 0x84, 0xf6, 0x1b, 0x9c, 0xdd } };
+ EFI_GUID EFI_TPM2_GUID = { 0x607f766c, 0x7455, 0x42be, {0x93, 0x0b, 0xe4, 0xd7, 0x6d, 0xb2, 0x72, 0x0f } };
++EFI_GUID EFI_CC_MEASUREMENT_PROTOCOL_GUID = { 0x96751a3d, 0x72f4, 0x41a6, {0xa7, 0x94, 0xed, 0x5d, 0x0e, 0x67, 0xae, 0x6b } };
+ EFI_GUID EFI_SECURE_BOOT_DB_GUID =  { 0xd719b2cb, 0x3d3a, 0x4596, { 0xa3, 0xbc, 0xda, 0xd0, 0x0e, 0x67, 0x65, 0x6f } };
+ EFI_GUID EFI_SIMPLE_FILE_SYSTEM_GUID = SIMPLE_FILE_SYSTEM_PROTOCOL;
+ EFI_GUID SECURITY_PROTOCOL_GUID = { 0xA46423E3, 0x4617, 0x49f1, {0xB9, 0xFF, 0xD1, 0xBF, 0xA9, 0x11, 0x58, 0x39 } };
+diff --git a/shim.h b/shim.h
+index 7e9d10e..14824c6 100644
+--- a/shim.h
++++ b/shim.h
+@@ -186,6 +186,7 @@
+ #include "include/simple_file.h"
+ #include "include/str.h"
+ #include "include/tpm.h"
++#include "include/cc.h"
+ #include "include/ucs2.h"
+ #include "include/variables.h"
+ #include "include/hexdump.h"
+diff --git a/tpm.c b/tpm.c
+index 41f3665..388f8d1 100644
+--- a/tpm.c
++++ b/tpm.c
+@@ -108,6 +108,45 @@ static EFI_STATUS tpm_locate_protocol(efi_tpm_protocol_t **tpm,
+ 	return EFI_NOT_FOUND;
+ }
+ 
++static EFI_STATUS cc_log_event_raw(EFI_PHYSICAL_ADDRESS buf, UINTN size,
++				   UINT8 pcr, const CHAR8 *log, UINTN logsize,
++				   UINT32 type, BOOLEAN is_pe_image)
++{
++	EFI_STATUS efi_status;
++	EFI_CC_EVENT *event;
++	efi_cc_protocol_t *cc;
++	EFI_CC_MR_INDEX mr;
++	uint64_t flags = is_pe_image ? EFI_CC_FLAG_PE_COFF_IMAGE : 0;
++
++	efi_status = LibLocateProtocol(&EFI_CC_MEASUREMENT_PROTOCOL_GUID,
++				       (VOID **)&cc);
++	if (EFI_ERROR(efi_status) || !cc)
++		return EFI_SUCCESS;
++
++	efi_status = cc->map_pcr_to_mr_index(cc, pcr, &mr);
++	if (EFI_ERROR(efi_status))
++		return EFI_NOT_FOUND;
++
++	UINTN event_size = sizeof(*event) - sizeof(event->Event) + logsize;
++
++	event = AllocatePool(event_size);
++	if (!event) {
++		perror(L"Unable to allocate event structure\n");
++		return EFI_OUT_OF_RESOURCES;
++	}
++
++	event->Header.HeaderSize = sizeof(EFI_CC_EVENT_HEADER);
++	event->Header.HeaderVersion = EFI_CC_EVENT_HEADER_VERSION;
++	event->Header.MrIndex = mr;
++	event->Header.EventType = type;
++	event->Size = event_size;
++	CopyMem(event->Event, (VOID *)log, logsize);
++	efi_status = cc->hash_log_extend_event(cc, flags, buf, (UINT64)size,
++					       event);
++	FreePool(event);
++	return efi_status;
++}
++
+ static EFI_STATUS tpm_log_event_raw(EFI_PHYSICAL_ADDRESS buf, UINTN size,
+ 				    UINT8 pcr, const CHAR8 *log, UINTN logsize,
+ 				    UINT32 type, CHAR8 *hash)
+@@ -118,6 +157,15 @@ static EFI_STATUS tpm_log_event_raw(EFI_PHYSICAL_ADDRESS buf, UINTN size,
+ 	BOOLEAN old_caps;
+ 	EFI_TCG2_BOOT_SERVICE_CAPABILITY caps;
+ 
++	/* CC guest like TDX or SEV will measure the buffer and log the event,
++	   extend the result into a specific CC MR like TCG's PCR. It could
++	   coexists with TCG's TPM 1.2 and TPM 2.
++	*/
++	efi_status = cc_log_event_raw(buf, size, pcr, log, logsize, type,
++				      (hash != NULL));
++	if (EFI_ERROR(efi_status))
++		return efi_status;
++
+ 	efi_status = tpm_locate_protocol(&tpm, &tpm2, &old_caps, &caps);
+ 	if (EFI_ERROR(efi_status)) {
+ #ifdef REQUIRE_TPM
+-- 
+2.35.3
+

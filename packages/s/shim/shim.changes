@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Nov 15 08:06:24 UTC 2022 - Joey Lee <jlee@suse.com>
+
+- Add shim-jscPED-127-upgrade-shim-in-SLE15-SP5.patch for backporting the following
+  patches between 15.6 with aa1b289a1a (jsc#PED-127):
+    aa1b289a1a16774afc3143b8948d97261f0872d0 mok: remove MokListTrusted from PCR 7
+    0cf43ac6d78c6f47f8b91210639ac1aa63665f0b Add -malign-double to IA32 compiler flags
+    ea4911c2f3ce8f8f703a1476febac86bb16b00fd load_cert_file: Use EFI RT memory function
+    2d4ebb5a798aafd3b06d2c3cb9c9840c1caa41ef load_cert_file: Fix stack issue
+    5c537b3d0cf8c393dad2e61d49aade68f3af1401 shim: Flush the memory region from i-cache before execution
+    14d63398298c8de23036a4cf61594108b7345863 Discard load-options that start with a NUL
+    092c2b2bbed950727e41cf450b61c794881c33e7 Reference MokListRT instead of MokList
+    0eb07e11b20680200d3ce9c5bc59299121a75388 Make SBAT variable payload introspectable
+
+-------------------------------------------------------------------
+Tue Nov 15 08:06:05 UTC 2022 - Joey Lee <jlee@suse.com>
+
+- Add shim-Enable-TDX-measurement-to-RTMR-register.patch to support
+  enhance shim measurement to TD RTMR. (jsc#PED-1273) 
+
+-------------------------------------------------------------------
+Tue Nov 15 07:53:59 UTC 2022 - Joey Lee <jlee@suse.com>
+
+- For pushing openSUSE:Factory/shim to SLE15-SP5, sync the shim.spec
+  and shim.changes: (jsc#PED-127)
+    - Add some change log from SLE shim.changes to Factory shim.changes
+      Those messages are added "(sync shim.changes from SLE)" tag.
+    - Add the following changes to shim.spec
+	- only apply Patch100, the shim-bsc1198101-opensuse-cert-prompt.patch
+          on openSUSE.
+	- Enable the AArch64 signature check for SLE:
+		# AArch64 signature
+		signature=%{SOURCE13} 
+
+-------------------------------------------------------------------
 Thu Sep 29 02:42:35 UTC 2022 - Michael Chang <mchang@suse.com>
 
 - shim-install: ensure grub.cfg created is not overwritten after
@@ -193,10 +227,49 @@ Tue Apr 12 06:35:16 UTC 2022 - Ludwig Nussel <lnussel@suse.de>
 - use common SBAT values (boo#1193282)
 
 -------------------------------------------------------------------
+Thu Jul 15 08:13:26 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Update the SLE signatures (sync shim.changes from SLE)
+
+-------------------------------------------------------------------
 Thu Jul  1 04:07:03 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add shim-bsc1187696-avoid-deleting-rt-variables.patch to avoid
   deleting the mirrored RT variables (bsc#1187696)
+
+-------------------------------------------------------------------
+Mon Jun 21 08:51:37 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+(sync shim.changes from SLE)
+- Split the keys in vendor-dbx.bin to vendor-dbx-sles and
+  vendor-dbx-opensuse for shim-sles and shim-opensuse to reduce
+  the size of MokListXRT (bsc#1185261)
+  + Also update generate-vendor-dbx.sh in dbx-cert.tar.xz
+- Add shim-bsc1185441-fix-handling-of-ignore_db-and-user_insecure_mode.patch
+  to handle ignore_db and user_insecure_mode correctly
+  (bsc#1185441, bsc#1187071)
+- Add shim-bsc1185621-relax-max-var-sz-check.patch to relax the
+  maximum variable size check for u-boot (bsc#1185621)
+  + Also drop AArch64 suse-signed shim since we merged this patch
+- Add shim-bsc1185261-relax-import_mok_state-check.patch to relax
+  the check for import_mok_state() when Secure Boot is off.
+  (bsc#1185261)
+- Add shim-bsc1185232-relax-loadoptions-length-check.patch to
+  ignore the odd LoadOptions length (bsc#1185232)
+- shim-install: reset def_shim_efi to "shim.efi" if the given
+  file doesn't exist
+- Add shim-fix-aa64-relsz.patch to fix the size of rela sections
+  for AArch64
+  Fix: https://github.com/rhboot/shim/issues/371
+- Add shim-disable-export-vendor-dbx.patch to disable exporting
+  vendor-dbx to MokListXRT since writing a large RT variable
+  could crash some machines (bsc#1185261)
+- Add shim-bsc1187260-fix-efi-1.10-machines.patch to avoid the
+  potential crash when calling QueryVariableInfo in EFI 1.10
+  machines (bsc#1187260)
+- Add shim-bsc1185232-fix-config-table-copying.patch to avoid
+  buffer overflow when copying data to the MOK config table
+  (bsc#1185232)
 
 -------------------------------------------------------------------
 Mon Jun 21 08:51:37 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
@@ -256,6 +329,12 @@ Fri May  7 08:33:49 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
   endless reset loop (bsc#1185464)
 
 -------------------------------------------------------------------
+Thu May  6 06:45:39 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Include suse-signed shim for AArch64 (bsc#1185621)
+  (sync shim.changes from SLE)
+
+-------------------------------------------------------------------
 Thu May  6 03:18:32 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add shim-bsc1185621-relax-max-var-sz-check.patch to relax the
@@ -275,6 +354,16 @@ Wed Apr 28 09:28:30 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
   vendor-dbx-opensuse for shim-sles and shim-opensuse to reduce
   the size of MokListXRT (bsc#1185261) 
   + Also update generate-vendor-dbx.sh in dbx-cert.tar.xz
+
+-------------------------------------------------------------------
+Thu Apr 22 03:26:48 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Enable the AArch64 signature check for SLE (sync shim.changes from SLE)
+
+-------------------------------------------------------------------
+Wed Apr 21 05:44:35 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Update the SLE signatures (sync shim.changes from SLE)
 
 -------------------------------------------------------------------
 Thu Apr  8 08:44:27 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>

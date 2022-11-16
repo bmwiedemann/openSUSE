@@ -77,6 +77,10 @@ Patch4:         shim-bsc1177789-fix-null-pointer-deref-AuthenticodeVerify.patch
 Patch5:         remove_build_id.patch
 # PATCH-FIX-SUSE shim-disable-export-vendor-dbx.patch bsc#1185261 glin@suse.com -- Disable exporting vendor-dbx to MokListXRT
 Patch6:         shim-disable-export-vendor-dbx.patch
+# PATCH-FIX-UPSTREAM shim-Enable-TDX-measurement-to-RTMR-register.patch jsc#PED-1273 jlee@suse.com -- Impl: [TDX Guest] TDX: Enhance shim measurement to TD RTMR
+Patch7:		shim-Enable-TDX-measurement-to-RTMR-register.patch
+# PATCH-FIX-UPSTREAM shim-jscPED-127-upgrade-shim-in-SLE15-SP5.patch jsc#PED-127 jlee@suse.com -- Impl: Upgrade shim in SLE 15-SP5 and openSUSE TW for some issues
+Patch8:		shim-jscPED-127-upgrade-shim-in-SLE15-SP5.patch
 # PATCH-FIX-OPENSUSE shim-bsc1198101-opensuse-cert-prompt.patch glin@suse.com -- Show the prompt to ask whether the user trusts openSUSE certificate or not
 Patch100:	shim-bsc1198101-opensuse-cert-prompt.patch
 BuildRequires:  dos2unix
@@ -124,7 +128,11 @@ The source code of UEFI shim loader
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1
+%patch8 -p1
+%if 0%{?is_opensuse} == 1 || 0%{?sle_version} == 0
 %patch100 -p1
+%endif
 
 %build
 # generate the vendor SBAT metadata
@@ -189,9 +197,7 @@ for suffix in "${suffixes[@]}"; do
 	signature=%{SOURCE11}
 %else
 	# AArch64 signature
-	# Disable AArch64 signature attachment temporarily
-	# until we get a real one.
-	#signature=%{SOURCE13}
+	signature=%{SOURCE13}
 %endif
     elif test "$suffix" = "devel"; then
 	cert=%{_sourcedir}/_projectcert.crt

@@ -22,10 +22,10 @@ The state will store in use_openSUSE_cert, a volatile RT variable.
  shim.h |  1 +
  3 files changed, 71 insertions(+), 2 deletions(-)
 
-Index: shim-15.6~rc1+77144e5a/mok.c
+Index: shim-15.6/mok.c
 ===================================================================
---- shim-15.6~rc1+77144e5a.orig/mok.c
-+++ shim-15.6~rc1+77144e5a/mok.c
+--- shim-15.6.orig/mok.c
++++ shim-15.6/mok.c
 @@ -46,7 +46,8 @@ static EFI_STATUS check_mok_request(EFI_
  	    check_var(L"MokPW") || check_var(L"MokAuth") ||
  	    check_var(L"MokDel") || check_var(L"MokDB") ||
@@ -46,10 +46,10 @@ Index: shim-15.6~rc1+77144e5a/mok.c
  		return VENDOR_ADDEND_NONE;
  	}
  
-Index: shim-15.6~rc1+77144e5a/shim.c
+Index: shim-15.6/shim.c
 ===================================================================
---- shim-15.6~rc1+77144e5a.orig/shim.c
-+++ shim-15.6~rc1+77144e5a/shim.c
+--- shim-15.6.orig/shim.c
++++ shim-15.6/shim.c
 @@ -496,6 +496,8 @@ verify_one_signature(WIN_CERTIFICATE_EFI
  	}
  
@@ -59,7 +59,7 @@ Index: shim-15.6~rc1+77144e5a/shim.c
  #if defined(ENABLE_SHIM_CERT)
  	/*
  	 * Check against the shim build key
-@@ -1572,6 +1574,69 @@ shim_fini(void)
+@@ -1568,6 +1570,69 @@ shim_fini(void)
  	console_fini();
  }
  
@@ -129,7 +129,7 @@ Index: shim-15.6~rc1+77144e5a/shim.c
  extern EFI_STATUS
  efi_main(EFI_HANDLE passed_image_handle, EFI_SYSTEM_TABLE *passed_systab);
  
-@@ -1712,6 +1777,9 @@ efi_main (EFI_HANDLE passed_image_handle
+@@ -1708,6 +1773,9 @@ efi_main (EFI_HANDLE passed_image_handle
  	 */
  	debug_hook();
  
@@ -139,10 +139,10 @@ Index: shim-15.6~rc1+77144e5a/shim.c
  	efi_status = set_sbat_uefi_variable();
  	if (EFI_ERROR(efi_status) && secure_mode()) {
  		perror(L"%s variable initialization failed\n", SBAT_VAR_NAME);
-Index: shim-15.6~rc1+77144e5a/MokManager.c
+Index: shim-15.6/MokManager.c
 ===================================================================
---- shim-15.6~rc1+77144e5a.orig/MokManager.c
-+++ shim-15.6~rc1+77144e5a/MokManager.c
+--- shim-15.6.orig/MokManager.c
++++ shim-15.6/MokManager.c
 @@ -1864,6 +1864,36 @@ mokpw_done:
  	return EFI_SUCCESS;
  }
@@ -280,10 +280,10 @@ Index: shim-15.6~rc1+77144e5a/MokManager.c
  	LibDeleteVariable(L"MokAuth", &SHIM_LOCK_GUID);
  	LibDeleteVariable(L"MokDelAuth", &SHIM_LOCK_GUID);
  	LibDeleteVariable(L"MokXAuth", &SHIM_LOCK_GUID);
-Index: shim-15.6~rc1+77144e5a/globals.c
+Index: shim-15.6/globals.c
 ===================================================================
---- shim-15.6~rc1+77144e5a.orig/globals.c
-+++ shim-15.6~rc1+77144e5a/globals.c
+--- shim-15.6.orig/globals.c
++++ shim-15.6/globals.c
 @@ -25,6 +25,7 @@ UINT8 *build_cert;
   */
  verification_method_t verification_method;
@@ -292,11 +292,11 @@ Index: shim-15.6~rc1+77144e5a/globals.c
  
  UINT8 user_insecure_mode;
  UINT8 ignore_db;
-Index: shim-15.6~rc1+77144e5a/shim.h
+Index: shim-15.6/shim.h
 ===================================================================
---- shim-15.6~rc1+77144e5a.orig/shim.h
-+++ shim-15.6~rc1+77144e5a/shim.h
-@@ -268,6 +268,7 @@ extern UINT8 mok_policy;
+--- shim-15.6.orig/shim.h
++++ shim-15.6/shim.h
+@@ -270,6 +270,7 @@ extern UINT8 mok_policy;
  extern UINT8 in_protocol;
  extern void *load_options;
  extern UINT32 load_options_size;
