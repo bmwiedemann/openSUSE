@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 15 19:31:50 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.3.4
+  * build: resolve sprintf deprecation warnings
+
+-------------------------------------------------------------------
 Sat Jan 22 21:00:46 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.3.3.1

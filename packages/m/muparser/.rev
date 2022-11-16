@@ -115,4 +115,12 @@
     <comment>- Update to release 2.3.3.1</comment>
     <requestid>948164</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0f1a3148936f4e5af0d11d4bbbf6c5c1</srcmd5>
+    <version>2.3.4</version>
+    <time>1668609814</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.3.4</comment>
+    <requestid>1035914</requestid>
+  </revision>
 </revisionlist>
