@@ -18,4 +18,12 @@
   * bugfixes (_config file export and path handling)</comment>
     <requestid>981289</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5745f99753273123c6fa0df0d930fef4</srcmd5>
+    <version>0.2.1</version>
+    <time>1668609780</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1035839</requestid>
+  </revision>
 </revisionlist>

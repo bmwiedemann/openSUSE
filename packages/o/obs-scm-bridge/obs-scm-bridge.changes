@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  8 12:44:07 UTC 2022 - Adrian Schröter <adrian@suse.de>
+
+- update to 0.2.1
+  * fixed loss of branch informations in packages in project mode
+
+-------------------------------------------------------------------
 Wed Jun  8 09:55:31 UTC 2022 - Adrian Schröter <adrian@suse.de>
 
 - update to version 0.2

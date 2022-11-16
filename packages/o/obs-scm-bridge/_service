@@ -2,8 +2,8 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/openSUSE/obs-scm-bridge</param>
     <param name="scm">git</param>
-    <param name="revision">0.2</param>
-    <param name="version">0.2</param>
+    <param name="revision">0.2.1</param>
+    <param name="version">0.2.1</param>
   </service>
   <service mode="manual" name="set_version" />
 
