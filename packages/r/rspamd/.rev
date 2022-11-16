@@ -87,4 +87,31 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1034625</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>ee3fd14601e80aec697ce8d8ae4bd081</srcmd5>
+    <version>3.4</version>
+    <time>1668609847</time>
+    <user>dimstar_suse</user>
+    <comment>- Move cleanup code to %pre because otherwise it doesnt trigger
+  early enough
+
+- Upgrade to 3.4 again 
+  - Fix metadata_exporter with many recipients by @yo000 in #4294
+  - [Fix] Fix favicon.ico Content-Type header by @moisseev in #4302
+  - [Minor] Fix copy-paste error by @moisseev in #4305
+  - Add basic auth to metadata_exporter http pusher by @yo000 in
+    #4300
+  - [Enhancement] Add composite rule against AFF involving
+    freemailers by @twesterhever in #4304
+  - Penalize bounce spam by @frederikbosch in #4308
+- Added 068714f9f5a96fbd94560211cec75775ee023d02.patch:
+  Official patch for the unaligned memory issue described in
+  https://github.com/rspamd/rspamd/issues/4329
+- Add cleanup code to the %postun scriptlet to remove bad files,
+  created by earlier/unpatched 3.4 versions, during package upgrade
+
+- Downgrade to 3.3 until https://github.com/rspamd/rspamd/issues/4329
+  is solved.</comment>
+    <requestid>1036202</requestid>
+  </revision>
 </revisionlist>

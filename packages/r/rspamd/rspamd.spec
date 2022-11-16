@@ -67,6 +67,7 @@ Source1:        usr.bin.rspamd
 Patch0:         rspamd-conf.patch
 Patch1:         rspamd-after-redis-target.patch
 Patch2:         fix_missing_return.patch
+Patch3:         https://github.com/rspamd/rspamd/commit/068714f9f5a96fbd94560211cec75775ee023d02.patch
 %if !0%{?is_opensuse}
 # because 80-check-malware-scan-clamav triggered in SLE-15-SP2
 BuildRequires:  -post-build-checks-malwarescan
@@ -273,6 +274,12 @@ echo "# Site-specific additions and overrides for 'usr.bin.rspamd'" > %{buildroo
 %pre
 %{_sbindir}/groupadd -r %{rspamd_group} 2>/dev/null || :
 %{_sbindir}/useradd -g %{rspamd_group} -c "Rmilter user" -s /bin/false -r %{rspamd_user} 2>/dev/null || :
+#
+# cleanup bad unser files from earlier 3.4 builds
+# see https://github.com/rspamd/rspamd/issues/4329 for the details
+#
+echo "Cleaning up '*.unser' files in /var/lib/rspamd"
+find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %if 0%{?suse_version} && %{with systemd}
 %service_add_pre %{name}.service
 
