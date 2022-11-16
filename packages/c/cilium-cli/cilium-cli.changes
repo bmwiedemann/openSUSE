@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Tue Nov 15 09:38:07 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.12.7:
+  * Prepare for v0.12.7 release
+  * clustermesh: Rename host-reachable-svc opt
+  * Get rid of kube-proxy-replacement=probe
+  * test/connectivity: fix goroutine leak
+  * build(deps): bump helm.sh/helm/v3 from 3.10.1 to 3.10.2
+  * Update stable release to v0.12.6
+  * build(deps): bump library/golang from `8558ae6` to `dc4f475`
+  * build(deps): bump golangci/golangci-lint-action from 3.3.0 to 3.3.1
+  * build(deps): bump google-github-actions/setup-gcloud from 1.0.0 to 1.0.1
+  * Improvements for kube-proxy detection and replacement
+  * test/connectivity: Add a bit more logging around Hubble connections
+  * kpr: Improve k8s API server endpoint detection to handle Kind
+  * build(deps): bump google-github-actions/setup-gcloud from 0.6.2 to 1.0.0
+  * build(deps): bump google-github-actions/auth from 0.8.3 to 1.0.0
+  * Update Go to 1.19.3, golangci-lint to 1.50.1
+  * Enable network-perf for arm64
+  * defaults: Update cilium/json-mock to v1.3.3
+
+-------------------------------------------------------------------
+Tue Nov 15 09:22:10 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.12.6:
+  * Prepare for v0.12.6 release
+  * vendor: Update cilium/charts
+  * build(deps): bump library/golang
+  * build(deps): bump azure/setup-helm from 3.3 to 3.4
+  * build(deps): bump github.com/spf13/cobra from 1.6.0 to 1.6.1
+  * install: Add auto-filled --api-versions parameter for helm capabilities
+  * helm: Add PrintHelmTemplateCommand to remove template log in MergeVals
+  * k8s: Add method ListApiResources to k8s.Client
+  * build(deps): bump github.com/stretchr/testify from 1.8.0 to 1.8.1
+  * build(deps): bump library/busybox from `7b72c24` to `c103754`
+  * build(deps): bump google.golang.org/grpc from 1.50.0 to 1.50.1
+  * build(deps): bump library/golang from `f3e6836` to `845f16d`
+  * build(deps): bump actions/download-artifact from 3.0.0 to 3.0.1
+  * Pin gcloud CLI version
+  * build(deps): bump docker/setup-buildx-action from 2.2.0 to 2.2.1
+  * build(deps): bump golangci/golangci-lint-action from 3.2.0 to 3.3.0
+  * build(deps): bump actions/upload-artifact from 3.1.0 to 3.1.1
+  * build(deps): bump actions/setup-go from 3.3.0 to 3.3.1
+
+-------------------------------------------------------------------
 Wed Oct 19 05:04:23 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.12.5:
