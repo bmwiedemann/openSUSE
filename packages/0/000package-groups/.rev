@@ -1488,4 +1488,12 @@ is not needed.
     <comment>Wicked should at least also be on the DVD - it's still a valid choice</comment>
     <requestid>1030684</requestid>
   </revision>
+  <revision rev="208" vrev="206">
+    <srcmd5>6c7acc6e6d8d5227d98fd3b47354ac79</srcmd5>
+    <version>unknown</version>
+    <time>1668609759</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1036039</requestid>
+  </revision>
 </revisionlist>
