@@ -19,7 +19,7 @@
 # perl modules are not installed in global path
 %global __provides_exclude ^(libtool|perl)\\(
 Name:           texinfo
-Version:        6.8
+Version:        7.0
 Release:        0
 Summary:        Tools for creating documentation from texinfo sources
 License:        GPL-3.0-or-later
@@ -30,8 +30,6 @@ Source2:        %{name}.keyring
 Source42:       %{name}-rpmlintrc
 Patch0:         texinfo-zlib.patch
 Patch1:         install-info_exitcode.patch
-# PATCH-FIX-UPSTREAM 13a8894fe2.patch -- https://git.savannah.gnu.org/cgit/texinfo.git/diff/?id=13a8894fe2
-Patch2:         13a8894fe2.patch
 BuildRequires:  automake
 BuildRequires:  glibc-locale
 BuildRequires:  help2man
@@ -199,7 +197,7 @@ end
 %defattr(-,root,root,0755)
 %license COPYING
 %doc ABOUT-NLS AUTHORS NEWS README TODO
-%doc doc/texinfo.tex doc/txi-*.tex
+%doc doc/texinfo.tex doc/txi-*.tex doc/refcard/*.pdf
 %{_bindir}/pod2texi
 %{_bindir}/texi2dvi
 %{_bindir}/texi2pdf
@@ -220,6 +218,7 @@ end
 %defattr(-,root,root,0755)
 %{_bindir}/makeinfo
 %{_bindir}/texi2any
+%{_infodir}/texi2any_*%{ext_info}
 %{_mandir}/man1/makeinfo.1%{?ext_man}
 %{_mandir}/man1/texi2any.1%{?ext_man}
 %{_libdir}/texinfo

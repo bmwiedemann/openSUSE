@@ -630,4 +630,41 @@
   call is given and used this</comment>
     <requestid>992724</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>b04409456522f364575f0407a3cb9aef</srcmd5>
+    <version>7.0</version>
+    <time>1668609726</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 7.0 (7 November 2022)
+  * texi2any
+   * LaTeX added as an output format, selected with --latex
+   * EPUB 3 added as an output format, selected with --epub3
+   * reform throughout the code in general
+   * thorough review of character encoding issues
+   * new customization variables involved with character encoding:
+       INPUT_FILE_NAME_ENCODING, OUTPUT_FILE_NAME_ENCODING,
+       DOC_ENCODING_FOR_INPUT_FILE_NAME, DOC_ENCODING_FOR_OUTPUT_FILE_NAME,
+       MESSAGE_ENCODING and COMMAND_LINE_ENCODING
+   * warn if full-text commands (@ref, @footnote, @anchor) appear in @w
+   * new variable NO_TOP_NODE_OUTPUT
+   * IGNORE_BEFORE_SETFILENAME variable removed.  former effect
+     is now always on.
+   * HTML output:
+       * use manual_name_html as output directory for split HTML instead of
+         manual_name or manual_name.html
+       * default DOCTYPE declaration changed to plain HTML5 style rather than
+         HTML4 DTD reference
+       * output only the CSS rules that are needed in an output file
+       . remove CSS_LINES variable and add SHOW_BUILTIN_CSS_RULES
+       * (custom CSS can still be output using EXTRA_HEAD)
+       * use &lt;code&gt; tag for the output of @t and @verb instead of &lt;tt&gt;
+       * use &lt;abbr&gt; for @acronym instead of &lt;acronym&gt;
+       * link to table of contents from short table of contents only if a
+         table of contents is actually output
+       * prefix classes from @example arguments with `user-'
+       * percent encode URL in @url/@uref, @email, @image and external
+         manual file
+       * new USE_XML_SYNTAX, HTML_ROOT_ELEMENT_ATTRIBUTES and</comment>
+    <requestid>1035772</requestid>
+  </revision>
 </revisionlist>

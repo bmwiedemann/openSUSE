@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Tue Nov 15 07:55:39 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Update to version 7.0 (7 November 2022)
+  * texi2any
+   * LaTeX added as an output format, selected with --latex
+   * EPUB 3 added as an output format, selected with --epub3
+   * reform throughout the code in general
+   * thorough review of character encoding issues
+   * new customization variables involved with character encoding:
+       INPUT_FILE_NAME_ENCODING, OUTPUT_FILE_NAME_ENCODING,
+       DOC_ENCODING_FOR_INPUT_FILE_NAME, DOC_ENCODING_FOR_OUTPUT_FILE_NAME,
+       MESSAGE_ENCODING and COMMAND_LINE_ENCODING
+   * warn if full-text commands (@ref, @footnote, @anchor) appear in @w
+   * new variable NO_TOP_NODE_OUTPUT
+   * IGNORE_BEFORE_SETFILENAME variable removed.  former effect
+     is now always on.
+   * HTML output:
+       * use manual_name_html as output directory for split HTML instead of
+         manual_name or manual_name.html
+       * default DOCTYPE declaration changed to plain HTML5 style rather than
+         HTML4 DTD reference
+       * output only the CSS rules that are needed in an output file
+       . remove CSS_LINES variable and add SHOW_BUILTIN_CSS_RULES
+       * (custom CSS can still be output using EXTRA_HEAD)
+       * use <code> tag for the output of @t and @verb instead of <tt>
+       * use <abbr> for @acronym instead of <acronym>
+       * link to table of contents from short table of contents only if a
+         table of contents is actually output
+       * prefix classes from @example arguments with `user-'
+       * percent encode URL in @url/@uref, @email, @image and external
+         manual file
+       * new USE_XML_SYNTAX, HTML_ROOT_ELEMENT_ATTRIBUTES and
+         NO_CUSTOM_HTML_ATTRIBUTE variables can be used to output
+         valid XHTML
+       * systematic addition of classes attribute in HTML elements based on the
+         Texinfo @-command names.  renaming of class attributes to avoid
+         confusion with @-commands formatting and describe the role in the
+         document rather than the formatting style.
+       * COPIABLE_ANCHORS renamed to COPIABLE_LINKS
+       * do not add a title by default; SHOW_TITLE or NO_TOP_NODE_OUTPUT has
+         to be set
+       * USE_TITLEPAGE_FOR_TITLE is now true by default
+       * L2H variable removed, replaced by HTML_MATH set to `l2h'
+       * rename OVERVIEW_LINK_TO_TOC to SHORT_TOC_LINK_TO_TOC
+       * rename BEFORE_OVERVIEW to BEFORE_SHORT_TOC_LINE
+       * rename AFTER_OVERVIEW to AFTER_SHORT_TOC_LINES
+       * remove PRE_ABOUT, AFTER_ABOUT, and add PROGRAM_NAME_IN_ABOUT
+       * remove KEEP_TOP_EXTERNAL_REF
+       * new variables IGNORE_REF_TO_TOP_NODE_UP, CONVERT_TO_LATEX_IN_MATH,
+         HTMLXREF_MODE and HTMLXREF_FILE
+   * DocBook output:
+       * do not output Top node or text before the first @node or sectioning
+         @-command.  NO_TOP_NODE_OUTPUT can be set to false to output Top node
+         for now.
+       * replace @definfocenlose defined @-commands by the argument as-is
+         to be more consistent with printed output
+   * HTML/DocBook output:
+       * USE_NUMERIC_ENTITY changed to mean to use numeric entities instead
+         of named entities.  former effect is now always on.
+       * ENABLE_ENCODING_USE_ENTITY variable removed.  former effect is now
+         always off.
+   * Info output
+       * quote problematic node names (with :, comma...) by default
+       * new customization variable ASCII_PUNCTUATION to use plain ASCII
+         characters for quotation marks and a few other symbols
+  * texinfo.tex
+    * `@microtype on' uses microtypography in formatting for pdfTeX and LuaTeX
+    * do not ignore @part page immediately following Top node
+    * do `@set txicodevaristt' to get slanted typewriter for @var in code,
+      `@clear txicodevaristt' to use slanted, variable-width roman font for
+      @var everywhere.  flag is @set by default, but we may turn this off
+      in the future.
+    * new file doc/texinfo-zh.tex for Texinfo documents in Chinese.
+      new support file doc/txi-zh.tex for Chinese.  doc/short-sample-zh.texi is
+      a sample document.
+  * info
+    * better support for index entries containing parentheses
+    * better support for getting bold text etc. when displaying manpages
+    * bug fixed where the first index entry in a file could be ignored
+    * M-C-f closes as well as opens footnotes window
+    * do not crash if run in Brazilian Portuguese locale
+  * Language
+    * @deftype* commands use typewriter font in argument list
+    * new commands @latex, @iflatex, @ifnotlatex for new LaTeX output format
+    * do `@set txidefnamenospace' to omit space after a definition name
+  * Other
+    * build fixed for glibc 2.34
+- Delete patch 13a8894fe2.patch as now part of upstream tar ball
+  
+-------------------------------------------------------------------
 Wed Aug  3 08:30:34 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - In case of an update of package info: do never remove existing
