@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Nov 14 16:26:13 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to version 1.29:
+  + linux-dmabuf: fix references to tranche_formats
+  + content-type: fix enum name in
+    wp_content_type_v1.set_content_type
+- Changes from version 1.28:
+  + xdg-shell:
+    - Replace an HTTP link with HTTPS
+    - window menus are optional
+    - Add specific errors
+  + Add xdg-shell.unresponsive error
+  + xwayland_shell_v1: New protocol
+
+-------------------------------------------------------------------
 Mon Oct 10 21:03:51 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.27:
