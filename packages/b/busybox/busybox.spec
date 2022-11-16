@@ -46,7 +46,12 @@ Patch2:         testsuite-gnu-echo.patch
 Patch100:       busybox.install.patch
 Provides:       useradd_or_adduser_dep
 BuildRequires:  glibc-devel-static
+#in SLE12 hostname is part of the net-tools package
+%if %{?suse_version} && %{?suse_version} <= 1315
+BuildRequires:  net-tools
+%else
 BuildRequires:  hostname
+%endif
 BuildRequires:  pkgconfig(libselinux)
 # for test suite
 BuildRequires:  zip
@@ -92,7 +97,9 @@ cd /usr/share/busybox/testsuite
 PATH=/usr/share/busybox:$PATH SKIP_KNOWN_BUGS=1 ./runtest
 
 %prep
+#SLE12 needs an empty line after autosetup for it to expand properly (bsc#1205420)
 %autosetup -p1
+
 find "(" -name CVS -o -name .cvsignore -o -name .svn -o -name .gitignore ")" \
 	-exec rm -Rf {} +
 

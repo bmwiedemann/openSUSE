@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 14 08:52:35 UTC 2022 - Radoslav Kolev <radoslav.kolev@suse.com>
+
+- Fix build under SLE-12 
+
+-------------------------------------------------------------------
 Mon Oct 17 17:26:27 UTC 2022 - Radoslav Kolev <radoslav.kolev@suse.com>
 
 - Annotate CVEs already fixed in upstream, but not mentioned in .changes:
