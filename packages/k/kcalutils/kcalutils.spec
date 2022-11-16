@@ -83,14 +83,16 @@ to develop applications wanting to use kcalutils.
 %autosetup -p1 -n kcalutils-%{version}
 
 %build
-  %cmake_kf5 -d build -- -DBUILD_TESTING=ON -DKF5_INCLUDE_INSTALL_DIR=%{_kf5_includedir}
-  %cmake_build
+%cmake_kf5 -d build -- -DBUILD_TESTING=ON -DKF5_INCLUDE_INSTALL_DIR=%{_kf5_includedir}
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with released}
-    %find_lang %{name} --with-man --all-name
-  %endif
+%kf5_makeinstall -C build
+%if %{with released}
+  %find_lang %{name} --with-man --all-name
+%endif
+
+%global grantlee_shortver %(rpm -q --queryformat=%%{VERSION} grantlee5 | cut -d . -f 1-2)
 
 %post -n libKF5CalendarUtils5 -p /sbin/ldconfig
 %postun -n libKF5CalendarUtils5 -p /sbin/ldconfig
@@ -109,8 +111,8 @@ to develop applications wanting to use kcalutils.
 
 %files
 %dir %{_kf5_libdir}/grantlee/
-%dir %{_kf5_libdir}/grantlee/5.2
-%{_kf5_libdir}/grantlee/5.2/kcalendar_grantlee_plugin.so
+%dir %{_kf5_libdir}/grantlee/%{grantlee_shortver}
+%{_kf5_libdir}/grantlee/%{grantlee_shortver}/kcalendar_grantlee_plugin.so
 
 %if %{with released}
 %files lang -f %{name}.lang

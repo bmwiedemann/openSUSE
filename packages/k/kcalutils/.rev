@@ -712,4 +712,12 @@
     <comment>KDE Release Gear 22.08.3 (forwarded request 1032791 from cgiboudeaux)</comment>
     <requestid>1033245</requestid>
   </revision>
+  <revision rev="90" vrev="2">
+    <srcmd5>4e0848d6146443a191052f27b4698601</srcmd5>
+    <version>22.08.3</version>
+    <time>1668609737</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't hardcode the grantlee short version.</comment>
+    <requestid>1035764</requestid>
+  </revision>
 </revisionlist>
