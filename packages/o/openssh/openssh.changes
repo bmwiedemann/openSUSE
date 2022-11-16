@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 10 02:18:08 UTC 2022 - Hans Petter Jansson <hpj@suse.com>
+
+- Update openssh-8.1p1-audit.patch: Merge fix for race condition
+  (bsc#1115550, bsc#1174162).
+- Add openssh-do-not-send-empty-message.patch, which prevents
+  superfluous newlines with empty MOTD files (bsc#1192439).
+
+-------------------------------------------------------------------
 Mon Aug  8 07:36:55 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Use %_pam_vendordir

@@ -109,6 +109,7 @@ Patch45:        openssh-8.4p1-ssh_config_d.patch
 Patch46:        openssh-whitelist-syscalls.patch
 Patch47:        openssh-8.4p1-vendordir.patch
 Patch48:        openssh-8.4p1-pam_motd.patch
+Patch49:        openssh-do-not-send-empty-message.patch
 BuildRequires:  audit-devel
 BuildRequires:  automake
 BuildRequires:  groff

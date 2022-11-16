@@ -1,0 +1,19 @@
+--- openssh-8.4p1.orig/auth-pam.c	2020-09-27 09:25:01.000000000 +0200
++++ openssh-8.4p1/auth-pam.c	2022-03-04 13:02:23.447712697 +0100
+@@ -638,10 +638,12 @@
+ 		switch (PAM_MSG_MEMBER(msg, i, msg_style)) {
+ 		case PAM_ERROR_MSG:
+ 		case PAM_TEXT_INFO:
+-			if ((r = sshbuf_putf(loginmsg, "%s\n",
+-			    PAM_MSG_MEMBER(msg, i, msg))) != 0)
+-				fatal("%s: buffer error: %s",
+-				    __func__, ssh_err(r));
++			if (strlen(PAM_MSG_MEMBER(msg, i, msg)) != 0) {
++				if ((r = sshbuf_putf(loginmsg, "%s\n",
++				    PAM_MSG_MEMBER(msg, i, msg))) != 0)
++					fatal("%s: buffer error: %s",
++					    __func__, ssh_err(r));
++			}
+ 			reply[i].resp_retcode = PAM_SUCCESS;
+ 			break;
+ 		default:
