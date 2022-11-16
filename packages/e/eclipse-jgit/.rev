@@ -63,4 +63,12 @@
     <comment>appease darix</comment>
     <requestid>988609</requestid>
   </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>f08f751fbe2372263127c396d85ef549</srcmd5>
+    <version>5.11.0</version>
+    <time>1668609851</time>
+    <user>dimstar_suse</user>
+    <comment>Allow building against apache-sshd until/including 2.9.x</comment>
+    <requestid>1036206</requestid>
+  </revision>
 </revisionlist>

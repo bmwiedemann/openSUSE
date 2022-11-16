@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 16 11:24:53 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * jgit-apache-sshd-2.7.0.patch
+    + Allow building against apache-sshd 2.8.x and 2.9.x
+
+-------------------------------------------------------------------
 Fri Jul 30 12:24:56 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Update to 5.11.0

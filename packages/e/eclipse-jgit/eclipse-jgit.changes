@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 16 11:24:53 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * jgit-apache-sshd-2.7.0.patch
+    + Allow building against apache-sshd 2.8.x and 2.9.x
+
+-------------------------------------------------------------------
 Tue Mar 29 14:06:34 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Force building with Java 11, since tycho is not knowing about any
