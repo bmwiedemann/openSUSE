@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov 16 11:24:29 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1668597862.2a1886e:
+  * Simplify basetest run_post_fail call a bit
+  * Use a codecov upload token
+  * Use proper perl function to get FQDN
+  * testapi: Try to return sane default in non-qemu host_ip calls
+  * Move loop into CommandHandler
+  * Migrate from codecov action v2 to v3
+
+-------------------------------------------------------------------
 Thu Nov 10 19:37:58 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1668109069.7a0df62:
