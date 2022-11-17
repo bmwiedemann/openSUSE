@@ -3,8 +3,6 @@
     <conditions>
       <arch>aarch64</arch>
       <arch>ppc</arch>
-      <arch>ppc64</arch>
-      <arch>ppc64le</arch>
       <arch>x86_64</arch>
       <arch>i586</arch>
     </conditions>
@@ -12,6 +10,20 @@
       <disk>
         <size unit="G">9</size>
       </disk>
+    </hardware>
+  </overwrite>
+  <overwrite>
+    <conditions>
+      <arch>ppc64</arch>
+      <arch>ppc64le</arch>
+    </conditions>
+    <hardware>
+      <disk>
+        <size unit="G">9</size>
+      </disk>
+      <physicalmemory>
+        <size unit="G">20</size>
+      </physicalmemory>
     </hardware>
   </overwrite>
 </constraints>
