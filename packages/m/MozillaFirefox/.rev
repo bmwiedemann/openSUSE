@@ -5933,4 +5933,41 @@
     <comment></comment>
     <requestid>1033697</requestid>
   </revision>
+  <revision rev="382" vrev="1">
+    <srcmd5>76d5fc097e88a12039f20b333ad334b9</srcmd5>
+    <version>107.0</version>
+    <time>1668702232</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Firefox 107.0
+  MFSA 2022-47 (bsc#1205270)
+ * CVE-2022-45403 (bmo#1762078)
+    Service Workers might have learned size of cross-origin media files
+  * CVE-2022-45404 (bmo#1790815)
+    Fullscreen notification bypass
+  * CVE-2022-45405 (bmo#1791314)
+    Use-after-free in InputStream implementation
+  * CVE-2022-45406 (bmo#1791975)
+    Use-after-free of a JavaScript Realm
+  * CVE-2022-45407 (bmo#1793314)
+    Loading fonts on workers was not thread-safe
+  * CVE-2022-45408 (bmo#1793829)
+    Fullscreen notification bypass via windowName
+  * CVE-2022-45409 (bmo#1796901)
+    Use-after-free in Garbage Collection
+  * CVE-2022-45410 (bmo#1658869)
+    ServiceWorker-intercepted requests bypassed SameSite cookie policy
+  * CVE-2022-45411 (bmo#1790311)
+    Cross-Site Tracing was possible via non-standard override headers
+  * CVE-2022-45412 (bmo#1791029)
+    Symlinks may resolve to partially uninitialized buffers
+  * CVE-2022-45413 (bmo#1791201)
+    SameSite=Strict cookies could have been sent cross-site via
+    intent URLs
+  * CVE-2022-40674 (bmo#1791598)
+    Use-after-free vulnerability in expat
+  * CVE-2022-45415 (bmo#1793551)
+    Downloaded file may have been saved with malicious extension
+  * CVE-2022-45416 (bmo#1793676)</comment>
+    <requestid>1036230</requestid>
+  </revision>
 </revisionlist>

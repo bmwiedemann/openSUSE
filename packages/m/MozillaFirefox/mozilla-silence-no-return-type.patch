@@ -1,10 +1,10 @@
 # HG changeset patch
-# Parent  ccd8f974707cba440cffeb0c66b5bcc0cda73c63
+# Parent  de9644d7851feebc84a70c3d513b8342211acf60
 
 diff --git a/Cargo.lock b/Cargo.lock
 --- a/Cargo.lock
 +++ b/Cargo.lock
-@@ -2296,18 +2296,16 @@ name = "glsl-to-cxx"
+@@ -2298,18 +2298,16 @@ name = "glsl-to-cxx"
  version = "0.1.0"
  dependencies = [
   "glsl",
@@ -26,7 +26,7 @@ diff --git a/Cargo.lock b/Cargo.lock
 diff --git a/Cargo.toml b/Cargo.toml
 --- a/Cargo.toml
 +++ b/Cargo.toml
-@@ -143,16 +143,17 @@ async-task = { git = "https://github.com
+@@ -150,16 +150,17 @@ async-task = { git = "https://github.com
  chardetng = { git = "https://github.com/hsivonen/chardetng", rev="3484d3e3ebdc8931493aa5df4d7ee9360a90e76b" }
  chardetng_c = { git = "https://github.com/hsivonen/chardetng_c", rev="ed8a4c6f900a90d4dbc1d64b856e61490a1c3570" }
  coremidi = { git = "https://github.com/chris-zen/coremidi.git", rev="fc68464b5445caf111e41f643a2e69ccce0b4f83" }
@@ -38,11 +38,11 @@ diff --git a/Cargo.toml b/Cargo.toml
 +glslopt = { path = "third_party/rust/glslopt/" }
  
  # application-services overrides to make updating them all simpler.
- interrupt-support = { git = "https://github.com/mozilla/application-services", rev = "fb1c78b13c27b5db1fd5458b8c2d8f433855dd61" }
- sql-support = { git = "https://github.com/mozilla/application-services", rev = "fb1c78b13c27b5db1fd5458b8c2d8f433855dd61" }
- sync15-traits = { git = "https://github.com/mozilla/application-services", rev = "fb1c78b13c27b5db1fd5458b8c2d8f433855dd61" }
- viaduct = { git = "https://github.com/mozilla/application-services", rev = "fb1c78b13c27b5db1fd5458b8c2d8f433855dd61" }
- webext-storage = { git = "https://github.com/mozilla/application-services", rev = "fb1c78b13c27b5db1fd5458b8c2d8f433855dd61" }
+ interrupt-support = { git = "https://github.com/mozilla/application-services", rev = "d8503475f43dbf1d78eef4e23b0578d0fada3f39" }
+ sql-support = { git = "https://github.com/mozilla/application-services", rev = "d8503475f43dbf1d78eef4e23b0578d0fada3f39" }
+ sync15 = { git = "https://github.com/mozilla/application-services", rev = "d8503475f43dbf1d78eef4e23b0578d0fada3f39" }
+ viaduct = { git = "https://github.com/mozilla/application-services", rev = "d8503475f43dbf1d78eef4e23b0578d0fada3f39" }
+ webext-storage = { git = "https://github.com/mozilla/application-services", rev = "d8503475f43dbf1d78eef4e23b0578d0fada3f39" }
  
 diff --git a/gfx/skia/skia/include/codec/SkEncodedOrigin.h b/gfx/skia/skia/include/codec/SkEncodedOrigin.h
 --- a/gfx/skia/skia/include/codec/SkEncodedOrigin.h

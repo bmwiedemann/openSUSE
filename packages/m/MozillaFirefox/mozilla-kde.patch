@@ -3,7 +3,7 @@
 # Date 1559294891 -7200
 #      Fri May 31 11:28:11 2019 +0200
 # Node ID c2aa7198fb925e7fde96abf65b6f68b9b755f112
-# Parent  b8fad36c438a0d20ffe73630e35c17addb4ee57d
+# Parent  36f9c3a81777563ef87663a210b1cd38fdd734d9
 Description: Add KDE integration to Firefox (toolkit parts)
 Author: Wolfgang Rosenauer <wolfgang@rosenauer.org>
 Author: Lubos Lunak <lunak@suse.com>
@@ -13,7 +13,7 @@ Bug: https://bugzilla.mozilla.org/show_bug.cgi?id=140751
 diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
 --- a/modules/libpref/Preferences.cpp
 +++ b/modules/libpref/Preferences.cpp
-@@ -88,16 +88,17 @@
+@@ -89,16 +89,17 @@
  #include "PLDHashTable.h"
  #include "plstr.h"
  #include "prlink.h"
@@ -31,7 +31,7 @@ diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
  #ifdef MOZ_MEMORY
  #  include "mozmemory.h"
  #endif
-@@ -4823,16 +4824,27 @@ nsresult Preferences::InitInitialObjects
+@@ -4849,16 +4850,27 @@ nsresult Preferences::InitInitialObjects
      "unix.js"
  #  if defined(_AIX)
      ,
@@ -59,7 +59,7 @@ diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
  
    // Load jar:$app/omni.jar!/defaults/preferences/*.js
    // or jar:$gre/omni.jar!/defaults/preferences/*.js.
-@@ -4897,17 +4909,17 @@ nsresult Preferences::InitInitialObjects
+@@ -4923,17 +4935,17 @@ nsresult Preferences::InitInitialObjects
        }
  
        nsCOMPtr<nsIFile> path = do_QueryInterface(elem);
@@ -81,7 +81,7 @@ diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
 diff --git a/modules/libpref/moz.build b/modules/libpref/moz.build
 --- a/modules/libpref/moz.build
 +++ b/modules/libpref/moz.build
-@@ -121,16 +121,20 @@ EXPORTS.mozilla += [
+@@ -123,16 +123,20 @@ EXPORTS.mozilla += [
  ]
  EXPORTS.mozilla += sorted(["!" + g for g in gen_h])
  
@@ -165,7 +165,7 @@ diff --git a/toolkit/components/downloads/moz.build b/toolkit/components/downloa
 diff --git a/toolkit/mozapps/downloads/HelperAppDlg.jsm b/toolkit/mozapps/downloads/HelperAppDlg.jsm
 --- a/toolkit/mozapps/downloads/HelperAppDlg.jsm
 +++ b/toolkit/mozapps/downloads/HelperAppDlg.jsm
-@@ -1265,36 +1265,66 @@ nsUnknownContentTypeDialog.prototype = {
+@@ -1239,36 +1239,66 @@ nsUnknownContentTypeDialog.prototype = {
          params.handlerApp &&
          params.handlerApp.executable &&
          params.handlerApp.executable.isFile()
@@ -1283,8 +1283,8 @@ diff --git a/widget/gtk/nsFilePicker.cpp b/widget/gtk/nsFilePicker.cpp
  #include "nsGtkUtils.h"
  #include "nsIFileURL.h"
  #include "nsIGIOService.h"
-@@ -22,16 +23,18 @@
- #include "nsMemory.h"
+@@ -21,16 +22,18 @@
+ #include "nsArrayEnumerator.h"
  #include "nsEnumeratorUtils.h"
  #include "nsNetUtil.h"
  #include "nsReadableUtils.h"
@@ -1302,7 +1302,7 @@ diff --git a/widget/gtk/nsFilePicker.cpp b/widget/gtk/nsFilePicker.cpp
  #  include "Units.h"
  extern mozilla::LazyLogModule gWidgetLog;
  #  define LOG(args) MOZ_LOG(gWidgetLog, mozilla::LogLevel::Debug, args)
-@@ -236,17 +239,19 @@ nsFilePicker::AppendFilters(int32_t aFil
+@@ -235,17 +238,19 @@ nsFilePicker::AppendFilters(int32_t aFil
    mAllowURLs = !!(aFilterMask & filterAllowURLs);
    return nsBaseFilePicker::AppendFilters(aFilterMask);
  }
@@ -1323,7 +1323,7 @@ diff --git a/widget/gtk/nsFilePicker.cpp b/widget/gtk/nsFilePicker.cpp
  
    mFilters.AppendElement(filter);
    mFilterNames.AppendElement(name);
-@@ -346,16 +351,39 @@ nsresult nsFilePicker::Show(int16_t* aRe
+@@ -345,16 +350,39 @@ nsresult nsFilePicker::Show(int16_t* aRe
    return NS_OK;
  }
  
@@ -1363,7 +1363,7 @@ diff --git a/widget/gtk/nsFilePicker.cpp b/widget/gtk/nsFilePicker.cpp
    GtkFileChooserAction action = GetGtkFileChooserAction(mMode);
  
    const gchar* accept_button;
-@@ -575,16 +603,244 @@ void nsFilePicker::Done(void* file_choos
+@@ -574,16 +602,244 @@ void nsFilePicker::Done(void* file_choos
      mCallback->Done(result);
      mCallback = nullptr;
    } else {
@@ -1807,7 +1807,7 @@ diff --git a/xpcom/io/nsLocalFileUnix.cpp b/xpcom/io/nsLocalFileUnix.cpp
  #  include "prmem.h"
  #  include "plbase64.h"
  
-@@ -2083,20 +2084,29 @@ nsLocalFile::SetPersistentDescriptor(con
+@@ -2088,20 +2089,29 @@ nsLocalFile::SetPersistentDescriptor(con
  
  NS_IMETHODIMP
  nsLocalFile::Reveal() {
@@ -1839,7 +1839,7 @@ diff --git a/xpcom/io/nsLocalFileUnix.cpp b/xpcom/io/nsLocalFileUnix.cpp
      ::CFRelease(url);
      return rv;
    }
-@@ -2108,16 +2118,23 @@ nsLocalFile::Reveal() {
+@@ -2113,16 +2123,23 @@ nsLocalFile::Reveal() {
  
  NS_IMETHODIMP
  nsLocalFile::Launch() {

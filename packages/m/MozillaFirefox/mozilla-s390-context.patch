@@ -3,15 +3,15 @@
 # Date 1558452408 -7200
 #      Tue May 21 17:26:48 2019 +0200
 # Node ID 602e92722e765a3c238d3b96b26c0c8063b5eeb4
-# Parent  263ccc06617bef4b8ef891eec54995190d5d5df3
+# Parent  6d6ebdace8a9877fe17c1bd14b80307c258c864f
 [mq]: mozilla-s390-context.patch
 
 diff --git a/js/src/wasm/WasmSignalHandlers.cpp b/js/src/wasm/WasmSignalHandlers.cpp
 --- a/js/src/wasm/WasmSignalHandlers.cpp
 +++ b/js/src/wasm/WasmSignalHandlers.cpp
 @@ -163,16 +163,20 @@ using mozilla::DebugOnly;
- #      define RSP_sig(p) ((p)->uc_mcontext.gregs[3])
- #      define RFP_sig(p) ((p)->uc_mcontext.gregs[22])
+ #      define R03_sig(p) ((p)->uc_mcontext.__gregs[3])
+ #      define RFP_sig(p) ((p)->uc_mcontext.__gregs[22])
  #    endif
  #    if defined(__sun__) && defined(__sparc__)
  #      define PC_sig(p) ((p)->uc_mcontext.gregs[REG_PC])
@@ -37,7 +37,7 @@ diff --git a/js/src/wasm/WasmSignalHandlers.cpp b/js/src/wasm/WasmSignalHandlers
  #  elif defined(__loongarch__)
  #    define PC_sig(p) EPC_sig(p)
  #    define FP_sig(p) RFP_sig(p)
- #    define SP_sig(p) RSP_sig(p)
+ #    define SP_sig(p) R03_sig(p)
  #    define LR_sig(p) RRA_sig(p)
 +#  elif defined(__s390x__)
 +#    define PC_sig(p) PSWa_sig(p)

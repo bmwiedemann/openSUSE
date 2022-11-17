@@ -1,5 +1,5 @@
 #
-# spec file for package MozillaFirefox
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #               2006-2022 Wolfgang Rosenauer <wr@rosenauer.org>
@@ -28,9 +28,9 @@
 # orig_suffix b3
 # major 69
 # mainver %major.99
-%define major          106
-%define mainver        %major.0.5
-%define orig_version   106.0.5
+%define major          107
+%define mainver        %major.0
+%define orig_version   107.0
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -108,8 +108,8 @@ BuildRequires:  rust >= 1.61
 # minimal requirement:
 BuildRequires:  rust+cargo >= 1.61
 # actually used upstream:
-BuildRequires:  cargo1.63
-BuildRequires:  rust1.63
+BuildRequires:  cargo1.64
+BuildRequires:  rust1.64
 %endif
 %if 0%{useccache} != 0
 BuildRequires:  ccache
@@ -120,7 +120,7 @@ BuildRequires:  libiw-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
 BuildRequires:  mozilla-nspr-devel >= 4.35
-BuildRequires:  mozilla-nss-devel >= 3.83
+BuildRequires:  mozilla-nss-devel >= 3.84
 BuildRequires:  nasm >= 2.14
 BuildRequires:  nodejs >= 10.22.1
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
