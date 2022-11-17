@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov 17 15:53:06 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.5.2
+  * Add support for hybrid CPUs
+  * Add support for TAB key and scrolling in NCurses TUI
+  * Support for procps-ng 4.0.1rc3
+  * Update databases (Intel Tremont, Intel Ice Lake Xeon-D, AMD
+    Mendocino, AMD Zen 2 Desktop Kit, AMD Athlon 64 Sherman)
+
+-------------------------------------------------------------------
 Thu Aug 25 22:24:56 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 4.3.1:
