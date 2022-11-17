@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 17 13:49:00 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not recommend bash-completion subpackage: this triggers
+  installation even if bash-completion is not there yet. All (well,
+  most for now) packages are handled to install the completion IF
+  bash-completion is present (which is the default on standard
+  setups).
+
+-------------------------------------------------------------------
 Thu Sep 29 11:49:23 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
 
 - Update to latest version (1.4.1)

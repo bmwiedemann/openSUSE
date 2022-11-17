@@ -32,7 +32,6 @@ Requires:       %{_bindir}/sed
 Requires:       (%{_bindir}/podman or %{_bindir}/docker)
 # Idea would be: if bash completion is already there, let's have it. If
 # not, let's "only" recommend it...
-Recommends:     %{name}-bash-completion
 Requires:       (%{name}-bash-completion if bash-completion)
 BuildRequires:  ImageMagick
 BuildRequires:  hicolor-icon-theme
