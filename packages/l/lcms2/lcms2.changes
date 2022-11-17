@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 16 07:39:44 UTC 2022 - Dave Plater <davejplater@gmail.com>
+
+- Removed reverse-0001-fix-memory-leaks-on-testbed.patch and added
+  0001-fix-memory-corruption-when-unregistering-plugins.patch as
+  final fix for https://github.com/hughsie/colord/issues/145
+
+-------------------------------------------------------------------
 Fri Nov 11 13:40:18 UTC 2022 - Dave Plater <davejplater@gmail.com>
 
 - Added reverse-0001-fix-memory-leaks-on-testbed.patch to fix

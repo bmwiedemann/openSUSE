@@ -27,9 +27,7 @@ Source0:        https://github.com/mm2/Little-CMS/releases/download/lcms%{versio
 Source1:        baselibs.conf
 Patch0:         lcms2-ocloexec.patch
 Patch1:         lcms2-visibility.patch
-%ifarch i586
-Patch2:         reverse-0001-fix-memory-leaks-on-testbed.patch
-%endif
+Patch2:         0001-fix-memory-corruption-when-unregistering-plugins.patch
 %if 0%{?suse_version}
 BuildRequires:  autoconf
 BuildRequires:  glibc-devel

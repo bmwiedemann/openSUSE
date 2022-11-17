@@ -1,0 +1,77 @@
+From a9e4601ceb3a185d4f78cc0cfbd285cf0c399e9d Mon Sep 17 00:00:00 2001
+From: Marti Maria <marti.maria@littlecms.com>
+Date: Sat, 12 Nov 2022 20:00:46 +0100
+Subject: [PATCH] fix memory corruption when unregistering plugins
+
+unregistering plugins twice may corrupt memory. This commit fixes that.
+---
+ plugins/fast_float/testbed/fast_float_testbed.c |  4 ++--
+ src/cmsplugin.c                                 | 16 +++++++++-------
+ 2 files changed, 11 insertions(+), 9 deletions(-)
+
+diff --git a/plugins/fast_float/testbed/fast_float_testbed.c b/plugins/fast_float/testbed/fast_float_testbed.c
+index ea23c10..addef00 100644
+--- a/plugins/fast_float/testbed/fast_float_testbed.c
++++ b/plugins/fast_float/testbed/fast_float_testbed.c
+@@ -2468,7 +2468,7 @@ int main()
+        trace("Installing plug-in ... ");
+        cmsPlugin(cmsFastFloatExtensions());
+        trace("done.\n\n");
+-             
++                    
+        CheckComputeIncrements();
+ 
+        // 15 bit functionality
+@@ -2508,7 +2508,7 @@ int main()
+        
+        trace("\nAll tests passed OK\n");
+ 
+-       cmsUnregisterPlugins();
++       cmsDeleteContext(0);
+ 
+        return 0;
+ }
+diff --git a/src/cmsplugin.c b/src/cmsplugin.c
+index 7d038d2..1d8c358 100644
+--- a/src/cmsplugin.c
++++ b/src/cmsplugin.c
+@@ -795,9 +795,7 @@ void* _cmsContextGetClientChunk(cmsContext ContextID, _cmsMemoryClient mc)
+ // many different plug-ins simultaneously, then there is no way to 
+ // identify which plug-in to unregister.
+ void CMSEXPORT cmsUnregisterPluginsTHR(cmsContext ContextID)
+-{
+-    struct _cmsContext_struct* ctx = _cmsGetContext(ContextID);
+-
++{    
+     _cmsRegisterMemHandlerPlugin(ContextID, NULL);
+     _cmsRegisterInterpPlugin(ContextID, NULL);
+     _cmsRegisterTagTypePlugin(ContextID, NULL);
+@@ -811,9 +809,6 @@ void CMSEXPORT cmsUnregisterPluginsTHR(cmsContext ContextID)
+     _cmsRegisterMutexPlugin(ContextID, NULL);
+     _cmsRegisterParallelizationPlugin(ContextID, NULL);
+ 
+-   if (ctx->MemPool != NULL)
+-       _cmsSubAllocDestroy(ctx->MemPool);
+-   ctx->MemPool = NULL;
+ }
+ 
+ 
+@@ -981,7 +976,14 @@ cmsContext CMSEXPORT cmsDupContext(cmsContext ContextID, void* NewUserData)
+ // The ContextID can no longer be used in any THR operation.  
+ void CMSEXPORT cmsDeleteContext(cmsContext ContextID)
+ {
+-    if (ContextID != NULL) {
++    if (ContextID == NULL) {
++
++        cmsUnregisterPlugins();
++        if (globalContext.MemPool != NULL)
++            _cmsSubAllocDestroy(globalContext.MemPool);
++        globalContext.MemPool = NULL;
++    }
++    else {
+ 
+         struct _cmsContext_struct* ctx = (struct _cmsContext_struct*) ContextID;              
+         struct _cmsContext_struct  fakeContext;  
+-- 
+2.35.3
+
