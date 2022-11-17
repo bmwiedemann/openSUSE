@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Nov 16 11:12:35 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1668597146.2561fef:
+  * Avoid relying on DNS setup to determine worker registration name
+  * Fix "Use of uninitialized value" in OpenQA/Worker.pm
+  * Bump query limits to higher limits to fix users unable to get results
+  * Avoid misuse of the word "hostname" in documentation
+  * Use more compact coding style in developer mode UI test
+  * Fix submitting "Pause on next command" selection of developer mode
+  * Auto-detect `WORKER_HOSTNAME` on worker startup if not set explicitly
+  * Clarify "worker hostname" logged on worker startup
+  * docs: Add a suggested workflow documentation for test review
+
+-------------------------------------------------------------------
 Sat Nov 12 02:16:10 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1668162974.2b84746:
