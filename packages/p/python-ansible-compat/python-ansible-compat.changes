@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 15 15:40:25 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2.2.4:
+  * Bugfixes
+    - Avoid running galaxy on offline mode (#180) @ssbarnea
+
+-------------------------------------------------------------------
 Mon Oct 31 13:04:54 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 2.2.3:
