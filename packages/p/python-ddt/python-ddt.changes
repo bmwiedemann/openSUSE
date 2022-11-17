@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 16 17:20:57 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add remove-six.patch to remove six dependency
+- Remove python_module macro definition
+- More specific python_sitelib in %files
+
+-------------------------------------------------------------------
 Mon Sep 26 10:38:04 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.0:

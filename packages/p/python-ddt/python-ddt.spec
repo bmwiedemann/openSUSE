@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-ddt
 Version:        1.6.0
@@ -25,8 +24,9 @@ Summary:        Data-Driven/Decorated Tests
 License:        MIT
 URL:            https://github.com/txels/ddt
 Source:         https://files.pythonhosted.org/packages/source/d/ddt/ddt-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM remove-six.patch gh#datadriventests/ddt#110
+Patch0:         remove-six.patch
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -44,8 +44,7 @@ BuildRequires:  python2-mock
 A library to multiply test cases.
 
 %prep
-%setup -q -n ddt-%{version}
-%autopatch -p1
+%autosetup -p1 -n ddt-%{version}
 
 %build
 %python_build
@@ -60,6 +59,8 @@ A library to multiply test cases.
 %files %{python_files}
 %doc CONTRIBUTING.md README.md
 %license LICENSE.md
-%{python_sitelib}/*
+%{python_sitelib}/ddt.py
+%{python_sitelib}/ddt-%{version}*-info
+%pycache_only %{python_sitelib}/__pycache__
 
 %changelog
