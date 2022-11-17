@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0c5fa4c1a174691a864c22ea80ad4ffd</srcmd5>
+    <version>0.14.7</version>
+    <time>1668702264</time>
+    <user>dimstar_suse</user>
+    <comment>dep of several aws-ish tools c.f. https://www.wheelodex.org/projects/awscrt/rdepends/
+also dep of aws-cli v2</comment>
+    <requestid>1030952</requestid>
+  </revision>
+</revisionlist>
