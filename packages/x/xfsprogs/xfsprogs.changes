@@ -1,7 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov 16 10:20:22 UTC 2022 - Anthony Iliopoulos <ailiop@suse.com>
+
+- update to 6.0.0:
+  - libxfs: kernel sync
+  - xfs_db: use preferable macro to seek offset for local dir3
+  - xfs_quota: optimize -L/-U calls for dump/report
+
+-------------------------------------------------------------------
 Sat Aug 13 23:03:39 UTC 2022 - Anthony Iliopoulos <ailiop@suse.com>
 
-- update to 5.19.0: 
+- update to 5.19.0:
   - xfs_repair: fix printf format specifiers on 32-bit
   - libxfs: Fix MAP_SYNC build failure on MIPS/musl
   - mkfs: stop allowing tiny filesystems

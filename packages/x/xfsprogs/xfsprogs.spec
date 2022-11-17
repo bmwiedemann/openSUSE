@@ -25,7 +25,7 @@
 %endif
 %define libname libhandle1
 Name:           xfsprogs
-Version:        5.19.0
+Version:        6.0.0
 Release:        0
 Summary:        Utilities for managing the XFS file system
 License:        GPL-2.0-or-later
