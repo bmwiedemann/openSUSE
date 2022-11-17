@@ -171,4 +171,16 @@
     <comment></comment>
     <requestid>966733</requestid>
   </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>b6f9e701046bbe296b058244be396163</srcmd5>
+    <version>8.6.0</version>
+    <time>1668702226</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove python_module macro definition
+- Disable broken tests https://github.com/cherrypy/cheroot/issues/511
+- Add no-relative-imports.patch to work around seriously broken
+  system of imports.
+</comment>
+    <requestid>1036180</requestid>
+  </revision>
 </revisionlist>

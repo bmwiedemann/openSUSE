@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov 16 08:58:31 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove python_module macro definition
+- Disable broken tests https://github.com/cherrypy/cheroot/issues/511
+
+-------------------------------------------------------------------
+Wed May 11 16:26:15 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add no-relative-imports.patch to work around seriously broken
+  system of imports.
+
+-------------------------------------------------------------------
 Sat Apr  2 11:22:09 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Skip a test causing errors in pytest 7 -- gh#cherrypy/cheroot#502

@@ -22,7 +22,6 @@
 %bcond_with libalternatives
 %endif
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define pypi_name cheroot
 %bcond_without python2
 %bcond_with ringdisabled
@@ -36,6 +35,8 @@ Source:         https://files.pythonhosted.org/packages/source/c/%{pypi_name}/%{
 # PATCH-FIX-OPENSUSE no-pypytools.patch mcepl@suse.com
 # We don't have PyPy at all, so no need support for it
 Patch0:         no-pypytools.patch
+# PATCH-FIX-UPSTREAM no-relative-imports.patch bsc#[0-9]+ mcepl@suse.com
+Patch1:         no-relative-imports.patch
 BuildRequires:  %{python_module jaraco.functools}
 BuildRequires:  %{python_module more-itertools >= 2.6}
 BuildRequires:  %{python_module setuptools >= 34.4}
@@ -93,7 +94,7 @@ Cheroot is the pure-Python HTTP server used by CherryPy.
 %prep
 %autosetup -p1 -n cheroot-%{version} -p1
 # do not check coverage
-sed -i '/--cov/ d' pytest.ini
+sed -i -e '/--cov/ d' pytest.ini
 
 %build
 %python_build
@@ -113,8 +114,9 @@ pushd testclean
 %endif
 # test_tls_client_auth[...-False-localhost-builtin] fails ocassionally on server-side OBS
 donttest="(test_tls_client_auth and False-localhost-builtin)"
-# https://github.com/cherrypy/cheroot/issues/502
-donttest="$donttest or test_high_number_of_file_descriptors"
+# looks like there's a bug with pytest.mark.forked
+# https://github.com/cherrypy/cheroot/issues/511
+donttest+=" or test_high_number_of_file_descriptor"
 %pytest --pyargs cheroot $pytest_opts -k "not ($donttest)"
 popd
 
