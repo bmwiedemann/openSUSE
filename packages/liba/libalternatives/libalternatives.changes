@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 14 10:26:50 UTC 2022 - dmueller@suse.com
+
+- switch to a manual service rather than a buildtime tar service
+  which introduces a bootstrap cycle between python and tar_scm
+
+-------------------------------------------------------------------
 Tue Sep 14 09:12:40 UTC 2021 - adam.majer@suse.de
 
 - Update to version v1.2+3.b848aad:

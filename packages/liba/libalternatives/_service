@@ -1,10 +1,13 @@
 <services>
-<service name="obs_scm" mode="manual">
+<service name="tar_scm" mode="manual">
   <param name="scm">git</param>
   <param name="url">https://github.com/openSUSE/libalternatives.git</param>
   <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@.%h</param>
   <param name="revision">b848aad</param>
   <param name="changesgenerate">enable</param>
 </service>
-<service mode="buildtime" name="tar"/>
+  <service mode="manual" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">zstd</param>
+  </service>
 </services>

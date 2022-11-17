@@ -1,7 +1,7 @@
 #
 # spec file for package libalternatives
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,11 +23,12 @@ Version:        1.2+3.b848aad
 Release:        0
 Summary:        Helper for executing preferred application based on user preferences
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
-URL:            https://github.com/AdamMajer/libalternative.git
-Source0:        libalternatives-v%{version}.tar
+URL:            https://github.com/openSUSE/libalternatives
+Source0:        libalternatives-v%{version}.tar.zst
 BuildRequires:  cmake > 3.8
 BuildRequires:  cunit-devel
 BuildRequires:  gcc
+BuildRequires:  zstd
 
 %description
 libalternatives is a helper that executes an application based on
