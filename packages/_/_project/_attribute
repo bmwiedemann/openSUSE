@@ -6,7 +6,7 @@
     <value>last_seen:
   boo#1094987: '20221026'
   boo#1172073: '20220918'
-  boo#1183454: '20221115'
+  boo#1183454: '20221116'
   boo#1190434: '20221115'
   boo#1190823: '20220409'
   boo#1196201: '20220525'
@@ -53,7 +53,7 @@
   boo#1201931: '20220726'
   boo#1202000: '20220804'
   boo#1202161: '20220810'
-  boo#1202330: '20221115'
+  boo#1202330: '20221116'
   boo#1202460: '20220910'
   boo#1202495: '20220907'
   boo#1202497: '20220827'
@@ -77,21 +77,21 @@
   boo#1205020: '20221104'
   boo#1205032: '20221110'
   boo#1205312: '20221113'
-  boo#1205314: '20221115'
+  boo#1205314: '20221116'
   boo#1205362: '20221113'
   boo#1205363: '20221115'
   boo#1205425: '20221115'
   boo#12345: '20221004'
   bsc#1161276: '20221027'
   bsc#1191684: '20220827'
-  bsc#1198101: '20221115'
+  bsc#1198101: '20221116'
   bsc#1198235: '20220503'
   bsc#1204279: '20221021'
   gh#os-autoinst/opensuse-jobgroups#180: '20220728'
   gh#os-autoinst/opensuse-jobgroups#183: '20220906'
   gh#os-autoinst/os-autoinst-distri-opensuse#15257: '20220719'
   gh#os-autoinst/os-autoinst-distri-opensuse#15662: '20221010'
-  gh#virt-manager/virt-manager#426: '20221115'
+  gh#virt-manager/virt-manager#426: '20221116'
   poo#105295: '20220518'
   poo#106676: '20220412'
   poo#107893: '20220419'
@@ -121,11 +121,11 @@
   poo#112241: '20220608'
   poo#112244: '20220608'
   poo#112580: '20220625'
-  poo#112649: '20221103'
+  poo#112649: '20221116'
   poo#112700: '20220622'
   poo#112982: '20220623'
   poo#113051: '20220703'
-  poo#113075: '20221115'
+  poo#113075: '20221116'
   poo#113114: '20220628'
   poo#113360: '20220712'
   poo#113492: '20221102'
@@ -133,7 +133,7 @@
   poo#114923: '20220809'
   poo#114986: '20220804'
   poo#115115: '20220817'
-  poo#115133: '20221115'
+  poo#115133: '20221116'
   poo#115274: '20221003'
   poo#115313: '20220816'
   poo#115364: '20220822'
@@ -148,7 +148,7 @@
   poo#116917: '20221001'
   poo#116935: '20221026'
   poo#117031: '20221105'
-  poo#117034: '20221115'
+  poo#117034: '20221116'
   poo#117154: '20221115'
   poo#117214: '20220926'
   poo#117331: '20221115'
@@ -163,7 +163,7 @@
   poo#120315: '20221110'
   poo#120318: '20221110'
   poo#120345: '20221114'
-  poo#120459: '20221115'
+  poo#120459: '20221116'
   poo#63397: '20220921'
   poo#80628: '20221115'
   poo#99312: '20220502'
@@ -209,7 +209,7 @@ rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-brandin
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20221116</value>
+    <value>20221117</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
@@ -535,10 +535,10 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: ''
+    <value>failed: '20221116'
 published: '20221115'
 publishing: '20221115'
-testing: '20221115'
+testing: '20221116'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
