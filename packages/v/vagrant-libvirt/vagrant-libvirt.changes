@@ -1,4 +1,121 @@
 -------------------------------------------------------------------
+Fri Sep 23 08:19:50 UTC 2022 - Dan Čermák <dcermak@suse.com>
+
+- Add patch: 0001-Mock-out-synced-folders-for-action-tests-1610.patch
+  (fixes test failures)
+
+- New upstream release 0.10.8
+
+## [0.10.8](https://github.com/vagrant-libvirt/vagrant-libvirt/tree/0.10.8) (2022-09-22)
+
+[Full Changelog](https://github.com/vagrant-libvirt/vagrant-libvirt/compare/0.10.7...0.10.8)
+
+**Closed issues:**
+
+- wrong upstream Vagrant install link in the documentation  [\#1601](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1601)
+- Public networking cannot list my hosts devices [\#1600](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1600)
+- When puppet present, it is not possible to install the plugin [\#1597](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1597)
+
+**Merged pull requests:**
+
+- Use correct url for script download in docs [\#1606](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1606) ([electrofelix](https://github.com/electrofelix))
+- Update specs to check for warning not being emitted [\#1605](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1605) ([electrofelix](https://github.com/electrofelix))
+- Spec fixes [\#1603](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1603) ([dcermak](https://github.com/dcermak))
+- \[Dockerfile\] Fix creation of plugins.json with buildah [\#1602](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1602) ([dcermak](https://github.com/dcermak))
+- fix qemu\_use\_agent to work with windows guests [\#1599](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1599) ([rgl](https://github.com/rgl))
+- silence the qemu\_use\_agent warning message [\#1598](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1598) ([rgl](https://github.com/rgl))
+- Handle different attribute and element ordering [\#1592](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1592) ([electrofelix](https://github.com/electrofelix))
+- Add actions to be updated by dependabot [\#1586](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1586) ([electrofelix](https://github.com/electrofelix))
+- Fix release workflow default branch detection [\#1585](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1585) ([electrofelix](https://github.com/electrofelix))
+- Handle REXML requires for Ubuntu focal [\#1584](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1584) ([electrofelix](https://github.com/electrofelix))
+
+-------------------------------------------------------------------
+Tue Sep 13 15:50:19 UTC 2022 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 0.10.7
+
+## [0.10.7](https://github.com/vagrant-libvirt/vagrant-libvirt/tree/0.10.7) (2022-09-08)
+
+[Full Changelog](https://github.com/vagrant-libvirt/vagrant-libvirt/compare/0.10.6...0.10.7)
+
+**Closed issues:**
+
+- Docker installation: user vagrant does not exist [\#1442](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1442)
+
+**Merged pull requests:**
+
+- Replace remaining stray references with main [\#1582](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1582) ([electrofelix](https://github.com/electrofelix))
+- Make failure to apply XML domain update non fatal [\#1581](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1581) ([electrofelix](https://github.com/electrofelix))
+- Remove need to explicitly set VAGRANT\_HOME before running tests [\#1580](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1580)
+([electrofelix](https://github.com/electrofelix))
+- Return early from set\_boot\_order if not needed [\#1578](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1578) ([electrofelix](https://github.com/electrofelix))
+- Handle setting of graphics options avoiding XML diff [\#1577](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1577)
+([electrofelix](https://github.com/electrofelix))
+- Ensure XML diff output if not fully applied [\#1576](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1576) ([electrofelix](https://github.com/electrofelix))
+- Update to more recent Ubuntu LTS [\#1575](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1575) ([electrofelix](https://github.com/electrofelix))
+- Reduce nested rescues in start domain [\#1573](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1573) ([electrofelix](https://github.com/electrofelix))
+- Improve handling when run using root user [\#1572](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1572) ([electrofelix](https://github.com/electrofelix))
+- Correct type for workflow event [\#1570](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1570) ([electrofelix](https://github.com/electrofelix))
+- Docker image bundle vagrant-libvirt with vagrant [\#1569](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1569) ([electrofelix](https://github.com/electrofelix))
+- Save UI to instance to avoid passing env [\#1568](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1568) ([electrofelix](https://github.com/electrofelix))
+
+
+## [0.10.6](https://github.com/vagrant-libvirt/vagrant-libvirt/tree/0.10.6) (2022-08-30)
+
+[Full Changelog](https://github.com/vagrant-libvirt/vagrant-libvirt/compare/0.10.5...0.10.6)
+
+**Merged pull requests:**
+
+- Switch to xml-simple for document comparison [\#1567](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1567) ([electrofelix](https://github.com/electrofelix))
+
+
+## [0.10.5](https://github.com/vagrant-libvirt/vagrant-libvirt/tree/0.10.5) (2022-08-29)
+
+[Full Changelog](https://github.com/vagrant-libvirt/vagrant-libvirt/compare/0.10.4...0.10.5)
+
+**Closed issues:**
+
+- Error when updating domain settings: Error while creating domain: Libvirt failed to fully update the domain with the specified XML. Result differs from requested
+[\#1556](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1556)
+
+**Merged pull requests:**
+
+- Use compare-xml instead of equivalent-xml [\#1565](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1565) ([dcermak](https://github.com/dcermak))
+
+-------------------------------------------------------------------
+Mon Aug 29 10:21:30 UTC 2022 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 0.10.4
+
+## [0.10.4](https://github.com/vagrant-libvirt/vagrant-libvirt/tree/0.10.4) (2022-08-28)
+
+[Full Changelog](https://github.com/vagrant-libvirt/vagrant-libvirt/compare/0.10.3...0.10.4)
+
+**Closed issues:**
+
+- Can't create public network interfaces [\#1561](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1561)
+
+**Merged pull requests:**
+
+- Use equivalent-xml to compare xml [\#1564](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1564) ([electrofelix](https://github.com/electrofelix))
+
+
+## [0.10.3](https://github.com/vagrant-libvirt/vagrant-libvirt/tree/0.10.3) (2022-08-26)
+
+[Full Changelog](https://github.com/vagrant-libvirt/vagrant-libvirt/compare/0.10.2...0.10.3)
+
+**Closed issues:**
+
+- recent change to host\_devices is too strict [\#1553](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1553)
+
+**Merged pull requests:**
+
+- Use function rather than instance variable [\#1562](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1562) ([electrofelix](https://github.com/electrofelix))
+- Ensure boot order is preserved unless overridden [\#1560](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1560) ([electrofelix](https://github.com/electrofelix))
+- Update URL for logo display in README [\#1559](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1559) ([electrofelix](https://github.com/electrofelix))
+- Ensure usernames with at symbols handled [\#1558](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1558) ([electrofelix](https://github.com/electrofelix))
+
+-------------------------------------------------------------------
 Wed Aug 24 12:35:50 UTC 2022 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 0.10.2

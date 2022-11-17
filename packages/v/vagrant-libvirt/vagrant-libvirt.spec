@@ -21,11 +21,10 @@
 %global rb_ruby_suffix %rb_default_ruby_suffix
 
 Name:           vagrant-libvirt
-Version:        0.10.2
+Version:        0.10.8
 Release:        0
 %define mod_name vagrant-libvirt
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 Requires:       libvirt
 %ifarch %ix86 x86_64
@@ -51,6 +50,7 @@ BuildRequires:  %{rubygem vagrant-spec}
 BuildRequires:  %{rubygem fog-core:2 >= 2.1}
 BuildRequires:  %{rubygem fog-libvirt >= 0.3.}
 BuildRequires:  %{rubygem rexml}
+BuildRequires:  %{rubygem xml-simple}
 BuildRequires:  %{rubygem diffy}
 
 # s.add_development_dependency "rspec-core", ">= 3.5"
@@ -68,6 +68,8 @@ Requires:       %{rubygem fog-libvirt >= 0.6.}
 Requires:       %{rubygem fog-core:2}
 # s.add_runtime_dependency 'rexml'
 Requires:       %{rubygem rexml}
+# s.add_runtime_dependency 'xml-simple'
+Requires:       %{rubygem xml-simple}
 # s.add_runtime_dependency 'diffy'
 Requires:       %{rubygem diffy}
 # s.add_runtime_dependency 'nokogiri', '~> 1.6'
@@ -85,6 +87,8 @@ BuildRequires:  kmod
 
 URL:            https://github.com/%{name}/%{name}
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
+# fixes test failures, remove on next upstream release after 0.10.8
+Patch:          0001-Mock-out-synced-folders-for-action-tests-1610.patch
 
 Summary:        Vagrant provider for libvirt
 License:        MIT
@@ -104,6 +108,7 @@ This package contains the documentation for the Libvirt provider to Vagrant.
 
 %prep
 %gem_unpack
+%autopatch -p1
 
 %build
 %gem_build
