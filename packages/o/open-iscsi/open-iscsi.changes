@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 16 17:14:36 UTC 2022 - Lee Duncan <lduncan@suse.com>
+
+- Updated to latest upstream. Changes:
+  * scsid/iscsiuio: fix OOM adjustment (github issue #377)
+
+-------------------------------------------------------------------
 Mon Sep 26 21:15:57 UTC 2022 - Lee Duncan <lduncan@suse.com>
 
 - Update to upstream version 2.1.8, which includes some bug fixes,
