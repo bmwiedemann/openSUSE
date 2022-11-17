@@ -151,4 +151,12 @@
   * Add support for EFI files</comment>
     <requestid>1034536</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>7510d124803b0f96100d5f8e54d6ffae</srcmd5>
+    <version>4.0.1</version>
+    <time>1668702288</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 4.0.1</comment>
+    <requestid>1036300</requestid>
+  </revision>
 </revisionlist>

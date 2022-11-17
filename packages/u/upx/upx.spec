@@ -17,7 +17,7 @@
 
 
 Name:           upx
-Version:        4.0.0
+Version:        4.0.1
 Release:        0
 Summary:        The Ultimate Packer for eXecutables
 License:        GPL-2.0-or-later
