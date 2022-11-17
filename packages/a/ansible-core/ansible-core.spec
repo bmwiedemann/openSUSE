@@ -19,7 +19,7 @@
 %define pythons python3
 
 Name:           ansible-core
-Version:        2.13.5
+Version:        2.13.6
 Release:        0
 Summary:        Radically simple IT automation
 License:        GPL-3.0-or-later
