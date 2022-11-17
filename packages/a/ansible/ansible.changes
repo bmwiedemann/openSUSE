@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Nov 16 08:27:00 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- remove lowlydba.sqlserver collection as rpmlint throws errors due to powershell:
+  "E: wrong-script-interpreter (Badness: 490) [...]/ansible_collections/lowlydba/sqlserver/plugins/modules/restore.ps1 powershell"
+
+-------------------------------------------------------------------
+Tue Nov 15 10:34:05 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.6.0:
+  Ansible 6.6.0 will include ansible-core 2.13.6 as well as a curated set of
+  Ansible collections to provide a vast number of modules and plugins.
+  * The changelog for ansible-core 2.13 installed by this release of
+    ansible is available here:
+    https://github.com/ansible/ansible/blob/stable-2.13/changelogs/CHANGELOG-v2.13.rst
+  * Collections which have opted into being a part of the Ansible-6
+    unified changelog will have an entry on this page:
+    https://github.com/ansible-community/ansible-build-data/blob/main/6/CHANGELOG-v6.rst
+
+-------------------------------------------------------------------
 Thu Oct 13 04:45:46 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 6.5.0:
