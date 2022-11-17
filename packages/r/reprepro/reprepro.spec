@@ -17,12 +17,12 @@
 
 
 Name:           reprepro
-Version:        5.4.0
+Version:        5.4.1
 Release:        0
 Summary:        Debian repository metadata generator
 License:        GPL-2.0-only AND GPL-2.0-or-later AND MIT
 URL:            https://salsa.debian.org/debian/reprepro
-Source:         http://deb.debian.org/debian/pool/main/r/reprepro/reprepro_%{version}.orig.tar.xz
+Source:         http://deb.debian.org/debian/pool/main/r/reprepro/reprepro_%version.orig.tar.xz
 BuildRequires:  automake
 BuildRequires:  gpgme-devel
 BuildRequires:  libarchive-devel
@@ -51,7 +51,7 @@ Checking signatures of mirrored repositories and creating signatures of the
 generated Package indexes is supported.
 
 %prep
-%autosetup -p1 -n %name-%version
+%autosetup -p1
 find docs -type f -exec chmod -x {} +
 
 %build

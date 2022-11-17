@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 17 17:30:56 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.4.1
+  * If data tar extraction fails, try again as uncompressed.
+
+-------------------------------------------------------------------
 Tue Aug 16 07:58:53 UTC 2022 - Michael Calmer <mc@suse.com>
 
 - Update to version 5.4.0
