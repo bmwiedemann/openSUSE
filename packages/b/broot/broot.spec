@@ -17,7 +17,7 @@
 
 
 Name:           broot
-Version:        1.11.1
+Version:        1.16.2
 Release:        0
 Summary:        A better way to navigate directories
 License:        MIT

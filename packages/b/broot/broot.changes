@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Nov 17 13:54:00 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 1.16.2:
+  * you can restrict the panels in which verbs apply with the verb configuration panels parameter
+  * fixes ctrl-left not usable anymore to remove filtering in preview
+  * status messages now displayed on toggling (for example showing hidden files)
+  * New escaping rules let you skip many \, especially when building regexes
+  * --sort-by-type-dirs-first and --sort-by-type-dirs-last - Fix
+  * modal: in intput mode, uppercase letters don't trigger verbs anymore
+  * selecting lines up or down with the mouse wheel now wraps in both direction
+  * Terminal background luma determination now works on all tested unixes, including MacOS
+  * Major Feature: imports (A configuration file can now import one or several other ones)
+  * advice to hit alt-i and|or alt-h when no file is visible
+  * examples on search modes in help screen
+  * close the staging area when it's emptied with a verb (e.g. on :rm)
+
+-------------------------------------------------------------------
 Fri Jul  8 02:40:04 UTC 2022 - William Brown <william.brown@suse.com>
 
 - Remove dependency on unmaintained rust-packaging
