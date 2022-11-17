@@ -1510,4 +1510,11 @@ is not needed.
     <user>dimstar_suse</user>
     <comment>No docker/podman on the regular DVD; ENOSPACE</comment>
   </revision>
+  <revision rev="211" vrev="209">
+    <srcmd5>6436d7b7ba1c4548ea77dde01fe8ea4f</srcmd5>
+    <version>unknown</version>
+    <time>1668684314</time>
+    <user>dimstar_suse</user>
+    <comment>Lock gnome-backgrounds and libLLVM14 from the DVD</comment>
+  </revision>
 </revisionlist>

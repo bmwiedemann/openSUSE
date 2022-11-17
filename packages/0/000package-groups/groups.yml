@@ -28,6 +28,8 @@ common_locks:
   - kernel-kvmsmall: [locked]
   - kernel-debug: [locked]
   - libLLVM13: [locked]
+  - libLLVM14: [locked]
+  - gnome-backgrounds: [locked]
 
 dvd:
   # We add the kernel-firmware-* packages
