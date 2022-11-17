@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 16 21:17:12 UTC 2022 - Olav Reinert <seroton10@gmail.com>
+
+- Improve fix for build issue against Factory:
+  * Replace git-protocol-file-allow.patch with git-config-for-tests.patch
+
+-------------------------------------------------------------------
 Fri Nov 11 21:45:19 UTC 2022 - Olav Reinert <seroton10@gmail.com>
 
 - Fix build issue against Factory:

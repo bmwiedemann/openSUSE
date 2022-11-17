@@ -1,0 +1,12 @@
+--- homeshick-2.0.0/test/helper.bash.orig	2022-11-16 22:11:08.095666823 +0100
++++ homeshick-2.0.0/test/helper.bash	2022-11-16 22:12:58.279790390 +0100
+@@ -75,6 +75,9 @@
+ 	mk_structure
+ 	# shellcheck source=homeshick.sh
+ 	source "$HOMESHICK_FN_SRC_SH"
++
++    git config --global init.defaultBranch master
++    git config --global protocol.file.allow always
+ }
+ 
+ function setup {

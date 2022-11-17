@@ -27,7 +27,7 @@ Source0:        https://github.com/andsens/homeshick/archive/v%{version}.tar.gz
 Source1:        README-openSUSE.md
 Source99:       homeshick.rpmlintrc
 Patch0:         suse-packaging.patch
-Patch1:         git-protocol-file-allow.patch
+Patch1:         git-config-for-tests.patch
 BuildRequires:  expect
 BuildRequires:  git >= 1.5
 BuildRequires:  iputils
