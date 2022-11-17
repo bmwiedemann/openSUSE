@@ -1517,4 +1517,11 @@ is not needed.
     <user>dimstar_suse</user>
     <comment>Lock gnome-backgrounds and libLLVM14 from the DVD</comment>
   </revision>
+  <revision rev="212" vrev="210">
+    <srcmd5>eaa23661ecdb1040310d8dcb6403e9a4</srcmd5>
+    <version>unknown</version>
+    <time>1668696536</time>
+    <user>dimstar_suse</user>
+    <comment>no docker on ppc64</comment>
+  </revision>
 </revisionlist>
