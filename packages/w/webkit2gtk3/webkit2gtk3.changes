@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 17 13:29:15 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update _constraints for webkit2gtk3:gtk3-soup2 on aarch64 to
+  avoid slow workers and OOM
+
+-------------------------------------------------------------------
 Mon Nov  7 15:20:15 UTC 2022 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 2.38.2 (boo#1205120 boo#1205123 boo#1205124):

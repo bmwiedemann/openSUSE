@@ -1348,4 +1348,12 @@
     <comment>Resub, tweaked .changes from the past (forwarded request 1034358 from iznogood)</comment>
     <requestid>1034432</requestid>
   </revision>
+  <revision rev="155" vrev="2">
+    <srcmd5>3da23e4869fe0a6ee9a1f31929f6e2bd</srcmd5>
+    <version>2.38.2</version>
+    <time>1668702244</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1036474</requestid>
+  </revision>
 </revisionlist>

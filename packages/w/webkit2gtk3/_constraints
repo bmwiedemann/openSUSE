@@ -9,6 +9,17 @@
   </hardware>
   <overwrite>
     <conditions>
+      <arch>aarch64</arch>
+      <package>webkit2gtk3:gtk3-soup2</package>
+    </conditions>
+     <hardware>
+      <cpu>
+        <flag>asimdrdm</flag>
+      </cpu>
+    </hardware>
+  </overwrite>
+  <overwrite>
+    <conditions>
       <arch>armv6l</arch>
       <arch>armv7l</arch>
     </conditions>
