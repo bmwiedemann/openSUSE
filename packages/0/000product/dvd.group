@@ -267,7 +267,6 @@
     <package name="calligra-extras-filemanagertemplates" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="canberra-gtk-play" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="cantarell-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="catatonit" supportstatus="unsupported"/> <!-- reason: dvd:docker -->
     <package name="catfish" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="catfish-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="cd-discid" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -302,16 +301,12 @@
     <package name="clutter-gtk-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="clutter-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="cm-unicode-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="cni" supportstatus="unsupported"/> <!-- reason: dvd:podman-cni-config -->
-    <package name="cni-plugins" supportstatus="unsupported"/> <!-- reason: dvd:podman-cni-config -->
     <package name="cogl-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="colord" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="colord-color-profiles" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="colord-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="compat-usrmerge-tools" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="conmon" supportstatus="unsupported"/> <!-- reason: dvd:podman-cni-config -->
     <package name="container-selinux" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="containerd" supportstatus="unsupported"/> <!-- reason: dvd:docker -->
     <package name="coreutils" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="coreutils-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="cpio" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -400,9 +395,6 @@
     <package name="dnsmasq" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="docbook-xsl-stylesheets" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="docbook_4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="docker" supportstatus="unsupported"/> <!-- reason: dvd:docker -->
-    <package name="docker-bash-completion" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="docker-zsh-completion" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="dolphin" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="dolphin-part" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="dolphin-part-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -533,7 +525,6 @@
     <package name="frei0r-plugins" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="fribidi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="fuse" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="fuse-overlayfs" supportstatus="unsupported"/> <!-- reason: dvd:podman-cni-config -->
     <package name="fuse3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="fwupd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="fwupd-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -1780,7 +1771,6 @@
     <package name="libcolord2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libcolorhug2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libcom_err2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libcontainers-common" supportstatus="unsupported"/> <!-- reason: dvd:podman-cni-config -->
     <package name="libcorosync_common4" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libcpg4" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libcpupower0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
@@ -3488,8 +3478,6 @@
     <package name="plymouth-theme-bgrt" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="plymouth-theme-spinner" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="pngquant" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="podman" supportstatus="unsupported"/> <!-- reason: dvd:podman-cni-config -->
-    <package name="podman-cni-config" supportstatus="unsupported"/> <!-- reason: dvd:podman-cni-config -->
     <package name="polari" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="polari-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="policycoreutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
@@ -4160,7 +4148,6 @@
     <package name="ruby3.1-rubygem-zeitwerk" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="rubygem-passenger" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="rubygem-passenger-apache2" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="runc" supportstatus="unsupported"/> <!-- reason: dvd:docker -->
     <package name="rzip" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="rzsz" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="sac" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -4238,7 +4225,6 @@
     <package name="skanlite-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="skkdic" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="slang-slsh" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="slirp4netns" supportstatus="unsupported"/> <!-- reason: dvd:podman-cni-config -->
     <package name="slrn" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="slrn-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="smartmontools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -4933,7 +4919,6 @@
     <package name="bbswitch-kmp-default" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="cppcheck" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="crash-kmp-default" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="criu" supportstatus="unsupported"/> <!-- reason: dvd:docker -->
     <package name="dpdk-kmp-default" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="drbd" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="drbd-kmp-default" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -5070,7 +5055,6 @@
     <package name="libmount1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libnbd0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libndctl6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
-    <package name="libnet9" supportstatus="unsupported"/> <!-- reason: dvd:docker -->
     <package name="libnettle8-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libnscd1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libnsl3-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -5164,7 +5148,6 @@
     <package name="python310-argcomplete" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python310-argparse-manpage" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python310-ldap" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
-    <package name="python310-protobuf" supportstatus="unsupported"/> <!-- reason: dvd:docker -->
     <package name="python310-python-dateutil" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python310-python-slugify" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python310-text-unidecode" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->

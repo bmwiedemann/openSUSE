@@ -3,7 +3,7 @@ unsorted:
   - 0ad-data 
   - 2048-cli 
   - 2ping 
-  - 389-ds-devel: [x86_64] # devel package of dvd:libsvrcore0 
+  - 389-ds-devel: [x86_64] # devel package of dvd:lib389 
   - 389-ds-snmp: [x86_64] 
   - 3omns 
   - 4pane 
@@ -2132,8 +2132,10 @@ unsorted:
   - cmus-plugin-vorbis 
   - cmus-plugin-wavpack 
   - cmus-plugins-all 
+  - cni: [i586] 
   - cni-plugin-dnsname 
   - cni-plugin-flannel 
+  - cni-plugins: [i586] 
   - cntlm 
   - cobbler 
   - cobbler-tests 
@@ -2267,6 +2269,7 @@ unsorted:
   - conky 
   - conky-doc 
   - conman 
+  - conmon: [i586] 
   - connman 
   - connman-client 
   - connman-devel 
@@ -2423,7 +2426,7 @@ unsorted:
   - cri-o: [x86_64] 
   - cri-o-kubeadm-criconfig: [x86_64] 
   - cri-tools 
-  - criu-devel: [x86_64] # devel package of dvd:criu 
+  - criu-devel: [x86_64] # devel package of opensuse_microos:criu 
   - criu-plugin-amdgpu: [x86_64] 
   - crmsh 
   - crmsh-scripts 
@@ -3041,6 +3044,7 @@ unsorted:
   - docbook_3 
   - docbook_5 
   - docbook_5-doc 
+  - docker-bash-completion: [i586] 
   - docker-bench-security 
   - docker-buildx 
   - docker-client-java 
@@ -3055,6 +3059,7 @@ unsorted:
   - docker-kubic-zsh-completion: [x86_64] 
   - docker-lock 
   - docker-machine-driver-kvm2: [x86_64] 
+  - docker-zsh-completion 
   - docker_auth 
   - docparser-devel 
   - docserv-auxserver 
@@ -4080,6 +4085,7 @@ unsorted:
   - fuse-doc 
   - fuse-exfat 
   - fuse-oscfs 
+  - fuse-overlayfs: [i586] 
   - fuse2fs 
   - fuse3-devel 
   - fuse3-doc 
@@ -10297,10 +10303,10 @@ unsorted:
   - libcelt-devel-32bit: [x86_64] 
   - libcelt0-2-32bit: [x86_64] 
   - libcelt051-0 
-  - libcephfs-devel: [x86_64] # devel package of dvd:librbd1 
+  - libcephfs-devel: [x86_64] # devel package of dvd:librados2 
   - libcephfs2: [x86_64] 
   - libcephsqlite: [x86_64] 
-  - libcephsqlite-devel: [x86_64] # devel package of dvd:librbd1 
+  - libcephsqlite-devel: [x86_64] # devel package of dvd:librados2 
   - libceres-devel 
   - libceres2 
   - libcerf-devel 
@@ -10449,6 +10455,7 @@ unsorted:
   - libconfuse-devel 
   - libconfuse-lang 
   - libconfuse2 
+  - libcontainers-common: [i586] 
   - libcorosync-devel 
   - libcorosync_common4-32bit: [x86_64] 
   - libcorrect-devel 
@@ -13606,8 +13613,8 @@ unsorted:
   - librabbitmq-devel 
   - librabbitmq4 
   - libradcli5 
-  - librados-devel: [x86_64] # devel package of dvd:librbd1 
-  - libradospp-devel: [x86_64] # devel package of dvd:librbd1 
+  - librados-devel: [x86_64] # devel package of dvd:librados2 
+  - libradospp-devel: [x86_64] # devel package of dvd:librados2 
   - libraft2 
   - libraptor-devel 
   - libraptor2-0-32bit: [x86_64] 
@@ -13630,7 +13637,7 @@ unsorted:
   - libraw1394-tools 
   - libraw20-32bit: [x86_64] 
   - libraylib420 
-  - librbd-devel: [x86_64] # devel package of dvd:librbd1 
+  - librbd-devel: [x86_64] # devel package of dvd:librados2 
   - librbio2 
   - librbl1 
   - librcc-devel 
@@ -13817,7 +13824,7 @@ unsorted:
   - librevenge-doc 
   - librevenge-generators-0_0-0 
   - librfxencode0 
-  - librgw-devel: [x86_64] # devel package of dvd:librbd1 
+  - librgw-devel: [x86_64] # devel package of dvd:librados2 
   - librgw2: [x86_64] 
   - librhash0 
   - librime-devel 
@@ -21104,6 +21111,8 @@ unsorted:
   - pocl-devel 
   - poco-cpspc 
   - poco-devel 
+  - podman: [i586] 
+  - podman-cni-config: [i586] 
   - podman-docker 
   - podman-remote 
   - podofo 
@@ -32652,7 +32661,7 @@ unsorted:
   - radcli-devel 
   - radeontop 
   - radeontop-lang 
-  - rados-objclass-devel: [x86_64] # devel package of dvd:librbd1 
+  - rados-objclass-devel: [x86_64] # devel package of dvd:librados2 
   - raft-devel 
   - rage 
   - rage-encryption: [x86_64] 
@@ -33508,6 +33517,7 @@ unsorted:
   - slf4j-reload4j 
   - slf4j-sources 
   - slib 
+  - slirp4netns: [i586] 
   - slop 
   - slop-devel 
   - sluice 
