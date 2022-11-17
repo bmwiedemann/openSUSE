@@ -18,7 +18,7 @@
 
 %define cpan_name Chart
 Name:           perl-Chart
-Version:        2.403.7
+Version:        2.403.8
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Series of charting modules
@@ -31,10 +31,12 @@ BuildRequires:  perl-macros
 BuildRequires:  perl(Carp) >= 1.35
 BuildRequires:  perl(File::Temp) >= 0.19
 BuildRequires:  perl(GD) >= 2
+BuildRequires:  perl(Graphics::Toolkit::Color) >= 1
 BuildRequires:  perl(Test::More) >= 1.3
 BuildRequires:  perl(Test::Warn) >= 0.30
 Requires:       perl(Carp) >= 1.35
 Requires:       perl(GD) >= 2
+Requires:       perl(Graphics::Toolkit::Color) >= 1
 %{perl_requires}
 
 %description
