@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Nov 16 10:18:48 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 2.3.7
+  * libxft issue #15
+    https://gitlab.freedesktop.org/xorg/lib/libxft/-/issues/15
+    XftFontLoadGlyphs for mono font returns wrong info in extents from
+    XftTextExtentsUtf8 for variable chars
+    Patch by Scott Mcdermott, based on
+    https://github.com/googlefonts/Inconsolata/issues/42
+  * fix compiler warning
+  * libxft issue #16
+    https://gitlab.freedesktop.org/xorg/lib/libxft/-/issues/16
+    Stack gets smashed in fonts with colors when calling XftGlyphRender
+    BGRA changes made incorrect comparison for local vs allocated
+    buffer in XftGlyphSpecRender
+  * stdint.h header is needed for SIZE_MAX
+
+-------------------------------------------------------------------
 Sat Sep 10 17:08:20 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 2.3.6
