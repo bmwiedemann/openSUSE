@@ -57,4 +57,14 @@ https://github.com/quantumlib/Cirq/issues/3154</comment>
 </comment>
     <requestid>1010893</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>efc43a92adde4f6f987d2ec7e7917fed</srcmd5>
+    <version>1.0.0</version>
+    <time>1668702277</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove not needed python-six dependency
+- Remove python_module macro definition
+</comment>
+    <requestid>1036267</requestid>
+  </revision>
 </revisionlist>

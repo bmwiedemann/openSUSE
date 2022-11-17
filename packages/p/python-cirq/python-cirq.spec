@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define packagename Cirq
 %define skip_python2 1
 %define plainpython python
@@ -73,7 +72,6 @@ BuildRequires:  %{python_module qcs-api-client >= 0.8.0}
 BuildRequires:  %{python_module retrying >= 1.3.3}
 BuildRequires:  %{python_module rfc3339 >= 6.2}
 BuildRequires:  %{python_module rfc3986 >= 1.5.0}
-BuildRequires:  %{python_module six >= 1.16.0}
 BuildRequires:  %{python_module sniffio >= 1.2.0}
 BuildRequires:  %{python_module toml >= 0.10.2}
 %endif
@@ -197,7 +195,6 @@ Requires:       python-qcs-api-client >= 0.8.0
 Requires:       python-retrying >= 1.3.3
 Requires:       python-rfc3339 >= 6.2
 Requires:       python-rfc3986 >= 1.5.0
-Requires:       python-six >= 1.16.0
 Requires:       python-sniffio >= 1.2.0
 Requires:       python-toml >= 0.10.2
 

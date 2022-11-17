@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 16 09:16:50 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove not needed python-six dependency
+- Remove python_module macro definition
+
+-------------------------------------------------------------------
 Fri Oct 14 09:50:15 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 1.0.0:
