@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov 16 15:51:28 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20221109.00
+  * Validate user key for whitespace chars (#188)
+- from version 20221107.00
+  * Fix typo with wsfc agent (#189)
+- from version 20221104.00
+  * Updates to gce-workload-cert-refresh (#186)
+- from version 20221025.00
+  * Add workload cert refresh to preset (#185)
+
+-------------------------------------------------------------------
 Fri Oct 21 11:21:06 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20221018.00

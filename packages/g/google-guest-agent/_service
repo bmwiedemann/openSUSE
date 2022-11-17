@@ -3,8 +3,8 @@
     <param name="url">https://github.com/GoogleCloudPlatform/guest-agent/</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="versionformat">20221018.00</param>
-    <param name="revision">20221018.00</param>
+    <param name="versionformat">20221109.00</param>
+    <param name="revision">20221109.00</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="recompress" mode="disabled">
@@ -15,6 +15,6 @@
     <param name="basename">guest-agent</param>
   </service>
   <service name="go_modules" mode="disabled">
-    <param name="archive">guest-agent-20221018.00.tar.gz</param>
+    <param name="archive">guest-agent-20221109.00.tar.gz</param>
   </service>
 </services>

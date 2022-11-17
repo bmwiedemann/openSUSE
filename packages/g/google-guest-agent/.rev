@@ -198,4 +198,19 @@
     <comment></comment>
     <requestid>1030399</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>31806506efb86f0a42abb1948f7b46e3</srcmd5>
+    <version>20221109.00</version>
+    <time>1668702275</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20221109.00
+  * Validate user key for whitespace chars (#188)
+- from version 20221107.00
+  * Fix typo with wsfc agent (#189)
+- from version 20221104.00
+  * Updates to gce-workload-cert-refresh (#186)
+- from version 20221025.00
+  * Add workload cert refresh to preset (#185) (forwarded request 1036258 from glaubitz)</comment>
+    <requestid>1036260</requestid>
+  </revision>
 </revisionlist>
