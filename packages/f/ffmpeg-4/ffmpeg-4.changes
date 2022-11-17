@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 16 01:31:02 UTC 2022 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add ffmpeg-CVE-2022-3964.patch: Backport from upstream to fix
+  out of bounds read in update_block_in_prev_frame() (bsc#1205388).
+
+-------------------------------------------------------------------
 Mon Oct 10 11:18:30 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 4.4.3:

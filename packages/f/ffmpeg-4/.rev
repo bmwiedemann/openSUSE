@@ -520,4 +520,13 @@
   * ffmpeg-4.2-dlopen-fdk_aac.patch (forwarded request 1009347 from iznogood)</comment>
     <requestid>1009591</requestid>
   </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>f20209697960b9cdc5cd7459469567b4</srcmd5>
+    <version>4.4.3</version>
+    <time>1668702231</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ffmpeg-CVE-2022-3964.patch: Backport from upstream to fix
+  out of bounds read in update_block_in_prev_frame() (bsc#1205388). (forwarded request 1035935 from AZhou)</comment>
+    <requestid>1036210</requestid>
+  </revision>
 </revisionlist>
