@@ -66,6 +66,7 @@ BuildRequires:  pkgconfig(dbusmenu-gtk3-0.4)
 BuildRequires:  pkgconfig(gtk+-3.0)
 #BuildRequires:  pkgconfig(xapp) >= 1.5.0
 %endif
+Provides:       libappindicator-gtk3
 
 %description
 A library to allow applications to export a menu into the Unity Menu bar. Based

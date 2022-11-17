@@ -164,4 +164,12 @@
     <comment>- Update to version 12.10.1~bzr20200706.298.</comment>
     <requestid>934235</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>cf095544e3bb8e3e0304d29c263db639</srcmd5>
+    <version>12.10.1~bzr20200706.298</version>
+    <time>1668702221</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1035925</requestid>
+  </revision>
 </revisionlist>

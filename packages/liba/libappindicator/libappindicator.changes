@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov 12 07:07:18 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Let the rpm provide libappindicator-gtk3 for EL8 compat
+
+-------------------------------------------------------------------
 Sat Nov 20 19:39:20 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 12.10.1~bzr20200706.298 (chages since
