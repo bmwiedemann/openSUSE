@@ -63,4 +63,20 @@
     <comment></comment>
     <requestid>992685</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>30d33d7a3853e4ad4aa0689ee577dbc2</srcmd5>
+    <version>0.8.0</version>
+    <time>1668702279</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.0
+  * Remember last successfully opened session per user
+  * Suppress power command output
+  * Allow customization of time format
+  * Added a user selection list from a defined UID range
+  * Miscellaneous UX improvements
+  * Locales improvements 
+- add tuigreet-version.patch to fix incorrect 0.7.3 version
+</comment>
+    <requestid>1036285</requestid>
+  </revision>
 </revisionlist>

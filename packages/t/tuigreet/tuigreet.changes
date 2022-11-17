@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov 16 18:19:10 UTC 2022 - Denys Kondratenko <stdden@opensuse.org>
+
+- Update to 0.8.0
+  * Remember last successfully opened session per user
+  * Suppress power command output
+  * Allow customization of time format
+  * Added a user selection list from a defined UID range
+  * Miscellaneous UX improvements
+  * Locales improvements 
+- add tuigreet-version.patch to fix incorrect 0.7.3 version
+
+-------------------------------------------------------------------
 Thu Aug  4 03:52:52 UTC 2022 - William Brown <william.brown@suse.com>
 
 - bsc#1182059 - CVE-2021-21299 - hyper request smuggling

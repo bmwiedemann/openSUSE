@@ -17,7 +17,7 @@
 
 
 Name:           tuigreet
-Version:        0.7.1
+Version:        0.8.0
 Release:        0
 Summary:        Graphical console greeter for greetd
 License:        GPL-3.0-only
@@ -26,6 +26,7 @@ URL:            https://github.com/apognu/tuigreet
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        cargo_config
+Patch0:         tuigreet-version.patch
 BuildRequires:  cargo-packaging
 Recommends:     greetd
 
@@ -34,6 +35,7 @@ Console UI greeter (using tui-rs)
 
 %prep
 %setup -qa1
+%patch0 -p1
 mkdir .cargo
 cp %{SOURCE2} .cargo/config
 
