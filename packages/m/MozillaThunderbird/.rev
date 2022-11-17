@@ -4571,4 +4571,41 @@ I cannot test locally unfortunately.
     https://www.thunderbird.net/en-US/thunderbird/102.4.2/releasenotes</comment>
     <requestid>1033698</requestid>
   </revision>
+  <revision rev="298" vrev="1">
+    <srcmd5>73582148d549960c84b02dae7020f5e2</srcmd5>
+    <version>102.5.0</version>
+    <time>1668702246</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird 102.5.0
+  * changes and fixes as described here
+    https://www.thunderbird.net/en-US/thunderbird/102.5.0/releasenotes
+  MFSA 2022-49 (bsc#1205270)
+  * CVE-2022-45403 (bmo#1762078)
+    Service Workers might have learned size of cross-origin media files
+  * CVE-2022-45404 (bmo#1790815)
+    Fullscreen notification bypass
+  * CVE-2022-45405 (bmo#1791314)
+    Use-after-free in InputStream implementation
+  * CVE-2022-45406 (bmo#1791975)
+    Use-after-free of a JavaScript Realm
+  * CVE-2022-45408 (bmo#1793829)
+    Fullscreen notification bypass via windowName
+  * CVE-2022-45409 (bmo#1796901)
+    Use-after-free in Garbage Collection
+  * CVE-2022-45410 (bmo#1658869)
+    ServiceWorker-intercepted requests bypassed SameSite cookie policy
+  * CVE-2022-45411 (bmo#1790311)
+    Cross-Site Tracing was possible via non-standard override headers
+  * CVE-2022-45412 (bmo#1791029)
+    Symlinks may resolve to partially uninitialized buffers
+  * CVE-2022-45416 (bmo#1793676)
+    Keystroke Side-Channel Leakage
+  * CVE-2022-45418 (bmo#1795815)
+    Custom mouse cursor could have been drawn over browser UI
+  * CVE-2022-45420 (bmo#1792643)
+    Iframe contents could be rendered outside the iframe
+  * CVE-2022-45421 (bmo#1767920, bmo#1789808, bmo#1794061)
+    Memory safety bugs fixed in Thunderbird 102.5</comment>
+    <requestid>1036233</requestid>
+  </revision>
 </revisionlist>
