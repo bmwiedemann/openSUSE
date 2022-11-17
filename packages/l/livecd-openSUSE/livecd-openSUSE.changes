@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 17 10:22:49 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- list-{common,x11,installer}: Don't install YaST on the rescue CD anymore
+
+-------------------------------------------------------------------
 Sun Sep 25 14:20:12 UTC 2022 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - Re-add tumbler: build fixed 

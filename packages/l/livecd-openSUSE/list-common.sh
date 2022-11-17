@@ -166,13 +166,6 @@ buildignore hplip
 buildignore system-config-printer-applet
 buildignore udev-configure-printer
 
-# We don't need those
-buildignore yast2-samba-client
-buildignore yast2-vpn
-buildignore yast2-journal
-buildignore yast2-auth-client
-buildignore yast2-sudo
-
 # systemd-coredump makes no sense on a live image: there are no debuginfo installed
 buildignore systemd-coredump
 buildignore systemd-doc
@@ -214,10 +207,6 @@ buildignore vim-data
 buildignore vim
 install vim-small
 
-# This was previously required by base
-install patterns-yast-yast2_basis
-installPattern yast2_basis
-
 # This was previously required by rest_cd_core
 install kernel-default
 # The compressed (-all) version results in a bigger .iso!
@@ -227,12 +216,6 @@ installPattern enhanced_base
 install patterns-base-x11
 installPattern x11
 installPattern sw_management
-install yast2-bootloader
-install yast2-country
-install yast2-hardware-detection
-install yast2-network
-install yast2-proxy
-install yast2-storage-ng
 
 # For working with filesystems
 install bcache-tools
@@ -298,18 +281,6 @@ install xf86-video-v4l
 install xf86-video-vesa
 #install xf86-video-voodoo
 install xz
-install yast2-trans-de
-if [ "$distro" = "leap" ]; then
-	install yast2-trans-cs
-	install yast2-trans-da
-	install yast2-trans-es
-	install yast2-trans-ja
-	install yast2-trans-pl
-	install yast2-trans-ru
-	install yast2-trans-sv
-	install yast2-trans-zh_CN
-	install yast2-trans-zh_TW
-fi
 install zd1211-firmware
 install zip
 

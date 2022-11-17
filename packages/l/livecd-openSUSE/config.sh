@@ -78,9 +78,6 @@ if [ "$desktop" = "x11" ]; then
 	# Only used for X11 acceleration on vmwgfx, saves ~47MiB
 	rpm -e --nodeps Mesa-gallium
 
-	# Surely that specific font isn't necessary
-	rpm -e --nodeps google-poppins-fonts
-
 	# Generated on boot if missing
 	rm /etc/udev/hwdb.bin
 fi

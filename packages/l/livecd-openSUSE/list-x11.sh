@@ -34,6 +34,13 @@ buildignore sbl
 buildignore gnome-online-accounts
 buildignore snapper
 
+# No YaST
+buildignore patterns-yast-yast2_basis
+buildignore yast2-control-center
+buildignore yast2-control-center-qt
+# Note: OBS doesn't understand this, but kiwi/zypper do.
+buildignore libyui*
+
 buildignore Mesa-libva
 
 # No python2 necessary
@@ -45,7 +52,6 @@ buildignore libpeas-loader-python
 
 buildignore aspell-en
 buildignore ModemManager
-buildignore yast2-printer
 buildignore avahi
 buildignore fprintd
 buildignore accountsservice
@@ -128,7 +134,6 @@ install dbus-1-x11
 install desktop-file-utils
 install libgnomesu
 install libxfce4ui-tools
-install libyui-qt-pkg
 install pinentry-gtk2
 install shared-mime-info
 install xdg-user-dirs-gtk
@@ -136,7 +141,6 @@ install xdg-utils
 install NetworkManager-applet
 install xfce4-panel-plugin-xkb
 install xfce4-terminal
-install yast2-control-center-qt
 
 buildignore argyllcms
 

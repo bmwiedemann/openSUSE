@@ -1558,4 +1558,12 @@
     <user>dimstar_suse</user>
     <comment>- Re-add tumbler: build fixed</comment>
   </revision>
+  <revision rev="195" vrev="195">
+    <srcmd5>2514b3e1573fbe10a1c0ffeceedbb749</srcmd5>
+    <version>unknown</version>
+    <time>1668683650</time>
+    <user>dimstar_suse</user>
+    <comment>- list-{common,x11,installer}: Don't install YaST on the rescue CD anymore (forwarded request 1036428 from favogt)</comment>
+    <requestid>1036429</requestid>
+  </revision>
 </revisionlist>

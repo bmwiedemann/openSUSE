@@ -301,16 +301,6 @@
     <ignore name="system-config-printer-applet"/>
     <package name="aaa_base" replaces="udev-configure-printer"/>
     <ignore name="udev-configure-printer"/>
-    <package name="aaa_base" replaces="yast2-samba-client"/>
-    <ignore name="yast2-samba-client"/>
-    <package name="aaa_base" replaces="yast2-vpn"/>
-    <ignore name="yast2-vpn"/>
-    <package name="aaa_base" replaces="yast2-journal"/>
-    <ignore name="yast2-journal"/>
-    <package name="aaa_base" replaces="yast2-auth-client"/>
-    <ignore name="yast2-auth-client"/>
-    <package name="aaa_base" replaces="yast2-sudo"/>
-    <ignore name="yast2-sudo"/>
     <package name="aaa_base" replaces="systemd-coredump"/>
     <ignore name="systemd-coredump"/>
     <package name="aaa_base" replaces="systemd-doc"/>
@@ -351,8 +341,6 @@
     <package name="aaa_base" replaces="vim"/>
     <ignore name="vim"/>
     <package name="vim-small"/>
-    <package name="patterns-yast-yast2_basis"/>
-    <namedCollection name="yast2_basis"/>
     <package name="kernel-default"/>
     <package name="kernel-firmware"/>
     <package name="patterns-base-enhanced_base"/>
@@ -360,12 +348,6 @@
     <package name="patterns-base-x11"/>
     <namedCollection name="x11"/>
     <namedCollection name="sw_management"/>
-    <package name="yast2-bootloader"/>
-    <package name="yast2-country"/>
-    <package name="yast2-hardware-detection"/>
-    <package name="yast2-network"/>
-    <package name="yast2-proxy"/>
-    <package name="yast2-storage-ng"/>
     <package name="bcache-tools"/>
     <package name="btrfsprogs"/>
     <package name="cryptsetup"/>
@@ -426,16 +408,6 @@
     <package name="xf86-video-v4l"/>
     <package name="xf86-video-vesa"/>
     <package name="xz"/>
-    <package name="yast2-trans-de"/>
-    <package name="yast2-trans-cs"/>
-    <package name="yast2-trans-da"/>
-    <package name="yast2-trans-es"/>
-    <package name="yast2-trans-ja"/>
-    <package name="yast2-trans-pl"/>
-    <package name="yast2-trans-ru"/>
-    <package name="yast2-trans-sv"/>
-    <package name="yast2-trans-zh_CN"/>
-    <package name="yast2-trans-zh_TW"/>
     <package name="zd1211-firmware"/>
     <package name="zip"/>
     <package name="aaa_base" replaces="ntp"/>
@@ -472,6 +444,34 @@
     <ignore name="gnome-online-accounts"/>
     <package name="aaa_base" replaces="pragha"/>
     <ignore name="pragha"/>
+    <package name="patterns-yast-yast2_basis"/>
+    <namedCollection name="yast2_basis"/>
+    <package name="yast2-bootloader"/>
+    <package name="yast2-country"/>
+    <package name="yast2-hardware-detection"/>
+    <package name="yast2-network"/>
+    <package name="yast2-proxy"/>
+    <package name="yast2-storage-ng"/>
+    <package name="aaa_base" replaces="yast2-samba-client"/>
+    <ignore name="yast2-samba-client"/>
+    <package name="aaa_base" replaces="yast2-vpn"/>
+    <ignore name="yast2-vpn"/>
+    <package name="aaa_base" replaces="yast2-journal"/>
+    <ignore name="yast2-journal"/>
+    <package name="aaa_base" replaces="yast2-auth-client"/>
+    <ignore name="yast2-auth-client"/>
+    <package name="aaa_base" replaces="yast2-sudo"/>
+    <ignore name="yast2-sudo"/>
+    <package name="yast2-trans-de"/>
+    <package name="yast2-trans-cs"/>
+    <package name="yast2-trans-da"/>
+    <package name="yast2-trans-es"/>
+    <package name="yast2-trans-ja"/>
+    <package name="yast2-trans-pl"/>
+    <package name="yast2-trans-ru"/>
+    <package name="yast2-trans-sv"/>
+    <package name="yast2-trans-zh_CN"/>
+    <package name="yast2-trans-zh_TW"/>
     <package name="live-net-installer"/>
     <package name="skelcd-openSUSE"/>
     <package name="setxkbmap"/>
