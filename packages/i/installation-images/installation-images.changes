@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Thu Nov 17 12:19:59 UTC 2022 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#615
+- systemd lib moved to /usr/lib64
+- 17.65
+
+--------------------------------------------------------------------
 Thu Oct 20 15:19:57 UTC 2022 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#613
