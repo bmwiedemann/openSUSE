@@ -1,0 +1,29 @@
+Index: pyheif-release-0.7.0/tests/test_read.py
+===================================================================
+--- pyheif-release-0.7.0.orig/tests/test_read.py
++++ pyheif-release-0.7.0/tests/test_read.py
+@@ -3,7 +3,6 @@ import glob
+ import io
+ from pathlib import Path
+ 
+-import piexif
+ from PIL import Image, ImageCms
+ import pyheif.reader
+ import pytest
+@@ -67,16 +66,6 @@ def test_check_heif_properties(heif_file
+     assert len(heif_file.data) > 0
+ 
+ 
+-def test_read_exif_metadata(heif_file):
+-    for m in heif_file.metadata or []:
+-        if m["type"] == "Exif":
+-            exif_dict = piexif.load(m["data"])
+-            assert "0th" in exif_dict
+-            assert len(exif_dict["0th"]) > 0
+-            assert "Exif" in exif_dict
+-            assert len(exif_dict["Exif"]) > 0
+-
+-
+ def test_read_icc_color_profile(heif_file):
+     if heif_file.color_profile and heif_file.color_profile["type"] in ["prof", "rICC"]:
+         profile = io.BytesIO(heif_file.color_profile["data"])

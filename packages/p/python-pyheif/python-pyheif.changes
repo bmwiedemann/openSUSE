@@ -1,0 +1,42 @@
+-------------------------------------------------------------------
+Wed Nov 16 13:57:21 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Reintroduce packman compatible bcond_with x265 support.
+- Add dont-test-x265-files.patch so that plain Tumbleweed Factory
+  can test this package without x265 support.
+
+-------------------------------------------------------------------
+Fri Oct  7 08:21:45 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Add comment about libheif x265 support
+
+-------------------------------------------------------------------
+Thu Jun 21 14:29:30 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Enable test suite
+  * add remove-piexif.patch
+
+-------------------------------------------------------------------
+Mon Jun 20 09:26:13 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Use tarball from GitHub.
+
+-------------------------------------------------------------------
+Wed Jun 15 20:32:49 UTC 2022 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- add tests directory retrieved from github
+- pytest still fails due to a missing dependency 
+	* also needs the piexif module which is not currently in factory
+
+-------------------------------------------------------------------
+Wed Jun 15 15:49:15 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Some specfile fixes
+  * package name match for debuginfo extraction
+  * don't use catchalls in filelists
+  * prepare for test suite
+
+-------------------------------------------------------------------
+Wed Jun 15 03:35:00 UTC 2022 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- initial version 0.7.0

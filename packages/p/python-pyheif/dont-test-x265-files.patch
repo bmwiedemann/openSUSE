@@ -1,0 +1,17 @@
+The heic_files and hif_files tests fail when there is no x265 support compiled into libheif
+
+Index: pyheif-release-0.7.0/tests/test_read.py
+===================================================================
+--- pyheif-release-0.7.0.orig/tests/test_read.py
++++ pyheif-release-0.7.0/tests/test_read.py
+@@ -8,8 +8,8 @@ import pyheif.reader
+ import pytest
+ 
+ 
+-heic_files = list(Path().glob("tests/images/**/*.heic"))
+-hif_files = list(Path().glob("tests/images/**/*.HIF"))
++heic_files = []
++hif_files = []
+ avif_files = list(Path().glob("tests/images/**/*.avif"))
+ heif_files = heic_files + hif_files + avif_files
+ 
