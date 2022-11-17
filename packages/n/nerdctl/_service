@@ -4,7 +4,7 @@
     <param name="url">https://github.com/containerd/nerdctl.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v0.19.0</param>
+    <param name="revision">v1.0.0</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">v(.*)</param>

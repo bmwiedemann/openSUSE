@@ -24,13 +24,13 @@
 %global import_path     %{provider_prefix}
 
 Name:           nerdctl
-Version:        0.19.0
+Version:        1.0.0
 Release:        0
 Summary:        Docker-compatible CLI for containerd
 License:        Apache-2.0
 URL:            https://github.com/containerd/nerdctl
 Source:         %{name}-%{version}.tar.gz
-Source1:        vendor.tar.gz
+Source1:        vendor.tar.xz
 BuildRequires:  golang(API) >= 1.18
 Requires:       buildkit
 Requires:       cni-plugins

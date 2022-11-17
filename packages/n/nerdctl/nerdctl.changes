@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Nov 12 20:24:02 UTC 2022 - contact@marknefedov.dev
+- Update to version 1.0.0:
+  * nerdctl run
+    * Add --log-driver=syslog
+    * Add --log-opt=log-path=<LOGPATH> option for json-file logging drivers
+    * Add --mac-address flag
+    * Support --pid=container:<CONTAINER>
+  * nerdctl build:
+    * Support --build-arg args without explicit value
+    * Support --output=DIR as an alias of --output type=local,dest=<DIR>
+  * nerdctl compose:
+    * Add nerdctl compose version command
+  * nerdctl-full:
+    * Update imgcrypt (1.1.7), BuildKit (0.10.5), stargz-snapshotter (0.12.1), Kubo (0.16.0)
+
+-------------------------------------------------------------------
 Fri Apr 22 12:25:02 UTC 2022 - rpm@fthiessen.de
 
 - Update to version 0.19.0:
