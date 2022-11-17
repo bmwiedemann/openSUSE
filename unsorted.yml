@@ -1828,6 +1828,7 @@ unsorted:
   - caslon-fonts 
   - casync 
   - catalan-pos-dict 
+  - catatonit: [i586] 
   - catcodec 
   - catimg 
   - catimg-zsh-completion 
@@ -2305,6 +2306,7 @@ unsorted:
   - container-diff 
   - container-registry-systemd 
   - container-support-utils 
+  - containerd: [i586] 
   - containerd-ctr 
   - containerized-data-importer-api: [x86_64] 
   - containerized-data-importer-cloner: [x86_64] 
@@ -3044,6 +3046,7 @@ unsorted:
   - docbook_3 
   - docbook_5 
   - docbook_5-doc 
+  - docker: [i586] 
   - docker-bash-completion: [i586] 
   - docker-bench-security 
   - docker-buildx 
@@ -11027,7 +11030,6 @@ unsorted:
   - libfplll7 
   - libfpm_helper-devel 
   - libfpm_helper0 
-  - libfpm_pb0 
   - libfprint-2-2-32bit: [x86_64] 
   - libfprint-2-tod1 
   - libfprint-2-tod1-32bit: [x86_64] 
@@ -13583,7 +13585,6 @@ unsorted:
   - libquadmath0-gcc11-32bit: [x86_64] 
   - libquadmath0-gcc7 
   - libquadmath0-gcc7-32bit: [x86_64] 
-  - libquagga_pb0 
   - libquazip1-qt5-1_3_0 
   - libquazip1-qt6-1_3_0 
   - libquicktime 
@@ -19059,6 +19060,7 @@ unsorted:
   - patterns-devel-python-devel_python3 
   - patterns-devel-ruby-devel_ruby 
   - patterns-devel-tcl-devel_tcl 
+  - patterns-devel-vulkan-devel_vulkan 
   - patterns-enlightenment-enlightenment 
   - patterns-gnome-devel_gnome 
   - patterns-gnome-gnome_ide 
@@ -19728,6 +19730,7 @@ unsorted:
   - perl-Graph 
   - perl-GraphViz 
   - perl-Graphics-ColorUtils 
+  - perl-Graphics-Toolkit-Color 
   - perl-GraphicsMagick 
   - perl-Gravatar-URL 
   - perl-Growl-GNTP 
@@ -22457,6 +22460,7 @@ unsorted:
   - python310-aws-xray-sdk-pymongo 
   - python310-aws-xray-sdk-pynamodb 
   - python310-aws-xray-sdk-requests 
+  - python310-awscrt 
   - python310-axolotl 
   - python310-axolotl-curve25519 
   - python310-azure-agrifood-farming 
@@ -24307,6 +24311,7 @@ unsorted:
   - python310-pygn 
   - python310-pygraphviz 
   - python310-pyhcl 
+  - python310-pyheif 
   - python310-pyhibp 
   - python310-pyicumessageformat 
   - python310-pyinstaller-hooks-contrib 
@@ -25718,6 +25723,7 @@ unsorted:
   - python38-aws-xray-sdk-pymongo 
   - python38-aws-xray-sdk-pynamodb 
   - python38-aws-xray-sdk-requests 
+  - python38-awscrt 
   - python38-axolotl 
   - python38-axolotl-curve25519 
   - python38-azure-agrifood-farming 
@@ -27638,6 +27644,7 @@ unsorted:
   - python38-pygn 
   - python38-pygraphviz 
   - python38-pyhcl 
+  - python38-pyheif 
   - python38-pyhibp 
   - python38-pyicumessageformat 
   - python38-pyinotify 
@@ -29074,6 +29081,7 @@ unsorted:
   - python39-aws-xray-sdk-pymongo 
   - python39-aws-xray-sdk-pynamodb 
   - python39-aws-xray-sdk-requests 
+  - python39-awscrt 
   - python39-axolotl 
   - python39-axolotl-curve25519 
   - python39-azure-agrifood-farming 
@@ -30995,6 +31003,7 @@ unsorted:
   - python39-pygn 
   - python39-pygraphviz 
   - python39-pyhcl 
+  - python39-pyheif 
   - python39-pyhibp 
   - python39-pyicumessageformat 
   - python39-pyinotify 
@@ -32609,7 +32618,6 @@ unsorted:
   - qtox 
   - qtractor 
   - qtxdg-tools 
-  - quagga-devel 
   - quakespasm 
   - quantum-espresso: [x86_64] 
   - quantum-espresso-doc: [x86_64] 
@@ -33049,6 +33057,7 @@ unsorted:
   - rubygem-passenger-nginx 
   - runawk 
   - runawk-examples 
+  - runc: [i586] 
   - rungetty 
   - ruqola 
   - ruqola-lang 
