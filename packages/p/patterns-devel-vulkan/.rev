@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c7dc5a2a94ea27f7b0d6fac9cef539dc</srcmd5>
+    <version>20221115</version>
+    <time>1668702275</time>
+    <user>dimstar_suse</user>
+    <comment>Just talked to Frederic Crozat and he thinks it's a good idea to have a &quot;Vulkan Development&quot; a pattern.
+
+Recently I wrote a short blog article [1] about this topic, but of course it's
+easier to just install a Vulkan development pattern.
+
+I will open a pull-request on github [2] for the pattern icon, if my SR gets accepted.
+
+[1] https://sndirsch.github.io/vulkan/2022/10/20/vulkan-packages-on-opensuse.html
+[2] https://github.com/sndirsch/yast-theme</comment>
+    <requestid>1036251</requestid>
+  </revision>
+</revisionlist>
