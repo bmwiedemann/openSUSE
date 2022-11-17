@@ -1,0 +1,27 @@
+--- a/CMakeLists.txt	2022-08-23 19:55:00.617670378 +0300
++++ b/CMakeLists.txt	2022-08-23 19:56:23.654533634 +0300
+@@ -7,8 +7,8 @@
+     LANGUAGES CXX
+ )
+ 
+-set(APPLICATION_NAME "Crow Translate")
+-set(EXECUTABLE_NAME crow)
++set(APPLICATION_NAME "crow-translate")
++set(EXECUTABLE_NAME crow-translate)
+ if(UNIX)
+     set(DESKTOP_FILE io.crow_translate.CrowTranslate.desktop)
+     set(METAINFO_FILE io.crow_translate.CrowTranslate.metainfo.xml)
+@@ -93,13 +93,10 @@
+ 
+ set(APP_ICONS
+     data/icons/app/128-apps-crow-translate.png
+-    data/icons/app/150-apps-crow-translate.png
+     data/icons/app/16-apps-crow-translate.png
+     data/icons/app/22-apps-crow-translate.png
+     data/icons/app/256-apps-crow-translate.png
+-    data/icons/app/310-apps-crow-translate.png
+     data/icons/app/32-apps-crow-translate.png
+-    data/icons/app/44-apps-crow-translate.png
+     data/icons/app/48-apps-crow-translate.png
+     data/icons/app/512-apps-crow-translate.png
+     data/icons/app/64-apps-crow-translate.png

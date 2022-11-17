@@ -1,0 +1,17 @@
+--- a/data/io.crow_translate.CrowTranslate.desktop	2022-08-23 19:59:07.120233016 +0300
++++ b/data/io.crow_translate.CrowTranslate.desktop	2022-08-23 20:00:15.148940247 +0300
+@@ -10,12 +10,13 @@
+ Keywords=google;yandex;text-to-speech;
+ Keywords[ru]=google;yandex;текст в речь;
+ Keywords[fi]=google;yandex;tekstistä puheeksi;
+-Exec=crow
++Exec=crow-translate
+ Icon=crow-translate
+ Terminal=false
+ StartupNotify=false
+ Type=Application
+ Categories=Office;Network;Qt;
++X-LXQt-Need-Tray=true
+ StartupWMClass=crow
+ X-KDE-DBUS-Restricted-Interfaces=org.kde.kwin.Screenshot
+ X-Purism-FormFactor=Workstation;Mobile;

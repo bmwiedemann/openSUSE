@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Sep 14 16:21:33 UTC 2022 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to version 2.10.0
+- Remove:
+  * Fluent-icon-theme-2021-08-15.tar.gz
+  * QHotkey-1.4.2.tar.gz
+  * QOnlineTranslator-1.5.2.tar.gz
+  * QTaskbarControl-2.0.2.tar.gz
+  * SingleApplication-3.2.0.tar.gz
+  * circle-flags-2.3.0.tar.gz
+  * fetchcontent.patch
+  * Fix-install-path.patch
+- Add patch:
+  * third-party-library-static.patch
+  * cmakelists-txt.patch
+  * desktop-file.patch
+
+-------------------------------------------------------------------
 Sat Dec 25 23:19:11 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Remove superfluous _service file
