@@ -400,7 +400,6 @@ dvd:
   - docker # also container_diff
   - podman-cni-config
   - zsh # snapper_jeos_cli
-  - kiwi-templates-Minimal # kiwi_templates
 
 opensuse_microos:
   - openSUSE-release: [locked]

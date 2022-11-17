@@ -1496,4 +1496,11 @@ is not needed.
     <comment></comment>
     <requestid>1036039</requestid>
   </revision>
+  <revision rev="209" vrev="207">
+    <srcmd5>fc6845923cc1f6076775ba361215e0d7</srcmd5>
+    <version>unknown</version>
+    <time>1668674500</time>
+    <user>dimstar_suse</user>
+    <comment>Drop kiwi-temlates-Minimal: too large</comment>
+  </revision>
 </revisionlist>
