@@ -7,4 +7,13 @@
     <comment>New package see https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/RW47B5UGCTWVEUMQASZAPGA7ULTVM4MI. Disabled stripping the binaries.</comment>
     <requestid>1031534</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>44be3b064cef18af772dcd4f0968303b</srcmd5>
+    <version>0.13</version>
+    <time>1668702269</time>
+    <user>dimstar_suse</user>
+    <comment>- Update description with the good and bad characteristics.
+- Add FAQ document from the project wiki.</comment>
+    <requestid>1036265</requestid>
+  </revision>
 </revisionlist>

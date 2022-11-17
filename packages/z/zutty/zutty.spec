@@ -19,25 +19,37 @@
 Name:           zutty
 Version:        0.13
 Release:        0
-Summary:        A high-end terminal for low-end systems
-
-License:        GPL-3.0-or-later+
+Summary:        Terminal program with GLES renderer and low latency
+License:        GPL-3.0-or-later
 Group:          System/X11/Terminals
-URL:            https://github.com/tomscii/zutty/archive/refs/tags/%version.tar.gz#zutty-%version.tar.gz
-Source0:        %{name}-%{version}.tar.gz
-# Note: Tumbleweed contains waf, but Leap does not (yet), so we use python3 and add waf to the sources.
-BuildRequires:  gcc-c++ python3 pkg-config Mesa-libEGL-devel Mesa-libGLESv3-devel libXmu-devel freetype2-devel
 
+URL:            https://tomscii.sig7.se/zutty/
+#Git-Clone:     https://github.com/tomscii/zutty
+#Git-Clone:     https://github.com/tomscii/zutty.wiki
+Source:         https://github.com/tomscii/zutty/archive/refs/tags/%version.tar.gz#/zutty-%version.tar.gz
+Source3:        FAQ.md
+# Note: Tumbleweed contains waf, but Leap does not (yet), so we use python3 and add waf to the sources.
+BuildRequires:  Mesa-libEGL-devel
+BuildRequires:  Mesa-libGLESv3-devel
+BuildRequires:  freetype2-devel
+BuildRequires:  gcc-c++
+BuildRequires:  libXmu-devel
+BuildRequires:  pkg-config
+BuildRequires:  python3
 
 %description
-An X terminal emulator rendering through OpenGL ES Compute Shaders. It focuses on low-latency rendering and compatibility with commonly found terminal protocols.
-
+An X terminal emulator rendering through OpenGL ES shaders.
+It has good input latency and VTxxx emulation over most other
+terminals, ranging second after xterm (as of 2022).
+It uses FreeType, but does not support fontconfig, thus won't find
+fonts by their usual names. (See FAQ for details.)
 
 %prep
-%setup -q
+%autosetup
+cp -a "%_sourcedir/FAQ.md" .
 
 %build
-CXXFLAGS="%{?optflags}" LDFLAGS="%{?build_ldflags}" ./waf configure --prefix=/usr --no-werror
+CXXFLAGS="%{?optflags}" LDFLAGS="%{?build_ldflags}" ./waf configure --prefix="%_prefix" --no-werror
 ./waf
 
 %install
@@ -45,7 +57,7 @@ CXXFLAGS="%{?optflags}" LDFLAGS="%{?build_ldflags}" ./waf configure --prefix=/us
 
 %files
 %{_bindir}/zutty
-
+%doc FAQ.md
 %license LICENSE
 
 %changelog
