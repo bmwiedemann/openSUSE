@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Nov 16 15:38:28 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.6.0
+  Features
+  * Add Autoclass support and samples (#791), closes (#797)
+  * Add predefined_acl to create_resumable_upload_session (#878)
+  * Enable delete_blobs() to preserve generation (#840), closes (#814)
+  * Make tests run against environments other than prod (#883)
+  Bug Fixes
+  * Align bucket bound hostname url builder consistency (#875)
+  * BlobWriter.close() will do nothing if already closed (#887)
+  * Remove client side validations (#868)
+  Documentation
+  * Update comments in list_blobs sample (#866)
+  * Clarify prefixes entity in list_blobs usage (#837)
+  * Streamline docs for migration (#876)
+  * Update docstring for lifecycle_rules to match generator behavior (#841)
+
+-------------------------------------------------------------------
 Tue Sep 13 09:50:40 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.5.0
