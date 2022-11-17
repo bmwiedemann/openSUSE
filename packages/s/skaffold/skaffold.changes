@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Thu Nov 17 06:17:45 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.0.2:
+  * release: v2.0.2 (#8102)
+  * docs: add detailed information on how to use helm rendering with v2.X.Y as well as how post-renderer usage works (#8093)
+  * fix: correct issues with current upgrade logic for artifactOverrides with helm imageStrategy + multiple-images (#8066)
+  * chore: reduce gcp integration test time (#8080)
+  * feat: completion for the Fish shell (#8097)
+  * refactor: use exclude directives instead of replace directives for pinning (#8056)
+  * chore: remove uncessary server bins (#8092)
+  * fix: add unique tag to test image to avoid collisions with other tests using the same image (#8087)
+  * fix: resolve issue where skaffold filter command did not properly configure the filter allow & deny lists (#8085)
+  * fix: override protocols argument pass to helm post-renderer (#8083)
+  * chore: update changelog.md to include v1.39.4 (#8078)
+  * chore: update examples/* repos to use v3 schema (revert 3f82f13b02117f823694125d7149bca06a8d64f3) (#8079)
+  * chore: update examples/* repos to use v4beta1 schema (#8065)
+  * release: v2.0.2 (#8061)
+  * feat: add --tolerate-failures-until-deadline flag and deploy.tolerateFailuresUntilDeadline config for improved ci/cd usage (#8047)
+  * fix(sec): upgrade runc version v1.0.2 -> v1.1.2 (#8050)
+  * docs: update skaffold examples and documentation to properly reflect v1 ->v2 artifactOverrides changes - 2nd attempt (#8019)
+  * Linked to the Google Cloud Solutions Template (#8054)
+  * chore(deps): bump some .github/workflows deps (#8051)
+  * feat: add support for deploying Cloud Run Jobs. (#7915)
+  * fix: use default signal package over custom code and delete tests (#8046)
+  * chore: update examples/getting-started to go 1.19 (#8043)
+  * fix: docker image push to kind cluster (#8007)
+  * chore: update workflow files (#8001)
+  * fix: log duplications when using multiple deployers (#8042)
+  * fix: cleanup not called when using helm deployer alone (#8040)
+  * fix: Avoid nil context error (#8038)
+  * chore(doc): note that filesync works for debug (#8044)
+  * fix: preserve configs order when creating renderers and deployers (#8028)
+  * docs: update skaffold.gliffy diagram with updated information for skaffold v2 (#8035)
+  * fix: properly add RemoteManifests support to skaffold v2 (#8036)
+  * feat: add skipTests to ignore helm test directory on manifest generation (#8011)
+  * chore: bump skaffold schema version to v4beta1 (#8034)
+  * feat: context copy retry. If we add a for loop and execute the kubectlcli.Run method for copying context to kaniko pod , this makes more reliable and less prune to network failures (#7887)
+  * docs: migrate v2 docs -> skaffold.dev and v1 docs -> skaffold-v1.web.app (#7966)
+  * feat: Add an example e2e test environment / e2e tests for GRPC service. (#7932)
+  * fix: add description to StatusCheck TaskEvent (#8017)
+  * feat: new dockerfiles and cloudbuild config for slim image (#7996)
+  * chore: add v1.39.3 release CHANGELOG.md entry (#7991)
+  * fix: not print error message if it is empty (#8005)
+  * docs: update skaffold examples and documentation to properly reflect v1 ->v2 artifactOverrides changes (#8013)
+  * chore: upgrade jib plugin versions to 3.3.1 (#8003)
+  * chore: make syncstore generic (#8000)
+
+-------------------------------------------------------------------
 Sat Oct 29 07:07:26 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 2.0.1:
