@@ -1,7 +1,7 @@
-From 8f2cc8089304b769c25f871f28503fa1af7a468f Mon Sep 17 00:00:00 2001
+From 9e41b33e4e0d0fcc1dba654b485d6f5238e71ea8 Mon Sep 17 00:00:00 2001
 From: Franck Bui <fbui@suse.com>
 Date: Thu, 17 Mar 2022 11:35:33 +0100
-Subject: [PATCH 1/1] Revert "getty: Pass tty to use by agetty via stdin"
+Subject: [PATCH 8/8] Revert "getty: Pass tty to use by agetty via stdin"
 
 This reverts commit b4bf9007cbee7dc0b1356897344ae2a7890df84c.
 ---
@@ -12,13 +12,13 @@ This reverts commit b4bf9007cbee7dc0b1356897344ae2a7890df84c.
  4 files changed, 4 insertions(+), 12 deletions(-)
 
 diff --git a/units/console-getty.service.in b/units/console-getty.service.in
-index 73871d6f50..bb67541dce 100644
+index 606b7dbe16..54fd7c292d 100644
 --- a/units/console-getty.service.in
 +++ b/units/console-getty.service.in
-@@ -23,12 +23,10 @@ ConditionPathExists=/dev/console
- # The '-o' option value tells agetty to replace 'login' arguments with an
- # option to preserve environment (-p), followed by '--' for safety, and then
- # the entered username.
+@@ -22,12 +22,10 @@ ConditionPathExists=/dev/console
+ [Service]
+ # The '-o' option value tells agetty to replace 'login' arguments with an option to preserve environment (-p),
+ # followed by '--' for safety, and then the entered username.
 -ExecStart=-/sbin/agetty -o '-p -- \\u' --noclear --keep-baud - 115200,38400,9600 $TERM
 +ExecStart=-/sbin/agetty -o '-p -- \\u' --noclear --keep-baud console 115200,38400,9600 $TERM
  Type=idle
@@ -30,15 +30,15 @@ index 73871d6f50..bb67541dce 100644
  TTYReset=yes
  TTYVHangup=yes
 diff --git a/units/container-getty@.service.in b/units/container-getty@.service.in
-index a6e3f94e2a..ed1eb7bde1 100644
+index 8d7e20d5ec..5dc75f769e 100644
 --- a/units/container-getty@.service.in
 +++ b/units/container-getty@.service.in
-@@ -28,13 +28,11 @@ Before=rescue.service
- # The '-o' option value tells agetty to replace 'login' arguments with an
- # option to preserve environment (-p), followed by '--' for safety, and then
- # the entered username.
--ExecStart=-/sbin/agetty -o '-p -- \\u' --noclear --keep-baud - 115200,38400,9600 $TERM
-+ExecStart=-/sbin/agetty -o '-p -- \\u' --noclear --keep-baud pts/%I 115200,38400,9600 $TERM
+@@ -27,13 +27,11 @@ Before=rescue.service
+ [Service]
+ # The '-o' option value tells agetty to replace 'login' arguments with an option to preserve environment (-p),
+ # followed by '--' for safety, and then the entered username.
+-ExecStart=-/sbin/agetty -o '-p -- \\u' --noclear - $TERM
++ExecStart=-/sbin/agetty -o '-p -- \\u' --noclear pts/%I $TERM
  Type=idle
  Restart=always
  RestartSec=0
@@ -86,5 +86,5 @@ index 2433124c55..bb7af3105d 100644
  TTYReset=yes
  TTYVHangup=yes
 -- 
-2.34.1
+2.35.3
 

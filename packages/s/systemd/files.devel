@@ -76,6 +76,7 @@
 %{_mandir}/man3/SD_EVENT_PRIORITY_IMPORTANT.3.gz
 %{_mandir}/man3/SD_EVENT_PRIORITY_NORMAL.3.gz
 %{_mandir}/man3/SD_EVENT_RUNNING.3.gz
+%{_mandir}/man3/SD_EVENT_SIGNAL_PROCMASK.3.gz
 %{_mandir}/man3/SD_HWDB_FOREACH_PROPERTY.3.gz
 %{_mandir}/man3/SD_ID128_ALLF.3.gz
 %{_mandir}/man3/SD_ID128_CONST_STR.3.gz
@@ -215,6 +216,7 @@
 %{_mandir}/man3/sd_bus_error_set_errnof.3.gz
 %{_mandir}/man3/sd_bus_error_set_errnofv.3.gz
 %{_mandir}/man3/sd_bus_error_setf.3.gz
+%{_mandir}/man3/sd_bus_error_setfv.3.gz
 %{_mandir}/man3/sd_bus_flush.3.gz
 %{_mandir}/man3/sd_bus_flush_close_unref.3.gz
 %{_mandir}/man3/sd_bus_flush_close_unrefp.3.gz
@@ -316,6 +318,7 @@
 %{_mandir}/man3/sd_bus_message_read_array.3.gz
 %{_mandir}/man3/sd_bus_message_read_basic.3.gz
 %{_mandir}/man3/sd_bus_message_read_strv.3.gz
+%{_mandir}/man3/sd_bus_message_read_strv_extend.3.gz
 %{_mandir}/man3/sd_bus_message_readv.3.gz
 %{_mandir}/man3/sd_bus_message_ref.3.gz
 %{_mandir}/man3/sd_bus_message_rewind.3.gz
@@ -472,6 +475,7 @@
 %{_mandir}/man3/sd_event_prepare.3.gz
 %{_mandir}/man3/sd_event_ref.3.gz
 %{_mandir}/man3/sd_event_run.3.gz
+%{_mandir}/man3/sd_event_set_signal_exit.3.gz
 %{_mandir}/man3/sd_event_set_watchdog.3.gz
 %{_mandir}/man3/sd_event_signal_handler_t.3.gz
 %{_mandir}/man3/sd_event_source.3.gz
@@ -534,6 +538,7 @@
 %{_mandir}/man3/sd_hwdb_enumerate.3.gz
 %{_mandir}/man3/sd_hwdb_get.3.gz
 %{_mandir}/man3/sd_hwdb_new.3.gz
+%{_mandir}/man3/sd_hwdb_new_from_path.3.gz
 %{_mandir}/man3/sd_hwdb_ref.3.gz
 %{_mandir}/man3/sd_hwdb_seek.3.gz
 %{_mandir}/man3/sd_hwdb_unref.3.gz
@@ -550,6 +555,7 @@
 %{_mandir}/man3/sd_id128_is_allf.3.gz
 %{_mandir}/man3/sd_id128_is_null.3.gz
 %{_mandir}/man3/sd_id128_randomize.3.gz
+%{_mandir}/man3/sd_id128_string_equal.3.gz
 %{_mandir}/man3/sd_id128_t.3.gz
 %{_mandir}/man3/sd_id128_to_string.3.gz
 %{_mandir}/man3/sd_id128_to_uuid_string.3.gz

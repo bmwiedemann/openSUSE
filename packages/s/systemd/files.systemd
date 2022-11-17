@@ -27,6 +27,7 @@
 %endif
 %dir %{_environmentdir}
 %dir %{_journalcatalogdir}
+%dir %{_libdir}/systemd
 %dir %{_localstatedir}/lib/systemd
 %dir %{_localstatedir}/lib/systemd/catalog
 %dir %{_modprobedir}
@@ -136,6 +137,7 @@
 %{_datadir}/bash-completion/completions/systemd-cat
 %{_datadir}/bash-completion/completions/systemd-cgls
 %{_datadir}/bash-completion/completions/systemd-cgtop
+%{_datadir}/bash-completion/completions/systemd-cryptenroll
 %{_datadir}/bash-completion/completions/systemd-delta
 %{_datadir}/bash-completion/completions/systemd-detect-virt
 %{_datadir}/bash-completion/completions/systemd-id128
@@ -223,6 +225,10 @@
 %if %{without bootstrap}
 %{_libdir}/libnss_myhostname.so.2
 %{_libdir}/libnss_systemd.so.2
+%endif
+%{_libdir}/systemd/libsystemd-core-252.so
+%{_libdir}/systemd/libsystemd-shared-252.so
+%if %{without bootstrap}
 %{_mandir}/man1/busctl.1.gz
 %{_mandir}/man1/hostnamectl.1.gz
 %{_mandir}/man1/init.1.gz
@@ -327,6 +333,7 @@
 %{_mandir}/man7/systemd.offline-updates.7.gz
 %{_mandir}/man7/systemd.special.7.gz
 %{_mandir}/man7/systemd.syntax.7.gz
+%{_mandir}/man7/systemd.system-credentials.7.gz
 %{_mandir}/man7/systemd.time.7.gz
 %{_mandir}/man8/30-systemd-environment-d-generator.8.gz
 %{_mandir}/man8/halt.8.gz
@@ -427,8 +434,6 @@
 %{_sysconfdir}/xdg/systemd/user
 %{_sysctldir}/99-sysctl.conf
 %{_systemd_user_env_generator_dir}/30-systemd-environment-d-generator
-%{_systemd_util_dir}/libsystemd-core-251.so
-%{_systemd_util_dir}/libsystemd-shared-251.so
 %{_systemd_util_dir}/ntp-units.d/80-systemd-timesync.list
 %{_systemd_util_dir}/scripts/migrate-sysconfig-i18n.sh
 %{_systemd_util_dir}/scripts/upgrade-from-pre-210.sh
@@ -453,6 +458,7 @@
 %{_systemd_util_dir}/systemd-socket-proxyd
 %{_systemd_util_dir}/systemd-sulogin-shell
 %{_systemd_util_dir}/systemd-sysctl
+%{_systemd_util_dir}/systemd-sysroot-fstab-check
 %{_systemd_util_dir}/systemd-time-wait-sync
 %{_systemd_util_dir}/systemd-timedated
 %{_systemd_util_dir}/systemd-timesyncd
@@ -494,6 +500,7 @@
 %{_sysusersdir}/systemd-journal.conf
 %{_sysusersdir}/systemd-timesync.conf
 %{_tmpfilesdir}/journal-nocow.conf
+%{_tmpfilesdir}/provision.conf
 %{_tmpfilesdir}/suse.conf
 %{_tmpfilesdir}/systemd-nologin.conf
 %{_tmpfilesdir}/systemd-tmp.conf

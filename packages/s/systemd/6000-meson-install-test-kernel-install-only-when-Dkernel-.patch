@@ -1,0 +1,29 @@
+From c34a72017fe66998f7bd40b5e90d27accd69376c Mon Sep 17 00:00:00 2001
+From: Franck Bui <fbui@suse.com>
+Date: Tue, 15 Nov 2022 09:04:42 +0100
+Subject: [PATCH 6000/6000] meson: install test-kernel-install only when
+ -Dkernel-install=true
+
+This patch fixes the following build failure:
+
+  meson.build:3853:8: ERROR: Unknown variable "test_kernel_install_sh".
+---
+ meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 00daeac1b6..0fd0129820 100644
+--- a/meson.build
++++ b/meson.build
+@@ -3968,7 +3968,7 @@ exe = custom_target(
+         install_dir : bindir)
+ public_programs += exe
+ 
+-if want_tests != 'false'
++if want_tests != 'false' and want_kernel_install
+         test('test-kernel-install',
+              test_kernel_install_sh,
+              args : [exe.full_path(), loaderentry_install])
+-- 
+2.35.3
+

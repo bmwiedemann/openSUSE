@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Nov 14 11:15:06 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Upgrade to v252.1 (commit 64dc546913525e33e734500055a62ed0e963c227)
+
+  See https://github.com/openSUSE/systemd/blob/SUSE/v252/NEWS for details.
+
+  * Rebased 0001-conf-parser-introduce-early-drop-ins.patch
+            1000-Revert-getty-Pass-tty-to-use-by-agetty-via-stdin.patch
+
+  * The new tools systemd-measure and systemd-pcrphase have been added to the
+    experimental sub-package for now.
+
+  * Add temporarly
+    6000-meson-install-test-kernel-install-only-when-Dkernel-.patch until this
+    patch is mainstreamed.
+
+-------------------------------------------------------------------
 Tue Nov  8 16:33:26 UTC 2022 - Franck Bui <fbui@suse.com>
 
 - Import commit 9cdd78585069b133bebcd479f3a204057ad25d76 (merge of v251.8)

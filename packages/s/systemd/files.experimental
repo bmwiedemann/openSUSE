@@ -3,6 +3,9 @@
 #
 %config(noreplace) %{_sysconfdir}/systemd/homed.conf
 %config(noreplace) %{_sysconfdir}/systemd/oomd.conf
+%if %{with sd_boot}
+%dir %{_unitdir}/initrd.target.wants
+%endif
 %{_bindir}/homectl
 %{_bindir}/oomctl
 %{_bindir}/systemd-repart
@@ -22,6 +25,9 @@
 %{_datadir}/zsh/site-functions/_oomctl
 %{_mandir}/man1/homectl.1.gz
 %{_mandir}/man1/oomctl.1.gz
+%if %{with sd_boot}
+%{_mandir}/man1/systemd-measure.1.gz
+%endif
 %{_mandir}/man1/userdbctl.1.gz
 %{_mandir}/man5/homed.conf.5.gz
 %{_mandir}/man5/homed.conf.d.5.gz
@@ -36,6 +42,12 @@
 %{_mandir}/man8/systemd-homed.service.8.gz
 %{_mandir}/man8/systemd-oomd.8.gz
 %{_mandir}/man8/systemd-oomd.service.8.gz
+%if %{with sd_boot}
+%{_mandir}/man8/systemd-pcrphase-initrd.service.8.gz
+%{_mandir}/man8/systemd-pcrphase-sysinit.service.8.gz
+%{_mandir}/man8/systemd-pcrphase.8.gz
+%{_mandir}/man8/systemd-pcrphase.service.8.gz
+%endif
 %{_mandir}/man8/systemd-repart.8.gz
 %{_mandir}/man8/systemd-repart.service.8.gz
 %{_mandir}/man8/systemd-sysupdate-reboot.service.8.gz
@@ -50,15 +62,31 @@
 %{_systemd_util_dir}/system/sysinit.target.wants/systemd-repart.service
 %{_systemd_util_dir}/systemd-homed
 %{_systemd_util_dir}/systemd-homework
+%if %{with sd_boot}
+%{_systemd_util_dir}/systemd-measure
+%endif
 %{_systemd_util_dir}/systemd-oomd
+%if %{with sd_boot}
+%{_systemd_util_dir}/systemd-pcrphase
+%endif
 %{_systemd_util_dir}/systemd-sysupdate
 %{_systemd_util_dir}/systemd-userdbd
 %{_systemd_util_dir}/systemd-userwork
 %{_sysusersdir}/systemd-oom.conf
+%if %{with sd_boot}
+%{_unitdir}/initrd.target.wants/systemd-pcrphase-initrd.service
+%{_unitdir}/sysinit.target.wants/systemd-pcrphase-sysinit.service
+%{_unitdir}/sysinit.target.wants/systemd-pcrphase.service
+%endif
 %{_unitdir}/systemd-homed-activate.service
 %{_unitdir}/systemd-homed.service
 %{_unitdir}/systemd-oomd.service
 %{_unitdir}/systemd-oomd.socket
+%if %{with sd_boot}
+%{_unitdir}/systemd-pcrphase-initrd.service
+%{_unitdir}/systemd-pcrphase-sysinit.service
+%{_unitdir}/systemd-pcrphase.service
+%endif
 %{_unitdir}/systemd-repart.service
 %{_unitdir}/systemd-sysupdate-reboot.service
 %{_unitdir}/systemd-sysupdate-reboot.timer
