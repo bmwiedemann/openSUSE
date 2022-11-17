@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov  9 18:48:48 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 3.2.0 
+  * Merge pull request #747 from asottile/pre-commit-ci-update-config
+  * Merge pull request #745 from tusharsadhwani/unpack
+  * Add PEP646 Unpack plugin
+  * Merge pull request #741 from asottile/py311-release
+  * regenerate import symbols
+  * Merge pull request #738 from asottile/pre-commit-ci-update-config
+  * Merge pull request #734 from asottile/pre-commit-ci-update-config
+
+-------------------------------------------------------------------
 Fri Oct 28 21:03:08 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 3.1.0
