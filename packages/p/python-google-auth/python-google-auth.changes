@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov 16 15:26:38 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.14.1
+  * Apply quota project for compute cred in adc (#1177)
+  * Update minimum required version of cryptography in pyopenssl extra (#1176)
+  * Validate url domain for aws metadata urls (#1174)
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
 Tue Nov  8 07:19:56 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Clean up SPEC file, make rpmlint happy.

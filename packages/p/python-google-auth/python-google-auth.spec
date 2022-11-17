@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-google-auth
-Version:        2.14.0
+Version:        2.14.1
 Release:        0
 Summary:        Google Authentication Library
 License:        Apache-2.0
@@ -47,6 +47,7 @@ BuildRequires:  %{python_module urllib3}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cachetools >= 2.0.0
+Requires:       python-cryptography >= 38.0.3
 Requires:       python-pyasn1-modules >= 0.2.1
 Requires:       python-rsa >= 3.1.4
 Requires:       python-setuptools >= 40.3.0
