@@ -395,12 +395,6 @@ dvd:
   - u-boot-rpiarm64: [aarch64]  # bsc 1130015, jsc SLE-7276 / bsc 1164080
   - u-boot-rpiarm64-doc: [aarch64]  # jsc SLE-7276 / bsc 1164080
 
-  # Offer some more packages for staging tests
-  # container_host tests
-  - docker # also container_diff
-  - podman-cni-config
-  - zsh # snapper_jeos_cli
-
 opensuse_microos:
   - openSUSE-release: [locked]
   - openSUSE-MicroOS-release: [locked] # FIXME: remove after dropped

@@ -1503,4 +1503,11 @@ is not needed.
     <user>dimstar_suse</user>
     <comment>Drop kiwi-temlates-Minimal: too large</comment>
   </revision>
+  <revision rev="210" vrev="208">
+    <srcmd5>8490d55fe7ed26da38ed9fccc5b313be</srcmd5>
+    <version>unknown</version>
+    <time>1668680836</time>
+    <user>dimstar_suse</user>
+    <comment>No docker/podman on the regular DVD; ENOSPACE</comment>
+  </revision>
 </revisionlist>
