@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 16 16:54:02 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove not needed python-six dep
+- Remove python_module macro definition
+- More specific python_sitelib in %files
+
+-------------------------------------------------------------------
 Thu Mar 10 01:06:21 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove BuildRequires on mock, it has not been required since 3.0.0. 

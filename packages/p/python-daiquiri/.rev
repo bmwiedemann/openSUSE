@@ -94,4 +94,15 @@
     <comment>- Remove BuildRequires on mock, it has not been required since 3.0.0.</comment>
     <requestid>960624</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>f45ff35fa7deea1e011b154e3787af86</srcmd5>
+    <version>3.0.1</version>
+    <time>1668702278</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove not needed python-six dep
+- Remove python_module macro definition
+- More specific python_sitelib in %files
+</comment>
+    <requestid>1036268</requestid>
+  </revision>
 </revisionlist>

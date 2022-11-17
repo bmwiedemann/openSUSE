@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global skip_python2 1
 Name:           python-daiquiri
 Version:        3.0.1
@@ -29,7 +28,6 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-json-logger}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-python-json-logger
@@ -56,6 +54,7 @@ provides some custom formatters and handlers.
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/daiquiri
+%{python_sitelib}/daiquiri-%{version}*-info
 
 %changelog
