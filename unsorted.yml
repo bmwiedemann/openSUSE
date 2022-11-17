@@ -192,6 +192,7 @@ unsorted:
   - PDAL-bash-completion 
   - PDAL-devel 
   - PDAL-doc 
+  - PackageKit-backend-dnf: [i586] 
   - PackageKit-branding-upstream 
   - PackageKit-devel 
   - PgTcl 
@@ -738,6 +739,7 @@ unsorted:
   - appres 
   - appstream-glib-devel 
   - apptainer 
+  - appx-util 
   - apr-devel 
   - apr-util-devel 
   - apulse: [i586] 
@@ -1220,6 +1222,8 @@ unsorted:
   - bcunit-doc 
   - bdfresize 
   - bdftopcf 
+  - bea-stax 
+  - bea-stax-api 
   - bean-validation-api 
   - bean-validation-api-javadoc 
   - beansbinding 
@@ -2788,6 +2792,7 @@ unsorted:
   - deal_II-openmpi3-devel: [x86_64] 
   - deal_II-openmpi4-devel: [x86_64] 
   - debhelper 
+  - debootstrap 
   - debugedit 
   - debuginfod-client 
   - debuginfod-dummy-client 
@@ -3008,7 +3013,12 @@ unsorted:
   - dmlc-core-devel 
   - dmraid-devel 
   - dmz-icon-theme-cursors 
+  - dnf 
   - dnf-automatic 
+  - dnf-data: [i586] 
+  - dnf-lang 
+  - dnf-plugins-core 
+  - dnf-plugins-core-lang 
   - dns24-update 
   - dnscrypt-proxy 
   - dnsdiag 
@@ -3094,7 +3104,9 @@ unsorted:
   - dpdk-tools: [x86_64] 
   - dpic 
   - dpic-doc 
+  - dpkg 
   - dpkg-devel 
+  - dpkg-lang 
   - dqlite-devel 
   - dracula-gtk-theme 
   - dracut-extra 
@@ -4400,9 +4412,11 @@ unsorted:
   - gflags-devel 
   - gflags-devel-static 
   - gfs2-utils 
+  - gfxboot 
   - gfxboot-branding-KDE 
   - gfxboot-branding-SLED 
   - gfxboot-branding-SLES 
+  - gfxboot-branding-openSUSE 
   - gfxboot-branding-upstream 
   - gfxboot-devel 
   - gh 
@@ -6787,6 +6801,7 @@ unsorted:
   - hactool 
   - haguichi 
   - haguichi-lang 
+  - hamcrest 
   - hamcrest-javadoc 
   - hamlib 
   - hamlib-devel 
@@ -6813,6 +6828,7 @@ unsorted:
   - hashlink-devel 
   - hashlink-hdlls 
   - haveged-devel 
+  - hawkey-man 
   - hawknl-devel 
   - hawknl-libs 
   - haxe 
@@ -7443,6 +7459,7 @@ unsorted:
   - isl-devel-32bit: [x86_64] 
   - iso-codes-devel 
   - iso-country-flags-png 
+  - isorelax 
   - ispc: [x86_64] 
   - ispc-devel: [x86_64] 
   - ispell-bulgarian 
@@ -7840,6 +7857,7 @@ unsorted:
   - jikes 
   - jimtcl 
   - jimtcl-devel 
+  - jing 
   - jing-javadoc 
   - jira-cli 
   - jisp2 
@@ -7960,6 +7978,7 @@ unsorted:
   - jul-to-slf4j 
   - juliaup 
   - julius 
+  - junit 
   - junit-javadoc 
   - junit-manual 
   - junit5 
@@ -8355,6 +8374,17 @@ unsorted:
   - kiten-devel 
   - kitinerary-devel 
   - kitty 
+  - kiwi-man-pages 
+  - kiwi-systemdeps 
+  - kiwi-systemdeps-bootloaders 
+  - kiwi-systemdeps-containers 
+  - kiwi-systemdeps-core 
+  - kiwi-systemdeps-disk-images 
+  - kiwi-systemdeps-filesystems 
+  - kiwi-systemdeps-image-validation 
+  - kiwi-systemdeps-iso-media 
+  - kiwi-templates-Minimal 
+  - kiwi-tools 
   - kjobwidgets-devel 
   - kjots 
   - kjots-lang 
@@ -10407,6 +10437,7 @@ unsorted:
   - libcompizconfig-devel 
   - libcomps-devel 
   - libcomps-doc 
+  - libcomps0 
   - libconfig++-devel 
   - libconfig++11 
   - libconfig++11-32bit: [x86_64] 
@@ -10648,6 +10679,8 @@ unsorted:
   - libdnet1 
   - libdnf-devel 
   - libdnf-plugin-txnupd: [i586] 
+  - libdnf-repo-config-zypp: [i586] 
+  - libdnf2: [i586] 
   - libdnnl2: [x86_64] 
   - libdns_sd 
   - libdns_sd-32bit: [x86_64] 
@@ -13766,6 +13799,7 @@ unsorted:
   - libreplaygain-devel 
   - libreplaygain1 
   - librepo-devel 
+  - librepo0: [i586] 
   - librepository-javadoc 
   - librepute1 
   - libresprite 
@@ -16423,6 +16457,7 @@ unsorted:
   - miao-fonts 
   - micro-editor 
   - microcom 
+  - microdnf: [i586] 
   - microos-devel-tools 
   - micropython: [x86_64] 
   - miller 
@@ -18969,6 +19004,7 @@ unsorted:
   - password-store 
   - password-store-dmenu 
   - pasystray 
+  - patch 
   - patch2mail 
   - patchelf 
   - patchutils 
@@ -19614,6 +19650,7 @@ unsorted:
   - perl-File-Copy-Recursive 
   - perl-File-Copy-Recursive-Reduced 
   - perl-File-DesktopEntry 
+  - perl-File-FcntlLock 
   - perl-File-Find-Object 
   - perl-File-Find-Rule 
   - perl-File-Find-Rule-Perl 
@@ -21784,6 +21821,7 @@ unsorted:
   - python3-debtcollector 
   - python3-deltarpm 
   - python3-designateclient 
+  - python3-dnf 
   - python3-dnf-plugin-kickstart 
   - python3-dnf-plugin-leaves 
   - python3-dnf-plugin-local 
@@ -21792,9 +21830,12 @@ unsorted:
   - python3-dnf-plugin-rpmconf 
   - python3-dnf-plugin-show-leaves 
   - python3-dnf-plugin-showvars 
+  - python3-dnf-plugin-snapper 
   - python3-dnf-plugin-system-upgrade 
   - python3-dnf-plugin-torproxy 
   - python3-dnf-plugin-versionlock 
+  - python3-dnf-plugins-core 
+  - python3-dnf-plugins-extras-common 
   - python3-dogpile.cache 
   - python3-ec2imgutils 
   - python3-ec2metadata 
@@ -21822,6 +21863,7 @@ unsorted:
   - python3-gpsd 
   - python3-gr-iqbal 
   - python3-gv 
+  - python3-hawkey 
   - python3-heatclient 
   - python3-hivex 
   - python3-imobiledevice 
@@ -21833,6 +21875,7 @@ unsorted:
   - python3-keystoneauth1 
   - python3-keystoneclient 
   - python3-keystonemiddleware 
+  - python3-kiwi 
   - python3-ktoblzcheck 
   - python3-lash 
   - python3-lasso 
@@ -21844,9 +21887,12 @@ unsorted:
   - python3-libblockdev 
   - python3-libbytesize 
   - python3-libcec 
+  - python3-libcomps 
+  - python3-libdnf 
   - python3-libftdi1 
   - python3-libguestfs: [x86_64] 
   - python3-libixion 
+  - python3-libmodulemd 
   - python3-libmount 
   - python3-libnbd 
   - python3-libnvme 
@@ -21993,6 +22039,7 @@ unsorted:
   - python3-tvtk 
   - python3-tvtk-doc 
   - python3-uhd 
+  - python3-unbound 
   - python3-upm 
   - python3-vapoursynth 
   - python3-virt-bootstrap: [x86_64] 
@@ -23114,6 +23161,7 @@ unsorted:
   - python310-docker-compose 
   - python310-docker-pycreds 
   - python310-dockerpty 
+  - python310-docopt 
   - python310-docrepr 
   - python310-docstring-to-markdown 
   - python310-docutils 
@@ -23344,6 +23392,7 @@ unsorted:
   - python310-google-resumable-media 
   - python310-googleapis-common-protos 
   - python310-googlemaps 
+  - python310-gpg: [i586] 
   - python310-gpgme 
   - python310-gphoto2 
   - python310-gprof2dot 
@@ -24469,6 +24518,7 @@ unsorted:
   - python310-python-crontab 
   - python310-python-daemon 
   - python310-python-datamatrix 
+  - python310-python-dateutil: [i586] 
   - python310-python-dbusmock 
   - python310-python-debian 
   - python310-python-docs-theme 
@@ -24564,6 +24614,7 @@ unsorted:
   - python310-pywebpush 
   - python310-pywinrm 
   - python310-pywlroots 
+  - python310-pyxattr 
   - python310-pyxdg 
   - python310-pyyaml_env_tag 
   - python310-pyzmq-devel 
@@ -32717,6 +32768,7 @@ unsorted:
   - reiser4progs-devel 
   - reiserfs 
   - rekor 
+  - relaxngDatatype 
   - relaxngcc 
   - relaxngcc-javadoc 
   - release-compare 
@@ -33082,9 +33134,11 @@ unsorted:
   - saxon8-sql 
   - saxon8-xom 
   - saxon8-xpath 
+  - saxon9 
   - saxon9-demo 
   - saxon9-javadoc 
   - saxon9-manual 
+  - saxon9-scripts 
   - saxpath 
   - sbc-devel 
   - sbcl 
@@ -33435,6 +33489,7 @@ unsorted:
   - skinlf-demo 
   - skinlf-javadoc 
   - skkdic-extra 
+  - skopeo 
   - skopeo-bash-completion 
   - skrooge 
   - skrooge-lang 
@@ -43197,6 +43252,7 @@ unsorted:
   - typelib-1_0-Matekbd-1_0 
   - typelib-1_0-Mbim-1_0 
   - typelib-1_0-ModemManager-1_0 
+  - typelib-1_0-Modulemd-2_0 
   - typelib-1_0-Muffin-0_0 
   - typelib-1_0-NMA4-1_0 
   - typelib-1_0-Nautilus-4_0 
@@ -43326,6 +43382,7 @@ unsorted:
   - ulogd-sqlite3 
   - ultimatestunts 
   - ultimatestunts-data 
+  - umoci 
   - umockdev 
   - umockdev-devel 
   - unbound-devel 
@@ -43971,6 +44028,7 @@ unsorted:
   - x3270 
   - x86info 
   - xalan-c 
+  - xalan-j2 
   - xalan-j2-demo 
   - xalan-j2-manual 
   - xalan-j2-xsltc 
@@ -44068,6 +44126,7 @@ unsorted:
   - xengine 
   - xerces-c 
   - xerces-c-doc 
+  - xerces-j2 
   - xerces-j2-demo 
   - xerces-j2-javadoc 
   - xev 
@@ -44221,6 +44280,7 @@ unsorted:
   - xml-commons-apis-bootstrap 
   - xml-commons-apis-javadoc 
   - xml-commons-apis-manual 
+  - xml-commons-resolver 
   - xml-commons-resolver-bootstrap 
   - xml-commons-resolver-javadoc 
   - xml-commons-which-bootstrap 
@@ -44578,6 +44638,7 @@ unsorted:
   - yubikey-manager-qt 
   - yubioath-desktop 
   - yudit 
+  - yum 
   - yum-utils 
   - z 
   - z3 
