@@ -46,7 +46,17 @@ BuildRequires:  pkgconfig(libbrotlidec)
 BuildRequires:  pkgconfig(libidn2)
 # Disable metalink [bsc#1188218, CVE-2021-22923][bsc#1188217, CVE-2021-22922]
 # BuildRequires:  pkgconfig(libmetalink)
-BuildRequires:  pkgconfig(libnghttp2)
+#
+# The 7.86.0 cURL release introduced the use of
+# nghttp2_option_set_no_rfc9113_leading_and_trailing_ws_validation,
+# a function introduced by the 1.50.0 nghttp2 release.
+#
+# This is a bandaid, as cURL didn't provide a function/version check
+# in their build scripts. Without this some users my end up with a broken
+# Zypper/cURL if they have a libnghttp2 < 1.50.0 yet in their system,
+# and do some Zypper transaction that updates cURL, but not libnghttp2.
+#
+BuildRequires:  pkgconfig(libnghttp2) >= 1.50.0
 BuildRequires:  pkgconfig(libpsl)
 BuildRequires:  pkgconfig(libssh)
 BuildRequires:  pkgconfig(libzstd)

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Nov 16 03:09:27 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
+
+- Add 1.50.0 as the minimum libnghttp2 build requirement version as
+  a bandaid. Curl's 7.86.0 release introduces the use of
+  nghttp2_option_set_no_rfc9113_leading_and_trailing_ws_validation,
+  introduced by nghttp2 1.50.0 release, without introducing a check
+  for the function/right version in their build scripts. This will
+  make Zypper/cURL unusable in some corner cases where users
+  installing something that requires libcurl4 before doing full
+  system upgrade, thus updating the cURL stack, but not
+  libnghttp2's. Background: boo#1204983, Factory mailing list
+  threadd:
+  "? broken dependency in curl and/or *zyp* ?", and forums thread:
+  Curl-is-broken-after-an-update-which-subsequently-breaks-zypper.
+
+-------------------------------------------------------------------
 Wed Oct 26 07:51:51 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 7.86.0:
