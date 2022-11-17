@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 15 15:36:21 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.8.6:
+  * Bugfixes:
+    - Fix offline mode (#2647) @ssbarnea
+
+-------------------------------------------------------------------
 Tue Nov  1 07:16:16 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 6.8.5:
