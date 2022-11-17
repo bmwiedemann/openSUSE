@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Nov 16 12:41:37 UTC 2022 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- update to 5.66:
+  * Fix issue with A2DP and transport connection collisions.
+  * Fix issue with allowing application specific error codes.
+  * Fix issue with not setting initiator flag correctly.
+  * Fix issue with HoG Report MAP size handling.
+  * Add initial support for Basic Audio Profile.
+  * Add initial support for Volume Control Profile.
+- remove RPi-Move-the-43xx-firmware-into-lib-firmware.patch (does
+  not apply anymore), replace with CPPFLAGS define
+
+-------------------------------------------------------------------
 Wed Oct 26 07:18:39 UTC 2022 - Joey Lee <jlee@suse.com>
 
 - For pushing bluez 5.65 to 15-SP5 (bluez-5.62), sync more change log:

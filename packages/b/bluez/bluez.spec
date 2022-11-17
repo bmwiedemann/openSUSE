@@ -31,7 +31,7 @@
 %global modprobe_d_files 50-bluetooth.conf
 
 Name:           bluez
-Version:        5.65
+Version:        5.66
 Release:        0
 Summary:        Bluetooth Stack for Linux
 License:        GPL-2.0-or-later
@@ -50,9 +50,6 @@ Patch2:         bluez-sdp-unix-path.patch
 Patch3:         bluez-cups-libexec.patch
 # workaround for broken tests (reported upstream but not yet fixed)
 Patch4:         bluez-disable-broken-tests.diff
-#
-# Move 43xx firmware path for RPi3 bluetooth support bsc#1140688
-Patch10:        RPi-Move-the-43xx-firmware-into-lib-firmware.patch
 #
 # PATCH-FIX-UPSTREAM 0001-obex-Use-GLib-helper-function-to-manipulate-paths.patch -- obex: Use GLib helper function to manipulate paths
 Patch11:        https://src.fedoraproject.org/rpms/bluez/raw/rawhide/f/0001-obex-Use-GLib-helper-function-to-manipulate-paths.patch
@@ -239,6 +236,9 @@ sed -i '1s#/usr/bin/python$#/usr/bin/python3#' test/*
 echo 0%{?suse_version}
 export CC=gcc-8
 %endif
+# header file has "#ifndef FIRMWARE_DIR...#define FIRMWARE_DIR /etc/firmare"
+# instead of patching, just supply FIRMWARE_DIR on compiler's command line
+export CPPFLAGS="$CPPFLAGS -DFIRMWARE_DIR='\"/lib/firmware\"'"
 # because of patch4...
 autoreconf -fi
 # --enable-experimental is needed or btattach does not build (bug?)
