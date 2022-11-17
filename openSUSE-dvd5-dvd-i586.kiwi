@@ -261,7 +261,6 @@
       <repopackage name="calligra-extras-filemanagertemplates"/>
       <repopackage name="canberra-gtk-play"/>
       <repopackage name="cantarell-fonts"/>
-      <repopackage name="catatonit"/>
       <repopackage name="catfish"/>
       <repopackage name="catfish-lang"/>
       <repopackage name="cd-discid"/>
@@ -296,16 +295,12 @@
       <repopackage name="clutter-gtk-lang"/>
       <repopackage name="clutter-lang"/>
       <repopackage name="cm-unicode-fonts"/>
-      <repopackage name="cni"/>
-      <repopackage name="cni-plugins"/>
       <repopackage name="cogl-lang"/>
       <repopackage name="colord"/>
       <repopackage name="colord-color-profiles"/>
       <repopackage name="colord-lang"/>
       <repopackage name="compat-usrmerge-tools"/>
-      <repopackage name="conmon"/>
       <repopackage name="container-selinux"/>
-      <repopackage name="containerd"/>
       <repopackage name="coreutils"/>
       <repopackage name="coreutils-lang"/>
       <repopackage name="cpio"/>
@@ -393,9 +388,6 @@
       <repopackage name="dnsmasq"/>
       <repopackage name="docbook-xsl-stylesheets"/>
       <repopackage name="docbook_4"/>
-      <repopackage name="docker"/>
-      <repopackage name="docker-bash-completion"/>
-      <repopackage name="docker-zsh-completion"/>
       <repopackage name="dolphin"/>
       <repopackage name="dolphin-part"/>
       <repopackage name="dolphin-part-lang"/>
@@ -526,7 +518,6 @@
       <repopackage name="frei0r-plugins"/>
       <repopackage name="fribidi"/>
       <repopackage name="fuse"/>
-      <repopackage name="fuse-overlayfs"/>
       <repopackage name="fuse3"/>
       <repopackage name="fwupd"/>
       <repopackage name="fwupd-bash-completion"/>
@@ -1495,7 +1486,6 @@
       <repopackage name="libcolord2"/>
       <repopackage name="libcolorhug2"/>
       <repopackage name="libcom_err2"/>
-      <repopackage name="libcontainers-common"/>
       <repopackage name="libcorosync_common4"/>
       <repopackage name="libcpg4"/>
       <repopackage name="libcpupower0"/>
@@ -3537,8 +3527,6 @@
       <repopackage name="plymouth-theme-bgrt"/>
       <repopackage name="plymouth-theme-spinner"/>
       <repopackage name="pngquant"/>
-      <repopackage name="podman"/>
-      <repopackage name="podman-cni-config"/>
       <repopackage name="polari"/>
       <repopackage name="polari-lang"/>
       <repopackage name="policycoreutils"/>
@@ -4210,7 +4198,6 @@
       <repopackage name="ruby3.1-rubygem-zeitwerk"/>
       <repopackage name="rubygem-passenger"/>
       <repopackage name="rubygem-passenger-apache2"/>
-      <repopackage name="runc"/>
       <repopackage name="rzip"/>
       <repopackage name="rzsz"/>
       <repopackage name="sac"/>
@@ -4288,7 +4275,6 @@
       <repopackage name="skanlite-lang"/>
       <repopackage name="skkdic"/>
       <repopackage name="slang-slsh"/>
-      <repopackage name="slirp4netns"/>
       <repopackage name="slrn"/>
       <repopackage name="slrn-lang"/>
       <repopackage name="smartmontools"/>
