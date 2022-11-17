@@ -1,7 +1,7 @@
 #
 # spec file for package openttd-openmsx
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ License:        GPL-2.0-only
 Group:          Amusements/Games/Strategy/Other
 URL:            https://github.com/OpenTTD/OpenMSX
 Source0:        https://cdn.openttd.org/openmsx-releases/%{version}/openmsx-%{version}-source.tar.xz
-BuildRequires:  python
+BuildRequires:  python3
 Requires:       openttd-data >= 1.2
 Recommends:     fluid-soundfont-gm
 BuildArch:      noarch
@@ -34,6 +34,9 @@ OpenMSX is a base music set for OpenTTD.
 
 %prep
 %setup -q -n openmsx-%{version}-source
+for script in scripts/*.py ; do
+    sed -i "s,\(^#!\) /usr/bin/env python$,\1%{_bindir}/python3," $script
+done
 
 %build
 %make_build PYTHON=%{_bindir}/python3 REPO_VERSION=%{version} _V=

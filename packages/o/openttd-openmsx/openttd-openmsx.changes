@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 14 04:40:57 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to using Python 3 by updating BuildRequires and fixing
+  shebangs of install scripts. 
+
+-------------------------------------------------------------------
 Sat Nov 27 18:07:31 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Recommend fluid-soundfont-gm instead of timidity: works more
