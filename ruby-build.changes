@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov 18 03:51:28 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20221116.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20221116
+  * Add definition for Ruby 3.2.0-preview3 by @koic in #2087
+  * Update to OpenSSL 1.1.1s by @mislav in #2088
+  * Do not automatically enable YJIT nor attempt to detect rustc, as Ruby 3.2 now does that automatically by @mislav in #2091
+  * Mark Ruby 2.6 as EOL and 2.7 as "unsupported" by @mislav in #2077
+
+-------------------------------------------------------------------
 Thu Nov  3 11:02:48 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20221101.
