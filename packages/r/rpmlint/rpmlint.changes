@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Nov 17 09:52:05 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.4.0+git20221117.15e61cc:
+  * Remove Python entries from Filelist checks.
+  * GitHub Action: remove --security-opt in action
+
+-------------------------------------------------------------------
+Tue Nov 15 17:55:04 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.4.0+git20221115.3d27dda:
+  * PythonCheck: Do not allow tests folder in subpackages (#961)
+
+-------------------------------------------------------------------
+Tue Nov 15 13:10:32 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.4.0+git20221115.32b20b2:
+  * Add python check (#955)
+
+-------------------------------------------------------------------
+Tue Nov 15 13:10:23 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.4.0+git20221114.9c41868:
+  * codeql: remove cron and use it only for some branches
+  * Add CodeQL workflow for GitHub code scanning
+
+-------------------------------------------------------------------
 Thu Nov 10 15:17:32 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.4.0+git20221110.f8919c6:

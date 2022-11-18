@@ -4135,4 +4135,24 @@ oddjob-gpupdate isn't blocked)</comment>
   * remove bugbear exception (B023)</comment>
     <requestid>1035097</requestid>
   </revision>
+  <revision rev="423" vrev="1">
+    <srcmd5>0e0ed82f7921f4ed3a584eb5afa82258</srcmd5>
+    <version>2.4.0+git20221117.15e61cc</version>
+    <time>1668782557</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.0+git20221117.15e61cc:
+  * Remove Python entries from Filelist checks.
+  * GitHub Action: remove --security-opt in action
+
+- Update to version 2.4.0+git20221115.3d27dda:
+  * PythonCheck: Do not allow tests folder in subpackages (#961)
+
+- Update to version 2.4.0+git20221115.32b20b2:
+  * Add python check (#955)
+
+- Update to version 2.4.0+git20221114.9c41868:
+  * codeql: remove cron and use it only for some branches
+  * Add CodeQL workflow for GitHub code scanning</comment>
+    <requestid>1036415</requestid>
+  </revision>
 </revisionlist>
