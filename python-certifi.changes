@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Nov 17 09:31:30 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2022.9.24:
+  * (no changes)
+- from version 2022.09.24:
+  * (no changes)
+- from version 2022.09.14:
+  * (no changes)
+- from version 2022.06.15.2:
+  * Only use importlib.resources's new files() /
+    Traversable API on Python ≥3.11 (#204)
+- from version 2022.06.15.1:
+  * Fix deprecation warning on Python 3.11 (#199)
+  * fixes #198 -- update link in license
+- from version 2022.06.15:
+  * Add py.typed to MANIFEST.in to package in sdist (#196)
+- from version 2022.05.18.1:
+  * Add support for Python 3.10 and drop EOL 3.5 (#167)
+- from version 2022.05.18:
+  * Automatically lock github issues after
+    they've been closed for 90 days (#189)
+  * Remove universal wheel, python 2 is unsupported (#187)
+  * Add type annotations to package
+  * Added Required Python Version (#152)
+  * Fix homepage link (#145)
+- Refresh patches for new version
+  * python-certifi-shipped-requests-cabundle.patch
+
+-------------------------------------------------------------------
 Sat Jan 15 17:54:53 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2021.10.8:

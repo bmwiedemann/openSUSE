@@ -241,4 +241,12 @@
   * CN=HARICA TLS ECC Root CA 2021 O=Hellenic Academic and Research Institutions CA</comment>
     <requestid>946694</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>09cca9a87f7ccb033d3bc0ba3353d1e0</srcmd5>
+    <version>2022.9.24</version>
+    <time>1668782580</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1036437</requestid>
+  </revision>
 </revisionlist>
