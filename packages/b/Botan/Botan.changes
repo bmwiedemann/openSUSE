@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 17 21:26:01 UTC 2022 - Jason Sikes <jsikes@suse.com>
+
+- Update to 2.19.3:
+  * validate that an embedded certificate was issued by the end-entity
+    issuing certificate authority when checking OCSP responses.
+  * CVE-2022-43705
+  * bsc#1205509
+
+-------------------------------------------------------------------
 Wed Jun  8 18:11:38 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.19.2:
