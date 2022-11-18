@@ -35,16 +35,16 @@
 %define with_ldacBT 0
 %endif
 
-%if 0%{?suse_version} >= 1550
+%if 0%{?suse_version} > 1500
 %bcond_without libcamera
 %else
 %bcond_with libcamera
 %endif
 
-%if 0%{?sle_version} && 0%{?sle_version} < 150400
-%bcond_with aac
-%else
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
 %bcond_without aac
+%else
+%bcond_with aac
 %endif
 
 %if %{?pkg_vcmp:%{pkg_vcmp meson >= 0.59.0}}%{!?pkg_vcmp:0}
@@ -54,7 +54,7 @@
 %bcond_with aptx
 
 Name:           pipewire
-Version:        0.3.59
+Version:        0.3.60
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -64,10 +64,16 @@ Source0:        %{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE reduce-meson-dependency.patch
 Patch0:         reduce-meson-dependency.patch
-# PATCH-FIX-UPSTREAM 0001-filter-chain-iterate-the-port-correctly.patch
-Patch1:         0001-filter-chain-iterate-the-port-correctly.patch
-# PATCH-FIX-UPSTREAM 0002-spa-support-the-speakers-output-only-case-in-report_.patch
-Patch2:         0002-spa-support-the-speakers-output-only-case-in-report_.patch
+# PATCH-FIX-UPSTREAM 0001-pulse-server-also-advance-read-pointer-in-underrun.patch
+Patch1:         0001-pulse-server-also-advance-read-pointer-in-underrun.patch
+# PATCH-FIX-UPSTREAM 0001-audioadapter-perform-setup-again-after-a-PortConfig.patch
+Patch2:         0001-audioadapter-perform-setup-again-after-a-PortConfig.patch
+# PATCH-FIX-UPSTREAM 0002-audioconvert-redo-setup-when-format-changes.patch
+Patch3:         0002-audioconvert-redo-setup-when-format-changes.patch
+# PATCH-FIX-UPSTREAM 0003-acp-do-probing-in-44100Hz-again.patch
+Patch4:         0003-acp-do-probing-in-44100Hz-again.patch
+# PATCH-FIX-UPSTREAM 0004-alsa-force-playback-start-when-buffer-is-full.patch
+Patch5:         0004-alsa-force-playback-start-when-buffer-is-full.patch
 BuildRequires:  docutils
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -77,7 +83,7 @@ BuildRequires:  gcc9
 BuildRequires:  gcc9-c++
 %endif
 BuildRequires:  graphviz
-%if 0%{?sle_version} <= 150300
+%if 0%{?suse_version} <= 1500 && 0%{?sle_version} <= 150300
 BuildRequires:  meson >= 0.54.0
 %else
 BuildRequires:  meson >= 0.59.0
@@ -111,7 +117,7 @@ BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(libavformat)
 %if %{with libcamera}
-BuildRequires:  libcamera-devel >= 0.0.0+g3887.f1776100
+BuildRequires:  libcamera-devel >= 0.0.1
 %endif
 BuildRequires:  pkgconfig(libcanberra)
 BuildRequires:  pkgconfig(libcap)
@@ -134,7 +140,7 @@ BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(webrtc-audio-processing)
 BuildRequires:  pkgconfig(x11)
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
 BuildRequires:  pkgconfig(xfixes)
 %endif
 BuildConflicts: pipewire-libjack-%{apiver_str}-devel
@@ -318,12 +324,13 @@ Summary:        PipeWire PulseAudio implementation
 Group:          Development/Libraries/C and C++
 Requires:       %{libpipewire} >= %{version}-%{release}
 Requires:       %{name} >= %{version}-%{release}
+Requires:       pulseaudio-utils
 Recommends:     pipewire-alsa
 Conflicts:      pulseaudio
 Conflicts:      pulseaudio-daemon
 # Virtual Provides to support swapping between PipeWire-PA and PA
 Provides:       pulseaudio-daemon
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
 Requires(post): pulseaudio-setup
 %endif
 #Provides:       pulseaudio-module-bluetooth
@@ -336,11 +343,14 @@ This package provides a PulseAudio implementation based on PipeWire
 
 %prep
 %autosetup -N
-%if 0%{?sle_version} <= 150300
+%if 0%{?suse_version} <= 1500 && 0%{?sle_version} <= 150300
 %patch0 -p1
 %endif
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
 
 %build
 %if %{pkg_vcmp gcc < 8}
@@ -391,7 +401,10 @@ export CXX=g++-9
 %else
     -Djack-devel=false \
 %endif
-%if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150400
+%if 0%{?suse_version} <= 1500
+    -Dreadline=disabled \
+%endif
+%if 0%{?suse_version} <= 1500 && 0%{?sle_version} < 150400
     -Dx11-xfixes=disabled \
 %endif
     -Dsession-managers="[]" \
@@ -494,7 +507,7 @@ if [ ! -L %{_sysconfdir}/systemd/user/sockets.target.wants/pipewire-pulse.socket
 # https://bugzilla.opensuse.org/show_bug.cgi?id=1186561
 EOF
 fi
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
 # Update the /etc/profile.d/pulseaudio.* files
 setup-pulseaudio --auto > /dev/null
 %endif
