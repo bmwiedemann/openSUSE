@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Nov 14 13:47:26 UTC 2022 - schubi@suse.com
+
+- Update to version 0.4.8+git20221114.7ff7704:
+  * Parsing files which are containing keys only (#170)
+    All delimiters are allowed now : "", " =", " ", "=". But the
+    user should use "" in order to be distinct.
+  * /usr/etc/shells.d/<file_name> will not be parsed if
+    /etc/shells.d/<file_name> is defined too.
+  * Lto build fixed (#168)
+  * New calls: econf_comment_tag, econf_delimiter_tag, econf_set_comment_tag,
+    econf_set_delimiter_tag
+  * Checking UID,GroupID, permissions,... of the parsed files (#165)
+    New calls: econf_requireOwner, econf_requireGroup, econf_requirePermissions,
+    econf_followSymlinks
+  * Ignoring Group without brackets; Do not hold brackets in the internal data structure. (#164)
+  * Error handling improved for nums and booleans (#163)
+
+-------------------------------------------------------------------
 Wed Apr 27 22:10:35 UTC 2022 - schubi@suse.com
 
 - Update to version 0.4.6+git20220427.3016f4e:
