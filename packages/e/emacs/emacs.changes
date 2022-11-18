@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 10 13:48:45 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- dbus-update-activation-environment handles only variables with
+  their names 
+
+-------------------------------------------------------------------
 Wed Nov  9 13:46:06 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Add workaround for boo#1205109, that is started with sudo there

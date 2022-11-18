@@ -1717,4 +1717,12 @@ Now one could consider building emacs with gsettings support (both debian and fe
   is maybe no active user session for root hence no dbus</comment>
     <requestid>1034852</requestid>
   </revision>
+  <revision rev="169" vrev="5">
+    <srcmd5>81fa6634f78c441ff6db38a1c73b87d0</srcmd5>
+    <version>28.1</version>
+    <time>1668782587</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1036458</requestid>
+  </revision>
 </revisionlist>

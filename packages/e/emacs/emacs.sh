@@ -90,7 +90,8 @@ if test -n "$dbusdaemon" ; then
 	dbusupdate=$(type -p dbus-update-activation-environment 2>/dev/null)
 	dbusstatus=$(systemctl --user is-active dbus.service 2>/dev/null)
 	if test -n "$dbusupdate" -a "$dbusstatus" != active ; then
-	    $dbusupdate --systemd DBUS_SESSION_BUS_ADDRESS="unix:path=${XDG_RUNTIME_DIR}/bus"
+	    export DBUS_SESSION_BUS_ADDRESS="unix:path=${XDG_RUNTIME_DIR}/bus"
+	    $dbusupdate --systemd "DBUS_SESSION_BUS_ADDRESS"
         fi
     fi
     unset dbuslaunch dbusdaemon
