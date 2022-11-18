@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Nov 15 13:43:41 UTC 2022 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Fixed the help in the installation summary to include the texts
+  from the corresponding proposals (related to jsc#SLE-24764).
+- 4.5.9
+
+-------------------------------------------------------------------
+Tue Nov 15 13:42:41 UTC 2022 - José Iván López González <jlopez@suse.com>
+
+- Write config for ssg-apply script according to the enabled
+  security policy (part of jsc#SLE-24764).
+
+-------------------------------------------------------------------
+ Tue Nov 15 13:41:41 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
+
+- Fix copy of entropy pool during installation (bsc#1204559).
+
+-------------------------------------------------------------------
+Tue Nov 15 13:40:41 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Do not use "xrdb" for setting the "Xft.dpi" value, use a specific
+  YaST tool from the yast2-x11 package (bsc#1201532)
+  (xrdb depends on the C pre-processor increasing the dependencies
+   about of 22MB)
+- Install yast2-x11 only when GUI (libyui-qt) is installed,
+  avoid installing the dependent X libraries in minimal (text mode)
+  installation (bsc#1201966)
+
+-------------------------------------------------------------------
 Thu Oct 20 13:53:14 UTC 2022 - Steffen Winterfeldt <snwint@suse.com>
 
 - add 'repo', 'cd', 'dvd', 'hd', and 'label' schemes to
@@ -49,7 +78,7 @@ Wed Jun 15 11:28:30 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
 
 - Do not restart services when updating the package (bsc#1199480,
   bsc#1200274)
--4.5.3
+- 4.5.3
 
 -------------------------------------------------------------------
 Mon May 23 15:42:10 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
