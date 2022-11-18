@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 17 21:14:05 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.0
+  * Build system modernization
+- Metadata update (homepage URL) and trim old RPM constructs.
+
+-------------------------------------------------------------------
 Fri Aug 29 19:43:35 UTC 2014 - jengelh@inai.de
 
 - Improve on RPM group classification
