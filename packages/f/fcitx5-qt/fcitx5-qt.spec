@@ -64,7 +64,7 @@ Qt library and IM module for fcitx5.
 Summary:        Qt4 IM module for Fcitx5
 Group:          System/I18n/Chinese
 Provides:       fcitx-qt4 = %{version}
-Obsoletes:      fcitx-qt4 <= 4.2.9.8
+Obsoletes:      fcitx-qt4 < 5.0.0
 Supplements:    (fcitx5 and libqt4)
 
 %description -n fcitx5-qt4
@@ -82,6 +82,8 @@ This package provides Qt4 DBus Addons library for Fcitx5.
 %package -n fcitx5-qt6
 Summary:        Qt6 IM module for Fcitx5
 Group:          System/I18n/Chinese
+Provides:       fcitx-qt6 = %{version}
+Obsoletes:      fcitx-qt6 < 5.0.0
 Supplements:    (fcitx5 and libQt6Core6)
 
 %description -n fcitx5-qt6
@@ -99,7 +101,7 @@ This package provides Qt6 DBus Addons library for Fcitx5.
 Summary:        Qt5 IM module for Fcitx5
 Group:          System/I18n/Chinese
 Provides:       fcitx-qt5 = %{version}
-Obsoletes:      fcitx-qt5 <= 1.2.5
+Obsoletes:      fcitx-qt5 < 5.0.0
 Supplements:    (fcitx5 and libqt5-qtbase)
 
 %description -n fcitx5-qt5
