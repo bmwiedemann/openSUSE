@@ -4,4 +4,5 @@
 which can improve your network's security by eliminating the insecure
 practice of clear text passwords.</description>
   <devel project="openSUSE:Factory" package="krb5"/>
+  <bcntsynctag>krb5</bcntsynctag>
 </package>
