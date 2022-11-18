@@ -22,7 +22,7 @@
 %endif
 
 Name:           autoyast2
-Version:        4.5.8
+Version:        4.5.9
 Release:        0
 Summary:        YaST2 - Automated Installation
 License:        GPL-2.0-only
@@ -44,15 +44,17 @@ BuildRequires:  rubygem(%{rb_default_ruby_abi}:rspec)
 # Replace PackageSystem with Package
 BuildRequires:  yast2 >= 4.4.38
 # FileSystems.read_default_subvol_from_target
+BuildRequires:  yast2-xml
 BuildRequires:  yast2-services-manager
 BuildRequires:  yast2-transfer
-BuildRequires:  yast2-xml
 # ProductSpec API
+BuildRequires:  yast2-packager >= 4.4.13
 BuildRequires:  yast2-country
 BuildRequires:  yast2-network >= 3.1.145
-BuildRequires:  yast2-packager >= 4.4.13
 BuildRequires:  yast2-slp
 BuildRequires:  yast2-update >= 3.3.0
+# Support for SecurityPolicies
+BuildRequires:  yast2-security >= 4.5.3
 # Required for test suite testing one time sync
 BuildRequires:  yast2-ntp-client >= 4.0.1
 # UEFI detection in Y2Storage::Arch
@@ -71,16 +73,16 @@ Requires:       libxslt
 Requires:       yast2 >= 4.4.38
 Requires:       yast2-core
 Requires:       yast2-country >= 3.1.13
-# Moving security module to first installation stage
-Requires:       yast2-security >= 4.1.1
+# Support for SecurityPolicies
+Requires:       yast2-security >= 4.5.3
 # Install selected network backend packages
 Requires:       yast2-network >= 4.5.9
 Requires:       yast2-schema >= 4.0.6
 Requires:       yast2-transfer >= 2.21.0
 Requires:       yast2-xml
 # New API for Y2Storage::PackageHandler and storage features
-Requires:       yast2-ruby-bindings >= 1.0.0
 Requires:       yast2-storage-ng >= 4.2.95
+Requires:       yast2-ruby-bindings >= 1.0.0
 
 Conflicts:      yast2-installation < 3.1.166
 

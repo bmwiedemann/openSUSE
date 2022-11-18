@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov  8 15:52:04 UTC 2022 - Josef Reidinger <jreidinger@suse.com>
+
+- Add needed packages for kdump even when kdump section is not
+  defined if product enable kdump by default (bsc#1204180)
+- 4.5.9
+
+-------------------------------------------------------------------
+Thu Nov  3 16:45:52 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Add support for security policies validation (jsc#SLE-24764).
+
+-------------------------------------------------------------------
 Thu Nov  3 13:04:26 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
 - Log the profile/rules/classes file SHA1 sum so we can later
