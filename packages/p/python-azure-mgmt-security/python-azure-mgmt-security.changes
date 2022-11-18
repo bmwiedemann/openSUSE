@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov 17 09:10:58 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 3.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove temporary version override
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
 Fri Sep 30 09:07:13 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
