@@ -1566,4 +1566,10 @@
     <comment>- list-{common,x11,installer}: Don't install YaST on the rescue CD anymore (forwarded request 1036428 from favogt)</comment>
     <requestid>1036429</requestid>
   </revision>
+  <revision rev="196" vrev="196">
+    <srcmd5>82aee4c1d5d11b9b9b530a6c04abd426</srcmd5>
+    <version>unknown</version>
+    <time>1668752477</time>
+    <user>dimstar_suse</user>
+  </revision>
 </revisionlist>

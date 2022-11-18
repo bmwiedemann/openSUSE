@@ -50,7 +50,7 @@ for i in langset NetworkManager firewalld; do
 done
 
 for i in sshd cron wicked purge-kernels; do
-	systemctl -f disable $i
+	systemctl -f disable $i || true
 done
 
 echo '# multipath needs to be excluded from dracut as it breaks os-prober' > /etc/dracut.conf.d/no-multipath.conf
