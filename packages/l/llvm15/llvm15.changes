@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov 16 22:06:27 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 15.0.5.
+  * This release contains bug-fixes for the LLVM 15.0.0 release.
+    This release is API and ABI compatible with 15.0.0.
+- Remove obsolete lldb-swig-4.1.0-build-fix.patch.
+- Rebase llvm-do-not-install-static-libraries.patch.
+
+-------------------------------------------------------------------
 Sun Nov  6 19:13:25 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 15.0.4.

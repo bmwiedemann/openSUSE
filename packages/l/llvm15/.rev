@@ -76,4 +76,17 @@ without RUNPATH on libc++.so.
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1035533</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2e9097ac592ccecd64ef976ccbd00fee</srcmd5>
+    <version>15.0.5</version>
+    <time>1668782567</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 15.0.5.
+  * This release contains bug-fixes for the LLVM 15.0.0 release.
+    This release is API and ABI compatible with 15.0.0.
+- Remove obsolete lldb-swig-4.1.0-build-fix.patch.
+- Rebase llvm-do-not-install-static-libraries.patch.
+</comment>
+    <requestid>1036301</requestid>
+  </revision>
 </revisionlist>
