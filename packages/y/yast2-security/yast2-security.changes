@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov  8 17:40:12 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Add support for DISA STIG security policy validation
+  (jsc#SLE-24764).
+- Disable the ssg-apply service if the selected SCAP action is
+  "do nothing" (related to jsc#SLE-24764).
+- 4.5.3
+
+-------------------------------------------------------------------
+Wed Nov  2 15:46:44 UTC 2022 - Martin Vidner <mvidner@suse.com>
+
+- Fix hash vs keyword arguments in RSpec expectations (bsc#1204871)
+- 4.5.2
+
+-------------------------------------------------------------------
 Tue Aug 23 08:41:45 UTC 2022 - David Diaz <dgonzalez@suse.com>
 
 - Do not crash when reading active LSM modules returns nil

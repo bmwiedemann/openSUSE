@@ -17,11 +17,11 @@
 
 
 Name:           yast2-security
-Version:        4.5.1
+Version:        4.5.3
 Release:        0
-Summary:        YaST2 - Security Configuration
-License:        GPL-2.0-only
 Group:          System/YaST
+License:        GPL-2.0-only
+Summary:        YaST2 - Security Configuration
 URL:            https://github.com/yast/yast-security
 
 Source0:        %{name}-%{version}.tar.bz2
@@ -31,8 +31,8 @@ BuildRequires:  perl-XML-Writer
 BuildRequires:  pkg-config
 BuildRequires:  update-desktop-files
 # Pam.List
-BuildRequires:  yast2-devtools >= 4.2.2
 BuildRequires:  yast2-pam >= 4.3.1
+BuildRequires:  yast2-devtools >= 4.2.2
 # Y2Security::Selinux requires Yast::Bootloader
 BuildRequires:  yast2-bootloader
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:rspec)
@@ -43,6 +43,8 @@ BuildRequires:  yast2 >= 4.4.47
 BuildRequires:  augeas-lenses
 # Y2Storage::StorageManager
 BuildRequires:  yast2-storage-ng
+# Yast::Lan and Y2Network
+BuildRequires:  yast2-network
 # Unfortunately we cannot move this to macros.yast,
 # bcond within macros are ignored by osc/OBS.
 %bcond_with yast_run_ci_tests
@@ -63,6 +65,8 @@ Requires:       yast2-bootloader
 Requires:       augeas-lenses
 # Y2Storage::StorageManager
 Requires:       yast2-storage-ng
+# Yast::Lan and Y2Network
+Requires:       yast2-network
 
 Provides:       y2c_sec
 Provides:       y2t_sec
