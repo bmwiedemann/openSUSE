@@ -1,0 +1,36 @@
+From: Dario Faggioli <dfaggioli@suse.com>
+Date: Wed, 16 Nov 2022 13:24:36 +0100
+Subject: pc: q35: Bump max_cpus to 1024
+
+References: jsc#PED-2592
+Git-commit: 0000000000000000000000000000000000000000
+
+And use the new limit for machine version 7.1 too.
+Keep the old limit of 288 for machine versions 7.0 and earlier.
+
+Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
+---
+ hw/i386/pc_q35.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+index 2e5dae9a89faaf0d9c285b030ed7..6875e27b508cccd6891e2db58b68 100644
+--- a/hw/i386/pc_q35.c
++++ b/hw/i386/pc_q35.c
+@@ -367,7 +367,7 @@ static void pc_q35_machine_options(MachineClass *m)
+     machine_class_allow_dynamic_sysbus_dev(m, TYPE_INTEL_IOMMU_DEVICE);
+     machine_class_allow_dynamic_sysbus_dev(m, TYPE_RAMFB_DEVICE);
+     machine_class_allow_dynamic_sysbus_dev(m, TYPE_VMBUS_BRIDGE);
+-    m->max_cpus = 288;
++    m->max_cpus = 1024;
+ }
+ 
+ static void pc_q35_7_1_machine_options(MachineClass *m)
+@@ -388,6 +388,7 @@ static void pc_q35_7_0_machine_options(MachineClass *m)
+     pc_q35_7_1_machine_options(m);
+     m->alias = NULL;
+     pcmc->enforce_amd_1tb_hole = false;
++    m->max_cpus = 288;
+     compat_props_add(m->compat_props, hw_compat_7_0, hw_compat_7_0_len);
+     compat_props_add(m->compat_props, pc_compat_7_0, pc_compat_7_0_len);
+ }

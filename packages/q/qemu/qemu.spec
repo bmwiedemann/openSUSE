@@ -194,6 +194,7 @@ Patch00030:     linux-user-remove-conditionals-for-many-.patch
 Patch00031:     meson-enforce-a-minimum-Linux-kernel-hea.patch
 Patch00032:     linux-user-drop-conditionals-for-obsolet.patch
 Patch00033:     block-io_uring-revert-Use-io_uring_regis.patch
+Patch00034:     pc-q35-Bump-max_cpus-to-1024.patch
 # Patches applied in roms/seabios/:
 Patch01000:     seabios-switch-to-python3-as-needed.patch
 Patch01001:     enable-cross-compilation-on-ARM.patch
