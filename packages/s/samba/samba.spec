@@ -119,7 +119,7 @@ BuildRequires:  libgnutls-devel >= 3.4.7
 %if %{with_dc}
 BuildRequires:  gpgme-devel
 BuildRequires:  libjansson-devel
-BuildRequires:  python3-gpgme
+BuildRequires:  python3-gpg
 %if %{with_mit_dc}
 BuildRequires:  krb5-devel >= 1.15.1
 BuildRequires:  krb5-server >= 1.15.1
@@ -145,7 +145,7 @@ BuildRequires:  liburing-devel
 %endif
 BuildRequires:  sysuser-tools
 
-Version:        4.17.2+git.273.a55a83528b9
+Version:        4.17.3+git.279.ff9bb8a298
 Release:        0
 URL:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}

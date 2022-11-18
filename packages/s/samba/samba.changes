@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov 15 17:14:58 UTC 2022 - Samuel Cabrero <scabrero@suse.de>
+
+- CVE-2022-42898: Samba buffer overflow vulnerabilities on 32-bit
+  systems; (bsc#1205126); (bso#15203);
+
+-------------------------------------------------------------------
+Tue Nov  8 17:20:21 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Replace obsolete python-gpgme with python-gpg
+  * Upstream replaced it in v4.9.5 -- bso#13728
+
+-------------------------------------------------------------------
 Tue Oct 25 09:26:59 UTC 2022 - Noel Power <nopower@suse.com>
 
 - Update to 4.17.2

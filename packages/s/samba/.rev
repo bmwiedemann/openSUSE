@@ -3567,4 +3567,12 @@ list of changes.</comment>
     <comment></comment>
     <requestid>1031263</requestid>
   </revision>
+  <revision rev="288" vrev="1">
+    <srcmd5>6694a3771d7e074b6dab4719bbd5846b</srcmd5>
+    <version>4.17.3+git.279.ff9bb8a298</version>
+    <time>1668782596</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1036489</requestid>
+  </revision>
 </revisionlist>
