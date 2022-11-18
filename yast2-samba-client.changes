@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov  4 10:16:54 UTC 2022 - Samuel Cabrero <scabrero@suse.de>
+
+- Enable pam_mount also for gdm-password service; (bsc#1204830);
+- 4.5.2
+
+-------------------------------------------------------------------
 Wed Apr 27 08:47:46 UTC 2022 - Noel Power <nopower@suse.com>
 
 - Use translation macro for range settings expert details text;
