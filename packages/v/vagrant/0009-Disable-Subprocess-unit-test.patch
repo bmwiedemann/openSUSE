@@ -1,7 +1,7 @@
-From 12e2bb8f59b42b93a09c5e44aa1ce183512f727d Mon Sep 17 00:00:00 2001
+From 0e972e73b2601b2dd68269eb6d006ecfb7fba4e2 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
 Date: Wed, 28 Aug 2019 13:39:58 +0200
-Subject: [PATCH 09/12] Disable Subprocess unit test
+Subject: [PATCH 09/10] Disable Subprocess unit test
 
 This unit test is *very* flaky on OBS' workers and causes random build
 failures. These are probably caused by worker being under high load and then

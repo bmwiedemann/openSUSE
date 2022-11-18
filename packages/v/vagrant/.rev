@@ -359,4 +359,12 @@
     <comment>Add missing requires to vagrant, fixes boo#1205020</comment>
     <requestid>1033463</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>5411d33a056e245a9de08dd64904c618</srcmd5>
+    <version>2.3.3</version>
+    <time>1668782578</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1036400</requestid>
+  </revision>
 </revisionlist>

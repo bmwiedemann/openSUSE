@@ -1,7 +1,7 @@
-From 5bdda0d6b8ca0c39e03e9b4df4950d6704b35089 Mon Sep 17 00:00:00 2001
+From ea1a647652e891b7b8cfa725dc954104f76b79c2 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
 Date: Tue, 23 Aug 2022 16:19:11 +0200
-Subject: [PATCH 10/12] Remove dependency on grpc-tools
+Subject: [PATCH 10/10] Remove dependency on grpc-tools
 
 This package is only needed to build the go plugins, which we do not use at the
 moment.
@@ -10,7 +10,7 @@ moment.
  1 file changed, 3 deletions(-)
 
 diff --git a/vagrant.gemspec b/vagrant.gemspec
-index 410484dc1..c8a25cd0b 100644
+index f51b8d263..6550462ae 100644
 --- a/vagrant.gemspec
 +++ b/vagrant.gemspec
 @@ -39,9 +39,6 @@ Gem::Specification.new do |s|

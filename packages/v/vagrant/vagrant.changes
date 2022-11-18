@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed Nov 16 15:15:03 UTC 2022 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 2.3.3
+
+  Rebased patches:
+ * 0001-bin-vagrant-silence-warning-about-installer.patch
+ * 0002-Use-a-private-temporary-dir.patch
+ * 0003-plugins-don-t-abuse-require_relative.patch.patch
+ * 0004-fix-vbox-package-boo-1044087-added-by-robert.muntean.patch
+ * 0005-do-not-depend-on-wdm.patch
+ * 0006-do-not-abuse-relative-paths-in-docker-plugin-to-make.patch
+ * 0007-Don-t-abuse-relative-paths-in-plugins.patch
+ * 0008-Skip-failing-tests.patch
+ * 0009-Disable-Subprocess-unit-test.patch
+ * 0010-Remove-dependency-on-grpc-tools.patch
+
+ Removed patches (merged upstream):
+ * 0011-Bump-net-ssh-to-7.0.patch
+ * 0012-Relax-rspec-dependency-to-3.11.patch
+
+## 2.3.3 (November 15, 2022)
+
+IMPROVEMENTS:
+
+- core: Bump net-ssh dependency to 7.0 and remove patches [GH-12979]
+- synced_folders/rsync: Include ssh `extra_args` value [GH-12973]
+
+BUG FIXES:
+
+- command/serve: Force root level namespace for Google constant [GH-12989]
+- guest/solaris: Fix insecure key authorized keys removal [GH-12740]
+- provider/virtualbox: Fix `:private_network` support for VirtualBox 7 on macOS [GH-12983]
+- provider/virtualbox: Prevent localization of command output [GH-12994]
+- provisioner/ansible: Update setup packages in debian capability [GH-12832]
+
+-------------------------------------------------------------------
 Fri Nov  4 08:13:18 UTC 2022 - Dan Čermák <dcermak@suse.com>
 
 - Add missing requires to vagrant, fixes boo#1205020

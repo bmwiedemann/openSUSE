@@ -1,7 +1,7 @@
-From b60042a2b9d0c94be207ad852d0b58bb2f8f002c Mon Sep 17 00:00:00 2001
+From b687d26ac9d8027e7bac73c9e5258ba632c36ed0 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
 Date: Mon, 1 Apr 2019 17:28:31 +0200
-Subject: [PATCH 08/12] Skip failing tests
+Subject: [PATCH 08/10] Skip failing tests
 
 ---
  test/unit/bin/vagrant_test.rb | 4 ++--

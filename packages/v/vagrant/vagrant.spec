@@ -26,7 +26,7 @@
 
 
 Name:           vagrant
-Version:        2.3.2
+Version:        2.3.3
 Release:        0
 Summary:        Tool for building and distributing virtualized development environments
 License:        MIT
@@ -58,8 +58,6 @@ Patch7:         0007-Don-t-abuse-relative-paths-in-plugins.patch
 Patch8:         0008-Skip-failing-tests.patch
 Patch9:         0009-Disable-Subprocess-unit-test.patch
 Patch10:        0010-Remove-dependency-on-grpc-tools.patch
-Patch11:        0011-Bump-net-ssh-to-7.0.patch
-Patch12:        0012-Relax-rspec-dependency-to-3.11.patch
 
 # force only one ruby version
 # CAUTION: if you change this, then you *must* also change the sed calls which
@@ -79,11 +77,11 @@ Patch12:        0012-Relax-rspec-dependency-to-3.11.patch
 # Build dependencies
 #===============================================================================
 
-#  s.required_ruby_version     = ">= 2.5", "< 3.2"
+#  s.required_ruby_version     = ">= 2.7", "< 3.2"
 %if 0%{?suse_version} > 1500
 BuildRequires:  %{ruby} < 3.2
 %else
-BuildRequires:  %{ruby} >= 2.5
+BuildRequires:  %{ruby} >= 2.7
 %endif
 #
 #
@@ -114,13 +112,10 @@ BuildConflicts:  %{rubygem log4r:1.1 >= 1.1.11 }
 BuildRequires:  %{rubygem mime-types:3 >= 3.3 }
 #  s.add_dependency "net-ftp", "~> 0.1"
 BuildRequires:  %{rubygem net-ftp:0 >= 0.1 }
-# PATCHED
 #  s.add_dependency "net-ssh", "~> 7.0"
 BuildRequires:  %{rubygem net-ssh:7 }
-# PATCHED
 #  s.add_dependency "net-sftp", "~> 4.0"
 BuildRequires:  %{rubygem net-sftp:4 }
-# PATCHED
 #  s.add_dependency "net-scp", "~> 4.0"
 BuildRequires:  %{rubygem net-scp:4 }
 #  s.add_dependency "rb-kqueue", "~> 0.2.0"
@@ -149,7 +144,6 @@ BuildRequires:  %{rubygem vagrant_cloud:3.0 >= 3.0.5 }
 # devel dependencies:
 #  s.add_development_dependency "rake", "~> 13.0"
 BuildRequires:  %{rubygem rake:13 }
-# PATCHED
 #  s.add_development_dependency "rspec", "~> 3.11"
 BuildRequires:  %{rubygem rspec:3 >= 3.11 }
 #  s.add_development_dependency "rspec-its", "~> 1.3.0"
@@ -212,13 +206,10 @@ Requires:       %{rubygem log4r:1.1 < 1.1.11 }
 Requires:       %{rubygem mime-types:3 >= 3.3}
 #  s.add_dependency "net-ftp", "~> 0.1"
 BuildRequires:  %{rubygem net-ftp:0 >= 0.1 }
-# PATCHED
 #  s.add_dependency "net-ssh", "~> 7.0"
 Requires:       %{rubygem net-ssh:7 }
-# PATCHED
 #  s.add_dependency "net-sftp", "~> 4.0"
 Requires:       %{rubygem net-sftp:4 }
-# PATCHED
 #  s.add_dependency "net-scp", "~> 4.0"
 Requires:       %{rubygem net-scp:4 }
 #  s.add_dependency "rb-kqueue", "~> 0.2.0"
