@@ -17,11 +17,11 @@
 
 
 Name:           yast2-update
-Version:        4.5.1
+Version:        4.5.2
 Release:        0
 Summary:        YaST2 - Update
-License:        GPL-2.0-only
 Group:          System/YaST
+License:        GPL-2.0-only
 URL:            https://github.com/yast/yast-update
 
 Source0:        %{name}-%{version}.tar.bz2
@@ -52,8 +52,8 @@ Requires:       yast2 >= 4.4.25
 Requires:       yast2-installation
 # ProductSpec#register_target
 Requires:       yast2-packager >= 4.4.15
-# Pkg::SetAdditionalVendors
-Requires:       yast2-pkg-bindings >= 4.3.3
+# filtering orphaned packages
+Requires:       yast2-pkg-bindings >= 4.5.1
 Requires:       yast2-ruby-bindings >= 1.0.0
 # nokogiri is used for parsing pam conf.
 Requires:       rubygem(%{rb_default_ruby_abi}:nokogiri)
