@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Nov 18 13:37:54 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20221117T212039Z:
+  * ilm-ls: report ExpiredObjectDeleteMarker correctly (#4373)
+  * fix `cp --zip` so it copies to given destination name (#4358)
+  * fix: mc stat for filesystem items (#4371)
+  * ls: Fix listing versions when the system clock is off (#4370)
+  * du: Do not count directories in FS mode (#4369)
+  * fix: examples for `mc admin idp` commands (#4368)
+  * update license headers to 2022 (#4360)
+  * fix: 'du' clean the input path to avoid extra counting (#4361)
+  * encrypt: remove sse-s3 example (#4357)
+  * Improve ilm-add flags and ilm-ls output (#4262)
+  * Add LDAP Policy Entities command (#4318)
+
+-------------------------------------------------------------------
+Tue Nov 15 15:44:17 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 20221107T234739Z:
+  * Bump up madmin-go for IDP API client bugfix (#4351)
+  * Replicate-update instead of replicate-edit (#4346)
+  * replicate diff: change ui (#4347)
+  * Handling newerNoncurrentVersions Expiry and Transition in validation (#4348)
+  * More improvements in format of perf test results (#4350)
+  * Update admin IDP commands with new design (#4310)
+  * Update version of madmin-go to v1.7.3 (#4344)
+  * add help menu for cmd 'mc admin user add' (#4337)
+  * modify operation type in message (#4339)
+  * fix: stat command with a directory marker (#4341)
+  * generalize input for ctx.Command.Name (#4338)
+  * Fix typo in rebalance-stop output (#4336)
+  * fix up rebalance commands for 'mc' error conventions and usage (#4333)
+  * feat: admin-rebalance subcommands (#4186)
+  * Add support for inspect data v2 (#4185)
+
+-------------------------------------------------------------------
 Sat Oct 29 15:39:08 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 20221029T100923Z:
