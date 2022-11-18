@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 15 11:34:57 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 84.87+git20221115.2f7add6:
+  * fallback to the libkcapi fipscheck
+  * Remove legacy checks that are part of rpmlint 2.x.
+  * brp-25-symlink: don't fail if the symlink target starts with a dash
+  * Revert "Let symlinks from /lib/modules to /usr/src be absolute"
+  * Fix /etc/alternatives being white listed
+
+-------------------------------------------------------------------
 Mon Sep 19 07:51:41 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - use https:// for urls 

@@ -652,4 +652,17 @@ Lets break everything :)
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1006017</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>378b7532c1aa2d67d2c80a8025eeb644</srcmd5>
+    <version>84.87+git20221115.2f7add6</version>
+    <time>1668782555</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20221115.2f7add6:
+  * fallback to the libkcapi fipscheck
+  * Remove legacy checks that are part of rpmlint 2.x.
+  * brp-25-symlink: don't fail if the symlink target starts with a dash
+  * Revert &quot;Let symlinks from /lib/modules to /usr/src be absolute&quot;
+  * Fix /etc/alternatives being white listed</comment>
+    <requestid>1035828</requestid>
+  </revision>
 </revisionlist>

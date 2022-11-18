@@ -2,4 +2,6 @@
   <service name="tar_scm">
     <param name="url">git://github.com/openSUSE/brp-check-suse.git</param>
   <param name="changesrevision">6c5fe09a2a2108e70a5724f798ad985b628bbc0a</param></service>
-</servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/openSUSE/brp-check-suse.git</param>
+              <param name="changesrevision">2f7add6f0b7f5c2e9698d180a4761a10fb808482</param></service></servicedata>
