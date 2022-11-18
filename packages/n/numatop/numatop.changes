@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 18 09:16:32 UTC 2022 - Vlastimil Babka <vbabka@suse.com>
+
+- update to version 2.3
+  * Add support for SPR CPUs (jsc#PED-2015)
+
+-------------------------------------------------------------------
 Thu Nov 25 11:30:17 UTC 2021 - Vlastimil Babka <vbabka@suse.com>
 
 - update to version 2.2

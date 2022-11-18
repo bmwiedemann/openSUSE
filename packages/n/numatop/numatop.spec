@@ -1,7 +1,7 @@
 #
 # spec file for package numatop
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           numatop
-Version:        2.2
+Version:        2.3
 Release:        0
 Summary:        A top-like tool for runtime memory locality monitoring on NUMA systems
 License:        BSD-3-Clause
