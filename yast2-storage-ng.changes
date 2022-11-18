@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Nov 15 11:40:40 UTC 2022 - José Iván López González <jlopez@suse.com>
+
+- Validate security policies in both guided proposal and
+  partitioner (part of jsc#SLE-24764).
+- 4.5.13
+
+-------------------------------------------------------------------
+Thu Nov 10 11:31:21 UTC 2022 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- New functionality for D-Installer: MinGuidedProposal and ability
+  to disable size adjustments (related to gh#yast/d-installer#264).
+- 4.5.12
+
+-------------------------------------------------------------------
+Wed Nov  2 16:04:22 UTC 2022 - Martin Vidner <mvidner@suse.com>
+
+- Fix hash vs keyword arguments in RSpec expectations (bsc#1204871)
+- 4.5.11
+
+-------------------------------------------------------------------
 Fri Oct 21 08:08:01 UTC 2022 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - Unit tests adapted to a recent behavior change in libstorage-ng
