@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Nov 15 16:20:35 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- update to 2.4.12.1
+  * Features
+    - add option to use ISO-8859-1 encoding for propagated claim values by
+      adding latin1 option to OIDCPassClaimsAs <> latin1; see #957
+    - Note that the encoding - including the existing "base64url" - apply to
+      both header and environment variables as well now
+  * Bugfixes
+    - switch to using apr_generate_random_bytes instead of apr_uuid_get to
+      generate session identifiers so there's no longer a (rather implicit)
+      dependency on a libapr that is compiled against libuuid on Linux
+      platforms; see #431, #603 and #694
+    - fix cache file backend: delete the correct file upon logout; closes #955
+    - fix cleanup of semaphores on graceful restarts; see #522, closes #458
+    - fix OIDCProviderMetadataRefreshInterval since it was interpreted in 
+      microseconds instead of the documented and intended seconds; setting in 
+      to seconds would effectively turn of caching and pull the configuration 
+      document on each request
+    - define APLOG_TRACE1 if it does not exist
+    - correct ap_hook_insert_filter function signature in stub.c, part 3; see #784
+    - fixed printout of cache mutex errors in cache/common.c
+    - prefer APR_LOCK_POSIXSEM over APR_LOCK_DEFAULT in apr_global_mutex_create
+      which is apparently required for (some) ARM based builds
+    - fix potential memory leak in proto.c when oidc_util_create_symmetric_key fails
+    - fix potential memory leak in proto.c when oidc_proto_validate_access_token
+      fails (at_hash validation)
+
+-------------------------------------------------------------------
 Mon Oct 17 14:32:15 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - update to 2.4.12
