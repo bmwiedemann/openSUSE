@@ -27,4 +27,16 @@
     <comment>- icu721_fixes.patch: fixes compatibility with ICU 72.1 (bsc#1205236)</comment>
     <requestid>1035029</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ec0ca0fe2e8ec59b0689aa44196d29d7</srcmd5>
+    <version>19.1.0</version>
+    <time>1668782581</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 19.1.0:
+  * test: Support function mocking on Node.js test runner
+  * fs.watch recursive support on Linux
+  * util: add MIME utilities
+- new_python3.patch, icu721_fixes.patch: upstreamed</comment>
+    <requestid>1036443</requestid>
+  </revision>
 </revisionlist>

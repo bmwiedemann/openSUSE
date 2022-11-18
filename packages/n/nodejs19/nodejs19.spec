@@ -31,7 +31,7 @@
 %endif
 
 Name:           nodejs19
-Version:        19.0.1
+Version:        19.1.0
 Release:        0
 
 # Double DWZ memory limits
@@ -131,7 +131,7 @@ Source3:        nodejs.keyring
 
 # Python 3.4 compatible node-gyp 
 ### https://github.com/nodejs/node-gyp.git 
-### git archive v7.1.2 gyp/ | xz > node-gyp_7.1.2.tar.xz 
+### git archive v7.1.2 | xz > node-gyp_7.1.2.tar.xz 
 Source5:        node-gyp_7.1.2.tar.xz 
 # Only required to run unit tests in NodeJS 10+ 
 Source10:       update_npm_tarball.sh 
@@ -169,9 +169,7 @@ Patch132:       test-skip-y2038-on-32bit-time_t.patch
 # Use versioned binaries and paths
 Patch200:       versioned.patch
 
-Patch304:       new_python3.patch
 Patch305:       qemu_timeouts_arches.patch
-Patch306:       icu721_fixes.patch
 
 BuildRequires:  pkg-config
 BuildRequires:  fdupes
@@ -309,7 +307,7 @@ Provides:       bundled(libcares2) = 1.18.1
 %if ! 0%{with intree_icu}
 BuildRequires:  pkgconfig(icu-i18n) >= 69
 %else
-Provides:       bundled(icu) = 71.1
+Provides:       bundled(icu) = 72.1
 %endif
 
 %if ! 0%{with intree_nghttp2}
@@ -365,8 +363,8 @@ ExclusiveArch:  not_buildable
 %endif
 
 Provides:       bundled(uvwasi) = 0.0.13
-Provides:       bundled(libuv) = 1.43.0
-Provides:       bundled(v8) = 10.7.193.13
+Provides:       bundled(libuv) = 1.44.2
+Provides:       bundled(v8) = 10.7.193.20
 %if %{with intree_brotli}
 Provides:       bundled(brotli) = 1.0.9
 %else
@@ -381,9 +379,9 @@ Provides:       bundled(node-acorn) = 8.8.0
 Provides:       bundled(node-acorn-walk) = 8.2.0
 Provides:       bundled(node-busboy) = 1.6.0
 Provides:       bundled(node-cjs-module-lexer) = 1.2.2
-Provides:       bundled(node-corepack) = 0.14.2
+Provides:       bundled(node-corepack) = 0.15.1
 Provides:       bundled(node-streamsearch) = 1.1.0
-Provides:       bundled(node-undici) = 5.11.0
+Provides:       bundled(node-undici) = 5.12.0
 
 %description
 Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js
@@ -412,7 +410,7 @@ Requires:       nodejs-common
 Requires:       nodejs19 = %{version}
 Provides:       nodejs-npm = %{version}
 Obsoletes:      nodejs-npm < 4.0.0
-Provides:       npm(npm) = 8.19.2
+Provides:       npm(npm) = 8.19.3
 Provides:       npm = %{version}
 %if 0%{?suse_version} >= 1500
 %if %{node_version_number} >= 10
@@ -475,7 +473,7 @@ Provides:       bundled(node-graceful-fs) = 4.2.10
 Provides:       bundled(node-has) = 1.0.3
 Provides:       bundled(node-has-flag) = 4.0.0
 Provides:       bundled(node-has-unicode) = 2.0.1
-Provides:       bundled(node-hosted-git-info) = 5.1.0
+Provides:       bundled(node-hosted-git-info) = 5.2.1
 Provides:       bundled(node-http-cache-semantics) = 4.1.0
 Provides:       bundled(node-http-proxy-agent) = 5.0.0
 Provides:       bundled(node-https-proxy-agent) = 5.0.1
@@ -503,8 +501,8 @@ Provides:       bundled(node-just-diff) = 5.1.1
 Provides:       bundled(node-just-diff-apply) = 5.4.1
 Provides:       bundled(node-libnpmaccess) = 6.0.4
 Provides:       bundled(node-libnpmdiff) = 4.0.5
-Provides:       bundled(node-libnpmexec) = 4.0.13
-Provides:       bundled(node-libnpmfund) = 3.0.4
+Provides:       bundled(node-libnpmexec) = 4.0.14
+Provides:       bundled(node-libnpmfund) = 3.0.5
 Provides:       bundled(node-libnpmhook) = 8.0.4
 Provides:       bundled(node-libnpmorg) = 4.0.4
 Provides:       bundled(node-libnpmpack) = 4.1.3
@@ -668,9 +666,7 @@ tar Jxf %{SOURCE11}
 %endif
 %patch200 -p1
 
-%patch304 -p1
 %patch305 -p1
-%patch306 -p1
 
 %if %{node_version_number} <= 12
 # minimist security update - patch50

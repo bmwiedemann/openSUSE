@@ -8,10 +8,10 @@ management via update_alternatives.
 
 This is also important for generation of binary
 modules for multiple versions of NodeJS
-Index: node-v19.0.0/Makefile
+Index: node-v19.1.0/Makefile
 ===================================================================
---- node-v19.0.0.orig/Makefile
-+++ node-v19.0.0/Makefile
+--- node-v19.1.0.orig/Makefile
++++ node-v19.1.0/Makefile
 @@ -76,7 +76,7 @@ BUILDTYPE_LOWER := $(shell echo $(BUILDT
  EXEEXT := $(shell $(PYTHON) -c \
  		"import sys; print('.exe' if sys.platform == 'win32' else '')")
@@ -21,10 +21,10 @@ Index: node-v19.0.0/Makefile
  NODE ?= ./$(NODE_EXE)
  NODE_G_EXE = node_g$(EXEEXT)
  NPM ?= ./deps/npm/bin/npm-cli.js
-Index: node-v19.0.0/tools/install.py
+Index: node-v19.1.0/tools/install.py
 ===================================================================
---- node-v19.0.0.orig/tools/install.py
-+++ node-v19.0.0/tools/install.py
+--- node-v19.1.0.orig/tools/install.py
++++ node-v19.1.0/tools/install.py
 @@ -86,7 +86,7 @@ def uninstall(paths, dst):
      try_remove(path, dst)
  
@@ -113,11 +113,11 @@ Index: node-v19.0.0/tools/install.py
  
    if sys.platform == 'zos':
      zoslibinc = os.environ.get('ZOSLIB_INCLUDES')
-Index: node-v19.0.0/doc/node.1
+Index: node-v19.1.0/doc/node.1
 ===================================================================
---- node-v19.0.0.orig/doc/node.1
-+++ node-v19.0.0/doc/node.1
-@@ -30,24 +30,24 @@
+--- node-v19.1.0.orig/doc/node.1
++++ node-v19.1.0/doc/node.1
+@@ -31,24 +31,24 @@
  .Dt NODE 1
  .
  .Sh NAME
@@ -146,19 +146,19 @@ Index: node-v19.0.0/doc/node.1
  .Op Fl -v8-options
  .
  .\"======================================================================
-Index: node-v19.0.0/deps/npm/man/man1/npm.1
+Index: node-v19.1.0/deps/npm/man/man1/npm.1
 ===================================================================
---- node-v19.0.0.orig/deps/npm/man/man1/npm.1
-+++ node-v19.0.0/deps/npm/man/man1/npm.1
+--- node-v19.1.0.orig/deps/npm/man/man1/npm.1
++++ node-v19.1.0/deps/npm/man/man1/npm.1
 @@ -1,6 +1,6 @@
- .TH "NPM" "1" "September 2022" "" ""
+ .TH "NPM" "1" "November 2022" "" ""
  .SH "NAME"
 -\fBnpm\fR \- javascript package manager
 +\fBnpm19\fR \- javascript package manager
  .SS Synopsis
- .SS Version
  .P
-@@ -15,7 +15,7 @@ It is extremely configurable to support
+ .RS 2
+@@ -21,7 +21,7 @@ It is extremely configurable to support
  commonly, you use it to publish, discover, install, and develop node
  programs\.
  .P
@@ -167,7 +167,7 @@ Index: node-v19.0.0/deps/npm/man/man1/npm.1
  .SS Important
  .P
  npm comes preconfigured to use npm's public registry at
-@@ -31,14 +31,14 @@ their terms of use\.
+@@ -37,14 +37,14 @@ their terms of use\.
  You probably got npm because you want to install stuff\.
  .P
  The very first thing you will most likely want to run in any node
@@ -176,7 +176,7 @@ Index: node-v19.0.0/deps/npm/man/man1/npm.1
  .P
 -You can also run \fBnpm install blerg\fP to install the latest version of
 +You can also run \fBnpm19 install blerg\fP to install the latest version of
- "blerg"\.  Check out npm help \fBinstall\fP for more
+ "blerg"\.  Check out npm help install for more
  info\.  It can do a lot of stuff\.
  .P
 -Use the \fBnpm search\fP command to show everything that's available in the
@@ -186,24 +186,14 @@ Index: node-v19.0.0/deps/npm/man/man1/npm.1
  .SS Dependencies
  .P
  If a package lists a dependency using a git URL, npm will install that
-@@ -87,7 +87,7 @@ npm help \fBpackage\.json\fP\|\.
- .IP \(bu 2
- link:
- Links your current working code into Node's path, so that you don't
--have to reinstall every time you make a change\.  Use npm help \fBnpm
-+have to reinstall every time you make a change\.  Use npm help \fBnpm19
- link\fP to do this\.
- .IP \(bu 2
- install:
-@@ -170,18 +170,18 @@ https://github\.com/npm/rfcs
+@@ -175,18 +175,18 @@ https://github\.com/npm/rfcs
  .SS See Also
  .RS 0
  .IP \(bu 2
 -npm help help
 +npm19 help help
  .IP \(bu 2
--npm help package\.json
-+npm19 help package\.json
+ package\.json \fI/configuring\-npm/package\-json\fR
  .IP \(bu 2
 -npm help npmrc
 +npm19 help npmrc
@@ -221,10 +211,10 @@ Index: node-v19.0.0/deps/npm/man/man1/npm.1
 +npm19 help publish
  
  .RE
-Index: node-v19.0.0/src/node_main.cc
+Index: node-v19.1.0/src/node_main.cc
 ===================================================================
---- node-v19.0.0.orig/src/node_main.cc
-+++ node-v19.0.0/src/node_main.cc
+--- node-v19.1.0.orig/src/node_main.cc
++++ node-v19.1.0/src/node_main.cc
 @@ -94,6 +94,7 @@ int wmain(int argc, wchar_t* wargv[]) {
  // UNIX
  
@@ -233,11 +223,11 @@ Index: node-v19.0.0/src/node_main.cc
    return node::Start(argc, argv);
  }
  #endif
-Index: node-v19.0.0/tools/test.py
+Index: node-v19.1.0/tools/test.py
 ===================================================================
---- node-v19.0.0.orig/tools/test.py
-+++ node-v19.0.0/tools/test.py
-@@ -948,7 +948,7 @@ class Context(object):
+--- node-v19.1.0.orig/tools/test.py
++++ node-v19.1.0/tools/test.py
+@@ -949,7 +949,7 @@ class Context(object):
      if self.vm is not None:
        return self.vm
      if arch == 'none':
@@ -246,10 +236,10 @@ Index: node-v19.0.0/tools/test.py
      else:
        name = 'out/%s.%s/node' % (arch, mode)
  
-Index: node-v19.0.0/node.gyp
+Index: node-v19.1.0/node.gyp
 ===================================================================
---- node-v19.0.0.orig/node.gyp
-+++ node-v19.0.0/node.gyp
+--- node-v19.1.0.orig/node.gyp
++++ node-v19.1.0/node.gyp
 @@ -22,8 +22,8 @@
      'node_use_openssl%': 'true',
      'node_shared_openssl%': 'false',
@@ -261,10 +251,10 @@ Index: node-v19.0.0/node.gyp
      'node_intermediate_lib_type%': 'static_library',
      'node_builtin_modules_path%': '',
      # We list the deps/ files out instead of globbing them in js2c.py since we
-Index: node-v19.0.0/deps/npm/man/man1/npx.1
+Index: node-v19.1.0/deps/npm/man/man1/npx.1
 ===================================================================
---- node-v19.0.0.orig/deps/npm/man/man1/npx.1
-+++ node-v19.0.0/deps/npm/man/man1/npx.1
+--- node-v19.1.0.orig/deps/npm/man/man1/npx.1
++++ node-v19.1.0/deps/npm/man/man1/npx.1
 @@ -5,10 +5,10 @@
  .P
  .RS 2

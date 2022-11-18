@@ -1,20 +1,20 @@
-Index: node-v16.13.0/configure
+Index: node-v19.1.0/configure
 ===================================================================
---- node-v16.13.0.orig/configure
-+++ node-v16.13.0/configure
-@@ -22,7 +22,7 @@ except ImportError:
+--- node-v19.1.0.orig/configure
++++ node-v19.1.0/configure
+@@ -23,7 +23,7 @@ except ImportError:
    from distutils.spawn import find_executable as which
  
  print('Node.js configure: Found Python {}.{}.{}...'.format(*sys.version_info))
--acceptable_pythons = ((3, 10), (3, 9), (3, 8), (3, 7), (3, 6))
-+acceptable_pythons = ((3, 10), (3, 9), (3, 8), (3, 7), (3, 6), (3, 4))
+-acceptable_pythons = ((3, 11), (3, 10), (3, 9), (3, 8), (3, 7), (3, 6))
++acceptable_pythons = ((3, 11), (3, 10), (3, 9), (3, 8), (3, 7), (3, 6), (3, 4))
  if sys.version_info[:2] in acceptable_pythons:
    import configure
  else:
-Index: node-v16.13.0/deps/npm/node_modules/node-gyp/lib/find-python.js
+Index: node-v19.1.0/deps/npm/node_modules/node-gyp/lib/find-python.js
 ===================================================================
---- node-v16.13.0.orig/deps/npm/node_modules/node-gyp/lib/find-python.js
-+++ node-v16.13.0/deps/npm/node_modules/node-gyp/lib/find-python.js
+--- node-v19.1.0.orig/deps/npm/node_modules/node-gyp/lib/find-python.js
++++ node-v19.1.0/deps/npm/node_modules/node-gyp/lib/find-python.js
 @@ -15,7 +15,7 @@ const programFiles = process.env.Program
  const programFilesX86 = process.env['ProgramFiles(x86)'] || `${programFiles} (x86)`
  
