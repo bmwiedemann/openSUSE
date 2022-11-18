@@ -2144,4 +2144,15 @@ So it would be very nice to get this into 12.2. As it is an isolated feature, it
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1035532</requestid>
   </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>457936c1ea33fb4edc55c9197f95b1d9</srcmd5>
+    <version>15.0.5</version>
+    <time>1668782572</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 15.0.5.
+  * This release contains bug-fixes for the LLVM 15.0.0 release.
+    This release is API and ABI compatible with 15.0.0.
+</comment>
+    <requestid>1036302</requestid>
+  </revision>
 </revisionlist>
