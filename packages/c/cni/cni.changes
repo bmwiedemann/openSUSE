@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov 10 14:06:19 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.1.2:
+  * spec: fix format
+  * libcni: handle empty version when parsing version
+  * [exec-plugins]: support plugin lists
+
+  This is a minor update to the CNI libraries and tooling. 
+  This does not bump the protocol / spec version, which remains at v1.0.0
+
+-------------------------------------------------------------------
 Fri Mar 26 11:05:40 UTC 2022 - Enrico Belleri <idesmi@protonmail.com>
 
 - Update to version v1.0.1:
