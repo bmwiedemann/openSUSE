@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov 18 06:37:34 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2.2.5:
+  * Bugfixes
+    - Make galaxy installation verbose (#190) @ssbarnea
+    - Log current directory before running galaxy install (#188) @ssbarnea
+    - Update build-system dependency for setuptools-scm to >= 7.0.0 (#186) @dvzrv
+    - Update devtools repo url (#185) @ssbarnea
+
+-------------------------------------------------------------------
 Tue Nov 15 15:40:25 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 2.2.4:

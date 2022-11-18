@@ -19,7 +19,7 @@
 # only works with the python version which the package 'ansible' uses
 %define pythons python3
 Name:           python-ansible-compat
-Version:        2.2.4
+Version:        2.2.5
 Release:        0
 Summary:        Compatibility shim for Ansible 2.9 and newer
 License:        MIT
