@@ -17,13 +17,15 @@
 
 
 Name:           tellico
-Version:        3.4.4
+Version:        3.4.5
 Release:        0
 Summary:        A Collection Manager
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://tellico-project.org/
 Source0:        https://tellico-project.org/files/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         Fix-build-with-older-Qt-versions.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  libcsv-devel

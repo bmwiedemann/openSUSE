@@ -1,0 +1,26 @@
+From c2eba8637aab25caf8e7286c0a115affdcef0f11 Mon Sep 17 00:00:00 2001
+From: Wolfgang Bauer <wbauer@tmo.at>
+Date: Thu, 17 Nov 2022 13:57:04 +0000
+Subject: [PATCH] Fix build with older Qt versions
+
+The branch for Qt < 5.14.0 had a ')' too much...
+---
+ src/collections/gamecollection.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/collections/gamecollection.cpp b/src/collections/gamecollection.cpp
+index 694d35f5..9476e852 100644
+--- a/src/collections/gamecollection.cpp
++++ b/src/collections/gamecollection.cpp
+@@ -277,7 +277,7 @@ QStringList GameCollection::esrbRatings() {
+                            "Unrated, Adults Only, Mature, Teen, Everyone 10+, Everyone, Early Childhood, Pending",
+                            "Unrated, Adults Only, Mature, Teen, Everyone 10+, Everyone, Early Childhood, Pending")
+ #if (QT_VERSION < QT_VERSION_CHECK(5, 14, 0))
+-                     .split(rx), QString::SkipEmptyParts);
++                     .split(rx, QString::SkipEmptyParts);
+ #else
+                      .split(rx, Qt::SkipEmptyParts);
+ #endif
+-- 
+GitLab
+

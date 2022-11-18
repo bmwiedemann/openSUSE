@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov 17 12:31:35 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 3.4.5
+  Improvements and Bug Fixes:
+  * Fixed display for large reports (kde#461391).
+  * Updated the ESRB rating from TheGamesDB data source.
+  * Fixed image path for exporting GCstar file (kde#453075).
+  * Fixed file installation for KDE Frameworks 5.100.
+  * Updated CSV importer to remember previous delimiters.
+  * Updated the IMDb data source to include the composer (kde#450618).
+- Add Fix-build-with-older-Qt-versions.patch to fix build on Leap
+  15.3
+
+-------------------------------------------------------------------
 Wed Jul  6 06:22:18 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Require dbus-send. Needed to install/uninstall scripts

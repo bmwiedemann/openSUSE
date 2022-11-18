@@ -728,4 +728,12 @@
     <comment>require/recommend dbus-send (forwarded request 986985 from cgiboudeaux)</comment>
     <requestid>987207</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>529a8cc10a60bf52b94f46219088f275</srcmd5>
+    <version>3.4.5</version>
+    <time>1668782603</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1036514</requestid>
+  </revision>
 </revisionlist>
