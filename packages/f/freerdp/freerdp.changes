@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Nov 17 08:42:25 UTC 2022 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Ugraded to freerdp 2.9.0
+  * Backported #gh:FreeRDP/FreeRDP#8252: Support sending server redirection PDU
+  * Backported #gh:FreeRDP/FreeRDP#8406: Ensure X11 client cursor is never
+    smaller 1x1
+  * Backported #gh:FreeRDP/FreeRDP#8403: Fixed multiple client side input
+    validation issues - boo#1205512
+    (CVE-2022-39316, CVE-2022-39317, CVE-2022-39318, CVE-2022-39319,
+     CVE-2022-39320, CVE-2022-41877, CVE-2022-39347)
+  * Backported #7282: Proxy server now discards input events sent before
+    activation was received
+  * Backported #gh:FreeRDP/FreeRDP#8324: Internal replacements for md4,
+    md5 and hmac-md5
+    For the time being the RDP protocol requires these outdated hash
+    algorithms. So any distribution that wants to ship a working
+    FreeRDP should check the options WITH_INTERNAL_MD4 (and depending
+    on OpenSSL deprecation status WITH_INTERNAL_MD5)
+
+- Fixed issues:
+  * Backported #gh:FreeRDP/FreeRDP#8341: Null checks in winpr_Digest_Free
+  * Backported #gh:FreeRDP/FreeRDP#8335: Missing NULL return
+    in winpr_Digest_New
+  * Backported #gh:FreeRDP/FreeRDP#8192: Support for audin
+    version 2 microphone channel
+  * Backported #gh:FreeRDP/FreeRDP#7282: Discard input events before
+    activation (Fixes #8374)
+
+-------------------------------------------------------------------
 Mon Nov  7 11:44:38 UTC 2022 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Ugraded to freerdp 2.8.1
