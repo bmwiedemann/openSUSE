@@ -1,0 +1,67 @@
+Sun Nov 06 20:57:23 UTC 2022 - Hollow Man <hollowman@opensuse.org>
+
+- V84: Fix to make lock screen theme get unaffected.
+
+-------------------------------------------------------------------
+Wed Aug 17 16:37:47 UTC 2022 - Hollow Man <hollowman@opensuse.org>
+
+- V83: Support for GNOME 43.
+
+-------------------------------------------------------------------
+Wed Mar 09 10:58:08 UTC 2022 - Hollow Man <hollowman@opensuse.org>
+
+- V82: Initial support for GNOME 42.
+
+-------------------------------------------------------------------
+Wed Dec 01 16:28:57 UTC 2021 - Hollow Man <hollowman@opensuse.org>
+
+- V80: Relief from libnotify dependency.
+- V80: Fix IBus theme also get changed when using User Themes to change system themes.
+
+-------------------------------------------------------------------
+Sat Nov 06 11:54:53 UTC 2021 - Hollow Man <hollowman@opensuse.org>
+
+- V78: Clean up and fix several Bugs.
+
+-------------------------------------------------------------------
+Sun Oct 31 07:22:45 UTC 2021 - Hollow Man <hollowman@opensuse.org>
+
+- V77: Support instantly show indicator when switch window or IME even showing delay is enabled.
+- V76: Support hide input source indicator when using single mode IME.
+- V76: Add a show delay for input source indicator.
+
+-------------------------------------------------------------------
+Wed Oct 06 09:35:56 UTC 2021 - Hollow Man <hollowman@opensuse.org>
+
+- v75: Fix support for wayland and reposition bug.
+- v75: Rearrange UI.
+
+-------------------------------------------------------------------
+Wed Sep 22 15:55:42 UTC 2021 - Hollow Man <hollowman@opensuse.org>
+
+- v72, support GNOME 41
+
+-------------------------------------------------------------------
+Fri Aug 13 04:13:32 UTC 2021 - Hollow Man <hollowman@opensuse.org>
+
+- v70 GSoC Final Submit
+
+-------------------------------------------------------------------
+Sun Aug 08 09:17:23 UTC 2021 - Hollow Man <hollowman@opensuse.org>
+
+- v69
+
+-------------------------------------------------------------------
+Fri Jul 09 05:18:11 UTC 2021 - Hollow Man <hollowman@opensuse.org>
+
+- v68
+
+-------------------------------------------------------------------
+Mon Jul 05 16:21:36 UTC 2021 - Hollow Man <hollowman@opensuse.org>
+
+- Add support for openSUSE Leap 15.3.
+
+-------------------------------------------------------------------
+Wed Jun 30 08:24:14 UTC 2021 - Hollow Man <hollowman@opensuse.org>
+
+- Ready to submit to GNOME:Factory
