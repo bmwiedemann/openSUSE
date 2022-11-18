@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Nov 17 19:37:21 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 0.106.0:
+  * resources/tpl: Add a test for resources.Get
+  * tlp/resources: resources.Get returns nil when given empty string
+  * build(deps): bump github.com/pelletier/go-toml/v2 from 2.0.4 to 2.0.6
+  * build(deps): bump github.com/evanw/esbuild from 0.15.13 to 0.15.14
+  * deps: Update the libweb version string
+  * deps: Upgrade github.com/bep/gowebp v0.1.0 => v0.2.0
+  * build(deps): bump github.com/yuin/goldmark from 1.5.2 to 1.5.3
+  * build(deps): bump github.com/spf13/afero from 1.9.2 to 1.9.3
+  * build(deps): bump github.com/getkin/kin-openapi from 0.107.0 to 0.108.0
+  * tpl/internal: Sync go_templates
+  * build(deps): bump github.com/clbanning/mxj/v2 from 2.5.6 to 2.5.7
+  * build(deps): bump golang.org/x/net from 0.1.0 to 0.2.0
+  * build(deps): bump github.com/evanw/esbuild from 0.15.12 to 0.15.13
+  * Add Go 1.16+ install method to README
+  * Fix taxonomy weight sort regression
+
+-------------------------------------------------------------------
 Fri Oct 28 21:38:57 UTC 2022 - jkowalczyk@suse.com
 
 - Update to version 0.105.0:

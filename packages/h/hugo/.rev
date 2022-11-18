@@ -383,4 +383,27 @@
   * Use setup-go action to cache dependencies</comment>
     <requestid>1032075</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>5939dacfdad780b201ea1600f4cffec7</srcmd5>
+    <version>0.106.0</version>
+    <time>1668782613</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.106.0:
+  * resources/tpl: Add a test for resources.Get
+  * tlp/resources: resources.Get returns nil when given empty string
+  * build(deps): bump github.com/pelletier/go-toml/v2 from 2.0.4 to 2.0.6
+  * build(deps): bump github.com/evanw/esbuild from 0.15.13 to 0.15.14
+  * deps: Update the libweb version string
+  * deps: Upgrade github.com/bep/gowebp v0.1.0 =&gt; v0.2.0
+  * build(deps): bump github.com/yuin/goldmark from 1.5.2 to 1.5.3
+  * build(deps): bump github.com/spf13/afero from 1.9.2 to 1.9.3
+  * build(deps): bump github.com/getkin/kin-openapi from 0.107.0 to 0.108.0
+  * tpl/internal: Sync go_templates
+  * build(deps): bump github.com/clbanning/mxj/v2 from 2.5.6 to 2.5.7
+  * build(deps): bump golang.org/x/net from 0.1.0 to 0.2.0
+  * build(deps): bump github.com/evanw/esbuild from 0.15.12 to 0.15.13
+  * Add Go 1.16+ install method to README
+  * Fix taxonomy weight sort regression (forwarded request 1036521 from jfkw)</comment>
+    <requestid>1036522</requestid>
+  </revision>
 </revisionlist>
