@@ -4163,4 +4163,12 @@
     <comment>submit new version 4.5.18</comment>
     <requestid>1031177</requestid>
   </revision>
+  <revision rev="544" vrev="1">
+    <srcmd5>147eb9d758753ab386e7ef4416686d3d</srcmd5>
+    <version>4.5.19</version>
+    <time>1668782558</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.5.19</comment>
+    <requestid>1033485</requestid>
+  </revision>
 </revisionlist>
