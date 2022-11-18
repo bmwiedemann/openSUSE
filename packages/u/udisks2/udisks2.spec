@@ -32,6 +32,7 @@ URL:            https://github.com/storaged-project/udisks
 Source0:        %{url}/releases/download/udisks-%{version}/udisks-%{version}.tar.bz2
 Patch0:         harden_udisks2-zram-setup@.service.patch
 Patch1:         harden_udisks2.service.patch
+Patch2:         0001-udiskslinuxmountoptions-Do-not-free-static-daemon-re.patch
 BuildRequires:  chrpath
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gobject-introspection-devel >= 0.6.2
