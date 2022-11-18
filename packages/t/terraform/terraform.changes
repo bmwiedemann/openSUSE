@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Nov 18 06:40:42 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 1.3.5:
+  * BUG FIXES:
+    - Prevent crash while serializing the plan for an empty destroy operation (#32207)
+    - Allow a destroy plan to refresh instances while taking into account that some may no longer exist (#32208)
+    - Fix Terraform creating objects that should not exist in variables that specify default attributes in optional objects. (#32178)
+    - Fix several Terraform crashes that are caused by HCL creating objects that should not exist in variables that specify default attributes in optional objects within collections. (#32178)
+    - Fix inconsistent behaviour in empty vs null collections. (#32178)
+    - Prevent file uploads from creating unneeded temporary files when the payload size is known (#32206)
+    - Nested attributes marked sensitive by schema no longer reveal sub-attributes in the plan diff (#32004)
+    - Nested attributes now more consistently display when they become unknown or null values in the plan diff (#32004)
+    - Sensitive values are now always displayed as (sensitive value) instead of sometimes as (sensitive) [GH32004]
+
+-------------------------------------------------------------------
 Mon Nov 14 17:01:59 UTC 2022 - Jan Kohoutek <jkohoutek@suse.com>
 
 - update to 1.3.4:
