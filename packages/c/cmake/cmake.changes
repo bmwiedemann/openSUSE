@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Nov 17 05:37:38 UTC 2022 - Christoph G <foss@grueninger.de>
+
+- Update to 3.25.0
+  * The “find_file()”, “find_path()”, “find_library()”, and
+    “find_program()” commands gained a “VALIDATOR” option to
+    specify a function to be called for each candidate item
+    to validate it.
+  * The “try_compile()” and “try_run()” commands gained new
+    signatures that more consistently use keyword dispatch
+    and do not require a binary directory to be specified.
+  * The “add_subdirectory()” command gained a “SYSTEM” option
+    to enable the “SYSTEM” directory property in the
+    subdirectory.
+  * The “block()” and “endblock()” commands were added to manage
+    specific scopes (policy or variable) for a contained block
+    of commands.
+  * The “return()” command gained a “PROPAGATE” option to
+    propagate variables to the scope to which control returns.
+  * The “LINUX” and “CMAKE_HOST_LINUX” variables are now set
+    to true when the target or host system is Linux,
+    respectively.
+
+-------------------------------------------------------------------
 Wed Nov  2 16:09:11 UTC 2022 - Christoph G <foss@grueninger.de>
 
 - Update to 3.24.3

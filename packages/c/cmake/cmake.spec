@@ -44,9 +44,9 @@
 %else
 %bcond_with full
 %endif
-%define shortversion 3.24
+%define shortversion 3.25
 Name:           cmake%{?psuffix}
-Version:        3.24.3
+Version:        3.25.0
 Release:        0
 Summary:        Cross-platform make system
 License:        BSD-3-Clause
