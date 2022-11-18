@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 16 14:08:26 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Allow querying orphaned packages (related to bsc#1202007) 
+- 4.5.1
+
+-------------------------------------------------------------------
 Wed Apr 06 13:24:58 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
 - Bump version to 4.5.0 (bsc#1198109)

@@ -17,7 +17,7 @@
 
 
 Name:           yast2-pkg-bindings
-Version:        4.5.0
+Version:        4.5.1
 Release:        0
 Summary:        YaST2 - Package Manager Access
 License:        GPL-2.0-only
