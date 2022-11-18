@@ -38,7 +38,8 @@ BuildRequires:  automake
 BuildRequires:  help2man
 BuildRequires:  pkgconfig(libdw)
 BuildRequires:  pkgconfig(libelf)
-Requires:       /usr/bin/gdb-add-index
+# /usr/bin/gdb-add-index is optional
+Suggests:       gdb
 Requires:       binutils
 Requires:       coreutils
 Requires:       dwz

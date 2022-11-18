@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 16 07:28:09 UTC 2022 - Ludwig Nussel <lnussel@suse.de>
+
+- don't hard require gdb (boo#1205344)
+
+-------------------------------------------------------------------
 Sun Sep  4 10:29:29 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - finddebuginfo.patch: convert obsolete egrep to grep -E

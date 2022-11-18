@@ -31,4 +31,12 @@
     <comment></comment>
     <requestid>1002714</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>7bfb6f41cbf709222f2de0a276a63186</srcmd5>
+    <version>5.0</version>
+    <time>1668782556</time>
+    <user>dimstar_suse</user>
+    <comment>- don't hard require gdb (boo#1205344) (forwarded request 1036224 from lnussel)</comment>
+    <requestid>1036229</requestid>
+  </revision>
 </revisionlist>
