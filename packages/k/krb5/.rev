@@ -1477,4 +1477,12 @@ Administrator experience:
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>981266</requestid>
   </revision>
+  <revision rev="161" vrev="1">
+    <srcmd5>ef52e56ad51973e3aa4b1f27f649fdd2</srcmd5>
+    <version>1.20.1</version>
+    <time>1668782553</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1036481</requestid>
+  </revision>
 </revisionlist>
