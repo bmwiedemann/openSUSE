@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 17 14:10:47 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+- New upstream release 21.3.0
+  * Added an app.getPreferredSystemLanguages() API to return the user's system languages.
+  * Updated Chromium to 106.0.5249.181
+
+-------------------------------------------------------------------
 Wed Nov  9 21:11:43 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
 - New upstream release 21.2.3
   * No user-visible changes.
