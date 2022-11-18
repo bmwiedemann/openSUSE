@@ -206,4 +206,16 @@
 - Update Requires from setup.py (forwarded request 994258 from glaubitz)</comment>
     <requestid>994315</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>706f6e610c0468e64eded75a7285c9d5</srcmd5>
+    <version>21.0.0</version>
+    <time>1668782608</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 21.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1036412 from glaubitz)</comment>
+    <requestid>1036513</requestid>
+  </revision>
 </revisionlist>
