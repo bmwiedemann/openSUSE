@@ -111,7 +111,6 @@ BuildConflicts: pkgconfig(liblz4) = 124
 Requires:       libsqlite3-0 >= %{sqlite_minimum_version}
 Requires(post): %fillup_prereq
 %sysusers_requires
-Recommends:     subversion-bash-completion
 # workaround for boo#969159
 Conflicts:      libsvn_auth_kwallet-1-0 < %{version}
 Conflicts:      libsvn_auth_kwallet-1-0 > %{version}
@@ -236,6 +235,7 @@ Provides GNOME keyring support for Subversion
 Summary:        Bash Completion for subversion
 Requires:       bash-completion
 Requires:       subversion = %{version}
+Supplements:    (%{name} and bash-completion)
 BuildArch:      noarch
 
 %description bash-completion

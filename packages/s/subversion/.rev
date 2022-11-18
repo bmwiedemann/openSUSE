@@ -1646,4 +1646,12 @@
 - rediff patches (no functional change)</comment>
     <requestid>971259</requestid>
   </revision>
+  <revision rev="189" vrev="3">
+    <srcmd5>9dc7c9fa9693d193371df3af39f1fb10</srcmd5>
+    <version>1.14.2</version>
+    <time>1668782593</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1036478</requestid>
+  </revision>
 </revisionlist>

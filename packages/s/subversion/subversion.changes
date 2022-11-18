@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 17 13:45:40 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not have the main package recommend the bash-completion
+  sub-package, but rather have the subpackage supplement the
+  combination of subversion and bash-completion.
+
+-------------------------------------------------------------------
 Wed Apr 13 20:55:36 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - split testsuite into _multibuild flavor to speedup dependent packages
