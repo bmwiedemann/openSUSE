@@ -67,10 +67,10 @@
 %if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150400
 %define llvm_version 12
 %else
-%if 0%{?suse_version} < 1599 && 0%{?sle_version} < 150500
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150500
 %define llvm_version 13
 %else
-%define llvm_version 14
+%define llvm_version 15
 %endif
 %endif
 

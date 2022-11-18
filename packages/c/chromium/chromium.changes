@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 17 21:46:42 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Build with llvm15 on openSUSE:Backports:SLE-15-SP5 and up
+
+-------------------------------------------------------------------
 Wed Nov  9 17:03:58 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 107.0.5304.110 (boo#1205221)
