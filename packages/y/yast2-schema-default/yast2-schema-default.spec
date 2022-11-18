@@ -18,11 +18,14 @@
 
 Name:           yast2-schema-default
 # Keep versions in sync with yast2-schema-micro
-Version:        4.5.5
+Version:        4.5.6
 Release:        0
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source0:        %{name}-%{version}.tar.bz2
+
+Group:          System/YaST
+License:        GPL-2.0-or-later
 
 URL:            https://github.com/yast/yast-schema
 
@@ -93,8 +96,8 @@ BuildRequires:  yast2-s390
 %endif
 BuildRequires:  yast2-samba-client
 BuildRequires:  yast2-samba-server
-# Removed 'lsm' section and added 'lsm_select' to security.rnc
-BuildRequires:  yast2-security >= 4.4.10
+# Add support for security policies ('security_policy')
+BuildRequires:  yast2-security >= 4.5.3
 BuildRequires:  yast2-services-manager
 BuildRequires:  yast2-sound
 BuildRequires:  yast2-squid
@@ -122,8 +125,6 @@ BuildRequires:  yast2-users >= 4.1.11
 #!BuildIgnore: yast2-control-center yast2-control-center-gnome yast2-control-center-qt
 
 Summary:        YaST2 - AutoYaST Schema
-License:        GPL-2.0-or-later
-Group:          System/YaST
 
 %description
 AutoYaST Syntax Schema
@@ -144,7 +145,7 @@ AutoYaST Syntax Schema
 %{yast_schemadir}/autoyast/rnc/includes.rnc
 %dir %{yast_schemadir}/autoyast/rng
 %{yast_schemadir}/autoyast/rng/*.rng
-%doc %{yast_docdir} 
+%doc %{yast_docdir}
 %license COPYING
 
 %changelog

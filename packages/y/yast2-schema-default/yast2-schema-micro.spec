@@ -17,7 +17,7 @@
 
 
 Name:           yast2-schema-micro
-Version:        4.5.5
+Version:        4.5.6
 Release:        0
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -59,7 +59,8 @@ BuildRequires:  yast2-network >= 4.5.4
 # addons: architecture/version is optional
 BuildRequires:  yast2-registration >= 4.3.12
 %endif
-BuildRequires:  yast2-security >= 4.3.17
+# Add support for security policies ('security_policy')
+BuildRequires:  yast2-security >= 4.5.3
 BuildRequires:  yast2-services-manager
 # tag home_btrfs_subvolume
 BuildRequires:  yast2-users >= 4.1.11

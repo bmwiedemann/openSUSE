@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov  3 17:02:23 UTC 2022 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Add support for security policies validation (jsc#SLE-24764).
+- Synchronize SP4 and master branches (related to bsc#1199165).
+- 4.5.6
+
+-------------------------------------------------------------------
+Fri Aug 12 11:33:31 UTC 2022 - David Diaz <dgonzalez@suse.com>
+
+- Add KDUMP_AUTO_RESIZE element in kdump section
+ (related to jsc#SLE-18441 and gh#yast/yast-kdump#123).
+- 4.5.5
+
+-------------------------------------------------------------------
 Mon Jul  4 13:20:29 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
 
 - Add 'extrapara' to routes in the networking section (bsc#1201129)
