@@ -26,7 +26,7 @@
 %endif
 %define sover   10
 Name:           linphone
-Version:        5.1.48
+Version:        5.1.58
 Release:        0
 Summary:        Web Phone
 License:        GPL-3.0-or-later
@@ -35,7 +35,6 @@ URL:            https://linphone.org/technical-corner/liblinphone/
 Source:         https://gitlab.linphone.org/BC/public/liblinphone/-/archive/%{version}/liblinphone-%{version}.tar.bz2
 Source1:        %{name}-manual.tar.bz2
 Source3:        https://gitlab.linphone.org/BC/public/external/openldap/-/archive/bc/openldap-bc.tar.bz2
-Source4:        linphone-rpmlintrc
 # PATCH-FIX-OPENSUSE linphone-fix-pkgconfig.patch sor.alexei@meowr.ru -- Install linphone.pc.
 Patch0:         linphone-fix-pkgconfig.patch
 # PATCH-FEATURE-OPENSUSE linphone-build-readline.patch sor.alexei@meowr.ru -- Add the ability to compile with readline to the build system.
@@ -53,15 +52,25 @@ BuildRequires:  gcc-c++
 BuildRequires:  graphviz
 BuildRequires:  jsoncpp-devel
 BuildRequires:  libeXosip2-devel
+%if 0%{?suse_version}
 BuildRequires:  libgsm-devel
+%else
+BuildRequires:  gsm-devel
+%endif
 BuildRequires:  lime-devel >= 5.0.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  python3-pystache
 BuildRequires:  python3-six
+%if 0%{?suse_version}
 BuildRequires:  python3-xml
+%endif
 BuildRequires:  readline-devel
+%if 0%{?suse_version}
 BuildRequires:  sgmltool
+%else
+BuildRequires:  linuxdoc-tools
+%endif
 BuildRequires:  soci-devel
 BuildRequires:  soci-sqlite3-devel
 BuildRequires:  xsd
@@ -85,12 +94,23 @@ BuildRequires:  pkgconfig(speex) >= 1.1.6
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(xerces-c)
 %if 0%{?use_system_ldap}
+%if 0%{?suse_version}
 BuildRequires:  openldap2-devel
 %else
-BuildRequires:  chrpath
+BuildRequires:  openldap-devel
+%endif
+%else
+%if 0%{?suse_version}
 BuildRequires:  db-devel
+%else
+BuildRequires:  libdb-devel
+%endif
 BuildRequires:  openslp-devel
 %endif
+%if 0%{?fedora}
+BuildRequires:  pkgconfig(openssl)
+%endif
+BuildRequires:  chrpath
 
 %description
 Linphone is a Web phone with a Qt interface. It lets you make
@@ -118,7 +138,9 @@ This package contains the command line interface.
 %package -n lib%{name}%{sover}
 Summary:        Web Phone library
 Group:          Productivity/Telephony/SIP/Clients
+%if 0%{?suse_version}
 Recommends:     lib%{name}-lang
+%endif
 Provides:       lib%{name} = %{version}
 
 %description -n lib%{name}%{sover}
@@ -131,7 +153,9 @@ with high speed connections as well as 28k modems.
 
 This package contains a library.
 
+%if 0%{?suse_version}
 %lang_package -n lib%{name}
+%endif
 
 %package -n lib%{name}++%{sover}
 Summary:        Web Phone C++ library
@@ -193,6 +217,13 @@ with high speed connections as well as 28k modems.
 %prep
 %autosetup -n liblinphone-%{version} -p1
 %setup -q -n liblinphone-%{version} -D -T -a 1
+%if 0%{?fedora}
+# patch deprecated python open mode
+sed -i "s|mode='rU'|mode='r'|" wrappers/cpp/genwrapper.py
+# patch ssl sasl - extends linphone-build-jsoncpp.patch
+sed -i "s|jsoncpp)|jsoncpp ssl sasl2)|g" src/CMakeLists.txt
+sed -i "s|jsoncpp)|jsoncpp ssl sasl2)|g" tester/CMakeLists.txt
+%endif
 
 %build
 %if !0%{?use_system_ldap}
@@ -234,7 +265,12 @@ sed -i "/OPENLDAP_INCLUDE_DIRS/,/LDAP_LIB/s@\${CMAKE_INSTALL_PREFIX}@$PWD/aux@;s
   -DPYTHON_EXECUTABLE="%{_bindir}/python3" \
   -DENABLE_CXX_WRAPPER=ON      \
 %if !0%{?use_system_ldap}
+%if 0%{?suse_version}
   -DOPENLDAP_INCLUDE_DIRS=$PWD/../aux/include \
+%else
+  -DOPENLDAP_INCLUDE_DIRS=$PWD/aux/include \
+  -DCMAKE_INSTALL_LIBDIR=lib64 \
+%endif
 %if 0%{?static_ldap}
   -DLDAP_LIB=%{ldaplibdir}/libldap.a \
 %else
@@ -279,13 +315,20 @@ rm -r %{ldaplibdir}
 %endif
 %endif
 
+chrpath -d %{buildroot}%{_libdir}/lib%{name}.so.%{sover}* %{buildroot}%{_libdir}/lib%{name}++.so.%{sover}*
+chrpath -d %{buildroot}%{_bindir}/{linphone-daemon-pipetest,linphone-daemon,groupchat_benchmark,linphonec,linphonecsh,liblinphone_tester}
+%if !0%{?use_system_ldap} && 0%{?fedora}
+# ldaplibdir will remain in lib, disable check-buildroot for Fedora
+export QA_SKIP_BUILD_ROOT=0
+%endif
+
 # Install the manual.
+%if 0%{?suse_version}
 mkdir -p %{buildroot}%{_datadir}/gnome/help/
 cp -a %{name} %{buildroot}%{_datadir}/gnome/help/%{name}/
 %find_lang %{name}
+%endif
 %fdupes %{buildroot}%{_datadir}/
-#disable rpmlint complain about rpath
-export NO_BRP_CHECK_RPATH=true
 
 %post -n lib%{name}%{sover} -p /sbin/ldconfig
 %postun -n lib%{name}%{sover} -p /sbin/ldconfig
@@ -305,9 +348,11 @@ export NO_BRP_CHECK_RPATH=true
 %endif
 %endif
 
+%if 0%{?suse_version}
 %files -n lib%{name}-lang -f %{name}.lang
 %dir %{_datadir}/gnome/
 %dir %{_datadir}/gnome/help/
+%endif
 
 %files -n lib%{name}++%{sover}
 %{_libdir}/lib%{name}++.so.%{sover}*

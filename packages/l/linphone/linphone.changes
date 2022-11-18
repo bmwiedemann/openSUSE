@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Sep 10 12:21:42 UTC 2022 - thod_@gmx.de
+
+- Update to version 5.1.58
+  https://gitlab.linphone.org/BC/public/liblinphone/-/tags/5.1.58
+
+-------------------------------------------------------------------
+Sun Aug 14 12:21:42 UTC 2022 - thod_@gmx.de
+
+- Remove RPATH (instead of ingnore) to be able to build on Fedora (no lang)
+
+-------------------------------------------------------------------
 Fri Jul 15 14:09:04 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 5.1.48.
