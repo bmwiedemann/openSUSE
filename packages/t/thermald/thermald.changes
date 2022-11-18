@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Nov 18 11:38:56 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.5.1:
+  + Always match motion = 0.
+  + Add RaptorLake S CPU models.
+  + Manual: thermal-conf.xml - clean up lintian warnings and .IP
+    formatting.
+
+-------------------------------------------------------------------
 Tue Oct  4 08:12:40 UTC 2022 - Timo Jyrinki <tjyrinki@suse.com>
 
 - Remove --disable-active-power from the service file and sysconfig (boo#1203991)
