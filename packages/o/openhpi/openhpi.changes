@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 11 11:11:11 UTC 2022 - olaf@aepfle.de
+
+- some sort of openssl is required for building
+- tcpd-devel is not required for building
+
+-------------------------------------------------------------------
 Fri Sep  3 11:31:43 UTC 2021 - Thomas Renninger <trenn@suse.de>
 
 - Update _service file to use obs_scm and local/buildmode

@@ -32,4 +32,12 @@ but is a needed in SLE15-SP1 due to a feature request).</comment>
     <comment></comment>
     <requestid>916139</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>c220d5b1a7be33cb09b8dda04da659ad</srcmd5>
+    <version>3.8.0.ge4631e8a</version>
+    <time>1668782600</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1036505</requestid>
+  </revision>
 </revisionlist>

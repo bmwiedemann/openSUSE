@@ -40,8 +40,8 @@ BuildRequires:  libtool
 BuildRequires:  libxml2-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  net-snmp-devel
-BuildRequires:  tcpd-devel
 BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig(openssl)
 
 %description
 OpenHPI implements the SA Forum's Hardware Platform Interface (HPI). HPI is an
@@ -79,7 +79,7 @@ Requires:       libstdc++-devel
 Requires:       libtool
 Requires:       ncurses-devel
 Requires:       net-snmp-devel
-Requires:       openssl-devel
+Requires:       pkgconfig(openssl)
 Requires:       popt-devel
 Requires:       zlib-devel
 
