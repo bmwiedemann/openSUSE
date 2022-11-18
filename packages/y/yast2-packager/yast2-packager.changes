@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Nov  7 10:06:19 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
+
+- Do not add an empty repository to the system when upgrading
+  a registered system using the Full installation medium
+  (bsc#1204399)
+- 4.5.8
+
+-------------------------------------------------------------------
+Mon Oct 31 15:44:55 UTC 2022 - Martin Vidner <mvidner@suse.com>
+
+- Fix hash vs keyword arguments in RSpec expectations (bsc#1204871)
+- 4.5.7
+
+-------------------------------------------------------------------
 Tue Oct 25 10:20:48 UTC 2022 - Steffen Winterfeldt <snwint@suse.com>
 
 - support 'repo' scheme for add-ons (jsc#SLE-22578, jsc#SLE-24584)

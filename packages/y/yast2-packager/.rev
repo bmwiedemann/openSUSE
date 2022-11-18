@@ -3208,4 +3208,12 @@
     <comment>submit new version 4.5.6</comment>
     <requestid>1031497</requestid>
   </revision>
+  <revision rev="430" vrev="1">
+    <srcmd5>1884b7f709f04e4870b96f0b5e89955e</srcmd5>
+    <version>4.5.8</version>
+    <time>1668782561</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.5.8</comment>
+    <requestid>1034132</requestid>
+  </revision>
 </revisionlist>
