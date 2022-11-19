@@ -60,4 +60,12 @@
     <comment>- Update to release 20200125</comment>
     <requestid>813176</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3ddaa68dc38e90debbad79afff7038af</srcmd5>
+    <version>20200125</version>
+    <time>1668877767</time>
+    <user>dimstar_suse</user>
+    <comment>- Use exact upstream version number (switch from 0~20200125 -&gt; 20200125)</comment>
+    <requestid>1036741</requestid>
+  </revision>
 </revisionlist>
