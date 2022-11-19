@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Nov 18 15:05:26 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.19.2:
+  * Release version v0.19.2 (#1058)
+  * Bump k8s.io/api from 0.25.3 to 0.25.4 (#1056)
+  * Bump github.com/onsi/gomega from 1.24.0 to 1.24.1 (#1055)
+  * Bump k8s.io/code-generator from 0.25.3 to 0.25.4 (#1053)
+  * Bump github.com/prometheus/client_golang from 1.13.1 to 1.14.0 (#1054)
+  * Bump golang.org/x/crypto from 0.1.0 to 0.2.0 (#1052)
+  * Bump github.com/prometheus/client_golang from 1.13.0 to 1.13.1 (#1050)
+  * Bump github.com/onsi/gomega from 1.23.0 to 1.24.0 (#1049)
+  * Bump github.com/onsi/gomega from 1.22.1 to 1.23.0 (#1047)
+  * Distinguish std & k8s errors (#1046)
+  * Fix empty Group Version Kind (#1044)
+  * Fix set-output warnings upgrading github actions (#1045)
+  * Upgrade VIB GitHub Action to 0.4.7 (#1043)
+  * Bump github.com/onsi/ginkgo/v2 from 2.3.1 to 2.4.0 (#1042)
+  * Minor fixes (#1040)
+  * Fix set-output usages as per GH guidance (#1039)
+  * Replace minikube action to use Node 16 (#1035)
+  * Include golang unit test report in the GitHub PR context (#1034)
+  * Regenerate code - detected some dummy changes (#1033)
+  * Decouple the kubeseal CLI from the kubeseal library (#1030)
+  * Replace minikube action to use Node 16 (#1031)
+  * Remove namespaceFn (#1029)
+  * Explain released registration steps (#1022)
+  * Upgrade node 12 actions to node 16 versions (#1011)
+  * Bump k8s.io/client-go from 0.25.0 to 0.25.3 (#1026)
+  * Bump github.com/onsi/gomega from 1.20.2 to 1.22.1 (#1024)
+  * Bump k8s.io/code-generator from 0.25.0 to 0.25.3 (#1025)
+  * Bump github.com/onsi/ginkgo/v2 from 2.1.6 to 2.3.1 (#1023)
+  * Enable dependabot Auto PRs (#1009)
+  * Helm chart: field 'rules' removed from 'templates/psp-clusterrolebinding.yaml' (#1006)
+  * Release Helm Chart 2.7.0 to use release 0.19.1 (#1020)
+
+-------------------------------------------------------------------
 Mon Oct 17 10:30:15 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.19.1:
