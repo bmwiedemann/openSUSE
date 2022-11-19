@@ -6187,4 +6187,13 @@ handle manual pages that consist only of a .so directive such as
     patch is mainstreamed.</comment>
     <requestid>1036151</requestid>
   </revision>
+  <revision rev="370" vrev="2">
+    <srcmd5>0768629adadfadb19b79ecbe98487b96</srcmd5>
+    <version>252.1</version>
+    <time>1668877724</time>
+    <user>dimstar_suse</user>
+    <comment>- Reenable build of sd_boot, it was mistakenly disabled during the integration
+  of v252.</comment>
+    <requestid>1036605</requestid>
+  </revision>
 </revisionlist>

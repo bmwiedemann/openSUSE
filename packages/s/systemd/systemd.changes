@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 18 08:07:33 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Reenable build of sd_boot, it was mistakenly disabled during the integration
+  of v252.
+
+-------------------------------------------------------------------
 Mon Nov 14 11:15:06 UTC 2022 - Franck Bui <fbui@suse.com>
 
 - Upgrade to v252.1 (commit 64dc546913525e33e734500055a62ed0e963c227)

@@ -59,7 +59,7 @@
 %bcond_without  portabled
 %bcond_without  resolved
 %ifarch %{ix86} x86_64 aarch64
-%bcond_with  sd_boot
+%bcond_without  sd_boot
 %else
 %bcond_with     sd_boot
 %endif
