@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Nov 19 12:05:00 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.53.0:
+  * chore: bump syft version v0.62.0 (#1000)
+  * feat: vulnerability namespacing support for rolling distros (#997)
+  * chore: bump quality gate images and label data (#995)
+  * feat: add strong distro type for wolfi (#996)
+  * chore: pin dependencies (#994)
+  * chore: code-ql top level read check (#993)
+  * Add SECURITY.md (#989)
+  * chore: update codeql to pinned v2 with correct write permissions
+  * Update token permissions to be read-only (#988)
+  * Enable the Scorecard Github Action and badge (#929)
+
+-------------------------------------------------------------------
+Tue Nov 15 15:42:37 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.52.0:
+  * chore: update syft to v0.60.3 (#978)
+  * feat: consider well-known false-positive generating CPE target SW components in match filtering logic (#961)
+  * chore: grype quality pipeline latest label updates and images (#976)
+  * Implemented new CLI flag: --show-suppressed (#966)
+  * fix: update case for alpine:edge correct vuln feed (#965)
+  * PURL input results in incorrect artifact in JSON output (#968)
+  * Update grype bootstrap tools to latest versions. (#956)
+
+-------------------------------------------------------------------
 Tue Oct 18 05:12:14 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.51.0:
