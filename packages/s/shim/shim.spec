@@ -36,7 +36,7 @@
 %endif
 
 Name:           shim
-Version:        15.6
+Version:        15.7
 Release:        0
 Summary:        UEFI shim loader
 License:        BSD-2-Clause
@@ -71,16 +71,10 @@ Patch1:         shim-arch-independent-names.patch
 Patch2:         shim-change-debug-file-path.patch
 # PATCH-FIX-SUSE shim-bsc1177315-verify-eku-codesign.patch bsc#1177315 glin@suse.com -- Verify CodeSign in the signer's EKU
 Patch3:         shim-bsc1177315-verify-eku-codesign.patch
-# PATCH-FIX-UPSTREAM shim-bsc1177789-fix-null-pointer-deref-AuthenticodeVerify.patch bsc#1177789 glin@suse.com -- Fix the NULL pointer dereference in AuthenticodeVerify()
-Patch4:         shim-bsc1177789-fix-null-pointer-deref-AuthenticodeVerify.patch
 # PATCH-FIX-SUSE remove_build_id.patch -- Remove the build ID to make the binary reproducible when building with AArch64 container
-Patch5:         remove_build_id.patch
+Patch4:         remove_build_id.patch
 # PATCH-FIX-SUSE shim-disable-export-vendor-dbx.patch bsc#1185261 glin@suse.com -- Disable exporting vendor-dbx to MokListXRT
-Patch6:         shim-disable-export-vendor-dbx.patch
-# PATCH-FIX-UPSTREAM shim-Enable-TDX-measurement-to-RTMR-register.patch jsc#PED-1273 jlee@suse.com -- Impl: [TDX Guest] TDX: Enhance shim measurement to TD RTMR
-Patch7:		shim-Enable-TDX-measurement-to-RTMR-register.patch
-# PATCH-FIX-UPSTREAM shim-jscPED-127-upgrade-shim-in-SLE15-SP5.patch jsc#PED-127 jlee@suse.com -- Impl: Upgrade shim in SLE 15-SP5 and openSUSE TW for some issues
-Patch8:		shim-jscPED-127-upgrade-shim-in-SLE15-SP5.patch
+Patch5:         shim-disable-export-vendor-dbx.patch
 # PATCH-FIX-OPENSUSE shim-bsc1198101-opensuse-cert-prompt.patch glin@suse.com -- Show the prompt to ask whether the user trusts openSUSE certificate or not
 Patch100:	shim-bsc1198101-opensuse-cert-prompt.patch
 BuildRequires:  dos2unix
@@ -127,9 +121,6 @@ The source code of UEFI shim loader
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
 %if 0%{?is_opensuse} == 1 || 0%{?sle_version} == 0
 %patch100 -p1
 %endif

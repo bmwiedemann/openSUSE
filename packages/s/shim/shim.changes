@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Fri Nov 18 03:17:46 UTC 2022 - Joey Lee <jlee@suse.com>
+
+- Drop upstreamed patch:
+    - shim-Enable-TDX-measurement-to-RTMR-register.patch
+        - Enable TDX measurement to RTMR register (jsc#PED-1273) 
+	- 4fd484e4c2	15.7
+
+-------------------------------------------------------------------
+Thu Nov 17 05:17:34 UTC 2022 - Joey Lee <jlee@suse.com>
+
+- Update to 15.7 (bsc#1198458)(jsc#PED-127)
+    - Patches (git log --oneline --reverse 15.6..15.7)
+	0eb07e1 Make SBAT variable payload introspectable
+	092c2b2 Reference MokListRT instead of MokList
+	8b59b69 Add a link to the test plan in the readme.
+	4fd484e Enable TDX measurement to RTMR register
+	14d6339 Discard load-options that start with a NUL
+	5c537b3 shim: Flush the memory region from i-cache before execution
+	2d4ebb5 load_cert_file: Fix stack issue
+	ea4911c load_cert_file: Use EFI RT memory function
+	0cf43ac Add -malign-double to IA32 compiler flags
+	17f0233 pe: Fix image section entry-point validation
+	5169769 make-archive: Build reproducible tarball
+	aa1b289 mok: remove MokListTrusted from PCR 7
+	53509ea CryptoPkg/BaseCryptLib: fix NULL dereference
+	616c566 More coverity modeling
+	ea0d0a5 Update shim's .sbat to sbat,3
+	dd8be98 Bump grub's sbat requirement to grub,3
+	1149161 (HEAD -> main, tag: 15.7, origin/main, origin/HEAD) Update version to 15.7
+    - 15.7 release note https://github.com/rhboot/shim/releases
+	Make SBAT variable payload introspectable by @chrisccoulson in #483
+	Reference MokListRT instead of MokList by @esnowberg in #488
+	Add a link to the test plan in the readme. by @vathpela in #494
+	[V3] Enable TDX measurement to RTMR register by @kenplusplus in #485
+	Discard load-options that start with a NUL by @frozencemetery in #505
+	load_cert_file bugs by @esnowberg in #523
+	Add -malign-double to IA32 compiler flags by @nicholasbishop in #516
+	pe: Fix image section entry-point validation by @iokomin in #518
+	make-archive: Build reproducible tarball by @julian-klode in #527
+	mok: remove MokListTrusted from PCR 7 by @baloo in #519
+    - Drop upstreamed patch:
+	- shim-bsc1177789-fix-null-pointer-deref-AuthenticodeVerify.patch
+	    - Cryptlib/CryptAuthenticode: fix NULL pointer dereference in  AuthenticodeVerify()
+	    - 53509eaf22	15.7
+	- shim-jscPED-127-upgrade-shim-in-SLE15-SP5.patch
+	    - For backporting the following patches between 15.6 with aa1b289a1a (jsc#PED-127)
+	    - The following patches are merged to 15.7
+		aa1b289a1a mok: remove MokListTrusted from PCR 7
+		0cf43ac6d7 Add -malign-double to IA32 compiler flags
+		ea4911c2f3 load_cert_file: Use EFI RT memory function
+		2d4ebb5a79 load_cert_file: Fix stack issue
+		5c537b3d0c shim: Flush the memory region from i-cache before execution
+		14d6339829 Discard load-options that start with a NUL
+		092c2b2bbe Reference MokListRT instead of MokList
+		0eb07e11b2 Make SBAT variable payload introspectable
+
+-------------------------------------------------------------------
+Thu Nov 17 05:08:49 UTC 2022 - Joey Lee <jlee@suse.com>
+
+- Update shim.changes, added missed shim 15.6-rc1 and 15.6 changelog to
+  the item in Update to 15.6. (bsc#1198458)
+
+-------------------------------------------------------------------
 Tue Nov 15 08:06:24 UTC 2022 - Joey Lee <jlee@suse.com>
 
 - Add shim-jscPED-127-upgrade-shim-in-SLE15-SP5.patch for backporting the following
@@ -157,6 +220,52 @@ Tue Jun 28 04:03:45 UTC 2022 - Joey Lee <jlee@suse.com>
 	Allocate mokvar table in runtime memory. by @vathpela in #447
 	Remove post-process-pe on 'make clean' by @vathpela in #448
 	pe: missing perror argument by @xypron in #443
+    - 15.6-rc1 release note https://github.com/rhboot/shim/releases
+	MokManager: removed Locate graphic output protocol fail error message by @joeyli in #441
+	shim: implement SBAT verification for the shim_lock protocol by @chrisccoulson in #456
+	post-process-pe: Fix a missing return code check by @vathpela in #462
+	Update github actions matrix to be more useful by @frozencemetery in #469
+	Add f36 and centos9 CI builds by @vathpela in #470
+	post-process-pe: Fix format string warnings on 32-bit platforms by @steve-mcintyre in #464
+	tests: also look for system headers in multi-arch directories by @steve-mcintyre in #466
+	tests: fix gcc warnings by @akodanev in #463
+	Allow MokListTrusted to be enabled by default by @esnowberg in #455
+	Add code of conduct by @frozencemetery in #427
+	Re-add ARM AArch64 support by @vathpela in #468
+	Use ASCII as fallback if Unicode Box Drawing characters fail by @vathpela in #428
+	make: don't treat cert.S specially by @vathpela in #475
+	shim: use SHIM_DEVEL_VERBOSE when built in devel mode by @vathpela in #474
+	Break out of the inner sbat loop if we find the entry. by @vathpela in #476
+	Support loading additional certificates by @esnowberg in #446
+	Add support for NX (W^X) mitigations. by @vathpela in #459
+	Misc fixups from scan-build. by @vathpela in #477
+	Fix preserve_sbat_uefi_variable() logic by @jsetje in #478
+    - 15.6 release note https://github.com/rhboot/shim/releases
+	MokManager: removed Locate graphic output protocol fail error message by @joeyli in #441
+	shim: implement SBAT verification for the shim_lock protocol by @chrisccoulson in #456
+	post-process-pe: Fix a missing return code check by @vathpela in #462
+	Update github actions matrix to be more useful by @frozencemetery in #469
+	Add f36 and centos9 CI builds by @vathpela in #470
+	post-process-pe: Fix format string warnings on 32-bit platforms by @steve-mcintyre in #464
+	tests: also look for system headers in multi-arch directories by @steve-mcintyre in #466
+	tests: fix gcc warnings by @akodanev in #463
+	Allow MokListTrusted to be enabled by default by @esnowberg in #455
+	Add code of conduct by @frozencemetery in #427
+	Re-add ARM AArch64 support by @vathpela in #468
+	Use ASCII as fallback if Unicode Box Drawing characters fail by @vathpela in #428
+	make: don't treat cert.S specially by @vathpela in #475
+	shim: use SHIM_DEVEL_VERBOSE when built in devel mode by @vathpela in #474
+	Break out of the inner sbat loop if we find the entry. by @vathpela in #476
+	Support loading additional certificates by @esnowberg in #446
+	Add support for NX (W^X) mitigations. by @vathpela in #459
+	Misc fixups from scan-build. by @vathpela in #477
+	Fix preserve_sbat_uefi_variable() logic by @jsetje in #478
+	SBAT Policy latest should be a one-shot by @jsetje in #481
+	pe: Fix a buffer overflow when SizeOfRawData > VirtualSize by @chriscoulson
+	pe: Perform image verification earlier when loading grub by @chriscoulson
+	Update advertised sbat generation number for shim by @jsetje
+	Update SBAT generation requirements for 05/24/22 by @jsetje
+	Also avoid CVE-2022-28737 in verify_image() by @vathpela
     - Drop upstreamed patch:
 	- shim-bsc1184454-allocate-mok-config-table-BS.patch
 		- Allocate MOK config table as BootServicesData to avoid the error message
