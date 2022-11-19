@@ -240,4 +240,12 @@
     <comment>- Update to release 2.15.0</comment>
     <requestid>1032584</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>d7e1284b820a0fc3335b2b9adae4b280</srcmd5>
+    <version>2.15.1</version>
+    <time>1668877753</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.15.1</comment>
+    <requestid>1036697</requestid>
+  </revision>
 </revisionlist>

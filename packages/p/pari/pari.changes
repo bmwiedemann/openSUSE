@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 18 17:44:42 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.15.1
+  * Resolve SIGSEGV with seralgdep and bnfinit functions
+  * Resolve obscure oo loop in solve when solution ~ 0
+
+-------------------------------------------------------------------
 Thu Oct 27 13:41:40 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to release 2.15.0
