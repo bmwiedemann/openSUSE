@@ -70,4 +70,34 @@
     <comment></comment>
     <requestid>989371</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>52ca6a82cfa1dfa7b22c95ec4c3d4893</srcmd5>
+    <version>37.3</version>
+    <time>1668877718</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 37.3 (2022-10-31)
+  * Allow HTML5 figure tag through cleaner (#265)
+- Update to 37.2 (2022-09-24)
+  * Allow HTML5 s tag through cleaner (#261)
+- Update to 37.1 (2022-09-03)
+  * Allow HTML5 nav tag through cleaner (#259)
+- Update to 37.0 (2022-08-21)
+  * Remove command line example from docs (#197)
+  * Multiple pyproject.toml fixes (#251)
+  * Confirm handling multiple inline strong (#252)
+  * Convert RST output to HTML5 (#253)
+  * Add Typing to classifiers (#254)
+  * Development tweaks - coverage reporting, actions updates (#255)
+  * Add test confirming behavior with unknown lexers (#256)
+-Update to 36.0 (2022-08-06)
+ * Enable gitpod development (#238)
+ * Allow rst admonitions to render (#242)
+ * Add badges to README (#243)
+ * Update codebase for modern Python (#244)
+ * Fix table cell spans (#245)
+ * Allow math directive in rst (#246)
+ * Preserve lang attribute in pre (#247) 
+</comment>
+    <requestid>1035252</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Nov  9 18:51:01 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 37.3 (2022-10-31)
+  * Allow HTML5 figure tag through cleaner (#265)
+
+- Update to 37.2 (2022-09-24)
+  * Allow HTML5 s tag through cleaner (#261)
+
+- Update to 37.1 (2022-09-03)
+  * Allow HTML5 nav tag through cleaner (#259)
+
+- Update to 37.0 (2022-08-21)
+  * Remove command line example from docs (#197)
+  * Multiple pyproject.toml fixes (#251)
+  * Confirm handling multiple inline strong (#252)
+  * Convert RST output to HTML5 (#253)
+  * Add Typing to classifiers (#254)
+  * Development tweaks - coverage reporting, actions updates (#255)
+  * Add test confirming behavior with unknown lexers (#256)
+
+-Update to 36.0 (2022-08-06)
+ * Enable gitpod development (#238)
+ * Allow rst admonitions to render (#242)
+ * Add badges to README (#243)
+ * Update codebase for modern Python (#244)
+ * Fix table cell spans (#245)
+ * Allow math directive in rst (#246)
+ * Preserve lang attribute in pre (#247) 
+
+-------------------------------------------------------------------
 Fri Jul 15 10:07:35 UTC 2022 - Jacob Michalskie <hel@lcp.world>
 
 - Update to 35.0:

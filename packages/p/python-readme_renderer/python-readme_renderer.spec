@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-readme_renderer
-Version:        35.0
+Version:        37.3
 Release:        0
 Summary:        A library for rendering "readme" descriptions
 License:        Apache-2.0
@@ -57,8 +57,7 @@ long_description for packages.
 
 %check
 export LANG=en_US.UTF-8
-# gh#pypa/readme_renderer#221 for exclusion
-%pytest -v -k 'not test_md_fixtures'
+%pytest
 
 %files %{python_files}
 %license LICENSE
