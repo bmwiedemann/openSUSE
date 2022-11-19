@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 17 16:24:06 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.7:
+  * Add notes to libpipeline(3) of when functions were added.
+  * Transferred Git repository to https://gitlab.com/libpipeline/libpipeline.
+  * Make `socketpair` tests used by `./configure --enable-socketpair-pipe`
+    compatible with C23.
+
+-------------------------------------------------------------------
 Thu Apr 28 18:56:02 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.6:

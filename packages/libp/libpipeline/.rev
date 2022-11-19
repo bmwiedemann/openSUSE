@@ -141,4 +141,16 @@
    `pipecmd_argstr`. (forwarded request 973755 from dirkmueller)</comment>
     <requestid>974422</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>f586af30d9767960d36d65fdd079cf54</srcmd5>
+    <version>1.5.7</version>
+    <time>1668877721</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.7:
+  * Add notes to libpipeline(3) of when functions were added.
+  * Transferred Git repository to https://gitlab.com/libpipeline/libpipeline.
+  * Make `socketpair` tests used by `./configure --enable-socketpair-pipe`
+    compatible with C23. (forwarded request 1036482 from dirkmueller)</comment>
+    <requestid>1036562</requestid>
+  </revision>
 </revisionlist>

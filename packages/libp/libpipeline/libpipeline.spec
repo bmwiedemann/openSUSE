@@ -18,7 +18,7 @@
 
 %define lname   libpipeline1
 Name:           libpipeline
-Version:        1.5.6
+Version:        1.5.7
 Release:        0
 Summary:        A pipeline manipulation library
 License:        GPL-3.0-or-later
