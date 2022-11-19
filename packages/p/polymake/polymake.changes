@@ -1,0 +1,115 @@
+-------------------------------------------------------------------
+Sat Nov 19 00:54:38 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.7
+  * matroid: Ehrhart polynomial for matroid polytopes
+  * polytope: convex_hull: adjust labels to improve prefer behavior
+  * polytope: convex_hull: increase weights for count rules
+  * polytope: conway: add CG construction
+  * topaz: new client poincare_sphere
+  * tropical: voronoi_diagram: improve performance
+- Add vertices-31.patch
+
+-------------------------------------------------------------------
+Fri Jan 14 11:48:43 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.6
+  * Polytope changes:
+  * new function describe() for Polytope
+  * new function secondary_configuration()
+  * secondary_polytope() return type changed from
+    PointConfiguration to Polytope
+  * improve contains function to solve smaller LPs
+  * improve conversion methods lp2poly and poly2lp
+  * fan: make k_skeleton and common_refinement work properly for
+    PolyhedralCom
+  * topaz: MINIMAL_NON_FACES type changed to IncidenceMatrix
+
+-------------------------------------------------------------------
+Tue Nov  2 20:48:45 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.5
+  * Extend flint interface for computations over ZZ/nZZ.
+  * Fixed bug giving wrong signs of determinant occasionally
+  * New property type DoublyConnectedEdgeList used for Conway
+    notation and hyperbolic surfaces.
+- Drop bliss077.patch (merged)
+
+-------------------------------------------------------------------
+Tue Jun 22 15:59:55 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Add sympol-system.patch to adjust include paths for
+  a `make installed` sympol.
+- Add bliss077.patch to enable compilation for newer versions
+  of bliss.
+- Drop unbundle.diff, one can actually use configure arguments.
+
+-------------------------------------------------------------------
+Mon Jun 21 18:20:10 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.4
+  * libnormaliz: add rules for representation conversion
+  * fan: SubdivisionOfPoints: fix bug in MIN_WEIGHTS for
+    non-triangulations
+  * fan: HyperplaneArrangements: add rule for property
+    RAYS_IN_HYPERPLANES
+  * fulton: TORIC_IDEAL renamed to CONE_TORIC_IDEAL (and moved to
+    application polytope)
+
+-------------------------------------------------------------------
+Thu Dec 24 12:43:05 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.3
+  * Implement p-adic valuation of rational numbers (via flint)
+  * topaz: implement function to compute broken circuit complex
+    of a matroid
+  * fan: implement function to construct the union of
+    cones/polytopes as a subcomplex of a chamber complex
+  * Schlegel diagram: fixes for non-rational polytopes
+
+-------------------------------------------------------------------
+Sat Sep 26 21:03:32 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Go back from _constraints file to %limit_build
+
+-------------------------------------------------------------------
+Tue Sep  8 11:27:01 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.1
+  * Data file format switched from XML to JSON.
+  * Basic datatype for all sizes and indexes in C++ is now
+    "Int" (typedef) which is "long int".
+
+-------------------------------------------------------------------
+Sun Mar 17 15:37:17 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 3.3
+  * SCIP: Add interface for solving mixed integer linear programs
+  * TOSimplex: Add interface for computing lattice points
+  * soplex: Use soplex from SCIP, if available
+  * mptopcom: Add interface for computing triangulations of point
+    configurations, optionally with group action
+  * TOPCOM: If mptopcom.rules is configured, topcom.rules can inherit from this
+  * normaliz interface: two minor fixes, added support for
+    EHRHART_QUASI_POLYNOMIAL, update normaliz version
+  * For more points, see /usr/share/doc/packages/polymake/ChangeLog
+- Add unbundle.diff
+
+-------------------------------------------------------------------
+Fri Sep 14 23:16:42 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 3.1
+  * Support for Perl 5.24
+  * Fix incompatibility of the Integer type with libnormaliz on
+    32-bit platforms.
+  * Completely refactored Polynomial related data types:
+  * Rings are now uniquely identified by coefficient type,
+    exponent type and number of variables.
+  * Variable names are only used for pretty printing and parsing
+    (and can be customized).
+  * The types Monomial, Term and Ring are gone.
+
+-------------------------------------------------------------------
+Sat May 18 13:12:05 UTC 2013 - jengelh@inai.de
+
+- Initial package (version 2.12~rc3) for build.opensuse.org

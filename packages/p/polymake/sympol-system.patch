@@ -1,0 +1,24 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2021-06-22 17:59:14.278243463 +0200
+
+sympol installs its header files all in /usr/include/sympol,
+with no extra subdirectories. Adjust the polymake include directives.
+---
+ bundled/sympol/apps/polytope/src/sympol_interface.cc |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+Index: polymake-4.4/bundled/sympol/apps/polytope/src/sympol_interface.cc
+===================================================================
+--- polymake-4.4.orig/bundled/sympol/apps/polytope/src/sympol_interface.cc
++++ polymake-4.4/bundled/sympol/apps/polytope/src/sympol_interface.cc
+@@ -20,8 +20,8 @@
+ #include "polymake/polytope/lrs_interface.h"
+ 
+ #include "sympol/polyhedron.h"
+-#include "sympol/yal/reportlevel.h"
+-#include "sympol/symmetrygroupconstruction/computesymmetries.h"
++#include "sympol/reportlevel.h"
++#include "sympol/computesymmetries.h"
+ #include "sympol/raycomputationlrs.h"
+ #include "sympol/raycomputationcdd.h"
+ #include "sympol/recursionstrategyidmadmlevel.h"
