@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 18 12:21:44 UTC 2022 - pgajdos@suse.com
+
+- fix bsc#1204558, doxygen fails to build on ppc64le - compiler crash? 
+- added sources
+  + _constraints
+
+-------------------------------------------------------------------
 Fri Aug 26 19:05:07 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to version 1.9.5: See https://doxygen.nl/manual/changelog.html.

@@ -1050,4 +1050,14 @@
 </comment>
     <requestid>1000099</requestid>
   </revision>
+  <revision rev="89" vrev="2">
+    <srcmd5>b43d00743a79c933b057f21794e81873</srcmd5>
+    <version>1.9.5</version>
+    <time>1668877733</time>
+    <user>dimstar_suse</user>
+    <comment>- fix bsc#1204558, doxygen fails to build on ppc64le - compiler crash? 
+- added sources
+  + _constraints</comment>
+    <requestid>1036648</requestid>
+  </revision>
 </revisionlist>
