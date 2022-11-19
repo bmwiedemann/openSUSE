@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Nov 19 02:04:18 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Use exact upstream version number
+  (switch from 0~20200125 -> 20200125)
+
+-------------------------------------------------------------------
 Wed Jun 10 10:04:56 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20200125
