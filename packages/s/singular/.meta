@@ -1,0 +1,19 @@
+<package name="singular" project="openSUSE:Factory">
+  <title>Singular CAS</title>
+  <description>Singular is a computer algebra system for polynomial computations, with special emphasis on commutative and non-commutative algebra, algebraic geometry, and singularity theory.
+
+Its main computational objects are ideals, modules and matrices over a large number of baserings. These include
+
+* polynomial rings over various ground fields and some rings (including the integers),
+* localizations of the above,
+* a general class of non-commutative algebras (including the exterior algebra and the Weyl algebra),
+* quotient rings of the above,
+* tensor products of the above.
+
+Singular's core algorithms handle
+
+* Grobner resp. standard bases and free resolutions,
+* polynomial factorization,
+* resultants, characteristic sets, and numerical root finding.</description>
+  <devel project="science" package="singular"/>
+</package>

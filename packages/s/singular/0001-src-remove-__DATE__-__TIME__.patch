@@ -1,0 +1,53 @@
+From 01bc362e23f5ca4d5bcfba99ddfbc22ee526ca45 Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Thu, 6 Dec 2012 04:05:07 +0100
+Subject: [PATCH] src: remove __DATE__/__TIME__
+References: https://github.com/Singular/Singular/pull/1149
+
+	singular-libSingular-3_1_90.x86_64: W: file-contains-date-and-time
+	/usr/lib64/singular/libSingular.so
+	Your file uses __DATE__ and __TIME__ this causes the package
+	to rebuild when not needed.
+
+In the Open Build Service, Singular is rebuilt when a parent package
+is rebuilt. However, if the resulting "new" Singular package has the
+same checksum, the result is discarded, so that end-users do _not_
+needlessy get idempotent updates offered through their package
+manager.
+
+__DATE__ or __TIME__ voids the effectiveness of discarding the result,
+as the checksum is always different.
+---
+ Singular/emacs.cc   | 2 +-
+ Singular/misc_ip.cc | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Singular/emacs.cc b/Singular/emacs.cc
+index 668986500..019024d98 100644
+--- a/Singular/emacs.cc
++++ b/Singular/emacs.cc
+@@ -86,7 +86,7 @@ void fePrintReportBug(char* msg, char* file, int line)
+ "Please, email the following output to singular@mathematik.uni-kl.de\n"
+ "Bug occurred at %s:%d\n"
+ "Message: %s\n"
+-"Version: " S_UNAME VERSION __DATE__ __TIME__,
++"Version: " S_UNAME VERSION,
+         file, line, msg);
+ 
+ }
+diff --git a/Singular/misc_ip.cc b/Singular/misc_ip.cc
+index bcbe6b379..38812c0e9 100644
+--- a/Singular/misc_ip.cc
++++ b/Singular/misc_ip.cc
+@@ -764,7 +764,7 @@ extern "C"
+ #endif
+ 
+ #ifndef MAKE_DISTRIBUTION
+-const char *singular_date=__DATE__ " " __TIME__;
++const char *singular_date = "";
+ #endif
+ 
+ char * versionString(/*const bool bShowDetails = false*/ )
+-- 
+2.37.1
+

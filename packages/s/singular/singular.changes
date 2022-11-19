@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Sun Jul 17 07:33:26 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.3.1
+  * internal structural separation of coefficient rings and
+    polynomial rings
+- Drop 0001-build-resolve-automake-1.12-warnings.patch,
+  0001-src-avoid-pointless-p-p-p-next.patch,
+  0001-src-resolve-compiler-warnings-for-Wreturn-type.patch,
+  0001-src-resolve-compiler-warnings-for-Wreturn-type-2.patch,
+  0001-build-use-simpler-relative-path-specifications.patch
+  0001-build-adequate-SO-versioning-for-shipped-libraries.patch,
+  singular-so-version.diff (merged),
+  0001-build-avoid-static-linkage-as-well-as-RPATH-entries-.patch
+  (alternate version merged),
+  singular-no-static.diff (alternate version merged),
+  singular-fhs.diff (no replacement)
+- Add 0001-src-resolve-strict-aliasing-violation-in-ndbm.cc.patch,
+  0001-src-remove-__DATE__-__TIME__.patch
+
+-------------------------------------------------------------------
+Fri Aug 31 11:47:04 UTC 2012 - scorot@free.fr
+
+- fix debuginfo packaging failure for SLE 11 
+
