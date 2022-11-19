@@ -1,7 +1,7 @@
 #
 # spec file for package quota
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           quota
-Version:        4.06
+Version:        4.09
 Release:        0
 Summary:        Disk Quota System
 License:        GPL-2.0-only

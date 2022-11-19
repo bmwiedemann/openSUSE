@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 17 17:43:10 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 4.09:
+  * small improvements and fixes
+
+-------------------------------------------------------------------
 Thu Oct 21 08:09:16 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:
