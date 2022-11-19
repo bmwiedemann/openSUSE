@@ -25,6 +25,7 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://github.com/libsemigroups/libsemigroups
 Source:         https://github.com/libsemigroups/libsemigroups/releases/download/v%version/%name-%version.tar.gz
+Patch1:         pkgconfig.patch
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libtool

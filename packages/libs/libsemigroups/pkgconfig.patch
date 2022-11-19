@@ -1,0 +1,30 @@
+From 1f770e8663d358424eca6bbff316e2a76ba37122 Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Sat, 19 Nov 2022 02:33:54 +0100
+Subject: [PATCH] build: add missing eigen3 to pkg-config file
+References: https://github.com/libsemigroups/libsemigroups/pull/414
+
+A libsemigroups installed to /usr requires eigen3 to be
+present due to an #include line,
+
+include/libsemigroups/digraph.hpp:#include <Eigen/Core>
+
+However, with eigen3 not being specified in the .pc file, package
+managers do not install eigen3 alongside libsemigroups-devel.
+Rectify that.
+---
+ libsemigroups.pc.in | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/libsemigroups.pc.in b/libsemigroups.pc.in
+index 4f3dee0..9a92652 100644
+--- a/libsemigroups.pc.in
++++ b/libsemigroups.pc.in
+@@ -8,3 +8,4 @@ Description: C++ library for semigroups and monoids
+ Version: @PACKAGE_VERSION@
+ Libs: -L${libdir} -lsemigroups
+ Cflags: -I${includedir}
++Requires: eigen3
+-- 
+2.38.1
+
