@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>186070614a8e6fe6afb13f1ad1d4b196</srcmd5>
+    <version>3.0</version>
+    <time>1668877761</time>
+    <user>dimstar_suse</user>
+    <comment>Re-add a crash module that was split from the main crash package in upstream.</comment>
+    <requestid>1036704</requestid>
+  </revision>
+</revisionlist>
