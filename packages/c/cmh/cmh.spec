@@ -18,7 +18,7 @@
 
 Name:           cmh
 %define lname   libcmh0
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        Igusa (genus 2) class polynomial computation
 License:        GPL-3.0-or-later
@@ -27,7 +27,6 @@ URL:            http://www.multiprecision.org/cmh/
 Source:         http://www.multiprecision.org/downloads/%name-%version.tar.gz
 #Source2:        http://www.multiprecision.org/downloads/name-version.tar.gz.asc http 500
 Source3:        %name.keyring
-Patch0:         patch-src_lll_cpp.patch
 BuildRequires:  automake
 BuildRequires:  fplll-devel >= 4
 BuildRequires:  gcc-c++

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 18 17:22:25 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.1.1
+  * No changelog was provided
+- Delete patch-src_lll_cpp.patch (merged)
+
+-------------------------------------------------------------------
 Thu Jul  7 09:01:58 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Apply patch from FreeBSD to fix build:

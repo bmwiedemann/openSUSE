@@ -24,4 +24,12 @@
   * patch-src_lll_cpp.patch</comment>
     <requestid>989677</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bbd743db01c68d536ad75bc68b2a3d5d</srcmd5>
+    <version>1.1.1</version>
+    <time>1668877756</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.1.1</comment>
+    <requestid>1036698</requestid>
+  </revision>
 </revisionlist>
