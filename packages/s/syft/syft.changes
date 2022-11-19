@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Nov 19 12:04:28 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.62.0:
+  * fix: spdx java checksum correctness (#1348)
+  * feat: Add support for npm lockfile version 3 (#1206)
+
+-------------------------------------------------------------------
+Fri Nov 18 15:38:51 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.61.0:
+  * 1111 clean name bug (#1347)
+  * Add spdx relationship encoding for dependencies (#1342)
+  * feat: SPDX 2.3 support (#1311)
+  * SBOM cataloger (#1029)
+  * chore: clean up linting configuration (#1343)
+  * fix: Unmarshal Syft JSON with missing metadata (#1338)
+  * fix apk decode for older data shapes (#1341)
+  * chore: add unit test for wolfi os release identification (#1340)
+  * fix: Output only valid CPEs for CycloneDX OS components (#1339)
+  * feat: Add `--name` option to override name in output (#1269)
+  * Add support for dependency relationships for alpine (apk) (#1063)
+  * normalize alpm md5 refs (#1333)
+  * Update java generic cataloger (#1329)
+  * Support encoding map types to CycloneDX properties (#1332)
+  * Update swift cataloger to generic cataloger (#1324)
+  * port rust cataloger to new generic cataloger pattern (#1323)
+  * port ruby cataloger to new generic cataloger pattern (#1322)
+  * port rpm cataloger to new generic cataloger pattern (#1321)
+  * port python cataloger to new generic cataloger pattern (#1319)
+  * Update portage cataloger to new generic cataloger (#1316)
+  * port php cataloger to new generic cataloger pattern (#1315)
+
+-------------------------------------------------------------------
 Tue Nov 15 09:52:45 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.60.3:
