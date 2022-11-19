@@ -1,0 +1,62 @@
+-------------------------------------------------------------------
+Fri Nov 18 11:43:55 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade tu upstream tag jdk-19.0.1+10 (October 2022 CPU)
+  * Security fixes
+    + JDK-8282252: Improve BigInteger/Decimal validation
+    + JDK-8285662: Better permission resolution
+    + JDK-8286077, CVE-2022-21618, bsc#1204468: Wider MultiByte
+      conversions
+    + JDK-8286511: Improve macro allocation
+    + JDK-8286519: Better memory handling
+    + JDK-8286526, CVE-2022-21619, bsc#1204473: Improve NTLM support
+    + JDK-8286910, CVE-2022-21624, bsc#1204475: Improve JNDI lookups
+    + JDK-8286918, CVE-2022-21628, bsc#1204472: Better HttpServer
+      service
+    + JDK-8287446: Enhance icon presentations
+    + JDK-8288508: Enhance ECDSA usage
+    + JDK-8289366, CVE-2022-39399, bsc#1204480: Improve HTTP/2
+      client usage
+    + JDK-8289853: Update HarfBuzz to 4.4.1
+    + JDK-8290334: Update FreeType to 2.12.1
+  * Other changes
+    + JDK-8028265: Add legacy tz tests to OpenJDK
+    + JDK-8212096: javax/net/ssl/ServerName/
+      /SSLEngineExplorerMatchedSNI.java failed intermittently due to
+      SSLException: Tag mismatch
+    + JDK-8227651: Tests fail with SSLProtocolException: Input
+      record too big
+    + JDK-8284977: MetricsTesterCgroupV2.getLongValueEntryFromFile
+      fails when named value doesn't exist
+    + JDK-8287672: jtreg test com/sun/jndi/ldap/
+      /LdapPoolTimeoutTest.java fails intermittently in nightly run
+    + JDK-8287906: Rewrite of GitHub Actions (GHA) sanity tests
+    + JDK-8287917: System.loadLibrary does not work on Big Sur if
+      JDK is built with macOS SDK 10.15 and earlier
+    + JDK-8288499: Restore cancel-in-progress in GHA
+    + JDK-8288599: com/sun/management/OperatingSystemMXBean/
+      /TestTotalSwap.java: Expected total swap size ... but
+      getTotalSwapSpaceSize returned ...
+    + JDK-8288653: Bump version numbers for 19.0.1
+    + JDK-8290000: Bump macOS GitHub actions to macOS 11
+    + JDK-8290695: Change milestone to fcs for releases:
+      jdk-11.0.17, jdk-17.0.5, jdk-19.0.1
+    + JDK-8291640: java/beans/XMLDecoder/8028054/Task.java should
+      use the 3-arg Class.forName
+    + JDK-8291897: TerminatingThreadLocal(s) not registered from
+      virtual thread(s)
+    + JDK-8292051: jdk/internal/misc/TerminatingThreadLocal/
+      /TestTerminatingThreadLocal.java failed "AssertionError:
+      Expected terminated values: [666] but got: []"
+    + JDK-8292240: CarrierThread.blocking not reset when spare not
+      activated
+    + JDK-8292487: Back out the fix for JDK-8281962 from jdk19u
+    + JDK-8292579: (tz) Update Timezone Data to 2022c
+    + JDK-8292654: G1 remembered set memory footprint regression
+      after JDK-8286115
+    + JDK-8293180: JQuery UI license file not updated
+
+-------------------------------------------------------------------
+Fri Nov 18 10:02:08 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of java-19-openjdk

@@ -1,0 +1,41 @@
+--- a/src/jdk.javadoc/share/classes/jdk/javadoc/internal/doclets/toolkit/BaseConfiguration.java
++++ b/src/jdk.javadoc/share/classes/jdk/javadoc/internal/doclets/toolkit/BaseConfiguration.java
+@@ -795,7 +795,7 @@ public abstract class BaseConfiguration {
+             }
+         } else {
+             // no -Xmsgs options of any kind, use default
+-            doclintOpts.add(DocLint.XMSGS_OPTION);
++            return;
+         }
+ 
+         if (!customTagNames.isEmpty()) {
+--- a/test/langtools/jdk/javadoc/tool/doclint/DocLintTest.java
++++ b/test/langtools/jdk/javadoc/tool/doclint/DocLintTest.java
+@@ -150,12 +150,12 @@ public class DocLintTest {
+             files = List.of(new TestJFO("Test.java", code));
+ 
+             test(List.of(htmlVersion),
+-                    Main.Result.ERROR,
+-                    EnumSet.of(Message.DL_ERR10A, Message.DL_WRN14A));
++                    Main.Result.OK,
++                    EnumSet.of(Message.JD_WRN10, Message.JD_WRN14));
+ 
+             test(List.of(htmlVersion, rawDiags),
+-                    Main.Result.ERROR,
+-                    EnumSet.of(Message.DL_ERR10, Message.DL_WRN14));
++                    Main.Result.OK,
++                    EnumSet.of(Message.JD_WRN10, Message.JD_WRN14));
+ 
+ //            test(List.of("-Xdoclint:none"),
+ //                    Main.Result.OK,
+@@ -178,8 +178,8 @@ public class DocLintTest {
+                     EnumSet.of(Message.DL_WRN14));
+ 
+             test(List.of(htmlVersion, rawDiags, "-private"),
+-                    Main.Result.ERROR,
+-                    EnumSet.of(Message.DL_ERR6, Message.DL_ERR10, Message.DL_WRN14));
++                    Main.Result.OK,
++                    EnumSet.of(Message.JD_WRN10, Message.JD_WRN14));
+ 
+             test(List.of(htmlVersion, rawDiags, "-Xdoclint:missing,syntax", "-private"),
+                     Main.Result.ERROR,

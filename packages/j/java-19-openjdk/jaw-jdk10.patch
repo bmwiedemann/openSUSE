@@ -1,0 +1,118 @@
+--- java-atk-wrapper-0.33.2/configure.ac	2017-11-06 13:37:11.504756491 +0100
++++ java-atk-wrapper-0.33.2/configure.ac	2017-11-06 13:37:47.224756626 +0100
+@@ -63,7 +63,7 @@
+ # java wrapper
+ 
+ AM_CONDITIONAL(USER, test `whoami` = "root")
+-JAVA_REQUIRED=1.7.0
++JAVA_REQUIRED=9.0.0
+ JAVA_ERROR_MESSAGE="Java $JAVA_REQUIRED or later is required to build java-access-bridge"
+ 
+ AC_ARG_VAR([JAVA_HOME],[Java Runtime Environment location])
+@@ -163,6 +163,8 @@
+     wrapper/org/GNOME/Makefile
+     wrapper/org/GNOME/Accessibility/Makefile
+     wrapper/org/GNOME/Accessibility/AtkWrapper.java
++    wrapper/META-INF/Makefile
++    wrapper/META-INF/services/Makefile
+ ])
+ AC_OUTPUT
+ 
+--- java-atk-wrapper-0.33.2/wrapper/Makefile.am	2017-11-06 13:37:11.504756491 +0100
++++ java-atk-wrapper-0.33.2/wrapper/Makefile.am	2017-11-06 13:47:48.648845631 +0100
+@@ -1,4 +1,4 @@
+-SUBDIRS=org
++SUBDIRS=org META-INF
+ JARFILES=java-atk-wrapper.jar
+ ALL_CLASSES=org/GNOME/Accessibility/*.class
+ DEP_CLASSES=$(wildcard $(ALL_CLASSES))
+@@ -14,10 +14,13 @@
+ java_atk_wrapper_DATA = $(JARFILES)
+ properties_DATA = accessibility.properties
+ EXTRA_DIST = $(properties_DATA) \
+-	     manifest.txt
++	     manifest.txt module-info.java
+ 
+-$(JARFILES) : $(DEP_CLASSES)
+-	$(JAR) cfm $(JARFILES) manifest.txt org/GNOME/Accessibility/*.class
++module-info.class : $(srcdir)/module-info.java
++	$(JAVAC) -cp $(top_builddir)/wrapper -sourcepath $(top_srcdir)/wrapper:$(top_builddir)/wrapper $(JAVACFLAGS) -d $(top_builddir)/wrapper $<
++
++$(JARFILES) : $(DEP_CLASSES) module-info.class
++	$(JAR) cfm $(JARFILES) manifest.txt org/GNOME/Accessibility/*.class module-info.class META-INF/services/javax.accessibility.AccessibilityProvider
+ 
+ all-local : $(DATA) $(JARFILES)
+ 
+--- java-atk-wrapper-0.33.2/wrapper/META-INF/Makefile.am	1970-01-01 01:00:00.000000000 +0100
++++ java-atk-wrapper-0.33.2/wrapper/META-INF/Makefile.am	2017-11-06 13:37:47.224756626 +0100
+@@ -0,0 +1 @@
++SUBDIRS=services
+--- java-atk-wrapper-0.33.2/wrapper/META-INF/services/javax.accessibility.AccessibilityProvider	1970-01-01 01:00:00.000000000 +0100
++++ java-atk-wrapper-0.33.2/wrapper/META-INF/services/javax.accessibility.AccessibilityProvider	2017-11-06 13:37:47.224756626 +0100
+@@ -0,0 +1 @@
++org.GNOME.Accessibility.AtkProvider
+--- java-atk-wrapper-0.33.2/wrapper/META-INF/services/Makefile.am	1970-01-01 01:00:00.000000000 +0100
++++ java-atk-wrapper-0.33.2/wrapper/META-INF/services/Makefile.am	2017-11-06 13:37:47.224756626 +0100
+@@ -0,0 +1 @@
++EXTRA_DIST = javax.accessibility.AccessibilityProvider
+--- java-atk-wrapper-0.33.2/wrapper/module-info.java	1970-01-01 01:00:00.000000000 +0100
++++ java-atk-wrapper-0.33.2/wrapper/module-info.java	2017-11-06 13:42:08.850466481 +0100
+@@ -0,0 +1,6 @@
++module atk.wrapper {
++    exports org.GNOME.Accessibility;
++    requires java.desktop;
++    provides javax.accessibility.AccessibilityProvider
++        with org.GNOME.Accessibility.AtkProvider;
++}
+--- java-atk-wrapper-0.33.2/wrapper/org/GNOME/Accessibility/AtkProvider.java	1970-01-01 01:00:00.000000000 +0100
++++ java-atk-wrapper-0.33.2/wrapper/org/GNOME/Accessibility/AtkProvider.java	2017-11-06 13:37:47.224756626 +0100
+@@ -0,0 +1,38 @@
++/*
++ * Java ATK Wrapper for GNOME
++ * Copyright (C) 2017 Oracle and/or its affiliates.
++ * Copyright (C) 2017 Fridrich Strba <fridrich.strba@bluewin.ch>
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2.1 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this library; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
++ */
++
++package org.GNOME.Accessibility;
++
++import javax.accessibility.AccessibilityProvider;
++
++public final class AtkProvider extends AccessibilityProvider {
++    private final String name = "org.GNOME.Accessibility.AtkWrapper";
++
++    public AtkProvider() {}
++
++    public String getName() {
++        return name;
++    }
++
++    public void activate() {
++        new AtkWrapper();
++    }
++
++}
+--- java-atk-wrapper-0.33.2/wrapper/org/GNOME/Accessibility/Makefile.am	2015-06-30 23:56:32.000000000 +0200
++++ java-atk-wrapper-0.33.2/wrapper/org/GNOME/Accessibility/Makefile.am	2017-10-26 17:42:11.472221491 +0200
+@@ -10,7 +10,7 @@
+ 	sed -e "s;\@XPROP\@;${XPROP};g" \
+ 		< $< >$@
+ 
+-%.class : %.java
++%.class : %.java AtkWrapper.java
+ 	CLASSPATH=$(top_srcdir)/wrapper $(JAVAC) $(JAVACFLAGS) -d $(top_builddir)/wrapper $<
+ 
+ clean-local:

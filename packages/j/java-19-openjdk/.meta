@@ -1,0 +1,5 @@
+<package name="java-19-openjdk" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:Factory" package="java-19-openjdk"/>
+</package>

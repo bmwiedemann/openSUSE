@@ -1,0 +1,66 @@
+--- java-atk-wrapper-0.33.2/configure.ac	2015-07-07 13:52:28.000000000 +0200
++++ java-atk-wrapper-0.33.2/configure.ac	2017-11-06 17:00:37.366413136 +0100
+@@ -46,7 +46,6 @@
+   glib-2.0 >= 2.32.0
+   gthread-2.0
+   gdk-2.0
+-  gdk-3.0
+   gobject-2.0
+ ])
+ AC_SUBST(JAW_LIBS)
+@@ -64,7 +63,7 @@
+ # java wrapper
+ 
+ AM_CONDITIONAL(USER, test `whoami` = "root")
+-JAVA_REQUIRED=1.6
++JAVA_REQUIRED=1.7.0
+ JAVA_ERROR_MESSAGE="Java $JAVA_REQUIRED or later is required to build java-access-bridge"
+ 
+ AC_ARG_VAR([JAVA_HOME],[Java Runtime Environment location])
+@@ -109,12 +108,6 @@ if test -z "$JAVAC"; then
+ fi
+ AC_SUBST(JAVAC)
+ 
+-AC_PATH_PROG(JAVAH,javah,,${JAVA_PATH})
+-if test -z "$JAVAH"; then
+-  AC_MSG_ERROR([$JAVA_ERROR_MESSAGE])
+-fi
+-AC_SUBST(JAVAH)
+-
+ AC_SUBST(JAVACFLAGS)
+ 
+ AC_PATH_PROG(JAR,jar,,${JAVA_PATH})
+@@ -125,7 +124,7 @@
+ 
+ 
+ if test "x$GCC" = xyes; then
+-  JAW_CFLAGS=$JAW_CFLAGS $CFLAGS
++  JAW_CFLAGS="$JAW_CFLAGS $CFLAGS"
+ else
+   AC_MSG_ERROR("You should compile with GCC")
+ fi
+@@ -169,6 +168,7 @@
+     wrapper/org/Makefile
+     wrapper/org/GNOME/Makefile
+     wrapper/org/GNOME/Accessibility/Makefile
++    wrapper/org/GNOME/Accessibility/AtkWrapper.java
+ ])
+ AC_OUTPUT
+ 
+--- java-atk-wrapper-0.33.2/wrapper/Makefile.am	2015-07-01 02:19:15.000000000 +0200
++++ java-atk-wrapper-0.33.2/wrapper/Makefile.am	2017-11-06 17:00:07.962413025 +0100
+@@ -13,7 +13,8 @@
+ 
+ java_atk_wrapper_DATA = $(JARFILES)
+ properties_DATA = accessibility.properties
+-EXTRA_DIST = $(properties_DATA)
++EXTRA_DIST = $(properties_DATA) \
++	     manifest.txt
+ 
+ $(JARFILES) : $(DEP_CLASSES)
+ 	$(JAR) cfm $(JARFILES) manifest.txt org/GNOME/Accessibility/*.class
+--- java-atk-wrapper-0.33.2/wrapper/manifest.txt	1970-01-01 01:00:00.000000000 +0100
++++ java-atk-wrapper-0.33.2/wrapper/manifest.txt	2017-10-26 15:25:02.159429001 +0200
+@@ -0,0 +1,2 @@
++Main-Class: org.GNOME.Accessibility.AtkWrapper
++
