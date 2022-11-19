@@ -63,4 +63,12 @@
     <comment>- Update to release 0.0.12pl1</comment>
     <requestid>971467</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>605407a3510c900285e5d5e1b89a0020</srcmd5>
+    <version>0.0.13</version>
+    <time>1668877752</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.13</comment>
+    <requestid>1036696</requestid>
+  </revision>
 </revisionlist>

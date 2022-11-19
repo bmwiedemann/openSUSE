@@ -17,7 +17,7 @@
 
 
 Name:           gp2c
-Version:        0.0.12pl1
+Version:        0.0.13
 Release:        0
 Summary:        GP script to PARI C program compiler
 License:        GPL-2.0-only
