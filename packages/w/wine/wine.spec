@@ -1,5 +1,5 @@
 #
-# spec file for package wine
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -317,8 +317,7 @@ echo " conflicts \"otherproviders(wine-devel-<targettype>)\""		>> %SOURCE7
 
 cat %SOURCE7
 %endif
-# parallel make currently broken in 7.13
-make all # %{?_smp_mflags} all
+make %{?_smp_mflags} all
 
 %install
 make install DESTDIR=%{buildroot}

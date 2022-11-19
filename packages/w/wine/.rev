@@ -4611,4 +4611,12 @@
     <comment>- Fix aarch64 file list (forwarded request 1036191 from Guillaume_G)</comment>
     <requestid>1036193</requestid>
   </revision>
+  <revision rev="392" vrev="3">
+    <srcmd5>77f9da09780448cb426739eba1503f01</srcmd5>
+    <version>7.21</version>
+    <time>1668877789</time>
+    <user>dimstar_suse</user>
+    <comment>- Reenable parallel build again as the buildsystem got fixed (forwarded request 1036812 from tobijk)</comment>
+    <requestid>1036815</requestid>
+  </revision>
 </revisionlist>

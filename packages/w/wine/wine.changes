@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov 19 14:55:39 UTC 2022 - Tobias Klausmann <tobias.klausmann@freenet.de>
+
+- Reenable parallel build again as the buildsystem got fixed
+
+-------------------------------------------------------------------
 Wed Nov 16 07:07:00 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix aarch64 file list
