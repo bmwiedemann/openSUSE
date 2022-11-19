@@ -1,7 +1,7 @@
 #
-# spec file for package taglib
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %bcond_with tests
 %endif
 Name:           taglib%{psuffix}
-Version:        1.12
+Version:        1.13
 Release:        0
 Summary:        Audio Meta-Data Library
 License:        LGPL-2.1-or-later AND MPL-1.1
@@ -187,6 +187,7 @@ install -m755 build/examples/{framelist,strip-id3v1,tagreader,tagreader_c,tagwri
 %{_libdir}/libtag*.so
 %{_libdir}/pkgconfig/*.pc
 %else
+
 %files -n libtag-doc
 %doc AUTHORS NEWS examples
 %{_docdir}/libtag-doc/html
