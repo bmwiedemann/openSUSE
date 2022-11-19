@@ -255,8 +255,8 @@
     <package name="iputils" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="iso-codes" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="iso-codes-lang" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
-    <package name="java-18-openjdk" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
-    <package name="java-18-openjdk-headless" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
+    <package name="java-19-openjdk" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
+    <package name="java-19-openjdk-headless" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="javapackages-filesystem" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="javapackages-tools" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="jmdict" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->

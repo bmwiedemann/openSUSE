@@ -2420,6 +2420,7 @@ unsorted:
   - crash-gcore 
   - crash-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - crash-kmp-pae: [i586] 
+  - crash-trace 
   - crawl 
   - crawl-data 
   - crawl-sdl 
@@ -7646,12 +7647,20 @@ unsorted:
   - java-17-openjdk-javadoc 
   - java-17-openjdk-jmods 
   - java-17-openjdk-src 
+  - java-18-openjdk 
   - java-18-openjdk-accessibility 
   - java-18-openjdk-demo 
   - java-18-openjdk-devel 
+  - java-18-openjdk-headless 
   - java-18-openjdk-javadoc 
   - java-18-openjdk-jmods 
   - java-18-openjdk-src 
+  - java-19-openjdk-accessibility 
+  - java-19-openjdk-demo 
+  - java-19-openjdk-devel 
+  - java-19-openjdk-javadoc 
+  - java-19-openjdk-jmods 
+  - java-19-openjdk-src 
   - java-1_8_0-openj9: [x86_64] 
   - java-1_8_0-openj9-accessibility: [x86_64] 
   - java-1_8_0-openj9-demo: [x86_64] 
@@ -9541,6 +9550,8 @@ unsorted:
   - libShowMySky-Qt6-14 
   - libShowMySky-Qt6-14-devel 
   - libSimGearCore-2020_3_13 
+  - libSingular-4_3_1 
+  - libSingular-devel 
   - libSoQt20 
   - libSoapyOsmoSDR0 
   - libSoapySDR0_8 
@@ -10884,6 +10895,9 @@ unsorted:
   - libfabric-devel-32bit: [x86_64] 
   - libfabric1 
   - libfabric1-32bit: [x86_64] 
+  - libfactory-4_3_1 
+  - libfactory-devel 
+  - libfactory-gftables 
   - libfakekey-devel 
   - libfaketime 
   - libfallocate-devel 
@@ -10964,7 +10978,7 @@ unsorted:
   - libfifechan_sdl0_1_5 
   - libfilezilla-devel 
   - libfilezilla-lang 
-  - libfilezilla31 
+  - libfilezilla32 
   - libfilteraudio0 
   - libfinal-devel 
   - libfinal-examples 
@@ -12809,6 +12823,8 @@ unsorted:
   - libolecf-tools 
   - libolecf1 
   - libolm3 
+  - libomalloc-4_3_1 
+  - libomalloc-devel 
   - libomniORB4-3 
   - libomnithread4 
   - libomp11-devel 
@@ -13255,6 +13271,9 @@ unsorted:
   - libpolyclipping-devel 
   - libpolyclipping22 
   - libpolylibgmp8 
+  - libpolymake4_7 
+  - libpolys-4_3_1 
+  - libpolys-devel 
   - libpoppler-cpp0-32bit: [x86_64] 
   - libpoppler-devel 
   - libpoppler-glib-devel 
@@ -14042,6 +14061,8 @@ unsorted:
   - libsigsegv-devel 
   - libsigsegv-doc 
   - libsigsegv2 
+  - libsingular_resources-4_3_1 
+  - libsingular_resources-devel 
   - libsirocco0 
   - libsispmctl0 
   - libsixel-bash-completion 
@@ -18982,6 +19003,7 @@ unsorted:
   - pari-galdata 
   - pari-galpol 
   - pari-gp 
+  - pari-nflistdata 
   - pari-nftables 
   - pari-seadata 
   - parkverbot 
@@ -21136,6 +21158,8 @@ unsorted:
   - polybar 
   - polylib 
   - polylib-devel 
+  - polymake 
+  - polymake-devel 
   - pommed 
   - pongix 
   - popeye 
@@ -33482,6 +33506,7 @@ unsorted:
   - simtrace2 
   - simutrans 
   - simutrans-makeobj 
+  - singular 
   - singularity-ce 
   - sipcalc 
   - sipp 
@@ -44478,6 +44503,8 @@ unsorted:
   - xsession 
   - xsetmode 
   - xsetpointer 
+  - xsimd-devel 
+  - xsimd-doc 
   - xslide 
   - xsm 
   - xsnow 
