@@ -6057,6 +6057,7 @@ unsorted:
   - gnome-search-tool-lang 
   - gnome-settings-daemon-devel 
   - gnome-shell-devel 
+  - gnome-shell-extension-customize-ibus 
   - gnome-shell-extension-gpaste 
   - gnome-shell-extension-hamster-time-tracker 
   - gnome-shell-extension-onboard 
@@ -22655,6 +22656,7 @@ unsorted:
   - python310-azure-mgmt-msi 
   - python310-azure-mgmt-netapp 
   - python310-azure-mgmt-network 
+  - python310-azure-mgmt-networkfunction 
   - python310-azure-mgmt-nginx 
   - python310-azure-mgmt-notificationhubs 
   - python310-azure-mgmt-nspkg 
@@ -25918,6 +25920,7 @@ unsorted:
   - python38-azure-mgmt-msi 
   - python38-azure-mgmt-netapp 
   - python38-azure-mgmt-network 
+  - python38-azure-mgmt-networkfunction 
   - python38-azure-mgmt-nginx 
   - python38-azure-mgmt-notificationhubs 
   - python38-azure-mgmt-nspkg 
@@ -29276,6 +29279,7 @@ unsorted:
   - python39-azure-mgmt-msi 
   - python39-azure-mgmt-netapp 
   - python39-azure-mgmt-network 
+  - python39-azure-mgmt-networkfunction 
   - python39-azure-mgmt-nginx 
   - python39-azure-mgmt-notificationhubs 
   - python39-azure-mgmt-nspkg 
