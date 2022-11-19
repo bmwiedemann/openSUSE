@@ -1906,4 +1906,12 @@ New upstream release</comment>
     <comment></comment>
     <requestid>1009288</requestid>
   </revision>
+  <revision rev="186" vrev="1">
+    <srcmd5>67571791186f980e4973abf7529e278b</srcmd5>
+    <version>22.11.0</version>
+    <time>1668877725</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1036626</requestid>
+  </revision>
 </revisionlist>

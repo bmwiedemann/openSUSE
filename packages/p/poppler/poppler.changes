@@ -1,7 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov 17 16:46:43 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 22.11.0:
+  core:
+    * CairoOutputDev: Update font after restore
+    * Protect against broken files
+    * Small code refactoring
+
+-------------------------------------------------------------------
 Tue Oct  4 13:21:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- update to 22.10.0: 
+- update to 22.10.0:
   * SplashOutputDev::tilingPatternFill: Properly restore CTM on failure.
   * Protect against malformed files
   * Refactor code to not use strndup

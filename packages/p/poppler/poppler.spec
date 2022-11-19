@@ -32,7 +32,7 @@
 %define poppler_api 0.18
 %define poppler_apipkg 0_18
 Name:           poppler%{?psuffix}
-Version:        22.10.0
+Version:        22.11.0
 Release:        0
 Summary:        PDF Rendering Library
 License:        GPL-2.0-only OR GPL-3.0-only
