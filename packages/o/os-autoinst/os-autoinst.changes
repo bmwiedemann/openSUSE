@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Nov 19 02:46:09 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1668764515.17a0b01:
+  * Move stop_autotest into CommandHandler
+  * Simplify basetest run_post_fail call a bit
+  * Use a codecov upload token
+  * Use proper perl function to get FQDN
+  * Move loop into CommandHandler
+  * Make blocking mode configurable for pipe
+
+-------------------------------------------------------------------
 Wed Nov 16 11:24:29 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1668597862.2a1886e:
