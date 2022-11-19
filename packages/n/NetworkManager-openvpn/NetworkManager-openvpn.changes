@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov 18 09:52:46 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.10.2:
+  + IP condfiguration is no longer required in TAP mode.
+  + Fix initialization of secret flags.
+  + Add support for DOMAIN-SEARCH option.
+  + Set data-ciphers option with chosen cipher.
+  + Update translations.
+
+-------------------------------------------------------------------
 Mon Aug 29 19:14:47 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.10.0:

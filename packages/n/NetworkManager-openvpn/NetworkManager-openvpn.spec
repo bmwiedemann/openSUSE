@@ -17,7 +17,7 @@
 
 
 Name:           NetworkManager-openvpn
-Version:        1.10.0
+Version:        1.10.2
 Release:        0
 Summary:        NetworkManager VPN support for OpenVPN
 License:        GPL-2.0-or-later
