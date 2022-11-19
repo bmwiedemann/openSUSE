@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 18 14:43:30 UTC 2022 - Petr Tesařík <ptesarik@suse.com>
+
+- Require zlib-devel for crash-devel.
+
+-------------------------------------------------------------------
 Tue Oct 25 22:03:56 UTC 2022 - David Mair <dmair@suse.com>
 
 - make of crash extensions was failing due to extension shared

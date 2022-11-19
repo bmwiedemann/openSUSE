@@ -1590,4 +1590,13 @@
     <comment></comment>
     <requestid>1032553</requestid>
   </revision>
+  <revision rev="181" vrev="2">
+    <srcmd5>67ae07bd577d3f7d39d0c2195322fc1a</srcmd5>
+    <version>7.3.1</version>
+    <time>1668877757</time>
+    <user>dimstar_suse</user>
+    <comment>- Require zlib-devel for crash-devel.
+</comment>
+    <requestid>1036703</requestid>
+  </revision>
 </revisionlist>

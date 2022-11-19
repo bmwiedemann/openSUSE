@@ -169,6 +169,7 @@ Requires:       %{name} = %{version}
 Summary:        Development files for crash
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Debuggers
+Requires:       zlib-devel
 
 %description devel
 This files are required to build extensions for crash.
