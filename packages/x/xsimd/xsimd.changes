@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Wed Nov  9 10:25:40 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 9.0.1. No changelog.
+- Spec cleanup. Prepare xsimd for the factory submission
+- Add upstream change:
+  * 0001-Only-use-_mm_insert_epi64-on-64-bit-architecture.patch
+
+-------------------------------------------------------------------
+Sun Jul 17 19:28:30 UTC 2022 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Update to version 8.1.0
+
+-------------------------------------------------------------------
+Fri Mar 26 03:51:36 UTC 2021 - Daniel Weatherill <plasteredparrot@gmail.com>
+
+- initial build from upstream version 7.4.9
