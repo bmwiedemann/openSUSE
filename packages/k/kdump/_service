@@ -1,5 +1,5 @@
 <services>
-  <service name="obs_scm" mode="localonly">
+  <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/openSUSE/kdump</param>
     <param name="scm">git</param>
     <param name="revision">master</param>
@@ -7,10 +7,10 @@
     <param name="versionrewrite-pattern">v([^+]*\+git[1-9].*)|v([^+]*)\+git0.*</param>
     <param name="versionrewrite-replacement">\1\2</param>
   </service>
-  <service name="tar" mode="localonly" />
-  <service name="recompress" mode="localonly">
+  <service name="tar" mode="manual" />
+  <service name="recompress" mode="manual">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>
-  <service name="set_version" mode="localonly" />
+  <service name="set_version" mode="manual" />
 </services>

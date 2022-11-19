@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep 29 12:42:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to kdump-1.0.2+git20:
+  * Use inst_binary to install kdump-save
+
+-------------------------------------------------------------------
+Thu Sep 29 12:37:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- disable build on arm 32bit (bsc#1203888)
+
+-------------------------------------------------------------------
 Wed Aug 31 12:04:40 UTC 2022 - Jiri Bohac <jbohac@suse.com>
 
 - mkdumprd: replace mkinitrd with native dracut (bsc#1202443) 

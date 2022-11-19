@@ -49,7 +49,7 @@
 %define dracutlibdir %{_prefix}/lib/dracut
 
 Name:           kdump
-Version:        1.0.2+git19.g0c60ffb
+Version:        1.0.2+git20.gcb129d0
 Release:        0
 Summary:        Script for kdump
 License:        GPL-2.0-or-later
@@ -105,7 +105,7 @@ Recommends:     cifs-utils
 Recommends:     nfs-client
 # update should detect the split-off from kexec-tools
 Provides:       kexec-tools:%{_initddir}/kdump
-ExcludeArch:    s390 ppc
+ExcludeArch:    s390 ppc %arm32
 %if 0%{?sle_version}
 ExcludeArch:    %ix86
 %endif

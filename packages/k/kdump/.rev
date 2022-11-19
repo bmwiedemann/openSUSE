@@ -1099,4 +1099,12 @@ URL-decode the target URL. (forwarded request 234827 from ptesarik)</comment>
     <comment>- mkdumprd: replace mkinitrd with native dracut (bsc#1202443)</comment>
     <requestid>1000481</requestid>
   </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>2841996b7922d37cf43a6486b6cdc79e</srcmd5>
+    <version>1.0.2+git20.gcb129d0</version>
+    <time>1668877730</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1036635</requestid>
+  </revision>
 </revisionlist>
