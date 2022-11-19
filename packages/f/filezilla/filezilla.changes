@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Nov 18 15:04:12 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.62.1
+  * Bugfixes and minor changes:
+    - Fixed a crash if main menu events arrive while a dialog is
+      already open
+    - macOS: Fixed an issue with keyboard shortcuts
+    - macOS: Fix selected item count in file list status bars
+    - macOS: Fixed graphical corruption in some controls
+- Changes from 3.62.0
+  * Bugfixes and minor changes:
+    - Fixed sizing issues in about and welcome dialogs
+- Changes from 3.62.0-beta1
+  * Bugfixes and minor changes:
+    - macOS binaries are now built against wxWidgets 3.2.1
+    - updated to libfilezilla 0.39.2
+
+-------------------------------------------------------------------
 Sat Sep 24 15:19:08 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.61.0
