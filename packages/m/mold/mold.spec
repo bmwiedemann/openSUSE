@@ -17,7 +17,7 @@
 
 
 Name:           mold
-Version:        1.7.0
+Version:        1.7.1
 Release:        0
 Summary:        A Modern Linker (mold)
 License:        AGPL-3.0-or-later

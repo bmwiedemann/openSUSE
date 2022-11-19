@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 18 14:08:15 UTC 2022 - Martin Liška <mliska@suse.cz>
+
+- Update to version 1.7.1
+  * mold 1.7.0 may generate the same build-id for two different output files. We
+    fixed the issue in 1.7.1 so that build-id is guaranteed to be unique for each
+    different output file. (d8dd124)
+
+-------------------------------------------------------------------
 Mon Nov 14 11:12:19 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Update to version 1.7.0

@@ -373,4 +373,15 @@
     with GNU ld. (9875150)</comment>
     <requestid>1035624</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>7b0cef7d144aab79cc840d82cb83535a</srcmd5>
+    <version>1.7.1</version>
+    <time>1668877741</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7.1
+  * mold 1.7.0 may generate the same build-id for two different output files. We
+    fixed the issue in 1.7.1 so that build-id is guaranteed to be unique for each
+    different output file. (d8dd124)</comment>
+    <requestid>1036663</requestid>
+  </revision>
 </revisionlist>
