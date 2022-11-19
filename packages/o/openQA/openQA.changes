@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Nov 19 02:16:18 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1668778874.64c641d:
+  * Bump actual limits to higher to fix users unable to get results
+  * Simplify WebAPI::Controller::API::V1::Job
+  * Remove obsolete WebAPI::Controller::API::V1::Job::result
+  * OpenQA::WebAPI::Controller::API::V1::Job: Simplify
+  * OpenQA::WebAPI::Controller::API::V1::Job: Use signatures
+  * OpenQA::Schema::ResultSet::Bugs: Use signatures
+  * Use signatures in complete OpenQA::Worker
+  * Use signatures for OpenQA::Utils::run_cmd_with_log_return_error
+  * OpenQA::Utils: Simplify human_readable_size
+
+-------------------------------------------------------------------
 Wed Nov 16 11:12:35 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1668597146.2561fef:
