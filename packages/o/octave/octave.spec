@@ -18,7 +18,7 @@
 
 %define apiver  v57
 # Required for RC builds, in this case version contains ~rc, src_ver -rc
-%define pkg_ver 7.2.0
+%define pkg_ver 7.3.0
 %define src_ver %{pkg_ver}
 
 # Use native graphics or gnuplot
@@ -57,8 +57,9 @@ Summary:        A High Level Programming Language
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://www.octave.org/
-Source:         https://ftp.gnu.org/gnu/octave/%{name}-%{src_ver}.tar.lz
-Source3:        octave.macros
+Source0:        https://ftp.gnu.org/gnu/octave/%{name}-%{src_ver}.tar.lz
+Source1:        octave.macros
+Source2:        %{name}-rpmlintrc
 # PATCH-FIX-OPENSUSE
 Patch0:         octave_tools_pie.patch
 # PATCH-FIX-UPSTREAM - https://savannah.gnu.org/bugs/?54607
@@ -263,7 +264,7 @@ rm -rf %{buildroot}/%{_datadir}/metainfo/
 rm -rf %{buildroot}/%{_datadir}/applications/
 %endif
 # rpm macros
-install -Dm 644 %{SOURCE3} %{buildroot}%{_rpmmacrodir}/macros.octave
+install -Dm 644 %{SOURCE1} %{buildroot}%{_rpmmacrodir}/macros.octave
 # substitute correct values for octave_blas macros
 sed -i 's/OCTAVE_BLAS_LIBRARY_NAME/%{blas_library}/g' %{buildroot}%{_rpmmacrodir}/macros.octave
 

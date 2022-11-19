@@ -1,0 +1,9 @@
+# .oct-config files are needed to read encoding for docs
+addFilter("hidden-file-or-dir .*/usr/share/octave/[0-9.]*/m/.*/\.oct-config")
+
+# octave-cli: Explicit lib* dependencies are needed to resolve degeneracies between package provides
+# octave: https://bugzilla.suse.com/show_bug.cgi?id=1095605
+addFilter("E: explicit-lib-dependency")
+
+# Zero-length file here
+addFilter("zero-length .*/usr/share/octave/[0-9.]*/etc/tests/fixed/publish/test_script_empty.m")

@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Wed Nov  9 04:41:09 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 7.3.0:
+  * scanf: Don’t set error when reaching end of stream (bug
+    #62723).
+  * Fix duplicate names displayed with mixed @class/classdef
+    classes (bug #62802).
+  * canonicalize_file_name: Handle symlinks to UNC network shares
+    (bug #62847).
+  * canonicalize_file_name: Generalize check for mapped network
+    drive (bug #62847).
+  * fortran_vec: Fix instances of method chaining that may cause
+    dangling pointer.
+  * Fix wrong color in PDF printout of some LaTeX strings (bug
+    #62884).
+  * unpack.m: Escape backslashes in paths on Windows (bug #62888).
+  * canonicalize_file_name: Check root of potential mapped network
+    drive (bug #62847).
+  * nextpow2.m: Fix for input between 0.5 and 1 (bug #62947).
+  * quad2d: Fix unintended complex conjugate return (bug #62972).
+  * Make sure we don’t pass short 8.3 path to latex on Windows
+    (bug #62779).
+  * canonicalize_file_name: Trim trailing file separators from
+    root of mapped network drive (bug #62847).
+  * imformats.m: Fix isa function in return value (bug #62974).
+  * pie3: Fix “Too many input” args error.
+  * Accept negative inputs to -2^63 for dec2bin and dec2hex (bug
+    #63089).
+  * Fix incorrect lambda outputs for lsqnonneg and pqpnonneg (bug
+    #63178).
+  * addtodate.m: Fix wrong month returned when subtracting a month
+    from some end-of-month dates (bug #60671).
+  * var.m: Fix some Inf and NaN inputs returning 0 instead of NaN
+    (bug #63203)
+  * var.m: Fix automatic broadcasting error for sparse and
+    diagonal matrix inputs with vector weighting (bug #63291).
+  * legend.m: Fix error with contour plot containing clabels (bug
+    #63262).
+  * dec2bin.m: Fix input validation (bug #63089).
+  * glpk.m: Avoid using isfinite on potentially sparse input.
+  * var.m: Use bsxfun rather than broadcasting with vector
+    weighting (bug #63291).
+  * Fix out of bound indexing in in-place broadcasting operations
+    (bug #63303).
+  * Respect confirmation when deleting files in file browser
+    widget (bug #63198).
+  * io.tst: Add test case for scanf (bug #62723).
+  * nextpow2.m: Add bug number tag to regression tests (bug
+    #62947).
+  * quad2d.m: Add BIST to cset b0e90ca8e679 (bug #62972).
+  * Add test for number of methods with classdef in @folder (bug
+    #62802).
+  * Use Autoconf macro to find egrep executable.
+  * Documentation fixes.
+- Add octave-rpmlintrc file to suppress false positives.
+
+-------------------------------------------------------------------
 Fri Sep 16 07:44:04 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - octave-cli: Fix Requires after sundials main library was split
