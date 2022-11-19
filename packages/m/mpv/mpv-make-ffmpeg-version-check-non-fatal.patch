@@ -1,13 +1,24 @@
-Index: mpv/common/av_log.c
-===================================================================
---- mpv.orig/common/av_log.c
-+++ mpv/common/av_log.c
-@@ -200,7 +200,7 @@ void check_library_versions(struct mp_lo
+From b5bd081c1e3752969241efdff866fc3c1bd48d03 Mon Sep 17 00:00:00 2001
+From: Mia Herkt <mia@0x0.st>
+Date: Sat, 19 Nov 2022 02:08:38 +0100
+Subject: [PATCH] av_log: make FFmpeg version check non-fatal
+
+---
+ common/av_log.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/common/av_log.c b/common/av_log.c
+index 15d17aff..ae173592 100644
+--- a/common/av_log.c
++++ b/common/av_log.c
+@@ -207,7 +207,6 @@ void check_library_versions(struct mp_log *log, int v)
          {
              fprintf(stderr, "%s: %d.%d.%d -> %d.%d.%d\n",
                      l->name, V(l->buildv), V(l->runv));
 -            abort();
-+            //abort();
          }
      }
- 
+ }
+-- 
+2.38.1
+

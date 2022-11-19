@@ -1,14 +1,24 @@
+<!--
+# vim: set syntax=xml
+-->
+
 <services>
-  <service name="obs_scm" mode="disabled">
+
+  <service name="tar_scm" mode="disabled">
     <param name="url">https://github.com/mpv-player/mpv.git</param>
     <param name="scm">git</param>
     <param name="filename">mpv</param>
-    <param name="revision">5d31c7310c02767e35bfd82d1cc635427518a298</param> <!-- SET REVISION TO TAG, REMOVE THIS LINE TO UPDATE TO THE LAST COMMIT -->
-    <param name="versionprefix">0.34.1+git</param>
-    <param name="versionformat">%ci.%h</param>
+    <param name="revision">master</param>
+    <param name="versionprefix">0.35+git</param>
+    <param name="versionformat">%cd.%h</param>
     <param name="changesgenerate">enable</param>
   </service>
-  <service name="set_version" mode="disabled"/>
 
-  <service name="tar" mode="buildtime"/>
+  <service name="set_version" mode="disabled"/>
+  <service name="tar" mode="disabled"/>
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+
 </services>

@@ -1,4 +1,451 @@
 -------------------------------------------------------------------
+Sat Nov 19 02:48:45 UTC 2022 - Mia Herkt <mia@0x0.st>
+
+- Use Meson for build where possible as waf will be dropped in a
+  future version
+
+-------------------------------------------------------------------
+Sat Nov 19 00:49:40 UTC 2022 - mia@0x0.st
+
+- Refresh mpv-make-ffmpeg-version-check-non-fatal.patch
+- _service: obs_scm -> obs_tar
+- Do not require libsixel and mujs where no appropriate versions
+  are packaged
+- Vulkan requires recent libplacebo; disable on Leap <= 15.3
+- Update to version 0.35+git.20221118.d3a61cfe:
+  * wayland: also log refresh rate on surface entrance
+  * drm: remove legacy API
+  * wayland: add support for content-type protocol
+  * player/video: add VOCTRL_CONTENT_TYPE
+  * player/main: log libplacebo version if built with it
+  * common/av_log: move general FFmpeg version before library versions
+  * vo: hwdec: remove legacy_names
+  * player: add --force-render option
+  * wayland: error out if essential protocol support is missing
+  * meson: fix capitalization of "OpenGL"
+  * ao_pipewire: log version information and metadata
+  * DOCS: update release policy to match reality
+
+-------------------------------------------------------------------
+Sun Nov 13 10:23:53 UTC 2022 - ecsos@opensuse.org
+
+- Update to version 0.35+git.20221112.2f747341:
+  * Update VERSION
+  * Release 0.35.0
+  * meson: fix macos-touchbar check
+  * github/workflows: force deletion of existing upstream python symlinks on macOS
+  * vo_gpu_next: add tunable shader parameters
+  * vo_gpu: mark --gamma-factor and --gamma-auto with deprecation warnings
+  * wayland, x11: fix possibly unsafe bstr usage
+  * ao_pipewire: reload ao on stream disconnect
+  * ao_pipewire: explicitly remove stream hook
+  * ao_pipewire: log generic stream errors
+  * Revert "ao/audiounit: include AVAudioSession buffer in latency calc"
+  * vo_dmabuf_wayland: improve error handling exporting VA surface
+  * hwdec_vaapi: only set VADisplay resource if entire init process has succeeded
+  * github/workflows: remove seccomp disablement
+  * github/workflows: bump linux jobs to Ubuntu 22.04 base VM
+  * github/workflows: move all build jobs to checkout V3
+  * github/workflows: remove xcode 13.0 to xcode 13.1 override
+  * github/workflows: remove macOS 10.15 image usage
+  * sd_ass: never mangle colours on RGB video
+  * meson: move dmabuf-wayland specific files under the right check
+  * gpu/context: properly guard wldmabuf context
+  * console: add history deduplication
+  * github/workflows: remove pip usage in mingw CI
+  * vo_gpu_next: set background transparency
+  * ci: upload resulting binary of mingw64 build
+  * ci/mingw64: refresh build scripts
+  * ytdl_hook: reverse order of tracks
+  * demux/codec_tags: support more WAVEFORMATEXTENSIBLE tags
+  * wayland_common: always zero out presentation context when destroying it
+  * wayland: correct braindead comment (no-op)
+  * wayland: hack around presentation_feedback weirdness
+  * wayland: free dmabuf_feedback object
+  * test: update to reflect that Vulkan is a generic format again
+  * filters/f_hwtransfer: remove VAAPI <-> Vulkan mapping for now
+  * build: add an additional check for wayland-protocols 1.24
+  * meson: add more hardcoded values to configuration
+  * meson: use 'dl' instead of 'libdl' in find_library
+  * ci: use meson setup build instead of meson build
+  * ao_coreaudio: specify UTF-8 as text encoding for CFString conversions
+  * options: log profile name if there is no restore data
+  * console: respect the top margin shared script property
+  * vo_dmabuf_wayland: use special ra_ctx_create_by_name
+  * vo_dmabuf_wayland: load all hwdecs in preinit
+  * wayland: always do a display_roundtrip at the end of init
+  * github/workflows: print error logs on freebsd
+  * ci/build-freebsd.sh: remove nonexistent option
+  * vo_dmabuf_wayland: fix DRM builds with no VAAPI
+  * video/out/wayland_common: adjust decoration disagreement log level
+  * video/out/wayland_common: clear decoration request even if compositor disagrees
+  * video/out/wayland_common: don't pass a negative of border flag into ternary
+  * video/out/wayland_common: make decoration state usage explicit
+  * ao_pipewire: compatibility for libpipewire 0.3.19
+  * ci: require pipewire to be enabled for Tumbleweed Linux builds
+  * wayland: bump dmabuf protocol to version 4
+  * vo_vaapi_wayland: remove, as it is superceded by vo_dmabuf_wayland
+  * vo_dmabuf_wayland: wayland VO displaying dmabuf buffers
+  * wayland: clean wp_presentation_feedback in discard callback to avoid leak
+  * build_image_converter - use full image format list to create hw_upload
+  * mp_imgfmt: move DRMPRIME format to end of enum
+  * DOCS: document E to cycle through Editions
+  * ao: promote ao_pipewire
+  * ao_pipewire: test for session to contain audio sinks
+  * ao_pipewire: init_boilerplate(): simplify errorhandling
+  * TOOLS/lua/autoload: fix incorrect duplicate file loading behavior
+  * audio/format: fix Type 'struct entry' has incompatible definitions in different translation units
+  * vo_gpu/hwdec: add NULL check for legacy_name
+  * hwdec_aimagereader: fix incorrect return values
+  * demux_mkv: add AVS2 and AVS3 to tag list
+  * wscript: remove some bogus configure options
+  * demux_mf: add support for QOI, PHM and HDR images
+  * f_hwtransfer: allow hw uploads to implicitly convert formats
+  * f_hwtransfer: accept non-power-of-2 hw uploads
+  * hwdec/dmabuf_interop_gl: work-around implicit rgba swizzling
+  * f_hwtransfer: get rid of the shit list
+  * hwdec/vaapi: improve probing of supported sw formats
+  * vo_gpu_next: fix crash on uninit after startup failure
+  * sd_ass: improve handling of subtitles with unknown duration
+  * DOCS: fix minor typo with keep-open description
+  * draw_bmp: fix out of bounds access in mark_rect
+  * vo_gpu/hwdec: rename and introduce legacy names for some interops
+  * x11: fix --on-all-workspaces option
+  * vo_gpu_next: vulkan: libplacebo: unify log prefix
+  * github/workflows: explicitly install Xinerama on FreeBSD
+  * x11: fix a couple of memory leaks
+  * ao_pipewire: allow specification of remote name
+  * ao_pipewire: small cleanups and restructring
+  * osc: scale rendered aspect ratio with window aspect ratio
+  * wayland: correctly handle non-CLOCK_MONOTONIC clocks
+  * vulkan: remove --vulkan-disable-events
+  * vo: hwdec_aimagereader: add missing image format specifier
+  * vo_gpu: hwdec: add Android hwdec utilizing AImageReader
+  * DOCS: deprecate --gamma-factor and --gamma-auto
+  * vo_gpu_next: respect --blend-subtitles=<yes/no>
+  * ao_pipewire: don't try to lock nonexistent loop
+  * ao_pipewire: use target.object
+  * mp_image: strip DoVi metadata that requires an EL
+  * manpage: document bt.2390 parameter
+  * vo_gpu_next: fix screenshots of rotated sources
+  * DOCS/man/vf.rst : replace the outdated syntax
+  * vo_gpu_next: use static assert for array size
+  * vo_gpu_next: update render_info for upstream API change
+  * vo_gpu_next: implement --video-output-levels
+  * TOOLS/lua/autoload: add various extra file extensions
+  * TOOLS/lua/autoload: alphebatize auto-loaded file extensions
+  * ytdl_hook: use subtitle `name` as title if available
+  * af_scaletempo2: fix crash when the number of channels increases
+  * build: update waf to 2.0.24
+  * f_hwtransfer: mp_image_pool: support HW -> HW mapping
+  * f_autoconvert: f_hwtransfer: support HW -> HW uploads
+  * filters: lavfi: allow hwdec_interop selection for filters
+  * filters: support loading new hwdec_interops from filters
+  * vo: hwdec: do hwdec interop lookup by image format
+  * demux_lavf: extract is_image function
+  * demux_lavf: detect avif images
+  * DOCS/man/options.rst: replace some legacy single-hyphen syntax
+  * vo_gpu_next: support error diffusion dithering
+  * sub: use Unicode linebreaking for non-ASS subs and OSD
+  * ao_audiounit: get the channel layout from the AU itself
+  * mac: avoid unnecessary unsafe conversions; fixes crash in debug builds
+  * TOOLS/lua/autoload: add `m2ts` extension * `.m2ts` used for the Blu-ray disc container file format
+  * ytdl_hook: simplify exclude option parsing
+  * vo_gpu_next: only require full pixel byte alignment
+  * vo_gpu_next: implement ICC 3DLUT caching
+  * vo_gpu_next: use correct pixel size when mapping formats
+  * ao_pipewire: listen to hotplug events
+  * ao_pipewire: use proper hotplug init APIs
+  * ao_pipewire: create is_sink_node helper
+  * audio: list devices for all AOs with hotplug_init
+  * audio: try to use playback AO as hotplug AO first
+  * ta: increase size of names printed
+  * ao_pipewire: handle AOCONTROL_UPDATE_MEDIA_ROLE
+  * audio: add AOCONTROL_UPDATE_MEDIA_ROLE
+  * ao_pipewire: fix indent
+  * repack: add repacker for ccc16x16 formats
+  * mpv.metainfo.xml: add XDG appstream metadata manifest
+  * DOCS: Mention "mono" audio channels option
+  * DOCS/libmpv: fix typo in linkage section
+  * w32: fix typo in F23 mapping
+  * vo_gpu_next: fix typo affecting --target-trc option
+  * macos: add support for F13-F20 keys
+  * w32: add support for F13-F24 keys
+  * x11: add support for F13-F24 keys
+  * wayland: add support for F13-F24 keys
+  * input: add function keys F13-F24
+  * ad_lavc: strip non-normalized floats
+  * vo_gpu_next: display subtitles without video stream
+  * DOCS/options: update vd-lavc-skiploopfilter, skipidct and related descriptions
+  * DOCS/mpv: remove spaces at EOL, ensure 80 cols
+  * DOCS/mpv: added COMMAND INTERFACE refs to INTERACTIVE CONTROL
+  * ao_pipewire: for_each_sink(): report errors
+  * meson: fix condition for enabling vaapi-egl
+  * meson: fix libplacebo check
+  * audio: fix lack of reinitialization on format change with pull AOs
+  * player/audio: remove explicit drain on EOF
+  * ao_pipewire: make sure not to exceed the available buffer
+  * audio: don't try to drain non-existent AO
+  * vo_gpu_next: pass GL get_proc_addr pointer to libplacebo
+  * ao_pipewire: test on FreeBSD
+  * mpv.desktop: add RIST protocol to desktop entry
+  * osxbundle: add RIST protocol support to app metadata
+  * stream_lavf: enable RIST protocol support via ffmpeg
+  * ao_pipewire: restructure logic a bit
+  * ao_pipewire: only try to read requested data
+  * ao_pipewire: report all available info about chunk
+  * ytdl_hook: improve track detection
+  * misc/random: add xoshiro random number implementation
+  * meson: fix the build-date option
+  * meson: fix building without gl
+  * meson: consistently use feature['foo']
+  * meson: refactor generating config.h
+  * meson: disable dvdnav by default
+  * meson: reduce dictionary usage
+  * meson: add comment clarifying windows-internal-pthreads
+  * ytdl_hook: consistant behavior for single format
+  * wayland: add support for configure bounds
+  * x11: fix display-{width,height} calculation
+  * DOCS/options: correct wayland-disable-vsync option
+  * ytdl_hook: fix default track for single format
+  * github/workflows: auto-update freebsd-vm within major version
+  * drm_common: remove hard dependency on drmIsKMS()
+  * context_drm_egl: skip page flip wait on error
+  * gpu/hwdec: reorder `drmprime` below `drmprime_drm`
+  * video/drmprime: fix use-after-free
+  * hwdec/drmprime: fix build
+  * hwdec/dmabuf_interop: Properly prefix `priv` struct
+  * hwdec/drmprime: Fix small issues
+  * audio: drain ao on EOF
+  * hwdec/drmprime: add drmprime hwdec-interop
+  * ao_pipewire: tell audio server about number of queued samples
+  * man: remove unhelpful language
+  * ao_pipewire: use mpv logging
+  * hwdec/dmabuf_interop_gl: support basic multi-plane formats
+  * hwdec/dmabuf_interop: use AVDRMFrameDescriptor to describe dmabufs
+  * hwdec/dmabuf_interop: refactor out hwdec_vaapi dependencies
+  * hwdec/vaapi: rename interops to reflect more general use
+  * af_rubberband: add new engine option in rubberband 3.0.0
+  * drm_common: skip cards that don't support KMS for autodetection
+  * drm: avoid drmModeAtomicCommit races by blocking
+  * video: remove unnecessary code
+  * ytdl_hook: fix playlist index extraction
+  * ci: bump macos runner version
+  * wayland: add missing newline in wayland_common
+  * hwdec_vaapi_pl: support simple multi-plane image formats
+  * vo_gpu_next: fix screenshots on single-frame files
+  * vo_gpu/d3d11: fix VRAM leak
+  * osc.lua: add osc-tcspace script option
+  * osc.lua: add osc-unicodeminus script option
+  * vo_gpu_next: don't crash on !frame->current
+  * ytdl_hook: always set HTTP headers
+  * libplacebo: fix compatibility with libplacebo >= 5
+  * github/workflows: upgrade FreeBSD to 13.1
+  * vo_gpu: fix 3DLUT precision
+  * ao_pipewire: prevent deprecation warning for pw_stream_get_time()
+  * ao_pipewire: pipewire uses linear volume
+  * ao_pipewire: don't access core after disconnect
+  * ao_pipewire: zero listeners
+  * ao_pipewire: support ao-volume on non-stereo channel layouts
+  * DOCS/encoding: remove the legacy option syntax
+  * drm_prime: fix newline in error message
+  * meson: fix rst2html command
+  * context_x11egl: remove supposed transparency fix
+  * DOCS: fix typo
+  * DOCS/osc: fix option "showidlescreen" -> "idlescreen" This option was added in mpv-player@ec236f7, but its name in the document description is incorrect
+  * meson: add a summary at the end of configuration
+  * vo_gpu_next: implement --cscale
+  * swresample: don't forcibly clip on every conversion
+  * js: key bindings: ensure priorities for same-key - again
+  * x11: avoid XPresent API calls when it's not needed
+  * lua: command_native_async: make the callback optional
+  * lua: command_native_async: always callback a-sync
+  * x11: add --x11-present option
+  * x11: add nouveau to the xpresent whitelist
+  * x11: correct provider detection logic
+  * vo_vaapi_wayland: remove vaapi format query as formats are never used
+  * meson: remove pointless d3d11 dictionary
+  * x11: replace strcasestr usage with bstr
+  * github/workflows: install libxpresent on freebsd
+  * x11: support xorg present extension
+  * x11: use xrandr providers for driver detection
+  * vo: move wayland presentation to separate files
+  * meson: use require when checking for vdpau
+  * ci/build: Do not manually install Meson in openSUSE container
+  * meson: rearrange library dependency order to avoid crash with fontconfig
+  * vo_vaapi_wayland: only attach solid buffer once to main surface, on creation
+  * vo_vaapi_wayland: remove unnecessary subsurface sync/desync in resize
+  * ci/build-mingw64: enable test building
+  * ci/build-mingw64: bump dependencies
+  * ci/build-mingw64: switch to fossils directory for zlib
+  * ci/build-tumbleweed: attempt to enable unit tests in CI
+  * test/chmap: start adding AVChannelLayout unit tests
+  * audio/chmap: add mp_iterate_builtin_layouts
+  * f_lavfi: switch to AVChannelLayout when available
+  * ad_lavc: switch to AVChannelLayout when available
+  * af_lavcac3enc: switch to AVChannelLayout when available
+  * af_lavcac3enc: refactor chmap adding into its own function
+  * ao_lavc: switch to AVChannelLayout when available
+  * demux_lavf: switch to AVChannelLayout when available
+  * common/av_common: switch to AVChannelLayout when available
+  * audio/aframe: switch to AVChannelLayout when available
+  * audio: add AVChannelLayout helpers to convert from/to mp_chmap
+  * wayland: set appid before initial surface commit
+  * wayland_gl: fix a typo
+  * wayland_gl: wait until resize to create egl_window
+  * DOCS/options: fix incorrect labelling of hr-seek default
+  * sub: jsre filter: abort init early on empty filter list
+  * ci/mingw64: add git libplacebo for gpu-next
+  * github/workflows: move mingw CI to ubuntu 22.04
+  * ci/mingw64: make meson crossfile global
+  * wayland_gl: use wl->scaling when creating egl_window
+  * wayland: rearrange initialization logic
+  * player: add tiff/tif (TIFF) to list of image extensions
+  * player: add jxl (JPEG XL) to list of image extensions
+  * wayland: remove some unneeded lines from reconfig
+  * vo_gpu_next: fix OSD rendering of screenshots
+  * meson: add internal arg to wayland-protocols' get_variable()
+  * osc.lua: add idlescreen and osc-idlescreen
+  * video/out/dither: remove custom index_t typedef
+  * wayland: force vo_vaapi_wayland scaling to 1
+  * DOCS/interface-changes: mention vaapi-wayland vo
+  * vo: move allocate_memfd method to wayland_common
+  * vo_vaapi_wayland/wayland_common: code style fixes
+  * wayland: use mp_tag_str not drm_format_string
+  * vo: allow vaapi_wayland and vaapi_x11 to coexist
+  * wayland: don't depend on the order of global announcements
+  * vo: add new vaapi-wayland driver
+  * demux: stop iterating over demuxers as soon as a match is found
+  * osc.lua: fix crash when calling osc-tracklist while idle
+  * player: check for argv before printing help text
+  * player: set EOF when seeking to end with keep-open
+  * various: remove trailing whitespace
+  * wayland: use wl_output v4 for display-names
+  * lua: avoid rare memory leak in mp.join_path
+  * client API: always export symbols on windows
+  * stream_lavf: add support for ipfs and ipns
+  * meson: compile mpv.exe as a win32 gui application
+  * context_drm_egl: support monitor par
+  * github/workflows: add macOS 12 build
+  * video/image_writer: tag colorspace in AVCodecContext
+  * DOCS/input: fix typo "NANME" -> "NAME"
+  * console.lua: don't render a 2nd cursor on the OSC
+  * video/image_writer: fix high-depth JPEG XL screenshots
+  * build: add avcodec jpegxl dependency versions
+  * demux: add support for r128 replaygain tags
+  * DOCS/ao: remove only usage of git.io link shortening service
+  * wayland: use wl_surface_damage_buffer
+  * DOCS/options: properly capitalize JPEG XL
+  * video/image_writer: add Jpeg XL screenshots
+  * various: fix typos
+  * vo_gpu_next: avoid 0x0 resizes
+  * github/workflows: workaround git permissions error
+  * DOCS/options: update the --load-osd-console documentation
+  * DOCS/input: update the ASS tags documentation URL
+  * options: make --cover-art-auto=exact the default
+  * player: add cover-art-whitelist option
+  * DOCS: fix the typo of --sub-justify
+  * DOCS: correct --sub-shadow-color
+  * DOCS/{mpv,options}: document the watch later functionality
+  * vo_wlshm: use draw_frame instead of draw_image
+  * mpv.desktop: add japanese translation
+  * ci: switch Tumbleweed build to openSUSE container registry
+  * vd_lavc: fixup unchecked usage of AV_CODEC_EXPORT_DATA_FILM_GRAIN
+  * vd_lavc: fix decoder initialization when no VO is available
+  * vd_lavc: remove duplicate vd_ffmpeg_ctx pointer from init_avctx
+  * wayland: use wl_output v4 for --fs-screen-name
+  * x11: avoid wasteful rendering when possible
+  * player: rearrange video sync opts/enums/defines
+  * wayland: unify visibility checking code
+  * vo_gpu/d3d11: add message ID based log level mapping
+  * vo_gpu/d3d11: mimic libplacebo backbuffer usage
+  * vo_gpu/d3d11: enable receival of color depth without active backbuffer
+  * vo_gpu/d3d11: add helper function to get ra_format from DXGI_FORMAT
+  * vo_gpu_next: switch to unpooled hwdec mapping
+  * x11: fix screen-name option
+  * mpv.desktop: add turkish translation
+  * options.lua: remove unused function
+  * options: add osd-playing-msg-duration
+  * egl_helpers: request at least 8 alpha bits if necessary
+  * DOCS/input: mark chapter-list as writable
+  * drm: context_drm_egl: add support for enabling VRR
+  * vd_lavc: add vo caps and option to set GPU film grain application
+  * vo_gpu_next: apply film grain if such metadata is present
+  * vf_format: support forwarding/stripping film grain metadata
+  * mp_image: support film grain parameters
+  * vd_lavc: hide a deprecation warning in already handled compatible code
+  * sub/osd: use atomic for osd_state.force_video_pts
+  * osdep/atomic: add mp_atomic_double
+  * Revert "vo_gpu_next: remove unnecessary dependency"
+  * ao_pipewire: Do not hold thread lock during loop stop
+  * ao_pipewire: fix resource lifetimes
+  * vo_gpu_next: remove unnecessary dependency
+  * lua: use correct chunkname when loading script files
+  * vo_gpu[_next]: hwdec: fix logging regression when probing
+  * common/av_log: explicitly include version.h for required libraries
+  * vo_gpu_next: also include stride alignment in DR size
+  * vulkan: correctly inherit proc_addr pointer
+  * ao_sndio: fix parentheses warning
+  * client API: also export mpv_stream_cb_add_ro
+  * vo_gpu: hwdec_vaapi: Improve logging when probing surface formats
+  * DOCS/options.rst DOCS/vo.rst: Update discussion of hwdec usage
+  * vo_gpu_next: fix crash when disabling DR at runtime
+  * vo_gpu_next: don't leak mpi on failed upload
+  * vo_gpu_next: properly keep track of DR allocations
+  * hwdec: warn on unsupported hwdec option value
+  * vo_gpu_next: don't allocate dr_buf as part of the AVBufferRef
+  * hwdec: fix out-of-date preprocessor variable name
+  * ytdl_hook.lua: consider any subprocess status != 0 as error
+  * vo_gpu_next: add D3D11 RA texture wrapping/unwrapping for hwdec
+  * vo_gpu_next: add support for hardware decoding
+  * manpage: add vo_gpu_next wiki link to manpage
+  * vo_gpu_next: configure the VO queue size dynamically
+  * vo_gpu_next: expose EGLDisplay to pl_gpu
+  * vo_gpu: move hwdec loading code to common helper
+  * hwdec: release images as soon as possible after mapping
+  * hwdec_vaapi_vk: rename to vaapi_pl
+  * hwdec_vaapi_gl: properly zero initialize priv struct
+  * filters: Re-add vavpp deinterlacing auto-filter
+  * ytdl_hook: fix url_is_safe to match URL protocols properly
+  * vo_gpu_next: remove/simplify plane flipping hacks
+  * vo_gpu_next: avoid rendering subtitles as HDR/wide gamut
+  * mp_image: fix mp_image_plane_w/h
+  * stats.lua: page 2 - frame timing: use fixed display order
+  * stats.lua: graphs: fix bad rendering due to division by 0
+  * vo_gpu_next: refactor subtitle rendering
+  * options: add always to stop-screensaver
+  * DOCS/input: document subprocess more clearly
+  * DOCS/input: fix typo
+  * vo_gpu: hwdec: load hwdec interops on-demand by default
+  * ao_pipewire: fix ao-volume handling
+  * vo_gpu_next: don't crash on negative plane strides
+  * vo_gpu: d3d11_helpers: don't create UNORDERED_ACCESS backbuffers in Win7
+  * meson: remove horrifying macos luajit hack
+  * github/workflows: use lua 5.1 on macos
+  * DOCS/mpv: improve vf=rotate examples
+  * wayland: partially fix drag and drop handling
+  * ao_pipewire: validate pod creation
+  * ao_pipewire: add support for device selection
+  * vo_gpu_next/context: get graphics API-specific contexts from pl_gpu
+  * vf_format: simplify frame type checking after addition of DoVi option
+  * vo_gpu: hwdec_vaapi: Don't probe formats for irrelevant endpoints
+  * ci/appveyor: fix package install line
+  * osc.lua: seekbar hover: speed-up chapter access
+  * js: utils.get_user_path: make wrapper of expand-path
+- Change source from cpio/tar to tar.xz to reduce the source code
+  size by a factor of 4.
+- Update waf to version 2.0.24
+- Set rubberband to version 3.0.0 which is need for optional dependencies.
+- Remove --enable-pipewire because it is now autodetected.
+  You can now only disable.
+- Disable pipwire under Leap because of build error.
+- Enable openal, sixel.
+- Enable mujs for Leap >= 15.4.
+- Enable wayland for Leap >= 15.4.
+- If libavif is installed default at build time it must have version >= 0.11.1
+- Fix rpmlint filename-too-long-for-joliet.
+
+-------------------------------------------------------------------
 Tue Jun  7 14:16:40 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop pkgconfig(libkms) BuildRequires: this has been removed from
