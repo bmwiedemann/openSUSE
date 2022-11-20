@@ -1,7 +1,7 @@
 #
 # spec file for package mpfr
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           mpfr
-Version:        4.1.0
+Version:        4.1.1
 Release:        0
 Summary:        The GNU multiple-precision floating-point library
 License:        LGPL-3.0-or-later
@@ -27,7 +27,6 @@ Source0:        https://www.mpfr.org/mpfr-%{version}/mpfr-%{version}.tar.xz
 Source1:        https://www.mpfr.org/mpfr-%{version}/mpfr-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
-Patch:          mpfr-4.1.0-p7.diff
 BuildRequires:  gmp-devel
 BuildRequires:  pkgconfig
 
@@ -56,8 +55,8 @@ Summary:        Development files for the GNU multiple-precision floating-point 
 Group:          Development/Libraries/C and C++
 Requires:       gmp-devel
 Requires:       libmpfr6 = %{version}
-Requires(post):  %{install_info_prereq}
-Requires(preun):  %{install_info_prereq}
+Requires(post): %{install_info_prereq}
+Requires(preun):%{install_info_prereq}
 
 %description devel
 Development files for the GNU multiple-precision floating-point library.
@@ -68,7 +67,6 @@ based on the GMP multiple-precision library.
 
 %prep
 %setup -q
-%patch -p1
 
 %build
 %configure \
@@ -90,6 +88,7 @@ make check %{?_smp_mflags}
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n libmpfr6 -p /sbin/ldconfig
+
 %post devel
 %install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
 

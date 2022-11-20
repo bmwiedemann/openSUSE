@@ -498,4 +498,19 @@
     <comment>- Add cummulative patch mpfr-4.1.0-p7.diff fixing various bugs.</comment>
     <requestid>871455</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>f3eed8fcef9afe8c7a1b9ff654aa6a75</srcmd5>
+    <version>4.1.1</version>
+    <time>1668970006</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to mpfr 4.1.1
+  * Bug fixes (see &lt;https://www.mpfr.org/mpfr-4.1.0/#fixed&gt; and/or the
+    ChangeLog file), in particular for macros implementing functions.
+  * Improved manual formatting.
+  * Accumulated bugfixes
+- Remove mpfr-4.1.0-p7.diff, all patches are contained in the
+  new version.
+- Update mpfr.keyring</comment>
+    <requestid>1036672</requestid>
+  </revision>
 </revisionlist>

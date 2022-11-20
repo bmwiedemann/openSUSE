@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov 18 07:52:35 UTC 2022 - Richard Biener <rguenther@suse.com>
+
+- Update to mpfr 4.1.1
+  * Bug fixes (see <https://www.mpfr.org/mpfr-4.1.0/#fixed> and/or the
+    ChangeLog file), in particular for macros implementing functions.
+  * Improved manual formatting.
+  * Accumulated bugfixes
+- Remove mpfr-4.1.0-p7.diff, all patches are contained in the
+  new version.
+- Update mpfr.keyring
+
+-------------------------------------------------------------------
 Fri Feb 12 08:05:33 UTC 2021 - Richard Biener <rguenther@suse.com>
 
 - Add cummulative patch mpfr-4.1.0-p7.diff fixing various bugs.
