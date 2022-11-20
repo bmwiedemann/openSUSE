@@ -1,4 +1,102 @@
 -------------------------------------------------------------------
+Sat Nov 19 16:04:10 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 22.11
+  Breaking Changes
+  * Fixed irregular model names.
+    "Inkbird ITH-20R" -> "Inkbird-ITH20R"
+    "LaCrosse-WS7000-27/28" -> "LaCrosse-WS700027"
+    "LaCrosse-WS7000-22/25" -> "LaCrosse-WS700022"
+    "LaCrosse-WS7000-16" -> "LaCrosse-WS700016"
+    "LaCrosse-WS7000-15" -> "LaCrosse-WS700015"
+    "LaCrosse-WS7000-20" -> "LaCrosse-WS700020"
+    "LaCrosse-WS2500-19" -> "LaCrosse-WS250019"
+    "Abarth 124 Spider" -> "Abarth-124Spider"
+    "Jansite Solar" -> "Jansite-Solar"
+    "Klimalogg Pro" -> "Klimalogg-Pro"
+    "Secplus_v1" -> "Secplus-v1"
+    "SCM+" -> "SCMplus"
+    Changed light_klx to light_lux in Bresser-7in1.
+  Highlights
+  * Added rtl_tcp pass-through output.
+  * Added realtime replay option for file inputs.
+  * Added support for Badger ORION water meter.
+  * Added support for Rubicson pool thermometer.
+  * Added support for Fine Offset WN34 temperature sensor.
+  * Added support for KS200/KS300 to ELV WS2000.
+  * Added support for Maverick XR-30.
+  * Added support for Fine Offset WH45 air quality sensor.
+  * Added support for HCS200/HCS300 based remotes with FSK
+    transmitters.
+  * Added support for Emos E6016 Rain Gauge.
+  * Added support for ANT and ANT+ devices.
+  * Added support for Altronics X7064 sensor.
+  * Added support for EMOS 6016.
+  * Added support for FineOffset WS80 weather station.
+  * Added support for Renault-0435R TPMS.
+  * Added support for AcuRite 01190 Leak Detector.
+  * Added support for Regency ceiling fans.
+  * Added support for Microchip HCS300 KeeLoq remotes.
+  * Added support for Yale HSA.
+  * Added support for SimpliSafe-Gen3.
+  * Added support for AVE TPMS.
+  * Added decoder conf for sgooway door detector.
+  * Added decoder conf for ContinentalRemote.
+  * Added decoder conf for Mondeo remote.
+  * Added decoder conf for LeakDetector.
+  * Added decoder conf for Heatilator-Gas-Log.
+  * Added decoder conf for Honeywell-Fan.
+  * Added decoder conf for DrivewayAlert.
+  * Added decoder conf for GhostControls.
+  * Added Threads if available.
+  Changed
+  * Added note regarding WH51 915MHz decoding.
+  * Added publish secret knocks as device automations.
+  * Added time, channel, and button device automation triggers.
+  * Improved false positives for acurite_01185m.
+  * Changed rtl_433_mqtt_hass rain value template round to two
+    digits.
+  * Changed rtl_433_mqtt_hass value templates round to one digit.
+  * Fixed Chuango devices with some zeroes in their ID.
+  * Changed Proove/Nexa/Kaku to support Smartwares SH4-90152.
+  * Changed Acurite TXR decoder to improve validation.
+  * Fixed Efergy-e2CT current above 53 Amp.
+  * Added sanity check to Ambient Weather F007th.
+  * Added decode symbol helper and flex option.
+  * Added InFactory PT-310 support to Rubicson.
+  * Added HTTP API example scripts.
+  * Changed rain gauge multiplier for Auriol-4LD5661.
+  * Added CSV names for flex getters with unique mode.
+  * Added php example script.
+  * Improved Ford TPMS decoder.
+  * Fixed crash when reading a conf file.
+  * Changed SDR data buffers to persist valid.
+  * Added ERT-SCM consumption data to mqtt hass mappings.
+  * Added id filter to mqtt hass.
+  * Fixed overflow in Acurite-00275rm.
+  * Changed the PCM/NRZ/RZ naming.
+  * Added cmake option to select IPv6 support.
+  * Fixed EMOS-6016 checksum, add DCF77.
+  * Added bitbuffer_find_repeated_prefix function.
+  * Fixed pulse reset on spurious pulses.
+  * Removed confusing -G register all option.
+  * Changed hass script duplicate dict key 'light_lux' back to 'lux'
+    for legacy reasons.
+  * Added Honeywell-cm921 Ticker and Heat Demand commands.
+  * Changed most decoder-verbose to log level.
+  * Changed fprintf in decoders to decoder_log.
+  * Added decoder log to replace bitbuffer bitrow print.
+  * Added decoder log to replace fprintf.
+  * Fixed Digitech-XC0324 humidity readings (FT-005TH Sensor).
+  * Changed wt0124 to use additional checksum.
+  * Added diagnostic entity category to mqtt hass example.
+  * Removed invalid "weather" device class in HASS script.
+  * Added trigger stream output.
+  * Changed Hideki to accept short sync.
+- Drop patch:
+  0001-Fix-overflow-in-Acurite-00275rm-closes-2012.patch
+
+-------------------------------------------------------------------
 Wed Apr 13 08:32:49 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Add patch to fix security issue: CVE-2022-27419 (bsc#1198434)

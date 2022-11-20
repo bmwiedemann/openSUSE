@@ -18,14 +18,13 @@
 
 
 Name:           rtl_433
-Version:        21.12
+Version:        22.11
 Release:        0
 Summary:        Application turning the RTL2832 dongle into a 433.92MHz generic data receiver
 License:        GPL-2.0-only
 Group:          Productivity/Hamradio/Other
 URL:            https://github.com/merbanan/rtl_433.git
-Source:         https://github.com/merbanan/rtl_433/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         0001-Fix-overflow-in-Acurite-00275rm-closes-2012.patch
+Source:         https://github.com/merbanan/rtl_433/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(SoapySDR)
@@ -49,7 +48,6 @@ to make use of rtl_433.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %cmake \
