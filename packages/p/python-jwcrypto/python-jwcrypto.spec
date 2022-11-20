@@ -1,7 +1,7 @@
 #
 # spec file for package python-jwcrypto
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define skip_python2 1
 
 Name:           python-jwcrypto
-Version:        1.0
+Version:        1.4.2
 Release:        0
 Summary:        Python module package implementing JOSE Web standards
 License:        LGPL-3.0-only
@@ -64,6 +64,6 @@ rm -rv %{buildroot}%{_datadir}/doc/jwcrypto
 %files %{python_files}
 %{python_sitelib}/*
 %license LICENSE
-%doc README.md SECURITY.md
+%doc README.md
 
 %changelog

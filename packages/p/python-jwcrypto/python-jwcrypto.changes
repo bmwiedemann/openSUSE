@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 18 14:57:01 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- update to 1.4.2 which also fixes CVE-2022-3102
+  too many other changes to be listed here
+
+-------------------------------------------------------------------
 Wed Dec  8 14:25:36 UTC 2021 - pgajdos@suse.com
 
 - do not require pytest-runner for build, not required
