@@ -1,9 +1,9 @@
 <services>
   <service mode="manual" name="obs_scm">
     <param name="url">https://github.com/starwing/luautf8</param>
-    <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@</param>
+    <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
-    <param name="revision">4e15359829f8c911de3a78ea8d4c5b945260256a</param>
+    <param name="revision">a3db9cca0d7d82d78e2acaba2b5571178fcddc01</param>
     <param name="versionrewrite-pattern">(\d+.\d+.\d+)</param>
     <param name="versionrewrite-replacement">\1</param>
   </service>

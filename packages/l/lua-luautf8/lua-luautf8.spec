@@ -18,7 +18,7 @@
 
 %define flavor @BUILD_FLAVOR@
 %define mod_name luautf8
-%define rock_version 0.1.3-1
+%define rock_version 0.1.4-1
 %ifarch %{ix86}
  %define luarock_arch x86
 %else
@@ -28,15 +28,15 @@
   %define luarock_arch %{_arch}
  %endif
 %endif
-Version:        0.1.3+git3
+Version:        0.1.4
 Release:        0
 Summary:        A utf-8 support module for Lua and LuaJIT
 License:        MIT
 Group:          Development/Languages/Other
 URL:            https://github.com/starwing/luautf8
 Source:         %{mod_name}-%{version}.tar.xz
-BuildRequires:  %{flavor}-luarocks
 BuildRequires:  %{flavor}-devel
+BuildRequires:  %{flavor}-luarocks
 Requires:       %{flavor}
 %lua_provides
 %if "%{flavor}" == ""
