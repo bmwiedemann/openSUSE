@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov 17 14:26:10 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 2.9.4
+  * Fix rotation
+  * libgerbv: Free the memory allocated in aperture macro comments
+  * Fix CVE-2021-40400: Gerbv RS-274X aperture macro outline primitive out-of-bounds read vulnerability
+  * Fix CVE-2021-40403: Gerbv pick-and-place rotation parsing use of uninitialized variable vulnerability
+  * Fix CVE-2021-40401: Gerbv RS-274X aperture definition tokenization use-after-free vulnerability
+  * Emit warning when G04 includes a CR or LF
+  * Support spaces in excellon XY drill lines
+  * Add support for Altium-style FILE_FORMAT comments
+
+-------------------------------------------------------------------
 Wed May  4 09:09:00 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Change the source URL
