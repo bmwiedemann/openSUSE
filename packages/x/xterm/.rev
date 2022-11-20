@@ -1662,4 +1662,19 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
     <comment>changelog for CVE-2022-45063 boo#1205305 (forwarded request 1035134 from AndreasStieger)</comment>
     <requestid>1035234</requestid>
   </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>18569c7b2a277f660dca90ae6e93fb93</srcmd5>
+    <version>376</version>
+    <time>1668970015</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 376:
+  * modify configure script to always check for gcc attributes,
+  * update install-sh.
+  * fix parsing of result -u in vttests/halves.pl.
+  * add a note in ctlseqs.ms about compatibility of TBC.
+  * fix a copy/paste error in manual (patch by Grady Martin).
+  * add  null-pointer checks in x_strcasecmp and x_strncasecmp, to help
+    with error-recovery for a missing font (Debian #1022942). (forwarded request 1036713 from dirkmueller)</comment>
+    <requestid>1036787</requestid>
+  </revision>
 </revisionlist>

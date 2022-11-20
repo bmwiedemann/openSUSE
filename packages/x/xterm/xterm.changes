@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov 18 21:21:02 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 376:
+  * modify configure script to always check for gcc attributes,
+  * update install-sh.
+  * fix parsing of result -u in vttests/halves.pl.
+  * add a note in ctlseqs.ms about compatibility of TBC.
+  * fix a copy/paste error in manual (patch by Grady Martin).
+  * add  null-pointer checks in x_strcasecmp and x_strncasecmp, to help
+    with error-recovery for a missing font (Debian #1022942).
+
+-------------------------------------------------------------------
 Sat Nov  5 19:20:27 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 375:
