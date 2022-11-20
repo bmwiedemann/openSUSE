@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Nov 19 20:37:12 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to the upstream release 3.12.3:
+  - consolidation of previous git commits
+  - support SMBIOS3.3.0
+- Remove upstreamed huge-memory.patch
+
+-------------------------------------------------------------------
 Wed Oct 26 15:51:25 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Modify detect-lib-with-py3.patch to be more robust.

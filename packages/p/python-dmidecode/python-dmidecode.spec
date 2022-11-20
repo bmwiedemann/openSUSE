@@ -19,17 +19,14 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-dmidecode
-Version:        3.12.2+git.1666757106.e6ab5bc
+Version:        3.12.3
 Release:        0
 Summary:        Python module to access DMI data
 License:        GPL-2.0-only
 Group:          System/Libraries
 URL:            https://github.com/nima/python-dmidecode
-# Source0:        https://github.com/nima/python-dmidecode/archive/refs/tags/v%%{version}.tar.gz#/python-dmidecode-%%{version}.tar.gz
-Source0:        python-dmidecode-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM huge-memory.patch gh#nima/python-dmidecode#33 mcepl@suse.com
-# use DWORD instead of WORD when calling dmi_memory_device_extended_size
-Patch0:         huge-memory.patch
+Source0:        https://github.com/nima/python-dmidecode/archive/refs/tags/v%{version}.tar.gz#/python-dmidecode-%{version}.tar.gz
+# Source0:        python-dmidecode-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM gcc7-inline.patch gh#nima/python-dmidecode#35 mcepl@suse.com
 # Don't use inline keyword.
 Patch1:         gcc7-inline.patch

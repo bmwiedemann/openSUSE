@@ -100,4 +100,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1034825</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>911b39dd184549543a78313837d0ab76</srcmd5>
+    <version>3.12.3</version>
+    <time>1668970022</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to the upstream release 3.12.3:
+  - consolidation of previous git commits
+  - support SMBIOS3.3.0
+- Remove upstreamed huge-memory.patch
+</comment>
+    <requestid>1036837</requestid>
+  </revision>
 </revisionlist>
