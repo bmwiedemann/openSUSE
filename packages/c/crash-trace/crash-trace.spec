@@ -26,6 +26,7 @@ URL:            https://github.com/fujitsu/crash-trace
 Source:         https://github.com/fujitsu/crash-trace/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch1:         %{name}-fix-aarch64-ppc64le.patch
 BuildRequires:  crash-devel
+Requires:       trace-cmd
 
 %description
 This extension implements the "trace" command for the crash tool.

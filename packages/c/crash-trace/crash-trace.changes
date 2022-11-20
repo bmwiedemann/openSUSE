@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov 19 20:53:37 UTC 2022 - Petr Tesařík <ptesarik@suse.com>
+
+- The "trace show" command requires trace-cmd.
+
+-------------------------------------------------------------------
 Fri Nov 18 18:26:02 UTC 2022 - Petr Tesařík <ptesarik@suse.com>
 
 - crash-trace-fix-aarch64-ppc64le.patch: Fix build for AArch64 and
