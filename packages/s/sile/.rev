@@ -33,4 +33,12 @@
  * Revert &quot;docs(packages): Fixup unichar documentation, work around known bug (#1549)&quot; (forwarded request 1033699 from Pi-Cla)</comment>
     <requestid>1033700</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e9d2bc6c352003973146cfdde9c07d41</srcmd5>
+    <version>0.14.5</version>
+    <time>1668970020</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1036836</requestid>
+  </revision>
 </revisionlist>

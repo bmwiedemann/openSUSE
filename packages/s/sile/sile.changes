@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Nov 19 19:09:36 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
+
+update: 0.14.4 -> 0.14.5
+- Bug Fixes
+ * inputters: Correct false positive detection of STDIN as Lua content
+ * inputters: Don't duplicate passthrough content in AST
+ * inputters: Permit content outside of the document note, e.g. comments or blanks
+ * inputters: Relax SIL format sniffing to allow valid syntax
+ * languages: Tidy up variable scope in languages/unicode.lua
+ * measurements: Allow redefinition of existing units
+ * packages: Ensure a page switch does not break boustrophedon
+
+-------------------------------------------------------------------
 Sat Nov  5 16:18:00 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
 
 update: 0.14.3 -> 0.14.4
@@ -9,7 +22,7 @@ update: 0.14.3 -> 0.14.4
 - Bug Fixes
  * classes: Always break out of hmode before processing \chapter headings
  * core: A typo in a variable prevents using -u with a class
- * languages: Make 'und' an exception to language name canonicalization 
+ * languages: Make 'und' an exception to language name canonicalization
  * math: Fix insertion order of MathML children
  * packages: Account for depth when calculating rotation center
  * packages: Avoid forcing mirrored masters in twoside package
