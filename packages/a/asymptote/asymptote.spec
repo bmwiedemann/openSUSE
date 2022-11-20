@@ -18,7 +18,7 @@
 
 %bcond_with lsp
 Name:           asymptote
-Version:        2.82
+Version:        2.83
 Release:        0
 Summary:        2D & 3D TeX-Aware vector graphics language
 License:        LGPL-3.0-or-later
@@ -95,5 +95,4 @@ find "%buildroot/%_datadir/asymptote/GUI" -type f -name "*.py" \
 %_mandir/*/*asy.1*
 %license LICENSE*
 
-# curated changelog: see https://downloads.sf.net/asymptote/2.80/README
 %changelog

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Nov 19 22:16:05 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.83
+  * WebGL triangle groups were fixed.
+  * Context menus were added to Xasy objects to allow one to edit
+    the fill type, line type, color, line cap, and optionally add
+    arrowheads.
+  * Support for begingroup() and endgroup() was added to Xasy.
+  * Scaling in the vectorfield function was fixed.
+  * A quotient(x,y) bug when -1 < x/y < 0, introduced in version
+    2.42, was fixed.
+
+-------------------------------------------------------------------
 Wed Aug 10 10:52:38 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.82
