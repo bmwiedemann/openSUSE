@@ -18,22 +18,12 @@
 
 
 Name:           4pane
-Version:        7.0
+Version:        8.0
 Release:        0
 Summary:        A multi-pane detailed-list file manager
 License:        GPL-3.0-only
 URL:            http://www.4pane.co.uk/
 Source0:        https://sourceforge.net/projects/fourpane/files/%{version}/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM 0001-Compilation-fixes-for-wxWidgets-3.1.6.patch
-Patch0:         0001-Compilation-fixes-for-wxWidgets-3.1.6.patch
-# PATCH-FIX-UPSTREAM 0001-Compilation-fix-for-wxWidgets-3.1.5.patch
-Patch1:         0001-Compilation-fix-for-wxWidgets-3.1.5.patch
-# PATCH-FIX-UPSTREAM 0001-Fix-a-wx-assert-complaining-that-a-panel-was-being-a.patch
-Patch2:         0001-Fix-a-wx-assert-complaining-that-a-panel-was-being-a.patch
-# PATCH-FIX-UPSTREAM 0001-Fix-a-wxAssert-when-showing-the-Command-line-termina.patch
-Patch3:         0001-Fix-a-wxAssert-when-showing-the-Command-line-termina.patch
-# PATCH-FIX-UPSTREAM 0001-Prevent-a-wx-build-warning-about-wxPATH_NORM_ALL-bei.patch
-Patch4:         0001-Prevent-a-wx-build-warning-about-wxPATH_NORM_ALL-bei.patch
 BuildRequires:  ImageMagick
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
