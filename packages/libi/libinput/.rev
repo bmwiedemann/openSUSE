@@ -979,4 +979,12 @@ Peter Hutterer (3):
     <comment>- Update to release 1.21</comment>
     <requestid>982165</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>fed0f7e73329a4d17d8c54095ab9298a</srcmd5>
+    <version>1.22.0</version>
+    <time>1668970017</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.22</comment>
+    <requestid>1036796</requestid>
+  </revision>
 </revisionlist>

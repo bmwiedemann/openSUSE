@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Nov 19 12:23:18 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.22
+  * A new flat acceleration profile is available for trackpoints,
+    making them more usable in some cases.
+  * This version includes quirks for laptops from Lenovo, Acer and
+    Microsoft, as well as for the Framework laptop and ARM based
+    Chromebooks.
+
+-------------------------------------------------------------------
 Sat Jun 11 18:43:21 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.21
