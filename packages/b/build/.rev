@@ -1523,4 +1523,24 @@ Changes:
 - support for building from slsa provenance files</comment>
     <requestid>1006382</requestid>
   </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>b1cd75409b217c41924336253f349001</srcmd5>
+    <version>20221118</version>
+    <time>1668970008</time>
+    <user>dimstar_suse</user>
+    <comment>- INCOMPATIBLE CHANGE: get rid off the power8 cpu limitation (#889) on powerpc
+- Add handling of non-compressed tar when creating Debian archive for DSC 3.0
+- Add automatic build-in-place detection
+- Support dist/package subdir builds in pbuild
+- Skip iothreads on QEMU 7.1.0
+- Fix permissions of /dev/pts/ptmx
+- Add license to container package list output
+- initial SP5 build configurations
+- vm-type:qemu use virtio on x86_64
+- Improve installation of obs-docker-support for multi-stage builds
+- Tweak ARG handling in dockerfile parser
+- fixed Undefined subroutine &amp;PBuild::Job::ls issue
+- Add missing dependencies from vc as Recommends</comment>
+    <requestid>1036688</requestid>
+  </revision>
 </revisionlist>
