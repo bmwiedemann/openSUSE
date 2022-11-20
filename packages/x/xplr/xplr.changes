@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Nov 12 23:20:54 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Verify signatures from public keyring by adding author's public pgp key.
+
+-------------------------------------------------------------------
+Wed Nov  9 09:10:56 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Add default configuration in /etc/xplr/
+
+-------------------------------------------------------------------
 Thu Nov  3 08:32:34 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove marketing blether from descriptions.

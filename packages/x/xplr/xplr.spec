@@ -27,6 +27,7 @@ Source0:        https://github.com/sayanarijit/xplr/archive/refs/tags/v%{version
 Source1:        vendor.tar.gz
 Source2:        cargo_config
 Source3:        https://github.com/sayanarijit/xplr/releases/download/v%{version}/source.tar.gz.asc#/v%{version}.tar.gz.asc
+Source4:        https://arijitbasu.in/gpg.txt#/%{name}.keyring
 BuildRequires:  cargo-packaging
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  rust+cargo
@@ -42,6 +43,7 @@ scriptable, keyboard-controlled, real-time visual interface.
 %autosetup -a1
 mkdir -p .cargo
 cp %{SOURCE2} .cargo/config
+sed -i 's/-- version = "0.0.0"/version = "%{version}"/' src/init.lua
 
 %build
 %{cargo_build}
@@ -52,6 +54,9 @@ cp %{SOURCE2} .cargo/config
 install -Dm644 -T \
     %{_builddir}/%{name}-%{version}/assets/desktop/%{name}.desktop \
     %{buildroot}%{_datadir}/applications/%{name}.desktop
+install -Dm644 -T \
+    %{_builddir}/%{name}-%{version}/src/init.lua \
+    %{buildroot}%{_sysconfdir}/%{name}/init.lua
 
 for i in 128 16 32 64; do
     install -Dm644 "%{_builddir}/%{name}-%{version}/assets/icon/%{name}${i}.png" "%{buildroot}/%{_datadir}/icons/hicolor/${i}-${i}/apps/%{name}.png"
@@ -62,8 +67,12 @@ install -Dm644 "%{_builddir}/%{name}-%{version}/assets/icon/%{name}.svg" -t "%{b
 %files
 %license LICENSE
 %doc CONTRIBUTING.md README.md RELEASE.md
+
 %{_bindir}/%{name}
 %{_datadir}/icons/*
 %{_datadir}/applications/*
+
+%dir %{_sysconfdir}/%{name}
+%config(noreplace) %{_sysconfdir}/%{name}/init.lua
 
 %changelog
