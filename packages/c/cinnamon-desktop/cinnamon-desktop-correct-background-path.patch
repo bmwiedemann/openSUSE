@@ -1,11 +1,12 @@
---- a/schemas/org.cinnamon.desktop.background.gschema.xml.in.in
-+++ b/schemas/org.cinnamon.desktop.background.gschema.xml.in.in
-@@ -10,7 +10,7 @@
-       </_description>
+diff -ruN a/schemas/org.cinnamon.desktop.background.gschema.xml.in b/schemas/org.cinnamon.desktop.background.gschema.xml.in
+--- a/schemas/org.cinnamon.desktop.background.gschema.xml.in	2022-07-20 07:52:59.000000000 +0200
++++ b/schemas/org.cinnamon.desktop.background.gschema.xml.in	2022-11-13 02:11:47.898074427 +0100
+@@ -11,7 +11,7 @@
+       </description>
      </key>
      <key name="picture-uri" type="s">
 -      <default>'file://@datadir@/themes/Adwaita/backgrounds/adwaita-timed.xml'</default>
 +      <default>'file://@datadir@/backgrounds/gnome/adwaita-timed.xml'</default>
-       <_summary>Picture URI</_summary>
-       <_description>
+       <summary>Picture URI</summary>
+       <description>
          URI to use for the background image. Not that the backend only supports

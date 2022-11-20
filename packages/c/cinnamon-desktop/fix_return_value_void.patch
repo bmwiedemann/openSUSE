@@ -1,0 +1,44 @@
+ From cd0bad265ecbe871cd3d50d5949e24f0b1c26e87 Mon Sep 17 00:00:00 2001
+From: Michael Webster <miketwebster@gmail.com>
+Date: Fri, 28 Oct 2022 09:56:44 -0400
+Subject: [PATCH] gvc-channel-map.c: Fix return with a value in a void
+ function.
+
+re-application of: 206a909a30f5905ac
+
+Fixes #210.
+---
+ libcvc/gvc-channel-map.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/libcvc/gvc-channel-map.c b/libcvc/gvc-channel-map.c
+index c406cd3..436738f 100644
+--- a/libcvc/gvc-channel-map.c
++++ b/libcvc/gvc-channel-map.c
+@@ -109,7 +109,7 @@ gvc_channel_map_set_balance (GvcChannelMap *map,
+ {
+         pa_cvolume cv;
+
+-        g_return_val_if_fail (GVC_IS_CHANNEL_MAP (map), NULL);
++        g_return_if_fail (GVC_IS_CHANNEL_MAP (map));
+
+         if (!gvc_channel_map_can_balance (map))
+                 return;
+@@ -149,7 +149,7 @@ gvc_channel_map_set_fade (GvcChannelMap *map,
+ {
+         pa_cvolume cv;
+
+-        g_return_val_if_fail (GVC_IS_CHANNEL_MAP (map), NULL);
++        g_return_if_fail (GVC_IS_CHANNEL_MAP (map));
+
+         if (!gvc_channel_map_can_fade (map))
+                 return;
+@@ -191,7 +191,7 @@ gvc_channel_map_set_lfe (GvcChannelMap *map,
+ {
+         pa_cvolume cv;
+
+-        g_return_val_if_fail (GVC_IS_CHANNEL_MAP (map), NULL);
++        g_return_if_fail (GVC_IS_CHANNEL_MAP (map));
+
+         if (!gvc_channel_map_has_lfe (map))
+                 return;

@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Nov 11 13:39:46 UTC 2022 - andy great <andythe_great@pm.me>
+
+- Update to 5.4.7.
+  * libcvc: Add stream monitor functionality
+- Update for 5.4.1
+  * libcvc/meson.build: fix building with alsa. (#207)
+  * Fix testsound positions in cinnamon-settings
+- Update for 5.4.0
+  * Add debian/ symbol files for libcvc and libcinnamon-desktop.
+  * d/control: update build-deps
+  * Refresh Cvc
+  * all: Changes for muffin rebase
+  * Fix build warnings
+  * CI: Update targets
+- Update for 5.2.1
+  * gnome-desktop-thumbnailer.c: Make sure a thumbnailer's binary is found in the path before deciding to use it.
+- Update for 5.2.0
+  * Add screen reader keybinding for improve accessibility
+  * gnome-rr.c: Restore fractional scale limiting, mistakenly removed in 23b8dcf6bb14fc625d.
+  * Allow 3x scaling if the monitor resolution safely permits it.
+  * build: don't translate gschemas (#200)
+- Add patch, fix_return_value_void.patch.
+- Rebase cinnamon-desktop-correct-background-path.patch.
+
+-------------------------------------------------------------------
 Thu May 27 20:12:12 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to version 5.0.0.

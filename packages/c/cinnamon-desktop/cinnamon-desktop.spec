@@ -1,7 +1,7 @@
 #
 # spec file for package cinnamon-desktop
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define typelib typelib-1_0-CinnamonDesktop-3_0
 %define typelib_cvc typelib-1_0-Cvc-1_0
 Name:           cinnamon-desktop
-Version:        5.0.0
+Version:        5.4.2
 Release:        0
 Summary:        Libcinnamon-desktop API
 License:        GPL-2.0-or-later AND MIT
@@ -35,6 +35,8 @@ Source1:        README.Gsettings-overrides
 Source2:        baselibs.conf
 # PATCH-FIX-OPENSUSE cinnamon-desktop-correct-background-path.patch sor.alexi@meowr.ru -- Fix path to Adwaita background.
 Patch0:         %{name}-correct-background-path.patch
+# PATCH-FIX-UPSTREAM fix_return_value_void.patch andythe_great@pm.me -- Fix return with a value in a void function gh#linuxmint/cinnamon-desktop#225
+Patch1:         fix_return_value_void.patch
 BuildRequires:  intltool
 BuildRequires:  meson
 BuildRequires:  pam-devel
@@ -109,7 +111,7 @@ Group:          System/GUI/Other
 Requires:       %{soname}-data = %{version}
 Requires:       gnome-backgrounds
 Requires:       metatheme-adwaita-common
-Supplements:    packageand(%{soname}-data:branding-upstream)
+Supplements:    (%{soname}-data and branding-upstream)
 Conflicts:      %{soname}-data-branding
 Provides:       %{soname}-data-branding = %{version}
 BuildArch:      noarch
@@ -188,6 +190,7 @@ This package contains development files for libcvc.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 cp -a %{SOURCE1} .
 
 %build
