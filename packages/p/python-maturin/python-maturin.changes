@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Sun Nov 20 07:40:57 UTC 2022 - Mia Herkt <mia@0x0.st>
+
+- Update to v0.14.0:
+* Breaking Change: Remove support for specifying python package
+  metadata in `Cargo.toml`
+  Python package metadata should be specified in the `project`
+  section of `pyproject.toml` instead as PEP 621 specifies.
+  gh#PyO3/maturin#1200
+* Initial support for shipping bin targets as wasm32-wasi binaries
+  that are run through wasmtime
+  Note that wasmtime currently only support the five most popular
+  platforms and that wasi binaries have restrictions when
+  interacting with the host.
+  Usage is by setting `--target wasm32-wasi`.
+  gh#PyO3/maturin#1107
+* Add support for python first `src` project layout
+  gh#PyO3/maturin#1185
+* Add `--src` option to generate src layout for mixed Python/Rust
+  projects
+  gh#PyO3/maturin#1189
+* Add Python metadata support for `license-file` field of
+  `Cargo.toml`
+  gh#PyO3/maturin#1195
+* Upgrade to clap 4.0
+  This bumps MSRV to 1.61.0.
+  gh#PyO3/maturin#1197
+* Remove `workspace.members` in `Cargo.toml` from sdist if there
+  isn't any path dependency
+  in #[1227](https://github.com/PyO3/maturin/pull/1227)
+* Fix auditwheel `libpython` check on Python 3.7 and older
+  versions
+  gh#PyO3/maturin#1229
+* Use generic tags when
+  `sys.implementation.name` != `platform.python_implementation()`
+  Fixes the compatibility tags for Pyston.
+  gh#PyO3/maturin#1232
+* Set default macOS deployment target version if
+  `MACOSX_DEPLOYMENT_TARGET` isn't specified
+  gh#PyO3/maturin#1251
+* Add support for 32-bit x86 FreeBSD target
+  gh#PyO3/maturin#1254
+* Add `[tool.maturin.include]` and `[tool.maturin.exclude]` and
+  deprecate `[tool.maturin.sdist-include]`
+  gh#PyO3/maturin#1255
+* Ignore sdist tar ball instead of error out
+  gh#PyO3/maturin#1259
+* Add support for `uniffi` bindings
+  gh#PyO3/maturin#1275
+
+-------------------------------------------------------------------
+Thu Nov 10 09:11:29 UTC 2022 - Mia Herkt <mia@0x0.st>
+
+- Update to v0.13.7:
+  * Fix macOS LC_ID_DYLIB for abi3 wheels
+    gh#PyO3/maturin#1208
+  * Pass --locked to Cargo when bootstrap from sdisFix build for Python 3.11 on Windows
+    gh#PyO3/maturin#1222
+  * Fix build for Python 3.11 on Windows
+    gh#PyO3/maturin#1222
+
+-------------------------------------------------------------------
 Mon Oct 24 12:24:47 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Upgrade to 0.13.6:

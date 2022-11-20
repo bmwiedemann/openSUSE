@@ -17,7 +17,7 @@
 
 
 Name:           python-maturin
-Version:        0.13.6
+Version:        0.14.0
 Release:        0
 Summary:        Rust/Python Interoperability
 License:        Apache-2.0 OR MIT
@@ -71,7 +71,7 @@ sed -i '1{/env python/d}' maturin/__init__.py
 
 %files %{python_files}
 %license license-apache license-mit
-%doc Changelog.md Readme.md
+%doc Changelog.md README.md
 %python_alternative %{_bindir}/maturin
 %{python_sitearch}/maturin
 %{python_sitearch}/maturin-%{version}*-info

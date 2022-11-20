@@ -561,4 +561,41 @@
 </comment>
     <requestid>1030882</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>18ad026c1be85b07cae95ffb5fb70bd3</srcmd5>
+    <version>0.14.0</version>
+    <time>1668970030</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.14.0:
+* Breaking Change: Remove support for specifying python package
+  metadata in `Cargo.toml`
+  Python package metadata should be specified in the `project`
+  section of `pyproject.toml` instead as PEP 621 specifies.
+  gh#PyO3/maturin#1200
+* Initial support for shipping bin targets as wasm32-wasi binaries
+  that are run through wasmtime
+  Note that wasmtime currently only support the five most popular
+  platforms and that wasi binaries have restrictions when
+  interacting with the host.
+  Usage is by setting `--target wasm32-wasi`.
+  gh#PyO3/maturin#1107
+* Add support for python first `src` project layout
+  gh#PyO3/maturin#1185
+* Add `--src` option to generate src layout for mixed Python/Rust
+  projects
+  gh#PyO3/maturin#1189
+* Add Python metadata support for `license-file` field of
+  `Cargo.toml`
+  gh#PyO3/maturin#1195
+* Upgrade to clap 4.0
+  This bumps MSRV to 1.61.0.
+  gh#PyO3/maturin#1197
+* Remove `workspace.members` in `Cargo.toml` from sdist if there
+  isn't any path dependency
+  in #[1227](https://github.com/PyO3/maturin/pull/1227)
+* Fix auditwheel `libpython` check on Python 3.7 and older
+  versions
+  gh#PyO3/maturin#1229</comment>
+    <requestid>1036879</requestid>
+  </revision>
 </revisionlist>
