@@ -19,7 +19,7 @@
 # avoid bootstrapping problem
 %define _binary_payload w9.bzdio
 Name:           xz
-Version:        5.2.7
+Version:        5.2.8
 Release:        0
 Summary:        A Program for Compressing Files with the Lempel–Ziv–Markov algorithm
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND SUSE-Public-Domain
@@ -117,7 +117,8 @@ rm -vf %{buildroot}%{_docdir}/%{name}/{COPYING,COPYING.GPLv2}
 %postun -n liblzma5 -p /sbin/ldconfig
 
 %files lang -f %{name}.lang
-%dir %{_mandir}/fr_FR
+%dir %{_mandir}/fr
+%dir %{_mandir}/de
 
 %files
 %license COPYING COPYING.GPLv2
