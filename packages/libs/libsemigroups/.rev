@@ -167,4 +167,13 @@
     <comment>- Add pkgconfig.patch</comment>
     <requestid>1036739</requestid>
   </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>e1e7f8064e24e30212f97d5bca48580b</srcmd5>
+    <version>2.3.2</version>
+    <time>1668970025</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable fmt component
+- Refresh pkgconfig.patch</comment>
+    <requestid>1036841</requestid>
+  </revision>
 </revisionlist>

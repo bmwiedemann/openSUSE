@@ -30,6 +30,7 @@ BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig(eigen3)
+BuildRequires:  pkgconfig(fmt) >= 8.1.1
 
 %description
 A C++14 library containing implementations of several algorithms for
@@ -65,7 +66,9 @@ This subpackage provides the development headers for it.
 %build
 autoreconf -fi
 # hpcombi requires AVX-256, which is not guaranteed to exist everywhere
-%configure --disable-static --disable-hpcombi --with-external-eigen
+%configure --disable-static --disable-hpcombi \
+	--enable-eigen --with-external-eigen \
+	--enable-fmt --with-external-fmt
 %make_build
 
 %install
