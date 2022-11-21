@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 15 11:53:25 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.4.1:
+  * https://www.qt.io/blog/qt-6.4.1-released
+- Drop patch, fixed upstream:
+  * 0001-lupdate-Fix-build-with-clang-15.patch
+
+-------------------------------------------------------------------
 Sat Oct  8 06:49:06 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add patch to fix build with clang 15:
