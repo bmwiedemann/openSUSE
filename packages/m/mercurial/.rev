@@ -1541,4 +1541,12 @@
     <comment>Update to Mercurial 6.3.0 (forwarded request 1035722 from develop7)</comment>
     <requestid>1035723</requestid>
   </revision>
+  <revision rev="178" vrev="1">
+    <srcmd5>d6ef07925ae4cda9ee40f8abb966a4f4</srcmd5>
+    <version>6.3.1</version>
+    <time>1669040923</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1036888</requestid>
+  </revision>
 </revisionlist>

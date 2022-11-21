@@ -20,7 +20,7 @@
 %{!?python_sitelib: %global python_sitelib %(python -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 %endif
 Name:           mercurial
-Version:        6.3.0
+Version:        6.3.1
 Release:        0
 Summary:        Scalable Distributed SCM
 License:        GPL-2.0-or-later
@@ -73,7 +73,7 @@ designed for efficient handling of very large distributed projects.
 %package tests
 Summary:        Mercurial tests
 Group:          Development/Tools/Version Control
-Requires:       %name = %version
+Requires:       %{name} = %{version}
 
 %description tests
 Mercurial is a fast, lightweight source control management system
@@ -94,8 +94,8 @@ sed -i -e '1s@env @@' contrib/hgk
 chmod 644 hgweb.cgi
 
 %build
-make %{?_smp_mflags} all PYTHON=python3
-make %{?_smp_mflags} -C contrib/chg all
+%make_build all PYTHON=python3
+%make_build -C contrib/chg all
 
 %install
 make install PREFIX="%{_prefix}" DESTDIR=%{buildroot} PYTHON=python3
@@ -121,7 +121,7 @@ cp -a tests/. %{buildroot}%{_datadir}/mercurial/tests
 
 %if 0%{?with_tests}
 %check
-make %{?_smp_mflags} tests TESTFLAGS="-v --blacklist=%{SOURCE90}" PYTHON=python3
+%make_build tests TESTFLAGS="-v --blacklist=%{SOURCE90}" PYTHON=python3
 %endif
 
 %files lang -f hg.lang

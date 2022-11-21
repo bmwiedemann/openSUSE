@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Nov 20 09:32:18 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to Mercurial 6.3.1:
+  * Fixes for Python 3.11 changes to regex flags
+
+-------------------------------------------------------------------
 Mon Nov 14 16:06:44 UTC 2022 - Andrei Dziahel <develop7@develop7.info>
 
 - Update to Mercurial 6.3.0
