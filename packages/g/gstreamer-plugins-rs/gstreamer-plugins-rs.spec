@@ -25,7 +25,7 @@
 #%%global __requires_exclude pkgconfig\\(csound\\)
 
 Name:           gstreamer-plugins-rs
-Version:        0.9.alpha.1+git20221020.5c89c3d
+Version:        0.9+git20221113.274e57a
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
@@ -141,25 +141,25 @@ cp %{SOURCE3} %{buildroot}%{_datadir}/appdata/
 %{_libdir}/gstreamer-%{gst_branch}/libgstreqwest.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrsaudiofx.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrsclosedcaption.so
-%{_libdir}/gstreamer-%{gst_branch}/libgstrsdav1d.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstdav1d.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrsfile.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrsflv.so
-%{_libdir}/gstreamer-%{gst_branch}/libgstrsjson.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstjson.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrsonvif.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrspng.so
-%{_libdir}/gstreamer-%{gst_branch}/libgstrsregex.so
-%{_libdir}/gstreamer-%{gst_branch}/libgstrstextwrap.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstregex.so
+%{_libdir}/gstreamer-%{gst_branch}/libgsttextwrap.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrstracers.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrswebp.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrswebrtc.so
-%{_libdir}/gstreamer-%{gst_branch}/libgstrtpav1.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstrsrtp.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstsodium.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstspotify.so
 %{_libdir}/gstreamer-%{gst_branch}/libgsttextahead.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstthreadshare.so
 %{_libdir}/gstreamer-%{gst_branch}/libgsttogglerecord.so
 %{_libdir}/gstreamer-%{gst_branch}/libgsturiplaylistbin.so
-%{_libdir}/gstreamer-%{gst_branch}/libgstvideofx.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstrsvideofx.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstwebrtchttp.so
 %dir %{_datadir}/appdata
 %{_datadir}/appdata/gstreamer-plugins-rs.appdata.xml

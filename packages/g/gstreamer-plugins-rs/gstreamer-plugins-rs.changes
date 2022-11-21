@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Thu Nov 17 16:19:32 UTC 2022 - alarrosa@suse.com
+
+- Update to version 0.9+git20221113.274e57a:
+  * Update Cargo.lock
+  * Update versions to 0.9.1
+  * closedcaption: Update for deprecated chrono functions
+  * version-helper: Update for deprecated chrono functions
+  * Update Cargo.lock
+  * webrtc: README: fix couple of links
+  * webrtcsink: improve debug
+  * ci: add trigger job and only run documentation job post-merge
+  * ci: add integration stage and move documentation job to that
+  * ts/udpsink: handle items in the PadSinkHandler
+  * ts: introduce ts-audiotestsrc
+  * ts/standalone: add new Sinks
+  * ts/standalone: move current sink under task_sink
+  * deny: Update
+  * Add missing `doc` features to WebRTC plugins
+  * fmp4mux: Make media/trak timescales configurable
+  * ci: Update to cargo-c 0.9.14
+  * meson: optionalize pango dependency used by net/onvif
+  * ndi: provide Unix fallback after 3fe9e4a207f8
+  * fmp4mux: Don't allow VP9 for CMAF
+  * fmp4mux: Add initial Opus support
+  * docs: Remove some stale entries of renamed elements
+  * aws: Skip s3 test on Windows until we figure out why it times out
+  * Fix various new clippy warnings
+  * fmp4mux: For VP9, write resolution into the tkhd and include a stss box to signal that not all frames are sync samples
+  * webrtc: Update to human_bytes 0.4
+  * aws: Update to aws 0.21/0.51
+  * fmp4mux: Remove unused uuid dependency
+  * Update Cargo.lock
+  * fmp4mux: Clip negative PTS to zero/last PTS instead of erroring out
+  * fmp4mux: Send force-keyunit events for now if the ideal position has already passed
+  * fmp4mux: Add debug log when writing the mfra box
+  * fmp4mux: Reset timing infos to None if a stream only contained gap events for a whole fragment
+  * fmp4mux: If a stream is longer than the main stream at EOS, simply include all of its buffers in the last fragment nonetheless
+  * whipsink: Add object to debug logs
+  * fmp4mux: don't require dts for predictive-only formats like vp9
+  * aws: fix title in README
+  * deny: Update
+  * fmp4: add support for muxing VP9 streams in cmaf, dash and iso fmp4
+  * Add Cargo.lock
+  * Update to release versions of gtk-rs and gstreamer-rs
+  * Update versions to 0.9.0
+  * Update to async-tungstenite 0.18
+  * pngenc: Encode every frame individually
+  * ts/pad: use `gst::Pad` in handlers trait functions...
+  * ts/pad: don't pass self as ref in remaining handler traits functions
+  * textwrap: Update to textwrap 0.16
+  * Move from `imp.instance()` to `imp.obj()`
+  * Remove `&` for `obj` in log macros
+  * Update docs
+  * Add all missing plugins/elements to the README.md
+  * Fix GObject type names, GStreamer debug category names and element factory names
+  * Add new mux subdirectory for container formats
+  * rtp: Move GCC bandwidth estimation element from webrtc to rtp plugin
+  * Make GStreamer plugin/crate/library/directory names and descriptions consistent
+  * Rename rtpav1 plugin to just rtp
+  * videocompare: Update README with reference
+  * Sort members in Cargo.toml and meson.build alphabetically and the same in both files
+  * Various minor cleanups
+  * meson: Fix warning
+  * videocompare: Fix warning
+  * Take advantage of `Into<Option<_>>` args
+  * onvifmetadatacombiner: On timeout don't wait for metadata to arrive anymore but output the current video frame
+  * onvifmetadatacombiner: Add a lot of trace debug output
+  * spotifyaudiosrc: convert to PushSrc
+
+-------------------------------------------------------------------
 Fri Oct 21 06:18:44 UTC 2022 - bjorn.lie@gmail.com
 
 - Update to version 0.9.alpha.1+git20221020.5c89c3d:

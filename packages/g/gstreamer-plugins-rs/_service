@@ -3,10 +3,10 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs.git</param>
     <param name="filename">gstreamer-plugins-rs</param>
-    <param name="versionformat">0.9.alpha.1+git%cd.%h</param>
+    <param name="versionformat">0.9+git%cd.%h</param>
     <param name="versionrewrite-pattern">(.*)\+0</param>
     <param name="versionrewrite-replacement">\1</param>
-    <param name="revision">5c89c3db</param>
+    <param name="revision">0.9</param>
     <param name="changesgenerate">enable</param>
     <param name="scm">git</param>
   </service>
@@ -17,9 +17,9 @@
     <param name="compression">xz</param>
   </service>
   <service name="cargo_vendor" mode="manual">
-  <param name="srcdir">gst-plugins-rs</param>
+  <param name="srcdir">gstreamer-plugins-rs</param>
   </service>
   <service name="cargo_audit" mode="manual">
-  <param name="srcdir">gst-plugins-rs</param>
+  <param name="srcdir">gstreamer-plugins-rs</param>
   </service>
 </services>
