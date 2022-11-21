@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Nov 20 19:55:23 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.3.0
+  * PR 382 - PR: Add QtPdf and QtPdfWidgets, by @jschueller (381)
+  * PR 380 - PR: Enable more qt6 tests, by @jschueller
+  * PR 379 - PR: Raise error when no bindings are found at
+    __init__, by @dalthviz (367)
+  * PR 378 - PR: Try PySide6 on conda, by @jschueller
+  * PR 376 - PR: Expand the CI test matrix with Qt/bindings 6.4 and
+    fix tests with PyQt 5.9, by @CAM-Gerlach (375)
+  * PR 374 - Don't re-assign Qt.MouseButton.MiddleButton on
+    PySide6, by @astrofrog (373)
+  * PR 372 - PR: Add Qsci to the imports, by @dgoeries (134)
+- Release 2.2.1
+  * PR 368 - PR: Add missing self for QtBindingsNotFoundError
+    definition, by @dalthviz
+  * PR 366 - PR: Aliased QUndoCommand, provided
+    QLineEdit.getTextMargins() and QFontMetricsF.width(), by
+    @random-developer (365)
+  * PR 363 - PR: Fix typo in Qt flags in Readme, by @Czaki
+  * PR 362 - PR: Fix various minor typos found with Codespell, by
+    @luzpaz
+  * PR 361 - PR: toPython helpers for QDate and QTime, by
+    @bob-schumaker
+  * PR 360 - CI: Ensure conda-forge channel usage when testing with
+    conda, by @dalthviz
+
+-------------------------------------------------------------------
 Thu Aug 18 13:23:53 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.2.0

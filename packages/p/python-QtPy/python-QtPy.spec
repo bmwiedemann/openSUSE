@@ -35,9 +35,8 @@ BuildArch:      noarch
 %bcond_with pyside6
 %endif
 
-%define skip_python2 1
 Name:           python-QtPy%{psuffix}
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        Abstraction layer on top of Qt bindings
 License:        MIT
@@ -59,7 +58,7 @@ Requires(postun):update-alternatives
 # require (e.g. qtwebengine). Note that setup.py does not declare
 # any requirements, in this regard either.
 %if %{with test}
-BuildRequires:  %{python_module QtPy = %{version}}
+BuildRequires:  %{python_module QtPy-test = %{version}}
 BuildRequires:  %{python_module pytest >= 6}
 BuildRequires:  %{python_module pytest-qt}
 %if %{with pyqt5}
@@ -101,6 +100,17 @@ layout (where the QtGui module has been split into QtGui and QtWidgets).
 Basically, you can write your code as if you were using PyQt or PySide
 directly, but import Qt modules from qtpy instead of PyQt5, PySide2,
 PyQt6 or PySide6.
+
+%package test
+Summary:        The qtpy.tests module
+Requires:       %{name} = %{version}
+
+%description test
+QtPy is a small abstraction layer that lets you
+write applications using a single API call to either PyQt or PySide.
+
+This subpackage separately provides the qtpy.tests module
+in order to avoid stupid rpmlint errors.
 
 %prep
 %setup -q -n QtPy-%{version}
@@ -177,8 +187,13 @@ popd
 %doc AUTHORS.md CHANGELOG.md README.md
 %license LICENSE.txt
 %{python_sitelib}/qtpy
+%exclude %{python_sitelib}/qtpy/tests
 %{python_sitelib}/QtPy-%{version}*-info
 %python_alternative %{_bindir}/qtpy
+
+%files %{python_files test}
+%license LICENSE.txt
+%{python_sitelib}/qtpy/tests
 %endif
 
 %changelog
