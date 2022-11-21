@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.4.0
+%define real_version 6.4.1
 %define short_version 6.4
 %define short_name qtlottie
 %define tar_name qtlottie-everywhere-src
@@ -28,7 +28,7 @@
 %endif
 #
 Name:           qt6-lottie%{?pkg_suffix}
-Version:        6.4.0
+Version:        6.4.1
 Release:        0
 Summary:        QML API for rendering graphics and animation
 # LICENSE.GPL3-EXCEPT only applies to the conan recipe which is not used
