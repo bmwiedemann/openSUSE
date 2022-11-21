@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Nov 21 10:22:07 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 8.4.1:
+  - FIX: Windows drive path separators should normalize like other path separators.
+  - FIX: Fix a Windows pattern parsing issue that caused absolute paths with ambiguous drives to not parse correctly.
+- update to 8.4.0:
+  - NEW: Drop support for Python 3.6.
+  - NEW: Switch to Hatch backend instead of Setuptools.
+  - NEW: Add new exclude option to fnmatch, pathlib, and glob methods that allows exclusion patterns to be
+    specified directly without needing to enable NEGATE and prepend patterns with !. exclude accepts a separate
+    pattern or pattern list. exclude should not be used in conjunction with NEGATE. One or the other should be used.
+- add _service file to easily download this
+- change %build to use hatchling
+
+-------------------------------------------------------------------
 Sun Jan 23 11:53:51 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - initial package for version 8.3.

@@ -7,4 +7,12 @@
     <comment>Required for ansible-lint</comment>
     <requestid>949790</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>76029bda1819c5de56655a4165004d54</srcmd5>
+    <version>8.4.1</version>
+    <time>1669041031</time>
+    <user>dimstar_suse</user>
+    <comment>update to 8.4.1; change build to hatchling (forwarded request 1037084 from ojkastl_buildservice)</comment>
+    <requestid>1037086</requestid>
+  </revision>
 </revisionlist>

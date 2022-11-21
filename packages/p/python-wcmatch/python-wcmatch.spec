@@ -19,17 +19,19 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?python_enable_dependency_generator}
 Name:           python-wcmatch
-Version:        8.3
+Version:        8.4.1
 Release:        0
 Summary:        Wildcard/glob file name matcher
 License:        MIT
 URL:            https://github.com/facelessuser/wcmatch
 Source:         https://files.pythonhosted.org/packages/source/w/wcmatch/wcmatch-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module base > 3.6}
 BuildRequires:  %{python_module bracex}
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %python_subpackages
 
@@ -55,10 +57,10 @@ is found where Wildcard Match seems to deviate in an illogical way, we'd love to
 %setup -q -n wcmatch-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
