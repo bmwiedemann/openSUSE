@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 15 11:53:07 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.4.1:
+  * https://www.qt.io/blog/qt-6.4.1-released
+
+-------------------------------------------------------------------
 Sun Oct 16 07:39:21 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Make sure the QPA and wayland-related plugins are installed if
