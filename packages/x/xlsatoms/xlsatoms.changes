@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Nov 13 20:37:32 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.1.4
+  * gitlab CI: add a basic build test
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * Variable scope reductions as suggested by cppcheck
+  * Resolve clang -Wshorten-64-to-32 warnings
+  * usage: add cold & noreturn attributes to function
+
+-------------------------------------------------------------------
 Thu Feb 21 11:09:56 UTC 2019 - sndirsch@suse.com
 
 -  Update to version 1.1.3
