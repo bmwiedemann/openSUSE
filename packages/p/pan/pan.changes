@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Nov 20 17:48:48 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.153:
+  * Identify as correct version.
+- Changes from version 0.152:
+  * Gtk2 was removed from Pan. Only Gtk3 is working.
+  * Links to old pan.rebelbase.com are replaced with links to
+    pan gitlab page.
+  * Pan can be compiled with clang.
+  * Updated translations.
+
+-------------------------------------------------------------------
 Mon Jul  4 00:04:11 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.151

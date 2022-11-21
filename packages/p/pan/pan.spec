@@ -17,7 +17,7 @@
 
 
 Name:           pan
-Version:        0.151
+Version:        0.153
 Release:        0
 Summary:        A Newsreader for GNOME
 License:        GPL-2.0-or-later
