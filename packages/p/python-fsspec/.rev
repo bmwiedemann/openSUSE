@@ -229,4 +229,12 @@ Required by the latest version of python-gcsfs</comment>
 </comment>
     <requestid>1032652</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>11ea9850dcc40239fea2116fe7657272</srcmd5>
+    <version>2022.11.0</version>
+    <time>1669043976</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1036969</requestid>
+  </revision>
 </revisionlist>

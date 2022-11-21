@@ -24,17 +24,15 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%define         skip_python2 1
 Name:           python-fsspec%{psuffix}
-Version:        2022.10.0
+Version:        2022.11.0
 Release:        0
 Summary:        Filesystem specification package
 License:        BSD-3-Clause
 URL:            https://github.com/fsspec/filesystem_spec
 # the tests are only in the GitHub archive
 Source:         https://github.com/fsspec/filesystem_spec/archive/%{version}.tar.gz#/fsspec-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.6}
-BuildRequires:  %{python_module importlib_metadata if %python-base < 3.8}
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  fuse
@@ -53,9 +51,6 @@ Suggests:       python-requests
 Suggests:       python-s3fs
 Suggests:       python-smbprotocol
 BuildArch:      noarch
-%if 0%{?python_version_nodots} < 38
-Requires:       python-importlib_metadata
-%endif
 %if %{with test}
 BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module cloudpickle}
