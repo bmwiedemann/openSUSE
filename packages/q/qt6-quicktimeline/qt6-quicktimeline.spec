@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.4.0
+%define real_version 6.4.1
 %define short_version 6.4
 %define tar_name qtquicktimeline-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-quicktimeline%{?pkg_suffix}
-Version:        6.4.0
+Version:        6.4.1
 Release:        0
 Summary:        Qt 6 module for creating keyframe-based animations
 License:        GPL-3.0-or-later
