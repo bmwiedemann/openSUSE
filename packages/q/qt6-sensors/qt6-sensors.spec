@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.4.0
+%define real_version 6.4.1
 %define short_version 6.4
 %define short_name qtsensors
 %define tar_name qtsensors-everywhere-src
@@ -28,7 +28,7 @@
 %endif
 #
 Name:           qt6-sensors%{?pkg_suffix}
-Version:        6.4.0
+Version:        6.4.1
 Release:        0
 Summary:        Qt Sensors API to access sensor hardware
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
