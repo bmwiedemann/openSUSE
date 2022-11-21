@@ -128,4 +128,12 @@
     <comment>fix factory build</comment>
     <requestid>1008158</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>bdae16f8d235a9f1ed2e61a95f628a20</srcmd5>
+    <version>2.10.8</version>
+    <time>1669041001</time>
+    <user>dimstar_suse</user>
+    <comment>2.10.8</comment>
+    <requestid>1037030</requestid>
+  </revision>
 </revisionlist>
