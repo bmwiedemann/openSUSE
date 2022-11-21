@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 10 21:09:44 UTC 2022 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Move utilities needed for packaging into a separate utils package
+  to fix (boo#1204985)
+- Add #!BuildIgnore: mingw32-cross-binutils|pkgconf-utils to prevent
+  unresolved build dependency
+
+-------------------------------------------------------------------
 Thu Nov  3 11:46:19 UTC 2022 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Fix cyclic dependency (boo#1204985)
