@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-zstandard
-Version:        0.17.0
+Version:        0.19.0
 Release:        0
 Summary:        Zstandard bindings for Python
 License:        BSD-3-Clause
