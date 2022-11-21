@@ -17,13 +17,12 @@
 
 
 Name:           git-bug
-Version:        0.7.2+git.1666446996.55a2e8e
+Version:        0.8.0
 Release:        0
 Summary:        Distributed, offline-first bug tracker embedded in git, with bridges
 License:        MIT
 URL:            https://github.com/MichaelMure/git-bug
-# Source0:        https://github.com/MichaelMure/%%{name}/archive/refs/tags/v%%{version}.tar.gz
-Source0:        %{name}-%{version}.tar.gz
+Source0:        https://github.com/MichaelMure/%{name}/archive/refs/tags/v%{version}.tar.gz#/git-bug-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
 BuildRequires:  golang(API) = 1.18

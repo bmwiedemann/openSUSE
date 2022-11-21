@@ -22,4 +22,132 @@
 </comment>
     <requestid>1033080</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8483123e08c0006d14e9533364547eb7</srcmd5>
+    <version>0.8.0</version>
+    <time>1669040992</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.0:
+  - More than 800 commits and a long long time after, git-bug
+    v0.8.0 is now available.
+  - Once again, this release represent a push towards making
+    git-bug generally useful and correct. The two main
+    improvements are a new Entity framework and write-capable
+    WebUI.
+  - Breaking changes(openSUSE package is much closer to this
+    release)
+    - changes in the data model makes it a requirement to use the
+      migration tool to to update any previous repo.
+    - remove the legacy identities that were directly embedded in
+      bugs
+  - Core
+    - introduce a reusable entity package capable of handling
+      all the complex operations of an Entity (bug, board,
+      config ...): operations, DAG manipulation, conflict merge,
+      signature, integrity ... to greatly simplify writing and
+      maintaining an entity. Documentation 1, Documentation 2
+    - introduce CombinedId, a new kind of identifier for an
+      item within an Entity (for example a comment in a bug),
+      that hold two partial identifiers interleaved for fast
+      addressing. Documentation
+    - introduce the concept of resolvers, so that entities can
+      link to another
+    - use go-git to manipulate the git repository, instead of
+      executing the local git binary
+    - add support for signing the git commit with the author's
+      signature, and verifying
+    - add support for git config includes by @mindriot101
+    - rework of the Repository layer for modularity, simplicity
+      and testing, allowing more easily to plug an alternative
+      storage
+    - support for full text search in bug comments
+    - support application namespace in the repository so that
+      other app can use the entity package as a framework by
+      @smoyer64
+  - Commands
+    - auto-completion of bug identifier, bridge names,
+      credentials, labels, remote, identity and flags tada by
+      @krobelus
+    - complete refactoring to avoid global variables and be more
+      conductive to testing
+    - new command comment edit to edit a bug's comment
+    - new command rm to remove a bug by @vincetiu8
+    - ls and show learned different output format with
+      --format=&lt;format&gt;, with format being one of default, plain,
+      json, compact and org-mode by @vincetiu8 and @karlicoss
+    - allow user create without interactive prompt by
+      @cvhariharan
+  - Query language
+    - support filtering on bugs having no labels
+    - support filtering on metadata by @vmiklos
+  - Bug
+    - complete rework using the new entity framework
+  - Cache
+    - introduce a LRU to have a limit of entities loaded in
+      memory and effectively cap the memory usage of long running
+      processes by @vincetiu8
+    - proper locking for concurrent access by @vincetiu8
+  - Bridges
+    - core: support for remote bug tracker rate limiting by
+      @rng-dynamics
+    - core: support to indicate that the configuration wizard is
+      executed non-interactively and should have all the required
+      parameters set by @GlancingMind
+    - Github: revamped client and iterator with proper rate
+      limiting handling by @rng-dynamics
+    - Github: revamped credentials creation following Github
+      removing the previous API by @rng-dynamics
+    - Github: support new token format by @ellsclytn
+    - Github: extended tests by @rng-dynamics
+    - Github: fix push then pull creating duplicates by
+      @rng-dynamics
+    - Gitlab: revamped client to use the much better event API to
+      replace the note API that was hard to use and caused a lot
+      of problems and headaches by @5nord
+    - Gitlab: fix access token settings by @remram44
+    - Gitlab: cleanup titles on import by @vincetiu8
+    - Gitlab: support new token format by @gaelj
+    - Jira: fix incorrect client creation reusing the same
+      credential
+  - API
+    - new HTTP handler to access files stored in git
+    - new HTTP handler to upload a file to git
+  - GraphQL
+    - strong typing for identifiers
+    - prepare for external authentication
+    - introduce addCommentAndClose and addCommentAndReopen
+      mutations, to comment and change a bug state in a single
+      atomic operation by @GlancingMind
+    - introduce editComment mutation to edit comments
+  - TermUI
+    - fix a crash when trying to open a bug when there are none
+      by @vojta001
+    - properly trim spaces in titles by @wavexx
+    - make the help visually easier to parse
+    - denser bug list view by @wavexx
+    - fixed readability on bright terminal by @zdenek-crha
+  - WebUI
+    - now report GraphQL errors in the console when --log-errors
+      is used
+    - large refactoring to bring good practice and simplify
+      future work by @sandhose
+    - add support for read-only mode by @lukegb and
+      @claudioantonio
+    - support for creating bugs by @claudioantonio
+    - support for closing and reopening bugs by @claudioantonio
+    - allow to specify the host address when launching with
+      --host=&lt;host&gt; for easier hosting, in particular in
+      container by @GlancingMind
+    - allow specifying the initial query with --query by @vmiklos
+    - dark mode by @GlancingMind
+    - show count of comment on each bug in the list by
+      @GlancingMind
+    - improved navigation by @GlancingMind
+    - comment edition and show edit history by @GlancingMind
+    - bug list filtering by @GlancingMind
+    - add user profile by @GlancingMind
+    - show placeholder for empty comment preview by @GlancingMind
+</comment>
+    <requestid>1036978</requestid>
+  </revision>
 </revisionlist>
