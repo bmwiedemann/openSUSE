@@ -547,4 +547,12 @@ prerequisite for new python submission</comment>
   * Avoid to install incorrect PEP610 metadata</comment>
     <requestid>1003105</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>50a8d3dccad8acfd57efaeebdd015451</srcmd5>
+    <version>20221117.8687578</version>
+    <time>1669040921</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1036851</requestid>
+  </revision>
 </revisionlist>
