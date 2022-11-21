@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.4.0
+%define real_version 6.4.1
 %define short_version 6.4
 %define tar_name qtquick3dphysics-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-quick3dphysics%{?pkg_suffix}
-Version:        6.4.0
+Version:        6.4.1
 Release:        0
 Summary:        Qt 6 Quick3D Physics Extensions
 License:        GPL-3.0-only
@@ -143,6 +143,8 @@ This library does not have any ABI or API guarantees.
 
 %if !%{qt6_docs_flavor}
 
+%{qt6_link_executables}
+
 # CMake files are not needed for plugins
 rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 
@@ -150,6 +152,10 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %post -n libQt6Quick3DPhysics6 -p /sbin/ldconfig
 %postun -n libQt6Quick3DPhysicsHelpers6 -p /sbin/ldconfig
 %postun -n libQt6Quick3DPhysics6 -p /sbin/ldconfig
+
+%files
+%{_bindir}/cooker6
+%{_qt6_bindir}/cooker
 
 %files imports
 %dir %{_qt6_qmldir}/QtQuick3D
