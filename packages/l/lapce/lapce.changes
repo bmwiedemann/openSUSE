@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov 14 04:02:34 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.2.3:
+  * Add status foreground theme key, use author colour for plugin version
+  * Fork the process when started from terminal
+  * Paint plugin icons
+  * Added "Reveal in File Tree" action to the editor tabs context menu
+  * Add plugin search
+
+-------------------------------------------------------------------
 Sun Nov  6 01:56:12 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 0.2.2:
