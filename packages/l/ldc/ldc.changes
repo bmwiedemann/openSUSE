@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 21 15:02:29 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not have the main package recommend the bash-completion
+  sub-package, but rather have the subpackage supplement the
+  combination of ldc and bash-completion.
+
+-------------------------------------------------------------------
 Fri Oct  7 14:51:48 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Build against llvm14 for Tumbleweed since llvm15 is not

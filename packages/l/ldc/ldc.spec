@@ -78,7 +78,6 @@ BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(bash-completion)
 # Should be installed, at least runtime
 Recommends:     ldc-phobos-devel = %{version}
-Recommends:     %{name}-bash-completion
 Recommends:     ldc-jit-devel = %{version}
 Recommends:     ldc-runtime-devel = %{version}
 %if %{with ldc_bootstrap}
@@ -162,7 +161,9 @@ with LDC.
 
 %package bash-completion
 Summary:        LDC Bash completion
+Requires:       %{name}
 Requires:       bash-completion
+Supplements:    (%{name} and bash-completion)
 
 %description bash-completion
 Optional dependency offering bash completion for ldc2
