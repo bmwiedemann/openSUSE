@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Nov 21 11:01:27 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.6.0+git.20221121.ff14486:
+  * Add c++2b for auto-detection in clangbinarysearch.py.
+  * Use detected --std in ClangBinarySearchPass
+  * Add extra llvm16 package.
+  * Port to LLVM ToT.
+  * Fix CI.
+  * CI: fix Leap
+  * CI: reorg installed packages
+  * CI: rename workflow
+  * CI: install findutils
+  * run pyupgrade
+  * run pyupgrade only with --py36-plus.
+  * Revert "run pyupgrade on the code"
+  * Revert "Expect Python 3.8+."
+  * Add pyupgrade to CI.
+  * run pyupgrade on the code
+  * Expect Python 3.8+.
+  * Fix name of badge
+  * Update badges.
+
+-------------------------------------------------------------------
 Tue Oct 18 07:50:53 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.6.0+git.20221018.7c1f0b4:

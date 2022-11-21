@@ -869,4 +869,30 @@
 - Use gcc-11 for Leap.</comment>
     <requestid>1029665</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>07fe9736640d605c4d03a9ab679f6558</srcmd5>
+    <version>2.6.0+git.20221121.ff14486</version>
+    <time>1669041018</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.6.0+git.20221121.ff14486:
+  * Add c++2b for auto-detection in clangbinarysearch.py.
+  * Use detected --std in ClangBinarySearchPass
+  * Add extra llvm16 package.
+  * Port to LLVM ToT.
+  * Fix CI.
+  * CI: fix Leap
+  * CI: reorg installed packages
+  * CI: rename workflow
+  * CI: install findutils
+  * run pyupgrade
+  * run pyupgrade only with --py36-plus.
+  * Revert &quot;run pyupgrade on the code&quot;
+  * Revert &quot;Expect Python 3.8+.&quot;
+  * Add pyupgrade to CI.
+  * run pyupgrade on the code
+  * Expect Python 3.8+.
+  * Fix name of badge
+  * Update badges.</comment>
+    <requestid>1037082</requestid>
+  </revision>
 </revisionlist>
