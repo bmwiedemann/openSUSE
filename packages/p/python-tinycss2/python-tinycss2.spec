@@ -16,16 +16,15 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-tinycss2
 Version:        1.2.1
 Release:        0
-Summary:        Low-level CSS parser for Python
+Summary:        A tiny CSS parser
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/Kozea/tinycss2
 Source:         https://files.pythonhosted.org/packages/source/t/tinycss2/tinycss2-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
@@ -40,12 +39,16 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-TinyCSS2 is a rewrite of tinycss with a simpler API, based on the
-more recent CSS Syntax Level 3 specification.
+tinycss2 is a low-level CSS parser and generator written in Python:
+it can parse strings, return objects representing tokens and blocks,
+and generate CSS strings corresponding to these objects.
+
+Based on the CSS Syntax Level 3 specification, tinycss2 knows the
+grammar of CSS but doesn't know specific rules, properties or values
+supported in various CSS modules.
 
 %prep
 %setup -q -n tinycss2-%{version}
-sed -i 's/--isort//;s/--flake8//;s/--cov --no-cov-on-fail//' pyproject.toml
 
 %build
 %pyproject_wheel

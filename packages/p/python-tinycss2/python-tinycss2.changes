@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 17 13:30:44 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Clean specfile
+- Requires Python >= 3.7, prevent failing build for 15.x targets
+- Update Summary and Description
+
+-------------------------------------------------------------------
 Sat Oct 29 16:06:46 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 1.2.1 
