@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Nov 18 22:51:34 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Add bmap-tools-pr103-replace-python-gpgme.patch
+  * gh#intel/bmap-tools#43
+  * gh#intel/bmap-tools#103
+  * Add missing binary test data from the PR which does not fit
+    into the patch
+- Enable test suite (with pytest as substitute for nose)
+- Add bmap-tools-3.6-suse-fix-tests.patch
+  * remove backports.tempfile and mock-- no need to support
+    Python < 3.2
+  * fix entry-point call
+  * includes part of gh#intel/bmap-tools#112
+
+-------------------------------------------------------------------
 Thu Oct  7 14:19:24 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
 
 - new package; version 3.6
