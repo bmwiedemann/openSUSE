@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 14 08:20:48 UTC 2022 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Update to version 20221115
+  * Fix doc in macros.mingw32 how to define macro _mingw32_find_requires_exclude
+  * Change dependency to mingw32-cross-binutils-utils and
+    mingw32-cross-pkgconf-utils to avoid cyclic dependencies (boo#1204985)
+
+-------------------------------------------------------------------
 Mon Aug 29 10:17:22 UTC 2022 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Fix generating invalid source file path when scanning binaries
