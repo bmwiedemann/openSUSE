@@ -29,7 +29,7 @@
 %bcond_with testexamples
 
 Name:           python-bokeh%{psuffix}
-Version:        3.0.1
+Version:        3.0.2
 Release:        0
 Summary:        Statistical interactive HTML plots for Python
 License:        BSD-3-Clause
@@ -41,10 +41,6 @@ Source0:        https://files.pythonhosted.org/packages/source/b/bokeh/bokeh-%{v
 Source1:        https://github.com/bokeh/bokeh/archive/refs/tags/%{version}.tar.gz#/bokeh-%{version}-gh.tar.gz
 # Sampledata:   `rm -rf .bokeh && HOME=$PWD bokeh sampledata && tar cJf bokeh-sampledata.tar.xz .bokeh`
 Source99:       bokeh-sampledata.tar.xz
-# PATCH-FIX-UPSTREAM bokeh-remove-mock.patch gh#bokeh/bokeh#12561
-Patch1:         bokeh-remove-mock.patch
-# PATCH-FIX-UPSTREAM bokeh-sys-executable.patch gh#bokeh/bokeh#12563
-Patch2:         bokeh-sys-executable.patch
 BuildRequires:  %{python_module Jinja2 >= 2.9}
 BuildRequires:  %{python_module Pillow >= 7.1.0}
 BuildRequires:  %{python_module PyYAML >= 3.10}
@@ -113,8 +109,6 @@ with interactivity over large or streaming datasets.
 %setup -q -n bokeh-%{version}
 %else
 %setup -q -n bokeh-%{version} -T -b1 -a99
-%patch1 -p1
-%patch2 -p1
 %endif
 
 %if !%{with test}
@@ -157,6 +151,7 @@ deselectname+=" or test__ioloop_not_forcibly_stopped"
 deselectname+=" or test_defaults"
 # flaky timeouts
 deselectname+=" or (test_deprecation and (test_since or test_message))"
+deselectname+=" or (test_document_lifecycle and test_document_on_session_destroyed_exceptions)"
 # test can't list modules correctly in test environment
 deselectname+=" or (codebase and combined)"
 # extraneous fields
