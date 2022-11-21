@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Nov 18 21:43:50 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 3.5.3:
+  * change source compatibility to 1.8 and enable github workflows
+  * Change Wiki URLs to theantlrguy.atlassian.net in README.txt
+  * Bazel support
+  * Modify patches:
+    - Rebase osgi-manifest.patch and rename to antlr3-osgi-manifest.patch
+    - Rename 0001-java8-fix.patch to antlr3-java8-fix.patch
+
+-------------------------------------------------------------------
 Mon Mar 21 14:54:29 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with source and target levels 8

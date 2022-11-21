@@ -17,7 +17,7 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
-%global antlr_version 3.5.2
+%global antlr_version 3.5.3
 %global c_runtime_version 3.4
 %global javascript_runtime_version 3.1
 %if "%{flavor}" == "bootstrap"
@@ -34,12 +34,13 @@ Version:        %{antlr_version}
 Release:        0
 URL:            https://www.antlr3.org/
 Source0:        https://github.com/antlr/antlr3/archive/%{antlr_version}.tar.gz
-Patch0:         0001-java8-fix.patch
+Patch0:         antlr3-java8-fix.patch
 # Generate OSGi metadata
-Patch1:         osgi-manifest.patch
+Patch1:         antlr3-osgi-manifest.patch
 Patch100:       antlr3-generated_sources.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
+BuildRequires:  maven-enforcer-plugin
 BuildRequires:  maven-local
 BuildRequires:  unzip
 BuildRequires:  mvn(antlr:antlr)
@@ -154,11 +155,11 @@ find -type f -a -name *.class -delete
 # compile for target 1.8
 sed -i 's/jsr14/1.8/' antlr3-maven-archetype/src/main/resources/archetype-resources/pom.xml \
                       antlr3-maven-plugin/pom.xml \
-                                          gunit/pom.xml \
-                                          gunit-maven-plugin/pom.xml \
-                                          pom.xml \
-                                          runtime/Java/pom.xml \
-                                          tool/pom.xml
+                      gunit/pom.xml \
+                      gunit-maven-plugin/pom.xml \
+                      pom.xml \
+                      runtime/Java/pom.xml \
+                      tool/pom.xml
 
 # workarounds bug in filtering (Mark invalid)
 %pom_xpath_remove pom:resource/pom:filtering

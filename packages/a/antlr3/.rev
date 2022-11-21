@@ -23,4 +23,12 @@
     <comment>maven.compiler.release=8</comment>
     <requestid>963730</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>21ab3d271e431eb5d3de5e22cfc7be3e</srcmd5>
+    <version>3.5.3</version>
+    <time>1669041032</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1037089</requestid>
+  </revision>
 </revisionlist>
