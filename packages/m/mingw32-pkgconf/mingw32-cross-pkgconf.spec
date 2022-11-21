@@ -27,7 +27,8 @@ License:        ISC
 Group:          Development/Tools/Building
 URL:            http://pkgconf.org/
 Source0:        https://distfiles.dereferenced.org/pkgconf/pkgconf-%{version}.tar.xz
-
+#!BuildIgnore:  mingw32-cross-binutils-utils
+#!BuildIgnore:  mingw32-cross-pkgconf-utils
 BuildRequires:  mingw32-filesystem
 BuildRequires:  pkgconf
 # NB: This must be left in.
@@ -35,6 +36,9 @@ BuildRequires:  pkgconf
 Requires:       mingw32-filesystem
 # Because we will not install the pkg.m4 package
 Requires:       pkg-config
+# This package is used by mingw32-filesystem to
+# avoid cyclic dependencies (boo#1204985)
+Provides:       mingw32-cross-pkgconf-utils
 # compat. May move to separate package like native version but I'm lazy
 Conflicts:      mingw32-cross-pkg-config < %{pkgconfig_obsver}
 Obsoletes:      mingw32-cross-pkg-config < %{pkgconfig_obsver}

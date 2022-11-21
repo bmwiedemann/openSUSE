@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 16 19:49:47 UTC 2022 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Add additional utils package used by mingw32-filesystem to fix
+  (boo#1204985)
+- Add #!BuildIgnore: mingw32-cross-binutils|pkgconf-utils to prevent
+  unresolved build dependency
+
+-------------------------------------------------------------------
 Sun Dec 15 21:29:17 UTC 2019 - Martin Koegler <martin.koegler@chello.at>
 
 - Fix configure options 
