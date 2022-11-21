@@ -29,17 +29,26 @@ Source:         http://ftp.gnu.org/gnu/binutils/binutils-%{version}.tar.xz
 Patch0:         0001-PR29362-some-binutils-memory-leaks.patch
 Patch1:         0001-Fix-bug-not-showing-correct-path-with-objdump-WL-wit.patch
 Patch2:         0001-dllwrap-windres-and-dlltools-use-mktemp-which-should.patch
-#!BuildIgnore: post-build-checks
+#!BuildIgnore:  post-build-checks
+#!BuildIgnore:  mingw64-cross-binutils-utils
+#!BuildIgnore:  mingw64-cross-pkgconf-utils
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  mingw64-filesystem
 BuildRequires:  texinfo
+Requires:       mingw64-cross-binutils-utils
 # NB: This must be left in.
 Requires:       mingw64-filesystem
 
 %description
 The GNU Binutils are a collection of binary tools.
 These utilities (like 'as', 'ld', 'strip') understand Windows executables and DLLs.
+
+%package -n mingw64-cross-binutils-utils
+Summary:        Utilities for packaging support
+
+%description -n mingw64-cross-binutils-utils
+Utilities (like strip and objdump) which are needed for generating package
 
 %prep
 %autosetup -p1 -n binutils-%{version}
@@ -76,8 +85,34 @@ done
 
 %files
 %{_mandir}/man1/*
+%exclude %{_mandir}/man1/%{_mingw64_target}-nm.1.gz
+%exclude %{_mandir}/man1/%{_mingw64_target}-objcopy.1.gz
+%exclude %{_mandir}/man1/%{_mingw64_target}-objdump.1.gz
+%exclude %{_mandir}/man1/%{_mingw64_target}-strip.1.gz
 %{_bindir}/%{_mingw64_target}-*
+%exclude %{_bindir}/%{_mingw64_target}-nm
+%exclude %{_bindir}/%{_mingw64_target}-objcopy
+%exclude %{_bindir}/%{_mingw64_target}-objdump
+%exclude %{_bindir}/%{_mingw64_target}-strip
 %{_prefix}/%{_mingw64_target}/bin
+%exclude %{_prefix}/%{_mingw64_target}/bin/nm
+%exclude %{_prefix}/%{_mingw64_target}/bin/objcopy
+%exclude %{_prefix}/%{_mingw64_target}/bin/objdump
+%exclude %{_prefix}/%{_mingw64_target}/bin/strip
 %{_prefix}/%{_mingw64_target}/lib
+
+%files utils
+%{_mandir}/man1/%{_mingw64_target}-nm.1.gz
+%{_mandir}/man1/%{_mingw64_target}-objcopy.1.gz
+%{_mandir}/man1/%{_mingw64_target}-objdump.1.gz
+%{_mandir}/man1/%{_mingw64_target}-strip.1.gz
+%{_bindir}/%{_mingw64_target}-nm
+%{_bindir}/%{_mingw64_target}-objcopy
+%{_bindir}/%{_mingw64_target}-objdump
+%{_bindir}/%{_mingw64_target}-strip
+%{_prefix}/%{_mingw64_target}/bin/nm
+%{_prefix}/%{_mingw64_target}/bin/objcopy
+%{_prefix}/%{_mingw64_target}/bin/objdump
+%{_prefix}/%{_mingw64_target}/bin/strip
 
 %changelog
