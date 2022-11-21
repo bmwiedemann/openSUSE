@@ -534,6 +534,7 @@ Prefer: python39-prompt_toolkit python38-prompt_toolkit python310-prompt_toolkit
 
 # When perl provides a module that is also in a different package, but the consumer specifies no version, we go with perl/perl-base
 Prefer: perl-base perl
+Prefer: perl-JSON-XS
 
 # Lightdm requires 'a greeter' - we prefer the default lightdm-gtk-greeter
 Prefer: lightdm-gtk-greeter
@@ -1380,6 +1381,8 @@ Prefer: java-11-openjdk-devel java-11-openjdk java-11-openjdk-headless java-11-o
 Prefer: java-1_8_0-openj9-devel java-1_8_0-openj9 java-1_8_0-openj9-headless
 %endif
 Prefer: java-1_8_0-openjdk-devel java-1_8_0-openjdk java-1_8_0-openjdk-headless java-1_8_0-openjdk-javadoc
+Prefer: java-19-openjdk-devel java-19-openjdk java-19-openjdk-headless java-19-openjdk-javadoc
+Prefer: java-18-openjdk-devel java-18-openjdk java-18-openjdk-headless java-18-openjdk-javadoc
 Prefer: java-15-openjdk-devel java-15-openjdk java-15-openjdk-headless java-15-openjdk-javadoc
 
 %ifarch x86_64 ppc64 s390x sparc64
