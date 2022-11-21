@@ -17,7 +17,7 @@
 
 
 Name:           rakkess
-Version:        0.5.0
+Version:        0.5.1
 Release:        0
 Summary:        Utility to show an access matrix for k8s server resources
 License:        Apache-2.0

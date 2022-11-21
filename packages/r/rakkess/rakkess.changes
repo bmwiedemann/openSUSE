@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Nov 21 09:40:16 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.5.1:
+  * Drop prealloc linter
+  * Bump k8s.io/klog/v2 from 2.30.0 to 2.80.1 (#166)
+  * Fix extra lines in output (issue #156) (#158)
+  * Bump k8s.io/klog/v2 from 2.20.0 to 2.30.0 (#155)
+  * Bump k8s.io/klog/v2 from 2.9.0 to 2.20.0 (#154)
+  * Bump cobra to v1.2.1 (#153)
+  * Include arm64-darwin assets in fileset for release
+  * Increase timeout for linter
+  * Create tag v0.5.0
+  * Bump codecov to v2 (#151)
+
+-------------------------------------------------------------------
 Tue Mar 29 09:48:10 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - Set GOARCH on riscv64
