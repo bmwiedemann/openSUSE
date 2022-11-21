@@ -39,23 +39,22 @@
 %if "%{flavor}" == ""
 %bcond_with test
 %endif
-%{?!python_module:%define python_module() python3-%{**}}
-%define         skip_python2 1
+
 Name:           python-dask%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-distributed! <===
-Version:        2022.10.0
+Version:        2022.11.1
 Release:        0
 Summary:        Minimal task scheduling abstraction
 License:        BSD-3-Clause
 URL:            https://dask.org
 Source0:        https://files.pythonhosted.org/packages/source/d/dask/dask-%{version}.tar.gz
-Source1:        https://github.com/dask/dask/raw/%{version}/conftest.py
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module packaging >= 20.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML >= 5.3.1
+Requires:       python-click >= 7
 Requires:       python-cloudpickle >= 1.1.1
 Requires:       python-fsspec >= 0.6.0
 Requires:       python-packaging >= 20.0
@@ -87,7 +86,7 @@ BuildArch:      noarch
 %if %{with test}
 # test that we specified all requirements correctly in the core
 # and subpackages by only requiring dask-complete and optional extras
-BuildRequires:  %{python_module dask-complete = %{version}}
+BuildRequires:  %{python_module dask-test = %{version}}
 BuildRequires:  %{python_module pytest-rerunfailures}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
@@ -257,6 +256,8 @@ Summary:        Diagnostics for dask
 Requires:       %{name} = %{version}
 Requires:       python-Jinja2
 Requires:       python-bokeh >= 2.4.2
+Conflicts:      python-bokeh = 3.0.0
+Conflicts:      python-bokeh = 3.0.1
 
 %description diagnostics
 A flexible library for parallel computing in Python.
@@ -312,10 +313,20 @@ Dask is composed of two parts:
 
 This package contains the graphviz dot rendering interface.
 
+%package test
+Summary:        The test submodules of the python-dask package
+Requires:       %{name}-complete = %{version}
+
+%description test
+Dask is a flexible library for parallel computing in Python.
+This subpackage provides the .test submodules in the sitelib required for
+unit testing dask.
+
 %prep
 %autosetup -p1 -n dask-%{version}
-cp %{SOURCE1} ./
 sed -i  '/addopts/d' setup.cfg
+# https://github.com/dask/dask/pull/9659
+sed -i  '/bokeh/ s/, <3/,!=3.0.0,!=3.0.1/' setup.py
 chmod a-x dask/dataframe/io/orc/utils.py
 
 %build
@@ -387,6 +398,9 @@ donttest+=" or test_map_partitions_df_input"
 %exclude %{python_sitelib}/dask/diagnostics
 %exclude %{python_sitelib}/dask/delayed.py*
 %exclude %{python_sitelib}/dask/dot.py*
+%exclude %{python_sitelib}/dask/tests
+%exclude %{python_sitelib}/dask/bytes/tests
+%exclude %{python_sitelib}/dask/widgets/tests
 %pycache_only %exclude %{python_sitelib}/dask/__pycache__/delayed*.pyc
 %pycache_only %exclude %{python_sitelib}/dask/__pycache__/dot.*
 
@@ -396,14 +410,19 @@ donttest+=" or test_map_partitions_df_input"
 %files %{python_files array}
 %license LICENSE.txt
 %{python_sitelib}/dask/array/
+%exclude %{python_sitelib}/dask/array/tests
 
 %files %{python_files bag}
 %license LICENSE.txt
 %{python_sitelib}/dask/bag/
+%exclude %{python_sitelib}/dask/bag/tests
 
 %files %{python_files dataframe}
 %license LICENSE.txt
 %{python_sitelib}/dask/dataframe/
+%exclude %{python_sitelib}/dask/dataframe/tests
+%exclude %{python_sitelib}/dask/dataframe/io/tests
+%exclude %{python_sitelib}/dask/dataframe/tseries/tests
 
 %files %{python_files distributed}
 %license LICENSE.txt
@@ -416,11 +435,24 @@ donttest+=" or test_map_partitions_df_input"
 %files %{python_files diagnostics}
 %license LICENSE.txt
 %{python_sitelib}/dask/diagnostics/
+%exclude %{python_sitelib}/dask/diagnostics/tests
 
 %files %{python_files delayed}
 %license LICENSE.txt
 %{python_sitelib}/dask/delayed.py*
 %pycache_only %{python_sitelib}/dask/__pycache__/delayed*.pyc
+
+%files %{python_files test}
+%license LICENSE.txt
+%{python_sitelib}/dask/tests
+%{python_sitelib}/dask/bytes/tests
+%{python_sitelib}/dask/widgets/tests
+%{python_sitelib}/dask/array/tests
+%{python_sitelib}/dask/bag/tests
+%{python_sitelib}/dask/dataframe/tests
+%{python_sitelib}/dask/dataframe/io/tests
+%{python_sitelib}/dask/dataframe/tseries/tests
+%{python_sitelib}/dask/diagnostics/tests
 %endif
 
 %changelog

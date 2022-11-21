@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Sun Nov 20 10:01:18 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2022.11.1
+  ## Enhancements
+  * Restrict bokeh=3 support (GH#9673) Gabe Joseph (ignored in rpm,
+    fixed by bokek 3.0.2, see gh#dask/dask#9659)
+  * Updates for fastparquet evolution (GH#9650) Martin Durant
+  ## Maintenance
+  * Revert importlib.metadata workaround (GH#9658) James Bourbeau
+- Release 2022.11.0
+  ## Enhancements
+  * Generalize from_dict implementation to allow usage from other
+    backends (GH#9628) GALI PREM SAGAR
+  ## Bug Fixes
+  * Avoid pandas constructors in dask.dataframe.core (GH#9570)
+    Richard (Rick) Zamora
+  * Fix sort_values with Timestamp data (GH#9642) James Bourbeau
+  * Generalize array checking and remove pd.Index call in
+    _get_partitions (GH#9634) Benjamin Zaitlen
+  * Fix read_csv behavior for header=0 and names (GH#9614) Richard
+    (Rick) Zamora
+  ## Maintenance
+  * Allow bokeh=3 (GH#9659) James Bourbeau
+  * Add pre-commit to catch breakpoint() (GH#9638) James Bourbeau
+  * Bump xarray-contrib/issue-from-pytest-log from 1.1 to 1.2
+    (GH#9635)
+  * Remove blosc references (GH#9625) Naty Clementi
+  * Harden test_repartition_npartitions (GH#9585) Richard (Rick)
+    Zamora
+- Release 2022.10.2
+  * This was a hotfix and has no changes in this repository. The
+    necessary fix was in dask/distributed, but we decided to bump
+    this version number for consistency.
+- Release 2022.10.1
+  ## Enhancements
+  * Enable named aggregation syntax (GH#9563) ChrisJar
+  * Add extension dtype support to set_index (GH#9566) James
+    Bourbeau
+  * Redesigning the array HTML repr for clarity (GH#9519) Shingo
+    OKAWA
+  ## Bug Fixes
+  * Fix merge with emtpy left DataFrame (GH#9578) Ian Rose
+  ## Maintenance
+  * Require Click 7.0+ in Dask (GH#9595) John A Kirkham
+  * Temporarily restrict bokeh<3 (GH#9607) James Bourbeau
+  * Resolve importlib-related failures in upstream CI (GH#9604)
+    Charles Blackmon-Luca
+  * Remove setuptools host dep, add CLI entrypoint (GH#9600)
+    Charles Blackmon-Luca
+  * More Backend dispatch class type annotations (GH#9573) Ian Rose
+- Create a -test subpackage in order to avoid rpmlint errors
+- Drop extra conftest: included in sdist.
+
+-------------------------------------------------------------------
 Fri Oct 21 13:19:48 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 2022.10.0
