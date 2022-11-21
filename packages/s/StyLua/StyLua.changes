@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Mon Nov 21 06:40:00 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Rename source tarball to StyLua-0.15.2.tar.gz.
+- Update _service file.
+
+-------------------------------------------------------------------
+Sun Nov 20 23:14:48 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Change url macro to full URL in sources.
+- Profile "release" strips debug symbols in cargo_config.
+
+-------------------------------------------------------------------
+Sun Nov 20 09:51:59 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Initial spec for StyLua version 0.15.2
