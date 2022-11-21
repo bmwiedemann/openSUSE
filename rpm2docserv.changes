@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 21 14:41:46 UTC 2022 - kukuk@suse.com
+
+- Update to version 20221121.c1d43dd:
+  * Update dependencies
+  * Add docserv-sitemap to generate sitemap xml files
+  * Use docserv instead of debiman for temporary files
+
+-------------------------------------------------------------------
 Tue Nov 08 15:29:11 UTC 2022 - kukuk@suse.com
 
 - Update to version 20221108.e2b9545:
