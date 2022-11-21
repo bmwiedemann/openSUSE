@@ -25,7 +25,7 @@
 %endif
 
 Name:           fcitx5
-Version:        5.0.19
+Version:        5.0.20
 Release:        0
 Summary:        Next generation of fcitx
 License:        LGPL-2.1-or-later

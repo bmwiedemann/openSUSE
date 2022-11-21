@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Nov 20 10:38:19 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 5.0.20
+  * Remove the dependency on emoji cldr, now all the data are bundled
+    within fcitx.
+  * Fix several different SNI based tray icon issues, includes:
+    - gnome-extension-appindicator may sometimes not show the icon.
+    - reduce the number of dbus messages sent when the icon does not
+      change.
+    - reduce the number of dbus message on start up
+  * Fix a bug in fcitx4frontend when non-default X11 connection closes.
+  * Add support to get current input method name in fcitx5-remote
+  * The Unicode module got a Gtk-style Ctrl+Shift+U to type unicode
+    directly with fewer key presses.
+  * Fix on certain systems that CLIPBOARD is not monitored correctly
+    on first start up.
+  * Always tries to load a Compose table if there is nothing matched
+    with current locale.
+  * Auto generated plasma theme can not be configured anymore because
+    it's always generated automatically.
+
+-------------------------------------------------------------------
 Fri Oct  7 12:34:18 UTC 2022 - Marguerite Su <i@marguerite.su>
 
 - according to upstream, XMODIFIERS and QT/GTK_IM_MODULE should
