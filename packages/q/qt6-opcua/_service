@@ -1,9 +1,9 @@
 <services>
   <service name="tar_scm" mode="disabled">
    <param name="changesgenerate">disable</param>
-   <param name="version">6.4.0</param>
+   <param name="version">6.4.1</param>
    <param name="url">git://code.qt.io/qt/qtopcua.git</param>
-   <param name="revision">v6.4.0</param>
+   <param name="revision">v6.4.1</param>
    <param name="scm">git</param>
    <param name="filename">qtopcua-everywhere-src</param>
   </service>
