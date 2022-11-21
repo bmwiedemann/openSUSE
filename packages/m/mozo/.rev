@@ -174,4 +174,15 @@
     <comment>- Update to version 1.26.1.</comment>
     <requestid>933288</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>28e5a5e2343b3032672724b33b6d60ab</srcmd5>
+    <version>1.26.2</version>
+    <time>1669041037</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 1.26.2
+  * Translations update
+  * meson build: drop desktop-file argument
+  * only require gtk version 3.12 instead of 3.24 (forwarded request 1037097 from hillwood)</comment>
+    <requestid>1037098</requestid>
+  </revision>
 </revisionlist>

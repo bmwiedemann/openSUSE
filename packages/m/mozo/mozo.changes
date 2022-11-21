@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 21 12:54:51 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.26.2
+  * Translations update
+  * meson build: drop desktop-file argument
+  * only require gtk version 3.12 instead of 3.24 
+
+-------------------------------------------------------------------
 Sat Nov 20 19:39:20 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.26.1:
