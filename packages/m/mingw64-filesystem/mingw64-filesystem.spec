@@ -31,7 +31,7 @@
 %define _rpmmacrodir %{_sysconfdir}/rpm
 %endif
 Name:           mingw64-filesystem
-Version:        20220826
+Version:        20221115
 Release:        0
 Summary:        MinGW base filesystem and environment
 License:        GPL-2.0-or-later
@@ -77,8 +77,8 @@ Requires:       coreutils
 Requires:       findutils
 Requires:       gawk
 Requires:       grep
-Requires:       mingw64-cross-binutils
-Requires:       mingw64-cross-pkgconf
+Requires:       mingw64-cross-binutils-utils
+Requires:       mingw64-cross-pkgconf-utils
 Requires:       python3
 Requires:       rpm
 Requires:       rpmlint-mini

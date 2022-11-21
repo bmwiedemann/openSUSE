@@ -73,10 +73,10 @@
 #
 # To exclude project wide shared library requirements add this to project config 
 #   Macros:
-#   %_mingw64_find_requires_exclude "d3d12 ..."
+#   %_mingw64_find_requires_exclude d3d12 ... [%{nil}] 
 #   :Macros
 # for a single package add 
-#   %global _mingw64_find_requires_exclude "d3d12 ..."
+#   %global _mingw64_find_requires_exclude d3d12 ... [%{nil}]
 # to the related spec file
 # 
 %_mingw64_findprovides    /usr/lib/rpm/mingw64-find-provides.sh
