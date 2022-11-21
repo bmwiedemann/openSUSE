@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Nov 21 12:47:06 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.26.1:
+  * replace _NET_WM_PID with XResGetClientPid
+  * Always bring into foreground the previous window after closing one
+  * window: do not disable fullscreen for dialogs
+  * theme: fix memory leak
+  * compositor-xrender: fix memory leak
+  * build: fix meson build
+  * prefs: fix memory leak
+  * fix code-formatting issue of previous commit
+  * Safeguard against calling gdk_x11_window_get_xid with a NULL GdkWindow
+  * update translations
+- Add pkgconfig(xres) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
 Tue Aug 10 13:29:38 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.26.0

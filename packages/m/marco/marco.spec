@@ -1,7 +1,7 @@
 #
 # spec file for package marco
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define _version 1.26
 
 Name:           marco
-Version:        1.26.0
+Version:        1.26.1
 Release:        0
 Summary:        MATE window manager
 License:        GPL-2.0-or-later
@@ -46,6 +46,7 @@ BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xcursor)
 BuildRequires:  pkgconfig(xinerama)
 BuildRequires:  pkgconfig(xrandr)
+BuildRequires:  pkgconfig(xres)
 Requires:       zenity
 Recommends:     %{name}-lang
 Provides:       windowmanager

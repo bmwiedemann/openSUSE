@@ -238,4 +238,23 @@
     <comment>fix file conflicts (forwarded request 913441 from hillwood)</comment>
     <requestid>913443</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>9a0d408cca670c8c519225de66972fb1</srcmd5>
+    <version>1.26.1</version>
+    <time>1669041038</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.26.1:
+  * replace _NET_WM_PID with XResGetClientPid
+  * Always bring into foreground the previous window after closing one
+  * window: do not disable fullscreen for dialogs
+  * theme: fix memory leak
+  * compositor-xrender: fix memory leak
+  * build: fix meson build
+  * prefs: fix memory leak
+  * fix code-formatting issue of previous commit
+  * Safeguard against calling gdk_x11_window_get_xid with a NULL GdkWindow
+  * update translations
+- Add pkgconfig(xres) BuildRequires: new dependency. (forwarded request 1037096 from dimstar)</comment>
+    <requestid>1037099</requestid>
+  </revision>
 </revisionlist>
