@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Nov 18 23:13:12 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v1.0.1
+  * Add importlib-metadata & importlib-resources as dependencies
+  * Check on specific Python version regarding the importlib resources
+    (python v3.10 or higher) in order to have files() working
+  * importlib_metadata should now also work on Python version before 3.8
+  * Remove obsolete MANIFEST.in file
+- from v1.0.0
+  * Make the JSON Lines data file part of the Python package,
+    data is retrieved locally
+  * Extend the myproject.toml file with package-data support
+  * Remove centralized caching server implementation
+  * Make real unit-tests which should run reliable, fast, independent
+    and without Internet connection
+- from v0.1.14
+  * Improve code quality standards using modern Python >=3.7 syntax
+  * Migrated to pyproject.toml build system format + syntax check
+  * Add additional classifiers to the toml file
+  * Improved tox.ini file
+  * Improved GitHub Actions job using pip cache
+  * And various small fixes
+
+-------------------------------------------------------------------
 Thu Nov  3 23:14:45 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Re-activate test suite
