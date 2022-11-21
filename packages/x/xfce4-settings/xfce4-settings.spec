@@ -19,7 +19,7 @@
 %bcond_with git
 
 Name:           xfce4-settings
-Version:        4.16.4
+Version:        4.16.5
 Release:        0
 Summary:        Tools for Managing Xfce Settings
 License:        GPL-2.0-only AND GPL-2.0-or-later
