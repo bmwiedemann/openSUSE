@@ -1,4 +1,151 @@
 -------------------------------------------------------------------
+Sun Nov 20 10:38:22 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2022.11.1 
+  ## Enhancements
+  * Restrict bokeh=3 support (GH#7329) Gabe Joseph (ignored in rpm
+    fixed by bokek 3.0.2, see gh#dask/dask#9659)
+  * Respect death timeout when waiting for scheduler file (GH#7296)
+    Florian Jetter
+  * Always raise exception if P2PShuffle s send fails (GH#7317)
+    Hendrik Makait
+  ## Maintenance
+  * Remove exception handling from transitions (GH#7316) crusaderky
+  * Turn private functions into private SchedulerState methods
+    (GH#7260) Hendrik Makait
+  * Bump toolz minimum version to 0.10.0 (GH#7309) Sam Grayson
+- Release 2022.11.0
+  ## Note
+  * This release changes the default scheduling mode to use
+    queuing. This will significantly reduce cluster memory use in
+    most cases, and generally improve stability and performance.
+    Learn more here and please provide any feedback on this
+    discussion.
+  * In rare cases, this could make some workloads slower. See the
+    documentation for more information, and how to switch back to
+    the old mode.
+  ## New Features
+  * Add ForwardOutput worker plugin to forward stdout and stderr to
+    client. (GH#7297) Hendrik Makait
+  * Duration counters on prefix level (GH#7288) Florian Jetter
+  * Include button for launching JupyterLab layout in repr
+    (GH#7218) Ian Rose
+  ## Enhancements
+  * Support MIG parsing during CUDA context creation in UCX
+    initialization (GH#6720) Peter Andreas Entschev
+  * Handle /metrics endpoint without prometheus-client installed
+    (GH#7234) Hendrik Makait
+  * Add support for unpacking namedtuples in remote data (GH#7282)
+    Andrew
+  * Enable queuing by default (GH#7279) Florian Jetter
+  * Fix exists->``exist`` typo in scheduler error messages
+    (GH#7281) Matthew Plough
+  * If there’s an exception in the Client async context manager
+    body then close fast (GH#6920) Thomas Grainger
+  ## Bug Fixes
+  * Ensure category is optional when logging "warn" events
+    (GH#7169) James Bourbeau
+  * Edge and impossible transitions to memory (GH#7205) crusaderky
+  ## Maintenance
+  * Allow bokeh=3 (GH#5648) James Bourbeau
+  * Fix typos in P2P shuffle code (GH#7304) Hendrik Makait
+  * Reenable test_bad_disk (GH#7300) Florian Jetter
+  * Reduce max-runs in test reports (GH#7299) Florian Jetter
+  * Revert idle classification when worker-saturation is set
+    (GH#7278) Florian Jetter
+  * Fix flaky deadline_expiration (GH#7287) Florian Jetter
+  * Rewrite of P2P control flow (GH#7268) Florian Jetter
+  * Bump minimum bokeh version to 2.4.2 (GH#7271) James Bourbeau
+  * Remove deprecated code calls to IOLoop.make_current() (GH#7240)
+    Thomas Grainger
+  * Improved test for balancing expensive tasks (GH#7272) Hendrik
+    Makait
+  * Refactor semaphore._Watch into general-purpose Deadline utility
+    (GH#7238) Hendrik Makait
+  * Require Click 7.0+ (GH#7226) jakirkham
+  * Drop tests (GH#7269) Hendrik Makait
+  * Replace test_(do_not_)steal_communication_heavy_tasks tests
+    with more robust versions (GH#7243) Hendrik Makait
+  * xfail test_bad_disk (GH#7265) crusaderky
+  * Move transition_log from Scheduler to SchedulerState (GH#7254)
+    crusaderky
+  * Remove Scheduler.log (GH#7258) crusaderky
+  * Use latest pickle (GH#5826) jakirkham
+  * Polish parsing of worker-saturation from config (GH#7255)
+    crusaderky
+  * Avoid expensive occupancy calculation when unused (GH#7257)
+    Gabe Joseph
+  * Un-skip test_nested_compute (GH#7247) Gabe Joseph
+  * Review test_do_not_steal_communication_heavy_tasks (GH#7250)
+    crusaderky
+  * Fix test_stress_creation_and_deletion (GH#7215) crusaderky
+  * Raise exceptions in Server.handle_stream instead of
+    swallowing/logging (GH#7162) Hendrik Makait
+  * Fix _update_scheduler_info hanging failed tests (GH#7225) Gabe
+    Joseph
+  * Bump xarray-contrib/ci-trigger from 1.1 to 1.2 (GH#7232)
+- Release 2022.10.2
+  * Reverted a bug where Bokeh was accidentally made non-optional
+    (GH#7230) Oliver Holworthy
+  * Schedule a queued task when a task secedes (GH#7224) Gabe
+    Joseph
+  * This was a hotfix release
+- Release 2022.10.1
+  ## New Features
+  * Add Client.restart_workers method (GH#7154) James Bourbeau
+  * Implement PackageInstall plugin for pip and conda (GH#7126)
+    Hendrik Makait
+  ## Enhancements
+  * Add prometheus collector for work-stealing (GH#7206) Hendrik
+    Makait
+  * Track reason of workers closing and restarting (GH#7166)
+    Hendrik Makait
+  * Show no-worker on task progress bar (GH#7171) Florian Jetter
+  * Set OPENBLAS_NUM_THREADS by default (GH#7177) James Bourbeau
+  * Optionally provide local directory to data constructor
+    (GH#7153) Lawrence Mitchell
+  * Introduce distributed.comm.ucx.environment config slot
+    (GH#7164) Lawrence Mitchell
+  * Log information about memory limit (GH#7160) Florian Jetter
+  * Improve log messages on scheduler for restart (GH#7150) Florian
+    Jetter
+  * More comprehensive WorkerState task counters (GH#7167)
+    crusaderky
+  ## Bug Fixes
+  * Update minimum bokeh version message (GH#7172) James Bourbeau
+  * Revamped implementations of remote print() and warn(), fixing
+    #7095 (GH#7129) Max Bane
+  ## Maintenance
+  * Temporarily restrict bokeh<3 (GH#7219) James Bourbeau
+  * Make Scheduler.reschedule private (GH#7216) crusaderky
+  * Fix decide_worker_rootish_queuing_disabled assert (GH#7065)
+    Gabe Joseph
+  * Fix flaky test_include_communication_in_occupancy (GH#7212)
+    Gabe Joseph
+  * Do not raise on leaked websockets (GH#7199) Florian Jetter
+  * Update nightly recipes with CLI tests, dependency changes
+    (GH#7201) Charles Blackmon-Luca
+  * Make p2p shuffle submodules private (GH#7186) Florian Jetter
+  * Backport tornado PeriodicCallback (GH#7165) Florian Jetter
+  * Fix mypy failure on CI (GH#7198) Florian Jetter
+  * User a layer for p2p shuffle (GH#7180) Florian Jetter
+  * Type annotations for shuffle (GH#7185) Florian Jetter
+  * Do not close worker on comm error in heartbeat (GH#7163)
+    Hendrik Makait
+  * Errors when setting TCP timeouts log as error (GH#7161) Florian
+    Jetter
+  * Remove incorrect advice from pre-commit config (GH#7159)
+    crusaderky
+  * Use functionalities network for codecov uploader (GH#7148)
+    Florian Jetter
+  * Use counter metric type where appropriate, incoming_count was
+    reporting bytes (GH#7125) Nat Tabris
+- Add allow-bokeh3.patch -- raise upper bokeh version, reverts part
+  of gh#dask/distributed#7329, see also gh#dask/dask#9659
+- Replace support-tornado-6-2.patch with
+  distributed-pr7286-tornado-6-2.patch -- gh#dask/distributed#7286
+
+-------------------------------------------------------------------
 Fri Oct 21 13:22:30 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 2022.10.0

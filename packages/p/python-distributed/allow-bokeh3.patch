@@ -1,0 +1,13 @@
+Index: distributed-2022.11.1/distributed/versions.py
+===================================================================
+--- distributed-2022.11.1.orig/distributed/versions.py
++++ distributed-2022.11.1/distributed/versions.py
+@@ -13,7 +13,7 @@ from types import ModuleType
+ from typing import Any
+ 
+ MIN_BOKEH_VERSION = "2.4.2"
+-MAX_BOKEH_VERSION = "2.4.3"
++MAX_BOKEH_VERSION = "4"
+ 
+ required_packages = [
+     ("dask", lambda p: p.__version__),

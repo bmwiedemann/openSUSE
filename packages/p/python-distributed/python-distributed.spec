@@ -39,32 +39,33 @@
 %if "%{flavor}" == ""
 %bcond_with test
 %endif
-%{?!python_module:%define python_module() python3-%{**}}
-%define         skip_python2 1
 # use this to run tests with xdist in parallel, unfortunately fails server side
 %bcond_with paralleltests
+
 Name:           python-distributed%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-distributed! <===
-Version:        2022.10.0
+Version:        2022.11.1
 Release:        0
 Summary:        Library for distributed computing with Python
 License:        BSD-3-Clause
 URL:            https://distributed.dask.org
 Source:         https://github.com/dask/distributed/archive/refs/tags/%{version}.tar.gz#/distributed-%{version}-gh.tar.gz
 Source99:       python-distributed-rpmlintrc
+# PATCH-FIX-UPSTREAM allow-bokeh3.patch -- raise upper bokeh version, reverts part of gh#dask/distributed#7329, see also gh#dask/dask#9659
+Patch1:         allow-bokeh3.patch
+# PATCH-FIX-UPSTREAM distributed-pr7286-tornado-6-2.patch gh#dask/distributed#7286
+Patch2:         distributed-pr7286-tornado-6-2.patch
 # PATCH-FIX-OPENSUSE distributed-ignore-off.patch -- ignore that we can't probe addresses on obs, code@bnavigator.de
-Patch1:         distributed-ignore-offline.patch
+Patch3:         distributed-ignore-offline.patch
 # PATCH-FIX-OPENSUSE distributed-ignore-thread-leaks.patch -- ignore leaking threads on obs, code@bnavigator.de
-Patch2:         distributed-ignore-thread-leaks.patch
-# PATCH-FIX-OPENSUSE Ignore two deprecations introduced by Tornado 6.2
-Patch3:         support-tornado-6-2.patch
+Patch4:         distributed-ignore-thread-leaks.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
 Requires:       python-certifi
-Requires:       python-click >= 6.6
+Requires:       python-click >= 7.0
 Requires:       python-cloudpickle >= 1.5.0
 Requires:       python-dask = %{version}
 Requires:       python-locket >= 1.0.0
@@ -73,7 +74,7 @@ Requires:       python-packaging >= 20.0
 Requires:       python-psutil >= 5.0
 Requires:       python-sortedcontainers
 Requires:       python-tblib
-Requires:       python-toolz >= 0.8.2
+Requires:       python-toolz >= 0.10.0
 Requires:       python-tornado >= 6.2
 Requires:       python-urllib3
 Requires:       python-zict >= 0.1.3
@@ -81,7 +82,7 @@ Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module bokeh}
+BuildRequires:  %{python_module bokeh >= 2.4.2}
 BuildRequires:  %{python_module dask-complete = %{version}}
 BuildRequires:  %{python_module distributed = %{version}}
 BuildRequires:  %{python_module ipykernel}
@@ -154,16 +155,11 @@ donttest+=" or (test_variable and test_variable_in_task)"
 donttest+=" or (test_worker and test_worker_reconnects_mid_compute)"
 # server-side fail due to the non-network warning in a subprocess where the patched filter does not apply
 donttest+=" or (test_client and test_quiet_close_process)"
-# creates OOM aborts on some obs workers
-donttest+=" or (test_steal and steal_communication_heavy_tasks)"
-
 if [[ $(getconf LONG_BIT) -eq 32 ]]; then
   # OverflowError -- https://github.com/dask/distributed/issues/5252
   donttest+=" or test_ensure_spilled_immediately"
   donttest+=" or test_value_raises_during_spilling"
   donttest+=" or test_fail_to_pickle_execute_1"
-  # https://github.com/dask/distributed/issues/7174
-  donttest+=" or (test_steal and steal_communication_heavy_tasks)"
   # https://github.com/dask/distributed/issues/7175
   donttest+=" or (test_sizeof_error and larger)"
 fi
