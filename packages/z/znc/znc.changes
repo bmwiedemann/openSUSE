@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 18 15:41:09 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 1841.patch: support SWIG 4.1.0 (boo#1205425).
+
+-------------------------------------------------------------------
 Tue Jan 11 11:28:18 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Added patch(es):

@@ -1,7 +1,7 @@
 #
 # spec file for package znc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,14 +26,15 @@ URL:            https://wiki.znc.in/ZNC
 Source0:        https://znc.in/releases/%{name}-%{version}.tar.gz
 Source1:        https://znc.in/releases/%{name}-%{version}.tar.gz.sig
 Source2:        %{name}.keyring
-Patch0:	harden_znc.service.patch
+Patch0:         harden_znc.service.patch
+Patch1:         https://patch-diff.githubusercontent.com/raw/znc/znc/pull/1841.patch
 BuildRequires:  cmake >= 3.1
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_locale-devel
 BuildRequires:  perl
 BuildRequires:  pkgconfig
-BuildRequires:  swig
+BuildRequires:  swig >= 4.0.1
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(libsasl2)
@@ -106,8 +107,7 @@ C++ module support.
 This package contains the Tcl extension to ZNC.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %cmake \
