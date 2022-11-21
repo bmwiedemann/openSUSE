@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Nov 20 17:25:24 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.5.0:
+  * Overall improvements in the use of prefetch instructions.
+  * Made input/output fully asynchronous by using a dedicated
+    thread.
+  * Added support for AVX2 256-bit instructions with can be
+    enabled by setting the SSE_AXV2 environment variable at
+    compile time.
+  * Fixed an issue causing bowtie2 to crash when processing ZSTD
+    files with high compression ratios.
+  * Changed the way that unique alignments are counted in summary
+    message to better match up with filters on SAM output.
+
+-------------------------------------------------------------------
 Thu Jan 20 19:38:08 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.4.5:

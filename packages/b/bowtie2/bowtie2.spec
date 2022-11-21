@@ -21,7 +21,7 @@
 %define _lto_cflags %{nil}
 %endif
 Name:           bowtie2
-Version:        2.4.5
+Version:        2.5.0
 Release:        0
 Summary:        Fast and memory-efficient short read aligner
 License:        GPL-3.0-only
