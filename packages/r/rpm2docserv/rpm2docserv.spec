@@ -17,7 +17,7 @@
 
 
 Name:           rpm2docserv
-Version:        20221108.e2b9545
+Version:        20221121.c1d43dd
 Release:        0
 Summary:        Make manpages from RPMs accessible in a web browser
 License:        Apache-2.0
@@ -47,6 +47,12 @@ Summary:        Simple docserv webserver
 
 %description -n docserv-minisrv
 Simple docserv webserver with integrated auxserver for development and test purposes. Not for production.
+
+%package -n docserv-sitemap
+Summary:        Generate sitemap xml files for rpm2docserv
+
+%description -n docserv-sitemap
+This tool generates sitemap xml files from a rpm2docserv generated docserv directory for search engines.
 
 %package -n docserv-config-nginx
 Summary:        Configuration files for nginx to serve docserv directory
@@ -78,6 +84,7 @@ mkdir -p %{buildroot}%{_sbindir}
 install -m 755 bin/docserv-auxserver %{buildroot}%{_sbindir}/
 install -m 755 bin/docserv-minisrv %{buildroot}%{_sbindir}/
 install -m 755 bin/docserv-idx2rwmap %{buildroot}%{_bindir}/
+install -m 755 bin/docserv-sitemap %{buildroot}%{_bindir}/
 mkdir -p %{buildroot}%{_datadir}/%{name}
 cp -r assets %{buildroot}%{_datadir}/%{name}
 
@@ -140,6 +147,10 @@ install -m 644 apache2/* %{buildroot}%{_datadir}/docserv/apache2/
 %{_unitdir}/docserv-minisrv.service
 %{_sysusersdir}/system-user-docserv-srv.conf
 %{_distconfdir}/default/docserv-minisrv
+
+%files -n docserv-sitemap
+%license LICENSE
+%{_bindir}/docserv-sitemap
 
 %files -n docserv-config-nginx
 %dir %{_datadir}/docserv

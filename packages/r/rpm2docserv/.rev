@@ -71,4 +71,15 @@
   * Add about.html content</comment>
     <requestid>1034861</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>06fbf4ec29f0cc0b5f3f4b2f9a93377b</srcmd5>
+    <version>20221121.c1d43dd</version>
+    <time>1669044916</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20221121.c1d43dd:
+  * Update dependencies
+  * Add docserv-sitemap to generate sitemap xml files
+  * Use docserv instead of debiman for temporary files</comment>
+    <requestid>1037133</requestid>
+  </revision>
 </revisionlist>
