@@ -44,4 +44,12 @@
   arguments: kiwi does this implicit now. (forwarded request 811750 from dimstar)</comment>
     <requestid>811761</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>e7448f40fff2cee45f77186c922537fb</srcmd5>
+    <version>1.0.0</version>
+    <time>1669041003</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable debug mode only if DEBUG=1 is set (forwarded request 1037032 from kukuk)</comment>
+    <requestid>1037033</requestid>
+  </revision>
 </revisionlist>

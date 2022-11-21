@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 18 15:58:53 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Enable debug mode only if DEBUG=1 is set
+
+-------------------------------------------------------------------
 Fri Jun  5 10:45:36 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Remove "--" from the package list to separate pkgs from
