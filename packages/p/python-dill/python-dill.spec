@@ -1,7 +1,7 @@
 #
 # spec file for package python-dill
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,14 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-dill
-Version:        0.3.4
+Version:        0.3.6
 Release:        0
 Summary:        Module to serialize all of Python
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/uqfoundation/dill
-Source:         https://files.pythonhosted.org/packages/source/d/dill/dill-%{version}.zip
+Source:         https://github.com/uqfoundation/dill/archive/dill-%{version}.tar.gz#/dill-%{version}.tar.gz
 BuildRequires:  %{python_module objgraph >= 1.7.2}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -53,7 +52,7 @@ objects, `dill` provides the ability to save the state of an interpreter
 session in a single command.
 
 %prep
-%setup -q -n dill-%{version}
+%autosetup -p1 -n dill-dill-%{version}
 find dill -name '*.py' -exec sed -i '1{\@^#!%{_bindir}/env python@d}' {} \;
 
 %build
@@ -69,14 +68,9 @@ find dill -name '*.py' -exec sed -i '1{\@^#!%{_bindir}/env python@d}' {} \;
 
 %check
 export PYTHONDONTWRITEBYTECODE=1
-failed=0
-%{python_expand # Creative; copied from .travis.yml
-export PYTHONPATH=%{buildroot}%{$python_sitelib}
-for test in tests/test_*.py; do
-  $python $test || failed=1
-done
-}
-exit $failed
+export PYTHONPATH=%{_builddir}/dill-dill-%{version}
+# Creative; copied from tox.ini
+%python_exec dill/tests/__main__.py
 
 %post
 %{python_install_alternative undill get_objgraph}
@@ -85,10 +79,11 @@ exit $failed
 %python_uninstall_alternative undill
 
 %files %{python_files}
-%doc README README.md
+%doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/undill
 %python_alternative %{_bindir}/get_objgraph
-%{python_sitelib}/*
+%{python_sitelib}/dill
+%{python_sitelib}/dill-%{version}*-info
 
 %changelog

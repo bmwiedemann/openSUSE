@@ -74,4 +74,78 @@
 - Drop 07e24913.patch released upstream</comment>
     <requestid>941557</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>bf3d07d64ab61f6e4c2c85f16f831e13</srcmd5>
+    <version>0.3.6</version>
+    <time>1669040998</time>
+    <user>dimstar_suse</user>
+    <comment>- Update the source from github and use the correct folder for setup and tests
+- Remove python_module macro definition
+- Use sources from github, current release doesn't have tests
+- Use autosetup instead of setup
+- Update how to run tests
+- More specific python_sitelib in %files
+- Update to 0.3.6:
+  * fix: #480 create_code for 3.11.0a7 and 3.11.0b1
+  * fix: #413, fix: #453, drop 2.7 support
+  * adjust save_code and _create_code for co_lnotab in PEP626 (#495)
+  * Lookup qualname instead of name in Python 3 (#486)
+  * Support PyCapsule (#477)
+  * Fix `dill._dill` submodule being saved as `GLOBAL &quot;dill._shims&quot; &quot;_dill&quot;`
+    (#490)
+  * Create a soft_def shim to combine move_to and Getattr (#473)
+  * Incidental implementation specific types (#472)
+  * Fix bug in pickling MappingProxyType in PyPy 3.7+ (#506)
+  * Bring back old method pickling function (#511)
+  * protect against sys.modules contents change
+  * correct failures and succeeds dicts
+  * correct failures for registered
+  * unregister SymtableEntryType
+  * Add detailed trace mode showing saved object size and visual depth level
+    (#471)
+  * Kickstart support drop for Python &lt; 3.7 (#499)
+  * fix #521: support develop mode
+  * Rewrite _create_code() with Structural Pattern Matching (limited to tuples)
+    (#496)
+  * fix #522: unify README and module doc
+  * add some no-indent bullets
+  * Fix load_session() and restrict loading a session in a different module
+    (#507)
+  * update load_module dump_module docs
+  * fix dump_module() bugs and rename parameter 'main' to 'module' (#526)
+  * A temporary quick fix for dataclass serialization (#500) (#503)
+  * fix: #528, test_registered syncs objects w typemap
+  * print on fail for test_registered
+  * CLibraryLoader on unix in 3.11
+  * add logger module to sphinx
+  * Move session-related code to new session module (#530)
+  * fix: #517 special handling of typing module
+  * test special case typing.Any
+  * more clearly note cpython bug
+  * Temporary quick fix for getsource() on IPython interpreter (fixes #346)
+    (#531)
+  * Fix pickling errors thrown when saving some Stdlib modules (#529)
+  * Fix `pickles()` flagging `__builtins__` as unpickleable due to the `all()`
+    function (#538)
+  * Use proper SPDX identifier for License (#539)
+  * Disable logging propagation, use current stderr as output (#541)
+  * move numpy special register to save
+  * fix pickling of CLibraryLoaderType
+  * Optimize the numpy hook (#542)
+  * patch to dump_module as in #535
+  * ensure tempfiles are deleted by default
+- update to 0.3.5.1:
+  * requires python 3.7 
+  * skip tests with broken stftime
+  * resolve symlinks when determining if module is builtin
+  * support python 3.10
+  * adjust for python 3.11
+  * Support recursive and empty closure cells 
+  * use CAN_NULL for 3.11a7 and above
+  * better check for travis in tests
+  * parse init file for dist meta
+  * drop rtfd build to 3.8 
+</comment>
+    <requestid>1037023</requestid>
+  </revision>
 </revisionlist>
