@@ -48,6 +48,7 @@ Source4:        xim.d-ibus-121
 Source7:        macros.ibus
 Source10:       ibus-autostart
 Source11:       ibus-autostart.desktop
+Source12:       20-defaults-openSUSE.conf
 Source99:       baselibs.conf
 # PATFH-FIX-OPENSUSE ibus-xim-fix-re-focus-after-lock.patch bnc#874869 tiwai@suse.de
 # Fix lost XIM input after screenlock
@@ -72,6 +73,9 @@ Patch12:        ibus-disable-engines-preload-in-GNOME.patch
 # Qt5 does not be update to the new version and patch for ibus on Leap 15,
 # it still needs this patch on leap 15. (boo#1187202)
 Patch15:        ibus-socket-name-compatibility.patch
+# PATCH-FIX-UPSTREAM ibus-ui-gtk3-restart-via-systemd.patch
+# Allow ibus-ui-gtk3 to restart ibus-daemon when it is launched by systemd
+Patch16:        ibus-ui-gtk3-restart-via-systemd.patch
 BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(systemd)
@@ -229,6 +233,7 @@ cp -r %{SOURCE11} .
 %if 0%{?suse_version} <= 1500
 %patch15 -p1
 %endif
+%patch16 -p1
 
 %build
 %configure --disable-static \
@@ -278,6 +283,10 @@ mkdir -p %{buildroot}%{_bindir}
 install -c -m 0755 ibus-autostart %{buildroot}%{_bindir}/ibus-autostart
 mkdir -p %{buildroot}%{_sysconfdir}/xdg/autostart
 install -c -m 0644 ibus-autostart.desktop %{buildroot}%{_sysconfdir}/xdg/autostart/ibus-autostart.desktop
+
+# systemd conf
+mkdir -p %{buildroot}%{_userunitdir}/org.freedesktop.IBus.session.generic.service.d
+install -c -m 0644 %{SOURCE12} %{buildroot}%{_userunitdir}/org.freedesktop.IBus.session.generic.service.d
 
 PRIORITY=40
 pushd %{buildroot}%{_distconfdir}/X11/xim.d/
@@ -418,6 +427,7 @@ fi
 %dir %{_userunitdir}/gnome-session.target.wants
 %{_userunitdir}/gnome-session.target.wants/org.freedesktop.IBus.session.GNOME.service
 %{_userunitdir}/*.service
+%{_userunitdir}/org.freedesktop.IBus.session.generic.service.d
 
 %if %{with_emoji}
 %{_datadir}/applications/org.freedesktop.IBus.Panel.Emojier.desktop

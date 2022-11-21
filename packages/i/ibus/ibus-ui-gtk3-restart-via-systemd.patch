@@ -1,0 +1,158 @@
+diff --git a/ui/gtk3/panel.vala b/ui/gtk3/panel.vala
+index 452b14c8..81c246a2 100644
+--- a/ui/gtk3/panel.vala
++++ b/ui/gtk3/panel.vala
+@@ -1292,7 +1292,7 @@ class Panel : IBus.PanelService {
+             m_sys_menu.append(new Gtk.SeparatorMenuItem());
+ 
+             item = new Gtk.MenuItem.with_label(_("Restart"));
+-            item.activate.connect((i) => m_bus.exit(true));
++            item.activate.connect((i) => restart_daemon());
+             m_sys_menu.append(item);
+ 
+             item = new Gtk.MenuItem.with_label(_("Quit"));
+@@ -1305,6 +1305,144 @@ class Panel : IBus.PanelService {
+         return m_sys_menu;
+     }
+ 
++    private const string systemd_service_file = "org.freedesktop.IBus.session.generic.service";
++
++    GLib.DBusConnection?  get_session_bus() {
++        try {
++            return GLib.Bus.get_sync (GLib.BusType.SESSION, null);
++        } catch (GLib.IOError e) {
++            debug("%s\n", e.message);
++        }
++        return null;
++    }
++
++    string?
++    get_ibus_systemd_object_path(GLib.DBusConnection connection) {
++        string object_path = null;
++        assert(systemd_service_file != null);
++        try {
++            var variant = connection.call_sync (
++                    "org.freedesktop.systemd1",
++                    "/org/freedesktop/systemd1",
++                    "org.freedesktop.systemd1.Manager",
++                    "GetUnit",
++                    new GLib.Variant("(s)", systemd_service_file),
++                    new GLib.VariantType("(o)"),
++                    GLib.DBusCallFlags.NONE,
++                    -1,
++                    null);
++            variant.get("(o)", ref object_path);
++            debug("Succeed to get an object path \"%s\" for IBus " +
++                  "systemd service file \"%s\".\n",
++                  object_path, systemd_service_file);
++            return object_path;
++        } catch (GLib.Error e) {
++            debug("IBus systemd service file \"%s\" is not installed " +
++                  "in your system: %s\n",
++                  systemd_service_file, e.message);
++        }
++        return null;
++    }
++
++    bool
++    is_running_daemon_via_systemd(GLib.DBusConnection connection,
++                                  string              object_path) {
++        string? state = null;
++        try {
++            while (true) {
++                var variant = connection.call_sync (
++                        "org.freedesktop.systemd1",
++                        object_path,
++                        "org.freedesktop.DBus.Properties",
++                        "Get",
++                        new GLib.Variant("(ss)",
++                                        "org.freedesktop.systemd1.Unit",
++                                        "ActiveState"),
++                        new GLib.VariantType("(v)"),
++                        GLib.DBusCallFlags.NONE,
++                        -1,
++                        null);
++                GLib.Variant child = null;
++                variant.get("(v)", ref child);
++                state = child.dup_string();
++                debug("systemd state is \"%s\" for an object " +
++                      "path \"%s\".\n", state, object_path);
++                if (state != "activating")
++                    break;
++                Posix.sleep(1);
++            }
++        } catch (GLib.Error e) {
++            debug("%s\n", e.message);
++            return false;
++        }
++        if (state == "active")
++            return true;
++        return false;
++    }
++
++    bool
++    start_daemon_via_systemd(GLib.DBusConnection connection,
++                             bool                restart) {
++        string object_path = null;
++        string method = "StartUnit";
++        assert(systemd_service_file != null);
++        if (restart)
++            method = "RestartUnit";
++        try {
++            var variant = connection.call_sync (
++                    "org.freedesktop.systemd1",
++                    "/org/freedesktop/systemd1",
++                    "org.freedesktop.systemd1.Manager",
++                    method,
++                    new GLib.Variant("(ss)", systemd_service_file, "fail"),
++                    new GLib.VariantType("(o)"),
++                    GLib.DBusCallFlags.NONE,
++                    -1,
++                    null);
++            variant.get("(o)", ref object_path);
++            debug("Succeed to restart IBus daemon via IBus systemd " +
++                  "service file \"%s\": \"%s\"\n",
++                  systemd_service_file, object_path);
++            return true;
++        } catch (GLib.Error e) {
++            debug("Failed to %s IBus daemon via IBus systemd " +
++                  "service file \"%s\": %s\n",
++                  restart ? "restart" : "start",
++                  systemd_service_file, e.message);
++        }
++        return false;
++    }
++
++    private void restart_daemon() {
++        do {
++            GLib.DBusConnection? connection = get_session_bus();
++            if (connection == null)
++                break;
++            var object_path = get_ibus_systemd_object_path(connection);
++            if (object_path == null)
++                break;
++            if (is_running_daemon_via_systemd(connection,
++                                              object_path)) {
++                var result = start_daemon_via_systemd(connection, true);
++                if (!result) {
++                    var dialog = new Gtk.MessageDialog(
++                        null,
++                        Gtk.DialogFlags.DESTROY_WITH_PARENT,
++                        Gtk.MessageType.ERROR,
++                        Gtk.ButtonsType.CLOSE,
++                        "Failed to restart IBus daemon via IBus systemd");
++                    dialog.response.connect((id) => {
++                            dialog.destroy();
++                    });
++                    dialog.show_all();
++                }
++            }
++            return;
++        } while (false);
++        // ibus-daemon is not launched via systemd
++        m_bus.exit(true);
++    }
++
+     private Gtk.Menu create_activate_menu() {
+         m_ime_menu = new Gtk.Menu();
+ 

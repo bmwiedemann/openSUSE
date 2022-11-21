@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 18 13:48:57 UTC 2022 - Fuminobu Takeyama <ftake@geeko.jp>
+
+- Switch to use systemd service file to start ibus daemon
+  * Fix boo#1201421 
+  * Add ibus-ui-gtk3-restart-via-systemd.patch
+  * Enable ibus-autostart for xdg-autostart-generator
+
+-------------------------------------------------------------------
 Mon Aug 29 15:18:08 UTC 2022 - Fuminobu Takeyama <ftake@geeko.jp>
 
 - Do not run ibus-autostart with xdg-autostart-generator (KDE etc.)

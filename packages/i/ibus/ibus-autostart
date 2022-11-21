@@ -11,5 +11,5 @@ esac
 # sleep for a little while to avoid duplicate startup
 # sleep 2
 
-ibus-daemon --xim -d
+ibus start --service-file org.freedesktop.IBus.session.generic.service
 exit 0

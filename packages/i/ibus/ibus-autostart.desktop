@@ -10,4 +10,3 @@ StartupNotify=false
 NoDisplay=true
 X-KDE-autostart-after=panel
 X-KDE-StartupNotify=false
-X-systemd-skip=true
