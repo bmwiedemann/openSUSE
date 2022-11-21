@@ -105,4 +105,12 @@
     <comment>- Update disk constraints for qt6-webengine:docs (forwarded request 1007993 from cgiboudeaux)</comment>
     <requestid>1007994</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>19808e70b9bbcd93e5f07b7768319ff8</srcmd5>
+    <version>6.4.1</version>
+    <time>1669040964</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 6.4.1</comment>
+    <requestid>1036934</requestid>
+  </revision>
 </revisionlist>
