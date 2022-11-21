@@ -15,4 +15,14 @@
     <comment></comment>
     <requestid>975343</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>59911b806c6bcb5aa1da6fe02e760f47</srcmd5>
+    <version>3.8</version>
+    <time>1669041015</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.8
+  * Udev rules update;
+  * Build warnings fixes. (forwarded request 1037026 from MarkNefedov)</comment>
+    <requestid>1037048</requestid>
+  </revision>
 </revisionlist>

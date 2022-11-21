@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 21 10:35:46 UTC 2022 - Martin Sirringhaus <mark_nefedov@runbox.com>
+
+- Update to 3.8
+  * Udev rules update;
+  * Build warnings fixes.
+
+-------------------------------------------------------------------
 Tue May  3 05:57:51 UTC 2022 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - Update to 3.7

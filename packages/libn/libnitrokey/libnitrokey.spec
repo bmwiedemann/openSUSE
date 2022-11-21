@@ -22,7 +22,7 @@
 %define lib_name %{name}3
 
 Name:           libnitrokey
-Version:        3.7
+Version:        3.8
 Release:        0
 Summary:        Communicate with Nitrokey stick devices in a clean and easy manner
 License:        LGPL-3.0-only
