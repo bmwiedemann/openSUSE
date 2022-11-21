@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov 21 11:01:30 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1669026749.61d5b38:
+  * Remove standstill_detected from basetest.pm
+  * Move stop_autotest into CommandHandler
+  * Simplify basetest run_post_fail call a bit
+  * Use proper perl function to get FQDN
+  * testapi: Try to return sane default in non-qemu host_ip calls
+  * Move loop into CommandHandler
+  * Make blocking mode configurable for pipe
+
+-------------------------------------------------------------------
 Sat Nov 19 02:46:09 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1668764515.17a0b01:
