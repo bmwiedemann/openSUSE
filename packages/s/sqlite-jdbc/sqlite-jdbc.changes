@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Nov 17 15:58:27 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v3.39.4.1
+  * Fixes
+    ~ jdbc: don't check if ResultSet is open in markCol (6d6f756)
+    ~ jdbc: throw SQLException instead of IllegalStateException
+      (4bfb174)
+    ~ jdbc: properly handle updateCount for PreparedStatement
+      (6a910b9)
+    ~ jdbc: don't close ResultSet when last row is passed (a21229d)
+    ~ jdbc: properly reset Statement between reuse (f497c43)
+  * Build
+    ~ fix boolean conditions, once more (f11b824)
+    ~ fix boolean conditions (857ed4c)
+    ~ print event inputs (83dbe02)
+    ~ add failing tests for PreparedStatement getMetaData before
+      execution (6c95a88)
+    ~ add failing tests for PreparedStatement getMoreResults and
+      getUpdateCount (98f00d3)
+    ~ polish (87c4601)
+    ~ replace deprecated set-output usage (7ee209c)
+    ~ add a release flag on CI workflow dispatch (f9e5e7f)
+    ~ add failing tests when getting ResultSet metadata past last
+      row (64771ef)
+    ~ add failing tests when reusing statements (267e80b)
+    ~ deps: bump andymckay/cancel-action from 0.2 to 0.3 (67b5899)
+    ~ fix attach-javadoc failing with release profile (9d3e2ca)
+    ~ change jreleaser's changelog format (4896a15)
+    ~ multi-release JAR with module-info.java (5bf7566)
+  * Documentation
+    ~ update release process (d91948e)
+
+-------------------------------------------------------------------
 Mon Nov  7 11:06:55 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v3.39.4.0
