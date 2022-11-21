@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 15 11:53:15 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.4.1:
+  * https://www.qt.io/blog/qt-6.4.1-released
+- Drop patch, merged upstream:
+  * 0001-3rdparty-Fix-build-on-unsupported-platforms.patch
+
+-------------------------------------------------------------------
 Thu Sep 29 10:35:55 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 6.4.0:

@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.4.0
+%define real_version 6.4.1
 %define short_version 6.4
 %define short_name qtmultimedia
 %define tar_name qtmultimedia-everywhere-src
@@ -28,15 +28,13 @@
 %endif
 #
 Name:           qt6-multimedia%{?pkg_suffix}
-Version:        6.4.0
+Version:        6.4.1
 Release:        0
 Summary:        Qt 6 Multimedia libraries
 License:        GPL-3.0-or-later
 URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source1:        qt6-multimedia-rpmlintrc
-# PATCH-FIX-OPENSUSE
-Patch0:         0001-3rdparty-Fix-build-on-unsupported-platforms.patch
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
