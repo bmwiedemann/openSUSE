@@ -230,4 +230,16 @@
     CHANGELOG.md file provided with this package (forwarded request 1030899 from glaubitz)</comment>
     <requestid>1032332</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>d4af632f2679f2ebd33a4664783f18df</srcmd5>
+    <version>2.10.0</version>
+    <time>1669129862</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 2.10.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1037254 from glaubitz)</comment>
+    <requestid>1037289</requestid>
+  </revision>
 </revisionlist>
