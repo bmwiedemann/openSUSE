@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 21 15:12:29 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.62.1:
+  * fix: sort relationships in SPDX output (#1350)
+  * chore: add debug logging for decode errors (#1352)
+  * feat(npm): handle aliases in package-lock.json (#1349)
+
+-------------------------------------------------------------------
 Sat Nov 19 12:04:28 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.62.0:
