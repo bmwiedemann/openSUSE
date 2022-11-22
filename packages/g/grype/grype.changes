@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 22 07:29:31 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.53.1:
+  * Update Syft to v0.62.1 (#1006)
+  * Update grype bootstrap tools to latest versions. (#1004)
+  * scoped: token release for content write on image assets (#1002)
+
+-------------------------------------------------------------------
 Sat Nov 19 12:05:00 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.53.0:
