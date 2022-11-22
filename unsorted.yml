@@ -282,6 +282,7 @@ unsorted:
   - SpeedTest++ 
   - Srain 
   - Srain-lang 
+  - StyLua 
   - SwayNotificationCenter 
   - ThePEG-devel: [x86_64] 
   - ThePEG-libs: [x86_64] 
@@ -3070,6 +3071,7 @@ unsorted:
   - docserv-config-apache2 
   - docserv-config-nginx 
   - docserv-minisrv 
+  - docserv-sitemap 
   - doctest-devel 
   - dog: [x86_64] 
   - dogtail 
@@ -7965,7 +7967,6 @@ unsorted:
   - jsch-demo 
   - jsch-javadoc 
   - jshon 
-  - jsmn-devel 
   - json-glib-devel 
   - json-lib 
   - json-lib-javadoc 
@@ -11972,7 +11973,6 @@ unsorted:
   - libjq-devel 
   - libjq1 
   - libjrtp3_11_1 
-  - libjsmn0 
   - libjson-c-devel 
   - libjson-c-doc 
   - libjson-glib-1_0-0-32bit: [x86_64] 
@@ -16511,6 +16511,7 @@ unsorted:
   - mingw32-binutils-devel 
   - mingw32-cpp 
   - mingw32-cross-binutils 
+  - mingw32-cross-binutils-utils 
   - mingw32-cross-breakpad-tools 
   - mingw32-cross-cpp 
   - mingw32-cross-cpp-bootstrap 
@@ -16564,6 +16565,7 @@ unsorted:
   - mingw64-binutils-devel 
   - mingw64-cpp 
   - mingw64-cross-binutils 
+  - mingw64-cross-binutils-utils 
   - mingw64-cross-breakpad-tools 
   - mingw64-cross-cpp 
   - mingw64-cross-cpp-bootstrap 
@@ -22275,6 +22277,7 @@ unsorted:
   - python310-QR-Code-generator 
   - python310-QtAwesome 
   - python310-QtPy 
+  - python310-QtPy-test 
   - python310-RegexOrder 
   - python310-Routes 
   - python310-Rtree 
@@ -22590,6 +22593,7 @@ unsorted:
   - python310-azure-mgmt-automation 
   - python310-azure-mgmt-avs 
   - python310-azure-mgmt-azureadb2c 
+  - python310-azure-mgmt-azurearcdata 
   - python310-azure-mgmt-azurestack 
   - python310-azure-mgmt-azurestackhci 
   - python310-azure-mgmt-baremetalinfrastructure 
@@ -23039,6 +23043,7 @@ unsorted:
   - python310-dask-diagnostics 
   - python310-dask-distributed 
   - python310-dask-dot 
+  - python310-dask-test 
   - python310-databases 
   - python310-datadiff 
   - python310-datashader 
@@ -25533,6 +25538,7 @@ unsorted:
   - python38-QR-Code-generator 
   - python38-QtAwesome 
   - python38-QtPy 
+  - python38-QtPy-test 
   - python38-RegexOrder 
   - python38-Routes 
   - python38-Rtree 
@@ -25854,6 +25860,7 @@ unsorted:
   - python38-azure-mgmt-automation 
   - python38-azure-mgmt-avs 
   - python38-azure-mgmt-azureadb2c 
+  - python38-azure-mgmt-azurearcdata 
   - python38-azure-mgmt-azurestack 
   - python38-azure-mgmt-azurestackhci 
   - python38-azure-mgmt-baremetalinfrastructure 
@@ -26319,6 +26326,7 @@ unsorted:
   - python38-dask-diagnostics 
   - python38-dask-distributed 
   - python38-dask-dot 
+  - python38-dask-test 
   - python38-databases 
   - python38-datadiff 
   - python38-datashader 
@@ -28892,6 +28900,7 @@ unsorted:
   - python39-QR-Code-generator 
   - python39-QtAwesome 
   - python39-QtPy 
+  - python39-QtPy-test 
   - python39-RegexOrder 
   - python39-Routes 
   - python39-Rtree 
@@ -29213,6 +29222,7 @@ unsorted:
   - python39-azure-mgmt-automation 
   - python39-azure-mgmt-avs 
   - python39-azure-mgmt-azureadb2c 
+  - python39-azure-mgmt-azurearcdata 
   - python39-azure-mgmt-azurestack 
   - python39-azure-mgmt-azurestackhci 
   - python39-azure-mgmt-baremetalinfrastructure 
@@ -29677,6 +29687,7 @@ unsorted:
   - python39-dask-diagnostics 
   - python39-dask-distributed 
   - python39-dask-dot 
+  - python39-dask-test 
   - python39-databases 
   - python39-datadiff 
   - python39-datashader 
@@ -32443,6 +32454,7 @@ unsorted:
   - qt6-quick3dparticleeffects-devel 
   - qt6-quick3dparticles-devel 
   - qt6-quick3dparticles-private-devel 
+  - qt6-quick3dphysics: [x86_64] 
   - qt6-quick3dphysics-devel: [x86_64] 
   - qt6-quick3dphysics-docs-html: [x86_64] 
   - qt6-quick3dphysics-docs-qch: [x86_64] 
