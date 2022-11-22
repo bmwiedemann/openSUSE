@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Nov 20 22:59:20 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.4.26
+  * Audio pops should be fixed.
+  * Positional audio in observer mode now uses the camera direction
+  * Fixed a regression that caused some textures to render skewed.
+  * Fixed the Machine Gun firing continuously when the mouse wheel
+    is used to fire.
+
+-------------------------------------------------------------------
 Wed Nov  9 05:52:13 UTC 2022 - Dmitriy Perlow <dap.darkness@gmail.com>
 
 - BuildRequre sdl2 stuff via pkgconfig(*).

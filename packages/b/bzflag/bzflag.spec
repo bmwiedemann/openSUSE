@@ -21,7 +21,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           bzflag
-Version:        2.4.24
+Version:        2.4.26
 Release:        0
 Summary:        3D Networked Multiplayer Tank Battle Game
 License:        GPL-2.0-or-later
@@ -41,12 +41,12 @@ BuildRequires:  curl-devel
 BuildRequires:  fdupes
 BuildRequires:  freeglut-devel
 BuildRequires:  gcc-c++
-BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  libcares-devel
 BuildRequires:  libdrm-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(sdl2)
 Requires(pre):  %fillup_prereq
 %{?systemd_ordering}
 %if 0%{?sles_version}
