@@ -1315,4 +1315,12 @@
   The main package will get it via indirect dependencies then. (forwarded request 1006950 from frispete)</comment>
     <requestid>1007091</requestid>
   </revision>
+  <revision rev="146" vrev="3">
+    <srcmd5>c52f8ebea87461b2829ddc3fdfcfb6a5</srcmd5>
+    <version>3.22.6</version>
+    <time>1669129795</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1037150</requestid>
+  </revision>
 </revisionlist>

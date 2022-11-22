@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 21 16:13:36 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update disable_hp-upgrade.patch: Log the 'openSUSE disabled this
+  for security message' is 'info', not 'error'.
+
+-------------------------------------------------------------------
 Thu Sep 29 12:58:15 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Move the hplip-udev-rules requirement from hplip to hplip-hpijs.

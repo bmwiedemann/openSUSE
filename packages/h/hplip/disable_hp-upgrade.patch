@@ -7,7 +7,7 @@ Index: b/upgrade.py
      log.set_level('debug')
  
 +
-+log.error("HPLIP upgrade is disabled by openSUSE for security reasons, see https://bugzilla.suse.com/show_bug.cgi?id=853405 - if you like to upgrade HPLIP, use an openSUSE software package manager like YaST or zypper.")
++log.info("HPLIP upgrade is disabled by openSUSE for security reasons, see https://bugzilla.suse.com/show_bug.cgi?id=853405 - if you like to upgrade HPLIP, use an openSUSE software package manager like YaST or zypper.")
 +clean_exit(1)
 +
 +
