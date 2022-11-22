@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 10 11:02:08 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- Security fix: [bsc#1205125, CVE-2022-42920]
+  * Apache Commons BCEL prior to 6.6.0 allows producing
+    arbitrary bytecode via out-of-bounds writing
+  * Add bcel-CVE-2022-42920.patch
+
+-------------------------------------------------------------------
 Fri Feb  1 14:10:42 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - BuildIgnore xalan-j2, xml-apis, xml-resolver, xerces-j2, since

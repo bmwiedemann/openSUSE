@@ -1,7 +1,7 @@
 #
 # spec file for package bcel
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,8 @@ Source1:        http://archive.apache.org/dist/commons/bcel/source/%{name}-%{ver
 Source2:        http://repo.maven.apache.org/maven2/org/apache/%{name}/%{name}/%{version}/%{name}-%{version}.pom
 Source3:        bcel.keyring
 Patch0:         bcel-5.2-encoding.patch
+#PATCH-FIX-UPSTREAM bsc#1205125 CVE-2022-42920 Out-of-bounds writing issue
+Patch1:         bcel-CVE-2022-42920.patch
 BuildRequires:  ant
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
@@ -59,8 +61,8 @@ much better information about what is wrong with your code than the
 standard JVM message.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
+
 # remove all binary libs
 find . -name "*.jar" -exec rm -f {} \;
 # very broken build
@@ -73,11 +75,7 @@ export OPT_JAR_LIST="ant/ant-nodeps"
 ant \
     -Dant.build.javac.target=8 -Dant.build.javac.source=8 \
     -Dbuild.dest=./build -Dbuild.dir=./build -Dname=%{name} \
-    compile
-ant \
-    -Dant.build.javac.target=8 -Dant.build.javac.source=8 \
-    -Dbuild.dest=./build -Dbuild.dir=./build -Dname=%{name} \
-	jar
+    compile jar
 
 %install
 # jars

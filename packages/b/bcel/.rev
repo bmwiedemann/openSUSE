@@ -222,4 +222,12 @@
     <comment>fix build cycle</comment>
     <requestid>670620</requestid>
   </revision>
+  <revision rev="31" vrev="37">
+    <srcmd5>23654c2236dfde42c1ec1a0a709f5fb0</srcmd5>
+    <version>5.2</version>
+    <time>1669129764</time>
+    <user>dimstar_suse</user>
+    <comment>Security fixes</comment>
+    <requestid>1037028</requestid>
+  </revision>
 </revisionlist>
