@@ -17,7 +17,7 @@
 
 
 Name:           tut
-Version:        1.0.19
+Version:        1.0.20
 Release:        0
 Summary:        A TUI for Mastodon with vim inspired keys
 License:        MIT
@@ -25,7 +25,6 @@ Group:          Productivity/Networking/Web/Frontends
 URL:            https://tut.anv.nu
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  gcc-c++
 BuildRequires:  golang-packaging
 # some modules require go 1.18+
 BuildRequires:  golang(API) >= 1.18

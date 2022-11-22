@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Nov 23 18:59:51 UTC 2022 - sweiberg@suse.com
+
+- Update to version 1.0.20:
+  * 1.0.20 (#183)
+    You can now follow and unfollow tags with :follow-tag tut and
+    :unfollow-tag tut.
+    You can now add and remove users from lists. Run :lists and
+    then you can use the keys that tut displays. This feature only
+    works okay as it doesn't give you any response if the user is
+    added to the list or not. But it works.
+    An error from the terminal programs like lynx shouldn't crash
+    tut.
+    When you are reading a thread tut won't make unnecessary API
+    requests
+  * add history to help
+  * 1.0.19 (#179)
+  * 1.0.18 (#175)
+  * Updating go install command. (#167)
+  * 1.0.17 (#164)
+  * 1.0.16 (#161)
+  * 1.0.15 (#160)
+  * 1.0.14 (#159)
+  * 1.0.13 (#157)
+
+-------------------------------------------------------------------
 Mon Nov 21 11:47:53 UTC 2022 - Stefan Weiberg <sweiberg@suse.com>
 
 - Initial packaging of tut version 1.0.19:
