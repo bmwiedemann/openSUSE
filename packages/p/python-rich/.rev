@@ -188,4 +188,34 @@
     <comment></comment>
     <requestid>990494</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>be548139020028cc12bb044ce48ae720</srcmd5>
+    <version>12.6.0</version>
+    <time>1669129788</time>
+    <user>dimstar_suse</user>
+    <comment>- change Source URL to https://files.pythonhosted.org
+- change Upstream URL to https://github.com/Textualize/rich
+- add _service file to easily download this
+- remove CHANGELOG.md, as this is not present in the PyPI tarball
+- Update to 12.6.0:
+  * Added
+    - Parse ANSI escape sequences in pretty repr #2470
+    - Add support for FORCE_COLOR env var #2449
+    - Allow a max_depth argument to be passed to the install() hook #2486
+    - Document using None as name in __rich_repr__ for tuple positional args #2379
+    - Add font_aspect_ratio parameter in SVG export https://github.com/Textualize/rich/pull/2539/files
+    - Added Table.add_section method. #2544
+  * Fixed
+    - Handle stdout/stderr being null #2513
+    - Fix NO_COLOR support on legacy Windows #2458
+    - Fix pretty printer handling of cyclic references #2524
+    - Fix missing mode property on file wrapper breaking uploads via requests #2495
+    - Fix mismatching default value of parameter ensure_ascii #2538
+    - Remove unused height parameter in Layout class #2540
+    - Fixed exception in Syntax.rich_measure for empty files
+  * Changed
+    - Removed border from code blocks in Markdown
+</comment>
+    <requestid>1037125</requestid>
+  </revision>
 </revisionlist>

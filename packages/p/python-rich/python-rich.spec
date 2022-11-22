@@ -17,18 +17,15 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-# https://github.com/Textualize/rich/issues/2410
-%define commit cde23ed0a1ecad8c63436148c7e1fb6f0073fca8
 Name:           python-rich
-Version:        12.5.1
+Version:        12.6.0
 Release:        0
 Summary:        A Python library for rich text and beautiful formatting in the terminal
 License:        MIT
 Group:          Development/Languages/Python
-URL:            https://github.com/willmcgugan/rich
-Source:         https://github.com/willmcgugan/rich/archive/%{commit}.tar.gz#/rich-%{version}.tar.gz
+URL:            https://github.com/Textualize/rich
+Source:         https://files.pythonhosted.org/packages/source/r/rich/rich-%{version}.tar.gz
 BuildRequires:  %{python_module commonmark >= 0.9.0}
 BuildRequires:  %{python_module dataclasses >= 0.7 if %python-base < 3.7}
 BuildRequires:  %{python_module pip}
@@ -57,7 +54,7 @@ Render rich text, tables, progress bars, syntax highlighting,
 markdown and more to the terminal.
 
 %prep
-%setup -q -n rich-%{commit}
+%setup -q -n rich-%{version}
 
 %build
 %pyproject_wheel
@@ -66,12 +63,9 @@ markdown and more to the terminal.
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%check
-%pytest -k 'not test_log'
-
 %files %{python_files}
 %license LICENSE
-%doc CHANGELOG.md README.md
+%doc README.md
 %{python_sitelib}/rich
 %{python_sitelib}/rich-%{version}*-info
 
