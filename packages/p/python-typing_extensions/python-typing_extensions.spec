@@ -1,5 +1,5 @@
 #
-# spec file for package python-typing_extensions
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -16,7 +16,16 @@
 #
 
 
-Name:           python-typing_extensions
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+
+Name:           python-typing_extensions%{psuffix}
 Version:        4.4.0
 Release:        0
 Summary:        Backported and Experimental Type Hints for Python 3.7+
@@ -28,11 +37,13 @@ Source1:        https://raw.githubusercontent.com/python/typing_extensions/%{ver
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module flit-core >= 3.4 with %python-flit-core < 4}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module testsuite}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Provides:       python-typing-extensions = %{version}-%{release}
 BuildArch:      noarch
+%if %{with test}
+BuildRequires:  %{python_module testsuite}
+%endif
 %python_subpackages
 
 %description
@@ -64,28 +75,31 @@ after that version reaches end of life.
 %prep
 %setup -q -n typing_extensions-%{version}
 # This should not be necessary in the next release
-if [ -f src/_typed_dict_test_helper.py ]; then
-  exit 1
-fi
-cp %{SOURCE1} src/
+[ ! -f src/_typed_dict_test_helper.py ] && cp %{SOURCE1} src/ || exit 1
 
+%if !%{with test}
 %build
 %pyproject_wheel
 
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
+%if %{with test}
 %check
 pushd src
 %pyunittest -v test_typing_extensions
 popd
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %license LICENSE
 %doc CHANGELOG.md README.md
 %{python_sitelib}/typing_extensions.py*
 %pycache_only %{python_sitelib}/__pycache__/typing_extensions*
 %{python_sitelib}/typing_extensions-%{version}*-info
+%endif
 
 %changelog
