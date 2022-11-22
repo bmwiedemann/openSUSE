@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Nov 22 07:50:20 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 4.18.0:
+  - Update metadata caching with dependency invalidating
+  - Still allow images with use_flaresolverr_proxy if
+    use_browser_cache
+  - Support classic AND modern (and minimalist) theme for
+    storiesonline, finestories and scifistories - thanks, mvlcek
+  - adapter_tenhawkpresents: Change site to t.evancurrie.ca -
+    tenhawk domain semi-broken
+  - remove_class_chapter missing from config lists
+  - adapter_adultfanfictionorg: Fixes for site changes, thanks
+    cryosaur.
+  - Remove Calibre Update Cover option entirely(was deprecated)
+    #878
+
+-------------------------------------------------------------------
 Mon Oct 24 17:22:25 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 4.17.0:
