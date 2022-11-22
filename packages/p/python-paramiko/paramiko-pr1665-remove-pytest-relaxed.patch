@@ -15,20 +15,19 @@ on the system.  It has been banned from Gentoo for this reason.
  tests/test_client.py | 20 ++++++++++----------
  3 files changed, 10 insertions(+), 14 deletions(-)
 
-Index: paramiko-2.11.0/tests/test_client.py
+Index: paramiko-2.12.0/tests/test_client.py
 ===================================================================
---- paramiko-2.11.0.orig/tests/test_client.py	2022-05-17 03:04:13.000000000 +0200
-+++ paramiko-2.11.0/tests/test_client.py	2022-05-26 22:57:20.216831045 +0200
-@@ -33,7 +33,7 @@
- import weakref
+--- paramiko-2.12.0.orig/tests/test_client.py
++++ paramiko-2.12.0/tests/test_client.py
+@@ -34,7 +34,6 @@ import weakref
  from tempfile import mkstemp
  
+ import pytest
 -from pytest_relaxed import raises
-+import pytest
  from mock import patch, Mock
  
  import paramiko
-@@ -733,11 +733,11 @@
+@@ -787,11 +786,11 @@ class PasswordPassphraseTests(ClientTest
  
      # TODO: more granular exception pending #387; should be signaling "no auth
      # methods available" because no key and no password
@@ -43,7 +42,7 @@ Index: paramiko-2.11.0/tests/test_client.py
  
      @requires_sha1_signing
      def test_passphrase_kwarg_used_for_key_passphrase(self):
-@@ -757,15 +757,15 @@
+@@ -811,15 +810,15 @@ class PasswordPassphraseTests(ClientTest
              password="television",
          )
  

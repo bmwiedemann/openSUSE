@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-paramiko
-Version:        2.11.0
+Version:        2.12.0
 Release:        0
 Summary:        SSH2 protocol library
 License:        LGPL-2.1-or-later
@@ -27,8 +26,8 @@ Group:          Documentation/Other
 URL:            https://www.paramiko.org/
 Source0:        https://files.pythonhosted.org/packages/source/p/paramiko/paramiko-%{version}.tar.gz
 Patch0:         paramiko-test_extend_timeout.patch
-# PATCH-FIX-UPSTREAM paramiko-pr1655-remove-pytest-relaxed.patch gh#paramiko/paramiko#1655 -- pytest-relaxed is broken
-Patch1:         paramiko-pr1655-remove-pytest-relaxed.patch
+# PATCH-FIX-UPSTREAM paramiko-pr1665-remove-pytest-relaxed.patch gh#paramiko/paramiko#1665 -- pytest-relaxed is broken
+Patch1:         paramiko-pr1665-remove-pytest-relaxed.patch
 BuildRequires:  %{python_module PyNaCl >= 1.0.1}
 BuildRequires:  %{python_module bcrypt >= 3.1.3}
 BuildRequires:  %{python_module cryptography >= 2.5}
@@ -39,6 +38,7 @@ BuildRequires:  %{python_module pyasn1 >= 0.1.7}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Recommends:     python-gssapi
@@ -47,6 +47,7 @@ Requires:       python-PyNaCl >= 1.0.1
 Requires:       python-bcrypt >= 3.1.3
 Requires:       python-cryptography >= 2.5
 Requires:       python-pyasn1 >= 0.1.7
+Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
 
@@ -70,11 +71,9 @@ are supported.  SFTP client and server mode are both supported too.
 This package contains the documentation.
 
 %prep
-%setup -q -n paramiko-%{version}
-%autopatch -p1
-
+%autosetup -p1 -n paramiko-%{version}
 # Fix non-executable script rpmlint issue:
-find demos -name "*.py" -exec sed -i "/#\!\/usr\/bin\/.*/d" {} \;
+find demos -name "*.py" -exec sed -i "/#\!\/usr\/bin\/.*/d" {} \; -exec chmod -x {} \;
 
 %build
 %python_build
@@ -84,7 +83,7 @@ find demos -name "*.py" -exec sed -i "/#\!\/usr\/bin\/.*/d" {} \;
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# https://github.com/paramiko/paramiko/issues/2027
+# https://github.com/paramiko/paramiko/issues/2027 -- despite being "completed" upstream, this is not fixed yet.
 sed -i 's:from mock:from unittest.mock:' tests/test_*.py
 export LANG=en_US.UTF-8
 %pytest
@@ -92,7 +91,8 @@ export LANG=en_US.UTF-8
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/paramiko
+%{python_sitelib}/paramiko-%{version}*-info
 
 %files -n python-paramiko-doc
 %license LICENSE
