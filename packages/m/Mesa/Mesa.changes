@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Nov 17 16:32:41 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 22.2.4:
+  * clover: windows:  library filename has \`-1` suffix and a \`lib` prefix
+    when built with mingw
+  * radv, dxvk: Rendering errors in World of Tanks after "Switch to dynamic
+    rendering only"
+  * gen9 gt3e/gt4e skus fail dEQP-VK.pipeline.multisample.sample_locations_ext.*
+  * v3d: Wrong colors (pink) in videos in Firefox (likely YUV->RGB shader issue)
+  * panfrost t860 glmark-es2 regression
+  * radv: Flickering in Spider-Man Remastered (Regression) (Bisected)
+  * radv: Hitman 2 using Direct3D 12 has discolored squares on RDNA2 with DCC
+    enabled
+  * panfrost/midgard -  on Duckstation PSX emulator: segfault on GLES 3.0 and
+    bad shader compilations on 3.3
+
+-------------------------------------------------------------------
 Tue Nov 15 15:01:19 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - try to fix build on ppc64le due to running OOM (boo#1205441)

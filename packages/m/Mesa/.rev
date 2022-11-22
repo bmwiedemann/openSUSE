@@ -5088,4 +5088,12 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   * let's request 20G of physical memory via _constraints file</comment>
     <requestid>1036252</requestid>
   </revision>
+  <revision rev="461" vrev="333">
+    <srcmd5>ae77e40106beea139a4107be238b6e93</srcmd5>
+    <version>unknown</version>
+    <time>1669129757</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1036981</requestid>
+  </revision>
 </revisionlist>
