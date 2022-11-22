@@ -123,7 +123,7 @@ g++ tramp3d-v4.cpp -O2 -g -w -o t1
 cp t1 t2
 cp t1 t3
 cp t1 t4
-./dwz -m tmp.debug t1 t2 t3 t4
+./dwz -j 1 -m tmp.debug t1 t2 t3 t4
 make clean
 %make_build CFLAGS="%{flags} -fprofile-use" LDFLAGS="-fprofile-use"
 

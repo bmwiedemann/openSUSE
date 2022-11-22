@@ -192,4 +192,12 @@
   * dwz-enable-odr-by-default.patch</comment>
     <requestid>1034029</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>cb4f07ce9c36c3f60fcf7bb1a6ac191a</srcmd5>
+    <version>0.15</version>
+    <time>1669129753</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1036954</requestid>
+  </revision>
 </revisionlist>
