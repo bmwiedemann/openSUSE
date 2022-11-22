@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 21 20:09:43 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.51
+  * c-ares DNS resolver: fix logical race between resolution
+    timeout/cancellation and fd readability.
+  * Remove support for pthread TLS
+
+-------------------------------------------------------------------
 Fri Oct 28 09:58:50 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - Update to release 1.50.1
