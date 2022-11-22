@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov 17 10:51:26 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add container-storage-driver.sh (bsc#1197093)
+
+-------------------------------------------------------------------
+Thu Nov 10 11:58:09 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- postinstall script: slight cleanup, no functional change
+
+-------------------------------------------------------------------
 Tue Oct 25 10:40:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - set detached sigstore attachments for the SUSE controlled registries

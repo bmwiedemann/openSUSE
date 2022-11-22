@@ -47,7 +47,8 @@ Source8:        default.yaml
 Source9:        common-%{commonver}.tar.xz
 Source10:       containers.conf
 Source11:       %{name}.rpmlintrc
-Source12:	shortnames.conf
+Source12:       shortnames.conf
+Source13:       container-storage-driver.sh
 BuildRequires:  go-go-md2man
 Provides:       libcontainers-image = %{version}
 Provides:       libcontainers-storage = %{version}
@@ -120,6 +121,7 @@ install -D -m 0644 %{SOURCE5} %{buildroot}/%{_datadir}/containers/mounts.conf
 install -D -m 0644 %{SOURCE5} %{buildroot}/%{_sysconfdir}/containers/mounts.conf
 install -D -m 0644 %{SOURCE6} %{buildroot}/%{_sysconfdir}/containers/registries.conf
 install -D -m 0644 %{SOURCE12} %{buildroot}/%{_sysconfdir}/containers/registries.conf.d/000-shortnames.conf
+install -D -m 0644 %{SOURCE13} %{buildroot}/usr/etc/profile.d/libcontainers-common-storage.sh
 install -D -m 0644 %{SOURCE8} %{buildroot}/%{_sysconfdir}/containers/registries.d/default.yaml
 sed -e 's-@LIBEXECDIR@-%{_libexecdir}-g' -i %{SOURCE10}
 install -D -m 0644 %{SOURCE10} %{buildroot}/%{_datadir}/containers/containers.conf
@@ -139,12 +141,14 @@ install -D -m 0644 common-%{commonver}/docs/containers.conf.5 %{buildroot}/%{_ma
 %post
 # Comment out ostree_repo if it's blank [boo#1189893]
 sed -i 's/ostree_repo = ""/\#ostree_repo = ""/g' /etc/containers/storage.conf
-# If installing, check if /var/lib/containers (or /var/lib in its defect) is btrfs and set driver
-# to "btrfs" if true
+# use btrfs storage driver if system storage is on btrfs
+# For rootless it will fall back to overlay if btrfs is not working
+# https://github.com/containers/storage/blob/main/docs/containers-storage.conf.5.md#storage-table
 if [ $1 -eq 1 ] ; then
-  # Space to avoid ambiguity with arithmetic expansion
-  fstype=$( (findmnt -o FSTYPE -l --target /var/lib/containers || findmnt -o FSTYPE -l --target /var/lib) | grep -v FSTYPE)
-  if [ "$fstype" = "btrfs" ]; then
+  for dir in /var/lib/containers /var/lib ; do
+    test "$(findmnt -o FSTYPE -l --target '$dir' | grep -v FSTYPE)" != "btrfs" && CONTAINERS_USE_BTRFS_DRIVER=0
+  done
+  if [ "$CONTAINERS_USE_BTRFS_DRIVER" != "0" ]; then
     sed -i 's/driver = "overlay"/driver = "btrfs"/g' %{_sysconfdir}/containers/storage.conf
   fi
 fi
@@ -162,6 +166,7 @@ fi
 %config(noreplace) %{_sysconfdir}/containers/policy.json
 %config(noreplace) %{_sysconfdir}/containers/storage.conf
 %config(noreplace) %{_sysconfdir}/containers/mounts.conf
+/usr/etc/profile.d/libcontainers-common-storage.sh
 %{_datadir}/containers/mounts.conf
 %config(noreplace) %{_sysconfdir}/containers/registries.conf
 %config(noreplace) %{_sysconfdir}/containers/seccomp.json
