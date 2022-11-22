@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 21 13:24:47 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Skip rpmlint error python-tests-in-package.
+
+-------------------------------------------------------------------
 Tue Nov  1 05:46:14 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 22.10.0:

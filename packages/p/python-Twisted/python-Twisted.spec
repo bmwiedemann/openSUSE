@@ -33,6 +33,7 @@ Summary:        An asynchronous networking framework written in Python
 License:        MIT
 URL:            https://twistedmatrix.com/
 Source0:        https://files.pythonhosted.org/packages/source/T/Twisted/Twisted-%{version}.tar.gz
+Source99:       python-Twisted.rpmlintrc
 Patch0:         skip_MultiCast.patch
 # PATCH-FIX-UPSTREAM no-test_successResultOfWithFailureHasTraceback.patch https://twistedmatrix.com/trac/ticket/9665 mcepl@suse.com
 # skip over the test test_successResultOfWithFailureHasTraceback

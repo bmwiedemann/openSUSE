@@ -1474,4 +1474,13 @@
       error. (bsc#1204781, CVE-2022-39348)</comment>
     <requestid>1032605</requestid>
   </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>236eef3981b9667d69b5029d94b66c19</srcmd5>
+    <version>22.10.0</version>
+    <time>1669129786</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip rpmlint error python-tests-in-package.
+</comment>
+    <requestid>1037121</requestid>
+  </revision>
 </revisionlist>
