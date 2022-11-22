@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Nov 20 18:38:07 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.12.0
+  * [Feature] #2125: (also re: #2054) Add a transport_factory kwarg
+    to SSHClient.connect for advanced users to gain more control
+    over early Transport setup and manipulation. Thanks to Noah
+    Pederson for the patch.
+- Release 2.11.1
+  * [Bug]: bug:1637 (via #1599) Raise SSHException explicitly when
+    blank private key data is loaded, instead of the natural result
+    of IndexError. This should help more bits of Paramiko or
+    Paramiko-adjacent codebases to correctly handle this class of
+    error. Credit: Nicholas Dietz.
+  * [Bug] #1822: (via, and relating to, far too many other issues
+    to mention here) Update SSHClient so it explicitly closes its
+    wrapped socket object upon encountering socket errors at
+    connection time. This should help somewhat with certain classes
+    of memory leaks, resource warnings, and/or errors (though we
+    hasten to remind everyone that Client and Transport have their
+    own .close() methods for use in non-error situations!). Patch
+    courtesy of @YoavCohen.
+- Rename and refresh:
+  - paramiko-pr1655-remove-pytest-relaxed.patch
+  + paramiko-pr1665-remove-pytest-relaxed.patch
+  * gh#paramiko/paramiko#1665
+
+-------------------------------------------------------------------
 Thu May 26 20:43:45 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - update to 2.11.0
