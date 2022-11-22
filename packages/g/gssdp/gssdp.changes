@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Nov 20 20:44:13 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.6.2:
+  + Propagate random port up to client, partial fix for GUPnP/81
+  + Add manpage for sniffer.
+- Pass manpages=false to meson, we do not have the needed pandoc
+  BuildRequires available for all arches/buildtargets.
+
+-------------------------------------------------------------------
 Thu Nov 10 13:31:35 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.6.1:
