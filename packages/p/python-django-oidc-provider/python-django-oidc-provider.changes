@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 22 13:00:50 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove python-six dependency
+- Remove python_module macro definition
+- Use autosetup instead setup+autopatch
+- More specific python_sitelib in %files
+
+-------------------------------------------------------------------
 Tue May 10 11:20:57 UTC 2022 - pgajdos@suse.com
 
 - do not require python-mock for build

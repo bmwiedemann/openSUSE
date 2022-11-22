@@ -80,8 +80,10 @@ Subject: [PATCH 01/13] feat: django 4.*
  tox-django4-devtests.ini                                                                      |   45 
  74 files changed, 2959 insertions(+), 2254 deletions(-)
 
---- a/README.md
-+++ b/README.md
+Index: django-oidc-provider-0.7.0/README.md
+===================================================================
+--- django-oidc-provider-0.7.0.orig/README.md
++++ django-oidc-provider-0.7.0/README.md
 @@ -13,7 +13,7 @@ OpenID Connect is a simple identity laye
  
  `django-oidc-provider` can help you providing out of the box all the endpoints, data and logic needed to add OpenID Connect (and OAuth2) capabilities to your Django projects.
@@ -91,8 +93,10 @@ Subject: [PATCH 01/13] feat: django 4.*
  
  [Read documentation for more info.](http://django-oidc-provider.readthedocs.org/)
  
---- a/docs/conf.py
-+++ b/docs/conf.py
+Index: django-oidc-provider-0.7.0/docs/conf.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/docs/conf.py
++++ django-oidc-provider-0.7.0/docs/conf.py
 @@ -31,7 +31,7 @@
  extensions = []
  
@@ -248,8 +252,10 @@ Subject: [PATCH 01/13] feat: django 4.*
  
  # The depth of the table of contents in toc.ncx.
  # epub_tocdepth = 3
---- a/example/app/settings.py
-+++ b/example/app/settings.py
+Index: django-oidc-provider-0.7.0/example/app/settings.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/example/app/settings.py
++++ django-oidc-provider-0.7.0/example/app/settings.py
 @@ -1,74 +1,77 @@
  # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
  import os
@@ -381,16 +387,20 @@ Subject: [PATCH 01/13] feat: django 4.*
 -SITE_URL = 'http://localhost:8000'
 +SITE_URL = "http://localhost:8000"
  OIDC_SESSION_MANAGEMENT_ENABLE = True
---- a/example/app/templates/base.html
-+++ b/example/app/templates/base.html
+Index: django-oidc-provider-0.7.0/example/app/templates/base.html
+===================================================================
+--- django-oidc-provider-0.7.0.orig/example/app/templates/base.html
++++ django-oidc-provider-0.7.0/example/app/templates/base.html
 @@ -1,4 +1,4 @@
 -{% load i18n staticfiles %}
 +{% load i18n static %}
  
  <!DOCTYPE html>
  <html lang="en">
---- a/example/app/templates/home.html
-+++ b/example/app/templates/home.html
+Index: django-oidc-provider-0.7.0/example/app/templates/home.html
+===================================================================
+--- django-oidc-provider-0.7.0.orig/example/app/templates/home.html
++++ django-oidc-provider-0.7.0/example/app/templates/home.html
 @@ -1,5 +1,5 @@
  {% extends "base.html" %}
 -{% load i18n staticfiles %}
@@ -398,7 +408,9 @@ Subject: [PATCH 01/13] feat: django 4.*
  
  {% block content %}
  
---- a/example/app/templates/login.html
+Index: django-oidc-provider-0.7.0/example/app/templates/login.html
+===================================================================
+--- django-oidc-provider-0.7.0.orig/example/app/templates/login.html
 +++ /dev/null
 @@ -1,29 +0,0 @@
 -{% extends 'base.html' %}
@@ -430,8 +442,10 @@ Subject: [PATCH 01/13] feat: django 4.*
 -</div>
 -
 -{% endblock %}
---- a/example/app/urls.py
-+++ b/example/app/urls.py
+Index: django-oidc-provider-0.7.0/example/app/urls.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/example/app/urls.py
++++ django-oidc-provider-0.7.0/example/app/urls.py
 @@ -1,16 +1,17 @@
 -from django.contrib.auth import views as auth_views
  try:
@@ -458,8 +472,10 @@ Subject: [PATCH 01/13] feat: django 4.*
 +    path("", include("oidc_provider.urls", namespace="oidc_provider")),
 +    path("admin/", admin.site.urls),
  ]
---- a/example/app/wsgi.py
-+++ b/example/app/wsgi.py
+Index: django-oidc-provider-0.7.0/example/app/wsgi.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/example/app/wsgi.py
++++ django-oidc-provider-0.7.0/example/app/wsgi.py
 @@ -2,7 +2,6 @@ import os
  
  from django.core.wsgi import get_wsgi_application
@@ -469,8 +485,10 @@ Subject: [PATCH 01/13] feat: django 4.*
 +os.environ.setdefault("DJANGO_SETTINGS_MODULE", "app.settings")
  
  application = get_wsgi_application()
---- a/example/manage.py
-+++ b/example/manage.py
+Index: django-oidc-provider-0.7.0/example/manage.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/example/manage.py
++++ django-oidc-provider-0.7.0/example/manage.py
 @@ -2,8 +2,8 @@
  import os
  import sys
@@ -482,8 +500,10 @@ Subject: [PATCH 01/13] feat: django 4.*
  
      from django.core.management import execute_from_command_line
  
+Index: django-oidc-provider-0.7.0/example/templates/registration/login.html
+===================================================================
 --- /dev/null
-+++ b/example/templates/registration/login.html
++++ django-oidc-provider-0.7.0/example/templates/registration/login.html
 @@ -0,0 +1,13 @@
 +<!-- templates/registration/login.html -->
 +{% extends 'base.html' %}
@@ -498,14 +518,18 @@ Subject: [PATCH 01/13] feat: django 4.*
 +  <button type="submit" class="btn btn-primary btn-lg">Log In</button>
 +</form>
 +{% endblock %}
---- a/oidc_provider/__init__.py
-+++ b/oidc_provider/__init__.py
+Index: django-oidc-provider-0.7.0/oidc_provider/__init__.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/__init__.py
++++ django-oidc-provider-0.7.0/oidc_provider/__init__.py
 @@ -1,2 +1 @@
 -
 -default_app_config = 'oidc_provider.apps.OIDCProviderConfig'
 +default_app_config = "oidc_provider.apps.OIDCProviderConfig"
---- a/oidc_provider/admin.py
-+++ b/oidc_provider/admin.py
+Index: django-oidc-provider-0.7.0/oidc_provider/admin.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/admin.py
++++ django-oidc-provider-0.7.0/oidc_provider/admin.py
 @@ -2,45 +2,48 @@ from hashlib import sha224
  from random import randint
  from uuid import uuid4
@@ -657,8 +681,10 @@ Subject: [PATCH 01/13] feat: django 4.*
  
 -    readonly_fields = ['kid']
 +    readonly_fields = ["kid"]
---- a/oidc_provider/apps.py
-+++ b/oidc_provider/apps.py
+Index: django-oidc-provider-0.7.0/oidc_provider/apps.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/apps.py
++++ django-oidc-provider-0.7.0/oidc_provider/apps.py
 @@ -3,5 +3,5 @@ from django.apps import AppConfig
  
  class OIDCProviderConfig(AppConfig):
@@ -667,8 +693,10 @@ Subject: [PATCH 01/13] feat: django 4.*
 -    verbose_name = u'OpenID Connect Provider'
 +    name = "oidc_provider"
 +    verbose_name = "OpenID Connect Provider"
---- a/oidc_provider/lib/claims.py
-+++ b/oidc_provider/lib/claims.py
+Index: django-oidc-provider-0.7.0/oidc_provider/lib/claims.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/lib/claims.py
++++ django-oidc-provider-0.7.0/oidc_provider/lib/claims.py
 @@ -1,46 +1,46 @@
  import copy
  
@@ -920,8 +948,10 @@ Subject: [PATCH 01/13] feat: django 4.*
              }
          }
  
---- a/oidc_provider/lib/endpoints/authorize.py
-+++ b/oidc_provider/lib/endpoints/authorize.py
+Index: django-oidc-provider-0.7.0/oidc_provider/lib/endpoints/authorize.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/lib/endpoints/authorize.py
++++ django-oidc-provider-0.7.0/oidc_provider/lib/endpoints/authorize.py
 @@ -1,42 +1,35 @@
 -from datetime import timedelta
 -from hashlib import (
@@ -1353,8 +1383,10 @@ Subject: [PATCH 01/13] feat: django 4.*
                          del scopes[index]
          else:
              scopes_extra = []
---- a/oidc_provider/lib/endpoints/introspection.py
-+++ b/oidc_provider/lib/endpoints/introspection.py
+Index: django-oidc-provider-0.7.0/oidc_provider/lib/endpoints/introspection.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/lib/endpoints/introspection.py
++++ django-oidc-provider-0.7.0/oidc_provider/lib/endpoints/introspection.py
 @@ -2,19 +2,18 @@ import logging
  
  from django.http import JsonResponse
@@ -1506,8 +1538,10 @@ Subject: [PATCH 01/13] feat: django 4.*
 +        response["Pragma"] = "no-cache"
  
          return response
---- a/oidc_provider/lib/endpoints/token.py
-+++ b/oidc_provider/lib/endpoints/token.py
+Index: django-oidc-provider-0.7.0/oidc_provider/lib/endpoints/token.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/lib/endpoints/token.py
++++ django-oidc-provider-0.7.0/oidc_provider/lib/endpoints/token.py
 @@ -1,33 +1,21 @@
 -import inspect
 -from base64 import urlsafe_b64encode
@@ -1868,8 +1902,10 @@ Subject: [PATCH 01/13] feat: django 4.*
 +        response["Pragma"] = "no-cache"
  
          return response
---- a/oidc_provider/lib/errors.py
-+++ b/oidc_provider/lib/errors.py
+Index: django-oidc-provider-0.7.0/oidc_provider/lib/errors.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/lib/errors.py
++++ django-oidc-provider-0.7.0/oidc_provider/lib/errors.py
 @@ -6,15 +6,17 @@ except ImportError:
  
  class RedirectUriError(Exception):
@@ -2113,8 +2149,10 @@ Subject: [PATCH 01/13] feat: django 4.*
 +        error_tuple = self._errors.get(code, ("", ""))
          self.description = error_tuple[0]
          self.status = error_tuple[1]
---- a/oidc_provider/lib/utils/authorize.py
-+++ b/oidc_provider/lib/utils/authorize.py
+Index: django-oidc-provider-0.7.0/oidc_provider/lib/utils/authorize.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/lib/utils/authorize.py
++++ django-oidc-provider-0.7.0/oidc_provider/lib/utils/authorize.py
 @@ -1,8 +1,9 @@
  try:
      from urllib import urlencode
@@ -2145,8 +2183,10 @@ Subject: [PATCH 01/13] feat: django 4.*
 +        del query_params["prompt"]
      uri = uri._replace(query=urlencode(query_params, doseq=True))
      return urlunsplit(uri)
---- a/oidc_provider/lib/utils/common.py
-+++ b/oidc_provider/lib/utils/common.py
+Index: django-oidc-provider-0.7.0/oidc_provider/lib/utils/common.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/lib/utils/common.py
++++ django-oidc-provider-0.7.0/oidc_provider/lib/utils/common.py
 @@ -6,7 +6,6 @@ from django.utils.cache import patch_var
  
  from oidc_provider import settings
@@ -2272,8 +2312,10 @@ Subject: [PATCH 01/13] feat: django 4.*
 +        response["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
  
      return response
---- a/oidc_provider/lib/utils/oauth2.py
-+++ b/oidc_provider/lib/utils/oauth2.py
+Index: django-oidc-provider-0.7.0/oidc_provider/lib/utils/oauth2.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/lib/utils/oauth2.py
++++ django-oidc-provider-0.7.0/oidc_provider/lib/utils/oauth2.py
 @@ -1,13 +1,12 @@
 -from base64 import b64decode
  import logging
@@ -2378,8 +2420,10 @@ Subject: [PATCH 01/13] feat: django 4.*
  
          return view_wrapper
  
---- a/oidc_provider/lib/utils/token.py
-+++ b/oidc_provider/lib/utils/token.py
+Index: django-oidc-provider-0.7.0/oidc_provider/lib/utils/token.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/lib/utils/token.py
++++ django-oidc-provider-0.7.0/oidc_provider/lib/utils/token.py
 @@ -1,6 +1,6 @@
 -from datetime import timedelta
  import time
@@ -2484,8 +2528,10 @@ Subject: [PATCH 01/13] feat: django 4.*
 +        raise Exception("Unsupported key algorithm.")
  
      return keys
---- a/oidc_provider/management/commands/creatersakey.py
-+++ b/oidc_provider/management/commands/creatersakey.py
+Index: django-oidc-provider-0.7.0/oidc_provider/management/commands/creatersakey.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/management/commands/creatersakey.py
++++ django-oidc-provider-0.7.0/oidc_provider/management/commands/creatersakey.py
 @@ -1,16 +1,19 @@
  from Cryptodome.PublicKey import RSA
  from django.core.management.base import BaseCommand
@@ -2510,8 +2556,10 @@ Subject: [PATCH 01/13] feat: django 4.*
          except Exception as e:
 -            self.stdout.write('Something goes wrong: {0}'.format(e))
 +            self.stdout.write("Something goes wrong: {0}".format(e))
---- a/oidc_provider/middleware.py
-+++ b/oidc_provider/middleware.py
+Index: django-oidc-provider-0.7.0/oidc_provider/middleware.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/middleware.py
++++ django-oidc-provider-0.7.0/oidc_provider/middleware.py
 @@ -16,6 +16,8 @@ class SessionManagementMiddleware(Middle
      """
  
@@ -2523,8 +2571,10 @@ Subject: [PATCH 01/13] feat: django 4.*
 +                "op_browser_state", get_browser_state_or_default(request)
 +            )
          return response
---- a/oidc_provider/migrations/0001_initial.py
-+++ b/oidc_provider/migrations/0001_initial.py
+Index: django-oidc-provider-0.7.0/oidc_provider/migrations/0001_initial.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/migrations/0001_initial.py
++++ django-oidc-provider-0.7.0/oidc_provider/migrations/0001_initial.py
 @@ -1,103 +1,194 @@
  # -*- coding: utf-8 -*-
  from __future__ import unicode_literals
@@ -2779,8 +2829,10 @@ Subject: [PATCH 01/13] feat: django 4.*
              preserve_default=True,
          ),
      ]
---- a/oidc_provider/migrations/0002_userconsent.py
-+++ b/oidc_provider/migrations/0002_userconsent.py
+Index: django-oidc-provider-0.7.0/oidc_provider/migrations/0002_userconsent.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/migrations/0002_userconsent.py
++++ django-oidc-provider-0.7.0/oidc_provider/migrations/0002_userconsent.py
 @@ -1,29 +1,47 @@
  # -*- coding: utf-8 -*-
  from __future__ import unicode_literals
@@ -2838,8 +2890,10 @@ Subject: [PATCH 01/13] feat: django 4.*
              },
              bases=(models.Model,),
          ),
---- a/oidc_provider/migrations/0003_code_nonce.py
-+++ b/oidc_provider/migrations/0003_code_nonce.py
+Index: django-oidc-provider-0.7.0/oidc_provider/migrations/0003_code_nonce.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/migrations/0003_code_nonce.py
++++ django-oidc-provider-0.7.0/oidc_provider/migrations/0003_code_nonce.py
 @@ -1,19 +1,19 @@
  # -*- coding: utf-8 -*-
  from __future__ import unicode_literals
@@ -2865,8 +2919,10 @@ Subject: [PATCH 01/13] feat: django 4.*
 +            field=models.CharField(default=b"", max_length=255, blank=True),
          ),
      ]
---- a/oidc_provider/migrations/0004_remove_userinfo.py
-+++ b/oidc_provider/migrations/0004_remove_userinfo.py
+Index: django-oidc-provider-0.7.0/oidc_provider/migrations/0004_remove_userinfo.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/migrations/0004_remove_userinfo.py
++++ django-oidc-provider-0.7.0/oidc_provider/migrations/0004_remove_userinfo.py
 @@ -7,15 +7,15 @@ from django.db import migrations
  class Migration(migrations.Migration):
  
@@ -2887,8 +2943,10 @@ Subject: [PATCH 01/13] feat: django 4.*
 +            name="UserInfo",
          ),
      ]
---- a/oidc_provider/migrations/0005_token_refresh_token.py
-+++ b/oidc_provider/migrations/0005_token_refresh_token.py
+Index: django-oidc-provider-0.7.0/oidc_provider/migrations/0005_token_refresh_token.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/migrations/0005_token_refresh_token.py
++++ django-oidc-provider-0.7.0/oidc_provider/migrations/0005_token_refresh_token.py
 @@ -1,19 +1,19 @@
  # -*- coding: utf-8 -*-
  from __future__ import unicode_literals
@@ -2913,8 +2971,10 @@ Subject: [PATCH 01/13] feat: django 4.*
              field=models.CharField(max_length=255, unique=True, null=True),
              preserve_default=True,
          ),
---- a/oidc_provider/migrations/0006_unique_user_client.py
-+++ b/oidc_provider/migrations/0006_unique_user_client.py
+Index: django-oidc-provider-0.7.0/oidc_provider/migrations/0006_unique_user_client.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/migrations/0006_unique_user_client.py
++++ django-oidc-provider-0.7.0/oidc_provider/migrations/0006_unique_user_client.py
 @@ -7,12 +7,12 @@ from django.db import migrations
  class Migration(migrations.Migration):
  
@@ -2931,8 +2991,10 @@ Subject: [PATCH 01/13] feat: django 4.*
 +            unique_together=set([("user", "client")]),
          ),
      ]
---- a/oidc_provider/migrations/0007_auto_20160111_1844.py
-+++ b/oidc_provider/migrations/0007_auto_20160111_1844.py
+Index: django-oidc-provider-0.7.0/oidc_provider/migrations/0007_auto_20160111_1844.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/migrations/0007_auto_20160111_1844.py
++++ django-oidc-provider-0.7.0/oidc_provider/migrations/0007_auto_20160111_1844.py
 @@ -3,6 +3,7 @@
  from __future__ import unicode_literals
  
@@ -2996,8 +3058,10 @@ Subject: [PATCH 01/13] feat: django 4.*
 +            ),
          ),
      ]
---- a/oidc_provider/migrations/0008_rsakey.py
-+++ b/oidc_provider/migrations/0008_rsakey.py
+Index: django-oidc-provider-0.7.0/oidc_provider/migrations/0008_rsakey.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/migrations/0008_rsakey.py
++++ django-oidc-provider-0.7.0/oidc_provider/migrations/0008_rsakey.py
 @@ -8,15 +8,23 @@ from django.db import migrations, models
  class Migration(migrations.Migration):
  
@@ -3026,8 +3090,10 @@ Subject: [PATCH 01/13] feat: django 4.*
              ],
          ),
      ]
---- a/oidc_provider/migrations/0009_auto_20160202_1945.py
-+++ b/oidc_provider/migrations/0009_auto_20160202_1945.py
+Index: django-oidc-provider-0.7.0/oidc_provider/migrations/0009_auto_20160202_1945.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/migrations/0009_auto_20160202_1945.py
++++ django-oidc-provider-0.7.0/oidc_provider/migrations/0009_auto_20160202_1945.py
 @@ -8,17 +8,17 @@ from django.db import migrations, models
  class Migration(migrations.Migration):
  
@@ -3052,8 +3118,10 @@ Subject: [PATCH 01/13] feat: django 4.*
 +            field=models.TextField(help_text="Paste your private RSA Key here."),
          ),
      ]
---- a/oidc_provider/migrations/0010_code_is_authentication.py
-+++ b/oidc_provider/migrations/0010_code_is_authentication.py
+Index: django-oidc-provider-0.7.0/oidc_provider/migrations/0010_code_is_authentication.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/migrations/0010_code_is_authentication.py
++++ django-oidc-provider-0.7.0/oidc_provider/migrations/0010_code_is_authentication.py
 @@ -8,13 +8,13 @@ from django.db import migrations, models
  class Migration(migrations.Migration):
  
@@ -3071,8 +3139,10 @@ Subject: [PATCH 01/13] feat: django 4.*
              field=models.BooleanField(default=False),
          ),
      ]
---- a/oidc_provider/migrations/0011_client_client_type.py
-+++ b/oidc_provider/migrations/0011_client_client_type.py
+Index: django-oidc-provider-0.7.0/oidc_provider/migrations/0011_client_client_type.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/migrations/0011_client_client_type.py
++++ django-oidc-provider-0.7.0/oidc_provider/migrations/0011_client_client_type.py
 @@ -8,18 +8,19 @@ from django.db import migrations, models
  class Migration(migrations.Migration):
  
@@ -3101,8 +3171,10 @@ Subject: [PATCH 01/13] feat: django 4.*
 +            ),
          ),
      ]
---- a/oidc_provider/migrations/0012_auto_20160405_2041.py
-+++ b/oidc_provider/migrations/0012_auto_20160405_2041.py
+Index: django-oidc-provider-0.7.0/oidc_provider/migrations/0012_auto_20160405_2041.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/migrations/0012_auto_20160405_2041.py
++++ django-oidc-provider-0.7.0/oidc_provider/migrations/0012_auto_20160405_2041.py
 @@ -8,13 +8,13 @@ from django.db import migrations, models
  class Migration(migrations.Migration):
  
@@ -3121,8 +3193,10 @@ Subject: [PATCH 01/13] feat: django 4.*
 +            field=models.CharField(blank=True, default=b"", max_length=255),
          ),
      ]
---- a/oidc_provider/migrations/0013_auto_20160407_1912.py
-+++ b/oidc_provider/migrations/0013_auto_20160407_1912.py
+Index: django-oidc-provider-0.7.0/oidc_provider/migrations/0013_auto_20160407_1912.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/migrations/0013_auto_20160407_1912.py
++++ django-oidc-provider-0.7.0/oidc_provider/migrations/0013_auto_20160407_1912.py
 @@ -8,18 +8,18 @@ from django.db import migrations, models
  class Migration(migrations.Migration):
  
@@ -3147,8 +3221,10 @@ Subject: [PATCH 01/13] feat: django 4.*
              field=models.CharField(max_length=255, null=True),
          ),
      ]
---- a/oidc_provider/migrations/0014_client_jwt_alg.py
-+++ b/oidc_provider/migrations/0014_client_jwt_alg.py
+Index: django-oidc-provider-0.7.0/oidc_provider/migrations/0014_client_jwt_alg.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/migrations/0014_client_jwt_alg.py
++++ django-oidc-provider-0.7.0/oidc_provider/migrations/0014_client_jwt_alg.py
 @@ -8,17 +8,18 @@ from django.db import migrations, models
  class Migration(migrations.Migration):
  
@@ -3174,8 +3250,10 @@ Subject: [PATCH 01/13] feat: django 4.*
 +            ),
          ),
      ]
---- a/oidc_provider/migrations/0015_change_client_code.py
-+++ b/oidc_provider/migrations/0015_change_client_code.py
+Index: django-oidc-provider-0.7.0/oidc_provider/migrations/0015_change_client_code.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/migrations/0015_change_client_code.py
++++ django-oidc-provider-0.7.0/oidc_provider/migrations/0015_change_client_code.py
 @@ -8,71 +8,80 @@ from django.db import migrations, models
  class Migration(migrations.Migration):
  
@@ -3298,8 +3376,10 @@ Subject: [PATCH 01/13] feat: django 4.*
 +            field=models.TextField(default=""),
          ),
      ]
---- a/oidc_provider/migrations/0016_userconsent_and_verbosenames.py
-+++ b/oidc_provider/migrations/0016_userconsent_and_verbosenames.py
+Index: django-oidc-provider-0.7.0/oidc_provider/migrations/0016_userconsent_and_verbosenames.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/migrations/0016_userconsent_and_verbosenames.py
++++ django-oidc-provider-0.7.0/oidc_provider/migrations/0016_userconsent_and_verbosenames.py
 @@ -3,182 +3,226 @@
  from __future__ import unicode_literals
  
@@ -3622,8 +3702,10 @@ Subject: [PATCH 01/13] feat: django 4.*
 +            ),
          ),
      ]
---- a/oidc_provider/migrations/0017_auto_20160811_1954.py
-+++ b/oidc_provider/migrations/0017_auto_20160811_1954.py
+Index: django-oidc-provider-0.7.0/oidc_provider/migrations/0017_auto_20160811_1954.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/migrations/0017_auto_20160811_1954.py
++++ django-oidc-provider-0.7.0/oidc_provider/migrations/0017_auto_20160811_1954.py
 @@ -8,64 +8,76 @@ from django.db import migrations, models
  class Migration(migrations.Migration):
  
@@ -3735,8 +3817,10 @@ Subject: [PATCH 01/13] feat: django 4.*
 +            field=models.TextField(default="", verbose_name="Scopes"),
          ),
      ]
---- a/oidc_provider/migrations/0018_hybridflow_and_clientattrs.py
-+++ b/oidc_provider/migrations/0018_hybridflow_and_clientattrs.py
+Index: django-oidc-provider-0.7.0/oidc_provider/migrations/0018_hybridflow_and_clientattrs.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/migrations/0018_hybridflow_and_clientattrs.py
++++ django-oidc-provider-0.7.0/oidc_provider/migrations/0018_hybridflow_and_clientattrs.py
 @@ -8,56 +8,70 @@ from django.db import migrations, models
  class Migration(migrations.Migration):
  
@@ -3836,8 +3920,10 @@ Subject: [PATCH 01/13] feat: django 4.*
 +            ),
          ),
      ]
---- a/oidc_provider/migrations/0019_auto_20161005_1552.py
-+++ b/oidc_provider/migrations/0019_auto_20161005_1552.py
+Index: django-oidc-provider-0.7.0/oidc_provider/migrations/0019_auto_20161005_1552.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/migrations/0019_auto_20161005_1552.py
++++ django-oidc-provider-0.7.0/oidc_provider/migrations/0019_auto_20161005_1552.py
 @@ -8,13 +8,15 @@ from django.db import migrations, models
  class Migration(migrations.Migration):
  
@@ -3858,8 +3944,10 @@ Subject: [PATCH 01/13] feat: django 4.*
 +            ),
          ),
      ]
---- a/oidc_provider/migrations/0020_client__post_logout_redirect_uris.py
-+++ b/oidc_provider/migrations/0020_client__post_logout_redirect_uris.py
+Index: django-oidc-provider-0.7.0/oidc_provider/migrations/0020_client__post_logout_redirect_uris.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/migrations/0020_client__post_logout_redirect_uris.py
++++ django-oidc-provider-0.7.0/oidc_provider/migrations/0020_client__post_logout_redirect_uris.py
 @@ -8,17 +8,18 @@ from django.db import migrations, models
  class Migration(migrations.Migration):
  
@@ -3885,8 +3973,10 @@ Subject: [PATCH 01/13] feat: django 4.*
 +            ),
          ),
      ]
---- a/oidc_provider/migrations/0021_refresh_token_not_unique.py
-+++ b/oidc_provider/migrations/0021_refresh_token_not_unique.py
+Index: django-oidc-provider-0.7.0/oidc_provider/migrations/0021_refresh_token_not_unique.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/migrations/0021_refresh_token_not_unique.py
++++ django-oidc-provider-0.7.0/oidc_provider/migrations/0021_refresh_token_not_unique.py
 @@ -8,14 +8,16 @@ from django.db import migrations, models
  class Migration(migrations.Migration):
  
@@ -3908,8 +3998,10 @@ Subject: [PATCH 01/13] feat: django 4.*
              preserve_default=False,
          ),
      ]
---- a/oidc_provider/migrations/0022_auto_20170331_1626.py
-+++ b/oidc_provider/migrations/0022_auto_20170331_1626.py
+Index: django-oidc-provider-0.7.0/oidc_provider/migrations/0022_auto_20170331_1626.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/migrations/0022_auto_20170331_1626.py
++++ django-oidc-provider-0.7.0/oidc_provider/migrations/0022_auto_20170331_1626.py
 @@ -8,25 +8,27 @@ from django.db import migrations, models
  class Migration(migrations.Migration):
  
@@ -3947,8 +4039,10 @@ Subject: [PATCH 01/13] feat: django 4.*
 +            ),
          ),
      ]
---- a/oidc_provider/migrations/0023_client_owner.py
-+++ b/oidc_provider/migrations/0023_client_owner.py
+Index: django-oidc-provider-0.7.0/oidc_provider/migrations/0023_client_owner.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/migrations/0023_client_owner.py
++++ django-oidc-provider-0.7.0/oidc_provider/migrations/0023_client_owner.py
 @@ -2,22 +2,30 @@
  # Generated by Django 1.11 on 2017-11-08 21:43
  from __future__ import unicode_literals
@@ -3985,8 +4079,10 @@ Subject: [PATCH 01/13] feat: django 4.*
 +            ),
          ),
      ]
---- a/oidc_provider/migrations/0024_auto_20180327_1959.py
-+++ b/oidc_provider/migrations/0024_auto_20180327_1959.py
+Index: django-oidc-provider-0.7.0/oidc_provider/migrations/0024_auto_20180327_1959.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/migrations/0024_auto_20180327_1959.py
++++ django-oidc-provider-0.7.0/oidc_provider/migrations/0024_auto_20180327_1959.py
 @@ -6,13 +6,17 @@ from django.db import migrations, models
  class Migration(migrations.Migration):
  
@@ -4009,8 +4105,10 @@ Subject: [PATCH 01/13] feat: django 4.*
 +            ),
          ),
      ]
---- a/oidc_provider/migrations/0025_user_field_codetoken.py
-+++ b/oidc_provider/migrations/0025_user_field_codetoken.py
+Index: django-oidc-provider-0.7.0/oidc_provider/migrations/0025_user_field_codetoken.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/migrations/0025_user_field_codetoken.py
++++ django-oidc-provider-0.7.0/oidc_provider/migrations/0025_user_field_codetoken.py
 @@ -1,25 +1,35 @@
  # Generated by Django 2.0.3 on 2018-04-13 19:34
  
@@ -4055,8 +4153,10 @@ Subject: [PATCH 01/13] feat: django 4.*
 +            ),
          ),
      ]
---- a/oidc_provider/migrations/0026_client_multiple_response_types.py
-+++ b/oidc_provider/migrations/0026_client_multiple_response_types.py
+Index: django-oidc-provider-0.7.0/oidc_provider/migrations/0026_client_multiple_response_types.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/migrations/0026_client_multiple_response_types.py
++++ django-oidc-provider-0.7.0/oidc_provider/migrations/0026_client_multiple_response_types.py
 @@ -5,17 +5,17 @@ from django.db import migrations, models
  
  def migrate_response_type(apps, schema_editor):
@@ -4147,8 +4247,10 @@ Subject: [PATCH 01/13] feat: django 4.*
 +            name="response_type",
          ),
      ]
+Index: django-oidc-provider-0.7.0/oidc_provider/migrations/0027_alter_client_id_alter_code_id_alter_responsetype_id_and_more.py
+===================================================================
 --- /dev/null
-+++ b/oidc_provider/migrations/0027_alter_client_id_alter_code_id_alter_responsetype_id_and_more.py
++++ django-oidc-provider-0.7.0/oidc_provider/migrations/0027_alter_client_id_alter_code_id_alter_responsetype_id_and_more.py
 @@ -0,0 +1,43 @@
 +# Generated by Django 4.0.2 on 2022-02-03 14:13
 +
@@ -4193,8 +4295,10 @@ Subject: [PATCH 01/13] feat: django 4.*
 +            field=models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID'),
 +        ),
 +    ]
---- a/oidc_provider/models.py
-+++ b/oidc_provider/models.py
+Index: django-oidc-provider-0.7.0/oidc_provider/models.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/models.py
++++ django-oidc-provider-0.7.0/oidc_provider/models.py
 @@ -1,32 +1,31 @@
  # -*- coding: utf-8 -*-
  import base64
@@ -4590,8 +4694,10 @@ Subject: [PATCH 01/13] feat: django 4.*
 +        return "{0}".format(
 +            md5(self.key.encode("utf-8")).hexdigest() if self.key else ""
 +        )
---- a/oidc_provider/settings.py
-+++ b/oidc_provider/settings.py
+Index: django-oidc-provider-0.7.0/oidc_provider/settings.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/settings.py
++++ django-oidc-provider-0.7.0/oidc_provider/settings.py
 @@ -31,7 +31,7 @@ class DefaultSettings(object):
          OPTIONAL.  Provide a way to plug into the process after
          the user has logged in, typically to perform some business logic.
@@ -4734,8 +4840,10 @@ Subject: [PATCH 01/13] feat: django 4.*
  
      if isinstance(default_value, dict) and value:
          default_value.update(value)
---- a/oidc_provider/signals.py
-+++ b/oidc_provider/signals.py
+Index: django-oidc-provider-0.7.0/oidc_provider/signals.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/signals.py
++++ django-oidc-provider-0.7.0/oidc_provider/signals.py
 @@ -1,6 +1,5 @@
  # -*- coding: utf-8 -*-
  from django.dispatch import Signal
@@ -4745,8 +4853,10 @@ Subject: [PATCH 01/13] feat: django 4.*
 -user_decline_consent = Signal(providing_args=['user', 'client', 'scope'])
 +user_accept_consent = Signal()
 +user_decline_consent = Signal()
+Index: django-oidc-provider-0.7.0/oidc_provider/templates/registration/login.html
+===================================================================
 --- /dev/null
-+++ b/oidc_provider/templates/registration/login.html
++++ django-oidc-provider-0.7.0/oidc_provider/templates/registration/login.html
 @@ -0,0 +1,13 @@
 +<!-- templates/registration/login.html -->
 +{% extends 'base.html' %}
@@ -4761,8 +4871,10 @@ Subject: [PATCH 01/13] feat: django 4.*
 +  <button type="submit">Log In</button>
 +</form>
 +{% endblock %}
---- a/oidc_provider/tests/app/urls.py
-+++ b/oidc_provider/tests/app/urls.py
+Index: django-oidc-provider-0.7.0/oidc_provider/tests/app/urls.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/tests/app/urls.py
++++ django-oidc-provider-0.7.0/oidc_provider/tests/app/urls.py
 @@ -1,18 +1,25 @@
  from django.contrib.auth import views as auth_views
 +
@@ -4798,8 +4910,10 @@ Subject: [PATCH 01/13] feat: django 4.*
 +    path("openid/", include("oidc_provider.urls", namespace="oidc_provider")),
 +    path("admin/", admin.site.urls),
  ]
---- a/oidc_provider/tests/app/utils.py
-+++ b/oidc_provider/tests/app/utils.py
+Index: django-oidc-provider-0.7.0/oidc_provider/tests/app/utils.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/tests/app/utils.py
++++ django-oidc-provider-0.7.0/oidc_provider/tests/app/utils.py
 @@ -9,21 +9,17 @@ try:
  except ImportError:
      from urllib.parse import parse_qs, urlsplit
@@ -4959,8 +5073,10 @@ Subject: [PATCH 01/13] feat: django 4.*
 +        ):
              assert len(args) > 0 and args[0]
          return ModelBackend().authenticate(*args, **kwargs)
---- a/oidc_provider/tests/cases/test_authorize_endpoint.py
-+++ b/oidc_provider/tests/cases/test_authorize_endpoint.py
+Index: django-oidc-provider-0.7.0/oidc_provider/tests/cases/test_authorize_endpoint.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/tests/cases/test_authorize_endpoint.py
++++ django-oidc-provider-0.7.0/oidc_provider/tests/cases/test_authorize_endpoint.py
 @@ -1,57 +1,55 @@
  from oidc_provider.lib.errors import RedirectUriError
  
@@ -6095,14 +6211,15 @@ Subject: [PATCH 01/13] feat: django 4.*
          uri = authorization_endpoint.create_response_uri()
 -        self.assertIn('session_state=', uri)
 +        self.assertIn("session_state=", uri)
---- a/oidc_provider/tests/cases/test_claims.py
-+++ b/oidc_provider/tests/cases/test_claims.py
-@@ -1,86 +1,91 @@
+Index: django-oidc-provider-0.7.0/oidc_provider/tests/cases/test_claims.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/tests/cases/test_claims.py
++++ django-oidc-provider-0.7.0/oidc_provider/tests/cases/test_claims.py
+@@ -1,86 +1,90 @@
  from __future__ import unicode_literals
  
  from django.test import TestCase
 -from django.utils.six import text_type
-+from six import text_type
  from django.utils.translation import override as override_language
  
 -from oidc_provider.lib.claims import ScopeClaims, StandardScopeClaims, STANDARD_CLAIMS
@@ -6203,7 +6320,7 @@ Subject: [PATCH 01/13] feat: django 4.*
 -            self.assertEqual(text_type(StandardScopeClaims.info_profile[0]), 'Profil de base')
 +        with override_language("fr"):
 +            self.assertEqual(
-+                text_type(StandardScopeClaims.info_profile[0]), "Profil de base"
++                str(StandardScopeClaims.info_profile[0]), "Profil de base"
 +            )
  
      def test_scopeclaims_class_inheritance(self):
@@ -6233,13 +6350,15 @@ Subject: [PATCH 01/13] feat: django 4.*
 -        self.assertFalse('notadd' in response.keys())
 +        self.assertTrue("test" in response.keys())
 +        self.assertFalse("notadd" in response.keys())
---- a/oidc_provider/tests/cases/test_commands.py
-+++ b/oidc_provider/tests/cases/test_commands.py
+Index: django-oidc-provider-0.7.0/oidc_provider/tests/cases/test_commands.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/tests/cases/test_commands.py
++++ django-oidc-provider-0.7.0/oidc_provider/tests/cases/test_commands.py
 @@ -1,16 +1,15 @@
  from django.core.management import call_command
  from django.test import TestCase
 -from django.utils.six import StringIO
-+from six import StringIO
++from io import StringIO
  
  
  class CommandsTest(TestCase):
@@ -6257,8 +6376,10 @@ Subject: [PATCH 01/13] feat: django 4.*
 -        self.assertIn('No changes detected in app', out.getvalue())
 +        call_command("makemigrations", "oidc_provider", stdout=out)
 +        self.assertIn("No changes detected in app", out.getvalue())
---- a/oidc_provider/tests/cases/test_end_session_endpoint.py
-+++ b/oidc_provider/tests/cases/test_end_session_endpoint.py
+Index: django-oidc-provider-0.7.0/oidc_provider/tests/cases/test_end_session_endpoint.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/tests/cases/test_end_session_endpoint.py
++++ django-oidc-provider-0.7.0/oidc_provider/tests/cases/test_end_session_endpoint.py
 @@ -1,21 +1,16 @@
  from django.core.management import call_command
 +
@@ -6367,8 +6488,10 @@ Subject: [PATCH 01/13] feat: django 4.*
 -            'OIDC_AFTER_END_SESSION_HOOK should be called once')
 +            "OIDC_AFTER_END_SESSION_HOOK should be called once",
 +        )
---- a/oidc_provider/tests/cases/test_introspection_endpoint.py
-+++ b/oidc_provider/tests/cases/test_introspection_endpoint.py
+Index: django-oidc-provider-0.7.0/oidc_provider/tests/cases/test_introspection_endpoint.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/tests/cases/test_introspection_endpoint.py
++++ django-oidc-provider-0.7.0/oidc_provider/tests/cases/test_introspection_endpoint.py
 @@ -1,97 +1,101 @@
 -import time
  import random
@@ -6546,8 +6669,10 @@ Subject: [PATCH 01/13] feat: django 4.*
 +                "client_id": self.client.client_id,
 +            },
 +        )
---- a/oidc_provider/tests/cases/test_middleware.py
-+++ b/oidc_provider/tests/cases/test_middleware.py
+Index: django-oidc-provider-0.7.0/oidc_provider/tests/cases/test_middleware.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/tests/cases/test_middleware.py
++++ django-oidc-provider-0.7.0/oidc_provider/tests/cases/test_middleware.py
 @@ -1,7 +1,7 @@
  try:
      from django.urls import url
@@ -6614,8 +6739,10 @@ Subject: [PATCH 01/13] feat: django 4.*
  
 -        self.assertNotIn('op_browser_state', response.cookies)
 +        self.assertNotIn("op_browser_state", response.cookies)
---- a/oidc_provider/tests/cases/test_provider_info_endpoint.py
-+++ b/oidc_provider/tests/cases/test_provider_info_endpoint.py
+Index: django-oidc-provider-0.7.0/oidc_provider/tests/cases/test_provider_info_endpoint.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/tests/cases/test_provider_info_endpoint.py
++++ django-oidc-provider-0.7.0/oidc_provider/tests/cases/test_provider_info_endpoint.py
 @@ -2,14 +2,13 @@ try:
      from django.urls import reverse
  except ImportError:
@@ -6648,8 +6775,10 @@ Subject: [PATCH 01/13] feat: django 4.*
 -        self.assertEqual(response['Content-Type'] == 'application/json', True)
 +        self.assertEqual(response["Content-Type"] == "application/json", True)
          self.assertEqual(bool(response.content), True)
---- a/oidc_provider/tests/cases/test_settings.py
-+++ b/oidc_provider/tests/cases/test_settings.py
+Index: django-oidc-provider-0.7.0/oidc_provider/tests/cases/test_settings.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/tests/cases/test_settings.py
++++ django-oidc-provider-0.7.0/oidc_provider/tests/cases/test_settings.py
 @@ -2,28 +2,24 @@ from django.test import TestCase, overri
  
  from oidc_provider import settings
@@ -6686,8 +6815,10 @@ Subject: [PATCH 01/13] feat: django 4.*
      def test_can_override_with_false_value(self):
 -        self.assertFalse(settings.get('OIDC_INTROSPECTION_VALIDATE_AUDIENCE_SCOPE'))
 +        self.assertFalse(settings.get("OIDC_INTROSPECTION_VALIDATE_AUDIENCE_SCOPE"))
---- a/oidc_provider/tests/cases/test_token_endpoint.py
-+++ b/oidc_provider/tests/cases/test_token_endpoint.py
+Index: django-oidc-provider-0.7.0/oidc_provider/tests/cases/test_token_endpoint.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/tests/cases/test_token_endpoint.py
++++ django-oidc-provider-0.7.0/oidc_provider/tests/cases/test_token_endpoint.py
 @@ -1,7 +1,6 @@
  import json
  import time
@@ -7786,8 +7917,10 @@ Subject: [PATCH 01/13] feat: django 4.*
 +        response_dict = json.loads(response.content.decode("utf-8"))
 +        token = Token.objects.get(access_token=response_dict["access_token"])
          self.assertTrue(str(token))
---- a/oidc_provider/tests/cases/test_userinfo_endpoint.py
-+++ b/oidc_provider/tests/cases/test_userinfo_endpoint.py
+Index: django-oidc-provider-0.7.0/oidc_provider/tests/cases/test_userinfo_endpoint.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/tests/cases/test_userinfo_endpoint.py
++++ django-oidc-provider-0.7.0/oidc_provider/tests/cases/test_userinfo_endpoint.py
 @@ -1,6 +1,6 @@
  import json
 -
@@ -7961,8 +8094,10 @@ Subject: [PATCH 01/13] feat: django 4.*
 +            response_dic["address"],
 +            msg='"country" claim should be in response.',
 +        )
---- a/oidc_provider/tests/cases/test_utils.py
-+++ b/oidc_provider/tests/cases/test_utils.py
+Index: django-oidc-provider-0.7.0/oidc_provider/tests/cases/test_utils.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/tests/cases/test_utils.py
++++ django-oidc-provider-0.7.0/oidc_provider/tests/cases/test_utils.py
 @@ -7,50 +7,51 @@ from django.test import TestCase, overri
  from django.utils import timezone
  from mock import mock
@@ -8089,8 +8224,10 @@ Subject: [PATCH 01/13] feat: django 4.*
          state = get_browser_state_or_default(request)
 -        self.assertEqual(state, sha224('my_session_key'.encode('utf-8')).hexdigest())
 +        self.assertEqual(state, sha224("my_session_key".encode("utf-8")).hexdigest())
---- a/oidc_provider/tests/settings.py
-+++ b/oidc_provider/tests/settings.py
+Index: django-oidc-provider-0.7.0/oidc_provider/tests/settings.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/tests/settings.py
++++ django-oidc-provider-0.7.0/oidc_provider/tests/settings.py
 @@ -1,79 +1,79 @@
  DEBUG = False
  
@@ -8210,8 +8347,10 @@ Subject: [PATCH 01/13] feat: django 4.*
 -OIDC_USERINFO = 'oidc_provider.tests.app.utils.userinfo'
 +SITE_URL = "http://localhost:8000"
 +OIDC_USERINFO = "oidc_provider.tests.app.utils.userinfo"
---- a/oidc_provider/urls.py
-+++ b/oidc_provider/urls.py
+Index: django-oidc-provider-0.7.0/oidc_provider/urls.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/urls.py
++++ django-oidc-provider-0.7.0/oidc_provider/urls.py
 @@ -1,28 +1,36 @@
  try:
      from django.urls import url
@@ -8266,13 +8405,17 @@ Subject: [PATCH 01/13] feat: django 4.*
 +            name="check-session-iframe",
 +        ),
      ]
---- a/oidc_provider/version.py
-+++ b/oidc_provider/version.py
+Index: django-oidc-provider-0.7.0/oidc_provider/version.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/version.py
++++ django-oidc-provider-0.7.0/oidc_provider/version.py
 @@ -1 +1 @@
 -__version__ = '0.7.0'
 +__version__ = "0.7.0"
---- a/oidc_provider/views.py
-+++ b/oidc_provider/views.py
+Index: django-oidc-provider-0.7.0/oidc_provider/views.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/oidc_provider/views.py
++++ django-oidc-provider-0.7.0/oidc_provider/views.py
 @@ -3,23 +3,24 @@ import logging
  from django.views.decorators.csrf import csrf_exempt
  
@@ -8748,8 +8891,10 @@ Subject: [PATCH 01/13] feat: django 4.*
          except TokenIntrospectionError:
 -            return TokenIntrospectionEndpoint.response({'active': False})
 +            return TokenIntrospectionEndpoint.response({"active": False})
---- a/setup.py
-+++ b/setup.py
+Index: django-oidc-provider-0.7.0/setup.py
+===================================================================
+--- django-oidc-provider-0.7.0.orig/setup.py
++++ django-oidc-provider-0.7.0/setup.py
 @@ -1,8 +1,6 @@
  import os
 -from setuptools import (
@@ -8761,7 +8906,7 @@ Subject: [PATCH 01/13] feat: django 4.*
  
  version = {}
  with open("./oidc_provider/version.py") as fp:
-@@ -12,40 +10,41 @@ with open("./oidc_provider/version.py")
+@@ -12,40 +10,40 @@ with open("./oidc_provider/version.py")
  os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
  
  setup(
@@ -8825,13 +8970,14 @@ Subject: [PATCH 01/13] feat: django 4.*
 -
      install_requires=[
 -        'pyjwkest>=1.3.0',
-+        "six",
 +        "django>=3.2",
 +        "pyjwkest>=1.3.0",
      ],
  )
+Index: django-oidc-provider-0.7.0/tox-django4-devtests.ini
+===================================================================
 --- /dev/null
-+++ b/tox-django4-devtests.ini
++++ django-oidc-provider-0.7.0/tox-django4-devtests.ini
 @@ -0,0 +1,45 @@
 +[tox]
 +envlist=

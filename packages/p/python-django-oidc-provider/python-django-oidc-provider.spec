@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-django-oidc-provider
 Version:        0.7.0
 Release:        0
@@ -41,7 +40,6 @@ BuildRequires:  %{python_module psycopg2}
 BuildRequires:  %{python_module pyjwkest >= 1.3.0}
 BuildRequires:  %{python_module pytest >= 3.6.4}
 BuildRequires:  %{python_module pytest-django}
-BuildRequires:  %{python_module six}
 # /SECTION
 %python_subpackages
 
@@ -49,8 +47,7 @@ BuildRequires:  %{python_module six}
 OpenID Connect Provider implementation for Django.
 
 %prep
-%setup -q -n django-oidc-provider-%{version}
-%autopatch -p1
+%autosetup -p1 -n django-oidc-provider-%{version}
 
 %build
 %python_build
@@ -66,6 +63,7 @@ OpenID Connect Provider implementation for Django.
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/oidc_provider
+%{python_sitelib}/django_oidc_provider-%{version}*-info
 
 %changelog
