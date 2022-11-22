@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Nov 18 00:26:15 UTC 2022 - Shawn Dunn <sfalken@cloverleaf-linux.org>
+
+- Add fonts to KDE pattern, so common unicode characters are
+  displayed on default install (boo#1205546)
+- Add noto-sans-math-fonts
+- google-noto-sans-cjk-fonts
+
+-------------------------------------------------------------------
+Wed Nov 16 22:15:40 UTC 2022 - Shawn Dunn <sfalken@cloverleaf-linux.org>
+
+- Add Packages to KDE pattern, to allow for openvpn connections
+  through NetworkManager on fresh installs. (boo#1205501)
+- Add NetworkManager-openvpn
+- Add plasma-nm5-openvpn
+- Add openvpn-auth-pam-plugin
+
+-------------------------------------------------------------------
 Mon Nov  16 10:55:15 UTC 2022 - Luca Di Maio <luca.dimaio1@gmail.com>
 
 - Add gstreamer-plusing-bad and gstreamer-plugins-good to ensure GNOME's builtin

@@ -573,6 +573,10 @@ Requires:       kgamma5
 Requires:       kwrited5
 Requires:       phonon4qt5-backend-gstreamer
 Requires:       plasma-nm5
+# For NetworkManager support of openVPN Connections
+Requires:       NetworkManager-openvpn
+Requires:       openvpn-auth-pam-plugin
+Requires:       plasma-nm5-openvpn
 Requires:       plasma5-addons
 Requires:       plasma5-pa
 Requires:       plasma5-session-wayland
@@ -582,6 +586,10 @@ Requires:       sddm
 Requires:       kio-extras5
 Requires:       kwalletmanager5
 Requires:       pinentry-qt5
+
+# Additional Fonts to cover Unicode Symbols not provided by the fonts pulled in by kde_plasma Pattern
+Requires:       noto-sans-math-fonts
+Requires:       google-noto-sans-cjk-fonts
 
 # Recommends and Supplements won't work, so pull in manually
 Requires:       discover-backend-flatpak
