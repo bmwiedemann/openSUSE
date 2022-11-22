@@ -339,4 +339,13 @@
     <comment></comment>
     <requestid>1035284</requestid>
   </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>f0307cffe2d5a7400ccc400f434bd9fa</srcmd5>
+    <version>2.5.0</version>
+    <time>1669129787</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip rpmlint error python-tests-in-package.
+</comment>
+    <requestid>1037124</requestid>
+  </revision>
 </revisionlist>

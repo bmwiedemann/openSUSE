@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 21 14:19:47 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Skip rpmlint error python-tests-in-package.
+
+-------------------------------------------------------------------
 Fri Nov 11 13:31:42 UTC 2022 - pgajdos@suse.com
 
 - silent rpmlint

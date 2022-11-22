@@ -31,7 +31,8 @@ Summary:        Extensions to the Python Standard Library Unit Testing Framework
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/testing-cabal/testtools
-Source:         https://files.pythonhosted.org/packages/source/t/testtools/testtools-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/t/testtools/testtools-%{version}.tar.gz
+Source99:       python-testtools.rpmlintrc
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
