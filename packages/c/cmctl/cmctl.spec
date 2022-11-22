@@ -21,7 +21,7 @@
 %define archive_name cert-manager
 
 Name:           cmctl
-Version:        1.10.0
+Version:        1.10.1
 Release:        0
 Summary:        CLI tool that can help you to manage cert-manager resources inside your cluster
 License:        Apache-2.0
