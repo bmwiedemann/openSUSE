@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Mon Nov 21 11:47:53 UTC 2022 - Stefan Weiberg <sweiberg@suse.com>
+
+- Initial packaging of tut version 1.0.19:
+  * New features:
+    New command :history and leader action history that lets you
+    see the edit history of a toot.
+    Notifications when someone edits a toot you've boosted.
+
+  * Bug fix
+    An error from the editor shouldn't crash tut.

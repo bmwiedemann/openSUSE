@@ -1,0 +1,19 @@
+<services>
+  <service mode="disabled" name="obs_scm">
+    <param name="url">https://github.com/RasmusLindroth/tut.git</param>
+    <param name="scm">git</param>
+    <param name="revision">refs/tags/1.0.19</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="set_version" mode="disabled">
+    <param name="basename">tut</param>
+  </service>
+  <service mode="disabled" name="tar" />
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+  <service name="go_modules" mode="disabled">
+  </service>
+</services>
