@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 22 12:28:24 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove python-six module
+- Remove python_module macro definition
+- Use autosetup instead of setup+patch
+
+-------------------------------------------------------------------
 Mon Jan 10 12:47:05 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Add merged_10881330.patch for Django 4.0 support

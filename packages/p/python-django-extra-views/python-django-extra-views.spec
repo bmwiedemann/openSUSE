@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-extra-views
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-django-extra-views
 Version:        0.14.0
@@ -32,12 +31,10 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 1.11
-Requires:       python-six >= 1.5.2
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Django >= 1.11}
 BuildRequires:  %{python_module pytest-django}
-BuildRequires:  %{python_module six >= 1.5.2}
 # /SECTION
 %python_subpackages
 
@@ -45,9 +42,7 @@ BuildRequires:  %{python_module six >= 1.5.2}
 Extra class-based views for Django.
 
 %prep
-%setup -q -n django-extra-views-%{version}
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n django-extra-views-%{version}
 
 %build
 %python_build

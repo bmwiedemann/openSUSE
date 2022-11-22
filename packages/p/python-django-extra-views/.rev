@@ -23,4 +23,14 @@
     <comment></comment>
     <requestid>945315</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>2c475889d745ee86f8ad05e06599d0b3</srcmd5>
+    <version>0.14.0</version>
+    <time>1669129865</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove python-six module
+- Remove python_module macro definition
+- Use autosetup instead of setup+patch</comment>
+    <requestid>1037290</requestid>
+  </revision>
 </revisionlist>
