@@ -17,7 +17,7 @@
 
 
 Name:           arch-install-scripts
-Version:        27
+Version:        28
 Release:        0
 Summary:        Scripts aimed at automating some menial installation/recovery tasks
 License:        GPL-2.0-only
@@ -43,6 +43,9 @@ This package provides helper scripts originating in Arch Linux that are useful d
 %prep
 %setup -q
 %autopatch
+
+#preserve original file dates
+sed -i 's/install -/install -p -/' Makefile
 
 #Remove an Arch-specific script that is useless on other distros and requires a working pacman install
 find . -name 'pacstrap*' -delete

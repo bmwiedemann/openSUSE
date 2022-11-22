@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 21 17:22:00 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+- New upstream release 28
+  * genfstab: disable fsck for btrfs (it does not need it and the binary is a no-op)
+  * genfstab: remove subvolid= from btrfs options if subvol= is set
+
+-------------------------------------------------------------------
 Thu Sep 29 17:44:46 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
 - New upstream release 27
   * update pseudofs and fsck lists
