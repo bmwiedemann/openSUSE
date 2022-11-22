@@ -1235,4 +1235,14 @@
     <comment>- Update to version 2.6.6+git0.274d1a4df:</comment>
     <requestid>1006114</requestid>
   </revision>
+  <revision rev="123" vrev="2">
+    <srcmd5>007bca4dc83aaf029466033dca353b0b</srcmd5>
+    <version>2.6.6+git0.274d1a4df</version>
+    <time>1669129868</time>
+    <user>dimstar_suse</user>
+    <comment>- reenable the pcre jit after the last change 
+
+- Switch from unmaintained pcre 8.45 to pcre2 10</comment>
+    <requestid>1037297</requestid>
+  </revision>
 </revisionlist>

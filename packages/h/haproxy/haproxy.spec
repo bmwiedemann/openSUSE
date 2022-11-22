@@ -35,11 +35,7 @@
 %bcond_with systemd
 %endif
 
-%if 0%{?suse_version} > 1140
-%bcond_without pcre_jit
-%else
-%bcond_with pcre_jit
-%endif
+%bcond_without pcre2_jit
 
 %bcond_without  apparmor
 %if 0%{?suse_version} > 1320
@@ -76,7 +72,7 @@ BuildRequires:  libgcrypt-devel
 %if %{with lua}
 BuildRequires:  lua-devel >= 5.3
 %endif
-BuildRequires:  pcre-devel
+BuildRequires:  pcre2-devel
 BuildRequires:  zlib-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkg-config
@@ -143,9 +139,9 @@ the most work done from every CPU cycle.
 make %{?_smp_mflags} \
     TARGET=linux-glibc \
     CPU="%{_target_cpu}" \
-    USE_PCRE=1 \
-    %if %{with pcre_jit}
-    USE_PCRE_JIT=1 \
+    USE_PCRE2=1 \
+    %if %{with pcre2_jit}
+    USE_PCRE2_JIT=1 \
     %endif
     %ifarch %ix86
     USE_REGPARM=1 \

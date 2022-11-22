@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 22 13:13:45 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- reenable the pcre jit after the last change 
+
+-------------------------------------------------------------------
+Fri Oct 14 11:20:34 UTC 2022 - Stephan Kulow <coolo@suse.com>
+
+- Switch from unmaintained pcre 8.45 to pcre2 10
+
+-------------------------------------------------------------------
 Mon Sep 26 13:19:38 UTC 2022 - mrueckert@suse.de
 
 - Update to version 2.6.6+git0.274d1a4df:
