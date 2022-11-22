@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Nov 20 22:52:35 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 3.5.14
+  * Fix spelling/wording issues
+  * man: strip trailing whitespace
+  * gitlab CI: add a basic build test
+  * man pages: Make file names consistent with their displayed names
+  * man pages: Fix shadow man pages
+  * man pages: Make function synopses more consistent with other pages
+  * man pages: Add missing word 'function' where needed
+  * man pages: Fix typos
+  * man pages: Correct Copyright/License notices
+  * add man pages based on doc/xpm.PS
+  * update man pages
+
+-------------------------------------------------------------------
 Sat Jan  4 22:46:08 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 3.5.13
