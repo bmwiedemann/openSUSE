@@ -6273,7 +6273,7 @@ unsorted:
   - google-lekton-fonts 
   - google-merriweather-fonts 
   - google-nobile-fonts 
-  - google-noto-sans-cjk-fonts 
+  - google-noto-sans-cjk-fonts: [i586] 
   - google-noto-sans-hk-black-fonts 
   - google-noto-sans-hk-bold-fonts 
   - google-noto-sans-hk-demilight-fonts 
@@ -6292,14 +6292,14 @@ unsorted:
   - google-noto-sans-jp-mono-fonts 
   - google-noto-sans-jp-thin-fonts 
   - google-noto-sans-kr-black-fonts 
-  - google-noto-sans-kr-bold-fonts 
+  - google-noto-sans-kr-bold-fonts: [i586] 
   - google-noto-sans-kr-demilight-fonts 
-  - google-noto-sans-kr-fonts 
+  - google-noto-sans-kr-fonts: [i586] 
   - google-noto-sans-kr-fonts-full 
   - google-noto-sans-kr-light-fonts 
   - google-noto-sans-kr-medium-fonts 
   - google-noto-sans-kr-mono-fonts 
-  - google-noto-sans-kr-regular-fonts 
+  - google-noto-sans-kr-regular-fonts: [i586] 
   - google-noto-sans-kr-thin-fonts 
   - google-noto-sans-sc-black-fonts 
   - google-noto-sans-sc-demilight-fonts 
@@ -11398,9 +11398,9 @@ unsorted:
   - libgravatar-devel 
   - libgromacs7 
   - libgromacs_mpi7 
-  - libgrpc++1_50 
-  - libgrpc28 
-  - libgrpc_plugin_support1_50 
+  - libgrpc++1_51 
+  - libgrpc29 
+  - libgrpc_plugin_support1_51 
   - libgsasl-devel 
   - libgsequencer0 
   - libgsettings-qt1 
@@ -14629,7 +14629,7 @@ unsorted:
   - libunwind-setjmp0 
   - libunwind-setjmp0-32bit: [x86_64] 
   - libunwind8-32bit: [x86_64] 
-  - libupb28 
+  - libupb29 
   - libupm1 
   - libupnp-devel 
   - libupnp17-32bit: [x86_64] 
@@ -17769,7 +17769,7 @@ unsorted:
   - noto-sans-manichaean-fonts 
   - noto-sans-marchen-fonts 
   - noto-sans-masaramgondi-fonts 
-  - noto-sans-math-fonts 
+  - noto-sans-math-fonts: [i586] 
   - noto-sans-mayannumerals-fonts 
   - noto-sans-medefaidrin-fonts 
   - noto-sans-meeteimayek-fonts 
@@ -18696,7 +18696,7 @@ unsorted:
   - openvas-smb 
   - openvdb-devel 
   - openvdb-tools 
-  - openvpn-auth-pam-plugin 
+  - openvpn-auth-pam-plugin: [i586] 
   - openvpn-devel 
   - openvpn-down-root-plugin 
   - openvswitch 
@@ -23166,6 +23166,7 @@ unsorted:
   - python310-django-redis 
   - python310-django-registration 
   - python310-django-request 
+  - python310-django-requests-debug-toolbar 
   - python310-django-rest-framework-braces 
   - python310-django-rest-framework-client 
   - python310-django-rest-framework-social-oauth2 
@@ -26454,6 +26455,7 @@ unsorted:
   - python38-django-redis 
   - python38-django-registration 
   - python38-django-request 
+  - python38-django-requests-debug-toolbar 
   - python38-django-rest-framework-braces 
   - python38-django-rest-framework-client 
   - python38-django-rest-framework-social-oauth2 
@@ -29814,6 +29816,7 @@ unsorted:
   - python39-django-redis 
   - python39-django-registration 
   - python39-django-request 
+  - python39-django-requests-debug-toolbar 
   - python39-django-rest-framework-braces 
   - python39-django-rest-framework-client 
   - python39-django-rest-framework-social-oauth2 
@@ -43102,6 +43105,7 @@ unsorted:
   - tup-doc 
   - tupitube 
   - tupitube-plugins 
+  - tut 
   - tuxcursors 
   - tuxguitar 
   - tuxpaint 

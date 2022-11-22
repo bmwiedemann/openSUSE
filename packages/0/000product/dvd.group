@@ -507,6 +507,7 @@
     <package name="firewalld-zsh-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="flac" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="flatpak" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="flatpak-remote-flathub" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="flatpak-zsh-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="flute" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="folks-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->

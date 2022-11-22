@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20221121" schemaversion="4.1">
+<image name="OBS__MicroOS___20221122" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20221121</productvar>
+      <productvar name="VERSION">20221122</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20221121,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20221122,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20221121/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20221122/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -344,6 +344,7 @@
       <repopackage name="firewalld-bash-completion" arch="x86_64"/>
       <repopackage name="firewalld-lang" arch="x86_64"/>
       <repopackage name="flatpak" arch="x86_64"/>
+      <repopackage name="flatpak-remote-flathub" arch="x86_64"/>
       <repopackage name="flute"/>
       <repopackage name="fontconfig"/>
       <repopackage name="fontconfig-lang"/>
@@ -481,9 +482,13 @@
       <repopackage name="google-carlito-fonts"/>
       <repopackage name="google-droid-fonts" arch="x86_64"/>
       <repopackage name="google-noto-coloremoji-fonts" arch="x86_64"/>
+      <repopackage name="google-noto-sans-cjk-fonts" arch="x86_64"/>
       <repopackage name="google-noto-sans-jp-bold-fonts"/>
       <repopackage name="google-noto-sans-jp-fonts"/>
       <repopackage name="google-noto-sans-jp-regular-fonts"/>
+      <repopackage name="google-noto-sans-kr-bold-fonts" arch="x86_64"/>
+      <repopackage name="google-noto-sans-kr-fonts" arch="x86_64"/>
+      <repopackage name="google-noto-sans-kr-regular-fonts" arch="x86_64"/>
       <repopackage name="google-noto-sans-sc-bold-fonts"/>
       <repopackage name="google-noto-sans-sc-fonts"/>
       <repopackage name="google-noto-sans-sc-regular-fonts"/>
@@ -2053,6 +2058,7 @@
       <repopackage name="notification-daemon"/>
       <repopackage name="notification-daemon-lang"/>
       <repopackage name="noto-sans-fonts" arch="x86_64"/>
+      <repopackage name="noto-sans-math-fonts" arch="x86_64"/>
       <repopackage name="nscd" arch="x86_64"/>
       <repopackage name="nss-mdns" arch="x86_64"/>
       <repopackage name="ntfs-3g" arch="x86_64"/>
@@ -2084,6 +2090,7 @@
       <repopackage name="openSUSE-build-key" arch="x86_64"/>
       <repopackage name="opensuse-welcome" arch="x86_64"/>
       <repopackage name="openvpn" arch="x86_64"/>
+      <repopackage name="openvpn-auth-pam-plugin" arch="x86_64"/>
       <repopackage name="orca" arch="x86_64"/>
       <repopackage name="orca-lang" arch="x86_64"/>
       <repopackage name="os-prober" arch="x86_64"/>
