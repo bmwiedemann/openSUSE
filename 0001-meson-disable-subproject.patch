@@ -1,0 +1,33 @@
+From ac4a58c30decb236e818650ac745d4f24a64880b Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Mon, 21 Nov 2022 18:24:28 +0100
+Subject: [PATCH] meson: disable libnvme subproject
+
+This patch is required because otherwise build on OBS fails:
+
+[   22s] 
+[   22s] test/meson.build:13:0: ERROR: Automatic wrap-based subproject downloading is disabled
+[   22s] 
+[   22s] A full log can be found at /home/abuild/rpmbuild/BUILD/nvme-stas-2.0/x86_64-suse-linux/meson-logs/meson-log.txt
+[   22s] error: Bad exit status from /var/tmp/rpm-tmp.3cNahu (%build)
+
+---
+ test/meson.build | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/test/meson.build b/test/meson.build
+index e4d3ef7..bdc307f 100644
+--- a/test/meson.build
++++ b/test/meson.build
+@@ -10,8 +10,6 @@
+ test_env = environment({'MALLOC_PERTURB_': '0'})
+ test_env.prepend('PYTHONPATH', PYTHONPATH)
+ 
+-subproject('libnvme')
+-
+ # The libnvme subproject (see above) builds the python bindings conditionally.
+ # It depends whether the build platform has all the required tools like "swig".
+ # Therefore, we need to make sure that we can import the libnvme package before
+-- 
+2.38.0
+

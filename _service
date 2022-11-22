@@ -4,7 +4,7 @@
     <param name="url">https://github.com/linux-nvme/nvme-stas.git</param>
     <param name="filename">nvme-stas</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">v1.1.7</param>
+    <param name="revision">v2.0</param>
     <param name="versionrewrite-pattern">v(\d+.\d+(\.d+)?)</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>
