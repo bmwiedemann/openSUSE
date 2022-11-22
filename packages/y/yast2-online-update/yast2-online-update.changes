@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 21 11:45:35 UTC 2022 - Michal Filka <mfilka@suse.com>
+
+- bsc#1204907
+  - Dropped old workaround from 2.13.15 with unconditional refresh
+    of all repositories.
+- 4.5.2
+
+-------------------------------------------------------------------
 Wed Jun  8 07:15:29 UTC 2022 - Ladislav Slezák <lslezak@suse.cz>
 
 - Support managing system in a chroot (bsc#1199840)

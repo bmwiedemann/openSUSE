@@ -17,12 +17,12 @@
 
 
 Name:           yast2-online-update
-Version:        4.5.1
+Version:        4.5.2
 Release:        0
 URL:            https://github.com/yast/yast-online-update
 Summary:        YaST2 - Online Update (YOU)
-License:        GPL-2.0-only
 Group:          System/YaST
+License:        GPL-2.0-only
 
 Source0:        %{name}-%{version}.tar.bz2
 
@@ -67,8 +67,8 @@ YaST control center.
 
 %package frontend
 Summary:        YaST2 - Online Update (YOU)
-Group:          System/YaST
 Requires:       yast2-online-update
+Group:          System/YaST
 
 # PatchCD desktop file moved to yast2-wagon
 Conflicts:      yast2-wagon <= 2.17.3
