@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Thu Nov 17 15:07:07 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.3.7
+  *  Fix a bug where various form(s) allowed setting empty values for
+     delivery_mode and language. (Fixes #540, #522)
+  *  Rename labels description and info fields as 'Short Description' and 'Long
+     Description' to signify what they mean. (Fixes #510)
+  *  Use date to format the dates in 'List Metrics' section in the List summary
+     page. (Fixes #508)
+  *  Sort the list of languages in all Select elements alphabetically so they
+     are easier to naviate with screen readers. (Fixes #498)
+  *  Add support for Django 4.0
+  *  A couple of unit tests are now marked expectedFailure due to
+     https://gitlab.com/mailman/mailman/-/merge_requests/997. (See #548)
+  *  Translate template names in the “New Templates” page (See #547)
+  *  Translate the section names in the MailingList->"Settings" tab. (See #550)
+  *  Add support for Django 4.1
+  *  Add support for Python 3.10
+  *  Remove support for Django < 3.2
+  *  Remove support for Python < 3.7
+  *  Replace the use of mock with unittest.mock
+  *  Change the way role is selector in the List index page to allow use of the
+  *  filtering without javascript enabled dropdowns. It also enhances usability
+     by enabling the roles that are currently active by default. (See #544)
+  *  Show the number of files in each Mailman queue under 'System Information'
+     tab for Admins. (Fixes #480)
+- Removed postorius-fix-django-4.0-compatibility.patch
+- Add BR for django debug toolbar
+
+-------------------------------------------------------------------
 Wed Jul  6 14:30:03 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
 
 - Add missing makemigritions on update

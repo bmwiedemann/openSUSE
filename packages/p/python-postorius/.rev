@@ -9,4 +9,12 @@
 This fixes migrations compared to the previous SR.</comment>
     <requestid>987250</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>81d5b7160a01592cc671de5675c90bb3</srcmd5>
+    <version>1.3.7</version>
+    <time>1669129847</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1037267</requestid>
+  </revision>
 </revisionlist>

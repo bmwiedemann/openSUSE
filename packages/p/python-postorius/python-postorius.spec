@@ -1,7 +1,7 @@
 #
 # spec file for package python-postorius
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,7 +44,7 @@
 %endif
 
 Name:           python-postorius
-Version:        1.3.6
+Version:        1.3.7
 Release:        0
 Summary:        A web user interface for GNU Mailman
 License:        GPL-3.0-only
@@ -59,9 +59,6 @@ Source12:       postorius.uwsgi
 Source20:       README.SUSE.md
 #
 Patch0:         postorius-settings.patch
-# Make compatible with django 4.0
-# https://gitlab.com/mailman/postorius/-/commit/db2bd36a76f21d0637b5b7894f564918161c3185
-Patch1:         postorius-fix-django-4.0-compatibility.patch
 #
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
@@ -81,7 +78,9 @@ BuildRequires:  mailman3 >= 3.3.5
 BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module cmarkgfm}
+BuildRequires:  %{python_module django-debug-toolbar >= 2.2}
 BuildRequires:  %{python_module django-mailman3 >= 1.3.7}
+BuildRequires:  %{python_module django-requests-debug-toolbar >= 0.0.3}
 BuildRequires:  %{python_module isort}
 BuildRequires:  %{python_module mailmanclient >= 3.3.3}
 BuildRequires:  %{python_module pytest-django}
@@ -97,7 +96,9 @@ A web user interface for GNU Mailman
 %package -n %{postorius_pkgname}
 Summary:        A web user interface for GNU Mailman
 Requires:       %{mypython}-Django >= 1.11
+Requires:       %{mypython}-django-debug-toolbar >= 2.2.0
 Requires:       %{mypython}-django-mailman3 >= 1.3.7
+Requires:       %{mypython}-django-requests-debug-toolbar >= 0.0.3
 Requires:       %{mypython}-mailmanclient >= 3.3.2
 Requires:       %{mypython}-readme_renderer
 %if "%{expand:%%%{mypython}_provides}" == "python3"
@@ -112,9 +113,9 @@ A web user interface for GNU Mailman
 
 %package -n %{postorius_pkgname}-web
 Summary:        The webroot for GNU Mailman
+Requires:       %{postorius_pkgname}
 Requires:       acl
 Requires:       openssl
-Requires:       %{postorius_pkgname}
 Requires:       sudo
 
 %description -n %{postorius_pkgname}-web
@@ -199,14 +200,12 @@ install -d -m 0755 %{buildroot}%{_sysconfdir}/uwsgi/vassals
 install -m 0644 %{SOURCE12} %{buildroot}%{_sysconfdir}/uwsgi/vassals/postorius.ini
 
 %check
-pushd example_project
-export PYTHONPATH='../src'
+export PYTHONPATH="$(pwd):$(pwd)/src"
 export LANG=C.UTF-8
-%pytest ..
+%pytest
 # clean flavored alternatives created by test setup, because we are going to install the example_project as docs
 rm -rf build/flavorbin
 rm -rf build/xdgflavorconfig
-popd
 
 %pre -n %{postorius_pkgname}-web
 /usr/sbin/groupadd -r postorius &>/dev/null || :
@@ -246,6 +245,7 @@ fi
 %{postorius_basedir}/static/admin
 %{postorius_basedir}/static/django-mailman3
 %{postorius_basedir}/static/postorius
+%{postorius_basedir}/static/debug_toolbar
 
 %attr(750,root,postorius) %dir %{postorius_etcdir}
 %attr(640,root,postorius) %config(noreplace) %{postorius_etcdir}/settings_local.py
