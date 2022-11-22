@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 21 09:39:53 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- reset-sigpipe.patch: Removed
+- sigpipe-fatal.patch: Handle SIGPIPE as a fatal signal
+
+-------------------------------------------------------------------
 Wed Nov  2 15:39:46 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - reset-sigpipe.patch: Reset SIGPIPE in children

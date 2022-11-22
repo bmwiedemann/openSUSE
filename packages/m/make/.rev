@@ -422,4 +422,13 @@ now with changed patch tag, even though the patch might be accepted by upstream 
     <comment>- reset-sigpipe.patch: Reset SIGPIPE in children (forwarded request 1032929 from Andreas_Schwab)</comment>
     <requestid>1032930</requestid>
   </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>5cea6ebf6398baae970ec194cbfb5d69</srcmd5>
+    <version>4.4</version>
+    <time>1669129751</time>
+    <user>dimstar_suse</user>
+    <comment>- reset-sigpipe.patch: Removed
+- sigpipe-fatal.patch: Handle SIGPIPE as a fatal signal (forwarded request 1037051 from Andreas_Schwab)</comment>
+    <requestid>1037052</requestid>
+  </revision>
 </revisionlist>

@@ -27,7 +27,7 @@ Source:         https://ftp.gnu.org/gnu/make/make-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/gnu/make/make-%{version}.tar.gz.sig
 # keyring downloaded from https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=make&download=1
 Source2:        %{name}.keyring
-Patch:          reset-sigpipe.patch
+Patch:          sigpipe-fatal.patch
 Patch64:        make-library-search-path.diff
 BuildRequires:  pkgconfig
 Requires(post): %{install_info_prereq}
@@ -52,7 +52,7 @@ fi
 
 %check
 %make_build check || {
-  for f in tests/work/*/*.diff; do
+  for f in tests/work/*/*.diff*; do
     test -f "$f" || continue
     printf "++++++++++++++ %s ++++++++++++++\n" "${f##*/}"
     cat "$f"
