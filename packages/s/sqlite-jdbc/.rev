@@ -378,4 +378,12 @@
     <comment>3.39.4.1</comment>
     <requestid>1037029</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>759acb0e762c84674504650130837458</srcmd5>
+    <version>3.40.0.0</version>
+    <time>1669129823</time>
+    <user>dimstar_suse</user>
+    <comment>3.40.0.0</comment>
+    <requestid>1037219</requestid>
+  </revision>
 </revisionlist>

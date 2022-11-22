@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov 22 03:19:44 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v3.40.0.0
+  * Features
+    ~ rotating_light enable new math functions (0f41f46)
+    ~ upgrade SQLite to 3.40.0 (5e73a5c)
+  * Build
+    ~ disable DriverManager.setLogWriter (dd878d9)
+  * Documentation
+    ~ fix CI badge link (e11aecf)
+
+-------------------------------------------------------------------
 Thu Nov 17 15:58:27 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v3.39.4.1
@@ -84,7 +96,6 @@ Mon Nov  7 11:06:55 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
     ~ 8c5cd18 typo in workflow descriptions [skip ci]
   * Documentation
     ~ 7912b6b document usage for Android applications
-
 - Add build dependency on
   mvn(org.apache.maven.plugins:maven-enforcer-plugin)
 
