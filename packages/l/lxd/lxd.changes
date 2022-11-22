@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 22 06:34:14 UTC 2022 - Aleksa Sarai <asarai@suse.com>
+
+- Update to LXD 5.8. The full upstream changelog is available from:
+  https://discuss.linuxcontainers.org/t/lxd-5-8-has-been-released/15686
+  boo#1205623
+
+  + CPU hotplug in VMs
+  + Device override on init and launch
+  * Record volume creation date
+
+-------------------------------------------------------------------
 Fri Oct 28 23:55:12 UTC 2022 - Aleksa Sarai <asarai@suse.com>
 
 - Update to LXD 5.7. The full upstream changelog is available from:
