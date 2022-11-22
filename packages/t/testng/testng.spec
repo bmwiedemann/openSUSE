@@ -28,6 +28,7 @@ Source1:        pom.xml
 Source2:        %{name}-build.xml
 Patch0:         0001-Avoid-accidental-javascript-in-javadoc.patch
 Patch1:         0002-Replace-bundled-jquery-with-CDN-link.patch
+Patch2:         testng-CVE-2022-4065.patch
 BuildRequires:  ant
 BuildRequires:  beust-jcommander
 BuildRequires:  bsh2
@@ -59,6 +60,7 @@ This package contains the API documentation for %{name}.
 
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 sed 's/@VERSION@/%{version}/' %{SOURCE1} > pom.xml
 cp %{SOURCE2} build.xml

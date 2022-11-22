@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 22 12:13:04 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * testng-CVE-2022-4065.patch
+    + Issues in sanitization of zip files could lead to path
+      traversal and potentially code execution (bsc#1205628,
+      CVE-2022-4065)
+
+-------------------------------------------------------------------
 Wed Apr 27 13:42:54 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 7.4.0
