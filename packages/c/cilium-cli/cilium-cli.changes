@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Nov 22 07:29:52 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.12.8:
+  * Prepare for v0.12.8 release
+  * build(deps): bump google.golang.org/grpc from 1.50.1 to 1.51.0
+  * connectivity: allow to delete Cilium pods during tests
+  * defaults, install, utils: extract no-schedule node affinity and labels into constants
+  * connectivity: report nodes without Cilium as part of FeatureNodeWithoutCilium
+  * all: use defaults.AgentPodSelector
+  * connectivity: group and reorder cli flag definitions
+  * install: allow for multiple roles and rolebindings per file
+  * build(deps): bump library/busybox from `c103754` to `62bc224`
+  * build(deps): bump library/golang from `dc4f475` to `d171aa3`
+  * Update stable release to v0.12.7
+  * connectivity: Send request to 1.1.1.1 over TCP/443 instead of TCP/80
+
+-------------------------------------------------------------------
 Tue Nov 15 09:38:07 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.12.7:
