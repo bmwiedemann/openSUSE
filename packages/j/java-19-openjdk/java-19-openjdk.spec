@@ -18,7 +18,7 @@
 
 %{!?aarch64:%global aarch64 aarch64 arm64 armv8}
 %{!?arm6:%global arm6 armv3l armv4b armv4l armv4tl armv5b armv5l armv5teb armv5tel armv5tejl armv6l armv6hl}
-%global jit_arches %{ix86} x86_64 ppc64 ppc64le %{aarch64} %{arm} s390x
+%global jit_arches %{ix86} x86_64 ppc64 ppc64le %{aarch64} %{arm} s390x riscv64
 %global debug 0
 %global is_release 1
 %global buildoutputdir build

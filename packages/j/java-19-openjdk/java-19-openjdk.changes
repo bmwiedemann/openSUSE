@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 21 10:28:37 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Enable JIT on riscv64
+
+-------------------------------------------------------------------
 Fri Nov 18 11:43:55 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade tu upstream tag jdk-19.0.1+10 (October 2022 CPU)
