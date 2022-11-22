@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov 21 12:23:06 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Do not distribute tests with the package
+- Build using %pyproject macros
+- Remove python_module macro definition
+- More specific python_sitelib in %files
+- Remove duplicate files with %fdupes
+
+-------------------------------------------------------------------
 Thu Aug  4 09:29:45 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Update to 0.5.1:

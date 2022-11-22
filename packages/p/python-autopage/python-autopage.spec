@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global skip_python2 1
 Name:           python-autopage
 Version:        0.5.1
@@ -27,6 +26,7 @@ URL:            https://github.com/zaneb/autopage
 Source:         https://files.pythonhosted.org/packages/source/a/autopage/autopage-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -42,16 +42,16 @@ automatically display terminal output from a program
 in a pager (like `less`)
 
 %prep
-%setup -q -n autopage-%{version}
-
-# workaround broken python_build macros
-echo "import setuptools; setuptools.setup()" > setup.py
+%autosetup -p1 -n autopage-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
+# Do not distribute tests with the package
+%python_expand rm -rf %{buildroot}%{$python_sitelib}/autopage/tests
 
 %check
 unset LESS
@@ -61,6 +61,7 @@ rm -v autopage/tests/test_end_to_end.py
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/autopage
+%{python_sitelib}/autopage-%{version}*-info
 
 %changelog
