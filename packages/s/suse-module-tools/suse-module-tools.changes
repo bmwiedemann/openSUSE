@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 21 15:52:55 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.27:
+  * 80-hotplug-cpu-mem.rules: use CONST{arch} (bsc#1204423)
+
+-------------------------------------------------------------------
 Fri Nov  4 17:49:31 UTC 2022 - Martin Wilck <mwilck@suse.com>
 
   * Revert "Split kernel scriptlets into separate sub-package"

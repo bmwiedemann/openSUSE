@@ -610,4 +610,13 @@ source service setup which messed up my spec file.
    (that change broke some package builds on OBS) (forwarded request 1033596 from mwilck)</comment>
     <requestid>1033597</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>f5983fc000dcc3790cfcdcf054eca137</srcmd5>
+    <version>16.0.27</version>
+    <time>1669129793</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.0.27:
+  * 80-hotplug-cpu-mem.rules: use CONST{arch} (bsc#1204423) (forwarded request 1037141 from mwilck)</comment>
+    <requestid>1037142</requestid>
+  </revision>
 </revisionlist>
