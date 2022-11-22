@@ -1,7 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov 18 10:52:52 UTC 2022 - witold.bedyk@suse.com
+
+- Update to version 8.5.15 (jsc#PED-2617):
+  * Security: Fix for privilege escalation
+    (bsc#1205225, CVE-2022-3930)
+  * Security: Omit error from http response when user does not
+    exists (bsc#1205227, CVE-2022-39307)
+
+-------------------------------------------------------------------
 Fri Nov 11 09:06:30 UTC 2022 - witold.bedyk@suse.com
 
-- Update to version 8.5.14 (jsc#PED-2617):
+- Update to version 8.5.14:
   * Security: Fix do not forward login cookie in outgoing requests
     (bsc#1204303, CVE-2022-39201)
   * Security: Make proxy endpoints not leak sensitive HTTP headers
