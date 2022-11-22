@@ -835,4 +835,16 @@
     being RASPBERRYPI_FULL (forwarded request 1031552 from Guillaume_G)</comment>
     <requestid>1031553</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>b37864e9df10b066fafe7f285517b7f2</srcmd5>
+    <version>2022.11.18</version>
+    <time>1669129789</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to b8a7365 (2022-11-18):
+    * firmware: arm_loader: Improvements to Compute Module audio
+    See: https://forums.raspberrypi.com/viewtopic.php?p=2052680
+  * firmware: arm_loader: Fix GPIO bank 1 support
+    See: #1756 (forwarded request 1037132 from Guillaume_G)</comment>
+    <requestid>1037134</requestid>
+  </revision>
 </revisionlist>

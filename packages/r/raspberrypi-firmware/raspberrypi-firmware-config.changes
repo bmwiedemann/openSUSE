@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov 21 14:58:34 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to b8a7365 (2022-11-18):
+    * firmware: arm_loader: Improvements to Compute Module audio
+    See: https://forums.raspberrypi.com/viewtopic.php?p=2052680
+  * firmware: arm_loader: Fix GPIO bank 1 support
+    See: #1756
+
+-------------------------------------------------------------------
 Thu Oct 27 13:34:08 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 13691cee9 (2022-10-26):
