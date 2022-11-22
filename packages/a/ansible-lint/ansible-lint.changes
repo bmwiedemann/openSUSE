@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Nov 21 09:24:01 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.8.7:
+  * Bugfixes:
+    - Refactor get_app (#2656) @ssbarnea
+    - Bump minimal requirements (#2704) @ssbarnea
+    - Docs: configuration content edits (#2675) @oraNod
+    - Improve documentation on custom rules (#2685) @oraNod
+    - Docs: lint profiles (#2666) @oraNod
+    - Require ansible-compat>=2.2.5 (#2694) @ssbarnea
+    - Updated schemas (#2698) @ssbarnea
+    - Disable cspell allowCompoundWords (#2660) @shatakshiiii
+    - Print fatal matches first in GitHub Actions (#2689) @xfix
+    - Make SARIF output specification compliant (#2668) @atiterlea
+    - Perform mocking before installing dependencies (#2691) @ssbarnea
+    - Update schemas (#2692) @ssbarnea
+    - Fix broken test (#2676) @ssbarnea
+
+-------------------------------------------------------------------
 Tue Nov 15 15:36:21 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 6.8.6:
