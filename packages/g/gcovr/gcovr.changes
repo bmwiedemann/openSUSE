@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Nov 22 08:47:39 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Updated to release 5.2:
+
+  New features and notable changes:
+
+  * Log additional info on gcov parsing errors. 
+  * Add support for branch exclude markers. 
+  * Additional options to configure the thresholds for lines and branches in HTML separate.
+
+  Bugfixes: 
+
+  * Remove function coverage from sonarcube report. 
+  * Fix parallel processing of gcov data. 
+  * Better diagnostics when dealing with corrupted input files. 
+  * Accept metadata lines without values (introduced in gcc-11). 
+  * Properly close <a> element in detailed HTML report. 
+  * Using --add-tracefile will now correctly merge branch coverage. 
+  * Fix package-level function coverage statistics in Cobertura XML reports. 
+  * Respect excluded/noncode lines for aggregated branchcoverage. 
+  * Fix list options in configuration file (search-path).
+  * Fix assert and key error in --decisions flag. 
+  * Fix adding none existing lines by decision analysis to data model. 
+  * Always treat relative paths in config files as relative to the directory of the file. 
+
+-------------------------------------------------------------------
 Fri Jun 11 12:22:55 UTC 2021 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 5.0

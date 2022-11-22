@@ -1,7 +1,7 @@
 #
 # spec file for package gcovr
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2019 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           gcovr
-Version:        5.0
+Version:        5.2
 Release:        0
 Summary:        A code coverage report generator using GNU gcov
 License:        BSD-3-Clause
