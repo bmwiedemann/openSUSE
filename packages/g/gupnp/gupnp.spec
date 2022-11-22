@@ -21,7 +21,7 @@
 %define sover 1.6
 
 Name:           gupnp
-Version:        1.6.1
+Version:        1.6.2
 Release:        0
 Summary:        Implementation of the UPnP specification
 License:        LGPL-2.0-or-later
@@ -40,7 +40,7 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.66
 BuildRequires:  pkgconfig(gmodule-2.0) >= 2.66
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.66
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.6.4
-BuildRequires:  pkgconfig(gssdp-1.6)
+BuildRequires:  pkgconfig(gssdp-1.6) >= 1.6.2
 BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(uuid)

@@ -605,4 +605,16 @@ Fix CVE-2021-33516 ( boo#1186590 ) (forwarded request 896477 from susnux)</comme
     <comment></comment>
     <requestid>1035112</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>d0c9237c3db94d744ad568a97721113c</srcmd5>
+    <version>1.6.2</version>
+    <time>1669129797</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.2:
+  + Add test for issue 81.
+  + Bugs fixed in this release:
+    - https://gitlab.gnome.org/GNOME/gupnp/issues/81
+</comment>
+    <requestid>1037182</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov 20 20:41:46 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.6.2:
+  + Add test for issue 81.
+  + Bugs fixed in this release:
+    - https://gitlab.gnome.org/GNOME/gupnp/issues/81
+
+-------------------------------------------------------------------
 Thu Nov 10 13:33:29 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.6.1:
