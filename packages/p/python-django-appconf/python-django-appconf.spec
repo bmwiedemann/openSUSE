@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-appconf
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-django-appconf
@@ -30,11 +29,9 @@ Source:         https://github.com/django-compressor/django-appconf/archive/v%{v
 BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django
-Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
 
@@ -59,6 +56,7 @@ export DJANGO_SETTINGS_MODULE=tests.test_settings
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS README.rst docs
-%{python_sitelib}/*
+%{python_sitelib}/appconf
+%{python_sitelib}/django_appconf-%{version}*-info
 
 %changelog
