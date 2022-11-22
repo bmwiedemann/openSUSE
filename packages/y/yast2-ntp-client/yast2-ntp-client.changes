@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 21 14:40:27 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
+
+- Fix the netconfig executable path using /sbin/netconfig instead
+  of /usr/sbin/netconfig which is not available in SLE-15-SP5
+  (bsc#1205401)
+- 4.5.2
+
+-------------------------------------------------------------------
 Wed Sep 21 13:10:17 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
 
 - Skip to write and update netconfig configuration when netconfig
