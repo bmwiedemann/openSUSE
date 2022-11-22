@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Nov 21 07:42:34 UTC 2022 - Michele Bussolotto <michele.bussolotto@suse.com>
+
+- Fixed CVEs:
+  * CVE-2022-42252: reject invalid content-length requests. (bsc#1204918)
+- Added patches:
+  * tomcat-9.0.43-CVE-2022-42252.patch
+
+-------------------------------------------------------------------
+Thu Oct 20 15:58:40 UTC 2022 - Michele Bussolotto <michele.bussolotto@suse.com>
+
+- Fixed CVEs:
+  * CVE-2021-43980: Improve the recycling of Processor objects to make it more robust. (bsc#1203868)
+- Added patches:
+  * tomcat-9.0.43-CVE-2021-43980.patch
+
+-------------------------------------------------------------------
 Wed Jul 13 13:41:43 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Do not hardcode /usr/libexec but use %%_libexecdir during the

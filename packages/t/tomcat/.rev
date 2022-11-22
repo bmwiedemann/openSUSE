@@ -821,4 +821,12 @@ can be accepted after ecj-4.2.1 version upgrade
     <comment>do not hardcode /usr/libexecdir, but use %_libexecdir instead</comment>
     <requestid>989036</requestid>
   </revision>
+  <revision rev="87" vrev="11">
+    <srcmd5>787e59ed56a9ddd75ca6504ccca7a9a5</srcmd5>
+    <version>9.0.43</version>
+    <time>1669129822</time>
+    <user>dimstar_suse</user>
+    <comment>sec. fixes</comment>
+    <requestid>1037218</requestid>
+  </revision>
 </revisionlist>
