@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Nov 21 15:03:35 UTC 2022 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to bind release 9.18.9
+  Bug Fixes:
+  * A crash was fixed that happened when a dnssec-policy zone that
+    used NSEC3 was reconfigured to enable inline-signing.
+  * In certain resolution scenarios, quotas could be erroneously
+    reached for servers, including any configured forwarders,
+    resulting in SERVFAIL answers being sent to clients.
+  * rpz-ip rules in response-policy zones could be ineffective in
+    some cases if a query had the CD (Checking Disabled) bit set to
+    1.
+  * Previously, if Internet connectivity issues were experienced
+    during the initial startup of named, a BIND resolver with
+    dnssec-validation set to auto could enter into a state where it
+    would not recover without stopping named, manually deleting the
+    managed-keys.bind and managed-keys.bind.jnl files, and starting
+    named again.
+  * The statistics counter representing the current number of
+    clients awaiting recursive resolution results (RecursClients)
+    could overflow in certain resolution scenarios.
+  * Previously, the port in remote servers such as in primaries and
+    parental-agents could be wrongly configured because of an
+    inheritance bug.
+  * Previously, BIND failed to start on Solaris-based systems with
+    hundreds of CPUs.
+  * When a DNS resource record’s TTL value was equal to the
+    resolver’s configured prefetch “eligibility” value, the record
+    was erroneously not treated as eligible for prefetching.
+
+-------------------------------------------------------------------
 Mon Nov  7 14:17:22 UTC 2022 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to bind release 9.18.8
