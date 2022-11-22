@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-mailmanclient
-Version:        3.3.3
+Version:        3.3.4
 Release:        0
 Summary:        Python bindings for the Mailman REST API
 Group:          Productivity/Networking/Email/Mailinglists

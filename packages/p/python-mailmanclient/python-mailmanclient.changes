@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 21 10:38:25 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 3.3.4
+  * URL quote the query in find_user* methods. (Fixes #75)
+  * Add support for Python 3.10 and drops support for 3.6.
+
+-------------------------------------------------------------------
 Sat Aug 20 20:38:15 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Force pytest-asyncio auto mode -- 0.19.0 changed the default
