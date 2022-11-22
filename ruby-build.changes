@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 21 17:33:10 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20221121.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20221121
+  * truffleruby+graalvm-dev builds are now based on Java 17 by @eregon in #2093
+
+-------------------------------------------------------------------
 Fri Nov 18 03:51:28 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20221116.
