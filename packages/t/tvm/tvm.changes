@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 22 08:38:47 UTC 2022 - Max Lin <mlin@suse.com>
+
+- Build against llvm14 for Leap 15.5 since llvm15 is the default llvm
+  version in Leap 15.5 which tvm is not supported yet
+
+-------------------------------------------------------------------
 Fri Oct 14 08:57:24 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Build against llvm14 for Tumbleweed since llvm15 is not
