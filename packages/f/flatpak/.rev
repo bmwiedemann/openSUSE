@@ -798,4 +798,12 @@ two places:   gtk-doc --&gt; python3-Pygments -/-&gt; python3-setuptools -/-&gt;
     <comment>GNOME 43.rc - let's get this into Staging to see what we break (e.g meson:test seems to be an issue already) (forwarded request 1002618 from dimstar)</comment>
     <requestid>1003150</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>51f5a2161801918014b1f1a7316abcf3</srcmd5>
+    <version>1.14.1</version>
+    <time>1669129768</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1037077</requestid>
+  </revision>
 </revisionlist>

@@ -30,7 +30,7 @@
 %define support_environment_generators 1
 %endif
 Name:           flatpak
-Version:        1.14.0
+Version:        1.14.1
 Release:        0
 Summary:        OSTree based application bundles management
 License:        LGPL-2.1-or-later
@@ -39,6 +39,7 @@ URL:            https://flatpak.github.io/
 Source0:        https://github.com/flatpak/flatpak/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        update-system-flatpaks.service
 Source2:        update-system-flatpaks.timer
+Source3:        https://flathub.org/repo/flathub.flatpakrepo
 Patch0:         polkit_rules_usability.patch
 BuildRequires:  bison
 BuildRequires:  bubblewrap >= 0.5.0
@@ -141,6 +142,26 @@ flatpak is a system for building, distributing and running sandboxed desktop
 applications on Linux. See https://wiki.gnome.org/Projects/SandboxedApps for
 more information.
 
+%package remote-flathub
+Summary:        Add Flathub repository to system flatpak
+Requires:       flatpak
+Requires(postun):flatpak
+Requires(postun):sed
+Supplements:    flatpak
+
+%description remote-flathub
+Flathub is a widely used repository for Flatpak applications. This package
+adds the Flathub repository to the list of system flatpak remotes.
+
+%postun remote-flathub
+# upon uninstall
+if [ $1 == 0 ]; then
+# unregister the remote
+flatpak remote-delete --system flathub
+# and make sure it gets re-applied upon next install
+sed -i "/^xa\.applied-remotes=/s/flathub[;]*//" %{_localstatedir}/lib/flatpak/repo/config
+fi
+
 %lang_package
 
 %prep
@@ -183,6 +204,8 @@ install -D -m 644 %{SOURCE1} %{buildroot}%{_unitdir}/update-system-flatpaks.serv
 install -D -m 644 %{SOURCE2} %{buildroot}%{_unitdir}/update-system-flatpaks.timer
 
 mkdir -p %{buildroot}%{_sysconfdir}/flatpak/remotes.d
+# Flathub
+install -m 644 %{SOURCE3} %{buildroot}%{_sysconfdir}/flatpak/remotes.d
 
 %find_lang %{name}
 
@@ -250,7 +273,8 @@ fi
 %{_mandir}/man5/flatpak-remote.5%{?ext_man}
 %{_datadir}/%{name}/
 %config %{_sysconfdir}/profile.d/flatpak.sh
-%{_sysconfdir}/flatpak
+%dir %{_sysconfdir}/flatpak
+%dir %{_sysconfdir}/flatpak/remotes.d
 %{_unitdir}/flatpak-system-helper.service
 %{_unitdir}/update-system-flatpaks.service
 %{_unitdir}/update-system-flatpaks.timer
@@ -292,11 +316,15 @@ fi
 
 %files devel
 %license COPYING
+%doc %{_datadir}/gtk-doc/html/flatpak
 %{_bindir}/flatpak-bisect
 %{_bindir}/flatpak-coredumpctl
 %{_libdir}/pkgconfig/flatpak.pc
 %{_includedir}/%{name}/
 %{_libdir}/libflatpak.so
 %{_datadir}/gir-1.0/Flatpak-1.0.gir
+
+%files remote-flathub
+%{_sysconfdir}/flatpak/remotes.d/flathub.flatpakrepo
 
 %changelog

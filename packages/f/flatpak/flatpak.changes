@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Nov 18 17:38:02 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.14.1:
+  + New features: Add a httpbackend variable to flatpak.pc,
+    allowing dependent projects like GNOME Software to detect
+    whether they are compatible with libflatpak.
+  + Bugs fixed:
+    - Terminate the flatpak-session-helper and flatpak-portal
+      services when the session ends, so that applications will not
+      inherit outdated Wayland and X11 socket addresses.
+    - When using fish shell, don't overwrite a previously-set
+      XDG_DATA_DIRS.
+    - Don't try to enable HTTP 2 if linked to a libcurl version
+      that doesn't support it.
+    - Stop systemd reporting the session-helper as failed when
+      terminated by a signal.
+    - Fix a warning when listing a document with no permissions.
+    - Fix compilation with GLib 2.66.x (as used in Debian 11).
+    - Fix compilation with GLib 2.58.x (as used in Debian 10).
+    - Fix a compiler warning on 32-bit architectures.
+    - If an app update is blocked by parental controls policies,
+      clean up the temporary deploy directory.
+    - Fix Autotools build with versions of gpgme that no longer
+      provide gpgme-config(1).
+    - When building with Autotools, be more consistent about
+      applying compiler warning flags.
+    - Unset $TEMP, $TEMPDIR and $TMP for apps, the same as $TMPDIR.
+    - Treat /efi the same as /boot/efi.
+    - Make generated files more reproducible.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Nov 13 20:49:05 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Add and recommend a package flatpak-remote-flathub which adds
+  the Flathub repository (boo#1186315)
+
+-------------------------------------------------------------------
 Thu Sep  1 07:20:51 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop pkgconfig(libsoup-2.4) BuildRequires: rely on the curl
