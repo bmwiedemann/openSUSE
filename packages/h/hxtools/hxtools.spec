@@ -1,7 +1,7 @@
 #
 # spec file for package hxtools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           hxtools
-Version:        20211204
+Version:        20221119
 Release:        0
 Summary:        Collection of day-to-day tools (binaries)
 License:        GPL-2.0+ and WTFPL
@@ -249,6 +249,7 @@ rm -Rf "$b/%_sysconfdir/profile.d" "$b/%_sysconfdir"/hx*
 %exclude %_mandir/man*/fd0ssh.1*
 %exclude %_mandir/man*/ofl.1*
 %exclude %_mandir/man1/sysinfo.1*
+%exclude %_mandir/man*/palcomp.1*
 %exclude %_mandir/man*/vfontas.1*
 
 %files data
@@ -288,7 +289,9 @@ rm -Rf "$b/%_sysconfdir/profile.d" "$b/%_sysconfdir"/hx*
 %hldir/proc_stat_signal_decode
 
 %files -n vfontas
+%_bindir/palcomp
 %_bindir/vfontas
+%_mandir/man1/palcomp.1*
 %_mandir/man1/vfontas.1*
 
 %changelog

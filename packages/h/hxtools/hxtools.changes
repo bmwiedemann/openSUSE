@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 21 20:23:38 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20221119
+  * vfontas: add "copy" operation
+  * smm: new utility "palcomp"
+  * vfontas: implement aspect ratio correction for SFD output
+
+-------------------------------------------------------------------
 Sat Dec  4 15:56:21 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20211204
