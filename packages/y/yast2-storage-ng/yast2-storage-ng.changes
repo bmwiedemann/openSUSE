@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 21 11:33:52 UTC 2022 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- GuidedProposal: support for LUKS2 encryption with a configurable
+  PBKDF to be used by D-Installer (related to jsc#PED-2182).
+- 4.5.14
+
+-------------------------------------------------------------------
 Tue Nov 15 11:40:40 UTC 2022 - José Iván López González <jlopez@suse.com>
 
 - Validate security policies in both guided proposal and
