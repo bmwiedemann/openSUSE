@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 22 10:24:08 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20221122
+  * Removed deprecated API functions and cleaned up
+
+-------------------------------------------------------------------
 Mon Aug  8 11:37:44 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Add forced symvers
