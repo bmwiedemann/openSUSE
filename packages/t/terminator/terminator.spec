@@ -18,7 +18,7 @@
 
 %global __requires_exclude typelib\\(Gnome\\)
 Name:           terminator
-Version:        2.1.1
+Version:        2.1.2
 Release:        0
 Summary:        Store and run multiple GNOME terminals in one window
 License:        GPL-2.0-only
@@ -33,7 +33,6 @@ BuildRequires:  gobject-introspection
 BuildRequires:  gsettings-desktop-schemas
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
-BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  python3
 BuildRequires:  python3-cairo
 BuildRequires:  python3-configobj
@@ -43,8 +42,9 @@ BuildRequires:  python3-psutil
 BuildRequires:  python3-pytest
 BuildRequires:  python3-setuptools
 BuildRequires:  update-desktop-files
-BuildRequires:  typelib(Vte) = 2.91
 BuildRequires:  xvfb-run
+BuildRequires:  pkgconfig(libnotify)
+BuildRequires:  typelib(Vte) = 2.91
 Requires:       gsettings-desktop-schemas
 Requires:       python3-cairo
 Requires:       python3-configobj
@@ -78,7 +78,6 @@ python3 setup.py build
 %install
 python3 setup.py install --root=%{buildroot} --prefix=%{_prefix}
 
-rm %{buildroot}/%{_datadir}/icons/hicolor/icon-theme.cache
 rm %{buildroot}/%{_datadir}/applications/%{name}.desktop
 
 desktop-file-install --vendor="" --dir=%{buildroot}%{_datadir}/applications data/%{name}.desktop

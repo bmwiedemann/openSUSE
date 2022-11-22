@@ -1,7 +1,19 @@
 -------------------------------------------------------------------
+Fri Nov 18 11:31:20 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.1.2:
+  + Long overdue, thus collected a lot of changes:
+    https://github.com/gnome-terminator/terminator/compare/v2.1.1...v2.1.2
+  + Fix the background image loading exception handling.
+  + Add new plugin for opening current directory using right mouse.
+  + Cursor: make it possible to change foreground color.
+  + Allow multiline commands in Custom Commands plugin.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Oct  9 01:07:52 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
-- Replace stale website URL with Github repo 
+- Replace stale website URL with Github repo
 - Use xvfb-run to run full test suite
 
 -------------------------------------------------------------------
