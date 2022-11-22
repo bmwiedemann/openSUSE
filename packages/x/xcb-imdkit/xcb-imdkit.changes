@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 22 11:29:56 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- update version 1.0.4
+  * Fix reading client messages when Xlib sends messages too fast.
+    Also avoid to infinitely increase the property name when sending
+    new messages but use a longer loop to avoid issues of X property
+    atom re-usage like Xlib
+
+-------------------------------------------------------------------
 Thu Apr 22 05:18:37 UTC 2021 - Marguerite Su <i@marguerite.su>
 
 - update version 1.0.3
