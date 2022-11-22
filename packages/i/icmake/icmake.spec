@@ -42,7 +42,7 @@ that have proven to be useful in program maintenance.
 %patch1 -p1
 
 %build
-export CFLAGS="%{optflags} -std=gnu99"
+export CXXFLAGS="%{optflags} -std=c++20"
 echo "/* created during rpmbuild */" >  %{name}/INSTALL.im
 echo "#define BINDIR      \"%{_bindir}\"" >>  %{name}/INSTALL.im
 echo "#define SKELDIR     \"%{_datadir}/%{name}\"" >>  %{name}/INSTALL.im
