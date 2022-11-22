@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-django-cacheops
@@ -33,7 +32,6 @@ BuildRequires:  python-rpm-macros
 Requires:       python-django >= 1.8
 Requires:       python-funcy >= 1.8
 Requires:       python-redis >= 3.0.0
-Requires:       python-six >= 1.4.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Jinja2}
@@ -42,7 +40,6 @@ BuildRequires:  %{python_module django >= 1.8}
 BuildRequires:  %{python_module funcy >= 1.8}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module redis >= 3.0.0}
-BuildRequires:  %{python_module six >= 1.4.0}
 BuildRequires:  redis
 # /SECTION
 %python_subpackages
@@ -72,6 +69,7 @@ export DJANGO_SETTINGS_MODULE=tests.settings
 %files %{python_files}
 %doc CHANGELOG README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/cacheops
+%{python_sitelib}/django_cacheops-%{version}*-info
 
 %changelog

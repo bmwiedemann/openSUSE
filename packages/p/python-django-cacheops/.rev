@@ -59,4 +59,14 @@
     <comment></comment>
     <requestid>999139</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>c71d76db35cb0737adc14bbe1b1518f4</srcmd5>
+    <version>6.1</version>
+    <time>1669129863</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove python-six dependency 
+- Remove python_module macro definition
+- More specific python_sitelib in %files</comment>
+    <requestid>1037287</requestid>
+  </revision>
 </revisionlist>
