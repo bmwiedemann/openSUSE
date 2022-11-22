@@ -19,7 +19,7 @@
 %define pythons python3
 
 Name:           ansible-core
-Version:        2.13.6
+Version:        2.14.0
 Release:        0
 Summary:        Radically simple IT automation
 License:        GPL-3.0-or-later
@@ -135,7 +135,7 @@ cp -pr docs/docsite/rst .
 #python3 bin/ansible-test units -v --python %%{python3_version}
 
 %files
-%doc README.rst changelogs changelogs/CHANGELOG-v2.13.rst changelogs/CHANGELOG.rst changelogs/changelog.yaml
+%doc README.rst changelogs changelogs/CHANGELOG-v2.14.rst changelogs/CHANGELOG.rst changelogs/changelog.yaml
 %license COPYING licenses licenses/Apache-License.txt licenses/MIT-license.txt licenses/PSF-license.txt licenses/simplified_bsd.txt
 %{_bindir}/ansible
 %{_bindir}/ansible-config
