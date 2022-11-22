@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Nov 20 22:58:45 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.5.3
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * Xrandr.h: remove misleading comment for XRRGetScreenSizeRange()
+  * XRRGetProviderInfo: Remove unneeded ProviderInfoExtra
+  * Variable scope reductions as recommended by cppcheck
+  * Remove unnecessary casts of return values from malloc()
+
+-------------------------------------------------------------------
 Fri Mar 22 11:00:39 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.5.2

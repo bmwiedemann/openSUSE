@@ -1,7 +1,7 @@
 #
 # spec file for package libXrandr
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libXrandr
 %define lname   libXrandr2
-Version:        1.5.2
+Version:        1.5.3
 Release:        0
 Summary:        X Resize, Rotate and Reflection extension library
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            http://xorg.freedesktop.org/
+URL:            http://xorg.freedesktop.org/
 
 #Git-Clone:	git://anongit.freedesktop.org/xorg/lib/libXrandr
 #Git-Web:	http://cgit.freedesktop.org/xorg/lib/libXrandr/
-Source:         http://xorg.freedesktop.org/releases/individual/lib/%{name}-%{version}.tar.bz2
+Source:         http://xorg.freedesktop.org/releases/individual/lib/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 

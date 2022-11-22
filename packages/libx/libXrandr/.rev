@@ -139,4 +139,18 @@
 - supersedes U_libXrandr_fix-memory-leak.patch</comment>
     <requestid>687587</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>974795e9cdaf37b88074d672c633bb76</srcmd5>
+    <version>1.5.3</version>
+    <time>1669129762</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5.3
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * Xrandr.h: remove misleading comment for XRRGetScreenSizeRange()
+  * XRRGetProviderInfo: Remove unneeded ProviderInfoExtra
+  * Variable scope reductions as recommended by cppcheck
+  * Remove unnecessary casts of return values from malloc()</comment>
+    <requestid>1036997</requestid>
+  </revision>
 </revisionlist>
