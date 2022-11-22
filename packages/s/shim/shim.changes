@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 18 04:52:49 UTC 2022 - Joey Lee <jlee@suse.com>
+
+- Add shim-Enable-the-NX-compatibility-flag-by-default.patch to
+  enable the NX compatibility flag by default. (jsc#PED-127) 
+
+-------------------------------------------------------------------
 Fri Nov 18 03:17:46 UTC 2022 - Joey Lee <jlee@suse.com>
 
 - Drop upstreamed patch:
