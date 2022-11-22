@@ -86,6 +86,8 @@ make check %{?_smp_mflags}
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
+# installed via macro
+rm %{buildroot}%{_docdir}/mpfr/COPYING*
 
 %post -n libmpfr6 -p /sbin/ldconfig
 
@@ -98,11 +100,13 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %postun -n libmpfr6 -p /sbin/ldconfig
 
 %files -n libmpfr6
+%license COPYING*
 %{_libdir}/libmpfr.so.6*
 
 %files devel
+%license COPYING*
 %doc %{_docdir}/mpfr
-%{_infodir}/mpfr.info%{ext_info}
+%{_infodir}/mpfr.info%{?ext_info}
 %{_libdir}/libmpfr.so
 %{_includedir}/mpf2mpfr.h
 %{_includedir}/mpfr.h
