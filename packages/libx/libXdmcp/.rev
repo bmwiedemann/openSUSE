@@ -95,4 +95,22 @@
   U_Use-getentropy-if-arc4random_buf-is-not-available.patch</comment>
     <requestid>687380</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>679412f10a39d6a8b8bda5845c1bc984</srcmd5>
+    <version>1.1.4</version>
+    <time>1669129760</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.4
+  * Update configure.ac bug URL for gitlab migration
+  * gitlab CI: add a basic build test
+  * Fix build on Solaris 11.3.0 - 11.3.8
+  * Fix spelling/wording issues
+  * gitlab CI: enable doc builds in basic build test
+  * Use memcpy() instead of memmove() when buffers are known not to overlap
+  * arc4random_buf: Only declare ret if HAVE_GETENTROPY is defined
+  * XdmcpDisposeARRAYofARRAY8: Reduce scope of i
+  * Only link with libbsd if needed for arc4random_buf()
+  * Switch from libbsd to libbsd-overlay</comment>
+    <requestid>1036995</requestid>
+  </revision>
 </revisionlist>
