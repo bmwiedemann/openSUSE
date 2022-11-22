@@ -20,16 +20,12 @@
 %define skip_python2 1
 %define modname django_mailman3
 Name:           python-django-mailman3
-Version:        1.3.7
+Version:        1.3.8
 Release:        0
 Summary:        Django library to help interaction with Mailman
 License:        GPL-3.0-only
 URL:            https://gitlab.com/mailman/django-mailman3
 Source:         https://files.pythonhosted.org/packages/source/d/django-mailman3/django-mailman3-%{version}.tar.gz
-# PATCH-FEATURE-UPSTREAM dj40.patch https://gitlab.com/mailman/django-mailman3/-/merge_requests/150
-Patch0:         dj40.patch
-# PATCH-FEATURE-UPSTREAM dj41.patch https://gitlab.com/mailman/django-mailman3/-/merge_requests/170
-Patch1:         dj41.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -44,6 +40,8 @@ BuildRequires:  %{python_module Django >= 1.11}
 BuildRequires:  %{python_module django-allauth}
 BuildRequires:  %{python_module django-gravatar2 >= 1.0.6}
 BuildRequires:  %{python_module mailmanclient}
+BuildRequires:  %{python_module pytest-django}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 # /SECTION
 %python_subpackages
@@ -52,9 +50,7 @@ BuildRequires:  %{python_module pytz}
 Django library to help interaction with Mailman.
 
 %prep
-%setup -q -n django-mailman3-%{version}
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n django-mailman3-%{version}
 
 %build
 %python_build
@@ -64,7 +60,8 @@ Django library to help interaction with Mailman.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH='%{buildroot}%{$python_sitelib}' $python -m django test -v2 --settings=django_mailman3.tests.settings_test
+export PYTHONPATH="$(pwd)"
+%pytest
 
 %files %{python_files}
 %doc README.rst
