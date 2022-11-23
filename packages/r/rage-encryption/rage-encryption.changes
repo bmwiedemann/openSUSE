@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 21 15:00:46 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not have the main package recommend the bash-completion
+  sub-package, but rather have the subpackage supplement the
+  combination of tage-encryption and bash-completion.
+
+-------------------------------------------------------------------
 Mon Oct 31 02:20:35 UTC 2022 - william.brown@suse.com
 
 - Update to version 0.9.0+0:

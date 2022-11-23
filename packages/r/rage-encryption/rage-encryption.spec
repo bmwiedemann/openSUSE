@@ -41,7 +41,6 @@ BuildRequires:  cargo >= 1.59
 BuildRequires:  vendored_licenses_packager
 # for feature mount
 BuildRequires:  fuse-devel
-Recommends:     %{name}-bash-completion
 Recommends:     pinentry
 Conflicts:      rage
 ExclusiveArch:  %{rust_tier1_arches}
@@ -54,6 +53,7 @@ explicit keys, no config options, and UNIX-style composability.
 Summary:        Bash completion for %{name}
 Group:          Productivity/Security
 BuildArch:      noarch
+Requires:       %{name}
 Requires:       bash-completion
 Supplements:    (%{name} and bash-completion)
 Conflicts:      rage
