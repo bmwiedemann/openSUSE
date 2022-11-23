@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Mon Nov 07 14:43:04 UTC 2022 - scott.bradnick@suse.com
+
+- Update to version 1.2.13+git20221106.0f8498f:
+  * v1.2.13 Bug fixes
+  * osx: replace getnameinfo with inet_ntop
+  * a comment about AF_LINK being ignored on purpose
+  * FreeBSD: replace getnameinfo with inet_ntop
+  * Fixed: Process nice value underflowing, issue #461
+  * Add git config safe-directory inside freebsd vm
+  * OSX: use the first IP of the interface
+  * Added "Continuous Build FreeBSD" badge
+  * Removed bad line and gcc12 install since gcc12 i preinstalled
+  * Possible fix for broken xcode command line tools
+  * Use gcc12 for macos12
+  * FreeBSD: use the first IP of the interface
+  * Use sh instead of csh
+  * Update continuous-build-freebsd.yml
+  * Update continuous-build-macos.yml
+  * Create continuous-build-freebsd.yml
+  *  Add actions run for pull requests (macos) [skip actions]
+  * Add actions run for pull requests (linux) [skip actions]
+  * Fixed: Not picking up last username from /etc/passwd
+  * make IPBUFFER_MAXSIZE an enum constant
+  * use inet_ntop instead of getnameinfo
+  * Show the first IP of the interface in NET box
+  * Address comment
+  * Fix bug in proc_tree view when showing full cmd
+  * proc tree: fix width threshold to match commit message and use and/or instead of &&, ||
+  * proc tree view: if there's more than 40 width left, try to print full cmd
+  *  macOS Ventura compile instructions
+  * macOS Ventura compile instructions
+  * Added autodetection for gcc12 to make compiling on macos Ventura easier.
+  * Fixed: Moved up get_cpuHz() in the execution order to get better cpu clock reading.
+  * Update continuous-build-macos.yml
+  * Update continuous-build-macos.yml
+  * Update continuous-build-linux.yml
+  * Fixed: Ignore disks that fails in statvfs64() to avoid slowdowns and possible crashes.
+  * fix: spelling mistake in btop.conf
+  * Changed: Reverted back to sysconf(_SC_NPROCESSORS_ONLN) for Cpu core count ant let the new dynamic update fix if cores are turned on later
+  * Makefile: Reverse VERBOSE bool to not stop with macOS make
+  * Update README.md
+  * Added more Makefile flags
+  * Added: VERBOSE=true flag for Makefile to display all compiler commands and fixed so already set CXXFLAGS and LDFLAGS are displayed.
+
+-------------------------------------------------------------------
 Fri Oct 07 19:21:20 UTC 2022 - scott.bradnick@suse.com
 
 - Update to version 1.2.12+git20221007.3dd6a6c:
