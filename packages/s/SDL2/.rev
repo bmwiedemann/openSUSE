@@ -363,4 +363,12 @@
     <comment>- Update to release 2.24.2</comment>
     <requestid>1032697</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>20118785b0d32d5dd97a24736eac7e89</srcmd5>
+    <version>2.26.0</version>
+    <time>1669193252</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.26</comment>
+    <requestid>1037201</requestid>
+  </revision>
 </revisionlist>

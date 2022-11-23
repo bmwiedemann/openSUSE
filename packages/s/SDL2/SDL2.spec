@@ -19,24 +19,22 @@
 %define sle_version 0
 Name:           SDL2
 %define lname   libSDL2-2_0-0
-Version:        2.24.2
+Version:        2.26.0
 Release:        0
 Summary:        Simple DirectMedia Layer Library
 License:        Zlib
 Group:          Development/Libraries/X11
-URL:            http://libsdl.org/
+URL:            https://libsdl.org/
 #Git-Clone:     https://github.com/libsdl-org/SDL
-#DL-URL:        http://libsdl.org/download-2.0.php
-Source:         http://libsdl.org/release/%name-%version.tar.gz
-Source2:        http://libsdl.org/release/%name-%version.tar.gz.sig
+Source:         https://libsdl.org/release/%name-%version.tar.gz
+Source2:        https://libsdl.org/release/%name-%version.tar.gz.sig
 Source3:        %name.keyring
 Source4:        baselibs.conf
 Patch1:         sdl2-symvers.patch
-Patch2:         sdl2-khronos.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(alsa) >= 0.9.0
+BuildRequires:  pkgconfig(alsa) >= 1.0.11
 BuildRequires:  pkgconfig(dbus-1)
 %if !0%{?sle_version}
 BuildRequires:  pkgconfig(fcitx)
@@ -50,8 +48,8 @@ BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(ibus-1.0)
 BuildRequires:  pkgconfig(ice)
 # KMS/DRM driver needs libdrm and libgbm
-BuildRequires:  pkgconfig(gbm) >= 9.0.0
-BuildRequires:  pkgconfig(libdrm) >= 2.4.46
+BuildRequires:  pkgconfig(gbm) >= 11.1.0
+BuildRequires:  pkgconfig(libdrm) >= 2.4.82
 BuildRequires:  pkgconfig(libpulse-simple) >= 0.9
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(tslib)

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Nov 22 01:03:38 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.26
+  * Added SDL_GetWindowSizeInPixels() to get the window size in
+    pixels, which may differ from the window coordinate size for
+    windows with high-DPI support.
+  * Added simulated vsync synchronization for the software
+    renderer.
+  * Added the mouse position to SDL_MouseWheelEvent.
+  * Added SDL_ResetHints() to reset all hints to their default
+    values.
+  * Added SDL_GetJoystickGUIDInfo() to get device information
+    encoded in a joystick GUID.
+  * Added XBOX Hints.
+  * Added support for PS3 and Wii controllers to the HIDAPI
+    driver (not enabled by default).
+  * Added access to the individual left and right gyro sensors of
+    the combined Joy-Cons controller.
+  * Added a microsecond timestamp to SDL_SensorEvent and
+    SDL_ControllerSensorEvent, when the hardware provides that
+    information.
+- Delete sdl2-khronos.patch (merged)
+
+-------------------------------------------------------------------
 Tue Nov  1 14:27:40 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.24.2

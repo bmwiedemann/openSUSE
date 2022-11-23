@@ -16,14 +16,14 @@ need to keep all the individual symvers elements even for games/SDL2.
 
 ---
  Makefile.in |    2 
- sdl2.sym    |  278 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
- 2 files changed, 279 insertions(+), 1 deletion(-)
+ sdl2.sym    |  319 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 320 insertions(+), 1 deletion(-)
 
-Index: SDL2-2.0.22/Makefile.in
+Index: SDL2-2.26.0/Makefile.in
 ===================================================================
---- SDL2-2.0.22.orig/Makefile.in
-+++ SDL2-2.0.22/Makefile.in
-@@ -134,7 +134,7 @@ LT_AGE      = @LT_AGE@
+--- SDL2-2.26.0.orig/Makefile.in
++++ SDL2-2.26.0/Makefile.in
+@@ -136,7 +136,7 @@ LT_AGE      = @LT_AGE@
  LT_CURRENT  = @LT_CURRENT@
  LT_RELEASE  = @LT_RELEASE@
  LT_REVISION = @LT_REVISION@
@@ -32,11 +32,11 @@ Index: SDL2-2.0.22/Makefile.in
  
  all: $(srcdir)/configure Makefile $(objects)/$(TARGET) $(objects)/$(SDLMAIN_TARGET) $(objects)/$(SDLTEST_TARGET)
  
-Index: SDL2-2.0.22/sdl2.sym
+Index: SDL2-2.26.0/sdl2.sym
 ===================================================================
 --- /dev/null
-+++ SDL2-2.0.22/sdl2.sym
-@@ -0,0 +1,306 @@
++++ SDL2-2.26.0/sdl2.sym
+@@ -0,0 +1,319 @@
 +SUSE_2.0.5 {
 +global:
 +	SDL_DequeueAudio;
@@ -343,3 +343,16 @@ Index: SDL2-2.0.22/sdl2.sym
 +	SDL_GetPointDisplayIndex;
 +	SDL_GetRectDisplayIndex;
 +} SUSE_2.0.22;
++SUSE_2.26.0 {
++	SDL_SetPrimarySelectionText;
++	SDL_GetPrimarySelectionText;
++	SDL_HasPrimarySelectionText;
++	SDL_GameControllerGetSensorDataWithTimestamp;
++	SDL_ResetHints;
++	SDL_GetJoystickGUIDInfo;
++	SDL_SensorGetData;
++	SDL_SensorGetDataWithTimestamp;
++	SDL_SensorClose;
++	SDL_strcasestr;
++	SDL_GetWindowSizeInPixels;
++} SUSE_2.24.0;
