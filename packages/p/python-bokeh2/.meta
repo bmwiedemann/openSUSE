@@ -1,0 +1,5 @@
+<package name="python-bokeh2" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:python:numeric" package="python-bokeh2"/>
+</package>
