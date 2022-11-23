@@ -1355,4 +1355,12 @@ Look at the license file (forwarded request 143855 from babelworx)</comment>
     <user>dimstar_suse</user>
     <comment>Force re-apply fix for CVE-2022-43995</comment>
   </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>5aad7cc64618b520961d773c4ab82dd0</srcmd5>
+    <version>1.9.12p1</version>
+    <time>1669193250</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1037191</requestid>
+  </revision>
 </revisionlist>

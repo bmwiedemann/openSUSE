@@ -17,7 +17,7 @@
 
 
 Name:           sudo
-Version:        1.9.12
+Version:        1.9.12p1
 Release:        0
 Summary:        Execute some commands as root
 License:        ISC
@@ -33,7 +33,6 @@ Source6:        fate_313276_test.sh
 Source7:        README_313276.test
 # PATCH-OPENSUSE: the "SUSE" branding of the default sudo config
 Patch0:         sudo-sudoers.patch
-Patch1:         sudo-CVE-2022-43995.patch
 BuildRequires:  audit-devel
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  groff
