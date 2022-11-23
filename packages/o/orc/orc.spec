@@ -1,7 +1,7 @@
 #
 # spec file for package orc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2010 Dominique Leuenberger, Amsterdam, Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           orc
-Version:        0.4.32
+Version:        0.4.33
 Release:        0
 Summary:        The Oil Runtime Compiler
 License:        BSD-3-Clause

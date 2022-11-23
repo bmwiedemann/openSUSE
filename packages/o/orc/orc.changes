@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Nov 21 12:59:20 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.4.33:
+  + Add support for aarch64 (64-bit ARM) architecture.
+  + aarch32: Implement loadupdb instruction used e.g. for video
+    pixel format packing/unpacking/conversions.
+  + neon: Fix unsigned only implementation of loadoffb, loadoffw
+    and loadoffl.
+  + neon: Fix testsuite not passing on arm CPUs.
+  + orccodemem: Fix use-after-free in error paths.
+  + orccpu-powerpc: Fix build with kernel < 4.11.
+  + Add support for macOS Hardened Runtime.
+  + Enable only SSE and MMX backends for Windows.
+  + Fix ORC_RESTRICT definition for MSVC.
+  + pkgconfig: add -DORC_STATIC_COMPILATION flag to .pc file for
+    static-only builds.
+
+-------------------------------------------------------------------
 Sat Jan 16 15:27:40 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - Update to version 0.4.32:
