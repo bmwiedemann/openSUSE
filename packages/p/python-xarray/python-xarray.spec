@@ -17,7 +17,7 @@
 
 
 Name:           python-xarray
-Version:        2022.10.0
+Version:        2022.11.0
 Release:        0
 Summary:        N-D labeled arrays and datasets in Python
 License:        Apache-2.0
@@ -26,57 +26,57 @@ Source:         https://files.pythonhosted.org/packages/source/x/xarray/xarray-%
 # PATCH-FEATURE-UPSTREAM local_dataset.patch gh#pydata/xarray#5377 mcepl@suse.com
 # fix xr.tutorial.open_dataset to work with the preloaded cache.
 Patch0:         local_dataset.patch
-# PATCH-FIX-UPSTREAM scipy-interpolate.patch gh#pydata/xarray#5375 mcepl@suse.com
-# Add missing import scipy.interpolate
-Patch1:         scipy-interpolate.patch
 BuildRequires:  %{python_module base >= 3.8}
-BuildRequires:  %{python_module numpy >= 1.19}
-BuildRequires:  %{python_module numpy-devel >= 1.14}
-BuildRequires:  %{python_module packaging >= 20.0}
-BuildRequires:  %{python_module pandas >= 1.2}
+BuildRequires:  %{python_module numpy-devel >= 1.20}
+BuildRequires:  %{python_module packaging >= 21.0}
+BuildRequires:  %{python_module pandas >= 1.3}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy >= 1.19
-Requires:       python-packaging >= 20.0
-Requires:       python-pandas >= 1.2
+Requires:       python-numpy >= 1.20
+Requires:       python-packaging >= 21.0
+Requires:       python-pandas >= 1.3
 Provides:       python-xray = %{version}
 Obsoletes:      python-xray < %{version}
 BuildArch:      noarch
-Suggests:       python-dask-all >= 2021.4
 # SECTION extras accel
-Recommends:     python-scipy >= 1.6
+Recommends:     python-scipy
 Recommends:     python-bottleneck
 Recommends:     python-flox
-Recommends:     python-numbagg >= 0.53
+Recommends:     python-numbagg
+# /SECTION
+# SECTION extras parallalel
+Suggests:       python-dask-complete
 # /SECTION
 # SECTION extras viz
-Suggests:       python-matplotlib >= 3.4
-Suggests:       python-seaborn >= 0.11
+Suggests:       python-matplotlib
+Suggests:       python-seaborn
 Suggests:       python-nc-time-axis
 #/SECTION
 # SECTION extras io
 Suggests:       python-netCDF4
-Suggests:       python-h5netcdf >= 0.11
+Suggests:       python-h5netcdf
 Suggests:       python-pydap
-Suggests:       python-zarr >= 2.8
+Suggests:       python-zarr
 Suggests:       python-fsspec
-Suggests:       python-cftime >= 1.4
-Suggests:       python-rasterio >= 1.2
+Suggests:       python-cftime
+Suggests:       python-rasterio
 Suggests:       python-cfgrib
-Suggests:       python-distributed >= 2021.4
-Suggests:       python-pint >= 0.17
-Suggests:       python-sparse >= 0.12
-Suggests:       python-toolz >= 0.11
+Suggests:       python-pooch
 #/SECTION
 # SECTION tests
-BuildRequires:  %{python_module dask-dataframe if %python-base < 3.10}
-BuildRequires:  %{python_module dask-diagnostics if %python-base < 3.10}
+BuildRequires:  %{python_module Bottleneck}
+BuildRequires:  %{python_module dask-dataframe}
+BuildRequires:  %{python_module dask-diagnostics}
+BuildRequires:  %{python_module h5netcdf}
+BuildRequires:  %{python_module matplotlib}
+BuildRequires:  %{python_module netCDF4}
 BuildRequires:  %{python_module pooch}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module scipy >= 1.6}
+BuildRequires:  %{python_module scipy}
+BuildRequires:  %{python_module zarr}
 # /SECTION
 %python_subpackages
 
@@ -103,16 +103,20 @@ chmod -x xarray/util/print_versions.py
 
 %check
 if [ $(getconf LONG_BIT) -eq 32 ]; then
-  # precision errors on 32-bit
-  # for test_resample_loffset: https://github.com/pydata/xarray/issues/5341
-  donttest="((test_interpolate_chunk_advanced or test_resample_loffset) and linear)"
+  # https://github.com/pydata/xarray/issues/5341
+  # https://github.com/pydata/xarray/issues/5375
+  # still precision problems in 2022.11.0
+  donttest=" or (test_interpolate_chunk_advanced and linear)"
+  # tests for 64bit types
+  donttest="$donttest or TestZarrDictStore or TestZarrDirectoryStore"
 fi
-%pytest -n auto ${donttest:+ -k "not ($donttest)"} xarray
+%pytest -n auto -rsEf -k "not (kexprdummyprefix $donttest)" xarray
 
 %files %{python_files}
 %doc README.md
 %license LICENSE licenses/
 %{python_sitelib}/xarray
+%exclude %{python_sitelib}/xarray/tests
 %{python_sitelib}/xarray-%{version}*-info
 
 %changelog

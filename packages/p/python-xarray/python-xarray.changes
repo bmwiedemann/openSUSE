@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Tue Nov 22 13:28:48 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2022.11.0
+  * This release brings a number of bugfixes and documentation
+    improvements. Both text and HTML reprs now have a new "Indexes"
+    section, which we expect will help with development of new
+    Index objects. This release also features more support for the
+    Python Array API.
+  ## New Features
+  * Add static typing to plot accessors (GH6949, PR7052). By
+    Michael Niklas.
+  * Display the indexes in a new section of the text and HTML reprs
+    (PR6795, PR7183, PR7185) By Justus Magin and Benoît Bovy.
+  * Added methods DataArrayGroupBy.cumprod() and
+    DatasetGroupBy.cumprod(). (PR5816) By Patrick Naylor
+  ## Breaking changes
+  * repr(ds) may not show the same result because it doesn’t load
+    small, lazy data anymore. Use ds.head().load() when wanting to
+    see just a sample of the data. (GH6722, PR7203). By Jimmy
+    Westling.
+  * Many arguments of plotmethods have been made keyword-only.
+  * xarray.plot.plot module renamed to xarray.plot.dataarray_plot
+    to prevent shadowing of the plot method. (GH6949, PR7052). By
+    Michael Niklas.
+  ## Deprecations
+  * Positional arguments for all plot methods have been deprecated
+    (GH6949, PR7052). By Michael Niklas.
+  * xarray.plot.FacetGrid.axes has been renamed to
+    xarray.plot.FacetGrid.axs because it’s not clear if axes refers
+    to single or multiple Axes instances. This aligns with
+    matplotlib.pyplot.subplots. (PR7194) By Jimmy Westling.
+  ## Bug fixes
+  * Explicitly opening a file multiple times (e.g., after modifying
+    it on disk) now reopens the file from scratch for h5netcdf and
+    scipy netCDF backends, rather than reusing a cached version
+    (GH4240, GH4862). By Stephan Hoyer.
+  * Fixed bug where Dataset.coarsen.construct() would demote
+    non-dimension coordinates to variables. (PR7233) By Tom
+    Nicholas.
+  * Raise a TypeError when trying to plot empty data (GH7156,
+    PR7228). By Michael Niklas.
+  ## Internal Changes
+  * Doctests fail on any warnings (PR7166) By Maximilian Roos.
+  * Improve import time by lazy loading dask.distributed (:pull:
+    7172).
+  * Explicitly specify longdouble=False in cftime.date2num() when
+    encoding times to preserve existing behavior and prevent future
+    errors when it is eventually set to True by default in cftime
+    (PR7171). By Spencer Clark.
+  * Improved import time by lazily importing backend modules,
+    matplotlib, dask.array and flox. (GH6726, PR7179) By Michael
+    Niklas.
+  * Emit a warning under the development version of pandas when we
+    convert non-nanosecond precision datetime or timedelta values
+    to nanosecond precision. This was required in the past, because
+    pandas previously was not compatible with non-nanosecond
+    precision values. However pandas is currently working towards
+    removing this restriction. When things stabilize in pandas we
+    will likely consider relaxing this behavior in xarray as well
+    (GH7175, PR7201). By Spencer Clark.
+- Drop scipy-interpolate.patch: not required
+
+-------------------------------------------------------------------
 Tue Oct 18 22:04:32 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 2022.10.0:
@@ -1409,6 +1472,8 @@ Sat Mar 28 16:43:47 UTC 2020 - Arun Persaud <arun@gmx.de>
       files (PR3805). By Mathias Hauser.
     + Remove conversion to pandas.Panel, given its removal in pandas
       in favor of xarray’s objects. By Maximilian Roos
+- Add packages to the test suite so that more of the package is
+  tested instead of skipping the tests.
 
 -------------------------------------------------------------------
 Sat Feb  1 15:02:10 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
