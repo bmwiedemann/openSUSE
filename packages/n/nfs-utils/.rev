@@ -1687,4 +1687,15 @@
   (bsc#1202592)</comment>
     <requestid>999331</requestid>
   </revision>
+  <revision rev="175" vrev="36">
+    <srcmd5>3c8fd9bb54e76d944f0a714733e09f94</srcmd5>
+    <version>unknown</version>
+    <time>1669193251</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0006-nfsd-allow-server-scope-to-be-set-with-config-or-com.patch
+  Allow server scope to be set - removes the need to run nfsd
+  inside a private UTS namespace for fail-over applications
+  (bsc#1203746)</comment>
+    <requestid>1037197</requestid>
+  </revision>
 </revisionlist>

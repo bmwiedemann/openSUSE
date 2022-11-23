@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 22 00:27:06 UTC 2022 - Neil Brown <nfbrown@suse.com>
+
+- Add 0006-nfsd-allow-server-scope-to-be-set-with-config-or-com.patch
+  Allow server scope to be set - removes the need to run nfsd
+  inside a private UTS namespace for fail-over applications
+  (bsc#1203746)
+
+-------------------------------------------------------------------
 Fri Aug 26 05:56:08 UTC 2022 - Neil Brown <nfbrown@suse.com>
 
 - sysconfig.nfs, nfs.conf: allow NFSv4 grace time to be set

@@ -1,0 +1,141 @@
+From 580ac005d11ddb9a9622e380ba8e947ad743a38f Mon Sep 17 00:00:00 2001
+From: NeilBrown <neilb@suse.de>
+Date: Mon, 21 Nov 2022 14:24:00 -0500
+Subject: [PATCH] nfsd: allow server scope to be set with config or command
+ line.
+
+NFSv4.1 and later require the server to report a "scope".  Servers with
+the same scope are expected to understand each other's state ids etc,
+though may not accept them - this ensure there can be no
+misunderstanding.  This is helpful for migration.
+
+Servers with different scope are known to be different and if a server
+appears to change scope on a restart, lock recovery must not be
+attempted.
+
+It is important for fail-over configurations to have the same scope for
+all server instances.  Linux NFSD sets scope to host name.  It is common
+for fail-over configurations to use different host names on different
+server nodes.  So the default is not good for these configurations and
+must be over-ridden.
+
+As discussed in
+  https://github.com/ClusterLabs/resource-agents/issues/1644
+some HA management tools attempt to address this with calls to "unshare"
+and "hostname" before running "rpc.nfsd".  This is unnecessarily
+cumbersome.
+
+This patch adds a "-S" command-line option and nfsd.scope config value
+so that the scope can be set easily for nfsd.
+
+Signed-off-by: NeilBrown <neilb@suse.de>
+Signed-off-by: Steve Dickson <steved@redhat.com>
+---
+ systemd/nfs.conf.man |    1 +
+ utils/nfsd/nfsd.c    |   17 ++++++++++++++++-
+ utils/nfsd/nfsd.man  |   13 ++++++++++++-
+ 3 files changed, 29 insertions(+), 2 deletions(-)
+
+--- a/systemd/nfs.conf.man
++++ b/systemd/nfs.conf.man
+@@ -166,6 +166,7 @@ for details.
+ Recognized values:
+ .BR threads ,
+ .BR host ,
++.BR scope ,
+ .BR port ,
+ .BR grace-time ,
+ .BR lease-time ,
+--- a/utils/nfsd/nfsd.c
++++ b/utils/nfsd/nfsd.c
+@@ -23,6 +23,7 @@
+ #include <sys/socket.h>
+ #include <netinet/in.h>
+ #include <arpa/inet.h>
++#include <sched.h>
+ 
+ #include "conffile.h"
+ #include "nfslib.h"
+@@ -39,6 +40,7 @@ static void	usage(const char *);
+ static struct option longopts[] =
+ {
+ 	{ "host", 1, 0, 'H' },
++	{ "scope", 1, 0, 'S'},
+ 	{ "help", 0, 0, 'h' },
+ 	{ "no-nfs-version", 1, 0, 'N' },
+ 	{ "nfs-version", 1, 0, 'V' },
+@@ -69,6 +71,7 @@ main(int argc, char **argv)
+ 	int	count = NFSD_NPROC, c, i, error = 0, portnum, fd, found_one;
+ 	char *p, *progname, *port, *rdma_port = NULL;
+ 	char **haddr = NULL;
++	char *scope = NULL;
+ 	int hcounter = 0;
+ 	struct conf_list *hosts;
+ 	int	socket_up = 0;
+@@ -168,8 +171,9 @@ main(int argc, char **argv)
+ 			hcounter++;
+ 		}
+ 	}
++	scope = conf_get_str("nfsd", "scope");
+ 
+-	while ((c = getopt_long(argc, argv, "dH:hN:V:p:P:stTuUrG:L:", longopts, NULL)) != EOF) {
++	while ((c = getopt_long(argc, argv, "dH:S:hN:V:p:P:stTuUrG:L:", longopts, NULL)) != EOF) {
+ 		switch(c) {
+ 		case 'd':
+ 			xlog_config(D_ALL, 1);
+@@ -190,6 +194,9 @@ main(int argc, char **argv)
+ 			haddr[hcounter] = optarg;
+ 			hcounter++;
+ 			break;
++		case 'S':
++			scope = optarg;
++			break;
+ 		case 'P':	/* XXX for nfs-server compatibility */
+ 		case 'p':
+ 			/* only the last -p option has any effect */
+@@ -367,6 +374,14 @@ main(int argc, char **argv)
+ 	if (lease  > 0)
+ 		nfssvc_set_time("lease", lease);
+ 
++	if (scope) {
++		if (unshare(CLONE_NEWUTS) < 0 ||
++		    sethostname(scope, strlen(scope)) < 0) {
++			xlog(L_ERROR, "Unable to set server scope: %m");
++			error = -1;
++			goto out;
++		}
++	}
+ 	i = 0;
+ 	do {
+ 		error = nfssvc_set_sockets(protobits, haddr[i], port);
+--- a/utils/nfsd/nfsd.man
++++ b/utils/nfsd/nfsd.man
+@@ -35,9 +35,17 @@ Note that
+ .B lockd
+ (which performs file locking services for NFS) may still accept
+ request on all known network addresses.  This may change in future
+-releases of the Linux Kernel. This option can be used multiple time 
++releases of the Linux Kernel. This option can be used multiple times
+ to listen to more than one interface.
+ .TP
++.B \S " or " \-\-scope scope
++NFSv4.1 and later require the server to report a "scope" which is used
++by the clients to detect if two connections are to the same server.
++By default Linux NFSD uses the host name as the scope.
++.sp
++It is particularly important for high-availablity configurations to ensure
++that all potential server nodes report the same server scope.
++.TP
+ .B \-p " or " \-\-port  port
+ specify a different port to listen on for NFS requests. By default,
+ .B rpc.nfsd
+@@ -134,6 +142,9 @@ will listen on.  Use of the
+ .B --host
+ option replaces all host names listed here.
+ .TP
++.B scope
++Set the server scope.
++.TP
+ .B grace-time
+ The grace time, for both NFSv4 and NLM, in seconds.
+ .TP
