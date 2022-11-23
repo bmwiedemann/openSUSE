@@ -73,6 +73,7 @@ Recommends:     xsel
 %if %{with luajit}
 BuildRequires:  luajit-devel
 %else
+BuildRequires:  lua51-BitOp
 BuildRequires:  lua51-devel
 %endif
 # luajit implements version 5.1 of the lua language spec, so it needs the
@@ -132,7 +133,9 @@ export CXXFLAGS="%{optflags} -fcommon"
 %{__cmake} .. -DCMAKE_BUILD_TYPE=RelWithDebInfo \
        -DPREFER_LUA=%{?with_luajit:OFF}%{!?with_luajit:ON} \
        -DLUA_PRG=%{_bindir}/%{?with_luajit:luajit}%{!?with_luajit:lua} \
+%if %{with luajit}
        -DBUSTED_PRG="$(readlink -f ../lj-busted.sh)" \
+%endif
        -DUSE_BUNDLED=OFF -DLUAJIT_USE_BUNDLED=ON  \
        -DCMAKE_SKIP_RPATH=ON -DCMAKE_VERBOSE_MAKEFILE=ON \
        -DUSE_BUNDLED=OFF -DLUAJIT_USE_BUNDLED=OFF \
@@ -176,6 +179,8 @@ mkdir -p %{buildroot}%{vimplugin_dir}/{after,after/syntax,autoload,colors,doc,ft
 export NO_BRP_CHECK_RPATH=true
 
 %check
+# Unit tests require the ffi module which is only available with luajit
+%if %{with luajit}
 # Tests fail on aarch64 gh#neovim/neovim#18176
 %ifnarch aarch64
 # set vars to make build reproducible in spite of config/CMakeLists.txt
@@ -184,6 +189,7 @@ USERNAME=OBS
 pushd build
 %make_build BUSTED_PRG=$(readlink -f ../lj-busted.sh) unittest
 popd
+%endif
 %endif
 
 %if 0%{?suse_version} < 1330
