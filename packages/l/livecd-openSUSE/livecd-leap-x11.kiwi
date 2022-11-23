@@ -348,6 +348,7 @@
     <package name="patterns-base-x11"/>
     <namedCollection name="x11"/>
     <namedCollection name="sw_management"/>
+    <package name="checkmedia"/>
     <package name="bcache-tools"/>
     <package name="btrfsprogs"/>
     <package name="cryptsetup"/>
@@ -490,10 +491,8 @@
     <ignore name="yast2-control-center"/>
     <package name="aaa_base" replaces="yast2-control-center-qt"/>
     <ignore name="yast2-control-center-qt"/>
-    <package name="aaa_base" replaces="libyui-qt-pkg*"/>
-    <ignore name="libyui-qt-pkg*"/>
-    <package name="aaa_base" replaces="libyui-qt*"/>
-    <ignore name="libyui-qt*"/>
+    <package name="aaa_base" replaces="libyui*"/>
+    <ignore name="libyui*"/>
     <package name="aaa_base" replaces="Mesa-libva"/>
     <ignore name="Mesa-libva"/>
     <package name="aaa_base" replaces="python-base"/>

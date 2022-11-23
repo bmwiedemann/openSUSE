@@ -348,6 +348,7 @@
     <package name="patterns-base-x11"/>
     <namedCollection name="x11"/>
     <namedCollection name="sw_management"/>
+    <package name="checkmedia"/>
     <package name="bcache-tools"/>
     <package name="btrfsprogs"/>
     <package name="cryptsetup"/>
