@@ -17,17 +17,15 @@
 
 
 Name:           python-sunpy
-Version:        4.0.4
+Version:        4.1.0
 Release:        0
-Summary:        SunPy: Python for Solar Physics
+Summary:        SunPy core package: Python for Solar Physics
 License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT
 URL:            https://github.com/sunpy/sunpy
 Source0:        https://files.pythonhosted.org/packages/source/s/sunpy/sunpy-%{version}.tar.gz
 Source100:      python-sunpy-rpmlintrc
 # PATCH-FIX-OPENSUSE use custom hypothesis profile for slow OBS executions
 Patch1:         sunpy-obs-profile.patch
-# PATCH-FIX-UPSTREAM sunpy-scikit-image-deprecation.patch  -- required until scikit-image in the distribution is updated gh#sunpy/sunpy#5866
-Patch2:         sunpy-scikit-image-deprecation.patch
 BuildRequires:  %{python_module aioftp}
 BuildRequires:  %{python_module astropy >= 4.2.1}
 BuildRequires:  %{python_module base => 3.8}
@@ -62,7 +60,7 @@ Recommends:     python-scipy > 1.3.0
 Recommends:     python-Glymur >= 0.8.18
 # /SECTION
 # SECTION extras_require:map
-Recommends:     python-matplotlib >= 3.1.0
+Recommends:     python-matplotlib >= 3.3.0
 Recommends:     python-mpl-animators >= 1.0.0
 Recommends:     python-reproject
 # scipy
@@ -101,13 +99,13 @@ BuildRequires:  %{python_module jplephem}
 BuildRequires:  %{python_module matplotlib >= 3.1.0}
 BuildRequires:  %{python_module mpl-animators >= 1.0.0}
 BuildRequires:  %{python_module pandas >= 0.24.0}
-BuildRequires:  %{python_module pytest >= 5.4}
+BuildRequires:  %{python_module pytest >= 6}
 BuildRequires:  %{python_module pytest-astropy >= 0.8}
 BuildRequires:  %{python_module pytest-doctestplus >= 0.5}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-mpl >= 0.12}
-BuildRequires:  %{python_module pytest-xdist >= 1.27}
-BuildRequires:  %{python_module reproject}
+BuildRequires:  %{python_module pytest-xdist >= 2}
+BuildRequires:  %{python_module reproject >= 0.9}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module scikit-image >= 0.16.0}
 BuildRequires:  %{python_module scipy >= 1.3.0}
@@ -123,7 +121,6 @@ SunPy is a Python library for solar physics data analysis and visualization.
 %prep
 %autosetup -p1 -n sunpy-%{version}
 sed -i -e '/^#!\//, 1d' sunpy/extern/appdirs.py
-chmod -x sunpy/data/test/cor1_20090615_000500_s4c1A.fts
 
 %build
 export CFLAGS="%{optflags}"

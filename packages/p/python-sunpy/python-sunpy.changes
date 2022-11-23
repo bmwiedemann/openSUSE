@@ -1,4 +1,230 @@
 -------------------------------------------------------------------
+Mon Nov 21 16:45:44 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to v4.1.0
+  ##  Breaking Changes
+  * Updated the sample data file, AIA_171_ROLL_IMAGE to be rice
+     compressed instead of gzip compressed. This means that the
+     data is now stored in the second HDU. (#6221)
+  ##  Deprecations
+  * Passing positional arguments to all timeseries peek() methods
+    is now deprecated, and will raise an error in sunpy 5.1. Pass
+    the arguments with keywords (e.g. title='my plot title')
+    instead. (#6310)
+  * Using sunpy.timeseries.GenericTimeSeries.index is deprecated.
+    Use ~sunpy.timeseries.GenericTimeSeries.time to get an astropy
+    Time object, or ts.to_dataframe().index to get the times as a
+    pandas DataTimeIndex. (#6327)
+  * Deprecated the sunpy.visualization.limb module. The
+    sunpy.visualization.limb.draw_limb function has been moved into
+    ~sunpy.visualization.drawing as
+    ~sunpy.visualization.drawing.limb. (#6332)
+  * The sunpy.net.helioviewer module is deprecated and will be
+    removed in version 5.1. The Helioviewer Project now maintains a
+    replacement Python library called hvpy. As such, in
+    consultation with the Helioviewer Project, we have decided to
+    deprecate the HelioviewerClient class. (#6404)
+  * Passing the algorithm, return_footprint arguments as positional
+    arguments is deprecated. Pass them as keyword arguments (e.g.
+    ..., return_footprint=True, ...) instead. (#6406)
+  * sunpy.data.download_sample_data is now deprecated. Use
+    sunpy.data.sample.download_all instead. (#6426)
+  * The sunpy.database module is no longer actively maintained and
+    has a number of outstanding issues. It is anticiapted that
+    sunpy.database will be formally deprecated in sunpy 5.0 and
+    removed in sunpy 6.0. If you are using sunpy.database and would
+    like to see a replacement, please join the discussion thread at
+    https://community.openastronomy.org/t/deprecating-sunpy-database/495.
+    (#6498)
+  ## Removals
+  * The sunpy.io.fits sub-module has been removed, as it was
+    designed for internal use. Use the astropy.io.fits module
+    instead for more generic functionality to read FITS files.
+    (#6432)
+  * The sunpy.physics.solar_rotation sub-module has been removed,
+    having been moved to sunkit_image.coalignment. (#6433)
+  * Most of the sunpy.visualization.animator subpackage has been
+    removed, with the exception of
+    ~sunpy.visualization.animator.MapSequenceAnimator It has been
+    moved into the standalone mpl-animators package Please update
+    your imports to replace sunpy.visualization.animator with
+    mpl_animators. (#6434)
+  * Remove GenericMap.shift method and the
+    GenericMap.shifted_value. Use
+    ~sunpy.map.GenericMap.shift_reference_coord instead. (#6437)
+  * sunpy.util.scraper has been removed. Use sunpy.net.scraper
+    instead. (#6438)
+  * sunpy.image.coalignment has been removed. Use
+    sunkit_image.coalignment instead, which contains all the same
+    functionality. (#6440)
+  * sunpy.map.GenericMap.draw_limb can no longer be used to draw
+    the limb on a non-WCS Axes plot. (#6533)
+  * sunpy.image.resample no longer accepts "neighbour" as an
+    interpolation method. Use "nearest" instead. (#6537)
+  * sunpy.image.transform.affine_transform and
+    sunpy.map.GenericMap.rotate no longer accepts the use_scipy
+    keyword. (#6538)
+  ## New Features
+  * Updated and expanded the HTML representation for
+    ~sunpy.timeseries.TimeSeries. (#5951)
+  * When reading CDF files, any columns with a floating point data
+    type now have their masked values converted to NaN. (#5956)
+  * Add support for saving ~sunpy.map.GenericMap as JPEG 2000
+    files. (#6153)
+  * Add a function sunpy.map.extract_along_coord that, for a given
+    set of coordinates, finds each array index that crosses the
+    line traced by those coordinates and returns the value of the
+    data array of a given map at those array indices. (#6189)
+  * Three new maps have been added to the sample data from STEREO A
+    and STEREO B at 195 Angstrom, and AIA at 193 Angstrom. These
+    images are from a time when the three spacecraft were equally
+    spaced around the Sun, and therefore form near complete
+    instantaneous coverage of the solar surface.
+  * Users upgrading to this version will find this three files
+    download when they use the sample data for the first time.
+    (#6197)
+  * Added a SDO/AIA 1600 file of the Venus transit to the sunpy
+    sample data. (#6242)
+  * Created the sunpy.visualization.drawing module which includes
+    new ~sunpy.visualization.drawing.equator and
+    ~sunpy.visualization.drawing.prime_meridian functions. (#6251)
+  * Expose GOES quality flags in order to allow filtering corrupt
+    values when using the
+    ~sunpy.timeseries.sources.goes.XRSTimeSeries. (#6260)
+  * All TimeSeries plotting methods now consistently set the same
+    formatter and locator for the x-axis. (#6264)
+  * sunpy.timeseries.GenericTimeSeries.peek now takes a title
+    argument to set the title of the plot. (#6304)
+  * Added the sunpy.timeseries.GenericTimeSeries.time property to
+    get the times of a timeseries as a ~astropy.time.Time object.
+    (#6327)
+  * Added the
+    sphx_glr_generated_gallery_plotting_plot_equator_prime_meridian.py
+    example to the Example Gallery. (#6332)
+  * Added a new function
+    sunpy.map.header_helper.make_heliographic_header to help with
+    generating FITS-WCS headers in Carrington or Stonyhurst
+    coordinate systems that span the entire solar surface. (#6415)
+  * Sample data files provided through sunpy.data.sample are now
+    downloaded individually on demand rather than being all
+    downloaded upon import of that module. To download all sample
+    data files, call sunpy.data.sample.download_all. (#6426)
+  * ~.XRSTimeSeries is now able to parse the primary detector
+    information from the GOES-R XRS data if available. (#6454)
+  * sunpy.net.Scraper now includes treats files as spanning a full
+    interval equal to the smallest increment specified in the file
+    pattern. For example, a pattern like "%Y.txt" that only
+    contains a year specifier will be considered to span that full
+    year.
+  * This means searches that fall entirely within the whole
+    interval spanned by a pattern will return that file, where
+    previously they did not. As an example, matching "%Y.txt" with
+    TimeRange('2022-02-01', '2022-04-01') will now return
+    ["2022.txt"] where previously no files were returned. (#6472)
+  * Implemented site configuration for sunpyrc, and modified
+    documentation for sunpy customization. (#6478)
+  * ~sunpy.map.header_helper.make_fitswcs_header now includes the
+    keyword argument unit for setting the BUNIT FITS keyword in the
+    resulting header. This will take precedence over any unit
+    information attached to data. (#6499)
+  * If the data argument to
+    ~sunpy.map.header_helper.make_fitswcs_header is an
+    ~astropy.units.Quantity, the associated unit will be used to
+    set the BUNIT FITS keyword in the resulting header. (#6499)
+  * Added a 304 sample data file called AIA_304_IMAGE. (#6546)
+  ## Bug Fixes
+  * Fix a bug that prevented EUI maps with missing wavelength.
+- Release 4.0.7
+  ## Bug Fixes
+  * Fixed the incorrect calculation in
+    ~sunpy.map.header_helper.make_fitswcs_header of the rotation
+    matrix from a rotation angle when the pixels are non-square.
+    (#6597)
+  * Fixed bug that prevented
+    ~sunpy.coordinates.metaframes.RotatedSunFrame instances from
+    being pickled. (#6342)
+  * The right-hand y-axis of the GOES-XRS timeseries plots with
+    labelled flare classes now automatically scales with the
+    left-hand y-axis. (#6486)
+  * Add support for Python 3.11.
+  * The deprecated cgi.parse_header is now available as
+    sunpy.util.net.parse_header. (#6512)
+  * Fixed the metadata handling of ~sunpy.map.GenericMap.resample
+    and ~sunpy.map.GenericMap.superpixel so that the CDELTi values
+    are scaled and the PCi_j matrix (if used) is modified in the
+    correct manner for asymmetric scaling. The previous approach of
+    having the PCi_j matrix store all of the scaling resulted in
+    non-intuitive behaviors when accessing the
+    ~sunpy.map.GenericMap.scale and
+    ~sunpy.map.GenericMap.rotation_matrix properties, and when
+    de-rotating a map via ~sunpy.map.GenericMap.rotate. (#6571)
+  * Fixed a bug with the sunpy.map.GenericMap.rotation_matrix
+    property for maps using the CDij matrix formulism where the
+    rotation matrix would be calculated incorrectly for non-square
+    pixels. (#6573)
+  * Fixd a bug with the sunpy.map.GenericMap.scale property for
+    maps containing only the CDij matrix where the scale was not
+    being determined from the CDij matrix. (#6573)
+  * Fixed a bug where ~sunpy.time.parse_time would always disregard
+    the remainder of a time string starting with the final period
+    if it was followed by only zeros, which could affect the
+    parsing of the time string. (#6581)
+
+-------------------------------------------------------------------
+Mon Nov  7 17:34:30 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to v4.0.6
+  * Fix a bug in loading .XRSTimeSeries due to unsupported quality
+    flag column names. (#6410)
+  * Adds units (dimensionless units) to the quality columns in
+    .XRSTimeSeries. (#6423)
+  * Refactored ~sunpy.map.sources.SXTMap to use ITRS observer
+    coordinate information in header rather than incorrect HGS
+    keywords. The ~sunpy.map.sources.SXTMap also now uses the
+    default dsun property as this information can be derived from
+    the (now corrected) observer coordinate. (#6436)
+  * In sunpy.map.GenericMap.coordinate_system and
+    sunpy.map.GenericMap.date, the default values will now be used
+    if the expected key(s) used to derive those properties are
+    empty. Previously, empty values of these keys were not treated
+    as missing and thus the default values were not correctly
+    filled in. (#6436)
+  * Fixed a bug where the observer coordinate was incorrectly
+    determined for ~sunpy.map.sources.KCorMap. (#6447)
+  * Trying to download an empty search response from the JSOC now
+    results in an empty results object. Previously the results
+    object contained the path to the sunpy download directory.
+    (#6449)
+  * Removed an error when searching CDAWEB using sunpy.net.Fido and
+    no results are returned. An empty response table is now
+    returned. (#6450)
+  * Fix a bug to parse the GOES "observatory" number in
+    ~.XRSTimeSeries for GOES 13, 14, 15 and for the 1 minute GOES-R
+    data. (#6451)
+  * Changed the default scaling for ~sunpy.map.sources.XRTMap from
+    a linear stretch to ~astropy.visualization.LogStretch.
+  * To revert to the previous linear stretch do the following:
+
+          from astropy.visualization import ImageNormalize, LinearStretch
+          xrtmap.plot_settings["norm"] = ImageNormalize(stretch=LinearStretch())
+
+    (#6480)
+  * Fix the detector property of ~sunpy.map.sources.SOTMap to
+    return "SOT". (#6480)
+- Release v4.0.5
+  * Test data cleanup (#6065) by @nabobalis in #6354
+  * Minor improvements to data acquisition guide
+  * Allow EVE to have two additional files in Fido search test
+  * pin version of jsonschema
+  * Removes lingering use of Astropy's matrix_product()
+  * Fix Matplotlib colormap deprecation
+  * Fix the ordering of the API docs
+  * Fix adaptive reproject test with reproject 0.9
+  * Fix Matplotlib get_cmap deprecation
+  * Change the jsoc email to a sunpy one
+- Drop sunpy-scikit-image-deprecation.patch
+
+-------------------------------------------------------------------
 Thu Aug 11 11:45:37 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to v4.0.4
