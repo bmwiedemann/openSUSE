@@ -51,8 +51,6 @@ License:        BSD-3-Clause
 URL:            https://distributed.dask.org
 Source:         https://github.com/dask/distributed/archive/refs/tags/%{version}.tar.gz#/distributed-%{version}-gh.tar.gz
 Source99:       python-distributed-rpmlintrc
-# PATCH-FIX-UPSTREAM allow-bokeh3.patch -- raise upper bokeh version, reverts part of gh#dask/distributed#7329, see also gh#dask/dask#9659
-Patch1:         allow-bokeh3.patch
 # PATCH-FIX-UPSTREAM distributed-pr7286-tornado-6-2.patch gh#dask/distributed#7286
 Patch2:         distributed-pr7286-tornado-6-2.patch
 # PATCH-FIX-OPENSUSE distributed-ignore-off.patch -- ignore that we can't probe addresses on obs, code@bnavigator.de
@@ -82,7 +80,8 @@ Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module bokeh >= 2.4.2}
+# bokeh 3: see gh#dask/distributed#7329, gh#dask/dask#9659, we provide a legacy bokeh2 in Tumbleweed
+BuildRequires:  %{python_module bokeh >= 2.4.2 with %python-bokeh < 2.4.4}
 BuildRequires:  %{python_module dask-complete = %{version}}
 BuildRequires:  %{python_module distributed = %{version}}
 BuildRequires:  %{python_module ipykernel}
