@@ -1,5 +1,5 @@
 #
-# spec file for package python-panel
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -25,11 +24,10 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%define skip_python2 1
-%define skip_python36 1
+
 %define modname panel
 Name:           python-panel%{psuffix}
-Version:        0.13.1
+Version:        0.14.1
 Release:        0
 Summary:        A high level app and dashboarding solution for Python
 License:        BSD-3-Clause
@@ -38,8 +36,9 @@ URL:            https://panel.holoviz.org
 Source:         https://files.pythonhosted.org/packages/source/p/panel/panel-%{version}.tar.gz
 Source99:       python-panel-rpmlintrc
 BuildRequires:  %{python_module Markdown}
-BuildRequires:  %{python_module bleach}
-BuildRequires:  %{python_module bokeh >= 2.4.0}
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module bokeh >= 2.4.0 with %python-bokeh < 2.5}
+BuildRequires:  %{python_module nbval}
 BuildRequires:  %{python_module param >= 1.12.0}
 BuildRequires:  %{python_module pyct >= 0.4.4}
 BuildRequires:  %{python_module pyviz-comms >= 0.7.4}
@@ -52,11 +51,13 @@ BuildRequires:  nodejs
 BuildRequires:  python-rpm-macros
 %if %{with test}
 BuildRequires:  %{python_module altair}
+BuildRequires:  %{python_module diskcache}
+BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module folium}
 BuildRequires:  %{python_module holoviews}
 BuildRequires:  %{python_module ipympl}
 BuildRequires:  %{python_module ipython >= 7.0}
-BuildRequires:  %{python_module nbsmoke >= 0.2.0}
+BuildRequires:  %{python_module markdown-it-py}
 BuildRequires:  %{python_module pandas >= 1.3}
 BuildRequires:  %{python_module parameterized}
 BuildRequires:  %{python_module plotly >= 4.0}
@@ -70,18 +71,20 @@ BuildRequires:  %{python_module twine}
 Requires:       jupyter-panel
 Requires:       python-Markdown
 Requires:       python-bleach
-Requires:       python-bokeh >= 2.4.0
 Requires:       python-param >= 1.10.0
 Requires:       python-pyct >= 0.4.4
 Requires:       python-pyviz-comms >= 0.7.4
 Requires:       python-requests
+Requires:       python-setuptools
 Requires:       python-tqdm >= 4.48.0
+Requires:       python-typing_extensions
+Requires:       (python-bokeh >= 2.4.0 with python-bokeh < 2.5)
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     python-Pillow
 Recommends:     python-holoviews > 1.14.1
+Recommends:     python-jupyterlab
 Recommends:     python-matplotlib
-Recommends:     python-notebook >= 5.4
 Recommends:     python-plotly >= 4.0
 BuildArch:      noarch
 %python_subpackages
@@ -107,38 +110,40 @@ to all Python flavors.
 %autosetup -p1 -n panel-%{version}
 # Do not try to rebuild the bundled npm stuff. We don't have network. Just use the shipped bundle.
 sed -i '/def _build_paneljs/ a \    return' setup.py
+# fix python call in test, upstream expects them to be run inside tox or venv
+sed -i -e '/import ast/ a import sys' -e 's/"python",/sys.executable,/' panel/tests/test_docs.py
 
+%if ! %{with test}
 %build
 %python_build
 
-%if ! %{with test}
 %install
 %python_install
-%jupyter_move_config
-
-%{python_expand  # FIX HASHBANG AND LINK EXAMPLES INTO PACKAGE DOCS
-mkdir examples-%{$python_bin_suffix}
-ln -s %{$python_sitelib}/%{modname}/examples examples-%{$python_bin_suffix}/examples
-sed -i "1{s|#!/usr/bin/env python|#!%{__$python}|}" \
-  %{buildroot}%{$python_sitelib}/%{modname}/examples/apps/django2/manage.py \
-  %{buildroot}%{$python_sitelib}/%{modname}/examples/apps/django_multi_apps/manage.py
-}
-
 %python_clone -a %{buildroot}%{_bindir}/panel
-
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%{python_expand #
+rm %{buildroot}%{$python_sitelib}/panel/dist/bundled/js/@microsoft/fast-colors@5.3.1/.prettierignore
+rm %{buildroot}%{$python_sitelib}/panel/dist/bundled/js/@microsoft/fast-colors@5.3.1/.eslintignore
+%fdupes %{buildroot}%{$python_sitelib}
+}
 %endif
 
 %if %{with test}
 %check
 # DISABLE TESTS REQUIRING NETWORK ACCESS
-donttest="test_loading_a_image_from_url or test_image_alt_text or test_image_link_url or test_vtk_pane_from_url or test_vtkjs_pane or test_pdf_embed or test_server"
+donttest="test_loading_a_image_from_url"
+donttest="$donttest or test_image_alt_text"
+donttest="$donttest or test_image_link_url"
+donttest="$donttest or test_vtk_pane_from_url"
+donttest="$donttest or test_vtkjs_pane"
+donttest="$donttest or test_pdf_embed"
+donttest="$donttest or test_server"
+donttest="$donttest or (test_markdown_codeblocks and build_app.md)"
+donttest="$donttest or (test_markdown_codeblocks and APIs.md)"
 # https://github.com/holoviz/panel/issues/2101
-donttest+=" or test_record_modules_not_stdlib"
+donttest="$donttest or test_record_modules_not_stdlib"
 # flaky async test
-donttest+=" or test_server_async_callbacks"
-# -s: some tests execute twice and fail without it (?)
-%pytest -s -ra -k "not ($donttest)"
+donttest="$donttest or test_server_async_callbacks"
+%pytest -ra -k "not ($donttest)"
 %endif
 
 %post
@@ -151,15 +156,15 @@ donttest+=" or test_server_async_callbacks"
 %files %{python_files}
 %license LICENSE.txt
 %doc README.md
-%doc examples-%{python_bin_suffix}/examples
-%docdir %{python_sitelib}/%{modname}/examples
 %python_alternative %{_bindir}/panel
 %{python_sitelib}/%{modname}/
-%{python_sitelib}/%{modname}-%{version}-py%{python_version}.egg-info/
+%exclude %{python_sitelib}/%{modname}/tests
+%{python_sitelib}/%{modname}-%{version}*-info/
 
 %files -n jupyter-panel
 %license LICENSE.txt
-%{_jupyter_server_confdir}/panel-client-jupyter.json
+%_jupyter_config %{_jupyter_servextension_confdir}/panel-client-jupyter.json
+%_jupyter_config %{_jupyter_server_confdir}/panel-client-jupyter.json
 
 %endif
 
