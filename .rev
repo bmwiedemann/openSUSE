@@ -1024,4 +1024,12 @@ FIXES (LSP):
 </comment>
     <requestid>1007737</requestid>
   </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>c61787e6d38be6ff969aee052018d1de</srcmd5>
+    <version>0.8.0</version>
+    <time>1669193287</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1037365</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 22 16:18:43 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Fix build without luajit
+
+-------------------------------------------------------------------
 Mon Oct  3 06:30:59 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.8.0:
