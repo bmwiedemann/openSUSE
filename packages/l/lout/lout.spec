@@ -17,12 +17,12 @@
 
 
 Name:           lout
-Version:        3.42.1
+Version:        3.42.2
 Release:        0
 Summary:        A document formatting system
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/PS
-URL:            http://savannah.nongnu.org/projects/lout/
+URL:            https://savannah.nongnu.org/projects/lout/
 Source0:        https://github.com/william8000/lout/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  ghostscript
