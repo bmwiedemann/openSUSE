@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 21 19:03:11 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Go back to bokeh 2.4
+  * gh#dask/dask#9659
+  * we provide a legacy bokeh2 instead
+
+-------------------------------------------------------------------
 Sun Nov 20 10:01:18 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 2022.11.1

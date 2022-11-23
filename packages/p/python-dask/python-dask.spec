@@ -255,9 +255,8 @@ This meta package pulls in the distributed module into the dask namespace.
 Summary:        Diagnostics for dask
 Requires:       %{name} = %{version}
 Requires:       python-Jinja2
-Requires:       python-bokeh >= 2.4.2
-Conflicts:      python-bokeh = 3.0.0
-Conflicts:      python-bokeh = 3.0.1
+# Not ready yet: https://github.com/dask/dask/pull/9659, we provide a legacy bokeh2 in Tumbleweed
+Requires:       (python-bokeh >= 2.4.2 with python-bokeh < 3)
 
 %description diagnostics
 A flexible library for parallel computing in Python.
@@ -325,8 +324,6 @@ unit testing dask.
 %prep
 %autosetup -p1 -n dask-%{version}
 sed -i  '/addopts/d' setup.cfg
-# https://github.com/dask/dask/pull/9659
-sed -i  '/bokeh/ s/, <3/,!=3.0.0,!=3.0.1/' setup.py
 chmod a-x dask/dataframe/io/orc/utils.py
 
 %build
