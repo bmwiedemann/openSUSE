@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Nov 22 14:36:03 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.1+20221122.102a8e11:
+  * Dev: workflows: add behave test `healthcheck`
+  * Dev: behave: add functional test for previous changes
+  * Dev: upgradeutil: change the format of seq from int to major.minor
+  * Dev: unittest: move tests to test_healthcheck
+  * Dev: bootstrap: fix passwordless ssh authentication for hacluster automatically when a new node is joining the cluster (bsc#1201785)
+  * Dev: refactor: extract healthcheck module from upgradeutil
+  * Fix: testcases: fix shadow cib tests for previous changes.
+  * Fix: testcases: add no_reg option for utils.list_cluster_nodes
+  * Dev: unittest: add new tests for upgradeutil
+  * Dev: upgradeutil: automated init ssh passwordless auth for hacluster after upgrading (bsc#1201785)
+
+-------------------------------------------------------------------
+Tue Nov 22 10:19:09 UTC 2022 - nicholas.yang@suse.com
+
+- Update to version 4.4.1+20221122.20aa6e8e:
+  * Dev: workflows: update actions version
+
+-------------------------------------------------------------------
 Wed Nov 16 03:54:57 UTC 2022 - XLiang@suse.com
 
 - Update to version 4.4.1+20221116.4faefec3:
