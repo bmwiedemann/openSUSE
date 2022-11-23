@@ -372,4 +372,12 @@
   bsc#1122853 (forwarded request 1033480 from dspinella)</comment>
     <requestid>1033484</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>6de0dc1a811b60f254430d04ab57c6b5</srcmd5>
+    <version>7.16</version>
+    <time>1669193265</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 7.16</comment>
+    <requestid>1037179</requestid>
+  </revision>
 </revisionlist>

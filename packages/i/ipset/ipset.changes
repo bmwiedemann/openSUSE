@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 21 20:05:41 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.16
+  * Add bitmask support to hash:netnet, hash:ipport, hash:ip
+  * Add support for new bitmask parameter
+
+-------------------------------------------------------------------
 Fri Nov  4 09:49:23 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Tumbleweed is not affected by the following SLE issues:
