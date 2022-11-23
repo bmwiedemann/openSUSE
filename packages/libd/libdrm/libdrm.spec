@@ -34,6 +34,8 @@ URL:            https://dri.freedesktop.org/
 # Source URL:   https://dri.freedesktop.org/libdrm/
 Source:         https://dri.freedesktop.org/libdrm/%{name}-%{version}.tar.xz
 Source2:        baselibs.conf
+Source3:        n_libdrm-drop-valgrind-dep-generic.patch
+Source4:        n_libdrm-drop-valgrind-dep-intel.patch
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.43
 BuildRequires:  pkgconfig
@@ -256,6 +258,19 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 
 %install
 %meson_install
+%if %{with valgrind_support}
+# patch the generated pkgconfig files to not have a dependency on valgrind
+# intentionally using a patch file to catch if we need to adjust
+pushd %{buildroot}%{_libdir}/pkgconfig
+echo "arch: %_arch"
+%ifarch %{ix86} x86_64 ppc ppc64 ppc64le s390x
+patch -p1 --no-backup-if-mismatch < %{SOURCE3}
+%ifnarch s390x
+patch -p1 --no-backup-if-mismatch < %{SOURCE4}
+%endif
+%endif
+popd
+%endif
 %fdupes %{buildroot}/%{_prefix}
 
 %post   -n libdrm2 -p /sbin/ldconfig
