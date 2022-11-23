@@ -118,4 +118,25 @@
     <comment></comment>
     <requestid>965303</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>41f888be59ac9dfb50bc8ffd7758b2db</srcmd5>
+    <version>3.6.2</version>
+    <time>1669193266</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.6.2:
+  - Pinned Trio to &lt; 0.22 to avoid incompatibility with AnyIO's ``ExceptionGroup`` class
+    causing ``AttributeError: 'NonBaseMultiError' object has no attribute '_exceptions'``
+    (AnyIO 4 is unaffected)
+  - Fixed exception handler in the asyncio test runner not properly handling a context
+    that does not contain the ``exception`` key
+  - Fixed ``TypeError`` in ``get_current_task()`` on asyncio when using a custom ``Task`` factory
+  - Updated type annotations on ``run_process()`` and ``open_process()``:
+    * ``command`` now accepts accepts bytes and sequences of bytes
+    * ``stdin``, ``stdout`` and ``stderr`` now accept file-like objects
+  - Changed the pytest plugin to run both the setup and teardown phases of asynchronous
+    generator fixtures within a single task to enable use cases such as cancel scopes and
+    task groups where a context manager straddles the ``yield``
+- drop anyio-pytest7.patch (upstream)</comment>
+    <requestid>1037186</requestid>
+  </revision>
 </revisionlist>
