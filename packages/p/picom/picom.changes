@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov 23 01:35:55 UTC 2022 - Mia Herkt <mia@0x0.st>
+
+- Update to version 10.1
+Fixes:
+  * A GL texture leak, related to
+    gh#yshui/picom#892
+  * A crash when shadow radius is set to 0
+    gh#yshui/picom#927
+  * An undefined symbol error
+    gh#yshui/picom#932
+
+-------------------------------------------------------------------
 Mon Nov 14 14:16:01 UTC 2022 - Mia Herkt <mia@0x0.st>
 
 - Update to version 10

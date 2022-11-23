@@ -111,4 +111,19 @@ Other changes:
   * picom tries to detect and act on GPU resets. But because of the</comment>
     <requestid>1035698</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7455182b015fdef860b838189f4297b9</srcmd5>
+    <version>10.1</version>
+    <time>1669193299</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 10.1
+Fixes:
+  * A GL texture leak, related to
+    gh#yshui/picom#892
+  * A crash when shadow radius is set to 0
+    gh#yshui/picom#927
+  * An undefined symbol error
+    gh#yshui/picom#932</comment>
+    <requestid>1037427</requestid>
+  </revision>
 </revisionlist>

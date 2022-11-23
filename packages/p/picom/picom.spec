@@ -17,7 +17,7 @@
 
 
 Name:           picom
-Version:        10
+Version:        10.1
 Release:        0
 Summary:        Stand-alone compositor for X11
 License:        MIT AND MPL-2.0
