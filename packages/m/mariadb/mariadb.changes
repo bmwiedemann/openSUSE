@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Nov 18 10:20:00 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 10.10.2:
+  * release notes and changelog:
+    https://mariadb.com/kb/en/changes-improvements-in-mariadb-1010/
+    https://mariadb.com/kb/en/mariadb-10-10-2-release-notes/
+    https://mariadb.com/kb/en/mariadb-10-10-2-changelog/
+    https://mariadb.com/kb/en/mariadb-10101-release-notes/
+    https://mariadb.com/kb/en/mariadb-10101-changelog/
+    https://mariadb.com/kb/en/mariadb-10100-release-notes/
+  * fixes for the following security vulnerabilities:
+    10.10.2: none
+
+-------------------------------------------------------------------
+Wed Nov  9 16:38:56 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 10.9.4:
+  * release notes and changelog:
+    https://mariadb.com/kb/en/library/mariadb-1094-release-notes
+    https://mariadb.com/kb/en/library/mariadb-1094-changelog
+  * fixes for the following security vulnerabilities:
+    10.9.4: none
+
+-------------------------------------------------------------------
 Wed Sep 21 13:54:53 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 10.9.3:

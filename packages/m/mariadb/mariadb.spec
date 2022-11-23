@@ -52,7 +52,7 @@
 # Build with cracklib plugin when cracklib-dict-full >= 2.9.0 is available
 %define with_cracklib_plugin 0
 Name:           mariadb
-Version:        10.9.3
+Version:        10.10.2
 Release:        0
 Summary:        Server part of MariaDB
 License:        SUSE-GPL-2.0-with-FLOSS-exception
