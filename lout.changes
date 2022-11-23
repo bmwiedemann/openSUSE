@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 22 20:29:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.42.2: 
+  * blf : fix typo in @paintbox PDF backend
+  * include/lengths: Remove undefined __loutd reference. 
+
+-------------------------------------------------------------------
 Tue Mar 22 17:50:34 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.42.1:
