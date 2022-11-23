@@ -20,7 +20,7 @@
 %define _firmwaredir /lib/firmware
 %endif
 Name:           ucode-intel
-Version:        20220809
+Version:        20221108
 Release:        0
 Summary:        Microcode Updates for Intel x86/x86-64 CPUs
 License:        SUSE-Firmware
