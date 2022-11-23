@@ -36,4 +36,16 @@ also, what the heck is this new UI? I am unable to find all the buttons I like..
     <comment></comment>
     <requestid>942631</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>8579fffe8234d55710c28168b2d52c14</srcmd5>
+    <version>0.6.6</version>
+    <time>1669193286</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove python-six dependency
+- Remove python_module macro definition
+- Do not distribute tests with package
+- More specific python_sitelib in %files
+</comment>
+    <requestid>1037363</requestid>
+  </revision>
 </revisionlist>
