@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 22 13:31:34 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.6.4
+  - Remove unused setuptools_scm build requirement.
+  - Properly package the canonicaljson module (#52)
+- switch to pyproject build
+
+-------------------------------------------------------------------
 Wed Jun  8 11:30:41 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
 - add BR/Requires for typing_extension. new in 1.6.2
@@ -6,7 +14,7 @@ Wed Jun  8 11:30:41 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 -------------------------------------------------------------------
 Wed Jun  8 10:00:55 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
-- Update to 1.6.2 
+- Update to 1.6.2
   - Add type annotations (#49).
   - 1.6.2 is a rerelease of 1.6.1 with the version numbers fixed in
     the tarball.
@@ -14,7 +22,7 @@ Wed Jun  8 10:00:55 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 -------------------------------------------------------------------
 Tue Jun  7 17:33:11 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
-- Update to 1.6.0 
+- Update to 1.6.0
   - Make frozendict import conditional. by @BURG3R5 in #46
 
 -------------------------------------------------------------------

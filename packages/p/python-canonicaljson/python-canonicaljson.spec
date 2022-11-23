@@ -25,26 +25,23 @@
 %bcond_with test
 %endif
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_with pyproject
 %define         github_user matrix-org
 %define         short_name canonicaljson
 Name:           python-%{short_name}%{psuffix}
-Version:        1.6.2
+Version:        1.6.4
 Release:        0
 Summary:        Canonical JSON for Python
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/matrix-org/python-canonicaljson
 Source:         https://github.com/matrix-org/python-canonicaljson/archive/v%{version}.tar.gz
-%if %{with pyproject}
 BuildRequires:  %{python_module flit-core}
-BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module wheel}
-%endif
 BuildRequires:  %{python_module frozendict >= 2.1.3}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module simplejson >= 3.14.0}
 BuildRequires:  %{python_module typing_extensions}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-frozendict >= 1.0
@@ -73,19 +70,11 @@ RFC 7159.
 %setup -q -n python-canonicaljson-%{version}
 
 %build
-%if %{with pyproject}
 %pyproject_wheel
-%else
-%python_build
-%endif
 
 %install
 %if !%{with test}
-%if %{with pyproject}
 %pyproject_install
-%else
-%python_install
-%endif
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -102,8 +91,7 @@ RFC 7159.
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%pycache_only %{python_sitelib}/__pycache__/%{short_name}*.pyc
-%{python_sitelib}/%{short_name}.py
+%{python_sitelib}/%{short_name}/
 %{python_sitelib}/%{short_name}-%{version}*-info
 %endif
 
