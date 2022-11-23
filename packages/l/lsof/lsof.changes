@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 22 14:08:48 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- format.patch: Use correct scanf/printf format for uint64_t
+- Build with %{optflags}
+
+-------------------------------------------------------------------
 Sun Oct 30 10:51:21 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 4.96.4

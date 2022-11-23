@@ -24,6 +24,7 @@ License:        Zlib
 Group:          System/Monitoring
 URL:            https://github.com/lsof-org/lsof
 Source:         https://github.com/lsof-org/lsof/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         format.patch
 BuildRequires:  groff
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libselinux)
@@ -41,11 +42,11 @@ path.
 
 %build
 ./Configure -n linux
-%make_build
+%make_build DEBUG="%{optflags}"
 soelim -r Lsof.8 > lsof.8
 
 %install
-%make_install
+%make_install DEBUG="%{optflags}"
 install -m755 -d %{buildroot}%{_bindir} %{buildroot}%{_mandir}/man8
 install -m755 lsof %{buildroot}%{_bindir}
 install -m644 lsof.8 %{buildroot}%{_mandir}/man8/lsof.8
@@ -61,7 +62,7 @@ mv scripts/00README scripts/README
 cd tests
 chmod u+w TestDB
 ./Add2TestDB
-%make_build DEBUG="-Wall -Wno-unused"
+%make_build DEBUG="%{optflags} -Wall -Wno-unused"
 
 %files
 %doc SUSE_docs/* scripts
