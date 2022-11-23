@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Nov 21 12:51:47 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.64.0:
+  + Add optimization plain option.
+  + New languages: nasm and masm.
+  + Pager and colors for meson configure output.
+  + various install_* functions no longer handle the sticky bit.
+  +  fs.copyfile to replace configure_file(copy : true).
+  + Added update_mime_database to gnome.post_install().
+  + Added preserve_path arg to install_data.
+  + BSD support for the jni dependency.
+  + Credentials from ~/.netrc for https URLs.
+  + Basic support for oneAPI compilers on Linux and Windows.
+  + python.find_installation() now accepts pure argument.
+  + Generates rust-project.json when there are Rust targets.
+  + Incremental ThinLTO with b_thinlto_cache.
+  + Added include_core_only arg to wayland.scan_xml.
+  + Automatic fallback using WrapDB.
+
+-------------------------------------------------------------------
 Fri Oct  7 13:02:05 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.63.3:
@@ -6,7 +26,7 @@ Fri Oct  7 13:02:05 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * i18n: Fix source root in Gettext targets for subprojects
   * backends: limit maximum path of generated filenames
   * Fix 2 typos in a single string which can be shown in error messages.
-  * fix obscure crash on unbound variable 
+  * fix obscure crash on unbound variable
   * Warn if wrap file changes
   * interpreter: add a special class to track the lifecycle of get_option
 
