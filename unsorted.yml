@@ -13869,7 +13869,7 @@ unsorted:
   - librrd8 
   - librsb-devel 
   - librsb0 
-  - librssguard-4_2_3 
+  - librssguard-4_2_5 
   - librssguard-devel 
   - librsvg-2-2-32bit: [x86_64] 
   - librsvg-devel 
@@ -14024,8 +14024,8 @@ unsorted:
   - libshadowsocks-libev2 
   - libsharp-devel 
   - libsharp0 
-  - libshibsp-lite10 
-  - libshibsp10 
+  - libshibsp-lite11 
+  - libshibsp11 
   - libshine-devel 
   - libshine3 
   - libshout-devel 
@@ -22829,6 +22829,7 @@ unsorted:
   - python310-bobodoctestumentation 
   - python310-bokcolmaps 
   - python310-bokeh 
+  - python310-bokeh2 
   - python310-boltons 
   - python310-boolean.py 
   - python310-booleanOperations 
@@ -26099,6 +26100,7 @@ unsorted:
   - python38-bobodoctestumentation 
   - python38-bokcolmaps 
   - python38-bokeh 
+  - python38-bokeh2 
   - python38-boltons 
   - python38-boolean.py 
   - python38-booleanOperations 
@@ -26735,7 +26737,6 @@ unsorted:
   - python38-google-cloud-storage 
   - python38-google-cloud-translate 
   - python38-google-crc32c 
-  - python38-google-pasta 
   - python38-google-resumable-media 
   - python38-googleapis-common-protos 
   - python38-googlemaps 
@@ -29461,6 +29462,7 @@ unsorted:
   - python39-bobodoctestumentation 
   - python39-bokcolmaps 
   - python39-bokeh 
+  - python39-bokeh2 
   - python39-boltons 
   - python39-boolean.py 
   - python39-booleanOperations 
@@ -29803,6 +29805,7 @@ unsorted:
   - python39-django-oidc-provider 
   - python39-django-opentracing 
   - python39-django-oscar 
+  - python39-django-pandas 
   - python39-django-parler 
   - python39-django-perf-rec 
   - python39-django-pglocks 
@@ -30097,7 +30100,6 @@ unsorted:
   - python39-google-cloud-storage 
   - python39-google-cloud-translate 
   - python39-google-crc32c 
-  - python39-google-pasta 
   - python39-google-resumable-media 
   - python39-googleapis-common-protos 
   - python39-googlemaps 
