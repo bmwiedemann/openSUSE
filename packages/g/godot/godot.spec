@@ -105,7 +105,6 @@ Requires:       ca-certificates
 Recommends:     ca-certificates-mozilla
 Requires(post): update-desktop-files
 Requires(postun):update-desktop-files
-Recommends:     %{name}-bash-completion
 Suggests:       %{name}-headless = %{version}
 Suggests:       %{name}-runner = %{version}
 Suggests:       %{name}-server = %{version}

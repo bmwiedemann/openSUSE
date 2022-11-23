@@ -279,4 +279,14 @@
     <comment></comment>
     <requestid>1007782</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>57fce807e1f36d3c6ee6c0a5e8911035</srcmd5>
+    <version>3.5.1</version>
+    <time>1669193292</time>
+    <user>dimstar_suse</user>
+    <comment>Do not have the main package recommend the bash-completion
+  sub-package, but rather have the subpackage supplement the
+  combination of godot and bash-completion (already in place).</comment>
+    <requestid>1037397</requestid>
+  </revision>
 </revisionlist>

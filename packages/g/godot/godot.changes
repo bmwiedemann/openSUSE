@@ -1,3 +1,11 @@
+-------------------------------------------------------------------
+Mon Nov 21 15:03:48 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not have the main package recommend the bash-completion
+  sub-package, but rather have the subpackage supplement the
+  combination of godot and bash-completion (already in place).
+
+-------------------------------------------------------------------
 Fri Sep 30 12:00:00 UTC 2022 - cunix@mail.de
 
 - Update to 3.5.1
