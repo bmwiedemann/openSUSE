@@ -1,18 +1,15 @@
-<!-- See https://en.opensuse.org/openSUSE:Build_Service_Concept_SourceService -->
-<!-- for more details on the syntax -->
-
 <services>
-        <service name="tar_scm" mode="localonly">
-                <param name="scm">git</param>
-                <param name="url">https://github.com/open-power/secvarctl.git</param>
-                <param name="revision">main</param>
-                <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@~%h</param>
-                <param name="changesgenerate">enable</param>
-                <param name="versionrewrite-pattern">v(.*)</param>
-        </service>
-        <service name="recompress" mode="localonly">
-        <param name="file">*.tar</param>
-        <param name="compression">xz</param>
-        </service>
-        <service name="set_version" mode="localonly" />
+  <service name="tar_scm" mode="disabled">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/open-power/secvarctl.git</param>
+    <param name="revision">main</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@.%h</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+  <service name="set_version" mode="disabled" />
 </services>

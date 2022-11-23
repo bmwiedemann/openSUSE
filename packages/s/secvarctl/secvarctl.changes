@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov 22 20:10:25 UTC 2022 - msuchanek@suse.com
+
+- Update to version 0.3+git13.76db7a7:
+  * Update crypto calling functions to expect success return codes
+  * crypto-gnutls.c: Unify return codes
+  * crypto-mbedtls.c: Unify error codes
+  * crypto-openssl.c: Unify return codes
+  * crypto: Add support for GnuTLS
+  * crypto: Fix openssl implementation of crypto_x509_is_RSA
+  * crypto: Enable compatability with OpenSSL V3
+  * crypto: Catch possible uninitialized return code
+
+-------------------------------------------------------------------
 Thu Sep 23 08:22:33 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
 
 - Version 0.2+git31 released as 0.3 (jsc#SLE-18126).
