@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Nov 21 13:15:53 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 4.2.5:
+  + Added:
+    - RSS Guard now can use super fast feed/article refresh rates.
+      At this point it is possible to set refresh interval even to
+      1 second to allow super fast checking for content changes.
+  + Fixed:
+    - Newspaper mode caused some GUI glitches.
+    - Feedly crashed whole application when performing folder/feed
+      synchronization.
+    - Some specific feeds are faulty but some adjustments were made
+      to make RSS/ATOM parsing more loose.
+    - Fixed HTML/plain article content auto-detection for some
+      specific HTML cases.
+    - Lessened severity of some debug messages.
+- Rebase rssguard-4.2.2-add_library_version.patch.
+
+-------------------------------------------------------------------
 Thu Jun  2 15:30:18 UTC 2022 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update to version 4.2.3
