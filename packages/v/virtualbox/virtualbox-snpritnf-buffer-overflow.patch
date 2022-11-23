@@ -1,7 +1,7 @@
-Index: VirtualBox-6.1.40/src/VBox/ExtPacks/VBoxDTrace/onnv/lib/libdtrace/common/dt_subr.c
+Index: VirtualBox-7.0.4/src/VBox/ExtPacks/VBoxDTrace/onnv/lib/libdtrace/common/dt_subr.c
 ===================================================================
---- VirtualBox-6.1.40.orig/src/VBox/ExtPacks/VBoxDTrace/onnv/lib/libdtrace/common/dt_subr.c
-+++ VirtualBox-6.1.40/src/VBox/ExtPacks/VBoxDTrace/onnv/lib/libdtrace/common/dt_subr.c
+--- VirtualBox-7.0.4.orig/src/VBox/ExtPacks/VBoxDTrace/onnv/lib/libdtrace/common/dt_subr.c
++++ VirtualBox-7.0.4/src/VBox/ExtPacks/VBoxDTrace/onnv/lib/libdtrace/common/dt_subr.c
 @@ -833,6 +833,7 @@ dt_gmatch(const char *s, const char *p)
  #else
  	return (p == NULL || *p == '\0' || RTStrSimplePatternMatch(p, s)); /** @todo implement gmatch. */

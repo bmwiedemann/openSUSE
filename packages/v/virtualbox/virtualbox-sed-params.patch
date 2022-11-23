@@ -1,8 +1,8 @@
-Index: VirtualBox-6.1.40/src/VBox/Main/Makefile.kmk
+Index: VirtualBox-7.0.4/src/VBox/Main/Makefile.kmk
 ===================================================================
---- VirtualBox-6.1.40.orig/src/VBox/Main/Makefile.kmk
-+++ VirtualBox-6.1.40/src/VBox/Main/Makefile.kmk
-@@ -1648,7 +1648,7 @@ $(VBoxAPIWrap_0_OUTDIR)/VBoxAPI.d.ts \
+--- VirtualBox-7.0.4.orig/src/VBox/Main/Makefile.kmk
++++ VirtualBox-7.0.4/src/VBox/Main/Makefile.kmk
+@@ -1876,7 +1876,7 @@ $(VBoxAPIWrap_0_OUTDIR)/VBoxAPI.d.ts \
  	$(QUIET)$(VBOX_XSLTPROC) --stringparam KBUILD_HOST $(KBUILD_HOST) \
  		--stringparam generating "dtrace-probes" \
  		-o "$@" $(VBoxAPIWrap_VBOX_XSLT) $(VBOX_XIDL_FILE)
@@ -11,11 +11,11 @@ Index: VirtualBox-6.1.40/src/VBox/Main/Makefile.kmk
  		"$(VBOX_PATH_MAIN_SRC)/src-all/VBoxAPI-start$(if-expr "$(VBOX_HOST_DTRACE_VERSION)" == "dtrace: Sun D 1.6.2",-alternative,).d" \
  		"$@" \
  		"$(VBOX_PATH_MAIN_SRC)/src-all/VBoxAPI-end$(if-expr "$(VBOX_HOST_DTRACE_VERSION)" == "dtrace: Sun D 1.6.2",-alternative,).d"
-Index: VirtualBox-6.1.40/src/VBox/Devices/Makefile.kmk
+Index: VirtualBox-7.0.4/src/VBox/Devices/Makefile.kmk
 ===================================================================
---- VirtualBox-6.1.40.orig/src/VBox/Devices/Makefile.kmk
-+++ VirtualBox-6.1.40/src/VBox/Devices/Makefile.kmk
-@@ -880,8 +880,7 @@ endif
+--- VirtualBox-7.0.4.orig/src/VBox/Devices/Makefile.kmk
++++ VirtualBox-7.0.4/src/VBox/Devices/Makefile.kmk
+@@ -989,8 +989,7 @@ VBOX_WITH_VMSVGA3D_DYNAMIC_LOAD = 1
  	$(call MSG_TOOL,iasl,VBoxDD,$<,$@)
  	$(QUIET)$(RM) -f $@ $@.tmp $@.pre
  	$(QUIET)$(TOOL_$(VBOX_GCC_TOOL)_CC) -E -P -x c -o $@.pre $<

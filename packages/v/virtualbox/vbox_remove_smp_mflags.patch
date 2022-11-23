@@ -1,26 +1,13 @@
-Index: VirtualBox-6.1.40/src/libs/libxml2-2.9.4/libxml.spec.in
+Index: VirtualBox-7.0.4/src/libs/libxml2-2.9.14/libxml.spec.in
 ===================================================================
---- VirtualBox-6.1.40.orig/src/libs/libxml2-2.9.4/libxml.spec.in
-+++ VirtualBox-6.1.40/src/libs/libxml2-2.9.4/libxml.spec.in
-@@ -94,7 +94,7 @@ at parse time or later once the document
+--- VirtualBox-7.0.4.orig/src/libs/libxml2-2.9.14/libxml.spec.in
++++ VirtualBox-7.0.4/src/libs/libxml2-2.9.14/libxml.spec.in
+@@ -103,7 +103,7 @@ sed -i 's|#!/usr/bin/python |#!%{__pytho
  
  %build
  %configure
 -make %{_smp_mflags}
 +make
  
- %install
- rm -fr %{buildroot}
-Index: VirtualBox-6.1.40/src/libs/libxml2-2.9.4/libxml2.spec
-===================================================================
---- VirtualBox-6.1.40.orig/src/libs/libxml2-2.9.4/libxml2.spec
-+++ VirtualBox-6.1.40/src/libs/libxml2-2.9.4/libxml2.spec
-@@ -94,7 +94,7 @@ at parse time or later once the document
+ find doc -type f -exec chmod 0644 \{\} \;
  
- %build
- %configure
--make %{_smp_mflags}
-+make
- 
- %install
- rm -fr %{buildroot}

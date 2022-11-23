@@ -1,21 +1,21 @@
-Index: VirtualBox-6.1.40/src/VBox/Frontends/VBoxFB/VBoxFB.cpp
+Index: VirtualBox-7.0.4/src/VBox/Frontends/VBoxFB/VBoxFB.cpp
 ===================================================================
---- VirtualBox-6.1.40.orig/src/VBox/Frontends/VBoxFB/VBoxFB.cpp
-+++ VirtualBox-6.1.40/src/VBox/Frontends/VBoxFB/VBoxFB.cpp
-@@ -62,7 +62,7 @@ int main(int argc, char *argv[])
+--- VirtualBox-7.0.4.orig/src/VBox/Frontends/VBoxFB/VBoxFB.cpp
++++ VirtualBox-7.0.4/src/VBox/Frontends/VBoxFB/VBoxFB.cpp
+@@ -72,7 +72,7 @@ int main(int argc, char *argv[])
  
      printf("VirtualBox DirectFB GUI built %s %s\n"
-            "(C) 2004-" VBOX_C_YEAR " " VBOX_VENDOR "\n"
--           "(C) 2004-2005 secunet Security Networks AG\n", __DATE__, __TIME__);
-+           "(C) 2004-2005 secunet Security Networks AG\n");
+            "Copyright (C) 2004-" VBOX_C_YEAR " " VBOX_VENDOR "\n"
+-           "Copyright (C) 2004-2005 secunet Security Networks AG\n", __DATE__, __TIME__);
++           "Copyright (C) 2004-2005 secunet Security Networks AG\n");
  
      for (;;)
      {
-Index: VirtualBox-6.1.40/src/VBox/Runtime/common/string/uniread.cpp
+Index: VirtualBox-7.0.4/src/VBox/Runtime/common/string/uniread.cpp
 ===================================================================
---- VirtualBox-6.1.40.orig/src/VBox/Runtime/common/string/uniread.cpp
-+++ VirtualBox-6.1.40/src/VBox/Runtime/common/string/uniread.cpp
-@@ -1036,7 +1036,7 @@ int PrintHeader(const char *argv0, const
+--- VirtualBox-7.0.4.orig/src/VBox/Runtime/common/string/uniread.cpp
++++ VirtualBox-7.0.4/src/VBox/Runtime/common/string/uniread.cpp
+@@ -1046,7 +1046,7 @@ int PrintHeader(const char *argv0, const
                    " * IPRT - Unicode Tables.\n"
                    " *\n"
                    " * Automatically Generated from %s\n"
@@ -24,10 +24,10 @@ Index: VirtualBox-6.1.40/src/VBox/Runtime/common/string/uniread.cpp
                    " */\n"
                    "\n"
                    "/*\n"
-Index: VirtualBox-6.1.40/src/libs/xpcom18a4/nsprpub/lib/libc/src/plvrsion.c
+Index: VirtualBox-7.0.4/src/libs/xpcom18a4/nsprpub/lib/libc/src/plvrsion.c
 ===================================================================
---- VirtualBox-6.1.40.orig/src/libs/xpcom18a4/nsprpub/lib/libc/src/plvrsion.c
-+++ VirtualBox-6.1.40/src/libs/xpcom18a4/nsprpub/lib/libc/src/plvrsion.c
+--- VirtualBox-7.0.4.orig/src/libs/xpcom18a4/nsprpub/lib/libc/src/plvrsion.c
++++ VirtualBox-7.0.4/src/libs/xpcom18a4/nsprpub/lib/libc/src/plvrsion.c
 @@ -42,16 +42,13 @@
  /**************************IDENTITY AND VERSIONING***********************/
  /************************************************************************/
@@ -50,10 +50,10 @@ Index: VirtualBox-6.1.40/src/libs/xpcom18a4/nsprpub/lib/libc/src/plvrsion.c
  #if !defined(_PRODUCTION)
  #define _PRODUCTION ""
  #endif
-Index: VirtualBox-6.1.40/src/libs/xpcom18a4/nsprpub/pr/src/prvrsion.c
+Index: VirtualBox-7.0.4/src/libs/xpcom18a4/nsprpub/pr/src/prvrsion.c
 ===================================================================
---- VirtualBox-6.1.40.orig/src/libs/xpcom18a4/nsprpub/pr/src/prvrsion.c
-+++ VirtualBox-6.1.40/src/libs/xpcom18a4/nsprpub/pr/src/prvrsion.c
+--- VirtualBox-7.0.4.orig/src/libs/xpcom18a4/nsprpub/pr/src/prvrsion.c
++++ VirtualBox-7.0.4/src/libs/xpcom18a4/nsprpub/pr/src/prvrsion.c
 @@ -44,16 +44,10 @@
  #ifndef XP_MAC
  #include "_pr_bld.h"
@@ -73,10 +73,10 @@ Index: VirtualBox-6.1.40/src/libs/xpcom18a4/nsprpub/pr/src/prvrsion.c
  #if !defined(_PRODUCTION)
  #define _PRODUCTION ""
  #endif
-Index: VirtualBox-6.1.40/src/libs/xpcom18a4/nsprpub/lib/prstreams/plvrsion.c
+Index: VirtualBox-7.0.4/src/libs/xpcom18a4/nsprpub/lib/prstreams/plvrsion.c
 ===================================================================
---- VirtualBox-6.1.40.orig/src/libs/xpcom18a4/nsprpub/lib/prstreams/plvrsion.c
-+++ VirtualBox-6.1.40/src/libs/xpcom18a4/nsprpub/lib/prstreams/plvrsion.c
+--- VirtualBox-7.0.4.orig/src/libs/xpcom18a4/nsprpub/lib/prstreams/plvrsion.c
++++ VirtualBox-7.0.4/src/libs/xpcom18a4/nsprpub/lib/prstreams/plvrsion.c
 @@ -42,16 +42,13 @@
  /**************************IDENTITY AND VERSIONING***********************/
  /************************************************************************/
@@ -99,10 +99,10 @@ Index: VirtualBox-6.1.40/src/libs/xpcom18a4/nsprpub/lib/prstreams/plvrsion.c
  #if !defined(_PRODUCTION)
  #define _PRODUCTION ""
  #endif
-Index: VirtualBox-6.1.40/src/libs/xpcom18a4/nsprpub/lib/ds/plvrsion.c
+Index: VirtualBox-7.0.4/src/libs/xpcom18a4/nsprpub/lib/ds/plvrsion.c
 ===================================================================
---- VirtualBox-6.1.40.orig/src/libs/xpcom18a4/nsprpub/lib/ds/plvrsion.c
-+++ VirtualBox-6.1.40/src/libs/xpcom18a4/nsprpub/lib/ds/plvrsion.c
+--- VirtualBox-7.0.4.orig/src/libs/xpcom18a4/nsprpub/lib/ds/plvrsion.c
++++ VirtualBox-7.0.4/src/libs/xpcom18a4/nsprpub/lib/ds/plvrsion.c
 @@ -42,16 +42,13 @@
  /**************************IDENTITY AND VERSIONING***********************/
  /************************************************************************/
@@ -125,11 +125,11 @@ Index: VirtualBox-6.1.40/src/libs/xpcom18a4/nsprpub/lib/ds/plvrsion.c
  #if !defined(_PRODUCTION)
  #define _PRODUCTION ""
  #endif
-Index: VirtualBox-6.1.40/src/VBox/Main/src-helper-apps/OpenGLTest/OpenGLTestApp.cpp
+Index: VirtualBox-7.0.4/src/VBox/Main/src-helper-apps/OpenGLTest/OpenGLTestApp.cpp
 ===================================================================
---- VirtualBox-6.1.40.orig/src/VBox/Main/src-helper-apps/OpenGLTest/OpenGLTestApp.cpp
-+++ VirtualBox-6.1.40/src/VBox/Main/src-helper-apps/OpenGLTest/OpenGLTestApp.cpp
-@@ -308,7 +308,7 @@ static int vboxInitLogging(const char *p
+--- VirtualBox-7.0.4.orig/src/VBox/Main/src-helper-apps/OpenGLTest/OpenGLTestApp.cpp
++++ VirtualBox-7.0.4/src/VBox/Main/src-helper-apps/OpenGLTest/OpenGLTestApp.cpp
+@@ -327,7 +327,7 @@ static int vboxInitLogging(const char *p
  #endif
                         "Log opened %s\n",
                         VBOX_VERSION_STRING, RTBldCfgRevision(), VBOX_BUILD_TARGET,
@@ -138,11 +138,11 @@ Index: VirtualBox-6.1.40/src/VBox/Main/src-helper-apps/OpenGLTest/OpenGLTestApp.
  
          vrc = RTSystemQueryOSInfo(RTSYSOSINFO_PRODUCT, szTmp, sizeof(szTmp));
          if (RT_SUCCESS(vrc) || vrc == VERR_BUFFER_OVERFLOW)
-Index: VirtualBox-6.1.40/src/VBox/Devices/PC/BIOS/bios.c
+Index: VirtualBox-7.0.4/src/VBox/Devices/PC/BIOS/bios.c
 ===================================================================
---- VirtualBox-6.1.40.orig/src/VBox/Devices/PC/BIOS/bios.c
-+++ VirtualBox-6.1.40/src/VBox/Devices/PC/BIOS/bios.c
-@@ -143,7 +143,7 @@ void set_mode(uint8_t mode);
+--- VirtualBox-7.0.4.orig/src/VBox/Devices/PC/BIOS/bios.c
++++ VirtualBox-7.0.4/src/VBox/Devices/PC/BIOS/bios.c
+@@ -164,7 +164,7 @@ void set_mode(uint8_t mode);
  
  #define BX_PCIBIOS  1
  #define BX_APPNAME          "VirtualBox"
@@ -151,11 +151,11 @@ Index: VirtualBox-6.1.40/src/VBox/Devices/PC/BIOS/bios.c
  //--------------------------------------------------------------------------
  // print_bios_banner
  //   displays a the bios version
-Index: VirtualBox-6.1.40/src/VBox/Additions/common/VBoxService/VBoxService.cpp
+Index: VirtualBox-7.0.4/src/VBox/Additions/common/VBoxService/VBoxService.cpp
 ===================================================================
---- VirtualBox-6.1.40.orig/src/VBox/Additions/common/VBoxService/VBoxService.cpp
-+++ VirtualBox-6.1.40/src/VBox/Additions/common/VBoxService/VBoxService.cpp
-@@ -245,7 +245,7 @@ static DECLCALLBACK(void) vgsvcLogHeader
+--- VirtualBox-7.0.4.orig/src/VBox/Additions/common/VBoxService/VBoxService.cpp
++++ VirtualBox-7.0.4/src/VBox/Additions/common/VBoxService/VBoxService.cpp
+@@ -255,7 +255,7 @@ static DECLCALLBACK(void) vgsvcLogHeader
                     "VBoxService %s r%s (verbosity: %u) %s (%s %s) release log\n"
                     "Log opened %s\n",
                     RTBldCfgVersion(), RTBldCfgRevisionStr(), g_cVerbosity, VBOX_BUILD_TARGET,
@@ -164,11 +164,11 @@ Index: VirtualBox-6.1.40/src/VBox/Additions/common/VBoxService/VBoxService.cpp
  
              int vrc = RTSystemQueryOSInfo(RTSYSOSINFO_PRODUCT, szTmp, sizeof(szTmp));
              if (RT_SUCCESS(vrc) || vrc == VERR_BUFFER_OVERFLOW)
-Index: VirtualBox-6.1.40/src/VBox/ExtPacks/BusMouseSample/Makefile.kmk
+Index: VirtualBox-7.0.4/src/VBox/ExtPacks/BusMouseSample/Makefile.kmk
 ===================================================================
---- VirtualBox-6.1.40.orig/src/VBox/ExtPacks/BusMouseSample/Makefile.kmk
-+++ VirtualBox-6.1.40/src/VBox/ExtPacks/BusMouseSample/Makefile.kmk
-@@ -187,7 +187,7 @@ $(VBOX_PATH_PACKAGES)/$(VBOX_BUSMOUSE_MA
+--- VirtualBox-7.0.4.orig/src/VBox/ExtPacks/BusMouseSample/Makefile.kmk
++++ VirtualBox-7.0.4/src/VBox/ExtPacks/BusMouseSample/Makefile.kmk
+@@ -193,7 +193,7 @@ $(VBOX_PATH_PACKAGES)/$(VBOX_BUSMOUSE_MA
  		$(VBoxBusMouseIns_0_OUTDIR)/Stage/ExtPack.manifest \
  		$(VBoxBusMouseIns_0_OUTDIR)/Stage/ExtPack.signature
  # Tar it up.
@@ -177,10 +177,10 @@ Index: VirtualBox-6.1.40/src/VBox/ExtPacks/BusMouseSample/Makefile.kmk
  # Clean up
  	$(RM) -Rf $(VBoxBusMouseIns_0_OUTDIR)/Stage/
  
-Index: VirtualBox-6.1.40/src/VBox/ExtPacks/Skeleton/Makefile.kmk
+Index: VirtualBox-7.0.4/src/VBox/ExtPacks/Skeleton/Makefile.kmk
 ===================================================================
---- VirtualBox-6.1.40.orig/src/VBox/ExtPacks/Skeleton/Makefile.kmk
-+++ VirtualBox-6.1.40/src/VBox/ExtPacks/Skeleton/Makefile.kmk
+--- VirtualBox-7.0.4.orig/src/VBox/ExtPacks/Skeleton/Makefile.kmk
++++ VirtualBox-7.0.4/src/VBox/ExtPacks/Skeleton/Makefile.kmk
 @@ -161,7 +161,7 @@ $(VBOX_PATH_PACKAGES)/$(VBOX_SKELETON_MA
  		$(VBoxSkeletonIns_0_OUTDIR)/Stage/ExtPack.manifest \
  		$(VBoxSkeletonIns_0_OUTDIR)/Stage/ExtPack.signature
@@ -190,11 +190,11 @@ Index: VirtualBox-6.1.40/src/VBox/ExtPacks/Skeleton/Makefile.kmk
  # Clean up
  	$(RM) -Rf $(VBoxSkeletonIns_0_OUTDIR)/Stage/
  
-Index: VirtualBox-6.1.40/src/VBox/ExtPacks/VBoxDTrace/Makefile.kmk
+Index: VirtualBox-7.0.4/src/VBox/ExtPacks/VBoxDTrace/Makefile.kmk
 ===================================================================
---- VirtualBox-6.1.40.orig/src/VBox/ExtPacks/VBoxDTrace/Makefile.kmk
-+++ VirtualBox-6.1.40/src/VBox/ExtPacks/VBoxDTrace/Makefile.kmk
-@@ -343,7 +343,7 @@ if defined(VBOX_WITH_EXTPACK_VBOXDTRACE)
+--- VirtualBox-7.0.4.orig/src/VBox/ExtPacks/VBoxDTrace/Makefile.kmk
++++ VirtualBox-7.0.4/src/VBox/ExtPacks/VBoxDTrace/Makefile.kmk
+@@ -354,7 +354,7 @@ if defined(VBOX_WITH_EXTPACK_VBOXDTRACE)
  		$(VBoxDTraceIns_0_OUTDIR)/Stage/ExtPack.manifest \
  		$(VBoxDTraceIns_0_OUTDIR)/Stage/ExtPack.signature
   # Tar it up.
@@ -203,11 +203,11 @@ Index: VirtualBox-6.1.40/src/VBox/ExtPacks/VBoxDTrace/Makefile.kmk
   # Clean up
  	$(RM) -Rf $(VBoxDTraceIns_0_OUTDIR)/Stage/
  
-Index: VirtualBox-6.1.40/src/VBox/ExtPacks/VNC/Makefile.kmk
+Index: VirtualBox-7.0.4/src/VBox/ExtPacks/VNC/Makefile.kmk
 ===================================================================
---- VirtualBox-6.1.40.orig/src/VBox/ExtPacks/VNC/Makefile.kmk
-+++ VirtualBox-6.1.40/src/VBox/ExtPacks/VNC/Makefile.kmk
-@@ -154,7 +154,7 @@ $(VBOX_PATH_PACKAGES)/$(VBOX_VNC_MANGLED
+--- VirtualBox-7.0.4.orig/src/VBox/ExtPacks/VNC/Makefile.kmk
++++ VirtualBox-7.0.4/src/VBox/ExtPacks/VNC/Makefile.kmk
+@@ -164,7 +164,7 @@ $(VBOX_PATH_PACKAGES)/$(VBOX_VNC_MANGLED
  		$(VBoxVNCIns_0_OUTDIR)/Stage/ExtPack.manifest \
  		$(VBoxVNCIns_0_OUTDIR)/Stage/ExtPack.signature
  # Tar it up.
@@ -216,11 +216,11 @@ Index: VirtualBox-6.1.40/src/VBox/ExtPacks/VNC/Makefile.kmk
  # Clean up
  	$(RM) -Rf $(VBoxVNCIns_0_OUTDIR)/Stage/
  
-Index: VirtualBox-6.1.40/src/VBox/Additions/common/VBoxGuest/VBoxGuest-win.cpp
+Index: VirtualBox-7.0.4/src/VBox/Additions/common/VBoxGuest/VBoxGuest-win.cpp
 ===================================================================
---- VirtualBox-6.1.40.orig/src/VBox/Additions/common/VBoxGuest/VBoxGuest-win.cpp
-+++ VirtualBox-6.1.40/src/VBox/Additions/common/VBoxGuest/VBoxGuest-win.cpp
-@@ -319,7 +319,7 @@ NTSTATUS DriverEntry(PDRIVER_OBJECT pDrv
+--- VirtualBox-7.0.4.orig/src/VBox/Additions/common/VBoxGuest/VBoxGuest-win.cpp
++++ VirtualBox-7.0.4/src/VBox/Additions/common/VBoxGuest/VBoxGuest-win.cpp
+@@ -329,7 +329,7 @@ NTSTATUS DriverEntry(PDRIVER_OBJECT pDrv
      }
      VGDrvCommonInitLoggers();
  
@@ -229,11 +229,11 @@ Index: VirtualBox-6.1.40/src/VBox/Additions/common/VBoxGuest/VBoxGuest-win.cpp
  
      /*
       * Check if the NT version is supported and initialize g_enmVGDrvNtVer.
-Index: VirtualBox-6.1.40/src/VBox/Additions/linux/lightdm-greeter/vbox-greeter.cpp
+Index: VirtualBox-7.0.4/src/VBox/Additions/linux/lightdm-greeter/vbox-greeter.cpp
 ===================================================================
---- VirtualBox-6.1.40.orig/src/VBox/Additions/linux/lightdm-greeter/vbox-greeter.cpp
-+++ VirtualBox-6.1.40/src/VBox/Additions/linux/lightdm-greeter/vbox-greeter.cpp
-@@ -872,7 +872,7 @@ static DECLCALLBACK(void) vboxGreeterLog
+--- VirtualBox-7.0.4.orig/src/VBox/Additions/linux/lightdm-greeter/vbox-greeter.cpp
++++ VirtualBox-7.0.4/src/VBox/Additions/linux/lightdm-greeter/vbox-greeter.cpp
+@@ -882,7 +882,7 @@ static DECLCALLBACK(void) vboxGreeterLog
                     "vbox-greeter %s r%s (verbosity: %d) %s (%s %s) release log\n"
                     "Log opened %s\n",
                     RTBldCfgVersion(), RTBldCfgRevisionStr(), g_iVerbosity, VBOX_BUILD_TARGET,
@@ -242,11 +242,11 @@ Index: VirtualBox-6.1.40/src/VBox/Additions/linux/lightdm-greeter/vbox-greeter.c
  
              int vrc = RTSystemQueryOSInfo(RTSYSOSINFO_PRODUCT, szTmp, sizeof(szTmp));
              if (RT_SUCCESS(vrc) || vrc == VERR_BUFFER_OVERFLOW)
-Index: VirtualBox-6.1.40/src/VBox/Additions/solaris/Mouse/vboxms.c
+Index: VirtualBox-7.0.4/src/VBox/Additions/solaris/Mouse/vboxms.c
 ===================================================================
---- VirtualBox-6.1.40.orig/src/VBox/Additions/solaris/Mouse/vboxms.c
-+++ VirtualBox-6.1.40/src/VBox/Additions/solaris/Mouse/vboxms.c
-@@ -256,7 +256,7 @@ static VBMSSTATE            g_OpenNodeSt
+--- VirtualBox-7.0.4.orig/src/VBox/Additions/solaris/Mouse/vboxms.c
++++ VirtualBox-7.0.4/src/VBox/Additions/solaris/Mouse/vboxms.c
+@@ -266,7 +266,7 @@ static VBMSSTATE            g_OpenNodeSt
  int _init(void)
  {
      int rc;
@@ -255,11 +255,11 @@ Index: VirtualBox-6.1.40/src/VBox/Additions/solaris/Mouse/vboxms.c
      mutex_init(&g_OpenNodeState.InitMtx, NULL, MUTEX_DRIVER, NULL);
      /*
       * Prevent module autounloading.
-Index: VirtualBox-6.1.40/src/VBox/Devices/EFI/Firmware/BaseTools/Source/C/VolInfo/VolInfo.c
+Index: VirtualBox-7.0.4/src/VBox/Devices/EFI/Firmware/BaseTools/Source/C/VolInfo/VolInfo.c
 ===================================================================
---- VirtualBox-6.1.40.orig/src/VBox/Devices/EFI/Firmware/BaseTools/Source/C/VolInfo/VolInfo.c
-+++ VirtualBox-6.1.40/src/VBox/Devices/EFI/Firmware/BaseTools/Source/C/VolInfo/VolInfo.c
-@@ -247,10 +247,10 @@ Returns:
+--- VirtualBox-7.0.4.orig/src/VBox/Devices/EFI/Firmware/BaseTools/Source/C/VolInfo/VolInfo.c
++++ VirtualBox-7.0.4/src/VBox/Devices/EFI/Firmware/BaseTools/Source/C/VolInfo/VolInfo.c
+@@ -251,10 +251,10 @@ Returns:
      UTILITY_NAME,
      UTILITY_MAJOR_VERSION,
      UTILITY_MINOR_VERSION,
@@ -272,11 +272,11 @@ Index: VirtualBox-6.1.40/src/VBox/Devices/EFI/Firmware/BaseTools/Source/C/VolInf
      Usage ();
      return -1;
    }
-Index: VirtualBox-6.1.40/src/VBox/HostDrivers/VBoxUSB/win/dev/VBoxUsbDev.cpp
+Index: VirtualBox-7.0.4/src/VBox/HostDrivers/VBoxUSB/win/dev/VBoxUsbDev.cpp
 ===================================================================
---- VirtualBox-6.1.40.orig/src/VBox/HostDrivers/VBoxUSB/win/dev/VBoxUsbDev.cpp
-+++ VirtualBox-6.1.40/src/VBox/HostDrivers/VBoxUSB/win/dev/VBoxUsbDev.cpp
-@@ -118,7 +118,7 @@ static NTSTATUS vboxUsbDdiAddDevice(PDRI
+--- VirtualBox-7.0.4.orig/src/VBox/HostDrivers/VBoxUSB/win/dev/VBoxUsbDev.cpp
++++ VirtualBox-7.0.4/src/VBox/HostDrivers/VBoxUSB/win/dev/VBoxUsbDev.cpp
+@@ -128,7 +128,7 @@ static NTSTATUS vboxUsbDdiAddDevice(PDRI
  static VOID vboxUsbDdiUnload(PDRIVER_OBJECT pDriverObject)
  {
      RT_NOREF1(pDriverObject);
@@ -285,7 +285,7 @@ Index: VirtualBox-6.1.40/src/VBox/HostDrivers/VBoxUSB/win/dev/VBoxUsbDev.cpp
      VBoxDrvToolStrFree(&g_VBoxUsbGlobals.RegPath);
  
      vboxUsbRtGlobalsTerm();
-@@ -274,7 +274,7 @@ RT_C_DECLS_END
+@@ -284,7 +284,7 @@ RT_C_DECLS_END
  
  NTSTATUS DriverEntry(IN PDRIVER_OBJECT pDriverObject, IN PUNICODE_STRING pRegistryPath)
  {
@@ -294,11 +294,11 @@ Index: VirtualBox-6.1.40/src/VBox/HostDrivers/VBoxUSB/win/dev/VBoxUsbDev.cpp
  
      NTSTATUS Status = vboxUsbRtGlobalsInit();
      Assert(Status == STATUS_SUCCESS);
-Index: VirtualBox-6.1.40/src/VBox/HostDrivers/VBoxUSB/win/mon/VBoxUsbMon.cpp
+Index: VirtualBox-7.0.4/src/VBox/HostDrivers/VBoxUSB/win/mon/VBoxUsbMon.cpp
 ===================================================================
---- VirtualBox-6.1.40.orig/src/VBox/HostDrivers/VBoxUSB/win/mon/VBoxUsbMon.cpp
-+++ VirtualBox-6.1.40/src/VBox/HostDrivers/VBoxUSB/win/mon/VBoxUsbMon.cpp
-@@ -1516,7 +1516,7 @@ NTSTATUS _stdcall DriverEntry(PDRIVER_OB
+--- VirtualBox-7.0.4.orig/src/VBox/HostDrivers/VBoxUSB/win/mon/VBoxUsbMon.cpp
++++ VirtualBox-7.0.4/src/VBox/HostDrivers/VBoxUSB/win/mon/VBoxUsbMon.cpp
+@@ -1518,7 +1518,7 @@ NTSTATUS _stdcall DriverEntry(PDRIVER_OB
      RTLogDestinations(0, "debugger");
  #endif
  
@@ -307,11 +307,11 @@ Index: VirtualBox-6.1.40/src/VBox/HostDrivers/VBoxUSB/win/mon/VBoxUsbMon.cpp
  
      memset (&g_VBoxUsbMonGlobals, 0, sizeof (g_VBoxUsbMonGlobals));
  
-Index: VirtualBox-6.1.40/src/VBox/Main/glue/VBoxLogRelCreate.cpp
+Index: VirtualBox-7.0.4/src/VBox/Main/glue/VBoxLogRelCreate.cpp
 ===================================================================
---- VirtualBox-6.1.40.orig/src/VBox/Main/glue/VBoxLogRelCreate.cpp
-+++ VirtualBox-6.1.40/src/VBox/Main/glue/VBoxLogRelCreate.cpp
-@@ -61,7 +61,7 @@ static DECLCALLBACK(void) vboxHeaderFoot
+--- VirtualBox-7.0.4.orig/src/VBox/Main/glue/VBoxLogRelCreate.cpp
++++ VirtualBox-7.0.4/src/VBox/Main/glue/VBoxLogRelCreate.cpp
+@@ -71,7 +71,7 @@ static DECLCALLBACK(void) vboxHeaderFoot
  #endif
                     "Log opened %s\n",
                     g_pszLogEntity, VBOX_VERSION_STRING, RTBldCfgRevision(),
@@ -320,10 +320,10 @@ Index: VirtualBox-6.1.40/src/VBox/Main/glue/VBoxLogRelCreate.cpp
  
              pfnLog(pReleaseLogger, "Build Type: %s\n", KBUILD_TYPE);
              int vrc = RTSystemQueryOSInfo(RTSYSOSINFO_PRODUCT, szTmp, sizeof(szTmp));
-Index: VirtualBox-6.1.40/src/libs/xpcom18a4/nsprpub/pr/tests/depend.c
+Index: VirtualBox-7.0.4/src/libs/xpcom18a4/nsprpub/pr/tests/depend.c
 ===================================================================
---- VirtualBox-6.1.40.orig/src/libs/xpcom18a4/nsprpub/pr/tests/depend.c
-+++ VirtualBox-6.1.40/src/libs/xpcom18a4/nsprpub/pr/tests/depend.c
+--- VirtualBox-7.0.4.orig/src/libs/xpcom18a4/nsprpub/pr/tests/depend.c
++++ VirtualBox-7.0.4/src/libs/xpcom18a4/nsprpub/pr/tests/depend.c
 @@ -141,7 +141,7 @@ int main(int argc, char **argv)
  {
      PRIntn tab = 0;
@@ -333,10 +333,10 @@ Index: VirtualBox-6.1.40/src/libs/xpcom18a4/nsprpub/pr/tests/depend.c
  
      printf("Depend.c build time is %s %s\n", buildDate, buildTime);
      
-Index: VirtualBox-6.1.40/src/libs/xpcom18a4/xpcom/tests/StringFactoringTests/profile_main.cpp
+Index: VirtualBox-7.0.4/src/libs/xpcom18a4/xpcom/tests/StringFactoringTests/profile_main.cpp
 ===================================================================
---- VirtualBox-6.1.40.orig/src/libs/xpcom18a4/xpcom/tests/StringFactoringTests/profile_main.cpp
-+++ VirtualBox-6.1.40/src/libs/xpcom18a4/xpcom/tests/StringFactoringTests/profile_main.cpp
+--- VirtualBox-7.0.4.orig/src/libs/xpcom18a4/xpcom/tests/StringFactoringTests/profile_main.cpp
++++ VirtualBox-7.0.4/src/libs/xpcom18a4/xpcom/tests/StringFactoringTests/profile_main.cpp
 @@ -458,7 +458,7 @@ int
  main()
    {
@@ -346,10 +346,10 @@ Index: VirtualBox-6.1.40/src/libs/xpcom18a4/xpcom/tests/StringFactoringTests/pro
  #ifdef TEST_STD_STRING
      cout << "Testing std::string." << endl;
  #else
-Index: VirtualBox-6.1.40/src/libs/xpcom18a4/xpcom/tests/StringFactoringTests/test_main.cpp
+Index: VirtualBox-7.0.4/src/libs/xpcom18a4/xpcom/tests/StringFactoringTests/test_main.cpp
 ===================================================================
---- VirtualBox-6.1.40.orig/src/libs/xpcom18a4/xpcom/tests/StringFactoringTests/test_main.cpp
-+++ VirtualBox-6.1.40/src/libs/xpcom18a4/xpcom/tests/StringFactoringTests/test_main.cpp
+--- VirtualBox-7.0.4.orig/src/libs/xpcom18a4/xpcom/tests/StringFactoringTests/test_main.cpp
++++ VirtualBox-7.0.4/src/libs/xpcom18a4/xpcom/tests/StringFactoringTests/test_main.cpp
 @@ -425,7 +425,7 @@ int
  main()
    {	
@@ -359,10 +359,10 @@ Index: VirtualBox-6.1.40/src/libs/xpcom18a4/xpcom/tests/StringFactoringTests/tes
  
  #if 0
      {
-Index: VirtualBox-6.1.40/src/libs/xpcom18a4/xpcom/tests/TestCOMPtr.cpp
+Index: VirtualBox-7.0.4/src/libs/xpcom18a4/xpcom/tests/TestCOMPtr.cpp
 ===================================================================
---- VirtualBox-6.1.40.orig/src/libs/xpcom18a4/xpcom/tests/TestCOMPtr.cpp
-+++ VirtualBox-6.1.40/src/libs/xpcom18a4/xpcom/tests/TestCOMPtr.cpp
+--- VirtualBox-7.0.4.orig/src/libs/xpcom18a4/xpcom/tests/TestCOMPtr.cpp
++++ VirtualBox-7.0.4/src/libs/xpcom18a4/xpcom/tests/TestCOMPtr.cpp
 @@ -102,7 +102,7 @@ class test_message
      public:
        test_message()
@@ -372,13 +372,13 @@ Index: VirtualBox-6.1.40/src/libs/xpcom18a4/xpcom/tests/TestCOMPtr.cpp
          }
  
       ~test_message()
-Index: VirtualBox-6.1.40/src/VBox/Additions/3D/mesa/mesa-17.3.9/src/util/build_id.c
+Index: VirtualBox-7.0.4/src/VBox/Additions/3D/mesa/mesa-21.3.8/src/util/build_id.c
 ===================================================================
---- VirtualBox-6.1.40.orig/src/VBox/Additions/3D/mesa/mesa-17.3.9/src/util/build_id.c
-+++ VirtualBox-6.1.40/src/VBox/Additions/3D/mesa/mesa-17.3.9/src/util/build_id.c
-@@ -29,9 +29,8 @@
- 
+--- VirtualBox-7.0.4.orig/src/VBox/Additions/3D/mesa/mesa-21.3.8/src/util/build_id.c
++++ VirtualBox-7.0.4/src/VBox/Additions/3D/mesa/mesa-21.3.8/src/util/build_id.c
+@@ -30,9 +30,8 @@
  #include "build_id.h"
+ #include "macros.h"
  
 -#ifndef NT_GNU_BUILD_ID
 +#undef NT_GNU_BUILD_ID
@@ -387,26 +387,11 @@ Index: VirtualBox-6.1.40/src/VBox/Additions/3D/mesa/mesa-17.3.9/src/util/build_i
  
  #ifndef ElfW
  #define ElfW(type) Elf_##type
-Index: VirtualBox-6.1.40/src/libs/zlib-1.2.11/os400/make.sh
+Index: VirtualBox-7.0.4/src/VBox/Additions/x11/VBoxClient/logging.cpp
 ===================================================================
---- VirtualBox-6.1.40.orig/src/libs/zlib-1.2.11/os400/make.sh
-+++ VirtualBox-6.1.40/src/libs/zlib-1.2.11/os400/make.sh
-@@ -258,8 +258,8 @@ fi
- #      Create and compile the identification source file.
- 
- echo '#pragma comment(user, "ZLIB version '"${VERSION}"'")' > os400.c
--echo '#pragma comment(user, __DATE__)' >> os400.c
--echo '#pragma comment(user, __TIME__)' >> os400.c
-+#echo '#pragma comment(user, __DATE__)' >> os400.c
-+#echo '#pragma comment(user, __TIME__)' >> os400.c
- echo '#pragma comment(copyright, "Copyright (C) 1995-2017 Jean-Loup Gailly, Mark Adler. OS/400 version by P. Monnerat.")' >> os400.c
- make_module     OS400           os400.c
- LINK=                           # No need to rebuild service program yet.
-Index: VirtualBox-6.1.40/src/VBox/Additions/x11/VBoxClient/logging.cpp
-===================================================================
---- VirtualBox-6.1.40.orig/src/VBox/Additions/x11/VBoxClient/logging.cpp
-+++ VirtualBox-6.1.40/src/VBox/Additions/x11/VBoxClient/logging.cpp
-@@ -162,10 +162,10 @@ static DECLCALLBACK(void) vbClLogHeaderF
+--- VirtualBox-7.0.4.orig/src/VBox/Additions/x11/VBoxClient/logging.cpp
++++ VirtualBox-7.0.4/src/VBox/Additions/x11/VBoxClient/logging.cpp
+@@ -203,10 +203,10 @@ static DECLCALLBACK(void) vbClLogHeaderF
          case RTLOGPHASE_BEGIN:
          {
              pfnLog(pLoggerRelease,

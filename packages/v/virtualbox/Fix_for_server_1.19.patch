@@ -1,7 +1,7 @@
-Index: VirtualBox-6.1.40/src/VBox/Additions/x11/vboxvideo/vboxvideo.c
+Index: VirtualBox-7.0.4/src/VBox/Additions/x11/vboxvideo/vboxvideo.c
 ===================================================================
---- VirtualBox-6.1.40.orig/src/VBox/Additions/x11/vboxvideo/vboxvideo.c
-+++ VirtualBox-6.1.40/src/VBox/Additions/x11/vboxvideo/vboxvideo.c
+--- VirtualBox-7.0.4.orig/src/VBox/Additions/x11/vboxvideo/vboxvideo.c
++++ VirtualBox-7.0.4/src/VBox/Additions/x11/vboxvideo/vboxvideo.c
 @@ -1236,7 +1236,11 @@ static Bool VBOXScreenInit(ScreenPtr pSc
  #endif
  
@@ -14,10 +14,10 @@ Index: VirtualBox-6.1.40/src/VBox/Additions/x11/vboxvideo/vboxvideo.c
  
      /* software cursor */
      miDCInitialize(pScreen, xf86GetPointerScreenFuncs());
-Index: VirtualBox-6.1.40/src/VBox/Additions/x11/vboxvideo/pointer.c
+Index: VirtualBox-7.0.4/src/VBox/Additions/x11/vboxvideo/pointer.c
 ===================================================================
---- VirtualBox-6.1.40.orig/src/VBox/Additions/x11/vboxvideo/pointer.c
-+++ VirtualBox-6.1.40/src/VBox/Additions/x11/vboxvideo/pointer.c
+--- VirtualBox-7.0.4.orig/src/VBox/Additions/x11/vboxvideo/pointer.c
++++ VirtualBox-7.0.4/src/VBox/Additions/x11/vboxvideo/pointer.c
 @@ -39,6 +39,10 @@
  #include "cursorstr.h"
  #include "servermd.h"
@@ -29,10 +29,10 @@ Index: VirtualBox-6.1.40/src/VBox/Additions/x11/vboxvideo/pointer.c
  #include "vboxvideo.h"
  
  #ifdef XORG_7X
-Index: VirtualBox-6.1.40/src/VBox/Additions/x11/vboxvideo/edid.c
+Index: VirtualBox-7.0.4/src/VBox/Additions/x11/vboxvideo/edid.c
 ===================================================================
---- VirtualBox-6.1.40.orig/src/VBox/Additions/x11/vboxvideo/edid.c
-+++ VirtualBox-6.1.40/src/VBox/Additions/x11/vboxvideo/edid.c
+--- VirtualBox-7.0.4.orig/src/VBox/Additions/x11/vboxvideo/edid.c
++++ VirtualBox-7.0.4/src/VBox/Additions/x11/vboxvideo/edid.c
 @@ -35,6 +35,10 @@
   *    Michael Thayer <michael.thayer@oracle.com>
   */

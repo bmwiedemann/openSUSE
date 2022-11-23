@@ -1,8 +1,8 @@
-Index: VirtualBox-6.1.40/src/apps/Makefile.kmk
+Index: VirtualBox-7.0.4/src/apps/Makefile.kmk
 ===================================================================
---- VirtualBox-6.1.40.orig/src/apps/Makefile.kmk
-+++ VirtualBox-6.1.40/src/apps/Makefile.kmk
-@@ -33,5 +33,7 @@ endif
+--- VirtualBox-7.0.4.orig/src/apps/Makefile.kmk
++++ VirtualBox-7.0.4/src/apps/Makefile.kmk
+@@ -30,5 +30,7 @@ include $(KBUILD_PATH)/subheader.kmk
  
  include $(PATH_SUB_CURRENT)/VBoxPermissionMessage/Makefile.kmk
  
@@ -10,10 +10,10 @@ Index: VirtualBox-6.1.40/src/apps/Makefile.kmk
 +
  include $(FILE_KBUILD_SUB_FOOTER)
  
-Index: VirtualBox-6.1.40/src/apps/VBoxUSB_DevRules/Makefile.kmk
+Index: VirtualBox-7.0.4/src/apps/VBoxUSB_DevRules/Makefile.kmk
 ===================================================================
 --- /dev/null
-+++ VirtualBox-6.1.40/src/apps/VBoxUSB_DevRules/Makefile.kmk
++++ VirtualBox-7.0.4/src/apps/VBoxUSB_DevRules/Makefile.kmk
 @@ -0,0 +1,30 @@
 +# $Id: Makefile.kmk 28800 2010-04-27 08:22:32Z vboxsync $
 +## @file
@@ -45,10 +45,10 @@ Index: VirtualBox-6.1.40/src/apps/VBoxUSB_DevRules/Makefile.kmk
 +include $(KBUILD_PATH)/subfooter.kmk
 +
 +
-Index: VirtualBox-6.1.40/src/apps/VBoxUSB_DevRules/VBoxUSB_DevRules.cpp
+Index: VirtualBox-7.0.4/src/apps/VBoxUSB_DevRules/VBoxUSB_DevRules.cpp
 ===================================================================
 --- /dev/null
-+++ VirtualBox-6.1.40/src/apps/VBoxUSB_DevRules/VBoxUSB_DevRules.cpp
++++ VirtualBox-7.0.4/src/apps/VBoxUSB_DevRules/VBoxUSB_DevRules.cpp
 @@ -0,0 +1,25 @@
 +#include <QtWidgets/QApplication>
 +#include <QtWidgets/QMessageBox>

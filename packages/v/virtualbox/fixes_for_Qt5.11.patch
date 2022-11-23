@@ -1,8 +1,8 @@
-Index: VirtualBox-6.1.40/src/VBox/Frontends/VirtualBox/src/precomp_vcc.h
+Index: VirtualBox-7.0.4/src/VBox/Frontends/VirtualBox/src/precomp_vcc.h
 ===================================================================
---- VirtualBox-6.1.40.orig/src/VBox/Frontends/VirtualBox/src/precomp_vcc.h
-+++ VirtualBox-6.1.40/src/VBox/Frontends/VirtualBox/src/precomp_vcc.h
-@@ -83,6 +83,7 @@
+--- VirtualBox-7.0.4.orig/src/VBox/Frontends/VirtualBox/src/precomp_vcc.h
++++ VirtualBox-7.0.4/src/VBox/Frontends/VirtualBox/src/precomp_vcc.h
+@@ -97,6 +97,7 @@
  #include <QtWidgets/qgraphicsitem.h>
  #include <QtWidgets/qgraphicslayoutitem.h>
  #include <QtWidgets/qgraphicswidget.h>
@@ -10,15 +10,15 @@ Index: VirtualBox-6.1.40/src/VBox/Frontends/VirtualBox/src/precomp_vcc.h
  #include <QtCore/QMetaType>
  #include <QtGui/qevent.h>
  #include <QtGui/qtouchdevice.h>
-Index: VirtualBox-6.1.40/src/VBox/Frontends/VirtualBox/src/settings/global/UIGlobalSettingsProxy.cpp
+Index: VirtualBox-7.0.4/src/VBox/Frontends/VirtualBox/src/settings/global/UIGlobalSettingsProxy.cpp
 ===================================================================
---- VirtualBox-6.1.40.orig/src/VBox/Frontends/VirtualBox/src/settings/global/UIGlobalSettingsProxy.cpp
-+++ VirtualBox-6.1.40/src/VBox/Frontends/VirtualBox/src/settings/global/UIGlobalSettingsProxy.cpp
-@@ -18,6 +18,7 @@
+--- VirtualBox-7.0.4.orig/src/VBox/Frontends/VirtualBox/src/settings/global/UIGlobalSettingsProxy.cpp
++++ VirtualBox-7.0.4/src/VBox/Frontends/VirtualBox/src/settings/global/UIGlobalSettingsProxy.cpp
+@@ -27,6 +27,7 @@
+ 
  /* Qt includes: */
- #include <QButtonGroup>
- #include <QRegExpValidator>
+ #include <QVBoxLayout>
 +#include <QButtonGroup>
  
  /* GUI includes: */
- #include "QIWidgetValidator.h"
+ #include "UIGlobalSettingsProxy.h"

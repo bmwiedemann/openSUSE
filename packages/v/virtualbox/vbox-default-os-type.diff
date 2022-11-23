@@ -1,10 +1,10 @@
-Index: VirtualBox-6.1.40/src/VBox/Frontends/VirtualBox/src/widgets/UINameAndSystemEditor.cpp
+Index: VirtualBox-7.0.4/src/VBox/Frontends/VirtualBox/src/settings/editors/UINameAndSystemEditor.cpp
 ===================================================================
---- VirtualBox-6.1.40.orig/src/VBox/Frontends/VirtualBox/src/widgets/UINameAndSystemEditor.cpp
-+++ VirtualBox-6.1.40/src/VBox/Frontends/VirtualBox/src/widgets/UINameAndSystemEditor.cpp
-@@ -306,15 +306,15 @@ void UINameAndSystemEditor::sltFamilyCha
-         if (iIndexWin7 != -1)
-             m_pComboType->setCurrentIndex(iIndexWin7);
+--- VirtualBox-7.0.4.orig/src/VBox/Frontends/VirtualBox/src/settings/editors/UINameAndSystemEditor.cpp
++++ VirtualBox-7.0.4/src/VBox/Frontends/VirtualBox/src/settings/editors/UINameAndSystemEditor.cpp
+@@ -397,15 +397,15 @@ void UINameAndSystemEditor::sltFamilyCha
+         if (iIndexWin10 != -1)
+             m_pComboType->setCurrentIndex(iIndexWin10);
      }
 -    /* Or select Oracle Linux item for Linux family as default: */
 +    /* Or select openSUSE item for Linux family as default: */
@@ -12,7 +12,7 @@ Index: VirtualBox-6.1.40/src/VBox/Frontends/VirtualBox/src/widgets/UINameAndSyst
      {
 -        QString strDefaultID = "Oracle";
 +        QString strDefaultID = "openSUSE";
-         if (ARCH_BITS == 64 && m_fSupportsHWVirtEx && m_fSupportsLongMode)
+         if (ARCH_BITS == 64)
              strDefaultID += "_64";
 -        const int iIndexUbuntu = m_pComboType->findData(strDefaultID, TypeID);
 -        if (iIndexUbuntu != -1)

@@ -1,8 +1,8 @@
-Index: VirtualBox-6.1.40/src/VBox/Runtime/r0drv/linux/the-linux-kernel.h
+Index: VirtualBox-7.0.4/src/VBox/Runtime/r0drv/linux/the-linux-kernel.h
 ===================================================================
---- VirtualBox-6.1.40.orig/src/VBox/Runtime/r0drv/linux/the-linux-kernel.h
-+++ VirtualBox-6.1.40/src/VBox/Runtime/r0drv/linux/the-linux-kernel.h
-@@ -137,9 +137,9 @@
+--- VirtualBox-7.0.4.orig/src/VBox/Runtime/r0drv/linux/the-linux-kernel.h
++++ VirtualBox-7.0.4/src/VBox/Runtime/r0drv/linux/the-linux-kernel.h
+@@ -147,9 +147,9 @@
  #include <linux/interrupt.h>
  #include <linux/completion.h>
  #include <linux/compiler.h>
@@ -14,3 +14,137 @@ Index: VirtualBox-6.1.40/src/VBox/Runtime/r0drv/linux/the-linux-kernel.h
  #if !defined(HAVE_UNLOCKED_IOCTL) && RTLNX_VER_MAX(2,6,38)
  # include <linux/smp_lock.h>
  #endif
+Index: VirtualBox-7.0.4/src/libs/xpcom18a4/python/src/PyXPCOM.h
+===================================================================
+--- VirtualBox-7.0.4.orig/src/libs/xpcom18a4/python/src/PyXPCOM.h
++++ VirtualBox-7.0.4/src/libs/xpcom18a4/python/src/PyXPCOM.h
+@@ -191,7 +191,7 @@ extern "C" PyAPI_FUNC(const char *) PyUn
+ # endif
+ 
+ /* PyUnicode_AsUTF8 is just PyUnicode_AsUTF8AndSize without returning a size. */
+-# define PyUnicode_AsUTF8(o) PyUnicode_AsUTF8AndSize(o, NULL)
++// # define PyUnicode_AsUTF8(o) (const char *)PyUnicode_AsUTF8AndSize(o, NULL)
+ 
+ DECLINLINE(int) PyRun_SimpleString(const char *pszCode)
+ {
+Index: VirtualBox-7.0.4/src/libs/xpcom18a4/python/src/ErrorUtils.cpp
+===================================================================
+--- VirtualBox-7.0.4.orig/src/libs/xpcom18a4/python/src/ErrorUtils.cpp
++++ VirtualBox-7.0.4/src/libs/xpcom18a4/python/src/ErrorUtils.cpp
+@@ -121,7 +121,7 @@ void DoLogMessage(const char *methodName
+ #if PY_MAJOR_VERSION <= 2
+ 			c += PyString_AsString(repr);
+ #else
+-			c += PyUnicode_AsUTF8(repr);
++			c += PyUnicode_AsUTF8AndSize(repr, NULL);
+ #endif
+ 			Py_DECREF(repr);
+ 		}
+@@ -203,7 +203,7 @@ PRBool PyXPCOM_FormatGivenException(nsCS
+ #if PY_MAJOR_VERSION <= 2
+ 		streamout += PyString_AsString(temp);
+ #else
+-		streamout += PyUnicode_AsUTF8(temp);
++		streamout += PyUnicode_AsUTF8AndSize(temp, NULL);
+ #endif
+ 		Py_DECREF(temp);
+ 	} else
+@@ -215,7 +215,7 @@ PRBool PyXPCOM_FormatGivenException(nsCS
+ #if PY_MAJOR_VERSION <= 2
+ 			streamout += PyString_AsString(temp);
+ #else
+-			streamout += PyUnicode_AsUTF8(temp);
++			streamout += PyUnicode_AsUTF8AndSize(temp, NULL);
+ #endif
+ 			Py_DECREF(temp);
+ 		} else
+@@ -440,10 +440,11 @@ char *PyTraceback_AsString(PyObject *exc
+ #if PY_MAJOR_VERSION <= 2
+ 	char *tempResult = (char *)PyString_AsString(obResult);
+ #elif PY_MINOR_VERSION <= 6
+-	char *tempResult = (char *)PyUnicode_AsUTF8(obResult);
++	char *tempResult = (char *)PyBytes_AsString(obResult);
++#elif PY_MINOR_VERSION <= 6
++	const char *tempResult = PyUnicode_AsUTF8AndSize(obResult, NULL);
+ #else
+-    /* PyUnicode_AsUTF8() is const char * as of Python 3.7, char * earlier. */
+-	const char *tempResult = (const char *)PyUnicode_AsUTF8(obResult);
++	const char *tempResult = (const char *)PyUnicode_AsUTF8AndSize(obResult, NULL);
+ #endif
+ 	result = (char *)PyMem_Malloc(strlen(tempResult)+1);
+ 	if (result==NULL)
+Index: VirtualBox-7.0.4/src/libs/xpcom18a4/python/src/PyGBase.cpp
+===================================================================
+--- VirtualBox-7.0.4.orig/src/libs/xpcom18a4/python/src/PyGBase.cpp
++++ VirtualBox-7.0.4/src/libs/xpcom18a4/python/src/PyGBase.cpp
+@@ -117,7 +117,7 @@ PyG_Base::PyG_Base(PyObject *instance, c
+ #if PY_MAJOR_VERSION <= 2
+ 		szRepr = PyString_AsString(r);
+ #else
+-		szRepr = PyUnicode_AsUTF8(r);
++		szRepr = PyUnicode_AsUTF8AndSize(r, NULL);
+ #endif
+ 	if (szRepr==NULL) szRepr = "";
+ 	int reprOffset = *szRepr=='<' ? 1 : 0;
+Index: VirtualBox-7.0.4/src/libs/xpcom18a4/python/src/PyIID.cpp
+===================================================================
+--- VirtualBox-7.0.4.orig/src/libs/xpcom18a4/python/src/PyIID.cpp
++++ VirtualBox-7.0.4/src/libs/xpcom18a4/python/src/PyIID.cpp
+@@ -137,7 +137,7 @@ Py_nsIID::IIDFromPyObject(PyObject *ob,
+ 		ok = iid.Parse(PyString_AsString(ob));
+ #else
+ 	if (PyUnicode_Check(ob)) {
+-		ok = iid.Parse(PyUnicode_AsUTF8(ob));
++		ok = iid.Parse(PyUnicode_AsUTF8AndSize(ob, NULL));
+ #endif
+ 		if (!ok) {
+ 			PyXPCOM_BuildPyException(NS_ERROR_ILLEGAL_VALUE);
+Index: VirtualBox-7.0.4/src/libs/xpcom18a4/python/src/VariantUtils.cpp
+===================================================================
+--- VirtualBox-7.0.4.orig/src/libs/xpcom18a4/python/src/VariantUtils.cpp
++++ VirtualBox-7.0.4/src/libs/xpcom18a4/python/src/VariantUtils.cpp
+@@ -141,7 +141,7 @@ PyObject *PyObject_FromNSString( const n
+ #if PY_MAJOR_VERSION <= 2
+ 			char* dest = (char *)PyString_AS_STRING(ret);
+ #else
+-			char* dest = (char *)PyUnicode_AsUTF8(ret);
++			char* dest = (char *)PyUnicode_AsUTF8AndSize(ret, NULL);
+ #endif
+ 			copy_string(s.BeginReading(fromBegin), s.EndReading(fromEnd), dest);
+ 		}
+@@ -393,7 +393,7 @@ PRBool FillSingleArray(void *array_ptr,
+ #if PY_MAJOR_VERSION <= 2
+ 			sequence_ob = PyObject_Str(sequence_ob);
+ #else
+-			sequence_ob = PyUnicode_AsUTF8String(sequence_ob);
++			sequence_ob = (PyObject *)PyUnicode_AsUTF8AndSize(sequence_ob, NULL);
+ #endif
+ 		} else
+ 			release_seq = PR_FALSE;
+@@ -402,7 +402,7 @@ PRBool FillSingleArray(void *array_ptr,
+ #if PY_MAJOR_VERSION <= 2
+ 		memcpy(pthis, PyString_AS_STRING(sequence_ob), sequence_size);
+ #else
+-		memcpy(pthis, PyUnicode_AsUTF8(sequence_ob), sequence_size);
++		memcpy(pthis, PyUnicode_AsUTF8AndSize(sequence_ob, NULL), sequence_size);
+ #endif
+ 		if (release_seq)
+                 {
+@@ -477,7 +477,7 @@ PRBool FillSingleArray(void *array_ptr,
+ 					PyErr_SetString(PyExc_TypeError, "This parameter must be a unicode object");
+ 					BREAK_FALSE;
+ 				}
+-				FILL_SIMPLE_POINTER( char, *PyUnicode_AsUTF8(val) );
++				FILL_SIMPLE_POINTER( char, *PyUnicode_AsUTF8AndSize(val, NULL) );
+ #endif
+ 				break;
+ 
+@@ -549,7 +549,7 @@ PRBool FillSingleArray(void *array_ptr,
+ 					PyErr_SetString(PyExc_TypeError, "This parameter must be a unicode object");
+ 					BREAK_FALSE;
+ 				}
+-				if ((val_use = PyUnicode_AsUTF8String(val))==NULL)
++				if ((val_use = (PyObject *)PyUnicode_AsUTF8AndSize(val, NULL))==NULL)
+ 					BREAK_FALSE;
+ 
+ 				const char *sz = PyBytes_AS_STRING(val_use);

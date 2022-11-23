@@ -1,19 +1,19 @@
-Index: VirtualBox-6.1.40/src/apps/Makefile.kmk
+Index: VirtualBox-7.0.4/src/apps/Makefile.kmk
 ===================================================================
---- VirtualBox-6.1.40.orig/src/apps/Makefile.kmk
-+++ VirtualBox-6.1.40/src/apps/Makefile.kmk
-@@ -31,5 +31,7 @@ if1of ($(KBUILD_TARGET_ARCH), $(VBOX_SUP
-  endif
- endif
+--- VirtualBox-7.0.4.orig/src/apps/Makefile.kmk
++++ VirtualBox-7.0.4/src/apps/Makefile.kmk
+@@ -28,5 +28,7 @@
+ SUB_DEPTH = ../..
+ include $(KBUILD_PATH)/subheader.kmk
  
 +include $(PATH_SUB_CURRENT)/VBoxPermissionMessage/Makefile.kmk
 +
  include $(FILE_KBUILD_SUB_FOOTER)
  
-Index: VirtualBox-6.1.40/src/apps/VBoxPermissionMessage/Makefile.kmk
+Index: VirtualBox-7.0.4/src/apps/VBoxPermissionMessage/Makefile.kmk
 ===================================================================
 --- /dev/null
-+++ VirtualBox-6.1.40/src/apps/VBoxPermissionMessage/Makefile.kmk
++++ VirtualBox-7.0.4/src/apps/VBoxPermissionMessage/Makefile.kmk
 @@ -0,0 +1,32 @@
 +# $Id: Makefile.kmk 28800 2010-04-27 08:22:32Z vboxsync $
 +## @file
@@ -47,10 +47,10 @@ Index: VirtualBox-6.1.40/src/apps/VBoxPermissionMessage/Makefile.kmk
 +
 +include $(KBUILD_PATH)/subfooter.kmk
 +
-Index: VirtualBox-6.1.40/src/apps/VBoxPermissionMessage/VBoxPermissionMessage.cpp
+Index: VirtualBox-7.0.4/src/apps/VBoxPermissionMessage/VBoxPermissionMessage.cpp
 ===================================================================
 --- /dev/null
-+++ VirtualBox-6.1.40/src/apps/VBoxPermissionMessage/VBoxPermissionMessage.cpp
++++ VirtualBox-7.0.4/src/apps/VBoxPermissionMessage/VBoxPermissionMessage.cpp
 @@ -0,0 +1,12 @@
 +#include <QtWidgets/QApplication>
 +#include <QtWidgets/QMessageBox>

@@ -1,0 +1,101 @@
+Index: VirtualBox-7.0.4/src/VBox/ExtPacks/VBoxDTrace/VBoxDTraceR0A.asm
+===================================================================
+--- VirtualBox-7.0.4.orig/src/VBox/ExtPacks/VBoxDTrace/VBoxDTraceR0A.asm
++++ VirtualBox-7.0.4/src/VBox/ExtPacks/VBoxDTrace/VBoxDTraceR0A.asm
+@@ -28,7 +28,7 @@ BEGINCODE
+ extern NAME(dtrace_probe)
+ 
+ GLOBALNAME dtrace_probe6
+-    jmp     NAME(dtrace_probe)
++    jmp     [rel dtrace_probe wrt ..got]
+ 
+ %ifidn __OUTPUT_FORMAT__,elf
+ section .note.GNU-stack noalloc noexec nowrite progbits
+Index: VirtualBox-7.0.4/src/VBox/VMM/Config.kmk
+===================================================================
+--- VirtualBox-7.0.4.orig/src/VBox/VMM/Config.kmk
++++ VirtualBox-7.0.4/src/VBox/VMM/Config.kmk
+@@ -58,9 +58,7 @@ else
+   VMM_COMMON_DEFS += VBOX_WITH_NESTED_HWVIRT_ONLY_IN_IEM
+  endif
+ endif
+-ifdef IEM_WITHOUT_ASSEMBLY
+  VMM_COMMON_DEFS += IEM_WITHOUT_ASSEMBLY
+-endif
+ # part of global DEFS
+ ifdef VBOX_WITH_MULTI_CORE
+  VMM_COMMON_DEFS += VBOX_WITH_MULTI_CORE
+Index: VirtualBox-7.0.4/src/VBox/VMM/testcase/Makefile.kmk
+===================================================================
+--- VirtualBox-7.0.4.orig/src/VBox/VMM/testcase/Makefile.kmk
++++ VirtualBox-7.0.4/src/VBox/VMM/testcase/Makefile.kmk
+@@ -358,7 +358,6 @@ tstIEMAImplAsm_ASFLAGS.x86   := -Werror
+ tstIEMAImplAsm_INCS          := ../include .
+ tstIEMAImplAsm_SOURCES        = \
+ 	tstIEMAImpl.cpp \
+-	../VMMAll/IEMAllAImpl.asm \
+ 	../VMMAll/IEMAllAImplC.cpp \
+ 	$(tstIEMAImpl_CLEAN)
+ tstIEMAImplAsm_SOURCES.x86   += tstIEMAImplDataSseBinary.asm
+Index: VirtualBox-7.0.4/src/VBox/VMM/Makefile.kmk
+===================================================================
+--- VirtualBox-7.0.4.orig/src/VBox/VMM/Makefile.kmk
++++ VirtualBox-7.0.4/src/VBox/VMM/Makefile.kmk
+@@ -226,7 +226,6 @@ VBoxVMM_SOURCES  = \
+ 	VMMAll/VMMAll.cpp
+ VBoxVMM_SOURCES.amd64 += \
+ 	VMMR3/PGMR3DbgA.asm \
+-	$(if-expr !defined(IEM_WITHOUT_ASSEMBLY),VMMAll/IEMAllAImpl.asm,) \
+ 	VMMAll/VMMAllA.asm
+ ifdef VBOX_WITH_VUSB
+ VBoxVMM_SOURCES += VMMR3/PDMUsb.cpp
+@@ -545,7 +544,6 @@ if defined(VBOX_WITH_R0_MODULES) && !def
+  	VMMAll/HMVMXAll.cpp \
+  	VMMAll/IEMAll.cpp \
+  	VMMAll/IEMAllInstructionsInterpretOnly.cpp \
+-	$(if-expr !defined(IEM_WITHOUT_ASSEMBLY),VMMAll/IEMAllAImpl.asm,) \
+  	VMMAll/IEMAllAImplC.cpp \
+  	VMMAll/IEMAllCImpl.cpp \
+  	VMMAll/IEMAllCImplSvmInstr.cpp \
+Index: VirtualBox-7.0.4/src/VBox/Devices/Makefile.kmk
+===================================================================
+--- VirtualBox-7.0.4.orig/src/VBox/Devices/Makefile.kmk
++++ VirtualBox-7.0.4/src/VBox/Devices/Makefile.kmk
+@@ -1233,6 +1233,7 @@ VBOX_WITH_VMSVGA3D_DYNAMIC_LOAD = 1
+  else
+   VBoxDDR0_TEMPLATE       = VBoxR0
+  endif
++ VBoxDDR0_MEMSET = "y"
+  VBoxDDR0_DEFS           = \
+  	$(if $(VBOX_WITH_HGCM),VBOX_WITH_HGCM,) \
+  	$(if $(VBOX_WITH_IOMMU_AMD),VBOX_WITH_IOMMU_AMD,) \
+Index: VirtualBox-7.0.4/src/VBox/Devices/Network/DevE1000.cpp
+===================================================================
+--- VirtualBox-7.0.4.orig/src/VBox/Devices/Network/DevE1000.cpp
++++ VirtualBox-7.0.4/src/VBox/Devices/Network/DevE1000.cpp
+@@ -44,7 +44,11 @@
+ #include <iprt/ctype.h>
+ #include <iprt/net.h>
+ #include <iprt/semaphore.h>
++#ifdef VBoxDDR0_MEMSET
++#include <iprt/nocrt/string.h>
++#else
+ #include <iprt/string.h>
++#endif
+ #include <iprt/time.h>
+ #include <iprt/uuid.h>
+ #include <VBox/vmm/pdmdev.h>
+Index: VirtualBox-7.0.4/src/VBox/HostDrivers/Support/linux/SUPDrv-linux.c
+===================================================================
+--- VirtualBox-7.0.4.orig/src/VBox/HostDrivers/Support/linux/SUPDrv-linux.c
++++ VirtualBox-7.0.4/src/VBox/HostDrivers/Support/linux/SUPDrv-linux.c
+@@ -45,6 +45,9 @@
+ #include "product-generated.h"
+ #include "revision-generated.h"
+ 
++#if RTLNX_VER_MIN(6, 1, 0)
++#include <linux/stdarg.h>
++#endif
+ #include <iprt/assert.h>
+ #include <iprt/spinlock.h>
+ #include <iprt/semaphore.h>

@@ -1,8 +1,8 @@
-Index: VirtualBox-6.1.40/src/VBox/Main/webservice/Makefile.kmk
+Index: VirtualBox-7.0.4/src/VBox/Main/webservice/Makefile.kmk
 ===================================================================
---- VirtualBox-6.1.40.orig/src/VBox/Main/webservice/Makefile.kmk
-+++ VirtualBox-6.1.40/src/VBox/Main/webservice/Makefile.kmk
-@@ -355,6 +355,7 @@ ifdef VBOX_GSOAP_INSTALLED
+--- VirtualBox-7.0.4.orig/src/VBox/Main/webservice/Makefile.kmk
++++ VirtualBox-7.0.4/src/VBox/Main/webservice/Makefile.kmk
+@@ -410,6 +410,7 @@ ifdef VBOX_GSOAP_INSTALLED
   vboxwebsrv_LIBS += \
  	$(PATH_STAGE_LIB)/vboxsoap$(VBOX_SUFF_LIB) \
  	$(VBOX_GSOAP_CXX_LIBS) \
@@ -10,7 +10,7 @@ Index: VirtualBox-6.1.40/src/VBox/Main/webservice/Makefile.kmk
  	$(LIB_RUNTIME)
   vboxwebsrv_LIBS.solaris += socket nsl
   ifdef VBOX_WITH_WEBSERVICES_SSL
-@@ -534,6 +535,7 @@ $$(VBOX_JWSSRC_JAR): $$(VBOX_JWS_JAR) |
+@@ -586,6 +587,7 @@ $$(VBOX_JWSSRC_JAR): $$(VBOX_JWS_JAR) |
   webtest_LIBS += \
  	$(PATH_STAGE_LIB)/vboxsoap$(VBOX_SUFF_LIB) \
  	$(VBOX_GSOAP_CXX_LIBS) \

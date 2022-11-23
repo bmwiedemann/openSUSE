@@ -1,8 +1,8 @@
-Index: VirtualBox-6.1.40/src/apps/Makefile.kmk
+Index: VirtualBox-7.0.4/src/apps/Makefile.kmk
 ===================================================================
---- VirtualBox-6.1.40.orig/src/apps/Makefile.kmk
-+++ VirtualBox-6.1.40/src/apps/Makefile.kmk
-@@ -35,5 +35,7 @@ include $(PATH_SUB_CURRENT)/VBoxPermissi
+--- VirtualBox-7.0.4.orig/src/apps/Makefile.kmk
++++ VirtualBox-7.0.4/src/apps/Makefile.kmk
+@@ -32,5 +32,7 @@ include $(PATH_SUB_CURRENT)/VBoxPermissi
  
  include $(PATH_SUB_CURRENT)/VBoxUSB_DevRules/Makefile.kmk
  
@@ -10,10 +10,10 @@ Index: VirtualBox-6.1.40/src/apps/Makefile.kmk
 +
  include $(FILE_KBUILD_SUB_FOOTER)
  
-Index: VirtualBox-6.1.40/src/apps/VBoxSUIDMessage/Makefile.kmk
+Index: VirtualBox-7.0.4/src/apps/VBoxSUIDMessage/Makefile.kmk
 ===================================================================
 --- /dev/null
-+++ VirtualBox-6.1.40/src/apps/VBoxSUIDMessage/Makefile.kmk
++++ VirtualBox-7.0.4/src/apps/VBoxSUIDMessage/Makefile.kmk
 @@ -0,0 +1,33 @@
 +# $Id: Makefile.kmk 28800 2010-04-27 08:22:32Z vboxsync $
 +## @file
@@ -48,10 +48,10 @@ Index: VirtualBox-6.1.40/src/apps/VBoxSUIDMessage/Makefile.kmk
 +include $(KBUILD_PATH)/subfooter.kmk
 +
 +
-Index: VirtualBox-6.1.40/src/apps/VBoxSUIDMessage/VBoxSUIDMessage.cpp
+Index: VirtualBox-7.0.4/src/apps/VBoxSUIDMessage/VBoxSUIDMessage.cpp
 ===================================================================
 --- /dev/null
-+++ VirtualBox-6.1.40/src/apps/VBoxSUIDMessage/VBoxSUIDMessage.cpp
++++ VirtualBox-7.0.4/src/apps/VBoxSUIDMessage/VBoxSUIDMessage.cpp
 @@ -0,0 +1,15 @@
 +#include <QtWidgets/QApplication>
 +#include <QtWidgets/QMessageBox>

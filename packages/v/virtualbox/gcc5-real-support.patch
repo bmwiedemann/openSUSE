@@ -1,8 +1,8 @@
-Index: VirtualBox-6.1.40/configure
+Index: VirtualBox-7.0.4/configure
 ===================================================================
---- VirtualBox-6.1.40.orig/configure
-+++ VirtualBox-6.1.40/configure
-@@ -442,8 +442,13 @@ check_gcc()
+--- VirtualBox-7.0.4.orig/configure
++++ VirtualBox-7.0.4/configure
+@@ -473,8 +473,13 @@ check_gcc()
          log_failure "cannot execute '$CXX -dumpversion'"
          fail really
        fi

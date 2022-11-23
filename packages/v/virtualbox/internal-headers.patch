@@ -1,8 +1,8 @@
-Index: VirtualBox-6.1.40/src/VBox/Additions/x11/vboxvideo/Makefile.kmk
+Index: VirtualBox-7.0.4/src/VBox/Additions/x11/vboxvideo/Makefile.kmk
 ===================================================================
---- VirtualBox-6.1.40.orig/src/VBox/Additions/x11/vboxvideo/Makefile.kmk
-+++ VirtualBox-6.1.40/src/VBox/Additions/x11/vboxvideo/Makefile.kmk
-@@ -23,6 +23,9 @@ vboxvideo_70_DEFS := \
+--- VirtualBox-7.0.4.orig/src/VBox/Additions/x11/vboxvideo/Makefile.kmk
++++ VirtualBox-7.0.4/src/VBox/Additions/x11/vboxvideo/Makefile.kmk
+@@ -33,6 +33,9 @@ vboxvideo_70_DEFS := \
  ifeq ($(KBUILD_TARGET),solaris) # don't use .solaris or anything here.
   vboxvideo_70_DEFS += __EXTENSIONS__  ## @todo Why this?
  endif
@@ -12,10 +12,10 @@ Index: VirtualBox-6.1.40/src/VBox/Additions/x11/vboxvideo/Makefile.kmk
  vboxvideo_13_DEFS := $(vboxvideo_70_DEFS) VBOXVIDEO_13
  vboxvideo_15_DEFS := \
  	$(vboxvideo_13_DEFS) NO_ANSIC PCIACCESS XSERVER_LIBPCIACCESS _XORG_SERVER_H_ _DIX_CONFIG_H_
-Index: VirtualBox-6.1.40/src/VBox/Additions/x11/vboxvideo/edid.c
+Index: VirtualBox-7.0.4/src/VBox/Additions/x11/vboxvideo/edid.c
 ===================================================================
---- VirtualBox-6.1.40.orig/src/VBox/Additions/x11/vboxvideo/edid.c
-+++ VirtualBox-6.1.40/src/VBox/Additions/x11/vboxvideo/edid.c
+--- VirtualBox-7.0.4.orig/src/VBox/Additions/x11/vboxvideo/edid.c
++++ VirtualBox-7.0.4/src/VBox/Additions/x11/vboxvideo/edid.c
 @@ -35,10 +35,6 @@
   *    Michael Thayer <michael.thayer@oracle.com>
   */
@@ -27,10 +27,10 @@ Index: VirtualBox-6.1.40/src/VBox/Additions/x11/vboxvideo/edid.c
  #include "misc.h"
  #include "xf86DDC.h"
  #include "xf86Crtc.h"
-Index: VirtualBox-6.1.40/src/VBox/Additions/x11/vboxvideo/pointer.c
+Index: VirtualBox-7.0.4/src/VBox/Additions/x11/vboxvideo/pointer.c
 ===================================================================
---- VirtualBox-6.1.40.orig/src/VBox/Additions/x11/vboxvideo/pointer.c
-+++ VirtualBox-6.1.40/src/VBox/Additions/x11/vboxvideo/pointer.c
+--- VirtualBox-7.0.4.orig/src/VBox/Additions/x11/vboxvideo/pointer.c
++++ VirtualBox-7.0.4/src/VBox/Additions/x11/vboxvideo/pointer.c
 @@ -39,10 +39,6 @@
  #include "cursorstr.h"
  #include "servermd.h"
@@ -42,10 +42,10 @@ Index: VirtualBox-6.1.40/src/VBox/Additions/x11/vboxvideo/pointer.c
  #include "vboxvideo.h"
  
  #ifdef XORG_7X
-Index: VirtualBox-6.1.40/src/VBox/Additions/x11/vboxvideo/vboxvideo.h
+Index: VirtualBox-7.0.4/src/VBox/Additions/x11/vboxvideo/vboxvideo.h
 ===================================================================
---- VirtualBox-6.1.40.orig/src/VBox/Additions/x11/vboxvideo/vboxvideo.h
-+++ VirtualBox-6.1.40/src/VBox/Additions/x11/vboxvideo/vboxvideo.h
+--- VirtualBox-7.0.4.orig/src/VBox/Additions/x11/vboxvideo/vboxvideo.h
++++ VirtualBox-7.0.4/src/VBox/Additions/x11/vboxvideo/vboxvideo.h
 @@ -42,8 +42,8 @@
  # pragma once
  #endif

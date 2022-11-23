@@ -1,0 +1,92 @@
+Index: VirtualBox-7.0.4/Config.kmk
+===================================================================
+--- VirtualBox-7.0.4.orig/Config.kmk
++++ VirtualBox-7.0.4/Config.kmk
+@@ -782,6 +782,7 @@ if1of ($(KBUILD_TARGET), linux solaris)
+  VBOX_WITH_XPCOM_NAMESPACE_CLEANUP = 1
+ endif
+ # The webservices api.
++# disabled for now due to pending license clarification
+ VBOX_WITH_WEBSERVICES = 1
+ VBOX_WITH_WEBSERVICES_SSL = 1
+ # The Qt GUI.
+@@ -1408,7 +1409,7 @@ endif
+ VBOX_ONLY_BUILD_NEW := $(strip $(foreach x, ADDITIONS DOCS EXTPACKS SDK VALIDATIONKIT\
+ 	, $(if-expr defined(VBOX_ONLY_$(x)),VBOX_ONLY_$(x))))
+ ifneq ($(VBOX_ONLY_BUILD),$(VBOX_ONLY_BUILD_NEW))
+- $(error VBox: LocalConfig.kmk changed the VBOX_ONLY_ build status, VBOX_ONLY_* must be on the kmk command line or in the environment: $(VBOX_ONLY_BUILD) -> $(VBOX_ONLY_BUILD_NEW))
++# $(error VBox: LocalConfig.kmk changed the VBOX_ONLY_ build status, VBOX_ONLY_* must be on the kmk command line or in the environment: $(VBOX_ONLY_BUILD) -> $(VBOX_ONLY_BUILD_NEW))
+ endif
+ 
+ #
+@@ -1578,7 +1579,7 @@ endif
+ #
+ ifdef VBOX_HEADLESS
+  VBOX_WITH_QTGUI=
+- VBOX_WITH_VBOXSDL=
++# VBOX_WITH_VBOXSDL=
+  VBOX_WITH_VRDP_RDESKTOP=
+ endif
+ 
+Index: VirtualBox-7.0.4/configure
+===================================================================
+--- VirtualBox-7.0.4.orig/configure
++++ VirtualBox-7.0.4/configure
+@@ -1202,8 +1202,8 @@ check_sdl()
+   if [ -n "$foundsdl" ]; then
+     cat > $ODIR.tmp_src.cc << EOF
+ #include <cstdio>
+-#include <SDL.h>
+-#include <SDL_main.h>
++#include <SDL/SDL.h>
++#include <SDL/SDL_main.h>
+ #undef main
+ extern "C" int main(int argc, char** argv)
+ {
+Index: VirtualBox-7.0.4/src/VBox/Frontends/VBoxSDL/VBoxSDL.h
+===================================================================
+--- VirtualBox-7.0.4.orig/src/VBox/Frontends/VBoxSDL/VBoxSDL.h
++++ VirtualBox-7.0.4/src/VBox/Frontends/VBoxSDL/VBoxSDL.h
+@@ -45,7 +45,7 @@
+ # pragma warning(disable: 4121) /* warning C4121: 'SDL_SysWMmsg' : alignment of a member was sensitive to packing*/
+ # pragma warning(disable: 4668) /* warning C4668: '__GNUC__' is not defined as a preprocessor macro, replacing with '0' for '#if/#elif' */
+ #endif
+-#include <SDL.h>
++#include <SDL/SDL.h>
+ #ifdef _MSC_VER
+ # pragma warning(pop)
+ #endif
+Index: VirtualBox-7.0.4/src/VBox/Frontends/Makefile.kmk
+===================================================================
+--- VirtualBox-7.0.4.orig/src/VBox/Frontends/Makefile.kmk
++++ VirtualBox-7.0.4/src/VBox/Frontends/Makefile.kmk
+@@ -44,9 +44,9 @@ ifndef VBOX_ONLY_DOCS
+    include $(PATH_SUB_CURRENT)/VBoxBugReport/Makefile.kmk
+   endif
+  endif
+- ifdef VBOX_WITH_VBOXSDL
++# ifdef VBOX_WITH_VBOXSDL
+   include $(PATH_SUB_CURRENT)/VBoxSDL/Makefile.kmk
+- endif
++# endif
+  ifdef VBOX_WITH_VBOXFB
+   include $(PATH_SUB_CURRENT)/VBoxFB/Makefile.kmk
+  endif
+Index: VirtualBox-7.0.4/src/libs/Makefile.kmk
+===================================================================
+--- VirtualBox-7.0.4.orig/src/libs/Makefile.kmk
++++ VirtualBox-7.0.4/src/libs/Makefile.kmk
+@@ -104,13 +104,7 @@ endif
+ 
+ 
+ # SoftFloat is used by the VMM for FPU emulation.
+-if  (!defined(VBOX_ONLY_BUILD) && "$(intersects $(KBUILD_TARGET_ARCH),$(VBOX_SUPPORTED_HOST_ARCHS))" != "") \
+- || (   defined(VBOX_WITH_NOCRT_STATIC) \
+-     && "$(KBUILD_TARGET)" == "win" \
+-     && (   defined(VBOX_ONLY_ADDITIONS) \
+-         || (!defined(VBOX_ONLY_BUILD) && defined(VBOX_WITH_ADDITIONS))))
+  include $(PATH_SUB_CURRENT)/softfloat-3e/Makefile.kmk
+-endif
+ 
+ 
+ # zlib is used by the IPRT compression code, libpng and others.

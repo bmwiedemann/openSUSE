@@ -1,8 +1,8 @@
-Index: VirtualBox-6.1.40/src/VBox/Additions/x11/Installer/98vboxadd-xclient
+Index: VirtualBox-7.0.4/src/VBox/Additions/x11/Installer/98vboxadd-xclient
 ===================================================================
---- VirtualBox-6.1.40.orig/src/VBox/Additions/x11/Installer/98vboxadd-xclient
-+++ VirtualBox-6.1.40/src/VBox/Additions/x11/Installer/98vboxadd-xclient
-@@ -21,18 +21,11 @@ for i in $HOME/.vboxclient-*.pid; do
+--- VirtualBox-7.0.4.orig/src/VBox/Additions/x11/Installer/98vboxadd-xclient
++++ VirtualBox-7.0.4/src/VBox/Additions/x11/Installer/98vboxadd-xclient
+@@ -31,15 +31,9 @@ for i in $HOME/.vboxclient-*.pid; do
      test -w $i || rm -f $i
  done
  
@@ -21,6 +21,3 @@ Index: VirtualBox-6.1.40/src/VBox/Additions/x11/Installer/98vboxadd-xclient
    /usr/bin/VBoxClient --clipboard
    /usr/bin/VBoxClient --checkhostversion
    /usr/bin/VBoxClient --seamless
-   /usr/bin/VBoxClient --draganddrop
--  /usr/bin/VBoxClient --vmsvga  # In case VMSVGA emulation is enabled
- fi

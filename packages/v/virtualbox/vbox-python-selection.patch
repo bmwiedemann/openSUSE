@@ -1,8 +1,8 @@
-Index: VirtualBox-6.1.40/src/bldprogs/scm.cpp
+Index: VirtualBox-7.0.4/src/bldprogs/scm.cpp
 ===================================================================
---- VirtualBox-6.1.40.orig/src/bldprogs/scm.cpp
-+++ VirtualBox-6.1.40/src/bldprogs/scm.cpp
-@@ -2206,7 +2206,7 @@ static int scmProcessFileInner(PSCMRWSTA
+--- VirtualBox-7.0.4.orig/src/bldprogs/scm.cpp
++++ VirtualBox-7.0.4/src/bldprogs/scm.cpp
+@@ -2335,7 +2335,7 @@ static int scmProcessFileInner(PSCMRWSTA
                              pszTreatAs = "shell";
                          else if (   (cchFirst >= 15 && strncmp(pchFirst, "/usr/bin/python", 15) == 0)
                                   || (cchFirst >= 19 && strncmp(pchFirst, "/usr/bin/env python", 19) == 0) )
@@ -11,39 +11,11 @@ Index: VirtualBox-6.1.40/src/bldprogs/scm.cpp
                          else if (   (cchFirst >= 13 && strncmp(pchFirst, "/usr/bin/perl", 13) == 0)
                                   || (cchFirst >= 17 && strncmp(pchFirst, "/usr/bin/env perl", 17) == 0) )
                              pszTreatAs = "perl";
-Index: VirtualBox-6.1.40/src/libs/libxml2-2.9.4/configure
+Index: VirtualBox-7.0.4/src/VBox/Installer/linux/rpm/VirtualBox.tmpl.spec
 ===================================================================
---- VirtualBox-6.1.40.orig/src/libs/libxml2-2.9.4/configure
-+++ VirtualBox-6.1.40/src/libs/libxml2-2.9.4/configure
-@@ -15153,10 +15153,10 @@ PYTHON_SITE_PACKAGES=
- PYTHON_TESTS=
- pythondir=
- if test "$with_python" != "no" ; then
--    if test -x "$with_python/bin/python"
-+    if test -x "$with_python/bin/python3"
-     then
--        echo Found python in $with_python/bin/python
--        PYTHON="$with_python/bin/python"
-+        echo Found python in $with_python/bin/python3
-+        PYTHON="$with_python/bin/python3"
-     else
-         if test -x "$with_python/python.exe"
-         then
-@@ -15174,7 +15174,8 @@ if test "$with_python" != "no" ; then
-                     with_python=`$PYTHON -c "import sys; print(sys.exec_prefix)"`
-                 else
-                     # Extract the first word of "python python2.6 python2.5 python2.4 python2.3 python2.2 python2.1 python2.0 python1.6 python1.5", so it can be a program name with args.
--set dummy python python2.6 python2.5 python2.4 python2.3 python2.2 python2.1 python2.0 python1.6 python1.5; ac_word=$2
-+PYTHON=python3
-+set dummy python3 python2.6 python2.5 python2.4 python2.3 python2.2 python2.1 python2.0 python1.6 python1.5; ac_word=$2
- { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
- $as_echo_n "checking for $ac_word... " >&6; }
- if ${ac_cv_path_PYTHON+:} false; then :
-Index: VirtualBox-6.1.40/src/VBox/Installer/linux/rpm/VirtualBox.tmpl.spec
-===================================================================
---- VirtualBox-6.1.40.orig/src/VBox/Installer/linux/rpm/VirtualBox.tmpl.spec
-+++ VirtualBox-6.1.40/src/VBox/Installer/linux/rpm/VirtualBox.tmpl.spec
-@@ -22,6 +22,9 @@
+--- VirtualBox-7.0.4.orig/src/VBox/Installer/linux/rpm/VirtualBox.tmpl.spec
++++ VirtualBox-7.0.4/src/VBox/Installer/linux/rpm/VirtualBox.tmpl.spec
+@@ -32,6 +32,9 @@
  %define VBOXDOCDIR %{_defaultdocdir}/%NAME%
  %global __requires_exclude_from ^/usr/lib/virtualbox/VBoxPython.*$|^/usr/lib/python.*$|^.*\\.py$
  %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")}
@@ -53,10 +25,10 @@ Index: VirtualBox-6.1.40/src/VBox/Installer/linux/rpm/VirtualBox.tmpl.spec
  
  Summary:   Oracle VM VirtualBox
  Name:      %NAME%
-Index: VirtualBox-6.1.40/src/libs/libxml2-2.9.4/libxml.spec.in
+Index: VirtualBox-7.0.4/src/libs/libxml2-2.9.14/libxml.spec.in
 ===================================================================
---- VirtualBox-6.1.40.orig/src/libs/libxml2-2.9.4/libxml.spec.in
-+++ VirtualBox-6.1.40/src/libs/libxml2-2.9.4/libxml.spec.in
+--- VirtualBox-7.0.4.orig/src/libs/libxml2-2.9.14/libxml.spec.in
++++ VirtualBox-7.0.4/src/libs/libxml2-2.9.14/libxml.spec.in
 @@ -1,3 +1,4 @@
 +%global with_python2 0
  %global with_python3 1
@@ -64,7 +36,7 @@ Index: VirtualBox-6.1.40/src/libs/libxml2-2.9.4/libxml.spec.in
  Summary: Library providing XML and HTML support
 @@ -8,7 +9,9 @@ License: MIT
  Group: Development/Libraries
- Source: ftp://xmlsoft.org/libxml2/libxml2-%{version}.tar.gz
+ Source: https://download.gnome.org/sources/libxml2/@LIBXML_MAJOR_VERSION@.@LIBXML_MINOR_VERSION@/libxml2-%{version}.tar.xz
  BuildRoot: %{_tmppath}/%{name}-%{version}-root
 +%if 0%{?with_python2}
  BuildRequires: python-devel
@@ -72,15 +44,15 @@ Index: VirtualBox-6.1.40/src/libs/libxml2-2.9.4/libxml.spec.in
  %if 0%{?with_python3}
  BuildRequires: python3-devel
  %endif # with_python3
-@@ -72,7 +75,6 @@ to read, modify and write XML and HTML f
+@@ -75,7 +78,6 @@ to read, modify and write XML and HTML f
  this includes parsing and validation even with complex DTDs, either
  at parse time or later once the document has been modified.
  
 -%if 0%{?with_python3}
- %package python3
+ %package -n python3-%{name}
  Summary: Python 3 bindings for the libxml2 library
  Group: Development/Libraries
-@@ -87,7 +89,6 @@ This library allows to manipulate XML fi
+@@ -92,7 +94,6 @@ This library allows to manipulate XML fi
  to read, modify and write XML and HTML files. There is DTDs support
  this includes parsing and validation even with complex DTDs, either
  at parse time or later once the document has been modified.
@@ -88,7 +60,7 @@ Index: VirtualBox-6.1.40/src/libs/libxml2-2.9.4/libxml.spec.in
  
  %prep
  %setup -q
-@@ -99,11 +100,14 @@ make
+@@ -110,11 +111,14 @@ find doc -type f -exec chmod 0644 \{\} \
  %install
  rm -fr %{buildroot}
  
@@ -105,52 +77,41 @@ Index: VirtualBox-6.1.40/src/libs/libxml2-2.9.4/libxml.spec.in
  make install DESTDIR=%{buildroot}
  %endif # with_python3
  
-@@ -165,6 +169,7 @@ rm -fr %{buildroot}
+@@ -177,6 +181,7 @@ rm -fr %{buildroot}
  
  %{_libdir}/*a
  
 +%if 0%{?with_python2}
- %files python
+ %files -n python-%{name}
  %defattr(-, root, root)
  
-@@ -176,6 +181,7 @@ rm -fr %{buildroot}
+@@ -188,6 +193,7 @@ rm -fr %{buildroot}
  %doc python/tests/*.py
  %doc doc/*.py
  %doc doc/python.html
 +%endif
  
  %if 0%{?with_python3}
- %files python3
-Index: VirtualBox-6.1.40/src/libs/libxml2-2.9.4/libxml2.spec
+ %files -n python3-%{name}
+Index: VirtualBox-7.0.4/src/libs/xpcom18a4/python/src/ErrorUtils.cpp
 ===================================================================
---- VirtualBox-6.1.40.orig/src/libs/libxml2-2.9.4/libxml2.spec
-+++ VirtualBox-6.1.40/src/libs/libxml2-2.9.4/libxml2.spec
-@@ -103,7 +103,7 @@ make install DESTDIR=%{buildroot}
+--- VirtualBox-7.0.4.orig/src/libs/xpcom18a4/python/src/ErrorUtils.cpp
++++ VirtualBox-7.0.4/src/libs/xpcom18a4/python/src/ErrorUtils.cpp
+@@ -438,7 +438,9 @@ char *PyTraceback_AsString(PyObject *exc
  
- %if 0%{?with_python3}
- make clean
--%configure --with-python=%{__python3}
-+%configure --with-python=python3
- make install DESTDIR=%{buildroot}
- %endif # with_python3
- 
-Index: VirtualBox-6.1.40/src/libs/xpcom18a4/python/src/ErrorUtils.cpp
-===================================================================
---- VirtualBox-6.1.40.orig/src/libs/xpcom18a4/python/src/ErrorUtils.cpp
-+++ VirtualBox-6.1.40/src/libs/xpcom18a4/python/src/ErrorUtils.cpp
-@@ -439,6 +439,8 @@ char *PyTraceback_AsString(PyObject *exc
  	{ // a temp scope so I can use temp locals.
  #if PY_MAJOR_VERSION <= 2
- 	char *tempResult = PyString_AsString(obResult);
+-	char *tempResult = PyString_AsString(obResult);
++	char *tempResult = (char *)PyString_AsString(obResult);
 +#elif PY_MINOR_VERSION <= 6
-+	char *tempResult = PyUnicode_AsUTF8(obResult);
++	char *tempResult = (char *)PyUnicode_AsUTF8(obResult);
  #else
      /* PyUnicode_AsUTF8() is const char * as of Python 3.7, char * earlier. */
  	const char *tempResult = (const char *)PyUnicode_AsUTF8(obResult);
-Index: VirtualBox-6.1.40/src/libs/xpcom18a4/python/src/PyGBase.cpp
+Index: VirtualBox-7.0.4/src/libs/xpcom18a4/python/src/PyGBase.cpp
 ===================================================================
---- VirtualBox-6.1.40.orig/src/libs/xpcom18a4/python/src/PyGBase.cpp
-+++ VirtualBox-6.1.40/src/libs/xpcom18a4/python/src/PyGBase.cpp
+--- VirtualBox-7.0.4.orig/src/libs/xpcom18a4/python/src/PyGBase.cpp
++++ VirtualBox-7.0.4/src/libs/xpcom18a4/python/src/PyGBase.cpp
 @@ -183,7 +183,11 @@ PyG_Base::~PyG_Base()
  // Get the correct interface pointer for this object given the IID.
  void *PyG_Base::ThisAsIID( const nsIID &iid )
@@ -164,11 +125,11 @@ Index: VirtualBox-6.1.40/src/libs/xpcom18a4/python/src/PyGBase.cpp
  	if (iid.Equals(NS_GET_IID(nsISupports)))
  		return (nsISupports *)(nsIInternalPython *)this;
  	if (iid.Equals(NS_GET_IID(nsISupportsWeakReference)))
-Index: VirtualBox-6.1.40/src/libs/xpcom18a4/python/gen_python_deps.py
+Index: VirtualBox-7.0.4/src/libs/xpcom18a4/python/gen_python_deps.py
 ===================================================================
---- VirtualBox-6.1.40.orig/src/libs/xpcom18a4/python/gen_python_deps.py
-+++ VirtualBox-6.1.40/src/libs/xpcom18a4/python/gen_python_deps.py
-@@ -86,7 +86,7 @@ def main(argv):
+--- VirtualBox-7.0.4.orig/src/libs/xpcom18a4/python/gen_python_deps.py
++++ VirtualBox-7.0.4/src/libs/xpcom18a4/python/gen_python_deps.py
+@@ -96,7 +96,7 @@ def main(argv):
      else:
          multi = 1
  
@@ -177,7 +138,7 @@ Index: VirtualBox-6.1.40/src/libs/xpcom18a4/python/gen_python_deps.py
          prefixes = ["/usr"]
          versions = [str(sys.version_info[0])+'.'+str(sys.version_info[1]),
                      str(sys.version_info[0])+'.'+str(sys.version_info[1])+'m']
-@@ -114,24 +114,25 @@ def main(argv):
+@@ -124,24 +124,25 @@ def main(argv):
              continue
          for p in prefixes:
              c = checkPair(p, v, dllpre, dllsuff, bitness_magic)

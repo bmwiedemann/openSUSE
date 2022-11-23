@@ -46,13 +46,12 @@
 # With 32-bit builds, the job limit cannot be larger than 2, otherwise the build runs out of memory.
 # For 64-bit builds, no memory limit is reached when more jobs are run, but the builds crash with strange errors.
 # For the above reasons, limit the number of jobs to 2.
-#%define _smp_mflags -j2
 %define _vbox_instdir %{_prefix}/lib/virtualbox
 %define _udevrulesdir %{_prefix}/lib/udev/rules.d
 %endif
 # ********* If the VB version exceeds 6.1.x, notify the libvirt maintainer!!
 Name:           virtualbox%{?dash}%{?name_suffix}
-Version:        6.1.40
+Version:        7.0.4
 Release:        0
 Summary:        %{package_summary}
 # FIXME: use correct group or remove it, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"
@@ -89,6 +88,7 @@ Source22:       vboxweb-service.sh
 Source23:       vboxautostart-service.service
 Source24:       vboxautostart-service.sh
 Source25:       vboxclient.desktop
+Source26:       VBoxDDR0.r0
 Source97:       README.build
 Source98:       virtualbox-rpmlintrc
 Source99:       virtualbox-patch-source.sh
@@ -171,13 +171,18 @@ Patch136:       fixes_for_gcc10.patch
 Patch137:       handle_gsoap_208103.patch
 # Fix for struct file_operations backport in 15.3
 Patch142:       fixes_for_leap15.3.patch
-Patch143:       vb-6.1.16-modal-dialog-parent.patch
-Patch144:       fixes_for_leap15.4.patch
-
+Patch143:       fix_kmp_build.patch
+#Fix for yasm defaulting to executable stack
+Patch144:       set_noexec_stack.patch
+#Fix to make C++ generate PIC code, and fixes to make yasm have relocatable references to external globals
+Patch145:       fix_v7_build.patch
 Patch999:       virtualbox-fix-ui-background-color.patch
 #
 # Common BuildRequires for both virtualbox and virtualbox-kmp
 BuildRequires:  %{kernel_module_package_buildreqs}
+BuildRequires:  acpica
+BuildRequires:  cmake-full
+BuildRequires:  dwarves
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  kbuild >= 0.1.9998svn3101
@@ -195,38 +200,46 @@ Source2:        VirtualBox.appdata.xml
 ### Requirements for virtualbox main package ###
 %if %{main_package}
 BuildRequires:  LibVNCServer-devel
-BuildRequires:  acpica
+BuildRequires:  SDL-devel
 BuildRequires:  alsa-devel
-BuildRequires:  bin86
-BuildRequires:  dev86
+#BuildRequires:  bin86
+#BuildRequires:  dev86
 BuildRequires:  device-mapper-devel
 BuildRequires:  dmidecode
 BuildRequires:  e2fsprogs-devel
 BuildRequires:  fdupes
 BuildRequires:  glibc-devel-static
+BuildRequires:  glslang-devel
 BuildRequires:  gsoap-devel >= 2.8.50
-BuildRequires:  infinipath-psm
+#BuildRequires:  infinipath-psm
 BuildRequires:  java-devel >= 1.6.0
 BuildRequires:  libelf-devel
 BuildRequires:  libidl-devel
+BuildRequires:  libopenssl-1_1-devel
 BuildRequires:  libopus-devel
 BuildRequires:  libqt5-linguist
+BuildRequires:  libqt5-linguist-devel
 BuildRequires:  libqt5-qtbase-devel
+BuildRequires:  libqt5-qttools-devel
 BuildRequires:  libqt5-qtx11extras-devel
+BuildRequires:  libtpms-devel
 BuildRequires:  libvpx-devel
 BuildRequires:  libxslt-devel
 BuildRequires:  libzio-devel
+BuildRequires:  lzfse
+BuildRequires:  lzfse-devel
 BuildRequires:  pulseaudio-devel
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-devel
+#BuildRequires:  sdl12_compat-devel
 BuildRequires:  sed
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  update-desktop-files
 BuildRequires:  which
-BuildRequires:  xorg-x11
+#BuildRequires:  xorg-x11
 BuildRequires:  xorg-x11-server
-BuildRequires:  xorg-x11-server-sdk
-BuildRequires:  zlib-devel-static
+#BuildRequires:  xorg-x11-server-sdk
+#BuildRequires:  zlib-devel-static
 BuildRequires:  pkgconfig(fontsproto)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(glx)
@@ -283,7 +296,11 @@ Requires(pre):  net-tools-deprecated
 %endif
 ### Requirements for virtualbox-kmp ###
 %if %{kmp_package}
+BuildRequires:  alsa-devel
+BuildRequires:  libiptc-devel
+BuildRequires:  libpulse-devel
 BuildRequires:  libxml2-devel
+Requires:       ca-certificates
 Requires:       openSUSE-signkey-cert
 %kernel_module_package -p %{SOURCE7} -n virtualbox -f %{SOURCE5} -x kdump um xen pae xenpae pv
 # end of kmp_package
@@ -297,6 +314,13 @@ and derivations of Windows, Linux, BSD, OS/2, Solaris, Haiku, OSx86
 and others, and limited virtualization of macOS guests on Apple
 hardware. VirtualBox is freely available as Open Source Software under
 the terms of the GNU Public License (GPL).
+
+
+
+
+
+
+
 
 
 ##########################################
@@ -317,6 +341,16 @@ Obsoletes:      %{name}-ose-qt < %{version}
 %description qt
 This package contains the code for the GUI used to control VMs.
 
+
+
+
+
+
+
+
+
+#########################################
+
 %package websrv
 Summary:        WebService GUI part for %{name}
 Group:          System/Emulators/PC
@@ -329,8 +363,14 @@ Obsoletes:      %{name}-vboxwebsrv < %{version}
 The VirtualBox web server is used to control headless VMs using a browser.
 
 
-###########################################
 
+
+
+
+
+
+
+###########################################
 %package guest-tools
 Summary:        VirtualBox guest tools
 Group:          System/Emulators/PC
@@ -342,9 +382,8 @@ Supplements:    modalias(pci:v000080EEd0000CAFEsv*sd*bc*sc*i*)
 #rename from "ose" version:
 Provides:       %{name}-ose-guest-tools = %{version}
 Obsoletes:      %{name}-ose-guest-tools < %{version}
-Obsoletes:      virtualbox-guest-x11
-Provides:       virtualbox-guest-x11
-Obsoletes:      xorg-x11-driver-virtualbox-ose
+Obsoletes:      virtualbox-guest-x11 < %{version}
+Obsoletes:      xorg-x11-driver-virtualbox-ose < %{version}
 %if ! 0%{?suse_version} > 1325
 Requires(pre):  net-tools-deprecated
 %endif
@@ -353,7 +392,14 @@ Requires(pre):  net-tools-deprecated
 VirtualBox guest addition tools.
 
 
-##########################################
+
+
+
+
+
+
+
+###########################################
 
 %package -n python3-%{name}
 Summary:        Python bindings for %{name}
@@ -373,7 +419,14 @@ Obsoletes:      python3-%{name}-ose < %{version}
 Python XPCOM bindings to %{name}. Used e.g. by vboxgtk package.
 
 
-##########################################
+
+
+
+
+
+
+
+###########################################
 
 %package devel
 Summary:        Devel files for %{name}
@@ -388,7 +441,14 @@ Obsoletes:      %{name}-ose-devel < %{version}
 Development file for %{name}
 
 
-##########################################
+
+
+
+
+
+
+
+###########################################
 
 %package host-source
 Summary:        Source files for %{name} host kernel modules
@@ -420,7 +480,14 @@ These can be built for custom kernels using
 sudo %{_sbindir}/vboxguestconfig
 
 
-##########################################
+
+
+
+
+
+
+
+###########################################
 
 %package guest-desktop-icons
 Summary:        Icons for guest desktop files
@@ -433,7 +500,14 @@ BuildArch:      noarch
 This package contains icons for guest desktop files that were created on the desktop.
 
 
-##########################################
+
+
+
+
+
+
+
+###########################################
 
 %package vnc
 Summary:        VNC desktop sharing
@@ -506,13 +580,11 @@ This package contains the kernel-modules that VirtualBox uses to create or run v
 # Patch for Leap 15.3
 %patch142 -p1
 %endif
-%if 0%{?sle_version} == 1504 && 0%{?is_opensuse}
-# Patch for Leap 15.4
-%patch144 -p1
-%endif
 %patch143 -p1
+%patch144 -p1
+%patch145 -p1
 # make VB UI background colors look sane again
-%patch999 -p1
+##%patch999 -p1
 
 ### Documents for virtualbox main package ###
 %if %{main_package}
@@ -579,7 +651,6 @@ source ./env.sh
 echo "build basic parts"
     %{_bindir}/kmk %{?_smp_mflags} \
     VBOX_GCC_WERR= \
-    KBUILD_VERBOSE=2 \
     VBOX_USE_SYSTEM_XORG_HEADERS=1 \
     VBOX_WITH_REGISTRATION_REQUEST= VBOX_WITH_UPDATE_REQUEST= \
     TOOL_YASM_AS=yasm \
@@ -657,7 +728,7 @@ pushd out/linux.*/release/bin
 install -m 755 VBoxManage 			%{buildroot}%{_vbox_instdir}
 install -m 755 VBoxHeadless 			%{buildroot}%{_vbox_instdir}
 install -m 755 VBoxSDL 				%{buildroot}%{_vbox_instdir}
-install -m 755 VBoxTunctl 			%{buildroot}%{_vbox_instdir}
+#install -m 755 VBoxTunctl 			%{buildroot}%{_vbox_instdir}
 install -m 755 VBoxNetNAT			%{buildroot}%{_vbox_instdir}
 install -m 755 VBoxAutostart			%{buildroot}%{_vbox_instdir}
 install -m 755 VBoxVolInfo			%{buildroot}%{_vbox_instdir}
@@ -667,13 +738,14 @@ install -m 755 webtest				%{buildroot}%{_vbox_instdir}
 install -m 755 VBoxDTrace			%{buildroot}%{_vbox_instdir}
 install -m 755 VBoxDbg.so			%{buildroot}%{_vbox_instdir}
 install -m 755 VBoxDbg.so			%{buildroot}%{_vbox_instdir}
+install -m 755 VBoxDxVk.so			%{buildroot}%{_vbox_instdir}
 install -m 755 UICommon.so			%{buildroot}%{_vbox_instdir}
 install -m 755 vboximg-mount			%{buildroot}%{_vbox_instdir}
 # create links to vbox tools in PATH - they could be usefull for controlling vbox from command line
 ln -s %{_vbox_instdir}/VBoxManage		%{buildroot}%{_bindir}/VBoxManage
 ln -s %{_vbox_instdir}/VBoxHeadless 		%{buildroot}%{_bindir}/VBoxHeadless
 ln -s %{_vbox_instdir}/VBoxSDL			%{buildroot}%{_bindir}/VBoxSDL
-ln -s %{_vbox_instdir}/VBoxTunctl		%{buildroot}%{_bindir}/VBoxTunctl
+#ln -s %{_vbox_instdir}/VBoxTunctl		%{buildroot}%{_bindir}/VBoxTunctl
 ln -s %{_vbox_instdir}/vboximg-mount		%{buildroot}%{_bindir}/vboximg-mount
 install -m 755 VBoxSVC 				%{buildroot}%{_vbox_instdir}
 install -m 755 VBoxXPCOMIPCD 			%{buildroot}%{_vbox_instdir}
@@ -692,6 +764,7 @@ install -m 755 VBoxEFI*.fd			%{buildroot}%{_vbox_instdir}
 install -m 755 VBoxSysInfo.sh			%{buildroot}%{_vbox_instdir}
 install -m 644 *.so		 		%{buildroot}%{_vbox_instdir}
 install -m 644 *.r0 				%{buildroot}%{_vbox_instdir}
+install -m 644 %{SOURCE26}				%{buildroot}%{_vbox_instdir}
 install -m 644 components/*			%{buildroot}%{_vbox_instdir}/components/
 # install languages
 install -m 644 nls/*				%{buildroot}%{_datadir}/virtualbox/nls/
@@ -948,7 +1021,8 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %doc README.autostart UserManual.pdf README.build
 %{_bindir}/VBoxManage
 %{_bindir}/VBoxHeadless
-%{_bindir}/VBoxTunctl
+%{_bindir}/VBoxSDL
+#%{_bindir}/VBoxTunctl
 %{_bindir}/vboximg-mount
 %dir %{_vbox_instdir}
 %{_vbox_instdir}/VBoxAutostart
@@ -976,7 +1050,7 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %{_vbox_instdir}/VBoxEFI*.fd
 %{_vbox_instdir}/VBoxManage
 %{_vbox_instdir}/VBoxSVC
-%{_vbox_instdir}/VBoxTunctl
+#%{_vbox_instdir}/VBoxTunctl
 %{_vbox_instdir}/VBoxXPCOMIPCD
 %{_vbox_instdir}/VBoxExtPackHelperApp
 %{_vbox_instdir}/vboximg-mount
@@ -986,6 +1060,7 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %{_vbox_instdir}/VBoxDragAndDropSvc.so
 %{_vbox_instdir}/VBoxVMMPreload.so
 #todo:double check - if this file should be assigned to the host side
+%{_vbox_instdir}/VBoxDxVk.so
 %{_vbox_instdir}/UICommon.so
 %{_vbox_instdir}/VBoxHostChannel.so
 %dir %{_vbox_instdir}/components
@@ -1000,9 +1075,9 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %{_prefix}/lib/virtualbox/vboxautostart-service.sh
 %{_unitdir}/vboxdrv.service
 %{_unitdir}/vboxautostart-service.service
+%{_unitdir}/multi-user.target.wants/vboxweb-service.service
 %{_unitdir}/multi-user.target.wants/vboxdrv.service
 %{_unitdir}/multi-user.target.wants/vboxautostart-service.service
-%{_unitdir}/multi-user.target.wants/vboxweb-service.service
 %{_sbindir}/rcvboxdrv
 %{_sbindir}/rcvboxautostart
 %{_sbindir}/vboxconfig
@@ -1155,14 +1230,6 @@ COMMON_KMK_FLAGS="
 	KBUILD_TARGET=linux \
 	BUILD_TARGET=linux \
 "
-# Architecture specific flags
-%ifarch x86_64
-COMMON_KMK_FLAGS+="
-	KBUILD_TARGET_ARCH=amd64 \
-	BUILD_TARGET_ARCH=amd64
-"
-%endif
-
 # Build additions to export the source code of vbox{guest,sf,video} to
 # out/linux.*/release/bin/additions/src/
 %{_bindir}/kmk %{?_smp_mflags} \
@@ -1235,7 +1302,7 @@ for vbox_module in out/linux.*/release/bin/src/vbox{drv,netflt,netadp} \
 	    SYMBOLS="$PWD/modules_build_dir/$flavor/vboxguest/Module.symvers"
 	fi
 	# build the module for the specific flavor
-	%make_build -j2 -C %{_prefix}/src/linux-obj/%{_target_cpu}/$flavor %{?linux_make_arch} modules \
+	%make_build -j4 -C %{_prefix}/src/linux-obj/%{_target_cpu}/$flavor %{?linux_make_arch} modules \
 		M=$PWD/modules_build_dir/$flavor/$module_name KBUILD_EXTRA_SYMBOLS="$SYMBOLS" V=1
     done
 done

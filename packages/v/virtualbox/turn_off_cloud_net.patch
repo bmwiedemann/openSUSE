@@ -1,13 +1,18 @@
-Index: VirtualBox-6.1.40/Config.kmk
+Index: VirtualBox-7.0.4/Config.kmk
 ===================================================================
---- VirtualBox-6.1.40.orig/Config.kmk
-+++ VirtualBox-6.1.40/Config.kmk
-@@ -806,7 +806,7 @@ endif
+--- VirtualBox-7.0.4.orig/Config.kmk
++++ VirtualBox-7.0.4/Config.kmk
+@@ -972,11 +972,9 @@ if1of ($(KBUILD_TARGET), freebsd linux)
+ endif
  # Use new VBoxNetDhcpd instead of old VBoxNetDHCP
  VBOX_WITH_DHCPD = 1
- # Experimental suport for cloud network integration
--VBOX_WITH_CLOUD_NET = 1
+-# Experimental suport for cloud network integration (depends on libssh)
+-ifdef VBOX_WITH_LIBSSH
+- VBOX_WITH_CLOUD_NET = 1
+-endif
+ # Use Mac OS X VMNET API instead of network kernel extensions
++# Experimental suport for cloud network integration
 +#VBOX_WITH_CLOUD_NET = 1
+ VBOX_WITH_VMNET = 1
  ## @}
- 
  

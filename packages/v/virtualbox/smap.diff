@@ -1,8 +1,8 @@
-Index: VirtualBox-6.1.40/src/VBox/HostDrivers/Support/linux/SUPDrv-linux.c
+Index: VirtualBox-7.0.4/src/VBox/HostDrivers/Support/linux/SUPDrv-linux.c
 ===================================================================
---- VirtualBox-6.1.40.orig/src/VBox/HostDrivers/Support/linux/SUPDrv-linux.c
-+++ VirtualBox-6.1.40/src/VBox/HostDrivers/Support/linux/SUPDrv-linux.c
-@@ -51,6 +51,12 @@
+--- VirtualBox-7.0.4.orig/src/VBox/HostDrivers/Support/linux/SUPDrv-linux.c
++++ VirtualBox-7.0.4/src/VBox/HostDrivers/Support/linux/SUPDrv-linux.c
+@@ -61,6 +61,12 @@
  # include <iprt/power.h>
  # define VBOX_WITH_SUSPEND_NOTIFICATION
  #endif

@@ -1,8 +1,8 @@
-Index: VirtualBox-6.1.40/src/VBox/Additions/linux/installer/vboxadd.sh
+Index: VirtualBox-7.0.4/src/VBox/Additions/linux/installer/vboxadd.sh
 ===================================================================
---- VirtualBox-6.1.40.orig/src/VBox/Additions/linux/installer/vboxadd.sh
-+++ VirtualBox-6.1.40/src/VBox/Additions/linux/installer/vboxadd.sh
-@@ -26,11 +26,14 @@
+--- VirtualBox-7.0.4.orig/src/VBox/Additions/linux/installer/vboxadd.sh
++++ VirtualBox-7.0.4/src/VBox/Additions/linux/installer/vboxadd.sh
+@@ -36,11 +36,14 @@
  # Provides:       vboxadd
  # Required-Start:
  # Required-Stop:
@@ -18,7 +18,7 @@ Index: VirtualBox-6.1.40/src/VBox/Additions/linux/installer/vboxadd.sh
  ### END INIT INFO
  
  ## @todo This file duplicates a lot of script with vboxdrv.sh.  When making
-@@ -121,20 +124,11 @@ module_build_log()
+@@ -145,20 +148,11 @@ module_build_log()
  
  dev=/dev/vboxguest
  userdev=/dev/vboxuser
@@ -39,7 +39,7 @@ Index: VirtualBox-6.1.40/src/VBox/Additions/linux/installer/vboxadd.sh
  # Attempt to detect VirtualBox Guest Additions version and revision information.
  VBOXCLIENT="${INSTALL_DIR}/bin/VBoxClient"
  VBOX_VERSION="`"$VBOXCLIENT" --version | cut -d r -f1`"
-@@ -184,12 +178,6 @@ do_vboxguest_non_udev()
+@@ -208,12 +202,6 @@ do_vboxguest_non_udev()
              fail "Cannot create device $dev with major $maj and minor $min"
          }
      fi
@@ -52,7 +52,7 @@ Index: VirtualBox-6.1.40/src/VBox/Additions/linux/installer/vboxadd.sh
  
      if [ ! -c $userdev ]; then
          maj=10
-@@ -200,12 +188,6 @@ do_vboxguest_non_udev()
+@@ -224,12 +212,6 @@ do_vboxguest_non_udev()
                  rmmod vboxguest 2>/dev/null
                  fail "Cannot create device $userdev with major $maj and minor $min"
              }
@@ -65,7 +65,7 @@ Index: VirtualBox-6.1.40/src/VBox/Additions/linux/installer/vboxadd.sh
          fi
      fi
  }
-@@ -267,7 +249,7 @@ cleanup_modules()
+@@ -293,7 +275,7 @@ cleanup_modules()
          done
          if test -z "${keep}"; then
              rm -rf /lib/modules/"${KERN_VER}"
@@ -74,7 +74,7 @@ Index: VirtualBox-6.1.40/src/VBox/Additions/linux/installer/vboxadd.sh
          fi
      done
      for i in ${OLDMODULES}; do
-@@ -528,9 +510,9 @@ create_udev_rule()
+@@ -559,9 +541,9 @@ create_udev_rule()
          udevcontrol reload_rules >/dev/null 2>&1 || true
      fi
  }
@@ -87,7 +87,35 @@ Index: VirtualBox-6.1.40/src/VBox/Additions/linux/installer/vboxadd.sh
      # And a post-installation script for rebuilding modules when a new kernel
      # is installed.
      mkdir -p /etc/kernel/postinst.d /etc/kernel/prerm.d
-@@ -736,17 +718,14 @@ Please install them and execute
+@@ -742,18 +724,17 @@ setup()
+ already available for kernel $TARGET_VER and do not require to be rebuilt."
+         else
+             info "Building the VirtualBox Guest Additions kernel modules.  This may take a while."
+-            info "To build modules for other installed kernels, run"
+-            info "  /sbin/rcvboxadd quicksetup <version>"
+-            info "or"
+-            info "  /sbin/rcvboxadd quicksetup all"
+-            if test -d /lib/modules/"$TARGET_VER"/build; then
+-                setup_modules "$TARGET_VER"
+-                depmod
+-            else
+-                info "Kernel headers not found for target kernel $TARGET_VER. \
++        info "To build modules for other installed kernels, run"
++        info "  /sbin/rcvboxadd quicksetup <version>"
++        info "or"
++        info "  /sbin/rcvboxadd quicksetup all"
++        if test -d /lib/modules/"$TARGET_VER"/build; then
++            setup_modules "$TARGET_VER"
++            depmod
++        else
++            info "Kernel headers not found for target kernel $TARGET_VER. \
+ Please install them and execute
+   /sbin/rcvboxadd setup"
+-            fi
+         fi
+     fi
+     create_vbox_user
+@@ -770,17 +751,14 @@ Please install them and execute
      # Put the X.Org driver in place.  This is harmless if it is not needed.
      # Also set up the OpenGL library.
      myerr=`"${INSTALL_DIR}/init/vboxadd-x11" setup 2>&1`
@@ -108,7 +136,7 @@ Index: VirtualBox-6.1.40/src/VBox/Additions/linux/installer/vboxadd.sh
          depmod
  
          # Remove old module sources
-@@ -756,12 +735,13 @@ cleanup()
+@@ -790,12 +768,13 @@ cleanup()
      fi
  
      # Clean-up X11-related bits
@@ -126,7 +154,7 @@ Index: VirtualBox-6.1.40/src/VBox/Additions/linux/installer/vboxadd.sh
      fi
      rm -f /sbin/mount.vboxsf 2>/dev/null
      rm -f /etc/udev/rules.d/60-vboxadd.rules 2>/dev/null
-@@ -807,7 +787,7 @@ for your Linux distribution."
+@@ -834,7 +813,7 @@ for your Linux distribution."
              rm -f $userdev || {
                  fail "Cannot remove $userdev"
              }
@@ -135,11 +163,11 @@ Index: VirtualBox-6.1.40/src/VBox/Additions/linux/installer/vboxadd.sh
                  fail "modprobe vboxguest failed"
              case "$no_udev" in 1)
                  sleep .5;;
-Index: VirtualBox-6.1.40/src/VBox/Additions/linux/installer/vboxadd-service.sh
+Index: VirtualBox-7.0.4/src/VBox/Additions/linux/installer/vboxadd-service.sh
 ===================================================================
---- VirtualBox-6.1.40.orig/src/VBox/Additions/linux/installer/vboxadd-service.sh
-+++ VirtualBox-6.1.40/src/VBox/Additions/linux/installer/vboxadd-service.sh
-@@ -26,7 +26,7 @@
+--- VirtualBox-7.0.4.orig/src/VBox/Additions/linux/installer/vboxadd-service.sh
++++ VirtualBox-7.0.4/src/VBox/Additions/linux/installer/vboxadd-service.sh
+@@ -36,7 +36,7 @@
  # Provides:       vboxadd-service
  # Required-Start: vboxadd
  # Required-Stop:  vboxadd
@@ -148,11 +176,11 @@ Index: VirtualBox-6.1.40/src/VBox/Additions/linux/installer/vboxadd-service.sh
  # Default-Stop:   0 1 6
  # X-Conflicts-With: systemd-timesyncd.service
  # Description:    VirtualBox Additions Service
-Index: VirtualBox-6.1.40/src/VBox/Installer/linux/vboxautostart-service.sh
+Index: VirtualBox-7.0.4/src/VBox/Installer/linux/vboxautostart-service.sh
 ===================================================================
---- VirtualBox-6.1.40.orig/src/VBox/Installer/linux/vboxautostart-service.sh
-+++ VirtualBox-6.1.40/src/VBox/Installer/linux/vboxautostart-service.sh
-@@ -23,7 +23,7 @@
+--- VirtualBox-7.0.4.orig/src/VBox/Installer/linux/vboxautostart-service.sh
++++ VirtualBox-7.0.4/src/VBox/Installer/linux/vboxautostart-service.sh
+@@ -33,7 +33,7 @@
  # Provides:       vboxautostart-service
  # Required-Start: vboxdrv
  # Required-Stop:  vboxdrv
@@ -161,11 +189,11 @@ Index: VirtualBox-6.1.40/src/VBox/Installer/linux/vboxautostart-service.sh
  # Default-Stop:   0 1 6
  # Description:    VirtualBox autostart service
  ### END INIT INFO
-Index: VirtualBox-6.1.40/src/VBox/Installer/linux/vboxballoonctrl-service.sh
+Index: VirtualBox-7.0.4/src/VBox/Installer/linux/vboxballoonctrl-service.sh
 ===================================================================
---- VirtualBox-6.1.40.orig/src/VBox/Installer/linux/vboxballoonctrl-service.sh
-+++ VirtualBox-6.1.40/src/VBox/Installer/linux/vboxballoonctrl-service.sh
-@@ -23,7 +23,7 @@
+--- VirtualBox-7.0.4.orig/src/VBox/Installer/linux/vboxballoonctrl-service.sh
++++ VirtualBox-7.0.4/src/VBox/Installer/linux/vboxballoonctrl-service.sh
+@@ -33,7 +33,7 @@
  # Provides:       vboxballoonctrl-service
  # Required-Start: vboxdrv
  # Required-Stop:  vboxdrv
@@ -174,11 +202,11 @@ Index: VirtualBox-6.1.40/src/VBox/Installer/linux/vboxballoonctrl-service.sh
  # Default-Stop:   0 1 6
  # Description:    VirtualBox watchdog daemon
  ### END INIT INFO
-Index: VirtualBox-6.1.40/src/VBox/ValidationKit/testboxscript/linux/testboxscript-service.sh
+Index: VirtualBox-7.0.4/src/VBox/ValidationKit/testboxscript/linux/testboxscript-service.sh
 ===================================================================
---- VirtualBox-6.1.40.orig/src/VBox/ValidationKit/testboxscript/linux/testboxscript-service.sh
-+++ VirtualBox-6.1.40/src/VBox/ValidationKit/testboxscript/linux/testboxscript-service.sh
-@@ -31,7 +31,7 @@
+--- VirtualBox-7.0.4.orig/src/VBox/ValidationKit/testboxscript/linux/testboxscript-service.sh
++++ VirtualBox-7.0.4/src/VBox/ValidationKit/testboxscript/linux/testboxscript-service.sh
+@@ -41,7 +41,7 @@
  # Provides:       testboxscript-service
  # Required-Start: $network
  # Required-Stop:
@@ -187,11 +215,11 @@ Index: VirtualBox-6.1.40/src/VBox/ValidationKit/testboxscript/linux/testboxscrip
  # Default-Stop:   0 1 6
  # Description:    TestBoxScript service
  ### END INIT INFO
-Index: VirtualBox-6.1.40/src/VBox/ValidationKit/utils/TestExecServ/linux/vboxtxs-nat.sh
+Index: VirtualBox-7.0.4/src/VBox/ValidationKit/utils/TestExecServ/linux/vboxtxs-nat.sh
 ===================================================================
---- VirtualBox-6.1.40.orig/src/VBox/ValidationKit/utils/TestExecServ/linux/vboxtxs-nat.sh
-+++ VirtualBox-6.1.40/src/VBox/ValidationKit/utils/TestExecServ/linux/vboxtxs-nat.sh
-@@ -31,7 +31,7 @@
+--- VirtualBox-7.0.4.orig/src/VBox/ValidationKit/utils/TestExecServ/linux/vboxtxs-nat.sh
++++ VirtualBox-7.0.4/src/VBox/ValidationKit/utils/TestExecServ/linux/vboxtxs-nat.sh
+@@ -41,7 +41,7 @@
  # Provides:       vboxtxs
  # Required-Start: $network
  # Required-Stop:
@@ -200,11 +228,11 @@ Index: VirtualBox-6.1.40/src/VBox/ValidationKit/utils/TestExecServ/linux/vboxtxs
  # Default-Stop:   0 1 6
  # Description:    VirtualBox Test Execution Service
  ### END INIT INFO
-Index: VirtualBox-6.1.40/src/VBox/ValidationKit/utils/TestExecServ/linux/vboxtxs.sh
+Index: VirtualBox-7.0.4/src/VBox/ValidationKit/utils/TestExecServ/linux/vboxtxs.sh
 ===================================================================
---- VirtualBox-6.1.40.orig/src/VBox/ValidationKit/utils/TestExecServ/linux/vboxtxs.sh
-+++ VirtualBox-6.1.40/src/VBox/ValidationKit/utils/TestExecServ/linux/vboxtxs.sh
-@@ -31,7 +31,7 @@
+--- VirtualBox-7.0.4.orig/src/VBox/ValidationKit/utils/TestExecServ/linux/vboxtxs.sh
++++ VirtualBox-7.0.4/src/VBox/ValidationKit/utils/TestExecServ/linux/vboxtxs.sh
+@@ -41,7 +41,7 @@
  # Provides:       vboxtxs
  # Required-Start: $network
  # Required-Stop:

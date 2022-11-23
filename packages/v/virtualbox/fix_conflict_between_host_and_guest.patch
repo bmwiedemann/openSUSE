@@ -1,8 +1,8 @@
-Index: VirtualBox-6.1.40/src/VBox/Additions/common/VBoxGuest/VBoxGuest-haiku.c
+Index: VirtualBox-7.0.4/src/VBox/Additions/common/VBoxGuest/VBoxGuest-haiku.c
 ===================================================================
---- VirtualBox-6.1.40.orig/src/VBox/Additions/common/VBoxGuest/VBoxGuest-haiku.c
-+++ VirtualBox-6.1.40/src/VBox/Additions/common/VBoxGuest/VBoxGuest-haiku.c
-@@ -130,7 +130,7 @@ static struct vboxguest_module_info g_VB
+--- VirtualBox-7.0.4.orig/src/VBox/Additions/common/VBoxGuest/VBoxGuest-haiku.c
++++ VirtualBox-7.0.4/src/VBox/Additions/common/VBoxGuest/VBoxGuest-haiku.c
+@@ -140,7 +140,7 @@ static struct vboxguest_module_info g_VB
      RTMemAllocExTag,
      RTMemContAlloc,
      RTMemContFree,

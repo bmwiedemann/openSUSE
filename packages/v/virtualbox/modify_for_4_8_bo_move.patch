@@ -1,8 +1,8 @@
-Index: VirtualBox-6.1.40/src/VBox/Runtime/r0drv/linux/alloc-r0drv-linux.c
+Index: VirtualBox-7.0.4/src/VBox/Runtime/r0drv/linux/alloc-r0drv-linux.c
 ===================================================================
---- VirtualBox-6.1.40.orig/src/VBox/Runtime/r0drv/linux/alloc-r0drv-linux.c
-+++ VirtualBox-6.1.40/src/VBox/Runtime/r0drv/linux/alloc-r0drv-linux.c
-@@ -35,7 +35,7 @@
+--- VirtualBox-7.0.4.orig/src/VBox/Runtime/r0drv/linux/alloc-r0drv-linux.c
++++ VirtualBox-7.0.4/src/VBox/Runtime/r0drv/linux/alloc-r0drv-linux.c
+@@ -45,7 +45,7 @@
  #include <iprt/assert.h>
  #include <iprt/errcore.h>
  #include "r0drv/alloc-r0drv.h"
@@ -11,7 +11,7 @@ Index: VirtualBox-6.1.40/src/VBox/Runtime/r0drv/linux/alloc-r0drv-linux.c
  
  #if (defined(RT_ARCH_AMD64) || defined(DOXYGEN_RUNNING)) && !defined(RTMEMALLOC_EXEC_HEAP)
  # if RTLNX_VER_MIN(2,6,23) && RTLNX_VER_MAX(5,8,0) && !RTLNX_RHEL_MAJ_PREREQ(8,5)
-@@ -301,6 +301,7 @@ DECLHIDDEN(int) rtR0MemAllocEx(size_t cb
+@@ -311,6 +311,7 @@ DECLHIDDEN(int) rtR0MemAllocEx(size_t cb
                  fFlags &= ~RTMEMHDR_FLAG_KMALLOC;
                  pHdr = vmalloc(cb + sizeof(*pHdr));
              }

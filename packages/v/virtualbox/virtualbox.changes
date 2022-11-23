@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Mon Nov 21 16:10:35 UTC 2022 - Larry Finger <Larry.Finger@gmail.com>
+
+Removed file "fixes_for_leap15.4.patch" - fixed upstream.
+Added file "fix_kmp_build.patch'
+
+- VirtualBox 7.0.4 (released November 18 2022)
+
+This is a maintenance release. The following items were fixed and/or added:
+
+VMM: Added nested paging support for nested virtualization (Intel hosts only)
+VMM: Fixed rare guru meditations with certain guests on macOS 10.15 (Catalina) (bug #21237)
+VMM: Fixed possible VM process crash on Windows hosts when Hyper-V is used with certain guests (bug #21174)
+VMM: Fixed Windows XP guest hang or BSOD on AMD CPUs under certain circumstances (bug #21256)
+GUI: Various bugfixes for the Guest Control file manager
+GUI: Added more informative file operations in the Guest Control file manager
+GUI: Added an option to the global settings (the display page) to resize user interface font
+GUI: Fixed a regression in new vm wizard. Selected virtual disks are no longer deleted when the wizard is cancelled (bug #21244)
+GUI: Added a new menu item to the devices menu to optionally upgrade the guest additions.
+VirtioSCSI: Fixed recognition of the virtio SCSI controller by the EFI firmware (bug #21200)
+VirtioSCSI: Fixed hang when shutting down the VM if the virtio SCSI controller is used (bug #21144)
+virtio-net: Workaround a bug in the virtio-net driver included in FreeBSD version up to 12.3 which renders the device non functional (bug #21201)
+Storage: Fixed I/O errors with the VirtioSCSI controller when the host I/O cache is enabled (bug #19717)
+VBoxManage: Fixed regression when 'createmedium disk --variant RawDisk' command resulted in invalid .vmdk file (bug #21125)
+Main: Restored input pointing device behavior in multi-monitor VM configuration (bug #21137)
+Main: Fixed progress indication during automatic Linux Guest Additions installation
+Guest Control: Fixed path handling issues (bug #21095)
+3D: Fixed VM process crash on macOS with 3D enabled (bug #21232)
+Linux Host and Guest: General improvements in startup scripts
+Linux Guest Additions: Introduced initial support for RHEL 8.7 and 9.2 kernels (bug #21272, #21258)
+Linux Guest Additions: Introduced initial support for SLES 15.4 kernels
+Linux Guest Additions: Fixed kernel modules rebuild behavior on system shutdown
+ 
+
+-------------------------------------------------------------------
+Tue Nov 15 20:59:55 UTC 2022 - Larry Finger <Larry.Finger@gmail.com>
+
+added file "set_noexec_stack.patch" to remove executable stack in yasm-compiled routines
+added file "fix_v7_build.patch"
+added file "fixes_for_leap15.4.patch"
+added file "VBoxDDR0.r0"
+deleted file "/vb-6.1.16-modal-dialog-parent.patch"
+
+VirtualBox 7.0.2 (released October 20 2022)
+
+This is a maintenance release. The following items were fixed and/or added:
+
+Known issue: VMs having more than one vCPU configured will not work properly on macOS Catalina due to an unknown memory corruption issue. Either lower the number of vCPUs to 1 or upgrade to BigSur or later where the issue does not occur
+Main: Fixed issue when VBoxSVC could become unresponsive if Extension Pack was not installed (bug #21167)
+Linux Guest Additions: Introduced initial support for kernel 6.1
+Linux Guest Additions: Fixed issue when VBoxClient seamless service caused a crash of some X11 applications (bug #21132)
+GUI: Fixed a glitch in the log viewer which was causing wrong log file to be saved (bug #21156)
+VirtualBox 7.0.0 (released October 10 2022)
+
+This is a major update. The following major new features were added:
+
+Virtual machines can be fully encrypted now, including the VM config logs and saved states (CLI only for now)
+OCI: Cloud virtual machines can be added to Virtual Machine Manager and controlled as local VMs
+OCI: Cloud networks can now be configured via Network Manager tool same way as it is done for Host-only and NAT networks
+GUI: Added a new utility similar to "top" or "resource monitor" which lists peformance statistics (CPU usage, RAM usage, disk I/O rate, etc.) of running guests
+GUI: Reworked the new vm wizard to integrate the unattended guest OS installation and to have a more streamlined work flow
+GUI: Added a new help viewer widget which enables the user manual to be navigated and searched
+GUI: Adding new notification center unifying most of running progresses and error reporting around the GUI
+GUI: Improved theme support on all platforms. Linux and macOS use native engine while for Windows host it is separately implemented.
+GUI: Large icon update.
+Audio recording: Now using Vorbis as the default audio format for WebM containers. Opus is no longer being used.
+Audio: Added "default" host driver type to make it possible to move VMs (appliances) between different platforms without the need of changing the audio driver explicitly. When the "default" driver is selected, the best audio backend option for a platform will be used. This is the default for newly created VMs.
+Guest Control: Implemented initial support for automatic updating of Guest Additions for Linux guests
+Guest Control: Implemented ability to wait for and/or reboot the guest when updating Guest Additions via VBoxManage
+VBoxManage: Added Guest Control "waitrunlevel" sub-command to make it possible to wait for a guest to reach a certain run level
+Linux Guest Additions: Reworked guest screen re-size functionality, added basic integration with some of guest Desktop Environments
+Devices: Implemented new 3D support based on DirectX 11 (and DXVK on non Windows hosts)
+Devices: Added virtual IOMMU devices (Intel and AMD variant)
+Devices: Added virtual TPM 1.2 and 2.0 devices
+Devices: The EHCI and XHCI USB controller devices are now part of the open source base package
+EFI: Added support for Secure Boot
+Debugging: Added experimental support for guest debugging through GDB and highly experimental support for guest debugging through KD/WinDbg
+In addition, the following items were fixed and/or added:
+
+OCI: Cloud networking functionality is enhanced for local VMs, now local VMs could be connected to cloud networking
+GUI: Improved behavior of the virtual machine list and various VM related tools in case multiple items are selected
+GUI: On available platforms, added a new option to disable the host's screensaver
+GUI: Reworked global preferences, machine settings and the wizards to improve stability and usability
+GUI: Improving mouse handling in multi-monitor case on X11 platform
+GUI: Medium enumeration engine was reworked to improve permormance
+GUI: NAT Network stuff was moved from global preferences to global Network Manager tool
+GUI: Extension Pack Manager was moved from global preferences to global tools
+GUI: Improved overall accessibility
+GUI: Migrating to recent Qt versions.
+
+-------------------------------------------------------------------
 Tue Oct 18 15:42:42 UTC 2022 - Larry Rainey <llrainey15@gmail.com>
 
 This is a maintenance release. The following items were fixed and/or added:

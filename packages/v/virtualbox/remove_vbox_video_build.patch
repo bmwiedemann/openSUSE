@@ -1,8 +1,8 @@
-Index: VirtualBox-6.1.40/Makefile.kmk
+Index: VirtualBox-7.0.4/Makefile.kmk
 ===================================================================
---- VirtualBox-6.1.40.orig/Makefile.kmk
-+++ VirtualBox-6.1.40/Makefile.kmk
-@@ -724,7 +724,6 @@ VBOX_CORE_DOXYFILE_INPUT_DIRS = \
+--- VirtualBox-7.0.4.orig/Makefile.kmk
++++ VirtualBox-7.0.4/Makefile.kmk
+@@ -823,7 +823,6 @@ VBOX_CORE_DOXYFILE_INPUT_DIRS = \
  	src/VBox/Additions/x11/vboxmouse \
  	src/VBox/Additions/x11/vboxmouse/xorg70 \
  	src/VBox/Additions/x11/vboxmouse/xorg71 \
@@ -10,11 +10,11 @@ Index: VirtualBox-6.1.40/Makefile.kmk
  	src/VBox/NetworkServices \
  	src/VBox/NetworkServices/Dhcpd \
  	src/VBox/NetworkServices/NAT \
-Index: VirtualBox-6.1.40/src/VBox/Additions/x11/vboxvideo/Makefile.kmk
+Index: VirtualBox-7.0.4/src/VBox/Additions/x11/vboxvideo/Makefile.kmk
 ===================================================================
---- VirtualBox-6.1.40.orig/src/VBox/Additions/x11/vboxvideo/Makefile.kmk
-+++ VirtualBox-6.1.40/src/VBox/Additions/x11/vboxvideo/Makefile.kmk
-@@ -398,7 +398,8 @@ vboxvideo_drv_118_INCS += $(PATH_ROOT)/s
+--- VirtualBox-7.0.4.orig/src/VBox/Additions/x11/vboxvideo/Makefile.kmk
++++ VirtualBox-7.0.4/src/VBox/Additions/x11/vboxvideo/Makefile.kmk
+@@ -407,7 +407,8 @@ vboxvideo_drv_118_INCS += $(PATH_ROOT)/s
  vboxvideo_drv_118_SOURCES := $(vboxvideo_drv_17_SOURCES)
  vboxvideo_drv_118_LIBS += $(vboxvideo_drv_70_LIBS)
  
@@ -24,11 +24,11 @@ Index: VirtualBox-6.1.40/src/VBox/Additions/x11/vboxvideo/Makefile.kmk
   # Build using local X.Org headers.  We assume X.Org Server 1.7 or later.
   DLLS    := $(filter-out vboxvideo_drv_%,$(DLLS)) vboxvideo_drv_system
   SYSMODS := $(filter-out vboxvideo_drv%,$(SYSMODS))
-Index: VirtualBox-6.1.40/src/VBox/Additions/x11/Makefile.kmk
+Index: VirtualBox-7.0.4/src/VBox/Additions/x11/Makefile.kmk
 ===================================================================
---- VirtualBox-6.1.40.orig/src/VBox/Additions/x11/Makefile.kmk
-+++ VirtualBox-6.1.40/src/VBox/Additions/x11/Makefile.kmk
-@@ -22,7 +22,7 @@ include $(KBUILD_PATH)/subheader.kmk
+--- VirtualBox-7.0.4.orig/src/VBox/Additions/x11/Makefile.kmk
++++ VirtualBox-7.0.4/src/VBox/Additions/x11/Makefile.kmk
+@@ -32,7 +32,7 @@ include $(KBUILD_PATH)/subheader.kmk
  if1of ($(KBUILD_TARGET), freebsd linux netbsd openbsd solaris)
   include $(PATH_SUB_CURRENT)/VBoxClient/Makefile.kmk
   ifndef VBOX_NO_LEGACY_XORG_X11

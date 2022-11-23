@@ -1,8 +1,8 @@
-Index: VirtualBox-6.1.40/src/VBox/Main/webservice/vboxweb.cpp
+Index: VirtualBox-7.0.4/src/VBox/Main/webservice/vboxweb.cpp
 ===================================================================
---- VirtualBox-6.1.40.orig/src/VBox/Main/webservice/vboxweb.cpp
-+++ VirtualBox-6.1.40/src/VBox/Main/webservice/vboxweb.cpp
-@@ -945,9 +945,9 @@ static void doQueuesLoop()
+--- VirtualBox-7.0.4.orig/src/VBox/Main/webservice/vboxweb.cpp
++++ VirtualBox-7.0.4/src/VBox/Main/webservice/vboxweb.cpp
+@@ -955,9 +955,9 @@ static void doQueuesLoop()
                      continue; // timeout, not necessary to bother gsoap
                  // r < 0, errno
  #if GSOAP_VERSION >= 208103
