@@ -1,7 +1,7 @@
 #
 # spec file for package python-aiosmtpd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-aiosmtpd
 Version:        1.4.2
@@ -27,6 +26,7 @@ Group:          Development/Languages/Python
 URL:            https://aiosmtpd.readthedocs.io/
 Source:         https://github.com/aio-libs/aiosmtpd/archive/%{version}.tar.gz#/aiosmtpd-%{version}.tar.gz
 Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
+Source99:       python-aiosmtpd.rpmlintrc
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  git-core

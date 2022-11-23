@@ -56,4 +56,14 @@
     <comment></comment>
     <requestid>946128</requestid>
   </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>7f575a35da9b5c4e566d059555b13d33</srcmd5>
+    <version>1.4.2</version>
+    <time>1669193253</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip rpmlint error python-tests-in-package. 
+- Remove python_module macro definition.
+</comment>
+    <requestid>1037222</requestid>
+  </revision>
 </revisionlist>

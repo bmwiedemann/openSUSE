@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 21 16:19:40 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Skip rpmlint error python-tests-in-package. 
+- Remove python_module macro definition.
+
+-------------------------------------------------------------------
 Tue Jan 11 20:08:35 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Remove hardcoded conditional on python36 flavor which got removed
