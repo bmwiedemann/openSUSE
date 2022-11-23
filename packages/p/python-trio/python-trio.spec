@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-trio
 Version:        0.21.0
@@ -70,7 +69,7 @@ sed -i '1{/^#!/d}' trio/_tools/gen_exports.py
 
 %install
 %python_install
-%{python_expand rm -r %{buildroot}%{$python_sitelib}/trio/tests/
+%{python_expand rm -r %{buildroot}%{$python_sitelib}/trio/{,_core/}tests/
 %fdupes %{buildroot}%{$python_sitelib}
 }
 

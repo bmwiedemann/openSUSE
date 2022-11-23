@@ -142,4 +142,13 @@
   * Remove support for Python 3.6.</comment>
     <requestid>1005914</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>d383740887359a1acd59609b6ddf725e</srcmd5>
+    <version>0.21.0</version>
+    <time>1669193264</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix rpmlint error python-tests-in-package.
+</comment>
+    <requestid>1037176</requestid>
+  </revision>
 </revisionlist>
