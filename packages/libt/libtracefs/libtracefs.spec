@@ -18,13 +18,13 @@
 
 Name:           libtracefs
 %define lname   libtracefs1
-Version:        1.4.2
+Version:        1.6.0
 Release:        0
 Summary:        Linux kernel trace file system library
 License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 URL:            https://git.kernel.org/pub/scm/libs/libtrace/libtracefs.git/
-Source:         https://git.kernel.org/pub/scm/libs/libtrace/%name.git/snapshot/%name-%version.tar.gz
+Source:         https://git.kernel.org/pub/scm/libs/libtrace/libtracefs.git/snapshot/%name-%version.tar.gz
 BuildRequires:  pkg-config
 BuildRequires:  xz
 BuildRequires:  pkgconfig(libtraceevent) >= 1.3
