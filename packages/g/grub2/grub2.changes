@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 21 02:10:28 UTC 2022 - Michael Chang <mchang@suse.com>
+
+- Fix regression of reverting back to asking password twice when a keyfile is
+  already used (bsc#1205309)
+  * 0010-templates-import-etc-crypttab-to-grub.cfg.patch
+
+-------------------------------------------------------------------
 Wed Nov 16 02:36:23 UTC 2022 - Michael Chang <mchang@suse.com>
 
 - Security fixes and hardenings

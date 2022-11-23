@@ -11,35 +11,30 @@ This script can be used to import relevant /etc/crypptab entry to grub.cfg.
 
 Signed-off-by: Michael Chang <mchang@suse.com>
 ---
- Makefile.util.def          |  7 +++++++
- util/grub.d/05_crypttab.in | 36 ++++++++++++++++++++++++++++++++++++
- 2 files changed, 43 insertions(+)
+ Makefile.util.def          |    7 ++++++
+ util/grub.d/05_crypttab.in |   50 +++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 57 insertions(+)
  create mode 100644 util/grub.d/05_crypttab.in
 
-diff --git a/Makefile.util.def b/Makefile.util.def
-index 08f681cd8b..5e0ba22f3d 100644
 --- a/Makefile.util.def
 +++ b/Makefile.util.def
-@@ -476,6 +476,13 @@ script = {
-   installdir = grubconf;
+@@ -477,6 +477,13 @@
  };
  
-+script = {
+ script = {
 +  name = '05_crypttab';
 +  common = util/grub.d/05_crypttab.in;
 +  installdir = grubconf;
 +  condition = COND_HOST_LINUX;
 +};
 +
- script = {
++script = {
    name = '10_windows';
    common = util/grub.d/10_windows.in;
-diff --git a/util/grub.d/05_crypttab.in b/util/grub.d/05_crypttab.in
-new file mode 100644
-index 0000000000..c539bc061e
+   installdir = grubconf;
 --- /dev/null
 +++ b/util/grub.d/05_crypttab.in
-@@ -0,0 +1,36 @@
+@@ -0,0 +1,50 @@
 +#! /bin/sh
 +set -e
 +
@@ -71,11 +66,22 @@ index 0000000000..c539bc061e
 +CRYPTTAB=/etc/crypttab
 +
 +if [ -r "$CRYPTTAB" ]; then
-+  awk '/UUID=/ { sub(/UUID=/,"",$2); \
-+                 gsub(/-/,"",$2); \
-+                 printf("crypttab_entry %s %s %s\n",$1,$2,$3) \
-+  }' "$CRYPTTAB"
++  awk '
++      $3 ~ /(^\/dev\/|^\/proc\/|^\/sys\/|:)/ { next }
++      { key[0] = $3 }
++      $3 ~ /(^$|none|-)/ {
++        key[0] = "/etc/cryptsetup-keys.d/" $1 ".key"
++        key[1] = "/run/cryptsetup-keys.d/" $1 ".key"
++      }
++      {
++        for (d in key)
++          if (system("test -f " key[d]) == 0)
++            next
++      }
++      /UUID=/ {
++          sub(/UUID=/,"",$2);
++          gsub(/-/,"",$2);
++          printf("crypttab_entry %s %s %s\n",$1,$2,$3)
++      }
++  ' "$CRYPTTAB"
 +fi
--- 
-2.34.1
-
