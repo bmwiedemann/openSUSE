@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 17 16:56:40 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Updaet to 3.4.0:
+  * Add a new setting suggested controlling retries when TCP connections
+   to shibd are used.
+- Change libraries soname from 10 to 11
+
+-------------------------------------------------------------------
 Wed Dec  1 09:32:43 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 3.3.0:

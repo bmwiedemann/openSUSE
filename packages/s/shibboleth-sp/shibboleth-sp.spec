@@ -1,7 +1,7 @@
 #
 # spec file for package shibboleth-sp
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,13 @@
 #
 
 
-%define libvers 10
-%define libvers_lite 10
+%define libvers 11
+%define libvers_lite 11
 %define runuser shibd
 %define realname shibboleth
 %define pkgdocdir %{_docdir}/%{realname}
 Name:           shibboleth-sp
-Version:        3.3.0
+Version:        3.4.0
 Release:        0
 Summary:        System for attribute-based Web Single Sign On
 License:        Apache-2.0
