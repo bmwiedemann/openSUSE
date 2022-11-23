@@ -27,14 +27,14 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-FontTools%{psuffix}
-Version:        4.37.1
+Version:        4.38.0
 Release:        0
 Summary:        Suite of Tools and Libraries for Manipulating Fonts
 License:        MIT AND OFL-1.1
 Group:          Development/Languages/Python
 URL:            https://github.com/fonttools/fonttools
 # The PyPI archive lacks some test files, but the source is identical to the github archive
-Source:         https://github.com/fonttools/fonttools/archive/refs/tags/%{version}.tar.gz#/fonttools-%{version}-gh.tar.gz
+Source:         https://github.com/fonttools/fonttools/archive/refs/tags/%{version}.tar.gz#/fonttools-%{version}.tar.gz
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Nov 22 06:56:23 UTC 2022 - Marguerite Su <i@marguerite.su>
+
+- Update to 4.38.0
+  * [varLib.instancer] Added support for L4 instancing, i.e. moving the
+    default value of an axis while keeping it variable.
+  * [otlLib/featureVars] Set a few Count values so one doesn't need to
+    compile the font to update them
+  * [varLib.models] Make extrapolation work for 2-master models as well
+    where one master is at the default location
+    Add optional extrapolate=False to normalizeLocation()
+  * [varLib.cff] Fixed sub-optimal packing of CFF2 deltas by no longer
+    rounding them to integer
+  * [scaleUpem] Calculate numShorts in VarData after scale; handle CFF
+    hintmasks
+
+-------------------------------------------------------------------
 Mon Aug 29 16:55:08 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
 
 - Update to 4.37.1

@@ -134,4 +134,12 @@ This version fixes the conflict from the previous version.</comment>
     <comment></comment>
     <requestid>1000146</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>7aa07ae0581e80a5d38425d227119021</srcmd5>
+    <version>4.38.0</version>
+    <time>1669193254</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1037228</requestid>
+  </revision>
 </revisionlist>
