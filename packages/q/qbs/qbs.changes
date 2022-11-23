@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Nov 20 17:33:33 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 1.23.2
+  * Fix installation with cmake
+  * Fixed setting up Qt 6.3 with qbspkgconfig.
+  * Added QtScript module to the source tarballs
+  * Fixed handling empty variables in qbspkgconfig
+  * Added new module Sanitizers.address for simple cross-platform ASan configuration
+  * Fixed building against static Qt 6
+  * A new qbsModuleProviders property was added to Project and Product items which allows
+    to specify which providers will be run (QBS-1604).
+  * Added a new library for reading *.pc files which allows to avoid launching multiple pkg-config
+    processes and also gives QBS more information about dependencies between *.pc files (QBS-1615).
+  * A new qbspkgconfig provider was added which will replace the fallback provider (QBS-1614).
+    This new provider uses the built-in library and is capable of setting Qt libraries as well.
+  * capnproto and protobuf modules can now use runtime provided by the qbspkgconfig provider.
+  * Qbs no longer migrates the "profiles/" dir from earlier Qbs versions (QTCREATORBUG-26475).
+    Old directories might be cleaned up manually.
+  * FileInfo now always uses high-precision timer on all OSes.
+  * Fixed a problem with overriding stringList properties in ModuleProviders from command-line.
+  * Added support for c++23.
+  * Documentation: added a new page with the list of ModuleProviders.
+  * Documentation: Qt provider now has its own page.
+
+-------------------------------------------------------------------
 Thu Sep  9 18:11:12 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 1.20.0

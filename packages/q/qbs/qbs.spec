@@ -1,7 +1,7 @@
 #
 # spec file for package qbs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2018 The Qt Company.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define qt5_version 5.14.0
 Name:           qbs
-Version:        1.20.0
+Version:        1.23.2
 Release:        0
 Summary:        Modern build tool for software projects
 # Legal:

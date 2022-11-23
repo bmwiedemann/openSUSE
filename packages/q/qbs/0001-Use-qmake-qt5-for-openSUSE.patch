@@ -1,25 +1,18 @@
-From 2699d00d9593d746aea0e618b0823830e7feddbd Mon Sep 17 00:00:00 2001
 From: Christophe Giboudeaux <christophe@krop.fr>
 Date: Thu, 29 Apr 2021 09:18:59 +0200
 Subject: [PATCH] Use qmake-qt5 for openSUSE.
 
 ---
- share/qbs/module-providers/Qt/setup-qt.js | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/share/qbs/module-providers/Qt/setup-qt.js b/share/qbs/module-providers/Qt/setup-qt.js
-index a67f79d..4d8b4d5 100644
---- a/share/qbs/module-providers/Qt/setup-qt.js
-+++ b/share/qbs/module-providers/Qt/setup-qt.js
-@@ -60,7 +60,7 @@ function getQmakeFilePaths(qmakeFilePaths, qbs) {
-     var suffix = exeSuffix(qbs);
-     var filePaths = [];
-     for (var i = 0; i < dirs.length; ++i) {
--        var candidate = FileInfo.joinPaths(dirs[i], "qmake" + suffix);
-+        var candidate = FileInfo.joinPaths(dirs[i], "qmake-qt5" + suffix);
-         var canonicalCandidate = FileInfo.canonicalPath(candidate);
-         if (!canonicalCandidate || !File.exists(canonicalCandidate))
-             continue;
--- 
-2.31.1
-
+diff --color -ur qbs-src-1.23.2.orig/share/qbs/module-providers/Qt/setup-qt.js qbs-src-1.23.2/share/qbs/module-providers/Qt/setup-qt.js
+--- qbs-src-1.23.2.orig/share/qbs/module-providers/Qt/setup-qt.js	2022-10-21 12:54:35.000000000 +0200
++++ qbs-src-1.23.2/share/qbs/module-providers/Qt/setup-qt.js	2022-11-20 18:29:35.392814151 +0100
+@@ -60,7 +60,7 @@
+         var dirs = splitNonEmpty(pathValue, FileInfo.pathListSeparator());
+         var suffix = exeSuffix(qbs);
+         for (var i = 0; i < dirs.length; ++i) {
+-            var candidate = FileInfo.joinPaths(dirs[i], "qmake" + suffix);
++            var candidate = FileInfo.joinPaths(dirs[i], "qmake-qt5" + suffix);
+             var canonicalCandidate = FileInfo.canonicalPath(candidate);
+             if (!canonicalCandidate || !File.exists(canonicalCandidate))
+                 continue;
