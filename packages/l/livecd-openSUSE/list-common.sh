@@ -217,6 +217,9 @@ install patterns-base-x11
 installPattern x11
 installPattern sw_management
 
+# checkmedia is used for the 'Check media' entry in grub
+install checkmedia
+
 # For working with filesystems
 install bcache-tools
 install btrfsprogs
