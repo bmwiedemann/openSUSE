@@ -17,7 +17,7 @@ ProtectControlGroups=true
 RestrictRealtime=true
 # end of automatic additions 
 EnvironmentFile=/etc/sysconfig/memcached
-ExecStart=/usr/sbin/memcached -u $MEMCACHED_USER $MEMCACHED_PARAMS
+ExecStart=/usr/bin/memcached -u $MEMCACHED_USER $MEMCACHED_PARAMS
 
 [Install]
 WantedBy=multi-user.target

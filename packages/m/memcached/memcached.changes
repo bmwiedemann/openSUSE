@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct  3 10:30:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- remove sysv init case
+- move memcache binary to %{_bindir} like on Debian and RHEL like
+  distributions
+
+-------------------------------------------------------------------
 Mon Sep  5 13:13:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.17:

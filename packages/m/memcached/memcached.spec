@@ -20,13 +20,11 @@
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
-
 %if 0%{?suse_version} > 1500
 %bcond_without tls
 %else
 %bcond_with    tls
 %endif
-
 Name:           memcached
 Version:        1.6.17
 Release:        0
@@ -35,7 +33,6 @@ License:        BSD-3-Clause
 Group:          Productivity/Networking/Other
 URL:            https://memcached.org/
 Source:         https://www.memcached.org/files/%{name}-%{version}.tar.gz
-Source1:        %{name}.init
 Source2:        %{name}.sysconfig
 Source3:        memcached-rpmlintrc
 Source4:        memcached.service
@@ -46,14 +43,15 @@ BuildRequires:  automake
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  libevent-devel >= 2.0
 BuildRequires:  libtool
+BuildRequires:  pkgconfig
+Requires(pre):  %fillup_prereq
+Conflicts:      memcached-unstable
 %if %{with tls}
 BuildRequires:  openssl-devel >= 1.1.0
 BuildRequires:  perl
 BuildRequires:  perl-IO-Socket-SSL
 BuildRequires:  perl-Net-SSLeay
 %endif
-BuildRequires:  pkgconfig
-Requires(pre):  %fillup_prereq
 %if 0%{?suse_version} >= 1500
 BuildRequires:  sysuser-tools
 %sysusers_requires
@@ -61,7 +59,6 @@ BuildRequires:  sysuser-tools
 Requires(pre):  %{_sbindir}/groupadd
 Requires(pre):  %{_sbindir}/useradd
 %endif
-Conflicts:      memcached-unstable
 %if 0%{?suse_version} > 1210
 BuildRequires:  systemd-rpm-macros
 %{?systemd_ordering}
@@ -101,34 +98,29 @@ autoreconf -fi
   --enable-seccomp \
   --disable-coverage \
   %ifarch s390 s390x ppc ppc64
-  --disable-extstore \
+  --disable-extstore
   %endif
-  --bindir=%{_sbindir}
 
-make %{?_smp_mflags}
+%make_build
 %if 0%{?suse_version} >= 1500
 %sysusers_generate_pre %{SOURCE5} memcached system-user-memcached.conf
 %endif
 
 %install
 %make_install
-install -D  -m 0755 scripts/memcached-tool %{buildroot}%{_sbindir}/memcached-tool
+install -D  -m 0755 scripts/memcached-tool %{buildroot}%{_bindir}/memcached-tool
 install -Dd -m 0751 %{buildroot}%{_localstatedir}/lib/%{name}
 install -D  -m 0644 %{SOURCE2} %{buildroot}%{_fillupdir}/sysconfig.%{name}
-%if  0%{?suse_version} > 1210
+install -d -m 755 %{buildroot}%{_sbindir}
 ln -s  	%{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 install -D  -m 0644 %{SOURCE4} %{buildroot}%{_unitdir}/%{name}.service
-%else
-install -D  -m 0755 %{SOURCE1} %{buildroot}%{_sysconfdir}/init.d/%{name}
-ln -s  ../..%{_sysconfdir}/init.d/%{name} %{buildroot}%{_sbindir}/rc%{name}
-%endif
 %if 0%{?suse_version} >= 1500
 mkdir -p %{buildroot}%{_sysusersdir}
 install -m 0644 %{SOURCE5} %{buildroot}%{_sysusersdir}/
 %endif
 
 %check
-make %{?_smp_mflags} test
+%make_build test
 
 %if 0%{?suse_version} >= 1500
 %pre -f memcached.pre
@@ -141,45 +133,26 @@ getent passwd %{name} >/dev/null || \
 	%{_sbindir}/useradd -g %{name} -s /bin/false -r \
 	-c "user for %{name}" -d %{_localstatedir}/lib/%{name} %{name}
 %endif
-%if 0%{?suse_version} > 1210
 %service_add_pre %{name}.service
-%endif
 
 %post
-%if 0%{?suse_version} > 1210
 %service_add_post %{name}.service
 %fillup_only %{name}
-%else
-%fillup_and_insserv %{name}
-%endif
 
 %preun
-%if 0%{?suse_version} > 1210
 %service_del_preun %{name}.service
-%else
-%stop_on_removal %{name}
-%endif
 
 %postun
-%if 0%{?suse_version} > 1210
 %service_del_postun %{name}.service
-%else
-%restart_on_update %{name}
-%insserv_cleanup
-%endif
 
 %files
 %doc AUTHORS ChangeLog NEWS
 %license COPYING
-%{_sbindir}/%{name}
-%{_sbindir}/memcached-tool
+%{_bindir}/%{name}
+%{_bindir}/memcached-tool
 %{_sbindir}/rc%{name}
 %{_mandir}/man1/%{name}.*
-%if 0%{?suse_version} > 1210
 %{_unitdir}/%{name}.service
-%else
-%{_sysconfdir}/init.d/%{name}
-%endif
 %{_fillupdir}/sysconfig.%{name}
 %dir %attr(751,root,root) %{_localstatedir}/lib/%{name}
 %if 0%{?suse_version} >= 1500
