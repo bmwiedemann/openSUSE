@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 17 16:35:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.51.0:
+  * https://nghttp2.org/blog/2022/11/13/nghttp2-v1-51-0/
+  This release fixes affinity-cookie-stickiness parameter handling.
+
+-------------------------------------------------------------------
 Sat Sep 24 11:21:43 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.50.0:
