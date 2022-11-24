@@ -57,6 +57,7 @@ Requires(pre):  %insserv_prereq
 %endif
 # conflicts with new package influxdb2
 Conflicts:      influxdb2
+ExcludeArch:    %ix86 %arm ppc
 
 %description
 InfluxDB is an distributed time series database with no external dependencies.

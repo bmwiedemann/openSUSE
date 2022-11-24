@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 18 18:15:16 UTC 2022 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Drop 32bit architecures support boo#1205101
+  Currently, 32bit binaries are not usable and influxdb upstream
+  refused to fix it because 32bit architectures are not supported.
+
+-------------------------------------------------------------------
 Tue Oct  4 15:16:34 UTC 2022 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Verison 1.10.0
