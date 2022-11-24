@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Nov 14 15:32:39 UTC 2022 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- add patch [libcaca-autoconf-2.69.patch]
+  * Don't force autoconf to be at version 2.71
+
+-------------------------------------------------------------------
+Mon Nov 14 14:07:25 UTC 2022 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Upgrade to 0.99.beta20
+  * IPv6 support in cacaserver
+  * fixed a bug from 2004 that caused PDF documentation generation to fail
+  * memory allocation functions are now more robust
+  * numerous fixes for memory leaks and invalid memory accesses:
+    * CVE-2021-30498
+    * CVE-2021-30499
+    * CVE-2021-3410
+    * CVE-2018-20546
+    * CVE-2018-20547
+    * CVE-2018-20545
+    * CVE-2018-20548
+    * CVE-2018-20549
+- Dropped upstream fixed patches
+  * libcaca-bsc1182731-prevent-overflow.patch
+  * libcaca-variable-type.patch
+  * Bug1120502-add_cast_to_prevent_overflow.patch 
+
+-------------------------------------------------------------------
 Mon Mar 14 13:36:16 UTC 2022 - Josef Möllers <josef.moellers@suse.com>
 
 - When a zero-width or zero-height image is given, a divide-by-zero

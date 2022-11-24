@@ -1,8 +1,8 @@
 Index: configure.ac
 ===================================================================
---- configure.ac.orig	2010-02-08 14:34:28.000000000 +0200
-+++ configure.ac	2011-01-29 12:09:24.385753017 +0200
-@@ -213,7 +213,7 @@ if test "${enable_x11}" != "no"; then
+--- configure.ac.orig
++++ configure.ac
+@@ -225,7 +225,7 @@ if test "${enable_x11}" != "no"; then
    AC_CHECK_LIB(X11, XOpenDisplay,
     [ac_cv_my_have_x11="yes"
      if test -n "${x_includes}"; then X_CFLAGS="-I${x_includes}"; fi

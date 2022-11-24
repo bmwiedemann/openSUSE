@@ -1,8 +1,8 @@
-Index: libcaca-0.99.beta19/caca/driver/ncurses.c
+Index: libcaca-0.99.beta20/caca/driver/ncurses.c
 ===================================================================
---- libcaca-0.99.beta19.orig/caca/driver/ncurses.c
-+++ libcaca-0.99.beta19/caca/driver/ncurses.c
-@@ -262,11 +262,7 @@ static int ncurses_init_graphics(caca_di
+--- libcaca-0.99.beta20.orig/caca/driver/ncurses.c
++++ libcaca-0.99.beta20/caca/driver/ncurses.c
+@@ -268,11 +268,7 @@ static int ncurses_init_graphics(caca_di
      mouseinterval(-1); /* No click emulation */
  
      /* Set the escape delay to a ridiculously low value */

@@ -16,16 +16,14 @@
 #
 
 
-#
-%define _rev da28e9684ef445ac8d42745644336b8a75c01855
 Name:           libcaca
-Version:        0.99.beta19.git20171003
+Version:        0.99.beta20
 Release:        0
 Summary:        Library for Colour ASCII Art, text mode graphics
 License:        WTFPL
 Group:          Development/Languages/C and C++
 URL:            http://caca.zoy.org
-Source0:        https://github.com/cacalabs/%{name}/archive/%{_rev}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/cacalabs/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 Patch1:         libcaca-0.99-texbuild.patch
 Patch2:         libcaca-X11_test.patch
@@ -34,13 +32,11 @@ Patch5:         libcaca-ruby_vendor_install.patch
 Patch7:         libcaca-0.99.beta16-missing-GLU.patch
 Patch9:         caca-no-build-date.patch
 Patch10:        libcaca-ncurses6.patch
-Patch11:        libcaca-variable-type.patch
-Patch12:        Bug1120502-add_cast_to_prevent_overflow.patch
 Patch13:        Bug1143286_libcaca_configure_ac_chg_for_lto.patch
-Patch14:        libcaca-bsc1182731-prevent-overflow.patch
 Patch99:        bsc1184751-add-space-for-NUL-byte.patch
 # PATCH-FIX-UPSTREAM correctly-handle-zero-width-or-height-images.patch bsc#1197028
 Patch100:       bsc1197028-correctly-handle-zero-width-or-height-images.patch
+Patch101:       libcaca-autoconf-2.69.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  freeglut-devel
@@ -135,7 +131,7 @@ that shows the libcaca rendering features such as line and ellipses
 drawing, triangle filling and sprite blitting.
 
 %prep
-%setup -q -n %{name}-%{_rev}
+%setup -q
 %patch2
 %patch4
 %patch5
@@ -143,12 +139,10 @@ drawing, triangle filling and sprite blitting.
 %patch9
 %patch1
 %patch10 -p1
-%patch11 -p1
-%patch12 -p1
 %patch13 -p1
-%patch14 -p1
 %patch99 -p1
 %patch100 -p1
+%patch101 -p1
 RUBY="ruby-`echo %{rb_ver} | sed 's|\.[^\.]*$||'`"
 find . -type f -exec sed -i "s|ruby-1.9|$RUBY|" \{\} \;
 pushd python
@@ -189,7 +183,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %postun -n libcaca0-plugins -p /sbin/ldconfig
 
 %files -n libcaca0
-%doc AUTHORS ChangeLog NEWS NOTES README THANKS
+%doc AUTHORS NEWS NOTES README THANKS
 %license COPYING
 %{_libdir}/*.so.*
 

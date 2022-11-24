@@ -1,8 +1,8 @@
 Index: doc/doxygen.cfg.in
 ===================================================================
---- doc/doxygen.cfg.in.orig	2010-01-03 04:54:32.000000000 +0200
-+++ doc/doxygen.cfg.in	2010-11-20 07:32:05.000000000 +0200
-@@ -1663,7 +1663,7 @@
+--- doc/doxygen.cfg.in.orig
++++ doc/doxygen.cfg.in
+@@ -1891,7 +1891,7 @@ USE_PDFLATEX           = YES
  # The default value is: NO.
  # This tag requires that the tag GENERATE_LATEX is set to YES.
  

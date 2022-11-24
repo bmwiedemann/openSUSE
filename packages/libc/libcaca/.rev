@@ -389,4 +389,31 @@ SPDX format (choose from http://www.spdx.org/licenses or the list linked at lice
     <comment></comment>
     <requestid>973093</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>a7ef5fff8f494d77741938e6f9b87a3d</srcmd5>
+    <version>0.99.beta20</version>
+    <time>1669288922</time>
+    <user>dimstar_suse</user>
+    <comment>- add patch [libcaca-autoconf-2.69.patch]
+  * Don't force autoconf to be at version 2.71
+
+- Upgrade to 0.99.beta20
+  * IPv6 support in cacaserver
+  * fixed a bug from 2004 that caused PDF documentation generation to fail
+  * memory allocation functions are now more robust
+  * numerous fixes for memory leaks and invalid memory accesses:
+    * CVE-2021-30498
+    * CVE-2021-30499
+    * CVE-2021-3410
+    * CVE-2018-20546
+    * CVE-2018-20547
+    * CVE-2018-20545
+    * CVE-2018-20548
+    * CVE-2018-20549
+- Dropped upstream fixed patches
+  * libcaca-bsc1182731-prevent-overflow.patch
+  * libcaca-variable-type.patch
+  * Bug1120502-add_cast_to_prevent_overflow.patch</comment>
+    <requestid>1036244</requestid>
+  </revision>
 </revisionlist>

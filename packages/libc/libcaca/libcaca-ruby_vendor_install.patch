@@ -2,7 +2,7 @@ Index: configure.ac
 ===================================================================
 --- configure.ac.orig
 +++ configure.ac
-@@ -475,14 +475,17 @@ ac_cv_my_have_ruby_minitest="no"
+@@ -489,14 +489,17 @@ ac_cv_my_have_ruby_minitest="no"
  if test "${enable_ruby}" != "no"; then
    AC_PATH_PROG(RUBY, ruby, no)
    if test "${RUBY}" != "no"; then
