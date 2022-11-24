@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 23 07:14:31 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.9.1:
+  * Revert "update init container logs (#3127)" (#3239) (#3243)
+
+-------------------------------------------------------------------
 Tue Nov 15 09:25:11 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 2.9.0:
