@@ -1,4 +1,101 @@
 -------------------------------------------------------------------
+Mon Nov 21 19:58:10 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.14.3
+  * This release fixes a bug related to spatial indexing of
+    spatialpandas.GeoDataFrames, and introduces enhancements to
+    antialiased lines, benchmarking and GPU support.
+  ## Enhancements:
+  * Improvements to antialiased lines:
+    - Fit antialiased line code within usual numba/dask framework
+      (#1142)
+    - Refactor stage 2 aggregation for antialiased lines (#1145)
+    - Support compound reductions for antialiased lines on the CPU
+      (#1146)
+  * New benchmark framework:
+    - Add benchmarking framework using asv (#1120)
+    - Add cudf, dask and dask-cudf Canvas.line benchmarks (#1140)
+  * Improvements to GPU support:
+    - Cupy implementation of eq_hist (#1129)
+  * Improvements to dependency management (#1111, #1116)
+  * Improvements to CI (#1132, #1135, #1136, #1137, #1143)
+  ## Bug fixes:
+  * Ensure spatial index _sindex is retained on dataframe copy
+    (#1122)
+- Version 0.14.2
+  * This is a bug fix release to fix an important divide by zero
+    bug in antialiased lines, along with improvements to
+    documentation and handling of dependencies.
+  ## Enhancements:
+  * Improvements to handling of dependencies:
+    - Correct dask and bokeh dependencies (#1104)
+    - Add requests as an install dependency (#1105)
+    - Better handle returned dask npartitions in tests (#1107)
+  ## Bug fixes:
+  * Fix antialiased line divide by zero bug (#1099)
+- Version 0.14.1
+  * This release provides a number of important bug fixes and small
+    enhancements from Ian Thomas along with infrastructure
+    improvements from Maxime Liquet and new reductions from
+    @tselea.
+  ## Enhancements:
+  * Improvements to antialiased lines:
+    - Support antialiased lines for categorical aggregates (#1081,
+      #1083)
+    - Correctly handle NaNs in antialiased line coordinates (#1097)
+  * Improvements to rescale_discrete_levels for how='eq_hist':
+    * Correct implementation of rescale_discrete_levels (#1078)
+    * Check before calling rescale_discrete_levels (#1085)
+    * Remove empty histogram bins in eq_hist (#1094)
+  * Implementation of first and last reduction (#1093) for data
+    types other than raster.
+  ## Bug fixes:
+  * Do not snap trimesh vertices to pixel grid (#1092)
+  * Correctly orient (y, x) arrays for xarray (#1095)
+  * Infrastructure/build fixes (#1080, #1089, #1096)
+- Version 0.14.0
+  * This release has been nearly a year in the making, with major
+    new contributions from Ian Thomas, Thuy Do Thi Minh, Simon
+    Høxbro Hansen, Maxime Liquet, and James Bednar, and additional
+    support from Andrii Oriekhov, Philipp Rudiger, and Ajay Thorve.
+  ## Enhancements:
+  * Full support for antialiased lines of specified width (#1048,
+    #1072). Previous antialiasing support was limited to
+    single-pixel lines and certain floating-point reduction
+    functions. Now supports arbitrary widths and arbitrary
+    reduction functions, making antialiasing fully supported.
+    Performance ranges from 1.3x to 14x slower than the simplest
+    zero-width implementation; see benchmarks.
+  * Fixed an issue with visibility on zoomed-in points plots and on
+    overlapping line plots that was first reported in 2017, with a
+    new option rescale_discrete_levels for how='eq_hist' (#1055)
+  * Added a categorical color_key for 2D (unstacked) aggregates
+    (#1020), for producing plots where each pixel has at most one
+    category value
+  ## Bugfixes:
+  * Fixed details of the raster coordinate calculations to match
+    other primitives, making it simpler to overlay separately
+    rendered results (#959, #1046)
+  * Various fixes and extensions for cupy/CUDA, e.g. to use cuda
+    for category_binning, spread, and dynspread, including
+    cupy.interp where appropriate (#1015, #1016, #1044, #1050,
+    #1060)
+  * Infrastructure/build/ecosystem fixes (#1022, #1025, #1027,
+    #1036, #1045, #1049, #1050, #1057, #1061, #1062, #1063, #1064)
+  ## Compatibility:
+  * Canvas.line() option antialias=True is now deprecated; use
+    line_width=1 (or another nonzero value) instead. (#1048)
+  * Removed long-deprecated bokeh_ext.py (#1059)
+  * Dropped support for Python 2.7 (actually already dropped from
+    the tests in Datashader 0.12) and 3.6 (no longer supported by
+    many downstream libraries like rioxarray, but several of them
+    are not properly declaring that restriction, making 3.6 much
+    more difficult to support.) (#1033)
+- Drop upstreamed fixes
+  * datashader-pr1022-RaggedTests.patch
+  * datashader-pr1025-testfixes.patch
+
+-------------------------------------------------------------------
 Tue Apr 26 08:11:03 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Remove skip_python310, it is not needed anymore.
