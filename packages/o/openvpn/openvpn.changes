@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Nov 18 21:40:05 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5.8:
+  * allow running a default configuration with TLS libraries without BF-CBC
+    (even if TLS cipher negotiation would not actually use BF-CBC, the
+    long-term compatibility "default cipher BF-CBC" would trigger an error
+    on such TLS libraries)
+  * ``--auth-nocache'' was not always correctly clearing username+password
+    after a renegotiation
+  * ensure that auth-token received from server is cleared if requested
+    by the management interface ("forget password" or automatically
+    via ``--management-forget-disconnect'')
+  * in a setup without username+password, but with auth-token and
+    auth-token-username pushed by the server, OpenVPN would start asking
+    for username+password on token expiry.  Fix.
+  * using ``--auth-token`` together with ``--management-client-auth``
+    (on the server) would lead to TLS keys getting out of sync and client
+    being disconnected.  Fix.
+  * management interface would sometimes get stuck if client and server
+    try to write something simultaneously.  Fix by allowing a limited
+    level of recursion in virtual_output_callback()
+  * fix management interface not returning ERROR:/SUCCESS: response
+    on "signal SIGxxx" commands when in HOLD state
+  * tls-crypt-v2: abort connection if client-key is too short
+  * make man page agree with actual code on replay-window backtrag log message
+  * remove useless empty line from CR_RESPONSE message
+
+-------------------------------------------------------------------
 Mon Sep 12 15:31:52 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - build with enable-iproute2 again to have root-less mode working (bsc#1202792) 

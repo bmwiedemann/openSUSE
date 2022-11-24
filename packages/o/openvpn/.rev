@@ -883,4 +883,12 @@ behaviour fixing bsc#941569</comment>
     <comment></comment>
     <requestid>1004129</requestid>
   </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>5d61ee80c554b43c5d4ae229f398677b</srcmd5>
+    <version>2.5.8</version>
+    <time>1669288940</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1037543</requestid>
+  </revision>
 </revisionlist>
