@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Nov 22 17:20:53 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.0.4
+  * This update is a maintanaince release with no new features and
+    mainly behind the scenes updates
+  * Limit versions of bokeh, Jinja, and importlib-metadata to fix
+    build error. This is only necessary for python 3.6 it seems.
+  * Updated required versions of pytest and coverage
+  * Update setup.py (#135)
+  * Update options.py (#133)
+  * Change ChromeDriver link to avoid deprecated site (#134)
+  * Added test case and fix from PR #127
+  * Eliminate a number of deprecation warnings
+- Use python dependency generator
+  * Adjust requirements.txt accordingly, unpin where needed
+
+-------------------------------------------------------------------
 Fri Feb 12 15:46:27 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.0.3

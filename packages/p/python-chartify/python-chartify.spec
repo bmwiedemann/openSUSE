@@ -1,7 +1,7 @@
 #
 # spec file for package python-chartify
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
-# NEP29: TW does not have python36-scipy anymore
-%define         skip_python36 1
 Name:           python-chartify
-Version:        3.0.3
+Version:        3.0.4
 Release:        0
 Summary:        Python library for plotting charts
 License:        Apache-2.0
@@ -30,25 +27,20 @@ Source:         https://github.com/spotify/chartify/archive/%{version}.tar.gz#/c
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Pillow >= 6.2.0
-Requires:       python-bokeh >= 2.0.0
-Requires:       python-ipykernel >= 5.0
-Requires:       python-ipython >= 7.0
-Requires:       python-pandas >= 1.0.0
-Requires:       python-scipy >= 1.0.0
-# ignoring https://github.com/SeleniumHQ/selenium/issues/5296
-Requires:       python-selenium >= 3.7.0
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Pillow >= 6.2.0}
-BuildRequires:  %{python_module bokeh >= 2.0.0}
+BuildRequires:  %{python_module Jinja2}
+BuildRequires:  %{python_module Pillow >= 8.4.0}
+BuildRequires:  %{python_module bokeh >= 2.0.0 with %python-bokeh < 2.5}
 BuildRequires:  %{python_module ipykernel >= 5.0}
 BuildRequires:  %{python_module ipython >= 7.0}
-BuildRequires:  %{python_module pandas >= 1.0.0}
+BuildRequires:  %{python_module pandas >= 1.0.0 with %python-pandas < 2}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module scipy >= 1.0.0}
+BuildRequires:  %{python_module scipy >= 1.0.0 with %python-scipy < 2}
+# ignoring https://github.com/SeleniumHQ/selenium/issues/5296
 BuildRequires:  %{python_module selenium >= 3.7.0}
 # /SECTION
+%{?python_enable_dependency_generator}
 %python_subpackages
 
 %description
@@ -57,6 +49,16 @@ Chartify is a Python library for creating charts.
 %prep
 %setup -q -n chartify-%{version}
 rm tox.ini
+# raise bokeh upper limit,
+# unpin selenium (see comment above)
+# unpin Jinja2 (see release notes), but keep a pinning char for the check in setup.py
+# pandas: https://github.com/spotify/chartify/pull/143
+sed -i \
+  -e '/bokeh/ s/,<2.3.0/,<2.5/' \
+  -e '/selenium/ s/,<=3.8.0//' \
+  -e '/Jinja2/ s/<3.1.0/>1/' \
+  -e '/pandas/ s/0<2.0.0/0,<2.0.0/' \
+  requirements.txt
 
 %build
 %python_build
@@ -71,6 +73,7 @@ rm tox.ini
 %files %{python_files}
 %doc AUTHORS.rst README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/chartify
+%{python_sitelib}/chartify-%{version}*-info
 
 %changelog
