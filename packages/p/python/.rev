@@ -2762,4 +2762,13 @@ However, upstream development now focuses on 3.x series.
 </comment>
     <requestid>1035107</requestid>
   </revision>
+  <revision rev="175" vrev="26">
+    <srcmd5>0c62ba3467eda5b32219f36a2edecca3</srcmd5>
+    <version>2.7.18</version>
+    <time>1669288925</time>
+    <user>dimstar_suse</user>
+    <comment>- Restore python-2.7.9-sles-disable-verification-by-default.patch
+  for SLE-12.</comment>
+    <requestid>1037419</requestid>
+  </revision>
 </revisionlist>

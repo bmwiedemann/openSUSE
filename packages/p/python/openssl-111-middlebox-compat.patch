@@ -8,12 +8,12 @@ Signed-off-by: Dimitri John Ledkov <xnox@ubuntu.com>
 
 https://bugs.python.org/issue34834
 ---
- Lib/test/test_ssl.py | 5 +++++
- 1 file changed, 5 insertions(+)
+ Lib/test/test_ssl.py |    8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
 
 --- a/Lib/test/test_ssl.py
 +++ b/Lib/test/test_ssl.py
-@@ -807,8 +807,12 @@ class ContextTests(unittest.TestCase):
+@@ -838,8 +838,12 @@ class ContextTests(unittest.TestCase):
          default = (ssl.OP_ALL | ssl.OP_NO_SSLv2 | ssl.OP_NO_SSLv3)
          # SSLContext also enables these by default
          default |= (OP_NO_COMPRESSION | OP_CIPHER_SERVER_PREFERENCE |

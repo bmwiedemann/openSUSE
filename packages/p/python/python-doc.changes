@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 22 20:55:13 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Restore python-2.7.9-sles-disable-verification-by-default.patch
+  for SLE-12.
+
+-------------------------------------------------------------------
 Wed Nov  9 18:31:23 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Add CVE-2022-45061-DoS-by-IDNA-decode.patch to avoid

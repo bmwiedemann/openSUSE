@@ -1,0 +1,25 @@
+---
+ Lib/ssl.py |   12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+
+--- a/Lib/ssl.py
++++ b/Lib/ssl.py
+@@ -497,7 +497,17 @@ def _get_https_context_factory():
+             return _create_unverified_context
+     return create_default_context
+ 
+-_create_default_https_context = _get_https_context_factory()
++try:
++    # load the TLS checks policy from separate package
++    import sle_tls_checks_policy as policy
++    if policy.get_policy:
++        _create_default_https_context = policy.get_policy()
++    else:
++        # empty policy file means simply enable strict verification
++        _create_default_https_context = _get_https_context_factory()
++except ImportError:
++    # policy not present, disable verification for backwards compatibility
++    _create_default_https_context = _create_unverified_context
+ 
+ # PEP 493: "private" API to configure HTTPS defaults without monkeypatching
+ def _https_verify_certificates(enable=True):

@@ -1,3 +1,9 @@
+---
+ Python/sysmodule.c |   26 +++++++++++++++++++-------
+ configure.ac       |    2 +-
+ pyconfig.h.in      |    3 +++
+ 3 files changed, 23 insertions(+), 8 deletions(-)
+
 --- a/Python/sysmodule.c
 +++ b/Python/sysmodule.c
 @@ -1638,7 +1638,20 @@ PySys_SetArgvEx(int argc, char **argv, i
@@ -28,7 +34,7 @@
          }
 -#endif /* HAVE_READLINK */
 +#endif /* resolve method selection */
-+        
++
  #if SEP == '\\' /* Special case for MS filename syntax */
          if (argc > 0 && argv0 != NULL && strcmp(argv0, "-c") != 0) {
              char *q;
@@ -54,6 +60,17 @@
          if (PyList_Insert(path, 0, a) < 0)
              Py_FatalError("sys.path.insert(0) failed");
          Py_DECREF(a);
+--- a/configure.ac
++++ b/configure.ac
+@@ -3165,7 +3165,7 @@ AC_CHECK_FUNCS(alarm setitimer getitimer
+  getpriority getresuid getresgid getpwent getspnam getspent getsid getwd \
+  initgroups kill killpg lchown lstat mkfifo mknod mktime mmap \
+  mremap nice pathconf pause plock poll pthread_init \
+- putenv readlink realpath \
++ putenv readlink realpath canonicalize_file_name \
+  select sem_open sem_timedwait sem_getvalue sem_unlink setegid seteuid \
+  setgid \
+  setlocale setregid setreuid setsid setpgid setpgrp setuid setvbuf snprintf \
 --- a/pyconfig.h.in
 +++ b/pyconfig.h.in
 @@ -109,6 +109,9 @@
@@ -66,14 +83,3 @@
  /* Define to 1 if you have the `chown' function. */
  #undef HAVE_CHOWN
  
---- a/configure.ac
-+++ b/configure.ac
-@@ -3159,7 +3159,7 @@ AC_CHECK_FUNCS(alarm setitimer getitimer
-  getpriority getresuid getresgid getpwent getspnam getspent getsid getwd \
-  initgroups kill killpg lchown lstat mkfifo mknod mktime mmap \
-  mremap nice pathconf pause plock poll pthread_init \
-- putenv readlink realpath \
-+ putenv readlink realpath canonicalize_file_name \
-  select sem_open sem_timedwait sem_getvalue sem_unlink setegid seteuid \
-  setgid \
-  setlocale setregid setreuid setsid setpgid setpgrp setuid setvbuf snprintf \

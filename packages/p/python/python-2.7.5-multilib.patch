@@ -1,47 +1,21 @@
---- a/configure.ac
-+++ b/configure.ac
-@@ -773,6 +773,41 @@ SunOS*)
-     ;;
- esac
- 
-+AC_SUBST(ARCH)
-+AC_MSG_CHECKING(ARCH)
-+ARCH=`uname -m`
-+case $ARCH in
-+i?86) ARCH=i386;;
-+esac
-+AC_MSG_RESULT($ARCH)
-+
-+AC_SUBST(LIB)
-+AC_MSG_CHECKING(LIB)
-+case $ac_sys_system in
-+Linux*)
-+  # Test if the compiler is 64bit
-+  echo 'int i;' > conftest.$ac_ext
-+  python_cv_cc_64bit_output=no
-+  if AC_TRY_EVAL(ac_compile); then
-+    case `/usr/bin/file conftest.$ac_objext` in
-+    *"ELF 64"*)
-+      python_cv_cc_64bit_output=yes
-+      ;;
-+    esac
-+  fi
-+  rm -rf conftest*
-+  ;;
-+esac
-+
-+case $ARCH:$python_cv_cc_64bit_output in
-+aarch64:yes | ppc64:yes | ppc64le:yes | powerpc64:yes | s390x:yes | sparc64:yes | x86_64:yes)
-+  LIB="lib64"
-+  ;;
-+*:*)
-+  LIB="lib"
-+  ;;
-+esac
-+AC_MSG_RESULT($LIB)
- 
- AC_SUBST(LIBRARY)
- AC_MSG_CHECKING(LIBRARY)
+---
+ Include/pythonrun.h              |    2 +
+ Lib/distutils/command/install.py |    4 ++-
+ Lib/distutils/sysconfig.py       |    7 ++++--
+ Lib/pydoc.py                     |    2 -
+ Lib/site.py                      |   40 +++++++++++++++++++++++++++------------
+ Lib/sysconfig.py                 |   12 +++++------
+ Lib/test/test_dl.py              |    5 ++--
+ Lib/test/test_site.py            |   16 +++++++++++----
+ Lib/trace.py                     |    4 +--
+ Makefile.pre.in                  |    5 +++-
+ Modules/getpath.c                |    4 ++-
+ Python/getplatform.c             |   20 +++++++++++++++++++
+ Python/sysmodule.c               |    4 +++
+ configure.ac                     |   35 ++++++++++++++++++++++++++++++++++
+ setup.py                         |   15 ++++++--------
+ 15 files changed, 135 insertions(+), 40 deletions(-)
+
 --- a/Include/pythonrun.h
 +++ b/Include/pythonrun.h
 @@ -108,6 +108,8 @@ PyAPI_FUNC(char *) Py_GetPath(void);
@@ -75,7 +49,7 @@
          'data'   : '$base',
 --- a/Lib/distutils/sysconfig.py
 +++ b/Lib/distutils/sysconfig.py
-@@ -119,8 +119,11 @@ def get_python_lib(plat_specific=0, stan
+@@ -129,8 +129,11 @@ def get_python_lib(plat_specific=0, stan
          prefix = plat_specific and EXEC_PREFIX or PREFIX
  
      if os.name == "posix":
@@ -368,9 +342,53 @@
      SET_SYS_FROM_STRING("executable",
                          PyString_FromString(Py_GetProgramFullPath()));
      SET_SYS_FROM_STRING("prefix",
+--- a/configure.ac
++++ b/configure.ac
+@@ -773,6 +773,41 @@ SunOS*)
+     ;;
+ esac
+ 
++AC_SUBST(ARCH)
++AC_MSG_CHECKING(ARCH)
++ARCH=`uname -m`
++case $ARCH in
++i?86) ARCH=i386;;
++esac
++AC_MSG_RESULT($ARCH)
++
++AC_SUBST(LIB)
++AC_MSG_CHECKING(LIB)
++case $ac_sys_system in
++Linux*)
++  # Test if the compiler is 64bit
++  echo 'int i;' > conftest.$ac_ext
++  python_cv_cc_64bit_output=no
++  if AC_TRY_EVAL(ac_compile); then
++    case `/usr/bin/file conftest.$ac_objext` in
++    *"ELF 64"*)
++      python_cv_cc_64bit_output=yes
++      ;;
++    esac
++  fi
++  rm -rf conftest*
++  ;;
++esac
++
++case $ARCH:$python_cv_cc_64bit_output in
++aarch64:yes | ppc64:yes | ppc64le:yes | powerpc64:yes | s390x:yes | sparc64:yes | x86_64:yes)
++  LIB="lib64"
++  ;;
++*:*)
++  LIB="lib"
++  ;;
++esac
++AC_MSG_RESULT($LIB)
+ 
+ AC_SUBST(LIBRARY)
+ AC_MSG_CHECKING(LIBRARY)
 --- a/setup.py
 +++ b/setup.py
-@@ -456,7 +456,7 @@ class PyBuildExt(build_ext):
+@@ -502,7 +502,7 @@ class PyBuildExt(build_ext):
      def detect_modules(self):
          # Ensure that /usr/local is always used
          if not cross_compiling:
@@ -379,7 +397,7 @@
              add_dir_to_list(self.compiler.include_dirs, '/usr/local/include')
          if cross_compiling:
              self.add_gcc_paths()
-@@ -782,11 +782,11 @@ class PyBuildExt(build_ext):
+@@ -828,11 +828,11 @@ class PyBuildExt(build_ext):
              elif curses_library:
                  readline_libs.append(curses_library)
              elif self.compiler.find_library_file(lib_dirs +
@@ -393,7 +411,7 @@
                                     extra_link_args=readline_extra_link_args,
                                     libraries=readline_libs) )
          else:
-@@ -1933,18 +1933,17 @@ class PyBuildExt(build_ext):
+@@ -1979,18 +1979,17 @@ class PyBuildExt(build_ext):
          # Check for various platform-specific directories
          if host_platform == 'sunos5':
              include_dirs.append('/usr/openwin/include')

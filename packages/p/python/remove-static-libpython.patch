@@ -1,3 +1,7 @@
+---
+ Makefile.pre.in |   26 +-------------------------
+ 1 file changed, 1 insertion(+), 25 deletions(-)
+
 --- a/Makefile.pre.in
 +++ b/Makefile.pre.in
 @@ -488,7 +488,7 @@ coverage-report: regen-grammar
@@ -28,7 +32,7 @@
  libpython$(VERSION).so: $(LIBRARY_OBJS)
  	if test $(INSTSONAME) != $(LDLIBRARY); then \
  		$(BLDSHARED) -Wl,-h$(INSTSONAME) -o $(INSTSONAME) $(LIBRARY_OBJS) $(MODLIBS) $(SHLIBS) $(LIBC) $(LIBM) $(LDLAST); \
-@@ -1220,18 +1208,6 @@ libainstall:	@DEF_MAKE_RULE@ python-conf
+@@ -1226,18 +1214,6 @@ libainstall:	@DEF_MAKE_RULE@ python-conf
  		else	true; \
  		fi; \
  	done

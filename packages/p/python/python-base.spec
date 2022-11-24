@@ -58,6 +58,8 @@ Patch22:        python-2.7-libffi-aarch64.patch
 Patch24:        python-bsddb6.patch
 # PATCH-FIX-UPSTREAM accept directory-based CA paths as well
 Patch33:        python-2.7.9-ssl_ca_path.patch
+# PATCH-FEATURE-SLE disable SSL verification-by-default in http clients
+Patch34:        python-2.7.9-sles-disable-verification-by-default.patch
 # PATCH-FIX-UPSTREAM do not use non-ASCII filename in test_ssl.py
 Patch35:        do-not-use-non-ascii-in-test_ssl.patch
 # PATCH-FIX-UPSTREAM bmwiedemann@suse.de -- allow python packages to build reproducibly
@@ -243,6 +245,9 @@ other applications.
 %patch22 -p1
 %patch24 -p1
 %patch33 -p1
+%if %{suse_version} < 1500 && !0%{?is_opensuse}
+%patch34 -p1
+%endif
 %patch35 -p1
 %patch38 -p1
 %ifarch ppc ppc64 ppc64le
