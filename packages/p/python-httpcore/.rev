@@ -68,4 +68,14 @@
     <comment></comment>
     <requestid>990437</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>d14b8718d0bcc29f5d3bad43fb4d5d6e</srcmd5>
+    <version>0.15.0</version>
+    <time>1669288954</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip failing test_request_with_content test
+  (gh#encode/httpcore#622).
+</comment>
+    <requestid>1037634</requestid>
+  </revision>
 </revisionlist>

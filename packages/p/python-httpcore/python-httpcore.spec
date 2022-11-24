@@ -78,8 +78,9 @@ Python minimal low-level HTTP client.
 # test_no_retries and test_retries are very slow and fails
 # tests/async_tests + tests/sync_tests causes open file limit
 # socks5 -- we don't ship socksio
+# gh#encode/httpcore#622 - test_request_with_content
 %if %{with test}
-%pytest -rs -k 'not (test_interfaces or test_no_retries or test_retries or test_threadsafe_basic or socks5)' --asyncio-mode=strict
+%pytest -rs -k 'not (test_interfaces or test_no_retries or test_retries or test_threadsafe_basic or test_request_with_content or socks5)' --asyncio-mode=strict
 %endif
 
 %if !%{with test}
