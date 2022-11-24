@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov 21 03:06:13 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.73
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  2.73      2022-11-20 07:23:46 -0700
+    - Fix Extract::ArchiveZip test when ALIEN_DOWNLOAD_RULE set to
+      digest_or_encrypt (gh#382)
+
+-------------------------------------------------------------------
 Thu Oct 27 03:06:10 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.72
