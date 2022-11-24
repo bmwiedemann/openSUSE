@@ -1,7 +1,7 @@
 #
 # spec file for package asl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           asl
-Version:        1.42_bld173
+Version:        1.42_bld232
 Release:        0
 Summary:        Macro Assembler AS
 License:        GPL-2.0-only OR GPL-3.0-only
