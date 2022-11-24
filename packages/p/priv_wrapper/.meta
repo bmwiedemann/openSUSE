@@ -1,0 +1,20 @@
+<package name="priv_wrapper" project="openSUSE:Factory">
+  <title>A library to disable resource limits and other privilege dropping</title>
+  <description>priv_wrapper aims to help running processes which are dropping privileges or are
+restricting resources in test environments.
+It can disable chroot, prctl, pledge and setrlmit system calls. A disabled call always
+succeeds (i.e. returns 0) and does nothing.
+The system call pledge exists only on OpenBSD.
+
+To use it, set the following environment variables:
+
+LD_PRELOAD=libpriv_wrapper.so
+PRIV_WRAPPER_CHROOT_DISABLE=1
+
+This package does not have a devel package, because this project is for
+development/testing.
+
+</description>
+  <devel project="devel:tools" package="priv_wrapper"/>
+  <url>https://cwrap.org/</url>
+</package>
