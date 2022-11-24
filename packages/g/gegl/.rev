@@ -547,4 +547,23 @@
     <comment>New upstream release</comment>
     <requestid>990518</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>216f4a3b98efba1a213d505c71f41792</srcmd5>
+    <version>0.4.40</version>
+    <time>1669288942</time>
+    <user>dimstar_suse</user>
+    <comment>- luajit was disabled for riscv64 ppc64 ppc64le, patch it here
+  accordingly (boo#1205102)
+
+- Update to version 0.4.40:
+  + Operations:
+    - newsprint: do not drop alpha channel in RGB modes.
+  + Core:
+    - fixes for legacy build, still supporting building latest GEGL
+      for stable GIMP with old babl (not recommended if distros can
+      have recent enough meson).
+    - avoiding possible multi thread race in babl garbage
+      collection,</comment>
+    <requestid>1037559</requestid>
+  </revision>
 </revisionlist>

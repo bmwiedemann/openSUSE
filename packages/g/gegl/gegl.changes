@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Nov 23 11:13:07 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- luajit was disabled for riscv64 ppc64 ppc64le, patch it here
+  accordingly (boo#1205102)
+
+-------------------------------------------------------------------
+Tue Nov 22 23:23:08 UTC 2022 - Petr Vorel <pvorel@suse.cz>
+
+- Update to version 0.4.40:
+  + Operations:
+    - newsprint: do not drop alpha channel in RGB modes.
+  + Core:
+    - fixes for legacy build, still supporting building latest GEGL
+      for stable GIMP with old babl (not recommended if distros can
+      have recent enough meson).
+    - avoiding possible multi thread race in babl garbage
+      collection,
+
+-------------------------------------------------------------------
 Thu Jul 21 09:23:21 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update BuildRequires to reflect it now does work with ffmpeg5.

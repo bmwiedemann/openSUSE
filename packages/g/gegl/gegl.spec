@@ -16,12 +16,17 @@
 #
 
 
+# This is based on the ExcludeArch in https://build.opensuse.org/package/show/openSUSE:Factory/luajit
+%ifarch riscv64 ppc64 ppc64le
+%bcond_with    luajit
+%else
 %bcond_without luajit
+%endif
 
 %bcond_with gegl_docs
 
 Name:           gegl
-Version:        0.4.38
+Version:        0.4.40
 Release:        0
 Summary:        Generic Graphics Library
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
