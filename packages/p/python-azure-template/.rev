@@ -178,4 +178,17 @@
     CHANGELOG.md file provided with this package (forwarded request 998809 from glaubitz)</comment>
     <requestid>998875</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>3db3685952659abb7935b1aea7954d47</srcmd5>
+    <version>0.1.0b2006793</version>
+    <time>1669289010</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.1.0b2006793
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Switch source archive format to TAR.GZ
+- Drop unzip from BuildRequires (forwarded request 1037476 from glaubitz)</comment>
+    <requestid>1037569</requestid>
+  </revision>
 </revisionlist>
