@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package lua-luarocks
 #
 # Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2012 Togan Muftuoglu toganm@opensuse.org
@@ -20,12 +20,6 @@
 %define flavor @BUILD_FLAVOR@%{nil}
 %define mod_name luarocks
 %define lua_value  %(echo "%{flavor}" |sed -e 's:lua::')
-%if "%{flavor}" == ""
-Name:           lua-%{mod_name}
-ExclusiveArch:  do_not_build
-%else
-Name:           %{flavor}-%{mod_name}
-%endif
 Version:        3.9.1
 Release:        0
 Summary:        A deployment and management system for Lua modules
@@ -36,6 +30,7 @@ Source0:        https://luarocks.org/releases/%{mod_name}-%{version}.tar.gz
 Patch0:         lib64.patch
 BuildRequires:  %{flavor}-devel
 BuildRequires:  curl
+BuildRequires:  lua-macros
 BuildRequires:  openssl
 BuildRequires:  unzip
 Requires:       %{flavor}
@@ -43,10 +38,16 @@ Requires:       curl
 Requires:       openssl
 Requires:       unzip
 Requires:       zip
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %lua_provides
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
+%if "%{flavor}" == ""
+Name:           lua-%{mod_name}
+ExclusiveArch:  do_not_build
+%else
+Name:           %{flavor}-%{mod_name}
+%endif
 
 %description
 LuaRocks allows you to install Lua modules as self-contained packages
