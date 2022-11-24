@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 22 23:14:15 UTC 2022 - Petr Vorel <pvorel@suse.cz>
+
+- update to 0.1.98:
+  * More robust bounds protection in ICC handling, avoid garbage collecting
+    lookup tables in-line with processing.
+
+-------------------------------------------------------------------
 Mon Aug 29 12:13:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.1.96:
