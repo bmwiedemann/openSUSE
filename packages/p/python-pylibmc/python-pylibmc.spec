@@ -1,7 +1,7 @@
 #
 # spec file for package python-pylibmc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,14 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pylibmc
-Version:        1.6.1
+Version:        1.6.3
 Release:        0
 Summary:        memcached client for Python
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/lericson/pylibmc
 Source:         https://files.pythonhosted.org/packages/source/p/pylibmc/pylibmc-%{version}.tar.gz
-# https://github.com/lericson/pylibmc/pull/263
-Patch0:         python-pylibmc-remove-nose.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -47,7 +44,6 @@ binary memcached protocol.
 
 %prep
 %setup -q -n pylibmc-%{version}
-%patch0 -p1
 
 %build
 export CFLAGS="%{optflags}"
@@ -58,14 +54,23 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%{_sbindir}/memcached &
+if [ -f %{_sbindir}/memcached ]; then
+  %{_sbindir}/memcached &
+elif [ -f %{_bindir}/memcached ]; then
+  %{_bindir}/memcached &
+else
+  echo "Failed to start memcached - tests can't pass"
+  exit 1
+fi
 pid=$!
-%pytest_arch -k 'not testBigGetMulti'
+%pytest_arch
 kill $pid
 
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitearch}/*
+%{python_sitearch}/pylibmc
+%{python_sitearch}/_pylibmc*.so
+%{python_sitearch}/pylibmc-%{version}*-info
 
 %changelog

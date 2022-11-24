@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Nov 22 15:19:48 UTC 2022 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.6.3
+  * Fix logger.warn() deprecation warnings
+  * Modernize tests and test harness
+  * Python 3.10 support
+- Remove python-pylibmc-remove-nose.patch
+
+-------------------------------------------------------------------
+Fri Nov 18 14:59:02 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Cope with memcached moving from sbindir to bindir and safeguard
+  against non-existing memcached binary: it if can't be started,
+  there is no reason to even attempt to run the test suite.
+
+-------------------------------------------------------------------
 Fri Dec 10 03:36:04 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Skip testGetMulti due to memcached throwing some errors. 

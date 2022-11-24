@@ -71,4 +71,12 @@
     <comment>- Skip testGetMulti due to memcached throwing some errors.</comment>
     <requestid>938978</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3953ff421cbfb58dad59a3302b84193a</srcmd5>
+    <version>1.6.3</version>
+    <time>1669288932</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1037468</requestid>
+  </revision>
 </revisionlist>
