@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Nov 23 13:12:00 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 4.9.4:
+  + Apache 2.4.54 changed the default value for LimitRequestBody
+    from 0, which indicates there is no limit, to 1Gi. If the
+    Apache configuration supplied with a distribution wasn’t
+    explicitly setting LimitRequestBody to 0 at global server scope
+    for the purposes of documenting the default, and it was
+    actually relying on the compiled in default, then when using
+    mod_wsgi daemon mode, if a request body size greater than 1Gi
+    was encountered the mod_wsgi daemon mode process would crash.
+  + Fix ability to build mod_wsgi against Apache 2.2. Do note that
+    in general only recent versions of Apache 2.4 are supported
+- Changes from version 4.9.3 (CVE-2022-2255, boo#1201634):
+  * See https://modwsgi.readthedocs.io/en/latest/release-notes/version-4.9.3.html
+
+-------------------------------------------------------------------
 Wed Jun 22 16:10:04 UTC 2022 - Ludwig Nussel <lnussel@suse.de>
 
 - New version 4.9.2

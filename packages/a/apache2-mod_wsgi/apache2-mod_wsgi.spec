@@ -27,7 +27,7 @@ BuildRequires:  httpd
 BuildRequires:  httpd-devel
 %endif
 Name:           apache2-mod_wsgi
-Version:        4.9.2
+Version:        4.9.4
 Release:        0
 Summary:        A WSGI interface for Python3 web applications in Apache
 License:        Apache-2.0
