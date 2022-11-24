@@ -4901,14 +4901,19 @@
   <packagelist relationship="recommends">
     <package name="389-ds" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="CoreFreq-kmp-default" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="Mesa-dri-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="alsa-oss-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="alsa-plugins-pulse-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="apulse" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="apulse-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="audacity" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="audacity-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="autoconf" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="automake" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="babeltrace" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="bbswitch-kmp-default" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="bison" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="bison-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="cppcheck" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="crash-kmp-default" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="dpdk-kmp-default" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -4921,9 +4926,12 @@
     <package name="fcitx-gtk2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="fcitx-mozc" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="ffmpeg-5" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="fontconfig-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="fprintd-pam-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="freetype2-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="fwupd-efi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="gdk-pixbuf-query-loaders-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="gettext-tools" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="glibc-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="gnome-keyring-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="gnome-keyring-pam-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -4946,22 +4954,38 @@
     <package name="krb5-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="lib389" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="libHX32-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libICE-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libICE6-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libSM-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libSM6-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libSvtAv1Enc1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libX11-6-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libX11-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libXau-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libXau6-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libXcomposite1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libXcursor1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libXdamage1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libXdmcp-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libXext-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libXext6-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libXfixes-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libXfixes3-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libXft2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libXi6-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libXinerama1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libXmu-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libXp-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libXp6" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libXpm-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libXprintUtil-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libXprintUtil1" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libXrandr2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libXrender-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libXrender1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libXss1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libXt-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libXv-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libXv1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libacl1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libapparmor1-32bit" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -4977,9 +5001,11 @@
     <package name="libavformat59" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libavutil57" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libblkid1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libbrotli-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libbrotlicommon1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libbrotlidec1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libbz2-1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libbz2-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libc++-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libc++1" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libc++abi-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -4999,13 +5025,17 @@
     <package name="libdatrie1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libdbus-1-3-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libdevmapper1_03-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libdrm-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libeconf0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libevdev-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libexpat-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libexpat1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libfcitx-gclient1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libfcitx-utils0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libffi8-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libfmt9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libfontconfig1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libfontenc-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libfreetype6-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libfribidi0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libftgl2" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -5055,8 +5085,10 @@
     <package name="libopenssl1_1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libp11-kit0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libpango-1_0-0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libpciaccess-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libpcre2-8-0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libpixman-1-0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libpixman-1-0-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libpmem1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libpng12-0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libpng16-16-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -5083,6 +5115,7 @@
     <package name="libthai0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libtiff5-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libtirpc3-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libtool" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libtsan2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="libudev1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libunistring5-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -5101,10 +5134,17 @@
     <package name="libwx_gtk3u_core-suse-nostl8_0_0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libwx_gtk3u_html-suse-nostl8_0_0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libwx_gtk3u_qa-suse-nostl8_0_0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libxcb-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libxcb-render0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libxcb-screensaver0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libxcb-shm0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libxcb-xf86dri0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libxcb-xtest0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libxcb-xvmc0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libxcb1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libxcvt-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libxkbcommon0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libxkbfile-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libxml2-2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libz-ng-compat1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libzstd1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -5116,6 +5156,7 @@
     <package name="mozc-gui-tools" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="mozilla-nss-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="msr-safe-kmp-default" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="mtdev-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="nbdkit" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="nbdkit-basic-filters" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="nbdkit-basic-plugins" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -5137,6 +5178,7 @@
     <package name="patterns-server-xen_server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
     <package name="pcfclock-kmp-default" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="pmdk" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
+    <package name="printproto-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python310-argcomplete" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python310-argparse-manpage" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python310-ldap" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
@@ -5156,8 +5198,10 @@
     <package name="sssd-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="supermin" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="systemd-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="systemd-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="tp_smapi-kmp-default" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="unclutter" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="util-macros-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="v4l-utils" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="v4l-utils-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="v4l2loopback-autoload" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -5171,12 +5215,17 @@
     <package name="virtualbox-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="wpa_supplicant-gui" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="wxWidgets-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="xbitmaps-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="xen" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
     <package name="xen-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
     <package name="xf86-input-mouse" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="xlockmore" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="xmlstarlet" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="xorg-x11-server-sdk" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="xorgproto-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="xtables-addons-kmp-default" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="xtrans" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="yast2-drbd" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="zlib-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
   </packagelist>
 </group>
