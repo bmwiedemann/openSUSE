@@ -8,6 +8,7 @@ Fri Nov 18 09:16:32 UTC 2022 - Vlastimil Babka <vbabka@suse.com>
 Thu Nov 25 11:30:17 UTC 2021 - Vlastimil Babka <vbabka@suse.com>
 
 - update to version 2.2
+  * Support ICX processors (jsc#SLE-19499)
   * Sources downloaded from git tag, no proper upstream release.
   * Needs autoreconf.
 
