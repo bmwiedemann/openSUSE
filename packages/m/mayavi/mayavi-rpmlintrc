@@ -1,0 +1,3 @@
+# test module called by the main program with `mayavi2 --test` and through pytest --pyargs
+addFilter("python-tests-in-package .*/mayavi/tests")
+addFilter("python-tests-in-package .*/tvtk/tests")
