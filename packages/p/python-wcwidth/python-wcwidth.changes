@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 23 10:03:23 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- add explicit Requires for python-importlib_metadata for Python < 3.8
+
+-------------------------------------------------------------------
 Mon Jul 18 13:40:16 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch remove-pkg_resources.patch:

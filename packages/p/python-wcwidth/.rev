@@ -129,4 +129,14 @@
   multibuild.</comment>
     <requestid>989970</requestid>
   </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>16090d8b3cb5530df795b8ccf21802fb</srcmd5>
+    <version>0.2.5</version>
+    <time>1669288947</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1037583 from ojkastl_buildservice
+
+add explicit Requires for python-importlib_metadata for Python &lt; 3.8</comment>
+    <requestid>1037604</requestid>
+  </revision>
 </revisionlist>

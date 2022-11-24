@@ -38,6 +38,9 @@ BuildRequires:  python-backports.functools_lru_cache >= 1.2.1
 %ifpython2
 Requires:       python-backports.functools_lru_cache >= 1.2.1
 %endif
+%if %python_version_nodots < 38
+Requires:       python-importlib_metadata
+%endif
 %python_subpackages
 
 %description
