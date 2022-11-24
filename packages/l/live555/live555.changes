@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 22 20:26:02 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2022.11.19:
+  - Added a new global variable "ReceivingInterfaceAddr6" (analogous to the existing
+    variable "ReceivingInterfaceAddr" for IPv4) to allow applications to optionally
+    change the default receiving address for IPv6.
+
+-------------------------------------------------------------------
 Sun Oct  2 12:37:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2022.10.01:
