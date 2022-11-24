@@ -23,7 +23,7 @@
 %endif
 
 Name:           deepin-editor
-Version:        5.10.35
+Version:        5.10.40
 Release:        0
 Summary:        A text editor for the Deepin environment
 License:        GPL-3.0-or-later
@@ -83,7 +83,7 @@ src/editor/showflodcodewidget.h src/editor/dtextedit.cpp
 %build
 %cmake -DVERSION=%{version}-%{distribution} \
        -DAPP_VERSION=%{version}-%{distribution}
-%make_build
+%cmake_build
 
 %install
 %cmake_install
@@ -92,8 +92,8 @@ src/editor/showflodcodewidget.h src/editor/dtextedit.cpp
 
 %files
 %defattr(-,root,root,-)
-%doc CHANGELOG.md README.md
-%license LICENSE
+%doc CHANGELOG.md README.md README.zh_CN.md
+%license LICENSE.txt
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
