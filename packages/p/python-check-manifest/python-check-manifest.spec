@@ -98,6 +98,8 @@ skip='test_build_sdist or test_python_from_path'
 # E       TypeError: tuple indices must be integers or slices, not str
 skip="$skip or test_extra_ignore_args or test_ignore_bad_ideas_args"
 %endif
+# Fix tests https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1023597
+git config --global --add protocol.file.allow always
 %pytest -rs -k "not ($skip)"
 %endif
 

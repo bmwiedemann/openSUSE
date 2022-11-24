@@ -110,4 +110,14 @@ Needed for python3-jupyter_ipython</comment>
     <comment></comment>
     <requestid>1006301</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>7649bb1b5daaa1d8c96b9136ef7c7c6e</srcmd5>
+    <version>0.48</version>
+    <time>1669293447</time>
+    <user>dimstar_suse</user>
+    <comment>- Add &quot;git config --global --add protocol.file.allow always&quot; to fix tests,
+  based on https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1023597
+</comment>
+    <requestid>1037860</requestid>
+  </revision>
 </revisionlist>
