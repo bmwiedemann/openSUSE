@@ -18,18 +18,19 @@
 
 %bcond_without  test
 Name:           python-holoviews
-Version:        1.14.9
+Version:        1.15.2
 Release:        0
 Summary:        Composable, declarative visualizations for Python
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/holoviz/holoviews
 Source0:        https://files.pythonhosted.org/packages/source/h/holoviews/holoviews-%{version}.tar.gz
+Source99:       python-holoviews-rpmlintrc
 BuildRequires:  %{python_module colorcet}
 BuildRequires:  %{python_module numpy >= 1.0}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pandas >= 0.20}
-BuildRequires:  %{python_module panel >= 0.8.0}
+BuildRequires:  %{python_module panel >= 0.13.1}
 BuildRequires:  %{python_module param >= 1.9.3}
 BuildRequires:  %{python_module pyct >= 0.4.4}
 BuildRequires:  %{python_module pyviz-comms >= 0.7.4}
@@ -40,7 +41,7 @@ Requires:       python-colorcet
 Requires:       python-numpy >= 1.0
 Requires:       python-packaging
 Requires:       python-pandas >= 0.20
-Requires:       python-panel >= 0.8.0
+Requires:       python-panel >= 0.13.1
 Requires:       python-param >= 1.9.3
 Requires:       python-pyviz-comms >= 0.7.4
 Requires(post): update-alternatives
@@ -68,7 +69,10 @@ Suggests:       python-ibis-framework >= 1.3
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module Pillow}
-BuildRequires:  %{python_module bokeh >= 2.2}
+# Upstream doesn't specify the upper pin and relies on panel,
+# see https://github.com/holoviz/holoviews/pull/5507,
+# but we need to pin it here in order to avoid obs resolver conflicts
+BuildRequires:  %{python_module bokeh >= 2.4.3 with %python-bokeh < 2.5}
 BuildRequires:  %{python_module dash >= 1.16}
 BuildRequires:  %{python_module dask}
 BuildRequires:  %{python_module datashader >= 0.11.1}
@@ -127,7 +131,10 @@ $python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/ho
 
 %if %{with test}
 %check
-
+#different size in MPL >= 3.3
+donttest="(MPLRendererTest and test_get_size)"
+# gh#holoviz/holoviews#5517
+donttest+=" or test_py2js_funcformatter"
 # These fail on 32-bit -- gh#holoviz/holoviews#4778
 if [[ $(getconf LONG_BIT) -eq 32 ]]; then
     donttest+=" or (DatashaderAggregateTests and test_rasterize_regrid_and_spikes_overlay)"
@@ -164,8 +171,7 @@ if [[ $(getconf LONG_BIT) -eq 32 ]]; then
     donttest+=" or (DatashaderRasterizeTests and test_rasterize_dask_trimesh_with_node_vdims)"
     donttest+=" or (DatashaderRasterizeTests and test_rasterize_pandas_trimesh_implicit_nodes)"
 fi
-
-%pytest holoviews -k "not (dummyprefix $donttest)"
+%pytest holoviews -k "not ($donttest)"
 %endif
 
 %post

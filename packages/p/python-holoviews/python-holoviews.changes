@@ -1,4 +1,140 @@
 -------------------------------------------------------------------
+Tue Nov 22 17:56:13 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.15.2
+  ## Bug fixes:
+  * Fix support for jupyterlite (#5502)
+  * Improve error message for hv.opts without a plotting backend
+    (#5494)
+  * Fix warnings exposed in CI logs (#5470)
+  * Thanks to @maximlt for various CI fixes (#5484, #5498, #5485)
+  ## Enhancement:
+  * Allow Dimension objects to accept a dictionary specification
+    (#5333)
+  * Refactor to remove iterrows for loop from connect_edges_pd
+    (#5473)
+  ## Deprecations:
+  * Promoted DeprecationWarning to FutureWarning when using pandas
+    DataFrames with non-string column names. This will not change
+    any functionality but will start warning users about
+    functionality that will be deprecated in future.
+  * Upgrade warning for invalid dataframe column names (#5472)
+- Release 1.15.1
+  # Enhancements:
+  * Sort output of decimate operation so that it can be used with
+    connected Elements (Curve, Area, etc.) (#5452)
+  * Ensure HoloViews is importable from a pyodide webworker (#5410)
+  * Add support for stepwise Area plots (#5390)
+  * Better error message for hv.Cycle when incompatible backend
+    activated (#5379)
+  * Improvements to VSCode notebook support (#5398)
+  * Protect matplotlib tests from global styles (#5311)
+  * Faster hashing for arrays and pandas objects (#5455)
+  * Add pre-commit hooks to CI actions and fixes to pytest
+    configuration (#5385, #5440)
+  ## Bug Fixes:
+  * Allow import of numpy 1.12 (#5367)
+  * Fixes handling of iterables in Overlays (#5320)
+  * Always return a string when using hv.Dimension.pprint_value
+    (#5383)
+  * Support widgets in slices for loc and iloc (#5352)
+  * Take account of labeled dimension in Bokeh plotting classes
+    (#5404)
+  * Fix handling of pandas Period ranges (#5393)
+  * Fixed declaration of Scatter to Selection1DExpr (#5413)
+  * Ensure rangesupdate event fires on all plots with linked axes
+    (#5465)
+  * Fixed fallback to shapely spatial select (#5468)
+  * Many thanks to @Hoxbro for many miscellaneous plotting fixes,
+    including fixes to plotting of BoxWhisker, VectorField elements
+    (#5397, #5450, #5400, #5409, #5460))
+  ## API:
+  * In future, HoloViews will not allow non-string values for
+    pandas DataFrame column names. This deprecation cycle starts by
+    issuing a DeprecationWarning that should not be visible to
+    users.
+  + Issue DeprecationWarning for invalid DataFrame column types
+    (#5457)
+- Release 1.15.0
+  * This is a major release with a large number of new features and
+    bug fixes, as well as updates to Python and Panel
+    compatibility.
+  ## Compatibility:
+  * Python 2 support has finally been dropped with 1.14.9 as the
+    last release supporting Python 2
+  * HoloViews now requires panel >0.13.1 (#4329)
+  * Colormaps for the output of the datashade operation have
+    changed to address holoviz/datashader#357; see
+    rescale_discrete_levels below. To revert to the old colorbar
+    behavior, set ColorbarPlot.rescale_discrete_levels = False in
+    the bokeh or mpl plotting modules as appropriate.
+  * Updated Sankey algorithm means that some users may need to
+    update the node_padding parameter for plots generated with
+    earlier releases.
+  ## Major features:
+  * After a long period of hotfix releases for the 1.14.9 series,
+    many new features on the master branch have been released.
+    Features relating to datashader support, linked selection and
+    improvements to the Bokeh plotting backend are called out in
+    their own sections.
+  * Support constructor interface from a spatialpandas
+    GeometryArray (#5281)
+  * Allow plotting anonymous pandas.Series (#5015)
+  * Add support for rendering in pyodide/pyscript (#5338, #5321,
+    #5275)
+  # Datashader features:
+  * The following new features have been added to the datashader
+    support in HoloViews, mainly focused on Datashader's new
+    support for antialiasing lines as well as the new
+    rescale_discrete_levels colormapping option.
+  * Add automatic categorical legend for datashaded plots (#4806)
+  * Implement line_width support when rasterizing spatialpandas
+    paths (#5280)
+  * Expose rescale_discrete_levels in the Bokeh backend (#5312)
+  * Set rescale_discrete_levels=True by default (#5268)
+  ## New linked selection features:
+  * Implement linked_selection.filter method (#4999)
+  * Allow passing custom selection_expr to linked selections filter
+    (#5012)
+  * Fix AdjointLayout in link_selections (#5030)
+  ## New features for the Bokeh plotting backend:
+  * Add legend_labels option to allow overriding legend labels
+    (#5342)
+  * Updated sankey algorithm to d3-sankey-v0.12.3 (#4707)
+  # Other enhancements:
+  * Optimize and clean up options system (#4954)
+  * Optimize lasso selection by applying box-select first (#5061)
+    #5061
+  * Support ibis-framework version 3 (#5292)
+  * Add OpenTopoMap as a tile source (#5052)
+  * Show all histograms of an Overlay (#5031)
+  ## Bug fixes:
+  * Fix batch watching and linking of parameters in Params stream
+    (#4960, #4956)
+  * Ensure Plot.refresh is dispatched immediately if possible
+    (#5348)
+  * Fix datashader empty overlay aggregation (#5334)
+  * Fixed missing handling of nodata for count aggregator with
+    column (#4951)
+  * Handle pd.NA as missing data in dtype=object column (#5323)
+  * Forward DynamicMap.hist dimension parameter to histogram
+    creation (#5037)
+  * Remove numpy pin from examples (#5285)
+  * Fix vmin/vmax deprecation on matplotlib HeatMapPlot (#5300)
+  * Don't skip each renderer's load_nb call when multiple extension
+    calls are made in a single cell (#5302)
+  * Set plotly range correctly for log axis (#5272)
+  * Sanitize uses of contextlib.contextmanager (#5018)
+  * Ensure overlay_aggregate is not applied for anti-aliased lines
+    (#5266)
+  * Switch to using bokeh rangesupdate event for Range streams
+    (#5265)
+  * Fixes for bokeh Callbacks (#5040)
+  * Fix for attribute error in matplotlib CompositePlot (#4969)
+  * Silenced inappropriate deprecation warnings and updated
+    deprecation settings in options system (#5345, #5346)
+
+-------------------------------------------------------------------
 Tue Jun  7 19:39:11 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.14.9
