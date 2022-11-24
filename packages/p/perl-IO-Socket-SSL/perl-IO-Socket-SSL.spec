@@ -18,7 +18,7 @@
 
 %define cpan_name IO-Socket-SSL
 Name:           perl-IO-Socket-SSL
-Version:        2.075
+Version:        2.077
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Nearly transparent SSL encapsulation for IO::Socket::INET
