@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20221123" schemaversion="4.1">
+<image name="OBS__openSUSE___20221124" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20221123</productvar>
+      <productvar name="VERSION">20221124</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20221123,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20221124,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20221123/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20221124/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -172,8 +172,10 @@
       <repopackage name="audit"/>
       <repopackage name="augeas"/>
       <repopackage name="augeas-lenses"/>
+      <repopackage name="autoconf" arch="x86_64"/>
       <repopackage name="autoconf-el"/>
       <repopackage name="autofs"/>
+      <repopackage name="automake" arch="x86_64"/>
       <repopackage name="autotrace"/>
       <repopackage name="autoyast2"/>
       <repopackage name="autoyast2-installation"/>
@@ -209,6 +211,8 @@
       <repopackage name="bind-utils"/>
       <repopackage name="binutils"/>
       <repopackage name="biosdevname"/>
+      <repopackage name="bison" arch="x86_64"/>
+      <repopackage name="bison-lang" arch="x86_64"/>
       <repopackage name="bitstream-vera-fonts"/>
       <repopackage name="blinken"/>
       <repopackage name="blinken-lang"/>
@@ -531,6 +535,7 @@
       <repopackage name="folks-data"/>
       <repopackage name="folks-lang"/>
       <repopackage name="fontconfig"/>
+      <repopackage name="fontconfig-devel" arch="x86_64"/>
       <repopackage name="fontconfig-lang"/>
       <repopackage name="fonts-config"/>
       <repopackage name="fonts-KanjiStrokeOrders"/>
@@ -542,6 +547,7 @@
       <repopackage name="freecell-solver-presets"/>
       <repopackage name="freeipmi"/>
       <repopackage name="freerdp"/>
+      <repopackage name="freetype2-devel" arch="x86_64"/>
       <repopackage name="frei0r-plugins"/>
       <repopackage name="fribidi"/>
       <repopackage name="fuse"/>
@@ -594,6 +600,7 @@
       <repopackage name="geoclue2"/>
       <repopackage name="geocode-glib"/>
       <repopackage name="gettext-runtime"/>
+      <repopackage name="gettext-tools" arch="x86_64"/>
       <repopackage name="ghostscript"/>
       <repopackage name="ghostscript-fonts"/>
       <repopackage name="ghostscript-fonts-grops"/>
@@ -1470,6 +1477,7 @@
       <repopackage name="libbpf1"/>
       <repopackage name="libbreezecommon5-5"/>
       <repopackage name="libbrlapi0_8"/>
+      <repopackage name="libbrotli-devel" arch="x86_64"/>
       <repopackage name="libbrotlicommon1"/>
       <repopackage name="libbrotlicommon1-32bit" arch="x86_64"/>
       <repopackage name="libbrotlidec1"/>
@@ -1483,6 +1491,7 @@
       <repopackage name="libbytesize1"/>
       <repopackage name="libbz2-1"/>
       <repopackage name="libbz2-1-32bit" arch="x86_64"/>
+      <repopackage name="libbz2-devel" arch="x86_64"/>
       <repopackage name="libc++-devel" arch="x86_64"/>
       <repopackage name="libc++1" arch="x86_64"/>
       <repopackage name="libc++abi-devel" arch="x86_64"/>
@@ -1616,6 +1625,7 @@
       <repopackage name="libdolphinvcs5"/>
       <repopackage name="libdotconf0"/>
       <repopackage name="libdouble-conversion3"/>
+      <repopackage name="libdrm-devel" arch="x86_64"/>
       <repopackage name="libdrm2"/>
       <repopackage name="libdrm_amdgpu1"/>
       <repopackage name="libdrm_intel1"/>
@@ -1660,6 +1670,7 @@
       <repopackage name="libestr0"/>
       <repopackage name="libetonyek-0_1-1"/>
       <repopackage name="libev4"/>
+      <repopackage name="libevdev-devel" arch="x86_64"/>
       <repopackage name="libevdev-tools"/>
       <repopackage name="libevdev2"/>
       <repopackage name="libevdocument3-4"/>
@@ -1669,6 +1680,7 @@
       <repopackage name="libexif12"/>
       <repopackage name="libexiv2-27"/>
       <repopackage name="libexo-2-0"/>
+      <repopackage name="libexpat-devel" arch="x86_64"/>
       <repopackage name="libexpat1"/>
       <repopackage name="libexpat1-32bit" arch="x86_64"/>
       <repopackage name="libexslt0"/>
@@ -1709,6 +1721,7 @@
       <repopackage name="libfolks26"/>
       <repopackage name="libfontconfig1"/>
       <repopackage name="libfontconfig1-32bit" arch="x86_64"/>
+      <repopackage name="libfontenc-devel" arch="x86_64"/>
       <repopackage name="libfontenc1"/>
       <repopackage name="libfonts"/>
       <repopackage name="libformula"/>
@@ -1942,6 +1955,7 @@
       <repopackage name="libibverbs1"/>
       <repopackage name="libical-glib3"/>
       <repopackage name="libical3"/>
+      <repopackage name="libICE-devel" arch="x86_64"/>
       <repopackage name="libICE6"/>
       <repopackage name="libICE6-32bit" arch="x86_64"/>
       <repopackage name="libicu72"/>
@@ -2445,6 +2459,7 @@
       <repopackage name="libpcap1"/>
       <repopackage name="libpcaudio0"/>
       <repopackage name="libpci3"/>
+      <repopackage name="libpciaccess-devel" arch="x86_64"/>
       <repopackage name="libpciaccess0"/>
       <repopackage name="libpcre1"/>
       <repopackage name="libpcre2-16-0"/>
@@ -2467,6 +2482,7 @@
       <repopackage name="libpipewire-0_3-0"/>
       <repopackage name="libpixman-1-0"/>
       <repopackage name="libpixman-1-0-32bit" arch="x86_64"/>
+      <repopackage name="libpixman-1-0-devel" arch="x86_64"/>
       <repopackage name="libpkcs11-helper1"/>
       <repopackage name="libpkgconf3"/>
       <repopackage name="libplacebo208"/>
@@ -2717,6 +2733,7 @@
       <repopackage name="libslang2"/>
       <repopackage name="libslirp0"/>
       <repopackage name="libslp1"/>
+      <repopackage name="libSM-devel" arch="x86_64"/>
       <repopackage name="libSM6"/>
       <repopackage name="libSM6-32bit" arch="x86_64"/>
       <repopackage name="libsmartcols1"/>
@@ -2821,6 +2838,7 @@
       <repopackage name="libtirpc3-32bit" arch="x86_64"/>
       <repopackage name="libtomcrypt1"/>
       <repopackage name="libtommath1"/>
+      <repopackage name="libtool" arch="x86_64"/>
       <repopackage name="libtotem-plparser-mini18"/>
       <repopackage name="libtotem-plparser18"/>
       <repopackage name="libtowitoko2"/>
@@ -2956,10 +2974,12 @@
       <repopackage name="libX11-6"/>
       <repopackage name="libX11-6-32bit" arch="x86_64"/>
       <repopackage name="libX11-data"/>
+      <repopackage name="libX11-devel" arch="x86_64"/>
       <repopackage name="libX11-xcb1"/>
       <repopackage name="libx86emu3"/>
       <repopackage name="libxapian30"/>
       <repopackage name="libxatracker2"/>
+      <repopackage name="libXau-devel" arch="x86_64"/>
       <repopackage name="libXau6"/>
       <repopackage name="libXau6-32bit" arch="x86_64"/>
       <repopackage name="libXaw3d8"/>
@@ -2967,6 +2987,7 @@
       <repopackage name="libxcb-composite0"/>
       <repopackage name="libxcb-cursor0"/>
       <repopackage name="libxcb-damage0"/>
+      <repopackage name="libxcb-devel" arch="x86_64"/>
       <repopackage name="libxcb-dpms0"/>
       <repopackage name="libxcb-dri2-0"/>
       <repopackage name="libxcb-dri3-0"/>
@@ -2981,16 +3002,20 @@
       <repopackage name="libxcb-render0"/>
       <repopackage name="libxcb-render0-32bit" arch="x86_64"/>
       <repopackage name="libxcb-res0"/>
+      <repopackage name="libxcb-screensaver0" arch="x86_64"/>
       <repopackage name="libxcb-shape0"/>
       <repopackage name="libxcb-shm0"/>
       <repopackage name="libxcb-shm0-32bit" arch="x86_64"/>
       <repopackage name="libxcb-sync1"/>
       <repopackage name="libxcb-util1"/>
+      <repopackage name="libxcb-xf86dri0" arch="x86_64"/>
       <repopackage name="libxcb-xfixes0"/>
       <repopackage name="libxcb-xinerama0"/>
       <repopackage name="libxcb-xinput0"/>
       <repopackage name="libxcb-xkb1"/>
+      <repopackage name="libxcb-xtest0" arch="x86_64"/>
       <repopackage name="libxcb-xv0"/>
+      <repopackage name="libxcb-xvmc0" arch="x86_64"/>
       <repopackage name="libxcb1"/>
       <repopackage name="libxcb1-32bit" arch="x86_64"/>
       <repopackage name="libXcomposite1"/>
@@ -2998,11 +3023,14 @@
       <repopackage name="libxcrypt-devel"/>
       <repopackage name="libXcursor1"/>
       <repopackage name="libXcursor1-32bit" arch="x86_64"/>
+      <repopackage name="libxcvt-devel" arch="x86_64"/>
       <repopackage name="libxcvt0"/>
       <repopackage name="libXdamage1"/>
       <repopackage name="libXdamage1-32bit" arch="x86_64"/>
+      <repopackage name="libXdmcp-devel" arch="x86_64"/>
       <repopackage name="libXdmcp6"/>
       <repopackage name="libxerces-c-3_2"/>
+      <repopackage name="libXext-devel" arch="x86_64"/>
       <repopackage name="libXext6"/>
       <repopackage name="libXext6-32bit" arch="x86_64"/>
       <repopackage name="libxfce4kbd-private-3-0"/>
@@ -3014,6 +3042,7 @@
       <repopackage name="libxfce4util-lang"/>
       <repopackage name="libxfce4util7"/>
       <repopackage name="libxfconf-0-3"/>
+      <repopackage name="libXfixes-devel" arch="x86_64"/>
       <repopackage name="libXfixes3"/>
       <repopackage name="libXfixes3-32bit" arch="x86_64"/>
       <repopackage name="libXfont1"/>
@@ -3028,6 +3057,7 @@
       <repopackage name="libxkbcommon-x11-0"/>
       <repopackage name="libxkbcommon0"/>
       <repopackage name="libxkbcommon0-32bit" arch="x86_64"/>
+      <repopackage name="libxkbfile-devel" arch="x86_64"/>
       <repopackage name="libxkbfile1"/>
       <repopackage name="libxkbregistry0"/>
       <repopackage name="libxklavier16"/>
@@ -3038,12 +3068,19 @@
       <repopackage name="libxmlsec1-1"/>
       <repopackage name="libxmlsec1-nss1"/>
       <repopackage name="libxmlsec1-openssl1"/>
+      <repopackage name="libXmu-devel" arch="x86_64"/>
       <repopackage name="libXmu6"/>
       <repopackage name="libXmuu1"/>
+      <repopackage name="libXp-devel" arch="x86_64"/>
+      <repopackage name="libXp6" arch="x86_64"/>
+      <repopackage name="libXpm-devel" arch="x86_64"/>
       <repopackage name="libXpm4"/>
       <repopackage name="libXpresent1"/>
+      <repopackage name="libXprintUtil-devel" arch="x86_64"/>
+      <repopackage name="libXprintUtil1" arch="x86_64"/>
       <repopackage name="libXrandr2"/>
       <repopackage name="libXrandr2-32bit" arch="x86_64"/>
+      <repopackage name="libXrender-devel" arch="x86_64"/>
       <repopackage name="libXrender1"/>
       <repopackage name="libXrender1-32bit" arch="x86_64"/>
       <repopackage name="libXRes1"/>
@@ -3052,9 +3089,11 @@
       <repopackage name="libxslt1"/>
       <repopackage name="libXss1"/>
       <repopackage name="libXss1-32bit" arch="x86_64"/>
+      <repopackage name="libXt-devel" arch="x86_64"/>
       <repopackage name="libXt6"/>
       <repopackage name="libxtables12"/>
       <repopackage name="libXtst6"/>
+      <repopackage name="libXv-devel" arch="x86_64"/>
       <repopackage name="libXv1"/>
       <repopackage name="libXv1-32bit" arch="x86_64"/>
       <repopackage name="libXvMC1"/>
@@ -3178,6 +3217,7 @@
       <repopackage name="Mesa-demo-es"/>
       <repopackage name="Mesa-demo-x"/>
       <repopackage name="Mesa-dri"/>
+      <repopackage name="Mesa-dri-devel" arch="x86_64"/>
       <repopackage name="Mesa-gallium"/>
       <repopackage name="Mesa-libEGL1"/>
       <repopackage name="Mesa-libGL1"/>
@@ -3274,6 +3314,7 @@
       <repopackage name="mpt-firmware"/>
       <repopackage name="mpt-status"/>
       <repopackage name="msr-safe-kmp-default" arch="x86_64"/>
+      <repopackage name="mtdev-devel" arch="x86_64"/>
       <repopackage name="mtools"/>
       <repopackage name="mtr"/>
       <repopackage name="mugshot"/>
@@ -3789,6 +3830,7 @@
       <repopackage name="pragha-plugins"/>
       <repopackage name="prctl"/>
       <repopackage name="presage-data"/>
+      <repopackage name="printproto-devel" arch="x86_64"/>
       <repopackage name="prison-qt5-imports"/>
       <repopackage name="procinfo"/>
       <repopackage name="procmail"/>
@@ -4621,6 +4663,7 @@
       <repopackage name="systemd-default-settings"/>
       <repopackage name="systemd-default-settings-branding-openSUSE"/>
       <repopackage name="systemd-default-settings-branding-SLE"/>
+      <repopackage name="systemd-devel" arch="x86_64"/>
       <repopackage name="systemd-lang"/>
       <repopackage name="systemd-presets-branding-MicroOS"/>
       <repopackage name="systemd-presets-branding-openSUSE"/>
@@ -4834,6 +4877,7 @@
       <repopackage name="util-linux"/>
       <repopackage name="util-linux-lang"/>
       <repopackage name="util-linux-systemd"/>
+      <repopackage name="util-macros-devel" arch="x86_64"/>
       <repopackage name="v4l-conf"/>
       <repopackage name="v4l-utils" arch="x86_64"/>
       <repopackage name="v4l-utils-lang" arch="x86_64"/>
@@ -4909,6 +4953,7 @@
       <repopackage name="xauth"/>
       <repopackage name="xawtv"/>
       <repopackage name="xbitmaps"/>
+      <repopackage name="xbitmaps-devel" arch="x86_64"/>
       <repopackage name="xbrlapi"/>
       <repopackage name="xclip"/>
       <repopackage name="xclock"/>
@@ -5040,9 +5085,11 @@
       <repopackage name="xorg-x11-libX11-ccache"/>
       <repopackage name="xorg-x11-server"/>
       <repopackage name="xorg-x11-server-extra"/>
+      <repopackage name="xorg-x11-server-sdk" arch="x86_64"/>
       <repopackage name="xorg-x11-server-Xvfb"/>
       <repopackage name="xorg-x11-Xvnc"/>
       <repopackage name="xorg-x11-Xvnc-module"/>
+      <repopackage name="xorgproto-devel" arch="x86_64"/>
       <repopackage name="xorriso"/>
       <repopackage name="xprop"/>
       <repopackage name="xrandr"/>
@@ -5062,6 +5109,7 @@
       <repopackage name="xterm-bin"/>
       <repopackage name="xterm-resize"/>
       <repopackage name="xtermset"/>
+      <repopackage name="xtrans" arch="x86_64"/>
       <repopackage name="xwayland"/>
       <repopackage name="xz"/>
       <repopackage name="xz-lang"/>
@@ -5210,6 +5258,7 @@
       <repopackage name="zeromq-tools"/>
       <repopackage name="zip"/>
       <repopackage name="zisofs-tools"/>
+      <repopackage name="zlib-devel" arch="x86_64"/>
       <repopackage name="zoo"/>
       <repopackage name="zsh"/>
       <repopackage name="zstd"/>
