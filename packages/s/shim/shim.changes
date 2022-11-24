@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov 23 07:28:57 UTC 2022 - Joey Lee <jlee@suse.com>
+
+- Add POST_PROCESS_PE_FLAGS=-N to the build command in shim.spec to
+  disable the NX compatibility flag when using post-process-pe because
+  grub2 is not ready. (bsc#1205588)
+    - Kernel can boot with the NX compatibility flag since 82e0d6d76a2a7
+      be merged to v5.19. On the other hand, upstream is working on
+      improve compressed kernel stage for NX:
+        [PATCH v3 00/24] x86_64: Improvements at compressed kernel stage
+        https://www.spinics.net/lists/kernel/msg4599636.html
+
+-------------------------------------------------------------------
 Fri Nov 18 04:52:49 UTC 2022 - Joey Lee <jlee@suse.com>
 
 - Add shim-Enable-the-NX-compatibility-flag-by-default.patch to

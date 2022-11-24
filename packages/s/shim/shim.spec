@@ -209,6 +209,7 @@ for suffix in "${suffixes[@]}"; do
          VENDOR_CERT_FILE=shim-$suffix.der ENABLE_HTTPBOOT=1 \
          DEFAULT_LOADER="\\\\\\\\grub.efi" \
          VENDOR_DBX_FILE=$vendor_dbx \
+         POST_PROCESS_PE_FLAGS=-N \
          shim.efi.debug shim.efi
     #
     # assert correct certificate embedded
