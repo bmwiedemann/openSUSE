@@ -15,7 +15,7 @@ Signed-off-by: Fabian Vogt <fvogt@suse.de>
  1 file changed, 2 deletions(-)
 
 diff --git a/tools/Makefile b/tools/Makefile
-index 25783ae..0211016 100644
+index 25783aef..0211016a 100644
 --- a/tools/Makefile
 +++ b/tools/Makefile
 @@ -1,5 +1,3 @@
@@ -24,6 +24,3 @@ index 25783ae..0211016 100644
  GO := go
  
  BUILDDIR := build
--- 
-2.38.0
-

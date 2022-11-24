@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Nov 23 14:43:15 UTC 2022 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 2.1.5:
+
+  Bug Fixes
+
+    don't leak syslog_identifier
+    logging: do not read more that the buf size
+    logging: fix error handling
+
+  Misc
+
+    Makefile: Fix install for FreeBSD
+    signal: Track changes to get_signal_descriptor in the FreeBSD version
+    Packit: initial enablement
+
+- New upstream release 2.1.4:
+
+  Bug fixes
+
+    Fix a bug where conmon crashed when it got a SIGCHLD
+
+-------------------------------------------------------------------
 Fri Nov  4 14:35:09 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Add patch to fix build with make >= 4.4:
