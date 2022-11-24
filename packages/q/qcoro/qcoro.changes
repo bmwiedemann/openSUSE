@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov 23 08:17:12 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 0.7.0. Check
+  https://github.com/danvratil/qcoro/releases/tag/v0.7.0 for the
+  full list of changes
+  * initial QML support
+  * QObject::connect helper
+  * Coroutine version of QQuickImageProvider
+- Drop patch, merged upstream:
+  * qcoro_no_Werror.patch
+
+-------------------------------------------------------------------
 Wed Jul 13 18:10:44 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Disable tests again. Random timeouts were seen.

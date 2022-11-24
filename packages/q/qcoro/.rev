@@ -59,4 +59,12 @@
   * qcoro_no_Werror.patch</comment>
     <requestid>989033</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>790f951eed89601c6ea1ffd782dd849d</srcmd5>
+    <version>0.7.0</version>
+    <time>1669288997</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1037485</requestid>
+  </revision>
 </revisionlist>
