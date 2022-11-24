@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 23 13:24:55 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add e63d7cdf.patch: awk: fix use after free (CVE-2022-30065,
+  boo#1199744).
+
+-------------------------------------------------------------------
 Mon Nov 14 08:52:35 UTC 2022 - Radoslav Kolev <radoslav.kolev@suse.com>
 
 - Fix build under SLE-12 

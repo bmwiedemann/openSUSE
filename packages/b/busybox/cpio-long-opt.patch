@@ -1,7 +1,8 @@
-diff -urN busybox-1.32.0.orig/archival/cpio.c busybox-1.32.0/archival/cpio.c
---- busybox-1.32.0.orig/archival/cpio.c	2020-06-26 20:47:44.000000000 +0200
-+++ busybox-1.32.0/archival/cpio.c	2020-12-07 11:23:44.913676627 +0100
-@@ -367,6 +367,9 @@
+Index: busybox-1.35.0/archival/cpio.c
+===================================================================
+--- busybox-1.35.0.orig/archival/cpio.c
++++ busybox-1.35.0/archival/cpio.c
+@@ -413,6 +413,9 @@ int cpio_main(int argc UNUSED_PARAM, cha
  	const char *long_opts =
  		"extract\0"      No_argument       "i"
  		"list\0"         No_argument       "t"
