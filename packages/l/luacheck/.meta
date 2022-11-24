@@ -1,5 +1,0 @@
-<package name="luacheck" project="openSUSE:Factory">
-  <title>luacheck</title>
-  <description>linting and static analysis of Lua code</description>
-  <devel project="devel:languages:lua" package="luacheck"/>
-</package>
