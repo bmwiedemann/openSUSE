@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Nov 22 18:54:46 UTC 2022 - Christian Boltz <suse-beta@cboltz.de>
+
+- update to AppArmor 3.1.2
+  - lots of cleanups, improvements and bugfixes in all areas
+  - rework internal profile storage and handling in the aa-* tools
+  - support boolean variable definitions in the aa-* tools
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_3.1.1
+    and https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_3.1.2
+    for the detailed upstream changelog
+- remove upstream(ed) patches:
+  - apparmor-3.0.7-egrep.patch
+  - dnsmasq.diff
+  - profiles-permit-php-fpm-pid-files-directly-under-run.patch
+  - zgrep-profile-mr870.diff
+- no longer ship precompiled profile cache for Tumbleweed (boo#1205659)
+- BuildRequire iproute2 (needed for aa-unconfined tests)
+
+-------------------------------------------------------------------
 Sun Sep  4 18:08:28 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - aa-decode: use grep -E instead of deprecated egrep (boo#1203092)

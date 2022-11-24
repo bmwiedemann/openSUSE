@@ -2486,4 +2486,25 @@ so you might want to pick this SR into Staging:O (forwarded request 953283 from 
   * see also https://gitlab.com/apparmor/apparmor/-/issues/121 (forwarded request 998222 from bnavigator)</comment>
     <requestid>1008880</requestid>
   </revision>
+  <revision rev="184" vrev="1">
+    <srcmd5>1e083c1f1154bcc37c175fe2a7538536</srcmd5>
+    <version>3.1.2</version>
+    <time>1669288923</time>
+    <user>dimstar_suse</user>
+    <comment>- update to AppArmor 3.1.2
+  - lots of cleanups, improvements and bugfixes in all areas
+  - rework internal profile storage and handling in the aa-* tools
+  - support boolean variable definitions in the aa-* tools
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_3.1.1
+    and https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_3.1.2
+    for the detailed upstream changelog
+- remove upstream(ed) patches:
+  - apparmor-3.0.7-egrep.patch
+  - dnsmasq.diff
+  - profiles-permit-php-fpm-pid-files-directly-under-run.patch
+  - zgrep-profile-mr870.diff
+- no longer ship precompiled profile cache for Tumbleweed (boo#1205659)
+- BuildRequire iproute2 (needed for aa-unconfined tests) (forwarded request 1037410 from cboltz)</comment>
+    <requestid>1037411</requestid>
+  </revision>
 </revisionlist>

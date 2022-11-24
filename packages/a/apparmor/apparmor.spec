@@ -37,7 +37,14 @@
 %bcond_without perl
 %bcond_without python3
 %bcond_without ruby
+
+%if 0%{?suse_version} <= 1550
+# enable precompiled profile cache on <= 15.x
 %bcond_without precompiled_cache
+%else
+# don't build precompiled profile cache on Tumbleweed as long as it's purely validated based on timestamps (boo#1205659)
+%bcond_with precompiled_cache
+%endif
 
 %define CATALINA_HOME /usr/share/tomcat6
 #define APPARMOR_DOC_DIR /usr/share/doc/packages/apparmor-docs/
@@ -45,7 +52,7 @@
 %define JAR_FILE changeHatValve.jar
 
 Name:           apparmor
-Version:        3.0.7
+Version:        3.1.2
 Release:        0
 Summary:        AppArmor userlevel parser utility
 License:        GPL-2.0-or-later
@@ -79,21 +86,8 @@ Patch5:         apparmor-lessopen-nfs-workaround.diff
 # make <apache2.d> include in apache extra profile optional to make openQA happy (boo#1178527)
 Patch6:         apache-extra-profile-include-if-exists.diff
 
-# add zgrep and xzgrep profile (merged upstream 2022-04-12 https://gitlab.com/apparmor/apparmor/-/merge_requests/870 + merged upstream 2022-04-18 https://gitlab.com/apparmor/apparmor/-/merge_requests/873
-#                               + merged upstream 2022-06-29 https://gitlab.com/apparmor/apparmor/-/merge_requests/892 - master only)
-Patch9:         zgrep-profile-mr870.diff
-
-# add missing r permissions for dnsmasc//libvirt-leaseshelper (merged upstream 2022-08-22 https://gitlab.com/apparmor/apparmor/-/merge_requests/905)
-Patch10:        dnsmasq.diff
-
-# permit php-fpm pid files under run (merged upstream 2022-08-26 https://gitlab.com/apparmor/apparmor/-/merge_requests/914)
-Patch11:        profiles-permit-php-fpm-pid-files-directly-under-run.patch
-
 # allow reading /sys/devices/system/cpu/possible in dnsmasc//libvirt-leaseshelper (boo#1202849, submitted upstream 2022-08-28 https://gitlab.com/apparmor/apparmor/-/merge_requests/917)
 Patch12:        dnsmasq-cpu-possible.diff
-
-# avoid warnings with GNU grep 3.8 (boo#1203092, from upstream)
-Patch13:        apparmor-3.0.7-egrep.patch
 
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -102,6 +96,7 @@ BuildRequires:  bison
 BuildRequires:  dejagnu
 BuildRequires:  flex
 BuildRequires:  gcc-c++
+BuildRequires:  iproute2
 BuildRequires:  pcre-devel
 BuildRequires:  pkg-config
 BuildRequires:  python3
@@ -359,11 +354,7 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %patch4
 %patch5
 %patch6
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
 %patch12 -p1
-%patch13 -p1
 
 %build
 export SUSE_ASNEEDED=0
