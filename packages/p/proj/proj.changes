@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Sun Nov 13 16:36:35 UTC 2022 - Predrag Ivanović <predivan@mts.rs>
+
+- * Update to 9.1.0:
+  * Database: update to EPSG v10.074 (#3273)
+  * Update ESRI objects to version 3.0.0 (#3257)
+  * Add Svalbard geoid grid no_kv_arcgp-2006-sk to grid alternatives (#3292)
+  * Added French grid fr_ign_RAF20 to grid alternatives (#3228)
+  * PROJ pipeline generator: recognize opposite Helmert transformations using a different convention (#3265)
+  * Introduce PROJ_DATA` environment variable to deprecate PROJ_LIB (#3253)
+  * projinfo: fix crash on –list-crs when proj.db cannot be opened (#3290)
+  * WKT parser: fix issue when parsing some WKT1 with Hotine_Oblique_Mercator_Azimuth_Center and ignoring rectified_grid_angle (#3280)
+
+9.0.1 Release Notes
+  * Update to EPSG 10.064 (#3208)
+  * Add OGC:CRS84h (WGS 84 longitude-latitude-height) (#3155)
+  * Increase MAX_ITER so Mollweide forward projection works near the poles (#3082)
+  * Fix wrong results with SQLite 3.38.0 (#3091)
+  * Fix issue when transforming from/to BoundCRS of 3D CRS with non-Greenwich prime meridian, created from WKT (#3098)
+  * Fix issues with WKT of concatenated operations (#3105)
+  * unitconvert: round to nearest date when converting to yyyymmdd (#3111)
+  * Fix comparison of GeodeticRefrenceFrame vs DynamicGeodeticReferenceFrame (#3120)
+  * Fix datum names when importing from PROJ4 crs strings (affects some transformations using geoidgrids) (#3129)
+  * Deal with PARAMETER["EPSG code for Interpolation CRS",crs_code] (#3149)
+  * ITRF2014: fix ITRF2014:ITRF88,ITRF94 and ITRF96 definitions (#3159)
+  * WKT import: deal with Projected CRS that is a mix of WKT1:GDAL / WKT1:ESRI (#3189)
+  * createOperations(): fix/improve result of ‘BD72 + Ostend height’ to ‘WGS84+EGM96 height’ (#3199)
+  * WKT import: correctly deal with absence of Latitude_Of_Origin parameter in WKT1 ESRI with Stereographic projection (#3212)
+  * PROJJSON parser: do not error out if a datum ensemble member is unknown in the database (#3223)
+
+ 9.0.0 Release Notes
+  * Support for the autotools build system has been removed (#3027) See RFC7 for details: https://proj.org/community/rfc/rfc-7.html
+  * ESRI projection engine db to version 12.9 (#2943)
+  * EPSG v10.054 (#3051)
+  * Vertical grid files for PL-geoid-2011, Polish geoid model (#2960)
+  * Belgian geoid model hBG18 to grid alternatives (#3044)
+  * Add new option to proj_create_crs_to_crs_from_pj() method to force +over on transformation operations (#2914)
+  * Implement Geographic3D to Depth/Geog2D+Depth as used by ETRS89 to CD Norway depth (#3010)
+  * Use external gtest by default when possible (#3035)
+  * CMake: make BUILD_SHARED_LIBS=ON the default even on Windows (#3042)
+  * Fix extremely long parsing time on hostile PROJ strings (#2968)
+  * Better deal with importing strings like +init=epsg:XXXX +over (#3055)
+  * Fix importing CRS definition with +proj=peirce_q and +shape different from square or diamond (#3057)
+
+- Packaging changes:
+  * Switch to cmake build
+  * Add nlohmann_json-devel as BuildReq
+
+-------------------------------------------------------------------
 Fri Jan 21 21:35:08 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.2.1:

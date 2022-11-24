@@ -323,4 +323,12 @@ This package is included in Debian.
     <comment></comment>
     <requestid>948075</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>35aa3f641dcb9311572ad47c36bacd73</srcmd5>
+    <version>9.1.0</version>
+    <time>1669288978</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1037483</requestid>
+  </revision>
 </revisionlist>

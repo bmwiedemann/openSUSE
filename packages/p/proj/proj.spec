@@ -16,11 +16,11 @@
 #
 
 
-%define data_version 1.7
-%define sover   22
+%define data_version 1.11
+%define sover   25
 %define libname lib%{name}%{sover}
 Name:           proj
-Version:        8.2.1
+Version:        9.1.0
 Release:        0
 Summary:        Cartographic projection software
 License:        MIT
@@ -28,12 +28,14 @@ Group:          Productivity/Scientific/Other
 URL:            https://proj.org/
 Source0:        http://download.osgeo.org/proj/%{name}-%{version}.tar.gz
 Source1:        https://download.osgeo.org/%{name}/%{name}-data-%{data_version}.tar.gz
+BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  sqlite3
 BuildRequires:  pkgconfig(gtest)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libtiff-4)
+BuildRequires:  pkgconfig(nlohmann_json)
 BuildRequires:  pkgconfig(sqlite3) >= 3.11
 Provides:       libproj = %{version}
 
@@ -96,28 +98,28 @@ Supplements:  proj\
 %data_subpkg -c fr -n France
 %data_subpkg -c is -n Island -e ISL
 %data_subpkg -c jp -n Japan
+%data_subpkg -c mx -n Mexico
 %data_subpkg -c nc -n %{quote:New Caledonia}
 %data_subpkg -c nl -n Netherlands
 %data_subpkg -c no -n Norway
 %data_subpkg -c nz -n %{quote:New Zealand}
+%data_subpkg -c pl -n Poland
 %data_subpkg -c pt -n Portugal
 %data_subpkg -c se -n Sweden
 %data_subpkg -c sk -n Slovakia
 %data_subpkg -c uk -n %{quote:United Kingdom}
 %data_subpkg -c us -n %{quote:United States}
+%data_subpkg -c za -n %{quote:South Africa}
 
 %prep
 %setup -q
 
 %build
-%configure \
-  --with-external-gtest \
-  --disable-static \
-  --enable-lto
-%make_build
+%cmake
+%cmake_build
 
 %install
-%make_install
+%cmake_install
 tar -C %{buildroot}%{_datadir}/%{name} -xf %{SOURCE1}
 find %{buildroot} -type f -name "*.la" -delete -print
 # It would be good to find out where these extra files
@@ -127,7 +129,7 @@ rm -rf %{buildroot}%{_datadir}/doc/${name}
 %check
 # Tests dont work on i586 and noone cares
 %ifnarch %{ix86}
-%make_build check
+%ctest
 %endif
 
 %post -n %{libname} -p /sbin/ldconfig
@@ -180,6 +182,10 @@ rm -rf %{buildroot}%{_datadir}/doc/${name}
 %{_includedir}/*.h
 %{_includedir}/proj
 %{_libdir}/libproj.so
+%dir %{_libdir}/cmake/proj/
+%{_libdir}/cmake/proj/*.cmake
+%dir %{_libdir}/cmake/proj4/
+%{_libdir}/cmake/proj4/*.cmake
 %{_libdir}/pkgconfig/proj.pc
 
 %changelog
