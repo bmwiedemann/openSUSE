@@ -1,4 +1,110 @@
 -------------------------------------------------------------------
+Wed Nov 23 10:20:50 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 9.0.0924, fixes the following problems
+  * Aws config files are not recognized.
+  * ":!" does not switch to the alternate screen.
+  * CTRL-Z at end of file is always dropped.
+  * Build error.
+  * "!ls" does not work.
+  * Still a build error, tests are failing.
+  * Memory leak with empty shell command.
+  * Crash when using win_move_statusline() in another tab page.
+  * Crash when dragging the statusline with a mapping.
+  * Mouse drag test fails.
+  * Crash when using win_move_separator() in other tab page.
+  * If 'endofline' is set the CTRL-Z may be written in the wrong place.
+  * The <Home> key in tmux doesn't work when 'term' is set to
+  "xterm". (Dominique Pellé)
+  * Various typos.
+  * Wrong counts in macro comment.
+  * Compiler warning for redefining HAVE_DUP.
+  * Deprecation warning causes build failure.
+  * Warning for missing return type.
+  * The window title is not redrawn when 'endoffile' changes.
+  * Wrong error when using extend() with funcref.
+  * append() reports failure when not appending anything.
+  * Compiler warnings for unused variables.
+  * Test may fail depending on sequence of events.
+  * Cannot change a slice of a const list. (Takumi KAGIYAMA)
+  * deletebufline() does not always return 1 on failure.
+  * Unicode range for Apple SF symbols is outdated.
+  * VHS tape files are not recognized.
+  * Handling 'statusline' errors is spread out.
+  * Shell command with just space gives strange error.
+  * Using assert_fails() may cause hit-enter prompt.
+  * CI: not totally clear what MS-Windows version is used.
+  * Help item for --log argument is not aligned nicely.
+  * Terminal mouse test is a bit flaky.
+  * Terminal mouse test is still flaky.
+  * Crypt test is skipped if xxd is not found.
+  * No proper test for what 9.0.0846 fixes.
+  * Comment not located above the code it refers to.
+  * "!!sort" in a closed fold sorts too many lines.
+  * Compiler warning for unused variable.
+  * Solution for "!!sort" in closed fold is not optimal.
+  * Default value of 'endoffile' is wrong.
+  * col() and charcol() only work for the current window.
+  * Crash when using "!!" without a previous shell command.
+  * Duplicate arguments are not always detected.
+  * No test for what patch 8.2.2207 fixes.
+  * Wildmenu redrawing code is spread out.
+  * Bogus error when string used after :elseif.
+  * Get E967 when using text property in quickfix window. (Sergey Vlasov)
+  * Using freed memory when clearing augroup at more prompt.
+  * Code is indented more than needed.
+  * Using freed memory when executing mapclear at the more prompt.
+  * Using freed memory when executing unmenu at the more prompt.
+  * Using freed memory when executing delfunc at the more prompt.
+  * Code is indented more than needed.
+  * Using freed memory with :comclear while listing commands.
+  * Coverity warns for dead code.
+  * Unnecessary nesting in makefile.
+  * Preprocessor indenting is off.
+  * Cannot get the currently showing mouse shape.
+  * Using freed memory after SpellFileMissing autocmd uses bwipe.
+  * A silent mapping may cause dots on the command line.
+  * Mouse shape remains in op-pending mode after failed change.
+  * Informational message has an error message number.
+  * Horizontal mouse scroll only works in the GUI.
+  * Cannot easily try out what codes various keys produce.
+  * Keycode check script has a few flaws.
+  * No test for what patch 9.0.0827 fixes.
+  * Virtual text below after match has wrong highlight.
+  * May redraw when not needed, causing slow scrolling.
+  * 'smoothscroll' cursor calculations wrong when 'number' is set.
+  * Virtual text property highlight ignores window background.
+  * File renamed twice in test; missing feature check.
+  * Test for home key fails when 'term' is "tmux".
+  * Clinical Quality Language files are not recognized.
+  * With 'smoothscroll' cursor is one screen line too far down. (Ernie Rael)
+  * The builtin terminals are in one long list.
+  * Cursor moves too far with 'smoothscroll'.
+  * Setting w_leftcol and handling side effects is confusing.
+  * Some mouse scroll code is not in a good place.
+  * Key code checker doesn't check modifyOtherKeys resource.
+  * Various comment and indent flaws.
+  * Virtual text after the line wraps when 'wrap' is off.
+  * Mouse scroll code is not optimal.
+  * Restoring window after WinScrolled may fail.
+  * With 'smoothscroll' cursor may end up in wrong position.
+  * Error message for layout change does not match action.
+  * Setting lines in another buffer may not work well.
+  * With 'smoothscroll' set mouse click position may be wrong.
+  * libvterm with modifyOtherKeys level 2 does not match xterm.
+  * Only a change in the current window triggers the WinScrolled event.
+  * deletebufline() may move marks in the wrong window.
+  * WinScrolled may trigger immediately when defined.
+  * getbufline() is inefficient for getting a single line.
+  * The WinScrolled autocommand event is not enough.
+  * MS-Windows: modifier keys do not work with mouse scroll events.
+  * Build failure with tiny features.
+  * Cannot find an import prefixed with "s:". (Doug Kearns)
+  * Missing defined(PROTO) in #ifdef.
+  * Mermaid files are not recognized.
+  * Second SIGWINCH signal may be ignored.
+
+-------------------------------------------------------------------
 Mon Oct 24 08:56:32 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 9.0.0814, fixes the following problems

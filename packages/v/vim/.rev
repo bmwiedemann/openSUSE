@@ -6486,4 +6486,41 @@ always built-in because vim has direct perl dependencies anyway.
  * Display test for 'listchars' &quot;precedes&quot; fails</comment>
     <requestid>1030701</requestid>
   </revision>
+  <revision rev="328" vrev="1">
+    <srcmd5>e9fcc8a6ed9bcf7821196dc6e885c3ea</srcmd5>
+    <version>9.0.0924</version>
+    <time>1669288938</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 9.0.0924, fixes the following problems
+  * Aws config files are not recognized.
+  * &quot;:!&quot; does not switch to the alternate screen.
+  * CTRL-Z at end of file is always dropped.
+  * Build error.
+  * &quot;!ls&quot; does not work.
+  * Still a build error, tests are failing.
+  * Memory leak with empty shell command.
+  * Crash when using win_move_statusline() in another tab page.
+  * Crash when dragging the statusline with a mapping.
+  * Mouse drag test fails.
+  * Crash when using win_move_separator() in other tab page.
+  * If 'endofline' is set the CTRL-Z may be written in the wrong place.
+  * The &lt;Home&gt; key in tmux doesn't work when 'term' is set to
+  &quot;xterm&quot;. (Dominique Pellé)
+  * Various typos.
+  * Wrong counts in macro comment.
+  * Compiler warning for redefining HAVE_DUP.
+  * Deprecation warning causes build failure.
+  * Warning for missing return type.
+  * The window title is not redrawn when 'endoffile' changes.
+  * Wrong error when using extend() with funcref.
+  * append() reports failure when not appending anything.
+  * Compiler warnings for unused variables.
+  * Test may fail depending on sequence of events.
+  * Cannot change a slice of a const list. (Takumi KAGIYAMA)
+  * deletebufline() does not always return 1 on failure.
+  * Unicode range for Apple SF symbols is outdated.
+  * VHS tape files are not recognized.
+  * Handling 'statusline' errors is spread out.</comment>
+    <requestid>1037540</requestid>
+  </revision>
 </revisionlist>
