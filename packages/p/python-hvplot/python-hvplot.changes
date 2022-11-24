@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Tue Nov 22 18:37:24 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.8.1
+  ## Interactive:
+  * Set interactive function to lazy to avoid calling it twice
+    (772)
+  * Add support for hvplot kind accessor (781, 858)
+  * Add more tests to Interactive and some comments (812)
+  * Fixes to the operators implemented by Interactive (814)
+  * Propagate max_rows (815)
+  * Only register the function parameters watchers once (818)
+  * Do not re-execute transform on copied clones (833)
+  * Internal callback made dependent only when parameters are found
+    (857)
+  ## Explorer:
+  * Make the explorer easier to use (799)
+  * Enhancement to Fields tab in explorer (811)
+  * Remove the marker styling option of the explorer (809)
+  ## Plot:
+  * Make rescale_discrete_levels a plot option (758)
+  * Ensure that dataframes with multiple columns are categorically
+    shaded (759)
+  * Display a color bar when rasterize is enabled (782)
+  * Update the expected DataSet plot title after xarray 2022.6.0
+    (795)
+  * Set categorically shaded when there's more than one variable
+    (843)
+  * Clone GeoViews' features (850)
+  * Documentation:
+  * Add new and improve existing docstrings (793, 826, 827, 822)
+  * Update developer install instructions (794)
+  * Rework the landing page and add a Getting started guide (838)
+  ## Misc:
+  * No longer use basestring from holoviews.core.util (757)
+  * Ensure that repr is initialized on hvplot backend import (774)
+  * Add RGB test data (779)
+  * Add flatten utility function (798)
+- Release 0.8.0
+  ## Main new features:
+  * Add ability to call interactive on bound functions (#720)
+  * Add support to the Matplotlib and Plotly backends (#653)
+  * Add the hvPlotExplorer, a Panel UI component designed to
+    explore data (#638, #639, #651, #710, #726)
+  ## Enhancements:
+  * Interactive:
+    - Allow using getitem on an accessor in interactive (#633)
+    - Allow attribute access on ufunc on interactive (#635)
+    - Enhancements for interactive API (#640)
+    - Flatten op_args to be able to find nested widgets (#699)
+  * Allow dynspread to be used with rasterize (#637)
+  * Add a title to xarray plots with scalar coords (#659)
+  * Adding datashade and rasterize options to scatter_matrix (#495)
+  * Update the default internal value of clim to support Matplotlib
+    (#679)
+  * Ensure bokeh/panel extension is loaded only once (#686)
+  * Add support for planar layout from Networkx (#700)
+  * Wrap color in hv.dim when it matches a dimension/column (#717)
+  * Expose datashader line_width and rescale_discrete_levels
+    options (#731)
+  * Improve array-like handling for x and y inputs (#714)
+  ## Fixes:
+  * Interactive:
+    - Interactive fixes (#630)
+    - Fix for interactive transform (#632)
+    - Fix issue with accessors on interactive (#641)
+    - Consistently dereference attribute access (#642)
+  * State that the data cannot be symmetric if it's empty (#680)
+  * Disable hover on errorbars plot (#721)
+  * Fix application of the scale argument for geoviews features
+    (#725)
+  ## Maintenance:
+  * Drop support for py2.7, min supported version is py3.6 now
+    (#702)
+  * Switch to Pytest and run the CI on Python 3.6, 3.8 and 3.9
+    (#703)
+  * Changed to packaging.version (#708)
+  * Fix a broken test due to PROJ unexpectedly matching a normal
+    string (#660)
+- Add upper pin for bokeh, gh#holoviz/hvplot#970
+
+-------------------------------------------------------------------
 Mon Jan 31 20:33:03 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Don't test with python310-dask: not supported yet

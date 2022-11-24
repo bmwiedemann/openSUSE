@@ -16,28 +16,28 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define         skip_python2 1
 Name:           python-hvplot
-Version:        0.7.3
+Version:        0.8.1
 Release:        0
 Summary:        High-level plotting API for the PyData ecosystem built on HoloViews
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/pyviz/hvplot
 Source0:        https://files.pythonhosted.org/packages/source/h/hvplot/hvplot-%{version}.tar.gz
-# Test data
-Source1:        https://github.com/pydata/xarray-data/archive/master.tar.gz#/xarray-data.tar.gz
+# Test data. Bump the commit whenever you bump this version
+Source1:        https://github.com/pydata/xarray-data/archive/7d8290e0be9d2a8f4b4381641f20a97db6eaea3d.tar.gz#/xarray-data.tar.gz
 Source100:      python-hvplot-rpmlintrc
 BuildRequires:  %{python_module param >= 1.6.1}
 BuildRequires:  %{python_module pyct >= 0.4.4}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-bokeh >= 1.0.0
+# https://github.com/holoviz/hvplot/issues/970
+Requires:       (python-bokeh >= 1.0.0 with python-bokeh < 2.5)
 Requires:       python-colorcet >= 2
 Requires:       python-holoviews >= 1.11.0
 Requires:       python-numpy >= 1.15
+Requires:       python-packaging
 Requires:       python-pandas
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -64,16 +64,18 @@ Recommends:     python-xarray
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Pillow}
-BuildRequires:  %{python_module bokeh >= 1.0.0}
+BuildRequires:  %{python_module bokeh >= 1.0.0 with %python-bokeh < 2.5}
 BuildRequires:  %{python_module colorcet >= 2}
-BuildRequires:  %{python_module dask if %python-base < 3.10}
-BuildRequires:  %{python_module datashader >= 0.6.5 if %python-base < 3.10}
+BuildRequires:  %{python_module dask}
+BuildRequires:  %{python_module datashader}
 BuildRequires:  %{python_module holoviews >= 1.11.0}
+BuildRequires:  %{python_module ipywidgets}
 BuildRequires:  %{python_module networkx}
 BuildRequires:  %{python_module numpy >= 1.7}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module param >= 1.6.1}
 BuildRequires:  %{python_module parameterized}
+BuildRequires:  %{python_module plotly}
 BuildRequires:  %{python_module pooch}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
@@ -92,7 +94,10 @@ plot APIs is offered, or it can be used as a standalone component.
 
 %prep
 %autosetup -p1 -n hvplot-%{version}
-tar -x -f %{SOURCE1} --transform='s/xarray-data-master/cache\/xarray_tutorial_data/'
+mkdir -p cache/xarray_tutorial_data
+pushd cache/xarray_tutorial_data
+tar -x -f %{SOURCE1} --strip-components=1
+popd
 
 %build
 %python_build
@@ -104,6 +109,8 @@ tar -x -f %{SOURCE1} --transform='s/xarray-data-master/cache\/xarray_tutorial_da
 %check
 # set pooch cache dir
 export XDG_CACHE_HOME=$(pwd)/cache
+# no network
+donttest="test_urls"
 # These tests cannot cast to 32-bit datatypes gh#holoviz/hvplot#560
 if [ $(getconf LONG_BIT) -eq 32 ]; then
   donttest+=" or test_aspect_and_frame_height_with_datashade"
@@ -113,12 +120,13 @@ if [ $(getconf LONG_BIT) -eq 32 ]; then
   donttest+=" or test_xlim_affects_x_range"
   donttest+=" or test_plot_resolution_with_rasterize"
 fi
-%pytest hvplot/tests/test* -ra ${donttest:+ -k "not (${donttest:4})"}
+%pytest hvplot/tests/test* -ra -k "not ($donttest)"
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
 %{python_sitelib}/hvplot
+%exclude %{python_sitelib}/hvplot/tests
 %{python_sitelib}/hvplot-%{version}*-info
 
 %changelog
