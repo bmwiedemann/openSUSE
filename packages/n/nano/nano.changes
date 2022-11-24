@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov 16 09:52:37 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 7.0:
+  * String binds may contain bindable function names between braces
+  * Unicode codes can be entered (via M-V) without leading zeroes,
+    by finishing short codes with <Space> or <Enter>
+  * Word completion (^]) looks for candidates in all open buffers
+  * No regular expression matches the final empty line any more
+
+-------------------------------------------------------------------
 Wed Aug  3 20:25:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.4:
