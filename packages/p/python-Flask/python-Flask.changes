@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Mon Nov  7 11:58:54 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to 2.2.2
+  + Version 2.2.2
+    * Update Werkzeug dependency to >= 2.2.2. This includes fixes related to
+      the new faster router, header parsing, and the development server. #4754
+    * Fix the default value for app.env to be "production".
+      This attribute remains deprecated. #4740
+  + Version 2.2.1
+    * Setting or accessing json_encoder or json_decoder raises a deprecation warning. #4732
+  + Version 2.2.0
+    * Remove previously deprecated code. #4667
+    * Update Werkzeug dependency to >= 2.2.
+    * The app and request contexts are managed using Python context vars directly rather than Werkzeug’s LocalStack.
+      This should result in better performance and memory use. #4682
+    * The FLASK_ENV environment variable and app.env attribute are deprecated,
+      removing the distinction between development and debug mode.
+      Debug mode should be controlled directly using the --debug option or app.run(debug=True). #4714
+    * Some attributes that proxied config keys on app are deprecated: session_cookie_name,
+      send_file_max_age_default, use_x_sendfile, propagate_exceptions, and templates_auto_reload.
+      Use the relevant config keys instead. #4716
+    * Add new customization points to the Flask app object for many previously global behaviors.
+    * JSON configuration is moved to attributes on the default app.json provider.
+      JSON_AS_ASCII, JSON_SORT_KEYS, JSONIFY_MIMETYPE, and JSONIFY_PRETTYPRINT_REGULAR are deprecated. #4692
+    * Setting custom json_encoder and json_decoder classes on the app or a blueprint,
+      and the corresponding json.JSONEncoder and JSONDecoder classes, are deprecated.
+      JSON behavior can now be overridden using the app.json provider interface. #4692
+    * json.htmlsafe_dumps and json.htmlsafe_dump are deprecated, the function is built-in to Jinja now. #4692
+    * Refactor register_error_handler to consolidate error checking. Rewrite some error messages to be more consistent. #4559
+    * Use Blueprint decorators and functions intended for setup after registering
+      the blueprint will show a warning. In the next version, this will become an error
+      just like the application setup methods. #4571
+    * before_first_request is deprecated. Run setup code when creating the application instead. #4605
+    * Added the View.init_every_request class attribute. If a view subclass sets this to False,
+      the view will not create a new instance on every request. #2520.
+    * A flask.cli.FlaskGroup Click group can be nested as a sub-command in a custom CLI. #3263
+    * Add --app and --debug options to the flask CLI, instead of requiring that they are
+      set through environment variables. #2836
+    * Add --env-file option to the flask CLI. This allows specifying a dotenv file to load
+      in addition to .env and .flaskenv. #3108
+    * It is no longer required to decorate custom CLI commands on app.cli or blueprint.cli
+      with @with_appcontext, an app context will already be active at that point. #2410
+    * SessionInterface.get_expiration_time uses a timezone-aware value. #4645
+    * View functions can return generators directly instead of wrapping them in a Response. #4629
+    * Add stream_template and stream_template_string functions to render a template as a stream of pieces. #4629
+    * A new implementation of context preservation during debugging and testing. #4666
+    * Allow returning a list from a view function, to convert it to a JSON response like a dict is. #4672
+    * When type checking, allow TypedDict to be returned from view functions. #4695
+    * Remove the --eager-loading/--lazy-loading options from the flask run command. #4715
+
+-------------------------------------------------------------------
 Wed Jul 13 21:18:49 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - Update to 2.1.3

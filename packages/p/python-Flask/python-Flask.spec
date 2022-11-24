@@ -27,7 +27,7 @@
 %define skip_python36 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Flask
-Version:        2.1.3
+Version:        2.2.2
 Release:        0
 Summary:        A microframework based on Werkzeug, Jinja2 and good intentions
 License:        BSD-3-Clause
@@ -36,7 +36,7 @@ URL:            https://flask.palletsprojects.com
 Source0:        https://files.pythonhosted.org/packages/source/F/Flask/Flask-%{version}.tar.gz
 Source1:        python-Flask-rpmlintrc
 BuildRequires:  %{python_module Jinja2 >= 3.0}
-BuildRequires:  %{python_module Werkzeug >= 2.0}
+BuildRequires:  %{python_module Werkzeug >= 2.2.2}
 BuildRequires:  %{python_module click >= 8.0.0}
 BuildRequires:  %{python_module contextvars}
 BuildRequires:  %{python_module importlib-metadata >= 3.6.0 if %python-base < 3.10}
