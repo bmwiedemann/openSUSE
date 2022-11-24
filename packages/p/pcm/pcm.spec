@@ -17,21 +17,21 @@
 
 
 Name:           pcm
-Version:        202210
+Version:        202211
 Release:        0
-Summary:        Processor Counter Monitor
+Summary:        Intel(r) Performance Counter Monitor
 License:        BSD-3-Clause
-URL:            https://github.com/opcm/pcm
-Source:         https://github.com/opcm/pcm/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/intel/pcm
+Source:         https://github.com/intel/pcm/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  make
 ExclusiveArch:  %{ix86} x86_64
 
 %description
-Processor Counter Monitor (PCM) is an application programming interface (API)
-and a set of tools based on the API to monitor performance and energy metrics
-of Intel Core, Xeon, Atom and Xeon Phi processors.
+Intel(r) Performance Counter Monitor (Intel(r) PCM) is an application programming
+interface (API) and a set of tools based on the API to monitor performance and
+energy metrics of Intel Core, Xeon, Atom and Xeon Phi processors.
 
 %prep
 %setup -q
@@ -70,6 +70,7 @@ rm -rf %{buildroot}%{_datadir}/doc/PCM/WINDOWS_HOWTO.md
 %{_sbindir}/pcm-msr
 %{_sbindir}/pcm-mmio
 %{_sbindir}/pcm-numa
+%{_sbindir}/pcm-accel
 %{_sbindir}/pcm-pcicfg
 %{_sbindir}/pcm-pcie
 %{_sbindir}/pcm-power
@@ -84,6 +85,8 @@ rm -rf %{buildroot}%{_datadir}/doc/PCM/WINDOWS_HOWTO.md
 %{_datadir}/pcm/opCode-106.txt
 %{_datadir}/pcm/opCode-85.txt
 %{_datadir}/pcm/opCode-134.txt
+%{_datadir}/pcm/opCode-143.txt
+%{_datadir}/pcm/opCode-143-accel.txt
 %{_datadir}/pcm/PMURegisterDeclarations
 
 %changelog

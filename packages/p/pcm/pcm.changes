@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Nov 24 10:00:00 UTC 2022 - Roman Dementiev <roman.dementiev@intel.com>
+
+updated to the new upstream repository location and the name
+
+- Update to version 202211:
+  * added Sapphire Rapids processor support
+  * added new pcm-accel utility to monitor Sapphire Rapids accelerator performance
+  * added --version option to all pcm tools
+  * pcm: new "enforce flush output" option
+  * pcm-raw: support ocr_msr_val and tid modifiers
+  * fixed default value for CHA filter1 on CLX and SKX
+  * pcm-sensor-server: allow build on FreeBSD
+  * pcm-raw: adopt new JSON event file format, new URLs for perfmon event lists
+
+-------------------------------------------------------------------
 Mon Oct 31 13:00:11 CST 2022 - Coly Li <colyli@suse.de>
 
 - Synchronize pcm package from openSUSE to SLES15-SP* supported
