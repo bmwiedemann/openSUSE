@@ -27,7 +27,7 @@
 %endif
 
 Name:           datovka
-Version:        4.20.0
+Version:        4.21.1
 Release:        0
 Summary:        Library to access Czech eGov system "Datove schranky"
 License:        GPL-3.0-or-later
@@ -50,9 +50,11 @@ BuildRequires:  cmake(Qt%{qt_version}Network) >= %{qt_version_full}
 BuildRequires:  cmake(Qt%{qt_version}PrintSupport) >= %{qt_version_full}
 BuildRequires:  cmake(Qt%{qt_version}Sql) >= %{qt_version_full}
 BuildRequires:  cmake(Qt%{qt_version}Svg) >= %{qt_version_full}
+BuildRequires:  cmake(Qt%{qt_version}WebSockets) >= %{qt_version_full}
 BuildRequires:  cmake(Qt%{qt_version}Widgets) >= %{qt_version_full}
 BuildRequires:  pkgconfig(libdatovka) >= 0.1.2
 %if 0%{qt_version} == 6
+BuildRequires:  cmake(Qt6Core5Compat) >= %{qt_version_full}
 Requires:       qt6-sql-sqlite
 %else
 Requires:       libqt5-sql-sqlite

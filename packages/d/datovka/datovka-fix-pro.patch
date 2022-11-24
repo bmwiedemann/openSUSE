@@ -4,15 +4,15 @@
 
 --- a/datovka.pro
 +++ b/datovka.pro
-@@ -52,7 +52,6 @@ isEmpty(UI_DIR) {
- CONFIG += object_parallel_to_source
+@@ -69,7 +69,6 @@ CONFIG += object_parallel_to_source
  
  DEFINES += \
+ 	ENABLE_TAGS=1 \
 -	DEBUG=1 \
  	VERSION=\\\"$${VERSION}\\\" \
  	APP_NAME=\\\"$${APP_NAME}\\\" \
  	APP_ORG_DOMAIN=\\\"cz.nic\\\" \
-@@ -106,11 +105,6 @@ unix:!macx {
+@@ -123,11 +122,6 @@ unix:!macx {
  	localisation.files += locale/datovka_cs.qm \
  		locale/datovka_en.qm
  
@@ -24,7 +24,7 @@
  	DEFINES += DATADIR=\\\"$$DATADIR\\\" \
  		PKGDATADIR=\\\"$$PKGDATADIR\\\" \
  		LOCALE_INST_DIR="\"\\\"$${LOCALE_INST_DIR}\\\"\"" \
-@@ -128,12 +122,11 @@ unix:!macx {
+@@ -145,12 +139,11 @@ unix:!macx {
  			icon64 \
  			icon128 \
  			icon256 \
@@ -39,7 +39,7 @@
  isEqual(QT_MAJOR_VERSION, 5) {
  	QMAKE_CXXFLAGS += -std=c++11
  }
-@@ -265,15 +258,8 @@ macx {
+@@ -295,15 +288,8 @@ macx {
  		locale/datovka_en.qm
  	localisation.files += locale/qtbase_cs.qm
  

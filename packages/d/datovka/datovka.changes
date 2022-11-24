@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Wed Nov 23 06:52:13 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to 4.21.1
+ * Fixed hanging send message windows when exiting the application having those
+   windows open.
+ * Fixed occasional application hangs when worker tasks have been collected on
+   exit.
+ * GUI application exits in a controlled manner when a POSIX signal is received
+   on UNIX-like systems or when a system shutdown or user log-off event is
+   detected on Windows.
+ * CLI application handles POSIX signals and detects and handles Ctrl+C and
+   Ctrl+Break key combinations in Windows command line.
+ * Added date-based constraints when checking whether messages are stored in
+   records management service.
+ * Listed message data can be exported into a CSV file when checking whether
+   messages are stored in records management service
+ * Accepting backups with missing account identifier. The identifiers may be
+   missing if some accounts have been created from local databases.
+ * Recipient name '%R' can be used when constructing file names.
+ * Reduced computational effort when switching between data messages. Digital
+   signatures are not checked. Attachment data are loaded when attachments are
+   required/selected.
+ * Able to generate e-mails with user-specified content. ZFOs and attachments
+   can be added into a single email.
+ * ZFO attachments can be viewed directly in the application.
+ * Automatic upload targets can be checked for all messages which aren't
+   already uploaded into the records management service.
+ * Fixed an error in the message download dialogue when the download loop
+   hasn't been stopped when the dialogue has been rejected otherwise than using
+   the Cancel button.
+ * New tag database format. All stored data are converted to new format.
+ * Fixed warnings about duplicated database connections.
+ * Weakened some recoverable error statements.
+ * Fixed inability to check the signature of downloaded psrootqca4.crl file.
+   Added PostSignum Qualified CA 5 certificate.
+ * Allowing modification of account settings for existing accounts with
+   incomplete login credentials.
+ * Fixed error when account data have not been downloaded on subsequent
+   account removing and adding.
+ * Checking libcrypto and libdatovka presence during qmake phase when
+   compiling on UNIX-like systems (excluding OS X/macOS).
+ * Improved error and warning messages in preferences database code.
+ * Able to import account data from the mobile application via a backup or
+   transfer archive.
+ * Able to download messages from ISDS via command line when the envelope
+   hasn't been downloaded yet.
+ * Added a tag client for the tag server under development.
+   The tag client must be enabled in the preferences.
+
+-------------------------------------------------------------------
 Tue May  3 06:54:31 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
 
 - Update to 4.20.0
