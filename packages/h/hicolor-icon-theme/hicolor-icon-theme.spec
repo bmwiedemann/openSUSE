@@ -45,6 +45,10 @@ touch %{buildroot}%{_datadir}/icons/hicolor/icon-theme.cache
 chmod -x COPYING
 # Install rpm macros
 install -D -m644 %{SOURCE1} %{buildroot}%_rpmmacrodir/macros.hicolor
+# Add 1024x1024 directory for package ownership [default-icon-theme#3]
+mkdir -p %{buildroot}%{_datadir}/icons/hicolor/1024x1024/{actions,\
+animations,apps,categories,devices,emblems,emotes,filesystems,\
+intl,mimetypes,places,status,stock}
 
 %files
 %license COPYING

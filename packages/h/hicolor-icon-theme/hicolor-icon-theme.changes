@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 21 13:49:48 UTC 2022 - Fabio Pesari <fpesari@tuxfamily.org>
+
+- Add 1024x1024 directory for package ownership
+
+-------------------------------------------------------------------
 Wed May  8 09:29:55 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Move RPM macros to %_rpmmacrodir.
