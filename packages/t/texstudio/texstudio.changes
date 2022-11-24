@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Nov 19 21:26:54 UTC 2022 - Markus Ebner <info@ebner-markus.de>
+- Update to version 4.4.0
+  * new icon theme Colibri (by geolta)
+  * modernized manual
+  * faster removing of multiple lines
+  * end multi cursor mode with esc
+  * **no** win/qt5 build
+  * switch to CMAKE build system (qmake deprecated)
+  * hide/filter configuration completer list
+  * bug fixes
+
+-------------------------------------------------------------------
 Sat Aug 27 00:02:18 UTC 2022 - Markus Ebner <info@ebner-markus.de>
 - Update to version 4.3.1
   * fix loading files various times if relative path is used for \include (#2533)
