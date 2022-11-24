@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 17 10:55:57 UTC 2022 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- add vlc-caca-fix-to-0-99-beta20-version.patch: build with libcaca-0.99.beta20 
+
+-------------------------------------------------------------------
 Tue Nov  8 14:49:10 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Limit to ffmpeg 4: we're also linking opencv3 which does not use

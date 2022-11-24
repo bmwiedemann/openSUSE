@@ -60,6 +60,8 @@ Patch100:       vlc-projectM-qt5.patch
 Patch103:       0001-Port-OpenCV-facedetect-example-to-C-API.patch
 # PATCH-FIX-UPSTREAM https://trac.videolan.org/vlc/ticket/25473 dominic.mayers@meditationstudies.org -- The maintainers of live555 changed connectionEndpointAddresss to getConnectionEndpointAddress, which now provides the address value by reference.
 Patch107:       vlc-get-addr-by-ref-from-getConnectionEndpointAddress.patch
+# PATCH-FIX-UPSTREAM vlc-caca-fix-to-0-99-beta20-version.patch -- Migrate to new API of libcaca in v0.99.beta20
+Patch108:       vlc-caca-fix-to-0-99-beta20-version.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  aalib-devel
 BuildRequires:  alsa-devel >= 1.0.24
@@ -128,7 +130,7 @@ BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(aom)
-BuildRequires:  pkgconfig(caca) >= 0.99.beta14
+BuildRequires:  pkgconfig(caca) >= 0.99.beta20
 BuildRequires:  pkgconfig(dbus-1) >= 1.6.0
 BuildRequires:  pkgconfig(dvdnav) > 4.9.0
 BuildRequires:  pkgconfig(dvdread) > 4.9.0
@@ -418,6 +420,7 @@ OpenCV based video filters and a face detection example.
 if pkg-config --atleast-version 2020.12.11 live555; then
 %patch107 -p1
 fi
+%patch108 -p1
 
 ### And LUA 5.3.1 has some more API changes
 if pkg-config --atleast-version 5.3.1 lua; then
