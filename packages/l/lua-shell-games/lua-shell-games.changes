@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Wed Nov 23 09:43:59 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Fix the name of the package.
+
+-------------------------------------------------------------------
+Mon Nov 21 20:31:30 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
+
+- Lua shell-games 1.1.0 package
+- Fix overly specific test with bash 5
+  + Fix-capture_combined_spec-with-new-shell.patch

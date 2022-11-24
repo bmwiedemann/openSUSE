@@ -1,0 +1,5 @@
+<package name="lua-shell-games" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:lua" package="lua-shell-games"/>
+</package>
