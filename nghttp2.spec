@@ -32,7 +32,7 @@
 # issue and will be removed at the end of 2022
 %bcond_with asio
 Name:           nghttp2%{psuffix}
-Version:        1.50.0
+Version:        1.51.0
 Release:        0
 Summary:        Implementation of Hypertext Transfer Protocol version 2 in C
 License:        MIT
