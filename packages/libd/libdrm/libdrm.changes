@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 23 14:20:46 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Apply n_libdrm-drop-valgrind-dep-generic.patch and
+  n_libdrm-drop-valgrind-dep-intel.patch only when the build uses
+  meson < 0.64. With meson 0.64, we don't get the dependency on
+  valgraind added.
+
+-------------------------------------------------------------------
 Tue Nov 22 11:03:49 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - split n_libdrm-drop-valgrind-dep.patch into

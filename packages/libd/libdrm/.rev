@@ -1617,4 +1617,12 @@ Man pages are disabled for this build, upstream disabled them for this release. 
   do not provide static libs anyway).</comment>
     <requestid>1037319</requestid>
   </revision>
+  <revision rev="164" vrev="3">
+    <srcmd5>525871fe7fa2ca5c6dbf26bfe688c381</srcmd5>
+    <version>2.4.114</version>
+    <time>1669288951</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1037626</requestid>
+  </revision>
 </revisionlist>

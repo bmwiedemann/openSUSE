@@ -258,6 +258,7 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 
 %install
 %meson_install
+%if %{pkg_vcmp meson < 0.64}
 %if %{with valgrind_support}
 # patch the generated pkgconfig files to not have a dependency on valgrind
 # intentionally using a patch file to catch if we need to adjust
@@ -270,6 +271,7 @@ patch -p1 --no-backup-if-mismatch < %{SOURCE4}
 %endif
 %endif
 popd
+%endif
 %endif
 %fdupes %{buildroot}/%{_prefix}
 
