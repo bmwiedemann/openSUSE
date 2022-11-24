@@ -17,8 +17,8 @@
 
 
 # grep -Pir 'define\s+VERSION|strvers'
-%define rver	2021-09-01
-%global box_version	2021.09.01
+%define rver	2022-10-16
+%global box_version	2022.10.16
 %global cdr_version	3.02~a10
 %global sccs_version	5.09
 %global smake_version	1.6
@@ -29,13 +29,12 @@
 Name:           schily
 Version:        %box_version
 Release:        0
-Summary:        A collection of command-line utilities maintained by J.Schilling
+Summary:        A collection of command-line utilities originally written by J.Schilling
 License:        BSD-2-Clause AND CDDL-1.0 AND GPL-2.0-only AND GPL-2.0-or-later AND BSD-3-Clause AND HPND AND ISC
 Group:          Productivity/Multimedia/CD/Record
-URL:            http://cdrtools.sourceforge.net/private/cdrecord.html
-#Freshcode-URL:	http://freshcode.club/projects/schily
+URL:            https://codeberg.org/schilytools/schilytools
 
-Source:         https://downloads.sf.net/schilytools/%name-%rver.tar.bz2
+Source:         http://fuz.su/pub/schilytools/%name-%rver.tar.bz2
 Source1:        README-FIRST
 # Honor https://en.opensuse.org/openSUSE:Packaging_Patches_guidelines#Upstream_policy
 # and submit patches upstream FIRST (cc to the bspkg maintainer perhaps).
@@ -52,7 +51,7 @@ BuildRequires:  libtool
 Conflicts:      cdrkit-cdrtools-compat
 
 %description
-The "Schily" Tool Box is a set of tools written or managed by Jörg Schilling.
+The "Schily" Tool Box is a set of tools originally written by Jörg Schilling.
 
 %package -n bosh
 Summary:        Multibyte-capable POSIX-conforming Bourne shell
@@ -462,9 +461,7 @@ GB).
 
 %prep
 %autosetup -n %name-%rver -p1
-
 find . "(" -type d -o -type f ")" -exec chmod u+w "{}" "+"
-
 cp %{SOURCE1} .
 
 %build
@@ -791,7 +788,7 @@ fi
 %_mandir/man1/cdda2wav.1*
 
 %files -n cdrecord
-%license CDDL.Schily.txt cdrecord/COPYING
+%license CDDL.Schily.txt
 %doc cdrecord/README*
 %config %_sysconfdir/default/cdrecord
 %verify(not mode caps) %attr(0755,root,root) %_bindir/cdrecord

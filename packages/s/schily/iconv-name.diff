@@ -16,11 +16,11 @@ table.
  mkisofs/mkisofs.c |    4 ++--
  2 files changed, 8 insertions(+), 9 deletions(-)
 
-Index: schily-2019-01-22/mkisofs/mkisofs.8
+Index: schily-2022-10-16/mkisofs/mkisofs.8
 ===================================================================
---- schily-2019-01-22.orig/mkisofs/mkisofs.8
-+++ schily-2019-01-22/mkisofs/mkisofs.8
-@@ -2414,8 +2414,8 @@ Input charset that defines the character
+--- schily-2022-10-16.orig/mkisofs/mkisofs.8
++++ schily-2022-10-16/mkisofs/mkisofs.8
+@@ -2500,8 +2500,8 @@ Input charset that defines the character
  used with the
  .I \-mac\-name
  option.
@@ -30,8 +30,8 @@ Index: schily-2019-01-22/mkisofs/mkisofs.8
 +.I macintosh
  (Mac Roman)
  See
- .B "CHARACTER SETS
-@@ -2625,7 +2625,7 @@ any of the various Apple/Unix file forma
+ .B "CHARACTER SETS"
+@@ -2711,7 +2711,7 @@ any of the various Apple/Unix file forma
  option. See the
  .B HFS MACINTOSH FILE NAMES
  for more information. Defaults to
@@ -40,7 +40,7 @@ Index: schily-2019-01-22/mkisofs/mkisofs.8
  (Mac Roman).
  .TP
  .B \-output\-hfs\-charset
-@@ -3140,13 +3140,12 @@ name will be used in the TRANS.TBL file,
+@@ -3227,13 +3227,12 @@ name will be used in the TRANS.TBL file,
  .PP
  The character set used to convert any HFS file name to a Joliet/Rock Ridge
  file name defaults to
@@ -57,11 +57,11 @@ Index: schily-2019-01-22/mkisofs/mkisofs.8
  .PP
  Note: the character codes used by HFS file names taken from the various
  Apple/Unix formats will not be converted as they are assumed to be in the
-Index: schily-2019-01-22/mkisofs/mkisofs.c
+Index: schily-2022-10-16/mkisofs/mkisofs.c
 ===================================================================
---- schily-2019-01-22.orig/mkisofs/mkisofs.c
-+++ schily-2019-01-22/mkisofs/mkisofs.c
-@@ -2849,7 +2849,7 @@ setcharset:
+--- schily-2022-10-16.orig/mkisofs/mkisofs.c
++++ schily-2022-10-16/mkisofs/mkisofs.c
+@@ -2888,7 +2888,7 @@ setcharset:
  
  #ifdef APPLE_HYB
  	if (hfs_icharset == NULL || strcmp(hfs_icharset, "mac-roman") == 0) {
@@ -70,7 +70,7 @@ Index: schily-2019-01-22/mkisofs/mkisofs.c
  	}
  	hfs_inls = sic_open(hfs_icharset);
  
-@@ -2857,7 +2857,7 @@ setcharset:
+@@ -2896,7 +2896,7 @@ setcharset:
  		hfs_ocharset = hfs_inls ? hfs_inls->sic_name : NULL;
  	}
  	if (hfs_ocharset == NULL || strcmp(hfs_ocharset, "mac-roman") == 0) {

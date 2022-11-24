@@ -434,4 +434,12 @@ make glibc-2.34 happy</comment>
     <comment></comment>
     <requestid>1000489</requestid>
   </revision>
+  <revision rev="47" vrev="47">
+    <srcmd5>847f2411fca840f2ad281f890391a97c</srcmd5>
+    <version>unknown</version>
+    <time>1669288944</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2022.10.16</comment>
+    <requestid>1037572</requestid>
+  </revision>
 </revisionlist>

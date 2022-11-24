@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov 17 16:35:18 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2022.10.16
+  * bsh: Implement ^L support
+  * libmdigest: Add support for BLAKE2 digests
+  * mkisofs: No longer warn about Joliet being nonstandard. With
+    the 2019 revision of ECMA 119, Joliet has been added as an
+    annex to the standard.
+
+-------------------------------------------------------------------
 Wed Aug 31 14:28:57 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - pbosh.1: replace broken ".so sh.1" refernce with a symlink to bosh.1 

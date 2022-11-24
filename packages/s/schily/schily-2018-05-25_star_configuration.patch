@@ -7,7 +7,6 @@ Some default values for configuration/compilation
 ---
  DEFAULTS/Defaults.linux |   11 +++++------
  include/schily/schily.h |    2 +-
- man/Makefile            |    2 +-
  mt/Makefile             |    4 ++--
  rmt/Makefile            |    4 ++--
  rmt/Makefile.man        |    2 +-
@@ -16,12 +15,12 @@ Some default values for configuration/compilation
  star/all.mk             |    2 +-
  star/pax.mk             |    2 +-
  star/star.mk            |    4 ++--
- 11 files changed, 24 insertions(+), 28 deletions(-)
+ 10 files changed, 23 insertions(+), 27 deletions(-)
 
-Index: schily-2021-09-01/DEFAULTS/Defaults.linux
+Index: schily-2022-10-16/DEFAULTS/Defaults.linux
 ===================================================================
---- schily-2021-09-01.orig/DEFAULTS/Defaults.linux
-+++ schily-2021-09-01/DEFAULTS/Defaults.linux
+--- schily-2022-10-16.orig/DEFAULTS/Defaults.linux
++++ schily-2022-10-16/DEFAULTS/Defaults.linux
 @@ -26,7 +26,7 @@ DEFLINKMODE=	static
  # If the next line is uncommented, compilation is done with minimal warnings
  #
@@ -59,10 +58,10 @@ Index: schily-2021-09-01/DEFAULTS/Defaults.linux
  DEFINSMODEX=	755
  DEFINSUSR=	root
  DEFINSGRP=	bin
-Index: schily-2021-09-01/include/schily/schily.h
+Index: schily-2022-10-16/include/schily/schily.h
 ===================================================================
---- schily-2021-09-01.orig/include/schily/schily.h
-+++ schily-2021-09-01/include/schily/schily.h
+--- schily-2022-10-16.orig/include/schily/schily.h
++++ schily-2022-10-16/include/schily/schily.h
 @@ -431,7 +431,7 @@ extern	int	_comerr		__PR((FILE *, int, i
  #endif	/* EOF */
  
@@ -72,23 +71,10 @@ Index: schily-2021-09-01/include/schily/schily.h
  /*PRINTFLIKE1*/
  extern	int	gterror __PR((const char *, ...)) __printflike__(1, 2);
  
-Index: schily-2021-09-01/man/Makefile
+Index: schily-2022-10-16/mt/Makefile
 ===================================================================
---- schily-2021-09-01.orig/man/Makefile
-+++ schily-2021-09-01/man/Makefile
-@@ -7,7 +7,7 @@ RULESDIR=	RULES
- include		$(SRCROOT)/$(RULESDIR)/rules.top
- ###########################################################################
- 
--DIRS=	man4
-+DIRS=	man1
- 
- ###########################################################################
- include		$(SRCROOT)/$(RULESDIR)/rules.dir
-Index: schily-2021-09-01/mt/Makefile
-===================================================================
---- schily-2021-09-01.orig/mt/Makefile
-+++ schily-2021-09-01/mt/Makefile
+--- schily-2022-10-16.orig/mt/Makefile
++++ schily-2022-10-16/mt/Makefile
 @@ -7,7 +7,7 @@ include		$(SRCROOT)/$(RULESDIR)/rules.to
  
  INSDIR=		bin
@@ -107,10 +93,10 @@ Index: schily-2021-09-01/mt/Makefile
  
  ###########################################################################
  include		$(SRCROOT)/$(RULESDIR)/rules.cmd
-Index: schily-2021-09-01/rmt/Makefile
+Index: schily-2022-10-16/rmt/Makefile
 ===================================================================
---- schily-2021-09-01.orig/rmt/Makefile
-+++ schily-2021-09-01/rmt/Makefile
+--- schily-2022-10-16.orig/rmt/Makefile
++++ schily-2022-10-16/rmt/Makefile
 @@ -5,8 +5,8 @@ RULESDIR=	RULES
  include		$(SRCROOT)/$(RULESDIR)/rules.top
  ###########################################################################
@@ -122,10 +108,10 @@ Index: schily-2021-09-01/rmt/Makefile
  CPPOPTS +=	-DUSE_REMOTE
  CPPOPTS +=	-DUSE_LARGEFILES
  CFILES=		rmt.c
-Index: schily-2021-09-01/rmt/Makefile.man
+Index: schily-2022-10-16/rmt/Makefile.man
 ===================================================================
---- schily-2021-09-01.orig/rmt/Makefile.man
-+++ schily-2021-09-01/rmt/Makefile.man
+--- schily-2022-10-16.orig/rmt/Makefile.man
++++ schily-2022-10-16/rmt/Makefile.man
 @@ -8,7 +8,7 @@ include		$(SRCROOT)/$(RULESDIR)/rules.to
  ###########################################################################
  
@@ -135,10 +121,10 @@ Index: schily-2021-09-01/rmt/Makefile.man
  MANSECT=	$(MANSECT_CMD)
  MANSUFFIX=	$(MANSUFF_CMD)
  MANFILE=	rmt.1
-Index: schily-2021-09-01/rmt/rmt.1
+Index: schily-2022-10-16/rmt/rmt.1
 ===================================================================
---- schily-2021-09-01.orig/rmt/rmt.1
-+++ schily-2021-09-01/rmt/rmt.1
+--- schily-2022-10-16.orig/rmt/rmt.1
++++ schily-2022-10-16/rmt/rmt.1
 @@ -17,9 +17,8 @@
  .SH NAME
  rmt \- remote magnetic tape protocol server
@@ -150,10 +136,10 @@ Index: schily-2021-09-01/rmt/rmt.1
  
  .SH DESCRIPTION
  .IX  "rmt command"  ""  "\fLrmt\fP \(em remote magnetic tape protocol server"
-Index: schily-2021-09-01/rmt/rmt.dfl
+Index: schily-2022-10-16/rmt/rmt.dfl
 ===================================================================
---- schily-2021-09-01.orig/rmt/rmt.dfl
-+++ schily-2021-09-01/rmt/rmt.dfl
+--- schily-2022-10-16.orig/rmt/rmt.dfl
++++ schily-2022-10-16/rmt/rmt.dfl
 @@ -18,15 +18,13 @@
  # Each USER= entry adds the listed user to the users who may run rmt
  #
@@ -186,10 +172,10 @@ Index: schily-2021-09-01/rmt/rmt.dfl
 -ACCESS=*	*	/dev/zero
 +#ACCESS=*	*	/dev/zero
  #ACCESS=*	*	*
-Index: schily-2021-09-01/star/all.mk
+Index: schily-2022-10-16/star/all.mk
 ===================================================================
---- schily-2021-09-01.orig/star/all.mk
-+++ schily-2021-09-01/star/all.mk
+--- schily-2022-10-16.orig/star/all.mk
++++ schily-2022-10-16/star/all.mk
 @@ -12,7 +12,7 @@ include		$(SRCROOT)/$(RULESDIR)/rules.to
  # and copy star_fat.mk to Makefile.
  #
@@ -199,10 +185,10 @@ Index: schily-2021-09-01/star/all.mk
  
  ###########################################################################
  include		$(SRCROOT)/$(RULESDIR)/rules.mks
-Index: schily-2021-09-01/star/pax.mk
+Index: schily-2022-10-16/star/pax.mk
 ===================================================================
---- schily-2021-09-01.orig/star/pax.mk
-+++ schily-2021-09-01/star/pax.mk
+--- schily-2022-10-16.orig/star/pax.mk
++++ schily-2022-10-16/star/pax.mk
 @@ -8,7 +8,7 @@ include		$(SRCROOT)/$(RULESDIR)/rules.to
  
  INSDIR=		bin
@@ -212,10 +198,10 @@ Index: schily-2021-09-01/star/pax.mk
  CPPOPTS +=	-D__STAR__
  CPPOPTS +=	-DSET_CTIME -DFIFO -DUSE_MMAP -DUSE_REMOTE -DUSE_RCMD_RSH
  #CPPOPTS +=	-DSET_CTIME -DFIFO -DUSE_MMAP
-Index: schily-2021-09-01/star/star.mk
+Index: schily-2022-10-16/star/star.mk
 ===================================================================
---- schily-2021-09-01.orig/star/star.mk
-+++ schily-2021-09-01/star/star.mk
+--- schily-2022-10-16.orig/star/star.mk
++++ schily-2022-10-16/star/star.mk
 @@ -8,7 +8,7 @@ include		$(SRCROOT)/$(RULESDIR)/rules.to
  
  INSDIR=		bin
