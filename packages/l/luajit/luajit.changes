@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Tue Nov 22 23:18:13 UTC 2022 - mcepl@cepl.eu
+
+- Update to version 2.1.0~beta3+git.1669107176.46aa45d:
+  * NX: Always compile with -fPIC.
+  * Clarify contact page.
+  * Ensure correct stack top for OOM error message.
+  * ARM64: Fix IR_SLOAD assembly.
+  * Fix trace join to BC_JLOOP originating from BC_ITERN.
+  * Fix compiler warnings.
+  * Fix last edit.
+  * Remove dead Wiki links.
+  * Fix QNX build.
+  * Add -F option to override filename in jit.bcsave (luajit -b).
+  * Patch luajit.pc with INSTALL_INC, if customized.
+  * LJ_GC64: Fix lua_concat().
+  * Prevent use of RTLD_DEFAULT when NO_RTLD_DEFAULT is defined.
+  * Improve GC estimation for userdata with attached managed memory.
+  * Add missing GC steps to string buffer methods.
+  * x86/x64: Limit VLOAD fusion to simple cases.
+  * OSX/iOS/ARM64: Fix generation of Mach-O object files.
+  * Prevent trace start at BC_ITERL after compiled BC_ITERN.
+  * ARM64: Allow building with unwinding disabled.
+  * FFI: Fix sizeof expression in C parser for reference types.
+  * FFI: Fix ffi.alignof() for reference types.
+  * FFI: Allow ffi.metatype() for typedefs with attributes.
+  * OSX/iOS/ARM64: Fix bytecode embedding in Mach-O object file.
+  * LJ_GC64: Fix IR_VARG offset for fixed number of results.
+  * x86/x64: Fix math.ceil(-0.9) result sign.
+  * Grammar and spell check.
+  * Make embedded bytecode readable and forward-compatible.
+  * DynASM: Fix warnings.
+  * Fix warnings in minilua.c.
+  * Update console build instructions.
+  * Add Nintendo Switch port.
+  * Avoid zero-sized arrays in jit_State.
+  * Don't use jit_State during build with JIT disabled.
+  * DynASM/ARM64: Fix LSL/BFI* encoding with variable registers.
+  * Fix ITERN loop detection when hook checks are enabled.
+  * Prevent C compiler undefined-behavior optimization.
+  * Fix alias analysis for table length forwarding.
+  * Fix loop initialization in table.foreach().
+  * LJ_GC64: Fix HREFK optimization.
+  * Fix recording of __concat metamethod.
+  * Cleanup of system and architecture support docs.
+  * Add PS5 port.
+  * Fix assertions.
+  * x64: Fix RETHI/RETLO swap after call.
+  * Fix assertion for LJ_KEYINDEX.
+  * Add missing check for LJ_KEYINDEX in ITERN recording.
+  * DynASM/ARM64: Fix NOP instruction for aligment
+- Was forced to remove perhaps in future important patches:
+  - luajit-ppc64-replace-asserts.patch
+  - 0004-Add-ppc64-support-based-on-koriakin-GitHub-patchset.patch
+
+-------------------------------------------------------------------
+Tue Nov 22 16:22:18 UTC 2022 - Michael Gorse <mgorse@suse.com>
+
+- Also exclude s390x from the build (boo#1204557).
+
+-------------------------------------------------------------------
 Tue Nov  1 16:01:53 UTC 2022 - Michael Gorse <mgorse@suse.com>
 
 - Add ppc64 and ppc64le to ExcludeArch for now. This can be

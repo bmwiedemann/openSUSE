@@ -15,12 +15,13 @@
  
  ##############################################################################
  #
-@@ -33,19 +34,19 @@ DPREFIX= $(DESTDIR)$(PREFIX)
+@@ -33,20 +34,20 @@ DPREFIX= $(DESTDIR)$(PREFIX)
  INSTALL_BIN=   $(DPREFIX)/bin
  INSTALL_LIB=   $(DPREFIX)/$(MULTILIB)
  INSTALL_SHARE= $(DPREFIX)/share
--INSTALL_INC=   $(DPREFIX)/include/luajit-$(MAJVER).$(MINVER)
-+INSTALL_INC=   $(DPREFIX)/include/luajit-$(SUFFIX)-$(MAJVER).$(MINVER)
+-INSTALL_DEFINC= $(DPREFIX)/include/luajit-$(MAJVER).$(MINVER)
++INSTALL_DEFINC= $(DPREFIX)/include/luajit-$(SUFFIX)-$(MAJVER).$(MINVER)
+ INSTALL_INC=   $(INSTALL_DEFINC)
  
 -INSTALL_LJLIBD= $(INSTALL_SHARE)/luajit-$(VERSION)
 +INSTALL_LJLIBD= $(INSTALL_SHARE)/luajit-$(SUFFIX)-$(VERSION)
@@ -40,16 +41,16 @@
  INSTALL_ANAME= libluajit-$(ABIVER).a
  INSTALL_SOSHORT1= libluajit-$(ABIVER).so
  INSTALL_SOSHORT2= libluajit-$(ABIVER).so.$(MAJVER)
-@@ -79,7 +80,7 @@ LDCONFIG= ldconfig -n 2>/dev/null
- SED_PC= sed -e "s|^prefix=.*|prefix=$(PREFIX)|" \
-             -e "s|^multilib=.*|multilib=$(MULTILIB)|"
+@@ -83,7 +84,7 @@ ifneq ($(INSTALL_DEFINC),$(INSTALL_INC))
+   SED_PC+= -e "s|^includedir=.*|includedir=$(INSTALL_INC)|"
+ endif
  
 -FILE_T= luajit
 +FILE_T= luajit-$(SUFFIX)
  FILE_A= libluajit.a
  FILE_SO= libluajit.so
  FILE_MAN= luajit.1
-@@ -124,7 +125,7 @@ install: $(INSTALL_DEP)
+@@ -128,7 +129,7 @@ install: $(INSTALL_DEP)
  	  ( $(LDCONFIG) $(INSTALL_LIB) || : ) && \
  	  $(SYMLINK) $(INSTALL_SONAME) $(INSTALL_SHORT1) && \
  	  $(SYMLINK) $(INSTALL_SONAME) $(INSTALL_SHORT2) || :

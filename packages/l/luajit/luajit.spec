@@ -22,7 +22,7 @@
 %define realver -2.1.0-beta3
 
 Name:           luajit
-Version:        2.1.0~beta3+git.1647772157.43ebb949
+Version:        2.1.0~beta3+git.1669107176.46aa45d
 Release:        0
 Summary:        JIT compiler for Lua language
 License:        MIT
@@ -36,16 +36,17 @@ Patch2:         0002-Enable-debugging-symbols-in-the-build.patch
 Patch3:         0003-Get-rid-of-LUAJIT_VERSION_SYM-that-changes-ABI-on-ev.patch
 # Most recent s390x patches at https://github.com/luajit/luajit/pull/631
 Patch4:         luajit-s390x.patch
-# https://salsa.debian.org/lua-team/luajit/-/raw/master/debian/patches/0004-Add-ppc64-support-based-on-koriakin-GitHub-patchset.patch
-# Patch again out of sync, gh#LuaJIT/LuaJIT#140
-Patch5:         0004-Add-ppc64-support-based-on-koriakin-GitHub-patchset.patch
-Patch6:         luajit-ppc64-replace-asserts.patch
+# PPC64 patches are out of sync
+# # https://salsa.debian.org/lua-team/luajit/-/raw/master/debian/patches/0004-Add-ppc64-support-based-on-koriakin-GitHub-patchset.patch
+# # Patch again out of sync, gh#LuaJIT/LuaJIT#140
+# Patch5:         0004-Add-ppc64-support-based-on-koriakin-GitHub-patchset.patch
+# Patch6:         luajit-ppc64-replace-asserts.patch
 BuildRequires:  pkgconfig
 Requires:       %{name}-%{lib_version}-%{so_version} = %{version}
 Obsoletes:      lua51-luajit <= 2.2.0
 Obsoletes:      moonjit <= 2.2.0
 # lj_arch.h:441:2: error: #error "No target architecture defined"
-ExcludeArch:    riscv64 ppc64 ppc64le
+ExcludeArch:    riscv64 ppc64 ppc64le s390x
 
 %description
 A Just-In-Time Compiler for Lua language
@@ -69,8 +70,7 @@ Devel files for luajit package
 
 %prep
 %setup -q
-# PPC64 patches are out of sync
-%autopatch -p1 -M 4
+%autopatch -p1
 
 # Fix variables
 sed -i "s,PREFIX= %{_prefix}/local,PREFIX= %{_prefix}," Makefile

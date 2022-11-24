@@ -137,4 +137,41 @@
     <comment></comment>
     <requestid>1032964</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>147684b997131b6e896da3bbd39b08b4</srcmd5>
+    <version>2.1.0~beta3+git.1669107176.46aa45d</version>
+    <time>1669288937</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.0~beta3+git.1669107176.46aa45d:
+  * NX: Always compile with -fPIC.
+  * Clarify contact page.
+  * Ensure correct stack top for OOM error message.
+  * ARM64: Fix IR_SLOAD assembly.
+  * Fix trace join to BC_JLOOP originating from BC_ITERN.
+  * Fix compiler warnings.
+  * Fix last edit.
+  * Remove dead Wiki links.
+  * Fix QNX build.
+  * Add -F option to override filename in jit.bcsave (luajit -b).
+  * Patch luajit.pc with INSTALL_INC, if customized.
+  * LJ_GC64: Fix lua_concat().
+  * Prevent use of RTLD_DEFAULT when NO_RTLD_DEFAULT is defined.
+  * Improve GC estimation for userdata with attached managed memory.
+  * Add missing GC steps to string buffer methods.
+  * x86/x64: Limit VLOAD fusion to simple cases.
+  * OSX/iOS/ARM64: Fix generation of Mach-O object files.
+  * Prevent trace start at BC_ITERL after compiled BC_ITERN.
+  * ARM64: Allow building with unwinding disabled.
+  * FFI: Fix sizeof expression in C parser for reference types.
+  * FFI: Fix ffi.alignof() for reference types.
+  * FFI: Allow ffi.metatype() for typedefs with attributes.
+  * OSX/iOS/ARM64: Fix bytecode embedding in Mach-O object file.
+  * LJ_GC64: Fix IR_VARG offset for fixed number of results.
+  * x86/x64: Fix math.ceil(-0.9) result sign.
+  * Grammar and spell check.
+  * Make embedded bytecode readable and forward-compatible.
+  * DynASM: Fix warnings.
+  * Fix warnings in minilua.c.</comment>
+    <requestid>1037521</requestid>
+  </revision>
 </revisionlist>
