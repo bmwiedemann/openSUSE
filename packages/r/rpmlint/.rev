@@ -4155,4 +4155,16 @@ oddjob-gpupdate isn't blocked)</comment>
   * Add CodeQL workflow for GitHub code scanning</comment>
     <requestid>1036415</requestid>
   </revision>
+  <revision rev="424" vrev="1">
+    <srcmd5>a4b9b89fa0653f0f9bcb8616dcf3c1c5</srcmd5>
+    <version>2.4.0+git20221122.a31cc76</version>
+    <time>1669288961</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.0+git20221122.a31cc76:
+  * pam-modules whitelist: add pam_saslauthd (bsc#1205459)
+
+- Update to version 2.4.0+git20221122.836c918:
+  * dbus-services: whitelist experimental YaST installer D-Bus backend (bsc#1202059)</comment>
+    <requestid>1037304</requestid>
+  </revision>
 </revisionlist>
