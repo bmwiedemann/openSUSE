@@ -62,8 +62,6 @@ install -Dpm0644 %{SOURCE1} "%{buildroot}%{_unitdir}/llmnrd.service"
 install -Dpm0644 %{SOURCE2} "%{buildroot}%{_fillupdir}/sysconfig.llmnrd"
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcllmnrd
 install -Dpm0644 %{SOURCE3} %{buildroot}%{_sysconfdir}/apparmor.d/usr.sbin.llmnrd
-install -Dpm0644 doc/llmnr-query.1 %{buildroot}%{_mandir}/man1/
-install -Dpm0644 doc/llmnrd.8 %{buildroot}%{_mandir}/man8/
 
 %pre
 %service_add_pre llmnrd.service

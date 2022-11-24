@@ -28,7 +28,7 @@
 %endif
 
 Name:           ispc
-Version:        1.18.0
+Version:        1.18.1
 Release:        0
 Summary:        C-based SPMD programming language compiler
 License:        BSD-3-Clause
@@ -48,7 +48,6 @@ BuildRequires:  tbb-devel
 BuildRequires:  llvm%llvm_ver-devel
 BuildRequires:  llvm%llvm_ver-gold
 BuildRequires:  ncurses-devel
-BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(python3)
 %ifarch x86_64
 # x86_64 always includes x86 target support: https://github.com/ispc/ispc/issues/1865

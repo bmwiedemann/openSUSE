@@ -1,7 +1,7 @@
 #
 # spec file for package lua-dkjson
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ Group:          Development/Libraries/Other
 URL:            http://dkjson.org/
 Source:         http://dkolf.de/src/dkjson-lua.fsl/tarball/%{uptag}/dkjson.tar.gz
 BuildRequires:  %{flavor}-devel
+BuildRequires:  lua-macros
 Requires:       %{flavor}
 Requires:       %{flavor}-lpeg
 BuildArch:      noarch

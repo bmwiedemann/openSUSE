@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 23 14:08:05 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.18.1:
+  + A minor ISPC update with security fix: zlib dependency was
+    removed.
+- Drop zlib-devel BuildRequires: no longer needed.
+
+-------------------------------------------------------------------
 Wed Oct 19 23:59:49 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Enable aarch64 builds, disable (broken) aarch32
@@ -12,7 +20,7 @@ Fri Oct  7 14:52:10 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
   Check:
   https://github.com/ispc/ispc/blob/main/docs/ReleaseNotes.txt
 - Package separate devel and library packages
-- Specify a certain llvm version (llvm15 is supported from the 
+- Specify a certain llvm version (llvm15 is supported from the
   next release only
 - Adopt {n}curses support
 - Make ispc depend on ispc-devel for backward compatibility

@@ -231,9 +231,7 @@ sed -i -e "s/TF_CFLAGS_aarch64	+=	-mbranch-protection=none//" plat/xilinx/zynqmp
 %endif
 
 %build
-%if %{suse_version} > 1500
 export TF_LDFLAGS=--no-warn-rwx-segments
-%endif
 export BUILD_MESSAGE_TIMESTAMP="\"$(date -d "$(head -n 2 %{_sourcedir}/arm-trusted-firmware.changes | tail -n 1 | cut -d- -f1 )" -u "+%%H:%%M:%%S, %%b %%e %%Y")\""
 %if "%{platform}" == "a3700"
 export CRYPTOPP_LIBDIR=%{_libdir}

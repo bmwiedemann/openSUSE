@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 23 18:16:20 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1669212003.b93eb7f:
+  * Fix hadolint check
+  * Use signatures in WebAPI::Controller::Step
+
+-------------------------------------------------------------------
 Mon Nov 21 10:16:18 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1668839343.05e490d:

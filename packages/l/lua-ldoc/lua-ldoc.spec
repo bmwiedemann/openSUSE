@@ -1,7 +1,7 @@
 #
 # spec file for package lua-ldoc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,8 +27,9 @@ Group:          Development/Libraries/Other
 URL:            https://github.com/stevedonovan/LDoc
 Source:         https://github.com/stevedonovan/LDoc/archive/%{version}.tar.gz#/%{rname}-%{version}.tar.gz
 BuildRequires:  %{flavor}-devel
-BuildArch:      noarch
+BuildRequires:  lua-macros
 Requires:       %{flavor}
+BuildArch:      noarch
 %lua_provides
 %if "%{flavor}" == ""
 Name:           lua-ldoc

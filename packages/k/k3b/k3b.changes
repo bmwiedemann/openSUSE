@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 23 16:33:08 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to fix knewstuff install location:
+  * 0001-remove-unnecessary-and-incorrect-version-check.patch
+
+-------------------------------------------------------------------
 Tue Nov  1 11:19:57 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 22.08.3

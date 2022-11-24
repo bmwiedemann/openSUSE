@@ -671,4 +671,12 @@
   * Determine max command length faster on Microsoft Windows. (forwarded request 1032195 from dirkmueller)</comment>
     <requestid>1032336</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>95d0b3a23d0f7fae5fe6aae4859734e9</srcmd5>
+    <version>20221122</version>
+    <time>1669289121</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20221122</comment>
+    <requestid>1037785</requestid>
+  </revision>
 </revisionlist>

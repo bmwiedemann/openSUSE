@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Wed Oct 26 13:20:55 UTC 2022 - Niklas Haas <obs@haasn.xyz>
+
+- Add missing run-time dependency on python-setuptools
+
+-------------------------------------------------------------------
+Wed Oct 26 12:58:47 UTC 2022 - Niklas Haas <obs@haasn.xyz>
+
+- Update to glad v2.0.1
+
+-------------------------------------------------------------------
+Fri Oct 21 17:50:12 UTC 2022 - Niklas Haas <obs@haasn.xyz>
+
+- Initial package, based upon the initial release of glad v2.0.0

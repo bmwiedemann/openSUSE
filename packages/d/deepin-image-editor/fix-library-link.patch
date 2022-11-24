@@ -1,0 +1,12 @@
+diff -Nur image-editor-1.0.19/libimageviewer/CMakeLists.txt image-editor-1.0.19-new/libimageviewer/CMakeLists.txt
+--- image-editor-1.0.19/libimageviewer/CMakeLists.txt	2022-08-08 11:46:06.000000000 +0800
++++ image-editor-1.0.19-new/libimageviewer/CMakeLists.txt	2022-10-11 20:41:27.350074683 +0800
+@@ -93,7 +93,7 @@
+ 
+ 
+ target_include_directories(${CMD_NAME} PUBLIC ${3rd_lib_INCLUDE_DIRS}  )
+-target_link_libraries(imageviewer ${3rd_lib_LIBRARIES} freeimage )
++target_link_libraries(imageviewer ${3rd_lib_LIBRARIES} freeimage dl)
+ 
+ include(GNUInstallDirs)
+ configure_file(libimageviewer.pc.in ${PROJECT_BINARY_DIR}/libimageviewer.pc @ONLY)

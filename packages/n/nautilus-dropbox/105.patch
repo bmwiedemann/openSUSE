@@ -1,7 +1,7 @@
-From 9b9d7edaa9012e4e52f169d0b590cb25f265e119 Mon Sep 17 00:00:00 2001
+From 5587be23bec68281e5d6de2b302dbd2a79ea47aa Mon Sep 17 00:00:00 2001
 From: Corey Berla <corey@berla.me>
 Date: Tue, 13 Sep 2022 15:03:59 -0700
-Subject: [PATCH 1/5] Bump to libnautilus-extension-4
+Subject: [PATCH 1/9] Bump to libnautilus-extension-4
 
 Nautilus 43 comes with libnautilus-extension-4 which has several
 breaking changes
@@ -45,10 +45,10 @@ index 025289c..737dc26 100644
  
  AC_MSG_RESULT([${NAUTILUS_EXTENSION_DIR}])
 
-From c5d80f702758ad68cedc7bd0a113286464c44ba5 Mon Sep 17 00:00:00 2001
+From 90067c37aa0894b3e090dc5bdbaa963224226614 Mon Sep 17 00:00:00 2001
 From: Corey Berla <corey@berla.me>
 Date: Tue, 13 Sep 2022 15:06:07 -0700
-Subject: [PATCH 2/5] Update / remove deprecated (now removed) symbols and
+Subject: [PATCH 2/9] Update / remove deprecated (now removed) symbols and
  headers
 
 ---
@@ -109,10 +109,10 @@ index 65734be..44faa27 100644
  #include "dropbox-command-client.h"
  #include "nautilus-dropbox-hooks.h"
 
-From 0fe0f7d193b26037d55371af12cf14ab65a40151 Mon Sep 17 00:00:00 2001
+From 3f778e011daad826882893812e0d6290bdf12cba Mon Sep 17 00:00:00 2001
 From: Corey Berla <corey@berla.me>
 Date: Tue, 13 Sep 2022 15:06:46 -0700
-Subject: [PATCH 3/5] Include gtk4 directly
+Subject: [PATCH 3/9] Include gtk4 directly
 
 This used to be included from libnautilus-extension, but now that
 Nautilus has been ported to gtk4, there is a desire to separate gtk
@@ -164,10 +164,10 @@ index 0d59559..f52e0fb 100644
  
  static GType type_list[1];
 
-From 1ca648c017483d9713c469ba55a194a3790b6770 Mon Sep 17 00:00:00 2001
+From 4188fea5ce15a5bd0ac359e4c18eaa9039413c83 Mon Sep 17 00:00:00 2001
 From: Corey Berla <corey@berla.me>
 Date: Tue, 13 Sep 2022 15:07:54 -0700
-Subject: [PATCH 4/5] Remove old / unnecessary fix
+Subject: [PATCH 4/9] Remove old / unnecessary fix
 
 This was causes problems with the build and doesn't appear
 to be necessary anymore
@@ -218,10 +218,10 @@ index 837f9ab..bc1b5bd 100644
        g_string_free(new_action_string, TRUE);
        ret++;
 
-From 585195ce25ffdaa6906d22a2361072c97ac47660 Mon Sep 17 00:00:00 2001
+From def0ce2b69a5d3fec6e2fab360473c5560b947e6 Mon Sep 17 00:00:00 2001
 From: Corey Berla <corey@berla.me>
 Date: Tue, 13 Sep 2022 15:08:16 -0700
-Subject: [PATCH 5/5] Update code for gtk4
+Subject: [PATCH 5/9] Update code for gtk4
 
 ---
  src/nautilus-dropbox.c | 14 ++++++--------
@@ -276,3 +276,141 @@ index bc1b5bd..b9c10b4 100644
    }
  
    g_strfreev(paths);
+
+From d0bb693ce7d2e48562e516771afcd310ccb14ae1 Mon Sep 17 00:00:00 2001
+From: Corey Berla <corey@berla.me>
+Date: Sun, 20 Nov 2022 13:56:38 -0800
+Subject: [PATCH 6/9] dropbox: Drop threads_init()
+
+This became unnecessary long ago
+
+https://pygobject.readthedocs.io/en/latest/guide/threading.html#threads-faq
+---
+ dropbox.in | 3 ---
+ 1 file changed, 3 deletions(-)
+ mode change 100755 => 100644 dropbox.in
+
+diff --git a/dropbox.in b/dropbox.in
+old mode 100755
+new mode 100644
+index 4a480bb..31519e2
+--- a/dropbox.in
++++ b/dropbox.in
+@@ -294,14 +294,11 @@ if GUI_AVAILABLE:
+         import gi
+         gi.require_version('Gdk', '3.0')
+         gi.require_version('Gtk', '3.0')
+-        from gi.repository import GObject
+         from gi.repository import Gdk
+         from gi.repository import Gtk
+         from gi.repository import Pango
+         import webbrowser
+ 
+-        GObject.threads_init()
+-
+         load_serialized_images()
+ 
+         global FatalVisibleError
+
+From 1e878e57023370f8932791e90bc6cd8814219c25 Mon Sep 17 00:00:00 2001
+From: Corey Berla <corey@berla.me>
+Date: Sun, 20 Nov 2022 13:57:17 -0800
+Subject: [PATCH 7/9] dropbox: Replace deprecated GObject.idle_add with
+ GLib.idle_add
+
+---
+ dropbox.in | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/dropbox.in b/dropbox.in
+index 31519e2..fc306b0 100644
+--- a/dropbox.in
++++ b/dropbox.in
+@@ -294,6 +294,7 @@ if GUI_AVAILABLE:
+         import gi
+         gi.require_version('Gdk', '3.0')
+         gi.require_version('Gtk', '3.0')
++        from gi.repository import GLib
+         from gi.repository import Gdk
+         from gi.repository import Gtk
+         from gi.repository import Pango
+@@ -328,17 +329,17 @@ if GUI_AVAILABLE:
+                             ret = ()
+                         if not isinstance(ret, tuple):
+                             ret = (ret,)
+-                        GObject.idle_add(self.loop_callback, *ret)
++                        GLib.idle_add(self.loop_callback, *ret)
+ 
+                         if self._stopped:
+                             _thread.exit()
+                 except Exception as e:
+                     print(e)
+                     if self.on_exception is not None:
+-                        GObject.idle_add(self.on_exception, e)
++                        GLib.idle_add(self.on_exception, e)
+                 else:
+                     if self.on_done is not None:
+-                        GObject.idle_add(self.on_done)
++                        GLib.idle_add(self.on_done)
+ 
+             def start(self, *args, **kwargs):
+                 t = threading.Thread(target=self._run, args=args, kwargs=kwargs)
+
+From de01c7f7cab560b226eeb1f1cbcfd348c922e5d4 Mon Sep 17 00:00:00 2001
+From: Corey Berla <corey@berla.me>
+Date: Sun, 20 Nov 2022 13:58:15 -0800
+Subject: [PATCH 8/9] dropbox: Threading set daemon as property
+
+setDaemon() is deprecated
+
+https://docs.python.org/3/library/threading.html#threading.Thread.setDaemon
+---
+ dropbox.in | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/dropbox.in b/dropbox.in
+index fc306b0..4b7f923 100644
+--- a/dropbox.in
++++ b/dropbox.in
+@@ -342,8 +342,7 @@ if GUI_AVAILABLE:
+                         GLib.idle_add(self.on_done)
+ 
+             def start(self, *args, **kwargs):
+-                t = threading.Thread(target=self._run, args=args, kwargs=kwargs)
+-                t.setDaemon(True)
++                t = threading.Thread(target=self._run, args=args, kwargs=kwargs, daemon=True)
+                 t.start()
+ 
+             def stop(self):
+
+From 34024ef1ccc60d905e810057c3e28e0e185eac78 Mon Sep 17 00:00:00 2001
+From: Corey Berla <corey@berla.me>
+Date: Sun, 20 Nov 2022 13:59:46 -0800
+Subject: [PATCH 9/9] dropbox: Stop using GtkStock
+
+It was deprecated in 3.10
+
+https://docs.gtk.org/gtk3/ctor.Button.new_from_stock.html
+---
+ dropbox.in | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/dropbox.in b/dropbox.in
+index 4b7f923..380818f 100644
+--- a/dropbox.in
++++ b/dropbox.in
+@@ -447,12 +447,12 @@ if GUI_AVAILABLE:
+                 self.user_cancelled = False
+                 self.task = None
+ 
+-                self.ok = ok = Gtk.Button(stock=Gtk.STOCK_OK)
++                self.ok = ok = Gtk.Button.new_with_mnemonic("_OK")
+                 ok.connect('clicked', self.handle_ok)
+                 self.action_area.add(ok)
+                 ok.show()
+ 
+-                cancel = Gtk.Button(stock=Gtk.STOCK_CANCEL)
++                cancel = Gtk.Button.new_with_mnemonic("_Cancel")
+                 cancel.connect('clicked', self.handle_cancel)
+                 self.action_area.add(cancel)
+                 cancel.show()

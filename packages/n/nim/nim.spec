@@ -17,7 +17,7 @@
 
 
 Name:           nim
-Version:        1.6.8
+Version:        1.6.10
 Release:        0
 Summary:        A statically typed compiled systems programming language
 License:        MIT

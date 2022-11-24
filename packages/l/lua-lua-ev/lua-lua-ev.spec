@@ -1,7 +1,7 @@
 #
 # spec file for package lua-lua-ev
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2012 Togan Muftuoglu toganm@opensuse.org
 #
 # All modifications and additions to the file contributed by third parties
@@ -39,13 +39,13 @@ BuildRequires:  libev-devel
 BuildRequires:  lua-macros
 # BuildRequires:  %%{flavor}-luafilesystem
 Requires:       %{flavor}
+%lua_provides
 %if "%{flavor}" == ""
 Name:           lua-%{mod_name}
 ExclusiveArch:  do_not_build
 %else
 Name:           %{flavor}-%{mod_name}
 %endif
-%lua_provides
 
 %description
 Lua integration with libev (http://dist.schmorp.de/libev)
@@ -121,6 +121,7 @@ cd build
 %{lua_archdir}/ev.so
 
 %files devel
+%dir %{lua_incdir}
 %dir %{lua_incdir}/%{mod_name}
 %{lua_incdir}/%{mod_name}/*
 %if %{with public_lib}

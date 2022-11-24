@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Net-Pcap
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,46 +16,36 @@
 #
 
 
+%define cpan_name Net-Pcap
 Name:           perl-Net-Pcap
-Version:        0.18
+Version:        0.20
 Release:        0
-Summary:        Interface to pcap LBL packet capture library
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-URL:            https://metacpan.org/release/Net-Pcap
-Source:         https://cpan.metacpan.org/authors/id/S/SA/SAPER/Net-Pcap-%{version}.tar.gz
-Patch1:         perl-Net-Pcap-avoid-pcap_rmtauth-redefinition.patch
-BuildRequires:  gcc
-BuildRequires:  make
+Summary:        Interface to the pcap(3) LBL packet capture library
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/C/CO/CORION/%{cpan_name}-%{version}.tar.gz
+Source1:        cpanspec.yml
+BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Carp)
-BuildRequires:  perl(ExtUtils::MakeMaker)
-BuildRequires:  perl(Socket)
-BuildRequires:  perl(Sys::Hostname)
-BuildRequires:  perl(Test::More) >= 0.45
-BuildRequires:  perl(XSLoader)
-Requires:       perl(Carp)
-Requires:       perl(Socket)
-Requires:       perl(Sys::Hostname)
-Requires:       perl(Test::More) >= 0.45
-Requires:       perl(XSLoader)
 %{perl_requires}
-%if 0%{?suse_version} == 0 || 0%{?suse_version} >= 1030
+# MANUAL BEGIN
 BuildRequires:  libpcap-devel
-%else
-BuildRequires:  libpcap
-%endif
+Requires:       perl(Data::Hexdumper)
+Requires:       perl(NetPacket)
+# MANUAL END
 
 %description
-Net::Pcap is a Perl binding to the LBL pcap(3) library. The README for libpcap
-describes itself as: "a system-independent interface for user-level packet
-capture.  libpcap provides a portable framework for low-level network
-monitoring.  Applications include network statistics collection, security
-monitoring, network debugging, etc."
+'Net::Pcap' is a Perl binding to the LBL pcap(3) library and its Win32
+counterpart, the WinPcap library. Pcap (packet capture) is a portable API
+to capture network packet: it allows applications to capture packets at
+link-layer, bypassing the normal protocol stack. It also provides features
+like kernel-level packet filtering and access to internal statistics.
+
+Common applications include network statistics collection, security
+monitoring, network debugging, etc.
 
 %package -n pcapdump
 Summary:        Dump packets from the network
-Group:          Productivity/Networking/Diagnostic
 Requires:       %{name} = %{version}
 
 %description -n pcapdump
@@ -66,7 +56,6 @@ example of how to use Net::Pcap.
 
 %package -n pcapinfo
 Summary:        Prints detailed information about the network devices
-Group:          Productivity/Networking/Diagnostic
 Requires:       %{name} = %{version}
 
 %description -n pcapinfo
@@ -74,34 +63,29 @@ pcapinfo prints detailed information about the network devices and Pcap library
 available on the current host.
 
 %prep
-%setup -q -n "Net-Pcap-%{version}"
-
-if pkg-config --atleast-version=1.9.0 libpcap; then
-%patch1 -p1
-fi
-
-sed -i '/^auto_install/d' Makefile.PL
+%autosetup  -n %{cpan_name}-%{version}
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
-perl Makefile.PL PREFIX="%{_prefix}"
-make %{?_smp_mflags} \
-    CCFLAGS="-Wall -Wextra -I/usr/include/pcap" \
-    CC="gcc"
+perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
+%make_build
+
+%check
+make test
 
 %install
 %perl_make_install
-install -D -m0755 eg/pcapdump "%{buildroot}%{_bindir}/pcapdump"
 %perl_process_packlist
+# MANUAL BEGIN
+install -D -m0755 eg/pcapdump "%{buildroot}%{_bindir}/pcapdump"
+# MANUAL END
+%perl_gen_filelist
 
-# make test is just borked when not running as root
-
-%files
+%files -f %{name}.files
 %doc Changes README
-%dir %{perl_vendorarch}/Net
-%{perl_vendorarch}/Net/Pcap.pm
-%dir %{perl_vendorarch}/auto/Net
-%{perl_vendorarch}/auto/Net/Pcap
-%doc %{perl_man3dir}/Net::Pcap.%{perl_man3ext}%{ext_man}
+%exclude %{_bindir}/pcapinfo
+%exclude %{_bindir}/pcapdump
+%exclude %{_mandir}/man1/pcapinfo.1%{?ext_man}
 
 %files -n pcapdump
 %{_bindir}/pcapdump
@@ -109,5 +93,6 @@ install -D -m0755 eg/pcapdump "%{buildroot}%{_bindir}/pcapdump"
 %files -n pcapinfo
 %{_bindir}/pcapinfo
 %{_mandir}/man1/pcapinfo.1%{?ext_man}
+%doc Changes README stubs.inc
 
 %changelog

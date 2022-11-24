@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 23 10:23:38 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
+
+- Fix missing dependency on lua-macros (boo#1205612)
+- Run test with correct lua version
+
+-------------------------------------------------------------------
 Wed Aug 31 17:08:45 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
 
 - Add %check section and test.lua

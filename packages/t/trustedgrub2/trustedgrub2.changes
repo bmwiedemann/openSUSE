@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 24 01:33:00 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use Python 3 to build, rather than Python 2. 
+
+-------------------------------------------------------------------
 Mon May 23 06:33:29 UTC 2022 - Michael Chang <mchang@suse.com>
 
 - Fix GCC 12 build failure

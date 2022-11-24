@@ -20,4 +20,13 @@
   * Fix bugs</comment>
     <requestid>1000254</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>d4e3625a28d441ce9b82b535dc9fa94a</srcmd5>
+    <version>1.0.19</version>
+    <time>1669289132</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace pkgconfig(opencv) with pkgconfig(opencv4) BuildRequires,
+  (use current version of opencv). (forwarded request 1037065 from iznogood)</comment>
+    <requestid>1037837</requestid>
+  </revision>
 </revisionlist>

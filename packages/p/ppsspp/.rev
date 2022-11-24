@@ -119,4 +119,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>931301</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>32f02562513697d2661d5970e2ae35e2</srcmd5>
+    <version>1.13.2</version>
+    <time>1669289111</time>
+    <user>dimstar_suse</user>
+    <comment>ppsspp 1.13.2 stable, with spec file tweak and _constraint</comment>
+    <requestid>1037773</requestid>
+  </revision>
 </revisionlist>

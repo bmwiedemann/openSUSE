@@ -1,7 +1,7 @@
 #
 # spec file for package lua-loadkit
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,8 +31,9 @@ License:        MIT
 Group:          Development/Libraries/Other
 URL:            https://github.com/leafo/loadkit
 Source:         https://github.com/leafo/%{mod_name}/archive/v%{version}.tar.gz#/%{mod_name}-%{version}.tar.gz
-# BuildRequires:  %{flavor}-moonscript
 BuildRequires:  %{flavor}-devel
+# BuildRequires:  %{flavor}-moonscript
+BuildRequires:  lua-macros
 Requires:       %{flavor}
 BuildArch:      noarch
 %lua_provides

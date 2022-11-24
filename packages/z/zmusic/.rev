@@ -55,4 +55,12 @@
     <comment>- Drop -msse/-msse2, CPUID guards do not help.</comment>
     <requestid>986748</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4b3011067aabd6b41c9ad97f1229997c</srcmd5>
+    <version>1.1.11</version>
+    <time>1669289120</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.1.11</comment>
+    <requestid>1037784</requestid>
+  </revision>
 </revisionlist>

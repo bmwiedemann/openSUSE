@@ -1,7 +1,7 @@
 #
 # spec file for package ppsspp
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define _lto_cflags %{nil}
 Name:           ppsspp
-Version:        1.12.3~git20211106
+Version:        1.13.2
 Release:        0
 Summary:        PlayStation Portable Emulator
 License:        GPL-2.0-or-later
 Group:          System/Emulators/Other
-URL:            http://www.ppsspp.org
-Source:         %{name}-%{version}.tar.xz
+URL:            https://www.ppsspp.org
+Source:         https://github.com/hrydgard/ppsspp/releases/download/v%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  Mesa-devel
 BuildRequires:  cmake >= 3.6
 BuildRequires:  fdupes
@@ -52,6 +52,7 @@ BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libzip)
+BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(zlib)
@@ -59,7 +60,7 @@ Requires:       %{name}-common
 Requires(post): hicolor-icon-theme
 Requires(postun):hicolor-icon-theme
 # never built for PowerPC/Arm on 20200721
-ExcludeArch:    aarch64 %arm ppc ppc64 ppc64le s390x
+ExcludeArch:    aarch64 %{arm} ppc ppc64 ppc64le s390x
 
 %description
 PPSSPP is a PSP emulator written in C++, and translates PSP CPU instructions directly into optimized x86, x64 and ARM machine code, using JIT recompilers (dynarecs).
@@ -83,12 +84,13 @@ PPSSPP build using the Qt framework
 %package common
 Summary:        PPSSPP assets
 Group:          System/Emulators/Other
+BuildArch: noarch
 
 %description common
 Required assets for PPSSPP GUI and assorted configuration files
 
 %prep
-%setup -q
+%autosetup -p1
 
 sed -i \
 -e 's|png17|png16|g' \
@@ -114,32 +116,35 @@ const char *PPSSPP_GIT_VERSION = \"%{version}\";
 mkdir build-headless build-qt build
 
 cd build-headless
+# FIXME: you should use the %%cmake macros
 cmake  .. \
         -DUSE_SYSTEM_FFMPEG="ON" \
         -DHEADLESS="ON" \
-        -DCMAKE_C_FLAGS="%optflags" \
-        -DCMAKE_CXX_FLAGS="%optflags" \
+        -DCMAKE_C_FLAGS="%{optflags}" \
+        -DCMAKE_CXX_FLAGS="%{optflags}" \
         -DCMAKE_BUILD_TYPE="Release|RelWithDebugInfo" \
         -DCMAKE_SKIP_RPATH="YES" \
         -Wno-dev
 %make_jobs
 
 cd ../build-qt
+# FIXME: you should use the %%cmake macros
 cmake  .. \
         -DUSE_SYSTEM_FFMPEG="ON" \
         -DUSING_QT_UI="ON" \
-        -DCMAKE_C_FLAGS="%optflags" \
-        -DCMAKE_CXX_FLAGS="%optflags" \
+        -DCMAKE_C_FLAGS="%{optflags}" \
+        -DCMAKE_CXX_FLAGS="%{optflags}" \
         -DCMAKE_BUILD_TYPE="Release|RelWithDebugInfo" \
         -DCMAKE_SKIP_RPATH="YES" \
         -Wno-dev
 %make_jobs
 
 cd ../build
+# FIXME: you should use the %%cmake macros
 cmake  .. \
         -DUSE_SYSTEM_FFMPEG="ON" \
-        -DCMAKE_C_FLAGS="%optflags" \
-        -DCMAKE_CXX_FLAGS="%optflags" \
+        -DCMAKE_C_FLAGS="%{optflags}" \
+        -DCMAKE_CXX_FLAGS="%{optflags}" \
         -DCMAKE_BUILD_TYPE="Release|RelWithDebugInfo" \
         -DCMAKE_SKIP_RPATH="YES" \
         -Wno-dev
@@ -233,18 +238,17 @@ install -m 444 -D icons/icon.svg %{buildroot}%{_datadir}/pixmaps/%{name}.svg
 %icon_theme_cache_postun
 
 %files headless
-%defattr(644,root,root)
+%license LICENSE.TXT
 %attr(755,root,root) %{_bindir}/%{name}-headless
 %attr(755,root,root) %{_libexecdir}/%{name}/%{name}-headless
 
 %files qt
-%defattr(644,root,root)
+%license LICENSE.TXT
 %attr(755, root, root) %{_bindir}/%{name}-qt
 %attr(755, root, root) %{_libexecdir}/%{name}/%{name}-qt
 %{_datadir}/applications/%{name}-qt.desktop
 
 %files common
-%defattr(644,root,root)
 %doc README.md
 %license LICENSE.TXT
 %{_libexecdir}/%{name}/assets
@@ -253,7 +257,7 @@ install -m 444 -D icons/icon.svg %{buildroot}%{_datadir}/pixmaps/%{name}.svg
 %config(noreplace) %{_sysconfdir}/%{name}
 
 %files
-%defattr(644,root,root)
+%license LICENSE.TXT
 %dir %{_libexecdir}/%{name}
 %attr(755, root, root) %{_bindir}/%{name}
 %attr(755, root, root) %{_libexecdir}/%{name}/%{name}

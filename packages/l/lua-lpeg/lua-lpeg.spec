@@ -27,6 +27,7 @@ Group:          Development/Libraries/Other
 URL:            http://www.inf.puc-rio.br/~roberto/lpeg
 Source:         http://www.inf.puc-rio.br/~roberto/lpeg/lpeg-%{version}.tar.gz
 BuildRequires:  %{flavor}-devel
+BuildRequires:  lua-macros
 Requires:       %{flavor}
 %lua_provides
 %if "%{flavor}" == ""
@@ -73,7 +74,10 @@ install lpeg.so %{buildroot}%{lua_archdir}
 install -Dm 644 re.lua %{buildroot}%{lua_noarchdir}
 
 %check
-lua test.lua
+LUA_PATH='%{_datadir}/lua/%{lua_version}/?.lua'
+LUA_PATH="%{buildroot}%{lua_noarchdir}/?/init.lua;${LUA_PATH}"
+export LUA_PATH="%{buildroot}%{lua_noarchdir}/?.lua;${LUA_PATH}"
+%{_bindir}/lua%{lua_version} test.lua
 
 %files
 %{lua_archdir}

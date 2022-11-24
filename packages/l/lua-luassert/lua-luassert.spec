@@ -1,7 +1,7 @@
 #
 # spec file for package lua-luassert
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ URL:            https://github.com/Olivine-Labs/luassert
 Source:         https://github.com/Olivine-Labs/luassert/archive/v%{upversion}.tar.gz#/%{mod_name}-%{upversion}.tar.gz
 BuildRequires:  %{flavor}-devel
 BuildRequires:  %{flavor}-say
+BuildRequires:  lua-macros
 Requires:       %{flavor}
 BuildArch:      noarch
 %lua_provides

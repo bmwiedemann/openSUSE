@@ -28,4 +28,14 @@
     <comment></comment>
     <requestid>871380</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>a14f5174aac36ba76e815ce701d29237</srcmd5>
+    <version>1.5</version>
+    <time>1669289026</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1037544 from michals
+
+- Fix unowned %{lua_incdir} directory.</comment>
+    <requestid>1037591</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package lua-argparse
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,6 +36,9 @@ BuildRequires:  %{flavor}-devel
 Requires:       %{flavor}
 BuildArch:      noarch
 %lua_provides
+%if "%{flavor}" != "test"
+BuildRequires:  lua-macros
+%endif
 %if "%{flavor}" == ""
 Name:           lua-argparse
 ExclusiveArch:  do_not_build

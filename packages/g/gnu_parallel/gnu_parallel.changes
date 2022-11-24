@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 24 00:00:09 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20221122
+  * Support for IPv6 adresses and _ in hostnames in --sshlogin.
+  * Use --total-jobs for --eta/--bar if generating jobs is slow.
+  * --bar supports UTF8.
+
+-------------------------------------------------------------------
 Sat Oct 29 12:00:35 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 20221022:

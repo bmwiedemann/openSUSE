@@ -1,0 +1,67 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2022-11-24 00:30:41.636640680 +0100
+Subject: Disintegrate the bundled libfluidsynth
+
+Do a partial revert of this commit:
+
+"""
+commit 47475495f43c0e9fed55fbe861cf2cb94628f39c
+Author: Christoph Oelckers <coelckers@users.noreply.github.com>
+Date:   Sun Jul 31 12:12:11 2022 +0200
+
+    - integrate FluidSynth directly into the project in source form.
+    
+    The primary reason for this is to avoid dealing with FluidSynth's rather messy compile setup.
+    This also protects us from breaking API/ABI changes like between version 1 and 2.
+"""
+
+The primary reason for this revert is to avoid dealing with
+FluidSynth's rather messy compile setup. Because it's already done in
+the distro's fluidsynth package and need not be repeated for zmusic.
+
+---
+ source/CMakeLists.txt                              |    7 +++++--
+ source/mididevices/music_fluidsynth_mididevice.cpp |    2 +-
+ thirdparty/CMakeLists.txt                          |    1 -
+ 3 files changed, 6 insertions(+), 4 deletions(-)
+
+Index: source/CMakeLists.txt
+===================================================================
+--- source/CMakeLists.txt.orig
++++ source/CMakeLists.txt
+@@ -142,8 +142,11 @@ use_fast_math(zmusiclite)
+ target_include_directories(zmusic INTERFACE $<INSTALL_INTERFACE:include> $<BUILD_INTERFACE:${ZMusic_SOURCE_DIR}/include>)
+ target_include_directories(zmusiclite INTERFACE $<INSTALL_INTERFACE:include> $<BUILD_INTERFACE:${ZMusic_SOURCE_DIR}/include>)
+ 
+-target_link_libraries_hidden(zmusic zmusic-obj adl oplsynth opn timidity timidityplus wildmidi fluidsynth)
+-target_link_libraries_hidden(zmusiclite zmusic-obj fluidsynth)
++include(FindPkgConfig)
++pkg_search_module(FLUIDSYNTH REQUIRED fluidsynth)
++target_include_directories(zmusic-obj INTERFACE ${FLUIDSYNTH_INCLUDE_DIRS})
++target_link_libraries_hidden(zmusic zmusic-obj adl oplsynth opn timidity timidityplus wildmidi ${FLUIDSYNTH_LIBRARIES})
++target_link_libraries_hidden(zmusiclite zmusic-obj ${FLUIDSYNTH_LIBRARIES})
+ 
+ target_compile_definitions(zmusic PUBLIC $<$<STREQUAL:$<TARGET_PROPERTY:zmusic,TYPE>,STATIC_LIBRARY>:ZMUSIC_STATIC>)
+ target_compile_definitions(zmusiclite PRIVATE ZMUSIC_LITE=1 PUBLIC $<$<STREQUAL:$<TARGET_PROPERTY:zmusiclite,TYPE>,STATIC_LIBRARY>:ZMUSIC_STATIC>)
+Index: source/mididevices/music_fluidsynth_mididevice.cpp
+===================================================================
+--- source/mididevices/music_fluidsynth_mididevice.cpp.orig
++++ source/mididevices/music_fluidsynth_mididevice.cpp
+@@ -46,7 +46,7 @@
+ 
+ FluidConfig fluidConfig;
+ 
+-#include "../thirdparty/fluidsynth/include/fluidsynth.h"
++#include <fluidsynth.h>
+ 
+ class FluidSynthMIDIDevice : public SoftSynthMIDIDevice
+ {
+Index: thirdparty/CMakeLists.txt
+===================================================================
+--- thirdparty/CMakeLists.txt.orig
++++ thirdparty/CMakeLists.txt
+@@ -45,4 +45,3 @@ add_subdirectory(timidity)
+ add_subdirectory(timidityplus)
+ add_subdirectory(wildmidi)
+ add_subdirectory(oplsynth)
+-add_subdirectory(fluidsynth/src)

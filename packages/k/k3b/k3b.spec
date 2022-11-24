@@ -1,7 +1,7 @@
 #
 # spec file for package k3b
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,9 +33,11 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 # PATCH-FIX-OPENSUSE
-Patch1:         Don-t-suggest-to-install-libburn.patch
+Patch0:         Don-t-suggest-to-install-libburn.patch
 # PATCH-FIX-OPENSUSE
-Patch2:         0001-Revert-Enable-the-k3b-helper-by-default.patch
+Patch1:         0001-Revert-Enable-the-k3b-helper-by-default.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-remove-unnecessary-and-incorrect-version-check.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  flac-devel

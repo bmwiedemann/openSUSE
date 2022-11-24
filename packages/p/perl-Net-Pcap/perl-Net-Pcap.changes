@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Nov 22 19:57:04 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- Add missing dependencies for pcapdump [bsc#1201615]
+- Remove patch not applied and not mentioned in the changelog.
+  * perl-Net-Pcap-avoid-pcap_rmtauth-redefinition.patch
+
+-------------------------------------------------------------------
+Wed Aug 24 09:12:32 UTC 2022 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- updated to 0.20
+   see /usr/share/doc/packages/perl-Net-Pcap/Changes
+
+  0.19 - 2021-11-27 - Max Maischein (CORION)
+    [Bugfixes]
+    - CPAN RT #127685 Restore compilation with libpcap 1.9+
+      This incorporates the RedHat patch from
+
+      https://www.cpan.org/authors/id/S/SR/SREZIC/patches/Net-Pcap-0.18-RT127685-RH1485429.patch
+
+      and guards it with the newly introduced version #define
+    - GH #9, CPAN RT #117831 , CPAN RT #125352 Too strict test for
+      error message from libpcap
+      Fix contributed by KENTNL
+
+-------------------------------------------------------------------
 Tue Nov 13 14:43:31 UTC 2018 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Cleaned with spec-cleaner
@@ -78,4 +103,3 @@ Fri Dec 16 06:11:09 UTC 2011 - pascal.bleser@opensuse.org
 Wed Mar 23 09:31:14 CET 2011 - pascal.bleser@opensuse.org
 
 - initial version (0.16)
-

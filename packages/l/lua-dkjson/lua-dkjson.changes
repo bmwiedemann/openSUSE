@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 23 10:17:15 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
+
+- Fix missing dependency on lua-macros (boo#1205612)
+
+-------------------------------------------------------------------
 Mon Dec 27 08:42:20 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - What was I thinking? Description and Summary had nothing to di

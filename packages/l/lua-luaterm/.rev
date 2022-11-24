@@ -52,4 +52,14 @@
 </comment>
     <requestid>868188</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>8d975482997573b42514acd36ef3cd5f</srcmd5>
+    <version>0.07</version>
+    <time>1669289030</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1037550 from michals
+
+- Fix missing dependency on lua-macros (boo#1205612)</comment>
+    <requestid>1037595</requestid>
+  </revision>
 </revisionlist>

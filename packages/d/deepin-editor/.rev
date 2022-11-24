@@ -83,4 +83,12 @@
   * Fix bugs</comment>
     <requestid>1000259</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>555c70e289dbcb63f5f4c7a3171e5d6c</srcmd5>
+    <version>5.10.40</version>
+    <time>1669289138</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1037839</requestid>
+  </revision>
 </revisionlist>

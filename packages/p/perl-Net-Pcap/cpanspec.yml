@@ -1,0 +1,62 @@
+---
+#description_paragraphs: 3
+#description: |-
+#  override description from CPAN
+#summary: override summary from CPAN
+#no_testing: broken upstream
+#sources:
+#  - source1
+#  - source2
+#patches:
+#  foo.patch: -p1
+#  bar.patch:
+#  baz.patch: PATCH-FIX-OPENSUSE
+preamble: |-
+ BuildRequires:  libpcap-devel
+ Requires:       perl-Data-Hexdumper
+ Requires:       perl-NetPacket
+#post_prep: |-
+# hunspell=`pkg-config --libs hunspell | sed -e 's,-l,,; s,  *,,g'`
+# sed -i -e "s,hunspell-X,$hunspell," t/00-prereq.t Makefile.PL 
+#post_build: |-
+# rm unused.files
+post_install: |-
+ install -D -m0755 eg/pcapdump "%{buildroot}%{_bindir}/pcapdump"
+#license: SUSE-NonFree
+#skip_noarch: 1
+#custom_build: |-
+#./Build build flags=%{?_smp_mflags} --myflag
+#custom_test: |-
+#startserver && make test
+#ignore_requires: Bizarre::Module
+skip_doc: stubs.inc
+#add_doc: files to add to docs
+misc: |-
+ %exclude %{_bindir}/pcapinfo
+ %exclude %{_bindir}/pcapdump
+ %exclude %{_mandir}/man1/pcapinfo.1%{?ext_man}
+
+ %package -n pcapdump
+ Summary:        Dump packets from the network
+ Requires:       %{name} = %{version}
+ 
+ %description -n pcapdump
+ Command line tool to dump packets from the network.
+ 
+ pcapdump mimics the very basic features of tcpdump(1) and provides a good
+ example of how to use Net::Pcap.
+
+ %package -n pcapinfo
+ Summary:        Prints detailed information about the network devices
+ Requires:       %{name} = %{version}
+ 
+ %description -n pcapinfo
+ pcapinfo prints detailed information about the network devices and Pcap library
+ available on the current host.
+ 
+ %files -n pcapdump
+ %{_bindir}/pcapdump
+ 
+ %files -n pcapinfo
+ %{_bindir}/pcapinfo
+ %{_mandir}/man1/pcapinfo.1%{?ext_man}

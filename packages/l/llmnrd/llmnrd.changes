@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 22 06:47:11 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Only install man-pages once
+
+-------------------------------------------------------------------
 Fri Oct 15 12:12:30 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Drop ProtectClock hardening, can cause issues if other device acceess is needed

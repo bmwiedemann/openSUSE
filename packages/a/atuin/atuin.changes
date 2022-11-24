@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Thu Nov 17 02:16:24 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Fix installation of shell completions.
+- Add extra shell stuff in docs.
+
+-------------------------------------------------------------------
+Sat Nov 12 09:07:21 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 12.0.0:
+  * Allow stateless commands to be run without config/database by @c-14 in #544
+  * Clear RBUFFER when accepting output from atuin by @c-14 in #545
+  * Add installer support for Termux by @laurentlbm in #540
+  * Bump lukemathwalker/cargo-chef from latest-rust-1.63 to latest-rust-1.64.0 by @dependabot in #546
+  * Add contributors command by @ellie in #550
+  * Add style to config.toml and config.md by @xfzv in #552
+  * Fix compatability with fish vi key bindings by @shreve in #541
+  * add some error messages by @conradludgate in #510
+  * update zh-CN docs by @helbing in #539
+  * Bump debian from bullseye-20220822-slim to bullseye-20221004-slim by @dependabot in #551
+  * Add automatic update checking by @ellie in #555
+  * Bump sqlx from 0.5.13 to 0.6.2 by @dependabot in #536
+  * Bump indicatif from 0.16.2 to 0.17.1 by @dependabot in #537
+  * Bump rpassword from 6.0.1 to 7.0.0 by @dependabot in #530
+  * Bump tui from 0.18.0 to 0.19.0 by @dependabot in #531
+  * Bump rmp-serde from 1.1.0 to 1.1.1 by @dependabot in #557
+  * Bump unicode-width from 0.1.9 to 0.1.10 by @dependabot in #535
+  * rollup of 5 dependency commits by @conradludgate in #562
+  * Add message begging for help lol turtle by @ellie in #569
+  * upgrade clap by @conradludgate in #568
+  * Configure reqwest to use native platform certs by @wpbrz in #574
+  * Bump async-trait from 0.1.57 to 0.1.58 by @dependabot in #575
+  * Never use HISTFILE for fish shell import by @patricksjackson in #573
+  * Respect fish shell's builtin private mode by @patricksjackson in #577
+  * Bump clap from 4.0.15 to 4.0.18 by @dependabot in #578
+  * docs: add more details about date parsing in the stats command by @bvergnaud in #579
+  * Make fuzzy search the default by @ellie in #591
+  * Update server.md by @pevogam in #589
+  * Exit with return code 1 when no results are found in atuin search command by @TymanWasTaken in #489
+  * Update README.md with antigen instruction. by @DanielAtCosmicDNA in #549
+  * Build ARM64 releases & update runners by @Absolucy in #593
+  * Add local event log storage by @ellie in #390
+  * fix #596: Avoid drawing a command section beyond the width of the list by @s0 in #597
+  * Add setting for keeping typed query when exiting by @s0 in #451
+  * Fix copy/paste artifact by @EricCrosson in #598
+  * Release v12 by @ellie in #599
+
+-------------------------------------------------------------------
 Tue Oct 11 17:37:07 UTC 2022 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Add shell completion packages

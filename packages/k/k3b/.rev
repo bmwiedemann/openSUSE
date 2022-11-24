@@ -1126,4 +1126,12 @@
     <comment>KDE Release Gear 22.08.3 (forwarded request 1032791 from cgiboudeaux)</comment>
     <requestid>1033221</requestid>
   </revision>
+  <revision rev="142" vrev="2">
+    <srcmd5>7a48d92b946f2db31432c6f84289f961</srcmd5>
+    <version>22.08.3</version>
+    <time>1669289043</time>
+    <user>dimstar_suse</user>
+    <comment>Fix the knsrcfile location</comment>
+    <requestid>1037651</requestid>
+  </revision>
 </revisionlist>

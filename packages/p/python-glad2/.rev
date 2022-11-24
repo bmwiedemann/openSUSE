@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cef0c1e4504ae8560dfb9aa297ed8459</srcmd5>
+    <version>2.0.1</version>
+    <time>1669289039</time>
+    <user>dimstar_suse</user>
+    <comment>This is needed as a dependency to package the new version of libplacebo (5.229.1).</comment>
+    <requestid>1037618</requestid>
+  </revision>
+</revisionlist>

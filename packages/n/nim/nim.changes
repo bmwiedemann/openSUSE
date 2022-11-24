@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Nov 23 22:42:27 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Update to version 1.6.10:
+  * Fixed “–styleCheck:off does not work (and –styleCheck:hint is 
+    now the default?)”
+  * Fixed “dereferencing pointer to incomplete type error with gcc 
+    9.4 with statics/cast”
+  * Fixed “strutils.find uses cstring optimization that stops after 
+    \0”
+  * Fixed “Nimpretty mangles numeric literal procs”
+  * Fixed “Regression in proc symbol resolution; Error: attempting 
+    to call routine “
+  * Fixed “of operator doesn’t consider generics under orc/arc”
+  * Fixed ““incompatible type” when mixing float32 and cfloat in 
+    generics”
+  * Fixed “cannot generate code for: mSlice with toOpenArray”
+  * Fixed “-mm flag is ignored on latest Nim 1.7.1 be4bd8” 
+  * Full list of changes: 
+    https://github.com/nim-lang/Nim/compare/v1.6.8...v1.6.10
+
+-------------------------------------------------------------------
 Wed Sep 28 07:25:35 UTC 2022 - David Anes <david.anes@suse.com>
 
 - Remove patch nim-fix-gcc-major-version-detection.patch as it is

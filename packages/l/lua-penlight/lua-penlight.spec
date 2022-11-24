@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package lua-penlight
 #
 # Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2012 Togan Muftuoglu toganm@opensuse.org
@@ -23,12 +23,6 @@
 %ifluadefault
 %define with_main 1
 %endif
-%if "%{flavor}" == ""
-Name:           lua-%{mod_name}
-ExclusiveArch:  do_not_build
-%else
-Name:           %{flavor}-%{mod_name}
-%endif
 Version:        1.13.1
 Release:        0
 Summary:        Generally useful modules inspired by the Python standard libraries
@@ -40,11 +34,18 @@ BuildRequires:  %{flavor}-devel
 BuildRequires:  %{flavor}-ldoc
 BuildRequires:  %{flavor}-luafilesystem
 BuildRequires:  %{flavor}-markdown
+BuildRequires:  lua-macros
 Requires:       %{flavor}
 Requires:       %{flavor}-luafilesystem
-BuildArch:      noarch
 Recommends:     lua-%{mod_name}-doc
+BuildArch:      noarch
 %lua_provides
+%if "%{flavor}" == ""
+Name:           lua-%{mod_name}
+ExclusiveArch:  do_not_build
+%else
+Name:           %{flavor}-%{mod_name}
+%endif
 
 %description
 A set of pure Lua libraries focusing on input data handling (such as

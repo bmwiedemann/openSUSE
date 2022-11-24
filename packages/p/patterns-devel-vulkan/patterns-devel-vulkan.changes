@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov 17 02:08:02 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- fixed broken build from previous change 
+
+-------------------------------------------------------------------
+Wed Nov 16 21:15:46 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Replace old RPM constructs
+
+-------------------------------------------------------------------
 Tue Nov 15 12:59:47 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - created pattern for Vulkan development 

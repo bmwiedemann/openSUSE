@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Nov 17 02:24:51 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update specfile
+
+-------------------------------------------------------------------
+Sun Nov 13 00:10:48 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.33.0:
+  * debugging: improve error handling in `zellij_server::pty` (https://github.com/zellij-org/zellij/pull/1840)
+  * feat: allow command panes to optionally close on exit (https://github.com/zellij-org/zellij/pull/1869)
+  * add: everforest-dark, everforest-light themes to the example theme directory (https://github.com/zellij-org/zellij/pull/1873)
+  * feat: support multiple themes in one file (https://github.com/zellij-org/zellij/pull/1855)
+  * debugging: Remove calls to unwrap in `zellij_server::ui::*` (https://github.com/zellij-org/zellij/pull/1870)
+  * debugging: Remove calls to unwrap in `zellij_server::pty_writer` (https://github.com/zellij-org/zellij/pull/1872)
+  * docs(example): update the format of the themes for the example directory (https://github.com/zellij-org/zellij/pull/1877)
+  * debugging: Remove calls to unwrap in `zellij_server::terminal_bytes` (https://github.com/zellij-org/zellij/pull/1876)
+  * debugging: Remove calls to unwrap in `zellij_server::output` (https://github.com/zellij-org/zellij/pull/1878)
+  * fix: resolve `zellij setup --clean` panic (https://github.com/zellij-org/zellij/pull/1882)
+  * feat: allow toggling mouse mode at runtime (https://github.com/zellij-org/zellij/pull/1883)
+  * fix: display status bar properly if limited to only 1 line (https://github.com/zellij-org/zellij/pull/1875)
+  * feat: allow starting command panes suspended (https://github.com/zellij-org/zellij/pull/1887)
+  * debugging: Remove calls to unwrap in `zellij_server::os_input_output` (https://github.com/zellij-org/zellij/pull/1895)
+  * fix: remove space key from shared_except (https://github.com/zellij-org/zellij/pull/1884)
+  * fix: clear search when sending terminating char (https://github.com/zellij-org/zellij/pull/1853)
+  * fix: properly convert the backslash key from old YAML config files (https://github.com/zellij-org/zellij/pull/1879)
+  * fix: clear floating panes indication when closing a floating command pane (https://github.com/zellij-org/zellij/pull/1897)
+  * Terminal compatibility: do not reset bold when resetting DIM (https://github.com/zellij-org/zellij/pull/1803)
+  * fix: Do not advertise 24 bit color support unchecked (https://github.com/zellij-org/zellij/pull/1900)
+  * fix: treat CWD properly when opening your editor through `zellij edit` or `ze` (https://github.com/zellij-org/zellij/pull/1904)
+  * fix: allow cli actions to be run outside of a tty environment (https://github.com/zellij-org/zellij/pull/1905)
+  * Terminal compatibility: send focus in/out events to terminal panes (https://github.com/zellij-org/zellij/pull/1908)
+  * fix: various bugs with no-frames and floating panes (https://github.com/zellij-org/zellij/pull/1909)
+  * debugging: Improve error logging in server (https://github.com/zellij-org/zellij/pull/1881)
+  * docs: add kanagawa theme (https://github.com/zellij-org/zellij/pull/1913)
+  * fix: use 'temp_dir' instead of hard-coded '/tmp/' (https://github.com/zellij-org/zellij/pull/1898)
+  * debugging: Don't strip debug symbols from release binaries (https://github.com/zellij-org/zellij/pull/1916)
+  * deps: upgrade termwiz to 0.19.0 and rust MSRV to 1.60.0 (https://github.com/zellij-org/zellij/pull/1896)
+
+-------------------------------------------------------------------
 Fri Oct 28 23:31:49 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 0.32.0:

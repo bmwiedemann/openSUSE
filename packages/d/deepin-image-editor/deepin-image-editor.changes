@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov 21 11:10:45 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace pkgconfig(opencv) with pkgconfig(opencv4) BuildRequires,
+  (use current version of opencv).
+
+-------------------------------------------------------------------
+Tue Oct 11 12:49:28 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add fix-library-link.patch, fix build on Leap 15.x
+
+-------------------------------------------------------------------
 Fri Aug 26 02:32:45 UTC 2022 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.0.19

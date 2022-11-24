@@ -1,7 +1,7 @@
 #
 # spec file for package lua-luaterm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ License:        MIT
 URL:            https://github.com/hoelzro/lua-term
 Source:         https://github.com/hoelzro/lua-term/archive/%{version}.tar.gz#$/%{rname}-%{version}.tar.gz
 BuildRequires:  %{flavor}-devel
+BuildRequires:  lua-macros
 Requires:       %{flavor}
 %lua_provides
 %if "%{flavor}" == ""

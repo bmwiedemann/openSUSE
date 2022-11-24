@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 23 10:26:03 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
+
+- Fix unowned %{lua_incdir} directory.
+
+-------------------------------------------------------------------
 Tue Feb  9 14:57:54 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %lua_provides: add the lua-mod_name provides/obsoletes to

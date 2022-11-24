@@ -1,0 +1,2 @@
+addFilter("devel-file-in-non-devel-package .*/glad/generator/c/templates")
+addFilter("devel-file-in-non-devel-package .*/glad/files/")

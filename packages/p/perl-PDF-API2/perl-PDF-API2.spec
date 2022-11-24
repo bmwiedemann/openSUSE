@@ -1,7 +1,7 @@
 #
 # spec file for package perl-PDF-API2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name PDF-API2
 Name:           perl-PDF-API2
-Version:        2.043
+Version:        2.044
 Release:        0
-Summary:        Create, modify, and examine PDF files
 License:        LGPL-2.1-or-later
+Summary:        Create, modify, and examine PDF files
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SS/SSIMMS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml

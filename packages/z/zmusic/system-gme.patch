@@ -3,47 +3,35 @@ Date: 2019-12-18 23:10:30.098185171 +0100
 
 Use GME system libraries instead of bundled code.
 
+How GME is released does not matter. The job of a distro is to string
+together all its GME users with whatever GME version was chosen by
+the distro. ABI incompatibilites are addressed, else our own stack
+wouldn't work.
+
 ---
- thirdparty/CMakeLists.txt |   23 +++++++++++++++--------
- 1 file changed, 15 insertions(+), 8 deletions(-)
+ thirdparty/CMakeLists.txt |    6 ++++++
+ 1 file changed, 6 insertions(+)
 
 Index: thirdparty/CMakeLists.txt
 ===================================================================
 --- thirdparty/CMakeLists.txt.orig
 +++ thirdparty/CMakeLists.txt
-@@ -20,21 +20,28 @@ endif()
- # system copy exists soley to placate people following distro guidelines to the
- # letter without regard as to why the vendored copy is forced.
- # [Blzut3] Commented out per request from Graf Zahl.
--#option(FORCE_INTERNAL_GME "Use internal gme (it is highly unlikely this should be turned off)" ON)
-+# Conducive? What a load of unsourced claims.
-+# One point of a system library - the important one for openSUSE - is to just have
-+# *one* *single version* in the system that gets used. It does not matter
-+# if it's a proper release, a Git snapshot, or if the next miniscule increment
-+# is completely ABI incompatible. Just don't bloat by bundling everywhere.
-+# 
-+include(FindPkgConfig)
-+pkg_check_modules(GME libgme)
-+option(FORCE_INTERNAL_GME "Use internal gme" OFF)
+@@ -25,6 +25,11 @@ endif()
+ #option(FORCE_INTERNAL_GME "Use internal gme (it is highly unlikely this should be turned off)" ON)
  #mark_as_advanced(FORCE_INTERNAL_GME GME_INCLUDE_DIR GME_LIBRARY)
  #find_package(GME QUIET)
--#if(GME_FOUND AND NOT FORCE_INTERNAL_GME)
--#	message(STATUS "Using system gme library, includes found at ${GME_INCLUDE_DIRS}")
--#	set_property(TARGET gme PROPERTY IMPORTED_GLOBAL TRUE)
--#	determine_package_config_dependency(ZMUSIC_PACKAGE_DEPENDENCIES TARGET gme MODULE GME)
--#else()
--#	message(STATUS "Using internal gme library")
-+if(NOT FORCE_INTERNAL_GME)
-+	message(STATUS "Using system gme library, includes found at ${GME_INCLUDE_DIRS}")
-+	determine_package_config_dependency(ZMUSIC_PACKAGE_DEPENDENCIES TARGET gme MODULE GME)
-+else()
-+	message(STATUS "Using internal gme library")
- 	# Use MAME as it's a balanced emulator: well-accurate, but doesn't eats lot of CPU
- 	# Nuked OPN2 is very accurate emulator, but it eats too much CPU for the workflow
- 	set(GME_YM2612_EMU "MAME" CACHE STRING "Which YM2612 emulator to use: \"Nuked\" (LGPLv2.1+), \"MAME\" (GPLv2+), or \"GENS\" (LGPLv2.1+)")
++include(FindPkgConfig)
++pkg_check_modules(GME libgme)
++message(STATUS "Using system gme library, includes found at ${GME_INCLUDE_DIRS}")
++determine_package_config_dependency(ZMUSIC_PACKAGE_DEPENDENCIES TARGET gme MODULE GME)
++if(FALSE)
+ #if(GME_FOUND AND NOT FORCE_INTERNAL_GME)
+ #	message(STATUS "Using system gme library, includes found at ${GME_INCLUDE_DIRS}")
+ #	set_property(TARGET gme PROPERTY IMPORTED_GLOBAL TRUE)
+@@ -37,6 +42,7 @@ endif()
  	mark_as_advanced(GME_YM2612_EMU)
  	add_subdirectory(game-music-emu)
--#endif()
+ #endif()
 +endif()
  
  add_subdirectory(dumb)

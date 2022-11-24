@@ -20,7 +20,7 @@
 %global sover   2
 %global libname libmimalloc%{sover}
 Name:           mimalloc
-Version:        2.0.6
+Version:        2.0.7
 Release:        0
 Summary:        A compact general purpose allocator
 License:        MIT
@@ -85,6 +85,7 @@ applications that want to make use of mimalloc.
 %files devel
 %{_libdir}/lib%{name}.so
 %{_libdir}/cmake/%{name}/
+%{_libdir}/pkgconfig/%{name}.pc
 %{_includedir}/*
 
 %changelog

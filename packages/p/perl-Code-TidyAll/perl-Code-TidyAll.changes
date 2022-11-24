@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Nov 20 03:06:16 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.83
+   see /usr/share/doc/packages/perl-Code-TidyAll/Changes
+
+  0.83     2022-11-19
+
+  - Fixed test failures on msys. Implemented by Paulo Custodio. GH #116.
+
+  - When running under GitHub Actions in --check-only mode, linting failures
+    will now emit GitHub annotations
+    (https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#example-creating-an-annotation-for-an-error). Implemented
+    by Pavel Dostál. GH #120.
+
+-------------------------------------------------------------------
 Sat Apr 16 03:06:08 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.82

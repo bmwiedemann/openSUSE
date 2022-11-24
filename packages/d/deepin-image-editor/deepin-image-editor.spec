@@ -27,7 +27,12 @@ License:        GPL-3.0-or-later
 Group:          System/Libraries
 URL:            https://github.com/linuxdeepin/image-editor
 Source0:        https://github.com/linuxdeepin/image-editor/archive/%{version}/%{_name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM recompile-with-fPIC.patch hillwood@opensuse.org - Fix build on 64bit arch
 Patch0:         recompile-with-fPIC.patch
+%if 0%{?suse_version} <= 1500
+# PATCH-FIX-OPENSUSE fix-library-link.patch hillwood@opensuse.org - Neet link dl for Leap 15.x
+Patch1:         fix-library-link.patch
+%endif
 BuildRequires:  deepin-gettext-tools
 BuildRequires:  dtkcore >= 5.0.0
 BuildRequires:  fdupes
@@ -43,7 +48,7 @@ BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5PrintSupport)
-BuildRequires:  pkgconfig(opencv)
+BuildRequires:  pkgconfig(opencv4)
 BuildRequires:  pkgconfig(dtkcore)
 BuildRequires:  pkgconfig(dtkwidget)
 BuildRequires:  pkgconfig(dtkgui)

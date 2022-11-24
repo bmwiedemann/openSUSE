@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 21 19:23:38 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
+
+- Add --no-warn-rwx-segment always, the problem is not specific to Tumbleweed.
+
+-------------------------------------------------------------------
 Tue Aug 30 11:34:06 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add --no-warn-rwx-segment to LDFLAGS on Tumbleweed, as a

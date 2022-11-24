@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Nov 17 03:07:37 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.044
+   see /usr/share/doc/packages/perl-PDF-API2/Changes
+
+  2.044     2022-11-16
+      - Added support for QR codes.
+      - [GH-44] The X coordinate returned by $text->position() or (deprecated)
+        $text->textpos() was incorrect when read after being set twice (report by
+        Johan Vromans).
+      - [GH-45] Renamed transform's "relative" option to "repeat" and fixed the
+        documentation describing what it does (report by Johan Vromans).
+      - [GH-49] Fix page_layout storing its value as page_mode (report by Johan
+        Vromans).
+      - [GH-50] Fix $pdf->viewer_preferences to return the same values it accepts
+        for non_full_screen_page_mode (report by Johan Vromans).
+      - Minor doc clarifications and improved error messages.
+
+-------------------------------------------------------------------
 Thu Dec  9 03:06:41 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.043

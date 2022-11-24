@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Wed Nov 23 16:15:18 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- Add source URL and update the license
+
+-------------------------------------------------------------------
+Tue Nov 22 19:45:57 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- Add missing pcapdump dependency [bsc#1201615]
+
+-------------------------------------------------------------------
+Tue Nov 22 19:45:37 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- Update the spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Tue Nov 22 19:43:26 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- initial package 3.0001
+ * created by cpanspec 1.82.02

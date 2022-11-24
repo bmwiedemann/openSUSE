@@ -1,0 +1,6 @@
+<package name="python-glad2" project="openSUSE:Factory">
+  <title>python-glad2</title>
+  <description>Multi-Language GL/GLES/EGL/GLX/WGL Loader-Generator based on the official specifications</description>
+  <devel project="multimedia:libs" package="python-glad2"/>
+  <url>https://github.com/Dav1dde/glad/tree/glad2</url>
+</package>

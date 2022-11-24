@@ -18,7 +18,7 @@
 
 %define cpan_name Code-TidyAll
 Name:           perl-Code-TidyAll
-Version:        0.82
+Version:        0.83
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Engine for tidyall, your all-in-one code tidier and validator

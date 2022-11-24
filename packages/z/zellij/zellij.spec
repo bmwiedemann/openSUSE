@@ -18,17 +18,16 @@
 
 %bcond_with     test
 Name:           zellij
-Version:        0.32.0
+Version:        0.33.0
 Release:        0
 Summary:        Terminal workspace with batteries included
 License:        MIT
 URL:            https://github.com/zellij-org/zellij
-Source0:        https://github.com/zellij-org/zellij/archive/refs/tags/v%{version}.tar.gz
+Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        cargo_config
 Source3:        README.suse-maint.md
 BuildRequires:  cargo-packaging
-BuildRequires:  libgcc_s1
 
 %if 0%{?suse_version} > 1500
 BuildRequires:  mandown
@@ -106,9 +105,11 @@ mv target/wasm32-wasi/release/*.wasm assets/plugins/
 
 # Build zellij proper
 %{cargo_build} --features unstable
-./target/release/zellij setup --generate-completion bash > target/zellij.bash
-./target/release/zellij setup --generate-completion fish > target/zellij.fish
-./target/release/zellij setup --generate-completion zsh > target/zellij.zsh
+
+for shell in "zsh" "bash" "fish"
+do
+  ./target/release/%{name} setup --generate-completion "$shell" > target/%{name}."$shell"
+done
 mandown docs/MANPAGE.md > target/zellij.1
 
 %install

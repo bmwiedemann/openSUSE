@@ -23,4 +23,14 @@
     <comment></comment>
     <requestid>871270</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>b2018fbe38b93d3e4543cc67c976f70f</srcmd5>
+    <version>0.7.0</version>
+    <time>1669289019</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1037524 from michals
+
+- Fix missing dependency on lua-macros (boo#1205612)</comment>
+    <requestid>1037585</requestid>
+  </revision>
 </revisionlist>

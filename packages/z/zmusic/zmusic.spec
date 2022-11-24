@@ -17,17 +17,18 @@
 
 
 Name:           zmusic
-Version:        1.1.9
+Version:        1.1.11
 Release:        0
 Summary:        ZDoom component library for music handling
 License:        GPL-3.0-only
 Group:          Development/Libraries/C and C++
 URL:            https://zdoom.org/
 
-#Git-Clone:     https://github.com/coelckers/ZMusic
-Source:         https://github.com/coelckers/ZMusic/archive/%version.tar.gz#/ZMusic-%version.tar.gz
-Patch1:         system-gme.patch
-Patch2:         dumb-dumb.patch
+#Git-Clone:     https://github.com/ZDoom/ZMusic
+Source:         https://github.com/ZDoom/ZMusic/archive/%version.tar.gz
+Patch1:         system-fluidsynth.patch
+Patch2:         system-gme.patch
+Patch3:         dumb-dumb.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config

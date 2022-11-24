@@ -74,7 +74,7 @@ BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  gcc
-BuildRequires:  python
+BuildRequires:  python3
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %{ix86} x86_64
 
@@ -121,6 +121,7 @@ cp %{SOURCE2} .
 mkdir build
 
 %build
+export PYTHON="python3"
 ./autogen.sh
 # We don't want to let rpm override *FLAGS with default a.k.a bogus values.
 CFLAGS="-fno-strict-aliasing -fno-inline-functions-called-once "

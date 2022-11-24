@@ -74,4 +74,26 @@
     <comment></comment>
     <requestid>648751</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>13f3e9765b97eb1f91fb733d0411dd0c</srcmd5>
+    <version>0.20</version>
+    <time>1669289050</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing dependencies for pcapdump [bsc#1201615]
+- Remove patch not applied and not mentioned in the changelog.
+  * perl-Net-Pcap-avoid-pcap_rmtauth-redefinition.patch
+
+- updated to 0.20
+   see /usr/share/doc/packages/perl-Net-Pcap/Changes
+  0.19 - 2021-11-27 - Max Maischein (CORION)
+    [Bugfixes]
+    - CPAN RT #127685 Restore compilation with libpcap 1.9+
+      This incorporates the RedHat patch from
+      https://www.cpan.org/authors/id/S/SR/SREZIC/patches/Net-Pcap-0.18-RT127685-RH1485429.patch
+      and guards it with the newly introduced version #define
+    - GH #9, CPAN RT #117831 , CPAN RT #125352 Too strict test for
+      error message from libpcap
+      Fix contributed by KENTNL</comment>
+    <requestid>1037713</requestid>
+  </revision>
 </revisionlist>

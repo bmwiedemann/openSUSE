@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Nov 23 14:51:55 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.2.286.0
+  + Separated EC2 identity vault manifest from OnPrem identity vault manifest
+  + Fix for credential retrieval blocking os termination signals
+  + Fix for agent updater using shared credentials on EC2
+  + Added guards against panic for agent identity health checks
+  + Added logging around agent module start/stop
+- from version 3.2.183.0
+  + Added logging when assuming identity
+  + Increased retries to ECS metadata endpoint
+  + Added linux debug build to makefile
+  + Implemented aws sdk logging interface
+  + Updated agent minor version to 3.2
+  + Added functionality to retrieve agent credentials from Systems Manager on EC2
+- from version 3.1.1927.0
+  + Update shell for Session Manager on MacOS
+
+-------------------------------------------------------------------
 Tue Nov  1 09:26:42 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.1.1856.0

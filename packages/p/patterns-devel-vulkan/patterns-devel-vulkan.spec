@@ -26,7 +26,6 @@ License:        MIT
 Group:          Metapackages
 Url:            https://github.com/openSUSE/patterns
 Source0:        %{name}-rpmlintrc
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  patterns-rpm-macros
 
 
@@ -74,7 +73,7 @@ Tools and libraries for software development using Vulkan.
 %build
 
 %install
-mkdir -p $RPM_BUILD_ROOT/usr/share/doc/packages/patterns/
-echo 'This file marks the pattern devel_vulkan to be installed.' > $RPM_BUILD_ROOT/usr/share/doc/packages/patterns/devel_vulkan.txt
+mkdir -p %buildroot/%_defaultdocdir/patterns/
+echo 'This file marks the pattern devel_vulkan to be installed.' > %buildroot/%_defaultdocdir/patterns/devel_vulkan.txt
 
 %changelog

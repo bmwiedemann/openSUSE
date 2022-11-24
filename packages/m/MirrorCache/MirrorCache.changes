@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Nov 17 06:21:34 UTC 2022 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.046:
+  * Correctly render mirrorlist in browser when file is unknown
+  * Allow rendering .zsync files
+  * Render selected mirrors with osm in .mirrorlist
+
+-------------------------------------------------------------------
+Fri Nov 11 10:42:10 UTC 2022 - Andrii Nikitin <andrii.nikitin@suse.com>
+- Add temporary patch for default database name
+  * 0001-Default-db-name.patch
+
+-------------------------------------------------------------------
+Fri Nov 11 09:42:10 UTC 2022 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.045:
+  * Add basic support for config from ini file (#314)
+  * Drop support for rsync in MIRRORCACHE_ROOT (#314)
+  * Allow html tags in CUSTOM_FOOTER_MESSAGE (#314)
+  * Fix os version in report generation on mariadb (#314)
+  * Fix zsync file generation missing empty line after header (#314)
+  * Fix download report including stats only from begin of hour (#315)
+
+-------------------------------------------------------------------
 Thu Oct 27 13:16:53 UTC 2022 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - Update to version 1.044:

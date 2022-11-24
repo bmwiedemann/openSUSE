@@ -24,4 +24,13 @@
     <comment>- Update sover to 2.</comment>
     <requestid>991916</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a52f1ef411c4bc46016f0aecdef05492</srcmd5>
+    <version>2.0.7</version>
+    <time>1669289116</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.7:
+  * valgrind support</comment>
+    <requestid>1037771</requestid>
+  </revision>
 </revisionlist>

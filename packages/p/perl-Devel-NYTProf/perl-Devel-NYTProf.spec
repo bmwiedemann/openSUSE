@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Devel-NYTProf
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Devel-NYTProf
 Name:           perl-Devel-NYTProf
-Version:        6.11
+Version:        6.12
 Release:        0
-Summary:        Powerful fast feature-rich Perl source code profiler
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Powerful fast feature-rich Perl source code profiler
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/J/JK/JKEENAN/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
@@ -30,6 +30,7 @@ BuildRequires:  perl-macros
 BuildRequires:  perl(Capture::Tiny)
 BuildRequires:  perl(File::Which) >= 1.09
 BuildRequires:  perl(JSON::MaybeXS)
+BuildRequires:  perl(Sub::Name) >= 0.11
 BuildRequires:  perl(Test::Differences) >= 0.60
 BuildRequires:  perl(Test::More) >= 0.84
 Requires:       perl(File::Which) >= 1.09

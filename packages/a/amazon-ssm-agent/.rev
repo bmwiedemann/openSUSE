@@ -193,4 +193,26 @@
   + Add created date to AgentJobAck message (forwarded request 1032661 from glaubitz)</comment>
     <requestid>1032677</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>7f07ff0ad6ff748cf02abb3adbf96c01</srcmd5>
+    <version>3.2.286.0</version>
+    <time>1669289047</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.2.286.0
+  + Separated EC2 identity vault manifest from OnPrem identity vault manifest
+  + Fix for credential retrieval blocking os termination signals
+  + Fix for agent updater using shared credentials on EC2
+  + Added guards against panic for agent identity health checks
+  + Added logging around agent module start/stop
+- from version 3.2.183.0
+  + Added logging when assuming identity
+  + Increased retries to ECS metadata endpoint
+  + Added linux debug build to makefile
+  + Implemented aws sdk logging interface
+  + Updated agent minor version to 3.2
+  + Added functionality to retrieve agent credentials from Systems Manager on EC2
+- from version 3.1.1927.0
+  + Update shell for Session Manager on MacOS (forwarded request 1037636 from glaubitz)</comment>
+    <requestid>1037655</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 23 10:39:52 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
+
+- Fix missing dependency on lua-macros (boo#1205612)
+
+-------------------------------------------------------------------
 Thu Feb 18 16:00:13 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Use %lua_provides macro for default lua versioning

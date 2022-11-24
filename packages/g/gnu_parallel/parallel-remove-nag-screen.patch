@@ -12,19 +12,19 @@ https://en.opensuse.org/openSUSE:Packaging_guidelines#Donation_requests
  src/sem      |    2 ++
  2 files changed, 4 insertions(+)
 
-Index: parallel-20210922/src/parallel
+Index: parallel-20221122/src/parallel
 ===================================================================
---- parallel-20210922.orig/src/parallel
-+++ parallel-20210922/src/parallel
-@@ -2052,6 +2052,7 @@ sub parse_options(@) {
-     if(defined $opt::eta) { $opt::progress = $opt::eta; }
-     if(defined $opt::bar) { $opt::progress = $opt::bar; }
+--- parallel-20221122.orig/src/parallel
++++ parallel-20221122/src/parallel
+@@ -2508,6 +2508,7 @@ sub parse_options(@) {
+ 	}
+     }
  
 +if (0) {
      # Funding a free software project is hard. GNU Parallel is no
      # exception. On top of that it seems the less visible a project
      # is, the harder it is to get funding. And the nature of GNU
-@@ -2127,6 +2128,7 @@ sub parse_options(@) {
+@@ -2581,6 +2582,7 @@ sub parse_options(@) {
      # line.  This is because _YOU_ actively make it harder to justify
      # spending time developing GNU Parallel.
  
@@ -32,19 +32,19 @@ Index: parallel-20210922/src/parallel
      parse_halt();
  
      if($ENV{'PARALLEL_ENV'}) {
-Index: parallel-20210922/src/sem
+Index: parallel-20221122/src/sem
 ===================================================================
---- parallel-20210922.orig/src/sem
-+++ parallel-20210922/src/sem
-@@ -2052,6 +2052,7 @@ sub parse_options(@) {
-     if(defined $opt::eta) { $opt::progress = $opt::eta; }
-     if(defined $opt::bar) { $opt::progress = $opt::bar; }
+--- parallel-20221122.orig/src/sem
++++ parallel-20221122/src/sem
+@@ -2508,6 +2508,7 @@ sub parse_options(@) {
+ 	}
+     }
  
 +if (0) {
      # Funding a free software project is hard. GNU Parallel is no
      # exception. On top of that it seems the less visible a project
      # is, the harder it is to get funding. And the nature of GNU
-@@ -2127,6 +2128,7 @@ sub parse_options(@) {
+@@ -2581,6 +2582,7 @@ sub parse_options(@) {
      # line.  This is because _YOU_ actively make it harder to justify
      # spending time developing GNU Parallel.
  

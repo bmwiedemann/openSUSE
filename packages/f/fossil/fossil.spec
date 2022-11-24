@@ -16,7 +16,7 @@
 #
 
 
-%define fossil_uuid 1e131febd3fbb028d00cab6d020214e8fe36be95daaf93237523c29c542e9a5f
+%define fossil_uuid 210e89a0597f225f49722b096cf5563bf193e920e02a9bd38503a906deacd416
 %if 0%{?suse_version} > 1500
 %bcond_without system_sqlite
 %else
@@ -24,7 +24,7 @@
 %endif
 %bcond_without tests
 Name:           fossil
-Version:        2.19
+Version:        2.20
 Release:        0
 Summary:        Distributed software configuration management
 License:        BSD-2-Clause

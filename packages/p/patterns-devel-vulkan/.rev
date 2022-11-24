@@ -15,4 +15,12 @@ I will open a pull-request on github [2] for the pattern icon, if my SR gets acc
 [2] https://github.com/sndirsch/yast-theme</comment>
     <requestid>1036251</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a689be45768d5fe496a424574785d59a</srcmd5>
+    <version>20221115</version>
+    <time>1669289125</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1037799</requestid>
+  </revision>
 </revisionlist>

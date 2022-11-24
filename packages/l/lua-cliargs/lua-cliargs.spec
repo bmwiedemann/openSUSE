@@ -1,7 +1,7 @@
 #
 # spec file for package lua-cliargs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ Group:          Development/Libraries/Other
 URL:            https://github.com/amireh/lua_cliargs
 Source:         https://github.com/amireh/lua_cliargs/archive/v%{upversion}.tar.gz#/%{rname}-%{upversion}.tar.gz
 BuildRequires:  %{flavor}-devel
+BuildRequires:  lua-macros
 Requires:       %{flavor}
 BuildArch:      noarch
 %lua_provides

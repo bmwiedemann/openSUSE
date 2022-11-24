@@ -1,7 +1,7 @@
 #
 # spec file for package lua-moonscript
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,6 +38,7 @@ BuildRequires:  %{flavor}-devel
 BuildRequires:  %{flavor}-loadkit
 BuildRequires:  %{flavor}-lpeg >= 0.10
 BuildRequires:  %{flavor}-luafilesystem >= 1.5
+BuildRequires:  lua-macros
 Requires:       %{flavor}
 Requires:       %{flavor}-alt-getopt
 Requires:       %{flavor}-argparse

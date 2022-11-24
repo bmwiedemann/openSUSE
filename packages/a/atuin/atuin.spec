@@ -17,19 +17,18 @@
 
 
 Name:           atuin
-Version:        11.0.0
+Version:        12.0.0
 Release:        0
 Summary:        Magical shell history
 License:        MIT
 Group:          System/Console
 URL:            https://github.com/ellie/atuin
-Source0:        %{name}-%{version}.tar.xz
-Source1:        vendor.tar.xz
+Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz
+Source1:        vendor.tar.gz
 Source2:        cargo_config
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
 BuildRequires:  cargo-packaging
-BuildRequires:  libgcc_s1
 BuildRequires:  rust+cargo >= 1.59
 
 %description
@@ -69,17 +68,22 @@ mkdir .cargo
 cp %{SOURCE2} .cargo/config
 
 %build
-%{cargo_build}
+%{cargo_build} --all-features
+
+for shell in "zsh" "bash" "fish"
+do
+  ./target/release/%{name} gen-completions --shell "$shell" > target/%{name}."$shell"
+done
 
 %install
 %{cargo_install}
-install -D -m 0644 "src/shell/%{name}.bash" "%{buildroot}/%{_datadir}/bash-completion/completions/%{name}"
-install -D -m 0644 "src/shell/%{name}.fish" "%{buildroot}/%{_datadir}/fish/vendor_completions.d/%{name}.fish"
-install -D -m 0644 "src/shell/%{name}.zsh" "%{buildroot}/%{_datadir}/zsh/site-functions/_%{name}"
+install -D -m 0644 "target/%{name}.bash" "%{buildroot}/%{_datadir}/bash-completion/completions/%{name}"
+install -D -m 0644 "target/%{name}.fish" "%{buildroot}/%{_datadir}/fish/vendor_completions.d/%{name}.fish"
+install -D -m 0644 "target/%{name}.zsh" "%{buildroot}/%{_datadir}/zsh/site-functions/_%{name}"
 
 %files
 %license LICENSE
-%doc README.md CHANGELOG.md
+%doc README.md CHANGELOG.md src/shell
 %{_bindir}/atuin
 
 %files bash-completion
