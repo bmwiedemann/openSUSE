@@ -45,7 +45,7 @@ and share them easily. Never email yourself a file again!
 %package -n dropbox-cli
 Summary:        Dropbox command line interface
 Group:          Productivity/File utilities
-Requires:       python3-gpgme
+Requires:       python3-gpg
 Requires:       python3-gobject-Gdk
 Provides:       dropbox = %{version}
 Obsoletes:      dropbox <= 2015.10.28

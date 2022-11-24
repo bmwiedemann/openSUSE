@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 22 14:38:06 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Require python3-gpg instead of python3-gpgme: gpgme is deprecated
+  and in the code is already the fallback, which is only used when
+  python3-gpg cannot be found.
+- Refresh 105.patch based on git (re-download).
+
+-------------------------------------------------------------------
 Thu Sep 15 11:09:31 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 105.patch: Port to libnautilus-extension-4.
