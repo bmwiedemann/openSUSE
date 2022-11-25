@@ -101,6 +101,9 @@ Development files (C/C++) for the OR-Tools suite.
 
 %prep
 %autosetup -p1 -n or-tools-%{version}
+# Fix incompatibility with SWIG 4.1, https://github.com/google/or-tools/issues/3519
+find -iname \*CMakeLists.txt -exec sed -i -e '/COMPILE_DEFINITIONS/ s@ABSL_MUST_USE_RESULT@@g' '{}' \;
+sed -i -e '/FLAGS/ s@ABSL_MUST_USE_RESULT@ABSL_MUST_USE_RESULT="[[nodiscard]]" @g' cmake/python.cmake
 
 %build
 %global optflags %{optflags} -Wno-error=return-type
