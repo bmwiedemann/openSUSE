@@ -329,4 +329,14 @@
   * https://www.php.net/ChangeLog-8.php#8.1.12</comment>
     <requestid>1032538</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>3f4931c88aee581845a2efec20818b1d</srcmd5>
+    <version>8.1.13</version>
+    <time>1669381691</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 8.1.13
+  * This is a bug fix release.
+  * https://www.php.net/ChangeLog-8.php#8.1.13</comment>
+    <requestid>1038044</requestid>
+  </revision>
 </revisionlist>
