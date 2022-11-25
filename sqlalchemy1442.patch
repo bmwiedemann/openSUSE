@@ -1,0 +1,48 @@
+diff --git a/databases/backends/aiopg.py b/databases/backends/aiopg.py
+index 60c741a..1d35749 100644
+--- a/databases/backends/aiopg.py
++++ b/databases/backends/aiopg.py
+@@ -221,6 +221,7 @@ def _compile(
+                 compiled._result_columns,
+                 compiled._ordered_columns,
+                 compiled._textual_ordered_columns,
++                compiled._ad_hoc_textual,
+                 compiled._loose_column_name_matching,
+             )
+         else:
+diff --git a/databases/backends/asyncmy.py b/databases/backends/asyncmy.py
+index e15dfa4..233d2e0 100644
+--- a/databases/backends/asyncmy.py
++++ b/databases/backends/asyncmy.py
+@@ -211,6 +211,7 @@ def _compile(
+                 compiled._result_columns,
+                 compiled._ordered_columns,
+                 compiled._textual_ordered_columns,
++                compiled._ad_hoc_textual,
+                 compiled._loose_column_name_matching,
+             )
+         else:
+diff --git a/databases/backends/mysql.py b/databases/backends/mysql.py
+index 2a0a842..c7ac9f4 100644
+--- a/databases/backends/mysql.py
++++ b/databases/backends/mysql.py
+@@ -211,6 +211,7 @@ def _compile(
+                 compiled._result_columns,
+                 compiled._ordered_columns,
+                 compiled._textual_ordered_columns,
++                compiled._ad_hoc_textual,
+                 compiled._loose_column_name_matching,
+             )
+         else:
+diff --git a/databases/backends/sqlite.py b/databases/backends/sqlite.py
+index 9626dcf..69ef5b5 100644
+--- a/databases/backends/sqlite.py
++++ b/databases/backends/sqlite.py
+@@ -185,6 +185,7 @@ def _compile(
+                 compiled._result_columns,
+                 compiled._ordered_columns,
+                 compiled._textual_ordered_columns,
++                compiled._ad_hoc_textual,
+                 compiled._loose_column_name_matching,
+             )
+ 
