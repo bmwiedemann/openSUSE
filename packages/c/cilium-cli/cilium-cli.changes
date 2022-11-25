@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov 24 15:58:13 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.12.9:
+  * Prepare for v0.12.9 release
+  * internal/cli: refactor sysdump flags initialization logic
+  * connectivity: add --collect-sysdump-on-failure flag
+  * sysdump: collect CiliumEgressGatewayPolicies
+  * Update stable release to v0.12.8
+
+-------------------------------------------------------------------
 Tue Nov 22 07:29:52 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.12.8:
