@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 22 08:11:17 UTC 2022 - Michael Chang <mchang@suse.com>
+
+- Make full utilization of btrfs bootloader area (bsc#1161823)
+  * 0001-fs-btrfs-Use-full-btrfs-bootloader-area.patch
+  * 0002-Mark-environmet-blocks-as-used-for-image-embedding.patch
+- Patch removed
+  * 0001-i386-pc-build-btrfs-zstd-support-into-separate-modul.patch
+
+-------------------------------------------------------------------
 Mon Nov 21 02:10:28 UTC 2022 - Michael Chang <mchang@suse.com>
 
 - Fix regression of reverting back to asking password twice when a keyfile is

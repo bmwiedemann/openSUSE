@@ -313,7 +313,6 @@ Patch786:       0046-squash-verifiers-Move-verifiers-API-to-kernel-image.patch
 Patch788:       0001-ieee1275-Avoiding-many-unecessary-open-close.patch
 Patch789:       0001-Workaround-volatile-efi-boot-variable.patch
 Patch790:       0001-30_uefi-firmware-fix-printf-format-with-null-byte.patch
-Patch791:       0001-i386-pc-build-btrfs-zstd-support-into-separate-modul.patch
 Patch792:       0001-templates-Follow-the-path-of-usr-merged-kernel-confi.patch
 Patch793:       0001-tpm-Pass-unknown-error-as-non-fatal-but-debug-print-.patch
 Patch794:       0001-Filter-out-POSIX-locale-for-translation.patch
@@ -477,6 +476,8 @@ Patch946:       0009-font-Fix-an-integer-underflow-in-blit_comb.patch
 Patch947:       0010-font-Harden-grub_font_blit_glyph-and-grub_font_blit_.patch
 Patch948:       0011-font-Assign-null_font-to-glyphs-in-ascii_font_glyph.patch
 Patch949:       0012-normal-charset-Fix-an-integer-overflow-in-grub_unico.patch
+Patch950:       0001-fs-btrfs-Use-full-btrfs-bootloader-area.patch
+Patch951:       0002-Mark-environmet-blocks-as-used-for-image-embedding.patch
 
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140
