@@ -1,5 +1,5 @@
 #
-# spec file for package rke-selinux
+# spec file for package rke2-selinux
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define rke2_relabel_files() \
 mkdir -p /var/lib/cni; \
@@ -33,15 +34,15 @@ restorecon -R /var/run/flannel
 %define selinux_policyver 20210716-3.1
 %define container_policyver 2.164.2-1.1
 
-Name:       rke2-selinux
-Version:    0.9.latest.1
-Release:    0
-Summary:    SELinux policy module for rke2
+Name:           rke2-selinux
+Version:        0.11.latest.1
+Release:        0
+Summary:        SELinux policy module for rke2
 
-Group:      System Environment/Base
-License:    Apache-2.0
-URL:        https://github.com/rancher/rke2-selinux
-Source:     %{name}-%{version}.tar.gz
+Group:          System Environment/Base
+License:        Apache-2.0
+URL:            https://github.com/rancher/rke2-selinux
+Source:         %{name}-%{version}.tar.gz
 
 BuildArch:      noarch
 BuildRequires:  container-selinux >= %{container_policyver}
@@ -49,15 +50,16 @@ BuildRequires:  git
 BuildRequires:  selinux-policy >= %{selinux_policyver}
 BuildRequires:  selinux-policy-devel >= %{selinux_policyver}
 
-Requires: policycoreutils, selinux-tools
+Requires:       policycoreutils
+Requires:       selinux-tools
 Requires(post): selinux-policy-base >= %{selinux_policyver}
 Requires(post): policycoreutils
 Requires(post): container-selinux >= %{container_policyver}
-Requires(postun): policycoreutils
+Requires(postun):policycoreutils
 
-Provides: %{name} = %{version}-%{release}
-Obsoletes: rke2-selinux < 0.9
-Conflicts: k3s-selinux
+Provides:       %{name} = %{version}-%{release}
+Obsoletes:      rke2-selinux < 0.9
+Conflicts:      k3s-selinux
 
 %description
 This package installs and sets up the SELinux policy security module for rke2.

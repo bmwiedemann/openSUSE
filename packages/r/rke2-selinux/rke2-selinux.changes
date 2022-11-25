@@ -1,7 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov 24 16:12:58 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.11.latest.1:
+  * Fix EOF error
+  * Add container_file_t context to /opt/cni
+  * Bump pip/setuptools version; switch to https for git clone
+  * Use SHA256 to sign packages instead of default SHA1
+  * centos 8 vault: side-step eol problems (#28)
+
+-------------------------------------------------------------------
 Wed Jan 26 11:54:00 UTC 2022 - Richard Brown <rbrown@suse.com>
 
-- Add missing specfile license/copyright 
+- Add missing specfile license/copyright
 
 -------------------------------------------------------------------
 Sun Jan  9 17:25:16 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
