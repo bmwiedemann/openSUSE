@@ -1,0 +1,5 @@
+<package name="budgie-backgrounds" project="openSUSE:Factory">
+  <title>Backgrounds</title>
+  <description>The default background set for the Budgie Desktop.</description>
+  <devel project="X11:Solus" package="budgie-backgrounds"/>
+</package>
