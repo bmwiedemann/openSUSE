@@ -283,4 +283,21 @@
   * NativeStateDRM: Honor visual configuration</comment>
     <requestid>994484</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>fdab5a2cd5e548513a8778c6bdc60acd</srcmd5>
+    <version>20221116</version>
+    <time>1669378308</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20221116:
+  * github: Build x11-gl-egl flavor in CI
+  * build: Add x11-gl-egl flavor
+  * GLStateGLX: Support multisampled configs
+  * GLStateEGL: Support multisampled configs
+  * GLVisualConfig: Add multisampling support
+  * Add missing newline at end of log messages
+  * NativeStateDRM,NativeStateGBM: Support configuring the DRM device
+  * Options: Support passing window system specific options
+  * NativeStateGBM: Add GBM offscreen backend</comment>
+    <requestid>1037881</requestid>
+  </revision>
 </revisionlist>

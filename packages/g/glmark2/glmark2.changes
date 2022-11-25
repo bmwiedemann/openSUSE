@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov 24 12:25:29 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20221116:
+  * github: Build x11-gl-egl flavor in CI
+  * build: Add x11-gl-egl flavor
+  * GLStateGLX: Support multisampled configs
+  * GLStateEGL: Support multisampled configs
+  * GLVisualConfig: Add multisampling support
+  * Add missing newline at end of log messages
+  * NativeStateDRM,NativeStateGBM: Support configuring the DRM device
+  * Options: Support passing window system specific options
+  * NativeStateGBM: Add GBM offscreen backend
+
+-------------------------------------------------------------------
 Thu Aug 11 08:17:50 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20220712:
