@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov 17 09:24:02 UTC 2022 - Reinhard Max <max@suse.com>
+
+- update to 3.40.0:
+  * https://sqlite.org/releaselog/3_40_0.html
+  * Add support for compiling SQLite to WASM and running it in wen
+    browsers.
+  * Add the recovery extension that might be able to recover some
+    content from a corrupt database file.
+  * For more changes, see https://sqlite.org/releaselog/3_40_0.html
+
+-------------------------------------------------------------------
 Wed Nov  2 20:24:07 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.39.4:
