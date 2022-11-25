@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Nov 23 21:15:35 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to v0.5.2
+  * Drop Support for Python 3.7
+- Release v0.5.1
+  * This release is a minor change in the build system. There are
+    no new wrappers or code changes of existing SLICOT wrappers.
+  * Use FindPython instead of deprecated FindPythonLibs by
+    @bnavigator in #181
+  * Use setuptools_scm instead of custom version determination code
+    by @bnavigator in #180
+  * Support Python 3.11 by @bnavigator in #182
+
+-------------------------------------------------------------------
 Sun Jul 10 21:53:40 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Restore finding correctly flavored f2py during build

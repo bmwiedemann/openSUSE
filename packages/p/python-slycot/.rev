@@ -130,4 +130,12 @@
     <comment>- Restore finding correctly flavored f2py during build (forwarded request 988213 from bnavigator)</comment>
     <requestid>988214</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a0cb62068801f04e4b7719a956b39742</srcmd5>
+    <version>0.5.2</version>
+    <time>1669384575</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1037768</requestid>
+  </revision>
 </revisionlist>

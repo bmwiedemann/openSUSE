@@ -1,0 +1,2 @@
+# upstream tells users to slycot.test() the installation
+addFilter("python-tests-in-package .*slycot/tests")
