@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov 10 03:06:59 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.028
+   see /usr/share/doc/packages/perl-Dist-Zilla/Changes
+
+  6.028     2022-11-09 10:54:14-05:00 America/New_York
+          - remove bogus work-in-progress signatures-using commit from 6.027;
+            that was a bad release! thanks for the heads-up about it to Gianni
+            "dakkar" Ceccarelli!
+
+-------------------------------------------------------------------
 Mon Nov  7 03:06:30 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.027
