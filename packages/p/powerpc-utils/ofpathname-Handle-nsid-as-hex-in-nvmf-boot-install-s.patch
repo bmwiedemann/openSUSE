@@ -1,0 +1,44 @@
+From feea6c60f9dae48d5d270683cc08393b8e21d53e Mon Sep 17 00:00:00 2001
+From: Wen Xiong <wenxiong@linux.ibm.com>
+Date: Mon, 21 Nov 2022 13:34:15 -0500
+Subject: [PATCH] ofpathname: Handle nsid as hex in nvmf boot/install support
+
+Didn't handle nsid correctly in nvmf boot/install support.
+Need to handle it as hexadecimal number
+
+For example,
+/pci@800000020000132/fibre-channel@0,1/nvme-of/controller@50050768101935e5,ffff
+:nqn=nqn.1986-03.com.ibm:nvme:2145.0000020420006CEA/namespace@26c
+
+26c should be a hexadecimal number.
+
+Signed-off-by: Wen Xiong <wenxiong@linux.ibm.com>
+---
+ scripts/ofpathname | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/scripts/ofpathname b/scripts/ofpathname
+index 33d7702..752f8e9 100755
+--- a/scripts/ofpathname
++++ b/scripts/ofpathname
+@@ -809,7 +809,7 @@ l2of_nvmf()
+         else
+             goto_dir $res
+             devnsid=`$CAT $PWD/nsid | tr -d '\000'`
+-            devnsid=`echo "obase=16; $devnsid" |bc`
++            devnsid=$(printf "%x" $devnsid)
+             OF_PATH="$OF_PATH/namespace@$devnsid"
+         fi
+     fi
+@@ -1881,7 +1881,7 @@ of2l_nvmf()
+             cd $dir
+ 
+             local devnsid=`$CAT ./nsid 2>/dev/null`
+-            devnsid=`echo "obase=16; $devnsid" |bc`
++            devnsid=$(printf "%x" $devnsid)
+             if [[ $devnsid = $nsid ]]; then
+                 found=1
+                 LOGICAL_DEVNAME="${dir##*/}"
+-- 
+2.38.0
+

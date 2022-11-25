@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 24 16:09:30 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
+
+- nsid of nvmf device needs to be lowercase (bsc#1205697 ltc#200594)
+  + ofpathname-Handle-nsid-as-hex-in-nvmf-boot-install-s.patch
+
+-------------------------------------------------------------------
 Mon Nov 14 15:24:35 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
 
 - NVMf boot support (bsc#1205351 ltc#200481)
