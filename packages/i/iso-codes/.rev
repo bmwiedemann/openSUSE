@@ -792,4 +792,12 @@
 </comment>
     <requestid>991755</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>f4d78ce4930159daee41c4b46dc53e03</srcmd5>
+    <version>4.12.0</version>
+    <time>1669381686</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.12.0: (forwarded request 1037617 from dimstar)</comment>
+    <requestid>1038029</requestid>
+  </revision>
 </revisionlist>
