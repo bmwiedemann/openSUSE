@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri Nov 25 10:51:59 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 13.5.3
+  * Minor RTSS and TerrainTransform fixes
+- Update to 13.5.2
+  * Various GL bugfixes
+- Update to 13.5.1
+  * RenderSystem - skip FFP texture settings when FFP is not supported
+  * Minor RTSS bugfixes 
+- Update to 13.5.0
+  * Implement Automatic Instancing
+  * Add support for GPU bone to world transform
+  * Non shadow-casting lights and PSSM integration
+  * Use Vulkan Memory Allocator
+  * See full changes:
+    https://github.com/OGRECave/ogre/releases/tag/v13.5.0
+- Add swig-3-cpp11.patch required for swig 3 on openSUSE Leap 15.3
+  and Leap 15.4
+- Add fix-sse-detection.patch for fixing sse detection, as x86 does
+  not always provides sse, only x64 has always sse support
+
+-------------------------------------------------------------------
+Fri Nov 25 09:18:53 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 13.4.4
+  * Minor bug fixes, especially within the GLSLang and Vulkan part
+- Update to 13.4.3
+  * Refactor code to C++11 style
+  * Fixes within ParticleFX and RTSS
+- Update to 13.4.2
+  * Minor bug fixes, focussed on RTSS and PCZSceneManager
+- Update to 13.4.1
+  * BillboardChain - fix orientation when there is only one camera
+- Update to 13.4.0
+  * Add Bullet component based on BtOgre
+  * Add VET_INT_10_10_10_2_NORM
+  * Add basic support for joystick devices
+  * Overlay: update ImGui to 1.87
+  * Full changes: https://github.com/OGRECave/ogre/releases/tag/v13.4.0
+- Rebased 0001-Vulkan-Use-find_package-to-support-system-wide-insta.patch
+
+-------------------------------------------------------------------
 Wed Apr  6 22:07:10 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 13.3.4

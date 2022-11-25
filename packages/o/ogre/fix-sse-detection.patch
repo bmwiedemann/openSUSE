@@ -1,0 +1,12 @@
+diff -Nur ogre-13.5.3/OgreMain/include/OgrePlatformInformation.h new/OgreMain/include/OgrePlatformInformation.h
+--- ogre-13.5.3/OgreMain/include/OgrePlatformInformation.h	2022-11-24 12:21:18.000000000 +0100
++++ new/OgreMain/include/OgrePlatformInformation.h	2022-11-25 11:50:25.234245806 +0100
+@@ -36,7 +36,7 @@
+ #if   OGRE_DOUBLE_PRECISION == 0 && OGRE_CPU == OGRE_CPU_X86 && OGRE_COMPILER == OGRE_COMPILER_MSVC
+ #   define __OGRE_HAVE_SSE  1
+ #elif OGRE_DOUBLE_PRECISION == 0 && OGRE_CPU == OGRE_CPU_X86 && (OGRE_COMPILER == OGRE_COMPILER_GNUC || OGRE_COMPILER == OGRE_COMPILER_CLANG) && \
+-      OGRE_PLATFORM != OGRE_PLATFORM_APPLE_IOS
++      OGRE_PLATFORM != OGRE_PLATFORM_APPLE_IOS && (__x86_64__ || __SSE2__)
+ #   define __OGRE_HAVE_SSE  1
+ #endif
+ 

@@ -17,13 +17,13 @@
 
 
 %define major 13
-%define minor 3
-%define third 4
+%define minor 5
+%define third 3
 %define sover  %{major}.%{minor}
 %define soname %{major}_%{minor}
 %define plugin_dir %{_libdir}/OGRE%{soname}
 # Version from https://github.com/OGRECave/ogre/blob/v%version/Components/Overlay/CMakeLists.txt#L25
-%define im_version 1.85
+%define im_version 1.87
 # CG is non free, so not build by default
 %bcond_with cg
 # OpenEXR v3 is incompatible https://github.com/OGRECave/ogre/issues/2179
@@ -41,7 +41,10 @@ Source99:       %{name}-rpmlintrc
 # PATCH-FIX-OPENSUSE python3-sitelib.patch -- Fix python path detected on build time
 Patch0:         python3-sitelib.patch
 # PATCH-FEAT-UPSTREAM 0001-Vulkan-Use-find_package-to-support-system-wide-insta.patch
-Patch4:         0001-Vulkan-Use-find_package-to-support-system-wide-insta.patch
+Patch1:         0001-Vulkan-Use-find_package-to-support-system-wide-insta.patch
+# PATCH-FIX-UPSTREAM fix-sse-detection.patch -- Fix detection of sse for x86 (vs x64)
+Patch2:         fix-sse-detection.patch
+Patch3:         swig-3-cpp11.patch
 BuildRequires:  cmake >= 3.10
 BuildRequires:  dos2unix
 BuildRequires:  doxygen
@@ -62,6 +65,7 @@ BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(pugixml)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  pkgconfig(shaderc)
 BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xaw7)

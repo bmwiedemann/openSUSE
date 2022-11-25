@@ -1,0 +1,12 @@
+diff -Nur ogre-13.5.3/OgreMain/include/OgreException.h new/OgreMain/include/OgreException.h
+--- ogre-13.5.3/OgreMain/include/OgreException.h	2022-11-24 12:21:18.000000000 +0100
++++ new/OgreMain/include/OgreException.h	2022-11-25 12:18:10.051230141 +0100
+@@ -165,7 +165,7 @@
+         */
+         const String &getDescription(void) const { return description; }
+ 
+-        const char* what() const throw() override { return fullDesc.c_str(); }
++        const char* what() const noexcept override { return fullDesc.c_str(); }
+         
+     };
+ 
