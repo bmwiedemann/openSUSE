@@ -16,15 +16,14 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define         skip_python2 1
 Name:           python-intake
-Version:        0.6.5
+Version:        0.6.6
 Release:        0
 Summary:        Data loading and cataloging system
 License:        BSD-2-Clause
 URL:            https://github.com/intake/intake
 Source:         https://github.com/intake/intake/archive/refs/tags/%{version}.tar.gz#/intake-%{version}-gh.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -35,6 +34,7 @@ Requires:       python-dask
 Requires:       python-dask-bag
 Requires:       python-entrypoints
 Requires:       python-fsspec >= 2021.7.0
+Requires:       python-msgpack
 Recommends:     python-bokeh
 Recommends:     python-dask-dataframe
 Recommends:     python-hvplot
@@ -53,13 +53,16 @@ BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module appdirs}
-BuildRequires:  %{python_module bokeh}
+# upper pin for bokeh required for resolver conflicts with dask, hvplot, and panel.
+# upstream even declares bokeh<2, but we don't have it
+BuildRequires:  %{python_module bokeh < 2.5}
 BuildRequires:  %{python_module dask-bag}
 BuildRequires:  %{python_module dask-dataframe}
 BuildRequires:  %{python_module dask}
 BuildRequires:  %{python_module entrypoints}
 BuildRequires:  %{python_module fsspec >= 2021.7.0}
 BuildRequires:  %{python_module hvplot >= 0.5.2}
+BuildRequires:  %{python_module msgpack}
 # strictly a test req, but not a runtime requirement, not available in openSUSE
 #BuildRequires:  %%{python_module intake-parquet}
 BuildRequires:  %{python_module msgpack-numpy}
@@ -92,12 +95,6 @@ find intake -path '*/tests/*.py' -exec sed -i '1{/env python/d}' {} ';'
 %python_expand chmod a-x %{buildroot}%{$python_sitelib}/intake-%{version}*-info/*
 
 %check
-%{python_expand # provide entrypoint for flavor
-mkdir -p build/testbin
-ln -s %{buildroot}%{_bindir}/intake-%{$python_bin_suffix} build/testbin/intake
-ln -s %{buildroot}%{_bindir}/intake-server-%{$python_bin_suffix} build/testbin/intake-server
-}
-export PATH=$PWD/build/testbin:$PATH
 # Looks for `which python`, which we don't have in TW
 donttest+=" or test_which"
 # test_discover_cli overrides the PYTHONPATH and thus doesn't find the package in buildroot
@@ -133,5 +130,15 @@ donttest+=" or test_mlist_parameter"
 %python_alternative %{_bindir}/intake
 %{python_sitelib}/intake
 %{python_sitelib}/intake-%{version}*-info
+%exclude %{python_sitelib}/intake/tests
+%exclude %{python_sitelib}/intake/*/tests
+%exclude %{python_sitelib}/intake/cli/*/tests
+%exclude %{python_sitelib}/intake/interface/*/tests
+%exclude %{python_sitelib}/intake/util_tests.py
+%pycache_only %exclude %{python_sitelib}/intake/__pycache__/util_tests.*.pyc
+%exclude %{python_sitelib}/intake/conftest.py
+%pycache_only %exclude %{python_sitelib}/intake/__pycache__/conftest.*.pyc
+%exclude %{python_sitelib}/intake/interface/conftest.py
+%pycache_only %exclude %{python_sitelib}/intake/interface/__pycache__/conftest.*.pyc
 
 %changelog
