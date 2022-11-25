@@ -1,7 +1,7 @@
 #
 # spec file for package python-arviz
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,42 +16,41 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define modname arviz
 Name:           python-arviz
-Version:        0.11.4
+Version:        0.14.0
 Release:        0
 Summary:        Exploratory analysis of Bayesian models
 License:        Apache-2.0
 URL:            http://github.com/arviz-devs/arviz
-Source:         https://github.com/arviz-devs/arviz/archive/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
+Source:         https://github.com/arviz-devs/arviz/archive/%{version}.tar.gz#/%{modname}-%{version}.tar.gz
 BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
 # SECTION test requirements
 BuildRequires:  %{python_module cloudpickle}
-BuildRequires:  %{python_module matplotlib >= 3.0}
+BuildRequires:  %{python_module matplotlib >= 3.5}
 BuildRequires:  %{python_module netCDF4}
 BuildRequires:  %{python_module numba}
-BuildRequires:  %{python_module numpy >= 1.12}
+BuildRequires:  %{python_module numpy >= 1.20.0}
 BuildRequires:  %{python_module packaging}
-BuildRequires:  %{python_module pandas >= 0.23}
+BuildRequires:  %{python_module pandas >= 1.4.0}
 BuildRequires:  %{python_module pytest >= 0.23}
+BuildRequires:  %{python_module scipy >= 1.8.0}
+BuildRequires:  %{python_module setuptools >= 60.0.0}
 BuildRequires:  %{python_module typing_extensions}
-BuildRequires:  %{python_module scipy >= 0.19}
-BuildRequires:  %{python_module setuptools >= 38.4}
-BuildRequires:  %{python_module xarray >= 0.16.1}
+BuildRequires:  %{python_module xarray >= 0.21.0}
+BuildRequires:  %{python_module xarray-einstats >= 0.3}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-matplotlib >= 3.0
+Requires:       python-matplotlib >= 3.5
 Requires:       python-netCDF4
-Requires:       python-numpy >= 1.12
+Requires:       python-numpy >= 1.20.0
 Requires:       python-packaging
-Requires:       python-pandas >= 0.23
-Requires:       python-scipy >= 0.19
-Requires:       python-setuptools >= 38.4
-Requires:       python-xarray >= 0.16.1
-Recommends:     python-numba
+Requires:       python-pandas >= 1.4.0
+Requires:       python-scipy >= 1.8.0
+Requires:       python-setuptools >= 60.0.0
+Requires:       python-xarray >= 0.21.0
 Recommends:     python-bokeh >= 1.4.0
+Recommends:     python-numba
 Recommends:     python-ujson
 BuildArch:      noarch
 %python_subpackages

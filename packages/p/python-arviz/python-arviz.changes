@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Thu Nov 24 10:03:01 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 0.14.0
+  * Add weight_predictions function to allow generation of weighted predictions
+    from two or more InfereceData with posterior_predictive groups and a set of
+    weights (2147)
+  * Add Savage-Dickey density ratio plot for Bayes factor approximation. (2037,
+    [2152](#2152)
+  * Adds rug plot for observed variables to plot_ppc. (2161)
+  * Fix dimension ordering for plot_trace with divergences (2151)
+
+- v0.13.0 (2022 Oct 22)
+  * Add side argument to plot_violin to allow single-sided violin plots (1996)
+  * Added support for Bean Machine via the function from_beanmachine. (2107
+  * Add support for warmup samples in from_pystan for PyStan 3. (2132
+  * Add exception in az.plot_hdi for x of type np.datetime64 and smooth=True
+    (2016)
+  * Change ax.plot usage to ax.scatter in plot_pair (1990)
+  * Example data has been moved to the arviz_example_data repository and is now
+    included using git subtree. (2096 and 2105)
+  * Bokeh kde contour plots started to use contourpy package (2104)
+  * Update default Bokeh markers for rcparams (2104)
+  * Correctly (re)order dimensions for bfmi and plot_energy (2126)
+  * Fix bug with the dimension order dependency (2103)
+  * Add testing module for labeller classes (2095)
+  * Skip compression for object dtype while creating a netcdf file (2129)
+  * Fix issue in dim generation when default dims are present in user inputed
+    dims (2138)
+  * Save InferenceData level attrs to netcdf and zarr (2131)
+  * Update tests and docs for updated example data (2137)
+  * Copy coords before modifying in ppcplot (2160)
+  * Removed fill_last, contour and plot_kwargs arguments from plot_pair
+    function (2085)
+  * Add translation overview to contributing guide (2041)
+  * Improve how to release page (2144)
+
+- v0.12.1 (2022 May 12)
+  * Add stat_focus argument to arviz.summary (1998)
+  * psislw now smooths log-weights even when shape is lower than 1/3(2011)
+  * Fixes from_cmdstanpy, handles parameter vectors of length 1 (2023)
+  * Fix typo in BaseLabeller that broke NoVarLabeller (2018)
+  * Adding plotting guides (2025)
+  * Update links to use new domain (2013)
+
+- v0.12.0 (2022 Mar 23)
+  * Add new convenience function arviz.extract_dataset (1725)
+  * Add combine_dims argument to several functions (1676)
+  * [experimental] Enable dask chunking information to be passed to
+    InferenceData.from_netcdf with regex support (1749)
+  * Allow kwargs to customize appearance of the mean in plot_lm
+  * Add dict option to from_cmdstan log_likelihood parameter (as in
+    from_pystan)
+  * Unify model comparison API. Both plot_compare, plot_elpd can now take dicts
+    of InferenceData or ELPDData (1690)
+  * Change default for rcParam stats.ic_pointwise to True (1690)
+  * Add new plot type: plot_ecdf (1753)
+  * Drop Python 3.6 support (1430)
+  * Bokeh 3 compatibility. (1919)
+  * Remove manual setting of 2d KDE limits (1939)
+  * Pin to bokeh<3 version (1954)
+  * Fix legend labels in plot_ppc to reflect prior or posterior. (1967)
+  * Change DataFrame.append to pandas.concat (1973)
+  * Fix axis sharing behaviour in plot_pair. (1985)
+  * Fix parameter duplication problem with PyStan (1962)
+  * Temporarily disable pyjags tests (1963)
+  * Fix tuple bug in coords (1695)
+  * Fix extend 'right' join bug (1718)
+  * Update attribute handling for InferenceData (1357)
+  * Fix R2 implementation (1666)
+  * Added warning message in plot_dist_comparison() in case subplots go over
+    the limit (1688)
+  * Fix coord value ignoring for default dims (2001)
+  * Fixed plot_posterior with boolean data (1707)
+  * Fix min_ess usage in plot_ess (2002)
+  * Fixed typo in Forestplot documentation
+  * Restructured contributing section and added several new pages to help
+    contributing to docs (1903)
+
+-------------------------------------------------------------------
 Sat Mar  5 16:19:27 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.11.4:
