@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Nov 23 13:41:27 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.2.2:
+  + Freeze the task pane layout while Alt is pressed,
+  + Only sort Alt+Tab on WM_CLASS when persistent,
+  + Also sort Alt+Tab on the 'order' winoption when persistent,
+  + Let the Escape key cancel a menu with all its submenu's,
+  + Add a menu entry to rename the window title manually,
+  + Adapt absolute paths in .desktop files to the installation
+    prefix,
+  + The sorting of windows in the window list window was improved a
+    lot,
+  + Restore the named frame tabs when recovering from a crash,
+  + Preserve the non-fullscreen non-maximized window geometry
+    across restarts,
+  + Try harder to avoid a situation where nothing is focused,
+  + Update the window list when a tab is moved to its own frame,
+  + Make the window list menu actions more tab-savvy.
+  + Drop the obsolete LSM file altogether.
+- Changes from version 3.2.1:
+  + Add QuickSwitchPersistence=0 preference for stateful Alt+Tab.
+  + Demarcate workspaces with a horizontal line in Alt+Tab.
+  + Fixes for Alt+Tab size calculations.
+  + Fix for changing workspace when Alt+Tab is open.
+  + Fix for KeySysSwitchClass history.
+  + Don't attempt to focus NoInput windows.
+  + Ensure that active Alt+Tab item is visible.
+  + Also sort Alt+Tab items on WM_CLASS.
+  + Fix a compile error for GCC 4.8.5.
+  + When moving a tab to a new frame, activate it.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Nov  3 17:11:29 UTC 2022 - Victorhck <victorhck@opensuse.org>
 
 - Update to version 3.2.0:
