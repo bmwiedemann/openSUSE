@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Nov 24 16:00:09 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.9.0:
+  * Minor Changes
+    - Enable dynamic schema refresh (#2703) @ssbarnea
+    - Allow additional collections in only-builtins (#2710) @evgeni
+  * Bugfixes
+    - Avoid Object of type PosixPath is not JSON serializable with jinja2 (#2724) @ssbarnea
+    - Expand ~ in PATH and warn user (#2723) @ssbarnea
+    - Fix only builtins fail test (#2719) @evgeni
+    - Allow profile to be set in config file (#2720) @shatakshiiii
+    - Decouple profile listing from profile selecting on CLI (#2721) @ssbarnea
+    - Update url in docs (#2718) @ssbarnea
+    - Prevent installation on Windows (#2712) @ssbarnea
+    - Respect warn_list and skip_list (#2706) @rekup
+    - Avoid version checking when version info is absent (#2714) @ssbarnea
+    - Improve installation documentation (#2707) @oraNod
+    - Docs: usage content edits (#2682) @oraNod
+    - Sort dependencies (#2711) @ssbarnea
+    - Fix loop_var_prefix message list in the docs (#2709) @evgeni
+    - Clarify progressive mode documentation (#2708) @MarcinWieczorek 
+
+-------------------------------------------------------------------
 Mon Nov 21 09:24:01 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 6.8.7:
