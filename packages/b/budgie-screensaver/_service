@@ -2,7 +2,7 @@
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://github.com/BuddiesOfBudgie/budgie-screensaver.git</param>
-    <param name="revision">1e0dca5f2e83066de37c2d113f5d288a9c0efb0e</param>
+    <param name="revision">19f34a5334be6363ee9dc5da723dec4cd18dc784</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>

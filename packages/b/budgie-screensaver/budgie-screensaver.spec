@@ -26,7 +26,7 @@
 %define chkpwd /sbin/unix2_chkpwd
 %endif
 Name:           budgie-screensaver
-Version:        5.0.2+0
+Version:        5.1.0+0
 Release:        0
 Summary:        Fork of GNOME Screensaver for Budgie 10
 License:        GPL-2.0-or-later

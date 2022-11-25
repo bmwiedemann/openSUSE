@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov 24 12:53:11 UTC 2022 - gmbr3@opensuse.org
+
+- Update to version 5.1.0+0:
+  * Bump version
+  * Move mkrelease.sh to scripts folder
+  * Use GdkSeat to grab input
+  * Resolve most compiler warnings
+  * Add back options for xf86gamma, no-locking, and consolekit
+  * Use bullet for invisible char in entry.
+  * Add History section to README
+
+-------------------------------------------------------------------
 Mon Aug 29 17:51:21 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Move autostart back to /etc until aaa_base is fixed
