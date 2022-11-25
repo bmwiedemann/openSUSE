@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 23 23:15:10 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Fix the library being built for incorrect microarchitecture
+  on armv{6,7}hl.
+  * add arm-disable-runtime-dispatch.patch to fix compiler error
+- Actually run the testsuite.
+
+-------------------------------------------------------------------
 Tue Nov  8 14:21:25 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Have armv7 build succeed again.

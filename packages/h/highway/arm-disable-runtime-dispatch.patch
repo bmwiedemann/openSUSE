@@ -1,0 +1,27 @@
+Dynamic dispatch is broken for neon:
+[   29s] In file included from /home/abuild/rpmbuild/BUILD/highway-1.0.2/hwy/ops/arm_neon-inl.h:33,
+[   29s]                  from /home/abuild/rpmbuild/BUILD/highway-1.0.2/hwy/highway.h:358,
+[   29s]                  from /home/abuild/rpmbuild/BUILD/highway-1.0.2/hwy/contrib/sort/shared-inl.h:103,
+[   29s]                  from /home/abuild/rpmbuild/BUILD/highway-1.0.2/hwy/contrib/sort/traits-inl.h:27,
+[   29s]                  from /home/abuild/rpmbuild/BUILD/highway-1.0.2/hwy/contrib/sort/vqsort_f32d.cc:23,
+[   29s]                  from /home/abuild/rpmbuild/BUILD/highway-1.0.2/hwy/foreach_target.h:81,
+[   29s]                  from /home/abuild/rpmbuild/BUILD/highway-1.0.2/hwy/contrib/sort/vqsort_f32d.cc:20:
+[   29s] /usr/lib/gcc/armv7hl-suse-linux-gnueabi/12/include/arm_neon.h: In function 'hwy::N_NEON::StoreU(hwy::N_NEON::Vec128<float, 4u>, hwy::N_NEON::Simd<float, 4u, 0>, float*)':
+[   29s] /usr/lib/gcc/armv7hl-suse-linux-gnueabi/12/include/arm_neon.h:11024:1: error: inlining failed in call to 'always_inline' 'vst1q_f32': target specific option mismatch
+[   29s] 11024 | vst1q_f32 (float32_t * __a, float32x4_t __b)
+[   29s]       | ^~~~~~~~~
+[   29s] /home/abuild/rpmbuild/BUILD/highway-1.0.2/hwy/ops/arm_neon-inl.h:2777:12: note: called from here
+[   29s]  2777 |   vst1q_f32(unaligned, v.raw);
+[   29s]       |   ~~~~~~~~~^~~~~~~~~~~~~~~~~~
+
+--- a/hwy/detect_targets.h
++++ b/hwy/detect_targets.h
+@@ -427,7 +427,7 @@
+ #define HWY_ATTAINABLE_TARGETS                                        \
+   HWY_ENABLED(HWY_BASELINE_SCALAR | HWY_SSSE3 | HWY_SSE4 | HWY_AVX2 | \
+               HWY_AVX3 | HWY_ATTAINABLE_AVX3_DL)
+-#elif HWY_ARCH_ARM && HWY_HAVE_RUNTIME_DISPATCH
++#elif HWY_ARCH_ARM_A64 && HWY_HAVE_RUNTIME_DISPATCH
+ #define HWY_ATTAINABLE_TARGETS                                      \
+   HWY_ENABLED(HWY_BASELINE_SCALAR | HWY_NEON | HWY_ATTAINABLE_SVE | \
+               HWY_ATTAINABLE_SVE2)

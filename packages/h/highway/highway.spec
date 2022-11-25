@@ -16,7 +16,6 @@
 #
 
 
-%bcond_without tests
 %define lname libhwy1
 
 Name:           highway
@@ -27,6 +26,9 @@ License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/google/highway
 Source:         https://github.com/google/highway/archive/refs/tags/%version.tar.gz
+# see https://github.com/google/highway/issues/834
+# we do not currently require neon on armv7hl
+Patch0:         arm-disable-runtime-dispatch.patch
 # https://github.com/google/highway/issues/776
 %if 0%{?suse_version} > 1550
 BuildRequires:  c++_compiler
@@ -79,7 +81,7 @@ export CXX=g++-10
 
 %cmake \
 %ifarch %arm
-	-DHWY_CMAKE_ARM7:BOOL=ON \
+	-DHWY_CMAKE_ARM7:BOOL=OFF \
 %endif
 	-DCMAKE_SKIP_RPATH:BOOL=OFF \
 	-DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON \
@@ -90,10 +92,8 @@ export CXX=g++-10
 %cmake_install
 
 %check
-%if 0%{?with tests}
 export CTEST_PARALLEL_LEVEL=2
 %ctest --parallel 2 --verbose || :
-%endif
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
