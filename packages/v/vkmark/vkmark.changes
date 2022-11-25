@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 24 13:55:41 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2017.08+git.20220909:
+  * Fix missing <memory> includes
+- Drop vkmark-fix-missing-include.patch
+
+-------------------------------------------------------------------
 Fri Sep  9 02:29:34 UTC 2022 - malcolmlewis@opensuse.org
 
 - Add vkmark-fix-missing-include.patch: Add missing memory include

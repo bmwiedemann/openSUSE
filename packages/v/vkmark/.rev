@@ -93,4 +93,14 @@
     <comment></comment>
     <requestid>1003111</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>85ecc53f250c363232191942c58a1ab6</srcmd5>
+    <version>2017.08+git.20220909</version>
+    <time>1669378316</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2017.08+git.20220909:
+  * Fix missing &lt;memory&gt; includes
+- Drop vkmark-fix-missing-include.patch</comment>
+    <requestid>1037922</requestid>
+  </revision>
 </revisionlist>
