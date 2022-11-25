@@ -1,7 +1,7 @@
 #
 # spec file for package zaz
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Puzzle game about arranging balls in triplets
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/Logic
-URL:            http://zaz.sourceforge.net/
+URL:            https://zaz.sourceforge.net/
 Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE - zaz-extra_zaz.desktop.patch -- Add GenericName
 Patch0:         %{name}-extra_zaz.desktop.patch
