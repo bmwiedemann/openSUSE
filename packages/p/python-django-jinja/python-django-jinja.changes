@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 24 18:02:34 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove python_module macro definition
+- Update to 2.10.2:
+  - Fix compatibility with Jinja2 3.1 in tests (#296).
+- 2.10.1:
+  - Update links in documentation to point to new home of Jinja2 docs (#295).
+
+-------------------------------------------------------------------
 Mon May  9 16:03:40 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Make tests run again.
