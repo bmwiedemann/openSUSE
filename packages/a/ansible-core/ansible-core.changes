@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 23 10:13:04 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- add version contraints for both Requires and BuildRequires,
+  that upstream defines:
+  https://github.com/ansible/ansible/blob/devel/requirements.txt
+
+-------------------------------------------------------------------
 Thu Nov 17 13:48:58 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 2.14.0:

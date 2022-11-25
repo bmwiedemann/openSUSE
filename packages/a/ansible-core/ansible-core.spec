@@ -36,21 +36,21 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  python3-setuptools
 # SECTION test requirements
 BuildRequires:  python3-botocore
-BuildRequires:  python3-Jinja2
-BuildRequires:  python3-PyYAML
+BuildRequires:  python3-Jinja2 >= 3.0.0
+BuildRequires:  python3-PyYAML >= 5.1
 BuildRequires:  python3-cryptography
 BuildRequires:  python3-curses
 BuildRequires:  python3-packaging
 BuildRequires:  python3-pytest
 BuildRequires:  python3-pytz
-BuildRequires:  python3-resolvelib >= 0.5.3
+BuildRequires:  (python3-resolvelib >= 0.5.3 and python3-resolvelib < 0.9.0)
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python3-Jinja2
-Requires:       python3-PyYAML
+Requires:       python3-Jinja2 >= 3.0.0
+Requires:       python3-PyYAML >= 5.1
 Requires:       python3-cryptography
 Requires:       python3-packaging
-Requires:       python3-resolvelib >= 0.5.3
+Requires:       (python3-resolvelib >= 0.5.3 and python3-resolvelib < 0.9.0)
 
 %description
 Ansible is a radically simple IT automation system. It handles
