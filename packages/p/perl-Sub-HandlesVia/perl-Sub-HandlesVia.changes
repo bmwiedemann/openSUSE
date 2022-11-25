@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Nov  9 03:06:27 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.045
+   see /usr/share/doc/packages/perl-Sub-HandlesVia/Changes
+
+  0.045	2022-11-08
+   [ Bug Fixes ]
+   - Fix for `with qw(Role1 Role2)` in Moose where at least one role uses
+     Sub::HandlesVia.
+     Bartosz Jarzyna++
+     <https://github.com/tobyink/p5-sub-handlesvia/issues/6>
+   - Support attributes declared with `has '+name'`.
+     Bartosz Jarzyna++
+     <https://github.com/tobyink/p5-sub-handlesvia/issues/7>
+   [ Documentation ]
+   - Document that `with qw(Role1 Role2)` in Mouse is currently broken if
+     either role uses Sub::HandlesVia.
+     <https://github.com/tobyink/p5-sub-handlesvia/issues/9>
+   [ Test Suite ]
+   - Test that `with qw(Role1 Role2)` in Moo works if either role uses
+     Sub::HandlesVia.
+   [ Other ]
+   - Added: Add a `generator_for_prelude` attribute to
+     Sub::HandlesVia::CodeGenerator.
+     <https://github.com/tobyink/p5-sub-handlesvia/issues/8>
+
+-------------------------------------------------------------------
 Tue Nov  1 03:07:25 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.044
