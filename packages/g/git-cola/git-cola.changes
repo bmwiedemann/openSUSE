@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov 24 12:09:55 UTC 2022 - Marcin Bajor <marcin.bajor@gmail.com>
+
+- Update to 4.0.4
+- Fixes
+* The "T" hotkey for "Find Files" was removed to avoid issues in some configurations.
+  https://github.com/git-cola/git-cola/issues/1270
+* Some context menus entries were erroring out on binary files.
+  https://github.com/git-cola/git-cola/pull/1271
+
+-------------------------------------------------------------------
 Fri Nov 11 16:26:21 UTC 2022 - Marcin Bajor <marcin.bajor@gmail.com>
 
 - Update to 4.0.3

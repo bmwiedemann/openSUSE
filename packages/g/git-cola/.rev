@@ -665,4 +665,18 @@ https://github.com/git-cola/git-cola/issues/991
 </comment>
     <requestid>1035308</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>db338598884e08c3e6cb07f1c5982f74</srcmd5>
+    <version>4.0.4</version>
+    <time>1669378295</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.4
+- Fixes
+* The &quot;T&quot; hotkey for &quot;Find Files&quot; was removed to avoid issues in some configurations.
+  https://github.com/git-cola/git-cola/issues/1270
+* Some context menus entries were erroring out on binary files.
+  https://github.com/git-cola/git-cola/pull/1271
+</comment>
+    <requestid>1037873</requestid>
+  </revision>
 </revisionlist>
