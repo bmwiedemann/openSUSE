@@ -17,7 +17,7 @@
 
 
 Name:           calibre
-Version:        6.8.0
+Version:        6.9.0
 Release:        0
 Summary:        EBook Management Application
 License:        GPL-3.0-only
@@ -55,20 +55,23 @@ BuildRequires:  chmlib-devel >= 0.40
 #BuildRequires:  dbus-1-python3 >= 1.2.0
 BuildRequires:  chmlib-devel >= 0.40
 BuildRequires:  freetype2-devel >= 2.11.0
+BuildRequires:  graphite2-devel >= 1.3.14
 BuildRequires:  hyphen-devel >= 2.8.8
+#upstream use:  iconv >= 1.16
 BuildRequires:  liberation-fonts
-BuildRequires:  libicu-devel >= 4.4.0
-BuildRequires:  libmtp-devel >= 1.1.19
+BuildRequires:  libmtp-devel >= 1.1.20
 BuildRequires:  libopenssl-devel >= 1.1.1l
 BuildRequires:  libpodofo-devel >= 0.9.7
 BuildRequires:  libpoppler-devel >= 21.11.0
 # upstream use: libstemmer-devel >= 2.2.0
 BuildRequires:  libstemmer-devel >= 2.1.0
 BuildRequires:  libwmf-devel >= 0.2.8
+# upstream use: mozjpeg >= 4.0.3
 BuildRequires:  optipng >= 0.7.7
 BuildRequires:  podofo >= 0.9.7
 BuildRequires:  poppler-tools >= 21.11.0
 BuildRequires:  qt6-core-private-devel >= 6.3.1
+BuildRequires:  qt6-declarative-devel >= 6.3.1
 BuildRequires:  qt6-gui-private-devel >= 6.3.1
 BuildRequires:  qt6-imageformats-devel >= 6.3.1
 BuildRequires:  qt6-platformsupport-private-devel  >= 6.3.1
@@ -86,10 +89,15 @@ BuildRequires:  pkgconfig(Qt6WebChannel) >= 6.3.1
 BuildRequires:  pkgconfig(Qt6WebEngineCore) >= 6.3.1
 BuildRequires:  pkgconfig(Qt6WebEngineWidgets) >= 6.3.1
 BuildRequires:  pkgconfig(Qt6Widgets) >= 6.3.1
+BuildRequires:  pkgconfig(dbus-glib-1) >= 0.112
 BuildRequires:  pkgconfig(espeak-ng)
 BuildRequires:  pkgconfig(fontconfig) >= 2.13.94
+BuildRequires:  pkgconfig(glib-2.0) >= 2.70.1
 BuildRequires:  pkgconfig(gpg-error) >= 1.43
 BuildRequires:  pkgconfig(hunspell) >= 1.7.0
+BuildRequires:  pkgconfig(icu-i18n) >= 70.1
+BuildRequires:  pkgconfig(libffi) >= 3.4.2
+BuildRequires:  pkgconfig(libgcrypt) >= 1.9.4
 BuildRequires:  pkgconfig(libopenjp2) >= 2.4.0
 BuildRequires:  pkgconfig(libpng16) >= 1.6.37
 BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.24
@@ -98,7 +106,7 @@ BuildRequires:  pkgconfig(ncurses) >= 6.3
 BuildRequires:  pkgconfig(python3) >= 3.10
 BuildRequires:  pkgconfig(readline) >= 8.1
 BuildRequires:  pkgconfig(sqlite3)
-BuildRequires:  pkgconfig(uchardet)
+BuildRequires:  pkgconfig(uchardet) >= 0.0.7
 # calibre no longer depends on ImageMagick
 # but keept BuildRequires to convert icon to serveral sizes
 BuildRequires:  pkgconfig(ImageMagick) >= 6.5.9
@@ -114,7 +122,7 @@ BuildRequires:  python3-apsw >= 3.36.0-r1
 BuildRequires:  python3-beautifulsoup4 >= 4.10.0
 BuildRequires:  python3-cchardet >= 2.1.7
 BuildRequires:  python3-chardet >= 4.0.0
-BuildRequires:  python3-css-parser >= 1.0.7
+BuildRequires:  python3-css-parser >= 1.0.8
 BuildRequires:  python3-dateutil >= 2.8.2
 BuildRequires:  python3-dnspython >= 2.1.0
 BuildRequires:  python3-dukpy-kovidgoyal >= 0.3
@@ -124,7 +132,7 @@ BuildRequires:  python3-html5-parser >= 0.4.10
 BuildRequires:  python3-html5lib >= 1.1
 BuildRequires:  python3-ifaddr >= 0.1.7
 BuildRequires:  python3-jeepney >= 0.7.1
-BuildRequires:  python3-lxml >= 4.6.4
+BuildRequires:  python3-lxml >= 4.9.1
 BuildRequires:  python3-mechanize >= 0.4.7
 BuildRequires:  python3-msgpack >= 1.0.3
 BuildRequires:  python3-netifaces >= 0.11.0
@@ -134,33 +142,35 @@ BuildRequires:  python3-psutil >= 5.8.0
 BuildRequires:  python3-pychm >= 0.8.6
 BuildRequires:  python3-pycryptodome >= 3.11.0
 BuildRequires:  python3-pyparsing >= 3.0.6
-# upstream use: python3-pyqt-builder >= 1.13.0
+# upstream use: BuildRequires:  python3-pyqt-builder >= 1.13.0
 BuildRequires:  python3-pyqt-builder >= 1.12.2
 BuildRequires:  python3-qt6-devel >= 6.3.1
 BuildRequires:  python3-regex >= 2021.11.10
-BuildRequires:  python3-setuptools >= 49.6.0
+BuildRequires:  python3-setuptools >= 57.4.0
 BuildRequires:  python3-sgmllib3k >= 1.0.0
 BuildRequires:  python3-sip-devel >= 6.6.2
 BuildRequires:  python3-texttable >= 1.6.4
 BuildRequires:  python3-toml >= 0.10.2
 BuildRequires:  pkgconfig(libjpeg) >= 2.1.2
 BuildRequires:  pkgconfig(libwebp) >= 1.2.1
-BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.12
-BuildRequires:  pkgconfig(libxslt) >= 1.1.34
+BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.14
+BuildRequires:  pkgconfig(libxslt) >= 1.1.35
 # Need at buildtime too, to produce the bash completion
 BuildRequires:  python3-qtwebengine-qt6 >= 6.3.1
-BuildRequires:  python3-six >= 1.15.0
+BuildRequires:  python3-six >= 1.16.0
 BuildRequires:  python3-soupsieve >= 2.3.1
 #BuildRequires:  python-unrardll >= 0.1.5
+# upstream use: BuildRequires:  python3-py7zr >= 0.15.0
 BuildRequires:  python3-py7zr >= 0.11.1
+# upstream use: BuildRequires:  python3-speechd >= 0.11.1
 BuildRequires:  python3-speechd >= 0.10.2
 BuildRequires:  python3-webencodings >= 0.5.1
-BuildRequires:  python3-zeroconf >= 0.31.0
+BuildRequires:  python3-zeroconf >= 0.37.0
 #
 Requires:       chmlib >= 0.40
 #Requires:       dbus-1-python3 >= 1.2.0
 Requires:       liberation-fonts
-Requires:       libmtp9 >= 1.1.19
+Requires:       libmtp9 >= 1.1.20
 Requires:       libpng16-16 >= 1.6.37
 Requires:       libwmf >= 0.2.8
 Requires:       optipng >= 0.7.5
@@ -175,7 +185,7 @@ Requires:       python3-apsw >= 3.36.0-r1
 Requires:       python3-beautifulsoup4 >= 4.10.0
 Requires:       python3-cchardet >= 2.1.7
 Requires:       python3-chardet >= 4.0.0
-Requires:       python3-css-parser >= 1.0.7
+Requires:       python3-css-parser >= 1.0.8
 Requires:       python3-dateutil >= 2.8.2
 #Requires:       python3-dbus-python
 Requires:       python3-dnspython >= 2.1.0
@@ -187,7 +197,7 @@ Requires:       python3-html5-parser >= 0.4.10
 Requires:       python3-html5lib >= 1.1
 Requires:       python3-ifaddr >= 0.1.7
 Requires:       python3-jeepney >= 0.7.1
-Requires:       python3-lxml >= 4.6.4
+Requires:       python3-lxml >= 4.9.1
 Requires:       python3-mechanize >= 0.4.7
 Requires:       python3-msgpack >= 1.0.3
 Requires:       python3-netifaces >= 0.11.0
@@ -199,14 +209,14 @@ Requires:       python3-qt6 >= 6.3.1
 Requires:       python3-qtwebengine-qt6 >= 6.3.1
 Requires:       python3-regex >= 2021.11.10
 Requires:       python3-sgmllib3k >= 1.0.0
-Requires:       python3-six >= 1.15.0
+Requires:       python3-six >= 1.16.0
 Requires:       python3-soupsieve >= 2.3.1
 Requires:       python3-texttable >= 1.6.4
 #Requires:       python3-unrardll >= 0.1.5
 Requires:       python3-py7zr >= 0.11.1
 Requires:       python3-speechd >= 0.10.2
 Requires:       python3-webencodings >= 0.5.1
-Requires:       python3-zeroconf >= 0.31.0
+Requires:       python3-zeroconf >= 0.37.0
 #
 Requires:       sqlite3
 Requires:       bzip2 >= 1.0.8
