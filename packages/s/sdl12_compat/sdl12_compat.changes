@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Oct 26 16:54:07 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.60
+  * SDL_GetWMInfo() now works with SDL2 builds from the 2.0.xx
+    revisions.
+  * SDL_GetWMInfo() no longer asserts if used on Wayland.
+  * SDL_WM_SetIcon() no longer crashes on NULL icons, to match
+    SDL-1.2.
+  * Make SDL2's OpenGL 2D renderer work with apps that update
+    their screen surface from background threads
+  * SDL_ANYFORMAT is now supported
+  * SDL2 game controllers can optionally be used with the 1.2
+    Joystick API.
+  * Check for specific X11 symbols in the process at startup and
+    force SDL2 to use X11 if so (fixes startup failures on
+    Wayland).
+- Delete 0001-Use-SDL_PIXELFORMAT_RGB888-for-24-bit-surfaces.patch,
+  0001-Set-pixels-in-SDL_CreateYUVOverlay-Fix-164.patch,
+  0001-SDL_GetWMInfo-work-like-1.2-when-SDL_SetVideoMode-ha.patch
+
+-------------------------------------------------------------------
 Mon Aug  8 14:18:26 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-Use-SDL_PIXELFORMAT_RGB888-for-24-bit-surfaces.patch

@@ -19,7 +19,7 @@
 Name:           sdl12_compat
 %define lname libSDL-1_2-0
 %global _lto_cflags %_lto_cflags -ffat-lto-objects
-Version:        1.2.52
+Version:        1.2.60
 Release:        0
 Summary:        SDL-1.2 Compatibility Layer for Simple DirectMedia Layer 2.0
 License:        MIT
@@ -28,9 +28,6 @@ URL:            https://github.com/libsdl-org/sdl12-compat
 Source:         https://github.com/libsdl-org/sdl12-compat/archive/refs/tags/release-%version.tar.gz
 Source8:        baselibs.conf
 Source9:        %name-rpmlintrc
-Patch1:         0001-SDL_GetWMInfo-work-like-1.2-when-SDL_SetVideoMode-ha.patch
-Patch2:         0001-Set-pixels-in-SDL_CreateYUVOverlay-Fix-164.patch
-Patch3:         0001-Use-SDL_PIXELFORMAT_RGB888-for-24-bit-surfaces.patch
 BuildRequires:  cmake
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(sdl2)

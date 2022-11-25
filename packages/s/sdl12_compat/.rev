@@ -27,4 +27,12 @@
   to rectify BGR order in older schismtracker.</comment>
     <requestid>994185</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>10e1334fd183c0c857cddf4c34e3a201</srcmd5>
+    <version>1.2.60</version>
+    <time>1669378287</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.2.60</comment>
+    <requestid>1037902</requestid>
+  </revision>
 </revisionlist>
