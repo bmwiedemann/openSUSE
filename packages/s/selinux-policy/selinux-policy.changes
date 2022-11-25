@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 24 13:40:16 UTC 2022 - Hu <cathy.hu@suse.com>
+
+- fix_sysnetwork.patch: firewalld uses /etc/sysconfig/network/ for
+  network interface definition instead of /etc/sysconfig/network-scripts/,
+  modified sysnetwork.fc to reflect that (bsc#1205580). 
+
+-------------------------------------------------------------------
 Wed Oct 19 11:45:57 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
 
 - Update to version 20221019. Refreshed:
