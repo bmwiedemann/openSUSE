@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Nov 24 19:56:21 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 2.21.2:
+  * fix: allow `.vale` in `StylesPath`
+  * fix: allow `.vale` in `StylesPath`
+  * refactor: add note about `os` module
+  * feat: enable access to `os` module in `script`
+
+-------------------------------------------------------------------
+Thu Nov 24 19:16:32 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 2.21.1:
+  * test: re-enable Non-Existent case
+  * refactor: remove `StylesPath` from example config
+  * fix: remove override logic from `loadConfig`
+  * feat: support using local and system dics
+  * docs: comment typo
+  * fix: correctly resolve `dicpath`
+  * Add CodeQL workflow
+  * feat: enable Goldmark's footnote extension
+  * chore: ignore `.fleet`
+  * refactor: align structs
+  * fix: report exact Asciidoctor error
+
+-------------------------------------------------------------------
 Fri Oct 28 20:49:34 UTC 2022 - jkowalczyk@suse.com
 
 - Update to version 2.21.0:

@@ -89,4 +89,16 @@
   * chore: restore Dockerfile (forwarded request 1032068 from jfkw)</comment>
     <requestid>1032069</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bc8dd5131669fdd402e5e28c369f6be9</srcmd5>
+    <version>2.21.2</version>
+    <time>1669378340</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.21.2:
+  * fix: allow `.vale` in `StylesPath`
+  * fix: allow `.vale` in `StylesPath`
+  * refactor: add note about `os` module
+  * feat: enable access to `os` module in `script` (forwarded request 1037990 from jfkw)</comment>
+    <requestid>1037991</requestid>
+  </revision>
 </revisionlist>
