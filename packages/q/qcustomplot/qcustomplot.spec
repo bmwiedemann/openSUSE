@@ -1,7 +1,7 @@
 #
 # spec file for package qcustomplot
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           qcustomplot
-Version:        2.1.0
+Version:        2.1.1
 %define sover   2
 Release:        0
 Summary:        Qt widget for plotting and data visualization
@@ -46,8 +46,8 @@ visualization applications.
 %package     -n lib%{name}%{sover}
 Summary:        Qt widget for plotting and data visualization
 Group:          System/Libraries
-Provides:       lib%{name} = %{version}
 Provides:       %{name} = %{version}
+Provides:       lib%{name} = %{version}
 Obsoletes:      %{name} < %{version}
 Provides:       %{name}-qt5 = %{version}
 Obsoletes:      %{name}-qt5 < %{version}
@@ -95,7 +95,7 @@ popd
 
 %install
 pushd %{name}-sharedlib/sharedlib-compilation/build
-install -D -m 644 -t %{buildroot}%{_libdir} libqcustomplot*.so*
+install -Dm 755 -t %{buildroot}%{_libdir} libqcustomplot*.so*
 popd
 
 install -Dm 644 qcustomplot.h %{buildroot}%{_includedir}/qcustomplot.h
@@ -107,8 +107,8 @@ cat > %{buildroot}%{_libdir}/pkgconfig/%{name}.pc <<EOF
 libdir=%{_libdir}
 includedir=%{_includedir}
 
-Name:        %{name}
-Version:     %{version}
+Name:           %{name}
+Version:        %{version}
 Description: %{summary}
 Cflags: -I\${includedir}
 Libs: -L\${libdir} -lqcustomplot

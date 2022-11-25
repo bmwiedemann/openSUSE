@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov 23 15:33:03 UTC 2022 - Sergey Salnikov <salsergey@gmail.com>
+
+- Update to version 2.1.1:
+  * Qt6.4 Compatibility
+  * In QCPAxisPainterPrivate::getTickLabelData, don't use fixed 'e',
+    but locale aware character of parent plot locale.
+  * Axis rescaling now ignores +/- Inf in data values.
+  * Slight performance improvements of QCPColorMap colorization and fills.
+  * Several bugfixes.
+
+-------------------------------------------------------------------
 Thu Apr 29 22:40:01 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 2.1.0:
