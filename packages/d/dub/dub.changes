@@ -1,4 +1,166 @@
 -------------------------------------------------------------------
+Thu Nov 17 12:59:32 UTC 2022 - Chris Josten <chris+suse@netsoj.nl>
+
+- Update to 1.29.0
+  * Harden package version detection from git describe by @kinke
+
+- Update to 1.28.0
+  * Removes dynamicLibrary being built as staticLibrary for targets 
+    other than OMF. by @rikkimax in #2211
+  * move command variable substitution to execution by @WebFreak001 
+    in #2217
+  * Fix interactive run-unittest.d by @WebFreak001 
+    in #2219
+  * merge stable by @MartinNowak in #2221
+  * fix: parse version from filesystem supplier correctly by 
+    @Panke in #2220
+  * merge stable by @MartinNowak in #2225
+  * add CompilerInvocationException by @WebFreak001 in #2226
+  * Adapt determinePlatform to the new defaults for Win32 by 
+    @MoonlightSentinel in #2227
+  * Define the $DUB_BUILD_PATH variable. by @veelo in #2228
+  * merge stable by @MartinNowak in #2231
+  * Add link to dub-docs. by @veelo in #2232
+  * Remove travis-ci badge from README.md by @ibuclaw in #2233
+  * Annotate escaping reference. by @veelo in #2237
+  * Posix: use /etc/dub/settings.json if in /usr by @WebFreak001 
+    in #2203
+  * Add -fno-druntime to GDC BuildOptions; it is the betterC 
+    flag. by @ibara in #2186
+  * Fix #2238 - Renew source files after preGenerateCommands by 
+    @atilaneves in #2239
+  * Inject source file (replaces #2207) by @rikkimax in #2240
+
+- Update to 1.27.0
+  * merge stable by @MartinNowak in #2132
+  * Add environment variables to BuildSettings by @shoo in #2121
+  * merge stable by @MartinNowak in #2138
+  * Fix dependency build settings flooding dflags by @omerfirmak 
+    in #2139
+  * merge stable by @MartinNowak in #2140
+  * Adds quotation marks to error message by @denizzzka in #2148
+  * Generate paths relative to visuald project files by @JudgeFish 
+    in #2150
+  * merge stable by @MartinNowak in #2152
+  * merge stable by @MartinNowak in #2154
+  * Fix #2141 - When used as a library, the default compiler is 
+    different from the expected. by @shoo in #2158
+  * Remove line 'Exclusing package.d blah...' from default dub 
+    build by @p0nce in #2157
+  * RegistryPackageSupplier.genPackageDownloadUrl added by 
+    @denizzzka in #2156
+
+- Update to 1.26.0
+  * merge stable by @MartinNowak in #2114
+  * Fix single file package dynamic library by @andre2007 
+    in #2112
+  * fix #1867 - Add lowmem for settings by @shoo in #1905
+  * Fix #2046 - Dependencies specified with a path ignore 
+    optional settings by @shoo in #2103
+  * Replacing rununittest.sh by @drug007 in #2109
+  * merge stable by @MartinNowak in #2115
+  * merge stable by @MartinNowak in #2117
+  * Only show package.d warning once by @dkorpel in #2131
+  * [stable] LDC: Recognize -gcc as linker D flag by @kinke 
+    in #2135
+
+- Update to 1.25.0
+  * merge stable by @MartinNowak in #2061
+  * Minor code cleanup (whitespace, import) by @Geod24 in #2063
+  * Remove redundant code with relativeTo by @Geod24 in #2062
+  * Set cwd on spawn functions instead of chdir by @Geod24 
+    in #2065
+  * Hotfix for #2051 by @drug007 in #2064
+  * Renaming a file by @drug007 in #2066
+  * Raise minimum Vibe.d requirement to v0.9.0 by @Geod24 
+    in #2067
+  * merge stable by @MartinNowak in #2071
+  * Cleanup http listener in vibed template by @gizmomogwai in #2072
+  * merge stable by @MartinNowak in #2074
+  * Improve 'linker-D-flag' detection for ldmd2 by @kinke in #2082
+  * Extend 'linker dflags' detection for DMD by @kinke in #2083
+  * Selectively import symbols from std.array. by @veelo in #2089
+  * Remove unused selective imports. by @veelo in #2088
+  * Remove unused imports from compiler.d. by @veelo in #2090
+  * Refactor imports (inet.url -> inet.path). by @veelo in #2091
+  * Remove unused std.range import. by @veelo in #2092
+  * Remove unused imports. by @veelo in #2093
+  * Refactor imports. by @veelo in #2094
+  * Refactor import. Url is not used directly, but path is. 
+    by @veelo in #2097
+  * Remove unused imports. by @veelo in #2096
+  * Deprecate unused but public import. by @veelo in #2095
+  * Fix #2085: [visuald] spurious library project by @veelo in #2098
+  * Add some generated files to .gitignore by @ljmf00 in #2102
+  * Fix #2086 copyFiles in subPackage does not honour targetPath. 
+    by @veelo in #2087
+  * Replacing run-unittest.sh by run-unittest.d. Inception by 
+    @drug007 in #2084
+  * Include copyFiles and extraDependencyFiles in visuald projects. 
+    by @veelo in #2099
+  * Bump FRONTEND, move dmd to latest by default. by @maxhaton 
+    in #2104
+  * merge stable by @MartinNowak in #2106
+  * Actually copy copyFiles when building in Visual Studio. by 
+    @veelo in #2105
+  * import 'std.variant.Algebraic' properly by @BorisCarvajal 
+    in #2108
+  * merge stable by @MartinNowak in #2107
+  * Fixed a regression with DFLAGS environment variable and cached 
+    generated unittest by @foerdi in #2116
+
+- Update to 1.24.1
+  * Allow adding dflags on dependencies when using SDL format by 
+    @omerfirmak in #2081
+
+- Update to 1.24.0
+  * merge stable by @MartinNowak in #2011
+  * [stable] Deduplicate dflags and lflags by @Geod24 in #2016
+  * cache the generated test main file: dub_test_root.d by @foerdi 
+    in #2005
+  * Revert "Deduplicate dflags and lflags" (#2016) by @s-ludwig 
+    in #2020
+  * merge stable by @MartinNowak in #2022
+  * Remove usage of deprecated std.xml by @andre2007 in #1977
+  * Support for .netrc file added by @andre2007 in #2027
+  * ci: build release .tar.gz without travis owner and group id 
+    by @ljmf00 in #2030
+  * Add support for '-platformlib' option. Fixes #2031 by 
+    @dbankov-vmware in #2032
+  * GH Actions: Use new syntax for set-env by @Geod24 in #2036
+  * Merge stable into master by @Geod24 in #2037
+  * dub.compilers.ldc: Fix --rdmd with --compiler=ldc2 by 
+    @CyberShadow in #2033
+  * Correct issue #1673 (with dupe #1797 and #2019) by @p0nce 
+    in #2034
+  * betterC flag enabled in generated visuald project file. Fixes #2024 
+    by @MrZoraman in #2025
+  * Fix Issue #1474 - Regenerate build settings after preGenerateCommands 
+    by @omerfirmak in #2035
+  * Mutually exclude mainSourceFile of different configurations by 
+    @omerfirmak in #2039
+  * [CI]: Remove old AppVeyor, TravisCI, SemaphoreCI and build-gdc.sh 
+    files by @PetarKirov in #2042
+  * [stable] Use compiler version, not frontend version for build IDs
+    and paths by @kinke in #2045
+  * [stable] Add support for --arch=x86_mscoff for LDC (for DMD 
+    compatibility) by @kinke in #2049
+  * Use DC env variable as the default compiler by @omerfirmak in #2047
+  * Fix #2051: Running unit tests from DUB single file packages fails by 
+    @drug007 in #2052
+  * Improved ldc cross compile by @foerdi in #2055
+  * improve list command (filter by package spec) by @deviator 
+    in #2057
+  * Dont export DFLAGS & LFLAGS by default by @omerfirmak 
+    in #2048
+  * Allow custom dflags to be defined for dependencies by 
+    @omerfirmak in #2040
+  * Normalize line endings & UTF8 BOMs by @Geod24 in #2058
+  * add ability for specify version range for commandline commands 
+    by @deviator in #2056
+
+
+-------------------------------------------------------------------
 Sun Dec 27 21:43:41 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to 1.23.0 
