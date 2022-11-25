@@ -598,4 +598,32 @@
   gh#PyO3/maturin#1229</comment>
     <requestid>1036879</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>6a3b1eb61fe5f634998c32ffafc9b598</srcmd5>
+    <version>0.14.2</version>
+    <time>1669378377</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.14.2:
+  * Tighten src-layout detection logic
+    gh#PyO3/maturin#1282
+  * Update cargo_metadata to 0.15.2
+    gh#PyO3/maturin#1284
+  * Tell people about setting RUST_LOG=maturin=debug when making
+    bug reports
+    gh#PyO3/maturin#1286
+  * Fix generating pep517 sdist for src-layout
+    gh#PyO3/maturin#1288
+  * Deprecate python-source option in Cargo.toml
+    gh#PyO3/maturin#1291
+  * Fix auditwheel with read-only libraries
+    gh#PyO3/maturin#1292
+  * CI: Try nextest double spawn feature
+    gh#PyO3/maturin#1294
+  * Update wasmtime dependency version to 3.0.0
+    gh#PyO3/maturin#1295
+- Changes in v0.14.1:
+  * Downgrade cargo_metadata to 0.15.0
+    gh#PyO3/maturin#1279</comment>
+    <requestid>1038001</requestid>
+  </revision>
 </revisionlist>

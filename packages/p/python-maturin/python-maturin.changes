@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Nov 25 01:16:04 UTC 2022 - Mia Herkt <mia@0x0.st>
+
+- Update to v0.14.2:
+  * Tighten src-layout detection logic
+    gh#PyO3/maturin#1282
+  * Update cargo_metadata to 0.15.2
+    gh#PyO3/maturin#1284
+  * Tell people about setting RUST_LOG=maturin=debug when making
+    bug reports
+    gh#PyO3/maturin#1286
+  * Fix generating pep517 sdist for src-layout
+    gh#PyO3/maturin#1288
+  * Deprecate python-source option in Cargo.toml
+    gh#PyO3/maturin#1291
+  * Fix auditwheel with read-only libraries
+    gh#PyO3/maturin#1292
+  * CI: Try nextest double spawn feature
+    gh#PyO3/maturin#1294
+  * Update wasmtime dependency version to 3.0.0
+    gh#PyO3/maturin#1295
+- Changes in v0.14.1:
+  * Downgrade cargo_metadata to 0.15.0
+    gh#PyO3/maturin#1279
+
+-------------------------------------------------------------------
 Sun Nov 20 07:40:57 UTC 2022 - Mia Herkt <mia@0x0.st>
 
 - Update to v0.14.0:
