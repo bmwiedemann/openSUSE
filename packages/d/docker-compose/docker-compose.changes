@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Nov 24 15:58:43 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.13.0:
+  * Update `e2e` module deps
+  * ignore error parsing container number label, just warn
+  * Update docs
+  * Add `--build` option to `compose run`
+  * use platform defined by DOCKER_DEFAULT_PLATFORM when pulling and no service platform defined
+  * display creation warnings from the engine
+  * add e2e tests to check build dependency between services
+  * check if a missing image won't be build via a service declared in depends_on section
+  * add --no-consistency flag to convert command
+  * use COMPOSE_PROFILES value only if no command line arg profiles used
+  * build(deps): bump github.com/containerd/containerd from 1.6.9 to 1.6.10
+  * exclude issues with the kind/feature label from stale bot process
+  * ci: upgrade to compose-go v1.7.0
+  * ci: update dependencies to latest
+  * ci: remove uses of deprecated gotest.tools v2 (#9935)
+  * Update `e2e` module dependencies
+  * build(deps): bump github.com/containerd/containerd from 1.6.8 to 1.6.9
+  * add support of deploy.reservation.memory
+  * Update deps for `e2e` module
+  * map deploy.restart_policy.condition to engine values
+  * build(deps): bump github.com/stretchr/testify from 1.8.0 to 1.8.1
+  * go.mod: update docker-credential-helpers v0.7.0
+  * go.mod: remove replace for runc
+  * go mod: tidy and group "require" blocks, update comments
+
+-------------------------------------------------------------------
 Sat Oct 22 13:35:05 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 2.12.2:
