@@ -1,0 +1,75 @@
+From ce8792449b1284971f1f90b7b2de8fea7153676f Mon Sep 17 00:00:00 2001
+From: John Kacur <jkacur@redhat.com>
+Date: Thu, 6 Oct 2022 16:00:44 -0400
+Subject: [PATCH 2/4] rt-tests: Remove arbitrary num of threads limits
+
+Remove the arbitrary limit to the number of threads in pmqtest,
+ptsematest, sigwaittest and svsematest.
+
+Signed-off-by: John Kacur <jkacur@redhat.com>
+
+[ upstream status: d356a6ae3cbf3cf4ec7fe130bfa4a8e392b910e6 ]
+
+Signed-off-by: Petr Vorel <pvorel@suse.cz>
+---
+ src/pmqtest/pmqtest.c         | 2 +-
+ src/ptsematest/ptsematest.c   | 2 +-
+ src/sigwaittest/sigwaittest.c | 2 +-
+ src/svsematest/svsematest.c   | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/pmqtest/pmqtest.c b/src/pmqtest/pmqtest.c
+index 6ad0a92..9e14278 100644
+--- a/src/pmqtest/pmqtest.c
++++ b/src/pmqtest/pmqtest.c
+@@ -393,7 +393,7 @@ static void process_options(int argc, char *argv[])
+ 		}
+ 	}
+ 
+-	if (num_threads < 0 || num_threads > 255)
++	if (num_threads < 0)
+ 		error = 1;
+ 
+ 	if (priority < 0 || priority > 99)
+diff --git a/src/ptsematest/ptsematest.c b/src/ptsematest/ptsematest.c
+index e000c30..a9d6c69 100644
+--- a/src/ptsematest/ptsematest.c
++++ b/src/ptsematest/ptsematest.c
+@@ -299,7 +299,7 @@ static void process_options(int argc, char *argv[])
+ 		}
+ 	}
+ 
+-	if (num_threads < 0 || num_threads > 255)
++	if (num_threads < 0)
+ 		error = 1;
+ 
+ 	if (priority < 0 || priority > 99)
+diff --git a/src/sigwaittest/sigwaittest.c b/src/sigwaittest/sigwaittest.c
+index d0d79df..728176a 100644
+--- a/src/sigwaittest/sigwaittest.c
++++ b/src/sigwaittest/sigwaittest.c
+@@ -369,7 +369,7 @@ static void process_options(int argc, char *argv[])
+ 		if (duration < 0)
+ 			error = 1;
+ 
+-		if (num_threads < 1 || num_threads > 255)
++		if (num_threads < 1)
+ 			error = 1;
+ 
+ 		if (priority < 0 || priority > 99)
+diff --git a/src/svsematest/svsematest.c b/src/svsematest/svsematest.c
+index 22ea7bc..243b137 100644
+--- a/src/svsematest/svsematest.c
++++ b/src/svsematest/svsematest.c
+@@ -398,7 +398,7 @@ static void process_options(int argc, char *argv[])
+ 		if (duration < 0)
+ 			error = 0;
+ 
+-		if (num_threads < 1 || num_threads > 255)
++		if (num_threads < 1)
+ 			error = 1;
+ 
+ 		if (priority < 0 || priority > 99)
+-- 
+2.38.1
+

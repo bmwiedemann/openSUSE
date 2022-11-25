@@ -1,0 +1,121 @@
+From 67ceae02e2cae95a2de5f371544dc551e7b86ca6 Mon Sep 17 00:00:00 2001
+From: John Stultz <jstultz@google.com>
+Date: Thu, 28 Jul 2022 20:22:36 +0000
+Subject: [PATCH 1/4] cyclictest: Fix threads being affined even when -a isn't
+ set
+
+Using cyclictest without specifying affinity via -a, I was
+noticing a strange issue where the rt threads where not
+migrating when being blocked.
+
+After lots of debugging in the kernel, I found its actually an
+issue with cyclictest.
+
+When using -t there is no behavioral difference between specifying
+-a or not specifying -a.
+
+This can be confirmed by adding printf messages around the
+pthread_setaffinity_np() call in the threadtest function.
+
+Currently:
+
+root@localhost:~/rt-tests# ./cyclictest -t -a -q -D1
+Affining thread 0 to cpu: 0
+Affining thread 1 to cpu: 1
+Affining thread 2 to cpu: 2
+Affining thread 3 to cpu: 3
+Affining thread 4 to cpu: 4
+Affining thread 5 to cpu: 5
+Affining thread 7 to cpu: 7
+Affining thread 6 to cpu: 6
+T: 0 (15034) P: 0 I:1000 C:   1000 Min:     82 Act:  184 Avg:  180 Max: 705
+...
+
+root@localhost:~/rt-tests# ./cyclictest -t -q -D1
+Affining thread 0 to cpu: 0
+Affining thread 1 to cpu: 1
+Affining thread 2 to cpu: 2
+Affining thread 3 to cpu: 3
+Affining thread 4 to cpu: 4
+Affining thread 5 to cpu: 5
+Affining thread 6 to cpu: 6
+Affining thread 7 to cpu: 7
+T: 0 (15044) P: 0 I:1000 C:   1000 Min:     74 Act:  144 Avg:  162 Max: 860
+..
+
+This issue seems to come from the logic in process_options():
+	/* if smp wasn't requested, test for numa automatically */
+	if (!smp) {
+		numa = numa_initialize();
+		if (setaffinity == AFFINITY_UNSPECIFIED)
+			setaffinity = AFFINITY_USEALL;
+        }
+
+Here, by setting setaffinity = AFFINITY_USEALL, we effectively
+pin each thread to its respective cpu, same as the "-a" option.
+
+This was most recently introduced in commit bdb8350f1b0b
+("Revert "cyclictest: Use affinity_mask for steering
+thread placement"").
+
+This seems erronious to me, so I wanted to share this patch
+which removes the overriding AFFINITY_UNSPECIFIED with
+AFFINITY_USEALL by default. Also, some additional tweaks to
+preserve the existing numa allocation affinity.
+
+With this patch, we no longer call pthread_setaffinity_np() in the
+"./cyclictest -t -q -D1"  case.
+
+Cc: John Kacur <jkacur@redhat.com>
+Cc: Connor O'Brien <connoro@google.com>
+Cc: Qais Yousef <qais.yousef@arm.com>
+Signed-off-by: John Stultz <jstultz@google.com>
+Signed-off-by: John Kacur <jkacur@redhat.com>
+
+[ upstream status: 2d910eecf10cd806e22abeb1d96189f87ef74d91 ]
+
+Signed-off-by: Petr Vorel <pvorel@suse.cz>
+---
+ src/cyclictest/cyclictest.c | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/src/cyclictest/cyclictest.c b/src/cyclictest/cyclictest.c
+index decea78..82759d1 100644
+--- a/src/cyclictest/cyclictest.c
++++ b/src/cyclictest/cyclictest.c
+@@ -1270,8 +1270,6 @@ static void process_options(int argc, char *argv[], int max_cpus)
+ 	/* if smp wasn't requested, test for numa automatically */
+ 	if (!smp) {
+ 		numa = numa_initialize();
+-		if (setaffinity == AFFINITY_UNSPECIFIED)
+-			setaffinity = AFFINITY_USEALL;
+ 	}
+ 
+ 	if (option_affinity) {
+@@ -2043,9 +2041,13 @@ int main(int argc, char **argv)
+ 			void *stack;
+ 			void *currstk;
+ 			size_t stksize;
++			int node_cpu = cpu;
++
++			if (node_cpu == -1)
++				node_cpu = cpu_for_thread_ua(i, max_cpus);
+ 
+ 			/* find the memory node associated with the cpu i */
+-			node = rt_numa_numa_node_of_cpu(cpu);
++			node = rt_numa_numa_node_of_cpu(node_cpu);
+ 
+ 			/* get the stack size set for this thread */
+ 			if (pthread_attr_getstack(&attr, &currstk, &stksize))
+@@ -2056,7 +2058,7 @@ int main(int argc, char **argv)
+ 				stksize = PTHREAD_STACK_MIN * 2;
+ 
+ 			/*  allocate memory for a stack on appropriate node */
+-			stack = rt_numa_numa_alloc_onnode(stksize, node, cpu);
++			stack = rt_numa_numa_alloc_onnode(stksize, node, node_cpu);
+ 
+ 			/* touch the stack pages to pre-fault them in */
+ 			memset(stack, 0, stksize);
+-- 
+2.38.1
+

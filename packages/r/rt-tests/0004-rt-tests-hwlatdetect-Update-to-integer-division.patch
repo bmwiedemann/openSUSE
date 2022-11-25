@@ -1,0 +1,41 @@
+From 4d5e69dc656f063e8832a4e3bf6f4734f6e1fbc6 Mon Sep 17 00:00:00 2001
+From: Leah Leshchinsky <lleshchi@redhat.com>
+Date: Thu, 10 Nov 2022 10:35:27 -0500
+Subject: [PATCH 4/4] rt-tests: hwlatdetect: Update to integer division
+
+In Python 3, "/" is a float division operator, as opposed to Python 2,
+which defaults to integer division. This results in an error when
+calculating width, which assumes an integer.
+
+Update width division to integer division with the "//" operator.
+
+Signed-off-by: Leah Leshchinsky <lleshchi@redhat.com>
+Signed-off-by: John Kacur <jkacur@redhat.com>
+
+[ upstream status: 1eaa7feae3225ae82d00d2e1f02986e34c31a38d ]
+
+Signed-off-by: Petr Vorel <pvorel@suse.cz>
+---
+ src/hwlatdetect/hwlatdetect.py | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/src/hwlatdetect/hwlatdetect.py b/src/hwlatdetect/hwlatdetect.py
+index 9ef50f8..bef1af2 100755
+--- a/src/hwlatdetect/hwlatdetect.py
++++ b/src/hwlatdetect/hwlatdetect.py
+@@ -454,9 +454,10 @@ if __name__ == '__main__':
+ 
+     if args.window:
+         w = microseconds(args.window)
++        width = w//2
+         if w < int(detect.get("width")):
+-            debug("shrinking width to %d for new window of %d" % (w/2, w))
+-            detect.set("width", w/2)
++            debug("shrinking width to %d for new window of %d" % (width, w))
++            detect.set("width", width)
+         debug("window parameter = %d" % w)
+         detect.set("window", w)
+         debug("window for sampling set to %dus" % w)
+-- 
+2.38.1
+

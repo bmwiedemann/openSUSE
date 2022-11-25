@@ -1,7 +1,7 @@
 #
 # spec file for package rt-tests
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,17 @@
 
 
 Name:           rt-tests
-Version:        2.2
+Version:        2.4
 Release:        0
 Summary:        Realtime Kernel Testsuite
 License:        GPL-2.0-only
 Group:          System/Benchmark
 URL:            https://git.kernel.org/pub/scm/utils/rt-tests/rt-tests.git
 Source0:        https://git.kernel.org/pub/scm/utils/rt-tests/rt-tests.git/snapshot/rt-tests-%{version}.tar.gz
-Patch1:         rt-tests-1.10-Makefile.patch
+Patch1:         0001-cyclictest-Fix-threads-being-affined-even-when-a-isn.patch
+Patch2:         0002-rt-tests-Remove-arbitrary-num-of-threads-limits.patch
+Patch3:         0003-rt-tests-hackbench-Add-error-checking-to-connect-and.patch
+Patch4:         0004-rt-tests-hwlatdetect-Update-to-integer-division.patch
 BuildRequires:  libnuma-devel
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base
@@ -36,8 +39,7 @@ specifically timer and signal latency and the functionality of Priority
 Inheritance Mutexes.
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags}"

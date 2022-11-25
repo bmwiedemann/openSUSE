@@ -1,0 +1,43 @@
+From 7cd6289fbebfc436e0f157f1fd2731a684b3af95 Mon Sep 17 00:00:00 2001
+From: John Kacur <jkacur@redhat.com>
+Date: Tue, 1 Nov 2022 09:30:40 -0400
+Subject: [PATCH 3/4] rt-tests: hackbench: Add error checking to connect and
+ getsockname
+
+Add error checking around the calls connect and getsockname
+
+Signed-off-by: John Kacur <jkacur@redhat.com>
+
+[ upstream status: c7768aae2e6d9e5440a3f4dc62d6e03f05df80f4 ]
+
+Signed-off-by: Petr Vorel <pvorel@suse.cz>
+---
+ src/hackbench/hackbench.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/src/hackbench/hackbench.c b/src/hackbench/hackbench.c
+index 18c9284..8c6d835 100644
+--- a/src/hackbench/hackbench.c
++++ b/src/hackbench/hackbench.c
+@@ -130,14 +130,16 @@ static int inet_socketpair(int fds[2])
+ 
+ 	if (bind(s1, &sin, len) < 0)
+ 		barf("bind");
+-	getsockname(s1, &sin, &len);
++	if (getsockname(s1, &sin, &len) < 0)
++		barf("getsockname");
+ 	if (listen(s1, 10) < 0)
+ 		barf("listen");
+ 	if (ioctl(s2, FIONBIO, &ul) < 0)
+ 		barf("ioctl");
+ 	if (ioctl(s1, FIONBIO, &ul) < 0)
+ 		barf("ioctl");
+-	connect(s2, &sin, len);
++	if (connect(s2, &sin, len) < 0)
++		barf("connect");
+ 	if ((fds[0] = accept(s1, &sin, &len)) < 0)
+ 		barf("accept");
+ 	ul = 0;
+-- 
+2.38.1
+

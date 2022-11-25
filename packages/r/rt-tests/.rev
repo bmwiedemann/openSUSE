@@ -98,4 +98,27 @@
     <comment></comment>
     <requestid>915214</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7955999e32e1bebd49559dce9125330c</srcmd5>
+    <version>2.4</version>
+    <time>1669378393</time>
+    <user>dimstar_suse</user>
+    <comment>- Use sources which are actually published
+
+- Update to upstream version v2.4
+  https://lore.kernel.org/linux-rt-users/20220708150017.13462-1-jkacur@redhat.com/
+- Update to upstream version v2.3
+  https://lore.kernel.org/linux-rt-users/20211210184649.11084-1-jkacur@redhat.com/
+- Remove old patch rt-tests-1.10-Makefile.patch, which installed
+  src/cyclictest/get_cyclictest_snapshot.8. Upstream guarded it with PYLIB in
+  3d1976b (&quot;Makefile: manpages: only add get_cyclictest_snapshot if PYLIB&quot;)
+  but PYLIB should be defined due BuildRequires:  python3-base
+- Backport runtime fixes from upcomming release:
+  * 0001-cyclictest-Fix-threads-being-affined-even-when-a-isn.patch
+  * 0002-rt-tests-Remove-arbitrary-num-of-threads-limits.patch
+  * 0003-rt-tests-hackbench-Add-error-checking-to-connect-and.patch
+  * 0004-rt-tests-hwlatdetect-Update-to-integer-division.patch
+- Use %autosetup (not having to add -p1 for patches)</comment>
+    <requestid>1038055</requestid>
+  </revision>
 </revisionlist>
