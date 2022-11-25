@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Thu Nov 24 13:55:39 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Remove strip for debuginfo creation
+
+-------------------------------------------------------------------
+Thu Nov 24 10:17:46 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Initial spec for sioyek 1.5.0
+- Add 0000-mupdf-1.20-compat-issue.patch
+- Add 0001-parse-mupdf-1.20-links.patch
+- Add sioyek-1.5.0.tar.gz
