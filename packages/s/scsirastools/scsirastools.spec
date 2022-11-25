@@ -1,7 +1,7 @@
 #
 # spec file for package scsirastools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Serviceability for SCSI Disks and Arrays
 License:        BSD-3-Clause
 Group:          Hardware/Other
-Url:            http://scsirastools.sourceforge.net/
+URL:            http://scsirastools.sourceforge.net/
 Source:         http://downloads.sourceforge.net/project/%{name}/%{name}-%{version}.tar.gz
 Source1:        sgdisk.service
 Source2:        sgraid.service
@@ -72,13 +72,13 @@ The scsiras patches are not currently included in our kernel.
 
 %build
 autoreconf -fi
-%configure 
+%configure
 make %{?_smp_mflags}
 
 %install
 %make_install
-# lets use /sbin
-mv %{buildroot}%{_sbindir}/* %{buildroot}/sbin/
+# usrmerge
+mv %{buildroot}/sbin/* %{buildroot}%{_sbindir}/
 # systemd support
 # 1) move the sysv init scripts away
 install -d %{buildroot}%{_datadir}/scsirastools/scripts
@@ -90,9 +90,9 @@ install -m 644 %{SOURCE2} %{buildroot}%{_unitdir}
 
 %files
 %defattr(-,root,root)
-/sbin/sg*
-/sbin/md*
-/sbin/getmd
+%{_sbindir}/sg*
+%{_sbindir}/md*
+%{_sbindir}/getmd
 %{_datadir}/scsirastools
 %config %{_datadir}/scsirastools/scripts/sgraid
 %config %{_datadir}/scsirastools/scripts/sgdisk
