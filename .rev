@@ -79,4 +79,17 @@
 </comment>
     <requestid>975943</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c6b77eb2c9e87af8bf1af377fc87d566</srcmd5>
+    <version>2.10.2</version>
+    <time>1669378334</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove python_module macro definition
+- Update to 2.10.2:
+  - Fix compatibility with Jinja2 3.1 in tests (#296).
+- 2.10.1:
+  - Update links in documentation to point to new home of Jinja2 docs (#295).
+</comment>
+    <requestid>1037969</requestid>
+  </revision>
 </revisionlist>

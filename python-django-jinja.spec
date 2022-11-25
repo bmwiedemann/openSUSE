@@ -16,12 +16,11 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python36 1
 %define modname django_jinja
 %bcond_without python2
 Name:           python-django-jinja
-Version:        2.10.0
+Version:        2.10.2
 Release:        0
 Summary:        Jinja2 templating language integrated in Django
 License:        BSD-3-Clause
