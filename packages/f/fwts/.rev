@@ -919,4 +919,24 @@
   * acpi: dbg2: update the subtype for DBG2 table</comment>
     <requestid>1010428</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>f74c1ba5f99a145f1f49868d1bc189ad</srcmd5>
+    <version>22.11.00</version>
+    <time>1669378384</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 22.11.00:
+  * lib: fwts_version.h - update to V22.11.00
+  * debian: update changelog
+  * auto-package: mkpackage.sh: add lunar
+  * fwts-test: sync test logs with latest ACPICA
+  * ACPICA: Update to version 20221020
+  * Add Support for EV_COMPACT_HASH event type
+  * fwts-test: add regression tests for CEDT
+  * acpi: cedt: add tests for ACPI CEDT table (mantis 2076)
+  * fwts-test: add regression test for RGRT
+  * acpi: rgrt: add test for ACPI RGRT table( mantis 2056)
+  * fwts-test: sync up with the default s3 sleep type description change
+  * s3: modify the default sleep type description</comment>
+    <requestid>1038036</requestid>
+  </revision>
 </revisionlist>

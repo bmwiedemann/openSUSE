@@ -17,7 +17,7 @@
 
 
 Name:           fwts
-Version:        22.09.00
+Version:        22.11.00
 Release:        0
 Summary:        Firmware Test Suite
 License:        GPL-2.0-or-later
@@ -64,7 +64,8 @@ find . -name Makefile.am -exec sed -i "s|-Werror||g"  {} +
 autoreconf -fiv
 %configure \
 	--disable-static
-%make_build
+# parallel build fails on Factory
+%make_build --jobs=1
 
 %install
 %make_install

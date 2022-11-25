@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Nov 25 07:02:10 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 22.11.00:
+  * lib: fwts_version.h - update to V22.11.00
+  * debian: update changelog
+  * auto-package: mkpackage.sh: add lunar
+  * fwts-test: sync test logs with latest ACPICA
+  * ACPICA: Update to version 20221020
+  * Add Support for EV_COMPACT_HASH event type
+  * fwts-test: add regression tests for CEDT
+  * acpi: cedt: add tests for ACPI CEDT table (mantis 2076)
+  * fwts-test: add regression test for RGRT
+  * acpi: rgrt: add test for ACPI RGRT table( mantis 2056)
+  * fwts-test: sync up with the default s3 sleep type description change
+  * s3: modify the default sleep type description
+
+-------------------------------------------------------------------
 Thu Oct 13 08:16:51 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 22.09.00:
