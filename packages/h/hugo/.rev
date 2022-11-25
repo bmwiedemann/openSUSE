@@ -406,4 +406,21 @@
   * Fix taxonomy weight sort regression (forwarded request 1036521 from jfkw)</comment>
     <requestid>1036522</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>e4461b50e5a51e2ae0359577cc012a33</srcmd5>
+    <version>0.107.0</version>
+    <time>1669378336</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.107.0:
+  * build(deps): bump github.com/getkin/kin-openapi from 0.108.0 to 0.109.0
+  * build(deps): bump github.com/evanw/esbuild from 0.15.14 to 0.15.15
+  * Add a cache for lexers.Get
+  * markup/goldmark: Improve benchmark
+  * commands: Create assets directory with new site
+  * build(deps): bump github.com/frankban/quicktest from 1.14.3 to 1.14.4
+  * build(deps): bump golang.org/x/tools from 0.2.0 to 0.3.0
+  * deps: Upgrade github.com/alecthomas/chroma/v2 v2.4.0
+  * hugo/parser: Fix shortcode boolean param parsing (forwarded request 1037983 from jfkw)</comment>
+    <requestid>1037984</requestid>
+  </revision>
 </revisionlist>

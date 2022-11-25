@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov 24 16:54:05 UTC 2022 - jkowalczyk@suse.com
+
+- Update to version 0.107.0:
+  * build(deps): bump github.com/getkin/kin-openapi from 0.108.0 to 0.109.0
+  * build(deps): bump github.com/evanw/esbuild from 0.15.14 to 0.15.15
+  * Add a cache for lexers.Get
+  * markup/goldmark: Improve benchmark
+  * commands: Create assets directory with new site
+  * build(deps): bump github.com/frankban/quicktest from 1.14.3 to 1.14.4
+  * build(deps): bump golang.org/x/tools from 0.2.0 to 0.3.0
+  * deps: Upgrade github.com/alecthomas/chroma/v2 v2.4.0
+  * hugo/parser: Fix shortcode boolean param parsing
+
+-------------------------------------------------------------------
 Thu Nov 17 19:37:21 UTC 2022 - jkowalczyk@suse.com
 
 - Update to version 0.106.0:
