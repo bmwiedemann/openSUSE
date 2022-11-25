@@ -4334,4 +4334,14 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
 </comment>
     <requestid>1036557</requestid>
   </revision>
+  <revision rev="359" vrev="1">
+    <srcmd5>cfc73be04f69fad46be4af0a7c4d9204</srcmd5>
+    <version>107.0.5304.121</version>
+    <time>1669378342</time>
+    <user>dimstar_suse</user>
+    <comment>- Chromium 107.0.5304.121 (boo#1205736)
+  * CVE-2022-4135: Heap buffer overflow in GPU
+</comment>
+    <requestid>1037993</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 24 20:48:10 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 107.0.5304.121 (boo#1205736)
+  * CVE-2022-4135: Heap buffer overflow in GPU
+
+-------------------------------------------------------------------
 Thu Nov 17 21:46:42 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Build with llvm15 on openSUSE:Backports:SLE-15-SP5 and up
