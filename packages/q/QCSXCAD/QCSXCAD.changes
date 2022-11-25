@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 25 13:34:59 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add patch to fix compilation with VTK 9.2:
+  * 0001-Add-method-to-get-vtkRenderWindow-from-QVTKStructure.patch
+
+-------------------------------------------------------------------
 Wed Nov 24 19:24:20 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Add patch to fix compilation with VTK 9.1:

@@ -1,7 +1,7 @@
 #
 # spec file for package QCSXCAD
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,10 +36,12 @@ Patch2:         QCSXCAD-vtk.patch
 Patch3:         0001-vtk-use-QVTKOpenGLWidget-for-vtk-8.patch
 # PATCH-FIX-UPSTREAM
 Patch4:         0001-vtk-fix-changes-for-vtk-8.x.patch
-# PATCH-FIX-OPENSUSE
+# PATCH-FIX-UPSTREAM
 Patch5:         0001-Remove-leftover-QVTKWidget-include-fix-for-VTK-9.patch
-# PATCH-FIX-OPENSUSE
+# PATCH-FIX-UPSTREAM
 Patch6:         0001-Fixup-includes-for-VTK-9.1-compatibility.patch
+# PATCH-FIX-UPSTREAM
+Patch7:         0001-Add-method-to-get-vtkRenderWindow-from-QVTKStructure.patch
 BuildRequires:  CSXCAD-devel
 BuildRequires:  cmake
 BuildRequires:  double-conversion-devel
