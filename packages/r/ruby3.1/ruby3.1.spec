@@ -31,7 +31,7 @@
 
 %global patch_level p0
 Name:           ruby3.1%{psuffix}
-Version:        3.1.2
+Version:        3.1.3
 Release:        0
 %global pkg_version %{version}
 # make the exported API version explicit
@@ -287,11 +287,11 @@ find sample -type f -perm /a=x -ls -exec chmod a-x \{\} \+
 # replace "/usr/bin/env ruby" and "/usr/local/bin/ruby" with correct path
 grep -Erl '^#! */.*ruby' benchmark bootstraptest ext lib sample test \
   | xargs -r perl -p -i -e 's|^#!\s*\S+\s*ruby\S*(\s+.*)?$|#!/usr/bin/ruby%{rb_binary_suffix} $1|'
-# workaround for https://bugs.ruby-lang.org/issues/18373
-find .bundle -name extconf.rb -exec \
-  sed -i \
-    -e '/create_makefile/i \$arch_hdrdir = "$(hdrdir)/../.ext/include/$(arch)"' \
-    -e '/create_makefile/i \$DLDFLAGS << " -L#{$top_srcdir}"' {} \;
+# # workaround for https://bugs.ruby-lang.org/issues/18373
+# find .bundle -name extconf.rb -exec \
+#   sed -i \
+#     -e '/create_makefile/i \$arch_hdrdir = "$(hdrdir)/../.ext/include/$(arch)"' \
+#     -e '/create_makefile/i \$DLDFLAGS << " -L#{$top_srcdir}"' {} \;
 
 %build
 export LANG="en_US.UTF-8"

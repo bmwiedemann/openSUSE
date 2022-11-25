@@ -1,8 +1,8 @@
-Index: ruby-3.1.0-preview1/template/Makefile.in
+Index: ruby-3.1.3/template/Makefile.in
 ===================================================================
---- ruby-3.1.0-preview1.orig/template/Makefile.in
-+++ ruby-3.1.0-preview1/template/Makefile.in
-@@ -282,7 +282,7 @@ miniruby$(EXEEXT):
+--- ruby-3.1.3.orig/template/Makefile.in
++++ ruby-3.1.3/template/Makefile.in
+@@ -286,7 +286,7 @@ miniruby$(EXEEXT):
  $(PROGRAM):
  		@$(RM) $@
  		$(ECHO) linking $@
@@ -10,4 +10,4 @@ Index: ruby-3.1.0-preview1/template/Makefile.in
 +		$(Q) $(PURIFY) $(CC) -pie $(EXE_LDFLAGS) $(XLDFLAGS) $(MAINOBJ) $(EXTOBJS) $(LIBRUBYARG) $(MAINLIBS) $(LIBS) $(EXTLIBS) $(OUTFLAG)$@
  		$(Q) $(POSTLINK)
  
- PRE_LIBRUBY_UPDATE = [ -n "$(LIBRUBY_SO_UPDATE)" ] || $(gnumake:yes=exec) $(RM) $(LIBRUBY_EXTS)
+ $(PROGRAM): @XRUBY_LIBPATHENV_WRAPPER@

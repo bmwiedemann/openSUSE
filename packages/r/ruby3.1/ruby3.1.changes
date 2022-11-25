@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov 24 16:05:38 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- remove the bundled gems workaround
+
+-------------------------------------------------------------------
+Thu Nov 24 14:34:04 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 3.1.3 (boo#1205726 CVE-2021-33621)
+  https://www.ruby-lang.org/en/news/2022/11/22/http-response-splitting-in-cgi-cve-2021-33621/
+  https://www.ruby-lang.org/en/news/2022/11/24/ruby-3-1-3-released/
+
+-------------------------------------------------------------------
 Tue May  3 23:49:37 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
 - turn off jemalloc again until we figure out how to do the dlopen
