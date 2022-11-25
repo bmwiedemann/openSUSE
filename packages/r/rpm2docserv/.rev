@@ -82,4 +82,13 @@
   * Use docserv instead of debiman for temporary files</comment>
     <requestid>1037133</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>43f5986736863fcc755156ab9757f647</srcmd5>
+    <version>20221125.be8d83b</version>
+    <time>1669378396</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20221125.be8d83b:
+  * Split sitemap.xml into chunks, use yaml config</comment>
+    <requestid>1038048</requestid>
+  </revision>
 </revisionlist>
