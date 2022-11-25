@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Nov 23 17:38:35 UTC 2022 - Tina Müller <tina.mueller@suse.com>
+
+- Update perl-DBD-SQLite-use-external-sqlite3.patch (remove metadata
+  fix, not needed anymore)
+
+-------------------------------------------------------------------
+Fri Nov  4 03:07:04 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.72
+   see /usr/share/doc/packages/perl-DBD-SQLite/Changes
+
+  1.72 2022-11-04
+      - Switched to a production version
+  1.71_07 2022-10-26
+      - Upgraded SQLite to 3.39.4
+  1.71_06 2022-03-12
+      - Set UTF8CACHE to avoid slowdown with -DDEBUGGING (andk, Leont, FGasper)
+  1.71_05 2022-02-26
+      - Fix another test failure on perl built with -DDEBUGGING
+      - Lowercase datatype in table column metadata for backcompat
+  1.71_04 2022-02-26
+      - Fix test failure on perl built with -DDEBUGGING (andk++)
+  1.71_03 2022-02-23
+      - Upgraded SQLite to 3.38.0
+      - Expose sqlite_error_offset introduced in 3.38.0
+  1.71_02 2022-01-07
+      - Upgraded SQLite to 3.37.2
+      - Improve sqlite_load_extension doc (GH#94, Derek Lamb++)
+  1.71_01 2021-12-02
+      - Upgraded SQLite to 3.37.0
+      - Add a feature to unregister a created function
+      - Fix accented characters in POD (GH#90, HaraldJoerg++)
+
+-------------------------------------------------------------------
 Tue Mar 15 08:24:59 UTC 2022 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - link embedded sqlite devel files to system files

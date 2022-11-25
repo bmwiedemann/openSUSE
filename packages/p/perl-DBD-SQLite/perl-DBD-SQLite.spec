@@ -18,7 +18,7 @@
 
 %define cpan_name DBD-SQLite
 Name:           perl-DBD-SQLite
-Version:        1.70
+Version:        1.72
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Self Contained SQLite RDBMS in a DBI Driver
