@@ -1,10 +1,25 @@
 <constraints>
   <hardware>
     <disk>
-      <size unit="G">12</size>
+      <size unit="G">11</size>
     </disk>
     <memory>
-      <size unit="G">5</size>
+      <size unit="G">4</size>
     </memory>
   </hardware>
+  <overwrite>
+    <conditions>
+      <arch>ppc64</arch>
+      <arch>ppc64le</arch>
+      <arch>x86_64</arch>
+    </conditions>
+    <hardware>
+      <disk>
+        <size unit="G">13</size>
+      </disk>
+      <memory>
+        <size unit="G">6</size>
+      </memory>
+    </hardware>
+  </overwrite>
 </constraints>

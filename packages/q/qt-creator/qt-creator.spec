@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 8.0.2
-%define short_version 8.0
+%define real_version 9.0.0
+%define short_version 9.0
 %define tar_name qt-creator-opensource-src
 %define tar_suffix %{nil}
 #
@@ -25,12 +25,6 @@
 %if "%{flavor}" == ""
 %define pkgname_prefix qt
 ExclusiveArch:  do_not_build
-%endif
-%if "%{flavor}" == "qt5"
-  %define qt5 1
-  %define pkgname_prefix qt5
-  %define qt_min_version 5.14
-  %define qtc_docdir %{_docdir}/qt5
 %endif
 %if "%{flavor}" == "qt6"
   %define qt6 1
@@ -51,7 +45,7 @@ ExclusiveArch:  do_not_build
 %global __requires_exclude_from %{_datadir}/qtcreator/qml/qmlpuppet/
 
 Name:           %{pkgname_prefix}-creator
-Version:        8.0.2
+Version:        9.0.0
 Release:        0
 Summary:        Integrated Development Environment targeting Qt apps
 # src/plugins/cmakeprojectmanager/configmodelitemdelegate.* -> LGPL-2.1-only OR LGPL-3.0-only
@@ -84,58 +78,15 @@ BuildRequires:  cmake(yaml-cpp)
 BuildRequires:  pkgconfig(libdw)
 BuildRequires:  pkgconfig(libelf)
 BuildRequires:  pkgconfig(libzstd)
-%if 0%{?qt5}
-BuildRequires:  libqt5-qtbase-private-headers-devel >= %{qt_min_version}
-BuildRequires:  libqt5-qtdeclarative-private-headers-devel >= %{qt_min_version}
-BuildRequires:  libqt5-qtquick3d-private-headers-devel >= %{qt_min_version}
-BuildRequires:  libqt5-qttools-private-headers-devel >= %{qt_min_version}
-# the DefinitionDownloader header is required
-BuildRequires:  cmake(KF5SyntaxHighlighting) >= 5.56
-BuildRequires:  cmake(Qt5Concurrent) >= %{qt_min_version}
-BuildRequires:  cmake(Qt5Core) >= %{qt_min_version}
-BuildRequires:  cmake(Qt5Designer) >= %{qt_min_version}
-BuildRequires:  cmake(Qt5DocTools) >= %{qt_min_version}
-BuildRequires:  cmake(Qt5Gui) >= %{qt_min_version}
-BuildRequires:  cmake(Qt5Help) >= %{qt_min_version}
-BuildRequires:  cmake(Qt5LinguistTools) >= %{qt_min_version}
-BuildRequires:  cmake(Qt5Network) >= %{qt_min_version}
-BuildRequires:  cmake(Qt5PrintSupport) >= %{qt_min_version}
-BuildRequires:  cmake(Qt5Qml) >= %{qt_min_version}
-BuildRequires:  cmake(Qt5Quick) >= %{qt_min_version}
-BuildRequires:  cmake(Qt5Quick3D) >= %{qt_min_version}
-BuildRequires:  cmake(Qt5Quick3DAssetImport) >= %{qt_min_version}
-BuildRequires:  cmake(Qt5QuickWidgets) >= %{qt_min_version}
-BuildRequires:  cmake(Qt5SerialPort) >= %{qt_min_version}
-BuildRequires:  cmake(Qt5Sql) >= %{qt_min_version}
-BuildRequires:  cmake(Qt5Svg) >= %{qt_min_version}
-BuildRequires:  cmake(Qt5Widgets) >= %{qt_min_version}
-BuildRequires:  cmake(Qt5Xml) >= %{qt_min_version}
-Requires:       libqt5-qtquickcontrols
-Requires:       libqt5-qtquicktimeline
-# Make sure to rebuild against latest Qt5 (using the last package in chain - libQt5Designer5)
-%requires_eq    libQt5Designer5
-%requires_eq    libQt5DesignerComponents5
-# Explicitly require libQt5Script5 (needed by plugins). Qt Creator crashes with old versions on project load.
-%requires_eq    libQt5Script5
-# Explicitly require libQt5Sql5-sqlite (needed by help system).
-Requires:       libQt5Sql5-sqlite
-Recommends:     libqt5-qtbase-common-devel
-Recommends:     libqt5-qtbase-devel
-Recommends:     libqt5-qtdeclarative-devel
-Recommends:     libqt5-qtdoc-qch
-Recommends:     libqt5-qttranslations
-Provides:       qt-creator = %{version}
-Obsoletes:      qt-creator < %{version}
-Provides:       libqt5-creator = %{version}
-Obsoletes:      libqt5-creator < %{version}
-%endif
 %if 0%{?qt6}
 BuildRequires:  qt6-core-private-devel >= %{qt_min_version}
-# Temporary
-BuildRequires:  qt6-designer-private-devel >= %{qt_min_version}
 BuildRequires:  qt6-gui-private-devel >= %{qt_min_version}
 BuildRequires:  qt6-qml-private-devel >= %{qt_min_version}
 BuildRequires:  qt6-quick-private-devel >= %{qt_min_version}
+BuildRequires:  qt6-quick3d-private-devel >= %{qt_min_version}
+BuildRequires:  qt6-quick3dassetimport-private-devel >= %{qt_min_version}
+BuildRequires:  qt6-quick3dassetutils-private-devel >= %{qt_min_version}
+BuildRequires:  qt6-quick3dparticles-private-devel >= %{qt_min_version}
 BuildRequires:  qt6-tools-qdoc >= %{qt_min_version}
 BuildRequires:  cmake(Qt6Concurrent) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt_min_version}
@@ -150,6 +101,10 @@ BuildRequires:  cmake(Qt6OpenGLWidgets) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6PrintSupport) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6Qml) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt_min_version}
+BuildRequires:  cmake(Qt6Quick3D) >= %{qt_min_version}
+BuildRequires:  cmake(Qt6Quick3DAssetImport) >= %{qt_min_version}
+BuildRequires:  cmake(Qt6Quick3DAssetUtils) >= %{qt_min_version}
+BuildRequires:  cmake(Qt6Quick3DParticles) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6QuickWidgets) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6SerialPort) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6ShaderTools) >= %{qt_min_version}
@@ -166,8 +121,10 @@ Recommends:     qt6-base-docs-qch
 Recommends:     qt6-declarative-devel
 Recommends:     qt6-declarative-docs-qch
 Recommends:     qt6-translations
-Conflicts:      libqt5-creator
-Conflicts:      qt5-qtcreator
+Provides:       libqt5-creator = %{version}
+Provides:       qt5-creator = %{version}
+Obsoletes:      libqt5-creator < %{version}
+Obsoletes:      qt5-creator < %{version}
 %endif
 Requires:       hicolor-icon-theme
 
@@ -179,15 +136,12 @@ facilitate development with the Qt application framework.
 Summary:        Qt Creator Plugin Development Files
 Group:          Development/Tools/IDE
 Requires:       %{pkgname_prefix}-creator = %{version}
-%if 0%{?qt5}
-Provides:       libqt5-creator-plugin-devel = %{version}
-Obsoletes:      libqt5-creator-plugin-devel < %{version}
-Requires:       libqt5-qtbase-devel >= %{qt_min_version}
-%endif
 %if 0%{?qt6}
 Requires:       qt6-base-devel >= %{qt_min_version}
-Conflicts:      libqt5-creator-plugin-devel
-Conflicts:      qt5-creator-plugin-devel
+Provides:      libqt5-creator-plugin-devel = %{version}
+Provides:      qt5-creator-plugin-devel = %{version}
+Obsoletes:     libqt5-creator-plugin-devel < %{version}
+Obsoletes:     qt5-creator-plugin-devel < %{version}
 %endif
 
 %description plugin-devel
@@ -196,9 +150,6 @@ This package contains all files from the Qt Creator source directory
 
 %prep
 %autosetup -p1 -n %{tar_name}-%{real_version}%{tar_suffix}
-
-# E: spurious-executable-perm
-chmod -x doc/qtcreator/images/qtcreator-cmakeexecutable.png
 
 # Don't build qbs, we already have a package
 rm -r src/shared/qbs
@@ -209,10 +160,7 @@ rm -r src/shared/qbs
 # - qtc wants relative paths for CMAKE_INSTALL_LIB{,EXEC}DIR
 # - https://bugreports.qt.io/browse/QTCREATORBUG-24357 suggests disabling
 #   the clangpchmanagerbackend and clangrefactoringbackend builds
-%if 0%{?qt5}
-%cmake \
-  -DCMAKE_SKIP_INSTALL_RPATH:BOOL=OFF \
-%else
+%if 0%{?qt6}
 %cmake_qt6 \
 %endif
   -DCMAKE_INSTALL_LIBDIR:STRING=%{_lib} \
@@ -225,23 +173,14 @@ rm -r src/shared/qbs
   -DBUILD_LIBRARY_QLITEHTML:BOOL=ON \
   -DBUILD_HELPVIEWERBACKEND_QTWEBENGINE:BOOL=OFF
 
-%if 0%{?qt5}
-%cmake_build
-cmake --build . -t docs
-%else
-%qt6_build
-%qt6_build_docs
+%if 0%{?qt6}
+%{qt6_build}
+%{qt6_build_docs}
 %endif
 
 %install
-%if 0%{?qt5}
-%cmake_install
-
-# The qmldesigner plugin is only available in qt6-creator
-rm -r %{buildroot}%{_datadir}/qtcreator/qmldesigner
-
-%else
-%qt6_install
+%if 0%{?qt6}
+%{qt6_install}
 %endif
 
 # Install files needed to develop qtcreator plugins.
@@ -283,22 +222,19 @@ rm -r %{buildroot}%{_datadir}/qtcreator/fonts
 %{_datadir}/icons/hicolor/*/apps/QtProject-qtcreator.png
 %{_datadir}/metainfo/org.qt-project.qtcreator.appdata.xml
 %{_datadir}/qtcreator/android/
+%{_datadir}/qtcreator/changelog/
 %{_datadir}/qtcreator/cplusplus/
 %{_datadir}/qtcreator/debugger/
 %{_datadir}/qtcreator/externaltools/
-%if 0%{?qt6}
 # This won't be needed when syntax-highlighting has a KF6 release
 %{_datadir}/qtcreator/generic-highlighter/
-%endif
 %{_datadir}/qtcreator/glsl/
 %{_datadir}/qtcreator/indexer_preincludes/
 %{_datadir}/qtcreator/modeleditor/
 %{_datadir}/qtcreator/package-manager/
 %{_datadir}/qtcreator/qml-type-descriptions/
 %{_datadir}/qtcreator/qml/
-%if 0%{?qt6}
 %{_datadir}/qtcreator/qmldesigner/
-%endif
 %{_datadir}/qtcreator/qmlicons/
 %{_datadir}/qtcreator/schemes/
 %{_datadir}/qtcreator/snippets/

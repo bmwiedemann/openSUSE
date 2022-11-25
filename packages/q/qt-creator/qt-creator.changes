@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov 24 09:30:21 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 9.0.0. Note: Qt Creator no longer builds with Qt5.
+  * https://www.qt.io/blog/qt-creator-9-released
+  * Experimental Squish Support
+  * Dark themes support for the help menu
+  * Option for visualizing the indentation in the document
+  * You can now use a single Clangd instance for a whole session
+    (vs. one instance / project)
+  * CMake: added support for configure and build presets
+
+-------------------------------------------------------------------
 Sat Oct 22 06:58:45 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 8.0.2. Bugfix release:
