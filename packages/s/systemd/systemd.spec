@@ -19,7 +19,7 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define min_kernel_version 4.5
-%define archive_version +suse.21.g64dc546913
+%define archive_version +suse.27.g3bd3e4e6c1
 
 %define _testsuitedir /usr/lib/systemd/tests
 %define xinitconfdir %{?_distconfdir}%{!?_distconfdir:%{_sysconfdir}}/X11/xinit
@@ -216,7 +216,7 @@ Patch1000:      1000-Revert-getty-Pass-tty-to-use-by-agetty-via-stdin.patch
 # very few cases, some stuff might be broken in upstream and need to be fixed
 # quickly. But even in these cases, the patches are temporary and should be
 # removed as soon as a fix is merged by upstream.
-Patch6000:      6000-meson-install-test-kernel-install-only-when-Dkernel-.patch
+Patch6000:      6000-Revert-tmpfiles-whenever-creating-an-inode-immediate.patch
 
 %description
 Systemd is a system and service manager, compatible with SysV and LSB

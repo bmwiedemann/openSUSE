@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Nov 22 13:52:07 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Import commit 3bd3e4e6c1efe0d6df776107efde47e15e58fe96
+
+  d28e81d65c test: fix the default timeout values described in README.testsuite
+  d921c83f53 meson: install test-kernel-install only when -Dkernel-install=true
+  c3b6c4b584 tests: update install_suse_systemd()
+  3c77335b19 tests: install dmi-sysfs module on openSUSE
+  df632130cd tests: install systemd-resolved on openSUSE
+
+- Add 6000-Revert-tmpfiles-whenever-creating-an-inode-immediate.patch until
+  upstream issue #25468 is fixed.
+
+- Drop 6000-meson-install-test-kernel-install-only-when-Dkernel-.patch, the
+  patch has been merged in the SUSE git repo.
+
+-------------------------------------------------------------------
 Fri Nov 18 08:07:33 UTC 2022 - Franck Bui <fbui@suse.com>
 
 - Reenable build of sd_boot, it was mistakenly disabled during the integration
@@ -10,6 +27,10 @@ Mon Nov 14 11:15:06 UTC 2022 - Franck Bui <fbui@suse.com>
 - Upgrade to v252.1 (commit 64dc546913525e33e734500055a62ed0e963c227)
 
   See https://github.com/openSUSE/systemd/blob/SUSE/v252/NEWS for details.
+
+  This includes the following bug fixes:
+
+   - upstream commit 67c3e1f63a5221b47a8fea85ae421671f29f3b7e (bsc#1200723)
 
   * Rebased 0001-conf-parser-introduce-early-drop-ins.patch
             1000-Revert-getty-Pass-tty-to-use-by-agetty-via-stdin.patch
