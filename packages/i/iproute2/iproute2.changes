@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 22 12:47:44 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Replace routel program by a non-python version [boo#1205632]
+
+-------------------------------------------------------------------
 Sat Oct  8 14:30:53 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - update to 6.0:

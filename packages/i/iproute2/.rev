@@ -1033,4 +1033,12 @@ require bash-completion for iproute2-bash-completion]</comment>
     <comment></comment>
     <requestid>1008951</requestid>
   </revision>
+  <revision rev="129" vrev="2">
+    <srcmd5>d677a2e5b24e9f5b0d0626e6807714ba</srcmd5>
+    <version>6.0</version>
+    <time>1669378285</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace routel program by a non-python version [boo#1205632]</comment>
+    <requestid>1037901</requestid>
+  </revision>
 </revisionlist>
