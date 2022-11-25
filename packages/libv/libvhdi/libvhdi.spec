@@ -18,7 +18,7 @@
 
 %define lname	libvhdi1
 Name:           libvhdi
-Version:        20221029
+Version:        20221124
 Release:        0
 Summary:        Library and tools to access the VHD image format
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
