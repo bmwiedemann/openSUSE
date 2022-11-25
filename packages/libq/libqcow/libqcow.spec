@@ -18,7 +18,7 @@
 
 %define lname	libqcow1
 Name:           libqcow
-Version:        20221026
+Version:        20221124
 Release:        0
 Summary:        Library and tooling to access the QEMU Copy-On-Write (QCOW) image format
 License:        GFDL-1.1-or-later AND LGPL-3.0-or-later AND GFDL-1.3-or-later
@@ -58,12 +58,12 @@ Library and tooling to access the QEMU Copy-On-Write (QCOW) image format.
 QCOW formats v1 and v2 in compressed or encrypted form are supported.
 Not supported are backing file-based snapshots and in-image snapshots.
 
-%package -n %{lname}
+%package -n %lname
 Summary:        Library to access the QEMU Copy-On-Write (QCOW) image format
 License:        LGPL-3.0-or-later
 Group:          System/Libraries
 
-%description -n %{lname}
+%description -n %lname
 Library to access the QEMU Copy-On-Write (QCOW) image format.
 QCOW formats v1 and v2 in compressed or encrypted form are supported.
 Not supported are backing file-based snapshots and in-image snapshots.
@@ -82,7 +82,7 @@ Not supported are backing file-based snapshots and in-image snapshots.
 Summary:        Development files for libqcow
 License:        GFDL-1.1-or-later AND LGPL-3.0-or-later AND GFDL-1.3-or-later
 Group:          Development/Libraries/C and C++
-Requires:       %{lname} = %{version}
+Requires:       %lname = %version
 
 %description devel
 libqcow is a library to access the QEMU Copy-On-Write (QCOW) image format.
@@ -111,31 +111,31 @@ echo "V_%version { global: *; };" >v.sym
 
 %install
 mv %_builddir/rt/* %buildroot/
-find %{buildroot} -type f -name "*.la" -delete -print
+find %buildroot -type f -name "*.la" -delete -print
 
-%post   -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%post   -n %lname -p /sbin/ldconfig
+%postun -n %lname -p /sbin/ldconfig
 
-%files -n %{lname}
+%files -n %lname
 %license COPYING*
-%{_libdir}/libqcow.so.*
+%_libdir/libqcow.so.*
 
 %files -n %name-tools
 %license COPYING*
-%{_bindir}/qcow*
-%{_mandir}/man1/qcow*.1*
+%_bindir/qcow*
+%_mandir/man1/qcow*.1*
 
 %files -n %name-devel
 %doc QEMU_Copy-On-Write_file_format.pdf
 %license COPYING*
-%{_includedir}/libqcow.h
-%{_includedir}/libqcow/
-%{_libdir}/libqcow.so
-%{_libdir}/pkgconfig/libqcow.pc
-%{_mandir}/man3/libqcow.3*
+%_includedir/libqcow.h
+%_includedir/libqcow/
+%_libdir/libqcow.so
+%_libdir/pkgconfig/libqcow.pc
+%_mandir/man3/libqcow.3*
 
 %files %python_files
 %license COPYING*
-%{python_sitearch}/pyqcow.so
+%python_sitearch/pyqcow.so
 
 %changelog
