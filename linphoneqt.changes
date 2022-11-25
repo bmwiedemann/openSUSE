@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Nov 18 12:45:00 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 4.4.11:
+  + Uninstall wasn't correctly checking for running application:
+    replace FindWindow by tasklist.
+
+-------------------------------------------------------------------
+Sat Oct 01 12:21:42 UTC 2022 - thod_@gmx.de
+
+- Update to version 4.4.10
+  + Lime exceptions because of unknown boundaries.
+  + AppimageTool update for code signing.
+
+-------------------------------------------------------------------
+Sat Sep 10 12:21:42 UTC 2022 - thod_@gmx.de
+
+- Update to version 4.4.9:
+  * Update SDK to fix a crash on startup due to a test on a removed participant device.
+  * Use default values for new accounts in settings panel.
+  * Add 'sip' scheme in authentication popup.
+
+-------------------------------------------------------------------
+Sun Aug 14 12:21:42 UTC 2022 - thod_@gmx.de
+
+- Allow build on Fedora
+
+-------------------------------------------------------------------
 Mon Jul 25 12:03:34 UTC 2022 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 4.4.8:
