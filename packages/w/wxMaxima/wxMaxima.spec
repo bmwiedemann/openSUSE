@@ -16,22 +16,20 @@
 #
 
 
-# Tests fail on chroot, but work fine during my local testing
+# Tests fail on chroot, but work fine locally
+# https://github.com/wxMaxima-developers/wxmaxima/issues/1699
 %bcond_with tests
 %define X_display ":98"
 %define __builder ninja
 %define tarname wxmaxima
 Name:           wxMaxima
-Version:        22.05.0
+Version:        22.09.0
 Release:        0
 Summary:        Graphical User Interface for the maxima Computer Algebra System
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://wxmaxima-developers.github.io/wxmaxima/
 Source0:        https://github.com/wxmaxima-developers/wxmaxima/archive/Version-%{version}.tar.gz#/%{tarname}-Version-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM wxMaxima-disable-slow-multithreadtest.patch gh#wxMaxima-developers/wxmaxima#1504 badshah400@gmail.com -- Disable a slow test that causes timeouts on OBS workers for openSUSE >= 1550
-Patch0:         wxMaxima-disable-slow-multithreadtest.patch
-BuildRequires:  appstream-glib
 BuildRequires:  cmake >= 3.10
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -48,20 +46,19 @@ BuildRequires:  rsvg-convert
 BuildRequires:  rsvg-view
 %endif
 BuildRequires:  update-desktop-files
-%if 0%{?suse_version} >= 1550
-BuildRequires:  wxGTK3-devel >= 3.1
-%else
-BuildRequires:  wxWidgets-devel >= 3
-%endif
+BuildRequires:  wxGTK3-devel >= 3.2
 # gnuplot is needed for plotting
 Requires:       gnuplot
 Requires:       maxima >= 5.30.0
 Recommends:     %{name}-lang
 # SECTION For tests
+%if %{with tests}
+BuildRequires:  appstream-glib
 %if 0%{?suse_version} >= 1550
 BuildRequires:  xorg-x11-server-Xvfb
 %else
 BuildRequires:  xorg-x11-server
+%endif
 %endif
 # /SECTION
 ExcludeArch:    ppc64 ppc64le
@@ -100,15 +97,11 @@ mkdir -p %{buildroot}%{_datadir}/icons/hicolor/scalable/mimetypes
 # REMOVE UNNECESSARY ICONS OUT OF PIXMAPS
 rm %{buildroot}%{_datadir}/pixmaps/*
 
-# Remove doc files installed by make install, we include them by using %%doc and %%license
-for f in AUTHORS COPYING ChangeLog GPL.txt NEWS.md README README.md; do
-  rm -fv "%{buildroot}%{_datadir}/doc/%{tarname}/$f"
-done
+# Remove license installed by make install, we include them by using %%license
+rm %{buildroot}%{_datadir}/doc/%{tarname}/{COPYING,GPL.txt}
 
 %suse_update_desktop_file io.github.wxmaxima_developers.wxMaxima
-
 %fdupes %{buildroot}%{_prefix}
-
 %find_lang %{name} %{?no_lang_C}
 
 %if %{with tests}
@@ -117,7 +110,11 @@ export DISPLAY="%{X_display}"
 Xvfb %{X_display} >& Xvfb.log &
 trap "kill $! || true" EXIT
 sleep 5
+
+# Needed, otherwise maxima tries to write to a dir without permissions
+export MAXIMA_USERDIR=./
 %ctest
+
 %endif
 
 %post
@@ -128,8 +125,7 @@ sleep 5
 
 %files
 %license COPYING GPL.txt
-%doc AUTHORS.md NEWS.md README.md
-%{_datadir}/doc/%{tarname}/
+%doc %{_datadir}/doc/%{tarname}/
 %{_bindir}/*
 %{_datadir}/wxMaxima/
 %{_datadir}/icons/hicolor/*/apps/io.github.wxmaxima_developers.wxMaxima.*

@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Thu Nov 10 16:12:59 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update BuildRequires: wxGTK >= 3.2 now required.
+
+-------------------------------------------------------------------
+Fri Sep  2 17:10:08 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 22.09.0:
+  * Support for wxWidgets 3.1.7
+  * The description field for wizards no more is a
+    MouseOverToolTip
+  * Wizards now accept chars from the unicode buttons
+  * Wizards now can balance parenthesis
+  * Wizards for operatingsystem, basic programming and string
+    operations
+  * More miscellaneous work on the wizards
+  * The watchlist was broken
+  * Better scalability of the config dialogue
+  * Folded multiline code cells are now sent to Maxima correctly
+    (gh#wxMaxima-developers/wxmaxima#1674)
+  * The output of the "?" command contained spurious "<"
+    (gh#wxMaxima-developers/wxmaxima#1688)
+  * ?, ?? and describe() now use a browser window, by default
+  * Search harder for the Maxima manual
+  * Search harder for Maxima manual entries
+  * Now we find Maxima manual entries that have no explicit anchor
+  * On Linux, MacOs and, if wxWidgets was compiled with edge
+    support the help browser can be obened in a dockable window
+  * wxMaxima can now compiled, even if wxWidgets was configured
+    with the option "--enable-privatefonts=no".
+  * Names that end in an underscore are now printed correctly
+    (gh#wxMaxima-developers/wxmaxima#1706)
+  * Made the tests work on more platforms
+    (gh#wxMaxima-developers/wxmaxima#1709)
+  * Resolved some asserts (gh#wxMaxima-developers/wxmaxima#1574)
+  * Working MathJaX (gh#wxMaxima-developers/wxmaxima#1702)
+  * A primitive integrated ChangeLog viewer
+  * Better documentation (gh#wxMaxima-developers/wxmaxima#1693)
+  * Better unicode handling (gh#wxMaxima-developers/wxmaxima#1691)
+  * Many additional bugfixes
+- Drop wxMaxima-disable-slow-multithreadtest.patch: Incorporated
+  upstream.
+
+-------------------------------------------------------------------
 Fri Jul 22 14:57:51 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 22.05.0:
