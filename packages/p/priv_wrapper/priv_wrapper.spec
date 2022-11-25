@@ -1,6 +1,7 @@
 #
 # spec file for package priv_wrapper
 #
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2022 Andreas Schneider
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,7 +24,7 @@
 #
 ############################# NOTE ##################################
 Name:           priv_wrapper
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        A library to disable resource limits and other privilege dropping
 License:        GPL-3.0-or-later

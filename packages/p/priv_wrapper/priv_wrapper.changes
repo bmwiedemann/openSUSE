@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 24 14:12:36 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.0.1
+  * Fixed dclose() with RTLD_NEXT
+  * Fixed prctl() dlsym prototype
+
+-------------------------------------------------------------------
 Mon Oct 24 11:06:37 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
 
 - Initial package

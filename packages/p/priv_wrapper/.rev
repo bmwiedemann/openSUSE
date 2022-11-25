@@ -7,4 +7,15 @@
     <comment>New package of the cwrap family for testing.</comment>
     <requestid>1037292</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6d3a427258c0f104fc2d0944efd6fd59</srcmd5>
+    <version>1.0.1</version>
+    <time>1669378320</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.1
+  * Fixed dclose() with RTLD_NEXT
+  * Fixed prctl() dlsym prototype
+</comment>
+    <requestid>1037930</requestid>
+  </revision>
 </revisionlist>

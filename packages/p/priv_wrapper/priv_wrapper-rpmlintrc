@@ -4,4 +4,6 @@
 #
 # Learn more at http://cwrap.org
 #
+addFilter("shlib-policy-name-error")
+addFilter("shared-lib-calls-exit")
 addFilter("devel-file-in-non-devel-package")
