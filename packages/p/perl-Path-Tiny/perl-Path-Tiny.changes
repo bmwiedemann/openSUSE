@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Thu Nov 10 03:07:48 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.142
+   see /usr/share/doc/packages/perl-Path-Tiny/Changes
+
+  0.142     2022-11-09 07:06:36-05:00 America/New_York
+      No changes from 0.141; all changes since last stable release are summarized below.
+      [*** DEPRECATIONS ***]
+      - Tilde expansion is deprecated due to inconsistent and bug-prone behavior.
+      [Bug fixes]
+      - Prevent expansion of tildes that are not the very first character (e.g.
+        "./~foo"). Prevent unintentional tilde expansion during internal path
+        processing. Escape non-tilde glob characters before tilde expansion.
+      - Fixed spew/edit to a long filename approaching the filesystem length
+        limit.
+      - Internal calls to `print` are checked for possible errors.
+      - Internal read calls are checked for errors.
+      [Changes]
+      - Path stringification now adds "./" in front of paths starting with literal tilde
+        so they will round-trip.  FREEZE updated to use this stringification rule as well.
+      - `move` now uses File::Copy::move internally instead of the built-in `rename`,
+        allowing it to work across filesystems.  It also returns an object for the
+        moved location, allowing chaining.
+      - edit_lines_raw now uses a buffered raw I/O layer. edit_lines_utf8 now
+        prefers PerlIO::utf8_strict, if available.
+      - lines_utf8 now consistently uses a buffered I/O layer.
+      - open*_utf8 now prefers PerlIO::utf8_strict, if available.
+      - slurp_utf8 now consistently uses an unbuffered I/O layer.
+      [Documented]
+      - Changed all raw/UTF-8 layer descriptions in method documentation to match
+        the code.
+      - Fixed SYNOPSIS syntax.
+      - Documented how to disable TMPDIR when making temp files/dirs.
+      [Testing]
+      - Add additional tilde stringification testing.
+      - Fixed tilde expansion tests on Windows.
+      - Skip a problematic test case on cygwin.
+  0.141     2022-11-07 12:47:25-05:00 America/New_York (TRIAL RELEASE)
+      [Testing]
+      - Add additional tilde expansion tests
+  0.139     2022-11-03 15:44:46-04:00 America/New_York (TRIAL RELEASE)
+      [Testing]
+      - Skip a problematic test case on cygwin
+  0.137     2022-11-02 09:50:26-04:00 America/New_York (TRIAL RELEASE)
+      [Testing]
+      - Add additional tilde stringification testing.
+  0.135     2022-11-01 22:27:21-04:00 America/New_York (TRIAL RELEASE)
+      [Testing]
+      - Fixed additional issues with tilde expansion tests on Windows for testers
+        with lowercase drive letters in their userprofile.
+  0.133     2022-10-31 23:55:01-04:00 America/New_York (TRIAL RELEASE)
+      [Bug fixes]
+      - Path stringification now adds "./" in front of paths starting with literal tilde
+        so they will round-trip.  FREEZE updated to use this stringification rule as well.
+      [Changes]
+      - `move` now uses File::Copy::move internally instead of the built-in `rename`,
+        allowing it to work across filesystems.  It also returns an object for the
+        moved location, allowing chaining.
+      [Testing]
+      - Fixed tilde expansion tests on Windows.
+  0.131     2022-10-31 10:42:46-04:00 America/New_York (TRIAL RELEASE)
+      [*** DEPRECATIONS ***]
+      - Tilde expansion is deprecated due to inconsistent and bug-prone behavior.
+      [Bug fixes]
+      - Fixed spew/edit to a long filename approaching the filesystem length
+        limit.
+      - Internal calls to `print` are checked for possible errors.
+      - Internal read calls are checked for errors.
+      - Prevent expansion of tildes that are not the very first character (e.g.
+        "./~foo"). Prevent unintentional tilde expansion during internal path
+        processing. Escape non-tilde glob characters before tilde expansion.
+      [Changes]
+      - edit_lines_raw now uses a buffered raw I/O layer. edit_lines_utf8 now
+        prefers PerlIO::utf8_strict, if available.
+      - lines_utf8 now consistently uses a buffered I/O layer.
+      - open*_utf8 now prefers PerlIO::utf8_strict, if available.
+      - slurp_utf8 now consistently uses an unbuffered I/O layer.
+      [Documented]
+      - Changed all raw/UTF-8 layer descriptions in method documentation to match
+        the code.
+      - Fixed SYNOPSIS syntax.
+      - Documented how to disable TMPDIR when making temp files/dirs.
+
+-------------------------------------------------------------------
 Fri Oct 21 03:09:03 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.130
