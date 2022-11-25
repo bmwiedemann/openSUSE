@@ -33,7 +33,7 @@
 %bcond_with ldc_tests
 
 # Dynamic compiling is not supported with LLVM >= 12
-%if 0%{?suse_version} > 1550
+%if 0%{?suse_version} > 1550 || ( 0%{?is_opensuse} && 0%{?sle_version} > 150400 )
 # We force llvm14 on TW
 %global jit_support 0
 %else
@@ -64,7 +64,7 @@ BuildRequires:  help2man
 BuildRequires:  libconfig++-devel
 BuildRequires:  libcurl-devel
 BuildRequires:  libstdc++-devel
-%if 0%{?suse_version} > 1550
+%if 0%{?suse_version} > 1550 || ( 0%{?is_opensuse} && 0%{?sle_version} > 150400 )
 # Cannot build with llvm15, so stick with llvm14 for now
 BuildRequires:  clang14
 BuildRequires:  llvm14-devel
@@ -183,7 +183,7 @@ sed -i "s# - -o-# \"$PWD/feVer.d\" -o-#" cmake/Modules/FindDCompiler.cmake
 touch no-suse-rules
 %cmake \
     -DCMAKE_USER_MAKE_RULES_OVERRIDE=./no-suse-rules \
-%if 0%{?suse_version} > 1550
+%if 0%{?suse_version} > 1550 || ( 0%{?is_opensuse} && 0%{?sle_version} > 150400 )
     -DCMAKE_C_COMPILER="%{_bindir}/clang-14" \
     -DCMAKE_CXX_COMPILER="%{_bindir}/clang++-14" \
 %else
@@ -208,7 +208,7 @@ cd ..
 touch no-suse-rules
 %cmake \
     -DCMAKE_USER_MAKE_RULES_OVERRIDE=./no-suse-rules \
-%if 0%{?suse_version} > 1550
+%if 0%{?suse_version} > 1550 || ( 0%{?is_opensuse} && 0%{?sle_version} > 150400 )
     -DCMAKE_C_COMPILER="%{_bindir}/clang-14" \
     -DCMAKE_CXX_COMPILER="%{_bindir}/clang++-14" \
 %else

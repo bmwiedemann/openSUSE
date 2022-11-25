@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 25 07:33:17 UTC 2022 - Max Lin <mlin@suse.com>
+
+- Force to use llvm14 in Leap 15.5 since the default llvm version is
+  now llvm15
+
+-------------------------------------------------------------------
 Mon Nov 21 15:02:29 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not have the main package recommend the bash-completion
