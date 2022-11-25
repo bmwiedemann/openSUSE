@@ -305,4 +305,13 @@ factory)</comment>
   * make version check optional</comment>
     <requestid>991221</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>e5395db024e77abbb887124c1b467e91</srcmd5>
+    <version>B.02.19.2+git.20220831</version>
+    <time>1669378297</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version B.02.19.2+git.20220831:
+  * PA-RISC: handle pushd failure</comment>
+    <requestid>1037877</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 
 Name:           lshw
-Version:        B.02.19.2+git.20220628
+Version:        B.02.19.2+git.20220831
 Release:        0
 Summary:        HardWare LiSter
 License:        GPL-2.0-only
@@ -56,8 +56,8 @@ Requires:       %{name} = %{version}-%{release}
 Requires:       hicolor-icon-theme
 Requires(post): hicolor-icon-theme
 Requires(post): update-desktop-files
-Requires(postun): hicolor-icon-theme
-Requires(postun): update-desktop-files
+Requires(postun):hicolor-icon-theme
+Requires(postun):update-desktop-files
 
 %description gui
 lshw (Hardware Lister) is a small tool to provide detailed informaton on the

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 24 12:10:56 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version B.02.19.2+git.20220831:
+  * PA-RISC: handle pushd failure
+
+-------------------------------------------------------------------
 Tue Jul 26 09:52:22 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version B.02.19.2+git.20220628 (jsc#526):
