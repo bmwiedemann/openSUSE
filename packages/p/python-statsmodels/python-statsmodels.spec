@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -25,24 +24,25 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%define skip_python2 1
+
 Name:           python-statsmodels%{psuffix}
-Version:        0.13.2
+Version:        0.13.5
 Release:        0
 Summary:        A Python module that allows users to explore data
 License:        BSD-3-Clause
 URL:            https://github.com/statsmodels/statsmodels
 Source:         https://files.pythonhosted.org/packages/source/s/statsmodels/statsmodels-%{version}.tar.gz
-BuildRequires:  %{python_module Cython >= 0.29.22}
+BuildRequires:  %{python_module Cython >= 0.29.32}
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module numpy-devel >= 1.17}
 BuildRequires:  %{python_module scipy >= 1.3}
-BuildRequires:  %{python_module setuptools >= 0.6}
+BuildRequires:  %{python_module setuptools >= 0.59.2}
+BuildRequires:  %{python_module setuptools_scm >= 7}
 BuildRequires:  fdupes
 BuildRequires:  gcc-fortran
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy >= 1.17
-Requires:       python-pandas >= 1.0
+Requires:       python-pandas >= 0.25
 Requires:       python-patsy >= 0.5.2
 Requires:       python-scipy >= 1.3
 Recommends:     python-matplotlib >= 3
@@ -54,7 +54,8 @@ BuildRequires:  %{python_module statsmodels = %{version}}
 BuildRequires:  %{python_module matplotlib >= 3}
 # /SECTION
 # SECTION test requirements
-BuildRequires:  %{python_module pytest >= 6}
+BuildRequires:  %{python_module Jinja2}
+BuildRequires:  %{python_module pytest >= 7.0.1}
 BuildRequires:  %{python_module pytest-xdist}
 # /SECTION
 %endif
@@ -107,7 +108,7 @@ pushd $testdir
 %ifarch %{ix86} %{arm32}
 # Note: there is no upstream 32-bit support for testing
 # gh#statsmodels/statsmodels#7463
-%define donttest  -k "not (test_seasonal_order or (test_holtwinters and test_forecast_index))"
+%define donttest  -k "not (test_seasonal_order or (test_holtwinters and test_forecast_index) or (test_discrete and test_basic))"
 %endif
 # not slow: some tests in tsa and discrete take AGES to run in OBS, like 2h per the folder
 %pytest_arch -n auto -p no:cacheprovider -m "not slow" %{$python_sitearch}/statsmodels %{?donttest}

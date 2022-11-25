@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Nov  9 22:21:28 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Fix build requirements
+- Clean specfile
+- Skip more 32-bit tests, unsupported upstream
+
+-------------------------------------------------------------------
+Tue Nov  8 08:23:09 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 0.13.5:
+  * Python 3.11 compatibility
+  * resolves an issue with PyPI that affects 0.13.4
+  * packaging fixes
+- Add python module Jinja2, needed for tests in %check
+
+-------------------------------------------------------------------
 Sun Mar 20 14:43:40 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.13.2
