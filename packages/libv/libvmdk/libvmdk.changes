@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 24 11:47:58 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20221124
+  * Added alternate extent data filename support
+  * Added Shift_JIS encoding support
+  * A refcounting issue with the Python module was fixed
+
+-------------------------------------------------------------------
 Mon Aug  8 11:37:44 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Add forced symvers
