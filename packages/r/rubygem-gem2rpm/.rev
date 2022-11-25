@@ -317,4 +317,12 @@ D    enhances.patch
     <comment>- added support for 3.1.0</comment>
     <requestid>943166</requestid>
   </revision>
+  <revision rev="30" vrev="19">
+    <srcmd5>955b5970b15e97333be7fdd1f073bc8c</srcmd5>
+    <version>0.10.1</version>
+    <time>1669378281</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1037868</requestid>
+  </revision>
 </revisionlist>
