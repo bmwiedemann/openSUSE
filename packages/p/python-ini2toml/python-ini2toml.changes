@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov 24 18:40:31 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 0.11.3:
+  * Fix dependency problems by requiring pyproject-fmt>=0.4.0
+- 0.11.2:
+  * Adapt to changes in pyproject-fmt 0.4.0
+- 0.11.1:
+  * Internal test fixes, minor CI and doc improvements
+  * Only list pyproject-fmt as an experimental dependency on Python 3.7+
+
+-------------------------------------------------------------------
 Fri Aug  5 09:35:34 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Disable full and all in Ring1: Don't require ConfigUpdate

@@ -23,4 +23,19 @@
     <comment></comment>
     <requestid>993279</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>114dd79174d139106d0dbabcb2253908</srcmd5>
+    <version>0.11.3</version>
+    <time>1669381685</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.11.3:
+  * Fix dependency problems by requiring pyproject-fmt&gt;=0.4.0
+- 0.11.2:
+  * Adapt to changes in pyproject-fmt 0.4.0
+- 0.11.1:
+  * Internal test fixes, minor CI and doc improvements
+  * Only list pyproject-fmt as an experimental dependency on Python 3.7+
+</comment>
+    <requestid>1037972</requestid>
+  </revision>
 </revisionlist>

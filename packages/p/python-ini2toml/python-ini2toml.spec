@@ -46,12 +46,12 @@
 
 %define skip_python2 1
 Name:           python-ini2toml%{psuffix}
-Version:        0.11
+Version:        0.11.3
 Release:        0
 Summary:        Automatic conversion of .ini/cfg files to TOML equivalents
 License:        MPL-2.0
 URL:            https://github.com/abravalheri/ini2toml/
-Source:         https://files.pythonhosted.org/packages/source/i/ini2toml/ini2toml-0.11.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/i/ini2toml/ini2toml-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
@@ -123,7 +123,7 @@ The ini2toml[all] extra requirements for %{python_flavor}-ini2toml
 %package experimental
 Summary:        Python ini2toml[experimental] extra requirement
 Requires:       python-ini2toml = %{version}
-Requires:       python-pyproject-fmt >= 0.32
+Requires:       python-pyproject-fmt >= 0.4.0
 
 %description experimental
 The ini2toml[experimental] extra requirements for %{python_flavor}-ini2toml
