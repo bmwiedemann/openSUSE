@@ -49,8 +49,9 @@ Requires:       pattern() = x11_yast
 Requires:       budgie-desktop
 Requires:       lightdm
 Recommends:     gnome-terminal
-Recommends:     gnome-backgrounds
+Recommends:     budgie-backgrounds
 Recommends:     gnome-software
+Suggests:       gnome-backgrounds
 Suggests:       cheese
 Suggests:       dconf-editor
 Suggests:       evince
