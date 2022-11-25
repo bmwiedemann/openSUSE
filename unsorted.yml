@@ -1505,6 +1505,7 @@ unsorted:
   - budgie-app-launcher-applet 
   - budgie-applications-menu-applet 
   - budgie-appmenu-applet 
+  - budgie-backgrounds 
   - budgie-brightness-controller-applet 
   - budgie-calendar-applet 
   - budgie-calendar-applet-lang 
@@ -9164,26 +9165,26 @@ unsorted:
   - libOSMesa8 
   - libOSMesa8-32bit: [x86_64] 
   - libOgreBites-devel 
-  - libOgreBites13_3 
-  - libOgreBitesQt13_3 
+  - libOgreBites13_5 
+  - libOgreBitesQt13_5 
   - libOgreMain-devel 
-  - libOgreMain13_3 
-  - libOgreMain13_3-codecs 
-  - libOgreMain13_3-plugins 
+  - libOgreMain13_5 
+  - libOgreMain13_5-codecs 
+  - libOgreMain13_5-plugins 
   - libOgreMeshLodGenerator-devel 
-  - libOgreMeshLodGenerator13_3 
+  - libOgreMeshLodGenerator13_5 
   - libOgreOverlay-devel 
-  - libOgreOverlay13_3 
+  - libOgreOverlay13_5 
   - libOgrePaging-devel 
-  - libOgrePaging13_3 
+  - libOgrePaging13_5 
   - libOgreProperty-devel 
-  - libOgreProperty13_3 
+  - libOgreProperty13_5 
   - libOgreRTShaderSystem-devel 
-  - libOgreRTShaderSystem13_3 
+  - libOgreRTShaderSystem13_5 
   - libOgreTerrain-devel 
-  - libOgreTerrain13_3 
+  - libOgreTerrain13_5 
   - libOgreVolume-devel 
-  - libOgreVolume13_3 
+  - libOgreVolume13_5 
   - libOpenCL1 
   - libOpenCL1-32bit: [x86_64] 
   - libOpenCOLLADABaseUtils0_3 
@@ -25270,6 +25271,7 @@ unsorted:
   - python310-xapian-haystack 
   - python310-xapp 
   - python310-xarray 
+  - python310-xarray-einstats 
   - python310-xattr 
   - python310-xcffib 
   - python310-xdg 
@@ -28643,6 +28645,7 @@ unsorted:
   - python38-xapian-haystack 
   - python38-xapp 
   - python38-xarray 
+  - python38-xarray-einstats 
   - python38-xattr 
   - python38-xcffib 
   - python38-xdg 
@@ -32007,6 +32010,7 @@ unsorted:
   - python39-xapian-haystack 
   - python39-xapp 
   - python39-xarray 
+  - python39-xarray-einstats 
   - python39-xattr 
   - python39-xcffib 
   - python39-xdg 
@@ -32247,8 +32251,6 @@ unsorted:
   - qsynergy 
   - qsynth 
   - qsynth-lang 
-  - qt5-creator 
-  - qt5-creator-plugin-devel 
   - qt5ct 
   - qt5integration 
   - qt6-3d-devel 
@@ -33539,6 +33541,7 @@ unsorted:
   - simutrans-makeobj 
   - singular 
   - singularity-ce 
+  - sioyek 
   - sipcalc 
   - sipp 
   - siproxd 
