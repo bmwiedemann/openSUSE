@@ -1,7 +1,7 @@
 #
 # spec file for package python-ldappool
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ldappool
 Version:        3.0.0
 Release:        0
@@ -25,6 +24,8 @@ License:        GPL-2.0-or-later OR MPL-1.1 OR LGPL-2.1-or-later
 Group:          Development/Languages/Python
 URL:            https://git.openstack.org/cgit/openstack/ldappool
 Source:         https://files.pythonhosted.org/packages/source/l/ldappool/ldappool-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM remove-six-dep.patch https://review.opendev.org/c/openstack/ldappool/+/805495
+Patch:          remove-six-dep.patch
 BuildRequires:  %{python_module ldap >= 3.0.0}
 BuildRequires:  %{python_module pbr}
 # SECTION stestr is only available for primary python3 flavor (openstack package)
@@ -53,7 +54,7 @@ The pool has useful features like:
 - a context manager to simplify acquiring and releasing a connector
 
 %prep
-%setup -q -n ldappool-%{version}
+%autosetup -p1 -n ldappool-%{version}
 sed -i 's/PrettyTable<0.8,>=0.7.2/prettytable>=0.7.2/' requirements.txt
 
 %build
@@ -62,12 +63,14 @@ sed -i 's/PrettyTable<0.8,>=0.7.2/prettytable>=0.7.2/' requirements.txt
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_expand rm -rf %{buildroot}%{$python_sitelib}/ldappool/tests
 
 %check
 python3 -m stestr.cli run
 
 %files %{python_files}
 %doc CHANGES.rst README.rst
-%{python_sitelib}/*
+%{python_sitelib}/ldappool
+%{python_sitelib}/ldappool-%{version}*-info
 
 %changelog

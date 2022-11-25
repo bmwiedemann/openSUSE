@@ -60,4 +60,17 @@
     <comment>- fix requires on renamed prettytable</comment>
     <requestid>934035</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>688a6a008020f116aada765010fbd08b</srcmd5>
+    <version>3.0.0</version>
+    <time>1669378397</time>
+    <user>dimstar_suse</user>
+    <comment>- Add remove-six-dep.patch upstream patch
+  https://review.opendev.org/c/openstack/ldappool/+/805495
+- Remove python_module macro definition
+- More specific python_sitelib in %files
+- Remove tests from package
+</comment>
+    <requestid>1038064</requestid>
+  </revision>
 </revisionlist>

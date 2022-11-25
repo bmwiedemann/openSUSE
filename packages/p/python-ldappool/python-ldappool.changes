@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Nov 25 09:27:25 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add remove-six-dep.patch upstream patch
+  https://review.opendev.org/c/openstack/ldappool/+/805495
+- Remove python_module macro definition
+- More specific python_sitelib in %files
+- Remove tests from package
+
+-------------------------------------------------------------------
 Fri Nov 26 11:38:48 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - fix requires on renamed prettytable 
