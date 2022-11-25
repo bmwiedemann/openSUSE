@@ -1,7 +1,56 @@
 -------------------------------------------------------------------
+Fri Nov 25 07:17:41 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.0.18:
+  + macOS: Fix audio device listing with non-latin names.
+  + Misc: Fix rendering and performance issue with older GPUs.
+  + Updated translations.
+- Changes from version 3.0.18-rc2:
+  + Codec/Demux:
+    - Add support for Y16 chroma.
+    - Fix build of gme plugin.
+  + Lua:
+    - Fix script for vocaroo.
+    - Fix script for youtube to allow throttled playback.
+  + Service Discovery: Fix UPnP regression on Windows.
+  + Video Output: Fix video placement with caopengllayer.
+  + Misc: Fix password search in kwallet module.
+- Changes from version 3.0.18-rc:
+  + Demux:
+    - Major adaptive streaming update, notably for multiple
+      timelies and webvtt.
+    - Fix seeking with some fragmented MP4 files.
+    - Add support for DVBSub inside MKV.
+    - Fix some Flac files that could not be played.
+    - Improve seeking in Ogg files.
+  + Decoders:
+    - Fix DxVA/D3D11 crashes on HEVC files with bogus references.
+    - Fix libass storage size and crash.
+    - Fix decoding errors on macOS hw decoding on some HEVC files.
+  + Video Output:
+    - Fix color regression with VAAPI/iOS and OpenGL output.
+    - Fix some resizing issues with OpenGL on GLX/EGL/X11/XV.
+    - Fix Direct3d9 texture stretching.
+    - Fix 10-bit accelerated video filters on macOS.
+  + Playlist: Avoid playlist liveloop on failed/tiny items
+    (temporize EOS bursts).
+  + Misc:
+    - Misc fixes for the extension UI on macOS.
+    - Improve SMBv1 and SMBv2 behaviours.
+    - Improve FTP compatibility.
+    - Support RISC-V.
+    - Fix AVI muxing for Windows Media Player compatibility.
+    - Fix seeking speed on macOS.
+- Drop vlc-dav1d-1.0.patch and 867.patch: fixed upstream.
+- Drop vlc-get-addr-by-ref-from-getConnectionEndpointAddress.patch:
+  fixed upstream (commit 05445b74).
+- Drop vlc-get-addr-by-ref-from-getConnectionEndpointAddress.patch:
+  fixed upstream (commit b689202d).
+
+-------------------------------------------------------------------
 Thu Nov 17 10:55:57 UTC 2022 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
-- add vlc-caca-fix-to-0-99-beta20-version.patch: build with libcaca-0.99.beta20 
+- add vlc-caca-fix-to-0-99-beta20-version.patch: build with libcaca-0.99.beta20
 
 -------------------------------------------------------------------
 Tue Nov  8 14:49:10 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>

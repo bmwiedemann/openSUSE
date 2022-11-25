@@ -33,7 +33,7 @@
 %bcond_with faad
 %bcond_with fdk_aac
 Name:           vlc
-Version:        3.0.17.4
+Version:        3.0.18
 Release:        0
 Summary:        Graphical media player
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -49,19 +49,12 @@ Patch0:         vlc.a52.patch
 Patch1:         vlc-allow-deprecated-fribidi.patch
 # PATCH-FIX-UPSTREAM vlc-lua-5.3.patch dimstar@opensuse.org -- Replace lua_optlong with lua_optinteger
 Patch2:         vlc-lua-5.3.patch
-Patch3:         867.patch
 # PATCH-FIX-UPSTREAM fix-build-with-fdk-2.0.patch -- Fix building vlc with libfdk-aac v2
 Patch4:         fix-build-with-fdk-2.0.patch
-# PATCH-FIX-UPSTREAM vlc-dav1d-1.0.patch -- Fix build with dav1d 1.0
-Patch5:         vlc-dav1d-1.0.patch
 # PATCH-FEATURE-OPENSUSE vlc-projectM-qt5.patch -- Build against projectM-qt5; openSUSE provides projectM as -qt and -qt5 variant
 Patch100:       vlc-projectM-qt5.patch
 # PATCH-FIX-UPSTREAM -- Use OpenCV C++ API
 Patch103:       0001-Port-OpenCV-facedetect-example-to-C-API.patch
-# PATCH-FIX-UPSTREAM https://trac.videolan.org/vlc/ticket/25473 dominic.mayers@meditationstudies.org -- The maintainers of live555 changed connectionEndpointAddresss to getConnectionEndpointAddress, which now provides the address value by reference.
-Patch107:       vlc-get-addr-by-ref-from-getConnectionEndpointAddress.patch
-# PATCH-FIX-UPSTREAM vlc-caca-fix-to-0-99-beta20-version.patch -- Migrate to new API of libcaca in v0.99.beta20
-Patch108:       vlc-caca-fix-to-0-99-beta20-version.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  aalib-devel
 BuildRequires:  alsa-devel >= 1.0.24
@@ -409,23 +402,14 @@ OpenCV based video filters and a face detection example.
 %patch0 -p1
 %patch1 -p1
 %patch4 -p1
-%patch5 -p1
 %if 0%{?suse_version} > 1320 && 0%{?suse_version} < 1550 && 0%{?sle_version} < 150200
 %patch100 -p1
 %endif
 %patch103 -p1
-### Since live555-2020.12.11, connectionEndpointAddress() member function
-### use a "struct sockaddr_storage" in preparation for eventual support of IPv6:
-### http://www.live555.com/liveMedia/public/changelog.txt
-if pkg-config --atleast-version 2020.12.11 live555; then
-%patch107 -p1
-fi
-%patch108 -p1
 
 ### And LUA 5.3.1 has some more API changes
 if pkg-config --atleast-version 5.3.1 lua; then
 %patch2 -p1
-%patch3 -p1
 fi
 
 # We do not rely on contrib but make use of system libraries
