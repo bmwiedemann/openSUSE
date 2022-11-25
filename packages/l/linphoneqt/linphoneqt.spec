@@ -18,7 +18,7 @@
 
 %define _name   linphone
 Name:           linphoneqt
-Version:        4.4.8
+Version:        4.4.11
 Release:        0
 Summary:        Qt interface for Linphone
 License:        GPL-3.0-or-later
@@ -30,14 +30,27 @@ Source1:        %{_name}.appdata.xml
 Patch0:         linphoneqt-fix-no-git.patch
 # PATCH-FIX-OPENSUSE https://aur.archlinux.org/cgit/aur.git/plain/0002-remove-bc_compute_full_version-usage.patch?h=linphone-desktop
 Patch1:         linphoneqt-0002-remove-bc_compute_full_version-usage.patch
+%if 0%{?suse_version}
 BuildRequires:  Mesa-libGLESv2-devel
+%else
+BuildRequires:  mesa-libGL-devel
+%endif
 BuildRequires:  chrpath
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
+%if 0%{?suse_version}
 BuildRequires:  libqt5-linguist-devel
+%else
+BuildRequires:  boost-devel
+BuildRequires:  qt5-linguist
+BuildRequires:  qt5-qttools-devel
+Requires:       qt5-qtquickcontrols
+%endif
 BuildRequires:  pkgconfig
+%if 0%{?suse_version}
 BuildRequires:  update-desktop-files
+%endif
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Core) >= 5.12
 BuildRequires:  pkgconfig(Qt5DBus)
@@ -48,7 +61,7 @@ BuildRequires:  pkgconfig(Qt5QuickControls2)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5TextToSpeech)
 BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(linphone) >= 5.0.0
+BuildRequires:  pkgconfig(linphone) >= 5.1.58
 BuildRequires:  pkgconfig(mediastreamer) >= 5.0.0
 
 %description
@@ -86,7 +99,11 @@ Devel package for %{_name}.
 %autosetup -n %{_name}-desktop-%{version} -p1
 cp %{SOURCE1} linphone.appdata.xml
 touch linphone-sdk/CMakeLists.txt
+%if 0%{?suse_version}
 mkdir -p build/linphone-sdk/desktop/{bin,share}
+%else
+mkdir -p redhat-linux-build/linphone-sdk/desktop/{bin,share}
+%endif
 
 # Fix building out-of-git
 echo '#define LINPHONE_QT_GIT_VERSION "${PROJECT_VERSION}"' >> linphone-app/src/config.h.cmake
@@ -94,15 +111,20 @@ echo '#define LINPHONE_QT_GIT_VERSION "${PROJECT_VERSION}"' >> linphone-app/src/
 echo "project(linphoneqt VERSION %{version})" > linphone-app/linphoneqt_version.cmake
 
 %build
-if [[ %version = 4.4.? ]]; then
+if [[ %version = 4.4.[0-9]* ]]; then
     sed -i '/^add_custom_command/s@${CMAKE_INSTALL_PREFIX}/include/@%{buildroot}%{_includedir}/@;/^add_custom_command/s@${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/@%{buildroot}%{_libdir}/@' linphone-app/CMakeLists.txt
     sed -i '/\/ui/s@${qml_dir}@${CMAKE_CURRENT_SOURCE_DIR}/../&@' linphone-app/cmake_builder/linphone_package/CMakeLists.txt
+%if 0%{?suse_version}
     mkdir -p build/linphone-sdk/desktop/share/{,sounds}/linphone
+%else
+    mkdir -p redhat-linux-build/linphone-sdk/desktop/share/{,sounds}/linphone
+%endif
 fi
 %cmake \
-  -DCMAKE_CXX_FLAGS="-fpermissive" \
+  -DCMAKE_CXX_FLAGS="%{optflags} -fpic -ffat-lto-objects -fpermissive" \
   -DCMAKE_BUILD_TYPE=Release \
   -DLINPHONE_OUTPUT_DIR="$PWD" \
+  -DCMAKE_INSTALL_PREFIX=/usr \
   -DENABLE_UPDATE_CHECK=OFF \
   -DENABLE_STRICT=OFF       \
   -DENABLE_STATIC=OFF
@@ -110,6 +132,12 @@ fi
 
 %install
 %cmake_install
+%if 0%{?fedora}
+# for Fedora the internal call to cmake overwrites CMAKE_INSTALL_PREFIX, move...
+mkdir -p %{buildroot}/usr
+mv %{buildroot}/home/abuild/rpmbuild/BUILD/linphone-desktop*/redhat-linux-build/OUTPUT/* %{buildroot}/usr
+rm -rf %{buildroot}/home
+%endif
 install -Dpm 0644 linphone.appdata.xml \
   %{buildroot}%{_datadir}/metainfo/org.linphone.appdata.xml
 
