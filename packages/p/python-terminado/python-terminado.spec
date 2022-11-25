@@ -17,7 +17,7 @@
 
 
 Name:           python-terminado
-Version:        0.16.0
+Version:        0.17.0
 Release:        0
 Summary:        Terminals served to termjs using Tornado websockets
 License:        BSD-2-Clause
