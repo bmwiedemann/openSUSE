@@ -56,4 +56,14 @@
   - Add docu URLs to service files</comment>
     <requestid>1035206</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>fe4d9d8527944a3eea92af55a223539b</srcmd5>
+    <version>1.5</version>
+    <time>1669378319</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5
+  - Restart udev after update by default
+  - Support REBOOT_CMD=&quot;none&quot;</comment>
+    <requestid>1037918</requestid>
+  </revision>
 </revisionlist>

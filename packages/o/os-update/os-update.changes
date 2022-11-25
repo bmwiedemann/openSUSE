@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 24 13:49:25 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.5
+  - Restart udev after update by default
+  - Support REBOOT_CMD="none"
+
+-------------------------------------------------------------------
 Fri Nov 11 09:30:12 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 1.4.2
