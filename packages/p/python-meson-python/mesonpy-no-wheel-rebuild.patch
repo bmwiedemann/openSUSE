@@ -1,0 +1,25 @@
+We already have the meson_python wheel, can't built it in isolated mode inside OBS
+
+Index: meson_python-0.11.0/tests/conftest.py
+===================================================================
+--- meson_python-0.11.0.orig/tests/conftest.py
++++ meson_python-0.11.0/tests/conftest.py
+@@ -133,17 +133,7 @@ def disable_pip_version_check():
+ 
+ @pytest.fixture(scope='session')
+ def pep518_wheelhouse(tmpdir_factory):
+-    wheelhouse = tmpdir_factory.mktemp('wheelhouse')
+-    meson_python = str(package_dir.parent.parent)
+-    # Populate wheelhouse with wheel for the following packages and
+-    # their dependencies.  Wheels are downloaded from PyPI or built
+-    # from the source distribution as needed.  Sources or wheels in
+-    # the pip cache are used when available.
+-    packages = [
+-        meson_python,
+-    ]
+-    subprocess.run([sys.executable, '-m', 'pip', 'wheel', '--wheel-dir', str(wheelhouse), *packages], check=True)
+-    return str(wheelhouse)
++    return str(package_dir.parent.parent / 'build')
+ 
+ 
+ @pytest.fixture

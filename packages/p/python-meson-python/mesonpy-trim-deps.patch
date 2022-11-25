@@ -1,17 +1,23 @@
 The backend does not require a mesonbuild module for every flavor.
-`meson` and `ninja` commands from the regular RPM packages are
-sufficient.
+the `meson` command from the regular RPM package is sufficient.
 
-Index: meson_python-0.8.1/pyproject.toml
+Index: meson_python-0.11.0/pyproject.toml
 ===================================================================
---- meson_python-0.8.1.orig/pyproject.toml
-+++ meson_python-0.8.1/pyproject.toml
-@@ -26,8 +26,6 @@ classifiers = [
-
+--- meson_python-0.11.0.orig/pyproject.toml
++++ meson_python-0.11.0/pyproject.toml
+@@ -2,7 +2,6 @@
+ build-backend = 'mesonpy'
+ backend-path = ['.']
+ requires = [
+-  'meson>=0.63.3',
+   'pyproject-metadata>=0.5.0',
+   'tomli>=1.0.0; python_version<"3.11"',
+   'typing-extensions>=3.7.4; python_version<"3.8"',
+@@ -25,7 +24,6 @@ classifiers = [
+ 
  dependencies = [
    'colorama; os_name == "nt"',
--  'meson>=0.62.0',
--  'ninja',
+-  'meson>=0.63.3',
    'pyproject-metadata>=0.5.0', # not a hard dependency, only needed for projects that use PEP 621 metadata
-   'tomli>=1.0.0',
+   'tomli>=1.0.0; python_version<"3.11"',
    'typing-extensions>=3.7.4; python_version<"3.8"',
