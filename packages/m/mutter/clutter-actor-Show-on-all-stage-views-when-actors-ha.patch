@@ -1,0 +1,53 @@
+From cc7752fc65db0d1c1d70def406f81c9733cce6a7 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jonas=20Dre=C3=9Fler?= <verdre@v0yd.nl>
+Date: Mon, 14 Nov 2022 00:14:05 +0100
+Subject: [PATCH] clutter/actor: Show on all stage-views when actors have no
+ allocation
+
+When a badly behaving ClutterActor implementation manages to invalidate
+the allocation after the layout phase and before painting, we have no
+idea where the actor should be painted without running the whole layout
+machinery again.
+
+For paint volumes in this case we pretend the actor covers the whole
+stage and queue full-stage redraws. When updating stage-views, we're
+also handling this case, but not in the most graceful way. Just like
+with paint volumes, we should assume an actor without a valid allocation
+is simply everywhere, so set priv->stage_views to all available stage
+views in that case.
+
+Related: https://gitlab.gnome.org/GNOME/gnome-shell/-/issues/6054
+---
+ clutter/clutter/clutter-actor.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/clutter/clutter/clutter-actor.c b/clutter/clutter/clutter-actor.c
+index 95cfa65..dd96858 100644
+--- a/clutter/clutter/clutter-actor.c
++++ b/clutter/clutter/clutter-actor.c
+@@ -15459,18 +15459,19 @@ update_stage_views (ClutterActor *self)
+   ClutterStage *stage;
+   graphene_rect_t bounding_rect;
+ 
++  stage = CLUTTER_STAGE (_clutter_actor_get_stage_internal (self));
++  g_return_if_fail (stage);
++
+   old_stage_views = g_steal_pointer (&priv->stage_views);
+ 
+   if (priv->needs_allocation)
+     {
+       g_warning ("Can't update stage views actor %s is on because it needs an "
+                  "allocation.", _clutter_actor_get_debug_name (self));
++      priv->stage_views = g_list_copy (clutter_stage_peek_stage_views (stage));
+       goto out;
+     }
+ 
+-  stage = CLUTTER_STAGE (_clutter_actor_get_stage_internal (self));
+-  g_return_if_fail (stage);
+-
+   clutter_actor_get_transformed_extents (self, &bounding_rect);
+ 
+   if (bounding_rect.size.width == 0.0 ||
+-- 
+2.38.1
+

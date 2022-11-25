@@ -1667,4 +1667,14 @@ Possibly fixes boo#1063871, along with the gnome-shell patch for bgo#788607 (for
     <comment> (forwarded request 1033601 from iznogood)</comment>
     <requestid>1034157</requestid>
   </revision>
+  <revision rev="191" vrev="2">
+    <srcmd5>9d6804994f209fd96063aba45caac602</srcmd5>
+    <version>43.1</version>
+    <time>1669381688</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix window freezes when maximized on Xorg (boo#1205714, 
+  glgo#GNOME/mutter!2694, glgo#GNOME/gnome-shell#6054)
+  * add clutter-actor-Show-on-all-stage-views-when-actors-ha.patch (forwarded request 1038000 from yfjiang)</comment>
+    <requestid>1038030</requestid>
+  </revision>
 </revisionlist>
