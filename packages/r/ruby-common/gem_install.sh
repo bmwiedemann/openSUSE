@@ -231,7 +231,7 @@ GILogger.info "RPM name: #{rpmname}"
 pwd = Dir.pwd
 bindir = File.join(options.rpmbuildroot, Gem.bindir)
 GILogger.info "bindir: #{bindir}"
-if options.symlinkbinaries && File.exists?(bindir)
+if options.symlinkbinaries && File.exist?(bindir)
   br_ua_dir = File.join(options.rpmbuildroot, options.ua_dir)
   GILogger.info "Creating upate-alternatives dir: #{br_ua_dir}"
   FileUtils.mkdir_p(br_ua_dir)

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov 17 12:01:35 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- actually bump the version so we can require the newer version for
+  ruby3.2
+
+-------------------------------------------------------------------
+Thu Nov 17 11:49:44 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- replace `File.exists?` with `File.exist?` as the `File.exists?`
+  is no longer supported in 3.2
+
+-------------------------------------------------------------------
 Mon Jun 13 11:43:30 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
 - make %gem_unpack and %gem_build work when the default system ruby

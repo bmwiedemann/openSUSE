@@ -24,7 +24,7 @@ gemfile_lock = STDIN.read.chomp
 appdir = File.dirname(gemfile_lock)
 Dir.chdir(appdir)
 
-unless File.exists? app_info_file then
+unless File.exist? app_info_file then
   STDERR.puts "Warning: Skipping Gemfile.lock without appinfo.yaml file"
   exit 0
 end

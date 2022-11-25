@@ -212,4 +212,12 @@ For staging:n</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>983973</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>401d364d9aafc707c9693f1df40e316b</srcmd5>
+    <version>3.2</version>
+    <time>1669378280</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1037867</requestid>
+  </revision>
 </revisionlist>
