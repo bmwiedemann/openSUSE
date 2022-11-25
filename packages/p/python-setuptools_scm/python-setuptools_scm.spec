@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -25,26 +24,32 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%define skip_python2 1
+
 Name:           python-setuptools_scm%{psuffix}
-Version:        6.4.2
+Version:        7.0.5
 Release:        0
 Summary:        Python setuptools handler for SCM tags
 License:        MIT
 URL:            https://github.com/pypa/setuptools_scm
 Source:         https://files.pythonhosted.org/packages/source/s/setuptools_scm/setuptools_scm-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module packaging >= 20.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 45}
-BuildRequires:  %{python_module tomli >= 1.0}
+BuildRequires:  %{python_module typing-extensions}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-packaging >= 20.0
 Requires:       python-setuptools
-Requires:       python-tomli
+Requires:       python-tomli >= 1.0.0
+Requires:       python-typing-extensions
+%if 0%{?python_version_nodots} < 38
+Requires:       python-importlib-metadata
+%endif
 BuildArch:      noarch
 %if %{with test}
 # Testing requirements
-BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm = %{version}}
 BuildRequires:  %{python_module virtualenv}
@@ -61,23 +66,24 @@ The setuptools_scm package handles managing one's Python package versions
 in SCM metadata. It also handles file finders for the supperted SCMs.
 
 %prep
-%setup -q -n setuptools_scm-%{version}
-%autopatch -p1
+%autosetup -p1 -n setuptools_scm-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
 %if %{with test}
 %check
-sed -i 's:python\( setup.py\):python3\1:' testing/test_integration.py
 # pip download needs network
-%pytest -k "not test_pip_download"
+donttest="test_pip_download"
+# tested file not installed into sitelib. Yes the test is named that way.
+donttest+=" or test_git_archhival_from_unfiltered"
+%pytest -k "not ($donttest)"
 %endif
 
 %if !%{with test}

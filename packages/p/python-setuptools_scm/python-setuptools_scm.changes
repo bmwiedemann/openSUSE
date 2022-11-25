@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Nov  9 22:32:35 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 7.0.5
+  * fixes #742 , #745: correctly hande accidentally released
+    archival files
+- Release v7.0.4
+  * fix #727: correctly handle incomplete archivals from
+    setuptools_scm_git_archival
+  * fix #691: correctly handle specifying root in pyproject.toml
+  * correct root override check condition (to ensure absolute path
+    matching)
+  * allow root by the cli to be considered relative to the cli
+    (using abspath)
+- Release v7.0.3
+  * fix mercurial usage when pip primes a isolated environment
+  * fix regression for branch names on git + add a test
+- Release v7.0.2
+  * fix #723 and #722: remove bootstrap dependencies
+  * bugfix: ensure we read the distribution name from setup.cfg if
+    needed even for pyproject
+- Release v7.0.1
+  * fix #718: Avoid `ModuleNotFoundError` by requiring
+    importlib_metadata in python < 3.8
+- Release v7.0.0
+  * drop python 3.6 support
+  * include git archival support
+  * fix #707: support git version detection even when git protects
+              against mistmatched owners (common with misconfigured
+              containers, thanks @chrisburr )
+- Release v6.4.3
+  * fix #548: correctly handle parsing the commit timestamp of HEAD
+    when ``log.showSignature`` is set
+
+-------------------------------------------------------------------
 Wed Feb 23 11:02:50 UTC 2022 - pgajdos@suse.com
 
 - fix integration tests
