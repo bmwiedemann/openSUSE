@@ -1,0 +1,51 @@
+From f335860d99fe11eec5599e1e53960ff1e75c0f82 Mon Sep 17 00:00:00 2001
+From: Ken Goldman <kgoldman@us.ibm.com>
+Date: Mon, 23 Aug 2021 17:30:56 -0400
+Subject: utils: Remove unused variables from certifyx509
+
+notBefore and notAfter are set driectly in the partialCertificate
+structure, and that is used to directly set the x509 structure.
+
+Signed-off-by: Ken Goldman <kgoldman@us.ibm.com>
+
+diff --git a/utils/certifyx509.c b/utils/certifyx509.c
+index ed42ac0..44640aa 100644
+--- a/utils/certifyx509.c
++++ b/utils/certifyx509.c
+@@ -204,6 +204,7 @@ int main(int argc, char *argv[])
+     setvbuf(stdout, 0, _IONBF, 0);      /* output may be going through pipe to log file */
+     TSS_SetProperty(NULL, TPM_TRACE_LEVEL, "1");
+ 
++    curveID = curveID;		/* no longer used, get from parent */
+     /* command line argument defaults */
+     for (i=1 ; (i<argc) && (rc == 0) ; i++) {
+ 	if (strcmp(argv[i],"-ho") == 0) {
+@@ -686,8 +687,6 @@ TPM_RC createPartialCertificate(TPM_PARTIAL_CERT *partialCertificate,	/* input /
+     X509_NAME 	*x509SubjectName = NULL;/* composite subject name, key/value pairs */
+     size_t	issuerEntriesSize = sizeof(issuerEntries)/sizeof(char *);
+     size_t	subjectEntriesSize = sizeof(subjectEntries)/sizeof(char *);
+-    ASN1_TIME 	*notBefore = NULL;
+-    ASN1_TIME 	*notAfter = NULL;
+     uint8_t 	*tmpPartialDer = NULL;	/* for the i2d */
+ 
+     /* add issuer */
+@@ -717,8 +716,6 @@ TPM_RC createPartialCertificate(TPM_PARTIAL_CERT *partialCertificate,	/* input /
+ 	}
+     }
+     if (rc == 0) {
+-	/* can't fail, just returns a structure member */
+-	notBefore = X509_get_notBefore(x509Certificate);
+ 	irc = X509_set1_notBefore(x509Certificate, partialCertificate->validity->notBefore);
+ 	if (irc == 0) {
+ 	    printf("createPartialCertificate: Error setting notBefore time\n");
+@@ -737,7 +734,6 @@ TPM_RC createPartialCertificate(TPM_PARTIAL_CERT *partialCertificate,	/* input /
+ 	}
+     }
+     if (rc == 0) {
+-	notAfter = X509_get_notAfter(x509Certificate);
+ 	irc = X509_set1_notAfter(x509Certificate,partialCertificate->validity->notAfter);
+ 	if (irc == 0) {
+ 	    printf("createPartialCertificate: Error setting notAfter time\n");
+-- 
+2.38.0
+

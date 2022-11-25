@@ -1,7 +1,7 @@
 #
 # spec file for package ibmtss
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,12 @@ URL:            https://sourceforge.net/projects/ibmtpm20tss
 Source:         https://sourceforge.net/projects/ibmtpm20tss/files/ibmtss%{version}.tar.gz
 Source1:        90-tpm-ibmtss.rules
 Patch1:         ibmtss-configure.ac-Do-not-disable-optimization-for-debug-b.patch
+Patch2:         ibmtss-regtests-Update-openssl-key-generation-for-3.0.0.patch
+Patch3:         ibmtss-utils-Update-certifyx509-for-Openssl-3.0.0.patch
+Patch4:         ibmtss-utils-Remove-unused-variables-from-certifyx509.patch
+Patch5:         ibmtss-tss-Port-HMAC-operations-to-openssl-3.0.patch
+Patch6:         ibmtss-utils-Port-to-openssl-3.0.0-replaces-RSA-with-EVP_PK.patch
+Patch7:         ibmtss-openssl3-deprecation.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  ibmswtpm2

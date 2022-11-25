@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Nov  9 13:33:51 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- Build with OpenSSL 3.0 deprecated functions until fixed upstream
+in the next version update [bsc#1205042]
+  * ibmtss-openssl3-deprecation.patch
+- Add upstream patches to fix build with OpenSSL 3.0
+  * ibmtss-regtests-Update-openssl-key-generation-for-3.0.0.patch
+  * ibmtss-utils-Update-certifyx509-for-Openssl-3.0.0.patch
+  * ibmtss-utils-Remove-unused-variables-from-certifyx509.patch
+  * ibmtss-tss-Port-HMAC-operations-to-openssl-3.0.patch
+  * ibmtss-utils-Port-to-openssl-3.0.0-replaces-RSA-with-EVP_PK.patch
+
+-------------------------------------------------------------------
 Thu Nov 25 11:48:53 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
 
 - Fix certificate list, run all tests.

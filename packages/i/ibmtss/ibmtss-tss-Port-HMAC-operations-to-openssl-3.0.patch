@@ -1,0 +1,237 @@
+From 6e22032d637ea8c28cf84efa837a22909873466a Mon Sep 17 00:00:00 2001
+From: Ken Goldman <kgold@linux.ibm.com>
+Date: Fri, 10 Sep 2021 16:33:10 -0400
+Subject: tss: Port HMAC operations to openssl 3.0
+
+Replace the deprecated APIs.
+
+Signed-off-by: Ken Goldman <kgold@linux.ibm.com>
+
+diff --git a/utils/tsscrypto.c b/utils/tsscrypto.c
+index 35f0ed3..c2ce01a 100644
+--- a/utils/tsscrypto.c
++++ b/utils/tsscrypto.c
+@@ -79,6 +79,7 @@ extern int tssVerbose;
+ 
+ /* local prototypes */
+ 
++static TPM_RC TSS_Hash_GetOsslString(const char **str, TPMI_ALG_HASH hashAlg);
+ static TPM_RC TSS_Hash_GetMd(const EVP_MD **md,
+ 			     TPMI_ALG_HASH hashAlg);
+ 
+@@ -129,36 +130,51 @@ TPM_RC TSS_Crypto_Init(void)
+   Digests
+ */
+ 
+-static TPM_RC TSS_Hash_GetMd(const EVP_MD **md,
+-			     TPMI_ALG_HASH hashAlg)
++/* TSS_Hash_GetString() maps from the TCG hash algorithm to the OpenSSL string */
++
++static TPM_RC TSS_Hash_GetOsslString(const char **str, TPMI_ALG_HASH hashAlg)
+ {
+-    TPM_RC		rc = 0;
++    TPM_RC	rc = 0;
+ 
+-    if (rc == 0) {
+-	switch (hashAlg) {
++    switch (hashAlg) {
+ #ifdef TPM_ALG_SHA1
+-	  case TPM_ALG_SHA1:
+-	    *md = EVP_get_digestbyname("sha1");
+-	    break;
++      case TPM_ALG_SHA1:
++	*str = "sha1";
++	break;
+ #endif
+-#ifdef TPM_ALG_SHA256	
+-	  case TPM_ALG_SHA256:
+-	    *md = EVP_get_digestbyname("sha256");
+-	    break;
++#ifdef TPM_ALG_SHA256
++      case TPM_ALG_SHA256:
++	*str = "sha256";
++	break;
+ #endif
+ #ifdef TPM_ALG_SHA384
+-	  case 	TPM_ALG_SHA384:
+-	    *md = EVP_get_digestbyname("sha384");
+-	    break;
++      case TPM_ALG_SHA384:
++	*str = "sha384";
++	break;
+ #endif
+ #ifdef TPM_ALG_SHA512
+-	  case 	TPM_ALG_SHA512:
+-	    *md = EVP_get_digestbyname("sha512");
+-	    break;
++      case TPM_ALG_SHA512:
++	*str = "sha512";
++	break;
+ #endif
+-	  default:
+-	    rc = TSS_RC_BAD_HASH_ALGORITHM;
+-	}
++      default:
++	*str = NULL;
++	rc = TSS_RC_BAD_HASH_ALGORITHM;
++    }
++    return rc;
++}
++
++static TPM_RC TSS_Hash_GetMd(const EVP_MD **md,
++			     TPMI_ALG_HASH hashAlg)
++{
++    TPM_RC		rc = 0;
++    const char 		*str = NULL; 
++
++    if (rc == 0) {
++	rc =  TSS_Hash_GetOsslString(&str, hashAlg);
++    }
++    if (rc == 0) {
++	*md = EVP_get_digestbyname(str);
+     }
+     return rc;
+ }
+@@ -175,37 +191,84 @@ TPM_RC TSS_HMAC_Generate_valist(TPMT_HA *digest,		/* largest size of a digest */
+     TPM_RC		rc = 0;
+     int 		irc = 0;
+     int			done = FALSE;
+-    const EVP_MD 	*md;	/* message digest method */
+-#if OPENSSL_VERSION_NUMBER < 0x10100000
++    uint8_t 		*buffer;	/* segment to hash */
++    int			length;		/* segment to hash */
++#if OPENSSL_VERSION_NUMBER < 0x10100000	
+     HMAC_CTX 		ctx;
++    const EVP_MD 	*md = NULL;	/* message digest method */
++#elif OPENSSL_VERSION_NUMBER < 0x30000000
++    HMAC_CTX 		*ctx = NULL;
++    const EVP_MD 	*md = NULL;	/* message digest method */
+ #else
+-    HMAC_CTX 		*ctx;
++    EVP_MAC 		*mac = NULL;
++    EVP_MAC_CTX 	*ctx = NULL;
++    const char 		*algString = NULL;
++    OSSL_PARAM 		params[2];
++    size_t		outLength;
+ #endif
+-    int			length;
+-    uint8_t 		*buffer;
+-    
++
++    /* initialize the HMAC context */
+ #if OPENSSL_VERSION_NUMBER < 0x10100000
+     HMAC_CTX_init(&ctx);
++#elif OPENSSL_VERSION_NUMBER < 0x30000000
++    if (rc == 0) {
++	ctx = HMAC_CTX_new();
++	if (ctx == NULL) {
++	    if (tssVerbose) printf("TSS_Hash_Generate_valist: HMAC_CTX_new failed\n");
++	    rc = TSS_RC_OUT_OF_MEMORY;
++	}
++    }
+ #else
+-    ctx = HMAC_CTX_new();
++    if (rc == 0) {
++	mac = EVP_MAC_fetch(NULL, "hmac", NULL);
++	if (mac == NULL) {
++	    if (tssVerbose) printf("TSS_Hash_Generate_valist: EVP_MAC_new failed\n");
++	    rc = TSS_RC_OUT_OF_MEMORY;
++	}
++    }
++    if (rc == 0) {
++	ctx = EVP_MAC_CTX_new(mac);
++	if (ctx == NULL) {
++	    if (tssVerbose) printf("TSS_Hash_Generate_valist: EVP_MAC_CTX_new failed\n");
++	    rc = TSS_RC_OUT_OF_MEMORY;
++	}
++    }
+ #endif
++
++    /* get the message digest */
++#if OPENSSL_VERSION_NUMBER < 0x30000000
+     if (rc == 0) {
+ 	rc = TSS_Hash_GetMd(&md, digest->hashAlg);
+     }
++#else
++    /* map algorithm to string */
++    if (rc == 0) {
++	rc =  TSS_Hash_GetOsslString(&algString, digest->hashAlg);
++    }
++#endif
++
++    /* initialize the MAC context */
+     if (rc == 0) {
+ #if OPENSSL_VERSION_NUMBER < 0x10100000
+ 	irc = HMAC_Init_ex(&ctx,
+ 			   hmacKey->b.buffer, hmacKey->b.size,	/* HMAC key */
+ 			   md,					/* message digest method */
+ 			   NULL);
+-#else
++#elif OPENSSL_VERSION_NUMBER < 0x30000000
+ 	irc = HMAC_Init_ex(ctx,
+ 			   hmacKey->b.buffer, hmacKey->b.size,	/* HMAC key */
+ 			   md,					/* message digest method */
+ 			   NULL);
++#else
++	params[0] = OSSL_PARAM_construct_utf8_string("digest", (char *)algString, 0);
++	params[1] = OSSL_PARAM_construct_end();
++	irc = EVP_MAC_init(ctx,
++			   hmacKey->b.buffer, hmacKey->b.size,	/* HMAC key */
++			   params);				/* message digest method */
+ #endif
+-	
+-	if (irc == 0) {
++
++	if (irc != 1) {
++	    if (tssVerbose) printf("TSS_HMAC_Generate: HMAC Init failed\n");
+ 	    rc = TSS_RC_HMAC;
+ 	}
+     }
+@@ -220,11 +283,13 @@ TPM_RC TSS_HMAC_Generate_valist(TPMT_HA *digest,		/* largest size of a digest */
+ 	    else {
+ #if OPENSSL_VERSION_NUMBER < 0x10100000
+ 		irc = HMAC_Update(&ctx, buffer, length);
+-#else
++#elif OPENSSL_VERSION_NUMBER < 0x30000000
+ 		irc = HMAC_Update(ctx, buffer, length);
++#else
++		irc = EVP_MAC_update(ctx, buffer, length);
+ #endif
+-		if (irc == 0) {
+-		    if (tssVerbose) printf("TSS_HMAC_Generate: HMAC_Update failed\n");
++		if (irc != 1) {
++		    if (tssVerbose) printf("TSS_HMAC_Generate: HMAC Update failed\n");
+ 		    rc = TSS_RC_HMAC;
+ 		}
+ 	    }
+@@ -237,18 +302,24 @@ TPM_RC TSS_HMAC_Generate_valist(TPMT_HA *digest,		/* largest size of a digest */
+     if (rc == 0) {
+ #if OPENSSL_VERSION_NUMBER < 0x10100000
+ 	irc = HMAC_Final(&ctx, (uint8_t *)&digest->digest, NULL);
+-#else
++#elif OPENSSL_VERSION_NUMBER < 0x30000000
+ 	irc = HMAC_Final(ctx, (uint8_t *)&digest->digest, NULL);
++#else
++	irc = EVP_MAC_final(ctx, (uint8_t *)&digest->digest,  &outLength, sizeof(digest->digest));
+ #endif
+ 	if (irc == 0) {
++	    if (tssVerbose) printf("TSS_HMAC_Generate: HMAC Final failed\n");
+ 	    rc = TSS_RC_HMAC;
+ 	}
+     }
+ #if OPENSSL_VERSION_NUMBER < 0x10100000
+     HMAC_CTX_cleanup(&ctx);
+-#else
++#elif OPENSSL_VERSION_NUMBER < 0x30000000
+     HMAC_CTX_free(ctx);
+-#endif
++#else
++    EVP_MAC_CTX_free(ctx);
++    EVP_MAC_free(mac);
++ #endif
+     return rc;
+ }
+ 
+-- 
+2.38.0
+

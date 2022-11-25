@@ -1,0 +1,453 @@
+From f1c6b44f95392c156b235d42bccc8235ee24bb6f Mon Sep 17 00:00:00 2001
+From: Ken Goldman <kgoldman@us.ibm.com>
+Date: Wed, 11 Aug 2021 18:22:41 -0400
+Subject: regtests: Update openssl key generation for 3.0.0
+
+OpenSSL 3.0.0 used a different pem and der key format.  Update the
+command line calls.  Bypass the tests that use these functions for
+mbedtls, which does not support the new format.
+
+Signed-off-by: Ken Goldman <kgoldman@us.ibm.com>
+
+diff --git a/utils/regtests/testdup.sh b/utils/regtests/testdup.sh
+index eeca02f..e849e44 100755
+--- a/utils/regtests/testdup.sh
++++ b/utils/regtests/testdup.sh
+@@ -7,7 +7,7 @@
+ #			     Written by Ken Goldman				#
+ #		       IBM Thomas J. Watson Research Center			#
+ #										#
+-# (c) Copyright IBM Corporation 2015 - 2020					#
++# (c) Copyright IBM Corporation 2015 - 2021					#
+ # 										#
+ # All rights reserved.								#
+ # 										#
+@@ -215,7 +215,12 @@ echo ""
+ 
+ if   [ ${CRYPTOLIBRARY} == "openssl" ]; then
+     echo "generate the RSA signing key with openssl"
+-    openssl genrsa -out tmpprivkey.pem -aes256 -passout pass:rrrr 2048 > run.out 2>&1
++
++    openssl genpkey -out tmpprivkey.pem -outform pem -aes-256-cbc -algorithm rsa -pkeyopt rsa_keygen_bits:2048 -pass pass:rrrr > run.out 2>&1
++
++# The following worked up to Openssl 3.0.0.  The key generation
++# remains here for when mbedtls is updated, but the tests are now
++# if'ed out
+ 
+ elif [ ${CRYPTOLIBRARY} == "mbedtls" ]; then
+     echo "Generate the RSA signing  key with openssl"
+@@ -232,22 +237,24 @@ else
+     exit 255
+ fi
+ 
+-echo "load the ECC storage key 80000001"
+-${PREFIX}load -hp 80000000 -pwdp sto -ipr storeeccnistp256priv.bin -ipu storeeccnistp256pub.bin > run.out
+-checkSuccess $?
++if   [ ${CRYPTOLIBRARY} == "openssl" ]; then
+ 
+-echo "Start an HMAC auth session"
+-${PREFIX}startauthsession -se h > run.out
+-checkSuccess $?
++    echo "load the ECC storage key 80000001"
++    ${PREFIX}load -hp 80000000 -pwdp sto -ipr storeeccnistp256priv.bin -ipu storeeccnistp256pub.bin > run.out
++    checkSuccess $?
+ 
+-for SESS in "" "-se0 02000000 1"
+-do
+-    for HALG in ${ITERATE_ALGS}
+-    do
++    echo "Start an HMAC auth session"
++    ${PREFIX}startauthsession -se h > run.out
++    checkSuccess $?
+ 
+-	for PARENT in 80000000 80000001
++    for SESS in "" "-se0 02000000 1"
++    do
++	for HALG in ${ITERATE_ALGS}
+ 	do
+ 
++	    for PARENT in 80000000 80000001
++	    do
++
+ 		echo "Import the signing key under the parent key ${PARENT} ${HALG}"
+ 		${PREFIX}importpem -hp ${PARENT} -pwdp sto -ipem tmpprivkey.pem -pwdk rrrr -opu tmppub.bin -opr tmppriv.bin -halg ${HALG} > run.out
+ 		checkSuccess $?
+@@ -268,9 +275,10 @@ do
+ 		${PREFIX}flushcontext -ha 80000002 > run.out
+ 		checkSuccess $?
+ 
++	    done
+ 	done
+     done
+-done
++fi
+ 
+ echo ""
+ echo "Import PEM EC signing key under RSA and ECC storage key"
+@@ -300,49 +308,53 @@ else
+     exit 255
+ fi
+ 
+-for CURVE in "nistp256" "nistp384"
+-do
+-    
+-    for SESS in "" "-se0 02000000 1"
++if   [ ${CRYPTOLIBRARY} == "openssl" ]; then
++
++    for CURVE in "nistp256" "nistp384"
+     do
+-	for HALG in ${ITERATE_ALGS}
+-	do
+ 
+-	    for PARENT in 80000000 80000001
++	for SESS in "" "-se0 02000000 1"
++	do
++	    for HALG in ${ITERATE_ALGS}
+ 	    do
+ 
+-		echo "Import the ${CURVE} signing key under the parent key ${PARENT} ${HALG}"
+-		${PREFIX}importpem -hp ${PARENT} -pwdp sto -ipem tmpec${CURVE}privkey.pem -ecc -pwdk rrrr -opu tmppub.bin -opr tmppriv.bin -halg ${HALG} > run.out
+-		checkSuccess $?
++		for PARENT in 80000000 80000001
++		do
+ 
+-		echo "Load the TPM signing key"
+-		${PREFIX}load -hp ${PARENT} -pwdp sto -ipu tmppub.bin -ipr tmppriv.bin > run.out
+-		checkSuccess $?
++		    echo "Import the ${CURVE} signing key under the parent key ${PARENT} ${HALG}"
++		    ${PREFIX}importpem -hp ${PARENT} -pwdp sto -ipem tmpec${CURVE}privkey.pem -ecc -pwdk rrrr -opu tmppub.bin -opr tmppriv.bin -halg ${HALG} > run.out
++		    checkSuccess $?
+ 
+-		echo "Sign the message ${HALG} ${SESS}"
+-		${PREFIX}sign -hk 80000002 -salg ecc -pwdk rrrr -if policies/aaa -os tmpsig.bin -halg ${HALG} ${SESS} > run.out
+-		checkSuccess $?
++		    echo "Load the TPM signing key"
++		    ${PREFIX}load -hp ${PARENT} -pwdp sto -ipu tmppub.bin -ipr tmppriv.bin > run.out
++		    checkSuccess $?
+ 
+-		echo "Verify the signature ${HALG}"
+-		${PREFIX}verifysignature -hk 80000002 -ecc -if policies/aaa -is tmpsig.bin -halg ${HALG} > run.out
+-		checkSuccess $?
++		    echo "Sign the message ${HALG} ${SESS}"
++		    ${PREFIX}sign -hk 80000002 -salg ecc -pwdk rrrr -if policies/aaa -os tmpsig.bin -halg ${HALG} ${SESS} > run.out
++		    checkSuccess $?
+ 
+-		echo "Flush the signing key"
+-		${PREFIX}flushcontext -ha 80000002 > run.out
+-		checkSuccess $?
++		    echo "Verify the signature ${HALG}"
++		    ${PREFIX}verifysignature -hk 80000002 -ecc -if policies/aaa -is tmpsig.bin -halg ${HALG} > run.out
++		    checkSuccess $?
+ 
++		    echo "Flush the signing key"
++		    ${PREFIX}flushcontext -ha 80000002 > run.out
++		    checkSuccess $?
++
++		done
+ 	    done
+ 	done
+     done
+-done
+ 
+-echo "Flush the ECC storage key"
+-${PREFIX}flushcontext -ha 80000001 > run.out
+-checkSuccess $?
++    echo "Flush the ECC storage key"
++    ${PREFIX}flushcontext -ha 80000001 > run.out
++    checkSuccess $?
+ 
+-echo "Flush the auth session"
+-${PREFIX}flushcontext -ha 02000000 > run.out
+-checkSuccess $?
++    echo "Flush the auth session"
++    ${PREFIX}flushcontext -ha 02000000 > run.out
++    checkSuccess $?
++
++fi
+ 
+ echo ""
+ echo "Rewrap"
+diff --git a/utils/regtests/testrsa.sh b/utils/regtests/testrsa.sh
+index 4f76522..5ae0b29 100755
+--- a/utils/regtests/testrsa.sh
++++ b/utils/regtests/testrsa.sh
+@@ -7,7 +7,7 @@
+ #			     Written by Ken Goldman				#
+ #		       IBM Thomas J. Watson Research Center			#
+ #										#
+-# (c) Copyright IBM Corporation 2015 - 2020					#
++# (c) Copyright IBM Corporation 2015 - 2021					#
+ # 										#
+ # All rights reserved.								#
+ # 										#
+@@ -59,20 +59,25 @@ if   [ ${CRYPTOLIBRARY} == "openssl" ]; then
+     do
+ 
+ 	echo "Generate the RSA $BITS encryption key with openssl"
+-	openssl genrsa -out tmpkeypairrsa${BITS}.pem -aes256 -passout pass:rrrr ${BITS} > run.out 2>&1
++	openssl genpkey -out tmpkeypairrsa${BITS}.pem -outform pem -aes-256-cbc -algorithm rsa -pkeyopt rsa_keygen_bits:${BITS} -pass pass:rrrr > run.out 2>&1
+ 
+ 	echo "Convert key pair to plaintext DER format"
+-	openssl rsa -inform pem -outform der -in tmpkeypairrsa${BITS}.pem -out tmpkeypairrsa${BITS}.der -passin pass:rrrr > run.out 2>&1
++	openssl pkey -inform pem -in tmpkeypairrsa${BITS}.pem -outform der -out tmpkeypairrsa${BITS}.der -passin pass:rrrr > run.out 2>&1
+ 
+     done
+ 
++
++# The following worked up to Openssl 3.0.0.  The key generation
++# remains here for when mbedtls is updated, but the tests are now
++# if'ed out
++
+ elif [ ${CRYPTOLIBRARY} == "mbedtls" ]; then
+ 
+     for BITS in 2048 3072
+     do
+ 
+ 	echo "Generate the RSA $BITS encryption key with openssl"
+-	openssl genrsa -out tmpkeypairrsaenc${BITS}.pem -aes256 -passout pass:rrrr ${BITS} > run.out 2>&1
++	openssl genrsa -out tmpkeypairrsaenc${BITS}.pem -outform pem -aes-256-cbc -algorithm rsa -pkeyopt rsa_keygen_bits:${BITS} -pass:rrrr > run.out 2>&1
+ 
+ 	echo "Convert RSA $BITS key pair to plaintext DER format"
+ 	openssl rsa -in tmpkeypairrsaenc${BITS}.pem -passin pass:rrrr -outform der -out tmpkeypairrsa${BITS}.der > run.out 2>&1
+@@ -158,20 +163,22 @@ do
+ 
+ done
+ 
+-echo ""
+-echo "Import PEM RSA encryption key"
+-echo ""
++if   [ ${CRYPTOLIBRARY} == "openssl" ]; then
+ 
+-echo "Start an HMAC auth session"
+-${PREFIX}startauthsession -se h > run.out
+-checkSuccess $?
++    echo ""
++    echo "Import PEM RSA encryption key"
++    echo ""
+ 
+-for BITS in 2048 3072
+-do
++    echo "Start an HMAC auth session"
++    ${PREFIX}startauthsession -se h > run.out
++    checkSuccess $?
+ 
+-    for SESS in "" "-se0 02000000 1"
++    for BITS in 2048 3072
+     do
+ 
++	for SESS in "" "-se0 02000000 1"
++	do
++
+ 	echo "Import the $BITS encryption key under the primary key"
+ 	${PREFIX}importpem -hp 80000000 -den -pwdp sto -ipem tmpkeypairrsa${BITS}.pem -pwdk rrrr -opu tmppub.bin -opr tmppriv.bin > run.out
+ 	checkSuccess $?
+@@ -201,97 +208,98 @@ do
+ 	${PREFIX}flushcontext -ha 80000001 > run.out
+ 	checkSuccess $?
+ 
++	done
++
+     done
+ 
+-done
++    echo "Flush the session"
++    ${PREFIX}flushcontext -ha 02000000 > run.out
++    checkSuccess $?
+ 
+-echo "Flush the session"
+-${PREFIX}flushcontext -ha 02000000 > run.out
+-checkSuccess $?
++    echo ""
++    echo "Import PEM RSA encryption key userWithAuth test"
++    echo ""
+ 
+-echo ""
+-echo "Import PEM RSA encryption key userWithAuth test"
+-echo ""
++    echo "Import the RSA 2048 encryption key under the primary key 80000000"
++    ${PREFIX}importpem -hp 80000000 -den -pwdp sto -ipem tmpkeypairrsa2048.pem -pwdk rrrr -opu tmppub.bin -opr tmppriv.bin > run.out
++    checkSuccess $?
+ 
+-echo "Import the RSA 2048 encryption key under the primary key 80000000"
+-${PREFIX}importpem -hp 80000000 -den -pwdp sto -ipem tmpkeypairrsa2048.pem -pwdk rrrr -opu tmppub.bin -opr tmppriv.bin > run.out
+-checkSuccess $?
++    echo "Load the RSA 2048 encryption key 80000001"
++    ${PREFIX}load -hp 80000000 -pwdp sto -ipu tmppub.bin -ipr tmppriv.bin > run.out
++    checkSuccess $?
+ 
+-echo "Load the RSA 2048 encryption key 80000001"
+-${PREFIX}load -hp 80000000 -pwdp sto -ipu tmppub.bin -ipr tmppriv.bin > run.out
+-checkSuccess $?
++    echo "RSA encrypt with the encryption key"
++    ${PREFIX}rsaencrypt -hk 80000001 -id policies/aaa -oe enc.bin > run.out
++    checkSuccess $?
+ 
+-echo "RSA encrypt with the encryption key"
+-${PREFIX}rsaencrypt -hk 80000001 -id policies/aaa -oe enc.bin > run.out
+-checkSuccess $?
++    echo "RSA decrypt with the decryption key and password"
++    ${PREFIX}rsadecrypt -hk 80000001 -pwdk rrrr -ie enc.bin -od dec.bin > run.out
++    checkSuccess $?
+ 
+-echo "RSA decrypt with the decryption key and password"
+-${PREFIX}rsadecrypt -hk 80000001 -pwdk rrrr -ie enc.bin -od dec.bin > run.out
+-checkSuccess $?
++    echo "Flush the encryption key"
++    ${PREFIX}flushcontext -ha 80000001 > run.out
++    checkSuccess $?
+ 
+-echo "Flush the encryption key"
+-${PREFIX}flushcontext -ha 80000001 > run.out
+-checkSuccess $?
++    echo "Import the RSA 2048 encryption key under the primary key, userWithAuth false"
++    ${PREFIX}importpem -hp 80000000 -si -pwdp sto -ipem tmpkeypairrsa2048.pem -pwdk rrrr -uwa -opu tmppub.bin -opr tmppriv.bin > run.out
++    checkSuccess $?
+ 
+-echo "Import the RSA 2048 encryption key under the primary key, userWithAuth false"
+-${PREFIX}importpem -hp 80000000 -si -pwdp sto -ipem tmpkeypairrsa2048.pem -pwdk rrrr -uwa -opu tmppub.bin -opr tmppriv.bin > run.out
+-checkSuccess $?
++    echo "Load the RSA 2048 encryption key"
++    ${PREFIX}load -hp 80000000 -pwdp sto -ipu tmppub.bin -ipr tmppriv.bin > run.out
++    checkSuccess $?
+ 
+-echo "Load the RSA 2048 encryption key"
+-${PREFIX}load -hp 80000000 -pwdp sto -ipu tmppub.bin -ipr tmppriv.bin > run.out
+-checkSuccess $?
++    echo "RSA decrypt with the decryption key and password - should fail"
++    ${PREFIX}rsadecrypt -hk 80000001 -pwdk rrrr -ie enc.bin -od dec.bin > run.out
++    checkFailure $?
+ 
+-echo "RSA decrypt with the decryption key and password - should fail"
+-${PREFIX}rsadecrypt -hk 80000001 -pwdk rrrr -ie enc.bin -od dec.bin > run.out
+-checkFailure $?
++    echo "Flush the encryption key"
++    ${PREFIX}flushcontext -ha 80000001 > run.out
++    checkSuccess $?
+ 
+-echo "Flush the encryption key"
+-${PREFIX}flushcontext -ha 80000001 > run.out
+-checkSuccess $?
++    echo ""
++    echo "Loadexternal DER encryption key"
++    echo ""
+ 
++    for BITS in 2048 3072
++    do
+ 
+-echo ""
+-echo "Loadexternal DER encryption key"
+-echo ""
++	echo "Start an HMAC auth session"
++	${PREFIX}startauthsession -se h > run.out
++	checkSuccess $?
+ 
+-for BITS in 2048 3072
+-do
++	for SESS in "" "-se0 02000000 1"
++	do
+ 
+-    echo "Start an HMAC auth session"
+-    ${PREFIX}startauthsession -se h > run.out
+-    checkSuccess $?
++	    echo "Load the openssl key pair in the NULL hierarchy 80000001"
++	    ${PREFIX}loadexternal -den -ider tmpkeypairrsa${BITS}.der -pwdk rrrr > run.out
++	    checkSuccess $?
+ 
+-    for SESS in "" "-se0 02000000 1"
+-    do
++	    echo "RSA encrypt with the encryption key"
++	    ${PREFIX}rsaencrypt -hk 80000001 -id policies/aaa -oe enc.bin > run.out
++	    checkSuccess $?
+ 
+-	echo "Load the openssl key pair in the NULL hierarchy 80000001"
+-	${PREFIX}loadexternal -den -ider tmpkeypairrsa${BITS}.der -pwdk rrrr > run.out
+-	checkSuccess $?
++	    echo "RSA decrypt with the decryption key ${SESS}"
++	    ${PREFIX}rsadecrypt -hk 80000001 -pwdk rrrr -ie enc.bin -od dec.bin ${SESS} > run.out
++	    checkSuccess $?
+ 
+-	echo "RSA encrypt with the encryption key"
+-	${PREFIX}rsaencrypt -hk 80000001 -id policies/aaa -oe enc.bin > run.out
+-	checkSuccess $?
++	    echo "Verify the decrypt result"
++	    tail -c 3 dec.bin > tmp.bin
++	    diff policies/aaa tmp.bin > run.out
++	    checkSuccess $?
+ 
+-	echo "RSA decrypt with the decryption key ${SESS}"
+-	${PREFIX}rsadecrypt -hk 80000001 -pwdk rrrr -ie enc.bin -od dec.bin ${SESS} > run.out
+-	checkSuccess $?
++	    echo "Flush the encryption key"
++	    ${PREFIX}flushcontext -ha 80000001 > run.out
++	    checkSuccess $?
+ 
+-	echo "Verify the decrypt result"
+-	tail -c 3 dec.bin > tmp.bin
+-	diff policies/aaa tmp.bin > run.out
+-	checkSuccess $?
++    done
+ 
+-	echo "Flush the encryption key"
+-	${PREFIX}flushcontext -ha 80000001 > run.out
++	echo "Flush the session"
++	${PREFIX}flushcontext -ha 02000000 > run.out
+ 	checkSuccess $?
+ 
+     done
+ 
+-    echo "Flush the session"
+-    ${PREFIX}flushcontext -ha 02000000 > run.out
+-    checkSuccess $?
+-
+-done
++fi
+ 
+ echo ""
+ echo "Encrypt with OpenSSL OAEP, decrypt with TPM"
+diff --git a/utils/regtests/testsalt.sh b/utils/regtests/testsalt.sh
+index 1bdc1a7..e0c3376 100755
+--- a/utils/regtests/testsalt.sh
++++ b/utils/regtests/testsalt.sh
+@@ -91,16 +91,17 @@ echo ""
+ echo "Salt Session - Load External"
+ echo ""
+ 
+-echo "Create RSA and ECC key pairs in PEM format using openssl"
++echo "Create RSA key pair in DER format using openssl"
+   
+-openssl genrsa -out tmpkeypairrsa.pem -aes256 -passout pass:rrrr 2048 > run.out 2>&1
+-openssl ecparam -name prime256v1 -genkey -noout -out tmpkeypairecc.pem > run.out 2>&1
++openssl genpkey -out tmpkeypairrsa.der -outform der -aes-256-cbc -algorithm rsa -pkeyopt rsa_keygen_bits:2048 -pass pass:rrrr > run.out 2>&1
+ 
++echo "Create ECC key pair in PEM format using openssl"
+ echo "Convert key pair to plaintext DER format"
+ 
+-openssl rsa -inform pem -outform der -in tmpkeypairrsa.pem -out tmpkeypairrsa.der -passin pass:rrrr > run.out 2>&1
++openssl ecparam -name prime256v1 -genkey -noout -out tmpkeypairecc.pem > run.out 2>&1
+ openssl ec -inform pem -outform der -in tmpkeypairecc.pem -out tmpkeypairecc.der -passin pass:rrrr > run.out 2>&1
+ 
++
+ for HALG in ${ITERATE_ALGS}
+ do
+ 
+diff --git a/utils/regtests/testsign.sh b/utils/regtests/testsign.sh
+index edfa014..3002ceb 100755
+--- a/utils/regtests/testsign.sh
++++ b/utils/regtests/testsign.sh
+@@ -47,11 +47,9 @@ echo ""
+ for BITS in 2048 3072
+ do
+ 
+-    echo "Create an RSA $BITS key pair in PEM format using openssl"
+-    openssl genrsa -out tmpkeypairrsa${BITS}.pem -aes256 -passout pass:rrrr 2048 > run.out 2>&1
++    echo "Create an RSA $BITS key pair in DER format using openssl"
+ 
+-    echo "Convert RSA $BITS key pair to plaintext DER format"
+-    openssl rsa -inform pem -outform der -in tmpkeypairrsa${BITS}.pem -out tmpkeypairrsa${BITS}.der -passin pass:rrrr > run.out 2>&1
++    openssl genpkey -out tmpkeypairrsa${BITS}.der -outform der -aes-256-cbc -algorithm rsa -pkeyopt rsa_keygen_bits:${BITS} -pass pass:rrrr > run.out 2>&1
+ 
+     echo "Load the RSA $BITS signing key under the primary key"
+     ${PREFIX}load -hp 80000000 -ipr signrsa${BITS}priv.bin -ipu signrsa${BITS}pub.bin -pwdp sto > run.out
+-- 
+2.38.0
+

@@ -1,0 +1,26 @@
+Index: ibmtss-1.6.0/build.sh
+===================================================================
+--- ibmtss-1.6.0.orig/build.sh
++++ ibmtss-1.6.0/build.sh
+@@ -13,7 +13,7 @@ cleanup() {
+ }
+ 
+ CC="${CC:-gcc}"
+-CFLAGS="${CFLAGS:--Wformat -Werror=format-security -Werror=implicit-function-declaration -Werror=return-type -fno-common}"
++CFLAGS="${CFLAGS:--Wformat -Werror=format-security -Werror=implicit-function-declaration -Werror=return-type -fno-common -Wno-error=deprecated-declarations}"
+ PREFIX="${PREFIX:-$HOME/tpm2}"
+ 
+ export LD_LIBRARY_PATH="$PREFIX/lib64:$PREFIX/lib:/usr/local/lib64:/usr/local/lib"
+Index: ibmtss-1.6.0/configure.ac
+===================================================================
+--- ibmtss-1.6.0.orig/configure.ac
++++ ibmtss-1.6.0/configure.ac
+@@ -71,7 +71,7 @@ AC_ARG_ENABLE(debug,
+ 
+ # Linux requires -DTPM_POSIX
+ case $host_os in
+-       linux-*)        CFLAGS="-DTPM_POSIX $CFLAGS" ;;
++       linux-*)        CFLAGS="-DTPM_POSIX $CFLAGS -Wno-error=deprecated-declarations" ;;
+ esac
+ 
+ AC_ARG_ENABLE(tpm-2.0,
