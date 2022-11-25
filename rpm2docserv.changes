@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 25 08:52:48 UTC 2022 - kukuk@suse.com
+
+- Update to version 20221125.be8d83b:
+  * Split sitemap.xml into chunks, use yaml config
+
+-------------------------------------------------------------------
 Mon Nov 21 14:41:46 UTC 2022 - kukuk@suse.com
 
 - Update to version 20221121.c1d43dd:
