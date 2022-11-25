@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov 23 09:03:45 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.64.1:
+  + Target python 3.10 as the mypy language version.
+  + hotdoc module: use less confusing names.
+  + Fix deprecation message, the function name is fs.copyfile().
+  + fix deprecated use of meson builddir/ in testsuite.
+  + tests: fix edge case where non-default python is used, by
+    skipping it.
+
+-------------------------------------------------------------------
 Mon Nov 21 12:51:47 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.64.0:
