@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 24 11:57:02 UTC 2022 - Axel Braun <axel.braun@gmx.de>
+
+- proj version 9 breaks TW build
+  proj9.diff added
+
+-------------------------------------------------------------------
 Tue Jun  7 11:00:38 UTC 2022 - Axel Braun <axel.braun@gmx.de>
 
 - adapted libjpeg24.diff to cope with openjpeg 2.5

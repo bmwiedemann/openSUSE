@@ -32,6 +32,7 @@ Patch0:         QPainter.patch
 Patch1:         libjpeg24.diff
 Patch2:         proj8.diff
 Patch3:         projection.diff
+Patch4:         proj9.diff
 BuildRequires:  cmake
 BuildRequires:  libnova-devel
 BuildRequires:  libpng-devel
@@ -68,7 +69,12 @@ found on OpenSkiron.org.
 %patch1 -p1
 cp %{S:1} %{S:2} .
 
+#check for Leap version = 15.4
+%if 0%{?sle_version} == 150400 && 0%{?is_opensuse}
 %patch2 -p1
+%else
+%patch4 -p1
+%endif
 %patch3 -p1
 
 %build
