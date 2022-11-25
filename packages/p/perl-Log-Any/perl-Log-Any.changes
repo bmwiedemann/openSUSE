@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Nov 23 03:06:37 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.711
+   see /usr/share/doc/packages/perl-Log-Any/Changes
+
+  1.711     2022-11-22 11:28:01-06:00 America/Chicago
+
+    [Fixed]
+
+    - Fixed proxy not exposing 'category' attribute (#86). Thanks
+      @andrew-grechkin!
+    - Fixed not being able to get a proxy for the "root" category (empty
+      string) (#90). Thanks @XSven!
+
+-------------------------------------------------------------------
 Tue Aug  3 03:07:25 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.710
