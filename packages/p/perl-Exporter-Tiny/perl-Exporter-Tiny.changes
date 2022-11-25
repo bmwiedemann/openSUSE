@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Nov 22 03:06:27 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.006000
+   see /usr/share/doc/packages/perl-Exporter-Tiny/Changes
+
+  1.006000	2022-11-21
+   [ Packaging ]
+   - Stable version number.
+  1.005_000	2022-10-17
+   - Introduced lexical exporter support on Perl 5.11.2+ using the
+     Lexical::Var module.
+   - Refactored the Perl 5.37.2+ lexical exporter support.
+
+-------------------------------------------------------------------
 Sun Oct 16 03:06:14 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.004004

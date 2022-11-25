@@ -18,7 +18,7 @@
 
 %define cpan_name Exporter-Tiny
 Name:           perl-Exporter-Tiny
-Version:        1.004004
+Version:        1.006000
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        An exporter with the features of Sub::Exporter but only core dependencies
