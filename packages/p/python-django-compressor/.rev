@@ -57,4 +57,15 @@
     <comment></comment>
     <requestid>993153</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>b6423fa6879e337d6738874e9f5b54c5</srcmd5>
+    <version>4.1</version>
+    <time>1669378338</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix tests problem related to jinja2 version
+  # gh#django-compressor/django-compressor#1139
+  # gh#django-compressor/django-compressor@bcdd21956a84
+</comment>
+    <requestid>1037971</requestid>
+  </revision>
 </revisionlist>

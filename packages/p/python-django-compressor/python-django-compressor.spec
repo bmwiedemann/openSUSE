@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define mod_name django_compressor
 %define skip_python2 1
 Name:           python-django-compressor
@@ -66,6 +65,10 @@ template tag.
 %prep
 %setup -q -n %{mod_name}-%{version}
 sed -i '1{/env python/d}' compressor/tests/precompiler.py
+# Fix broken tests related to jijna2
+# gh#django-compressor/django-compressor#1139
+# gh#django-compressor/django-compressor@bcdd21956a84
+sed -i '/jinja2.ext.with_/d' compressor/tests/test_offline.py
 
 %build
 %python_build

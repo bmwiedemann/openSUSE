@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 24 18:26:17 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Fix tests problem related to jinja2 version
+  # gh#django-compressor/django-compressor#1139
+  # gh#django-compressor/django-compressor@bcdd21956a84
+
+-------------------------------------------------------------------
 Thu Aug  4 17:45:11 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 4.1
