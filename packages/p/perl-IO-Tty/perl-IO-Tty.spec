@@ -1,7 +1,7 @@
 #
 # spec file for package perl-IO-Tty
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name IO-Tty
 Name:           perl-IO-Tty
-Version:        1.16
+Version:        1.17
 Release:        0
-Summary:        Low-level allocate a pseudo-Tty, import constants
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Pseudo ttys and constants
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/T/TO/TODDR/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
@@ -61,6 +61,7 @@ Thanks!
 
 %prep
 %autosetup  -n %{cpan_name}-%{version}
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"

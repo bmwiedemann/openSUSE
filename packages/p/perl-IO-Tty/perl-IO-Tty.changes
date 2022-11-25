@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Nov 12 03:06:39 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.17
+   see /usr/share/doc/packages/perl-IO-Tty/ChangeLog
+
+  1.17 2022-11-11 Todd Rinaldo <toddr@cpan.org>
+      * Switch changelog entries to metacpan friendly format
+      * #29 - Fix printf format conversion specifiers in croak to support size_t on all platforms
+      * #11,#30 - Tty.pm: pre-allocate buffer for ioctl but leave it length 0
+      * #28 - Use $arg to match @ARGV in Makefile.PL
+
+-------------------------------------------------------------------
 Sat Jan 23 03:07:15 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.16
