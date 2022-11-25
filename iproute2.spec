@@ -28,7 +28,7 @@ URL:            https://wiki.linuxfoundation.org/networking/iproute2
 
 #DL-URL:	https://kernel.org/pub/linux/utils/net/iproute2/
 #Git-Clone: https://git.kernel.org/pub/scm/network/iproute2/iproute2.git/
-#Git-Mirror:    https://github.com/shemminger/iproute2 ## not updated
+#Git-Mirror:    https://github.com/shemminger/iproute2 ## not regularly updated
 Source:         https://kernel.org/pub/linux/utils/net/iproute2/%name-%version.0.tar.xz
 Source2:        https://kernel.org/pub/linux/utils/net/iproute2/%name-%version.0.tar.sign
 Source3:        %name.tmpfiles
@@ -75,8 +75,8 @@ New programs should use libmnl-devel instead.
 Summary:        Bash completion for iproute
 License:        GPL-2.0-or-later
 Group:          System/Shells
-Requires:       bash-completion
 Requires:       %{name}
+Requires:       bash-completion
 Supplements:    (%{name} and bash-completion)
 
 %description bash-completion
@@ -135,7 +135,15 @@ for BIN in lnstat nstat routel ss; do
 done
 mkdir -p "$b/%_docdir/%name"
 cp -an README* examples/bpf "$b/%_docdir/%name/"
-sed 's-/usr/bin/env python3-/usr/bin/python3-g' -i "$b/%_sbindir/routel"
+
+# bugzilla.opensuse.org/1205632
+# You can't parse routel output anyway so it does not matter what we output
+rm -v "$b/%_mandir/man8/routel.8"
+cat >"$b/%_sbindir/routel" <<-EOF
+	#!/bin/sh
+	exec ip r l table all
+EOF
+
 %fdupes %buildroot/%_prefix
 
 %post
@@ -164,12 +172,7 @@ sed 's-/usr/bin/env python3-/usr/bin/python3-g' -i "$b/%_sbindir/routel"
 %_libdir/tc/
 %_datadir/tc/
 %_docdir/%name/
-%if 1
-#0%{?suse_version} >= 1500 || 0%{?sle_version} >= 120300
 %license COPYING
-%else
-%doc COPYING
-%endif
 
 %files -n libnetlink-devel
 %_includedir/*
