@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov 23 17:14:04 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Bump to version 18
+
+-------------------------------------------------------------------
+Wed Nov 23 16:52:56 UTC 2022 - Dan Čermák <dcermak@suse.com>
+
+- Add %_user_tmpfilesdir macro
+
+-------------------------------------------------------------------
 Mon Oct  3 13:07:42 UTC 2022 - Franck Bui <fbui@suse.com>
 
 - Bump to version 17

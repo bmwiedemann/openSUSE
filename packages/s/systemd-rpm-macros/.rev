@@ -634,4 +634,14 @@
 - Fix syntax error in %tmpfiles_create_package() (bsc#1203945)</comment>
     <requestid>1007693</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>cd4a84a4798a78fa7244d97305b8dd70</srcmd5>
+    <version>18</version>
+    <time>1669378269</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump to version 18
+
+- Add %_user_tmpfilesdir macro</comment>
+    <requestid>1037703</requestid>
+  </revision>
 </revisionlist>

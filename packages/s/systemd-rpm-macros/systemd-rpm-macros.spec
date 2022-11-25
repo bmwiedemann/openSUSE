@@ -17,7 +17,7 @@
 
 
 Name:           systemd-rpm-macros
-Version:        17
+Version:        18
 Release:        0
 Summary:        RPM macros for systemd
 License:        LGPL-2.1-or-later

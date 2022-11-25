@@ -35,6 +35,7 @@
 %_udevrulesdir /usr/lib/udev/rules.d
 %_journalcatalogdir /usr/lib/systemd/catalog
 %_tmpfilesdir /usr/lib/tmpfiles.d
+%_user_tmpfilesdir /usr/share/user-tmpfiles.d
 %_sysusersdir /usr/lib/sysusers.d
 %_sysctldir /usr/lib/sysctl.d
 %_ntpunitsdir /usr/lib/systemd/ntp-units.d
