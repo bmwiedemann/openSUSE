@@ -62,4 +62,12 @@
     <comment>Qt 6.4.1 (forwarded request 1036897 from cgiboudeaux)</comment>
     <requestid>1036915</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a05af7eca0368295d254c19a62b8aa35</srcmd5>
+    <version>6.4.1</version>
+    <time>1669488726</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the package version</comment>
+    <requestid>1038342</requestid>
+  </revision>
 </revisionlist>
