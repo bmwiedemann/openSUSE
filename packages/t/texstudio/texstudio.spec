@@ -24,10 +24,12 @@ License:        Apache-2.0 AND GPL-2.0-only AND GPL-3.0-only AND MPL-1.1
 Group:          Productivity/Publishing/TeX/Frontends
 URL:            https://www.texstudio.org
 Source0:        https://github.com/texstudio-org/texstudio/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(Qt5Concurrent)
+BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5PrintSupport)
@@ -53,11 +55,14 @@ syntax highlighting, automatically code completion and more.
 %define crashhandler NO_CRASH_HANDLER=true
 %endif
 
-%qmake5 CONFIG-=debug %{?crashhandler} texstudio.pro
-%make_jobs
+%cmake
+%cmake_build
 
 %install
-make INSTALL_ROOT=%{buildroot} install
+%cmake_install
+
+mkdir -p %{buildroot}%{_datadir}/metainfo
+cp utilities/texstudio.metainfo.xml %{buildroot}%{_datadir}/metainfo/texstudio.metainfo.xml
 
 rm -f %{buildroot}%{_datadir}/texstudio/{AUTHORS,COPYING,CHANGELOG.txt}
 %fdupes -s %{buildroot}%{_datadir}/texstudio/
