@@ -143,4 +143,13 @@
     <comment>- Fixed CVE-2021-3623 (bsc#1187767) (forwarded request 1030434 from msmeissn)</comment>
     <requestid>1031153</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>0ef922afc7a118e12609f7d22360bdc8</srcmd5>
+    <version>0.9.3</version>
+    <time>1669484709</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build for ppc64le: use -Wl,--no-as-needed in check-local
+  [bsc#1204556] (forwarded request 1038171 from pgajdos)</comment>
+    <requestid>1038201</requestid>
+  </revision>
 </revisionlist>

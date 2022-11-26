@@ -74,6 +74,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %fdupes -s %{buildroot}
 
 %check
+# fix check-local
+# https://bugzilla.suse.com/show_bug.cgi?id=1204556#c9
+sed -i "s@\(-L\./\.libs\)@\1 -Wl,--no-as-needed@" src/Makefile
 %make_build check
 
 %post -n %{lname} -p /sbin/ldconfig
