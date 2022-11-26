@@ -1,4 +1,14 @@
 --------------------------------------------------------------------
+Fri Nov 25 11:37:41 UTC 2022 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#905
+- read filters for udev links from config file
+- limit allowed by-id links for NVMEs (bsc#1205352)
+- make integration-tests subpackage noarch
+- cleanup
+- 4.5.53
+
+--------------------------------------------------------------------
 Thu Nov 10 23:06:18 UTC 2022 - aschnell@suse.com
 
 - Translated using Weblate (Macedonian) (bsc#1149754)

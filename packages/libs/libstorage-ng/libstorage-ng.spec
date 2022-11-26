@@ -18,7 +18,7 @@
 
 %define libname %{name}1
 Name:           libstorage-ng
-Version:        4.5.52
+Version:        4.5.53
 Release:        0
 Summary:        Library for storage management
 License:        GPL-2.0-only
@@ -149,6 +149,7 @@ This package contains utils for libstorage-ng.
 Summary:        Integration tests for libstorage-ng
 Group:          Development/Tools/Other
 Requires:       libstorage-ng-python3
+BuildArch:      noarch
 
 %description integration-tests
 This package contains integration tests for libstorage-ng.
@@ -162,13 +163,15 @@ export CXXFLAGS="%{optflags} -DNDEBUG"
 
 autoreconf -fvi
 %configure \
-   --docdir="%{_docdir}/%{name}" \
-   --disable-static \
-   --disable-silent-rules
+    --docdir="%{_docdir}/%{name}" \
+    --disable-static \
+    --disable-silent-rules
 make %{?_smp_mflags}
 
 %check
-make %{?_smp_mflags} check VERBOSE=1 LOCALEDIR=%{buildroot}%{_datadir}/locale
+make %{?_smp_mflags} check VERBOSE=1 \
+    LIBSTORAGE_CONFDIR=%{buildroot}%{_datadir}/libstorage \
+    LIBSTORAGE_LOCALEDIR=%{buildroot}%{_datadir}/locale
 
 %install
 %make_install
@@ -193,6 +196,8 @@ touch %{buildroot}/run/libstorage-ng/lock
 %license %{_docdir}/%{name}/LICENSE
 %{_libdir}/libstorage-ng.so.*
 %ghost /run/libstorage-ng
+%dir %{_datadir}/libstorage
+%{_datadir}/libstorage/udev-filters.json
 
 %files devel
 %{_libdir}/libstorage-ng.so
