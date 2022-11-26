@@ -151,6 +151,7 @@ Requires:       gnuplot
 %endif
 # Tests build requires
 BuildRequires:  unzip
+BuildRequires:  xvfb-run
 BuildRequires:  zip
 Requires:       octave-cli = %{version}
 Requires(pre):  update-alternatives
@@ -277,14 +278,8 @@ echo "-Xss8m" >  %{buildroot}/%{_datadir}/%{name}/%{src_ver}/m/java/java.opts
 # Increase stack limits. OpenBLAS tests are run after some JVM test, and OpenBLAS
 # dgetrf is quite memory hungry, see https://github.com/xianyi/OpenBLAS/issues/246
 
-%define         X_display         ":98"
-export DISPLAY=%{X_display}
-Xvfb %{X_display} >& Xvfb.log &
-trap "kill $! || true" EXIT
-sleep 10
-
 echo "-Xss8m" >  scripts/java/java.opts
-make check
+xvfb-run make check
 
 %post -p /sbin/ldconfig
 
