@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 Name:           python-qgrid
 Version:        1.3.1
@@ -83,13 +82,15 @@ done
 
 %check
 # test_period_object_column - fails on serialization
-%pytest -k 'not test_period_object_column'
+# test_edit_date - new timestamp format
+%pytest -k 'not (test_period_object_column or test_edit_date)'
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/qgrid/
-%{python_sitelib}/qgrid-%{version}-py*.egg-info
+%{python_sitelib}/qgrid-%{version}*-info
+%exclude %{python_sitelib}/qgrid/tests
 
 %files -n jupyter-qgrid
 %license LICENSE

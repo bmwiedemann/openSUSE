@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 25 20:17:18 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Skip test_edit_date: new timestamp format
+
+-------------------------------------------------------------------
 Sun Aug 28 21:16:28 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Fix ipywidgets8 registration

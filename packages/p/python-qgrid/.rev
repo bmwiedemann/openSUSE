@@ -136,4 +136,13 @@
   * gh#quantopian/qgrid#376</comment>
     <requestid>999716</requestid>
   </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>7c716c1e33d5b14363066a63318632aa</srcmd5>
+    <version>1.3.1</version>
+    <time>1669484733</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip test_edit_date: new timestamp format
+</comment>
+    <requestid>1038270</requestid>
+  </revision>
 </revisionlist>
