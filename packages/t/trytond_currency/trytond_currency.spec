@@ -19,7 +19,7 @@
 
 %define majorver 6.0
 Name:           trytond_currency
-Version:        %{majorver}.2
+Version:        %{majorver}.3
 Release:        0
 Summary:        The "currency" module for the Tryton ERP system
 License:        GPL-3.0-only
