@@ -1,7 +1,7 @@
 #
 # spec file for package slirp4netns
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           slirp4netns
-Version:        1.1.11
+Version:        1.2.0
 Release:        0
 Summary:        User-mode networking for unprivileged network namespaces
 License:        GPL-2.0-only AND MIT AND BSD-2-Clause
@@ -38,13 +38,12 @@ BuildRequires:  libslirp-devel
 slirp for network namespaces, without copying buffers across the namespaces.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 ./autogen.sh
 %configure
-make %{?_smp_mflags}
-make %{?_smp_mflags} generate-man
+%make_build all generate-man
 
 %install
 install -D -m 0755 %{name} %{buildroot}/%{_bindir}/%{name}

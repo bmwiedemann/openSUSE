@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 22 13:00:10 UTC 2022 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 1.2.0:
+  * Add slirp4netns --target-type=bess /path/to/bess.sock for supporting UML (#281)
+  * Explicitly support DHCP (#270)
+  * Update parson to v1.1.3 (#273) kgabis/parson@70dc239...2d7b3dd
+  * Refactored tests (#271)
+- modernize spec file
+
+-------------------------------------------------------------------
 Thu Jun 24 11:20:32 UTC 2021 - rpm@fthiessen.de
 
 - Update to version 1.1.11:
