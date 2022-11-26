@@ -1,0 +1,38 @@
+From 847f9f1bf9c8e029db6426de098a963d542ab08b Mon Sep 17 00:00:00 2001
+From: Karl Wette <karl.wette@ligo.org>
+Date: Fri, 25 Nov 2022 17:15:19 +1100
+Subject: [PATCH] SWIG: compatibility with version 4.1.0
+
+- -py3 is deprecated
+- %typemaps_string_alloc() needs an extra argument
+---
+ gnuscripts/lalsuite_swig.m4 | 8 +++++++-
+ lal/swig/SWIGCommon.i       | 8 ++++++++
+ 2 files changed, 15 insertions(+), 1 deletion(-)
+
+diff --git a/swig/SWIGCommon.i b/swig/SWIGCommon.i
+index caf7d8f365..bb6dc62e6e 100644
+--- a/swig/SWIGCommon.i
++++ b/swig/SWIGCommon.i
+@@ -1809,10 +1809,18 @@ if (strides[I-1] == 0) {
+     return res;
+   }
+ }
++#if SWIG_VERSION >= 0x040100
++%typemaps_string_alloc(%checkcode(STRING), %checkcode(char),
++                       SWIGWARN_TYPEMAP_CHARLEAK_MSG, char, LALchar,
++                       SWIG_AsLALcharPtrAndSize, SWIG_FromLALcharPtrAndSize,
++                       strlen, SWIG_strnlen, %swiglal_new_copy_array, XLALFree,
++                       "<limits.h>", CHAR_MIN, CHAR_MAX);
++#else
+ %typemaps_string_alloc(%checkcode(STRING), %checkcode(char), char, LALchar,
+                        SWIG_AsLALcharPtrAndSize, SWIG_FromLALcharPtrAndSize,
+                        strlen, SWIG_strnlen, %swiglal_new_copy_array, XLALFree,
+                        "<limits.h>", CHAR_MIN, CHAR_MAX);
++#endif
+ 
+ ///
+ /// Typemaps for string pointers.  By default, treat arguments of type <tt>char**</tt> as output-only
+-- 
+GitLab
+

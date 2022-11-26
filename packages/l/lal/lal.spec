@@ -1,5 +1,5 @@
 #
-# spec file for package lal
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -36,13 +36,15 @@
 # No support for octave >= 6
 %bcond_with octave
 Name:           lal%{psuffix}
-Version:        7.2.0
+Version:        7.2.4
 Release:        0
 Summary:        A collection of various gravitational wave data analysis routines
 License:        GPL-2.0-only
 Group:          Productivity/Scientific/Physics
 URL:            https://wiki.ligo.org/Computing/LALSuite
 Source:         https://software.igwn.org/sources/source/lalsuite/lal-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM -- See https://git.ligo.org/lscsoft/lalsuite/-/commit/847f9f1bf9c8e029db6426de098a963d542ab08b.patch
+Patch0:         swig_4_1_compat.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module numpy}

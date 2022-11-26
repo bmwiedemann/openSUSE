@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Nov 26 02:40:59 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 7.2.4:
+  * No release notes.
+- Fix build with Swig 4.1.0, add swig_4_1_compat.patch
+
+-------------------------------------------------------------------
 Fri Aug 19 11:54:33 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 7.2.0:
