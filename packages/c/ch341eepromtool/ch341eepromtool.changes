@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Fri Nov 25 19:30:53 UTC 2022 - Dmitry Roshchin <dmitry_r@opensuse.org>
+
+- Fix Tumbleweed build
+  * ch341eepromtool-extern_readbuf.patch
+- Drop source extraction script
+
+-------------------------------------------------------------------
+Fri Mar 20 19:40:09 CET 2015 - sbrabec@suse.cz
+
+- New package, version 0.5.
+- Add ch341eepromtool-printf.patch fixing printf() usage.
+
