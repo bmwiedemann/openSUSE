@@ -29,9 +29,9 @@
     set _ypdir  =  /var/yp
     set _domain =  "`domainname`"
     if ($?MANPATH) then
-	set _manpath="{${MANPATH:as/:/,/}}/{man,cat}"
+	set _manpath="{${MANPATH:as/:/,/}}/man"
     else
-	set _manpath="/usr{{/X11/man,/openwin/man}/{man,cat},{/man/{man,cat}}}"
+	set _manpath="/usr{{/X11/man,/openwin/man,/share/man}/{man,cat},{/man/{man,cat}}}"
     endif
 if ( -d /usr/lib/ispell/ ) then
     set _hash=(`\ls -1fUA /usr/lib/ispell/|&\sed -rn \\%.\*\\.hash%{s%\.hash%%p}`)
@@ -700,11 +700,11 @@ skip_mh:
 			n@-u@T:$_maildir@ n/-f/f/ n/*/u/
     endif
 
-
-    complete man	n@[0-9n]@'`\ls -1fUA ${_manpath}$:-1/|&\sed \\%.\*:%d\;s%\\.$:-1.\*\$%%|\sort -u`'@ \
-			c/-/"(- f k s t l)"/ n/-f/c/ n/-k/x:'<keyword>'/ n/-l/f/ C@./*@f@ n/*/c/
-    unset _manpath
-
+    complete man	'n@[0-9n]@`\ls -1fUA ${_manpath}$:-1/|&\sed \\%.\*:%d\;s%\\.$:-1.\*\$%%|\sort -u`@' \
+			c@-@"(- f k M P s S t)"@ n@-f@c@ n@-k@x:'<keyword>'@ n/-l/f/ C@./*@f@ n@-[MP]@d@    \
+			'N@-[MP]@`\ls -1 $:-1/man? |&\sed -n s%\\..\\+\$%%p`@' \
+			'n@-[sS]@`\ls -1 ${_manpath:h}|&\sed -n s%man%%p|\sort -u`@' \
+			'n@*@`\find ${_manpath:h} \( -type f -o -type l \) -printf "%f\n"|&\sed -r "\%find:.*:%d;s%([^.]+).([^ ]*?)%\1%g"|\sort -u`@'
     complete ps		c/-t/x:'<tty>'/ c/-/"(a c C e g k l S t u v w x)"/ \
 			n/-k/x:'<kernel>'/ N/-k/x:'<core_file>'/ n/*/x:'<PID>'/
     complete compress	c/-/"(c f v b)"/ n/-b/x:'<max_bits>'/ n/*/f:^*.Z/

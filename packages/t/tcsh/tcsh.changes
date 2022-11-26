@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Nov 25 08:54:10 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Update to tcsh 6.24.02
+  7. V6.24.02 - 20221124
+  6. Complete mdoc-based manual page (Luke Mewburn)
+  5. Fix rechist() check for NULL filename (broke when arg was renamed).
+       > cd
+       > rm .history
+       > unset savehist
+       > history -S /tmp/s
+       > exit
+     A ~/.history has been written when it should not have been.
+  4. Make OpenBSD use SHORT_STRINGS and fix non-SHORT_STRINGS compilation.
+- Delete patch tcsh-6.24.01-bash52.dif now upstream
+- Correct offset and port patches
+  * tcsh-6.21.00.dif
+  * tcsh-6.22.02-local-dotlock.dif
+- Enhance completion for man command
+
+-------------------------------------------------------------------
 Tue Nov 15 13:32:26 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Add search-lists to gpg completions, extend ispell completions

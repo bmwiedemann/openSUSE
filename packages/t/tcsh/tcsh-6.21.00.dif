@@ -39,7 +39,7 @@
  #endif /* _h_config */
 --- config_f.h
 +++ config_f.h	2021-04-27 07:41:53.192829973 +0000
-@@ -74,7 +74,12 @@
+@@ -72,7 +72,12 @@
  /*
   * LOGINFIRST   Source ~/.login before ~/.cshrc
   */
@@ -53,7 +53,7 @@
  
  /*
   * VIDEFAULT    Make the VI mode editor the default
-@@ -168,7 +173,7 @@
+@@ -166,7 +171,7 @@
   *		successful, set $REMOTEHOST to the name or address of the
   *		host
   */
@@ -221,15 +221,15 @@
      if ((utmpfd = xopen(TCSH_PATH_UTMP, O_RDONLY|O_LARGEFILE)) < 0) {
 --- tcsh.man
 +++ tcsh.man	2021-04-27 07:41:53.196829900 +0000
-@@ -603,7 +603,7 @@ Repeating \fIdabbrev-expand\fR without a
- changes to the next previous word etc., skipping identical matches
- much like \fIhistory-search-backward\fR does.
- .TP 8
--.B delete-char \fR(not bound)
-+.B delete-char \fR(bound to `Del' if using the standard \fI/etc/csh.cshrc\fR)
+@@ -1001,7 +1001,7 @@ much like
+ .Ic history-search-backward
+ does.
+ .
+-.It Ic delete-char No (not bound)
++.It Ic delete-char \fR(bound to `Del' if using the standard \fI/etc/csh.cshrc\fR)
  Deletes the character under the cursor.
- See also \fIdelete-char-or-list-or-eof\fR.
- Cursor behavior modified by \fBvimode\fR.
+ See also
+ .Ic delete-char-or-list-or-eof .
 --- tw.h
 +++ tw.h	2021-04-27 07:41:53.196829900 +0000
 @@ -32,6 +32,10 @@
