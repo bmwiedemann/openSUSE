@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Nov 26 02:16:22 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1669397828.6ece53c:
+  * Add UI for pausing on failure via developer mode
+  * Dependency cron 2022-11-25
+  * Revert "Use signatures in OpenQA::Shared::Plugin::Gru"
+  * tools: Fix hadolint for systems running in SELinux enforcing mode
+  * Dependency cron 2022-11-25
+  * Simplify loop in in OpenQA::Task::Needle::Scan
+  * OpenQA::Schema::ResultSet::DeveloperSessions: Extract method
+  * Use signatures in OpenQA::Shared::Plugin::Gru
+  * Use signatures in OpenQA::CacheService
+  * Use signatures in OpenQA::Task::Needle::Scan
+  * OpenQA::WebAPI::Controller::Admin::Workers: Delete redundant comment
+  * Move 'dsn' function to only place used'
+  * Use signatures in OpenQA::Schema
+
+-------------------------------------------------------------------
 Wed Nov 23 18:16:20 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1669212003.b93eb7f:
