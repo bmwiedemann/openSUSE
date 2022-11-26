@@ -10,7 +10,8 @@ Fri May  6 19:31:33 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
   * Fixed data type when reading 16-bit character data from HDF5
     MAT file.
   * Fixed heap-based buffer overflows when reading (crafted) MAT
-    file (CVE-2020-36428, CVE-2021-36977).
+    file (CVE-2020-36428, CVE-2021-36977, boo#1193873,
+    boo#1193874).
   * Confirmed compatibility with HDF5 v1.13.0 and v1.13.1.
   * Several other fixes, for example for memory leaks.
 
