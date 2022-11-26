@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov 25 11:49:52 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.6.39:
+  * cmake: Default to PNG_ARM_NEON=off for arm targets.
+  + Turn large PNG chunks into benign errors.
+  + Update, rename and clean up various scripts.
+  + tools: Fix a buffer overflow involving a file name in pngfix.
+  + tools: Fix a memory leak in pngcp.
+
+-------------------------------------------------------------------
 Fri Sep 16 16:59:32 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.38:

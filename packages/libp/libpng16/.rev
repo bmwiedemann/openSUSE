@@ -696,4 +696,17 @@
     <comment></comment>
     <requestid>1007169</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>6a414eb2a7ac94b2cca7a3d317916bfc</srcmd5>
+    <version>1.6.39</version>
+    <time>1669484707</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.39:
+  * cmake: Default to PNG_ARM_NEON=off for arm targets.
+  + Turn large PNG chunks into benign errors.
+  + Update, rename and clean up various scripts.
+  + tools: Fix a buffer overflow involving a file name in pngfix.
+  + tools: Fix a memory leak in pngcp. (forwarded request 1038184 from dimstar)</comment>
+    <requestid>1038197</requestid>
+  </revision>
 </revisionlist>
