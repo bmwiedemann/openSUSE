@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-moto
-Version:        4.0.8
+Version:        4.0.10
 Release:        0
 Summary:        Library to mock out the boto library
 License:        Apache-2.0
@@ -27,6 +26,7 @@ URL:            https://github.com/spulec/moto
 Source:         https://files.pythonhosted.org/packages/source/m/moto/moto-%{version}.tar.gz
 # PATCH-FEATURE-OPENSUSE remove-mock.patch -- https://trello.com/c/S6eADbii
 Patch1:         remove-mock.patch
+BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -57,7 +57,7 @@ BuildRequires:  %{python_module PyYAML >= 5.1}
 BuildRequires:  %{python_module aws-xray-sdk >= 0.93}
 BuildRequires:  %{python_module boto3 >= 1.9.201}
 BuildRequires:  %{python_module botocore >= 1.12.201}
-BuildRequires:  %{python_module cfn-lint >= 0.4.0}
+BuildRequires:  %{python_module cfn-lint >= 0.40.0}
 BuildRequires:  %{python_module cryptography >= 3.3.1}
 BuildRequires:  %{python_module docker >= 2.5.1}
 BuildRequires:  %{python_module freezegun}
@@ -91,7 +91,7 @@ library.
 Summary:        Library to mock out the boto library -- all extras
 Requires:       python-PyYAML >= 5.1
 Requires:       python-aws-xray-sdk >= 0.93
-Requires:       python-cfn-lint >= 0.4.0
+Requires:       python-cfn-lint >= 0.40.0
 Requires:       python-docker >= 2.5.1
 Requires:       python-graphql-core
 Requires:       python-idna >= 2.5

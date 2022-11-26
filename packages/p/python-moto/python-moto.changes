@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Nov 21 16:23:06 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.0.10
+  ## New Methods:
+  * CloudFront:
+      * get_distribution_config()
+  * Organizations:
+      * delete_organizational_unit()
+  ## Miscellaneous:
+  * APIGateway: put_integration_response() now supports the
+    responseParameters-parameter
+  * Cloudformation now supports the creation/update/deletion of
+    AWS::SSM::Parameter
+  * Cloudformation: create_stack() now returns the attribute
+    EnableTerminationProtection
+  * CloudWatch: put_metric_data() now supports the
+    MetricData.Values parameter
+  * DynamoDB: transact_write_items() now supports the
+    ReturnValuesOnConditionCheckFailure-parameter
+  * RDS: describe_db_cluster now returns the
+    EarliestRestorableTime-attribute
+  * S3: get_object() and head_object() now correctly handle the
+    IfModifiedSince-parameter
+
+-------------------------------------------------------------------
+Sat Nov 19 21:37:52 UTC 2022 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.0.9
+  ## Miscellaneous:
+  * CloudTrail: describe_trails() now returns the correct
+    (MultiRegion) trails
+  * CloudWatch:tag_resource() now allows tagting new Alarms that
+    didn't have tags yet
+  * EC2: create_instances() now supports the
+    `IamInstanceProfile`-parameter
+  * EC2: describe_route_tables() now supports the
+    `route.vpc-peering-connection-id`-filter
+  * EC2: modify_vpc_attribute() now supports the
+    enableNetworkAddressUsageMetrics-attribute
+  * S3: delete_objects() now works against the JS SDK v3.197.0
+
+-------------------------------------------------------------------
 Fri Oct 28 11:00:14 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 4.0.8
