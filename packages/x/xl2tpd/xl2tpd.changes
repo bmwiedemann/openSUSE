@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov  4 19:14:10 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.3.18
+  * Add compatability information for Watchguard Firewall.
+  * Fix issue where in some cases xl2tpd stops trying to connect
+    if it can not resolve server name (DNS failure or WAN
+    temporarily unavailable), even if autodial and redial options
+    are set.
+
+-------------------------------------------------------------------
 Sun Mar 27 14:35:54 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.3.17
