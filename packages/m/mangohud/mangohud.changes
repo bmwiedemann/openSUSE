@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Nov 26 14:30:42 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build by extracting the imgui to the versioned directory,
+  where it belongs, as specified in the .wrap file (fixes build
+  with meson 0.64, which got stricter on this front).
+
+-------------------------------------------------------------------
 Tue Aug  2 10:51:06 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Cleaning spec.

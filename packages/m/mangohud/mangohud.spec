@@ -54,8 +54,7 @@ A Vulkan and OpenGL overlay for monitoring FPS, temperatures, CPU/GPU load and m
 %autosetup -n MangoHud-%{internal_ver} -DTa2
 sed -i -e '1d;2i#!%{_bindir}/bash' bin/mangohud.in
 sed -i 's,^@ld_libdir_mangohud@ ,%{_prefix}/\$LIB/mangohud/,' bin/mangohud.in
-mkdir subprojects/imgui
-mv imgui-%{imgui_ver}/* subprojects/imgui/
+mv imgui-%{imgui_ver} subprojects/
 sed -i 's/0.60.0/0.59/g' meson.build
 
 %build
