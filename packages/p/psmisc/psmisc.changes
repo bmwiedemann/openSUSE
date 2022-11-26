@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Nov 25 11:48:39 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch socket-fix.patch
+  * Add test to check for named sockets as file as well as on mounts
+  * Fix code to find named sockets
+- The former test requires nc at build aka netcat from openbsd to
+  create a named socket on the fly
+
+-------------------------------------------------------------------
 Wed Feb 23 13:04:06 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Change patch 0001-Use-mountinfo-to-be-able-to-use-the-mount-identity.patch 

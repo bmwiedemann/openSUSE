@@ -26,6 +26,7 @@ BuildRequires:  glibc-devel
 BuildRequires:  libselinux-devel
 BuildRequires:  linux-glibc-devel >= 4.12
 BuildRequires:  ncurses-devel
+BuildRequires:  netcat-openbsd
 URL:            https://gitlab.com/psmisc/psmisc/
 Version:        23.4
 Release:        0
@@ -40,6 +41,7 @@ Patch2:         %{name}-22.21-pstree.patch
 # https://gitlab.com/bitstreamout/psmisc/tree/mountinfo
 Patch3:         0001-Use-mountinfo-to-be-able-to-use-the-mount-identity.patch
 Patch4:         0002-Use-new-statx-2-system-call-to-avoid-hangs-on-NFS.patch
+Patch5:         socket-fix.patch
 
 %define have_peekfd %ix86 x86_64 ppc ppc64 ppc64le %arm mipsel m68k aarch64
 
@@ -58,6 +60,7 @@ processes that are using specified files or filesystems.
 %patch2 -p0 -b .pstree
 %patch3 -p0 -b .mntinf
 %patch4 -p0 -b .statx
+%patch5 -p0 -b .sk
 %patch0 -p0 -b .p0
 
 %build
@@ -74,9 +77,8 @@ CC=gcc
 export CFLAGS CXXFLAGS LDFLAGS CC
 %configure	--disable-rpath \
 	--with-gnu-ld		\
-	--enable-selinux	\
-	--enable-mountinfo-list	\
-	--enable-timeout-stat=static
+	--enable-apparmor       \
+	--enable-selinux
 make %{?_smp_mflags} CFLAGS="$CFLAGS" "CC=$CC"
 
 %check

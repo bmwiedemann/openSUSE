@@ -802,4 +802,16 @@
 - Adopt patch 0002-Use-new-statx-2-system-call-to-avoid-hangs-on-NFS.patch</comment>
     <requestid>957096</requestid>
   </revision>
+  <revision rev="83" vrev="3">
+    <srcmd5>0c2b028817af8554b314ca5d31c583e2</srcmd5>
+    <version>23.4</version>
+    <time>1669484705</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch socket-fix.patch
+  * Add test to check for named sockets as file as well as on mounts
+  * Fix code to find named sockets
+- The former test requires nc at build aka netcat from openbsd to
+  create a named socket on the fly</comment>
+    <requestid>1038188</requestid>
+  </revision>
 </revisionlist>
