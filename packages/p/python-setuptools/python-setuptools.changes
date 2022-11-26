@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Nov 24 11:00:28 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 65.6.3:
+  * #3709: Fix condition to patch distutils.dist.log to only apply when using
+    distutils from the stdlib.
+- v65.6.2
+  * No significant changes.
+
+-------------------------------------------------------------------
+Wed Nov 23 16:16:25 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 65.6.1:
+  * #3689: Document that distutils.cfg might be ignored unless
+    SETUPTOOLS_USE_DISTUTILS=stdlib.
+  * #3678: Improve clib builds reproducibility by sorting sources -- by
+    :user:`danigm`, fixing bsc#1201127
+  * #3684: Improved exception/traceback when invalid entry-points are
+    specified.
+  * #3690: Fixed logging errors: 'underlying buffer has been detached' (issue
+    #1631).
+  * #3693: Merge pypa/distutils@3e9d47e with compatibility fix for
+    distutils.log.Log.
+  * #3704: Fix temporary build directories interference with auto-discovery.
+- v65.6.0:
+  * #3674: Sync with pypa/distutils@e0787fa, including pypa/distutils#183
+    updating distutils to use the Python logging framework.
+
+-------------------------------------------------------------------
 Mon Nov 14 09:53:11 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Delete remove_mock.patch, that's not needed anymore, it's upstreamed
