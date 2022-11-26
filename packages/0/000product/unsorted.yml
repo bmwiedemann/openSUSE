@@ -44,6 +44,7 @@ unsorted:
   - CoreFreq: [x86_64] 
   - CorsixTH 
   - Crystalcursors 
+  - DSView 
   - DVDStyler 
   - DVDStyler-lang 
   - DevIL-devel 
@@ -1932,6 +1933,7 @@ unsorted:
   - cgns 
   - cgns-devel 
   - cgns-devel-static 
+  - ch341eepromtool 
   - chafa 
   - chafa-devel 
   - chafa-doc 
@@ -14058,8 +14060,6 @@ unsorted:
   - libsigrok-data 
   - libsigrok-devel 
   - libsigrok4 
-  - libsigrok4DSL-devel 
-  - libsigrok4DSL1 
   - libsigrokcxx4 
   - libsigrokdecode-devel 
   - libsigrokdecode4 
@@ -32695,6 +32695,7 @@ unsorted:
   - quazip-doc 
   - quazip-qt5-devel 
   - quazip-qt6-devel 
+  - qucs-s 
   - quilt 
   - quilter 
   - quilter-lang 
