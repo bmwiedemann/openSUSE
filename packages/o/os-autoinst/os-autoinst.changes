@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Nov 26 02:20:29 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1669395975.d36887c:
+  * Extend subtest verify_sound_image (t/17-basetest.t)
+  * Extend subtest record_screenmatch (17-basetest.t)
+  * Add subtest for sub rollback_activated_consoles
+  * Extend documentation for developer mode variables
+  * Allow pausing on failures via developer mode
+  * Add command to pause test execution and allow passing options to resume
+  * Minor test improvements
+  * Make assert_script_sudo work properly in serial terminal
+
+-------------------------------------------------------------------
 Wed Nov 23 18:34:17 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1669124427.5a76fb8:
