@@ -1,5 +1,0 @@
-<package name="libsigrok4DSL" project="openSUSE:Factory">
-  <title>API for talking to DSLogic analyzer hardware</title>
-  <description>libsigrok4DSL is a shared library written in C which provides the basic API for talking to DSLogic analyzer hardware and reading/writing the acquired data into various input/output file formats.</description>
-  <devel project="electronics" package="libsigrok4DSL"/>
-</package>
