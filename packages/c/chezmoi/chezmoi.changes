@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov 25 17:19:34 UTC 2022 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.27.2:
+  * fix: Respect diff filter in removes with external diff tool
+  * fix: Allow underscores in SourceHut usernames
+  * feat: Add update.command and update.args config variables
+  * feat: Add an optional path argument to the cd command
+  * chore: Check that not both of --force and --interactive flags are set
+  * fix: Make re-add command respect --interactive flag
+  * chore: Update dependencies
+
+-------------------------------------------------------------------
 Mon Nov 14 17:42:41 UTC 2022 - filippo.bonazzi@suse.com
 
 - Update to version 2.27.1:
