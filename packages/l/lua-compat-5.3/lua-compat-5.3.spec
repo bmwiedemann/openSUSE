@@ -1,7 +1,7 @@
 #
 # spec file for package lua-compat-5.3
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,6 @@
 
 %define flavor @BUILD_FLAVOR@%{nil}
 %define mod_name lua-compat-5.3
-
 # bit32 (dropped in 5.4) is the native Lua 5.2 bit manipulation library, in the version
 # from Lua 5.3; it is compatible with Lua 5.1, 5.2 and 5.3.
 %if "%{lua_version}" >= "5.4" || "%{lua_version}" < "5.2"
@@ -38,10 +37,10 @@ BuildRequires:  %{flavor}-devel
 BuildRequires:  lua-macros
 BuildRequires:  pkgconfig
 Requires:       %{flavor}
+%lua_provides -e
 %if %{without bit32}
 Requires:       %{flavor}-bit32
 %endif
-%lua_provides -e
 %if "%{flavor}" == ""
 Name:           lua-compat-5.3
 ExclusiveArch:  do_not_build
@@ -101,6 +100,7 @@ install -v -m 0644 -D -p -t %{buildroot}%{lua_archdir} bit32.so
 %doc README.md
 %{lua_archdir}/compat53
 %{lua_noarchdir}/compat53
+%dir %{lua_incdir}
 %{lua_incdir}/*
 
 %if %{without bit32}

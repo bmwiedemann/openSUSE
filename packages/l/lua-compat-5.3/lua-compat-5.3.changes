@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 25 18:22:08 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
+
+- Fix unowned %%{lua_incdir} error.
+
+-------------------------------------------------------------------
 Sun Jul 11 14:10:00 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Use %lua_provides for bit32
