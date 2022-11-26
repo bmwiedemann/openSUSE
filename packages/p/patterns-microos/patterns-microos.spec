@@ -453,7 +453,6 @@ Requires:       gnome-color-manager
 #Requires:       gnome-packagekit
 Requires:       gnome-shell-classic
 Requires:       gnome-software
-Requires:       gnome-system-monitor
 Requires:       gnome-terminal
 Requires:       gnome-tweak-tool
 Requires:       gnome-usage

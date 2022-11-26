@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 25 12:33:10 UTC 2022 - Richard Brown <rbrown@suse.com>
+
+- Remove redundant gnome-system-monitor (boo#1205108) 
+
+-------------------------------------------------------------------
 Fri Nov 18 00:26:15 UTC 2022 - Shawn Dunn <sfalken@cloverleaf-linux.org>
 
 - Add fonts to KDE pattern, so common unicode characters are
