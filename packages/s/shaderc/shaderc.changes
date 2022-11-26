@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 25 10:20:34 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Drop pkgconfig files for not provided static libraries
+
+-------------------------------------------------------------------
 Mon Oct 24 20:29:48 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2022.3

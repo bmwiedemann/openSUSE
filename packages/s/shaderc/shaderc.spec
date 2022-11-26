@@ -73,7 +73,9 @@ echo "\"%version\"" >glslc/src/build-version.inc
 
 %install
 %cmake_install
+# Remove static libraries and their pkgconfig files
 rm %buildroot/%_libdir/*.a
+rm %buildroot/%_libdir/pkgconfig/shaderc_{static,combined}.pc
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
@@ -88,6 +90,6 @@ rm %buildroot/%_libdir/*.a
 %files devel
 %_includedir/shaderc/
 %_libdir/libshaderc_shared.so
-%_libdir/pkgconfig/*.pc
+%_libdir/pkgconfig/shaderc.pc
 
 %changelog
