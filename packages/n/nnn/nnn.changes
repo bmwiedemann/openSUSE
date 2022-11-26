@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Nov 25 20:28:57 UTC 2022 - Nicolas FORMICHELLA <stigpro@outlook.fr>
+
+-nnn v4.7 Cuba libre release notes.
+
+  * fix ^N not working sometimes (#1449)
+  * fix file remove confirmation prompt [Esc - cancel, y/Y - use force, any other key - prompt for each file]
+  * bring back atool as the default archive handler
+  * add option -B to use bsdtar as the archive utility
+  * find and list mode improvements
+    * continue even if max paths/data size limit is exceeded
+    * speed improvements
+    * support listing maximum 16K paths of 64 MiB of data
+  * key J to jump to an entry or relative offset from current entry
+  * prefill the hard link creation prompt when there's a single target (#1507)
+  * documented workaround for docker container crash (#1407, #1476)
+  * plugin imgview: handle arguments as strings (#1509)
+  * plugin wallpaper: support Wayland (#1512)
+  * plugin upload: handle selection using ffsend (#1523)
+  * add Rust icons (#1502)
+
+ 
+
+-------------------------------------------------------------------
 Wed Jul 27 05:17:51 UTC 2022 - Nicolas FORMICHELLA <stigpro@outlook.fr>
 
 - Update to version v4.6:

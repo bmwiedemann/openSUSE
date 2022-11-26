@@ -17,13 +17,13 @@
 
 
 Name:           nnn
-Version:        4.6
+Version:        4.7
 Release:        0
 Summary:        Terminal based file browser
 License:        BSD-2-Clause
 Group:          Productivity/File utilities
 URL:            https://github.com/jarun/nnn#nnn
-Source0:        https://github.com/jarun/nnn/releases/download/v%{version}/%{name}-v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/jarun/nnn/releases/download/v%{version}/%{name}-v%{version}.tar.gz#/%{name}-v%{version}.tar.gz
 Source1:        https://github.com/jarun/nnn/releases/download/v%{version}/%{name}-%{version}.tar.gz.sig
 Source99:       nnn.keyring
 BuildRequires:  pkgconfig
