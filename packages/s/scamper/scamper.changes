@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Nov 19 07:20:02 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 20211212d:
+ - scamper:
+  * add tcp-syn-sport method to ping, document in scamper(1) manual page
+ - documentation:
+  * document trace json object in sc_warts2json(1) manual page
+
+-------------------------------------------------------------------
 Thu Aug 18 06:36:07 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - Update to version 20211212b:
