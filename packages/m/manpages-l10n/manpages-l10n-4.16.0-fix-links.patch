@@ -1,24 +1,25 @@
-From 9ee8ac9774143076f1d39a939ee2b1f3f1225d60 Mon Sep 17 00:00:00 2001
+From b5e8a1650c370e1ee99042b9fe8929656b1d192f Mon Sep 17 00:00:00 2001
 From: Antoine Belvire <antoine.belvire@opensuse.org>
-Date: Sat, 27 Aug 2022 00:10:29 +0200
+Date: Fri, 25 Nov 2022 00:19:40 +0100
 Subject: [PATCH] Fix openSUSE's links.txt
 
-Fix links.txt of openSUSE Leap 15.4 and Tumbleweed to prevent the following
+Fix links.txt of openSUSE Leap 15.5 and Tumbleweed to prevent the following
 incorrect links to be installed in /usr/share/man/*/man2:
 
 ```
 sigreturn.2.gz.gz -> sigreturn.2.gz
 sigsuspend.2.gz.gz -> sigaction.2.gz
 ```
+
 ---
- upstream/opensuse-leap-15-4/links.txt  | 4 ++--
+ upstream/opensuse-leap-15-5/links.txt  | 4 ++--
  upstream/opensuse-tumbleweed/links.txt | 4 ++--
  2 files changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/upstream/opensuse-leap-15-4/links.txt b/upstream/opensuse-leap-15-4/links.txt
+diff --git a/upstream/opensuse-leap-15-5/links.txt b/upstream/opensuse-leap-15-5/links.txt
 index 0356f992a3..5345738247 100644
---- a/upstream/opensuse-leap-15-4/links.txt
-+++ b/upstream/opensuse-leap-15-4/links.txt
+--- a/upstream/opensuse-leap-15-5/links.txt
++++ b/upstream/opensuse-leap-15-5/links.txt
 @@ -1111,8 +1111,8 @@ man2/rename.2.gz man2/renameat.2.gz
  man2/sigaction.2.gz man2/rt_sigaction.2.gz
  man2/sigpending.2.gz man2/rt_sigpending.2.gz
@@ -31,20 +32,20 @@ index 0356f992a3..5345738247 100644
  man2/rt_sigqueueinfo.2.gz man2/rt_tgsigqueueinfo.2.gz
  man2/s390_pci_mmio_write.2.gz man2/s390_pci_mmio_read.2.gz
 diff --git a/upstream/opensuse-tumbleweed/links.txt b/upstream/opensuse-tumbleweed/links.txt
-index 6461bdc2de..7760d28bf5 100644
+index 70582b6d10..904eefac85 100644
 --- a/upstream/opensuse-tumbleweed/links.txt
 +++ b/upstream/opensuse-tumbleweed/links.txt
-@@ -1105,8 +1105,8 @@ man2/rename.2.gz man2/renameat2.2.gz
+@@ -1107,8 +1107,8 @@ man2/rename.2.gz man2/renameat2.2.gz
  man2/sigaction.2.gz man2/rt_sigaction.2.gz
  man2/sigpending.2.gz man2/rt_sigpending.2.gz
  man2/sigprocmask.2.gz man2/rt_sigprocmask.2.gz
 -man2/sigreturn.2 man2/sigreturn.2.gz man2/rt_sigreturn.2.gz
 -man2/sigaction.2 man2/sigsuspend.2.gz man2/rt_sigsuspend.2.gz
 +man2/sigreturn.2.gz man2/rt_sigreturn.2.gz
-+man2/sigsuspend.2.gz man2/rt_sigsuspend.2.gz
++man2/sigaction.2.gz man2/rt_sigsuspend.2.gz
  man2/sigtimedwait.2.gz man2/rt_sigtimedwait.2.gz
  man2/rt_sigqueueinfo.2.gz man2/rt_tgsigqueueinfo.2.gz
  man2/s390_pci_mmio_write.2.gz man2/s390_pci_mmio_read.2.gz
 -- 
-2.37.2
+2.38.1
 

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov 24 22:52:35 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 4.16.0: Updated many translations.
+- Upgrade macros:
+  * Add Leap 15.5 and Fedora 37.
+  * Remove Leap 15.4 and Fedora 36 (dropped by upstream).
+- Rebase links patch:
+  * Remove manpages-l10n-4.15.0-fix-links.patch.
+  * Add manpages-l10n-4.16.0-fix-links.patch.
+
+-------------------------------------------------------------------
 Fri Aug 26 21:56:36 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Add manpages-l10n-4.15.0-fix-links.patch: Fix incorrect links in

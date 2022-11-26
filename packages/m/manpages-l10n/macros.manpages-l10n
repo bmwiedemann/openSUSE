@@ -28,12 +28,12 @@ This package provides translations of man pages in %{2}.\
   local suse_version = tonumber(rpm.expand("%{suse_version}"))
   local fedora_version = tonumber(rpm.expand("%{fedora}"))
   local mageia_version = tonumber(rpm.expand("%{mageia}"))
-  if sle_version == 150400 then
-    print("opensuse-leap-15-4")
+  if sle_version == 150500 then
+    print("opensuse-leap-15-5")
   elseif suse_version ~= nil and suse_version > 1500 then
     print("opensuse-tumbleweed")
-  elseif fedora_version == 36 then
-    print("fedora-36")
+  elseif fedora_version == 37 then
+    print("fedora-37")
   elseif fedora_version == 99 then
     print("fedora-rawhide")
   elseif mageia_version == 99 then
