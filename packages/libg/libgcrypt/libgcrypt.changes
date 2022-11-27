@@ -1,4 +1,139 @@
 -------------------------------------------------------------------
+Wed Oct 19 14:01:24 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.10.1:
+  * Bug fixes:
+    - Fix minor memory leaks in FIPS mode.
+    - Build fixes for MUSL libc.
+  * Other:
+    - More portable integrity check in FIPS mode.
+    - Add X9.62 OIDs to sha256 and sha512 modules.
+  * Add the hardware optimizations config file hwf.deny to
+    the /etc/gcrypt/ directory. This file can be used to globally
+    disable the use of hardware based optimizations.
+  * Remove not needed separate_hmac256_binary hmac256 package
+
+-------------------------------------------------------------------
+Wed Sep 14 13:34:13 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.10.0:
+  * New and extended interfaces:
+    - New control codes to check for FIPS 140-3 approved algorithms.
+    - New control code to switch into non-FIPS mode.
+    - New cipher modes SIV and GCM-SIV as specified by RFC-5297.
+    - Extended cipher mode AESWRAP with padding as specified by
+      RFC-5649.
+    - New set of KDF functions.
+    - New KDF modes Argon2 and Balloon.
+    - New functions for combining hashing and signing/verification.
+  * Performance:
+    - Improved support for PowerPC architectures.
+    - Improved ECC performance on zSeries/s390x by using accelerated
+      scalar multiplication.
+    - Many more assembler performance improvements for several
+      architectures.
+  * Bug fixes:
+    - Fix Elgamal encryption for other implementations.
+      [bsc#1190239, CVE-2021-40528]
+    - Check the input length of the point in ECDH.
+    - Fix an abort in gcry_pk_get_param for "Curve25519".
+  * Other features:
+    - The control code GCRYCTL_SET_ENFORCED_FIPS_FLAG is ignored
+      because it is useless with the FIPS 140-3 related changes.
+    - Update of the jitter entropy RNG code.
+    - Simplification of the entropy gatherer when using the getentropy
+      system call.
+  * Interface changes relative to the 1.10.0 release:
+    - GCRYCTL_SET_DECRYPTION_TAG            NEW control code.
+    - GCRYCTL_FIPS_SERVICE_INDICATOR_CIPHER NEW control code.
+    - GCRYCTL_FIPS_SERVICE_INDICATOR_KDF    NEW control code.
+    - GCRYCTL_NO_FIPS_MODE = 83             NEW control code.
+    - GCRY_CIPHER_MODE_SIV                  NEW mode.
+    - GCRY_CIPHER_MODE_GCM_SIV              NEW mode.
+    - GCRY_CIPHER_EXTENDED                  NEW flag.
+    - GCRY_SIV_BLOCK_LEN                    NEW macro.
+    - gcry_cipher_set_decryption_tag        NEW macro.
+    - GCRY_KDF_ARGON2                       NEW constant.
+    - GCRY_KDF_BALLOON                      NEW constant.
+    - GCRY_KDF_ARGON2D                      NEW constant.
+    - GCRY_KDF_ARGON2I                      NEW constant.
+    - GCRY_KDF_ARGON2ID                     NEW constant.
+    - gcry_kdf_hd_t                         NEW type.
+    - gcry_kdf_job_fn_t                     NEW type.
+    - gcry_kdf_dispatch_job_fn_t            NEW type.
+    - gcry_kdf_wait_all_jobs_fn_t           NEW type.
+    - struct gcry_kdf_thread_ops            NEW struct.
+    - gcry_kdf_open                         NEW function.
+    - gcry_kdf_compute                      NEW function.
+    - gcry_kdf_final                        NEW function.
+    - gcry_kdf_close                        NEW function.
+    - gcry_pk_hash_sign                     NEW function.
+    - gcry_pk_hash_verify                   NEW function.
+    - gcry_pk_random_override_new           NEW function.
+  * Rebase libgcrypt-1.8.4-allow_FSM_same_state.patch and rename
+    to libgcrypt-1.10.0-allow_FSM_same_state.patch
+  * Remove unused CAVS tests and related patches:
+    - cavs_driver.pl cavs-test.sh
+    - libgcrypt-1.6.1-fips-cavs.patch
+    - drbg_test.patch
+  * Remove DSA sign/verify patches for the FIPS CAVS test since DSA
+    has been disabled in FIPS mode:
+    - libgcrypt-fipsdrv-enable-algo-for-dsa-sign.patch
+    - libgcrypt-fipsdrv-enable-algo-for-dsa-verify.patch
+  * Rebase libgcrypt-FIPS-SLI-pk.patch
+  * Rebase libgcrypt_indicators_changes.patch and
+    libgcrypt-indicate-shake.patch and merge both into
+    libgcrypt-FIPS-SLI-hash-mac.patch
+  * Rebase libgcrypt-FIPS-kdf-leylength.patch and rename to
+    libgcrypt-FIPS-SLI-kdf-leylength.patch
+  * Rebase libgcrypt-jitterentropy-3.4.0.patch
+  * Rebase libgcrypt-FIPS-rndjent_poll.patch
+  * Rebase libgcrypt-out-of-core-handler.patch and rename to
+    libgcrypt-1.10.0-out-of-core-handler.patch
+  * Since the FIPS .hmac file is now calculated with the internal
+    tool hmac256, only the "module is complete" trigger .fips file
+    is checked. Rename libgcrypt-1.6.1-use-fipscheck.patch
+    to libgcrypt-1.10.0-use-fipscheck.patch
+  * Remove patches fixed upstream:
+    - libgcrypt-1.4.1-rijndael_no_strict_aliasing.patch
+    - libgcrypt-1.5.0-LIBGCRYPT_FORCE_FIPS_MODE-env.diff
+    - libgcrypt-fix-rng.patch
+    - libgcrypt-1.8.3-fips-ctor.patch
+    - libgcrypt-1.8.4-use_xfree.patch
+    - libgcrypt-1.8.4-getrandom.patch
+    - libgcrypt-1.8.4-fips_ctor_skip_integrity_check.patch
+    - libgcrypt-dsa-rfc6979-test-fix.patch
+    - libgcrypt-fix-tests-fipsmode.patch
+    - libgcrypt-FIPS-RSA-DSA-ECDSA-hashing-operation.patch
+    - libgcrypt-1.8.4-fips-keygen.patch
+    - libgcrypt-invoke-global_init-from-constructor.patch
+    - libgcrypt-Restore-self-tests-from-constructor.patch
+    - libgcrypt-FIPS-GMAC_AES-benckmark.patch
+    - libgcrypt-global_init-constructor.patch
+    - libgcrypt-random_selftests-testentropy.patch
+    - libgcrypt-rsa-no-blinding.patch
+    - libgcrypt-ecc-ecdsa-no-blinding.patch
+    - libgcrypt-PCT-DSA.patch
+    - libgcrypt-PCT-ECC.patch
+    - libgcrypt-PCT-RSA.patch
+    - libgcrypt-fips_selftest_trigger_file.patch
+    - libgcrypt-pthread-in-t-lock-test.patch
+    - libgcrypt-FIPS-hw-optimizations.patch
+    - libgcrypt-FIPS-module-version.patch
+    - libgcrypt-FIPS-disable-3DES.patch
+    - libgcrypt-FIPS-fix-regression-tests.patch
+    - libgcrypt-FIPS-RSA-keylen.patch
+    - libgcrypt-FIPS-RSA-keylen-tests.patch
+    - libgcrypt-FIPS-fix-gcry_mpi_sub_ui.patch
+    - libgcrypt-FIPS-verify-unsupported-KDF-test.patch
+    - libgcrypt-FIPS-HMAC-short-keylen.patch
+    - libgcrypt-FIPS-service-indicators.patch
+    - libgcrypt-FIPS-disable-DSA.patch
+    - libgcrypt-jitterentropy-3.3.0.patch
+    - libgcrypt-FIPS-Zeroize-hmac.patch
+  * Update libgcrypt.keyring
+
+-------------------------------------------------------------------
 Thu Sep  8 10:34:53 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
 
 - FIPS: Get most of the entropy from rndjent_poll [bsc#1202117]

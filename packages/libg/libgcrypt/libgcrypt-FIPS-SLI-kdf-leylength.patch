@@ -1,8 +1,8 @@
-Index: libgcrypt-1.9.4/src/fips.c
+Index: libgcrypt-1.10.0/src/fips.c
 ===================================================================
---- libgcrypt-1.9.4.orig/src/fips.c
-+++ libgcrypt-1.9.4/src/fips.c
-@@ -475,10 +475,15 @@ int
+--- libgcrypt-1.10.0.orig/src/fips.c
++++ libgcrypt-1.10.0/src/fips.c
+@@ -379,10 +379,15 @@ int
  _gcry_fips_indicator_kdf (va_list arg_ptr)
  {
    enum gcry_kdf_algos alg = va_arg (arg_ptr, enum gcry_kdf_algos);
@@ -18,11 +18,11 @@ Index: libgcrypt-1.9.4/src/fips.c
        return GPG_ERR_NO_ERROR;
      default:
        return GPG_ERR_NOT_SUPPORTED;
-Index: libgcrypt-1.9.4/doc/gcrypt.texi
+Index: libgcrypt-1.10.0/doc/gcrypt.texi
 ===================================================================
---- libgcrypt-1.9.4.orig/doc/gcrypt.texi
-+++ libgcrypt-1.9.4/doc/gcrypt.texi
-@@ -983,10 +983,12 @@ algorithm supports different key sizes).
+--- libgcrypt-1.10.0.orig/doc/gcrypt.texi
++++ libgcrypt-1.10.0/doc/gcrypt.texi
+@@ -995,10 +995,12 @@ algorithm supports different key sizes).
  this function returns @code{GPS_ERR_NO_ERROR}. Otherwise @code{GPG_ERR_NOT_SUPPORTED}
  is returned.
  

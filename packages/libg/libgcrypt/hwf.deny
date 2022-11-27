@@ -1,0 +1,35 @@
+# This file can be used to globally disable the use of hardware
+# based optimizations. Supported options are:
+
+# padlock-rng
+# padlock-aes
+# padlock-sha
+# padlock-mmul
+# intel-cpu
+# intel-fast-shld
+# intel-bmi2
+# intel-ssse3
+# intel-sse4.1
+# intel-pclmul
+# intel-aesni
+# intel-rdrand
+# intel-avx
+# intel-avx2
+# intel-fast-vpgather
+# intel-rdtsc
+# intel-shaext
+# intel-vaes-vpclmul
+# arm-neon
+# arm-aes
+# arm-sha1
+# arm-sha2
+# arm-pmull
+# ppc-vcrypto
+# ppc-arch_3_00
+# ppc-arch_2_07
+# ppc-arch_3_10
+# s390x-msa
+# s390x-msa-4
+# s390x-msa-8
+# s390x-msa-9
+# s390x-vx

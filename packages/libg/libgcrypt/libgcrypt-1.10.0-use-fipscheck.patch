@@ -1,0 +1,114 @@
+Index: libgcrypt-1.10.1/src/fips.c
+===================================================================
+--- libgcrypt-1.10.1.orig/src/fips.c
++++ libgcrypt-1.10.1/src/fips.c
+@@ -949,6 +949,65 @@ hmac256_check (const char *filename, con
+   return err;
+ }
+ 
++static int
++get_library_path(const char *libname, const char *symbolname,
++                 char *path, size_t pathlen)
++{
++  Dl_info info;
++  void *dl, *sym;
++  int rv = -1;
++
++  dl = dlopen(libname, RTLD_LAZY);
++  if (dl == NULL)
++    return -1;
++
++  sym = dlsym(dl, symbolname);
++  if (sym != NULL && dladdr(sym, &info))
++    {
++      strncpy(path, info.dli_fname, pathlen-1);
++      path[pathlen-1] = '\0';
++      rv = 0;
++    }
++
++  dlclose(dl);
++
++  return rv;
++}
++
++static gpg_error_t
++get_hmac_path(char **fname, char *suffix)
++{
++  char libpath[4096];
++  gpg_error_t err;
++
++  if (get_library_path ("libgcrypt.so.20", "gcry_check_version",
++                        libpath, sizeof(libpath)))
++    err = gpg_error_from_syserror ();
++  else
++    {
++      *fname = _gcry_malloc (strlen (libpath) + 1 + 5 + 1 );
++      if (!*fname)
++        err = gpg_error_from_syserror ();
++      else
++        {
++          char *p;
++
++          /* Prefix the basename with a dot.  */
++          strcpy (*fname, libpath);
++          p = strrchr (*fname, '/');
++          if (p)
++            p++;
++          else
++            p = *fname;
++          memmove (p+1, p, strlen (p)+1);
++          *p = '.';
++          strcat (*fname, suffix);
++          err = 0;
++      }
++    }
++  return err;
++}
++
+ /* Run an integrity check on the binary.  Returns 0 on success.  */
+ static int
+ check_binary_integrity (void)
+@@ -997,6 +1056,33 @@ run_hmac_sha256_selftests (int extended)
+ }
+ #endif
+ 
++int
++can_skip_selftests(void)
++{
++  char *fname = NULL;
++  int ret = 0;
++
++  if (fips_mode())
++    return 0;
++
++  if (get_hmac_path(&fname, ".fips"))
++    return 0;
++
++  /* check the hmac presence */
++  if (access(fname, F_OK))
++    /* no hmac file is present, don't run the tests */
++    if (errno == ENOENT)
++      ret = 1;
++  /* otherwise one of these events happened:
++   * access() returned 0
++   *   -> run the tests
++   * some error other than ENOENT occurred
++   *   -> run the tests anyway and let them fail
++   */
++
++  xfree(fname);
++  return ret;
++}
+ 
+ /* Run the self-tests.  If EXTENDED is true, extended versions of the
+    selftest are run, that is more tests than required by FIPS.  */
+@@ -1006,6 +1092,9 @@ _gcry_fips_run_selftests (int extended)
+   enum module_states result = STATE_ERROR;
+   gcry_err_code_t ec = GPG_ERR_SELFTEST_FAILED;
+ 
++  if (can_skip_selftests())
++    return 0;
++
+   if (fips_mode ())
+     fips_new_state (STATE_SELFTEST);
+ 

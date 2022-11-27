@@ -1,8 +1,8 @@
-diff --git a/doc/gcrypt.texi b/doc/gcrypt.texi
-index afb8a05..c613577 100644
---- a/doc/gcrypt.texi
-+++ b/doc/gcrypt.texi
-@@ -968,23 +968,39 @@ is approved under the current FIPS 140-3 certification. If the
+Index: libgcrypt-1.10.0/doc/gcrypt.texi
+===================================================================
+--- libgcrypt-1.10.0.orig/doc/gcrypt.texi
++++ libgcrypt-1.10.0/doc/gcrypt.texi
+@@ -980,23 +980,39 @@ is approved under the current FIPS 140-3
  combination is approved, this function returns @code{GPG_ERR_NO_ERROR}.
  Otherwise @code{GPG_ERR_NOT_SUPPORTED} is returned.
  
@@ -52,11 +52,11 @@ index afb8a05..c613577 100644
  @code{GPG_ERR_NOT_SUPPORTED} is returned.
  
  @end table
-diff --git a/src/fips.c b/src/fips.c
-index f523e7d..d5ca482 100644
---- a/src/fips.c
-+++ b/src/fips.c
-@@ -452,6 +452,7 @@ _gcry_fips_indicator_cipher (va_list arg_ptr)
+Index: libgcrypt-1.10.0/src/fips.c
+===================================================================
+--- libgcrypt-1.10.0.orig/src/fips.c
++++ libgcrypt-1.10.0/src/fips.c
+@@ -357,6 +357,7 @@ _gcry_fips_indicator_cipher (va_list arg
        mode = va_arg (arg_ptr, enum gcry_cipher_modes);
        switch (mode)
          {
@@ -64,7 +64,7 @@ index f523e7d..d5ca482 100644
          case GCRY_CIPHER_MODE_ECB:
          case GCRY_CIPHER_MODE_CBC:
          case GCRY_CIPHER_MODE_CFB:
-@@ -459,7 +460,6 @@ _gcry_fips_indicator_cipher (va_list arg_ptr)
+@@ -364,7 +365,6 @@ _gcry_fips_indicator_cipher (va_list arg
          case GCRY_CIPHER_MODE_OFB:
          case GCRY_CIPHER_MODE_CTR:
          case GCRY_CIPHER_MODE_CCM:
@@ -72,7 +72,7 @@ index f523e7d..d5ca482 100644
          case GCRY_CIPHER_MODE_XTS:
            return GPG_ERR_NO_ERROR;
          default:
-@@ -519,11 +519,25 @@ static const struct
+@@ -422,11 +422,25 @@ static const struct
      { NULL, NULL}
    };
  
@@ -98,7 +98,7 @@ index f523e7d..d5ca482 100644
    const char *curve_name;
  
    switch (alg)
-@@ -531,13 +545,17 @@ _gcry_fips_indicator_pk (va_list arg_ptr)
+@@ -434,13 +448,17 @@ _gcry_fips_indicator_pk (va_list arg_ptr
      case GCRY_PK_RSA:
      case GCRY_PK_RSA_E:
      case GCRY_PK_RSA_S:
@@ -117,7 +117,7 @@ index f523e7d..d5ca482 100644
            return GPG_ERR_NO_ERROR;
          }
      case GCRY_PK_ECC:
-@@ -557,6 +575,60 @@ _gcry_fips_indicator_pk (va_list arg_ptr)
+@@ -460,6 +478,62 @@ _gcry_fips_indicator_pk (va_list arg_ptr
      }
  }
  
@@ -139,6 +139,8 @@ index f523e7d..d5ca482 100644
 +    case GCRY_MD_SHA3_256:
 +    case GCRY_MD_SHA3_384:
 +    case GCRY_MD_SHA3_512:
++    case GCRY_MD_SHAKE128:
++    case GCRY_MD_SHAKE256:
 +      return GPG_ERR_NO_ERROR;
 +    default:
 +      return GPG_ERR_NOT_SUPPORTED;
@@ -178,11 +180,11 @@ index f523e7d..d5ca482 100644
  
  /* This is a test on whether the library is in the error or
     operational state. */
-diff --git a/src/g10lib.h b/src/g10lib.h
-index 9fc868b..92c24a5 100644
---- a/src/g10lib.h
-+++ b/src/g10lib.h
-@@ -488,7 +488,9 @@ void _gcry_fips_signal_error (const char *srcfile,
+Index: libgcrypt-1.10.0/src/g10lib.h
+===================================================================
+--- libgcrypt-1.10.0.orig/src/g10lib.h
++++ libgcrypt-1.10.0/src/g10lib.h
+@@ -456,7 +456,9 @@ void _gcry_fips_signal_error (const char
  #endif
  
  int _gcry_fips_indicator_cipher (va_list arg_ptr);
@@ -192,26 +194,26 @@ index 9fc868b..92c24a5 100644
  int _gcry_fips_indicator_pk (va_list arg_ptr);
  
  int _gcry_fips_is_operational (void);
-diff --git a/src/gcrypt.h.in b/src/gcrypt.h.in
-index 7704d17..344f879 100644
---- a/src/gcrypt.h.in
-+++ b/src/gcrypt.h.in
-@@ -337,7 +337,9 @@ enum gcry_ctl_cmds
-     GCRYCTL_SET_ALLOW_WEAK_KEY = 79,
+Index: libgcrypt-1.10.0/src/gcrypt.h.in
+===================================================================
+--- libgcrypt-1.10.0.orig/src/gcrypt.h.in
++++ libgcrypt-1.10.0/src/gcrypt.h.in
+@@ -331,7 +331,9 @@ enum gcry_ctl_cmds
      GCRYCTL_FIPS_SERVICE_INDICATOR_CIPHER = 81,
      GCRYCTL_FIPS_SERVICE_INDICATOR_KDF = 82,
--    GCRYCTL_FIPS_SERVICE_INDICATOR_PK = 83
-+    GCRYCTL_FIPS_SERVICE_INDICATOR_PK = 83,
-+    GCRYCTL_FIPS_SERVICE_INDICATOR_HASH = 84,
-+    GCRYCTL_FIPS_SERVICE_INDICATOR_MAC = 85
+     GCRYCTL_NO_FIPS_MODE = 83,
+-	GCRYCTL_FIPS_SERVICE_INDICATOR_PK = 84
++    GCRYCTL_FIPS_SERVICE_INDICATOR_PK = 84,
++    GCRYCTL_FIPS_SERVICE_INDICATOR_HASH = 85,
++    GCRYCTL_FIPS_SERVICE_INDICATOR_MAC = 86
    };
  
  /* Perform various operations defined by CMD. */
-diff --git a/src/global.c b/src/global.c
-index c01b424..03756ea 100644
---- a/src/global.c
-+++ b/src/global.c
-@@ -762,12 +762,24 @@ _gcry_vcontrol (enum gcry_ctl_cmds cmd, va_list arg_ptr)
+Index: libgcrypt-1.10.0/src/global.c
+===================================================================
+--- libgcrypt-1.10.0.orig/src/global.c
++++ libgcrypt-1.10.0/src/global.c
+@@ -791,12 +791,24 @@ _gcry_vcontrol (enum gcry_ctl_cmds cmd,
        rc = _gcry_fips_indicator_cipher (arg_ptr);
        break;
  

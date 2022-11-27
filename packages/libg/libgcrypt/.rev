@@ -803,4 +803,12 @@ This correction fixes the build failures we are currently seeing in Factory, etc
     <comment></comment>
     <requestid>1004197</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>cf442029057cd7f7bb880a2ea02b1870</srcmd5>
+    <version>1.10.1</version>
+    <time>1669549968</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1038228</requestid>
+  </revision>
 </revisionlist>

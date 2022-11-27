@@ -1,8 +1,8 @@
-Index: libgcrypt-1.9.4/src/global.c
+Index: libgcrypt-1.10.0/src/global.c
 ===================================================================
---- libgcrypt-1.9.4.orig/src/global.c
-+++ libgcrypt-1.9.4/src/global.c
-@@ -951,7 +951,6 @@ _gcry_set_outofcore_handler (int (*f)(vo
+--- libgcrypt-1.10.0.orig/src/global.c
++++ libgcrypt-1.10.0/src/global.c
+@@ -974,7 +974,6 @@ _gcry_set_outofcore_handler (int (*f)(vo
  
    if (fips_mode () )
      {

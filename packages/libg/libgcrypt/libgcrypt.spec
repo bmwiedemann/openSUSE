@@ -17,12 +17,11 @@
 
 
 %define build_hmac256 1
-%define separate_hmac256_binary 0
 %define libsover 20
 %define libsoname %{name}%{libsover}
-%define cavs_dir %{_libexecdir}/%{name}/cavs
+%define hmac_key orboDeJITITejsirpADONivirpUkvarP
 Name:           libgcrypt
-Version:        1.9.4
+Version:        1.10.1
 Release:        0
 Summary:        The GNU Crypto Library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later
@@ -32,89 +31,26 @@ Source:         https://gnupg.org/ftp/gcrypt/libgcrypt/%{name}-%{version}.tar.bz
 Source1:        https://gnupg.org/ftp/gcrypt/libgcrypt/%{name}-%{version}.tar.bz2.sig
 Source2:        baselibs.conf
 Source3:        random.conf
-# https://www.gnupg.org/signature_key.en.html
-Source4:        libgcrypt.keyring
-# cavs test framework
-Source5:        cavs-test.sh
-Source6:        cavs_driver.pl
+Source4:        hwf.deny
+# https://gnupg.org/signature_key.asc
+Source5:        libgcrypt.keyring
 Source99:       libgcrypt.changes
-Patch1:         libgcrypt-1.4.1-rijndael_no_strict_aliasing.patch
-Patch3:         libgcrypt-1.5.0-LIBGCRYPT_FORCE_FIPS_MODE-env.diff
-Patch4:         libgcrypt-1.6.1-use-fipscheck.patch
-Patch5:         libgcrypt-1.6.1-fips-cavs.patch
-Patch6:         libgcrypt-fix-rng.patch
-#PATCH-FIX-SUSE add FIPS CAVS test app for DRBG
-Patch7:         drbg_test.patch
-#PATCH-FIX-UPSTREAM bsc#1064455 fipsdrv patch to enable --algo for dsa-sign
-Patch8:         libgcrypt-fipsdrv-enable-algo-for-dsa-sign.patch
-#PATCH-FIX-UPSTREAM bsc#1064455 fipsdrv patch to enable --algo for dsa-verify
-Patch9:         libgcrypt-fipsdrv-enable-algo-for-dsa-verify.patch
-Patch10:        libgcrypt-1.8.3-fips-ctor.patch
-Patch11:        libgcrypt-1.8.4-use_xfree.patch
-Patch12:        libgcrypt-1.8.4-allow_FSM_same_state.patch
-Patch13:        libgcrypt-1.8.4-getrandom.patch
-Patch14:        libgcrypt-1.8.4-fips_ctor_skip_integrity_check.patch
-#PATCH-FIX-SUSE Fix test in FIPS mode
-Patch15:        libgcrypt-dsa-rfc6979-test-fix.patch
-Patch16:        libgcrypt-fix-tests-fipsmode.patch
-#PATCH-FIX-SUSE bsc#1155337 FIPS: RSA/DSA/ECDSA are missing hashing operation
-Patch17:        libgcrypt-FIPS-RSA-DSA-ECDSA-hashing-operation.patch
-#PATCH-FIX-SUSE bsc#1161220 FIPS: libgcrypt RSA siggen/keygen: 4k not supported
-Patch18:        libgcrypt-1.8.4-fips-keygen.patch
-#PATCH-FIX-SUSE bsc#1164950 Run self-tests from the constructor
-Patch19:        libgcrypt-invoke-global_init-from-constructor.patch
-#PATCH-FIX-SUSE bsc#1164950 Restore the self-tests from the constructor
-Patch20:        libgcrypt-Restore-self-tests-from-constructor.patch
-Patch21:        libgcrypt-FIPS-GMAC_AES-benckmark.patch
-Patch22:        libgcrypt-global_init-constructor.patch
-Patch23:        libgcrypt-random_selftests-testentropy.patch
-Patch24:        libgcrypt-rsa-no-blinding.patch
-Patch25:        libgcrypt-ecc-ecdsa-no-blinding.patch
-#PATCH-FIX-SUSE bsc#1165539 FIPS: Use the new signature operation in PCT
-Patch26:        libgcrypt-PCT-RSA.patch
-Patch27:        libgcrypt-PCT-DSA.patch
-Patch28:        libgcrypt-PCT-ECC.patch
-Patch29:        libgcrypt-fips_selftest_trigger_file.patch
-#PATCH-FIX-SUSE bsc#1189745 The t-lock test is not build with phtread in gcc7, works in gcc11
-Patch30:        libgcrypt-pthread-in-t-lock-test.patch
-#PATCH-FIX-UPSTREAM bsc#1187110 FIPS: Enable hardware support also in FIPS mode
-Patch31:        libgcrypt-FIPS-hw-optimizations.patch
-#PATCH-FIX-UPSTREAM bsc#1190706 FIPS: Provide module name/identifier and version
-Patch32:        libgcrypt-FIPS-module-version.patch
-#PATCH-FIX-SUSE bsc#1185138 FIPS: Disable 3DES/Triple-DES in FIPS mode
-Patch33:        libgcrypt-FIPS-disable-3DES.patch
-#PATCH-FIX-UPSTREAM bsc#1192131 FIPS: Fix regression tests in FIPS mode
-Patch34:        libgcrypt-FIPS-fix-regression-tests.patch
-#PATCH-FIX-UPSTREAM bsc#1192240 FIPS: RSA KeyGen/SigGen fail with 4096 bit key sizes
-Patch35:        libgcrypt-FIPS-RSA-keylen.patch
-Patch36:        libgcrypt-FIPS-RSA-keylen-tests.patch
-#PATCH-FIX-UPSTREAM bsc#1193480 FIPS: gcry_mpi_sub_ui: fix subtracting from negative value
-Patch37:        libgcrypt-FIPS-fix-gcry_mpi_sub_ui.patch
-#PATCH-FIX-UPSTREAM bsc#1190700 FIPS: Provide a service-level indicator
-Patch38:        libgcrypt-FIPS-verify-unsupported-KDF-test.patch
-Patch39:        libgcrypt-FIPS-HMAC-short-keylen.patch
-Patch40:        libgcrypt-FIPS-service-indicators.patch
-#PATCH-FIX-UPSTREAM bsc#1195385 FIPS: Disable DSA in FIPS mode
-Patch41:        libgcrypt-FIPS-disable-DSA.patch
+Patch1:         libgcrypt-1.10.0-allow_FSM_same_state.patch
 #PATCH-FIX-UPSTREAM bsc#1190700 FIPS: Provide a service-level indicator for PK
-Patch42:        libgcrypt-FIPS-SLI-pk.patch
+Patch2:         libgcrypt-FIPS-SLI-pk.patch
 #PATCH-FIX-SUSE bsc#1190700 FIPS add indicators
-Patch43:        libgcrypt_indicators_changes.patch
-#PATCH-FIX-SUSE bsc#1190700 FIPS allow shake
-Patch44:        libgcrypt-indicate-shake.patch
-#PATCH-FIX-UPSTREAM bsc#1202117 jsc#SLE-24941 FIPS: Port libgcrypt to use jitterentropy
-Patch45:        libgcrypt-jitterentropy-3.3.0.patch
-Patch46:        libgcrypt-jitterentropy-3.4.0.patch
-#PATCH-FIX-SUSE bsc#1182983 gpg: out of core handler ignored in FIPS mode while typing Tab key to Auto-Completion
-Patch47:        libgcrypt-out-of-core-handler.patch
-#PATCH-FIX-SUSE bsc#1191020 FIPS: Zeroize buffer and digest in check_binary_integrity()
-Patch48:        libgcrypt-FIPS-Zeroize-hmac.patch
+Patch3:         libgcrypt-FIPS-SLI-hash-mac.patch
 #PATCH-FIX-SUSE bsc#1190700 FIPS: Check keylength in gcry_fips_indicator_kdf()
-Patch49:        libgcrypt-FIPS-kdf-leylength.patch
+Patch4:         libgcrypt-FIPS-SLI-kdf-leylength.patch
+#PATCH-FIX-SUSE bsc#1182983 gpg: out of core handler ignored in FIPS mode while typing Tab key to Auto-Completion
+Patch5:         libgcrypt-1.10.0-out-of-core-handler.patch
+#PATCH-FIX-UPSTREAM bsc#1202117 jsc#SLE-24941 FIPS: Port libgcrypt to use jitterentropy
+Patch6:         libgcrypt-jitterentropy-3.4.0.patch
 #PATCH-FIX-SUSE bsc#1202117 FIPS: Get most of the entropy from rndjent_poll
-Patch50:        libgcrypt-FIPS-rndjent_poll.patch
+Patch7:         libgcrypt-FIPS-rndjent_poll.patch
+#PATCH-FIX-SUSE Check the FIPS "module is complete" trigger file .fips
+Patch8:         libgcrypt-1.10.0-use-fipscheck.patch
 BuildRequires:  automake >= 1.14
-BuildRequires:  fipscheck
 BuildRequires:  libgpg-error-devel >= 1.27
 BuildRequires:  libtool
 BuildRequires:  makeinfo
@@ -164,133 +100,92 @@ understanding of applied cryptography is required to use Libgcrypt.
 This package contains needed files to compile and link against the
 library.
 
-%package cavs
-Summary:        The GNU Crypto Library
-License:        GFDL-1.1-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
-Group:          Development/Libraries/C and C++
-Requires:       %{libsoname} = %{version}
-Requires:       %{libsoname}-hmac
-
-%description cavs
-CAVS testing framework for libgcrypt
-
-%if 0%{?separate_hmac256_binary}
-%package hmac256
-Summary:        The GNU Crypto Library
-License:        GPL-2.0-or-later AND LGPL-2.1-or-later
-Group:          Development/Libraries/C and C++
-Requires:       %{libsoname} = %{version}
-Requires:       libgpg-error-devel >= 1.27
-
-%description hmac256
-Libgcrypt is a general purpose library of cryptographic building
-blocks.  It is originally based on code used by GnuPG.  It does not
-provide any implementation of OpenPGP or other protocols.  Thorough
-understanding of applied cryptography is required to use Libgcrypt.
-%endif
-
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
+
+# Rename the internal .hmac file to include the so library version
+sed -i "s/libgcrypt\.so\.hmac/\.libgcrypt\.so\.%{libsover}\.hmac/g" src/Makefile.am src/Makefile.in
 
 %build
 echo building with build_hmac256 set to %{build_hmac256}
+
+export PUBKEYS="dsa elgamal rsa ecc"
+export CIPHERS="arcfour blowfish cast5 des aes twofish serpent rfc2268 seed camellia idea salsa20 gost28147 chacha20 sm4"
+export DIGESTS="crc gostr3411-94 md4 md5 rmd160 sha1 sha256 sha512 sha3 tiger whirlpool stribog blake2 sm3"
+export KDFS="s2k pkdf2 scrypt"
+
 autoreconf -fi
 date=$(date -u '+%%Y-%%m-%%dT%%H:%%M+0000' -r %{SOURCE99})
 sed -e "s,BUILD_TIMESTAMP=.*,BUILD_TIMESTAMP=$date," -i configure
 export CFLAGS="%{optflags} $(getconf LFS_CFLAGS)"
 %configure \
-           --with-fips-module-version="Libgcrypt version %{version}-$SOURCE_DATE_EPOCH" \
+           --with-fips-module-version="Libgcrypt version %{version}-%{release}" \
+           --enable-hmac-binary-check="%{hmac_key}" \
+           --enable-ciphers="$CIPHERS" \
+           --enable-pubkey-ciphers="$PUBKEYS" \
+           --enable-digests="$DIGESTS" \
+           --enable-kdfs="$KDFS" \
            --enable-noexecstack \
            --disable-static \
            --enable-m-guard \
 %ifarch %{sparc}
            --disable-asm \
 %endif
-           --enable-hmac-binary-check \
-           --enable-random=linux
+           --enable-random=getentropy \
+           %{nil}
 
 %make_build
 
-%if 0%{?build_hmac256}
-# this is a hack that re-defines the __os_install_post macro
-# for a simple reason: the macro strips the binaries and thereby
-# invalidates a HMAC that may have been created earlier.
-# solution: create the hashes _after_ the macro runs.
-#
-# this shows up earlier because otherwise the %%expand of
-# the macro is too late.
-%{expand:%%global __os_install_post {%__os_install_post
-    fipshmac %{buildroot}/%{_bindir}/hmac256
-    fipshmac %{buildroot}/%{_libdir}/*.so.??
-}}
-%endif
-
 %check
-fipshmac src/.libs/libgcrypt.so.??
 %make_build check
-
 # run the regression tests also in FIPS mode
 LIBGCRYPT_FORCE_FIPS_MODE=1 make -k check VERBOSE=1 || true
+
+# Install the FIPS hmac file
+cp src/.libgcrypt.so.%{libsover}.hmac %{buildroot}%{_libdir}/
+
+# create the FIPS "module is complete" trigger file
+%if 0%{?build_hmac256}
+touch %{buildroot}%{_libdir}/.%{name}.so.%{libsover}.fips
+%endif
 
 %install
 %make_install
 rm %{buildroot}%{_libdir}/%{name}.la
 
-# cavs
-install -m 0755 -d %{buildroot}%{cavs_dir}
-install -m 0755 %{SOURCE5} %{buildroot}%{cavs_dir}
-install -m 0755 %{SOURCE6} %{buildroot}%{cavs_dir}
-
-mv %{buildroot}%{_bindir}/fipsdrv %{buildroot}%{cavs_dir}
-mv %{buildroot}%{_bindir}/drbg_test %{buildroot}%{cavs_dir}
-
-# create the FIPS "module is complete" trigger file
-%if 0%{?build_hmac256}
-touch %{buildroot}/%{_libdir}/.%{name}.so.%{libsover}.fips
-%endif
-
 # Create /etc/gcrypt directory and install random.conf
 mkdir -p -m 0755 %{buildroot}%{_sysconfdir}/gcrypt
 install -m 644 %{SOURCE3} %{buildroot}%{_sysconfdir}/gcrypt/random.conf
+install -m 644 %{SOURCE4} %{buildroot}%{_sysconfdir}/gcrypt/hwf.deny
 
 %post -n %{libsoname} -p /sbin/ldconfig
 %postun -n %{libsoname} -p /sbin/ldconfig
 
 %files -n %{libsoname}
-%license COPYING.LIB
+%license COPYING COPYING.LIB LICENSES
+%doc AUTHORS ChangeLog NEWS README THANKS TODO
 %{_libdir}/%{name}.so.*
 %dir %{_sysconfdir}/gcrypt
 %config(noreplace) %{_sysconfdir}/gcrypt/random.conf
-%if 0%{?build_hmac256}
-%{_libdir}/.libgcrypt.so.*.hmac
-%endif
+%config(noreplace) %{_sysconfdir}/gcrypt/hwf.deny
 
 %files -n %{libsoname}-hmac
+%{_libdir}/.libgcrypt.so.*.hmac
 %if 0%{?build_hmac256}
 %{_libdir}/.libgcrypt.so.*.fips
 %endif
 
 %files devel
-%license COPYING COPYING.LIB
-%doc AUTHORS ChangeLog NEWS README THANKS TODO
-%{_infodir}/gcrypt.info*%{ext_info}
+%license COPYING COPYING.LIB LICENSES
 %{_bindir}/dumpsexp
+%{_bindir}/hmac256
 %{_bindir}/mpicalc
 %{_bindir}/%{name}-config
 %{_libdir}/%{name}.so
-%{_includedir}/gcrypt*.h
-%{_datadir}/aclocal/%{name}.m4
 %{_libdir}/pkgconfig/libgcrypt.pc
-
-%if 0%{?separate_hmac256_binary}
-%files hmac256
-%endif
-%{_bindir}/hmac256
-%{_bindir}/.hmac256.hmac
-%doc %{_mandir}/man1/hmac256.1*
-
-%files cavs
-%{_libexecdir}/%{name}
+%{_datadir}/aclocal/%{name}.m4
+%{_includedir}/gcrypt*.h
+%{_infodir}/gcrypt.info*%{ext_info}*
+%{_mandir}/man1/*
 
 %changelog

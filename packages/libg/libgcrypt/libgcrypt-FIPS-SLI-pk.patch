@@ -1,21 +1,20 @@
-Index: libgcrypt-1.9.4/src/fips.c
+Index: libgcrypt-1.10.0/src/fips.c
 ===================================================================
---- libgcrypt-1.9.4.orig/src/fips.c
-+++ libgcrypt-1.9.4/src/fips.c
-@@ -32,6 +32,7 @@
+--- libgcrypt-1.10.0.orig/src/fips.c
++++ libgcrypt-1.10.0/src/fips.c
+@@ -36,6 +36,7 @@
  
  #include "g10lib.h"
  #include "cipher-proto.h"
 +#include "cipher.h"
- #include "hmac256.h"
+ #include "../random/random.h"
  
- 
-@@ -482,6 +483,78 @@ _gcry_fips_indicator_kdf (va_list arg_pt
+ /* The states of the finite state machine used in fips mode.  */
+@@ -386,6 +387,77 @@ _gcry_fips_indicator_kdf (va_list arg_pt
      default:
        return GPG_ERR_NOT_SUPPORTED;
      }
 +}
-+
 +
 +/* FIPS approved curves, extracted from:
 + *   cipher/ecc-curves.c:curve_aliases[] and domain_parms[]. */
@@ -89,25 +88,25 @@ Index: libgcrypt-1.9.4/src/fips.c
  }
  
  
-Index: libgcrypt-1.9.4/src/gcrypt.h.in
+Index: libgcrypt-1.10.0/src/gcrypt.h.in
 ===================================================================
---- libgcrypt-1.9.4.orig/src/gcrypt.h.in
-+++ libgcrypt-1.9.4/src/gcrypt.h.in
-@@ -336,7 +336,8 @@ enum gcry_ctl_cmds
-     GCRYCTL_AUTO_EXPAND_SECMEM = 78,
-     GCRYCTL_SET_ALLOW_WEAK_KEY = 79,
+--- libgcrypt-1.10.0.orig/src/gcrypt.h.in
++++ libgcrypt-1.10.0/src/gcrypt.h.in
+@@ -330,7 +330,8 @@ enum gcry_ctl_cmds
+     GCRYCTL_SET_DECRYPTION_TAG = 80,
      GCRYCTL_FIPS_SERVICE_INDICATOR_CIPHER = 81,
--    GCRYCTL_FIPS_SERVICE_INDICATOR_KDF = 82
-+    GCRYCTL_FIPS_SERVICE_INDICATOR_KDF = 82,
-+    GCRYCTL_FIPS_SERVICE_INDICATOR_PK = 83
+     GCRYCTL_FIPS_SERVICE_INDICATOR_KDF = 82,
+-    GCRYCTL_NO_FIPS_MODE = 83
++    GCRYCTL_NO_FIPS_MODE = 83,
++	GCRYCTL_FIPS_SERVICE_INDICATOR_PK = 84
    };
  
  /* Perform various operations defined by CMD. */
-Index: libgcrypt-1.9.4/doc/gcrypt.texi
+Index: libgcrypt-1.10.0/doc/gcrypt.texi
 ===================================================================
---- libgcrypt-1.9.4.orig/doc/gcrypt.texi
-+++ libgcrypt-1.9.4/doc/gcrypt.texi
-@@ -975,6 +975,18 @@ certification. If the KDF is approved, t
+--- libgcrypt-1.10.0.orig/doc/gcrypt.texi
++++ libgcrypt-1.10.0/doc/gcrypt.texi
+@@ -987,6 +987,18 @@ certification. If the KDF is approved, t
  @code{GPG_ERR_NO_ERROR}. Otherwise @code{GPG_ERR_NOT_SUPPORTED}
  is returned.
  
@@ -126,11 +125,11 @@ Index: libgcrypt-1.9.4/doc/gcrypt.texi
  @end table
  
  @end deftypefun
-Index: libgcrypt-1.9.4/src/g10lib.h
+Index: libgcrypt-1.10.0/src/g10lib.h
 ===================================================================
---- libgcrypt-1.9.4.orig/src/g10lib.h
-+++ libgcrypt-1.9.4/src/g10lib.h
-@@ -489,6 +489,7 @@ void _gcry_fips_signal_error (const char
+--- libgcrypt-1.10.0.orig/src/g10lib.h
++++ libgcrypt-1.10.0/src/g10lib.h
+@@ -457,6 +457,7 @@ void _gcry_fips_signal_error (const char
  
  int _gcry_fips_indicator_cipher (va_list arg_ptr);
  int _gcry_fips_indicator_kdf (va_list arg_ptr);
@@ -138,11 +137,11 @@ Index: libgcrypt-1.9.4/src/g10lib.h
  
  int _gcry_fips_is_operational (void);
  
-Index: libgcrypt-1.9.4/src/global.c
+Index: libgcrypt-1.10.0/src/global.c
 ===================================================================
---- libgcrypt-1.9.4.orig/src/global.c
-+++ libgcrypt-1.9.4/src/global.c
-@@ -768,6 +768,15 @@ _gcry_vcontrol (enum gcry_ctl_cmds cmd,
+--- libgcrypt-1.10.0.orig/src/global.c
++++ libgcrypt-1.10.0/src/global.c
+@@ -797,6 +797,15 @@ _gcry_vcontrol (enum gcry_ctl_cmds cmd,
        rc = _gcry_fips_indicator_kdf (arg_ptr);
        break;
  

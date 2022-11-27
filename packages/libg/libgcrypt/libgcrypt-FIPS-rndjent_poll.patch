@@ -1,8 +1,8 @@
-Index: libgcrypt-1.9.4/random/rndlinux.c
+Index: libgcrypt-1.10.0/random/rndoldlinux.c
 ===================================================================
---- libgcrypt-1.9.4.orig/random/rndlinux.c
-+++ libgcrypt-1.9.4/random/rndlinux.c
-@@ -141,7 +141,7 @@ _gcry_rndlinux_gather_random (void (*add
+--- libgcrypt-1.10.0.orig/random/rndoldlinux.c
++++ libgcrypt-1.10.0/random/rndoldlinux.c
+@@ -132,7 +132,7 @@ _gcry_rndoldlinux_gather_random (void (*
    volatile pid_t apid;
    int fd;
    int n;
@@ -11,7 +11,7 @@ Index: libgcrypt-1.9.4/random/rndlinux.c
    size_t n_hw;
    size_t want = length;
    size_t last_so_far = 0;
-@@ -196,26 +196,43 @@ _gcry_rndlinux_gather_random (void (*add
+@@ -187,26 +187,43 @@ _gcry_rndoldlinux_gather_random (void (*
        my_pid = apid;
      }
  
@@ -71,7 +71,7 @@ Index: libgcrypt-1.9.4/random/rndlinux.c
  
    /* Open the requested device.  The first time a device is to be
       opened we fail with a fatal error if the device does not exists.
-@@ -283,8 +301,6 @@ _gcry_rndlinux_gather_random (void (*add
+@@ -262,8 +279,6 @@ _gcry_rndoldlinux_gather_random (void (*
            do
              {
                nbytes = length < sizeof(buffer)? length : sizeof(buffer);
@@ -80,10 +80,10 @@ Index: libgcrypt-1.9.4/random/rndlinux.c
                _gcry_pre_syscall ();
                ret = getentropy (buffer, nbytes);
                _gcry_post_syscall ();
-Index: libgcrypt-1.9.4/random/rndjent.c
+Index: libgcrypt-1.10.0/random/rndjent.c
 ===================================================================
---- libgcrypt-1.9.4.orig/random/rndjent.c
-+++ libgcrypt-1.9.4/random/rndjent.c
+--- libgcrypt-1.10.0.orig/random/rndjent.c
++++ libgcrypt-1.10.0/random/rndjent.c
 @@ -279,13 +279,24 @@ _gcry_rndjent_poll (void (*add)(const vo
        if (!jent_rng_is_initialized)
          {

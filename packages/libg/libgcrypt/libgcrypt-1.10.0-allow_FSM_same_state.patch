@@ -1,8 +1,8 @@
-Index: libgcrypt-1.8.4/src/fips.c
+Index: libgcrypt-1.10.0/src/fips.c
 ===================================================================
---- libgcrypt-1.8.4.orig/src/fips.c
-+++ libgcrypt-1.8.4/src/fips.c
-@@ -930,6 +930,10 @@ fips_new_state (enum module_states new_s
+--- libgcrypt-1.10.0.orig/src/fips.c
++++ libgcrypt-1.10.0/src/fips.c
+@@ -890,6 +890,10 @@ fips_new_state (enum module_states new_s
  
      }
  

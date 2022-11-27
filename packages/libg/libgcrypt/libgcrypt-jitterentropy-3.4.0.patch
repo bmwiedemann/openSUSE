@@ -1,7 +1,7 @@
-Index: libgcrypt-1.9.4/random/jitterentropy-base.c
+Index: libgcrypt-1.10.0/random/jitterentropy-base.c
 ===================================================================
---- libgcrypt-1.9.4.orig/random/jitterentropy-base.c
-+++ libgcrypt-1.9.4/random/jitterentropy-base.c
+--- libgcrypt-1.10.0.orig/random/jitterentropy-base.c
++++ libgcrypt-1.10.0/random/jitterentropy-base.c
 @@ -42,7 +42,7 @@
  		      * require consumer to be updated (as long as this number
  		      * is zero, the API is not considered stable and can
@@ -145,10 +145,10 @@ Index: libgcrypt-1.9.4/random/jitterentropy-base.c
 +{
 +	return jent_set_fips_failure_callback_internal(cb);
 +}
-Index: libgcrypt-1.9.4/random/jitterentropy-gcd.c
+Index: libgcrypt-1.10.0/random/jitterentropy-gcd.c
 ===================================================================
---- libgcrypt-1.9.4.orig/random/jitterentropy-gcd.c
-+++ libgcrypt-1.9.4/random/jitterentropy-gcd.c
+--- libgcrypt-1.10.0.orig/random/jitterentropy-gcd.c
++++ libgcrypt-1.10.0/random/jitterentropy-gcd.c
 @@ -113,12 +113,8 @@ int jent_gcd_analyze(uint64_t *delta_his
  		goto out;
  	}
@@ -164,10 +164,10 @@ Index: libgcrypt-1.9.4/random/jitterentropy-gcd.c
  		ret = ECOARSETIME;
  		goto out;
  	}
-Index: libgcrypt-1.9.4/random/jitterentropy-health.c
+Index: libgcrypt-1.10.0/random/jitterentropy-health.c
 ===================================================================
---- libgcrypt-1.9.4.orig/random/jitterentropy-health.c
-+++ libgcrypt-1.9.4/random/jitterentropy-health.c
+--- libgcrypt-1.10.0.orig/random/jitterentropy-health.c
++++ libgcrypt-1.10.0/random/jitterentropy-health.c
 @@ -19,9 +19,24 @@
   * DAMAGE.
   */
@@ -204,10 +204,10 @@ Index: libgcrypt-1.9.4/random/jitterentropy-health.c
 +
  	return ec->health_failure;
  }
-Index: libgcrypt-1.9.4/random/jitterentropy-health.h
+Index: libgcrypt-1.10.0/random/jitterentropy-health.h
 ===================================================================
---- libgcrypt-1.9.4.orig/random/jitterentropy-health.h
-+++ libgcrypt-1.9.4/random/jitterentropy-health.h
+--- libgcrypt-1.10.0.orig/random/jitterentropy-health.h
++++ libgcrypt-1.10.0/random/jitterentropy-health.h
 @@ -20,11 +20,16 @@
  #ifndef JITTERENTROPY_HEALTH_H
  #define JITTERENTROPY_HEALTH_H
@@ -225,10 +225,10 @@ Index: libgcrypt-1.9.4/random/jitterentropy-health.h
  static inline uint64_t jent_delta(uint64_t prev, uint64_t next)
  {
  	return (next - prev);
-Index: libgcrypt-1.9.4/random/jitterentropy-noise.c
+Index: libgcrypt-1.10.0/random/jitterentropy-noise.c
 ===================================================================
---- libgcrypt-1.9.4.orig/random/jitterentropy-noise.c
-+++ libgcrypt-1.9.4/random/jitterentropy-noise.c
+--- libgcrypt-1.10.0.orig/random/jitterentropy-noise.c
++++ libgcrypt-1.10.0/random/jitterentropy-noise.c
 @@ -33,7 +33,7 @@
   * Update of the loop count used for the next round of
   * an entropy collection.
@@ -459,10 +459,10 @@ Index: libgcrypt-1.9.4/random/jitterentropy-noise.c
 +	sha3_update(ec->hash_state, jent_block, sizeof(jent_block));
 +	jent_memset_secure(jent_block, sizeof(jent_block));
 +}
-Index: libgcrypt-1.9.4/random/jitterentropy-noise.h
+Index: libgcrypt-1.10.0/random/jitterentropy-noise.h
 ===================================================================
---- libgcrypt-1.9.4.orig/random/jitterentropy-noise.h
-+++ libgcrypt-1.9.4/random/jitterentropy-noise.h
+--- libgcrypt-1.10.0.orig/random/jitterentropy-noise.h
++++ libgcrypt-1.10.0/random/jitterentropy-noise.h
 @@ -31,6 +31,7 @@ unsigned int jent_measure_jitter(struct
  				 uint64_t loop_cnt,
  				 uint64_t *ret_current_delta);
@@ -471,10 +471,10 @@ Index: libgcrypt-1.9.4/random/jitterentropy-noise.h
  
  #ifdef __cplusplus
  }
-Index: libgcrypt-1.9.4/random/jitterentropy-sha3.c
+Index: libgcrypt-1.10.0/random/jitterentropy-sha3.c
 ===================================================================
---- libgcrypt-1.9.4.orig/random/jitterentropy-sha3.c
-+++ libgcrypt-1.9.4/random/jitterentropy-sha3.c
+--- libgcrypt-1.10.0.orig/random/jitterentropy-sha3.c
++++ libgcrypt-1.10.0/random/jitterentropy-sha3.c
 @@ -19,6 +19,7 @@
   */
  
@@ -507,10 +507,10 @@ Index: libgcrypt-1.9.4/random/jitterentropy-sha3.c
 +
 +	jent_zfree(ctx, SHA_MAX_CTX_SIZE);
 +}
-Index: libgcrypt-1.9.4/random/jitterentropy-sha3.h
+Index: libgcrypt-1.10.0/random/jitterentropy-sha3.h
 ===================================================================
---- libgcrypt-1.9.4.orig/random/jitterentropy-sha3.h
-+++ libgcrypt-1.9.4/random/jitterentropy-sha3.h
+--- libgcrypt-1.10.0.orig/random/jitterentropy-sha3.h
++++ libgcrypt-1.10.0/random/jitterentropy-sha3.h
 @@ -47,6 +47,8 @@ struct sha_ctx {
  void sha3_256_init(struct sha_ctx *ctx);
  void sha3_update(struct sha_ctx *ctx, const uint8_t *in, size_t inlen);
@@ -520,10 +520,10 @@ Index: libgcrypt-1.9.4/random/jitterentropy-sha3.h
  int sha3_tester(void);
  
  #ifdef __cplusplus
-Index: libgcrypt-1.9.4/random/jitterentropy-timer.c
+Index: libgcrypt-1.10.0/random/jitterentropy-timer.c
 ===================================================================
---- libgcrypt-1.9.4.orig/random/jitterentropy-timer.c
-+++ libgcrypt-1.9.4/random/jitterentropy-timer.c
+--- libgcrypt-1.10.0.orig/random/jitterentropy-timer.c
++++ libgcrypt-1.10.0/random/jitterentropy-timer.c
 @@ -202,8 +202,8 @@ int jent_notime_enable(struct rand_data
  	if (jent_force_internal_timer || (flags & JENT_FORCE_INTERNAL_TIMER)) {
  		/* Self test not run yet */
@@ -535,10 +535,10 @@ Index: libgcrypt-1.9.4/random/jitterentropy-timer.c
  			return EHEALTH;
  
  		ec->enable_notime = 1;
-Index: libgcrypt-1.9.4/random/jitterentropy.h
+Index: libgcrypt-1.10.0/random/jitterentropy.h
 ===================================================================
---- libgcrypt-1.9.4.orig/random/jitterentropy.h
-+++ libgcrypt-1.9.4/random/jitterentropy.h
+--- libgcrypt-1.10.0.orig/random/jitterentropy.h
++++ libgcrypt-1.10.0/random/jitterentropy.h
 @@ -49,7 +49,7 @@
   ***************************************************************************/
  
@@ -557,7 +557,7 @@ Index: libgcrypt-1.9.4/random/jitterentropy.h
  	uint64_t prev_time;		/* SENSITIVE Previous time stamp */
  #define DATA_SIZE_BITS (SHA3_256_SIZE_DIGEST_BITS)
  
-@@ -378,28 +379,34 @@ int jent_entropy_init(void);
+@@ -378,28 +378,34 @@ int jent_entropy_init(void);
  JENT_PRIVATE_STATIC
  int jent_entropy_init_ex(unsigned int osr, unsigned int flags);
  
@@ -597,11 +597,11 @@ Index: libgcrypt-1.9.4/random/jitterentropy.h
  
  JENT_PRIVATE_STATIC
  int jent_notime_init(void **ctx);
-Index: libgcrypt-1.9.4/random/jitterentropy-base-user.h
+Index: libgcrypt-1.10.0/random/jitterentropy-base-user.h
 ===================================================================
---- libgcrypt-1.9.4.orig/random/jitterentropy-base-user.h
-+++ libgcrypt-1.9.4/random/jitterentropy-base-user.h
-@@ -216,12 +216,12 @@ static inline void jent_get_cachesize(lo
+--- libgcrypt-1.10.0.orig/random/jitterentropy-base-user.h
++++ libgcrypt-1.10.0/random/jitterentropy-base-user.h
+@@ -213,12 +213,12 @@ static inline void jent_get_cachesize(lo
  		ext = strstr(buf, "K");
  		if (ext) {
  			shift = 10;
