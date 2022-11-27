@@ -7,7 +7,7 @@
   boo#1094987: '20221026'
   boo#1172073: '20220918'
   boo#1183454: '20221125'
-  boo#1190434: '20221124'
+  boo#1190434: '20221125'
   boo#1190823: '20220409'
   boo#1196201: '20220525'
   boo#1196335: '20220524'
@@ -73,7 +73,7 @@
   boo#1204604: '20221109'
   boo#1204605: '20221022'
   boo#1204629: '20221024'
-  boo#1204833: '20221124'
+  boo#1204833: '20221125'
   boo#1205020: '20221104'
   boo#1205032: '20221110'
   boo#1205312: '20221113'
@@ -84,10 +84,10 @@
   boo#1205540: '20221123'
   boo#1205560: '20221124'
   boo#1205626: '20221125'
-  boo#1205633: '20221124'
+  boo#1205633: '20221125'
   boo#1205675: '20221125'
   boo#1205699: '20221124'
-  boo#1205745: '20221124'
+  boo#1205745: '20221125'
   boo#12345: '20221004'
   bsc#1161276: '20221027'
   bsc#1191684: '20220827'
@@ -147,7 +147,7 @@
   poo#115385: '20220822'
   poo#115388: '20220911'
   poo#115421: '20220919'
-  poo#115694: '20221124'
+  poo#115694: '20221125'
   poo#116048: '20220830'
   poo#116161: '20220904'
   poo#116704: '20221010'
@@ -158,7 +158,7 @@
   poo#117034: '20221125'
   poo#117154: '20221124'
   poo#117214: '20220926'
-  poo#117331: '20221124'
+  poo#117331: '20221125'
   poo#117457: '20220929'
   poo#117499: '20221008'
   poo#117559: '20221013'
@@ -175,6 +175,8 @@
   poo#120832: '20221125'
   poo#120834: '20221125'
   poo#120918: '20221125'
+  poo#120984: '20221125'
+  poo#120985: '20221125'
   poo#63397: '20220921'
   poo#80628: '20221125'
   poo#99312: '20220502'
@@ -220,7 +222,7 @@ rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-brandin
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20221125</value>
+    <value>20221126</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
@@ -546,9 +548,9 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20221125'
-published: '20221124'
-publishing: '20221124'
+    <value>failed: ''
+published: '20221125'
+publishing: '20221125'
 testing: '20221125'
 </value>
   </attribute>
