@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 25 15:22:01 UTC 2022 - Niklas Haas <obs@haasn.xyz>
+
+- Add vlc-libplacebo-5.patch: Backport fix for building with libplacebo v5
+
+-------------------------------------------------------------------
 Fri Nov 25 07:17:41 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.0.18:
