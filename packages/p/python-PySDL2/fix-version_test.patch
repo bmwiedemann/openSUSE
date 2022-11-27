@@ -1,0 +1,37 @@
+From ffa8853517cc72afefc8205db675fdf44d519159 Mon Sep 17 00:00:00 2001
+From: Simon McVittie <smcv@collabora.com>
+Date: Wed, 2 Nov 2022 23:21:54 +0000
+Subject: [PATCH] version_test: Don't assert that SDL_GetRevision() starts with
+ http (#249)
+
+The default format is going to change in 2.25.x, and in git main it
+currently starts with "SDL-".
+
+SDL specifically documents the result of this function as "not intended
+to be reliable in any way", so it seems wrong to have pysdl2's tests fail
+whenever the format changes. To address that, turn unexpected formats
+into an xfail, so that they're flagged as something to investigate but
+do not make the unit tests fail when used as a QA gate.
+
+Closes: https://github.com/py-sdl/py-sdl2/issues/248
+Signed-off-by: Simon McVittie <smcv@collabora.com>
+
+Signed-off-by: Simon McVittie <smcv@collabora.com>
+---
+ sdl2/test/version_test.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/sdl2/test/version_test.py b/sdl2/test/version_test.py
+index 8a327e1..4c4f54c 100644
+--- a/sdl2/test/version_test.py
++++ b/sdl2/test/version_test.py
+@@ -57,7 +57,8 @@ def test_SDL_GetRevision():
+     # If revision not empty string (e.g. Conda), test the prefix
+     if len(rev):
+         if dll.version_tuple >= (2, 0, 16):
+-            assert rev[0:4] == b"http"
++            if rev[0:4] not in (b"http", b"SDL-"):
++                pytest.xfail("no API guarantee about the format of this string")
+         else:
+             assert rev[0:3] == b"hg-"
+ 

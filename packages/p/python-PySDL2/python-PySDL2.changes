@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Nov 26 14:51:13 UTC 2022 - munix9@googlemail.com
+
+- Add fix-version_test.patch (gh#py-sdl/py-sdl2#248):
+  Don't assert that SDL_GetRevision() starts with http
+- Skip rpmlint error python-tests-in-package
+
+-------------------------------------------------------------------
 Wed Nov  2 12:09:29 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove .DS_Store files from sources
