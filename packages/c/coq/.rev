@@ -339,4 +339,23 @@
 </comment>
     <requestid>1002206</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>083b56dac6864f8070a6b0273d4fc294</srcmd5>
+    <version>8.16.1</version>
+    <time>1669549983</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.16.1.
+  * Fixed the conversion of `Prod` values in the native compiler.
+  * Added `SProp` check for opaque names in conversion.
+  * Pass the correct environment to compute η-expansion of
+    cofixpoints in VM and native compilation.
+  * Fixed an inconsistency with conversion of primitive arrays, and
+    associated incomplete strong normalization of primitive arrays
+    with `lazy`.
+  * `Print Assumptions` treats opaque definitions with missing
+    proofs (as found in .vos files, produced using -vos) as axioms
+    instead of ignoring them.
+</comment>
+    <requestid>1038367</requestid>
+  </revision>
 </revisionlist>

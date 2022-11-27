@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Nov 26 22:20:18 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 8.16.1.
+  * Fixed the conversion of `Prod` values in the native compiler.
+  * Added `SProp` check for opaque names in conversion.
+  * Pass the correct environment to compute η-expansion of
+    cofixpoints in VM and native compilation.
+  * Fixed an inconsistency with conversion of primitive arrays, and
+    associated incomplete strong normalization of primitive arrays
+    with `lazy`.
+  * `Print Assumptions` treats opaque definitions with missing
+    proofs (as found in .vos files, produced using -vos) as axioms
+    instead of ignoring them.
+
+-------------------------------------------------------------------
 Thu Sep  8 21:11:24 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 8.16.0.
