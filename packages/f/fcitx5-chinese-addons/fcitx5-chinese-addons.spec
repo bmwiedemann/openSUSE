@@ -17,15 +17,13 @@
 
 
 Name:           fcitx5-chinese-addons
-Version:        5.0.15
+Version:        5.0.16
 Release:        0
 Summary:        Pinyin and Table IM support for fcitx5
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/I18n/Chinese
 URL:            https://github.com/fcitx/fcitx5-chinese-addons
 Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}_dict.tar.xz
-#PATCH-FIX-OPENSUSE marguerite@opensuse.org - no download from net
-Patch1:         %{name}-qt-5.9.patch
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fcitx5-devel
@@ -102,7 +100,6 @@ This package provides development files for fcitx5-chinese-addons.
 
 %prep
 %setup -q
-%autopatch -p1
 
 %build
 %cmake -DUSE_WEBKIT=OFF

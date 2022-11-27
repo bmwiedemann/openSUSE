@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Nov 20 10:24:34 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 5.0.16
+  * Allow change the behavior when  switch input method for Pinyin
+  * Update emoji pinyin data
+  * If input is partially selected, press enter will also commit the
+    selected part, instead of just raw pinyin.
+- Remove obsolete patch
+  * fcitx5-chinese-addons-qt-5.9.patch
+
+-------------------------------------------------------------------
 Tue Sep 20 13:22:25 UTC 2022 - Marguerite Su <i@marguerite.su>
 
 - update to 5.0.15
