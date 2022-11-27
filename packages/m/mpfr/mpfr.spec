@@ -27,6 +27,7 @@ Source0:        https://www.mpfr.org/mpfr-%{version}/mpfr-%{version}.tar.xz
 Source1:        https://www.mpfr.org/mpfr-%{version}/mpfr-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
+Patch0:         mpfr-4.1.1-patch01.patch
 BuildRequires:  gmp-devel
 BuildRequires:  pkgconfig
 
@@ -67,6 +68,7 @@ based on the GMP multiple-precision library.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %configure \

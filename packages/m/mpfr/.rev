@@ -521,4 +521,13 @@
     <comment>- package license files correctly (forwarded request 1036805 from AndreasStieger)</comment>
     <requestid>1037024</requestid>
   </revision>
+  <revision rev="57" vrev="3">
+    <srcmd5>be55bf9654fa0958355680de24393c6c</srcmd5>
+    <version>4.1.1</version>
+    <time>1669549963</time>
+    <user>dimstar_suse</user>
+    <comment>- Add mpfr-4.1.1-patch01.patch to fix bug with code using
+  the mpfr_custom_get_kind macro.</comment>
+    <requestid>1037844</requestid>
+  </revision>
 </revisionlist>
