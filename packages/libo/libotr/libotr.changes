@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 25 19:32:01 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
+
+- Add sys/socket.h to the test suite that FTBFS without the include
+  * Add libotr-4.1.1-include-socket.h.patch
+
+-------------------------------------------------------------------
 Thu Sep 27 14:58:11 UTC 2018 - schwab@suse.de
 
 - libotr-test-uninitialized.patch: Fix use of uninitialized memory in

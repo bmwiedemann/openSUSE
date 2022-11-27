@@ -1,7 +1,7 @@
 #
 # spec file for package libotr
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,15 +20,16 @@ Name:           libotr
 Version:        4.1.1
 Release:        0
 Summary:        "Off The Record" messaging library toolkit
-License:        LGPL-2.1-only AND GPL-2.0-only
+License:        GPL-2.0-only AND LGPL-2.1-only
 Group:          Development/Libraries/C and C++
-Url:            https://www.cypherpunks.ca/otr/
+URL:            https://www.cypherpunks.ca/otr/
 Source:         https://www.cypherpunks.ca/otr/%{name}-%{version}.tar.gz
 Source1:        https://www.cypherpunks.ca/otr/%{name}-%{version}.tar.gz.asc
 Source2:        http://www.cypherpunks.ca/otr/gpgkey.asc#/libotr.keyring
 Patch0:         libotr-4.1.1-fix-base64-tests.patch
 Patch1:         libotr-test-underrun.patch
 Patch2:         libotr-test-uninitialized.patch
+Patch3:         libotr-4.1.1-include-socket.h.patch
 BuildRequires:  libgcrypt-devel >= 1.2.0
 BuildRequires:  pkgconfig
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -67,7 +68,7 @@ conversation is compromised.
 
 %package devel
 Summary:        Include files and development libraries
-License:        LGPL-2.1-only AND GPL-2.0-only
+License:        GPL-2.0-only AND LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 Requires:       libgcrypt-devel
 Requires:       libotr5 = %{version}
@@ -93,10 +94,7 @@ secrecy If you lose control of your private keys, no previous
 conversation is compromised.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 
 %build
 %ifarch %arm
