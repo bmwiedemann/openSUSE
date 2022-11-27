@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Nov 23 09:15:25 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Update to gawk 5.2.1
+  * Issues related to the sign of NaN and Inf values on RiscV have
+    been fixed
+  * A few issues with the debugger have been fixed.
+  * More subtle issues with untyped array elements being passed to
+    functions have been fixed.
+  * The rwarray extension's readall() function has had some bugs fixed.
+  * The PMA allocator is now supported on FreeBSD, OpenBSD and Linux on
+    S/390x.
+- double-free.patch, pma.patch, nan-sign.patch: Removed
+
+-------------------------------------------------------------------
 Sat Sep 24 08:40:01 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - double-free.patch: Yet another fix for Node_elem_new

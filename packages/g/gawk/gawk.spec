@@ -17,7 +17,7 @@
 
 
 Name:           gawk
-Version:        5.2.0
+Version:        5.2.1
 Release:        0
 Summary:        Domain-specific language for text processing
 License:        GPL-3.0-or-later
@@ -27,9 +27,6 @@ Source:         http://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz
 Source2:        http://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz.sig
 Source3:        http://savannah.gnu.org/people/viewgpg.php?user_id=80653#/gawk.keyring
 Source4:        gawk.rpmlintrc
-Patch0:         pma.patch
-Patch1:         nan-sign.patch
-Patch2:         double-free.patch
 Provides:       awk
 BuildRequires:  mpfr-devel
 BuildRequires:  readline-devel
