@@ -51,6 +51,8 @@ Patch1:         vlc-allow-deprecated-fribidi.patch
 Patch2:         vlc-lua-5.3.patch
 # PATCH-FIX-UPSTREAM fix-build-with-fdk-2.0.patch -- Fix building vlc with libfdk-aac v2
 Patch4:         fix-build-with-fdk-2.0.patch
+# PATCH-FIX-UPSTREAM -- Backport libplacebo v5 compatibility patch to vlc v3
+Patch5:         vlc-libplacebo-5.patch
 # PATCH-FEATURE-OPENSUSE vlc-projectM-qt5.patch -- Build against projectM-qt5; openSUSE provides projectM as -qt and -qt5 variant
 Patch100:       vlc-projectM-qt5.patch
 # PATCH-FIX-UPSTREAM -- Use OpenCV C++ API
@@ -410,6 +412,10 @@ OpenCV based video filters and a face detection example.
 ### And LUA 5.3.1 has some more API changes
 if pkg-config --atleast-version 5.3.1 lua; then
 %patch2 -p1
+fi
+
+if pkg-config --atleast-version 5 libplacebo; then
+%patch5 -p1
 fi
 
 # We do not rely on contrib but make use of system libraries
