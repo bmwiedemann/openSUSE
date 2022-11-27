@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Nov 27 08:15:26 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.4.0
+  * Pass client exit code in heaptrack.sh
+  * Leverage non-deprecated mallinfo2
+  * Add support for the mimalloc allocator
+  * Explicitly encode which hooks are required and which are
+    optional
+  * Make mi_* symbols truly optional by usig weak symbols for them
+  * Prevent malloc from disappearing in inlining example
+  * handle calling heaptrack_stop() without debuginfo
+  * Ensure we don't try to overwrite invalid tables
+  * Make elf_symbol_table a view of const Elf::Sym
+  * Ensure we don't read outside the string table for symbol names
+  * Silence -Wuse-after-free for realloc call
+
+-------------------------------------------------------------------
 Sun Dec 19 15:09:15 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 1.3.0:

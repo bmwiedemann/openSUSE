@@ -1,7 +1,7 @@
 #
 # spec file for package heaptrack
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,18 @@
 
 
 %define kf5_version 5.26.0
-%bcond_without lang
+%bcond_without released
 Name:           heaptrack
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        Heap Memory Allocation Profiler
 License:        LGPL-2.1-or-later
-Group:          Development/Tools/Other
-URL:            https://userbase.kde.org/Heaptrack
+URL:            https://apps.kde.org/heaptrack/
 Source0:        https://download.kde.org/stable/heaptrack/%{version}/%{name}-%{version}.tar.xz
+%if %{with released}
+Source1:        https://download.kde.org/stable/heaptrack/%{version}/%{name}-%{version}.tar.xz.sig
+Source2:        heaptrack.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  libboost_container-devel
@@ -46,8 +49,7 @@ BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5ItemModels)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5ThreadWeaver)
-BuildRequires:  cmake(Qt5Core) >= 5.2.0
-BuildRequires:  cmake(Qt5DBus)
+BuildRequires:  cmake(Qt5Core) >= 5.10.0
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  pkgconfig(libzstd)
 Suggests:       heaptrack-gui
@@ -57,7 +59,6 @@ A memory profiler for Linux, tracking heap allocations.
 
 %package devel
 Summary:        Development files for the Heaptrack API
-Group:          Development/Libraries/KDE
 Requires:       %{name} = %{version}
 
 %description devel
@@ -66,7 +67,6 @@ API.
 
 %package gui
 Summary:        GUI Frontend for Heaptrack
-Group:          Development/Tools/Other
 Requires:       %{name} = %{version}
 
 %description gui
@@ -90,12 +90,12 @@ extra_opts="-DLIB_SUFFIX=64"
 %cmake_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with lang}
-    %find_lang %{name} --all-name
-  %endif
-  # Fixup desktop file
-  %suse_update_desktop_file org.kde.heaptrack Development Profiling
+%kf5_makeinstall -C build
+
+%find_lang %{name} --all-name
+
+# Fixup desktop file
+%suse_update_desktop_file org.kde.heaptrack Development Profiling
 
 %files
 %license LICENSES/*
@@ -110,14 +110,12 @@ extra_opts="-DLIB_SUFFIX=64"
 
 %files gui
 %{_kf5_bindir}/heaptrack_gui
-%{_datadir}/applications/org.kde.heaptrack.desktop
+%{_kf5_applicationsdir}/org.kde.heaptrack.desktop
 %{_kf5_appstreamdir}/org.kde.heaptrack.appdata.xml
 %dir %{_kf5_iconsdir}/hicolor/*
 %dir %{_kf5_iconsdir}/hicolor/*/*
 %{_kf5_iconsdir}/*/*/*/*.*
 
-%if %{with lang}
 %files lang -f %{name}.lang
-%endif
 
 %changelog
