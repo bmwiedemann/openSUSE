@@ -1,3 +1,10 @@
+gpxsee (11.10) stable; urgency=low
+
+  * Fixed broken Inland ECDIS rendering.
+  * Improved ENC maps render style.
+
+ -- Martin Tuma <tumic@cbox.cz>  Sat, 26 Nov 2022 20:15:41 +0100
+
 gpxsee (11.9) stable; urgency=low
 
   * Improved ENC maps render style.
