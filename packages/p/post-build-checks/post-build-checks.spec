@@ -16,13 +16,13 @@
 #
 
 
-%define version_unconverted 84.87+git20220922.95e4f0a
+%define version_unconverted 84.87+git20221125.a8b2d0e
 
 Name:           post-build-checks
 Summary:        post checks for build after rpms have been created
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Building
-Version:        84.87+git20220922.95e4f0a
+Version:        84.87+git20221125.a8b2d0e
 Release:        0
 PreReq:         aaa_base
 PreReq:         permissions

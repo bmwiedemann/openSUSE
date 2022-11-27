@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 25 12:59:11 UTC 2022 - ro@suse.de
+
+- Update to version 84.87+git20221125.a8b2d0e:
+  * Add mount, umount, swapon and swapoff to ESSENTIAL_PKG_TO_KEEP
+
+-------------------------------------------------------------------
 Fri Sep 23 11:06:44 UTC 2022 - dimstar@opensuse.org
 
 - Update to version 84.87+git20220922.95e4f0a:
