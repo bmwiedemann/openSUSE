@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Nov 19 22:16:35 UTC 2022 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
+
+- add backintime-rsync324_args.patch for Tumbleweed
+  + rsync 3.2.4 changes argument syntax; workaround until next release of backintime
+- require notify-send (libnotify-tools) for error messages
+
+-------------------------------------------------------------------
 Sun Aug 14 04:15:20 UTC 2022 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
 
 - Don't require pkexec on Leap.

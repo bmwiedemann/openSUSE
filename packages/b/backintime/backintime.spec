@@ -29,6 +29,8 @@ Source2:        %{name}.keyring
 Source3:        %{name}.png
 # PATCH-FEATURE-OPENSUSE %%{name}-polkit_priv_downgrade.patch boo#1007723
 Patch0:         %{name}-polkit_priv_downgrade.patch
+# PATCH-FIX-UPSTREAM %%{name}-rsync324_args.patch rsync-3.2.4 on TW changes argument syntax; workaround until new release of backintime
+Patch1:         %{name}-rsync324_args.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python3-devel
@@ -44,6 +46,7 @@ Requires:       python3-keyring
 Requires:       rsync
 Recommends:     encfs
 Recommends:     sshfs
+Requires:       libnotify-tools
 Conflicts:      backintime-gnome
 Conflicts:      backintime-kde
 Obsoletes:      backintime-doc < %{version}
@@ -77,6 +80,10 @@ This package has a Qt5 GUI for %{name}.
 %prep
 %setup -q
 %patch0
+# rsync-3.2.4 on TW changes argument syntax; workaround until new release of backintime
+%if 0%{?suse_version} > 1500
+%patch1
+%endif
 
 %build
 
