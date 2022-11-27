@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Nov 26 22:23:52 UTC 2022 - malcolmlewis@opensuse.org
+
+- Update to version 0.99.52:
+  * Added support for typescript syntax highlighting,
+    (gh#giuspen/cherrytree#2161).
+  * Moved encryption and backup to a separate thread; implemented
+    verification of the backup before encryption and rotation,
+    (gh#giuspen/cherrytree#2148).
+  * Linux support path links starting with ~/,
+    (gh#giuspen/cherrytree#2149).
+  * Code execution: added new tag to allow placing the code
+    directly into the terminal rather than in a temporary file,
+    (gh#giuspen/cherrytree#1772).
+  * Fix import from gnote/tomboy (gh#giuspen/cherrytree#2152,
+    gh#giuspen/cherrytree#1991 and gh#giuspen/cherrytree#1686).
+  * Fix paste from gnome-characters in fedora,
+    (gh#giuspen/cherrytree#2094).
+  * Assigned hard coded keyboard shortcut to change codebox
+    properties 'Ctrl'+'[', (gh#giuspen/cherrytree#2138).
+  * Updated translations.
+
+-------------------------------------------------------------------
 Mon Oct 24 15:55:22 UTC 2022 - malcolmlewis@opensuse.org
 
 - Update to version 0.99.51:
