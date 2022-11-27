@@ -1,7 +1,7 @@
 #
-# spec file for package python-PyVirtualDisplay
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,18 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-Name:           python-PyVirtualDisplay
-Version:        2.2
+Name:           python-PyVirtualDisplay%{psuffix}
+Version:        3.0
 Release:        0
 Summary:        Python wrapper for Xvfb, Xephyr and Xvnc
 License:        BSD-2-Clause
@@ -33,7 +41,9 @@ Requires:       xorg-x11-Xvfb
 Suggests:       xorg-x11-Xvnc
 Suggests:       xorg-x11-server-extra
 BuildArch:      noarch
+%if %{with test}
 # SECTION test requirements
+BuildRequires:  %{python_module PyVirtualDisplay}
 BuildRequires:  %{python_module EasyProcess}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module attrs}
@@ -46,6 +56,7 @@ BuildRequires:  xmessage
 BuildRequires:  xorg-x11-server-extra
 BuildRequires:  xvfb-run
 # /SECTION
+%endif
 %python_subpackages
 
 %description
@@ -58,9 +69,12 @@ PyVirtualDisplay is a python wrapper for Xvfb, Xephyr and Xvnc.
 %python_build
 
 %install
+%if !%{with test}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
+%if %{with test}
 %check
 donttest="examples or smart"
 %{python_expand #
@@ -68,11 +82,14 @@ export PYTHONPATH=%{buildroot}%{$python_sitelib}
 xvfb-run --server-args "-screen 0 1920x1080x24" \
   $python -m pytest -v tests -rs -k "not ($donttest)" -n auto
 }
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %license LICENSE.txt
 %doc README.md
 %{python_sitelib}/pyvirtualdisplay
 %{python_sitelib}/PyVirtualDisplay-%{version}-*info
+%endif
 
 %changelog
