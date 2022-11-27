@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 22 12:48:38 UTC 2022 - Dan Čermák <dcermak@suse.com>
+
+- Update bundled common to 0.50.1
+- Update bundled image to 5.23.1
+- Update bundled storage to 1.44.0
+- Drop bundled podman
+- Bump version to 20221122
+- Install container-storage-driver.sh in /etc/ on Leap & SLE
+
+-------------------------------------------------------------------
 Thu Nov 17 10:51:26 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add container-storage-driver.sh (bsc#1197093)
