@@ -49,7 +49,7 @@
 %define dracutlibdir %{_prefix}/lib/dracut
 
 Name:           kdump
-Version:        1.0.2+git20.gcb129d0
+Version:        1.0.2+git26.gc6fab38
 Release:        0
 Summary:        Script for kdump
 License:        GPL-2.0-or-later
@@ -96,6 +96,11 @@ Requires:       dracut >= 047
 Requires:       kexec-tools
 Requires:       makedumpfile
 Requires:       openssh
+%ifarch ppc64 ppc64le
+Requires:       servicelog
+BuildRequires:  servicelog
+%endif
+
 # FIXME: use proper Requires(pre/post/preun/...)
 PreReq:         %fillup_prereq
 PreReq:         /usr/bin/mkdir
@@ -186,8 +191,15 @@ if test -d %{_localstatedir}/log/dump && rmdir %{_localstatedir}/log/dump >/dev/
         ! test -d %{_localstatedir}/log/dump ; then
     ln -snf %{_localstatedir}/crash %{_localstatedir}/log/dump
 fi
+%ifarch ppc64 ppc64le
+servicelog_notify --remove --command=/usr/lib/kdump/kdump-migrate-action.sh
+servicelog_notify --add --command=/usr/lib/kdump/kdump-migrate-action.sh --match='refcode="#MIGRATE" and serviceable=0' --type=EVENT --method=pairs_stdin
+%endif
 
 %preun
+%ifarch ppc64 ppc64le
+servicelog_notify --remove --command=/usr/lib/kdump/kdump-migrate-action.sh
+%endif
 echo "Stopping kdump ..."
 %service_del_preun kdump.service
 %service_del_preun kdump-early.service

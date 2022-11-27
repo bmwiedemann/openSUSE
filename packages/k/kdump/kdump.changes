@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Nov 25 17:54:45 UTC 2022 - Jiri Bohac <jbohac@suse.com>
+
+- Make the kdump-save.service reboot after kdump-save is finished
+  (bsc#1204000)
+
+-------------------------------------------------------------------
+Tue Nov 22 17:32:31 UTC 2022 - Jiri Bohac <jbohac@suse.com>
+
+- fix renaming of qeth interfaces (bsc#1204743, bsc#1144337)
+- ppc64: rebuild initrd image after migration (bsc#1191410)
+- kdumptool calibrate: modify fadump suggestions (jsc#IBM-1027)
+
+-------------------------------------------------------------------
 Thu Sep 29 12:42:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to kdump-1.0.2+git20:
