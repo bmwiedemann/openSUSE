@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov 20 10:24:22 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 5.0.16
+  * theme generator will now consider if the theme supports blur
+- Remove obsolete patch
+  * fcitx5-configtool-qt-5.9.patch
+
+-------------------------------------------------------------------
 Wed Sep 21 13:55:30 UTC 2022 - Marguerite Su <i@marguerite.su>
 
 - update version 5.0.15

@@ -17,15 +17,14 @@
 
 
 Name:           fcitx5-configtool
-Version:        5.0.15
+Version:        5.0.16
 Release:        0
 Summary:        Configuration tool for fcitx5
 License:        GPL-2.0-or-later
 Group:          System/I18n/Chinese
 URL:            https://github.com/fcitx/fcitx5-configtool
 Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.xz
-Patch1:         %{name}-qt-5.9.patch
-Patch2:         %{name}-gcc7.patch
+Patch1:         %{name}-gcc7.patch
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fcitx5-devel
