@@ -1304,4 +1304,12 @@
     <comment></comment>
     <requestid>1007819</requestid>
   </revision>
+  <revision rev="167" vrev="10">
+    <srcmd5>3f47dbbe36d2bbfd2efde2c96da58f43</srcmd5>
+    <version>84.87</version>
+    <time>1669549965</time>
+    <user>dimstar_suse</user>
+    <comment>- Add %_user_tmpfilesdir to the filesystem (forwarded request 1037889 from oertel)</comment>
+    <requestid>1037891</requestid>
+  </revision>
 </revisionlist>

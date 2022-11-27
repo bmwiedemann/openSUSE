@@ -111,6 +111,7 @@
 0555 root root /usr/share/omc
 0555 root root /usr/share/omc/svcinfo.d
 0555 root root /usr/share/themes
+0755 root root /usr/share/user-tmpfiles.d
 0555 root root /usr/share/xml
 0555 root root /usr/share/xml/docbook
 0555 root root /usr/share/xsessions

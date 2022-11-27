@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov 24 12:27:27 UTC 2022 - Dan Čermák <dcermak@suse.com>
+
+- Add %_user_tmpfilesdir to the filesystem
+
+-------------------------------------------------------------------
+Thu Nov 17 11:22:51 UTC 2022 - Fabio Pesari <fpesari@tuxfamily.org>
+
+- Added zh_Hans (simplified Chinese) and zh_Hant (traditional 
+  chinese) locales
+
+-------------------------------------------------------------------
 Sat Sep 17 17:19:41 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update /usr/etc/skel per XDG Directory Specification:
