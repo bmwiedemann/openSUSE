@@ -17,15 +17,13 @@
 
 
 Name:           iputils
-Version:        20211215
+Version:        20221126
 Release:        0
 Summary:        IPv4 and IPv6 Networking Utilities
 License:        BSD-3-Clause AND GPL-2.0-or-later
 Group:          Productivity/Networking/Other
 URL:            https://github.com/iputils/iputils
 Source0:        https://github.com/iputils/iputils/archive/%{version}.tar.gz
-Patch1:         0001-ping-Add-SA_RESTART-to-sa_flags.patch
-Patch2:         0002-ping-Make-ping_rts-struct-static.patch
 BuildRequires:  docbook5-xsl-stylesheets
 BuildRequires:  docbook_5
 BuildRequires:  iproute2
@@ -57,7 +55,7 @@ ping, arping and tracepath.
 # Pulled-in by the LINK.o variable.
 export LDFLAGS="-Wl,-z,relro,-z,now"
 
-%meson -DBUILD_NINFOD=false -DBUILD_RARPD=false -DBUILD_RDISC=false -DNO_SETCAP_OR_SUID=true -Db_pie=true -Dc_std=none
+%meson -DNO_SETCAP_OR_SUID=true -Db_pie=true -Dc_std=none
 %meson_build
 
 %install

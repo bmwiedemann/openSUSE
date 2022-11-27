@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Nov 26 00:10:00 UTC 2022 - Petr Vorel <pvorel@suse.cz>
+
+- Update to version 20221126
+  https://github.com/iputils/iputils/releases/tag/20221126
+- Update configure variables (ninfod, rarpd and rdisc were removed from
+  upstream in next release => remove -DBUILD_NINFOD=false -DBUILD_RARPD=false
+  -DBUILD_RDISC=false)
+- Remove 2 backported fixes from this release
+  0001-ping-Add-SA_RESTART-to-sa_flags.patch
+  0002-ping-Make-ping_rts-struct-static.patch
+
+-------------------------------------------------------------------
 Mon Oct  3 11:45:30 UTC 2022 - Petr Vorel <pvorel@suse.cz>
 
 - Backport 2 fixes for bsc#1203957:
