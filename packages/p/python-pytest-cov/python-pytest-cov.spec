@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %bcond_without test
@@ -27,16 +26,12 @@
 %endif
 %define skip_python2 1
 Name:           python-pytest-cov%{psuffix}
-Version:        3.0.0
+Version:        4.0.0
 Release:        0
 Summary:        Pytest plugin for coverage reporting
 License:        MIT
 URL:            https://github.com/pytest-dev/pytest-cov
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-cov/pytest-cov-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#pytest-dev/pytest-cov#509
-Patch0:         support-coverage-62.patch
-# PATCH-FIX-UPSTREAM gh#pytest-dev/pytest-cov#545
-Patch1:         support-setuptools60.patch
 BuildRequires:  %{python_module setuptools}
 %if %{with test}
 BuildRequires:  %{python_module coverage >= 5.2.1}
@@ -76,11 +71,15 @@ through pytest-cov or through coverage's config file.
 
 %check
 %if %{with test}
-# test_dist_missing_data - needs internet access
-# test_central_subprocess_change_cwd_with_pythonpath - needs pytest cov in venv which is not doable in OBS build
 export PYTHONDONTWRITEBYTECODE=1
 echo "import site;site.addsitedir(\"$(pwd)/src\")" > tests/sitecustomize.py
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib}:$PWD/tests py.test-%{$python_bin_suffix} -v -k 'not (test_dist_missing_data or test_central_subprocess_change_cwd_with_pythonpath)'
+# test_dist_missing_data - needs internet access
+# test_central_subprocess_change_cwd_with_pythonpath - needs pytest cov in venv which is not doable in OBS build
+donttest="test_dist_missing_data or test_central_subprocess_change_cwd_with_pythonpath"
+# Tests broken with the latest version of python-coverage (6.5.0)
+# gh#pytest-dev/pytest-cov#570
+donttest+=" or test_contexts"
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib}:$PWD/tests py.test-%{$python_bin_suffix} -v -k "not (${donttest})"
 %endif
 
 %if ! %{with test}

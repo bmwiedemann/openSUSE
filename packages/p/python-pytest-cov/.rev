@@ -224,4 +224,38 @@
     <comment></comment>
     <requestid>989859</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>c6c0304924dcb743c522f83f3f77619f</srcmd5>
+    <version>4.0.0</version>
+    <time>1669634145</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable failing tests (test_contexts) that fails because of the new version
+  of python-coverage, gh#pytest-dev/pytest-cov#570
+- Remove support-coverage-62.patch
+- Remove support-setuptools60.patch
+- Update to 4.0.0:
+  * --cov-fail-under no longer causes pytest --collect-only to fail Contributed
+    by Zac Hatfield-Dodds in #511.
+  * Dropped support for multiprocessing (mostly because issue 82408). This
+    feature was mostly working but very broken in certain scenarios and made
+    the test suite very flaky and slow.
+  * There is builtin multiprocessing support in coverage and you can migrate to
+    that. All you need is this in your .coveragerc:
+       [run]
+       concurrency = multiprocessing
+       parallel = true
+       sigterm = true
+  * Fixed deprecation in setup.py by trying to import setuptools before
+    distutils. Contributed by Ben Greiner in #545.
+  * Removed undesirable new lines that were displayed while reporting was
+    disabled. Contributed by Delgan in #540.
+  * Documentation fixes. Contributed by Andre Brisco in #543 and Colin O'Dell
+    in #525.
+  * Added support for LCOV output format via --cov-report=lcov. Only works with
+    coverage 6.3+. Contributed by Christian Fetzer in #536.
+  * Modernized pytest hook implementation. Contributed by Bruno Oliveira in
+    #549 and Ronny Pfannschmidt in #550.
+</comment>
+    <requestid>1038610</requestid>
+  </revision>
 </revisionlist>
