@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Nov 26 16:43:24 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Delete system-libs.patch (not needed - system libs are
+  autodetected)
+
+-------------------------------------------------------------------
 Wed Nov 23 11:25:43 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Initial package for build.opensuse.org (version 20220925)
