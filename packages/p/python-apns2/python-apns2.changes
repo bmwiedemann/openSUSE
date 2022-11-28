@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 25 07:09:30 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch use-httpx.patch to drop dependency on unmaintained hyper. 
+
+-------------------------------------------------------------------
 Fri Feb 26 15:42:17 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Add pr_122.patch to fix builds
