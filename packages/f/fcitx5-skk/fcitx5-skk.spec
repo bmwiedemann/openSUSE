@@ -17,7 +17,7 @@
 
 
 Name:           fcitx5-skk
-Version:        5.0.11
+Version:        5.0.14
 Release:        0
 Summary:        Libskk input method engine for Fcitx5
 License:        GPL-3.0-or-later
