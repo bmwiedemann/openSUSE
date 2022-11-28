@@ -64,7 +64,7 @@ Macros:
   BuildFlags: logidlelimit:5400
 %endif
 
-%if "%_project" == "openSUSE:Factory" || "%_project" == "openSUSE:Factory:NonFree" || "%_project" == "openSUSE:Factory:PowerPC" || "%_project" == "openSUSE:Factory:ARM" || "%_project" == "openSUSE:Factory:Live" || "%_project" == "openSUSE:Factory:Rebuild" || "%_project" == "openSUSE:Factory:Rings" || "%_project" == "openSUSE:Factory:Rings:0-Bootstrap" || "%_project" == "openSUSE:Factory:Rings:1-MinimalX" || "%_project" == "openSUSE:Factory:Containers" || "%_project" == "openSUSE:Factory:RISCV" || "%_project" == "openSUSE:Factory:zSystems"
+%if "%_project" == "openSUSE:Factory" || "%_project" == "openSUSE:Factory:NonFree" || "%_project" == "openSUSE:Factory:PowerPC" || "%_project" == "openSUSE:Factory:ARM" || "%_project" == "openSUSE:Factory:Live" || "%_project" == "openSUSE:Factory:Rebuild" || "%_project" == "openSUSE:Factory:Rings" || "%_project" == "openSUSE:Factory:Rings:0-Bootstrap" || "%_project" == "openSUSE:Factory:Rings:1-MinimalX" || "%_project" == "openSUSE:Factory:Containers" || "%_project" == "openSUSE:Factory:RISCV" || "%_project" == "openSUSE:Factory:zSystems" || "%_project" == "openSUSE:Factory:LegacyX86"
 BuildFlags: excludebuild:openh264
 Macros:
 %vendor openSUSE
@@ -73,7 +73,7 @@ Macros:
 :Macros
 %endif
 
-%if "%_project" == "openSUSE:Factory" || "%_project" == "openSUSE:Factory:PowerPC" || "%_project" == "openSUSE:Factory:ARM" || "%_project" == "openSUSE:Factory:Rebuild" || "%_project" == "openSUSE:Factory:Live" || "%_project" == "openSUSE:Factory:NonFree"
+%if "%_project" == "openSUSE:Factory" || "%_project" == "openSUSE:Factory:PowerPC" || "%_project" == "openSUSE:Factory:ARM" || "%_project" == "openSUSE:Factory:Rebuild" || "%_project" == "openSUSE:Factory:Live" || "%_project" == "openSUSE:Factory:NonFree" || "%_project" == "openSUSE:Factory:LegacyX86"
 Substitute: kiwi-image:docker python3-kiwi kiwi-systemdeps-containers container-build-checks-vendor-openSUSE container-build-checks-strict
 Substitute: system-packages:docker kmod kernel-default docker createrepo_c container-build-checks-vendor-openSUSE container-build-checks-strict
 Substitute: system-packages:podman podman buildah createrepo_c release-compare container-build-checks-vendor-openSUSE container-build-checks-strict
@@ -85,7 +85,7 @@ Substitute: system-packages:docker kmod kernel-default docker createrepo_c conta
 Substitute: system-packages:podman podman buildah createrepo_c release-compare container-build-checks-vendor-openSUSE
 %endif
 
-%if "%_project" == "openSUSE:Factory" || "%_project" == "openSUSE:Factory:PowerPC" || "%_project" == "openSUSE:Factory:ARM" || "%_project" == "openSUSE:Factory:zSystems"
+%if "%_project" == "openSUSE:Factory" || "%_project" == "openSUSE:Factory:PowerPC" || "%_project" == "openSUSE:Factory:ARM" || "%_project" == "openSUSE:Factory:zSystems" || "%_project" == "openSUSE:Factory:LegacyX86"
 BuildFlags: excludebuild:openh264
 %endif
 
