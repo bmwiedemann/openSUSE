@@ -1,6 +1,6 @@
 <services>
   <service mode="disabled" name="obs_scm">
-    <param name="url">git://github.com/kernelslacker/trinity</param>
+    <param name="url">https://github.com/kernelslacker/trinity</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
     <param name="filename">trinity</param>

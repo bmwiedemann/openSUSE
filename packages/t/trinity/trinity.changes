@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 28 08:49:14 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.9+git.20220913:
+  * set_mempolicy_home_node skeleton
+  * futex_waitv skeleton
+  * fix warning about pragma diagnostic pop without push
+
+-------------------------------------------------------------------
 Thu Mar 10 12:37:14 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.9+git.20220309:

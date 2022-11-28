@@ -714,4 +714,15 @@
   * add support for riscv64 platform</comment>
     <requestid>960754</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>72eeefea8d9da3953da00d0c262f42ec</srcmd5>
+    <version>1.9+git.20220913</version>
+    <time>1669630051</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.9+git.20220913:
+  * set_mempolicy_home_node skeleton
+  * futex_waitv skeleton
+  * fix warning about pragma diagnostic pop without push</comment>
+    <requestid>1038593</requestid>
+  </revision>
 </revisionlist>
