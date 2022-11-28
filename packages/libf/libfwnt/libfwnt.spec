@@ -28,11 +28,8 @@ Source:         https://github.com/libyal/libfwnt/releases/download/%version/lib
 Source2:        https://github.com/libyal/libfwnt/releases/download/%version/libfwnt-alpha-%version.tar.gz.asc
 Source3:        %name.keyring
 Source11:       Locale_identifier_LCID.pdf
-Patch1:         system-libs.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  c_compiler
-BuildRequires:  gettext-tools >= 0.21
-BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libcdata) >= 20220115
@@ -40,6 +37,7 @@ BuildRequires:  pkgconfig(libcerror) >= 20220101
 BuildRequires:  pkgconfig(libcnotify) >= 20220108
 BuildRequires:  pkgconfig(libcthreads) >= 20220102
 %python_subpackages
+# Various notes: https://en.opensuse.org/libyal
 
 %description
 Library to provide Windows NT data type support for the libyal family of libraries.
@@ -72,15 +70,12 @@ applications that want to make use of libfwnt.
 cp %_sourcedir/*.pdf .
 
 %build
-autoreconf -fi
-# OOT builds are presently broken, so we have to install
-# within each python iteration now, not in %%install.
 %{python_expand #
-# see libcdata for version-sc
 echo "V_%version { global: *; };" >v.sym
 %configure --disable-static \
 	--enable-python PYTHON_VERSION="%{$python_bin_suffix}" \
 	LDFLAGS="-Wl,--version-script=$PWD/v.sym"
+grep ' '' ''local' config.log && exit 1
 %make_build
 %make_install DESTDIR="%_builddir/rt"
 %make_build clean
@@ -89,9 +84,6 @@ echo "V_%version { global: *; };" >v.sym
 %install
 mv %_builddir/rt/* %buildroot/
 find %{buildroot} -type f -name "*.la" -delete -print
-
-%check
-# make check
 
 %post   -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
