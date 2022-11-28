@@ -27,12 +27,7 @@ URL:            https://github.com/libyal/libfplist
 Source:         https://github.com/libyal/libfplist/releases/download/%version/libfplist-experimental-%version.tar.gz
 Source2:        https://github.com/libyal/libfplist/releases/download/%version/libfplist-experimental-%version.tar.gz.asc
 Source9:        %name.keyring
-Patch1:         system-libs.patch
-BuildRequires:  bison
 BuildRequires:  c_compiler
-BuildRequires:  flex
-BuildRequires:  gettext-tools >= 0.18.1
-BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libcdata) >= 20220115
 BuildRequires:  pkgconfig(libcerror) >= 20220101
@@ -41,6 +36,7 @@ BuildRequires:  pkgconfig(libcthreads) >= 20220102
 BuildRequires:  pkgconfig(libfguid) >= 20220113
 BuildRequires:  pkgconfig(libfvalue) >= 20210510
 BuildRequires:  pkgconfig(libuna) >= 20220102
+# Various notes: https://en.opensuse.org/libyal
 
 %description
 libfplist is a library for plist formats.
@@ -80,10 +76,9 @@ applications that want to make use of libfplist.
 %autosetup -p1
 
 %build
-autoreconf -fi
-# see libcdata for version-sc
 echo "V_%version { global: *; };" >v.sym
 %configure --disable-static LDFLAGS="-Wl,--version-script=$PWD/v.sym"
+grep '  local' config.log && exit 1
 %make_build
 
 %install
