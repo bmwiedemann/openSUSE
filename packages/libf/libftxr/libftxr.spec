@@ -27,10 +27,7 @@ URL:            https://github.com/libyal/libftxr
 Source:         https://github.com/libyal/libftxr/releases/download/%version/libftxr-experimental-%version.tar.gz
 Source2:        https://github.com/libyal/libftxr/releases/download/%version/libftxr-experimental-%version.tar.gz.asc
 Source9:        %name.keyring
-Patch1:         system-libs.patch
 BuildRequires:  c_compiler
-BuildRequires:  gettext-tools >= 0.18.1
-BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libcerror) >= 20220101
 BuildRequires:  pkgconfig(libcnotify) >= 20220108
@@ -38,6 +35,7 @@ BuildRequires:  pkgconfig(libfdatetime) >= 20220112
 BuildRequires:  pkgconfig(libfguid) >= 20220113
 BuildRequires:  pkgconfig(libfusn) >= 20180726
 BuildRequires:  pkgconfig(libuna) >= 20220102
+# Various notes: https://en.opensuse.org/libyal
 
 %description
 libftxr is a library for Transactional Registry (TxR) data types.
@@ -68,10 +66,9 @@ applications that want to make use of libftxr.
 %autosetup -p1
 
 %build
-autoreconf -fi
-# see libcdata for version-sc
 echo "V_%version { global: *; };" >v.sym
 %configure --disable-static LDFLAGS="-Wl,--version-script=$PWD/v.sym"
+grep '  local' config.log && exit 1
 %make_build
 
 %install

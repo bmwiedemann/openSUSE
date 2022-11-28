@@ -23,4 +23,12 @@
     <comment>- Add forced symvers</comment>
     <requestid>994000</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>6e0a769d22e8e9efbcd04f923dd75a5d</srcmd5>
+    <version>20220118</version>
+    <time>1669629985</time>
+    <user>dimstar_suse</user>
+    <comment>delete system-libs.patch</comment>
+    <requestid>1038471</requestid>
+  </revision>
 </revisionlist>
