@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Nov 25 13:50:57 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.35
+  * kdb2mt: add option for mapping ACL identities using a text file
+  * tools: add kdb-uidextract and kdb-uidextract-limited scripts to
+    facilitate ACL conversion
+  * Per-organization LDAP server support
+  * User accounts can now be hidden from the GAL and other
+    address lists
+  * The gromox-dscli command-line utility now performs DNS SRV
+    lookups.
+  * exmdb_provider: mlists that were granted the StoreOwner
+    permission bit through an ACL now propagate it to the
+    individuals in the mlist.
+  * emsmdb: On outgoing mails, the Return-Receipt-To (Read
+    Receipt Request) header was malformed. On the incoming side,
+    this would then be translated back to invalid@invalid.
+
+-------------------------------------------------------------------
 Tue Aug 30 12:02:07 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.31

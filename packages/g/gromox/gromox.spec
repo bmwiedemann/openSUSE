@@ -19,7 +19,7 @@
 %define _libexecdir %_prefix/libexec
 
 Name:           gromox
-Version:        1.31
+Version:        1.35
 Release:        0
 Summary:        Groupware server backend with RPC, IMAP,POP3, PHP-MAPI support
 License:        AGPL-3.0-or-later AND GPL-2.0-only AND GPL-3.0-or-later
@@ -46,6 +46,7 @@ BuildRequires:  php8-devel
 %else
 BuildRequires:  php-devel >= 7
 %endif
+BuildRequires:  libvmime-devel >= 0.9.2.175
 BuildRequires:  zstd
 BuildRequires:  group(gromox)
 BuildRequires:  pkgconfig(fmt) >= 8
@@ -60,7 +61,6 @@ BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(tinyxml2) >= 8
 BuildRequires:  pkgconfig(vmime) >= 0.9.2
-BuildRequires:  libvmime-devel >= 0.9.2.175
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  user(grommunio)
 BuildRequires:  user(gromox)
