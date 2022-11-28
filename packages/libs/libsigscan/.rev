@@ -106,4 +106,12 @@ Required by recent python-dfVFS release</comment>
     <comment>- Update to release 20221027</comment>
     <requestid>1031938</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>57620f9f772304586466bdf050f9b807</srcmd5>
+    <version>20221027</version>
+    <time>1669630005</time>
+    <user>dimstar_suse</user>
+    <comment>delete system-libs.patch</comment>
+    <requestid>1038491</requestid>
+  </revision>
 </revisionlist>

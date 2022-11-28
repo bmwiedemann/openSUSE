@@ -27,11 +27,8 @@ URL:            https://github.com/libyal/libsigscan
 Source:         https://github.com/libyal/libsigscan/releases/download/%version/libsigscan-experimental-%version.tar.gz
 Source2:        https://github.com/libyal/libsigscan/releases/download/%version/libsigscan-experimental-%version.tar.gz.asc
 Source9:        %name.keyring
-Patch1:         system-libs.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  c_compiler
-BuildRequires:  gettext-tools >= 0.21
-BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libbfio) >= 20221025
@@ -45,6 +42,7 @@ BuildRequires:  pkgconfig(libcsplit) >= 20220109
 BuildRequires:  pkgconfig(libcthreads) >= 20220102
 BuildRequires:  pkgconfig(libuna) >= 20220611
 %python_subpackages
+# Various notes: https://en.opensuse.org/libyal
 
 %description
 libsigscan is a library for binary signature scanning
@@ -81,15 +79,12 @@ applications that want to make use of libpff.
 %autosetup -p1
 
 %build
-autoreconf -fi
-# OOT builds are presently broken, so we have to install
-# within each python iteration now, not in %%install.
 %{python_expand #
-# see libcdata for version-sc
 echo "V_%version { global: *; };" >v.sym
 %configure --disable-static --enable-wide-character-type --enable-python \
 	PYTHON_VERSION="%{$python_bin_suffix}" \
 	LDFLAGS="-Wl,--version-script=$PWD/v.sym"
+grep ' '' ''local' config.log && exit 1
 %make_build
 %make_install DESTDIR="%_builddir/rt"
 %make_build clean
