@@ -27,7 +27,6 @@ URL:            https://github.com/libyal/libnk2
 Source:         https://github.com/libyal/libnk2/releases/download/%version/libnk2-alpha-%version.tar.gz
 Source2:        https://github.com/libyal/libnk2/releases/download/%version/libnk2-alpha-%version.tar.gz.asc
 Source3:        %name.keyring
-Patch1:         system-libs.patch
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool
@@ -47,6 +46,7 @@ BuildRequires:  pkgconfig(libfmapi) >= 20220114
 BuildRequires:  pkgconfig(libfvalue) >= 20220120
 BuildRequires:  pkgconfig(libfwnt) >= 20220922
 BuildRequires:  pkgconfig(libuna) >= 20220611
+# Various notes: https://en.opensuse.org/libyal
 
 %description
 libnk2 is a library to access Outlook's Nickfile (NK2) format.
@@ -85,10 +85,9 @@ read Outlook Nickfile files.
 %autosetup -p1
 
 %build
-if [ ! -e configure ]; then ./autogen.sh; fi
-# see libcdata for version-sc
 echo "V_%version { global: *; };" >v.sym
 %configure --disable-static LDFLAGS="-Wl,--version-script=$PWD/v.sym"
+grep '  local' config.log && exit 1
 %make_build
 
 %install

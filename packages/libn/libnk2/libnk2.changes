@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Nov 26 16:43:24 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Delete system-libs.patch (not needed - system libs are
+  autodetected)
+
+-------------------------------------------------------------------
 Tue Nov 22 10:24:08 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20221122

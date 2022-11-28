@@ -23,4 +23,12 @@
     <comment>- Update to release 20221122</comment>
     <requestid>1037281</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>56abcc9c55abbb982e1106d94442d44c</srcmd5>
+    <version>20221122</version>
+    <time>1669629998</time>
+    <user>dimstar_suse</user>
+    <comment>delete system-libs.patch</comment>
+    <requestid>1038484</requestid>
+  </revision>
 </revisionlist>
