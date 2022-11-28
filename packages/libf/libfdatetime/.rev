@@ -114,4 +114,12 @@ Part of summer 2013 libyal refresh (forwarded request 185006 from gregfreemyer)<
     <comment>- Add forced symvers</comment>
     <requestid>993987</requestid>
   </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>59307e0c6b24263f73d812cf4588af6c</srcmd5>
+    <version>20220112</version>
+    <time>1669629973</time>
+    <user>dimstar_suse</user>
+    <comment>delete system-libs.patch</comment>
+    <requestid>1038458</requestid>
+  </revision>
 </revisionlist>
