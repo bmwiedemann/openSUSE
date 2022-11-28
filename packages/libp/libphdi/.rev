@@ -63,4 +63,12 @@
     <comment>- Update to release 20221025</comment>
     <requestid>1031088</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>107e12ff45ef62c5c1e969509353fe72</srcmd5>
+    <version>20221025</version>
+    <time>1669630001</time>
+    <user>dimstar_suse</user>
+    <comment>delete system-libs.patch</comment>
+    <requestid>1038487</requestid>
+  </revision>
 </revisionlist>
