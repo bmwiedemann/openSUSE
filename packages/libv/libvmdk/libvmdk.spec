@@ -28,14 +28,10 @@ Source:         https://github.com/libyal/libvmdk/releases/download/%version/lib
 Source2:        https://github.com/libyal/libvmdk/releases/download/%version/libvmdk-alpha-%version.tar.gz.asc
 Source3:        %name.keyring
 Source11:       VMWare_Virtual_Disk_Format_VMDK.pdf
-Patch1:         system-libs.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  c_compiler
-BuildRequires:  gettext-tools >= 0.18.1
-BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
-BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(fuse)
 BuildRequires:  pkgconfig(libbfio) >= 20221025
 BuildRequires:  pkgconfig(libcdata) >= 20220115
@@ -50,24 +46,12 @@ BuildRequires:  pkgconfig(libfcache) >= 20220110
 BuildRequires:  pkgconfig(libfdata) >= 20220111
 BuildRequires:  pkgconfig(libfvalue) >= 20220120
 BuildRequires:  pkgconfig(libuna) >= 20220611
+BuildRequires:  pkgconfig(zlib)
 %python_subpackages
+# Various notes: https://en.opensuse.org/libyal
 
 %description
 The libvmdk library is a library to access the VMware Virtual Disk (VMDK) format.
-
-Read supported extent file formats:
-- RAW (flat)
-- COWD version 1 (sparse)
-- VMDK version 1, 2 and 3 (sparse)
-
-Supported VMDK format features:
-- delta links
-- grain compression (as of version 20131209)
-- data markers (as of version 20140416)
-
-VMDK format features not supported at the moment:
-- images that use a physical device
-- changed block tracking (CBT) (supported by VMDK version 3 (sparse)) / change tracking filek
 
 %package -n %{lname}
 Summary:        Library to access the VMDK image format
@@ -78,18 +62,21 @@ Group:          System/Libraries
 The libvmdk library is a library to access the VMware Virtual Disk (VMDK) format.
 
 Read supported extent file formats:
-- RAW (flat)
-- COWD version 1 (sparse)
-- VMDK version 1, 2 and 3 (sparse)
+
+* RAW (flat)
+* COWD version 1 (sparse)
+* VMDK version 1, 2 and 3 (sparse)
 
 Supported VMDK format features:
-- delta links
-- grain compression (as of version 20131209)
-- data markers (as of version 20140416)
+
+* delta links
+* grain compression
+* data markers
 
 VMDK format features not supported at the moment:
-- images that use a physical device
-- changed block tracking (CBT) (supported by VMDK version 3 (sparse)) / change tracking filek
+
+* images that use a physical device
+* changed block tracking (CBT) (supported by VMDK version 3 (sparse)) / change tracking files
 
 %package tools
 Summary:        Tools to access the VMDK image format
@@ -120,15 +107,12 @@ applications that want to make use of libvmdk.
 cp %_sourcedir/*.pdf .
 
 %build
-autoreconf -fi
-# OOT builds are presently broken, so we have to install
-# within each python iteration now, not in %%install.
 %{python_expand #
-# see libcdata for version-sc
 echo "V_%version { global: *; };" >v.sym
 %configure --disable-static --enable-wide-character-type \
 	--enable-python PYTHON_VERSION="%{$python_bin_suffix}" \
 	LDFLAGS="-Wl,--version-script=$PWD/v.sym"
+grep ' '' ''local' config.log && exit 1
 %make_build
 %make_install DESTDIR="%_builddir/rt"
 %make_build clean
@@ -137,9 +121,6 @@ echo "V_%version { global: *; };" >v.sym
 %install
 mv %_builddir/rt/* %buildroot/
 find %{buildroot} -type f -name "*.la" -delete -print
-
-%check
-#make check
 
 %post   -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
