@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov 21 04:13:23 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.2.4:
+  * Add prisma syntax and highlighting
+  * Improved svelte treesitter queries
+  * Add codelens and sticky headers for Dart
+  * Add zstd support for plugin
+  * Add support for requests from plugins
+
+-------------------------------------------------------------------
 Mon Nov 14 04:02:34 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 0.2.3:
