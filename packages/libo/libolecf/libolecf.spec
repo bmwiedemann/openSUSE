@@ -28,10 +28,7 @@ Source:         https://github.com/libyal/libolecf/releases/download/%version/li
 Source2:        https://github.com/libyal/libolecf/releases/download/%version/libolecf-alpha-%version.tar.gz.asc
 Source3:        %name.keyring
 Source11:       OLE_Compound_File_format.pdf
-Patch1:         system-libs.patch
 BuildRequires:  c_compiler
-BuildRequires:  gettext-tools >= 0.21
-BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros %{python_module devel}
 BuildRequires:  pkgconfig(libbfio) >= 20220120
@@ -50,6 +47,7 @@ BuildRequires:  pkgconfig(libfvalue) >= 20220120
 BuildRequires:  pkgconfig(libfwps) >= 20220122
 BuildRequires:  pkgconfig(libuna) >= 20220611
 %python_subpackages
+# Various notes: https://en.opensuse.org/libyal
 
 %description
 Library and tools to access the OLE 2 Compound File (OLECF) format.
@@ -94,15 +92,12 @@ applications that want to make use of %name.
 cp %_sourcedir/*.pdf .
 
 %build
-autoreconf -fi
-# OOT builds are presently broken, so we have to install
-# within each python iteration now, not in %%install.
 %{python_expand #
-# see libcdata for version-sc
 echo "V_%version { global: *; };" >v.sym
 %configure --disable-static --enable-wide-character-type --enable-python \
 	PYTHON_VERSION="%{$python_bin_suffix}" \
 	LDFLAGS="-Wl,--version-script=$PWD/v.sym"
+grep ' '' ''local' config.log && exit 1
 %make_build
 %make_install DESTDIR="%_builddir/rt"
 %make_build clean
