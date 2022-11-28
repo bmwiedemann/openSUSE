@@ -169,4 +169,12 @@ part of summer 20013 libyal refresh for opensuse 13.1</comment>
     <comment>- Update to release 20221030</comment>
     <requestid>1032564</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>c1ae776c03171888075987988b3ce231</srcmd5>
+    <version>20221030</version>
+    <time>1669630012</time>
+    <user>dimstar_suse</user>
+    <comment>delete system-libs.patch</comment>
+    <requestid>1038498</requestid>
+  </revision>
 </revisionlist>

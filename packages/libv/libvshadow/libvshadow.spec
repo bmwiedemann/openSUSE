@@ -30,11 +30,8 @@ Source3:        %name.keyring
 Source11:       Paper_-_Windowless_Shadow_Snapshots.pdf
 Source12:       Slides_-_Windowless_Shadow_Snapshots.pdf
 Source13:       Volume_Shadow_Snapshot_VSS_format.pdf
-Patch1:         system-libs.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  c_compiler
-BuildRequires:  gettext-tools >= 0.21
-BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(fuse)
@@ -51,6 +48,7 @@ BuildRequires:  pkgconfig(libfdatetime) >= 20220112
 BuildRequires:  pkgconfig(libfguid) >= 20220113
 BuildRequires:  pkgconfig(libuna) >= 20220611
 %python_subpackages
+# Various notes: https://en.opensuse.org/libyal
 
 %description
 Library and tools to access the Volume Shadow Snapshot (VSS) format.
@@ -66,11 +64,6 @@ Group:          System/Libraries
 Library and tools to access the Volume Shadow Snapshot (VSS) format.
 The VSS format is used by Windows, as of Vista, to maintain copies of
 data on a storage media volume.
-
-The package contains %{_docdir}/%{name}:
-
-    OSDFC 2012: Paper - Windowless Shadow Snapshots
-    OSDFC 2012: Slides - Windowless Shadow Snapshots
 
 %package        tools
 Summary:        Tools to access the Volume Shadow Snapshot (VSS) format
@@ -92,23 +85,25 @@ Requires:       %{lname} = %{version}
 The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
+The package contains %{_docdir}/%{name}:
+
+* OSDFC 2012: Paper - Windowless Shadow Snapshots
+* OSDFC 2012: Slides - Windowless Shadow Snapshots
+
 %prep
 %autosetup -p1
 mkdir doc
 cp -av %_sourcedir/*.pdf .
 
 %build
-autoreconf -fi
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 export CXXFLAGS="%{optflags}"
-# OOT builds are presently broken, so we have to install
-# within each python iteration now, not in %%install.
 %{python_expand #
-# see libcdata for version-sc
 echo "V_%version { global: *; };" >v.sym
 %configure --disable-static --enable-wide-character-type \
 	--enable-python PYTHON_VERSION="%{$python_bin_suffix}" \
 	LDFLAGS="-Wl,--version-script=$PWD/v.sym"
+grep ' '' ''local' config.log && exit 1
 %make_build
 %make_install DESTDIR="%_builddir/rt"
 %make_build clean
@@ -123,7 +118,6 @@ find "%buildroot" -type f -name "*.la" -delete -print
 
 %files -n %{lname}
 %license COPYING*
-%doc doc
 %{_libdir}/*.so.*
 
 %files -n %name-tools
