@@ -27,15 +27,13 @@ URL:            https://github.com/libyal/libcpath
 Source:         https://github.com/libyal/libcpath/releases/download/%version/libcpath-alpha-%version.tar.gz
 Source2:        https://github.com/libyal/libcpath/releases/download/%version/libcpath-alpha-%version.tar.gz.asc
 Source9:        %name.keyring
-Patch1:         system-libs.patch
 BuildRequires:  c_compiler
-BuildRequires:  gettext-tools >= 0.18.1
-BuildRequires:  libtool
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcerror) >= 20201121
-BuildRequires:  pkgconfig(libclocale) >= 20200913
-BuildRequires:  pkgconfig(libcsplit) >= 20200703
+BuildRequires:  pkgconfig(libcerror) >= 20220101
+BuildRequires:  pkgconfig(libclocale) >= 20220107
+BuildRequires:  pkgconfig(libcsplit) >= 20210411
 BuildRequires:  pkgconfig(libuna) >= 20210801
+# Various notes: https://en.opensuse.org/libyal
 
 %description
 A library for C path functions. Part of the libyal family of libraries.
@@ -62,10 +60,9 @@ applications that want to make use of libcpath.
 %autosetup -p1
 
 %build
-autoreconf -fi
-# see libcdata for version-sc
 echo "V_%version { global: *; };" >v.sym
 %configure --disable-static --enable-wide-character-type LDFLAGS="-Wl,--version-script=$PWD/v.sym"
+grep '  local' config.log && exit 1
 %make_build
 
 %install
