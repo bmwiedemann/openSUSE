@@ -119,4 +119,12 @@ This is part of the summer 2013 libyal refresh for opensuse 13.1</comment>
     <comment>- Update to release 20221028</comment>
     <requestid>1031945</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>24a884905af5781388c4932644a54f8a</srcmd5>
+    <version>20221028</version>
+    <time>1669630006</time>
+    <user>dimstar_suse</user>
+    <comment>delete system-libs.patch</comment>
+    <requestid>1038492</requestid>
+  </revision>
 </revisionlist>
