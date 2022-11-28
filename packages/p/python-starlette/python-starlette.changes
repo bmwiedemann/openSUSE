@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Nov 27 22:53:40 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to 0.22.0
+  * Changed
+    - Bypass GZipMiddleware when response includes Content-Encoding #1901.
+  * Fixed
+    - Remove unneeded unquote() from query parameters on the TestClient #1953.
+    - Make sure MutableHeaders._list is actually a list #1917.
+    - Import compatibility with the next version of AnyIO #1936.
+
+-------------------------------------------------------------------
 Thu Sep 29 08:19:37 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - Update to 0.21.0

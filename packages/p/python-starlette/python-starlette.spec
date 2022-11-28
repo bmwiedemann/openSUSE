@@ -27,7 +27,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-starlette%{psuffix}
-Version:        0.21.0
+Version:        0.22.0
 Release:        0
 Summary:        Lightweight ASGI framework/toolkit
 License:        BSD-3-Clause
