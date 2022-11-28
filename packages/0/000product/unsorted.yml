@@ -3955,7 +3955,8 @@ unsorted:
   - forkbomb 
   - forkstat 
   - forkstat-bash-completion 
-  - form 
+  - form: [x86_64] 
+  - form-doc: [x86_64] 
   - fortio 
   - fortune 
   - fossil 
@@ -9841,9 +9842,9 @@ unsorted:
   - libarchive13-32bit: [x86_64] 
   - libargtable2-0 
   - libargtable2-devel 
-  - libarm_compute28: [x86_64] 
-  - libarm_compute_core28: [x86_64] 
-  - libarm_compute_graph28: [x86_64] 
+  - libarm_compute29: [x86_64] 
+  - libarm_compute_core29: [x86_64] 
+  - libarm_compute_graph29: [x86_64] 
   - libarmadillo11 
   - libarmadillo11-32bit: [x86_64] 
   - libarpack2 
@@ -11242,7 +11243,7 @@ unsorted:
   - libgensio0 
   - libgensiocpp2 
   - libgeocode-glib0-32bit: [x86_64] 
-  - libgeos3_11_0 
+  - libgeos3_11_1 
   - libgeos_c1 
   - libgeotiff5 
   - libgepub-devel 
@@ -18948,6 +18949,7 @@ unsorted:
   - pam_pkcs11-devel-doc 
   - pam_radius 
   - pam_radius-32bit: [x86_64] 
+  - pam_saslauthd: [x86_64] 
   - pam_script 
   - pam_snapper 
   - pam_ssh_agent_auth 
