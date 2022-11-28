@@ -17,7 +17,7 @@
 
 
 Name:           libime
-Version:        1.0.14
+Version:        1.0.15
 Release:        0
 Summary:        Generic input method implementation
 License:        LGPL-2.1-or-later
