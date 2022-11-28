@@ -47,4 +47,12 @@
     <comment>update</comment>
     <requestid>999942</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>0d02d5f4250cd79f9a8b637f278c51c0</srcmd5>
+    <version>20220105</version>
+    <time>1669629961</time>
+    <user>dimstar_suse</user>
+    <comment>delete system-libs.patch</comment>
+    <requestid>1038444</requestid>
+  </revision>
 </revisionlist>

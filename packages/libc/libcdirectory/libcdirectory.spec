@@ -25,14 +25,12 @@ License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libcdirectory
 Source:         https://github.com/libyal/libcdirectory/releases/download/%version/%name-experimental-%version.tar.gz
-Patch1:         system-libs.patch
 BuildRequires:  c_compiler
-BuildRequires:  gettext-tools >= 0.18.1
-BuildRequires:  libtool
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcerror) >= 20201121
-BuildRequires:  pkgconfig(libclocale) >= 20200913
-BuildRequires:  pkgconfig(libuna) >= 20201204
+BuildRequires:  pkgconfig(libcerror) >= 20220101
+BuildRequires:  pkgconfig(libclocale) >= 20210526
+BuildRequires:  pkgconfig(libuna) >= 20210801
+# Various notes: https://en.opensuse.org/libyal
 
 %description
 Library to provide Windows NT data type support for the libyal family of libraries.
@@ -63,10 +61,9 @@ applications that want to make use of libcdirectory.
 %autosetup -p1
 
 %build
-if [ ! -e configure ]; then ./autogen.sh; fi
-# see libcdata for version-sc
 echo "V_%version { global: *; };" >v.sym
 %configure --disable-static --enable-wide-character-type LDFLAGS="-Wl,--version-script=$PWD/v.sym"
+grep '  local' config.log && exit 1
 %make_build
 
 %install
