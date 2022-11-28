@@ -84,4 +84,12 @@ Part of summer 2013 libyal refresh for opensuse 13.1</comment>
     <comment>- Edit specfile to do multipython builds.</comment>
     <requestid>948036</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>ab57f91b99fa602e81200d49fc2583b7</srcmd5>
+    <version>20211114</version>
+    <time>1669630000</time>
+    <user>dimstar_suse</user>
+    <comment>delete system-libs.patch</comment>
+    <requestid>1038486</requestid>
+  </revision>
 </revisionlist>

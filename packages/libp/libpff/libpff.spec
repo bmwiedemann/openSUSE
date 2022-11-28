@@ -32,12 +32,9 @@ Source13:       PFF_forensics_-_e-mail_and_appoinment_falsification_analysis.pdf
 Source14:       Personal_Folder_File_PFF_format.pdf
 Source15:       MAPI_definitions.pdf
 Source16:       libpff-libfdata.pdf
-Patch1:         system-libs.patch
 Patch2:         pkgconfig.diff
 BuildRequires:  %{python_module devel}
 BuildRequires:  c_compiler
-BuildRequires:  gettext-tools >= 0.18.1
-BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libbfio) >= 20201229
@@ -59,6 +56,7 @@ BuildRequires:  pkgconfig(libfwnt) >= 20210906
 BuildRequires:  pkgconfig(libuna) >= 20210801
 BuildRequires:  pkgconfig(zlib)
 %python_subpackages
+# Various notes: https://en.opensuse.org/libyal
 
 %description
 libpff is a library to access the Personal Folder File (PFF) and the
@@ -109,14 +107,11 @@ applications that want to make use of libpff.
 cp -av %_sourcedir/*.pdf .
 
 %build
-autoreconf -fi
-# Package has a history of not bumping on ABI breaks (e.g. 59bcd7a46e)
 echo "V_%version { global: *; };" >sym.ver
-# OOT builds are presently broken, so we have to install
-# within each python iteration now, not in %%install.
 %{python_expand #
 %configure --disable-static --enable-wide-character-type \
 	--enable-python PYTHON_VERSION="%{$python_bin_suffix}"
+grep ' '' ''local' config.log && exit 1
 %make_build LDFLAGS="-Wl,--version-script=$PWD/sym.ver"
 %make_install DESTDIR="%_builddir/rt"
 %make_build clean
