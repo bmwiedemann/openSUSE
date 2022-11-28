@@ -158,4 +158,12 @@ libyal refresh for opensuse 13.1 release (forwarded request 184907 from gregfree
     <comment>- Update to release 20221025</comment>
     <requestid>1031086</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>ec2230c3da2990be81d9d5c31d188ed8</srcmd5>
+    <version>20221025</version>
+    <time>1669629958</time>
+    <user>dimstar_suse</user>
+    <comment>delete system-libs.patch</comment>
+    <requestid>1038441</requestid>
+  </revision>
 </revisionlist>

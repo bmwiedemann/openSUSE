@@ -27,10 +27,7 @@ URL:            https://github.com/libyal/libbfio
 Source:         https://github.com/libyal/libbfio/releases/download/%version/libbfio-alpha-%version.tar.gz
 Source2:        https://github.com/libyal/libbfio/releases/download/%version/libbfio-alpha-%version.tar.gz.asc
 Source9:        %name.keyring
-Patch1:         system-libs.patch
 BuildRequires:  c_compiler
-BuildRequires:  gettext-tools >= 0.21
-BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libcdata) >= 20220115
 BuildRequires:  pkgconfig(libcerror) >= 20220101
@@ -41,6 +38,7 @@ BuildRequires:  pkgconfig(libcpath) >= 20220108
 BuildRequires:  pkgconfig(libcsplit) >= 20220109
 BuildRequires:  pkgconfig(libcthreads) >= 20220102
 BuildRequires:  pkgconfig(libuna) >= 20220611
+# Various notes: https://en.opensuse.org/libyal
 
 %description
 libbfio is used in multiple other libraries like libewf, libmsiecf,
@@ -73,11 +71,10 @@ applications that want to make use of libbfio.
 %autosetup -p1
 
 %build
-autoreconf -fi
-# see libcdata for disable-multi-thr and version-sc
 echo "V_%version { global: *; };" >v.sym
 %configure --disable-static --enable-wide-character-type \
 	--disable-multi-thread LDFLAGS="-Wl,--version-script=$PWD/v.sym"
+grep '  local' config.log && exit 1
 %make_build
 
 %install
