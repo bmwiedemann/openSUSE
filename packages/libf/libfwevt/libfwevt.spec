@@ -27,10 +27,7 @@ URL:            https://github.com/libyal/libfwevt
 Source:         https://github.com/libyal/libfwevt/releases/download/%version/libfwevt-experimental-%version.tar.gz
 Source2:        https://github.com/libyal/libfwevt/releases/download/%version/libfwevt-experimental-%version.tar.gz.asc
 Source3:        %name.keyring
-Patch1:         system-libs.patch
 BuildRequires:  c_compiler
-BuildRequires:  gettext-tools >= 0.21
-BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libcdata) >= 20220115
 BuildRequires:  pkgconfig(libcerror) >= 20220101
@@ -40,6 +37,7 @@ BuildRequires:  pkgconfig(libfdatetime) >= 20220112
 BuildRequires:  pkgconfig(libfguid) >= 20220113
 BuildRequires:  pkgconfig(libfvalue) >= 20220120
 BuildRequires:  pkgconfig(libuna) >= 20220611
+# Various notes: https://en.opensuse.org/libyal
 
 %description
 libfwevt is a library for Windows XML Event Log (EVTX) data types.
@@ -70,10 +68,9 @@ applications that want to make use of libfwevt.
 %autosetup -p1
 
 %build
-autoreconf -fi
-# see libcdata for version-sc
 echo "V_%version { global: *; };" >v.sym
 %configure --disable-static LDFLAGS="-Wl,--version-script=$PWD/v.sym"
+grep '  local' config.log && exit 1
 %make_build
 
 %install
