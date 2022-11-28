@@ -17,7 +17,7 @@
 
 
 Name:           touchegg
-Version:        2.0.14
+Version:        2.0.15
 Release:        0
 Summary:        A multitouch gesture recogniser for GNU/Linux
 License:        GPL-2.0-or-later AND GPL-3.0-or-later

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov 27 19:54:32 UTC 2022 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 2.0.15:
+  * Add TOUCHEGG_DEVICE_TYPE environment variable to RUN_COMMAND
+  * Remove Firefox from the default config, it supports native gestures
+
+-------------------------------------------------------------------
 Tue Apr 26 14:35:53 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.14:
