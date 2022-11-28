@@ -16,17 +16,13 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 Name:           python-py-moneyed
-Version:        2.0
+Version:        3.0
 Release:        0
 Summary:        Python currency and money classes
 License:        BSD-3-Clause
 URL:            https://github.com/limist/py-moneyed
 Source:         https://github.com/py-moneyed/py-moneyed/archive/refs/tags/v%{version}.tar.gz#/py-moneyed-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM 178_missing_currencies.patch gh#py-moneyed/py-moneyed#178 mcepl@suse.com
-# Add two missing currencies
-Patch0:         178_missing_currencies.patch
 BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov 28 07:29:42 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.0:
+  - Added SLE & VED currencies.
+  - Removed support for Python 3.6.
+  - Added support for Python 3.10 & 3.11.
+- Remove upstreamed patch 178_missing_currencies.patch.
+
+-------------------------------------------------------------------
 Mon Jul 11 14:44:13 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Add 178_missing_currencies.patch to add two missing currencies
