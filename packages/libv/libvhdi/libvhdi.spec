@@ -28,11 +28,8 @@ Source:         https://github.com/libyal/libvhdi/releases/download/%version/lib
 Source2:        https://github.com/libyal/libvhdi/releases/download/%version/libvhdi-alpha-%version.tar.gz.asc
 Source3:        %name.keyring
 Source8:        Virtual_Hard_Disk_VHD_image_format.pdf
-Patch1:         system-libs.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  c_compiler
-BuildRequires:  gettext-tools >= 0.21
-BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libbfio) >= 20221025
@@ -49,19 +46,21 @@ BuildRequires:  pkgconfig(libfdata) >= 20220111
 BuildRequires:  pkgconfig(libfguid) >= 20220113
 BuildRequires:  pkgconfig(libuna) >= 20220611
 %python_subpackages
+# Various notes: https://en.opensuse.org/libyal
 
 %description
 Library and tools to access the Virtual Hard Disk (VHD) image format.
 
-Read supported formats:
+Read-supported formats:
 
-VHD version 1
+* VHD version 1
+
 Supported image types:
 
-Fixed-size hard disk image
-Dynamic-size (or sparse) hard disk image
-Differential (or differencing) hard disk image
-Note that an undo disk image (.vud) is also a differential image
+* Fixed-size hard disk image
+* Dynamic-size (or sparse) hard disk image
+* Differential (or differencing) hard disk image
+* Note that an undo disk image (.vud) is also a differential image
 
 %package -n %{lname}
 Summary:        Library to access the VHD image format
@@ -71,15 +70,16 @@ Group:          System/Libraries
 %description -n %{lname}
 Library to access the Virtual Hard Disk (VHD) image format.
 
-Read supported formats:
+Read-supported formats:
 
-VHD version 1
+* VHD version 1
+
 Supported image types:
 
-Fixed-size hard disk image
-Dynamic-size (or sparse) hard disk image
-Differential (or differencing) hard disk image
-Note that an undo disk image (.vud) is also a differential image
+* Fixed-size hard disk image
+* Dynamic-size (or sparse) hard disk image
+* Differential (or differencing) hard disk image
+* Note that an undo disk image (.vud) is also a differential image
 
 %package tools
 Summary:        Tools to access the VHD image format
@@ -106,15 +106,12 @@ applications that want to make use of libvhdi.
 cp %_sourcedir/*.pdf .
 
 %build
-autoreconf -fi
-# OOT builds are presently broken, so we have to install
-# within each python iteration now, not in %%install.
 %{python_expand #
-# see libcdata for version-sc
 echo "V_%version { global: *; };" >v.sym
 %configure --disable-static --enable-wide-character-type \
 	--enable-python PYTHON_VERSION="%{$python_bin_suffix}" \
 	LDFLAGS="-Wl,--version-script=$PWD/v.sym"
+grep ' '' ''local' config.log && exit 1
 %make_build
 %make_install DESTDIR="%_builddir/rt"
 %make_build clean
