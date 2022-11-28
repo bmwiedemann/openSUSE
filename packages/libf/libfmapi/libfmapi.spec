@@ -27,19 +27,17 @@ URL:            https://github.com/libyal/libfmapi
 Source:         https://github.com/libyal/libfmapi/releases/download/%version/libfmapi-experimental-%version.tar.gz
 Source2:        https://github.com/libyal/libfmapi/releases/download/%version/libfmapi-experimental-%version.tar.gz.asc
 Source9:        %name.keyring
-Patch1:         system-libs.patch
 BuildRequires:  c_compiler
-BuildRequires:  gettext-tools >= 0.18.1
-BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libcdata) >= 20210625
-BuildRequires:  pkgconfig(libcerror) >= 20201121
-BuildRequires:  pkgconfig(libcnotify) >= 20200913
-BuildRequires:  pkgconfig(libcthreads) >= 20200508
-BuildRequires:  pkgconfig(libfdatetime) >= 20180910
-BuildRequires:  pkgconfig(libfguid) >= 20180724
-BuildRequires:  pkgconfig(libfwnt) >= 20210421
+BuildRequires:  pkgconfig(libcerror) >= 20220101
+BuildRequires:  pkgconfig(libcnotify) >= 20220108
+BuildRequires:  pkgconfig(libcthreads) >= 20220102
+BuildRequires:  pkgconfig(libfdatetime) >= 20220112
+BuildRequires:  pkgconfig(libfguid) >= 20220113
+BuildRequires:  pkgconfig(libfwnt) >= 20210717
 BuildRequires:  pkgconfig(libuna) >= 20220102
+# Various notes: https://en.opensuse.org/libyal
 
 %description
 A library for MAPI data types
@@ -70,10 +68,9 @@ applications that want to make use of libfmapi.
 %autosetup -p1
 
 %build
-autoreconf -fi
-# see libcdata for version-sc
 echo "V_%version { global: *; };" >v.sym
 %configure --disable-static LDFLAGS="-Wl,--version-script=$PWD/v.sym"
+grep '  local' config.log && exit 1
 %make_build
 
 %install
