@@ -7,4 +7,12 @@
     <comment></comment>
     <requestid>1000662</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d4e8718dbb2b9cc8225ad3180286faa1</srcmd5>
+    <version>20220811</version>
+    <time>1669629976</time>
+    <user>dimstar_suse</user>
+    <comment>delete system-libs.patch</comment>
+    <requestid>1038461</requestid>
+  </revision>
 </revisionlist>
