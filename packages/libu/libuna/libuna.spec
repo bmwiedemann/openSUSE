@@ -35,10 +35,7 @@ Source:         https://github.com/libyal/libuna/releases/download/%version/libu
 Source2:        https://github.com/libyal/libuna/releases/download/%version/libuna-alpha-%version.tar.gz.asc
 Source3:        libuna.keyring
 Source99:       libuna-rpmlintrc
-Patch1:         system-libs.patch
 BuildRequires:  c_compiler
-BuildRequires:  gettext-tools >= 0.18.1
-BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libcdatetime) >= 20220104
 BuildRequires:  pkgconfig(libcerror) >= 20220101
@@ -47,6 +44,7 @@ BuildRequires:  pkgconfig(libcfile) >= 20220106
 %endif
 BuildRequires:  pkgconfig(libclocale) >= 20220107
 BuildRequires:  pkgconfig(libcnotify) >= 20220108
+# Various notes: https://en.opensuse.org/libyal
 
 %description
 libuna is a library to support Unicode and ASCII (byte string)
@@ -91,8 +89,6 @@ applications that want to make use of libuna.
 %autosetup -p1 -n libuna-%version
 
 %build
-autoreconf -fi
-# see libcdata for version-sc
 echo "V_%version { global: *; };" >v.sym
 %configure \
 %if "@BUILD_FLAVOR@" == "mini"
@@ -100,11 +96,18 @@ echo "V_%version { global: *; };" >v.sym
 %endif
 	--disable-static --enable-wide-character-type \
 	LDFLAGS="-Wl,--version-script=$PWD/v.sym"
+%if "@BUILD_FLAVOR@" != "mini"
+grep '  local' config.log && exit 1
+%endif
 %make_build
 
 %install
 %make_install
-rm -f "%buildroot/%_libdir"/*.la
+b="%buildroot"
+rm -f "$b/%_libdir"/*.la
+%if "@BUILD_FLAVOR@" == "mini"
+rm -Rf "$b/%_bindir" "$b/%_mandir/man1"
+%endif
 
 %post   -n %lname%psuffix -p /sbin/ldconfig
 %postun -n %lname%psuffix -p /sbin/ldconfig
