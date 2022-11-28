@@ -25,4 +25,12 @@ Required to allow builds to complete.</comment>
     <comment>- Add forced symvers</comment>
     <requestid>994006</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>68a1230f298728cfd2c78143dc79be5f</srcmd5>
+    <version>20220122</version>
+    <time>1669629991</time>
+    <user>dimstar_suse</user>
+    <comment>delete system-libs.patch</comment>
+    <requestid>1038477</requestid>
+  </revision>
 </revisionlist>
