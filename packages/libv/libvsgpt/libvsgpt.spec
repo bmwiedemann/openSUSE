@@ -27,11 +27,8 @@ URL:            https://github.com/libyal/libvsgpt
 Source:         https://github.com/libyal/libvsgpt/releases/download/%version/libvsgpt-experimental-%version.tar.gz
 Source2:        https://github.com/libyal/libvsgpt/releases/download/%version/libvsgpt-experimental-%version.tar.gz.asc
 Source3:        %name.keyring
-Patch1:         system-libs.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  c_compiler
-BuildRequires:  gettext-tools >= 0.21
-BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libbfio) >= 20221025
@@ -48,6 +45,7 @@ BuildRequires:  pkgconfig(libfdata) >= 20220111
 BuildRequires:  pkgconfig(libfguid) >= 20220113
 BuildRequires:  pkgconfig(libuna) >= 20220611
 %python_subpackages
+# Various notes: https://en.opensuse.org/libyal
 
 %description
 libvsgpt is a library to access the GUID Partition Table (GPT)
@@ -89,15 +87,12 @@ inspect GUID partition tables.
 %autosetup -p1
 
 %build
-autoreconf -fi
-# OOT builds are presently broken, so we have to install
-# within each python iteration now, not in %%install.
 %{python_expand #
-# see libcdata for version-sc
 echo "V_%version { global: *; };" >v.sym
 %configure --disable-static --enable-wide-character-type \
 	--enable-python PYTHON_VERSION="%{$python_bin_suffix}" \
 	LDFLAGS="-Wl,--version-script=$PWD/v.sym"
+grep ' '' ''local' config.log && exit 1
 %make_build
 %make_install DESTDIR="%_builddir/rt"
 %make_build clean
