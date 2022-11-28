@@ -17,7 +17,7 @@
 
 
 Name:           fcitx5-zhuyin
-Version:        5.0.8
+Version:        5.0.11
 Release:        0
 Summary:        Libzhuyin Wrapper for Fcitx5
 License:        GPL-2.0-or-later
