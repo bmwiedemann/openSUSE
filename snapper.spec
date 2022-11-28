@@ -103,7 +103,8 @@ Requires:       diffutils
 Requires:       libsnapper6 = %version
 Requires:       systemd
 %if 0%{?suse_version}
-Recommends:     logrotate snapper-zypp-plugin
+Recommends:     logrotate
+Recommends:     snapper-zypp-plugin
 Supplements:    btrfsprogs
 %endif
 
