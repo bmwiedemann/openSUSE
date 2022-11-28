@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Mon Nov 21 03:25:19 UTC 2022 - socvirnyl.estela@gmail.com
+
+- Update to version 20221119.145034.49b9839f:
+  * fix IME composition status applying to all panes
+  * allow disabling tabs, new tab button in tab bar
+  * Update macos docs with wezterm CLI installation (#2619)
+  * docs: changelog for https://github.com/wez/wezterm/pull/2661
+  * Fix relative CWD path given on command line being interpreted as within the server's CWD
+  * fixes flow chart and typo in config file docs
+  * docs: changelog for https://github.com/wez/wezterm/pull/2636
+  * Fix background cover algorithm
+  * Fix dragging by left or right status with retro tab bar
+  * docs: fix MoveTabRelative default key assignments
+  * docs: update first example to use wezterm.action style
+  * gui: improve error message for unsupported height/width values for Color and Gradient
+  * webgpu: improve messaging when no adapters are found
+  * webgpu: minor optimization of shader
+  * use constants for has_color values in wgsl shader and in the rust code
+  * webgpu: support hsv transforms
+  * fix resizing on windows when wgpu is enabled
+  * add some config options to influence webgpu selection
+  * make drawRect work on macos when using webgpu
+  * This makes webgpu actually render
+  * fixup crash when running in webgpu mode
+  * plumb webgpu code into draw path
+  * Abstract more over the render state, add RenderContext
+  * put WebGpuState into an Rc
+  * Add IndexBuffer abstraction
+  * Add VertexBuffer abstraction
+  * Add MappedVertexBuffer abstraction
+  * make TripleLayerQuadAlloctor::Gpu(BorrowedLayers) self-referential
+  * use a self-referential struct for mapping vertexbuffers
+  * erase generic T from Atlas, Sprite, CachedGlyph etc.
+  * notionally allow webgpu texture atlas creation
+  * make Vertex conform to Pod
+  * Basic useless wgpu based rendering foundation
+  * deps: update raw-window-handle
+  * docs: add_wsl_distributions_to_launch_menu was removed
+  * partially handling overflowing tab titles
+  * changelog for https://github.com/wez/wezterm/pull/2746
+  * Allow windows installer to run on arm64 emulating x64
+  * rustdoc markdown fences--
+  * xcursor: parse and follow theme inheritance
+  * reduce size of BoxedQuad by 2/3
+  * quads: switch to allocating quads rather than contiguous vertices
+  * remove dead code
+  * Add support for heap profiling using dhat
+  * perf: adjust clustering when bidi is disabled
+  * lfucache: improve LFU algorithm and structure
+  * refactor: move lfucache into its own crate
+  * cargo update
+  * docs: remove wezterm-nightly-bin AUR link
+  * gui: fix cursor color invalidation issue
+  * Fix horizontal wheel events
+  * docs for #2702
+  * keyevent: fixup prevent_fallback processing
+  * docs: changelog for #2112
+  * wezterm.terminfo: add statusline entries
+  * cargo update
+  * Fix compiler warning
+  * keys: add prevent_fallback option for ActivateKeyTable
+  * docs: changelog for https://github.com/wez/wezterm/pull/2670
+  * Continue parsing cmdline arguments in the desktop file
+  * Allow to pass the command to execute via "-e"
+  * rust 1.65 does a better job with enum packing
+  * termwiz: release 0.19
+  * fix: temp fix for Android build error
+  * deps: cargo update for openssl
+  * deps: cargo update
+  * deps: remove async-std dep
+
+-------------------------------------------------------------------
 Thu Nov  3 18:30:01 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Enable --all-features for suse>1500 builds:

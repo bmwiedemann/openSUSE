@@ -1,9 +1,10 @@
 <services>
   <service mode="disabled" name="obs_scm">
     <param name="url">https://github.com/wez/wezterm.git</param>
-    <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@</param>
+    <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
-    <param name="revision">43f2265ef1ccfbb52e6596982156df57c382e1aa</param>
+    <param name="revision">49b9839fdb41eff4d2aae3bb91e6a4befb9cd20b</param>
+    <param name="match-tag">20221119-145034-49b9839f</param>
     <param name="versionrewrite-pattern">(\d+)-(\d+)-(\w+)</param>
     <param name="versionrewrite-replacement">\1.\2.\3</param>
     <param name="changesgenerate">enable</param>
