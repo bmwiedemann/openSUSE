@@ -26,10 +26,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/libyal/libhmac
 Source:         https://github.com/libyal/libhmac/releases/download/%version/libhmac-alpha-%version.tar.gz
 Source2:        https://github.com/libyal/libhmac/releases/download/%version/libhmac-alpha-%version.tar.gz.asc
-Patch1:         system-libs.patch
 BuildRequires:  c_compiler
-BuildRequires:  gettext-tools >= 0.18.1
-BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libcerror) >= 20220101
 BuildRequires:  pkgconfig(libcfile) >= 20220106
@@ -40,6 +37,7 @@ BuildRequires:  pkgconfig(libcsplit) >= 20220109
 BuildRequires:  pkgconfig(libcthreads) >= 20220102
 BuildRequires:  pkgconfig(libuna) >= 20220102
 BuildRequires:  pkgconfig(openssl) >= 1.0
+# Various notes: https://en.opensuse.org/libyal
 
 %description
 A library and tools to support various Hash-based Message Authentication Codes (HMAC).
@@ -73,11 +71,10 @@ Use hmacsum to calculate a Hash-based Message Authentication Code (HMAC) of the 
 %autosetup -p1
 
 %build
-autoreconf -fi
-# see libcdata for version-sc
 echo "V_%version { global: *; };" >v.sym
 %configure --disable-static --enable-wide-character-type \
 	LDFLAGS="-Wl,--version-script=$PWD/v.sym"
+grep '  local' config.log && exit 1
 %make_build
 
 %install
