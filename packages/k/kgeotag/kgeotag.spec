@@ -21,8 +21,7 @@ Name:           kgeotag
 Version:        1.3.1
 Release:        0
 Summary:        A photo geotagging utility
-License:        GPL-3.0-or-later
-Group:          Productivity/Graphics/Other
+License:        GPL-3.0-only
 URL:            https://kgeotag.kde.org/
 Source0:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz
 %if %{with released}
