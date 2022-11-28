@@ -126,4 +126,12 @@ part of summer 2013 libyal refresh for opensuse 13.1</comment>
     <comment>- Add forced symvers</comment>
     <requestid>993968</requestid>
   </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>7550629272fdc4382b1e6c561bc80a6d</srcmd5>
+    <version>20220115</version>
+    <time>1669629959</time>
+    <user>dimstar_suse</user>
+    <comment>delete system-libs.patch</comment>
+    <requestid>1038442</requestid>
+  </revision>
 </revisionlist>

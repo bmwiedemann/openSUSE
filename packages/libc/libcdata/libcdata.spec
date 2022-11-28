@@ -27,13 +27,11 @@ URL:            https://github.com/libyal/libcdata
 Source:         https://github.com/libyal/libcdata/releases/download/%version/libcdata-alpha-%version.tar.gz
 Source2:        https://github.com/libyal/libcdata/releases/download/%version/libcdata-alpha-%version.tar.gz.asc
 Source3:        %name.keyring
-Patch1:         system-libs.patch
 BuildRequires:  c_compiler
-BuildRequires:  gettext-tools >= 0.18.1
-BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libcerror) >= 20220101
 BuildRequires:  pkgconfig(libcthreads) >= 20200508
+# Various notes: https://en.opensuse.org/libyal
 
 %description
 A library for C generic data functions.
@@ -64,18 +62,14 @@ applications that want to make use of libcdata.
 %autosetup -p1
 
 %build
-autoreconf -fi
 # Enabling MTS in libcdata means data structures are protected by
 # libcdata itself, with an implicit rwlock. Every downstream use
 # (e.g. by libpff) suffers, even if libpff already made sure that any
 # one libcdata object is not used concurrently. Therefore, we disable
 # MTS. - https://github.com/libyal/libcdata/issues/6
-#
-# Enforce symver. The SO library version means nothing during
-# exp/alpha/beta, symbols can and do change.
-#
 echo "V_%version { global: *; };" >v.sym
 %configure --disable-static --disable-multi-threading-support LDFLAGS="-Wl,--version-script=$PWD/v.sym"
+grep '  local' config.log && exit 1
 %make_build
 
 %install
