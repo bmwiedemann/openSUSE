@@ -17,7 +17,7 @@
 
 
 Name:           fcitx5-table-extra
-Version:        5.0.9
+Version:        5.0.12
 Release:        0
 Summary:        Extra Chinese table input methods for Fcitx5
 License:        GPL-3.0-or-later AND SUSE-Public-Domain
