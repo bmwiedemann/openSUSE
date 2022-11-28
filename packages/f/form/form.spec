@@ -1,7 +1,7 @@
 #
 # spec file for package form
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,18 @@
 #
 
 
-# Documentation building fails due to LaTeX errors; disable for now
-%define with_doc 0
+%bcond_without doc
 
-%define reldate 20190212
 Name:           form
-Version:        4.2.1
+Version:        4.3.0
 Release:        0
 Summary:        A Symbolic Manipulation System
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://github.com/vermaseren/form/
-Source0:        https://github.com/vermaseren/form/archive/v%{version}.tar.gz
-Source1:        %{name}-rpmlintrc
+Source0:        https://github.com/vermaseren/form/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FEATURE-OPENSUSE form-dont-use-DATE.patch badshah400@gmail.com -- Do not use __DATE__ in source code to avoid issues with reproducibility
+Patch0:         form-dont-use-DATE.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  doxygen
@@ -40,7 +39,7 @@ BuildRequires:  libtool
 BuildRequires:  openmpi-macros-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(zlib)
-%if %{with_doc}
+%if %{with doc}
 BuildRequires:  texlive-tex4ht
 BuildRequires:  tex(adjustbox.sty)
 BuildRequires:  tex(amssymb.sty)
@@ -68,6 +67,8 @@ BuildRequires:  tex(xcolor.sty)
 %endif
 Recommends:     %{name}-doc = %{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+# i586 compilation errors need to be investigated, disable for now
+ExcludeArch:    %ix86
 %openmpi_requires
 
 %description
@@ -91,26 +92,23 @@ disk space and not by the available RAM.
 This package provides additional documentation for %{name}.
 
 %prep
-%setup -q
-
-# REPLACE __DATE__ BY %%{reldate} USED TO TAG THE SOURCE TARBALL
-sed -i "s/PRODUCTIONDATE __DATE__/PRODUCTIONDATE %{reldate}/" sources/form3.h
-sed -i "s/PRODUCTIONDATE __DATE__/PRODUCTIONDATE %{reldate}/" configure.ac
+%autosetup -p1
 
 %build
 %setup_openmpi
 
 sed -i "s|-march=native||g" configure.ac
+
+# Fix some TeX directives
+sed -i "s/\\\\\([a-z]\)/\\1/g" configure.ac
+
 autoreconf -fvi
 %configure --enable-parform
-make %{?_smp_mflags}
+%make_build
 
-%if %{with_doc}
+%if %{with doc}
 # MAKE DOCUMENTATION
-pushd doc
-make %{?_smp_mflags} pdf
-make %{?_smp_mflags} html
-popd
+%make_build -C doc html pdf
 %endif
 
 %install
@@ -119,8 +117,9 @@ popd
 %fdupes -s doc
 
 %files
-%doc AUTHORS README.md COPYING
-%if %{with_doc}
+%license COPYING
+%doc AUTHORS README.md
+%if %{with doc}
 %doc doc/manual/manual.pdf
 %doc doc/manual/html/
 %endif
@@ -129,7 +128,7 @@ popd
 %{_bindir}/parform
 %{_mandir}/man1/form.1%{ext_man}
 
-%if %{with_doc}
+%if %{with doc}
 %files doc
 %doc doc/doxygen/html/
 %doc doc/devref/devref.pdf

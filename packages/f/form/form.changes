@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Sun Nov 27 05:26:25 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 4.3.0:
+  * Command-line options
+    - Input filename - to use the standard input
+      (gh#vermaseren/form#265).
+    - Added -C flag to specify a custom log filename (b0e72a8).
+  * Statements: Added allfloat option for `Format`
+    (gh#vermaseren/form#216).
+  * Functions: Added the Möbius function `moebius_` (0da2724).
+  * Documentation
+    - Added the FORM cookbook with practical examples
+      (gh#vermaseren/form#409).
+    - Documentation for features that were undocumented in the
+      previous release (changed default setup parameters, `#System
+      -e, SYSTEMERROR_, Print <filename>`).
+  * Changed behaviour of `On fewerstatistics 0`
+    (gh#vermaseren/form#285).
+  * The setup `parameterContinuationLines` now affects all
+    languages in addition to Fortran and 0 means infinity
+    (gh#vermaseren/form#394).
+  * The `Format` statement (except `Format <number>`) now does not
+    reset the number of characters per line (dd1a71c).
+  * Bug fixes
+    - Crash for `#optimize` a trivial expression
+      with Bracket (gh#vermaseren/form#7).
+    - Exit statement in TFORM (gh#vermaseren/form#14).
+    - Crash by `replace_` for nested functions
+      (gh#vermaseren/form#307).
+    - Disaster in adding many tables into a tablebase
+      (gh#vermaseren/form#318).
+    - Implicitly or autodeclared dimension of autodeclared indices
+      (gh#vermaseren/form#324, gh#vermaseren/form#325,
+      gh#vermaseren/form#405).
+    - Crash when `ArgToExtraSymbol` is used for a function
+      containing `g5_` (gh#vermaseren/form#340).
+    - Incorrectly sorted `PolyRatFun` function arguments when
+      `Argument` environment is used (gh#vermaseren/form#345).
+    - Fixed `FactArg,(0)` (gh#vermaseren/form#353).
+    - Unreplaced power signs by dictionaries
+      (gh#vermaseren/form#358).
+    - Inconsistent power signs with `Format` reduce
+      (gh#vermaseren/form#359).
+    - Denominators for nested denominator functions
+      (gh#vermaseren/form#400).
+- Add form-dont-use-DATE.patch -- Do not use __DATE__ in source
+  code to avoid issues with reproducibility.
+- Drop unused %{name}-rpmlintrc file.
+- Fix some TeX directives and re-enable documentation generation.
+- Exclude 32-bit builds as they fail during make for hitherto
+  not understood reasons.
+
+-------------------------------------------------------------------
 Thu Sep 30 21:04:04 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Use openmpi macros to always build with the default openmpi version. 

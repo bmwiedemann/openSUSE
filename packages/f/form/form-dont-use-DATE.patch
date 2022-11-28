@@ -1,0 +1,16 @@
+Index: form-4.3.0/sources/form3.h
+===================================================================
+--- form-4.3.0.orig/sources/form3.h
++++ form-4.3.0/sources/form3.h
+@@ -47,11 +47,7 @@
+ #define MAJORVERSION 4
+ #define MINORVERSION 3
+ 
+-#ifdef __DATE__
+-#define PRODUCTIONDATE __DATE__
+-#else
+ #define PRODUCTIONDATE "08-nov-2022"
+-#endif
+ 
+ #undef BETAVERSION
+ 
