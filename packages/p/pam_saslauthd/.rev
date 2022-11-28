@@ -1,0 +1,13 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>106140ae2023365da5945affe3c27672</srcmd5>
+    <version>0.1.0~1</version>
+    <time>1669629948</time>
+    <user>dimstar_suse</user>
+    <comment>Submit new package pam_saslauthd.
+
+The relevant security team AUDIT-0 and whitelist of the pam module was carried out here:
+https://bugzilla.suse.com/show_bug.cgi?id=1205459</comment>
+    <requestid>1038555</requestid>
+  </revision>
+</revisionlist>

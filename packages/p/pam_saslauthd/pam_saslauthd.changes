@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Thu Nov 24 22:49:34 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Update macros to use _pam_vendordir
+
+-------------------------------------------------------------------
+Mon Nov 21 02:16:26 UTC 2022 - william.brown@suse.com
+
+- Update to version 0.1.0~1:
+  * Clean build warnings
+
+-------------------------------------------------------------------
+Tue Nov 15 23:39:37 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Initial commit

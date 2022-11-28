@@ -1,0 +1,5 @@
+<package name="pam_saslauthd" project="openSUSE:Factory">
+  <title>pam_saslauthd</title>
+  <description></description>
+  <devel project="network:idm" package="pam_saslauthd"/>
+</package>
