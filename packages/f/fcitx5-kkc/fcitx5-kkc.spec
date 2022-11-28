@@ -17,7 +17,7 @@
 
 
 Name:           fcitx5-kkc
-Version:        5.0.8
+Version:        5.0.11
 Release:        0
 Summary:        Libkkc input method support for Fcitx5
 License:        GPL-3.0-or-later
