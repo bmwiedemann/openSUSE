@@ -30,11 +30,8 @@ Source3:        Extensible_Storage_Engine_ESE_Database_File_EDB_format.pdf
 Source4:        Forensic_analysis_of_the_Windows_Search_database.pdf
 Source5:        Windows_Search.pdf
 Source6:        libesedb-libfdata.pdf
-Patch1:         system-libs.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  c_compiler
-BuildRequires:  gettext-tools >= 0.21
-BuildRequires:  libtool
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libbfio) >= 20220120
 BuildRequires:  pkgconfig(libcdata) >= 20220115
@@ -46,7 +43,7 @@ BuildRequires:  pkgconfig(libcpath) >= 20220108
 BuildRequires:  pkgconfig(libcsplit) >= 20220109
 BuildRequires:  pkgconfig(libcthreads) >= 20220102
 BuildRequires:  pkgconfig(libfcache) >= 20220110
-BuildRequires:  pkgconfig(libfdata) >= 20211023
+BuildRequires:  pkgconfig(libfdata) >= 20220111
 BuildRequires:  pkgconfig(libfdatetime) >= 20220112
 BuildRequires:  pkgconfig(libfguid) >= 20220113
 BuildRequires:  pkgconfig(libfmapi) >= 20220114
@@ -55,9 +52,12 @@ BuildRequires:  pkgconfig(libfwnt) >= 20210906
 BuildRequires:  pkgconfig(libmapidb) >= 20210421
 BuildRequires:  pkgconfig(libuna) >= 20220611
 %python_subpackages
+# Various notes: https://en.opensuse.org/libyal
 
 %description
-Library and tools to access the Extensible Storage Engine (ESE) Database File (EDB) format. ESEDB is used in may different applications like Windows Search, Windows Mail, Exchange, Active Directory, etc.
+Library and tools to access the Extensible Storage Engine (ESE) Database File
+(EDB) format. ESEDB is used in may different applications like Windows Search,
+Windows Mail, Exchange, Active Directory, etc.
 
 %package -n %{lname}
 Summary:        Library to access the EDB format
@@ -65,7 +65,9 @@ License:        LGPL-3.0-or-later
 Group:          System/Libraries
 
 %description -n %{lname}
-Library to access the Extensible Storage Engine (ESE) Database File (EDB) format. ESEDB is used in may different applications like Windows Search, Windows Mail, Exchange, Active Directory, etc.
+Library to access the Extensible Storage Engine (ESE) Database File (EDB)
+format. ESEDB is used in may different applications like Windows Search,
+Windows Mail, Exchange, Active Directory, etc.
 
 %package tools
 Summary:        Tools to access the EDB format
@@ -73,7 +75,9 @@ License:        LGPL-3.0-or-later
 Group:          Productivity/File utilities
 
 %description tools
-Tools to access the Extensible Storage Engine (ESE) Database File (EDB) format. ESEDB is used in may different applications like Windows Search, Windows Mail, Exchange, Active Directory, etc.
+Tools to access the Extensible Storage Engine (ESE) Database File (EDB) format.
+ESEDB is used in may different applications like Windows Search, Windows Mail,
+Exchange, Active Directory, etc.
 
 %package devel
 Summary:        Development files for libesedb, a EDB file format library
@@ -90,22 +94,15 @@ applications that want to make use of libesedb.
 
 %prep
 %autosetup -p1
-cp "%{SOURCE2}" .
-cp "%{SOURCE3}" .
-cp "%{SOURCE4}" .
-cp "%{SOURCE5}" .
-cp "%{SOURCE6}" .
+cp "%_sourcedir"/*.pdf .
 
 %build
-autoreconf -fi
-# OOT builds are presently broken, so we have to install
-# within each python iteration now, not in %%install.
 %{python_expand #
-# see libcdata for version-sc
 echo "V_%version { global: *; };" >v.sym
 %configure --disable-static --enable-wide-character-type \
 	--enable-python PYTHON_VERSION="%{$python_bin_suffix}" \
 	LDFLAGS="-Wl,--version-script=$PWD/v.sym"
+grep ' '' ''local' config.log && exit 1
 %make_build
 %make_install DESTDIR="%_builddir/rt"
 %make_build clean
