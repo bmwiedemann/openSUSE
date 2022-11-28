@@ -17,7 +17,7 @@
 
 
 Name:           fcitx5-rime
-Version:        5.0.14
+Version:        5.0.15
 Release:        0
 Summary:        RIME support for Fcitx5
 License:        LGPL-2.1-or-later

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov 20 10:24:21 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 5.0.15
+  * fixes some memory leaks
+- Remove obsolete patch, since Leap 15.3 already has newer CMake
+  * fcitx5-rime-cmake-3.10.patch
+
+-------------------------------------------------------------------
 Tue Jul  5 11:29:20 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
 
 - Update to 5.0.14
