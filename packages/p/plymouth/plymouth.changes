@@ -1,10 +1,4 @@
 -------------------------------------------------------------------
-Fri Nov 18 20:55:23 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
-
-- Drop plymouth-keep-KillMode-none.patch: We have a new enough
-  version of systemd now to not need this patch any more.
-
--------------------------------------------------------------------
 Wed Oct 26 07:12:23 UTC 2022 - Cliff Zhao <qzhao@suse.com>
 
 - Update to version 22.02.122+94.4bd41a3:

@@ -1069,4 +1069,11 @@ plymouth-branding-openSUSE (forwarded request 114125 from gary_lin)</comment>
     <comment></comment>
     <requestid>1036743</requestid>
   </revision>
+  <revision rev="119" vrev="3">
+    <srcmd5>58a48435e07e1cc83074f55592ab853d</srcmd5>
+    <version>22.02.122+94.4bd41a3</version>
+    <time>1669623974</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1205626</comment>
+  </revision>
 </revisionlist>

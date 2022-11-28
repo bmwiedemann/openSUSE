@@ -40,6 +40,8 @@ Patch2:         plymouth-manpages.patch
 Patch3:         plymouth-disable-fedora-logo.patch
 # PATCH-FIX-OPENSUSE plymouth-only_use_fb_for_cirrus_bochs.patch bnc#888590 boo#1172028 bsc#1181913 fvogt@suse.com -- Force fb for cirrus and bochs, force drm otherwise. replace removal of framebuffer driver and plymouth-ignore-cirrusdrm.patch with single patch.
 Patch4:         plymouth-only_use_fb_for_cirrus_bochs.patch
+# PATCH-FIX-OPENSUSE plymouth-keep-KillMode-none.patch bsc#1177082 bsc#1184087 boo#1182145 qzhao@suse.com -- Keep the plymouth-start.service KillMode=none.
+Patch5:         plymouth-keep-KillMode-none.patch
 # PATCH-FIX-OPENSUSE plymouth-install-label-library-and-font-file-to-initrd.patch boo#1183425 boo#1184309 qzhao@suse.com -- Pack label plugin and font into initram to ensure notice info could successfully show when partition encrypted.
 Patch6:         plymouth-install-label-library-and-font-file-to-initrd.patch
 # PATCH-FIX-OPENSUSE plymouth-quiet-dracut-build-info.patch bsc#1189613 qzhao@suse.com -- Hide unuseful output when re-generate initrd.
