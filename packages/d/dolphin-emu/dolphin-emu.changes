@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Nov 27 17:36:22 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Fix building for openSUSE Leap 15.4 using gcc10-c++
+
+-------------------------------------------------------------------
 Fri Oct 14 17:17:06 UTC 2022 - Jannik Seiler <seil0@mosad.xyz>
 
 - Updated to 5.0.17269 48c9c224cf9f82f0f9f2690b7cc6283d7448480c

@@ -65,6 +65,9 @@ BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(soundtouch)
 BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xrandr)
+%if 0%{?suse_version} <= 1500
+BuildRequires:  gcc10-c++
+%endif
 Requires:       nintendo-gamecube-wiimote-udev-rules
 ExclusiveArch:  x86_64 aarch64
 
@@ -94,6 +97,10 @@ sed -i '/CMAKE_C.*_FLAGS/d' CMakeLists.txt
 sed -i 's/minizip>=2.0.0/minizip/' CMakeLists.txt
 
 %build
+%if 0%{?suse_version} <= 1500
+export CXX=g++-10
+%endif
+
 # FIXME: you should use the %%cmake macros
 cmake . \
     -LA \
