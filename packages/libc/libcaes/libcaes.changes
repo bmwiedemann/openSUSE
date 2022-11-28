@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Nov 27 21:10:13 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20221127
+  * Detection for EVP_CipherInit_ex during build was not accurate
+    and libcaes features depending on it would be skipped.
+
+-------------------------------------------------------------------
+Sat Nov 26 19:59:13 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Delete system-libs.patch (not needed - system libs are
+  autodetected)
+
+-------------------------------------------------------------------
 Mon Aug  8 11:39:37 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Add forced symver

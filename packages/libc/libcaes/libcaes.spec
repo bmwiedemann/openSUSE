@@ -18,7 +18,7 @@
 
 Name:           libcaes
 %define lname	libcaes1
-Version:        20220529
+Version:        20221127
 Release:        0
 Summary:        Library for AES encryption
 License:        LGPL-3.0-or-later
@@ -27,16 +27,14 @@ URL:            https://github.com/libyal/libcaes
 Source:         https://github.com/libyal/libcaes/releases/download/%version/libcaes-alpha-%version.tar.gz
 Source2:        https://github.com/libyal/libcaes/releases/download/%version/libcaes-alpha-%version.tar.gz.asc
 Source3:        %name.keyring
-Patch1:         system-libs.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  c_compiler
-BuildRequires:  gettext-tools >= 0.18.1
-BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libcerror) >= 20220101
 BuildRequires:  pkgconfig(openssl) >= 1.0
 %{python_subpackages}
+# Various notes: https://en.opensuse.org/libyal
 
 %description
 libcaes is a library for AES encryption.
@@ -63,13 +61,10 @@ applications that want to make use of libcaes.
 %autosetup -p1
 
 %build
-autoreconf -fi
-# OOT builds are presently broken, so we have to install
-# within each python iteration now, not in %%install.
-# see libcdata for version-sc
 %{python_expand #
 echo "V_%version { global: *; };" >v.sym
 %configure --disable-static --enable-python PYTHON_VERSION="%{$python_bin_suffix}" LDFLAGS="-Wl,--version-script=$PWD/v.sym"
+grep '  local' config.log || exit 1
 %make_build
 %make_install DESTDIR="%_builddir/rt"
 %make_build clean
