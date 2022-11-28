@@ -28,11 +28,8 @@ Source:         https://github.com/libyal/liblnk/releases/download/%version/libl
 Source2:        https://github.com/libyal/liblnk/releases/download/%version/liblnk-alpha-%version.tar.gz.asc
 Source3:        %name.keyring
 Source8:        Windows_Shortcut_File_LNK_format.pdf
-Patch1:         system-libs.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  c_compiler
-BuildRequires:  gettext-tools >= 0.21
-BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libbfio) >= 20220120
@@ -51,6 +48,7 @@ BuildRequires:  pkgconfig(libfwps) >= 20220122
 BuildRequires:  pkgconfig(libfwsi) >= 20220927
 BuildRequires:  pkgconfig(libuna) >= 20220611
 %python_subpackages
+# Various notes: https://en.opensuse.org/libyal
 
 %description
 liblnk is a library and tools to access Windows Shortcut File (LNK) format files.
@@ -88,15 +86,12 @@ applications that want to make use of %name.
 cp %_sourcedir/*.pdf .
 
 %build
-autoreconf -fi
-# OOT builds are presently broken, so we have to install
-# within each python iteration now, not in %%install.
 %{python_expand #
-# see libcdata for version-sc
 echo "V_%version { global: *; };" >v.sym
 %configure --disable-static --enable-wide-character-type --enable-python \
 	PYTHON_VERSION="%{$python_bin_suffix}" \
 	LDFLAGS="-Wl,--version-script=$PWD/v.sym"
+grep ' '' ''local' config.log && exit 1
 %make_build
 %make_install DESTDIR="%_builddir/rt"
 %make_build clean
