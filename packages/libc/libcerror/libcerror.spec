@@ -1,7 +1,7 @@
 #
 # spec file for package libcerror
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,9 +28,8 @@ Source:         https://github.com/libyal/libcerror/releases/download/%version/l
 Source2:        https://github.com/libyal/libcerror/releases/download/%version/libcerror-beta-%version.tar.gz.asc
 Source9:        %name.keyring
 BuildRequires:  c_compiler
-BuildRequires:  gettext-tools >= 0.18.1
-BuildRequires:  libtool
 BuildRequires:  pkg-config
+# Various notes: https://en.opensuse.org/libyal
 
 %description
 A library for C error functions.
@@ -63,10 +62,9 @@ applications that want to make use of libcerror.
 %autosetup
 
 %build
-autoreconf -fi
-# see libcdata for version-sc
 echo "V_%version { global: *; };" >v.sym
 %configure --disable-static LDFLAGS="-Wl,--version-script=$PWD/v.sym"
+grep '  local' config.log && exit 1
 %make_build
 
 %install

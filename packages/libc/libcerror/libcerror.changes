@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Nov 27 11:00:16 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop autoreconf call from %build
+
+-------------------------------------------------------------------
 Mon Aug  8 11:37:44 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Add forced symvers
