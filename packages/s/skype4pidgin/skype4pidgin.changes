@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Nov 26 21:20:02 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.7 (changes since 1.5):
+  * Fix "alt login" giving a 40499 error.
+  * Fix file transfers.
+  * Fix losing admin rights when joining a room.
+  * Fix the Aug 2020 issues with "Failed to get Magic T" errors.
+    Use the "Use alternate auth method" setting in the Advanced tab
+    is always preferred as it's less prone to web-scraping issues.
+  * Fix some issues that some users were experiencing with buddies
+    not appearing as online.
+  * Fix some static analysis warnings
+    (memory leaks, security issues).
+
+-------------------------------------------------------------------
 Thu May 31 13:14:00 UTC 2018 - sor.alexei@meowr.ru
 
 - Update to version 1.5:

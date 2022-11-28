@@ -1,7 +1,7 @@
 #
 # spec file for package skype4pidgin
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           skype4pidgin
-Version:        1.5
+Version:        1.7
 Release:        0
 Summary:        Libpurple plugin for SkypeWeb API
 License:        GPL-3.0-or-later
@@ -69,17 +69,13 @@ with all your Skype buddies from within Pidgin.
 %setup -q
 
 %build
-make %{?_smp_mflags} V=1 -C skypeweb
+%make_build -C skypeweb
 
 %install
 %make_install -C skypeweb
 
 %files -n libpurple-plugin-skypeweb
-%if 0%{?suse_version} >= 1500
 %license skypeweb/gpl3.txt
-%else
-%doc skypeweb/gpl3.txt
-%endif
 %doc skypeweb/README.md
 %{_libdir}/purple-2/libskypeweb.so
 
