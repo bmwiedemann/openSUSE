@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov  9 07:46:43 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Add BuildRequires, so it can also build for Leap >= 15.4.
+
+-------------------------------------------------------------------
 Wed Nov  2 20:53:59 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release

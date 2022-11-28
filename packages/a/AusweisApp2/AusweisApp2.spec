@@ -25,6 +25,11 @@ Group:          Productivity/Security
 URL:            https://www.ausweisapp.bund.de
 Source0:        https://github.com/Governikus/AusweisApp2/archive/%{version}.tar.gz
 BuildRequires:  cmake
+%if 0%{?suse_version} > 1500
+BuildRequires:  gcc-c++
+%else
+BuildRequires:  gcc11-c++
+%endif
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libopenssl-1_1-devel
@@ -57,6 +62,10 @@ reader or compatible NFC smart phone is required.
 %setup -q
 
 %build
+%if 0%{?suse_version} <= 1500
+export CC=gcc-11
+export CXX=g++-11
+%endif
 export CFLAGS="%{optflags} -fPIC"
 export CXXFLAGS="%{optflags} -fPIC"
 %define __builder ninja
