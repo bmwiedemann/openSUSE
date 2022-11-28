@@ -1,0 +1,34 @@
+Index: qBittorrent-release-4.5.0beta1/CMakeLists.txt
+===================================================================
+--- qBittorrent-release-4.5.0beta1.orig/CMakeLists.txt
++++ qBittorrent-release-4.5.0beta1/CMakeLists.txt
+@@ -7,7 +7,7 @@ project(qBittorrent
+ )
+ 
+ # version requirements - older versions may work, but you are on your own
+-set(minBoostVersion 1.71)
++set(minBoostVersion 1.66)
+ set(minQt5Version 5.15.2)
+ set(minQt6Version 6.2)
+ set(minOpenSSLVersion 1.1.1)
+Index: qBittorrent-release-4.5.0beta1/src/app/stacktrace.cpp
+===================================================================
+--- qBittorrent-release-4.5.0beta1.orig/src/app/stacktrace.cpp
++++ qBittorrent-release-4.5.0beta1/src/app/stacktrace.cpp
+@@ -30,7 +30,16 @@
+ 
+ #include <boost/stacktrace.hpp>
+ 
++#include <sstream>
++#include <boost/version.hpp>
++
+ std::string getStacktrace()
+ {
++#if BOOST_VERSION >= 107100
+     return boost::stacktrace::to_string(boost::stacktrace::stacktrace());
++#else
++    std::ostringstream out;
++    out << boost::stacktrace::stacktrace();
++    return out.str();
++#endif
+ }

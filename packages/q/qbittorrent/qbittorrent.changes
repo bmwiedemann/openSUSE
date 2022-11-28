@@ -1,4 +1,98 @@
 -------------------------------------------------------------------
+Sun Nov 27 16:49:23 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.5.0
+  New features:
+  * Add `Auto resize columns` functionality
+  * Allow to use Category paths in `Manual` mode
+  * Allow to disable Automatic mode when default "temp" path
+    changed
+  * Add tuning options related to performance warnings
+  * Add right click menu for status filters
+  * Allow setting the number of maximum active checking torrents
+  * Add option to toggle filters sidebar
+  * Allow to set `working set limit` on non-Windows OS
+  * Add `Export .torrent` action
+  * Add keyboard navigation keys
+  * Allow to use POSIX-compliant disk IO type
+  * Add `Filter files` field in new torrent dialog
+  * Implement new icon/color theme
+  * Add file name filter/blacklist
+  * Add support for custom SMTP ports
+  * Split the OS cache settings into Disk IO read/write modes
+  * When duplicate torrent is added set metadata to existing one
+  * Greatly improve startup time with many torrents
+  * Add keyboard shortcut to Download URL dialog
+  * Add ability to run external program on torrent added
+  * Add infohash and download path columns
+  * Allow to set torrent stop condition
+  * Add a `Moving` status filter
+  * Change color palettes for both dark, light themes
+  * Add a `Use proxy for hostname lookup` option
+  * Introduce a `change listen port` cmd option
+  * Implement `Peer ID Client` column for `Peers` tab
+  * Add port forwarding option for embedded tracker
+  Bug fixes:
+  * Store hybrid torrents using `torrent ID` as basename
+  * Enable Combobox editor for the `Mixed` file download priority
+  * Allow shortcut folders for the Open and Save directory
+    dialogs
+  * Rename content tab `Size` column to `Total Size`
+  * Fix scrolling to the lowermost visible torrent
+  * Allow changing file priorities for finished torrents
+  * Focus save path when Manual mode is selected initially
+  * Disable force reannounce when it is not possible
+  * Add horizontal scrolling for tracker list and torrent content
+  * Enlarge "speed limits" icons
+  * Change Downloaded to Times Downloaded in trackers tab
+  * Remove artificial max limits from `Torrent Queueing` related
+    options
+  * Preserve `skip hash check` when there is no metadata
+  * Fix DHT/PeX/LSD status when it is globally disabled
+  * Fix rate calculation when interval is too low
+  * Add tooltip message when system tray icon isn't available
+  * Improve sender field in mail notifications
+  * Fix "Add torrent dialog" spill-over on smaller screens
+  * Fix peer count issue when tracker responds with zero figure
+  * Don't merge trackers by default
+  * Don't inhibit system sleep/auto shutdown for torrents stuck
+    at downloading metadata
+  * Allow to pause a checking torrent from context menu
+  * Allow to use subnet notation in reverse proxy list
+  * Fine tune translations loading for Chinese locales
+  * Fix torrent content checkboxes not updated properly
+  * Correctly load state of `Use another path for incomplete
+    torrents` in Watched folders
+  * Add confirmation to resume/pause all
+  * Fix wrong count of errored trackers
+  WebUI:
+  * Allow blank lines in multipart form-data input
+  * Make various dialogs resizable
+  * Fix wrong v2 hash string displayed
+  * WebAPI: return correct status
+  * Fix empty selection in language combobox
+  * Store WebUI port setting in human readable number
+  * Add support for exporting .torrent
+  * WebAPI: Add endpoint to set speed limit mode
+  * Improve progress bar rendering
+  * Add transfer list refresh interval settings
+  * Use natural sort
+  * Apply i18n translation only to built-in WebUI
+  * Alert when HTTPS settings are incomplete
+  * Handle drag and drop events
+  * Fix wrong behavior for shutdown action
+  * Don't disable combobox for file priority
+  RSS:
+  * Increase limit of maximum number of articles per feed
+  Other:
+  * Mark as single window app in .desktop file
+  * Add Dockerfile
+  * Remove option of using icons from system theme
+- Delete qbittorrent-fix_boost_1.66_detection.patch
+- Add qbittorrent-fix_boost_1.66_build.patch
+- Use the Qt6 rpm macros
+
+-------------------------------------------------------------------
 Tue Aug 30 18:55:56 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 4.4.5
