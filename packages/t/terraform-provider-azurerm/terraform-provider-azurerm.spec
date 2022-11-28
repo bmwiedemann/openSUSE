@@ -21,9 +21,9 @@
 %global project         terraform-providers
 %global repo            terraform-provider-azurerm
 %global provider_prefix %{provider}.%{provider_tld}/%{project}/%{repo}
-%global import_path     %{provider_prefix}
 %global registry        registry.terraform.io
 %global namespace       hashicorp
+%global import_path     %{provider}.%{provider_tld}/%{namespace}/%{repo}
 %global providername    azurerm
 
 %ifarch aarch64
@@ -50,7 +50,7 @@
 %endif
 
 Name:           terraform-provider-azurerm
-Version:        2.69.0
+Version:        3.31.0
 Release:        0
 Summary:        Terraform provider for Azure Resource Manager (AzureRM)
 License:        MPL-2.0
@@ -96,7 +96,8 @@ Manager via Terraform.
 %install
 %{goinstall}
 rm -rf %{buildroot}/%{_libdir}/go/contrib
-ln -s %{_bindir}/%{name} %{buildroot}%{_bindir}/%{name}_v%{version}
+mv %{buildroot}%{_bindir}/%{name} %{buildroot}%{_bindir}/%{name}_v%{version}
+ln -s %{_bindir}/%{name}_v%{version} %{buildroot}%{_bindir}/%{name}
 install -d 755 %{buildroot}%{_datadir}/terraform/providers/%{registry}/%{namespace}/%{providername}/%{version}/linux_%{terraformarch}
 ln -s %{_bindir}/%{name} %{buildroot}%{_datadir}/terraform/providers/%{registry}/%{namespace}/%{providername}/%{version}/linux_%{terraformarch}/%{name}_v%{version}
 
