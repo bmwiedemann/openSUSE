@@ -17,7 +17,6 @@
 
 
 %define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pre-commit
 Version:        2.20.0
 Release:        0
@@ -61,6 +60,7 @@ A framework for managing and maintaining multi-language pre-commit hooks.
 %prep
 %setup -q -n pre-commit-%{version}
 sed -i 's|^#!%{_bindir}/env python|#!%{_bindir}/python|' pre_commit/resources/hook-tmpl
+sed -i 's|^#!%{_bindir}/env bash|#!%{_bindir}/bash|' pre_commit/resources/hook-tmpl
 
 %build
 %python_build
@@ -94,6 +94,9 @@ EXCLUDED_TESTS="$EXCLUDED_TESTS or conda or test_perl_hook or test_local_perl_ad
 EXCLUDED_TESTS="$EXCLUDED_TESTS or dart or dotnet or r_ or node or ruby"
 EXCLUDED_TESTS="$EXCLUDED_TESTS or test_local_lua_additional_dependencies"
 EXCLUDED_TESTS="$EXCLUDED_TESTS or test_local_python_repo_python2"
+
+# Fix issue with git submodule in OBS
+git config --global --add protocol.file.allow always
 
 git init .
 %pytest -k "not ($EXCLUDED_TESTS)"

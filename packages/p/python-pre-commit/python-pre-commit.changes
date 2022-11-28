@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 28 07:01:26 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Fix "/usr/bin/env bash" shebang in hook-tmpl file
+- Remove python_module macro definition
+- Allow file protocol always for git submodule to fix tests
+
+-------------------------------------------------------------------
 Mon Jul 11 13:58:51 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 2.20.0:
