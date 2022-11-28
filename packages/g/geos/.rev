@@ -219,4 +219,21 @@
     <comment></comment>
     <requestid>989854</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>5f8149dbb0fc908890464582d2f1455b</srcmd5>
+    <version>3.11.1</version>
+    <time>1669630049</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.11.1:
+  * Remove spurious version from --libs geos-config options
+  * Fix PreparedGeometry to avoid crashes with EMPTY elements in input (GH-678, Martin Davis)
+  * Fix LineSegment.orientationIndex(LineSegment) (GH-699, Martin Davis)
+  * Fix DepthSegment comparison operation (GH-707, Martin Davis)
+  * Add OverlayNG support for simple GeometryCollection inputs (GH-716, Martin Davis)
+  * Fix TopologyPreservingSimplifier to produce stable results for Multi inputs (GH-718)
+  * Fix WKB hex endian test (GH-720, Paul Ramsey)
+  * Improve ConvexHull radial sort robustness (GH-724, Martin Davis)
+  * Use more robust Delaunay Triangulation frame size heuristic (GH-728, Martin Davis)</comment>
+    <requestid>1038590</requestid>
+  </revision>
 </revisionlist>
