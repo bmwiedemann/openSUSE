@@ -25,15 +25,13 @@ License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/libyal/libcfile
 Source:         https://github.com/libyal/libcfile/releases/download/%version/%name-alpha-%version.tar.gz
-Patch1:         system-libs.patch
 BuildRequires:  c_compiler
-BuildRequires:  gettext-tools >= 0.18.1
-BuildRequires:  libtool
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcerror) >= 20201121
-BuildRequires:  pkgconfig(libclocale) >= 20200913
-BuildRequires:  pkgconfig(libcnotify) >= 20200913
-BuildRequires:  pkgconfig(libuna) >= 20201204
+BuildRequires:  pkgconfig(libcerror) >= 20220101
+BuildRequires:  pkgconfig(libclocale) >= 20210526
+BuildRequires:  pkgconfig(libcnotify) >= 20210411
+BuildRequires:  pkgconfig(libuna) >= 20210801
+# Various notes: https://en.opensuse.org/libyal
 
 %description
 A library and devel package for C file functions.
@@ -60,10 +58,9 @@ applications that want to make use of libcfile.
 %autosetup -p1
 
 %build
-if [ ! -e configure ]; then ./autogen.sh; fi
-# see libcdata for version-sc
 echo "V_%version { global: *; };" >v.sym
 %configure --disable-static --enable-wide-character-type LDFLAGS="-Wl,--version-script=$PWD/v.sym"
+grep '  local' config.log && exit 1
 %make_build
 
 %install
