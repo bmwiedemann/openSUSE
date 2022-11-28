@@ -27,18 +27,16 @@ URL:            https://github.com/libyal/libfdata
 Source:         https://github.com/libyal/libfdata/releases/download/%version/libfdata-alpha-%version.tar.gz
 Source2:        https://github.com/libyal/libfdata/releases/download/%version/libfdata-alpha-%version.tar.gz.asc
 Source3:        %name.keyring
-Patch1:         system-libs.patch
 # The source code assumes 64bit integers for one of the function returns.  Fix that.
 Patch2:         libfdata-20211023-1TB-fix.patch
 BuildRequires:  c_compiler
-BuildRequires:  gettext-tools >= 0.18.1
-BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libcdata) >= 20200509
 BuildRequires:  pkgconfig(libcerror) >= 20220101
 BuildRequires:  pkgconfig(libcnotify) >= 20220108
 BuildRequires:  pkgconfig(libcthreads) >= 20220102
 BuildRequires:  pkgconfig(libfcache) >= 20220110
+# Various notes: https://en.opensuse.org/libyal
 
 %description
 Library to provide generic file data functions for the libyal family of libraries.
@@ -65,10 +63,9 @@ applications that want to make use of libfdata.
 %autosetup -p1
 
 %build
-autoreconf -fi
-# see libcdata for version-sc
 echo "V_%version { global: *; };" >v.sym
 %configure --disable-static LDFLAGS="-Wl,--version-script=$PWD/v.sym"
+grep '  local' config.log && exit 1
 %make_build
 
 %install

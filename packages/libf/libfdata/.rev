@@ -87,4 +87,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1001887</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>a695aa63704c7e915af606bc3d1f253a</srcmd5>
+    <version>20220111</version>
+    <time>1669629972</time>
+    <user>dimstar_suse</user>
+    <comment>delete system-libs.patch</comment>
+    <requestid>1038457</requestid>
+  </revision>
 </revisionlist>
