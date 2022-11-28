@@ -28,11 +28,8 @@ Source:         https://github.com/libyal/libbde/releases/download/%version/libb
 Source2:        https://github.com/libyal/libbde/releases/download/%version/libbde-alpha-%version.tar.gz.asc
 Source3:        %name.keyring
 Source10:       BitLocker_Drive_Encryption_BDE_format.pdf
-Patch1:         system-libs.patch
 BuildRequires:  %python_module devel
 BuildRequires:  c_compiler
-BuildRequires:  gettext-tools >= 0.21
-BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(fuse) >= 2.6
@@ -53,18 +50,22 @@ BuildRequires:  pkgconfig(libfvalue) >= 20220120
 BuildRequires:  pkgconfig(libhmac) >= 20220425
 BuildRequires:  pkgconfig(libuna) >= 20220611
 %python_subpackages
+# Various notes: https://en.opensuse.org/libyal
 
 %description
 libbde is a library to access the BitLocker Drive Encryption (BDE)
 format. The BDE format is used by Windows, as of Vista, to encrypt
 data on a storage media volume.
+
 %package -n %{lname}
 Summary:        Library to access Microsoft Bitlocker Drive Encrypted volumes
 License:        LGPL-3.0-or-later
 Group:          System/Libraries
 
 %description -n %{lname}
-libbde is a library and tools to access the BitLocker Drive Encryption (BDE) format. The BDE format is used by Windows, as of Vista, to encrypt data on a storage media volume.
+libbde is a library to access the BitLocker Drive Encryption (BDE)
+format. The BDE format is used by Windows, as of Vista, to encrypt
+data on a storage media volume.
 
 Supported BDE formats:
 
@@ -115,11 +116,7 @@ applications that want to make use of libbde.
 cp %_sourcedir/*.pdf .
 
 %build
-autoreconf -fi
-# OOT builds are presently broken, so we have to install
-# within each python iteration now, not in %%install.
 %{python_expand #
-# see libcdata for version-sc
 echo "V_%version { global: *; };" >v.sym
 %configure --disable-static --enable-wide-character-type --enable-python \
 	PYTHON_VERSION="%{$python_bin_suffix}" \
