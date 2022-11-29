@@ -18,7 +18,7 @@
 
 %define project github.com/containers/buildah
 Name:           buildah
-Version:        1.28.0
+Version:        1.28.2
 Release:        0
 Summary:        Tool for building OCI containers
 License:        Apache-2.0
@@ -76,7 +76,7 @@ cp -avr * $HOME/go/src/%{project}
 cd $HOME/go/src/%{project}
 
 # Build buildah
-GOFLAGS=-buildmode=pie make %{?_smp_mflags} GIT_COMMIT=unknown
+GOFLAGS=-buildmode=pie %make_build GIT_COMMIT=unknown buildah docs
 
 %check
 # Too many tests fail due to the restricted permissions in the build enviroment.

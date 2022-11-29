@@ -497,4 +497,21 @@
     <comment></comment>
     <requestid>1008737</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>792b8bf0bb047c318c7880a5b7cb2f94</srcmd5>
+    <version>1.28.2</version>
+    <time>1669715626</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.28.2:
+  * version: bump to 1.28.2
+  * Stop using ubi8
+  * Define and use a safe, reliable test image
+
+- Update to version 1.28.1:
+  * version: bump to v1.28.1
+  * copier.Put(): clear up os/syscall mode bit confusion
+  * retrofit, test: ubi8 changed architecture string
+- Only build targets that we install</comment>
+    <requestid>1038708</requestid>
+  </revision>
 </revisionlist>

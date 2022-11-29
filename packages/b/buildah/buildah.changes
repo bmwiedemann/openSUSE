@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Nov 28 08:55:11 UTC 2022 - dcermak@suse.com
+
+- Update to version 1.28.2:
+  * version: bump to 1.28.2
+  * Stop using ubi8
+  * Define and use a safe, reliable test image
+
+-------------------------------------------------------------------
+Wed Nov 23 10:30:12 UTC 2022 - dcermak@suse.com
+
+- Update to version 1.28.1:
+  * version: bump to v1.28.1
+  * copier.Put(): clear up os/syscall mode bit confusion
+  * retrofit, test: ubi8 changed architecture string
+- Only build targets that we install
+
+-------------------------------------------------------------------
 Fri Oct 07 08:53:06 UTC 2022 - dcermak@suse.com
 
 - Update to version 1.28.0:
