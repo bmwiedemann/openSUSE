@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 21 16:04:47 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to 1.608.0:
+  * This release matches the content provided in the DirectX12 
+    Agility SDK and the 1.608.0 NuGet package.
+
+-------------------------------------------------------------------
 Tue Aug 30 23:51:37 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to 1.606.4:
