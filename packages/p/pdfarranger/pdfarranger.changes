@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov 29 09:21:22 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.9.2
+
+  * Fix "export all to individual files" overwrite
+  * Fix unexpected application close and quit
+  * Fix buggy export when CropBox is larger than MediaBox
+  * Fix equal page size test in generate booklet
+  * Fix NAME in man page
+  * Some translation fixes
+
+-------------------------------------------------------------------
 Wed Oct 12 04:05:37 UTC 2022 - C J <c.j@tuta.io>
 
 - Update to 1.9.1:

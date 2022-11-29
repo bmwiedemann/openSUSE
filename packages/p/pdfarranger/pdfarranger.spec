@@ -18,11 +18,10 @@
 
 
 Name:           pdfarranger
-Version:        1.9.1
+Version:        1.9.2
 Release:        0
 Summary:        Merge, split, rotate, crop, and rearrange pages of PDF documents
 License:        GPL-3.0-only
-Group:          Productivity/Publishing/PDF
 URL:            https://github.com/pdfarranger/pdfarranger
 Source:         https://github.com/pdfarranger/pdfarranger/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
@@ -53,7 +52,7 @@ a humble attempt to make the project a bit more active.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 python3 setup.py build
