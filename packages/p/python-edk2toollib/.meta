@@ -1,0 +1,5 @@
+<package name="python-edk2toollib" project="openSUSE:Factory">
+  <title>Tianocore Edk2 PyTool Library</title>
+  <description>This is a Tianocore maintained project consisting of a python library supporting UEFI firmware development. This package's intent is to provide an easy way to organize and share python code to facilitate reuse across environments, tools, and scripts.</description>
+  <devel project="devel:tools" package="python-edk2toollib"/>
+</package>
