@@ -6,6 +6,11 @@ Wed Nov 16 12:29:15 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
   pc-q35-Bump-max_cpus-to-1024.patch
 
 -------------------------------------------------------------------
+Wed Nov  9 10:36:58 UTC 2022 - Christopher Yeleighton <giecrilj@stegny.2a.pl>
+
+- install SeaBIOS documentation
+
+-------------------------------------------------------------------
 Thu Nov  3 08:30:57 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - Enable KVM support on riscv64

@@ -288,6 +288,7 @@ BuildRequires:  meson
 BuildRequires:  ninja >= 1.7
 BuildRequires:  python3-base >= 3.6
 BuildRequires:  python3-setuptools
+BuildRequires:  perl-Text-Markdown
 %if "%{name}" == "qemu"
 # Requires, Recommends, etc exclusive to qemu
 %if %{kvm_available}
@@ -1558,10 +1559,11 @@ The Google Serial Graphics Adapter BIOS or SGABIOS provides a means for legacy
 x86 software to communicate with an attached serial console as if a video card
 were attached. For use with QEMU.
 
-%files sgabios
+%files sgabios -f roms/seabios/docs/docs.txt
 %defattr(-, root, root)
 %dir %_datadir/%name
 %_datadir/%name/sgabios.bin
+%license  roms/seabios/COPYING
 
 %package ipxe
 Summary:        PXE ROMs for QEMU NICs
@@ -1689,6 +1691,35 @@ efi-rtl8139.rom efi-virtio.rom efi-vmxnet3.rom}
 %endif
 
 %build
+
+%{nil build documentation for SeaBIOS }
+(d=roms/seabios/docs/
+cd "${d}"
+%{nil remember list of jobs in $@ }
+set --
+for f in *.md
+  do b="${f%.md}"
+
+    %{nil the following 2 commands are independent }
+
+    %{nil ensure the correct media type }
+    Markdown.pl "${f}" >"${b}.html" & set -- "${@}" "${!}"
+    
+    %{nil links to b.md will be rendered as to b;
+    soft link because %%doc makes a copy }
+    ln -Ts "${b}.html" "${b}" & set -- "${@}" "${!}"
+
+    echo >>docs.txt %%doc "${d}${b}.html" "${d}${b}"
+ 
+  done
+  
+  %{nil wait here because we are running in a subshell }
+  while ((${#}))
+  do wait "${1}"
+    shift
+  done
+  ) & ((seabios_docs_pid = $!))
+
 
 %if %{legacy_qemu_kvm}
 # FIXME: Why are we copying the s390 specific one (SOURCE13)?
@@ -2091,6 +2122,7 @@ done
 
 # End of the build for qemu
 %endif
+wait "${seabios_docs_pid}"
 
 %install
 cd %blddir

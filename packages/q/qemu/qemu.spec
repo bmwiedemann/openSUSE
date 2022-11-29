@@ -347,6 +347,7 @@ BuildRequires:  meson
 BuildRequires:  ninja >= 1.7
 BuildRequires:  python3-base >= 3.6
 BuildRequires:  python3-setuptools
+BuildRequires:  perl-Text-Markdown
 %if "%{name}" == "qemu"
 # Requires, Recommends, etc exclusive to qemu
 %if %{kvm_available}
@@ -1570,13 +1571,14 @@ Conflicts:      %name < 1.6.0
 SeaBIOS is an open source implementation of a 16bit x86 BIOS. SeaBIOS
 is the default and legacy BIOS for QEMU.
 
-%files seabios
+%files seabios -f roms/seabios/docs/docs.txt
 %defattr(-, root, root)
 %dir %_datadir/%name
 %_datadir/%name/bios.bin
 %_datadir/%name/bios-256k.bin
 %_datadir/%name/firmware/50-seabios-256k.json
 %_datadir/%name/firmware/60-seabios-128k.json
+%license  roms/seabios/COPYING
 
 %package vgabios
 Summary:        VGA BIOSes for QEMU
@@ -1748,6 +1750,34 @@ efi-rtl8139.rom efi-virtio.rom efi-vmxnet3.rom}
 %endif
 
 %build
+
+%{nil build documentation for SeaBIOS }
+(d=roms/seabios/docs/
+cd "${d}"
+%{nil remember list of jobs in $@ }
+set --
+for f in *.md
+  do b="${f%.md}"
+
+    %{nil the following 2 commands are independent }
+
+    %{nil ensure the correct media type }
+    Markdown.pl "${f}" >"${b}.html" & set -- "${@}" "${!}"
+    
+    %{nil links to b.md will be rendered as to b;
+    soft link because %%doc makes a copy }
+    ln -Ts "${b}.html" "${b}" & set -- "${@}" "${!}"
+
+    echo >>docs.txt %%doc "${d}${b}.html" "${d}${b}"
+ 
+  done
+  
+  %{nil wait here because we are running in a subshell }
+  while ((${#}))
+  do wait "${1}"
+    shift
+  done
+  ) & ((seabios_docs_pid = $!))
 
 %if %{legacy_qemu_kvm}
 # FIXME: Why are we copying the s390 specific one (SOURCE13)?
@@ -2150,6 +2180,7 @@ done
 
 # End of the build for qemu
 %endif
+wait $seabios_docs_pid
 
 %install
 cd %blddir
