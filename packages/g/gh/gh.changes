@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 29 05:02:04 UTC 2022 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Update to 2.20.2
+  https://github.com/cli/cli/releases
+  * Update security policy by @maclarel in #6587
+  * Fix listing repositories for a named GitHub user by @mislav in #6608
+  * Fix commands not properly refreshing the terminal screen by @samcoe in #6607
+
+
+-------------------------------------------------------------------
 Fri Nov 11 14:18:49 UTC 2022 - chris@computersalat.de
 
 - Update to 2.20.0
