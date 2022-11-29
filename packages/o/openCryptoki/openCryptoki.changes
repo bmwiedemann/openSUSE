@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 28 16:24:11 UTC 2022 - Mark Post <mpost@suse.com>
+
+- Updated spec file to set permissions on /etc/opencryptoki/strength.conf
+  to be owned by root:pkcs11 with permissions of 640. (bsc#1205566)
+
+-------------------------------------------------------------------
 Fri Sep 30 19:14:38 UTC 2022 - Mark Post <mpost@suse.com>
 
 - Upgrade to version 3.19.0 (jsc#PED-616)

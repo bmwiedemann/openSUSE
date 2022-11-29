@@ -232,7 +232,7 @@ ln -sf %{_libdir}/opencryptoki/libopencryptoki.so %{_prefix}/lib/pkcs11/PKCS11_A
   # configuration directory
 %dir %{_sysconfdir}/opencryptoki
 %config %{_sysconfdir}/opencryptoki/opencryptoki.conf
-%config %{_sysconfdir}/opencryptoki/strength.conf
+%config %attr(640,root,pkcs11) %{_sysconfdir}/opencryptoki/strength.conf
 %config %attr(640,root,pkcs11) %{_sysconfdir}/opencryptoki/p11sak_defined_attrs.conf
 %ifarch s390 s390x
 %config %{_sysconfdir}/opencryptoki/ccatok.conf
