@@ -2704,6 +2704,7 @@ unsorted:
   - d-spy-devel 
   - d0_blind_id 
   - d0_blind_id-devel 
+  - dLeyna-devel 
   - dMagnetic 
   - dSFMT-devel 
   - dagger 
@@ -3013,9 +3014,6 @@ unsorted:
   - dkgpg 
   - dkimproxy 
   - dkms 
-  - dleyna-core-devel 
-  - dleyna-renderer-devel 
-  - dleyna-server-devel 
   - dlpack-devel 
   - dm-zoned-tools 
   - dmd 
@@ -4261,6 +4259,7 @@ unsorted:
   - gd-devel 
   - gd-devel-32bit: [x86_64] 
   - gdal 
+  - gdal-bash-completion 
   - gdal-devel 
   - gdata-sharp 
   - gdata-sharp-devel 
@@ -6982,6 +6981,7 @@ unsorted:
   - hexd 
   - hexedit 
   - hexter 
+  - hexyl 
   - hfst 
   - hfst-devel 
   - hfst-ospell 
@@ -9927,27 +9927,25 @@ unsorted:
   - libavc1394-tools 
   - libavcall1 
   - libavcodec58_134-32bit: [x86_64] 
-  - libavcodec59: [i586] 
   - libavcodec59-32bit: [x86_64] 
   - libavdevice58_13 
   - libavdevice58_13-32bit: [x86_64] 
   - libavdevice59: [i586] 
   - libavdevice59-32bit: [x86_64] 
+  - libavfilter7_110 
   - libavfilter7_110-32bit: [x86_64] 
-  - libavfilter8: [i586] 
   - libavfilter8-32bit: [x86_64] 
   - libavformat58_76-32bit: [x86_64] 
-  - libavformat59: [i586] 
   - libavformat59-32bit: [x86_64] 
   - libavfs0 
   - libavif-devel 
   - libavif15-32bit: [x86_64] 
   - libavrdude1 
+  - libavresample4_0 
   - libavresample4_0-32bit: [x86_64] 
   - libavtp-devel 
   - libavtp0-32bit: [x86_64] 
   - libavutil56_70-32bit: [x86_64] 
-  - libavutil57: [i586] 
   - libavutil57-32bit: [x86_64] 
   - libax25-0 
   - libax25-common 
@@ -11212,7 +11210,7 @@ unsorted:
   - libgda-ui-6_0-plugins 
   - libgda-ui-6_0-tools 
   - libgda-xslt-6_0-6_0_0 
-  - libgdal30 
+  - libgdal32 
   - libgdata-devel 
   - libgdata22-32bit: [x86_64] 
   - libgdbm6-32bit: [x86_64] 
@@ -13302,7 +13300,6 @@ unsorted:
   - libportaudiocpp0 
   - libportmidi2: [i586] 
   - libpostproc55_9-32bit: [x86_64] 
-  - libpostproc56: [i586] 
   - libpostproc56-32bit: [x86_64] 
   - libpowerman0 
   - libppl14 
@@ -14345,10 +14342,8 @@ unsorted:
   - libsvm3 
   - libsword-1_8_1 
   - libswresample3_9-32bit: [x86_64] 
-  - libswresample4: [i586] 
   - libswresample4-32bit: [x86_64] 
   - libswscale5_9-32bit: [x86_64] 
-  - libswscale6: [i586] 
   - libswscale6-32bit: [x86_64] 
   - libsybdb5 
   - libsybdb5-32bit: [x86_64] 
@@ -20626,7 +20621,6 @@ unsorted:
   - perl-curry 
   - perl-experimental 
   - perl-forks 
-  - perl-gdal 
   - perl-genders 
   - perl-homedir 
   - perl-indirect 
@@ -23262,6 +23256,8 @@ unsorted:
   - python310-editables 
   - python310-editdistance 
   - python310-editdistance-devel 
+  - python310-edk2toolext 
+  - python310-edk2toollib 
   - python310-efilter 
   - python310-efl 
   - python310-elastic-transport 
@@ -23544,7 +23540,6 @@ unsorted:
   - python310-husl 
   - python310-hvac 
   - python310-hvplot 
-  - python310-hyper 
   - python310-hypothesis 
   - python310-hypothesis-fspaths 
   - python310-hypothesmith 
@@ -26555,6 +26550,8 @@ unsorted:
   - python38-editables 
   - python38-editdistance 
   - python38-editdistance-devel 
+  - python38-edk2toolext 
+  - python38-edk2toollib 
   - python38-efilter 
   - python38-efl 
   - python38-elastic-transport 
@@ -26851,7 +26848,6 @@ unsorted:
   - python38-husl 
   - python38-hvac 
   - python38-hvplot 
-  - python38-hyper 
   - python38-hyperframe 
   - python38-hyperlink 
   - python38-hypothesis 
@@ -29919,6 +29915,8 @@ unsorted:
   - python39-editables 
   - python39-editdistance 
   - python39-editdistance-devel 
+  - python39-edk2toolext 
+  - python39-edk2toollib 
   - python39-efilter 
   - python39-efl 
   - python39-elastic-transport 
@@ -30215,7 +30213,6 @@ unsorted:
   - python39-husl 
   - python39-hvac 
   - python39-hvplot 
-  - python39-hyper 
   - python39-hyperframe 
   - python39-hyperlink 
   - python39-hypothesis 

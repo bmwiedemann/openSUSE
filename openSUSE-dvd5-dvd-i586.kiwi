@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20221128" schemaversion="4.1">
+<image name="OBS__openSUSE___20221129" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -32,11 +32,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20221128</productvar>
+      <productvar name="VERSION">20221129</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20221128,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20221129,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20221128/i586</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20221129/i586</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -380,9 +380,7 @@
       <repopackage name="discover-lang"/>
       <repopackage name="distribution-logos-openSUSE-icons"/>
       <repopackage name="distribution-logos-openSUSE-Tumbleweed"/>
-      <repopackage name="dleyna-connector-dbus"/>
-      <repopackage name="dleyna-renderer"/>
-      <repopackage name="dleyna-server"/>
+      <repopackage name="dLeyna"/>
       <repopackage name="dmidecode"/>
       <repopackage name="dmraid"/>
       <repopackage name="dnsmasq"/>
@@ -1370,12 +1368,14 @@
       <repopackage name="libavahi-ui-gtk3-0"/>
       <repopackage name="libavc1394-0"/>
       <repopackage name="libavcodec58_134"/>
-      <repopackage name="libavfilter7_110"/>
+      <repopackage name="libavcodec59"/>
+      <repopackage name="libavfilter8"/>
       <repopackage name="libavformat58_76"/>
+      <repopackage name="libavformat59"/>
       <repopackage name="libavif15"/>
-      <repopackage name="libavresample4_0"/>
       <repopackage name="libavtp0"/>
       <repopackage name="libavutil56_70"/>
+      <repopackage name="libavutil57"/>
       <repopackage name="libayatana-appindicator3-1"/>
       <repopackage name="libayatana-ido3-0_4-0"/>
       <repopackage name="libayatana-indicator3-7"/>
@@ -1527,7 +1527,6 @@
       <repopackage name="libdialog15"/>
       <repopackage name="libdiscid0"/>
       <repopackage name="libdjvulibre21"/>
-      <repopackage name="libdleyna-core-1_0-6"/>
       <repopackage name="libdlm"/>
       <repopackage name="libdlm3"/>
       <repopackage name="libdmapsharing-4_0-3"/>
@@ -2349,6 +2348,7 @@
       <repopackage name="libportal-gtk4-1"/>
       <repopackage name="libportaudio2"/>
       <repopackage name="libpostproc55_9"/>
+      <repopackage name="libpostproc56"/>
       <repopackage name="libpotrace0"/>
       <repopackage name="libpq5"/>
       <repopackage name="libpresage1"/>
@@ -2627,7 +2627,9 @@
       <repopackage name="libsvn_auth_gnome_keyring-1-0"/>
       <repopackage name="libsvn_auth_kwallet-1-0"/>
       <repopackage name="libswresample3_9"/>
+      <repopackage name="libswresample4"/>
       <repopackage name="libswscale5_9"/>
+      <repopackage name="libswscale6"/>
       <repopackage name="libsynctex2"/>
       <repopackage name="libsysfs2"/>
       <repopackage name="libsystemd0"/>
