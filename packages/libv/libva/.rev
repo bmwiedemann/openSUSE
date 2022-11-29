@@ -683,4 +683,12 @@ ARM builds fine. (forwarded request 141176 from Guillaume_G)</comment>
   (VA-API, ...) for Intel GPUs is outside of Mesa)</comment>
     <requestid>1034193</requestid>
   </revision>
+  <revision rev="68" vrev="3">
+    <srcmd5>92a9cb8ea35d18d4ac31894a8f4cc90e</srcmd5>
+    <version>2.16.0</version>
+    <time>1669715545</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1038678</requestid>
+  </revision>
 </revisionlist>

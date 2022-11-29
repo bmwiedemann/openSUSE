@@ -31,6 +31,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://01.org/linuxmedia
 Source0:        https://github.com/intel/libva/archive/%{version}.tar.gz#/libva-%{version}.tar.gz
 Source2:        baselibs.conf
+Patch1:         propagate-dpy.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkg-config
@@ -140,6 +141,7 @@ This is the VA/X11 runtime library.
 #
 # fails on sle
 echo libva-wayland%{sover} >> $RPM_SOURCE_DIR/baselibs.conf
+%patch1 -p1
 
 %build
 [ -d m4 ]  || mkdir m4
@@ -150,10 +152,10 @@ autoreconf -v --install
            --enable-wayland \
 %endif
            --with-drivers-path=%{_libdir}/dri
-make %{?_smp_mflags}
+make %{?_smp_mflags} V=1
 
 %install
-%makeinstall
+%makeinstall V=1
 find %{buildroot} -name '*.la' -delete -print
 
 %if %{build_gl}
