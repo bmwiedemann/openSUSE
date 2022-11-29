@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Mon Nov 14 09:12:12 UTC 2022 - David Anes <david.anes@suse.com>
+
+- Starlette newest version is already supported:
+  * Remove fastapi-support-startlette-0.21.0.patch
+
+- Add patch to disable a broken test:
+  * Add python-fastapi-disable-broken-tests.patch
+
+- Update to 0.88.0
+  * Upgrades
+    - arrow_up Bump Starlette to version 0.22.0 to fix bad encoding
+      for query parameters in new TestClient.
+  * Docs
+    - pencil2 Fix typo in docs for docs/en/docs/advanced/middleware.md.
+  * Translations
+    - globe_with_meridians Add Portuguese translation for 
+      docs/pt/docs/deployment/docker.md.
+
+- Update to 0.87.0
+  * Highlights of this release:
+    - Upgraded Starlette
+      + Now the TestClient is based on HTTPX instead of Requests.
+      + There are some possible breaking changes in the TestClient 
+        usage, but @Kludex built bump-testclient to help you 
+        automatize migrating your tests. Make sure you are using Git
+        and that you can undo any unnecessary changes (false 
+        positive changes, etc) before using bump-testclient.
+    - New WebSocketException (and docs), re-exported from Starlette.
+    - Upgraded and relaxed dependencies for package extras all 
+      (including new Uvicorn version), when you install 
+      "fastapi[all]".
+    - New docs about how to Help Maintain FastAPI.
+
+  * Features:
+    - arrow_up Upgrade and relax dependencies for extras "all".
+    - sparkles Re-export Starlette's WebSocketException and add it 
+      to docs.
+    - memo Update references to Requests for tests to HTTPX, and add
+      HTTPX to extras.
+    - arrow_up Upgrade Starlette to 0.21.0, including the new 
+      TestClient based on HTTPX. PR #5471 by @pawelrubin.
+
+  * Docs:
+    - pencil2 Tweak Help FastAPI from PR review after merging.
+    - pencil2 Clarify docs on CORS.
+    - memo Update Help FastAPI: Help Maintain FastAPI.
+
+  * Translations:
+    - globe_with_meridians Fix highlight lines for Japanese 
+      translation for docs/tutorial/query-params.md. 
+    - globe_with_meridians Add French translation for 
+      docs/fr/docs/advanced/additional-status-code.md.
+    - globe_with_meridians Add Portuguese translation for 
+      docs/pt/docs/tutorial/request-forms-and-files.md.
+    - globe_with_meridians Add Japanese translation for 
+      docs/ja/docs/advanced/websockets.md.
+
+  * Internal:
+    - sparkles Use Ruff for linting.
+    - hammer_and_wrench Add Arabic issue number to Notify 
+      Translations GitHub Action.
+    - arrow_up Bump dawidd6/action-download-artifact from 2.24.1 to 
+      2.24.2.
+    - arrow_up Bump dawidd6/action-download-artifact from 2.24.0 to 
+      2.24.1.
+    - memo Update coverage badge to use Samuel Colvin's Smokeshow.
+
+-------------------------------------------------------------------
 Fri Nov  4 11:06:39 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - Update to 0.86.0

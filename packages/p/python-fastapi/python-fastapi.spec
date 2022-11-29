@@ -16,24 +16,39 @@
 #
 
 
+#
+# spec file for package python-fastapi
+#
+# Copyright (c) 2022 SUSE LLC
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-fastapi
-Version:        0.86.0
+Version:        0.88.0
 Release:        0
 Summary:        FastAPI framework
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/tiangolo/fastapi
 Source:         https://files.pythonhosted.org/packages/source/f/fastapi/fastapi-%{version}.tar.gz
+Patch0:         python-fastapi-disable-broken-tests.patch
 BuildRequires:  %{python_module flit}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pydantic >= 1.0.0
 Requires:       python-starlette >= 0.21.0
-# PATCH-FIX-UPSTREAM Update starlette to 0.21.0
-# https://github.com/tiangolo/fastapi/pull/5471
-Patch0:         fastapi-support-startlette-0.21.0.patch
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Flask >= 1.1.2}
@@ -53,7 +68,7 @@ BuildRequires:  %{python_module pytest >= 5.4.3}
 BuildRequires:  %{python_module python-jose}
 BuildRequires:  %{python_module python-multipart >= 0.0.5}
 BuildRequires:  %{python_module requests >= 2.24.0}
-BuildRequires:  %{python_module starlette >= 0.21.0}
+BuildRequires:  %{python_module starlette >= 0.22.0}
 BuildRequires:  %{python_module trio}
 # /SECTION
 %python_subpackages
