@@ -3,7 +3,7 @@
     <param name="url">https://github.com/rancher/rke2</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v1.25.0+rke2r1</param>
+    <param name="revision">v1.25.4+rke2r1</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">disable</param>
     <param name="versionrewrite-pattern">v(.*)</param>
@@ -16,6 +16,6 @@
     <param name="compression">gz</param>
   </service>
   <service name="go_modules" mode="disabled">
-    <param name="archive">rke2-1.25.0+rke2r1.tar.gz</param>
+    <param name="archive">rke2-1.25.4+rke2r1.tar.gz</param>
   </service>
 </services>
