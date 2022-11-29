@@ -17,7 +17,7 @@
 
 
 Name:           wob
-Version:        0.13
+Version:        0.14.2
 Release:        0
 Summary:        A lightweight overlay volume/backlight/progress/anything bar for Wayland
 License:        ISC
@@ -30,6 +30,7 @@ BuildRequires:  cmake
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  wayland-devel
+BuildRequires:  pkgconfig(inih)
 BuildRequires:  pkgconfig(libseccomp)
 BuildRequires:  pkgconfig(scdoc)
 BuildRequires:  pkgconfig(wayland-client)
@@ -53,5 +54,6 @@ A lightweight overlay volume/backlight/progress/anything bar for Wayland
 %license LICENSE
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
+%{_mandir}/man5/%{name}.ini.5%{?ext_man}
 
 %changelog

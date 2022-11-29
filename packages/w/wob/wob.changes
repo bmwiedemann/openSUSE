@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov 28 19:45:31 UTC 2022 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to 0.14.2
+  * Replace command line options with .ini configuration file
+  * Add dependency on inih
+  * Change color format from #RRGGBBAA to RRGGBB[AA]
+  * Properly handle output disconnect
+  * Allow mprotect syscall for hardened malloc
+
+-------------------------------------------------------------------
 Mon Mar  7 09:57:23 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.13:
