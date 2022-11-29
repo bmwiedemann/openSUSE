@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 28 08:30:49 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update reproducible.patch to remove timestamp generated at compilation time
+
+-------------------------------------------------------------------
 Wed Jul  6 15:08:09 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Add mvapich2-allow-building-with-external-hwloc.patch

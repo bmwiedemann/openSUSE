@@ -1,4 +1,4 @@
-commit a99404dac8f07ec7e72aa244ff0527d9c85ad482
+commit bf7afdf34ad71b1e644dda34053e491653ca59e7
 Author: Bernhard M. Wiedemann <bwiedemann@suse.de>
 Date:   Mon Mar 25 11:12:56 2019 +0100
 
@@ -15,9 +15,18 @@ Date:   Mon Mar 25 11:12:56 2019 +0100
     Signed-off-by: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 diff --git maint/extractcvars.in maint/extractcvars.in
-index b627a6f8d937..0eaa673adf1e 100755
+index b627a6f8d937..879de7bf6d5a 100755
 --- maint/extractcvars.in
 +++ maint/extractcvars.in
+@@ -125,7 +125,7 @@ foreach my $p (@cvars) {
+ print "Categories include: \n".Dumper(@categories) if $debug;
+ print "Cvars include :\n".Dumper(@cvars)."\n" if $debug;
+ 
+-my $run_timestamp = localtime();
++my $run_timestamp = "openSUSE no date";
+ my $uc_ns = uc($ns);
+ 
+ # Setup output files
 @@ -594,7 +594,7 @@ sub ExpandDir {
      my @subdirs = ();
      my $DIR_HANDLE;
