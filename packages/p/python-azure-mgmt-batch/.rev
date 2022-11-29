@@ -124,4 +124,16 @@
     CHANGELOG.md file provided with this package (forwarded request 981104 from glaubitz)</comment>
     <requestid>981135</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e1ad2ae5ba1b3f0663e1b1a8fd85883d</srcmd5>
+    <version>17.0.0</version>
+    <time>1669715611</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 17.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1037890 from glaubitz)</comment>
+    <requestid>1038680</requestid>
+  </revision>
 </revisionlist>
