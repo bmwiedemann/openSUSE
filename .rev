@@ -87,4 +87,18 @@
 - Update Requires from setup.py (forwarded request 861062 from glaubitz)</comment>
     <requestid>861078</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ab681a873eede97ce675c26930e04e6f</srcmd5>
+    <version>6.0.0.0</version>
+    <time>1669715617</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 6.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 6.0.0.0 to ensure
+  proper upgrade from previous version 6.0.0b1
+- Update Requires from setup.py (forwarded request 1037970 from glaubitz)</comment>
+    <requestid>1038697</requestid>
+  </revision>
 </revisionlist>
