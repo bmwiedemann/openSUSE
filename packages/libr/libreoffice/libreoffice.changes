@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Nov 23 15:44:20 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 7.4.3.2:
+  https://wiki.documentfoundation.org/Releases/7.4.3/RC2
+  https://wiki.documentfoundation.org/Releases/7.4.3/RC1
+- Updated bundled dependencies:
+  * curl-7.83.1.tar.xz -> curl-7.86.0.tar.xz
+- Added patches:
+  * fix_harfbuzz_on_sle12_sp5.patch
+  * fix_webp_on_sle12_sp5.patch
+- Refresh fix_gtk_popover_on_3.20.patch
+- Removed upstreamed patches:
+  * bsc1202866.patch
+  * bsc1201095.patch
+
+-------------------------------------------------------------------
+Fri Oct 28 09:38:35 UTC 2022 - Andras Timar <andras.timar@collabora.com>
+
+- Fix bsc#1202866 - LO-L3: PPTX: indentation of list items far too far to the left (overruns bullet items)
+  * bsc1202866.patch
+
+-------------------------------------------------------------------
 Wed Oct 26 08:41:00 UTC 2022 - Andras Timar <andras.timar@collabora.com>
 
 - Fix bsc#1201095 - LO-L3: Text box shows that does not show in PowerPoint
@@ -11,6 +33,8 @@ Thu Oct 13 10:07:43 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
   https://wiki.documentfoundation.org/Releases/7.4.2/RC3
   https://wiki.documentfoundation.org/Releases/7.4.2/RC2
   https://wiki.documentfoundation.org/Releases/7.4.2/RC1
+- Update bundled libraries:
+  * poppler-22.01.0.tar.xz -> poppler-22.09.0.tar.xz
 - Remove upstreamed patches:
   * poppler-22.09.0.patch
   * bsc1203502.patch

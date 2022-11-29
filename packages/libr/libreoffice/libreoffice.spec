@@ -49,7 +49,7 @@
 %endif
 %bcond_with firebird
 Name:           libreoffice
-Version:        7.4.2.3
+Version:        7.4.3.2
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -107,10 +107,10 @@ Patch3:         mediawiki-no-broken-help.diff
 Patch6:         gcc11-fix-error.patch
 Patch9:         fix_math_desktop_file.patch
 Patch10:        fix_gtk_popover_on_3.20.patch
+Patch11:        fix_webp_on_sle12_sp5.patch
+Patch12:        fix_harfbuzz_on_sle12_sp5.patch
 # PATCH-FIX-UPSTREAM remove egrep/fgrep calls
 Patch13:        libreoffice-7.4.1.2-grep.patch
-# LO-L3: Text box shows that does not show in PowerPoint
-Patch14:        bsc1201095.patch
 # Build with java 8
 Patch101:       0001-Revert-java-9-changes.patch
 # try to save space by using hardlinks
@@ -132,7 +132,7 @@ BuildRequires:  zlib-devel
 %if %{with system_curl}
 BuildRequires:  curl-devel >= 7.68.0
 %else
-Source2013:     %{external_url}/curl-7.83.1.tar.xz
+Source2013:     %{external_url}/curl-7.86.0.tar.xz
 %endif
 # Needed for tests
 BuildRequires:  dejavu-fonts
@@ -182,6 +182,7 @@ BuildRequires:  zip
 BuildRequires:  perl(Archive::Zip)
 BuildRequires:  perl(Digest::MD5)
 BuildRequires:  pkgconfig(apr-util-1)
+BuildRequires:  pkgconfig(atk) >= 2.28
 BuildRequires:  pkgconfig(bluez)
 BuildRequires:  pkgconfig(dbus-1) >= 0.60
 BuildRequires:  pkgconfig(epoxy) >= 1.2
@@ -274,7 +275,7 @@ ExclusiveArch:  aarch64 %{ix86} x86_64 ppc64le
 %if 0%{?suse_version} < 1550
 # Too old boost on the system
 Source2020:     %{external_url}/boost_1_79_0.tar.xz
-Source2023:     %{external_url}/poppler-22.01.0.tar.xz
+Source2023:     %{external_url}/poppler-22.09.0.tar.xz
 Source2024:     %{external_url}/poppler-data-0.4.11.tar.gz
 %else
 BuildRequires:  libboost_date_time-devel
@@ -1028,10 +1029,11 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch9 -p1
 %if 0%{?suse_version} < 1500
 %patch10 -p1
+%patch11 -p1
+%patch12 -p1
 %patch101 -p1
 %endif
 %patch13 -p1
-%patch14 -p1
 %patch990 -p1
 %patch991 -p1
 

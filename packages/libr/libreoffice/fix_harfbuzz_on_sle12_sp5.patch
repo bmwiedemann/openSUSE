@@ -1,0 +1,48 @@
+Index: libreoffice-7.4.1.2/vcl/source/font/fontinstance.cxx
+===================================================================
+--- libreoffice-7.4.1.2.orig/vcl/source/font/fontinstance.cxx
++++ libreoffice-7.4.1.2/vcl/source/font/fontinstance.cxx
+@@ -160,17 +160,6 @@ bool LogicalFontInstance::NeedOffsetCorr
+         unsigned int familyname_size = 10;
+ 
+         m_xeFontFamilyEnum = FontFamilyEnum::Unclassified;
+-
+-        if (hb_ot_name_get_utf8 (hb_font_get_face(GetHbFont()),
+-                HB_OT_NAME_ID_FONT_FAMILY , HB_LANGUAGE_INVALID, &familyname_size, familyname) == 8)
+-        {
+-            // DFKai-SB (ukai.ttf) is a built-in font under traditional Chinese
+-            // Windows. It has wrong extent values in glyf table. The problem results
+-            // in wrong positioning of glyphs in vertical writing.
+-            // Check https://github.com/harfbuzz/harfbuzz/issues/3521 for reference.
+-            if (!strncmp("DFKai-SB", familyname, 8))
+-                m_xeFontFamilyEnum = FontFamilyEnum::DFKaiSB;
+-        }
+     }
+ 
+     bool bRet = true;
+Index: libreoffice-7.4.1.2/vcl/source/font/fontmetric.cxx
+===================================================================
+--- libreoffice-7.4.1.2.orig/vcl/source/font/fontmetric.cxx
++++ libreoffice-7.4.1.2/vcl/source/font/fontmetric.cxx
+@@ -449,20 +449,7 @@ void ImplFontMetricData::ImplInitBaselin
+     double nUPEM = hb_face_get_upem(pHbFace);
+     double fScale = mnHeight / nUPEM;
+     hb_position_t nBaseline = 0;
+-
+-    if (hb_ot_layout_get_baseline(pHbFont,
+-             HB_OT_LAYOUT_BASELINE_TAG_HANGING,
+-                                HB_DIRECTION_INVALID,
+-                                HB_SCRIPT_UNKNOWN,
+-                                HB_TAG_NONE,
+-                                &nBaseline))
+-    {
+-        mnHangingBaseline = nBaseline * fScale;
+-    }
+-    else
+-    {
+-        mnHangingBaseline = 0;
+-    }
++    mnHangingBaseline = 0;
+ }
+ 
+ /* vim:set shiftwidth=4 softtabstop=4 expandtab: */

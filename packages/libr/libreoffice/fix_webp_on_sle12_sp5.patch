@@ -1,0 +1,28 @@
+Index: libreoffice-7.4.1.2/vcl/source/filter/webp/writer.cxx
+===================================================================
+--- libreoffice-7.4.1.2.orig/vcl/source/filter/webp/writer.cxx
++++ libreoffice-7.4.1.2/vcl/source/filter/webp/writer.cxx
+@@ -59,19 +59,12 @@ static bool writeWebp(SvStream& rStream,
+     }
+     if (lossless)
+     {
+-        if (!WebPConfigLosslessPreset(&config, 6))
+-        {
+-            SAL_WARN("vcl.filter.webp", "WebPConfigLosslessPreset() failed");
+-            return false;
+-        }
++        SAL_WARN("vcl.filter.webp", "WebPConfigLosslessPreset() is not available on SLE-12-SP5");
+     }
+-    else
++    if (!WebPConfigPreset(&config, presetToValue(preset), quality))
+     {
+-        if (!WebPConfigPreset(&config, presetToValue(preset), quality))
+-        {
+-            SAL_WARN("vcl.filter.webp", "WebPConfigPreset() failed");
+-            return false;
+-        }
++        SAL_WARN("vcl.filter.webp", "WebPConfigPreset() failed");
++        return false;
+     }
+     // Here various parts of 'config' can be altered if wanted.
+     assert(WebPValidateConfig(&config));
