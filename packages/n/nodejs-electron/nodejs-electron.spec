@@ -77,8 +77,9 @@ BuildArch:      i686
 %else
 
 # Linker selection. GCC only. Default is BFD.
+# You can try different ones if it has problems.
 # arm64 reports relocation errors with BFD.
-%ifarch x86_64 aarch64
+%ifarch aarch64
 %bcond_without gold
 %else
 %bcond_with gold
@@ -546,6 +547,10 @@ BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libevent)
 %if %{with system_jxl}
 BuildRequires:  pkgconfig(libjxl)
+%endif
+%if 0%{?fedora} >= 38
+#Work around https://bugzilla.redhat.com/show_bug.cgi?id=2148612
+BuildRequires:  pkgconfig(libmd)
 %endif
 %if %{with system_nghttp2}
 BuildRequires:  pkgconfig(libnghttp2)
@@ -1097,7 +1102,6 @@ myconf_gn+=" use_kerberos=true"
 
 # do not build some chrome features not used by electron
 myconf_gn+=" enable_vr=false"
-myconf_gn+=" optimize_webui=false"
 myconf_gn+=" enable_reading_list=false"
 myconf_gn+=" enable_reporting=false"
 myconf_gn+=" build_with_tflite_lib=false"
@@ -1108,10 +1112,18 @@ myconf_gn+=" enable_speech_service=false"
 myconf_gn+=" enable_screen_ai_service=false"
 myconf_gn+=" include_transport_security_state_preload_list=false"
 myconf_gn+=" enable_web_speech=false"
+myconf_gn+=" chrome_wide_echo_cancellation_supported=false"
+myconf_gn+=" enable_dice_support=false"
+myconf_gn+=" enable_downgrade_processing=false"
+myconf_gn+=" enable_click_to_call=false"
+myconf_gn+=" enable_webui_tab_strip=false"
+myconf_gn+=" enable_background_contents=false"
+
 
 #Do not build Chromecast
 myconf_gn+=" enable_remoting=false"
 myconf_gn+=" enable_media_remoting=false"
+
 
 
 myconf_gn+=" enable_library_cdms=false"
