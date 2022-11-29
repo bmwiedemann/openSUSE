@@ -7,7 +7,7 @@ BuildFlags: genmetaalgo:1
 # The prjconf macros have a serial to help work around issues like https://github.com/openSUSE/open-build-service/issues/4088
 # On macros having impact on dep chains, update the serial (mainly ruby, python)
 # Using a date to indicate when we set the serial
-ExpandFlags: macroserial:20221005
+ExpandFlags: macroserial:20221129
 
 ExpandFlags: kiwi-nobasepackages
 ExpandFlags: docker-nobasepackages
@@ -992,8 +992,8 @@ Prefer: -unzip-rcc
 Prefer: -primus -primus-32bit
 Prefer: -staging-build-key
 Prefer: -clutter-gst-devel
-# We have multiple versions of ffmpeg available, the preferred one is ffmpeg4, followd by 3, followed by 2
-%define ffmpeg_pref ffmpeg-4
+# We have multiple versions of ffmpeg available, the preferred one is ffmpeg5, followd by 4, followed by 3
+%define ffmpeg_pref ffmpeg-5
 Prefer: %{ffmpeg_pref} %{ffmpeg_pref}-libavcodec-devel %{ffmpeg_pref}-libavformat-devel %{ffmpeg_pref}-libavutil-devel %{ffmpeg_pref}-libswscale-devel %{ffmpeg_pref}-libavdevice-devel %{ffmpeg_pref}-libavfilter-devel
 # oxygen5-icon-theme osboletes oxygen-icon-theme
 Prefer: oxygen5-icon-theme
