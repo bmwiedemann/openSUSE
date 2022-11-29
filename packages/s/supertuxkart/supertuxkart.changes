@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 28 12:17:16 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- _constraints: Require 12GB Disk (last build was short of 11GB usage)
+
+-------------------------------------------------------------------
 Tue Nov  8 19:29:56 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
 
 - Raise _constraints for disk from 7G to 9G to avoid build failures

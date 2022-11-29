@@ -203,4 +203,13 @@ Well maintained game, reasonable release cycles.</comment>
     <comment></comment>
     <requestid>1034696</requestid>
   </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>790dceea573dacf3655b58871fb0f950</srcmd5>
+    <version>1.4</version>
+    <time>1669715593</time>
+    <user>dimstar_suse</user>
+    <comment>- _constraints: Require 12GB Disk (last build was short of 11GB usage)
+</comment>
+    <requestid>1038660</requestid>
+  </revision>
 </revisionlist>
