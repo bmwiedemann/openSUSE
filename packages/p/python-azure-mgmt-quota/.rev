@@ -18,4 +18,18 @@
     CHANGELOG.md file provided with this package (forwarded request 929687 from glaubitz)</comment>
     <requestid>929736</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>29c502e9aa4661a0cf8b5d3802eb09f0</srcmd5>
+    <version>1.1.0~b3</version>
+    <time>1669715623</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.1.0b3
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 1.1.0~b3 to enable
+  proper upgrade to the next stable version 1.1.0
+- Update Requires from setup.py (forwarded request 1038732 from glaubitz)</comment>
+    <requestid>1038734</requestid>
+  </revision>
 </revisionlist>
