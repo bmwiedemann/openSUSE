@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov 29 09:13:55 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 3.9.0:
+  * return of the --execute-command flag with slightly adjusted semantics, 
+  * a new system for setting terminal parameters with yaml files and various fixes
+  * Fix custom label not working
+  * fix fullscreen using pointer on several monitors
+  * Add TERM_PROGRAM environment variable like other well-known terminals
+  * Add open link under terminal cursor
+  * Fix split terminal did not preverse font scale
+  * Save layout when splitting/closing split panes
+  * Add command line flag to get tab number/position from UUID 
+  * Reintroduce execute_command dbus hook
+
+-------------------------------------------------------------------
 Mon Feb 14 17:38:06 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.8.5:

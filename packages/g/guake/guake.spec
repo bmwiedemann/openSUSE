@@ -17,7 +17,7 @@
 
 
 Name:           guake
-Version:        3.8.5
+Version:        3.9.0
 Release:        0
 Summary:        Drop-down terminal for GNOME
 License:        GPL-2.0-only
