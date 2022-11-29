@@ -88,10 +88,10 @@ BuildRequires:  pkgconfig(Qt5Test) >= 5.2.0
 BuildRequires:  pkgconfig(Qt5Widgets) >= 5.2.0
 %endif
 %if %{with ffmpeg}
-BuildRequires:  pkgconfig(libavcodec)
-BuildRequires:  pkgconfig(libavformat)
-BuildRequires:  pkgconfig(libavutil)
-BuildRequires:  pkgconfig(libswscale)
+BuildRequires:  pkgconfig(libavcodec) < 59
+BuildRequires:  pkgconfig(libavformat) < 59
+BuildRequires:  pkgconfig(libavutil) < 57
+BuildRequires:  pkgconfig(libswscale) < 6
 %endif
 
 %description

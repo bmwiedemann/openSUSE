@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Nov  6 11:57:50 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Limit ffmpeg to version 4.x and older. Upstream do not plan to
+  support any newer branch of ffmpeg for the version 3.x branch.
+
+-------------------------------------------------------------------
 Sat Sep  3 16:31:37 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to 3.4.18
