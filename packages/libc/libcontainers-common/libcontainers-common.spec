@@ -45,6 +45,7 @@ Source12:       container-storage-driver.sh
 BuildRequires:  go-go-md2man
 Requires(post): %{_bindir}/grep
 Requires(post): %{_bindir}/sed
+Requires:       util-linux-systemd
 Requires(post): util-linux-systemd
 Provides:       libcontainers-image = %{version}
 Provides:       libcontainers-storage = %{version}

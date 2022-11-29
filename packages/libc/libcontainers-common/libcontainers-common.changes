@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 28 09:08:11 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- add requires on util-linux-systemd for findmnt in profile script
+- only set storage_driver env when no libpod exists
+- avoid quoting issue
+
+-------------------------------------------------------------------
 Tue Nov 22 12:48:38 UTC 2022 - Dan Čermák <dcermak@suse.com>
 
 - Update bundled common to 0.50.1
