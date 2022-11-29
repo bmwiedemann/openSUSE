@@ -1,0 +1,45 @@
+Subject: virtinstall: split no_install conditional apart to track code coverage
+From: Cole Robinson crobinso@redhat.com Sat Aug 20 09:42:47 2022 -0400
+Date: Sat Aug 20 09:47:49 2022 -0400:
+Git: 1cb0be4002445e5755ead2423b5a4e9e06f0a3cb
+
+Each bit here is part of the CLI API, we need to be sure we are
+covering each one. Extend the test suite to hit one case we are missing
+
+Signed-off-by: Cole Robinson <crobinso@redhat.com>
+
+--- a/tests/test_cli.py
++++ b/tests/test_cli.py
+@@ -1017,7 +1017,9 @@ c = vinst.add_category("misc-install", "
+ c.add_compare("--connect %s --os-variant generic" % (utils.URIs.test_suite), "noargs-fail", use_default_args=False)  # No arguments
+ c.add_compare("--connect %s --os-variant fedora26" % (utils.URIs.test_suite), "osvariant-noargs-fail", use_default_args=False)  # No arguments
+ c.add_compare("--connect %s --os-variant fedora26 --pxe --print-xml" % (utils.URIs.test_suite), "osvariant-defaults-pxe", use_default_args=False)  # No arguments
++c.add_compare("--disk %(EXISTIMG1)s --os-variant fedora28 --cloud-init root-password-generate=yes,disable=no --sysinfo system.serial=foobar", "cloud-init-options1", env={"VIRTINST_TEST_SUITE_PRINT_CLOUDINIT": "1"})  # --cloud-init root-password-generate, with --sysinfo override
+ c.add_compare("--disk %(EXISTIMG1)s --os-variant fedora28 --cloud-init", "cloud-init-default", env={"VIRTINST_TEST_SUITE_CLOUDINIT": "1"})  # default --cloud-init behavior is root-password-generate=yes,disable=yes
++c.add_valid("--disk %(EXISTIMG1)s --os-variant fedora28 --cloud-init", env={"VIRTINST_TEST_SUITE_CLOUDINIT": "1"})  # default --cloud-init, but without implied --print-xml, to hit some specific code paths
+ c.add_compare("--disk %(EXISTIMG1)s --os-variant fedora28 --cloud-init root-password-generate=yes,disable=no --sysinfo system.serial=foobar", "cloud-init-options1", env={"VIRTINST_TEST_SUITE_PRINT_CLOUDINIT": "1"})  # --cloud-init root-password-generate, with --sysinfo override
+ c.add_compare("--disk %(EXISTIMG1)s --os-variant fedora28 --cloud-init root-password-file=%(ADMIN-PASSWORD-FILE)s,root-ssh-key=%(XMLDIR)s/cloudinit/ssh-key.txt,clouduser-ssh-key=%(XMLDIR)s/cloudinit/ssh-key2.txt --boot smbios.mode=none", "cloud-init-options2", env={"VIRTINST_TEST_SUITE_PRINT_CLOUDINIT": "1"})  # --cloud-init root-password-file with smbios.mode override
+ c.add_compare("--disk %(EXISTIMG1)s --os-variant fedora28 --cloud-init ssh-key=%(XMLDIR)s/cloudinit/ssh-key.txt", "cloud-init-options3", env={"VIRTINST_TEST_SUITE_PRINT_CLOUDINIT": "1"})  # --cloud-init ssh-key
+--- a/virtinst/virtinstall.py
++++ b/virtinst/virtinstall.py
+@@ -425,11 +425,15 @@ def build_installer(options, guest, inst
+         install_bootdev = "network"
+     elif installdata.is_set:
+         pass
+-    elif (options.import_install or
+-          options.xmlonly or
+-          options.boot or
+-          options.cloud_init or
+-          options.unattended):
++    elif options.xmlonly:
++        no_install = True
++    elif options.import_install:
++        no_install = True
++    elif options.boot:
++        no_install = True
++    elif options.cloud_init:
++        no_install = True
++    elif options.unattended:
+         no_install = True
+ 
+     installer = virtinst.Installer(guest.conn,

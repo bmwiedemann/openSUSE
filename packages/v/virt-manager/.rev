@@ -1886,4 +1886,12 @@
     <comment>Fix for bsc#1203252 - virt-manager cannot add second virtio-scsi controller</comment>
     <requestid>1035877</requestid>
   </revision>
+  <revision rev="239" vrev="5">
+    <srcmd5>449b0b939865227f96b3130011d2e139</srcmd5>
+    <version>4.1.0</version>
+    <time>1669715572</time>
+    <user>dimstar_suse</user>
+    <comment>Fix for bsc#1205675 - [Build 20221122] virt-install: Specifying --boot no longer implies no_install=yes</comment>
+    <requestid>1038777</requestid>
+  </revision>
 </revisionlist>

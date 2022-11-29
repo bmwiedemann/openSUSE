@@ -9,7 +9,7 @@ Signed-off-by: Lin Ma <lma@suse.com>
 
 --- a/tests/test_cli.py
 +++ b/tests/test_cli.py
-@@ -1105,7 +1105,7 @@ c.add_compare("--connect " + utils.URIs.
+@@ -1108,7 +1108,7 @@ c.add_compare("--connect " + utils.URIs.
  c.add_compare("--connect %(URI-KVM-X86)s --os-variant fedora26 --graphics spice --controller usb,model=none", "graphics-usb-disable")
  c.add_compare("--osinfo generic --boot uefi --disk size=1", "boot-uefi")
  c.add_compare("--osinfo generic --boot uefi --disk size=1 --tpm none --connect " + utils.URIs.kvm_x86_oldfirmware, "boot-uefi-oldcaps")

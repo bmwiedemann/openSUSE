@@ -12,7 +12,7 @@ Signed-off-by: Cole Robinson <crobinso@redhat.com>
 
 --- a/tests/test_cli.py
 +++ b/tests/test_cli.py
-@@ -1113,6 +1113,7 @@ c.add_invalid("--disk none --boot networ
+@@ -1116,6 +1116,7 @@ c.add_invalid("--disk none --boot networ
  c.add_invalid("--nodisks --boot network --arch mips --virt-type kvm", grep="any virtualization options for architecture 'mips'")
  c.add_invalid("--nodisks --boot network --paravirt --arch mips", grep=" 'xen' for architecture 'mips'")
  c.add_invalid("--osinfo generic --launchSecurity sev --connect " + utils.URIs.kvm_amd_sev, grep="SEV launch security requires a Q35 UEFI machine")

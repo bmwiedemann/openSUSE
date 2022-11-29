@@ -1,0 +1,42 @@
+Subject: virtinstall: fix regression with --boot and no install method
+From: Cole Robinson crobinso@redhat.com Sat Aug 20 09:54:01 2022 -0400
+Date: Sat Aug 20 09:54:01 2022 -0400:
+Git: e94786c066696781a821f5a4bcef3c377e4bc5e5
+
+Anything passed to --boot should imply --install no_install=yes
+in the absence of other --install options. This is historically
+what we've done but we regressed in 4.1.0
+
+Resolves: https://github.com/virt-manager/virt-manager/issues/426
+
+Signed-off-by: Cole Robinson <crobinso@redhat.com>
+
+--- a/tests/test_cli.py
++++ b/tests/test_cli.py
+@@ -967,6 +967,7 @@ c.add_valid("--os-variant generic --pxe
+ c.add_valid("--os-variant winxp --ram 32 --cdrom %(EXISTIMG1)s", grep="32 MiB is less than the recommended 64 MiB")  # Windows. Catch memory warning
+ c.add_valid("--osinfo generic --pxe --autostart")  # --autostart flag
+ c.add_valid("--cdrom %(EXISTIMG2)s --os-variant win2k3 --print-step 2")  # HVM windows install, print 3rd stage XML
++c.add_valid("--memory 512 --osinfo generic --boot cdrom")  # --boot XXX should imply --install no_install
+ c.add_compare("--location location=%(TREEDIR)s --initrd-inject virt-install --extra-args ks=file:/virt-install", "initrd-inject")  # initrd-inject
+ c.add_compare("--cdrom http://example.com/path/to/some.iso --os-variant detect=yes,require=no", "cdrom-url")
+ c.add_compare("--pxe --print-step all --os-variant none", "simple-pxe")  # Diskless PXE install
+--- a/virtinst/virtinstall.py
++++ b/virtinst/virtinstall.py
+@@ -429,7 +429,7 @@ def build_installer(options, guest, inst
+         no_install = True
+     elif options.import_install:
+         no_install = True
+-    elif options.boot:
++    elif options.boot_was_set:
+         no_install = True
+     elif options.cloud_init:
+         no_install = True
+@@ -641,6 +641,7 @@ def _build_options_guest(conn, options):
+ def build_guest_instance(conn, options):
+     installdata = cli.parse_install(options.install)
+     osdata = cli.parse_os_variant(options.os_variant or installdata.os)
++    options.boot_was_set = bool(options.boot)
+ 
+     if options.reinstall:
+         dummy1, guest, dummy2 = cli.get_domain_and_guest(conn, options.reinstall)

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 28 12:28:44 MST 2022 - carnold@suse.com
+
+- bsc#1205675 - [Build 20221122] virt-install: Specifying --boot no
+  longer implies no_install=yes
+  1cb0be40-virtinstall-split-no_install-conditional-apart-to-track-code-coverage.patch
+  e94786c0-virtinstall-fix-regression-with-boot-and-no-install-method.patch
+
+-------------------------------------------------------------------
 Tue Nov 15 07:51:46 MST 2022 - carnold@suse.com
 
 - bsc#1203252 - virt-manager regression - cannot add second

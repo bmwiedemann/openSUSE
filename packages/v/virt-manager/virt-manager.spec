@@ -45,10 +45,12 @@ Patch1:         revert-363fca41-virt-install-Require-osinfo-for-non-x86-HVM-case
 Patch2:         11a887ec-cli-disk-Add-driver.metadata_cache-options.patch
 Patch3:         7295ebfb-tests-cli-Fix-test-output-after-previous-commit.patch
 Patch4:         58f5e36d-fsdetails-Fix-an-error-with-source.socket-of-virtiofs.patch
-Patch5:         c22a876e-tests-Add-a-compat-check-for-linux2020-in-amd-sev-test-case.patch
-Patch6:         fbdf0516-cli-cpu-Add-maxphysaddr.mode-bits-options.patch
-Patch7:         b0d05167-cloner-Sync-uuid-and-sysinfo-system-uuid.patch
-Patch8:         999ccb85-virt-install-unattended-and-cloud-init-conflict.patch
+Patch5:         1cb0be40-virtinstall-split-no_install-conditional-apart-to-track-code-coverage.patch
+Patch6:         e94786c0-virtinstall-fix-regression-with-boot-and-no-install-method.patch
+Patch7:         c22a876e-tests-Add-a-compat-check-for-linux2020-in-amd-sev-test-case.patch
+Patch8:         fbdf0516-cli-cpu-Add-maxphysaddr.mode-bits-options.patch
+Patch9:         b0d05167-cloner-Sync-uuid-and-sysinfo-system-uuid.patch
+Patch10:        999ccb85-virt-install-unattended-and-cloud-init-conflict.patch
 # SUSE Only
 Patch70:        virtman-desktop.patch
 Patch71:        virtman-kvm.patch
@@ -215,13 +217,24 @@ chmod -x %{buildroot}%{_datadir}/virt-manager/virtManager/virtmanager.py
 # different device names
 donttest="test_disk_numtotarget"
 donttest="$donttest or testCLI0001virt_install_many_devices"
-donttest="$donttest or testCLI0110virt_install_reinstall_cdrom"
-donttest="$donttest or testCLI0284virt_xml_build_pool_logical_disk"
-donttest="$donttest or testCLI0285virt_xml_build_pool_logical_disk"
+donttest="$donttest or testCLI0113virt_install_reinstall_cdrom"
+donttest="$donttest or testCLI0165virt_install"
+donttest="$donttest or testCLI0172virt_install_s390x_cdrom"
+donttest="$donttest or testCLI0193virt_install_xen_default"
+donttest="$donttest or testCLI0194virt_install_xen_pv"
+donttest="$donttest or testCLI0195virt_install_xen_hvm"
+donttest="$donttest or testCLI0196virt_install_xen_hvm"
+donttest="$donttest or testCLI0203virt_install_bhyve_default_f27"
 donttest="$donttest or testCLI0276virt_xml_build_disk_domain"
 donttest="$donttest or testCLI0277virt_xml_build_disk_domain"
+donttest="$donttest or testCLI0280virt_xml_build_disk_domain"
+donttest="$donttest or testCLI0284virt_xml_build_pool_logical_disk"
+donttest="$donttest or testCLI0285virt_xml_build_pool_logical_disk"
+donttest="$donttest or testCLI0287virt_xml_edit_cpu_host_copy"
+donttest="$donttest or testCLI0288virt_xml_build_pool_logical_disk"
 donttest="$donttest or testCLI0371virt_xml_add_disk_create_storage_start"
 donttest="$donttest or testCLI0372virt_xml_add_disk_create_storage_start"
+donttest="$donttest or testCLI0375virt_xml_add_disk_create_storage_start"
 # depends on osc/obs host cpu?
 donttest="$donttest or testCLI0003virt_install_singleton_config_2"
 donttest="$donttest or testCLI0283virt_xml_edit_cpu_host_copy"
