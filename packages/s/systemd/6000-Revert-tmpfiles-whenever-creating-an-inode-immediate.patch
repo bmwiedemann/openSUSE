@@ -1,4 +1,4 @@
-From 9420aaad2680981323b0786c479b14891444f5cb Mon Sep 17 00:00:00 2001
+From 3aabdad41fecf8004a1e0e4ca4bfc7b2f935404c Mon Sep 17 00:00:00 2001
 From: Franck Bui <fbui@suse.com>
 Date: Tue, 22 Nov 2022 14:45:56 +0100
 Subject: [PATCH 6000/6000] Revert "tmpfiles: whenever creating an inode,
@@ -10,7 +10,7 @@ This reverts commit 8f6fb95cd069884f4ce0a24eb20efc821ae3bc5e.
  1 file changed, 118 insertions(+), 165 deletions(-)
 
 diff --git a/src/tmpfiles/tmpfiles.c b/src/tmpfiles/tmpfiles.c
-index 784b895577..2c44856c3a 100644
+index 18bb75715b..9c2740f6ce 100644
 --- a/src/tmpfiles/tmpfiles.c
 +++ b/src/tmpfiles/tmpfiles.c
 @@ -31,7 +31,6 @@
@@ -21,7 +21,7 @@ index 784b895577..2c44856c3a 100644
  #include "escape.h"
  #include "fd-util.h"
  #include "fileio.h"
-@@ -1515,9 +1514,11 @@ static int create_file(Item *i, const char *path) {
+@@ -1527,9 +1526,11 @@ static int create_file(Item *i, const char *path) {
                  st = &stbuf;
                  creation = CREATION_EXISTING;
          } else {
@@ -36,7 +36,7 @@ index 784b895577..2c44856c3a 100644
  
                  creation = CREATION_NORMAL;
          }
-@@ -1617,7 +1618,6 @@ static int truncate_file(Item *i, const char *path) {
+@@ -1629,7 +1630,6 @@ static int truncate_file(Item *i, const char *path) {
  static int copy_files(Item *i) {
          _cleanup_close_ int dfd = -1, fd = -1;
          _cleanup_free_ char *bn = NULL;
@@ -44,7 +44,7 @@ index 784b895577..2c44856c3a 100644
          int r;
  
          log_debug("Copying tree \"%s\" to \"%s\".", i->argument, i->path);
-@@ -1637,40 +1637,46 @@ static int copy_files(Item *i) {
+@@ -1649,27 +1649,35 @@ static int copy_files(Item *i) {
                           i->uid_set ? i->uid : UID_INVALID,
                           i->gid_set ? i->gid : GID_INVALID,
                           COPY_REFLINK | COPY_MERGE_EMPTY | COPY_MAC_CREATE | COPY_HARDLINKS);
@@ -94,9 +94,10 @@ index 784b895577..2c44856c3a 100644
  }
  
  static int create_directory_or_subvolume(
-                 const char *path,
+@@ -1677,13 +1685,11 @@ static int create_directory_or_subvolume(
                  mode_t mode,
                  bool subvol,
+                 bool allow_failure,
 -                struct stat *ret_st,
                  CreationMode *ret_creation) {
  
@@ -108,7 +109,7 @@ index 784b895577..2c44856c3a 100644
          int r, fd;
  
          assert(path);
-@@ -1690,7 +1696,7 @@ static int create_directory_or_subvolume(
+@@ -1703,7 +1709,7 @@ static int create_directory_or_subvolume(
                                  log_warning_errno(r, "Cannot parse value of $SYSTEMD_TMPFILES_FORCE_SUBVOL, ignoring.");
                          r = btrfs_is_subvol(empty_to_root(arg_root)) > 0;
                  }
@@ -117,7 +118,7 @@ index 784b895577..2c44856c3a 100644
                          /* Don't create a subvolume unless the root directory is one, too. We do this under
                           * the assumption that if the root directory is just a plain directory (i.e. very
                           * light-weight), we shouldn't try to split it up into subvolumes (i.e. more
-@@ -1706,36 +1712,37 @@ static int create_directory_or_subvolume(
+@@ -1719,40 +1725,41 @@ static int create_directory_or_subvolume(
          } else
                  r = 0;
  
@@ -139,7 +140,11 @@ index 784b895577..2c44856c3a 100644
 -                /* Then look at the original error */
 -                if (r < 0)
 +                if (!IN_SET(r, -EEXIST, -EROFS))
-                         return log_error_errno(r, "Failed to create directory or subvolume \"%s\": %m", path);
+                         return log_full_errno(allow_failure ? LOG_INFO : LOG_ERR,
+                                               r,
+                                               "Failed to create directory or subvolume \"%s\"%s: %m",
+                                               path,
+                                               allow_failure ? ", ignoring" : "");
  
 -                return log_error_errno(errno, "Failed to open directory/subvolume we just created '%s': %m", path);
 -        }
@@ -174,7 +179,7 @@ index 784b895577..2c44856c3a 100644
  
          return fd;
  }
-@@ -1743,30 +1750,28 @@ static int create_directory_or_subvolume(
+@@ -1760,30 +1767,28 @@ static int create_directory_or_subvolume(
  static int create_directory(Item *i, const char *path) {
          _cleanup_close_ int fd = -1;
          CreationMode creation;
@@ -183,8 +188,8 @@ index 784b895577..2c44856c3a 100644
          assert(i);
          assert(IN_SET(i->type, CREATE_DIRECTORY, TRUNCATE_DIRECTORY));
  
--        fd = create_directory_or_subvolume(path, i->mode, /* subvol= */ false, &st, &creation);
-+        fd = create_directory_or_subvolume(path, i->mode, /* subvol= */ false, &creation);
+-        fd = create_directory_or_subvolume(path, i->mode, /* subvol= */ false, i->allow_failure, &st, &creation);
++        fd = create_directory_or_subvolume(path, i->mode, /* subvol= */ false, i->allow_failure, &creation);
          if (fd == -EEXIST)
                  return 0;
          if (fd < 0)
@@ -203,12 +208,12 @@ index 784b895577..2c44856c3a 100644
          assert(i);
          assert(IN_SET(i->type, CREATE_SUBVOLUME, CREATE_SUBVOLUME_NEW_QUOTA, CREATE_SUBVOLUME_INHERIT_QUOTA));
  
--        fd = create_directory_or_subvolume(path, i->mode, /* subvol = */ true, &st, &creation);
-+        fd = create_directory_or_subvolume(path, i->mode, /* subvol = */ true, &creation);
+-        fd = create_directory_or_subvolume(path, i->mode, /* subvol = */ true, i->allow_failure, &st, &creation);
++        fd = create_directory_or_subvolume(path, i->mode, /* subvol = */ true, i->allow_failure, &creation);
          if (fd == -EEXIST)
                  return 0;
          if (fd < 0)
-@@ -1789,7 +1794,7 @@ static int create_subvolume(Item *i, const char *path) {
+@@ -1806,7 +1811,7 @@ static int create_subvolume(Item *i, const char *path) {
                          log_debug("Quota for subvolume \"%s\" already in place, no change made.", i->path);
          }
  
@@ -217,7 +222,7 @@ index 784b895577..2c44856c3a 100644
          if (q < 0) /* prefer the quota change error from above */
                  return q;
  
-@@ -1830,11 +1835,9 @@ static int create_device(Item *i, mode_t file_type) {
+@@ -1847,11 +1852,9 @@ static int create_device(Item *i, mode_t file_type) {
          _cleanup_close_ int dfd = -1, fd = -1;
          _cleanup_free_ char *bn = NULL;
          CreationMode creation;
@@ -229,7 +234,7 @@ index 784b895577..2c44856c3a 100644
          assert(IN_SET(file_type, S_IFBLK, S_IFCHR));
  
          r = path_extract_filename(i->path, &bn);
-@@ -1854,166 +1857,116 @@ static int create_device(Item *i, mode_t file_type) {
+@@ -1871,166 +1874,116 @@ static int create_device(Item *i, mode_t file_type) {
                  r = RET_NERRNO(mknodat(dfd, bn, i->mode | file_type, i->major_minor));
                  mac_selinux_create_file_clear();
          }
@@ -362,8 +367,8 @@ index 784b895577..2c44856c3a 100644
 -                return log_error_errno(SYNTHETIC_ERRNO(EISDIR), "Cannot open path '%s' for creating FIFO, is a directory.", i->path);
 +                return log_error_errno(SYNTHETIC_ERRNO(EISDIR), "Cannot open path '%s' for creating FIFO, is a directory.", path);
  
--        pfd = path_open_parent_safe(i->path);
-+        pfd = path_open_parent_safe(path);
+-        pfd = path_open_parent_safe(i->path, i->allow_failure);
++        pfd = path_open_parent_safe(path, i->allow_failure);
          if (pfd < 0)
                  return pfd;
  
@@ -460,7 +465,7 @@ index 784b895577..2c44856c3a 100644
  }
  
  static int create_symlink(Item *i) {
-@@ -2482,7 +2435,7 @@ static int create_item(Item *i) {
+@@ -2499,7 +2452,7 @@ static int create_item(Item *i) {
                  if (r < 0)
                          return r;
  

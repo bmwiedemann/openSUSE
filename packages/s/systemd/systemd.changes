@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov 25 16:37:18 UTC 2022 - Franck Bui <fbui@suse.com>
+
+- Import commit e7e931b07edd786dc6ca1dae6c23ff7b785f8efd (merge of v252.2)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/64dc546913525e33e734500055a62ed0e963c227...e7e931b07edd786dc6ca1dae6c23ff7b785f8efd
+
+- Rebase 6000-Revert-tmpfiles-whenever-creating-an-inode-immediate.patch
+
+-------------------------------------------------------------------
 Tue Nov 22 13:52:07 UTC 2022 - Franck Bui <fbui@suse.com>
 
 - Import commit 3bd3e4e6c1efe0d6df776107efde47e15e58fe96

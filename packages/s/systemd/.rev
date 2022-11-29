@@ -6216,4 +6216,15 @@ handle manual pages that consist only of a .so directive such as
    - upstream commit 67c3e1f63a5221b47a8fea85ae421671f29f3b7e (bsc#1200723)</comment>
     <requestid>1037909</requestid>
   </revision>
+  <revision rev="372" vrev="1">
+    <srcmd5>b3d6e5f0586fe1f47471241ee8029d04</srcmd5>
+    <version>252.2</version>
+    <time>1669715547</time>
+    <user>dimstar_suse</user>
+    <comment>- Import commit e7e931b07edd786dc6ca1dae6c23ff7b785f8efd (merge of v252.2)
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/64dc546913525e33e734500055a62ed0e963c227...e7e931b07edd786dc6ca1dae6c23ff7b785f8efd
+- Rebase 6000-Revert-tmpfiles-whenever-creating-an-inode-immediate.patch</comment>
+    <requestid>1038709</requestid>
+  </revision>
 </revisionlist>
