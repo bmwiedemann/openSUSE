@@ -7,4 +7,15 @@
     <comment>Another Azure SDK package</comment>
     <requestid>1035834</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d4729e1f960099980b0d2626422cf81a</srcmd5>
+    <version>1.0.0~b2</version>
+    <time>1669715617</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0b2
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1037973 from glaubitz)</comment>
+    <requestid>1038698</requestid>
+  </revision>
 </revisionlist>
