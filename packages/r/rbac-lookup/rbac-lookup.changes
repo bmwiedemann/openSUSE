@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 28 11:29:01 UTC 2022 - alexandre.vicenzi@suse.com
+
+- Update to version 0.9.1:
+  * Update dependencies
+  * Move to a larger resource class to handle the multi-arch builds better (#273)
+  * Use oss-docs orb to publish docs (#263)
+
+-------------------------------------------------------------------
 Fri Mar 25 16:09:40 UTC 2022 - alexandre.vicenzi@suse.com
 
 - Update to version 0.8.3:
