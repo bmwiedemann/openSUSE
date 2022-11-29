@@ -1,0 +1,48 @@
+-------------------------------------------------------------------
+Fri Nov 25 16:30:54 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.8.2:
+  + Python:
+    - Install modules to be used externally as well
+    - Port python code to python3 and update for (modern) PyGObject
+  + Core:
+    - Do not leak context filter list
+    - Do not leak cancellable in gasync tasks
+    - If log-level is debug, do not block other log domains
+  + Renderer:
+    - Fix cancelling async tasks
+    - Fix setting the name for the renderer service
+    - Do not add empty device properties
+  + Server:
+    - Do not access async tasks if they are cancelled
+    - Fix double-free and reference leak if tasks are cancelled
+    - Do not unref NULL variants on shutdown
+    - If an optional ServiceAction does not exist, do not emit a
+      warning
+  + Bugs fixed in this release: glgo#GNOME/World#10,
+    glgo#GNOME/World#8, glgo#GNOME/World#9.
+- Changes from version 0.8.1:
+  + Core: Use GString to sanitize UDNs for object paths names
+  + Renderer:
+    - Remove duplicate source file that is also in core
+    - Fix a double-free in set_position call
+    - Make coverity happy in a couple of places
+  + Server:
+    - Fix a double-free on icon download error
+    - Remove some dead code
+  + Bugs fixed in this release: Coverity issues 358585, 358590,
+    358593, 358595, 358598, 358599 and 358602
+  + Merge requests included in this release: glgo#World/dLeyna!5
+
+-------------------------------------------------------------------
+Tue Nov 22 07:51:24 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add the dbus() provides that existed in dleyna-server, allowing
+  consumers to migrate over.
+- Have the devel package Provide/Obsolete
+  dleyna-{core,renderer,server}-devel to have a clean upgrade path.
+
+-------------------------------------------------------------------
+Fri Oct 14 06:47:18 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Initial packaging for openSUSE.
