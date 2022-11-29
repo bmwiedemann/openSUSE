@@ -1,7 +1,7 @@
 #
 # spec file for package wofi
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           wofi
-Version:        1.2.4
+Version:        1.3
 Release:        0
 Summary:        Launcher for wlroots compositors
 License:        GPL-3.0-only
