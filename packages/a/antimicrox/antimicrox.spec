@@ -17,7 +17,7 @@
 
 
 Name:           antimicrox
-Version:        3.3.1
+Version:        3.3.2
 Release:        0
 Summary:        Graphical program used to map keyboard keys and mouse controls to a game-pad
 # antimicrox is GPL-3.0-or-later except SDL_GameControllerDB which is Zlib

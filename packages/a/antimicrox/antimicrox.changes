@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Nov 22 18:33:08 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 3.3.2
+  * Use proper theme-based color for tab text
+  * Show joystick battery level in tab
+  * Fix broken obtaining path of active window by auto profile
+  * Fix auto profile dialog does not populate title and
+    application fields
+  * Fix misspeled __BIG_ENDIAN constant
+  * Fix advanced settings dialog freezes when pressing join on Linux
+  * Remove disabling Auto-profile title box
+  * don't minimize to taskbar by default on Linux
+
+-------------------------------------------------------------------
 Tue Oct 25 04:55:40 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 3.3.1
