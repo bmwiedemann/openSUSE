@@ -1,0 +1,13 @@
+Index: xgboost-0.90/jvm-packages/xgboost4j/pom.xml
+===================================================================
+--- xgboost-0.90.orig/jvm-packages/xgboost4j/pom.xml
++++ xgboost-0.90/jvm-packages/xgboost4j/pom.xml
+@@ -62,7 +62,7 @@
+                           <goal>exec</goal>
+                       </goals>
+                       <configuration>
+-                          <executable>python</executable>
++                          <executable>python3</executable>
+                           <arguments>
+                             <argument>create_jni.py</argument>
+                           </arguments>

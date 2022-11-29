@@ -1,7 +1,7 @@
 #
 # spec file for package xgboost
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,12 @@ License:        Apache-2.0
 URL:            https://github.com/dmlc/%{name}
 Source0:        %{name}-%{version}.tar.xz
 Patch0:         xgboost-fix-big-endian.patch
+Patch1:         use-python3.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  maven-local
-BuildRequires:  python
+BuildRequires:  python3
 BuildRequires:  mvn(com.esotericsoftware.kryo:kryo)
 BuildRequires:  mvn(com.typesafe.akka:akka-actor_2.10)
 BuildRequires:  mvn(commons-logging:commons-logging)
@@ -56,6 +57,7 @@ BuildArch:      noarch
 %ifarch s390x ppc64
 %patch0
 %endif
+%patch1 -p1
 pushd jvm-packages
 %pom_remove_plugin :scalatest-maven-plugin
 %pom_remove_plugin :scalastyle-maven-plugin

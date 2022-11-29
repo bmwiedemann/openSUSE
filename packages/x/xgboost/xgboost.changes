@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 28 07:22:09 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch use-python3.patch:
+  * Use python3 during the build.
+- Change BuildRequires to python3. 
+
+-------------------------------------------------------------------
 Mon Apr 27 08:25:46 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Pull sources with source service in order to have the right
