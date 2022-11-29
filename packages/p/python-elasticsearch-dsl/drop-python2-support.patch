@@ -1,0 +1,1996 @@
+Index: elasticsearch-dsl-py-7.4.0/docs/conf.py
+===================================================================
+--- elasticsearch-dsl-py-7.4.0.orig/docs/conf.py
++++ elasticsearch-dsl-py-7.4.0/docs/conf.py
+@@ -1,4 +1,3 @@
+-# -*- coding: utf-8 -*-
+ #  Licensed to Elasticsearch B.V. under one or more contributor
+ #  license agreements. See the NOTICE file distributed with
+ #  this work for additional information regarding copyright
+@@ -62,8 +61,8 @@ source_suffix = ".rst"
+ master_doc = "index"
+ 
+ # General information about the project.
+-project = u"Elasticsearch DSL"
+-copyright = u"%d, Elasticsearch B.V" % datetime.datetime.now().year
++project = "Elasticsearch DSL"
++copyright = "%d, Elasticsearch B.V" % datetime.datetime.now().year
+ 
+ # The version info for the project you're documenting, acts as replacement for
+ # |version| and |release|, also used in various other places throughout the
+@@ -216,8 +215,8 @@ latex_documents = [
+     (
+         "index",
+         "Elasticsearch-dsl.tex",
+-        u"Elasticsearch DSL Documentation",
+-        u"Elasticsearch B.V",
++        "Elasticsearch DSL Documentation",
++        "Elasticsearch B.V",
+         "manual",
+     ),
+ ]
+@@ -251,8 +250,8 @@ man_pages = [
+     (
+         "index",
+         "elasticsearch-dsl",
+-        u"Elasticsearch DSL Documentation",
+-        [u"Elasticsearch B.V"],
++        "Elasticsearch DSL Documentation",
++        ["Elasticsearch B.V"],
+         1,
+     )
+ ]
+@@ -270,8 +269,8 @@ texinfo_documents = [
+     (
+         "index",
+         "Elasticsearch",
+-        u"Elasticsearch Documentation",
+-        u"Elasticsearch B.V",
++        "Elasticsearch Documentation",
++        "Elasticsearch B.V",
+         "Elasticsearch",
+         "One line description of project.",
+         "Miscellaneous",
+Index: elasticsearch-dsl-py-7.4.0/elasticsearch_dsl/aggs.py
+===================================================================
+--- elasticsearch-dsl-py-7.4.0.orig/elasticsearch_dsl/aggs.py
++++ elasticsearch-dsl-py-7.4.0/elasticsearch_dsl/aggs.py
+@@ -15,10 +15,7 @@
+ #  specific language governing permissions and limitations
+ #  under the License.
+ 
+-try:
+-    import collections.abc as collections_abc  # only works on python 3.3+
+-except ImportError:
+-    import collections as collections_abc
++import collections.abc
+ 
+ from .response.aggs import AggResponse, BucketData, FieldBucketData, TopHitsData
+ from .utils import DslBase
+@@ -34,7 +31,7 @@ def A(name_or_agg, filter=None, **params
+         params["filter"] = filter
+ 
+     # {"terms": {"field": "tags"}, "aggs": {...}}
+-    if isinstance(name_or_agg, collections_abc.Mapping):
++    if isinstance(name_or_agg, collections.abc.Mapping):
+         if params:
+             raise ValueError("A() cannot accept parameters when passing in a dict.")
+         # copy to avoid modifying in-place
+@@ -79,7 +76,7 @@ class Agg(DslBase):
+         return False
+ 
+     def to_dict(self):
+-        d = super(Agg, self).to_dict()
++        d = super().to_dict()
+         if "meta" in d[self.name]:
+             d["meta"] = d[self.name].pop("meta")
+         return d
+@@ -88,7 +85,7 @@ class Agg(DslBase):
+         return AggResponse(self, search, data)
+ 
+ 
+-class AggBase(object):
++class AggBase:
+     _param_defs = {
+         "aggs": {"type": "agg", "hash": True},
+     }
+@@ -139,7 +136,7 @@ class AggBase(object):
+ 
+ class Bucket(AggBase, Agg):
+     def __init__(self, **params):
+-        super(Bucket, self).__init__(**params)
++        super().__init__(**params)
+         # remember self for chaining
+         self._base = self
+ 
+@@ -160,10 +157,10 @@ class Filter(Bucket):
+     def __init__(self, filter=None, **params):
+         if filter is not None:
+             params["filter"] = filter
+-        super(Filter, self).__init__(**params)
++        super().__init__(**params)
+ 
+     def to_dict(self):
+-        d = super(Filter, self).to_dict()
++        d = super().to_dict()
+         d[self.name].update(d[self.name].pop("filter", {}))
+         return d
+ 
+Index: elasticsearch-dsl-py-7.4.0/elasticsearch_dsl/analysis.py
+===================================================================
+--- elasticsearch-dsl-py-7.4.0.orig/elasticsearch_dsl/analysis.py
++++ elasticsearch-dsl-py-7.4.0/elasticsearch_dsl/analysis.py
+@@ -15,20 +15,18 @@
+ #  specific language governing permissions and limitations
+ #  under the License.
+ 
+-import six
+-
+ from .connections import get_connection
+ from .utils import AttrDict, DslBase, merge
+ 
+ __all__ = ["tokenizer", "analyzer", "char_filter", "token_filter", "normalizer"]
+ 
+ 
+-class AnalysisBase(object):
++class AnalysisBase:
+     @classmethod
+     def _type_shortcut(cls, name_or_instance, type=None, **kwargs):
+         if isinstance(name_or_instance, cls):
+             if type or kwargs:
+-                raise ValueError("%s() cannot accept parameters." % cls.__name__)
++                raise ValueError(f"{cls.__name__}() cannot accept parameters.")
+             return name_or_instance
+ 
+         if not (type or kwargs):
+@@ -39,20 +37,20 @@ class AnalysisBase(object):
+         )
+ 
+ 
+-class CustomAnalysis(object):
++class CustomAnalysis:
+     name = "custom"
+ 
+     def __init__(self, filter_name, builtin_type="custom", **kwargs):
+         self._builtin_type = builtin_type
+         self._name = filter_name
+-        super(CustomAnalysis, self).__init__(**kwargs)
++        super().__init__(**kwargs)
+ 
+     def to_dict(self):
+         # only name to present in lists
+         return self._name
+ 
+     def get_definition(self):
+-        d = super(CustomAnalysis, self).to_dict()
++        d = super().to_dict()
+         d = d.pop(self.name)
+         d["type"] = self._builtin_type
+         return d
+@@ -92,12 +90,12 @@ class CustomAnalysisDefinition(CustomAna
+         return out
+ 
+ 
+-class BuiltinAnalysis(object):
++class BuiltinAnalysis:
+     name = "builtin"
+ 
+     def __init__(self, name):
+         self._name = name
+-        super(BuiltinAnalysis, self).__init__()
++        super().__init__()
+ 
+     def to_dict(self):
+         # only name to present in lists
+@@ -148,7 +146,7 @@ class CustomAnalyzer(CustomAnalysisDefin
+             sec_def = definition.get(section, {})
+             sec_names = analyzer_def[section]
+ 
+-            if isinstance(sec_names, six.string_types):
++            if isinstance(sec_names, str):
+                 body[section] = sec_def.get(sec_names, sec_names)
+             else:
+                 body[section] = [
+@@ -213,7 +211,7 @@ class MultiplexerTokenFilter(CustomToken
+         if "filters" in d:
+             d["filters"] = [
+                 # comma delimited string given by user
+-                fs if isinstance(fs, six.string_types) else
++                fs if isinstance(fs, str) else
+                 # list of strings or TokenFilter objects
+                 ", ".join(f.to_dict() if hasattr(f, "to_dict") else f for f in fs)
+                 for fs in self.filters
+@@ -227,7 +225,7 @@ class MultiplexerTokenFilter(CustomToken
+         fs = {}
+         d = {"filter": fs}
+         for filters in self.filters:
+-            if isinstance(filters, six.string_types):
++            if isinstance(filters, str):
+                 continue
+             fs.update(
+                 {
+Index: elasticsearch-dsl-py-7.4.0/elasticsearch_dsl/connections.py
+===================================================================
+--- elasticsearch-dsl-py-7.4.0.orig/elasticsearch_dsl/connections.py
++++ elasticsearch-dsl-py-7.4.0/elasticsearch_dsl/connections.py
+@@ -16,12 +16,11 @@
+ #  under the License.
+ 
+ from elasticsearch import Elasticsearch
+-from six import string_types
+ 
+ from .serializer import serializer
+ 
+ 
+-class Connections(object):
++class Connections:
+     """
+     Class responsible for holding connections to different clusters. Used as a
+     singleton in this module.
+@@ -73,7 +72,7 @@ class Connections(object):
+                 errors += 1
+ 
+         if errors == 2:
+-            raise KeyError("There is no connection with alias %r." % alias)
++            raise KeyError(f"There is no connection with alias {alias!r}.")
+ 
+     def create_connection(self, alias="default", **kwargs):
+         """
+@@ -95,7 +94,7 @@ class Connections(object):
+         """
+         # do not check isinstance(Elasticsearch) so that people can wrap their
+         # clients
+-        if not isinstance(alias, string_types):
++        if not isinstance(alias, str):
+             return alias
+ 
+         # connection already established
+@@ -109,7 +108,7 @@ class Connections(object):
+             return self.create_connection(alias, **self._kwargs[alias])
+         except KeyError:
+             # no connection and no kwargs to set one up
+-            raise KeyError("There is no connection with alias %r." % alias)
++            raise KeyError(f"There is no connection with alias {alias!r}.")
+ 
+ 
+ connections = Connections()
+Index: elasticsearch-dsl-py-7.4.0/elasticsearch_dsl/document.py
+===================================================================
+--- elasticsearch-dsl-py-7.4.0.orig/elasticsearch_dsl/document.py
++++ elasticsearch-dsl-py-7.4.0/elasticsearch_dsl/document.py
+@@ -15,15 +15,10 @@
+ #  specific language governing permissions and limitations
+ #  under the License.
+ 
+-try:
+-    import collections.abc as collections_abc  # only works on python 3.3+
+-except ImportError:
+-    import collections as collections_abc
+-
++import collections.abc
+ from fnmatch import fnmatch
+ 
+ from elasticsearch.exceptions import NotFoundError, RequestError
+-from six import add_metaclass, iteritems
+ 
+ from .connections import get_connection
+ from .exceptions import IllegalOperation, ValidationException
+@@ -34,7 +29,7 @@ from .search import Search
+ from .utils import DOC_META_FIELDS, META_FIELDS, ObjectBase, merge
+ 
+ 
+-class MetaField(object):
++class MetaField:
+     def __init__(self, *args, **kwargs):
+         self.args, self.kwargs = args, kwargs
+ 
+@@ -43,7 +38,7 @@ class DocumentMeta(type):
+     def __new__(cls, name, bases, attrs):
+         # DocumentMeta filters attrs in place
+         attrs["_doc_type"] = DocumentOptions(name, bases, attrs)
+-        return super(DocumentMeta, cls).__new__(cls, name, bases, attrs)
++        return super().__new__(cls, name, bases, attrs)
+ 
+ 
+ class IndexMeta(DocumentMeta):
+@@ -52,7 +47,7 @@ class IndexMeta(DocumentMeta):
+     _document_initialized = False
+ 
+     def __new__(cls, name, bases, attrs):
+-        new_cls = super(IndexMeta, cls).__new__(cls, name, bases, attrs)
++        new_cls = super().__new__(cls, name, bases, attrs)
+         if cls._document_initialized:
+             index_opts = attrs.pop("Index", None)
+             index = cls.construct_index(index_opts, bases)
+@@ -79,7 +74,7 @@ class IndexMeta(DocumentMeta):
+         return i
+ 
+ 
+-class DocumentOptions(object):
++class DocumentOptions:
+     def __init__(self, name, bases, attrs):
+         meta = attrs.pop("Meta", None)
+ 
+@@ -87,7 +82,7 @@ class DocumentOptions(object):
+         self.mapping = getattr(meta, "mapping", Mapping())
+ 
+         # register all declared fields into the mapping
+-        for name, value in list(iteritems(attrs)):
++        for name, value in list(attrs.items()):
+             if isinstance(value, Field):
+                 self.mapping.field(name, value)
+                 del attrs[name]
+@@ -108,8 +103,7 @@ class DocumentOptions(object):
+         return self.mapping.properties.name
+ 
+ 
+-@add_metaclass(DocumentMeta)
+-class InnerDoc(ObjectBase):
++class InnerDoc(ObjectBase, metaclass=DocumentMeta):
+     """
+     Common class for inner documents like Object or Nested
+     """
+@@ -118,11 +112,10 @@ class InnerDoc(ObjectBase):
+     def from_es(cls, data, data_only=False):
+         if data_only:
+             data = {"_source": data}
+-        return super(InnerDoc, cls).from_es(data)
++        return super().from_es(data)
+ 
+ 
+-@add_metaclass(IndexMeta)
+-class Document(ObjectBase):
++class Document(ObjectBase, metaclass=IndexMeta):
+     """
+     Model-like class for persisting documents in elasticsearch.
+     """
+@@ -170,7 +163,7 @@ class Document(ObjectBase):
+         return "{}({})".format(
+             self.__class__.__name__,
+             ", ".join(
+-                "{}={!r}".format(key, getattr(self.meta, key))
++                f"{key}={getattr(self.meta, key)!r}"
+                 for key in ("index", "id")
+                 if key in self.meta
+             ),
+@@ -247,7 +240,7 @@ class Document(ObjectBase):
+         es = cls._get_connection(using)
+         body = {
+             "docs": [
+-                doc if isinstance(doc, collections_abc.Mapping) else {"_id": doc}
++                doc if isinstance(doc, collections.abc.Mapping) else {"_id": doc}
+                 for doc in docs
+             ]
+         }
+@@ -282,7 +275,7 @@ class Document(ObjectBase):
+             raise RequestError(400, message, error_docs)
+         if missing_docs:
+             missing_ids = [doc["_id"] for doc in missing_docs]
+-            message = "Documents %s not found." % ", ".join(missing_ids)
++            message = f"Documents {', '.join(missing_ids)} not found."
+             raise NotFoundError(404, message, {"docs": missing_docs})
+         return objs
+ 
+@@ -321,7 +314,7 @@ class Document(ObjectBase):
+             ``[]``, ``{}``) to be left on the document. Those values will be
+             stripped out otherwise as they make no difference in elasticsearch.
+         """
+-        d = super(Document, self).to_dict(skip_empty=skip_empty)
++        d = super().to_dict(skip_empty=skip_empty)
+         if not include_meta:
+             return d
+ 
+@@ -348,7 +341,7 @@ class Document(ObjectBase):
+         scripted_upsert=False,
+         upsert=None,
+         return_doc_meta=False,
+-        **fields
++        **fields,
+     ):
+         """
+         Partial update of the document, specify fields you wish to update and
+@@ -447,7 +440,7 @@ class Document(ObjectBase):
+         validate=True,
+         skip_empty=True,
+         return_doc_meta=False,
+-        **kwargs
++        **kwargs,
+     ):
+         """
+         Save the document into elasticsearch. If the document doesn't exist it
+@@ -485,7 +478,7 @@ class Document(ObjectBase):
+         meta = es.index(
+             index=self._get_index(index),
+             body=self.to_dict(skip_empty=skip_empty),
+-            **doc_meta
++            **doc_meta,
+         )
+         # update meta information from ES
+         for k in META_FIELDS:
+Index: elasticsearch-dsl-py-7.4.0/elasticsearch_dsl/faceted_search.py
+===================================================================
+--- elasticsearch-dsl-py-7.4.0.orig/elasticsearch_dsl/faceted_search.py
++++ elasticsearch-dsl-py-7.4.0/elasticsearch_dsl/faceted_search.py
+@@ -17,8 +17,6 @@
+ 
+ from datetime import datetime, timedelta
+ 
+-from six import iteritems, itervalues
+-
+ from .aggs import A
+ from .query import MatchAll, Nested, Range, Terms
+ from .response import Response
+@@ -35,7 +33,7 @@ __all__ = [
+ ]
+ 
+ 
+-class Facet(object):
++class Facet:
+     """
+     A facet on faceted search. Wraps and aggregation and provides functionality
+     to create a filter for selected values and return a list of facet values
+@@ -137,7 +135,7 @@ class RangeFacet(Facet):
+         return out
+ 
+     def __init__(self, ranges, **kwargs):
+-        super(RangeFacet, self).__init__(**kwargs)
++        super().__init__(**kwargs)
+         self._params["ranges"] = list(map(self._range_to_dict, ranges))
+         self._params["keyed"] = False
+         self._ranges = dict(ranges)
+@@ -164,7 +162,7 @@ class HistogramFacet(Facet):
+                     "gte": filter_value,
+                     "lt": filter_value + self._params["interval"],
+                 }
+-            }
++            },
+         )
+ 
+ 
+@@ -206,7 +204,7 @@ class DateHistogramFacet(Facet):
+ 
+     def __init__(self, **kwargs):
+         kwargs.setdefault("min_doc_count", 0)
+-        super(DateHistogramFacet, self).__init__(**kwargs)
++        super().__init__(**kwargs)
+ 
+     def get_value(self, bucket):
+         if not isinstance(bucket["key"], datetime):
+@@ -235,7 +233,7 @@ class DateHistogramFacet(Facet):
+                         filter_value
+                     ),
+                 }
+-            }
++            },
+         )
+ 
+ 
+@@ -245,9 +243,7 @@ class NestedFacet(Facet):
+     def __init__(self, path, nested_facet):
+         self._path = path
+         self._inner = nested_facet
+-        super(NestedFacet, self).__init__(
+-            path=path, aggs={"inner": nested_facet.get_aggregation()}
+-        )
++        super().__init__(path=path, aggs={"inner": nested_facet.get_aggregation()})
+ 
+     def get_values(self, data, filter_values):
+         return self._inner.get_values(data.inner, filter_values)
+@@ -267,7 +263,7 @@ class FacetedResponse(Response):
+     def facets(self):
+         if not hasattr(self, "_facets"):
+             super(AttrDict, self).__setattr__("_facets", AttrDict({}))
+-            for name, facet in iteritems(self._faceted_search.facets):
++            for name, facet in self._faceted_search.facets.items():
+                 self._facets[name] = facet.get_values(
+                     getattr(getattr(self.aggregations, "_filter_" + name), name),
+                     self._faceted_search.filter_values.get(name, ()),
+@@ -275,7 +271,7 @@ class FacetedResponse(Response):
+         return self._facets
+ 
+ 
+-class FacetedSearch(object):
++class FacetedSearch:
+     """
+     Abstraction for creating faceted navigation searches that takes care of
+     composing the queries, aggregations and filters as needed as well as
+@@ -333,7 +329,7 @@ class FacetedSearch(object):
+         self._filters = {}
+         self._sort = sort
+         self.filter_values = {}
+-        for name, value in iteritems(filters):
++        for name, value in filters.items():
+             self.add_filter(name, value)
+ 
+         self._s = self.build_search()
+@@ -398,10 +394,10 @@ class FacetedSearch(object):
+         Add aggregations representing the facets selected, including potential
+         filters.
+         """
+-        for f, facet in iteritems(self.facets):
++        for f, facet in self.facets.items():
+             agg = facet.get_aggregation()
+             agg_filter = MatchAll()
+-            for field, filter in iteritems(self._filters):
++            for field, filter in self._filters.items():
+                 if f == field:
+                     continue
+                 agg_filter &= filter
+@@ -418,7 +414,7 @@ class FacetedSearch(object):
+             return search
+ 
+         post_filter = MatchAll()
+-        for f in itervalues(self._filters):
++        for f in self._filters.values():
+             post_filter &= f
+         return search.post_filter(post_filter)
+ 
+Index: elasticsearch-dsl-py-7.4.0/elasticsearch_dsl/field.py
+===================================================================
+--- elasticsearch-dsl-py-7.4.0.orig/elasticsearch_dsl/field.py
++++ elasticsearch-dsl-py-7.4.0/elasticsearch_dsl/field.py
+@@ -16,31 +16,24 @@
+ #  under the License.
+ 
+ import base64
++import collections.abc
+ import copy
+ import ipaddress
+-
+-try:
+-    import collections.abc as collections_abc  # only works on python 3.3+
+-except ImportError:
+-    import collections as collections_abc
+-
+ from datetime import date, datetime
+ 
+ from dateutil import parser, tz
+-from six import integer_types, iteritems, string_types
+-from six.moves import map
+ 
+ from .exceptions import ValidationException
+ from .query import Q
+ from .utils import AttrDict, AttrList, DslBase
+ from .wrappers import Range
+ 
+-unicode = type(u"")
++unicode = str
+ 
+ 
+ def construct_field(name_or_field, **params):
+     # {"type": "text", "analyzer": "snowball"}
+-    if isinstance(name_or_field, collections_abc.Mapping):
++    if isinstance(name_or_field, collections.abc.Mapping):
+         if params:
+             raise ValueError(
+                 "construct_field() cannot accept parameters when passing in a dict."
+@@ -84,7 +77,7 @@ class Field(DslBase):
+         """
+         self._multi = multi
+         self._required = required
+-        super(Field, self).__init__(*args, **kwargs)
++        super().__init__(*args, **kwargs)
+ 
+     def __getitem__(self, subfield):
+         return self._params.get("fields", {})[subfield]
+@@ -124,7 +117,7 @@ class Field(DslBase):
+         return data
+ 
+     def to_dict(self):
+-        d = super(Field, self).to_dict()
++        d = super().to_dict()
+         name, value = d.popitem()
+         value["type"] = name
+         return value
+@@ -138,7 +131,7 @@ class CustomField(Field):
+         if isinstance(self.builtin_type, Field):
+             return self.builtin_type.to_dict()
+ 
+-        d = super(CustomField, self).to_dict()
++        d = super().to_dict()
+         d["type"] = self.builtin_type
+         return d
+ 
+@@ -172,13 +165,13 @@ class Object(Field):
+ 
+             # no InnerDoc subclass, creating one instead...
+             self._doc_class = type("InnerDoc", (InnerDoc,), {})
+-            for name, field in iteritems(properties or {}):
++            for name, field in (properties or {}).items():
+                 self._doc_class._doc_type.mapping.field(name, field)
+             if dynamic is not None:
+                 self._doc_class._doc_type.mapping.meta("dynamic", dynamic)
+ 
+         self._mapping = copy.deepcopy(self._doc_class._doc_type.mapping)
+-        super(Object, self).__init__(**kwargs)
++        super().__init__(**kwargs)
+ 
+     def __getitem__(self, name):
+         return self._mapping[name]
+@@ -199,7 +192,7 @@ class Object(Field):
+ 
+     def to_dict(self):
+         d = self._mapping.to_dict()
+-        d.update(super(Object, self).to_dict())
++        d.update(super().to_dict())
+         return d
+ 
+     def _collect_fields(self):
+@@ -220,13 +213,13 @@ class Object(Field):
+             return None
+ 
+         # somebody assigned raw dict to the field, we should tolerate that
+-        if isinstance(data, collections_abc.Mapping):
++        if isinstance(data, collections.abc.Mapping):
+             return data
+ 
+         return data.to_dict()
+ 
+     def clean(self, data):
+-        data = super(Object, self).clean(data)
++        data = super().clean(data)
+         if data is None:
+             return None
+         if isinstance(data, (list, AttrList)):
+@@ -249,7 +242,7 @@ class Nested(Object):
+ 
+     def __init__(self, *args, **kwargs):
+         kwargs.setdefault("multi", True)
+-        super(Nested, self).__init__(*args, **kwargs)
++        super().__init__(*args, **kwargs)
+ 
+ 
+ class Date(Field):
+@@ -262,17 +255,17 @@ class Date(Field):
+             May be instance of `datetime.tzinfo` or string containing TZ offset
+         """
+         self._default_timezone = default_timezone
+-        if isinstance(self._default_timezone, string_types):
++        if isinstance(self._default_timezone, str):
+             self._default_timezone = tz.gettz(self._default_timezone)
+-        super(Date, self).__init__(*args, **kwargs)
++        super().__init__(*args, **kwargs)
+ 
+     def _deserialize(self, data):
+-        if isinstance(data, string_types):
++        if isinstance(data, str):
+             try:
+                 data = parser.parse(data)
+             except Exception as e:
+                 raise ValidationException(
+-                    "Could not parse date from the value (%r)" % data, e
++                    f"Could not parse date from the value ({data!r})", e
+                 )
+ 
+         if isinstance(data, datetime):
+@@ -281,11 +274,11 @@ class Date(Field):
+             return data
+         if isinstance(data, date):
+             return data
+-        if isinstance(data, integer_types):
++        if isinstance(data, int):
+             # Divide by a float to preserve milliseconds on the datetime.
+             return datetime.utcfromtimestamp(data / 1000.0)
+ 
+-        raise ValidationException("Could not parse date from the value (%r)" % data)
++        raise ValidationException(f"Could not parse date from the value ({data!r})")
+ 
+ 
+ class Text(Field):
+@@ -350,7 +343,7 @@ class DenseVector(Float):
+ 
+     def __init__(self, dims, **kwargs):
+         kwargs["multi"] = True
+-        super(DenseVector, self).__init__(dims=dims, **kwargs)
++        super().__init__(dims=dims, **kwargs)
+ 
+ 
+ class SparseVector(Field):
+@@ -365,9 +358,7 @@ class ScaledFloat(Float):
+     name = "scaled_float"
+ 
+     def __init__(self, scaling_factor, *args, **kwargs):
+-        super(ScaledFloat, self).__init__(
+-            scaling_factor=scaling_factor, *args, **kwargs
+-        )
++        super().__init__(scaling_factor=scaling_factor, *args, **kwargs)
+ 
+ 
+ class Double(Float):
+@@ -470,15 +461,15 @@ class RangeField(Field):
+     def _deserialize(self, data):
+         if isinstance(data, Range):
+             return data
+-        data = dict((k, self._core_field.deserialize(v)) for k, v in iteritems(data))
++        data = {k: self._core_field.deserialize(v) for k, v in data.items()}
+         return Range(data)
+ 
+     def _serialize(self, data):
+         if data is None:
+             return None
+-        if not isinstance(data, collections_abc.Mapping):
++        if not isinstance(data, collections.abc.Mapping):
+             data = data.to_dict()
+-        return dict((k, self._core_field.serialize(v)) for k, v in iteritems(data))
++        return {k: self._core_field.serialize(v) for k, v in data.items()}
+ 
+ 
+ class IntegerRange(RangeField):
+Index: elasticsearch-dsl-py-7.4.0/elasticsearch_dsl/function.py
+===================================================================
+--- elasticsearch-dsl-py-7.4.0.orig/elasticsearch_dsl/function.py
++++ elasticsearch-dsl-py-7.4.0/elasticsearch_dsl/function.py
+@@ -15,17 +15,14 @@
+ #  specific language governing permissions and limitations
+ #  under the License.
+ 
+-try:
+-    import collections.abc as collections_abc  # only works on python 3.3+
+-except ImportError:
+-    import collections as collections_abc
++import collections.abc
+ 
+ from .utils import DslBase
+ 
+ 
+ def SF(name_or_sf, **params):
+     # {"script_score": {"script": "_score"}, "filter": {}}
+-    if isinstance(name_or_sf, collections_abc.Mapping):
++    if isinstance(name_or_sf, collections.abc.Mapping):
+         if params:
+             raise ValueError("SF() cannot accept parameters when passing in a dict.")
+         kwargs = {}
+@@ -41,10 +38,10 @@ def SF(name_or_sf, **params):
+         elif len(sf) == 1:
+             name, params = sf.popitem()
+         else:
+-            raise ValueError("SF() got an unexpected fields in the dictionary: %r" % sf)
++            raise ValueError(f"SF() got an unexpected fields in the dictionary: {sf!r}")
+ 
+         # boost factor special case, see elasticsearch #6343
+-        if not isinstance(params, collections_abc.Mapping):
++        if not isinstance(params, collections.abc.Mapping):
+             params = {"value": params}
+ 
+         # mix known params (from _param_defs) and from inside the function
+@@ -74,7 +71,7 @@ class ScoreFunction(DslBase):
+     name = None
+ 
+     def to_dict(self):
+-        d = super(ScoreFunction, self).to_dict()
++        d = super().to_dict()
+         # filter and query dicts should be at the same level as us
+         for k in self._param_defs:
+             if k in d[self.name]:
+@@ -90,7 +87,7 @@ class BoostFactor(ScoreFunction):
+     name = "boost_factor"
+ 
+     def to_dict(self):
+-        d = super(BoostFactor, self).to_dict()
++        d = super().to_dict()
+         if "value" in d[self.name]:
+             d[self.name] = d[self.name].pop("value")
+         else:
+Index: elasticsearch-dsl-py-7.4.0/elasticsearch_dsl/index.py
+===================================================================
+--- elasticsearch-dsl-py-7.4.0.orig/elasticsearch_dsl/index.py
++++ elasticsearch-dsl-py-7.4.0/elasticsearch_dsl/index.py
+@@ -24,7 +24,7 @@ from .update_by_query import UpdateByQue
+ from .utils import merge
+ 
+ 
+-class IndexTemplate(object):
++class IndexTemplate:
+     def __init__(self, name, template, index=None, order=None, **kwargs):
+         if index is None:
+             self._index = Index(template, **kwargs)
+@@ -55,7 +55,7 @@ class IndexTemplate(object):
+         return es.indices.put_template(name=self._template_name, body=self.to_dict())
+ 
+ 
+-class Index(object):
++class Index:
+     def __init__(self, name, using="default"):
+         """
+         :arg name: name of the index
+Index: elasticsearch-dsl-py-7.4.0/elasticsearch_dsl/mapping.py
+===================================================================
+--- elasticsearch-dsl-py-7.4.0.orig/elasticsearch_dsl/mapping.py
++++ elasticsearch-dsl-py-7.4.0/elasticsearch_dsl/mapping.py
+@@ -15,15 +15,9 @@
+ #  specific language governing permissions and limitations
+ #  under the License.
+ 
+-try:
+-    import collections.abc as collections_abc  # only works on python 3.3+
+-except ImportError:
+-    import collections as collections_abc
+-
++import collections.abc
+ from itertools import chain
+ 
+-from six import iteritems, itervalues
+-
+ from .connections import get_connection
+ from .field import Nested, Text, construct_field
+ from .utils import DslBase
+@@ -46,7 +40,7 @@ class Properties(DslBase):
+     _param_defs = {"properties": {"type": "field", "hash": True}}
+ 
+     def __init__(self):
+-        super(Properties, self).__init__()
++        super().__init__()
+ 
+     def __repr__(self):
+         return "Properties()"
+@@ -58,7 +52,7 @@ class Properties(DslBase):
+         return name in self.properties
+ 
+     def to_dict(self):
+-        return super(Properties, self).to_dict()["properties"]
++        return super().to_dict()["properties"]
+ 
+     def field(self, name, *args, **kwargs):
+         self.properties[name] = construct_field(*args, **kwargs)
+@@ -66,16 +60,14 @@ class Properties(DslBase):
+ 
+     def _collect_fields(self):
+         """ Iterate over all Field objects within, including multi fields. """
+-        for f in itervalues(self.properties.to_dict()):
++        for f in self.properties.to_dict().values():
+             yield f
+             # multi fields
+             if hasattr(f, "fields"):
+-                for inner_f in itervalues(f.fields.to_dict()):
+-                    yield inner_f
++                yield from f.fields.to_dict().values()
+             # nested and inner objects
+             if hasattr(f, "_collect_fields"):
+-                for inner_f in f._collect_fields():
+-                    yield inner_f
++                yield from f._collect_fields()
+ 
+     def update(self, other_object):
+         if not hasattr(other_object, "properties"):
+@@ -91,7 +83,7 @@ class Properties(DslBase):
+             our[name] = other[name]
+ 
+ 
+-class Mapping(object):
++class Mapping:
+     def __init__(self):
+         self.properties = Properties()
+         self._meta = {}
+@@ -174,13 +166,13 @@ class Mapping(object):
+         self._update_from_dict(raw["mappings"])
+ 
+     def _update_from_dict(self, raw):
+-        for name, definition in iteritems(raw.get("properties", {})):
++        for name, definition in raw.get("properties", {}).items():
+             self.field(name, definition)
+ 
+         # metadata like _all etc
+-        for name, value in iteritems(raw):
++        for name, value in raw.items():
+             if name != "properties":
+-                if isinstance(value, collections_abc.Mapping):
++                if isinstance(value, collections.abc.Mapping):
+                     self.meta(name, **value)
+                 else:
+                     self.meta(name, value)
+Index: elasticsearch-dsl-py-7.4.0/elasticsearch_dsl/query.py
+===================================================================
+--- elasticsearch-dsl-py-7.4.0.orig/elasticsearch_dsl/query.py
++++ elasticsearch-dsl-py-7.4.0/elasticsearch_dsl/query.py
+@@ -15,11 +15,7 @@
+ #  specific language governing permissions and limitations
+ #  under the License.
+ 
+-try:
+-    import collections.abc as collections_abc  # only works on python 3.3+
+-except ImportError:
+-    import collections as collections_abc
+-
++import collections.abc
+ from itertools import chain
+ 
+ # 'SF' looks unused but the test suite assumes it's available
+@@ -31,7 +27,7 @@ from .utils import DslBase
+ 
+ def Q(name_or_query="match_all", **params):
+     # {"match": {"title": "python"}}
+-    if isinstance(name_or_query, collections_abc.Mapping):
++    if isinstance(name_or_query, collections.abc.Mapping):
+         if params:
+             raise ValueError("Q() cannot accept parameters when passing in a dict.")
+         if len(name_or_query) != 1:
+@@ -254,7 +250,7 @@ class FunctionScore(Query):
+             for name in ScoreFunction._classes:
+                 if name in kwargs:
+                     fns.append({name: kwargs.pop(name)})
+-        super(FunctionScore, self).__init__(**kwargs)
++        super().__init__(**kwargs)
+ 
+ 
+ # compound queries
+Index: elasticsearch-dsl-py-7.4.0/elasticsearch_dsl/response/__init__.py
+===================================================================
+--- elasticsearch-dsl-py-7.4.0.orig/elasticsearch_dsl/response/__init__.py
++++ elasticsearch-dsl-py-7.4.0/elasticsearch_dsl/response/__init__.py
+@@ -25,7 +25,7 @@ class Response(AttrDict):
+     def __init__(self, search, response, doc_class=None):
+         super(AttrDict, self).__setattr__("_search", search)
+         super(AttrDict, self).__setattr__("_doc_class", doc_class)
+-        super(Response, self).__init__(response)
++        super().__init__(response)
+ 
+     def __iter__(self):
+         return iter(self.hits)
+@@ -34,7 +34,7 @@ class Response(AttrDict):
+         if isinstance(key, (slice, int)):
+             # for slicing etc
+             return self.hits[key]
+-        return super(Response, self).__getitem__(key)
++        return super().__getitem__(key)
+ 
+     def __nonzero__(self):
+         return bool(self.hits)
+@@ -94,14 +94,14 @@ class Response(AttrDict):
+ class AggResponse(AttrDict):
+     def __init__(self, aggs, search, data):
+         super(AttrDict, self).__setattr__("_meta", {"search": search, "aggs": aggs})
+-        super(AggResponse, self).__init__(data)
++        super().__init__(data)
+ 
+     def __getitem__(self, attr_name):
+         if attr_name in self._meta["aggs"]:
+             # don't do self._meta['aggs'][attr_name] to avoid copying
+             agg = self._meta["aggs"].aggs[attr_name]
+             return agg.result(self._meta["search"], self._d_[attr_name])
+-        return super(AggResponse, self).__getitem__(attr_name)
++        return super().__getitem__(attr_name)
+ 
+     def __iter__(self):
+         for name in self._meta["aggs"]:
+@@ -112,7 +112,7 @@ class UpdateByQueryResponse(AttrDict):
+     def __init__(self, search, response, doc_class=None):
+         super(AttrDict, self).__setattr__("_search", search)
+         super(AttrDict, self).__setattr__("_doc_class", doc_class)
+-        super(UpdateByQueryResponse, self).__init__(response)
++        super().__init__(response)
+ 
+     def success(self):
+         return not self.timed_out and not self.failures
+Index: elasticsearch-dsl-py-7.4.0/elasticsearch_dsl/response/aggs.py
+===================================================================
+--- elasticsearch-dsl-py-7.4.0.orig/elasticsearch_dsl/response/aggs.py
++++ elasticsearch-dsl-py-7.4.0/elasticsearch_dsl/response/aggs.py
+@@ -21,14 +21,14 @@ from . import AggResponse, Response
+ 
+ class Bucket(AggResponse):
+     def __init__(self, aggs, search, data, field=None):
+-        super(Bucket, self).__init__(aggs, search, data)
++        super().__init__(aggs, search, data)
+ 
+ 
+ class FieldBucket(Bucket):
+     def __init__(self, aggs, search, data, field=None):
+         if field:
+             data["key"] = field.deserialize(data["key"])
+-        super(FieldBucket, self).__init__(aggs, search, data, field)
++        super().__init__(aggs, search, data, field)
+ 
+ 
+ class BucketData(AggResponse):
+@@ -51,7 +51,7 @@ class BucketData(AggResponse):
+     def __getitem__(self, key):
+         if isinstance(key, (int, slice)):
+             return self.buckets[key]
+-        return super(BucketData, self).__getitem__(key)
++        return super().__getitem__(key)
+ 
+     @property
+     def buckets(self):
+@@ -77,4 +77,4 @@ class TopHitsData(Response):
+         super(AttrDict, self).__setattr__(
+             "meta", AttrDict({"agg": agg, "search": search})
+         )
+-        super(TopHitsData, self).__init__(search, data)
++        super().__init__(search, data)
+Index: elasticsearch-dsl-py-7.4.0/elasticsearch_dsl/response/hit.py
+===================================================================
+--- elasticsearch-dsl-py-7.4.0.orig/elasticsearch_dsl/response/hit.py
++++ elasticsearch-dsl-py-7.4.0/elasticsearch_dsl/response/hit.py
+@@ -26,26 +26,26 @@ class Hit(AttrDict):
+         if "fields" in document:
+             data.update(document["fields"])
+ 
+-        super(Hit, self).__init__(data)
++        super().__init__(data)
+         # assign meta as attribute and not as key in self._d_
+         super(AttrDict, self).__setattr__("meta", HitMeta(document))
+ 
+     def __getstate__(self):
+         # add self.meta since it is not in self.__dict__
+-        return super(Hit, self).__getstate__() + (self.meta,)
++        return super().__getstate__() + (self.meta,)
+ 
+     def __setstate__(self, state):
+         super(AttrDict, self).__setattr__("meta", state[-1])
+-        super(Hit, self).__setstate__(state[:-1])
++        super().__setstate__(state[:-1])
+ 
+     def __dir__(self):
+         # be sure to expose meta in dir(self)
+-        return super(Hit, self).__dir__() + ["meta"]
++        return super().__dir__() + ["meta"]
+ 
+     def __repr__(self):
+         return "<Hit({}): {}>".format(
+             "/".join(
+                 getattr(self.meta, key) for key in ("index", "id") if key in self.meta
+             ),
+-            super(Hit, self).__repr__(),
++            super().__repr__(),
+         )
+Index: elasticsearch-dsl-py-7.4.0/elasticsearch_dsl/search.py
+===================================================================
+--- elasticsearch-dsl-py-7.4.0.orig/elasticsearch_dsl/search.py
++++ elasticsearch-dsl-py-7.4.0/elasticsearch_dsl/search.py
+@@ -15,16 +15,11 @@
+ #  specific language governing permissions and limitations
+ #  under the License.
+ 
++import collections.abc
+ import copy
+ 
+-try:
+-    import collections.abc as collections_abc  # only works on python 3.3+
+-except ImportError:
+-    import collections as collections_abc
+-
+ from elasticsearch.exceptions import TransportError
+ from elasticsearch.helpers import scan
+-from six import iteritems, string_types
+ 
+ from .aggs import A, AggBase
+ from .connections import get_connection
+@@ -34,7 +29,7 @@ from .response import Hit, Response
+ from .utils import AttrDict, DslBase, recursive_to_dict
+ 
+ 
+-class QueryProxy(object):
++class QueryProxy:
+     """
+     Simple proxy around DSL objects (queries) that can be called
+     (to add query/post_filter) and also allows attribute access which is proxied to
+@@ -72,7 +67,7 @@ class QueryProxy(object):
+         if not attr_name.startswith("_"):
+             self._proxied = Q(self._proxied.to_dict())
+             setattr(self._proxied, attr_name, value)
+-        super(QueryProxy, self).__setattr__(attr_name, value)
++        super().__setattr__(attr_name, value)
+ 
+     def __getstate__(self):
+         return self._search, self._proxied, self._attr_name
+@@ -81,7 +76,7 @@ class QueryProxy(object):
+         self._search, self._proxied, self._attr_name = state
+ 
+ 
+-class ProxyDescriptor(object):
++class ProxyDescriptor:
+     """
+     Simple descriptor to enable setting of queries and filters as:
+ 
+@@ -91,7 +86,7 @@ class ProxyDescriptor(object):
+     """
+ 
+     def __init__(self, name):
+-        self._attr_name = "_%s_proxy" % name
++        self._attr_name = f"_{name}_proxy"
+ 
+     def __get__(self, instance, owner):
+         return getattr(instance, self._attr_name)
+@@ -110,10 +105,10 @@ class AggsProxy(AggBase, DslBase):
+         self._params = {"aggs": {}}
+ 
+     def to_dict(self):
+-        return super(AggsProxy, self).to_dict().get("aggs", {})
++        return super().to_dict().get("aggs", {})
+ 
+ 
+-class Request(object):
++class Request:
+     def __init__(self, using="default", index=None, doc_type=None, extra=None):
+         self._using = using
+ 
+@@ -127,7 +122,7 @@ class Request(object):
+         self._doc_type_map = {}
+         if isinstance(doc_type, (tuple, list)):
+             self._doc_type.extend(doc_type)
+-        elif isinstance(doc_type, collections_abc.Mapping):
++        elif isinstance(doc_type, collections.abc.Mapping):
+             self._doc_type.extend(doc_type.keys())
+             self._doc_type_map.update(doc_type)
+         elif doc_type:
+@@ -181,7 +176,7 @@ class Request(object):
+         else:
+             indexes = []
+             for i in index:
+-                if isinstance(i, string_types):
++                if isinstance(i, str):
+                     indexes.append(i)
+                 elif isinstance(i, list):
+                     indexes += i
+@@ -319,7 +314,7 @@ class Search(Request):
+         All the parameters supplied (or omitted) at creation type can be later
+         overridden by methods (`using`, `index` and `doc_type` respectively).
+         """
+-        super(Search, self).__init__(**kwargs)
++        super().__init__(**kwargs)
+ 
+         self.aggs = AggsProxy(self)
+         self._sort = []
+@@ -407,7 +402,7 @@ class Search(Request):
+         of all the underlying objects. Used internally by most state modifying
+         APIs.
+         """
+-        s = super(Search, self)._clone()
++        s = super()._clone()
+ 
+         s._response_class = self._response_class
+         s._sort = self._sort[:]
+@@ -446,7 +441,7 @@ class Search(Request):
+         aggs = d.pop("aggs", d.pop("aggregations", {}))
+         if aggs:
+             self.aggs._params = {
+-                "aggs": {name: A(value) for (name, value) in iteritems(aggs)}
++                "aggs": {name: A(value) for (name, value) in aggs.items()}
+             }
+         if "sort" in d:
+             self._sort = d.pop("sort")
+@@ -490,7 +485,7 @@ class Search(Request):
+         """
+         s = self._clone()
+         for name in kwargs:
+-            if isinstance(kwargs[name], string_types):
++            if isinstance(kwargs[name], str):
+                 kwargs[name] = {"script": kwargs[name]}
+         s._script_fields.update(kwargs)
+         return s
+@@ -566,7 +561,7 @@ class Search(Request):
+         s = self._clone()
+         s._sort = []
+         for k in keys:
+-            if isinstance(k, string_types) and k.startswith("-"):
++            if isinstance(k, str) and k.startswith("-"):
+                 if k[1:] == "_score":
+                     raise IllegalOperation("Sorting by `-_score` is not allowed.")
+                 k = {k[1:]: {"order": "desc"}}
+@@ -750,7 +745,7 @@ class MultiSearch(Request):
+     """
+ 
+     def __init__(self, **kwargs):
+-        super(MultiSearch, self).__init__(**kwargs)
++        super().__init__(**kwargs)
+         self._searches = []
+ 
+     def __getitem__(self, key):
+@@ -760,7 +755,7 @@ class MultiSearch(Request):
+         return iter(self._searches)
+ 
+     def _clone(self):
+-        ms = super(MultiSearch, self)._clone()
++        ms = super()._clone()
+         ms._searches = self._searches[:]
+         return ms
+ 
+Index: elasticsearch-dsl-py-7.4.0/elasticsearch_dsl/serializer.py
+===================================================================
+--- elasticsearch-dsl-py-7.4.0.orig/elasticsearch_dsl/serializer.py
++++ elasticsearch-dsl-py-7.4.0/elasticsearch_dsl/serializer.py
+@@ -26,7 +26,7 @@ class AttrJSONSerializer(JSONSerializer)
+             return data._l_
+         if hasattr(data, "to_dict"):
+             return data.to_dict()
+-        return super(AttrJSONSerializer, self).default(data)
++        return super().default(data)
+ 
+ 
+ serializer = AttrJSONSerializer()
+Index: elasticsearch-dsl-py-7.4.0/elasticsearch_dsl/update_by_query.py
+===================================================================
+--- elasticsearch-dsl-py-7.4.0.orig/elasticsearch_dsl/update_by_query.py
++++ elasticsearch-dsl-py-7.4.0/elasticsearch_dsl/update_by_query.py
+@@ -38,7 +38,7 @@ class UpdateByQuery(Request):
+         overridden by methods (`using`, `index` and `doc_type` respectively).
+ 
+         """
+-        super(UpdateByQuery, self).__init__(**kwargs)
++        super().__init__(**kwargs)
+         self._response_class = UpdateByQueryResponse
+         self._script = {}
+         self._query_proxy = QueryProxy(self, "query")
+@@ -77,7 +77,7 @@ class UpdateByQuery(Request):
+         of all the underlying objects. Used internally by most state modifying
+         APIs.
+         """
+-        ubq = super(UpdateByQuery, self)._clone()
++        ubq = super()._clone()
+ 
+         ubq._response_class = self._response_class
+         ubq._script = self._script.copy()
+Index: elasticsearch-dsl-py-7.4.0/elasticsearch_dsl/utils.py
+===================================================================
+--- elasticsearch-dsl-py-7.4.0.orig/elasticsearch_dsl/utils.py
++++ elasticsearch-dsl-py-7.4.0/elasticsearch_dsl/utils.py
+@@ -15,18 +15,10 @@
+ #  specific language governing permissions and limitations
+ #  under the License.
+ 
+-from __future__ import unicode_literals
+-
+-try:
+-    import collections.abc as collections_abc  # only works on python 3.3+
+-except ImportError:
+-    import collections as collections_abc
+ 
++import collections.abc
+ from copy import copy
+ 
+-from six import add_metaclass, iteritems
+-from six.moves import map
+-
+ from .exceptions import UnknownDslObject, ValidationException
+ 
+ SKIP_VALUES = ("", None)
+@@ -53,14 +45,14 @@ META_FIELDS = frozenset(
+ 
+ 
+ def _wrap(val, obj_wrapper=None):
+-    if isinstance(val, collections_abc.Mapping):
++    if isinstance(val, collections.abc.Mapping):
+         return AttrDict(val) if obj_wrapper is None else obj_wrapper(val)
+     if isinstance(val, list):
+         return AttrList(val)
+     return val
+ 
+ 
+-class AttrList(object):
++class AttrList:
+     def __init__(self, l, obj_wrapper=None):
+         # make iterables into lists
+         if not isinstance(l, list):
+@@ -110,7 +102,7 @@ class AttrList(object):
+         self._l_, self._obj_wrapper = state
+ 
+ 
+-class AttrDict(object):
++class AttrDict:
+     """
+     Helper class to provide attribute like access (read and write) to
+     dictionaries. Used to provide a convenient way to access both results and
+@@ -119,7 +111,7 @@ class AttrDict(object):
+ 
+     def __init__(self, d):
+         # assign the inner dict manually to prevent __setattr__ from firing
+-        super(AttrDict, self).__setattr__("_d_", d)
++        super().__setattr__("_d_", d)
+ 
+     def __contains__(self, key):
+         return key in self._d_
+@@ -152,16 +144,14 @@ class AttrDict(object):
+         return (self._d_,)
+ 
+     def __setstate__(self, state):
+-        super(AttrDict, self).__setattr__("_d_", state[0])
++        super().__setattr__("_d_", state[0])
+ 
+     def __getattr__(self, attr_name):
+         try:
+             return self.__getitem__(attr_name)
+         except KeyError:
+             raise AttributeError(
+-                "{!r} object has no attribute {!r}".format(
+-                    self.__class__.__name__, attr_name
+-                )
++                f"{self.__class__.__name__!r} object has no attribute {attr_name!r}"
+             )
+ 
+     def __delattr__(self, attr_name):
+@@ -169,9 +159,7 @@ class AttrDict(object):
+             del self._d_[attr_name]
+         except KeyError:
+             raise AttributeError(
+-                "{!r} object has no attribute {!r}".format(
+-                    self.__class__.__name__, attr_name
+-                )
++                f"{self.__class__.__name__!r} object has no attribute {attr_name!r}"
+             )
+ 
+     def __getitem__(self, key):
+@@ -188,7 +176,7 @@ class AttrDict(object):
+             self._d_[name] = value
+         else:
+             # there is an attribute on the class (could be property, ..) - don't add it as field
+-            super(AttrDict, self).__setattr__(name, value)
++            super().__setattr__(name, value)
+ 
+     def __iter__(self):
+         return iter(self._d_)
+@@ -213,7 +201,7 @@ class DslMeta(type):
+     _types = {}
+ 
+     def __init__(cls, name, bases, attrs):
+-        super(DslMeta, cls).__init__(name, bases, attrs)
++        super().__init__(name, bases, attrs)
+         # skip for DslBase
+         if not hasattr(cls, "_type_shortcut"):
+             return
+@@ -232,11 +220,10 @@ class DslMeta(type):
+         try:
+             return cls._types[name]
+         except KeyError:
+-            raise UnknownDslObject("DSL type %s does not exist." % name)
++            raise UnknownDslObject(f"DSL type {name} does not exist.")
+ 
+ 
+-@add_metaclass(DslMeta)
+-class DslBase(object):
++class DslBase(metaclass=DslMeta):
+     """
+     Base class for all DSL objects - queries, filters, aggregations etc. Wraps
+     a dictionary representing the object's json.
+@@ -262,12 +249,12 @@ class DslBase(object):
+             if default is not None:
+                 return cls._classes[default]
+             raise UnknownDslObject(
+-                "DSL class `{}` does not exist in {}.".format(name, cls._type_name)
++                f"DSL class `{name}` does not exist in {cls._type_name}."
+             )
+ 
+     def __init__(self, _expand__to_dot=EXPAND__TO_DOT, **params):
+         self._params = {}
+-        for pname, pvalue in iteritems(params):
++        for pname, pvalue in params.items():
+             if "__" in pname and _expand__to_dot:
+                 pname = pname.replace("__", ".")
+             self._setattr(pname, pvalue)
+@@ -275,14 +262,14 @@ class DslBase(object):
+     def _repr_params(self):
+         """ Produce a repr of all our parameters to be used in __repr__. """
+         return ", ".join(
+-            "{}={!r}".format(n.replace(".", "__"), v)
+-            for (n, v) in sorted(iteritems(self._params))
++            f"{n.replace('.', '__')}={v!r}"
++            for (n, v) in sorted(self._params.items())
+             # make sure we don't include empty typed params
+             if "type" not in self._param_defs.get(n, {}) or v
+         )
+ 
+     def __repr__(self):
+-        return "{}({})".format(self.__class__.__name__, self._repr_params())
++        return f"{self.__class__.__name__}({self._repr_params()})"
+ 
+     def __eq__(self, other):
+         return isinstance(other, self.__class__) and other.to_dict() == self.to_dict()
+@@ -292,7 +279,7 @@ class DslBase(object):
+ 
+     def __setattr__(self, name, value):
+         if name.startswith("_"):
+-            return super(DslBase, self).__setattr__(name, value)
++            return super().__setattr__(name, value)
+         return self._setattr(name, value)
+ 
+     def _setattr(self, name, value):
+@@ -309,7 +296,7 @@ class DslBase(object):
+                     if not isinstance(value, (tuple, list)):
+                         value = (value,)
+                     value = list(
+-                        {k: shortcut(v) for (k, v) in iteritems(obj)} for obj in value
++                        {k: shortcut(v) for (k, v) in obj.items()} for obj in value
+                     )
+                 elif pinfo.get("multi"):
+                     if not isinstance(value, (tuple, list)):
+@@ -318,7 +305,7 @@ class DslBase(object):
+ 
+                 # dict(name -> DslBase), make sure we pickup all the objs
+                 elif pinfo.get("hash"):
+-                    value = {k: shortcut(v) for (k, v) in iteritems(value)}
++                    value = {k: shortcut(v) for (k, v) in value.items()}
+ 
+                 # single value object, just convert
+                 else:
+@@ -328,9 +315,7 @@ class DslBase(object):
+     def __getattr__(self, name):
+         if name.startswith("_"):
+             raise AttributeError(
+-                "{!r} object has no attribute {!r}".format(
+-                    self.__class__.__name__, name
+-                )
++                f"{self.__class__.__name__!r} object has no attribute {name!r}"
+             )
+ 
+         value = None
+@@ -347,13 +332,11 @@ class DslBase(object):
+                     value = self._params.setdefault(name, {})
+         if value is None:
+             raise AttributeError(
+-                "{!r} object has no attribute {!r}".format(
+-                    self.__class__.__name__, name
+-                )
++                f"{self.__class__.__name__!r} object has no attribute {name!r}"
+             )
+ 
+         # wrap nested dicts in AttrDict for convenient access
+-        if isinstance(value, collections_abc.Mapping):
++        if isinstance(value, collections.abc.Mapping):
+             return AttrDict(value)
+         return value
+ 
+@@ -362,7 +345,7 @@ class DslBase(object):
+         Serialize the DSL object to plain dict
+         """
+         d = {}
+-        for pname, value in iteritems(self._params):
++        for pname, value in self._params.items():
+             pinfo = self._param_defs.get(pname)
+ 
+             # typed param
+@@ -374,7 +357,7 @@ class DslBase(object):
+                 # list of dict(name -> DslBase)
+                 if pinfo.get("multi") and pinfo.get("hash"):
+                     value = list(
+-                        {k: v.to_dict() for k, v in iteritems(obj)} for obj in value
++                        {k: v.to_dict() for k, v in obj.items()} for obj in value
+                     )
+ 
+                 # multi-values are serialized as list of dicts
+@@ -383,7 +366,7 @@ class DslBase(object):
+ 
+                 # squash all the hash values into one dict
+                 elif pinfo.get("hash"):
+-                    value = {k: v.to_dict() for k, v in iteritems(value)}
++                    value = {k: v.to_dict() for k, v in value.items()}
+ 
+                 # serialize single values
+                 else:
+@@ -407,13 +390,13 @@ class HitMeta(AttrDict):
+     def __init__(self, document, exclude=("_source", "_fields")):
+         d = {
+             k[1:] if k.startswith("_") else k: v
+-            for (k, v) in iteritems(document)
++            for (k, v) in document.items()
+             if k not in exclude
+         }
+         if "type" in d:
+             # make sure we are consistent everywhere in python
+             d["doc_type"] = d.pop("type")
+-        super(HitMeta, self).__init__(d)
++        super().__init__(d)
+ 
+ 
+ class ObjectBase(AttrDict):
+@@ -425,7 +408,7 @@ class ObjectBase(AttrDict):
+ 
+         super(AttrDict, self).__setattr__("meta", HitMeta(meta))
+ 
+-        super(ObjectBase, self).__init__(kwargs)
++        super().__init__(kwargs)
+ 
+     @classmethod
+     def __list_fields(cls):
+@@ -469,7 +452,7 @@ class ObjectBase(AttrDict):
+         return doc
+ 
+     def _from_dict(self, data):
+-        for k, v in iteritems(data):
++        for k, v in data.items():
+             f = self.__get_field(k)
+             if f and f._coerce:
+                 v = f.deserialize(v)
+@@ -486,7 +469,7 @@ class ObjectBase(AttrDict):
+ 
+     def __getattr__(self, name):
+         try:
+-            return super(ObjectBase, self).__getattr__(name)
++            return super().__getattr__(name)
+         except AttributeError:
+             f = self.__get_field(name)
+             if hasattr(f, "empty"):
+@@ -499,7 +482,7 @@ class ObjectBase(AttrDict):
+ 
+     def to_dict(self, skip_empty=True):
+         out = {}
+-        for k, v in iteritems(self._d_):
++        for k, v in self._d_.items():
+             # if this is a mapped field,
+             f = self.__get_field(k)
+             if f and f._coerce:
+@@ -546,24 +529,22 @@ class ObjectBase(AttrDict):
+ 
+ def merge(data, new_data, raise_on_conflict=False):
+     if not (
+-        isinstance(data, (AttrDict, collections_abc.Mapping))
+-        and isinstance(new_data, (AttrDict, collections_abc.Mapping))
++        isinstance(data, (AttrDict, collections.abc.Mapping))
++        and isinstance(new_data, (AttrDict, collections.abc.Mapping))
+     ):
+         raise ValueError(
+-            "You can only merge two dicts! Got {!r} and {!r} instead.".format(
+-                data, new_data
+-            )
++            f"You can only merge two dicts! Got {data!r} and {new_data!r} instead."
+         )
+ 
+-    for key, value in iteritems(new_data):
++    for key, value in new_data.items():
+         if (
+             key in data
+-            and isinstance(data[key], (AttrDict, collections_abc.Mapping))
+-            and isinstance(value, (AttrDict, collections_abc.Mapping))
++            and isinstance(data[key], (AttrDict, collections.abc.Mapping))
++            and isinstance(value, (AttrDict, collections.abc.Mapping))
+         ):
+             merge(data[key], value, raise_on_conflict)
+         elif key in data and data[key] != value and raise_on_conflict:
+-            raise ValueError("Incompatible data for key %r, cannot be merged." % key)
++            raise ValueError(f"Incompatible data for key {key!r}, cannot be merged.")
+         else:
+             data[key] = value
+ 
+@@ -579,6 +560,6 @@ def recursive_to_dict(data):
+         data = data.to_dict()
+     if isinstance(data, (list, tuple)):
+         return type(data)(recursive_to_dict(inner) for inner in data)
+-    elif isinstance(data, collections_abc.Mapping):
++    elif isinstance(data, collections.abc.Mapping):
+         return {key: recursive_to_dict(val) for key, val in data.items()}
+     return data
+Index: elasticsearch-dsl-py-7.4.0/elasticsearch_dsl/wrappers.py
+===================================================================
+--- elasticsearch-dsl-py-7.4.0.orig/elasticsearch_dsl/wrappers.py
++++ elasticsearch-dsl-py-7.4.0/elasticsearch_dsl/wrappers.py
+@@ -17,8 +17,6 @@
+ 
+ import operator
+ 
+-from six import iteritems, string_types
+-
+ from .utils import AttrDict
+ 
+ __all__ = ["Range"]
+@@ -41,7 +39,7 @@ class Range(AttrDict):
+ 
+         for k in data:
+             if k not in self.OPS:
+-                raise ValueError("Range received an unknown operator %r" % k)
++                raise ValueError(f"Range received an unknown operator {k!r}")
+ 
+         if "gt" in data and "gte" in data:
+             raise ValueError("You cannot specify both gt and gte for Range.")
+@@ -49,14 +47,14 @@ class Range(AttrDict):
+         if "lt" in data and "lte" in data:
+             raise ValueError("You cannot specify both lt and lte for Range.")
+ 
+-        super(Range, self).__init__(args[0] if args else kwargs)
++        super().__init__(args[0] if args else kwargs)
+ 
+     def __repr__(self):
+-        return "Range(%s)" % ", ".join("%s=%r" % op for op in iteritems(self._d_))
++        return "Range(%s)" % ", ".join("%s=%r" % op for op in self._d_.items())
+ 
+     def __contains__(self, item):
+-        if isinstance(item, string_types):
+-            return super(Range, self).__contains__(item)
++        if isinstance(item, str):
++            return super().__contains__(item)
+ 
+         for op in self.OPS:
+             if op in self._d_ and not self.OPS[op](item, self._d_[op]):
+Index: elasticsearch-dsl-py-7.4.0/examples/completion.py
+===================================================================
+--- elasticsearch-dsl-py-7.4.0.orig/examples/completion.py
++++ elasticsearch-dsl-py-7.4.0/examples/completion.py
+@@ -1,4 +1,3 @@
+-# -*- coding: utf-8 -*-
+ #  Licensed to Elasticsearch B.V. under one or more contributor
+ #  license agreements. See the NOTICE file distributed with
+ #  this work for additional information regarding copyright
+@@ -26,7 +25,6 @@ value from the ``popularity`` field whic
+ To make the suggestions work in different languages we added a custom analyzer
+ that does ascii folding.
+ """
+-from __future__ import print_function, unicode_literals
+ 
+ from itertools import permutations
+ 
+Index: elasticsearch-dsl-py-7.4.0/examples/composite_agg.py
+===================================================================
+--- elasticsearch-dsl-py-7.4.0.orig/examples/composite_agg.py
++++ elasticsearch-dsl-py-7.4.0/examples/composite_agg.py
+@@ -15,7 +15,6 @@
+ #  specific language governing permissions and limitations
+ #  under the License.
+ 
+-from __future__ import print_function
+ 
+ from elasticsearch_dsl import A, Search, connections
+ 
+@@ -36,8 +35,7 @@ def scan_aggs(search, source_aggs, inner
+ 
+     response = run_search()
+     while response.aggregations.comp.buckets:
+-        for b in response.aggregations.comp.buckets:
+-            yield b
++        yield from response.aggregations.comp.buckets
+         if "after_key" in response.aggregations.comp:
+             after = response.aggregations.comp.after_key
+         else:
+Index: elasticsearch-dsl-py-7.4.0/examples/parent_child.py
+===================================================================
+--- elasticsearch-dsl-py-7.4.0.orig/examples/parent_child.py
++++ elasticsearch-dsl-py-7.4.0/examples/parent_child.py
+@@ -113,7 +113,7 @@ class Post(Document):
+         # if there is no date, use now
+         if self.created is None:
+             self.created = datetime.now()
+-        return super(Post, self).save(**kwargs)
++        return super().save(**kwargs)
+ 
+ 
+ class Question(Post):
+@@ -168,7 +168,7 @@ class Question(Post):
+ 
+     def save(self, **kwargs):
+         self.question_answer = "question"
+-        return super(Question, self).save(**kwargs)
++        return super().save(**kwargs)
+ 
+ 
+ class Answer(Post):
+@@ -199,7 +199,7 @@ class Answer(Post):
+     def save(self, **kwargs):
+         # set routing to parents id automatically
+         self.meta.routing = self.question_answer.parent
+-        return super(Answer, self).save(**kwargs)
++        return super().save(**kwargs)
+ 
+ 
+ def setup():
+Index: elasticsearch-dsl-py-7.4.0/examples/percolate.py
+===================================================================
+--- elasticsearch-dsl-py-7.4.0.orig/examples/percolate.py
++++ elasticsearch-dsl-py-7.4.0/examples/percolate.py
+@@ -53,7 +53,7 @@ class BlogPost(Document):
+ 
+     def save(self, **kwargs):
+         self.add_tags()
+-        return super(BlogPost, self).save(**kwargs)
++        return super().save(**kwargs)
+ 
+ 
+ class PercolatorDoc(Document):
+Index: elasticsearch-dsl-py-7.4.0/examples/search_as_you_type.py
+===================================================================
+--- elasticsearch-dsl-py-7.4.0.orig/examples/search_as_you_type.py
++++ elasticsearch-dsl-py-7.4.0/examples/search_as_you_type.py
+@@ -1,4 +1,3 @@
+-# -*- coding: utf-8 -*-
+ #  Licensed to Elasticsearch B.V. under one or more contributor
+ #  license agreements. See the NOTICE file distributed with
+ #  this work for additional information regarding copyright
+@@ -25,7 +24,6 @@ within the input.
+ 
+ To custom analyzer with ascii folding allow search to work in different languages.
+ """
+-from __future__ import print_function, unicode_literals
+ 
+ from elasticsearch_dsl import (
+     Document,
+Index: elasticsearch-dsl-py-7.4.0/noxfile.py
+===================================================================
+--- elasticsearch-dsl-py-7.4.0.orig/noxfile.py
++++ elasticsearch-dsl-py-7.4.0/noxfile.py
+@@ -28,7 +28,14 @@ SOURCE_FILES = (
+ )
+ 
+ 
+-@nox.session(python=["2.7", "3.4", "3.5", "3.6", "3.7", "3.8", "3.9"])
++@nox.session(
++    python=[
++        "3.6",
++        "3.7",
++        "3.8",
++        "3.9",
++    ]
++)
+ def test(session):
+     session.install(".[develop]")
+ 
+@@ -47,9 +54,7 @@ def test(session):
+ @nox.session()
+ def format(session):
+     session.install("black", "isort")
+-    session.run(
+-        "black", "--target-version=py27", "--target-version=py37", *SOURCE_FILES
+-    )
++    session.run("black", "--target-version=py36", *SOURCE_FILES)
+     session.run("isort", *SOURCE_FILES)
+     session.run("python", "utils/license-headers.py", "fix", *SOURCE_FILES)
+ 
+@@ -59,13 +64,7 @@ def format(session):
+ @nox.session
+ def lint(session):
+     session.install("flake8", "black", "isort")
+-    session.run(
+-        "black",
+-        "--check",
+-        "--target-version=py27",
+-        "--target-version=py37",
+-        *SOURCE_FILES
+-    )
++    session.run("black", "--check", "--target-version=py36", *SOURCE_FILES)
+     session.run("isort", "--check", *SOURCE_FILES)
+     session.run("flake8", "--ignore=E501,E741,W503", *SOURCE_FILES)
+     session.run("python", "utils/license-headers.py", "check", *SOURCE_FILES)
+Index: elasticsearch-dsl-py-7.4.0/tests/conftest.py
+===================================================================
+--- elasticsearch-dsl-py-7.4.0.orig/tests/conftest.py
++++ elasticsearch-dsl-py-7.4.0/tests/conftest.py
+@@ -1,4 +1,3 @@
+-# -*- coding: utf-8 -*-
+ #  Licensed to Elasticsearch B.V. under one or more contributor
+ #  license agreements. See the NOTICE file distributed with
+ #  this work for additional information regarding copyright
+Index: elasticsearch-dsl-py-7.4.0/tests/test_analysis.py
+===================================================================
+--- elasticsearch-dsl-py-7.4.0.orig/tests/test_analysis.py
++++ elasticsearch-dsl-py-7.4.0/tests/test_analysis.py
+@@ -1,4 +1,3 @@
+-# -*- coding: utf-8 -*-
+ #  Licensed to Elasticsearch B.V. under one or more contributor
+ #  license agreements. See the NOTICE file distributed with
+ #  this work for additional information regarding copyright
+Index: elasticsearch-dsl-py-7.4.0/tests/test_document.py
+===================================================================
+--- elasticsearch-dsl-py-7.4.0.orig/tests/test_document.py
++++ elasticsearch-dsl-py-7.4.0/tests/test_document.py
+@@ -170,7 +170,7 @@ def test_conflicting_mapping_raises_erro
+ 
+ 
+ def test_ip_address_serializes_properly():
+-    host = Host(ip=ipaddress.IPv4Address(u"10.0.0.1"))
++    host = Host(ip=ipaddress.IPv4Address("10.0.0.1"))
+ 
+     assert {"ip": "10.0.0.1"} == host.to_dict()
+ 
+Index: elasticsearch-dsl-py-7.4.0/tests/test_field.py
+===================================================================
+--- elasticsearch-dsl-py-7.4.0.orig/tests/test_field.py
++++ elasticsearch-dsl-py-7.4.0/tests/test_field.py
+@@ -141,8 +141,8 @@ def test_scaled_float():
+ 
+ def test_ipaddress():
+     f = field.Ip()
+-    assert f.deserialize("127.0.0.1") == ipaddress.ip_address(u"127.0.0.1")
+-    assert f.deserialize(u"::1") == ipaddress.ip_address(u"::1")
++    assert f.deserialize("127.0.0.1") == ipaddress.ip_address("127.0.0.1")
++    assert f.deserialize("::1") == ipaddress.ip_address("::1")
+     assert f.serialize(f.deserialize("::1")) == "::1"
+     assert f.deserialize(None) is None
+     with pytest.raises(ValueError):
+Index: elasticsearch-dsl-py-7.4.0/tests/test_index.py
+===================================================================
+--- elasticsearch-dsl-py-7.4.0.orig/tests/test_index.py
++++ elasticsearch-dsl-py-7.4.0/tests/test_index.py
+@@ -74,7 +74,7 @@ def test_cloned_index_has_analysis_attri
+     client = object()
+     i = Index("my-index", using=client)
+ 
+-    random_analyzer_name = "".join((choice(string.ascii_letters) for _ in range(100)))
++    random_analyzer_name = "".join(choice(string.ascii_letters) for _ in range(100))
+     random_analyzer = analyzer(
+         random_analyzer_name, tokenizer="standard", filter="standard"
+     )
+@@ -118,7 +118,7 @@ def test_registered_doc_type_included_in
+ 
+ 
+ def test_aliases_add_to_object():
+-    random_alias = "".join((choice(string.ascii_letters) for _ in range(100)))
++    random_alias = "".join(choice(string.ascii_letters) for _ in range(100))
+     alias_dict = {random_alias: {}}
+ 
+     index = Index("i", using="alias")
+@@ -128,7 +128,7 @@ def test_aliases_add_to_object():
+ 
+ 
+ def test_aliases_returned_from_to_dict():
+-    random_alias = "".join((choice(string.ascii_letters) for _ in range(100)))
++    random_alias = "".join(choice(string.ascii_letters) for _ in range(100))
+     alias_dict = {random_alias: {}}
+ 
+     index = Index("i", using="alias")
+@@ -138,7 +138,7 @@ def test_aliases_returned_from_to_dict()
+ 
+ 
+ def test_analyzers_added_to_object():
+-    random_analyzer_name = "".join((choice(string.ascii_letters) for _ in range(100)))
++    random_analyzer_name = "".join(choice(string.ascii_letters) for _ in range(100))
+     random_analyzer = analyzer(
+         random_analyzer_name, tokenizer="standard", filter="standard"
+     )
+@@ -154,7 +154,7 @@ def test_analyzers_added_to_object():
+ 
+ 
+ def test_analyzers_returned_from_to_dict():
+-    random_analyzer_name = "".join((choice(string.ascii_letters) for _ in range(100)))
++    random_analyzer_name = "".join(choice(string.ascii_letters) for _ in range(100))
+     random_analyzer = analyzer(
+         random_analyzer_name, tokenizer="standard", filter="standard"
+     )
+Index: elasticsearch-dsl-py-7.4.0/tests/test_integration/test_data.py
+===================================================================
+--- elasticsearch-dsl-py-7.4.0.orig/tests/test_integration/test_data.py
++++ elasticsearch-dsl-py-7.4.0/tests/test_integration/test_data.py
+@@ -15,8 +15,6 @@
+ #  specific language governing permissions and limitations
+ #  under the License.
+ 
+-from __future__ import unicode_literals
+-
+ 
+ def create_flat_git_index(client, index):
+     # we will use user on several places
+Index: elasticsearch-dsl-py-7.4.0/tests/test_integration/test_document.py
+===================================================================
+--- elasticsearch-dsl-py-7.4.0.orig/tests/test_integration/test_document.py
++++ elasticsearch-dsl-py-7.4.0/tests/test_integration/test_document.py
+@@ -68,7 +68,7 @@ class Repository(Document):
+ 
+     @classmethod
+     def search(cls):
+-        return super(Repository, cls).search().filter("term", commit_repo="repo")
++        return super().search().filter("term", commit_repo="repo")
+ 
+     class Index:
+         name = "git"
+@@ -139,7 +139,7 @@ def test_serialization(write_client):
+     assert sd.b == [True, False, True, False, None]
+     assert sd.d == [0.1, -0.1, None]
+     assert sd.bin == [b"Hello World", None]
+-    assert sd.ip == [ip_address(u"::1"), ip_address(u"127.0.0.1"), None]
++    assert sd.ip == [ip_address("::1"), ip_address("127.0.0.1"), None]
+ 
+     assert sd.to_dict() == {
+         "b": [True, False, True, False, None],
+Index: elasticsearch-dsl-py-7.4.0/tests/test_integration/test_examples/test_completion.py
+===================================================================
+--- elasticsearch-dsl-py-7.4.0.orig/tests/test_integration/test_examples/test_completion.py
++++ elasticsearch-dsl-py-7.4.0/tests/test_integration/test_examples/test_completion.py
+@@ -1,4 +1,3 @@
+-# -*- coding: utf-8 -*-
+ #  Licensed to Elasticsearch B.V. under one or more contributor
+ #  license agreements. See the NOTICE file distributed with
+ #  this work for additional information regarding copyright
+@@ -16,7 +15,6 @@
+ #  specific language governing permissions and limitations
+ #  under the License.
+ 
+-from __future__ import unicode_literals
+ 
+ from .completion import Person
+ 
+Index: elasticsearch-dsl-py-7.4.0/tests/test_integration/test_faceted_search.py
+===================================================================
+--- elasticsearch-dsl-py-7.4.0.orig/tests/test_integration/test_faceted_search.py
++++ elasticsearch-dsl-py-7.4.0/tests/test_integration/test_faceted_search.py
+@@ -99,7 +99,7 @@ def repo_search_cls(es_version):
+         }
+ 
+         def search(self):
+-            s = super(RepoSearch, self).search()
++            s = super().search()
+             return s.filter("term", commit_repo="repo")
+ 
+     return RepoSearch
+Index: elasticsearch-dsl-py-7.4.0/tests/test_integration/test_search.py
+===================================================================
+--- elasticsearch-dsl-py-7.4.0.orig/tests/test_integration/test_search.py
++++ elasticsearch-dsl-py-7.4.0/tests/test_integration/test_search.py
+@@ -1,4 +1,3 @@
+-# -*- coding: utf-8 -*-
+ #  Licensed to Elasticsearch B.V. under one or more contributor
+ #  license agreements. See the NOTICE file distributed with
+ #  this work for additional information regarding copyright
+@@ -16,7 +15,6 @@
+ #  specific language governing permissions and limitations
+ #  under the License.
+ 
+-from __future__ import unicode_literals
+ 
+ from elasticsearch import TransportError
+ from pytest import raises
+@@ -34,7 +32,7 @@ class Repository(Document):
+ 
+     @classmethod
+     def search(cls):
+-        return super(Repository, cls).search().filter("term", commit_repo="repo")
++        return super().search().filter("term", commit_repo="repo")
+ 
+     class Index:
+         name = "git"
+Index: elasticsearch-dsl-py-7.4.0/tests/test_result.py
+===================================================================
+--- elasticsearch-dsl-py-7.4.0.orig/tests/test_result.py
++++ elasticsearch-dsl-py-7.4.0/tests/test_result.py
+@@ -89,7 +89,7 @@ def test_interactive_helpers(dummy_respo
+     )
+ 
+     assert res
+-    assert "<Response: %s>" % rhits == repr(res)
++    assert f"<Response: {rhits}>" == repr(res)
+     assert rhits == repr(hits)
+     assert {"meta", "city", "name"} == set(dir(h))
+     assert "<Hit(test-index/elasticsearch): %r>" % dummy_response["hits"]["hits"][0][
+Index: elasticsearch-dsl-py-7.4.0/tests/test_search.py
+===================================================================
+--- elasticsearch-dsl-py-7.4.0.orig/tests/test_search.py
++++ elasticsearch-dsl-py-7.4.0/tests/test_search.py
+@@ -195,7 +195,7 @@ def test_search_index():
+     assert s._index == ["i"]
+     s = s.index("i2")
+     assert s._index == ["i", "i2"]
+-    s = s.index(u"i3")
++    s = s.index("i3")
+     assert s._index == ["i", "i2", "i3"]
+     s = s.index()
+     assert s._index is None
+Index: elasticsearch-dsl-py-7.4.0/tests/test_utils.py
+===================================================================
+--- elasticsearch-dsl-py-7.4.0.orig/tests/test_utils.py
++++ elasticsearch-dsl-py-7.4.0/tests/test_utils.py
+@@ -89,7 +89,7 @@ def test_serializer_deals_with_Attr_vers
+ 
+ 
+ def test_serializer_deals_with_objects_with_to_dict():
+-    class MyClass(object):
++    class MyClass:
+         def to_dict(self):
+             return 42
+ 
+Index: elasticsearch-dsl-py-7.4.0/tests/test_validation.py
+===================================================================
+--- elasticsearch-dsl-py-7.4.0.orig/tests/test_validation.py
++++ elasticsearch-dsl-py-7.4.0/tests/test_validation.py
+@@ -56,7 +56,7 @@ class AutoNowDate(Date):
+     def clean(self, data):
+         if data is None:
+             data = datetime.now()
+-        return super(AutoNowDate, self).clean(data)
++        return super().clean(data)
+ 
+ 
+ class Log(Document):
+Index: elasticsearch-dsl-py-7.4.0/utils/license-headers.py
+===================================================================
+--- elasticsearch-dsl-py-7.4.0.orig/utils/license-headers.py
++++ elasticsearch-dsl-py-7.4.0/utils/license-headers.py
+@@ -65,7 +65,7 @@ def find_files_to_fix(sources: List[str]
+ def does_file_need_fix(filepath: str) -> bool:
+     if not filepath.endswith(".py"):
+         return False
+-    with open(filepath, mode="r") as f:
++    with open(filepath) as f:
+         first_license_line = None
+         for line in f:
+             if line == license_header_lines[0]:
+@@ -82,7 +82,7 @@ def does_file_need_fix(filepath: str) ->
+ 
+ 
+ def add_header_to_file(filepath: str) -> None:
+-    with open(filepath, mode="r") as f:
++    with open(filepath) as f:
+         lines = list(f)
+     i = 0
+     for i, line in enumerate(lines):

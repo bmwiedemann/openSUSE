@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 28 13:04:53 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add drop-python2-support.patch from upstream
+  gh#elastic/elasticsearch-dsl-py@f7f85a5db8f2
+- Remove python-six dependency
+
+-------------------------------------------------------------------
 Tue Oct 18 06:48:14 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 7.4.0:

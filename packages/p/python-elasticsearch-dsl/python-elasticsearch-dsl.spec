@@ -28,13 +28,14 @@ Source:         https://github.com/elastic/elasticsearch-dsl-py/archive/refs/tag
 # PATCH-FEATURE-UPSTREAM python-elasticsearch-dsl-no-mock.patch gh#elastic/elasticsearch-dsl-py#1596 mcepl@suse.com
 # Use unittest.mock instead of the external package (merged to master, not yet released)
 Patch0:         python-elasticsearch-dsl-no-mock.patch
+# PATCH-FEATURE-UPSTREAM drop-python2-support.patch gh#elastic/elasticsearch-dsl-py@f7f85a5db8f2
+Patch1:         drop-python2-support.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # gh#elastic/elasticsearch-dsl-py#1569
 Requires:       (python-elasticsearch >= 7.0.0 with python-elasticsearch < 8)
 Requires:       python-python-dateutil
-Requires:       python-six
 Suggests:       python-pytz
 BuildArch:      noarch
 # SECTION test requirements
@@ -42,7 +43,6 @@ BuildRequires:  %{python_module elasticsearch >= 7.0.0 with %python-elasticsearc
 BuildRequires:  %{python_module pytest >= 3.0.0}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module pytz}
-BuildRequires:  %{python_module six}
 # /SECTION
 %python_subpackages
 
