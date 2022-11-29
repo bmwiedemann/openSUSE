@@ -2,7 +2,7 @@
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://github.com/ErikReider/SwayNotificationCenter.git</param>
-    <param name="revision">v0.7.2</param>
+    <param name="revision">v0.7.3</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>
@@ -12,5 +12,5 @@
     <param name="file">*.tar</param>
     <param name="compression">gz</param>
   </service>
-  <service name="set_version" mode="buildtime"/>
+  <service name="set_version" mode="manual"/>
 </services>

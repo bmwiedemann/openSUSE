@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Nov 28 19:10:41 UTC 2022 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 0.7.3:
+  * Fixed segfault when reloading config
+  * Adds MPRIS widget arrows when multiple players are detected
+  * Fix not being able to interact with CC without first click
+  * Fix MPRIS image scaling when display is scaled
+  * Add cssPriority to config
+  * Add option to configure control center layer
+  * feat: transient notification visibility
+  * Add client flags to turn dnd on/off
+  * Add /usr/local/etc/xdg/swaync/ as default fallback path for config and CSS files
+
+-------------------------------------------------------------------
 Mon Sep 26 07:51:05 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Remove full source URL since it's downloaded by _service
