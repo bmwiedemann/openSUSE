@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov 28 18:06:04 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.62.2:
+  * fix: guard for locations < 1 in alpmdb parse (#1366)
+  * fix: remove cabal.project.freeze panic on last pkg (#1363)
+  * fix: requirements.txt - return unicode only letter/num for version (#1361)
+  * Update syft bootstrap tools to latest versions. (#1356)
+
+-------------------------------------------------------------------
 Mon Nov 21 15:12:29 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.62.1:

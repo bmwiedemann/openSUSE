@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           syft
-Version:        0.62.1
+Version:        0.62.2
 Release:        0
 Summary:        CLI tool and library for generating a Software Bill of Materials
 License:        Apache-2.0
