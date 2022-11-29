@@ -17,16 +17,13 @@
 
 
 Name:           opentyrian
-# Upstream haven not tagged a version for more than seven years now.
-# There quite many bugfixes in the git version and it seems upstreams
-# develops it as rolling release.
-Version:        2.1.20220318
+Version:        2.1.20221123
 Release:        0
 Summary:        An arcade-style vertical scrolling shooter
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Action/Arcade
 URL:            https://github.com/opentyrian/opentyrian
-Source:         %{name}-%{version}.tar.xz
+Source:         https://github.com/opentyrian/opentyrian/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FEATURE-UPSTREAM https://github.com/opentyrian/opentyrian/pull/13
 Patch0:         appdata.patch
 BuildRequires:  fdupes
@@ -90,6 +87,5 @@ Unpack them and put them into /usr/share/tyrian.
 %{_datadir}/icons/hicolor/*/apps/*.png
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/appdata/%{name}.appdata.xml
-%{_datadir}/pixmaps/%{name}.png
 
 %changelog

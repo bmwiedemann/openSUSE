@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Nov 26 16:56:44 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 2.1.20221123
+  * Volume control is now on a logarithmic scale
+  * Fixed music fade (ex. when starting a level)
+  * Reworked audio mixing to reduce clipping
+  * Fixed some graphical glitches
+- Drop _service file, switch to git releases
+
+-------------------------------------------------------------------
 Sun Mar 20 06:04:27 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 2.1.20220318
