@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Nov 29 08:03:57 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- Update to version 1.4.1:
+  * Enhancements
+    - Introduced v1.24.8-rancher1-1 and v1.23.14-rancher1-1.
+  * Known Major Issues
+    - Ephemeral /var/lib/dockershim and /var/lib/cri-dockerd directories for kubelet container could cause kubelet/dockershim to send empty portMappings after upgrade. The workaround is to bind mount these directories by specifying extra_binds for kubelet service. See #2993.
+    - In clusters where cloud_provider is configured and either address or internal_address does not contain a valid IP address (e.g., hostname or FQDN), kube-proxy will fail to start. See #1725.
+  * Kubernetes Versions
+    - Each version of RKE has a specific list of supported Kubernetes versions. If you want to use a different version than listed below, you will need to update Kubernetes using the system images option in your cluster.yml.
+      - Kubernetes version
+        - v1.24.8-rancher1-1 (Default)
+        - v1.23.14-rancher1-1
+  * Experimental Kubernetes version
+    - N/A
+  * New Images in v1.24.6-rancher1-1 and v1.23.12-rancher1-1
+    - Updated Hyperkube Image based on k8s versions
+      - rancher/hyperkube:v1.24.8-rancher1
+      - rancher/hyperkube:v1.23.14-rancher1
+
+-------------------------------------------------------------------
 Tue Nov 15 09:57:47 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to version 1.4.0:
