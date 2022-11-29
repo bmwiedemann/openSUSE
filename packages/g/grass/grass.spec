@@ -1,7 +1,7 @@
 #
 # spec file for package grass
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,7 @@ BuildRequires:  python-wxWidgets-devel >= 3.0
 BuildRequires:  wxWidgets-devel >= 2.8
 %endif
 Name:           grass
-Version:        7.8.6
+Version:        7.8.7
 Release:        0
 Summary:        Geographic Resources Analysis Support System
 License:        GPL-2.0-or-later
