@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Nov 28 12:32:35 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Updtae to version 1.22.0:
+  * Officially support Python 3.11.
+  * PDFSurface.version_to_string(): Fix crash with negative
+    versions.
+  * typing: ImageSurface.get_stride() returns an int.
+  * typing: Fix incorrect interface for Matrix constructor.
+  * typing: Use Generic for Context.
+  * docs: some cairo.Context fixes.
+  * docs: try to make create_from_png/write_to_png more clear.
+  * docs: add an example for how to convert a surface to pillow.
+  * docs: cairo.Format.RGB24: document that unused bytes may be
+    overwritten.
+  * tests: don’t depend on specific ref counts.
+  * tests: compatibility fixes for cairo 1.17.6.
+- Drop f5a795ea.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Tue Sep 13 15:10:32 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.21.0:
