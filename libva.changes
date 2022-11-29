@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov 28 11:21:48 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Make sure make runs with verbose builds so we see the gcc
+  cmdlines 
+
+-------------------------------------------------------------------
+Mon Nov 28 11:17:51 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Added propagate-dpy.patch: (boo#1202828)
+  Patch taken from https://github.com/intel/libva/issues/479
+
+-------------------------------------------------------------------
 Mon Nov  7 12:52:38 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - needed for jira#PED-1174 (Video decoding/encoding support 
