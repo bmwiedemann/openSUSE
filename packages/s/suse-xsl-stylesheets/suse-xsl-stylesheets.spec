@@ -1,7 +1,7 @@
 #
 # spec file for package suse-xsl-stylesheets
 #
-# Copyright (c) 2022 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,105 +12,111 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-Name:           suse-xsl-stylesheets
-Version:        2.86.5
-Release:        0
 
 %define reponame          suse-xsl
 %define susexsl_catalog   catalog-for-%{name}.xml
 %define db_xml_dir        %{_datadir}/xml/docbook
 %define suse_styles_dir   %{db_xml_dir}/stylesheet
-
+#
+Name:           suse-xsl-stylesheets
+Version:        2.87.1
+Release:        0
 Summary:        SUSE-Branded Stylesheets for DocBook
-License:        GPL-2.0 or GPL-3.0
+License:        GPL-2.0-only OR GPL-3.0-only
 Group:          Productivity/Publishing/XML
-Url:            https://github.com/openSUSE/suse-xsl
+URL:            https://github.com/openSUSE/suse-xsl
 Source0:        %{reponame}-%{version}.tar.bz2
 Source2:        %{name}.rpmlintrc
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildArch:      noarch
-
+#
 BuildRequires:  docbook-xsl-stylesheets >= 1.77
 BuildRequires:  docbook5-xsl-stylesheets >= 1.77
 BuildRequires:  fdupes
-BuildRequires:  libxml2-tools
-BuildRequires:  libxslt
-BuildRequires:  make
 BuildRequires:  fontpackages-devel
+BuildRequires:  libxml2-tools
+BuildRequires:  libxslt-tools
+BuildRequires:  make
 BuildRequires:  trang
-
-# docbook_4/docbook_5 are required to be able to transform DocBook documents
-# that use predefined DocBook entities.
+# DocBook schemas and stylesheets are required to be able to transform
+# DocBook documents.
+# DocBook4 is needed when documents use predefined DocBook entities.
 Requires:       docbook_4
 Requires:       docbook_5
 Requires:       docbook-xsl-stylesheets >= 1.77
 Requires:       docbook5-xsl-stylesheets >= 1.77
-Requires:       libxslt
+#
+Requires:       libxslt-tools
 Requires:       sgml-skel >= 0.7
 Requires(post): sgml-skel >= 0.7
 Requires(postun): sgml-skel >= 0.7
-
-
+#
+#
 # FONTS
-
+# "Default" fonts for suse2022 stylesheets
+Requires:       dejavu-fonts
+Requires:       google-opensans-fonts
+Requires:       google-poppins-fonts
+Requires:       sil-charis-fonts
+#
 # Western fallback: currently necessary for building with XEP, it seems.
 Requires:       ghostscript-fonts-std
+#
 # Western fallback 2: These should make the Ghostscript fonts unnecessary.
 Requires:       gnu-free-fonts
-# "Generic" font for use in cases where we don't want one of the gnu-free-fonts
-Requires:       dejavu-fonts
-
-# FONTS USED IN "suse" (aka "suse2005") STYLESHEETS
-# Proprietary Western:
-Recommends:     agfa-fonts
-# Fallback for proprietary Western:
-Requires:       liberation-fonts
-
-# Japanese:
-Requires:       sazanami-fonts
-# Korean:
-Requires:       un-fonts
-# Chinese:
-Requires:       wqy-microhei-fonts
-
-# FONTS USED IN "suse2013"/"opensuse2013"/"daps2013/"suse2021" STYLESHEETS
-# Western fonts:
-Requires:       google-opensans-fonts
-Requires:       sil-charis-fonts
-# Monospace -- dejavu-fonts, already required
-# Western fonts fallback -- gnu-free-fonts, already required
-# Chinese simplified -- wqy-microhei-fonts, already required
-# Chinese traditional:
-Requires:       arphic-uming-fonts
-# Japanese:
-Requires:       ipa-pgothic-fonts
-Requires:       ipa-pmincho-fonts
-# Korean -- un-fonts, already required
+#
 # Arabic:
 Requires:       arabic-amiri-fonts
-
-# FONTS NOT YET(!) USED IN "suse2022" STYLESHEETS
-# Western
-Recommends:     google-poppins-fonts
-
+#
+# Japanese (regular/bold):
+Requires:       google-noto-sans-jp-bold-fonts
+Requires:       google-noto-sans-jp-regular-fonts
+#
+# Korean (regular/bold):
+Requires:       google-noto-sans-kr-bold-fonts
+Requires:       google-noto-sans-kr-regular-fonts
+#
+# Chinese, simplified  (regular/bold):
+Requires:       google-noto-sans-sc-bold-fonts
+Requires:       google-noto-sans-sc-regular-fonts
+#
+# Chinese, traditional (regular/bold):
+Requires:       google-noto-sans-tc-bold-fonts
+Requires:       google-noto-sans-tc-regular-fonts
+#
+#
+# Fonts for older stylesheets variants
+# We use a very weak relationship as these fonts shouldn't be really
+# used anymore (or needed, unless you need to build with older suse variants)
+#
+# Proprietary Western:
+Suggests:       agfa-fonts
+# Chinese traditional:
+Suggests:       arphic-uming-fonts
+# Fallback for proprietary Western:
+Suggests:       liberation-fonts
+# Japanese:
+Suggests:       sazanami-fonts
+Suggests:       ipa-pgothic-fonts
+Suggests:       ipa-pmincho-fonts
+# Korean:
+Suggests:       un-fonts
+# Chinese
+Suggests:       wqy-microhei-fonts
+#
+BuildArch:      noarch
 
 %description
 These are SUSE-branded XSLT 1.0 stylesheets for DocBook 4 and 5 that are be used
 to create the HTML, PDF, and EPUB versions of SUSE documentation. These
 stylesheets are based on the original DocBook XSLT 1.0 stylesheets.
 
-
 %prep
-%setup -q -n %{reponame}-%{version}
-
+%autosetup -p1 -n %{reponame}-%{version}
 
 %build
-%__make %{?_smp_mflags}
-
+%make_build
 
 %install
 make install DESTDIR=%{buildroot} LIBDIR=%{_libdir}
@@ -138,7 +144,6 @@ update-xml-catalog
 %reconfigure_fonts_post
 exit 0
 
-
 %postun
 update-xml-catalog
 
@@ -151,13 +156,10 @@ fi
 
 exit 0
 
-
 %posttrans
 %reconfigure_fonts_posttrans
 
-
 %files
-%defattr(-,root,root)
 
 # directories
 %dir %{suse_styles_dir}
@@ -171,6 +173,7 @@ exit 0
 %dir %{suse_styles_dir}/opensuse2013-ns
 %dir %{suse_styles_dir}/suse2021-ns
 %dir %{suse_styles_dir}/suse2022-ns
+%dir %{suse_styles_dir}/sbp
 
 %dir %{_ttfontsdir}
 
@@ -187,6 +190,7 @@ exit 0
 %{suse_styles_dir}/opensuse2013-ns/*
 %{suse_styles_dir}/suse2021-ns/*
 %{suse_styles_dir}/suse2022-ns/*
+%{suse_styles_dir}/sbp/*
 
 # catalogs
 %config %{_sysconfdir}/xml/catalog.d/%{name}.xml
@@ -196,6 +200,5 @@ exit 0
 
 # documentation
 %doc %{_defaultdocdir}/%{name}/*
-
 
 %changelog

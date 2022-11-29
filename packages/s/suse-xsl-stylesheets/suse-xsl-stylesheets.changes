@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Nov 28 15:31:59 UTC 2022 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.87.1
+
+- Update 2.87.1
+  - SBP: Add missing VERSION/VERSION.xsl
+  - Add missing sbp directory in Makefile
+  - Fix typo of --precision option
+  - Fix #513: Correct SBP stylesheets
+    - Fix broken PDF generation in `fo:block-container`
+    - Add date and localized date key to FO/XHTML
+    - Fix author alignment in XHTML
+    - SBP(FO,XHTML): Group author elements
+      - Group author, editor, and othercredit into an authorgroup
+        and apply the authorgroup template (use exsl:node-set() function)
+      - Make article.titlepage.recto the last template
+- Spec changes
+  - Remove SBP-VERSION as it is now included in the tar archive
+  - Remove the patches and Makefile in 2.87.0 as it is also included now
+    in the tar archive
+  - Run spec-cleaner v1.2.1
+  - Require libxslt-tools instead of libxslt (we need xsltproc)
+
+-------------------------------------------------------------------
+Mon Nov 23 11:00:00 UTC 2022 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.87.0
+
+- Update 2.87.0
+  - Fix #505: Add CJK fonts NotoSans
+  - Fix #507: Create SBP stylesheets
+  - Fix #508: For de, change "Prozedur" -> "Vorgehen"
+
+- Spec file adapted fonts:
+  - Requires now google-noto-sans-{jp,kr,sc,tc}-{regular,bold}-fonts
+  - Suggests fonts for older stylesheet variants:
+    agfa-fonts, liberation-fonts, sazanami-fonts, ipa-pgothic-fonts,
+    ipa-pmincho-fonts, un-fonts, wqy-microhei-fonts, arphic-uming-fonts
+  - Add Makefile and SBP-VERSION as (temporary) sources which weren't
+    included in the source archive
+  - Add patch 0001-SBP-Include-VERSION.xsl.patch to include VERSION.xsl
+    in fo and xhtml
+
+-------------------------------------------------------------------
 Fri Oct 28 06:19:00 UTC 2022 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.86.5
 
 - Update 2.86.5
