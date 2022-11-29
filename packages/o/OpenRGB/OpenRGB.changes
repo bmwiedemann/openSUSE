@@ -1,4 +1,145 @@
 -------------------------------------------------------------------
+Mon Nov 28 09:31:08 UTC 2022 - Michael Gumsley <gumsley_6@hotmail.com>
+
+- OpenSUSE Build:
+  * Re-enable LTO flags.
+  * Drop OpenRGB-fix_return_in_nonvoid.patch due to upstream merge.
+  * Refresh OpenRGB-use_system_libs.patch.
+  * Modify OpenRGB.spec to support auto-translation and auto-udev generation.
+
+- Update to 0.8
+  New Features:
+  * Translation support
+    + Automatically detect language from OS or manually select in settings
+  * UI cleanup, frames around UI elements
+  * Automatic udev rules generation
+  * Improved AMD ADL I2C driver to support more AMD GPUs on Windows
+  * Option to enable SMBus mutex in Windows for compatibility with other 
+    hardware management and RGB software that accesses SMBus.
+  * (Windows) Switched from inpout32 to WinRing0 low level access library.
+  * More Intel chipsets added to Intel SMBus detection
+  * New Device Support:
+    + Many additional GPUs added to existing GPU controllers:
+    + ASUS Aura GPU (Legacy)
+    + ASUS Aura GPU (ENE)
+    + Gigabyte RGB Fusion v1
+    + Gigabyte RGB Fusion v2
+    + EVGA GPU
+    + MSI GPU
+    + Gainward GPU
+    + Palit/PNY GPU
+  * New GPU controllers:
+    + NVIDIA Illumination (FE cards, Windows only)
+    + Colorful GPU
+  * MSI-RGB controller improvements:
+    + Additional motherboards added
+  * MSI Mystic Light controller improvements:
+    + Additional motherboards added
+    + Per-LED Direct mode on compatible boards
+    + More modes re-enabled
+  * Razer controller improvements:
+    + Additional devices added
+    + Improved keymaps, unused slots no longer show as an LED
+  * SteelSeries controller improvements:
+    + Additional devices added
+    + Firmware version request
+    + Improved keymaps
+  * Logitech controller improvements:
+    + Additional devices added
+    + Improved keymaps
+  * ASUS Peripheral controller improvements:
+    + Additional devices added
+  * Trust support
+    + Controller for Trust devices
+  * ZET GAMING
+    + Edge Air Pro
+    + Fury Pro
+  * NZXT Hue 2 controller improvements:
+    + Additional modes added
+  * LIFX support
+    + Controller for LIFX bulbs
+    + Tab in Settings to configure LIFX devices
+  * Zalman Z-SYNC re-enabled
+    + WARNING: Corruption issues are still possible, but also possible
+      with OEM software. Recommend using Direct mode only.
+    + Firmware detection improved
+  * NVIDIA ESA controller
+  * Lexip gaming mouse controller
+  * Keychron controller (non-QMK)
+  * Gigabyte/Aorus RGB DRAM controller
+  * Cougar device controller
+  * Acer Monitor controller
+  * Corsair Peripheral controller improvements:
+    + Additional devices added
+  * Roccat controller improvements:
+    + Additional devices added
+  * E1.31 controller improvements:
+    + Add grouping for unicast controllers on the same IP address
+  * Thermaltake Riing Quad additional devices added
+  * Cooler Master controller improvements:
+    + Additional devices added
+  * EVGA Peripheral controller improvements:
+    + Additional devices added
+  * Nanoleaf support
+    + Controller for Nanoleaf panels
+    + All panel types should be supported
+    + Tab in Settings to configure Nanoleaf devices
+  * ASRock Polychrome controller improvements:
+    + Additional motherboards added
+    + Improved speed settings for modes
+  * Dark Project KD3B keyboard support
+  * Patriot Viper DRAM improvements:
+    + Proper Direct mode support fixes flickering
+    + Multiple sticks sync in effects modes
+  * ViewSonic support for some monitor RGB strips
+  * Patriot Viper Steel DRAM support
+  * HyperX Peripheral controller improvements:
+    + Additional devices added
+  * AMD Wraith Prism controller improvements:
+    + Now supports per-LED control on the ring zone
+  * Intel Arc A770 Limited Edition support (Direct mode only)
+  * Sony DualSense controller
+  * SRGBMods Raspberry Pi Pico controller
+  * Wooting controller improvements:
+    + Additional devices added
+  * Elgato Keylight support
+    + Controller for Elgato Keylight
+    + Tab in Settings to configure Keylight devices
+  * Basic I2C protocol for Arduino-controlled ARGB over I2C
+
+  Bug Fixes:
+
+  * Fixed inverted brightness handling in the UI
+  * Sinowealth keyboard controller has been disabled due to bricking 
+    issues with certain Redragon keyboards due to USB PID/VID reuse.
+
+  Known Issues:
+
+  * Some NVIDIA GPU controllers may not work on Linux due to issues 
+    with NVIDIA's proprietary driver. The latest beta version of
+    the driver should have a fix.
+    + ASUS Aura 3xxx (ENE) GPUs
+    + EVGA 3xxx GPUs
+  * Redragon M711 wave effect doesn't work
+  * Some Corsair mice do not have specific LED labels
+  * Some Razer keyboards are missing key maps
+  * Asus Addressable number of channels may be incorrect
+
+  Notes:
+
+  Due to changes in device names, existing profiles you have saved from
+  previous versions may not work and will need to be recreated. Same
+  goes for saved addressable controller sizes. If upgrading from a release
+  prior to OpenRGB 0.6, it is recommended to disable OpenRazer or
+  OpenRazer-win32 in the settings. This allows use of the new Razer
+  controller with better device support. Due to plugin versioning change,
+  you may have to delete your old plugins manually before OpenRGB will
+  install new ones. To do this, go to the Settings tab, under General
+  Settings click Open Settings Folder. Close OpenRGB, then delete the
+  plugins folder in this directory. Reopen OpenRGB and you can install
+  new plugins from the settings tab.
+  
+-------------------------------------------------------------------
 Wed Jan  5 03:42:47 UTC 2022 - Michael Gumsley <gumsley_6@hotmail.com>
 
 - Disable link time optimization as this causes a segfault during 

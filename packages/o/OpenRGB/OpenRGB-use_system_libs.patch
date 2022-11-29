@@ -1,16 +1,16 @@
-Index: OpenRGB-release_0.7/OpenRGB.pro
+Index: OpenRGB-release_0.8/OpenRGB.pro
 ===================================================================
---- OpenRGB-release_0.7.orig/OpenRGB.pro
-+++ OpenRGB-release_0.7/OpenRGB.pro
-@@ -62,7 +62,6 @@ INCLUDEPATH +=
-     dependencies/hueplusplus-1.0.0/include                                                      \
+--- OpenRGB-release_0.8.orig/OpenRGB.pro
++++ OpenRGB-release_0.8/OpenRGB.pro
+@@ -63,7 +63,6 @@ INCLUDEPATH +=
      dependencies/hueplusplus-1.0.0/include/hueplusplus                                          \
+     dependencies/httplib                                                                        \
      dependencies/json/                                                                          \
 -    dependencies/libe131/src/                                                                   \
      dependencies/libcmmk/include/                                                               \
+     dependencies/mdns                                                                           \
      i2c_smbus/                                                                                  \
-     i2c_tools/                                                                                  \
-@@ -522,7 +521,6 @@ SOURCES +=
+@@ -604,7 +603,6 @@ SOURCES +=
      dependencies/hueplusplus-1.0.0/src/UPnP.cpp                                                 \
      dependencies/hueplusplus-1.0.0/src/Utils.cpp                                                \
      dependencies/hueplusplus-1.0.0/src/ZLLSensors.cpp                                           \
@@ -18,7 +18,7 @@ Index: OpenRGB-release_0.7/OpenRGB.pro
      dependencies/libcmmk/src/libcmmk.c                                                          \
      main.cpp                                                                                    \
      cli.cpp                                                                                     \
-@@ -1188,6 +1186,7 @@ unix:!macx {
+@@ -1373,6 +1371,7 @@ contains(QMAKE_PLATFORM, linux) {
      -lmbedx509                                                                                  \
      -lmbedtls                                                                                   \
      -lmbedcrypto                                                                                \

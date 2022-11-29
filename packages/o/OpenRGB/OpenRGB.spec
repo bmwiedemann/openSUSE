@@ -15,9 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
 Name:           OpenRGB
-Version:        0.7
+Version:        0.8
 Release:        0
 Summary:        Open source RGB lighting control
 License:        GPL-2.0-only
@@ -25,8 +24,6 @@ URL:            https://gitlab.com/CalcProgrammer1/OpenRGB
 Source0:        https://gitlab.com/CalcProgrammer1/OpenRGB/-/archive/release_%{version}/OpenRGB-release_%{version}.tar.gz
 # PATCH-FEATURE-OPENSUSE OpenRGB-use_system_libs.patch
 Patch1:         OpenRGB-use_system_libs.patch
-# PATCH-FIX-OPENSUSE OpenRGB-fix_return_in_nonvoid.patch
-Patch4:         OpenRGB-fix_return_in_nonvoid.patch
 BuildRequires:  gcc-c++
 BuildRequires:  mbedtls-devel
 BuildRequires:  update-desktop-files
@@ -35,6 +32,8 @@ BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(gusb)
 BuildRequires:  pkgconfig(hidapi-hidraw)
 BuildRequires:  pkgconfig(libe131)
+BuildRequires:  libqt5-linguist
+BuildRequires:  libqt5-linguist-devel
 
 %description
 The purpose of this tool is to control RGB lights on different peripherals.
@@ -44,9 +43,10 @@ Accessing the SMBus is a potentially dangerous operation, so exercise caution.
 %autosetup -p1 -n %{name}-release_%{version}
 
 %build
-%define _lto_cflags %{nil}
-%qmake5
+%qmake5 QMAKE_CXXFLAGS+=-save-temps
 %make_build
+
+./scripts/build-udev-rules.sh $(pwd)
 
 %install
 install -Dpm0755 openrgb %{buildroot}/%{_bindir}/openrgb
