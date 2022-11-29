@@ -1,0 +1,29 @@
+From: Jiri Slaby <jslaby@suse.cz>
+Date: Tue, 22 Nov 2022 09:48:08 +0100
+Subject: strtod: fix __strtofpmax()
+Patch-mainline: no
+References: build fix
+
+libc/stdlib/_strtod.c:237:10: error: incompatible pointer to integer conversion initializing 'wchar_t' (aka 'int') with an expression of type 'const char *'
+
+The variable referenced should be decimal_point_wc, not decimal_point.
+---
+ libc/stdlib/_strtod.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libc/stdlib/_strtod.c b/libc/stdlib/_strtod.c
+index 219d0d05..d65c4b66 100644
+--- a/libc/stdlib/_strtod.c
++++ b/libc/stdlib/_strtod.c
+@@ -234,7 +234,7 @@ __fpmax_t attribute_hidden __XL_NPP(__strtofpmax)(const Wchar *str, Wchar **endp
+ #endif
+ #ifdef __UCLIBC_HAS_LOCALE__
+ #if defined(L___wcstofpmax) || defined(L___wcstofpmax_l)
+-	wchar_t decpt_wc = __LOCALE_PTR->decimal_point;
++	wchar_t decpt_wc = __LOCALE_PTR->decimal_point_wc;
+ #else
+ 	const char *decpt = __LOCALE_PTR->decimal_point;
+ 	int decpt_len = __LOCALE_PTR->decimal_point_len;
+-- 
+2.35.3
+

@@ -30,6 +30,7 @@ Source1:        %{name}-rpmlintrc
 Source2:        uClibc-locale-030818.tgz
 Patch0:         extra-locale-Makefile-don-t-always-require-curl-wget.patch
 Patch1:         proper-compiler-flags-check.patch
+Patch2:         0001-strtod-fix-__strtofpmax.patch
 BuildRequires:  clang%{llvm_version}
 BuildRequires:  llvm%{llvm_version}-devel
 BuildRequires:  make

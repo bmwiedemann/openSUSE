@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 22 08:50:37 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
+
+- add 0001-strtod-fix-__strtofpmax.patch (build fix w/ LLVM 15)
+
+-------------------------------------------------------------------
 Tue Sep  6 09:20:10 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
 
 - Switch to LLVM 14.
