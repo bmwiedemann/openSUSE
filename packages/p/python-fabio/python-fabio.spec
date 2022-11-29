@@ -18,7 +18,6 @@
 
 %define packagename fabio
 %define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-fabio
 Version:        0.14.0
 Release:        0
@@ -34,7 +33,6 @@ BuildRequires:  %{python_module numpy >= 1.19.1}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module qt5}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Pillow
@@ -42,7 +40,6 @@ Requires:       python-h5py
 Requires:       python-lxml
 Requires:       python-numpy >= 1.19.1
 Requires:       python-qt5
-Requires:       python-six
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 # This package does not support 32 bit arch.
@@ -89,7 +86,7 @@ $python ./run_tests.py --installed -v
 %python_alternative %{_bindir}/fabio_viewer
 %python_alternative %{_bindir}/eiger2cbf
 %python_alternative %{_bindir}/eiger2crysalis
-%{python_sitearch}/*egg-info
 %{python_sitearch}/%{packagename}
+%{python_sitearch}/%{packagename}-%{version}*-info
 
 %changelog
