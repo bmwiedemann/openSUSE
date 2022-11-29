@@ -25,7 +25,7 @@
 %global __requires_exclude qmlimport\\((Shotcut\\.Controls|org\\.shotcut\\.qml).*
 
 Name:           shotcut
-Version:        22.10.25
+Version:        22.11.25
 Release:        0
 # This package creates a build time version from the current date and uses it to check
 # for updates. See patch1 and prep/build section. For reproducible builds.

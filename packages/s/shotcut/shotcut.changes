@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Nov 28 10:25:19 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 22.11.25:
+  * Fixed including sub-project with Open MLT XML as Clip breaks
+    the project.
+  * Fixed custom transition preview in Properties degrades quality
+    and accuracy of the transition preview in the player.
+  * Fixed memory leak in the transition Properties and
+    Slideshow Generator previews.
+  * Fixed crash when using the --appdata command line option.
+  * Fixed dragging multiple selection in Timeline does not show
+    all selected clips.
+  * Fixed huge memory consumption when using certain filters
+    before keyframes on the Size, Position & Rotate filter:
+    Corner Pin, Mask: Simple Shape.
+  * Fixed updating the filter UI value when deleting a keyframe.
+  * Improved sound quality of Pitch compensation and
+    Pitch audio filter.
+  * Added Reset on discontinuity option to the Normalize:
+    One Pass audio filter
+
+-------------------------------------------------------------------
 Sat Nov  5 14:58:07 UTC 2022 - Dave Plater <davejplater@gmail.com>
 
 - Update to 22.10.25
