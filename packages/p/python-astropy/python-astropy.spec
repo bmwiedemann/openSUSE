@@ -53,8 +53,6 @@
                       %{?unbundle_expat} \
                       %{?unbundle_wcs}
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define         skip_python2 1
 Name:           python-astropy%{psuffix}
 Version:        5.1.1
 Release:        0
