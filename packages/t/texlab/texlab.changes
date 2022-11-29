@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov 21 21:22:56 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 4.3.2:
+  * Do not try to run the TeX engine on package files and fail the build instead
+  * Handle URIs with URL-encoded drive letters on Windows
+  * Parse BibTeX entries with unbalanced quotes correctly
+  * Provide completion for more acronym commands
+  * Fix parsing acronym definitions
+
+-------------------------------------------------------------------
 Sun Oct 30 10:06:49 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 4.3.1:
