@@ -1,0 +1,6 @@
+<services>
+  <service name="cargo_vendor" mode="disabled">
+    <param name="srcdir">hexyl-0.10.0</param>
+  </service>
+</services>
+
