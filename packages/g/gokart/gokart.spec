@@ -17,17 +17,20 @@
 
 
 Name:           gokart
-Version:        0.4.0
+Version:        0.5.1
 Release:        0
 Summary:        Static analysis tool for securing Go code
 License:        Apache-2.0
 URL:            https://github.com/praetorian-inc/gokart
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.16
-Requires:       go >= 1.16
+BuildRequires:  golang-packaging
+BuildRequires:  golang(API) >= 1.19
+Requires:       go >= 1.19
 ExcludeArch:    s390
 ExcludeArch:    %{ix86}
+# Make sure that the binary is not getting stripped.
+%{go_nostrip}
 
 %description
 GoKart is a static analysis tool for Go that finds vulnerabilities using the
