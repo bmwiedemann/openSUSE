@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 28 10:50:11 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove python_module macro definition
+- Remove python-six dependency
+- More specific python_sitelib in %files
+
+-------------------------------------------------------------------
 Fri Jan  7 03:47:57 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Skip Tumbleweed Python 3.6 incompatible with Django 4

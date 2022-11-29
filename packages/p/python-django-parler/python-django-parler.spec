@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-django-parler
@@ -31,12 +30,10 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django
-Requires:       python-six
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module django-polymorphic}
-BuildRequires:  %{python_module six}
 # /SECTION
 %python_subpackages
 
@@ -59,6 +56,7 @@ Simple Django model translations without nasty hacks, including admin integratio
 %files %{python_files}
 %doc AUTHORS CHANGES.rst README.rst docs/*.rst docs/*/*.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/parler
+%{python_sitelib}/django_parler-%{version}*-info
 
 %changelog
