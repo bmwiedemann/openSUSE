@@ -20,14 +20,12 @@
 %define skip_python2 1
 %define         oldpython python
 Name:           python-pycairo
-Version:        1.21.0
+Version:        1.22.0
 Release:        0
 Summary:        Python Bindings for Cairo
 License:        LGPL-2.1-or-later OR MPL-1.1
 URL:            https://github.com/pygobject/pycairo
 Source:         %{url}/releases/download/v%{version}/pycairo-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM f5a795ea.patch -- Some test improvements for cairo 1.17.6
-Patch:          %{url}/commit/f5a795ea.patch
 
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
