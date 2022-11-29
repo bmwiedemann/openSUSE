@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Nov 28 21:05:43 UTC 2022 - Stephane Thiell <sthiell@stanford.edu>
+
+- Update to upstream release 1.9:
+    * clush: add --mode support with sudo and sshpass examples
+    * clush: add options '--outdir=OUTDIR' and '--errdir=ERRDIR'
+    * clush: always close stdin stream of worker when it is not used
+    * clush: use daemon attribute instead of deprecated setDaemon()
+    * slurm.conf.example: filter out more Slurm node state flags
+    * NodeSet: add special notation @@source to expand group names
+    * RangeSet: nD folding optimization
+    * RangeSet: support ranges with zero padding of mixed lengths
+    * RangeSet: add explicit intiter() method to iterate over integers
+    * EngineClient: EnginePort improvements, add event ev_port_start()
+    * Tree: fix start and bufferize early writes
+    * Tree: fix error with intermediate gateways
+    * Defaults: Introduce CLUSTERSHELL_CFGDIR
+    * Fix for python-3.10
+    * Worker: deprecate old EventHandler method signatures
+    * Worker: remove old last_*() methods 
+
+-------------------------------------------------------------------
 Wed May 18 06:06:55 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Prepare for Python 3.10 by correcting sitelib install paths. 

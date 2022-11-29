@@ -2,7 +2,7 @@
 # spec file for package clustershell
 #
 # Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2021 Stephane Thiell <sthiell@stanford.edu>
+# Copyright (c) 2022 Stephane Thiell <sthiell@stanford.edu>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,32 +22,27 @@
 %{!?__python: %global __python python}
 %{!?__python2: %global __python2 %{__python}}
 
-%if 0%{?fedora} >= 22
+%if 0%{?sle_version} && 0%{?sle_version} < 150400
+%define py2 1
+%endif
+
+%if 0%{?suse_version} >= 1500
 %{!?python2_pkgversion: %global python2_pkgversion 2}
 %global python2_pkgprefix python%{python2_pkgversion}
 %else
 %global python2_pkgprefix python
 %endif
 
-%if 0%{?rhel}
-%{!?python3_pkgversion: %global python3_pkgversion 34}
-%else
 %{!?python3_pkgversion: %global python3_pkgversion 3}
-%endif
 %global python3_pkgprefix python%{python3_pkgversion}
 
-# Undefined in SUSE
 %{!?__python3: %global __python3 python3}
 %{!?python3_shortver: %global python3_shortver %(%{__python3} -c 'import sys; print(str(sys.version_info.major) + "." + str(sys.version_info.minor))')}
-
-%if 0%{?rhel} < 8 &&  0%{?suse_version} <= 1500
-%define py2 1
-%endif
 
 %global srcname ClusterShell
 
 Name:           clustershell
-Version:        1.8.4
+Version:        1.9
 Release:        1%{?dist}
 Summary:        Python framework for efficient cluster administration
 License:        LGPL-2.1-or-later
@@ -61,17 +56,9 @@ Requires:       python2-%{name} = %{version}-%{release}
 %else
 Requires:       python3-%{name} = %{version}-%{release}
 %endif
-%if 0%{?rhel} >= 7 || 0%{?fedora}
-Requires:       vim-filesystem
-%else
-%if 0%{?suse_version}
 Requires:       vim
 BuildRequires:  fdupes
 BuildRequires:  vim
-%else
-Requires:       vim-common
-%endif
-%endif
 Provides:       vim-clustershell = %{version}-%{release}
 Obsoletes:      vim-clustershell < 1.7.81-4
 
@@ -138,12 +125,6 @@ popd
 # move config dir away from default setuptools /usr prefix (if rpm-building as user)
 [ -d %{buildroot}/usr/etc ] && mv %{buildroot}/usr/etc %{buildroot}/%{_sysconfdir}
 
-%if 0%{?rhel} && 0%{?rhel} <= 6
-# old versions of rpm (el5 and el6) requires that a file/link exists in buildroot
-# even when ghosted, but it is not installed at the end...
-ln -s conf/groups.d/local.cfg %{buildroot}/%{_sysconfdir}/clustershell/groups
-%endif
-
 # man pages
 install -d %{buildroot}/%{_mandir}/{man1,man5}
 install -p -m 0644 doc/man/man1/clubak.1 %{buildroot}/%{_mandir}/man1/
@@ -154,29 +135,16 @@ install -p -m 0644 doc/man/man5/clush.conf.5 %{buildroot}/%{_mandir}/man5/
 install -p -m 0644 doc/man/man5/groups.conf.5 %{buildroot}/%{_mandir}/man5/
 
 # vim addons
-%if 0%{?suse_version}
 %define vimdatadir %{_datadir}/vim/site
-%else
-%define vimdatadir %{_datadir}/vim/vimfiles
-%endif
 
 install -d %{buildroot}/%{vimdatadir}/{ftdetect,syntax}
 install -p -m 0644 doc/extras/vim/ftdetect/clustershell.vim %{buildroot}/%{vimdatadir}/ftdetect/
 install -p -m 0644 doc/extras/vim/syntax/clushconf.vim %{buildroot}/%{vimdatadir}/syntax/
 install -p -m 0644 doc/extras/vim/syntax/groupsconf.vim %{buildroot}/%{vimdatadir}/syntax/
-%{?suse_version:%fdupes %{buildroot}}
+%fdupes %{buildroot}
 
-%if 0%{?rhel}
-%clean
-rm -rf %{buildroot}
-%endif
-
-# Unversioned python3 for rhel8
 %if 0%{?py2}
 %files -n python2-%{name}
-%if 0%{?rhel}
-%defattr(-,root,root,-)
-%endif
 %{_bindir}/clubak
 %{_bindir}/cluset
 %{_bindir}/clush
@@ -185,9 +153,6 @@ rm -rf %{buildroot}
 %{python2_sitelib}/ClusterShell-*-py?.?.egg-info
 
 %files -n %{python3_pkgprefix}-%{name}
-%if 0%{?rhel}
-%defattr(-,root,root,-)
-%endif
 %{_bindir}/clubak-%{python3_shortver}
 %{_bindir}/cluset-%{python3_shortver}
 %{_bindir}/clush-%{python3_shortver}
@@ -198,9 +163,6 @@ rm -rf %{buildroot}
 %else
 
 %files -n %{python3_pkgprefix}-%{name}
-%if 0%{?rhel}
-%defattr(-,root,root,-)
-%endif
 %{_bindir}/clubak
 %{_bindir}/cluset
 %{_bindir}/clush
@@ -210,9 +172,6 @@ rm -rf %{buildroot}
 %endif
 
 %files
-%if 0%{?rhel}
-%defattr(-,root,root,-)
-%endif
 %doc ChangeLog README.md
 %if 0%{?suse_version} >= 1500
 %license COPYING.LGPLv2.1
@@ -228,12 +187,15 @@ rm -rf %{buildroot}
 %{_mandir}/man5/clush.conf.5*
 %{_mandir}/man5/groups.conf.5*
 %dir %{_sysconfdir}/clustershell
+%dir %{_sysconfdir}/clustershell/clush.conf.d
 %dir %{_sysconfdir}/clustershell/groups.d
 %dir %{_sysconfdir}/clustershell/groups.conf.d
 %config(noreplace) %{_sysconfdir}/clustershell/clush.conf
 %config(noreplace) %{_sysconfdir}/clustershell/groups.conf
 %ghost %{_sysconfdir}/clustershell/groups
 %config(noreplace) %{_sysconfdir}/clustershell/groups.d/local.cfg
+%doc %{_sysconfdir}/clustershell/clush.conf.d/README
+%doc %{_sysconfdir}/clustershell/clush.conf.d/*.conf.example
 %doc %{_sysconfdir}/clustershell/groups.conf.d/README
 %doc %{_sysconfdir}/clustershell/groups.conf.d/*.conf.example
 %doc %{_sysconfdir}/clustershell/groups.d/README
