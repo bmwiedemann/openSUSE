@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov 28 09:10:30 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Drop fpie.patch, works as expected without
+
+-------------------------------------------------------------------
+Mon Nov 28 08:53:03 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Drop setgid bit on kdesud, no longer needed since 5.99.0
+
+-------------------------------------------------------------------
 Tue Nov  8 08:35:03 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.100.0

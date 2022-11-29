@@ -862,4 +862,12 @@
     <comment>KDE Frameworks 5.100.0 (forwarded request 1034604 from cgiboudeaux)</comment>
     <requestid>1035387</requestid>
   </revision>
+  <revision rev="109" vrev="2">
+    <srcmd5>81699ee201f04f736e6bce380dd53302</srcmd5>
+    <version>5.100.0</version>
+    <time>1669715544</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop fpie.patch, works as expected without (forwarded request 1038605 from favogt)</comment>
+    <requestid>1038620</requestid>
+  </revision>
 </revisionlist>
