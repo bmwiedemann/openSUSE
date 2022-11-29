@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov 18 14:34:25 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to version 3.5.0:
+  * Fix static code analysis warnings
+  * Fix lintian errors
+  * Move test program and related configs to /usr/lib
+  * Move contrib/configs/* to /etc
+  * Some code cleanup
+
+-------------------------------------------------------------------
 Mon Oct 10 18:22:08 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 3.4.8

@@ -19,7 +19,7 @@
 %define pkg_libname libaccel-config1
 %define src_name idxd-config-accel-config-v%{version}
 Name:           accel-config
-Version:        3.4.8
+Version:        3.5.0
 Release:        0
 Summary:        Configure accelerator subsystem devices
 License:        GPL-2.0-only
@@ -81,15 +81,13 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_bindir}/accel-config
 %{_mandir}/man1/accel-config*
 %dir %{_sysconfdir}/accel-config
-%config %{_sysconfdir}/accel-config/accel-config.conf.sample
-%dir %{_datadir}/accel-config
-%dir %{_datadir}/accel-config/contrib
-%dir %{_datadir}/accel-config/contrib/configs
-%{_datadir}/accel-config/contrib/configs/app_profile.conf
-%{_datadir}/accel-config/contrib/configs/net_profile.conf
-%{_datadir}/accel-config/contrib/configs/os_profile.conf
-%{_datadir}/accel-config/contrib/configs/profilenote.txt
-%{_datadir}/accel-config/contrib/configs/storage_profile.conf
+%dir %{_sysconfdir}/accel-config/contrib
+%dir %{_sysconfdir}/accel-config/contrib/configs
+%config %{_sysconfdir}/accel-config/contrib/configs/app_profile.conf
+%config %{_sysconfdir}/accel-config/contrib/configs/net_profile.conf
+%config %{_sysconfdir}/accel-config/contrib/configs/os_profile.conf
+%config %{_sysconfdir}/accel-config/contrib/configs/profilenote.txt
+%config %{_sysconfdir}/accel-config/contrib/configs/storage_profile.conf
 
 %files -n %{pkg_libname}
 %doc README.md
