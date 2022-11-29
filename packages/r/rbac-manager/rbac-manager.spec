@@ -18,7 +18,7 @@
 
 
 Name:           rbac-manager
-Version:        1.1.0
+Version:        1.4.2
 Release:        0
 Summary:        Kubernetes operator for easier RBAC management
 License:        Apache-2.0

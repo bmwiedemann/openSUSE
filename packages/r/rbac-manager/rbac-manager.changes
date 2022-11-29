@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov 28 11:57:10 UTC 2022 - alexandre.vicenzi@suse.com
+
+- Update to version 1.4.2:
+  * Updated dependencies
+  * Fix helm syntax (#325)
+  * Support automountServiceAccountToken in Service Accounts (#324)
+  * Allow empty subjects list (#323)
+  * Fix an issue where we don't return errors (#322)
+
+-------------------------------------------------------------------
 Fri Mar 25 16:23:00 UTC 2022 - alexandre.vicenzi@suse.com
 
 - Update to version 1.1.0:
