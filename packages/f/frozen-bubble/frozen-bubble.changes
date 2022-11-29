@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 28 18:20:04 UTC 2022 - Carsten Ziepke <kieltux@gmail.com>
+
+- Add BuildRequires SDL2 for openSUSE Leap, fix for building
+- Run spec-cleaner
+
+-------------------------------------------------------------------
 Mon Jun 18 14:50:18 UTC 2018 - opensuse@dstoecker.de
 
 - fix build for Tumbleweed (add silencebadsnprintfcheck.patch)

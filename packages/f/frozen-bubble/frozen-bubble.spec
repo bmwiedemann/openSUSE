@@ -1,7 +1,7 @@
 #
 # spec file for package frozen-bubble
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Puzzle with Bubbles
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Action/Arcade
-Url:            http://www.frozen-bubble.org/
+URL:            http://www.frozen-bubble.org/
 Source0:        http://www.frozen-bubble.org/data/frozen-bubble-2.2.1-beta1.tar.bz2
 Source1:        fb-server
 Source2:        fb-server.service
@@ -60,6 +60,10 @@ BuildRequires:  perl(Module::Build)
 BuildRequires:  perl(Tie::Simple)
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(systemd)
+# Fix for: Failed loading SDL2 library on openSUSE Leap
+%if 0%{?suse_version} <= 1500
+BuildRequires:  pkgconfig(sdl2)
+%endif
 Requires:       %{name}-server = %{version}
 Requires:       perl = %{perl_version}
 Requires:       perl-SDL >= 2.400
@@ -169,14 +173,6 @@ a $lang
 EOF
 fi
 
-%post
-%icon_theme_cache_post
-%desktop_database_post
-
-%postun
-%icon_theme_cache_postun
-%desktop_database_postun
-
 %postun server
 %service_del_postun frozen-bubble-server.service
 
@@ -187,7 +183,6 @@ fi
 %service_del_preun frozen-bubble-server.service
 
 %files
-%defattr(-, root, root)
 %license COPYING
 %doc AUTHORS README
 %dir %{perl_vendorarch}/Games
@@ -209,7 +204,6 @@ fi
 %{_datadir}/appdata/%{name}.appdata.xml
 
 %files server
-%defattr(-, root, root)
 %license COPYING
 %doc server/AUTHORS server/README* server/init/fb-server.conf
 %ghost %config(noreplace) %{_sysconfdir}/fb-server.conf
