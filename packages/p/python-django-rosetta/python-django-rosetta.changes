@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 28 12:10:58 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove python_module macro definition
+- More specific python_sitelib in %files
+- Remove python-six dependency
+- Fix path to memcached in %check
+
+-------------------------------------------------------------------
 Sun Dec 26 08:29:46 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v0.9.8
