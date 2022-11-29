@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Nov 26 19:19:19 UTC 2022 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Improve packaging
+  + add proj for datum presence for tests
+  + add cmake-full with tests_support (ctest)
+  + add bison, shapelib,OpenEXR,armadillo,qhull,libz4,pcre2
+    qhull,deflate are conditionnal(missing on Leap 15)
+  + cmake force non use of internal, force use of external libs
+    except lerc not packaged.
+  + Exclude more tests (remote,out-of-memory)
+
+-------------------------------------------------------------------
+Fri Nov 25 14:57:59 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Set bash-completion as noarch
+
+-------------------------------------------------------------------
+Fri Nov 25 11:11:55 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 3.6.0:
+  * https://github.com/OSGeo/gdal/blob/v3.6.0/gdal/NEWS.md
+  * Fixes boo#1205745
+- Skipped 3.5.0:
+  * https://github.com/OSGeo/gdal/blob/v3.5.0/gdal/NEWS.md
+  * Upstream dropped deprecated perl binding
+  * Drop unneeded patch:
+    - gdal-perl.patch
+
+-------------------------------------------------------------------
 Tue Mar 15 19:33:40 UTC 2022 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Update to version 3.4.2 bugfix release

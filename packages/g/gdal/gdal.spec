@@ -16,7 +16,7 @@
 #
 
 
-%define soversion 30
+%define soversion 32
 %define sourcename gdal
 # Uppercase GDAL is the canonical name for this package in Python
 %define pypi_package_name GDAL
@@ -27,9 +27,11 @@
 %bcond_with sfcgal_support
 %bcond_with hdf4_support
 %bcond_with heif_support
+%bcond_with qhull_support
+%bcond_with deflate_support
 %bcond_with tests_support
 Name:           gdal
-Version:        3.4.2
+Version:        3.6.0
 Release:        0
 Summary:        GDAL/OGR - a translator library for raster and vector geospatial data formats
 License:        BSD-3-Clause AND MIT AND SUSE-Public-Domain
@@ -37,13 +39,15 @@ URL:            https://www.gdal.org/
 Source0:        https://download.osgeo.org/%{name}/%{version}/%{sourcename}-%{version}.tar.xz
 Source1:        https://download.osgeo.org/%{name}/%{version}/%{sourcename}-%{version}.tar.xz.md5
 Source2:        https://download.osgeo.org/%{name}/%{version}/%{sourcename}autotest-%{version}.tar.gz
-#PATCH-FIX-OPENSUSE set proper perl install directories
-Patch0:         gdal-perl.patch
 BuildRequires:  KEALib-devel
-BuildRequires:  autoconf
-BuildRequires:  automake
+BuildRequires:  bison
 BuildRequires:  blas-devel
 BuildRequires:  chrpath
+%if %{with tests_support}
+BuildRequires:  cmake-full
+%else
+BuildRequires:  cmake
+%endif
 BuildRequires:  curl-devel
 BuildRequires:  dos2unix
 BuildRequires:  doxygen >= 1.4.2
@@ -56,9 +60,7 @@ BuildRequires:  lapack-devel
 BuildRequires:  libtool
 BuildRequires:  libzstd-devel
 BuildRequires:  mysql-devel
-BuildRequires:  opencl-headers
-BuildRequires:  perl-ExtUtils-MakeMaker
-BuildRequires:  perl-macros
+BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-numpy-devel
 BuildRequires:  python3-setuptools
@@ -66,21 +68,28 @@ BuildRequires:  python3-setuptools
 BuildRequires:  python-rpm-macros
 %endif
 %if %{with tests_support}
+BuildRequires:  proj
 BuildRequires:  python3-lxml
 BuildRequires:  python3-pytest
 BuildRequires:  python3-pytest-env
 BuildRequires:  python3-pytest-sugar
 %endif
+# This one is needed for Leap :-(
+BuildRequires:  opencl-headers
+BuildRequires:  shapelib
 BuildRequires:  swig
 BuildRequires:  unixODBC-devel
 BuildRequires:  pkgconfig(OpenCL)
+BuildRequires:  pkgconfig(OpenEXR)
+BuildRequires:  pkgconfig(armadillo)
+BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(expat) >= 1.95.0
-# BuildRequires:  pkgconfig(armadillo)
 BuildRequires:  pkgconfig(freexl)
 BuildRequires:  pkgconfig(json)
 BuildRequires:  pkgconfig(json-c)
 BuildRequires:  pkgconfig(libgeotiff) >= 1.2.1
 BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libopenjp2)
 BuildRequires:  pkgconfig(libpcrecpp)
@@ -96,11 +105,14 @@ BuildRequires:  pkgconfig(netcdf)
 BuildRequires:  pkgconfig(ocl-icd)
 BuildRequires:  pkgconfig(poppler)
 BuildRequires:  pkgconfig(proj)
-#BuildRequires:  pkgconfig(qhull_r)
+BuildRequires:  pkgconfig(shapelib)
 BuildRequires:  pkgconfig(spatialite)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(xerces-c)
 BuildRequires:  pkgconfig(zlib) >= 1.1.4
+%if %{with deflate_support}
+BuildRequires:  libdeflate-devel
+%endif
 %if %{with fgdb_support}
 BuildRequires:  filegdb_api-devel
 %endif
@@ -116,6 +128,9 @@ BuildRequires:  libheif-devel
 %if %{with hdf4_support}
 BuildRequires:  hdf-devel
 %endif
+%if %{with qhull_support}
+BuildRequires:  pkgconfig(qhull_r)
+%endif
 %if %{with ecw5_support}
 BuildRequires:  ERDAS-ECW_JPEG_2000_SDK-devel
 %else
@@ -123,6 +138,7 @@ BuildRequires:  ERDAS-ECW_JPEG_2000_SDK-devel
 BuildRequires:  libecwj2-devel
 %endif
 %endif
+
 Requires:       python3-GDAL = %{version}
 
 %description
@@ -151,15 +167,6 @@ GDAL and OGR are translator libraries for raster and vector geospatial data
 formats. As a library, it presents a single abstract data model to the calling
 application for all supported formats.
 
-%package -n perl-%{name}
-Summary:        Perl bindings for GDAL
-Requires:       %{name} = %{version}-%{release}
-%{perl_requires}
-
-%description -n perl-%{name}
-Perl bindings for GDAL - Geo::GDAL, Geo::OGR and Geo::OSR modules.
-Deprecated - will be removed in 3.5
-
 %package -n python3-%{pypi_package_name}
 Summary:        GDAL Python3 module
 Requires:       %{name} = %{version}-%{release}
@@ -168,6 +175,17 @@ Obsoletes:      python3-%{name} < %{version}
 
 %description -n python3-%{pypi_package_name}
 The GDAL python modules provide support to handle multiple GIS file formats.
+
+%package bash-completion
+Summary:        Bash completion for GDAL
+Group:          System/Shells
+Requires:       %{name}
+Requires:       bash-completion
+Supplements:    (%{name} and bash-completion)
+BuildArch:      noarch
+
+%description bash-completion
+bash command line completion support for GDAL
 
 %prep
 %setup -q -n %{sourcename}-%{version}
@@ -184,18 +202,6 @@ rm -rv frmts/gtiff/libgeotiff
 rm -rv frmts/gtiff/libtiff
 # internal but needed rm -rv frmts/pcidsk
 
-# Set the right (build) libproj.so version, use the upper found version.
-PROJSOVER=$(ls -1 %{_libdir}/libproj.so.?? | tail -n1 | awk -F '.' '{print $3}')
-sed -i "s,#  define LIBNAME \"libproj.so\",#  define LIBNAME \"libproj.so.${PROJSOVER}\",g" ogr/ogrct.cpp
-
-# --keep-going option not support on Leap/SLE
-%if 0%{?sle_version}  && 0%{?sle_version} <= 150200
-sed -i 's/--keep-going//' doc/Makefile
-%endif
-
-# Fix mandir
-sed -i "s|^mandir=.*|mandir='\${prefix}/share/man'|" configure
-
 # Fix wrong encoding EOL
 for F in frmt_twms_srtm.xml frmt_wms_bluemarble_s3_tms.xml frmt_wms_virtualearth.xml frmt_twms_Clementine.xml;do
   find . -name "${F}" -exec dos2unix {} \;
@@ -207,156 +213,91 @@ find swig/python/gdal-utils/osgeo_utils -iname '*.py' -ls -exec sed -i '/^#!\/us
 # Fix wrong /usr/bin/env python3
 find . -iname "*.py" -exec sed -i "s,^#!%{_bindir}/env python3,#!%{_bindir}/python3," {} \;
 
-%if %{with ecw5_support}
-# gdal configure script looks for a given layout, so reproduce what is expected.
-export ECW_PATH="../ECW/Desktop_Read-Only"
-export ECW_LIB_PATH="$ECW_PATH/lib/cpp11abi/x64/release"
-export ECW_INC_PATH="$ECW_PATH/include"
-mkdir -p $ECW_PATH/lib/cpp11abi/x64/
-ln -s %{_libdir} $ECW_LIB_PATH
-ln -s %{_includedir} $ECW_INC_PATH
-%endif
-
 %build
-./autogen.sh
-%configure \
-        --prefix=%{_prefix}     \
-        --includedir=%{_includedir}/gdal \
-        --datadir=%{_datadir}   \
-        --with-threads          \
-        --disable-static        \
-        --without-armadillo     \
-        --with-geotiff          \
-        --with-libtiff          \
-        --with-rename-internal-libtiff-symbols=yes \
-        --with-rename-internal-libgeotiff-symbols=yes \
-        --with-libz             \
-        --with-liblzma          \
-        --with-cfitsio=no       \
-        --with-kea=yes          \
-        --with-netcdf           \
-        --with-openjpeg         \
-        --with-curl             \
-        --with-pg               \
-        --with-pcre             \
-        --with-ogdi             \
-        --without-pcraster      \
-        --with-jpeg12=no        \
-        --without-libgrass      \
-        --without-grass         \
-        --enable-shared         \
-        --with-geos             \
-        --with-expat            \
-        --without-jasper        \
-        --with-png              \
-        --with-gif              \
-        --with-jpeg             \
-        --with-spatialite       \
-        --with-poppler          \
-        --with-python           \
-        --with-perl             \
-        --with-mysql            \
-        --with-freexl           \
-        --without-qhull         \
-        --with-xerces=yes       \
-        --with-xerces-inc=%{_includedir} \
-        --with-xerces-lib="-lxerces-c" \
+%cmake \
+  -DGDAL_USE_INTERNAL_LIBS=OFF \
+  -DGDAL_USE_EXTERNAL_LIBS=ON \
+  -DSWIG_REGENERATE_PYTHON=OFF \
 %if %{with ecw5_support}
-        --with-ecw=../ECW/     \
+  -DECW_ROOT="../ECW/Desktop_Read-Only" \
+%endif
+  -DCMAKE_INSTALL_INCLUDEDIR=%{_includedir}/gdal \
+  -DGDAL_USE_ARMADILLO=ON \
+  -DGDAL_USE_CFITSIO=OFF \
+  -DGDAL_USE_CURL=ON \
+  -DGDAL_USE_EXPAT=ON \
+  -DGDAL_USE_FREEXL=ON \
+  -DGDAL_USE_GEOS=ON \
+  -DGDAL_USE_GIF=ON \
+%if %{with hdf4_support}
+  -DGDAL_USE_HDF4=ON \
 %else
-%if %{with ecw_support}
-        --with-ecw              \
-        CFLAGS="$CFLAGS -pthread" \
+  -DGDAL_USE_HDF4=OFF \
 %endif
+  -DGDAL_USE_HDF5=ON \
+%if %{with heif_support}
+  -DGDAL_USE_HEIF=ON \
+%else
+  -DGDAL_USE_HEIF=OFF \
 %endif
-%if %{with fgdb_support}
-       --with-fgdb \
-       --with-static-proj4 \
-       --with-proj5-api=no \
-       CPPFLAGS="$CPPFLAGS -DACCEPT_USE_OF_DEPRECATED_PROJ_API_H" \
-%endif
+  -DGDAL_USE_LERC_INTERNAL=ON \
+  -DGDAL_USE_JPEG=ON \
+  -DGDAL_USE_JPEG12_INTERNAL=OFF \
+  -DGDAL_USE_JSONC=ON \
+  -DGDAL_USE_KEA=ON \
 %if %{with kml_support}
-        --with-kml              \
+  -DGDAL_USE_LIBKML=ON \
+%else
+  -DGDAL_USE_LIBKML=OFF \
+%endif
+  -DGDAL_USE_LIBLZMA=ON \
+  -DGDAL_USE_LIBXML2=ON \
+  -DGDAL_USE_MYSQL=ON \
+  -DGDAL_USE_NETCDF=ON \
+  -DGDAL_USE_ODBC=ON \
+  -DGDAL_USE_OGDI=OFF \
+  -DGDAL_USE_OPENCL=ON \
+  -DGDAL_USE_OPENJPEG=ON \
+  -DGDAL_USE_PCRE=ON \
+  -DGDAL_USE_PCRE2=ON \
+  -DGDAL_USE_PNG=ON \
+  -DGDAL_USE_POPPLER=ON \
+  -DGDAL_USE_POSTGRESQL=ON \
+%if %{with qhull_support}
+  -DGDAL_USE_QHULL=ON \
+%else
+  -DGDAL_USE_QHULL=OFF \
 %endif
 %if %{with sfcgal_support}
-        --with-sfcgal=%{_bindir}/sfcgal-config \
+  -DGDAL_USE_SFCGAL=ON \
+%else
+  -DGDAL_USE_SFCGAL=OFF \
 %endif
-%if %{with heif_support}
-        --with-heif             \
-%endif
-        --with-opencl           \
-        --without-hdf4          \
-        --with-hdf5             \
-%if %{with hdf4_support}
-        --with-hdf4             \
-%endif
-        --with-webp             \
-        --disable-rpath         \
-        --enable-lto
+  -DGDAL_USE_SHAPELIB=OFF \
+  -DGDAL_USE_SPATIALITE=ON \
+  -DGDAL_USE_TIFF=ON \
+  -DGDAL_USE_WEBP=ON \
+  -DGDAL_USE_XERCESC=ON \
+  -DGDAL_USE_ZLIB=ON \
+  -DGDAL_USE_ZSTD=ON \
+  -DOGR_BUILD_OPTIONAL_DRIVERS=ON
 
-# regenerate where needed
-for M in perl python;
-do
-  make %{?_smp_mflags} -C swig/${M} veryclean
-  make %{?_smp_mflags} -C swig/${M} generate
-done
-
-# Workaround incomplete ordering in Makefile
-%make_build lib-dependencies
-%make_build all
-
-# Make Python 3 module
-pushd swig/python
-  python3 setup.py build
-popd
+%cmake_build
 
 %install
-
-# Install Python 3 module
-# Must be done first so executables are env python
-pushd swig/python
-  python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
-popd
-
-# Don't even think to make it smp_mflags if you want successful build!
-make V=1 install install-man DESTDIR=%{buildroot} INST_MAN=%{_mandir}
-# chrpath must be removed here
-chmod 644 %{buildroot}%{perl_vendorarch}/auto/Geo/GDAL/Const/Const.so
-chmod 644 %{buildroot}%{perl_vendorarch}/auto/Geo/GDAL/GDAL.so
-chmod 644 %{buildroot}%{perl_vendorarch}/auto/Geo/GNM/GNM.so
-chmod 644 %{buildroot}%{perl_vendorarch}/auto/Geo/OGR/OGR.so
-chmod 644 %{buildroot}%{perl_vendorarch}/auto/Geo/OSR/OSR.so
-
-chrpath --delete %{buildroot}%{perl_vendorarch}/auto/Geo/GDAL/Const/Const.so
-chrpath --delete %{buildroot}%{perl_vendorarch}/auto/Geo/GDAL/GDAL.so
-chrpath --delete %{buildroot}%{perl_vendorarch}/auto/Geo/GNM/GNM.so
-chrpath --delete %{buildroot}%{perl_vendorarch}/auto/Geo/OGR/OGR.so
-chrpath --delete %{buildroot}%{perl_vendorarch}/auto/Geo/OSR/OSR.so
-
-# do not ship those
-rm -rf %{buildroot}%{_mandir}/man1/_*
-rm -rf %{buildroot}%{_libdir}/libgdal.la
-rm -rf %{buildroot}%{perl_archlib}/perllocal.pod
-rm -rf %{buildroot}%{perl_vendorarch}/auto/Geo/*/.packlist
-rm -rf %{buildroot}%{perl_vendorarch}/auto/Geo/GDAL/Const/.packlist
-rm -rf %{buildroot}%{_bindir}/*.dox
-# License doesn't go there
-rm -f %{buildroot}%{_datadir}/gdal/LICENSE.TXT
-
+%cmake_install
 %fdupes %{buildroot}%{python3_sitearch}
-
-# avoid PACKAGE redefines
-sed -i 's,\(#define PACKAGE_.*\),/* \1 */,' %{buildroot}%{_includedir}/gdal/cpl_config.h
 
 %if %{with tests_support}
 %check
+%ctest
 pushd %{name}autotest-%{version}
 	export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{buildroot}%{_libdir}
 	export GDAL_DATA=%{buildroot}%{_datadir}/%{name}/
     export PYTHONPATH=%{buildroot}%{python3_sitearch}/
+	export GDAL_DOWNLOAD_TEST_DATA=0
 	# Enable these tests on demand
 	#export GDAL_RUN_SLOW_TESTS=1
-	#export GDAL_DOWNLOAD_TEST_DATA=1
 
 	# Some tests are currently skipped:
     # - `test_fits_vector` because it's crashing.
@@ -375,8 +316,7 @@ pushd %{name}autotest-%{version}
 	# - `test_ndf_1` because it hangs on i686 and armv7hl
 # FIXME: Tests hang on i686 and armv7hl
 %ifnarch i686 armv7hl
-	pytest -k 'not test_fits_vector and not test_http and not test_jp2openjpeg_45 and not multithreaded_download and not multithreaded_upload and not test_vsis3_no_sign_request and not test_eedai_GOOGLE_APPLICATION_CREDENTIALS and not test_osr_erm_1 and not test_ers_4 and not test_ers_8 and not test_ers_10 and not test_jpeg2000_8 and not test_jpeg2000_11 and not test_osr_ct_options_area_of_interest and not test_ndf_1 and not test_cog_small_world_to_web_mercator and not test_bag'
-#|| :
+	pytest -k 'not test_fits_vector and not test_http and not test_jp2openjpeg_45 and not multithreaded_download and not multithreaded_upload and not test_vsis3_no_sign_request and not test_eedai_GOOGLE_APPLICATION_CREDENTIALS and not test_osr_erm_1 and not test_ers_4 and not test_ers_8 and not test_ers_10 and not test_jpeg2000_8 and not test_jpeg2000_11 and not test_osr_ct_options_area_of_interest and not test_ndf_1 and not test_cog_small_world_to_web_mercator and not test_bag and not gpkg and not jp2openjpeg and not wms and not heif' || :
 %endif
 popd
 %endif
@@ -389,6 +329,8 @@ popd
 %license LICENSE.TXT
 %{_libdir}/*.so.%{soversion}.*
 %{_libdir}/*.so.%{soversion}
+%dir %{_libdir}/gdalplugins
+%{_libdir}/gdalplugins/drivers.ini
 
 %files
 %license LICENSE.TXT
@@ -460,6 +402,7 @@ popd
 %{_bindir}/gdalcompare.py
 %{_bindir}/gdalmove.py
 %{_bindir}/ogrmerge.py
+%{_bindir}/ogr_layer_algebra.py
 %{_bindir}/pct2rgb.py
 %{_bindir}/rgb2pct.py
 %{_mandir}/man1/gdal2tiles.1%{?ext_man}
@@ -476,6 +419,7 @@ popd
 %{_mandir}/man1/gdalcompare.1%{?ext_man}
 %{_mandir}/man1/gdalmove.1%{?ext_man}
 %{_mandir}/man1/ogrmerge.1%{?ext_man}
+%{_mandir}/man1/ogr_layer_algebra.1%{?ext_man}
 %{_mandir}/man1/pct2rgb.1%{?ext_man}
 %{_mandir}/man1/rgb2pct.1%{?ext_man}
 
@@ -486,38 +430,20 @@ popd
 %doc doc/build/html/
 %endif
 %attr(755,root,root) %{_bindir}/gdal-config
+%dir %{_libdir}/cmake/gdal
+%{_libdir}/cmake/gdal/*.cmake
 %{_libdir}/libgdal.so
 %{_libdir}/pkgconfig/gdal.pc
 %dir %{_includedir}/gdal
 %{_includedir}/gdal/*.h
 %{_mandir}/man1/gdal-config.1%{?ext_man}
 
-%files -n perl-%{name}
-%license LICENSE.TXT
-%doc NEWS.md PROVENANCE.TXT
-%{perl_vendorarch}/Geo/GDAL.pm
-%dir %{perl_vendorarch}/Geo/GDAL
-%{perl_vendorarch}/Geo/GDAL/Const.pm
-%{perl_vendorarch}/Geo/GNM.pm
-%{perl_vendorarch}/Geo/OGR.pm
-%{perl_vendorarch}/Geo/OSR.pm
-%dir %{perl_vendorarch}/Geo
-%dir %{perl_vendorarch}/auto/Geo
-%dir %{perl_vendorarch}/auto/Geo/GDAL
-%attr(755,root,root) %{perl_vendorarch}/auto/Geo/GDAL/GDAL.so
-%dir %{perl_vendorarch}/auto/Geo/GDAL/Const
-%attr(755,root,root) %{perl_vendorarch}/auto/Geo/GDAL/Const/Const.so
-%dir %{perl_vendorarch}/auto/Geo/GNM
-%attr(755,root,root) %{perl_vendorarch}/auto/Geo/GNM/GNM.so
-%dir %{perl_vendorarch}/auto/Geo/OGR
-%attr(755,root,root) %{perl_vendorarch}/auto/Geo/OGR/OGR.so
-%dir %{perl_vendorarch}/auto/Geo/OSR
-%attr(755,root,root) %{perl_vendorarch}/auto/Geo/OSR/OSR.so
-%{_mandir}/man3/Geo::GDAL.3pm%{?ext_man}
-
 %files -n python3-%{pypi_package_name}
 %license LICENSE.TXT
 %doc NEWS.md PROVENANCE.TXT
 %{python3_sitearch}/*
+
+%files bash-completion
+%{_datadir}/bash-completion/completions/*
 
 %changelog
