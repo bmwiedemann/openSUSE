@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Nov 28 08:40:46 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.19.0+git.20221112:
+  * ci/build.sh: Enable parallel compilation
+  * ci: Fix the Appveyor Linux and Windows builds
+  * ci: Add ci/install.bat
+  * Add CodeQL workflow for GitHub code scanning
+  * test-tool: remove a redundant semicolon
+  * lib/scsi-lowlevel: Make the REPORT LUNS unmarshalling code more flexible
+  * Fix segmentation fault problem.
+  * Check return value of scsi_malloc in order to avoid dereferencing NULL return value.
+  * fix iscsi-ls parameter parse
+  * iscsi-swp: handle setting of debug_level correctly
+  * Update iscsi-dd.c
+  * iscsi-inq: handle setting of debug_level correctly
+  * Retain the immediate data param during login processing
+
+-------------------------------------------------------------------
 Wed Mar 16 13:26:08 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.19.0+git.20220303:
