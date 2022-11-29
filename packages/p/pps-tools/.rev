@@ -64,4 +64,22 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>872222</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fbddca2f79ba681b5d69e8870eb73f68</srcmd5>
+    <version>0.0.0+git.20211122</version>
+    <time>1669715577</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0.0+git.20211122:
+  * added README
+  * added way to add sysroot
+  * timepps: Ensure structs passed to kernel are zero initialized
+  * Makefile: fix installation to empty DESTDIR
+  * ppsfind: Use /bin/sh, fix possible issues.
+  * ppswatch: Fix quitting after signal
+  * Fix linking under -Wl,--as-needed
+  * Add ppsldisc from LKML patch by Rodolfo Giometti.
+  * Makefile: Cleanup CFLAGS: remove -I. add -fPIC.
+  * Removes OFFSETASSERT requirement from ppstest and ppsctl.</comment>
+    <requestid>1038815</requestid>
+  </revision>
 </revisionlist>

@@ -1,15 +1,15 @@
 <services>
-  <service mode="disabled" name="tar_scm">
+  <service mode="disabled" name="obs_scm">
     <param name="url">https://github.com/ago/pps-tools.git</param>
     <param name="scm">git</param>
-    <param name="exclude">.git</param>
     <param name="changesgenerate">enable</param>
     <param name="filename">pps-tools</param>
     <param name="versionformat">0.0.0+git.%cd</param>
   </service>
-  <service mode="disabled" name="recompress">
-    <param name="file">*.tar</param>
-    <param name="compression">xz</param>
-  </service>
   <service mode="disabled" name="set_version"/>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
 </services>

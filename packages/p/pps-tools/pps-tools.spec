@@ -1,7 +1,7 @@
 #
 # spec file for package pps-tools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,15 @@
 #
 
 
-%define version_unconverted 0.0.0+git.20181203
+%define version_unconverted 0.0.0+git.20211122
 Name:           pps-tools
-Version:        0.0.0+git.20181203
+Version:        0.0.0+git.20211122
 Release:        0
 Summary:        Userspace tools for the Linux Pulse Per Second subsystem
 License:        GPL-2.0-or-later
 Group:          Hardware/Other
 URL:            http://linuxpps.org
-Source:         %{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.gz
 Source1:        pps.rules
 Requires:       pps-udev
 
@@ -72,6 +72,7 @@ install -D -m0644 %{SOURCE1} %{buildroot}%{_udevrulesdir}/89-pps.rules
 %udev_rules_update
 
 %files
+%doc README.md
 %license COPYING
 %{_bindir}/ppsctl
 %{_bindir}/ppsfind

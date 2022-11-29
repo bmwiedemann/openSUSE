@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov 29 06:29:58 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.0.0+git.20211122:
+  * added README
+  * added way to add sysroot
+  * timepps: Ensure structs passed to kernel are zero initialized
+  * Makefile: fix installation to empty DESTDIR
+  * ppsfind: Use /bin/sh, fix possible issues.
+  * ppswatch: Fix quitting after signal
+  * Fix linking under -Wl,--as-needed
+  * Add ppsldisc from LKML patch by Rodolfo Giometti.
+  * Makefile: Cleanup CFLAGS: remove -I. add -fPIC.
+  * Removes OFFSETASSERT requirement from ppstest and ppsctl.
+
+-------------------------------------------------------------------
 Sat Jan  9 21:07:50 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Add subpackage pps-udev
