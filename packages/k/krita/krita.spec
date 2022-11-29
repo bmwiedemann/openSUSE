@@ -17,12 +17,17 @@
 
 
 %bcond_without released
+# Build fails on x86 and powerpc with xsimd (kde#462122)
+%ifnarch %ix86 ppc64 ppc64le
+%if 0%{?suse_version} > 1500 || (0%{?is_opensuse} && 0%{?sle_version} > 150400)
+%bcond_without xsimd
+%endif
+%endif
 Name:           krita
 Version:        5.1.3
 Release:        0
 Summary:        Digital Painting Application
 License:        BSD-2-Clause AND GPL-2.0-or-later AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later AND CC0-1.0 AND LGPL-2.0-only
-Group:          Productivity/Graphics/Bitmap Editors
 URL:            https://www.krita.org/
 Source0:        https://download.kde.org/stable/krita/%{version}/krita-%{version}.tar.xz
 %if %{with released}
@@ -86,6 +91,9 @@ BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5X11Extras)
 BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  cmake(QuaZip-Qt5)
+%if %{with xsimd}
+BuildRequires:  cmake(xsimd)
+%endif
 BuildRequires:  pkgconfig(OpenColorIO)
 # not in 15.5 yet
 %if 0%{?suse_version} > 1500
@@ -106,7 +114,6 @@ matte painters, as well as illustrations and comics.
 
 %package devel
 Summary:        Krita Build Environment
-Group:          Development/Libraries/KDE
 Requires:       %{name} = %{version}
 Requires:       cmake(Qt5Core)
 
@@ -119,17 +126,16 @@ Development headers and libraries for Krita.
 %autosetup -p1
 
 %build
-# install translations to %%{_kf5_localedir} so they don't clash with the krita translations in calligra-l10n (KDE4 based)
-# can probably be changed back to the standard location when calligra is KF5 based...
-%cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
-%make_jobs
+%cmake_kf5 -d build -- -DKRITA_ENABLE_PCH:BOOL=OFF
+
+%cmake_build
 
 %install
 %kf5_makeinstall -C build
-%suse_update_desktop_file -r org.kde.krita      Qt KDE Graphics RasterGraphics
-%if %{with released}
-%kf5_find_lang %{name}
-%endif
+
+%suse_update_desktop_file -r org.kde.krita Qt KDE Graphics RasterGraphics
+
+%find_lang %{name}
 
 chmod -x %{buildroot}%{_kf5_applicationsdir}/*.desktop
 
@@ -174,8 +180,6 @@ sed -i "/#!\/usr\/bin\/env/d" %{buildroot}%{_kf5_libdir}/krita-python-libs/krita
 %{_includedir}/kis_qmic_plugin_interface.h
 %{_includedir}/kritaqmicinterface_export.h
 
-%if %{with released}
 %files lang -f %{name}.lang
-%endif
 
 %changelog

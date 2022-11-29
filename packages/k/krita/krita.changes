@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Nov 28 09:27:13 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Disable PCH to drastically reduce the required disk space
+  needed to build krita
+- Update _constraints
+- Spec cleanup
+
+-------------------------------------------------------------------
+Tue Nov 22 12:51:18 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Require the optional xsimd dependency
+
+-------------------------------------------------------------------
 Wed Nov  9 09:50:24 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.1.3
