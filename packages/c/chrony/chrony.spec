@@ -69,6 +69,7 @@ Patch1:         chrony-service-helper.patch
 Patch2:         chrony-logrotate.patch
 Patch3:         chrony-service-ordering.patch
 Patch7:         chrony-htonl.patch
+Patch8:         chrony.nm-dispatcher.dhcp.patch
 BuildRequires:  NetworkManager-devel
 BuildRequires:  bison
 BuildRequires:  findutils
@@ -179,6 +180,7 @@ e.g. because the servers will be set via DHCP.
 %patch2 -p1
 %patch3
 %patch7
+%patch8
 
 # Remove pool statements from the default /etc/chrony.conf. They will
 # be provided by branding packages in /etc/chrony.d/pool.conf .
@@ -190,6 +192,10 @@ cat << EOF >> chrony.conf
 
 # Also include any directives found in configuration files in /etc/chrony.d
 include %{_sysconfdir}/chrony.d/*.conf
+
+# Add sourcedir needed by NetworkManager DHCP dispatcher
+sourcedir /run/chrony-dhcp
+
 EOF
 
 touch -r examples/chrony.conf.example2 chrony.conf
@@ -231,7 +237,9 @@ mkdir %{buildroot}%{_sysconfdir}/chrony.d
 install -Dpm 0640 examples/chrony.keys.example \
   %{buildroot}%{_sysconfdir}/chrony.keys
 install -Dpm 0755 examples/chrony.nm-dispatcher.onoffline \
-  %{buildroot}%{_prefix}/lib/NetworkManager/dispatcher.d/20-chrony
+  %{buildroot}%{_prefix}/lib/NetworkManager/dispatcher.d/20-chrony-onoffline
+install -Dpm 0755 examples/chrony.nm-dispatcher.dhcp \
+  %{buildroot}%{_prefix}/lib/NetworkManager/dispatcher.d/20-chrony-dhcp
 install -Dpm 0755 %{SOURCE3} \
   %{buildroot}%{_sysconfdir}/dhcp/dhclient.d/chrony.sh
 %if %{with usr_etc}
@@ -337,7 +345,8 @@ done
 %else
 %config(noreplace) %{_sysconfdir}/logrotate.d/chrony
 %endif
-%attr(0755,root,root) %{_prefix}/lib/NetworkManager/dispatcher.d/20-chrony
+%attr(0755,root,root) %{_prefix}/lib/NetworkManager/dispatcher.d/20-chrony-onoffline
+%attr(0755,root,root) %{_prefix}/lib/NetworkManager/dispatcher.d/20-chrony-dhcp
 %dir %{_sysconfdir}/chrony.d/
 %dir %{_sysconfdir}/dhcp/
 %dir %{_sysconfdir}/dhcp/dhclient.d/
