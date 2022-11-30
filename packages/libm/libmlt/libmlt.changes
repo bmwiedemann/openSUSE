@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Nov 27 10:18:16 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 7.12.0
+  * Fix a couple of major new bugs in the popular qtblend and
+    frei0r.cairoblend transitions
+  * New color animation APIs with sensible interpolation
+  Framework:
+  * Added new color animation APIs
+  Modules:
+  * Updated the following services to support animation of color
+    properties: frei0r, chroma, chroma_hold, audiolevelgraph,
+    audiospectrum, audiowaveform, gpsgraphic, gpstext, qtcrop,
+    qtext
+  * Added discontinuity_reset property to dynamic_loudness filter
+  * Fixed qtblend transition not blending with an opaque rgba
+    image
+  * Added support for the "finer" engine in Rubberband version 3
+  * Fixed crash in frei0r.cairoblend when threads property not set
+  Other:
+  * Fixed leaking the xml producer in melt when the XML contains
+    a consumer element but no profile information
+  * Fixed symbol not found error in rtaudio consumer
+
+-------------------------------------------------------------------
 Wed Nov  2 07:19:35 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 7.10.0

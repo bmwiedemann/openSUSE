@@ -18,20 +18,20 @@
 
 %define _name mlt
 %define libname lib%{_name}
-%define lversion 7.10.0
+%define lversion 7.12.0
 %define sover 7
 %define lib_pkgname %{libname}-%{sover}-%{sover}
 %define _name_pp %{_name}++
 %define libname_pp lib%{_name_pp}
 %define sover_pp 7
-%define lversion_pp 7.10.0
+%define lversion_pp 7.12.0
 %define libpp_pkgname %{libname_pp}-%{sover_pp}-%{sover_pp}
 # Qt 6 is not available in Leap 15.3
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
 %bcond_without Qt6
 %endif
 Name:           %{libname}
-Version:        7.10.0
+Version:        7.12.0
 Release:        0
 Summary:        Multimedia framework for television broadcasting
 License:        GPL-3.0-or-later

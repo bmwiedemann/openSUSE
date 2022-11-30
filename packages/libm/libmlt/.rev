@@ -765,4 +765,12 @@ Only build sdl2 module.
     <comment></comment>
     <requestid>1032995</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>0b2c8dfdaf2286b95739e0c1cd8b19db</srcmd5>
+    <version>7.12.0</version>
+    <time>1669816778</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1038885</requestid>
+  </revision>
 </revisionlist>
