@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov 30 11:39:52 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove python_module macro definition 
+- More specific python_sitelib in %files
+- Update to 0.9.6:
+  * Remove py.std calls (thanks @alexcjohnson)
+- 0.9.5:
+  * Fix distutils deprecation warning (thanks @tgagor)
+  * Fix incompatibility with pytest-timeout (thanks @graingert)
+  * Update pytest naming convention in documentation (thanks @avallbona)
+
+-------------------------------------------------------------------
 Thu Nov  5 14:51:01 UTC 2020 - Marketa Machova <mmachova@suse.com>
 
 - update to 0.9.4

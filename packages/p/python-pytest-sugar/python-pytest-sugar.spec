@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-sugar
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-sugar
-Version:        0.9.4
+Version:        0.9.6
 Release:        0
 Summary:        Pretty printer for pytest progress
 License:        BSD-3-Clause
@@ -53,6 +52,8 @@ pytest-sugar is a plugin for py.test that shows failures and errors instantly an
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/*
+%pycache_only %{python_sitelib}/__pycache__/*.pyc
+%{python_sitelib}/pytest_sugar.py
+%{python_sitelib}/pytest_sugar-%{version}*-info
 
 %changelog

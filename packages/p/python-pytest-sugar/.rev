@@ -65,4 +65,20 @@
     <comment></comment>
     <requestid>846345</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>40cfb06e6e00c6dd9b4a00effb0cda89</srcmd5>
+    <version>0.9.6</version>
+    <time>1669816821</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove python_module macro definition 
+- More specific python_sitelib in %files
+- Update to 0.9.6:
+  * Remove py.std calls (thanks @alexcjohnson)
+- 0.9.5:
+  * Fix distutils deprecation warning (thanks @tgagor)
+  * Fix incompatibility with pytest-timeout (thanks @graingert)
+  * Update pytest naming convention in documentation (thanks @avallbona)
+</comment>
+    <requestid>1039090</requestid>
+  </revision>
 </revisionlist>
