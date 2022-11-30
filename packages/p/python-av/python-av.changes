@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Nov 30 13:43:36 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 10.0.0:
+  * Add support for FFmpeg 5.0 and 5.1 (:issue:`817`).
+  * Drop support for FFmpeg < 4.3.
+  * Deprecate CodecContext.time_base for decoders (:issue:`966`).
+  * Deprecate VideoStream.framerate and VideoStream.rate (:issue:`1005`).
+  * Stop proxying Codec from Stream instances (:issue:`1037`).
+  * Add VideoFrame ndarray operations for gbrp formats (:issue:`986`).
+  * Add VideoFrame ndarray operations for gbrpf32 formats (:issue:`1028`).
+  * Add VideoFrame ndarray operations for nv12 format (:issue:`996`).
+  * Fix conversion to numpy array for multi-byte formats (:issue:`981`).
+  * Safely iterate over filter pads (:issue:`1000`).
+- Drop upstream patch:
+  * python-av-ffmpeg5-compatibility.patch
+
+-------------------------------------------------------------------
 Mon Aug  8 21:41:40 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add python-av-ffmpeg5-compatibility.patch to drop references to
