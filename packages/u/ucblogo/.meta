@@ -1,0 +1,9 @@
+<package name="ucblogo" project="openSUSE:Factory">
+  <title>Berkeley Logo interpreter</title>
+  <description>Berkeley Logo interpreter is a free (both senses) interpreter for the Logo
+programming language.
+
+</description>
+  <devel project="Education" package="ucblogo"/>
+  <url>https://people.eecs.berkeley.edu/~bh/logo.html</url>
+</package>

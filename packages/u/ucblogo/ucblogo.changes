@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Sat Nov 26 13:25:23 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Initial package.
+- Add ucblogo-wxString-to-c_str.patch -- Explicitly convert a
+  wxString to c_string to match calling function's definition
