@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 30 08:16:55 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Disable test_dist_boxed, broken with latest version of pytest-xdist,
+  gh#pytest-dev/pytest-cov#565
+
+-------------------------------------------------------------------
 Mon Nov 28 09:31:24 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Disable failing tests (test_contexts) that fails because of the new version

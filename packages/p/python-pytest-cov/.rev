@@ -258,4 +258,14 @@
 </comment>
     <requestid>1038610</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>a489dcb4c3cb0cee6212f2ef1c3d8b23</srcmd5>
+    <version>4.0.0</version>
+    <time>1669816813</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable test_dist_boxed, broken with latest version of pytest-xdist,
+  gh#pytest-dev/pytest-cov#565
+</comment>
+    <requestid>1039059</requestid>
+  </revision>
 </revisionlist>

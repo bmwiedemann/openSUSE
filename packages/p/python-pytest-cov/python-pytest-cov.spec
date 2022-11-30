@@ -79,6 +79,8 @@ donttest="test_dist_missing_data or test_central_subprocess_change_cwd_with_pyth
 # Tests broken with the latest version of python-coverage (6.5.0)
 # gh#pytest-dev/pytest-cov#570
 donttest+=" or test_contexts"
+# gh#pytest-dev/pytest-cov#565
+donttest+=" or test_dist_boxed"
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib}:$PWD/tests py.test-%{$python_bin_suffix} -v -k "not (${donttest})"
 %endif
 
