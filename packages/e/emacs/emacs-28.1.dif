@@ -138,7 +138,7 @@
  .TP
  .B \-\-declarations
  In C and derived languages, create tags for function declarations,
-@@ -181,7 +181,7 @@ the previous ones.  The regexps are of o
+@@ -183,7 +183,7 @@ the previous ones.  The regexps are of o
  where \fItagregexp\fP is used to match the tag.  It should not match
  useless characters.  If the match is such that more characters than
  needed are unavoidably matched by \fItagregexp\fP, it may be useful to
@@ -147,7 +147,7 @@
  ignores regexps without a \fInameregexp\fP.  The syntax of regexps is
  the same as in emacs.  The following character escape sequences are
  supported: \\a, \\b, \\d, \\e, \\f, \\n, \\r, \\t, \\v, which
-@@ -260,15 +260,15 @@ tag entries for other files in place.  C
+@@ -262,15 +262,15 @@ tag entries for other files in place.  C
  by deleting the existing entries for the given files and then
  rewriting the new entries at the end of the tags file.  It is often
  faster to simply rebuild the entire tag file than to use this.
@@ -177,7 +177,7 @@
                 ebrowse${EXEEXT}
  
  # Things that Emacs runs internally, or during the build process,
-@@ -379,7 +381,7 @@ etags${EXEEXT}: ${etags_deps}
+@@ -382,7 +382,7 @@ etags${EXEEXT}: ${etags_deps}
  ## etags.o files on top of each other.
  ## FIXME?
  ## Can't we use a wrapper that calls 'etags --ctags'?

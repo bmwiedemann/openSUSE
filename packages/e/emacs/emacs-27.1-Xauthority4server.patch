@@ -21,7 +21,7 @@ even if the Xauthority file is not the default expected by XCloseDisplay()
  # Emacs will exit with status 15 after having received SIGTERM, which
 --- lisp/server.el
 +++ lisp/server.el	2021-10-08 09:40:13.683712534 +0000
-@@ -286,6 +286,11 @@ If nil, no instructions are displayed."
+@@ -287,6 +287,11 @@ If nil, no instructions are displayed."
    "The directory in which to place the server socket.
  If local sockets are not supported, this is nil.")
  
@@ -33,7 +33,7 @@ even if the Xauthority file is not the default expected by XCloseDisplay()
  (defun server-clients-with (property value)
    "Return a list of clients with PROPERTY set to VALUE."
    (let (result)
-@@ -642,7 +647,8 @@ the `server-process' variable."
+@@ -643,7 +648,8 @@ the `server-process' variable."
  	     (t (yes-or-no-p
  		 "The current server still has clients; delete them? "))))
      (let* ((server-dir (if server-use-tcp server-auth-dir server-socket-dir))
@@ -43,7 +43,7 @@ even if the Xauthority file is not the default expected by XCloseDisplay()
        (when server-process
  	;; kill it dead!
  	(ignore-errors (delete-process server-process)))
-@@ -726,6 +732,14 @@ server or call `\\[server-force-delete]'
+@@ -727,6 +733,14 @@ server or call `\\[server-force-delete]'
  			       :plist '(:authenticated t)))))
  	  (unless server-process (error "Could not start server process"))
  	  (process-put server-process :server-file server-file)
@@ -58,7 +58,7 @@ even if the Xauthority file is not the default expected by XCloseDisplay()
  	  (when server-use-tcp
  	    (let ((auth-key (server-get-auth-key)))
  	      (process-put server-process :auth-key auth-key)
-@@ -854,7 +868,7 @@ This handles splitting the command if it
+@@ -855,7 +869,7 @@ This handles splitting the command if it
    (let ((frame
           (server-with-environment
               (process-get proc 'env)
@@ -67,7 +67,7 @@ even if the Xauthority file is not the default expected by XCloseDisplay()
                 ;; For tgetent(3); list according to ncurses(3).
                 "BAUDRATE" "COLUMNS" "ESCDELAY" "HOME" "LINES"
                 "NCURSES_ASSUMED_COLORS" "NCURSES_NO_PADDING"
-@@ -1122,6 +1136,8 @@ The following commands are accepted by t
+@@ -1123,6 +1137,8 @@ The following commands are accepted by t
  		nowait     ; t if emacsclient does not want to wait for us.
  		frame      ; Frame opened for the client (if any).
  		display    ; Open frame on this display.
@@ -76,7 +76,7 @@ even if the Xauthority file is not the default expected by XCloseDisplay()
  		parent-id  ; Window ID for XEmbed
  		dontkill   ; t if client should not be killed.
  		commands
-@@ -1262,6 +1278,16 @@ The following commands are accepted by t
+@@ -1263,6 +1279,16 @@ The following commands are accepted by t
                  ;; -env NAME=VALUE:  An environment variable.
                  ("-env"
                   (let ((var (pop args-left)))
@@ -93,7 +93,7 @@ even if the Xauthority file is not the default expected by XCloseDisplay()
                     ;; XXX Variables should be encoded as in getenv/setenv.
                     (process-put proc 'env
                                  (cons var (process-get proc 'env)))))
-@@ -1277,6 +1303,16 @@ The following commands are accepted by t
+@@ -1278,6 +1304,16 @@ The following commands are accepted by t
                  ;; Unknown command.
                  (arg (error "Unknown command: %s" arg))))
  

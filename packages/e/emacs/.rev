@@ -1725,4 +1725,22 @@ Now one could consider building emacs with gsettings support (both debian and fe
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1036458</requestid>
   </revision>
+  <revision rev="170" vrev="1">
+    <srcmd5>76b0c8aae4b4f7f3fc1d5b9495d6b9e2</srcmd5>
+    <version>28.2</version>
+    <time>1669820862</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to GNU Emacs version 28.2
+  * This is a bug-fix release with no new features.
+- Add upstream commit as patch d48bb487.patch (bsc#1205822, CVE-2022-45939)
+  * shell command injection via source code files when using ctags
+- Correct offsets of the patches
+  * emacs-24.3-iconic.patch
+  * emacs-24.4-ps-bdf.patch
+  * emacs-25.2-ImageMagick7.patch
+  * emacs-27.1-Xauthority4server.patch
+  * emacs-27.1-pdftex.patch
+  * emacs-28.1.dif</comment>
+    <requestid>1038881</requestid>
+  </revision>
 </revisionlist>

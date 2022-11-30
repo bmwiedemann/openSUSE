@@ -19,14 +19,15 @@
 -	$(ENVADD) pdftex -output-format=pdf pl-refcard.tex
 +	$(ENVADD) pdfmex -output-format=pdf pl-refcard.tex
  pl-refcard.dvi: $(pl_refcard_deps)
- 	if ! kpsewhich -format=fmt mex > /dev/null; then \
- 	  echo "No mex format found."; false; \
+ 	if kpsewhich -format=fmt mex > /dev/null; then \
+-	  $(ENVADD) tex pl-refcard.tex; \
+-	else \
+ 	  $(ENVADD) mex pl-refcard.tex; \
++	else \
++	  $(ENVADD) tex pl-refcard.tex; \
  	fi
--	$(ENVADD) tex pl-refcard.tex
-+	$(ENVADD) mex pl-refcard.tex
  pl-refcard.ps: pl-refcard.dvi
  	dvips -t a4 -o $@ pl-refcard.dvi
- 
 --- etc/refcards/cs-dired-ref.tex
 +++ etc/refcards/cs-dired-ref.tex	2021-03-25 15:07:14.519265674 +0000
 @@ -108,7 +108,8 @@ see the Emacs distribution, or {\tt http

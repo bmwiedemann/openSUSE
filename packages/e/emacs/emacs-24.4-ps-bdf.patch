@@ -5,7 +5,7 @@
 
 --- lisp/ldefs-boot.el
 +++ lisp/ldefs-boot.el	2018-05-29 12:23:32.824206557 +0000
-@@ -26758,9 +26758,9 @@ With prefix argument ARG, restart the Pr
+@@ -26785,9 +26785,9 @@ With prefix argument ARG, restart the Pr
  ;;;### (autoloads nil "ps-bdf" "ps-bdf.el" (0 0 0 0))
  ;;; Generated autoloads from ps-bdf.el
  

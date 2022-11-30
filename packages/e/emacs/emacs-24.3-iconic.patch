@@ -4,7 +4,7 @@
 
 --- lisp/startup.el
 +++ lisp/startup.el	2016-09-19 09:15:26.871345783 +0000
-@@ -2470,6 +2470,9 @@ nil default-directory" name)
+@@ -2481,6 +2481,9 @@ nil default-directory" name)
                      ((equal argi "-no-splash")
                       (setq inhibit-startup-screen t))
  

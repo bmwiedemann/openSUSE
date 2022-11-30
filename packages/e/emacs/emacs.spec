@@ -138,7 +138,7 @@ BuildRequires:  pkgconfig(xshmfence)
 BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(xxf86vm)
 URL:            http://www.gnu.org/software/emacs/
-Version:        28.1
+Version:        28.2
 Release:        0
 Summary:        GNU Emacs Base Package
 License:        GPL-3.0-or-later
@@ -187,6 +187,7 @@ Patch24:        emacs-25.2-ImageMagick7.patch
 Patch25:        emacs-26.1-xft4x11.patch
 Patch26:        emacs-27.1-pdftex.patch
 Patch29:        emacs-27.1-Xauthority4server.patch
+Patch30:        d48bb487.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{expand: %%global include_info %(test -s /usr/share/info/info.info* && echo 0 || echo 1)}
@@ -333,6 +334,7 @@ and most assembler-like syntaxes.
 %patch25 -p0 -b .xft
 %patch26 -p0 -b .fmt
 %patch29 -p0 -b .xauth
+%patch30 -p0 -b .cve202245939
 %patch   -p0 -b .0
 %if %{without tex4pdf}
 pushd etc/refcards/
@@ -3165,6 +3167,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/term/bobcat.elc
 %{_datadir}/emacs/%{version}/lisp/term/common-win.elc
 %{_datadir}/emacs/%{version}/lisp/term/cygwin.elc
+%{_datadir}/emacs/%{version}/lisp/term/fbterm.elc
 %{_datadir}/emacs/%{version}/lisp/term/internal.elc
 %{_datadir}/emacs/%{version}/lisp/term/iris-ansi.elc
 %{_datadir}/emacs/%{version}/lisp/term/konsole.elc
@@ -4735,6 +4738,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/term/bobcat.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/term/common-win.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/term/cygwin.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/term/fbterm.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/term/internal.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/term/iris-ansi.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/term/konsole.el%{ext_el}
