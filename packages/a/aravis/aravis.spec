@@ -27,7 +27,7 @@ Name:           aravis
 Version:        0.8.22
 Release:        0
 Summary:        Glib/gobject based library implementing a Genicam interface
-License:        GPL-2.0-or-later
+License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Video/Players
 URL:            https://github.com/AravisProject/aravis
 Source0:        https://github.com/AravisProject/%{name}/releases/download/%{version}/aravis-%{version}.tar.xz
