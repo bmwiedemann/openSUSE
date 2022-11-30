@@ -982,4 +982,12 @@
     <comment>Sync with SLE15-SP5 changelog and spec file.</comment>
     <requestid>1031589</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>14a1b92f5ae99f40eb741898cfc7a028</srcmd5>
+    <version>1.48.6</version>
+    <time>1669816794</time>
+    <user>dimstar_suse</user>
+    <comment>Update to libguestfs version 1.48.6</comment>
+    <requestid>1039017</requestid>
+  </revision>
 </revisionlist>
