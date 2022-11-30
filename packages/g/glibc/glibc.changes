@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 10 17:06:18 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- nscd: Convert to systemd-sysusers
+
+-------------------------------------------------------------------
 Wed Oct 26 14:07:48 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - dl-debug-bindings.patch: elf: Reinstate on DL_DEBUG_BINDINGS

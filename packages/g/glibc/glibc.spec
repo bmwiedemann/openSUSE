@@ -161,6 +161,7 @@ Source10:       baselibs.conf
 # For systemd
 Source20:       nscd.conf
 Source21:       nscd.service
+Source22:       nscd.sysusers
 
 %if %{build_main}
 # ngpt was used in 8.1 and SLES8
@@ -200,7 +201,7 @@ BuildRequires:  libcap-devel
 BuildRequires:  libselinux-devel
 BuildRequires:  makeinfo
 BuildRequires:  python3-base
-BuildRequires:  shadow
+BuildRequires:  sysuser-tools
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  systemtap-headers
 BuildRequires:  xz
@@ -418,7 +419,7 @@ Group:          System/Daemons
 Provides:       glibc:/usr/sbin/nscd
 Requires:       glibc = %{version}
 Obsoletes:      unscd <= 0.48
-Requires(pre):  shadow
+%{?sysusers_requires}
 %{?systemd_requires}
 
 %description -n nscd
@@ -736,6 +737,9 @@ cd ..
 make %{?_smp_mflags} %{?make_output_sync} -C cc-base html
 %endif
 
+# sysusers.d
+%sysusers_generate_pre %{SOURCE22} nscd nscd.conf
+
 %check
 %if %{build_testsuite}
 # The testsuite will fail if asneeded is used
@@ -978,6 +982,8 @@ mkdir -p %{buildroot}/usr/lib/tmpfiles.d/
 install -m 644 %{SOURCE20} %{buildroot}/usr/lib/tmpfiles.d/
 mkdir -p %{buildroot}/usr/lib/systemd/system
 install -m 644 %{SOURCE21} %{buildroot}/usr/lib/systemd/system
+mkdir -p %{buildroot}/usr/lib/sysusers.d/
+install -m 644 %{SOURCE22} %{buildroot}/usr/lib/sysusers.d/nscd.conf
 %endif
 
 %if 0%{?rtld_oldname:1}
@@ -1166,9 +1172,7 @@ end
 %preun info
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/libc.info.gz
 
-%pre -n nscd
-getent group nscd >/dev/null || %{_sbindir}/groupadd -r nscd
-getent passwd nscd >/dev/null || %{_sbindir}/useradd -r -g nscd -c "User for nscd" -s %{rootsbindir}/nologin -d /run/nscd nscd
+%pre -n nscd -f nscd.pre
 %service_add_pre nscd.service
 
 %preun -n nscd
@@ -1354,6 +1358,8 @@ exit 0
 /usr/lib/systemd/system/nscd.service
 %dir /usr/lib/tmpfiles.d
 /usr/lib/tmpfiles.d/nscd.conf
+%dir /usr/lib/sysusers.d
+/usr/lib/sysusers.d/nscd.conf
 %dir %attr(0755,root,root) %ghost /run/nscd
 %attr(0644,root,root) %verify(not md5 size mtime) %ghost %config(missingok,noreplace) /run/nscd/nscd.pid
 %attr(0666,root,root) %verify(not md5 size mtime) %ghost %config(missingok,noreplace) /run/nscd/socket

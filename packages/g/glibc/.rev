@@ -2742,4 +2742,12 @@ do special case rings. (forwarded request 934053 from matz2)</comment>
   _dl_lookup_symbol_x (bsc#1204710) (forwarded request 1031471 from Andreas_Schwab)</comment>
     <requestid>1031472</requestid>
   </revision>
+  <revision rev="270" vrev="8">
+    <srcmd5>f2950775fd177ad135fb688f57622661</srcmd5>
+    <version>2.36</version>
+    <time>1669816727</time>
+    <user>dimstar_suse</user>
+    <comment>- nscd: Convert to systemd-sysusers (forwarded request 1038504 from gmbr3)</comment>
+    <requestid>1038649</requestid>
+  </revision>
 </revisionlist>
