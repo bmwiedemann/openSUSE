@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov 30 12:14:58 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.6.0+git.20221130.702f9d5:
+  * Fix where we skip when --skip-after-n-transforms is used.
+
+-------------------------------------------------------------------
+Mon Nov 21 11:53:34 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.6.0+git.20221121.e753f5b:
+  * tweak logic in clangbinarysearch.py
+
+-------------------------------------------------------------------
 Mon Nov 21 11:01:27 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.6.0+git.20221121.ff14486:

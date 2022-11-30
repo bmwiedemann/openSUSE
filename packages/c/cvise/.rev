@@ -895,4 +895,16 @@
   * Update badges.</comment>
     <requestid>1037082</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>48c7b7d6f09b6e77b9a1386add3b9441</srcmd5>
+    <version>2.6.0+git.20221130.702f9d5</version>
+    <time>1669816829</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.6.0+git.20221130.702f9d5:
+  * Fix where we skip when --skip-after-n-transforms is used.
+
+- Update to version 2.6.0+git.20221121.e753f5b:
+  * tweak logic in clangbinarysearch.py</comment>
+    <requestid>1039101</requestid>
+  </revision>
 </revisionlist>
