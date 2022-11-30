@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-metadata
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,22 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-metadata
-Version:        1.10.0
+Version:        2.0.4
 Release:        0
 Summary:        Pytest plugin for test session metadata
 License:        MPL-2.0
 URL:            https://github.com/pytest-dev/pytest-metadata
-Source:         https://files.pythonhosted.org/packages/source/p/pytest-metadata/pytest-metadata-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
+Source:         https://files.pythonhosted.org/packages/source/p/pytest-metadata/pytest_metadata-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-pytest >= 2.9.0
+Requires:       python-pytest >= 3.0.0
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module pytest >= 2.9.0}
+BuildRequires:  %{python_module pytest >= 3.0.0}
 # /SECTION
 %python_subpackages
 
@@ -39,13 +39,13 @@ BuildRequires:  %{python_module pytest >= 2.9.0}
 Pytest plugin for test session metadata.
 
 %prep
-%setup -q -n pytest-metadata-%{version}
+%setup -q -n pytest_metadata-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -53,7 +53,8 @@ Pytest plugin for test session metadata.
 
 %files %{python_files}
 %license LICENSE
-%doc CHANGES.rst README.rst
-%{python_sitelib}/*
+%doc README.rst
+%{python_sitelib}/pytest_metadata
+%{python_sitelib}/pytest_metadata-%{version}*-info
 
 %changelog

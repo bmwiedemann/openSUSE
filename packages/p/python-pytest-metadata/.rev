@@ -33,4 +33,31 @@
     <comment></comment>
     <requestid>817713</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>aa351704f6b721469d31da2b352d5fd0</srcmd5>
+    <version>2.0.4</version>
+    <time>1669816816</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove python_module macro definition 
+- Update to 2.0.4:
+  * Fix deprecated pytest.mark.optionalhook marker.
+- 2.0.3:
+  * Remove py dependency. Thanks to @Czaki for reporting.
+- 2.0.2:
+  * Allow all python versions above 3.7
+- 2.0.1:
+  * Fix issues with switching to pyproject.toml
+    Thanks to @dvzrv and @eltrufas for raising issues and providing fixes.
+- 2.0.0:
+  * Drop support for python 2.7 and 3.6
+  * Add support for python 3.9 and 3.10
+  * Introduce pyproject.toml
+  * Provide metadata via JSON file
+    Thanks to @digitalorder for the PR
+- 1.11.0:
+  * Provide a session fixture to include metadata in Junit XMLs as property
+    tags. Thanks to @sanga for the PR
+</comment>
+    <requestid>1039087</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Nov 30 11:13:54 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove python_module macro definition 
+- Update to 2.0.4:
+  * Fix deprecated pytest.mark.optionalhook marker.
+- 2.0.3:
+  * Remove py dependency. Thanks to @Czaki for reporting.
+- 2.0.2:
+  * Allow all python versions above 3.7
+- 2.0.1:
+  * Fix issues with switching to pyproject.toml
+    Thanks to @dvzrv and @eltrufas for raising issues and providing fixes.
+- 2.0.0:
+  * Drop support for python 2.7 and 3.6
+  * Add support for python 3.9 and 3.10
+  * Introduce pyproject.toml
+  * Provide metadata via JSON file
+    Thanks to @digitalorder for the PR
+- 1.11.0:
+  * Provide a session fixture to include metadata in Junit XMLs as property
+    tags. Thanks to @sanga for the PR
+
+-------------------------------------------------------------------
 Mon Jun 29 11:52:00 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 1.10.0
