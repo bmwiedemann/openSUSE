@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Nov 30 13:20:51 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.12.10:
+  * Makefile: Fix potential uid/gid collision by using setpriv
+  * ci, make: allow to build release as root user
+  * Prepare for v0.12.10 release
+  * connectivity/check: fix logging in non-verbose mode with timestamps
+  * defaults: update connectivity test image versions
+  * connectivity: delete pods before deleting namespace
+  * install: delete connectivity test k8s resources before Cilium/Hubble
+  * .github/workflows: bump uninstall timeout on EKS
+  * clustermesh: Fix --bpf-lb-sock on < 1.12
+  * status: Exclude non-running pods from PodsCount
+  * connectivity: collect sysdump also on test setup failure
+  * build(deps): bump github.com/google/gops from 0.3.25 to 0.3.26
+
+-------------------------------------------------------------------
 Thu Nov 24 15:58:13 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.12.9:
