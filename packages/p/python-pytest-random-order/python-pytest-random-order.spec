@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-random-order
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-random-order
 Version:        1.0.4
 Release:        0
@@ -26,9 +25,11 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/jbasko/pytest-random-order
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-random-order/pytest-random-order-%{version}.tar.gz
+BuildRequires:  %{python_module py}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-py
 Requires:       python-pytest >= 3.0.0
 BuildArch:      noarch
 # SECTION test requirements
@@ -58,6 +59,7 @@ Tests can be rerun in a specific order by passing a seed value reported in a pre
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/random_order
+%{python_sitelib}/pytest_random_order-%{version}*-info
 
 %changelog

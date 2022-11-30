@@ -33,4 +33,15 @@
 - Upstream declares as python3 only now</comment>
     <requestid>676168</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>1111e04c196d80e88446a513ae345b29</srcmd5>
+    <version>1.0.4</version>
+    <time>1669816822</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python-py dependency 
+- Remove python_module macro definition
+- More specific python_sitelib in %files
+</comment>
+    <requestid>1039091</requestid>
+  </revision>
 </revisionlist>
