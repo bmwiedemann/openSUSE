@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 30 03:47:23 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded BuildRequires on python 2. 
+
+-------------------------------------------------------------------
 Wed Jun 30 04:20:36 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Stop building with march=native (boo#1100677)

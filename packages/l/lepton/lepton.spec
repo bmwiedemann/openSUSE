@@ -1,7 +1,7 @@
 #
 # spec file for package lepton
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,6 @@ BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  python2
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(zlib)
 ExclusiveArch:  x86_64
