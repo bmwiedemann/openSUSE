@@ -249,10 +249,10 @@ fi
 
 if [ $1 -eq 1 ]; then
 %if 0%{?suse_version}
-%if 0%{?suse_version} >= 1500
-a2enmod php7
+%if 0%{?sle_version} >= 150400 || 0%{?suse_version} > 1500
+a2enmod php8
 %else
-a2enmod php5
+a2enmod php7
 %endif
 %endif
 fi
