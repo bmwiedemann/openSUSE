@@ -29,7 +29,7 @@ build_template()
 		local FW_VARS_ORIG="${PREFIX}-vars.bin"
 		local FW_CODE="${PREFIX}-${KEY}-code.bin"
 		local FW_VARS="${PREFIX}-${KEY}-vars.bin"
-		local PFLASH_CODE="-drive if=pflash,format=raw,unit=0,readonly,file=$FW_CODE"
+		local PFLASH_CODE="-drive if=pflash,format=raw,unit=0,readonly=on,file=$FW_CODE"
 		local PFLASH_VARS="-drive if=pflash,format=raw,unit=1,file=$FW_VARS"
 
 		ln -s "$FW_CODE_ORIG" "$FW_CODE"

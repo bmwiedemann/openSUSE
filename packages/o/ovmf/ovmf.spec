@@ -22,7 +22,7 @@
 %global softfloat_version b64af41c3276f
 
 Name:           ovmf
-Version:        202208
+Version:        202211
 Release:        0
 Summary:        Open Virtual Machine Firmware
 License:        BSD-2-Clause-Patent
@@ -45,22 +45,19 @@ Source100:      %{name}-rpmlintrc
 Source101:      gdb_uefi.py.in
 Source102:      gen-key-enrollment-iso.sh
 Source103:      ovmf-build-funcs.sh
-Patch1:         %{name}-add-exclude-shell-flag.patch
-Patch2:         %{name}-gdb-symbols.patch
-Patch3:         %{name}-pie.patch
-Patch4:         %{name}-disable-ia32-firmware-piepic.patch
-Patch5:         %{name}-set-fixed-enroll-time.patch
-Patch6:         %{name}-disable-brotli.patch
-Patch7:         %{name}-ignore-spurious-GCC-12-warning.patch
-Patch8:         %{name}-tools_def-add-fno-omit-frame-pointer-to-GCC48_-IA32-.patch
+Patch1:         %{name}-gdb-symbols.patch
+Patch2:         %{name}-pie.patch
+Patch3:         %{name}-disable-ia32-firmware-piepic.patch
+Patch4:         %{name}-set-fixed-enroll-time.patch
+Patch5:         %{name}-disable-brotli.patch
+Patch6:         %{name}-ignore-spurious-GCC-12-warning.patch
+Patch7:         %{name}-tools_def-add-fno-omit-frame-pointer-to-GCC48_-IA32-.patch
 # PED-1359, because nasm-2.14 doesn't support corresponding instructions.
-Patch9:         %{name}-Revert-MdePkg-Remove-the-macro-definitions-regarding.patch
-Patch10:        %{name}-Revert-UefiCpuPkg-Replace-Opcode-with-the-correspond.patch
-Patch11:        %{name}-Revert-SourceLevelDebugPkg-Replace-Opcode-with-the-c.patch
-Patch12:        %{name}-Revert-MdePkg-Replace-Opcode-with-the-corresponding-.patch
-Patch13:        %{name}-Revert-MdeModulePkg-Replace-Opcode-with-the-correspo.patch
-# bsc#1199156 OVMF exposed Invalid MMIO opcode (F6) error when enabled sev and sev-es
-Patch14:        %{name}-bsc1199156-OvmfPkg-IncompatiblePciDeviceSupportDxe-Ignore-Optio.patch
+Patch8:         %{name}-Revert-MdePkg-Remove-the-macro-definitions-regarding.patch
+Patch9:         %{name}-Revert-UefiCpuPkg-Replace-Opcode-with-the-correspond.patch
+Patch10:        %{name}-Revert-SourceLevelDebugPkg-Replace-Opcode-with-the-c.patch
+Patch11:        %{name}-Revert-MdePkg-Replace-Opcode-with-the-corresponding-.patch
+Patch12:        %{name}-Revert-MdeModulePkg-Replace-Opcode-with-the-correspo.patch
 BuildRequires:  bc
 BuildRequires:  cross-arm-binutils
 BuildRequires:  cross-arm-gcc%{gcc_version}
@@ -177,15 +174,13 @@ rm -rf $PKG_TO_REMOVE
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
-%patch8 -p1
 %if 0%{?suse_version} == 1500 && 0%{?sle_version} < 150500
+%patch8 -p1
 %patch9 -p1
 %patch10 -p1
 %patch11 -p1
 %patch12 -p1
-%patch13 -p1
 %endif
-%patch14 -p1
 
 # add openssl
 pushd CryptoPkg/Library/OpensslLib/openssl
@@ -321,9 +316,9 @@ collect_x86_64_debug_files()
 
 declare -A EXTRA_FLAGS_X64
 EXTRA_FLAGS_X64=(
-	[ovmf-x86_64]="-p OvmfPkg/OvmfPkgX64.dsc -D FD_SIZE_2MB -D EXCLUDE_SHELL"
+	[ovmf-x86_64]="-p OvmfPkg/OvmfPkgX64.dsc -D FD_SIZE_2MB -D BUILD_SHELL=FALSE"
 	[ovmf-x86_64-4m]="-p OvmfPkg/OvmfPkgX64.dsc -D FD_SIZE_4MB -D NETWORK_TLS_ENABLE"
-	[ovmf-x86_64-smm]="-a IA32 -p OvmfPkg/OvmfPkgIa32X64.dsc -D FD_SIZE_4MB -D NETWORK_TLS_ENABLE -D SMM_REQUIRE -D EXCLUDE_SHELL"
+	[ovmf-x86_64-smm]="-a IA32 -p OvmfPkg/OvmfPkgIa32X64.dsc -D FD_SIZE_4MB -D NETWORK_TLS_ENABLE -D SMM_REQUIRE -D BUILD_SHELL=FALSE"
 )
 declare -A OUTDIR_X64
 OUTDIR_X64=(
