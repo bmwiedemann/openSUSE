@@ -133,7 +133,8 @@ rm LICENSE README.md
 
 # WARNING: gzipped-svg-icon. Not all DE that support SVG icons support
 # them gzipped (.svgz). Install the icon as plain uncompressed SVG.
-gunzip -S svgz %{buildroot}/%{_datadir}/icons/hicolor/scalable/apps/%{name}.svgz
+gunzip -S svgz %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/%{name}.svgz
+mv %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/%{name}.{,svg}
 
 %post
 /sbin/ldconfig
@@ -160,7 +161,7 @@ gunzip -S svgz %{buildroot}/%{_datadir}/icons/hicolor/scalable/apps/%{name}.svgz
 %dir %{_datadir}/metainfo/
 %{_datadir}/metainfo/%{name}.appdata.xml
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
-%{_datadir}/icons/hicolor/scalable/apps/%{name}.*
+%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 %{_datadir}/qmplay2
 %{_mandir}/man?/%{name}.?%{ext_man}
 %{_datadir}/mime/packages/x-*.xml
