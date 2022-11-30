@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Nov 29 16:12:05 UTC 2022 - sweiberg@suse.com
+
+- Update to version 1.0.24:
+  * The config option tag-follow works now
+- Update to version 1.0.23:
+  * List of followed tags. Use :tags
+  * Multiple tags in one feed. Use :tag linux mastodon
+  * Two new flags --config and --config-dir if you want to load
+    your configuration from a custom location. You can also use
+    the environment variables TUT_CONF and TUT_CONF_DIR instead
+  * :timeline direct shouldn't crash tut
+  * :user should now find more accounts
+- Update to version 1.0.22:
+  * Tut won't crash when you edit a reply
+
+-------------------------------------------------------------------
 Fri Nov 25 07:43:22 UTC 2022 - sweiberg@suse.com
 
 - Update to version 1.0.21:

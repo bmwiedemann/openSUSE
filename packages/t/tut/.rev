@@ -25,4 +25,24 @@
 </comment>
     <requestid>1038035</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6b595a443c5f36c6960c903beb16875f</srcmd5>
+    <version>1.0.24</version>
+    <time>1669816804</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.24:
+  * The config option tag-follow works now
+- Update to version 1.0.23:
+  * List of followed tags. Use :tags
+  * Multiple tags in one feed. Use :tag linux mastodon
+  * Two new flags --config and --config-dir if you want to load
+    your configuration from a custom location. You can also use
+    the environment variables TUT_CONF and TUT_CONF_DIR instead
+  * :timeline direct shouldn't crash tut
+  * :user should now find more accounts
+- Update to version 1.0.22:
+  * Tut won't crash when you edit a reply
+</comment>
+    <requestid>1038953</requestid>
+  </revision>
 </revisionlist>
