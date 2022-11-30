@@ -22,15 +22,15 @@
 
 %bcond_without released
 Name:           bluedevil5
-Version:        5.26.3.1
+Version:        5.26.4
 Release:        0
 Summary:        Bluetooth Manager for KDE Plasma
 License:        GPL-2.0-or-later
 Group:          Hardware/Other
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/5.26.3/bluedevil-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/bluedevil-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/5.26.3/bluedevil-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/bluedevil-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules
