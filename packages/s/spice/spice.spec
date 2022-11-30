@@ -22,7 +22,7 @@
 
 %define libname libspice-server1
 Name:           spice
-Version:        0.15.0
+Version:        0.15.1
 Release:        0
 Summary:        SPICE client and server library
 License:        GPL-2.0-or-later OR LGPL-2.1-or-later
@@ -32,8 +32,6 @@ Source:         https://www.spice-space.org/download/releases/spice-server/%{nam
 Source1:        https://www.spice-space.org/download/releases/spice-server/%{name}-%{version}.tar.bz2.sig
 Source2:        %{name}.keyring
 Source99:       %{name}.rpmlintrc
-# PATCH-FIX-UPSTREAM https://gitlab.freedesktop.org/spice/spice/-/merge_requests/207
-Patch0:         fix-build-with-gstreamer-1.20.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  libjpeg-devel
@@ -97,7 +95,6 @@ and devices.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %configure \

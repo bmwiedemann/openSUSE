@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 29 13:52:13 MST 2022 - carnold@suse.com
+
+- Update to v0.15.1 release
+  * This is a bug fix release with no upstream changelog
+- Drop fix-build-with-gstreamer-1.20.patch
+
+-------------------------------------------------------------------
 Wed Mar 23 10:23:06 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch to let spice build with gstreamer 1.20.x
