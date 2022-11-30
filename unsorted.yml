@@ -783,6 +783,10 @@ unsorted:
   - armadillo-devel-32bit: [x86_64] 
   - armadillo-doc 
   - armagetron 
+  - armnn: [x86_64] 
+  - armnn-devel: [x86_64] 
+  - armnn-opencl: [x86_64] 
+  - armnn-opencl-devel: [x86_64] 
   - arp-scan 
   - arpack-ng-devel 
   - arpack-ng-devel-32bit: [x86_64] 
@@ -9847,6 +9851,16 @@ unsorted:
   - libarm_compute_graph29: [x86_64] 
   - libarmadillo11 
   - libarmadillo11-32bit: [x86_64] 
+  - libarmnn31: [x86_64] 
+  - libarmnn31-opencl: [x86_64] 
+  - libarmnnBasePipeServer31: [x86_64] 
+  - libarmnnBasePipeServer31-opencl: [x86_64] 
+  - libarmnnSerializer31: [x86_64] 
+  - libarmnnSerializer31-opencl: [x86_64] 
+  - libarmnnTestUtils2: [x86_64] 
+  - libarmnnTestUtils2-opencl: [x86_64] 
+  - libarmnnTfLiteParser24: [x86_64] 
+  - libarmnnTfLiteParser24-opencl: [x86_64] 
   - libarpack2 
   - libarpack2-32bit: [x86_64] 
   - libarprec0 
@@ -14454,6 +14468,10 @@ unsorted:
   - libtiff-devel 
   - libtiff-devel-32bit: [x86_64] 
   - libtiled1 
+  - libtimelineDecoder31: [x86_64] 
+  - libtimelineDecoder31-opencl: [x86_64] 
+  - libtimelineDecoderJson31: [x86_64] 
+  - libtimelineDecoderJson31-opencl: [x86_64] 
   - libtimezonemap1 
   - libtimidity-devel 
   - libtimidity2 
@@ -43403,6 +43421,8 @@ unsorted:
   - ubuntu-mate-icon-theme 
   - ubuntu-mate-wallpapers 
   - ubuntu-mono-icon-theme 
+  - ucblogo 
+  - ucblogo-doc 
   - uchardet 
   - ucl-devel 
   - ucm 
