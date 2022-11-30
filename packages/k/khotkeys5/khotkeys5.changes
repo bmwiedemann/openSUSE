@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 29 14:47:21 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.4
+- Changes since 5.26.3:
+  * Install translated documentation from po/ too
+
+-------------------------------------------------------------------
 Tue Nov  8 17:24:49 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.26.3
