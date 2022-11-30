@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Nov 28 13:51:24 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- cryptsetup 2.6.0:
+  * Introduce support for handling macOS FileVault2 devices (FVAULT2).
+  * libcryptsetup: no longer use global memory locking through mlockall()
+  * libcryptsetup: process priority is increased only for key derivation
+    (PBKDF) calls.
+  * Add new LUKS keyslot context handling functions and API.
+  * The volume key may now be extracted using a passphrase, keyfile, or
+    token. For LUKS devices, it also returns the volume key after
+    a successful crypt_format call.
+  * Fix --disable-luks2-reencryption configuration option.
+  * cryptsetup: Print a better error message and warning if the format
+    produces an image without space available for data.
+  * Print error if anti-forensic LUKS2 hash setting is not available.
+    If the specified hash was not available, activation quietly failed.
+  * Fix internal crypt segment compare routine if the user
+    specified cipher in kernel format (capi: prefix).
+  * cryptsetup: Add token unassign action.
+    This action allows removing token binding on specific keyslot.
+  * veritysetup: add support for --use-tasklets option.
+    This option sets try_verify_in_tasklet kernel dm-verity option
+    (available since Linux kernel 6.0) to allow some performance
+    improvement on specific systems.
+  * Provide pkgconfig Require.private settings.
+    While we do not completely provide static build on udev systems,
+    it helps produce statically linked binaries in certain situations.
+  * Always update automake library files if autogen.sh is run.
+    For several releases, we distributed older automake scripts by mistake.
+  * reencryption: Fix user defined moved segment size in LUKS2 decryption.
+    The --hotzone-size argument was ignored in cases where the actual data
+    size was less than the original LUKS2 data offset.
+  * Delegate FIPS mode detection to configured crypto backend.
+    System FIPS mode check no longer depends on /etc/system-fips file.
+  * Update documentation, including FAQ and man pages.
+
+-------------------------------------------------------------------
 Tue Sep 13 15:52:52 UTC 2022 - Luca Boccassi <luca.boccassi@gmail.com>
 
 - Add virtual provides for 'integritysetup' and 'veritysetup' to match

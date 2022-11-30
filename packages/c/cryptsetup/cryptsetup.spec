@@ -16,18 +16,18 @@
 #
 
 
-%define tar_version 2.5.0
+%define tar_version 2.6.0
 %define so_ver 12
 Name:           cryptsetup
-Version:        2.5.0
+Version:        2.6.0
 Release:        0
 Summary:        Setup program for dm-crypt Based Encrypted Block Devices
 License:        LGPL-2.0-or-later AND SUSE-GPL-2.0-with-openssl-exception
 Group:          System/Base
 URL:            https://gitlab.com/cryptsetup/cryptsetup/
-Source0:        https://www.kernel.org/pub/linux/utils/cryptsetup/v2.5/cryptsetup-%{tar_version}.tar.xz
+Source0:        https://www.kernel.org/pub/linux/utils/cryptsetup/v2.6/cryptsetup-%{tar_version}.tar.xz
 # GPG signature of the uncompressed tarball.
-Source1:        https://www.kernel.org/pub/linux/utils/cryptsetup/v2.5/cryptsetup-%{tar_version}.tar.sign
+Source1:        https://www.kernel.org/pub/linux/utils/cryptsetup/v2.6/cryptsetup-%{tar_version}.tar.sign
 Source2:        baselibs.conf
 Source3:        cryptsetup.keyring
 Source4:        %{name}-rpmlintrc
@@ -240,5 +240,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/man8/cryptsetup-token.8.gz
 %{_mandir}/man8/integritysetup.8.gz
 %{_mandir}/man8/veritysetup.8.gz
+%{_mandir}/man8/cryptsetup-fvault2Dump.8.gz
+%{_mandir}/man8/cryptsetup-fvault2Open.8.gz
 
 %changelog
