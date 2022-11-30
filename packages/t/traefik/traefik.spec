@@ -19,7 +19,7 @@
 %define project github.com/traefik/traefik
 
 Name:           traefik
-Version:        2.8.4
+Version:        2.9.5
 Release:        0
 Summary:        The Cloud Native Application Proxy
 License:        MIT

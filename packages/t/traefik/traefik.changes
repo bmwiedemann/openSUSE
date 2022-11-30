@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Mon Nov 28 12:10:58 UTC 2022 - alexandre.vicenzi@suse.com
+
+- Update to version 2.9.5:
+  * Prepare release v2.9.5 (#9513)
+  * Create a new capture instance for each incoming request
+  * docs(contributing): enhance wording of building-testing page
+  * docs(contributing): add link descriptions and update wording
+  * docs: update helm repository
+  * Removes the experimental tag on the Traefik Hub header
+  * Update vulcand/oxy to v1.4.2
+  * chore: update github.com/opencontainers/runc
+  * Prepare release v2.9.4
+  * Prepare release v2.9.3
+  * Prepare release v2.9.2
+  * Handle capture on redefined http.responseWriters
+  * Update Yaegi to v0.14.3
+  * Remove side effect on default transport tests
+  * chore: bump github.com/BurntSushi/toml to v1.2.1
+  * chore: update actions/cache to v3
+  * Simplify dashboard rule example
+  * chore: update linter
+  * Fix links to gateway API guides
+  * Remove unnecessary linting exclusions
+  * Add v2.9 to release page
+  * fix: redis configuration type
+  * Remove raw cert escape in PassTLSClientCert middleware
+  * chore: update misspell
+  * ISSUE_TEMPLATE: clarify maintainers involvement in issues closing
+  * chore: update linter
+  * updated go-acme/lego to v4.9.0
+  * prepare-release-v2.9.1 (#9410)
+  * Prepare release v2.9.0 (#9409)
+  * Prepare release v2.9.0-rc5
+  * Prepare release v2.8.8
+  * Fix autoDiscoverClusters option documentation for ECS provider
+  * Fix watch option description for Docker provider
+  * Update golang.org/x/net to latest version
+  * Improve documentation for publishedService and IP options
+  * Prepare release v2.8.7
+  * Prepare release v2.9.0-rc4
+  * Prepare release v2.8.6
+  * fix: query parameter matching with equal
+  * Rework metrics overview page
+  * fix: acme panic
+  * Optimize websocket headers handling
+  * providers: simplify AddServer algorithms
+  * fix: UDP loadbalancer tags not being used with Consul Catalog
+  * Add documentation for ECS constraints option
+  * docs: fix link to RouteNamespaces
+  * Prepare release v2.9.0-rc3
+  * Add a note on case insensitive regex matching
+  * Add documentation for json schema usage to validate config in the FAQ
+  * plugins: allow empty config
+  * Prepare release v2.9.0-rc2
+  * chore: drop Windows arm v5/6/7
+  * Prepare release v2.9.0-rc1 (#9334)
+  *  Add support for ECS Anywhere
+  * fix: shellcheck
+  * Make the loadbalancers servers order random
+  * Quiet down TCP RST packet error on read operation
+  * Remove Pilot support
+  * ACME Default Certificate
+  * Prepare release v2.8.5
+  * Update Yaegi to v0.14.2
+  * docs: update Docker Swarm link
+  * Update valkeyrie to v1.0.0
+  * Add traffic size metrics
+  * Add Datadog GlobalTags support
+  * docs: update Docker Swarm Load Balancer link
+  * Added resources for businesses
+  * Display default TLS options in the dashboard
+  * fix: IPv6 addr in square brackets
+  * Update deprecation notes about Pilot
+  * Use IPv6 address
+  * Change default TLS options for more security
+  * doc: add healthcheck timeout seconds to value
+  * Add a method option to the service Health Check
+  * Support Nomad canary deployment
+  * Add support for reaching containers using host networking on Podman
+  * Upgrade quic-go to v0.28.0
+  * Support ALPN for TCP + TLS routers
+  * Add allowEmptyServices for Docker provider
+  * Move consulcatalog provider to only use health apis
+  * Start polling HTTP provider at the beginning
+  * Load plugin configuration field value from Kubernetes Secret
+
+-------------------------------------------------------------------
 Wed Sep 07 10:11:41 UTC 2022 - alexandre.vicenzi@suse.com
 
 - Update to version 2.8.4:
