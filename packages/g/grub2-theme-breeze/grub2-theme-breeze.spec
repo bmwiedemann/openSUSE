@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           grub2-theme-breeze
-Version:        5.26.3
+Version:        5.26.4
 Release:        0
 Summary:        Plasma branding for GRUB2's graphical console
 License:        GPL-3.0-or-later
