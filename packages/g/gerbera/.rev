@@ -133,4 +133,27 @@
 </comment>
     <requestid>1011100</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a36a33b08391c162e97ae6edff08205e</srcmd5>
+    <version>1.12.0</version>
+    <time>1669816799</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.12.0:
+  * Support for NFO files as additional resources: Set up in resources
+    and place nfo-files (https://kodi.wiki/view/NFO_files/Templates) next to your media files.
+  * Tweaking mimetypes for clients
+  * Editing Flags in web UI
+  * More statistics on web UI
+  * Add support for ip subnets in client config
+  * Defaults for virtual container upnp class
+  * Configuration for SQLite database modes
+  * Offline mode for initial scan large libraries
+- Add disable-test.patch until https://github.com/gerbera/gerbera/issues/2755
+  is fixed. These two tests (UpnpClientsTest.getHostName and ParserTest.SortTrackNumber)
+  were added with this release.
+- Remove 2635.patch
+- Remove fix-fmt9.patch
+</comment>
+    <requestid>1038939</requestid>
+  </revision>
 </revisionlist>

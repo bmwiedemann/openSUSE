@@ -1,9 +1,9 @@
-Index: gerbera-1.9.1/scripts/systemd/gerbera.service.cmake
+Index: gerbera-1.12.0/scripts/systemd/gerbera.service.cmake
 ===================================================================
---- gerbera-1.9.1.orig/scripts/systemd/gerbera.service.cmake
-+++ gerbera-1.9.1/scripts/systemd/gerbera.service.cmake
-@@ -3,6 +3,20 @@ Description=${SYSTEMD_DESCRIPTION}
- After=${SYSTEMD_AFTER_TARGET}
+--- gerbera-1.12.0.orig/scripts/systemd/gerbera.service.cmake
++++ gerbera-1.12.0/scripts/systemd/gerbera.service.cmake
+@@ -4,6 +4,20 @@ After=${SYSTEMD_AFTER_TARGET}
+ Wants=${SYSTEMD_WANTS_TARGET}
  
  [Service]
 +# added automatically, for details please see

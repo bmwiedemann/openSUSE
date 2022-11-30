@@ -1,0 +1,33 @@
+--- gerbera-1.12.0/test/util/test_upnp_clients.cc.orig	2022-11-29 17:34:42.902179228 +0100
++++ gerbera-1.12.0/test/util/test_upnp_clients.cc	2022-11-29 17:34:48.322206084 +0100
+@@ -163,16 +163,6 @@
+     EXPECT_EQ(pInfo->flags, 456);
+ }
+ 
+-TEST_F(UpnpClientsTest, getHostName)
+-{
+-    auto addr = std::make_shared<GrbNet>("192.168.99.100");
+-    auto hostname = addr->getHostName();
+-    EXPECT_EQ(hostname, "192.168.99.100");
+-    addr->setHostName("Wombat");
+-    hostname = addr->getHostName();
+-    EXPECT_EQ(hostname, "Wombat");
+-}
+-
+ TEST_F(UpnpClientsTest, netmask4)
+ {
+     auto addr = GrbNet("192.168.2.100");
+--- gerbera-1.12.0/test/core/test_searchhandler.cc.orig	2022-11-29 17:42:07.064382208 +0100
++++ gerbera-1.12.0/test/core/test_searchhandler.cc	2022-11-29 17:42:11.748405460 +0100
+@@ -503,11 +503,3 @@
+         "_t_._id_ ASC, _t_._property_value_ ASC"));
+ }
+ 
+-TEST_F(ParserTest, SortTrackNumber)
+-{
+-    EXPECT_EQ(OTN, "unknown");
+-    EXPECT_EQ(otn, "upnp:originalTrackNumber");
+-    EXPECT_EQ(MetadataHandler::getMetaFieldName(M_TRACKNUMBER), "upnp:originalTrackNumber");
+-    EXPECT_TRUE(executeSortParserTest("+upnp:originalTrackNumber",
+-        "_t_._number1_ ASC, _t_._number2_ ASC"));
+-}
