@@ -235,9 +235,7 @@ fi
 mkdir -p %{buildroot}%{_sysconfdir}/zypp/vendors.d
 echo -e "[main]\nvendors=openSUSE,SUSE,SUSE LLC <https://www.suse.com/>\n" > %{buildroot}%{_sysconfdir}/zypp/vendors.d/00-openSUSE.conf
 
-
-# fate#319341, make openSUSE-release own YaST license files. TODO:
-# get rid of /etc/YaST2/licenses
+# fate#319341, make openSUSE-release own YaST license files.
 install -D -d -m 755 "%{buildroot}%_defaultlicensedir/product/base"
 install -D -d -m 755 "%{buildroot}%_defaultlicensedir"
 cp -a license "%{buildroot}%_defaultlicensedir/%name"
@@ -271,10 +269,11 @@ fi
 %config %{_sysconfdir}/YaST2/control.xml
 %config %{_sysconfdir}/zypp/vendors.d/00-openSUSE.conf
 %{_prefix}/lib/motd.d/welcome
-%dir %{_prefix}/lib/issue.d/
+%config(noreplace) %{_sysconfdir}/issue.net
+%dir %{_sysconfdir}/products.d
+%{_sysconfdir}/products.d/*
+%dir %{_prefix}/lib/issue.d
 %{_prefix}/lib/issue.d/10-openSUSE.conf
 %{_prefix}/lib/issue.d/90-openSUSE.conf
-%config(noreplace) %{_sysconfdir}/issue.net
-%{_sysconfdir}/products.d
 
 %changelog

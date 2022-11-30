@@ -183,23 +183,21 @@ ___DESCRIPTION___
 ___FLAVOR_PACKAGES___
 
 %prep
+%setup -qcT
+mkdir license
+if [ -f /CD1/license.tar.gz ]; then
+  tar -C license -xzf /CD1/license.tar.gz
+elif [ -f %{_prefix}/lib/skelcd/CD1/license.tar.gz ]; then
+  tar -C license -xzf %{_prefix}/lib/skelcd/CD1/license.tar.gz
+fi
 
 %build
 
 %install
-mkdir -p %{buildroot}%{_sysconfdir}
-mkdir -p %{buildroot}%{_prefix}/lib/issue.d
+mkdir -p %{buildroot}%{_sysconfdir} %{buildroot}%{_prefix}/lib/issue.d %{buildroot}/run
+
 echo -e "\nWelcome to ___SUMMARY___ (%{_target_cpu}) - Kernel \\\r (\\\l).\n" > %{buildroot}%{_prefix}/lib/issue.d/10-OS
 echo -e "\n" > %{buildroot}%{_prefix}/lib/issue.d/90-OS
-
-# Put EULA into correct place
-mkdir -p %{buildroot}/%{_sysconfdir}/YaST2/licenses/base
-cd %{buildroot}/%{_sysconfdir}/YaST2/licenses/base
-if [ -f /CD1/license.tar.gz ]; then
-  tar -xzf /CD1/license.tar.gz
-elif [ -f %{_prefix}/lib/skelcd/CD1/license.tar.gz ]; then
-  tar -xzf %{_prefix}/lib/skelcd/CD1/license.tar.gz
-fi
 
 VERSION_ID=`echo %{version}|tr '[:upper:]' '[:lower:]'|sed -e 's/ //g;'`
 # note: VERSION is an optional field and has no meaning other than informative on a rolling distro
@@ -220,6 +218,15 @@ LOGO="distributor-logo-MicroOS"
 EOF
 ln -s ..%{_prefix}/lib/os-release %{buildroot}%{_sysconfdir}/os-release
 
+# Put EULA into correct place
+install -D -d -m 755 "%{buildroot}%_defaultlicensedir/product/base"
+install -D -d -m 755 "%{buildroot}%_defaultlicensedir"
+cp -a license "%{buildroot}%_defaultlicensedir/%name"
+pushd license
+for i in *; do
+	ln -s "%_defaultlicensedir/%name/$i" %{buildroot}%_defaultlicensedir/product/base/$i
+done
+
 ___CREATE_PRODUCT_FILES___
 
 %post
@@ -237,16 +244,13 @@ fi
 
 %files
 %defattr(644,root,root,755)
+%dir %_defaultlicensedir/product
+%_defaultlicensedir/product/base
+%license license/*
 %{_sysconfdir}/os-release
 %{_prefix}/lib/os-release
 %dir %{_sysconfdir}/products.d
 %{_sysconfdir}/products.d/*
-%dir %{_sysconfdir}/YaST2/
-%dir %{_sysconfdir}/YaST2/licenses/
-%dir %{_sysconfdir}/YaST2/licenses/base/
-# no %doc here, or we will not install them
-%{_sysconfdir}/YaST2/licenses/base/license*txt
-%{_sysconfdir}/YaST2/licenses/base/no-acceptance-needed
 %dir %{_prefix}/lib/issue.d
 %{_prefix}/lib/issue.d/*-OS
 
