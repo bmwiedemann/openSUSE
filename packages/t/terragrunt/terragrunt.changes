@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Nov 30 13:38:48 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.42.2:
+  * Improve encryption setting on access log bucket (#2375)
+
+-------------------------------------------------------------------
+Wed Nov 30 13:20:21 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.42.1:
+  * Feat(#2292) add accesslogging bucket tags property to remote state s3 config block (#2355)
+  * Update documentation to reference actions for S3 bucket configuration (#2366)
+
+-------------------------------------------------------------------
 Tue Nov 29 14:07:41 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.42.0:
