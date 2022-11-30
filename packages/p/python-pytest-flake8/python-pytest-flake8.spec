@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-flake8
 Version:        1.1.1
 Release:        0
@@ -28,10 +27,12 @@ Source:         https://files.pythonhosted.org/packages/source/p/pytest-flake8/p
 Patch0:         support-flake8-5.patch
 BuildRequires:  %{python_module flake8 >= 5.0}
 BuildRequires:  %{python_module pytest >= 3.5}
+BuildRequires:  %{python_module py}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-flake8 >= 5.0
+Requires:       python-py
 Requires:       python-pytest >= 3.5
 BuildArch:      noarch
 %python_subpackages
@@ -55,6 +56,8 @@ Plugin for py.test for efficiently checking PEP8 compliance.
 %files %{python_files}
 %license LICENSE
 %doc CHANGELOG README.rst
-%{python_sitelib}/*
+%pycache_only %{python_sitelib}/__pycache__/*.pyc
+%{python_sitelib}/pytest_flake8.py
+%{python_sitelib}/pytest_flake8-%{version}*-info
 
 %changelog

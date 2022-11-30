@@ -93,4 +93,15 @@
   * Support flake8 &gt;= 5.0, adjust {Build,}Requires.</comment>
     <requestid>1001818</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>d8b0df5fcc10530aa8900d91e0f4a17b</srcmd5>
+    <version>1.1.1</version>
+    <time>1669816814</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python-py dep
+- Remove python_module macro definition
+- More specific python_sitelib in %files
+</comment>
+    <requestid>1039062</requestid>
+  </revision>
 </revisionlist>

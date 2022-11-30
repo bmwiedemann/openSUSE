@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 30 08:29:38 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add python-py dep
+- Remove python_module macro definition
+- More specific python_sitelib in %files
+
+-------------------------------------------------------------------
 Thu Sep  8 04:38:54 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.1.1:
