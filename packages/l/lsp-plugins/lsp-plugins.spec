@@ -35,7 +35,11 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  ladspa
 BuildRequires:  ladspa-devel
+%if 0%{?suse_version} >= 1550
+BuildRequires:  php8
+%else
 BuildRequires:  php7
+%endif
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(cairo)

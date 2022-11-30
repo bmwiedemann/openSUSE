@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 30 10:19:29 UTC 2022 - pgajdos@suse.com
+
+- buildrequire php8 instead of php7 in TW
+
+-------------------------------------------------------------------
 Sat Oct 15 11:05:04 UTC 2022 - Fabio Pesari <fpesari@tuxfamily.org>
 
 - Add fix-xorg-high-cpu-usage.patch from upstream devel branch
