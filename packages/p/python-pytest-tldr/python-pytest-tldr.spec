@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-tldr
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-tldr
-Version:        0.2.4
+Version:        0.2.5
 Release:        0
 Summary:        A pytest plugin that limits the output to just the things you need
 License:        BSD-3-Clause
@@ -53,6 +52,8 @@ A pytest plugin that limits the output to just the things you need.
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%pycache_only %{python_sitelib}/__pycache__/*.pyc
+%{python_sitelib}/pytest_tldr.py
+%{python_sitelib}/pytest_tldr-%{version}*-info
 
 %changelog

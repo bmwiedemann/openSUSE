@@ -51,4 +51,16 @@
     <comment></comment>
     <requestid>937345</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>171a506e36feaefa00eb2233861f2d33</srcmd5>
+    <version>0.2.5</version>
+    <time>1669816826</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove python_module macro definition
+- More specific python_sitelib in %files
+- Update to 0.2.5:
+  * An incompatibility with Pytest 7.2 was corrected. (#36)
+</comment>
+    <requestid>1039092</requestid>
+  </revision>
 </revisionlist>

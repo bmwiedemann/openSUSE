@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 30 11:56:24 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove python_module macro definition
+- More specific python_sitelib in %files
+- Update to 0.2.5:
+  * An incompatibility with Pytest 7.2 was corrected. (#36)
+
+-------------------------------------------------------------------
 Wed Dec  8 09:32:17 UTC 2021 - pgajdos@suse.com
 
 - version update to 0.2.4
