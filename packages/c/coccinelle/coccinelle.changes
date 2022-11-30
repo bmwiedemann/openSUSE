@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 29 10:51:36 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Enable build on riscv64
+- Increase stack size
+
+-------------------------------------------------------------------
 Wed Dec 29 21:21:21 UTC 2021 - ohering@suse.de
 
 - trim list of supported archs to aarch64 ppc64le s390x x86_64

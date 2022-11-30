@@ -292,4 +292,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>944124</requestid>
   </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>35d4142aa920b312e409cb615cd5e7be</srcmd5>
+    <version>1.1.1</version>
+    <time>1669816817</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable build on riscv64
+- Increase stack size (forwarded request 1038846 from Andreas_Schwab)</comment>
+    <requestid>1039067</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package coccinelle
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ URL:            http://coccinelle.lip6.fr/
 Source0:        %name-%version.tar.xz
 Source1:        %name.rpmlintrc
 Patch1:         kill-env.diff
-ExclusiveArch:  aarch64 ppc64le s390x x86_64
+ExclusiveArch:  aarch64 ppc64le s390x x86_64 riscv64
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -66,6 +66,12 @@ fixing bugs in systems code.
 %build
 autoreconf -fi
 %configure --with-python=%python_for_executables
+# Compiling the generated parser requires an extraordinary amount of stack
+%if 0%{?qemu_user_space_build}
+export QEMU_STACK_SIZE=$((32768*1024))
+%else
+ulimit -s 32768
+%endif
 %make_build -j1 VERBOSE=yes
 
 %install
