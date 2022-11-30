@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 29 08:01:55 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
+
+- Fix missing dependency on lua-macros (boo#1205612)
+
+-------------------------------------------------------------------
 Fri Nov  4 13:40:20 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Adjust shebang of /usr/bin/busted to point to the correct lua

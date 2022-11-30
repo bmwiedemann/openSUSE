@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package lua-busted
 #
 # Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2012 Togan Muftuoglu toganm@opensuse.org
@@ -30,7 +30,6 @@ URL:            http://olivinelabs.com/busted/
 Source:         https://github.com/Olivine-Labs/%{mod_name}/archive/v%{upversion}.tar.gz#/%{mod_name}-%{upversion}.tar.gz
 BuildRequires:  %{flavor}-cliargs >= 3.0-1
 BuildRequires:  %{flavor}-devel
-BuildRequires:  %{flavor}-penlight >= 1.3.2-2
 # For testing
 # BuildRequires:  %%{flavor}-copas
 BuildRequires:  %{flavor}-lua-ev
@@ -40,8 +39,10 @@ BuildRequires:  %{flavor}-luasystem >= 0.2.0-0
 BuildRequires:  %{flavor}-luaterm >= 0.1-1
 BuildRequires:  %{flavor}-mediator_lua >= 1.1-0
 BuildRequires:  %{flavor}-moonscript
+BuildRequires:  %{flavor}-penlight >= 1.3.2-2
 BuildRequires:  %{flavor}-say >= 1.3-0
 BuildRequires:  curl
+BuildRequires:  lua-macros
 BuildRequires:  openssl
 BuildRequires:  unzip
 Requires:       %{flavor}
@@ -59,7 +60,7 @@ Requires:       curl
 Requires:       openssl
 Requires:       unzip
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %lua_provides
 %if "%{flavor}" == ""
