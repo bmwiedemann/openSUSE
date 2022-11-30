@@ -21,7 +21,7 @@
 # test suite requires network connection, you can test locally with `rpmbuild --with test`
 %bcond_with test
 Name:           python-protonvpn-nm-lib
-Version:        3.11.0
+Version:        3.14.0
 Release:        0
 Summary:        Proton VPN NetworkManager library
 License:        GPL-3.0-or-later

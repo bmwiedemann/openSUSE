@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 28 14:07:39 UTC 2022 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
+
+- Update to 3.14.0
+  * When vpn session is invalid and an api request is made, ensure that user is logged out
+  * Properly handle session refresh
+  * Display propper error message when unable to establish VPN tunnel
+
+-------------------------------------------------------------------
 Fri Jul  1 19:26:58 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.11.0
