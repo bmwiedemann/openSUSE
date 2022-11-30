@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == ""
@@ -65,7 +64,7 @@ BuildConflicts: %{python_module qt5}
 %endif
 
 Name:           python-pytest-qt%{psuffix}
-Version:        4.1.0
+Version:        4.2.0
 Release:        0
 Summary:        Pytest support for PyQt and PySide applications
 License:        MIT
