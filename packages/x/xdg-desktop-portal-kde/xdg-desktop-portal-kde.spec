@@ -24,7 +24,7 @@
 
 %define kf5_version 5.98.0
 Name:           xdg-desktop-portal-kde
-Version:        5.26.3
+Version:        5.26.4
 Release:        0
 Summary:        QT/KF5 backend for xdg-desktop-portal
 License:        LGPL-2.1-or-later
