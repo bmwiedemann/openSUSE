@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Nov 29 14:47:59 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.4.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.4
+- Changes since 5.26.3:
+  * Do not query all available image plugins when determining background type (kde#462308)
+  * Install translated documentation from po/ too
+  * Panel: Revert making the mask smaller by 1px (kde#460896)
+  * Remove negative inset of plasmoid heading in notifications since there's no margin in those (kde#452347)
+  * lockscreen: Consider info messages to be prompts (kde#454706)
+  * Fix wrong example values, return correct paper size value
+  * wallpapers/image: save last wallpaper in slideshow mode (kde#461490)
+  * SystemDialog: Fix display when there is no component
+  * applets/notifications: unload ListView when plasmoid is not expanded
+  * applets/mediacontroller: avoid flashing application icon (kde#461496)
+  * SystemDialog: Make sure the window has a Qt.Window type
+  * Notifications: Explicitly uncheck paused button when switching to running state
+  * shell: revert unrelated changes in d79a927a4c7a8b489b985a6ae94bd9d8f082db93
+  * [shell] Always call load after init (kde#439159)
+  * applets/notifications: remove one unused import
+  * applets/notifications: remove workaround for QTBUG-67007
+  * startkde/plasma-session: fix playing startup sound
+
+-------------------------------------------------------------------
 Sat Nov 12 08:44:57 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update the build constraints

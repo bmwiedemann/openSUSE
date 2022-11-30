@@ -25,19 +25,20 @@
 
 %bcond_without released
 Name:           plasma5-workspace
+%global _plasma5_bugfix 5.26.4
 # Full Plasma 5 version (e.g. 5.9.1)
 %{!?_plasma5_bugfix: %global _plasma5_bugfix %{version}}
 # Latest ABI-stable Plasma (e.g. 5.8 in KF5, but 5.9.1 in KUF)
 %{!?_plasma5_version: %define _plasma5_version %(echo %{_plasma5_bugfix} | awk -F. '{print $1"."$2}')}
-Version:        5.26.3
+Version:        5.26.4.1
 Release:        0
 Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/plasma-workspace-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/5.26.4/plasma-workspace-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-workspace-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/5.26.4/plasma-workspace-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 Source3:        xprop-kde-full-session.desktop

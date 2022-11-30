@@ -2007,4 +2007,12 @@ Tue Sep 23 20:24:35 UTC 2014 - hrvoje.senjan@gmail.com
     <comment>- Update the build constraints</comment>
     <requestid>1035356</requestid>
   </revision>
+  <revision rev="203" vrev="1">
+    <srcmd5>0b3e49d9d2afb9656d25389bb3758074</srcmd5>
+    <version>5.26.4.1</version>
+    <time>1669816768</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.26.4(.1). (forwarded request 1038954 from Vogtinator)</comment>
+    <requestid>1038995</requestid>
+  </revision>
 </revisionlist>
