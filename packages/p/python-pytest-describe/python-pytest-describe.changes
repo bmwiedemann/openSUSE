@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 30 08:24:00 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add python-py dependency
+- Remove python_module macro definition
+- More specific python_sitelib in %files
+
+-------------------------------------------------------------------
 Mon May  2 08:00:02 UTC 2022 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2.0.1

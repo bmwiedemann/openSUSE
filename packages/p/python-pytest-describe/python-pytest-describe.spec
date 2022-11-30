@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pytest-describe
 Version:        2.0.1
@@ -26,9 +25,11 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pytest-dev/pytest-describe
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-describe/pytest-describe-%{version}.tar.gz
+BuildRequires:  %{python_module py}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-py
 Requires:       python-pytest >= 4.0
 BuildArch:      noarch
 # SECTION test requirements
@@ -55,6 +56,7 @@ Describe-style plugin for pytest.
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pytest_describe
+%{python_sitelib}/pytest_describe-%{version}*-info
 
 %changelog
