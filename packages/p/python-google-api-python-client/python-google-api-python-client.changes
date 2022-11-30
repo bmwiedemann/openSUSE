@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Wed Nov 30 12:14:13 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.66.0:
+  * **alertcenter:** update the api
+  * **androiddeviceprovisioning:** update the api
+  * **androidpublisher:** update the api
+  * **appengine:** update the api
+  * **artifactregistry:** update the api
+  * **assuredworkloads:** update the api
+  * **assuredworkloads:** update the api
+  * **baremetalsolution:** update the api
+  * **beyondcorp:** update the api
+  * **bigquery:** update the api
+  * **bigtableadmin:** update the api
+  * **chat:** update the api
+  * **chat:** update the api
+  * **chromepolicy:** update the api
+  * **cloudbuild:** update the api
+  * **cloudfunctions:** update the api
+  * **cloudsearch:** update the api
+  * **cloudtasks:** update the api
+  * **composer:** update the api
+  * **compute:** update the api
+  * **compute:** update the api
+  * **connectors:** update the api
+  * **containeranalysis:** update the api
+  * **content:** update the api
+  * **contentwarehouse:** update the api
+  * **contentwarehouse:** update the api
+  * **datacatalog:** update the api
+  * **dataplex:** update the api
+  * **dataplex:** update the api
+  * **dataproc:** update the api
+  * **dataproc:** update the api
+  * **datastore:** update the api
+  * **dialogflow:** update the api
+  * **displayvideo:** update the api
+  * **documentai:** update the api
+  * **doubleclicksearch:** update the api
+  * **drivelabels:** update the api
+  * **firestore:** update the api
+  * **gkehub:** update the api
+  * **healthcare:** update the api
+  * **integrations:** update the api
+  * **managedidentities:** update the api
+  * **managedidentities:** update the api
+  * **metastore:** update the api
+  * **monitoring:** update the api
+  * **networkconnectivity:** update the api
+  * **playintegrity:** update the api
+  * **redis:** update the api
+  * **retail:** update the api
+  * **retail:** update the api
+  * **run:** update the api
+  * **run:** update the api
+  * **servicecontrol:** update the api
+  * **servicedirectory:** update the api
+  * **speech:** update the api
+  * **sqladmin:** update the api
+  * **tagmanager:** update the api
+  * **translate:** update the api
+  * Fix a typo in UPGRADING.md related to static_discovery (#1956) (bc03ac6)
+
+-------------------------------------------------------------------
 Fri Oct 28 17:22:24 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 2.65.0: 

@@ -530,4 +530,41 @@ eplacement for google-api-python-client, follow our naming convention</comment>
     <comment></comment>
     <requestid>1032324</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>e77b9b68b84d0e2c0f4319b9572c4836</srcmd5>
+    <version>2.66.0</version>
+    <time>1669816825</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.66.0:
+  * **alertcenter:** update the api
+  * **androiddeviceprovisioning:** update the api
+  * **androidpublisher:** update the api
+  * **appengine:** update the api
+  * **artifactregistry:** update the api
+  * **assuredworkloads:** update the api
+  * **assuredworkloads:** update the api
+  * **baremetalsolution:** update the api
+  * **beyondcorp:** update the api
+  * **bigquery:** update the api
+  * **bigtableadmin:** update the api
+  * **chat:** update the api
+  * **chat:** update the api
+  * **chromepolicy:** update the api
+  * **cloudbuild:** update the api
+  * **cloudfunctions:** update the api
+  * **cloudsearch:** update the api
+  * **cloudtasks:** update the api
+  * **composer:** update the api
+  * **compute:** update the api
+  * **compute:** update the api
+  * **connectors:** update the api
+  * **containeranalysis:** update the api
+  * **content:** update the api
+  * **contentwarehouse:** update the api
+  * **contentwarehouse:** update the api
+  * **datacatalog:** update the api
+  * **dataplex:** update the api
+  * **dataplex:** update the api (forwarded request 1039100 from glaubitz)</comment>
+    <requestid>1039107</requestid>
+  </revision>
 </revisionlist>
