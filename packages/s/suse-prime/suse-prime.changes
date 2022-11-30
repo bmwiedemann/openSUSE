@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 30 13:53:46 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
+
+- SUSEPrime-0.8.10
+  * prime-select.sh: fix kdeglobals path (github issue#91)
+- require sudo command/package (github issue#91)
+
+-------------------------------------------------------------------
 Sun Oct 23 20:56:09 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - SUSEPrime-0.8.9

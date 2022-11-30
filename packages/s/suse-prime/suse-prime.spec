@@ -23,7 +23,7 @@
 %global modprobe_d_files 09-nvidia-modprobe-bbswitch-G04.conf 09-nvidia-modprobe-pm-G05.conf
 
 Name:           suse-prime
-Version:        0.8.9
+Version:        0.8.10
 Release:        0
 Summary:        GPU (nvidia/intel) selection for NVIDIA optimus laptops with bbswitch support
 License:        SUSE-Public-Domain
@@ -37,6 +37,8 @@ Obsoletes:      suse-prime-bbswitch < %{version}
 Provides:       suse-prime-bbswitch = %{version}
 BuildRequires:  pkgconfig(systemd)
 BuildArch:      noarch
+Requires:       coreutils
+Requires:       sudo
 %{?systemd_ordering}
 
 %description

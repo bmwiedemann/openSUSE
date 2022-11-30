@@ -646,4 +646,14 @@ Latest changes:
     with several domains (issue#88)</comment>
     <requestid>1030616</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>54f708ebd5d8d8993d00623b6b0778dc</srcmd5>
+    <version>0.8.10</version>
+    <time>1669822397</time>
+    <user>dimstar_suse</user>
+    <comment>- SUSEPrime-0.8.10
+  * prime-select.sh: fix kdeglobals path (github issue#91)
+- require sudo command/package (github issue#91)</comment>
+    <requestid>1039126</requestid>
+  </revision>
 </revisionlist>
