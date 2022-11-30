@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-html
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,27 +16,28 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pytest-html
-Version:        3.1.1
+Version:        3.2.0
 Release:        0
 Summary:        Pytest plugin for generating HTML reports
 License:        MPL-2.0
 URL:            https://github.com/pytest-dev/pytest-html
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-html/pytest-html-%{version}.tar.gz
+BuildRequires:  %{python_module pytest >= 5.0}
+BuildRequires:  %{python_module pytest-metadata}
+BuildRequires:  %{python_module py}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-ansi2html
+Requires:       python-py
 Requires:       python-pytest >= 5.0
 Requires:       python-pytest-metadata
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module ansi2html}
-BuildRequires:  %{python_module pytest >= 5.0}
-BuildRequires:  %{python_module pytest-metadata}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-rerunfailures}
 BuildRequires:  %{python_module pytest-xdist}
@@ -62,7 +63,7 @@ export LANG=en_US.UTF-8
 
 %files %{python_files}
 %license LICENSE
-%doc CHANGES.rst README.rst
+%doc docs/changelog.rst README.rst
 %{python_sitelib}/pytest_html
 %{python_sitelib}/pytest_html-%{version}*-info
 

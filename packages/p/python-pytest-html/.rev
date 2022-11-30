@@ -109,4 +109,25 @@
     <comment></comment>
     <requestid>864174</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>fdc33975aa8128ff986e377736507450</srcmd5>
+    <version>3.2.0</version>
+    <time>1669816815</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove python_module macro definition
+- Add python-py dependency
+- Update to 3.2.0
+  * Explicitly add py.xml dependency.
+    Thanks to @smartEBL for the PR
+  * Implement the visible URL query parameter to control visibility of test
+    results on page load. (#399)
+    Thanks to @TheCorp for reporting and @gnikonorov for the fix
+  * Make the report tab title reflect the report name. (#412)
+    Thanks to @gnikonorov for the PR
+  * Implement environment_table_redact_list to allow for redaction of
+    environment table values. (#233)
+    Thanks to @fenchu for reporting and @gnikonorov for the PR
+</comment>
+    <requestid>1039079</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Nov 30 10:42:06 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove python_module macro definition
+- Add python-py dependency
+- Update to 3.2.0
+  * Explicitly add py.xml dependency.
+    Thanks to @smartEBL for the PR
+  * Implement the visible URL query parameter to control visibility of test
+    results on page load. (#399)
+    Thanks to @TheCorp for reporting and @gnikonorov for the fix
+  * Make the report tab title reflect the report name. (#412)
+    Thanks to @gnikonorov for the PR
+  * Implement environment_table_redact_list to allow for redaction of
+    environment table values. (#233)
+    Thanks to @fenchu for reporting and @gnikonorov for the PR
+
+-------------------------------------------------------------------
 Mon Jan 18 20:21:31 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to 3.1.1
