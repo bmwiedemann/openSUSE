@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 29 16:58:39 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove python_module macro definition
+- Add python-py dependency required because python-pytest removed that
+  dependency
+
+-------------------------------------------------------------------
 Sun Dec 12 16:55:20 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - update to 1.9.0
