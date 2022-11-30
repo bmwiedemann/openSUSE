@@ -19,7 +19,7 @@
 %bcond_without released
 %define mm_support 1
 Name:           plasma-nm5
-Version:        5.26.3
+Version:        5.26.4
 Release:        0
 Summary:        Plasma applet written in QML for managing network connections
 License:        (GPL-2.0-only OR GPL-3.0-only) AND (LGPL-2.1-only OR LGPL-3.0-only)
