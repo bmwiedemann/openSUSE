@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Nov 29 14:47:22 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.4
+- Changes since 5.26.3:
+  * Install translated documentation from po/ too
+  * utils/serviceutils: Improve Exec key parsing
+  * effects/kscreen: don't stop effect when fade out animation is done (kde#460902)
+  * backends/libinput: update screens on Workspace::outputsChanged (kde#461901)
+  * Update defiintion of customised Gitlab CI job to include appropriate flags to keep Git happy
+  * screencast: Don't scale the cursor
+  * x11: Reset SurfaceItemX11::m_isDamaged when the damage handle is destroyed
+  * activation: Guard against not having any active window
+  * wayland: Make debug console placeable (kde#453920)
+  * screencast: Fix how we tell pipewire that the stream has been resized (kde#461590)
+  * backends/drm: generate modes even if some common modes are available
+
+-------------------------------------------------------------------
 Tue Nov  8 17:25:03 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.26.3
