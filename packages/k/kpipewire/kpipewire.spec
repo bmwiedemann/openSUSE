@@ -21,7 +21,7 @@
 %{!?_plasma5_bugfix: %global _plasma5_bugfix %{version}}
 %bcond_without released
 Name:           kpipewire
-Version:        5.26.3
+Version:        5.26.4
 Release:        0
 Summary:        PipeWire integration for KDE Plasma
 License:        LGPL-2.0-only AND LGPL-3.0-only
