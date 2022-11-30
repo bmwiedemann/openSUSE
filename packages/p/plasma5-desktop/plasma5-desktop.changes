@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Nov 29 14:47:25 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.4
+- Changes since 5.26.3:
+  * Install translated documentation from po/ too
+  * Panel: Avoid setting solid background when compositing is disabled (kde#451451)
+  * applets/kickoff: fix huge icons in category list (kde#460349)
+  * kcms/runners: Fix org.kde.kconfig.notify DBus signal getting wrong plugin id (kde#461422)
+  * [kcms/tablet] Reload output combobox when outputs change (kde#461560)
+
+-------------------------------------------------------------------
 Tue Nov  8 17:25:19 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.26.3
