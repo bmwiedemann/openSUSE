@@ -17,16 +17,13 @@
 
 
 Name:           waybar
-Version:        0.9.15
+Version:        0.9.16
 Release:        0
 Summary:        Customizable Wayland bar for Sway and Wlroots based compositors
 License:        MIT
 Group:          System/GUI/Other
 URL:            https://github.com/Alexays/Waybar
-# use this to download tarball. then use `meson subprojects download`
-# to get the `date` dependency. and create own tarball
-#Source:         https://github.com/Alexays/Waybar/archive/%{version}.tar.gz
-Source:         %{version}.tar.xz
+Source:         Waybar-%{version}.tar.xz
 BuildRequires:  cmake
 %if 0%{?sle_version} >= 150400
 BuildRequires:  gcc11-c++
@@ -66,9 +63,10 @@ BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-cursor)
 BuildRequires:  pkgconfig(wayland-protocols)
+BuildRequires:  pkgconfig(wireplumber-0.4)
 BuildRequires:  pkgconfig(xkbregistry)
 # requires branding
-Requires:       %{name}-branding
+Requires:       %{name}-branding = %{version}
 # optional: sway integration
 Recommends:     sway
 
@@ -79,8 +77,8 @@ Customizable Wayland bar for Sway and Wlroots based compositors.
 Summary:        Upstream branding of %{name}
 Group:          System/GUI/Other
 Requires:       %{name} = %{version}
-Supplements:    packageand(%{name}:branding-upstream)
-Conflicts:      otherproviders(%{name}-branding)
+Supplements:    (%{name} and branding-upstream)
+Conflicts:      %{name}-branding
 Provides:       %{name}-branding = %{version}
 BuildArch:      noarch
 #BRAND: /etc/xdg/waybar/config contains upstream config

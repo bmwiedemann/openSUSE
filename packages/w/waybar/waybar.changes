@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Nov 29 19:15:28 UTC 2022 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 0.9.16:
+  * Revert breaking changes introduced in 0.9.14
+  * button: Remove AButton class
+  * modules: Revert button to label
+  * Battery: "Plugged" status for TLP settings
+  * fix: don't escape mpd label twice
+  * Make backlight module respect format- config
+  * feat(backlight): hide if the display is powered off
+  * Do not crash when a monitor is removed
+  * normalize capacity by number of batteries
+  * clicking on the user label opens the default file manager
+  * User module: fix call parent event handle, added command to open user folder
+  * Recognize outputs with 'bluez' in monitor name as bluetooth class
+  * feat: wireplumber support
+  * fix custom module leaves zombie processes behind when bars are removed
+  * Fix crashes when using named workspaces in Hyprland
+
+-------------------------------------------------------------------
 Thu Nov  3 08:47:28 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.9.15:

@@ -670,4 +670,12 @@
   * Add 'max-volume' option to pulseaudio #1659</comment>
     <requestid>1033009</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>30000692d81b25f8c230045e325b3d24</srcmd5>
+    <version>0.9.16</version>
+    <time>1669816807</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1039030</requestid>
+  </revision>
 </revisionlist>
