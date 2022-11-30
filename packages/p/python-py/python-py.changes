@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 29 17:04:41 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove python_module macro definition
+- Add python-py dep for testing
+- Use autosetup insteado of setup + patch
+- More specific python_sitelib in %files
+
+-------------------------------------------------------------------
 Tue Mar 15 08:13:43 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 - use %python_expand for %fdupes

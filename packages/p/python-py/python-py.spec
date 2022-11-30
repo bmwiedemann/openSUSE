@@ -17,7 +17,6 @@
 
 
 %define oldpython python
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -47,6 +46,7 @@ BuildRequires:  python-rpm-macros
 Obsoletes:      %{oldpython}-py-docs
 BuildArch:      noarch
 %if %{with test}
+BuildRequires:  %{python_module py = %{version}}
 BuildRequires:  %{python_module pytest}
 %endif
 %python_subpackages
@@ -62,8 +62,7 @@ the following tools and modules:
 * py.path:  uniform local and svn path objects
 
 %prep
-%setup -q -n py-%{version}
-%patch0 -p1
+%autosetup -p1 -n py-%{version}
 
 rm -rf py.egg-info
 rm -f tox.ini
@@ -92,7 +91,8 @@ export LANG=en_US.UTF-8
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/py
+%{python_sitelib}/py-%{version}*-info
 %endif
 
 %changelog
