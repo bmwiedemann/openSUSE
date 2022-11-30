@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 28 05:49:17 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add swig_4_1_compat.patch: Ensure compatibility with swig 4.1;
+  patch taken from upstream.
+- Make %{name}-data package noarch.
+
+-------------------------------------------------------------------
 Fri Aug 19 12:25:25 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 4.0.0:

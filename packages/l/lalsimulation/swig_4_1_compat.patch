@@ -1,0 +1,28 @@
+From 17bdccd92ab76abfe617e3eb38edf85ab4dfe424 Mon Sep 17 00:00:00 2001
+From: Karl Wette <karl.wette@ligo.org>
+Date: Sat, 26 Nov 2022 14:35:05 +1100
+Subject: [PATCH] lalsimulation/lib/LALSimSphHarmSeries.h: fix misspelled SWIG
+ directive
+
+---
+ lalsimulation/lib/LALSimSphHarmSeries.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/lalsimulation/lib/LALSimSphHarmSeries.h b/lalsimulation/lib/LALSimSphHarmSeries.h
+index 1bf7b239d9..9ee6b7ba01 100644
+--- a/lalsimulation/lib/LALSimSphHarmSeries.h
++++ b/lalsimulation/lib/LALSimSphHarmSeries.h
+@@ -96,8 +96,8 @@ void XLALDestroySphHarmPolarTimeSeries(SphHarmPolarTimeSeries* ts);
+ UINT4 XLALSphHarmPolarTimeSeriesGetMaxL(SphHarmPolarTimeSeries* ts);
+ 
+ #ifdef SWIG
+-SWIGLAL(OWNED_BY_1ST_ARG(REAL8TimeSeries*, XLALSphHarmPolarTimeSeriesGetModeAmplitude));
+-SWIGLAL(OWNED_BY_1ST_ARG(REAL8TimeSeries*, XLALSphHarmPolarTimeSeriesGetModePhase));
++SWIGLAL(RETURN_OWNED_BY_1ST_ARG(REAL8TimeSeries*, XLALSphHarmPolarTimeSeriesGetModeAmplitude));
++SWIGLAL(RETURN_OWNED_BY_1ST_ARG(REAL8TimeSeries*, XLALSphHarmPolarTimeSeriesGetModePhase));
+ #endif
+ 
+ REAL8TimeSeries* XLALSphHarmPolarTimeSeriesGetModeAmplitude(SphHarmPolarTimeSeries *ts, UINT4 l, INT4 m);
+-- 
+GitLab
+

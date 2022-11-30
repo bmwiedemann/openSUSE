@@ -31,6 +31,8 @@ Summary:        LSC Algorithm Simulation Library
 License:        GPL-2.0-only
 URL:            https://wiki.ligo.org/Computing/DASWG/LALSuite
 Source:         https://software.igwn.org/sources/source/lalsuite/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM swig_4_1_compat.patch badshah40@gmail.com -- Ensure compatibility with swig 4.1; patch taken from upstream
+Patch0:         https://git.ligo.org/lscsoft/lalsuite/-/commit/17bdccd92ab76abfe617e3eb38edf85ab4dfe424.patch#/swig_4_1_compat.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module lal >= 7.2.0}
 BuildRequires:  %{python_module numpy >= 1.7}
@@ -85,6 +87,7 @@ This package provides the header and sources for coding against LALSimulation.
 
 %package -n %{name}-data
 Summary:        Data files required for analyses using lalsimulation
+BuildArch:      noarch
 
 %description -n %{name}-data
 This package provides the data files used when running analyses involving
@@ -100,7 +103,7 @@ Requires:       octave-lal
 This package provides the necessary files for using LALSimulation with octave.
 
 %prep
-%autosetup -p1
+%autosetup -p2
 
 %build
 %{python_expand # Necessary to run configure with multiple py3 flavors
