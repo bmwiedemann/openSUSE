@@ -18,7 +18,7 @@
 
 %define pythons python3
 Name:           protonvpn-gui
-Version:        1.10.0
+Version:        1.12.0
 Release:        0
 Summary:        Official Proton VPN GUI
 License:        GPL-3.0-or-later

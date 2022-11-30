@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 28 14:25:46 UTC 2022 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
+
+- Update to 1.12.0
+  * Ensure that whenever session is invalid, user is logged out
+  * If session is invalid, logout and inform the user about it.
+  * Stop displaying new brand dialog on new login.
+
+-------------------------------------------------------------------
 Fri Jul  1 18:05:30 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 1.10.0
