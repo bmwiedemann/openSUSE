@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 28 09:39:59 UTC 2022 - mliska@suse.cz
+
+- Update to version 2.4.0+git20221128.b71453b:
+  * PythonCheck: Allow tests folder in python packages
+
+-------------------------------------------------------------------
 Tue Nov 22 13:33:27 UTC 2022 - mliska@suse.cz
 
 - Update to version 2.4.0+git20221122.a31cc76:
