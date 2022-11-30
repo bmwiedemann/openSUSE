@@ -15,4 +15,15 @@
     <comment></comment>
     <requestid>841154</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>1b744058bca919bf54acc822d5d7eb42</srcmd5>
+    <version>0.4</version>
+    <time>1669816826</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove python_module macro definition
+- Add python-py dependency
+- More specific python_sitelib in %files
+</comment>
+    <requestid>1039094</requestid>
+  </revision>
 </revisionlist>

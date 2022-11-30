@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-toolbox
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pytest-toolbox
 Version:        0.4
@@ -26,11 +25,13 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/samuelcolvin/pytest-toolbox
 Source:         https://github.com/samuelcolvin/pytest-toolbox/archive/v%{version}.tar.gz#/pytest-toolbox-%{version}.tar.gz
-BuildRequires:  %{python_module pytest >= 3.5}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module pydantic}
+BuildRequires:  %{python_module pytest >= 3.5}
+BuildRequires:  %{python_module py}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-py
 Requires:       python-pytest >= 3.5
 Recommends:     python-pydantic
 BuildArch:      noarch
@@ -56,6 +57,7 @@ sed -i '/addopts/d;/timeout/d' setup.cfg
 %files %{python_files}
 %doc README.rst HISTORY.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pytest_toolbox
+%{python_sitelib}/pytest_toolbox-%{version}*-info
 
 %changelog

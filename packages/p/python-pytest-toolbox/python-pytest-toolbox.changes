@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 30 12:02:27 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove python_module macro definition
+- Add python-py dependency
+- More specific python_sitelib in %files
+
+-------------------------------------------------------------------
 Sun Oct 11 15:55:51 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Fix %check to run tests with pytest 6.1
