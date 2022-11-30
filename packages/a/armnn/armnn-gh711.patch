@@ -1,0 +1,10 @@
+--- armnn-22.11/tests/TfLiteYoloV3Big-Armnn/TfLiteYoloV3Big-Armnn.cpp.orig	2022-11-29 15:20:31.148251027 +0100
++++ armnn-22.11/tests/TfLiteYoloV3Big-Armnn/TfLiteYoloV3Big-Armnn.cpp	2022-11-29 15:20:52.820459889 +0100
+@@ -20,6 +20,7 @@
+ #include <chrono>
+ #include <fstream>
+ #include <iostream>
++#include <iterator>
+ #include <cmath>
+ 
+ using namespace armnnTfLiteParser;

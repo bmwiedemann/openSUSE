@@ -1,0 +1,507 @@
+-------------------------------------------------------------------
+Mon Nov 28 07:40:40 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 22.11:
+  * Changelog: https://github.com/ARM-software/armnn/releases/tag/v22.11
+  * Add libarmnnTestUtils
+- Add patch to fix build:
+  * armnn-gh711.patch
+
+-------------------------------------------------------------------
+Tue Aug 30 09:19:52 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 22.08:
+  * Changelog: https://github.com/ARM-software/armnn/releases/tag/v22.08
+- Drop upstream patch:
+  * armnn-fix-gcc12.patch
+
+-------------------------------------------------------------------
+Tue May 31 13:31:55 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 22.05:
+  * Changelog: https://github.com/ARM-software/armnn/releases/tag/v22.05
+- Add patch to fix build with GCC12 and new flatbuffers:
+  * armnn-fix-gcc12.patch
+
+-------------------------------------------------------------------
+Tue Mar 15 13:06:29 UTC 2022 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+-  Update to 22.02:
+  * Changelog: https://github.com/ARM-software/armnn/releases/tag/v22.02
+  * Add libarmnnTestUtils
+
+-------------------------------------------------------------------
+Wed Dec  1 10:03:31 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 21.11:
+  * Changelog: https://github.com/ARM-software/armnn/releases/tag/v21.11
+  * Main changes:
+    - New capabilities and improve performance
+    - ABI/API Changes
+      The following front-end API changes have occurred during the
+      implementation of 21.11 that users should be aware of before
+      upgrading. Due to these changes we have bumped our ARMNN_VERSION
+      to 27.0.0, the Delegate to 25.0.0 and also bumping
+      our Parsers to 24.3.0 following Semantic Versioning guidelines.
+- Drop upstream patches:
+  * 96beb97.diff
+  * febc20f.diff
+  * e118e04.diff
+  * 0011-update-doctest-for-glibc2.34.patch
+
+-------------------------------------------------------------------
+Mon Oct 25 07:21:27 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add upstream patch to fix stringop-overread error:
+  * e118e04.diff
+
+-------------------------------------------------------------------
+Thu Oct 21 15:24:42 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add upstream patch to fix uninitialized var error:
+  * febc20f.diff
+- Remove most -Wno-error* flags which are not needed anymore
+
+-------------------------------------------------------------------
+Wed Oct 20 08:41:14 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add 0011-update-doctest-for-glibc2.34.patch: Update doctest to
+  version 2.4.6 to allow Arm NN to build with glibc 2.34; patch
+  taken from upstream commits 13d2e0d and 4ec6d42and rebased for
+  current version.
+
+-------------------------------------------------------------------
+Thu Sep  9 08:04:50 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 21.08:
+  * Changelog: https://github.com/ARM-software/armnn/releases/tag/v21.08
+  * Main changes:
+    - new capabilities and improve performance:
+      * Added the ability to import protected DMA Buffers and
+      allow Arm NN to run inferences that are in Protected GPU Memory.
+      As well as providing Custom Memory Allocator which supports
+      importing malloc, Dma_buf and protected Dma buffers.
+      * Users with multi core NPUs has been given the ability to pin
+      inferences to selected cores giving them the ability to balance
+      parallel workloads across the NPU and increase throughput.
+      * Boost has been completely removed from the code base making
+      Arm NN easier to integrate into other software stacks.
+      * Added support for non-constant weights and biases on
+      FullyConnected which lay the groundwork for supporting more models.
+      * More operators supported on Arm NN, TfLite Parser, TfLite
+      Delegate and Android NNAPI driver.
+- Drop upstream patch:
+  * armnn-fix-include.patch
+
+-------------------------------------------------------------------
+Fri Jul 16 08:23:43 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add '-Wno-error=stringop-overread' to workaround build error
+  with GCC11 with openCL enabled
+
+-------------------------------------------------------------------
+Tue Jul 13 08:07:14 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add '-Wno-error=uninitialized -Wno-error=array-bounds' to
+  workaround build issues with GCC11 - https://github.com/ARM-software/armnn/issues/548
+
+-------------------------------------------------------------------
+Tue May 25 06:49:01 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix libarmnnOnnxParser version
+
+-------------------------------------------------------------------
+Fri May 21 06:55:48 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 21.05:
+  * Changelog: https://github.com/ARM-software/armnn/releases/tag/v21.05
+  * Main changes: 
+    - new capabilities to allow users attain higher performance by:
+      * Making the Arm NN Core thread safe opening the possibility of
+      running multiple inferences on the same model in parallel
+      software threads.
+      * Allowing graphs on the GPU backend import their input and
+      output buffers either from correctly aligned main memory or
+      from kernel memory exposed as a dma_buf, thus reducing memory
+      usage and saving the time involved in copying data into and
+      out of the GPU memory space.
+    - In addition to this, support was added to allow the MobileBERT
+    network to be parsed and run.
+    - Finally three deprecated components: the Tensorflow Parser,
+    the Caffe Parser and the Arm NN Quantizer tool, were removed
+- Add patch to fix include path:
+  * armnn-fix-include.patch
+- Disable armnn-extratests as it fails to build with current version
+
+-------------------------------------------------------------------
+Mon Mar 29 12:17:08 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 21.02:
+  * Changelog: https://github.com/ARM-software/armnn/releases/tag/v21.02
+- Drop upstream patch:
+  * c5c40fe.diff
+
+-------------------------------------------------------------------
+Mon Feb 15 09:48:06 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix instalaltion of cmake files with an upstream patch:
+  * c5c40fe.diff
+
+-------------------------------------------------------------------
+Mon Jan 25 08:21:39 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Backport patch to fix tflite parser when built against
+  tensorflow 2.4:
+  * 96beb97.diff
+
+-------------------------------------------------------------------
+Wed Dec  9 14:33:19 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 20.11:
+  * Changelog: https://github.com/ARM-software/armnn/releases/tag/v20.11
+- Refresh patch to handle boost::variant to mapbox::util::variant update:
+  * 0006-armnn-mobilenet-test-example.patch
+
+-------------------------------------------------------------------
+Fri Sep  4 16:07:09 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add python support, disabled for now as it does not install
+  files atm
+
+-------------------------------------------------------------------
+Fri Sep  4 14:56:36 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Package libtimelineDecoderJson
+
+-------------------------------------------------------------------
+Thu Sep  3 11:18:40 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 20.08:
+  * Changelog: https://github.com/ARM-software/armnn/releases/tag/v20.08
+- Refresh patch:
+  * 0005-add-armnn-mobilenet-test-example.patch
+- Drop upstream patch:
+  * armnn-fix-catch.patch
+- Disable ONNX on Tumbleweed since there is a compatibility issue
+  with ONNX 1.7.0, see: https://github.com/ARM-software/armnn/issues/419
+
+-------------------------------------------------------------------
+Wed Jun 17 07:19:10 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Build only where ComputeLibrary is built: 
+  aarch64 armv7 and x86_64
+
+-------------------------------------------------------------------
+Thu Jun  4 09:51:23 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Unify Leap/SLE options
+- Update to 20.05:
+  * Changelog: https://github.com/ARM-software/armnn/releases/tag/v20.05
+- Drop upstream patch:
+  * armnn-enable-use-of-arm-compute-shared-library.patch
+- Refresh patch:
+  * 0003-add-more-test-command-line-arguments.patch
+- Add new patch to fix build with gcc10:
+  * armnn-fix-catch.patch
+- Package new libtimelineDecode and libarmnnBasePipeServer
+
+-------------------------------------------------------------------
+Thu May 28 15:10:11 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Apply boost link fixes only for armnn_extra_tests
+- Apply patches for armnn_extra_tests only when 
+  armnn_extra_tests is built
+
+-------------------------------------------------------------------
+Tue Mar 31 15:23:29 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable RPATH to fix build on Leap15.2/SLE15SP2
+
+-------------------------------------------------------------------
+Tue Mar 24 14:01:29 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add '-Wno-error=deprecated-declarations' to fix build with latest
+  protobuf 3.11.x (Tumbleweed)
+  https://github.com/ARM-software/armnn/issues/366
+- Use python-onnx package instead of python-onnx-devel, since it
+  is now a single package.
+
+-------------------------------------------------------------------
+Wed Mar 11 08:41:20 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build on Leap 15.2
+
+-------------------------------------------------------------------
+Mon Mar  9 17:47:42 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 20.02:
+  * Changelog: https://github.com/ARM-software/armnn/releases/tag/v20.02
+  * Drop upstream patch:
+    - armnn-fix_include.patch
+  * Refresh patch:
+    - 0006-armnn-mobilenet-test-example.patch
+  * Replace downstream patch:
+    - 0007-enable-use-of-arm-compute-shared-library.patch
+    by upstream patch:
+    - armnn-enable-use-of-arm-compute-shared-library.patch
+  * Add 'vim' as BuildRequires since it needs 'xxd' tool
+- Use TensorFlow 2 also on Leap 15.2 / SLE15SP2
+
+-------------------------------------------------------------------
+Mon Feb 10 13:01:53 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Use Tensorflow 2.x only for Tumbleweed, as TensorFlow2 is not
+  available in Leap 15.2
+- Skip some tests if TensorFlow < 1.14 is used
+
+-------------------------------------------------------------------
+Tue Jan 28 12:33:19 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable ONNX on Leap 15.2
+
+-------------------------------------------------------------------
+Tue Jan 28 09:48:55 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Use tensorflow2 as armnn 19.11 now requires TensorFlow >= 1.14
+
+-------------------------------------------------------------------
+Mon Jan 20 15:21:09 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable ArmnnConverter and ArmnnQuantizer packaging by default
+  as it requires libQuantizer.so to be packaged, which is not yet
+
+-------------------------------------------------------------------
+Tue Jan 14 13:07:58 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Package ArmnnConverter and ArmnnQuantizer
+
+-------------------------------------------------------------------
+Tue Jan 14 11:59:14 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- ExcludeArch %ix86: Parts of the build deps (tensorflow/bazel) are
+  not supported on ix86.
+
+-------------------------------------------------------------------
+Fri Dec  6 13:45:57 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 19.11:
+  * Changelog: https://github.com/ARM-software/armnn/releases/tag/v19.11
+- Remove upstreamed patches:
+  * armnn-generate-versioned-library.patch
+  * armnn-fix_boost.patch
+  * armnn-fix_arm32_dep.patch
+  * armnn-fix_arm32.patch
+- Add patch to fix include:
+  * armnn-fix_include.patch
+
+-------------------------------------------------------------------
+Mon Nov 25 14:16:29 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- tensorflow-devel package now includes *.pb.* files, so 
+  remove TensorFlow parser build workaround:
+  * armnn-fix_tensorflow_link.patch
+
+-------------------------------------------------------------------
+Mon Oct 28 15:38:27 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add a conflict between armnn-extratests and armnn-opencl-extratests
+
+-------------------------------------------------------------------
+Mon Oct 28 13:06:56 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add a conflict between armnn-devel and armnn-opencl-devel
+
+-------------------------------------------------------------------
+Mon Oct 28 09:56:16 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable ONNX for Tumbleweed
+
+-------------------------------------------------------------------
+Thu Oct 17 06:57:00 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add downstream ArmnnExamples in a separate '-extratests' package
+  with patches:
+  * 0003-add-more-test-command-line-arguments.patch
+  * 0005-add-armnn-mobilenet-test-example.patch
+  * 0006-armnn-mobilenet-test-example.patch
+  * 0007-enable-use-of-arm-compute-shared-library.patch
+  * 0009-command-line-options-for-video-port-selection.patch
+  * 0010-armnnexamples-update-for-19.08-modifications.patch
+- Fix build when extratests are disabled
+  * armnn-fix_find_opencv.patch
+
+-------------------------------------------------------------------
+Mon Oct  7 13:00:59 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Replace patch with an upstreamable version:
+ * armnn-generate-versioned-library.patch
+
+-------------------------------------------------------------------
+Tue Oct  1 19:04:50 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add ONNX Parser support (disabled by default as there is no 
+  official ONNX package yet)
+
+-------------------------------------------------------------------
+Tue Oct  1 14:30:13 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Re-enable Tensorflow on Tumbleweed as boo#1151150 is now fixed
+
+-------------------------------------------------------------------
+Thu Sep 19 07:21:48 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update _constraints
+
+-------------------------------------------------------------------
+Wed Sep 18 12:26:55 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable openCL only on a separate flavor as runtime requires
+  libOpenCL.so, libGLES_mali.so, or libmali.so
+
+-------------------------------------------------------------------
+Wed Sep 18 11:53:30 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable openCL support
+- Disable UnitTests when openCL support is enabled as it fails
+  on OBS workers
+
+-------------------------------------------------------------------
+Wed Sep 18 09:57:39 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patches to make UnitTests to pass on armv7:
+  * armnn-fix_arm32.patch 
+  * armnn-fix_arm32_dep.patch 
+
+-------------------------------------------------------------------
+Thu Sep  5 11:22:41 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable TensorFlow as on 15.1 only x86_64 succeed and on TW we 
+  have incompatibility with protobuf (3.8.0 in TW and 
+  Tensorflow uses 3.6.1 internally) - boo#1151150
+
+-------------------------------------------------------------------
+Thu Sep  5 07:25:16 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 19.08:
+- Changelog: https://github.com/ARM-software/armnn/releases/tag/v19.08
+- Remove upstreamed patch:
+  * armnn-fix_quantizer_link.patch
+  * armnn-fix_caffe_parser_with_new_protobuf.patch
+- Refresh patch:
+  * armnn-generate-versioned-library.patch 
+- Drop patches not needed anymore:
+  * armnn-remove_broken_std_move.patch
+  * armnn-fix_build_with_gcc9.patch
+
+-------------------------------------------------------------------
+Wed Sep  4 16:15:58 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable LTO until lto link is fixed
+  https://github.com/ARM-software/armnn/issues/251
+
+-------------------------------------------------------------------
+Tue Jun 18 11:54:48 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build in Tumbleweed, with latest protobuf:
+  * armnn-fix_caffe_parser_with_new_protobuf.patch 
+
+-------------------------------------------------------------------
+Tue Jun 11 14:17:34 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable Tensorflow parser
+- Fix link with Tensorflow:
+  * armnn-fix_tensorflow_link.patch
+
+-------------------------------------------------------------------
+Wed Jun  5 09:07:12 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Build and package libarmnnTfLiteParser
+- Fix libarmnnQuantizer build with:
+  * armnn-fix_quantizer_link.patch
+
+-------------------------------------------------------------------
+Tue Jun  4 09:22:24 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add _constraints to avoid OOM errors
+
+-------------------------------------------------------------------
+Mon Jun  3 11:40:47 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 19.05:
+- Changelog: https://github.com/ARM-software/armnn/releases/tag/v19.05
+- Remove upstreamed patch:
+  * armnn-fix_stb_include.patch
+- Rebase patch:
+  * armnn-generate-versioned-library.patch
+- Update patch:
+  * armnn-remove_broken_std_move.patch
+
+-------------------------------------------------------------------
+Mon Jun  3 09:15:25 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build on Tumbleweed with:
+  * armnn-fix_build_with_gcc9.patch
+
+-------------------------------------------------------------------
+Wed May 29 15:19:15 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build on Tumbleweed with:
+  * armnn-remove_broken_std_move.patch
+
+-------------------------------------------------------------------
+Wed May 29 08:12:43 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Call ldconfig in post/postun for libarmnnCaffeParser
+
+-------------------------------------------------------------------
+Mon May 27 05:42:06 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable and fix Caffe parser
+- Use %cmake_build macro
+
+-------------------------------------------------------------------
+Fri Apr 19 10:11:29 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add compute_cl option, disabled by default since check fails as
+  no openCL are enabled in OBS
+
+-------------------------------------------------------------------
+Thu Apr 11 09:35:54 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Split libarmnn and libarmnnSerializer to separate packages
+
+-------------------------------------------------------------------
+Thu Apr 11 07:38:23 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch to have versionned libs:
+  * armnn-generate-versioned-library.patch
+- Package versionned libs
+
+-------------------------------------------------------------------
+Tue Apr  9 16:18:55 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable NEON backend on AArch64
+- Add patch to enable use of shared lib for ComputeLibrary:
+  * 0007-enable-use-of-arm-compute-shared-library.patch
+
+-------------------------------------------------------------------
+Tue Mar 26 14:29:39 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 19.02
+- Remove upstreamed patch:
+  * armnn-fix_catching_polymorphic_type.patch
+
+-------------------------------------------------------------------
+Thu Jan 17 12:51:41 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 18.11
+- Add patch to fix build:
+  * armnn-fix_catching_polymorphic_type.patch
+  * armnn-fix_boost.patch
+  * armnn-fix_stb_include.patch
+
+-------------------------------------------------------------------
+Thu Sep 13 12:51:53 UTC 2018 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Initial version 18.08
+

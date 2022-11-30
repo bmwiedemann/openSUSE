@@ -1,0 +1,5 @@
+<package name="armnn" project="openSUSE:Factory">
+  <title>armnn</title>
+  <description>Arm NN SDK enables machine learning workloads on power-efficient devices</description>
+  <devel project="science:machinelearning" package="armnn"/>
+</package>

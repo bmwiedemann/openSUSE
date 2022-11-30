@@ -1,0 +1,28 @@
+From a3e266a2de7c45116428f4e21645a2657534191b Mon Sep 17 00:00:00 2001
+From: Djordje Senicic <x0157990@ti.com>
+Date: Mon, 26 Aug 2019 03:51:39 -0400
+Subject: [PATCH] armnnexamples: update for 19.08 modifications
+
+Upstream-Status: Inappropriate [TI only test code]
+
+Signed-off-by: Djordje Senicic <x0157990@ti.com>
+---
+ tests/ArmnnExamples/ArmnnExamples.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/ArmnnExamples/ArmnnExamples.cpp b/tests/ArmnnExamples/ArmnnExamples.cpp
+index d1526539..c10a4fc0 100644
+--- a/tests/ArmnnExamples/ArmnnExamples.cpp
++++ b/tests/ArmnnExamples/ArmnnExamples.cpp
+@@ -310,7 +310,7 @@ int MainImpl(const char* modelPath,
+     params.m_OutputBindings = { outputName };
+     //params.m_EnableProfiling = enableProfiling;
+     params.m_SubgraphId = 0;
+-    InferenceModel<TParser, TDataType> model(params, enableProfiling, runtime);
++    InferenceModel<TParser, TDataType> model(params, enableProfiling, "", runtime);
+ 
+     VideoCapture cap;
+     int input_type = INPUT_IMAGE;
+-- 
+2.17.1
+

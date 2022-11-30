@@ -1,0 +1,60 @@
+From ee152f3b68f91c5fff336306d011becdcf3a6b17 Mon Sep 17 00:00:00 2001
+From: Djordje Senicic <x0157990@ti.com>
+Date: Sat, 24 Aug 2019 17:58:38 -0400
+Subject: [PATCH] command line options for video port selection
+
+- Add command line selection <0|1|2|3> of video port used for live camera input 
+
+Upstream-Status: Inappropriate [TI only test code]
+
+Signed-off-by: Djordje Senicic <x0157990@ti.com>
+---
+ tests/ArmnnExamples/ArmnnExamples.cpp | 23 ++++++++++++++++++++---
+ 1 file changed, 20 insertions(+), 3 deletions(-)
+
+diff --git a/tests/ArmnnExamples/ArmnnExamples.cpp b/tests/ArmnnExamples/ArmnnExamples.cpp
+index 638fc145..d1526539 100644
+--- a/tests/ArmnnExamples/ArmnnExamples.cpp
++++ b/tests/ArmnnExamples/ArmnnExamples.cpp
+@@ -316,10 +316,27 @@ int MainImpl(const char* modelPath,
+     int input_type = INPUT_IMAGE;
+     std::string filename = inputTensorDataFilePath;
+ 
+-    size_t i = filename.rfind("camera_live_input", filename.length());
++    size_t i  = filename.rfind("camera_live_input", filename.length());
+     if (i != string::npos)
+     {
+-      cap = VideoCapture(1);
++      int vport = 1;
++      size_t loc_i = filename.rfind("camera_live_input0", filename.length());
++      if(loc_i != string::npos) vport = 0;
++      else {
++         loc_i = filename.rfind("camera_live_input1", filename.length());
++         if(loc_i != string::npos) vport = 1;
++         else {
++           loc_i = filename.rfind("camera_live_input2", filename.length());
++           if(loc_i != string::npos) vport = 2;
++           else {
++             loc_i = filename.rfind("camera_live_input3", filename.length());
++             if(loc_i != string::npos) vport = 3;
++             else std::cout << "Setting ports beyond 3 not supported - using default!" << std::endl;
++           }
++         }
++      }
++      std::cout << "Using video" << vport << std::endl;
++      cap = VideoCapture(vport);
+       namedWindow("ARMNN MobileNet Example", WINDOW_AUTOSIZE | CV_GUI_NORMAL);
+       input_type = INPUT_CAMERA; //camera input
+     }
+@@ -609,7 +626,7 @@ int main(int argc, const char* argv[])
+        "The shape of the input tensor in the network as a flat array of integers separated by whitespace. "
+        "This parameter is optional, depending on the network.")
+       ("input-tensor-data,d", po::value(&inputTensorDataFilePath),
+-       "Input test file name. It can be image/video clip file name or use 'camera_live_input' to select camera input.")
++       "Input test file name. It can be image/video clip file name or 'camera_live_input or camera_live_input<0|1|2|3>' to select camera input.")
+       ("output-name,o", po::value(&outputName), "Identifier of the output tensor in the network.")
+       ("event-based-profiling,e", po::bool_switch()->default_value(false),
+        "Enables built in profiler. If unset, defaults to off.")
+-- 
+2.17.1
+
