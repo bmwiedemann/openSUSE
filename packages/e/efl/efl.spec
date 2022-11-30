@@ -36,7 +36,7 @@
 %else
 %define xine_present 1
 %endif
-%ifarch %ix86 x86_64 aarch64 %{arml} ppc ppc64le
+%ifarch %ix86 x86_64 aarch64 %{arml} ppc
 %if !0%{?suse_version} || 0%{?is_opensuse}
 %define luajit_present 1
 %endif

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 29 17:52:47 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
+
+- luajit no longer available on ppc64
+
+-------------------------------------------------------------------
 Mon Sep 26 02:45:38 UTC 2022 - Simon Lees <sflees@suse.de>
 
 - Update to 1.26.3 Bugfix release
