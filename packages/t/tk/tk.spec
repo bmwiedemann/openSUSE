@@ -1,7 +1,7 @@
 #
 # spec file for package tk
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ BuildRequires:  libXt-devel
 BuildRequires:  pkg-config
 BuildRequires:  tcl-devel
 URL:            http://www.tcl.tk
-Version:        8.6.12
+Version:        8.6.13
 Release:        0
 %define         rrc %{nil}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -49,7 +49,6 @@ Source0:        http://prdownloads.sourceforge.net/tcl/%name%{version}%{rrc}-src
 Source1:        tk-rpmlintrc
 Source2:        baselibs.conf
 Source3:        http://tkcon.cvs.sourceforge.net/tkcon/tkcon/tkcon.tcl
-Patch0:         %name.patch
 
 %description
 Tk is a graphical user interface toolkit that takes developing desktop
@@ -95,7 +94,6 @@ Authors:
 
 %prep
 %setup -q -n %name%version
-%patch0
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
@@ -121,6 +119,10 @@ make -C unix install install-private-headers \
 ln -sf wish%TK_MINOR %buildroot%_prefix/bin/wish
 ln -sf wish.1.gz %buildroot%_mandir/man1/wish%TK_MINOR.1.gz
 install -m 0755 %{S:3} %buildroot%_bindir/tkcon
+# The information in TK_LIBS is not needed for shared libraries
+# and we don't support static linking.
+sed -i "/^TK_LIBS=/s/'.*'$//" %buildroot%_libdir/tkConfig.sh
+sed -i "/^Libs.private: /s/ .*$//" %buildroot%_libdir/pkgconfig/tk.pc
 
 %if "%_lib" == "lib64"
 
