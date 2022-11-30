@@ -37,6 +37,8 @@ Have a look at http://en.opensuse.org/Portal:Factory for more details.</descript
     <arch>i586</arch>
   </repository>
   <repository name="ports">
+    <arch>i586</arch>
+    <arch>x86_64</arch>
     <arch>ppc64le</arch>
     <arch>ppc64</arch>
     <arch>ppc</arch>
