@@ -1,0 +1,47 @@
+From 8868eacdd913c1c5bd3040425c507fb8ef527e71 Mon Sep 17 00:00:00 2001
+From: letsfindaway <me@letsfindaway.de>
+Date: Wed, 16 Nov 2022 08:31:29 +0100
+Subject: [PATCH] feat: disable software and document update check
+
+- for packages maintained by a Linux distribution,
+  a software update check is not relevant
+- also the import of ancient OpenSankore documents is not necessary
+- disable the checks in the settings
+- hide the associated checkboxes in the preferences
+---
+ resources/etc/OpenBoard.config       | 7 +++----
+ src/core/UBPreferencesController.cpp | 2 ++
+ 2 files changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/resources/etc/OpenBoard.config b/resources/etc/OpenBoard.config
+index 0120f922d..09c11a6dc 100644
+--- a/resources/etc/OpenBoard.config
++++ b/resources/etc/OpenBoard.config
+@@ -1,15 +1,14 @@
+ [App]
+ AngleTolerance=4
+-HideCheckForSoftwareUpdate=false
++HideCheckForSoftwareUpdate=true
+ HideSwapDisplayScreens=true
+-EnableAutomaticSoftwareUpdates=true
+-EnableSoftwareUpdates=true
++EnableAutomaticSoftwareUpdates=false
+ EnableStartupHints=false
+ FavoriteToolURIs=openboardtool://openboard/mask, openboardtool://ruler, openboardtool://compass, openboardtool://protractor, openboardtool://triangle, openboardtool://magnifier, openboardtool://cache
+ IsInSoftwareUpdateProcess=false
+ LastSessionDocumentUUID=
+ LastSessionPageIndex=0
+-LookForOpenSankoreInstall=true
++LookForOpenSankoreInstall=false
+ PageCacheSize=20
+ PreferredLanguage=fr_CH
+ ProductWebAddress=http://www.openboard.ch
+diff --git a/src/core/UBPreferencesController.cpp b/src/core/UBPreferencesController.cpp
+index 4e7c5612a..a5bec7b9b 100644
+--- a/src/core/UBPreferencesController.cpp
++++ b/src/core/UBPreferencesController.cpp
+@@ -92,2 +92,4 @@ UBPreferencesController::UBPreferencesController(QWidget *parent)
+     mPreferencesUI->setupUi(mPreferencesWindow);
++    mPreferencesUI->softwareUpdateGroupBox->hide();     // disable check for software update
++    mPreferencesUI->sankoreImporterGroupBox->hide();    // disable check for OpenSankore documents
+     adjustScreens();

@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Nov 29 16:17:02 UTC 2022 - Martin Winter <me@letsfindaway.de>
+
+- update to version 1.7.0~git20221129.9de37af
+- feat: user configurable shortcuts
+  * replace 0460-shortcut-configuration.patch by updated
+    0686-shortcut-configuration.patch
+  * add 9686-cmake-add-shortcut-manager.patch
+    add new files to CMakeLists.txt
+- fix: background drawing when switching page size
+  * update 0551-common-background-drawing.patch
+- fix: mirror pixmap size
+  * update 0569-scale-mirror-pixmap.patch
+- remove upstreamed patches
+  * remove upstreamed 0604-qt-5.12-compatibility.patch
+  * remove upstreamed 0629-bug-ruler.patch
+  * remove upstreamed 0633-improve-displaymanager.patch
+  * remove upstreamed 0637-fix-pdf-background-export.patch
+  * remove upstreamed 0641-fix-font-handling.patch
+  * remove upstreamed 0649-fix-pdf-export-scaling.patch
+- chore: replace qmake by cmake build system
+  * remove 0651-chore-reorganize-linux-build.patch
+  * add 0698-add-cmake-build-system.patch
+- fix: page size for PDF export
+  * add 0677-pdf-export-page-size.patch
+- disable software update from openboard web page
+  * add 9117-disable-software-update.patch
+
+-------------------------------------------------------------------
 Tue Sep 20 09:23:13 UTC 2022 - Martin Winter <me@letsfindaway.de>
 
 - fix file list in spec file

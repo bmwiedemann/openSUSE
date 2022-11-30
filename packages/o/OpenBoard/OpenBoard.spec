@@ -19,10 +19,10 @@
 %define         dest_dir %{_libdir}/%{name}
 %define         namelc openboard
 %define         fqname ch.%{namelc}.%{name}
-%define         githash  47a96e1d6bbdc0250977d22f1b79f11fcc1cbeee
-%define         gitshort 47a96e1
-%define         gitdate  20220914
-%define         buildver 0914
+%define         githash  9de37af2df1a7c0d88f71c94ab2db1815d082862
+%define         gitshort 9de37af
+%define         gitdate  20221129
+%define         buildver 1129
 Name:           OpenBoard
 Version:        1.7.0~git%{gitdate}.%{gitshort}
 Release:        0
@@ -31,26 +31,20 @@ License:        GPL-3.0-or-later
 Group:          Amusements/Teaching/Other
 URL:            https://openboard.ch
 Source0:        https://github.com/OpenBoard-org/OpenBoard/archive/%{githash}.zip#/OpenBoard-%{githash}.zip
-# https://github.com/OpenBoard-org/OpenBoard/pull/460
-Patch460:       0460-shortcut-configuration.patch
 # https://github.com/OpenBoard-org/OpenBoard/pull/551
 Patch551:       0551-common-background-drawing.patch
 # https://github.com/OpenBoard-org/OpenBoard/pull/569
 Patch569:       0569-scale-mirror-pixmap.patch
-# https://github.com/OpenBoard-org/OpenBoard/pull/604
-Patch604:       0604-qt-5.12-compatibility.patch
-# https://github.com/OpenBoard-org/OpenBoard/pull/629
-Patch629:       0629-bug-ruler.patch
-# https://github.com/OpenBoard-org/OpenBoard/pull/633
-Patch633:       0633-improve-displaymanager.patch
-# https://github.com/OpenBoard-org/OpenBoard/pull/637
-Patch637:       0637-fix-pdf-background-export.patch
-# https://github.com/OpenBoard-org/OpenBoard/pull/641
-Patch641:       0641-fix-font-handling.patch
-# https://github.com/OpenBoard-org/OpenBoard/pull/649
-Patch649:       0649-fix-pdf-export-scaling.patch
-# https://github.com/OpenBoard-org/OpenBoard/pull/651
-Patch651:       0651-chore-reorganize-linux-build.patch
+# https://github.com/OpenBoard-org/OpenBoard/pull/677
+Patch677:       0677-pdf-export-page-size.patch
+# https://github.com/OpenBoard-org/OpenBoard/pull/686
+Patch686:       0686-shortcut-configuration.patch
+# https://github.com/OpenBoard-org/OpenBoard/pull/698
+Patch698:       0698-add-cmake-build-system.patch
+# https://github.com/letsfindaway/OpenBoard/pull/117
+Patch9117:      9117-disable-software-update.patch
+# no github url available
+Patch9686:      9686-cmake-add-shortcut-manager.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  ffmpeg-devel
@@ -86,10 +80,6 @@ a set of additional patches for features and bug fixes.
 %prep
 %autosetup -p1 -n %{name}-%{githash}
 
-# insert version
-sed -i 's/VERSION_BUILD = 0225/VERSION_BUILD = %{buildver}/g' OpenBoard.pro
-sed -i 's/OpenBoard 1.6.2/OpenBoard %{version}/g' resources/forms/preferences.ui
-
 # remove x flag from any resource files
 find resources -type f -print0 | xargs -0 chmod a-x
 
@@ -97,16 +87,11 @@ find resources -type f -print0 | xargs -0 chmod a-x
 rm resources/library/applications/Calculator.wgt/.gitignore
 
 %build
-lrelease-qt5 %{name}.pro
-
-export QMAKE_CXX_FLAGS="$QMAKE_CXX_FLAGS -fpermissive"
-%qmake5 %{name}.pro
-%make_jobs
+%cmake
+%cmake_build
 
 %install
-export INSTALL_ROOT=%{buildroot}
-%make_install
-
+%cmake_install
 %fdupes -s %{buildroot}
 
 %files
@@ -115,7 +100,8 @@ export INSTALL_ROOT=%{buildroot}
 %{_datadir}/applications/%{fqname}.desktop
 %{_datadir}/icons/hicolor/scalable
 %{_datadir}/mime/packages/*
-%{_datadir}/openboard
+%{_datadir}/%{namelc}
 %{_bindir}/%{namelc}
+%config %{_sysconfdir}/%{namelc}
 
 %changelog

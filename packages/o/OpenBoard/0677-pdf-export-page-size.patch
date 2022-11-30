@@ -1,0 +1,274 @@
+From 2f6394ce1f085285c5c0a44857bb6ea2c79b8769 Mon Sep 17 00:00:00 2001
+From: letsfindaway <me@letsfindaway.de>
+Date: Wed, 28 Sep 2022 16:12:50 +0200
+Subject: [PATCH] fix: size of exported PDF page
+
+- add functions to retrieve original PDF page size in Points
+- make output pages the same size
+- align page sizes between overlay and base PDF
+- use QSizeF where necessary to improve accuracy
+- compute sceneBoundingRect only once
+- catch exception by const reference (best practice)
+---
+ src/adaptors/UBExportFullPDF.cpp | 50 +++++++++++++++++---------------
+ src/domain/UBGraphicsScene.cpp   | 19 ++++++++++++
+ src/domain/UBGraphicsScene.h     |  1 +
+ src/pdf/GraphicsPDFItem.h        |  1 +
+ src/pdf/PDFRenderer.h            |  2 ++
+ src/pdf/XPDFRenderer.cpp         | 32 +++++++++++---------
+ src/pdf/XPDFRenderer.h           |  1 +
+ 7 files changed, 68 insertions(+), 38 deletions(-)
+
+diff --git a/src/adaptors/UBExportFullPDF.cpp b/src/adaptors/UBExportFullPDF.cpp
+index 5aaa93b45..4b11517ae 100644
+--- a/src/adaptors/UBExportFullPDF.cpp
++++ b/src/adaptors/UBExportFullPDF.cpp
+@@ -122,7 +122,7 @@ void UBExportFullPDF::saveOverlayPdf(UBDocumentProxy* pDocumentProxy, const QStr
+ 
+             // pageSize is the output PDF page size; it is set to equal the scene's boundary size; if the contents
+             // of the scene overflow from the boundaries, they will be scaled down.
+-            QSize pageSize = scene->sceneSize();
++            QSizeF pageSize = scene->sceneSizeF() * mScaleFactor;   // points
+ 
+             UBGraphicsPDFItem *pdfItem = qgraphicsitem_cast<UBGraphicsPDFItem*>(scene->backgroundObject());
+ 
+@@ -130,13 +130,14 @@ void UBExportFullPDF::saveOverlayPdf(UBDocumentProxy* pDocumentProxy, const QStr
+             {
+                 mHasPDFBackgrounds = true;
+                 sceneHasPDFBackground = true;
++                pageSize = pdfItem->pageSize();     // original PDF document page size
+             }
+             else
+             {
+                 sceneHasPDFBackground = false;
+             }
+ 
+-            QPageSize size(QSizeF(pageSize.width()*mScaleFactor, pageSize.height()*mScaleFactor), QPageSize::Point);
++            QPageSize size(pageSize, QPageSize::Point);
+             pdfPrinter.setPageSize(size);
+ 
+             if (!pdfPainter) pdfPainter = new QPainter(&pdfPrinter);
+@@ -222,47 +223,46 @@ bool UBExportFullPDF::persistsDocument(UBDocumentProxy* pDocumentProxy, const QS
+                 UBGraphicsScene* scene = UBPersistenceManager::persistenceManager()->loadDocumentScene(pDocumentProxy, pageIndex);
+                 UBGraphicsPDFItem *pdfItem = qgraphicsitem_cast<UBGraphicsPDFItem*>(scene->backgroundObject());
+ 
+-                QSize pageSize = scene->nominalSize();
+-                
+                 if (pdfItem)
+                 {
++                    QRectF pdfSceneRect = pdfItem->sceneBoundingRect();
+                     QString pdfName = UBPersistenceManager::objectDirectory + "/" + pdfItem->fileUuid().toString() + ".pdf";
+                     QString backgroundPath = pDocumentProxy->persistencePath() + "/" + pdfName;
+                     QRectF annotationsRect = scene->annotationsBoundingRect();
+ 
+-                    // Original datas
+-                    double xAnnotation = qRound(annotationsRect.x());
+-                    double yAnnotation = qRound(annotationsRect.y());
+-                    double xPdf = qRound(pdfItem->sceneBoundingRect().x());
+-                    double yPdf = qRound(pdfItem->sceneBoundingRect().y());
+-                    double hPdf = qRound(pdfItem->sceneBoundingRect().height());
++                    // Original data
++                    double xAnnotation = annotationsRect.x();
++                    double yAnnotation = annotationsRect.y();
++                    double xPdf = pdfSceneRect.x();
++                    double yPdf = pdfSceneRect.y();
++                    double hPdf = pdfSceneRect.height();
+ 
+-                    // Exportation-transformed datas
+-                    double hScaleFactor = pageSize.width()/annotationsRect.width();
+-                    double vScaleFactor = pageSize.height()/annotationsRect.height();
++                    // Exportation-transformed data
++                    double hScaleFactor = pdfSceneRect.width() / annotationsRect.width();
++                    double vScaleFactor = pdfSceneRect.height() / annotationsRect.height();
+                     double scaleFactor = qMin(hScaleFactor, vScaleFactor);
+ 
+                     double xAnnotationsOffset = 0;
+                     double yAnnotationsOffset = 0;
+-                    double hPdfTransformed = qRound(hPdf * scaleFactor);
++                    double hPdfTransformed = hPdf * scaleFactor;
+ 
+                     // Here, we force the PDF page to be on the topleft corner of the page
+                     double xPdfOffset = 0;
+-                    double yPdfOffset = (hPdf - hPdfTransformed) * mScaleFactor;
++                    double yPdfOffset = (hPdf - hPdfTransformed);
+ 
+                     // Now we align the items
+-                    xPdfOffset += (xPdf - xAnnotation) * scaleFactor * mScaleFactor;
+-                    yPdfOffset -= (yPdf - yAnnotation) * scaleFactor * mScaleFactor;
++                    xPdfOffset += (xPdf - xAnnotation) * scaleFactor;
++                    yPdfOffset -= (yPdf - yAnnotation) * scaleFactor;
+ 
+                     // If the PDF was scaled when added to the scene (e.g if it was loaded from a document with a different DPI
+                     // than the current one), it should also be scaled here.
+-                    qreal pdfScale = pdfItem->sceneTransform().m11();
+ 
+-                    TransformationDescription pdfTransform(xPdfOffset, yPdfOffset, scaleFactor * pdfScale, 0);
++                    TransformationDescription pdfTransform(xPdfOffset, yPdfOffset, scaleFactor, 0);
+                     TransformationDescription annotationTransform(xAnnotationsOffset, yAnnotationsOffset, 1, 0);
+ 
+-                    MergePageDescription pageDescription(pageSize.width() * mScaleFactor,
+-                                                         pageSize.height() * mScaleFactor,
++                    QSizeF pageSize = pdfItem->pageSize();
++                    MergePageDescription pageDescription(pageSize.width(),
++                                                         pageSize.height(),
+                                                          pdfItem->pageNumber(),
+                                                          QFile::encodeName(backgroundPath).constData(),
+                                                          pdfTransform,
+@@ -276,8 +276,10 @@ bool UBExportFullPDF::persistsDocument(UBDocumentProxy* pDocumentProxy, const QS
+                 }
+                 else
+                 {
+-                    MergePageDescription pageDescription(pageSize.width() * mScaleFactor,
+-                             pageSize.height() * mScaleFactor,
++                    QSizeF pageSize = scene->nominalSize() * mScaleFactor;
++
++                    MergePageDescription pageDescription(pageSize.width(),
++                             pageSize.height(),
+                              0,
+                              "",
+                              TransformationDescription(),
+@@ -294,7 +296,7 @@ bool UBExportFullPDF::persistsDocument(UBDocumentProxy* pDocumentProxy, const QS
+             merger.saveMergedDocumentsAs(QFile::encodeName(filename).constData());
+ 
+         }
+-        catch(Exception e)
++        catch(const Exception& e)
+         {
+             qDebug() << "PdfMerger failed to merge documents to " << filename << " - Exception : " << e.what();
+ 
+diff --git a/src/domain/UBGraphicsScene.cpp b/src/domain/UBGraphicsScene.cpp
+index 51995ade2..74cb3e9db 100644
+--- a/src/domain/UBGraphicsScene.cpp
++++ b/src/domain/UBGraphicsScene.cpp
+@@ -2565,6 +2565,25 @@ QSize UBGraphicsScene::sceneSize()
+         return nominalSize();
+ }
+ 
++QSizeF UBGraphicsScene::sceneSizeF() const
++{
++    UBGraphicsPDFItem *pdfItem = qgraphicsitem_cast<UBGraphicsPDFItem*>(backgroundObject());
++
++    if (pdfItem)
++    {
++        QRectF targetRect = pdfItem->sceneBoundingRect();
++        return targetRect.size();
++    }
++    else if (mDocument && !mNominalSize.isValid())
++    {
++        return mDocument->defaultDocumentSize();
++    }
++    else
++    {
++        return mNominalSize;
++    }
++}
++
+ void UBGraphicsScene::setNominalSize(const QSize& pSize)
+ {
+     if (nominalSize() != pSize)
+diff --git a/src/domain/UBGraphicsScene.h b/src/domain/UBGraphicsScene.h
+index e824e555f..7723880a8 100644
+--- a/src/domain/UBGraphicsScene.h
++++ b/src/domain/UBGraphicsScene.h
+@@ -308,6 +308,7 @@ class UBGraphicsScene: public UBCoreGraphicsScene, public UBItem
+         QSize nominalSize();
+ 
+         QSize sceneSize();
++        QSizeF sceneSizeF() const;
+ 
+         void setNominalSize(const QSize& pSize);
+ 
+diff --git a/src/pdf/GraphicsPDFItem.h b/src/pdf/GraphicsPDFItem.h
+index 44858e53c..0eb9ed5cd 100644
+--- a/src/pdf/GraphicsPDFItem.h
++++ b/src/pdf/GraphicsPDFItem.h
+@@ -52,6 +52,7 @@ class GraphicsPDFItem : public QObject, public QGraphicsItem
+         QUuid fileUuid() const { return mRenderer->fileUuid(); }
+         QByteArray fileData() const { return mRenderer->fileData(); }
+         void setCacheAllowed(bool const value) { mIsCacheAllowed = value; }
++        QSizeF pageSize() const { return mRenderer->pointSizeF(mPageNumber); }
+         virtual void updateChild() = 0;
+     protected:
+         PDFRenderer *mRenderer;
+diff --git a/src/pdf/PDFRenderer.h b/src/pdf/PDFRenderer.h
+index f3b0bf268..8f0cb93e0 100644
+--- a/src/pdf/PDFRenderer.h
++++ b/src/pdf/PDFRenderer.h
+@@ -56,6 +56,8 @@ class PDFRenderer : public QObject
+ 
+         virtual int pageRotation(int pageNumber) const = 0;
+ 
++        virtual QSizeF pointSizeF(int pageNumber) const = 0;
++
+         virtual QString title() const = 0;
+ 
+         void attach();
+diff --git a/src/pdf/XPDFRenderer.cpp b/src/pdf/XPDFRenderer.cpp
+index 27291dda9..97e258bfd 100644
+--- a/src/pdf/XPDFRenderer.cpp
++++ b/src/pdf/XPDFRenderer.cpp
+@@ -195,6 +195,20 @@ QString XPDFRenderer::title() const
+ 
+ 
+ QSizeF XPDFRenderer::pageSizeF(int pageNumber) const
++{
++    return pointSizeF(pageNumber) * this->dpiForRendering / 72.0;
++}
++
++
++int XPDFRenderer::pageRotation(int pageNumber) const
++{
++    if (mDocument)
++        return  mDocument->getPageRotate(pageNumber);
++    else
++        return 0;
++}
++
++QSizeF XPDFRenderer::pointSizeF(int pageNumber) const
+ {
+     qreal cropWidth = 0;
+     qreal cropHeight = 0;
+@@ -203,27 +217,17 @@ QSizeF XPDFRenderer::pageSizeF(int pageNumber) const
+     {
+         int rotate = mDocument->getPageRotate(pageNumber);
+ 
+-        cropWidth = mDocument->getPageCropWidth(pageNumber) * this->dpiForRendering / 72.0;
+-        cropHeight = mDocument->getPageCropHeight(pageNumber) * this->dpiForRendering / 72.0;
++        cropWidth = mDocument->getPageCropWidth(pageNumber);
++        cropHeight = mDocument->getPageCropHeight(pageNumber);
+ 
+         if (rotate == 90 || rotate == 270)
+         {
+             //switching width and height
+-            qreal tmpVar = cropWidth;
+-            cropWidth = cropHeight;
+-            cropHeight = tmpVar;
++            std::swap(cropWidth, cropHeight);
+         }
+     }
+-    return QSizeF(cropWidth, cropHeight);
+-}
+ 
+-
+-int XPDFRenderer::pageRotation(int pageNumber) const
+-{
+-    if (mDocument)
+-        return  mDocument->getPageRotate(pageNumber);
+-    else
+-        return 0;
++    return QSizeF(cropWidth, cropHeight);
+ }
+ 
+ 
+diff --git a/src/pdf/XPDFRenderer.h b/src/pdf/XPDFRenderer.h
+index 919c2ad1c..5ae48ff48 100644
+--- a/src/pdf/XPDFRenderer.h
++++ b/src/pdf/XPDFRenderer.h
+@@ -85,6 +85,7 @@ class XPDFRenderer : public PDFRenderer
+         virtual int pageCount() const override;
+         virtual QSizeF pageSizeF(int pageNumber) const override;
+         virtual int pageRotation(int pageNumber) const override;
++        virtual QSizeF pointSizeF(int pageNumber) const override;
+         virtual QString title() const override;
+         virtual void render(QPainter *p, int pageNumber, const bool cacheAllowed, const QRectF &bounds = QRectF()) override;
+ 
