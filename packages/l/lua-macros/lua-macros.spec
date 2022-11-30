@@ -1,7 +1,7 @@
 #
 # spec file for package lua-macros
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %if %{undefined _rpmmacrodir}
 %define _rpmmacrodir %{_rpmconfigdir}/macros.d
 %endif
@@ -26,7 +27,10 @@ License:        MIT
 Group:          Development/Languages/Other
 URL:            https://www.lua.org
 Source0:        macros.lua
+%if 0%{?suse_version} >= 1500
+# on SLE 12 lua is lua5.2 unconditionally, avoid
 Requires:       lua
+%endif
 BuildArch:      noarch
 
 %description

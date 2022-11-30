@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 25 19:15:41 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
+
+- Make macros usable with older releases (boo#1205611).
+
+-------------------------------------------------------------------
 Fri Sep  2 15:13:06 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add LuaRocks macros:
