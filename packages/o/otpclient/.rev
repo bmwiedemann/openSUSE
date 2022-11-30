@@ -188,4 +188,14 @@
 </comment>
     <requestid>990345</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>69403501cc4050db03eb02e5de40550d</srcmd5>
+    <version>2.6.4</version>
+    <time>1669830829</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.6.4:
+  * fix issue when importing AEGIS encrypted backups.
+</comment>
+    <requestid>1039157</requestid>
+  </revision>
 </revisionlist>

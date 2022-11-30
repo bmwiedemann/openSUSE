@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 30 16:31:09 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.6.4:
+  * fix issue when importing AEGIS encrypted backups.
+
+-------------------------------------------------------------------
 Wed Jul 20 06:30:09 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.6.3:
