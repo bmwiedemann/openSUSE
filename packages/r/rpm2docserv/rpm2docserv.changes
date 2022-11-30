@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 29 15:19:19 UTC 2022 - kukuk@suse.com
+
+- Update to version 20221129.a10bb7c:
+  * Re-generate bundled data
+  * Enhance introduction on start page
+  * Quote ld+json string corret as JS, not HTML
+
+-------------------------------------------------------------------
 Fri Nov 25 13:13:25 UTC 2022 - kukuk@suse.com
 
 - Update to version 20221125.c82d2b0:

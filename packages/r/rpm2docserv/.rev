@@ -100,4 +100,15 @@
   * Create sitemap.xml for root directory, too</comment>
     <requestid>1038209</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0584b88d4468e2c5a7f5212b6064fa3f</srcmd5>
+    <version>20221129.a10bb7c</version>
+    <time>1669816798</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20221129.a10bb7c:
+  * Re-generate bundled data
+  * Enhance introduction on start page
+  * Quote ld+json string corret as JS, not HTML</comment>
+    <requestid>1039016</requestid>
+  </revision>
 </revisionlist>
