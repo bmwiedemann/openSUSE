@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov 30 11:33:22 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove python_module macro definition 
+- Add python-py dependency
+- More specific python_sitelib in %files
+- Update to 2.3.1:
+  * Replace --strict command-line option with --strict-markers (#95)
+  * Test with Python 3.11 (#101)
+  * Update MANIFEST.in to add tests and Makefile to sdist (#100)
+
+-------------------------------------------------------------------
 Tue Aug 16 14:09:38 UTC 2022 - Axel Braun <axel.braun@gmx.de>
 
 - update to version 2.3.0

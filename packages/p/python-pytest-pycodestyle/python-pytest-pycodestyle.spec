@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pytest-pycodestyle
-Version:        2.3.0
+Version:        2.3.1
 Release:        0
 Summary:        Pytest plugin to run pycodestyle
 License:        MIT
@@ -29,9 +28,11 @@ BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module pycodestyle}
 BuildRequires:  %{python_module pytest >= 5.4}
 BuildRequires:  %{python_module pytest-isort}
+BuildRequires:  %{python_module py}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-py
 Requires:       python-pycodestyle
 Requires:       python-pytest
 Requires:       python-setuptools
@@ -60,6 +61,8 @@ sed -i -e 's:~=:>=:g' setup.py
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%pycache_only %{python_sitelib}/__pycache__/*.pyc
+%{python_sitelib}/pytest_pycodestyle.py
+%{python_sitelib}/pytest_pycodestyle-%{version}*-info
 
 %changelog

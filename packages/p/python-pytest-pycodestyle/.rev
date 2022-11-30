@@ -31,4 +31,19 @@
     <comment></comment>
     <requestid>998101</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a1397618cfddaf7d404728eb40485dff</srcmd5>
+    <version>2.3.1</version>
+    <time>1669816821</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove python_module macro definition 
+- Add python-py dependency
+- More specific python_sitelib in %files
+- Update to 2.3.1:
+  * Replace --strict command-line option with --strict-markers (#95)
+  * Test with Python 3.11 (#101)
+  * Update MANIFEST.in to add tests and Makefile to sdist (#100)
+</comment>
+    <requestid>1039089</requestid>
+  </revision>
 </revisionlist>
