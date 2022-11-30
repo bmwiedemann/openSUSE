@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 29 14:47:29 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.26.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.26.4
+- Changes since 5.26.3:
+  * DialogButtonBox: Remove separator to be consistent with desktop style Applications are drawing their own separators since they assume none is drawn, so we end up with lots of double separators.
+
+-------------------------------------------------------------------
 Tue Nov  8 17:26:08 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.26.3
