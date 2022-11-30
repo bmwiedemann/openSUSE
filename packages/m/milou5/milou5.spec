@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           milou5
-Version:        5.26.3
+Version:        5.26.4
 Release:        0
 Summary:        Dedicated search application built on top of Baloo
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
