@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Nov 28 11:33:24 UTC 2022 - Dr. Werner Fink <werner@suse.de>
+
+- Add upstream patches
+  * bash52-010
+    Bash-5.2 checks the first 128 characters of an executable file that execve()
+    refuses to execute to see whether it's a binary file before trying to
+    execute it as a shell script. This defeats some previously-supported use
+    cases like "self-executing" jar files or "self-uncompressing" scripts.
+  * bash52-011
+    Using timeouts and readline editing with the `read' builtin (read -e -t) can
+    leave the readline timeout enabled, potentially resulting in an erroneous
+    timeout on the next call.
+  * bash52-012
+    When running in bash compatibility mode, nested command substitutions can
+    leave the `extglob' option enabled.
+
+-------------------------------------------------------------------
 Wed Nov  9 15:10:07 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Add upstream patches

@@ -1862,4 +1862,24 @@ Upstream declares the bash license to be GPL-3.0+ - not GPL-2.0+ (forwarded requ
     array keys in expressions.</comment>
     <requestid>1035012</requestid>
   </revision>
+  <revision rev="185" vrev="6">
+    <srcmd5>5c5f5212a3faeb74d24cc1833fea5ef9</srcmd5>
+    <version>5.2.MACRO</version>
+    <time>1669816729</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream patches
+  * bash52-010
+    Bash-5.2 checks the first 128 characters of an executable file that execve()
+    refuses to execute to see whether it's a binary file before trying to
+    execute it as a shell script. This defeats some previously-supported use
+    cases like &quot;self-executing&quot; jar files or &quot;self-uncompressing&quot; scripts.
+  * bash52-011
+    Using timeouts and readline editing with the `read' builtin (read -e -t) can
+    leave the readline timeout enabled, potentially resulting in an erroneous
+    timeout on the next call.
+  * bash52-012
+    When running in bash compatibility mode, nested command substitutions can
+    leave the `extglob' option enabled.</comment>
+    <requestid>1038668</requestid>
+  </revision>
 </revisionlist>
