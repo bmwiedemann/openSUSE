@@ -22,11 +22,11 @@
 
 Name:           tcl
 URL:            http://www.tcl.tk
-Version:        8.6.12
+Version:        8.6.13
 Release:        0
 %define         rrc %{nil}
 %define TCL_MINOR %(echo %version | cut -c1-3)
-%define itclver 4.2.2
+%define itclver 4.2.3
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        The Tcl Programming Language
 License:        TCL
@@ -48,6 +48,7 @@ Source0:        http://prdownloads.sourceforge.net/tcl/%{name}%{version}%{rrc}-s
 Source1:        tcl-rpmlintrc
 Source2:        baselibs.conf
 Source3:        macros.tcl
+Patch0:         tcl-refchan-mode-needed.patch
 BuildRequires:  autoconf
 BuildRequires:  pkg-config
 BuildRequires:  zlib-devel
@@ -91,6 +92,7 @@ if ! test -d pkgs/itcl%itclver; then
    : Version mismatch in itcl, please chek the %%itclver macro!
    exit 1
 fi
+%patch0
 
 # The SQLite extension is provided by the sqlite3 package,
 # so don't build it here.

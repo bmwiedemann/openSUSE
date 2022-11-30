@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Nov 23 16:05:02 UTC 2022 - Reinhard Max <max@suse.com>
+
+- New version 8.6.13:
+  * (bug)[26f132] Crash when sizeof(int) < sizeof(void *)
+  * (TIP 623)[e9a271] Tcl_GetRange index args < 0
+  * (bug)[e5ed1b] numeric IPv6 in URLs
+  * (bug)[8eb64b] http package tolerant again invalid reply header
+  * (bug)[6898f9] http package failed detection of shiftjis charset
+  * (bug)[55bf73] Avoid connection reuse after response code 101.
+  * (bug)[713653] FP rounding exposed by x86 musl
+  * (bug)[b3977d] Process CR-LF split across packets
+  * (bug)[4eb3a1] crash due to undetected bytecode invalidity
+  * (bug)[55a02f] Fallback init env(HOME) from USERPROFILE
+  * (bug)[1073da] crash writing invalid utf-8
+  * (new) Update to Unicode-15
+  * Many code fixes to avoid overflow or undefined behavior.
+- Add tcl-refchan-mode-needed.patch to allow refchans to be opened
+  for neither reading nor writing, but still handle events.
+
+-------------------------------------------------------------------
 Wed Sep 21 14:25:37 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - skip more tests with qemu_user builds (e.g. riscv64)
