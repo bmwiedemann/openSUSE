@@ -22,16 +22,16 @@
 %{!?_plasma5_version: %define _plasma5_version %(echo %{_plasma5_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           breeze
-Version:        5.26.3.1
+Version:        5.26.4
 %global _plasma5_bugfix 5.26.3
 Release:        0
 Summary:        Plasma Desktop artwork, styles and assets
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/5.26.3/breeze-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/breeze-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/5.26.3/breeze-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/breeze-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  cmake >= 3.16
