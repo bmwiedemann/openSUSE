@@ -17,7 +17,7 @@
 
 
 Name:           MicroOS-release
-Version:        20221129
+Version:        20221130
 Release:        0
 Summary:        openSUSE MicroOS 
 License:        GPL-2.0-or-later
@@ -176,9 +176,9 @@ ExclusiveArch:  %ix86 x86_64 ppc64le s390x aarch64 %arm
 %include %{SOURCE100}
 Provides:       %name-%version
 Provides:       product() = MicroOS
-Provides:       product(MicroOS) = 20221129-0
+Provides:       product(MicroOS) = 20221130-0
 Provides:       product-label() = openSUSE%20MicroOS
-Provides:       product-cpeid() = cpe%3A%2Fo%3Aopensuse%3Amicroos%3A20221129
+Provides:       product-cpeid() = cpe%3A%2Fo%3Aopensuse%3Amicroos%3A20221130
 Provides:       product-url(releasenotes) = http%3A%2F%2Fdoc.opensuse.org%2Frelease%2Dnotes%2Fx86_64%2FopenSUSE%2FTumbleweed%2Frelease%2Dnotes%2DopenSUSE.rpm
 Provides:       product-endoflife()
 Requires:       product_flavor(MicroOS)
@@ -194,7 +194,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(dvd)
-Provides:       product_flavor(MicroOS) = 20221129-0
+Provides:       product_flavor(MicroOS) = 20221130-0
 Summary:        openSUSE MicroOS%{?betaversion: %{betaversion}}
 
 %description dvd
@@ -210,7 +210,7 @@ License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(appliance)
-Provides:       product_flavor(MicroOS) = 20221129-0
+Provides:       product_flavor(MicroOS) = 20221130-0
 Summary:        openSUSE MicroOS%{?betaversion: %{betaversion}}
 
 %description appliance
@@ -224,23 +224,21 @@ openSUSE MicroOS combines the benefits of a rolling OS with a read-only root fil
 
 
 %prep
+%setup -qcT
+mkdir license
+if [ -f /CD1/license.tar.gz ]; then
+  tar -C license -xzf /CD1/license.tar.gz
+elif [ -f %{_prefix}/lib/skelcd/CD1/license.tar.gz ]; then
+  tar -C license -xzf %{_prefix}/lib/skelcd/CD1/license.tar.gz
+fi
 
 %build
 
 %install
-mkdir -p %{buildroot}%{_sysconfdir}
-mkdir -p %{buildroot}%{_prefix}/lib/issue.d
+mkdir -p %{buildroot}%{_sysconfdir} %{buildroot}%{_prefix}/lib/issue.d %{buildroot}/run
+
 echo -e "\nWelcome to openSUSE MicroOS (%{_target_cpu}) - Kernel \\\r (\\\l).\n" > %{buildroot}%{_prefix}/lib/issue.d/10-OS
 echo -e "\n" > %{buildroot}%{_prefix}/lib/issue.d/90-OS
-
-# Put EULA into correct place
-mkdir -p %{buildroot}/%{_sysconfdir}/YaST2/licenses/base
-cd %{buildroot}/%{_sysconfdir}/YaST2/licenses/base
-if [ -f /CD1/license.tar.gz ]; then
-  tar -xzf /CD1/license.tar.gz
-elif [ -f %{_prefix}/lib/skelcd/CD1/license.tar.gz ]; then
-  tar -xzf %{_prefix}/lib/skelcd/CD1/license.tar.gz
-fi
 
 VERSION_ID=`echo %{version}|tr '[:upper:]' '[:lower:]'|sed -e 's/ //g;'`
 # note: VERSION is an optional field and has no meaning other than informative on a rolling distro
@@ -261,17 +259,26 @@ LOGO="distributor-logo-MicroOS"
 EOF
 ln -s ..%{_prefix}/lib/os-release %{buildroot}%{_sysconfdir}/os-release
 
+# Put EULA into correct place
+install -D -d -m 755 "%{buildroot}%_defaultlicensedir/product/base"
+install -D -d -m 755 "%{buildroot}%_defaultlicensedir"
+cp -a license "%{buildroot}%_defaultlicensedir/%name"
+pushd license
+for i in *; do
+	ln -s "%_defaultlicensedir/%name/$i" %{buildroot}%_defaultlicensedir/product/base/$i
+done
+
 mkdir -p %{buildroot}%{_sysconfdir}/products.d
 cat >%{buildroot}%{_sysconfdir}/products.d/MicroOS.prod << EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <product schemeversion="0">
   <vendor>openSUSE</vendor>
   <name>MicroOS</name>
-  <version>20221129</version>
+  <version>20221130</version>
   <release>0</release>
   <endoflife></endoflife>
   <arch>%{_target_cpu}</arch>
-  <cpeid>cpe:/o:opensuse:microos:20221129</cpeid>
+  <cpeid>cpe:/o:opensuse:microos:20221130</cpeid>
   <productline>MicroOS</productline>
   <register>
     <pool>
@@ -338,16 +345,13 @@ fi
 
 %files
 %defattr(644,root,root,755)
+%dir %_defaultlicensedir/product
+%_defaultlicensedir/product/base
+%license license/*
 %{_sysconfdir}/os-release
 %{_prefix}/lib/os-release
 %dir %{_sysconfdir}/products.d
 %{_sysconfdir}/products.d/*
-%dir %{_sysconfdir}/YaST2/
-%dir %{_sysconfdir}/YaST2/licenses/
-%dir %{_sysconfdir}/YaST2/licenses/base/
-# no %doc here, or we will not install them
-%{_sysconfdir}/YaST2/licenses/base/license*txt
-%{_sysconfdir}/YaST2/licenses/base/no-acceptance-needed
 %dir %{_prefix}/lib/issue.d
 %{_prefix}/lib/issue.d/*-OS
 
