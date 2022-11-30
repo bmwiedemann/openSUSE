@@ -368,4 +368,12 @@
     <comment>Plasma 5.26.3(.1), untested as usual (forwarded request 1034741 from Vogtinator)</comment>
     <requestid>1034784</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>fe769f1914bdd3a1249b509627f29aba</srcmd5>
+    <version>5.26.4</version>
+    <time>1669816790</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.26.4(.1). (forwarded request 1038954 from Vogtinator)</comment>
+    <requestid>1039006</requestid>
+  </revision>
 </revisionlist>
