@@ -130,4 +130,12 @@
   * For detailed list of changes see ChangeLog</comment>
     <requestid>1001260</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>86f71d7fdb790a2906f3be85e0c2bfda</srcmd5>
+    <version>10.8.4</version>
+    <time>1669816823</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1039099</requestid>
+  </revision>
 </revisionlist>

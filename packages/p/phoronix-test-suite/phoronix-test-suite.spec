@@ -34,6 +34,18 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  shared-mime-info
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  update-desktop-files
+%if 0%{?suse_version} >= 1550
+Requires:       php8
+Requires:       php8-curl
+Requires:       php8-dom
+Requires:       php8-gd
+Requires:       php8-openssl
+Requires:       php8-pcntl
+Requires:       php8-posix
+Requires:       php8-sockets
+Requires:       php8-zip
+Requires:       php8-zlib
+%else
 Requires:       php7
 Requires:       php7-curl
 Requires:       php7-dom
@@ -45,6 +57,7 @@ Requires:       php7-posix
 Requires:       php7-sockets
 Requires:       php7-zip
 Requires:       php7-zlib
+%endif
 Requires:       xdg-utils
 BuildArch:      noarch
 %systemd_requires
