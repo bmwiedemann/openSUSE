@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 16 11:37:25 UTC 2022 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- Install chrony DHCP dispatcher script for Networkmanager
+  * chrony.nm-dispatcher.dhcp.patch /var/run to /run
+
+-------------------------------------------------------------------
 Thu Sep  1 14:40:46 UTC 2022 - Reinhard Max <max@suse.com>
 
 - Update to 4.3:
