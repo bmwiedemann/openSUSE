@@ -15,4 +15,19 @@
     <comment></comment>
     <requestid>1033585</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b14433a40c8e221232e0dca36cd4fee7</srcmd5>
+    <version>0.4.0~0</version>
+    <time>1669911684</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.0:
+  * More than 15 bug fixes (including major bugs).
+  * New accessible mode.
+  * Added list command.
+  * Added support for .lz4 and .sz (snappy).
+  * Infer file type while decompressing via MIME types.
+  * New flags to ignore hidden files and .gitignore'd files when compressing.
+  * Flag -o/--output was renamed to -d/--dir.</comment>
+    <requestid>1039268</requestid>
+  </revision>
 </revisionlist>

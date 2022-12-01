@@ -17,7 +17,7 @@
 
 
 Name:           ouch
-Version:        0.3.1~0
+Version:        0.4.0~0
 Release:        0
 Summary:        Compression and decompression utility for the terminal
 License:        MIT

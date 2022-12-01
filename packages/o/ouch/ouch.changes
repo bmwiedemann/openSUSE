@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Dec  1 09:11:10 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.4.0:
+  * More than 15 bug fixes (including major bugs).
+  * New accessible mode.
+  * Added list command.
+  * Added support for .lz4 and .sz (snappy).
+  * Infer file type while decompressing via MIME types.
+  * New flags to ignore hidden files and .gitignore'd files when compressing.
+  * Flag -o/--output was renamed to -d/--dir.
+
+-------------------------------------------------------------------
 Fri Nov  4 14:26:25 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Generalize description for all terminals and target users.
