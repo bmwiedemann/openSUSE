@@ -164,4 +164,12 @@
   - Switch to OFTC</comment>
     <requestid>976982</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>4079e2acdb6a5ad80126f7b0809a5eb4</srcmd5>
+    <version>2.2.0</version>
+    <time>1669912642</time>
+    <user>dimstar_suse</user>
+    <comment>- remove unused dependencies</comment>
+    <requestid>1039271</requestid>
+  </revision>
 </revisionlist>

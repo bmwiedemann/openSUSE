@@ -28,7 +28,6 @@ Source0:        https://files.pythonhosted.org/packages/source/r/renderspec/rend
 BuildRequires:  openstack-macros
 BuildRequires:  python3-Jinja2 >= 2.10
 BuildRequires:  python3-ddt
-BuildRequires:  python3-mock
 BuildRequires:  python3-packaging >= 16.5
 BuildRequires:  python3-pbr
 BuildRequires:  python3-pymod2pkg >= 0.7.0
@@ -46,7 +45,6 @@ Requires:       python3-Jinja2 >= 2.10
 Requires:       python3-PyYAML >= 3.10
 Requires:       python3-packaging >= 16.5
 Requires:       python3-pymod2pkg >= 0.7.0
-Requires:       python3-six
 Conflicts:      %{oldpython}-renderspec < %{version}
 
 %description -n python3-renderspec
