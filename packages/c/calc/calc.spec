@@ -16,10 +16,10 @@
 #
 
 
-%define soname 2_14_1_0
+%define soname 2_14_1_2
 %define libname libcalc%{soname}
 Name:           calc
-Version:        2.14.1.0
+Version:        2.14.1.2
 Release:        0
 Summary:        C-style arbitrary precision calculator
 License:        LGPL-2.1-only
@@ -36,7 +36,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Calc is arbitrary precision C-like arithmetic system that is a
-calculator, an algorithm prototype and mathematical research tool. 
+calculator, an algorithm prototype and mathematical research tool.
 Calc comes with a rich set of builtin mathematical and programmatic
 functions.
 

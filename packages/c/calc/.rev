@@ -408,4 +408,45 @@
   * Added tests to cal/regress.cal to help verify bug fix is fixed.</comment>
     <requestid>969339</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>693c0e57128ab60f5da75221099d2ad5</srcmd5>
+    <version>2.14.1.2</version>
+    <time>1669911691</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.14.1.2:
+  * Restored use of the #define FPOS_POS_LEN symbol.  This refers to
+    the length of the __pos element (if the __pos element exists),
+    the fpos_t type (if that type exists).
+  * Changed SWAP_HALF_IN_FILEPOS(dest, src) mato to use FILEPOS_LEN Little
+    Endian when FILEPOS is a simple scalar type (i.e., HAVE_FILEPOS_SCALAR
+    is defined).
+  * Changed #define HAVE_FPOS to HAVE_FGETSETPOS.
+  * Corrected comment in have_fpos_pos.h.  The HAVE_FPOS_POS symbol was
+    NOT related to fgetpos &amp; fsetpos but rather if we we have an __pos
+    element in FILEPOS.
+  * Changed #define HAVE_NO_FPOS to HAVE_NO_FGETSETPOS.
+  * Improved comments in have_fpos_pos.h to show why and how
+    HAVE_FPOS_POS, FPOS_POS_BITS, and FPOS_POS_LEN were defined or undefed.
+  * Changed showfiles builtin to print sizes cast to (long int) with
+    the &quot;%ld&quot; printf format to avoid implementations that do not support
+    the &quot;%lld&quot; printf format specifier.
+  * Renamed have_fpos.h to have_fgetsetpos.h.  Renamed CALC_HAVE_FPOS_H
+    to CALC_HAVE_FGETSETPOS_H.  The make install and the olduninstall
+    rules remove the any old have_fpos.h that was previously installed.
+  * Added swap_HALFs(dest, src, len) function to byteswap.c.
+  * Calc can now handle Big Engian file position sizes that are a
+    multiple of BASEB bits in length.  Before handle Big Engian file
+    positions could only be 32 and 64 bits in length.  This will allow,
+    for example, a Big Engian file position size of 128 (assuming that
+    128/BASEB is is an integer).
+  * Temporary workaround for musl libc systems such as gentoo Linux that
+    allows them to compile calc and successfully run the regression test.
+- Update to 2.14.1.1:
+  * Added a few remarks on calc version numbers to version.c.
+  * Fixed how several headers are built.  On a number of systems, the source
+    file failed to compile incorrectly.  This caused problems for systems in
+    which header.h.def was not correct.
+</comment>
+    <requestid>1039276</requestid>
+  </revision>
 </revisionlist>
