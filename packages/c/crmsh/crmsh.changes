@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Thu Dec 01 06:28:39 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.1+20221201.bdfb0f2c:
+  * Change: store the upgrade_seq in /etc/crm/
+
+-------------------------------------------------------------------
+Thu Dec 01 04:31:00 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.1+20221201.280e5afb:
+  * Fix: qdevice: Adjust SBD_WATCHDOG_TIMEOUT when configuring qdevice not using stage (bsc#1205727)
+
+-------------------------------------------------------------------
+Wed Nov 30 02:00:58 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.1+20221130.c3547a20:
+  * Dev: testcases: Adjust original regression test based on previous changes
+  * Dev: behave: Add functional test for previous changes
+  * Fix: cibconfig: Complete promotable=true and interlave=true for Promoted/Unpromoted resource (bsc#1205522)
+
+-------------------------------------------------------------------
+Mon Nov 28 09:03:47 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.1+20221128.75c824f5:
+  * Dev: bootstrap: return when -N option not specified
+  * Dev: unittest: Add unit test for previous commit
+  * Dev: bootstrap: join process return immediately when joining itself
+
+-------------------------------------------------------------------
+Mon Nov 28 07:51:22 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.1+20221128.1b8068a8:
+  * Dev: log: Use original way for the prompt input
+
+-------------------------------------------------------------------
+Fri Nov 25 07:39:10 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.1+20221125.ef74cf11:
+  * Dev: bootstrap: add timeout to wait_for_cluster and wait_for_resource
+
+-------------------------------------------------------------------
+Thu Nov 24 08:45:07 UTC 2022 - XLiang@suse.com
+
+- Update to version 4.4.1+20221124.37ac467f:
+  * Fix: corosync: show corosync ring status if has fault (bsc#1205615)
+
+-------------------------------------------------------------------
 Tue Nov 22 14:36:03 UTC 2022 - XLiang@suse.com
 
 - Update to version 4.4.1+20221122.102a8e11:
