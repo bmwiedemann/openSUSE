@@ -1,7 +1,7 @@
 #
 # spec file for package opensc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define completionsdir %(pkg-config --variable completionsdir bash-completion)
 Name:           opensc
-Version:        0.22.0
+Version:        0.23.0
 Release:        0
 Summary:        Smart Card Utilities
 License:        LGPL-2.1-or-later
