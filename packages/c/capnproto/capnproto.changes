@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 30 16:54:01 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.10.3
+  * Fix CVE-2022-46149: Possible out-of-bounds read related to
+    list-of-pointers
+
+-------------------------------------------------------------------
 Thu Jun 30 05:52:05 UTC 2022 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.10.2
