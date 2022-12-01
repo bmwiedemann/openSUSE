@@ -190,4 +190,15 @@
 - Update Requires from setup.py (forwarded request 1010520 from glaubitz)</comment>
     <requestid>1010538</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>8ad5204f6a66a0ee543b21962336c78a</srcmd5>
+    <version>5.1.0b2</version>
+    <time>1669910330</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 5.1.0b2
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1039151 from glaubitz)</comment>
+    <requestid>1039186</requestid>
+  </revision>
 </revisionlist>
