@@ -1493,7 +1493,6 @@ Macros:
 %suseconfig_fonts_prereq perl aaa_base
 # I can't just not define it, as otherwise all specs using it break: [   25s] error: line 27: Empty tag: Requires(post):
 %install_info_prereq /bin/sh
-%kernel_module_package_buildreq kmod-compat kernel-syms
 %kernel_module_package_buildreqs kmod-compat kernel-syms
 
 %sles_version 0
