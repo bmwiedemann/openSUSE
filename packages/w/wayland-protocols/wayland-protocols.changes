@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 29 18:34:53 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 1.31:
+  + wp-fractional-scale-v1: new protocol
+  + xdg-shell: add defunct_role_object error
+
+-------------------------------------------------------------------
 Wed Nov 23 12:40:57 UTC 2022 - llyyr <llyyr.public@gmail.com>
 
 - Update to version 1.30:
