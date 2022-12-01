@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Nov 30 14:55:31 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.10.0:
+  * refactor: added ExportCache to build options (#3252) (#3254)
+  * fix: e2e test (#3246)
+  * Sanitize name for deploy and destroy name (#3214)
+  * fix: show info if context is initialized by env vars (#3244)
+  * fix: show self signed warning when insecure flag (#3236)
+  * Check last stage instead of last line in the output tests to know if the log has finished (#3245)
+  * Alternative 1: Fix missing error messages in the installer (#3231)
+  * fix: private ingress annotations (#3224)
+  * Revert "update init container logs (#3127)" (#3239)
+  * feat: add platform flag to build command (#3234)
+  * Documentation grammar fixes (#3216)
+  * Empty cfgmap repository if not valid repo schema (#3230)
+  * Add logs command (#2120)
+  * Add errors related to EOF to our retry logic (#3227)
+  * Revert "Changes to print error message in main.go when the error is returned by the command executed and avoid duplicated messages (#3219)" (#3225)
+  * Fix clone http (#3222)
+  * Changes to print error message in main.go when the error is returned by the command executed and avoid duplicated messages (#3219)
+  * Jlopezbarb/syncthing removing console instead of okteto process e2e (#3202)
+  * Remove "github.com/ibuildthecloud/finalizers" as dependency (#3206)
+  * upload static files (#3208)
+
+-------------------------------------------------------------------
 Wed Nov 23 07:14:31 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 2.9.1:
