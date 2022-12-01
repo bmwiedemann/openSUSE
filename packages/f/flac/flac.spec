@@ -20,7 +20,7 @@
 %define sover_plus 10
 
 Name:           flac
-Version:        1.4.1
+Version:        1.4.2
 Release:        0
 Summary:        Free Lossless Audio Codec
 License:        BSD-3-Clause AND GPL-2.0-or-later AND GFDL-1.2-only
@@ -31,7 +31,6 @@ URL:            https://xiph.org/flac/
 #Changelog:     https://xiph.org/flac/changelog.html
 Source:         https://downloads.xiph.org/releases/flac/%{name}-%{version}.tar.xz
 Source2:        baselibs.conf
-Patch0:         flac-cflags.patch
 
 BuildRequires:  autoconf >= 2.60
 BuildRequires:  automake >= 1.11
@@ -42,9 +41,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  xz
 BuildRequires:  pkgconfig(ogg)
 Obsoletes:      %{name}-doc
-%ifarch %{ix86}
-BuildRequires:  nasm
-%endif
 
 %description
 FLAC is an audio coding format for lossless compression of digital
@@ -98,10 +94,8 @@ autoreconf -fvi
 %configure \
 	--disable-silent-rules \
 	--disable-thorough-tests \
-	--disable-xmms-plugin \
 	--disable-static \
-	--disable-rpath \
-	--enable-sse
+	--disable-rpath
 %make_build
 
 %install
