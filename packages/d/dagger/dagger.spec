@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           dagger
-Version:        0.2.36
+Version:        0.3.5
 Release:        0
 Summary:        A portable devkit for CI/CD pipelines
 License:        GPL-3.0-only
