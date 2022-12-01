@@ -18,7 +18,7 @@
 
 %define skip_python38 1
 Name:           python-specfile
-Version:        0.9.0
+Version:        0.10.0
 Release:        0
 Summary:        A library for parsing and manipulating RPM spec files
 License:        MIT
