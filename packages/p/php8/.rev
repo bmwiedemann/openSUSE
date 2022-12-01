@@ -339,4 +339,12 @@
   * https://www.php.net/ChangeLog-8.php#8.1.13</comment>
     <requestid>1038044</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>972ecc38710247ca0ee25d5c25fdef56</srcmd5>
+    <version>8.1.13</version>
+    <time>1669910295</time>
+    <user>dimstar_suse</user>
+    <comment>- amend %preun to fix [bsc#1205782]</comment>
+    <requestid>1039061</requestid>
+  </revision>
 </revisionlist>

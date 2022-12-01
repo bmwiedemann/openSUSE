@@ -1306,13 +1306,13 @@ done
 %post
 if [ $1 -eq 1 ]; then
     # package is just installed
-    a2enmod -q %{php_name} || a2enmod %{php_name}
+    a2enmod %{php_name} > /dev/null
 fi
 
 %preun
 if [ $1 -eq 0 ]; then
     # package will be uninstalled
-    a2enmod -q %{php_name} && a2enmod -d %{php_name}
+    a2enmod -d %{php_name} > /dev/null
 fi
 
 %postun
