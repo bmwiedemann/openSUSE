@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 29 16:13:08 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.28:
+  * Split kernel scriptlets into separate sub-package, again
+    (boo#1202353, boo#1205149)
+
+-------------------------------------------------------------------
 Mon Nov 21 15:52:55 UTC 2022 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 16.0.27:

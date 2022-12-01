@@ -619,4 +619,14 @@ source service setup which messed up my spec file.
   * 80-hotplug-cpu-mem.rules: use CONST{arch} (bsc#1204423) (forwarded request 1037141 from mwilck)</comment>
     <requestid>1037142</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>0499fdef6e7cdfa65d17f638b028b03c</srcmd5>
+    <version>16.0.28</version>
+    <time>1669910317</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.0.28:
+  * Split kernel scriptlets into separate sub-package, again
+    (boo#1202353, boo#1205149) (forwarded request 1038931 from mwilck)</comment>
+    <requestid>1038933</requestid>
+  </revision>
 </revisionlist>

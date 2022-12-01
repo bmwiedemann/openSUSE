@@ -45,7 +45,7 @@
 %global modprobe_conf_rpmsave %(echo "%{modprobe_conf_files}" | sed 's,\\([^ ]*\\),%{_sysconfdir}/modprobe.d/\\1.conf.rpmsave,g')
 
 Name:           suse-module-tools
-Version:        16.0.27
+Version:        16.0.28
 Release:        0
 Summary:        Configuration for module loading and SUSE-specific utilities for KMPs
 License:        GPL-2.0-or-later
@@ -64,7 +64,9 @@ Requires:       rpm
 Requires(post): /usr/bin/grep
 Requires(post): /usr/bin/sed
 Requires(post): coreutils
+%if 0%{?suse_version} < 1550
 Provides:       suse-kernel-rpm-scriptlets = 0
+%endif
 Provides:       udev-extra-rules = 0.3.0
 Obsoletes:      udev-extra-rules < 0.3.0
 Provides:       system-tuning-common-SUSE = 0.3.0
@@ -98,6 +100,17 @@ Supplements:    dkms
 This package contains the legacy "weak-modules" script for kernel
 module package (KMP) support. It was replaced by "weak-modules2" in
 SLE 11 and later. It is still used by the DKMS module packaging framework.
+
+%if 0%{?suse_version} >= 1550
+%package scriptlets
+Summary:        Kernel rpm scriptlets
+Provides:       suse-kernel-rpm-scriptlets = 0
+Requires:       suse-module-tools = %{version}
+Provides:       suse-module-tools:/usr/lib/module-init-tools/kernel-scriptlets
+
+%description scriptlets
+Scripts called by the SUSE kernel packages on installation
+%endif
 
 %prep
 %setup -q
@@ -263,8 +276,12 @@ exit 0
 %{_rpmmacrodir}/macros.initrd
 %endif
 %{_bindir}/kmp-install
-/usr/lib/module-init-tools
-%exclude /usr/lib/module-init-tools/weak-modules
+%dir /usr/lib/module-init-tools
+/usr/lib/module-init-tools/driver-check.sh
+/usr/lib/module-init-tools/lsinitrd-quick
+/usr/lib/module-init-tools/regenerate-initrd-posttrans
+/usr/lib/module-init-tools/unblacklist
+/usr/lib/module-init-tools/weak-modules2
 %{_unitdir}/*.service
 %{_unitdir}/systemd-sysctl.service.d
 %{_modulesloaddir}
@@ -272,6 +289,12 @@ exit 0
 %ifarch ppc64 ppc64le
 /usr/lib/systemd/system-generators
 %endif
+#
+%if 0%{?suse_version} >= 1550
+%files scriptlets
+%endif
+/usr/lib/module-init-tools/kernel-scriptlets
+
 
 %files legacy
 %defattr(-,root,root)
