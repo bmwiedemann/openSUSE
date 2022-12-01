@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Dec  1 08:46:12 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.5.1:
+  * ui: use *-symbolic variant of toolbar icons (5dc44f8), closes #34
+
+-------------------------------------------------------------------
+Thu Dec  1 08:45:41 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.5.0:
+  * config: add early_exit option (60da549)
+  * config: allow paint_mode to be configured through config file (2f35f02)
+  * config: try to create save_dir if it does not exist (4fb291a)
+  * ui: allow filling rectangles and ellipsis (8ee55f7), closes #120
+
+-------------------------------------------------------------------
 Wed Sep 28 09:26:37 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Removed the strict requirement for `wl-clipboard` since `wl-clipboard-rs`
