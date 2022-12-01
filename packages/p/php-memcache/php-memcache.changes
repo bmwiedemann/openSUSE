@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 30 17:47:19 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Adjust to memcached now being installed in /usr/bin instead of
+  /usr/sbin.
+
+-------------------------------------------------------------------
 Thu Jan 27 19:57:49 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
 
 - Fix deprecated cache_connect(): passing null to parameter #2
@@ -9,7 +15,7 @@ Tue Feb 23 15:58:58 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - Fix random failures in php7 unit test
   + fixup-unit-test-040.patch
-  
+
 -------------------------------------------------------------------
 Fri Jan 29 19:13:42 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 

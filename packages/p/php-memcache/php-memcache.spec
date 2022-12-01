@@ -1,7 +1,7 @@
 #
-# spec file for package php-memcache
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -82,9 +82,18 @@ export CFLAGS="%{optflags} -fvisibility=hidden"
 %make_build
 
 %check
-%{_sbindir}/memcached -P /tmp/memcached1.pid -p 11211 -U 11211 -d
-%{_sbindir}/memcached -P /tmp/memcached2.pid -p 11212 -U 11212 -d
-%{_sbindir}/memcached -P /tmp/memcached3.pid -s /tmp/memcached.sock -d
+if [ -x %{_sbindir}/memcached ]; then
+  export MEMCACHED_BIN=%{_sbindir}/memcached
+elif [ -x %{_bindir}/memcached ]; then
+  export MEMCACHED_BIN=%{_bindir}/memcached
+else
+  echo "Failed to start memcached - tests can't pass"
+  exit 1
+fi
+
+$MEMCACHED_BIN -P /tmp/memcached1.pid -p 11211 -U 11211 -d
+$MEMCACHED_BIN -P /tmp/memcached2.pid -p 11212 -U 11212 -d
+$MEMCACHED_BIN -P /tmp/memcached3.pid -s /tmp/memcached.sock -d
 %make_build PHP_EXECUTABLE=%{__php} NO_INTERACTION=1 test
 kill $(cat /tmp/memcached*.pid)
 
