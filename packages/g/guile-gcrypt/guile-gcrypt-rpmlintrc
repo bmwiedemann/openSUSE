@@ -1,6 +1,0 @@
-# guile .go files are "special"
-# no shared libraries
-addFilter("W: shared-lib-without-dependency-information /usr/lib64/guile/*/.*")
-
-# maybe a wrong linker
-addFilter("W: missing-PT_GNU_STACK-section /usr/lib64/guile/*/.*")

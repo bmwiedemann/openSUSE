@@ -56,4 +56,12 @@
     <comment>- Update to 0.3.0:</comment>
     <requestid>850988</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>69b58ccf98c8bbae6626d787acd04a68</srcmd5>
+    <version>0.4.0</version>
+    <time>1669914797</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.4.0 (no breaking changes)</comment>
+    <requestid>1039343</requestid>
+  </revision>
 </revisionlist>

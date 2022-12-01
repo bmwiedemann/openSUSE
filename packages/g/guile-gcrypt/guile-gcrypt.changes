@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec  1 15:09:22 UTC 2022 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
+
+- Update to 0.4.0:
+  * ‘base64-encode’ and ‘base64-decode’ now let you optionally control padding
+  * New supported algorithms added to (gcrypt hash)
+  * New supported algorithms added to (gcrypt mac)
+  * Improvements and fixes to the manual 
+- Remove no longer needed rpmlintrc
+
+-------------------------------------------------------------------
 Fri Nov  6 17:15:43 UTC 2020 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
 
 - Update to 0.3.0:
