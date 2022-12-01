@@ -1,7 +1,7 @@
 #
 # spec file for package exa
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -101,9 +101,8 @@ install -d -m 0755 %{buildroot}%{_mandir}/man5/
 pandoc --standalone -f markdown -t man man/exa_colors.5.md > %{buildroot}%{_mandir}/man5/exa_colors.5
 
 # Completion files
-install -Dm0644 completions/completions.bash \
-         %{buildroot}%{_datarootdir}/bash-completion/completions/%{name}
-install -Dm0644 completions/completions.zsh "%{buildroot}%{_sysconfdir}/zsh_completion.d/%{name}"
+install -Dm0644 completions/completions.bash "%{buildroot}%{_datadir}/bash-completion/completions/%{name}"
+install -Dm0644 completions/completions.zsh "%{buildroot}%{_datadir}/zsh/site-functions/_%{name}"
 install -Dm0644 completions/completions.fish "%{buildroot}/%{_datadir}/fish/vendor_completions.d/%{name}.fish"
 
 %files
@@ -114,10 +113,10 @@ install -Dm0644 completions/completions.fish "%{buildroot}/%{_datadir}/fish/vend
 %{_mandir}/man5/exa_colors.5%{ext_man}
 
 %files bash-completion
-%{_datarootdir}/bash-completion/completions/%{name}
+%{_datadir}/bash-completion/completions/%{name}
 
 %files zsh-completion
-%{_sysconfdir}/zsh_completion.d/%{name}
+%{_datadir}/zsh/site-functions/_%{name}
 
 %files fish-completion
 %{_datadir}/fish/vendor_completions.d/%{name}.fish

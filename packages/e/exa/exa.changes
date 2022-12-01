@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 30 22:26:27 UTC 2022 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Install ZSH shell completion to /usr/share/zsh/site-functions/
+
+-------------------------------------------------------------------
 Tue Aug  3 06:32:47 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
 
 - Build the manpages correctly
