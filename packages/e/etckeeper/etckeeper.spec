@@ -2,7 +2,7 @@
 #
 # spec file for package etckeeper
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 # Copyright (c) 2014 Mitsutoshi NAKANO <bkbin005@rinku.zaq.ne.jp>
 # Copyright (c) 2013 Pascal Bleser <pascal.bleser@opensuse.org>
 #
@@ -62,9 +62,8 @@ BuildRequires:  systemd-rpm-macros
 BuildRequires:  bzr
 %endif
 
-Recommends:     git-core
-Recommends:     %{name}-bash-completion = %{version}-%{release}
 Recommends:     %{name}-zypp-plugin = %{version}-%{release}
+Recommends:     git-core
 %if %{with bzr}
 Recommends:     %{name}-bzr = %{version}-%{release}
 %endif
@@ -126,6 +125,7 @@ Summary:        The bash completion for etckeeper
 Group:          System/Shells
 Requires:       bash-completion
 Requires:       etckeeper = %{version}-%{release}
+Supplements:    (%{name} and bash-completion)
 
 %description bash-completion
 Bash command line completion support for %{name}.

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 17 13:52:20 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not have the main package recommend the bash-completion
+  sub-package, but rather have the subpackage supplement the
+  combination of etckeeper and bash-completion.
+
+-------------------------------------------------------------------
 Mon Sep 26 02:32:00 UTC 2022 - André Werlang <beppe85@gmail.com>
 
 - Update to 1.18.18:
