@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Nov 30 17:22:42 UTC 2022 - Larry Finger <Larry.Finger@gmail.com>
+
+Fixes boo#1205868 - VirtualBox 7.0.4 crashes when machine log is requested from GUI
+
+Deleted file "VBoxDDR0.r0" - no longer needed.
+Deleted file "Fix_for_server_1.19.patch" - no longer needed.
+Deleted file "fixes_for_Qt5.11.patch" - no longer needed.
+Deleted file "fix_lib_search.patch" - no longer needed.
+Deleted file "fixes_for_Leap42.3.patch" - target is obsolete.
+Deleted file "set_noexec_stack.patch" - not needed.
+Deleted file "fix_v7_build.patch" - not needed.
+Deleted file "fixes_for_gcc10.patch" - not needed.
+Deleted file "internal-headers.patch" - not needed.
+Deleted file "virtualbox-fix-ui-background-color.patch" - does not apply.
+
+-------------------------------------------------------------------
 Mon Nov 21 16:10:35 UTC 2022 - Larry Finger <Larry.Finger@gmail.com>
 
 Removed file "fixes_for_leap15.4.patch" - fixed upstream.

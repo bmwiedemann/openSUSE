@@ -88,7 +88,6 @@ Source22:       vboxweb-service.sh
 Source23:       vboxautostart-service.service
 Source24:       vboxautostart-service.sh
 Source25:       vboxclient.desktop
-Source26:       VBoxDDR0.r0
 Source97:       README.build
 Source98:       virtualbox-rpmlintrc
 Source99:       virtualbox-patch-source.sh
@@ -98,85 +97,69 @@ Patch2:         vbox-vboxadd-init-script.diff
 #fix build : "Error 4001 - String must be entirely alphanumeric"
 #with renaming we probably break some macosx functionality however ths is just quick fix
 #see thread : http://lists.freebsd.org/pipermail/freebsd-acpi/2010-October/006795.html
-Patch6:         vbox-smc-napa.diff
+Patch3:         vbox-smc-napa.diff
 #deprecated old-style C++ service proxies and objects,we have to use soapcpp2 -z1 flag
-Patch9:         vbox-deprec-gsoap-service-proxies.diff
+Patch4:         vbox-deprec-gsoap-service-proxies.diff
 #fix failed linking process during build - this patch is just quick workaround
-Patch10:        vbox-gsoapssl-deps.diff
+Patch5:         vbox-gsoapssl-deps.diff
 #PATCH-FIX-OPENSUSE implement messagebox (VBoxPermissionMessage app), which is displayed, when user
 #try to start VirtualBox and is not member of vboxusers group
-Patch99:        vbox-permissions_warning.diff
+Patch6:         vbox-permissions_warning.diff
 #PATCH-FIX-OPENSUSE Do not include build dates on binaries, makes build-compare happier
-Patch100:       vbox-no-build-dates.diff
-Patch101:       vbox-default-os-type.diff
+Patch7:         vbox-no-build-dates.diff
+Patch8:         vbox-default-os-type.diff
 # Disable the distributed versions of vboxdrv.sh and vboxadd.sh for security reasons.
-Patch102:       security_fixes.patch
+Patch9:         security_fixes.patch
 #disable update in vbox gui
-Patch103:       vbox-disable-updates.diff
+Patch10:        vbox-disable-updates.diff
 #use pie/fPIE for setuid binaries (bnc#743143)
-Patch104:       vbox-fpie.diff
+Patch11:        vbox-fpie.diff
 #smap issues on Haswell or Broadwell (boo#931461)
-Patch105:       smap.diff
+Patch12:        smap.diff
 # Patch to build with Factory gcc5
-Patch106:       gcc5-real-support.patch
+Patch13:        gcc5-real-support.patch
 # Patch to build with gnu sed correctly
-Patch107:       virtualbox-sed-params.patch
+Patch14:        virtualbox-sed-params.patch
 # Patch to use snprintf correcty and not overflow dst buffer
-Patch108:       virtualbox-snpritnf-buffer-overflow.patch
+Patch15:        virtualbox-snpritnf-buffer-overflow.patch
 # Patch to add code to explain USB Passthru
-Patch109:       vbox-usb-warning.diff
+Patch16:        vbox-usb-warning.diff
 # Patch to ensure that VirtualBoxVM is SUID
-Patch110:       vbox-suid-warning.diff
+Patch17:        vbox-suid-warning.diff
 # Fix symbol conflict between host and guest kmp
-Patch111:       fix_conflict_between_host_and_guest.patch
+Patch18:        fix_conflict_between_host_and_guest.patch
 # Fix change in kernel API for ttm_bo_move_memcpy()
-Patch112:       modify_for_4_8_bo_move.patch
+Patch19:        modify_for_4_8_bo_move.patch
 # Remove all mention of _smp_mflags
-Patch113:       vbox_remove_smp_mflags.patch
+Patch20:        vbox_remove_smp_mflags.patch
 # Disable experimental and incomplete CLOUD_NET
-Patch114:       turn_off_cloud_net.patch
-# Fix for missing include needed for server 1.19
-Patch116:       Fix_for_server_1.19.patch
-# Fix invalid use of internal headers
-Patch118:       internal-headers.patch
+Patch21:        turn_off_cloud_net.patch
 # Fix rpmlint error for script /lib/usr/virtualbox/vboxshell.py
-Patch120:       fixes_for_python.patch
-# Fix build for Qt 5.11
-Patch122:       fixes_for_Qt5.11.patch
+Patch22:        fixes_for_python.patch
 # xpcom: Support up to python 3.10 -- https://www.virtualbox.org/changeset/90537/vbox + https://www.virtualbox.org/changeset/86623/vbox, thanks to Archlinux
-Patch123:       vbox-python-py310.patch
+Patch23:        vbox-python-py310.patch
 # fix build of Python and dev package on openSUSE 11.3 (was vbox-detection.diff)
 # use plain python3 interpreter of the distro (part of former switch_to_pyton3.4+.patch),
-Patch124:       vbox-python-selection.patch
+Patch24:        vbox-python-selection.patch
 # Use build parameters to control video driver problems
-Patch125:       remove_vbox_video_build.patch
-# fix library search
-Patch128:       fix_lib_search.patch
+Patch25:        remove_vbox_video_build.patch
 # Fixes for modified kernel in Leap 42.3
-Patch129:       VirtualBox-5.2.10-xclient.patch
-Patch130:       fixes_for_Leap42.3.patch
+Patch26:        VirtualBox-5.2.10-xclient.patch
 # Fixes for SLE12
-Patch131:       fixes_for_sle12.patch
+Patch27:        fixes_for_sle12.patch
 # Fixes for Qt5.13 on 32-bit systems
-Patch132:       fixes_for_qt5.13.patch
+Patch28:        fixes_for_qt5.13.patch
 # Fixes for openSUSE Leap 15.2
-Patch133:       fixes_for_leap15.2.patch
+Patch29:        fixes_for_leap15.2.patch
 # Fixes for kernel modules Makefile used at boot time
-Patch134:       fixes_for_makefile.patch
+Patch30:        fixes_for_makefile.patch
 # Fix build for Qt 5.15
-Patch135:       fix-missing-includes-with-qt-5.15.patch
-# Fix builds with GCC10
-Patch136:       fixes_for_gcc10.patch
+Patch31:        fix-missing-includes-with-qt-5.15.patch
 # Fix for changes in GSOAP 2.8.103
-Patch137:       handle_gsoap_208103.patch
+Patch32:        handle_gsoap_208103.patch
 # Fix for struct file_operations backport in 15.3
-Patch142:       fixes_for_leap15.3.patch
-Patch143:       fix_kmp_build.patch
-#Fix for yasm defaulting to executable stack
-Patch144:       set_noexec_stack.patch
-#Fix to make C++ generate PIC code, and fixes to make yasm have relocatable references to external globals
-Patch145:       fix_v7_build.patch
-Patch999:       virtualbox-fix-ui-background-color.patch
+Patch33:        fixes_for_leap15.3.patch
+Patch34:        fix_kmp_build.patch
 #
 # Common BuildRequires for both virtualbox and virtualbox-kmp
 BuildRequires:  %{kernel_module_package_buildreqs}
@@ -317,12 +300,6 @@ the terms of the GNU Public License (GPL).
 
 
 
-
-
-
-
-
-
 ##########################################
 
 %package qt
@@ -343,12 +320,6 @@ This package contains the code for the GUI used to control VMs.
 
 
 
-
-
-
-
-
-
 #########################################
 
 %package websrv
@@ -361,11 +332,6 @@ Obsoletes:      %{name}-vboxwebsrv < %{version}
 
 %description websrv
 The VirtualBox web server is used to control headless VMs using a browser.
-
-
-
-
-
 
 
 
@@ -393,12 +359,6 @@ VirtualBox guest addition tools.
 
 
 
-
-
-
-
-
-
 ###########################################
 
 %package -n python3-%{name}
@@ -420,12 +380,6 @@ Python XPCOM bindings to %{name}. Used e.g. by vboxgtk package.
 
 
 
-
-
-
-
-
-
 ###########################################
 
 %package devel
@@ -439,12 +393,6 @@ Obsoletes:      %{name}-ose-devel < %{version}
 
 %description devel
 Development file for %{name}
-
-
-
-
-
-
 
 
 
@@ -481,12 +429,6 @@ sudo %{_sbindir}/vboxguestconfig
 
 
 
-
-
-
-
-
-
 ###########################################
 
 %package guest-desktop-icons
@@ -498,12 +440,6 @@ BuildArch:      noarch
 
 %description guest-desktop-icons
 This package contains icons for guest desktop files that were created on the desktop.
-
-
-
-
-
-
 
 
 
@@ -533,58 +469,45 @@ This package contains the kernel-modules that VirtualBox uses to create or run v
 %setup -q -n VirtualBox-%{version}
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
 %patch6 -p1
+%patch7 -p1
+%patch8 -p1
 %patch9 -p1
 %patch10 -p1
-%patch99 -p1
-%patch100 -p1
-%patch101 -p1
-%patch102 -p1
-%patch103 -p1
-%patch104 -p1
-%patch105 -p1
-%patch106 -p1
-%patch107 -p1
-%patch108 -p1
-%patch109 -p1
-%patch110 -p1
-%patch111 -p1
-%patch112 -p1
-%patch113 -p1
-%patch114 -p1
-%patch116 -p1
-%patch118 -p1
-%patch120 -p1
-%patch122 -p1
-%patch123 -p1
-%patch124 -p1
-%patch125 -p1
-%patch128 -p1
-%patch129 -p1
+%patch11 -p1
+%patch12 -p1
+%patch13 -p1
+%patch14 -p1
+%patch15 -p1
+%patch16 -p1
+%patch17 -p1
+%patch18 -p1
+%patch19 -p1
+%patch20 -p1
+%patch21 -p1
+%patch22 -p1
+%patch23 -p1
+%patch24 -p1
+%patch25 -p1
+%patch26 -p1
 # Adjustments that are version dependent
-%if 0%{?sle_version} == 120300 && 0%{?is_opensuse}
-# Patch for Leap 42.3
-%patch130 -p1
-%endif
-%patch131 -p1
+%patch27 -p1
 # Handle the 32-bit changes needed for Qt 5.13
 %ifarch %{ix86} && 0%{?qt5ver} >= 51300
-%patch132 -p1
+%patch28 -p1
 %endif
-%patch133 -p1
-%patch134 -p1
-%patch135 -p1
-%patch136 -p1
-%patch137 -p1
+%patch29 -p1
+%patch30 -p1
+%patch31 -p1
+%patch32 -p1
 %if 0%{?sle_version} == 150300 && 0%{?is_opensuse}
 # Patch for Leap 15.3
-%patch142 -p1
+%patch33 -p1
 %endif
-%patch143 -p1
-%patch144 -p1
-%patch145 -p1
-# make VB UI background colors look sane again
-##%patch999 -p1
+%patch34 -p1
 
 ### Documents for virtualbox main package ###
 %if %{main_package}
@@ -630,9 +553,8 @@ sed -i 's:include/drm:%{_prefix}/src/linux/include/drm:' src/VBox/Additions/linu
 rm -rf src/libs/{libpng-*,libxml2-*,libxslt-*,zlib-*,boost-*}
 
 #	--disable-kmods		don't build Linux kernel modules -  but use SUSE specific way see few lines under
-# NOT an autoconf configure macro
+# NOT an autoconf ceonfigure macro
 ./configure \
-    --ose \
     --enable-vnc \
     --enable-vde \
     --disable-kmods \
@@ -728,7 +650,6 @@ pushd out/linux.*/release/bin
 install -m 755 VBoxManage 			%{buildroot}%{_vbox_instdir}
 install -m 755 VBoxHeadless 			%{buildroot}%{_vbox_instdir}
 install -m 755 VBoxSDL 				%{buildroot}%{_vbox_instdir}
-#install -m 755 VBoxTunctl 			%{buildroot}%{_vbox_instdir}
 install -m 755 VBoxNetNAT			%{buildroot}%{_vbox_instdir}
 install -m 755 VBoxAutostart			%{buildroot}%{_vbox_instdir}
 install -m 755 VBoxVolInfo			%{buildroot}%{_vbox_instdir}
@@ -745,7 +666,6 @@ install -m 755 vboximg-mount			%{buildroot}%{_vbox_instdir}
 ln -s %{_vbox_instdir}/VBoxManage		%{buildroot}%{_bindir}/VBoxManage
 ln -s %{_vbox_instdir}/VBoxHeadless 		%{buildroot}%{_bindir}/VBoxHeadless
 ln -s %{_vbox_instdir}/VBoxSDL			%{buildroot}%{_bindir}/VBoxSDL
-#ln -s %{_vbox_instdir}/VBoxTunctl		%{buildroot}%{_bindir}/VBoxTunctl
 ln -s %{_vbox_instdir}/vboximg-mount		%{buildroot}%{_bindir}/vboximg-mount
 install -m 755 VBoxSVC 				%{buildroot}%{_vbox_instdir}
 install -m 755 VBoxXPCOMIPCD 			%{buildroot}%{_vbox_instdir}
@@ -764,7 +684,6 @@ install -m 755 VBoxEFI*.fd			%{buildroot}%{_vbox_instdir}
 install -m 755 VBoxSysInfo.sh			%{buildroot}%{_vbox_instdir}
 install -m 644 *.so		 		%{buildroot}%{_vbox_instdir}
 install -m 644 *.r0 				%{buildroot}%{_vbox_instdir}
-install -m 644 %{SOURCE26}				%{buildroot}%{_vbox_instdir}
 install -m 644 components/*			%{buildroot}%{_vbox_instdir}/components/
 # install languages
 install -m 644 nls/*				%{buildroot}%{_datadir}/virtualbox/nls/
@@ -1022,7 +941,6 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %{_bindir}/VBoxManage
 %{_bindir}/VBoxHeadless
 %{_bindir}/VBoxSDL
-#%{_bindir}/VBoxTunctl
 %{_bindir}/vboximg-mount
 %dir %{_vbox_instdir}
 %{_vbox_instdir}/VBoxAutostart
@@ -1050,7 +968,6 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %{_vbox_instdir}/VBoxEFI*.fd
 %{_vbox_instdir}/VBoxManage
 %{_vbox_instdir}/VBoxSVC
-#%{_vbox_instdir}/VBoxTunctl
 %{_vbox_instdir}/VBoxXPCOMIPCD
 %{_vbox_instdir}/VBoxExtPackHelperApp
 %{_vbox_instdir}/vboximg-mount
