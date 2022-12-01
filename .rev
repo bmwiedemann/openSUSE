@@ -111,4 +111,12 @@
   * Quote ld+json string corret as JS, not HTML</comment>
     <requestid>1039016</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>a507ef0014564107ec8c4172fa9a9ed5</srcmd5>
+    <version>20221129.a10bb7c</version>
+    <time>1669910392</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1039297</requestid>
+  </revision>
 </revisionlist>

@@ -26,6 +26,7 @@ Source:         rpm2docserv-%{version}.tar.xz
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
 BuildRequires:  golang(API) >= 1.18
+Requires:       cpio
 # To re-create:
 # git clone https://github.com/Debian/debiman
 # cd rpm2docserv; make vendor; cd ..
