@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Nov 29 18:49:48 UTC 2022 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 1.7:
+  * Unlock the screen on SIGUSR1
+  * Use mlock for password buffer
+  * Delete whole utf8 character on backspace
+  * Use shm_open instead of mkstemp
+  * Check for existence of subcompositor
+  * renderer: work with current buffer locally
+  * Ensure that ext_session_lock_v1.unlock_and_destroy is processed.
+  * shadow: make the result of crypt() const
+  * Fix loss of clarity with odd-sized centered image
+  * bash-completion: localize variables
+  * wayland-scanner: use native version to support cross-compilation
+  * Drop xdg-output requirement
+
+-------------------------------------------------------------------
 Tue Mar  8 08:31:37 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.6:

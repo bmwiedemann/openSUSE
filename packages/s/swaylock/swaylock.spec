@@ -17,13 +17,13 @@
 
 
 Name:           swaylock
-Version:        1.6
+Version:        1.7
 Release:        0
 Summary:        Screen locker for Wayland
 License:        MIT
 Group:          System/GUI/Other
-URL:            https://github.com/swaywm/swaylock
-Source0:        https://github.com/swaywm/swaylock/archive/%{version}.tar.gz
+URL:            https://github.com/swaywm/%{name}
+Source0:        %{name}-%{version}.tar.gz
 BuildRequires:  meson >= 0.48.0
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
