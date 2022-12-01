@@ -3,7 +3,7 @@
   <service name="obs_scm" mode="disabled">
     <param name="scm">git</param>
     <param name="url">https://gitlab.freedesktop.org/pipewire/pipewire.git</param>
-    <param name="revision">refs/tags/0.3.60</param>
+    <param name="revision">refs/tags/0.3.61</param>
     <param name="versionformat">@PARENT_TAG@</param>
 <!--
     <param name="revision">master</param>

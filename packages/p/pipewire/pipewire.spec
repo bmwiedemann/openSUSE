@@ -54,7 +54,7 @@
 %bcond_with aptx
 
 Name:           pipewire
-Version:        0.3.60
+Version:        0.3.61
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -64,16 +64,6 @@ Source0:        %{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE reduce-meson-dependency.patch
 Patch0:         reduce-meson-dependency.patch
-# PATCH-FIX-UPSTREAM 0001-pulse-server-also-advance-read-pointer-in-underrun.patch
-Patch1:         0001-pulse-server-also-advance-read-pointer-in-underrun.patch
-# PATCH-FIX-UPSTREAM 0001-audioadapter-perform-setup-again-after-a-PortConfig.patch
-Patch2:         0001-audioadapter-perform-setup-again-after-a-PortConfig.patch
-# PATCH-FIX-UPSTREAM 0002-audioconvert-redo-setup-when-format-changes.patch
-Patch3:         0002-audioconvert-redo-setup-when-format-changes.patch
-# PATCH-FIX-UPSTREAM 0003-acp-do-probing-in-44100Hz-again.patch
-Patch4:         0003-acp-do-probing-in-44100Hz-again.patch
-# PATCH-FIX-UPSTREAM 0004-alsa-force-playback-start-when-buffer-is-full.patch
-Patch5:         0004-alsa-force-playback-start-when-buffer-is-full.patch
 BuildRequires:  docutils
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -346,11 +336,6 @@ This package provides a PulseAudio implementation based on PipeWire
 %if 0%{?suse_version} <= 1500 && 0%{?sle_version} <= 150300
 %patch0 -p1
 %endif
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
 
 %build
 %if %{pkg_vcmp gcc < 8}

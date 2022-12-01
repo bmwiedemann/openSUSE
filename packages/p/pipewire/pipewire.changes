@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Thu Nov 24 22:05:43 UTC 2022 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.3.61:
+  * Highlights
+    - Fix a bug in audioadapter that could cause crashes when
+      switching bluetooth profiles.
+    - Fix sound in QEMU, deadbeef and openal again.
+    - libcamera plugin fixes, dynamic add and remove should now
+      work with the next wireplumber version.
+    - Fix a regression in pw-midiplay where the first buffer would
+      not play and some events would be missing.
+    - The network module now doesn't export other network sources
+      anymore.
+    - pulse-server now detects clients that keep underrunning for a
+      long time and will pause them to save power.
+    - Many more bugfixes and improvements.
+  * PipeWire
+    - Optimise away some useless graph recalculations.
+    - Increase alternative sample rates from 16 to 32.
+    - Silence some module loading errors when the error can be
+      ignored.
+    - Fix initial buffer requested size for pw-stream when
+      operating in async mode. This also indirectly fixes the first
+      buffer in pw-midiplay.
+  * Modules
+    - Set the network property on pulse-tunnel streams so that they
+      are not exported anymore.
+    - Filter-chain has optimized mix functions now.
+  * SPA
+    - Handle some errors in libcamera better.
+    - Fix libcamera remove events. Fix the id allocation for
+      devices.
+    - Fix a bug in audioadapter where it would not renegotiate
+      after a port reconfiguration, leading to crashes, especially
+      when automatically switching profiles in bluetooth.
+    - Do ALSA probing in 44100Hz again. Some devices seem to fail
+      otherwise for some unknown reason.
+    - Force playback start when the ALSA buffer is full. This fixes
+      sound in QEMU.
+    - Support Digital 5.1 AC3 for Asus Xonar SE.
+    - Improve format renegotiation in audioadapter. This makes the
+      ALSA plugin work again for deadbeef.
+    - Fix latency reporting on adapter DSP ports.
+  * pulse-server
+    - Fix a bug where openal based applications would hang.
+    - Improve zeroconf publish. Only publish on the address of the
+      first running server. This avoids duplicate entries for IPv4
+      and IPv6.
+      Add support for republish entries when new servers are
+      started.
+    - Add a pulse.idle.timeout option (default to 5 seconds) to
+      pause streams that have been underrunning for this amount of
+      time. Badly behaving clients will then not keep the graph and
+      device busy so that devices can be suspended to save battery.
+      This should give better default behaviour with
+      speech-dispatcher.
+  * JACK
+    - Add an option to configure the filter character.
+    - Fix connect_callbacks. It was only called once for output
+      ports.
+    - Add option to set node.passive on jack clients. Make some
+      quirks for qsynth to make it suspend and fade out better.
+- Rebase reduce-meson-dependency.patch.
+- Drop patches already included upstream:
+  * 0001-audioadapter-perform-setup-again-after-a-PortConfig.patch
+  * 0001-pulse-server-also-advance-read-pointer-in-underrun.patch
+  * 0002-audioconvert-redo-setup-when-format-changes.patch
+  * 0003-acp-do-probing-in-44100Hz-again.patch
+  * 0004-alsa-force-playback-start-when-buffer-is-full.patch
+
+-------------------------------------------------------------------
 Thu Nov 17 07:47:37 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch from upstream that fixes audio in qemu where the buffer

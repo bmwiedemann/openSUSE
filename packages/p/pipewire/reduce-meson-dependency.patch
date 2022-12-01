@@ -1,7 +1,7 @@
-Index: pipewire-0.3.60/doc/meson.build
+Index: pipewire-0.3.61/doc/meson.build
 ===================================================================
---- pipewire-0.3.60.orig/doc/meson.build
-+++ pipewire-0.3.60/doc/meson.build
+--- pipewire-0.3.61.orig/doc/meson.build
++++ pipewire-0.3.61/doc/meson.build
 @@ -1,8 +1,8 @@
  doxyfile_conf = configuration_data()
  doxyfile_conf.set('PACKAGE_NAME', meson.project_name())
@@ -102,26 +102,26 @@ Index: pipewire-0.3.60/doc/meson.build
  
  doxyfile = configure_file(input: 'Doxyfile.in',
                            output: 'Doxyfile',
-Index: pipewire-0.3.60/man/meson.build
+Index: pipewire-0.3.61/man/meson.build
 ===================================================================
---- pipewire-0.3.60.orig/man/meson.build
-+++ pipewire-0.3.60/man/meson.build
+--- pipewire-0.3.61.orig/man/meson.build
++++ pipewire-0.3.61/man/meson.build
 @@ -21,7 +21,7 @@ manpages = [
    'pw-top.1.rst.in',
  ]
  
 -if get_option('pipewire-jack').allowed()
-+if (get_option('pipewire-jack').enabled() or get_option('pipewire-jack').auto())
++if not get_option('pipewire-jack').disabled()
    manpages += 'pw-jack.1.rst.in'
  endif
  
-Index: pipewire-0.3.60/meson.build
+Index: pipewire-0.3.61/meson.build
 ===================================================================
---- pipewire-0.3.60.orig/meson.build
-+++ pipewire-0.3.60/meson.build
+--- pipewire-0.3.61.orig/meson.build
++++ pipewire-0.3.61/meson.build
 @@ -1,7 +1,7 @@
  project('pipewire', ['c' ],
-   version : '0.3.60',
+   version : '0.3.61',
    license : [ 'MIT', 'LGPL-2.1-or-later', 'GPL-2.0-only' ],
 -  meson_version : '>= 0.59.0',
 +  meson_version : '>= 0.54.0',
@@ -144,7 +144,7 @@ Index: pipewire-0.3.60/meson.build
  summary({'gstreamer-device-provider': gst_dp_found}, bool_yn: true, section: 'Backend')
  
 -cdata.set('HAVE_GSTREAMER_DEVICE_PROVIDER', get_option('gstreamer-device-provider').allowed())
-+cdata.set('HAVE_GSTREAMER_DEVICE_PROVIDER', get_option('gstreamer-device-provider').enabled() or get_option('gstreamer-device-provider').auto())
++cdata.set('HAVE_GSTREAMER_DEVICE_PROVIDER', (not get_option('gstreamer-device-provider').disabled()))
  
  webrtc_dep = dependency('webrtc-audio-processing',
    version : ['>= 0.2', '< 1.0'],
@@ -153,11 +153,11 @@ Index: pipewire-0.3.60/meson.build
  installed_tests_metadir = pipewire_datadir / 'installed-tests' / pipewire_name
  installed_tests_execdir = pipewire_libexecdir / 'installed-tests' / pipewire_name
 -installed_tests_enabled = get_option('installed_tests').allowed()
-+installed_tests_enabled = (get_option('installed_tests').enabled() or get_option('installed_tests').auto())
++installed_tests_enabled = (not get_option('installed_tests').disabled())
  installed_tests_template = files('template.test.in')
  
 -if get_option('tests').allowed()
-+if (get_option('tests').enabled() or get_option('tests').auto())
++if not get_option('tests').disabled()
    gstack = find_program('gstack', required : false)
    cdata.set('HAVE_GSTACK', gstack.found())
  endif
@@ -166,7 +166,7 @@ Index: pipewire-0.3.60/meson.build
  subdir('src')
  
 -if get_option('tests').allowed()
-+if (get_option('tests').enabled() or get_option('tests').auto())
++if not get_option('tests').disabled()
    subdir('test')
  endif
  
@@ -174,11 +174,11 @@ Index: pipewire-0.3.60/meson.build
                 configuration : cdata)
  
 -if get_option('pipewire-jack').allowed()
-+if (get_option('pipewire-jack').enabled() or get_option('pipewire-jack').auto())
++if not get_option('pipewire-jack').disabled()
    subdir('pipewire-jack')
  endif
 -if get_option('pipewire-v4l2').allowed()
-+if (get_option('pipewire-v4l2').enabled() or get_option('pipewire-v4l2').auto())
++if not get_option('pipewire-v4l2').disabled()
    subdir('pipewire-v4l2')
  endif
  
@@ -187,7 +187,7 @@ Index: pipewire-0.3.60/meson.build
  
  generate_manpages = false
 -if get_option('man').allowed()
-+if (get_option('man').enabled() or get_option('man').auto())
++if not get_option('man').disabled()
    rst2man = find_program('rst2man', required: false)
    if not rst2man.found()
      rst2man = find_program('rst2man.py', required: get_option('man'))
@@ -227,41 +227,40 @@ Index: pipewire-0.3.60/meson.build
 +if meson.version().version_compare('>=0.58.0')
 +  meson.add_devenv(devenv)
 +endif
-Index: pipewire-0.3.60/spa/meson.build
+Index: pipewire-0.3.61/spa/meson.build
 ===================================================================
---- pipewire-0.3.60.orig/spa/meson.build
-+++ pipewire-0.3.60/spa/meson.build
+--- pipewire-0.3.61.orig/spa/meson.build
++++ pipewire-0.3.61/spa/meson.build
 @@ -31,7 +31,7 @@ pkgconfig.generate(filebase : 'lib@0@'.f
  
  subdir('include')
  
 -if get_option('spa-plugins').allowed()
-+if (get_option('spa-plugins').enabled() or get_option('spa-plugins').auto())
++if not get_option('spa-plugins').disabled()
    udevrulesdir = get_option('udevrulesdir')
    if udevrulesdir == ''
      # absolute path, otherwise meson prepends the prefix
-@@ -66,7 +66,8 @@ if get_option('spa-plugins').allowed()
+@@ -66,7 +66,7 @@ if get_option('spa-plugins').allowed()
      summary({'Opus': opus_dep.found()}, bool_yn: true, section: 'Bluetooth audio codecs')
      lc3_dep = dependency('lc3', required : get_option('bluez5-codec-lc3'))
      summary({'LC3': lc3_dep.found()}, bool_yn: true, section: 'Bluetooth audio codecs')
 -    if get_option('bluez5-backend-hsp-native').allowed() or get_option('bluez5-backend-hfp-native').allowed()
-+    if (get_option('bluez5-backend-hsp-native').enabled() or get_option('bluez5-backend-hsp-native').auto()) or
-+       (get_option('bluez5-backend-hfp-native').enabled() or get_option('bluez5-backend-hfp-native').auto())
++    if (not get_option('bluez5-backend-hsp-native').disabled()) or (not get_option('bluez5-backend-hfp-native').disabled())
        mm_dep = dependency('ModemManager', version : '>= 1.10.0', required : get_option('bluez5-backend-native-mm'))
        summary({'ModemManager': mm_dep.found()}, bool_yn: true, section: 'Bluetooth backends')
      endif
-@@ -90,6 +91,6 @@ endif
+@@ -90,6 +90,6 @@ endif
  
  subdir('tools')
  subdir('tests')
 -if get_option('examples').allowed()
-+if (get_option('examples').enabled() or get_option('examples').auto())
++if not get_option('examples').disabled()
    subdir('examples')
  endif
-Index: pipewire-0.3.60/spa/plugins/audioconvert/meson.build
+Index: pipewire-0.3.61/spa/plugins/audioconvert/meson.build
 ===================================================================
---- pipewire-0.3.60.orig/spa/plugins/audioconvert/meson.build
-+++ pipewire-0.3.60/spa/plugins/audioconvert/meson.build
+--- pipewire-0.3.61.orig/spa/plugins/audioconvert/meson.build
++++ pipewire-0.3.61/spa/plugins/audioconvert/meson.build
 @@ -148,7 +148,7 @@ foreach a : test_apps
        install : installed_tests_enabled,
        install_dir : installed_tests_execdir / 'audioconvert'),
@@ -280,10 +279,10 @@ Index: pipewire-0.3.60/spa/plugins/audioconvert/meson.build
          ])
  
      if installed_tests_enabled
-Index: pipewire-0.3.60/spa/plugins/audiomixer/meson.build
+Index: pipewire-0.3.61/spa/plugins/audiomixer/meson.build
 ===================================================================
---- pipewire-0.3.60.orig/spa/plugins/audiomixer/meson.build
-+++ pipewire-0.3.60/spa/plugins/audiomixer/meson.build
+--- pipewire-0.3.61.orig/spa/plugins/audiomixer/meson.build
++++ pipewire-0.3.61/spa/plugins/audiomixer/meson.build
 @@ -81,7 +81,7 @@ foreach a : test_apps
        install : installed_tests_enabled,
        install_dir : installed_tests_execdir / 'audiomixer'),
@@ -302,10 +301,10 @@ Index: pipewire-0.3.60/spa/plugins/audiomixer/meson.build
          ])
  
      if installed_tests_enabled
-Index: pipewire-0.3.60/spa/plugins/bluez5/meson.build
+Index: pipewire-0.3.61/spa/plugins/bluez5/meson.build
 ===================================================================
---- pipewire-0.3.60.orig/spa/plugins/bluez5/meson.build
-+++ pipewire-0.3.60/spa/plugins/bluez5/meson.build
+--- pipewire-0.3.61.orig/spa/plugins/bluez5/meson.build
++++ pipewire-0.3.61/spa/plugins/bluez5/meson.build
 @@ -6,13 +6,13 @@ foreach dep: bluez5_deps
  endforeach
  
@@ -317,96 +316,95 @@ Index: pipewire-0.3.60/spa/plugins/bluez5/meson.build
 -cdata.set('HAVE_BLUEZ_5_BACKEND_NATIVE_MM', get_option('bluez5-backend-native-mm').allowed())
 -cdata.set('HAVE_BLUEZ_5_BACKEND_OFONO', get_option('bluez5-backend-ofono').allowed())
 -cdata.set('HAVE_BLUEZ_5_BACKEND_HSPHFPD', get_option('bluez5-backend-hsphfpd').allowed())
-+          (get_option('bluez5-backend-hsp-native').enabled() or get_option('bluez5-backend-hsp-native').auto()) or
-+          (get_option('bluez5-backend-hfp-native').enabled() or get_option('bluez5-backend-hfp-native').auto()))
-+cdata.set('HAVE_BLUEZ_5_BACKEND_HSP_NATIVE', (get_option('bluez5-backend-hsp-native').enabled() or get_option('bluez5-backend-hsp-native').auto()))
-+cdata.set('HAVE_BLUEZ_5_BACKEND_HFP_NATIVE', (get_option('bluez5-backend-hfp-native').enabled() or get_option('bluez5-backend-hfp-native').auto()))
-+cdata.set('HAVE_BLUEZ_5_BACKEND_NATIVE_MM', (get_option('bluez5-backend-native-mm').enabled() or get_option('bluez5-backend-native-mm').auto()))
-+cdata.set('HAVE_BLUEZ_5_BACKEND_OFONO', (get_option('bluez5-backend-ofono').enabled() or get_option('bluez5-backend-ofono').auto()))
-+cdata.set('HAVE_BLUEZ_5_BACKEND_HSPHFPD', (get_option('bluez5-backend-hsphfpd').enabled() or get_option('bluez5-backend-hsphfpd').auto()))
++          (not get_option('bluez5-backend-hsp-native').disabled()) or
++          (not get_option('bluez5-backend-hfp-native').disabled()))
++cdata.set('HAVE_BLUEZ_5_BACKEND_HSP_NATIVE', (not get_option('bluez5-backend-hsp-native').disabled()))
++cdata.set('HAVE_BLUEZ_5_BACKEND_HFP_NATIVE', (not get_option('bluez5-backend-hfp-native').disabled()))
++cdata.set('HAVE_BLUEZ_5_BACKEND_NATIVE_MM', (not get_option('bluez5-backend-native-mm').disabled()))
++cdata.set('HAVE_BLUEZ_5_BACKEND_OFONO', (not get_option('bluez5-backend-ofono').disabled()))
++cdata.set('HAVE_BLUEZ_5_BACKEND_HSPHFPD', (not get_option('bluez5-backend-hsphfpd').disabled()))
  cdata.set('HAVE_BLUEZ_5_HCI', dependency('bluez', version: '< 6', required: false).found())
  
  bluez5_sources = [
-@@ -35,7 +35,8 @@ bluez5_data = ['bluez-hardware.conf']
+@@ -35,7 +35,7 @@ bluez5_data = ['bluez-hardware.conf']
  
  install_data(bluez5_data, install_dir : spa_datadir / 'bluez5')
  
 -if get_option('bluez5-backend-hsp-native').allowed() or get_option('bluez5-backend-hfp-native').allowed()
-+if (get_option('bluez5-backend-hsp-native').enabled() or get_option('bluez5-backend-hsp-native').auto()) or
-+   (get_option('bluez5-backend-hfp-native').enabled() or get_option('bluez5-backend-hfp-native').auto())
++if (not get_option('bluez5-backend-hsp-native').disabled()) or (not get_option('bluez5-backend-hfp-native').disabled())
    if libusb_dep.found()
      bluez5_deps += libusb_dep
    endif
-@@ -46,11 +47,11 @@ if get_option('bluez5-backend-hsp-native
+@@ -46,11 +46,11 @@ if get_option('bluez5-backend-hsp-native
    bluez5_sources += ['backend-native.c', 'upower.c']
  endif
  
 -if get_option('bluez5-backend-ofono').allowed()
-+if get_option('bluez5-backend-ofono').enabled() or get_option('bluez5-backend-ofono').auto()
++if not get_option('bluez5-backend-ofono').disabled()
    bluez5_sources += ['backend-ofono.c']
  endif
  
 -if get_option('bluez5-backend-hsphfpd').allowed()
-+if get_option('bluez5-backend-hsphfpd').enabled() or get_option('bluez5-backend-hsphfpd').auto()
++if not get_option('bluez5-backend-hsphfpd').disabled()
    bluez5_sources += ['backend-hsphfpd.c']
  endif
  
-@@ -115,7 +116,7 @@ if ldac_dep.found()
+@@ -115,7 +115,7 @@ if ldac_dep.found()
      install_dir : spa_plugindir / 'bluez5')
  endif
  
 -if get_option('bluez5-codec-lc3plus').allowed() and lc3plus_dep.found()
-+if (get_option('bluez5-codec-lc3plus').enabled() or get_option('bluez5-codec-lc3plus').auto()) and lc3plus_dep.found()
++if (not get_option('bluez5-codec-lc3plus').disabled()) and lc3plus_dep.found()
    bluez_codec_lc3plus = shared_library('spa-codec-bluez5-lc3plus',
      [ 'a2dp-codec-lc3plus.c', 'media-codecs.c' ],
      include_directories : [ configinc ],
-@@ -125,7 +126,7 @@ if get_option('bluez5-codec-lc3plus').al
+@@ -125,7 +125,7 @@ if get_option('bluez5-codec-lc3plus').al
      install_dir : spa_plugindir / 'bluez5')
  endif
  
 -if get_option('bluez5-codec-opus').allowed() and opus_dep.found()
-+if (get_option('bluez5-codec-opus').enabled() or get_option('bluez5-codec-opus').auto()) and opus_dep.found()
++if (not get_option('bluez5-codec-opus').disabled()) and opus_dep.found()
    opus_args = codec_args
    opus_dep = [ opus_dep ]
    bluez_codec_opus = shared_library('spa-codec-bluez5-opus',
-@@ -137,7 +138,7 @@ if get_option('bluez5-codec-opus').allow
+@@ -137,7 +137,7 @@ if get_option('bluez5-codec-opus').allow
      install_dir : spa_plugindir / 'bluez5')
  endif
  
 -if get_option('bluez5-codec-lc3').allowed() and lc3_dep.found()
-+if (get_option('bluez5-codec-lc3').enabled() or get_option('bluez5-codec-lc3').auto()) and lc3_dep.found()
++if (not get_option('bluez5-codec-lc3').disabled()) and lc3_dep.found()
    bluez_codec_lc3 = shared_library('spa-codec-bluez5-lc3',
      [ 'bap-codec-lc3.c', 'media-codecs.c' ],
      include_directories : [ configinc ],
-Index: pipewire-0.3.60/spa/plugins/meson.build
+Index: pipewire-0.3.61/spa/plugins/meson.build
 ===================================================================
---- pipewire-0.3.60.orig/spa/plugins/meson.build
-+++ pipewire-0.3.60/spa/plugins/meson.build
+--- pipewire-0.3.61.orig/spa/plugins/meson.build
++++ pipewire-0.3.61/spa/plugins/meson.build
 @@ -1,19 +1,22 @@
  if alsa_dep.found()
    subdir('alsa')
  endif
 -if get_option('avb').require(host_machine.system() == 'linux', error_message: 'AVB support is only available on Linux').allowed()
-+if (get_option('avb').enabled() or get_option('avb').auto())
++if not get_option('avb').disabled()
 +  if (host_machine.system() != 'linux')
 +    error('AVB support is only available on Linux')
 +  endif
    subdir('avb')
  endif
 -if get_option('audioconvert').allowed()
-+if (get_option('audioconvert').enabled() or get_option('audioconvert').auto())
++if not get_option('audioconvert').disabled()
    subdir('audioconvert')
  endif
 -if get_option('audiomixer').allowed()
-+if (get_option('audiomixer').enabled() or get_option('audiomixer').auto())
++if not get_option('audiomixer').disabled()
    subdir('audiomixer')
  endif
 -if get_option('control').allowed()
-+if (get_option('control').enabled() or get_option('control').auto())
++if not get_option('control').disabled()
    subdir('control')
  endif
 -if get_option('audiotestsrc').allowed()
-+if (get_option('audiotestsrc').enabled() or get_option('audiotestsrc').auto())
++if not get_option('audiotestsrc').disabled()
    subdir('audiotestsrc')
  endif
  if bluez_dep.found()
@@ -415,43 +413,43 @@ Index: pipewire-0.3.60/spa/plugins/meson.build
    subdir('jack')
  endif
 -if get_option('support').allowed()
-+if (get_option('support').enabled() or get_option('support').auto())
++if not get_option('support').disabled()
    subdir('support')
  endif
 -if get_option('test').allowed()
-+if (get_option('test').enabled() or get_option('test').auto())
++if not get_option('test').disabled()
    subdir('test')
  endif
 -if get_option('videoconvert').allowed()
-+if (get_option('videoconvert').enabled() or get_option('videoconvert').auto())
++if not get_option('videoconvert').disabled()
    subdir('videoconvert')
  endif
 -if get_option('videotestsrc').allowed()
-+if (get_option('videotestsrc').enabled() or get_option('videotestsrc').auto())
++if not get_option('videotestsrc').disabled()
    subdir('videotestsrc')
  endif
 -if get_option('volume').allowed()
-+if (get_option('volume').enabled() or get_option('volume').auto())
++if not get_option('volume').disabled()
    subdir('volume')
  endif
  if vulkan_headers
-Index: pipewire-0.3.60/spa/plugins/support/meson.build
+Index: pipewire-0.3.61/spa/plugins/support/meson.build
 ===================================================================
---- pipewire-0.3.60.orig/spa/plugins/support/meson.build
-+++ pipewire-0.3.60/spa/plugins/support/meson.build
+--- pipewire-0.3.61.orig/spa/plugins/support/meson.build
++++ pipewire-0.3.61/spa/plugins/support/meson.build
 @@ -23,7 +23,7 @@ spa_support_lib = shared_library('spa-su
    install_dir : spa_plugindir / 'support')
  spa_support_dep = declare_dependency(link_with: spa_support_lib)
  
 -if get_option('evl').allowed()
-+if (get_option('evl').enabled() or get_option('evl').auto())
++if not get_option('evl').disabled()
    evl_inc = include_directories('/usr/evl/include')
    evl_lib = cc.find_library('evl',
                              dirs: ['/usr/evl/lib/'],
-Index: pipewire-0.3.60/spa/tests/meson.build
+Index: pipewire-0.3.61/spa/tests/meson.build
 ===================================================================
---- pipewire-0.3.60.orig/spa/tests/meson.build
-+++ pipewire-0.3.60/spa/tests/meson.build
+--- pipewire-0.3.61.orig/spa/tests/meson.build
++++ pipewire-0.3.61/spa/tests/meson.build
 @@ -5,7 +5,7 @@ find = find_program('find', required: fa
  summary({'find (for header testing)': find.found()}, bool_yn: true, section: 'Optional programs')
  if find.found()
@@ -470,10 +468,10 @@ Index: pipewire-0.3.60/spa/tests/meson.build
      ]
    )
  
-Index: pipewire-0.3.60/src/daemon/meson.build
+Index: pipewire-0.3.61/src/daemon/meson.build
 ===================================================================
---- pipewire-0.3.60.orig/src/daemon/meson.build
-+++ pipewire-0.3.60/src/daemon/meson.build
+--- pipewire-0.3.61.orig/src/daemon/meson.build
++++ pipewire-0.3.61/src/daemon/meson.build
 @@ -18,9 +18,9 @@ conf_config.set('pulse_comment', '#')
  
  conf_config_uninstalled = conf_config
@@ -495,64 +493,64 @@ Index: pipewire-0.3.60/src/daemon/meson.build
  )
  
  #desktop_file = i18n.merge_file(
-Index: pipewire-0.3.60/src/daemon/systemd/meson.build
+Index: pipewire-0.3.61/src/daemon/systemd/meson.build
 ===================================================================
---- pipewire-0.3.60.orig/src/daemon/systemd/meson.build
-+++ pipewire-0.3.60/src/daemon/systemd/meson.build
+--- pipewire-0.3.61.orig/src/daemon/systemd/meson.build
++++ pipewire-0.3.61/src/daemon/systemd/meson.build
 @@ -1,6 +1,6 @@
 -if get_option('systemd-system-service').allowed()
-+if (get_option('systemd-system-service').enabled() or get_option('systemd-system-service').auto())
++if not get_option('systemd-system-service').disabled()
    subdir('system')
  endif
 -if get_option('systemd-user-service').allowed()
-+if (get_option('systemd-user-service').enabled() or get_option('systemd-user-service').auto())
++if not get_option('systemd-user-service').disabled()
    subdir('user')
  endif
-Index: pipewire-0.3.60/src/daemon/systemd/user/meson.build
+Index: pipewire-0.3.61/src/daemon/systemd/user/meson.build
 ===================================================================
---- pipewire-0.3.60.orig/src/daemon/systemd/user/meson.build
-+++ pipewire-0.3.60/src/daemon/systemd/user/meson.build
+--- pipewire-0.3.61.orig/src/daemon/systemd/user/meson.build
++++ pipewire-0.3.61/src/daemon/systemd/user/meson.build
 @@ -1,4 +1,4 @@
 -systemd_user_services_dir = systemd.get_variable('systemduserunitdir', pkgconfig_define : [ 'prefix', prefix])
 +#systemd_user_services_dir = systemd.get_variable('systemduserunitdir', pkgconfig_define : [ 'prefix', prefix])
  if get_option('systemd-user-unit-dir') != ''
    systemd_user_services_dir = get_option('systemd-user-unit-dir')
  endif
-Index: pipewire-0.3.60/src/gst/meson.build
+Index: pipewire-0.3.61/src/gst/meson.build
 ===================================================================
---- pipewire-0.3.60.orig/src/gst/meson.build
-+++ pipewire-0.3.60/src/gst/meson.build
+--- pipewire-0.3.61.orig/src/gst/meson.build
++++ pipewire-0.3.61/src/gst/meson.build
 @@ -8,7 +8,7 @@ pipewire_gst_sources = [
    'gstpipewiresrc.c',
  ]
  
 -if get_option('gstreamer-device-provider').allowed()
-+if (get_option('gstreamer-device-provider').enabled() or get_option('gstreamer-device-provider').auto())
++if not get_option('gstreamer-device-provider').disabled()
    pipewire_gst_sources += [ 'gstpipewiredeviceprovider.c' ]
  endif
  
-Index: pipewire-0.3.60/src/meson.build
+Index: pipewire-0.3.61/src/meson.build
 ===================================================================
---- pipewire-0.3.60.orig/src/meson.build
-+++ pipewire-0.3.60/src/meson.build
+--- pipewire-0.3.61.orig/src/meson.build
++++ pipewire-0.3.61/src/meson.build
 @@ -3,10 +3,10 @@ subdir('pipewire')
  subdir('daemon')
  subdir('tools')
  subdir('modules')
 -if get_option('examples').allowed()
-+if (get_option('examples').enabled() or get_option('examples').auto())
++if not get_option('examples').disabled()
    subdir('examples')
  endif
 -if get_option('tests').allowed()
-+if (get_option('tests').enabled() or get_option('tests').auto())
++if not get_option('tests').disabled()
    subdir('tests')
  endif
  
-Index: pipewire-0.3.60/src/modules/meson.build
+Index: pipewire-0.3.61/src/modules/meson.build
 ===================================================================
---- pipewire-0.3.60.orig/src/modules/meson.build
-+++ pipewire-0.3.60/src/modules/meson.build
-@@ -390,9 +390,9 @@ test('pw-test-protocol-native',
+--- pipewire-0.3.61.orig/src/modules/meson.build
++++ pipewire-0.3.61/src/modules/meson.build
+@@ -393,9 +393,9 @@ test('pw-test-protocol-native',
      install_dir : installed_tests_execdir,
    ),
    env : [
@@ -565,12 +563,12 @@ Index: pipewire-0.3.60/src/modules/meson.build
    ]
  )
  
-@@ -549,8 +549,11 @@ pipewire_module_fallback_sink = shared_l
+@@ -552,8 +552,11 @@ pipewire_module_fallback_sink = shared_l
    dependencies : [mathlib, dl_lib, rt_lib, pipewire_dep],
  )
  
 -build_module_avb = get_option('avb').require(host_machine.system() == 'linux', error_message: 'AVB support is only available on Linux').allowed()
-+build_module_avb = (get_option('avb').enabled() or get_option('avb').auto())
++build_module_avb = (not get_option('avb').disabled())
  if build_module_avb
 +if (host_machine.system() != 'linux')
 +  error('AVB support is only available on Linux')
@@ -578,10 +576,10 @@ Index: pipewire-0.3.60/src/modules/meson.build
  pipewire_module_avb = shared_library('pipewire-module-avb',
    [ 'module-avb.c',
      'module-avb/avb.c',
-Index: pipewire-0.3.60/src/tests/meson.build
+Index: pipewire-0.3.61/src/tests/meson.build
 ===================================================================
---- pipewire-0.3.60.orig/src/tests/meson.build
-+++ pipewire-0.3.60/src/tests/meson.build
+--- pipewire-0.3.61.orig/src/tests/meson.build
++++ pipewire-0.3.61/src/tests/meson.build
 @@ -14,9 +14,9 @@ foreach a : test_apps
        install : installed_tests_enabled,
        install_dir : installed_tests_execdir),
@@ -595,23 +593,23 @@ Index: pipewire-0.3.60/src/tests/meson.build
        ])
  
    if installed_tests_enabled
-Index: pipewire-0.3.60/src/tools/meson.build
+Index: pipewire-0.3.61/src/tools/meson.build
 ===================================================================
---- pipewire-0.3.60.orig/src/tools/meson.build
-+++ pipewire-0.3.60/src/tools/meson.build
+--- pipewire-0.3.61.orig/src/tools/meson.build
++++ pipewire-0.3.61/src/tools/meson.build
 @@ -32,7 +32,7 @@ if ncurses_dep.found()
  endif
  
  build_pw_cat = false
 -if get_option('pw-cat').allowed() and sndfile_dep.found()
-+if (get_option('pw-cat').enabled() or get_option('pw-cat').auto()) and sndfile_dep.found()
++if (not get_option('pw-cat').disabled()) and sndfile_dep.found()
    build_pw_cat = true
  
    pwcat_sources = [
-Index: pipewire-0.3.60/test/meson.build
+Index: pipewire-0.3.61/test/meson.build
 ===================================================================
---- pipewire-0.3.60.orig/test/meson.build
-+++ pipewire-0.3.60/test/meson.build
+--- pipewire-0.3.61.orig/test/meson.build
++++ pipewire-0.3.61/test/meson.build
 @@ -14,8 +14,8 @@ pwtest_deps = [
  ]
  
