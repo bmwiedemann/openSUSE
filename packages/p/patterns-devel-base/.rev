@@ -79,4 +79,15 @@
     <comment></comment>
     <requestid>957227</requestid>
   </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>b8322dd0e20221c24b880145457515b5</srcmd5>
+    <version>20170319</version>
+    <time>1669910298</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not recommend gitk: this seems to be one of the most aged
+  versions of git frontends (using Tcl/Tk).
+
+- suggests php8 instead of php7</comment>
+    <requestid>1039128</requestid>
+  </revision>
 </revisionlist>

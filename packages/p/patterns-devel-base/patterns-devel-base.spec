@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-devel-base
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -143,17 +143,15 @@ Recommends:     bc
 Recommends:     ctags
 Recommends:     diffstat
 Recommends:     git-core
+Recommends:     git-email
 Recommends:     indent
+Recommends:     kernel-syms
 Recommends:     patchutils
 Recommends:     quilt
-Recommends:     gitk
-Recommends:     git-email
-Recommends:     kernel-syms
 # bsc#1147177
 Recommends:     pkgconfig(libelf)
 Recommends:     pkgconfig(openssl)
 Suggests:       kernel-debug
-Suggests:       gitk
 Suggests:       kernel-docs
 Suggests:       cscope
 
@@ -223,40 +221,40 @@ Suggests:       perl-HTML-Tree
 Suggests:       perl-HTTP-DAV
 Suggests:       perl-HTTPS-Daemon
 Suggests:       perl-Pod-HtmlPsPdf
-Suggests:       php7
-Suggests:       php7-bcmath
-Suggests:       php7-bz2
-Suggests:       php7-calendar
-Suggests:       php7-ctype
-Suggests:       php7-curl
-Suggests:       php7-dba
-Suggests:       php7-devel
-Suggests:       php7-dom
-Suggests:       php7-exif
-Suggests:       php7-fastcgi
-Suggests:       php7-ftp
-Suggests:       php7-gd
-Suggests:       php7-gettext
-Suggests:       php7-gmp
-Suggests:       php7-iconv
-Suggests:       php7-imap
-Suggests:       php7-ldap
-Suggests:       php7-mbstring
-Suggests:       php7-mcrypt
-Suggests:       php7-mysql
-Suggests:       php7-odbc
-Suggests:       php7-openssl
-Suggests:       php7-pear
-Suggests:       php7-pgsql
-Suggests:       php7-shmop
-Suggests:       php7-snmp
-Suggests:       php7-sockets
-Suggests:       php7-sysvsem
-Suggests:       php7-sysvshm
-Suggests:       php7-tidy
-Suggests:       php7-wddx
-Suggests:       php7-xsl
-Suggests:       php7-zlib
+Suggests:       php8
+Suggests:       php8-bcmath
+Suggests:       php8-bz2
+Suggests:       php8-calendar
+Suggests:       php8-ctype
+Suggests:       php8-curl
+Suggests:       php8-dba
+Suggests:       php8-devel
+Suggests:       php8-dom
+Suggests:       php8-exif
+Suggests:       php8-fastcgi
+Suggests:       php8-ftp
+Suggests:       php8-gd
+Suggests:       php8-gettext
+Suggests:       php8-gmp
+Suggests:       php8-iconv
+Suggests:       php8-imap
+Suggests:       php8-ldap
+Suggests:       php8-mbstring
+Suggests:       php8-mcrypt
+Suggests:       php8-mysql
+Suggests:       php8-odbc
+Suggests:       php8-openssl
+Suggests:       php8-pear
+Suggests:       php8-pgsql
+Suggests:       php8-shmop
+Suggests:       php8-snmp
+Suggests:       php8-sockets
+Suggests:       php8-sysvsem
+Suggests:       php8-sysvshm
+Suggests:       php8-tidy
+Suggests:       php8-wddx
+Suggests:       php8-xsl
+Suggests:       php8-zlib
 Suggests:       tidy
 Suggests:       xhtml-dtd
 Suggests:       xmlcharent
