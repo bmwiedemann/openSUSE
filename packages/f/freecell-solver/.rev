@@ -79,4 +79,12 @@
 - skip python dependencies as they're only for the testsuite</comment>
     <requestid>1005426</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3cf88fc2ff57adda6e1d43b135a46a58</srcmd5>
+    <version>6.8.0</version>
+    <time>1669910331</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 6.8.0</comment>
+    <requestid>1039188</requestid>
+  </revision>
 </revisionlist>

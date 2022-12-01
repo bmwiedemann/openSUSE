@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov 30 18:59:04 UTC 2022 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.8.0
+  * Workaround an ldd regression
+  * OpenCL deal finder cleanups
+  * Made the tests suite pass on more CMake options' configurations
+  * Cleanups
+
+-------------------------------------------------------------------
 Thu Sep 22 14:06:34 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add missing runtime requirements

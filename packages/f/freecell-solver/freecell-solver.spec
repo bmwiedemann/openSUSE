@@ -20,11 +20,10 @@
 %define libname libfreecell-solver
 %bcond_with tests
 Name:           freecell-solver
-Version:        6.6.0
+Version:        6.8.0
 Release:        0
 Summary:        A Freecell Solver
 License:        MIT
-Group:          Amusements/Games/Other
 URL:            https://fc-solve.shlomifish.org
 Source0:        https://fc-solve.shlomifish.org/downloads/fc-solve/%{name}-%{version}.tar.xz
 BuildRequires:  cmake >= 3.5
@@ -34,6 +33,7 @@ BuildRequires:  gmp-devel
 BuildRequires:  gperf
 BuildRequires:  perl-Template-Toolkit
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  cmake(Rinutils)
 BuildRequires:  perl(Moo)
 BuildRequires:  perl(Path::Tiny)
@@ -53,7 +53,6 @@ Command line programs which can be used to solve Freecell and other card games.
 
 %package -n %{name}-presets
 Summary:        Freecell Solver presets
-Group:          Amusements/Games/Other
 BuildArch:      noarch
 
 %description -n %{name}-presets
@@ -62,7 +61,6 @@ This package contains the presets used to solve the games.
 
 %package -n %{libname}%{soversion}
 Summary:        Freecell Solver library
-Group:          System/Libraries
 # This dependency is expected
 Requires:       %{name}-presets = %{version}
 
@@ -72,14 +70,13 @@ programs to solves Freecell and other card games.
 
 %package devel
 Summary:        Freecell Solver development package
-Group:          Development/Libraries/C and C++
 Requires:       %{libname}%{soversion} = %{version}
 
 %description devel
 Development package for the libfreecell-solver library
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake -DBUILD_STATIC_LIBRARY=OFF \
