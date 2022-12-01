@@ -86,4 +86,12 @@
     <user>dimstar_suse</user>
     <comment>- Make wireshark recommended, not required.</comment>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>db9563095e7eed808a8b1efbc2b9ed14</srcmd5>
+    <version>20210330</version>
+    <time>1669910299</time>
+    <user>dimstar_suse</user>
+    <comment>- recommend apache2-mod_php8 instead of apache2-mod_php7</comment>
+    <requestid>1039129</requestid>
+  </revision>
 </revisionlist>

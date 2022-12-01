@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-server
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,7 +38,6 @@ not make sense.
 This particular package contains all the server related patterns
 
 ################################################################################
-
 %package dhcp_dns_server
 %pattern_serverfunctions
 Summary:        DHCP and DNS Server
@@ -286,7 +285,7 @@ Requires:       apache2
 Requires:       pattern() = basesystem
 Recommends:     apache2-doc
 Recommends:     apache2-example-pages
-Recommends:     apache2-mod_php7
+Recommends:     apache2-mod_php8
 Recommends:     apache2-mod_python
 Recommends:     apache2-prefork
 Recommends:     libapr-util1
