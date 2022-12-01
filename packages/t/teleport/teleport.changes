@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Dec 01 05:44:31 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 11.1.1:
+  * Release 11.1.1. (#18957)
+  * [auto] Update webassets in teleport/branch/v11 from webassets/teleport-v11 (#18954)
+  * [v11] backport #18036 (Allow for specifying roles when making Resource Access Requests in the UI)  (#18868)
+  * [v11] Add Terraform provider links to Terraform module README (#18162)
+  * backport spell fixes (#18941)
+  * operator: Handle conflicts properly during tests (#18916)
+  * Fix FIPS builds (#18902)
+  * Remove DEBUG env var from Connect macOS dronegen (#18899) (#18921)
+  * [v11] Include ssh protocol in start, end audit events (#18895)
+  * [v11] Securely delete OTP QR code (#18917)
+  * [v11] Update permit_user_env comments in config ref (#18912)
+  * Include upload ID & session ID in failed upload warning logs (#18788) (#18872)
+  * Fix duplicate docs page titles (#18862)
+  * fuzz: fix broken OSS-Fuzz build (#18878)
+  * [v11] Add info on license renewals (#18848)
+  * Swaps Allow remote RDP connections and Open firewall to inbound RDP connections steps (#18844)
+  * Add `server_hostname` to `session.*` events (#18812) (#18832)
+  * [v11] Improve error message if dialing etcd nodes times out (#18822)
+  * [v11] feat: GCP KMS support (#18835)
+
+-------------------------------------------------------------------
 Tue Nov 29 08:02:09 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 11.1.0:
