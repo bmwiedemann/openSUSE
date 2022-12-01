@@ -23,7 +23,7 @@
 #@TODO : ask for rename and take into account the obsolete existant thing. like libcgal deps
 %define _sourcename CGAL
 Name:           cgal
-Version:        5.4.1
+Version:        5.5.1
 Release:        0
 Summary:        Computational Geometry Algorithms Library
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
@@ -56,10 +56,9 @@ polyhedra, point set processing, arrangements of curves, surface and
 volume mesh generation, geometry processing, alpha shapes, convex
 hull algorithms, shape analysis, AABB and KD trees.
 
-
 %package devel
 Summary:        Development files and tools for CGAL applications
-License:        GPL-3.0-or-later AND LGPL-3.0-or-later AND BSL-1.0
+License:        BSL-1.0 AND GPL-3.0-or-later AND LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       blas
 Requires:       cmake
@@ -79,7 +78,7 @@ develop applications using CGAL.
 
 %package demo-examples-devel
 Summary:        Example & demo files for CGAL library usage
-License:        GPL-3.0-or-later AND LGPL-3.0-or-later AND BSL-1.0 AND MIT
+License:        BSL-1.0 AND GPL-3.0-or-later AND LGPL-3.0-or-later AND MIT
 Group:          Development/Libraries/C and C++
 Requires:       %{name}-devel = %{version}
 BuildArch:      noarch
