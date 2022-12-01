@@ -1,0 +1,120 @@
+From 32c7dc10498ebc429b1fcb81a9dda449e2814951 Mon Sep 17 00:00:00 2001
+From: Wen Xiong <wenxiong@linux.ibm.com>
+Date: Wed, 26 Oct 2022 22:10:47 -0500
+Subject: [PATCH] Support multiple dev paths for a nvmf boot device
+
+This patch adds the support for multiple dev/of paths with a nvmf boot dev
+
+nvme1n4
+nvme3n4
+nvme5n4
+nvme6n4
+nvme1n4
+nvme3n4
+nvme5n4
+nvme6n4
+/pci@800000020000017/fibre-channel@0/nvme-of/controller@50050768101935e5,ffff:nqn=nqn.1986-03.com.ibm:nvme:2145.0000020420006CEA/namespace@147
+/pci@800000020000017/fibre-channel@0/nvme-of/controller@5005076810193675,ffff:nqn=nqn.1986-03.com.ibm:nvme:2145.0000020420006CEA/namespace@147
+/pci@800000020000017/fibre-channel@0,1/nvme-of/controller@5005076810193675,ffff:nqn=nqn.1986-03.com.ibm:nvme:2145.0000020420006CEA/namespace@147
+/pci@800000020000017/fibre-channel@0,1/nvme-of/controller@50050768101935e5,ffff:nqn=nqn.1986-03.com.ibm:nvme:2145.0000020420006CEA/namespace@147
+
+Signed-off-by: Wen Xiong <wenxiong@linux.ibm.com>
+---
+ scripts/bootlist   | 30 +++++++++++++++---------------
+ scripts/ofpathname | 29 +++++++++++++++++++----------
+ 2 files changed, 34 insertions(+), 25 deletions(-)
+
+diff --git a/scripts/bootlist b/scripts/bootlist
+index 1929f65..cc8718e 100755
+--- a/scripts/bootlist
++++ b/scripts/bootlist
+@@ -327,16 +327,10 @@ add_nvmf()
+ 		cd $dir
+ 		link=`get_link "device"`
+ 		cd $link
+-		for slave in $PWD/*; do
+-			slavedev=${slave##*/}
+-			if [[ "$slavedev" == nvme[0-9]* ]] ; then
+-				cd $slave
+-				res=`$FIND . -name "${ctrl_name}*"`
+-				if [[ ${#res} != 0 ]]; then
+-					LOGICAL_NAMES[$ctr]=${slavedev}
+-					ctr=$[$ctr + 1]
+-				fi
+-			fi
++        for slave in `ls -d $PWD/nvme*`; do
++            slavedev=${slave##*/}
++            LOGICAL_NAMES[$ctr]=${slavedev}
++            ctr=$[$ctr + 1]
+ 		done
+ 	done
+ 
+@@ -502,11 +496,17 @@ while [[ -n $1 ]]; do
+             ctrl_name="${ctrl_name%n[0-9]*}"
+             is_nvmf=$(is_nvmf_device $ctrl_name)
+             if [[ $is_nvmf = "yes" ]]; then
+-		if [[ "$1" == *"nvme-of"* ]]; then
+-			master_of_path=$1
+-		else
+-			master_of_path=`get_of_device_name $1`
+-		fi
++                if [[ "$1" == *"nvme-of"* ]]; then
++                    master_of_path=$1
++                else
++                    master_of_path=`get_of_device_name $1`
++                fi
++
++                if [[ -z $master_of_path ]]; then
++                    echo "Device $1 does not appear to be valid." >&2
++                    exit 1
++                fi
++
+                 namespace_base=${master_of_path##*/}
+                 DEVTYPE="nvme-of"
+                 add_nvmf $ctrl_name
+diff --git a/scripts/ofpathname b/scripts/ofpathname
+index 752f8e9..d8b602c 100755
+--- a/scripts/ofpathname
++++ b/scripts/ofpathname
+@@ -1875,19 +1875,28 @@ of2l_nvmf()
+         fi
+     done
+ 
++    local ana_dir
+     if [[ -n $LOGICAL_DEVNAME ]] && \
+        [[ -n $nsid ]]; then
+-        for dir in `$FIND /sys/block -name "${LOGICAL_DEVNAME}n[0-9]*"`; do
+-            cd $dir
+-
+-            local devnsid=`$CAT ./nsid 2>/dev/null`
+-            devnsid=$(printf "%x" $devnsid)
+-            if [[ $devnsid = $nsid ]]; then
+-                found=1
+-                LOGICAL_DEVNAME="${dir##*/}"
+-                break
+-            fi
++        for ana_dir in `$FIND /sys/devices/virtual/nvme-fabrics -name "$LOGICAL_DEVNAME"`; do
++            cd $ana_dir
++            link=`get_link "device"`
++            cd $link
++            for ana_name in `ls -d $PWD/nvme*`; do
++                for dev_name in `$FIND /sys/block -name "${ana_name##*/}n[0-9]*"`; do
++                    cd $dev_name
++                    local devnsid=`$CAT ./nsid 2>/dev/null`
++                    devnsid=$(printf "%x" $devnsid)
++                    if [[ $devnsid = $nsid ]]; then
++                        found=1
++                        NS_ID="${dev_name##*n}"
++                        LOGICAL_DEVNAME="${LOGICAL_DEVNAME}n${NS_ID}"
++                        break
++                    fi
++                 done
++            done
+         done
++
+     	 if [[ $found -eq 0 ]]; then
+             LOGICAL_DEVNAME=""
+          fi
+-- 
+2.38.1
+

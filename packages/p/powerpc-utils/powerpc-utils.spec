@@ -34,6 +34,7 @@ Patch6:         lsslot-Fix-lsslot-c-mem-output-when-using-4GB-LMB-si.patch
 Patch7:         bootlist-Add-install-boot-support-for-nvmf-devices.patch
 Patch8:         ofpathname-Fix-several-issues-in-nvmf-boot-install-s.patch
 Patch9:         ofpathname-Handle-nsid-as-hex-in-nvmf-boot-install-s.patch
+Patch10:        Support-multiple-dev-paths-for-a-nvmf-boot-device.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libnuma-devel

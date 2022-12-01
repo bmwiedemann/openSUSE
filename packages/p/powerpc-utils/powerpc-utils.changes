@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 30 19:39:57 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
+
+- Support multiple dev paths for a nvmf boot device (bsc#1205696 ltc#200595)
+  + Support-multiple-dev-paths-for-a-nvmf-boot-device.patch
+
+-------------------------------------------------------------------
 Thu Nov 24 16:09:30 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
 
 - nsid of nvmf device needs to be lowercase (bsc#1205697 ltc#200594)
