@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Dec 01 05:41:03 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.62.3:
+  * Update Stereoscope to 3b80d983223f6e6fc2d33b0ffa003d30268418e9 (#1376)
+  * fix: Update node binary package name (#1375)
+  * feat: Generic Binary Cataloger (#1336)
+  * recover from bad parsing of golang binary (#1371)
+  * Fix parsing of apk databases with large entries (#1365)
+  * Update syft bootstrap tools to latest versions. (#1369)
+
+-------------------------------------------------------------------
 Mon Nov 28 18:06:04 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.62.2:
