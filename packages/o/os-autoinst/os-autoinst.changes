@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Nov 30 12:44:15 UTC 2022 - okurz@suse.com
+
+- Update to version 4.6.1669812248.67848c3:
+  * Show escaped version of keyboard emulator server return
+  * Fix assert_script_sudo invocation
+  * Update pertidy to 20221112
+  * Revert "Move backend into CommandHandler as well"
+  * Extend subtest verify_sound_image (t/17-basetest.t)
+  * Extend subtest record_screenmatch (17-basetest.t)
+  * Add subtest for sub rollback_activated_consoles
+  * Resolve IP when appending qemu parameter 'sanhook'
+  * Minor test improvements
+  * Make assert_script_sudo work properly in serial terminal
+
+-------------------------------------------------------------------
 Sat Nov 26 02:20:29 UTC 2022 - okurz@suse.com
 
 - Update to version 4.6.1669395975.d36887c:
