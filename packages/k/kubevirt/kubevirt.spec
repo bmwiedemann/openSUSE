@@ -171,10 +171,14 @@ case "${distro}" in
     labelprefix=com.suse.kubevirt
     registry=registry.suse.com
     ;;
-*)
+*:1)
     tagprefix=kubevirt
     labelprefix=org.opensuse.kubevirt
     registry=registry.opensuse.org
+    ;;
+*)
+    echo "Unsupported distro: ${distro}" >&2
+    exit 1
     ;;
 esac
 
@@ -190,6 +194,7 @@ sed -i"" \
     -e "s#_REGISTRY_#${registry}#g" \
     -e "s#_PKG_VERSION_#%{version}#g" \
     -e "s#_PKG_RELEASE_#%{release}#g" \
+    -e "s#_DISTRO_#${distro}#g" \
     %{S:1}
 
 mkdir -p go/src/kubevirt.io go/pkg
