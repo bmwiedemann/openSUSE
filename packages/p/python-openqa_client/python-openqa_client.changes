@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Dec  1 10:02:15 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 4.2.2
+- drop _service
+- add python-typing_extensions as dependency for compatibility
+  with older versions of python
+  * Make Exceptions proper objects with members
+  * Only retry requests on certain status codes
+  * Add class global retries and wait values to allow configuration
+  * Add type hints
+  * Stop encoding X-API-Microtime as bytes
+  * Improve handling of quirky API behaviour regarding settings parameters
+
+-------------------------------------------------------------------
 Fri Sep 04 08:49:02 UTC 2020 - mimi.vx@gmail.com
 
 - Update to version 4.1.1:

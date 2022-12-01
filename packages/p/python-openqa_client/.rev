@@ -44,4 +44,21 @@
   * setup.py: we don't use find_packages, don't import it (forwarded request 832036 from mimi_vx)</comment>
     <requestid>832037</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>20744f204abb8d6c8505929db929d6b6</srcmd5>
+    <version>4.2.1</version>
+    <time>1669914796</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.2.2
+- drop _service
+- add python-typing_extensions as dependency for compatibility
+  with older versions of python
+  * Make Exceptions proper objects with members
+  * Only retry requests on certain status codes
+  * Add class global retries and wait values to allow configuration
+  * Add type hints
+  * Stop encoding X-API-Microtime as bytes
+  * Improve handling of quirky API behaviour regarding settings parameters</comment>
+    <requestid>1039298</requestid>
+  </revision>
 </revisionlist>

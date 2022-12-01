@@ -1,7 +1,7 @@
 #
 # spec file for package python-openqa_client
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,22 +19,24 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-openqa_client
-Version:        4.1.1
+Version:        4.2.1
 Release:        0
 Summary:        Python openQA client library
 License:        GPL-2.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/os-autoinst/openQA-python-client
-Source:         %{name}-%{version}.tar.xz
+Source:         https://github.com/os-autoinst/openQA-python-client/archive/refs/tags/%{version}.tar.gz#/python-openqa_client-%{version}.tar.gz
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
 Requires:       python-requests
+Requires:       python-typing_extensions
 BuildArch:      noarch
 %python_subpackages
 
@@ -42,7 +44,7 @@ BuildArch:      noarch
 This is a client for the openQA API, based on requests.
 
 %prep
-%setup -q
+%setup -q -n openQA-python-client-%{version}
 
 %build
 %python_build
