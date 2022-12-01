@@ -542,4 +542,41 @@
   - Add Python3 xena unit tests</comment>
     <requestid>983772</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>44d4256efadf72913a5cc1724d854bf3</srcmd5>
+    <version>4.1.0</version>
+    <time>1669912641</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.1.0
+  - Don't patch Requests globally on import
+  - Clean up extra spaces
+  - Correctly aggregate totals for &gt;10k items
+  - tempurl: Support sha256 and sha512 signatures
+  - Drop support for Python 2
+  - Include storage policy when listing account with --long
+  - CI: Drop swiftclient-swift-functional-py2 job
+  - Add Python3 zed unit tests
+  - Add option to skip container PUT during upload
+  - Allow functional tests to pass with etag_quoter enabled by default
+  - Update master for stable/yoga
+  - Update master for stable/xena
+  - Remove six
+  - Enable retry_on_ratelimit by default
+  - Remove use of mock
+  - Add timeout for Swift service
+  - Remove unnecessary unicode prefixes
+  - Allow unit tests to be run via pytest
+  - Improve formatting for billions of objects
+  - Remove unnecessary object subclassing
+  - Fix misuse of assertTrue
+  - Add Python3 yoga unit tests
+  - Changed minversion in tox to 3.18.0
+  - Only log the traceback for non-404s
+  - Allow tempurl times to have units
+  - Use upper-constraints for docs jobs
+  - Fix copy.py example.
+  - Remove coding comments
+  - doc: Comment out language option</comment>
+    <requestid>1039270</requestid>
+  </revision>
 </revisionlist>
