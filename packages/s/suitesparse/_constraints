@@ -14,4 +14,14 @@
       </cpu>
     </hardware>
   </overwrite>
+  <overwrite>
+    <conditions>
+      <arch>riscv64</arch>
+    </conditions>
+    <hardware>
+      <disk>
+	<size unit="G">14</size>
+      </disk>
+    </hardware>
+  </overwrite>
 </constraints>
