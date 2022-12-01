@@ -1,5 +1,5 @@
 #
-# spec file for package php-memcached
+# spec file
 #
 # Copyright (c) 2022 SUSE LLC
 #
@@ -72,7 +72,17 @@ export CFLAGS="%{optflags} -fvisibility=hidden"
 %if "%{php_name}" == "php7"
 export TEST_PHP_ARGS="$TEST_PHP_ARGS -d extension=%{php_extdir}/json.so"
 %endif
-%{_sbindir}/memcached -P /tmp/memcached.pid -p 11211 -U 11211 -d
+
+if [ -x %{_sbindir}/memcached ]; then
+  export MEMCACHED_BIN=%{_sbindir}/memcached
+elif [ -x %{_bindir}/memcached ]; then
+  export MEMCACHED_BIN=%{_bindir}/memcached
+else
+  echo "Failed to start memcached - tests can't pass"
+  exit 1
+fi
+
+$MEMCACHED_BIN -P /tmp/memcached.pid -p 11211 -U 11211 -d
 %make_build PHP_EXECUTABLE=%{__php} NO_INTERACTION=1 test
 kill -TERM $(cat /tmp/memcached.pid)
 

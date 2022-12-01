@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 30 17:50:47 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Adjust to memcached now being installed in /usr/bin instead of
+  /usr/sbin.
+
+-------------------------------------------------------------------
 Thu Mar 24 18:57:34 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to 3.2.0
