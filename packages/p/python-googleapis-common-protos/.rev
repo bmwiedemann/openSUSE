@@ -88,4 +88,21 @@
 - Update BuildRequires and Requires from setup.py (forwarded request 1001895 from glaubitz)</comment>
     <requestid>1001902</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>357b60e0dbbf57d63cf143c4655afd93</srcmd5>
+    <version>1.57.0</version>
+    <time>1669914799</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.57.0:
+  * Add support for Python 3.10 (#143)
+  * Add support for Python 3.11 (#145)
+  * Added google.api.JwtLocation.cookie (6af2132)
+  * Added google.api.Service.publishing and client libraries settings (6af2132)
+  * New fields in enum google.api.ErrorReason (6af2132)
+  * Deprecate google.api.BackendRule.min_deadline (6af2132)
+  * **deps:** Require protobuf &gt;=3.19.5 (#141)
+  * Minor updates to comments (6af2132)
+- Update BuildRequires and Requires from setup.py (forwarded request 1039326 from glaubitz)</comment>
+    <requestid>1039346</requestid>
+  </revision>
 </revisionlist>

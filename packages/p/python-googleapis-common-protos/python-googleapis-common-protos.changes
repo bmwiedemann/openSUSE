@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Dec  1 13:19:12 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.57.0:
+  * Add support for Python 3.10 (#143)
+  * Add support for Python 3.11 (#145)
+  * Added google.api.JwtLocation.cookie (6af2132)
+  * Added google.api.Service.publishing and client libraries settings (6af2132)
+  * New fields in enum google.api.ErrorReason (6af2132)
+  * Deprecate google.api.BackendRule.min_deadline (6af2132)
+  * **deps:** Require protobuf >=3.19.5 (#141)
+  * Minor updates to comments (6af2132)
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Thu Sep  8 09:25:23 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.56.4:
