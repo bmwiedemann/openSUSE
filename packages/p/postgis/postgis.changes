@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Nov 25 19:44:21 UTC 2022 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to PostGIS 3.2.4 (boo#1205734)
+  * [security] Add schema qual to upgrade util
+  * [security] Check function ownership at extension packaging time
+  * Fix ST_DumpPoints and ST_DumpSegments crash with empty polygon
+  * Remove forced static linking on shp2pgsql, pgsql2shp, raster2pgsql
+  * Fix crash on ST_SnapToGrid with empty multis
+  * Fix error in topology import of self-intersecting rings
+  * Fix 2.5d topology building regression
+  * Handle load of dbase character fields with no width specified
+  * Fix bad rasterization of linestring
+- includes changes from PostGIS 3.2.3:
+  * Parallelism safety fixes for to_jsonb, ST_AsGeoJSON, ST_AsGML
+  * Guard against downgrades
+  * Fix upgrades with CVE-2022-2625 PostgreSQL fix
+  * Correctly read extent off multi-key GIST indexes
+  * Reset proj error state after failed parse
+  * Short circuit geodesic distance when inputs equal
+  * Fix potential buffer overflow in long transaction locks
+- Add postgresql15 to multibuild and remove postgresql10
+
+-------------------------------------------------------------------
 Wed Aug  3 11:41:54 UTC 2022 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Update to bugfix version 3.2.2
@@ -6,7 +29,7 @@ Wed Aug  3 11:41:54 UTC 2022 - Bruno Friedmann <bruno@ioda-net.ch>
   - #4835, Occasional distance errors in polar area
   - #5124, GRANT USAGE on topology schema to PUBLIC
   - #5120, Fix not-null result from ST_EstimatedExtent against
-           truncated tables with spatial index 
+           truncated tables with spatial index
   - #5115, Allow dropping topologies with pending constraints
   - #5105, Fix false invalidity report from ValidateTopology
   - #5039, postgis_tiger_geocoder: Support for TIGER 2021 (Regina Obe)

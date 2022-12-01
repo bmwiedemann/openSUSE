@@ -22,14 +22,13 @@
 %define         main_version 3.2
 
 Name:           %{pg_name}-%{ext_name}
-Version:        3.2.2
+Version:        3.2.4
 Release:        0
 Summary:        Geographic Information Systems Extensions to PostgreSQL
 License:        GPL-2.0-or-later
 Group:          Productivity/Databases/Servers
 URL:            https://postgis.net/
 Source0:        https://download.osgeo.org/postgis/source/%{ext_name}-%{version}.tar.gz
-Source1:        https://download.osgeo.org/postgis/source/%{ext_name}-%{version}.tar.gz.md5
 Patch0:         patch-tests-results.patch
 BuildRequires:  %{pg_name}-llvmjit-devel
 BuildRequires:  %{pg_name}-server-devel
@@ -85,6 +84,7 @@ Group:          Productivity/Databases/Tools
 Requires:       %{name} = %{version}
 Requires:       perl-DBD-Pg
 Provides:       postgis-utils
+BuildArch:      noarch
 
 %description utils
 The postgis-utils package provides utilities for PostGIS.
@@ -178,7 +178,6 @@ pg_ctl -D "${PGDATA}" --mode="fast" stop
 %{_datadir}/postgresql/install-alternatives %pg_version
 
 %files
-%defattr(-,root,root)
 %license COPYING
 %doc ChangeLog README.postgis MIGRATION NEWS extensions/address_standardizer/README.address_standardizer
 %{pg_config_pkglibdir}/*
@@ -198,7 +197,7 @@ pg_ctl -D "${PGDATA}" --mode="fast" stop
 %{pg_config_sharedir}/extension/address_standardizer*
 
 %files utils
-%defattr(755,root,root)
+%license COPYING
 %{pg_config_bindir}/create_undef.pl
 %{pg_config_bindir}/postgis_proc_upgrade.pl
 %{pg_config_bindir}/postgis_restore.pl
