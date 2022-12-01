@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -%{flavor}
@@ -26,7 +25,7 @@
 %bcond_with test
 %endif
 Name:           python-apipkg%{psuffix}
-Version:        2.1.0
+Version:        3.0.1
 Release:        0
 Summary:        Namespace control and lazy-import mechanism
 License:        MIT
@@ -34,10 +33,14 @@ Group:          Development/Languages/Python
 URL:            https://github.com/pytest-dev/apipkg/
 Source:         https://files.pythonhosted.org/packages/source/a/apipkg/apipkg-%{version}.tar.gz
 %if %{with test}
+BuildRequires:  %{python_module apipkg = %{version}}
 BuildRequires:  %{python_module pytest}
 %endif
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -55,32 +58,38 @@ can copy paste the ~200 lines of code into your project.
 
 %prep
 %autosetup -p1 -n apipkg-%{version}
-# Fix Python 2 install error on old setuptools in Leap
-# https://github.com/pypa/setuptools/issues/1136
-sed -i '/use_scm_version/ a \    package_dir={"": "src"},' setup.py
+# Set the package version static, not dynamic, to build without the .git folder
+sed -i ':a;N;$!ba;s/dynamic = \[[^]]*\]/version = "%{version}"/g' pyproject.toml
+# Remove hatch-vcs dep to avoid cycles
+rm .gitignore
+sed -i '/tool.hatch.build.hooks.vcs/d' pyproject.toml
+cat << EOF > src/apipkg/_version.py
+version = "%{version}"
+version_tuple = tuple(map(int, version.split(".")))
+EOF
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if ! %{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes -s %{buildroot}%{$python_sitelib}
 %endif
 
 %check
 %if %{with test}
-PYTHONPATH=$(pwd)/src
-%pytest
+# Do not test distribution version, it's broken because pytest doesn't require
+# python-py anymore
+%pytest -k 'not test_get_distribution_version'
 %endif
 
 %if ! %{with test}
 %files %{python_files}
 %license LICENSE
-%doc README.rst CHANGELOG
-%dir %{python_sitelib}/apipkg
-%{python_sitelib}/apipkg/*
-%{python_sitelib}/apipkg-%{version}-py%{python_version}.egg-info
+%doc README.rst
+%{python_sitelib}/apipkg
+%{python_sitelib}/apipkg-%{version}*-info
 %endif
 
 %changelog

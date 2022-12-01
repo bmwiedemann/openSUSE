@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Nov 30 17:05:54 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Generate the _version.py file in %prep to remove completely hatch-vcs from
+  pyproject to make it build and run tests correctly
+
+-------------------------------------------------------------------
+Wed Nov 30 16:45:02 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove python-hatch-vcs dependency
+
+-------------------------------------------------------------------
+Wed Nov 30 12:49:07 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove python-py dependency
+
+-------------------------------------------------------------------
+Tue Nov 29 16:53:46 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove python_module macro definition
+- Update to 3.0.1:
+  * restore tox.ini to support tox --current-env based packaging
+- 3.0.0
+  * add support for python 3.11 and drop dead pythons (thanks hukgo)
+  * migrate to hatch
+  * split up __init__.py
+  * add some type annotations
+- 2.1.1
+  * drop the python 3.4 support marker, 2.1.0 broke it
+    2.1.0 will be yanked after release
+
+-------------------------------------------------------------------
 Sun Oct 17 12:03:03 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to v2.1.0

@@ -68,4 +68,27 @@
     <comment></comment>
     <requestid>925858</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f6dbfcdebf51f71349cca5fc99e39648</srcmd5>
+    <version>3.0.1</version>
+    <time>1669910318</time>
+    <user>dimstar_suse</user>
+    <comment>- Generate the _version.py file in %prep to remove completely hatch-vcs from
+  pyproject to make it build and run tests correctly
+- Remove python-hatch-vcs dependency
+- Remove python-py dependency
+- Remove python_module macro definition
+- Update to 3.0.1:
+  * restore tox.ini to support tox --current-env based packaging
+- 3.0.0
+  * add support for python 3.11 and drop dead pythons (thanks hukgo)
+  * migrate to hatch
+  * split up __init__.py
+  * add some type annotations
+- 2.1.1
+  * drop the python 3.4 support marker, 2.1.0 broke it
+    2.1.0 will be yanked after release
+</comment>
+    <requestid>1039166</requestid>
+  </revision>
 </revisionlist>
