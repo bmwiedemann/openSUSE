@@ -17,7 +17,7 @@
 
 
 Name:           featherpad
-Version:        1.3.3
+Version:        1.3.4
 Release:        0
 Summary:        Qt5-based plaintext editor
 License:        GPL-3.0-only
