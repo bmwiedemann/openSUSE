@@ -1,7 +1,7 @@
 #
 # spec file for package oce
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,7 +41,7 @@ Name:           oce
 Version:        0.18.3
 Release:        0
 Summary:        OpenCASCADE Community Edition
-License:        LGPL-2.1 WITH OCCT-exception-1.0
+License:        LGPL-2.1-only WITH OCCT-exception-1.0
 Group:          Productivity/Graphics/CAD
 
 URL:            https://github.com/tpaviot/oce
@@ -60,7 +60,6 @@ BuildRequires:  ftgl-devel
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glu)
-BuildRequires:  pkgconfig(python)
 %if %{with build_draw}
 %if 0%{?suse_version} > 1230
 BuildRequires:  pkgconfig(tcl)

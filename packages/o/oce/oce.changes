@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 29 07:44:16 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded BuildRequires on python 2. 
+
+-------------------------------------------------------------------
 Thu Jul 23 15:40:26 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add _constraints with default 7G min disk space.
