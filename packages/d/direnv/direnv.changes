@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov 24 15:48:26 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 2.32.1
+  * Support custom VIRTUAL_ENV for layout_python
+  * Add gha shell for GitHub Actions
+  * allow conda environment names to be detected from environment.yml
+  * source_up_if_exists: A strict_env compatible version of source_up
+  * Expand ~/ in whitelist paths
+  * Add "block" and "revoke" as aliases of the "deny" command
+  * Add "permit" and "grant" as aliases of the "allow" command
+
+-------------------------------------------------------------------
 Sat May  7 20:09:48 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 2.31.0

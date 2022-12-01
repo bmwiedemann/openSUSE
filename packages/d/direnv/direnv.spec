@@ -18,7 +18,7 @@
 
 %define gopackagepath github.com/direnv/direnv
 Name:           direnv
-Version:        2.31.0
+Version:        2.32.1
 Release:        0
 Summary:        Environment switcher for shells
 License:        MIT
