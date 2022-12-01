@@ -1,0 +1,25 @@
+---
+ configure.ac |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+Index: consoleet-utils-1.1/configure.ac
+===================================================================
+--- consoleet-utils-1.1.orig/configure.ac
++++ consoleet-utils-1.1/configure.ac
+@@ -2,7 +2,7 @@ AC_INIT([consoleet-utils], [1.1])
+ AC_CONFIG_AUX_DIR([build-aux])
+ AC_CONFIG_HEADERS([config.h])
+ AC_PROG_INSTALL
+-AM_INIT_AUTOMAKE([-Wall foreign subdir-objects tar-pax no-dist-gzip dist-zstd])
++AM_INIT_AUTOMAKE([-Wall foreign subdir-objects tar-pax])
+ m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RULES([yes])])
+ AC_PROG_CXX
+ 
+@@ -15,6 +15,6 @@ AC_SUBST([regular_CPPFLAGS])
+ AC_SUBST([regular_CFLAGS])
+ AC_SUBST([regular_CXXFLAGS])
+ 
+-PKG_CHECK_MODULES([libHX], [libHX >= 4.2])
++PKG_CHECK_MODULES([libHX], [libHX >= 2.0])
+ AC_CONFIG_FILES([Makefile])
+ AC_OUTPUT

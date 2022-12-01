@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Thu Dec  1 10:51:10 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Add libhx.patch
+
+-------------------------------------------------------------------
+Mon Nov 21 11:08:57 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Initial package (version 1.1) for build.opensuse.org
+- It's a split from hxtools (20221119/20221120)
