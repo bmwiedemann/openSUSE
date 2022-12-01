@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Dec  1 09:22:05 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.14.2:
+  Bug Fixes:
+  * Include assets in crate a2f508a
+  * Fix clap deps for onefetch-image crate 8cca7af
+  * Add description field to onefetch-image and onefetch-manifest crate 2888186
+
+-------------------------------------------------------------------
+Thu Dec  1 09:21:52 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.14.1:
+  * Fix CD 5085c5b
+
+-------------------------------------------------------------------
+Thu Dec  1 09:21:22 UTC 2022 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.14.0:
+  Features:
+  * Add description info line #851
+  * Add CLI flag to set the maximum number of languages to be shown 8159b34
+  * Add VisualBasic language support #867
+  Chore:
+  * Add manifest crate #851
+  * Move image_backends into its own crate 9ce17c1
+  * Add devcontainer/codespace config #857
+  * Switch to Swatinem/rust-cache for caching 7592eb2
+  * Add README translation for Korean #869
+  * add icon to windows exe 584574f
+  Bug Fixes:
+  * Fix typo in help message for -e (--exclude) #861
+
+-------------------------------------------------------------------
 Mon Nov  7 21:51:20 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Disable tests: they break the build by needing an internet

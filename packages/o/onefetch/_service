@@ -3,7 +3,7 @@
     <param name="url">https://github.com/o2sh/onefetch.git</param>
     <param name="versionformat">@PARENT_TAG@~@TAG_OFFSET@</param>
     <param name="scm">git</param>
-    <param name="revision">v2.13.2</param>
+    <param name="revision">2.14.2</param>
     <param name="match-tag">*</param>
     <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
     <param name="versionrewrite-replacement">\1</param>

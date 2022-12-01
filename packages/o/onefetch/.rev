@@ -251,4 +251,34 @@
   * [language] Improve JSX ASCII logo #784</comment>
     <requestid>1034383</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1036a0d59d5496940b7d375170080c04</srcmd5>
+    <version>2.14.2~0</version>
+    <time>1669911692</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.14.2:
+  Bug Fixes:
+  * Include assets in crate a2f508a
+  * Fix clap deps for onefetch-image crate 8cca7af
+  * Add description field to onefetch-image and onefetch-manifest crate 2888186
+
+- Update to 2.14.1:
+  * Fix CD 5085c5b
+
+- Update to 2.14.0:
+  Features:
+  * Add description info line #851
+  * Add CLI flag to set the maximum number of languages to be shown 8159b34
+  * Add VisualBasic language support #867
+  Chore:
+  * Add manifest crate #851
+  * Move image_backends into its own crate 9ce17c1
+  * Add devcontainer/codespace config #857
+  * Switch to Swatinem/rust-cache for caching 7592eb2
+  * Add README translation for Korean #869
+  * add icon to windows exe 584574f
+  Bug Fixes:
+  * Fix typo in help message for -e (--exclude) #861</comment>
+    <requestid>1039277</requestid>
+  </revision>
 </revisionlist>
