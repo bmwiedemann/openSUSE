@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Nov 30 21:56:32 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 108.0.5359.71 (boo#1205871):
+  * CVE-2022-4174: Type Confusion in V8
+  * CVE-2022-4175: Use after free in Camera Capture
+  * CVE-2022-4176: Out of bounds write in Lacros Graphics
+  * CVE-2022-4177: Use after free in Extensions
+  * CVE-2022-4178: Use after free in Mojo
+  * CVE-2022-4179: Use after free in Audio
+  * CVE-2022-4180: Use after free in Mojo
+  * CVE-2022-4181: Use after free in Forms
+  * CVE-2022-4182: Inappropriate implementation in Fenced Frames
+  * CVE-2022-4183: Insufficient policy enforcement in Popup Blocker
+  * CVE-2022-4184: Insufficient policy enforcement in Autofill
+  * CVE-2022-4185: Inappropriate implementation in Navigation
+  * CVE-2022-4186: Insufficient validation of untrusted input in Downloads
+  * CVE-2022-4187: Insufficient policy enforcement in DevTools
+  * CVE-2022-4188: Insufficient validation of untrusted input in CORS
+  * CVE-2022-4189: Insufficient policy enforcement in DevTools
+  * CVE-2022-4190: Insufficient data validation in Directory
+  * CVE-2022-4191: Use after free in Sign-In
+  * CVE-2022-4192: Use after free in Live Caption
+  * CVE-2022-4193: Insufficient policy enforcement in File System API
+  * CVE-2022-4194: Use after free in Accessibility
+  * CVE-2022-4195: Insufficient policy enforcement in Safe Browsing
+- drop chromium-105-wayland-1.20.patch, upstream
+- drop chromium-107-compiler.patch
+- add chromium-108-compiler.patch
+- drop chromium-98-EnumTable-crash.patch
+
+-------------------------------------------------------------------
 Thu Nov 24 20:48:10 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 107.0.5304.121 (boo#1205736)

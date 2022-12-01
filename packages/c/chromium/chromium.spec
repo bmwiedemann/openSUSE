@@ -2,6 +2,8 @@
 # spec file for package chromium
 #
 # Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2022 Callum Farmer <gmbr3@opensuse.org>
+# Copyright (c) 2022 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -75,7 +77,7 @@
 %endif
 
 Name:           chromium
-Version:        107.0.5304.121
+Version:        108.0.5359.71
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -109,7 +111,7 @@ Patch9:         system-libdrm.patch
 Patch10:        chromium-disable-parallel-gold.patch
 Patch11:        chromium-lp151-old-drm.patch
 # gentoo/fedora/arch patchset
-Patch15:        chromium-107-compiler.patch
+Patch15:        chromium-108-compiler.patch
 Patch17:        chromium-86-ImageMemoryBarrierData-init.patch
 Patch21:        chromium-gcc11.patch
 Patch40:        chromium-91-java-only-allowed-in-android-builds.patch
@@ -119,12 +121,10 @@ Patch63:        chromium-ffmpeg-lp152.patch
 Patch65:        chromium-94-sql-no-assert.patch
 Patch68:        chromium-94-ffmpeg-roll.patch
 Patch69:        chromium-93-InkDropHost-crash.patch
-Patch78:        chromium-98-EnumTable-crash.patch
 Patch87:        chromium-98-gtk4-build.patch
 Patch90:        chromium-100-InMilliseconds-constexpr.patch
 Patch98:        chromium-102-regex_pattern-array.patch
 Patch103:       chromium-103-VirtualCursor-std-layout.patch
-Patch111:       chromium-105-wayland-1.20.patch
 Patch201:       chromium-86-fix-vaapi-on-intel.patch
 # PATCH-FIX-SUSE: allow prop codecs to be set with chromium branding
 Patch202:       chromium-prop-codecs.patch
@@ -368,6 +368,11 @@ export PYTHON=python3
 ln -sfn %{_bindir}/$PYTHON $HOME/bin/python
 export PATH="$HOME/bin/:$PATH"
 
+# qt
+%if %{with qt}
+export PATH="$PATH:%{_libdir}/qt5/bin"
+%endif
+
 # use our wrapper
 rm chrome/installer/linux/common/wrapper
 cp %{SOURCE106} chrome/installer/linux/common/wrapper
@@ -475,7 +480,6 @@ keeplibs=(
     third_party/google_input_tools/third_party/closure_library
     third_party/google_input_tools/third_party/closure_library/third_party/closure
     third_party/googletest
-    third_party/harfbuzz-ng/utils
     third_party/highway
     third_party/hunspell
     third_party/iccjpeg
@@ -491,8 +495,8 @@ keeplibs=(
     third_party/libaom/source/libaom/third_party/fastfeat
     third_party/libaom/source/libaom/third_party/vector
     third_party/libaom/source/libaom/third_party/x86inc
+    third_party/libaom/source/libaom/third_party/SVT-AV1
     third_party/libgav1
-    third_party/libgifcodec
     third_party/libjingle
     third_party/libjxl
     third_party/libphonenumber

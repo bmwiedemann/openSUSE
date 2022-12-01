@@ -1,7 +1,8 @@
-diff -up chromium-93.0.4577.63/chrome/common/safe_browsing/BUILD.gn.nounrar chromium-93.0.4577.63/chrome/common/safe_browsing/BUILD.gn
---- chromium-93.0.4577.63/chrome/common/safe_browsing/BUILD.gn.nounrar	2021-09-02 08:22:31.280927364 -0400
-+++ chromium-93.0.4577.63/chrome/common/safe_browsing/BUILD.gn	2021-09-02 08:23:32.143189935 -0400
-@@ -43,39 +43,6 @@ if (safe_browsing_mode == 1) {
+Index: chromium-108.0.5359.71/chrome/common/safe_browsing/BUILD.gn
+===================================================================
+--- chromium-108.0.5359.71.orig/chrome/common/safe_browsing/BUILD.gn
++++ chromium-108.0.5359.71/chrome/common/safe_browsing/BUILD.gn
+@@ -58,39 +58,6 @@ if (safe_browsing_mode == 1) {
      public_deps = [ "//components/safe_browsing/core/common/proto:csd_proto" ]
    }
  
@@ -41,28 +42,31 @@ diff -up chromium-93.0.4577.63/chrome/common/safe_browsing/BUILD.gn.nounrar chro
    if (is_linux || is_win) {
      source_set("document_analyzer") {
        sources = [
-@@ -149,7 +116,6 @@ source_set("safe_browsing") {
+@@ -191,7 +158,6 @@ source_set("safe_browsing") {
        ":archive_analyzer_results",
        ":binary_feature_extractor",
        ":download_type_util",
 -      ":rar_analyzer",
        "//components/safe_browsing/core/common",
+       "//third_party/lzma_sdk/google:seven_zip_reader",
      ]
- 
-diff -up chromium-93.0.4577.63/chrome/common/safe_browsing/DEPS.nounrar chromium-93.0.4577.63/chrome/common/safe_browsing/DEPS
---- chromium-93.0.4577.63/chrome/common/safe_browsing/DEPS.nounrar	2021-09-02 08:22:31.280927364 -0400
-+++ chromium-93.0.4577.63/chrome/common/safe_browsing/DEPS	2021-09-02 08:23:56.092293262 -0400
-@@ -2,6 +2,5 @@ include_rules = [
+Index: chromium-108.0.5359.71/chrome/common/safe_browsing/DEPS
+===================================================================
+--- chromium-108.0.5359.71.orig/chrome/common/safe_browsing/DEPS
++++ chromium-108.0.5359.71/chrome/common/safe_browsing/DEPS
+@@ -3,7 +3,6 @@ include_rules = [
    "+components/safe_browsing/core/common",
    "+third_party/maldoca",
    "+third_party/protobuf",
 -  "+third_party/unrar",
    "+third_party/zlib",
+   "+third_party/lzma_sdk/google",
  ]
-diff -up chromium-93.0.4577.63/chrome/services/file_util/BUILD.gn.nounrar chromium-93.0.4577.63/chrome/services/file_util/BUILD.gn
---- chromium-93.0.4577.63/chrome/services/file_util/BUILD.gn.nounrar	2021-08-31 21:39:29.000000000 -0400
-+++ chromium-93.0.4577.63/chrome/services/file_util/BUILD.gn	2021-09-02 08:22:31.280927364 -0400
-@@ -50,7 +50,6 @@ source_set("file_util") {
+Index: chromium-108.0.5359.71/chrome/services/file_util/BUILD.gn
+===================================================================
+--- chromium-108.0.5359.71.orig/chrome/services/file_util/BUILD.gn
++++ chromium-108.0.5359.71/chrome/services/file_util/BUILD.gn
+@@ -60,7 +60,6 @@ source_set("file_util") {
      deps += [
        "//chrome/common/safe_browsing",
        "//chrome/common/safe_browsing:archive_analyzer_results",
@@ -70,10 +74,11 @@ diff -up chromium-93.0.4577.63/chrome/services/file_util/BUILD.gn.nounrar chromi
      ]
  
      if (is_linux || is_win) {
-diff -up chromium-93.0.4577.63/chrome/services/file_util/safe_archive_analyzer.cc.nounrar chromium-93.0.4577.63/chrome/services/file_util/safe_archive_analyzer.cc
---- chromium-93.0.4577.63/chrome/services/file_util/safe_archive_analyzer.cc.nounrar	2021-08-31 21:39:29.000000000 -0400
-+++ chromium-93.0.4577.63/chrome/services/file_util/safe_archive_analyzer.cc	2021-09-02 08:22:31.281927369 -0400
-@@ -45,10 +45,14 @@ void SafeArchiveAnalyzer::AnalyzeDmgFile
+Index: chromium-108.0.5359.71/chrome/services/file_util/safe_archive_analyzer.cc
+===================================================================
+--- chromium-108.0.5359.71.orig/chrome/services/file_util/safe_archive_analyzer.cc
++++ chromium-108.0.5359.71/chrome/services/file_util/safe_archive_analyzer.cc
+@@ -45,12 +45,16 @@ void SafeArchiveAnalyzer::AnalyzeDmgFile
  void SafeArchiveAnalyzer::AnalyzeRarFile(base::File rar_file,
                                           base::File temporary_file,
                                           AnalyzeRarFileCallback callback) {
@@ -88,3 +93,5 @@ diff -up chromium-93.0.4577.63/chrome/services/file_util/safe_archive_analyzer.c
 +  NOTREACHED();
 +#endif
  }
+ 
+ void SafeArchiveAnalyzer::AnalyzeSevenZipFile(
