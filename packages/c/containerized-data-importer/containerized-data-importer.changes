@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec  1 09:58:30 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Ensure RPMs and containers are built against the same distro
+- Be more strict when discovering the registry path: error out if the
+  distro is unknown, instead of falling through to 'opensuse' by
+  default
+
+-------------------------------------------------------------------
 Sat Oct 15 13:41:00 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Build tools/cdi-containerimage-server with CGO_ENABLED=0
