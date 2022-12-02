@@ -16,10 +16,17 @@
 #
 
 
+%if 0%{?suse_version} < 1550
+# Leap15, SLES15
+%define pythons python310
+%else
+# Tumbleweed
 # only works with the python version which the package 'ansible' uses
 %define pythons python3
+%endif
+
 Name:           python-ansible-compat
-Version:        2.2.5
+Version:        2.2.6
 Release:        0
 Summary:        Compatibility shim for Ansible 2.9 and newer
 License:        MIT
@@ -43,6 +50,7 @@ BuildRequires:  ansible
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-generators
 %{?python_enable_dependency_generator}
+Requires:       python-subprocess-tee
 BuildArch:      noarch
 %python_subpackages
 
