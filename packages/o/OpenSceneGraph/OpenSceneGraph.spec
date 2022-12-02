@@ -16,12 +16,14 @@
 #
 
 
-%define _osg_so_nr	161
-%define _opt_so_nr	21
+%define _osg_so_nr 161
+%define _opt_so_nr 21
 %if 0%{?is_opensuse}
 %bcond_without gdal
+%bcond_with    ffmpeg
 %else
-%bcond_with gdal
+%bcond_with    gdal
+%bcond_without ffmpeg
 %endif
 
 %bcond_without asio
@@ -55,7 +57,9 @@ Patch1:         0002-Replace-obsoleted-asio-basic_stream_socket-get_io_se.patch
 Patch2:         0001-Use-non-deprecated-methods-to-access-OpenCascade-Tri.patch
 BuildRequires:  cmake
 BuildRequires:  curl-devel
+%if %{with ffmpeg}
 BuildRequires:  ffmpeg-devel
+%endif
 BuildRequires:  fltk-devel
 BuildRequires:  freeglut-devel
 BuildRequires:  gcc-c++
@@ -82,7 +86,6 @@ BuildRequires:  pkgconfig(librsvg-2.0) >= 2.35
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(libvncserver)
 BuildRequires:  pkgconfig(libxml-2.0)
-BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(poppler-glib)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(xrandr)
@@ -141,7 +144,6 @@ Requires:       libpng-devel
 Requires:       pkgconfig(freetype2)
 Requires:       pkgconfig(librsvg-2.0)
 Requires:       pkgconfig(libtiff-4)
-Requires:       pkgconfig(openal)
 Requires:       pkgconfig(poppler-glib)
 Requires:       pkgconfig(sdl2)
 Requires:       pkgconfig(xrandr)
@@ -199,6 +201,74 @@ OpenGL.
 
 This package contains some plugins for OpenSceneGraph.
 
+%package plugin-ffmpeg
+Summary:        FFmpeg plugin for OpenSceneGraph
+Group:          Productivity/Graphics/Other
+Provides:       OpenSceneGraphPlugin(ext:mov)
+Provides:       OpenSceneGraphPlugin(ext:avi)
+Provides:       %{name}-plugins:%{_libdir}/osgPlugins-%{version}/osgdb_ffmpeg.so
+Conflicts:      %{name}-plugins < %{version}-%{release}
+
+%description plugin-ffmpeg
+The OpenSceneGraph is a graphics toolkit for the development of
+graphic applications.
+
+This package contains the FFmpeg plugin for OpenSceneGraph.
+
+%package plugin-gdal
+Summary:        GDAL plugin for OpenSceneGraph
+Group:          Productivity/Graphics/Other
+Provides:       OpenSceneGraphPlugin(ext:gdal)
+Provides:       %{name}-plugins:%{_libdir}/osgPlugins-%{version}/osgdb_gdal.so
+Conflicts:      %{name}-plugins < %{version}-%{release}
+
+%description plugin-gdal
+The OpenSceneGraph is a graphics toolkit for the development of
+graphic applications.
+
+This package contains the GDAL plugin for OpenSceneGraph.
+
+%package plugin-gstreamer
+Summary:        GStreamer plugin for OpenSceneGraph
+Group:          Productivity/Graphics/Other
+Provides:       OpenSceneGraphPlugin(ext:mov)
+Provides:       OpenSceneGraphPlugin(ext:avi)
+Provides:       %{name}-plugins:%{_libdir}/osgPlugins-%{version}/osgdb_gstreamer.so
+Conflicts:      %{name}-plugins < %{version}-%{release}
+
+%description plugin-gstreamer
+The OpenSceneGraph is a graphics toolkit for the development of
+graphic applications.
+
+This package contains the GStreamer plugin for OpenSceneGraph.
+
+%package plugin-opencascade
+Summary:        OpenCASCADE plugin for OpenSceneGraph
+Group:          Productivity/Graphics/Other
+Provides:       OpenSceneGraphPlugin(ext:step)
+Provides:       OpenSceneGraphPlugin(ext:iges)
+Provides:       %{name}-plugins:%{_libdir}/osgPlugins-%{version}/osgdb_opencascade.so
+Conflicts:      %{name}-plugins < %{version}-%{release}
+
+%description plugin-opencascade
+The OpenSceneGraph is a graphics toolkit for the development of
+graphic applications.
+
+This package contains the OpenCASCADE plugin for OpenSceneGraph.
+
+%package plugin-pdf
+Summary:        PDF plugin for OpenSceneGraph
+Group:          Productivity/Graphics/Other
+Provides:       OpenSceneGraphPlugin(ext:pdf)
+Provides:       %{name}-plugins:%{_libdir}/osgPlugins-%{version}/osgdb_pdf.so
+Conflicts:      %{name}-plugins < %{version}-%{release}
+
+%description plugin-pdf
+The OpenSceneGraph is a graphics toolkit for the development of
+graphic applications.
+
+This package contains the Poppler based PDF plugin for OpenSceneGraph.
+
 %package examples
 Summary:        OpenSceneGraph example applications
 Group:          Productivity/Graphics/Other
@@ -214,7 +284,7 @@ This package contains some example applications built with OpenSceneGraph
 
 %prep
 %setup -q -n %{name}-%{name}-%{version}
-%if 0%{?suse_version} >= 1550
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
 %patch0 -p1
 %patch1 -p1
 %endif
@@ -265,7 +335,33 @@ mv %{buildroot}%{_datadir}/OpenSceneGraph \
 %{_bindir}/osgshaderpipeline
 
 %files plugins
-%{_libdir}/osgPlugins-%{version}/
+%{_libdir}/osgPlugins-%{version}/*.so
+%exclude %{_libdir}/osgPlugins-%{version}/osgdb_ffmpeg*.so
+%exclude %{_libdir}/osgPlugins-%{version}/osgdb_gdal*.so
+%exclude %{_libdir}/osgPlugins-%{version}/osgdb_gstreamer*.so
+%exclude %{_libdir}/osgPlugins-%{version}/osgdb_opencascade*.so
+%exclude %{_libdir}/osgPlugins-%{version}/osgdb_ogr*.so
+%exclude %{_libdir}/osgPlugins-%{version}/osgdb_pdf*.so
+
+%if %{with ffmpeg}
+%files plugin-ffmpeg
+%{_libdir}/osgPlugins-%{version}/osgdb_ffmpeg*.so
+%endif
+
+%if %{with gdal}
+%files plugin-gdal
+%{_libdir}/osgPlugins-%{version}/osgdb_gdal*.so
+%{_libdir}/osgPlugins-%{version}/osgdb_ogr*.so
+%endif
+
+%files plugin-gstreamer
+%{_libdir}/osgPlugins-%{version}/osgdb_gstreamer*.so
+
+%files plugin-opencascade
+%{_libdir}/osgPlugins-%{version}/osgdb_opencascade*.so
+
+%files plugin-pdf
+%{_libdir}/osgPlugins-%{version}/osgdb_pdf*.so
 
 %files -n libOpenSceneGraph%{_osg_so_nr}
 %{_libdir}/libosg.so.*
@@ -285,6 +381,7 @@ mv %{buildroot}%{_datadir}/OpenSceneGraph \
 %{_libdir}/libosgViewer.so.*
 %{_libdir}/libosgWidget.so.*
 %{_libdir}/libosgPresentation.so.*
+%dir %{_libdir}/osgPlugins-%{version}/
 
 %files -n libOpenSceneGraph-devel
 %{_includedir}/osg/

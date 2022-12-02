@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec  1 22:51:37 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Split several plugins with significant dependencies from main
+  plugins package.
+- Disable FFmpeg plugin on TW until compatibility issues are
+  resolved.
+
+-------------------------------------------------------------------
 Mon Jul  4 22:32:11 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix build with OpenCASCADE 7.6, add
