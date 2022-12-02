@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Dec  1 10:44:42 UTC 2022 - cloud-devel@suse.de
+
+- update to version 2.2.0
+  - Don't force_reconnect() on unhandled Idl exception
+  - Fix TRY_AGAIN handling
+  - Switch to 2023.1 Python3 unit tests and generic template name
+  - Use daemon property instead of setDaemon method
+  - vtep: add support for 'hardware_vtep' schema
+  - nb: add methods to modify the lrp.networks
+  - nb: add support for lb health checks API
+  - Provide base classes for {Get,Set}Options commands
+  - Update master for stable/zed
+  - Fix logging exception while handling transaction exception
+
+-------------------------------------------------------------------
+Sat Oct  1 12:39:57 UTC 2022 - cloud-devel@suse.de
+
+- update to version 2.0.0
+  - Update python testing as per zed cycle teting runtime
+
+-------------------------------------------------------------------
 Tue Jun  7 08:52:03 UTC 2022 - cloud-devel@suse.de
 
 - update to version 1.16.1
