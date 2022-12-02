@@ -17,7 +17,7 @@
 
 
 Name:           yast2-network
-Version:        4.5.9
+Version:        4.5.10
 Release:        0
 Summary:        YaST2 - Network Configuration
 License:        GPL-2.0-only
@@ -27,12 +27,12 @@ URL:            https://github.com/yast/yast-network
 Source0:        %{name}-%{version}.tar.bz2
 
 # testsuite
+BuildRequires:  rubygem(%rb_default_ruby_abi:rspec)
 BuildRequires:  update-desktop-files
 BuildRequires:  yast2-devtools >= 3.1.15
-BuildRequires:  rubygem(%rb_default_ruby_abi:rspec)
 #for install task
-BuildRequires:  yast2-storage-ng
 BuildRequires:  rubygem(%rb_default_ruby_abi:yast-rake)
+BuildRequires:  yast2-storage-ng
 # Added force option to NetworkService.EnableDisableNow method
 BuildRequires:  yast2 >= 4.5.12
 
@@ -54,12 +54,12 @@ Requires:       yast2-storage-ng
 # Added force option to NetworkService.EnableDisableNow method
 Requires:       yast2 >= 4.5.12
 # Packages::vnc_packages
-Requires:       augeas-lenses
 Requires:       yast2-packager >= 4.0.18
+Requires:       augeas-lenses
 Requires:       rubygem(%rb_default_ruby_abi:cfa) >= 0.6.4
 # BusID of all the cards with the same one (bsc#1007172)
-Requires:       hostname
 Requires:       hwinfo         >= 21.35
+Requires:       hostname
 Requires:       yast2-ruby-bindings >= 1.0.0
 Requires:       yast2-xml
 
