@@ -150,4 +150,15 @@
     <comment></comment>
     <requestid>1007195</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>dfca4eb99da531a4d9498ecb59da957d</srcmd5>
+    <version>5.0.1</version>
+    <time>1669992458</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 5.0.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1039584 from glaubitz)</comment>
+    <requestid>1039588</requestid>
+  </revision>
 </revisionlist>

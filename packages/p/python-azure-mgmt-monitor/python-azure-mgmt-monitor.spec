@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-mgmt-monitor
-Version:        5.0.0
+Version:        5.0.1
 Release:        0
 Summary:        Microsoft Azure Monitor Client Library
 License:        MIT
