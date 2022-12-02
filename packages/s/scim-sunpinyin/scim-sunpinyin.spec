@@ -1,7 +1,7 @@
 #
 # spec file for package scim-sunpinyin
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           scim-sunpinyin
 Version:        2.0.3
 Release:        0
 Summary:        Sunpinyin module for scim
-License:        LGPL-2.1 or CDDL-1.0
+License:        CDDL-1.0 OR LGPL-2.1-only
 Group:          System/I18n/Chinese
-Url:            http://code.google.com/p/sunpinyin/
+URL:            http://code.google.com/p/sunpinyin/
 Source:         http://sunpinyin.googlecode.com/files/%{name}-%{version}.tar.gz
 #Add GTK_CHECK_VERSION to remove some deprecated functions fjkong@suse.com
 Patch1:         scim-sunpinyin-remove-old-functions.patch
@@ -38,7 +38,7 @@ BuildRequires:  gtk3-devel
 %endif
 BuildRequires:  intltool
 BuildRequires:  libsunpinyin3
-BuildRequires:  python >= 2.6
+BuildRequires:  python3
 BuildRequires:  scim-devel
 BuildRequires:  scons
 %if 0%{?suse_version}
