@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Nov 14 00:01:29 UTC 2022 - william.brown@suse.com
+
+- Update to version 0.3.1~3:
+  * Force concurrent disk cache by default
+  * Add experimental concurrent cache support
+  * Ignore RPM env vars by default
+  * Revert "test: add a test for bc"
+  * Revert "add .bc as C++ extension"
+  * with gcs: document the process
+  * test: add a test for bc
+  * test: add the support for extra args
+  * Install gcc & clang for the test_sccache_command test
+  * add .bc as C++ extension See: https://github.com/llvm/llvm-project/issues/58518#issuecomment-1312181006
+
+-------------------------------------------------------------------
 Mon Sep 26 01:56:18 UTC 2022 - william.brown@suse.com
 
 - Update to version 0.3.0~git5.14a4b8b:

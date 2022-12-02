@@ -2,10 +2,10 @@
   <service mode="disabled" name="obs_scm">
     <!-- <param name="url">https://github.com/mozilla/sccache.git</param> -->
     <param name="url">https://github.com/Firstyear/sccache.git</param>
-    <param name="versionformat">@PARENT_TAG@~git@TAG_OFFSET@.%h</param>
+    <param name="versionformat">@PARENT_TAG@~@TAG_OFFSET@</param>
     <param name="scm">git</param>
     <!-- <param name="revision">v0.3.0</param> -->
-    <param name="revision">20220520-suse-maint-1</param>
+    <param name="revision">20221114-suse-maint-2</param>
     <param name="match-tag">*</param>
     <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
     <param name="versionrewrite-replacement">\1</param>
