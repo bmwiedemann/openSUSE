@@ -17,8 +17,8 @@
 
 
 %define major_ver 5
-%define minor_ver 10
-%define short_ver 5.10
+%define minor_ver 11
+%define short_ver %{major_ver}.%{minor_ver}
 %define shlib libparaview%{major_ver}_%{minor_ver}
 
 %if 0%{?suse_version} <= 1500
@@ -26,6 +26,17 @@
 %else
 %bcond_without pugixml
 %endif
+
+%if 0%{?sle_version} == 150300 && 0%{?is_opensuse}
+# No nlohmann_json in Leap 15.3
+%bcond_with    nlohmann
+# libproj too old in Leap 15.3
+%bcond_with    proj
+%else
+%bcond_without nlohmann
+%bcond_without proj
+%endif
+
 %bcond_without gl2ps
 
 # Need patched version with HPDF_SHADING
@@ -33,7 +44,7 @@
 
 %define __builder ninja
 Name:           paraview
-Version:        %{short_ver}.1
+Version:        %{short_ver}.0
 Release:        0
 Summary:        Data analysis and visualization application
 License:        BSD-3-Clause
@@ -48,8 +59,6 @@ Source3:        https://www.paraview.org/files/v%{short_ver}/ParaViewTutorial-%{
 Patch0:         paraview-desktop-entry-fix.patch
 # PATCH-FIX-OPENSUSE fix-libharu-missing-m.patch -- missing libraries for linking (gh#libharu/libharu#213)
 Patch2:         fix-libharu-missing-m.patch
-# PATCH-FIX-UPSTREAM paraview-include-sstream.patch -- Add patch from upstream to include missing headers and adapt to apply with p1 (https://gitlab.kitware.com/vtk/vtk/-/merge_requests/8597)
-Patch3:         paraview-include-sstream.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  cgns-devel
 BuildRequires:  cmake >= 3.13
@@ -78,6 +87,7 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-matplotlib
 BuildRequires:  python3-qt5-devel
 BuildRequires:  readline-devel
+BuildRequires:  sqlite3
 BuildRequires:  utfcpp-devel
 BuildRequires:  wget
 BuildRequires:  pkgconfig(Qt5Core)
@@ -96,6 +106,7 @@ BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(jsoncpp) >= 0.7.0
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(liblz4) >= 1.7.3
+BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libpqxx)
 BuildRequires:  pkgconfig(libtiff-4)
@@ -103,6 +114,13 @@ BuildRequires:  pkgconfig(netcdf)
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(protobuf) >= 2.6.0
+BuildRequires:  pkgconfig(sqlite3)
+%if %{with nlohmann}
+BuildRequires:  pkgconfig(nlohmann_json)
+%endif
+%if %{with proj}
+BuildRequires:  pkgconfig(proj)
+%endif
 %if %{with pugixml}
 BuildRequires:  pkgconfig(pugixml) >= 1.11
 %endif
@@ -215,7 +233,11 @@ sed -Ei "1{s|#!/usr/bin/env python3|#!/usr/bin/python3|}" Clients/CommandLineExe
        -DVTK_MODULE_USE_EXTERNAL_VTK_gl2ps=%{?with_gl2ps:ON}%{!?with_gl2ps:OFF} \
        -DVTK_MODULE_USE_EXTERNAL_VTK_ioss:BOOL=OFF \
        -DVTK_MODULE_USE_EXTERNAL_VTK_libharu=%{?with_haru:ON}%{!?with_haru:OFF} \
-       -DVTK_MODULE_USE_EXTERNAL_VTK_pugixml=%{?with_pugixml:ON}%{!?with_pugixml:OFF}
+       -DVTK_MODULE_USE_EXTERNAL_VTK_libproj=%{?with_proj:ON}%{!?with_proj:OFF} \
+       -DVTK_MODULE_USE_EXTERNAL_VTK_nlohmannjson=%{?with_nlohmann:ON}%{!?with_nlohmann:OFF} \
+       -DVTK_MODULE_USE_EXTERNAL_VTK_pugixml=%{?with_pugixml:ON}%{!?with_pugixml:OFF} \
+       -DVTK_MODULE_USE_EXTERNAL_VTK_verdict=OFF \
+       %{nil}
 
 %cmake_build
 
@@ -223,6 +245,9 @@ sed -Ei "1{s|#!/usr/bin/env python3|#!/usr/bin/python3|}" Clients/CommandLineExe
 find . \( -name \*.txt -o -name \*.xml -o -name '*.[ch]' -o -name '*.[ch][px][px]' \) -exec chmod -x "{}" +
 
 %cmake_install
+
+# Unnecessary hash-bang
+sed -i "1{\@/usr/bin/env@d}" %{buildroot}%{python3_sitearch}/paraview/vtkmodules/generate_pyi.py
 
 # INSTALL DOCUMENTATION USED BY THE HELP MENU IN MAIN APP
 install -Dm0644 %{S:2} %{buildroot}%{_datadir}/%{name}-%{short_ver}/doc/GettingStarted.pdf
@@ -254,7 +279,9 @@ find %{buildroot}%{_libdir}/cmake/paraview-%{short_ver}/ -size 0 -delete -print
 %dir %{_libdir}/vtk/
 %dir %{_libdir}/vtk/hierarchy
 %{_libdir}/vtk/hierarchy/ParaView/
-%{_libdir}/catalyst/
+%if %{without proj}
+%{_datadir}/vtk-pv%{major_ver}.%{minor_ver}/
+%endif
 
 %files -n %{shlib}
 %{_libdir}/*.so.*

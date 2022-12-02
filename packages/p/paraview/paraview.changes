@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov 30 16:40:06 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.11.0:
+  * Many changes, see
+    <https://www.kitware.com/paraview-5-11-0-release-notes/>.
+- Drop paraview-include-sstream.patch: incorporated upstream.
+- New BuildRequires: sqlite3, pkgconfig(liblzma),
+  pkgconfig(nlohmann_json), pkgconfig(proj), pkgconfig(sqlite3).
+- Build without system nlohmann_json for Leap 15.3 and older.
+- Update rpmlintrc file to suppress false positives.
+
+-------------------------------------------------------------------
 Thu Jul 14 12:07:13 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Pass CMAKE_SKIP_INSTALL_RPATH=ON for openSUSE > 1500 as well

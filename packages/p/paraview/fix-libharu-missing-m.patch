@@ -1,9 +1,9 @@
-Index: ParaView-v5.7.0/VTK/ThirdParty/libharu/vtklibharu/CMakeLists.txt
+Index: ParaView-v5.11.0/VTK/ThirdParty/libharu/vtklibharu/CMakeLists.txt
 ===================================================================
---- ParaView-v5.7.0.orig/VTK/ThirdParty/libharu/vtklibharu/CMakeLists.txt
-+++ ParaView-v5.7.0/VTK/ThirdParty/libharu/vtklibharu/CMakeLists.txt
-@@ -125,6 +125,8 @@ if(PNG_FOUND)
- endif(PNG_FOUND)
+--- ParaView-v5.11.0.orig/VTK/ThirdParty/libharu/vtklibharu/CMakeLists.txt
++++ ParaView-v5.11.0/VTK/ThirdParty/libharu/vtklibharu/CMakeLists.txt
+@@ -68,6 +68,8 @@ find_package(PNG)
+ find_library(M_LIB m)
  endif ()
  
 +link_libraries(m dl pthread)
