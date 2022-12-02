@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 24 12:13:15 UTC 2022 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Update language cache when selecting new language to ensure that
+  always the correct language translations are used in the license
+  translations selection combo box on the next wizard page
+  (bsc#1204845, bsc#1193009)
+- 4.5.3
+
+-------------------------------------------------------------------
 Fri Oct 21 07:22:31 UTC 2022 - Martin Vidner <mvidner@suse.com>
 
 - Use Canadian (CSA) instead of Canadian (Multilingual) keyboard

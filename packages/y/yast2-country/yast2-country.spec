@@ -17,7 +17,7 @@
 
 
 Name:           yast2-country
-Version:        4.5.2
+Version:        4.5.3
 Release:        0
 Summary:        YaST2 - Country Settings (Language, Keyboard, and Timezone)
 License:        GPL-2.0-only
@@ -39,8 +39,8 @@ BuildRequires:  yast2-core >= 3.1.12
 BuildRequires:  yast2-ruby-bindings >= 4.4.7
 # Yast2::CommandLine readonly parameter
 BuildRequires:  yast2 >= 4.2.57
-# systemd-mini does not add the xkb generated map which is needed by 
-# the Keyboards.all_keyboards unit/integration test 
+# systemd-mini does not add the xkb generated map which is needed by
+# the Keyboards.all_keyboards unit/integration test
 BuildRequires:  systemd
 
 Requires:       timezone
@@ -54,8 +54,8 @@ Requires:       yast2-pkg-bindings >= 2.15.3
 Requires:       yast2-core >= 2.16.28
 Requires:       yast2-packager >= 2.23.3
 # VMware detection (.probe.is_vmware)
-Requires:       yast2-country-data
 Requires:       yast2-hardware-detection >= 3.1.6
+Requires:       yast2-country-data
 Requires:       yast2-ruby-bindings >= 1.0.0
 Requires:       rubygem(%{rb_default_ruby_abi}:ruby-dbus)
 
