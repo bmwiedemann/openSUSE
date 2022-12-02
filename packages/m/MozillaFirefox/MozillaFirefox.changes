@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Dec  1 21:13:32 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 107.0.1:
+  * Fix an issue with accessing some sites reliably in Private
+    Browsing mode or Strict ETP due to anti-adblockers
+    (bmo#1717806)
+  * Fix an issue where Color Management was not available for
+    some users (bmo#1799391)
+  * Fix an issue with text overlapping in the Settings Menu for
+    some locales (bmo#1800379)
+  * Fix an issue where the DevTools UI is not accessible when an
+    alert dialog is displayed (bmo#1801840)
+
+-------------------------------------------------------------------
 Tue Nov 15 14:22:26 UTC 2022 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 107.0

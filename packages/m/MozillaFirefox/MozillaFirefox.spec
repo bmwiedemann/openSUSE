@@ -1,8 +1,8 @@
 #
-# spec file
+# spec file for package MozillaFirefox
 #
 # Copyright (c) 2022 SUSE LLC
-#               2006-2022 Wolfgang Rosenauer <wr@rosenauer.org>
+# Copyright (c) 2006-2022 Wolfgang Rosenauer <wr@rosenauer.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,8 +29,8 @@
 # major 69
 # mainver %major.99
 %define major          107
-%define mainver        %major.0
-%define orig_version   107.0
+%define mainver        %major.0.1
+%define orig_version   107.0.1
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1

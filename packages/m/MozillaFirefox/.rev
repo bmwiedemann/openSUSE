@@ -5970,4 +5970,12 @@
   * CVE-2022-45416 (bmo#1793676)</comment>
     <requestid>1036230</requestid>
   </revision>
+  <revision rev="383" vrev="1">
+    <srcmd5>1c4e35681e847e385bf1cd3c5b7a1011</srcmd5>
+    <version>107.0.1</version>
+    <time>1669983145</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1039406</requestid>
+  </revision>
 </revisionlist>
