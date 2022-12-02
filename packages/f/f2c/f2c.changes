@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul  7 18:51:06 UTC 2022 - Matthias Eliasson <elimat@opensuse.org>
+
+- update to version 20210928
+  * README: add a paragraph about the size of integers and a simple
+    change to f2c.h that is appropriate when sizeof(int) == 4 and
+    sizeof(long) == 8.
+  * xsum.c: trivial change to banish a pedantic compiler warning.
+- change versioning to date as all other major distros are doing
+- add f77 script (fc)
+- run spec-cleaner 
+
+-------------------------------------------------------------------
 Mon Jul 15 15:46:08 UTC 2019 - Jonathan Brielmaier <jbrielmaier@suse.de>
 
 - correct changelog:

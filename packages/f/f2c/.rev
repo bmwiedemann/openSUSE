@@ -126,4 +126,12 @@
     <comment>now the checker script should succeed</comment>
     <requestid>715506</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>4a00e6147088fe69f3829a74eb9837b2</srcmd5>
+    <version>20210928</version>
+    <time>1669983220</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1039515</requestid>
+  </revision>
 </revisionlist>
