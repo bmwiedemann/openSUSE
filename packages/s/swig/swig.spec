@@ -30,14 +30,13 @@ BuildRequires:  ruby
 BuildRequires:  ruby-devel
 %endif
 Name:           swig
-Version:        4.1.0
-%define srcversion v4.1.0
+Version:        4.1.1
 Release:        0
 Summary:        Simplified Wrapper and Interface Generator
 License:        BSD-3-Clause AND GPL-3.0-or-later
 Group:          Development/Languages/C and C++
 URL:            http://www.swig.org/
-Source:         https://github.com/swig/swig/archive/refs/tags/%{srcversion}.tar.gz
+Source:         https://github.com/swig/swig/archive/v%{version}/%{name}-v%{version}.tar.gz
 Source1:        %{name}.rpmlintrc
 
 BuildRequires:  autoconf

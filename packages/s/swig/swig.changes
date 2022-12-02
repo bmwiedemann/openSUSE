@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Dec  1 08:30:26 UTC 2022 - Klaus Kämpf <kkaempf@suse.com>
+
+- Update to 4.1.1
+  * Couple of stability fixes.
+  * Stability fix in ccache-swig when calculating hashes of inputs.
+  * Some template handling improvements.
+  * R - minor fixes plus deprecation for rtypecheck typemaps being
+    optional.
+
+-------------------------------------------------------------------
 Wed Nov  2 10:54:51 UTC 2022 - Klaus Kämpf <kkaempf@suse.com>
 
 - adapt source name to please build service
