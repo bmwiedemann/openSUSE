@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec  1 17:52:47 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to v15.3.1 - 2022-11-07
+  * Update the `word_list` for `pl_PL`. Thanks @BeRT2me.
+
+- Update to v15.3.0 - 2022-11-07
+  * Add color provider for `id_ID`. Thanks @rosdyana.
+
+-------------------------------------------------------------------
 Mon Nov  7 20:07:23 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to v15.2.0
