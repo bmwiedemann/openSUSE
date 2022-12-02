@@ -16,7 +16,17 @@
 #
 
 
+%if 0%{?suse_version} < 1550
+# Leap15, SLES15
+%define pythons python310
+%define ansible_python python310
+%define ansible_python_sitelib %python310_sitelib
+%else
+# Tumbleweed
 %define pythons python3
+%define ansible_python python3
+%define ansible_python_sitelib %python3_sitelib
+%endif
 
 Name:           ansible-core
 Version:        2.14.0
@@ -32,25 +42,27 @@ Conflicts:      ansible < 3
 Conflicts:      ansible-base
 Conflicts:      ansible-test
 
-BuildRequires:  python-rpm-macros
-BuildRequires:  python3-setuptools
-# SECTION test requirements
-BuildRequires:  python3-botocore
-BuildRequires:  python3-Jinja2 >= 3.0.0
-BuildRequires:  python3-PyYAML >= 5.1
-BuildRequires:  python3-cryptography
-BuildRequires:  python3-curses
-BuildRequires:  python3-packaging
-BuildRequires:  python3-pytest
-BuildRequires:  python3-pytz
-BuildRequires:  (python3-resolvelib >= 0.5.3 and python3-resolvelib < 0.9.0)
-# /SECTION
+BuildRequires:  %{ansible_python}-base >= 3.8
+BuildRequires:  %{ansible_python}-setuptools
 BuildRequires:  fdupes
-Requires:       python3-Jinja2 >= 3.0.0
-Requires:       python3-PyYAML >= 5.1
-Requires:       python3-cryptography
-Requires:       python3-packaging
-Requires:       (python3-resolvelib >= 0.5.3 and python3-resolvelib < 0.9.0)
+BuildRequires:  python-rpm-macros
+# SECTION test requirements
+BuildRequires:  %{ansible_python}-botocore
+BuildRequires:  %{ansible_python}-Jinja2 >= 3.0.0
+BuildRequires:  %{ansible_python}-PyYAML >= 5.1
+BuildRequires:  %{ansible_python}-cryptography
+BuildRequires:  %{ansible_python}-curses
+BuildRequires:  %{ansible_python}-packaging
+BuildRequires:  %{ansible_python}-pytest
+BuildRequires:  %{ansible_python}-pytz
+BuildRequires:  (%{ansible_python}-resolvelib >= 0.5.3 and %{ansible_python}-resolvelib < 0.9.0)
+# /SECTION
+Requires:       %{ansible_python}-Jinja2 >= 3.0.0
+Requires:       %{ansible_python}-PyYAML >= 5.1
+Requires:       %{ansible_python}-cryptography
+Requires:       %{ansible_python}-packaging
+Requires:       %{ansible_python}-resolvelib < 0.9.0
+Requires:       (%{ansible_python}-resolvelib >= 0.5.3 and %{ansible_python}-resolvelib < 0.9.0)
 
 %description
 Ansible is a radically simple IT automation system. It handles
@@ -74,7 +86,7 @@ find ./ -type f -exec \
 
 %install
 %python_install
-%fdupes %{buildroot}%{python3_sitelib}
+%fdupes %{buildroot}%{ansible_python_sitelib}
 
 mkdir -p %{buildroot}%{_sysconfdir}/ansible/
 cp examples/hosts %{buildroot}%{_sysconfdir}/ansible/
@@ -121,7 +133,7 @@ mkdir -p %{buildroot}%{_sysconfdir}/ansible/
 mkdir -p %{buildroot}%{_sysconfdir}/ansible/roles/
 # fix for https://github.com/ansible/ansible/pull/24381
 # resp. https://bugzilla.opensuse.org/show_bug.cgi?id=1137479
-mkdir -p %{buildroot}%{python3_sitelib}/ansible/galaxy/data/default/role/{files,templates}
+mkdir -p %{buildroot}%{ansible_python_sitelib}/ansible/galaxy/data/default/role/{files,templates}
 
 cp examples/hosts %{buildroot}%{_sysconfdir}/ansible/
 cp examples/ansible.cfg %{buildroot}%{_sysconfdir}/ansible/
@@ -135,8 +147,8 @@ cp -pr docs/docsite/rst .
 #python3 bin/ansible-test units -v --python %%{python3_version}
 
 %files
-%doc README.rst changelogs changelogs/CHANGELOG-v2.14.rst changelogs/CHANGELOG.rst changelogs/changelog.yaml
-%license COPYING licenses licenses/Apache-License.txt licenses/MIT-license.txt licenses/PSF-license.txt licenses/simplified_bsd.txt
+%doc README.rst changelogs/CHANGELOG-v2.14.rst changelogs/CHANGELOG.rst changelogs/changelog.yaml
+%license COPYING licenses/Apache-License.txt licenses/MIT-license.txt licenses/PSF-license.txt licenses/simplified_bsd.txt
 %{_bindir}/ansible
 %{_bindir}/ansible-config
 %{_bindir}/ansible-connection
@@ -148,10 +160,10 @@ cp -pr docs/docsite/rst .
 %{_bindir}/ansible-pull
 %{_bindir}/ansible-test
 %{_bindir}/ansible-vault
-%{python3_sitelib}/ansible
-%{python3_sitelib}/ansible_core-%{version}*-info
+%{ansible_python_sitelib}/ansible
+%{ansible_python_sitelib}/ansible_core-%{version}*-info
 
-%exclude %{python3_sitelib}/ansible_test
+%exclude %{ansible_python_sitelib}/ansible_test
 
 %{_mandir}/man1/ansible.1%{?ext_man}*
 %{_mandir}/man1/ansible-config.1%{?ext_man}*

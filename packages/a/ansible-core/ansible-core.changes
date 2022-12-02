@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Nov 25 07:03:33 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- rework spec file to define %ansible_python version, which is the
+  python version, that ansible is built against, as well as
+  %ansible_python_sitelib
+- remove duplicate entries for changelog and license
+- fix wrong %fdupes
+
+-------------------------------------------------------------------
 Wed Nov 23 10:13:04 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
 
 - add version contraints for both Requires and BuildRequires,
