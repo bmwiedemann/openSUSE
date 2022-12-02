@@ -25,14 +25,13 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%{?!python_module:%define python_module() python3-%{**}}
 # Python 2 and 3.6 are officially supported, but debugpy is in openSUSE for ipykernel 6 which is for Python >= 3.7.
 # Skip Py2 in Leap and Py36 in TW in order to save resources.
 %define skip_python2 1
 %define skip_python36 1
 %define modname debugpy
 Name:           python-%{modname}%{psuffix}
-Version:        1.6.3
+Version:        1.6.4
 Release:        0
 Summary:        An implementation of the Debug Adapter Protocol for Python
 License:        MIT
@@ -49,6 +48,7 @@ BuildRequires:  %{python_module %{modname} = %{version}}
 BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module gevent}
+BuildRequires:  %{python_module greenlet}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest-xdist}

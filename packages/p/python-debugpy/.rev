@@ -32,4 +32,16 @@
     <comment></comment>
     <requestid>1010150</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b6bfb550f72b73c72521083e77980d85</srcmd5>
+    <version>1.6.4</version>
+    <time>1669983127</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.4
+  Fixes: #985, #1003, #1005, #1018, #1024, #1025, #1030, #1031, #1042, #1064,
+         #1081, #1100, #1104, #1111, #1126
+  Improvements: #532, #989, #1022, #1056, #1099
+</comment>
+    <requestid>1039300</requestid>
+  </revision>
 </revisionlist>
