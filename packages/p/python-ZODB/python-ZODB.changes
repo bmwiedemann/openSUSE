@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec  1 20:18:21 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 5.8.0: 
+  * Add support for Python 3.11.
+  * Expand and refactor tests for race conditions.
+
+-------------------------------------------------------------------
 Wed Sep  7 16:00:22 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Renamed doc dir to docs in spec
