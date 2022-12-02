@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Dec  2 00:57:48 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 1.6.52
+  Released: 2022-11-09
+  Summary:
+  * Fix Github Issue #254
+
+- Update to version: 1.6.51
+  Released: 2022-10-21
+  Summary:
+  * Add user and project parameters to dev_tools/git_helper.py.
+    Modify the Makefile accordingly
+  * Fix .delete(recurse=True) implementation (see Github Issue #253)
+  * Fix incorrect debug level check in _bootstrap_from_text()
+  * Add more debug logs... however, many methods still lack debug messages
+
+-------------------------------------------------------------------
 Thu Oct 27 22:29:08 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 1.6.50: 
