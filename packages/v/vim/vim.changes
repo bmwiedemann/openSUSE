@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Thu Dec  1 11:06:29 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
+
+-Updated to version 9.0.0978, fixes the following problems
+  * The first termcap entry of a builtin termcap is not used.
+  * Two conditions are always false.
+  * Coverity warns for not using return value of dict_add().
+  * Coverity warns for using a NULL pointer.
+  * Using Ruby LDFLAGS may cause build problems.
+  * Build failure with tiny version. (Tony Mechelynck)
+  * Cannot debug the Kitty keyboard protocol with TermDebug.
+  * Oblivion files are not recognized.
+  * Kitty shows "already at oldest change" on startup.
+  * Various code formatting issues.
+  * When using dash it may not be recognize as filetype "sh".
+  * Wrong type for "isunnamed" returned by getreginfo().
+  * Forked repositories send out useless email.
+  * Still using simplified mappings when using the kitty keyboard protocol.
+  * Crash when typing a letter in a terminal window. (Shane-XB-Qian)
+  * CI failures in sound dummy.
+  * Workflow Description Language files are not recognized.
+  * Pretending to go out of Insert mode when Esc is received has side effects.
+  * 'cursorline' causes virtual text highlight to continue.
+  * Failures in the cursorline test.
+  * CI: Error in Coverity flow is not reported.
+  * Invalid memory access in substitute with function that goes to another
+  file.
+  * 'ttyfast' is set for arbitrary terminals.
+  * Crash when unletting a variable while listing variables.
+  * The pattern "\_s\zs" matches at EOL.
+  * Trying every character position for a match is inefficient.
+  * Eclipse preference files are not recognized.
+  * Part of making search more efficient is missing.
+  * Cannot detect whether modifyOtherKeys is enabled.
+  * Libvterm does not support the XTQMODKEYS request.
+  * Terminal tests fail when using key with modifier.
+  * Tests fail without the terminal feature.
+  * Messages test is flaky.
+  * Error when using the "File Settings / Text Width" menu.
+  * Error when using the "Tools / Spelling / Find More Languages" menu.
+  * Using deletebufline() may jump to another window.
+  * Virtual text below cannot be placed below empty lines.
+  * Function name does not match autocmd event name.
+  * Status line of other window not redrawn when dragging it when 'splitkeep'
+  is set to "screen".
+  * Using one window for executing autocommands is insufficient.
+  * Some compilers don't allow a declaration after a label.
+  * Leaking memory from autocmd windows.
+  * GUI mouse event test is a bit flaky.
+  * Matchparen highlight is not updated when switching buffers.
+  * Coverity warns for uninitialized variable.
+  * Escape sequences not recognized without the termresponse feature.
+  * Build failure on some systems.
+  * Kitty keyboard protocol key not decoded when it has an unsupported
+  modifier, such as NumLock.
+  * Even when Esc is encoded a timeout is used.
+  * Virtual text below an empty line is misplaced when 'number' is set.
+
+-------------------------------------------------------------------
 Wed Nov 23 10:20:50 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 9.0.0924, fixes the following problems

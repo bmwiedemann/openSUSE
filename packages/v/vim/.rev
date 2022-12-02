@@ -6523,4 +6523,41 @@ always built-in because vim has direct perl dependencies anyway.
   * Handling 'statusline' errors is spread out.</comment>
     <requestid>1037540</requestid>
   </revision>
+  <revision rev="329" vrev="1">
+    <srcmd5>d3c6c861b305d83caeff274d944a7279</srcmd5>
+    <version>9.0.0978</version>
+    <time>1669983125</time>
+    <user>dimstar_suse</user>
+    <comment>-Updated to version 9.0.0978, fixes the following problems
+  * The first termcap entry of a builtin termcap is not used.
+  * Two conditions are always false.
+  * Coverity warns for not using return value of dict_add().
+  * Coverity warns for using a NULL pointer.
+  * Using Ruby LDFLAGS may cause build problems.
+  * Build failure with tiny version. (Tony Mechelynck)
+  * Cannot debug the Kitty keyboard protocol with TermDebug.
+  * Oblivion files are not recognized.
+  * Kitty shows &quot;already at oldest change&quot; on startup.
+  * Various code formatting issues.
+  * When using dash it may not be recognize as filetype &quot;sh&quot;.
+  * Wrong type for &quot;isunnamed&quot; returned by getreginfo().
+  * Forked repositories send out useless email.
+  * Still using simplified mappings when using the kitty keyboard protocol.
+  * Crash when typing a letter in a terminal window. (Shane-XB-Qian)
+  * CI failures in sound dummy.
+  * Workflow Description Language files are not recognized.
+  * Pretending to go out of Insert mode when Esc is received has side effects.
+  * 'cursorline' causes virtual text highlight to continue.
+  * Failures in the cursorline test.
+  * CI: Error in Coverity flow is not reported.
+  * Invalid memory access in substitute with function that goes to another
+  file.
+  * 'ttyfast' is set for arbitrary terminals.
+  * Crash when unletting a variable while listing variables.
+  * The pattern &quot;\_s\zs&quot; matches at EOL.
+  * Trying every character position for a match is inefficient.
+  * Eclipse preference files are not recognized.
+  * Part of making search more efficient is missing.</comment>
+    <requestid>1039295</requestid>
+  </revision>
 </revisionlist>
