@@ -17,7 +17,7 @@
 
 
 Name:           libxcrypt
-Version:        4.4.28
+Version:        4.4.33
 Release:        0
 Summary:        Extended crypt library for DES, MD5, Blowfish and others
 License:        BSD-2-Clause AND GPL-3.0-or-later AND LGPL-2.1-or-later AND BSD-3-Clause AND SUSE-Public-Domain

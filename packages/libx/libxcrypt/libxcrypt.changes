@@ -1,9 +1,20 @@
 -------------------------------------------------------------------
+Wed Nov 30 15:02:10 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Update to 4.4.33
+  * Fix variable name in crypt(3) for a datamember of 'struct crypt_data'
+  * Fix -Werror=strict-overflow in lib/crypt-des.c, which is seen
+    by GCC 12.x
+  * Add some SHA-2 Maj() optimization in lib/alg-sha256.c
+  * Fix -Werror=conversion in lib/alg-yescrypt-opt.c
+  * Improvements to huge page handling in lib/alg-yescrypt-platform.c
+  * Fix -Werror=sign-conversion in lib/alg-yescrypt-platform.c
+
+-------------------------------------------------------------------
 Sun Apr 10 09:34:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.4.28:
-  * Add glibc-on-or1k (OpenRISC 1000) entry to libcrypt.minver.
-  This was added in GNU libc 2.35.
+  No changes whatsoever.
 
 -------------------------------------------------------------------
 Mon Dec 20 22:45:41 UTC 2021 - Dirk Müller <dmueller@suse.com>

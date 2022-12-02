@@ -173,4 +173,19 @@
     <comment></comment>
     <requestid>1010206</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>3272918d0693c11b0feadfa8c1cf7c39</srcmd5>
+    <version>4.4.33</version>
+    <time>1669983118</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.4.33
+  * Fix variable name in crypt(3) for a datamember of 'struct crypt_data'
+  * Fix -Werror=strict-overflow in lib/crypt-des.c, which is seen
+    by GCC 12.x
+  * Add some SHA-2 Maj() optimization in lib/alg-sha256.c
+  * Fix -Werror=conversion in lib/alg-yescrypt-opt.c
+  * Improvements to huge page handling in lib/alg-yescrypt-platform.c
+  * Fix -Werror=sign-conversion in lib/alg-yescrypt-platform.c (forwarded request 1039142 from Andreas_Schwab)</comment>
+    <requestid>1039143</requestid>
+  </revision>
 </revisionlist>
