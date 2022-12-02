@@ -16,6 +16,10 @@
 #
 
 
+%if ! %{defined _distconfdir}
+%define _distconfdir %{_sysconfdir}
+%endif
+
 Name:           rpm2docserv
 Version:        20221129.a10bb7c
 Release:        0
@@ -26,9 +30,10 @@ Source:         rpm2docserv-%{version}.tar.xz
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
 BuildRequires:  golang(API) >= 1.18
+Requires:       /usr/bin/mandoc
 Requires:       cpio
 # To re-create:
-# git clone https://github.com/Debian/debiman
+# git clone https://github.com/thkukuk/rpm2docserv
 # cd rpm2docserv; make vendor; cd ..
 # osc service
 
@@ -140,14 +145,22 @@ install -m 644 apache2/* %{buildroot}%{_datadir}/docserv/apache2/
 %{_sbindir}/docserv-auxserver
 %{_unitdir}/docserv-auxserver.service
 %{_sysusersdir}/system-user-docserv-aux.conf
+%if 0%{?suse_version} >= 1599
 %{_distconfdir}/default/docserv-auxserver
+%else
+%config %{_distconfdir}/default/docserv-auxserver
+%endif
 
 %files -n docserv-minisrv
 %license LICENSE
 %{_sbindir}/docserv-minisrv
 %{_unitdir}/docserv-minisrv.service
 %{_sysusersdir}/system-user-docserv-srv.conf
+%if 0%{?suse_version} >= 1599
 %{_distconfdir}/default/docserv-minisrv
+%else
+%config %{_distconfdir}/default/docserv-minisrv
+%endif
 
 %files -n docserv-sitemap
 %license LICENSE

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Dec  2 10:12:16 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update vendor dir
+
+-------------------------------------------------------------------
+Fri Dec  2 09:27:07 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Require /usr/bin/mandoc: we rely on mandoc to render the man
+  pages as html.
+
+-------------------------------------------------------------------
+Thu Dec  1 11:30:46 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
+
+- Fix building on Leap 15.4
+
+-------------------------------------------------------------------
 Thu Dec  1 10:50:58 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add dependency on cpio: rpm2docserv uses cpio to extract RPMs.
