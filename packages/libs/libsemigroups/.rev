@@ -176,4 +176,12 @@
 - Refresh pkgconfig.patch</comment>
     <requestid>1036841</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>90c17c3e6843817bfcd47a120310a46a</srcmd5>
+    <version>2.4.0</version>
+    <time>1669983194</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.4.0</comment>
+    <requestid>1039393</requestid>
+  </revision>
 </revisionlist>

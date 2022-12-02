@@ -18,14 +18,13 @@
 
 Name:           libsemigroups
 %define lname	libsemigroups2
-Version:        2.3.2
+Version:        2.4.0
 Release:        0
 Summary:        Library with algorithms for computing finite and finitely presented semigroups
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://github.com/libsemigroups/libsemigroups
 Source:         https://github.com/libsemigroups/libsemigroups/releases/download/v%version/%name-%version.tar.gz
-Patch1:         pkgconfig.patch
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
