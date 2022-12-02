@@ -47,4 +47,16 @@
     <comment></comment>
     <requestid>970090</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>81c01204339411fddb56c8fe039aa30a</srcmd5>
+    <version>3.0.0</version>
+    <time>1669983224</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-tests.patch gh#mgedmin/restview@5033eacb1d55
+- Remove python_module macro definition
+- More specific python_sitelib in %files
+- Use autosetup instead of setup + autopatch
+</comment>
+    <requestid>1039533</requestid>
+  </revision>
 </revisionlist>

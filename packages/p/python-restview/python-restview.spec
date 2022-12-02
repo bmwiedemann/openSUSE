@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-restview
 Version:        3.0.0
 Release:        0
@@ -25,6 +24,8 @@ License:        GPL-3.0-only
 Group:          Development/Languages/Python
 URL:            https://mg.pov.lt/restview/
 Source:         https://files.pythonhosted.org/packages/source/r/restview/restview-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix-tests.patch gh#mgedmin/restview@5033eacb1d55
+Patch1:         fix-tests.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -46,8 +47,7 @@ BuildRequires:  %{python_module readme_renderer}
 A viewer for ReStructuredText documents that renders them on the fly.
 
 %prep
-%setup -q -n restview-%{version}
-%autopatch -p1
+%autosetup -p1 -n restview-%{version}
 
 %build
 %python_build
@@ -70,6 +70,7 @@ A viewer for ReStructuredText documents that renders them on the fly.
 %doc CHANGES.rst README.rst
 %license LICENSE
 %python_alternative %{_bindir}/restview
-%{python_sitelib}/*
+%{python_sitelib}/restview
+%{python_sitelib}/restview-%{version}*-info
 
 %changelog
