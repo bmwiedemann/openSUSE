@@ -18,7 +18,7 @@
 
 
 Name:           rav1e
-Version:        0.5.1+0
+Version:        0.6.1+0
 Release:        0
 Summary:        Fastest and safest AV1 encoder
 License:        BSD-2-Clause
@@ -34,6 +34,9 @@ Source99:       baselibs.conf
 BuildRequires:  cargo-c
 BuildRequires:  cargo-packaging
 BuildRequires:  nasm
+# FIXME: Should not be needed for releases
+# https://github.com/xiph/rav1e/issues/3072
+BuildRequires:  libgit2-devel
 
 %description
 rav1e is an AV1 video encoder.

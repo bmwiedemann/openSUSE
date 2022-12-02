@@ -136,4 +136,355 @@ Note: I've updated the source tarball as upstream updated the tag.</comment>
     <comment></comment>
     <requestid>944779</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>cb043f98eed19f2170ec362782e4120b</srcmd5>
+    <version>0.6.1+0</version>
+    <time>1669983124</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6.1+0:
+  * Fix the capi deps
+  * Revert &quot;x86: Disable 8x16 16bpc inverse transforms for SSE4.1&quot;
+  * inverse_transform_add: Align to dav1d EOB convention
+  * x86: Disable 8x16 16bpc inverse transforms for SSE4.1
+  * CI: Fix up deploy workflow
+  * Add C API for level.
+  * Add level to API and CLI.
+  * CI: Correct format of target_cpu for x86_64 in deploy workflow
+  * Produced optimized binary versions from CI
+  * Write level stored in sequence struct.
+  * Bump actions/download-artifact from 2 to 3
+  * Bump actions/upload-artifact from 2 to 3
+  * Bump actions/cache from 2 to 3
+  * Update deps
+  * Update cargo-c binaries url
+  * Add Dependabot configuration for GitHub Actions updates
+  * tests: Add three-pass encode with target bitrate
+  * Add SIMD helpers to speed up Rust get_sad (#3050)
+  * Replace last 16x4 and 4x16 avx2 hbd satd intrinsics with asm (#3051)
+  * x86: Add AVX2 HBD SATD asm for 8x8-transformed blocks (#3048)
+  * Bump minimum rustc to 1.60, required by clap 4
+  * Update clap to 4.0
+  * Remove unused regex dependency
+  * Cleanup log level parsing
+  * Replace actions-rs/toolchain with dtolnay/rust-toolchain
+  * Remove action-rs/cargo
+  * rate: Retire and separate TwoPassOutParams
+  * rate: Estimate target quantizer on first pass
+  * segmentation: Reset min_segment on data update
+  * Replace AVX2 HBD SATD intrinsics with ASM, for some block sizes (#3039)
+  * Remove arrayref dependency
+  * Fix new clippy lints
+  * Move v_frame to its own repository
+  * Add scales and segment thresholds to dump_lookahead_data
+  * Fix UB in pred_max test
+  * Delete build.sh
+  * bin: Admit more than 2 encoder passes
+  * Create new speed level 8, drop level 7
+  * Keep the version line compatible with 0.5
+  * Add back shorthand for `--verbose` and `--quiet` (#3022)
+  * Mention cargo-criterion
+  * Bump criterion version
+  * Update to criterion non-deprecated api
+  * Prepare for 0.6.0 release
+  * bin: Bring --photon-noise out from under unstable feature
+  * Update guide on how to produce target-specific builds
+  * CI: Deploy rav1e-ch binary tuned for modern x86_64
+  * build: Handle absent CARGO_CFG_TARGET_FEATURE
+  * Calculate geometric mean for DistortionScale::inv_mean()
+  * Convert plane-level distortion scales to fixed-point
+  * Expand precision of DistortionScale to Q14
+  * Preserve intermediate precision in get_weighted_sse
+  * Add DistortionScale::blog64()
+  * Bump several dependencies
+  * Remove duplicated constants
+  * Remove aq_strength configuration
+  * logexp: Correct integer part in blog32_q11
+  * logexp: Correct rounding bias in blog32_q11
+  * Fix new clippy lints from Rust nightly (#3006)
+  * Use approximate binary log in Q11 for segmentation_optimize
+  * Add polynomial approximations of a binary exponential and logarithm.
+  * segmentation: Avoid reallocation in collect::&lt;Box&lt;[_]&gt;&gt;()
+  * logexp: Add a fixed-point binary log in Q24 for u32 to i32
+  * logexp: Rewrite blog64 so that it is const
+  * rate: Pivot to util::logexp functions
+  * logexp: Add assertion for q57 input range
+  * logexp: Add binary exponential in Q24 format, saturated to 47 bits.
+  * logexp: Add conversions between 64-bit Q57 and 32-bit Q24.
+  * logexp: Add tests for bexp64 and blog64
+  * logexp: Add 64-bit binary exponentiation and logarithm in Q57.
+  * kmeans: Split k-independent inner loop into its own function
+  * kmeans: Tidy up all but the inner loop
+  * segmentation: Change precision of log(scale) to Q23
+  * Add missing code for segmentation with --tune Psnr
+  * Derive segments by k-means of spatiotemporal scales
+  * Add an implementation for k-means
+  * Remove vergen and use built to provide the same information
+  * Updating QUALITY_&amp;_SPEED_FEATURES document in regards to libaom
+  * Adjust chroma offsets for frame-mean spatiotemporal scale
+  * Compute segmentation map thresholds from the offsets
+  * Implement From&lt;f64&gt; for DistortionScale
+  * Use fixed-sized array in luma/chroma pred mode counts (#2989)
+  * Add T.35 metadata C API.
+  * Bump console + dav1d-sys + system-deps
+  * CI: Pull in dev packages from Ubuntu Kinetic
+  * Implement SegmentationLevel::Full again
+  * segmentation: Limit minimum segment to avoid lossless mode
+  * Use spatiotemporal scales relative to frame mean
+  * Clean up encode_partition_topdown() (#2984)
+  * CI: Fix clippy:borrow_deref_ref warnings
+  * CI: Fix clippy::manual_range_contains warnings
+  * CI: Fix clippy::derive_partial_eq_without_eq warnings
+  * Fix aarch64 satd compilation on gcc
+  * Remove always-true if statement in encode_partition_topdown() (#2980)
+  * Add aarch64 NEON 8-bit SATD assembly for 4x4-transformed block sizes (#2972)
+  * Retune constants for ssim_boost
+  * Add enhanced version info
+  * Add T.35 metadata support.
+  * Simplify badges in README
+  * Remove travis badge
+  * CI: Switch to codecov
+  * CI: Do not consider crates directory for code coverage
+  * Stabilize the --film-grain-table parameter
+  * Compute segmentation offsets dynamically
+  * CI: macos-11 is the latest version
+  * CI: Update checkout action to v3
+  * CI: Remove if construct to skip CI
+  * Remove unused .travis CI
+  * Remove unmaintained gitlab CI
+  * CI: Remove default linker paths on Windows
+  * CI: Deploy rav1e-ch in a new job
+  * CI: Improve Windows toolchains
+  * Optimize `BlockSize::from_width_and_height_opt`
+  * Use external crate for grain table generation and parsing
+  * Optimize write_uleb128 function
+  * ci: Use release-no-lto profile for gnu deploy on Windows
+  * Add a release-no-lto profile
+  * Avoid taking ownership of Arc&lt;Frame&lt;T&gt;&gt; in scenechange API (#2958)
+  * Disable undocumented_unsafe_blocks lint due to false positive regression
+  * Rewrite argument parsing to use Clap's derives
+  * Reuse plane allocations in estimate_intra_costs (#2957)
+  * Use a RwLock in frame_me_stats
+  * Replace as_tile_state_mut with a an apply function
+  * Simplify full_pixel_me
+  * Simplify the tile iterator
+  * Simplify the lifetime
+  * Move TileStateMut::enc_stats where is used
+  * Do not double collect the stats
+  * Simplify the tiler lifetimes
+  * Reuse me stats for lookahead
+  * Merge estimate_motion and motion_estimation into one function
+  * x86: Fix relocations in `sad_plane`
+  * Bump versions of aom and dav1d in CI (#2953)
+  * x86: Reduce code size in 8-bit film grain AVX-512 asm
+  * x86: Add high bit-depth film grain AVX-512 (Ice Lake) asm
+  * arm: Only produce the PAC/BTI .note section when targeting ELF
+  * arm: Add comments to #endif and #else in nonobvious cases
+  * arm: itx: Do clipping in all narrowing downshifts
+  * x86: Add 8-bit film grain AVX-512 (Ice Lake) asm
+  * build: Make &quot;film_grain&quot; vs &quot;filmgrain&quot; DSP file names consistent
+  * x86: Fix data being stored below the stack pointer in SSSE3 itx asm
+  * x86: Remove redundant labels and undefs in SSSE3 itx asm
+  * x86: Update x86inc.asm
+  * arm64: Add Armv8.3-A PAC support to assembly files
+  * x86: Add high bit-depth ipred filter AVX-512 (Ice Lake) asm
+  * x86: Add high bit-depth pal_pred AVX-512 (Ice Lake) asm
+  * x86: Add high bit-depth ipred smooth AVX-512 (Ice Lake) asm
+  * x86: Add high bit-depth ipred paeth AVX-512 (Ice Lake) asm
+  * x86/itx: Add 16x16 12bpc AVX2 transforms
+  * x86: Add mc.resize AVX-512 (Ice Lake) asm
+  * x86: Improve high bit-depth film grain AVX2 asm
+  * x86: Improve 8-bit film grain AVX2 asm
+  * x86: Fix overflow in 10-bit IDCT4
+  * arm32: mc16: Fix out of bounds reads/writes in 8tap/bilin w2/w4 for vertical OBMC
+  * arm32: mc: Fix out of bounds reads/writes in 8tap/bilin w2/w4 for vertical OBMC
+  * arm64: mc16: Fix out of bounds reads/writes in 8tap/bilin w2/w4 for vertical OBMC
+  * arm64: mc: Fix out of bounds reads/writes in 8tap/bilin w2/w4 for vertical OBMC
+  * x86: Add high bitdepth mc(t)_scaled SSSE3 asm
+  * x86: Fix branch condition in high bit-depth put_bilin.h SSSE3 asm
+  * x86: Improve AVX2 generate_grain asm
+  * x86: Add 10-bit sgr AVX-512 (Ice Lake) asm
+  * x86: Add 8-bit mc(t)_scaled SSSE3 32-bit asm
+  * x86/itx: Add 16x8 12bpc AVX2 transforms
+  * x86/itx: Add 8x16 12bpc AVX2 transforms
+  * AArch64 Neon: Replace XTN, XTN2 pairs with single UZP1
+  * AArch64 Neon: Use CMLT instead of SSHR to compute sign
+  * x86: Fix AVX/SSE state transitions in AVX-512 4x4 inverse transforms
+  * x86: Add high bitdepth wiener AVX-512 (Ice Lake) asm
+  * x86/itx: Add 16x4 12bpc AVX2 transforms
+  * x86/itx: Add 4x16 12bpc AVX2 transforms
+  * x86/itx: Convert 8bpc WHT to SSE2
+  * x86: Fix edge padding in wiener_filter7_16bpc_ssse3
+  * x86: Add high bitdepth mc blend AVX-512 (Ice Lake) asm
+  * x86: Add high bitdepth mc warp_affine_8x8 AVX-512 (Ice Lake) asm
+  * x86: Add high bitdepth mc bidir AVX-512 (Ice Lake) asm
+  * x86: Add high bitdepth mc bilin/8-tap AVX-512 (Ice Lake) asm
+  * x86/itx: Add 8x8 12bpc AVX2 transforms
+  * x86/itx: Add 8x4 12bpc AVX2 transforms
+  * x86/itx: Add 4x8 12bpc AVX2 transforms
+  * x86: Fix invalid memory access in cdef_filter_8x8_8bpc_avx512icl
+  * x86/itx: Add clipping to iadst 4x16
+  * Remove lpf_stride parameter from LR filters
+  * Allow CDEF and LR to run sbrows in parallel
+  * arm64: Add Armv8.5-A BTI support to assembly files
+  * arm64: Change br instructions to ret for function returns
+  * x86/itx: Add 12-bit 4x4 transforms in AVX2
+  * x86/itx: Rename rax to r6
+  * x86/itx: Name constants more explicit
+  * x86: Add deblock loop filters AVX-512 (Ice Lake) asm
+  * x86: Add sgr AVX-512 (Ice Lake) asm
+  * x86: Add wiener_filter AVX-512 (Ice Lake) asm
+  * x86: Add ipred_filter AVX-512 (Ice Lake) asm
+  * x86: Add ipred dc/h/v/paeth/smooth/pal_pred AVX-512 (Ice Lake) asm
+  * x86: Add inverse transforms AVX-512 (Ice Lake) asm
+  * x86: Add blend AVX-512 (Ice Lake) asm
+  * x86: Add warp_affine_8x8 AVX-512 (Ice Lake) asm
+  * x86: Add mc 8-tap AVX-512 (Ice Lake) asm
+  * x86: Add mc put_bilin AVX-512 (Ice Lake) asm
+  * x86: Remove the option to disable AVX-512
+  * x86: Add high bitdepth mc(t)_scaled AVX2 asm
+  * Simplify sgr_x_by_x calculations
+  * x86: Optimize shifts in 8-bit wiener_filter asm
+  * Support distinct 10 and 12 bit inverse transform implementations
+  * fix-up: x86: Add put/prep_bilin_scaled AVX2 asm
+  * fix-up: x86: Add bpc suffix to mc functions
+  * x86: Add high bitdepth cfl_ac_444 AVX2 asm
+  * x86: Improve high bitdepth cfl_ac AVX2 asm
+  * x86: Automatically convert SSE asm to AVX when compiling for AVX targets
+  * x86: Add 8-bit w_mask_422 and w_mask_444 SSSE3 asm
+  * x86: Improve high bitdepth cdef_filter AVX2 asm
+  * x86: Prefer tzcnt over bsr in cdef sec_shift calculations
+  * x86/itx: 64x64 inverse dct transforms hbd/sse4
+  * x86/itx: 64x32 inverse dct transforms hbd/sse4
+  * x86/itx: 64x16 inverse dct transforms hbd/sse4
+  * x86/itx: 32x64 inverse dct transforms hbd/sse4
+  * x86/itx: 16x64 inverse dct transforms hbd/sse4
+  * x86: Add high bitdepth cdef_filter SSSE3 asm
+  * cdef: Remove redundant clipping
+  * itx/x86: rewrite .transpose4x8packed so it uses only m0-3,4&amp;6
+  * itx/x86: replace idct8x8.transpose with idct8x4.transpose4x8packed
+  * x86/itx: add 1/sqrt(2) (rect2) multiply macro
+  * x86/itx: share pass2 loop between {16,32}x32 dct^2 functions
+  * x86/itx: combine .write_8x8 and .round{1,2,3,4} into a single function
+  * x86/itx: combine .write_8x4 and .round{1,2} into a single function
+  * x86/itx: split dct/adst/identity pass=2 implementations for 16x8
+  * x86/itx: 32x32 inverse dct transforms hbd/sse4
+  * x86/itx: 32x16 inverse dct transforms hbd/sse4
+  * x86/itx: 32x8 inverse dct transforms hbd/sse4
+  * x86/itx: 16x32 inverse dct transforms hbd/sse4
+  * x86/itx: 8x32 inverse dct transforms hbd/sse4
+  * x86: Add high bitdepth mc.resize SSSE3 asm
+  * x86: Fix minor things in mc.resize_8bpc_ssse3
+  * x86: Add high bitdepth mc.resize AVX2 asm
+  * x86: Add minor improvement to mc.resize_8bpc_avx2
+  * x86: Add bpc suffix to mc functions
+  * x86/itx: merge pass=2 rounding and writing operations
+  * x86/itx: 32x{8,16,32} &amp; {8,16}x32 idtx transforms hbd/sse4
+  * x86/itx: replace .transpose8x8 with 2 calls to .transpose4x8packed
+  * x86/itx: document third argument in INV_TXFM_WxH_FN macros
+  * x86: Rewrite sgr8 SSSE3 asm
+  * x86: Add minor improvements to sgr16 SSSE3 asm
+  * x86/itx: 16x16 inverse transforms hbd/sse4
+  * x86/itx: 16x8 inverse transforms hbd/sse4
+  * x86/itx: 16x4 inverse transforms hbd/sse4
+  * x86inc: Support memory operands in src1 in 3-operand instructions
+  * x86inc: Add stack probing on Windows
+  * Properly fix LOAD_MM_PERMUTATION for AVX-512
+  * Replace abs() as unsigned with dedicated alternative.
+  * v_frame: Disable missing const fn clippy lint
+  * ci: Ignore tools for code coverage analysis
+  * ci: Ignore asm for code coverage analysis
+  * Reimplement sad_row as sad_plane (#2943)
+  * Remove explicit VEX coding from sad ASM (#2941)
+  * Rewrite x86 SAD row intrinsics in ASM
+  * Split `write_coeffs_lv_map` into smaller functions
+  * ci: Do not consider some directories for coverage
+  * Remove unused lifetime.
+  * ci: Enable source-based code coverage
+  * Silence unused variable warning.
+  * Use to_le_bytes in copy_to_raw_u8 (#2932)
+  * Improve codegen of copy_from_raw_u8 (#2930)
+  * Use const generics for downscale factor (#2927)
+  * Implement grain synthesis via photon noise tables
+  * Treat paths as OsString.
+  * Change muxer to use AsRef&lt;Path&gt; arguments.
+  * Remove a broken hawktracer annotation
+  * Break the scenechange module into smaller parts
+  * Add a mock around rayon for disabling threading
+  * Disable missing const fn clippy lint
+  * Use 64-bits for calculating 8x8 variance
+  * Avoid temporary allocation of block importance costs
+  * Remove unnecessary clones from metrics calculation
+  * rate: add assertion for q57 input range (#2911)
+  * Change non-square partition to search below the threshold
+  * Move complex pred modes for keyframes to s2
+  * Fix memory leak when temporal RDO not in use
+  * Enable suboptimal_flops clippy lint (#2908)
+  * Also apply custom clippy lints to ivf and v_frame
+  * Fixes to existing clippy lints
+  * Enable linting functions that could be const
+  * Enable extra documentation lints
+  * Organize existing clippy lints
+  * Avoid multiple inlining of residual loop in SAD intrinsics (#2903)
+  * Improve storage of invalid and SEF frame invariants
+  * Fix pyramid and frame type tests
+  * Fix unnecessary auto-vectorization in residual loop of SAD intrinsics (#2897)
+  * Use a debian mirror with https support
+  * Update aom version and shasums for CI
+  * New clippy fixes from Rust 1.59
+  * Fix new deprecation warnings from Clap 3.1.0
+  * Cache and reuse intra costs from scenechange (#2895)
+  * Init Motion Est: Refine mvs when subsampling reduced
+  * Fix confusing scale factor (#2891)
+  * Speed up estimate_inter_costs again (#2890)
+  * Speed up estimate_inter_costs (#2889)
+  * Handle edges by cropping in initial motion estimation
+  * Simplify importance block sum in `estimate_importance_block_difference` (#2885)
+  * Add safety asserts for mc assembly callers
+  * Update to Edition 2021
+  * Bump minimum Rustc to 1.56
+  * Omit loop restoration on fully skipped areas
+  * Fix new clippy lints
+  * Improve codegen of `Plane::downsampled`
+  * Fix scale of motion estimation threshold
+  * Use const generics for stride_sse
+  * Make the doctests compile only
+  * Put doctests code in a separate test
+  * Bump minimum rust version to 1.54.0
+  * Update to clap3
+  * Refactor TxfmType to not have an invalid variant
+  * Improve codegen of av1_round_shift_array
+  * Use const generics for hadamard transforms (#2877)
+  * Add x86 assembly for cdef distortion
+  * Fix underflow that can occur in cdef distortion
+  * Use cdef_dist on smaller block and edges
+  * Display info for all y4m error types
+  * Allow passing cropped blocks sad and satd
+  * Fix overflow in cdef distortion
+  * Refactor `BlockSize` to not have an invalid variant (#2866)
+  * Skip transform mode search based on transform cost estimate
+  * Improve autovectorization of `downscale_in_place`
+  * Fix doc comments in speedsettings.rs
+  * Change non_square_partition feature to a threshold
+  * Silence repetitive warning on Rust nightly
+  * Do not call put/prep avx2 functions for ssse3
+  * Organize speed settings into sub-structs
+  * Mark SpeedSettings struct as non-exhaustive
+  * Refactor the SpeedSettings impl
+  * Merge `no_scene_detection` and `fast_scene_detection` into one field
+  * Move rdo_lookahead_frames to SpeedSettings
+  * CI: Update to libaom to 3.2.0-2
+  * Update a help message to be more relevant (#2853)
+  * Fix stable clippy lints for Rust 1.57
+  * Use nasm-rs for nasm version check
+  * Better autovectorization of `spatiotemporal_scale`
+  * CI: Run cargo-c in offline mode
+  * Replace float sqrt+divide with fixed point rsqrt
+  * Perform UMH before resorting to full search
+  * CI: Always use latest grcov version
+  * CI: Always use latest cargo-c version
+  * Extend the rayon API mock to include scope()
+  * CI: Move to Debian Unstable for aom and dav1d
+</comment>
+    <requestid>1039292</requestid>
+  </revision>
 </revisionlist>
