@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec  1 20:38:41 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.26.1
+  * Improved audio resampling quality
+  * Fixed crash if SDL_GetPointDisplayIndex() or
+    SDL_GetRectDisplayIndex() are called before SDL_VideoInit()
+
+-------------------------------------------------------------------
 Tue Nov 22 01:03:38 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.26
