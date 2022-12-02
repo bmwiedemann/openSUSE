@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov 30 19:28:58 UTC 2022 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Add fix_irqbalance.patch: support netlink socket operations (bsc#1205434)
+
+-------------------------------------------------------------------
+Wed Nov 30 19:08:33 UTC 2022 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Drop fix_irqbalance.patch: superseded by upstream
+
+-------------------------------------------------------------------
 Thu Nov 24 13:40:16 UTC 2022 - Hu <cathy.hu@suse.com>
 
 - fix_sysnetwork.patch: firewalld uses /etc/sysconfig/network/ for
