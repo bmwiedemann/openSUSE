@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 24 14:22:12 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 5.0.21
+  * Setting Share state to "All" may make "Active by default" not
+    working
+  * Fix a random sigsegv fault when using the sni tray icon upon
+    start up.
+
+-------------------------------------------------------------------
 Sun Nov 20 10:38:19 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
 
 - Update to 5.0.20
