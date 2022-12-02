@@ -323,4 +323,12 @@ CVE-2014-9862 boo#1201770 (forwarded request 991255 from AndreasStieger)</commen
     <comment>New upstream release</comment>
     <requestid>1009670</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>c87e3bc9bd34149034f6c762ad757b14</srcmd5>
+    <version>2022.7</version>
+    <time>1669983132</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 1038609 from dimstar)</comment>
+    <requestid>1039360</requestid>
+  </revision>
 </revisionlist>

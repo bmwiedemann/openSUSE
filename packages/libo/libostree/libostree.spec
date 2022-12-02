@@ -19,7 +19,7 @@
 %define _dracutmodulesdir %(pkg-config --variable dracutmodulesdir dracut)
 %bcond_without ed25519
 Name:           libostree
-Version:        2022.6
+Version:        2022.7
 Release:        0
 Summary:        Git for operating system binaries
 License:        LGPL-2.0-or-later
