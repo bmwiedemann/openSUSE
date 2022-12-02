@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Dec  1 22:16:19 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to 0.9.28 
+  * add support for Python 3.11
+  * add support for multiple list comprehensions
+  * improve performance of making the initial symbol table,
+    and Interpreter creation, including better checking for index_tricks attributes
+
+-------------------------------------------------------------------
 Tue Sep  6 20:15:58 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - update to 0.9.27: 
