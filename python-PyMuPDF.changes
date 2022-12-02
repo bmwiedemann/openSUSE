@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Dec  1 18:51:43 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
+
+- Update to version 1.21.0
+  * This release uses MuPDF-1.21.0.
+    New feature: Stories.
+    Added wheels for Python-3.11.
+  * Bug fixes:
+    Fixed #1701: Broken custom image insertion.
+    Fixed #1854: Document.delete_pages() declines keyword arguments.
+    Fixed #1868: Access Violation Error at page.apply_redactions().
+    Fixed #1909: Adding text with fontname=”Helvetica” can silently fail.
+    Fixed #1913: draw_rect(): does not respect width if color is not specified.
+    Fixed #1917: subset_fonts(): make it possible to silence the stdout.
+    Fixed #1936: Rectangle detection can be incorrect producing wrong output.
+    Fixed #1945: Segmentation fault when saving with clean=True.
+    Fixed #1965: pdfocr_save() Hard Crash.
+    Fixed #1971: Segmentation fault when using get_drawings().
+    Fixed #1946: block_no and block_type switched in get_text() docs.
+    Fixed #2013: AttributeError: ‘Widget’ object has no attribute ‘_annot’ in delete
+    widget.
+  * Misc changes to core code:
+    Fixed various compiler warnings and a sequence-point bug.
+    Added support for Memento builds.
+    Fixed leaks detected by Memento in test suite.
+    Fixed handling of exceptions in set_name() and set_rect().
+    Allow build with latest MuPDF, for regular testing of PyMuPDF master.
+    Cope with new MuPDF exceptions when setting rect for some Annot types.
+    Reduced cosmetic differences between MuPDF’s config.h and PyMuPDF’s _config.h.
+    Cope with various changes to MuPDF API.
+  * Other:
+    Fixed various broken links and typos in docs.
+    Mention install of swig-python on MacOS for #875.
+    Added (untested) wheels for macos-arm64. 
+
+-------------------------------------------------------------------
 Fri Sep  9 10:00:51 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v1.20.2
