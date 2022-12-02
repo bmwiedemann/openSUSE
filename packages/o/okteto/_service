@@ -3,10 +3,10 @@
     <param name="url">https://github.com/okteto/okteto</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">2.10.0</param>
+    <param name="revision">2.10.1</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
-    <param name="match-tag">2.10.0</param>
+    <param name="match-tag">2.10.1</param>
   </service>
   <service name="set_version" mode="disabled">
     <param name="basename">okteto</param>
@@ -16,6 +16,6 @@
     <param name="compression">gz</param>
   </service>
   <service name="go_modules" mode="disabled">
-    <param name="archive">okteto-2.10.0.tar.gz</param>
+    <param name="archive">okteto-2.10.1.tar.gz</param>
   </service>
 </services>

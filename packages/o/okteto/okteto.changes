@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Dec 01 19:48:54 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 2.10.1:
+  * Fix inline export when image tag and cache tag are the same (#3261) (#3262)
+  * Include 'destroy-error' status as a failure in WaitForActionToFinish function. This was provoking that if the pipeline fails, we don't indicate the error in the CLI (#3258) (#3260)
+
+-------------------------------------------------------------------
 Wed Nov 30 14:55:31 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 2.10.0:
